@@ -1,0 +1,473 @@
+# -*- coding: utf8 -*-
+# Copyright 1999-2017 Tencent Ltd.
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#    http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+import json
+
+from tencentcloud.common.exception.tencent_cloud_sdk_exception import TencentCloudSDKException
+from tencentcloud.common.abstract_client import AbstractClient
+from tencentcloud.cws.v20180312 import models
+
+
+class CwsClient(AbstractClient):
+    _apiVersion = '2018-03-12'
+    _endpoint = 'cws.tencentcloudapi.com'
+
+
+    def CreateMonitors(self, request):
+        """本接口（CreateMonitors）用于新增一个或多个站点的监测任务。
+
+        :param request: 调用CreateMonitors所需参数的结构体。
+        :type request: :class:`tencentcloud.cws.v20180312.models.CreateMonitorsRequest`
+        :rtype: :class:`tencentcloud.cws.v20180312.models.CreateMonitorsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("CreateMonitors", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateMonitorsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise e
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def CreateSites(self, request):
+        """本接口（CreateSites）用于新增一个或多个站点。
+
+        :param request: 调用CreateSites所需参数的结构体。
+        :type request: :class:`tencentcloud.cws.v20180312.models.CreateSitesRequest`
+        :rtype: :class:`tencentcloud.cws.v20180312.models.CreateSitesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("CreateSites", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateSitesResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise e
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def CreateSitesScans(self, request):
+        """本接口（CreateSitesScans）用于新增一个或多个站点的单次扫描任务。
+
+        :param request: 调用CreateSitesScans所需参数的结构体。
+        :type request: :class:`tencentcloud.cws.v20180312.models.CreateSitesScansRequest`
+        :rtype: :class:`tencentcloud.cws.v20180312.models.CreateSitesScansResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("CreateSitesScans", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateSitesScansResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise e
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def CreateVulsMisinformation(self, request):
+        """本接口（CreateVulsMisinformation）用于新增一个或多个漏洞误报信息。
+
+        :param request: 调用CreateVulsMisinformation所需参数的结构体。
+        :type request: :class:`tencentcloud.cws.v20180312.models.CreateVulsMisinformationRequest`
+        :rtype: :class:`tencentcloud.cws.v20180312.models.CreateVulsMisinformationResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("CreateVulsMisinformation", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateVulsMisinformationResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise e
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DeleteMonitors(self, request):
+        """本接口 (DeleteMonitors) 用于删除监控任务。
+
+        :param request: 调用DeleteMonitors所需参数的结构体。
+        :type request: :class:`tencentcloud.cws.v20180312.models.DeleteMonitorsRequest`
+        :rtype: :class:`tencentcloud.cws.v20180312.models.DeleteMonitorsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DeleteMonitors", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DeleteMonitorsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise e
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DeleteSites(self, request):
+        """本接口 (DeleteSites) 用于删除站点。
+
+        :param request: 调用DeleteSites所需参数的结构体。
+        :type request: :class:`tencentcloud.cws.v20180312.models.DeleteSitesRequest`
+        :rtype: :class:`tencentcloud.cws.v20180312.models.DeleteSitesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DeleteSites", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DeleteSitesResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise e
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeConfig(self, request):
+        """本接口 (DescribeConfig) 用于查询用户配置的详细信息。
+
+        :param request: 调用DescribeConfig所需参数的结构体。
+        :type request: :class:`tencentcloud.cws.v20180312.models.DescribeConfigRequest`
+        :rtype: :class:`tencentcloud.cws.v20180312.models.DescribeConfigResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeConfig", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeConfigResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise e
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeMonitors(self, request):
+        """本接口 (DescribeMonitors) 用于查询一个或多个监控任务的详细信息。
+
+        :param request: 调用DescribeMonitors所需参数的结构体。
+        :type request: :class:`tencentcloud.cws.v20180312.models.DescribeMonitorsRequest`
+        :rtype: :class:`tencentcloud.cws.v20180312.models.DescribeMonitorsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeMonitors", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeMonitorsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise e
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeSiteQuota(self, request):
+        """本接口 (DescribeSiteQuota) 用于查询用户购买的站点总数和已使用数。
+
+        :param request: 调用DescribeSiteQuota所需参数的结构体。
+        :type request: :class:`tencentcloud.cws.v20180312.models.DescribeSiteQuotaRequest`
+        :rtype: :class:`tencentcloud.cws.v20180312.models.DescribeSiteQuotaResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeSiteQuota", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeSiteQuotaResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise e
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeSites(self, request):
+        """本接口 (DescribeSites) 用于查询一个或多个站点的详细信息。
+
+        :param request: 调用DescribeSites所需参数的结构体。
+        :type request: :class:`tencentcloud.cws.v20180312.models.DescribeSitesRequest`
+        :rtype: :class:`tencentcloud.cws.v20180312.models.DescribeSitesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeSites", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeSitesResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise e
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeSitesVerification(self, request):
+        """本接口 (DescribeSitesVerification) 用于查询一个或多个待验证站点的验证信息。
+
+        :param request: 调用DescribeSitesVerification所需参数的结构体。
+        :type request: :class:`tencentcloud.cws.v20180312.models.DescribeSitesVerificationRequest`
+        :rtype: :class:`tencentcloud.cws.v20180312.models.DescribeSitesVerificationResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeSitesVerification", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeSitesVerificationResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise e
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeVuls(self, request):
+        """本接口 (DescribeVuls) 用于查询一个或多个漏洞的详细信息。
+
+        :param request: 调用DescribeVuls所需参数的结构体。
+        :type request: :class:`tencentcloud.cws.v20180312.models.DescribeVulsRequest`
+        :rtype: :class:`tencentcloud.cws.v20180312.models.DescribeVulsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeVuls", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeVulsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise e
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ModifyConfigAttribute(self, request):
+        """本接口 (ModifyConfigAttribute) 用于修改用户配置的属性。
+
+        :param request: 调用ModifyConfigAttribute所需参数的结构体。
+        :type request: :class:`tencentcloud.cws.v20180312.models.ModifyConfigAttributeRequest`
+        :rtype: :class:`tencentcloud.cws.v20180312.models.ModifyConfigAttributeResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ModifyConfigAttribute", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ModifyConfigAttributeResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise e
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ModifyMonitorAttribute(self, request):
+        """本接口 (ModifyMonitorAttribute) 用于修改监测任务的属性。
+
+        :param request: 调用ModifyMonitorAttribute所需参数的结构体。
+        :type request: :class:`tencentcloud.cws.v20180312.models.ModifyMonitorAttributeRequest`
+        :rtype: :class:`tencentcloud.cws.v20180312.models.ModifyMonitorAttributeResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ModifyMonitorAttribute", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ModifyMonitorAttributeResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise e
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ModifySiteAttribute(self, request):
+        """本接口 (ModifySiteAttribute) 用于修改站点的属性。
+
+        :param request: 调用ModifySiteAttribute所需参数的结构体。
+        :type request: :class:`tencentcloud.cws.v20180312.models.ModifySiteAttributeRequest`
+        :rtype: :class:`tencentcloud.cws.v20180312.models.ModifySiteAttributeResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ModifySiteAttribute", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ModifySiteAttributeResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise e
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def VerifySites(self, request):
+        """本接口 (VerifySites) 用于验证一个或多个待验证站点。
+
+        :param request: 调用VerifySites所需参数的结构体。
+        :type request: :class:`tencentcloud.cws.v20180312.models.VerifySitesRequest`
+        :rtype: :class:`tencentcloud.cws.v20180312.models.VerifySitesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("VerifySites", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.VerifySitesResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise e
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
