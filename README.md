@@ -27,12 +27,9 @@ pip install tencentcloud-sdk-python
     $ python setup.py install
 
 # 示例
-
-您可以在examples目录中找到部分接口的示例。例如cvm的创建虚拟机接口：
-
+您可以在[github仓库](https://github.com/tencentcloud/tencentcloud-sdk-python)examples目录中找到部分接口的示例。例如cvm的创建虚拟机接口：
 ```python
 # -*- coding: utf-8 -*-
-
 from tencentcloud.common import credential
 from tencentcloud.common.exception.tencent_cloud_sdk_exception import TencentCloudSDKException
 # 导入对应产品模块的client models。
@@ -55,6 +52,5 @@ try:
 except TencentCloudSDKException as err:
     print(err)
 ```
-
 # 旧版SDK
 新版SDK兼容旧版SDK。旧版本的SDK存放于QcloudApi目录，但不再维护更新，推荐使用新版SDK。
