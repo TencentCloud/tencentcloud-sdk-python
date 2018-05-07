@@ -27,7 +27,7 @@ pip install tencentcloud-sdk-python
     $ python setup.py install
 
 # 示例
-您可以在[github仓库](https://github.com/tencentcloud/tencentcloud-sdk-python)examples目录中找到部分接口的示例。例如cvm的创建虚拟机接口：
+您可以在[github仓库](https://github.com/tencentcloud/tencentcloud-sdk-python)examples目录中找到部分接口的示例。例如查询可用区接口：
 ```python
 # -*- coding: utf-8 -*-
 from tencentcloud.common import credential
