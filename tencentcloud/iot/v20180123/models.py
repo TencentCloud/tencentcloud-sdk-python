@@ -59,7 +59,7 @@ class AddDeviceRequest(AbstractModel):
         """
         :param ProductId: 产品Id
         :type ProductId: str
-        :param DeviceName: 设备名称
+        :param DeviceName: 设备名称，唯一标识某产品下的一个设备
         :type DeviceName: str
         """
         self.ProductId = None
@@ -103,9 +103,9 @@ class AddProductRequest(AbstractModel):
         """
         :param Name: 产品名称
         :type Name: str
-        :param Description: 产品类型
+        :param Description: 产品描述
         :type Description: str
-        :param AuthType: 产品鉴权类型（0：直连，1：Token）
+        :param AuthType: 产品鉴权类型（0：直连，1：动态令牌），推荐使用动态令牌
         :type AuthType: int
         :param DataTemplate: 数据模版（json数组）
         :type DataTemplate: list of str
@@ -247,6 +247,121 @@ class AddTopicResponse(AbstractModel):
             self.Topic = Topic()
             self.Topic._deserialize(params.get("Topic"))
         self.RequestId = params.get("RequestId")
+
+
+class AddUserRequest(AbstractModel):
+    """AddUser请求参数结构体
+
+    """
+
+
+class AddUserResponse(AbstractModel):
+    """AddUser返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param User: 用户信息
+        :type User: :class:`tencentcloud.iot.v20180123.models.User`
+        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :type RequestId: str
+        """
+        self.User = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("User") is not None:
+            self.User = User()
+            self.User._deserialize(params.get("User"))
+        self.RequestId = params.get("RequestId")
+
+
+class AppAddUserRequest(AbstractModel):
+    """AppAddUser请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param UserName: 用户名
+        :type UserName: str
+        :param Password: 密码
+        :type Password: str
+        """
+        self.UserName = None
+        self.Password = None
+
+
+    def _deserialize(self, params):
+        self.UserName = params.get("UserName")
+        self.Password = params.get("Password")
+
+
+class AppAddUserResponse(AbstractModel):
+    """AppAddUser返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param AppUser: 应用用户
+        :type AppUser: :class:`tencentcloud.iot.v20180123.models.AppUser`
+        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :type RequestId: str
+        """
+        self.AppUser = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("AppUser") is not None:
+            self.AppUser = AppUser()
+            self.AppUser._deserialize(params.get("AppUser"))
+        self.RequestId = params.get("RequestId")
+
+
+class AppUser(AbstractModel):
+    """应用用户
+
+    """
+
+    def __init__(self):
+        """
+        :param ApplicationId: 应用Id
+        :type ApplicationId: str
+        :param UserName: 用户名
+        :type UserName: str
+        :param NickName: 昵称
+        :type NickName: str
+        :param Devices: 绑定设备列表
+        :type Devices: list of Object
+        :param CreateTime: 创建时间
+        :type CreateTime: str
+        :param UpdateTime: 修改时间
+        :type UpdateTime: str
+        """
+        self.ApplicationId = None
+        self.UserName = None
+        self.NickName = None
+        self.Devices = None
+        self.CreateTime = None
+        self.UpdateTime = None
+
+
+    def _deserialize(self, params):
+        self.ApplicationId = params.get("ApplicationId")
+        self.UserName = params.get("UserName")
+        self.NickName = params.get("NickName")
+        if params.get("Devices") is not None:
+            self.Devices = []
+            for item in params.get("Devices"):
+                obj = Object()
+                obj._deserialize(item)
+                self.Devices.append(obj)
+        self.CreateTime = params.get("CreateTime")
+        self.UpdateTime = params.get("UpdateTime")
 
 
 class DeactivateRuleRequest(AbstractModel):
@@ -726,7 +841,7 @@ class GetDeviceStatusesRequest(AbstractModel):
         """
         :param ProductId: 产品ID
         :type ProductId: str
-        :param DeviceNames: 设备名称列表（单次限制1000个）
+        :param DeviceNames: 设备名称列表（单次限制1000个设备）
         :type DeviceNames: list of str
         """
         self.ProductId = None
@@ -1255,7 +1370,7 @@ class PublishMsgRequest(AbstractModel):
         :type Topic: str
         :param Message: 消息内容
         :type Message: str
-        :param Qos: Qos
+        :param Qos: Qos(目前QoS支持0与1)
         :type Qos: int
         """
         self.Topic = None
@@ -1475,16 +1590,20 @@ class UpdateProductRequest(AbstractModel):
         :type Name: str
         :param Description: 产品描述
         :type Description: str
+        :param DataTemplate: 数据模版（json）
+        :type DataTemplate: str
         """
         self.ProductId = None
         self.Name = None
         self.Description = None
+        self.DataTemplate = None
 
 
     def _deserialize(self, params):
         self.ProductId = params.get("ProductId")
         self.Name = params.get("Name")
         self.Description = params.get("Description")
+        self.DataTemplate = params.get("DataTemplate")
 
 
 class UpdateProductResponse(AbstractModel):

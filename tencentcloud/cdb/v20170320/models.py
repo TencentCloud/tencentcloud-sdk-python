@@ -1780,7 +1780,7 @@ class InstanceInfo(AbstractModel):
         :param InitFlag: 初始化标志
         :type InitFlag: int
         :param RoVipInfo: 只读vip信息
-        :type RoVipInfo: :class:`tencentcloud.cdb.v20170320.models.RoVipInfo`
+        :type RoVipInfo: list of RoVipInfo
         :param Memory: 内存容量
         :type Memory: int
         :param Status: 实例状态
@@ -1837,6 +1837,10 @@ class InstanceInfo(AbstractModel):
         :type Vport: int
         :param CdbError: 实例状态
         :type CdbError: int
+        :param UniqVpcId: 私有网络描述符
+        :type UniqVpcId: str
+        :param UniqSubnetId: 子网描述符
+        :type UniqSubnetId: str
         """
         self.WanStatus = None
         self.Zone = None
@@ -1870,6 +1874,8 @@ class InstanceInfo(AbstractModel):
         self.Vip = None
         self.Vport = None
         self.CdbError = None
+        self.UniqVpcId = None
+        self.UniqSubnetId = None
 
 
     def _deserialize(self, params):
@@ -1877,8 +1883,11 @@ class InstanceInfo(AbstractModel):
         self.Zone = params.get("Zone")
         self.InitFlag = params.get("InitFlag")
         if params.get("RoVipInfo") is not None:
-            self.RoVipInfo = RoVipInfo()
-            self.RoVipInfo._deserialize(params.get("RoVipInfo"))
+            self.RoVipInfo = []
+            for item in params.get("RoVipInfo"):
+                obj = RoVipInfo()
+                obj._deserialize(item)
+                self.RoVipInfo.append(obj)
         self.Memory = params.get("Memory")
         self.Status = params.get("Status")
         self.VpcId = params.get("VpcId")
@@ -1921,6 +1930,8 @@ class InstanceInfo(AbstractModel):
         self.Vip = params.get("Vip")
         self.Vport = params.get("Vport")
         self.CdbError = params.get("CdbError")
+        self.UniqVpcId = params.get("UniqVpcId")
+        self.UniqSubnetId = params.get("UniqSubnetId")
 
 
 class InstanceRebootTime(AbstractModel):

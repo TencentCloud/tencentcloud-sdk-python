@@ -54,7 +54,7 @@ class IotClient(AbstractClient):
 
 
     def AddDevice(self, request):
-        """新增设备
+        """提供在指定的产品Id下创建一个设备的能力，生成设备名称与设备秘钥。
 
         :param request: 调用AddDevice所需参数的结构体。
         :type request: :class:`tencentcloud.iot.v20180123.models.AddDeviceRequest`
@@ -82,7 +82,7 @@ class IotClient(AbstractClient):
 
 
     def AddProduct(self, request):
-        """新增产品
+        """为用户提供创建某型号物联网产品的能力。
 
         :param request: 调用AddProduct所需参数的结构体。
         :type request: :class:`tencentcloud.iot.v20180123.models.AddProductRequest`
@@ -165,6 +165,62 @@ class IotClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def AddUser(self, request):
+        """注册用户
+
+        :param request: 调用AddUser所需参数的结构体。
+        :type request: :class:`tencentcloud.iot.v20180123.models.AddUserRequest`
+        :rtype: :class:`tencentcloud.iot.v20180123.models.AddUserResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("AddUser", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.AddUserResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise e
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def AppAddUser(self, request):
+        """注册应用用户
+
+        :param request: 调用AppAddUser所需参数的结构体。
+        :type request: :class:`tencentcloud.iot.v20180123.models.AppAddUserRequest`
+        :rtype: :class:`tencentcloud.iot.v20180123.models.AppAddUserResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("AppAddUser", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.AppAddUserResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise e
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DeactivateRule(self, request):
         """禁用规则
 
@@ -194,7 +250,7 @@ class IotClient(AbstractClient):
 
 
     def DeleteDevice(self, request):
-        """删除设备
+        """提供在指定的产品Id下删除一个设备的能力。
 
         :param request: 调用DeleteDevice所需参数的结构体。
         :type request: :class:`tencentcloud.iot.v20180123.models.DeleteDeviceRequest`
@@ -222,7 +278,7 @@ class IotClient(AbstractClient):
 
 
     def DeleteProduct(self, request):
-        """删除产品
+        """删除用户指定的产品Id对应的信息。
 
         :param request: 调用DeleteProduct所需参数的结构体。
         :type request: :class:`tencentcloud.iot.v20180123.models.DeleteProductRequest`
@@ -334,7 +390,7 @@ class IotClient(AbstractClient):
 
 
     def GetDevice(self, request):
-        """获取设备信息
+        """提供查询某个设备详细信息的能力。
 
         :param request: 调用GetDevice所需参数的结构体。
         :type request: :class:`tencentcloud.iot.v20180123.models.GetDeviceRequest`
@@ -418,7 +474,7 @@ class IotClient(AbstractClient):
 
 
     def GetDeviceStatuses(self, request):
-        """批量获取设备状态
+        """批量获取设备的当前状态，状态包括在线、离线或未激活状态。
 
         :param request: 调用GetDeviceStatuses所需参数的结构体。
         :type request: :class:`tencentcloud.iot.v20180123.models.GetDeviceStatusesRequest`
@@ -446,7 +502,7 @@ class IotClient(AbstractClient):
 
 
     def GetDevices(self, request):
-        """获取设备列表
+        """提供分页查询某个产品Id下设备信息的能力。
 
         :param request: 调用GetDevices所需参数的结构体。
         :type request: :class:`tencentcloud.iot.v20180123.models.GetDevicesRequest`
@@ -474,7 +530,7 @@ class IotClient(AbstractClient):
 
 
     def GetProduct(self, request):
-        """获取产品信息
+        """获取产品定义的详细信息，包括产品名称、产品描述，鉴权模式等信息。
 
         :param request: 调用GetProduct所需参数的结构体。
         :type request: :class:`tencentcloud.iot.v20180123.models.GetProductRequest`
@@ -502,7 +558,7 @@ class IotClient(AbstractClient):
 
 
     def GetProducts(self, request):
-        """获取用户名下的产品列表
+        """获取用户在物联网套件所创建的所有产品信息。
 
         :param request: 调用GetProducts所需参数的结构体。
         :type request: :class:`tencentcloud.iot.v20180123.models.GetProductsRequest`
@@ -670,7 +726,7 @@ class IotClient(AbstractClient):
 
 
     def IssueDeviceControl(self, request):
-        """下发设备控制指令
+        """提供下发控制指令到指定设备的能力。
 
         :param request: 调用IssueDeviceControl所需参数的结构体。
         :type request: :class:`tencentcloud.iot.v20180123.models.IssueDeviceControlRequest`
@@ -698,7 +754,7 @@ class IotClient(AbstractClient):
 
 
     def PublishMsg(self, request):
-        """向Topic发布消息
+        """提供向指定的Topic发布消息的能力。
 
         :param request: 调用PublishMsg所需参数的结构体。
         :type request: :class:`tencentcloud.iot.v20180123.models.PublishMsgRequest`
@@ -754,7 +810,7 @@ class IotClient(AbstractClient):
 
 
     def UpdateProduct(self, request):
-        """更新产品信息
+        """提供修改产品信息及数据模板的能力。
 
         :param request: 调用UpdateProduct所需参数的结构体。
         :type request: :class:`tencentcloud.iot.v20180123.models.UpdateProductRequest`

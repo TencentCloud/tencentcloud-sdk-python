@@ -659,13 +659,19 @@ class CreateSecurityGroupResponse(AbstractModel):
 
     def __init__(self):
         """
+        :param SecurityGroup: 安全组对象。
+        :type SecurityGroup: :class:`tencentcloud.vpc.v20170312.models.SecurityGroup`
         :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
         :type RequestId: str
         """
+        self.SecurityGroup = None
         self.RequestId = None
 
 
     def _deserialize(self, params):
+        if params.get("SecurityGroup") is not None:
+            self.SecurityGroup = SecurityGroup()
+            self.SecurityGroup._deserialize(params.get("SecurityGroup"))
         self.RequestId = params.get("RequestId")
 
 
@@ -822,16 +828,24 @@ class CreateVpcRequest(AbstractModel):
         :type CidrBlock: str
         :param EnableMulticast: 是否开启组播。true: 开启, false: 不开启。
         :type EnableMulticast: str
+        :param DnsServers: DNS地址，最多支持4个，第1个默认为主，其余为备
+        :type DnsServers: list of str
+        :param DomainName: 域名
+        :type DomainName: str
         """
         self.VpcName = None
         self.CidrBlock = None
         self.EnableMulticast = None
+        self.DnsServers = None
+        self.DomainName = None
 
 
     def _deserialize(self, params):
         self.VpcName = params.get("VpcName")
         self.CidrBlock = params.get("CidrBlock")
         self.EnableMulticast = params.get("EnableMulticast")
+        self.DnsServers = params.get("DnsServers")
+        self.DomainName = params.get("DomainName")
 
 
 class CreateVpcResponse(AbstractModel):
@@ -1681,13 +1695,19 @@ class DescribeSecurityGroupPoliciesResponse(AbstractModel):
 
     def __init__(self):
         """
+        :param SecurityGroupPolicySet: 安全组规则集合。
+        :type SecurityGroupPolicySet: :class:`tencentcloud.vpc.v20170312.models.SecurityGroupPolicySet`
         :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
         :type RequestId: str
         """
+        self.SecurityGroupPolicySet = None
         self.RequestId = None
 
 
     def _deserialize(self, params):
+        if params.get("SecurityGroupPolicySet") is not None:
+            self.SecurityGroupPolicySet = SecurityGroupPolicySet()
+            self.SecurityGroupPolicySet._deserialize(params.get("SecurityGroupPolicySet"))
         self.RequestId = params.get("RequestId")
 
 
@@ -1734,13 +1754,26 @@ class DescribeSecurityGroupsResponse(AbstractModel):
 
     def __init__(self):
         """
+        :param SecurityGroupSet: 安全组对象。
+        :type SecurityGroupSet: list of SecurityGroup
+        :param TotalCount: 符合条件的实例数量。
+        :type TotalCount: int
         :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
         :type RequestId: str
         """
+        self.SecurityGroupSet = None
+        self.TotalCount = None
         self.RequestId = None
 
 
     def _deserialize(self, params):
+        if params.get("SecurityGroupSet") is not None:
+            self.SecurityGroupSet = []
+            for item in params.get("SecurityGroupSet"):
+                obj = SecurityGroup()
+                obj._deserialize(item)
+                self.SecurityGroupSet.append(obj)
+        self.TotalCount = params.get("TotalCount")
         self.RequestId = params.get("RequestId")
 
 
@@ -1917,24 +1950,24 @@ class DescribeSubnetsResponse(AbstractModel):
         """
         :param TotalCount: 符合条件的实例数量。
         :type TotalCount: int
-        :param DescribeSubnets: 子网对象。
-        :type DescribeSubnets: list of Subnet
+        :param SubnetSet: 子网对象。
+        :type SubnetSet: list of Subnet
         :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
         :type RequestId: str
         """
         self.TotalCount = None
-        self.DescribeSubnets = None
+        self.SubnetSet = None
         self.RequestId = None
 
 
     def _deserialize(self, params):
         self.TotalCount = params.get("TotalCount")
-        if params.get("DescribeSubnets") is not None:
-            self.DescribeSubnets = []
-            for item in params.get("DescribeSubnets"):
+        if params.get("SubnetSet") is not None:
+            self.SubnetSet = []
+            for item in params.get("SubnetSet"):
                 obj = Subnet()
                 obj._deserialize(item)
-                self.DescribeSubnets.append(obj)
+                self.SubnetSet.append(obj)
         self.RequestId = params.get("RequestId")
 
 
@@ -2737,16 +2770,24 @@ class ModifyVpcAttributeRequest(AbstractModel):
         :type VpcName: str
         :param EnableMulticast: 是否开启组播。true: 开启, false: 关闭。
         :type EnableMulticast: str
+        :param DnsServers: DNS地址，最多支持4个，第1个默认为主，其余为备
+        :type DnsServers: list of str
+        :param DomainName: 域名
+        :type DomainName: str
         """
         self.VpcId = None
         self.VpcName = None
         self.EnableMulticast = None
+        self.DnsServers = None
+        self.DomainName = None
 
 
     def _deserialize(self, params):
         self.VpcId = params.get("VpcId")
         self.VpcName = params.get("VpcName")
         self.EnableMulticast = params.get("EnableMulticast")
+        self.DnsServers = params.get("DnsServers")
+        self.DomainName = params.get("DomainName")
 
 
 class ModifyVpcAttributeResponse(AbstractModel):
@@ -3198,6 +3239,43 @@ class RouteTableAssociation(AbstractModel):
     def _deserialize(self, params):
         self.SubnetId = params.get("SubnetId")
         self.RouteTableId = params.get("RouteTableId")
+
+
+class SecurityGroup(AbstractModel):
+    """安全组对象
+
+    """
+
+    def __init__(self):
+        """
+        :param ProjectId: 项目id，默认0。可在qcloud控制台项目管理页面查询到。
+        :type ProjectId: str
+        :param SecurityGroupId: 安全组实例ID，例如：sg-ohuuioma。
+        :type SecurityGroupId: str
+        :param SecurityGroupName: 安全组名称，可任意命名，但不得超过60个字符。
+        :type SecurityGroupName: str
+        :param SecurityGroupDesc: 安全组备注，最多100个字符。
+        :type SecurityGroupDesc: str
+        :param IsDefault: 是否是默认安全组，默认安全组不支持删除。
+        :type IsDefault: bool
+        :param CreatedTime: 安全组创建时间。
+        :type CreatedTime: str
+        """
+        self.ProjectId = None
+        self.SecurityGroupId = None
+        self.SecurityGroupName = None
+        self.SecurityGroupDesc = None
+        self.IsDefault = None
+        self.CreatedTime = None
+
+
+    def _deserialize(self, params):
+        self.ProjectId = params.get("ProjectId")
+        self.SecurityGroupId = params.get("SecurityGroupId")
+        self.SecurityGroupName = params.get("SecurityGroupName")
+        self.SecurityGroupDesc = params.get("SecurityGroupDesc")
+        self.IsDefault = params.get("IsDefault")
+        self.CreatedTime = params.get("CreatedTime")
 
 
 class SecurityGroupPolicy(AbstractModel):
