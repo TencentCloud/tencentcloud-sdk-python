@@ -142,7 +142,7 @@ class CdbClient(AbstractClient):
 
         您还可以使用[查询实例列表](https://cloud.tencent.com/document/api/236/15872)接口查询该实例的详细信息。
 
-        1. 首先请使用[查询可创建规格（支持可用区、配置自定义）](https://cloud.tencent.com/document/api/253/6109)接口查询可创建的实例规格信息，然后请使用[查询价格（包年包月）](https://cloud.tencent.com/document/api/236/1332)接口查询可创建实例的售卖价格；
+        1. 首先请使用[获取云数据库可售卖规格](https://cloud.tencent.com/document/api/236/17229)接口查询可创建的实例规格信息，然后请使用[查询价格（包年包月）](https://cloud.tencent.com/document/api/236/1332)接口查询可创建实例的售卖价格；
 
         2. 单次创建实例最大支持 100 个，实例时长最大支持 36 个月；
 
@@ -180,7 +180,7 @@ class CdbClient(AbstractClient):
 
         您还可以使用[查询实例列表](https://cloud.tencent.com/document/api/236/15872)接口查询该实例的详细信息。
 
-        1. 首先请使用[查询可创建规格（支持可用区、配置自定义）](https://cloud.tencent.com/document/api/253/6109)接口查询可创建的实例规格信息，然后请使用[查询价格（按量计费）](https://cloud.tencent.com/document/api/253/5176)接口查询可创建实例的售卖价格；
+        1. 首先请使用[获取云数据库可售卖规格](https://cloud.tencent.com/document/api/236/17229)接口查询可创建的实例规格信息，然后请使用[查询价格（按量计费）](https://cloud.tencent.com/document/api/253/5176)接口查询可创建实例的售卖价格；
         2. 单次创建实例最大支持 100 个，实例时长最大支持 36 个月；
         3. 支持创建 MySQL5.5、MySQL5.6和MySQL5.7 版本；
         4. 支持创建主实例、灾备实例和只读实例；
@@ -563,6 +563,34 @@ class CdbClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeDBSecurityGroupsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise e
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeDBZoneConfig(self, request):
+        """本接口(DescribeDBZoneConfig)用于查询可创建的云数据库各地域可售卖的规格配置。
+
+        :param request: 调用DescribeDBZoneConfig所需参数的结构体。
+        :type request: :class:`tencentcloud.cdb.v20170320.models.DescribeDBZoneConfigRequest`
+        :rtype: :class:`tencentcloud.cdb.v20170320.models.DescribeDBZoneConfigResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeDBZoneConfig", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeDBZoneConfigResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

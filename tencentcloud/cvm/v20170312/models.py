@@ -722,7 +722,7 @@ class DescribeInstanceTypeConfigsRequest(AbstractModel):
     def __init__(self):
         """
         :param Filters: 过滤条件。
-<li> zone - String - 是否必填：否 -（过滤条件）按照[可用区](document/api/213/9452#zone)过滤。</li>
+<li> zone - String - 是否必填：否 -（过滤条件）按照[可用区](https://cloud.tencent.com/document/api/213/9452#zone)过滤。</li>
 <li> instance-family - String - 是否必填：否 -（过滤条件）按照实例机型系列过滤。实例机型系列形如：S1、I1、M1等。</li>
 每次请求的`Filters`的上限为10，`Filter.Values`的上限为1。
         :type Filters: list of Filter
@@ -783,6 +783,9 @@ class DescribeInstancesRequest(AbstractModel):
 <li> instance-charge-type - String - 是否必填：否 -（过滤条件）按照实例计费模式过滤。 (PREPAID：表示预付费，即包年包月 | POSTPAID_BY_HOUR：表示后付费，即按量计费 | CDHPAID：表示[CDH](https://cloud.tencent.com/document/product/416)付费，即只对[CDH](https://cloud.tencent.com/document/product/416)计费，不对[CDH](https://cloud.tencent.com/document/product/416)上的实例计费。 )  </li>
 <li> private-ip-address - String - 是否必填：否 - （过滤条件）按照实例主网卡的内网IP过滤。</li>
 <li> public-ip-address - String - 是否必填：否 - （过滤条件）按照实例主网卡的公网IP过滤，包含实例创建时自动分配的IP和实例创建后手动绑定的弹性IP。</li>
+<li> tag-key - String - 是否必填：否 - （过滤条件）按照标签键进行过滤。</li>
+<li> tag-value - String - 是否必填：否 - （过滤条件）按照标签值进行过滤。</li>
+<li> tag:tag-key - String - 是否必填：否 - （过滤条件）按照标签键值对进行过滤。 tag-key使用具体的标签键进行替换。使用请参考示例2</li>
 每次请求的`Filters`的上限为10，`Filter.Values`的上限为5。参数不支持同时指定`InstanceIds`和`Filters`。
         :type Filters: list of Filter
         :param Offset: 偏移量，默认为0。关于`Offset`的更进一步介绍请参考 API [简介](https://cloud.tencent.com/document/api/213/15688)中的相关小节。
@@ -1152,13 +1155,13 @@ class Filter(AbstractModel):
     > * 若存在多个`Filter`时，`Filter`间的关系为逻辑与（`AND`）关系。
     > * 若同一个`Filter`存在多个`Values`，同一`Filter`下`Values`间的关系为逻辑或（`OR`）关系。
     >
-    > 以[DescribeInstances](/document/api/213/9388)接口的`Filter`为例。若我们需要查询可用区（`zone`）为广州一区 ***并且*** 实例计费模式（`instance-charge-type`）为包年包月 ***或者*** 按量计费的实例时，可如下实现：
+    > 以[DescribeInstances](https://cloud.tencent.com/document/api/213/9388)接口的`Filter`为例。若我们需要查询可用区（`zone`）为广州一区 ***并且*** 实例计费模式（`instance-charge-type`）为包年包月 ***或者*** 按量计费的实例时，可如下实现：
     ```
-    Filters.1.Name=zone
-    &Filters.1.Values.1=ap-guangzhou-1
-    &Filters.2.Name=instance-charge-type
-    &Filters.2.Values.1=PREPAID
-    &Filters.3.Values.2=POSTPAID_BY_HOUR
+    Filters.0.Name=zone
+    &Filters.0.Values.0=ap-guangzhou-1
+    &Filters.1.Name=instance-charge-type
+    &Filters.1.Values.0=PREPAID
+    &Filters.1.Values.1=POSTPAID_BY_HOUR
     ```
 
     """
@@ -1301,15 +1304,15 @@ class Image(AbstractModel):
         :param ImageDescription: 镜像描述
         :type ImageDescription: str
         :param ImageSize: 镜像大小
-        :type ImageSize: str
+        :type ImageSize: int
         :param Architecture: 镜像架构
         :type Architecture: str
         :param ImageState: 镜像状态
         :type ImageState: str
         :param Platform: 镜像来源平台
-        :type Platform: list of str
+        :type Platform: str
         :param ImageCreator: 镜像创建者
-        :type ImageCreator: list of str
+        :type ImageCreator: str
         :param ImageSource: 镜像来源
         :type ImageSource: str
         """
@@ -1732,7 +1735,7 @@ class InquiryPriceRunInstancesRequest(AbstractModel):
         :type InstanceChargePrepaid: :class:`tencentcloud.cvm.v20170312.models.InstanceChargePrepaid`
         :param Placement: 实例所在的位置。通过该参数可以指定实例所属可用区，所属项目等属性。
         :type Placement: :class:`tencentcloud.cvm.v20170312.models.Placement`
-        :param InstanceType: 实例机型。不同实例机型指定了不同的资源规格，具体取值可通过调用接口[DescribeInstanceTypeConfigs](https://cloud.tencent.com/document/api/213/9391)来获得最新的规格表或参见[CVM实例配置](https://cloud.tencent.com/document/product/213/2177)描述。若不指定该参数，则默认机型为S1.SMALL1。
+        :param InstanceType: 实例机型。不同实例机型指定了不同的资源规格，具体取值可通过调用接口[DescribeInstanceTypeConfigs](https://cloud.tencent.com/document/api/213/15749)来获得最新的规格表或参见[CVM实例配置](https://cloud.tencent.com/document/product/213/2177)描述。若不指定该参数，则默认机型为S1.SMALL1。
         :type InstanceType: str
         :param ImageId: 指定有效的[镜像](https://cloud.tencent.com/document/product/213/4940)ID，格式形如`img-xxx`。镜像类型分为四种：<br/><li>公共镜像</li><li>自定义镜像</li><li>共享镜像</li><li>服务市场镜像</li><br/>可通过以下方式获取可用的镜像ID：<br/><li>`公共镜像`、`自定义镜像`、`共享镜像`的镜像ID可通过登录[控制台](https://console.cloud.tencent.com/cvm/image?rid=1&imageType=PUBLIC_IMAGE)查询；`服务镜像市场`的镜像ID可通过[云市场](https://market.cloud.tencent.com/list)查询。</li><li>通过调用接口 [DescribeImages](https://cloud.tencent.com/document/api/213/15715) ，取返回信息中的`ImageId`字段。</li>
         :type ImageId: str
@@ -1746,11 +1749,11 @@ class InquiryPriceRunInstancesRequest(AbstractModel):
         :type InternetAccessible: :class:`tencentcloud.cvm.v20170312.models.InternetAccessible`
         :param InstanceCount: 购买实例数量。取值范围：[1，100]。默认取值：1。指定购买实例的数量不能超过用户所能购买的剩余配额数量，具体配额相关限制详见[CVM实例购买限制](https://cloud.tencent.com/document/product/213/2664)。
         :type InstanceCount: int
-        :param InstanceName: 实例显示名称。如果不指定则默认显示
+        :param InstanceName: 实例显示名称。<br><li>不指定实例显示名称则默认显示‘未命名’。</li><li>购买多台实例，如果指定模式串`{R:x}`，表示生成数字`[x, x+n-1]`，其中`n`表示购买实例的数量，例如`server_{R:3}`，购买1台时，实例显示名称为`server_3`；购买2台时，实例显示名称分别为`server_3`，`server_4`。支持指定多个模式串`{R:x}`。</li><li>购买多台实例，如果不指定模式串，则在实例显示名称添加后缀`1、2...n`，其中`n`表示购买实例的数量，例如`server_`，购买2台时，实例显示名称分别为`server_1`，`server_2`。
         :type InstanceName: str
         :param LoginSettings: 实例登录设置。通过该参数可以设置实例的登录方式密码、密钥或保持镜像的原始登录设置。默认情况下会随机生成密码，并以站内信方式知会到用户。
         :type LoginSettings: :class:`tencentcloud.cvm.v20170312.models.LoginSettings`
-        :param SecurityGroupIds: 实例所属安全组。该参数可以通过调用[DescribeSecurityGroups](https://cloud.tencent.com/document/api/215/15808)的返回值中的sgId字段来获取。若不指定该参数，则默认不绑定安全组<font style=
+        :param SecurityGroupIds: 实例所属安全组。该参数可以通过调用 [DescribeSecurityGroups](https://cloud.tencent.com/document/api/215/15808) 的返回值中的sgId字段来获取。若不指定该参数，则默认不绑定安全组。
         :type SecurityGroupIds: list of str
         :param EnhancedService: 增强服务。通过该参数可以指定是否开启云安全、云监控等服务。若不指定该参数，则默认开启云监控、云安全服务。
         :type EnhancedService: :class:`tencentcloud.cvm.v20170312.models.EnhancedService`
@@ -1760,6 +1763,8 @@ class InquiryPriceRunInstancesRequest(AbstractModel):
         :type HostName: str
         :param TagSpecification: 标签描述列表。通过指定该参数可以同时绑定标签到相应的资源实例，当前仅支持绑定标签到云主机实例。
         :type TagSpecification: list of TagSpecification
+        :param InstanceMarketOptions: 实例的市场相关选项，如竞价实例相关参数
+        :type InstanceMarketOptions: :class:`tencentcloud.cvm.v20170312.models.InstanceMarketOptionsRequest`
         """
         self.InstanceChargeType = None
         self.InstanceChargePrepaid = None
@@ -1778,6 +1783,7 @@ class InquiryPriceRunInstancesRequest(AbstractModel):
         self.ClientToken = None
         self.HostName = None
         self.TagSpecification = None
+        self.InstanceMarketOptions = None
 
 
     def _deserialize(self, params):
@@ -1822,6 +1828,9 @@ class InquiryPriceRunInstancesRequest(AbstractModel):
                 obj = TagSpecification()
                 obj._deserialize(item)
                 self.TagSpecification.append(obj)
+        if params.get("InstanceMarketOptions") is not None:
+            self.InstanceMarketOptions = InstanceMarketOptionsRequest()
+            self.InstanceMarketOptions._deserialize(params.get("InstanceMarketOptions"))
 
 
 class InquiryPriceRunInstancesResponse(AbstractModel):
@@ -1890,6 +1899,12 @@ class Instance(AbstractModel):
         :type CreatedTime: str
         :param ExpiredTime: 到期时间。按照`ISO8601`标准表示，并且使用`UTC`时间。格式为：`YYYY-MM-DDThh:mm:ssZ`。
         :type ExpiredTime: str
+        :param OsName: 操作系统名称。
+        :type OsName: str
+        :param SecurityGroupIds: 实例所属安全组。该参数可以通过调用 [DescribeSecurityGroups](https://cloud.tencent.com/document/api/215/15808) 的返回值中的sgId字段来获取。
+        :type SecurityGroupIds: list of str
+        :param LoginSettings: 实例登录设置。目前只返回实例所关联的密钥。
+        :type LoginSettings: :class:`tencentcloud.cvm.v20170312.models.LoginSettings`
         """
         self.Placement = None
         self.InstanceId = None
@@ -1909,6 +1924,9 @@ class Instance(AbstractModel):
         self.RenewFlag = None
         self.CreatedTime = None
         self.ExpiredTime = None
+        self.OsName = None
+        self.SecurityGroupIds = None
+        self.LoginSettings = None
 
 
     def _deserialize(self, params):
@@ -1943,6 +1961,11 @@ class Instance(AbstractModel):
         self.RenewFlag = params.get("RenewFlag")
         self.CreatedTime = params.get("CreatedTime")
         self.ExpiredTime = params.get("ExpiredTime")
+        self.OsName = params.get("OsName")
+        self.SecurityGroupIds = params.get("SecurityGroupIds")
+        if params.get("LoginSettings") is not None:
+            self.LoginSettings = LoginSettings()
+            self.LoginSettings._deserialize(params.get("LoginSettings"))
 
 
 class InstanceChargePrepaid(AbstractModel):
@@ -1986,6 +2009,29 @@ class InstanceFamilyConfig(AbstractModel):
     def _deserialize(self, params):
         self.InstanceFamilyName = params.get("InstanceFamilyName")
         self.InstanceFamily = params.get("InstanceFamily")
+
+
+class InstanceMarketOptionsRequest(AbstractModel):
+    """竞价请求相关选项
+
+    """
+
+    def __init__(self):
+        """
+        :param MarketType: 市场选项类型，当前只支持取值：spot
+        :type MarketType: str
+        :param SpotOptions: 竞价相关选项
+        :type SpotOptions: :class:`tencentcloud.cvm.v20170312.models.SpotMarketOptions`
+        """
+        self.MarketType = None
+        self.SpotOptions = None
+
+
+    def _deserialize(self, params):
+        self.MarketType = params.get("MarketType")
+        if params.get("SpotOptions") is not None:
+            self.SpotOptions = SpotMarketOptions()
+            self.SpotOptions._deserialize(params.get("SpotOptions"))
 
 
 class InstanceStatus(AbstractModel):
@@ -2992,7 +3038,7 @@ class RunInstancesRequest(AbstractModel):
         :param Placement: 实例所在的位置。通过该参数可以指定实例所属可用区，所属项目，专用宿主机（对于独享母机付费模式的子机创建）等属性。
         :type Placement: :class:`tencentcloud.cvm.v20170312.models.Placement`
         :param InstanceType: 实例机型。不同实例机型指定了不同的资源规格。
-<br><li>对于付费模式为PREPAID或POSTPAID_BY_HOUR的子机创建，具体取值可通过调用接口[DescribeInstanceTypeConfigs](https://cloud.tencent.com/document/api/213/9391)来获得最新的规格表或参见[实例类型](https://cloud.tencent.com/document/product/213/11518)描述。若不指定该参数，则默认机型为S1.SMALL1。<br><li>对于付费模式为CDHPAID的子机创建，该参数以"CDH_"为前缀，根据cpu和内存配置生成，具体形式为：CDH_XCXG，例如对于创建cpu为1核，内存为1G大小的专用宿主机的子机，该参数应该为CDH_1C1G。
+<br><li>对于付费模式为PREPAID或POSTPAID_BY_HOUR的子机创建，具体取值可通过调用接口[DescribeInstanceTypeConfigs](https://cloud.tencent.com/document/api/213/15749)来获得最新的规格表或参见[实例类型](https://cloud.tencent.com/document/product/213/11518)描述。若不指定该参数，则默认机型为S1.SMALL1。<br><li>对于付费模式为CDHPAID的子机创建，该参数以"CDH_"为前缀，根据cpu和内存配置生成，具体形式为：CDH_XCXG，例如对于创建cpu为1核，内存为1G大小的专用宿主机的子机，该参数应该为CDH_1C1G。
         :type InstanceType: str
         :param ImageId: 指定有效的[镜像](https://cloud.tencent.com/document/product/213/4940)ID，格式形如`img-xxx`。镜像类型分为四种：<br/><li>公共镜像</li><li>自定义镜像</li><li>共享镜像</li><li>服务市场镜像</li><br/>可通过以下方式获取可用的镜像ID：<br/><li>`公共镜像`、`自定义镜像`、`共享镜像`的镜像ID可通过登录[控制台](https://console.cloud.tencent.com/cvm/image?rid=1&imageType=PUBLIC_IMAGE)查询；`服务镜像市场`的镜像ID可通过[云市场](https://market.cloud.tencent.com/list)查询。</li><li>通过调用接口 [DescribeImages](https://cloud.tencent.com/document/api/213/15715) ，取返回信息中的`ImageId`字段。</li>
         :type ImageId: str
@@ -3000,13 +3046,13 @@ class RunInstancesRequest(AbstractModel):
         :type SystemDisk: :class:`tencentcloud.cvm.v20170312.models.SystemDisk`
         :param DataDisks: 实例数据盘配置信息。若不指定该参数，则默认不购买数据盘，当前仅支持购买的时候指定一个数据盘。
         :type DataDisks: list of DataDisk
-        :param VirtualPrivateCloud: 私有网络相关信息配置。通过该参数可以指定私有网络的ID，子网ID等信息。若不指定该参数，则默认使用基础网络。若在此参数中指定了私有网络ip，那么InstanceCount参数只能为1。
+        :param VirtualPrivateCloud: 私有网络相关信息配置。通过该参数可以指定私有网络的ID，子网ID等信息。若不指定该参数，则默认使用基础网络。若在此参数中指定了私有网络ip，表示每个实例的主网卡ip，而且InstanceCount参数必须与私有网络ip的个数一致。
         :type VirtualPrivateCloud: :class:`tencentcloud.cvm.v20170312.models.VirtualPrivateCloud`
         :param InternetAccessible: 公网带宽相关信息设置。若不指定该参数，则默认公网带宽为0Mbps。
         :type InternetAccessible: :class:`tencentcloud.cvm.v20170312.models.InternetAccessible`
         :param InstanceCount: 购买实例数量。取值范围：[1，100]。默认取值：1。指定购买实例的数量不能超过用户所能购买的剩余配额数量，具体配额相关限制详见[CVM实例购买限制](https://cloud.tencent.com/document/product/213/2664)。
         :type InstanceCount: int
-        :param InstanceName: 实例显示名称。如果不指定则默认显示
+        :param InstanceName: 实例显示名称。<br><li>不指定实例显示名称则默认显示‘未命名’。</li><li>购买多台实例，如果指定模式串`{R:x}`，表示生成数字`[x, x+n-1]`，其中`n`表示购买实例的数量，例如`server_{R:3}`，购买1台时，实例显示名称为`server_3`；购买2台时，实例显示名称分别为`server_3`，`server_4`。支持指定多个模式串`{R:x}`。</li><li>购买多台实例，如果不指定模式串，则在实例显示名称添加后缀`1、2...n`，其中`n`表示购买实例的数量，例如`server_`，购买2台时，实例显示名称分别为`server_1`，`server_2`。
         :type InstanceName: str
         :param LoginSettings: 实例登录设置。通过该参数可以设置实例的登录方式密码、密钥或保持镜像的原始登录设置。默认情况下会随机生成密码，并以站内信方式知会到用户。
         :type LoginSettings: :class:`tencentcloud.cvm.v20170312.models.LoginSettings`
@@ -3164,6 +3210,27 @@ class SharePermission(AbstractModel):
     def _deserialize(self, params):
         self.CreateTime = params.get("CreateTime")
         self.Account = params.get("Account")
+
+
+class SpotMarketOptions(AbstractModel):
+    """竞价相关选项
+
+    """
+
+    def __init__(self):
+        """
+        :param MaxPrice: 竞价出价
+        :type MaxPrice: str
+        :param SpotInstanceType: 竞价请求类型
+        :type SpotInstanceType: str
+        """
+        self.MaxPrice = None
+        self.SpotInstanceType = None
+
+
+    def _deserialize(self, params):
+        self.MaxPrice = params.get("MaxPrice")
+        self.SpotInstanceType = params.get("SpotInstanceType")
 
 
 class StartInstancesRequest(AbstractModel):
@@ -3365,16 +3432,12 @@ class TerminateInstancesRequest(AbstractModel):
         """
         :param InstanceIds: 一个或多个待操作的实例ID。可通过[`DescribeInstances`](https://cloud.tencent.com/document/api/213/15728)接口返回值中的`InstanceId`获取。每次请求批量实例的上限为100。
         :type InstanceIds: list of str
-        :param DryRun: 试运行。
-        :type DryRun: bool
         """
         self.InstanceIds = None
-        self.DryRun = None
 
 
     def _deserialize(self, params):
         self.InstanceIds = params.get("InstanceIds")
-        self.DryRun = params.get("DryRun")
 
 
 class TerminateInstancesResponse(AbstractModel):
@@ -3451,7 +3514,7 @@ class VirtualPrivateCloud(AbstractModel):
         :type SubnetId: str
         :param AsVpcGateway: 是否用作公网网关。公网网关只有在实例拥有公网IP以及处于私有网络下时才能正常使用。取值范围：<br><li>TRUE：表示用作公网网关<br><li>FALSE：表示不用作公网网关<br><br>默认取值：FALSE。
         :type AsVpcGateway: bool
-        :param PrivateIpAddresses: 私有子网ip数组，目前只支持一个ip。在创建实例、修改实例vpc属性操作中可使用此参数。
+        :param PrivateIpAddresses: 私有网络子网 IP 数组，在创建实例、修改实例vpc属性操作中可使用此参数。当前仅批量创建多台实例时支持传入相同子网的多个 IP。
         :type PrivateIpAddresses: list of str
         """
         self.VpcId = None

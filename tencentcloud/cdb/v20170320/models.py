@@ -281,7 +281,7 @@ class CreateDBInstanceHourRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param EngineVersion: MySQL版本，值包括：5.5、5.6和5.7，请使用[查询可创建规格（支持可用区、配置自定义）](https://cloud.tencent.com/document/api/253/6109)接口获取可创建的实例版本
+        :param EngineVersion: MySQL版本，值包括：5.5、5.6和5.7，请使用[获取云数据库可售卖规格](https://cloud.tencent.com/document/api/236/17229)接口获取可创建的实例版本
         :type EngineVersion: str
         :param UniqVpcId: 私有网络ID，如果不传则默认选择基础网络，请使用[查询私有网络列表](/document/api/215/15778)
         :type UniqVpcId: str
@@ -291,11 +291,11 @@ class CreateDBInstanceHourRequest(AbstractModel):
         :type ProjectId: int
         :param GoodsNum: 实例数量，默认值为1, 最小值1，最大值为100
         :type GoodsNum: int
-        :param Memory: 实例内存大小，单位：MB，请使用[查询可创建规格（支持可用区、配置自定义）](https://cloud.tencent.com/document/api/253/6109)接口获取可创建的内存规格
+        :param Memory: 实例内存大小，单位：MB，请使用[获取云数据库可售卖规格](https://cloud.tencent.com/document/api/236/17229)接口获取可创建的内存规格
         :type Memory: int
-        :param Volume: 实例硬盘大小，单位：GB，请使用[查询可创建规格（支持可用区、配置自定义）](https://cloud.tencent.com/document/api/253/6109)接口获取可创建的硬盘范围
+        :param Volume: 实例硬盘大小，单位：GB，请使用[获取云数据库可售卖规格](https://cloud.tencent.com/document/api/236/17229)接口获取可创建的硬盘范围
         :type Volume: int
-        :param Zone: 可用区信息，该参数缺省时，系统会自动选择一个可用区，请使用[查询可创建规格（支持可用区、配置自定义）](https://cloud.tencent.com/document/api/253/6109)接口获取可创建的可用区
+        :param Zone: 可用区信息，该参数缺省时，系统会自动选择一个可用区，请使用[获取云数据库可售卖规格](https://cloud.tencent.com/document/api/236/17229)接口获取可创建的可用区
         :type Zone: str
         :param MasterInstanceId: 实例ID，购买只读实例或者灾备实例时必填，该字段表示只读实例或者灾备实例的主实例ID，请使用[查询实例列表](https://cloud.tencent.com/document/api/236/15872)接口查询云数据库实例ID
         :type MasterInstanceId: str
@@ -414,15 +414,15 @@ class CreateDBInstanceRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Memory: 实例内存大小，单位：MB，请使用[查询可创建规格（支持可用区、配置自定义）](https://cloud.tencent.com/document/api/253/6109)接口获取可创建的内存规格
+        :param Memory: 实例内存大小，单位：MB，请使用[获取云数据库可售卖规格](https://cloud.tencent.com/document/api/236/17229)接口获取可创建的内存规格
         :type Memory: int
-        :param Volume: 实例硬盘大小，单位：GB，请使用[查询可创建规格（支持可用区、配置自定义）](https://cloud.tencent.com/document/api/253/6109)接口获取可创建的硬盘范围
+        :param Volume: 实例硬盘大小，单位：GB，请使用[获取云数据库可售卖规格](https://cloud.tencent.com/document/api/236/17229)接口获取可创建的硬盘范围
         :type Volume: int
         :param Period: 实例时长，单位：月，可选值包括[1,2,3,4,5,6,7,8,9,10,11,12,24,36]
         :type Period: int
         :param GoodsNum: 实例数量，默认值为1, 最小值1，最大值为100
         :type GoodsNum: int
-        :param Zone: 可用区信息，该参数缺省时，系统会自动选择一个可用区，请使用[查询可创建规格（支持可用区、配置自定义）](https://cloud.tencent.com/document/api/253/6109)接口获取可创建的可用区
+        :param Zone: 可用区信息，该参数缺省时，系统会自动选择一个可用区，请使用[获取云数据库可售卖规格](https://cloud.tencent.com/document/api/236/17229)接口获取可创建的可用区
         :type Zone: str
         :param UniqVpcId: 私有网络ID，如果不传则默认选择基础网络，请使用[查询私有网络列表](/document/api/215/15778)
         :type UniqVpcId: str
@@ -436,7 +436,7 @@ class CreateDBInstanceRequest(AbstractModel):
         :type InstanceRole: str
         :param MasterInstanceId: 实例ID，购买只读实例时必填，该字段表示只读实例的主实例ID，请使用[查询实例列表](https://cloud.tencent.com/document/api/236/15872)接口查询云数据库实例ID
         :type MasterInstanceId: str
-        :param EngineVersion: MySQL版本，值包括：5.5、5.6和5.7，请使用[查询可创建规格（支持可用区、配置自定义）](https://cloud.tencent.com/document/api/253/6109)接口获取可创建的实例版本
+        :param EngineVersion: MySQL版本，值包括：5.5、5.6和5.7，请使用[获取云数据库可售卖规格](https://cloud.tencent.com/document/api/236/17229)接口获取可创建的实例版本
         :type EngineVersion: str
         :param Password: 设置root帐号密码，密码规则：8-64个字符，至少包含字母、数字、字符（支持的字符：_+-&=!@#$%^*()）中的两种，购买主实例时可指定该参数，购买只读实例或者灾备实例时指定该参数无意义
         :type Password: str
@@ -1337,6 +1337,42 @@ class DescribeDBSecurityGroupsResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeDBZoneConfigRequest(AbstractModel):
+    """DescribeDBZoneConfig请求参数结构体
+
+    """
+
+
+class DescribeDBZoneConfigResponse(AbstractModel):
+    """DescribeDBZoneConfig返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param TotalCount: 可售卖地域配置数量
+        :type TotalCount: int
+        :param Items: 可售卖地域配置详情
+        :type Items: list of RegionSellConf
+        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.Items = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("Items") is not None:
+            self.Items = []
+            for item in params.get("Items"):
+                obj = RegionSellConf()
+                obj._deserialize(item)
+                self.Items.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeProjectSecurityGroupsRequest(AbstractModel):
     """DescribeProjectSecurityGroups请求参数结构体
 
@@ -2091,7 +2127,7 @@ class ModifyBackupConfigRequest(AbstractModel):
         :type ExpireDays: int
         :param StartTime: 备份时间范围，格式为：02:00-06:00，起点和终点时间目前限制为整点，目前可以选择的范围为： 02:00-06:00，06：00-10：00，10:00-14:00，14:00-18:00，18:00-22:00，22:00-02:00。
         :type StartTime: str
-        :param BackupMethod: 目标备份方法，可选的值：logical - 逻辑冷备，physical - 物理冷备。
+        :param BackupMethod: 目标备份方法，可选的值：logical - 逻辑冷备，physical - 物理冷备；默认备份方法为 逻辑冷备。
         :type BackupMethod: str
         """
         self.InstanceId = None
@@ -2452,6 +2488,44 @@ class Parameter(AbstractModel):
         self.CurrentValue = params.get("CurrentValue")
 
 
+class RegionSellConf(AbstractModel):
+    """地域售卖配置
+
+    """
+
+    def __init__(self):
+        """
+        :param RegionName: 地域中文名称
+        :type RegionName: str
+        :param Area: 所属大区
+        :type Area: str
+        :param IsDefaultRegion: 是否为默认地域
+        :type IsDefaultRegion: int
+        :param Region: 地域名称
+        :type Region: str
+        :param ZonesConf: 可用区售卖配置
+        :type ZonesConf: list of ZoneSellConf
+        """
+        self.RegionName = None
+        self.Area = None
+        self.IsDefaultRegion = None
+        self.Region = None
+        self.ZonesConf = None
+
+
+    def _deserialize(self, params):
+        self.RegionName = params.get("RegionName")
+        self.Area = params.get("Area")
+        self.IsDefaultRegion = params.get("IsDefaultRegion")
+        self.Region = params.get("Region")
+        if params.get("ZonesConf") is not None:
+            self.ZonesConf = []
+            for item in params.get("ZonesConf"):
+                obj = ZoneSellConf()
+                obj._deserialize(item)
+                self.ZonesConf.append(obj)
+
+
 class RoGroup(AbstractModel):
     """只读组参数
 
@@ -2579,6 +2653,101 @@ class SecurityGroup(AbstractModel):
         self.SecurityGroupId = params.get("SecurityGroupId")
         self.SecurityGroupName = params.get("SecurityGroupName")
         self.SecurityGroupRemark = params.get("SecurityGroupRemark")
+
+
+class SellConfig(AbstractModel):
+    """售卖配置详情
+
+    """
+
+    def __init__(self):
+        """
+        :param Device: 设备类型
+        :type Device: str
+        :param Type: 售卖规格描述
+        :type Type: str
+        :param CdbType: 实例类型
+        :type CdbType: str
+        :param Memory: 内存大小，单位为MB
+        :type Memory: int
+        :param Cpu: CPU核心数
+        :type Cpu: int
+        :param VolumeMin: 磁盘最小规格，单位为GB
+        :type VolumeMin: int
+        :param VolumeMax: 磁盘最大规格，单位为GB
+        :type VolumeMax: int
+        :param VolumeStep: 磁盘步长，单位为GB
+        :type VolumeStep: int
+        :param Connection: 链接数
+        :type Connection: int
+        :param Qps: 每秒查询数量
+        :type Qps: int
+        :param Iops: 每秒IO数量
+        :type Iops: int
+        :param Info: 应用场景描述
+        :type Info: str
+        :param Status: 状态值
+        :type Status: int
+        """
+        self.Device = None
+        self.Type = None
+        self.CdbType = None
+        self.Memory = None
+        self.Cpu = None
+        self.VolumeMin = None
+        self.VolumeMax = None
+        self.VolumeStep = None
+        self.Connection = None
+        self.Qps = None
+        self.Iops = None
+        self.Info = None
+        self.Status = None
+
+
+    def _deserialize(self, params):
+        self.Device = params.get("Device")
+        self.Type = params.get("Type")
+        self.CdbType = params.get("CdbType")
+        self.Memory = params.get("Memory")
+        self.Cpu = params.get("Cpu")
+        self.VolumeMin = params.get("VolumeMin")
+        self.VolumeMax = params.get("VolumeMax")
+        self.VolumeStep = params.get("VolumeStep")
+        self.Connection = params.get("Connection")
+        self.Qps = params.get("Qps")
+        self.Iops = params.get("Iops")
+        self.Info = params.get("Info")
+        self.Status = params.get("Status")
+
+
+class SellType(AbstractModel):
+    """售卖实例类型
+
+    """
+
+    def __init__(self):
+        """
+        :param TypeName: 售卖实例名称
+        :type TypeName: str
+        :param EngineVersion: 内核版本号
+        :type EngineVersion: list of str
+        :param Configs: 售卖规格详细配置
+        :type Configs: list of SellConfig
+        """
+        self.TypeName = None
+        self.EngineVersion = None
+        self.Configs = None
+
+
+    def _deserialize(self, params):
+        self.TypeName = params.get("TypeName")
+        self.EngineVersion = params.get("EngineVersion")
+        if params.get("Configs") is not None:
+            self.Configs = []
+            for item in params.get("Configs"):
+                obj = SellConfig()
+                obj._deserialize(item)
+                self.Configs.append(obj)
 
 
 class SlaveInfo(AbstractModel):
@@ -2854,3 +3023,104 @@ class UpgradeDBInstanceResponse(AbstractModel):
         self.DealNames = params.get("DealNames")
         self.AsyncRequestId = params.get("AsyncRequestId")
         self.RequestId = params.get("RequestId")
+
+
+class ZoneConf(AbstractModel):
+    """多可用区信息
+
+    """
+
+    def __init__(self):
+        """
+        :param DeployMode: 可用区部署方式，可能的值为：0-单可用区；1-多可用区
+        :type DeployMode: list of int
+        :param MasterZone: 主实例所在的可用区
+        :type MasterZone: list of str
+        :param SlaveZone: 实例为多可用区部署时，备库1所在的可用区
+        :type SlaveZone: list of str
+        :param BackupZone: 实例为多可用区部署时，备库2所在的可用区
+        :type BackupZone: list of str
+        """
+        self.DeployMode = None
+        self.MasterZone = None
+        self.SlaveZone = None
+        self.BackupZone = None
+
+
+    def _deserialize(self, params):
+        self.DeployMode = params.get("DeployMode")
+        self.MasterZone = params.get("MasterZone")
+        self.SlaveZone = params.get("SlaveZone")
+        self.BackupZone = params.get("BackupZone")
+
+
+class ZoneSellConf(AbstractModel):
+    """可用区售卖配置
+
+    """
+
+    def __init__(self):
+        """
+        :param Status: 可用区状态。可能的返回值为：0-未上线；1-上线；2-开放；3-停售；4-不展示
+        :type Status: int
+        :param ZoneName: 可用区中文名称
+        :type ZoneName: str
+        :param IsCustom: 实例类型是否为自定义类型
+        :type IsCustom: bool
+        :param IsSupportDr: 是否支持灾备
+        :type IsSupportDr: bool
+        :param IsSupportVpc: 是否支持私有网络
+        :type IsSupportVpc: bool
+        :param HourInstanceSaleMaxNum: 小时计费实例最大售卖数量
+        :type HourInstanceSaleMaxNum: int
+        :param IsDefaultZone: 是否为默认可用区
+        :type IsDefaultZone: bool
+        :param IsBm: 是否为黑石区
+        :type IsBm: bool
+        :param PayType: 支持的付费类型。可能的返回值为：0-包年包月；1-小时计费；2-后付费
+        :type PayType: list of str
+        :param ProtectMode: 数据复制类型。0-异步复制；1-半同步复制；2-强同步复制
+        :type ProtectMode: list of str
+        :param Zone: 可用区名称
+        :type Zone: str
+        :param SellType: 售卖实例类型数组
+        :type SellType: list of SellType
+        :param ZoneConf: 多可用区信息
+        :type ZoneConf: :class:`tencentcloud.cdb.v20170320.models.ZoneConf`
+        """
+        self.Status = None
+        self.ZoneName = None
+        self.IsCustom = None
+        self.IsSupportDr = None
+        self.IsSupportVpc = None
+        self.HourInstanceSaleMaxNum = None
+        self.IsDefaultZone = None
+        self.IsBm = None
+        self.PayType = None
+        self.ProtectMode = None
+        self.Zone = None
+        self.SellType = None
+        self.ZoneConf = None
+
+
+    def _deserialize(self, params):
+        self.Status = params.get("Status")
+        self.ZoneName = params.get("ZoneName")
+        self.IsCustom = params.get("IsCustom")
+        self.IsSupportDr = params.get("IsSupportDr")
+        self.IsSupportVpc = params.get("IsSupportVpc")
+        self.HourInstanceSaleMaxNum = params.get("HourInstanceSaleMaxNum")
+        self.IsDefaultZone = params.get("IsDefaultZone")
+        self.IsBm = params.get("IsBm")
+        self.PayType = params.get("PayType")
+        self.ProtectMode = params.get("ProtectMode")
+        self.Zone = params.get("Zone")
+        if params.get("SellType") is not None:
+            self.SellType = []
+            for item in params.get("SellType"):
+                obj = SellType()
+                obj._deserialize(item)
+                self.SellType.append(obj)
+        if params.get("ZoneConf") is not None:
+            self.ZoneConf = ZoneConf()
+            self.ZoneConf._deserialize(params.get("ZoneConf"))

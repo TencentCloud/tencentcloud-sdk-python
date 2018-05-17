@@ -17,28 +17,28 @@ import json
 
 from tencentcloud.common.exception.tencent_cloud_sdk_exception import TencentCloudSDKException
 from tencentcloud.common.abstract_client import AbstractClient
-from tencentcloud.tmt.v20180321 import models
+from tencentcloud.es.v20180416 import models
 
 
-class TmtClient(AbstractClient):
-    _apiVersion = '2018-03-21'
-    _endpoint = 'tmt.tencentcloudapi.com'
+class EsClient(AbstractClient):
+    _apiVersion = '2018-04-16'
+    _endpoint = 'es.tencentcloudapi.com'
 
 
-    def ImageTranslate(self, request):
-        """提供中文到英文、英文到中文两种语言的图片翻译服务，可自动识别图片中的文本内容并翻译成目标语言
+    def CreateInstance(self, request):
+        """创建指定规格的ES集群实例
 
-        :param request: 调用ImageTranslate所需参数的结构体。
-        :type request: :class:`tencentcloud.tmt.v20180321.models.ImageTranslateRequest`
-        :rtype: :class:`tencentcloud.tmt.v20180321.models.ImageTranslateResponse`
+        :param request: 调用CreateInstance所需参数的结构体。
+        :type request: :class:`tencentcloud.es.v20180416.models.CreateInstanceRequest`
+        :rtype: :class:`tencentcloud.es.v20180416.models.CreateInstanceResponse`
 
         """
         try:
             params = request._serialize()
-            body = self.call("ImageTranslate", params)
+            body = self.call("CreateInstance", params)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.ImageTranslateResponse()
+                model = models.CreateInstanceResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -53,20 +53,20 @@ class TmtClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def LanguageDetect(self, request):
-        """可自动识别文本内容的语言种类，轻量高效，无需额外实现判断方式，使面向客户的服务体验更佳。
+    def DeleteInstance(self, request):
+        """销毁集群实例
 
-        :param request: 调用LanguageDetect所需参数的结构体。
-        :type request: :class:`tencentcloud.tmt.v20180321.models.LanguageDetectRequest`
-        :rtype: :class:`tencentcloud.tmt.v20180321.models.LanguageDetectResponse`
+        :param request: 调用DeleteInstance所需参数的结构体。
+        :type request: :class:`tencentcloud.es.v20180416.models.DeleteInstanceRequest`
+        :rtype: :class:`tencentcloud.es.v20180416.models.DeleteInstanceResponse`
 
         """
         try:
             params = request._serialize()
-            body = self.call("LanguageDetect", params)
+            body = self.call("DeleteInstance", params)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.LanguageDetectResponse()
+                model = models.DeleteInstanceResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -81,21 +81,20 @@ class TmtClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def SpeechTranslate(self, request):
-        """本接口提供音频内文字识别 + 翻译功能，目前开放中到英的语音翻译服务。
-        待识别和翻译的音频文件可以是 pcm、mp3、amr和speex 格式，音频内语音清晰，采用流式传输和翻译的方式。
+    def DescribeInstances(self, request):
+        """查询用户该地域下符合条件的所有实例
 
-        :param request: 调用SpeechTranslate所需参数的结构体。
-        :type request: :class:`tencentcloud.tmt.v20180321.models.SpeechTranslateRequest`
-        :rtype: :class:`tencentcloud.tmt.v20180321.models.SpeechTranslateResponse`
+        :param request: 调用DescribeInstances所需参数的结构体。
+        :type request: :class:`tencentcloud.es.v20180416.models.DescribeInstancesRequest`
+        :rtype: :class:`tencentcloud.es.v20180416.models.DescribeInstancesResponse`
 
         """
         try:
             params = request._serialize()
-            body = self.call("SpeechTranslate", params)
+            body = self.call("DescribeInstances", params)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.SpeechTranslateResponse()
+                model = models.DescribeInstancesResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -110,20 +109,48 @@ class TmtClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def TextTranslate(self, request):
-        """提供中文到英文、英文到中文的等多种语言的文本内容翻译服务， 经过大数据语料库、多种解码算法、翻译引擎深度优化，在新闻文章、生活口语等不同语言场景中都有深厚积累，翻译结果专业评价处于行业顶级水平。
+    def RestartInstance(self, request):
+        """重启ES集群实例(用于系统版本更新等操作)
 
-        :param request: 调用TextTranslate所需参数的结构体。
-        :type request: :class:`tencentcloud.tmt.v20180321.models.TextTranslateRequest`
-        :rtype: :class:`tencentcloud.tmt.v20180321.models.TextTranslateResponse`
+        :param request: 调用RestartInstance所需参数的结构体。
+        :type request: :class:`tencentcloud.es.v20180416.models.RestartInstanceRequest`
+        :rtype: :class:`tencentcloud.es.v20180416.models.RestartInstanceResponse`
 
         """
         try:
             params = request._serialize()
-            body = self.call("TextTranslate", params)
+            body = self.call("RestartInstance", params)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.TextTranslateResponse()
+                model = models.RestartInstanceResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise e
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def UpdateInstance(self, request):
+        """对已存在的集群进行扩缩容，修改实例名称，修改配置，重置密码， 添加Kibana黑白名单等操作
+
+        :param request: 调用UpdateInstance所需参数的结构体。
+        :type request: :class:`tencentcloud.es.v20180416.models.UpdateInstanceRequest`
+        :rtype: :class:`tencentcloud.es.v20180416.models.UpdateInstanceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("UpdateInstance", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.UpdateInstanceResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
