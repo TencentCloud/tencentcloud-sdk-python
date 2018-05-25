@@ -134,6 +134,12 @@ class QcloudApi(object):
         elif module == 'sts':
             from .modules.sts import Sts
             service = Sts(config)
+        elif module == 'ccr':
+            from .modules.ccr import Ccr
+            service = Ccr(config)
+        elif module == 'dc':
+            from .modules.dc import Dc
+            service = Dc(config)
         else:
             raise ValueError('module not exists')
 

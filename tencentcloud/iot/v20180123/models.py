@@ -101,19 +101,22 @@ class AddProductRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Name: 产品名称
+        :param Name: 产品名称，同一区域产品名称需唯一，支持中文、英文字母、中划线和下划线，长度不超过31个字符，中文占两个字符
         :type Name: str
         :param Description: 产品描述
         :type Description: str
-        :param AuthType: 产品鉴权类型（0：直连，1：动态令牌），推荐使用动态令牌
+        :param AuthType: 鉴权模式（1：动态令牌，推荐使用动态令牌）
         :type AuthType: int
         :param DataTemplate: 数据模版（json数组）
         :type DataTemplate: list of str
+        :param DataProtocol: 数据协议（native表示自定义，template表示数据模板，默认值为template）
+        :type DataProtocol: str
         """
         self.Name = None
         self.Description = None
         self.AuthType = None
         self.DataTemplate = None
+        self.DataProtocol = None
 
 
     def _deserialize(self, params):
@@ -121,6 +124,7 @@ class AddProductRequest(AbstractModel):
         self.Description = params.get("Description")
         self.AuthType = params.get("AuthType")
         self.DataTemplate = params.get("DataTemplate")
+        self.DataProtocol = params.get("DataProtocol")
 
 
 class AddProductResponse(AbstractModel):
@@ -611,7 +615,7 @@ class GetDataHistoryRequest(AbstractModel):
         """
         :param ProductId: 产品Id
         :type ProductId: str
-        :param DeviceNames: 设备名称列表
+        :param DeviceNames: 设备名称列表，允许最多一次100台
         :type DeviceNames: list of str
         :param StartTime: 查询开始时间
         :type StartTime: str
@@ -726,7 +730,7 @@ class GetDeviceLogRequest(AbstractModel):
         """
         :param ProductId: 产品Id
         :type ProductId: str
-        :param DeviceNames: 设备名称列表
+        :param DeviceNames: 设备名称列表，最大支持100台
         :type DeviceNames: list of str
         :param StartTime: 查询开始时间
         :type StartTime: str
@@ -738,6 +742,8 @@ class GetDeviceLogRequest(AbstractModel):
         :type Order: str
         :param ScrollId: 查询游标
         :type ScrollId: str
+        :param Type: 日志类型（comm/status）
+        :type Type: str
         """
         self.ProductId = None
         self.DeviceNames = None
@@ -746,6 +752,7 @@ class GetDeviceLogRequest(AbstractModel):
         self.Size = None
         self.Order = None
         self.ScrollId = None
+        self.Type = None
 
 
     def _deserialize(self, params):
@@ -756,6 +763,7 @@ class GetDeviceLogRequest(AbstractModel):
         self.Size = params.get("Size")
         self.Order = params.get("Order")
         self.ScrollId = params.get("ScrollId")
+        self.Type = params.get("Type")
 
 
 class GetDeviceLogResponse(AbstractModel):

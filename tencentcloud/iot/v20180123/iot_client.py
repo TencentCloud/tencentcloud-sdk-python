@@ -82,7 +82,7 @@ class IotClient(AbstractClient):
 
 
     def AddProduct(self, request):
-        """为用户提供创建某型号物联网产品的能力。
+        """本接口(AddProduct)用于创建、定义某款硬件产品。
 
         :param request: 调用AddProduct所需参数的结构体。
         :type request: :class:`tencentcloud.iot.v20180123.models.AddProductRequest`
@@ -138,7 +138,7 @@ class IotClient(AbstractClient):
 
 
     def AddTopic(self, request):
-        """新增Topic
+        """新增Topic，用于设备或应用发布消息至该Topic或订阅该Topic的消息。
 
         :param request: 调用AddTopic所需参数的结构体。
         :type request: :class:`tencentcloud.iot.v20180123.models.AddTopicRequest`
@@ -362,7 +362,7 @@ class IotClient(AbstractClient):
 
 
     def GetDataHistory(self, request):
-        """获取数据历史
+        """批量获取设备某一段时间范围的设备上报数据。该接口只允许使用数据模板类型的产品通过REST API方式同步设备上报数据至用户的应用系统。
 
         :param request: 调用GetDataHistory所需参数的结构体。
         :type request: :class:`tencentcloud.iot.v20180123.models.GetDataHistoryRequest`
@@ -418,7 +418,7 @@ class IotClient(AbstractClient):
 
 
     def GetDeviceData(self, request):
-        """获取设备数据
+        """获取某个设备当前上报到云端的数据，该接口适用于使用数据模板协议的产品。
 
         :param request: 调用GetDeviceData所需参数的结构体。
         :type request: :class:`tencentcloud.iot.v20180123.models.GetDeviceDataRequest`
@@ -446,7 +446,7 @@ class IotClient(AbstractClient):
 
 
     def GetDeviceLog(self, request):
-        """获取设备日志
+        """批量获取设备与云端的详细通信日志，该接口适用于使用数据模板类型的产品。
 
         :param request: 调用GetDeviceLog所需参数的结构体。
         :type request: :class:`tencentcloud.iot.v20180123.models.GetDeviceLogRequest`
@@ -726,7 +726,7 @@ class IotClient(AbstractClient):
 
 
     def IssueDeviceControl(self, request):
-        """提供下发控制指令到指定设备的能力。
+        """提供下发控制指令到指定设备的能力，该接口适用于使用数据模板类型的产品。
 
         :param request: 调用IssueDeviceControl所需参数的结构体。
         :type request: :class:`tencentcloud.iot.v20180123.models.IssueDeviceControlRequest`
@@ -754,7 +754,7 @@ class IotClient(AbstractClient):
 
 
     def PublishMsg(self, request):
-        """提供向指定的Topic发布消息的能力。
+        """提供向指定的Topic发布消息的能力，常用于向设备下发控制指令；该接口只适用于数据协议为“自定义”类型的产品，使用数据模板类型的产品需使用IssueDeviceControl接口
 
         :param request: 调用PublishMsg所需参数的结构体。
         :type request: :class:`tencentcloud.iot.v20180123.models.PublishMsgRequest`
@@ -782,7 +782,7 @@ class IotClient(AbstractClient):
 
 
     def ResetDevice(self, request):
-        """重置设备
+        """重置设备操作，将会为设备生成新的证书及清空最新数据，需谨慎操作。
 
         :param request: 调用ResetDevice所需参数的结构体。
         :type request: :class:`tencentcloud.iot.v20180123.models.ResetDeviceRequest`

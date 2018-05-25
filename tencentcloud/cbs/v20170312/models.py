@@ -63,7 +63,7 @@ class AttachDisksRequest(AbstractModel):
         """
         :param DiskIds: 将要被挂载的弹性云盘ID。通过[DescribeDisks](/document/product/362/16315)接口查询。单次最多可挂载10块弹性云盘。
         :type DiskIds: list of str
-        :param InstanceId: 云服务器实例ID。云盘将被挂载到此云服务器上，通过[DescribeInstances](/document/api/213/9388)接口查询。
+        :param InstanceId: 云服务器实例ID。云盘将被挂载到此云服务器上，通过[DescribeInstances](/document/product/213/15728)接口查询。
         :type InstanceId: str
         """
         self.DiskIds = None
@@ -259,21 +259,21 @@ class DescribeDiskConfigQuotaRequest(AbstractModel):
         :type Zones: list of str
         :param DiskChargeType: 付费模式。取值范围：<br><li>PREPAID：预付费<br><li>POSTPAID_BY_HOUR：后付费。
         :type DiskChargeType: str
-        :param DiskType: 硬盘介质类型。取值范围：<br><li>CLOUD_BASIC：表示普通云硬盘<br><li>CLOUD_PREMIUM：表示高性能云硬盘<br><li>CLOUD_SSD：表示SSD云硬盘。
-        :type DiskType: str
+        :param DiskTypes: 硬盘介质类型。取值范围：<br><li>CLOUD_BASIC：表示普通云硬盘<br><li>CLOUD_PREMIUM：表示高性能云硬盘<br><li>CLOUD_SSD：表示SSD云硬盘。
+        :type DiskTypes: list of str
         :param DiskUsage: 系统盘或数据盘。取值范围：<br><li>SYSTEM_DISK：表示系统盘<br><li>DATA_DISK：表示数据盘。
         :type DiskUsage: str
         :param InstanceFamilies: 按照实例机型系列过滤。实例机型系列形如：S1、I1、M1等。详见[实例类型](https://cloud.tencent.com/document/product/213/11518)
         :type InstanceFamilies: list of str
-        :param CPU: 子机CPU核数。
+        :param CPU: 实例CPU核数。
         :type CPU: int
-        :param Memory: 子机内存大小。
+        :param Memory: 实例内存大小。
         :type Memory: int
         """
         self.InquiryType = None
         self.Zones = None
         self.DiskChargeType = None
-        self.DiskType = None
+        self.DiskTypes = None
         self.DiskUsage = None
         self.InstanceFamilies = None
         self.CPU = None
@@ -284,7 +284,7 @@ class DescribeDiskConfigQuotaRequest(AbstractModel):
         self.InquiryType = params.get("InquiryType")
         self.Zones = params.get("Zones")
         self.DiskChargeType = params.get("DiskChargeType")
-        self.DiskType = params.get("DiskType")
+        self.DiskTypes = params.get("DiskTypes")
         self.DiskUsage = params.get("DiskUsage")
         self.InstanceFamilies = params.get("InstanceFamilies")
         self.CPU = params.get("CPU")
@@ -324,17 +324,17 @@ class DescribeDisksRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param DiskIds: 按照一个或者多个云硬盘ID查询。云硬盘ID形如：`disk-11112222`，此参数的具体格式可参考API[简介](/document/362/15633)的ids.N一节）。参数不支持同时指定`DiskIds`和`Filters`。
+        :param DiskIds: 按照一个或者多个云硬盘ID查询。云硬盘ID形如：`disk-11112222`，此参数的具体格式可参考API[简介](/document/product/362/15633)的ids.N一节）。参数不支持同时指定`DiskIds`和`Filters`。
         :type DiskIds: list of str
-        :param Filters: 过滤条件。参数不支持同时指定`DiskIds`和`Filters`。<br><li>disk-usage - Array of String - 是否必填：否 -（过滤条件）按云盘类型过滤。 (SYSTEM_DISK：表示系统盘 | DATA_DISK：表示数据盘)<br><li>disk-charge-type - Array of String - 是否必填：否 -（过滤条件）按照云硬盘计费模式过滤。 (PREPAID：表示预付费，即包年包月 | POSTPAID_BY_HOUR：表示后付费，即按量计费。)<br><li>portable - Array of Bool - 是否必填：否 -（过滤条件）按是否为弹性云盘过滤。 (TRUE：表示弹性云盘 | FALSE：表示非弹性云盘。)<br><li>project-id - Array of Integer - 是否必填：否 -（过滤条件）按云硬盘所属项目ID过滤。<br><li>disk-id - Array of String - 是否必填：否 -（过滤条件）按照云硬盘ID过滤。云盘ID形如：`disk-11112222`。<br><li>disk-name - Array of String - 是否必填：否 -（过滤条件）按照云盘名称过滤。<br><li>disk-type - Array of String - 是否必填：否 -（过滤条件）按照云盘介质类型过滤。(CLOUD_BASIC：表示普通云硬盘 | CLOUD_PREMIUM：表示高性能云硬盘。| CLOUD_SSD：SSD表示SSD云硬盘。)<br><li>disk-state - Array of String - 是否必填：否 -（过滤条件）按照云盘介质类型过滤。(UNATTACHED：未挂载 | ATTACHING：挂载中 | ATTACHED：已挂载 | DETACHING：解挂中 | EXPANDING：扩容中 | ROLLBACKING：回滚中 | TORECYCLE：待回收。)<br><li>instance-id - Array of String - 是否必填：否 -（过滤条件）按照云盘挂载的云主机实例ID过滤。可根据此参数查询挂载在指定云主机下的云硬盘。<br><li>zone - Array of String - 是否必填：否 -（过滤条件）按照[可用区](/document/api/213/9452#zone)过滤。<br><li>instance-ip-address - Array of String - 是否必填：否 -（过滤条件）按云盘所挂载云主机的内网或外网IP过滤。<br><li>instance-name - Array of String - 是否必填：否 -（过滤条件）按云盘所挂载的实例名称过滤。
+        :param Filters: 过滤条件。参数不支持同时指定`DiskIds`和`Filters`。<br><li>disk-usage - Array of String - 是否必填：否 -（过滤条件）按云盘类型过滤。 (SYSTEM_DISK：表示系统盘 | DATA_DISK：表示数据盘)<br><li>disk-charge-type - Array of String - 是否必填：否 -（过滤条件）按照云硬盘计费模式过滤。 (PREPAID：表示预付费，即包年包月 | POSTPAID_BY_HOUR：表示后付费，即按量计费。)<br><li>portable - Array of Bool - 是否必填：否 -（过滤条件）按是否为弹性云盘过滤。 (TRUE：表示弹性云盘 | FALSE：表示非弹性云盘。)<br><li>project-id - Array of Integer - 是否必填：否 -（过滤条件）按云硬盘所属项目ID过滤。<br><li>disk-id - Array of String - 是否必填：否 -（过滤条件）按照云硬盘ID过滤。云盘ID形如：`disk-11112222`。<br><li>disk-name - Array of String - 是否必填：否 -（过滤条件）按照云盘名称过滤。<br><li>disk-type - Array of String - 是否必填：否 -（过滤条件）按照云盘介质类型过滤。(CLOUD_BASIC：表示普通云硬盘 | CLOUD_PREMIUM：表示高性能云硬盘。| CLOUD_SSD：SSD表示SSD云硬盘。)<br><li>disk-state - Array of String - 是否必填：否 -（过滤条件）按照云盘状态过滤。(UNATTACHED：未挂载 | ATTACHING：挂载中 | ATTACHED：已挂载 | DETACHING：解挂中 | EXPANDING：扩容中 | ROLLBACKING：回滚中 | TORECYCLE：待回收。)<br><li>instance-id - Array of String - 是否必填：否 -（过滤条件）按照云盘挂载的云主机实例ID过滤。可根据此参数查询挂载在指定云主机下的云硬盘。<br><li>zone - Array of String - 是否必填：否 -（过滤条件）按照[可用区](/document/api/213/9452#zone)过滤。<br><li>instance-ip-address - Array of String - 是否必填：否 -（过滤条件）按云盘所挂载云主机的内网或外网IP过滤。<br><li>instance-name - Array of String - 是否必填：否 -（过滤条件）按云盘所挂载的实例名称过滤。
         :type Filters: list of Filter
-        :param Offset: 偏移量，默认为0。关于`Offset`的更进一步介绍请参考API[简介](/document/362/15633)中的相关小节。
+        :param Offset: 偏移量，默认为0。关于`Offset`的更进一步介绍请参考API[简介](/document/product/362/15633)中的相关小节。
         :type Offset: int
-        :param Limit: 返回数量，默认为20，最大值为100。关于`Limit`的更进一步介绍请参考 API [简介](/document/362/15633)中的相关小节。
+        :param Limit: 返回数量，默认为20，最大值为100。关于`Limit`的更进一步介绍请参考 API [简介](/document/product/362/15633)中的相关小节。
         :type Limit: int
         :param Order: 输出云盘列表的排列顺序。取值范围：<br><li>ASC：升序排列<br><li>DESC：降序排列。
         :type Order: str
-        :param OrderField: 云盘列表排序的依据字段。取值范围：<br><li>CREATETIME：依据云盘的创建时间排序<br><li>DEADLINE：依据云盘的到期时间排序<br>默认按云盘创建时间排序。
+        :param OrderField: 云盘列表排序的依据字段。取值范围：<br><li>CREATE_TIME：依据云盘的创建时间排序<br><li>DEADLINE：依据云盘的到期时间排序<br>默认按云盘创建时间排序。
         :type OrderField: str
         :param ReturnBindAutoSnapshotPolicy: 云盘详情中是否需要返回云盘绑定的定期快照策略ID，TRUE表示需要返回，FALSE表示不返回。
         :type ReturnBindAutoSnapshotPolicy: bool
@@ -400,7 +400,7 @@ class DescribeInstancesDiskNumRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param InstanceIds: 云服务器实例ID，通过[DescribeInstances](/document/api/213/9388)接口查询。
+        :param InstanceIds: 云服务器实例ID，通过[DescribeInstances](/document/product/213/15728)接口查询。
         :type InstanceIds: list of str
         """
         self.InstanceIds = None
@@ -446,13 +446,13 @@ class DescribeSnapshotsRequest(AbstractModel):
         :type SnapshotIds: list of str
         :param Filters: 过滤条件。参数不支持同时指定`SnapshotIds`和`Filters`。<br><li>snapshot-id - Array of String - 是否必填：否 -（过滤条件）按照快照的ID过滤。快照ID形如：`snap-11112222`。<br><li>snapshot-name - Array of String - 是否必填：否 -（过滤条件）按照快照名称过滤。<br><li>snapshot-state - Array of String - 是否必填：否 -（过滤条件）按照快照状态过滤。 (NORMAL：正常 | CREATING：创建中 | ROLLBACKING：回滚中。)<br><li>disk-usage - Array of String - 是否必填：否 -（过滤条件）按创建快照的云盘类型过滤。 (SYSTEM_DISK：代表系统盘 | DATA_DISK：代表数据盘。)<br><li>project-id  - Array of String - 是否必填：否 -（过滤条件）按云硬盘所属项目ID过滤。<br><li>disk-id  - Array of String - 是否必填：否 -（过滤条件）按照创建快照的云硬盘ID过滤。<br><li>zone - Array of String - 是否必填：否 -（过滤条件）按照[可用区](/document/api/213/9452#zone)过滤。
         :type Filters: list of Filter
-        :param Offset: 偏移量，默认为0。关于`Offset`的更进一步介绍请参考API[简介](/document/362/15633)中的相关小节。
+        :param Offset: 偏移量，默认为0。关于`Offset`的更进一步介绍请参考API[简介](/document/product/362/15633)中的相关小节。
         :type Offset: int
-        :param Limit: 返回数量，默认为20，最大值为100。关于`Limit`的更进一步介绍请参考 API [简介](/document/362/15633)中的相关小节。
+        :param Limit: 返回数量，默认为20，最大值为100。关于`Limit`的更进一步介绍请参考 API [简介](/document/product/362/15633)中的相关小节。
         :type Limit: int
         :param Order: 输出云盘列表的排列顺序。取值范围：<br><li>ASC：升序排列<br><li>DESC：降序排列。
         :type Order: str
-        :param OrderField: 快照列表排序的依据字段。取值范围：<br><li>CREATETIME：依据快照的创建时间排序<br>默认按创建时间排序。
+        :param OrderField: 快照列表排序的依据字段。取值范围：<br><li>CREATE_TIME：依据快照的创建时间排序<br>默认按创建时间排序。
         :type OrderField: str
         """
         self.SnapshotIds = None
@@ -554,7 +554,7 @@ class Disk(AbstractModel):
         :type DiskUsage: str
         :param DiskChargeType: 付费模式。取值范围：<br><li>PREPAID：预付费，即包年包月<br><li>POSTPAID_BY_HOUR：后付费，即按量计费。
         :type DiskChargeType: str
-        :param Portable: 是否为弹性云盘，false表示非弹性云盘，true表示弹性云盘。仅支持非弹性云盘修改为弹性云盘。
+        :param Portable: 是否为弹性云盘，false表示非弹性云盘，true表示弹性云盘。
         :type Portable: bool
         :param Placement: 云硬盘所在的位置。
         :type Placement: :class:`tencentcloud.cbs.v20170312.models.Placement`
@@ -566,9 +566,9 @@ class Disk(AbstractModel):
         :type DiskSize: int
         :param DiskState: 云盘状态。取值范围：<br><li>UNATTACHED：未挂载<br><li>ATTACHING：挂载中<br><li>ATTACHED：已挂载<br><li>DETACHING：解挂中<br><li>EXPANDING：扩容中<br><li>ROLLBACKING：回滚中。
         :type DiskState: str
-        :param DiskType: 云盘介质类型。取值范围：<br><li>CLOUD_BASIC：表示普通云硬<br><li>CLOUD_PREMIUM：表示高效云硬盘<br><li>CLOUD_SSD：SSD表示SSD云硬盘。
+        :param DiskType: 云盘介质类型。取值范围：<br><li>CLOUD_BASIC：表示普通云硬<br><li>CLOUD_PREMIUM：表示高性能云硬盘<br><li>CLOUD_SSD：SSD表示SSD云硬盘。
         :type DiskType: str
-        :param Attached: 云盘是否挂载到云主机上。取值范围：<br><li>false表示未挂载<br><li>true表示已挂载。
+        :param Attached: 云盘是否挂载到云主机上。取值范围：<br><li>false:表示未挂载<br><li>true:表示已挂载。
         :type Attached: bool
         :param InstanceId: 云硬盘挂载的云主机ID。
         :type InstanceId: str
@@ -576,17 +576,17 @@ class Disk(AbstractModel):
         :type CreateTime: str
         :param DeadlineTime: 云硬盘的到期时间。
         :type DeadlineTime: str
-        :param Rollbacking: 云盘是否处于快照回滚状态。取值范围：<br><li>false表示不处于快照回滚状态<br><li>true表示处于快照回滚状态。
+        :param Rollbacking: 云盘是否处于快照回滚状态。取值范围：<br><li>false:表示不处于快照回滚状态<br><li>true:表示处于快照回滚状态。
         :type Rollbacking: bool
         :param RollbackPercent: 云盘快照回滚的进度。
         :type RollbackPercent: int
-        :param Encrypt: 云盘是否为加密盘。取值范围：<br><li>false表示非加密盘<br><li>true表示加密盘。
+        :param Encrypt: 云盘是否为加密盘。取值范围：<br><li>false:表示非加密盘<br><li>true:表示加密盘。
         :type Encrypt: bool
         :param AutoRenewFlagError: 云盘已挂载到子机，且子机与云盘都是包年包月。<br><li>true：子机设置了自动续费标识，但云盘未设置<br><li>false：云盘自动续费标识正常。
         :type AutoRenewFlagError: bool
         :param RenewFlag: 自动续费标识。取值范围：<br><li>NOTIFY_AND_AUTO_RENEW：通知过期且自动续费<br><li>NOTIFY_AND_MANUAL_RENEW：通知过期不自动续费<br><li>DISABLE_NOTIFY_AND_MANUAL_RENEW：不通知过期不自动续费。
         :type RenewFlag: str
-        :param DeadlineError: 云盘已挂载到子机，且子机与云盘都是包年包月。<br><li>true:云盘到期时间早于子机。false：云盘到期时间晚于子机。
+        :param DeadlineError: 在云盘已挂载到实例，且实例与云盘都是包年包月的条件下，此字段才有意义。<br><li>true:云盘到期时间早于实例。<br><li>false：云盘到期时间晚于实例。
         :type DeadlineError: bool
         :param IsReturnable: 判断预付费的云盘是否支持主动退还。<br><li>true:支持主动退还<br><li>false:不支持主动退还。
         :type IsReturnable: bool
@@ -657,7 +657,7 @@ class DiskChargePrepaid(AbstractModel):
         """
         :param Period: 购买云盘的时长，默认单位为月，此时，取值范围：1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 24, 36。
         :type Period: int
-        :param RenewFlag: 自动续费标识。取值范围：<br><li>NOTIFY_AND_AUTO_RENEW：通知过期且自动续费<br><li>NOTIFY_AND_MANUAL_RENEW：通知过期不自动续费<br><li>DISABLE_NOTIFY_AND_MANUAL_RENEW：不通知过期不自动续费<br><br>默认取值：NOTIFY_AND_AUTO_RENEW。若该参数指定为NOTIFY_AND_AUTO_RENEW，在账户余额充足的情况下，云盘到期后将按月自动续费。
+        :param RenewFlag: 自动续费标识。取值范围：<br><li>NOTIFY_AND_AUTO_RENEW：通知过期且自动续费<br><li>NOTIFY_AND_MANUAL_RENEW：通知过期不自动续费<br><li>DISABLE_NOTIFY_AND_MANUAL_RENEW：不通知过期不自动续费<br><br>默认取值：NOTIFY_AND_MANUAL_RENEW：通知过期不自动续费。
         :type RenewFlag: str
         :param CurInstanceDeadline: 需要将云盘的到期时间与挂载的子机对齐时，可传入该参数。该参数表示子机当前的到期时间，此时Period如果传入，则表示子机需要续费的时长，云盘会自动按对齐到子机续费后的到期时间续费。
         :type CurInstanceDeadline: str
@@ -750,9 +750,9 @@ class InquiryPriceCreateDisksRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param DiskType: 云硬盘类型。取值范围：<br><li>普通云硬盘：CLOUD_BASIC<br><li>高效云盘：CLOUD_PREMIUM<br><li>SSD云硬盘：CLOUD_SSD。
+        :param DiskType: 云硬盘类型。取值范围：<br><li>普通云硬盘：CLOUD_BASIC<br><li>高性能云硬盘：CLOUD_PREMIUM<br><li>SSD云硬盘：CLOUD_SSD。
         :type DiskType: str
-        :param DiskSize: 云硬盘大小，单位为GB。普通云硬盘最小10GB，SSD云硬盘最小100GB，步长均为10GB。
+        :param DiskSize: 云盘大小，取值范围： 普通云硬盘:10GB ~ 4000G；高性能云硬盘:50GB ~ 4000GB；SSD云硬盘:100GB ~ 4000GB，步长均为10GB。
         :type DiskSize: int
         :param DiskChargeType: 付费模式，目前只有预付费，即只能取值为PREPAID。
         :type DiskChargeType: str
@@ -871,7 +871,7 @@ class InquiryPriceResizeDiskRequest(AbstractModel):
         """
         :param DiskId: 云硬盘ID， 通过[DescribeDisks](/document/product/362/16315)接口查询。
         :type DiskId: str
-        :param DiskSize: 云硬盘扩容后的大小，单位为GB，不得小于当前云硬盘大小。
+        :param DiskSize: 云硬盘扩容后的大小，单位为GB，不得小于当前云硬盘大小。取值范围： 普通云硬盘:10GB ~ 4000G；高性能云硬盘:50GB ~ 4000GB；SSD云硬盘:100GB ~ 4000GB，步长均为10GB。
         :type DiskSize: int
         :param ProjectId: 云盘所属项目ID。 如传入则仅用于鉴权。
         :type ProjectId: int
@@ -1043,7 +1043,7 @@ class Placement(AbstractModel):
 
     def __init__(self):
         """
-        :param Zone: 实例所属的[可用区](/document/api/213/9452#zone)ID。该参数也可以通过调用  [DescribeZones](/document/api/213/9455) 的返回值中的Zone字段来获取。
+        :param Zone: 实例所属的[可用区](/document/api/213/9452#zone)ID。该参数也可以通过调用  [DescribeZones](/document/product/213/15707) 的返回值中的Zone字段来获取。
         :type Zone: str
         :param ProjectId: 实例所属项目ID。该参数可以通过调用 [DescribeProject](/document/api/378/4400) 的返回值中的 projectId 字段来获取。不填为默认项目。
         :type ProjectId: int
@@ -1127,7 +1127,7 @@ class ResizeDiskRequest(AbstractModel):
         """
         :param DiskId: 云硬盘ID， 通过[DescribeDisks](/document/product/362/16315)接口查询。
         :type DiskId: str
-        :param DiskSize: 扩容后的磁盘大小。必须大于当前值，最大值为4000G，步长为10G。
+        :param DiskSize: 云硬盘扩容后的大小，单位为GB，必须大于当前云硬盘大小。取值范围： 普通云硬盘:10GB ~ 4000G；高性能云硬盘:50GB ~ 4000GB；SSD云硬盘:100GB ~ 4000GB，步长均为10GB。
         :type DiskSize: int
         """
         self.DiskId = None
@@ -1187,6 +1187,10 @@ class Snapshot(AbstractModel):
         :type Encrypt: bool
         :param IsPermanent: 是否为永久快照。取值范围：<br><li>true：永久快照<br><li>false：非永久快照。
         :type IsPermanent: bool
+        :param CopyingToRegions: 快照正在跨地域复制的目的地域，默认取值为[]。
+        :type CopyingToRegions: list of str
+        :param CopyFromRemote: 是否为跨地域复制的快照。取值范围：<br><li>true：表示为跨地域复制的快照。<br><li>false:本地域的快照。
+        :type CopyFromRemote: bool
         """
         self.SnapshotId = None
         self.Placement = None
@@ -1200,6 +1204,8 @@ class Snapshot(AbstractModel):
         self.DeadlineTime = None
         self.Encrypt = None
         self.IsPermanent = None
+        self.CopyingToRegions = None
+        self.CopyFromRemote = None
 
 
     def _deserialize(self, params):
@@ -1217,6 +1223,8 @@ class Snapshot(AbstractModel):
         self.DeadlineTime = params.get("DeadlineTime")
         self.Encrypt = params.get("Encrypt")
         self.IsPermanent = params.get("IsPermanent")
+        self.CopyingToRegions = params.get("CopyingToRegions")
+        self.CopyFromRemote = params.get("CopyFromRemote")
 
 
 class TerminateDisksRequest(AbstractModel):

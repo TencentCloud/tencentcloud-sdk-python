@@ -327,6 +327,10 @@ class ComputeNode(AbstractModel):
         :type TaskInstanceNumAvailable: int
         :param AgentVersion: Batch Agent 版本
         :type AgentVersion: str
+        :param PrivateIpAddresses: 实例内网IP
+        :type PrivateIpAddresses: list of str
+        :param PublicIpAddresses: 实例公网IP
+        :type PublicIpAddresses: list of str
         """
         self.ComputeNodeId = None
         self.ComputeNodeInstanceId = None
@@ -336,6 +340,8 @@ class ComputeNode(AbstractModel):
         self.ResourceCreatedTime = None
         self.TaskInstanceNumAvailable = None
         self.AgentVersion = None
+        self.PrivateIpAddresses = None
+        self.PublicIpAddresses = None
 
 
     def _deserialize(self, params):
@@ -347,6 +353,8 @@ class ComputeNode(AbstractModel):
         self.ResourceCreatedTime = params.get("ResourceCreatedTime")
         self.TaskInstanceNumAvailable = params.get("TaskInstanceNumAvailable")
         self.AgentVersion = params.get("AgentVersion")
+        self.PrivateIpAddresses = params.get("PrivateIpAddresses")
+        self.PublicIpAddresses = params.get("PublicIpAddresses")
 
 
 class ComputeNodeMetrics(AbstractModel):
@@ -1093,6 +1101,8 @@ class DescribeJobResponse(AbstractModel):
         :type TaskMetrics: :class:`tencentcloud.batch.v20170312.models.TaskMetrics`
         :param TaskInstanceMetrics: 任务实例统计指标
         :type TaskInstanceMetrics: :class:`tencentcloud.batch.v20170312.models.TaskInstanceView`
+        :param StateReason: 作业失败原因
+        :type StateReason: str
         :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
         :type RequestId: str
         """
@@ -1107,6 +1117,7 @@ class DescribeJobResponse(AbstractModel):
         self.DependenceSet = None
         self.TaskMetrics = None
         self.TaskInstanceMetrics = None
+        self.StateReason = None
         self.RequestId = None
 
 
@@ -1136,6 +1147,7 @@ class DescribeJobResponse(AbstractModel):
         if params.get("TaskInstanceMetrics") is not None:
             self.TaskInstanceMetrics = TaskInstanceView()
             self.TaskInstanceMetrics._deserialize(params.get("TaskInstanceMetrics"))
+        self.StateReason = params.get("StateReason")
         self.RequestId = params.get("RequestId")
 
 
@@ -1604,13 +1616,13 @@ class Filter(AbstractModel):
     > * 若存在多个`Filter`时，`Filter`间的关系为逻辑与（`AND`）关系。
     > * 若同一个`Filter`存在多个`Values`，同一`Filter`下`Values`间的关系为逻辑或（`OR`）关系。
     >
-    > 以[DescribeInstances](/document/api/213/9388)接口的`Filter`为例。若我们需要查询可用区（`zone`）为广州一区 ***并且*** 实例计费模式（`instance-charge-type`）为包年包月 ***或者*** 按量计费的实例时，可如下实现：
+    > 以[DescribeInstances](https://cloud.tencent.com/document/api/213/9388)接口的`Filter`为例。若我们需要查询可用区（`zone`）为广州一区 ***并且*** 实例计费模式（`instance-charge-type`）为包年包月 ***或者*** 按量计费的实例时，可如下实现：
     ```
-    Filters.1.Name=zone
-    &Filters.1.Values.1=ap-guangzhou-1
-    &Filters.2.Name=instance-charge-type
-    &Filters.2.Values.1=PREPAID
-    &Filters.3.Values.2=POSTPAID_BY_HOUR
+    Filters.0.Name=zone
+    &Filters.0.Values.0=ap-guangzhou-1
+    &Filters.1.Name=instance-charge-type
+    &Filters.1.Values.0=PREPAID
+    &Filters.1.Values.1=POSTPAID_BY_HOUR
     ```
 
     """
@@ -1747,6 +1759,8 @@ class Job(AbstractModel):
         :type Notifications: list of Notification
         :param TaskExecutionDependOn: 对于存在依赖关系的任务中，后序任务执行对于前序任务的依赖条件。取值范围包括 PRE_TASK_SUCCEED，PRE_TASK_AT_LEAST_PARTLY_SUCCEED，PRE_TASK_FINISHED，默认值为PRE_TASK_SUCCEED。
         :type TaskExecutionDependOn: str
+        :param StateIfCreateCvmFailed: 表示创建 CVM 失败按照何种策略处理。取值范围包括 FAILED，RUNNABLE。FAILED 表示创建 CVM 失败按照一次执行失败处理，RUNNABLE 表示创建 CVM 失败按照继续等待处理。默认值为FAILED。StateIfCreateCvmFailed对于提交的指定计算环境的作业无效。
+        :type StateIfCreateCvmFailed: str
         """
         self.JobName = None
         self.JobDescription = None
@@ -1755,6 +1769,7 @@ class Job(AbstractModel):
         self.Dependences = None
         self.Notifications = None
         self.TaskExecutionDependOn = None
+        self.StateIfCreateCvmFailed = None
 
 
     def _deserialize(self, params):
@@ -1780,6 +1795,7 @@ class Job(AbstractModel):
                 obj._deserialize(item)
                 self.Notifications.append(obj)
         self.TaskExecutionDependOn = params.get("TaskExecutionDependOn")
+        self.StateIfCreateCvmFailed = params.get("StateIfCreateCvmFailed")
 
 
 class JobView(AbstractModel):
@@ -1990,6 +2006,8 @@ class NamedComputeEnv(AbstractModel):
         :type AgentRunningMode: :class:`tencentcloud.batch.v20170312.models.AgentRunningMode`
         :param Notifications: 通知信息
         :type Notifications: :class:`tencentcloud.batch.v20170312.models.Notification`
+        :param ActionIfComputeNodeInactive: 非活跃节点处理策略，默认“RECREATE”，即对于实例创建失败或异常退还的计算节点，定期重新创建实例资源。
+        :type ActionIfComputeNodeInactive: str
         """
         self.EnvName = None
         self.EnvDescription = None
@@ -2001,6 +2019,7 @@ class NamedComputeEnv(AbstractModel):
         self.InputMappings = None
         self.AgentRunningMode = None
         self.Notifications = None
+        self.ActionIfComputeNodeInactive = None
 
 
     def _deserialize(self, params):
@@ -2035,6 +2054,7 @@ class NamedComputeEnv(AbstractModel):
         if params.get("Notifications") is not None:
             self.Notifications = Notification()
             self.Notifications._deserialize(params.get("Notifications"))
+        self.ActionIfComputeNodeInactive = params.get("ActionIfComputeNodeInactive")
 
 
 class Notification(AbstractModel):
@@ -2482,6 +2502,8 @@ class TaskInstanceView(AbstractModel):
         :type EndTime: str
         :param RedirectInfo: 重定向信息
         :type RedirectInfo: :class:`tencentcloud.batch.v20170312.models.RedirectInfo`
+        :param StateDetailedReason: 任务实例状态原因详情，任务实例失败时，会记录失败原因
+        :type StateDetailedReason: str
         """
         self.TaskInstanceIndex = None
         self.TaskInstanceState = None
@@ -2493,6 +2515,7 @@ class TaskInstanceView(AbstractModel):
         self.RunningTime = None
         self.EndTime = None
         self.RedirectInfo = None
+        self.StateDetailedReason = None
 
 
     def _deserialize(self, params):
@@ -2508,6 +2531,7 @@ class TaskInstanceView(AbstractModel):
         if params.get("RedirectInfo") is not None:
             self.RedirectInfo = RedirectInfo()
             self.RedirectInfo._deserialize(params.get("RedirectInfo"))
+        self.StateDetailedReason = params.get("StateDetailedReason")
 
 
 class TaskMetrics(AbstractModel):
@@ -2657,6 +2681,44 @@ class TerminateComputeNodeResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class TerminateComputeNodesRequest(AbstractModel):
+    """TerminateComputeNodes请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param EnvId: 计算环境ID
+        :type EnvId: str
+        :param ComputeNodeIds: 计算节点ID列表
+        :type ComputeNodeIds: list of str
+        """
+        self.EnvId = None
+        self.ComputeNodeIds = None
+
+
+    def _deserialize(self, params):
+        self.EnvId = params.get("EnvId")
+        self.ComputeNodeIds = params.get("ComputeNodeIds")
+
+
+class TerminateComputeNodesResponse(AbstractModel):
+    """TerminateComputeNodes返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class TerminateJobRequest(AbstractModel):
     """TerminateJob请求参数结构体
 
@@ -2746,7 +2808,7 @@ class VirtualPrivateCloud(AbstractModel):
         :type SubnetId: str
         :param AsVpcGateway: 是否用作公网网关。公网网关只有在实例拥有公网IP以及处于私有网络下时才能正常使用。取值范围：<br><li>TRUE：表示用作公网网关<br><li>FALSE：表示不用作公网网关<br><br>默认取值：FALSE。
         :type AsVpcGateway: bool
-        :param PrivateIpAddresses: 私有子网ip数组，目前只支持一个ip。在创建实例、修改实例vpc属性操作中可使用此参数。
+        :param PrivateIpAddresses: 私有网络子网 IP 数组，在创建实例、修改实例vpc属性操作中可使用此参数。当前仅批量创建多台实例时支持传入相同子网的多个 IP。
         :type PrivateIpAddresses: list of str
         """
         self.VpcId = None

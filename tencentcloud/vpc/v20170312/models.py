@@ -27,8 +27,8 @@ class Address(AbstractModel):
         :type AddressId: str
         :param AddressName: `EIP`名称。
         :type AddressName: str
-        :param AddressState: `EIP`状态。
-        :type AddressState: str
+        :param AddressStatus: `EIP`状态。
+        :type AddressStatus: str
         :param AddressIp: 弹性外网IP
         :type AddressIp: str
         :param BindedResourceId: 绑定的资源实例`ID`。可能是一个`CVM`，`NAT`，或是弹性网卡。
@@ -38,7 +38,7 @@ class Address(AbstractModel):
         """
         self.AddressId = None
         self.AddressName = None
-        self.AddressState = None
+        self.AddressStatus = None
         self.AddressIp = None
         self.BindedResourceId = None
         self.CreatedTime = None
@@ -47,7 +47,7 @@ class Address(AbstractModel):
     def _deserialize(self, params):
         self.AddressId = params.get("AddressId")
         self.AddressName = params.get("AddressName")
-        self.AddressState = params.get("AddressState")
+        self.AddressStatus = params.get("AddressStatus")
         self.AddressIp = params.get("AddressIp")
         self.BindedResourceId = params.get("BindedResourceId")
         self.CreatedTime = params.get("CreatedTime")
@@ -828,7 +828,7 @@ class CreateVpcRequest(AbstractModel):
         :type CidrBlock: str
         :param EnableMulticast: 是否开启组播。true: 开启, false: 不开启。
         :type EnableMulticast: str
-        :param DnsServers: DNS地址，最多支持4个，第1个默认为主，其余为备
+        :param DnsServers: DNS地址，最多支持4个
         :type DnsServers: list of str
         :param DomainName: 域名
         :type DomainName: str

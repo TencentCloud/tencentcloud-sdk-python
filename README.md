@@ -53,5 +53,4 @@ except TencentCloudSDKException as err:
     print(err)
 ```
 您可以在[github](https://github.com/tencentcloud/tencentcloud-sdk-python)中examples目录下找到更详细的示例。
-# 旧版SDK
-新版SDK兼容旧版SDK。旧版本的SDK存放于QcloudApi目录，但不再维护更新，推荐使用新版SDK。
+

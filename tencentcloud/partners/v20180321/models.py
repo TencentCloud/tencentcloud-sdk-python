@@ -41,6 +41,8 @@ class AgentBillElem(AbstractModel):
         :type SettleMonth: str
         :param Amt: 支付金额，单位分
         :type Amt: int
+        :param PayerMode: agentpay：代付；selfpay：自付
+        :type PayerMode: str
         """
         self.Uin = None
         self.OrderId = None
@@ -51,6 +53,7 @@ class AgentBillElem(AbstractModel):
         self.PayMode = None
         self.SettleMonth = None
         self.Amt = None
+        self.PayerMode = None
 
 
     def _deserialize(self, params):
@@ -63,6 +66,7 @@ class AgentBillElem(AbstractModel):
         self.PayMode = params.get("PayMode")
         self.SettleMonth = params.get("SettleMonth")
         self.Amt = params.get("Amt")
+        self.PayerMode = params.get("PayerMode")
 
 
 class AgentClientElem(AbstractModel):

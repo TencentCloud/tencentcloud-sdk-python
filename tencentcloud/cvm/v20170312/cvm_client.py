@@ -535,7 +535,7 @@ class CvmClient(AbstractClient):
 
 
     def DescribeInternetChargeTypeConfigs(self, request):
-        """查询网络计费的类型
+        """本接口（DescribeInternetChargeTypeConfigs）用于查询网络的计费类型。
 
         :param request: 调用DescribeInternetChargeTypeConfigs所需参数的结构体。
         :type request: :class:`tencentcloud.cvm.v20170312.models.DescribeInternetChargeTypeConfigsRequest`
@@ -1130,34 +1130,6 @@ class CvmClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyKeyPairAttributeResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise e
-            else:
-                raise TencentCloudSDKException(e.message, e.message)
-
-
-    def QueryMigrateTask(self, request):
-        """查询迁移任务进度。
-
-        :param request: 调用QueryMigrateTask所需参数的结构体。
-        :type request: :class:`tencentcloud.cvm.v20170312.models.QueryMigrateTaskRequest`
-        :rtype: :class:`tencentcloud.cvm.v20170312.models.QueryMigrateTaskResponse`
-
-        """
-        try:
-            params = request._serialize()
-            body = self.call("QueryMigrateTask", params)
-            response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.QueryMigrateTaskResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

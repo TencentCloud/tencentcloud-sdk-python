@@ -2604,44 +2604,6 @@ class Price(AbstractModel):
             self.BandwidthPrice._deserialize(params.get("BandwidthPrice"))
 
 
-class QueryMigrateTaskRequest(AbstractModel):
-    """QueryMigrateTask请求参数结构体
-
-    """
-
-    def __init__(self):
-        """
-        :param TaskId: 任务Id
-        :type TaskId: str
-        """
-        self.TaskId = None
-
-
-    def _deserialize(self, params):
-        self.TaskId = params.get("TaskId")
-
-
-class QueryMigrateTaskResponse(AbstractModel):
-    """QueryMigrateTask返回参数结构体
-
-    """
-
-    def __init__(self):
-        """
-        :param Status: 任务状态
-        :type Status: str
-        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
-        :type RequestId: str
-        """
-        self.Status = None
-        self.RequestId = None
-
-
-    def _deserialize(self, params):
-        self.Status = params.get("Status")
-        self.RequestId = params.get("RequestId")
-
-
 class RebootInstancesRequest(AbstractModel):
     """RebootInstances请求参数结构体
 

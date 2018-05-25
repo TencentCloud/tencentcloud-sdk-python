@@ -588,6 +588,34 @@ class BatchClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def TerminateComputeNodes(self, request):
+        """用于批量销毁计算节点，不允许重复销毁同一个节点。
+
+        :param request: 调用TerminateComputeNodes所需参数的结构体。
+        :type request: :class:`tencentcloud.batch.v20170312.models.TerminateComputeNodesRequest`
+        :rtype: :class:`tencentcloud.batch.v20170312.models.TerminateComputeNodesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("TerminateComputeNodes", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.TerminateComputeNodesResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise e
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def TerminateJob(self, request):
         """用于终止作业。
         终止作业的效果相当于所含的所有任务实例进行TerminateTaskInstance操作。具体效果和用法可参考TerminateTaskInstance。

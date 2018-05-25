@@ -731,8 +731,8 @@ class Monitor(AbstractModel):
 
     def __init__(self):
         """
-        :param ID: 监控任务ID。
-        :type ID: int
+        :param Id: 监控任务ID。
+        :type Id: int
         :param Name: 监控名称。
         :type Name: str
         :param MonitorStatus: 监测状态：1-监测中；2-暂停监测。
@@ -757,8 +757,10 @@ class Monitor(AbstractModel):
         :type CreatedAt: str
         :param UpdatedAt: UpdatedAt。
         :type UpdatedAt: str
+        :param Appid: 云用户appid。
+        :type Appid: int
         """
-        self.ID = None
+        self.Id = None
         self.Name = None
         self.MonitorStatus = None
         self.ScannerType = None
@@ -771,10 +773,11 @@ class Monitor(AbstractModel):
         self.CurrentScanStartTime = None
         self.CreatedAt = None
         self.UpdatedAt = None
+        self.Appid = None
 
 
     def _deserialize(self, params):
-        self.ID = params.get("ID")
+        self.Id = params.get("Id")
         self.Name = params.get("Name")
         self.MonitorStatus = params.get("MonitorStatus")
         self.ScannerType = params.get("ScannerType")
@@ -787,6 +790,7 @@ class Monitor(AbstractModel):
         self.CurrentScanStartTime = params.get("CurrentScanStartTime")
         self.CreatedAt = params.get("CreatedAt")
         self.UpdatedAt = params.get("UpdatedAt")
+        self.Appid = params.get("Appid")
 
 
 class MonitorMiniSite(AbstractModel):
@@ -932,6 +936,12 @@ class Site(AbstractModel):
         :type LastScanNoticeNum: int
         :param Progress: 扫描进度，百分比整数
         :type Progress: int
+        :param LastScanExtsCount: 最近一次扫描各个类型风险漏洞数量，存储的是json对象
+        :type LastScanExtsCount: str
+        :param Appid: 云用户appid。
+        :type Appid: int
+        :param Uin: 云用户标识。
+        :type Uin: str
         """
         self.Id = None
         self.MonitorId = None
@@ -956,6 +966,9 @@ class Site(AbstractModel):
         self.LastScanVulsNum = None
         self.LastScanNoticeNum = None
         self.Progress = None
+        self.LastScanExtsCount = None
+        self.Appid = None
+        self.Uin = None
 
 
     def _deserialize(self, params):
@@ -982,6 +995,9 @@ class Site(AbstractModel):
         self.LastScanVulsNum = params.get("LastScanVulsNum")
         self.LastScanNoticeNum = params.get("LastScanNoticeNum")
         self.Progress = params.get("Progress")
+        self.LastScanExtsCount = params.get("LastScanExtsCount")
+        self.Appid = params.get("Appid")
+        self.Uin = params.get("Uin")
 
 
 class SitesVerification(AbstractModel):
@@ -1005,6 +1021,10 @@ class SitesVerification(AbstractModel):
         :type CreatedAt: str
         :param UpdatedAt: UpdatedAt。
         :type UpdatedAt: str
+        :param Id: ID。
+        :type Id: int
+        :param Appid: 云用户appid
+        :type Appid: int
         """
         self.Domain = None
         self.TxtName = None
@@ -1013,6 +1033,8 @@ class SitesVerification(AbstractModel):
         self.VerifyStatus = None
         self.CreatedAt = None
         self.UpdatedAt = None
+        self.Id = None
+        self.Appid = None
 
 
     def _deserialize(self, params):
@@ -1023,6 +1045,8 @@ class SitesVerification(AbstractModel):
         self.VerifyStatus = params.get("VerifyStatus")
         self.CreatedAt = params.get("CreatedAt")
         self.UpdatedAt = params.get("UpdatedAt")
+        self.Id = params.get("Id")
+        self.Appid = params.get("Appid")
 
 
 class VerifySitesRequest(AbstractModel):
