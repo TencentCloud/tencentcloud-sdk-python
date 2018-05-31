@@ -238,6 +238,34 @@ class VpcClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def CreateCustomerGateway(self, request):
+        """本接口（CreateCustomerGateway）用于创建对端网关。
+
+        :param request: 调用CreateCustomerGateway所需参数的结构体。
+        :type request: :class:`tencentcloud.vpc.v20170312.models.CreateCustomerGatewayRequest`
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.CreateCustomerGatewayResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("CreateCustomerGateway", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateCustomerGatewayResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise e
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def CreateNetworkInterface(self, request):
         """本接口（CreateNetworkInterface）用于创建弹性网卡。
         * 创建弹性网卡时可以指定内网IP，并且可以指定一个主IP，指定的内网IP必须在弹性网卡所在子网内，而且不能被占用。
@@ -515,6 +543,62 @@ class VpcClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def CreateVpnConnection(self, request):
+        """本接口（CreateVpnConnection）用于创建VPN通道。
+
+        :param request: 调用CreateVpnConnection所需参数的结构体。
+        :type request: :class:`tencentcloud.vpc.v20170312.models.CreateVpnConnectionRequest`
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.CreateVpnConnectionResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("CreateVpnConnection", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateVpnConnectionResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise e
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def CreateVpnGateway(self, request):
+        """本接口（CreateVpnGateways）用于创建VPN网关。
+
+        :param request: 调用CreateVpnGateway所需参数的结构体。
+        :type request: :class:`tencentcloud.vpc.v20170312.models.CreateVpnGatewayRequest`
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.CreateVpnGatewayResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("CreateVpnGateway", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateVpnGatewayResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise e
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DeleteAddressTemplate(self, request):
         """删除IP地址模板
 
@@ -557,6 +641,34 @@ class VpcClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteAddressTemplateGroupResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise e
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DeleteCustomerGateway(self, request):
+        """本接口（DeleteCustomerGateway）用于删除对端网关。
+
+        :param request: 调用DeleteCustomerGateway所需参数的结构体。
+        :type request: :class:`tencentcloud.vpc.v20170312.models.DeleteCustomerGatewayRequest`
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.DeleteCustomerGatewayResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DeleteCustomerGateway", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DeleteCustomerGatewayResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -832,6 +944,62 @@ class VpcClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DeleteVpnConnection(self, request):
+        """本接口(DeleteVpnConnection)用于删除VPN通道。
+
+        :param request: 调用DeleteVpnConnection所需参数的结构体。
+        :type request: :class:`tencentcloud.vpc.v20170312.models.DeleteVpnConnectionRequest`
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.DeleteVpnConnectionResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DeleteVpnConnection", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DeleteVpnConnectionResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise e
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DeleteVpnGateway(self, request):
+        """本接口（DeleteVpnGateway）用于删除VPN网关。目前只支持删除运行中的按量计费的IPSEC网关实例。
+
+        :param request: 调用DeleteVpnGateway所需参数的结构体。
+        :type request: :class:`tencentcloud.vpc.v20170312.models.DeleteVpnGatewayRequest`
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.DeleteVpnGatewayResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DeleteVpnGateway", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DeleteVpnGatewayResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise e
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeAddressQuota(self, request):
         """本接口 (DescribeAddressQuota) 用于查询您账户的[弹性公网IP](https://cloud.tencent.com/document/product/213/1941)（简称 EIP）在当前地域的配额信息。配额详情可参见 [EIP 产品简介](https://cloud.tencent.com/document/product/213/5733)。
 
@@ -959,6 +1127,62 @@ class VpcClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeClassicLinkInstancesResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise e
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeCustomerGatewayVendors(self, request):
+        """本接口（DescribeCustomerGatewayVendors）用于查询可支持的对端网关厂商信息。
+
+        :param request: 调用DescribeCustomerGatewayVendors所需参数的结构体。
+        :type request: :class:`tencentcloud.vpc.v20170312.models.DescribeCustomerGatewayVendorsRequest`
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.DescribeCustomerGatewayVendorsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeCustomerGatewayVendors", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeCustomerGatewayVendorsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise e
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeCustomerGateways(self, request):
+        """本接口（DescribeCustomerGateways）用于查询对端网关列表。
+
+        :param request: 调用DescribeCustomerGateways所需参数的结构体。
+        :type request: :class:`tencentcloud.vpc.v20170312.models.DescribeCustomerGatewaysRequest`
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.DescribeCustomerGatewaysResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeCustomerGateways", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeCustomerGatewaysResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -1197,6 +1421,62 @@ class VpcClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeVpnConnections(self, request):
+        """本接口（DescribeVpnConnections）查询VPN通道列表。
+
+        :param request: 调用DescribeVpnConnections所需参数的结构体。
+        :type request: :class:`tencentcloud.vpc.v20170312.models.DescribeVpnConnectionsRequest`
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.DescribeVpnConnectionsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeVpnConnections", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeVpnConnectionsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise e
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeVpnGateways(self, request):
+        """本接口（DescribeVpnGateways）用于查询VPN网关列表。
+
+        :param request: 调用DescribeVpnGateways所需参数的结构体。
+        :type request: :class:`tencentcloud.vpc.v20170312.models.DescribeVpnGatewaysRequest`
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.DescribeVpnGatewaysResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeVpnGateways", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeVpnGatewaysResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise e
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DetachClassicLinkVpc(self, request):
         """本接口(DetachClassicLinkVpc)用于删除私有网络和基础网络设备互通。
 
@@ -1269,6 +1549,118 @@ class VpcClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DisassociateAddressResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise e
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DownloadCustomerGatewayConfiguration(self, request):
+        """本接口(DownloadCustomerGatewayConfiguration)用于下载VPN通道配置。
+
+        :param request: 调用DownloadCustomerGatewayConfiguration所需参数的结构体。
+        :type request: :class:`tencentcloud.vpc.v20170312.models.DownloadCustomerGatewayConfigurationRequest`
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.DownloadCustomerGatewayConfigurationResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DownloadCustomerGatewayConfiguration", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DownloadCustomerGatewayConfigurationResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise e
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def InquiryPriceCreateVpnGateway(self, request):
+        """本接口（InquiryPriceCreateVpnGateway）用于创建VPN网关询价。
+
+        :param request: 调用InquiryPriceCreateVpnGateway所需参数的结构体。
+        :type request: :class:`tencentcloud.vpc.v20170312.models.InquiryPriceCreateVpnGatewayRequest`
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.InquiryPriceCreateVpnGatewayResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("InquiryPriceCreateVpnGateway", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.InquiryPriceCreateVpnGatewayResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise e
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def InquiryPriceRenewVpnGateway(self, request):
+        """本接口（InquiryPriceRenewVpnGateway）用于续费VPN网关询价。目前仅支持IPSEC类型网关的询价。
+
+        :param request: 调用InquiryPriceRenewVpnGateway所需参数的结构体。
+        :type request: :class:`tencentcloud.vpc.v20170312.models.InquiryPriceRenewVpnGatewayRequest`
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.InquiryPriceRenewVpnGatewayResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("InquiryPriceRenewVpnGateway", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.InquiryPriceRenewVpnGatewayResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise e
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def InquiryPriceResetVpnGatewayInternetMaxBandwidth(self, request):
+        """本接口（InquiryPriceResetVpnGatewayInternetMaxBandwidth）调整VPN网关带宽上限询价。
+
+        :param request: 调用InquiryPriceResetVpnGatewayInternetMaxBandwidth所需参数的结构体。
+        :type request: :class:`tencentcloud.vpc.v20170312.models.InquiryPriceResetVpnGatewayInternetMaxBandwidthRequest`
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.InquiryPriceResetVpnGatewayInternetMaxBandwidthResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("InquiryPriceResetVpnGatewayInternetMaxBandwidth", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.InquiryPriceResetVpnGatewayInternetMaxBandwidthResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -1412,6 +1804,34 @@ class VpcClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyAddressTemplateGroupAttributeResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise e
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ModifyCustomerGatewayAttribute(self, request):
+        """本接口（ModifyCustomerGatewayAttribute）用于修改对端网关信息。
+
+        :param request: 调用ModifyCustomerGatewayAttribute所需参数的结构体。
+        :type request: :class:`tencentcloud.vpc.v20170312.models.ModifyCustomerGatewayAttributeRequest`
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.ModifyCustomerGatewayAttributeResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ModifyCustomerGatewayAttribute", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ModifyCustomerGatewayAttributeResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -1687,6 +2107,62 @@ class VpcClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def ModifyVpnConnectionAttribute(self, request):
+        """本接口（ModifyVpnConnectionAttribute）用于修改VPN通道。
+
+        :param request: 调用ModifyVpnConnectionAttribute所需参数的结构体。
+        :type request: :class:`tencentcloud.vpc.v20170312.models.ModifyVpnConnectionAttributeRequest`
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.ModifyVpnConnectionAttributeResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ModifyVpnConnectionAttribute", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ModifyVpnConnectionAttributeResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise e
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ModifyVpnGatewayAttribute(self, request):
+        """本接口（ModifyVpnGatewayAttribute）用于修改VPN网关属性。
+
+        :param request: 调用ModifyVpnGatewayAttribute所需参数的结构体。
+        :type request: :class:`tencentcloud.vpc.v20170312.models.ModifyVpnGatewayAttributeRequest`
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.ModifyVpnGatewayAttributeResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ModifyVpnGatewayAttribute", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ModifyVpnGatewayAttributeResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise e
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def ReleaseAddresses(self, request):
         """本接口 (ReleaseAddresses) 用于释放一个或多个[弹性公网IP](https://cloud.tencent.com/document/product/213/1941)（简称 EIP）。
         * 该操作不可逆，释放后 EIP 关联的 IP 地址将不再属于您的名下。
@@ -1703,6 +2179,34 @@ class VpcClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ReleaseAddressesResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise e
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def RenewVpnGateway(self, request):
+        """本接口（RenewVpnGateway）用于预付费（包年包月）VPN网关续费。目前只支持IPSEC网关。
+
+        :param request: 调用RenewVpnGateway所需参数的结构体。
+        :type request: :class:`tencentcloud.vpc.v20170312.models.RenewVpnGatewayRequest`
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.RenewVpnGatewayResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("RenewVpnGateway", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.RenewVpnGatewayResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -1818,6 +2322,62 @@ class VpcClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ResetRoutesResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise e
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ResetVpnConnection(self, request):
+        """本接口(ResetVpnConnection)用于重置VPN通道。
+
+        :param request: 调用ResetVpnConnection所需参数的结构体。
+        :type request: :class:`tencentcloud.vpc.v20170312.models.ResetVpnConnectionRequest`
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.ResetVpnConnectionResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ResetVpnConnection", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ResetVpnConnectionResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise e
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ResetVpnGatewayInternetMaxBandwidth(self, request):
+        """本接口（ResetVpnGatewayInternetMaxBandwidth）调整VPN网关带宽上限。目前支持升级配置，如果是包年包月VPN网关需要在有效期内。
+
+        :param request: 调用ResetVpnGatewayInternetMaxBandwidth所需参数的结构体。
+        :type request: :class:`tencentcloud.vpc.v20170312.models.ResetVpnGatewayInternetMaxBandwidthRequest`
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.ResetVpnGatewayInternetMaxBandwidthResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ResetVpnGatewayInternetMaxBandwidth", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ResetVpnGatewayInternetMaxBandwidthResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

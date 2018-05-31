@@ -594,6 +594,8 @@ class Disk(AbstractModel):
         :type ReturnFailCode: int
         :param AutoSnapshotPolicyIds: 云盘关联的定期快照ID。只有在调用DescribeDisks接口时，入参ReturnBindAutoSnapshotPolicy取值为TRUE才会返回该参数。
         :type AutoSnapshotPolicyIds: list of str
+        :param Tags: 与云盘绑定的标签，云盘未绑定标签则取值为空。
+        :type Tags: list of Tag
         """
         self.DiskId = None
         self.DiskUsage = None
@@ -618,6 +620,7 @@ class Disk(AbstractModel):
         self.IsReturnable = None
         self.ReturnFailCode = None
         self.AutoSnapshotPolicyIds = None
+        self.Tags = None
 
 
     def _deserialize(self, params):
@@ -646,6 +649,12 @@ class Disk(AbstractModel):
         self.IsReturnable = params.get("IsReturnable")
         self.ReturnFailCode = params.get("ReturnFailCode")
         self.AutoSnapshotPolicyIds = params.get("AutoSnapshotPolicyIds")
+        if params.get("Tags") is not None:
+            self.Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self.Tags.append(obj)
 
 
 class DiskChargePrepaid(AbstractModel):
@@ -1225,6 +1234,27 @@ class Snapshot(AbstractModel):
         self.IsPermanent = params.get("IsPermanent")
         self.CopyingToRegions = params.get("CopyingToRegions")
         self.CopyFromRemote = params.get("CopyFromRemote")
+
+
+class Tag(AbstractModel):
+    """标签。
+
+    """
+
+    def __init__(self):
+        """
+        :param Key: 标签健。
+        :type Key: str
+        :param Value: 标签值。
+        :type Value: str
+        """
+        self.Key = None
+        self.Value = None
+
+
+    def _deserialize(self, params):
+        self.Key = params.get("Key")
+        self.Value = params.get("Value")
 
 
 class TerminateDisksRequest(AbstractModel):

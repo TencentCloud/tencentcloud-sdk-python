@@ -16,6 +16,64 @@
 from tencentcloud.common.abstract_model import AbstractModel
 
 
+class Account(AbstractModel):
+    """数据库账号信息
+
+    """
+
+    def __init__(self):
+        """
+        :param User: 新账户的名称
+        :type User: str
+        :param Host: 新账户的域名
+        :type Host: str
+        """
+        self.User = None
+        self.Host = None
+
+
+    def _deserialize(self, params):
+        self.User = params.get("User")
+        self.Host = params.get("Host")
+
+
+class AccountInfo(AbstractModel):
+    """账号详细信息
+
+    """
+
+    def __init__(self):
+        """
+        :param Notes: 账号备注信息
+        :type Notes: str
+        :param Host: 账号的域名
+        :type Host: str
+        :param User: 账号的名称
+        :type User: str
+        :param ModifyTime: 账号信息修改时间
+        :type ModifyTime: str
+        :param ModifyPasswordTime: 修改密码的时间
+        :type ModifyPasswordTime: str
+        :param CreateTime: 账号的创建时间
+        :type CreateTime: str
+        """
+        self.Notes = None
+        self.Host = None
+        self.User = None
+        self.ModifyTime = None
+        self.ModifyPasswordTime = None
+        self.CreateTime = None
+
+
+    def _deserialize(self, params):
+        self.Notes = params.get("Notes")
+        self.Host = params.get("Host")
+        self.User = params.get("User")
+        self.ModifyTime = params.get("ModifyTime")
+        self.ModifyPasswordTime = params.get("ModifyPasswordTime")
+        self.CreateTime = params.get("CreateTime")
+
+
 class AssociateSecurityGroupsRequest(AbstractModel):
     """AssociateSecurityGroups请求参数结构体
 
@@ -52,6 +110,35 @@ class AssociateSecurityGroupsResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
+
+
+class BackupConfig(AbstractModel):
+    """ECDB第二个从库的配置信息，只有ECDB实例才有这个字段
+
+    """
+
+    def __init__(self):
+        """
+        :param ReplicationMode: 第二个从库复制方式，可能的返回值：aysnc-异步，semisync-半同步
+        :type ReplicationMode: str
+        :param Zone: 第二个从库可用区的正式名称，如ap-shanghai-1
+        :type Zone: str
+        :param Vip: 第二个从库内网IP地址
+        :type Vip: str
+        :param Vport: 第二个从库访问端口
+        :type Vport: str
+        """
+        self.ReplicationMode = None
+        self.Zone = None
+        self.Vip = None
+        self.Vport = None
+
+
+    def _deserialize(self, params):
+        self.ReplicationMode = params.get("ReplicationMode")
+        self.Zone = params.get("Zone")
+        self.Vip = params.get("Vip")
+        self.Vport = params.get("Vport")
 
 
 class BackupInfo(AbstractModel):
@@ -163,6 +250,90 @@ class CloseWanServiceRequest(AbstractModel):
 
 class CloseWanServiceResponse(AbstractModel):
     """CloseWanService返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param AsyncRequestId: 异步任务的请求ID，可使用此ID查询异步任务的执行结果。
+        :type AsyncRequestId: str
+        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :type RequestId: str
+        """
+        self.AsyncRequestId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.AsyncRequestId = params.get("AsyncRequestId")
+        self.RequestId = params.get("RequestId")
+
+
+class ColumnPrivilege(AbstractModel):
+    """列权限信息
+
+    """
+
+    def __init__(self):
+        """
+        :param Database: 数据库名
+        :type Database: str
+        :param Table: 数据库表名
+        :type Table: str
+        :param Column: 数据库列名
+        :type Column: str
+        :param Privileges: 权限信息
+        :type Privileges: list of str
+        """
+        self.Database = None
+        self.Table = None
+        self.Column = None
+        self.Privileges = None
+
+
+    def _deserialize(self, params):
+        self.Database = params.get("Database")
+        self.Table = params.get("Table")
+        self.Column = params.get("Column")
+        self.Privileges = params.get("Privileges")
+
+
+class CreateAccountsRequest(AbstractModel):
+    """CreateAccounts请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param InstanceId: 实例ID，格式如：cdb-c1nl9rpv，与云数据库控制台页面中显示的实例ID相同。
+        :type InstanceId: str
+        :param Accounts: 云数据库账号。
+        :type Accounts: list of Account
+        :param Password: 新账户的密码。
+        :type Password: str
+        :param Description: 备注信息。
+        :type Description: str
+        """
+        self.InstanceId = None
+        self.Accounts = None
+        self.Password = None
+        self.Description = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        if params.get("Accounts") is not None:
+            self.Accounts = []
+            for item in params.get("Accounts"):
+                obj = Account()
+                obj._deserialize(item)
+                self.Accounts.append(obj)
+        self.Password = params.get("Password")
+        self.Description = params.get("Description")
+
+
+class CreateAccountsResponse(AbstractModel):
+    """CreateAccounts返回参数结构体
 
     """
 
@@ -544,6 +715,27 @@ class CreateDBInstanceResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DBSwitchInfo(AbstractModel):
+    """云数据库切换记录
+
+    """
+
+    def __init__(self):
+        """
+        :param SwitchTime: 切换时间，格式为：2017-09-03 01:34:31
+        :type SwitchTime: str
+        :param SwitchType: 切换类型，可能的返回值为：TRANSFER - 数据迁移；MASTER2SLAVE - 主备切换；RECOVERY - 主从恢复
+        :type SwitchType: str
+        """
+        self.SwitchTime = None
+        self.SwitchType = None
+
+
+    def _deserialize(self, params):
+        self.SwitchTime = params.get("SwitchTime")
+        self.SwitchType = params.get("SwitchType")
+
+
 class DatabaseName(AbstractModel):
     """数据库表名
 
@@ -559,6 +751,27 @@ class DatabaseName(AbstractModel):
 
     def _deserialize(self, params):
         self.DatabaseName = params.get("DatabaseName")
+
+
+class DatabasePrivilege(AbstractModel):
+    """数据库权限
+
+    """
+
+    def __init__(self):
+        """
+        :param Privileges: 权限信息
+        :type Privileges: list of str
+        :param Database: 数据库名
+        :type Database: str
+        """
+        self.Privileges = None
+        self.Database = None
+
+
+    def _deserialize(self, params):
+        self.Privileges = params.get("Privileges")
+        self.Database = params.get("Database")
 
 
 class DatabaseTableList(AbstractModel):
@@ -580,6 +793,53 @@ class DatabaseTableList(AbstractModel):
     def _deserialize(self, params):
         self.DatabaseName = params.get("DatabaseName")
         self.TableList = params.get("TableList")
+
+
+class DeleteAccountsRequest(AbstractModel):
+    """DeleteAccounts请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param InstanceId: 实例ID，格式如：cdb-c1nl9rpv，与云数据库控制台页面中显示的实例ID相同。
+        :type InstanceId: str
+        :param Accounts: 云数据库账号。
+        :type Accounts: list of Account
+        """
+        self.InstanceId = None
+        self.Accounts = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        if params.get("Accounts") is not None:
+            self.Accounts = []
+            for item in params.get("Accounts"):
+                obj = Account()
+                obj._deserialize(item)
+                self.Accounts.append(obj)
+
+
+class DeleteAccountsResponse(AbstractModel):
+    """DeleteAccounts返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param AsyncRequestId: 异步任务的请求ID，可使用此ID查询异步任务的执行结果。
+        :type AsyncRequestId: str
+        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :type RequestId: str
+        """
+        self.AsyncRequestId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.AsyncRequestId = params.get("AsyncRequestId")
+        self.RequestId = params.get("RequestId")
 
 
 class DeleteBackupRequest(AbstractModel):
@@ -617,6 +877,134 @@ class DeleteBackupResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeAccountPrivilegesRequest(AbstractModel):
+    """DescribeAccountPrivileges请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param InstanceId: 实例ID，格式如：cdb-c1nl9rpv，与云数据库控制台页面中显示的实例ID相同。
+        :type InstanceId: str
+        :param User: 数据库的账号名称。
+        :type User: str
+        :param Host: 数据库的账号域名。
+        :type Host: str
+        """
+        self.InstanceId = None
+        self.User = None
+        self.Host = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.User = params.get("User")
+        self.Host = params.get("Host")
+
+
+class DescribeAccountPrivilegesResponse(AbstractModel):
+    """DescribeAccountPrivileges返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param GlobalPrivileges: 全局权限数组。
+        :type GlobalPrivileges: list of str
+        :param DatabasePrivileges: 数据库权限数组。
+        :type DatabasePrivileges: list of DatabasePrivilege
+        :param TablePrivileges: 数据库中的表权限数组。
+        :type TablePrivileges: list of TablePrivilege
+        :param ColumnPrivileges: 数据库表中的列权限数组。
+        :type ColumnPrivileges: list of ColumnPrivilege
+        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :type RequestId: str
+        """
+        self.GlobalPrivileges = None
+        self.DatabasePrivileges = None
+        self.TablePrivileges = None
+        self.ColumnPrivileges = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.GlobalPrivileges = params.get("GlobalPrivileges")
+        if params.get("DatabasePrivileges") is not None:
+            self.DatabasePrivileges = []
+            for item in params.get("DatabasePrivileges"):
+                obj = DatabasePrivilege()
+                obj._deserialize(item)
+                self.DatabasePrivileges.append(obj)
+        if params.get("TablePrivileges") is not None:
+            self.TablePrivileges = []
+            for item in params.get("TablePrivileges"):
+                obj = TablePrivilege()
+                obj._deserialize(item)
+                self.TablePrivileges.append(obj)
+        if params.get("ColumnPrivileges") is not None:
+            self.ColumnPrivileges = []
+            for item in params.get("ColumnPrivileges"):
+                obj = ColumnPrivilege()
+                obj._deserialize(item)
+                self.ColumnPrivileges.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeAccountsRequest(AbstractModel):
+    """DescribeAccounts请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param InstanceId: 实例ID，格式如：cdb-c1nl9rpv，与云数据库控制台页面中显示的实例ID相同。
+        :type InstanceId: str
+        :param Offset: 记录偏移量，默认值为0。
+        :type Offset: int
+        :param Limit: 单次请求返回的数量，默认值为20，最大值为100。
+        :type Limit: int
+        """
+        self.InstanceId = None
+        self.Offset = None
+        self.Limit = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+
+
+class DescribeAccountsResponse(AbstractModel):
+    """DescribeAccounts返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param TotalCount: 符合查询条件的账号数量。
+        :type TotalCount: int
+        :param Items: 符合查询条件的账号详细信息。
+        :type Items: list of AccountInfo
+        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.Items = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("Items") is not None:
+            self.Items = []
+            for item in params.get("Items"):
+                obj = AccountInfo()
+                obj._deserialize(item)
+                self.Items.append(obj)
         self.RequestId = params.get("RequestId")
 
 
@@ -1066,6 +1454,64 @@ class DescribeDBInstanceCharsetResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeDBInstanceConfigRequest(AbstractModel):
+    """DescribeDBInstanceConfig请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param InstanceId: 实例ID，格式如：cdb-c1nl9rpv，与云数据库控制台页面中显示的实例ID相同。
+        :type InstanceId: str
+        """
+        self.InstanceId = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+
+
+class DescribeDBInstanceConfigResponse(AbstractModel):
+    """DescribeDBInstanceConfig返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ProtectMode: 主库数据保护方式，主实例属性，可能的返回值：0-异步复制方式，1-半同步复制方式，2-强同步复制方式。
+        :type ProtectMode: int
+        :param DeployMode: 主库部署方式，主实例属性，可能的返回值：0-单可用部署，1-多可用区部署。
+        :type DeployMode: int
+        :param Zone: 主库可用区的正式名称，如ap-shanghai-1。
+        :type Zone: str
+        :param SlaveConfig: 从库的配置信息。
+        :type SlaveConfig: :class:`tencentcloud.cdb.v20170320.models.SlaveConfig`
+        :param BackupConfig: ECDB第二个从库的配置信息，只有ECDB实例才有这个字段。
+        :type BackupConfig: :class:`tencentcloud.cdb.v20170320.models.BackupConfig`
+        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :type RequestId: str
+        """
+        self.ProtectMode = None
+        self.DeployMode = None
+        self.Zone = None
+        self.SlaveConfig = None
+        self.BackupConfig = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.ProtectMode = params.get("ProtectMode")
+        self.DeployMode = params.get("DeployMode")
+        self.Zone = params.get("Zone")
+        if params.get("SlaveConfig") is not None:
+            self.SlaveConfig = SlaveConfig()
+            self.SlaveConfig._deserialize(params.get("SlaveConfig"))
+        if params.get("BackupConfig") is not None:
+            self.BackupConfig = BackupConfig()
+            self.BackupConfig._deserialize(params.get("BackupConfig"))
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeDBInstanceGTIDRequest(AbstractModel):
     """DescribeDBInstanceGTID请求参数结构体
 
@@ -1337,6 +1783,61 @@ class DescribeDBSecurityGroupsResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeDBSwitchRecordsRequest(AbstractModel):
+    """DescribeDBSwitchRecords请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param InstanceId: 实例ID，格式如：cdb-c1nl9rpv或者cdbro-c1nl9rpv，与云数据库控制台页面中显示的实例ID相同。
+        :type InstanceId: str
+        :param Offset: 分页参数，偏移量。
+        :type Offset: int
+        :param Limit: 分页参数，单次请求数量限制。
+        :type Limit: int
+        """
+        self.InstanceId = None
+        self.Offset = None
+        self.Limit = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+
+
+class DescribeDBSwitchRecordsResponse(AbstractModel):
+    """DescribeDBSwitchRecords返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param TotalCount: 实例切换记录的总数。
+        :type TotalCount: int
+        :param Items: 实例切换记录详情。
+        :type Items: list of DBSwitchInfo
+        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.Items = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("Items") is not None:
+            self.Items = []
+            for item in params.get("Items"):
+                obj = DBSwitchInfo()
+                obj._deserialize(item)
+                self.Items.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeDBZoneConfigRequest(AbstractModel):
     """DescribeDBZoneConfig请求参数结构体
 
@@ -1370,6 +1871,60 @@ class DescribeDBZoneConfigResponse(AbstractModel):
                 obj = RegionSellConf()
                 obj._deserialize(item)
                 self.Items.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeDatabasesRequest(AbstractModel):
+    """DescribeDatabases请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param InstanceId: 实例ID，格式如：cdb-c1nl9rpv，与云数据库控制台页面中显示的实例ID相同。
+        :type InstanceId: str
+        :param Offset: 偏移量，最小值为0。
+        :type Offset: int
+        :param Limit: 单次请求数量，取值范围：[0-100]。
+        :type Limit: int
+        :param DatabaseRegexp: 匹配数据库库名的正则表达式，规则同MySQL官网
+        :type DatabaseRegexp: str
+        """
+        self.InstanceId = None
+        self.Offset = None
+        self.Limit = None
+        self.DatabaseRegexp = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+        self.DatabaseRegexp = params.get("DatabaseRegexp")
+
+
+class DescribeDatabasesResponse(AbstractModel):
+    """DescribeDatabases返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param TotalCount: 符合查询条件的实例总数。
+        :type TotalCount: int
+        :param Items: 返回的实例信息。
+        :type Items: list of str
+        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.Items = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        self.Items = params.get("Items")
         self.RequestId = params.get("RequestId")
 
 
@@ -2114,6 +2669,186 @@ class MasterInfo(AbstractModel):
         self.ExClusterName = params.get("ExClusterName")
 
 
+class ModifyAccountDescriptionRequest(AbstractModel):
+    """ModifyAccountDescription请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param InstanceId: 实例ID，格式如：cdb-c1nl9rpv，与云数据库控制台页面中显示的实例ID相同。
+        :type InstanceId: str
+        :param Description: 数据库账号的备注信息。
+        :type Description: str
+        :param Accounts: 云数据库账号。
+        :type Accounts: list of Account
+        """
+        self.InstanceId = None
+        self.Description = None
+        self.Accounts = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.Description = params.get("Description")
+        if params.get("Accounts") is not None:
+            self.Accounts = []
+            for item in params.get("Accounts"):
+                obj = Account()
+                obj._deserialize(item)
+                self.Accounts.append(obj)
+
+
+class ModifyAccountDescriptionResponse(AbstractModel):
+    """ModifyAccountDescription返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param AsyncRequestId: 异步任务的请求ID，可使用此ID查询异步任务的执行结果。
+        :type AsyncRequestId: str
+        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :type RequestId: str
+        """
+        self.AsyncRequestId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.AsyncRequestId = params.get("AsyncRequestId")
+        self.RequestId = params.get("RequestId")
+
+
+class ModifyAccountPasswordRequest(AbstractModel):
+    """ModifyAccountPassword请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param InstanceId: 实例ID，格式如：cdb-c1nl9rpv，与云数据库控制台页面中显示的实例ID相同。
+        :type InstanceId: str
+        :param NewPassword: 数据库账号的新密码。
+        :type NewPassword: str
+        :param Accounts: 云数据库账号。
+        :type Accounts: list of Account
+        """
+        self.InstanceId = None
+        self.NewPassword = None
+        self.Accounts = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.NewPassword = params.get("NewPassword")
+        if params.get("Accounts") is not None:
+            self.Accounts = []
+            for item in params.get("Accounts"):
+                obj = Account()
+                obj._deserialize(item)
+                self.Accounts.append(obj)
+
+
+class ModifyAccountPasswordResponse(AbstractModel):
+    """ModifyAccountPassword返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param AsyncRequestId: 异步任务的请求ID，可使用此ID查询异步任务的执行结果。
+        :type AsyncRequestId: str
+        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :type RequestId: str
+        """
+        self.AsyncRequestId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.AsyncRequestId = params.get("AsyncRequestId")
+        self.RequestId = params.get("RequestId")
+
+
+class ModifyAccountPrivilegesRequest(AbstractModel):
+    """ModifyAccountPrivileges请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param InstanceId: 实例ID，格式如：cdb-c1nl9rpv，与云数据库控制台页面中显示的实例ID相同。
+        :type InstanceId: str
+        :param Accounts: 数据库的账号，包括用户名和域名。
+        :type Accounts: list of Account
+        :param GlobalPrivileges: 全局权限。其中，GlobalPrivileges 中权限的可选值为："SELECT","INSERT","UPDATE","DELETE","CREATE",	"DROP","REFERENCES","INDEX","ALTER","SHOW DATABASES","CREATE TEMPORARY TABLES","LOCK TABLES","EXECUTE","CREATE VIEW","SHOW VIEW","CREATE ROUTINE","ALTER ROUTINE","EVENT","TRIGGER"。
+        :type GlobalPrivileges: list of str
+        :param DatabasePrivileges: 数据库的权限。Privileges权限的可选值为："SELECT","INSERT","UPDATE","DELETE","CREATE",	"DROP","REFERENCES","INDEX","ALTER","CREATE TEMPORARY TABLES","LOCK TABLES","EXECUTE","CREATE VIEW","SHOW VIEW","CREATE ROUTINE","ALTER ROUTINE","EVENT","TRIGGER"。
+        :type DatabasePrivileges: list of DatabasePrivilege
+        :param TablePrivileges: 数据库中表的权限。Privileges权限的可选值为：权限的可选值为："SELECT","INSERT","UPDATE","DELETE","CREATE",	"DROP","REFERENCES","INDEX","ALTER","CREATE VIEW","SHOW VIEW", "TRIGGER"。
+        :type TablePrivileges: list of TablePrivilege
+        :param ColumnPrivileges: 数据库表中列的权限。Privileges权限的可选值为："SELECT","INSERT","UPDATE","REFERENCES"。
+        :type ColumnPrivileges: list of ColumnPrivilege
+        """
+        self.InstanceId = None
+        self.Accounts = None
+        self.GlobalPrivileges = None
+        self.DatabasePrivileges = None
+        self.TablePrivileges = None
+        self.ColumnPrivileges = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        if params.get("Accounts") is not None:
+            self.Accounts = []
+            for item in params.get("Accounts"):
+                obj = Account()
+                obj._deserialize(item)
+                self.Accounts.append(obj)
+        self.GlobalPrivileges = params.get("GlobalPrivileges")
+        if params.get("DatabasePrivileges") is not None:
+            self.DatabasePrivileges = []
+            for item in params.get("DatabasePrivileges"):
+                obj = DatabasePrivilege()
+                obj._deserialize(item)
+                self.DatabasePrivileges.append(obj)
+        if params.get("TablePrivileges") is not None:
+            self.TablePrivileges = []
+            for item in params.get("TablePrivileges"):
+                obj = TablePrivilege()
+                obj._deserialize(item)
+                self.TablePrivileges.append(obj)
+        if params.get("ColumnPrivileges") is not None:
+            self.ColumnPrivileges = []
+            for item in params.get("ColumnPrivileges"):
+                obj = ColumnPrivilege()
+                obj._deserialize(item)
+                self.ColumnPrivileges.append(obj)
+
+
+class ModifyAccountPrivilegesResponse(AbstractModel):
+    """ModifyAccountPrivileges返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param AsyncRequestId: 异步任务的请求ID，可使用此ID查询异步任务的执行结果。
+        :type AsyncRequestId: str
+        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :type RequestId: str
+        """
+        self.AsyncRequestId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.AsyncRequestId = params.get("AsyncRequestId")
+        self.RequestId = params.get("RequestId")
+
+
 class ModifyBackupConfigRequest(AbstractModel):
     """ModifyBackupConfig请求参数结构体
 
@@ -2375,6 +3110,44 @@ class ModifyInstanceParamResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class OpenDBInstanceGTIDRequest(AbstractModel):
+    """OpenDBInstanceGTID请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param InstanceId: 实例ID，格式如：cdb-c1nl9rpv，与云数据库控制台页面中显示的实例ID相同。
+        :type InstanceId: str
+        """
+        self.InstanceId = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+
+
+class OpenDBInstanceGTIDResponse(AbstractModel):
+    """OpenDBInstanceGTID返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param AsyncRequestId: 异步任务的请求ID，可使用此ID查询异步任务的执行结果。
+        :type AsyncRequestId: str
+        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :type RequestId: str
+        """
+        self.AsyncRequestId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.AsyncRequestId = params.get("AsyncRequestId")
+        self.RequestId = params.get("RequestId")
+
+
 class OpenWanServiceRequest(AbstractModel):
     """OpenWanService请求参数结构体
 
@@ -2524,6 +3297,44 @@ class RegionSellConf(AbstractModel):
                 obj = ZoneSellConf()
                 obj._deserialize(item)
                 self.ZonesConf.append(obj)
+
+
+class RestartDBInstancesRequest(AbstractModel):
+    """RestartDBInstances请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param InstanceIds: 实例ID数组，格式如：cdb-c1nl9rpv，与云数据库控制台页面中显示的实例ID相同。
+        :type InstanceIds: list of str
+        """
+        self.InstanceIds = None
+
+
+    def _deserialize(self, params):
+        self.InstanceIds = params.get("InstanceIds")
+
+
+class RestartDBInstancesResponse(AbstractModel):
+    """RestartDBInstances返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param AsyncRequestId: 异步任务的请求ID，可使用此ID查询异步任务的执行结果。
+        :type AsyncRequestId: str
+        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :type RequestId: str
+        """
+        self.AsyncRequestId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.AsyncRequestId = params.get("AsyncRequestId")
+        self.RequestId = params.get("RequestId")
 
 
 class RoGroup(AbstractModel):
@@ -2750,6 +3561,27 @@ class SellType(AbstractModel):
                 self.Configs.append(obj)
 
 
+class SlaveConfig(AbstractModel):
+    """从库的配置信息
+
+    """
+
+    def __init__(self):
+        """
+        :param ReplicationMode: 从库复制方式，可能的返回值：aysnc-异步，semisync-半同步
+        :type ReplicationMode: str
+        :param Zone: 从库可用区的正式名称，如ap-shanghai-1
+        :type Zone: str
+        """
+        self.ReplicationMode = None
+        self.Zone = None
+
+
+    def _deserialize(self, params):
+        self.ReplicationMode = params.get("ReplicationMode")
+        self.Zone = params.get("Zone")
+
+
 class SlaveInfo(AbstractModel):
     """备机信息
 
@@ -2897,6 +3729,31 @@ class TableName(AbstractModel):
         self.TableName = params.get("TableName")
 
 
+class TablePrivilege(AbstractModel):
+    """数据库表权限
+
+    """
+
+    def __init__(self):
+        """
+        :param Database: 数据库名
+        :type Database: str
+        :param Table: 数据库表名
+        :type Table: str
+        :param Privileges: 权限信息
+        :type Privileges: list of str
+        """
+        self.Database = None
+        self.Table = None
+        self.Privileges = None
+
+
+    def _deserialize(self, params):
+        self.Database = params.get("Database")
+        self.Table = params.get("Table")
+        self.Privileges = params.get("Privileges")
+
+
 class UpgradeDBInstanceEngineVersionRequest(AbstractModel):
     """UpgradeDBInstanceEngineVersion请求参数结构体
 
@@ -3021,6 +3878,48 @@ class UpgradeDBInstanceResponse(AbstractModel):
     def _deserialize(self, params):
         self.DealIds = params.get("DealIds")
         self.DealNames = params.get("DealNames")
+        self.AsyncRequestId = params.get("AsyncRequestId")
+        self.RequestId = params.get("RequestId")
+
+
+class VerifyRootAccountRequest(AbstractModel):
+    """VerifyRootAccount请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param InstanceId: 实例ID，格式如：cdb-c1nl9rpv，与云数据库控制台页面中显示的实例ID相同。
+        :type InstanceId: str
+        :param Password: 实例ROOT账号的密码。
+        :type Password: str
+        """
+        self.InstanceId = None
+        self.Password = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.Password = params.get("Password")
+
+
+class VerifyRootAccountResponse(AbstractModel):
+    """VerifyRootAccount返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param AsyncRequestId: 异步任务的请求ID，可使用此ID查询异步任务的执行结果
+        :type AsyncRequestId: str
+        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :type RequestId: str
+        """
+        self.AsyncRequestId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
         self.AsyncRequestId = params.get("AsyncRequestId")
         self.RequestId = params.get("RequestId")
 

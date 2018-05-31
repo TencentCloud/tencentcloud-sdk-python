@@ -436,6 +436,50 @@ class CreateAddressTemplateResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class CreateCustomerGatewayRequest(AbstractModel):
+    """CreateCustomerGateway请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param CustomerGatewayName: 对端网关名称，可任意命名，但不得超过60个字符。
+        :type CustomerGatewayName: str
+        :param IpAddress: 对端网关公网IP。
+        :type IpAddress: str
+        """
+        self.CustomerGatewayName = None
+        self.IpAddress = None
+
+
+    def _deserialize(self, params):
+        self.CustomerGatewayName = params.get("CustomerGatewayName")
+        self.IpAddress = params.get("IpAddress")
+
+
+class CreateCustomerGatewayResponse(AbstractModel):
+    """CreateCustomerGateway返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param CustomerGateway: 对端网关对象
+        :type CustomerGateway: :class:`tencentcloud.vpc.v20170312.models.CustomerGateway`
+        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :type RequestId: str
+        """
+        self.CustomerGateway = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("CustomerGateway") is not None:
+            self.CustomerGateway = CustomerGateway()
+            self.CustomerGateway._deserialize(params.get("CustomerGateway"))
+        self.RequestId = params.get("RequestId")
+
+
 class CreateNetworkInterfaceRequest(AbstractModel):
     """CreateNetworkInterface请求参数结构体
 
@@ -871,6 +915,195 @@ class CreateVpcResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class CreateVpnConnectionRequest(AbstractModel):
+    """CreateVpnConnection请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param VpcId: VPC实例ID。可通过DescribeVpcs接口返回值中的VpcId获取。
+        :type VpcId: str
+        :param VpnGatewayId: VPN网关实例ID。
+        :type VpnGatewayId: str
+        :param CustomerGatewayId: 对端网关ID，例如：cgw-2wqq41m9，可通过DescribeCustomerGateways接口查询对端网关。
+        :type CustomerGatewayId: str
+        :param VpnConnectionName: 通道名称，可任意命名，但不得超过60个字符。
+        :type VpnConnectionName: str
+        :param PreShareKey: 预共享密钥。
+        :type PreShareKey: str
+        :param SecurityPolicyDatabases: SPD策略组，例如：{"10.0.0.5/24":["172.123.10.5/16"]}，10.0.0.5/24是vpc内网段172.123.10.5/16是IDC网段。用户指定VPC内哪些网段可以和您IDC中哪些网段通信。
+        :type SecurityPolicyDatabases: list of SecurityPolicyDatabase
+        :param IKEOptionsSpecification: IKE配置（Internet Key Exchange，因特网密钥交换），IKE具有一套自保护机制，用户配置网络安全协议
+        :type IKEOptionsSpecification: :class:`tencentcloud.vpc.v20170312.models.IKEOptionsSpecification`
+        :param IPSECOptionsSpecification: IPSec配置，腾讯云提供IPSec安全会话设置
+        :type IPSECOptionsSpecification: :class:`tencentcloud.vpc.v20170312.models.IPSECOptionsSpecification`
+        """
+        self.VpcId = None
+        self.VpnGatewayId = None
+        self.CustomerGatewayId = None
+        self.VpnConnectionName = None
+        self.PreShareKey = None
+        self.SecurityPolicyDatabases = None
+        self.IKEOptionsSpecification = None
+        self.IPSECOptionsSpecification = None
+
+
+    def _deserialize(self, params):
+        self.VpcId = params.get("VpcId")
+        self.VpnGatewayId = params.get("VpnGatewayId")
+        self.CustomerGatewayId = params.get("CustomerGatewayId")
+        self.VpnConnectionName = params.get("VpnConnectionName")
+        self.PreShareKey = params.get("PreShareKey")
+        if params.get("SecurityPolicyDatabases") is not None:
+            self.SecurityPolicyDatabases = []
+            for item in params.get("SecurityPolicyDatabases"):
+                obj = SecurityPolicyDatabase()
+                obj._deserialize(item)
+                self.SecurityPolicyDatabases.append(obj)
+        if params.get("IKEOptionsSpecification") is not None:
+            self.IKEOptionsSpecification = IKEOptionsSpecification()
+            self.IKEOptionsSpecification._deserialize(params.get("IKEOptionsSpecification"))
+        if params.get("IPSECOptionsSpecification") is not None:
+            self.IPSECOptionsSpecification = IPSECOptionsSpecification()
+            self.IPSECOptionsSpecification._deserialize(params.get("IPSECOptionsSpecification"))
+
+
+class CreateVpnConnectionResponse(AbstractModel):
+    """CreateVpnConnection返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param VpnConnection: 通道实例对象。
+        :type VpnConnection: :class:`tencentcloud.vpc.v20170312.models.VpnConnection`
+        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :type RequestId: str
+        """
+        self.VpnConnection = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("VpnConnection") is not None:
+            self.VpnConnection = VpnConnection()
+            self.VpnConnection._deserialize(params.get("VpnConnection"))
+        self.RequestId = params.get("RequestId")
+
+
+class CreateVpnGatewayRequest(AbstractModel):
+    """CreateVpnGateway请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param VpcId: VPC实例ID。可通过DescribeVpcs接口返回值中的VpcId获取。
+        :type VpcId: str
+        :param VpnGatewayName: VPN网关名称，最大长度不能超过60个字节。
+        :type VpnGatewayName: str
+        :param InstanceChargeType: VPN网关计费模式，PREPAID：表示预付费，即包年包月，POSTPAID_BY_HOUR：表示后付费，即按量计费。默认：POSTPAID_BY_HOUR，如果指定预付费模式，参数InstanceChargePrepaid必填。
+        :type InstanceChargeType: str
+        :param InternetMaxBandwidthOut: 公网带宽设置。可选带宽规格：5, 10, 20, 50, 100；单位：Mbps
+        :type InternetMaxBandwidthOut: int
+        :param InstanceChargePrepaid: 预付费模式，即包年包月相关参数设置。通过该参数可以指定包年包月实例的购买时长、是否设置自动续费等属性。若指定实例的付费模式为预付费则该参数必传。
+        :type InstanceChargePrepaid: :class:`tencentcloud.vpc.v20170312.models.InstanceChargePrepaid`
+        """
+        self.VpcId = None
+        self.VpnGatewayName = None
+        self.InstanceChargeType = None
+        self.InternetMaxBandwidthOut = None
+        self.InstanceChargePrepaid = None
+
+
+    def _deserialize(self, params):
+        self.VpcId = params.get("VpcId")
+        self.VpnGatewayName = params.get("VpnGatewayName")
+        self.InstanceChargeType = params.get("InstanceChargeType")
+        self.InternetMaxBandwidthOut = params.get("InternetMaxBandwidthOut")
+        if params.get("InstanceChargePrepaid") is not None:
+            self.InstanceChargePrepaid = InstanceChargePrepaid()
+            self.InstanceChargePrepaid._deserialize(params.get("InstanceChargePrepaid"))
+
+
+class CreateVpnGatewayResponse(AbstractModel):
+    """CreateVpnGateway返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param VpnGateway: VPN网关对象
+        :type VpnGateway: :class:`tencentcloud.vpc.v20170312.models.VpnGateway`
+        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :type RequestId: str
+        """
+        self.VpnGateway = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("VpnGateway") is not None:
+            self.VpnGateway = VpnGateway()
+            self.VpnGateway._deserialize(params.get("VpnGateway"))
+        self.RequestId = params.get("RequestId")
+
+
+class CustomerGateway(AbstractModel):
+    """对端网关
+
+    """
+
+    def __init__(self):
+        """
+        :param CustomerGatewayId: 用户网关唯一ID
+        :type CustomerGatewayId: str
+        :param CustomerGatewayName: 网关名称
+        :type CustomerGatewayName: str
+        :param IpAddress: 公网地址
+        :type IpAddress: str
+        :param CreatedTime: 创建时间
+        :type CreatedTime: str
+        """
+        self.CustomerGatewayId = None
+        self.CustomerGatewayName = None
+        self.IpAddress = None
+        self.CreatedTime = None
+
+
+    def _deserialize(self, params):
+        self.CustomerGatewayId = params.get("CustomerGatewayId")
+        self.CustomerGatewayName = params.get("CustomerGatewayName")
+        self.IpAddress = params.get("IpAddress")
+        self.CreatedTime = params.get("CreatedTime")
+
+
+class CustomerGatewayVendor(AbstractModel):
+    """对端网关厂商信息对象。
+
+    """
+
+    def __init__(self):
+        """
+        :param Platform: 平台。
+        :type Platform: str
+        :param SoftwareVersion: 软件版本。
+        :type SoftwareVersion: str
+        :param VendorName: 供应商名称。
+        :type VendorName: str
+        """
+        self.Platform = None
+        self.SoftwareVersion = None
+        self.VendorName = None
+
+
+    def _deserialize(self, params):
+        self.Platform = params.get("Platform")
+        self.SoftwareVersion = params.get("SoftwareVersion")
+        self.VendorName = params.get("VendorName")
+
+
 class DeleteAddressTemplateGroupRequest(AbstractModel):
     """DeleteAddressTemplateGroup请求参数结构体
 
@@ -924,6 +1157,40 @@ class DeleteAddressTemplateRequest(AbstractModel):
 
 class DeleteAddressTemplateResponse(AbstractModel):
     """DeleteAddressTemplate返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class DeleteCustomerGatewayRequest(AbstractModel):
+    """DeleteCustomerGateway请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param CustomerGatewayId: 对端网关ID，例如：cgw-2wqq41m9，可通过DescribeCustomerGateways接口查询对端网关。
+        :type CustomerGatewayId: str
+        """
+        self.CustomerGatewayId = None
+
+
+    def _deserialize(self, params):
+        self.CustomerGatewayId = params.get("CustomerGatewayId")
+
+
+class DeleteCustomerGatewayResponse(AbstractModel):
+    """DeleteCustomerGateway返回参数结构体
 
     """
 
@@ -1255,6 +1522,78 @@ class DeleteVpcResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DeleteVpnConnectionRequest(AbstractModel):
+    """DeleteVpnConnection请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param VpnGatewayId: VPN网关实例ID。
+        :type VpnGatewayId: str
+        :param VpnConnectionId: VPN通道实例ID。形如：vpnx-f49l6u0z。
+        :type VpnConnectionId: str
+        """
+        self.VpnGatewayId = None
+        self.VpnConnectionId = None
+
+
+    def _deserialize(self, params):
+        self.VpnGatewayId = params.get("VpnGatewayId")
+        self.VpnConnectionId = params.get("VpnConnectionId")
+
+
+class DeleteVpnConnectionResponse(AbstractModel):
+    """DeleteVpnConnection返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class DeleteVpnGatewayRequest(AbstractModel):
+    """DeleteVpnGateway请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param VpnGatewayId: VPN网关实例ID。
+        :type VpnGatewayId: str
+        """
+        self.VpnGatewayId = None
+
+
+    def _deserialize(self, params):
+        self.VpnGatewayId = params.get("VpnGatewayId")
+
+
+class DeleteVpnGatewayResponse(AbstractModel):
+    """DeleteVpnGateway返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeAddressQuotaRequest(AbstractModel):
     """DescribeAddressQuota请求参数结构体
 
@@ -1326,13 +1665,26 @@ class DescribeAddressTemplateGroupsResponse(AbstractModel):
 
     def __init__(self):
         """
+        :param TotalCount: 符合条件的实例数量。
+        :type TotalCount: int
+        :param AddressTemplateGroupSet: IP地址模板。
+        :type AddressTemplateGroupSet: list of AddressTemplateGroup
         :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
         :type RequestId: str
         """
+        self.TotalCount = None
+        self.AddressTemplateGroupSet = None
         self.RequestId = None
 
 
     def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("AddressTemplateGroupSet") is not None:
+            self.AddressTemplateGroupSet = []
+            for item in params.get("AddressTemplateGroupSet"):
+                obj = AddressTemplateGroup()
+                obj._deserialize(item)
+                self.AddressTemplateGroupSet.append(obj)
         self.RequestId = params.get("RequestId")
 
 
@@ -1532,6 +1884,102 @@ class DescribeClassicLinkInstancesResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeCustomerGatewayVendorsRequest(AbstractModel):
+    """DescribeCustomerGatewayVendors请求参数结构体
+
+    """
+
+
+class DescribeCustomerGatewayVendorsResponse(AbstractModel):
+    """DescribeCustomerGatewayVendors返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param CustomerGatewayVendorSet: 对端网关厂商信息对象。
+        :type CustomerGatewayVendorSet: list of CustomerGatewayVendor
+        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :type RequestId: str
+        """
+        self.CustomerGatewayVendorSet = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("CustomerGatewayVendorSet") is not None:
+            self.CustomerGatewayVendorSet = []
+            for item in params.get("CustomerGatewayVendorSet"):
+                obj = CustomerGatewayVendor()
+                obj._deserialize(item)
+                self.CustomerGatewayVendorSet.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeCustomerGatewaysRequest(AbstractModel):
+    """DescribeCustomerGateways请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param CustomerGatewayIds: 对端网关ID，例如：cgw-2wqq41m9。每次请求的实例的上限为100。参数不支持同时指定CustomerGatewayIds和Filters。
+        :type CustomerGatewayIds: list of str
+        :param Filters: 过滤条件，详见下表：实例过滤条件表。每次请求的Filters的上限为10，Filter.Values的上限为5。参数不支持同时指定CustomerGatewayIds和Filters。
+        :type Filters: list of Filter
+        :param Offset: 偏移量，默认为0。关于Offset的更进一步介绍请参考 API 简介中的相关小节。
+        :type Offset: int
+        :param Limit: 返回数量，默认为20，最大值为100。
+        :type Limit: int
+        """
+        self.CustomerGatewayIds = None
+        self.Filters = None
+        self.Offset = None
+        self.Limit = None
+
+
+    def _deserialize(self, params):
+        self.CustomerGatewayIds = params.get("CustomerGatewayIds")
+        if params.get("Filters") is not None:
+            self.Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self.Filters.append(obj)
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+
+
+class DescribeCustomerGatewaysResponse(AbstractModel):
+    """DescribeCustomerGateways返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param CustomerGatewaySet: 对端网关对象列表
+        :type CustomerGatewaySet: list of CustomerGateway
+        :param TotalCount: 符合条件的实例数量。
+        :type TotalCount: int
+        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :type RequestId: str
+        """
+        self.CustomerGatewaySet = None
+        self.TotalCount = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("CustomerGatewaySet") is not None:
+            self.CustomerGatewaySet = []
+            for item in params.get("CustomerGatewaySet"):
+                obj = CustomerGateway()
+                obj._deserialize(item)
+                self.CustomerGatewaySet.append(obj)
+        self.TotalCount = params.get("TotalCount")
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeNetworkInterfacesRequest(AbstractModel):
     """DescribeNetworkInterfaces请求参数结构体
 
@@ -1616,7 +2064,7 @@ class DescribeRouteTablesRequest(AbstractModel):
 <li>route-table-id - String - （过滤条件）路由表实例ID。</li>
 <li>route-table-name - String - （过滤条件）路由表名称。</li>
 <li>vpc-id - String - （过滤条件）VPC实例ID，形如：vpc-f49l6u0z。</li>
-<li>association.main - Boolean - （过滤条件）是否主路由表。</li>
+<li>association.main - String - （过滤条件）是否主路由表。</li>
         :type Filters: list of Filter
         :param Offset: 偏移量。
         :type Offset: str
@@ -2039,6 +2487,134 @@ class DescribeVpcsResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeVpnConnectionsRequest(AbstractModel):
+    """DescribeVpnConnections请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param VpnConnectionIds: VPN通道实例ID。形如：vpnx-f49l6u0z。每次请求的实例的上限为100。参数不支持同时指定VpnConnectionIds和Filters。
+        :type VpnConnectionIds: list of str
+        :param Filters: 过滤条件，详见下表：实例过滤条件表。每次请求的Filters的上限为10，Filter.Values的上限为5。参数不支持同时指定VpnConnectionIds和Filters。
+        :type Filters: list of Filter
+        :param Offset: 偏移量，默认为0。关于Offset的更进一步介绍请参考 API 简介中的相关小节。
+        :type Offset: int
+        :param Limit: 返回数量，默认为20，最大值为100。
+        :type Limit: int
+        """
+        self.VpnConnectionIds = None
+        self.Filters = None
+        self.Offset = None
+        self.Limit = None
+
+
+    def _deserialize(self, params):
+        self.VpnConnectionIds = params.get("VpnConnectionIds")
+        if params.get("Filters") is not None:
+            self.Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self.Filters.append(obj)
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+
+
+class DescribeVpnConnectionsResponse(AbstractModel):
+    """DescribeVpnConnections返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param TotalCount: 符合条件的实例数量。
+        :type TotalCount: int
+        :param VpnConnectionSet: VPN通道实例。
+        :type VpnConnectionSet: list of VpnConnection
+        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.VpnConnectionSet = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("VpnConnectionSet") is not None:
+            self.VpnConnectionSet = []
+            for item in params.get("VpnConnectionSet"):
+                obj = VpnConnection()
+                obj._deserialize(item)
+                self.VpnConnectionSet.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeVpnGatewaysRequest(AbstractModel):
+    """DescribeVpnGateways请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param VpnGatewayIds: VPN网关实例ID。形如：vpngw-f49l6u0z。每次请求的实例的上限为100。参数不支持同时指定VpnGatewayIds和Filters。
+        :type VpnGatewayIds: list of str
+        :param Filters: 过滤器对象属性
+        :type Filters: list of FilterObject
+        :param Offset: 偏移量
+        :type Offset: int
+        :param Limit: 请求对象个数
+        :type Limit: int
+        """
+        self.VpnGatewayIds = None
+        self.Filters = None
+        self.Offset = None
+        self.Limit = None
+
+
+    def _deserialize(self, params):
+        self.VpnGatewayIds = params.get("VpnGatewayIds")
+        if params.get("Filters") is not None:
+            self.Filters = []
+            for item in params.get("Filters"):
+                obj = FilterObject()
+                obj._deserialize(item)
+                self.Filters.append(obj)
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+
+
+class DescribeVpnGatewaysResponse(AbstractModel):
+    """DescribeVpnGateways返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param TotalCount: 符合条件的实例数量。
+        :type TotalCount: int
+        :param VpnGatewaySet: VPN网关实例详细信息列表。
+        :type VpnGatewaySet: list of VpnGateway
+        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.VpnGatewaySet = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("VpnGatewaySet") is not None:
+            self.VpnGatewaySet = []
+            for item in params.get("VpnGatewaySet"):
+                obj = VpnGateway()
+                obj._deserialize(item)
+                self.VpnGatewaySet.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class DetachClassicLinkVpcRequest(AbstractModel):
     """DetachClassicLinkVpc请求参数结构体
 
@@ -2153,6 +2729,58 @@ class DisassociateAddressResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DownloadCustomerGatewayConfigurationRequest(AbstractModel):
+    """DownloadCustomerGatewayConfiguration请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param VpnGatewayId: VPN网关实例ID。
+        :type VpnGatewayId: str
+        :param VpnConnectionId: VPN通道实例ID。形如：vpnx-f49l6u0z。
+        :type VpnConnectionId: str
+        :param CustomerGatewayVendor: 对端网关厂商信息对象，可通过DescribeCustomerGatewayVendors获取。
+        :type CustomerGatewayVendor: :class:`tencentcloud.vpc.v20170312.models.CustomerGatewayVendor`
+        :param InterfaceName: 通道接入设备物理接口名称。
+        :type InterfaceName: str
+        """
+        self.VpnGatewayId = None
+        self.VpnConnectionId = None
+        self.CustomerGatewayVendor = None
+        self.InterfaceName = None
+
+
+    def _deserialize(self, params):
+        self.VpnGatewayId = params.get("VpnGatewayId")
+        self.VpnConnectionId = params.get("VpnConnectionId")
+        if params.get("CustomerGatewayVendor") is not None:
+            self.CustomerGatewayVendor = CustomerGatewayVendor()
+            self.CustomerGatewayVendor._deserialize(params.get("CustomerGatewayVendor"))
+        self.InterfaceName = params.get("InterfaceName")
+
+
+class DownloadCustomerGatewayConfigurationResponse(AbstractModel):
+    """DownloadCustomerGatewayConfiguration返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param CustomerGatewayConfiguration: XML格式配置信息。
+        :type CustomerGatewayConfiguration: str
+        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :type RequestId: str
+        """
+        self.CustomerGatewayConfiguration = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.CustomerGatewayConfiguration = params.get("CustomerGatewayConfiguration")
+        self.RequestId = params.get("RequestId")
+
+
 class Filter(AbstractModel):
     """过滤器
 
@@ -2195,6 +2823,240 @@ class FilterObject(AbstractModel):
         self.Values = params.get("Values")
 
 
+class IKEOptionsSpecification(AbstractModel):
+    """IKE配置（Internet Key Exchange，因特网密钥交换），IKE具有一套自保护机制，用户配置网络安全协议
+
+    """
+
+    def __init__(self):
+        """
+        :param PropoEncryAlgorithm: 加密算法，可选值：'3DES-CBC', 'AES-CBC-128', 'AES-CBS-192', 'AES-CBC-256', 'DES-CBC'，默认为3DES-CBC
+        :type PropoEncryAlgorithm: str
+        :param PropoAuthenAlgorithm: 认证算法：可选值：'MD5', 'SHA1'，默认为MD5
+        :type PropoAuthenAlgorithm: str
+        :param ExchangeMode: 协商模式：可选值：'AGGRESSIVE', 'MAIN'，默认为MAIN
+        :type ExchangeMode: str
+        :param LocalIdentity: 本端标识类型：可选值：'ADDRESS', 'FQDN'，默认为ADDRESS
+        :type LocalIdentity: str
+        :param RemoteIdentity: 对端标识类型：可选值：'ADDRESS', 'FQDN'，默认为ADDRESS
+        :type RemoteIdentity: str
+        :param LocalAddress: 本端标识，当LocalIdentity选为ADDRESS时，LocalAddress必填。localAddress默认为vpn网关公网IP
+        :type LocalAddress: str
+        :param RemoteAddress: 对端标识，当RemoteIdentity选为ADDRESS时，RemoteAddress必填
+        :type RemoteAddress: str
+        :param LocalFqdnName: 本端标识，当LocalIdentity选为FQDN时，LocalFqdnName必填
+        :type LocalFqdnName: str
+        :param RemoteFqdnName: 对端标识，当remoteIdentity选为FQDN时，RemoteFqdnName必填
+        :type RemoteFqdnName: str
+        :param DhGroupName: DH group，指定IKE交换密钥时使用的DH组，可选值：'GROUP1', 'GROUP2', 'GROUP5', 'GROUP14', 'GROUP24'，
+        :type DhGroupName: str
+        :param IKESaLifetimeSeconds: IKE SA Lifetime，单位：秒，设置IKE SA的生存周期，取值范围：60-604800
+        :type IKESaLifetimeSeconds: int
+        :param IKEVersion: IKE版本
+        :type IKEVersion: str
+        """
+        self.PropoEncryAlgorithm = None
+        self.PropoAuthenAlgorithm = None
+        self.ExchangeMode = None
+        self.LocalIdentity = None
+        self.RemoteIdentity = None
+        self.LocalAddress = None
+        self.RemoteAddress = None
+        self.LocalFqdnName = None
+        self.RemoteFqdnName = None
+        self.DhGroupName = None
+        self.IKESaLifetimeSeconds = None
+        self.IKEVersion = None
+
+
+    def _deserialize(self, params):
+        self.PropoEncryAlgorithm = params.get("PropoEncryAlgorithm")
+        self.PropoAuthenAlgorithm = params.get("PropoAuthenAlgorithm")
+        self.ExchangeMode = params.get("ExchangeMode")
+        self.LocalIdentity = params.get("LocalIdentity")
+        self.RemoteIdentity = params.get("RemoteIdentity")
+        self.LocalAddress = params.get("LocalAddress")
+        self.RemoteAddress = params.get("RemoteAddress")
+        self.LocalFqdnName = params.get("LocalFqdnName")
+        self.RemoteFqdnName = params.get("RemoteFqdnName")
+        self.DhGroupName = params.get("DhGroupName")
+        self.IKESaLifetimeSeconds = params.get("IKESaLifetimeSeconds")
+        self.IKEVersion = params.get("IKEVersion")
+
+
+class IPSECOptionsSpecification(AbstractModel):
+    """IPSec配置，腾讯云提供IPSec安全会话设置
+
+    """
+
+    def __init__(self):
+        """
+        :param EncryptAlgorithm: 加密算法，可选值：'3DES-CBC', 'AES-CBC-128', 'AES-CBC-192', 'AES-CBC-256', 'DES-CBC', 'NULL'， 默认为AES-CBC-128
+        :type EncryptAlgorithm: str
+        :param IntegrityAlgorith: 认证算法：可选值：'MD5', 'SHA1'，默认为
+        :type IntegrityAlgorith: str
+        :param IPSECSaLifetimeSeconds: IPsec SA lifetime(s)：单位秒，取值范围：180-604800
+        :type IPSECSaLifetimeSeconds: int
+        :param PfsDhGroup: PFS：可选值：'NULL', 'DH-GROUP1', 'DH-GROUP2', 'DH-GROUP5', 'DH-GROUP14', 'DH-GROUP24'，默认为NULL
+        :type PfsDhGroup: str
+        :param IPSECSaLifetimeTraffic: IPsec SA lifetime(KB)：单位KB，取值范围：2560-604800
+        :type IPSECSaLifetimeTraffic: int
+        """
+        self.EncryptAlgorithm = None
+        self.IntegrityAlgorith = None
+        self.IPSECSaLifetimeSeconds = None
+        self.PfsDhGroup = None
+        self.IPSECSaLifetimeTraffic = None
+
+
+    def _deserialize(self, params):
+        self.EncryptAlgorithm = params.get("EncryptAlgorithm")
+        self.IntegrityAlgorith = params.get("IntegrityAlgorith")
+        self.IPSECSaLifetimeSeconds = params.get("IPSECSaLifetimeSeconds")
+        self.PfsDhGroup = params.get("PfsDhGroup")
+        self.IPSECSaLifetimeTraffic = params.get("IPSECSaLifetimeTraffic")
+
+
+class InquiryPriceCreateVpnGatewayRequest(AbstractModel):
+    """InquiryPriceCreateVpnGateway请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param InstanceChargeType: VPN网关计费模式，PREPAID：表示预付费，即包年包月，POSTPAID_BY_HOUR：表示后付费，即按量计费。默认：POSTPAID_BY_HOUR，如果指定预付费模式，参数InstanceChargePrepaid必填。
+        :type InstanceChargeType: str
+        :param InstanceChargePrepaid: 预付费模式，即包年包月相关参数设置。通过该参数可以指定包年包月实例的购买时长、是否设置自动续费等属性。若指定实例的付费模式为预付费则该参数必传。
+        :type InstanceChargePrepaid: :class:`tencentcloud.vpc.v20170312.models.InstanceChargePrepaid`
+        :param InternetMaxBandwidthOut: 公网带宽设置。可选带宽规格：5, 10, 20, 50, 100；单位：Mbps。
+        :type InternetMaxBandwidthOut: int
+        """
+        self.InstanceChargeType = None
+        self.InstanceChargePrepaid = None
+        self.InternetMaxBandwidthOut = None
+
+
+    def _deserialize(self, params):
+        self.InstanceChargeType = params.get("InstanceChargeType")
+        if params.get("InstanceChargePrepaid") is not None:
+            self.InstanceChargePrepaid = InstanceChargePrepaid()
+            self.InstanceChargePrepaid._deserialize(params.get("InstanceChargePrepaid"))
+        self.InternetMaxBandwidthOut = params.get("InternetMaxBandwidthOut")
+
+
+class InquiryPriceCreateVpnGatewayResponse(AbstractModel):
+    """InquiryPriceCreateVpnGateway返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Price: 商品价格。
+        :type Price: :class:`tencentcloud.vpc.v20170312.models.Price`
+        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :type RequestId: str
+        """
+        self.Price = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Price") is not None:
+            self.Price = Price()
+            self.Price._deserialize(params.get("Price"))
+        self.RequestId = params.get("RequestId")
+
+
+class InquiryPriceRenewVpnGatewayRequest(AbstractModel):
+    """InquiryPriceRenewVpnGateway请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param VpnGatewayId: VPN网关实例ID。
+        :type VpnGatewayId: str
+        :param InstanceChargePrepaid: 预付费模式，即包年包月相关参数设置。通过该参数可以指定包年包月实例的购买时长、是否设置自动续费等属性。若指定实例的付费模式为预付费则该参数必传。
+        :type InstanceChargePrepaid: :class:`tencentcloud.vpc.v20170312.models.InstanceChargePrepaid`
+        """
+        self.VpnGatewayId = None
+        self.InstanceChargePrepaid = None
+
+
+    def _deserialize(self, params):
+        self.VpnGatewayId = params.get("VpnGatewayId")
+        if params.get("InstanceChargePrepaid") is not None:
+            self.InstanceChargePrepaid = InstanceChargePrepaid()
+            self.InstanceChargePrepaid._deserialize(params.get("InstanceChargePrepaid"))
+
+
+class InquiryPriceRenewVpnGatewayResponse(AbstractModel):
+    """InquiryPriceRenewVpnGateway返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Price: 商品价格。
+        :type Price: :class:`tencentcloud.vpc.v20170312.models.Price`
+        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :type RequestId: str
+        """
+        self.Price = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Price") is not None:
+            self.Price = Price()
+            self.Price._deserialize(params.get("Price"))
+        self.RequestId = params.get("RequestId")
+
+
+class InquiryPriceResetVpnGatewayInternetMaxBandwidthRequest(AbstractModel):
+    """InquiryPriceResetVpnGatewayInternetMaxBandwidth请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param VpnGatewayId: VPN网关实例ID。
+        :type VpnGatewayId: str
+        :param InternetMaxBandwidthOut: 公网带宽设置。可选带宽规格：5, 10, 20, 50, 100；单位：Mbps。
+        :type InternetMaxBandwidthOut: int
+        """
+        self.VpnGatewayId = None
+        self.InternetMaxBandwidthOut = None
+
+
+    def _deserialize(self, params):
+        self.VpnGatewayId = params.get("VpnGatewayId")
+        self.InternetMaxBandwidthOut = params.get("InternetMaxBandwidthOut")
+
+
+class InquiryPriceResetVpnGatewayInternetMaxBandwidthResponse(AbstractModel):
+    """InquiryPriceResetVpnGatewayInternetMaxBandwidth返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Price: 商品价格。
+        :type Price: :class:`tencentcloud.vpc.v20170312.models.Price`
+        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :type RequestId: str
+        """
+        self.Price = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Price") is not None:
+            self.Price = Price()
+            self.Price._deserialize(params.get("Price"))
+        self.RequestId = params.get("RequestId")
+
+
 class InstanceChargePrepaid(AbstractModel):
     """预付费（包年包月）计费对象。
 
@@ -2214,6 +3076,35 @@ class InstanceChargePrepaid(AbstractModel):
     def _deserialize(self, params):
         self.Period = params.get("Period")
         self.RenewFlag = params.get("RenewFlag")
+
+
+class ItemPrice(AbstractModel):
+    """单项计费价格信息
+
+    """
+
+    def __init__(self):
+        """
+        :param UnitPrice: 按量计费后付费单价，单位：元。
+        :type UnitPrice: float
+        :param ChargeUnit: 按量计费后付费计价单元，可取值范围： HOUR：表示计价单元是按每小时来计算。当前涉及该计价单元的场景有：实例按小时后付费（POSTPAID_BY_HOUR）、带宽按小时后付费（BANDWIDTH_POSTPAID_BY_HOUR）： GB：表示计价单元是按每GB来计算。当前涉及该计价单元的场景有：流量按小时后付费（TRAFFIC_POSTPAID_BY_HOUR）。
+        :type ChargeUnit: str
+        :param OriginalPrice: 预付费商品的原价，单位：元。
+        :type OriginalPrice: float
+        :param DiscountPrice: 预付费商品的折扣价，单位：元。
+        :type DiscountPrice: float
+        """
+        self.UnitPrice = None
+        self.ChargeUnit = None
+        self.OriginalPrice = None
+        self.DiscountPrice = None
+
+
+    def _deserialize(self, params):
+        self.UnitPrice = params.get("UnitPrice")
+        self.ChargeUnit = params.get("ChargeUnit")
+        self.OriginalPrice = params.get("OriginalPrice")
+        self.DiscountPrice = params.get("DiscountPrice")
 
 
 class MigrateNetworkInterfaceRequest(AbstractModel):
@@ -2407,6 +3298,44 @@ class ModifyAddressTemplateGroupAttributeRequest(AbstractModel):
 
 class ModifyAddressTemplateGroupAttributeResponse(AbstractModel):
     """ModifyAddressTemplateGroupAttribute返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class ModifyCustomerGatewayAttributeRequest(AbstractModel):
+    """ModifyCustomerGatewayAttribute请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param CustomerGatewayId: 对端网关ID，例如：cgw-2wqq41m9，可通过DescribeCustomerGateways接口查询对端网关。
+        :type CustomerGatewayId: str
+        :param CustomerGatewayName: 对端网关名称，可任意命名，但不得超过60个字符。
+        :type CustomerGatewayName: str
+        """
+        self.CustomerGatewayId = None
+        self.CustomerGatewayName = None
+
+
+    def _deserialize(self, params):
+        self.CustomerGatewayId = params.get("CustomerGatewayId")
+        self.CustomerGatewayName = params.get("CustomerGatewayName")
+
+
+class ModifyCustomerGatewayAttributeResponse(AbstractModel):
+    """ModifyCustomerGatewayAttribute返回参数结构体
 
     """
 
@@ -2807,6 +3736,111 @@ class ModifyVpcAttributeResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class ModifyVpnConnectionAttributeRequest(AbstractModel):
+    """ModifyVpnConnectionAttribute请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param VpnConnectionId: VPN通道实例ID。形如：vpnx-f49l6u0z。
+        :type VpnConnectionId: str
+        :param VpnConnectionName: VPN通道名称，可任意命名，但不得超过60个字符。
+        :type VpnConnectionName: str
+        :param PreShareKey: 预共享密钥。
+        :type PreShareKey: str
+        :param SecurityPolicyDatabases: SPD策略组，例如：{"10.0.0.5/24":["172.123.10.5/16"]}，10.0.0.5/24是vpc内网段172.123.10.5/16是IDC网段。用户指定VPC内哪些网段可以和您IDC中哪些网段通信。
+        :type SecurityPolicyDatabases: list of SecurityPolicyDatabase
+        :param IKEOptionsSpecification: IKE配置（Internet Key Exchange，因特网密钥交换），IKE具有一套自保护机制，用户配置网络安全协议。
+        :type IKEOptionsSpecification: :class:`tencentcloud.vpc.v20170312.models.IKEOptionsSpecification`
+        :param IPSECOptionsSpecification: IPSec配置，腾讯云提供IPSec安全会话设置。
+        :type IPSECOptionsSpecification: :class:`tencentcloud.vpc.v20170312.models.IPSECOptionsSpecification`
+        """
+        self.VpnConnectionId = None
+        self.VpnConnectionName = None
+        self.PreShareKey = None
+        self.SecurityPolicyDatabases = None
+        self.IKEOptionsSpecification = None
+        self.IPSECOptionsSpecification = None
+
+
+    def _deserialize(self, params):
+        self.VpnConnectionId = params.get("VpnConnectionId")
+        self.VpnConnectionName = params.get("VpnConnectionName")
+        self.PreShareKey = params.get("PreShareKey")
+        if params.get("SecurityPolicyDatabases") is not None:
+            self.SecurityPolicyDatabases = []
+            for item in params.get("SecurityPolicyDatabases"):
+                obj = SecurityPolicyDatabase()
+                obj._deserialize(item)
+                self.SecurityPolicyDatabases.append(obj)
+        if params.get("IKEOptionsSpecification") is not None:
+            self.IKEOptionsSpecification = IKEOptionsSpecification()
+            self.IKEOptionsSpecification._deserialize(params.get("IKEOptionsSpecification"))
+        if params.get("IPSECOptionsSpecification") is not None:
+            self.IPSECOptionsSpecification = IPSECOptionsSpecification()
+            self.IPSECOptionsSpecification._deserialize(params.get("IPSECOptionsSpecification"))
+
+
+class ModifyVpnConnectionAttributeResponse(AbstractModel):
+    """ModifyVpnConnectionAttribute返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class ModifyVpnGatewayAttributeRequest(AbstractModel):
+    """ModifyVpnGatewayAttribute请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param VpnGatewayId: VPN网关实例ID。
+        :type VpnGatewayId: str
+        :param VpnGatewayName: VPN网关名称，最大长度不能超过60个字节。
+        :type VpnGatewayName: str
+        :param InstanceChargeType: VPN网关计费模式，目前只支持预付费（即包年包月）到后付费（即按量计费）的转换。即参数只支持：POSTPAID_BY_HOUR。
+        :type InstanceChargeType: str
+        """
+        self.VpnGatewayId = None
+        self.VpnGatewayName = None
+        self.InstanceChargeType = None
+
+
+    def _deserialize(self, params):
+        self.VpnGatewayId = params.get("VpnGatewayId")
+        self.VpnGatewayName = params.get("VpnGatewayName")
+        self.InstanceChargeType = params.get("InstanceChargeType")
+
+
+class ModifyVpnGatewayAttributeResponse(AbstractModel):
+    """ModifyVpnGatewayAttribute返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class NetworkInterface(AbstractModel):
     """弹性网卡
 
@@ -2880,6 +3914,31 @@ class NetworkInterface(AbstractModel):
                 self.Attachment.append(obj)
         self.Zone = params.get("Zone")
         self.CreatedTime = params.get("CreatedTime")
+
+
+class Price(AbstractModel):
+    """价格
+
+    """
+
+    def __init__(self):
+        """
+        :param InstancePrice: 实例价格。
+        :type InstancePrice: :class:`tencentcloud.vpc.v20170312.models.ItemPrice`
+        :param BandwidthPrice: 网络价格。
+        :type BandwidthPrice: :class:`tencentcloud.vpc.v20170312.models.ItemPrice`
+        """
+        self.InstancePrice = None
+        self.BandwidthPrice = None
+
+
+    def _deserialize(self, params):
+        if params.get("InstancePrice") is not None:
+            self.InstancePrice = ItemPrice()
+            self.InstancePrice._deserialize(params.get("InstancePrice"))
+        if params.get("BandwidthPrice") is not None:
+            self.BandwidthPrice = ItemPrice()
+            self.BandwidthPrice._deserialize(params.get("BandwidthPrice"))
 
 
 class PrivateIpAddressSpecification(AbstractModel):
@@ -2978,6 +4037,46 @@ class ReleaseAddressesResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class RenewVpnGatewayRequest(AbstractModel):
+    """RenewVpnGateway请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param VpnGatewayId: VPN网关实例ID。
+        :type VpnGatewayId: str
+        :param InstanceChargePrepaid: 预付费计费模式。
+        :type InstanceChargePrepaid: :class:`tencentcloud.vpc.v20170312.models.InstanceChargePrepaid`
+        """
+        self.VpnGatewayId = None
+        self.InstanceChargePrepaid = None
+
+
+    def _deserialize(self, params):
+        self.VpnGatewayId = params.get("VpnGatewayId")
+        if params.get("InstanceChargePrepaid") is not None:
+            self.InstanceChargePrepaid = InstanceChargePrepaid()
+            self.InstanceChargePrepaid._deserialize(params.get("InstanceChargePrepaid"))
+
+
+class RenewVpnGatewayResponse(AbstractModel):
+    """RenewVpnGateway返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class ReplaceRouteTableAssociationRequest(AbstractModel):
     """ReplaceRouteTableAssociation请求参数结构体
 
@@ -2985,7 +4084,7 @@ class ReplaceRouteTableAssociationRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param SubnetId: 子网实例ID，例如：subnet-3x5lf5q0。可通过DescribeSubnetEx接口查询。
+        :param SubnetId: 子网实例ID，例如：subnet-3x5lf5q0。可通过DescribeSubnets接口查询。
         :type SubnetId: str
         :param RouteTableId: 路由表实例ID，例如：rtb-azd4dt1c。
         :type RouteTableId: str
@@ -3026,7 +4125,7 @@ class ReplaceRoutesRequest(AbstractModel):
         :param RouteTableId: 路由表实例ID，例如：rtb-azd4dt1c。
         :type RouteTableId: str
         :param Routes: 路由策略对象。只需要指定路由策略ID（RouteId）。
-        :type Routes: list of str
+        :type Routes: list of Route
         """
         self.RouteTableId = None
         self.Routes = None
@@ -3034,7 +4133,12 @@ class ReplaceRoutesRequest(AbstractModel):
 
     def _deserialize(self, params):
         self.RouteTableId = params.get("RouteTableId")
-        self.Routes = params.get("Routes")
+        if params.get("Routes") is not None:
+            self.Routes = []
+            for item in params.get("Routes"):
+                obj = Route()
+                obj._deserialize(item)
+                self.Routes.append(obj)
 
 
 class ReplaceRoutesResponse(AbstractModel):
@@ -3106,7 +4210,7 @@ class ResetRoutesRequest(AbstractModel):
         :param RouteTableName: 路由表名称，最大长度不能超过60个字节。
         :type RouteTableName: str
         :param Routes: 路由策略。
-        :type Routes: list of str
+        :type Routes: list of Route
         """
         self.RouteTableId = None
         self.RouteTableName = None
@@ -3116,11 +4220,92 @@ class ResetRoutesRequest(AbstractModel):
     def _deserialize(self, params):
         self.RouteTableId = params.get("RouteTableId")
         self.RouteTableName = params.get("RouteTableName")
-        self.Routes = params.get("Routes")
+        if params.get("Routes") is not None:
+            self.Routes = []
+            for item in params.get("Routes"):
+                obj = Route()
+                obj._deserialize(item)
+                self.Routes.append(obj)
 
 
 class ResetRoutesResponse(AbstractModel):
     """ResetRoutes返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class ResetVpnConnectionRequest(AbstractModel):
+    """ResetVpnConnection请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param VpnGatewayId: VPN网关实例ID。
+        :type VpnGatewayId: str
+        :param VpnConnectionId: VPN通道实例ID。形如：vpnx-f49l6u0z。
+        :type VpnConnectionId: str
+        """
+        self.VpnGatewayId = None
+        self.VpnConnectionId = None
+
+
+    def _deserialize(self, params):
+        self.VpnGatewayId = params.get("VpnGatewayId")
+        self.VpnConnectionId = params.get("VpnConnectionId")
+
+
+class ResetVpnConnectionResponse(AbstractModel):
+    """ResetVpnConnection返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class ResetVpnGatewayInternetMaxBandwidthRequest(AbstractModel):
+    """ResetVpnGatewayInternetMaxBandwidth请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param VpnGatewayId: VPN网关实例ID。
+        :type VpnGatewayId: str
+        :param InternetMaxBandwidthOut: 公网带宽设置。可选带宽规格：5, 10, 20, 50, 100；单位：Mbps。
+        :type InternetMaxBandwidthOut: int
+        """
+        self.VpnGatewayId = None
+        self.InternetMaxBandwidthOut = None
+
+
+    def _deserialize(self, params):
+        self.VpnGatewayId = params.get("VpnGatewayId")
+        self.InternetMaxBandwidthOut = params.get("InternetMaxBandwidthOut")
+
+
+class ResetVpnGatewayInternetMaxBandwidthResponse(AbstractModel):
+    """ResetVpnGatewayInternetMaxBandwidth返回参数结构体
 
     """
 
@@ -3144,7 +4329,7 @@ class Route(AbstractModel):
     def __init__(self):
         """
         :param RouteId: 路由策略ID。
-        :type RouteId: str
+        :type RouteId: int
         :param DestinationCidrBlock: 目的网段，取值不能在私有网络网段内，例如：112.20.51.0/24。
         :type DestinationCidrBlock: str
         :param GatewayType: 下一跳类型，目前我们支持的类型有：CVM：公网网关类型的云主机；VPN：vpn网关； DIRECTCONNECT：专线网关；PEERCONNECTION：对等连接；SSLVPN：sslvpn网关；NAT：nat网关; NORMAL_CVM：普通云主机。
@@ -3362,6 +4547,27 @@ class SecurityGroupPolicySet(AbstractModel):
                 self.Ingress.append(obj)
 
 
+class SecurityPolicyDatabase(AbstractModel):
+    """SecurityPolicyDatabase策略
+
+    """
+
+    def __init__(self):
+        """
+        :param LocalCidrBlock: 本端网段
+        :type LocalCidrBlock: str
+        :param RemoteCidrBlock: 对端网段
+        :type RemoteCidrBlock: list of str
+        """
+        self.LocalCidrBlock = None
+        self.RemoteCidrBlock = None
+
+
+    def _deserialize(self, params):
+        self.LocalCidrBlock = params.get("LocalCidrBlock")
+        self.RemoteCidrBlock = params.get("RemoteCidrBlock")
+
+
 class ServiceTemplate(AbstractModel):
     """协议端口模板
 
@@ -3445,6 +4651,8 @@ class Subnet(AbstractModel):
         :type RouteTableId: str
         :param CreatedTime: 创建时间。
         :type CreatedTime: str
+        :param AvailableIpAddressCount: 可用IP数。
+        :type AvailableIpAddressCount: int
         """
         self.VpcId = None
         self.SubnetId = None
@@ -3455,6 +4663,7 @@ class Subnet(AbstractModel):
         self.Zone = None
         self.RouteTableId = None
         self.CreatedTime = None
+        self.AvailableIpAddressCount = None
 
 
     def _deserialize(self, params):
@@ -3467,6 +4676,7 @@ class Subnet(AbstractModel):
         self.Zone = params.get("Zone")
         self.RouteTableId = params.get("RouteTableId")
         self.CreatedTime = params.get("CreatedTime")
+        self.AvailableIpAddressCount = params.get("AvailableIpAddressCount")
 
 
 class TransformAddressRequest(AbstractModel):
@@ -3581,3 +4791,154 @@ class Vpc(AbstractModel):
         self.IsDefault = params.get("IsDefault")
         self.EnableMulticast = params.get("EnableMulticast")
         self.CreatedTime = params.get("CreatedTime")
+
+
+class VpnConnection(AbstractModel):
+    """VPN通道对象。
+
+    """
+
+    def __init__(self):
+        """
+        :param VpnConnectionId: 通道实例ID。
+        :type VpnConnectionId: str
+        :param VpnConnectionName: 通道名称。
+        :type VpnConnectionName: str
+        :param VpcId: VPC实例ID。
+        :type VpcId: str
+        :param VpnGatewayId: VPN网关实例ID。
+        :type VpnGatewayId: str
+        :param CustomerGatewayId: 对端网关实例ID。
+        :type CustomerGatewayId: str
+        :param PreShareKey: 预共享密钥。
+        :type PreShareKey: str
+        :param VpnProto: 通道传输协议。
+        :type VpnProto: str
+        :param EncryptProto: 通道加密协议。
+        :type EncryptProto: str
+        :param RouteType: 路由类型。
+        :type RouteType: str
+        :param CreatedTime: 创建时间。
+        :type CreatedTime: str
+        :param State: 通道的生产状态，PENDING：生产中，AVAILABLE：运行中，DELETING：删除中。
+        :type State: str
+        :param NetStatus: 通道连接状态，AVAILABLE：已连接。
+        :type NetStatus: str
+        :param SecurityPolicyDatabaseSet: SPD。
+        :type SecurityPolicyDatabaseSet: list of SecurityPolicyDatabase
+        :param IKEOptionsSpecification: IKE选项。
+        :type IKEOptionsSpecification: :class:`tencentcloud.vpc.v20170312.models.IKEOptionsSpecification`
+        :param IPSECOptionsSpecification: IPSEC选择。
+        :type IPSECOptionsSpecification: :class:`tencentcloud.vpc.v20170312.models.IPSECOptionsSpecification`
+        """
+        self.VpnConnectionId = None
+        self.VpnConnectionName = None
+        self.VpcId = None
+        self.VpnGatewayId = None
+        self.CustomerGatewayId = None
+        self.PreShareKey = None
+        self.VpnProto = None
+        self.EncryptProto = None
+        self.RouteType = None
+        self.CreatedTime = None
+        self.State = None
+        self.NetStatus = None
+        self.SecurityPolicyDatabaseSet = None
+        self.IKEOptionsSpecification = None
+        self.IPSECOptionsSpecification = None
+
+
+    def _deserialize(self, params):
+        self.VpnConnectionId = params.get("VpnConnectionId")
+        self.VpnConnectionName = params.get("VpnConnectionName")
+        self.VpcId = params.get("VpcId")
+        self.VpnGatewayId = params.get("VpnGatewayId")
+        self.CustomerGatewayId = params.get("CustomerGatewayId")
+        self.PreShareKey = params.get("PreShareKey")
+        self.VpnProto = params.get("VpnProto")
+        self.EncryptProto = params.get("EncryptProto")
+        self.RouteType = params.get("RouteType")
+        self.CreatedTime = params.get("CreatedTime")
+        self.State = params.get("State")
+        self.NetStatus = params.get("NetStatus")
+        if params.get("SecurityPolicyDatabaseSet") is not None:
+            self.SecurityPolicyDatabaseSet = []
+            for item in params.get("SecurityPolicyDatabaseSet"):
+                obj = SecurityPolicyDatabase()
+                obj._deserialize(item)
+                self.SecurityPolicyDatabaseSet.append(obj)
+        if params.get("IKEOptionsSpecification") is not None:
+            self.IKEOptionsSpecification = IKEOptionsSpecification()
+            self.IKEOptionsSpecification._deserialize(params.get("IKEOptionsSpecification"))
+        if params.get("IPSECOptionsSpecification") is not None:
+            self.IPSECOptionsSpecification = IPSECOptionsSpecification()
+            self.IPSECOptionsSpecification._deserialize(params.get("IPSECOptionsSpecification"))
+
+
+class VpnGateway(AbstractModel):
+    """VPN网关对象。
+
+    """
+
+    def __init__(self):
+        """
+        :param VpnGatewayId: 网关实例ID。
+        :type VpnGatewayId: str
+        :param VpcId: VPC实例ID。
+        :type VpcId: str
+        :param VpnGatewayName: 网关实例名称。
+        :type VpnGatewayName: str
+        :param Type: 网关实例类型：'IPSEC', 'SSL'。
+        :type Type: str
+        :param State: 网关实例状态， 'PENDING'：生产中，'DELETING'：删除中，'AVAILABLE'：运行中。
+        :type State: str
+        :param PublicIpAddress: 网关公网IP。
+        :type PublicIpAddress: str
+        :param RenewFlag: 网关续费类型：'NOTIFY_AND_MANUAL_RENEW'：手动续费，'NOTIFY_AND_AUTO_RENEW'：自动续费
+        :type RenewFlag: str
+        :param InstanceChargeType: 网关付费类型：POSTPAID_BY_HOUR：按小时后付费，PREPAID：包年包月预付费，
+        :type InstanceChargeType: str
+        :param InternetMaxBandwidthOut: 网关出带宽。
+        :type InternetMaxBandwidthOut: int
+        :param CreatedTime: 创建时间。
+        :type CreatedTime: str
+        :param ExpiredTime: 预付费网关过期时间。
+        :type ExpiredTime: str
+        :param IsAddressBlocked: 公网IP是否被封堵。
+        :type IsAddressBlocked: bool
+        :param NewPurchasePlan: 计费模式变更，PREPAID_TO_POSTPAID：包年包月预付费到期转按小时后付费。
+        :type NewPurchasePlan: str
+        :param RestrictState: 网关计费装，PROTECTIVELY_ISOLATED：被安全隔离的实例，NORMAL：正常。
+        :type RestrictState: str
+        """
+        self.VpnGatewayId = None
+        self.VpcId = None
+        self.VpnGatewayName = None
+        self.Type = None
+        self.State = None
+        self.PublicIpAddress = None
+        self.RenewFlag = None
+        self.InstanceChargeType = None
+        self.InternetMaxBandwidthOut = None
+        self.CreatedTime = None
+        self.ExpiredTime = None
+        self.IsAddressBlocked = None
+        self.NewPurchasePlan = None
+        self.RestrictState = None
+
+
+    def _deserialize(self, params):
+        self.VpnGatewayId = params.get("VpnGatewayId")
+        self.VpcId = params.get("VpcId")
+        self.VpnGatewayName = params.get("VpnGatewayName")
+        self.Type = params.get("Type")
+        self.State = params.get("State")
+        self.PublicIpAddress = params.get("PublicIpAddress")
+        self.RenewFlag = params.get("RenewFlag")
+        self.InstanceChargeType = params.get("InstanceChargeType")
+        self.InternetMaxBandwidthOut = params.get("InternetMaxBandwidthOut")
+        self.CreatedTime = params.get("CreatedTime")
+        self.ExpiredTime = params.get("ExpiredTime")
+        self.IsAddressBlocked = params.get("IsAddressBlocked")
+        self.NewPurchasePlan = params.get("NewPurchasePlan")
+        self.RestrictState = params.get("RestrictState")

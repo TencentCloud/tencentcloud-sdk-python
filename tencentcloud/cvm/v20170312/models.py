@@ -23,9 +23,9 @@ class ActionTimer(AbstractModel):
 
     def __init__(self):
         """
-        :param TimerAction: 定时器
+        :param TimerAction: 定时器名称，目前仅支持销毁一个值：TerminateInstances。
         :type TimerAction: str
-        :param ActionTime: 执行时间
+        :param ActionTime: 执行时间，格式形如：2018/5/29 11:26:40,执行时间必须大于当前时间5分钟。
         :type ActionTime: str
         :param Externals: 扩展数据
         :type Externals: :class:`tencentcloud.cvm.v20170312.models.Externals`
@@ -1030,6 +1030,62 @@ class DescribeRegionsResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeZoneInstanceConfigInfosRequest(AbstractModel):
+    """DescribeZoneInstanceConfigInfos请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Filters: 过滤条件。
+
+<li> zone - String - 是否必填：否 -（过滤条件）按照可用区过滤。</li>
+
+<li> instance-family String - 是否必填：否 -（过滤条件）按照机型系列过滤。按照实例机型系列过滤。实例机型系列形如：S1、I1、M1等。</li>
+
+<li> instance-type - String - 是否必填：否 - （过滤条件）按照机型过滤。按照实例机型过滤。不同实例机型指定了不同的资源规格，具体取值可通过调用接口 DescribeInstanceTypeConfigs 来获得最新的规格表或参见实例类型描述。若不指定该参数，则默认机型为S1.SMALL1。</li>
+
+<li> instance-charge-type - String - 是否必填：否 -（过滤条件）按照实例计费模式过滤。 (PREPAID：表示预付费，即包年包月 | POSTPAID_BY_HOUR：表示后付费，即按量计费 | CDHPAID：表示CDH付费，即只对CDH计费，不对CDH上的实例计费。 )  </li>
+        :type Filters: list of Filter
+        """
+        self.Filters = None
+
+
+    def _deserialize(self, params):
+        if params.get("Filters") is not None:
+            self.Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self.Filters.append(obj)
+
+
+class DescribeZoneInstanceConfigInfosResponse(AbstractModel):
+    """DescribeZoneInstanceConfigInfos返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param InstanceTypeQuotaSet: 可用区机型配置列表。
+        :type InstanceTypeQuotaSet: list of InstanceTypeQuotaItem
+        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :type RequestId: str
+        """
+        self.InstanceTypeQuotaSet = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("InstanceTypeQuotaSet") is not None:
+            self.InstanceTypeQuotaSet = []
+            for item in params.get("InstanceTypeQuotaSet"):
+                obj = InstanceTypeQuotaItem()
+                obj._deserialize(item)
+                self.InstanceTypeQuotaSet.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeZonesRequest(AbstractModel):
     """DescribeZones请求参数结构体
 
@@ -1142,12 +1198,22 @@ class Externals(AbstractModel):
         """
         :param ReleaseAddress: 释放地址
         :type ReleaseAddress: bool
+        :param UnsupportNetworks: 不支持的网络类型
+        :type UnsupportNetworks: list of str
+        :param StorageBlockAttr: HDD本地存储属性
+        :type StorageBlockAttr: :class:`tencentcloud.cvm.v20170312.models.StorageBlock`
         """
         self.ReleaseAddress = None
+        self.UnsupportNetworks = None
+        self.StorageBlockAttr = None
 
 
     def _deserialize(self, params):
         self.ReleaseAddress = params.get("ReleaseAddress")
+        self.UnsupportNetworks = params.get("UnsupportNetworks")
+        if params.get("StorageBlockAttr") is not None:
+            self.StorageBlockAttr = StorageBlock()
+            self.StorageBlockAttr._deserialize(params.get("StorageBlockAttr"))
 
 
 class Filter(AbstractModel):
@@ -2100,6 +2166,76 @@ class InstanceTypeConfig(AbstractModel):
         self.InstanceTypeState = params.get("InstanceTypeState")
 
 
+class InstanceTypeQuotaItem(AbstractModel):
+    """描述实例机型配额信息。
+
+    """
+
+    def __init__(self):
+        """
+        :param Zone: 可用区。
+        :type Zone: str
+        :param InstanceType: 实例机型。
+        :type InstanceType: str
+        :param InstanceChargeType: 实例计费模式。取值范围： <br>*`PREPAID`：表示预付费，即包年包月 <br>* `POSTPAID_BY_HOUR`：表示后付费，即按量计费 * `CDHPAID`：[CDH](/document/product/416)付费，即只对[CDH(/document/product/416)]计费，不对[CDH](/document/product/416)上的实例计费。
+        :type InstanceChargeType: str
+        :param NetworkCard: 网卡类型，例如：25代表25G网卡
+        :type NetworkCard: int
+        :param Externals: 扩展属性。
+        :type Externals: :class:`tencentcloud.cvm.v20170312.models.Externals`
+        :param Cpu: 实例的CPU核数，单位：核。
+        :type Cpu: int
+        :param Memory: 实例内存容量，单位：`GB`。
+        :type Memory: int
+        :param InstanceFamily: 实例机型系列。
+        :type InstanceFamily: str
+        :param TypeName: 机型名称。
+        :type TypeName: str
+        :param LocalDiskTypeList: 本地磁盘规格列表。
+        :type LocalDiskTypeList: list of LocalDiskType
+        :param Status: 实例是否售卖。
+        :type Status: str
+        :param Price: 实例的售卖价格。
+        :type Price: :class:`tencentcloud.cvm.v20170312.models.ItemPrice`
+        """
+        self.Zone = None
+        self.InstanceType = None
+        self.InstanceChargeType = None
+        self.NetworkCard = None
+        self.Externals = None
+        self.Cpu = None
+        self.Memory = None
+        self.InstanceFamily = None
+        self.TypeName = None
+        self.LocalDiskTypeList = None
+        self.Status = None
+        self.Price = None
+
+
+    def _deserialize(self, params):
+        self.Zone = params.get("Zone")
+        self.InstanceType = params.get("InstanceType")
+        self.InstanceChargeType = params.get("InstanceChargeType")
+        self.NetworkCard = params.get("NetworkCard")
+        if params.get("Externals") is not None:
+            self.Externals = Externals()
+            self.Externals._deserialize(params.get("Externals"))
+        self.Cpu = params.get("Cpu")
+        self.Memory = params.get("Memory")
+        self.InstanceFamily = params.get("InstanceFamily")
+        self.TypeName = params.get("TypeName")
+        if params.get("LocalDiskTypeList") is not None:
+            self.LocalDiskTypeList = []
+            for item in params.get("LocalDiskTypeList"):
+                obj = LocalDiskType()
+                obj._deserialize(item)
+                self.LocalDiskTypeList.append(obj)
+        self.Status = params.get("Status")
+        if params.get("Price") is not None:
+            self.Price = ItemPrice()
+            self.Price._deserialize(params.get("Price"))
+
+
 class InternetAccessible(AbstractModel):
     """描述了实例的公网可访问性，声明了实例的公网使用计费模式，最大带宽等
 
@@ -2245,6 +2381,35 @@ class KeyPair(AbstractModel):
         self.PrivateKey = params.get("PrivateKey")
         self.AssociatedInstanceIds = params.get("AssociatedInstanceIds")
         self.CreatedTime = params.get("CreatedTime")
+
+
+class LocalDiskType(AbstractModel):
+    """本地磁盘规格
+
+    """
+
+    def __init__(self):
+        """
+        :param Type: 本地磁盘类型。
+        :type Type: str
+        :param PartitionType: 本地磁盘属性。
+        :type PartitionType: str
+        :param MinSize: 本地磁盘最小值。
+        :type MinSize: int
+        :param MaxSize: 本地磁盘最大值。
+        :type MaxSize: int
+        """
+        self.Type = None
+        self.PartitionType = None
+        self.MinSize = None
+        self.MaxSize = None
+
+
+    def _deserialize(self, params):
+        self.Type = params.get("Type")
+        self.PartitionType = params.get("PartitionType")
+        self.MinSize = params.get("MinSize")
+        self.MaxSize = params.get("MaxSize")
 
 
 class LoginSettings(AbstractModel):
@@ -3273,6 +3438,31 @@ class StopInstancesResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
+
+
+class StorageBlock(AbstractModel):
+    """HDD的本地存储信息
+
+    """
+
+    def __init__(self):
+        """
+        :param Type: HDD本地存储类型，值为：LOCAL_PRO.
+        :type Type: str
+        :param MinSize: HDD本地存储的最小容量
+        :type MinSize: int
+        :param MaxSize: HDD本地存储的最大容量
+        :type MaxSize: int
+        """
+        self.Type = None
+        self.MinSize = None
+        self.MaxSize = None
+
+
+    def _deserialize(self, params):
+        self.Type = params.get("Type")
+        self.MinSize = params.get("MinSize")
+        self.MaxSize = params.get("MaxSize")
 
 
 class SyncImagesRequest(AbstractModel):
