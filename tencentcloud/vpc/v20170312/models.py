@@ -2119,6 +2119,49 @@ class DescribeRouteTablesResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeSecurityGroupAssociationStatisticsRequest(AbstractModel):
+    """DescribeSecurityGroupAssociationStatistics请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param SecurityGroupIds: 安全实例ID，例如sg-33ocnj9n，可通过DescribeSecurityGroups获取。
+        :type SecurityGroupIds: list of str
+        """
+        self.SecurityGroupIds = None
+
+
+    def _deserialize(self, params):
+        self.SecurityGroupIds = params.get("SecurityGroupIds")
+
+
+class DescribeSecurityGroupAssociationStatisticsResponse(AbstractModel):
+    """DescribeSecurityGroupAssociationStatistics返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param SecurityGroupAssociationStatisticsSet: 安全组关联实例统计。
+        :type SecurityGroupAssociationStatisticsSet: list of SecurityGroupAssociationStatistics
+        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :type RequestId: str
+        """
+        self.SecurityGroupAssociationStatisticsSet = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("SecurityGroupAssociationStatisticsSet") is not None:
+            self.SecurityGroupAssociationStatisticsSet = []
+            for item in params.get("SecurityGroupAssociationStatisticsSet"):
+                obj = SecurityGroupAssociationStatistics()
+                obj._deserialize(item)
+                self.SecurityGroupAssociationStatisticsSet.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeSecurityGroupPoliciesRequest(AbstractModel):
     """DescribeSecurityGroupPolicies请求参数结构体
 
@@ -4461,6 +4504,39 @@ class SecurityGroup(AbstractModel):
         self.SecurityGroupDesc = params.get("SecurityGroupDesc")
         self.IsDefault = params.get("IsDefault")
         self.CreatedTime = params.get("CreatedTime")
+
+
+class SecurityGroupAssociationStatistics(AbstractModel):
+    """安全组关联的实例统计
+
+    """
+
+    def __init__(self):
+        """
+        :param SecurityGroupId: 安全组实例ID。
+        :type SecurityGroupId: str
+        :param CVM: 云主机实例数。
+        :type CVM: int
+        :param CDB: 数据库实例数。
+        :type CDB: int
+        :param ENI: 弹性网卡实例数。
+        :type ENI: int
+        :param SG: 被安全组引用数。
+        :type SG: int
+        """
+        self.SecurityGroupId = None
+        self.CVM = None
+        self.CDB = None
+        self.ENI = None
+        self.SG = None
+
+
+    def _deserialize(self, params):
+        self.SecurityGroupId = params.get("SecurityGroupId")
+        self.CVM = params.get("CVM")
+        self.CDB = params.get("CDB")
+        self.ENI = params.get("ENI")
+        self.SG = params.get("SG")
 
 
 class SecurityGroupPolicy(AbstractModel):

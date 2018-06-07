@@ -31,13 +31,13 @@ class SentenceRecognitionRequest(AbstractModel):
         :type EngSerViceType: str
         :param SourceType: 语音数据来源。0：语音 URL；1：语音数据（post body）。
         :type SourceType: int
-        :param Url: 语音 URL，公网可下载。当 SourceType 值为 0 时须填写该字段，为 1 时不填；URL 的长度大于 0，小于 2048。
+        :param Url: 语音 URL，公网可下载。当 SourceType 值为 0 时须填写该字段，为 1 时不填；URL 的长度大于 0，小于 2048，需进行urlencode编码。
         :type Url: str
         :param VoiceFormat: 识别音频的音频格式（支持mp3,wav）。
         :type VoiceFormat: str
         :param UsrAudioKey: 用户端对此任务的唯一标识，用户自助生成，用于用户查找识别结果。
         :type UsrAudioKey: str
-        :param Data: 语音数据，当SourceType 值为1时必须填写，为0可不写。
+        :param Data: 语音数据，当SourceType 值为1时必须填写，为0可不写。要base64编码
         :type Data: str
         :param DataLen: 数据长度，当 SourceType 值为1时必须填写，为0可不写。
         :type DataLen: int

@@ -674,46 +674,6 @@ class DescribeInstanceInternetBandwidthConfigsResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
-class DescribeInstanceOperationLogsRequest(AbstractModel):
-    """DescribeInstanceOperationLogs请求参数结构体
-
-    """
-
-    def __init__(self):
-        """
-        :param Filters: 每次请求的`Filters`的上限为1，`Filter.Values`的上限为1。
-Filters.1.Name目前支持“instance-id”，即根据实例 ID 过滤。实例 ID 形如：ins-1w2x3y4z。
-        :type Filters: list of Filter
-        """
-        self.Filters = None
-
-
-    def _deserialize(self, params):
-        if params.get("Filters") is not None:
-            self.Filters = []
-            for item in params.get("Filters"):
-                obj = Filter()
-                obj._deserialize(item)
-                self.Filters.append(obj)
-
-
-class DescribeInstanceOperationLogsResponse(AbstractModel):
-    """DescribeInstanceOperationLogs返回参数结构体
-
-    """
-
-    def __init__(self):
-        """
-        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
-        :type RequestId: str
-        """
-        self.RequestId = None
-
-
-    def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
-
-
 class DescribeInstanceTypeConfigsRequest(AbstractModel):
     """DescribeInstanceTypeConfigs请求参数结构体
 
@@ -1129,7 +1089,7 @@ class DisassociateInstancesKeyPairsRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param InstanceIds: 一个或多个待操作的实例ID，每次请求批量实例的上限为100。<br><br>可以通过以下方式获取可用的实例ID：<br><li>通过登录[控制台](https://console.cloud.tencent.com/cvm/index)查询实例ID。<br><li>通过调用接口 [DescribeInstances](https://cloud.tencent.com/document/api/213/15728) ，取返回信息中的 `InstanceId` 获取密钥对ID。
+        :param InstanceIds: 一个或多个待操作的实例ID，每次请求批量实例的上限为100。<br><br>可以通过以下方式获取可用的实例ID：<br><li>通过登录[控制台](https://console.cloud.tencent.com/cvm/index)查询实例ID。<br><li>通过调用接口 [DescribeInstances](https://cloud.tencent.com/document/api/213/15728) ，取返回信息中的 `InstanceId` 获取实例ID。
         :type InstanceIds: list of str
         :param KeyIds: 密钥对ID列表，每次请求批量密钥对的上限为100。密钥对ID形如：`skey-11112222`。<br><br>可以通过以下方式获取可用的密钥ID：<br><li>通过登录[控制台](https://console.cloud.tencent.com/cvm/sshkey)查询密钥ID。<br><li>通过调用接口 [DescribeKeyPairs](https://cloud.tencent.com/document/api/213/15699) ，取返回信息中的 `KeyId` 获取密钥对ID。
         :type KeyIds: list of str
@@ -1971,6 +1931,8 @@ class Instance(AbstractModel):
         :type SecurityGroupIds: list of str
         :param LoginSettings: 实例登录设置。目前只返回实例所关联的密钥。
         :type LoginSettings: :class:`tencentcloud.cvm.v20170312.models.LoginSettings`
+        :param InstanceState: 实例状态。取值范围：<br><li>PENDING：表示创建中<br></li><li>LAUNCH_FAILED：表示创建失败<br></li><li>RUNNING：表示运行中<br></li><li>STOPPED：表示关机<br></li><li>STARTING：表示开机中<br></li><li>STOPPING：表示关机中<br></li><li>REBOOTING：表示重启中<br></li><li>SHUTDOWN：表示停止待销毁<br></li><li>TERMINATING：表示销毁中。<br></li>
+        :type InstanceState: str
         """
         self.Placement = None
         self.InstanceId = None
@@ -1993,6 +1955,7 @@ class Instance(AbstractModel):
         self.OsName = None
         self.SecurityGroupIds = None
         self.LoginSettings = None
+        self.InstanceState = None
 
 
     def _deserialize(self, params):
@@ -2032,6 +1995,7 @@ class Instance(AbstractModel):
         if params.get("LoginSettings") is not None:
             self.LoginSettings = LoginSettings()
             self.LoginSettings._deserialize(params.get("LoginSettings"))
+        self.InstanceState = params.get("InstanceState")
 
 
 class InstanceChargePrepaid(AbstractModel):
@@ -2574,14 +2538,18 @@ class ModifyInstancesAttributeRequest(AbstractModel):
         :type InstanceIds: list of str
         :param InstanceName: 实例名称。可任意命名，但不得超过60个字符。
         :type InstanceName: str
+        :param SecurityGroups: 指定实例的安全组Id列表。
+        :type SecurityGroups: list of str
         """
         self.InstanceIds = None
         self.InstanceName = None
+        self.SecurityGroups = None
 
 
     def _deserialize(self, params):
         self.InstanceIds = params.get("InstanceIds")
         self.InstanceName = params.get("InstanceName")
+        self.SecurityGroups = params.get("SecurityGroups")
 
 
 class ModifyInstancesAttributeResponse(AbstractModel):
@@ -3195,6 +3163,11 @@ class RunInstancesRequest(AbstractModel):
         :type ActionTimer: :class:`tencentcloud.cvm.v20170312.models.ActionTimer`
         :param TagSpecification: 标签描述列表。通过指定该参数可以同时绑定标签到相应的资源实例，当前仅支持绑定标签到云主机实例。
         :type TagSpecification: list of TagSpecification
+        :param InstanceMarketOptions: 实例的市场相关选项，如竞价实例相关参数
+        :type InstanceMarketOptions: :class:`tencentcloud.cvm.v20170312.models.InstanceMarketOptionsRequest`
+        :param UserData: 提供给实例使用的用户数据，需要以 base64 方式编码，支持的最大数据大小为 16KB。关于获取此参数的详细介绍，请参阅[Windows](https://cloud.tencent.com/document/product/213/17526
+)和[Linux](https://cloud.tencent.com/document/product/213/17525)启动时运行命令。
+        :type UserData: str
         """
         self.InstanceChargeType = None
         self.InstanceChargePrepaid = None
@@ -3214,6 +3187,8 @@ class RunInstancesRequest(AbstractModel):
         self.HostName = None
         self.ActionTimer = None
         self.TagSpecification = None
+        self.InstanceMarketOptions = None
+        self.UserData = None
 
 
     def _deserialize(self, params):
@@ -3261,6 +3236,10 @@ class RunInstancesRequest(AbstractModel):
                 obj = TagSpecification()
                 obj._deserialize(item)
                 self.TagSpecification.append(obj)
+        if params.get("InstanceMarketOptions") is not None:
+            self.InstanceMarketOptions = InstanceMarketOptionsRequest()
+            self.InstanceMarketOptions._deserialize(params.get("InstanceMarketOptions"))
+        self.UserData = params.get("UserData")
 
 
 class RunInstancesResponse(AbstractModel):
@@ -3594,50 +3573,6 @@ class TerminateInstancesRequest(AbstractModel):
 
 class TerminateInstancesResponse(AbstractModel):
     """TerminateInstances返回参数结构体
-
-    """
-
-    def __init__(self):
-        """
-        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
-        :type RequestId: str
-        """
-        self.RequestId = None
-
-
-    def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
-
-
-class UpdateInstanceVpcConfigRequest(AbstractModel):
-    """UpdateInstanceVpcConfig请求参数结构体
-
-    """
-
-    def __init__(self):
-        """
-        :param InstanceId: 待操作的实例ID。可通过[`DescribeInstances`](document/api/213/9388)接口返回值中的`InstanceId`获取。
-        :type InstanceId: str
-        :param VirtualPrivateCloud: 私有网络相关信息配置。通过该参数指定私有网络的ID，子网ID，私有网络ip等信息。
-        :type VirtualPrivateCloud: :class:`tencentcloud.cvm.v20170312.models.VirtualPrivateCloud`
-        :param ForceStop: 是否对运行中的实例选择强制关机。默认为TRUE。
-        :type ForceStop: bool
-        """
-        self.InstanceId = None
-        self.VirtualPrivateCloud = None
-        self.ForceStop = None
-
-
-    def _deserialize(self, params):
-        self.InstanceId = params.get("InstanceId")
-        if params.get("VirtualPrivateCloud") is not None:
-            self.VirtualPrivateCloud = VirtualPrivateCloud()
-            self.VirtualPrivateCloud._deserialize(params.get("VirtualPrivateCloud"))
-        self.ForceStop = params.get("ForceStop")
-
-
-class UpdateInstanceVpcConfigResponse(AbstractModel):
-    """UpdateInstanceVpcConfig返回参数结构体
 
     """
 

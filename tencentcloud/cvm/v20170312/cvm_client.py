@@ -413,34 +413,6 @@ class CvmClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def DescribeInstanceOperationLogs(self, request):
-        """本接口（DescribeInstanceOperationLogs）查询指定实例操作记录。
-
-        :param request: 调用DescribeInstanceOperationLogs所需参数的结构体。
-        :type request: :class:`tencentcloud.cvm.v20170312.models.DescribeInstanceOperationLogsRequest`
-        :rtype: :class:`tencentcloud.cvm.v20170312.models.DescribeInstanceOperationLogsResponse`
-
-        """
-        try:
-            params = request._serialize()
-            body = self.call("DescribeInstanceOperationLogs", params)
-            response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.DescribeInstanceOperationLogsResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise e
-            else:
-                raise TencentCloudSDKException(e.message, e.message)
-
-
     def DescribeInstanceTypeConfigs(self, request):
         """本接口 (DescribeInstanceTypeConfigs) 用于查询实例机型配置。
 
@@ -1579,36 +1551,6 @@ class CvmClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.TerminateInstancesResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise e
-            else:
-                raise TencentCloudSDKException(e.message, e.message)
-
-
-    def UpdateInstanceVpcConfig(self, request):
-        """本接口(UpdateInstanceVpcConfig)用于修改实例vpc属性，如私有网络ip。
-        * 此操作默认会关闭实例，完成后再启动。
-        * 不支持跨VpcId操作。
-
-        :param request: 调用UpdateInstanceVpcConfig所需参数的结构体。
-        :type request: :class:`tencentcloud.cvm.v20170312.models.UpdateInstanceVpcConfigRequest`
-        :rtype: :class:`tencentcloud.cvm.v20170312.models.UpdateInstanceVpcConfigResponse`
-
-        """
-        try:
-            params = request._serialize()
-            body = self.call("UpdateInstanceVpcConfig", params)
-            response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.UpdateInstanceVpcConfigResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
