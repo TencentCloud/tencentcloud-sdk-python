@@ -13,6 +13,7 @@
 # limitations under the License.
 
 import json
+import sys
 
 
 class AbstractModel(object):
@@ -27,7 +28,7 @@ class AbstractModel(object):
             elif isinstance(obj, list):
                 return [dfs(o) for o in obj if dfs(o) is not None]
             else:
-                return obj
+                return obj.encode("UTF-8") if isinstance(obj, type(u"")) and sys.version_info[0] == 2 else obj
 
         return dfs(self)
 
