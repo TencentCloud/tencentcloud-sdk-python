@@ -381,13 +381,17 @@ class CreateBackupResponse(AbstractModel):
 
     def __init__(self):
         """
+        :param BackupId: 备份任务ID。
+        :type BackupId: int
         :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
         :type RequestId: str
         """
+        self.BackupId = None
         self.RequestId = None
 
 
     def _deserialize(self, params):
+        self.BackupId = params.get("BackupId")
         self.RequestId = params.get("RequestId")
 
 
@@ -561,7 +565,7 @@ class CreateDBInstanceHourResponse(AbstractModel):
     def __init__(self):
         """
         :param DealIds: 短订单ID，用于调用云API相关接口，如[获取订单信息](https://cloud.tencent.com/document/api/403/4392)
-        :type DealIds: str
+        :type DealIds: list of str
         :param InstanceIds: 实例ID列表
         :type InstanceIds: list of str
         :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
@@ -698,7 +702,7 @@ class CreateDBInstanceResponse(AbstractModel):
     def __init__(self):
         """
         :param DealIds: 短订单ID，用于调用云API相关接口，如[获取订单信息](https://cloud.tencent.com/document/api/403/4392)
-        :type DealIds: str
+        :type DealIds: list of str
         :param InstanceIds: 实例ID列表
         :type InstanceIds: list of str
         :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
@@ -851,7 +855,7 @@ class DeleteBackupRequest(AbstractModel):
         """
         :param InstanceId: 实例ID，格式如：cdb-c1nl9rpv。与云数据库控制台页面中显示的实例ID相同。
         :type InstanceId: str
-        :param BackupId: 备份任务Id。
+        :param BackupId: 备份任务ID。该任务ID为[创建云数据库备份](https://cloud.tencent.com/document/api/236/15844)接口返回的任务ID。
         :type BackupId: int
         """
         self.InstanceId = None
@@ -1190,7 +1194,7 @@ class DescribeBackupTablesRequest(AbstractModel):
         :param DatabaseName: 指定的数据库名。
         :type DatabaseName: str
         :param SearchTable: 要查询的数据表名前缀。
-        :type SearchTable: list of str
+        :type SearchTable: str
         :param Offset: 分页偏移。
         :type Offset: int
         :param Limit: 分页大小，最大值为2000。
@@ -3018,9 +3022,9 @@ class ModifyDBInstanceVipVportRequest(AbstractModel):
         """
         :param InstanceId: 实例ID，格式如：cdb-c1nl9rpv，与云数据库控制台页面中显示的实例ID相同，可使用[查询实例列表](https://cloud.tencent.com/document/api/236/15872) 接口获取，其值为输出参数中字段 InstanceId 的值。
         :type InstanceId: str
-        :param DstIp: 目标IP。
+        :param DstIp: 目标IP。该参数和DstPort参数，两者必传一个。
         :type DstIp: str
-        :param DstPort: 目标端口，支持范围为：[1024-65535]。
+        :param DstPort: 目标端口，支持范围为：[1024-65535]。该参数和DstIp参数，两者必传一个。
         :type DstPort: int
         :param UniqVpcId: 私有网络统一ID。
         :type UniqVpcId: str
@@ -3860,24 +3864,20 @@ class UpgradeDBInstanceResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param DealIds: 短订单ID，用于调用云API相关接口，如[获取订单信息](https://cloud.tencent.com/document/api/403/4392)
+        :param DealIds: 订单ID，用于调用云API相关接口，如[获取订单信息](https://cloud.tencent.com/document/api/403/4392)
         :type DealIds: list of str
-        :param DealNames: 长订单ID，用于反馈订单问题给腾讯云官方客服
-        :type DealNames: list of str
         :param AsyncRequestId: 异步任务的请求ID，可使用此ID查询异步任务的执行结果
         :type AsyncRequestId: str
         :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
         :type RequestId: str
         """
         self.DealIds = None
-        self.DealNames = None
         self.AsyncRequestId = None
         self.RequestId = None
 
 
     def _deserialize(self, params):
         self.DealIds = params.get("DealIds")
-        self.DealNames = params.get("DealNames")
         self.AsyncRequestId = params.get("AsyncRequestId")
         self.RequestId = params.get("RequestId")
 

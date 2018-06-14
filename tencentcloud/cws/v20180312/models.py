@@ -79,12 +79,16 @@ class CreateSitesRequest(AbstractModel):
         """
         :param Urls: 站点的url列表
         :type Urls: list of str
+        :param UserAgent: 访问网站的客户端标识
+        :type UserAgent: str
         """
         self.Urls = None
+        self.UserAgent = None
 
 
     def _deserialize(self, params):
         self.Urls = params.get("Urls")
+        self.UserAgent = params.get("UserAgent")
 
 
 class CreateSitesResponse(AbstractModel):
@@ -273,6 +277,8 @@ class DescribeConfigResponse(AbstractModel):
         :type CreatedAt: str
         :param UpdatedAt: 记录更新新建。
         :type UpdatedAt: str
+        :param Appid: 云用户appid。
+        :type Appid: int
         :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
         :type RequestId: str
         """
@@ -280,6 +286,7 @@ class DescribeConfigResponse(AbstractModel):
         self.Id = None
         self.CreatedAt = None
         self.UpdatedAt = None
+        self.Appid = None
         self.RequestId = None
 
 
@@ -288,6 +295,7 @@ class DescribeConfigResponse(AbstractModel):
         self.Id = params.get("Id")
         self.CreatedAt = params.get("CreatedAt")
         self.UpdatedAt = params.get("UpdatedAt")
+        self.Appid = params.get("Appid")
         self.RequestId = params.get("RequestId")
 
 
@@ -368,11 +376,11 @@ class DescribeSiteQuotaResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param Total: 已购买的站点数。
+        :param Total: 已购买的扫描次数。
         :type Total: int
-        :param Used: 已使用的站点数。
+        :param Used: 已使用的扫描次数。
         :type Used: int
-        :param Available: 剩余可用的站点数。
+        :param Available: 剩余可用的扫描次数。
         :type Available: int
         :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
         :type RequestId: str
@@ -481,7 +489,7 @@ class DescribeSitesVerificationResponse(AbstractModel):
         :param TotalCount: 验证信息数量。
         :type TotalCount: int
         :param SitesVerification: 验证信息列表。
-        :type SitesVerification: :class:`tencentcloud.cws.v20180312.models.SitesVerification`
+        :type SitesVerification: list of SitesVerification
         :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
         :type RequestId: str
         """
@@ -493,8 +501,11 @@ class DescribeSitesVerificationResponse(AbstractModel):
     def _deserialize(self, params):
         self.TotalCount = params.get("TotalCount")
         if params.get("SitesVerification") is not None:
-            self.SitesVerification = SitesVerification()
-            self.SitesVerification._deserialize(params.get("SitesVerification"))
+            self.SitesVerification = []
+            for item in params.get("SitesVerification"):
+                obj = SitesVerification()
+                obj._deserialize(item)
+                self.SitesVerification.append(obj)
         self.RequestId = params.get("RequestId")
 
 
@@ -697,14 +708,34 @@ class ModifySiteAttributeRequest(AbstractModel):
         :type SiteId: int
         :param Name: 站点名称
         :type Name: str
+        :param NeedLogin: 网站是否需要登录扫描：0-未知；-1-不需要；1-需要
+        :type NeedLogin: int
+        :param LoginCookie: 登录后的cookie
+        :type LoginCookie: str
+        :param LoginCheckUrl: 用于测试cookie是否有效的URL
+        :type LoginCheckUrl: str
+        :param LoginCheckKw: 用于测试cookie是否有效的关键字
+        :type LoginCheckKw: str
+        :param ScanDisallow: 禁止扫描器扫描的目录关键字
+        :type ScanDisallow: str
         """
         self.SiteId = None
         self.Name = None
+        self.NeedLogin = None
+        self.LoginCookie = None
+        self.LoginCheckUrl = None
+        self.LoginCheckKw = None
+        self.ScanDisallow = None
 
 
     def _deserialize(self, params):
         self.SiteId = params.get("SiteId")
         self.Name = params.get("Name")
+        self.NeedLogin = params.get("NeedLogin")
+        self.LoginCookie = params.get("LoginCookie")
+        self.LoginCheckUrl = params.get("LoginCheckUrl")
+        self.LoginCheckKw = params.get("LoginCheckKw")
+        self.ScanDisallow = params.get("ScanDisallow")
 
 
 class ModifySiteAttributeResponse(AbstractModel):
@@ -936,12 +967,24 @@ class Site(AbstractModel):
         :type LastScanNoticeNum: int
         :param Progress: 扫描进度，百分比整数
         :type Progress: int
-        :param LastScanExtsCount: 最近一次扫描各个类型风险漏洞数量，存储的是json对象
-        :type LastScanExtsCount: str
         :param Appid: 云用户appid。
         :type Appid: int
         :param Uin: 云用户标识。
         :type Uin: str
+        :param NeedLogin: 网站是否需要登录扫描：0-未知；-1-不需要；1-需要。
+        :type NeedLogin: int
+        :param LoginCookie: 登录后的cookie。
+        :type LoginCookie: str
+        :param LoginCookieValid: 登录后的cookie是否有效：0-无效；1-有效。
+        :type LoginCookieValid: int
+        :param LoginCheckUrl: 用于测试cookie是否有效的URL。
+        :type LoginCheckUrl: str
+        :param LoginCheckKw: 用于测试cookie是否有效的关键字。
+        :type LoginCheckKw: str
+        :param ScanDisallow: 禁止扫描器扫描的目录关键字。
+        :type ScanDisallow: str
+        :param UserAgent: 访问网站的客户端标识。
+        :type UserAgent: str
         """
         self.Id = None
         self.MonitorId = None
@@ -966,9 +1009,15 @@ class Site(AbstractModel):
         self.LastScanVulsNum = None
         self.LastScanNoticeNum = None
         self.Progress = None
-        self.LastScanExtsCount = None
         self.Appid = None
         self.Uin = None
+        self.NeedLogin = None
+        self.LoginCookie = None
+        self.LoginCookieValid = None
+        self.LoginCheckUrl = None
+        self.LoginCheckKw = None
+        self.ScanDisallow = None
+        self.UserAgent = None
 
 
     def _deserialize(self, params):
@@ -995,9 +1044,15 @@ class Site(AbstractModel):
         self.LastScanVulsNum = params.get("LastScanVulsNum")
         self.LastScanNoticeNum = params.get("LastScanNoticeNum")
         self.Progress = params.get("Progress")
-        self.LastScanExtsCount = params.get("LastScanExtsCount")
         self.Appid = params.get("Appid")
         self.Uin = params.get("Uin")
+        self.NeedLogin = params.get("NeedLogin")
+        self.LoginCookie = params.get("LoginCookie")
+        self.LoginCookieValid = params.get("LoginCookieValid")
+        self.LoginCheckUrl = params.get("LoginCheckUrl")
+        self.LoginCheckKw = params.get("LoginCheckKw")
+        self.ScanDisallow = params.get("ScanDisallow")
+        self.UserAgent = params.get("UserAgent")
 
 
 class SitesVerification(AbstractModel):
@@ -1025,6 +1080,10 @@ class SitesVerification(AbstractModel):
         :type Id: int
         :param Appid: 云用户appid
         :type Appid: int
+        :param VerifyUrl: 用于验证站点的url，即访问该url获取验证数据。
+        :type VerifyUrl: str
+        :param VerifyFileUrl: 获取验证验证文件的url。
+        :type VerifyFileUrl: str
         """
         self.Domain = None
         self.TxtName = None
@@ -1035,6 +1094,8 @@ class SitesVerification(AbstractModel):
         self.UpdatedAt = None
         self.Id = None
         self.Appid = None
+        self.VerifyUrl = None
+        self.VerifyFileUrl = None
 
 
     def _deserialize(self, params):
@@ -1047,6 +1108,8 @@ class SitesVerification(AbstractModel):
         self.UpdatedAt = params.get("UpdatedAt")
         self.Id = params.get("Id")
         self.Appid = params.get("Appid")
+        self.VerifyUrl = params.get("VerifyUrl")
+        self.VerifyFileUrl = params.get("VerifyFileUrl")
 
 
 class VerifySitesRequest(AbstractModel):
@@ -1130,6 +1193,10 @@ class Vul(AbstractModel):
         :type UpdatedAt: str
         :param IsReported: 是否已经添加误报，0-否，1-是。
         :type IsReported: int
+        :param Appid: 云用户appid。
+        :type Appid: int
+        :param Uin: 云用户标识。
+        :type Uin: str
         """
         self.Id = None
         self.SiteId = None
@@ -1147,6 +1214,8 @@ class Vul(AbstractModel):
         self.CreatedAt = None
         self.UpdatedAt = None
         self.IsReported = None
+        self.Appid = None
+        self.Uin = None
 
 
     def _deserialize(self, params):
@@ -1166,3 +1235,5 @@ class Vul(AbstractModel):
         self.CreatedAt = params.get("CreatedAt")
         self.UpdatedAt = params.get("UpdatedAt")
         self.IsReported = params.get("IsReported")
+        self.Appid = params.get("Appid")
+        self.Uin = params.get("Uin")

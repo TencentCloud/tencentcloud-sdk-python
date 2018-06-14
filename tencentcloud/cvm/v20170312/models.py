@@ -25,7 +25,7 @@ class ActionTimer(AbstractModel):
         """
         :param TimerAction: 定时器名称，目前仅支持销毁一个值：TerminateInstances。
         :type TimerAction: str
-        :param ActionTime: 执行时间，格式形如：2018/5/29 11:26:40,执行时间必须大于当前时间5分钟。
+        :param ActionTime: 执行时间，格式形如：2018-5-29 11:26:40,执行时间必须大于当前时间5分钟。
         :type ActionTime: str
         :param Externals: 扩展数据
         :type Externals: :class:`tencentcloud.cvm.v20170312.models.Externals`
@@ -168,6 +168,68 @@ class ChargePrepaid(AbstractModel):
         self.RenewFlag = params.get("RenewFlag")
 
 
+class CreateDisasterRecoverGroupRequest(AbstractModel):
+    """CreateDisasterRecoverGroup请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Name: 分散置放群组名称，长度1-60个字符，支持中、英文。
+        :type Name: str
+        :param Type: 分散置放群组类型，取值范围：<br><li>HOST：物理机<br><li>SW：交换机<br><li>RACK：机架
+        :type Type: str
+        """
+        self.Name = None
+        self.Type = None
+
+
+    def _deserialize(self, params):
+        self.Name = params.get("Name")
+        self.Type = params.get("Type")
+
+
+class CreateDisasterRecoverGroupResponse(AbstractModel):
+    """CreateDisasterRecoverGroup返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param DisasterRecoverGroupId: 分散置放群组ID列表。
+        :type DisasterRecoverGroupId: str
+        :param Type: 分散置放群组类型，取值范围：<br><li>HOST：物理机<br><li>SW：交换机<br><li>RACK：机架
+        :type Type: str
+        :param Name: 分散置放群组名称，长度1-60个字符，支持中、英文。
+        :type Name: str
+        :param CvmQuotaTotal: 置放群组内可容纳的云主机数量。
+        :type CvmQuotaTotal: int
+        :param CurrentNum: 置放群组内已有的云主机数量。
+        :type CurrentNum: int
+        :param CreateTime: 置放群组创建时间。
+        :type CreateTime: str
+        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :type RequestId: str
+        """
+        self.DisasterRecoverGroupId = None
+        self.Type = None
+        self.Name = None
+        self.CvmQuotaTotal = None
+        self.CurrentNum = None
+        self.CreateTime = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.DisasterRecoverGroupId = params.get("DisasterRecoverGroupId")
+        self.Type = params.get("Type")
+        self.Name = params.get("Name")
+        self.CvmQuotaTotal = params.get("CvmQuotaTotal")
+        self.CurrentNum = params.get("CurrentNum")
+        self.CreateTime = params.get("CreateTime")
+        self.RequestId = params.get("RequestId")
+
+
 class CreateImageRequest(AbstractModel):
     """CreateImage请求参数结构体
 
@@ -278,7 +340,7 @@ class DataDisk(AbstractModel):
         """
         :param DiskType: 数据盘类型。数据盘类型限制详见[CVM实例配置](/document/product/213/2177)。取值范围：<br><li>LOCAL_BASIC：本地硬盘<br><li>LOCAL_SSD：本地SSD硬盘<br><li>CLOUD_BASIC：普通云硬盘<br><li>CLOUD_PREMIUM：高性能云硬盘<br><li>CLOUD_SSD：SSD云硬盘<br><br>默认取值：LOCAL_BASIC。<br><br>该参数对`ResizeInstanceDisk`接口无效。
         :type DiskType: str
-        :param DiskId: 系统盘ID。LOCAL_BASIC 和 LOCAL_SSD 类型没有ID。暂时不支持该参数。
+        :param DiskId: 数据盘ID。LOCAL_BASIC 和 LOCAL_SSD 类型没有ID。暂时不支持该参数。
         :type DiskId: str
         :param DiskSize: 数据盘大小，单位：GB。最小调整步长为10G，不同数据盘类型取值范围不同，具体限制详见：[CVM实例配置](/document/product/213/2177)。默认值为0，表示不购买数据盘。更多限制详见产品文档。
         :type DiskSize: int
@@ -292,6 +354,40 @@ class DataDisk(AbstractModel):
         self.DiskType = params.get("DiskType")
         self.DiskId = params.get("DiskId")
         self.DiskSize = params.get("DiskSize")
+
+
+class DeleteDisasterRecoverGroupsRequest(AbstractModel):
+    """DeleteDisasterRecoverGroups请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param DisasterRecoverGroupIds: 分散置放群组ID列表，可通过[DescribeDisasterRecoverGroups](https://cloud.tencent.com/document/api/213/17810)接口获取。
+        :type DisasterRecoverGroupIds: list of str
+        """
+        self.DisasterRecoverGroupIds = None
+
+
+    def _deserialize(self, params):
+        self.DisasterRecoverGroupIds = params.get("DisasterRecoverGroupIds")
+
+
+class DeleteDisasterRecoverGroupsResponse(AbstractModel):
+    """DeleteDisasterRecoverGroups返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
 
 
 class DeleteImagesRequest(AbstractModel):
@@ -359,6 +455,108 @@ class DeleteKeyPairsResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeDisasterRecoverGroupQuotaRequest(AbstractModel):
+    """DescribeDisasterRecoverGroupQuota请求参数结构体
+
+    """
+
+
+class DescribeDisasterRecoverGroupQuotaResponse(AbstractModel):
+    """DescribeDisasterRecoverGroupQuota返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param GroupQuota: 可创建置放群组数量的上限。
+        :type GroupQuota: int
+        :param CurrentNum: 当前用户已经创建的置放群组数量。
+        :type CurrentNum: int
+        :param CvmInHostGroupQuota: 物理机类型容灾组内实例的配额数。
+        :type CvmInHostGroupQuota: int
+        :param CvmInSwGroupQuota: 交换机类型容灾组内实例的配额数。
+        :type CvmInSwGroupQuota: int
+        :param CvmInRackGroupQuota: 机架类型容灾组内实例的配额数。
+        :type CvmInRackGroupQuota: int
+        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :type RequestId: str
+        """
+        self.GroupQuota = None
+        self.CurrentNum = None
+        self.CvmInHostGroupQuota = None
+        self.CvmInSwGroupQuota = None
+        self.CvmInRackGroupQuota = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.GroupQuota = params.get("GroupQuota")
+        self.CurrentNum = params.get("CurrentNum")
+        self.CvmInHostGroupQuota = params.get("CvmInHostGroupQuota")
+        self.CvmInSwGroupQuota = params.get("CvmInSwGroupQuota")
+        self.CvmInRackGroupQuota = params.get("CvmInRackGroupQuota")
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeDisasterRecoverGroupsRequest(AbstractModel):
+    """DescribeDisasterRecoverGroups请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param DisasterRecoverGroupIds: 分散置放群组ID列表。
+        :type DisasterRecoverGroupIds: list of str
+        :param Name: 分散置放群组名称，支持模糊匹配。
+        :type Name: str
+        :param Offset: 偏移量，默认为0。关于`Offset`的更进一步介绍请参考 API [简介](https://cloud.tencent.com/document/api/213/15688)中的相关小节。
+        :type Offset: int
+        :param Limit: 返回数量，默认为20，最大值为100。关于`Limit`的更进一步介绍请参考 API [简介](https://cloud.tencent.com/document/api/213/15688)中的相关小节。
+        :type Limit: int
+        """
+        self.DisasterRecoverGroupIds = None
+        self.Name = None
+        self.Offset = None
+        self.Limit = None
+
+
+    def _deserialize(self, params):
+        self.DisasterRecoverGroupIds = params.get("DisasterRecoverGroupIds")
+        self.Name = params.get("Name")
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+
+
+class DescribeDisasterRecoverGroupsResponse(AbstractModel):
+    """DescribeDisasterRecoverGroups返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param DisasterRecoverGroupSet: 分散置放群组信息列表。
+        :type DisasterRecoverGroupSet: list of DisasterRecoverGroup
+        :param TotalCount: 用户置放群组总量。
+        :type TotalCount: int
+        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :type RequestId: str
+        """
+        self.DisasterRecoverGroupSet = None
+        self.TotalCount = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("DisasterRecoverGroupSet") is not None:
+            self.DisasterRecoverGroupSet = []
+            for item in params.get("DisasterRecoverGroupSet"):
+                obj = DisasterRecoverGroup()
+                obj._deserialize(item)
+                self.DisasterRecoverGroupSet.append(obj)
+        self.TotalCount = params.get("TotalCount")
         self.RequestId = params.get("RequestId")
 
 
@@ -581,21 +779,28 @@ class DescribeImportImageOsResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param ImportImageOsListSupported: 支持的导入镜像的操作系统类型
-        :type ImportImageOsListSupported: list of str
-        :param ImportImageOsVersionSupported: 支持的导入镜像的操作系统版本
-        :type ImportImageOsVersionSupported: list of str
+        :param ImportImageOsListSupported: 支持的导入镜像的操作系统类型。
+        :type ImportImageOsListSupported: :class:`tencentcloud.cvm.v20170312.models.ImageOsList`
+        :param ImportImageOsVersionSet: 支持的导入镜像的操作系统版本。
+        :type ImportImageOsVersionSet: list of OsVersion
         :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
         :type RequestId: str
         """
         self.ImportImageOsListSupported = None
-        self.ImportImageOsVersionSupported = None
+        self.ImportImageOsVersionSet = None
         self.RequestId = None
 
 
     def _deserialize(self, params):
-        self.ImportImageOsListSupported = params.get("ImportImageOsListSupported")
-        self.ImportImageOsVersionSupported = params.get("ImportImageOsVersionSupported")
+        if params.get("ImportImageOsListSupported") is not None:
+            self.ImportImageOsListSupported = ImageOsList()
+            self.ImportImageOsListSupported._deserialize(params.get("ImportImageOsListSupported"))
+        if params.get("ImportImageOsVersionSet") is not None:
+            self.ImportImageOsVersionSet = []
+            for item in params.get("ImportImageOsVersionSet"):
+                obj = OsVersion()
+                obj._deserialize(item)
+                self.ImportImageOsVersionSet.append(obj)
         self.RequestId = params.get("RequestId")
 
 
@@ -1124,6 +1329,47 @@ class DisassociateInstancesKeyPairsResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DisasterRecoverGroup(AbstractModel):
+    """容灾组信息
+
+    """
+
+    def __init__(self):
+        """
+        :param DisasterRecoverGroupId: 分散置放群组id。
+        :type DisasterRecoverGroupId: str
+        :param Name: 分散置放群组名称，长度1-60个字符。
+        :type Name: str
+        :param Type: 分散置放群组类型，取值范围：<br><li>HOST：物理机<br><li>SW：交换机<br><li>RACK：机架
+        :type Type: str
+        :param CvmQuotaTotal: 分散置放群组内最大容纳云主机数量。
+        :type CvmQuotaTotal: int
+        :param CurrentNum: 分散置放群组内云主机当前数量。
+        :type CurrentNum: int
+        :param InstanceIds: 分散置放群组内，云主机id列表。
+        :type InstanceIds: list of str
+        :param CreateTime: 分散置放群组创建时间。
+        :type CreateTime: str
+        """
+        self.DisasterRecoverGroupId = None
+        self.Name = None
+        self.Type = None
+        self.CvmQuotaTotal = None
+        self.CurrentNum = None
+        self.InstanceIds = None
+        self.CreateTime = None
+
+
+    def _deserialize(self, params):
+        self.DisasterRecoverGroupId = params.get("DisasterRecoverGroupId")
+        self.Name = params.get("Name")
+        self.Type = params.get("Type")
+        self.CvmQuotaTotal = params.get("CvmQuotaTotal")
+        self.CurrentNum = params.get("CurrentNum")
+        self.InstanceIds = params.get("InstanceIds")
+        self.CreateTime = params.get("CreateTime")
+
+
 class EnhancedService(AbstractModel):
     """描述了实例的增强服务启用情况与其设置，如云安全，云监控等实例 Agent
 
@@ -1232,7 +1478,7 @@ class HostItem(AbstractModel):
         :param ExpiredTime: cdh实例过期时间
         :type ExpiredTime: str
         :param InstanceIds: cdh实例上已创建云子机的实例id列表
-        :type InstanceIds: str
+        :type InstanceIds: list of str
         :param HostState: cdh实例状态
         :type HostState: str
         :param HostIp: cdh实例ip
@@ -1369,6 +1615,27 @@ class Image(AbstractModel):
         self.Platform = params.get("Platform")
         self.ImageCreator = params.get("ImageCreator")
         self.ImageSource = params.get("ImageSource")
+
+
+class ImageOsList(AbstractModel):
+    """支持的操作系统类型，根据windows和linux分类。
+
+    """
+
+    def __init__(self):
+        """
+        :param Windows: 支持的windows操作系统。
+        :type Windows: list of str
+        :param Linux: 支持的linux操作系统
+        :type Linux: list of str
+        """
+        self.Windows = None
+        self.Linux = None
+
+
+    def _deserialize(self, params):
+        self.Windows = params.get("Windows")
+        self.Linux = params.get("Linux")
 
 
 class ImportImageRequest(AbstractModel):
@@ -2401,6 +2668,44 @@ class LoginSettings(AbstractModel):
         self.KeepImageLogin = params.get("KeepImageLogin")
 
 
+class ModifyDisasterRecoverGroupAttributeRequest(AbstractModel):
+    """ModifyDisasterRecoverGroupAttribute请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param DisasterRecoverGroupId: 分散置放群组ID，可使用[DescribeDisasterRecoverGroups](https://cloud.tencent.com/document/api/213/17810)接口获取。
+        :type DisasterRecoverGroupId: str
+        :param Name: 分散置放群组名称，长度1-60个字符，支持中、英文。
+        :type Name: str
+        """
+        self.DisasterRecoverGroupId = None
+        self.Name = None
+
+
+    def _deserialize(self, params):
+        self.DisasterRecoverGroupId = params.get("DisasterRecoverGroupId")
+        self.Name = params.get("Name")
+
+
+class ModifyDisasterRecoverGroupAttributeResponse(AbstractModel):
+    """ModifyDisasterRecoverGroupAttribute返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class ModifyHostsAttributeRequest(AbstractModel):
     """ModifyHostsAttribute请求参数结构体
 
@@ -2685,6 +2990,27 @@ class ModifyKeyPairAttributeResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
+
+
+class OsVersion(AbstractModel):
+    """操作系统支持的类型。
+
+    """
+
+    def __init__(self):
+        """
+        :param OsName: 操作系统类型
+        :type OsName: str
+        :param OsVersions: 支持的操作系统版本
+        :type OsVersions: list of str
+        """
+        self.OsName = None
+        self.OsVersions = None
+
+
+    def _deserialize(self, params):
+        self.OsName = params.get("OsName")
+        self.OsVersions = params.get("OsVersions")
 
 
 class Placement(AbstractModel):
@@ -3489,7 +3815,7 @@ class SystemDisk(AbstractModel):
 
     def __init__(self):
         """
-        :param DiskType: 系统盘类型。系统盘类型限制详见[CVM实例配置](/document/product/213/2177)。取值范围：<br><li>LOCAL_BASIC：本地硬盘<br><li>LOCAL_SSD：本地SSD硬盘<br><li>CLOUD_BASIC：普通云硬盘<br><li>CLOUD_SSD：SSD云硬盘<br><br>默认取值：LOCAL_BASIC。
+        :param DiskType: 系统盘类型。系统盘类型限制详见[CVM实例配置](/document/product/213/2177)。取值范围：<br><li>LOCAL_BASIC：本地硬盘<br><li>LOCAL_SSD：本地SSD硬盘<br><li>CLOUD_BASIC：普通云硬盘<br><li>CLOUD_SSD：SSD云硬盘<br><li>CLOUD_PREMIUM：高效云硬盘<br><br>默认取值：LOCAL_BASIC。
         :type DiskType: str
         :param DiskId: 系统盘ID。LOCAL_BASIC 和 LOCAL_SSD 类型没有ID。暂时不支持该参数。
         :type DiskId: str
@@ -3597,7 +3923,7 @@ class VirtualPrivateCloud(AbstractModel):
         """
         :param VpcId: 私有网络ID，形如`vpc-xxx`。有效的VpcId可通过登录[控制台](https://console.cloud.tencent.com/vpc/vpc?rid=1)查询；也可以调用接口 [DescribeVpcEx](/document/api/215/1372) ，从接口返回中的`unVpcId`字段获取。
         :type VpcId: str
-        :param SubnetId: 私有网络子网ID，形如`subnet-xxx`。有效的私有网络子网ID可通过登录[控制台](https://console.cloud.tencent.com/vpc/subnet?rid=1)查询；也可以调用接口  [DescribeSubnetEx](/document/api/215/1371) ，从接口返回中的`unSubnetId`字段获取。
+        :param SubnetId: 私有网络子网ID，形如`subnet-xxx`。有效的私有网络子网ID可通过登录[控制台](https://console.cloud.tencent.com/vpc/subnet?rid=1)查询；也可以调用接口  [DescribeSubnets](/document/api/215/15784) ，从接口返回中的`unSubnetId`字段获取。
         :type SubnetId: str
         :param AsVpcGateway: 是否用作公网网关。公网网关只有在实例拥有公网IP以及处于私有网络下时才能正常使用。取值范围：<br><li>TRUE：表示用作公网网关<br><li>FALSE：表示不用作公网网关<br><br>默认取值：FALSE。
         :type AsVpcGateway: bool

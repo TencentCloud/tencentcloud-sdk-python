@@ -266,6 +266,42 @@ class VpcClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def CreateDefaultVpc(self, request):
+        """本接口(CreateDefaultVpc)用于创建默认私有网络(VPC)。
+
+        默认VPC适用于快速入门和启动公共实例，您可以像使用任何其他VPC一样使用默认VPC。如果你想创建标准VPC，即指定VPC名称、VPC网段、子网网段、子网可用区，请使用常规创建VPC接口(CreateVpc)
+
+        正常情况，本接口并不一定生产默认VPC，而是根据用户账号的网络属性(DescribeAccountVpcAttributes)来决定的
+        * 支持基础网络（classic），返回VpcId为0
+        * 只支持VPC（only-vpc），生产默认VPC，并返回VPC信息
+
+        你也可以通过 Force 参数，强制生产默认VPC
+
+        :param request: 调用CreateDefaultVpc所需参数的结构体。
+        :type request: :class:`tencentcloud.vpc.v20170312.models.CreateDefaultVpcRequest`
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.CreateDefaultVpcResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("CreateDefaultVpc", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateDefaultVpcResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise e
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def CreateNetworkInterface(self, request):
         """本接口（CreateNetworkInterface）用于创建弹性网卡。
         * 创建弹性网卡时可以指定内网IP，并且可以指定一个主IP，指定的内网IP必须在弹性网卡所在子网内，而且不能被占用。
@@ -986,6 +1022,34 @@ class VpcClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteVpnGatewayResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise e
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeAccountAttributes(self, request):
+        """本接口(DescribeAccountAttributes)用于查询用户账号私有属性。
+
+        :param request: 调用DescribeAccountAttributes所需参数的结构体。
+        :type request: :class:`tencentcloud.vpc.v20170312.models.DescribeAccountAttributesRequest`
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.DescribeAccountAttributesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeAccountAttributes", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeAccountAttributesResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

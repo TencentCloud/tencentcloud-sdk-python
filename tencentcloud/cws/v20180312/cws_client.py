@@ -250,7 +250,7 @@ class CwsClient(AbstractClient):
 
 
     def DescribeSiteQuota(self, request):
-        """本接口 (DescribeSiteQuota) 用于查询用户购买的站点总数和已使用数。
+        """本接口 (DescribeSiteQuota) 用于查询用户购买的扫描次数总数和已使用数。
 
         :param request: 调用DescribeSiteQuota所需参数的结构体。
         :type request: :class:`tencentcloud.cws.v20180312.models.DescribeSiteQuotaRequest`

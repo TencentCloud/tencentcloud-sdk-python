@@ -16,6 +16,27 @@
 from tencentcloud.common.abstract_model import AbstractModel
 
 
+class AccountAttribute(AbstractModel):
+    """账户属性对象
+
+    """
+
+    def __init__(self):
+        """
+        :param AttributeName: 属性名
+        :type AttributeName: str
+        :param AttributeValues: 属性值
+        :type AttributeValues: list of str
+        """
+        self.AttributeName = None
+        self.AttributeValues = None
+
+
+    def _deserialize(self, params):
+        self.AttributeName = params.get("AttributeName")
+        self.AttributeValues = params.get("AttributeValues")
+
+
 class Address(AbstractModel):
     """描述 EIP 信息
 
@@ -477,6 +498,50 @@ class CreateCustomerGatewayResponse(AbstractModel):
         if params.get("CustomerGateway") is not None:
             self.CustomerGateway = CustomerGateway()
             self.CustomerGateway._deserialize(params.get("CustomerGateway"))
+        self.RequestId = params.get("RequestId")
+
+
+class CreateDefaultVpcRequest(AbstractModel):
+    """CreateDefaultVpc请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Zone: 子网所在的可用区ID，不指定将随机选择可用区
+        :type Zone: str
+        :param Force: 是否强制返回默认VPC
+        :type Force: bool
+        """
+        self.Zone = None
+        self.Force = None
+
+
+    def _deserialize(self, params):
+        self.Zone = params.get("Zone")
+        self.Force = params.get("Force")
+
+
+class CreateDefaultVpcResponse(AbstractModel):
+    """CreateDefaultVpc返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Vpc: 默认VPC和子网ID
+        :type Vpc: :class:`tencentcloud.vpc.v20170312.models.DefaultVpcSubnet`
+        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :type RequestId: str
+        """
+        self.Vpc = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Vpc") is not None:
+            self.Vpc = DefaultVpcSubnet()
+            self.Vpc._deserialize(params.get("Vpc"))
         self.RequestId = params.get("RequestId")
 
 
@@ -1104,6 +1169,27 @@ class CustomerGatewayVendor(AbstractModel):
         self.VendorName = params.get("VendorName")
 
 
+class DefaultVpcSubnet(AbstractModel):
+    """默认VPC和子网
+
+    """
+
+    def __init__(self):
+        """
+        :param VpcId: 默认VpcId
+        :type VpcId: str
+        :param SubnetId: 默认SubnetId
+        :type SubnetId: str
+        """
+        self.VpcId = None
+        self.SubnetId = None
+
+
+    def _deserialize(self, params):
+        self.VpcId = params.get("VpcId")
+        self.SubnetId = params.get("SubnetId")
+
+
 class DeleteAddressTemplateGroupRequest(AbstractModel):
     """DeleteAddressTemplateGroup请求参数结构体
 
@@ -1591,6 +1677,38 @@ class DeleteVpnGatewayResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeAccountAttributesRequest(AbstractModel):
+    """DescribeAccountAttributes请求参数结构体
+
+    """
+
+
+class DescribeAccountAttributesResponse(AbstractModel):
+    """DescribeAccountAttributes返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param AccountAttributeSet: 用户账号私有属性对象
+        :type AccountAttributeSet: list of AccountAttribute
+        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :type RequestId: str
+        """
+        self.AccountAttributeSet = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("AccountAttributeSet") is not None:
+            self.AccountAttributeSet = []
+            for item in params.get("AccountAttributeSet"):
+                obj = AccountAttribute()
+                obj._deserialize(item)
+                self.AccountAttributeSet.append(obj)
         self.RequestId = params.get("RequestId")
 
 
@@ -3912,7 +4030,7 @@ class NetworkInterface(AbstractModel):
         :param PrivateIpAddressSet: 内网IP信息。
         :type PrivateIpAddressSet: list of PrivateIpAddressSpecification
         :param Attachment: 绑定的云服务器对象。
-        :type Attachment: list of InstanceChargePrepaid
+        :type Attachment: :class:`tencentcloud.vpc.v20170312.models.NetworkInterfaceAttachment`
         :param Zone: 可用区。
         :type Zone: str
         :param CreatedTime: 创建时间。
@@ -3950,13 +4068,39 @@ class NetworkInterface(AbstractModel):
                 obj._deserialize(item)
                 self.PrivateIpAddressSet.append(obj)
         if params.get("Attachment") is not None:
-            self.Attachment = []
-            for item in params.get("Attachment"):
-                obj = InstanceChargePrepaid()
-                obj._deserialize(item)
-                self.Attachment.append(obj)
+            self.Attachment = NetworkInterfaceAttachment()
+            self.Attachment._deserialize(params.get("Attachment"))
         self.Zone = params.get("Zone")
         self.CreatedTime = params.get("CreatedTime")
+
+
+class NetworkInterfaceAttachment(AbstractModel):
+    """弹性网卡绑定关系
+
+    """
+
+    def __init__(self):
+        """
+        :param InstanceId: 云主机实例ID。
+        :type InstanceId: str
+        :param DeviceIndex: 网卡在云主机实例内的序号。
+        :type DeviceIndex: int
+        :param InstanceAccountId: 云主机所有者账户信息。
+        :type InstanceAccountId: str
+        :param AttachTime: 绑定时间。
+        :type AttachTime: str
+        """
+        self.InstanceId = None
+        self.DeviceIndex = None
+        self.InstanceAccountId = None
+        self.AttachTime = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.DeviceIndex = params.get("DeviceIndex")
+        self.InstanceAccountId = params.get("InstanceAccountId")
+        self.AttachTime = params.get("AttachTime")
 
 
 class Price(AbstractModel):
@@ -4523,12 +4667,15 @@ class SecurityGroupAssociationStatistics(AbstractModel):
         :type ENI: int
         :param SG: 被安全组引用数。
         :type SG: int
+        :param CLB: 负载均衡实例数。
+        :type CLB: int
         """
         self.SecurityGroupId = None
         self.CVM = None
         self.CDB = None
         self.ENI = None
         self.SG = None
+        self.CLB = None
 
 
     def _deserialize(self, params):
@@ -4537,6 +4684,7 @@ class SecurityGroupAssociationStatistics(AbstractModel):
         self.CDB = params.get("CDB")
         self.ENI = params.get("ENI")
         self.SG = params.get("SG")
+        self.CLB = params.get("CLB")
 
 
 class SecurityGroupPolicy(AbstractModel):
