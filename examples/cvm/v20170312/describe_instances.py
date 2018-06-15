@@ -40,10 +40,8 @@ try:
     params = '''{
         "Filters": [
             {
-                "Filter": {
-                    "name": "zone",
-                    "value": ["ap-shanghai-1", "ap-shanghai-2"]
-                }
+                "Name": "zone",
+                "Values": ["ap-shanghai-1", "ap-shanghai-2"]
             }
         ]
     }'''
