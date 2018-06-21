@@ -333,3 +333,31 @@ class DsClient(AbstractClient):
                 raise e
             else:
                 raise TencentCloudSDKException(e.message, e.message)
+
+
+    def SignContractByKeyword(self, request):
+        """此接口适用于：客户平台在创建好合同后，由合同签署方对创建的合同内容进行确认，无误后再进行签署。客户平台使用该接口对PDF合同文档按照关键字和坐标进行签署。
+
+        :param request: 调用SignContractByKeyword所需参数的结构体。
+        :type request: :class:`tencentcloud.ds.v20180523.models.SignContractByKeywordRequest`
+        :rtype: :class:`tencentcloud.ds.v20180523.models.SignContractByKeywordResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("SignContractByKeyword", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.SignContractByKeywordResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise e
+            else:
+                raise TencentCloudSDKException(e.message, e.message)

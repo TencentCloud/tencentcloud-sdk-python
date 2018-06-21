@@ -1748,6 +1748,57 @@ class ImportKeyPairResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class InquiryPriceModifyInstancesChargeTypeRequest(AbstractModel):
+    """InquiryPriceModifyInstancesChargeType请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param InstanceIds: 一个或多个待操作的实例ID。可通过[`DescribeInstances`](https://cloud.tencent.com/document/api/213/15728)接口返回值中的`InstanceId`获取。每次请求批量实例的上限为100。
+        :type InstanceIds: list of str
+        :param InstanceChargeType: 实例[计费类型](https://cloud.tencent.com//document/product/213/2180)。<br><li>PREPAID：预付费，即包年包月
+。
+        :type InstanceChargeType: str
+        :param InstanceChargePrepaid: 预付费模式，即包年包月相关参数设置。通过该参数可以指定包年包月实例的续费时长、是否设置自动续费等属性。
+        :type InstanceChargePrepaid: :class:`tencentcloud.cvm.v20170312.models.InstanceChargePrepaid`
+        """
+        self.InstanceIds = None
+        self.InstanceChargeType = None
+        self.InstanceChargePrepaid = None
+
+
+    def _deserialize(self, params):
+        self.InstanceIds = params.get("InstanceIds")
+        self.InstanceChargeType = params.get("InstanceChargeType")
+        if params.get("InstanceChargePrepaid") is not None:
+            self.InstanceChargePrepaid = InstanceChargePrepaid()
+            self.InstanceChargePrepaid._deserialize(params.get("InstanceChargePrepaid"))
+
+
+class InquiryPriceModifyInstancesChargeTypeResponse(AbstractModel):
+    """InquiryPriceModifyInstancesChargeType返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Price: 该参数表示对应配置实例转换计费模式的价格。
+        :type Price: :class:`tencentcloud.cvm.v20170312.models.Price`
+        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :type RequestId: str
+        """
+        self.Price = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Price") is not None:
+            self.Price = Price()
+            self.Price._deserialize(params.get("Price"))
+        self.RequestId = params.get("RequestId")
+
+
 class InquiryPriceRenewInstancesRequest(AbstractModel):
     """InquiryPriceRenewInstances请求参数结构体
 
@@ -2874,6 +2925,50 @@ class ModifyInstancesAttributeResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class ModifyInstancesChargeTypeRequest(AbstractModel):
+    """ModifyInstancesChargeType请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param InstanceIds: 一个或多个待操作的实例ID。可通过[`DescribeInstances`](https://cloud.tencent.com/document/api/213/9388)接口返回值中的`InstanceId`获取。每次请求批量实例的上限为100。
+        :type InstanceIds: list of str
+        :param InstanceChargeType: 实例[计费类型](https://cloud.tencent.com/document/product/213/2180)。<br><li>PREPAID：预付费，即包年包月。
+        :type InstanceChargeType: str
+        :param InstanceChargePrepaid: 预付费模式，即包年包月相关参数设置。通过该参数可以指定包年包月实例的购买时长、是否设置自动续费等属性。若指定实例的付费模式为预付费则该参数必传。
+        :type InstanceChargePrepaid: :class:`tencentcloud.cvm.v20170312.models.InstanceChargePrepaid`
+        """
+        self.InstanceIds = None
+        self.InstanceChargeType = None
+        self.InstanceChargePrepaid = None
+
+
+    def _deserialize(self, params):
+        self.InstanceIds = params.get("InstanceIds")
+        self.InstanceChargeType = params.get("InstanceChargeType")
+        if params.get("InstanceChargePrepaid") is not None:
+            self.InstanceChargePrepaid = InstanceChargePrepaid()
+            self.InstanceChargePrepaid._deserialize(params.get("InstanceChargePrepaid"))
+
+
+class ModifyInstancesChargeTypeResponse(AbstractModel):
+    """ModifyInstancesChargeType返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class ModifyInstancesProjectRequest(AbstractModel):
     """ModifyInstancesProject请求参数结构体
 
@@ -3815,7 +3910,7 @@ class SystemDisk(AbstractModel):
 
     def __init__(self):
         """
-        :param DiskType: 系统盘类型。系统盘类型限制详见[CVM实例配置](/document/product/213/2177)。取值范围：<br><li>LOCAL_BASIC：本地硬盘<br><li>LOCAL_SSD：本地SSD硬盘<br><li>CLOUD_BASIC：普通云硬盘<br><li>CLOUD_SSD：SSD云硬盘<br><li>CLOUD_PREMIUM：高效云硬盘<br><br>默认取值：LOCAL_BASIC。
+        :param DiskType: 系统盘类型。系统盘类型限制详见[CVM实例配置](/document/product/213/2177)。取值范围：<br><li>LOCAL_BASIC：本地硬盘<br><li>LOCAL_SSD：本地SSD硬盘<br><li>CLOUD_BASIC：普通云硬盘<br><li>CLOUD_SSD：SSD云硬盘<br><li>CLOUD_PREMIUM：高性能云硬盘<br><br>默认取值：LOCAL_BASIC。
         :type DiskType: str
         :param DiskId: 系统盘ID。LOCAL_BASIC 和 LOCAL_SSD 类型没有ID。暂时不支持该参数。
         :type DiskId: str
@@ -3861,7 +3956,7 @@ class TagSpecification(AbstractModel):
 
     def __init__(self):
         """
-        :param ResourceType: 标签绑定的资源类型
+        :param ResourceType: 标签绑定的资源类型，当前仅支持类型："instance"
         :type ResourceType: str
         :param Tags: 标签对列表
         :type Tags: list of Tag

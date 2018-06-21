@@ -278,7 +278,7 @@ class CreateSealRequest(AbstractModel):
         :type Operation: str
         :param AccountResId: 帐号ID
         :type AccountResId: str
-        :param ImgUrl: 签章链接
+        :param ImgUrl: 签章链接，图片必须为png格式
         :type ImgUrl: str
         """
         self.Module = None
@@ -572,7 +572,7 @@ class SignContractByCoordinateRequest(AbstractModel):
         :type ContractResId: str
         :param AccountResId: 帐户ID
         :type AccountResId: str
-        :param AuthorizationTime: 授权时间，格式20160801095509
+        :param AuthorizationTime: 授权时间，格式为年月日时分秒，例20160801095509
         :type AuthorizationTime: str
         :param Position: 授权IP地址
         :type Position: str
@@ -624,6 +624,70 @@ class SignContractByCoordinateResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class SignContractByKeywordRequest(AbstractModel):
+    """SignContractByKeyword请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Module: 模块名
+        :type Module: str
+        :param Operation: 操作名
+        :type Operation: str
+        :param ContractResId: 合同ID
+        :type ContractResId: str
+        :param AccountResId: 账户ID
+        :type AccountResId: str
+        :param AuthorizationTime: 授权时间，格式为年月日时分秒，例20160801095509
+        :type AuthorizationTime: str
+        :param Position: 授权IP地址
+        :type Position: str
+        :param SealResId: 签章ID
+        :type SealResId: str
+        :param SignKeyword: 签署关键字，坐标和范围不得超过合同文件边界
+        :type SignKeyword: :class:`tencentcloud.ds.v20180523.models.SignKeyword`
+        """
+        self.Module = None
+        self.Operation = None
+        self.ContractResId = None
+        self.AccountResId = None
+        self.AuthorizationTime = None
+        self.Position = None
+        self.SealResId = None
+        self.SignKeyword = None
+
+
+    def _deserialize(self, params):
+        self.Module = params.get("Module")
+        self.Operation = params.get("Operation")
+        self.ContractResId = params.get("ContractResId")
+        self.AccountResId = params.get("AccountResId")
+        self.AuthorizationTime = params.get("AuthorizationTime")
+        self.Position = params.get("Position")
+        self.SealResId = params.get("SealResId")
+        if params.get("SignKeyword") is not None:
+            self.SignKeyword = SignKeyword()
+            self.SignKeyword._deserialize(params.get("SignKeyword"))
+
+
+class SignContractByKeywordResponse(AbstractModel):
+    """SignContractByKeyword返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class SignInfo(AbstractModel):
     """签署人信息
 
@@ -633,12 +697,65 @@ class SignInfo(AbstractModel):
         """
         :param AccountResId: 账户ID
         :type AccountResId: str
+        :param AuthorizationTime: 授权时间，格式为年月日时分秒，例20160801095509
+        :type AuthorizationTime: str
+        :param Location: 授权IP地址
+        :type Location: str
+        :param SealId: 签章ID
+        :type SealId: str
+        :param ImageData: 签名图片，优先级比SealId高
+        :type ImageData: str
+        :param CertType: 默认值：1  表示RSA证书， 2 表示国密证书， 参数不传时默认为1
+        :type CertType: int
         """
         self.AccountResId = None
+        self.AuthorizationTime = None
+        self.Location = None
+        self.SealId = None
+        self.ImageData = None
+        self.CertType = None
 
 
     def _deserialize(self, params):
         self.AccountResId = params.get("AccountResId")
+        self.AuthorizationTime = params.get("AuthorizationTime")
+        self.Location = params.get("Location")
+        self.SealId = params.get("SealId")
+        self.ImageData = params.get("ImageData")
+        self.CertType = params.get("CertType")
+
+
+class SignKeyword(AbstractModel):
+    """签署关键字信息
+
+    """
+
+    def __init__(self):
+        """
+        :param Keyword: 关键字
+        :type Keyword: str
+        :param OffsetCoordX: X轴偏移坐标
+        :type OffsetCoordX: str
+        :param OffsetCoordY: Y轴偏移坐标
+        :type OffsetCoordY: str
+        :param ImageWidth: 签章突破宽度
+        :type ImageWidth: str
+        :param ImageHeight: 签章图片高度
+        :type ImageHeight: str
+        """
+        self.Keyword = None
+        self.OffsetCoordX = None
+        self.OffsetCoordY = None
+        self.ImageWidth = None
+        self.ImageHeight = None
+
+
+    def _deserialize(self, params):
+        self.Keyword = params.get("Keyword")
+        self.OffsetCoordX = params.get("OffsetCoordX")
+        self.OffsetCoordY = params.get("OffsetCoordY")
+        self.ImageWidth = params.get("ImageWidth")
+        self.ImageHeight = params.get("ImageHeight")
 
 
 class SignLocation(AbstractModel):

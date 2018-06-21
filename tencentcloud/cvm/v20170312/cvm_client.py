@@ -380,7 +380,7 @@ class CvmClient(AbstractClient):
 
 
     def DescribeImageSharePermission(self, request):
-        """本接口（ModifyImageSharePermission）用于修改镜像分享信息。
+        """本接口（DescribeImageSharePermission）用于查询镜像分享信息。
 
         :param request: 调用DescribeImageSharePermission所需参数的结构体。
         :type request: :class:`tencentcloud.cvm.v20170312.models.DescribeImageSharePermissionRequest`
@@ -853,6 +853,37 @@ class CvmClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def InquiryPriceModifyInstancesChargeType(self, request):
+        """本接口 (InquiryPriceModifyInstancesChargeType) 用于切换实例的计费模式询价。
+
+        * 只支持从 `POSTPAID_BY_HOUR` 计费模式切换为`PREPAID`计费模式。
+        * 关机不收费的实例、`BC1`和`BS1`机型族的实例、设置定时销毁的实例不支持该操作。
+
+        :param request: 调用InquiryPriceModifyInstancesChargeType所需参数的结构体。
+        :type request: :class:`tencentcloud.cvm.v20170312.models.InquiryPriceModifyInstancesChargeTypeRequest`
+        :rtype: :class:`tencentcloud.cvm.v20170312.models.InquiryPriceModifyInstancesChargeTypeResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("InquiryPriceModifyInstancesChargeType", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.InquiryPriceModifyInstancesChargeTypeResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise e
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def InquiryPriceRenewInstances(self, request):
         """本接口 (InquiryPriceRenewInstances) 用于续费包年包月实例询价。
 
@@ -1174,6 +1205,37 @@ class CvmClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyInstancesAttributeResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise e
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ModifyInstancesChargeType(self, request):
+        """本接口 (ModifyInstancesChargeType) 用于切换实例的计费模式。
+
+        * 只支持从 `POSTPAID_BY_HOUR` 计费模式切换为`PREPAID`计费模式。
+        * 关机不收费的实例、`BC1`和`BS1`机型族的实例、设置定时销毁的实例不支持该操作。
+
+        :param request: 调用ModifyInstancesChargeType所需参数的结构体。
+        :type request: :class:`tencentcloud.cvm.v20170312.models.ModifyInstancesChargeTypeRequest`
+        :rtype: :class:`tencentcloud.cvm.v20170312.models.ModifyInstancesChargeTypeResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ModifyInstancesChargeType", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ModifyInstancesChargeTypeResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
