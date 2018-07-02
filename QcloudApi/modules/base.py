@@ -49,6 +49,7 @@ class Base(object):
         self.Version = config.get('Version', '')
         self.method = config.get('method', 'GET').upper()
         self.sign_method = config.get('SignatureMethod', 'HmacSHA1')
+        self.requestHost = self.requestHost or config.get("endpoint")
         self.apiRequest = ApiRequest(self.requestHost)
         self.Token = config.get('Token', '')
 

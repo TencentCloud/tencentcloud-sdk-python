@@ -39,22 +39,3 @@ class Cdn(base.Base):
         }
 
         return self.call(action, params, files)
-
-
-def main():
-    config = {
-        'Region': 'gz',
-        'secretId': '你的secretId',
-        'secretKey': '你的secretKey',
-        'method': 'post'
-    }
-    params = {
-        'entityFileName': '/test.txt',
-        'entityFile': '/tmp/test.txt'
-    }
-    service = Cdn(config)
-    print(service.UploadCdnEntity(params))
-
-
-if (__name__ == '__main__'):
-    main()
