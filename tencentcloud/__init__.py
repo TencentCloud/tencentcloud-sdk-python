@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# Copyright 1999-2017 Tencent Ltd.
+# Copyright 1999-2018 Tencent Ltd.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -14,4 +14,4 @@
 # limitations under the License.
 
 
-__version__ = '3.0.12'
+__version__ = '3.0.13'
