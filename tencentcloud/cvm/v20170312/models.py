@@ -23,24 +23,24 @@ class ActionTimer(AbstractModel):
 
     def __init__(self):
         """
+        :param Externals: 扩展数据
+        :type Externals: :class:`tencentcloud.cvm.v20170312.models.Externals`
         :param TimerAction: 定时器名称，目前仅支持销毁一个值：TerminateInstances。
         :type TimerAction: str
         :param ActionTime: 执行时间，格式形如：2018-5-29 11:26:40,执行时间必须大于当前时间5分钟。
         :type ActionTime: str
-        :param Externals: 扩展数据
-        :type Externals: :class:`tencentcloud.cvm.v20170312.models.Externals`
         """
+        self.Externals = None
         self.TimerAction = None
         self.ActionTime = None
-        self.Externals = None
 
 
     def _deserialize(self, params):
-        self.TimerAction = params.get("TimerAction")
-        self.ActionTime = params.get("ActionTime")
         if params.get("Externals") is not None:
             self.Externals = Externals()
             self.Externals._deserialize(params.get("Externals"))
+        self.TimerAction = params.get("TimerAction")
+        self.ActionTime = params.get("ActionTime")
 
 
 class AllocateHostsRequest(AbstractModel):
@@ -50,10 +50,10 @@ class AllocateHostsRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param ClientToken: 用于保证请求幂等性的字符串。
-        :type ClientToken: str
         :param Placement: 实例所在的位置。通过该参数可以指定实例所属可用区，所属项目等属性。
         :type Placement: :class:`tencentcloud.cvm.v20170312.models.Placement`
+        :param ClientToken: 用于保证请求幂等性的字符串。
+        :type ClientToken: str
         :param HostChargePrepaid: 预付费模式，即包年包月相关参数设置。通过该参数可以指定包年包月实例的购买时长、是否设置自动续费等属性。若指定实例的付费模式为预付费则该参数必传。
         :type HostChargePrepaid: :class:`tencentcloud.cvm.v20170312.models.ChargePrepaid`
         :param HostChargeType: 实例计费类型。目前仅支持：PREPAID（预付费，即包年包月模式）。
@@ -63,8 +63,8 @@ class AllocateHostsRequest(AbstractModel):
         :param HostCount: 购买CDH实例数量。
         :type HostCount: int
         """
-        self.ClientToken = None
         self.Placement = None
+        self.ClientToken = None
         self.HostChargePrepaid = None
         self.HostChargeType = None
         self.HostType = None
@@ -72,10 +72,10 @@ class AllocateHostsRequest(AbstractModel):
 
 
     def _deserialize(self, params):
-        self.ClientToken = params.get("ClientToken")
         if params.get("Placement") is not None:
             self.Placement = Placement()
             self.Placement._deserialize(params.get("Placement"))
+        self.ClientToken = params.get("ClientToken")
         if params.get("HostChargePrepaid") is not None:
             self.HostChargePrepaid = ChargePrepaid()
             self.HostChargePrepaid._deserialize(params.get("HostChargePrepaid"))
@@ -338,22 +338,22 @@ class DataDisk(AbstractModel):
 
     def __init__(self):
         """
+        :param DiskSize: 数据盘大小，单位：GB。最小调整步长为10G，不同数据盘类型取值范围不同，具体限制详见：[CVM实例配置](/document/product/213/2177)。默认值为0，表示不购买数据盘。更多限制详见产品文档。
+        :type DiskSize: int
         :param DiskType: 数据盘类型。数据盘类型限制详见[CVM实例配置](/document/product/213/2177)。取值范围：<br><li>LOCAL_BASIC：本地硬盘<br><li>LOCAL_SSD：本地SSD硬盘<br><li>CLOUD_BASIC：普通云硬盘<br><li>CLOUD_PREMIUM：高性能云硬盘<br><li>CLOUD_SSD：SSD云硬盘<br><br>默认取值：LOCAL_BASIC。<br><br>该参数对`ResizeInstanceDisk`接口无效。
         :type DiskType: str
         :param DiskId: 数据盘ID。LOCAL_BASIC 和 LOCAL_SSD 类型没有ID。暂时不支持该参数。
         :type DiskId: str
-        :param DiskSize: 数据盘大小，单位：GB。最小调整步长为10G，不同数据盘类型取值范围不同，具体限制详见：[CVM实例配置](/document/product/213/2177)。默认值为0，表示不购买数据盘。更多限制详见产品文档。
-        :type DiskSize: int
         """
+        self.DiskSize = None
         self.DiskType = None
         self.DiskId = None
-        self.DiskSize = None
 
 
     def _deserialize(self, params):
+        self.DiskSize = params.get("DiskSize")
         self.DiskType = params.get("DiskType")
         self.DiskId = params.get("DiskId")
-        self.DiskSize = params.get("DiskSize")
 
 
 class DeleteDisasterRecoverGroupsRequest(AbstractModel):
@@ -927,6 +927,44 @@ class DescribeInstanceTypeConfigsResponse(AbstractModel):
                 obj = InstanceTypeConfig()
                 obj._deserialize(item)
                 self.InstanceTypeConfigSet.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeInstanceVncUrlRequest(AbstractModel):
+    """DescribeInstanceVncUrl请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param InstanceId: 一个操作的实例ID。可通过[`DescribeInstances`](https://cloud.tencent.com/document/api/213/15728) API返回值中的`InstanceId`获取。
+        :type InstanceId: str
+        """
+        self.InstanceId = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+
+
+class DescribeInstanceVncUrlResponse(AbstractModel):
+    """DescribeInstanceVncUrl返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param InstanceVncUrl: 实例的管理终端地址。
+        :type InstanceVncUrl: str
+        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :type RequestId: str
+        """
+        self.InstanceVncUrl = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.InstanceVncUrl = params.get("InstanceVncUrl")
         self.RequestId = params.get("RequestId")
 
 
@@ -1563,12 +1601,6 @@ class Image(AbstractModel):
 
     def __init__(self):
         """
-        :param ImageId: 镜像ID
-        :type ImageId: str
-        :param OsName: 镜像操作系统
-        :type OsName: str
-        :param ImageType: 镜像类型
-        :type ImageType: str
         :param CreatedTime: 镜像创建时间
         :type CreatedTime: str
         :param ImageName: 镜像名称
@@ -1581,6 +1613,12 @@ class Image(AbstractModel):
         :type Architecture: str
         :param ImageState: 镜像状态
         :type ImageState: str
+        :param ImageId: 镜像ID
+        :type ImageId: str
+        :param OsName: 镜像操作系统
+        :type OsName: str
+        :param ImageType: 镜像类型
+        :type ImageType: str
         :param Platform: 镜像来源平台
         :type Platform: str
         :param ImageCreator: 镜像创建者
@@ -1588,30 +1626,30 @@ class Image(AbstractModel):
         :param ImageSource: 镜像来源
         :type ImageSource: str
         """
-        self.ImageId = None
-        self.OsName = None
-        self.ImageType = None
         self.CreatedTime = None
         self.ImageName = None
         self.ImageDescription = None
         self.ImageSize = None
         self.Architecture = None
         self.ImageState = None
+        self.ImageId = None
+        self.OsName = None
+        self.ImageType = None
         self.Platform = None
         self.ImageCreator = None
         self.ImageSource = None
 
 
     def _deserialize(self, params):
-        self.ImageId = params.get("ImageId")
-        self.OsName = params.get("OsName")
-        self.ImageType = params.get("ImageType")
         self.CreatedTime = params.get("CreatedTime")
         self.ImageName = params.get("ImageName")
         self.ImageDescription = params.get("ImageDescription")
         self.ImageSize = params.get("ImageSize")
         self.Architecture = params.get("Architecture")
         self.ImageState = params.get("ImageState")
+        self.ImageId = params.get("ImageId")
+        self.OsName = params.get("OsName")
+        self.ImageType = params.get("ImageType")
         self.Platform = params.get("Platform")
         self.ImageCreator = params.get("ImageCreator")
         self.ImageSource = params.get("ImageSource")
@@ -2073,16 +2111,16 @@ class InquiryPriceRunInstancesRequest(AbstractModel):
 
     def __init__(self):
         """
+        :param Placement: 实例所在的位置。通过该参数可以指定实例所属可用区，所属项目等属性。
+        :type Placement: :class:`tencentcloud.cvm.v20170312.models.Placement`
+        :param ImageId: 指定有效的[镜像](https://cloud.tencent.com/document/product/213/4940)ID，格式形如`img-xxx`。镜像类型分为四种：<br/><li>公共镜像</li><li>自定义镜像</li><li>共享镜像</li><li>服务市场镜像</li><br/>可通过以下方式获取可用的镜像ID：<br/><li>`公共镜像`、`自定义镜像`、`共享镜像`的镜像ID可通过登录[控制台](https://console.cloud.tencent.com/cvm/image?rid=1&imageType=PUBLIC_IMAGE)查询；`服务镜像市场`的镜像ID可通过[云市场](https://market.cloud.tencent.com/list)查询。</li><li>通过调用接口 [DescribeImages](https://cloud.tencent.com/document/api/213/15715) ，取返回信息中的`ImageId`字段。</li>
+        :type ImageId: str
         :param InstanceChargeType: 实例[计费类型](https://cloud.tencent.com/document/product/213/2180)。<br><li>PREPAID：预付费，即包年包月<br><li>POSTPAID_BY_HOUR：按小时后付费<br>默认值：POSTPAID_BY_HOUR。
         :type InstanceChargeType: str
         :param InstanceChargePrepaid: 预付费模式，即包年包月相关参数设置。通过该参数可以指定包年包月实例的购买时长、是否设置自动续费等属性。若指定实例的付费模式为预付费则该参数必传。
         :type InstanceChargePrepaid: :class:`tencentcloud.cvm.v20170312.models.InstanceChargePrepaid`
-        :param Placement: 实例所在的位置。通过该参数可以指定实例所属可用区，所属项目等属性。
-        :type Placement: :class:`tencentcloud.cvm.v20170312.models.Placement`
         :param InstanceType: 实例机型。不同实例机型指定了不同的资源规格，具体取值可通过调用接口[DescribeInstanceTypeConfigs](https://cloud.tencent.com/document/api/213/15749)来获得最新的规格表或参见[CVM实例配置](https://cloud.tencent.com/document/product/213/2177)描述。若不指定该参数，则默认机型为S1.SMALL1。
         :type InstanceType: str
-        :param ImageId: 指定有效的[镜像](https://cloud.tencent.com/document/product/213/4940)ID，格式形如`img-xxx`。镜像类型分为四种：<br/><li>公共镜像</li><li>自定义镜像</li><li>共享镜像</li><li>服务市场镜像</li><br/>可通过以下方式获取可用的镜像ID：<br/><li>`公共镜像`、`自定义镜像`、`共享镜像`的镜像ID可通过登录[控制台](https://console.cloud.tencent.com/cvm/image?rid=1&imageType=PUBLIC_IMAGE)查询；`服务镜像市场`的镜像ID可通过[云市场](https://market.cloud.tencent.com/list)查询。</li><li>通过调用接口 [DescribeImages](https://cloud.tencent.com/document/api/213/15715) ，取返回信息中的`ImageId`字段。</li>
-        :type ImageId: str
         :param SystemDisk: 实例系统盘配置信息。若不指定该参数，则按照系统默认值进行分配。
         :type SystemDisk: :class:`tencentcloud.cvm.v20170312.models.SystemDisk`
         :param DataDisks: 实例数据盘配置信息。若不指定该参数，则默认不购买数据盘，当前仅支持购买的时候指定一个数据盘。
@@ -2110,11 +2148,11 @@ class InquiryPriceRunInstancesRequest(AbstractModel):
         :param InstanceMarketOptions: 实例的市场相关选项，如竞价实例相关参数
         :type InstanceMarketOptions: :class:`tencentcloud.cvm.v20170312.models.InstanceMarketOptionsRequest`
         """
+        self.Placement = None
+        self.ImageId = None
         self.InstanceChargeType = None
         self.InstanceChargePrepaid = None
-        self.Placement = None
         self.InstanceType = None
-        self.ImageId = None
         self.SystemDisk = None
         self.DataDisks = None
         self.VirtualPrivateCloud = None
@@ -2131,15 +2169,15 @@ class InquiryPriceRunInstancesRequest(AbstractModel):
 
 
     def _deserialize(self, params):
+        if params.get("Placement") is not None:
+            self.Placement = Placement()
+            self.Placement._deserialize(params.get("Placement"))
+        self.ImageId = params.get("ImageId")
         self.InstanceChargeType = params.get("InstanceChargeType")
         if params.get("InstanceChargePrepaid") is not None:
             self.InstanceChargePrepaid = InstanceChargePrepaid()
             self.InstanceChargePrepaid._deserialize(params.get("InstanceChargePrepaid"))
-        if params.get("Placement") is not None:
-            self.Placement = Placement()
-            self.Placement._deserialize(params.get("Placement"))
         self.InstanceType = params.get("InstanceType")
-        self.ImageId = params.get("ImageId")
         if params.get("SystemDisk") is not None:
             self.SystemDisk = SystemDisk()
             self.SystemDisk._deserialize(params.get("SystemDisk"))
@@ -2207,6 +2245,14 @@ class Instance(AbstractModel):
 
     def __init__(self):
         """
+        :param OsName: 操作系统名称。
+        :type OsName: str
+        :param SecurityGroupIds: 实例所属安全组。该参数可以通过调用 [DescribeSecurityGroups](https://cloud.tencent.com/document/api/215/15808) 的返回值中的sgId字段来获取。
+        :type SecurityGroupIds: list of str
+        :param LoginSettings: 实例登录设置。目前只返回实例所关联的密钥。
+        :type LoginSettings: :class:`tencentcloud.cvm.v20170312.models.LoginSettings`
+        :param InstanceState: 实例状态。取值范围：<br><li>PENDING：表示创建中<br></li><li>LAUNCH_FAILED：表示创建失败<br></li><li>RUNNING：表示运行中<br></li><li>STOPPED：表示关机<br></li><li>STARTING：表示开机中<br></li><li>STOPPING：表示关机中<br></li><li>REBOOTING：表示重启中<br></li><li>SHUTDOWN：表示停止待销毁<br></li><li>TERMINATING：表示销毁中。<br></li>
+        :type InstanceState: str
         :param Placement: 实例所在的位置。
         :type Placement: :class:`tencentcloud.cvm.v20170312.models.Placement`
         :param InstanceId: 实例`ID`。
@@ -2243,15 +2289,11 @@ class Instance(AbstractModel):
         :type CreatedTime: str
         :param ExpiredTime: 到期时间。按照`ISO8601`标准表示，并且使用`UTC`时间。格式为：`YYYY-MM-DDThh:mm:ssZ`。
         :type ExpiredTime: str
-        :param OsName: 操作系统名称。
-        :type OsName: str
-        :param SecurityGroupIds: 实例所属安全组。该参数可以通过调用 [DescribeSecurityGroups](https://cloud.tencent.com/document/api/215/15808) 的返回值中的sgId字段来获取。
-        :type SecurityGroupIds: list of str
-        :param LoginSettings: 实例登录设置。目前只返回实例所关联的密钥。
-        :type LoginSettings: :class:`tencentcloud.cvm.v20170312.models.LoginSettings`
-        :param InstanceState: 实例状态。取值范围：<br><li>PENDING：表示创建中<br></li><li>LAUNCH_FAILED：表示创建失败<br></li><li>RUNNING：表示运行中<br></li><li>STOPPED：表示关机<br></li><li>STARTING：表示开机中<br></li><li>STOPPING：表示关机中<br></li><li>REBOOTING：表示重启中<br></li><li>SHUTDOWN：表示停止待销毁<br></li><li>TERMINATING：表示销毁中。<br></li>
-        :type InstanceState: str
         """
+        self.OsName = None
+        self.SecurityGroupIds = None
+        self.LoginSettings = None
+        self.InstanceState = None
         self.Placement = None
         self.InstanceId = None
         self.InstanceType = None
@@ -2270,13 +2312,15 @@ class Instance(AbstractModel):
         self.RenewFlag = None
         self.CreatedTime = None
         self.ExpiredTime = None
-        self.OsName = None
-        self.SecurityGroupIds = None
-        self.LoginSettings = None
-        self.InstanceState = None
 
 
     def _deserialize(self, params):
+        self.OsName = params.get("OsName")
+        self.SecurityGroupIds = params.get("SecurityGroupIds")
+        if params.get("LoginSettings") is not None:
+            self.LoginSettings = LoginSettings()
+            self.LoginSettings._deserialize(params.get("LoginSettings"))
+        self.InstanceState = params.get("InstanceState")
         if params.get("Placement") is not None:
             self.Placement = Placement()
             self.Placement._deserialize(params.get("Placement"))
@@ -2308,12 +2352,6 @@ class Instance(AbstractModel):
         self.RenewFlag = params.get("RenewFlag")
         self.CreatedTime = params.get("CreatedTime")
         self.ExpiredTime = params.get("ExpiredTime")
-        self.OsName = params.get("OsName")
-        self.SecurityGroupIds = params.get("SecurityGroupIds")
-        if params.get("LoginSettings") is not None:
-            self.LoginSettings = LoginSettings()
-            self.LoginSettings._deserialize(params.get("LoginSettings"))
-        self.InstanceState = params.get("InstanceState")
 
 
 class InstanceChargePrepaid(AbstractModel):
@@ -3547,17 +3585,17 @@ class RunInstancesRequest(AbstractModel):
 
     def __init__(self):
         """
+        :param Placement: 实例所在的位置。通过该参数可以指定实例所属可用区，所属项目，专用宿主机（对于独享母机付费模式的子机创建）等属性。
+        :type Placement: :class:`tencentcloud.cvm.v20170312.models.Placement`
+        :param ImageId: 指定有效的[镜像](https://cloud.tencent.com/document/product/213/4940)ID，格式形如`img-xxx`。镜像类型分为四种：<br/><li>公共镜像</li><li>自定义镜像</li><li>共享镜像</li><li>服务市场镜像</li><br/>可通过以下方式获取可用的镜像ID：<br/><li>`公共镜像`、`自定义镜像`、`共享镜像`的镜像ID可通过登录[控制台](https://console.cloud.tencent.com/cvm/image?rid=1&imageType=PUBLIC_IMAGE)查询；`服务镜像市场`的镜像ID可通过[云市场](https://market.cloud.tencent.com/list)查询。</li><li>通过调用接口 [DescribeImages](https://cloud.tencent.com/document/api/213/15715) ，取返回信息中的`ImageId`字段。</li>
+        :type ImageId: str
         :param InstanceChargeType: 实例[计费类型](https://cloud.tencent.com/document/product/213/2180)。<br><li>PREPAID：预付费，即包年包月<br><li>POSTPAID_BY_HOUR：按小时后付费<br><li>CDHPAID：独享母机付费（基于专用宿主机创建，宿主机部分的资源不收费）<br>默认值：POSTPAID_BY_HOUR。
         :type InstanceChargeType: str
         :param InstanceChargePrepaid: 预付费模式，即包年包月相关参数设置。通过该参数可以指定包年包月实例的购买时长、是否设置自动续费等属性。若指定实例的付费模式为预付费则该参数必传。
         :type InstanceChargePrepaid: :class:`tencentcloud.cvm.v20170312.models.InstanceChargePrepaid`
-        :param Placement: 实例所在的位置。通过该参数可以指定实例所属可用区，所属项目，专用宿主机（对于独享母机付费模式的子机创建）等属性。
-        :type Placement: :class:`tencentcloud.cvm.v20170312.models.Placement`
         :param InstanceType: 实例机型。不同实例机型指定了不同的资源规格。
 <br><li>对于付费模式为PREPAID或POSTPAID_BY_HOUR的子机创建，具体取值可通过调用接口[DescribeInstanceTypeConfigs](https://cloud.tencent.com/document/api/213/15749)来获得最新的规格表或参见[实例类型](https://cloud.tencent.com/document/product/213/11518)描述。若不指定该参数，则默认机型为S1.SMALL1。<br><li>对于付费模式为CDHPAID的子机创建，该参数以"CDH_"为前缀，根据cpu和内存配置生成，具体形式为：CDH_XCXG，例如对于创建cpu为1核，内存为1G大小的专用宿主机的子机，该参数应该为CDH_1C1G。
         :type InstanceType: str
-        :param ImageId: 指定有效的[镜像](https://cloud.tencent.com/document/product/213/4940)ID，格式形如`img-xxx`。镜像类型分为四种：<br/><li>公共镜像</li><li>自定义镜像</li><li>共享镜像</li><li>服务市场镜像</li><br/>可通过以下方式获取可用的镜像ID：<br/><li>`公共镜像`、`自定义镜像`、`共享镜像`的镜像ID可通过登录[控制台](https://console.cloud.tencent.com/cvm/image?rid=1&imageType=PUBLIC_IMAGE)查询；`服务镜像市场`的镜像ID可通过[云市场](https://market.cloud.tencent.com/list)查询。</li><li>通过调用接口 [DescribeImages](https://cloud.tencent.com/document/api/213/15715) ，取返回信息中的`ImageId`字段。</li>
-        :type ImageId: str
         :param SystemDisk: 实例系统盘配置信息。若不指定该参数，则按照系统默认值进行分配。
         :type SystemDisk: :class:`tencentcloud.cvm.v20170312.models.SystemDisk`
         :param DataDisks: 实例数据盘配置信息。若不指定该参数，则默认不购买数据盘，当前仅支持购买的时候指定一个数据盘。
@@ -3582,6 +3620,8 @@ class RunInstancesRequest(AbstractModel):
         :type HostName: str
         :param ActionTimer: 定时任务。通过该参数可以为实例指定定时任务，目前仅支持定时销毁。
         :type ActionTimer: :class:`tencentcloud.cvm.v20170312.models.ActionTimer`
+        :param DisasterRecoverGroupIds: 容灾组id，仅支持指定一个。
+        :type DisasterRecoverGroupIds: list of str
         :param TagSpecification: 标签描述列表。通过指定该参数可以同时绑定标签到相应的资源实例，当前仅支持绑定标签到云主机实例。
         :type TagSpecification: list of TagSpecification
         :param InstanceMarketOptions: 实例的市场相关选项，如竞价实例相关参数
@@ -3590,11 +3630,11 @@ class RunInstancesRequest(AbstractModel):
 )和[Linux](https://cloud.tencent.com/document/product/213/17525)启动时运行命令。
         :type UserData: str
         """
+        self.Placement = None
+        self.ImageId = None
         self.InstanceChargeType = None
         self.InstanceChargePrepaid = None
-        self.Placement = None
         self.InstanceType = None
-        self.ImageId = None
         self.SystemDisk = None
         self.DataDisks = None
         self.VirtualPrivateCloud = None
@@ -3607,21 +3647,22 @@ class RunInstancesRequest(AbstractModel):
         self.ClientToken = None
         self.HostName = None
         self.ActionTimer = None
+        self.DisasterRecoverGroupIds = None
         self.TagSpecification = None
         self.InstanceMarketOptions = None
         self.UserData = None
 
 
     def _deserialize(self, params):
+        if params.get("Placement") is not None:
+            self.Placement = Placement()
+            self.Placement._deserialize(params.get("Placement"))
+        self.ImageId = params.get("ImageId")
         self.InstanceChargeType = params.get("InstanceChargeType")
         if params.get("InstanceChargePrepaid") is not None:
             self.InstanceChargePrepaid = InstanceChargePrepaid()
             self.InstanceChargePrepaid._deserialize(params.get("InstanceChargePrepaid"))
-        if params.get("Placement") is not None:
-            self.Placement = Placement()
-            self.Placement._deserialize(params.get("Placement"))
         self.InstanceType = params.get("InstanceType")
-        self.ImageId = params.get("ImageId")
         if params.get("SystemDisk") is not None:
             self.SystemDisk = SystemDisk()
             self.SystemDisk._deserialize(params.get("SystemDisk"))
@@ -3651,6 +3692,7 @@ class RunInstancesRequest(AbstractModel):
         if params.get("ActionTimer") is not None:
             self.ActionTimer = ActionTimer()
             self.ActionTimer._deserialize(params.get("ActionTimer"))
+        self.DisasterRecoverGroupIds = params.get("DisasterRecoverGroupIds")
         if params.get("TagSpecification") is not None:
             self.TagSpecification = []
             for item in params.get("TagSpecification"):

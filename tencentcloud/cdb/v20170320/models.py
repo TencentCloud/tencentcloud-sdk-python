@@ -456,6 +456,12 @@ class CreateDBInstanceHourRequest(AbstractModel):
 
     def __init__(self):
         """
+        :param GoodsNum: 实例数量，默认值为1, 最小值1，最大值为100
+        :type GoodsNum: int
+        :param Memory: 实例内存大小，单位：MB，请使用[获取云数据库可售卖规格](https://cloud.tencent.com/document/api/236/17229)接口获取可创建的内存规格
+        :type Memory: int
+        :param Volume: 实例硬盘大小，单位：GB，请使用[获取云数据库可售卖规格](https://cloud.tencent.com/document/api/236/17229)接口获取可创建的硬盘范围
+        :type Volume: int
         :param EngineVersion: MySQL版本，值包括：5.5、5.6和5.7，请使用[获取云数据库可售卖规格](https://cloud.tencent.com/document/api/236/17229)接口获取可创建的实例版本
         :type EngineVersion: str
         :param UniqVpcId: 私有网络ID，如果不传则默认选择基础网络，请使用[查询私有网络列表](/document/api/215/15778)
@@ -464,12 +470,6 @@ class CreateDBInstanceHourRequest(AbstractModel):
         :type UniqSubnetId: str
         :param ProjectId: 项目ID，不填为默认项目。请使用[查询项目列表](https://cloud.tencent.com/document/product/378/4400)接口获取项目ID
         :type ProjectId: int
-        :param GoodsNum: 实例数量，默认值为1, 最小值1，最大值为100
-        :type GoodsNum: int
-        :param Memory: 实例内存大小，单位：MB，请使用[获取云数据库可售卖规格](https://cloud.tencent.com/document/api/236/17229)接口获取可创建的内存规格
-        :type Memory: int
-        :param Volume: 实例硬盘大小，单位：GB，请使用[获取云数据库可售卖规格](https://cloud.tencent.com/document/api/236/17229)接口获取可创建的硬盘范围
-        :type Volume: int
         :param Zone: 可用区信息，该参数缺省时，系统会自动选择一个可用区，请使用[获取云数据库可售卖规格](https://cloud.tencent.com/document/api/236/17229)接口获取可创建的可用区
         :type Zone: str
         :param MasterInstanceId: 实例ID，购买只读实例或者灾备实例时必填，该字段表示只读实例或者灾备实例的主实例ID，请使用[查询实例列表](https://cloud.tencent.com/document/api/236/15872)接口查询云数据库实例ID
@@ -501,13 +501,13 @@ class CreateDBInstanceHourRequest(AbstractModel):
         :param InstanceName: 实例名称
         :type InstanceName: str
         """
+        self.GoodsNum = None
+        self.Memory = None
+        self.Volume = None
         self.EngineVersion = None
         self.UniqVpcId = None
         self.UniqSubnetId = None
         self.ProjectId = None
-        self.GoodsNum = None
-        self.Memory = None
-        self.Volume = None
         self.Zone = None
         self.MasterInstanceId = None
         self.InstanceRole = None
@@ -526,13 +526,13 @@ class CreateDBInstanceHourRequest(AbstractModel):
 
 
     def _deserialize(self, params):
+        self.GoodsNum = params.get("GoodsNum")
+        self.Memory = params.get("Memory")
+        self.Volume = params.get("Volume")
         self.EngineVersion = params.get("EngineVersion")
         self.UniqVpcId = params.get("UniqVpcId")
         self.UniqSubnetId = params.get("UniqSubnetId")
         self.ProjectId = params.get("ProjectId")
-        self.GoodsNum = params.get("GoodsNum")
-        self.Memory = params.get("Memory")
-        self.Volume = params.get("Volume")
         self.Zone = params.get("Zone")
         self.MasterInstanceId = params.get("MasterInstanceId")
         self.InstanceRole = params.get("InstanceRole")
@@ -2317,27 +2317,27 @@ class InitDBInstancesRequest(AbstractModel):
         :type InstanceIds: list of str
         :param NewPassword: 实例新的密码，密码规则：8-64个字符，至少包含字母、数字、字符（支持的字符：!@#$%^*()）中的两种
         :type NewPassword: str
-        :param Vport: 实例的端口
-        :type Vport: int
         :param Parameters: 实例的参数列表，目前支持设置“character_set_server”、“lower_case_table_names”参数。其中，“character_set_server”参数可选值为["utf8","latin1","gbk","utf8mb4"]；“lower_case_table_names”可选值为[“0”,“1”]
         :type Parameters: list of ParamInfo
+        :param Vport: 实例的端口
+        :type Vport: int
         """
         self.InstanceIds = None
         self.NewPassword = None
-        self.Vport = None
         self.Parameters = None
+        self.Vport = None
 
 
     def _deserialize(self, params):
         self.InstanceIds = params.get("InstanceIds")
         self.NewPassword = params.get("NewPassword")
-        self.Vport = params.get("Vport")
         if params.get("Parameters") is not None:
             self.Parameters = []
             for item in params.get("Parameters"):
                 obj = ParamInfo()
                 obj._deserialize(item)
                 self.Parameters.append(obj)
+        self.Vport = params.get("Vport")
 
 
 class InitDBInstancesResponse(AbstractModel):
@@ -2375,7 +2375,7 @@ class InstanceInfo(AbstractModel):
         :param InitFlag: 初始化标志
         :type InitFlag: int
         :param RoVipInfo: 只读vip信息
-        :type RoVipInfo: list of RoVipInfo
+        :type RoVipInfo: :class:`tencentcloud.cdb.v20170320.models.RoVipInfo`
         :param Memory: 内存容量
         :type Memory: int
         :param Status: 实例状态
@@ -2408,8 +2408,6 @@ class InstanceInfo(AbstractModel):
         :type DeployMode: int
         :param TaskStatus: 实例任务状态
         :type TaskStatus: int
-        :param MasterInfo: 主实例信息
-        :type MasterInfo: :class:`tencentcloud.cdb.v20170320.models.MasterInfo`
         :param DeviceType: 实例售卖机型
         :type DeviceType: str
         :param EngineVersion: 内核版本
@@ -2436,6 +2434,8 @@ class InstanceInfo(AbstractModel):
         :type UniqVpcId: str
         :param UniqSubnetId: 子网描述符
         :type UniqSubnetId: str
+        :param MasterInfo: 主实例信息
+        :type MasterInfo: :class:`tencentcloud.cdb.v20170320.models.MasterInfo`
         """
         self.WanStatus = None
         self.Zone = None
@@ -2457,7 +2457,6 @@ class InstanceInfo(AbstractModel):
         self.DeadlineTime = None
         self.DeployMode = None
         self.TaskStatus = None
-        self.MasterInfo = None
         self.DeviceType = None
         self.EngineVersion = None
         self.InstanceName = None
@@ -2471,6 +2470,7 @@ class InstanceInfo(AbstractModel):
         self.CdbError = None
         self.UniqVpcId = None
         self.UniqSubnetId = None
+        self.MasterInfo = None
 
 
     def _deserialize(self, params):
@@ -2478,11 +2478,8 @@ class InstanceInfo(AbstractModel):
         self.Zone = params.get("Zone")
         self.InitFlag = params.get("InitFlag")
         if params.get("RoVipInfo") is not None:
-            self.RoVipInfo = []
-            for item in params.get("RoVipInfo"):
-                obj = RoVipInfo()
-                obj._deserialize(item)
-                self.RoVipInfo.append(obj)
+            self.RoVipInfo = RoVipInfo()
+            self.RoVipInfo._deserialize(params.get("RoVipInfo"))
         self.Memory = params.get("Memory")
         self.Status = params.get("Status")
         self.VpcId = params.get("VpcId")
@@ -2506,9 +2503,6 @@ class InstanceInfo(AbstractModel):
         self.DeadlineTime = params.get("DeadlineTime")
         self.DeployMode = params.get("DeployMode")
         self.TaskStatus = params.get("TaskStatus")
-        if params.get("MasterInfo") is not None:
-            self.MasterInfo = MasterInfo()
-            self.MasterInfo._deserialize(params.get("MasterInfo"))
         self.DeviceType = params.get("DeviceType")
         self.EngineVersion = params.get("EngineVersion")
         self.InstanceName = params.get("InstanceName")
@@ -2527,6 +2521,9 @@ class InstanceInfo(AbstractModel):
         self.CdbError = params.get("CdbError")
         self.UniqVpcId = params.get("UniqVpcId")
         self.UniqSubnetId = params.get("UniqSubnetId")
+        if params.get("MasterInfo") is not None:
+            self.MasterInfo = MasterInfo()
+            self.MasterInfo._deserialize(params.get("MasterInfo"))
 
 
 class InstanceRebootTime(AbstractModel):
@@ -2682,25 +2679,25 @@ class ModifyAccountDescriptionRequest(AbstractModel):
         """
         :param InstanceId: 实例ID，格式如：cdb-c1nl9rpv，与云数据库控制台页面中显示的实例ID相同。
         :type InstanceId: str
-        :param Description: 数据库账号的备注信息。
-        :type Description: str
         :param Accounts: 云数据库账号。
         :type Accounts: list of Account
+        :param Description: 数据库账号的备注信息。
+        :type Description: str
         """
         self.InstanceId = None
-        self.Description = None
         self.Accounts = None
+        self.Description = None
 
 
     def _deserialize(self, params):
         self.InstanceId = params.get("InstanceId")
-        self.Description = params.get("Description")
         if params.get("Accounts") is not None:
             self.Accounts = []
             for item in params.get("Accounts"):
                 obj = Account()
                 obj._deserialize(item)
                 self.Accounts.append(obj)
+        self.Description = params.get("Description")
 
 
 class ModifyAccountDescriptionResponse(AbstractModel):
@@ -3348,10 +3345,10 @@ class RoGroup(AbstractModel):
 
     def __init__(self):
         """
-        :param RoGroupId: 只读组ID
-        :type RoGroupId: str
         :param RoGroupMode: 只读组模式，可选值为：alone-系统自动分配只读组；allinone-新建只读组；join-使用现有只读组
         :type RoGroupMode: str
+        :param RoGroupId: 只读组ID
+        :type RoGroupId: str
         :param RoGroupName: 只读组名称
         :type RoGroupName: str
         :param RoOfflineDelay: 是否启用延迟超限剔除功能，启用该功能后，只读实例与主实例的延迟超过延迟阈值值，只读实例将被隔离。可选值：1-启用；0-不启用
@@ -3364,26 +3361,148 @@ class RoGroup(AbstractModel):
         :type WeightMode: str
         :param Weight: 权重值
         :type Weight: int
+        :param RoInstances: 只读组中的只读实例详情
+        :type RoInstances: list of RoInstanceInfo
+        :param Vip: 只读组的内网IP
+        :type Vip: str
+        :param Vport: 只读组的内网端口号
+        :type Vport: int
         """
-        self.RoGroupId = None
         self.RoGroupMode = None
+        self.RoGroupId = None
         self.RoGroupName = None
         self.RoOfflineDelay = None
         self.RoMaxDelayTime = None
         self.MinRoInGroup = None
         self.WeightMode = None
         self.Weight = None
+        self.RoInstances = None
+        self.Vip = None
+        self.Vport = None
 
 
     def _deserialize(self, params):
-        self.RoGroupId = params.get("RoGroupId")
         self.RoGroupMode = params.get("RoGroupMode")
+        self.RoGroupId = params.get("RoGroupId")
         self.RoGroupName = params.get("RoGroupName")
         self.RoOfflineDelay = params.get("RoOfflineDelay")
         self.RoMaxDelayTime = params.get("RoMaxDelayTime")
         self.MinRoInGroup = params.get("MinRoInGroup")
         self.WeightMode = params.get("WeightMode")
         self.Weight = params.get("Weight")
+        if params.get("RoInstances") is not None:
+            self.RoInstances = []
+            for item in params.get("RoInstances"):
+                obj = RoInstanceInfo()
+                obj._deserialize(item)
+                self.RoInstances.append(obj)
+        self.Vip = params.get("Vip")
+        self.Vport = params.get("Vport")
+
+
+class RoInstanceInfo(AbstractModel):
+    """RO实例的详细信息
+
+    """
+
+    def __init__(self):
+        """
+        :param MasterInstanceId: RO组对应的主实例的ID
+        :type MasterInstanceId: str
+        :param RoStatus: RO实例在RO组内的状态，可能的值：online-在线，offline-下线
+        :type RoStatus: str
+        :param OfflineTime: RO实例在RO组内上一次下线的时间
+        :type OfflineTime: str
+        :param Weight: RO实例在RO组内的权重
+        :type Weight: int
+        :param Region: RO实例所在区域名称，如ap-shanghai
+        :type Region: str
+        :param Zone: RO可用区的正式名称，如ap-shanghai-1
+        :type Zone: str
+        :param InstanceId: RO实例ID，格式如：cdbro-c1nl9rpv
+        :type InstanceId: str
+        :param Status: RO实例状态，可能返回值：0-创建中，1-运行中，4-删除中
+        :type Status: int
+        :param InstanceType: 实例类型，可能返回值：1-主实例，2-灾备实例，3-只读实例
+        :type InstanceType: int
+        :param InstanceName: RO实例名称
+        :type InstanceName: str
+        :param HourFeeStatus: 按量计费状态，可能的取值：1-正常，2-欠费
+        :type HourFeeStatus: int
+        :param TaskStatus: RO实例任务状态，可能返回值：<br>0-没有任务<br>1-升级中<br>2-数据导入中<br>3-开放Slave中<br>4-外网访问开通中<br>5-批量操作执行中<br>6-回档中<br>7-外网访问关闭中<br>8-密码修改中<br>9-实例名修改中<br>10-重启中<br>12-自建迁移中<br>13-删除库表中<br>14-灾备实例创建同步中
+        :type TaskStatus: int
+        :param Memory: RO实例内存大小，单位：MB
+        :type Memory: int
+        :param Volume: RO实例硬盘大小，单位：GB
+        :type Volume: int
+        :param Qps: 每次查询数量
+        :type Qps: int
+        :param Vip: RO实例的内网IP地址
+        :type Vip: str
+        :param Vport: RO实例访问端口
+        :type Vport: int
+        :param VpcId: RO实例所在私有网络ID
+        :type VpcId: int
+        :param SubnetId: RO实例所在私有网络子网ID
+        :type SubnetId: int
+        :param DeviceType: RO实例规格描述，目前可取值 CUSTOM
+        :type DeviceType: str
+        :param EngineVersion: RO实例数据库引擎版本，可能返回值：5.1、5.5、5.6和5.7
+        :type EngineVersion: str
+        :param DeadlineTime: RO实例到期时间，时间格式：yyyy-mm-dd hh:mm:ss，如实例为按量计费模式，则此字段值为0000-00-00 00:00:00
+        :type DeadlineTime: str
+        :param PayType: RO实例计费类型，可能返回值：0-包年包月，1-按量计费，2-后付费月结
+        :type PayType: int
+        """
+        self.MasterInstanceId = None
+        self.RoStatus = None
+        self.OfflineTime = None
+        self.Weight = None
+        self.Region = None
+        self.Zone = None
+        self.InstanceId = None
+        self.Status = None
+        self.InstanceType = None
+        self.InstanceName = None
+        self.HourFeeStatus = None
+        self.TaskStatus = None
+        self.Memory = None
+        self.Volume = None
+        self.Qps = None
+        self.Vip = None
+        self.Vport = None
+        self.VpcId = None
+        self.SubnetId = None
+        self.DeviceType = None
+        self.EngineVersion = None
+        self.DeadlineTime = None
+        self.PayType = None
+
+
+    def _deserialize(self, params):
+        self.MasterInstanceId = params.get("MasterInstanceId")
+        self.RoStatus = params.get("RoStatus")
+        self.OfflineTime = params.get("OfflineTime")
+        self.Weight = params.get("Weight")
+        self.Region = params.get("Region")
+        self.Zone = params.get("Zone")
+        self.InstanceId = params.get("InstanceId")
+        self.Status = params.get("Status")
+        self.InstanceType = params.get("InstanceType")
+        self.InstanceName = params.get("InstanceName")
+        self.HourFeeStatus = params.get("HourFeeStatus")
+        self.TaskStatus = params.get("TaskStatus")
+        self.Memory = params.get("Memory")
+        self.Volume = params.get("Volume")
+        self.Qps = params.get("Qps")
+        self.Vip = params.get("Vip")
+        self.Vport = params.get("Vport")
+        self.VpcId = params.get("VpcId")
+        self.SubnetId = params.get("SubnetId")
+        self.DeviceType = params.get("DeviceType")
+        self.EngineVersion = params.get("EngineVersion")
+        self.DeadlineTime = params.get("DeadlineTime")
+        self.PayType = params.get("PayType")
 
 
 class RoVipInfo(AbstractModel):
@@ -3477,8 +3596,6 @@ class SellConfig(AbstractModel):
 
     def __init__(self):
         """
-        :param Device: 设备类型
-        :type Device: str
         :param Type: 售卖规格描述
         :type Type: str
         :param CdbType: 实例类型
@@ -3503,8 +3620,9 @@ class SellConfig(AbstractModel):
         :type Info: str
         :param Status: 状态值
         :type Status: int
+        :param Device: 设备类型
+        :type Device: str
         """
-        self.Device = None
         self.Type = None
         self.CdbType = None
         self.Memory = None
@@ -3517,10 +3635,10 @@ class SellConfig(AbstractModel):
         self.Iops = None
         self.Info = None
         self.Status = None
+        self.Device = None
 
 
     def _deserialize(self, params):
-        self.Device = params.get("Device")
         self.Type = params.get("Type")
         self.CdbType = params.get("CdbType")
         self.Memory = params.get("Memory")
@@ -3533,6 +3651,7 @@ class SellConfig(AbstractModel):
         self.Iops = params.get("Iops")
         self.Info = params.get("Info")
         self.Status = params.get("Status")
+        self.Device = params.get("Device")
 
 
 class SellType(AbstractModel):

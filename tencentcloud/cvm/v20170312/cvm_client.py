@@ -556,6 +556,47 @@ class CvmClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeInstanceVncUrl(self, request):
+        """本接口 ( DescribeInstanceVncUrl ) 用于查询实例管理终端地址。
+
+        * 处于 `STOPPED` 状态的机器无法使用此功能。
+        * 管理终端地址的有效期为 15 秒，调用接口成功后如果 15 秒内不使用该链接进行访问，管理终端地址自动失效，您需要重新查询。
+        * 管理终端地址一旦被访问，将自动失效，您需要重新查询。
+        * 如果连接断开，每分钟内重新连接的次数不能超过 30 次。
+        * 获取到 `InstanceVncUrl` 后，您需要在在链接 <https://img.qcloud.com/qcloud/app/active_vnc/index.html?> 末尾加上参数 `InstanceVncUrl=xxxx`  。
+          - 参数 `InstanceVncUrl` ：调用接口成功后会返回的 `InstanceVncUrl` 的值。
+
+            最后组成的 URL 格式如下：
+
+        ```
+        https://img.qcloud.com/qcloud/app/active_vnc/index.html?InstanceVncUrl=wss%3A%2F%2Fbjvnc.qcloud.com%3A26789%2Fvnc%3Fs%3DaHpjWnRVMFNhYmxKdDM5MjRHNlVTSVQwajNUSW0wb2tBbmFtREFCTmFrcy8vUUNPMG0wSHZNOUUxRm5PMmUzWmFDcWlOdDJIbUJxSTZDL0RXcHZxYnZZMmRkWWZWcEZia2lyb09XMzdKNmM9
+        ```
+
+        :param request: 调用DescribeInstanceVncUrl所需参数的结构体。
+        :type request: :class:`tencentcloud.cvm.v20170312.models.DescribeInstanceVncUrlRequest`
+        :rtype: :class:`tencentcloud.cvm.v20170312.models.DescribeInstanceVncUrlResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeInstanceVncUrl", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeInstanceVncUrlResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise e
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeInstances(self, request):
         """本接口 (DescribeInstances) 用于查询一个或多个实例的详细信息。
 

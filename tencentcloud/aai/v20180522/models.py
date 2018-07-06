@@ -97,14 +97,14 @@ class TextToVoiceRequest(AbstractModel):
         :type Text: str
         :param SessionId: 一次请求对应一个SessionId，会原样返回
         :type SessionId: str
-        :param ProjectId: 项目id
-        :type ProjectId: int
         :param ModelType: 模型类型，1-默认模型
         :type ModelType: int
-        :param Volume: 音量大小，暂仅支持默认值1.0
+        :param Volume: 音量大小，暂仅支持默认值1
         :type Volume: float
-        :param Speed: 语速，暂仅支持默认值1.0
+        :param Speed: 语速，暂仅支持默认值1
         :type Speed: float
+        :param ProjectId: 用户自定义项目id，默认为0
+        :type ProjectId: int
         :param VoiceType: 音色，1-默认音色
         :type VoiceType: int
         :param PrimaryLanguage: 主语言类型<li>1-中文(包括粤语)，最大300字符</li><li>2-英文，最大支持600字符</li>
@@ -114,10 +114,10 @@ class TextToVoiceRequest(AbstractModel):
         """
         self.Text = None
         self.SessionId = None
-        self.ProjectId = None
         self.ModelType = None
         self.Volume = None
         self.Speed = None
+        self.ProjectId = None
         self.VoiceType = None
         self.PrimaryLanguage = None
         self.SampleRate = None
@@ -126,10 +126,10 @@ class TextToVoiceRequest(AbstractModel):
     def _deserialize(self, params):
         self.Text = params.get("Text")
         self.SessionId = params.get("SessionId")
-        self.ProjectId = params.get("ProjectId")
         self.ModelType = params.get("ModelType")
         self.Volume = params.get("Volume")
         self.Speed = params.get("Speed")
+        self.ProjectId = params.get("ProjectId")
         self.VoiceType = params.get("VoiceType")
         self.PrimaryLanguage = params.get("PrimaryLanguage")
         self.SampleRate = params.get("SampleRate")
