@@ -35,9 +35,9 @@ class AbstractModel(object):
     def _deserialize(self, params):
         return None
 
-    def to_json_string(self):
+    def to_json_string(self,json_indent=None):
         """Serialize obj to a JSON formatted str, ensure_ascii is true"""
-        return json.dumps(self._serialize(), ensure_ascii=False)
+        return json.dumps(self._serialize(),indent=json_indent,ensure_ascii=False)
 
     def from_json_string(self, jsonStr):
         """Deserialize a JSON formatted str to a Python object"""
