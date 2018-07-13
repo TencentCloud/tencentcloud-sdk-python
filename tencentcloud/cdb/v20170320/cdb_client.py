@@ -406,34 +406,6 @@ class CdbClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def DescribeBackupDownloadDbTableCode(self, request):
-        """本接口(DescribeBackupDownloadDbTableCode)用于查询备份数据分库分表下载位点。
-
-        :param request: 调用DescribeBackupDownloadDbTableCode所需参数的结构体。
-        :type request: :class:`tencentcloud.cdb.v20170320.models.DescribeBackupDownloadDbTableCodeRequest`
-        :rtype: :class:`tencentcloud.cdb.v20170320.models.DescribeBackupDownloadDbTableCodeResponse`
-
-        """
-        try:
-            params = request._serialize()
-            body = self.call("DescribeBackupDownloadDbTableCode", params)
-            response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.DescribeBackupDownloadDbTableCodeResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise e
-            else:
-                raise TencentCloudSDKException(e.message, e.message)
-
-
     def DescribeBackupTables(self, request):
         """本接口(DescribeBackupTables)用于查询指定的数据库的备份数据表名。
 

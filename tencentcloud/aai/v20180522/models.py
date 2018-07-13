@@ -95,7 +95,7 @@ class TextToVoiceRequest(AbstractModel):
         """
         :param Text: 合成语音的源文本
         :type Text: str
-        :param SessionId: 一次请求对应一个SessionId，会原样返回
+        :param SessionId: 一次请求对应一个SessionId，会原样返回，建议传入类似于uuid的字符串防止重复
         :type SessionId: str
         :param ModelType: 模型类型，1-默认模型
         :type ModelType: int

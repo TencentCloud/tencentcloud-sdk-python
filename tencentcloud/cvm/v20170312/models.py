@@ -1850,10 +1850,13 @@ class InquiryPriceRenewInstancesRequest(AbstractModel):
         :type InstanceChargePrepaid: :class:`tencentcloud.cvm.v20170312.models.InstanceChargePrepaid`
         :param DryRun: 试运行。
         :type DryRun: bool
+        :param RenewPortableDataDisk: 是否续费弹性数据盘。取值范围：<br><li>TRUE：表示续费包年包月实例同时续费其挂载的弹性数据盘<br><li>FALSE：表示续费包年包月实例同时不再续费其挂载的弹性数据盘<br><br>默认取值：TRUE。
+        :type RenewPortableDataDisk: bool
         """
         self.InstanceIds = None
         self.InstanceChargePrepaid = None
         self.DryRun = None
+        self.RenewPortableDataDisk = None
 
 
     def _deserialize(self, params):
@@ -1862,6 +1865,7 @@ class InquiryPriceRenewInstancesRequest(AbstractModel):
             self.InstanceChargePrepaid = InstanceChargePrepaid()
             self.InstanceChargePrepaid._deserialize(params.get("InstanceChargePrepaid"))
         self.DryRun = params.get("DryRun")
+        self.RenewPortableDataDisk = params.get("RenewPortableDataDisk")
 
 
 class InquiryPriceRenewInstancesResponse(AbstractModel):
@@ -3136,14 +3140,18 @@ class OsVersion(AbstractModel):
         :type OsName: str
         :param OsVersions: 支持的操作系统版本
         :type OsVersions: list of str
+        :param Architecture: 支持的操作系统架构
+        :type Architecture: list of str
         """
         self.OsName = None
         self.OsVersions = None
+        self.Architecture = None
 
 
     def _deserialize(self, params):
         self.OsName = params.get("OsName")
         self.OsVersions = params.get("OsVersions")
+        self.Architecture = params.get("Architecture")
 
 
 class Placement(AbstractModel):
@@ -3157,7 +3165,7 @@ class Placement(AbstractModel):
         :type Zone: str
         :param ProjectId: 实例所属项目ID。该参数可以通过调用 [DescribeProject](/document/api/378/4400) 的返回值中的 projectId 字段来获取。不填为默认项目。
         :type ProjectId: int
-        :param HostIds: 实例所属的专用宿主机ID列表。如果您有购买专用宿主机并且指定了该参数，则您购买的实例就会随机的部署在这些专用宿主机上。当前暂不支持。
+        :param HostIds: 实例所属的专用宿主机ID列表。如果您有购买专用宿主机并且指定了该参数，则您购买的实例就会随机的部署在这些专用宿主机上。
         :type HostIds: list of str
         """
         self.Zone = None
@@ -3310,9 +3318,12 @@ class RenewInstancesRequest(AbstractModel):
         :type InstanceIds: list of str
         :param InstanceChargePrepaid: 预付费模式，即包年包月相关参数设置。通过该参数可以指定包年包月实例的续费时长、是否设置自动续费等属性。
         :type InstanceChargePrepaid: :class:`tencentcloud.cvm.v20170312.models.InstanceChargePrepaid`
+        :param RenewPortableDataDisk: 是否续费弹性数据盘。取值范围：<br><li>TRUE：表示续费包年包月实例同时续费其挂载的弹性数据盘<br><li>FALSE：表示续费包年包月实例同时不再续费其挂载的弹性数据盘<br><br>默认取值：TRUE。
+        :type RenewPortableDataDisk: bool
         """
         self.InstanceIds = None
         self.InstanceChargePrepaid = None
+        self.RenewPortableDataDisk = None
 
 
     def _deserialize(self, params):
@@ -3320,6 +3331,7 @@ class RenewInstancesRequest(AbstractModel):
         if params.get("InstanceChargePrepaid") is not None:
             self.InstanceChargePrepaid = InstanceChargePrepaid()
             self.InstanceChargePrepaid._deserialize(params.get("InstanceChargePrepaid"))
+        self.RenewPortableDataDisk = params.get("RenewPortableDataDisk")
 
 
 class RenewInstancesResponse(AbstractModel):
@@ -3589,7 +3601,7 @@ class RunInstancesRequest(AbstractModel):
         :type Placement: :class:`tencentcloud.cvm.v20170312.models.Placement`
         :param ImageId: 指定有效的[镜像](https://cloud.tencent.com/document/product/213/4940)ID，格式形如`img-xxx`。镜像类型分为四种：<br/><li>公共镜像</li><li>自定义镜像</li><li>共享镜像</li><li>服务市场镜像</li><br/>可通过以下方式获取可用的镜像ID：<br/><li>`公共镜像`、`自定义镜像`、`共享镜像`的镜像ID可通过登录[控制台](https://console.cloud.tencent.com/cvm/image?rid=1&imageType=PUBLIC_IMAGE)查询；`服务镜像市场`的镜像ID可通过[云市场](https://market.cloud.tencent.com/list)查询。</li><li>通过调用接口 [DescribeImages](https://cloud.tencent.com/document/api/213/15715) ，取返回信息中的`ImageId`字段。</li>
         :type ImageId: str
-        :param InstanceChargeType: 实例[计费类型](https://cloud.tencent.com/document/product/213/2180)。<br><li>PREPAID：预付费，即包年包月<br><li>POSTPAID_BY_HOUR：按小时后付费<br><li>CDHPAID：独享母机付费（基于专用宿主机创建，宿主机部分的资源不收费）<br>默认值：POSTPAID_BY_HOUR。
+        :param InstanceChargeType: 实例[计费类型](https://cloud.tencent.com/document/product/213/2180)。<br><li>PREPAID：预付费，即包年包月<br><li>POSTPAID_BY_HOUR：按小时后付费<br><li>CDHPAID：独享母机付费（基于专用宿主机创建，宿主机部分的资源不收费）<br><li>SPOTPAID：竞价付费<br>默认值：POSTPAID_BY_HOUR。
         :type InstanceChargeType: str
         :param InstanceChargePrepaid: 预付费模式，即包年包月相关参数设置。通过该参数可以指定包年包月实例的购买时长、是否设置自动续费等属性。若指定实例的付费模式为预付费则该参数必传。
         :type InstanceChargePrepaid: :class:`tencentcloud.cvm.v20170312.models.InstanceChargePrepaid`
@@ -3616,7 +3628,7 @@ class RunInstancesRequest(AbstractModel):
         :type EnhancedService: :class:`tencentcloud.cvm.v20170312.models.EnhancedService`
         :param ClientToken: 用于保证请求幂等性的字符串。该字符串由客户生成，需保证不同请求之间唯一，最大值不超过64个ASCII字符。若不指定该参数，则无法保证请求的幂等性。<br>更多详细信息请参阅：如何保证幂等性。
         :type ClientToken: str
-        :param HostName: 云服务器的主机名。<br><li>点号（.）和短横线（-）不能作为 HostName 的首尾字符，不能连续使用。<br><li>Windows 实例：名字符长度为[2, 15]，允许字母（不限制大小写）、数字和短横线（-）组成，不支持点号（.），不能全是数字。<br><li>其他类型（Linux 等）实例：字符长度为[2, 30]，允许支持多个点号，点之间为一段，每段允许字母（不限制大小写）、数字和短横线（-）组成。
+        :param HostName: 云服务器的主机名。<br><li>点号（.）和短横线（-）不能作为 HostName 的首尾字符，不能连续使用。<br><li>Windows 实例：名字符长度为[2, 15]，允许字母（不限制大小写）、数字和短横线（-）组成，不支持点号（.），不能全是数字。<br><li>其他类型（Linux 等）实例：字符长度为[2, 60]，允许支持多个点号，点之间为一段，每段允许字母（不限制大小写）、数字和短横线（-）组成。
         :type HostName: str
         :param ActionTimer: 定时任务。通过该参数可以为实例指定定时任务，目前仅支持定时销毁。
         :type ActionTimer: :class:`tencentcloud.cvm.v20170312.models.ActionTimer`
@@ -3626,8 +3638,7 @@ class RunInstancesRequest(AbstractModel):
         :type TagSpecification: list of TagSpecification
         :param InstanceMarketOptions: 实例的市场相关选项，如竞价实例相关参数
         :type InstanceMarketOptions: :class:`tencentcloud.cvm.v20170312.models.InstanceMarketOptionsRequest`
-        :param UserData: 提供给实例使用的用户数据，需要以 base64 方式编码，支持的最大数据大小为 16KB。关于获取此参数的详细介绍，请参阅[Windows](https://cloud.tencent.com/document/product/213/17526
-)和[Linux](https://cloud.tencent.com/document/product/213/17525)启动时运行命令。
+        :param UserData: 提供给实例使用的用户数据，需要以 base64 方式编码，支持的最大数据大小为 16KB。关于获取此参数的详细介绍，请参阅[Windows](https://cloud.tencent.com/document/product/213/17526)和[Linux](https://cloud.tencent.com/document/product/213/17525)启动时运行命令。
         :type UserData: str
         """
         self.Placement = None
@@ -3790,7 +3801,7 @@ class SpotMarketOptions(AbstractModel):
         """
         :param MaxPrice: 竞价出价
         :type MaxPrice: str
-        :param SpotInstanceType: 竞价请求类型
+        :param SpotInstanceType: 竞价请求类型，当前仅支持类型：one-time
         :type SpotInstanceType: str
         """
         self.MaxPrice = None

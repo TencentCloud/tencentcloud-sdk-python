@@ -778,27 +778,6 @@ class DatabasePrivilege(AbstractModel):
         self.Database = params.get("Database")
 
 
-class DatabaseTableList(AbstractModel):
-    """数据库表列表
-
-    """
-
-    def __init__(self):
-        """
-        :param DatabaseName: 数据库名
-        :type DatabaseName: str
-        :param TableList: 数据表数组
-        :type TableList: list of str
-        """
-        self.DatabaseName = None
-        self.TableList = None
-
-
-    def _deserialize(self, params):
-        self.DatabaseName = params.get("DatabaseName")
-        self.TableList = params.get("TableList")
-
-
 class DeleteAccountsRequest(AbstractModel):
     """DeleteAccounts请求参数结构体
 
@@ -1126,57 +1105,6 @@ class DescribeBackupDatabasesResponse(AbstractModel):
                 obj = DatabaseName()
                 obj._deserialize(item)
                 self.Items.append(obj)
-        self.RequestId = params.get("RequestId")
-
-
-class DescribeBackupDownloadDbTableCodeRequest(AbstractModel):
-    """DescribeBackupDownloadDbTableCode请求参数结构体
-
-    """
-
-    def __init__(self):
-        """
-        :param InstanceId: 实例ID，格式如：cdb-c1nl9rpv。与云数据库控制台页面中显示的实例ID相同。
-        :type InstanceId: str
-        :param StartTime: 开始时间，格式为：2017-07-12 10:29:20。
-        :type StartTime: str
-        :param DatabaseTableList: 待下载的数据库和数据表列表。
-        :type DatabaseTableList: list of DatabaseTableList
-        """
-        self.InstanceId = None
-        self.StartTime = None
-        self.DatabaseTableList = None
-
-
-    def _deserialize(self, params):
-        self.InstanceId = params.get("InstanceId")
-        self.StartTime = params.get("StartTime")
-        if params.get("DatabaseTableList") is not None:
-            self.DatabaseTableList = []
-            for item in params.get("DatabaseTableList"):
-                obj = DatabaseTableList()
-                obj._deserialize(item)
-                self.DatabaseTableList.append(obj)
-
-
-class DescribeBackupDownloadDbTableCodeResponse(AbstractModel):
-    """DescribeBackupDownloadDbTableCode返回参数结构体
-
-    """
-
-    def __init__(self):
-        """
-        :param DatabaseTableCode: 下载位点
-        :type DatabaseTableCode: int
-        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
-        :type RequestId: str
-        """
-        self.DatabaseTableCode = None
-        self.RequestId = None
-
-
-    def _deserialize(self, params):
-        self.DatabaseTableCode = params.get("DatabaseTableCode")
         self.RequestId = params.get("RequestId")
 
 
