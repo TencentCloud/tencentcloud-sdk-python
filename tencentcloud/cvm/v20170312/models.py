@@ -179,14 +179,18 @@ class CreateDisasterRecoverGroupRequest(AbstractModel):
         :type Name: str
         :param Type: 分散置放群组类型，取值范围：<br><li>HOST：物理机<br><li>SW：交换机<br><li>RACK：机架
         :type Type: str
+        :param ClientToken: 用于保证请求幂等性的字符串。该字符串由客户生成，需保证不同请求之间唯一，最大值不超过64个ASCII字符。若不指定该参数，则无法保证请求的幂等性。<br>更多详细信息请参阅：如何保证幂等性。
+        :type ClientToken: str
         """
         self.Name = None
         self.Type = None
+        self.ClientToken = None
 
 
     def _deserialize(self, params):
         self.Name = params.get("Name")
         self.Type = params.get("Type")
+        self.ClientToken = params.get("ClientToken")
 
 
 class CreateDisasterRecoverGroupResponse(AbstractModel):
@@ -2257,6 +2261,8 @@ class Instance(AbstractModel):
         :type LoginSettings: :class:`tencentcloud.cvm.v20170312.models.LoginSettings`
         :param InstanceState: 实例状态。取值范围：<br><li>PENDING：表示创建中<br></li><li>LAUNCH_FAILED：表示创建失败<br></li><li>RUNNING：表示运行中<br></li><li>STOPPED：表示关机<br></li><li>STARTING：表示开机中<br></li><li>STOPPING：表示关机中<br></li><li>REBOOTING：表示重启中<br></li><li>SHUTDOWN：表示停止待销毁<br></li><li>TERMINATING：表示销毁中。<br></li>
         :type InstanceState: str
+        :param Tags: 实例关联的标签列表。
+        :type Tags: list of Tag
         :param Placement: 实例所在的位置。
         :type Placement: :class:`tencentcloud.cvm.v20170312.models.Placement`
         :param InstanceId: 实例`ID`。
@@ -2298,6 +2304,7 @@ class Instance(AbstractModel):
         self.SecurityGroupIds = None
         self.LoginSettings = None
         self.InstanceState = None
+        self.Tags = None
         self.Placement = None
         self.InstanceId = None
         self.InstanceType = None
@@ -2325,6 +2332,12 @@ class Instance(AbstractModel):
             self.LoginSettings = LoginSettings()
             self.LoginSettings._deserialize(params.get("LoginSettings"))
         self.InstanceState = params.get("InstanceState")
+        if params.get("Tags") is not None:
+            self.Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self.Tags.append(obj)
         if params.get("Placement") is not None:
             self.Placement = Placement()
             self.Placement._deserialize(params.get("Placement"))
@@ -3963,7 +3976,7 @@ class SystemDisk(AbstractModel):
 
     def __init__(self):
         """
-        :param DiskType: 系统盘类型。系统盘类型限制详见[CVM实例配置](/document/product/213/2177)。取值范围：<br><li>LOCAL_BASIC：本地硬盘<br><li>LOCAL_SSD：本地SSD硬盘<br><li>CLOUD_BASIC：普通云硬盘<br><li>CLOUD_SSD：SSD云硬盘<br><li>CLOUD_PREMIUM：高性能云硬盘<br><br>默认取值：LOCAL_BASIC。
+        :param DiskType: 系统盘类型。系统盘类型限制详见[CVM实例配置](/document/product/213/2177)。取值范围：<br><li>LOCAL_BASIC：本地硬盘<br><li>LOCAL_SSD：本地SSD硬盘<br><li>CLOUD_BASIC：普通云硬盘<br><li>CLOUD_SSD：SSD云硬盘<br><li>CLOUD_PREMIUM：高性能云硬盘<br><br>默认取值：CLOUD_BASIC。
         :type DiskType: str
         :param DiskId: 系统盘ID。LOCAL_BASIC 和 LOCAL_SSD 类型没有ID。暂时不支持该参数。
         :type DiskId: str
