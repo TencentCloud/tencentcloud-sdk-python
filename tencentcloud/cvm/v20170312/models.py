@@ -1605,6 +1605,12 @@ class Image(AbstractModel):
 
     def __init__(self):
         """
+        :param ImageId: 镜像ID
+        :type ImageId: str
+        :param OsName: 镜像操作系统
+        :type OsName: str
+        :param ImageType: 镜像类型
+        :type ImageType: str
         :param CreatedTime: 镜像创建时间
         :type CreatedTime: str
         :param ImageName: 镜像名称
@@ -1617,12 +1623,6 @@ class Image(AbstractModel):
         :type Architecture: str
         :param ImageState: 镜像状态
         :type ImageState: str
-        :param ImageId: 镜像ID
-        :type ImageId: str
-        :param OsName: 镜像操作系统
-        :type OsName: str
-        :param ImageType: 镜像类型
-        :type ImageType: str
         :param Platform: 镜像来源平台
         :type Platform: str
         :param ImageCreator: 镜像创建者
@@ -1630,30 +1630,30 @@ class Image(AbstractModel):
         :param ImageSource: 镜像来源
         :type ImageSource: str
         """
+        self.ImageId = None
+        self.OsName = None
+        self.ImageType = None
         self.CreatedTime = None
         self.ImageName = None
         self.ImageDescription = None
         self.ImageSize = None
         self.Architecture = None
         self.ImageState = None
-        self.ImageId = None
-        self.OsName = None
-        self.ImageType = None
         self.Platform = None
         self.ImageCreator = None
         self.ImageSource = None
 
 
     def _deserialize(self, params):
+        self.ImageId = params.get("ImageId")
+        self.OsName = params.get("OsName")
+        self.ImageType = params.get("ImageType")
         self.CreatedTime = params.get("CreatedTime")
         self.ImageName = params.get("ImageName")
         self.ImageDescription = params.get("ImageDescription")
         self.ImageSize = params.get("ImageSize")
         self.Architecture = params.get("Architecture")
         self.ImageState = params.get("ImageState")
-        self.ImageId = params.get("ImageId")
-        self.OsName = params.get("OsName")
-        self.ImageType = params.get("ImageType")
         self.Platform = params.get("Platform")
         self.ImageCreator = params.get("ImageCreator")
         self.ImageSource = params.get("ImageSource")
@@ -2253,16 +2253,6 @@ class Instance(AbstractModel):
 
     def __init__(self):
         """
-        :param OsName: 操作系统名称。
-        :type OsName: str
-        :param SecurityGroupIds: 实例所属安全组。该参数可以通过调用 [DescribeSecurityGroups](https://cloud.tencent.com/document/api/215/15808) 的返回值中的sgId字段来获取。
-        :type SecurityGroupIds: list of str
-        :param LoginSettings: 实例登录设置。目前只返回实例所关联的密钥。
-        :type LoginSettings: :class:`tencentcloud.cvm.v20170312.models.LoginSettings`
-        :param InstanceState: 实例状态。取值范围：<br><li>PENDING：表示创建中<br></li><li>LAUNCH_FAILED：表示创建失败<br></li><li>RUNNING：表示运行中<br></li><li>STOPPED：表示关机<br></li><li>STARTING：表示开机中<br></li><li>STOPPING：表示关机中<br></li><li>REBOOTING：表示重启中<br></li><li>SHUTDOWN：表示停止待销毁<br></li><li>TERMINATING：表示销毁中。<br></li>
-        :type InstanceState: str
-        :param Tags: 实例关联的标签列表。
-        :type Tags: list of Tag
         :param Placement: 实例所在的位置。
         :type Placement: :class:`tencentcloud.cvm.v20170312.models.Placement`
         :param InstanceId: 实例`ID`。
@@ -2299,12 +2289,17 @@ class Instance(AbstractModel):
         :type CreatedTime: str
         :param ExpiredTime: 到期时间。按照`ISO8601`标准表示，并且使用`UTC`时间。格式为：`YYYY-MM-DDThh:mm:ssZ`。
         :type ExpiredTime: str
+        :param OsName: 操作系统名称。
+        :type OsName: str
+        :param SecurityGroupIds: 实例所属安全组。该参数可以通过调用 [DescribeSecurityGroups](https://cloud.tencent.com/document/api/215/15808) 的返回值中的sgId字段来获取。
+        :type SecurityGroupIds: list of str
+        :param LoginSettings: 实例登录设置。目前只返回实例所关联的密钥。
+        :type LoginSettings: :class:`tencentcloud.cvm.v20170312.models.LoginSettings`
+        :param InstanceState: 实例状态。取值范围：<br><li>PENDING：表示创建中<br></li><li>LAUNCH_FAILED：表示创建失败<br></li><li>RUNNING：表示运行中<br></li><li>STOPPED：表示关机<br></li><li>STARTING：表示开机中<br></li><li>STOPPING：表示关机中<br></li><li>REBOOTING：表示重启中<br></li><li>SHUTDOWN：表示停止待销毁<br></li><li>TERMINATING：表示销毁中。<br></li>
+        :type InstanceState: str
+        :param Tags: 实例关联的标签列表。
+        :type Tags: list of Tag
         """
-        self.OsName = None
-        self.SecurityGroupIds = None
-        self.LoginSettings = None
-        self.InstanceState = None
-        self.Tags = None
         self.Placement = None
         self.InstanceId = None
         self.InstanceType = None
@@ -2323,21 +2318,14 @@ class Instance(AbstractModel):
         self.RenewFlag = None
         self.CreatedTime = None
         self.ExpiredTime = None
+        self.OsName = None
+        self.SecurityGroupIds = None
+        self.LoginSettings = None
+        self.InstanceState = None
+        self.Tags = None
 
 
     def _deserialize(self, params):
-        self.OsName = params.get("OsName")
-        self.SecurityGroupIds = params.get("SecurityGroupIds")
-        if params.get("LoginSettings") is not None:
-            self.LoginSettings = LoginSettings()
-            self.LoginSettings._deserialize(params.get("LoginSettings"))
-        self.InstanceState = params.get("InstanceState")
-        if params.get("Tags") is not None:
-            self.Tags = []
-            for item in params.get("Tags"):
-                obj = Tag()
-                obj._deserialize(item)
-                self.Tags.append(obj)
         if params.get("Placement") is not None:
             self.Placement = Placement()
             self.Placement._deserialize(params.get("Placement"))
@@ -2369,6 +2357,18 @@ class Instance(AbstractModel):
         self.RenewFlag = params.get("RenewFlag")
         self.CreatedTime = params.get("CreatedTime")
         self.ExpiredTime = params.get("ExpiredTime")
+        self.OsName = params.get("OsName")
+        self.SecurityGroupIds = params.get("SecurityGroupIds")
+        if params.get("LoginSettings") is not None:
+            self.LoginSettings = LoginSettings()
+            self.LoginSettings._deserialize(params.get("LoginSettings"))
+        self.InstanceState = params.get("InstanceState")
+        if params.get("Tags") is not None:
+            self.Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self.Tags.append(obj)
 
 
 class InstanceChargePrepaid(AbstractModel):
@@ -3873,20 +3873,16 @@ class StopInstancesRequest(AbstractModel):
         :type ForceStop: bool
         :param StopType: 实例的关闭模式。取值范围：<br><li>SOFT_FIRST：表示在正常关闭失败后进行强制关闭<br><li>HARD：直接强制关闭<br><li>SOFT：仅软关机<br>默认取值：SOFT。
         :type StopType: str
-        :param StoppedMode: 关机收费模式<br><li>KEEP_CHARGING：关机继续收费<br><li>STOP_CHARGING：关机停止收费<br>默认取值：KEEP_CHARGING。
-        :type StoppedMode: str
         """
         self.InstanceIds = None
         self.ForceStop = None
         self.StopType = None
-        self.StoppedMode = None
 
 
     def _deserialize(self, params):
         self.InstanceIds = params.get("InstanceIds")
         self.ForceStop = params.get("ForceStop")
         self.StopType = params.get("StopType")
-        self.StoppedMode = params.get("StoppedMode")
 
 
 class StopInstancesResponse(AbstractModel):

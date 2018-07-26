@@ -307,6 +307,81 @@ class AppSetInfo(AbstractModel):
         self.ShieldSize = params.get("ShieldSize")
 
 
+class BindInfo(AbstractModel):
+    """用户绑定app的基本信息
+
+    """
+
+    def __init__(self):
+        """
+        :param AppIconUrl: app的icon的url
+        :type AppIconUrl: str
+        :param AppName: app的名称
+        :type AppName: str
+        :param AppPkgName: app的包名
+        :type AppPkgName: str
+        """
+        self.AppIconUrl = None
+        self.AppName = None
+        self.AppPkgName = None
+
+
+    def _deserialize(self, params):
+        self.AppIconUrl = params.get("AppIconUrl")
+        self.AppName = params.get("AppName")
+        self.AppPkgName = params.get("AppPkgName")
+
+
+class CreateBindInstanceRequest(AbstractModel):
+    """CreateBindInstance请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ResourceId: 资源id，全局唯一
+        :type ResourceId: str
+        :param AppIconUrl: app的icon的url
+        :type AppIconUrl: str
+        :param AppName: app的名称
+        :type AppName: str
+        :param AppPkgName: app的包名
+        :type AppPkgName: str
+        """
+        self.ResourceId = None
+        self.AppIconUrl = None
+        self.AppName = None
+        self.AppPkgName = None
+
+
+    def _deserialize(self, params):
+        self.ResourceId = params.get("ResourceId")
+        self.AppIconUrl = params.get("AppIconUrl")
+        self.AppName = params.get("AppName")
+        self.AppPkgName = params.get("AppPkgName")
+
+
+class CreateBindInstanceResponse(AbstractModel):
+    """CreateBindInstance返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Progress: 任务状态: 1-已完成,2-处理中,3-处理出错,4-处理超时
+        :type Progress: int
+        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :type RequestId: str
+        """
+        self.Progress = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Progress = params.get("Progress")
+        self.RequestId = params.get("RequestId")
+
+
 class CreateScanInstancesRequest(AbstractModel):
     """CreateScanInstances请求参数结构体
 
@@ -422,6 +497,58 @@ class CreateShieldInstanceResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class CreateShieldPlanInstanceRequest(AbstractModel):
+    """CreateShieldPlanInstance请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ResourceId: 资源id
+        :type ResourceId: str
+        :param PlanName: 策略名称
+        :type PlanName: str
+        :param PlanInfo: 策略具体信息
+        :type PlanInfo: :class:`tencentcloud.ms.v20180408.models.PlanInfo`
+        """
+        self.ResourceId = None
+        self.PlanName = None
+        self.PlanInfo = None
+
+
+    def _deserialize(self, params):
+        self.ResourceId = params.get("ResourceId")
+        self.PlanName = params.get("PlanName")
+        if params.get("PlanInfo") is not None:
+            self.PlanInfo = PlanInfo()
+            self.PlanInfo._deserialize(params.get("PlanInfo"))
+
+
+class CreateShieldPlanInstanceResponse(AbstractModel):
+    """CreateShieldPlanInstance返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param PlanId: 策略id
+        :type PlanId: int
+        :param Progress: 任务状态: 1-已完成,2-处理中,3-处理出错,4-处理超时
+        :type Progress: int
+        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :type RequestId: str
+        """
+        self.PlanId = None
+        self.Progress = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.PlanId = params.get("PlanId")
+        self.Progress = params.get("Progress")
+        self.RequestId = params.get("RequestId")
+
+
 class DeleteScanInstancesRequest(AbstractModel):
     """DeleteScanInstances请求参数结构体
 
@@ -498,6 +625,78 @@ class DeleteShieldInstancesResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeResourceInstancesRequest(AbstractModel):
+    """DescribeResourceInstances请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Pids: 资源类别id数组
+        :type Pids: list of int non-negative
+        :param Filters: 支持通过资源id，pid进行查询
+        :type Filters: list of Filter
+        :param Offset: 偏移量，默认为0
+        :type Offset: int
+        :param Limit: 数量限制，默认为20，最大值为100。
+        :type Limit: int
+        :param OrderField: 按某个字段排序，目前支持CreateTime、ExpireTime其中的一个排序。
+        :type OrderField: str
+        :param OrderDirection: 升序（asc）还是降序（desc），默认：desc。
+        :type OrderDirection: str
+        """
+        self.Pids = None
+        self.Filters = None
+        self.Offset = None
+        self.Limit = None
+        self.OrderField = None
+        self.OrderDirection = None
+
+
+    def _deserialize(self, params):
+        self.Pids = params.get("Pids")
+        if params.get("Filters") is not None:
+            self.Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self.Filters.append(obj)
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+        self.OrderField = params.get("OrderField")
+        self.OrderDirection = params.get("OrderDirection")
+
+
+class DescribeResourceInstancesResponse(AbstractModel):
+    """DescribeResourceInstances返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param TotalCount: 符合要求的资源数量
+        :type TotalCount: int
+        :param ResourceSet: 符合要求的资源数组
+        :type ResourceSet: list of ResourceInfo
+        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.ResourceSet = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("ResourceSet") is not None:
+            self.ResourceSet = []
+            for item in params.get("ResourceSet"):
+                obj = ResourceInfo()
+                obj._deserialize(item)
+                self.ResourceSet.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeScanInstancesRequest(AbstractModel):
     """DescribeScanInstances请求参数结构体
 
@@ -506,7 +705,7 @@ class DescribeScanInstancesRequest(AbstractModel):
     def __init__(self):
         """
         :param Filters: 支持通过app名称，app包名进行筛选
-        :type Filters: list of Filters
+        :type Filters: list of Filter
         :param Offset: 偏移量，默认为0
         :type Offset: int
         :param Limit: 数量限制，默认为20，最大值为100。
@@ -530,7 +729,7 @@ class DescribeScanInstancesRequest(AbstractModel):
         if params.get("Filters") is not None:
             self.Filters = []
             for item in params.get("Filters"):
-                obj = Filters()
+                obj = Filter()
                 obj._deserialize(item)
                 self.Filters.append(obj)
         self.Offset = params.get("Offset")
@@ -629,7 +828,7 @@ class DescribeShieldInstancesRequest(AbstractModel):
     def __init__(self):
         """
         :param Filters: 支持通过app名称，app包名，加固的服务版本，提交的渠道进行筛选。
-        :type Filters: list of Filters
+        :type Filters: list of Filter
         :param Offset: 偏移量，默认为0。
         :type Offset: int
         :param Limit: 数量限制，默认为20，最大值为100。
@@ -653,7 +852,7 @@ class DescribeShieldInstancesRequest(AbstractModel):
         if params.get("Filters") is not None:
             self.Filters = []
             for item in params.get("Filters"):
-                obj = Filters()
+                obj = Filter()
                 obj._deserialize(item)
                 self.Filters.append(obj)
         self.Offset = params.get("Offset")
@@ -690,6 +889,62 @@ class DescribeShieldInstancesResponse(AbstractModel):
                 obj = AppSetInfo()
                 obj._deserialize(item)
                 self.AppSet.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeShieldPlanInstanceRequest(AbstractModel):
+    """DescribeShieldPlanInstance请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ResourceId: 资源id
+        :type ResourceId: str
+        :param Pid: 服务类别id
+        :type Pid: int
+        """
+        self.ResourceId = None
+        self.Pid = None
+
+
+    def _deserialize(self, params):
+        self.ResourceId = params.get("ResourceId")
+        self.Pid = params.get("Pid")
+
+
+class DescribeShieldPlanInstanceResponse(AbstractModel):
+    """DescribeShieldPlanInstance返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param BindInfo: 绑定资源信息
+        :type BindInfo: :class:`tencentcloud.ms.v20180408.models.BindInfo`
+        :param ShieldPlanInfo: 加固策略信息
+        :type ShieldPlanInfo: :class:`tencentcloud.ms.v20180408.models.ShieldPlanInfo`
+        :param ResourceServiceInfo: 加固资源信息
+        :type ResourceServiceInfo: :class:`tencentcloud.ms.v20180408.models.ResourceServiceInfo`
+        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :type RequestId: str
+        """
+        self.BindInfo = None
+        self.ShieldPlanInfo = None
+        self.ResourceServiceInfo = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("BindInfo") is not None:
+            self.BindInfo = BindInfo()
+            self.BindInfo._deserialize(params.get("BindInfo"))
+        if params.get("ShieldPlanInfo") is not None:
+            self.ShieldPlanInfo = ShieldPlanInfo()
+            self.ShieldPlanInfo._deserialize(params.get("ShieldPlanInfo"))
+        if params.get("ResourceServiceInfo") is not None:
+            self.ResourceServiceInfo = ResourceServiceInfo()
+            self.ResourceServiceInfo._deserialize(params.get("ResourceServiceInfo"))
         self.RequestId = params.get("RequestId")
 
 
@@ -743,7 +998,7 @@ class DescribeShieldResultResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
-class Filters(AbstractModel):
+class Filter(AbstractModel):
     """筛选数据结构
 
     """
@@ -762,6 +1017,116 @@ class Filters(AbstractModel):
     def _deserialize(self, params):
         self.Name = params.get("Name")
         self.Value = params.get("Value")
+
+
+class PlanDetailInfo(AbstractModel):
+    """加固策略具体信息
+
+    """
+
+    def __init__(self):
+        """
+        :param IsDefault: 默认策略，1为默认，0为非默认
+        :type IsDefault: int
+        :param PlanId: 策略id
+        :type PlanId: int
+        :param PlanName: 策略名称
+        :type PlanName: str
+        :param PlanInfo: 策略信息
+        :type PlanInfo: :class:`tencentcloud.ms.v20180408.models.PlanInfo`
+        """
+        self.IsDefault = None
+        self.PlanId = None
+        self.PlanName = None
+        self.PlanInfo = None
+
+
+    def _deserialize(self, params):
+        self.IsDefault = params.get("IsDefault")
+        self.PlanId = params.get("PlanId")
+        self.PlanName = params.get("PlanName")
+        if params.get("PlanInfo") is not None:
+            self.PlanInfo = PlanInfo()
+            self.PlanInfo._deserialize(params.get("PlanInfo"))
+
+
+class PlanInfo(AbstractModel):
+    """加固策略信息
+
+    """
+
+    def __init__(self):
+        """
+        :param ApkSizeOpt: apk大小优化，0关闭，1开启
+        :type ApkSizeOpt: int
+        :param Dex: Dex加固，0关闭，1开启
+        :type Dex: int
+        :param So: So加固，0关闭，1开启
+        :type So: int
+        :param Bugly: 数据收集，0关闭，1开启
+        :type Bugly: int
+        :param AntiRepack: 防止重打包，0关闭，1开启
+        :type AntiRepack: int
+        :param SeperateDex: Dex分离，0关闭，1开启
+        :type SeperateDex: int
+        :param Db: 内存保护，0关闭，1开启
+        :type Db: int
+        :param DexSig: Dex签名校验，0关闭，1开启
+        :type DexSig: int
+        :param SoInfo: So文件信息
+        :type SoInfo: :class:`tencentcloud.ms.v20180408.models.SoInfo`
+        :param AntiVMP: vmp，0关闭，1开启
+        :type AntiVMP: int
+        :param SoType: 保护so的强度，
+        :type SoType: str
+        :param AntiLogLeak: 防日志泄漏，0关闭，1开启
+        :type AntiLogLeak: int
+        :param AntiQemuRoot: root检测，0关闭，1开启
+        :type AntiQemuRoot: int
+        :param AntiAssets: 资源防篡改，0关闭，1开启
+        :type AntiAssets: int
+        :param AntiScreenshot: 防止截屏，0关闭，1开启
+        :type AntiScreenshot: int
+        :param AntiSSL: SSL证书防窃取，0关闭，1开启
+        :type AntiSSL: int
+        """
+        self.ApkSizeOpt = None
+        self.Dex = None
+        self.So = None
+        self.Bugly = None
+        self.AntiRepack = None
+        self.SeperateDex = None
+        self.Db = None
+        self.DexSig = None
+        self.SoInfo = None
+        self.AntiVMP = None
+        self.SoType = None
+        self.AntiLogLeak = None
+        self.AntiQemuRoot = None
+        self.AntiAssets = None
+        self.AntiScreenshot = None
+        self.AntiSSL = None
+
+
+    def _deserialize(self, params):
+        self.ApkSizeOpt = params.get("ApkSizeOpt")
+        self.Dex = params.get("Dex")
+        self.So = params.get("So")
+        self.Bugly = params.get("Bugly")
+        self.AntiRepack = params.get("AntiRepack")
+        self.SeperateDex = params.get("SeperateDex")
+        self.Db = params.get("Db")
+        self.DexSig = params.get("DexSig")
+        if params.get("SoInfo") is not None:
+            self.SoInfo = SoInfo()
+            self.SoInfo._deserialize(params.get("SoInfo"))
+        self.AntiVMP = params.get("AntiVMP")
+        self.SoType = params.get("SoType")
+        self.AntiLogLeak = params.get("AntiLogLeak")
+        self.AntiQemuRoot = params.get("AntiQemuRoot")
+        self.AntiAssets = params.get("AntiAssets")
+        self.AntiScreenshot = params.get("AntiScreenshot")
+        self.AntiSSL = params.get("AntiSSL")
 
 
 class PluginInfo(AbstractModel):
@@ -787,6 +1152,74 @@ class PluginInfo(AbstractModel):
         self.PluginType = params.get("PluginType")
         self.PluginName = params.get("PluginName")
         self.PluginDesc = params.get("PluginDesc")
+
+
+class ResourceInfo(AbstractModel):
+    """拉取某个用户的所有资源信息
+
+    """
+
+    def __init__(self):
+        """
+        :param ResourceId: 用户购买的资源id，全局唯一
+        :type ResourceId: str
+        :param Pid: 资源的pid，MTP加固-12767，应用加固-12750 MTP反作弊-12766 源代码混淆-12736
+        :type Pid: int
+        :param CreateTime: 购买时间戳
+        :type CreateTime: int
+        :param ExpireTime: 到期时间戳
+        :type ExpireTime: int
+        :param IsBind: 0-未绑定，1-已绑定
+        :type IsBind: int
+        :param BindInfo: 用户绑定app的基本信息
+        :type BindInfo: :class:`tencentcloud.ms.v20180408.models.BindInfo`
+        :param ResourceName: 资源名称，如应用加固，漏洞扫描
+        :type ResourceName: str
+        """
+        self.ResourceId = None
+        self.Pid = None
+        self.CreateTime = None
+        self.ExpireTime = None
+        self.IsBind = None
+        self.BindInfo = None
+        self.ResourceName = None
+
+
+    def _deserialize(self, params):
+        self.ResourceId = params.get("ResourceId")
+        self.Pid = params.get("Pid")
+        self.CreateTime = params.get("CreateTime")
+        self.ExpireTime = params.get("ExpireTime")
+        self.IsBind = params.get("IsBind")
+        if params.get("BindInfo") is not None:
+            self.BindInfo = BindInfo()
+            self.BindInfo._deserialize(params.get("BindInfo"))
+        self.ResourceName = params.get("ResourceName")
+
+
+class ResourceServiceInfo(AbstractModel):
+    """资源服务信息
+
+    """
+
+    def __init__(self):
+        """
+        :param CreateTime: 创建时间戳
+        :type CreateTime: int
+        :param ExpireTime: 到期时间戳
+        :type ExpireTime: int
+        :param ResourceName: 资源名称，如应用加固，源码混淆
+        :type ResourceName: str
+        """
+        self.CreateTime = None
+        self.ExpireTime = None
+        self.ResourceName = None
+
+
+    def _deserialize(self, params):
+        self.CreateTime = params.get("CreateTime")
+        self.ExpireTime = params.get("ExpireTime")
+        self.ResourceName = params.get("ResourceName")
 
 
 class ScanInfo(AbstractModel):
@@ -868,16 +1301,20 @@ class ServiceInfo(AbstractModel):
         :type CallbackUrl: str
         :param SubmitSource: 提交来源 YYB-应用宝 RDM-rdm MC-控制台 MAC_TOOL-mac工具 WIN_TOOL-window工具
         :type SubmitSource: str
+        :param PlanId: 加固策略编号，如果不传则使用系统默认加固策略。如果指定的plan不存在会返回错误。
+        :type PlanId: int
         """
         self.ServiceEdition = None
         self.CallbackUrl = None
         self.SubmitSource = None
+        self.PlanId = None
 
 
     def _deserialize(self, params):
         self.ServiceEdition = params.get("ServiceEdition")
         self.CallbackUrl = params.get("CallbackUrl")
         self.SubmitSource = params.get("SubmitSource")
+        self.PlanId = params.get("PlanId")
 
 
 class ShieldInfo(AbstractModel):
@@ -899,6 +1336,8 @@ class ShieldInfo(AbstractModel):
         :type TaskTime: int
         :param ItemId: 任务唯一标识
         :type ItemId: str
+        :param ServiceEdition: 加固版本，basic基础版，professional专业版
+        :type ServiceEdition: str
         """
         self.ShieldCode = None
         self.ShieldSize = None
@@ -906,6 +1345,7 @@ class ShieldInfo(AbstractModel):
         self.AppUrl = None
         self.TaskTime = None
         self.ItemId = None
+        self.ServiceEdition = None
 
 
     def _deserialize(self, params):
@@ -915,6 +1355,50 @@ class ShieldInfo(AbstractModel):
         self.AppUrl = params.get("AppUrl")
         self.TaskTime = params.get("TaskTime")
         self.ItemId = params.get("ItemId")
+        self.ServiceEdition = params.get("ServiceEdition")
+
+
+class ShieldPlanInfo(AbstractModel):
+    """加固策略信息
+
+    """
+
+    def __init__(self):
+        """
+        :param TotalCount: 加固策略数量
+        :type TotalCount: int
+        :param PlanSet: 加固策略具体信息数组
+        :type PlanSet: list of PlanDetailInfo
+        """
+        self.TotalCount = None
+        self.PlanSet = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("PlanSet") is not None:
+            self.PlanSet = []
+            for item in params.get("PlanSet"):
+                obj = PlanDetailInfo()
+                obj._deserialize(item)
+                self.PlanSet.append(obj)
+
+
+class SoInfo(AbstractModel):
+    """so加固信息
+
+    """
+
+    def __init__(self):
+        """
+        :param SoFileNames: so文件列表
+        :type SoFileNames: list of str
+        """
+        self.SoFileNames = None
+
+
+    def _deserialize(self, params):
+        self.SoFileNames = params.get("SoFileNames")
 
 
 class VirusInfo(AbstractModel):

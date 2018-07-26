@@ -556,10 +556,10 @@ class CreateNetworkInterfaceRequest(AbstractModel):
         :type VpcId: str
         :param NetworkInterfaceName: 弹性网卡名称，最大长度不能超过60个字节。
         :type NetworkInterfaceName: str
-        :param NetworkInterfaceDescription: 弹性网卡描述，可任意命名，但不得超过60个字符。
-        :type NetworkInterfaceDescription: str
         :param SubnetId: 弹性网卡所在的子网实例ID，例如：subnet-0ap8nwca。
         :type SubnetId: str
+        :param NetworkInterfaceDescription: 弹性网卡描述，可任意命名，但不得超过60个字符。
+        :type NetworkInterfaceDescription: str
         :param SecondaryPrivateIpAddressCount: 新申请的内网IP地址个数。
         :type SecondaryPrivateIpAddressCount: int
         :param SecurityGroupIds: 指定绑定的安全组，例如：['sg-1dd51d']。
@@ -569,8 +569,8 @@ class CreateNetworkInterfaceRequest(AbstractModel):
         """
         self.VpcId = None
         self.NetworkInterfaceName = None
-        self.NetworkInterfaceDescription = None
         self.SubnetId = None
+        self.NetworkInterfaceDescription = None
         self.SecondaryPrivateIpAddressCount = None
         self.SecurityGroupIds = None
         self.PrivateIpAddresses = None
@@ -579,8 +579,8 @@ class CreateNetworkInterfaceRequest(AbstractModel):
     def _deserialize(self, params):
         self.VpcId = params.get("VpcId")
         self.NetworkInterfaceName = params.get("NetworkInterfaceName")
-        self.NetworkInterfaceDescription = params.get("NetworkInterfaceDescription")
         self.SubnetId = params.get("SubnetId")
+        self.NetworkInterfaceDescription = params.get("NetworkInterfaceDescription")
         self.SecondaryPrivateIpAddressCount = params.get("SecondaryPrivateIpAddressCount")
         self.SecurityGroupIds = params.get("SecurityGroupIds")
         if params.get("PrivateIpAddresses") is not None:
@@ -668,7 +668,7 @@ class CreateRoutesRequest(AbstractModel):
         :param RouteTableId: 路由表实例ID。
         :type RouteTableId: str
         :param Routes: 路由策略对象。
-        :type Routes: list of str
+        :type Routes: list of Route
         """
         self.RouteTableId = None
         self.Routes = None
@@ -676,7 +676,12 @@ class CreateRoutesRequest(AbstractModel):
 
     def _deserialize(self, params):
         self.RouteTableId = params.get("RouteTableId")
-        self.Routes = params.get("Routes")
+        if params.get("Routes") is not None:
+            self.Routes = []
+            for item in params.get("Routes"):
+                obj = Route()
+                obj._deserialize(item)
+                self.Routes.append(obj)
 
 
 class CreateRoutesResponse(AbstractModel):
@@ -743,22 +748,22 @@ class CreateSecurityGroupRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param ProjectId: 项目id，默认0。可在qcloud控制台项目管理页面查询到。
-        :type ProjectId: str
         :param GroupName: 安全组名称，可任意命名，但不得超过60个字符。
         :type GroupName: str
         :param GroupDescription: 安全组备注，最多100个字符。
         :type GroupDescription: str
+        :param ProjectId: 项目id，默认0。可在qcloud控制台项目管理页面查询到。
+        :type ProjectId: str
         """
-        self.ProjectId = None
         self.GroupName = None
         self.GroupDescription = None
+        self.ProjectId = None
 
 
     def _deserialize(self, params):
-        self.ProjectId = params.get("ProjectId")
         self.GroupName = params.get("GroupName")
         self.GroupDescription = params.get("GroupDescription")
+        self.ProjectId = params.get("ProjectId")
 
 
 class CreateSecurityGroupResponse(AbstractModel):
@@ -1068,25 +1073,25 @@ class CreateVpnGatewayRequest(AbstractModel):
         :type VpcId: str
         :param VpnGatewayName: VPN网关名称，最大长度不能超过60个字节。
         :type VpnGatewayName: str
-        :param InstanceChargeType: VPN网关计费模式，PREPAID：表示预付费，即包年包月，POSTPAID_BY_HOUR：表示后付费，即按量计费。默认：POSTPAID_BY_HOUR，如果指定预付费模式，参数InstanceChargePrepaid必填。
-        :type InstanceChargeType: str
         :param InternetMaxBandwidthOut: 公网带宽设置。可选带宽规格：5, 10, 20, 50, 100；单位：Mbps
         :type InternetMaxBandwidthOut: int
+        :param InstanceChargeType: VPN网关计费模式，PREPAID：表示预付费，即包年包月，POSTPAID_BY_HOUR：表示后付费，即按量计费。默认：POSTPAID_BY_HOUR，如果指定预付费模式，参数InstanceChargePrepaid必填。
+        :type InstanceChargeType: str
         :param InstanceChargePrepaid: 预付费模式，即包年包月相关参数设置。通过该参数可以指定包年包月实例的购买时长、是否设置自动续费等属性。若指定实例的付费模式为预付费则该参数必传。
         :type InstanceChargePrepaid: :class:`tencentcloud.vpc.v20170312.models.InstanceChargePrepaid`
         """
         self.VpcId = None
         self.VpnGatewayName = None
-        self.InstanceChargeType = None
         self.InternetMaxBandwidthOut = None
+        self.InstanceChargeType = None
         self.InstanceChargePrepaid = None
 
 
     def _deserialize(self, params):
         self.VpcId = params.get("VpcId")
         self.VpnGatewayName = params.get("VpnGatewayName")
-        self.InstanceChargeType = params.get("InstanceChargeType")
         self.InternetMaxBandwidthOut = params.get("InternetMaxBandwidthOut")
+        self.InstanceChargeType = params.get("InstanceChargeType")
         if params.get("InstanceChargePrepaid") is not None:
             self.InstanceChargePrepaid = InstanceChargePrepaid()
             self.InstanceChargePrepaid._deserialize(params.get("InstanceChargePrepaid"))
@@ -1370,7 +1375,7 @@ class DeleteRoutesRequest(AbstractModel):
         :param RouteTableId: 路由表实例ID。
         :type RouteTableId: str
         :param Routes: 路由策略对象。
-        :type Routes: list of str
+        :type Routes: list of Route
         """
         self.RouteTableId = None
         self.Routes = None
@@ -1378,7 +1383,12 @@ class DeleteRoutesRequest(AbstractModel):
 
     def _deserialize(self, params):
         self.RouteTableId = params.get("RouteTableId")
-        self.Routes = params.get("Routes")
+        if params.get("Routes") is not None:
+            self.Routes = []
+            for item in params.get("Routes"):
+                obj = Route()
+                obj._deserialize(item)
+                self.Routes.append(obj)
 
 
 class DeleteRoutesResponse(AbstractModel):
@@ -1693,7 +1703,7 @@ class DescribeAccountAttributesResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param AccountAttributeSet: 用户账号私有属性对象
+        :param AccountAttributeSet: 用户账号属性对象
         :type AccountAttributeSet: list of AccountAttribute
         :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
         :type RequestId: str
@@ -2591,7 +2601,7 @@ class DescribeVpcsRequest(AbstractModel):
         :type VpcIds: list of str
         :param Filters: 过滤条件，参数不支持同时指定VpcIds和Filters。
 <li>vpc-name - String - （过滤条件）VPC实例名称。</li>
-<li>is-default - Boolean - （过滤条件）是否默认VPC。</li>
+<li>is-default - String - （过滤条件）是否默认VPC。</li>
 <li>vpc-id - String - （过滤条件）VPC实例ID形如：vpc-f49l6u0z。</li>
 <li>cidr-block - String - （过滤条件）vpc的cidr。</li>
         :type Filters: list of Filter
@@ -3085,24 +3095,24 @@ class InquiryPriceCreateVpnGatewayRequest(AbstractModel):
 
     def __init__(self):
         """
+        :param InternetMaxBandwidthOut: 公网带宽设置。可选带宽规格：5, 10, 20, 50, 100；单位：Mbps。
+        :type InternetMaxBandwidthOut: int
         :param InstanceChargeType: VPN网关计费模式，PREPAID：表示预付费，即包年包月，POSTPAID_BY_HOUR：表示后付费，即按量计费。默认：POSTPAID_BY_HOUR，如果指定预付费模式，参数InstanceChargePrepaid必填。
         :type InstanceChargeType: str
         :param InstanceChargePrepaid: 预付费模式，即包年包月相关参数设置。通过该参数可以指定包年包月实例的购买时长、是否设置自动续费等属性。若指定实例的付费模式为预付费则该参数必传。
         :type InstanceChargePrepaid: :class:`tencentcloud.vpc.v20170312.models.InstanceChargePrepaid`
-        :param InternetMaxBandwidthOut: 公网带宽设置。可选带宽规格：5, 10, 20, 50, 100；单位：Mbps。
-        :type InternetMaxBandwidthOut: int
         """
+        self.InternetMaxBandwidthOut = None
         self.InstanceChargeType = None
         self.InstanceChargePrepaid = None
-        self.InternetMaxBandwidthOut = None
 
 
     def _deserialize(self, params):
+        self.InternetMaxBandwidthOut = params.get("InternetMaxBandwidthOut")
         self.InstanceChargeType = params.get("InstanceChargeType")
         if params.get("InstanceChargePrepaid") is not None:
             self.InstanceChargePrepaid = InstanceChargePrepaid()
             self.InstanceChargePrepaid._deserialize(params.get("InstanceChargePrepaid"))
-        self.InternetMaxBandwidthOut = params.get("InternetMaxBandwidthOut")
 
 
 class InquiryPriceCreateVpnGatewayResponse(AbstractModel):
@@ -4515,30 +4525,34 @@ class Route(AbstractModel):
 
     def __init__(self):
         """
-        :param RouteId: 路由策略ID。
-        :type RouteId: int
         :param DestinationCidrBlock: 目的网段，取值不能在私有网络网段内，例如：112.20.51.0/24。
         :type DestinationCidrBlock: str
         :param GatewayType: 下一跳类型，目前我们支持的类型有：CVM：公网网关类型的云主机；VPN：vpn网关； DIRECTCONNECT：专线网关；PEERCONNECTION：对等连接；SSLVPN：sslvpn网关；NAT：nat网关; NORMAL_CVM：普通云主机。
         :type GatewayType: str
         :param GatewayId: 下一跳地址，这里只需要指定不同下一跳类型的网关ID，系统会自动匹配到下一跳地址。
         :type GatewayId: str
+        :param RouteId: 路由策略ID。
+        :type RouteId: int
         :param RouteDescription: 路由策略描述。
         :type RouteDescription: str
+        :param Enabled: 是否启用
+        :type Enabled: bool
         """
-        self.RouteId = None
         self.DestinationCidrBlock = None
         self.GatewayType = None
         self.GatewayId = None
+        self.RouteId = None
         self.RouteDescription = None
+        self.Enabled = None
 
 
     def _deserialize(self, params):
-        self.RouteId = params.get("RouteId")
         self.DestinationCidrBlock = params.get("DestinationCidrBlock")
         self.GatewayType = params.get("GatewayType")
         self.GatewayId = params.get("GatewayId")
+        self.RouteId = params.get("RouteId")
         self.RouteDescription = params.get("RouteDescription")
+        self.Enabled = params.get("Enabled")
 
 
 class RouteTable(AbstractModel):
@@ -4620,32 +4634,32 @@ class SecurityGroup(AbstractModel):
 
     def __init__(self):
         """
-        :param ProjectId: 项目id，默认0。可在qcloud控制台项目管理页面查询到。
-        :type ProjectId: str
         :param SecurityGroupId: 安全组实例ID，例如：sg-ohuuioma。
         :type SecurityGroupId: str
         :param SecurityGroupName: 安全组名称，可任意命名，但不得超过60个字符。
         :type SecurityGroupName: str
         :param SecurityGroupDesc: 安全组备注，最多100个字符。
         :type SecurityGroupDesc: str
+        :param ProjectId: 项目id，默认0。可在qcloud控制台项目管理页面查询到。
+        :type ProjectId: str
         :param IsDefault: 是否是默认安全组，默认安全组不支持删除。
         :type IsDefault: bool
         :param CreatedTime: 安全组创建时间。
         :type CreatedTime: str
         """
-        self.ProjectId = None
         self.SecurityGroupId = None
         self.SecurityGroupName = None
         self.SecurityGroupDesc = None
+        self.ProjectId = None
         self.IsDefault = None
         self.CreatedTime = None
 
 
     def _deserialize(self, params):
-        self.ProjectId = params.get("ProjectId")
         self.SecurityGroupId = params.get("SecurityGroupId")
         self.SecurityGroupName = params.get("SecurityGroupName")
         self.SecurityGroupDesc = params.get("SecurityGroupDesc")
+        self.ProjectId = params.get("ProjectId")
         self.IsDefault = params.get("IsDefault")
         self.CreatedTime = params.get("CreatedTime")
 
@@ -4999,6 +5013,12 @@ class Vpc(AbstractModel):
         :type EnableMulticast: bool
         :param CreatedTime: 创建时间。
         :type CreatedTime: str
+        :param DnsServerSet: DNS列表
+        :type DnsServerSet: list of str
+        :param DomainName: DHCP域名选项值
+        :type DomainName: str
+        :param DhcpOptionsId: DHCP选项集ID
+        :type DhcpOptionsId: str
         """
         self.VpcName = None
         self.VpcId = None
@@ -5006,6 +5026,9 @@ class Vpc(AbstractModel):
         self.IsDefault = None
         self.EnableMulticast = None
         self.CreatedTime = None
+        self.DnsServerSet = None
+        self.DomainName = None
+        self.DhcpOptionsId = None
 
 
     def _deserialize(self, params):
@@ -5015,6 +5038,9 @@ class Vpc(AbstractModel):
         self.IsDefault = params.get("IsDefault")
         self.EnableMulticast = params.get("EnableMulticast")
         self.CreatedTime = params.get("CreatedTime")
+        self.DnsServerSet = params.get("DnsServerSet")
+        self.DomainName = params.get("DomainName")
+        self.DhcpOptionsId = params.get("DhcpOptionsId")
 
 
 class VpnConnection(AbstractModel):

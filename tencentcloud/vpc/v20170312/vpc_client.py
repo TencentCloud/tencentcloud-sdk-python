@@ -267,15 +267,15 @@ class VpcClient(AbstractClient):
 
 
     def CreateDefaultVpc(self, request):
-        """本接口(CreateDefaultVpc)用于创建默认私有网络(VPC)。
+        """本接口（CreateDefaultVpc）用于创建默认私有网络(VPC）。
 
-        默认VPC适用于快速入门和启动公共实例，您可以像使用任何其他VPC一样使用默认VPC。如果你想创建标准VPC，即指定VPC名称、VPC网段、子网网段、子网可用区，请使用常规创建VPC接口(CreateVpc)
+        默认VPC适用于快速入门和启动公共实例，您可以像使用任何其他VPC一样使用默认VPC。如果你想创建标准VPC，即指定VPC名称、VPC网段、子网网段、子网可用区，请使用常规创建VPC接口（CreateVpc）
 
-        正常情况，本接口并不一定生产默认VPC，而是根据用户账号的网络属性(DescribeAccountVpcAttributes)来决定的
-        * 支持基础网络（classic），返回VpcId为0
-        * 只支持VPC（only-vpc），生产默认VPC，并返回VPC信息
+        正常情况，本接口并不一定生产默认VPC，而是根据用户账号的网络属性（DescribeAccountAttributes）来决定的
+        * 支持基础网络、VPC，返回VpcId为0
+        * 只支持VPC，返回默认VPC信息
 
-        你也可以通过 Force 参数，强制生产默认VPC
+        你也可以通过 Force 参数，强制返回默认VPC
 
         :param request: 调用CreateDefaultVpc所需参数的结构体。
         :type request: :class:`tencentcloud.vpc.v20170312.models.CreateDefaultVpcRequest`
@@ -1037,7 +1037,7 @@ class VpcClient(AbstractClient):
 
 
     def DescribeAccountAttributes(self, request):
-        """本接口(DescribeAccountAttributes)用于查询用户账号私有属性。
+        """本接口（DescribeAccountAttributes）用于查询用户账号私有属性。
 
         :param request: 调用DescribeAccountAttributes所需参数的结构体。
         :type request: :class:`tencentcloud.vpc.v20170312.models.DescribeAccountAttributesRequest`

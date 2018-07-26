@@ -25,6 +25,34 @@ class MsClient(AbstractClient):
     _endpoint = 'ms.tencentcloudapi.com'
 
 
+    def CreateBindInstance(self, request):
+        """将应用和资源进行绑定
+
+        :param request: 调用CreateBindInstance所需参数的结构体。
+        :type request: :class:`tencentcloud.ms.v20180408.models.CreateBindInstanceRequest`
+        :rtype: :class:`tencentcloud.ms.v20180408.models.CreateBindInstanceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("CreateBindInstance", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateBindInstanceResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise e
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def CreateScanInstances(self, request):
         """用户通过该接口批量提交应用进行应用扫描，扫描后需通过DescribeScanResults接口查询扫描结果
 
@@ -81,6 +109,34 @@ class MsClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def CreateShieldPlanInstance(self, request):
+        """对资源进行策略新增
+
+        :param request: 调用CreateShieldPlanInstance所需参数的结构体。
+        :type request: :class:`tencentcloud.ms.v20180408.models.CreateShieldPlanInstanceRequest`
+        :rtype: :class:`tencentcloud.ms.v20180408.models.CreateShieldPlanInstanceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("CreateShieldPlanInstance", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateShieldPlanInstanceResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise e
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DeleteScanInstances(self, request):
         """删除一个或者多个app扫描信息
 
@@ -123,6 +179,34 @@ class MsClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteShieldInstancesResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise e
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeResourceInstances(self, request):
+        """获取某个用户的所有资源信息
+
+        :param request: 调用DescribeResourceInstances所需参数的结构体。
+        :type request: :class:`tencentcloud.ms.v20180408.models.DescribeResourceInstancesRequest`
+        :rtype: :class:`tencentcloud.ms.v20180408.models.DescribeResourceInstancesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeResourceInstances", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeResourceInstancesResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -209,6 +293,34 @@ class MsClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeShieldInstancesResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise e
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeShieldPlanInstance(self, request):
+        """查询加固策略
+
+        :param request: 调用DescribeShieldPlanInstance所需参数的结构体。
+        :type request: :class:`tencentcloud.ms.v20180408.models.DescribeShieldPlanInstanceRequest`
+        :rtype: :class:`tencentcloud.ms.v20180408.models.DescribeShieldPlanInstanceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeShieldPlanInstance", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeShieldPlanInstanceResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

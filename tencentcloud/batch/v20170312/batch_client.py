@@ -335,6 +335,34 @@ class BatchClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeCvmZoneInstanceConfigInfos(self, request):
+        """获取批量计算可用区机型配置信息
+
+        :param request: 调用DescribeCvmZoneInstanceConfigInfos所需参数的结构体。
+        :type request: :class:`tencentcloud.batch.v20170312.models.DescribeCvmZoneInstanceConfigInfosRequest`
+        :rtype: :class:`tencentcloud.batch.v20170312.models.DescribeCvmZoneInstanceConfigInfosResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeCvmZoneInstanceConfigInfos", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeCvmZoneInstanceConfigInfosResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise e
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeJob(self, request):
         """用于查看一个作业的详细信息，包括内部任务（Task）和依赖（Dependence）信息。
 

@@ -193,6 +193,118 @@ class CreateMigrateJobResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class CreateSyncCheckJobRequest(AbstractModel):
+    """CreateSyncCheckJob请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param JobId: 灾备同步任务ID
+        :type JobId: str
+        """
+        self.JobId = None
+
+
+    def _deserialize(self, params):
+        self.JobId = params.get("JobId")
+
+
+class CreateSyncCheckJobResponse(AbstractModel):
+    """CreateSyncCheckJob返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class CreateSyncJobRequest(AbstractModel):
+    """CreateSyncJob请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param JobName: 灾备同步任务名
+        :type JobName: str
+        :param SyncOption: 灾备同步任务配置选项
+        :type SyncOption: :class:`tencentcloud.dts.v20180330.models.SyncOption`
+        :param SrcDatabaseType: 源实例数据库类型，目前仅包括：mysql
+        :type SrcDatabaseType: str
+        :param SrcAccessType: 源实例接入类型，目前仅包括：cdb(云上cdb实例)
+        :type SrcAccessType: str
+        :param SrcInfo: 源实例信息
+        :type SrcInfo: :class:`tencentcloud.dts.v20180330.models.SyncInstanceInfo`
+        :param DstDatabaseType: 目标实例数据库类型，目前仅包括：mysql
+        :type DstDatabaseType: str
+        :param DstAccessType: 目标实例接入类型，目前仅包括：cdb(云上cdb实例)
+        :type DstAccessType: str
+        :param DstInfo: 目标实例信息
+        :type DstInfo: :class:`tencentcloud.dts.v20180330.models.SyncInstanceInfo`
+        :param DatabaseInfo: 需要同步的源数据库表信息，用json格式的字符串描述。
+对于database-table两级结构的数据库：
+[{Database:db1,Table:[table1,table2]},{Database:db2}]
+        :type DatabaseInfo: str
+        """
+        self.JobName = None
+        self.SyncOption = None
+        self.SrcDatabaseType = None
+        self.SrcAccessType = None
+        self.SrcInfo = None
+        self.DstDatabaseType = None
+        self.DstAccessType = None
+        self.DstInfo = None
+        self.DatabaseInfo = None
+
+
+    def _deserialize(self, params):
+        self.JobName = params.get("JobName")
+        if params.get("SyncOption") is not None:
+            self.SyncOption = SyncOption()
+            self.SyncOption._deserialize(params.get("SyncOption"))
+        self.SrcDatabaseType = params.get("SrcDatabaseType")
+        self.SrcAccessType = params.get("SrcAccessType")
+        if params.get("SrcInfo") is not None:
+            self.SrcInfo = SyncInstanceInfo()
+            self.SrcInfo._deserialize(params.get("SrcInfo"))
+        self.DstDatabaseType = params.get("DstDatabaseType")
+        self.DstAccessType = params.get("DstAccessType")
+        if params.get("DstInfo") is not None:
+            self.DstInfo = SyncInstanceInfo()
+            self.DstInfo._deserialize(params.get("DstInfo"))
+        self.DatabaseInfo = params.get("DatabaseInfo")
+
+
+class CreateSyncJobResponse(AbstractModel):
+    """CreateSyncJob返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param JobId: 灾备同步任务ID
+        :type JobId: str
+        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :type RequestId: str
+        """
+        self.JobId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.JobId = params.get("JobId")
+        self.RequestId = params.get("RequestId")
+
+
 class DeleteMigrateJobRequest(AbstractModel):
     """DeleteMigrateJob请求参数结构体
 
@@ -212,6 +324,40 @@ class DeleteMigrateJobRequest(AbstractModel):
 
 class DeleteMigrateJobResponse(AbstractModel):
     """DeleteMigrateJob返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class DeleteSyncJobRequest(AbstractModel):
+    """DeleteSyncJob请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param JobId: 待删除的灾备同步任务ID
+        :type JobId: str
+        """
+        self.JobId = None
+
+
+    def _deserialize(self, params):
+        self.JobId = params.get("JobId")
+
+
+class DeleteSyncJobResponse(AbstractModel):
+    """DeleteSyncJob返回参数结构体
 
     """
 
@@ -343,6 +489,132 @@ class DescribeMigrateJobsResponse(AbstractModel):
             self.JobList = []
             for item in params.get("JobList"):
                 obj = MigrateJobInfo()
+                obj._deserialize(item)
+                self.JobList.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeSyncCheckJobRequest(AbstractModel):
+    """DescribeSyncCheckJob请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param JobId: 要查询的灾备同步任务ID
+        :type JobId: str
+        """
+        self.JobId = None
+
+
+    def _deserialize(self, params):
+        self.JobId = params.get("JobId")
+
+
+class DescribeSyncCheckJobResponse(AbstractModel):
+    """DescribeSyncCheckJob返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Status: 任务校验状态
+        :type Status: str
+        :param ErrorCode: 任务校验结果代码
+        :type ErrorCode: int
+        :param ErrorMessage: 提示信息
+        :type ErrorMessage: str
+        :param StepInfo: 任务执行步骤描述
+        :type StepInfo: list of SyncCheckStepInfo
+        :param CheckFlag: 校验标志
+        :type CheckFlag: int
+        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :type RequestId: str
+        """
+        self.Status = None
+        self.ErrorCode = None
+        self.ErrorMessage = None
+        self.StepInfo = None
+        self.CheckFlag = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Status = params.get("Status")
+        self.ErrorCode = params.get("ErrorCode")
+        self.ErrorMessage = params.get("ErrorMessage")
+        if params.get("StepInfo") is not None:
+            self.StepInfo = []
+            for item in params.get("StepInfo"):
+                obj = SyncCheckStepInfo()
+                obj._deserialize(item)
+                self.StepInfo.append(obj)
+        self.CheckFlag = params.get("CheckFlag")
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeSyncJobsRequest(AbstractModel):
+    """DescribeSyncJobs请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param JobId: 灾备同步任务ID
+        :type JobId: str
+        :param JobName: 灾备同步任务名
+        :type JobName: str
+        :param Order: 排序字段，可以取值为JobId、Status、JobName、CreateTime
+        :type Order: str
+        :param OrderSeq: 排序方式，升序为ASC，降序为DESC
+        :type OrderSeq: str
+        :param Offset: 偏移量，默认为0
+        :type Offset: int
+        :param Limit: 返回实例数量，默认20，有效区间[1,100]
+        :type Limit: int
+        """
+        self.JobId = None
+        self.JobName = None
+        self.Order = None
+        self.OrderSeq = None
+        self.Offset = None
+        self.Limit = None
+
+
+    def _deserialize(self, params):
+        self.JobId = params.get("JobId")
+        self.JobName = params.get("JobName")
+        self.Order = params.get("Order")
+        self.OrderSeq = params.get("OrderSeq")
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+
+
+class DescribeSyncJobsResponse(AbstractModel):
+    """DescribeSyncJobs返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param TotalCount: 任务数目
+        :type TotalCount: int
+        :param JobList: 任务详情数组
+        :type JobList: list of SyncJobInfo
+        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.JobList = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("JobList") is not None:
+            self.JobList = []
+            for item in params.get("JobList"):
+                obj = SyncJobInfo()
                 obj._deserialize(item)
                 self.JobList.append(obj)
         self.RequestId = params.get("RequestId")
@@ -673,6 +945,56 @@ class ModifyMigrateJobResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class ModifySyncJobRequest(AbstractModel):
+    """ModifySyncJob请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param JobId: 待修改的灾备同步任务ID
+        :type JobId: str
+        :param JobName: 灾备同步任务名称
+        :type JobName: str
+        :param SyncOption: 灾备同步任务配置选项
+        :type SyncOption: :class:`tencentcloud.dts.v20180330.models.SyncOption`
+        :param DatabaseInfo: 当选择'指定库表'灾备同步的时候, 需要设置待同步的源数据库表信息,用符合json数组格式的字符串描述, 如下所例。
+对于database-table两级结构的数据库：
+[{"Database":"db1","Table":["table1","table2"]},{"Database":"db2"}]
+        :type DatabaseInfo: str
+        """
+        self.JobId = None
+        self.JobName = None
+        self.SyncOption = None
+        self.DatabaseInfo = None
+
+
+    def _deserialize(self, params):
+        self.JobId = params.get("JobId")
+        self.JobName = params.get("JobName")
+        if params.get("SyncOption") is not None:
+            self.SyncOption = SyncOption()
+            self.SyncOption._deserialize(params.get("SyncOption"))
+        self.DatabaseInfo = params.get("DatabaseInfo")
+
+
+class ModifySyncJobResponse(AbstractModel):
+    """ModifySyncJob返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class SrcInfo(AbstractModel):
     """源实例信息
 
@@ -776,6 +1098,40 @@ class StartMigrateJobResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class StartSyncJobRequest(AbstractModel):
+    """StartSyncJob请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param JobId: 灾备同步任务ID
+        :type JobId: str
+        """
+        self.JobId = None
+
+
+    def _deserialize(self, params):
+        self.JobId = params.get("JobId")
+
+
+class StartSyncJobResponse(AbstractModel):
+    """StartSyncJob返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class StopMigrateJobRequest(AbstractModel):
     """StopMigrateJob请求参数结构体
 
@@ -808,3 +1164,282 @@ class StopMigrateJobResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
+
+
+class SwitchDrToMasterRequest(AbstractModel):
+    """SwitchDrToMaster请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param DstInfo: 灾备实例的信息
+        :type DstInfo: :class:`tencentcloud.dts.v20180330.models.SyncInstanceInfo`
+        :param DatabaseType: 数据库的类型  （如 mysql）
+        :type DatabaseType: str
+        """
+        self.DstInfo = None
+        self.DatabaseType = None
+
+
+    def _deserialize(self, params):
+        if params.get("DstInfo") is not None:
+            self.DstInfo = SyncInstanceInfo()
+            self.DstInfo._deserialize(params.get("DstInfo"))
+        self.DatabaseType = params.get("DatabaseType")
+
+
+class SwitchDrToMasterResponse(AbstractModel):
+    """SwitchDrToMaster返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param AsyncRequestId: 后台异步任务请求id
+        :type AsyncRequestId: str
+        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :type RequestId: str
+        """
+        self.AsyncRequestId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.AsyncRequestId = params.get("AsyncRequestId")
+        self.RequestId = params.get("RequestId")
+
+
+class SyncCheckStepInfo(AbstractModel):
+    """灾备任务校验步骤
+
+    """
+
+    def __init__(self):
+        """
+        :param StepNo: 步骤序列
+        :type StepNo: int
+        :param StepName: 步骤展现名称
+        :type StepName: str
+        :param StepCode: 步骤执行结果代码
+        :type StepCode: int
+        :param StepMessage: 步骤执行结果提示
+        :type StepMessage: str
+        """
+        self.StepNo = None
+        self.StepName = None
+        self.StepCode = None
+        self.StepMessage = None
+
+
+    def _deserialize(self, params):
+        self.StepNo = params.get("StepNo")
+        self.StepName = params.get("StepName")
+        self.StepCode = params.get("StepCode")
+        self.StepMessage = params.get("StepMessage")
+
+
+class SyncDetailInfo(AbstractModel):
+    """描述详细同步任务过程
+
+    """
+
+    def __init__(self):
+        """
+        :param StepAll: 总步骤数
+        :type StepAll: int
+        :param StepNow: 当前步骤
+        :type StepNow: int
+        :param Progress: 总进度
+        :type Progress: str
+        :param CurrentStepProgress: 当前步骤进度
+        :type CurrentStepProgress: str
+        :param MasterSlaveDistance: 主从差距，MB
+        :type MasterSlaveDistance: int
+        :param SecondsBehindMaster: 主从差距，秒
+        :type SecondsBehindMaster: int
+        :param StepInfo: 步骤信息
+        :type StepInfo: list of SyncStepDetailInfo
+        """
+        self.StepAll = None
+        self.StepNow = None
+        self.Progress = None
+        self.CurrentStepProgress = None
+        self.MasterSlaveDistance = None
+        self.SecondsBehindMaster = None
+        self.StepInfo = None
+
+
+    def _deserialize(self, params):
+        self.StepAll = params.get("StepAll")
+        self.StepNow = params.get("StepNow")
+        self.Progress = params.get("Progress")
+        self.CurrentStepProgress = params.get("CurrentStepProgress")
+        self.MasterSlaveDistance = params.get("MasterSlaveDistance")
+        self.SecondsBehindMaster = params.get("SecondsBehindMaster")
+        if params.get("StepInfo") is not None:
+            self.StepInfo = []
+            for item in params.get("StepInfo"):
+                obj = SyncStepDetailInfo()
+                obj._deserialize(item)
+                self.StepInfo.append(obj)
+
+
+class SyncInstanceInfo(AbstractModel):
+    """灾备同步的实例信息，记录主实例或灾备实例的信息
+
+    """
+
+    def __init__(self):
+        """
+        :param Region: 地域英文名，如：ap-guangzhou
+        :type Region: str
+        :param InstanceId: 实例短Id
+        :type InstanceId: str
+        """
+        self.Region = None
+        self.InstanceId = None
+
+
+    def _deserialize(self, params):
+        self.Region = params.get("Region")
+        self.InstanceId = params.get("InstanceId")
+
+
+class SyncJobInfo(AbstractModel):
+    """灾备同步任务信息
+
+    """
+
+    def __init__(self):
+        """
+        :param JobId: 灾备任务id
+        :type JobId: str
+        :param JobName: 灾备任务名
+        :type JobName: str
+        :param SyncOption: 任务同步
+        :type SyncOption: :class:`tencentcloud.dts.v20180330.models.SyncOption`
+        :param SrcAccessType: 源接入类型
+        :type SrcAccessType: str
+        :param SrcDatabaseType: 源数据类型
+        :type SrcDatabaseType: str
+        :param SrcInfo: 源实例信息
+        :type SrcInfo: :class:`tencentcloud.dts.v20180330.models.SyncInstanceInfo`
+        :param DstAccessType: 灾备接入类型
+        :type DstAccessType: str
+        :param DstDatabaseType: 灾备数据类型
+        :type DstDatabaseType: str
+        :param DstInfo: 灾备实例信息
+        :type DstInfo: :class:`tencentcloud.dts.v20180330.models.SyncInstanceInfo`
+        :param Detail: 任务信息
+        :type Detail: :class:`tencentcloud.dts.v20180330.models.SyncDetailInfo`
+        :param Status: 任务状态
+        :type Status: int
+        :param DatabaseInfo: 迁移库表
+        :type DatabaseInfo: str
+        :param CreateTime: 创建时间
+        :type CreateTime: str
+        :param StartTime: 开始时间
+        :type StartTime: str
+        :param EndTime: 结束时间
+        :type EndTime: str
+        """
+        self.JobId = None
+        self.JobName = None
+        self.SyncOption = None
+        self.SrcAccessType = None
+        self.SrcDatabaseType = None
+        self.SrcInfo = None
+        self.DstAccessType = None
+        self.DstDatabaseType = None
+        self.DstInfo = None
+        self.Detail = None
+        self.Status = None
+        self.DatabaseInfo = None
+        self.CreateTime = None
+        self.StartTime = None
+        self.EndTime = None
+
+
+    def _deserialize(self, params):
+        self.JobId = params.get("JobId")
+        self.JobName = params.get("JobName")
+        if params.get("SyncOption") is not None:
+            self.SyncOption = SyncOption()
+            self.SyncOption._deserialize(params.get("SyncOption"))
+        self.SrcAccessType = params.get("SrcAccessType")
+        self.SrcDatabaseType = params.get("SrcDatabaseType")
+        if params.get("SrcInfo") is not None:
+            self.SrcInfo = SyncInstanceInfo()
+            self.SrcInfo._deserialize(params.get("SrcInfo"))
+        self.DstAccessType = params.get("DstAccessType")
+        self.DstDatabaseType = params.get("DstDatabaseType")
+        if params.get("DstInfo") is not None:
+            self.DstInfo = SyncInstanceInfo()
+            self.DstInfo._deserialize(params.get("DstInfo"))
+        if params.get("Detail") is not None:
+            self.Detail = SyncDetailInfo()
+            self.Detail._deserialize(params.get("Detail"))
+        self.Status = params.get("Status")
+        self.DatabaseInfo = params.get("DatabaseInfo")
+        self.CreateTime = params.get("CreateTime")
+        self.StartTime = params.get("StartTime")
+        self.EndTime = params.get("EndTime")
+
+
+class SyncOption(AbstractModel):
+    """灾备同步任务配置选项
+
+    """
+
+    def __init__(self):
+        """
+        :param SyncObject: 同步对象，1-整个实例，2-指定库表
+        :type SyncObject: int
+        :param RunMode: 同步开始设置，1-立即开始
+        :type RunMode: int
+        :param SyncType: 同步模式， 3-增量同步
+        :type SyncType: int
+        :param ConsistencyType: 数据一致性检测， 1-不配置
+        :type ConsistencyType: int
+        """
+        self.SyncObject = None
+        self.RunMode = None
+        self.SyncType = None
+        self.ConsistencyType = None
+
+
+    def _deserialize(self, params):
+        self.SyncObject = params.get("SyncObject")
+        self.RunMode = params.get("RunMode")
+        self.SyncType = params.get("SyncType")
+        self.ConsistencyType = params.get("ConsistencyType")
+
+
+class SyncStepDetailInfo(AbstractModel):
+    """同步任务进度
+
+    """
+
+    def __init__(self):
+        """
+        :param StepNo: 步骤编号
+        :type StepNo: int
+        :param StepName: 步骤名
+        :type StepName: str
+        :param CanStop: 能否中止
+        :type CanStop: int
+        :param StepId: 步骤号
+        :type StepId: int
+        """
+        self.StepNo = None
+        self.StepName = None
+        self.CanStop = None
+        self.StepId = None
+
+
+    def _deserialize(self, params):
+        self.StepNo = params.get("StepNo")
+        self.StepName = params.get("StepName")
+        self.CanStop = params.get("CanStop")
+        self.StepId = params.get("StepId")

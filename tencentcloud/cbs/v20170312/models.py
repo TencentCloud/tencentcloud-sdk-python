@@ -561,8 +561,6 @@ class Disk(AbstractModel):
 
     def __init__(self):
         """
-        :param Tags: 与云盘绑定的标签，云盘未绑定标签则取值为空。
-        :type Tags: list of Tag
         :param DiskId: 云硬盘ID。
         :type DiskId: str
         :param DiskUsage: 云硬盘类型。取值范围：<br><li>SYSTEM_DISK：系统盘<br><li>DATA_DISK：数据盘。
@@ -609,8 +607,11 @@ class Disk(AbstractModel):
         :type ReturnFailCode: int
         :param AutoSnapshotPolicyIds: 云盘关联的定期快照ID。只有在调用DescribeDisks接口时，入参ReturnBindAutoSnapshotPolicy取值为TRUE才会返回该参数。
         :type AutoSnapshotPolicyIds: list of str
+        :param Tags: 与云盘绑定的标签，云盘未绑定标签则取值为空。
+        :type Tags: list of Tag
+        :param DeleteWithInstance: 云盘是否与挂载的实例一起销毁。<br><li>true:销毁实例时会同时销毁云盘，只支持按小时后付费云盘。<br><li>false：销毁实例时不销毁云盘。
+        :type DeleteWithInstance: bool
         """
-        self.Tags = None
         self.DiskId = None
         self.DiskUsage = None
         self.DiskChargeType = None
@@ -634,15 +635,11 @@ class Disk(AbstractModel):
         self.IsReturnable = None
         self.ReturnFailCode = None
         self.AutoSnapshotPolicyIds = None
+        self.Tags = None
+        self.DeleteWithInstance = None
 
 
     def _deserialize(self, params):
-        if params.get("Tags") is not None:
-            self.Tags = []
-            for item in params.get("Tags"):
-                obj = Tag()
-                obj._deserialize(item)
-                self.Tags.append(obj)
         self.DiskId = params.get("DiskId")
         self.DiskUsage = params.get("DiskUsage")
         self.DiskChargeType = params.get("DiskChargeType")
@@ -668,6 +665,13 @@ class Disk(AbstractModel):
         self.IsReturnable = params.get("IsReturnable")
         self.ReturnFailCode = params.get("ReturnFailCode")
         self.AutoSnapshotPolicyIds = params.get("AutoSnapshotPolicyIds")
+        if params.get("Tags") is not None:
+            self.Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self.Tags.append(obj)
+        self.DeleteWithInstance = params.get("DeleteWithInstance")
 
 
 class DiskChargePrepaid(AbstractModel):
@@ -947,11 +951,14 @@ class ModifyDiskAttributesRequest(AbstractModel):
         :type DiskName: str
         :param Portable: 是否为弹性云盘，FALSE表示非弹性云盘，TRUE表示弹性云盘。仅支持非弹性云盘修改为弹性云盘。
         :type Portable: bool
+        :param DeleteWithInstance: 成功挂载到云主机后该云硬盘是否随云主机销毁，TRUE表示随云主机销毁，FALSE表示不随云主机销毁。仅支持按量计费云硬盘数据盘。
+        :type DeleteWithInstance: bool
         """
         self.DiskIds = None
         self.ProjectId = None
         self.DiskName = None
         self.Portable = None
+        self.DeleteWithInstance = None
 
 
     def _deserialize(self, params):
@@ -959,6 +966,7 @@ class ModifyDiskAttributesRequest(AbstractModel):
         self.ProjectId = params.get("ProjectId")
         self.DiskName = params.get("DiskName")
         self.Portable = params.get("Portable")
+        self.DeleteWithInstance = params.get("DeleteWithInstance")
 
 
 class ModifyDiskAttributesResponse(AbstractModel):
@@ -1086,26 +1094,26 @@ class Price(AbstractModel):
 
     def __init__(self):
         """
-        :param UnitPrice: 后付费云盘的单价，单位：元。
-        :type UnitPrice: float
-        :param ChargeUnit: 后付费云盘的计价单元，取值范围：<br><li>HOUR：表示后付费云盘的计价单元是按小时计算。
-        :type ChargeUnit: str
         :param OriginalPrice: 预付费云盘预支费用的原价，单位：元。
         :type OriginalPrice: float
         :param DiscountPrice: 预付费云盘预支费用的折扣价，单位：元。
         :type DiscountPrice: float
+        :param UnitPrice: 后付费云盘的单价，单位：元。
+        :type UnitPrice: float
+        :param ChargeUnit: 后付费云盘的计价单元，取值范围：<br><li>HOUR：表示后付费云盘的计价单元是按小时计算。
+        :type ChargeUnit: str
         """
-        self.UnitPrice = None
-        self.ChargeUnit = None
         self.OriginalPrice = None
         self.DiscountPrice = None
+        self.UnitPrice = None
+        self.ChargeUnit = None
 
 
     def _deserialize(self, params):
-        self.UnitPrice = params.get("UnitPrice")
-        self.ChargeUnit = params.get("ChargeUnit")
         self.OriginalPrice = params.get("OriginalPrice")
         self.DiscountPrice = params.get("DiscountPrice")
+        self.UnitPrice = params.get("UnitPrice")
+        self.ChargeUnit = params.get("ChargeUnit")
 
 
 class RenewDiskRequest(AbstractModel):
@@ -1193,10 +1201,6 @@ class Snapshot(AbstractModel):
 
     def __init__(self):
         """
-        :param CopyingToRegions: 快照正在跨地域复制的目的地域，默认取值为[]。
-        :type CopyingToRegions: list of str
-        :param CopyFromRemote: 是否为跨地域复制的快照。取值范围：<br><li>true：表示为跨地域复制的快照。<br><li>false:本地域的快照。
-        :type CopyFromRemote: bool
         :param SnapshotId: 快照ID。
         :type SnapshotId: str
         :param Placement: 快照所在的位置。
@@ -1221,9 +1225,11 @@ class Snapshot(AbstractModel):
         :type Encrypt: bool
         :param IsPermanent: 是否为永久快照。取值范围：<br><li>true：永久快照<br><li>false：非永久快照。
         :type IsPermanent: bool
+        :param CopyingToRegions: 快照正在跨地域复制的目的地域，默认取值为[]。
+        :type CopyingToRegions: list of str
+        :param CopyFromRemote: 是否为跨地域复制的快照。取值范围：<br><li>true：表示为跨地域复制的快照。<br><li>false:本地域的快照。
+        :type CopyFromRemote: bool
         """
-        self.CopyingToRegions = None
-        self.CopyFromRemote = None
         self.SnapshotId = None
         self.Placement = None
         self.DiskUsage = None
@@ -1236,11 +1242,11 @@ class Snapshot(AbstractModel):
         self.DeadlineTime = None
         self.Encrypt = None
         self.IsPermanent = None
+        self.CopyingToRegions = None
+        self.CopyFromRemote = None
 
 
     def _deserialize(self, params):
-        self.CopyingToRegions = params.get("CopyingToRegions")
-        self.CopyFromRemote = params.get("CopyFromRemote")
         self.SnapshotId = params.get("SnapshotId")
         if params.get("Placement") is not None:
             self.Placement = Placement()
@@ -1255,6 +1261,8 @@ class Snapshot(AbstractModel):
         self.DeadlineTime = params.get("DeadlineTime")
         self.Encrypt = params.get("Encrypt")
         self.IsPermanent = params.get("IsPermanent")
+        self.CopyingToRegions = params.get("CopyingToRegions")
+        self.CopyFromRemote = params.get("CopyFromRemote")
 
 
 class Tag(AbstractModel):

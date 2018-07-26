@@ -1542,11 +1542,11 @@ class DescribeDBInstancesRequest(AbstractModel):
         :type InstanceTypes: list of int non-negative
         :param Vips: 实例的内网IP地址
         :type Vips: list of str
-        :param Status: 实例状态，可取值：0-创建中，1-运行中，4-删除中，5-隔离中
+        :param Status: 实例状态，可取值：0-创建中，1-运行中，4-隔离中，5-已隔离
         :type Status: list of int non-negative
         :param Offset: 记录偏移量，默认值为0
         :type Offset: int
-        :param Limit: 单次请求返回的数量，默认值为20，最大值为100
+        :param Limit: 单次请求返回的数量，默认值为20，最大值为2000
         :type Limit: int
         :param SecurityGroupId: 安全组ID
         :type SecurityGroupId: str
@@ -1669,6 +1669,76 @@ class DescribeDBInstancesResponse(AbstractModel):
                 obj = InstanceInfo()
                 obj._deserialize(item)
                 self.Items.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeDBPriceRequest(AbstractModel):
+    """DescribeDBPrice请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Zone: 可用区信息，格式如"ap-guangzhou-1"
+        :type Zone: str
+        :param GoodsNum: 实例数量，默认值为1, 最小值1，最大值为100
+        :type GoodsNum: int
+        :param Memory: 实例内存大小，单位：MB
+        :type Memory: int
+        :param Volume: 实例硬盘大小，单位：GB
+        :type Volume: int
+        :param PayType: 付费类型，支持值包括：PRE_PAID - 包年包月，HOUR_PAID - 按量计费
+        :type PayType: str
+        :param Period: 实例时长，单位：月，最小值1，最大值为36；查询按量计费价格时，该字段无效
+        :type Period: int
+        :param InstanceRole: 实例类型，默认为 master，支持值包括：master-表示主实例，ro-表示只读实例，dr-表示灾备实例
+        :type InstanceRole: str
+        :param ProtectMode: 数据复制方式，默认为0，支持值包括：0-表示异步复制，1-表示半同步复制，2-表示强同步复制
+        :type ProtectMode: int
+        """
+        self.Zone = None
+        self.GoodsNum = None
+        self.Memory = None
+        self.Volume = None
+        self.PayType = None
+        self.Period = None
+        self.InstanceRole = None
+        self.ProtectMode = None
+
+
+    def _deserialize(self, params):
+        self.Zone = params.get("Zone")
+        self.GoodsNum = params.get("GoodsNum")
+        self.Memory = params.get("Memory")
+        self.Volume = params.get("Volume")
+        self.PayType = params.get("PayType")
+        self.Period = params.get("Period")
+        self.InstanceRole = params.get("InstanceRole")
+        self.ProtectMode = params.get("ProtectMode")
+
+
+class DescribeDBPriceResponse(AbstractModel):
+    """DescribeDBPrice返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Price: 实例价格，单位：分（人民币）
+        :type Price: int
+        :param OriginalPrice: 实例原价，单位：分（人民币）
+        :type OriginalPrice: int
+        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :type RequestId: str
+        """
+        self.Price = None
+        self.OriginalPrice = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Price = params.get("Price")
+        self.OriginalPrice = params.get("OriginalPrice")
         self.RequestId = params.get("RequestId")
 
 
@@ -2336,6 +2406,8 @@ class InstanceInfo(AbstractModel):
         :type DeployMode: int
         :param TaskStatus: 实例任务状态
         :type TaskStatus: int
+        :param MasterInfo: 主实例信息
+        :type MasterInfo: :class:`tencentcloud.cdb.v20170320.models.MasterInfo`
         :param DeviceType: 实例售卖机型
         :type DeviceType: str
         :param EngineVersion: 内核版本
@@ -2362,8 +2434,6 @@ class InstanceInfo(AbstractModel):
         :type UniqVpcId: str
         :param UniqSubnetId: 子网描述符
         :type UniqSubnetId: str
-        :param MasterInfo: 主实例信息
-        :type MasterInfo: :class:`tencentcloud.cdb.v20170320.models.MasterInfo`
         """
         self.WanStatus = None
         self.Zone = None
@@ -2385,6 +2455,7 @@ class InstanceInfo(AbstractModel):
         self.DeadlineTime = None
         self.DeployMode = None
         self.TaskStatus = None
+        self.MasterInfo = None
         self.DeviceType = None
         self.EngineVersion = None
         self.InstanceName = None
@@ -2398,7 +2469,6 @@ class InstanceInfo(AbstractModel):
         self.CdbError = None
         self.UniqVpcId = None
         self.UniqSubnetId = None
-        self.MasterInfo = None
 
 
     def _deserialize(self, params):
@@ -2431,6 +2501,9 @@ class InstanceInfo(AbstractModel):
         self.DeadlineTime = params.get("DeadlineTime")
         self.DeployMode = params.get("DeployMode")
         self.TaskStatus = params.get("TaskStatus")
+        if params.get("MasterInfo") is not None:
+            self.MasterInfo = MasterInfo()
+            self.MasterInfo._deserialize(params.get("MasterInfo"))
         self.DeviceType = params.get("DeviceType")
         self.EngineVersion = params.get("EngineVersion")
         self.InstanceName = params.get("InstanceName")
@@ -2449,9 +2522,6 @@ class InstanceInfo(AbstractModel):
         self.CdbError = params.get("CdbError")
         self.UniqVpcId = params.get("UniqVpcId")
         self.UniqSubnetId = params.get("UniqSubnetId")
-        if params.get("MasterInfo") is not None:
-            self.MasterInfo = MasterInfo()
-            self.MasterInfo._deserialize(params.get("MasterInfo"))
 
 
 class InstanceRebootTime(AbstractModel):
@@ -3524,6 +3594,8 @@ class SellConfig(AbstractModel):
 
     def __init__(self):
         """
+        :param Device: 设备类型
+        :type Device: str
         :param Type: 售卖规格描述
         :type Type: str
         :param CdbType: 实例类型
@@ -3548,9 +3620,8 @@ class SellConfig(AbstractModel):
         :type Info: str
         :param Status: 状态值
         :type Status: int
-        :param Device: 设备类型
-        :type Device: str
         """
+        self.Device = None
         self.Type = None
         self.CdbType = None
         self.Memory = None
@@ -3563,10 +3634,10 @@ class SellConfig(AbstractModel):
         self.Iops = None
         self.Info = None
         self.Status = None
-        self.Device = None
 
 
     def _deserialize(self, params):
+        self.Device = params.get("Device")
         self.Type = params.get("Type")
         self.CdbType = params.get("CdbType")
         self.Memory = params.get("Memory")
@@ -3579,7 +3650,6 @@ class SellConfig(AbstractModel):
         self.Iops = params.get("Iops")
         self.Info = params.get("Info")
         self.Status = params.get("Status")
-        self.Device = params.get("Device")
 
 
 class SellType(AbstractModel):

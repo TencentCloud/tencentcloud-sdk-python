@@ -457,22 +457,22 @@ class CreateTaskTemplateRequest(AbstractModel):
         """
         :param TaskTemplateName: 任务模板名称
         :type TaskTemplateName: str
-        :param TaskTemplateDescription: 任务模板描述
-        :type TaskTemplateDescription: str
         :param TaskTemplateInfo: 任务模板内容，参数要求与任务一致
         :type TaskTemplateInfo: :class:`tencentcloud.batch.v20170312.models.Task`
+        :param TaskTemplateDescription: 任务模板描述
+        :type TaskTemplateDescription: str
         """
         self.TaskTemplateName = None
-        self.TaskTemplateDescription = None
         self.TaskTemplateInfo = None
+        self.TaskTemplateDescription = None
 
 
     def _deserialize(self, params):
         self.TaskTemplateName = params.get("TaskTemplateName")
-        self.TaskTemplateDescription = params.get("TaskTemplateDescription")
         if params.get("TaskTemplateInfo") is not None:
             self.TaskTemplateInfo = Task()
             self.TaskTemplateInfo._deserialize(params.get("TaskTemplateInfo"))
+        self.TaskTemplateDescription = params.get("TaskTemplateDescription")
 
 
 class CreateTaskTemplateResponse(AbstractModel):
@@ -503,22 +503,22 @@ class DataDisk(AbstractModel):
 
     def __init__(self):
         """
+        :param DiskSize: 数据盘大小，单位：GB。最小调整步长为10G，不同数据盘类型取值范围不同，具体限制详见：[CVM实例配置](/document/product/213/2177)。默认值为0，表示不购买数据盘。更多限制详见产品文档。
+        :type DiskSize: int
         :param DiskType: 数据盘类型。数据盘类型限制详见[CVM实例配置](/document/product/213/2177)。取值范围：<br><li>LOCAL_BASIC：本地硬盘<br><li>LOCAL_SSD：本地SSD硬盘<br><li>CLOUD_BASIC：普通云硬盘<br><li>CLOUD_PREMIUM：高性能云硬盘<br><li>CLOUD_SSD：SSD云硬盘<br><br>默认取值：LOCAL_BASIC。<br><br>该参数对`ResizeInstanceDisk`接口无效。
         :type DiskType: str
         :param DiskId: 数据盘ID。LOCAL_BASIC 和 LOCAL_SSD 类型没有ID。暂时不支持该参数。
         :type DiskId: str
-        :param DiskSize: 数据盘大小，单位：GB。最小调整步长为10G，不同数据盘类型取值范围不同，具体限制详见：[CVM实例配置](/document/product/213/2177)。默认值为0，表示不购买数据盘。更多限制详见产品文档。
-        :type DiskSize: int
         """
+        self.DiskSize = None
         self.DiskType = None
         self.DiskId = None
-        self.DiskSize = None
 
 
     def _deserialize(self, params):
+        self.DiskSize = params.get("DiskSize")
         self.DiskType = params.get("DiskType")
         self.DiskId = params.get("DiskId")
-        self.DiskSize = params.get("DiskSize")
 
 
 class DeleteComputeEnvRequest(AbstractModel):
@@ -1055,6 +1055,51 @@ class DescribeComputeEnvsResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeCvmZoneInstanceConfigInfosRequest(AbstractModel):
+    """DescribeCvmZoneInstanceConfigInfos请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Filters: 过滤条件
+        :type Filters: :class:`tencentcloud.batch.v20170312.models.Filter`
+        """
+        self.Filters = None
+
+
+    def _deserialize(self, params):
+        if params.get("Filters") is not None:
+            self.Filters = Filter()
+            self.Filters._deserialize(params.get("Filters"))
+
+
+class DescribeCvmZoneInstanceConfigInfosResponse(AbstractModel):
+    """DescribeCvmZoneInstanceConfigInfos返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param InstanceTypeQuotaSet: 可用区机型配置列表。
+        :type InstanceTypeQuotaSet: list of InstanceTypeQuotaItem
+        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :type RequestId: str
+        """
+        self.InstanceTypeQuotaSet = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("InstanceTypeQuotaSet") is not None:
+            self.InstanceTypeQuotaSet = []
+            for item in params.get("InstanceTypeQuotaSet"):
+                obj = InstanceTypeQuotaItem()
+                obj._deserialize(item)
+                self.InstanceTypeQuotaSet.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeJobRequest(AbstractModel):
     """DescribeJob请求参数结构体
 
@@ -1432,22 +1477,22 @@ class Docker(AbstractModel):
         :type User: str
         :param Password: Docker Hub 密码或 Tencent Registry 密码
         :type Password: str
-        :param Server: Docker Hub 可以不填，但确保具有公网访问能力。或者是 Tencent Registry 服务地址“ccr.ccs.tencentyun.com”
-        :type Server: str
         :param Image: Docker Hub填写“[user/repo]:[tag]”，Tencent Registry填写“ccr.ccs.tencentyun.com/[namespace/repo]:[tag]”
         :type Image: str
+        :param Server: Docker Hub 可以不填，但确保具有公网访问能力。或者是 Tencent Registry 服务地址“ccr.ccs.tencentyun.com”
+        :type Server: str
         """
         self.User = None
         self.Password = None
-        self.Server = None
         self.Image = None
+        self.Server = None
 
 
     def _deserialize(self, params):
         self.User = params.get("User")
         self.Password = params.get("Password")
-        self.Server = params.get("Server")
         self.Image = params.get("Image")
+        self.Server = params.get("Server")
 
 
 class EnhancedService(AbstractModel):
@@ -1502,6 +1547,10 @@ class EnvData(AbstractModel):
         :type SecurityGroupIds: list of str
         :param EnhancedService: 增强服务。通过该参数可以指定是否开启云安全、云监控等服务。若不指定该参数，则默认开启云监控、云安全服务。
         :type EnhancedService: :class:`tencentcloud.batch.v20170312.models.EnhancedService`
+        :param InstanceChargeType: CVM实例计费类型<br><li>POSTPAID_BY_HOUR：按小时后付费<br><li>SPOTPAID：竞价付费<br>默认值：POSTPAID_BY_HOUR。
+        :type InstanceChargeType: str
+        :param InstanceMarketOptions: 实例的市场相关选项，如竞价实例相关参数
+        :type InstanceMarketOptions: :class:`tencentcloud.batch.v20170312.models.InstanceMarketOptionsRequest`
         """
         self.InstanceType = None
         self.ImageId = None
@@ -1513,6 +1562,8 @@ class EnvData(AbstractModel):
         self.LoginSettings = None
         self.SecurityGroupIds = None
         self.EnhancedService = None
+        self.InstanceChargeType = None
+        self.InstanceMarketOptions = None
 
 
     def _deserialize(self, params):
@@ -1541,6 +1592,10 @@ class EnvData(AbstractModel):
         if params.get("EnhancedService") is not None:
             self.EnhancedService = EnhancedService()
             self.EnhancedService._deserialize(params.get("EnhancedService"))
+        self.InstanceChargeType = params.get("InstanceChargeType")
+        if params.get("InstanceMarketOptions") is not None:
+            self.InstanceMarketOptions = InstanceMarketOptionsRequest()
+            self.InstanceMarketOptions._deserialize(params.get("InstanceMarketOptions"))
 
 
 class EnvVar(AbstractModel):
@@ -1611,6 +1666,33 @@ class EventVar(AbstractModel):
         self.Value = params.get("Value")
 
 
+class Externals(AbstractModel):
+    """扩展数据
+
+    """
+
+    def __init__(self):
+        """
+        :param ReleaseAddress: 释放地址
+        :type ReleaseAddress: bool
+        :param UnsupportNetworks: 不支持的网络类型
+        :type UnsupportNetworks: list of str
+        :param StorageBlockAttr: HDD本地存储属性
+        :type StorageBlockAttr: :class:`tencentcloud.batch.v20170312.models.StorageBlock`
+        """
+        self.ReleaseAddress = None
+        self.UnsupportNetworks = None
+        self.StorageBlockAttr = None
+
+
+    def _deserialize(self, params):
+        self.ReleaseAddress = params.get("ReleaseAddress")
+        self.UnsupportNetworks = params.get("UnsupportNetworks")
+        if params.get("StorageBlockAttr") is not None:
+            self.StorageBlockAttr = StorageBlock()
+            self.StorageBlockAttr._deserialize(params.get("StorageBlockAttr"))
+
+
 class Filter(AbstractModel):
     """>描述键值对过滤器，用于条件过滤查询。例如过滤ID、名称、状态等
     > * 若存在多个`Filter`时，`Filter`间的关系为逻辑与（`AND`）关系。
@@ -1668,6 +1750,29 @@ class InputMapping(AbstractModel):
         self.MountOptionParameter = params.get("MountOptionParameter")
 
 
+class InstanceMarketOptionsRequest(AbstractModel):
+    """竞价请求相关选项
+
+    """
+
+    def __init__(self):
+        """
+        :param MarketType: 市场选项类型，当前只支持取值：spot
+        :type MarketType: str
+        :param SpotOptions: 竞价相关选项
+        :type SpotOptions: :class:`tencentcloud.batch.v20170312.models.SpotMarketOptions`
+        """
+        self.MarketType = None
+        self.SpotOptions = None
+
+
+    def _deserialize(self, params):
+        self.MarketType = params.get("MarketType")
+        if params.get("SpotOptions") is not None:
+            self.SpotOptions = SpotMarketOptions()
+            self.SpotOptions._deserialize(params.get("SpotOptions"))
+
+
 class InstanceTypeConfig(AbstractModel):
     """描述实例机型配置信息
 
@@ -1713,6 +1818,76 @@ class InstanceTypeConfig(AbstractModel):
         self.InstanceTypeState = params.get("InstanceTypeState")
 
 
+class InstanceTypeQuotaItem(AbstractModel):
+    """描述实例机型配额信息。
+
+    """
+
+    def __init__(self):
+        """
+        :param Zone: 可用区。
+        :type Zone: str
+        :param InstanceType: 实例机型。
+        :type InstanceType: str
+        :param InstanceChargeType: 实例计费模式。取值范围： <br><li>PREPAID：表示预付费，即包年包月<br><li>POSTPAID_BY_HOUR：表示后付费，即按量计费<br><li>CDHPAID：表示[CDH](https://cloud.tencent.com/document/product/416)付费，即只对CDH计费，不对CDH上的实例计费。
+        :type InstanceChargeType: str
+        :param NetworkCard: 网卡类型，例如：25代表25G网卡
+        :type NetworkCard: int
+        :param Externals: 扩展属性。
+        :type Externals: :class:`tencentcloud.batch.v20170312.models.Externals`
+        :param Cpu: 实例的CPU核数，单位：核。
+        :type Cpu: int
+        :param Memory: 实例内存容量，单位：`GB`。
+        :type Memory: int
+        :param InstanceFamily: 实例机型系列。
+        :type InstanceFamily: str
+        :param TypeName: 机型名称。
+        :type TypeName: str
+        :param LocalDiskTypeList: 本地磁盘规格列表。
+        :type LocalDiskTypeList: list of LocalDiskType
+        :param Status: 实例是否售卖。
+        :type Status: str
+        :param Price: 实例的售卖价格。
+        :type Price: :class:`tencentcloud.batch.v20170312.models.ItemPrice`
+        """
+        self.Zone = None
+        self.InstanceType = None
+        self.InstanceChargeType = None
+        self.NetworkCard = None
+        self.Externals = None
+        self.Cpu = None
+        self.Memory = None
+        self.InstanceFamily = None
+        self.TypeName = None
+        self.LocalDiskTypeList = None
+        self.Status = None
+        self.Price = None
+
+
+    def _deserialize(self, params):
+        self.Zone = params.get("Zone")
+        self.InstanceType = params.get("InstanceType")
+        self.InstanceChargeType = params.get("InstanceChargeType")
+        self.NetworkCard = params.get("NetworkCard")
+        if params.get("Externals") is not None:
+            self.Externals = Externals()
+            self.Externals._deserialize(params.get("Externals"))
+        self.Cpu = params.get("Cpu")
+        self.Memory = params.get("Memory")
+        self.InstanceFamily = params.get("InstanceFamily")
+        self.TypeName = params.get("TypeName")
+        if params.get("LocalDiskTypeList") is not None:
+            self.LocalDiskTypeList = []
+            for item in params.get("LocalDiskTypeList"):
+                obj = LocalDiskType()
+                obj._deserialize(item)
+                self.LocalDiskTypeList.append(obj)
+        self.Status = params.get("Status")
+        if params.get("Price") is not None:
+            self.Price = ItemPrice()
+            self.Price._deserialize(params.get("Price"))
+
+
 class InternetAccessible(AbstractModel):
     """描述了实例的公网可访问性，声明了实例的公网使用计费模式，最大带宽等
 
@@ -1738,6 +1913,35 @@ class InternetAccessible(AbstractModel):
         self.PublicIpAssigned = params.get("PublicIpAssigned")
 
 
+class ItemPrice(AbstractModel):
+    """描述了单项的价格信息
+
+    """
+
+    def __init__(self):
+        """
+        :param UnitPrice: 后续单价，单位：元。
+        :type UnitPrice: float
+        :param ChargeUnit: 后续计价单元，可取值范围： <br><li>HOUR：表示计价单元是按每小时来计算。当前涉及该计价单元的场景有：实例按小时后付费（POSTPAID_BY_HOUR）、带宽按小时后付费（BANDWIDTH_POSTPAID_BY_HOUR）：<br><li>GB：表示计价单元是按每GB来计算。当前涉及该计价单元的场景有：流量按小时后付费（TRAFFIC_POSTPAID_BY_HOUR）。
+        :type ChargeUnit: str
+        :param OriginalPrice: 预支费用的原价，单位：元。
+        :type OriginalPrice: float
+        :param DiscountPrice: 预支费用的折扣价，单位：元。
+        :type DiscountPrice: float
+        """
+        self.UnitPrice = None
+        self.ChargeUnit = None
+        self.OriginalPrice = None
+        self.DiscountPrice = None
+
+
+    def _deserialize(self, params):
+        self.UnitPrice = params.get("UnitPrice")
+        self.ChargeUnit = params.get("ChargeUnit")
+        self.OriginalPrice = params.get("OriginalPrice")
+        self.DiscountPrice = params.get("DiscountPrice")
+
+
 class Job(AbstractModel):
     """作业
 
@@ -1747,12 +1951,12 @@ class Job(AbstractModel):
         """
         :param JobName: 作业名称
         :type JobName: str
-        :param JobDescription: 作业描述
-        :type JobDescription: str
         :param Priority: 作业优先级，任务（Task）和任务实例（TaskInstance）会继承作业优先级
         :type Priority: int
         :param Tasks: 任务信息
         :type Tasks: list of Task
+        :param JobDescription: 作业描述
+        :type JobDescription: str
         :param Dependences: 依赖信息
         :type Dependences: list of Dependence
         :param Notifications: 通知信息
@@ -1763,9 +1967,9 @@ class Job(AbstractModel):
         :type StateIfCreateCvmFailed: str
         """
         self.JobName = None
-        self.JobDescription = None
         self.Priority = None
         self.Tasks = None
+        self.JobDescription = None
         self.Dependences = None
         self.Notifications = None
         self.TaskExecutionDependOn = None
@@ -1774,7 +1978,6 @@ class Job(AbstractModel):
 
     def _deserialize(self, params):
         self.JobName = params.get("JobName")
-        self.JobDescription = params.get("JobDescription")
         self.Priority = params.get("Priority")
         if params.get("Tasks") is not None:
             self.Tasks = []
@@ -1782,6 +1985,7 @@ class Job(AbstractModel):
                 obj = Task()
                 obj._deserialize(item)
                 self.Tasks.append(obj)
+        self.JobDescription = params.get("JobDescription")
         if params.get("Dependences") is not None:
             self.Dependences = []
             for item in params.get("Dependences"):
@@ -1845,6 +2049,35 @@ class JobView(AbstractModel):
         if params.get("TaskMetrics") is not None:
             self.TaskMetrics = TaskMetrics()
             self.TaskMetrics._deserialize(params.get("TaskMetrics"))
+
+
+class LocalDiskType(AbstractModel):
+    """本地磁盘规格
+
+    """
+
+    def __init__(self):
+        """
+        :param Type: 本地磁盘类型。
+        :type Type: str
+        :param PartitionType: 本地磁盘属性。
+        :type PartitionType: str
+        :param MinSize: 本地磁盘最小值。
+        :type MinSize: int
+        :param MaxSize: 本地磁盘最大值。
+        :type MaxSize: int
+        """
+        self.Type = None
+        self.PartitionType = None
+        self.MinSize = None
+        self.MaxSize = None
+
+
+    def _deserialize(self, params):
+        self.Type = params.get("Type")
+        self.PartitionType = params.get("PartitionType")
+        self.MinSize = params.get("MinSize")
+        self.MaxSize = params.get("MaxSize")
 
 
 class LoginSettings(AbstractModel):
@@ -1965,18 +2198,18 @@ class MountDataDisk(AbstractModel):
 
     def __init__(self):
         """
-        :param FileSystemType: 文件系统类型，Linux系统下支持"EXT3"和"EXT4"两种，默认"EXT3"；Windows系统下仅支持"NTFS"
-        :type FileSystemType: str
         :param LocalPath: 挂载点，Linux系统合法路径，或Windows系统盘符,比如"H:\\"
         :type LocalPath: str
+        :param FileSystemType: 文件系统类型，Linux系统下支持"EXT3"和"EXT4"两种，默认"EXT3"；Windows系统下仅支持"NTFS"
+        :type FileSystemType: str
         """
-        self.FileSystemType = None
         self.LocalPath = None
+        self.FileSystemType = None
 
 
     def _deserialize(self, params):
-        self.FileSystemType = params.get("FileSystemType")
         self.LocalPath = params.get("LocalPath")
+        self.FileSystemType = params.get("FileSystemType")
 
 
 class NamedComputeEnv(AbstractModel):
@@ -1988,14 +2221,14 @@ class NamedComputeEnv(AbstractModel):
         """
         :param EnvName: 计算环境名称
         :type EnvName: str
-        :param EnvDescription: 计算环境描述
-        :type EnvDescription: str
         :param EnvType: 计算环境管理类型
         :type EnvType: str
         :param EnvData: 计算环境具体参数
         :type EnvData: :class:`tencentcloud.batch.v20170312.models.EnvData`
         :param DesiredComputeNodeCount: 计算节点期望个数
         :type DesiredComputeNodeCount: int
+        :param EnvDescription: 计算环境描述
+        :type EnvDescription: str
         :param MountDataDisks: 数据盘挂载选项
         :type MountDataDisks: list of MountDataDisk
         :param Authentications: 授权信息
@@ -2010,10 +2243,10 @@ class NamedComputeEnv(AbstractModel):
         :type ActionIfComputeNodeInactive: str
         """
         self.EnvName = None
-        self.EnvDescription = None
         self.EnvType = None
         self.EnvData = None
         self.DesiredComputeNodeCount = None
+        self.EnvDescription = None
         self.MountDataDisks = None
         self.Authentications = None
         self.InputMappings = None
@@ -2024,12 +2257,12 @@ class NamedComputeEnv(AbstractModel):
 
     def _deserialize(self, params):
         self.EnvName = params.get("EnvName")
-        self.EnvDescription = params.get("EnvDescription")
         self.EnvType = params.get("EnvType")
         if params.get("EnvData") is not None:
             self.EnvData = EnvData()
             self.EnvData._deserialize(params.get("EnvData"))
         self.DesiredComputeNodeCount = params.get("DesiredComputeNodeCount")
+        self.EnvDescription = params.get("EnvDescription")
         if params.get("MountDataDisks") is not None:
             self.MountDataDisks = []
             for item in params.get("MountDataDisks"):
@@ -2140,7 +2373,7 @@ class Placement(AbstractModel):
         :type Zone: str
         :param ProjectId: 实例所属项目ID。该参数可以通过调用 [DescribeProject](/document/api/378/4400) 的返回值中的 projectId 字段来获取。不填为默认项目。
         :type ProjectId: int
-        :param HostIds: 实例所属的专用宿主机ID列表。如果您有购买专用宿主机并且指定了该参数，则您购买的实例就会随机的部署在这些专用宿主机上。当前暂不支持。
+        :param HostIds: 实例所属的专用宿主机ID列表。如果您有购买专用宿主机并且指定了该参数，则您购买的实例就会随机的部署在这些专用宿主机上。
         :type HostIds: list of str
         """
         self.Zone = None
@@ -2246,6 +2479,52 @@ class RunSecurityServiceEnabled(AbstractModel):
         self.Enabled = params.get("Enabled")
 
 
+class SpotMarketOptions(AbstractModel):
+    """竞价相关选项
+
+    """
+
+    def __init__(self):
+        """
+        :param MaxPrice: 竞价出价
+        :type MaxPrice: str
+        :param SpotInstanceType: 竞价请求类型，当前仅支持类型：one-time
+        :type SpotInstanceType: str
+        """
+        self.MaxPrice = None
+        self.SpotInstanceType = None
+
+
+    def _deserialize(self, params):
+        self.MaxPrice = params.get("MaxPrice")
+        self.SpotInstanceType = params.get("SpotInstanceType")
+
+
+class StorageBlock(AbstractModel):
+    """HDD的本地存储信息
+
+    """
+
+    def __init__(self):
+        """
+        :param Type: HDD本地存储类型，值为：LOCAL_PRO.
+        :type Type: str
+        :param MinSize: HDD本地存储的最小容量
+        :type MinSize: int
+        :param MaxSize: HDD本地存储的最大容量
+        :type MaxSize: int
+        """
+        self.Type = None
+        self.MinSize = None
+        self.MaxSize = None
+
+
+    def _deserialize(self, params):
+        self.Type = params.get("Type")
+        self.MinSize = params.get("MinSize")
+        self.MaxSize = params.get("MaxSize")
+
+
 class SubmitJobRequest(AbstractModel):
     """SubmitJob请求参数结构体
 
@@ -2303,7 +2582,7 @@ class SystemDisk(AbstractModel):
 
     def __init__(self):
         """
-        :param DiskType: 系统盘类型。系统盘类型限制详见[CVM实例配置](/document/product/213/2177)。取值范围：<br><li>LOCAL_BASIC：本地硬盘<br><li>LOCAL_SSD：本地SSD硬盘<br><li>CLOUD_BASIC：普通云硬盘<br><li>CLOUD_SSD：SSD云硬盘<br><li>CLOUD_PREMIUM：高性能云硬盘<br><br>默认取值：LOCAL_BASIC。
+        :param DiskType: 系统盘类型。系统盘类型限制详见[CVM实例配置](/document/product/213/2177)。取值范围：<br><li>LOCAL_BASIC：本地硬盘<br><li>LOCAL_SSD：本地SSD硬盘<br><li>CLOUD_BASIC：普通云硬盘<br><li>CLOUD_SSD：SSD云硬盘<br><li>CLOUD_PREMIUM：高性能云硬盘<br><br>默认取值：CLOUD_BASIC。
         :type DiskType: str
         :param DiskId: 系统盘ID。LOCAL_BASIC 和 LOCAL_SSD 类型没有ID。暂时不支持该参数。
         :type DiskId: str
@@ -2334,12 +2613,16 @@ class Task(AbstractModel):
         :type TaskInstanceNum: int
         :param Application: 应用程序信息
         :type Application: :class:`tencentcloud.batch.v20170312.models.Application`
+        :param RedirectInfo: 重定向信息
+        :type RedirectInfo: :class:`tencentcloud.batch.v20170312.models.RedirectInfo`
+        :param MaxRetryCount: 任务失败后的最大重试次数，默认为0
+        :type MaxRetryCount: int
+        :param Timeout: 任务启动后的超时时间，单位秒，默认为3600秒
+        :type Timeout: int
         :param ComputeEnv: 运行环境信息，ComputeEnv 和 EnvId 必须指定一个（且只有一个）参数。
         :type ComputeEnv: :class:`tencentcloud.batch.v20170312.models.AnonymousComputeEnv`
         :param EnvId: 计算环境ID，ComputeEnv 和 EnvId 必须指定一个（且只有一个）参数。
         :type EnvId: str
-        :param RedirectInfo: 重定向信息
-        :type RedirectInfo: :class:`tencentcloud.batch.v20170312.models.RedirectInfo`
         :param RedirectLocalInfo: 重定向本地信息
         :type RedirectLocalInfo: :class:`tencentcloud.batch.v20170312.models.RedirectLocalInfo`
         :param InputMappings: 输入映射
@@ -2354,17 +2637,15 @@ class Task(AbstractModel):
         :type Authentications: list of EnvVar
         :param FailedAction: TaskInstance失败后处理方式，取值包括TERMINATE（默认）、INTERRUPT、FAST_INTERRUPT。
         :type FailedAction: str
-        :param MaxRetryCount: 任务失败后的最大重试次数，默认为0
-        :type MaxRetryCount: int
-        :param Timeout: 任务启动后的超时时间，单位秒，默认为3600秒
-        :type Timeout: int
         """
         self.TaskName = None
         self.TaskInstanceNum = None
         self.Application = None
+        self.RedirectInfo = None
+        self.MaxRetryCount = None
+        self.Timeout = None
         self.ComputeEnv = None
         self.EnvId = None
-        self.RedirectInfo = None
         self.RedirectLocalInfo = None
         self.InputMappings = None
         self.OutputMappings = None
@@ -2372,8 +2653,6 @@ class Task(AbstractModel):
         self.EnvVars = None
         self.Authentications = None
         self.FailedAction = None
-        self.MaxRetryCount = None
-        self.Timeout = None
 
 
     def _deserialize(self, params):
@@ -2382,13 +2661,15 @@ class Task(AbstractModel):
         if params.get("Application") is not None:
             self.Application = Application()
             self.Application._deserialize(params.get("Application"))
+        if params.get("RedirectInfo") is not None:
+            self.RedirectInfo = RedirectInfo()
+            self.RedirectInfo._deserialize(params.get("RedirectInfo"))
+        self.MaxRetryCount = params.get("MaxRetryCount")
+        self.Timeout = params.get("Timeout")
         if params.get("ComputeEnv") is not None:
             self.ComputeEnv = AnonymousComputeEnv()
             self.ComputeEnv._deserialize(params.get("ComputeEnv"))
         self.EnvId = params.get("EnvId")
-        if params.get("RedirectInfo") is not None:
-            self.RedirectInfo = RedirectInfo()
-            self.RedirectInfo._deserialize(params.get("RedirectInfo"))
         if params.get("RedirectLocalInfo") is not None:
             self.RedirectLocalInfo = RedirectLocalInfo()
             self.RedirectLocalInfo._deserialize(params.get("RedirectLocalInfo"))
@@ -2423,8 +2704,6 @@ class Task(AbstractModel):
                 obj._deserialize(item)
                 self.Authentications.append(obj)
         self.FailedAction = params.get("FailedAction")
-        self.MaxRetryCount = params.get("MaxRetryCount")
-        self.Timeout = params.get("Timeout")
 
 
 class TaskInstanceMetrics(AbstractModel):
