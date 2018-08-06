@@ -829,6 +829,34 @@ class CdbClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeRollbackRangeTime(self, request):
+        """本接口(DescribeRollbackRangeTime)用于查询云数据库实例可回档的时间范围。
+
+        :param request: 调用DescribeRollbackRangeTime所需参数的结构体。
+        :type request: :class:`tencentcloud.cdb.v20170320.models.DescribeRollbackRangeTimeRequest`
+        :rtype: :class:`tencentcloud.cdb.v20170320.models.DescribeRollbackRangeTimeResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeRollbackRangeTime", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeRollbackRangeTimeResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise e
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeSlowLogs(self, request):
         """本接口(DescribeSlowLogs)用于获取云数据库实例的慢查询日志。
 
@@ -843,6 +871,34 @@ class CdbClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeSlowLogsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise e
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeTables(self, request):
+        """本接口(DescribeTables)用于查询云数据库实例的数据库表信息。
+
+        :param request: 调用DescribeTables所需参数的结构体。
+        :type request: :class:`tencentcloud.cdb.v20170320.models.DescribeTablesRequest`
+        :rtype: :class:`tencentcloud.cdb.v20170320.models.DescribeTablesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeTables", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeTablesResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -1297,6 +1353,34 @@ class CdbClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.RestartDBInstancesResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise e
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def StartBatchRollback(self, request):
+        """该接口（StartBatchRollback）用于批量回档云数据库实例的库表。
+
+        :param request: 调用StartBatchRollback所需参数的结构体。
+        :type request: :class:`tencentcloud.cdb.v20170320.models.StartBatchRollbackRequest`
+        :rtype: :class:`tencentcloud.cdb.v20170320.models.StartBatchRollbackResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("StartBatchRollback", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.StartBatchRollbackResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

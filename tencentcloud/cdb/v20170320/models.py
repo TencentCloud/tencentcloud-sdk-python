@@ -1973,6 +1973,53 @@ class DescribeProjectSecurityGroupsResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeRollbackRangeTimeRequest(AbstractModel):
+    """DescribeRollbackRangeTime请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param InstanceIds: 实例ID列表，单个实例Id的格式如：cdb-c1nl9rpv。与云数据库控制台页面中显示的实例ID相同。
+        :type InstanceIds: list of str
+        """
+        self.InstanceIds = None
+
+
+    def _deserialize(self, params):
+        self.InstanceIds = params.get("InstanceIds")
+
+
+class DescribeRollbackRangeTimeResponse(AbstractModel):
+    """DescribeRollbackRangeTime返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param TotalCount: 符合查询条件的实例总数。
+        :type TotalCount: int
+        :param Items: 返回的参数信息。
+        :type Items: list of InstanceRollbackRangeTime
+        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.Items = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("Items") is not None:
+            self.Items = []
+            for item in params.get("Items"):
+                obj = InstanceRollbackRangeTime()
+                obj._deserialize(item)
+                self.Items.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeSlowLogsRequest(AbstractModel):
     """DescribeSlowLogs请求参数结构体
 
@@ -2025,6 +2072,64 @@ class DescribeSlowLogsResponse(AbstractModel):
                 obj = SlowLogInfo()
                 obj._deserialize(item)
                 self.Items.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeTablesRequest(AbstractModel):
+    """DescribeTables请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param InstanceId: 实例ID，格式如：cdb-c1nl9rpv，与云数据库控制台页面中显示的实例ID相同。
+        :type InstanceId: str
+        :param Database: 数据库的名称。
+        :type Database: str
+        :param Offset: 记录偏移量，默认值为0。
+        :type Offset: int
+        :param Limit: 单次请求返回的数量，默认值为20，最大值为2000。
+        :type Limit: int
+        :param TableRegexp: 匹配数据库表名的正则表达式，规则同MySQL官网
+        :type TableRegexp: str
+        """
+        self.InstanceId = None
+        self.Database = None
+        self.Offset = None
+        self.Limit = None
+        self.TableRegexp = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.Database = params.get("Database")
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+        self.TableRegexp = params.get("TableRegexp")
+
+
+class DescribeTablesResponse(AbstractModel):
+    """DescribeTables返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param TotalCount: 符合查询条件的数据库表总数。
+        :type TotalCount: int
+        :param Items: 返回的数据库表信息。
+        :type Items: list of str
+        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.Items = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        self.Items = params.get("Items")
         self.RequestId = params.get("RequestId")
 
 
@@ -2543,6 +2648,40 @@ class InstanceRebootTime(AbstractModel):
     def _deserialize(self, params):
         self.InstanceId = params.get("InstanceId")
         self.TimeInSeconds = params.get("TimeInSeconds")
+
+
+class InstanceRollbackRangeTime(AbstractModel):
+    """实例可回档时间范围
+
+    """
+
+    def __init__(self):
+        """
+        :param Code: 查询数据库错误码
+        :type Code: int
+        :param Message: 查询数据库错误信息
+        :type Message: str
+        :param InstanceId: 实例ID列表，单个实例Id的格式如：cdb-c1nl9rpv。与云数据库控制台页面中显示的实例ID相同
+        :type InstanceId: str
+        :param Times: 可回档时间范围
+        :type Times: list of RollbackTimeRange
+        """
+        self.Code = None
+        self.Message = None
+        self.InstanceId = None
+        self.Times = None
+
+
+    def _deserialize(self, params):
+        self.Code = params.get("Code")
+        self.Message = params.get("Message")
+        self.InstanceId = params.get("InstanceId")
+        if params.get("Times") is not None:
+            self.Times = []
+            for item in params.get("Times"):
+                obj = RollbackTimeRange()
+                obj._deserialize(item)
+                self.Times.append(obj)
 
 
 class IsolateDBInstanceRequest(AbstractModel):
@@ -3536,6 +3675,138 @@ class RoVipInfo(AbstractModel):
         self.RoVip = params.get("RoVip")
 
 
+class RollbackDBName(AbstractModel):
+    """用于回档的数据库名
+
+    """
+
+    def __init__(self):
+        """
+        :param DatabaseName: 回档前的原数据库名
+        :type DatabaseName: str
+        :param NewDatabaseName: 回档后的新数据库名
+        :type NewDatabaseName: str
+        """
+        self.DatabaseName = None
+        self.NewDatabaseName = None
+
+
+    def _deserialize(self, params):
+        self.DatabaseName = params.get("DatabaseName")
+        self.NewDatabaseName = params.get("NewDatabaseName")
+
+
+class RollbackInstancesInfo(AbstractModel):
+    """用于回档的实例详情
+
+    """
+
+    def __init__(self):
+        """
+        :param InstanceId: 云数据库实例ID
+        :type InstanceId: str
+        :param Strategy: 回档策略。可选值为：table、db、full；默认值为full。table - 急速回档模式，仅导入所选中表级别的备份和binlog，如有跨表操作，且关联表未被同时选中，将会导致回档失败，该模式下参数Databases必须为空；db - 快速模式，仅导入所选中库级别的备份和binlog，如有跨库操作，且关联库未被同时选中，将会导致回档失败；full - 普通回档模式，将导入整个实例的备份和binlog，速度较慢。
+        :type Strategy: str
+        :param RollbackTime: 数据库回档时间，时间格式为：yyyy-mm-dd hh:mm:ss
+        :type RollbackTime: str
+        :param Databases: 待回档的数据库信息，表示整库回档
+        :type Databases: list of RollbackDBName
+        :param Tables: 待回档的数据库表信息，表示按表回档
+        :type Tables: list of RollbackTables
+        """
+        self.InstanceId = None
+        self.Strategy = None
+        self.RollbackTime = None
+        self.Databases = None
+        self.Tables = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.Strategy = params.get("Strategy")
+        self.RollbackTime = params.get("RollbackTime")
+        if params.get("Databases") is not None:
+            self.Databases = []
+            for item in params.get("Databases"):
+                obj = RollbackDBName()
+                obj._deserialize(item)
+                self.Databases.append(obj)
+        if params.get("Tables") is not None:
+            self.Tables = []
+            for item in params.get("Tables"):
+                obj = RollbackTables()
+                obj._deserialize(item)
+                self.Tables.append(obj)
+
+
+class RollbackTableName(AbstractModel):
+    """用于回档的数据库表名
+
+    """
+
+    def __init__(self):
+        """
+        :param TableName: 回档前的原数据库表名
+        :type TableName: str
+        :param NewTableName: 回档后的新数据库表名
+        :type NewTableName: str
+        """
+        self.TableName = None
+        self.NewTableName = None
+
+
+    def _deserialize(self, params):
+        self.TableName = params.get("TableName")
+        self.NewTableName = params.get("NewTableName")
+
+
+class RollbackTables(AbstractModel):
+    """用于回档的数据库表详情
+
+    """
+
+    def __init__(self):
+        """
+        :param Database: 数据库名
+        :type Database: str
+        :param Table: 数据库表详情
+        :type Table: list of RollbackTableName
+        """
+        self.Database = None
+        self.Table = None
+
+
+    def _deserialize(self, params):
+        self.Database = params.get("Database")
+        if params.get("Table") is not None:
+            self.Table = []
+            for item in params.get("Table"):
+                obj = RollbackTableName()
+                obj._deserialize(item)
+                self.Table.append(obj)
+
+
+class RollbackTimeRange(AbstractModel):
+    """可回档时间范围
+
+    """
+
+    def __init__(self):
+        """
+        :param Begin: 实例可回档开始时间，时间格式：2016-10-29 01:06:04
+        :type Begin: str
+        :param End: 实例可回档结束时间，时间格式：2016-11-02 11:44:47
+        :type End: str
+        """
+        self.Begin = None
+        self.End = None
+
+
+    def _deserialize(self, params):
+        self.Begin = params.get("Begin")
+        self.End = params.get("End")
+
+
 class SecurityGroup(AbstractModel):
     """安全组详情
 
@@ -3763,6 +4034,49 @@ class SlowLogInfo(AbstractModel):
         self.IntranetUrl = params.get("IntranetUrl")
         self.InternetUrl = params.get("InternetUrl")
         self.Type = params.get("Type")
+
+
+class StartBatchRollbackRequest(AbstractModel):
+    """StartBatchRollback请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Instances: 用于回档的实例详情信息
+        :type Instances: list of RollbackInstancesInfo
+        """
+        self.Instances = None
+
+
+    def _deserialize(self, params):
+        if params.get("Instances") is not None:
+            self.Instances = []
+            for item in params.get("Instances"):
+                obj = RollbackInstancesInfo()
+                obj._deserialize(item)
+                self.Instances.append(obj)
+
+
+class StartBatchRollbackResponse(AbstractModel):
+    """StartBatchRollback返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param AsyncRequestId: 异步任务的请求ID，可使用此ID查询异步任务的执行结果
+        :type AsyncRequestId: str
+        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :type RequestId: str
+        """
+        self.AsyncRequestId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.AsyncRequestId = params.get("AsyncRequestId")
+        self.RequestId = params.get("RequestId")
 
 
 class StopDBImportJobRequest(AbstractModel):
