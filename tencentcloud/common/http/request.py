@@ -37,6 +37,7 @@ class ProxyHTTPSConnection(HTTPSConnection):
         self.request_length = 0
         if self.has_proxy:
             self.set_tunnel(self.request_host, 443)
+        headers.setdefault("Host", self.request_host)
         HTTPSConnection.request(self, method, url, body, headers)
 
 
