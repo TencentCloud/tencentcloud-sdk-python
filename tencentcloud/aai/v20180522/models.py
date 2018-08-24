@@ -1,5 +1,5 @@
 # -*- coding: utf8 -*-
-# Copyright 1999-2017 Tencent Ltd.
+# Copyright (c) 2017-2018 THL A29 Limited, a Tencent company. All Rights Reserved.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -14,6 +14,52 @@
 # limitations under the License.
 
 from tencentcloud.common.abstract_model import AbstractModel
+
+
+class ChatRequest(AbstractModel):
+    """Chat请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Text: 聊天输入文本
+        :type Text: str
+        :param ProjectId: 腾讯云项目 ID，可填 0，总长度不超过 1024 字节。
+        :type ProjectId: int
+        :param User: json格式，比如 {"id":"test","gender":"male"}。记录当前与机器人交互的用户id，非必须但强烈建议传入，否则多轮聊天功能会受影响
+        :type User: str
+        """
+        self.Text = None
+        self.ProjectId = None
+        self.User = None
+
+
+    def _deserialize(self, params):
+        self.Text = params.get("Text")
+        self.ProjectId = params.get("ProjectId")
+        self.User = params.get("User")
+
+
+class ChatResponse(AbstractModel):
+    """Chat返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Answer: 聊天输出文本
+        :type Answer: str
+        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :type RequestId: str
+        """
+        self.Answer = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Answer = params.get("Answer")
+        self.RequestId = params.get("RequestId")
 
 
 class SentenceRecognitionRequest(AbstractModel):
@@ -37,9 +83,9 @@ class SentenceRecognitionRequest(AbstractModel):
         :type UsrAudioKey: str
         :param Url: 语音 URL，公网可下载。当 SourceType 值为 0 时须填写该字段，为 1 时不填；URL 的长度大于 0，小于 2048，需进行urlencode编码。音频时间长度要小于60s。
         :type Url: str
-        :param Data: 语音数据，当SourceType 值为1时必须填写，为0可不写。要base64编码。音频数据要小于900k。
+        :param Data: 语音数据，当SourceType 值为1时必须填写，为0可不写。要base64编码(采用python语言时注意读取文件应该为string而不是byte，以byte格式读取后要decode())。音频数据要小于900k。
         :type Data: str
-        :param DataLen: 数据长度，当 SourceType 值为1时必须填写，为0可不写。
+        :param DataLen: 数据长度，当 SourceType 值为1时必须填写，为0可不写（此数据长度为数据未进行base64编码时的数据长度）。
         :type DataLen: int
         """
         self.ProjectId = None
@@ -86,6 +132,92 @@ class SentenceRecognitionResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class SimultaneousInterpretingRequest(AbstractModel):
+    """SimultaneousInterpreting请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ProjectId: 腾讯云项目 ID，可填 0，总长度不超过 1024 字节。
+        :type ProjectId: int
+        :param SubServiceType: 子服务类型。0：离线语音识别。1：实时流式识别，2，一句话识别。3：同传。
+        :type SubServiceType: int
+        :param RecEngineModelType: 识别引擎类型。8k_zh： 8k 中文会场模型；16k_zh：16k 中文会场模型，8k_en： 8k 英文会场模型；16k_en：16k 英文会场模型。当前仅支持16K。
+        :type RecEngineModelType: str
+        :param Data: 语音数据，要base64编码。
+        :type Data: str
+        :param DataLen: 数据长度。
+        :type DataLen: int
+        :param VoiceId: 声音id，标识一句话。
+        :type VoiceId: str
+        :param IsEnd: 是否是一句话的结束。
+        :type IsEnd: int
+        :param VoiceFormat: 声音编码的格式1:pcm，4:speex，6:silk，默认为1。
+        :type VoiceFormat: int
+        :param OpenTranslate: 是否需要翻译结果，1表示需要翻译，0是不需要。
+        :type OpenTranslate: int
+        :param SourceLanguage: 如果需要翻译，表示源语言类型，可取值：zh，en。
+        :type SourceLanguage: str
+        :param TargetLanguage: 如果需要翻译，表示目标语言类型，可取值：zh，en。
+        :type TargetLanguage: str
+        :param Seq: 表明当前语音分片的索引，从0开始
+        :type Seq: int
+        """
+        self.ProjectId = None
+        self.SubServiceType = None
+        self.RecEngineModelType = None
+        self.Data = None
+        self.DataLen = None
+        self.VoiceId = None
+        self.IsEnd = None
+        self.VoiceFormat = None
+        self.OpenTranslate = None
+        self.SourceLanguage = None
+        self.TargetLanguage = None
+        self.Seq = None
+
+
+    def _deserialize(self, params):
+        self.ProjectId = params.get("ProjectId")
+        self.SubServiceType = params.get("SubServiceType")
+        self.RecEngineModelType = params.get("RecEngineModelType")
+        self.Data = params.get("Data")
+        self.DataLen = params.get("DataLen")
+        self.VoiceId = params.get("VoiceId")
+        self.IsEnd = params.get("IsEnd")
+        self.VoiceFormat = params.get("VoiceFormat")
+        self.OpenTranslate = params.get("OpenTranslate")
+        self.SourceLanguage = params.get("SourceLanguage")
+        self.TargetLanguage = params.get("TargetLanguage")
+        self.Seq = params.get("Seq")
+
+
+class SimultaneousInterpretingResponse(AbstractModel):
+    """SimultaneousInterpreting返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param AsrText: 语音识别的结果
+        :type AsrText: str
+        :param NmtText: 机器翻译的结果
+        :type NmtText: str
+        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :type RequestId: str
+        """
+        self.AsrText = None
+        self.NmtText = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.AsrText = params.get("AsrText")
+        self.NmtText = params.get("NmtText")
+        self.RequestId = params.get("RequestId")
+
+
 class TextToVoiceRequest(AbstractModel):
     """TextToVoice请求参数结构体
 
@@ -99,17 +231,17 @@ class TextToVoiceRequest(AbstractModel):
         :type SessionId: str
         :param ModelType: 模型类型，1-默认模型
         :type ModelType: int
-        :param Volume: 音量大小，暂仅支持默认值1
+        :param Volume: 音量大小，范围：[0，10]，分别对应10个等级的音量，默认为0
         :type Volume: float
-        :param Speed: 语速，暂仅支持默认值1
+        :param Speed: 语速，范围：[-2，2]，分别对应不同语速：0.6倍，0.8倍，1.0倍，1.2倍，1.5倍，默认为0
         :type Speed: float
-        :param ProjectId: 用户自定义项目id，默认为0
+        :param ProjectId: 项目id，用户自定义，默认为0
         :type ProjectId: int
-        :param VoiceType: 音色，1-默认音色
+        :param VoiceType: 音色<li>0-女声1，亲和风格(默认)</li><li>1-男声1，成熟风格</li><li>2-男声2，成熟风格</li>
         :type VoiceType: int
-        :param PrimaryLanguage: 主语言类型<li>1-中文(包括粤语)，最大300字符</li><li>2-英文，最大支持600字符</li>
+        :param PrimaryLanguage: 主语言类型<li>1-中文(包括粤语)，最大100字符</li><li>2-英文，最大支持400字符</li>
         :type PrimaryLanguage: int
-        :param SampleRate: 音频采样率：暂仅支持16k
+        :param SampleRate: 音频采样率，16000：16k，8000：8k，默认16k
         :type SampleRate: int
         """
         self.Text = None

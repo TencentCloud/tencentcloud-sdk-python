@@ -1,5 +1,5 @@
 # -*- coding: utf8 -*-
-# Copyright 1999-2017 Tencent Ltd.
+# Copyright (c) 2017-2018 THL A29 Limited, a Tencent company. All Rights Reserved.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -25,6 +25,34 @@ class PartnersClient(AbstractClient):
     _endpoint = 'partners.tencentcloudapi.com'
 
 
+    def AgentPayDeals(self, request):
+        """代理商支付订单接口，支持自付/代付
+
+        :param request: 调用AgentPayDeals所需参数的结构体。
+        :type request: :class:`tencentcloud.partners.v20180321.models.AgentPayDealsRequest`
+        :rtype: :class:`tencentcloud.partners.v20180321.models.AgentPayDealsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("AgentPayDeals", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.AgentPayDealsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise e
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def AuditApplyClient(self, request):
         """代理商可以审核其名下申请中代客
 
@@ -39,6 +67,34 @@ class PartnersClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.AuditApplyClientResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise e
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeAgentAuditedClients(self, request):
+        """查询已审核客户列表
+
+        :param request: 调用DescribeAgentAuditedClients所需参数的结构体。
+        :type request: :class:`tencentcloud.partners.v20180321.models.DescribeAgentAuditedClientsRequest`
+        :rtype: :class:`tencentcloud.partners.v20180321.models.DescribeAgentAuditedClientsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeAgentAuditedClients", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeAgentAuditedClientsResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

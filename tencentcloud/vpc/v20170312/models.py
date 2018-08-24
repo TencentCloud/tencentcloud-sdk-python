@@ -1,5 +1,5 @@
 # -*- coding: utf8 -*-
-# Copyright 1999-2017 Tencent Ltd.
+# Copyright (c) 2017-2018 THL A29 Limited, a Tencent company. All Rights Reserved.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -37,6 +37,52 @@ class AccountAttribute(AbstractModel):
         self.AttributeValues = params.get("AttributeValues")
 
 
+class AddBandwidthPackageResourcesRequest(AbstractModel):
+    """AddBandwidthPackageResources请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ResourceIds: 资源Id，形如'eip-xxxx', 'lb-xxxx'
+        :type ResourceIds: list of str
+        :param BandwidthPackageId: 带宽包唯一标识ID，形如'bwp-xxxx'
+        :type BandwidthPackageId: str
+        :param NetworkType: 带宽包类型，包括'BGP', 'SINGLEISP', 'ANYCAST'
+        :type NetworkType: str
+        :param ResourceType: 资源类型，包括'Address', 'LoadBalance'
+        :type ResourceType: str
+        """
+        self.ResourceIds = None
+        self.BandwidthPackageId = None
+        self.NetworkType = None
+        self.ResourceType = None
+
+
+    def _deserialize(self, params):
+        self.ResourceIds = params.get("ResourceIds")
+        self.BandwidthPackageId = params.get("BandwidthPackageId")
+        self.NetworkType = params.get("NetworkType")
+        self.ResourceType = params.get("ResourceType")
+
+
+class AddBandwidthPackageResourcesResponse(AbstractModel):
+    """AddBandwidthPackageResources返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class Address(AbstractModel):
     """描述 EIP 信息
 
@@ -50,19 +96,37 @@ class Address(AbstractModel):
         :type AddressName: str
         :param AddressStatus: `EIP`状态。
         :type AddressStatus: str
-        :param AddressIp: 弹性外网IP
+        :param AddressIp: 外网IP地址
         :type AddressIp: str
-        :param BindedResourceId: 绑定的资源实例`ID`。可能是一个`CVM`，`NAT`，或是弹性网卡。
-        :type BindedResourceId: str
+        :param InstanceId: 绑定的资源实例`ID`。可能是一个`CVM`，`NAT`。
+        :type InstanceId: str
         :param CreatedTime: 创建时间。按照`ISO8601`标准表示，并且使用`UTC`时间。格式为：`YYYY-MM-DDThh:mm:ssZ`。
         :type CreatedTime: str
+        :param NetworkInterfaceId: 绑定的弹性网卡ID
+        :type NetworkInterfaceId: str
+        :param PrivateAddressIp: 绑定的资源内网ip
+        :type PrivateAddressIp: str
+        :param IsArrears: 资源隔离状态。true表示eip处于隔离状态，false表示资源处于未隔离装填
+        :type IsArrears: bool
+        :param IsBlocked: 资源封堵状态。true表示eip处于封堵状态，false表示eip处于未封堵状态
+        :type IsBlocked: bool
+        :param IsEipDirectConnection: eip是否支持直通模式。true表示eip支持直通模式，false表示资源不支持直通模式
+        :type IsEipDirectConnection: bool
+        :param AddressType: eip资源类型，包括"CalcIP","WanIP","EIP","AnycastEIP"。其中"CalcIP"表示设备ip，“WanIP”表示普通公网ip，“EIP”表示弹性公网ip，“AnycastEip”表示加速EIP
+        :type AddressType: str
         """
         self.AddressId = None
         self.AddressName = None
         self.AddressStatus = None
         self.AddressIp = None
-        self.BindedResourceId = None
+        self.InstanceId = None
         self.CreatedTime = None
+        self.NetworkInterfaceId = None
+        self.PrivateAddressIp = None
+        self.IsArrears = None
+        self.IsBlocked = None
+        self.IsEipDirectConnection = None
+        self.AddressType = None
 
 
     def _deserialize(self, params):
@@ -70,8 +134,14 @@ class Address(AbstractModel):
         self.AddressName = params.get("AddressName")
         self.AddressStatus = params.get("AddressStatus")
         self.AddressIp = params.get("AddressIp")
-        self.BindedResourceId = params.get("BindedResourceId")
+        self.InstanceId = params.get("InstanceId")
         self.CreatedTime = params.get("CreatedTime")
+        self.NetworkInterfaceId = params.get("NetworkInterfaceId")
+        self.PrivateAddressIp = params.get("PrivateAddressIp")
+        self.IsArrears = params.get("IsArrears")
+        self.IsBlocked = params.get("IsBlocked")
+        self.IsEipDirectConnection = params.get("IsEipDirectConnection")
+        self.AddressType = params.get("AddressType")
 
 
 class AddressTemplate(AbstractModel):
@@ -130,6 +200,27 @@ class AddressTemplateGroup(AbstractModel):
         self.AddressTemplateGroupId = params.get("AddressTemplateGroupId")
         self.AddressTemplateIdSet = params.get("AddressTemplateIdSet")
         self.CreatedTime = params.get("CreatedTime")
+
+
+class AddressTemplateSpecification(AbstractModel):
+    """IP地址模版
+
+    """
+
+    def __init__(self):
+        """
+        :param AddressId: IP地址ID，例如：ipm-2uw6ujo6。
+        :type AddressId: str
+        :param AddressGroupId: IP地址组ID，例如：ipmg-2uw6ujo6。
+        :type AddressGroupId: str
+        """
+        self.AddressId = None
+        self.AddressGroupId = None
+
+
+    def _deserialize(self, params):
+        self.AddressId = params.get("AddressId")
+        self.AddressGroupId = params.get("AddressGroupId")
 
 
 class AllocateAddressesRequest(AbstractModel):
@@ -272,6 +363,49 @@ class AssociateAddressResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class AttachCcnInstancesRequest(AbstractModel):
+    """AttachCcnInstances请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param CcnId: CCN实例ID。形如：ccn-f49l6u0z。
+        :type CcnId: str
+        :param Instances: 关联网络实例列表
+        :type Instances: list of CcnInstance
+        """
+        self.CcnId = None
+        self.Instances = None
+
+
+    def _deserialize(self, params):
+        self.CcnId = params.get("CcnId")
+        if params.get("Instances") is not None:
+            self.Instances = []
+            for item in params.get("Instances"):
+                obj = CcnInstance()
+                obj._deserialize(item)
+                self.Instances.append(obj)
+
+
+class AttachCcnInstancesResponse(AbstractModel):
+    """AttachCcnInstances返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class AttachClassicLinkVpcRequest(AbstractModel):
     """AttachClassicLinkVpc请求参数结构体
 
@@ -346,6 +480,192 @@ class AttachNetworkInterfaceResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
+
+
+class BandwidthPackage(AbstractModel):
+    """描述带宽包信息的结构
+
+    """
+
+    def __init__(self):
+        """
+        :param BandwidthPackageId: 带宽包唯一标识Id
+        :type BandwidthPackageId: str
+        :param NetworkType: 带宽包类型，包括'BGP','SINGLEISP','ANYCAST'
+        :type NetworkType: str
+        :param ChargeType: 带宽包计费类型，包括'TOP5_POSTPAID_BY_MONTH'和'PERCENT95_POSTPAID_BY_MONTH'
+        :type ChargeType: str
+        :param BandwidthPackageName: 带宽包名称
+        :type BandwidthPackageName: str
+        :param CreatedTime: 带宽包创建时间。按照`ISO8601`标准表示，并且使用`UTC`时间。格式为：`YYYY-MM-DDThh:mm:ssZ`。
+        :type CreatedTime: str
+        :param Status: 带宽包状态，包括'CREATING','CREATED','DELETING','DELETED'
+        :type Status: str
+        :param ResourceSet: 带宽包资源信息
+        :type ResourceSet: list of Resource
+        """
+        self.BandwidthPackageId = None
+        self.NetworkType = None
+        self.ChargeType = None
+        self.BandwidthPackageName = None
+        self.CreatedTime = None
+        self.Status = None
+        self.ResourceSet = None
+
+
+    def _deserialize(self, params):
+        self.BandwidthPackageId = params.get("BandwidthPackageId")
+        self.NetworkType = params.get("NetworkType")
+        self.ChargeType = params.get("ChargeType")
+        self.BandwidthPackageName = params.get("BandwidthPackageName")
+        self.CreatedTime = params.get("CreatedTime")
+        self.Status = params.get("Status")
+        if params.get("ResourceSet") is not None:
+            self.ResourceSet = []
+            for item in params.get("ResourceSet"):
+                obj = Resource()
+                obj._deserialize(item)
+                self.ResourceSet.append(obj)
+
+
+class CCN(AbstractModel):
+    """云联网（CCN）对象
+
+    """
+
+    def __init__(self):
+        """
+        :param CcnId: 云联网唯一ID
+        :type CcnId: str
+        :param CcnName: 云联网名称
+        :type CcnName: str
+        :param CcnDescription: 云联网描述信息
+        :type CcnDescription: str
+        :param InstanceCount: 关联实例数量
+        :type InstanceCount: int
+        :param CreateTime: 创建时间
+        :type CreateTime: str
+        :param State: 实例状态， 'ISOLATED': 隔离中（欠费停服），'AVAILABLE'：运行中。
+        :type State: str
+        """
+        self.CcnId = None
+        self.CcnName = None
+        self.CcnDescription = None
+        self.InstanceCount = None
+        self.CreateTime = None
+        self.State = None
+
+
+    def _deserialize(self, params):
+        self.CcnId = params.get("CcnId")
+        self.CcnName = params.get("CcnName")
+        self.CcnDescription = params.get("CcnDescription")
+        self.InstanceCount = params.get("InstanceCount")
+        self.CreateTime = params.get("CreateTime")
+        self.State = params.get("State")
+
+
+class CcnInstance(AbstractModel):
+    """云联网（CCN）关联的实例（Instance）对象
+
+    """
+
+    def __init__(self):
+        """
+        :param InstanceId: 关联实例ID
+        :type InstanceId: str
+        :param InstanceRegion: 关联实例ID所属大区，例如：ap-guangzhou
+        :type InstanceRegion: str
+        :param CcnId: 云联网实例ID
+        :type CcnId: str
+        :param InstanceType: 关联实例类型，可选值：VPC、DIRECTCONNECT
+        :type InstanceType: str
+        :param InstanceName: 关联实例名称
+        :type InstanceName: str
+        :param CidrBlock: 关联实例CIDR
+        :type CidrBlock: list of str
+        """
+        self.InstanceId = None
+        self.InstanceRegion = None
+        self.CcnId = None
+        self.InstanceType = None
+        self.InstanceName = None
+        self.CidrBlock = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.InstanceRegion = params.get("InstanceRegion")
+        self.CcnId = params.get("CcnId")
+        self.InstanceType = params.get("InstanceType")
+        self.InstanceName = params.get("InstanceName")
+        self.CidrBlock = params.get("CidrBlock")
+
+
+class CcnRegionBandwidthLimit(AbstractModel):
+    """云联网（CCN）地域出带宽上限
+
+    """
+
+    def __init__(self):
+        """
+        :param Region: 地域，例如：ap-guangzhou
+        :type Region: str
+        :param BandwidthLimit: 出带宽上限，单位：Mbps
+        :type BandwidthLimit: int
+        """
+        self.Region = None
+        self.BandwidthLimit = None
+
+
+    def _deserialize(self, params):
+        self.Region = params.get("Region")
+        self.BandwidthLimit = params.get("BandwidthLimit")
+
+
+class CcnRoute(AbstractModel):
+    """CCN路由策略对象
+
+    """
+
+    def __init__(self):
+        """
+        :param RouteId: 路由策略ID
+        :type RouteId: str
+        :param DestinationCidrBlock: 目的端
+        :type DestinationCidrBlock: str
+        :param InstanceType: 下一跳类型（关联实例类型），所有类型：VPC、DIRECTCONNECT
+        :type InstanceType: str
+        :param InstanceId: 下一跳（关联实例）
+        :type InstanceId: str
+        :param InstanceName: 下一跳名称（关联实例名称）
+        :type InstanceName: str
+        :param InstanceRegion: 下一跳所属地域（关联实例所属地域）
+        :type InstanceRegion: str
+        :param UpdateTime: 更新时间
+        :type UpdateTime: str
+        :param Enabled: 路由是否启用
+        :type Enabled: bool
+        """
+        self.RouteId = None
+        self.DestinationCidrBlock = None
+        self.InstanceType = None
+        self.InstanceId = None
+        self.InstanceName = None
+        self.InstanceRegion = None
+        self.UpdateTime = None
+        self.Enabled = None
+
+
+    def _deserialize(self, params):
+        self.RouteId = params.get("RouteId")
+        self.DestinationCidrBlock = params.get("DestinationCidrBlock")
+        self.InstanceType = params.get("InstanceType")
+        self.InstanceId = params.get("InstanceId")
+        self.InstanceName = params.get("InstanceName")
+        self.InstanceRegion = params.get("InstanceRegion")
+        self.UpdateTime = params.get("UpdateTime")
+        self.Enabled = params.get("Enabled")
 
 
 class ClassicLinkInstance(AbstractModel):
@@ -457,6 +777,104 @@ class CreateAddressTemplateResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class CreateBandwidthPackageRequest(AbstractModel):
+    """CreateBandwidthPackage请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param NetworkType: 带宽包类型，包括'BGP'，'SINGLEISP'，'ANYCAST'
+        :type NetworkType: str
+        :param ChargeType: 带宽包计费类型，包括‘TOP5_POSTPAID_BY_MONTH’，‘PERCENT95_POSTPAID_BY_MONTH’
+        :type ChargeType: str
+        :param BandwidthPackageName: 带宽包名字
+        :type BandwidthPackageName: str
+        :param BandwidthPackageCount: 带宽包数量(非上移账户只能填1)
+        :type BandwidthPackageCount: int
+        """
+        self.NetworkType = None
+        self.ChargeType = None
+        self.BandwidthPackageName = None
+        self.BandwidthPackageCount = None
+
+
+    def _deserialize(self, params):
+        self.NetworkType = params.get("NetworkType")
+        self.ChargeType = params.get("ChargeType")
+        self.BandwidthPackageName = params.get("BandwidthPackageName")
+        self.BandwidthPackageCount = params.get("BandwidthPackageCount")
+
+
+class CreateBandwidthPackageResponse(AbstractModel):
+    """CreateBandwidthPackage返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param BandwidthPackageId: 带宽包Id
+        :type BandwidthPackageId: str
+        :param BandwidthPackageIds: 带宽包Ids(申请数量大于1时有效)
+        :type BandwidthPackageIds: list of str
+        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :type RequestId: str
+        """
+        self.BandwidthPackageId = None
+        self.BandwidthPackageIds = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.BandwidthPackageId = params.get("BandwidthPackageId")
+        self.BandwidthPackageIds = params.get("BandwidthPackageIds")
+        self.RequestId = params.get("RequestId")
+
+
+class CreateCcnRequest(AbstractModel):
+    """CreateCcn请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param CcnName: CCN名称，最大长度不能超过60个字节。
+        :type CcnName: str
+        :param CcnDescription: CCN描述信息，最大长度不能超过100个字节。
+        :type CcnDescription: str
+        """
+        self.CcnName = None
+        self.CcnDescription = None
+
+
+    def _deserialize(self, params):
+        self.CcnName = params.get("CcnName")
+        self.CcnDescription = params.get("CcnDescription")
+
+
+class CreateCcnResponse(AbstractModel):
+    """CreateCcn返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Ccn: 云联网（CCN）对象。
+        :type Ccn: :class:`tencentcloud.vpc.v20170312.models.CCN`
+        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :type RequestId: str
+        """
+        self.Ccn = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Ccn") is not None:
+            self.Ccn = CCN()
+            self.Ccn._deserialize(params.get("Ccn"))
+        self.RequestId = params.get("RequestId")
+
+
 class CreateCustomerGatewayRequest(AbstractModel):
     """CreateCustomerGateway请求参数结构体
 
@@ -542,6 +960,106 @@ class CreateDefaultVpcResponse(AbstractModel):
         if params.get("Vpc") is not None:
             self.Vpc = DefaultVpcSubnet()
             self.Vpc._deserialize(params.get("Vpc"))
+        self.RequestId = params.get("RequestId")
+
+
+class CreateDirectConnectGatewayCcnRoutesRequest(AbstractModel):
+    """CreateDirectConnectGatewayCcnRoutes请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param DirectConnectGatewayId: 专线网关ID，形如：dcg-prpqlmg1
+        :type DirectConnectGatewayId: str
+        :param Routes: 需要连通的IDC网段列表
+        :type Routes: list of DirectConnectGatewayCcnRoute
+        """
+        self.DirectConnectGatewayId = None
+        self.Routes = None
+
+
+    def _deserialize(self, params):
+        self.DirectConnectGatewayId = params.get("DirectConnectGatewayId")
+        if params.get("Routes") is not None:
+            self.Routes = []
+            for item in params.get("Routes"):
+                obj = DirectConnectGatewayCcnRoute()
+                obj._deserialize(item)
+                self.Routes.append(obj)
+
+
+class CreateDirectConnectGatewayCcnRoutesResponse(AbstractModel):
+    """CreateDirectConnectGatewayCcnRoutes返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class CreateDirectConnectGatewayRequest(AbstractModel):
+    """CreateDirectConnectGateway请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param DirectConnectGatewayName: 专线网关名称
+        :type DirectConnectGatewayName: str
+        :param NetworkType: 关联网络类型，可选值：
+<li>VPC - 私有网络</li>
+<li>CCN - 云联网</li>
+        :type NetworkType: str
+        :param NetworkInstanceId: <li>NetworkType 为 VPC 时，这里传值为私有网络实例ID</li>
+<li>NetworkType 为 NAT 时，这里传值为云联网实例ID</li>
+        :type NetworkInstanceId: str
+        :param GatewayType: 网关类型，可选值：
+<li>NORMAL - （默认）标准型，注：云联网只支持标准型</li>
+<li>NAT - NAT型</li>NAT类型支持网络地址转换配置，类型确定后不能修改；一个私有网络可以创建一个NAT类型的专线网关和一个非NAT类型的专线网关
+        :type GatewayType: str
+        """
+        self.DirectConnectGatewayName = None
+        self.NetworkType = None
+        self.NetworkInstanceId = None
+        self.GatewayType = None
+
+
+    def _deserialize(self, params):
+        self.DirectConnectGatewayName = params.get("DirectConnectGatewayName")
+        self.NetworkType = params.get("NetworkType")
+        self.NetworkInstanceId = params.get("NetworkInstanceId")
+        self.GatewayType = params.get("GatewayType")
+
+
+class CreateDirectConnectGatewayResponse(AbstractModel):
+    """CreateDirectConnectGateway返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param DirectConnectGateway: 专线网关对象。
+        :type DirectConnectGateway: :class:`tencentcloud.vpc.v20170312.models.DirectConnectGateway`
+        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :type RequestId: str
+        """
+        self.DirectConnectGateway = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("DirectConnectGateway") is not None:
+            self.DirectConnectGateway = DirectConnectGateway()
+            self.DirectConnectGateway._deserialize(params.get("DirectConnectGateway"))
         self.RequestId = params.get("RequestId")
 
 
@@ -1263,6 +1781,74 @@ class DeleteAddressTemplateResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DeleteBandwidthPackageRequest(AbstractModel):
+    """DeleteBandwidthPackage请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param BandwidthPackageId: 待删除带宽包bwpId
+        :type BandwidthPackageId: str
+        """
+        self.BandwidthPackageId = None
+
+
+    def _deserialize(self, params):
+        self.BandwidthPackageId = params.get("BandwidthPackageId")
+
+
+class DeleteBandwidthPackageResponse(AbstractModel):
+    """DeleteBandwidthPackage返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class DeleteCcnRequest(AbstractModel):
+    """DeleteCcn请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param CcnId: CCN实例ID。形如：ccn-f49l6u0z。
+        :type CcnId: str
+        """
+        self.CcnId = None
+
+
+    def _deserialize(self, params):
+        self.CcnId = params.get("CcnId")
+
+
+class DeleteCcnResponse(AbstractModel):
+    """DeleteCcn返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class DeleteCustomerGatewayRequest(AbstractModel):
     """DeleteCustomerGateway请求参数结构体
 
@@ -1282,6 +1868,44 @@ class DeleteCustomerGatewayRequest(AbstractModel):
 
 class DeleteCustomerGatewayResponse(AbstractModel):
     """DeleteCustomerGateway返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class DeleteDirectConnectGatewayCcnRoutesRequest(AbstractModel):
+    """DeleteDirectConnectGatewayCcnRoutes请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param DirectConnectGatewayId: 专线网关ID，形如：dcg-prpqlmg1
+        :type DirectConnectGatewayId: str
+        :param RouteIds: 路由ID。形如：ccnr-f49l6u0z。
+        :type RouteIds: list of str
+        """
+        self.DirectConnectGatewayId = None
+        self.RouteIds = None
+
+
+    def _deserialize(self, params):
+        self.DirectConnectGatewayId = params.get("DirectConnectGatewayId")
+        self.RouteIds = params.get("RouteIds")
+
+
+class DeleteDirectConnectGatewayCcnRoutesResponse(AbstractModel):
+    """DeleteDirectConnectGatewayCcnRoutes返回参数结构体
 
     """
 
@@ -1950,6 +2574,349 @@ class DescribeAddressesResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeBandwidthPackageQuotaRequest(AbstractModel):
+    """DescribeBandwidthPackageQuota请求参数结构体
+
+    """
+
+
+class DescribeBandwidthPackageQuotaResponse(AbstractModel):
+    """DescribeBandwidthPackageQuota返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param QuotaSet: 带宽包配额数据结构
+        :type QuotaSet: list of Quota
+        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :type RequestId: str
+        """
+        self.QuotaSet = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("QuotaSet") is not None:
+            self.QuotaSet = []
+            for item in params.get("QuotaSet"):
+                obj = Quota()
+                obj._deserialize(item)
+                self.QuotaSet.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeBandwidthPackagesRequest(AbstractModel):
+    """DescribeBandwidthPackages请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param BandwidthPackageIds: 带宽包Id，支持批量
+        :type BandwidthPackageIds: list of str
+        :param Filters: 每次请求的`Filters`的上限为10。参数不支持同时指定`BandwidthPackageIds`和`Filters`。详细的过滤条件如下：
+<li> bandwidth-package_id - String - 是否必填：否 - （过滤条件）按照带宽包的唯一标识ID过滤。</li>
+<li> bandwidth-package-name - String - 是否必填：否 - （过滤条件）按照 带宽包名称过滤。不支持模糊过滤。</li>
+<li> network-type - String - 是否必填：否 - （过滤条件）按照带宽包的类型过滤。类型包括'BGP','SINGLEISP'和'ANYCAST'。</li>
+<li> charge-type - String - 是否必填：否 - （过滤条件）按照带宽包的计费类型过滤。计费类型包括'TOP5_POSTPAID_BY_MONTH'和'PERCENT95_POSTPAID_BY_MONTH'</li>
+<li> resource.resource-type - String - 是否必填：否 - （过滤条件）按照带宽包资源类型过滤。资源类型包括'Address'和'LoadBalance'</li>
+<li> resource.resource-id - String - 是否必填：否 - （过滤条件）按照带宽包资源Id过滤。资源Id形如'eip-xxxx','lb-xxxx'</li>
+<li> resource.address-ip - String - 是否必填：否 - （过滤条件）按照带宽包资源Ip过滤。</li>
+        :type Filters: list of Filter
+        :param Offset: 查询带宽包偏移量
+        :type Offset: int
+        :param Limit: 查询带宽包数量限制
+        :type Limit: int
+        """
+        self.BandwidthPackageIds = None
+        self.Filters = None
+        self.Offset = None
+        self.Limit = None
+
+
+    def _deserialize(self, params):
+        self.BandwidthPackageIds = params.get("BandwidthPackageIds")
+        if params.get("Filters") is not None:
+            self.Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self.Filters.append(obj)
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+
+
+class DescribeBandwidthPackagesResponse(AbstractModel):
+    """DescribeBandwidthPackages返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param TotalCount: 符合条件的带宽包数量
+        :type TotalCount: int
+        :param BandwidthPackageSet: 描述带宽包详细信息
+        :type BandwidthPackageSet: list of BandwidthPackage
+        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.BandwidthPackageSet = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("BandwidthPackageSet") is not None:
+            self.BandwidthPackageSet = []
+            for item in params.get("BandwidthPackageSet"):
+                obj = BandwidthPackage()
+                obj._deserialize(item)
+                self.BandwidthPackageSet.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeCcnAttachedInstancesRequest(AbstractModel):
+    """DescribeCcnAttachedInstances请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param CcnId: CCN实例ID。形如：ccn-f49l6u0z。
+        :type CcnId: str
+        :param Offset: 偏移量
+        :type Offset: int
+        :param Limit: 返回数量
+        :type Limit: int
+        """
+        self.CcnId = None
+        self.Offset = None
+        self.Limit = None
+
+
+    def _deserialize(self, params):
+        self.CcnId = params.get("CcnId")
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+
+
+class DescribeCcnAttachedInstancesResponse(AbstractModel):
+    """DescribeCcnAttachedInstances返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param TotalCount: 符合条件的对象数。
+        :type TotalCount: int
+        :param InstanceSet: 关联实例列表
+        :type InstanceSet: list of CcnInstance
+        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.InstanceSet = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("InstanceSet") is not None:
+            self.InstanceSet = []
+            for item in params.get("InstanceSet"):
+                obj = CcnInstance()
+                obj._deserialize(item)
+                self.InstanceSet.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeCcnRegionBandwidthLimitsRequest(AbstractModel):
+    """DescribeCcnRegionBandwidthLimits请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param CcnId: CCN实例ID。形如：ccn-f49l6u0z。
+        :type CcnId: str
+        """
+        self.CcnId = None
+
+
+    def _deserialize(self, params):
+        self.CcnId = params.get("CcnId")
+
+
+class DescribeCcnRegionBandwidthLimitsResponse(AbstractModel):
+    """DescribeCcnRegionBandwidthLimits返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param CcnRegionBandwidthLimitSet: 云联网（CCN）各地域出带宽上限
+        :type CcnRegionBandwidthLimitSet: list of CcnRegionBandwidthLimit
+        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :type RequestId: str
+        """
+        self.CcnRegionBandwidthLimitSet = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("CcnRegionBandwidthLimitSet") is not None:
+            self.CcnRegionBandwidthLimitSet = []
+            for item in params.get("CcnRegionBandwidthLimitSet"):
+                obj = CcnRegionBandwidthLimit()
+                obj._deserialize(item)
+                self.CcnRegionBandwidthLimitSet.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeCcnRoutesRequest(AbstractModel):
+    """DescribeCcnRoutes请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param CcnId: CCN实例ID，形如：ccn-gree226l。
+        :type CcnId: str
+        :param RouteIds: CCN路由策略唯一ID。形如：ccnr-f49l6u0z。
+        :type RouteIds: list of str
+        :param Filters: 过滤条件，参数不支持同时指定RouteIds和Filters。
+<li>ccn-id - String -（过滤条件）CCN实例ID。</li>
+<li>route-id - String -（过滤条件）路由策略ID。</li>
+<li>cidr-block - String -（过滤条件）目的端。</li>
+<li>instance-type - String -（过滤条件）下一跳类型。</li>
+<li>instance-region - String -（过滤条件）下一跳所属地域。</li>
+<li>instance-id - String -（过滤条件）下一跳实例ID。</li>
+        :type Filters: list of Filter
+        :param Offset: 偏移量
+        :type Offset: int
+        :param Limit: 返回数量
+        :type Limit: int
+        """
+        self.CcnId = None
+        self.RouteIds = None
+        self.Filters = None
+        self.Offset = None
+        self.Limit = None
+
+
+    def _deserialize(self, params):
+        self.CcnId = params.get("CcnId")
+        self.RouteIds = params.get("RouteIds")
+        if params.get("Filters") is not None:
+            self.Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self.Filters.append(obj)
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+
+
+class DescribeCcnRoutesResponse(AbstractModel):
+    """DescribeCcnRoutes返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param TotalCount: 符合条件的对象数。
+        :type TotalCount: int
+        :param RouteSet: CCN路由策略对象。
+        :type RouteSet: list of CcnRoute
+        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.RouteSet = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("RouteSet") is not None:
+            self.RouteSet = []
+            for item in params.get("RouteSet"):
+                obj = CcnRoute()
+                obj._deserialize(item)
+                self.RouteSet.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeCcnsRequest(AbstractModel):
+    """DescribeCcns请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param CcnIds: CCN实例ID。形如：ccn-f49l6u0z。每次请求的实例的上限为100。参数不支持同时指定CcnIds和Filters。
+        :type CcnIds: list of str
+        :param Filters: 过滤条件，参数不支持同时指定CcnIds和Filters。
+<li>ccn-id - String - （过滤条件）CCN唯一ID，形如：vpc-f49l6u0z。</li>
+<li>ccn-name - String - （过滤条件）CCN名称。</li>
+<li>ccn-description - String - （过滤条件）CCN描述。</li>
+<li>state - String - （过滤条件）实例状态， 'ISOLATED': 隔离中（欠费停服），'AVAILABLE'：运行中。</li>
+        :type Filters: list of Filter
+        :param Offset: 偏移量
+        :type Offset: int
+        :param Limit: 返回数量
+        :type Limit: int
+        """
+        self.CcnIds = None
+        self.Filters = None
+        self.Offset = None
+        self.Limit = None
+
+
+    def _deserialize(self, params):
+        self.CcnIds = params.get("CcnIds")
+        if params.get("Filters") is not None:
+            self.Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self.Filters.append(obj)
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+
+
+class DescribeCcnsResponse(AbstractModel):
+    """DescribeCcns返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param TotalCount: 符合条件的对象数。
+        :type TotalCount: int
+        :param CcnSet: CCN对象。
+        :type CcnSet: list of CCN
+        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.CcnSet = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("CcnSet") is not None:
+            self.CcnSet = []
+            for item in params.get("CcnSet"):
+                obj = CCN()
+                obj._deserialize(item)
+                self.CcnSet.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeClassicLinkInstancesRequest(AbstractModel):
     """DescribeClassicLinkInstances请求参数结构体
 
@@ -2108,6 +3075,53 @@ class DescribeCustomerGatewaysResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeDirectConnectGatewayCcnRoutesRequest(AbstractModel):
+    """DescribeDirectConnectGatewayCcnRoutes请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param DirectConnectGatewayId: 专线网关ID，形如：dcg-prpqlmg1
+        :type DirectConnectGatewayId: str
+        """
+        self.DirectConnectGatewayId = None
+
+
+    def _deserialize(self, params):
+        self.DirectConnectGatewayId = params.get("DirectConnectGatewayId")
+
+
+class DescribeDirectConnectGatewayCcnRoutesResponse(AbstractModel):
+    """DescribeDirectConnectGatewayCcnRoutes返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param TotalCount: 符合条件的对象数。
+        :type TotalCount: int
+        :param RouteSet: 云联网路由（IDC网段）列表。
+        :type RouteSet: list of DirectConnectGatewayCcnRoute
+        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.RouteSet = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("RouteSet") is not None:
+            self.RouteSet = []
+            for item in params.get("RouteSet"):
+                obj = DirectConnectGatewayCcnRoute()
+                obj._deserialize(item)
+                self.RouteSet.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeNetworkInterfacesRequest(AbstractModel):
     """DescribeNetworkInterfaces请求参数结构体
 
@@ -2176,6 +3190,53 @@ class DescribeNetworkInterfacesResponse(AbstractModel):
                 obj._deserialize(item)
                 self.NetworkInterfaceSet.append(obj)
         self.TotalCount = params.get("TotalCount")
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeRouteConflictsRequest(AbstractModel):
+    """DescribeRouteConflicts请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RouteTableId: 路由表实例ID，例如：rtb-azd4dt1c。
+        :type RouteTableId: str
+        :param DestinationCidrBlocks: 要检查的与之冲突的目的端列表
+        :type DestinationCidrBlocks: list of str
+        """
+        self.RouteTableId = None
+        self.DestinationCidrBlocks = None
+
+
+    def _deserialize(self, params):
+        self.RouteTableId = params.get("RouteTableId")
+        self.DestinationCidrBlocks = params.get("DestinationCidrBlocks")
+
+
+class DescribeRouteConflictsResponse(AbstractModel):
+    """DescribeRouteConflicts返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RouteConflictSet: 路由策略冲突列表
+        :type RouteConflictSet: list of RouteConflict
+        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :type RequestId: str
+        """
+        self.RouteConflictSet = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("RouteConflictSet") is not None:
+            self.RouteConflictSet = []
+            for item in params.get("RouteConflictSet"):
+                obj = RouteConflict()
+                obj._deserialize(item)
+                self.RouteConflictSet.append(obj)
         self.RequestId = params.get("RequestId")
 
 
@@ -2786,6 +3847,49 @@ class DescribeVpnGatewaysResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DetachCcnInstancesRequest(AbstractModel):
+    """DetachCcnInstances请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param CcnId: CCN实例ID。形如：ccn-f49l6u0z。
+        :type CcnId: str
+        :param Instances: 要解关联网络实例列表
+        :type Instances: list of CcnInstance
+        """
+        self.CcnId = None
+        self.Instances = None
+
+
+    def _deserialize(self, params):
+        self.CcnId = params.get("CcnId")
+        if params.get("Instances") is not None:
+            self.Instances = []
+            for item in params.get("Instances"):
+                obj = CcnInstance()
+                obj._deserialize(item)
+                self.Instances.append(obj)
+
+
+class DetachCcnInstancesResponse(AbstractModel):
+    """DetachCcnInstances返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class DetachClassicLinkVpcRequest(AbstractModel):
     """DetachClassicLinkVpc请求参数结构体
 
@@ -2847,6 +3951,153 @@ class DetachNetworkInterfaceRequest(AbstractModel):
 
 class DetachNetworkInterfaceResponse(AbstractModel):
     """DetachNetworkInterface返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class DirectConnectGateway(AbstractModel):
+    """专线网关对象。
+
+    """
+
+    def __init__(self):
+        """
+        :param DirectConnectGatewayId: 专线网关ID
+        :type DirectConnectGatewayId: str
+        :param DirectConnectGatewayName: 专线网关名称
+        :type DirectConnectGatewayName: str
+        :param VpcId: VPC实例ID
+        :type VpcId: str
+        :param NetworkType: 关联网络类型，可选值：
+<li>VPC - 私有网络</li>
+<li>CCN - 云联网</li>
+        :type NetworkType: str
+        :param NetworkInstanceId: <li>NetworkType 为 VPC 时，这里传值为私有网络实例ID</li>
+<li>NetworkType 为 NAT 时，这里传值为云联网实例ID</li>
+        :type NetworkInstanceId: str
+        :param GatewayType: 网关类型，可选值：
+<li>NORMAL - （默认）标准型，注：云联网只支持标准型</li>
+<li>NAT - NAT型</li>NAT类型支持网络地址转换配置，类型确定后不能修改；一个私有网络可以创建一个NAT类型的专线网关和一个非NAT类型的专线网关
+        :type GatewayType: str
+        :param DirectConnectTunnelCount: 专线通道数
+        :type DirectConnectTunnelCount: int
+        :param CreateTime: 创建时间
+        :type CreateTime: str
+        """
+        self.DirectConnectGatewayId = None
+        self.DirectConnectGatewayName = None
+        self.VpcId = None
+        self.NetworkType = None
+        self.NetworkInstanceId = None
+        self.GatewayType = None
+        self.DirectConnectTunnelCount = None
+        self.CreateTime = None
+
+
+    def _deserialize(self, params):
+        self.DirectConnectGatewayId = params.get("DirectConnectGatewayId")
+        self.DirectConnectGatewayName = params.get("DirectConnectGatewayName")
+        self.VpcId = params.get("VpcId")
+        self.NetworkType = params.get("NetworkType")
+        self.NetworkInstanceId = params.get("NetworkInstanceId")
+        self.GatewayType = params.get("GatewayType")
+        self.DirectConnectTunnelCount = params.get("DirectConnectTunnelCount")
+        self.CreateTime = params.get("CreateTime")
+
+
+class DirectConnectGatewayCcnRoute(AbstractModel):
+    """专线网关云联网路由（IDC网段）对象
+
+    """
+
+    def __init__(self):
+        """
+        :param RouteId: 路由ID
+        :type RouteId: str
+        :param DestinationCidrBlock: IDC网段
+        :type DestinationCidrBlock: str
+        """
+        self.RouteId = None
+        self.DestinationCidrBlock = None
+
+
+    def _deserialize(self, params):
+        self.RouteId = params.get("RouteId")
+        self.DestinationCidrBlock = params.get("DestinationCidrBlock")
+
+
+class DisableCcnRoutesRequest(AbstractModel):
+    """DisableCcnRoutes请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param CcnId: CCN实例ID。形如：ccn-f49l6u0z。
+        :type CcnId: str
+        :param RouteIds: CCN路由策略唯一ID。形如：ccnr-f49l6u0z。
+        :type RouteIds: list of str
+        """
+        self.CcnId = None
+        self.RouteIds = None
+
+
+    def _deserialize(self, params):
+        self.CcnId = params.get("CcnId")
+        self.RouteIds = params.get("RouteIds")
+
+
+class DisableCcnRoutesResponse(AbstractModel):
+    """DisableCcnRoutes返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class DisableRoutesRequest(AbstractModel):
+    """DisableRoutes请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RouteTableId: 路由表唯一ID。
+        :type RouteTableId: str
+        :param RouteIds: 路由策略唯一ID。
+        :type RouteIds: list of int non-negative
+        """
+        self.RouteTableId = None
+        self.RouteIds = None
+
+
+    def _deserialize(self, params):
+        self.RouteTableId = params.get("RouteTableId")
+        self.RouteIds = params.get("RouteIds")
+
+
+class DisableRoutesResponse(AbstractModel):
+    """DisableRoutes返回参数结构体
 
     """
 
@@ -2949,6 +4200,82 @@ class DownloadCustomerGatewayConfigurationResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.CustomerGatewayConfiguration = params.get("CustomerGatewayConfiguration")
+        self.RequestId = params.get("RequestId")
+
+
+class EnableCcnRoutesRequest(AbstractModel):
+    """EnableCcnRoutes请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param CcnId: CCN实例ID。形如：ccn-f49l6u0z。
+        :type CcnId: str
+        :param RouteIds: CCN路由策略唯一ID。形如：ccnr-f49l6u0z。
+        :type RouteIds: list of str
+        """
+        self.CcnId = None
+        self.RouteIds = None
+
+
+    def _deserialize(self, params):
+        self.CcnId = params.get("CcnId")
+        self.RouteIds = params.get("RouteIds")
+
+
+class EnableCcnRoutesResponse(AbstractModel):
+    """EnableCcnRoutes返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class EnableRoutesRequest(AbstractModel):
+    """EnableRoutes请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RouteTableId: 路由表唯一ID。
+        :type RouteTableId: str
+        :param RouteIds: 路由策略唯一ID。
+        :type RouteIds: list of int non-negative
+        """
+        self.RouteTableId = None
+        self.RouteIds = None
+
+
+    def _deserialize(self, params):
+        self.RouteTableId = params.get("RouteTableId")
+        self.RouteIds = params.get("RouteIds")
+
+
+class EnableRoutesResponse(AbstractModel):
+    """EnableRoutes返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
 
 
@@ -3469,6 +4796,132 @@ class ModifyAddressTemplateGroupAttributeRequest(AbstractModel):
 
 class ModifyAddressTemplateGroupAttributeResponse(AbstractModel):
     """ModifyAddressTemplateGroupAttribute返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class ModifyAddressesBandwidthRequest(AbstractModel):
+    """ModifyAddressesBandwidth请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param AddressIds: EIP唯一标识id，形如'eip-xxxx'
+        :type AddressIds: list of str
+        :param InternetMaxBandwidthOut: 调整带宽目标值
+        :type InternetMaxBandwidthOut: int
+        :param StartTime: 包月带宽起始时间
+        :type StartTime: str
+        :param EndTime: 包月带宽结束时间
+        :type EndTime: str
+        """
+        self.AddressIds = None
+        self.InternetMaxBandwidthOut = None
+        self.StartTime = None
+        self.EndTime = None
+
+
+    def _deserialize(self, params):
+        self.AddressIds = params.get("AddressIds")
+        self.InternetMaxBandwidthOut = params.get("InternetMaxBandwidthOut")
+        self.StartTime = params.get("StartTime")
+        self.EndTime = params.get("EndTime")
+
+
+class ModifyAddressesBandwidthResponse(AbstractModel):
+    """ModifyAddressesBandwidth返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class ModifyBandwidthPackageAttributeRequest(AbstractModel):
+    """ModifyBandwidthPackageAttribute请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param BandwidthPackageId: 带宽包唯一标识ID
+        :type BandwidthPackageId: str
+        :param BandwidthPackageName: 带宽包名称
+        :type BandwidthPackageName: str
+        """
+        self.BandwidthPackageId = None
+        self.BandwidthPackageName = None
+
+
+    def _deserialize(self, params):
+        self.BandwidthPackageId = params.get("BandwidthPackageId")
+        self.BandwidthPackageName = params.get("BandwidthPackageName")
+
+
+class ModifyBandwidthPackageAttributeResponse(AbstractModel):
+    """ModifyBandwidthPackageAttribute返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class ModifyCcnAttributeRequest(AbstractModel):
+    """ModifyCcnAttribute请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param CcnId: CCN实例ID。形如：ccn-f49l6u0z。
+        :type CcnId: str
+        :param CcnName: CCN名称，最大长度不能超过60个字节。
+        :type CcnName: str
+        :param CcnDescription: CCN描述信息，最大长度不能超过100个字节。
+        :type CcnDescription: str
+        """
+        self.CcnId = None
+        self.CcnName = None
+        self.CcnDescription = None
+
+
+    def _deserialize(self, params):
+        self.CcnId = params.get("CcnId")
+        self.CcnName = params.get("CcnName")
+        self.CcnDescription = params.get("CcnDescription")
+
+
+class ModifyCcnAttributeResponse(AbstractModel):
+    """ModifyCcnAttribute返回参数结构体
 
     """
 
@@ -4157,6 +5610,12 @@ class PrivateIpAddressSpecification(AbstractModel):
         :type Description: str
         :param IsWanIpBlocked: 公网IP是否被封堵。
         :type IsWanIpBlocked: bool
+        :param State: IP状态：
+PENDING：生产中
+MIGRATING：迁移中
+DELETING：删除中
+AVAILABLE：可用的
+        :type State: str
         """
         self.PrivateIpAddress = None
         self.Primary = None
@@ -4164,6 +5623,7 @@ class PrivateIpAddressSpecification(AbstractModel):
         self.AddressId = None
         self.Description = None
         self.IsWanIpBlocked = None
+        self.State = None
 
 
     def _deserialize(self, params):
@@ -4173,6 +5633,7 @@ class PrivateIpAddressSpecification(AbstractModel):
         self.AddressId = params.get("AddressId")
         self.Description = params.get("Description")
         self.IsWanIpBlocked = params.get("IsWanIpBlocked")
+        self.State = params.get("State")
 
 
 class Quota(AbstractModel):
@@ -4234,6 +5695,48 @@ class ReleaseAddressesResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class RemoveBandwidthPackageResourcesRequest(AbstractModel):
+    """RemoveBandwidthPackageResources请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param BandwidthPackageId: 带宽包唯一标识ID，形如'bwp-xxxx'
+        :type BandwidthPackageId: str
+        :param ResourceType: 资源类型，包括‘Address’, ‘LoadBalance’
+        :type ResourceType: str
+        :param ResourceIds: 资源Id，形如'eip-xxxx', 'lb-xxxx'
+        :type ResourceIds: list of str
+        """
+        self.BandwidthPackageId = None
+        self.ResourceType = None
+        self.ResourceIds = None
+
+
+    def _deserialize(self, params):
+        self.BandwidthPackageId = params.get("BandwidthPackageId")
+        self.ResourceType = params.get("ResourceType")
+        self.ResourceIds = params.get("ResourceIds")
+
+
+class RemoveBandwidthPackageResourcesResponse(AbstractModel):
+    """RemoveBandwidthPackageResources返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class RenewVpnGatewayRequest(AbstractModel):
     """RenewVpnGateway请求参数结构体
 
@@ -4259,6 +5762,49 @@ class RenewVpnGatewayRequest(AbstractModel):
 
 class RenewVpnGatewayResponse(AbstractModel):
     """RenewVpnGateway返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class ReplaceDirectConnectGatewayCcnRoutesRequest(AbstractModel):
+    """ReplaceDirectConnectGatewayCcnRoutes请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param DirectConnectGatewayId: 专线网关ID，形如：dcg-prpqlmg1
+        :type DirectConnectGatewayId: str
+        :param Routes: 需要连通的IDC网段列表
+        :type Routes: list of DirectConnectGatewayCcnRoute
+        """
+        self.DirectConnectGatewayId = None
+        self.Routes = None
+
+
+    def _deserialize(self, params):
+        self.DirectConnectGatewayId = params.get("DirectConnectGatewayId")
+        if params.get("Routes") is not None:
+            self.Routes = []
+            for item in params.get("Routes"):
+                obj = DirectConnectGatewayCcnRoute()
+                obj._deserialize(item)
+                self.Routes.append(obj)
+
+
+class ReplaceDirectConnectGatewayCcnRoutesResponse(AbstractModel):
+    """ReplaceDirectConnectGatewayCcnRoutes返回参数结构体
 
     """
 
@@ -4518,6 +6064,31 @@ class ResetVpnGatewayInternetMaxBandwidthResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class Resource(AbstractModel):
+    """描述带宽包资源信息的结构
+
+    """
+
+    def __init__(self):
+        """
+        :param ResourceType: 带宽包资源类型，包括'Address'和'LoadBalance'
+        :type ResourceType: str
+        :param ResourceId: 带宽包资源Id，形如'eip-xxxx', 'lb-xxxx'
+        :type ResourceId: str
+        :param AddressIp: 带宽包资源Ip
+        :type AddressIp: str
+        """
+        self.ResourceType = None
+        self.ResourceId = None
+        self.AddressIp = None
+
+
+    def _deserialize(self, params):
+        self.ResourceType = params.get("ResourceType")
+        self.ResourceId = params.get("ResourceId")
+        self.AddressIp = params.get("AddressIp")
+
+
 class Route(AbstractModel):
     """路由策略对象
 
@@ -4527,9 +6098,19 @@ class Route(AbstractModel):
         """
         :param DestinationCidrBlock: 目的网段，取值不能在私有网络网段内，例如：112.20.51.0/24。
         :type DestinationCidrBlock: str
-        :param GatewayType: 下一跳类型，目前我们支持的类型有：CVM：公网网关类型的云主机；VPN：vpn网关； DIRECTCONNECT：专线网关；PEERCONNECTION：对等连接；SSLVPN：sslvpn网关；NAT：nat网关; NORMAL_CVM：普通云主机。
+        :param GatewayType: 下一跳类型，目前我们支持的类型有：
+CVM：公网网关类型的云主机；
+VPN：VPN网关；
+DIRECTCONNECT：专线网关；
+PEERCONNECTION：对等连接；
+SSLVPN：sslvpn网关；
+NAT：NAT网关; 
+NORMAL_CVM：普通云主机；
+EIP：云主机的公网IP；
+CCN：云联网。
         :type GatewayType: str
         :param GatewayId: 下一跳地址，这里只需要指定不同下一跳类型的网关ID，系统会自动匹配到下一跳地址。
+特别注意：当 GatewayType 为 EIP 时，GatewayId 固定值 '0'
         :type GatewayId: str
         :param RouteId: 路由策略ID。
         :type RouteId: int
@@ -4537,6 +6118,12 @@ class Route(AbstractModel):
         :type RouteDescription: str
         :param Enabled: 是否启用
         :type Enabled: bool
+        :param RouteType: 路由类型，目前我们支持的类型有：
+USER：用户路由；
+NETD：网络探测路由，创建网络探测实例时，系统默认下发，不可编辑与删除；
+CCN：云联网路由，系统默认下发，不可编辑与删除。
+用户只能添加和操作 USER 类型的路由。
+        :type RouteType: str
         """
         self.DestinationCidrBlock = None
         self.GatewayType = None
@@ -4544,6 +6131,7 @@ class Route(AbstractModel):
         self.RouteId = None
         self.RouteDescription = None
         self.Enabled = None
+        self.RouteType = None
 
 
     def _deserialize(self, params):
@@ -4553,6 +6141,37 @@ class Route(AbstractModel):
         self.RouteId = params.get("RouteId")
         self.RouteDescription = params.get("RouteDescription")
         self.Enabled = params.get("Enabled")
+        self.RouteType = params.get("RouteType")
+
+
+class RouteConflict(AbstractModel):
+    """路由冲突对象
+
+    """
+
+    def __init__(self):
+        """
+        :param RouteTableId: 路由表实例ID，例如：rtb-azd4dt1c。
+        :type RouteTableId: str
+        :param DestinationCidrBlock: 要检查的与之冲突的目的端
+        :type DestinationCidrBlock: str
+        :param ConflictSet: 冲突的路由策略列表
+        :type ConflictSet: list of Route
+        """
+        self.RouteTableId = None
+        self.DestinationCidrBlock = None
+        self.ConflictSet = None
+
+
+    def _deserialize(self, params):
+        self.RouteTableId = params.get("RouteTableId")
+        self.DestinationCidrBlock = params.get("DestinationCidrBlock")
+        if params.get("ConflictSet") is not None:
+            self.ConflictSet = []
+            for item in params.get("ConflictSet"):
+                obj = Route()
+                obj._deserialize(item)
+                self.ConflictSet.append(obj)
 
 
 class RouteTable(AbstractModel):
@@ -4715,13 +6334,13 @@ class SecurityGroupPolicy(AbstractModel):
         :param Port: 端口(all, 离散port,  range)。
         :type Port: str
         :param ServiceTemplate: 协议端口ID或者协议端口组ID。ServiceTemplate和Protocol+Port互斥。
-        :type ServiceTemplate: list of str
+        :type ServiceTemplate: :class:`tencentcloud.vpc.v20170312.models.ServiceTemplateSpecification`
         :param CidrBlock: 网段或IP(互斥)。
         :type CidrBlock: str
         :param SecurityGroupId: 已绑定安全组的网段或IP。
         :type SecurityGroupId: str
         :param AddressTemplate: IP地址ID或者ID地址组ID。
-        :type AddressTemplate: str
+        :type AddressTemplate: :class:`tencentcloud.vpc.v20170312.models.AddressTemplateSpecification`
         :param Action: ACCEPT 或 DROP。
         :type Action: str
         :param PolicyDescription: 安全组规则描述。
@@ -4742,10 +6361,14 @@ class SecurityGroupPolicy(AbstractModel):
         self.PolicyIndex = params.get("PolicyIndex")
         self.Protocol = params.get("Protocol")
         self.Port = params.get("Port")
-        self.ServiceTemplate = params.get("ServiceTemplate")
+        if params.get("ServiceTemplate") is not None:
+            self.ServiceTemplate = ServiceTemplateSpecification()
+            self.ServiceTemplate._deserialize(params.get("ServiceTemplate"))
         self.CidrBlock = params.get("CidrBlock")
         self.SecurityGroupId = params.get("SecurityGroupId")
-        self.AddressTemplate = params.get("AddressTemplate")
+        if params.get("AddressTemplate") is not None:
+            self.AddressTemplate = AddressTemplateSpecification()
+            self.AddressTemplate._deserialize(params.get("AddressTemplate"))
         self.Action = params.get("Action")
         self.PolicyDescription = params.get("PolicyDescription")
 
@@ -4862,6 +6485,70 @@ class ServiceTemplateGroup(AbstractModel):
         self.ServiceTemplateGroupName = params.get("ServiceTemplateGroupName")
         self.ServiceTemplateIdSet = params.get("ServiceTemplateIdSet")
         self.CreatedTime = params.get("CreatedTime")
+
+
+class ServiceTemplateSpecification(AbstractModel):
+    """协议端口模版
+
+    """
+
+    def __init__(self):
+        """
+        :param ServiceId: 协议端口ID，例如：ppm-f5n1f8da。
+        :type ServiceId: str
+        :param ServiceGroupId: 协议端口组ID，例如：ppmg-f5n1f8da。
+        :type ServiceGroupId: str
+        """
+        self.ServiceId = None
+        self.ServiceGroupId = None
+
+
+    def _deserialize(self, params):
+        self.ServiceId = params.get("ServiceId")
+        self.ServiceGroupId = params.get("ServiceGroupId")
+
+
+class SetCcnRegionBandwidthLimitsRequest(AbstractModel):
+    """SetCcnRegionBandwidthLimits请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param CcnId: CCN实例ID。形如：ccn-f49l6u0z。
+        :type CcnId: str
+        :param CcnRegionBandwidthLimits: 云联网（CCN）各地域出带宽上限。
+        :type CcnRegionBandwidthLimits: list of CcnRegionBandwidthLimit
+        """
+        self.CcnId = None
+        self.CcnRegionBandwidthLimits = None
+
+
+    def _deserialize(self, params):
+        self.CcnId = params.get("CcnId")
+        if params.get("CcnRegionBandwidthLimits") is not None:
+            self.CcnRegionBandwidthLimits = []
+            for item in params.get("CcnRegionBandwidthLimits"):
+                obj = CcnRegionBandwidthLimit()
+                obj._deserialize(item)
+                self.CcnRegionBandwidthLimits.append(obj)
+
+
+class SetCcnRegionBandwidthLimitsResponse(AbstractModel):
+    """SetCcnRegionBandwidthLimits返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
 
 
 class Subnet(AbstractModel):

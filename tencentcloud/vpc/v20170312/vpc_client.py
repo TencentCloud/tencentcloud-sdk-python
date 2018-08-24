@@ -1,5 +1,5 @@
 # -*- coding: utf8 -*-
-# Copyright 1999-2017 Tencent Ltd.
+# Copyright (c) 2017-2018 THL A29 Limited, a Tencent company. All Rights Reserved.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -23,6 +23,34 @@ from tencentcloud.vpc.v20170312 import models
 class VpcClient(AbstractClient):
     _apiVersion = '2017-03-12'
     _endpoint = 'vpc.tencentcloudapi.com'
+
+
+    def AddBandwidthPackageResources(self, request):
+        """接口用于添加带宽包资源，包括[弹性公网IP](https://cloud.tencent.com/document/product/213/1941)和[负载均衡](https://cloud.tencent.com/document/product/214/517)等
+
+        :param request: 调用AddBandwidthPackageResources所需参数的结构体。
+        :type request: :class:`tencentcloud.vpc.v20170312.models.AddBandwidthPackageResourcesRequest`
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.AddBandwidthPackageResourcesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("AddBandwidthPackageResources", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.AddBandwidthPackageResourcesResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise e
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
 
 
     def AllocateAddresses(self, request):
@@ -106,6 +134,35 @@ class VpcClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.AssociateAddressResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise e
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def AttachCcnInstances(self, request):
+        """本接口（AttachCcnInstances）用于将网络实例加载到云联网实例中，网络实例包括VPC和专线网关。<br />
+        每个云联网能够关联的网络实例个数是有限的，详请参考产品文档。如果需要扩充请联系在线客服。
+
+        :param request: 调用AttachCcnInstances所需参数的结构体。
+        :type request: :class:`tencentcloud.vpc.v20170312.models.AttachCcnInstancesRequest`
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.AttachCcnInstancesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("AttachCcnInstances", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.AttachCcnInstancesResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -238,6 +295,63 @@ class VpcClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def CreateBandwidthPackage(self, request):
+        """接口支持创建[设备带宽包](https://cloud.tencent.com/document/product/684/15246#.E8.AE.BE.E5.A4.87.E5.B8.A6.E5.AE.BD.E5.8C.85)和[ip带宽包](https://cloud.tencent.com/document/product/684/15246#ip-.E5.B8.A6.E5.AE.BD.E5.8C.85)
+
+        :param request: 调用CreateBandwidthPackage所需参数的结构体。
+        :type request: :class:`tencentcloud.vpc.v20170312.models.CreateBandwidthPackageRequest`
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.CreateBandwidthPackageResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("CreateBandwidthPackage", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateBandwidthPackageResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise e
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def CreateCcn(self, request):
+        """本接口（CreateCcn）用于创建云联网（CCN）。<br />
+        每个账号能创建的云联网实例个数是有限的，详请参考产品文档。如果需要扩充请联系在线客服。
+
+        :param request: 调用CreateCcn所需参数的结构体。
+        :type request: :class:`tencentcloud.vpc.v20170312.models.CreateCcnRequest`
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.CreateCcnResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("CreateCcn", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateCcnResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise e
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def CreateCustomerGateway(self, request):
         """本接口（CreateCustomerGateway）用于创建对端网关。
 
@@ -288,6 +402,62 @@ class VpcClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateDefaultVpcResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise e
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def CreateDirectConnectGateway(self, request):
+        """本接口（CreateDirectConnectGateway）用于创建专线网关。
+
+        :param request: 调用CreateDirectConnectGateway所需参数的结构体。
+        :type request: :class:`tencentcloud.vpc.v20170312.models.CreateDirectConnectGatewayRequest`
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.CreateDirectConnectGatewayResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("CreateDirectConnectGateway", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateDirectConnectGatewayResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise e
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def CreateDirectConnectGatewayCcnRoutes(self, request):
+        """本接口（CreateDirectConnectGatewayCcnRoutes）用于创建专线网关的云联网路由（IDC网段）
+
+        :param request: 调用CreateDirectConnectGatewayCcnRoutes所需参数的结构体。
+        :type request: :class:`tencentcloud.vpc.v20170312.models.CreateDirectConnectGatewayCcnRoutesRequest`
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.CreateDirectConnectGatewayCcnRoutesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("CreateDirectConnectGatewayCcnRoutes", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateDirectConnectGatewayCcnRoutesResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -550,8 +720,6 @@ class VpcClient(AbstractClient):
     def CreateVpc(self, request):
         """本接口(CreateVpc)用于创建私有网络(VPC)。
         * 用户可以创建的最小网段子网掩码为28（有16个IP地址），最大网段子网掩码为16（65,536个IP地址）,如果规划VPC网段请参见VPC网段规划说明。
-        * 创建VPC时可同时把子网创建好，创建子网也请规划好子网网段及子网所在可用区，同一个VPC内子网网段不能重叠，不同可用区可以做跨可用区容灾，详见VPC可用区说明。
-        * 如果您同时创建了子网，系统会创建一个默认路由表，系统会把子网关联到这个默认路由表。
         * 同一个地域能创建的VPC资源个数也是有限制的，详见 <a href="https://cloud.tencent.com/doc/product/215/537" title="VPC使用限制">VPC使用限制</a>,如果需要扩充请联系在线客服。
 
         :param request: 调用CreateVpc所需参数的结构体。
@@ -691,6 +859,64 @@ class VpcClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DeleteBandwidthPackage(self, request):
+        """接口支持删除共享带宽包，包括[设备带宽包](https://cloud.tencent.com/document/product/684/15246#.E8.AE.BE.E5.A4.87.E5.B8.A6.E5.AE.BD.E5.8C.85)和[ip带宽包](https://cloud.tencent.com/document/product/684/15246#ip-.E5.B8.A6.E5.AE.BD.E5.8C.85)
+
+        :param request: 调用DeleteBandwidthPackage所需参数的结构体。
+        :type request: :class:`tencentcloud.vpc.v20170312.models.DeleteBandwidthPackageRequest`
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.DeleteBandwidthPackageResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DeleteBandwidthPackage", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DeleteBandwidthPackageResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise e
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DeleteCcn(self, request):
+        """本接口（DeleteCcn）用于删除云联网。
+        * 删除后，云联网关联的所有实例间路由将被删除，网络将会中断，请务必确认
+        * 删除云联网是不可逆的操作，请谨慎处理。
+
+        :param request: 调用DeleteCcn所需参数的结构体。
+        :type request: :class:`tencentcloud.vpc.v20170312.models.DeleteCcnRequest`
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.DeleteCcnResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DeleteCcn", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DeleteCcnResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise e
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DeleteCustomerGateway(self, request):
         """本接口（DeleteCustomerGateway）用于删除对端网关。
 
@@ -705,6 +931,34 @@ class VpcClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteCustomerGatewayResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise e
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DeleteDirectConnectGatewayCcnRoutes(self, request):
+        """本接口（DeleteDirectConnectGatewayCcnRoutes）用于删除专线网关的云联网路由（IDC网段）
+
+        :param request: 调用DeleteDirectConnectGatewayCcnRoutes所需参数的结构体。
+        :type request: :class:`tencentcloud.vpc.v20170312.models.DeleteDirectConnectGatewayCcnRoutesRequest`
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.DeleteDirectConnectGatewayCcnRoutesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DeleteDirectConnectGatewayCcnRoutes", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DeleteDirectConnectGatewayCcnRoutesResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -1177,6 +1431,174 @@ class VpcClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeBandwidthPackageQuota(self, request):
+        """接口用于查询账户在当前地域的带宽包上限数量以及使用数量
+
+        :param request: 调用DescribeBandwidthPackageQuota所需参数的结构体。
+        :type request: :class:`tencentcloud.vpc.v20170312.models.DescribeBandwidthPackageQuotaRequest`
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.DescribeBandwidthPackageQuotaResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeBandwidthPackageQuota", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeBandwidthPackageQuotaResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise e
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeBandwidthPackages(self, request):
+        """接口用于查询带宽包详细信息，包括带宽包唯一标识ID，类型，计费模式，名称，资源信息等
+
+        :param request: 调用DescribeBandwidthPackages所需参数的结构体。
+        :type request: :class:`tencentcloud.vpc.v20170312.models.DescribeBandwidthPackagesRequest`
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.DescribeBandwidthPackagesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeBandwidthPackages", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeBandwidthPackagesResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise e
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeCcnAttachedInstances(self, request):
+        """本接口（DescribeCcnAttachedInstances）用于查询云联网实例下已关联的网络实例。
+
+        :param request: 调用DescribeCcnAttachedInstances所需参数的结构体。
+        :type request: :class:`tencentcloud.vpc.v20170312.models.DescribeCcnAttachedInstancesRequest`
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.DescribeCcnAttachedInstancesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeCcnAttachedInstances", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeCcnAttachedInstancesResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise e
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeCcnRegionBandwidthLimits(self, request):
+        """本接口（DescribeCcnRegionBandwidthLimits）用于查询云联网各地域出带宽上限，该接口只返回已关联网络实例包含的地域
+
+        :param request: 调用DescribeCcnRegionBandwidthLimits所需参数的结构体。
+        :type request: :class:`tencentcloud.vpc.v20170312.models.DescribeCcnRegionBandwidthLimitsRequest`
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.DescribeCcnRegionBandwidthLimitsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeCcnRegionBandwidthLimits", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeCcnRegionBandwidthLimitsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise e
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeCcnRoutes(self, request):
+        """本接口（DescribeCcnRoutes）用于查询已加入云联网（CCN）的路由
+
+        :param request: 调用DescribeCcnRoutes所需参数的结构体。
+        :type request: :class:`tencentcloud.vpc.v20170312.models.DescribeCcnRoutesRequest`
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.DescribeCcnRoutesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeCcnRoutes", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeCcnRoutesResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise e
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeCcns(self, request):
+        """本接口（DescribeCcns）用于查询云联网（CCN）列表。
+
+        :param request: 调用DescribeCcns所需参数的结构体。
+        :type request: :class:`tencentcloud.vpc.v20170312.models.DescribeCcnsRequest`
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.DescribeCcnsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeCcns", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeCcnsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise e
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeClassicLinkInstances(self, request):
         """本接口(DescribeClassicLinkInstances)用于私有网络和基础网络设备互通。
 
@@ -1261,6 +1683,34 @@ class VpcClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeDirectConnectGatewayCcnRoutes(self, request):
+        """本接口（DescribeDirectConnectGatewayCcnRoutes）用于查询专线网关的云联网路由（IDC网段）
+
+        :param request: 调用DescribeDirectConnectGatewayCcnRoutes所需参数的结构体。
+        :type request: :class:`tencentcloud.vpc.v20170312.models.DescribeDirectConnectGatewayCcnRoutesRequest`
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.DescribeDirectConnectGatewayCcnRoutesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeDirectConnectGatewayCcnRoutes", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeDirectConnectGatewayCcnRoutesResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise e
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeNetworkInterfaces(self, request):
         """本接口（DescribeNetworkInterfaces）用于查询弹性网卡列表。
 
@@ -1275,6 +1725,34 @@ class VpcClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeNetworkInterfacesResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise e
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeRouteConflicts(self, request):
+        """本接口（DescribeRouteConflicts）用于查询自定义路由策略与云联网路由策略冲突列表
+
+        :param request: 调用DescribeRouteConflicts所需参数的结构体。
+        :type request: :class:`tencentcloud.vpc.v20170312.models.DescribeRouteConflictsRequest`
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.DescribeRouteConflictsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeRouteConflicts", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeRouteConflictsResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -1569,6 +2047,35 @@ class VpcClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DetachCcnInstances(self, request):
+        """本接口（DetachCcnInstances）用于从云联网实例中解关联指定的网络实例。<br />
+        解关联网络实例后，相应的路由策略会一并删除。
+
+        :param request: 调用DetachCcnInstances所需参数的结构体。
+        :type request: :class:`tencentcloud.vpc.v20170312.models.DetachCcnInstancesRequest`
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.DetachCcnInstancesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DetachCcnInstances", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DetachCcnInstancesResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise e
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DetachClassicLinkVpc(self, request):
         """本接口(DetachClassicLinkVpc)用于删除私有网络和基础网络设备互通。
 
@@ -1611,6 +2118,62 @@ class VpcClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DetachNetworkInterfaceResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise e
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DisableCcnRoutes(self, request):
+        """本接口（DisableCcnRoutes）用于禁用已经启用的云联网（CCN）路由
+
+        :param request: 调用DisableCcnRoutes所需参数的结构体。
+        :type request: :class:`tencentcloud.vpc.v20170312.models.DisableCcnRoutesRequest`
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.DisableCcnRoutesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DisableCcnRoutes", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DisableCcnRoutesResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise e
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DisableRoutes(self, request):
+        """本接口（DisableRoutes）用于禁用已启用的子网路由
+
+        :param request: 调用DisableRoutes所需参数的结构体。
+        :type request: :class:`tencentcloud.vpc.v20170312.models.DisableRoutesRequest`
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.DisableRoutesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DisableRoutes", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DisableRoutesResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -1669,6 +2232,64 @@ class VpcClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DownloadCustomerGatewayConfigurationResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise e
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def EnableCcnRoutes(self, request):
+        """本接口（EnableCcnRoutes）用于启用已经加入云联网（CCN）的路由。<br />
+        本接口会校验启用后，是否与已有路由冲突，如果冲突，则无法启用，失败处理。路由冲突时，需要先禁用与之冲突的路由，才能启用该路由。
+
+        :param request: 调用EnableCcnRoutes所需参数的结构体。
+        :type request: :class:`tencentcloud.vpc.v20170312.models.EnableCcnRoutesRequest`
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.EnableCcnRoutesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("EnableCcnRoutes", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.EnableCcnRoutesResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise e
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def EnableRoutes(self, request):
+        """本接口（EnableRoutes）用于启用已禁用的子网路由。<br />
+        本接口会校验启用后，是否与已有路由冲突，如果冲突，则无法启用，失败处理。路由冲突时，需要先禁用与之冲突的路由，才能启用该路由。
+
+        :param request: 调用EnableRoutes所需参数的结构体。
+        :type request: :class:`tencentcloud.vpc.v20170312.models.EnableRoutesRequest`
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.EnableRoutesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("EnableRoutes", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.EnableRoutesResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -1896,6 +2517,90 @@ class VpcClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyAddressTemplateGroupAttributeResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise e
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ModifyAddressesBandwidth(self, request):
+        """接口用于调整[弹性公网IP](https://cloud.tencent.com/document/product/213/1941)(简称EIP)带宽，包括后付费EIP, 预付费EIP和带宽包EIP
+
+        :param request: 调用ModifyAddressesBandwidth所需参数的结构体。
+        :type request: :class:`tencentcloud.vpc.v20170312.models.ModifyAddressesBandwidthRequest`
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.ModifyAddressesBandwidthResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ModifyAddressesBandwidth", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ModifyAddressesBandwidthResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise e
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ModifyBandwidthPackageAttribute(self, request):
+        """接口用于修改带宽包属性，包括带宽包名字等
+
+        :param request: 调用ModifyBandwidthPackageAttribute所需参数的结构体。
+        :type request: :class:`tencentcloud.vpc.v20170312.models.ModifyBandwidthPackageAttributeRequest`
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.ModifyBandwidthPackageAttributeResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ModifyBandwidthPackageAttribute", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ModifyBandwidthPackageAttributeResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise e
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ModifyCcnAttribute(self, request):
+        """本接口（ModifyCcnAttribute）用于修改云联网（CCN）的相关属性。
+
+        :param request: 调用ModifyCcnAttribute所需参数的结构体。
+        :type request: :class:`tencentcloud.vpc.v20170312.models.ModifyCcnAttributeRequest`
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.ModifyCcnAttributeResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ModifyCcnAttribute", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ModifyCcnAttributeResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -2285,6 +2990,34 @@ class VpcClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def RemoveBandwidthPackageResources(self, request):
+        """接口用于删除带宽包资源，包括[弹性公网IP](https://cloud.tencent.com/document/product/213/1941)和[负载均衡](https://cloud.tencent.com/document/product/214/517)等
+
+        :param request: 调用RemoveBandwidthPackageResources所需参数的结构体。
+        :type request: :class:`tencentcloud.vpc.v20170312.models.RemoveBandwidthPackageResourcesRequest`
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.RemoveBandwidthPackageResourcesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("RemoveBandwidthPackageResources", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.RemoveBandwidthPackageResourcesResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise e
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def RenewVpnGateway(self, request):
         """本接口（RenewVpnGateway）用于预付费（包年包月）VPN网关续费。目前只支持IPSEC网关。
 
@@ -2299,6 +3032,34 @@ class VpcClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.RenewVpnGatewayResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise e
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ReplaceDirectConnectGatewayCcnRoutes(self, request):
+        """本接口（ReplaceDirectConnectGatewayCcnRoutes）根据路由ID（RouteId）修改指定的路由（Route），支持批量修改。
+
+        :param request: 调用ReplaceDirectConnectGatewayCcnRoutes所需参数的结构体。
+        :type request: :class:`tencentcloud.vpc.v20170312.models.ReplaceDirectConnectGatewayCcnRoutesRequest`
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.ReplaceDirectConnectGatewayCcnRoutesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ReplaceDirectConnectGatewayCcnRoutes", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ReplaceDirectConnectGatewayCcnRoutesResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -2400,7 +3161,7 @@ class VpcClient(AbstractClient):
 
 
     def ResetRoutes(self, request):
-        """本接口（ResetRoutes）用于对某个路由表名称和所有路由策略（Route）进行重新设置。
+        """本接口（ResetRoutes）用于对某个路由表名称和所有路由策略（Route）进行重新设置。<br />
         注意: 调用本接口是先删除当前路由表中所有路由策略, 再保存新提交的路由策略内容, 会引起网络中断。
 
         :param request: 调用ResetRoutes所需参数的结构体。
@@ -2470,6 +3231,34 @@ class VpcClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ResetVpnGatewayInternetMaxBandwidthResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise e
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def SetCcnRegionBandwidthLimits(self, request):
+        """本接口（SetCcnRegionBandwidthLimits）用于设置云联网（CCN）各地域出带宽上限，该接口只能设置已关联网络实例包含的地域的出带宽上限
+
+        :param request: 调用SetCcnRegionBandwidthLimits所需参数的结构体。
+        :type request: :class:`tencentcloud.vpc.v20170312.models.SetCcnRegionBandwidthLimitsRequest`
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.SetCcnRegionBandwidthLimitsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("SetCcnRegionBandwidthLimits", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.SetCcnRegionBandwidthLimitsResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

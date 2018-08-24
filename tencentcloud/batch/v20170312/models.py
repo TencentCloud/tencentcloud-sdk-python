@@ -1,5 +1,5 @@
 # -*- coding: utf8 -*-
-# Copyright 1999-2017 Tencent Ltd.
+# Copyright (c) 2017-2018 THL A29 Limited, a Tencent company. All Rights Reserved.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -1774,48 +1774,36 @@ class InstanceMarketOptionsRequest(AbstractModel):
 
 
 class InstanceTypeConfig(AbstractModel):
-    """描述实例机型配置信息
+    """批量计算可用的InstanceTypeConfig信息
 
     """
 
     def __init__(self):
         """
-        :param Zone: 可用区。
-        :type Zone: str
+        :param Mem: 内存容量，单位：`GB`。
+        :type Mem: int
+        :param Cpu: CPU核数，单位：核。
+        :type Cpu: int
         :param InstanceType: 实例机型。
         :type InstanceType: str
+        :param Zone: 可用区。
+        :type Zone: str
         :param InstanceFamily: 实例机型系列。
         :type InstanceFamily: str
-        :param GPU: GPU核数，单位：核。
-        :type GPU: int
-        :param CPU: CPU核数，单位：核。
-        :type CPU: int
-        :param Memory: 内存容量，单位：`GB`。
-        :type Memory: int
-        :param CbsSupport: 是否支持云硬盘。取值范围：<br><li>`TRUE`：表示支持云硬盘；<br><li>`FALSE`：表示不支持云硬盘。
-        :type CbsSupport: str
-        :param InstanceTypeState: 机型状态。取值范围：<br><li>`AVAILABLE`：表示机型可用；<br><li>`UNAVAILABLE`：表示机型不可用。
-        :type InstanceTypeState: str
         """
-        self.Zone = None
+        self.Mem = None
+        self.Cpu = None
         self.InstanceType = None
+        self.Zone = None
         self.InstanceFamily = None
-        self.GPU = None
-        self.CPU = None
-        self.Memory = None
-        self.CbsSupport = None
-        self.InstanceTypeState = None
 
 
     def _deserialize(self, params):
-        self.Zone = params.get("Zone")
+        self.Mem = params.get("Mem")
+        self.Cpu = params.get("Cpu")
         self.InstanceType = params.get("InstanceType")
+        self.Zone = params.get("Zone")
         self.InstanceFamily = params.get("InstanceFamily")
-        self.GPU = params.get("GPU")
-        self.CPU = params.get("CPU")
-        self.Memory = params.get("Memory")
-        self.CbsSupport = params.get("CbsSupport")
-        self.InstanceTypeState = params.get("InstanceTypeState")
 
 
 class InstanceTypeQuotaItem(AbstractModel):

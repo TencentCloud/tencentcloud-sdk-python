@@ -17,28 +17,28 @@ import json
 
 from tencentcloud.common.exception.tencent_cloud_sdk_exception import TencentCloudSDKException
 from tencentcloud.common.abstract_client import AbstractClient
-from tencentcloud.bm.v20180423 import models
+from tencentcloud.billing.v20180709 import models
 
 
-class BmClient(AbstractClient):
-    _apiVersion = '2018-04-23'
-    _endpoint = 'bm.tencentcloudapi.com'
+class BillingClient(AbstractClient):
+    _apiVersion = '2018-07-09'
+    _endpoint = 'billing.tencentcloudapi.com'
 
 
-    def DescribeRepairTaskConstant(self, request):
-        """维修任务配置获取
+    def DescribeBillDetail(self, request):
+        """查询账单明细数据
 
-        :param request: 调用DescribeRepairTaskConstant所需参数的结构体。
-        :type request: :class:`tencentcloud.bm.v20180423.models.DescribeRepairTaskConstantRequest`
-        :rtype: :class:`tencentcloud.bm.v20180423.models.DescribeRepairTaskConstantResponse`
+        :param request: 调用DescribeBillDetail所需参数的结构体。
+        :type request: :class:`tencentcloud.billing.v20180709.models.DescribeBillDetailRequest`
+        :rtype: :class:`tencentcloud.billing.v20180709.models.DescribeBillDetailResponse`
 
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeRepairTaskConstant", params)
+            body = self.call("DescribeBillDetail", params)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.DescribeRepairTaskConstantResponse()
+                model = models.DescribeBillDetailResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -53,28 +53,20 @@ class BmClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def DescribeTaskInfo(self, request):
-        """获取用户维修任务列表及详细信息<br>
-        <br>
-        TaskStatus（任务状态ID）与状态中文名的对应关系如下：<br>
-        1：未授权<br>
-        2：处理中<br>
-        3：待确认<br>
-        4：未授权-暂不处理<br>
-        5：已恢复<br>
-        6：待确认-未恢复<br>
+    def DescribeBillResourceSummary(self, request):
+        """查询账单资源汇总数据
 
-        :param request: 调用DescribeTaskInfo所需参数的结构体。
-        :type request: :class:`tencentcloud.bm.v20180423.models.DescribeTaskInfoRequest`
-        :rtype: :class:`tencentcloud.bm.v20180423.models.DescribeTaskInfoResponse`
+        :param request: 调用DescribeBillResourceSummary所需参数的结构体。
+        :type request: :class:`tencentcloud.billing.v20180709.models.DescribeBillResourceSummaryRequest`
+        :rtype: :class:`tencentcloud.billing.v20180709.models.DescribeBillResourceSummaryResponse`
 
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeTaskInfo", params)
+            body = self.call("DescribeBillResourceSummary", params)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.DescribeTaskInfoResponse()
+                model = models.DescribeBillResourceSummaryResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -89,20 +81,20 @@ class BmClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def DescribeTaskOperationLog(self, request):
-        """获取维修任务操作日志
+    def DescribeDealsByCond(self, request):
+        """查询订单
 
-        :param request: 调用DescribeTaskOperationLog所需参数的结构体。
-        :type request: :class:`tencentcloud.bm.v20180423.models.DescribeTaskOperationLogRequest`
-        :rtype: :class:`tencentcloud.bm.v20180423.models.DescribeTaskOperationLogResponse`
+        :param request: 调用DescribeDealsByCond所需参数的结构体。
+        :type request: :class:`tencentcloud.billing.v20180709.models.DescribeDealsByCondRequest`
+        :rtype: :class:`tencentcloud.billing.v20180709.models.DescribeDealsByCondResponse`
 
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeTaskOperationLog", params)
+            body = self.call("DescribeDealsByCond", params)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.DescribeTaskOperationLogResponse()
+                model = models.DescribeDealsByCondResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -117,40 +109,20 @@ class BmClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def RepairTaskControl(self, request):
-        """此接口用于操作维修任务<br>
-        入参TaskId为维修任务ID<br>
-        入参Operate表示对维修任务的操作，支持如下取值：<br>
-        AuthorizeRepair（授权维修）<br>
-        Ignore（暂不提醒）<br>
-        ConfirmRecovered（维修完成后，确认故障恢复）<br>
-        ConfirmUnRecovered（维修完成后，确认故障未恢复）<br>
-        <br>
-        操作约束（当前任务状态(TaskStatus)->对应可执行的操作）：<br>
-        未授权(1)->授权维修；暂不处理<br>
-        暂不处理(4)->授权维修<br>
-        待确认(3)->确认故障恢复；确认故障未恢复<br>
-        未恢复(6)->确认故障恢复<br>
-        <br>
-        对于Ping不可达故障的任务，还允许：<br>
-        未授权->确认故障恢复<br>
-        暂不处理->确认故障恢复<br>
-        <br>
-        处理中与已恢复状态的任务不允许进行操作。<br>
-        <br>
-        详细信息请访问：https://cloud.tencent.com/document/product/386/18190
+    def PayDeals(self, request):
+        """支付订单
 
-        :param request: 调用RepairTaskControl所需参数的结构体。
-        :type request: :class:`tencentcloud.bm.v20180423.models.RepairTaskControlRequest`
-        :rtype: :class:`tencentcloud.bm.v20180423.models.RepairTaskControlResponse`
+        :param request: 调用PayDeals所需参数的结构体。
+        :type request: :class:`tencentcloud.billing.v20180709.models.PayDealsRequest`
+        :rtype: :class:`tencentcloud.billing.v20180709.models.PayDealsResponse`
 
         """
         try:
             params = request._serialize()
-            body = self.call("RepairTaskControl", params)
+            body = self.call("PayDeals", params)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.RepairTaskControlResponse()
+                model = models.PayDealsResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

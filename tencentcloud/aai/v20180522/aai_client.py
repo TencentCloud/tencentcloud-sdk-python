@@ -1,5 +1,5 @@
 # -*- coding: utf8 -*-
-# Copyright 1999-2017 Tencent Ltd.
+# Copyright (c) 2017-2018 THL A29 Limited, a Tencent company. All Rights Reserved.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -25,6 +25,34 @@ class AaiClient(AbstractClient):
     _endpoint = 'aai.tencentcloudapi.com'
 
 
+    def Chat(self, request):
+        """提供基于文本的基础聊天能力，可以让您的应用快速拥有具备深度语义理解的机器聊天功能。
+
+        :param request: 调用Chat所需参数的结构体。
+        :type request: :class:`tencentcloud.aai.v20180522.models.ChatRequest`
+        :rtype: :class:`tencentcloud.aai.v20180522.models.ChatResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("Chat", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ChatResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise e
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def SentenceRecognition(self, request):
         """识别60s内的短语音，当音频放在请求body中传输时整个请求大小不能超过1M，当音频以url方式传输时，音频时长不可超过60s。所有请求参数放在post的body中采用x-www-form-urlencoded（数据转换成一个字串（name1=value1&name2=value2…）进行urlencode后传输）编码传输。
 
@@ -39,6 +67,34 @@ class AaiClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.SentenceRecognitionResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise e
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def SimultaneousInterpreting(self, request):
+        """该接口是实时流式识别，可同时返回语音识别文本及翻译文本，当前仅支持中文和英文。该接口可配合同传windows客户端，提供会议现场同传服务。
+
+        :param request: 调用SimultaneousInterpreting所需参数的结构体。
+        :type request: :class:`tencentcloud.aai.v20180522.models.SimultaneousInterpretingRequest`
+        :rtype: :class:`tencentcloud.aai.v20180522.models.SimultaneousInterpretingResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("SimultaneousInterpreting", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.SimultaneousInterpretingResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

@@ -1,5 +1,5 @@
 # -*- coding: utf8 -*-
-# Copyright 1999-2017 Tencent Ltd.
+# Copyright (c) 2017-2018 THL A29 Limited, a Tencent company. All Rights Reserved.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -85,9 +85,10 @@ class CreateDirectConnectTunnelRequest(AbstractModel):
         :param DirectConnectOwnerAccount: 物理专线 owner，缺省为当前客户（物理专线 owner）
 共享专线时这里需要填写共享专线的开发商账号 ID
         :type DirectConnectOwnerAccount: str
-        :param NetworkType: 网络类型，分别为VPC、BMVPC
+        :param NetworkType: 网络类型，分别为VPC、BMVPC，CCN，默认是VPC
 VPC：私有网络
 BMVPC：黑石网络
+CCN：云联网
         :type NetworkType: str
         :param NetworkRegion: 网络地域
         :type NetworkRegion: str
@@ -102,7 +103,7 @@ BMVPC：黑石网络
 STATIC：静态
 默认为 BGP 路由
         :type RouteType: str
-        :param BgpPeer: BgpPeer，用户侧bgp信息，包括asn和AuthKey
+        :param BgpPeer: BgpPeer，用户侧bgp信息，包括Asn和AuthKey
         :type BgpPeer: :class:`tencentcloud.dc.v20180410.models.BgpPeer`
         :param RouteFilterPrefixes: 静态路由，用户IDC的网段地址
         :type RouteFilterPrefixes: list of RouteFilterPrefix
@@ -290,12 +291,22 @@ class DirectConnectTunnel(AbstractModel):
         :param DirectConnectId: 物理专线ID
         :type DirectConnectId: str
         :param State: 专线通道状态
+AVAILABLE:就绪或者已连接
+PENDING:申请中
+ALLOCATING:配置中
+ALLOCATED:配置完成
+ALTERING:修改中
+DELETING:删除中
+DELETED:删除完成
+COMFIRMING:待接受
+REJECTED:拒绝
         :type State: str
         :param DirectConnectOwnerAccount: 物理专线的拥有者，开发商账号 ID
         :type DirectConnectOwnerAccount: str
         :param OwnerAccount: 专线通道的拥有者，开发商账号 ID
         :type OwnerAccount: str
-        :param NetworkType: 网络类型，分别为VPC、BMVPC VPC：私有网络 BMVPC：黑石网络
+        :param NetworkType: 网络类型，分别为VPC、BMVPC、CCN
+ VPC：私有网络 ，BMVPC：黑石网络，CCN：云联网
         :type NetworkType: str
         :param NetworkRegion: VPC地域
         :type NetworkRegion: str

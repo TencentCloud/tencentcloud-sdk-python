@@ -1,5 +1,5 @@
 # -*- coding: utf8 -*-
-# Copyright 1999-2017 Tencent Ltd.
+# Copyright (c) 2017-2018 THL A29 Limited, a Tencent company. All Rights Reserved.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -14,6 +14,63 @@
 # limitations under the License.
 
 from tencentcloud.common.abstract_model import AbstractModel
+
+
+class AgentAuditedClient(AbstractModel):
+    """已审核代客信息
+
+    """
+
+    def __init__(self):
+        """
+        :param Uin: 代理商账号ID
+        :type Uin: str
+        :param ClientUin: 代客账号ID
+        :type ClientUin: str
+        :param AgentTime: 代客审核通过时间戳
+        :type AgentTime: str
+        :param ClientFlag: 代客类型，可能值为a/b/c
+        :type ClientFlag: str
+        :param ClientRemark: 代客备注
+        :type ClientRemark: str
+        :param ClientName: 代客名称（首选实名认证名称）
+        :type ClientName: str
+        :param AuthType: 认证类型, 0：个人，1：企业；其他：未认证
+        :type AuthType: str
+        :param AppId: 代客APPID
+        :type AppId: str
+        :param LastMonthAmt: 上月消费金额
+        :type LastMonthAmt: int
+        :param ThisMonthAmt: 本月消费金额
+        :type ThisMonthAmt: int
+        :param HasOverdueBill: 是否欠费,0：不欠费；1：欠费
+        :type HasOverdueBill: int
+        """
+        self.Uin = None
+        self.ClientUin = None
+        self.AgentTime = None
+        self.ClientFlag = None
+        self.ClientRemark = None
+        self.ClientName = None
+        self.AuthType = None
+        self.AppId = None
+        self.LastMonthAmt = None
+        self.ThisMonthAmt = None
+        self.HasOverdueBill = None
+
+
+    def _deserialize(self, params):
+        self.Uin = params.get("Uin")
+        self.ClientUin = params.get("ClientUin")
+        self.AgentTime = params.get("AgentTime")
+        self.ClientFlag = params.get("ClientFlag")
+        self.ClientRemark = params.get("ClientRemark")
+        self.ClientName = params.get("ClientName")
+        self.AuthType = params.get("AuthType")
+        self.AppId = params.get("AppId")
+        self.LastMonthAmt = params.get("LastMonthAmt")
+        self.ThisMonthAmt = params.get("ThisMonthAmt")
+        self.HasOverdueBill = params.get("HasOverdueBill")
 
 
 class AgentBillElem(AbstractModel):
@@ -70,7 +127,7 @@ class AgentBillElem(AbstractModel):
 
 
 class AgentClientElem(AbstractModel):
-    """描述代客信息
+    """描述待审核代客信息
 
     """
 
@@ -82,7 +139,7 @@ class AgentClientElem(AbstractModel):
         :type ClientUin: str
         :param ApplyTime: 代客申请时间戳
         :type ApplyTime: int
-        :param ClientFlag: 代客类型，可能值为a/b
+        :param ClientFlag: 代客类型，可能值为a/b/c
         :type ClientFlag: str
         :param Mail: 代客邮箱，打码显示
         :type Mail: str
@@ -108,6 +165,48 @@ class AgentClientElem(AbstractModel):
         self.Mail = params.get("Mail")
         self.Phone = params.get("Phone")
         self.HasOverdueBill = params.get("HasOverdueBill")
+
+
+class AgentPayDealsRequest(AbstractModel):
+    """AgentPayDeals请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param OwnerUin: 订单所有者uin
+        :type OwnerUin: str
+        :param AgentPay: 代付标志，1：代付；0：自付
+        :type AgentPay: int
+        :param DealNames: 订单号数组
+        :type DealNames: list of str
+        """
+        self.OwnerUin = None
+        self.AgentPay = None
+        self.DealNames = None
+
+
+    def _deserialize(self, params):
+        self.OwnerUin = params.get("OwnerUin")
+        self.AgentPay = params.get("AgentPay")
+        self.DealNames = params.get("DealNames")
+
+
+class AgentPayDealsResponse(AbstractModel):
+    """AgentPayDeals返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
 
 
 class AuditApplyClientRequest(AbstractModel):
@@ -165,6 +264,85 @@ class AuditApplyClientResponse(AbstractModel):
         self.ClientUin = params.get("ClientUin")
         self.AuditResult = params.get("AuditResult")
         self.AgentTime = params.get("AgentTime")
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeAgentAuditedClientsRequest(AbstractModel):
+    """DescribeAgentAuditedClients请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ClientUin: 客户账号ID
+        :type ClientUin: str
+        :param ClientName: 客户名称。由于涉及隐私，名称打码显示，故名称仅支持打码后的模糊搜索
+        :type ClientName: str
+        :param ClientFlag: 客户类型，a/b，类型定义参考代理商相关政策文档
+        :type ClientFlag: str
+        :param OrderDirection: ASC/DESC， 不区分大小写，按审核通过时间排序
+        :type OrderDirection: str
+        :param ClientUins: 客户账号ID列表
+        :type ClientUins: list of str
+        :param HasOverdueBill: 是否欠费。0：不欠费；1：欠费
+        :type HasOverdueBill: int
+        :param ClientRemark: 客户备注
+        :type ClientRemark: str
+        :param Offset: 偏移量
+        :type Offset: int
+        :param Limit: 限制数目
+        :type Limit: int
+        """
+        self.ClientUin = None
+        self.ClientName = None
+        self.ClientFlag = None
+        self.OrderDirection = None
+        self.ClientUins = None
+        self.HasOverdueBill = None
+        self.ClientRemark = None
+        self.Offset = None
+        self.Limit = None
+
+
+    def _deserialize(self, params):
+        self.ClientUin = params.get("ClientUin")
+        self.ClientName = params.get("ClientName")
+        self.ClientFlag = params.get("ClientFlag")
+        self.OrderDirection = params.get("OrderDirection")
+        self.ClientUins = params.get("ClientUins")
+        self.HasOverdueBill = params.get("HasOverdueBill")
+        self.ClientRemark = params.get("ClientRemark")
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+
+
+class DescribeAgentAuditedClientsResponse(AbstractModel):
+    """DescribeAgentAuditedClients返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param AgentClientSet: 已审核代客列表
+        :type AgentClientSet: list of AgentAuditedClient
+        :param TotalCount: 符合条件的代客总数
+        :type TotalCount: int
+        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :type RequestId: str
+        """
+        self.AgentClientSet = None
+        self.TotalCount = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("AgentClientSet") is not None:
+            self.AgentClientSet = []
+            for item in params.get("AgentClientSet"):
+                obj = AgentAuditedClient()
+                obj._deserialize(item)
+                self.AgentClientSet.append(obj)
+        self.TotalCount = params.get("TotalCount")
         self.RequestId = params.get("RequestId")
 
 
@@ -283,7 +461,7 @@ class DescribeAgentClientsResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param AgentClientSet: 代客列表
+        :param AgentClientSet: 待审核代客列表
         :type AgentClientSet: list of AgentClientElem
         :param TotalCount: 符合条件的代客总数
         :type TotalCount: int
