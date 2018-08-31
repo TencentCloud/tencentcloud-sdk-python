@@ -98,17 +98,25 @@ class DownloadReportResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param ReportUrl: 报告下载地址
-        :type ReportUrl: str
+        :param DailyReportUrl: 日报下载地址
+        :type DailyReportUrl: str
+        :param ResultReportUrl: 结果下载地址
+        :type ResultReportUrl: str
+        :param DetailReportUrl: 明细下载地址
+        :type DetailReportUrl: str
         :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
         :type RequestId: str
         """
-        self.ReportUrl = None
+        self.DailyReportUrl = None
+        self.ResultReportUrl = None
+        self.DetailReportUrl = None
         self.RequestId = None
 
 
     def _deserialize(self, params):
-        self.ReportUrl = params.get("ReportUrl")
+        self.DailyReportUrl = params.get("DailyReportUrl")
+        self.ResultReportUrl = params.get("ResultReportUrl")
+        self.DetailReportUrl = params.get("DetailReportUrl")
         self.RequestId = params.get("RequestId")
 
 

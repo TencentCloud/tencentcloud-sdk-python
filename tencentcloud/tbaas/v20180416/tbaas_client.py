@@ -17,28 +17,28 @@ import json
 
 from tencentcloud.common.exception.tencent_cloud_sdk_exception import TencentCloudSDKException
 from tencentcloud.common.abstract_client import AbstractClient
-from tencentcloud.cr.v20180321 import models
+from tencentcloud.tbaas.v20180416 import models
 
 
-class CrClient(AbstractClient):
-    _apiVersion = '2018-03-21'
-    _endpoint = 'cr.tencentcloudapi.com'
+class TbaasClient(AbstractClient):
+    _apiVersion = '2018-04-16'
+    _endpoint = 'tbaas.tencentcloudapi.com'
 
 
-    def DescribeTaskStatus(self, request):
-        """客户调用该接口查看任务执行状态。输入任务ID，输出任务执行状态或者结果
+    def GetInvokeTx(self, request):
+        """Invoke异步调用结果查询
 
-        :param request: 调用DescribeTaskStatus所需参数的结构体。
-        :type request: :class:`tencentcloud.cr.v20180321.models.DescribeTaskStatusRequest`
-        :rtype: :class:`tencentcloud.cr.v20180321.models.DescribeTaskStatusResponse`
+        :param request: 调用GetInvokeTx所需参数的结构体。
+        :type request: :class:`tencentcloud.tbaas.v20180416.models.GetInvokeTxRequest`
+        :rtype: :class:`tencentcloud.tbaas.v20180416.models.GetInvokeTxResponse`
 
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeTaskStatus", params)
+            body = self.call("GetInvokeTx", params)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.DescribeTaskStatusResponse()
+                model = models.GetInvokeTxResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -53,20 +53,20 @@ class CrClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def DownloadReport(self, request):
-        """客户调用该接口下载指定日期的催收报告
+    def Invoke(self, request):
+        """新增交易
 
-        :param request: 调用DownloadReport所需参数的结构体。
-        :type request: :class:`tencentcloud.cr.v20180321.models.DownloadReportRequest`
-        :rtype: :class:`tencentcloud.cr.v20180321.models.DownloadReportResponse`
+        :param request: 调用Invoke所需参数的结构体。
+        :type request: :class:`tencentcloud.tbaas.v20180416.models.InvokeRequest`
+        :rtype: :class:`tencentcloud.tbaas.v20180416.models.InvokeResponse`
 
         """
         try:
             params = request._serialize()
-            body = self.call("DownloadReport", params)
+            body = self.call("Invoke", params)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.DownloadReportResponse()
+                model = models.InvokeResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -81,20 +81,20 @@ class CrClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def UploadFile(self, request):
-        """客户通过调用该接口上传需催收文档，格式需为excel格式。接口返回任务ID。
+    def Query(self, request):
+        """查询交易
 
-        :param request: 调用UploadFile所需参数的结构体。
-        :type request: :class:`tencentcloud.cr.v20180321.models.UploadFileRequest`
-        :rtype: :class:`tencentcloud.cr.v20180321.models.UploadFileResponse`
+        :param request: 调用Query所需参数的结构体。
+        :type request: :class:`tencentcloud.tbaas.v20180416.models.QueryRequest`
+        :rtype: :class:`tencentcloud.tbaas.v20180416.models.QueryResponse`
 
         """
         try:
             params = request._serialize()
-            body = self.call("UploadFile", params)
+            body = self.call("Query", params)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.UploadFileResponse()
+                model = models.QueryResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
