@@ -348,16 +348,24 @@ class DataDisk(AbstractModel):
         :type DiskType: str
         :param DiskId: 数据盘ID。LOCAL_BASIC 和 LOCAL_SSD 类型没有ID。暂时不支持该参数。
         :type DiskId: str
+        :param DeleteWithInstance: 数据盘是否随子机销毁。取值范围：
+<li>TRUE：子机销毁时，销毁数据盘
+<li>FALSE：子机销毁时，保留数据盘<br>
+默认取值：TRUE<br>
+该参数目前仅用于 `RunInstances` 接口。
+        :type DeleteWithInstance: bool
         """
         self.DiskSize = None
         self.DiskType = None
         self.DiskId = None
+        self.DeleteWithInstance = None
 
 
     def _deserialize(self, params):
         self.DiskSize = params.get("DiskSize")
         self.DiskType = params.get("DiskType")
         self.DiskId = params.get("DiskId")
+        self.DeleteWithInstance = params.get("DeleteWithInstance")
 
 
 class DeleteDisasterRecoverGroupsRequest(AbstractModel):
