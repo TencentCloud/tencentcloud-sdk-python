@@ -119,7 +119,7 @@ class BackupConfig(AbstractModel):
 
     def __init__(self):
         """
-        :param ReplicationMode: 第二个从库复制方式，可能的返回值：aysnc-异步，semisync-半同步
+        :param ReplicationMode: 第二个从库复制方式，可能的返回值：async-异步，semisync-半同步
         :type ReplicationMode: str
         :param Zone: 第二个从库可用区的正式名称，如ap-shanghai-1
         :type Zone: str
@@ -947,7 +947,7 @@ class DescribeAccountsRequest(AbstractModel):
         :type InstanceId: str
         :param Offset: 记录偏移量，默认值为0。
         :type Offset: int
-        :param Limit: 单次请求返回的数量，默认值为20，最大值为100。
+        :param Limit: 单次请求返回的数量，默认值为20，最小值为1，最大值为100。
         :type Limit: int
         """
         self.InstanceId = None
@@ -1060,7 +1060,7 @@ class DescribeBackupDatabasesRequest(AbstractModel):
         :type SearchDatabase: str
         :param Offset: 分页偏移量。
         :type Offset: int
-        :param Limit: 分页大小，最大值为2000。
+        :param Limit: 分页大小，最小值为1，最大值为2000。
         :type Limit: int
         """
         self.InstanceId = None
@@ -1125,7 +1125,7 @@ class DescribeBackupTablesRequest(AbstractModel):
         :type SearchTable: str
         :param Offset: 分页偏移。
         :type Offset: int
-        :param Limit: 分页大小，最大值为2000。
+        :param Limit: 分页大小，最小值为1，最大值为2000。
         :type Limit: int
         """
         self.InstanceId = None
@@ -1186,7 +1186,7 @@ class DescribeBackupsRequest(AbstractModel):
         :type InstanceId: str
         :param Offset: 偏移量，最小值为0。
         :type Offset: int
-        :param Limit: 单次请求返回的数量，默认值为20，最大值为100。
+        :param Limit: 分页大小，默认值为20，最小值为1，最大值为100。
         :type Limit: int
         """
         self.InstanceId = None
@@ -1241,7 +1241,7 @@ class DescribeBinlogsRequest(AbstractModel):
         :type InstanceId: str
         :param Offset: 偏移量，最小值为0。
         :type Offset: int
-        :param Limit: 单次请求返回的数量，默认值为20，最大值为100。
+        :param Limit: 分页大小，默认值为20，最小值为1，最大值为100。
         :type Limit: int
         """
         self.InstanceId = None
@@ -1794,9 +1794,9 @@ class DescribeDBSwitchRecordsRequest(AbstractModel):
         """
         :param InstanceId: 实例ID，格式如：cdb-c1nl9rpv或者cdbro-c1nl9rpv，与云数据库控制台页面中显示的实例ID相同。
         :type InstanceId: str
-        :param Offset: 分页参数，偏移量。
+        :param Offset: 分页偏移量。
         :type Offset: int
-        :param Limit: 分页参数，单次请求数量限制。
+        :param Limit: 分页大小，默认值为50，最小值为1，最大值为2000。
         :type Limit: int
         """
         self.InstanceId = None
@@ -2031,7 +2031,7 @@ class DescribeSlowLogsRequest(AbstractModel):
         :type InstanceId: str
         :param Offset: 偏移量，最小值为0。
         :type Offset: int
-        :param Limit: 返回记录数量，默认值为20，最大值为100。
+        :param Limit: 分页大小，默认值为20，最小值为1，最大值为100。
         :type Limit: int
         """
         self.InstanceId = None
@@ -2984,6 +2984,44 @@ class ModifyAccountPrivilegesResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.AsyncRequestId = params.get("AsyncRequestId")
+        self.RequestId = params.get("RequestId")
+
+
+class ModifyAutoRenewFlagRequest(AbstractModel):
+    """ModifyAutoRenewFlag请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param InstanceIds: 实例的ID，格式如：cdb-c1nl9rpv，与云数据库控制台页面中显示的实例ID相同。
+        :type InstanceIds: list of str
+        :param AutoRenew: 自动续费标记，可取值的有：0-不自动续费，1-自动续费。
+        :type AutoRenew: int
+        """
+        self.InstanceIds = None
+        self.AutoRenew = None
+
+
+    def _deserialize(self, params):
+        self.InstanceIds = params.get("InstanceIds")
+        self.AutoRenew = params.get("AutoRenew")
+
+
+class ModifyAutoRenewFlagResponse(AbstractModel):
+    """ModifyAutoRenewFlag返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
 
 

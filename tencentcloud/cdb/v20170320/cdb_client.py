@@ -1111,6 +1111,34 @@ class CdbClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def ModifyAutoRenewFlag(self, request):
+        """本接口(ModifyAutoRenewFlag)用于修改云数据库实例的自动续费标记。仅支持包年包月的实例设置自动续费标记。
+
+        :param request: 调用ModifyAutoRenewFlag所需参数的结构体。
+        :type request: :class:`tencentcloud.cdb.v20170320.models.ModifyAutoRenewFlagRequest`
+        :rtype: :class:`tencentcloud.cdb.v20170320.models.ModifyAutoRenewFlagResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ModifyAutoRenewFlag", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ModifyAutoRenewFlagResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise e
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def ModifyBackupConfig(self, request):
         """本接口(ModifyBackupConfig)用于修改数据库备份配置信息。
 

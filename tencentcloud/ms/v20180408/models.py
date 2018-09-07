@@ -1078,7 +1078,7 @@ class PlanInfo(AbstractModel):
         :param AntiVMP: vmp，0关闭，1开启
         :type AntiVMP: int
         :param SoType: 保护so的强度，
-        :type SoType: str
+        :type SoType: list of str
         :param AntiLogLeak: 防日志泄漏，0关闭，1开启
         :type AntiLogLeak: int
         :param AntiQemuRoot: root检测，0关闭，1开启
