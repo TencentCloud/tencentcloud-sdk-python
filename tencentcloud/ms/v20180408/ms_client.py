@@ -53,6 +53,34 @@ class MsClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def CreateResourceInstances(self, request):
+        """用户可以使用该接口自建资源，只支持白名单用户
+
+        :param request: 调用CreateResourceInstances所需参数的结构体。
+        :type request: :class:`tencentcloud.ms.v20180408.models.CreateResourceInstancesRequest`
+        :rtype: :class:`tencentcloud.ms.v20180408.models.CreateResourceInstancesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("CreateResourceInstances", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateResourceInstancesResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise e
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def CreateScanInstances(self, request):
         """用户通过该接口批量提交应用进行应用扫描，扫描后需通过DescribeScanResults接口查询扫描结果
 

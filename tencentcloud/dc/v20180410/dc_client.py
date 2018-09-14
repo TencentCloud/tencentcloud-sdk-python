@@ -26,7 +26,7 @@ class DcClient(AbstractClient):
 
 
     def AcceptDirectConnectTunnel(self, request):
-        """接受专线通道申请
+        """接受专用通道申请
 
         :param request: 调用AcceptDirectConnectTunnel所需参数的结构体。
         :type request: :class:`tencentcloud.dc.v20180410.models.AcceptDirectConnectTunnelRequest`
@@ -54,7 +54,7 @@ class DcClient(AbstractClient):
 
 
     def CreateDirectConnectTunnel(self, request):
-        """用于创建专线通道的接口
+        """用于创建专用通道的接口
 
         :param request: 调用CreateDirectConnectTunnel所需参数的结构体。
         :type request: :class:`tencentcloud.dc.v20180410.models.CreateDirectConnectTunnelRequest`
@@ -82,7 +82,7 @@ class DcClient(AbstractClient):
 
 
     def DeleteDirectConnectTunnel(self, request):
-        """删除专线通道
+        """删除专用通道
 
         :param request: 调用DeleteDirectConnectTunnel所需参数的结构体。
         :type request: :class:`tencentcloud.dc.v20180410.models.DeleteDirectConnectTunnelRequest`
@@ -110,7 +110,7 @@ class DcClient(AbstractClient):
 
 
     def DescribeDirectConnectTunnels(self, request):
-        """用于查询专线通道列表。
+        """用于查询专用通道列表。
 
         :param request: 调用DescribeDirectConnectTunnels所需参数的结构体。
         :type request: :class:`tencentcloud.dc.v20180410.models.DescribeDirectConnectTunnelsRequest`
@@ -138,7 +138,7 @@ class DcClient(AbstractClient):
 
 
     def ModifyDirectConnectTunnelAttribute(self, request):
-        """修改专线通道属性
+        """修改专用通道属性
 
         :param request: 调用ModifyDirectConnectTunnelAttribute所需参数的结构体。
         :type request: :class:`tencentcloud.dc.v20180410.models.ModifyDirectConnectTunnelAttributeRequest`
@@ -166,7 +166,7 @@ class DcClient(AbstractClient):
 
 
     def RejectDirectConnectTunnel(self, request):
-        """拒绝专线通道申请
+        """拒绝专用通道申请
 
         :param request: 调用RejectDirectConnectTunnel所需参数的结构体。
         :type request: :class:`tencentcloud.dc.v20180410.models.RejectDirectConnectTunnelRequest`

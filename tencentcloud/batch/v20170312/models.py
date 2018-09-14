@@ -509,16 +509,24 @@ class DataDisk(AbstractModel):
         :type DiskType: str
         :param DiskId: 数据盘ID。LOCAL_BASIC 和 LOCAL_SSD 类型没有ID。暂时不支持该参数。
         :type DiskId: str
+        :param DeleteWithInstance: 数据盘是否随子机销毁。取值范围：
+<li>TRUE：子机销毁时，销毁数据盘
+<li>FALSE：子机销毁时，保留数据盘<br>
+默认取值：TRUE<br>
+该参数目前仅用于 `RunInstances` 接口。
+        :type DeleteWithInstance: bool
         """
         self.DiskSize = None
         self.DiskType = None
         self.DiskId = None
+        self.DeleteWithInstance = None
 
 
     def _deserialize(self, params):
         self.DiskSize = params.get("DiskSize")
         self.DiskType = params.get("DiskType")
         self.DiskId = params.get("DiskId")
+        self.DeleteWithInstance = params.get("DeleteWithInstance")
 
 
 class DeleteComputeEnvRequest(AbstractModel):
@@ -1883,7 +1891,7 @@ class InternetAccessible(AbstractModel):
 
     def __init__(self):
         """
-        :param InternetChargeType: 网络计费类型。取值范围：<br><li>BANDWIDTH_PREPAID：预付费按带宽结算<br><li>TRAFFIC_POSTPAID_BY_HOUR：流量按小时后付费<br><li>BANDWIDTH_POSTPAID_BY_HOUR：带宽按小时后付费<br><li>BANDWIDTH_PACKAGE：带宽包用户<br>默认取值：TRAFFIC_POSTPAID_BY_HOUR。
+        :param InternetChargeType: 网络计费类型。取值范围：<br><li>BANDWIDTH_PREPAID：预付费按带宽结算<br><li>TRAFFIC_POSTPAID_BY_HOUR：流量按小时后付费<br><li>BANDWIDTH_POSTPAID_BY_HOUR：带宽按小时后付费<br><li>BANDWIDTH_PACKAGE：带宽包用户<br>默认取值：非带宽包用户默认与子机付费类型保持一致。
         :type InternetChargeType: str
         :param InternetMaxBandwidthOut: 公网出带宽上限，单位：Mbps。默认值：0Mbps。不同机型带宽上限范围不一致，具体限制详见[购买网络带宽](/document/product/213/509)。
         :type InternetMaxBandwidthOut: int
@@ -1937,14 +1945,14 @@ class Job(AbstractModel):
 
     def __init__(self):
         """
-        :param JobName: 作业名称
-        :type JobName: str
-        :param Priority: 作业优先级，任务（Task）和任务实例（TaskInstance）会继承作业优先级
-        :type Priority: int
         :param Tasks: 任务信息
         :type Tasks: list of Task
+        :param JobName: 作业名称
+        :type JobName: str
         :param JobDescription: 作业描述
         :type JobDescription: str
+        :param Priority: 作业优先级，任务（Task）和任务实例（TaskInstance）会继承作业优先级
+        :type Priority: int
         :param Dependences: 依赖信息
         :type Dependences: list of Dependence
         :param Notifications: 通知信息
@@ -1954,10 +1962,10 @@ class Job(AbstractModel):
         :param StateIfCreateCvmFailed: 表示创建 CVM 失败按照何种策略处理。取值范围包括 FAILED，RUNNABLE。FAILED 表示创建 CVM 失败按照一次执行失败处理，RUNNABLE 表示创建 CVM 失败按照继续等待处理。默认值为FAILED。StateIfCreateCvmFailed对于提交的指定计算环境的作业无效。
         :type StateIfCreateCvmFailed: str
         """
-        self.JobName = None
-        self.Priority = None
         self.Tasks = None
+        self.JobName = None
         self.JobDescription = None
+        self.Priority = None
         self.Dependences = None
         self.Notifications = None
         self.TaskExecutionDependOn = None
@@ -1965,15 +1973,15 @@ class Job(AbstractModel):
 
 
     def _deserialize(self, params):
-        self.JobName = params.get("JobName")
-        self.Priority = params.get("Priority")
         if params.get("Tasks") is not None:
             self.Tasks = []
             for item in params.get("Tasks"):
                 obj = Task()
                 obj._deserialize(item)
                 self.Tasks.append(obj)
+        self.JobName = params.get("JobName")
         self.JobDescription = params.get("JobDescription")
+        self.Priority = params.get("Priority")
         if params.get("Dependences") is not None:
             self.Dependences = []
             for item in params.get("Dependences"):
@@ -2209,14 +2217,14 @@ class NamedComputeEnv(AbstractModel):
         """
         :param EnvName: 计算环境名称
         :type EnvName: str
-        :param EnvType: 计算环境管理类型
-        :type EnvType: str
-        :param EnvData: 计算环境具体参数
-        :type EnvData: :class:`tencentcloud.batch.v20170312.models.EnvData`
         :param DesiredComputeNodeCount: 计算节点期望个数
         :type DesiredComputeNodeCount: int
         :param EnvDescription: 计算环境描述
         :type EnvDescription: str
+        :param EnvType: 计算环境管理类型
+        :type EnvType: str
+        :param EnvData: 计算环境具体参数
+        :type EnvData: :class:`tencentcloud.batch.v20170312.models.EnvData`
         :param MountDataDisks: 数据盘挂载选项
         :type MountDataDisks: list of MountDataDisk
         :param Authentications: 授权信息
@@ -2231,10 +2239,10 @@ class NamedComputeEnv(AbstractModel):
         :type ActionIfComputeNodeInactive: str
         """
         self.EnvName = None
-        self.EnvType = None
-        self.EnvData = None
         self.DesiredComputeNodeCount = None
         self.EnvDescription = None
+        self.EnvType = None
+        self.EnvData = None
         self.MountDataDisks = None
         self.Authentications = None
         self.InputMappings = None
@@ -2245,12 +2253,12 @@ class NamedComputeEnv(AbstractModel):
 
     def _deserialize(self, params):
         self.EnvName = params.get("EnvName")
+        self.DesiredComputeNodeCount = params.get("DesiredComputeNodeCount")
+        self.EnvDescription = params.get("EnvDescription")
         self.EnvType = params.get("EnvType")
         if params.get("EnvData") is not None:
             self.EnvData = EnvData()
             self.EnvData._deserialize(params.get("EnvData"))
-        self.DesiredComputeNodeCount = params.get("DesiredComputeNodeCount")
-        self.EnvDescription = params.get("EnvDescription")
         if params.get("MountDataDisks") is not None:
             self.MountDataDisks = []
             for item in params.get("MountDataDisks"):
@@ -2595,22 +2603,18 @@ class Task(AbstractModel):
 
     def __init__(self):
         """
+        :param Application: 应用程序信息
+        :type Application: :class:`tencentcloud.batch.v20170312.models.Application`
         :param TaskName: 任务名称，在一个作业内部唯一
         :type TaskName: str
         :param TaskInstanceNum: 任务实例运行个数
         :type TaskInstanceNum: int
-        :param Application: 应用程序信息
-        :type Application: :class:`tencentcloud.batch.v20170312.models.Application`
-        :param RedirectInfo: 重定向信息
-        :type RedirectInfo: :class:`tencentcloud.batch.v20170312.models.RedirectInfo`
-        :param MaxRetryCount: 任务失败后的最大重试次数，默认为0
-        :type MaxRetryCount: int
-        :param Timeout: 任务启动后的超时时间，单位秒，默认为3600秒
-        :type Timeout: int
         :param ComputeEnv: 运行环境信息，ComputeEnv 和 EnvId 必须指定一个（且只有一个）参数。
         :type ComputeEnv: :class:`tencentcloud.batch.v20170312.models.AnonymousComputeEnv`
         :param EnvId: 计算环境ID，ComputeEnv 和 EnvId 必须指定一个（且只有一个）参数。
         :type EnvId: str
+        :param RedirectInfo: 重定向信息
+        :type RedirectInfo: :class:`tencentcloud.batch.v20170312.models.RedirectInfo`
         :param RedirectLocalInfo: 重定向本地信息
         :type RedirectLocalInfo: :class:`tencentcloud.batch.v20170312.models.RedirectLocalInfo`
         :param InputMappings: 输入映射
@@ -2625,15 +2629,17 @@ class Task(AbstractModel):
         :type Authentications: list of EnvVar
         :param FailedAction: TaskInstance失败后处理方式，取值包括TERMINATE（默认）、INTERRUPT、FAST_INTERRUPT。
         :type FailedAction: str
+        :param MaxRetryCount: 任务失败后的最大重试次数，默认为0
+        :type MaxRetryCount: int
+        :param Timeout: 任务启动后的超时时间，单位秒，默认为3600秒
+        :type Timeout: int
         """
+        self.Application = None
         self.TaskName = None
         self.TaskInstanceNum = None
-        self.Application = None
-        self.RedirectInfo = None
-        self.MaxRetryCount = None
-        self.Timeout = None
         self.ComputeEnv = None
         self.EnvId = None
+        self.RedirectInfo = None
         self.RedirectLocalInfo = None
         self.InputMappings = None
         self.OutputMappings = None
@@ -2641,23 +2647,23 @@ class Task(AbstractModel):
         self.EnvVars = None
         self.Authentications = None
         self.FailedAction = None
+        self.MaxRetryCount = None
+        self.Timeout = None
 
 
     def _deserialize(self, params):
-        self.TaskName = params.get("TaskName")
-        self.TaskInstanceNum = params.get("TaskInstanceNum")
         if params.get("Application") is not None:
             self.Application = Application()
             self.Application._deserialize(params.get("Application"))
-        if params.get("RedirectInfo") is not None:
-            self.RedirectInfo = RedirectInfo()
-            self.RedirectInfo._deserialize(params.get("RedirectInfo"))
-        self.MaxRetryCount = params.get("MaxRetryCount")
-        self.Timeout = params.get("Timeout")
+        self.TaskName = params.get("TaskName")
+        self.TaskInstanceNum = params.get("TaskInstanceNum")
         if params.get("ComputeEnv") is not None:
             self.ComputeEnv = AnonymousComputeEnv()
             self.ComputeEnv._deserialize(params.get("ComputeEnv"))
         self.EnvId = params.get("EnvId")
+        if params.get("RedirectInfo") is not None:
+            self.RedirectInfo = RedirectInfo()
+            self.RedirectInfo._deserialize(params.get("RedirectInfo"))
         if params.get("RedirectLocalInfo") is not None:
             self.RedirectLocalInfo = RedirectLocalInfo()
             self.RedirectLocalInfo._deserialize(params.get("RedirectLocalInfo"))
@@ -2692,6 +2698,8 @@ class Task(AbstractModel):
                 obj._deserialize(item)
                 self.Authentications.append(obj)
         self.FailedAction = params.get("FailedAction")
+        self.MaxRetryCount = params.get("MaxRetryCount")
+        self.Timeout = params.get("Timeout")
 
 
 class TaskInstanceMetrics(AbstractModel):

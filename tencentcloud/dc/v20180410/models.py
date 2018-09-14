@@ -23,7 +23,7 @@ class AcceptDirectConnectTunnelRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param DirectConnectTunnelId: 物理专线拥有者接受共享专线通道申请
+        :param DirectConnectTunnelId: 物理专线拥有者接受共享专用通道申请
         :type DirectConnectTunnelId: str
         """
         self.DirectConnectTunnelId = None
@@ -80,7 +80,7 @@ class CreateDirectConnectTunnelRequest(AbstractModel):
         """
         :param DirectConnectId: 专线 ID，例如：dc-kd7d06of
         :type DirectConnectId: str
-        :param DirectConnectTunnelName: 专线通道名称
+        :param DirectConnectTunnelName: 专用通道名称
         :type DirectConnectTunnelName: str
         :param DirectConnectOwnerAccount: 物理专线 owner，缺省为当前客户（物理专线 owner）
 共享专线时这里需要填写共享专线的开发商账号 ID
@@ -163,7 +163,7 @@ class CreateDirectConnectTunnelResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param DirectConnectTunnelIdSet: 专线通道ID
+        :param DirectConnectTunnelIdSet: 专用通道ID
         :type DirectConnectTunnelIdSet: list of str
         :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
         :type RequestId: str
@@ -184,7 +184,7 @@ class DeleteDirectConnectTunnelRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param DirectConnectTunnelId: 专线通道ID
+        :param DirectConnectTunnelId: 专用通道ID
         :type DirectConnectTunnelId: str
         """
         self.DirectConnectTunnelId = None
@@ -220,11 +220,11 @@ class DescribeDirectConnectTunnelsRequest(AbstractModel):
         """
         :param Filters: 过滤条件:
 参数不支持同时指定DirectConnectTunnelIds和Filters。
-<li> direct-connect-tunnel-name, 专线通道名称。</li>
-<li> direct-connect-tunnel-id, 专线通道实例ID，如dcx-abcdefgh。</li>
+<li> direct-connect-tunnel-name, 专用通道名称。</li>
+<li> direct-connect-tunnel-id, 专用通道实例ID，如dcx-abcdefgh。</li>
 <li>direct-connect-id, 物理专线实例ID，如，dc-abcdefgh。</li>
         :type Filters: list of Filter
-        :param DirectConnectTunnelIds: 专线通道 ID数组
+        :param DirectConnectTunnelIds: 专用通道 ID数组
         :type DirectConnectTunnelIds: list of str
         :param Offset: 偏移量，默认为0
         :type Offset: int
@@ -256,9 +256,9 @@ class DescribeDirectConnectTunnelsResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param DirectConnectTunnelSet: 专线通道列表
+        :param DirectConnectTunnelSet: 专用通道列表
         :type DirectConnectTunnelSet: list of DirectConnectTunnel
-        :param TotalCount: 符合专线通道数量。
+        :param TotalCount: 符合专用通道数量。
         :type TotalCount: int
         :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
         :type RequestId: str
@@ -409,9 +409,9 @@ class ModifyDirectConnectTunnelAttributeRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param DirectConnectTunnelId: 专线通道ID
+        :param DirectConnectTunnelId: 专用通道ID
         :type DirectConnectTunnelId: str
-        :param DirectConnectTunnelName: 专线通道名称
+        :param DirectConnectTunnelName: 专用通道名称
         :type DirectConnectTunnelName: str
         :param BgpPeer: 用户侧BGP，包括Asn，AuthKey
         :type BgpPeer: :class:`tencentcloud.dc.v20180410.models.BgpPeer`
@@ -421,7 +421,7 @@ class ModifyDirectConnectTunnelAttributeRequest(AbstractModel):
         :type TencentAddress: str
         :param CustomerAddress: 用户侧互联IP
         :type CustomerAddress: str
-        :param Bandwidth: 专线通道带宽值，单位为M。
+        :param Bandwidth: 专用通道带宽值，单位为M。
         :type Bandwidth: int
         """
         self.DirectConnectTunnelId = None

@@ -382,6 +382,56 @@ class CreateBindInstanceResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class CreateResourceInstancesRequest(AbstractModel):
+    """CreateResourceInstances请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Pid: 资源类型id。
+        :type Pid: int
+        :param TimeUnit: 时间单位，取值为d，m，y，分别表示天，月，年。
+        :type TimeUnit: str
+        :param TimeSpan: 时间数量。
+        :type TimeSpan: int
+        :param ResourceNum: 资源数量。
+        :type ResourceNum: int
+        """
+        self.Pid = None
+        self.TimeUnit = None
+        self.TimeSpan = None
+        self.ResourceNum = None
+
+
+    def _deserialize(self, params):
+        self.Pid = params.get("Pid")
+        self.TimeUnit = params.get("TimeUnit")
+        self.TimeSpan = params.get("TimeSpan")
+        self.ResourceNum = params.get("ResourceNum")
+
+
+class CreateResourceInstancesResponse(AbstractModel):
+    """CreateResourceInstances返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ResourceSet: 新创建的资源列表。
+        :type ResourceSet: list of str
+        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :type RequestId: str
+        """
+        self.ResourceSet = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.ResourceSet = params.get("ResourceSet")
+        self.RequestId = params.get("RequestId")
+
+
 class CreateScanInstancesRequest(AbstractModel):
     """CreateScanInstances请求参数结构体
 
