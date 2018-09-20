@@ -53,6 +53,34 @@ class PartnersClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def AgentTransferMoney(self, request):
+        """为合作伙伴提供转账给客户能力。仅支持合作伙伴为自己名下客户转账。
+
+        :param request: 调用AgentTransferMoney所需参数的结构体。
+        :type request: :class:`tencentcloud.partners.v20180321.models.AgentTransferMoneyRequest`
+        :rtype: :class:`tencentcloud.partners.v20180321.models.AgentTransferMoneyResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("AgentTransferMoney", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.AgentTransferMoneyResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise e
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def AuditApplyClient(self, request):
         """代理商可以审核其名下申请中代客
 
@@ -151,6 +179,34 @@ class PartnersClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeAgentClientsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise e
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeClientBalance(self, request):
+        """为合作伙伴提供查询客户余额能力。调用者必须是合作伙伴，只能查询自己名下客户余额
+
+        :param request: 调用DescribeClientBalance所需参数的结构体。
+        :type request: :class:`tencentcloud.partners.v20180321.models.DescribeClientBalanceRequest`
+        :rtype: :class:`tencentcloud.partners.v20180321.models.DescribeClientBalanceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeClientBalance", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeClientBalanceResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

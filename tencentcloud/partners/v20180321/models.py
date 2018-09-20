@@ -209,6 +209,44 @@ class AgentPayDealsResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class AgentTransferMoneyRequest(AbstractModel):
+    """AgentTransferMoney请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ClientUin: 客户账号ID
+        :type ClientUin: str
+        :param Amount: 转账金额，单位分
+        :type Amount: int
+        """
+        self.ClientUin = None
+        self.Amount = None
+
+
+    def _deserialize(self, params):
+        self.ClientUin = params.get("ClientUin")
+        self.Amount = params.get("Amount")
+
+
+class AgentTransferMoneyResponse(AbstractModel):
+    """AgentTransferMoney返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class AuditApplyClientRequest(AbstractModel):
     """AuditApplyClient请求参数结构体
 
@@ -481,6 +519,44 @@ class DescribeAgentClientsResponse(AbstractModel):
                 obj._deserialize(item)
                 self.AgentClientSet.append(obj)
         self.TotalCount = params.get("TotalCount")
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeClientBalanceRequest(AbstractModel):
+    """DescribeClientBalance请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ClientUin: 客户(代客)账号ID
+        :type ClientUin: str
+        """
+        self.ClientUin = None
+
+
+    def _deserialize(self, params):
+        self.ClientUin = params.get("ClientUin")
+
+
+class DescribeClientBalanceResponse(AbstractModel):
+    """DescribeClientBalance返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Balance: 账户余额，单位分
+        :type Balance: int
+        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :type RequestId: str
+        """
+        self.Balance = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Balance = params.get("Balance")
         self.RequestId = params.get("RequestId")
 
 

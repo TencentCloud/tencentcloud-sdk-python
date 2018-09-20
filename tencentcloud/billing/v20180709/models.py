@@ -325,6 +325,33 @@ class Deal(AbstractModel):
         self.GoodsCategoryId = params.get("GoodsCategoryId")
 
 
+class DescribeAccountBalanceRequest(AbstractModel):
+    """DescribeAccountBalance请求参数结构体
+
+    """
+
+
+class DescribeAccountBalanceResponse(AbstractModel):
+    """DescribeAccountBalance返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Balance: 云账户信息中的”展示可用余额”字段，单位为"分"
+        :type Balance: int
+        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :type RequestId: str
+        """
+        self.Balance = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Balance = params.get("Balance")
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeBillDetailRequest(AbstractModel):
     """DescribeBillDetail请求参数结构体
 
@@ -334,7 +361,7 @@ class DescribeBillDetailRequest(AbstractModel):
         """
         :param Offset: 偏移量
         :type Offset: int
-        :param Limit: 数量
+        :param Limit: 数量，最大值为100
         :type Limit: int
         :param PeriodType: 周期类型，byPayTime按扣费周期/byUsedTime按计费周期
         :type PeriodType: str
@@ -389,7 +416,7 @@ class DescribeBillResourceSummaryRequest(AbstractModel):
         """
         :param Offset: 偏移量
         :type Offset: int
-        :param Limit: 数量
+        :param Limit: 数量，最大值为1000
         :type Limit: int
         :param PeriodType: 周期类型，byUsedTime按计费周期/byPayTime按扣费周期
         :type PeriodType: str

@@ -49,6 +49,8 @@ class CreateJobRequest(AbstractModel):
         :type ParameterServerCount: int
         :param Debug: 启动debug mode，默认为false
         :type Debug: bool
+        :param RuntimeConf: 运行任务的其他配置信息
+        :type RuntimeConf: list of str
         """
         self.Name = None
         self.Cluster = None
@@ -63,6 +65,7 @@ class CreateJobRequest(AbstractModel):
         self.WorkerCount = None
         self.ParameterServerCount = None
         self.Debug = None
+        self.RuntimeConf = None
 
 
     def _deserialize(self, params):
@@ -79,6 +82,7 @@ class CreateJobRequest(AbstractModel):
         self.WorkerCount = params.get("WorkerCount")
         self.ParameterServerCount = params.get("ParameterServerCount")
         self.Debug = params.get("Debug")
+        self.RuntimeConf = params.get("RuntimeConf")
 
 
 class CreateJobResponse(AbstractModel):
@@ -113,40 +117,44 @@ class CreateModelRequest(AbstractModel):
         """
         :param Name: 模型名称
         :type Name: str
-        :param Cluster: 指定集群的名称
-        :type Cluster: str
         :param Model: 要部署模型的路径名
         :type Model: str
         :param Description: 关于模型的描述
         :type Description: str
+        :param Cluster: 指定集群的名称（集群模式下必填）
+        :type Cluster: str
         :param RuntimeVersion: 运行环境镜像的标签
         :type RuntimeVersion: str
-        :param Replicas: 要部署的模型副本数目
+        :param Replicas: 要部署的模型副本数目（集群模式下选填）
         :type Replicas: int
-        :param Expose: 暴露外网或内网，默认暴露外网
+        :param Expose: 暴露外网或内网，默认暴露外网（集群模式下选填）
         :type Expose: str
-        :param ServType: 要部署模型的机器配置
+        :param ServType: 部署模式（无服务器函数模式/集群模式）
         :type ServType: str
+        :param RuntimeConf: 部署模型的其他配置信息
+        :type RuntimeConf: list of str
         """
         self.Name = None
-        self.Cluster = None
         self.Model = None
         self.Description = None
+        self.Cluster = None
         self.RuntimeVersion = None
         self.Replicas = None
         self.Expose = None
         self.ServType = None
+        self.RuntimeConf = None
 
 
     def _deserialize(self, params):
         self.Name = params.get("Name")
-        self.Cluster = params.get("Cluster")
         self.Model = params.get("Model")
         self.Description = params.get("Description")
+        self.Cluster = params.get("Cluster")
         self.RuntimeVersion = params.get("RuntimeVersion")
         self.Replicas = params.get("Replicas")
         self.Expose = params.get("Expose")
         self.ServType = params.get("ServType")
+        self.RuntimeConf = params.get("RuntimeConf")
 
 
 class CreateModelResponse(AbstractModel):
@@ -221,14 +229,18 @@ class DeleteModelRequest(AbstractModel):
         :type Name: str
         :param Cluster: 要删除的模型所在的集群名称
         :type Cluster: str
+        :param ServType: 模型类型
+        :type ServType: str
         """
         self.Name = None
         self.Cluster = None
+        self.ServType = None
 
 
     def _deserialize(self, params):
         self.Name = params.get("Name")
         self.Cluster = params.get("Cluster")
+        self.ServType = params.get("ServType")
 
 
 class DeleteModelResponse(AbstractModel):
@@ -303,14 +315,18 @@ class DescribeModelRequest(AbstractModel):
         :type Name: str
         :param Cluster: 模型所在集群名称
         :type Cluster: str
+        :param ServType: 模型类型
+        :type ServType: str
         """
         self.Name = None
         self.Cluster = None
+        self.ServType = None
 
 
     def _deserialize(self, params):
         self.Name = params.get("Name")
         self.Cluster = params.get("Cluster")
+        self.ServType = params.get("ServType")
 
 
 class DescribeModelResponse(AbstractModel):
@@ -431,6 +447,10 @@ class Job(AbstractModel):
         :type Uin: str
         :param Debug: 创建任务的Debug模式
         :type Debug: bool
+        :param RuntimeConf: Runtime的额外配置信息
+        :type RuntimeConf: list of str
+        :param Id: 任务Id
+        :type Id: str
         """
         self.Name = None
         self.CreateTime = None
@@ -453,6 +473,8 @@ class Job(AbstractModel):
         self.AppId = None
         self.Uin = None
         self.Debug = None
+        self.RuntimeConf = None
+        self.Id = None
 
 
     def _deserialize(self, params):
@@ -477,6 +499,8 @@ class Job(AbstractModel):
         self.AppId = params.get("AppId")
         self.Uin = params.get("Uin")
         self.Debug = params.get("Debug")
+        self.RuntimeConf = params.get("RuntimeConf")
+        self.Id = params.get("Id")
 
 
 class ListJobsRequest(AbstractModel):
@@ -543,16 +567,20 @@ class ListModelsRequest(AbstractModel):
         :type Limit: int
         :param Offset: 分页参数，起始位置
         :type Offset: int
+        :param ServType: 模型类型
+        :type ServType: str
         """
         self.Cluster = None
         self.Limit = None
         self.Offset = None
+        self.ServType = None
 
 
     def _deserialize(self, params):
         self.Cluster = params.get("Cluster")
         self.Limit = params.get("Limit")
         self.Offset = params.get("Offset")
+        self.ServType = params.get("ServType")
 
 
 class ListModelsResponse(AbstractModel):
@@ -713,7 +741,7 @@ class QueryLogsRequest(AbstractModel):
         :type EndTime: str
         :param Limit: 单次要返回的日志条数
         :type Limit: int
-        :param Context: 加载更多使用，透传上次返回的context值，获取后续的日志内容
+        :param Context: 加载更多使用，透传上次返回的context值，获取后续的日志内容，使用context翻页最多能获取10000条日志
         :type Context: str
         """
         self.JobName = None

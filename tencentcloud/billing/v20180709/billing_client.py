@@ -25,6 +25,34 @@ class BillingClient(AbstractClient):
     _endpoint = 'billing.tencentcloudapi.com'
 
 
+    def DescribeAccountBalance(self, request):
+        """获取云账户余额信息。
+
+        :param request: 调用DescribeAccountBalance所需参数的结构体。
+        :type request: :class:`tencentcloud.billing.v20180709.models.DescribeAccountBalanceRequest`
+        :rtype: :class:`tencentcloud.billing.v20180709.models.DescribeAccountBalanceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeAccountBalance", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeAccountBalanceResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise e
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeBillDetail(self, request):
         """查询账单明细数据
 

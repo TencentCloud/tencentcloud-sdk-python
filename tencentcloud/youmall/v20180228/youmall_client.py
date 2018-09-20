@@ -25,6 +25,118 @@ class YoumallClient(AbstractClient):
     _endpoint = 'youmall.tencentcloudapi.com'
 
 
+    def DescribeCameraPerson(self, request):
+        """通过指定设备ID和指定时段，获取该时段内中收银台摄像设备抓取到顾客头像及身份ID
+
+        :param request: 调用DescribeCameraPerson所需参数的结构体。
+        :type request: :class:`tencentcloud.youmall.v20180228.models.DescribeCameraPersonRequest`
+        :rtype: :class:`tencentcloud.youmall.v20180228.models.DescribeCameraPersonResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeCameraPerson", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeCameraPersonResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise e
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeFaceIdByTempId(self, request):
+        """通过DescribeCameraPerson接口上报的收银台身份ID查询顾客的FaceID。查询最佳时间为收银台上报的次日1点后。
+
+        :param request: 调用DescribeFaceIdByTempId所需参数的结构体。
+        :type request: :class:`tencentcloud.youmall.v20180228.models.DescribeFaceIdByTempIdRequest`
+        :rtype: :class:`tencentcloud.youmall.v20180228.models.DescribeFaceIdByTempIdResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeFaceIdByTempId", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeFaceIdByTempIdResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise e
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeHistoryNetworkInfo(self, request):
+        """返回当前门店历史网络状态数据
+
+        :param request: 调用DescribeHistoryNetworkInfo所需参数的结构体。
+        :type request: :class:`tencentcloud.youmall.v20180228.models.DescribeHistoryNetworkInfoRequest`
+        :rtype: :class:`tencentcloud.youmall.v20180228.models.DescribeHistoryNetworkInfoResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeHistoryNetworkInfo", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeHistoryNetworkInfoResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise e
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeNetworkInfo(self, request):
+        """返回当前门店最新网络状态数据
+
+        :param request: 调用DescribeNetworkInfo所需参数的结构体。
+        :type request: :class:`tencentcloud.youmall.v20180228.models.DescribeNetworkInfoRequest`
+        :rtype: :class:`tencentcloud.youmall.v20180228.models.DescribeNetworkInfoResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeNetworkInfo", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeNetworkInfoResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise e
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribePersonInfo(self, request):
         """指定门店获取所有顾客详情列表，包含客户ID、图片、年龄、性别
 
@@ -179,6 +291,34 @@ class YoumallClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeZoneTrafficInfoResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise e
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ModifyPersonTagInfo(self, request):
+        """标记到店顾客的身份类型，例如黑名单、白名单等
+
+        :param request: 调用ModifyPersonTagInfo所需参数的结构体。
+        :type request: :class:`tencentcloud.youmall.v20180228.models.ModifyPersonTagInfoRequest`
+        :rtype: :class:`tencentcloud.youmall.v20180228.models.ModifyPersonTagInfoResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ModifyPersonTagInfo", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ModifyPersonTagInfoResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

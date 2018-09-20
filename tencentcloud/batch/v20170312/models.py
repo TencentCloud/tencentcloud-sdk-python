@@ -1512,7 +1512,7 @@ class EnhancedService(AbstractModel):
         """
         :param SecurityService: 开启云安全服务。若不指定该参数，则默认开启云安全服务。
         :type SecurityService: :class:`tencentcloud.batch.v20170312.models.RunSecurityServiceEnabled`
-        :param MonitorService: 开启云安全服务。若不指定该参数，则默认开启云监控服务。
+        :param MonitorService: 开启云监控服务。若不指定该参数，则默认开启云监控服务。
         :type MonitorService: :class:`tencentcloud.batch.v20170312.models.RunMonitorServiceEnabled`
         """
         self.SecurityService = None
@@ -2624,9 +2624,9 @@ class Task(AbstractModel):
         :param OutputMappingConfigs: 输出映射配置
         :type OutputMappingConfigs: list of OutputMappingConfig
         :param EnvVars: 自定义环境变量
-        :type EnvVars: list of Authentication
+        :type EnvVars: list of EnvVar
         :param Authentications: 授权信息
-        :type Authentications: list of EnvVar
+        :type Authentications: list of Authentication
         :param FailedAction: TaskInstance失败后处理方式，取值包括TERMINATE（默认）、INTERRUPT、FAST_INTERRUPT。
         :type FailedAction: str
         :param MaxRetryCount: 任务失败后的最大重试次数，默认为0
@@ -2688,13 +2688,13 @@ class Task(AbstractModel):
         if params.get("EnvVars") is not None:
             self.EnvVars = []
             for item in params.get("EnvVars"):
-                obj = Authentication()
+                obj = EnvVar()
                 obj._deserialize(item)
                 self.EnvVars.append(obj)
         if params.get("Authentications") is not None:
             self.Authentications = []
             for item in params.get("Authentications"):
-                obj = EnvVar()
+                obj = Authentication()
                 obj._deserialize(item)
                 self.Authentications.append(obj)
         self.FailedAction = params.get("FailedAction")

@@ -122,6 +122,8 @@ class TransmitOralProcessRequest(AbstractModel):
         :type UserVoiceData: str
         :param SessionId: 语音段唯一标识，一个完整语音一个SessionId
         :type SessionId: str
+        :param SoeAppId: 业务应用ID，与账号应用APPID无关，是用来方便客户管理服务的参数，需要结合[控制台](https://console.cloud.tencent.com/soe)使用。
+        :type SoeAppId: str
         """
         self.SeqId = None
         self.IsEnd = None
@@ -129,6 +131,7 @@ class TransmitOralProcessRequest(AbstractModel):
         self.VoiceEncodeType = None
         self.UserVoiceData = None
         self.SessionId = None
+        self.SoeAppId = None
 
 
     def _deserialize(self, params):
@@ -138,6 +141,7 @@ class TransmitOralProcessRequest(AbstractModel):
         self.VoiceEncodeType = params.get("VoiceEncodeType")
         self.UserVoiceData = params.get("UserVoiceData")
         self.SessionId = params.get("SessionId")
+        self.SoeAppId = params.get("SoeAppId")
 
 
 class TransmitOralProcessResponse(AbstractModel):
