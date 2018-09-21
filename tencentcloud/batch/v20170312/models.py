@@ -1314,7 +1314,7 @@ class DescribeJobsResponse(AbstractModel):
     def __init__(self):
         """
         :param JobSet: 作业列表
-        :type JobSet: :class:`tencentcloud.batch.v20170312.models.JobView`
+        :type JobSet: list of JobView
         :param TotalCount: 符合条件的作业数量
         :type TotalCount: int
         :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
@@ -1327,8 +1327,11 @@ class DescribeJobsResponse(AbstractModel):
 
     def _deserialize(self, params):
         if params.get("JobSet") is not None:
-            self.JobSet = JobView()
-            self.JobSet._deserialize(params.get("JobSet"))
+            self.JobSet = []
+            for item in params.get("JobSet"):
+                obj = JobView()
+                obj._deserialize(item)
+                self.JobSet.append(obj)
         self.TotalCount = params.get("TotalCount")
         self.RequestId = params.get("RequestId")
 
@@ -2631,7 +2634,7 @@ class Task(AbstractModel):
         :type FailedAction: str
         :param MaxRetryCount: 任务失败后的最大重试次数，默认为0
         :type MaxRetryCount: int
-        :param Timeout: 任务启动后的超时时间，单位秒，默认为3600秒
+        :param Timeout: 任务启动后的超时时间，单位秒，默认为86400秒
         :type Timeout: int
         """
         self.Application = None
