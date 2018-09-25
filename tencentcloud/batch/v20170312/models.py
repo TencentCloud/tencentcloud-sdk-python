@@ -1538,7 +1538,7 @@ class EnvData(AbstractModel):
 
     def __init__(self):
         """
-        :param InstanceType: CVM实例类型
+        :param InstanceType: CVM实例类型，不能与InstanceTypes同时出现。
         :type InstanceType: str
         :param ImageId: CVM镜像ID
         :type ImageId: str
@@ -1562,6 +1562,8 @@ class EnvData(AbstractModel):
         :type InstanceChargeType: str
         :param InstanceMarketOptions: 实例的市场相关选项，如竞价实例相关参数
         :type InstanceMarketOptions: :class:`tencentcloud.batch.v20170312.models.InstanceMarketOptionsRequest`
+        :param InstanceTypes: CVM实例类型列表，不能与InstanceType同时出现。指定该字段后，计算节点按照机型先后顺序依次尝试创建，直到实例创建成功，结束遍历过程。最多支持10个机型。
+        :type InstanceTypes: list of str
         """
         self.InstanceType = None
         self.ImageId = None
@@ -1575,6 +1577,7 @@ class EnvData(AbstractModel):
         self.EnhancedService = None
         self.InstanceChargeType = None
         self.InstanceMarketOptions = None
+        self.InstanceTypes = None
 
 
     def _deserialize(self, params):
@@ -1607,6 +1610,7 @@ class EnvData(AbstractModel):
         if params.get("InstanceMarketOptions") is not None:
             self.InstanceMarketOptions = InstanceMarketOptionsRequest()
             self.InstanceMarketOptions._deserialize(params.get("InstanceMarketOptions"))
+        self.InstanceTypes = params.get("InstanceTypes")
 
 
 class EnvVar(AbstractModel):
