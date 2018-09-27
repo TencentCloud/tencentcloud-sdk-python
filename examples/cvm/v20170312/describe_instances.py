@@ -55,7 +55,7 @@ try:
     resp = client.DescribeInstances(req)
 
     # 输出json格式的字符串回包
-    print(resp.to_json_string())
+    print(resp.to_json_string(indent=2))
 
     # 也可以取出单个值。
     # 你可以通过官网接口文档或跳转到response对象的定义处查看返回字段的定义。

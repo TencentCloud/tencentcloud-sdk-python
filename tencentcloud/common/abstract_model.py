@@ -19,14 +19,14 @@ import sys
 class AbstractModel(object):
     """Base class for all models."""
 
-    def _serialize(self):
-        """Get all params which are not None."""
+    def _serialize(self, allow_none=False):
+        """Get all params which are not None if None is not allowed."""
         def dfs(obj):
             if isinstance(obj, AbstractModel):
                 d = vars(obj)
-                return {k[0].upper() + k[1:]: dfs(d[k]) for k in d if dfs(d[k]) is not None}
+                return {k[0].upper() + k[1:]: dfs(d[k]) for k in d if allow_none or dfs(d[k]) is not None}
             elif isinstance(obj, list):
-                return [dfs(o) for o in obj if dfs(o) is not None]
+                return [dfs(o) for o in obj if allow_none or dfs(o) is not None]
             else:
                 return obj.encode("UTF-8") if isinstance(obj, type(u"")) and sys.version_info[0] == 2 else obj
 
@@ -35,9 +35,11 @@ class AbstractModel(object):
     def _deserialize(self, params):
         return None
 
-    def to_json_string(self):
-        """Serialize obj to a JSON formatted str, ensure_ascii is true"""
-        return json.dumps(self._serialize(), ensure_ascii=False)
+    def to_json_string(self, *args, **kwargs):
+        """Serialize obj to a JSON formatted str, ensure_ascii is False by default"""
+        if "ensure_ascii" not in kwargs:
+            kwargs["ensure_ascii"] = False
+        return json.dumps(self._serialize(allow_none=True), *args, **kwargs)
 
     def from_json_string(self, jsonStr):
         """Deserialize a JSON formatted str to a Python object"""
