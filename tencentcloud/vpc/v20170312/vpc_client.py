@@ -25,6 +25,34 @@ class VpcClient(AbstractClient):
     _endpoint = 'vpc.tencentcloudapi.com'
 
 
+    def AcceptAttachCcnInstances(self, request):
+        """本接口（AcceptAttachCcnInstances）用于跨账号关联实例时，云联网所有者接受并同意关联操作。
+
+        :param request: 调用AcceptAttachCcnInstances所需参数的结构体。
+        :type request: :class:`tencentcloud.vpc.v20170312.models.AcceptAttachCcnInstancesRequest`
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.AcceptAttachCcnInstancesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("AcceptAttachCcnInstances", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.AcceptAttachCcnInstancesResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise e
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def AddBandwidthPackageResources(self, request):
         """接口用于添加带宽包资源，包括[弹性公网IP](https://cloud.tencent.com/document/product/213/1941)和[负载均衡](https://cloud.tencent.com/document/product/214/517)等
 
@@ -178,7 +206,7 @@ class VpcClient(AbstractClient):
 
 
     def AttachClassicLinkVpc(self, request):
-        """本接口(AttachClassicLinkVpc)用于私有网络和基础网络设备互通。
+        """本接口(AttachClassicLinkVpc)用于创建私有网络和基础网络设备互通。
         * 私有网络和基础网络设备必须在同一个地域。
         * 私有网络和基础网络的区别详见vpc产品文档-<a href="https://cloud.tencent.com/document/product/215/535#2.-.E7.A7.81.E6.9C.89.E7.BD.91.E7.BB.9C.E4.B8.8E.E5.9F.BA.E7.A1.80.E7.BD.91.E7.BB.9C">私有网络与基础网络</a>。
 
@@ -1600,7 +1628,7 @@ class VpcClient(AbstractClient):
 
 
     def DescribeClassicLinkInstances(self, request):
-        """本接口(DescribeClassicLinkInstances)用于私有网络和基础网络设备互通。
+        """本接口(DescribeClassicLinkInstances)用于查询私有网络和基础网络设备互通列表。
 
         :param request: 调用DescribeClassicLinkInstances所需参数的结构体。
         :type request: :class:`tencentcloud.vpc.v20170312.models.DescribeClassicLinkInstancesRequest`
@@ -2960,6 +2988,34 @@ class VpcClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def RejectAttachCcnInstances(self, request):
+        """本接口（RejectAttachCcnInstances）用于跨账号关联实例时，云联网所有者拒绝关联操作。
+
+        :param request: 调用RejectAttachCcnInstances所需参数的结构体。
+        :type request: :class:`tencentcloud.vpc.v20170312.models.RejectAttachCcnInstancesRequest`
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.RejectAttachCcnInstancesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("RejectAttachCcnInstances", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.RejectAttachCcnInstancesResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise e
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def ReleaseAddresses(self, request):
         """本接口 (ReleaseAddresses) 用于释放一个或多个[弹性公网IP](https://cloud.tencent.com/document/product/213/1941)（简称 EIP）。
         * 该操作不可逆，释放后 EIP 关联的 IP 地址将不再属于您的名下。
@@ -3146,6 +3202,34 @@ class VpcClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ReplaceSecurityGroupPolicyResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise e
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ResetAttachCcnInstances(self, request):
+        """本接口（ResetAttachCcnInstances）用于跨账号关联实例申请过期时，重新申请关联操作。
+
+        :param request: 调用ResetAttachCcnInstances所需参数的结构体。
+        :type request: :class:`tencentcloud.vpc.v20170312.models.ResetAttachCcnInstancesRequest`
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.ResetAttachCcnInstancesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ResetAttachCcnInstances", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ResetAttachCcnInstancesResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

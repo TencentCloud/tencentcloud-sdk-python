@@ -129,6 +129,8 @@ class CreateDeviceRequest(AbstractModel):
         :type Isp: int
         :param Imei: IMEI，当产品是NB-IoT产品时，此字段必填
         :type Imei: str
+        :param LoraDevEui: LoRa设备的DevEui，当创建LoRa时，此字段必填
+        :type LoraDevEui: str
         """
         self.ProductId = None
         self.DeviceName = None
@@ -136,6 +138,7 @@ class CreateDeviceRequest(AbstractModel):
         self.DefinedPsk = None
         self.Isp = None
         self.Imei = None
+        self.LoraDevEui = None
 
 
     def _deserialize(self, params):
@@ -147,6 +150,7 @@ class CreateDeviceRequest(AbstractModel):
         self.DefinedPsk = params.get("DefinedPsk")
         self.Isp = params.get("Isp")
         self.Imei = params.get("Imei")
+        self.LoraDevEui = params.get("LoraDevEui")
 
 
 class CreateDeviceResponse(AbstractModel):
@@ -164,6 +168,8 @@ class CreateDeviceResponse(AbstractModel):
         :type DeviceCert: str
         :param DevicePrivateKey: 设备私钥，用于 TLS 建立链接时校验客户端身份，腾讯云后台不保存，请妥善保管。采用非对称加密时返回该参数
         :type DevicePrivateKey: str
+        :param LoraDevEui: LoRa设备的DevEui，当设备是LoRa设备时，会返回该字段
+        :type LoraDevEui: str
         :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
         :type RequestId: str
         """
@@ -171,6 +177,7 @@ class CreateDeviceResponse(AbstractModel):
         self.DevicePsk = None
         self.DeviceCert = None
         self.DevicePrivateKey = None
+        self.LoraDevEui = None
         self.RequestId = None
 
 
@@ -179,6 +186,7 @@ class CreateDeviceResponse(AbstractModel):
         self.DevicePsk = params.get("DevicePsk")
         self.DeviceCert = params.get("DeviceCert")
         self.DevicePrivateKey = params.get("DevicePrivateKey")
+        self.LoraDevEui = params.get("LoraDevEui")
         self.RequestId = params.get("RequestId")
 
 
@@ -258,17 +266,23 @@ class CreateProductResponse(AbstractModel):
         :type ProductName: str
         :param ProductId: 产品 ID，腾讯云生成全局唯一 ID
         :type ProductId: str
+        :param ProductProperties: 产品属性
+        :type ProductProperties: :class:`tencentcloud.iotcloud.v20180614.models.ProductProperties`
         :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
         :type RequestId: str
         """
         self.ProductName = None
         self.ProductId = None
+        self.ProductProperties = None
         self.RequestId = None
 
 
     def _deserialize(self, params):
         self.ProductName = params.get("ProductName")
         self.ProductId = params.get("ProductId")
+        if params.get("ProductProperties") is not None:
+            self.ProductProperties = ProductProperties()
+            self.ProductProperties._deserialize(params.get("ProductProperties"))
         self.RequestId = params.get("RequestId")
 
 
@@ -457,7 +471,7 @@ class DescribeDevicesRequest(AbstractModel):
         :type ProductId: str
         :param Offset: 分页偏移
         :type Offset: int
-        :param Limit: 分页的大小，数值范围 10-250
+        :param Limit: 分页的大小，数值范围 10-100
         :type Limit: int
         :param FirmwareVersion: 设备固件版本号，若不带此参数会返回所有固件版本的设备
         :type FirmwareVersion: str
@@ -625,14 +639,23 @@ class DescribeProductsRequest(AbstractModel):
         :type Offset: int
         :param Limit: 分页大小，当前页面中显示的最大数量，值范围 10-250。
         :type Limit: int
+        :param Filters: 过滤条件
+        :type Filters: list of Filter
         """
         self.Offset = None
         self.Limit = None
+        self.Filters = None
 
 
     def _deserialize(self, params):
         self.Offset = params.get("Offset")
         self.Limit = params.get("Limit")
+        if params.get("Filters") is not None:
+            self.Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self.Filters.append(obj)
 
 
 class DescribeProductsResponse(AbstractModel):
@@ -835,6 +858,8 @@ class DeviceInfo(AbstractModel):
         :type ConnIP: int
         :param LastUpdateTime: 设备最后更新时间
         :type LastUpdateTime: int
+        :param LoraDevEui: LoRa设备的dev eui
+        :type LoraDevEui: str
         """
         self.DeviceName = None
         self.Online = None
@@ -849,6 +874,7 @@ class DeviceInfo(AbstractModel):
         self.NbiotDeviceID = None
         self.ConnIP = None
         self.LastUpdateTime = None
+        self.LoraDevEui = None
 
 
     def _deserialize(self, params):
@@ -870,6 +896,7 @@ class DeviceInfo(AbstractModel):
         self.NbiotDeviceID = params.get("NbiotDeviceID")
         self.ConnIP = params.get("ConnIP")
         self.LastUpdateTime = params.get("LastUpdateTime")
+        self.LoraDevEui = params.get("LoraDevEui")
 
 
 class DeviceTag(AbstractModel):
@@ -895,6 +922,27 @@ class DeviceTag(AbstractModel):
         self.Tag = params.get("Tag")
         self.Type = params.get("Type")
         self.Value = params.get("Value")
+
+
+class Filter(AbstractModel):
+    """描述键值对过滤器，用于条件过滤查询。例如过滤ID、名称、状态等
+
+    """
+
+    def __init__(self):
+        """
+        :param Name: 过滤键的名称
+        :type Name: str
+        :param Values: 一个或者多个过滤值
+        :type Values: list of str
+        """
+        self.Name = None
+        self.Values = None
+
+
+    def _deserialize(self, params):
+        self.Name = params.get("Name")
+        self.Values = params.get("Values")
 
 
 class GetDeviceShadowRequest(AbstractModel):
@@ -1043,12 +1091,18 @@ class ProductProperties(AbstractModel):
         :type ProductType: int
         :param Format: 数据格式，取值为json或者custom，默认值是json
         :type Format: str
+        :param Platform: 产品所属平台，默认值是0
+        :type Platform: str
+        :param Appeui: LoRa产品运营侧APPEUI，只有LoRa产品需要填写
+        :type Appeui: str
         """
         self.ProductDescription = None
         self.EncryptionType = None
         self.Region = None
         self.ProductType = None
         self.Format = None
+        self.Platform = None
+        self.Appeui = None
 
 
     def _deserialize(self, params):
@@ -1057,6 +1111,8 @@ class ProductProperties(AbstractModel):
         self.Region = params.get("Region")
         self.ProductType = params.get("ProductType")
         self.Format = params.get("Format")
+        self.Platform = params.get("Platform")
+        self.Appeui = params.get("Appeui")
 
 
 class PublishMessageRequest(AbstractModel):

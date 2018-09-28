@@ -25,6 +25,34 @@ class DcdbClient(AbstractClient):
     _endpoint = 'dcdb.tencentcloudapi.com'
 
 
+    def CloneAccount(self, request):
+        """本接口（CloneAccount）用于克隆实例账户。
+
+        :param request: 调用CloneAccount所需参数的结构体。
+        :type request: :class:`tencentcloud.dcdb.v20180411.models.CloneAccountRequest`
+        :rtype: :class:`tencentcloud.dcdb.v20180411.models.CloneAccountResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("CloneAccount", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CloneAccountResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise e
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def CloseDBExtranetAccess(self, request):
         """本接口(CloseDBExtranetAccess)用于关闭云数据库实例的外网访问。关闭外网访问后，外网地址将不可访问，查询实例列表接口将不返回对应实例的外网域名和端口信息。
 
@@ -602,6 +630,34 @@ class DcdbClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeShardSpecResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise e
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeSqlLogs(self, request):
+        """本接口（DescribeSqlLogs）用于获取实例SQL日志。
+
+        :param request: 调用DescribeSqlLogs所需参数的结构体。
+        :type request: :class:`tencentcloud.dcdb.v20180411.models.DescribeSqlLogsRequest`
+        :rtype: :class:`tencentcloud.dcdb.v20180411.models.DescribeSqlLogsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeSqlLogs", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeSqlLogsResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

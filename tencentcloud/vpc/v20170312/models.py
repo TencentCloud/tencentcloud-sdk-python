@@ -16,6 +16,49 @@
 from tencentcloud.common.abstract_model import AbstractModel
 
 
+class AcceptAttachCcnInstancesRequest(AbstractModel):
+    """AcceptAttachCcnInstances请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param CcnId: CCN实例ID。形如：ccn-f49l6u0z。
+        :type CcnId: str
+        :param Instances: 接受关联实例列表。
+        :type Instances: list of CcnInstance
+        """
+        self.CcnId = None
+        self.Instances = None
+
+
+    def _deserialize(self, params):
+        self.CcnId = params.get("CcnId")
+        if params.get("Instances") is not None:
+            self.Instances = []
+            for item in params.get("Instances"):
+                obj = CcnInstance()
+                obj._deserialize(item)
+                self.Instances.append(obj)
+
+
+class AcceptAttachCcnInstancesResponse(AbstractModel):
+    """AcceptAttachCcnInstances返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class AccountAttribute(AbstractModel):
     """账户属性对象
 
@@ -114,6 +157,8 @@ class Address(AbstractModel):
         :type IsEipDirectConnection: bool
         :param AddressType: eip资源类型，包括"CalcIP","WanIP","EIP","AnycastEIP"。其中"CalcIP"表示设备ip，“WanIP”表示普通公网ip，“EIP”表示弹性公网ip，“AnycastEip”表示加速EIP
         :type AddressType: str
+        :param CascadeRelease: eip是否在解绑后自动释放。true表示eip将会在解绑后自动释放，false表示eip在解绑后不会自动释放
+        :type CascadeRelease: bool
         """
         self.AddressId = None
         self.AddressName = None
@@ -127,6 +172,7 @@ class Address(AbstractModel):
         self.IsBlocked = None
         self.IsEipDirectConnection = None
         self.AddressType = None
+        self.CascadeRelease = None
 
 
     def _deserialize(self, params):
@@ -142,6 +188,7 @@ class Address(AbstractModel):
         self.IsBlocked = params.get("IsBlocked")
         self.IsEipDirectConnection = params.get("IsEipDirectConnection")
         self.AddressType = params.get("AddressType")
+        self.CascadeRelease = params.get("CascadeRelease")
 
 
 class AddressTemplate(AbstractModel):
@@ -374,9 +421,12 @@ class AttachCcnInstancesRequest(AbstractModel):
         :type CcnId: str
         :param Instances: 关联网络实例列表
         :type Instances: list of CcnInstance
+        :param CcnUin: CCN所属UIN（根账号），默认当前账号所属UIN
+        :type CcnUin: str
         """
         self.CcnId = None
         self.Instances = None
+        self.CcnUin = None
 
 
     def _deserialize(self, params):
@@ -387,6 +437,7 @@ class AttachCcnInstancesRequest(AbstractModel):
                 obj = CcnInstance()
                 obj._deserialize(item)
                 self.Instances.append(obj)
+        self.CcnUin = params.get("CcnUin")
 
 
 class AttachCcnInstancesResponse(AbstractModel):
@@ -565,8 +616,66 @@ class CCN(AbstractModel):
         self.State = params.get("State")
 
 
+class CcnAttachedInstance(AbstractModel):
+    """云联网（CCN）关联实例（Instance）对象
+
+    """
+
+    def __init__(self):
+        """
+        :param CcnId: 云联网实例ID
+        :type CcnId: str
+        :param InstanceType: 关联实例类型，可选值：VPC、DIRECTCONNECT
+        :type InstanceType: str
+        :param InstanceId: 关联实例ID
+        :type InstanceId: str
+        :param InstanceName: 关联实例名称
+        :type InstanceName: str
+        :param InstanceRegion: 关联实例所属大区，例如：ap-guangzhou
+        :type InstanceRegion: str
+        :param InstanceUin: 关联实例所属UIN（根账号）
+        :type InstanceUin: str
+        :param CidrBlock: 关联实例CIDR
+        :type CidrBlock: list of str
+        :param State: 关联实例状态：
+PENDING：申请中
+ACTIVE：已连接
+EXPIRED：已过期
+REJECTED：已拒绝
+DELETED：已删除
+        :type State: str
+        :param AttachedTime: 关联时间
+        :type AttachedTime: str
+        :param CcnUin: 云联网所属UIN（根账号）
+        :type CcnUin: str
+        """
+        self.CcnId = None
+        self.InstanceType = None
+        self.InstanceId = None
+        self.InstanceName = None
+        self.InstanceRegion = None
+        self.InstanceUin = None
+        self.CidrBlock = None
+        self.State = None
+        self.AttachedTime = None
+        self.CcnUin = None
+
+
+    def _deserialize(self, params):
+        self.CcnId = params.get("CcnId")
+        self.InstanceType = params.get("InstanceType")
+        self.InstanceId = params.get("InstanceId")
+        self.InstanceName = params.get("InstanceName")
+        self.InstanceRegion = params.get("InstanceRegion")
+        self.InstanceUin = params.get("InstanceUin")
+        self.CidrBlock = params.get("CidrBlock")
+        self.State = params.get("State")
+        self.AttachedTime = params.get("AttachedTime")
+        self.CcnUin = params.get("CcnUin")
+
+
 class CcnInstance(AbstractModel):
-    """云联网（CCN）关联的实例（Instance）对象
+    """云联网（CCN）关联实例（Instance）对象。
 
     """
 
@@ -576,30 +685,18 @@ class CcnInstance(AbstractModel):
         :type InstanceId: str
         :param InstanceRegion: 关联实例ID所属大区，例如：ap-guangzhou
         :type InstanceRegion: str
-        :param CcnId: 云联网实例ID
-        :type CcnId: str
         :param InstanceType: 关联实例类型，可选值：VPC、DIRECTCONNECT
         :type InstanceType: str
-        :param InstanceName: 关联实例名称
-        :type InstanceName: str
-        :param CidrBlock: 关联实例CIDR
-        :type CidrBlock: list of str
         """
         self.InstanceId = None
         self.InstanceRegion = None
-        self.CcnId = None
         self.InstanceType = None
-        self.InstanceName = None
-        self.CidrBlock = None
 
 
     def _deserialize(self, params):
         self.InstanceId = params.get("InstanceId")
         self.InstanceRegion = params.get("InstanceRegion")
-        self.CcnId = params.get("CcnId")
         self.InstanceType = params.get("InstanceType")
-        self.InstanceName = params.get("InstanceName")
-        self.CidrBlock = params.get("CidrBlock")
 
 
 class CcnRegionBandwidthLimit(AbstractModel):
@@ -646,6 +743,8 @@ class CcnRoute(AbstractModel):
         :type UpdateTime: str
         :param Enabled: 路由是否启用
         :type Enabled: bool
+        :param InstanceUin: 关联实例所属UIN（根账号）
+        :type InstanceUin: str
         """
         self.RouteId = None
         self.DestinationCidrBlock = None
@@ -655,6 +754,7 @@ class CcnRoute(AbstractModel):
         self.InstanceRegion = None
         self.UpdateTime = None
         self.Enabled = None
+        self.InstanceUin = None
 
 
     def _deserialize(self, params):
@@ -666,6 +766,7 @@ class CcnRoute(AbstractModel):
         self.InstanceRegion = params.get("InstanceRegion")
         self.UpdateTime = params.get("UpdateTime")
         self.Enabled = params.get("Enabled")
+        self.InstanceUin = params.get("InstanceUin")
 
 
 class ClassicLinkInstance(AbstractModel):
@@ -1597,12 +1698,15 @@ class CreateVpnGatewayRequest(AbstractModel):
         :type InstanceChargeType: str
         :param InstanceChargePrepaid: 预付费模式，即包年包月相关参数设置。通过该参数可以指定包年包月实例的购买时长、是否设置自动续费等属性。若指定实例的付费模式为预付费则该参数必传。
         :type InstanceChargePrepaid: :class:`tencentcloud.vpc.v20170312.models.InstanceChargePrepaid`
+        :param Zone: 可用区，如：ap-guangzhou-2。
+        :type Zone: str
         """
         self.VpcId = None
         self.VpnGatewayName = None
         self.InternetMaxBandwidthOut = None
         self.InstanceChargeType = None
         self.InstanceChargePrepaid = None
+        self.Zone = None
 
 
     def _deserialize(self, params):
@@ -1613,6 +1717,7 @@ class CreateVpnGatewayRequest(AbstractModel):
         if params.get("InstanceChargePrepaid") is not None:
             self.InstanceChargePrepaid = InstanceChargePrepaid()
             self.InstanceChargePrepaid._deserialize(params.get("InstanceChargePrepaid"))
+        self.Zone = params.get("Zone")
 
 
 class CreateVpnGatewayResponse(AbstractModel):
@@ -2684,22 +2789,35 @@ class DescribeCcnAttachedInstancesRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param CcnId: CCN实例ID。形如：ccn-f49l6u0z。
-        :type CcnId: str
         :param Offset: 偏移量
         :type Offset: int
         :param Limit: 返回数量
         :type Limit: int
+        :param Filters: 过滤条件：
+<li>ccn-id - String -（过滤条件）CCN实例ID。</li>
+<li>instance-type - String -（过滤条件）关联实例类型。</li>
+<li>instance-region - String -（过滤条件）关联实例所属地域。</li>
+<li>instance-id - String -（过滤条件）关联实例实例ID。</li>
+        :type Filters: list of Filter
+        :param CcnId: 云联网实例ID
+        :type CcnId: str
         """
-        self.CcnId = None
         self.Offset = None
         self.Limit = None
+        self.Filters = None
+        self.CcnId = None
 
 
     def _deserialize(self, params):
-        self.CcnId = params.get("CcnId")
         self.Offset = params.get("Offset")
         self.Limit = params.get("Limit")
+        if params.get("Filters") is not None:
+            self.Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self.Filters.append(obj)
+        self.CcnId = params.get("CcnId")
 
 
 class DescribeCcnAttachedInstancesResponse(AbstractModel):
@@ -2711,8 +2829,8 @@ class DescribeCcnAttachedInstancesResponse(AbstractModel):
         """
         :param TotalCount: 符合条件的对象数。
         :type TotalCount: int
-        :param InstanceSet: 关联实例列表
-        :type InstanceSet: list of CcnInstance
+        :param InstanceSet: 关联实例列表。
+        :type InstanceSet: list of CcnAttachedInstance
         :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
         :type RequestId: str
         """
@@ -2726,7 +2844,7 @@ class DescribeCcnAttachedInstancesResponse(AbstractModel):
         if params.get("InstanceSet") is not None:
             self.InstanceSet = []
             for item in params.get("InstanceSet"):
-                obj = CcnInstance()
+                obj = CcnAttachedInstance()
                 obj._deserialize(item)
                 self.InstanceSet.append(obj)
         self.RequestId = params.get("RequestId")
@@ -3792,7 +3910,14 @@ class DescribeVpnGatewaysRequest(AbstractModel):
         """
         :param VpnGatewayIds: VPN网关实例ID。形如：vpngw-f49l6u0z。每次请求的实例的上限为100。参数不支持同时指定VpnGatewayIds和Filters。
         :type VpnGatewayIds: list of str
-        :param Filters: 过滤器对象属性
+        :param Filters: 过滤条件，参数不支持同时指定VpnGatewayIds和Filters。
+<li>vpc-id - String - （过滤条件）VPC实例ID形如：vpc-f49l6u0z。</li>
+<li>vpn-gateway-id - String - （过滤条件）VPN实例ID形如：vpngw-5aluhh9t。</li>
+<li>vpn-gateway-name - String - （过滤条件）VPN实例名称。</li>
+<li>type - String - （过滤条件）VPN网关类型：'IPSEC', 'SSL'。</li>
+<li>public-ip-address- String - （过滤条件）公网IP。</li>
+<li>renew-flag - String - （过滤条件）网关续费类型，手动续费：'NOTIFY_AND_MANUAL_RENEW'、自动续费：'NOTIFY_AND_AUTO_RENEW'。</li>
+<li>zone - String - （过滤条件）VPN所在可用区，形如：ap-guangzhou-2。</li>
         :type Filters: list of FilterObject
         :param Offset: 偏移量
         :type Offset: int
@@ -5661,6 +5786,49 @@ class Quota(AbstractModel):
         self.QuotaLimit = params.get("QuotaLimit")
 
 
+class RejectAttachCcnInstancesRequest(AbstractModel):
+    """RejectAttachCcnInstances请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param CcnId: CCN实例ID。形如：ccn-f49l6u0z。
+        :type CcnId: str
+        :param Instances: 拒绝关联实例列表。
+        :type Instances: list of CcnInstance
+        """
+        self.CcnId = None
+        self.Instances = None
+
+
+    def _deserialize(self, params):
+        self.CcnId = params.get("CcnId")
+        if params.get("Instances") is not None:
+            self.Instances = []
+            for item in params.get("Instances"):
+                obj = CcnInstance()
+                obj._deserialize(item)
+                self.Instances.append(obj)
+
+
+class RejectAttachCcnInstancesResponse(AbstractModel):
+    """RejectAttachCcnInstances返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class ReleaseAddressesRequest(AbstractModel):
     """ReleaseAddresses请求参数结构体
 
@@ -5926,6 +6094,53 @@ class ReplaceSecurityGroupPolicyRequest(AbstractModel):
 
 class ReplaceSecurityGroupPolicyResponse(AbstractModel):
     """ReplaceSecurityGroupPolicy返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class ResetAttachCcnInstancesRequest(AbstractModel):
+    """ResetAttachCcnInstances请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param CcnId: CCN实例ID。形如：ccn-f49l6u0z。
+        :type CcnId: str
+        :param CcnUin: CCN所属UIN（根账号）。
+        :type CcnUin: str
+        :param Instances: 重新申请关联网络实例列表。
+        :type Instances: list of CcnInstance
+        """
+        self.CcnId = None
+        self.CcnUin = None
+        self.Instances = None
+
+
+    def _deserialize(self, params):
+        self.CcnId = params.get("CcnId")
+        self.CcnUin = params.get("CcnUin")
+        if params.get("Instances") is not None:
+            self.Instances = []
+            for item in params.get("Instances"):
+                obj = CcnInstance()
+                obj._deserialize(item)
+                self.Instances.append(obj)
+
+
+class ResetAttachCcnInstancesResponse(AbstractModel):
+    """ResetAttachCcnInstances返回参数结构体
 
     """
 
@@ -6847,6 +7062,8 @@ class VpnGateway(AbstractModel):
         :type NewPurchasePlan: str
         :param RestrictState: 网关计费装，PROTECTIVELY_ISOLATED：被安全隔离的实例，NORMAL：正常。
         :type RestrictState: str
+        :param Zone: 可用区，如：ap-guangzhou-2
+        :type Zone: str
         """
         self.VpnGatewayId = None
         self.VpcId = None
@@ -6862,6 +7079,7 @@ class VpnGateway(AbstractModel):
         self.IsAddressBlocked = None
         self.NewPurchasePlan = None
         self.RestrictState = None
+        self.Zone = None
 
 
     def _deserialize(self, params):
@@ -6879,3 +7097,4 @@ class VpnGateway(AbstractModel):
         self.IsAddressBlocked = params.get("IsAddressBlocked")
         self.NewPurchasePlan = params.get("NewPurchasePlan")
         self.RestrictState = params.get("RestrictState")
+        self.Zone = params.get("Zone")

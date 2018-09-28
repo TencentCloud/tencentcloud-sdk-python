@@ -16,6 +16,64 @@
 from tencentcloud.common.abstract_model import AbstractModel
 
 
+class CloneAccountRequest(AbstractModel):
+    """CloneAccount请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param InstanceId: 实例ID
+        :type InstanceId: str
+        :param SrcUser: 源用户账户名
+        :type SrcUser: str
+        :param SrcHost: 源用户HOST
+        :type SrcHost: str
+        :param DstUser: 目的用户账户名
+        :type DstUser: str
+        :param DstHost: 目的用户HOST
+        :type DstHost: str
+        :param DstDesc: 目的用户账户描述
+        :type DstDesc: str
+        """
+        self.InstanceId = None
+        self.SrcUser = None
+        self.SrcHost = None
+        self.DstUser = None
+        self.DstHost = None
+        self.DstDesc = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.SrcUser = params.get("SrcUser")
+        self.SrcHost = params.get("SrcHost")
+        self.DstUser = params.get("DstUser")
+        self.DstHost = params.get("DstHost")
+        self.DstDesc = params.get("DstDesc")
+
+
+class CloneAccountResponse(AbstractModel):
+    """CloneAccount返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param FlowId: 异步任务流程ID。
+        :type FlowId: int
+        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :type RequestId: str
+        """
+        self.FlowId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.FlowId = params.get("FlowId")
+        self.RequestId = params.get("RequestId")
+
+
 class CloseDBExtranetAccessRequest(AbstractModel):
     """CloseDBExtranetAccess请求参数结构体
 
@@ -88,21 +146,21 @@ class CopyAccountPrivilegesRequest(AbstractModel):
         :type SrcUserName: str
         :param SrcHost: 源用户允许的访问 host
         :type SrcHost: str
-        :param SrcReadOnly: 源账号的 ReadOnly 属性
-        :type SrcReadOnly: str
         :param DstUserName: 目的用户名
         :type DstUserName: str
         :param DstHost: 目的用户允许的访问 host
         :type DstHost: str
+        :param SrcReadOnly: 源账号的 ReadOnly 属性
+        :type SrcReadOnly: str
         :param DstReadOnly: 目的账号的 ReadOnly 属性
         :type DstReadOnly: str
         """
         self.InstanceId = None
         self.SrcUserName = None
         self.SrcHost = None
-        self.SrcReadOnly = None
         self.DstUserName = None
         self.DstHost = None
+        self.SrcReadOnly = None
         self.DstReadOnly = None
 
 
@@ -110,9 +168,9 @@ class CopyAccountPrivilegesRequest(AbstractModel):
         self.InstanceId = params.get("InstanceId")
         self.SrcUserName = params.get("SrcUserName")
         self.SrcHost = params.get("SrcHost")
-        self.SrcReadOnly = params.get("SrcReadOnly")
         self.DstUserName = params.get("DstUserName")
         self.DstHost = params.get("DstHost")
+        self.SrcReadOnly = params.get("SrcReadOnly")
         self.DstReadOnly = params.get("DstReadOnly")
 
 
@@ -312,6 +370,8 @@ class DBAccount(AbstractModel):
         :type UpdateTime: str
         :param ReadOnly: 只读标记，0：否， 1：该账号的sql请求优先选择备机执行，备机不可用时选择主机执行，2：优先选择备机执行，备机不可用时操作失败。
         :type ReadOnly: int
+        :param DelayThresh: 该字段对只读帐号有意义，表示选择主备延迟小于该值的备机
+        :type DelayThresh: int
         """
         self.UserName = None
         self.Host = None
@@ -319,6 +379,7 @@ class DBAccount(AbstractModel):
         self.CreateTime = None
         self.UpdateTime = None
         self.ReadOnly = None
+        self.DelayThresh = None
 
 
     def _deserialize(self, params):
@@ -328,6 +389,7 @@ class DBAccount(AbstractModel):
         self.CreateTime = params.get("CreateTime")
         self.UpdateTime = params.get("UpdateTime")
         self.ReadOnly = params.get("ReadOnly")
+        self.DelayThresh = params.get("DelayThresh")
 
 
 class DBBackupTimeConfig(AbstractModel):
@@ -396,18 +458,40 @@ class DBInstance(AbstractModel):
         :type UpdateTime: str
         :param AutoRenewFlag: 自动续费标志：0 否，1 是
         :type AutoRenewFlag: int
-        :param Pid: 产品类型 Id
-        :type Pid: int
         :param PeriodEndTime: 实例到期时间，格式为 2006-01-02 15:04:05
         :type PeriodEndTime: str
         :param Uin: 实例所属账号
         :type Uin: str
-        :param TdsqlVersion: TDSQL 版本信息，如 10.1.9
+        :param TdsqlVersion: TDSQL 版本信息
         :type TdsqlVersion: str
         :param Memory: 实例内存大小，单位 GB
         :type Memory: int
         :param Storage: 实例存储大小，单位 GB
         :type Storage: int
+        :param UniqueVpcId: 字符串型的私有网络Id
+        :type UniqueVpcId: str
+        :param UniqueSubnetId: 字符串型的私有网络子网Id
+        :type UniqueSubnetId: str
+        :param OriginSerialId: 原始实例ID（过时字段，请勿依赖该值）
+        :type OriginSerialId: str
+        :param NodeCount: 节点数，2为一主一从，3为一主二从
+        :type NodeCount: int
+        :param IsTmp: 是否临时实例，0为否，非0为是
+        :type IsTmp: int
+        :param ExclusterId: 独享集群Id，为空表示为普通实例
+        :type ExclusterId: str
+        :param Id: 数字实例Id（过时字段，请勿依赖该值）
+        :type Id: int
+        :param Pid: 产品类型 Id
+        :type Pid: int
+        :param Qps: 最大 Qps 值
+        :type Qps: int
+        :param Paymode: 付费模式
+        :type Paymode: str
+        :param Locker: 实例处于异步任务时的异步任务流程ID
+        :type Locker: int
+        :param StatusDesc: 实例目前运行状态描述
+        :type StatusDesc: str
         """
         self.InstanceId = None
         self.InstanceName = None
@@ -426,12 +510,23 @@ class DBInstance(AbstractModel):
         self.CreateTime = None
         self.UpdateTime = None
         self.AutoRenewFlag = None
-        self.Pid = None
         self.PeriodEndTime = None
         self.Uin = None
         self.TdsqlVersion = None
         self.Memory = None
         self.Storage = None
+        self.UniqueVpcId = None
+        self.UniqueSubnetId = None
+        self.OriginSerialId = None
+        self.NodeCount = None
+        self.IsTmp = None
+        self.ExclusterId = None
+        self.Id = None
+        self.Pid = None
+        self.Qps = None
+        self.Paymode = None
+        self.Locker = None
+        self.StatusDesc = None
 
 
     def _deserialize(self, params):
@@ -452,12 +547,23 @@ class DBInstance(AbstractModel):
         self.CreateTime = params.get("CreateTime")
         self.UpdateTime = params.get("UpdateTime")
         self.AutoRenewFlag = params.get("AutoRenewFlag")
-        self.Pid = params.get("Pid")
         self.PeriodEndTime = params.get("PeriodEndTime")
         self.Uin = params.get("Uin")
         self.TdsqlVersion = params.get("TdsqlVersion")
         self.Memory = params.get("Memory")
         self.Storage = params.get("Storage")
+        self.UniqueVpcId = params.get("UniqueVpcId")
+        self.UniqueSubnetId = params.get("UniqueSubnetId")
+        self.OriginSerialId = params.get("OriginSerialId")
+        self.NodeCount = params.get("NodeCount")
+        self.IsTmp = params.get("IsTmp")
+        self.ExclusterId = params.get("ExclusterId")
+        self.Id = params.get("Id")
+        self.Pid = params.get("Pid")
+        self.Qps = params.get("Qps")
+        self.Paymode = params.get("Paymode")
+        self.Locker = params.get("Locker")
+        self.StatusDesc = params.get("StatusDesc")
 
 
 class DBParamValue(AbstractModel):
@@ -492,26 +598,30 @@ class Deal(AbstractModel):
         :type DealName: str
         :param OwnerUin: 所属账号
         :type OwnerUin: str
-        :param Quantity: 商品数量
-        :type Quantity: int
+        :param Count: 商品数量
+        :type Count: int
         :param FlowId: 关联的流程 Id，可用于查询流程执行状态
         :type FlowId: int
         :param InstanceIds: 只有创建实例的订单会填充该字段，表示该订单创建的实例的 ID。
         :type InstanceIds: list of str
+        :param PayMode: 付费模式，0后付费/1预付费
+        :type PayMode: int
         """
         self.DealName = None
         self.OwnerUin = None
-        self.Quantity = None
+        self.Count = None
         self.FlowId = None
         self.InstanceIds = None
+        self.PayMode = None
 
 
     def _deserialize(self, params):
         self.DealName = params.get("DealName")
         self.OwnerUin = params.get("OwnerUin")
-        self.Quantity = params.get("Quantity")
+        self.Count = params.get("Count")
         self.FlowId = params.get("FlowId")
         self.InstanceIds = params.get("InstanceIds")
+        self.PayMode = params.get("PayMode")
 
 
 class DeleteAccountRequest(AbstractModel):
@@ -768,12 +878,12 @@ class DescribeDBInstancesRequest(AbstractModel):
         :type SearchKey: str
         :param ProjectIds: 按项目 ID 查询
         :type ProjectIds: list of int
-        :param IsFilterVpc: 是否根据 VPC 网络来搜索，0 为否，1 为是
-        :type IsFilterVpc: int
+        :param IsFilterVpc: 是否根据 VPC 网络来搜索
+        :type IsFilterVpc: bool
         :param VpcId: 私有网络 ID， IsFilterVpc 为 1 时有效
-        :type VpcId: int
+        :type VpcId: str
         :param SubnetId: 私有网络的子网 ID， IsFilterVpc 为 1 时有效
-        :type SubnetId: int
+        :type SubnetId: str
         :param OrderBy: 排序字段， projectId， createtime， instancename 三者之一
         :type OrderBy: str
         :param OrderByType: 排序类型， desc 或者 asc
@@ -784,6 +894,10 @@ class DescribeDBInstancesRequest(AbstractModel):
         :type Limit: int
         :param OriginSerialIds: 按 OriginSerialId 查询
         :type OriginSerialIds: list of str
+        :param IsFilterExcluster: 标识是否使用ExclusterType字段, false不使用，true使用
+        :type IsFilterExcluster: bool
+        :param ExclusterType: 1非独享集群，2独享集群， 0全部
+        :type ExclusterType: int
         """
         self.InstanceIds = None
         self.SearchName = None
@@ -797,6 +911,8 @@ class DescribeDBInstancesRequest(AbstractModel):
         self.Offset = None
         self.Limit = None
         self.OriginSerialIds = None
+        self.IsFilterExcluster = None
+        self.ExclusterType = None
 
 
     def _deserialize(self, params):
@@ -812,6 +928,8 @@ class DescribeDBInstancesRequest(AbstractModel):
         self.Offset = params.get("Offset")
         self.Limit = params.get("Limit")
         self.OriginSerialIds = params.get("OriginSerialIds")
+        self.IsFilterExcluster = params.get("IsFilterExcluster")
+        self.ExclusterType = params.get("ExclusterType")
 
 
 class DescribeDBInstancesResponse(AbstractModel):
@@ -822,7 +940,7 @@ class DescribeDBInstancesResponse(AbstractModel):
     def __init__(self):
         """
         :param TotalCount: 符合条件的实例数量
-        :type TotalCount: list of int non-negative
+        :type TotalCount: int
         :param Instances: 实例详细信息列表
         :type Instances: list of DBInstance
         :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
@@ -880,10 +998,10 @@ class DescribeDBLogFilesResponse(AbstractModel):
         :type Total: int
         :param Files: 包含uri、length、mtime（修改时间）等信息
         :type Files: list of LogFileInfo
-        :param Vpcprefix: 如果是VPC网络的实例，做用本前缀加上URI为下载地址
-        :type Vpcprefix: str
-        :param Normalprefix: 如果是普通网络的实例，做用本前缀加上URI为下载地址
-        :type Normalprefix: str
+        :param VpcPrefix: 如果是VPC网络的实例，做用本前缀加上URI为下载地址
+        :type VpcPrefix: str
+        :param NormalPrefix: 如果是普通网络的实例，做用本前缀加上URI为下载地址
+        :type NormalPrefix: str
         :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
         :type RequestId: str
         """
@@ -891,8 +1009,8 @@ class DescribeDBLogFilesResponse(AbstractModel):
         self.Type = None
         self.Total = None
         self.Files = None
-        self.Vpcprefix = None
-        self.Normalprefix = None
+        self.VpcPrefix = None
+        self.NormalPrefix = None
         self.RequestId = None
 
 
@@ -906,8 +1024,8 @@ class DescribeDBLogFilesResponse(AbstractModel):
                 obj = LogFileInfo()
                 obj._deserialize(item)
                 self.Files.append(obj)
-        self.Vpcprefix = params.get("Vpcprefix")
-        self.Normalprefix = params.get("Normalprefix")
+        self.VpcPrefix = params.get("VpcPrefix")
+        self.NormalPrefix = params.get("NormalPrefix")
         self.RequestId = params.get("RequestId")
 
 
@@ -1301,13 +1419,13 @@ class DescribeDBSlowLogsResponse(AbstractModel):
         :param Data: 慢查询日志数据
         :type Data: list of SlowLogData
         :param LockTimeSum: 所有语句锁时间总和
-        :type LockTimeSum: str
+        :type LockTimeSum: float
         :param QueryCount: 所有语句查询总次数
-        :type QueryCount: str
+        :type QueryCount: int
         :param Total: 总记录数
-        :type Total: str
+        :type Total: int
         :param QueryTimeSum: 所有语句查询时间总和
-        :type QueryTimeSum: str
+        :type QueryTimeSum: float
         :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
         :type RequestId: str
         """
@@ -1603,6 +1721,77 @@ class DescribeSaleInfoResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeSqlLogsRequest(AbstractModel):
+    """DescribeSqlLogs请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param InstanceId: 实例 ID，形如：tdsql-ow728lmc，可以通过 DescribeDBInstances 查询实例详情获得。
+        :type InstanceId: str
+        :param Offset: SQL日志偏移。
+        :type Offset: int
+        :param Limit: 拉取数量（0-1000，为0时拉取总数信息）。
+        :type Limit: int
+        """
+        self.InstanceId = None
+        self.Offset = None
+        self.Limit = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+
+
+class DescribeSqlLogsResponse(AbstractModel):
+    """DescribeSqlLogs返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param TotalCount: 当前消息队列中的sql日志条目数。
+        :type TotalCount: int
+        :param StartOffset: 消息队列中的sql日志起始偏移。
+        :type StartOffset: int
+        :param EndOffset: 消息队列中的sql日志结束偏移。
+        :type EndOffset: int
+        :param Offset: 返回的第一条sql日志的偏移。
+        :type Offset: int
+        :param Count: 返回的sql日志数量。
+        :type Count: int
+        :param SqlItems: Sql日志列表。
+        :type SqlItems: list of SqlLogItem
+        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.StartOffset = None
+        self.EndOffset = None
+        self.Offset = None
+        self.Count = None
+        self.SqlItems = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        self.StartOffset = params.get("StartOffset")
+        self.EndOffset = params.get("EndOffset")
+        self.Offset = params.get("Offset")
+        self.Count = params.get("Count")
+        if params.get("SqlItems") is not None:
+            self.SqlItems = []
+            for item in params.get("SqlItems"):
+                obj = SqlLogItem()
+                obj._deserialize(item)
+                self.SqlItems.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeUpgradePriceRequest(AbstractModel):
     """DescribeUpgradePrice请求参数结构体
 
@@ -1670,27 +1859,27 @@ class GrantAccountPrivilegesRequest(AbstractModel):
         :type Host: str
         :param DbName: 数据库名。如果为 \*，表示设置全局权限（即 \*.\*），此时忽略 Type 和 Object 参数
         :type DbName: str
-        :param Type: 类型,可以填入 table 、 view 、 proc 、 func 和 \*。当 DbName 为具体数据库名，Type为 \* 时，表示设置该数据库权限（即db.\*），此时忽略 Object 参数
-        :type Type: str
-        :param Object: 具体的 Type 的名称，比如 Type 为 table 时就是具体的表名。DbName 和 Type 都为具体名称，则 Object 表示具体对象名，不能为 \* 或者为空
-        :type Object: str
-        :param ColName: 当 Type=table 时，ColName 为 \* 表示对表授权，如果为具体字段名，表示对字段授权
-        :type ColName: str
         :param Privileges: 全局权限： SELECT，INSERT，UPDATE，DELETE，CREATE，DROP，REFERENCES，INDEX，ALTER，CREATE TEMPORARY TABLES，LOCK TABLES，EXECUTE，CREATE VIEW，SHOW VIEW，CREATE ROUTINE，ALTER ROUTINE，EVENT，TRIGGER，SHOW DATABASES 
 库权限： SELECT，INSERT，UPDATE，DELETE，CREATE，DROP，REFERENCES，INDEX，ALTER，CREATE TEMPORARY TABLES，LOCK TABLES，EXECUTE，CREATE VIEW，SHOW VIEW，CREATE ROUTINE，ALTER ROUTINE，EVENT，TRIGGER 
 表/视图权限： SELECT，INSERT，UPDATE，DELETE，CREATE，DROP，REFERENCES，INDEX，ALTER，CREATE VIEW，SHOW VIEW，TRIGGER 
 存储过程/函数权限： ALTER ROUTINE，EXECUTE 
 字段权限： INSERT，REFERENCES，SELECT，UPDATE
         :type Privileges: list of str
+        :param Type: 类型,可以填入 table 、 view 、 proc 、 func 和 \*。当 DbName 为具体数据库名，Type为 \* 时，表示设置该数据库权限（即db.\*），此时忽略 Object 参数
+        :type Type: str
+        :param Object: 具体的 Type 的名称，比如 Type 为 table 时就是具体的表名。DbName 和 Type 都为具体名称，则 Object 表示具体对象名，不能为 \* 或者为空
+        :type Object: str
+        :param ColName: 当 Type=table 时，ColName 为 \* 表示对表授权，如果为具体字段名，表示对字段授权
+        :type ColName: str
         """
         self.InstanceId = None
         self.UserName = None
         self.Host = None
         self.DbName = None
+        self.Privileges = None
         self.Type = None
         self.Object = None
         self.ColName = None
-        self.Privileges = None
 
 
     def _deserialize(self, params):
@@ -1698,10 +1887,10 @@ class GrantAccountPrivilegesRequest(AbstractModel):
         self.UserName = params.get("UserName")
         self.Host = params.get("Host")
         self.DbName = params.get("DbName")
+        self.Privileges = params.get("Privileges")
         self.Type = params.get("Type")
         self.Object = params.get("Object")
         self.ColName = params.get("ColName")
-        self.Privileges = params.get("Privileges")
 
 
 class GrantAccountPrivilegesResponse(AbstractModel):
@@ -1810,7 +1999,7 @@ class LogFileInfo(AbstractModel):
         :param Length: 文件长度
         :type Length: int
         :param Uri: 下载Log时用到的统一资源标识符
-        :type Uri: int
+        :type Uri: str
         """
         self.Mtime = None
         self.Length = None
@@ -2026,24 +2215,24 @@ class ModifyDBParametersResponse(AbstractModel):
         """
         :param InstanceId: 实例 ID，形如：tdsql-ow728lmc。
         :type InstanceId: str
-        :param Config: 参数修改结果
-        :type Config: list of ParamModifyResult
+        :param Result: 参数修改结果
+        :type Result: list of ParamModifyResult
         :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
         :type RequestId: str
         """
         self.InstanceId = None
-        self.Config = None
+        self.Result = None
         self.RequestId = None
 
 
     def _deserialize(self, params):
         self.InstanceId = params.get("InstanceId")
-        if params.get("Config") is not None:
-            self.Config = []
-            for item in params.get("Config"):
+        if params.get("Result") is not None:
+            self.Result = []
+            for item in params.get("Result"):
                 obj = ParamModifyResult()
                 obj._deserialize(item)
-                self.Config.append(obj)
+                self.Result.append(obj)
         self.RequestId = params.get("RequestId")
 
 
@@ -2190,10 +2379,13 @@ class ParamConstraint(AbstractModel):
         :type Enum: str
         :param Range: 约束类型为section时的范围
         :type Range: :class:`tencentcloud.mariadb.v20170312.models.ConstraintRange`
+        :param String: 约束类型为string时的可选值列表
+        :type String: str
         """
         self.Type = None
         self.Enum = None
         self.Range = None
+        self.String = None
 
 
     def _deserialize(self, params):
@@ -2202,6 +2394,7 @@ class ParamConstraint(AbstractModel):
         if params.get("Range") is not None:
             self.Range = ConstraintRange()
             self.Range._deserialize(params.get("Range"))
+        self.String = params.get("String")
 
 
 class ParamDesc(AbstractModel):
@@ -2524,27 +2717,27 @@ class SlowLogData(AbstractModel):
         :param FingerPrint: 抽象的SQL语句
         :type FingerPrint: str
         :param LockTimeAvg: 平均的锁时间
-        :type LockTimeAvg: str
+        :type LockTimeAvg: float
         :param LockTimeMax: 最大锁时间
-        :type LockTimeMax: str
+        :type LockTimeMax: float
         :param LockTimeMin: 最小锁时间
-        :type LockTimeMin: str
+        :type LockTimeMin: float
         :param LockTimeSum: 锁时间总和
-        :type LockTimeSum: str
+        :type LockTimeSum: float
         :param QueryCount: 查询次数
-        :type QueryCount: str
+        :type QueryCount: int
         :param QueryTimeAvg: 平均查询时间
-        :type QueryTimeAvg: str
+        :type QueryTimeAvg: float
         :param QueryTimeMax: 最大查询时间
-        :type QueryTimeMax: str
+        :type QueryTimeMax: float
         :param QueryTimeMin: 最小查询时间
-        :type QueryTimeMin: str
+        :type QueryTimeMin: float
         :param QueryTimeSum: 查询时间总和
-        :type QueryTimeSum: str
+        :type QueryTimeSum: float
         :param RowsExaminedSum: 扫描行数
-        :type RowsExaminedSum: str
+        :type RowsExaminedSum: int
         :param RowsSentSum: 发送行数
-        :type RowsSentSum: str
+        :type RowsSentSum: int
         :param TsMax: 首次执行时间
         :type TsMax: str
         :param TsMin: 最后执行时间
@@ -2636,6 +2829,59 @@ class SpecConfigInfo(AbstractModel):
         self.NodeCount = params.get("NodeCount")
 
 
+class SqlLogItem(AbstractModel):
+    """描述一条sql日志的详细信息。
+
+    """
+
+    def __init__(self):
+        """
+        :param Offset: 本条日志在消息队列中的偏移量。
+        :type Offset: int
+        :param User: 执行本条sql的用户。
+        :type User: str
+        :param Client: 执行本条sql的客户端IP+端口。
+        :type Client: str
+        :param DbName: 数据库名称。
+        :type DbName: str
+        :param Sql: 执行的sql语句。
+        :type Sql: str
+        :param SelectRowNum: 返回的数据行数。
+        :type SelectRowNum: int
+        :param AffectRowNum: 影响行数。
+        :type AffectRowNum: int
+        :param Timestamp: Sql执行时间戳。
+        :type Timestamp: int
+        :param TimeCostMs: Sql耗时，单位为毫秒。
+        :type TimeCostMs: int
+        :param ResultCode: Sql返回码，0为成功。
+        :type ResultCode: int
+        """
+        self.Offset = None
+        self.User = None
+        self.Client = None
+        self.DbName = None
+        self.Sql = None
+        self.SelectRowNum = None
+        self.AffectRowNum = None
+        self.Timestamp = None
+        self.TimeCostMs = None
+        self.ResultCode = None
+
+
+    def _deserialize(self, params):
+        self.Offset = params.get("Offset")
+        self.User = params.get("User")
+        self.Client = params.get("Client")
+        self.DbName = params.get("DbName")
+        self.Sql = params.get("Sql")
+        self.SelectRowNum = params.get("SelectRowNum")
+        self.AffectRowNum = params.get("AffectRowNum")
+        self.Timestamp = params.get("Timestamp")
+        self.TimeCostMs = params.get("TimeCostMs")
+        self.ResultCode = params.get("ResultCode")
+
+
 class UpgradeDBInstanceRequest(AbstractModel):
     """UpgradeDBInstance请求参数结构体
 
@@ -2654,7 +2900,7 @@ class UpgradeDBInstanceRequest(AbstractModel):
         :param AutoVoucher: 是否自动使用代金券进行支付，默认不使用。
         :type AutoVoucher: bool
         :param VoucherIds: 代金券ID列表，目前仅支持指定一张代金券。
-        :type VoucherIds: str
+        :type VoucherIds: list of str
         """
         self.InstanceId = None
         self.Memory = None

@@ -41,6 +41,64 @@ class AddShardConfig(AbstractModel):
         self.ShardStorage = params.get("ShardStorage")
 
 
+class CloneAccountRequest(AbstractModel):
+    """CloneAccount请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param InstanceId: 实例ID
+        :type InstanceId: str
+        :param SrcUser: 源用户账户名
+        :type SrcUser: str
+        :param SrcHost: 源用户HOST
+        :type SrcHost: str
+        :param DstUser: 目的用户账户名
+        :type DstUser: str
+        :param DstHost: 目的用户HOST
+        :type DstHost: str
+        :param DstDesc: 目的用户账户描述
+        :type DstDesc: str
+        """
+        self.InstanceId = None
+        self.SrcUser = None
+        self.SrcHost = None
+        self.DstUser = None
+        self.DstHost = None
+        self.DstDesc = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.SrcUser = params.get("SrcUser")
+        self.SrcHost = params.get("SrcHost")
+        self.DstUser = params.get("DstUser")
+        self.DstHost = params.get("DstHost")
+        self.DstDesc = params.get("DstDesc")
+
+
+class CloneAccountResponse(AbstractModel):
+    """CloneAccount返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param FlowId: 异步任务流程ID
+        :type FlowId: int
+        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :type RequestId: str
+        """
+        self.FlowId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.FlowId = params.get("FlowId")
+        self.RequestId = params.get("RequestId")
+
+
 class CloseDBExtranetAccessRequest(AbstractModel):
     """CloseDBExtranetAccess请求参数结构体
 
@@ -1733,6 +1791,77 @@ class DescribeShardSpecResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeSqlLogsRequest(AbstractModel):
+    """DescribeSqlLogs请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param InstanceId: 实例 ID，形如：dcdbt-ow728lmc，可以通过 DescribeDCDBInstances 查询实例详情获得。
+        :type InstanceId: str
+        :param Offset: SQL日志偏移。
+        :type Offset: int
+        :param Limit: 拉取数量（0-1000，为0时拉取总数信息）。
+        :type Limit: int
+        """
+        self.InstanceId = None
+        self.Offset = None
+        self.Limit = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+
+
+class DescribeSqlLogsResponse(AbstractModel):
+    """DescribeSqlLogs返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param TotalCount: 当前消息队列中的sql日志条目数。
+        :type TotalCount: int
+        :param StartOffset: 消息队列中的sql日志起始偏移。
+        :type StartOffset: int
+        :param EndOffset: 消息队列中的sql日志结束偏移。
+        :type EndOffset: int
+        :param Offset: 返回的第一条sql日志的偏移。
+        :type Offset: int
+        :param Count: 返回的sql日志数量。
+        :type Count: int
+        :param SqlItems: Sql日志列表。
+        :type SqlItems: list of SqlLogItem
+        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.StartOffset = None
+        self.EndOffset = None
+        self.Offset = None
+        self.Count = None
+        self.SqlItems = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        self.StartOffset = params.get("StartOffset")
+        self.EndOffset = params.get("EndOffset")
+        self.Offset = params.get("Offset")
+        self.Count = params.get("Count")
+        if params.get("SqlItems") is not None:
+            self.SqlItems = []
+            for item in params.get("SqlItems"):
+                obj = SqlLogItem()
+                obj._deserialize(item)
+                self.SqlItems.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class ExpandShardConfig(AbstractModel):
     """升级实例 -- 扩容分片类型
 
@@ -2518,6 +2647,59 @@ class SplitShardConfig(AbstractModel):
         self.SplitRate = params.get("SplitRate")
         self.ShardMemory = params.get("ShardMemory")
         self.ShardStorage = params.get("ShardStorage")
+
+
+class SqlLogItem(AbstractModel):
+    """描述一条sql日志的详细信息。
+
+    """
+
+    def __init__(self):
+        """
+        :param Offset: 本条日志在消息队列中的偏移量。
+        :type Offset: int
+        :param User: 执行本条sql的用户。
+        :type User: str
+        :param Client: 执行本条sql的客户端IP+端口。
+        :type Client: str
+        :param DbName: 数据库名称。
+        :type DbName: str
+        :param Sql: 执行的sql语句。
+        :type Sql: str
+        :param SelectRowNum: 返回的数据行数。
+        :type SelectRowNum: int
+        :param AffectRowNum: 影响行数。
+        :type AffectRowNum: int
+        :param Timestamp: Sql执行时间戳。
+        :type Timestamp: int
+        :param TimeCostMs: Sql耗时，单位为毫秒。
+        :type TimeCostMs: int
+        :param ResultCode: Sql返回码，0为成功。
+        :type ResultCode: int
+        """
+        self.Offset = None
+        self.User = None
+        self.Client = None
+        self.DbName = None
+        self.Sql = None
+        self.SelectRowNum = None
+        self.AffectRowNum = None
+        self.Timestamp = None
+        self.TimeCostMs = None
+        self.ResultCode = None
+
+
+    def _deserialize(self, params):
+        self.Offset = params.get("Offset")
+        self.User = params.get("User")
+        self.Client = params.get("Client")
+        self.DbName = params.get("DbName")
+        self.Sql = params.get("Sql")
+        self.SelectRowNum = params.get("SelectRowNum")
+        self.AffectRowNum = params.get("AffectRowNum")
+        self.Timestamp = params.get("Timestamp")
+        self.TimeCostMs = params.get("TimeCostMs")
+        self.ResultCode = params.get("ResultCode")
 
 
 class TableColumn(AbstractModel):
