@@ -17,28 +17,28 @@ import json
 
 from tencentcloud.common.exception.tencent_cloud_sdk_exception import TencentCloudSDKException
 from tencentcloud.common.abstract_client import AbstractClient
-from tencentcloud.youmall.v20180228 import models
+from tencentcloud.as.v20180419 import models
 
 
-class YoumallClient(AbstractClient):
-    _apiVersion = '2018-02-28'
-    _endpoint = 'youmall.tencentcloudapi.com'
+class AsClient(AbstractClient):
+    _apiVersion = '2018-04-19'
+    _endpoint = 'as.tencentcloudapi.com'
 
 
-    def CreateAccount(self, request):
-        """创建集团门店管理员账号
+    def AttachInstances(self, request):
+        """本接口（AttachInstances）用于将 CVM 实例添加到伸缩组。
 
-        :param request: 调用CreateAccount所需参数的结构体。
-        :type request: :class:`tencentcloud.youmall.v20180228.models.CreateAccountRequest`
-        :rtype: :class:`tencentcloud.youmall.v20180228.models.CreateAccountResponse`
+        :param request: 调用AttachInstances所需参数的结构体。
+        :type request: :class:`tencentcloud.as.v20180419.models.AttachInstancesRequest`
+        :rtype: :class:`tencentcloud.as.v20180419.models.AttachInstancesResponse`
 
         """
         try:
             params = request._serialize()
-            body = self.call("CreateAccount", params)
+            body = self.call("AttachInstances", params)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.CreateAccountResponse()
+                model = models.AttachInstancesResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -53,20 +53,20 @@ class YoumallClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def CreateFacePicture(self, request):
-        """上传人脸图片
+    def CreateAutoScalingGroup(self, request):
+        """本接口（CreateAutoScalingGroup）用于创建伸缩组
 
-        :param request: 调用CreateFacePicture所需参数的结构体。
-        :type request: :class:`tencentcloud.youmall.v20180228.models.CreateFacePictureRequest`
-        :rtype: :class:`tencentcloud.youmall.v20180228.models.CreateFacePictureResponse`
+        :param request: 调用CreateAutoScalingGroup所需参数的结构体。
+        :type request: :class:`tencentcloud.as.v20180419.models.CreateAutoScalingGroupRequest`
+        :rtype: :class:`tencentcloud.as.v20180419.models.CreateAutoScalingGroupResponse`
 
         """
         try:
             params = request._serialize()
-            body = self.call("CreateFacePicture", params)
+            body = self.call("CreateAutoScalingGroup", params)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.CreateFacePictureResponse()
+                model = models.CreateAutoScalingGroupResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -81,20 +81,24 @@ class YoumallClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def DescribeCameraPerson(self, request):
-        """通过指定设备ID和指定时段，获取该时段内中收银台摄像设备抓取到顾客头像及身份ID
+    def CreateLaunchConfiguration(self, request):
+        """本接口（CreateLaunchConfiguration）用于创建新的启动配置。
 
-        :param request: 调用DescribeCameraPerson所需参数的结构体。
-        :type request: :class:`tencentcloud.youmall.v20180228.models.DescribeCameraPersonRequest`
-        :rtype: :class:`tencentcloud.youmall.v20180228.models.DescribeCameraPersonResponse`
+        * 启动配置无法编辑更改。如需使用新的启动配置，只能重新创建启动配置。
+
+        * 每个项目最多只能创建20个启动配置，详见[使用限制](https://cloud.tencent.com/document/product/377/3120)。
+
+        :param request: 调用CreateLaunchConfiguration所需参数的结构体。
+        :type request: :class:`tencentcloud.as.v20180419.models.CreateLaunchConfigurationRequest`
+        :rtype: :class:`tencentcloud.as.v20180419.models.CreateLaunchConfigurationResponse`
 
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeCameraPerson", params)
+            body = self.call("CreateLaunchConfiguration", params)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.DescribeCameraPersonResponse()
+                model = models.CreateLaunchConfigurationResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -109,20 +113,20 @@ class YoumallClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def DescribeFaceIdByTempId(self, request):
-        """通过DescribeCameraPerson接口上报的收银台身份ID查询顾客的FaceID。查询最佳时间为收银台上报的次日1点后。
+    def CreateScheduledAction(self, request):
+        """本接口（CreateScheduledAction）用于创建定时任务。
 
-        :param request: 调用DescribeFaceIdByTempId所需参数的结构体。
-        :type request: :class:`tencentcloud.youmall.v20180228.models.DescribeFaceIdByTempIdRequest`
-        :rtype: :class:`tencentcloud.youmall.v20180228.models.DescribeFaceIdByTempIdResponse`
+        :param request: 调用CreateScheduledAction所需参数的结构体。
+        :type request: :class:`tencentcloud.as.v20180419.models.CreateScheduledActionRequest`
+        :rtype: :class:`tencentcloud.as.v20180419.models.CreateScheduledActionResponse`
 
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeFaceIdByTempId", params)
+            body = self.call("CreateScheduledAction", params)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.DescribeFaceIdByTempIdResponse()
+                model = models.CreateScheduledActionResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -137,20 +141,20 @@ class YoumallClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def DescribeHistoryNetworkInfo(self, request):
-        """返回当前门店历史网络状态数据
+    def DeleteAutoScalingGroup(self, request):
+        """本接口（DeleteAutoScalingGroup）用于删除指定伸缩组，删除前提是伸缩组内无实例且当前未在执行伸缩活动。
 
-        :param request: 调用DescribeHistoryNetworkInfo所需参数的结构体。
-        :type request: :class:`tencentcloud.youmall.v20180228.models.DescribeHistoryNetworkInfoRequest`
-        :rtype: :class:`tencentcloud.youmall.v20180228.models.DescribeHistoryNetworkInfoResponse`
+        :param request: 调用DeleteAutoScalingGroup所需参数的结构体。
+        :type request: :class:`tencentcloud.as.v20180419.models.DeleteAutoScalingGroupRequest`
+        :rtype: :class:`tencentcloud.as.v20180419.models.DeleteAutoScalingGroupResponse`
 
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeHistoryNetworkInfo", params)
+            body = self.call("DeleteAutoScalingGroup", params)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.DescribeHistoryNetworkInfoResponse()
+                model = models.DeleteAutoScalingGroupResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -165,20 +169,22 @@ class YoumallClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def DescribeNetworkInfo(self, request):
-        """返回当前门店最新网络状态数据
+    def DeleteLaunchConfiguration(self, request):
+        """本接口（DeleteLaunchConfiguration）用于删除启动配置。
 
-        :param request: 调用DescribeNetworkInfo所需参数的结构体。
-        :type request: :class:`tencentcloud.youmall.v20180228.models.DescribeNetworkInfoRequest`
-        :rtype: :class:`tencentcloud.youmall.v20180228.models.DescribeNetworkInfoResponse`
+        * 若启动配置在伸缩组中属于生效状态，则该启动配置不允许删除。
+
+        :param request: 调用DeleteLaunchConfiguration所需参数的结构体。
+        :type request: :class:`tencentcloud.as.v20180419.models.DeleteLaunchConfigurationRequest`
+        :rtype: :class:`tencentcloud.as.v20180419.models.DeleteLaunchConfigurationResponse`
 
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeNetworkInfo", params)
+            body = self.call("DeleteLaunchConfiguration", params)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.DescribeNetworkInfoResponse()
+                model = models.DeleteLaunchConfigurationResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -193,20 +199,20 @@ class YoumallClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def DescribePersonInfo(self, request):
-        """指定门店获取所有顾客详情列表，包含客户ID、图片、年龄、性别
+    def DeleteScheduledAction(self, request):
+        """本接口（DeleteScheduledAction）用于删除特定的定时任务。
 
-        :param request: 调用DescribePersonInfo所需参数的结构体。
-        :type request: :class:`tencentcloud.youmall.v20180228.models.DescribePersonInfoRequest`
-        :rtype: :class:`tencentcloud.youmall.v20180228.models.DescribePersonInfoResponse`
+        :param request: 调用DeleteScheduledAction所需参数的结构体。
+        :type request: :class:`tencentcloud.as.v20180419.models.DeleteScheduledActionRequest`
+        :rtype: :class:`tencentcloud.as.v20180419.models.DeleteScheduledActionResponse`
 
         """
         try:
             params = request._serialize()
-            body = self.call("DescribePersonInfo", params)
+            body = self.call("DeleteScheduledAction", params)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.DescribePersonInfoResponse()
+                model = models.DeleteScheduledActionResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -221,20 +227,20 @@ class YoumallClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def DescribePersonVisitInfo(self, request):
-        """获取门店指定时间范围内的所有用户到访信息记录，支持的时间范围：过去365天，含当天。
+    def DescribeAccountLimits(self, request):
+        """本接口（DescribeAccountLimits）用于查询用户账户在弹性伸缩中的资源限制。
 
-        :param request: 调用DescribePersonVisitInfo所需参数的结构体。
-        :type request: :class:`tencentcloud.youmall.v20180228.models.DescribePersonVisitInfoRequest`
-        :rtype: :class:`tencentcloud.youmall.v20180228.models.DescribePersonVisitInfoResponse`
+        :param request: 调用DescribeAccountLimits所需参数的结构体。
+        :type request: :class:`tencentcloud.as.v20180419.models.DescribeAccountLimitsRequest`
+        :rtype: :class:`tencentcloud.as.v20180419.models.DescribeAccountLimitsResponse`
 
         """
         try:
             params = request._serialize()
-            body = self.call("DescribePersonVisitInfo", params)
+            body = self.call("DescribeAccountLimits", params)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.DescribePersonVisitInfoResponse()
+                model = models.DescribeAccountLimitsResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -249,20 +255,20 @@ class YoumallClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def DescribeShopHourTrafficInfo(self, request):
-        """按小时提供查询日期范围内门店的每天每小时累计客流人数数据，支持的时间范围：过去365天，含当天。
+    def DescribeAutoScalingGroups(self, request):
+        """本接口（DescribeAutoScalingGroups）用于查询伸缩组信息。
 
-        :param request: 调用DescribeShopHourTrafficInfo所需参数的结构体。
-        :type request: :class:`tencentcloud.youmall.v20180228.models.DescribeShopHourTrafficInfoRequest`
-        :rtype: :class:`tencentcloud.youmall.v20180228.models.DescribeShopHourTrafficInfoResponse`
+        :param request: 调用DescribeAutoScalingGroups所需参数的结构体。
+        :type request: :class:`tencentcloud.as.v20180419.models.DescribeAutoScalingGroupsRequest`
+        :rtype: :class:`tencentcloud.as.v20180419.models.DescribeAutoScalingGroupsResponse`
 
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeShopHourTrafficInfo", params)
+            body = self.call("DescribeAutoScalingGroups", params)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.DescribeShopHourTrafficInfoResponse()
+                model = models.DescribeAutoScalingGroupsResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -277,20 +283,21 @@ class YoumallClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def DescribeShopInfo(self, request):
-        """根据客户身份标识获取客户下所有的门店信息列表
+    def DescribeAutoScalingInstances(self, request):
+        """本接口（DescribeAutoScalingInstances）用于查询弹性伸缩关联实例的信息。
 
-        :param request: 调用DescribeShopInfo所需参数的结构体。
-        :type request: :class:`tencentcloud.youmall.v20180228.models.DescribeShopInfoRequest`
-        :rtype: :class:`tencentcloud.youmall.v20180228.models.DescribeShopInfoResponse`
+
+        :param request: 调用DescribeAutoScalingInstances所需参数的结构体。
+        :type request: :class:`tencentcloud.as.v20180419.models.DescribeAutoScalingInstancesRequest`
+        :rtype: :class:`tencentcloud.as.v20180419.models.DescribeAutoScalingInstancesResponse`
 
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeShopInfo", params)
+            body = self.call("DescribeAutoScalingInstances", params)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.DescribeShopInfoResponse()
+                model = models.DescribeAutoScalingInstancesResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -305,20 +312,20 @@ class YoumallClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def DescribeShopTrafficInfo(self, request):
-        """按天提供查询日期范围内门店的单日累计客流人数，支持的时间范围：过去365天，含当天。
+    def DescribeLaunchConfigurations(self, request):
+        """本接口（DescribeLaunchConfigurations）用于查询启动配置的信息。
 
-        :param request: 调用DescribeShopTrafficInfo所需参数的结构体。
-        :type request: :class:`tencentcloud.youmall.v20180228.models.DescribeShopTrafficInfoRequest`
-        :rtype: :class:`tencentcloud.youmall.v20180228.models.DescribeShopTrafficInfoResponse`
+        :param request: 调用DescribeLaunchConfigurations所需参数的结构体。
+        :type request: :class:`tencentcloud.as.v20180419.models.DescribeLaunchConfigurationsRequest`
+        :rtype: :class:`tencentcloud.as.v20180419.models.DescribeLaunchConfigurationsResponse`
 
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeShopTrafficInfo", params)
+            body = self.call("DescribeLaunchConfigurations", params)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.DescribeShopTrafficInfoResponse()
+                model = models.DescribeLaunchConfigurationsResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -333,20 +340,23 @@ class YoumallClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def DescribeTrajectoryData(self, request):
-        """获取动线轨迹信息
+    def DescribeScheduledActions(self, request):
+        """本接口 (DescribeScheduledActions) 用于查询一个或多个定时任务的详细信息。
 
-        :param request: 调用DescribeTrajectoryData所需参数的结构体。
-        :type request: :class:`tencentcloud.youmall.v20180228.models.DescribeTrajectoryDataRequest`
-        :rtype: :class:`tencentcloud.youmall.v20180228.models.DescribeTrajectoryDataResponse`
+        * 可以根据定时任务ID、定时任务名称或者伸缩组ID等信息来查询定时任务的详细信息。过滤信息详细请见过滤器Filter。
+        * 如果参数为空，返回当前用户一定数量（Limit所指定的数量，默认为20）的定时任务。
+
+        :param request: 调用DescribeScheduledActions所需参数的结构体。
+        :type request: :class:`tencentcloud.as.v20180419.models.DescribeScheduledActionsRequest`
+        :rtype: :class:`tencentcloud.as.v20180419.models.DescribeScheduledActionsResponse`
 
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeTrajectoryData", params)
+            body = self.call("DescribeScheduledActions", params)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.DescribeTrajectoryDataResponse()
+                model = models.DescribeScheduledActionsResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -361,20 +371,20 @@ class YoumallClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def DescribeZoneFlowAgeInfoByZoneId(self, request):
-        """获取指定区域人流各年龄占比
+    def DetachInstances(self, request):
+        """本接口（DettachInstances）用于从伸缩组移出 CVM 实例，本接口不会被销毁实例。
 
-        :param request: 调用DescribeZoneFlowAgeInfoByZoneId所需参数的结构体。
-        :type request: :class:`tencentcloud.youmall.v20180228.models.DescribeZoneFlowAgeInfoByZoneIdRequest`
-        :rtype: :class:`tencentcloud.youmall.v20180228.models.DescribeZoneFlowAgeInfoByZoneIdResponse`
+        :param request: 调用DetachInstances所需参数的结构体。
+        :type request: :class:`tencentcloud.as.v20180419.models.DetachInstancesRequest`
+        :rtype: :class:`tencentcloud.as.v20180419.models.DetachInstancesResponse`
 
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeZoneFlowAgeInfoByZoneId", params)
+            body = self.call("DetachInstances", params)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.DescribeZoneFlowAgeInfoByZoneIdResponse()
+                model = models.DetachInstancesResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -389,20 +399,20 @@ class YoumallClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def DescribeZoneFlowAndStayTime(self, request):
-        """获取区域人流和停留时间
+    def DisableAutoScalingGroup(self, request):
+        """本接口（DisableAutoScalingGroup）用于停用指定伸缩组。
 
-        :param request: 调用DescribeZoneFlowAndStayTime所需参数的结构体。
-        :type request: :class:`tencentcloud.youmall.v20180228.models.DescribeZoneFlowAndStayTimeRequest`
-        :rtype: :class:`tencentcloud.youmall.v20180228.models.DescribeZoneFlowAndStayTimeResponse`
+        :param request: 调用DisableAutoScalingGroup所需参数的结构体。
+        :type request: :class:`tencentcloud.as.v20180419.models.DisableAutoScalingGroupRequest`
+        :rtype: :class:`tencentcloud.as.v20180419.models.DisableAutoScalingGroupResponse`
 
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeZoneFlowAndStayTime", params)
+            body = self.call("DisableAutoScalingGroup", params)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.DescribeZoneFlowAndStayTimeResponse()
+                model = models.DisableAutoScalingGroupResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -417,20 +427,20 @@ class YoumallClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def DescribeZoneFlowDailyByZoneId(self, request):
-        """获取指定区域每日客流量
+    def EnableAutoScalingGroup(self, request):
+        """本接口（EnableAutoScalingGroup）用于启用指定伸缩组。
 
-        :param request: 调用DescribeZoneFlowDailyByZoneId所需参数的结构体。
-        :type request: :class:`tencentcloud.youmall.v20180228.models.DescribeZoneFlowDailyByZoneIdRequest`
-        :rtype: :class:`tencentcloud.youmall.v20180228.models.DescribeZoneFlowDailyByZoneIdResponse`
+        :param request: 调用EnableAutoScalingGroup所需参数的结构体。
+        :type request: :class:`tencentcloud.as.v20180419.models.EnableAutoScalingGroupRequest`
+        :rtype: :class:`tencentcloud.as.v20180419.models.EnableAutoScalingGroupResponse`
 
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeZoneFlowDailyByZoneId", params)
+            body = self.call("EnableAutoScalingGroup", params)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.DescribeZoneFlowDailyByZoneIdResponse()
+                model = models.EnableAutoScalingGroupResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -445,20 +455,20 @@ class YoumallClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def DescribeZoneFlowGenderAvrStayTimeByZoneId(self, request):
-        """获取指定区域不同年龄段男女平均停留时间
+    def ModifyAutoScalingGroup(self, request):
+        """本接口（ModifyAutoScalingGroup）用于修改伸缩组。
 
-        :param request: 调用DescribeZoneFlowGenderAvrStayTimeByZoneId所需参数的结构体。
-        :type request: :class:`tencentcloud.youmall.v20180228.models.DescribeZoneFlowGenderAvrStayTimeByZoneIdRequest`
-        :rtype: :class:`tencentcloud.youmall.v20180228.models.DescribeZoneFlowGenderAvrStayTimeByZoneIdResponse`
+        :param request: 调用ModifyAutoScalingGroup所需参数的结构体。
+        :type request: :class:`tencentcloud.as.v20180419.models.ModifyAutoScalingGroupRequest`
+        :rtype: :class:`tencentcloud.as.v20180419.models.ModifyAutoScalingGroupResponse`
 
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeZoneFlowGenderAvrStayTimeByZoneId", params)
+            body = self.call("ModifyAutoScalingGroup", params)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.DescribeZoneFlowGenderAvrStayTimeByZoneIdResponse()
+                model = models.ModifyAutoScalingGroupResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -473,20 +483,20 @@ class YoumallClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def DescribeZoneFlowGenderInfoByZoneId(self, request):
-        """获取指定区域性别占比
+    def ModifyDesiredCapacity(self, request):
+        """本接口（ModifyDesiredCapacity）用于修改指定伸缩组的期望实例数
 
-        :param request: 调用DescribeZoneFlowGenderInfoByZoneId所需参数的结构体。
-        :type request: :class:`tencentcloud.youmall.v20180228.models.DescribeZoneFlowGenderInfoByZoneIdRequest`
-        :rtype: :class:`tencentcloud.youmall.v20180228.models.DescribeZoneFlowGenderInfoByZoneIdResponse`
+        :param request: 调用ModifyDesiredCapacity所需参数的结构体。
+        :type request: :class:`tencentcloud.as.v20180419.models.ModifyDesiredCapacityRequest`
+        :rtype: :class:`tencentcloud.as.v20180419.models.ModifyDesiredCapacityResponse`
 
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeZoneFlowGenderInfoByZoneId", params)
+            body = self.call("ModifyDesiredCapacity", params)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.DescribeZoneFlowGenderInfoByZoneIdResponse()
+                model = models.ModifyDesiredCapacityResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -501,20 +511,20 @@ class YoumallClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def DescribeZoneFlowHourlyByZoneId(self, request):
-        """获取指定区域分时客流量
+    def ModifyScheduledAction(self, request):
+        """本接口（ModifyScheduledAction）用于修改定时任务。
 
-        :param request: 调用DescribeZoneFlowHourlyByZoneId所需参数的结构体。
-        :type request: :class:`tencentcloud.youmall.v20180228.models.DescribeZoneFlowHourlyByZoneIdRequest`
-        :rtype: :class:`tencentcloud.youmall.v20180228.models.DescribeZoneFlowHourlyByZoneIdResponse`
+        :param request: 调用ModifyScheduledAction所需参数的结构体。
+        :type request: :class:`tencentcloud.as.v20180419.models.ModifyScheduledActionRequest`
+        :rtype: :class:`tencentcloud.as.v20180419.models.ModifyScheduledActionResponse`
 
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeZoneFlowHourlyByZoneId", params)
+            body = self.call("ModifyScheduledAction", params)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.DescribeZoneFlowHourlyByZoneIdResponse()
+                model = models.ModifyScheduledActionResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -529,76 +539,20 @@ class YoumallClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def DescribeZoneTrafficInfo(self, request):
-        """按天提供查询日期范围内，客户指定门店下的所有区域（优Mall部署时已配置区域）的累计客流人次和平均停留时间。支持的时间范围：过去365天，含当天。
+    def RemoveInstances(self, request):
+        """本接口（RemoveInstances）用于从伸缩组删除 CVM 实例。根据当前的产品逻辑，如果实例由弹性伸缩自动创建，则实例会被销毁；如果实例系创建后加入伸缩组的，则会从伸缩组中移除，保留实例。
 
-        :param request: 调用DescribeZoneTrafficInfo所需参数的结构体。
-        :type request: :class:`tencentcloud.youmall.v20180228.models.DescribeZoneTrafficInfoRequest`
-        :rtype: :class:`tencentcloud.youmall.v20180228.models.DescribeZoneTrafficInfoResponse`
-
-        """
-        try:
-            params = request._serialize()
-            body = self.call("DescribeZoneTrafficInfo", params)
-            response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.DescribeZoneTrafficInfoResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise e
-            else:
-                raise TencentCloudSDKException(e.message, e.message)
-
-
-    def ModifyPersonTagInfo(self, request):
-        """标记到店顾客的身份类型，例如黑名单、白名单等
-
-        :param request: 调用ModifyPersonTagInfo所需参数的结构体。
-        :type request: :class:`tencentcloud.youmall.v20180228.models.ModifyPersonTagInfoRequest`
-        :rtype: :class:`tencentcloud.youmall.v20180228.models.ModifyPersonTagInfoResponse`
+        :param request: 调用RemoveInstances所需参数的结构体。
+        :type request: :class:`tencentcloud.as.v20180419.models.RemoveInstancesRequest`
+        :rtype: :class:`tencentcloud.as.v20180419.models.RemoveInstancesResponse`
 
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyPersonTagInfo", params)
+            body = self.call("RemoveInstances", params)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.ModifyPersonTagInfoResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise e
-            else:
-                raise TencentCloudSDKException(e.message, e.message)
-
-
-    def RegisterCallback(self, request):
-        """调用本接口在优Mall中注册自己集团的到店通知回调接口地址，接口协议为HTTP或HTTPS。注册后，若集团有特殊身份（例如老客）到店通知，优Mall后台将主动将到店信息push给该接口
-
-        :param request: 调用RegisterCallback所需参数的结构体。
-        :type request: :class:`tencentcloud.youmall.v20180228.models.RegisterCallbackRequest`
-        :rtype: :class:`tencentcloud.youmall.v20180228.models.RegisterCallbackResponse`
-
-        """
-        try:
-            params = request._serialize()
-            body = self.call("RegisterCallback", params)
-            response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.RegisterCallbackResponse()
+                model = models.RemoveInstancesResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

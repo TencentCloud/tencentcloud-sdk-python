@@ -1071,15 +1071,18 @@ class DescribeCvmZoneInstanceConfigInfosRequest(AbstractModel):
     def __init__(self):
         """
         :param Filters: 过滤条件
-        :type Filters: :class:`tencentcloud.batch.v20170312.models.Filter`
+        :type Filters: list of Filter
         """
         self.Filters = None
 
 
     def _deserialize(self, params):
         if params.get("Filters") is not None:
-            self.Filters = Filter()
-            self.Filters._deserialize(params.get("Filters"))
+            self.Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self.Filters.append(obj)
 
 
 class DescribeCvmZoneInstanceConfigInfosResponse(AbstractModel):

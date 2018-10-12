@@ -49,6 +49,118 @@ class CameraPersonInfo(AbstractModel):
         self.Time = params.get("Time")
 
 
+class CreateAccountRequest(AbstractModel):
+    """CreateAccount请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param CompanyId: 集团ID
+        :type CompanyId: str
+        :param Name: 账号名；需要是手机号
+        :type Name: str
+        :param Password: 密码；需要是(`~!@#$%^&*()_+=-）中的至少两种且八位以上
+        :type Password: str
+        :param ShopCode: 客户门店编码
+        :type ShopCode: str
+        :param Remark: 备注说明; 30个字符以内
+        :type Remark: str
+        """
+        self.CompanyId = None
+        self.Name = None
+        self.Password = None
+        self.ShopCode = None
+        self.Remark = None
+
+
+    def _deserialize(self, params):
+        self.CompanyId = params.get("CompanyId")
+        self.Name = params.get("Name")
+        self.Password = params.get("Password")
+        self.ShopCode = params.get("ShopCode")
+        self.Remark = params.get("Remark")
+
+
+class CreateAccountResponse(AbstractModel):
+    """CreateAccount返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class CreateFacePictureRequest(AbstractModel):
+    """CreateFacePicture请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param CompanyId: 集团ID
+        :type CompanyId: str
+        :param ShopId: 店铺ID
+        :type ShopId: int
+        :param PersonType: 人物类型（0表示普通顾客，1 白名单，2 表示黑名单）
+        :type PersonType: int
+        :param Picture: 图片BASE编码
+        :type Picture: str
+        :param PictureName: 图片名称
+        :type PictureName: str
+        """
+        self.CompanyId = None
+        self.ShopId = None
+        self.PersonType = None
+        self.Picture = None
+        self.PictureName = None
+
+
+    def _deserialize(self, params):
+        self.CompanyId = params.get("CompanyId")
+        self.ShopId = params.get("ShopId")
+        self.PersonType = params.get("PersonType")
+        self.Picture = params.get("Picture")
+        self.PictureName = params.get("PictureName")
+
+
+class CreateFacePictureResponse(AbstractModel):
+    """CreateFacePicture返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param PersonId: 人物ID
+        :type PersonId: int
+        :param Status: 0.正常建档 1.重复身份 2.未检测到人脸 3.检测到多个人脸 4.人脸大小过小 5.人脸质量不达标 6.其他错误
+        :type Status: int
+        :param PictureUrl: 图片url
+        :type PictureUrl: str
+        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :type RequestId: str
+        """
+        self.PersonId = None
+        self.Status = None
+        self.PictureUrl = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.PersonId = params.get("PersonId")
+        self.Status = params.get("Status")
+        self.PictureUrl = params.get("PictureUrl")
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeCameraPersonRequest(AbstractModel):
     """DescribeCameraPerson请求参数结构体
 
@@ -677,6 +789,525 @@ class DescribeShopTrafficInfoResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeTrajectoryDataRequest(AbstractModel):
+    """DescribeTrajectoryData请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param CompanyId: 集团ID
+        :type CompanyId: str
+        :param ShopId: 店铺ID
+        :type ShopId: int
+        :param StartDate: 开始日期，格式yyyy-MM-dd
+        :type StartDate: str
+        :param EndDate: 结束日期，格式yyyy-MM-dd
+        :type EndDate: str
+        :param Limit: 限制返回数据的最大条数，最大 400（负数代为 400）
+        :type Limit: int
+        :param Gender: 顾客性别顾虑，0是男，1是女，其它代表不分性别
+        :type Gender: int
+        """
+        self.CompanyId = None
+        self.ShopId = None
+        self.StartDate = None
+        self.EndDate = None
+        self.Limit = None
+        self.Gender = None
+
+
+    def _deserialize(self, params):
+        self.CompanyId = params.get("CompanyId")
+        self.ShopId = params.get("ShopId")
+        self.StartDate = params.get("StartDate")
+        self.EndDate = params.get("EndDate")
+        self.Limit = params.get("Limit")
+        self.Gender = params.get("Gender")
+
+
+class DescribeTrajectoryDataResponse(AbstractModel):
+    """DescribeTrajectoryData返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param CompanyId: 集团ID
+        :type CompanyId: str
+        :param ShopId: 店铺ID
+        :type ShopId: int
+        :param TotalPerson: 总人数
+        :type TotalPerson: int
+        :param TotalTrajectory: 总动迹数目
+        :type TotalTrajectory: int
+        :param Person: 返回动迹中的总人数
+        :type Person: int
+        :param Trajectory: 返回动迹的数目
+        :type Trajectory: int
+        :param Data: 返回动迹的具体信息
+        :type Data: list of TrajectorySunData
+        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :type RequestId: str
+        """
+        self.CompanyId = None
+        self.ShopId = None
+        self.TotalPerson = None
+        self.TotalTrajectory = None
+        self.Person = None
+        self.Trajectory = None
+        self.Data = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.CompanyId = params.get("CompanyId")
+        self.ShopId = params.get("ShopId")
+        self.TotalPerson = params.get("TotalPerson")
+        self.TotalTrajectory = params.get("TotalTrajectory")
+        self.Person = params.get("Person")
+        self.Trajectory = params.get("Trajectory")
+        if params.get("Data") is not None:
+            self.Data = []
+            for item in params.get("Data"):
+                obj = TrajectorySunData()
+                obj._deserialize(item)
+                self.Data.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeZoneFlowAgeInfoByZoneIdRequest(AbstractModel):
+    """DescribeZoneFlowAgeInfoByZoneId请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param CompanyId: 集团ID
+        :type CompanyId: str
+        :param ShopId: 店铺ID
+        :type ShopId: int
+        :param ZoneId: 区域ID
+        :type ZoneId: int
+        :param StartDate: 开始日期，格式yyyy-MM-dd
+        :type StartDate: str
+        :param EndDate: 结束日期，格式yyyy-MM-dd
+        :type EndDate: str
+        """
+        self.CompanyId = None
+        self.ShopId = None
+        self.ZoneId = None
+        self.StartDate = None
+        self.EndDate = None
+
+
+    def _deserialize(self, params):
+        self.CompanyId = params.get("CompanyId")
+        self.ShopId = params.get("ShopId")
+        self.ZoneId = params.get("ZoneId")
+        self.StartDate = params.get("StartDate")
+        self.EndDate = params.get("EndDate")
+
+
+class DescribeZoneFlowAgeInfoByZoneIdResponse(AbstractModel):
+    """DescribeZoneFlowAgeInfoByZoneId返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param CompanyId: 集团ID
+        :type CompanyId: str
+        :param ShopId: 店铺ID
+        :type ShopId: int
+        :param ZoneId: 区域ID
+        :type ZoneId: int
+        :param ZoneName: 区域名称
+        :type ZoneName: str
+        :param Data: 当前年龄段占比
+        :type Data: list of float
+        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :type RequestId: str
+        """
+        self.CompanyId = None
+        self.ShopId = None
+        self.ZoneId = None
+        self.ZoneName = None
+        self.Data = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.CompanyId = params.get("CompanyId")
+        self.ShopId = params.get("ShopId")
+        self.ZoneId = params.get("ZoneId")
+        self.ZoneName = params.get("ZoneName")
+        self.Data = params.get("Data")
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeZoneFlowAndStayTimeRequest(AbstractModel):
+    """DescribeZoneFlowAndStayTime请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param CompanyId: 集团ID
+        :type CompanyId: str
+        :param ShopId: 店铺ID
+        :type ShopId: int
+        :param StartDate: 开始日期，格式yyyy-MM-dd
+        :type StartDate: str
+        :param EndDate: 结束日期，格式yyyy-MM-dd
+        :type EndDate: str
+        """
+        self.CompanyId = None
+        self.ShopId = None
+        self.StartDate = None
+        self.EndDate = None
+
+
+    def _deserialize(self, params):
+        self.CompanyId = params.get("CompanyId")
+        self.ShopId = params.get("ShopId")
+        self.StartDate = params.get("StartDate")
+        self.EndDate = params.get("EndDate")
+
+
+class DescribeZoneFlowAndStayTimeResponse(AbstractModel):
+    """DescribeZoneFlowAndStayTime返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param CompanyId: 集团id
+        :type CompanyId: str
+        :param ShopId: 店铺id
+        :type ShopId: int
+        :param Data: 各区域人流数目和停留时长
+        :type Data: list of ZoneFlowAndAvrStayTime
+        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :type RequestId: str
+        """
+        self.CompanyId = None
+        self.ShopId = None
+        self.Data = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.CompanyId = params.get("CompanyId")
+        self.ShopId = params.get("ShopId")
+        if params.get("Data") is not None:
+            self.Data = []
+            for item in params.get("Data"):
+                obj = ZoneFlowAndAvrStayTime()
+                obj._deserialize(item)
+                self.Data.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeZoneFlowDailyByZoneIdRequest(AbstractModel):
+    """DescribeZoneFlowDailyByZoneId请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param CompanyId: 集团ID
+        :type CompanyId: str
+        :param ShopId: 店铺ID
+        :type ShopId: int
+        :param ZoneId: 区域ID
+        :type ZoneId: int
+        :param StartDate: 开始日期，格式yyyy-MM-dd
+        :type StartDate: str
+        :param EndDate: 结束日期，格式yyyy-MM-dd
+        :type EndDate: str
+        """
+        self.CompanyId = None
+        self.ShopId = None
+        self.ZoneId = None
+        self.StartDate = None
+        self.EndDate = None
+
+
+    def _deserialize(self, params):
+        self.CompanyId = params.get("CompanyId")
+        self.ShopId = params.get("ShopId")
+        self.ZoneId = params.get("ZoneId")
+        self.StartDate = params.get("StartDate")
+        self.EndDate = params.get("EndDate")
+
+
+class DescribeZoneFlowDailyByZoneIdResponse(AbstractModel):
+    """DescribeZoneFlowDailyByZoneId返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param CompanyId: 集团id
+        :type CompanyId: str
+        :param ShopId: 店铺id
+        :type ShopId: int
+        :param ZoneId: 区域ID
+        :type ZoneId: int
+        :param ZoneName: 区域名称
+        :type ZoneName: str
+        :param Data: 每日人流量
+        :type Data: list of ZoneDayFlow
+        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :type RequestId: str
+        """
+        self.CompanyId = None
+        self.ShopId = None
+        self.ZoneId = None
+        self.ZoneName = None
+        self.Data = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.CompanyId = params.get("CompanyId")
+        self.ShopId = params.get("ShopId")
+        self.ZoneId = params.get("ZoneId")
+        self.ZoneName = params.get("ZoneName")
+        if params.get("Data") is not None:
+            self.Data = []
+            for item in params.get("Data"):
+                obj = ZoneDayFlow()
+                obj._deserialize(item)
+                self.Data.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeZoneFlowGenderAvrStayTimeByZoneIdRequest(AbstractModel):
+    """DescribeZoneFlowGenderAvrStayTimeByZoneId请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param CompanyId: 集团ID
+        :type CompanyId: str
+        :param ShopId: 店铺ID
+        :type ShopId: int
+        :param ZoneId: 区域ID
+        :type ZoneId: int
+        :param StartDate: 开始日期，格式yyyy-MM-dd
+        :type StartDate: str
+        :param EndDate: 结束日期，格式yyyy-MM-dd
+        :type EndDate: str
+        """
+        self.CompanyId = None
+        self.ShopId = None
+        self.ZoneId = None
+        self.StartDate = None
+        self.EndDate = None
+
+
+    def _deserialize(self, params):
+        self.CompanyId = params.get("CompanyId")
+        self.ShopId = params.get("ShopId")
+        self.ZoneId = params.get("ZoneId")
+        self.StartDate = params.get("StartDate")
+        self.EndDate = params.get("EndDate")
+
+
+class DescribeZoneFlowGenderAvrStayTimeByZoneIdResponse(AbstractModel):
+    """DescribeZoneFlowGenderAvrStayTimeByZoneId返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param CompanyId: 集团ID
+        :type CompanyId: str
+        :param ShopId: 店铺ID
+        :type ShopId: int
+        :param ZoneId: 区域ID
+        :type ZoneId: int
+        :param ZoneName: 区域名称
+        :type ZoneName: str
+        :param Data: 不同年龄段男女停留时间（返回格式为数组，从第 1 个到最后一个数据，年龄段分别为 0-17，18 - 23,  24 - 30, 31 - 40, 41 - 50, 51 - 60, 61 - 100）
+        :type Data: list of ZoneAgeGroupAvrStayTime
+        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :type RequestId: str
+        """
+        self.CompanyId = None
+        self.ShopId = None
+        self.ZoneId = None
+        self.ZoneName = None
+        self.Data = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.CompanyId = params.get("CompanyId")
+        self.ShopId = params.get("ShopId")
+        self.ZoneId = params.get("ZoneId")
+        self.ZoneName = params.get("ZoneName")
+        if params.get("Data") is not None:
+            self.Data = []
+            for item in params.get("Data"):
+                obj = ZoneAgeGroupAvrStayTime()
+                obj._deserialize(item)
+                self.Data.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeZoneFlowGenderInfoByZoneIdRequest(AbstractModel):
+    """DescribeZoneFlowGenderInfoByZoneId请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param CompanyId: 集团ID
+        :type CompanyId: str
+        :param ShopId: 店铺ID
+        :type ShopId: int
+        :param ZoneId: 区域ID
+        :type ZoneId: int
+        :param StartDate: 开始日期，格式yyyy-MM-dd
+        :type StartDate: str
+        :param EndDate: 结束日期，格式yyyy-MM-dd
+        :type EndDate: str
+        """
+        self.CompanyId = None
+        self.ShopId = None
+        self.ZoneId = None
+        self.StartDate = None
+        self.EndDate = None
+
+
+    def _deserialize(self, params):
+        self.CompanyId = params.get("CompanyId")
+        self.ShopId = params.get("ShopId")
+        self.ZoneId = params.get("ZoneId")
+        self.StartDate = params.get("StartDate")
+        self.EndDate = params.get("EndDate")
+
+
+class DescribeZoneFlowGenderInfoByZoneIdResponse(AbstractModel):
+    """DescribeZoneFlowGenderInfoByZoneId返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param CompanyId: 集团ID
+        :type CompanyId: str
+        :param ShopId: 店铺ID
+        :type ShopId: int
+        :param ZoneId: 区域ID
+        :type ZoneId: int
+        :param ZoneName: 区域名称
+        :type ZoneName: str
+        :param MalePercent: 男性占比
+        :type MalePercent: float
+        :param FemalePercent: 女性占比
+        :type FemalePercent: float
+        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :type RequestId: str
+        """
+        self.CompanyId = None
+        self.ShopId = None
+        self.ZoneId = None
+        self.ZoneName = None
+        self.MalePercent = None
+        self.FemalePercent = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.CompanyId = params.get("CompanyId")
+        self.ShopId = params.get("ShopId")
+        self.ZoneId = params.get("ZoneId")
+        self.ZoneName = params.get("ZoneName")
+        self.MalePercent = params.get("MalePercent")
+        self.FemalePercent = params.get("FemalePercent")
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeZoneFlowHourlyByZoneIdRequest(AbstractModel):
+    """DescribeZoneFlowHourlyByZoneId请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param CompanyId: 集团ID
+        :type CompanyId: str
+        :param ShopId: 店铺ID
+        :type ShopId: int
+        :param ZoneId: 区域ID
+        :type ZoneId: int
+        :param StartDate: 开始日期，格式yyyy-MM-dd
+        :type StartDate: str
+        :param EndDate: 结束日期，格式yyyy-MM-dd
+        :type EndDate: str
+        """
+        self.CompanyId = None
+        self.ShopId = None
+        self.ZoneId = None
+        self.StartDate = None
+        self.EndDate = None
+
+
+    def _deserialize(self, params):
+        self.CompanyId = params.get("CompanyId")
+        self.ShopId = params.get("ShopId")
+        self.ZoneId = params.get("ZoneId")
+        self.StartDate = params.get("StartDate")
+        self.EndDate = params.get("EndDate")
+
+
+class DescribeZoneFlowHourlyByZoneIdResponse(AbstractModel):
+    """DescribeZoneFlowHourlyByZoneId返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param CompanyId: 集团ID
+        :type CompanyId: str
+        :param ShopId: 店铺ID
+        :type ShopId: int
+        :param ZoneId: 区域ID
+        :type ZoneId: int
+        :param ZoneName: 区域名称
+        :type ZoneName: str
+        :param Data: 各个分时人流量
+        :type Data: list of ZoneHourFlow
+        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :type RequestId: str
+        """
+        self.CompanyId = None
+        self.ShopId = None
+        self.ZoneId = None
+        self.ZoneName = None
+        self.Data = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.CompanyId = params.get("CompanyId")
+        self.ShopId = params.get("ShopId")
+        self.ZoneId = params.get("ZoneId")
+        self.ZoneName = params.get("ZoneName")
+        if params.get("Data") is not None:
+            self.Data = []
+            for item in params.get("Data"):
+                obj = ZoneHourFlow()
+                obj._deserialize(item)
+                self.Data.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeZoneTrafficInfoRequest(AbstractModel):
     """DescribeZoneTrafficInfo请求参数结构体
 
@@ -845,53 +1476,7 @@ class ModifyPersonTagInfoResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
-class NetworkHistoryInfo(AbstractModel):
-    """查询网络状态历史数据输出
-
-    """
-
-    def __init__(self):
-        """
-        :param Count: 总数
-        :type Count: int
-        :param CompanyId: 集团id
-        :type CompanyId: str
-        :param ShopId: 店铺id
-        :type ShopId: int
-        :param Province: 店铺省份
-        :type Province: str
-        :param City: 店铺城市
-        :type City: str
-        :param ShopName: 店铺名称
-        :type ShopName: str
-        :param Infos: 网络信息
-        :type Infos: list of NetworkInfoNoShop
-        """
-        self.Count = None
-        self.CompanyId = None
-        self.ShopId = None
-        self.Province = None
-        self.City = None
-        self.ShopName = None
-        self.Infos = None
-
-
-    def _deserialize(self, params):
-        self.Count = params.get("Count")
-        self.CompanyId = params.get("CompanyId")
-        self.ShopId = params.get("ShopId")
-        self.Province = params.get("Province")
-        self.City = params.get("City")
-        self.ShopName = params.get("ShopName")
-        if params.get("Infos") is not None:
-            self.Infos = []
-            for item in params.get("Infos"):
-                obj = NetworkInfoNoShop()
-                obj._deserialize(item)
-                self.Infos.append(obj)
-
-
-class NetworkInfo(AbstractModel):
+class NetworkAndShopInfo(AbstractModel):
     """网络状态
 
     """
@@ -960,7 +1545,53 @@ class NetworkInfo(AbstractModel):
         self.Mac = params.get("Mac")
 
 
-class NetworkInfoNoShop(AbstractModel):
+class NetworkHistoryInfo(AbstractModel):
+    """查询网络状态历史数据输出
+
+    """
+
+    def __init__(self):
+        """
+        :param Count: 总数
+        :type Count: int
+        :param CompanyId: 集团id
+        :type CompanyId: str
+        :param ShopId: 店铺id
+        :type ShopId: int
+        :param Province: 店铺省份
+        :type Province: str
+        :param City: 店铺城市
+        :type City: str
+        :param ShopName: 店铺名称
+        :type ShopName: str
+        :param Infos: 网络信息
+        :type Infos: list of NetworkInfo
+        """
+        self.Count = None
+        self.CompanyId = None
+        self.ShopId = None
+        self.Province = None
+        self.City = None
+        self.ShopName = None
+        self.Infos = None
+
+
+    def _deserialize(self, params):
+        self.Count = params.get("Count")
+        self.CompanyId = params.get("CompanyId")
+        self.ShopId = params.get("ShopId")
+        self.Province = params.get("Province")
+        self.City = params.get("City")
+        self.ShopName = params.get("ShopName")
+        if params.get("Infos") is not None:
+            self.Infos = []
+            for item in params.get("Infos"):
+                obj = NetworkInfo()
+                obj._deserialize(item)
+                self.Infos.append(obj)
+
+
+class NetworkInfo(AbstractModel):
     """没有店铺信息的网络状态
 
     """
@@ -1019,7 +1650,7 @@ class NetworkLastInfo(AbstractModel):
         :param Count: 总数
         :type Count: int
         :param Infos: 网络状态
-        :type Infos: list of NetworkInfo
+        :type Infos: list of NetworkAndShopInfo
         """
         self.Count = None
         self.Infos = None
@@ -1030,7 +1661,7 @@ class NetworkLastInfo(AbstractModel):
         if params.get("Infos") is not None:
             self.Infos = []
             for item in params.get("Infos"):
-                obj = NetworkInfo()
+                obj = NetworkAndShopInfo()
                 obj._deserialize(item)
                 self.Infos.append(obj)
 
@@ -1283,6 +1914,123 @@ class ShopInfo(AbstractModel):
         self.Province = params.get("Province")
         self.City = params.get("City")
         self.CompanyName = params.get("CompanyName")
+
+
+class TrajectorySunData(AbstractModel):
+    """轨迹动线信息子结构
+
+    """
+
+    def __init__(self):
+        """
+        :param Zones: 区域动线，形如 x-x-x-x-x，其中 x 为区域 ID
+        :type Zones: str
+        :param Count: 该动线出现次数
+        :type Count: int
+        :param AvgStayTime: 该动线平均停留时间（秒）
+        :type AvgStayTime: int
+        """
+        self.Zones = None
+        self.Count = None
+        self.AvgStayTime = None
+
+
+    def _deserialize(self, params):
+        self.Zones = params.get("Zones")
+        self.Count = params.get("Count")
+        self.AvgStayTime = params.get("AvgStayTime")
+
+
+class ZoneAgeGroupAvrStayTime(AbstractModel):
+    """区域性别平均停留时间子结构
+
+    """
+
+    def __init__(self):
+        """
+        :param MaleAvrStayTime: 男性平均停留时间
+        :type MaleAvrStayTime: float
+        :param FemaleAvrStayTime: 女性平均停留时间
+        :type FemaleAvrStayTime: float
+        """
+        self.MaleAvrStayTime = None
+        self.FemaleAvrStayTime = None
+
+
+    def _deserialize(self, params):
+        self.MaleAvrStayTime = params.get("MaleAvrStayTime")
+        self.FemaleAvrStayTime = params.get("FemaleAvrStayTime")
+
+
+class ZoneDayFlow(AbstractModel):
+    """每日客流统计子结构
+
+    """
+
+    def __init__(self):
+        """
+        :param Day: 日期，如 2018-08-6
+        :type Day: str
+        :param FlowCount: 客流量
+        :type FlowCount: int
+        """
+        self.Day = None
+        self.FlowCount = None
+
+
+    def _deserialize(self, params):
+        self.Day = params.get("Day")
+        self.FlowCount = params.get("FlowCount")
+
+
+class ZoneFlowAndAvrStayTime(AbstractModel):
+    """客流停留统计子结构
+
+    """
+
+    def __init__(self):
+        """
+        :param ZoneId: 区域id
+        :type ZoneId: int
+        :param ZoneName: 区域名称
+        :type ZoneName: str
+        :param FlowCount: 人流量
+        :type FlowCount: int
+        :param AvrStayTime: 平均停留时长
+        :type AvrStayTime: int
+        """
+        self.ZoneId = None
+        self.ZoneName = None
+        self.FlowCount = None
+        self.AvrStayTime = None
+
+
+    def _deserialize(self, params):
+        self.ZoneId = params.get("ZoneId")
+        self.ZoneName = params.get("ZoneName")
+        self.FlowCount = params.get("FlowCount")
+        self.AvrStayTime = params.get("AvrStayTime")
+
+
+class ZoneHourFlow(AbstractModel):
+    """客流统计分时数据子结构
+
+    """
+
+    def __init__(self):
+        """
+        :param Hour: 分时 0~23
+        :type Hour: int
+        :param FlowCount: 客流量
+        :type FlowCount: int
+        """
+        self.Hour = None
+        self.FlowCount = None
+
+
+    def _deserialize(self, params):
+        self.Hour = params.get("Hour")
+        self.FlowCount = params.get("FlowCount")
 
 
 class ZoneTrafficInfo(AbstractModel):

@@ -389,7 +389,7 @@ class CreateResourceInstancesRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Pid: 资源类型id。
+        :param Pid: 资源类型id。13624：加固专业版。
         :type Pid: int
         :param TimeUnit: 时间单位，取值为d，m，y，分别表示天，月，年。
         :type TimeUnit: str
@@ -682,7 +682,7 @@ class DescribeResourceInstancesRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Pids: 资源类别id数组
+        :param Pids: 资源类别id数组，13624：加固专业版，12750：企业版。空数组表示返回全部资源。
         :type Pids: list of int non-negative
         :param Filters: 支持通过资源id，pid进行查询
         :type Filters: list of Filter
@@ -1345,9 +1345,9 @@ class ServiceInfo(AbstractModel):
 
     def __init__(self):
         """
-        :param ServiceEdition: 服务版本，基础版basic,专业版Professional
+        :param ServiceEdition: 服务版本，基础版basic，专业版professional，企业版enterprise
         :type ServiceEdition: str
-        :param CallbackUrl: 任务处理完成后的反向通知回调地址,通知为POST请求，post信息{ItemId:"xxxduuyt-ugusg"}
+        :param CallbackUrl: 任务处理完成后的反向通知回调地址,通知为POST请求，post包体数据示例{"Response":{"ItemId":"4cdad8fb86f036b06bccb3f58971c306","ShieldCode":0,"ShieldMd5":"78701576793c4a5f04e1c9660de0aa0b","ShieldSize":11997354,"TaskStatus":1,"TaskTime":1539148141}}，调用方需要返回如下信息，{"Result":"ok","Reason":"xxxxx"}，如果Result字段值不等于ok会继续回调。
         :type CallbackUrl: str
         :param SubmitSource: 提交来源 YYB-应用宝 RDM-rdm MC-控制台 MAC_TOOL-mac工具 WIN_TOOL-window工具
         :type SubmitSource: str
@@ -1380,13 +1380,13 @@ class ShieldInfo(AbstractModel):
         :type ShieldSize: int
         :param ShieldMd5: 加固后app的md5
         :type ShieldMd5: str
-        :param AppUrl: 加固后的APP下载地址
+        :param AppUrl: 加固后的APP下载地址，该地址有效期为20分钟，请及时下载
         :type AppUrl: str
         :param TaskTime: 加固的提交时间
         :type TaskTime: int
         :param ItemId: 任务唯一标识
         :type ItemId: str
-        :param ServiceEdition: 加固版本，basic基础版，professional专业版
+        :param ServiceEdition: 加固版本，basic基础版，professional专业版，enterprise企业版
         :type ServiceEdition: str
         """
         self.ShieldCode = None

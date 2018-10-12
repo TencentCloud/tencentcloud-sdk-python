@@ -347,6 +347,34 @@ class CdbClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeAsyncRequestInfo(self, request):
+        """本接口(DescribeAsyncRequestInfo)用于查询云数据库实例异步任务的执行结果。
+
+        :param request: 调用DescribeAsyncRequestInfo所需参数的结构体。
+        :type request: :class:`tencentcloud.cdb.v20170320.models.DescribeAsyncRequestInfoRequest`
+        :rtype: :class:`tencentcloud.cdb.v20170320.models.DescribeAsyncRequestInfoResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeAsyncRequestInfo", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeAsyncRequestInfoResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise e
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeBackupConfig(self, request):
         """本接口(DescribeBackupConfig)用于查询数据库备份配置信息。
 
@@ -784,6 +812,34 @@ class CdbClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeDatabasesResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise e
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeInstanceParams(self, request):
+        """该接口（DescribeInstanceParams）用于查询实例的参数列表。
+
+        :param request: 调用DescribeInstanceParams所需参数的结构体。
+        :type request: :class:`tencentcloud.cdb.v20170320.models.DescribeInstanceParamsRequest`
+        :rtype: :class:`tencentcloud.cdb.v20170320.models.DescribeInstanceParamsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeInstanceParams", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeInstanceParamsResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

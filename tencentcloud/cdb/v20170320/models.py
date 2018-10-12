@@ -482,7 +482,7 @@ class CreateDBInstanceHourRequest(AbstractModel):
         :type Port: int
         :param Password: 设置root帐号密码，密码规则：8-64个字符，至少包含字母、数字、字符（支持的字符：_+-&=!@#$%^*()）中的两种，购买主实例时可指定该参数，购买只读实例或者灾备实例时指定该参数无意义
         :type Password: str
-        :param ParamList: 参数列表，参数格式如ParamList.0.Name=auto_increment&ParamList.0.Value=1。可通过[查询参数列表](/document/product/236/6369)查询支持设置的参数
+        :param ParamList: 参数列表，参数格式如ParamList.0.Name=auto_increment_increment&ParamList.0.Value=1。可通过[查询参数列表](/document/product/236/6369)查询支持设置的参数
         :type ParamList: list of ParamInfo
         :param ProtectMode: 数据复制方式，默认为0，支持值包括：0-表示异步复制，1-表示半同步复制，2-表示强同步复制，购买主实例时可指定该参数，购买只读实例或者灾备实例时指定该参数无意义
         :type ProtectMode: int
@@ -492,11 +492,11 @@ class CreateDBInstanceHourRequest(AbstractModel):
         :type SlaveZone: str
         :param BackupZone: 备库2的可用区ID，默认为0，购买主实例时可指定该参数，购买只读实例或者灾备实例时指定该参数无意义
         :type BackupZone: str
-        :param SecurityGroup: 安全组参数
+        :param SecurityGroup: 安全组参数，可使用[查询项目安全组信息](https://cloud.tencent.com/document/api/236/15850)接口查询某个项目的安全组详情
         :type SecurityGroup: list of str
         :param RoGroup: 只读实例信息
         :type RoGroup: :class:`tencentcloud.cdb.v20170320.models.RoGroup`
-        :param AutoRenewFlag: 自动续费标记，值为0或1
+        :param AutoRenewFlag: 自动续费标记，值为0或1。购买按量计费实例该字段无意义
         :type AutoRenewFlag: int
         :param InstanceName: 实例名称
         :type InstanceName: str
@@ -629,7 +629,7 @@ class CreateDBInstanceRequest(AbstractModel):
         :type AutoRenewFlag: int
         :param MasterRegion: 主实例地域信息，购买灾备实例时，该字段必填
         :type MasterRegion: str
-        :param SecurityGroup: 安全组参数
+        :param SecurityGroup: 安全组参数，可使用[查询项目安全组信息](https://cloud.tencent.com/document/api/236/15850)接口查询某个项目的安全组详情
         :type SecurityGroup: list of str
         :param RoGroup: 只读实例参数
         :type RoGroup: :class:`tencentcloud.cdb.v20170320.models.RoGroup`
@@ -988,6 +988,48 @@ class DescribeAccountsResponse(AbstractModel):
                 obj = AccountInfo()
                 obj._deserialize(item)
                 self.Items.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeAsyncRequestInfoRequest(AbstractModel):
+    """DescribeAsyncRequestInfo请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param AsyncRequestId: 异步任务的请求ID。
+        :type AsyncRequestId: str
+        """
+        self.AsyncRequestId = None
+
+
+    def _deserialize(self, params):
+        self.AsyncRequestId = params.get("AsyncRequestId")
+
+
+class DescribeAsyncRequestInfoResponse(AbstractModel):
+    """DescribeAsyncRequestInfo返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Status: 任务执行结果。可能的取值：INITIAL - 初始化，RUNNING - 运行中，SUCCESS - 执行成功，FAILED - 执行失败，KILLED - 已终止，REMOVED - 已删除，PAUSED - 终止中。
+        :type Status: str
+        :param Info: 任务执行信息描述。
+        :type Info: str
+        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :type RequestId: str
+        """
+        self.Status = None
+        self.Info = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Status = params.get("Status")
+        self.Info = params.get("Info")
         self.RequestId = params.get("RequestId")
 
 
@@ -1570,9 +1612,9 @@ class DescribeDBInstancesRequest(AbstractModel):
         :type OrderBy: str
         :param OrderDirection: 排序方式，目前支持："ASC"或者"DESC"
         :type OrderDirection: str
-        :param WithSecurityGroup: 是否包含安全组信息
+        :param WithSecurityGroup: 是否包含安全组信息，可取值：0-不包含，1-包含
         :type WithSecurityGroup: int
-        :param WithExCluster: 是否包含独享集群信息
+        :param WithExCluster: 是否包含独享集群信息，可取值：0-不包含，1-包含
         :type WithExCluster: int
         :param ExClusterId: 独享集群ID
         :type ExClusterId: str
@@ -1580,11 +1622,11 @@ class DescribeDBInstancesRequest(AbstractModel):
         :type InstanceIds: list of str
         :param InitFlag: 初始化标记，可取值：0-未初始化，1-初始化
         :type InitFlag: int
-        :param WithDr: 是否包含灾备实例
+        :param WithDr: 是否包含灾备实例，可取值：0-不包含，1-包含
         :type WithDr: int
-        :param WithRo: 是否包含只读实例
+        :param WithRo: 是否包含只读实例，可取值：0-不包含，1-包含
         :type WithRo: int
-        :param WithMaster: 是否包含主实例
+        :param WithMaster: 是否包含主实例，可取值：0-不包含，1-包含
         :type WithMaster: int
         """
         self.ProjectId = None
@@ -1927,6 +1969,53 @@ class DescribeDatabasesResponse(AbstractModel):
     def _deserialize(self, params):
         self.TotalCount = params.get("TotalCount")
         self.Items = params.get("Items")
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeInstanceParamsRequest(AbstractModel):
+    """DescribeInstanceParams请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param InstanceId: 实例ID，格式如：cdb-c1nl9rpv，与云数据库控制台页面中显示的实例ID相同，可使用[查询实例列表](https://cloud.tencent.com/document/api/236/15872) 接口获取，其值为输出参数中字段 InstanceId 的值
+        :type InstanceId: str
+        """
+        self.InstanceId = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+
+
+class DescribeInstanceParamsResponse(AbstractModel):
+    """DescribeInstanceParams返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param TotalCount: 实例的参数总数
+        :type TotalCount: int
+        :param Items: 参数详情
+        :type Items: list of ParameterDetail
+        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.Items = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("Items") is not None:
+            self.Items = []
+            for item in params.get("Items"):
+                obj = ParameterDetail()
+                obj._deserialize(item)
+                self.Items.append(obj)
         self.RequestId = params.get("RequestId")
 
 
@@ -3435,6 +3524,55 @@ class Parameter(AbstractModel):
     def _deserialize(self, params):
         self.Name = params.get("Name")
         self.CurrentValue = params.get("CurrentValue")
+
+
+class ParameterDetail(AbstractModel):
+    """实例参数的详细描述
+
+    """
+
+    def __init__(self):
+        """
+        :param Name: 参数名称
+        :type Name: str
+        :param ParamType: 参数类型
+        :type ParamType: str
+        :param Default: 参数默认值
+        :type Default: str
+        :param Description: 参数描述
+        :type Description: str
+        :param CurrentValue: 参数当前值
+        :type CurrentValue: str
+        :param NeedReboot: 修改参数后，是否需要重启数据库以使参数生效。可能的值包括：0-不需要重启；1-需要重启
+        :type NeedReboot: int
+        :param Max: 参数允许的最大值
+        :type Max: int
+        :param Min: 参数允许的最小值
+        :type Min: int
+        :param EnumValue: 参数的可选枚举值。如果为非枚举参数，则为空
+        :type EnumValue: list of str
+        """
+        self.Name = None
+        self.ParamType = None
+        self.Default = None
+        self.Description = None
+        self.CurrentValue = None
+        self.NeedReboot = None
+        self.Max = None
+        self.Min = None
+        self.EnumValue = None
+
+
+    def _deserialize(self, params):
+        self.Name = params.get("Name")
+        self.ParamType = params.get("ParamType")
+        self.Default = params.get("Default")
+        self.Description = params.get("Description")
+        self.CurrentValue = params.get("CurrentValue")
+        self.NeedReboot = params.get("NeedReboot")
+        self.Max = params.get("Max")
+        self.Min = params.get("Min")
+        self.EnumValue = params.get("EnumValue")
 
 
 class RegionSellConf(AbstractModel):

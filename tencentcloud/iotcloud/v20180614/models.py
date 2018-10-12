@@ -860,6 +860,8 @@ class DeviceInfo(AbstractModel):
         :type LastUpdateTime: int
         :param LoraDevEui: LoRa设备的dev eui
         :type LoraDevEui: str
+        :param LoraMoteType: LoRa设备的Mote type
+        :type LoraMoteType: int
         """
         self.DeviceName = None
         self.Online = None
@@ -875,6 +877,7 @@ class DeviceInfo(AbstractModel):
         self.ConnIP = None
         self.LastUpdateTime = None
         self.LoraDevEui = None
+        self.LoraMoteType = None
 
 
     def _deserialize(self, params):
@@ -897,6 +900,7 @@ class DeviceInfo(AbstractModel):
         self.ConnIP = params.get("ConnIP")
         self.LastUpdateTime = params.get("LastUpdateTime")
         self.LoraDevEui = params.get("LoraDevEui")
+        self.LoraMoteType = params.get("LoraMoteType")
 
 
 class DeviceTag(AbstractModel):
@@ -943,48 +947,6 @@ class Filter(AbstractModel):
     def _deserialize(self, params):
         self.Name = params.get("Name")
         self.Values = params.get("Values")
-
-
-class GetDeviceShadowRequest(AbstractModel):
-    """GetDeviceShadow请求参数结构体
-
-    """
-
-    def __init__(self):
-        """
-        :param ProductID: 产品 ID
-        :type ProductID: str
-        :param DeviceName: 设备名称。命名规则：[a-zA-Z0-9:_-]{1,48}
-        :type DeviceName: str
-        """
-        self.ProductID = None
-        self.DeviceName = None
-
-
-    def _deserialize(self, params):
-        self.ProductID = params.get("ProductID")
-        self.DeviceName = params.get("DeviceName")
-
-
-class GetDeviceShadowResponse(AbstractModel):
-    """GetDeviceShadow返回参数结构体
-
-    """
-
-    def __init__(self):
-        """
-        :param Data: 设备影子数据
-        :type Data: str
-        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
-        :type RequestId: str
-        """
-        self.Data = None
-        self.RequestId = None
-
-
-    def _deserialize(self, params):
-        self.Data = params.get("Data")
-        self.RequestId = params.get("RequestId")
 
 
 class MultiDevicesInfo(AbstractModel):

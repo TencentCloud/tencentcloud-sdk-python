@@ -1355,6 +1355,36 @@ class CvmClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def ModifyInstancesVpcAttribute(self, request):
+        """本接口(ModifyInstancesVpcAttribute)用于修改实例vpc属性，如私有网络ip。
+        * 此操作默认会关闭实例，完成后再启动。
+        * 当指定私有网络ID和子网ID（子网必须在实例所在的可用区）与指定实例所在私有网络不一致时，会将实例迁移至指定的私有网络的子网下。执行此操作前请确保指定的实例上没有绑定[弹性网卡](https://cloud.tencent.com/document/product/576)和[负载均衡](https://cloud.tencent.com/document/product/214)。
+
+        :param request: 调用ModifyInstancesVpcAttribute所需参数的结构体。
+        :type request: :class:`tencentcloud.cvm.v20170312.models.ModifyInstancesVpcAttributeRequest`
+        :rtype: :class:`tencentcloud.cvm.v20170312.models.ModifyInstancesVpcAttributeResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ModifyInstancesVpcAttribute", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ModifyInstancesVpcAttributeResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise e
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def ModifyKeyPairAttribute(self, request):
         """本接口 (ModifyKeyPairAttribute) 用于修改密钥对属性。
 

@@ -417,34 +417,6 @@ class IotcloudClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def GetDeviceShadow(self, request):
-        """本接口（GetDeviceShadow）用于查询虚拟设备信息。
-
-        :param request: 调用GetDeviceShadow所需参数的结构体。
-        :type request: :class:`tencentcloud.iotcloud.v20180614.models.GetDeviceShadowRequest`
-        :rtype: :class:`tencentcloud.iotcloud.v20180614.models.GetDeviceShadowResponse`
-
-        """
-        try:
-            params = request._serialize()
-            body = self.call("GetDeviceShadow", params)
-            response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.GetDeviceShadowResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise e
-            else:
-                raise TencentCloudSDKException(e.message, e.message)
-
-
     def PublishMessage(self, request):
         """本接口（PublishMessage）用于向某个主题发消息。
 
