@@ -6,18 +6,23 @@
 
 1. 依赖环境：Python 2.7 到 3.6 版本。
 2. 从 腾讯云控制台 开通相应产品。
-3. 获取 SecretID、SecretKey 以及调用地址（endpoint），endpoint 一般形式为*.tencentcloudapi.com，如CVM 的调用地址为 cvm.tencentcloudapi.com，具体参考各产品说明。
+3. 获取 SecretID、SecretKey 以及调用地址（endpoint），endpoint 一般形式为\*.tencentcloudapi.com，如CVM 的调用地址为 cvm.tencentcloudapi.com，具体参考各产品说明。
 
 # 获取安装
 
 安装 Python SDK 前，先获取安全凭证。在第一次使用云 API 之前，用户首先需要在腾讯云控制台上申请安全凭证，安全凭证包括 SecretID 和 SecretKey, SecretID 是用于标识 API 调用者的身份，SecretKey 是用于加密签名字符串和服务器端验证签名字符串的密钥。SecretKey 必须严格保管，避免泄露。
 
 ## 通过 Pip 安装(推荐)
+
 您可以通过 pip 安装方式将腾讯云 API Python SDK 安装到您的项目中，如果您的项目环境尚未安装 pip，请详细参见 [pip](https://pip.pypa.io/en/stable/installing/?spm=a3c0i.o32026zh.a3.6.74134958lLSo6o)官网 安装。
+
 通过pip方式安装请在命令行中执行以下命令:
+
 ```bash
 pip install tencentcloud-sdk-python
 ```
+
+请注意，如果同时有 python2 和 python3 环境， python3 环境需要使用 pip3 命令安装。
 
 ## 通过源码包安装
 
@@ -27,7 +32,9 @@ pip install tencentcloud-sdk-python
     $ python setup.py install
 
 # 示例
+
 以查询可用区接口为例:
+
 ```python
 # -*- coding: utf-8 -*-
 from tencentcloud.common import credential
@@ -52,5 +59,9 @@ try:
 except TencentCloudSDKException as err:
     print(err)
 ```
+
+注意，如果是有代理的环境下，需要设置系统环境变量 `https_proxy` ，否则可能无法正常调用。
+
 您可以在[github](https://github.com/tencentcloud/tencentcloud-sdk-python)中examples目录下找到更详细的示例。
+
 
