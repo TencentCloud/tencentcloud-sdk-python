@@ -17,10 +17,10 @@ import json
 
 from tencentcloud.common.exception.tencent_cloud_sdk_exception import TencentCloudSDKException
 from tencentcloud.common.abstract_client import AbstractClient
-from tencentcloud.as.v20180419 import models
+from tencentcloud.autoscaling.v20180419 import models
 
 
-class AsClient(AbstractClient):
+class AutoscalingClient(AbstractClient):
     _apiVersion = '2018-04-19'
     _endpoint = 'as.tencentcloudapi.com'
 
@@ -29,8 +29,8 @@ class AsClient(AbstractClient):
         """本接口（AttachInstances）用于将 CVM 实例添加到伸缩组。
 
         :param request: 调用AttachInstances所需参数的结构体。
-        :type request: :class:`tencentcloud.as.v20180419.models.AttachInstancesRequest`
-        :rtype: :class:`tencentcloud.as.v20180419.models.AttachInstancesResponse`
+        :type request: :class:`tencentcloud.autoscaling.v20180419.models.AttachInstancesRequest`
+        :rtype: :class:`tencentcloud.autoscaling.v20180419.models.AttachInstancesResponse`
 
         """
         try:
@@ -57,8 +57,8 @@ class AsClient(AbstractClient):
         """本接口（CreateAutoScalingGroup）用于创建伸缩组
 
         :param request: 调用CreateAutoScalingGroup所需参数的结构体。
-        :type request: :class:`tencentcloud.as.v20180419.models.CreateAutoScalingGroupRequest`
-        :rtype: :class:`tencentcloud.as.v20180419.models.CreateAutoScalingGroupResponse`
+        :type request: :class:`tencentcloud.autoscaling.v20180419.models.CreateAutoScalingGroupRequest`
+        :rtype: :class:`tencentcloud.autoscaling.v20180419.models.CreateAutoScalingGroupResponse`
 
         """
         try:
@@ -89,8 +89,8 @@ class AsClient(AbstractClient):
         * 每个项目最多只能创建20个启动配置，详见[使用限制](https://cloud.tencent.com/document/product/377/3120)。
 
         :param request: 调用CreateLaunchConfiguration所需参数的结构体。
-        :type request: :class:`tencentcloud.as.v20180419.models.CreateLaunchConfigurationRequest`
-        :rtype: :class:`tencentcloud.as.v20180419.models.CreateLaunchConfigurationResponse`
+        :type request: :class:`tencentcloud.autoscaling.v20180419.models.CreateLaunchConfigurationRequest`
+        :rtype: :class:`tencentcloud.autoscaling.v20180419.models.CreateLaunchConfigurationResponse`
 
         """
         try:
@@ -117,8 +117,8 @@ class AsClient(AbstractClient):
         """本接口（CreateScheduledAction）用于创建定时任务。
 
         :param request: 调用CreateScheduledAction所需参数的结构体。
-        :type request: :class:`tencentcloud.as.v20180419.models.CreateScheduledActionRequest`
-        :rtype: :class:`tencentcloud.as.v20180419.models.CreateScheduledActionResponse`
+        :type request: :class:`tencentcloud.autoscaling.v20180419.models.CreateScheduledActionRequest`
+        :rtype: :class:`tencentcloud.autoscaling.v20180419.models.CreateScheduledActionResponse`
 
         """
         try:
@@ -145,8 +145,8 @@ class AsClient(AbstractClient):
         """本接口（DeleteAutoScalingGroup）用于删除指定伸缩组，删除前提是伸缩组内无实例且当前未在执行伸缩活动。
 
         :param request: 调用DeleteAutoScalingGroup所需参数的结构体。
-        :type request: :class:`tencentcloud.as.v20180419.models.DeleteAutoScalingGroupRequest`
-        :rtype: :class:`tencentcloud.as.v20180419.models.DeleteAutoScalingGroupResponse`
+        :type request: :class:`tencentcloud.autoscaling.v20180419.models.DeleteAutoScalingGroupRequest`
+        :rtype: :class:`tencentcloud.autoscaling.v20180419.models.DeleteAutoScalingGroupResponse`
 
         """
         try:
@@ -175,8 +175,8 @@ class AsClient(AbstractClient):
         * 若启动配置在伸缩组中属于生效状态，则该启动配置不允许删除。
 
         :param request: 调用DeleteLaunchConfiguration所需参数的结构体。
-        :type request: :class:`tencentcloud.as.v20180419.models.DeleteLaunchConfigurationRequest`
-        :rtype: :class:`tencentcloud.as.v20180419.models.DeleteLaunchConfigurationResponse`
+        :type request: :class:`tencentcloud.autoscaling.v20180419.models.DeleteLaunchConfigurationRequest`
+        :rtype: :class:`tencentcloud.autoscaling.v20180419.models.DeleteLaunchConfigurationResponse`
 
         """
         try:
@@ -203,8 +203,8 @@ class AsClient(AbstractClient):
         """本接口（DeleteScheduledAction）用于删除特定的定时任务。
 
         :param request: 调用DeleteScheduledAction所需参数的结构体。
-        :type request: :class:`tencentcloud.as.v20180419.models.DeleteScheduledActionRequest`
-        :rtype: :class:`tencentcloud.as.v20180419.models.DeleteScheduledActionResponse`
+        :type request: :class:`tencentcloud.autoscaling.v20180419.models.DeleteScheduledActionRequest`
+        :rtype: :class:`tencentcloud.autoscaling.v20180419.models.DeleteScheduledActionResponse`
 
         """
         try:
@@ -231,8 +231,8 @@ class AsClient(AbstractClient):
         """本接口（DescribeAccountLimits）用于查询用户账户在弹性伸缩中的资源限制。
 
         :param request: 调用DescribeAccountLimits所需参数的结构体。
-        :type request: :class:`tencentcloud.as.v20180419.models.DescribeAccountLimitsRequest`
-        :rtype: :class:`tencentcloud.as.v20180419.models.DescribeAccountLimitsResponse`
+        :type request: :class:`tencentcloud.autoscaling.v20180419.models.DescribeAccountLimitsRequest`
+        :rtype: :class:`tencentcloud.autoscaling.v20180419.models.DescribeAccountLimitsResponse`
 
         """
         try:
@@ -259,8 +259,8 @@ class AsClient(AbstractClient):
         """本接口（DescribeAutoScalingGroups）用于查询伸缩组信息。
 
         :param request: 调用DescribeAutoScalingGroups所需参数的结构体。
-        :type request: :class:`tencentcloud.as.v20180419.models.DescribeAutoScalingGroupsRequest`
-        :rtype: :class:`tencentcloud.as.v20180419.models.DescribeAutoScalingGroupsResponse`
+        :type request: :class:`tencentcloud.autoscaling.v20180419.models.DescribeAutoScalingGroupsRequest`
+        :rtype: :class:`tencentcloud.autoscaling.v20180419.models.DescribeAutoScalingGroupsResponse`
 
         """
         try:
@@ -288,8 +288,8 @@ class AsClient(AbstractClient):
 
 
         :param request: 调用DescribeAutoScalingInstances所需参数的结构体。
-        :type request: :class:`tencentcloud.as.v20180419.models.DescribeAutoScalingInstancesRequest`
-        :rtype: :class:`tencentcloud.as.v20180419.models.DescribeAutoScalingInstancesResponse`
+        :type request: :class:`tencentcloud.autoscaling.v20180419.models.DescribeAutoScalingInstancesRequest`
+        :rtype: :class:`tencentcloud.autoscaling.v20180419.models.DescribeAutoScalingInstancesResponse`
 
         """
         try:
@@ -316,8 +316,8 @@ class AsClient(AbstractClient):
         """本接口（DescribeLaunchConfigurations）用于查询启动配置的信息。
 
         :param request: 调用DescribeLaunchConfigurations所需参数的结构体。
-        :type request: :class:`tencentcloud.as.v20180419.models.DescribeLaunchConfigurationsRequest`
-        :rtype: :class:`tencentcloud.as.v20180419.models.DescribeLaunchConfigurationsResponse`
+        :type request: :class:`tencentcloud.autoscaling.v20180419.models.DescribeLaunchConfigurationsRequest`
+        :rtype: :class:`tencentcloud.autoscaling.v20180419.models.DescribeLaunchConfigurationsResponse`
 
         """
         try:
@@ -347,8 +347,8 @@ class AsClient(AbstractClient):
         * 如果参数为空，返回当前用户一定数量（Limit所指定的数量，默认为20）的定时任务。
 
         :param request: 调用DescribeScheduledActions所需参数的结构体。
-        :type request: :class:`tencentcloud.as.v20180419.models.DescribeScheduledActionsRequest`
-        :rtype: :class:`tencentcloud.as.v20180419.models.DescribeScheduledActionsResponse`
+        :type request: :class:`tencentcloud.autoscaling.v20180419.models.DescribeScheduledActionsRequest`
+        :rtype: :class:`tencentcloud.autoscaling.v20180419.models.DescribeScheduledActionsResponse`
 
         """
         try:
@@ -375,8 +375,8 @@ class AsClient(AbstractClient):
         """本接口（DettachInstances）用于从伸缩组移出 CVM 实例，本接口不会被销毁实例。
 
         :param request: 调用DetachInstances所需参数的结构体。
-        :type request: :class:`tencentcloud.as.v20180419.models.DetachInstancesRequest`
-        :rtype: :class:`tencentcloud.as.v20180419.models.DetachInstancesResponse`
+        :type request: :class:`tencentcloud.autoscaling.v20180419.models.DetachInstancesRequest`
+        :rtype: :class:`tencentcloud.autoscaling.v20180419.models.DetachInstancesResponse`
 
         """
         try:
@@ -403,8 +403,8 @@ class AsClient(AbstractClient):
         """本接口（DisableAutoScalingGroup）用于停用指定伸缩组。
 
         :param request: 调用DisableAutoScalingGroup所需参数的结构体。
-        :type request: :class:`tencentcloud.as.v20180419.models.DisableAutoScalingGroupRequest`
-        :rtype: :class:`tencentcloud.as.v20180419.models.DisableAutoScalingGroupResponse`
+        :type request: :class:`tencentcloud.autoscaling.v20180419.models.DisableAutoScalingGroupRequest`
+        :rtype: :class:`tencentcloud.autoscaling.v20180419.models.DisableAutoScalingGroupResponse`
 
         """
         try:
@@ -431,8 +431,8 @@ class AsClient(AbstractClient):
         """本接口（EnableAutoScalingGroup）用于启用指定伸缩组。
 
         :param request: 调用EnableAutoScalingGroup所需参数的结构体。
-        :type request: :class:`tencentcloud.as.v20180419.models.EnableAutoScalingGroupRequest`
-        :rtype: :class:`tencentcloud.as.v20180419.models.EnableAutoScalingGroupResponse`
+        :type request: :class:`tencentcloud.autoscaling.v20180419.models.EnableAutoScalingGroupRequest`
+        :rtype: :class:`tencentcloud.autoscaling.v20180419.models.EnableAutoScalingGroupResponse`
 
         """
         try:
@@ -459,8 +459,8 @@ class AsClient(AbstractClient):
         """本接口（ModifyAutoScalingGroup）用于修改伸缩组。
 
         :param request: 调用ModifyAutoScalingGroup所需参数的结构体。
-        :type request: :class:`tencentcloud.as.v20180419.models.ModifyAutoScalingGroupRequest`
-        :rtype: :class:`tencentcloud.as.v20180419.models.ModifyAutoScalingGroupResponse`
+        :type request: :class:`tencentcloud.autoscaling.v20180419.models.ModifyAutoScalingGroupRequest`
+        :rtype: :class:`tencentcloud.autoscaling.v20180419.models.ModifyAutoScalingGroupResponse`
 
         """
         try:
@@ -487,8 +487,8 @@ class AsClient(AbstractClient):
         """本接口（ModifyDesiredCapacity）用于修改指定伸缩组的期望实例数
 
         :param request: 调用ModifyDesiredCapacity所需参数的结构体。
-        :type request: :class:`tencentcloud.as.v20180419.models.ModifyDesiredCapacityRequest`
-        :rtype: :class:`tencentcloud.as.v20180419.models.ModifyDesiredCapacityResponse`
+        :type request: :class:`tencentcloud.autoscaling.v20180419.models.ModifyDesiredCapacityRequest`
+        :rtype: :class:`tencentcloud.autoscaling.v20180419.models.ModifyDesiredCapacityResponse`
 
         """
         try:
@@ -515,8 +515,8 @@ class AsClient(AbstractClient):
         """本接口（ModifyScheduledAction）用于修改定时任务。
 
         :param request: 调用ModifyScheduledAction所需参数的结构体。
-        :type request: :class:`tencentcloud.as.v20180419.models.ModifyScheduledActionRequest`
-        :rtype: :class:`tencentcloud.as.v20180419.models.ModifyScheduledActionResponse`
+        :type request: :class:`tencentcloud.autoscaling.v20180419.models.ModifyScheduledActionRequest`
+        :rtype: :class:`tencentcloud.autoscaling.v20180419.models.ModifyScheduledActionResponse`
 
         """
         try:
@@ -543,8 +543,8 @@ class AsClient(AbstractClient):
         """本接口（RemoveInstances）用于从伸缩组删除 CVM 实例。根据当前的产品逻辑，如果实例由弹性伸缩自动创建，则实例会被销毁；如果实例系创建后加入伸缩组的，则会从伸缩组中移除，保留实例。
 
         :param request: 调用RemoveInstances所需参数的结构体。
-        :type request: :class:`tencentcloud.as.v20180419.models.RemoveInstancesRequest`
-        :rtype: :class:`tencentcloud.as.v20180419.models.RemoveInstancesResponse`
+        :type request: :class:`tencentcloud.autoscaling.v20180419.models.RemoveInstancesRequest`
+        :rtype: :class:`tencentcloud.autoscaling.v20180419.models.RemoveInstancesResponse`
 
         """
         try:

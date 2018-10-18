@@ -280,17 +280,17 @@ class CreateLaunchConfigurationRequest(AbstractModel):
         :param ProjectId: 实例所属项目ID。该参数可以通过调用 [DescribeProject](https://cloud.tencent.com/document/api/378/4400) 的返回值中的`projectId`字段来获取。不填为默认项目。
         :type ProjectId: int
         :param SystemDisk: 实例系统盘配置信息。若不指定该参数，则按照系统默认值进行分配。
-        :type SystemDisk: :class:`tencentcloud.as.v20180419.models.SystemDisk`
+        :type SystemDisk: :class:`tencentcloud.autoscaling.v20180419.models.SystemDisk`
         :param DataDisks: 实例数据盘配置信息。若不指定该参数，则默认不购买数据盘，当前仅支持购买的时候指定一个数据盘。
         :type DataDisks: list of DataDisk
         :param InternetAccessible: 公网带宽相关信息设置。若不指定该参数，则默认公网带宽为0Mbps。
-        :type InternetAccessible: :class:`tencentcloud.as.v20180419.models.InternetAccessible`
+        :type InternetAccessible: :class:`tencentcloud.autoscaling.v20180419.models.InternetAccessible`
         :param LoginSettings: 实例登录设置。通过该参数可以设置实例的登录方式密码、密钥或保持镜像的原始登录设置。默认情况下会随机生成密码，并以站内信方式知会到用户。
-        :type LoginSettings: :class:`tencentcloud.as.v20180419.models.LoginSettings`
+        :type LoginSettings: :class:`tencentcloud.autoscaling.v20180419.models.LoginSettings`
         :param SecurityGroupIds: 实例所属安全组。该参数可以通过调用 [DescribeSecurityGroups](https://cloud.tencent.com/document/api/215/15808) 的返回值中的`SecurityGroupId`字段来获取。若不指定该参数，则默认不绑定安全组。
         :type SecurityGroupIds: list of str
         :param EnhancedService: 增强服务。通过该参数可以指定是否开启云安全、云监控等服务。若不指定该参数，则默认开启云监控、云安全服务。
-        :type EnhancedService: :class:`tencentcloud.as.v20180419.models.EnhancedService`
+        :type EnhancedService: :class:`tencentcloud.autoscaling.v20180419.models.EnhancedService`
         :param UserData: 经过 Base64 编码后的自定义数据，最大长度不超过16KB。
         :type UserData: str
         """
@@ -966,9 +966,9 @@ class EnhancedService(AbstractModel):
     def __init__(self):
         """
         :param SecurityService: 开启云安全服务。若不指定该参数，则默认开启云安全服务。
-        :type SecurityService: :class:`tencentcloud.as.v20180419.models.RunSecurityServiceEnabled`
+        :type SecurityService: :class:`tencentcloud.autoscaling.v20180419.models.RunSecurityServiceEnabled`
         :param MonitorService: 开启云监控服务。若不指定该参数，则默认开启云监控服务。
-        :type MonitorService: :class:`tencentcloud.as.v20180419.models.RunMonitorServiceEnabled`
+        :type MonitorService: :class:`tencentcloud.autoscaling.v20180419.models.RunMonitorServiceEnabled`
         """
         self.SecurityService = None
         self.MonitorService = None
@@ -1143,13 +1143,13 @@ class LaunchConfiguration(AbstractModel):
         :param InstanceType: 实例机型。
         :type InstanceType: str
         :param SystemDisk: 实例系统盘配置信息。
-        :type SystemDisk: :class:`tencentcloud.as.v20180419.models.SystemDisk`
+        :type SystemDisk: :class:`tencentcloud.autoscaling.v20180419.models.SystemDisk`
         :param DataDisks: 实例数据盘配置信息。
         :type DataDisks: list of DataDisk
         :param LoginSettings: 实例登录设置。
-        :type LoginSettings: :class:`tencentcloud.as.v20180419.models.LimitedLoginSettings`
+        :type LoginSettings: :class:`tencentcloud.autoscaling.v20180419.models.LimitedLoginSettings`
         :param InternetAccessible: 公网带宽相关信息设置。
-        :type InternetAccessible: :class:`tencentcloud.as.v20180419.models.InternetAccessible`
+        :type InternetAccessible: :class:`tencentcloud.autoscaling.v20180419.models.InternetAccessible`
         :param SecurityGroupIds: 实例所属安全组。
         :type SecurityGroupIds: list of str
         :param AutoScalingGroupAbstractSet: 启动配置关联的伸缩组。
@@ -1159,7 +1159,7 @@ class LaunchConfiguration(AbstractModel):
         :param CreatedTime: 启动配置创建时间。
         :type CreatedTime: str
         :param EnhancedService: 实例的增强服务启用情况与其设置。
-        :type EnhancedService: :class:`tencentcloud.as.v20180419.models.EnhancedService`
+        :type EnhancedService: :class:`tencentcloud.autoscaling.v20180419.models.EnhancedService`
         :param ImageId: 镜像ID。
         :type ImageId: str
         :param LaunchConfigurationStatus: 启动配置当前状态。取值范围：<br><li>NORMAL：正常<br><li>IMAGE_ABNORMAL：启动配置镜像异常<br><li>CBS_SNAP_ABNORMAL：启动配置数据盘快照异常<br><li>SECURITY_GROUP_ABNORMAL：启动配置安全组异常<br>
