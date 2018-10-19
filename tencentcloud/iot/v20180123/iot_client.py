@@ -165,20 +165,20 @@ class IotClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def AddUser(self, request):
-        """注册用户
+    def AppAddUser(self, request):
+        """为APP提供用户注册功能
 
-        :param request: 调用AddUser所需参数的结构体。
-        :type request: :class:`tencentcloud.iot.v20180123.models.AddUserRequest`
-        :rtype: :class:`tencentcloud.iot.v20180123.models.AddUserResponse`
+        :param request: 调用AppAddUser所需参数的结构体。
+        :type request: :class:`tencentcloud.iot.v20180123.models.AppAddUserRequest`
+        :rtype: :class:`tencentcloud.iot.v20180123.models.AppAddUserResponse`
 
         """
         try:
             params = request._serialize()
-            body = self.call("AddUser", params)
+            body = self.call("AppAddUser", params)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.AddUserResponse()
+                model = models.AppAddUserResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -193,20 +193,356 @@ class IotClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def AppAddUser(self, request):
-        """注册应用用户
+    def AppDeleteDevice(self, request):
+        """用户解除与设备的关联关系，解除后APP用户无法控制设备，获取设备数据
 
-        :param request: 调用AppAddUser所需参数的结构体。
-        :type request: :class:`tencentcloud.iot.v20180123.models.AppAddUserRequest`
-        :rtype: :class:`tencentcloud.iot.v20180123.models.AppAddUserResponse`
+        :param request: 调用AppDeleteDevice所需参数的结构体。
+        :type request: :class:`tencentcloud.iot.v20180123.models.AppDeleteDeviceRequest`
+        :rtype: :class:`tencentcloud.iot.v20180123.models.AppDeleteDeviceResponse`
 
         """
         try:
             params = request._serialize()
-            body = self.call("AppAddUser", params)
+            body = self.call("AppDeleteDevice", params)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.AppAddUserResponse()
+                model = models.AppDeleteDeviceResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise e
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def AppGetDevice(self, request):
+        """获取绑定设备的基本信息与数据模板定义
+
+        :param request: 调用AppGetDevice所需参数的结构体。
+        :type request: :class:`tencentcloud.iot.v20180123.models.AppGetDeviceRequest`
+        :rtype: :class:`tencentcloud.iot.v20180123.models.AppGetDeviceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("AppGetDevice", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.AppGetDeviceResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise e
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def AppGetDeviceData(self, request):
+        """获取绑定设备数据，用于实时展示设备的最新数据
+
+        :param request: 调用AppGetDeviceData所需参数的结构体。
+        :type request: :class:`tencentcloud.iot.v20180123.models.AppGetDeviceDataRequest`
+        :rtype: :class:`tencentcloud.iot.v20180123.models.AppGetDeviceDataResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("AppGetDeviceData", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.AppGetDeviceDataResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise e
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def AppGetDeviceStatuses(self, request):
+        """获取绑定设备的上下线状态
+
+        :param request: 调用AppGetDeviceStatuses所需参数的结构体。
+        :type request: :class:`tencentcloud.iot.v20180123.models.AppGetDeviceStatusesRequest`
+        :rtype: :class:`tencentcloud.iot.v20180123.models.AppGetDeviceStatusesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("AppGetDeviceStatuses", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.AppGetDeviceStatusesResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise e
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def AppGetDevices(self, request):
+        """获取用户的绑定设备列表
+
+        :param request: 调用AppGetDevices所需参数的结构体。
+        :type request: :class:`tencentcloud.iot.v20180123.models.AppGetDevicesRequest`
+        :rtype: :class:`tencentcloud.iot.v20180123.models.AppGetDevicesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("AppGetDevices", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.AppGetDevicesResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise e
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def AppGetToken(self, request):
+        """获取用户token
+
+        :param request: 调用AppGetToken所需参数的结构体。
+        :type request: :class:`tencentcloud.iot.v20180123.models.AppGetTokenRequest`
+        :rtype: :class:`tencentcloud.iot.v20180123.models.AppGetTokenResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("AppGetToken", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.AppGetTokenResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise e
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def AppGetUser(self, request):
+        """获取用户信息
+
+        :param request: 调用AppGetUser所需参数的结构体。
+        :type request: :class:`tencentcloud.iot.v20180123.models.AppGetUserRequest`
+        :rtype: :class:`tencentcloud.iot.v20180123.models.AppGetUserResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("AppGetUser", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.AppGetUserResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise e
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def AppIssueDeviceControl(self, request):
+        """用户通过APP控制设备
+
+        :param request: 调用AppIssueDeviceControl所需参数的结构体。
+        :type request: :class:`tencentcloud.iot.v20180123.models.AppIssueDeviceControlRequest`
+        :rtype: :class:`tencentcloud.iot.v20180123.models.AppIssueDeviceControlResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("AppIssueDeviceControl", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.AppIssueDeviceControlResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise e
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def AppResetPassword(self, request):
+        """重置APP用户密码
+
+        :param request: 调用AppResetPassword所需参数的结构体。
+        :type request: :class:`tencentcloud.iot.v20180123.models.AppResetPasswordRequest`
+        :rtype: :class:`tencentcloud.iot.v20180123.models.AppResetPasswordResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("AppResetPassword", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.AppResetPasswordResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise e
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def AppSecureAddDevice(self, request):
+        """用户绑定设备，绑定后可以在APP端进行控制。绑定设备前需调用“获取设备绑定签名”接口
+
+        :param request: 调用AppSecureAddDevice所需参数的结构体。
+        :type request: :class:`tencentcloud.iot.v20180123.models.AppSecureAddDeviceRequest`
+        :rtype: :class:`tencentcloud.iot.v20180123.models.AppSecureAddDeviceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("AppSecureAddDevice", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.AppSecureAddDeviceResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise e
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def AppUpdateDevice(self, request):
+        """修改设备别名，便于用户个性化定义设备的名称
+
+        :param request: 调用AppUpdateDevice所需参数的结构体。
+        :type request: :class:`tencentcloud.iot.v20180123.models.AppUpdateDeviceRequest`
+        :rtype: :class:`tencentcloud.iot.v20180123.models.AppUpdateDeviceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("AppUpdateDevice", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.AppUpdateDeviceResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise e
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def AppUpdateUser(self, request):
+        """修改用户信息
+
+        :param request: 调用AppUpdateUser所需参数的结构体。
+        :type request: :class:`tencentcloud.iot.v20180123.models.AppUpdateUserRequest`
+        :rtype: :class:`tencentcloud.iot.v20180123.models.AppUpdateUserResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("AppUpdateUser", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.AppUpdateUserResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise e
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def AssociateSubDeviceToGatewayProduct(self, request):
+        """关联子设备产品和网关产品
+
+        :param request: 调用AssociateSubDeviceToGatewayProduct所需参数的结构体。
+        :type request: :class:`tencentcloud.iot.v20180123.models.AssociateSubDeviceToGatewayProductRequest`
+        :rtype: :class:`tencentcloud.iot.v20180123.models.AssociateSubDeviceToGatewayProductResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("AssociateSubDeviceToGatewayProduct", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.AssociateSubDeviceToGatewayProductResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -362,7 +698,7 @@ class IotClient(AbstractClient):
 
 
     def GetDataHistory(self, request):
-        """批量获取设备某一段时间范围的设备上报数据。该接口只允许使用数据模板类型的产品通过REST API方式同步设备上报数据至用户的应用系统。
+        """批量获取设备某一段时间范围的设备上报数据。该接口适用于使用高级版类型的产品
 
         :param request: 调用GetDataHistory所需参数的结构体。
         :type request: :class:`tencentcloud.iot.v20180123.models.GetDataHistoryRequest`
@@ -375,6 +711,34 @@ class IotClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.GetDataHistoryResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise e
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def GetDebugLog(self, request):
+        """获取设备的调试日志，用于定位问题
+
+        :param request: 调用GetDebugLog所需参数的结构体。
+        :type request: :class:`tencentcloud.iot.v20180123.models.GetDebugLogRequest`
+        :rtype: :class:`tencentcloud.iot.v20180123.models.GetDebugLogResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("GetDebugLog", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.GetDebugLogResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -446,7 +810,7 @@ class IotClient(AbstractClient):
 
 
     def GetDeviceLog(self, request):
-        """批量获取设备与云端的详细通信日志，该接口适用于使用数据模板类型的产品。
+        """批量获取设备与云端的详细通信日志，该接口适用于使用高级版类型的产品。
 
         :param request: 调用GetDeviceLog所需参数的结构体。
         :type request: :class:`tencentcloud.iot.v20180123.models.GetDeviceLogRequest`
@@ -459,6 +823,62 @@ class IotClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.GetDeviceLogResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise e
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def GetDeviceSignatures(self, request):
+        """获取设备绑定签名，用于用户绑定某个设备的应用场景
+
+        :param request: 调用GetDeviceSignatures所需参数的结构体。
+        :type request: :class:`tencentcloud.iot.v20180123.models.GetDeviceSignaturesRequest`
+        :rtype: :class:`tencentcloud.iot.v20180123.models.GetDeviceSignaturesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("GetDeviceSignatures", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.GetDeviceSignaturesResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise e
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def GetDeviceStatistics(self, request):
+        """查询某段时间范围内产品的在线、激活设备数
+
+        :param request: 调用GetDeviceStatistics所需参数的结构体。
+        :type request: :class:`tencentcloud.iot.v20180123.models.GetDeviceStatisticsRequest`
+        :rtype: :class:`tencentcloud.iot.v20180123.models.GetDeviceStatisticsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("GetDeviceStatistics", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.GetDeviceStatisticsResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -697,36 +1117,8 @@ class IotClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def GetUser(self, request):
-        """获取用户信息
-
-        :param request: 调用GetUser所需参数的结构体。
-        :type request: :class:`tencentcloud.iot.v20180123.models.GetUserRequest`
-        :rtype: :class:`tencentcloud.iot.v20180123.models.GetUserResponse`
-
-        """
-        try:
-            params = request._serialize()
-            body = self.call("GetUser", params)
-            response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.GetUserResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise e
-            else:
-                raise TencentCloudSDKException(e.message, e.message)
-
-
     def IssueDeviceControl(self, request):
-        """提供下发控制指令到指定设备的能力，该接口适用于使用数据模板类型的产品。
+        """提供下发控制指令到指定设备的能力，该接口适用于使用高级版类型的产品。
 
         :param request: 调用IssueDeviceControl所需参数的结构体。
         :type request: :class:`tencentcloud.iot.v20180123.models.IssueDeviceControlRequest`
@@ -754,7 +1146,7 @@ class IotClient(AbstractClient):
 
 
     def PublishMsg(self, request):
-        """提供向指定的Topic发布消息的能力，常用于向设备下发控制指令；该接口只适用于数据协议为“自定义”类型的产品，使用数据模板类型的产品需使用IssueDeviceControl接口
+        """提供向指定的Topic发布消息的能力，常用于向设备下发控制指令。该接口只适用于产品版本为“基础版”类型的产品，使用高级版的产品需使用“下发设备控制指令”接口
 
         :param request: 调用PublishMsg所需参数的结构体。
         :type request: :class:`tencentcloud.iot.v20180123.models.PublishMsgRequest`
@@ -795,6 +1187,34 @@ class IotClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ResetDeviceResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise e
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def UnassociateSubDeviceFromGatewayProduct(self, request):
+        """取消子设备产品与网关设备产品的关联
+
+        :param request: 调用UnassociateSubDeviceFromGatewayProduct所需参数的结构体。
+        :type request: :class:`tencentcloud.iot.v20180123.models.UnassociateSubDeviceFromGatewayProductRequest`
+        :rtype: :class:`tencentcloud.iot.v20180123.models.UnassociateSubDeviceFromGatewayProductResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("UnassociateSubDeviceFromGatewayProduct", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.UnassociateSubDeviceFromGatewayProductResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

@@ -44,7 +44,7 @@ class AttachInstancesResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.RequestId = None
@@ -252,7 +252,7 @@ class CreateAutoScalingGroupResponse(AbstractModel):
         """
         :param AutoScalingGroupId: 伸缩组ID
         :type AutoScalingGroupId: str
-        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.AutoScalingGroupId = None
@@ -293,6 +293,12 @@ class CreateLaunchConfigurationRequest(AbstractModel):
         :type EnhancedService: :class:`tencentcloud.autoscaling.v20180419.models.EnhancedService`
         :param UserData: 经过 Base64 编码后的自定义数据，最大长度不超过16KB。
         :type UserData: str
+        :param InstanceChargeType: 实例计费类型，CVM默认值按照POSTPAID_BY_HOUR处理。
+<br><li>POSTPAID_BY_HOUR：按小时后付费
+<br><li>SPOTPAID：竞价付费
+        :type InstanceChargeType: str
+        :param InstanceMarketOptions: 实例的市场相关选项，如竞价实例相关参数，若指定实例的付费模式为竞价付费则该参数必传。
+        :type InstanceMarketOptions: :class:`tencentcloud.autoscaling.v20180419.models.InstanceMarketOptionsRequest`
         """
         self.LaunchConfigurationName = None
         self.InstanceType = None
@@ -305,6 +311,8 @@ class CreateLaunchConfigurationRequest(AbstractModel):
         self.SecurityGroupIds = None
         self.EnhancedService = None
         self.UserData = None
+        self.InstanceChargeType = None
+        self.InstanceMarketOptions = None
 
 
     def _deserialize(self, params):
@@ -332,6 +340,10 @@ class CreateLaunchConfigurationRequest(AbstractModel):
             self.EnhancedService = EnhancedService()
             self.EnhancedService._deserialize(params.get("EnhancedService"))
         self.UserData = params.get("UserData")
+        self.InstanceChargeType = params.get("InstanceChargeType")
+        if params.get("InstanceMarketOptions") is not None:
+            self.InstanceMarketOptions = InstanceMarketOptionsRequest()
+            self.InstanceMarketOptions._deserialize(params.get("InstanceMarketOptions"))
 
 
 class CreateLaunchConfigurationResponse(AbstractModel):
@@ -343,7 +355,7 @@ class CreateLaunchConfigurationResponse(AbstractModel):
         """
         :param LaunchConfigurationId: 当通过本接口来创建启动配置时会返回该参数，表示启动配置ID。
         :type LaunchConfigurationId: str
-        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.LaunchConfigurationId = None
@@ -409,7 +421,7 @@ class CreateScheduledActionResponse(AbstractModel):
         """
         :param ScheduledActionId: 定时任务ID
         :type ScheduledActionId: str
-        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.ScheduledActionId = None
@@ -466,7 +478,7 @@ class DeleteAutoScalingGroupResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.RequestId = None
@@ -500,7 +512,7 @@ class DeleteLaunchConfigurationResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.RequestId = None
@@ -534,7 +546,7 @@ class DeleteScheduledActionResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.RequestId = None
@@ -565,7 +577,7 @@ class DescribeAccountLimitsResponse(AbstractModel):
         :type MaxNumberOfAutoScalingGroups: int
         :param NumberOfAutoScalingGroups: 用户账户伸缩组的当前数量
         :type NumberOfAutoScalingGroups: int
-        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.MaxNumberOfLaunchConfigurations = None
@@ -632,7 +644,7 @@ class DescribeAutoScalingGroupsResponse(AbstractModel):
         :type AutoScalingGroupSet: list of AutoScalingGroup
         :param TotalCount: 符合条件的伸缩组数量。
         :type TotalCount: int
-        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.AutoScalingGroupSet = None
@@ -699,7 +711,7 @@ class DescribeAutoScalingInstancesResponse(AbstractModel):
         :type AutoScalingInstanceSet: list of Instance
         :param TotalCount: 符合条件的实例数量。
         :type TotalCount: int
-        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.AutoScalingInstanceSet = None
@@ -766,7 +778,7 @@ class DescribeLaunchConfigurationsResponse(AbstractModel):
         :type TotalCount: int
         :param LaunchConfigurationSet: 启动配置详细信息列表。
         :type LaunchConfigurationSet: list of LaunchConfiguration
-        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.TotalCount = None
@@ -833,7 +845,7 @@ class DescribeScheduledActionsResponse(AbstractModel):
         :type TotalCount: int
         :param ScheduledActionSet: 定时任务详细信息列表。
         :type ScheduledActionSet: list of ScheduledAction
-        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.TotalCount = None
@@ -880,7 +892,7 @@ class DetachInstancesResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.RequestId = None
@@ -914,7 +926,7 @@ class DisableAutoScalingGroupResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.RequestId = None
@@ -948,7 +960,7 @@ class EnableAutoScalingGroupResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.RequestId = None
@@ -1073,7 +1085,7 @@ class Instance(AbstractModel):
         :param Zone: 可用区
         :type Zone: str
         :param CreationType: 创建类型，取值包括AUTO_CREATION, MANUAL_ATTACHING。
-        :type CreationType: list of str
+        :type CreationType: str
         :param AddTime: 实例加入时间
         :type AddTime: str
         """
@@ -1100,6 +1112,29 @@ class Instance(AbstractModel):
         self.Zone = params.get("Zone")
         self.CreationType = params.get("CreationType")
         self.AddTime = params.get("AddTime")
+
+
+class InstanceMarketOptionsRequest(AbstractModel):
+    """CVM竞价请求相关选项
+
+    """
+
+    def __init__(self):
+        """
+        :param SpotOptions: 竞价相关选项
+        :type SpotOptions: :class:`tencentcloud.autoscaling.v20180419.models.SpotMarketOptions`
+        :param MarketType: 市场选项类型，当前只支持取值：spot
+        :type MarketType: str
+        """
+        self.SpotOptions = None
+        self.MarketType = None
+
+
+    def _deserialize(self, params):
+        if params.get("SpotOptions") is not None:
+            self.SpotOptions = SpotMarketOptions()
+            self.SpotOptions._deserialize(params.get("SpotOptions"))
+        self.MarketType = params.get("MarketType")
 
 
 class InternetAccessible(AbstractModel):
@@ -1164,6 +1199,12 @@ class LaunchConfiguration(AbstractModel):
         :type ImageId: str
         :param LaunchConfigurationStatus: 启动配置当前状态。取值范围：<br><li>NORMAL：正常<br><li>IMAGE_ABNORMAL：启动配置镜像异常<br><li>CBS_SNAP_ABNORMAL：启动配置数据盘快照异常<br><li>SECURITY_GROUP_ABNORMAL：启动配置安全组异常<br>
         :type LaunchConfigurationStatus: str
+        :param InstanceChargeType: 实例计费类型，CVM默认值按照POSTPAID_BY_HOUR处理。
+<br><li>POSTPAID_BY_HOUR：按小时后付费
+<br><li>SPOTPAID：竞价付费
+        :type InstanceChargeType: str
+        :param InstanceMarketOptions: 实例的市场相关选项，如竞价实例相关参数，若指定实例的付费模式为竞价付费则该参数必传。
+        :type InstanceMarketOptions: :class:`tencentcloud.autoscaling.v20180419.models.InstanceMarketOptionsRequest`
         """
         self.ProjectId = None
         self.LaunchConfigurationId = None
@@ -1180,6 +1221,8 @@ class LaunchConfiguration(AbstractModel):
         self.EnhancedService = None
         self.ImageId = None
         self.LaunchConfigurationStatus = None
+        self.InstanceChargeType = None
+        self.InstanceMarketOptions = None
 
 
     def _deserialize(self, params):
@@ -1216,6 +1259,10 @@ class LaunchConfiguration(AbstractModel):
             self.EnhancedService._deserialize(params.get("EnhancedService"))
         self.ImageId = params.get("ImageId")
         self.LaunchConfigurationStatus = params.get("LaunchConfigurationStatus")
+        self.InstanceChargeType = params.get("InstanceChargeType")
+        if params.get("InstanceMarketOptions") is not None:
+            self.InstanceMarketOptions = InstanceMarketOptionsRequest()
+            self.InstanceMarketOptions._deserialize(params.get("InstanceMarketOptions"))
 
 
 class LimitedLoginSettings(AbstractModel):
@@ -1328,7 +1375,7 @@ class ModifyAutoScalingGroupResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.RequestId = None
@@ -1366,7 +1413,7 @@ class ModifyDesiredCapacityResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.RequestId = None
@@ -1428,7 +1475,7 @@ class ModifyScheduledActionResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.RequestId = None
@@ -1466,7 +1513,7 @@ class RemoveInstancesResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.RequestId = None
@@ -1561,6 +1608,27 @@ class ScheduledAction(AbstractModel):
         self.DesiredCapacity = params.get("DesiredCapacity")
         self.MinSize = params.get("MinSize")
         self.CreatedTime = params.get("CreatedTime")
+
+
+class SpotMarketOptions(AbstractModel):
+    """竞价相关选项
+
+    """
+
+    def __init__(self):
+        """
+        :param MaxPrice: 竞价出价，例如“1.05”
+        :type MaxPrice: str
+        :param SpotInstanceType: 竞价请求类型，当前仅支持类型：one-time，默认值为one-time
+        :type SpotInstanceType: str
+        """
+        self.MaxPrice = None
+        self.SpotInstanceType = None
+
+
+    def _deserialize(self, params):
+        self.MaxPrice = params.get("MaxPrice")
+        self.SpotInstanceType = params.get("SpotInstanceType")
 
 
 class SystemDisk(AbstractModel):

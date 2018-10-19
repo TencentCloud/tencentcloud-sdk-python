@@ -436,7 +436,7 @@ class CreateComputeEnvResponse(AbstractModel):
         """
         :param EnvId: 计算环境ID
         :type EnvId: str
-        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.EnvId = None
@@ -484,7 +484,7 @@ class CreateTaskTemplateResponse(AbstractModel):
         """
         :param TaskTemplateId: 任务模板ID
         :type TaskTemplateId: str
-        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.TaskTemplateId = None
@@ -553,7 +553,7 @@ class DeleteComputeEnvResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.RequestId = None
@@ -587,7 +587,7 @@ class DeleteJobResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.RequestId = None
@@ -621,7 +621,7 @@ class DeleteTaskTemplatesResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.RequestId = None
@@ -683,7 +683,7 @@ class DescribeAvailableCvmInstanceTypesResponse(AbstractModel):
         """
         :param InstanceTypeConfigSet: 机型配置数组
         :type InstanceTypeConfigSet: list of InstanceTypeConfig
-        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.InstanceTypeConfigSet = None
@@ -707,7 +707,7 @@ class DescribeComputeEnvActivitiesRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param EnvId: u8ba1u7b97u73afu5883ID
+        :param EnvId: 计算环境ID
         :type EnvId: str
         :param Offset: 偏移量
         :type Offset: int
@@ -742,7 +742,7 @@ class DescribeComputeEnvActivitiesResponse(AbstractModel):
         :type ActivitySet: list of Activity
         :param TotalCount: 活动数量
         :type TotalCount: int
-        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.ActivitySet = None
@@ -805,7 +805,7 @@ class DescribeComputeEnvCreateInfoResponse(AbstractModel):
         :type Notifications: list of Notification
         :param DesiredComputeNodeCount: 计算节点期望个数
         :type DesiredComputeNodeCount: int
-        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.EnvId = None
@@ -905,7 +905,7 @@ class DescribeComputeEnvCreateInfosResponse(AbstractModel):
         :type TotalCount: int
         :param ComputeEnvCreateInfoSet: 计算环境创建信息列表
         :type ComputeEnvCreateInfoSet: list of ComputeEnvCreateInfo
-        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.TotalCount = None
@@ -964,7 +964,7 @@ class DescribeComputeEnvResponse(AbstractModel):
         :type DesiredComputeNodeCount: int
         :param EnvType: 计算环境类型
         :type EnvType: str
-        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.EnvId = None
@@ -1044,7 +1044,7 @@ class DescribeComputeEnvsResponse(AbstractModel):
         :type ComputeEnvSet: list of ComputeEnvView
         :param TotalCount: 计算环境数量
         :type TotalCount: int
-        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.ComputeEnvSet = None
@@ -1094,7 +1094,7 @@ class DescribeCvmZoneInstanceConfigInfosResponse(AbstractModel):
         """
         :param InstanceTypeQuotaSet: 可用区机型配置列表。
         :type InstanceTypeQuotaSet: list of InstanceTypeQuotaItem
-        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.InstanceTypeQuotaSet = None
@@ -1159,7 +1159,7 @@ class DescribeJobResponse(AbstractModel):
         :type TaskInstanceMetrics: :class:`tencentcloud.batch.v20170312.models.TaskInstanceView`
         :param StateReason: 作业失败原因
         :type StateReason: str
-        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.JobId = None
@@ -1243,7 +1243,7 @@ class DescribeJobSubmitInfoResponse(AbstractModel):
         :type Tasks: list of Task
         :param Dependences: 依赖信息
         :type Dependences: list of Dependence
-        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.JobId = None
@@ -1320,7 +1320,7 @@ class DescribeJobsResponse(AbstractModel):
         :type JobSet: list of JobView
         :param TotalCount: 符合条件的作业数量
         :type TotalCount: int
-        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.JobSet = None
@@ -1350,14 +1350,32 @@ class DescribeTaskRequest(AbstractModel):
         :type JobId: str
         :param TaskName: 任务名称
         :type TaskName: str
+        :param Offset: 偏移量
+        :type Offset: int
+        :param Limit: 返回数量。默认取值100，最大取值1000。
+        :type Limit: int
+        :param Filters: 过滤条件，详情如下：
+<li> task-instance-type - String - 是否必填： 否 - 按照任务实例状态进行过滤（SUBMITTED：已提交；PENDING：等待中；RUNNABLE：可运行；STARTING：启动中；RUNNING：运行中；SUCCEED：成功；FAILED：失败；FAILED_INTERRUPTED：失败后保留实例）。</li>
+        :type Filters: list of Filter
         """
         self.JobId = None
         self.TaskName = None
+        self.Offset = None
+        self.Limit = None
+        self.Filters = None
 
 
     def _deserialize(self, params):
         self.JobId = params.get("JobId")
         self.TaskName = params.get("TaskName")
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+        if params.get("Filters") is not None:
+            self.Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self.Filters.append(obj)
 
 
 class DescribeTaskResponse(AbstractModel):
@@ -1383,7 +1401,7 @@ class DescribeTaskResponse(AbstractModel):
         :type TaskInstanceSet: list of TaskInstanceView
         :param TaskInstanceMetrics: 任务实例统计指标
         :type TaskInstanceMetrics: :class:`tencentcloud.batch.v20170312.models.TaskInstanceMetrics`
-        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.JobId = None
@@ -1461,7 +1479,7 @@ class DescribeTaskTemplatesResponse(AbstractModel):
         :type TaskTemplateSet: list of TaskTemplateView
         :param TotalCount: 任务模板数量
         :type TotalCount: int
-        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.TaskTemplateSet = None
@@ -2139,7 +2157,7 @@ class ModifyComputeEnvResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.RequestId = None
@@ -2187,7 +2205,7 @@ class ModifyTaskTemplateResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.RequestId = None
@@ -2569,7 +2587,7 @@ class SubmitJobResponse(AbstractModel):
         """
         :param JobId: 当通过本接口来提交作业时会返回该参数，表示一个作业ID。返回作业ID列表并不代表作业解析/运行成功，可根据 DescribeJob 接口查询其状态。
         :type JobId: str
-        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.JobId = None
@@ -2953,7 +2971,7 @@ class TerminateComputeNodeResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.RequestId = None
@@ -2991,7 +3009,7 @@ class TerminateComputeNodesResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.RequestId = None
@@ -3025,7 +3043,7 @@ class TerminateJobResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.RequestId = None
@@ -3067,7 +3085,7 @@ class TerminateTaskInstanceResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.RequestId = None
