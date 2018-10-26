@@ -53,6 +53,147 @@ class LiveClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def AddLiveWatermark(self, request):
+        """添加水印
+
+        :param request: 调用AddLiveWatermark所需参数的结构体。
+        :type request: :class:`tencentcloud.live.v20180801.models.AddLiveWatermarkRequest`
+        :rtype: :class:`tencentcloud.live.v20180801.models.AddLiveWatermarkResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("AddLiveWatermark", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.AddLiveWatermarkResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise e
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def CreateLiveRecord(self, request):
+        """录制文件存放于点播平台。用户如需使用录制功能，需首先自行开通点播服务，录制文件存放后相关费用（含存储以及下行播放流量）按照点播平台计费方式收取，具体请参考 对应文档。
+        创建直播录制。该接口支持两种录制模式：定时录制模式与实时视频录制模式。定时录制需要传入开始与结束时间，录制任务根据时间自动开始与结束；实时视频录制忽略传入的开始时间，在录制任务创建后立即开始录制，录制时长支持最大为30分钟，如果传入的结束时间与当前时间差大于30分钟，则按30分钟计算，实时视频录制主要用于录制精彩视频场景，时长建议控制在5分钟以内。注意：调用接口超时设置应大于3秒，小于3秒重试以及频繁调用都有可能产生重复录制任务。
+
+        :param request: 调用CreateLiveRecord所需参数的结构体。
+        :type request: :class:`tencentcloud.live.v20180801.models.CreateLiveRecordRequest`
+        :rtype: :class:`tencentcloud.live.v20180801.models.CreateLiveRecordResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("CreateLiveRecord", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateLiveRecordResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise e
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def CreatePullStreamConfig(self, request):
+        """添加拉流配置
+
+        :param request: 调用CreatePullStreamConfig所需参数的结构体。
+        :type request: :class:`tencentcloud.live.v20180801.models.CreatePullStreamConfigRequest`
+        :rtype: :class:`tencentcloud.live.v20180801.models.CreatePullStreamConfigResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("CreatePullStreamConfig", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreatePullStreamConfigResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise e
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DeleteLiveRecord(self, request):
+        """用于删除录制任务
+
+        :param request: 调用DeleteLiveRecord所需参数的结构体。
+        :type request: :class:`tencentcloud.live.v20180801.models.DeleteLiveRecordRequest`
+        :rtype: :class:`tencentcloud.live.v20180801.models.DeleteLiveRecordResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DeleteLiveRecord", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DeleteLiveRecordResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise e
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DeleteLiveWatermark(self, request):
+        """删除水印
+
+        :param request: 调用DeleteLiveWatermark所需参数的结构体。
+        :type request: :class:`tencentcloud.live.v20180801.models.DeleteLiveWatermarkRequest`
+        :rtype: :class:`tencentcloud.live.v20180801.models.DeleteLiveWatermarkResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DeleteLiveWatermark", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DeleteLiveWatermarkResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise e
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeLiveStreamOnlineInfo(self, request):
         """查询在线推流信息列表
 
@@ -165,6 +306,62 @@ class LiveClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeLiveWatermarks(self, request):
+        """查询水印列表
+
+        :param request: 调用DescribeLiveWatermarks所需参数的结构体。
+        :type request: :class:`tencentcloud.live.v20180801.models.DescribeLiveWatermarksRequest`
+        :rtype: :class:`tencentcloud.live.v20180801.models.DescribeLiveWatermarksResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeLiveWatermarks", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeLiveWatermarksResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise e
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribePullStreamConfigs(self, request):
+        """查询拉流配置
+
+        :param request: 调用DescribePullStreamConfigs所需参数的结构体。
+        :type request: :class:`tencentcloud.live.v20180801.models.DescribePullStreamConfigsRequest`
+        :rtype: :class:`tencentcloud.live.v20180801.models.DescribePullStreamConfigsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribePullStreamConfigs", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribePullStreamConfigsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise e
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DropLiveStream(self, request):
         """断开推流连接，但可以重新推流
 
@@ -221,6 +418,62 @@ class LiveClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def ModifyPullStreamConfig(self, request):
+        """更新拉流配置
+
+        :param request: 调用ModifyPullStreamConfig所需参数的结构体。
+        :type request: :class:`tencentcloud.live.v20180801.models.ModifyPullStreamConfigRequest`
+        :rtype: :class:`tencentcloud.live.v20180801.models.ModifyPullStreamConfigResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ModifyPullStreamConfig", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ModifyPullStreamConfigResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise e
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ModifyPullStreamStatus(self, request):
+        """修改直播拉流配置状态
+
+        :param request: 调用ModifyPullStreamStatus所需参数的结构体。
+        :type request: :class:`tencentcloud.live.v20180801.models.ModifyPullStreamStatusRequest`
+        :rtype: :class:`tencentcloud.live.v20180801.models.ModifyPullStreamStatusResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ModifyPullStreamStatus", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ModifyPullStreamStatusResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise e
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def ResumeDelayLiveStream(self, request):
         """恢复延迟播放设置
 
@@ -263,6 +516,90 @@ class LiveClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ResumeLiveStreamResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise e
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def SetLiveWatermarkStatus(self, request):
+        """设置水印是否启用
+
+        :param request: 调用SetLiveWatermarkStatus所需参数的结构体。
+        :type request: :class:`tencentcloud.live.v20180801.models.SetLiveWatermarkStatusRequest`
+        :rtype: :class:`tencentcloud.live.v20180801.models.SetLiveWatermarkStatusResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("SetLiveWatermarkStatus", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.SetLiveWatermarkStatusResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise e
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def StopLiveRecord(self, request):
+        """说明：录制后的文件存放于点播平台。用户如需使用录制功能，需首先自行开通点播账号并确保账号可用。录制文件存放后，相关费用（含存储以及下行播放流量）按照点播平台计费方式收取，请参考对应文档。
+
+        :param request: 调用StopLiveRecord所需参数的结构体。
+        :type request: :class:`tencentcloud.live.v20180801.models.StopLiveRecordRequest`
+        :rtype: :class:`tencentcloud.live.v20180801.models.StopLiveRecordResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("StopLiveRecord", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.StopLiveRecordResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise e
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def UpdateLiveWatermark(self, request):
+        """更新水印
+
+        :param request: 调用UpdateLiveWatermark所需参数的结构体。
+        :type request: :class:`tencentcloud.live.v20180801.models.UpdateLiveWatermarkRequest`
+        :rtype: :class:`tencentcloud.live.v20180801.models.UpdateLiveWatermarkResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("UpdateLiveWatermark", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.UpdateLiveWatermarkResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

@@ -259,6 +259,23 @@ class ComputeEnvCreateInfo(AbstractModel):
         self.DesiredComputeNodeCount = params.get("DesiredComputeNodeCount")
 
 
+class ComputeEnvData(AbstractModel):
+    """计算环境属性数据
+
+    """
+
+    def __init__(self):
+        """
+        :param InstanceTypes: CVM实例类型列表
+        :type InstanceTypes: list of str
+        """
+        self.InstanceTypes = None
+
+
+    def _deserialize(self, params):
+        self.InstanceTypes = params.get("InstanceTypes")
+
+
 class ComputeEnvView(AbstractModel):
     """计算环境信息
 
@@ -2140,14 +2157,28 @@ class ModifyComputeEnvRequest(AbstractModel):
         :type EnvId: str
         :param DesiredComputeNodeCount: 计算节点期望个数
         :type DesiredComputeNodeCount: int
+        :param EnvName: 计算环境名称
+        :type EnvName: str
+        :param EnvDescription: 计算环境描述
+        :type EnvDescription: str
+        :param EnvData: 计算环境属性数据
+        :type EnvData: :class:`tencentcloud.batch.v20170312.models.ComputeEnvData`
         """
         self.EnvId = None
         self.DesiredComputeNodeCount = None
+        self.EnvName = None
+        self.EnvDescription = None
+        self.EnvData = None
 
 
     def _deserialize(self, params):
         self.EnvId = params.get("EnvId")
         self.DesiredComputeNodeCount = params.get("DesiredComputeNodeCount")
+        self.EnvName = params.get("EnvName")
+        self.EnvDescription = params.get("EnvDescription")
+        if params.get("EnvData") is not None:
+            self.EnvData = ComputeEnvData()
+            self.EnvData._deserialize(params.get("EnvData"))
 
 
 class ModifyComputeEnvResponse(AbstractModel):

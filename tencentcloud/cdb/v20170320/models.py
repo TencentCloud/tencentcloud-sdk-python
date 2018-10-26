@@ -102,7 +102,7 @@ class AssociateSecurityGroupsResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.RequestId = None
@@ -257,7 +257,7 @@ class CloseWanServiceResponse(AbstractModel):
         """
         :param AsyncRequestId: 异步任务的请求ID，可使用此ID查询异步任务的执行结果。
         :type AsyncRequestId: str
-        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.AsyncRequestId = None
@@ -341,7 +341,7 @@ class CreateAccountsResponse(AbstractModel):
         """
         :param AsyncRequestId: 异步任务的请求ID，可使用此ID查询异步任务的执行结果。
         :type AsyncRequestId: str
-        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.AsyncRequestId = None
@@ -383,7 +383,7 @@ class CreateBackupResponse(AbstractModel):
         """
         :param BackupId: 备份任务ID。
         :type BackupId: int
-        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.BackupId = None
@@ -404,7 +404,7 @@ class CreateDBImportJobRequest(AbstractModel):
         """
         :param InstanceId: 实例的ID，格式如：cdb-c1nl9rpv，与云数据库控制台页面中显示的实例ID相同。
         :type InstanceId: str
-        :param FileName: 文件名称。
+        :param FileName: 文件名称。该文件是指用户已上传到腾讯云的文件。
         :type FileName: str
         :param User: 云数据库的用户名。
         :type User: str
@@ -437,7 +437,7 @@ class CreateDBImportJobResponse(AbstractModel):
         """
         :param AsyncRequestId: 异步任务的请求ID，可使用此ID查询异步任务的执行结果
         :type AsyncRequestId: str
-        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.AsyncRequestId = None
@@ -568,7 +568,7 @@ class CreateDBInstanceHourResponse(AbstractModel):
         :type DealIds: list of str
         :param InstanceIds: 实例ID列表
         :type InstanceIds: list of str
-        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.DealIds = None
@@ -705,7 +705,7 @@ class CreateDBInstanceResponse(AbstractModel):
         :type DealIds: list of str
         :param InstanceIds: 实例ID列表
         :type InstanceIds: list of str
-        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.DealIds = None
@@ -813,7 +813,7 @@ class DeleteAccountsResponse(AbstractModel):
         """
         :param AsyncRequestId: 异步任务的请求ID，可使用此ID查询异步任务的执行结果。
         :type AsyncRequestId: str
-        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.AsyncRequestId = None
@@ -853,7 +853,7 @@ class DeleteBackupResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.RequestId = None
@@ -903,7 +903,7 @@ class DescribeAccountPrivilegesResponse(AbstractModel):
         :type TablePrivileges: list of TablePrivilege
         :param ColumnPrivileges: 数据库表中的列权限数组。
         :type ColumnPrivileges: list of ColumnPrivilege
-        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.GlobalPrivileges = None
@@ -972,7 +972,7 @@ class DescribeAccountsResponse(AbstractModel):
         :type TotalCount: int
         :param Items: 符合查询条件的账号详细信息。
         :type Items: list of AccountInfo
-        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.TotalCount = None
@@ -1019,7 +1019,7 @@ class DescribeAsyncRequestInfoResponse(AbstractModel):
         :type Status: str
         :param Info: 任务执行信息描述。
         :type Info: str
-        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.Status = None
@@ -1067,7 +1067,7 @@ class DescribeBackupConfigResponse(AbstractModel):
         :type BackupMethod: str
         :param BinlogExpireDays: Binlog过期时间，单位为天
         :type BinlogExpireDays: int
-        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.StartTimeMin = None
@@ -1131,7 +1131,7 @@ class DescribeBackupDatabasesResponse(AbstractModel):
         :type TotalCount: int
         :param Items: 符合查询条件的数据库数组
         :type Items: list of DatabaseName
-        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.TotalCount = None
@@ -1198,7 +1198,7 @@ class DescribeBackupTablesResponse(AbstractModel):
         :type TotalCount: int
         :param Items: 符合条件的数据表数组。
         :type Items: list of TableName
-        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.TotalCount = None
@@ -1253,7 +1253,7 @@ class DescribeBackupsResponse(AbstractModel):
         :type TotalCount: int
         :param Items: 符合查询条件的备份信息详情
         :type Items: list of BackupInfo
-        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.TotalCount = None
@@ -1308,7 +1308,7 @@ class DescribeBinlogsResponse(AbstractModel):
         :type TotalCount: int
         :param Items: 符合查询条件的二进制日志文件详情
         :type Items: list of BinlogInfo
-        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.TotalCount = None
@@ -1371,7 +1371,7 @@ class DescribeDBImportRecordsResponse(AbstractModel):
         :type TotalCount: int
         :param Items: 返回的导入操作记录列表。
         :type Items: list of ImportRecord
-        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.TotalCount = None
@@ -1416,7 +1416,7 @@ class DescribeDBInstanceCharsetResponse(AbstractModel):
         """
         :param Charset: 实例的默认字符集，如"latin1", "utf8"等。
         :type Charset: str
-        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.Charset = None
@@ -1462,7 +1462,7 @@ class DescribeDBInstanceConfigResponse(AbstractModel):
         :type SlaveConfig: :class:`tencentcloud.cdb.v20170320.models.SlaveConfig`
         :param BackupConfig: ECDB第二个从库的配置信息，只有ECDB实例才有这个字段。
         :type BackupConfig: :class:`tencentcloud.cdb.v20170320.models.BackupConfig`
-        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.ProtectMode = None
@@ -1512,7 +1512,7 @@ class DescribeDBInstanceGTIDResponse(AbstractModel):
         """
         :param IsGTIDOpen: GTID是否开通的标记：0-未开通，1-已开通。
         :type IsGTIDOpen: int
-        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.IsGTIDOpen = None
@@ -1552,7 +1552,7 @@ class DescribeDBInstanceRebootTimeResponse(AbstractModel):
         :type TotalCount: int
         :param Items: 返回的参数信息。
         :type Items: list of InstanceRebootTime
-        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.TotalCount = None
@@ -1586,7 +1586,7 @@ class DescribeDBInstancesRequest(AbstractModel):
         :type Vips: list of str
         :param Status: 实例状态，可取值：0-创建中，1-运行中，4-隔离中，5-已隔离
         :type Status: list of int non-negative
-        :param Offset: 记录偏移量，默认值为0
+        :param Offset: 偏移量，默认值为0
         :type Offset: int
         :param Limit: 单次请求返回的数量，默认值为20，最大值为2000
         :type Limit: int
@@ -1608,13 +1608,13 @@ class DescribeDBInstancesRequest(AbstractModel):
         :type SubnetIds: list of int non-negative
         :param CdbErrors: 是否锁定标记
         :type CdbErrors: list of int
-        :param OrderBy: 排序的字段，目前支持："InstanceId", "InstanceName", "CreateTime", "DeadlineTime"
+        :param OrderBy: 返回结果集排序的字段，目前支持："InstanceId", "InstanceName", "CreateTime", "DeadlineTime"
         :type OrderBy: str
-        :param OrderDirection: 排序方式，目前支持："ASC"或者"DESC"
+        :param OrderDirection: 返回结果集排序方式，目前支持："ASC"或者"DESC"
         :type OrderDirection: str
-        :param WithSecurityGroup: 是否包含安全组信息，可取值：0-不包含，1-包含
+        :param WithSecurityGroup: 是否包含安全组详细信息，可取值：0-不包含，1-包含
         :type WithSecurityGroup: int
-        :param WithExCluster: 是否包含独享集群信息，可取值：0-不包含，1-包含
+        :param WithExCluster: 是否包含独享集群详细信息，可取值：0-不包含，1-包含
         :type WithExCluster: int
         :param ExClusterId: 独享集群ID
         :type ExClusterId: str
@@ -1695,7 +1695,7 @@ class DescribeDBInstancesResponse(AbstractModel):
         :type TotalCount: int
         :param Items: 实例详细信息
         :type Items: list of InstanceInfo
-        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.TotalCount = None
@@ -1770,7 +1770,7 @@ class DescribeDBPriceResponse(AbstractModel):
         :type Price: int
         :param OriginalPrice: 实例原价，单位：分（人民币）
         :type OriginalPrice: int
-        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.Price = None
@@ -1810,7 +1810,7 @@ class DescribeDBSecurityGroupsResponse(AbstractModel):
         """
         :param Groups: 安全组详情。
         :type Groups: list of SecurityGroup
-        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.Groups = None
@@ -1863,7 +1863,7 @@ class DescribeDBSwitchRecordsResponse(AbstractModel):
         :type TotalCount: int
         :param Items: 实例切换记录详情。
         :type Items: list of DBSwitchInfo
-        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.TotalCount = None
@@ -1899,7 +1899,7 @@ class DescribeDBZoneConfigResponse(AbstractModel):
         :type TotalCount: int
         :param Items: 可售卖地域配置详情
         :type Items: list of RegionSellConf
-        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.TotalCount = None
@@ -1958,7 +1958,7 @@ class DescribeDatabasesResponse(AbstractModel):
         :type TotalCount: int
         :param Items: 返回的实例信息。
         :type Items: list of str
-        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.TotalCount = None
@@ -2000,7 +2000,7 @@ class DescribeInstanceParamsResponse(AbstractModel):
         :type TotalCount: int
         :param Items: 参数详情
         :type Items: list of ParameterDetail
-        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.TotalCount = None
@@ -2045,7 +2045,7 @@ class DescribeProjectSecurityGroupsResponse(AbstractModel):
         """
         :param Groups: 安全组详情。
         :type Groups: list of SecurityGroup
-        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.Groups = None
@@ -2090,7 +2090,7 @@ class DescribeRollbackRangeTimeResponse(AbstractModel):
         :type TotalCount: int
         :param Items: 返回的参数信息。
         :type Items: list of InstanceRollbackRangeTime
-        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.TotalCount = None
@@ -2145,7 +2145,7 @@ class DescribeSlowLogsResponse(AbstractModel):
         :type TotalCount: int
         :param Items: 符合查询条件的慢查询日志详情
         :type Items: list of SlowLogInfo
-        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.TotalCount = None
@@ -2208,7 +2208,7 @@ class DescribeTablesResponse(AbstractModel):
         :type TotalCount: int
         :param Items: 返回的数据库表信息。
         :type Items: list of str
-        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.TotalCount = None
@@ -2278,7 +2278,7 @@ class DescribeTasksResponse(AbstractModel):
         :type TotalCount: int
         :param Items: 返回的实例任务信息
         :type Items: list of str
-        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.TotalCount = None
@@ -2289,6 +2289,61 @@ class DescribeTasksResponse(AbstractModel):
     def _deserialize(self, params):
         self.TotalCount = params.get("TotalCount")
         self.Items = params.get("Items")
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeUploadedFilesRequest(AbstractModel):
+    """DescribeUploadedFiles请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Path: 文件路径。该字段应填用户主账号的OwnerUin信息。
+        :type Path: str
+        :param Offset: 记录偏移量，默认值为0。
+        :type Offset: int
+        :param Limit: 单次请求返回的数量，默认值为20。
+        :type Limit: int
+        """
+        self.Path = None
+        self.Offset = None
+        self.Limit = None
+
+
+    def _deserialize(self, params):
+        self.Path = params.get("Path")
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+
+
+class DescribeUploadedFilesResponse(AbstractModel):
+    """DescribeUploadedFiles返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param TotalCount: 符合查询条件的SQL文件总数。
+        :type TotalCount: int
+        :param Items: 返回的SQL文件列表。
+        :type Items: list of SqlFileInfo
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.Items = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("Items") is not None:
+            self.Items = []
+            for item in params.get("Items"):
+                obj = SqlFileInfo()
+                obj._deserialize(item)
+                self.Items.append(obj)
         self.RequestId = params.get("RequestId")
 
 
@@ -2320,7 +2375,7 @@ class DisassociateSecurityGroupsResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.RequestId = None
@@ -2369,35 +2424,6 @@ class DrInfo(AbstractModel):
         self.SyncStatus = params.get("SyncStatus")
         self.InstanceName = params.get("InstanceName")
         self.InstanceType = params.get("InstanceType")
-
-
-class First(AbstractModel):
-    """第一备机信息
-
-    """
-
-    def __init__(self):
-        """
-        :param Vport: 端口号
-        :type Vport: int
-        :param Region: 地域信息
-        :type Region: str
-        :param Vip: 虚拟Ip信息
-        :type Vip: str
-        :param Zone: 可用区信息
-        :type Zone: str
-        """
-        self.Vport = None
-        self.Region = None
-        self.Vip = None
-        self.Zone = None
-
-
-    def _deserialize(self, params):
-        self.Vport = params.get("Vport")
-        self.Region = params.get("Region")
-        self.Vip = params.get("Vip")
-        self.Zone = params.get("Zone")
 
 
 class ImportRecord(AbstractModel):
@@ -2541,7 +2567,7 @@ class InitDBInstancesResponse(AbstractModel):
         """
         :param AsyncRequestIds: 异步任务的请求ID数组，可使用此ID查询异步任务的执行结果
         :type AsyncRequestIds: list of str
-        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.AsyncRequestIds = None
@@ -2560,73 +2586,73 @@ class InstanceInfo(AbstractModel):
 
     def __init__(self):
         """
-        :param WanStatus: 外网状态
+        :param WanStatus: 外网状态，可能的返回值为：0-未开通外网；1-已开通外网
         :type WanStatus: int
         :param Zone: 可用区信息
         :type Zone: str
-        :param InitFlag: 初始化标志
+        :param InitFlag: 初始化标志，可能的返回值为：0-未初始化；1-已初始化
         :type InitFlag: int
-        :param RoVipInfo: 只读vip信息
+        :param RoVipInfo: 只读vip信息。单独开通只读实例访问的只读实例才有该字段
         :type RoVipInfo: :class:`tencentcloud.cdb.v20170320.models.RoVipInfo`
-        :param Memory: 内存容量
+        :param Memory: 内存容量，单位为MB
         :type Memory: int
-        :param Status: 实例状态
+        :param Status: 实例状态，可能的返回值：0-创建中；1-运行中；4-隔离中；5-已隔离
         :type Status: int
-        :param VpcId: 私有网络ID
+        :param VpcId: 私有网络ID，例如：51102
         :type VpcId: int
         :param SlaveInfo: 备机信息
         :type SlaveInfo: :class:`tencentcloud.cdb.v20170320.models.SlaveInfo`
         :param InstanceId: 实例ID
         :type InstanceId: str
-        :param Volume: 硬盘容量
+        :param Volume: 硬盘容量，单位为GB
         :type Volume: int
-        :param AutoRenew: 自动续费标志
+        :param AutoRenew: 自动续费标志，可能的返回值：0-未开通自动续费；1-已开通自动续费；2-已关闭自动续费
         :type AutoRenew: int
         :param ProtectMode: 数据复制方式
         :type ProtectMode: int
-        :param RoGroups: 只读组信息
+        :param RoGroups: 只读组详细信息
         :type RoGroups: list of RoGroup
-        :param SubnetId: 子网ID
+        :param SubnetId: 子网ID，例如：2333
         :type SubnetId: int
-        :param InstanceType: 实例类型
+        :param InstanceType: 实例类型，可能的返回值：1-主实例；2-灾备实例；3-只读实例
         :type InstanceType: int
         :param ProjectId: 项目ID
         :type ProjectId: int
         :param Region: 地域信息
         :type Region: str
-        :param DeadlineTime: 到期时间
+        :param DeadlineTime: 实例到期时间
         :type DeadlineTime: str
         :param DeployMode: 可用区部署方式
         :type DeployMode: int
         :param TaskStatus: 实例任务状态
         :type TaskStatus: int
-        :param MasterInfo: 主实例信息
+        :param MasterInfo: 主实例详细信息
         :type MasterInfo: :class:`tencentcloud.cdb.v20170320.models.MasterInfo`
-        :param DeviceType: 实例售卖机型
+        :param DeviceType: 实例类型，可能的返回值：“HA”-高可用版；“BASIC”-基础版
         :type DeviceType: str
         :param EngineVersion: 内核版本
         :type EngineVersion: str
         :param InstanceName: 实例名称
         :type InstanceName: str
-        :param DrInfo: 灾备实例信息
+        :param DrInfo: 灾备实例详细信息
         :type DrInfo: list of DrInfo
         :param WanDomain: 外网域名
         :type WanDomain: str
         :param WanPort: 外网端口号
         :type WanPort: int
-        :param PayType: 付费类型
+        :param PayType: 付费类型，可能的返回值：0-包年包月；1-按量计费
         :type PayType: int
-        :param CreateTime: 创建时间
+        :param CreateTime: 实例创建时间
         :type CreateTime: str
         :param Vip: 实例IP
         :type Vip: str
         :param Vport: 端口号
         :type Vport: int
-        :param CdbError: 实例状态
+        :param CdbError: 是否锁定标记
         :type CdbError: int
-        :param UniqVpcId: 私有网络描述符
+        :param UniqVpcId: 私有网络描述符，例如：“vpc-5v8wn9mg”
         :type UniqVpcId: str
-        :param UniqSubnetId: 子网描述符
+        :param UniqSubnetId: 子网描述符，例如：“subnet-1typ0s7d”
         :type UniqSubnetId: str
         """
         self.WanStatus = None
@@ -2799,7 +2825,7 @@ class IsolateDBInstanceResponse(AbstractModel):
         """
         :param AsyncRequestId: 异步任务的请求ID，可使用此ID查询异步任务的执行结果
         :type AsyncRequestId: str
-        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.AsyncRequestId = None
@@ -2935,7 +2961,7 @@ class ModifyAccountDescriptionResponse(AbstractModel):
         """
         :param AsyncRequestId: 异步任务的请求ID，可使用此ID查询异步任务的执行结果。
         :type AsyncRequestId: str
-        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.AsyncRequestId = None
@@ -2986,7 +3012,7 @@ class ModifyAccountPasswordResponse(AbstractModel):
         """
         :param AsyncRequestId: 异步任务的请求ID，可使用此ID查询异步任务的执行结果。
         :type AsyncRequestId: str
-        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.AsyncRequestId = None
@@ -3064,7 +3090,7 @@ class ModifyAccountPrivilegesResponse(AbstractModel):
         """
         :param AsyncRequestId: 异步任务的请求ID，可使用此ID查询异步任务的执行结果。
         :type AsyncRequestId: str
-        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.AsyncRequestId = None
@@ -3104,7 +3130,7 @@ class ModifyAutoRenewFlagResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.RequestId = None
@@ -3150,7 +3176,7 @@ class ModifyBackupConfigResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.RequestId = None
@@ -3188,7 +3214,7 @@ class ModifyDBInstanceNameResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.RequestId = None
@@ -3226,7 +3252,7 @@ class ModifyDBInstanceProjectResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.RequestId = None
@@ -3264,7 +3290,7 @@ class ModifyDBInstanceSecurityGroupsResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.RequestId = None
@@ -3316,7 +3342,7 @@ class ModifyDBInstanceVipVportResponse(AbstractModel):
         """
         :param AsyncRequestId: 异步任务ID，可使用[查询任务列表](https://cloud.tencent.com/document/api/236/8010)获取其执行情况。
         :type AsyncRequestId: str
-        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.AsyncRequestId = None
@@ -3363,7 +3389,7 @@ class ModifyInstanceParamResponse(AbstractModel):
         """
         :param AsyncRequestId: 异步任务Id，可用于查询任务进度。
         :type AsyncRequestId: str
-        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.AsyncRequestId = None
@@ -3401,7 +3427,7 @@ class OpenDBInstanceGTIDResponse(AbstractModel):
         """
         :param AsyncRequestId: 异步任务的请求ID，可使用此ID查询异步任务的执行结果。
         :type AsyncRequestId: str
-        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.AsyncRequestId = None
@@ -3439,7 +3465,7 @@ class OpenWanServiceResponse(AbstractModel):
         """
         :param AsyncRequestId: 异步任务的请求ID，可使用此ID查询异步任务的执行结果
         :type AsyncRequestId: str
-        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.AsyncRequestId = None
@@ -3613,6 +3639,48 @@ class RegionSellConf(AbstractModel):
                 self.ZonesConf.append(obj)
 
 
+class RenewDBInstanceRequest(AbstractModel):
+    """RenewDBInstance请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param InstanceId: 待续费的实例ID，格式如：cdb-c1nl9rpv，与云数据库控制台页面中显示的实例ID相同，可使用[查询实例列表](https://cloud.tencent.com/document/api/236/15872)
+        :type InstanceId: str
+        :param TimeSpan: 续费时长，单位：月，可选值包括[1,2,3,4,5,6,7,8,9,10,11,12,24,36]
+        :type TimeSpan: int
+        """
+        self.InstanceId = None
+        self.TimeSpan = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.TimeSpan = params.get("TimeSpan")
+
+
+class RenewDBInstanceResponse(AbstractModel):
+    """RenewDBInstance返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param DealId: 订单ID
+        :type DealId: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.DealId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.DealId = params.get("DealId")
+        self.RequestId = params.get("RequestId")
+
+
 class RestartDBInstancesRequest(AbstractModel):
     """RestartDBInstances请求参数结构体
 
@@ -3639,7 +3707,7 @@ class RestartDBInstancesResponse(AbstractModel):
         """
         :param AsyncRequestId: 异步任务的请求ID，可使用此ID查询异步任务的执行结果。
         :type AsyncRequestId: str
-        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.AsyncRequestId = None
@@ -4158,9 +4226,9 @@ class SlaveInfo(AbstractModel):
     def __init__(self):
         """
         :param First: 第一备机信息
-        :type First: :class:`tencentcloud.cdb.v20170320.models.First`
+        :type First: :class:`tencentcloud.cdb.v20170320.models.SlaveInstanceInfo`
         :param Second: 第二备机信息
-        :type Second: :class:`tencentcloud.cdb.v20170320.models.First`
+        :type Second: :class:`tencentcloud.cdb.v20170320.models.SlaveInstanceInfo`
         """
         self.First = None
         self.Second = None
@@ -4168,11 +4236,40 @@ class SlaveInfo(AbstractModel):
 
     def _deserialize(self, params):
         if params.get("First") is not None:
-            self.First = First()
+            self.First = SlaveInstanceInfo()
             self.First._deserialize(params.get("First"))
         if params.get("Second") is not None:
-            self.Second = First()
+            self.Second = SlaveInstanceInfo()
             self.Second._deserialize(params.get("Second"))
+
+
+class SlaveInstanceInfo(AbstractModel):
+    """备机信息
+
+    """
+
+    def __init__(self):
+        """
+        :param Vport: 端口号
+        :type Vport: int
+        :param Region: 地域信息
+        :type Region: str
+        :param Vip: 虚拟Ip信息
+        :type Vip: str
+        :param Zone: 可用区信息
+        :type Zone: str
+        """
+        self.Vport = None
+        self.Region = None
+        self.Vip = None
+        self.Zone = None
+
+
+    def _deserialize(self, params):
+        self.Vport = params.get("Vport")
+        self.Region = params.get("Region")
+        self.Vip = params.get("Vip")
+        self.Zone = params.get("Zone")
 
 
 class SlowLogInfo(AbstractModel):
@@ -4212,6 +4309,45 @@ class SlowLogInfo(AbstractModel):
         self.Type = params.get("Type")
 
 
+class SqlFileInfo(AbstractModel):
+    """sql文件信息
+
+    """
+
+    def __init__(self):
+        """
+        :param UploadTime: 上传时间
+        :type UploadTime: str
+        :param UploadInfo: 上传进度
+        :type UploadInfo: :class:`tencentcloud.cdb.v20170320.models.UploadInfo`
+        :param FileName: 文件名
+        :type FileName: str
+        :param FileSize: 文件大小，单位为Bytes
+        :type FileSize: int
+        :param IsUploadFinished: 上传是否完成标志，可选值：0 - 未完成，1 - 已完成
+        :type IsUploadFinished: int
+        :param FileId: 文件ID
+        :type FileId: str
+        """
+        self.UploadTime = None
+        self.UploadInfo = None
+        self.FileName = None
+        self.FileSize = None
+        self.IsUploadFinished = None
+        self.FileId = None
+
+
+    def _deserialize(self, params):
+        self.UploadTime = params.get("UploadTime")
+        if params.get("UploadInfo") is not None:
+            self.UploadInfo = UploadInfo()
+            self.UploadInfo._deserialize(params.get("UploadInfo"))
+        self.FileName = params.get("FileName")
+        self.FileSize = params.get("FileSize")
+        self.IsUploadFinished = params.get("IsUploadFinished")
+        self.FileId = params.get("FileId")
+
+
 class StartBatchRollbackRequest(AbstractModel):
     """StartBatchRollback请求参数结构体
 
@@ -4243,7 +4379,7 @@ class StartBatchRollbackResponse(AbstractModel):
         """
         :param AsyncRequestId: 异步任务的请求ID，可使用此ID查询异步任务的执行结果
         :type AsyncRequestId: str
-        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.AsyncRequestId = None
@@ -4279,7 +4415,7 @@ class StopDBImportJobResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.RequestId = None
@@ -4313,7 +4449,7 @@ class SwitchForUpgradeResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.RequestId = None
@@ -4399,7 +4535,7 @@ class UpgradeDBInstanceEngineVersionResponse(AbstractModel):
         """
         :param AsyncRequestId: 异步任务ID，可使用[查询任务列表](https://cloud.tencent.com/document/api/236/8010)获取其执行情况
         :type AsyncRequestId: str
-        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.AsyncRequestId = None
@@ -4475,7 +4611,7 @@ class UpgradeDBInstanceResponse(AbstractModel):
         :type DealIds: list of str
         :param AsyncRequestId: 异步任务的请求ID，可使用此ID查询异步任务的执行结果
         :type AsyncRequestId: str
-        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.DealIds = None
@@ -4487,6 +4623,27 @@ class UpgradeDBInstanceResponse(AbstractModel):
         self.DealIds = params.get("DealIds")
         self.AsyncRequestId = params.get("AsyncRequestId")
         self.RequestId = params.get("RequestId")
+
+
+class UploadInfo(AbstractModel):
+    """文件上传描述
+
+    """
+
+    def __init__(self):
+        """
+        :param AllSliceNum: 文件所有分片数
+        :type AllSliceNum: int
+        :param CompleteNum: 已完成分片数
+        :type CompleteNum: int
+        """
+        self.AllSliceNum = None
+        self.CompleteNum = None
+
+
+    def _deserialize(self, params):
+        self.AllSliceNum = params.get("AllSliceNum")
+        self.CompleteNum = params.get("CompleteNum")
 
 
 class VerifyRootAccountRequest(AbstractModel):
@@ -4519,7 +4676,7 @@ class VerifyRootAccountResponse(AbstractModel):
         """
         :param AsyncRequestId: 异步任务的请求ID，可使用此ID查询异步任务的执行结果
         :type AsyncRequestId: str
-        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.AsyncRequestId = None

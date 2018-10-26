@@ -54,7 +54,7 @@ class YoumallClient(AbstractClient):
 
 
     def CreateFacePicture(self, request):
-        """上传人脸图片
+        """通过上传指定规格的人脸图片，创建黑名单用户或者白名单用户。
 
         :param request: 调用CreateFacePicture所需参数的结构体。
         :type request: :class:`tencentcloud.youmall.v20180228.models.CreateFacePictureRequest`
@@ -95,6 +95,62 @@ class YoumallClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeCameraPersonResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise e
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeClusterPersonArrivedMall(self, request):
+        """输出开始时间到结束时间段内的进出场数据。按天聚合的情况下，每天多次进出场算一次，以最初进场时间为进场时间，最后离场时间为离场时间。停留时间为多次进出场的停留时间之和。
+
+        :param request: 调用DescribeClusterPersonArrivedMall所需参数的结构体。
+        :type request: :class:`tencentcloud.youmall.v20180228.models.DescribeClusterPersonArrivedMallRequest`
+        :rtype: :class:`tencentcloud.youmall.v20180228.models.DescribeClusterPersonArrivedMallResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeClusterPersonArrivedMall", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeClusterPersonArrivedMallResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise e
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeClusterPersonTrace(self, request):
+        """输出开始时间到结束时间段内的进出场数据。按天聚合的情况下，每天多次进出场算一次，以最初进场时间为进场时间，最后离场时间为离场时间。
+
+        :param request: 调用DescribeClusterPersonTrace所需参数的结构体。
+        :type request: :class:`tencentcloud.youmall.v20180228.models.DescribeClusterPersonTraceRequest`
+        :rtype: :class:`tencentcloud.youmall.v20180228.models.DescribeClusterPersonTraceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeClusterPersonTrace", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeClusterPersonTraceResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -193,6 +249,63 @@ class YoumallClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribePerson(self, request):
+        """查询指定某一卖场的用户信息
+
+        :param request: 调用DescribePerson所需参数的结构体。
+        :type request: :class:`tencentcloud.youmall.v20180228.models.DescribePersonRequest`
+        :rtype: :class:`tencentcloud.youmall.v20180228.models.DescribePersonResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribePerson", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribePersonResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise e
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribePersonArrivedMall(self, request):
+        """输出开始时间到结束时间段内的进出场数据。不做按天聚合的情况下，每次进出场，产生一条进出场数据。
+
+
+        :param request: 调用DescribePersonArrivedMall所需参数的结构体。
+        :type request: :class:`tencentcloud.youmall.v20180228.models.DescribePersonArrivedMallRequest`
+        :rtype: :class:`tencentcloud.youmall.v20180228.models.DescribePersonArrivedMallResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribePersonArrivedMall", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribePersonArrivedMallResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise e
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribePersonInfo(self, request):
         """指定门店获取所有顾客详情列表，包含客户ID、图片、年龄、性别
 
@@ -207,6 +320,62 @@ class YoumallClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribePersonInfoResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise e
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribePersonTrace(self, request):
+        """输出开始时间到结束时间段内的进出场数据。
+
+        :param request: 调用DescribePersonTrace所需参数的结构体。
+        :type request: :class:`tencentcloud.youmall.v20180228.models.DescribePersonTraceRequest`
+        :rtype: :class:`tencentcloud.youmall.v20180228.models.DescribePersonTraceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribePersonTrace", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribePersonTraceResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise e
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribePersonTraceDetail(self, request):
+        """查询客户单次到场轨迹明细
+
+        :param request: 调用DescribePersonTraceDetail所需参数的结构体。
+        :type request: :class:`tencentcloud.youmall.v20180228.models.DescribePersonTraceDetailRequest`
+        :rtype: :class:`tencentcloud.youmall.v20180228.models.DescribePersonTraceDetailResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribePersonTraceDetail", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribePersonTraceDetailResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

@@ -210,6 +210,36 @@ class CbsClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeDiskOperationLogs(self, request):
+        """本接口（DescribeDiskOperationLogs）用于查询云盘操作日志列表。
+
+        可根据云盘ID过滤。云盘ID形如：disk-a1kmcp13。
+
+        :param request: 调用DescribeDiskOperationLogs所需参数的结构体。
+        :type request: :class:`tencentcloud.cbs.v20170312.models.DescribeDiskOperationLogsRequest`
+        :rtype: :class:`tencentcloud.cbs.v20170312.models.DescribeDiskOperationLogsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeDiskOperationLogs", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeDiskOperationLogsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise e
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeDisks(self, request):
         """本接口（DescribeDisks）用于查询云硬盘列表。
 

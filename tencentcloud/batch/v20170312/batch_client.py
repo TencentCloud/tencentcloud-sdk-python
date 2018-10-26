@@ -504,7 +504,7 @@ class BatchClient(AbstractClient):
 
 
     def ModifyComputeEnv(self, request):
-        """用于修改计算环境的期望节点数量
+        """用于修改计算环境属性
 
         :param request: 调用ModifyComputeEnv所需参数的结构体。
         :type request: :class:`tencentcloud.batch.v20170312.models.ModifyComputeEnvRequest`

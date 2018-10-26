@@ -44,7 +44,7 @@ class ApplySnapshotResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.RequestId = None
@@ -52,6 +52,31 @@ class ApplySnapshotResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
+
+
+class AttachDetail(AbstractModel):
+    """描述一个实例已挂载和可挂载数据盘的数量。
+
+    """
+
+    def __init__(self):
+        """
+        :param InstanceId: 实例ID。
+        :type InstanceId: str
+        :param AttachedDiskCount: 实例已挂载数据盘的数量。
+        :type AttachedDiskCount: int
+        :param MaxAttachCount: 实例最大可挂载数据盘的数量。
+        :type MaxAttachCount: int
+        """
+        self.InstanceId = None
+        self.AttachedDiskCount = None
+        self.MaxAttachCount = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.AttachedDiskCount = params.get("AttachedDiskCount")
+        self.MaxAttachCount = params.get("MaxAttachCount")
 
 
 class AttachDisksRequest(AbstractModel):
@@ -86,7 +111,7 @@ class AttachDisksResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.RequestId = None
@@ -125,6 +150,8 @@ class CreateDisksRequest(AbstractModel):
         :type Encrypt: str
         :param Tags: 云盘绑定的标签。
         :type Tags: list of Tag
+        :param DeleteWithInstance: 可选参数，不传该参数则仅执行挂载操作。传入True时，新创建的云盘将设置为随云主机销毁模式，仅对按量计费云硬盘有效。
+        :type DeleteWithInstance: bool
         """
         self.DiskType = None
         self.DiskChargeType = None
@@ -137,6 +164,7 @@ class CreateDisksRequest(AbstractModel):
         self.ClientToken = None
         self.Encrypt = None
         self.Tags = None
+        self.DeleteWithInstance = None
 
 
     def _deserialize(self, params):
@@ -160,6 +188,7 @@ class CreateDisksRequest(AbstractModel):
                 obj = Tag()
                 obj._deserialize(item)
                 self.Tags.append(obj)
+        self.DeleteWithInstance = params.get("DeleteWithInstance")
 
 
 class CreateDisksResponse(AbstractModel):
@@ -171,7 +200,7 @@ class CreateDisksResponse(AbstractModel):
         """
         :param DiskIdSet: 创建的云硬盘ID列表。
         :type DiskIdSet: list of str
-        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.DiskIdSet = None
@@ -213,7 +242,7 @@ class CreateSnapshotResponse(AbstractModel):
         """
         :param SnapshotId: 新创建的快照ID。
         :type SnapshotId: str
-        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.SnapshotId = None
@@ -249,7 +278,7 @@ class DeleteSnapshotsResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.RequestId = None
@@ -313,7 +342,7 @@ class DescribeDiskConfigQuotaResponse(AbstractModel):
         """
         :param DiskConfigSet: 云盘配置列表。
         :type DiskConfigSet: list of DiskConfig
-        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.DiskConfigSet = None
@@ -330,6 +359,55 @@ class DescribeDiskConfigQuotaResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeDiskOperationLogsRequest(AbstractModel):
+    """DescribeDiskOperationLogs请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Filters: 过滤条件。支持以下条件：
+<li>disk-id - Array of String - 是否必填：是 - 按云盘ID过滤，每个请求最多可指定10个云盘ID。
+        :type Filters: list of Filter
+        """
+        self.Filters = None
+
+
+    def _deserialize(self, params):
+        if params.get("Filters") is not None:
+            self.Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self.Filters.append(obj)
+
+
+class DescribeDiskOperationLogsResponse(AbstractModel):
+    """DescribeDiskOperationLogs返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param DiskOperationLogSet: 云盘的操作日志列表。
+        :type DiskOperationLogSet: list of DiskOperationLog
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.DiskOperationLogSet = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("DiskOperationLogSet") is not None:
+            self.DiskOperationLogSet = []
+            for item in params.get("DiskOperationLogSet"):
+                obj = DiskOperationLog()
+                obj._deserialize(item)
+                self.DiskOperationLogSet.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeDisksRequest(AbstractModel):
     """DescribeDisks请求参数结构体
 
@@ -339,7 +417,7 @@ class DescribeDisksRequest(AbstractModel):
         """
         :param DiskIds: 按照一个或者多个云硬盘ID查询。云硬盘ID形如：`disk-11112222`，此参数的具体格式可参考API[简介](/document/product/362/15633)的ids.N一节）。参数不支持同时指定`DiskIds`和`Filters`。
         :type DiskIds: list of str
-        :param Filters: 过滤条件。参数不支持同时指定`DiskIds`和`Filters`。<br><li>disk-usage - Array of String - 是否必填：否 -（过滤条件）按云盘类型过滤。 (SYSTEM_DISK：表示系统盘 | DATA_DISK：表示数据盘)<br><li>disk-charge-type - Array of String - 是否必填：否 -（过滤条件）按照云硬盘计费模式过滤。 (PREPAID：表示预付费，即包年包月 | POSTPAID_BY_HOUR：表示后付费，即按量计费。)<br><li>portable - Array of String - 是否必填：否 -（过滤条件）按是否为弹性云盘过滤。 (TRUE：表示弹性云盘 | FALSE：表示非弹性云盘。)<br><li>project-id - Array of Integer - 是否必填：否 -（过滤条件）按云硬盘所属项目ID过滤。<br><li>disk-id - Array of String - 是否必填：否 -（过滤条件）按照云硬盘ID过滤。云盘ID形如：`disk-11112222`。<br><li>disk-name - Array of String - 是否必填：否 -（过滤条件）按照云盘名称过滤。<br><li>disk-type - Array of String - 是否必填：否 -（过滤条件）按照云盘介质类型过滤。(CLOUD_BASIC：表示普通云硬盘 | CLOUD_PREMIUM：表示高性能云硬盘。| CLOUD_SSD：SSD表示SSD云硬盘。)<br><li>disk-state - Array of String - 是否必填：否 -（过滤条件）按照云盘状态过滤。(UNATTACHED：未挂载 | ATTACHING：挂载中 | ATTACHED：已挂载 | DETACHING：解挂中 | EXPANDING：扩容中 | ROLLBACKING：回滚中 | TORECYCLE：待回收。)<br><li>instance-id - Array of String - 是否必填：否 -（过滤条件）按照云盘挂载的云主机实例ID过滤。可根据此参数查询挂载在指定云主机下的云硬盘。<br><li>zone - Array of String - 是否必填：否 -（过滤条件）按照[可用区](/document/api/213/9452#zone)过滤。<br><li>instance-ip-address - Array of String - 是否必填：否 -（过滤条件）按云盘所挂载云主机的内网或外网IP过滤。<br><li>instance-name - Array of String - 是否必填：否 -（过滤条件）按云盘所挂载的实例名称过滤。<br><li>tag - Array of [Tag](/document/product/362/15669) - 是否必填：否 -（过滤条件）按云盘绑定的标签过滤。
+        :param Filters: 过滤条件。参数不支持同时指定`DiskIds`和`Filters`。<br><li>disk-usage - Array of String - 是否必填：否 -（过滤条件）按云盘类型过滤。 (SYSTEM_DISK：表示系统盘 | DATA_DISK：表示数据盘)<br><li>disk-charge-type - Array of String - 是否必填：否 -（过滤条件）按照云硬盘计费模式过滤。 (PREPAID：表示预付费，即包年包月 | POSTPAID_BY_HOUR：表示后付费，即按量计费。)<br><li>portable - Array of String - 是否必填：否 -（过滤条件）按是否为弹性云盘过滤。 (TRUE：表示弹性云盘 | FALSE：表示非弹性云盘。)<br><li>project-id - Array of Integer - 是否必填：否 -（过滤条件）按云硬盘所属项目ID过滤。<br><li>disk-id - Array of String - 是否必填：否 -（过滤条件）按照云硬盘ID过滤。云盘ID形如：`disk-11112222`。<br><li>disk-name - Array of String - 是否必填：否 -（过滤条件）按照云盘名称过滤。<br><li>disk-type - Array of String - 是否必填：否 -（过滤条件）按照云盘介质类型过滤。(CLOUD_BASIC：表示普通云硬盘 | CLOUD_PREMIUM：表示高性能云硬盘。| CLOUD_SSD：SSD表示SSD云硬盘。)<br><li>disk-state - Array of String - 是否必填：否 -（过滤条件）按照云盘状态过滤。(UNATTACHED：未挂载 | ATTACHING：挂载中 | ATTACHED：已挂载 | DETACHING：解挂中 | EXPANDING：扩容中 | ROLLBACKING：回滚中 | TORECYCLE：待回收。)<br><li>instance-id - Array of String - 是否必填：否 -（过滤条件）按照云盘挂载的云主机实例ID过滤。可根据此参数查询挂载在指定云主机下的云硬盘。<br><li>zone - Array of String - 是否必填：否 -（过滤条件）按照[可用区](/document/api/213/9452#zone)过滤。<br><li>instance-ip-address - Array of String - 是否必填：否 -（过滤条件）按云盘所挂载云主机的内网或外网IP过滤。<br><li>instance-name - Array of String - 是否必填：否 -（过滤条件）按云盘所挂载的实例名称过滤。<br><li>tag-key - Array of String - 是否必填：否 -（过滤条件）按照标签键进行过滤。<br><li>tag-value - Array of String - 是否必填：否 -（过滤条件）照标签值进行过滤。<br><li>tag:tag-key - Array of String - 是否必填：否 -（过滤条件）按照标签键值对进行过滤。 tag-key使用具体的标签键进行替换。
         :type Filters: list of Filter
         :param Offset: 偏移量，默认为0。关于`Offset`的更进一步介绍请参考API[简介](/document/product/362/15633)中的相关小节。
         :type Offset: int
@@ -387,7 +465,7 @@ class DescribeDisksResponse(AbstractModel):
         :type TotalCount: int
         :param DiskSet: 云硬盘的详细信息列表。
         :type DiskSet: list of Disk
-        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.TotalCount = None
@@ -430,21 +508,22 @@ class DescribeInstancesDiskNumResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param AttachedDiskCount: 当前云服务器已挂载弹性云盘数量。
-        :type AttachedDiskCount: int
-        :param MaxAttachCount: 当前云服务器最大可挂载弹性云盘数量。
-        :type MaxAttachCount: int
-        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :param AttachDetail: 各个云服务器已挂载和可挂载弹性云盘的数量。
+        :type AttachDetail: list of AttachDetail
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.AttachedDiskCount = None
-        self.MaxAttachCount = None
+        self.AttachDetail = None
         self.RequestId = None
 
 
     def _deserialize(self, params):
-        self.AttachedDiskCount = params.get("AttachedDiskCount")
-        self.MaxAttachCount = params.get("MaxAttachCount")
+        if params.get("AttachDetail") is not None:
+            self.AttachDetail = []
+            for item in params.get("AttachDetail"):
+                obj = AttachDetail()
+                obj._deserialize(item)
+                self.AttachDetail.append(obj)
         self.RequestId = params.get("RequestId")
 
 
@@ -501,7 +580,7 @@ class DescribeSnapshotsResponse(AbstractModel):
         :type TotalCount: int
         :param SnapshotSet: 快照的详情列表。
         :type SnapshotSet: list of Snapshot
-        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.TotalCount = None
@@ -544,7 +623,7 @@ class DetachDisksResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.RequestId = None
@@ -611,6 +690,8 @@ class Disk(AbstractModel):
         :type Tags: list of Tag
         :param DeleteWithInstance: 云盘是否与挂载的实例一起销毁。<br><li>true:销毁实例时会同时销毁云盘，只支持按小时后付费云盘。<br><li>false：销毁实例时不销毁云盘。
         :type DeleteWithInstance: bool
+        :param DifferDaysOfDeadline: 当前时间距离盘到期的天数（仅对预付费盘有意义）。
+        :type DifferDaysOfDeadline: int
         """
         self.DiskId = None
         self.DiskUsage = None
@@ -637,6 +718,7 @@ class Disk(AbstractModel):
         self.AutoSnapshotPolicyIds = None
         self.Tags = None
         self.DeleteWithInstance = None
+        self.DifferDaysOfDeadline = None
 
 
     def _deserialize(self, params):
@@ -672,6 +754,7 @@ class Disk(AbstractModel):
                 obj._deserialize(item)
                 self.Tags.append(obj)
         self.DeleteWithInstance = params.get("DeleteWithInstance")
+        self.DifferDaysOfDeadline = params.get("DifferDaysOfDeadline")
 
 
 class DiskChargePrepaid(AbstractModel):
@@ -748,6 +831,55 @@ class DiskConfig(AbstractModel):
         self.InstanceFamily = params.get("InstanceFamily")
 
 
+class DiskOperationLog(AbstractModel):
+    """云盘操作日志。
+
+    """
+
+    def __init__(self):
+        """
+        :param Operator: 操作者的UIN。
+        :type Operator: str
+        :param Operation: 操作类型。取值范围：
+CBS_OPERATION_ATTACH：挂载云硬盘
+CBS_OPERATION_DETACH：解挂云硬盘
+CBS_OPERATION_RENEW：续费
+CBS_OPERATION_EXPAND：扩容
+CBS_OPERATION_CREATE：创建
+CBS_OPERATION_ISOLATE：隔离
+CBS_OPERATION_MODIFY：修改云硬盘属性
+ASP_OPERATION_BIND：关联定期快照策略
+ASP_OPERATION_UNBIND：取消关联定期快照策略
+        :type Operation: str
+        :param DiskId: 操作的云盘ID。
+        :type DiskId: str
+        :param OperationState: 操作的状态。取值范围：
+SUCCESS :表示操作成功 
+FAILED :表示操作失败 
+PROCESSING :表示操作中。
+        :type OperationState: str
+        :param StartTime: 开始时间。
+        :type StartTime: str
+        :param EndTime: 结束时间。
+        :type EndTime: str
+        """
+        self.Operator = None
+        self.Operation = None
+        self.DiskId = None
+        self.OperationState = None
+        self.StartTime = None
+        self.EndTime = None
+
+
+    def _deserialize(self, params):
+        self.Operator = params.get("Operator")
+        self.Operation = params.get("Operation")
+        self.DiskId = params.get("DiskId")
+        self.OperationState = params.get("OperationState")
+        self.StartTime = params.get("StartTime")
+        self.EndTime = params.get("EndTime")
+
+
 class Filter(AbstractModel):
     """描述键值对过滤器，用于条件过滤查询。
 
@@ -817,7 +949,7 @@ class InquiryPriceCreateDisksResponse(AbstractModel):
         """
         :param DiskPrice: 描述了新购云盘的价格。
         :type DiskPrice: :class:`tencentcloud.cbs.v20170312.models.Price`
-        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.DiskPrice = None
@@ -873,8 +1005,8 @@ class InquiryPriceRenewDisksResponse(AbstractModel):
     def __init__(self):
         """
         :param DiskPrice: 描述了续费云盘的价格。
-        :type DiskPrice: :class:`tencentcloud.cbs.v20170312.models.Price`
-        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :type DiskPrice: :class:`tencentcloud.cbs.v20170312.models.PrepayPrice`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.DiskPrice = None
@@ -883,7 +1015,7 @@ class InquiryPriceRenewDisksResponse(AbstractModel):
 
     def _deserialize(self, params):
         if params.get("DiskPrice") is not None:
-            self.DiskPrice = Price()
+            self.DiskPrice = PrepayPrice()
             self.DiskPrice._deserialize(params.get("DiskPrice"))
         self.RequestId = params.get("RequestId")
 
@@ -921,8 +1053,8 @@ class InquiryPriceResizeDiskResponse(AbstractModel):
     def __init__(self):
         """
         :param DiskPrice: 描述了扩容云盘的价格。
-        :type DiskPrice: :class:`tencentcloud.cbs.v20170312.models.Price`
-        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :type DiskPrice: :class:`tencentcloud.cbs.v20170312.models.PrepayPrice`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.DiskPrice = None
@@ -931,7 +1063,7 @@ class InquiryPriceResizeDiskResponse(AbstractModel):
 
     def _deserialize(self, params):
         if params.get("DiskPrice") is not None:
-            self.DiskPrice = Price()
+            self.DiskPrice = PrepayPrice()
             self.DiskPrice._deserialize(params.get("DiskPrice"))
         self.RequestId = params.get("RequestId")
 
@@ -976,7 +1108,7 @@ class ModifyDiskAttributesResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.RequestId = None
@@ -1014,7 +1146,7 @@ class ModifyDisksRenewFlagResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.RequestId = None
@@ -1056,7 +1188,7 @@ class ModifySnapshotAttributeResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.RequestId = None
@@ -1087,8 +1219,29 @@ class Placement(AbstractModel):
         self.ProjectId = params.get("ProjectId")
 
 
+class PrepayPrice(AbstractModel):
+    """预付费订单的费用。
+
+    """
+
+    def __init__(self):
+        """
+        :param OriginalPrice: 预付费云盘或快照预支费用的原价，单位：元。
+        :type OriginalPrice: float
+        :param DiscountPrice: 预付费云盘或快照预支费用的折扣价，单位：元。
+        :type DiscountPrice: float
+        """
+        self.OriginalPrice = None
+        self.DiscountPrice = None
+
+
+    def _deserialize(self, params):
+        self.OriginalPrice = params.get("OriginalPrice")
+        self.DiscountPrice = params.get("DiscountPrice")
+
+
 class Price(AbstractModel):
-    """描述了云盘的价格
+    """描述预付费或后付费云盘的价格。
 
     """
 
@@ -1146,7 +1299,7 @@ class RenewDiskResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.RequestId = None
@@ -1184,7 +1337,7 @@ class ResizeDiskResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.RequestId = None
@@ -1310,7 +1463,7 @@ class TerminateDisksResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.RequestId = None

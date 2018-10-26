@@ -25,6 +25,118 @@ class BmClient(AbstractClient):
     _endpoint = 'bm.tencentcloudapi.com'
 
 
+    def BindPsaTag(self, request):
+        """为预授权规则绑定标签
+
+        :param request: 调用BindPsaTag所需参数的结构体。
+        :type request: :class:`tencentcloud.bm.v20180423.models.BindPsaTagRequest`
+        :rtype: :class:`tencentcloud.bm.v20180423.models.BindPsaTagResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("BindPsaTag", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.BindPsaTagResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise e
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def CreatePsaRegulation(self, request):
+        """创建预授权规则
+
+        :param request: 调用CreatePsaRegulation所需参数的结构体。
+        :type request: :class:`tencentcloud.bm.v20180423.models.CreatePsaRegulationRequest`
+        :rtype: :class:`tencentcloud.bm.v20180423.models.CreatePsaRegulationResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("CreatePsaRegulation", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreatePsaRegulationResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise e
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DeletePsaRegulation(self, request):
+        """删除预授权规则
+
+        :param request: 调用DeletePsaRegulation所需参数的结构体。
+        :type request: :class:`tencentcloud.bm.v20180423.models.DeletePsaRegulationRequest`
+        :rtype: :class:`tencentcloud.bm.v20180423.models.DeletePsaRegulationResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DeletePsaRegulation", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DeletePsaRegulationResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise e
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribePsaRegulations(self, request):
+        """获取预授权规则列表
+
+        :param request: 调用DescribePsaRegulations所需参数的结构体。
+        :type request: :class:`tencentcloud.bm.v20180423.models.DescribePsaRegulationsRequest`
+        :rtype: :class:`tencentcloud.bm.v20180423.models.DescribePsaRegulationsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribePsaRegulations", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribePsaRegulationsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise e
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeRepairTaskConstant(self, request):
         """维修任务配置获取
 
@@ -117,6 +229,34 @@ class BmClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def ModifyPsaRegulation(self, request):
+        """允许修改规则信息及关联故障类型
+
+        :param request: 调用ModifyPsaRegulation所需参数的结构体。
+        :type request: :class:`tencentcloud.bm.v20180423.models.ModifyPsaRegulationRequest`
+        :rtype: :class:`tencentcloud.bm.v20180423.models.ModifyPsaRegulationResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ModifyPsaRegulation", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ModifyPsaRegulationResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise e
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def RepairTaskControl(self, request):
         """此接口用于操作维修任务<br>
         入参TaskId为维修任务ID<br>
@@ -151,6 +291,34 @@ class BmClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.RepairTaskControlResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise e
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def UnbindPsaTag(self, request):
+        """解除标签与预授权规则的绑定
+
+        :param request: 调用UnbindPsaTag所需参数的结构体。
+        :type request: :class:`tencentcloud.bm.v20180423.models.UnbindPsaTagRequest`
+        :rtype: :class:`tencentcloud.bm.v20180423.models.UnbindPsaTagResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("UnbindPsaTag", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.UnbindPsaTagResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

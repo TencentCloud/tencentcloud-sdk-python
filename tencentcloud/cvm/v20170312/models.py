@@ -93,7 +93,7 @@ class AllocateHostsResponse(AbstractModel):
         """
         :param HostIdSet: 新创建云子机的实例id列表。
         :type HostIdSet: list of str
-        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.HostIdSet = None
@@ -137,7 +137,7 @@ class AssociateInstancesKeyPairsResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.RequestId = None
@@ -212,7 +212,7 @@ class CreateDisasterRecoverGroupResponse(AbstractModel):
         :type CurrentNum: int
         :param CreateTime: 置放群组创建时间。
         :type CreateTime: str
-        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.DisasterRecoverGroupId = None
@@ -278,7 +278,7 @@ class CreateImageResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.RequestId = None
@@ -321,7 +321,7 @@ class CreateKeyPairResponse(AbstractModel):
         """
         :param KeyPair: 密钥对信息。
         :type KeyPair: :class:`tencentcloud.cvm.v20170312.models.KeyPair`
-        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.KeyPair = None
@@ -392,7 +392,7 @@ class DeleteDisasterRecoverGroupsResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.RequestId = None
@@ -426,7 +426,7 @@ class DeleteImagesResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.RequestId = None
@@ -460,7 +460,7 @@ class DeleteKeyPairsResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.RequestId = None
@@ -493,7 +493,7 @@ class DescribeDisasterRecoverGroupQuotaResponse(AbstractModel):
         :type CvmInSwGroupQuota: int
         :param CvmInRackGroupQuota: 机架类型容灾组内实例的配额数。
         :type CvmInRackGroupQuota: int
-        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.GroupQuota = None
@@ -553,7 +553,7 @@ class DescribeDisasterRecoverGroupsResponse(AbstractModel):
         :type DisasterRecoverGroupSet: list of DisasterRecoverGroup
         :param TotalCount: 用户置放群组总量。
         :type TotalCount: int
-        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.DisasterRecoverGroupSet = None
@@ -618,7 +618,7 @@ class DescribeHostsResponse(AbstractModel):
         :type TotalCount: int
         :param HostSet: cdh实例详细信息列表
         :type HostSet: list of HostItem
-        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.TotalCount = None
@@ -652,7 +652,7 @@ class DescribeImageQuotaResponse(AbstractModel):
         """
         :param ImageNumQuota: 账户的镜像配额
         :type ImageNumQuota: int
-        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.ImageNumQuota = None
@@ -690,7 +690,7 @@ class DescribeImageSharePermissionResponse(AbstractModel):
         """
         :param SharePermissionSet: 镜像共享信息
         :type SharePermissionSet: list of SharePermission
-        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.SharePermissionSet = None
@@ -759,7 +759,7 @@ class DescribeImagesResponse(AbstractModel):
         :type ImageSet: list of Image
         :param TotalCount: 符合要求的镜像数量。
         :type TotalCount: int
-        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.ImageSet = None
@@ -795,7 +795,7 @@ class DescribeImportImageOsResponse(AbstractModel):
         :type ImportImageOsListSupported: :class:`tencentcloud.cvm.v20170312.models.ImageOsList`
         :param ImportImageOsVersionSet: 支持的导入镜像的操作系统版本。
         :type ImportImageOsVersionSet: list of OsVersion
-        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.ImportImageOsListSupported = None
@@ -831,7 +831,7 @@ class DescribeInstanceFamilyConfigsResponse(AbstractModel):
         """
         :param InstanceFamilyConfigSet: 实例机型组配置的列表信息
         :type InstanceFamilyConfigSet: list of InstanceFamilyConfig
-        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.InstanceFamilyConfigSet = None
@@ -874,7 +874,7 @@ class DescribeInstanceInternetBandwidthConfigsResponse(AbstractModel):
         """
         :param InternetBandwidthConfigSet: 带宽配置信息列表。
         :type InternetBandwidthConfigSet: list of InternetBandwidthConfig
-        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.InternetBandwidthConfigSet = None
@@ -925,7 +925,7 @@ class DescribeInstanceTypeConfigsResponse(AbstractModel):
         """
         :param InstanceTypeConfigSet: 实例机型配置列表。
         :type InstanceTypeConfigSet: list of InstanceTypeConfig
-        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.InstanceTypeConfigSet = None
@@ -968,7 +968,7 @@ class DescribeInstanceVncUrlResponse(AbstractModel):
         """
         :param InstanceVncUrl: 实例的管理终端地址。
         :type InstanceVncUrl: str
-        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.InstanceVncUrl = None
@@ -1039,7 +1039,7 @@ class DescribeInstancesResponse(AbstractModel):
         :type TotalCount: int
         :param InstanceSet: 实例详细信息列表。
         :type InstanceSet: list of Instance
-        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.TotalCount = None
@@ -1094,7 +1094,7 @@ class DescribeInstancesStatusResponse(AbstractModel):
         :type TotalCount: int
         :param InstanceStatusSet: [实例状态](https://cloud.tencent.com/document/api/213/15738) 列表。
         :type InstanceStatusSet: list of InstanceStatus
-        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.TotalCount = None
@@ -1128,7 +1128,7 @@ class DescribeInternetChargeTypeConfigsResponse(AbstractModel):
         """
         :param InternetChargeTypeConfigSet: 网络计费类型配置。
         :type InternetChargeTypeConfigSet: list of InternetChargeTypeConfig
-        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.InternetChargeTypeConfigSet = None
@@ -1192,7 +1192,7 @@ class DescribeKeyPairsResponse(AbstractModel):
         :type TotalCount: int
         :param KeyPairSet: 密钥对详细信息列表。
         :type KeyPairSet: list of KeyPair
-        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.TotalCount = None
@@ -1228,7 +1228,7 @@ class DescribeRegionsResponse(AbstractModel):
         :type TotalCount: int
         :param RegionSet: 地域列表信息
         :type RegionSet: list of RegionInfo
-        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.TotalCount = None
@@ -1286,7 +1286,7 @@ class DescribeZoneInstanceConfigInfosResponse(AbstractModel):
         """
         :param InstanceTypeQuotaSet: 可用区机型配置列表。
         :type InstanceTypeQuotaSet: list of InstanceTypeQuotaItem
-        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.InstanceTypeQuotaSet = None
@@ -1316,11 +1316,11 @@ class DescribeZonesResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param TotalCount: 可用区数量
+        :param TotalCount: 可用区数量。
         :type TotalCount: int
-        :param ZoneSet: 可用区列表信息
+        :param ZoneSet: 可用区列表信息。
         :type ZoneSet: list of ZoneInfo
-        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.TotalCount = None
@@ -1371,7 +1371,7 @@ class DisassociateInstancesKeyPairsResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.RequestId = None
@@ -1750,7 +1750,7 @@ class ImportImageResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.RequestId = None
@@ -1796,7 +1796,7 @@ class ImportKeyPairResponse(AbstractModel):
         """
         :param KeyId: 密钥对ID。
         :type KeyId: str
-        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.KeyId = None
@@ -1844,7 +1844,7 @@ class InquiryPriceModifyInstancesChargeTypeResponse(AbstractModel):
         """
         :param Price: 该参数表示对应配置实例转换计费模式的价格。
         :type Price: :class:`tencentcloud.cvm.v20170312.models.Price`
-        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.Price = None
@@ -1898,7 +1898,7 @@ class InquiryPriceRenewInstancesResponse(AbstractModel):
         """
         :param Price: 该参数表示对应配置实例的价格。
         :type Price: :class:`tencentcloud.cvm.v20170312.models.Price`
-        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.Price = None
@@ -1960,7 +1960,7 @@ class InquiryPriceResetInstanceResponse(AbstractModel):
         """
         :param Price: 该参数表示重装成对应配置实例的价格。
         :type Price: :class:`tencentcloud.cvm.v20170312.models.Price`
-        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.Price = None
@@ -2014,7 +2014,7 @@ class InquiryPriceResetInstancesInternetMaxBandwidthResponse(AbstractModel):
         """
         :param Price: 该参数表示带宽调整为对应大小之后的价格。
         :type Price: :class:`tencentcloud.cvm.v20170312.models.Price`
-        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.Price = None
@@ -2062,7 +2062,7 @@ class InquiryPriceResetInstancesTypeResponse(AbstractModel):
         """
         :param Price: 该参数表示调整成对应机型实例的价格。
         :type Price: :class:`tencentcloud.cvm.v20170312.models.Price`
-        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.Price = None
@@ -2115,7 +2115,7 @@ class InquiryPriceResizeInstanceDisksResponse(AbstractModel):
         """
         :param Price: 该参数表示磁盘扩容成对应配置的价格。
         :type Price: :class:`tencentcloud.cvm.v20170312.models.Price`
-        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.Price = None
@@ -2249,7 +2249,7 @@ class InquiryPriceRunInstancesResponse(AbstractModel):
         """
         :param Price: 该参数表示对应配置实例的价格。
         :type Price: :class:`tencentcloud.cvm.v20170312.models.Price`
-        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.Price = None
@@ -2819,7 +2819,7 @@ class ModifyDisasterRecoverGroupAttributeResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.RequestId = None
@@ -2861,7 +2861,7 @@ class ModifyHostsAttributeResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.RequestId = None
@@ -2903,7 +2903,7 @@ class ModifyImageAttributeResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.RequestId = None
@@ -2945,7 +2945,7 @@ class ModifyImageSharePermissionResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.RequestId = None
@@ -2966,7 +2966,7 @@ class ModifyInstancesAttributeRequest(AbstractModel):
         :type InstanceIds: list of str
         :param InstanceName: 实例名称。可任意命名，但不得超过60个字符。
         :type InstanceName: str
-        :param SecurityGroups: 指定实例的安全组Id列表。
+        :param SecurityGroups: 指定实例的安全组Id列表，子机将重新关联指定列表的安全组，原本关联的安全组会被解绑。
         :type SecurityGroups: list of str
         """
         self.InstanceIds = None
@@ -2987,7 +2987,7 @@ class ModifyInstancesAttributeResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.RequestId = None
@@ -3031,7 +3031,7 @@ class ModifyInstancesChargeTypeResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.RequestId = None
@@ -3069,7 +3069,7 @@ class ModifyInstancesProjectResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.RequestId = None
@@ -3107,7 +3107,7 @@ class ModifyInstancesRenewFlagResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.RequestId = None
@@ -3151,7 +3151,7 @@ class ModifyInstancesVpcAttributeResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.RequestId = None
@@ -3193,7 +3193,7 @@ class ModifyKeyPairAttributeResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.RequestId = None
@@ -3306,7 +3306,7 @@ class RebootInstancesResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.RequestId = None
@@ -3371,7 +3371,7 @@ class RenewHostsResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.RequestId = None
@@ -3415,7 +3415,7 @@ class RenewInstancesResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.RequestId = None
@@ -3471,7 +3471,7 @@ class ResetInstanceResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.RequestId = None
@@ -3519,7 +3519,7 @@ class ResetInstancesInternetMaxBandwidthResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.RequestId = None
@@ -3565,7 +3565,7 @@ class ResetInstancesPasswordResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.RequestId = None
@@ -3607,7 +3607,7 @@ class ResetInstancesTypeResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.RequestId = None
@@ -3654,7 +3654,7 @@ class ResizeInstanceDisksResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.RequestId = None
@@ -3799,7 +3799,7 @@ class RunInstancesResponse(AbstractModel):
         """
         :param InstanceIdSet: 当通过本接口来创建实例时会返回该参数，表示一个或多个实例`ID`。返回实例`ID`列表并不代表实例创建成功，可根据 [DescribeInstances](https://cloud.tencent.com/document/api/213/15728) 接口查询返回的InstancesSet中对应实例的`ID`的状态来判断创建是否完成；如果实例状态由“准备中”变为“正在运行”，则为创建成功。
         :type InstanceIdSet: list of str
-        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.InstanceIdSet = None
@@ -3911,7 +3911,7 @@ class StartInstancesResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.RequestId = None
@@ -3953,7 +3953,7 @@ class StopInstancesResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.RequestId = None
@@ -4016,7 +4016,7 @@ class SyncImagesResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.RequestId = None
@@ -4122,7 +4122,7 @@ class TerminateInstancesResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.RequestId = None

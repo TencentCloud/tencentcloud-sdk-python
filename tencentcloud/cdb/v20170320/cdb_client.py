@@ -140,6 +140,8 @@ class CdbClient(AbstractClient):
     def CreateDBImportJob(self, request):
         """本接口(CreateDBImportJob)用于创建云数据库数据导入任务。
 
+        注意，用户进行数据导入任务的文件，必须提前上传到腾讯云。用户可在控制台进行文件导入，也可使用[上传导入文件](https://cloud.tencent.com/document/api/236/8595)进行文件导入。
+
         :param request: 调用CreateDBImportJob所需参数的结构体。
         :type request: :class:`tencentcloud.cdb.v20170320.models.CreateDBImportJobRequest`
         :rtype: :class:`tencentcloud.cdb.v20170320.models.CreateDBImportJobResponse`
@@ -656,10 +658,7 @@ class CdbClient(AbstractClient):
 
 
     def DescribeDBInstances(self, request):
-        """本接口(DescribeDBInstances)用于查询云数据库实例列表，支持通过项目ID、实例ID、访问地址、实例状态等来筛选实例。
-
-        1. 不指定任何过滤条件, 则默认返回20条实例记录，单次请求最多支持返回100条实例记录；
-        2. 支持查询主实例、灾备实例和只读实例信息列表。
+        """本接口(DescribeDBInstances)用于查询云数据库实例列表，支持通过项目ID、实例ID、访问地址、实例状态等过滤条件来筛选实例。支持查询主实例、灾备实例和只读实例信息列表。
 
         :param request: 调用DescribeDBInstances所需参数的结构体。
         :type request: :class:`tencentcloud.cdb.v20170320.models.DescribeDBInstancesRequest`
@@ -980,6 +979,34 @@ class CdbClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeTasksResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise e
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeUploadedFiles(self, request):
+        """本接口(DescribeUploadedFiles)用于查询用户导入的SQL文件列表。
+
+        :param request: 调用DescribeUploadedFiles所需参数的结构体。
+        :type request: :class:`tencentcloud.cdb.v20170320.models.DescribeUploadedFilesRequest`
+        :rtype: :class:`tencentcloud.cdb.v20170320.models.DescribeUploadedFilesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeUploadedFiles", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeUploadedFilesResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -1400,6 +1427,34 @@ class CdbClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.OpenWanServiceResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise e
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def RenewDBInstance(self, request):
+        """本接口(RenewDBInstance)用于续费云数据库实例，仅支持付费模式为包年包月的实例。按量计费实例不需要续费。
+
+        :param request: 调用RenewDBInstance所需参数的结构体。
+        :type request: :class:`tencentcloud.cdb.v20170320.models.RenewDBInstanceRequest`
+        :rtype: :class:`tencentcloud.cdb.v20170320.models.RenewDBInstanceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("RenewDBInstance", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.RenewDBInstanceResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

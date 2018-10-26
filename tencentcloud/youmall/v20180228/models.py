@@ -16,6 +16,43 @@
 from tencentcloud.common.abstract_model import AbstractModel
 
 
+class ArrivedMallInfo(AbstractModel):
+    """客户到场信息
+
+    """
+
+    def __init__(self):
+        """
+        :param ArrivedTime: 到场时间
+        :type ArrivedTime: str
+        :param LeaveTime: 出场时间
+        :type LeaveTime: str
+        :param StaySecond: 停留时间，秒
+        :type StaySecond: int
+        :param InCapPic: 到场抓拍图片
+        :type InCapPic: str
+        :param OutCapPic: 出场抓拍图片
+        :type OutCapPic: str
+        :param TraceId: 轨迹编码
+        :type TraceId: str
+        """
+        self.ArrivedTime = None
+        self.LeaveTime = None
+        self.StaySecond = None
+        self.InCapPic = None
+        self.OutCapPic = None
+        self.TraceId = None
+
+
+    def _deserialize(self, params):
+        self.ArrivedTime = params.get("ArrivedTime")
+        self.LeaveTime = params.get("LeaveTime")
+        self.StaySecond = params.get("StaySecond")
+        self.InCapPic = params.get("InCapPic")
+        self.OutCapPic = params.get("OutCapPic")
+        self.TraceId = params.get("TraceId")
+
+
 class CameraPersonInfo(AbstractModel):
     """摄像头抓图人物属性
 
@@ -89,7 +126,7 @@ class CreateAccountResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.RequestId = None
@@ -145,7 +182,7 @@ class CreateFacePictureResponse(AbstractModel):
         :type Status: int
         :param PictureUrl: 图片url
         :type PictureUrl: str
-        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.PersonId = None
@@ -159,6 +196,32 @@ class CreateFacePictureResponse(AbstractModel):
         self.Status = params.get("Status")
         self.PictureUrl = params.get("PictureUrl")
         self.RequestId = params.get("RequestId")
+
+
+class DailyTracePoint(AbstractModel):
+    """客户天轨迹
+
+    """
+
+    def __init__(self):
+        """
+        :param TraceDate: 轨迹日期
+        :type TraceDate: str
+        :param TracePointSet: 轨迹点序列
+        :type TracePointSet: list of PersonTracePoint
+        """
+        self.TraceDate = None
+        self.TracePointSet = None
+
+
+    def _deserialize(self, params):
+        self.TraceDate = params.get("TraceDate")
+        if params.get("TracePointSet") is not None:
+            self.TracePointSet = []
+            for item in params.get("TracePointSet"):
+                obj = PersonTracePoint()
+                obj._deserialize(item)
+                self.TracePointSet.append(obj)
 
 
 class DescribeCameraPersonRequest(AbstractModel):
@@ -223,7 +286,7 @@ class DescribeCameraPersonResponse(AbstractModel):
         :type PosId: str
         :param Infos: 抓取的顾客信息
         :type Infos: list of CameraPersonInfo
-        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.CompanyId = None
@@ -245,6 +308,140 @@ class DescribeCameraPersonResponse(AbstractModel):
                 obj = CameraPersonInfo()
                 obj._deserialize(item)
                 self.Infos.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeClusterPersonArrivedMallRequest(AbstractModel):
+    """DescribeClusterPersonArrivedMall请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param MallId: 卖场编码
+        :type MallId: str
+        :param PersonId: 客户编码
+        :type PersonId: str
+        :param StartTime: 查询开始时间
+        :type StartTime: str
+        :param EndTime: 查询结束时间
+        :type EndTime: str
+        """
+        self.MallId = None
+        self.PersonId = None
+        self.StartTime = None
+        self.EndTime = None
+
+
+    def _deserialize(self, params):
+        self.MallId = params.get("MallId")
+        self.PersonId = params.get("PersonId")
+        self.StartTime = params.get("StartTime")
+        self.EndTime = params.get("EndTime")
+
+
+class DescribeClusterPersonArrivedMallResponse(AbstractModel):
+    """DescribeClusterPersonArrivedMall返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param MallId: 卖场系统编码
+        :type MallId: str
+        :param MallCode: 卖场客户编码
+        :type MallCode: str
+        :param PersonId: 客户编码
+        :type PersonId: str
+        :param ArrivedMallSet: 到场信息
+        :type ArrivedMallSet: list of ArrivedMallInfo
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.MallId = None
+        self.MallCode = None
+        self.PersonId = None
+        self.ArrivedMallSet = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.MallId = params.get("MallId")
+        self.MallCode = params.get("MallCode")
+        self.PersonId = params.get("PersonId")
+        if params.get("ArrivedMallSet") is not None:
+            self.ArrivedMallSet = []
+            for item in params.get("ArrivedMallSet"):
+                obj = ArrivedMallInfo()
+                obj._deserialize(item)
+                self.ArrivedMallSet.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeClusterPersonTraceRequest(AbstractModel):
+    """DescribeClusterPersonTrace请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param MallId: 卖场编码
+        :type MallId: str
+        :param PersonId: 客户编码
+        :type PersonId: str
+        :param StartTime: 查询开始时间
+        :type StartTime: str
+        :param EndTime: 查询结束时间
+        :type EndTime: str
+        """
+        self.MallId = None
+        self.PersonId = None
+        self.StartTime = None
+        self.EndTime = None
+
+
+    def _deserialize(self, params):
+        self.MallId = params.get("MallId")
+        self.PersonId = params.get("PersonId")
+        self.StartTime = params.get("StartTime")
+        self.EndTime = params.get("EndTime")
+
+
+class DescribeClusterPersonTraceResponse(AbstractModel):
+    """DescribeClusterPersonTrace返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param MallId: 卖场系统编码
+        :type MallId: str
+        :param MallCode: 卖场用户编码
+        :type MallCode: str
+        :param PersonId: 客户编码
+        :type PersonId: str
+        :param TracePointSet: 轨迹序列
+        :type TracePointSet: list of DailyTracePoint
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.MallId = None
+        self.MallCode = None
+        self.PersonId = None
+        self.TracePointSet = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.MallId = params.get("MallId")
+        self.MallCode = params.get("MallCode")
+        self.PersonId = params.get("PersonId")
+        if params.get("TracePointSet") is not None:
+            self.TracePointSet = []
+            for item in params.get("TracePointSet"):
+                obj = DailyTracePoint()
+                obj._deserialize(item)
+                self.TracePointSet.append(obj)
         self.RequestId = params.get("RequestId")
 
 
@@ -300,7 +497,7 @@ class DescribeFaceIdByTempIdResponse(AbstractModel):
         :type TempId: str
         :param FaceId: 临时id对应的face id
         :type FaceId: int
-        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.CompanyId = None
@@ -372,7 +569,7 @@ class DescribeHistoryNetworkInfoResponse(AbstractModel):
         """
         :param InstanceSet: 网络状态数据
         :type InstanceSet: :class:`tencentcloud.youmall.v20180228.models.NetworkHistoryInfo`
-        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.InstanceSet = None
@@ -420,7 +617,7 @@ class DescribeNetworkInfoResponse(AbstractModel):
         """
         :param InstanceSet: 网络状态详情
         :type InstanceSet: :class:`tencentcloud.youmall.v20180228.models.NetworkLastInfo`
-        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.InstanceSet = None
@@ -431,6 +628,73 @@ class DescribeNetworkInfoResponse(AbstractModel):
         if params.get("InstanceSet") is not None:
             self.InstanceSet = NetworkLastInfo()
             self.InstanceSet._deserialize(params.get("InstanceSet"))
+        self.RequestId = params.get("RequestId")
+
+
+class DescribePersonArrivedMallRequest(AbstractModel):
+    """DescribePersonArrivedMall请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param MallId: 卖场编码
+        :type MallId: str
+        :param PersonId: 客户编码
+        :type PersonId: str
+        :param StartTime: 查询开始时间
+        :type StartTime: str
+        :param EndTime: 查询结束时间
+        :type EndTime: str
+        """
+        self.MallId = None
+        self.PersonId = None
+        self.StartTime = None
+        self.EndTime = None
+
+
+    def _deserialize(self, params):
+        self.MallId = params.get("MallId")
+        self.PersonId = params.get("PersonId")
+        self.StartTime = params.get("StartTime")
+        self.EndTime = params.get("EndTime")
+
+
+class DescribePersonArrivedMallResponse(AbstractModel):
+    """DescribePersonArrivedMall返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param MallId: 卖场系统编码
+        :type MallId: str
+        :param MallCode: 卖场用户编码
+        :type MallCode: str
+        :param PersonId: 客户编码
+        :type PersonId: str
+        :param ArrivedMallSet: 到场轨迹
+        :type ArrivedMallSet: list of ArrivedMallInfo
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.MallId = None
+        self.MallCode = None
+        self.PersonId = None
+        self.ArrivedMallSet = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.MallId = params.get("MallId")
+        self.MallCode = params.get("MallCode")
+        self.PersonId = params.get("PersonId")
+        if params.get("ArrivedMallSet") is not None:
+            self.ArrivedMallSet = []
+            for item in params.get("ArrivedMallSet"):
+                obj = ArrivedMallInfo()
+                obj._deserialize(item)
+                self.ArrivedMallSet.append(obj)
         self.RequestId = params.get("RequestId")
 
 
@@ -486,7 +750,7 @@ class DescribePersonInfoResponse(AbstractModel):
         :type TotalCount: int
         :param PersonInfoSet: 用户信息
         :type PersonInfoSet: list of PersonInfo
-        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.CompanyId = None
@@ -506,6 +770,191 @@ class DescribePersonInfoResponse(AbstractModel):
                 obj = PersonInfo()
                 obj._deserialize(item)
                 self.PersonInfoSet.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribePersonRequest(AbstractModel):
+    """DescribePerson请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param MallId: 卖场编码
+        :type MallId: str
+        :param Offset: 查询偏移
+        :type Offset: int
+        :param Limit: 查询数量，默认20，最大查询数量100
+        :type Limit: int
+        """
+        self.MallId = None
+        self.Offset = None
+        self.Limit = None
+
+
+    def _deserialize(self, params):
+        self.MallId = params.get("MallId")
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+
+
+class DescribePersonResponse(AbstractModel):
+    """DescribePerson返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param TotalCount: 总计客户数量
+        :type TotalCount: int
+        :param PersonSet: 客户信息
+        :type PersonSet: list of PersonProfile
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.PersonSet = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("PersonSet") is not None:
+            self.PersonSet = []
+            for item in params.get("PersonSet"):
+                obj = PersonProfile()
+                obj._deserialize(item)
+                self.PersonSet.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribePersonTraceDetailRequest(AbstractModel):
+    """DescribePersonTraceDetail请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param MallId: 卖场编码
+        :type MallId: str
+        :param PersonId: 客户编码
+        :type PersonId: str
+        :param TraceId: 轨迹编码
+        :type TraceId: str
+        """
+        self.MallId = None
+        self.PersonId = None
+        self.TraceId = None
+
+
+    def _deserialize(self, params):
+        self.MallId = params.get("MallId")
+        self.PersonId = params.get("PersonId")
+        self.TraceId = params.get("TraceId")
+
+
+class DescribePersonTraceDetailResponse(AbstractModel):
+    """DescribePersonTraceDetail返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param MallId: 卖场编码
+        :type MallId: str
+        :param PersonId: 客户编码
+        :type PersonId: str
+        :param TraceId: 轨迹编码
+        :type TraceId: str
+        :param CoordinateSet: 轨迹点坐标序列
+        :type CoordinateSet: list of PersonCoordinate
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.MallId = None
+        self.PersonId = None
+        self.TraceId = None
+        self.CoordinateSet = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.MallId = params.get("MallId")
+        self.PersonId = params.get("PersonId")
+        self.TraceId = params.get("TraceId")
+        if params.get("CoordinateSet") is not None:
+            self.CoordinateSet = []
+            for item in params.get("CoordinateSet"):
+                obj = PersonCoordinate()
+                obj._deserialize(item)
+                self.CoordinateSet.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribePersonTraceRequest(AbstractModel):
+    """DescribePersonTrace请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param MallId: 卖场编码
+        :type MallId: str
+        :param PersonId: 客户编码
+        :type PersonId: str
+        :param StartTime: 查询开始时间
+        :type StartTime: str
+        :param EndTime: 查询结束时间
+        :type EndTime: str
+        """
+        self.MallId = None
+        self.PersonId = None
+        self.StartTime = None
+        self.EndTime = None
+
+
+    def _deserialize(self, params):
+        self.MallId = params.get("MallId")
+        self.PersonId = params.get("PersonId")
+        self.StartTime = params.get("StartTime")
+        self.EndTime = params.get("EndTime")
+
+
+class DescribePersonTraceResponse(AbstractModel):
+    """DescribePersonTrace返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param MallId: 卖场系统编码
+        :type MallId: str
+        :param MallCode: 卖场用户编码
+        :type MallCode: str
+        :param PersonId: 客户编码
+        :type PersonId: str
+        :param TraceRouteSet: 轨迹列表
+        :type TraceRouteSet: list of PersonTraceRoute
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.MallId = None
+        self.MallCode = None
+        self.PersonId = None
+        self.TraceRouteSet = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.MallId = params.get("MallId")
+        self.MallCode = params.get("MallCode")
+        self.PersonId = params.get("PersonId")
+        if params.get("TraceRouteSet") is not None:
+            self.TraceRouteSet = []
+            for item in params.get("TraceRouteSet"):
+                obj = PersonTraceRoute()
+                obj._deserialize(item)
+                self.TraceRouteSet.append(obj)
         self.RequestId = params.get("RequestId")
 
 
@@ -565,7 +1014,7 @@ class DescribePersonVisitInfoResponse(AbstractModel):
         :type TotalCount: int
         :param PersonVisitInfoSet: 用户到访明细
         :type PersonVisitInfoSet: list of PersonVisitInfo
-        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.CompanyId = None
@@ -640,7 +1089,7 @@ class DescribeShopHourTrafficInfoResponse(AbstractModel):
         :type TotalCount: int
         :param ShopHourTrafficInfoSet: 分时客流信息
         :type ShopHourTrafficInfoSet: list of ShopHourTrafficInfo
-        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.CompanyId = None
@@ -695,7 +1144,7 @@ class DescribeShopInfoResponse(AbstractModel):
         :type TotalCount: int
         :param ShopInfoSet: 门店列表信息
         :type ShopInfoSet: list of ShopInfo
-        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.TotalCount = None
@@ -766,7 +1215,7 @@ class DescribeShopTrafficInfoResponse(AbstractModel):
         :type TotalCount: int
         :param ShopDayTrafficInfoSet: 客流信息列表
         :type ShopDayTrafficInfoSet: list of ShopDayTrafficInfo
-        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.CompanyId = None
@@ -847,7 +1296,7 @@ class DescribeTrajectoryDataResponse(AbstractModel):
         :type Trajectory: int
         :param Data: 返回动迹的具体信息
         :type Data: list of TrajectorySunData
-        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.CompanyId = None
@@ -926,7 +1375,7 @@ class DescribeZoneFlowAgeInfoByZoneIdResponse(AbstractModel):
         :type ZoneName: str
         :param Data: 当前年龄段占比
         :type Data: list of float
-        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.CompanyId = None
@@ -988,7 +1437,7 @@ class DescribeZoneFlowAndStayTimeResponse(AbstractModel):
         :type ShopId: int
         :param Data: 各区域人流数目和停留时长
         :type Data: list of ZoneFlowAndAvrStayTime
-        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.CompanyId = None
@@ -1059,7 +1508,7 @@ class DescribeZoneFlowDailyByZoneIdResponse(AbstractModel):
         :type ZoneName: str
         :param Data: 每日人流量
         :type Data: list of ZoneDayFlow
-        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.CompanyId = None
@@ -1134,7 +1583,7 @@ class DescribeZoneFlowGenderAvrStayTimeByZoneIdResponse(AbstractModel):
         :type ZoneName: str
         :param Data: 不同年龄段男女停留时间（返回格式为数组，从第 1 个到最后一个数据，年龄段分别为 0-17，18 - 23,  24 - 30, 31 - 40, 41 - 50, 51 - 60, 61 - 100）
         :type Data: list of ZoneAgeGroupAvrStayTime
-        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.CompanyId = None
@@ -1211,7 +1660,7 @@ class DescribeZoneFlowGenderInfoByZoneIdResponse(AbstractModel):
         :type MalePercent: float
         :param FemalePercent: 女性占比
         :type FemalePercent: float
-        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.CompanyId = None
@@ -1283,7 +1732,7 @@ class DescribeZoneFlowHourlyByZoneIdResponse(AbstractModel):
         :type ZoneName: str
         :param Data: 各个分时人流量
         :type Data: list of ZoneHourFlow
-        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.CompanyId = None
@@ -1360,7 +1809,7 @@ class DescribeZoneTrafficInfoResponse(AbstractModel):
         :type TotalCount: int
         :param ZoneTrafficInfoSet: 区域客流信息列表
         :type ZoneTrafficInfoSet: list of ZoneTrafficInfo
-        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.CompanyId = None
@@ -1466,7 +1915,7 @@ class ModifyPersonTagInfoResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.RequestId = None
@@ -1666,6 +2115,51 @@ class NetworkLastInfo(AbstractModel):
                 self.Infos.append(obj)
 
 
+class PersonCoordinate(AbstractModel):
+    """轨迹点坐标
+
+    """
+
+    def __init__(self):
+        """
+        :param CADX: CAD图X坐标
+        :type CADX: float
+        :param CADY: CAD图Y坐标
+        :type CADY: float
+        :param CapTime: 抓拍时间点
+        :type CapTime: str
+        :param CapPic: 抓拍图片
+        :type CapPic: str
+        :param MallAreaType: 卖场区域类型
+        :type MallAreaType: int
+        :param PosId: 坐标编号
+        :type PosId: int
+        :param ShopId: 门店编号
+        :type ShopId: int
+        :param Event: 事件
+        :type Event: str
+        """
+        self.CADX = None
+        self.CADY = None
+        self.CapTime = None
+        self.CapPic = None
+        self.MallAreaType = None
+        self.PosId = None
+        self.ShopId = None
+        self.Event = None
+
+
+    def _deserialize(self, params):
+        self.CADX = params.get("CADX")
+        self.CADY = params.get("CADY")
+        self.CapTime = params.get("CapTime")
+        self.CapPic = params.get("CapPic")
+        self.MallAreaType = params.get("MallAreaType")
+        self.PosId = params.get("PosId")
+        self.ShopId = params.get("ShopId")
+        self.Event = params.get("Event")
+
+
 class PersonInfo(AbstractModel):
     """用户信息
 
@@ -1703,6 +2197,47 @@ class PersonInfo(AbstractModel):
         self.PersonPictureUrl = params.get("PersonPictureUrl")
 
 
+class PersonProfile(AbstractModel):
+    """来访客人基本资料
+
+    """
+
+    def __init__(self):
+        """
+        :param PersonId: 客人编码
+        :type PersonId: str
+        :param Gender: 性别
+        :type Gender: int
+        :param Age: 年龄
+        :type Age: int
+        :param FirstArrivedTime: 首次到场时间
+        :type FirstArrivedTime: str
+        :param ArrivedCount: 来访次数
+        :type ArrivedCount: int
+        :param PicUrl: 客户图片
+        :type PicUrl: str
+        :param Similarity: 置信度
+        :type Similarity: float
+        """
+        self.PersonId = None
+        self.Gender = None
+        self.Age = None
+        self.FirstArrivedTime = None
+        self.ArrivedCount = None
+        self.PicUrl = None
+        self.Similarity = None
+
+
+    def _deserialize(self, params):
+        self.PersonId = params.get("PersonId")
+        self.Gender = params.get("Gender")
+        self.Age = params.get("Age")
+        self.FirstArrivedTime = params.get("FirstArrivedTime")
+        self.ArrivedCount = params.get("ArrivedCount")
+        self.PicUrl = params.get("PicUrl")
+        self.Similarity = params.get("Similarity")
+
+
 class PersonTagInfo(AbstractModel):
     """修改顾客属性参数
 
@@ -1726,6 +2261,69 @@ class PersonTagInfo(AbstractModel):
         self.OldType = params.get("OldType")
         self.NewType = params.get("NewType")
         self.PersonId = params.get("PersonId")
+
+
+class PersonTracePoint(AbstractModel):
+    """客户轨迹点
+
+    """
+
+    def __init__(self):
+        """
+        :param MallAreaId: 卖场区域编码
+        :type MallAreaId: int
+        :param ShopId: 门店编码
+        :type ShopId: int
+        :param MallAreaType: 卖场区域类型
+        :type MallAreaType: int
+        :param TraceEventType: 轨迹事件
+        :type TraceEventType: int
+        :param TraceEventTime: 轨迹事件发生时间点
+        :type TraceEventTime: str
+        :param CapPic: 抓拍图片
+        :type CapPic: str
+        """
+        self.MallAreaId = None
+        self.ShopId = None
+        self.MallAreaType = None
+        self.TraceEventType = None
+        self.TraceEventTime = None
+        self.CapPic = None
+
+
+    def _deserialize(self, params):
+        self.MallAreaId = params.get("MallAreaId")
+        self.ShopId = params.get("ShopId")
+        self.MallAreaType = params.get("MallAreaType")
+        self.TraceEventType = params.get("TraceEventType")
+        self.TraceEventTime = params.get("TraceEventTime")
+        self.CapPic = params.get("CapPic")
+
+
+class PersonTraceRoute(AbstractModel):
+    """客户轨迹序列
+
+    """
+
+    def __init__(self):
+        """
+        :param TraceId: 轨迹编码
+        :type TraceId: str
+        :param TracePointSet: 轨迹点序列
+        :type TracePointSet: list of PersonTracePoint
+        """
+        self.TraceId = None
+        self.TracePointSet = None
+
+
+    def _deserialize(self, params):
+        self.TraceId = params.get("TraceId")
+        if params.get("TracePointSet") is not None:
+            self.TracePointSet = []
+            for item in params.get("TracePointSet"):
+                obj = PersonTracePoint()
+                obj._deserialize(item)
+                self.TracePointSet.append(obj)
 
 
 class PersonVisitInfo(AbstractModel):
@@ -1809,7 +2407,7 @@ class RegisterCallbackResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.RequestId = None

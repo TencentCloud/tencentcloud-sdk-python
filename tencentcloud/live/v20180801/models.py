@@ -52,7 +52,265 @@ class AddDelayLiveStreamResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class AddLiveWatermarkRequest(AbstractModel):
+    """AddLiveWatermark请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param PictureUrl: 水印图片url。
+        :type PictureUrl: str
+        :param WatermarkName: 水印名称。
+        :type WatermarkName: str
+        :param XPosition: 显示位置,X轴偏移。
+        :type XPosition: int
+        :param YPosition: 显示位置,Y轴偏移。
+        :type YPosition: int
+        """
+        self.PictureUrl = None
+        self.WatermarkName = None
+        self.XPosition = None
+        self.YPosition = None
+
+
+    def _deserialize(self, params):
+        self.PictureUrl = params.get("PictureUrl")
+        self.WatermarkName = params.get("WatermarkName")
+        self.XPosition = params.get("XPosition")
+        self.YPosition = params.get("YPosition")
+
+
+class AddLiveWatermarkResponse(AbstractModel):
+    """AddLiveWatermark返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param WatermarkId: 水印ID。
+        :type WatermarkId: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.WatermarkId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.WatermarkId = params.get("WatermarkId")
+        self.RequestId = params.get("RequestId")
+
+
+class CreateLiveRecordRequest(AbstractModel):
+    """CreateLiveRecord请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param StreamName: 流名称。
+        :type StreamName: str
+        :param AppName: 直播流所属应用名称。
+        :type AppName: str
+        :param DomainName: 您的加速域名。
+        :type DomainName: str
+        :param StartTime: 任务起始时间，录制视频为精彩视频时，忽略此字段。如 2017-01-01 10:10:01
+        :type StartTime: str
+        :param EndTime: 结束时间，录制视频为精彩视频时，忽略此字段。如 2017-01-01 10:10:01
+        :type EndTime: str
+        :param RecordType: 录制类型。其值为“video”,“audio”，不区分大小写，默认为“video”。
+        :type RecordType: str
+        :param FileFormat: 录制文件格式。其值为“flv”,“hls”,”mp4”,“aac”,”mp3”，不区分大小写，默认为“flv”。
+        :type FileFormat: str
+        :param Highlight: 精彩视频标志。0：普通视频【默认】；1：精彩视频。
+        :type Highlight: int
+        :param MixStream: A+B=C混流标志。0：非A+B=C混流录制【默认】；1：标示为A+B=C混流录制。
+        :type MixStream: int
+        :param StreamParam: 录制流参数，当前支持以下参数： 
+interval 录制分片时长，单位 秒，0 - 7200
+storage_time 录制文件存储时长，单位 秒
+eg. interval=3600&storage_time=7200
+注：参数需要url encode。
+        :type StreamParam: str
+        """
+        self.StreamName = None
+        self.AppName = None
+        self.DomainName = None
+        self.StartTime = None
+        self.EndTime = None
+        self.RecordType = None
+        self.FileFormat = None
+        self.Highlight = None
+        self.MixStream = None
+        self.StreamParam = None
+
+
+    def _deserialize(self, params):
+        self.StreamName = params.get("StreamName")
+        self.AppName = params.get("AppName")
+        self.DomainName = params.get("DomainName")
+        self.StartTime = params.get("StartTime")
+        self.EndTime = params.get("EndTime")
+        self.RecordType = params.get("RecordType")
+        self.FileFormat = params.get("FileFormat")
+        self.Highlight = params.get("Highlight")
+        self.MixStream = params.get("MixStream")
+        self.StreamParam = params.get("StreamParam")
+
+
+class CreateLiveRecordResponse(AbstractModel):
+    """CreateLiveRecord返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param TaskId: 任务ID，全局唯一标识录制任务。
+        :type TaskId: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TaskId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TaskId = params.get("TaskId")
+        self.RequestId = params.get("RequestId")
+
+
+class CreatePullStreamConfigRequest(AbstractModel):
+    """CreatePullStreamConfig请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param FromUrl: 源Url。
+        :type FromUrl: str
+        :param ToUrl: 目的Url。
+        :type ToUrl: str
+        :param AreaId: 区域id,1-深圳,2-上海，3-天津,4-香港。
+        :type AreaId: int
+        :param IspId: 运营商id,1-电信,2-移动,3-联通,4-其他,AreaId为4的时候,IspId只能为其他。
+        :type IspId: int
+        :param StartTime: 开始时间。
+        :type StartTime: str
+        :param EndTime: 结束时间。
+        :type EndTime: str
+        """
+        self.FromUrl = None
+        self.ToUrl = None
+        self.AreaId = None
+        self.IspId = None
+        self.StartTime = None
+        self.EndTime = None
+
+
+    def _deserialize(self, params):
+        self.FromUrl = params.get("FromUrl")
+        self.ToUrl = params.get("ToUrl")
+        self.AreaId = params.get("AreaId")
+        self.IspId = params.get("IspId")
+        self.StartTime = params.get("StartTime")
+        self.EndTime = params.get("EndTime")
+
+
+class CreatePullStreamConfigResponse(AbstractModel):
+    """CreatePullStreamConfig返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ConfigId: 配置成功后的id。
+        :type ConfigId: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.ConfigId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.ConfigId = params.get("ConfigId")
+        self.RequestId = params.get("RequestId")
+
+
+class DeleteLiveRecordRequest(AbstractModel):
+    """DeleteLiveRecord请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param StreamName: 流名称。
+        :type StreamName: str
+        :param TaskId: 任务ID，全局唯一标识录制任务。
+        :type TaskId: int
+        """
+        self.StreamName = None
+        self.TaskId = None
+
+
+    def _deserialize(self, params):
+        self.StreamName = params.get("StreamName")
+        self.TaskId = params.get("TaskId")
+
+
+class DeleteLiveRecordResponse(AbstractModel):
+    """DeleteLiveRecord返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class DeleteLiveWatermarkRequest(AbstractModel):
+    """DeleteLiveWatermark请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param WatermarkId: 水印ID。
+        :type WatermarkId: int
+        """
+        self.WatermarkId = None
+
+
+    def _deserialize(self, params):
+        self.WatermarkId = params.get("WatermarkId")
+
+
+class DeleteLiveWatermarkResponse(AbstractModel):
+    """DeleteLiveWatermark返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.RequestId = None
@@ -113,7 +371,7 @@ class DescribeLiveStreamOnlineInfoResponse(AbstractModel):
         :type TotalPage: int
         :param StreamInfoList: 流信息列表
         :type StreamInfoList: list of StreamInfo
-        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.PageNum = None
@@ -186,7 +444,7 @@ class DescribeLiveStreamOnlineListResponse(AbstractModel):
         :type PageSize: int
         :param OnlineInfo: 正在推送流的信息列表
         :type OnlineInfo: list of StreamOnlineInfo
-        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.TotalNum = None
@@ -222,10 +480,11 @@ class DescribeLiveStreamPublishedListRequest(AbstractModel):
         :type DomainName: str
         :param EndTime: 结束时间。
 UTC 格式，例如：2016-06-30T19:00:00Z。
-EndTime 和 StartTime 之间的间隔不能超过 30 天。
+不超过当前时间。
         :type EndTime: str
         :param StartTime: 起始时间。 
 UTC 格式，例如：2016-06-29T19:00:00Z。
+和当前时间相隔不超过7天。
         :type StartTime: str
         :param AppName: 直播流所属应用名称。
         :type AppName: str
@@ -273,7 +532,7 @@ class DescribeLiveStreamPublishedListResponse(AbstractModel):
         :type TotalNum: int
         :param TotalPage: 总页数。
         :type TotalPage: int
-        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.PublishInfo = None
@@ -332,7 +591,7 @@ class DescribeLiveStreamStateResponse(AbstractModel):
         """
         :param StreamState: 流状态
         :type StreamState: str
-        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.StreamState = None
@@ -341,6 +600,85 @@ class DescribeLiveStreamStateResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.StreamState = params.get("StreamState")
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeLiveWatermarksRequest(AbstractModel):
+    """DescribeLiveWatermarks请求参数结构体
+
+    """
+
+
+class DescribeLiveWatermarksResponse(AbstractModel):
+    """DescribeLiveWatermarks返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param TotalNum: 水印总个数。
+        :type TotalNum: int
+        :param WatermarkList: 水印信息列表。
+        :type WatermarkList: list of WatermarkInfo
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TotalNum = None
+        self.WatermarkList = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalNum = params.get("TotalNum")
+        if params.get("WatermarkList") is not None:
+            self.WatermarkList = []
+            for item in params.get("WatermarkList"):
+                obj = WatermarkInfo()
+                obj._deserialize(item)
+                self.WatermarkList.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribePullStreamConfigsRequest(AbstractModel):
+    """DescribePullStreamConfigs请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ConfigId: 配置id。
+        :type ConfigId: str
+        """
+        self.ConfigId = None
+
+
+    def _deserialize(self, params):
+        self.ConfigId = params.get("ConfigId")
+
+
+class DescribePullStreamConfigsResponse(AbstractModel):
+    """DescribePullStreamConfigs返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param PullStreamConfigs: 拉流配置。
+        :type PullStreamConfigs: list of PullStreamConfig
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.PullStreamConfigs = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("PullStreamConfigs") is not None:
+            self.PullStreamConfigs = []
+            for item in params.get("PullStreamConfigs"):
+                obj = PullStreamConfig()
+                obj._deserialize(item)
+                self.PullStreamConfigs.append(obj)
         self.RequestId = params.get("RequestId")
 
 
@@ -376,7 +714,7 @@ class DropLiveStreamResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.RequestId = None
@@ -424,7 +762,103 @@ class ForbidLiveStreamResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class ModifyPullStreamConfigRequest(AbstractModel):
+    """ModifyPullStreamConfig请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ConfigId: 配置id。
+        :type ConfigId: str
+        :param FromUrl: 源Url。
+        :type FromUrl: str
+        :param ToUrl: 目的Url。
+        :type ToUrl: str
+        :param AreaId: 区域id,1-深圳,2-上海，3-天津,4-香港。如有改动，需同时传入IspId。
+        :type AreaId: int
+        :param IspId: 运营商id,1-电信,2-移动,3-联通,4-其他,AreaId为4的时候,IspId只能为其他。如有改动，需同时传入AreaId。
+        :type IspId: int
+        :param StartTime: 开始时间。
+        :type StartTime: str
+        :param EndTime: 结束时间。
+        :type EndTime: str
+        """
+        self.ConfigId = None
+        self.FromUrl = None
+        self.ToUrl = None
+        self.AreaId = None
+        self.IspId = None
+        self.StartTime = None
+        self.EndTime = None
+
+
+    def _deserialize(self, params):
+        self.ConfigId = params.get("ConfigId")
+        self.FromUrl = params.get("FromUrl")
+        self.ToUrl = params.get("ToUrl")
+        self.AreaId = params.get("AreaId")
+        self.IspId = params.get("IspId")
+        self.StartTime = params.get("StartTime")
+        self.EndTime = params.get("EndTime")
+
+
+class ModifyPullStreamConfigResponse(AbstractModel):
+    """ModifyPullStreamConfig返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class ModifyPullStreamStatusRequest(AbstractModel):
+    """ModifyPullStreamStatus请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ConfigIds: 配置id列表。
+        :type ConfigIds: list of str
+        :param Status: 目标状态。0无效，2正在运行，4暂停。
+        :type Status: str
+        """
+        self.ConfigIds = None
+        self.Status = None
+
+
+    def _deserialize(self, params):
+        self.ConfigIds = params.get("ConfigIds")
+        self.Status = params.get("Status")
+
+
+class ModifyPullStreamStatusResponse(AbstractModel):
+    """ModifyPullStreamStatus返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.RequestId = None
@@ -450,6 +884,51 @@ UTC 格式，例如：2018-06-29T19:00:00Z。
 
     def _deserialize(self, params):
         self.PublishTime = params.get("PublishTime")
+
+
+class PullStreamConfig(AbstractModel):
+    """拉流配置
+
+    """
+
+    def __init__(self):
+        """
+        :param ConfigId: 拉流配置Id。
+        :type ConfigId: str
+        :param FromUrl: 源Url。
+        :type FromUrl: str
+        :param ToUrl: 目的Url。
+        :type ToUrl: str
+        :param AreaName: 区域名。
+        :type AreaName: str
+        :param IspName: 运营商名。
+        :type IspName: str
+        :param StartTime: 开始时间。
+        :type StartTime: str
+        :param EndTime: 结束时间。
+        :type EndTime: str
+        :param Status: 0无效，1初始状态，2正在运行，3拉起失败，4暂停。
+        :type Status: str
+        """
+        self.ConfigId = None
+        self.FromUrl = None
+        self.ToUrl = None
+        self.AreaName = None
+        self.IspName = None
+        self.StartTime = None
+        self.EndTime = None
+        self.Status = None
+
+
+    def _deserialize(self, params):
+        self.ConfigId = params.get("ConfigId")
+        self.FromUrl = params.get("FromUrl")
+        self.ToUrl = params.get("ToUrl")
+        self.AreaName = params.get("AreaName")
+        self.IspName = params.get("IspName")
+        self.StartTime = params.get("StartTime")
+        self.EndTime = params.get("EndTime")
+        self.Status = params.get("Status")
 
 
 class ResumeDelayLiveStreamRequest(AbstractModel):
@@ -484,7 +963,7 @@ class ResumeDelayLiveStreamResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.RequestId = None
@@ -526,7 +1005,83 @@ class ResumeLiveStreamResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class SetLiveWatermarkStatusRequest(AbstractModel):
+    """SetLiveWatermarkStatus请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param WatermarkId: 水印ID。
+        :type WatermarkId: int
+        :param Status: 状态。0：停用，1:启用
+        :type Status: int
+        """
+        self.WatermarkId = None
+        self.Status = None
+
+
+    def _deserialize(self, params):
+        self.WatermarkId = params.get("WatermarkId")
+        self.Status = params.get("Status")
+
+
+class SetLiveWatermarkStatusResponse(AbstractModel):
+    """SetLiveWatermarkStatus返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class StopLiveRecordRequest(AbstractModel):
+    """StopLiveRecord请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param StreamName: 流名称。
+        :type StreamName: str
+        :param TaskId: 任务ID，全局唯一标识录制任务。
+        :type TaskId: int
+        """
+        self.StreamName = None
+        self.TaskId = None
+
+
+    def _deserialize(self, params):
+        self.StreamName = params.get("StreamName")
+        self.TaskId = params.get("TaskId")
+
+
+class StopLiveRecordResponse(AbstractModel):
+    """StopLiveRecord返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.RequestId = None
@@ -618,3 +1173,94 @@ class StreamOnlineInfo(AbstractModel):
                 obj = PublishTime()
                 obj._deserialize(item)
                 self.PublishTimeList.append(obj)
+
+
+class UpdateLiveWatermarkRequest(AbstractModel):
+    """UpdateLiveWatermark请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param WatermarkId: 水印ID。
+        :type WatermarkId: int
+        :param PictureUrl: 水印图片url。
+        :type PictureUrl: str
+        :param XPosition: 显示位置，X轴偏移。
+        :type XPosition: int
+        :param YPosition: 显示位置，Y轴偏移。
+        :type YPosition: int
+        :param WatermarkName: 水印名称。
+        :type WatermarkName: str
+        """
+        self.WatermarkId = None
+        self.PictureUrl = None
+        self.XPosition = None
+        self.YPosition = None
+        self.WatermarkName = None
+
+
+    def _deserialize(self, params):
+        self.WatermarkId = params.get("WatermarkId")
+        self.PictureUrl = params.get("PictureUrl")
+        self.XPosition = params.get("XPosition")
+        self.YPosition = params.get("YPosition")
+        self.WatermarkName = params.get("WatermarkName")
+
+
+class UpdateLiveWatermarkResponse(AbstractModel):
+    """UpdateLiveWatermark返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class WatermarkInfo(AbstractModel):
+    """水印信息
+
+    """
+
+    def __init__(self):
+        """
+        :param WatermarkId: 水印ID。
+        :type WatermarkId: int
+        :param PictureUrl: 水印图片url。
+        :type PictureUrl: str
+        :param XPosition: 显示位置，X轴偏移。
+        :type XPosition: int
+        :param YPosition: 显示位置，Y轴偏移。
+        :type YPosition: int
+        :param WatermarkName: 水印名称。
+        :type WatermarkName: str
+        :param Status: 当前状态。0：未使用，1:使用中。
+        :type Status: int
+        :param CreateTime: 添加时间。
+        :type CreateTime: str
+        """
+        self.WatermarkId = None
+        self.PictureUrl = None
+        self.XPosition = None
+        self.YPosition = None
+        self.WatermarkName = None
+        self.Status = None
+        self.CreateTime = None
+
+
+    def _deserialize(self, params):
+        self.WatermarkId = params.get("WatermarkId")
+        self.PictureUrl = params.get("PictureUrl")
+        self.XPosition = params.get("XPosition")
+        self.YPosition = params.get("YPosition")
+        self.WatermarkName = params.get("WatermarkName")
+        self.Status = params.get("Status")
+        self.CreateTime = params.get("CreateTime")
