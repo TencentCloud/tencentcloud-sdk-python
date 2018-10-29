@@ -25,7 +25,7 @@ class InitOralProcessRequest(AbstractModel):
         """
         :param SessionId: 语音段唯一标识，一段语音一个SessionId
         :type SessionId: str
-        :param RefText: 被评估语音对应的文本
+        :param RefText: 被评估语音对应的文本，不支持ascii大于128以上的字符，会统一替换成空格。
         :type RefText: str
         :param WorkMode: 语音输入模式，0流式分片，1非流式一次性评估
         :type WorkMode: int
@@ -33,12 +33,18 @@ class InitOralProcessRequest(AbstractModel):
         :type EvalMode: int
         :param ScoreCoeff: 评价苛刻指数，取值为[1.0 - 4.0]范围内的浮点数，用于平滑不同年龄段的分数，1.0为小年龄段，4.0为最高年龄段
         :type ScoreCoeff: float
+        :param SoeAppId: 业务应用ID，与账号应用APPID无关，是用来方便客户管理服务的参数，需要结合[控制台](https://console.cloud.tencent.com/soe)使用。
+        :type SoeAppId: str
+        :param IsLongLifeSession: 长效session标识，当该参数为1时，session的持续时间为300s，但会一定程度上影响第一个数据包的返回速度，且TransmitOralProcess必须同时为1才可生效。
+        :type IsLongLifeSession: int
         """
         self.SessionId = None
         self.RefText = None
         self.WorkMode = None
         self.EvalMode = None
         self.ScoreCoeff = None
+        self.SoeAppId = None
+        self.IsLongLifeSession = None
 
 
     def _deserialize(self, params):
@@ -47,6 +53,8 @@ class InitOralProcessRequest(AbstractModel):
         self.WorkMode = params.get("WorkMode")
         self.EvalMode = params.get("EvalMode")
         self.ScoreCoeff = params.get("ScoreCoeff")
+        self.SoeAppId = params.get("SoeAppId")
+        self.IsLongLifeSession = params.get("IsLongLifeSession")
 
 
 class InitOralProcessResponse(AbstractModel):
@@ -56,13 +64,17 @@ class InitOralProcessResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :param SessionId: 语音段唯一标识，一个完整语音一个SessionId
+        :type SessionId: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
+        self.SessionId = None
         self.RequestId = None
 
 
     def _deserialize(self, params):
+        self.SessionId = params.get("SessionId")
         self.RequestId = params.get("RequestId")
 
 
@@ -110,20 +122,22 @@ class TransmitOralProcessRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param SeqId: 流式数据包的序号，从1开始，当IsEnd字段为1后后续序号无意义，非流式模式下无意义
+        :param SeqId: 流式数据包的序号，从1开始，当IsEnd字段为1后后续序号无意义，当IsLongLifeSession不为1时切为非流式模式时无意义。
         :type SeqId: int
-        :param IsEnd: 是否传输完毕标志，若为0表示未完毕，若为1则传输完毕开始评估，非流式模式下无意义
+        :param IsEnd: 是否传输完毕标志，若为0表示未完毕，若为1则传输完毕开始评估，非流式模式下无意义。
         :type IsEnd: int
-        :param VoiceFileType: 语音文件类型 	1:raw, 2:wav, 3:mp3(mp3格式目前仅支持16k采样率16bit编码单声道)
+        :param VoiceFileType: 语音文件类型 	1:raw, 2:wav, 3:mp3(三种格式目前仅支持16k采样率16bit编码单声道，如有不一致可能导致评估不准确或失败)。
         :type VoiceFileType: int
-        :param VoiceEncodeType: 语音编码类型	1:pcm
+        :param VoiceEncodeType: 语音编码类型	1:pcm。
         :type VoiceEncodeType: int
         :param UserVoiceData: 当前数据包数据, 流式模式下数据包大小可以按需设置，数据包大小必须 >= 4K，编码格式要求为BASE64。
         :type UserVoiceData: str
-        :param SessionId: 语音段唯一标识，一个完整语音一个SessionId
+        :param SessionId: 语音段唯一标识，一个完整语音一个SessionId。
         :type SessionId: str
         :param SoeAppId: 业务应用ID，与账号应用APPID无关，是用来方便客户管理服务的参数，需要结合[控制台](https://console.cloud.tencent.com/soe)使用。
         :type SoeAppId: str
+        :param IsLongLifeSession: 长效session标识，当该参数为1时，session的持续时间为300s，但会一定程度上影响第一个数据包的返回速度。当InitOralProcess接口调用时此项为1时，此项必填1才可生效。
+        :type IsLongLifeSession: int
         """
         self.SeqId = None
         self.IsEnd = None
@@ -132,6 +146,7 @@ class TransmitOralProcessRequest(AbstractModel):
         self.UserVoiceData = None
         self.SessionId = None
         self.SoeAppId = None
+        self.IsLongLifeSession = None
 
 
     def _deserialize(self, params):
@@ -142,6 +157,7 @@ class TransmitOralProcessRequest(AbstractModel):
         self.UserVoiceData = params.get("UserVoiceData")
         self.SessionId = params.get("SessionId")
         self.SoeAppId = params.get("SoeAppId")
+        self.IsLongLifeSession = params.get("IsLongLifeSession")
 
 
 class TransmitOralProcessResponse(AbstractModel):
@@ -159,13 +175,16 @@ class TransmitOralProcessResponse(AbstractModel):
         :type PronCompletion: float
         :param Words: 详细发音评估结果
         :type Words: list of WordRsp
-        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :param SessionId: 语音段唯一标识，一段语音一个SessionId
+        :type SessionId: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.PronAccuracy = None
         self.PronFluency = None
         self.PronCompletion = None
         self.Words = None
+        self.SessionId = None
         self.RequestId = None
 
 
@@ -179,6 +198,7 @@ class TransmitOralProcessResponse(AbstractModel):
                 obj = WordRsp()
                 obj._deserialize(item)
                 self.Words.append(obj)
+        self.SessionId = params.get("SessionId")
         self.RequestId = params.get("RequestId")
 
 
