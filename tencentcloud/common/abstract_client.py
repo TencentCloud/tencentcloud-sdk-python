@@ -21,6 +21,7 @@ import json
 import random
 import sys
 import time
+import uuid
 import warnings
 
 try:
@@ -65,13 +66,6 @@ class AbstractClient(object):
         # self.requestHost = '.'.join((self._service_name, self.profile.httpProfile.endpoint))
         # self.apiRequest = ApiRequest(self.requestHost, req_timeout=self.profile.httpProfile.reqTimeout)
         # self.token = self.credential.token or ''
-
-    def _build_header(self, req):
-        # 目前不需要支持Keep-Alive特性
-        # if self.apiRequest.is_keep_alive():
-        #    req.header["Connection"] = "Keep-Alive"
-        if req.method == 'POST':
-            req.header["Content-Type"] = "application/x-www-form-urlencoded"
 
     def _fix_params(self, params):
         if not isinstance(params, (dict,)):
@@ -141,21 +135,23 @@ class AbstractClient(object):
                                         str(self.profile.signMethod))
 
         req.data = urlencode(params)
-        self._build_header(req)
+        req.header["Content-Type"] = "application/x-www-form-urlencoded"
 
     def _build_req_with_tc3_signature(self, action, params, req):
         content_type = self._default_content_type
         if req.method == 'GET':
-            contentT_type = _form_urlencoded_content
+            content_type = _form_urlencoded_content
         elif req.method == 'POST':
-            content_type = 'application/json'
+            content_type = _json_content
+            if req.header.get("Content-Type") == _multipart_content:
+                content_type = _multipart_content
+        req.header["Content-Type"] = content_type
 
         endpoint = self._get_endpoint()
         service = endpoint.split('.')[0]
         timestamp = int(time.time())
         date = datetime.utcfromtimestamp(timestamp).strftime('%Y-%m-%d')
 
-        req.header["Content-Type"] = content_type
         req.header["Host"] = endpoint
         req.header["X-TC-Action"] = action[0].upper() + action[1:]
         req.header["X-TC-RequestClient"] = self._sdkVersion
@@ -190,7 +186,7 @@ class AbstractClient(object):
             if ct == _json_content:
                 req.data = json.dumps(params)
             elif ct == _multipart_content:
-                boundary = self._gen_bounary()
+                boundary = uuid.uuid4().hex
                 req.header["Content-Type"] = ct + "; boundary=" + boundary
                 req.data = self._get_multipart_body(params, boundary)
             else:
@@ -251,10 +247,13 @@ class AbstractClient(object):
             endpoint = self._endpoint
         return endpoint
 
-    def call(self, action, params):
+    def call(self, action, params, headers=None):
         endpoint = self._get_endpoint()
 
-        req_inter = RequestInternal(endpoint, self.profile.httpProfile.reqMethod, self._requestPath)
+        req_inter = RequestInternal(endpoint,
+                                    self.profile.httpProfile.reqMethod,
+                                    self._requestPath,
+                                    header=headers)
         self._build_req_inter(action, params, req_inter)
 
         apiRequest = ApiRequest(self._get_endpoint(), self.profile.httpProfile.reqTimeout)

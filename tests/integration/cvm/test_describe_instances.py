@@ -1,3 +1,4 @@
+# -*- coding: utf8 -*-
 import os
 
 from tencentcloud.common import credential
@@ -20,10 +21,13 @@ def _test_describe_instances(http_method, sign_method, unsigned_payload=False):
 
     client = cvm_client.CvmClient(cred, "ap-guangzhou", clientProfile)
     req = models.DescribeInstancesRequest()
-    respFilter = models.Filter()
-    respFilter.Name = "zone"
-    respFilter.Values = ["ap-guangzhou-1", "ap-guangzhou-2"]
-    req.Filters = [respFilter]
+    fzone = models.Filter()
+    fzone.Name = "zone"
+    fzone.Values = ["ap-guangzhou-1", "ap-guangzhou-2"]
+    fname = models.Filter()
+    fname.Name = "instance-name"
+    fname.Values = [u"中文", u"测试"]
+    req.Filters = [fzone, fname]
     resp = client.DescribeInstances(req)
     assert resp.TotalCount >= 0
 
