@@ -31,3 +31,18 @@ class Sign(object):
             base64 = base64.decode()
 
         return base64
+
+    @staticmethod
+    def sign_tc3(secret_key, date, service, str2sign):
+        def _hmac_sha256(key, msg):
+            return hmac.new(key, msg.encode('utf-8'), hashlib.sha256)
+
+        def _get_signature_key(key, date, service):
+            k_date = _hmac_sha256(('TC3' + key).encode('utf-8'), date)
+            k_service  = _hmac_sha256(k_date.digest(), service)
+            k_signing = _hmac_sha256(k_service.digest(), 'tc3_request')
+            return k_signing.digest()
+
+        signing_key = _get_signature_key(secret_key, date, service)
+        signature = _hmac_sha256(signing_key, str2sign).hexdigest()
+        return signature

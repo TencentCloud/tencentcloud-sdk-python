@@ -15,6 +15,9 @@
 # limitations under the License.
 
 import copy
+from datetime import datetime
+import hashlib
+import json
 import random
 import sys
 import time
@@ -34,6 +37,9 @@ from tencentcloud.common.sign import Sign
 
 warnings.filterwarnings("ignore")
 
+_json_content = 'application/json'
+_multipart_content = 'multipart/form-data'
+_form_urlencoded_content = 'application/x-www-form-urlencoded'
 
 class AbstractClient(object):
     _requestPath = '/'
@@ -41,6 +47,7 @@ class AbstractClient(object):
     _apiVersion = ''
     _endpoint = ''
     _sdkVersion = 'SDK_PYTHON_%s' % tencentcloud.__version__
+    _default_content_type = _form_urlencoded_content
 
     def __init__(self, credential, region, profile=None):
         if credential is None:
@@ -48,7 +55,6 @@ class AbstractClient(object):
                 "InvalidCredential", "Credential is None or invalid")
         self.credential = credential
         self.region = region
-        self.profile = profile
         self.profile = ClientProfile() if profile is None else profile
 
         # self.secretId = self.credential.secretId
@@ -102,6 +108,14 @@ class AbstractClient(object):
         raise TencentCloudSDKException("ClientParamsError", "some params type error")
 
     def _build_req_inter(self, action, params, req_inter):
+        if self.profile.signMethod in ("HmacSHA1", "HmacSHA256"):
+            self._build_req_with_old_signature(action, params, req_inter)
+        elif self.profile.signMethod == "TC3-HMAC-SHA256":
+            self._build_req_with_tc3_signature(action, params, req_inter)
+        else:
+            raise TencentCloudSDKException("ClientError", "Invalid signature method.")
+
+    def _build_req_with_old_signature(self, action, params, req):
         params = copy.deepcopy(self._fix_params(params))
         params['Action'] = action[0].upper() + action[1:]
         params['RequestClient'] = self._sdkVersion
@@ -122,11 +136,102 @@ class AbstractClient(object):
             params['SignatureMethod'] = self.profile.signMethod
 
         signInParam = self._format_sign_string(params)
-        params['Signature'] = Sign.sign(str(self.credential.secretKey), str(signInParam), str(self.profile.signMethod))
+        params['Signature'] = Sign.sign(str(self.credential.secretKey),
+                                        str(signInParam),
+                                        str(self.profile.signMethod))
 
-        req_inter.data = urlencode(params)
+        req.data = urlencode(params)
+        self._build_header(req)
 
-        self._build_header(req_inter)
+    def _build_req_with_tc3_signature(self, action, params, req):
+        content_type = self._default_content_type
+        if req.method == 'GET':
+            contentT_type = _form_urlencoded_content
+        elif req.method == 'POST':
+            content_type = 'application/json'
+
+        endpoint = self._get_endpoint()
+        service = endpoint.split('.')[0]
+        timestamp = int(time.time())
+        date = datetime.utcfromtimestamp(timestamp).strftime('%Y-%m-%d')
+
+        req.header["Content-Type"] = content_type
+        req.header["Host"] = endpoint
+        req.header["X-TC-Action"] = action[0].upper() + action[1:]
+        req.header["X-TC-RequestClient"] = self._sdkVersion
+        req.header["X-TC-Nonce"] = random.randint(1, sys.maxsize)
+        req.header["X-TC-Timestamp"] = timestamp
+        req.header["X-TC-Version"] = self._apiVersion
+        if self.profile.unsignedPayload is True:
+            req.header["X-TC-Content-SHA256"] = "UNSIGNED-PAYLOAD"
+        if self.region:
+            req.header['X-TC-Region'] = self.region
+        if self.credential.token:
+            req.header['X-TC-Token'] = self.credential.token
+
+        signature = self._get_tc3_signature(params, req, date, service)
+
+        auth = "TC3-HMAC-SHA256"
+        auth += " Credential=%s/%s/%s/tc3_request" % (self.credential.secretId, date, service)
+        auth += ", SignedHeaders=content-type;host, Signature=%s" % signature
+        req.header["Authorization"] = auth
+
+    def _get_tc3_signature(self, params, req, date, service):
+        canonical_uri = req.uri
+        canonical_querystring = ''
+
+        if req.method == 'GET':
+            params = copy.deepcopy(self._fix_params(params))
+            req.data = urlencode(params)
+            canonical_querystring = req.data
+            payload_hash = hashlib.sha256(''.encode('utf-8')).hexdigest()
+        else:
+            ct = req.header["Content-Type"]
+            if ct == _json_content:
+                req.data = json.dumps(params)
+            elif ct == _multipart_content:
+                boundary = self._gen_bounary()
+                req.header["Content-Type"] = ct + "; boundary=" + boundary
+                req.data = self._get_multipart_body(params, boundary)
+            else:
+                raise Exception("Unsupported content type: %s" % ct)
+            payload_hash = hashlib.sha256(req.data.encode('utf-8')).hexdigest()
+        if req.header.get("X-TC-Content-SHA256") == "UNSIGNED-PAYLOAD":
+            payload_hash = hashlib.sha256("UNSIGNED-PAYLOAD".encode('utf-8')).hexdigest()
+
+        canonical_headers = 'content-type:%s\nhost:%s\n' % (
+            req.header["Content-Type"], req.header["Host"])
+        signed_headers = 'content-type;host'
+        canonical_request = '%s\n%s\n%s\n%s\n%s\n%s' % (req.method,
+                                                        canonical_uri,
+                                                        canonical_querystring,
+                                                        canonical_headers,
+                                                        signed_headers,
+                                                        payload_hash)
+
+        algorithm = 'TC3-HMAC-SHA256'
+        credential_scope = date + '/' + service + '/tc3_request'
+        digest = hashlib.sha256(canonical_request.encode('utf-8')).hexdigest()
+        string2sign = '%s\n%s\n%s\n%s' % (algorithm,
+                                          req.header["X-TC-Timestamp"],
+                                          credential_scope,
+                                          digest)
+
+        signature = Sign.sign_tc3(self.credential.secretKey, date, service, string2sign)
+        return signature
+
+    def _get_multipart_body(self, params, boundary):
+        body = ''
+        for k, v in params.items():
+            body += '--%s\r\n' % boundary
+            body += 'Content-Disposition: form-data; name="%s"\r\n' % k
+            if isinstance(v, list) or isinstance(v, dict):
+                v = json.dumps(v)
+                body += 'Content-Type: application/json\r\n'
+            body += '\r\n%s\r\n' % v
+        if body != '':
+            body += '--%s--\r\n' % boundary
+        return body
 
     def _check_status(self, resp_inter):
         if resp_inter.status != 200:

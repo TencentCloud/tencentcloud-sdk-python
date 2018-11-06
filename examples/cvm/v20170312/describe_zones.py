@@ -1,15 +1,26 @@
 # -*- coding: utf-8 -*-
+import os
 
 from tencentcloud.common import credential
+from tencentcloud.common.profile import client_profile
+from tencentcloud.common.profile import http_profile
 from tencentcloud.common.exception.tencent_cloud_sdk_exception import TencentCloudSDKException
 # 导入对应产品模块的client models。
 from tencentcloud.cvm.v20170312 import cvm_client, models
 try:
     # 实例化一个认证对象，入参需要传入腾讯云账户secretId，secretKey
-    cred = credential.Credential("secretId", "secretKey")
+    cred = credential.Credential(
+        os.environ.get("TENCENTCLOUD_SECRET_ID"),
+        os.environ.get("TENCENTCLOUD_SECRET_KEY"))
 
+    # 实例化一个client选项，可选的，没有特殊需求可以跳过。
+    hp = http_profile.HttpProfile()
+    hp.reqMethod = "POST"
+    cp = client_profile.ClientProfile()
+    cp.signMethod = "TC3-HMAC-SHA256"
+    cp.httpProfile = hp
     # 实例化要请求产品(以cvm为例)的client对象
-    client = cvm_client.CvmClient(cred, "ap-shanghai")
+    client = cvm_client.CvmClient(cred, "ap-guangzhou", cp)
 
     # 实例化一个请求对象
     req = models.DescribeZonesRequest()

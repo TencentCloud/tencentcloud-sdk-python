@@ -15,6 +15,8 @@ from tencentcloud.common.profile.http_profile import HttpProfile
 
 
 class ClientProfile(object):
+    unsignedPayload = False
+
     def __init__(self, signMethod="HmacSHA256", httpProfile=None):
         """SDK profile.
 
