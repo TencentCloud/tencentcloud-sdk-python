@@ -81,6 +81,62 @@ class BmClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def CreateSpotDevice(self, request):
+        """创建黑石竞价实例
+
+        :param request: 调用CreateSpotDevice所需参数的结构体。
+        :type request: :class:`tencentcloud.bm.v20180423.models.CreateSpotDeviceRequest`
+        :rtype: :class:`tencentcloud.bm.v20180423.models.CreateSpotDeviceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("CreateSpotDevice", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateSpotDeviceResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise e
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def CreateUserCmd(self, request):
+        """创建自定义脚本
+
+        :param request: 调用CreateUserCmd所需参数的结构体。
+        :type request: :class:`tencentcloud.bm.v20180423.models.CreateUserCmdRequest`
+        :rtype: :class:`tencentcloud.bm.v20180423.models.CreateUserCmdResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("CreateUserCmd", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateUserCmdResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise e
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DeletePsaRegulation(self, request):
         """删除预授权规则
 
@@ -95,6 +151,34 @@ class BmClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeletePsaRegulationResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise e
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeDevices(self, request):
+        """查询物理服务器，可以按照实例，业务IP等过滤
+
+        :param request: 调用DescribeDevices所需参数的结构体。
+        :type request: :class:`tencentcloud.bm.v20180423.models.DescribeDevicesRequest`
+        :rtype: :class:`tencentcloud.bm.v20180423.models.DescribeDevicesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeDevices", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeDevicesResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

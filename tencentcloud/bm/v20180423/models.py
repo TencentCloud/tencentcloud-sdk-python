@@ -108,6 +108,126 @@ class CreatePsaRegulationResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class CreateSpotDeviceRequest(AbstractModel):
+    """CreateSpotDevice请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Zone: 可用区名称。如ap-guangzhou-bls-1, 通过DescribeRegions获取
+        :type Zone: str
+        :param ComputeType: 计算单元类型
+        :type ComputeType: str
+        :param OsTypeId: 操作系统类型ID
+        :type OsTypeId: int
+        :param VpcId: 私有网络ID
+        :type VpcId: str
+        :param SubnetId: 子网ID
+        :type SubnetId: str
+        :param GoodsNum: 购买的计算单元个数
+        :type GoodsNum: int
+        :param SpotStrategy: 出价策略。可取值为SpotWithPriceLimit和SpotAsPriceGo。SpotWithPriceLimit，用户设置价格上限，需要传SpotPriceLimit参数， 如果市场价高于用户的指定价格，则购买不成功;  SpotAsPriceGo 是随市场价的策略。
+        :type SpotStrategy: str
+        :param SpotPriceLimit: 用户设置的价格。当为SpotWithPriceLimit竞价策略时有效
+        :type SpotPriceLimit: float
+        :param Passwd: 设置竞价实例密码。可选参数，没有指定会生成随机密码
+        :type Passwd: str
+        """
+        self.Zone = None
+        self.ComputeType = None
+        self.OsTypeId = None
+        self.VpcId = None
+        self.SubnetId = None
+        self.GoodsNum = None
+        self.SpotStrategy = None
+        self.SpotPriceLimit = None
+        self.Passwd = None
+
+
+    def _deserialize(self, params):
+        self.Zone = params.get("Zone")
+        self.ComputeType = params.get("ComputeType")
+        self.OsTypeId = params.get("OsTypeId")
+        self.VpcId = params.get("VpcId")
+        self.SubnetId = params.get("SubnetId")
+        self.GoodsNum = params.get("GoodsNum")
+        self.SpotStrategy = params.get("SpotStrategy")
+        self.SpotPriceLimit = params.get("SpotPriceLimit")
+        self.Passwd = params.get("Passwd")
+
+
+class CreateSpotDeviceResponse(AbstractModel):
+    """CreateSpotDevice返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ResourceIds: 创建的服务器ID
+        :type ResourceIds: list of str
+        :param FlowId: 任务ID
+        :type FlowId: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.ResourceIds = None
+        self.FlowId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.ResourceIds = params.get("ResourceIds")
+        self.FlowId = params.get("FlowId")
+        self.RequestId = params.get("RequestId")
+
+
+class CreateUserCmdRequest(AbstractModel):
+    """CreateUserCmd请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Alias: 用户自定义脚本的名称
+        :type Alias: str
+        :param OsType: 命令适用的操作系统类型，取值linux或xserver
+        :type OsType: str
+        :param Content: 脚本内容，必须经过base64编码
+        :type Content: str
+        """
+        self.Alias = None
+        self.OsType = None
+        self.Content = None
+
+
+    def _deserialize(self, params):
+        self.Alias = params.get("Alias")
+        self.OsType = params.get("OsType")
+        self.Content = params.get("Content")
+
+
+class CreateUserCmdResponse(AbstractModel):
+    """CreateUserCmd返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param CmdId: 脚本ID
+        :type CmdId: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.CmdId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.CmdId = params.get("CmdId")
+        self.RequestId = params.get("RequestId")
+
+
 class DeletePsaRegulationRequest(AbstractModel):
     """DeletePsaRegulation请求参数结构体
 
@@ -139,6 +259,126 @@ class DeletePsaRegulationResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeDevicesRequest(AbstractModel):
+    """DescribeDevices请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Offset: 偏移量
+        :type Offset: int
+        :param Limit: 返回数量
+        :type Limit: int
+        :param DeviceClassCode: 机型ID，通过接口[查询设备型号(DescribeDeviceClass)](https://cloud.tencent.com/document/api/386/17602)查询
+        :type DeviceClassCode: str
+        :param InstanceIds: 设备ID数组
+        :type InstanceIds: list of str
+        :param WanIps: 外网IP数组
+        :type WanIps: list of str
+        :param LanIps: 内网IP数组
+        :type LanIps: list of str
+        :param Alias: 设备名称
+        :type Alias: str
+        :param VagueIp: 模糊IP查询
+        :type VagueIp: str
+        :param DeadlineStartTime: 设备到期时间查询的起始时间
+        :type DeadlineStartTime: str
+        :param DeadlineEndTime: 设备到期时间查询的结束时间
+        :type DeadlineEndTime: str
+        :param AutoRenewFlag: 自动续费标志 0:不自动续费，1:自动续费
+        :type AutoRenewFlag: int
+        :param VpcId: 私有网络唯一ID
+        :type VpcId: str
+        :param SubnetId: 子网唯一ID
+        :type SubnetId: str
+        :param Tags: 标签列表
+        :type Tags: list of Tag
+        :param DeviceType: 设备类型，取值有: compute(计算型), standard(标准型), storage(存储型) 等
+        :type DeviceType: str
+        :param IsLuckyDevice: 竞价实例机器的过滤。如果未指定此参数，则不做过滤。0: 查询非竞价实例的机器; 1: 查询竞价实例的机器。
+        :type IsLuckyDevice: int
+        :param OrderField: 排序字段
+        :type OrderField: str
+        :param Order: 排序方式，取值：0:增序(默认)，1:降序
+        :type Order: int
+        """
+        self.Offset = None
+        self.Limit = None
+        self.DeviceClassCode = None
+        self.InstanceIds = None
+        self.WanIps = None
+        self.LanIps = None
+        self.Alias = None
+        self.VagueIp = None
+        self.DeadlineStartTime = None
+        self.DeadlineEndTime = None
+        self.AutoRenewFlag = None
+        self.VpcId = None
+        self.SubnetId = None
+        self.Tags = None
+        self.DeviceType = None
+        self.IsLuckyDevice = None
+        self.OrderField = None
+        self.Order = None
+
+
+    def _deserialize(self, params):
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+        self.DeviceClassCode = params.get("DeviceClassCode")
+        self.InstanceIds = params.get("InstanceIds")
+        self.WanIps = params.get("WanIps")
+        self.LanIps = params.get("LanIps")
+        self.Alias = params.get("Alias")
+        self.VagueIp = params.get("VagueIp")
+        self.DeadlineStartTime = params.get("DeadlineStartTime")
+        self.DeadlineEndTime = params.get("DeadlineEndTime")
+        self.AutoRenewFlag = params.get("AutoRenewFlag")
+        self.VpcId = params.get("VpcId")
+        self.SubnetId = params.get("SubnetId")
+        if params.get("Tags") is not None:
+            self.Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self.Tags.append(obj)
+        self.DeviceType = params.get("DeviceType")
+        self.IsLuckyDevice = params.get("IsLuckyDevice")
+        self.OrderField = params.get("OrderField")
+        self.Order = params.get("Order")
+
+
+class DescribeDevicesResponse(AbstractModel):
+    """DescribeDevices返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param TotalCount: 返回数量
+        :type TotalCount: int
+        :param DeviceInfoSet: 物理机信息列表
+        :type DeviceInfoSet: list of DeviceInfo
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.DeviceInfoSet = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("DeviceInfoSet") is not None:
+            self.DeviceInfoSet = []
+            for item in params.get("DeviceInfoSet"):
+                obj = DeviceInfo()
+                obj._deserialize(item)
+                self.DeviceInfoSet.append(obj)
         self.RequestId = params.get("RequestId")
 
 
@@ -390,6 +630,120 @@ class DescribeTaskOperationLogResponse(AbstractModel):
                 self.TaskOperationLogSet.append(obj)
         self.TotalCount = params.get("TotalCount")
         self.RequestId = params.get("RequestId")
+
+
+class DeviceInfo(AbstractModel):
+    """物理机信息
+
+    """
+
+    def __init__(self):
+        """
+        :param InstanceId: 设备唯一ID
+        :type InstanceId: str
+        :param VpcId: 私有网络ID
+        :type VpcId: str
+        :param SubnetId: 子网ID
+        :type SubnetId: str
+        :param DeviceStatus: 设备状态ID
+        :type DeviceStatus: int
+        :param OperateStatus: 设备操作状态
+        :type OperateStatus: int
+        :param OsTypeId: 操作系统ID
+        :type OsTypeId: int
+        :param RaidId: RAID类型ID
+        :type RaidId: int
+        :param Alias: 设备别名
+        :type Alias: str
+        :param AppId: AppId
+        :type AppId: int
+        :param Zone: 可用区
+        :type Zone: str
+        :param WanIp: 外网IP
+        :type WanIp: str
+        :param LanIp: 内网IP
+        :type LanIp: str
+        :param DeliverTime: 设备交付时间
+        :type DeliverTime: str
+        :param Deadline: 设备到期时间
+        :type Deadline: str
+        :param AutoRenewFlag: 自动续费标识。0: 不自动续费; 1:自动续费
+        :type AutoRenewFlag: int
+        :param DeviceClassCode: 设备类型
+        :type DeviceClassCode: str
+        :param Tags: 标签列表
+        :type Tags: list of Tag
+        :param CpmPayMode: 计费模式。1: 预付费; 2: 后付费; 3:预付费转后付费中
+        :type CpmPayMode: int
+        :param DhcpIp: 带外IP
+        :type DhcpIp: str
+        :param VpcName: 所在私有网络别名
+        :type VpcName: str
+        :param SubnetName: 所在子网别名
+        :type SubnetName: str
+        :param VpcCidrBlock: 所在私有网络CIDR
+        :type VpcCidrBlock: str
+        :param SubnetCidrBlock: 所在子网CIDR
+        :type SubnetCidrBlock: str
+        :param IsLuckyDevice: 标识是否是竞价实例。0: 普通设备; 1: 竞价实例设备
+        :type IsLuckyDevice: int
+        """
+        self.InstanceId = None
+        self.VpcId = None
+        self.SubnetId = None
+        self.DeviceStatus = None
+        self.OperateStatus = None
+        self.OsTypeId = None
+        self.RaidId = None
+        self.Alias = None
+        self.AppId = None
+        self.Zone = None
+        self.WanIp = None
+        self.LanIp = None
+        self.DeliverTime = None
+        self.Deadline = None
+        self.AutoRenewFlag = None
+        self.DeviceClassCode = None
+        self.Tags = None
+        self.CpmPayMode = None
+        self.DhcpIp = None
+        self.VpcName = None
+        self.SubnetName = None
+        self.VpcCidrBlock = None
+        self.SubnetCidrBlock = None
+        self.IsLuckyDevice = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.VpcId = params.get("VpcId")
+        self.SubnetId = params.get("SubnetId")
+        self.DeviceStatus = params.get("DeviceStatus")
+        self.OperateStatus = params.get("OperateStatus")
+        self.OsTypeId = params.get("OsTypeId")
+        self.RaidId = params.get("RaidId")
+        self.Alias = params.get("Alias")
+        self.AppId = params.get("AppId")
+        self.Zone = params.get("Zone")
+        self.WanIp = params.get("WanIp")
+        self.LanIp = params.get("LanIp")
+        self.DeliverTime = params.get("DeliverTime")
+        self.Deadline = params.get("Deadline")
+        self.AutoRenewFlag = params.get("AutoRenewFlag")
+        self.DeviceClassCode = params.get("DeviceClassCode")
+        if params.get("Tags") is not None:
+            self.Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self.Tags.append(obj)
+        self.CpmPayMode = params.get("CpmPayMode")
+        self.DhcpIp = params.get("DhcpIp")
+        self.VpcName = params.get("VpcName")
+        self.SubnetName = params.get("SubnetName")
+        self.VpcCidrBlock = params.get("VpcCidrBlock")
+        self.SubnetCidrBlock = params.get("SubnetCidrBlock")
+        self.IsLuckyDevice = params.get("IsLuckyDevice")
 
 
 class ModifyPsaRegulationRequest(AbstractModel):
