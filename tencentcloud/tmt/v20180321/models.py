@@ -88,9 +88,9 @@ class ImageTranslateResponse(AbstractModel):
         :type Source: str
         :param Target: 目标语言
         :type Target: str
-        :param ImageRecord: 图片翻译结果
+        :param ImageRecord: 图片翻译结果，翻译结果按识别的文本每一行独立翻译，后续会推出按段落划分并翻译的版本
         :type ImageRecord: :class:`tencentcloud.tmt.v20180321.models.ImageRecord`
-        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.SessionUuid = None
@@ -154,7 +154,7 @@ class LanguageDetectRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Text: 待识别的文本
+        :param Text: 待识别的文本，文本统一使用utf-8格式编码，非utf-8格式编码字符会翻译失败
         :type Text: str
         :param ProjectId: 项目id
         :type ProjectId: int
@@ -178,7 +178,7 @@ class LanguageDetectResponse(AbstractModel):
         :param Lang: 识别出的语言种类，参考语言列表
 <li> zh : 中文 </li> <li> en : 英文 </li><li> jp : 日语 </li> <li> kr : 韩语 </li><li> de : 德语 </li><li> fr : 法语 </li><li> es : 西班牙文 </li> <li> it : 意大利文 </li><li> tr : 土耳其文 </li><li> ru : 俄文 </li><li> pt : 葡萄牙文 </li><li> vi : 越南文 </li><li> id : 印度尼西亚文 </li><li> ms : 马来西亚文 </li><li> th : 泰文 </li>
         :type Lang: str
-        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.Lang = None
@@ -205,13 +205,13 @@ class SpeechTranslateRequest(AbstractModel):
         :type Target: str
         :param AudioFormat: pcm : 146   amr : 33554432   mp3 : 83886080
         :type AudioFormat: int
-        :param Seq: 语音分片后的第几片
+        :param Seq: 语音分片的序号，从0开始
         :type Seq: int
-        :param IsEnd: 是否最后一片
+        :param IsEnd: 是否最后一片语音分片，0-否，1-是
         :type IsEnd: int
         :param Data: 语音分片内容的base64字符串
         :type Data: str
-        :param ProjectId: 项目id
+        :param ProjectId: 项目id，用户可自定义
         :type ProjectId: int
         """
         self.SessionUuid = None
@@ -256,7 +256,7 @@ class SpeechTranslateResponse(AbstractModel):
         :type Source: str
         :param Target: 目标语言
         :type Target: str
-        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.SessionUuid = None
@@ -287,7 +287,7 @@ class TextTranslateRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param SourceText: 待翻译的文本
+        :param SourceText: 待翻译的文本，文本统一使用utf-8格式编码，非utf-8格式编码字符会翻译失败
         :type SourceText: str
         :param Source: 源语言，参照Target支持语言列表
         :type Source: str
@@ -323,7 +323,7 @@ class TextTranslateResponse(AbstractModel):
         :type Source: str
         :param Target: 目标语言，详见入参Target
         :type Target: str
-        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.TargetText = None

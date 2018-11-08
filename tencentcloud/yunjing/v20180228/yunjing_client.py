@@ -53,6 +53,34 @@ class YunjingClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def CreateProcessTask(self, request):
+        """本接口 (CreateProcessTask) 用于创建实时拉取进程任务。
+
+        :param request: 调用CreateProcessTask所需参数的结构体。
+        :type request: :class:`tencentcloud.yunjing.v20180228.models.CreateProcessTaskRequest`
+        :rtype: :class:`tencentcloud.yunjing.v20180228.models.CreateProcessTaskResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("CreateProcessTask", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateProcessTaskResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise e
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def CreateUsualLoginPlaces(self, request):
         """此接口（CreateUsualLoginPlaces）用于添加常用登录地。
 
@@ -221,6 +249,62 @@ class YunjingClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeAccountStatistics(self, request):
+        """本接口 (DescribeAccountStatistics) 用于获取帐号统计列表数据。
+
+        :param request: 调用DescribeAccountStatistics所需参数的结构体。
+        :type request: :class:`tencentcloud.yunjing.v20180228.models.DescribeAccountStatisticsRequest`
+        :rtype: :class:`tencentcloud.yunjing.v20180228.models.DescribeAccountStatisticsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeAccountStatistics", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeAccountStatisticsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise e
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeAccounts(self, request):
+        """本接口 (DescribeAccounts) 用于获取帐号列表数据。
+
+        :param request: 调用DescribeAccounts所需参数的结构体。
+        :type request: :class:`tencentcloud.yunjing.v20180228.models.DescribeAccountsRequest`
+        :rtype: :class:`tencentcloud.yunjing.v20180228.models.DescribeAccountsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeAccounts", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeAccountsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise e
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeAgentVuls(self, request):
         """本接口 (DescribeAgentVuls) 用于获取主机的漏洞列表。
 
@@ -291,6 +375,118 @@ class YunjingClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeBruteAttacksResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise e
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeComponentInfo(self, request):
+        """本接口 (DescribeComponentInfo) 用于获取组件信息数据。
+
+        :param request: 调用DescribeComponentInfo所需参数的结构体。
+        :type request: :class:`tencentcloud.yunjing.v20180228.models.DescribeComponentInfoRequest`
+        :rtype: :class:`tencentcloud.yunjing.v20180228.models.DescribeComponentInfoResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeComponentInfo", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeComponentInfoResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise e
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeComponentStatistics(self, request):
+        """本接口 (DescribeComponentStatistics) 用于获取组件统计列表数据。
+
+        :param request: 调用DescribeComponentStatistics所需参数的结构体。
+        :type request: :class:`tencentcloud.yunjing.v20180228.models.DescribeComponentStatisticsRequest`
+        :rtype: :class:`tencentcloud.yunjing.v20180228.models.DescribeComponentStatisticsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeComponentStatistics", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeComponentStatisticsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise e
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeComponents(self, request):
+        """本接口 (DescribeComponents) 用于获取组件列表数据。
+
+        :param request: 调用DescribeComponents所需参数的结构体。
+        :type request: :class:`tencentcloud.yunjing.v20180228.models.DescribeComponentsRequest`
+        :rtype: :class:`tencentcloud.yunjing.v20180228.models.DescribeComponentsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeComponents", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeComponentsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise e
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeHistoryAccounts(self, request):
+        """本接口 (DescribeHistoryAccounts) 用于获取帐号变更历史列表数据。
+
+        :param request: 调用DescribeHistoryAccounts所需参数的结构体。
+        :type request: :class:`tencentcloud.yunjing.v20180228.models.DescribeHistoryAccountsRequest`
+        :rtype: :class:`tencentcloud.yunjing.v20180228.models.DescribeHistoryAccountsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeHistoryAccounts", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeHistoryAccountsResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -445,6 +641,62 @@ class YunjingClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeOpenPortStatistics(self, request):
+        """本接口 (DescribeOpenPortStatistics) 用于获取端口统计列表。
+
+        :param request: 调用DescribeOpenPortStatistics所需参数的结构体。
+        :type request: :class:`tencentcloud.yunjing.v20180228.models.DescribeOpenPortStatisticsRequest`
+        :rtype: :class:`tencentcloud.yunjing.v20180228.models.DescribeOpenPortStatisticsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeOpenPortStatistics", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeOpenPortStatisticsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise e
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeOpenPorts(self, request):
+        """本接口 (DescribeOpenPorts) 用于获取端口列表数据。
+
+        :param request: 调用DescribeOpenPorts所需参数的结构体。
+        :type request: :class:`tencentcloud.yunjing.v20180228.models.DescribeOpenPortsRequest`
+        :rtype: :class:`tencentcloud.yunjing.v20180228.models.DescribeOpenPortsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeOpenPorts", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeOpenPortsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise e
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeOverviewStatistics(self, request):
         """本接口用于（DescribeOverviewStatistics）获取概览统计数据。
 
@@ -487,6 +739,146 @@ class YunjingClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeProVersionInfoResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise e
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeProcessStatistics(self, request):
+        """本接口 (DescribeProcessStatistics) 用于获取进程统计列表数据。
+
+        :param request: 调用DescribeProcessStatistics所需参数的结构体。
+        :type request: :class:`tencentcloud.yunjing.v20180228.models.DescribeProcessStatisticsRequest`
+        :rtype: :class:`tencentcloud.yunjing.v20180228.models.DescribeProcessStatisticsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeProcessStatistics", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeProcessStatisticsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise e
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeProcessTaskStatus(self, request):
+        """本接口 (DescribeProcessTaskStatus) 用于获取实时拉取进程任务状态。
+
+        :param request: 调用DescribeProcessTaskStatus所需参数的结构体。
+        :type request: :class:`tencentcloud.yunjing.v20180228.models.DescribeProcessTaskStatusRequest`
+        :rtype: :class:`tencentcloud.yunjing.v20180228.models.DescribeProcessTaskStatusResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeProcessTaskStatus", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeProcessTaskStatusResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise e
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeProcesses(self, request):
+        """本接口 (DescribeProcesses) 用于获取进程列表数据。
+
+        :param request: 调用DescribeProcesses所需参数的结构体。
+        :type request: :class:`tencentcloud.yunjing.v20180228.models.DescribeProcessesRequest`
+        :rtype: :class:`tencentcloud.yunjing.v20180228.models.DescribeProcessesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeProcesses", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeProcessesResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise e
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeSecurityDynamics(self, request):
+        """本接口 (DescribeSecurityDynamics) 用于获取安全事件消息数据。
+
+        :param request: 调用DescribeSecurityDynamics所需参数的结构体。
+        :type request: :class:`tencentcloud.yunjing.v20180228.models.DescribeSecurityDynamicsRequest`
+        :rtype: :class:`tencentcloud.yunjing.v20180228.models.DescribeSecurityDynamicsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeSecurityDynamics", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeSecurityDynamicsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise e
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeSecurityTrends(self, request):
+        """本接口 (DescribeSecurityTrends) 用于获取安全事件统计数据。
+
+        :param request: 调用DescribeSecurityTrends所需参数的结构体。
+        :type request: :class:`tencentcloud.yunjing.v20180228.models.DescribeSecurityTrendsRequest`
+        :rtype: :class:`tencentcloud.yunjing.v20180228.models.DescribeSecurityTrendsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeSecurityTrends", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeSecurityTrendsResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -599,6 +991,174 @@ class YunjingClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeVulsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise e
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeWeeklyReportBruteAttacks(self, request):
+        """本接口 (DescribeWeeklyReportBruteAttacks) 用于获取专业周报密码破解数据。
+
+        :param request: 调用DescribeWeeklyReportBruteAttacks所需参数的结构体。
+        :type request: :class:`tencentcloud.yunjing.v20180228.models.DescribeWeeklyReportBruteAttacksRequest`
+        :rtype: :class:`tencentcloud.yunjing.v20180228.models.DescribeWeeklyReportBruteAttacksResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeWeeklyReportBruteAttacks", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeWeeklyReportBruteAttacksResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise e
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeWeeklyReportInfo(self, request):
+        """本接口 (DescribeWeeklyReportInfo) 用于获取专业周报详情数据。
+
+        :param request: 调用DescribeWeeklyReportInfo所需参数的结构体。
+        :type request: :class:`tencentcloud.yunjing.v20180228.models.DescribeWeeklyReportInfoRequest`
+        :rtype: :class:`tencentcloud.yunjing.v20180228.models.DescribeWeeklyReportInfoResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeWeeklyReportInfo", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeWeeklyReportInfoResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise e
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeWeeklyReportMalwares(self, request):
+        """本接口 (DescribeWeeklyReportMalwares) 用于获取专业周报木马数据。
+
+        :param request: 调用DescribeWeeklyReportMalwares所需参数的结构体。
+        :type request: :class:`tencentcloud.yunjing.v20180228.models.DescribeWeeklyReportMalwaresRequest`
+        :rtype: :class:`tencentcloud.yunjing.v20180228.models.DescribeWeeklyReportMalwaresResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeWeeklyReportMalwares", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeWeeklyReportMalwaresResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise e
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeWeeklyReportNonlocalLoginPlaces(self, request):
+        """本接口 (DescribeWeeklyReportNonlocalLoginPlaces) 用于获取专业周报异地登录数据。
+
+        :param request: 调用DescribeWeeklyReportNonlocalLoginPlaces所需参数的结构体。
+        :type request: :class:`tencentcloud.yunjing.v20180228.models.DescribeWeeklyReportNonlocalLoginPlacesRequest`
+        :rtype: :class:`tencentcloud.yunjing.v20180228.models.DescribeWeeklyReportNonlocalLoginPlacesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeWeeklyReportNonlocalLoginPlaces", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeWeeklyReportNonlocalLoginPlacesResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise e
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeWeeklyReportVuls(self, request):
+        """本接口 (DescribeWeeklyReportVuls) 用于专业版周报漏洞数据。
+
+        :param request: 调用DescribeWeeklyReportVuls所需参数的结构体。
+        :type request: :class:`tencentcloud.yunjing.v20180228.models.DescribeWeeklyReportVulsRequest`
+        :rtype: :class:`tencentcloud.yunjing.v20180228.models.DescribeWeeklyReportVulsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeWeeklyReportVuls", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeWeeklyReportVulsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise e
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeWeeklyReports(self, request):
+        """本接口 (DescribeWeeklyReports) 用于获取周报列表数据。
+
+        :param request: 调用DescribeWeeklyReports所需参数的结构体。
+        :type request: :class:`tencentcloud.yunjing.v20180228.models.DescribeWeeklyReportsRequest`
+        :rtype: :class:`tencentcloud.yunjing.v20180228.models.DescribeWeeklyReportsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeWeeklyReports", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeWeeklyReportsResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

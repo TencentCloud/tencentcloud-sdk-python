@@ -676,7 +676,9 @@ class DescribeAvailableCvmInstanceTypesRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Filters: 过滤条件
+        :param Filters: 过滤条件。
+<li> zone - String - 是否必填：否 -（过滤条件）按照可用区过滤。</li>
+<li> instance-family String - 是否必填：否 -（过滤条件）按照机型系列过滤。实例机型系列形如：S1、I1、M1等。</li>
         :type Filters: list of Filter
         """
         self.Filters = None
@@ -731,6 +733,7 @@ class DescribeComputeEnvActivitiesRequest(AbstractModel):
         :param Limit: 返回数量
         :type Limit: int
         :param Filters: 过滤条件
+<li> compute-node-id - String - 是否必填：否 -（过滤条件）按照计算节点ID过滤。</li>
         :type Filters: :class:`tencentcloud.batch.v20170312.models.Filter`
         """
         self.EnvId = None
@@ -1026,6 +1029,9 @@ class DescribeComputeEnvsRequest(AbstractModel):
         :param EnvIds: 计算环境ID
         :type EnvIds: list of str
         :param Filters: 过滤条件
+<li> zone - String - 是否必填：否 -（过滤条件）按照可用区过滤。</li>
+<li> env-id - String - 是否必填：否 -（过滤条件）按照计算环境ID过滤。</li>
+<li> env-name - String - 是否必填：否 -（过滤条件）按照计算环境名称过滤。</li>
         :type Filters: list of Filter
         :param Offset: 偏移量
         :type Offset: int
@@ -1087,7 +1093,11 @@ class DescribeCvmZoneInstanceConfigInfosRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Filters: 过滤条件
+        :param Filters: 过滤条件。
+<li> zone - String - 是否必填：否 -（过滤条件）按照可用区过滤。</li>
+<li> instance-family String - 是否必填：否 -（过滤条件）按照机型系列过滤。实例机型系列形如：S1、I1、M1等。</li>
+<li> instance-type - String - 是否必填：否 - （过滤条件）按照机型过滤。</li>
+<li> instance-charge-type - String - 是否必填：否 -（过滤条件）按照实例计费模式过滤。 ( POSTPAID_BY_HOUR：表示后付费，即按量计费机型 | SPOTPAID：表示竞价付费机型。 )  </li>
         :type Filters: list of Filter
         """
         self.Filters = None
@@ -1302,6 +1312,10 @@ class DescribeJobsRequest(AbstractModel):
         :param JobIds: 作业ID
         :type JobIds: list of str
         :param Filters: 过滤条件
+<li> job-id - String - 是否必填：否 -（过滤条件）按照作业ID过滤。</li>
+<li> job-name - String - 是否必填：否 -（过滤条件）按照作业名称过滤。</li>
+<li> job-state - String - 是否必填：否 -（过滤条件）按照作业状态过滤。</li>
+<li> zone - String - 是否必填：否 -（过滤条件）按照可用区过滤。</li>
         :type Filters: list of Filter
         :param Offset: 偏移量
         :type Offset: int
@@ -1353,6 +1367,69 @@ class DescribeJobsResponse(AbstractModel):
                 obj._deserialize(item)
                 self.JobSet.append(obj)
         self.TotalCount = params.get("TotalCount")
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeTaskLogsRequest(AbstractModel):
+    """DescribeTaskLogs请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param JobId: 作业ID
+        :type JobId: str
+        :param TaskName: 任务名称
+        :type TaskName: str
+        :param TaskInstanceIndexes: 任务实例集合
+        :type TaskInstanceIndexes: list of int non-negative
+        :param Offset: 起始任务实例
+        :type Offset: int
+        :param Limit: 最大任务实例数
+        :type Limit: int
+        """
+        self.JobId = None
+        self.TaskName = None
+        self.TaskInstanceIndexes = None
+        self.Offset = None
+        self.Limit = None
+
+
+    def _deserialize(self, params):
+        self.JobId = params.get("JobId")
+        self.TaskName = params.get("TaskName")
+        self.TaskInstanceIndexes = params.get("TaskInstanceIndexes")
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+
+
+class DescribeTaskLogsResponse(AbstractModel):
+    """DescribeTaskLogs返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param TotalCount: 任务实例总数
+        :type TotalCount: int
+        :param TaskInstanceLogSet: 任务实例日志详情集合
+        :type TaskInstanceLogSet: list of TaskInstanceLog
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.TaskInstanceLogSet = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("TaskInstanceLogSet") is not None:
+            self.TaskInstanceLogSet = []
+            for item in params.get("TaskInstanceLogSet"):
+                obj = TaskInstanceLog()
+                obj._deserialize(item)
+                self.TaskInstanceLogSet.append(obj)
         self.RequestId = params.get("RequestId")
 
 
@@ -1461,6 +1538,7 @@ class DescribeTaskTemplatesRequest(AbstractModel):
         :param TaskTemplateIds: 任务模板ID
         :type TaskTemplateIds: list of str
         :param Filters: 过滤条件
+<li> task-template-name - String - 是否必填：否 -（过滤条件）按照任务模板名称过滤。</li>
         :type Filters: list of Filter
         :param Offset: 偏移量
         :type Offset: int
@@ -2759,6 +2837,47 @@ class Task(AbstractModel):
         self.FailedAction = params.get("FailedAction")
         self.MaxRetryCount = params.get("MaxRetryCount")
         self.Timeout = params.get("Timeout")
+
+
+class TaskInstanceLog(AbstractModel):
+    """任务实例日志详情。
+
+    """
+
+    def __init__(self):
+        """
+        :param TaskInstanceIndex: 任务实例
+        :type TaskInstanceIndex: int
+        :param StdoutLog: 标准输出日志（Base64编码）
+        :type StdoutLog: str
+        :param StderrLog: 标准错误日志（Base64编码）
+        :type StderrLog: str
+        :param StdoutRedirectPath: 标准输出重定向路径
+        :type StdoutRedirectPath: str
+        :param StderrRedirectPath: 标准错误重定向路径
+        :type StderrRedirectPath: str
+        :param StdoutRedirectFileName: 标准输出重定向文件名
+        :type StdoutRedirectFileName: str
+        :param StderrRedirectFileName: 标准错误重定向文件名
+        :type StderrRedirectFileName: str
+        """
+        self.TaskInstanceIndex = None
+        self.StdoutLog = None
+        self.StderrLog = None
+        self.StdoutRedirectPath = None
+        self.StderrRedirectPath = None
+        self.StdoutRedirectFileName = None
+        self.StderrRedirectFileName = None
+
+
+    def _deserialize(self, params):
+        self.TaskInstanceIndex = params.get("TaskInstanceIndex")
+        self.StdoutLog = params.get("StdoutLog")
+        self.StderrLog = params.get("StderrLog")
+        self.StdoutRedirectPath = params.get("StdoutRedirectPath")
+        self.StderrRedirectPath = params.get("StderrRedirectPath")
+        self.StdoutRedirectFileName = params.get("StdoutRedirectFileName")
+        self.StderrRedirectFileName = params.get("StderrRedirectFileName")
 
 
 class TaskInstanceMetrics(AbstractModel):

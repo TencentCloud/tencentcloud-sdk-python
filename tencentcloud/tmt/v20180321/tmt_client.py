@@ -26,7 +26,7 @@ class TmtClient(AbstractClient):
 
 
     def ImageTranslate(self, request):
-        """提供中文到英文、英文到中文两种语言的图片翻译服务，可自动识别图片中的文本内容并翻译成目标语言
+        """提供中文到英文、英文到中文两种语言的图片翻译服务，可自动识别图片中的文本内容并翻译成目标语言，识别后的文本按行翻译，后续会提供可按段落翻译的版本
 
         :param request: 调用ImageTranslate所需参数的结构体。
         :type request: :class:`tencentcloud.tmt.v20180321.models.ImageTranslateRequest`

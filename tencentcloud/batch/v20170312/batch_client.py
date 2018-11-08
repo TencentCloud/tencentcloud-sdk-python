@@ -475,6 +475,34 @@ class BatchClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeTaskLogs(self, request):
+        """用于获取任务多个实例标准输出和标准错误日志。
+
+        :param request: 调用DescribeTaskLogs所需参数的结构体。
+        :type request: :class:`tencentcloud.batch.v20170312.models.DescribeTaskLogsRequest`
+        :rtype: :class:`tencentcloud.batch.v20170312.models.DescribeTaskLogsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeTaskLogs", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeTaskLogsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise e
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeTaskTemplates(self, request):
         """用于查询任务模板信息
 
