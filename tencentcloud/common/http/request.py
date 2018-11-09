@@ -42,7 +42,7 @@ class ProxyHTTPSConnection(HTTPSConnection):
 
 
 class ApiRequest(object):
-    def __init__(self, host, req_timeout=60, debug=True):
+    def __init__(self, host, req_timeout=60, debug=False):
         self.conn = ProxyHTTPSConnection(host, timeout=req_timeout)
         self.req_timeout = req_timeout
         self.keep_alive = False

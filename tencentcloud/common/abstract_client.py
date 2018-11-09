@@ -155,7 +155,6 @@ class AbstractClient(object):
         req.header["Host"] = endpoint
         req.header["X-TC-Action"] = action[0].upper() + action[1:]
         req.header["X-TC-RequestClient"] = self._sdkVersion
-        req.header["X-TC-Nonce"] = random.randint(1, sys.maxsize)
         req.header["X-TC-Timestamp"] = timestamp
         req.header["X-TC-Version"] = self._apiVersion
         if self.profile.unsignedPayload is True:
@@ -180,7 +179,7 @@ class AbstractClient(object):
             params = copy.deepcopy(self._fix_params(params))
             req.data = urlencode(params)
             canonical_querystring = req.data
-            payload_hash = hashlib.sha256(''.encode('utf-8')).hexdigest()
+            payload = ""
         else:
             ct = req.header["Content-Type"]
             if ct == _json_content:
@@ -191,9 +190,15 @@ class AbstractClient(object):
                 req.data = self._get_multipart_body(params, boundary)
             else:
                 raise Exception("Unsupported content type: %s" % ct)
-            payload_hash = hashlib.sha256(req.data.encode('utf-8')).hexdigest()
+
+            payload = req.data
+
         if req.header.get("X-TC-Content-SHA256") == "UNSIGNED-PAYLOAD":
-            payload_hash = hashlib.sha256("UNSIGNED-PAYLOAD".encode('utf-8')).hexdigest()
+            payload = "UNSIGNED-PAYLOAD"
+
+        if sys.version_info[0] == 3:
+            payload = payload.encode("utf8")
+        payload_hash = hashlib.sha256(payload).hexdigest()
 
         canonical_headers = 'content-type:%s\nhost:%s\n' % (
             req.header["Content-Type"], req.header["Host"])
@@ -207,7 +212,9 @@ class AbstractClient(object):
 
         algorithm = 'TC3-HMAC-SHA256'
         credential_scope = date + '/' + service + '/tc3_request'
-        digest = hashlib.sha256(canonical_request.encode('utf-8')).hexdigest()
+        if sys.version_info[0] == 3:
+            canonical_request = canonical_request.encode("utf8")
+        digest = hashlib.sha256(canonical_request).hexdigest()
         string2sign = '%s\n%s\n%s\n%s' % (algorithm,
                                           req.header["X-TC-Timestamp"],
                                           credential_scope,
@@ -247,8 +254,13 @@ class AbstractClient(object):
             endpoint = self._endpoint
         return endpoint
 
-    def call(self, action, params, headers=None):
+    def call(self, action, params, options=None):
+        if options is None:
+            options = {}
         endpoint = self._get_endpoint()
+        headers = {}
+        if options.get("IsMultipart"):
+            headers["Content-Type"] = _multipart_content
 
         req_inter = RequestInternal(endpoint,
                                     self.profile.httpProfile.reqMethod,
