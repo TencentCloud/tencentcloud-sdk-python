@@ -258,6 +258,9 @@ class AutoscalingClient(AbstractClient):
     def DescribeAutoScalingGroups(self, request):
         """本接口（DescribeAutoScalingGroups）用于查询伸缩组信息。
 
+        * 可以根据伸缩组ID、伸缩组名称或者启动配置ID等信息来查询伸缩组的详细信息。过滤信息详细请见过滤器`Filter`。
+        * 如果参数为空，返回当前用户一定数量（`Limit`所指定的数量，默认为20）的伸缩组。
+
         :param request: 调用DescribeAutoScalingGroups所需参数的结构体。
         :type request: :class:`tencentcloud.autoscaling.v20180419.models.DescribeAutoScalingGroupsRequest`
         :rtype: :class:`tencentcloud.autoscaling.v20180419.models.DescribeAutoScalingGroupsResponse`
@@ -286,6 +289,8 @@ class AutoscalingClient(AbstractClient):
     def DescribeAutoScalingInstances(self, request):
         """本接口（DescribeAutoScalingInstances）用于查询弹性伸缩关联实例的信息。
 
+        * 可以根据实例ID、伸缩组ID等信息来查询实例的详细信息。过滤信息详细请见过滤器`Filter`。
+        * 如果参数为空，返回当前用户一定数量（`Limit`所指定的数量，默认为20）的实例。
 
         :param request: 调用DescribeAutoScalingInstances所需参数的结构体。
         :type request: :class:`tencentcloud.autoscaling.v20180419.models.DescribeAutoScalingInstancesRequest`
@@ -315,6 +320,9 @@ class AutoscalingClient(AbstractClient):
     def DescribeLaunchConfigurations(self, request):
         """本接口（DescribeLaunchConfigurations）用于查询启动配置的信息。
 
+        * 可以根据启动配置ID、启动配置名称等信息来查询启动配置的详细信息。过滤信息详细请见过滤器`Filter`。
+        * 如果参数为空，返回当前用户一定数量（`Limit`所指定的数量，默认为20）的启动配置。
+
         :param request: 调用DescribeLaunchConfigurations所需参数的结构体。
         :type request: :class:`tencentcloud.autoscaling.v20180419.models.DescribeLaunchConfigurationsRequest`
         :rtype: :class:`tencentcloud.autoscaling.v20180419.models.DescribeLaunchConfigurationsResponse`
@@ -343,7 +351,7 @@ class AutoscalingClient(AbstractClient):
     def DescribeScheduledActions(self, request):
         """本接口 (DescribeScheduledActions) 用于查询一个或多个定时任务的详细信息。
 
-        * 可以根据定时任务ID、定时任务名称或者伸缩组ID等信息来查询定时任务的详细信息。过滤信息详细请见过滤器Filter。
+        * 可以根据定时任务ID、定时任务名称或者伸缩组ID等信息来查询定时任务的详细信息。过滤信息详细请见过滤器`Filter`。
         * 如果参数为空，返回当前用户一定数量（Limit所指定的数量，默认为20）的定时任务。
 
         :param request: 调用DescribeScheduledActions所需参数的结构体。

@@ -153,12 +153,15 @@ class CreateFacePictureRequest(AbstractModel):
         :type Picture: str
         :param PictureName: 图片名称
         :type PictureName: str
+        :param IsForceUpload: 是否强制更新：为ture时会为用户创建一个新的指定PersonType的身份;目前这个参数已废弃，可不传
+        :type IsForceUpload: bool
         """
         self.CompanyId = None
         self.ShopId = None
         self.PersonType = None
         self.Picture = None
         self.PictureName = None
+        self.IsForceUpload = None
 
 
     def _deserialize(self, params):
@@ -167,6 +170,7 @@ class CreateFacePictureRequest(AbstractModel):
         self.PersonType = params.get("PersonType")
         self.Picture = params.get("Picture")
         self.PictureName = params.get("PictureName")
+        self.IsForceUpload = params.get("IsForceUpload")
 
 
 class CreateFacePictureResponse(AbstractModel):
@@ -222,6 +226,48 @@ class DailyTracePoint(AbstractModel):
                 obj = PersonTracePoint()
                 obj._deserialize(item)
                 self.TracePointSet.append(obj)
+
+
+class DeletePersonFeatureRequest(AbstractModel):
+    """DeletePersonFeature请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param CompanyId: 公司ID
+        :type CompanyId: str
+        :param ShopId: 门店ID
+        :type ShopId: int
+        :param PersonId: 顾客ID
+        :type PersonId: int
+        """
+        self.CompanyId = None
+        self.ShopId = None
+        self.PersonId = None
+
+
+    def _deserialize(self, params):
+        self.CompanyId = params.get("CompanyId")
+        self.ShopId = params.get("ShopId")
+        self.PersonId = params.get("PersonId")
+
+
+class DeletePersonFeatureResponse(AbstractModel):
+    """DeletePersonFeature返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
 
 
 class DescribeCameraPersonRequest(AbstractModel):
@@ -717,6 +763,8 @@ class DescribePersonInfoRequest(AbstractModel):
         :type Limit: int
         :param PictureExpires: 图片url过期时间：在当前时间+PictureExpires秒后，图片url无法继续正常访问；单位s；默认值1*24*60*60（1天）
         :type PictureExpires: int
+        :param PersonType: 身份类型(0表示普通顾客，1 白名单，2 表示黑名单）
+        :type PersonType: int
         """
         self.CompanyId = None
         self.ShopId = None
@@ -724,6 +772,7 @@ class DescribePersonInfoRequest(AbstractModel):
         self.Offset = None
         self.Limit = None
         self.PictureExpires = None
+        self.PersonType = None
 
 
     def _deserialize(self, params):
@@ -733,6 +782,7 @@ class DescribePersonInfoRequest(AbstractModel):
         self.Offset = params.get("Offset")
         self.Limit = params.get("Limit")
         self.PictureExpires = params.get("PictureExpires")
+        self.PersonType = params.get("PersonType")
 
 
 class DescribePersonInfoResponse(AbstractModel):
@@ -1925,6 +1975,59 @@ class ModifyPersonTagInfoResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class ModifyPersonTypeRequest(AbstractModel):
+    """ModifyPersonType请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param CompanyId: 集团ID
+        :type CompanyId: str
+        :param ShopId: 门店ID
+        :type ShopId: int
+        :param PersonId: 顾客ID
+        :type PersonId: int
+        :param PersonType: 身份类型(0表示普通顾客，1 白名单，2 表示黑名单）
+        :type PersonType: int
+        :param PersonSubType: 身份子类型:
+PersonType=0时(普通顾客)，0普通顾客
+PersonType=1时(白名单)，0店员，1商场人员，2其他类型人员，3区域经理，4注册用户，5VIP用户
+PersonType=2时(黑名单)，0普通黑名单，1小偷)
+        :type PersonSubType: int
+        """
+        self.CompanyId = None
+        self.ShopId = None
+        self.PersonId = None
+        self.PersonType = None
+        self.PersonSubType = None
+
+
+    def _deserialize(self, params):
+        self.CompanyId = params.get("CompanyId")
+        self.ShopId = params.get("ShopId")
+        self.PersonId = params.get("PersonId")
+        self.PersonType = params.get("PersonType")
+        self.PersonSubType = params.get("PersonSubType")
+
+
+class ModifyPersonTypeResponse(AbstractModel):
+    """ModifyPersonType返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class NetworkAndShopInfo(AbstractModel):
     """网络状态
 
@@ -2175,10 +2278,15 @@ class PersonInfo(AbstractModel):
         :type Gender: int
         :param Age: 年龄
         :type Age: int
-        :param PersonType: 身份类型：0-普通顾客，1~10黑名单，11~20白名单，11店员
+        :param PersonType: 身份类型（0表示普通顾客，1 白名单，2 表示黑名单）
         :type PersonType: int
         :param PersonPictureUrl: 人脸图片Url，在有效期内可以访问下载
         :type PersonPictureUrl: str
+        :param PersonSubType: 身份子类型:
+PersonType=0时(普通顾客)，0普通顾客
+PersonType=1时(白名单)，0店员，1商场人员，2其他类型人员，3区域经理，4注册用户，5VIP用户
+PersonType=2时(黑名单)，0普通黑名单，1小偷)
+        :type PersonSubType: int
         """
         self.PersonId = None
         self.PersonPicture = None
@@ -2186,6 +2294,7 @@ class PersonInfo(AbstractModel):
         self.Age = None
         self.PersonType = None
         self.PersonPictureUrl = None
+        self.PersonSubType = None
 
 
     def _deserialize(self, params):
@@ -2195,6 +2304,7 @@ class PersonInfo(AbstractModel):
         self.Age = params.get("Age")
         self.PersonType = params.get("PersonType")
         self.PersonPictureUrl = params.get("PersonPictureUrl")
+        self.PersonSubType = params.get("PersonSubType")
 
 
 class PersonProfile(AbstractModel):

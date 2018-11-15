@@ -101,6 +101,8 @@ class AutoScalingGroup(AbstractModel):
         :type VpcId: str
         :param ZoneSet: 可用区列表
         :type ZoneSet: list of str
+        :param RetryPolicy: 重试策略
+        :type RetryPolicy: str
         """
         self.AutoScalingGroupId = None
         self.AutoScalingGroupName = None
@@ -122,6 +124,7 @@ class AutoScalingGroup(AbstractModel):
         self.TerminationPolicySet = None
         self.VpcId = None
         self.ZoneSet = None
+        self.RetryPolicy = None
 
 
     def _deserialize(self, params):
@@ -150,6 +153,7 @@ class AutoScalingGroup(AbstractModel):
         self.TerminationPolicySet = params.get("TerminationPolicySet")
         self.VpcId = params.get("VpcId")
         self.ZoneSet = params.get("ZoneSet")
+        self.RetryPolicy = params.get("RetryPolicy")
 
 
 class AutoScalingGroupAbstract(AbstractModel):
@@ -206,6 +210,10 @@ class CreateAutoScalingGroupRequest(AbstractModel):
         :type TerminationPolicies: list of str
         :param Zones: 可用区列表，基础网络场景下必须指定可用区
         :type Zones: list of str
+        :param RetryPolicy: 重试策略，取值包括 IMMEDIATE_RETRY 和 INCREMENTAL_INTERVALS，默认取值为 IMMEDIATE_RETRY。
+<br><li> IMMEDIATE_RETRY，立即重试，在较短时间内快速重试，连续失败超过一定次数（5次）后不再重试。
+<br><li> INCREMENTAL_INTERVALS，间隔递增重试，随着连续失败次数的增加，重试间隔逐渐增大，重试间隔从秒级到1天不等。在连续失败超过一定次数（25次）后不再重试。
+        :type RetryPolicy: str
         """
         self.AutoScalingGroupName = None
         self.LaunchConfigurationId = None
@@ -220,6 +228,7 @@ class CreateAutoScalingGroupRequest(AbstractModel):
         self.SubnetIds = None
         self.TerminationPolicies = None
         self.Zones = None
+        self.RetryPolicy = None
 
 
     def _deserialize(self, params):
@@ -241,6 +250,7 @@ class CreateAutoScalingGroupRequest(AbstractModel):
         self.SubnetIds = params.get("SubnetIds")
         self.TerminationPolicies = params.get("TerminationPolicies")
         self.Zones = params.get("Zones")
+        self.RetryPolicy = params.get("RetryPolicy")
 
 
 class CreateAutoScalingGroupResponse(AbstractModel):
@@ -273,15 +283,16 @@ class CreateLaunchConfigurationRequest(AbstractModel):
         """
         :param LaunchConfigurationName: 启动配置显示名称。名称仅支持中文、英文、数字、下划线、分隔符"-"、小数点，最大长度不能超60个字节。
         :type LaunchConfigurationName: str
-        :param InstanceType: 实例机型。不同实例机型指定了不同的资源规格，具体取值可通过调用接口 [DescribeInstanceTypeConfigs](https://cloud.tencent.com/document/api/213/15749) 来获得最新的规格表或参见[实例类型](https://cloud.tencent.com/document/product/213/11518)描述。
-        :type InstanceType: str
         :param ImageId: 指定有效的[镜像](https://cloud.tencent.com/document/product/213/4940)ID，格式形如`img-8toqc6s3`。镜像类型分为四种：<br/><li>公共镜像</li><li>自定义镜像</li><li>共享镜像</li><li>服务市场镜像</li><br/>可通过以下方式获取可用的镜像ID：<br/><li>`公共镜像`、`自定义镜像`、`共享镜像`的镜像ID可通过登录[控制台](https://console.cloud.tencent.com/cvm/image?rid=1&imageType=PUBLIC_IMAGE)查询；`服务镜像市场`的镜像ID可通过[云市场](https://market.cloud.tencent.com/list)查询。</li><li>通过调用接口 [DescribeImages](https://cloud.tencent.com/document/api/213/15715) ，取返回信息中的`ImageId`字段。</li>
         :type ImageId: str
         :param ProjectId: 实例所属项目ID。该参数可以通过调用 [DescribeProject](https://cloud.tencent.com/document/api/378/4400) 的返回值中的`projectId`字段来获取。不填为默认项目。
         :type ProjectId: int
+        :param InstanceType: 实例机型。不同实例机型指定了不同的资源规格，具体取值可通过调用接口 [DescribeInstanceTypeConfigs](https://cloud.tencent.com/document/api/213/15749) 来获得最新的规格表或参见[实例类型](https://cloud.tencent.com/document/product/213/11518)描述。
+`InstanceType`和`InstanceTypes`参数互斥，二者必填一个且只能填写一个。
+        :type InstanceType: str
         :param SystemDisk: 实例系统盘配置信息。若不指定该参数，则按照系统默认值进行分配。
         :type SystemDisk: :class:`tencentcloud.autoscaling.v20180419.models.SystemDisk`
-        :param DataDisks: 实例数据盘配置信息。若不指定该参数，则默认不购买数据盘，当前仅支持购买的时候指定一个数据盘。
+        :param DataDisks: 实例数据盘配置信息。若不指定该参数，则默认不购买数据盘，最多支持指定11块数据盘。
         :type DataDisks: list of DataDisk
         :param InternetAccessible: 公网带宽相关信息设置。若不指定该参数，则默认公网带宽为0Mbps。
         :type InternetAccessible: :class:`tencentcloud.autoscaling.v20180419.models.InternetAccessible`
@@ -299,11 +310,14 @@ class CreateLaunchConfigurationRequest(AbstractModel):
         :type InstanceChargeType: str
         :param InstanceMarketOptions: 实例的市场相关选项，如竞价实例相关参数，若指定实例的付费模式为竞价付费则该参数必传。
         :type InstanceMarketOptions: :class:`tencentcloud.autoscaling.v20180419.models.InstanceMarketOptionsRequest`
+        :param InstanceTypes: 实例机型列表，不同实例机型指定了不同的资源规格，最多支持5中实例机型。
+`InstanceType`和`InstanceTypes`参数互斥，二者必填一个且只能填写一个。
+        :type InstanceTypes: list of str
         """
         self.LaunchConfigurationName = None
-        self.InstanceType = None
         self.ImageId = None
         self.ProjectId = None
+        self.InstanceType = None
         self.SystemDisk = None
         self.DataDisks = None
         self.InternetAccessible = None
@@ -313,13 +327,14 @@ class CreateLaunchConfigurationRequest(AbstractModel):
         self.UserData = None
         self.InstanceChargeType = None
         self.InstanceMarketOptions = None
+        self.InstanceTypes = None
 
 
     def _deserialize(self, params):
         self.LaunchConfigurationName = params.get("LaunchConfigurationName")
-        self.InstanceType = params.get("InstanceType")
         self.ImageId = params.get("ImageId")
         self.ProjectId = params.get("ProjectId")
+        self.InstanceType = params.get("InstanceType")
         if params.get("SystemDisk") is not None:
             self.SystemDisk = SystemDisk()
             self.SystemDisk._deserialize(params.get("SystemDisk"))
@@ -344,6 +359,7 @@ class CreateLaunchConfigurationRequest(AbstractModel):
         if params.get("InstanceMarketOptions") is not None:
             self.InstanceMarketOptions = InstanceMarketOptionsRequest()
             self.InstanceMarketOptions._deserialize(params.get("InstanceMarketOptions"))
+        self.InstanceTypes = params.get("InstanceTypes")
 
 
 class CreateLaunchConfigurationResponse(AbstractModel):
@@ -807,9 +823,9 @@ class DescribeScheduledActionsRequest(AbstractModel):
         :param ScheduledActionIds: 按照一个或者多个定时任务ID查询。实例ID形如：asst-am691zxo。每次请求的实例的上限为100。参数不支持同时指定ScheduledActionIds和Filters。
         :type ScheduledActionIds: list of str
         :param Filters: 过滤条件。
-* scheduled-action-id - String - 是否必填：否 -（过滤条件）按照定时任务ID过滤。
-* scheduled-action-name - String - 是否必填：否 - （过滤条件） 按照定时任务名称过滤。
-* auto-scaling-group-id - String - 是否必填：否 - （过滤条件） 按照伸缩组ID过滤。
+<li> scheduled-action-id - String - 是否必填：否 -（过滤条件）按照定时任务ID过滤。</li>
+<li> scheduled-action-name - String - 是否必填：否 - （过滤条件） 按照定时任务名称过滤。</li>
+<li> auto-scaling-group-id - String - 是否必填：否 - （过滤条件） 按照伸缩组ID过滤。</li>
         :type Filters: list of Filter
         :param Offset: 偏移量，默认为0。关于Offset的更进一步介绍请参考 API [简介](https://cloud.tencent.com/document/api/213/15688)中的相关小节。
         :type Offset: int
@@ -1088,6 +1104,8 @@ class Instance(AbstractModel):
         :type CreationType: str
         :param AddTime: 实例加入时间
         :type AddTime: str
+        :param InstanceType: 实例类型
+        :type InstanceType: str
         """
         self.InstanceId = None
         self.AutoScalingGroupId = None
@@ -1099,6 +1117,7 @@ class Instance(AbstractModel):
         self.Zone = None
         self.CreationType = None
         self.AddTime = None
+        self.InstanceType = None
 
 
     def _deserialize(self, params):
@@ -1112,6 +1131,7 @@ class Instance(AbstractModel):
         self.Zone = params.get("Zone")
         self.CreationType = params.get("CreationType")
         self.AddTime = params.get("AddTime")
+        self.InstanceType = params.get("InstanceType")
 
 
 class InstanceMarketOptionsRequest(AbstractModel):
@@ -1205,6 +1225,8 @@ class LaunchConfiguration(AbstractModel):
         :type InstanceChargeType: str
         :param InstanceMarketOptions: 实例的市场相关选项，如竞价实例相关参数，若指定实例的付费模式为竞价付费则该参数必传。
         :type InstanceMarketOptions: :class:`tencentcloud.autoscaling.v20180419.models.InstanceMarketOptionsRequest`
+        :param InstanceTypes: 实例机型列表。
+        :type InstanceTypes: list of str
         """
         self.ProjectId = None
         self.LaunchConfigurationId = None
@@ -1223,6 +1245,7 @@ class LaunchConfiguration(AbstractModel):
         self.LaunchConfigurationStatus = None
         self.InstanceChargeType = None
         self.InstanceMarketOptions = None
+        self.InstanceTypes = None
 
 
     def _deserialize(self, params):
@@ -1263,6 +1286,7 @@ class LaunchConfiguration(AbstractModel):
         if params.get("InstanceMarketOptions") is not None:
             self.InstanceMarketOptions = InstanceMarketOptionsRequest()
             self.InstanceMarketOptions._deserialize(params.get("InstanceMarketOptions"))
+        self.InstanceTypes = params.get("InstanceTypes")
 
 
 class LimitedLoginSettings(AbstractModel):
@@ -1338,6 +1362,10 @@ class ModifyAutoScalingGroupRequest(AbstractModel):
         :type VpcId: str
         :param Zones: 可用区列表
         :type Zones: list of str
+        :param RetryPolicy: 重试策略，取值包括 IMMEDIATE_RETRY 和 INCREMENTAL_INTERVALS，默认取值为 IMMEDIATE_RETRY。
+<br><li> IMMEDIATE_RETRY，立即重试，在较短时间内快速重试，连续失败超过一定次数（5次）后不再重试。
+<br><li> INCREMENTAL_INTERVALS，间隔递增重试，随着连续失败次数的增加，重试间隔逐渐增大，重试间隔从秒级到1天不等。在连续失败超过一定次数（25次）后不再重试。
+        :type RetryPolicy: str
         """
         self.AutoScalingGroupId = None
         self.AutoScalingGroupName = None
@@ -1351,6 +1379,7 @@ class ModifyAutoScalingGroupRequest(AbstractModel):
         self.TerminationPolicies = None
         self.VpcId = None
         self.Zones = None
+        self.RetryPolicy = None
 
 
     def _deserialize(self, params):
@@ -1366,6 +1395,7 @@ class ModifyAutoScalingGroupRequest(AbstractModel):
         self.TerminationPolicies = params.get("TerminationPolicies")
         self.VpcId = params.get("VpcId")
         self.Zones = params.get("Zones")
+        self.RetryPolicy = params.get("RetryPolicy")
 
 
 class ModifyAutoScalingGroupResponse(AbstractModel):

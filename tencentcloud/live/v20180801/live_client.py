@@ -82,8 +82,19 @@ class LiveClient(AbstractClient):
 
 
     def CreateLiveRecord(self, request):
-        """录制文件存放于点播平台。用户如需使用录制功能，需首先自行开通点播服务，录制文件存放后相关费用（含存储以及下行播放流量）按照点播平台计费方式收取，具体请参考 对应文档。
-        创建直播录制。该接口支持两种录制模式：定时录制模式与实时视频录制模式。定时录制需要传入开始与结束时间，录制任务根据时间自动开始与结束；实时视频录制忽略传入的开始时间，在录制任务创建后立即开始录制，录制时长支持最大为30分钟，如果传入的结束时间与当前时间差大于30分钟，则按30分钟计算，实时视频录制主要用于录制精彩视频场景，时长建议控制在5分钟以内。注意：调用接口超时设置应大于3秒，小于3秒重试以及频繁调用都有可能产生重复录制任务。
+        """- 使用前提
+          1. 录制文件存放于点播平台，所以用户如需使用录制功能，需首先自行开通点播服务。
+          2. 录制文件存放后相关费用（含存储以及下行播放流量）按照点播平台计费方式收取，具体请参考 [对应文档](https://cloud.tencent.com/document/product/266/2838)。
+
+        - 模式说明
+          该接口支持两种录制模式：
+          1. 定时录制模式。
+            需要传入开始时间与结束时间，录制任务根据时间自动开始与结束。
+          2. 实时视频录制模式。
+            忽略传入的开始时间，在录制任务创建后立即开始录制，录制时长支持最大为30分钟，如果传入的结束时间与当前时间差大于30分钟，则按30分钟计算，实时视频录制主要用于录制精彩视频场景，时长建议控制在5分钟以内。
+
+        - 注意事项
+          1. 调用接口超时设置应大于3秒，小于3秒重试以及频繁调用都有可能产生重复录制任务。
 
         :param request: 调用CreateLiveRecord所需参数的结构体。
         :type request: :class:`tencentcloud.live.v20180801.models.CreateLiveRecordRequest`
@@ -180,6 +191,90 @@ class LiveClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteLiveWatermarkResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise e
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeDrmEncryptKeys(self, request):
+        """Drm获取加密key
+
+        :param request: 调用DescribeDrmEncryptKeys所需参数的结构体。
+        :type request: :class:`tencentcloud.live.v20180801.models.DescribeDrmEncryptKeysRequest`
+        :rtype: :class:`tencentcloud.live.v20180801.models.DescribeDrmEncryptKeysResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeDrmEncryptKeys", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeDrmEncryptKeysResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise e
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeLivePlayAuthKey(self, request):
+        """查询播放鉴权key
+
+        :param request: 调用DescribeLivePlayAuthKey所需参数的结构体。
+        :type request: :class:`tencentcloud.live.v20180801.models.DescribeLivePlayAuthKeyRequest`
+        :rtype: :class:`tencentcloud.live.v20180801.models.DescribeLivePlayAuthKeyResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeLivePlayAuthKey", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeLivePlayAuthKeyResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise e
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeLivePushAuthKey(self, request):
+        """查询直播推流鉴权key
+
+        :param request: 调用DescribeLivePushAuthKey所需参数的结构体。
+        :type request: :class:`tencentcloud.live.v20180801.models.DescribeLivePushAuthKeyRequest`
+        :rtype: :class:`tencentcloud.live.v20180801.models.DescribeLivePushAuthKeyResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeLivePushAuthKey", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeLivePushAuthKeyResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -418,6 +513,118 @@ class LiveClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def GetLiveDrmLicense(self, request):
+        """获取直播DRM的license
+
+        :param request: 调用GetLiveDrmLicense所需参数的结构体。
+        :type request: :class:`tencentcloud.live.v20180801.models.GetLiveDrmLicenseRequest`
+        :rtype: :class:`tencentcloud.live.v20180801.models.GetLiveDrmLicenseResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("GetLiveDrmLicense", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.GetLiveDrmLicenseResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise e
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def GetVodDrmLicense(self, request):
+        """获取点播DRM的license
+
+        :param request: 调用GetVodDrmLicense所需参数的结构体。
+        :type request: :class:`tencentcloud.live.v20180801.models.GetVodDrmLicenseRequest`
+        :rtype: :class:`tencentcloud.live.v20180801.models.GetVodDrmLicenseResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("GetVodDrmLicense", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.GetVodDrmLicenseResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise e
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ModifyLivePlayAuthKey(self, request):
+        """修改播放鉴权key
+
+        :param request: 调用ModifyLivePlayAuthKey所需参数的结构体。
+        :type request: :class:`tencentcloud.live.v20180801.models.ModifyLivePlayAuthKeyRequest`
+        :rtype: :class:`tencentcloud.live.v20180801.models.ModifyLivePlayAuthKeyResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ModifyLivePlayAuthKey", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ModifyLivePlayAuthKeyResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise e
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ModifyLivePushAuthKey(self, request):
+        """修改直播推流鉴权key
+
+        :param request: 调用ModifyLivePushAuthKey所需参数的结构体。
+        :type request: :class:`tencentcloud.live.v20180801.models.ModifyLivePushAuthKeyRequest`
+        :rtype: :class:`tencentcloud.live.v20180801.models.ModifyLivePushAuthKeyResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ModifyLivePushAuthKey", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ModifyLivePushAuthKeyResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise e
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def ModifyPullStreamConfig(self, request):
         """更新拉流配置
 
@@ -544,6 +751,34 @@ class LiveClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.SetLiveWatermarkStatusResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise e
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def StartDrmEncryption(self, request):
+        """该接口用于Drm加密请求
+
+        :param request: 调用StartDrmEncryption所需参数的结构体。
+        :type request: :class:`tencentcloud.live.v20180801.models.StartDrmEncryptionRequest`
+        :rtype: :class:`tencentcloud.live.v20180801.models.StartDrmEncryptionResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("StartDrmEncryption", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.StartDrmEncryptionResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

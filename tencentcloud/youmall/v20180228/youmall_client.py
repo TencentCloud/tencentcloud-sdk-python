@@ -81,6 +81,34 @@ class YoumallClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DeletePersonFeature(self, request):
+        """删除顾客特征，仅支持删除黑名单或者白名单用户特征。
+
+        :param request: 调用DeletePersonFeature所需参数的结构体。
+        :type request: :class:`tencentcloud.youmall.v20180228.models.DeletePersonFeatureRequest`
+        :rtype: :class:`tencentcloud.youmall.v20180228.models.DeletePersonFeatureResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DeletePersonFeature", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DeletePersonFeatureResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise e
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeCameraPerson(self, request):
         """通过指定设备ID和指定时段，获取该时段内中收银台摄像设备抓取到顾客头像及身份ID
 
@@ -740,6 +768,34 @@ class YoumallClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyPersonTagInfoResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise e
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ModifyPersonType(self, request):
+        """修改顾客身份类型接口
+
+        :param request: 调用ModifyPersonType所需参数的结构体。
+        :type request: :class:`tencentcloud.youmall.v20180228.models.ModifyPersonTypeRequest`
+        :rtype: :class:`tencentcloud.youmall.v20180228.models.ModifyPersonTypeResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ModifyPersonType", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ModifyPersonTypeResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
