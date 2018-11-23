@@ -133,13 +133,13 @@ class AppInfo(AbstractModel):
         """
         :param AppUrl: app的url，必须保证不用权限校验就可以下载
         :type AppUrl: str
-        :param AppMd5: app的md5
+        :param AppMd5: app的md5，需要正确传递
         :type AppMd5: str
         :param AppSize: app的大小
         :type AppSize: int
         :param FileName: app的文件名，指定后加固后的文件名是{FileName}_legu.apk
         :type FileName: str
-        :param AppPkgName: app的包名
+        :param AppPkgName: app的包名，如果是专业版加固和企业版本加固，需要正确的传递此字段
         :type AppPkgName: str
         :param AppVersion: app的版本号
         :type AppVersion: str
@@ -370,7 +370,7 @@ class CreateBindInstanceResponse(AbstractModel):
         """
         :param Progress: 任务状态: 1-已完成,2-处理中,3-处理出错,4-处理超时
         :type Progress: int
-        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.Progress = None
@@ -379,6 +379,76 @@ class CreateBindInstanceResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.Progress = params.get("Progress")
+        self.RequestId = params.get("RequestId")
+
+
+class CreateCosSecKeyInstanceRequest(AbstractModel):
+    """CreateCosSecKeyInstance请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param CosRegion: 地域信息，例如广州：ap-guangzhou，上海：ap-shanghai，默认为广州。
+        :type CosRegion: str
+        :param Duration: 密钥有效时间，默认为1小时。
+        :type Duration: int
+        """
+        self.CosRegion = None
+        self.Duration = None
+
+
+    def _deserialize(self, params):
+        self.CosRegion = params.get("CosRegion")
+        self.Duration = params.get("Duration")
+
+
+class CreateCosSecKeyInstanceResponse(AbstractModel):
+    """CreateCosSecKeyInstance返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param CosAppid: COS密钥对应的AppId
+        :type CosAppid: int
+        :param CosBucket: COS密钥对应的存储桶名
+        :type CosBucket: str
+        :param CosRegion: 存储桶对应的地域
+        :type CosRegion: str
+        :param ExpireTime: 密钥过期时间
+        :type ExpireTime: int
+        :param CosId: 密钥ID信息
+        :type CosId: str
+        :param CosKey: 密钥KEY信息
+        :type CosKey: str
+        :param CosTocken: 密钥TOCKEN信息
+        :type CosTocken: str
+        :param CosPrefix: 密钥可访问的文件前缀人。例如：CosPrefix=test/123/666，则该密钥只能操作test/123/666为前缀的文件，例如test/123/666/1.txt
+        :type CosPrefix: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.CosAppid = None
+        self.CosBucket = None
+        self.CosRegion = None
+        self.ExpireTime = None
+        self.CosId = None
+        self.CosKey = None
+        self.CosTocken = None
+        self.CosPrefix = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.CosAppid = params.get("CosAppid")
+        self.CosBucket = params.get("CosBucket")
+        self.CosRegion = params.get("CosRegion")
+        self.ExpireTime = params.get("ExpireTime")
+        self.CosId = params.get("CosId")
+        self.CosKey = params.get("CosKey")
+        self.CosTocken = params.get("CosTocken")
+        self.CosPrefix = params.get("CosPrefix")
         self.RequestId = params.get("RequestId")
 
 
@@ -420,7 +490,7 @@ class CreateResourceInstancesResponse(AbstractModel):
         """
         :param ResourceSet: 新创建的资源列表。
         :type ResourceSet: list of str
-        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.ResourceSet = None
@@ -477,7 +547,7 @@ class CreateScanInstancesResponse(AbstractModel):
         :type LimitCount: int
         :param LimitTime: 到期时间
         :type LimitTime: int
-        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.ItemId = None
@@ -533,7 +603,7 @@ class CreateShieldInstanceResponse(AbstractModel):
         :type Progress: int
         :param ItemId: 任务唯一标识
         :type ItemId: str
-        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.Progress = None
@@ -585,7 +655,7 @@ class CreateShieldPlanInstanceResponse(AbstractModel):
         :type PlanId: int
         :param Progress: 任务状态: 1-已完成,2-处理中,3-处理出错,4-处理超时
         :type Progress: int
-        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.PlanId = None
@@ -625,7 +695,7 @@ class DeleteScanInstancesResponse(AbstractModel):
         """
         :param Progress: 任务状态: 1-已完成,2-处理中,3-处理出错,4-处理超时
         :type Progress: int
-        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.Progress = None
@@ -663,7 +733,7 @@ class DeleteShieldInstancesResponse(AbstractModel):
         """
         :param Progress: 任务状态: 1-已完成,2-处理中,3-处理出错,4-处理超时
         :type Progress: int
-        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.Progress = None
@@ -728,7 +798,7 @@ class DescribeResourceInstancesResponse(AbstractModel):
         :type TotalCount: int
         :param ResourceSet: 符合要求的资源数组
         :type ResourceSet: list of ResourceInfo
-        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.TotalCount = None
@@ -800,7 +870,7 @@ class DescribeScanInstancesResponse(AbstractModel):
         :type TotalCount: int
         :param ScanSet: 一个关于app详细信息的结构体，主要包括app的基本信息和扫描状态信息。
         :type ScanSet: list of AppScanSet
-        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.TotalCount = None
@@ -851,7 +921,7 @@ class DescribeScanResultsResponse(AbstractModel):
         :type ScanSet: list of ScanSetInfo
         :param TotalCount: 批量扫描结果的个数
         :type TotalCount: int
-        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.ScanSet = None
@@ -923,7 +993,7 @@ class DescribeShieldInstancesResponse(AbstractModel):
         :type TotalCount: int
         :param AppSet: 一个关于app详细信息的结构体，主要包括app的基本信息和加固信息。
         :type AppSet: list of AppSetInfo
-        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.TotalCount = None
@@ -976,7 +1046,7 @@ class DescribeShieldPlanInstanceResponse(AbstractModel):
         :type ShieldPlanInfo: :class:`tencentcloud.ms.v20180408.models.ShieldPlanInfo`
         :param ResourceServiceInfo: 加固资源信息
         :type ResourceServiceInfo: :class:`tencentcloud.ms.v20180408.models.ResourceServiceInfo`
-        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.BindInfo = None
@@ -1028,12 +1098,18 @@ class DescribeShieldResultResponse(AbstractModel):
         :type AppDetailInfo: :class:`tencentcloud.ms.v20180408.models.AppDetailInfo`
         :param ShieldInfo: app加固后的详细信息
         :type ShieldInfo: :class:`tencentcloud.ms.v20180408.models.ShieldInfo`
-        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :param StatusDesc: 状态描述
+        :type StatusDesc: str
+        :param StatusRef: 状态指引
+        :type StatusRef: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.TaskStatus = None
         self.AppDetailInfo = None
         self.ShieldInfo = None
+        self.StatusDesc = None
+        self.StatusRef = None
         self.RequestId = None
 
 
@@ -1045,6 +1121,8 @@ class DescribeShieldResultResponse(AbstractModel):
         if params.get("ShieldInfo") is not None:
             self.ShieldInfo = ShieldInfo()
             self.ShieldInfo._deserialize(params.get("ShieldInfo"))
+        self.StatusDesc = params.get("StatusDesc")
+        self.StatusRef = params.get("StatusRef")
         self.RequestId = params.get("RequestId")
 
 
@@ -1312,6 +1390,12 @@ class ScanSetInfo(AbstractModel):
         :type AdInfo: :class:`tencentcloud.ms.v20180408.models.AdInfo`
         :param TaskTime: 提交扫描的时间
         :type TaskTime: int
+        :param StatusCode: 状态码，成功返回0，失败返回错误码
+        :type StatusCode: int
+        :param StatusDesc: 状态描述
+        :type StatusDesc: str
+        :param StatusRef: 状态操作指引
+        :type StatusRef: str
         """
         self.TaskStatus = None
         self.AppDetailInfo = None
@@ -1319,6 +1403,9 @@ class ScanSetInfo(AbstractModel):
         self.VulInfo = None
         self.AdInfo = None
         self.TaskTime = None
+        self.StatusCode = None
+        self.StatusDesc = None
+        self.StatusRef = None
 
 
     def _deserialize(self, params):
@@ -1336,6 +1423,9 @@ class ScanSetInfo(AbstractModel):
             self.AdInfo = AdInfo()
             self.AdInfo._deserialize(params.get("AdInfo"))
         self.TaskTime = params.get("TaskTime")
+        self.StatusCode = params.get("StatusCode")
+        self.StatusDesc = params.get("StatusDesc")
+        self.StatusRef = params.get("StatusRef")
 
 
 class ServiceInfo(AbstractModel):
@@ -1345,11 +1435,11 @@ class ServiceInfo(AbstractModel):
 
     def __init__(self):
         """
-        :param ServiceEdition: 服务版本，基础版basic，专业版professional，企业版enterprise
+        :param ServiceEdition: 服务版本，基础版basic，专业版professional，企业版enterprise。
         :type ServiceEdition: str
-        :param CallbackUrl: 任务处理完成后的反向通知回调地址,通知为POST请求，post包体数据示例{"Response":{"ItemId":"4cdad8fb86f036b06bccb3f58971c306","ShieldCode":0,"ShieldMd5":"78701576793c4a5f04e1c9660de0aa0b","ShieldSize":11997354,"TaskStatus":1,"TaskTime":1539148141}}，调用方需要返回如下信息，{"Result":"ok","Reason":"xxxxx"}，如果Result字段值不等于ok会继续回调。
+        :param CallbackUrl: 任务处理完成后的反向通知回调地址，如果不需要通知请传递空字符串。通知为POST请求，post包体数据示例{"Response":{"ItemId":"4cdad8fb86f036b06bccb3f58971c306","ShieldCode":0,"ShieldMd5":"78701576793c4a5f04e1c9660de0aa0b","ShieldSize":11997354,"TaskStatus":1,"TaskTime":1539148141}}，调用方需要返回如下信息，{"Result":"ok","Reason":"xxxxx"}，如果Result字段值不等于ok会继续回调。
         :type CallbackUrl: str
-        :param SubmitSource: 提交来源 YYB-应用宝 RDM-rdm MC-控制台 MAC_TOOL-mac工具 WIN_TOOL-window工具
+        :param SubmitSource: 提交来源 YYB-应用宝 RDM-rdm MC-控制台 MAC_TOOL-mac工具 WIN_TOOL-window工具。
         :type SubmitSource: str
         :param PlanId: 加固策略编号，如果不传则使用系统默认加固策略。如果指定的plan不存在会返回错误。
         :type PlanId: int

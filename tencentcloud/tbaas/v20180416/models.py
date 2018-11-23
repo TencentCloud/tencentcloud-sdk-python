@@ -68,7 +68,7 @@ class GetInvokeTxResponse(AbstractModel):
         :type TxValidationCode: int
         :param TxValidationMsg: 消息
         :type TxValidationMsg: str
-        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.TxValidationCode = None
@@ -147,7 +147,7 @@ class InvokeResponse(AbstractModel):
         :type Txid: str
         :param Events: 返回内容
         :type Events: str
-        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.Txid = None
@@ -241,7 +241,7 @@ class QueryResponse(AbstractModel):
         """
         :param Data: 查询结果数据
         :type Data: list of str
-        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.Data = None

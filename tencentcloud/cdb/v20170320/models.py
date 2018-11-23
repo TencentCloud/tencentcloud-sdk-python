@@ -2586,7 +2586,7 @@ class InstanceInfo(AbstractModel):
 
     def __init__(self):
         """
-        :param WanStatus: 外网状态，可能的返回值为：0-未开通外网；1-已开通外网
+        :param WanStatus: 外网状态，可能的返回值为：0-未开通外网；1-已开通外网；2-已关闭外网
         :type WanStatus: int
         :param Zone: 可用区信息
         :type Zone: str
@@ -2654,6 +2654,8 @@ class InstanceInfo(AbstractModel):
         :type UniqVpcId: str
         :param UniqSubnetId: 子网描述符，例如：“subnet-1typ0s7d”
         :type UniqSubnetId: str
+        :param PhysicalId: 物理ID
+        :type PhysicalId: str
         """
         self.WanStatus = None
         self.Zone = None
@@ -2689,6 +2691,7 @@ class InstanceInfo(AbstractModel):
         self.CdbError = None
         self.UniqVpcId = None
         self.UniqSubnetId = None
+        self.PhysicalId = None
 
 
     def _deserialize(self, params):
@@ -2742,6 +2745,7 @@ class InstanceInfo(AbstractModel):
         self.CdbError = params.get("CdbError")
         self.UniqVpcId = params.get("UniqVpcId")
         self.UniqSubnetId = params.get("UniqSubnetId")
+        self.PhysicalId = params.get("PhysicalId")
 
 
 class InstanceRebootTime(AbstractModel):

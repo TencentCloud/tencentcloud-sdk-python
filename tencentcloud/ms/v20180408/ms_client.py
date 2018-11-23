@@ -53,6 +53,34 @@ class MsClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def CreateCosSecKeyInstance(self, request):
+        """获取云COS文件存储临时密钥，密钥仅限于临时上传文件，有访问限制和时效性。
+
+        :param request: 调用CreateCosSecKeyInstance所需参数的结构体。
+        :type request: :class:`tencentcloud.ms.v20180408.models.CreateCosSecKeyInstanceRequest`
+        :rtype: :class:`tencentcloud.ms.v20180408.models.CreateCosSecKeyInstanceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("CreateCosSecKeyInstance", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateCosSecKeyInstanceResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise e
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def CreateResourceInstances(self, request):
         """用户可以使用该接口自建资源，只支持白名单用户
 

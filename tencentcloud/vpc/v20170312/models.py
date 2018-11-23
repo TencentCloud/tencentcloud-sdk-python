@@ -317,9 +317,9 @@ class AssignPrivateIpAddressesRequest(AbstractModel):
         """
         :param NetworkInterfaceId: 弹性网卡实例ID，例如：eni-m6dyj72l。
         :type NetworkInterfaceId: str
-        :param PrivateIpAddresses: 指定的内网IP信息。
+        :param PrivateIpAddresses: 指定的内网IP信息，单次最多指定10个。
         :type PrivateIpAddresses: list of PrivateIpAddressSpecification
-        :param SecondaryPrivateIpAddressCount: 新申请的内网IP地址个数。
+        :param SecondaryPrivateIpAddressCount: 新申请的内网IP地址个数，内网IP地址个数总和不能超过配数。
         :type SecondaryPrivateIpAddressCount: int
         """
         self.NetworkInterfaceId = None
@@ -627,30 +627,35 @@ class CcnAttachedInstance(AbstractModel):
 
     def __init__(self):
         """
-        :param CcnId: 云联网实例ID
+        :param CcnId: 云联网实例ID。
         :type CcnId: str
-        :param InstanceType: 关联实例类型，可选值：VPC、DIRECTCONNECT
+        :param InstanceType: 关联实例类型：
+<li>`VPC`：私有网络</li>
+<li>`DIRECTCONNECT`：专线网关</li>
+<li>`BMVPC`：黑石私有网络</li>
         :type InstanceType: str
-        :param InstanceId: 关联实例ID
+        :param InstanceId: 关联实例ID。
         :type InstanceId: str
-        :param InstanceName: 关联实例名称
+        :param InstanceName: 关联实例名称。
         :type InstanceName: str
-        :param InstanceRegion: 关联实例所属大区，例如：ap-guangzhou
+        :param InstanceRegion: 关联实例所属大区，例如：ap-guangzhou。
         :type InstanceRegion: str
-        :param InstanceUin: 关联实例所属UIN（根账号）
+        :param InstanceUin: 关联实例所属UIN（根账号）。
         :type InstanceUin: str
-        :param CidrBlock: 关联实例CIDR
+        :param CidrBlock: 关联实例CIDR。
         :type CidrBlock: list of str
         :param State: 关联实例状态：
-PENDING：申请中
-ACTIVE：已连接
-EXPIRED：已过期
-REJECTED：已拒绝
-DELETED：已删除
+<li>`PENDING`：申请中</li>
+<li>`ACTIVE`：已连接</li>
+<li>`EXPIRED`：已过期</li>
+<li>`REJECTED`：已拒绝</li>
+<li>`DELETED`：已删除</li>
+<li>`ATTACHING`：关联中</li>
+<li>`DETACHING`：解关联中</li>
         :type State: str
-        :param AttachedTime: 关联时间
+        :param AttachedTime: 关联时间。
         :type AttachedTime: str
-        :param CcnUin: 云联网所属UIN（根账号）
+        :param CcnUin: 云联网所属UIN（根账号）。
         :type CcnUin: str
         """
         self.CcnId = None
@@ -685,11 +690,14 @@ class CcnInstance(AbstractModel):
 
     def __init__(self):
         """
-        :param InstanceId: 关联实例ID
+        :param InstanceId: 关联实例ID。
         :type InstanceId: str
-        :param InstanceRegion: 关联实例ID所属大区，例如：ap-guangzhou
+        :param InstanceRegion: 关联实例ID所属大区，例如：ap-guangzhou。
         :type InstanceRegion: str
-        :param InstanceType: 关联实例类型，可选值：VPC、DIRECTCONNECT
+        :param InstanceType: 关联实例类型，可选值：
+<li>`VPC`：私有网络</li>
+<li>`DIRECTCONNECT`：专线网关</li>
+<li>`BMVPC`：黑石私有网络</li>
         :type InstanceType: str
         """
         self.InstanceId = None
@@ -1172,6 +1180,58 @@ class CreateDirectConnectGatewayResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class CreateHaVipRequest(AbstractModel):
+    """CreateHaVip请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param VpcId: `HAVIP`所在私有网络`ID`。
+        :type VpcId: str
+        :param SubnetId: `HAVIP`所在子网`ID`。
+        :type SubnetId: str
+        :param HaVipName: `HAVIP`名称。
+        :type HaVipName: str
+        :param Vip: 指定虚拟IP地址，必须在`VPC`网段内且未被占用。不指定则自动分配。
+        :type Vip: str
+        """
+        self.VpcId = None
+        self.SubnetId = None
+        self.HaVipName = None
+        self.Vip = None
+
+
+    def _deserialize(self, params):
+        self.VpcId = params.get("VpcId")
+        self.SubnetId = params.get("SubnetId")
+        self.HaVipName = params.get("HaVipName")
+        self.Vip = params.get("Vip")
+
+
+class CreateHaVipResponse(AbstractModel):
+    """CreateHaVip返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param HaVip: `HAVIP`对象。
+        :type HaVip: :class:`tencentcloud.vpc.v20170312.models.HaVip`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.HaVip = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("HaVip") is not None:
+            self.HaVip = HaVip()
+            self.HaVip._deserialize(params.get("HaVip"))
+        self.RequestId = params.get("RequestId")
+
+
 class CreateNetworkInterfaceRequest(AbstractModel):
     """CreateNetworkInterface请求参数结构体
 
@@ -1187,11 +1247,11 @@ class CreateNetworkInterfaceRequest(AbstractModel):
         :type SubnetId: str
         :param NetworkInterfaceDescription: 弹性网卡描述，可任意命名，但不得超过60个字符。
         :type NetworkInterfaceDescription: str
-        :param SecondaryPrivateIpAddressCount: 新申请的内网IP地址个数。
+        :param SecondaryPrivateIpAddressCount: 新申请的内网IP地址个数，内网IP地址个数总和不能超过配数。
         :type SecondaryPrivateIpAddressCount: int
         :param SecurityGroupIds: 指定绑定的安全组，例如：['sg-1dd51d']。
         :type SecurityGroupIds: list of str
-        :param PrivateIpAddresses: 指定内网IP信息。
+        :param PrivateIpAddresses: 指定的内网IP信息，单次最多指定10个。
         :type PrivateIpAddresses: list of PrivateIpAddressSpecification
         """
         self.VpcId = None
@@ -2019,6 +2079,74 @@ class DeleteDirectConnectGatewayCcnRoutesRequest(AbstractModel):
 
 class DeleteDirectConnectGatewayCcnRoutesResponse(AbstractModel):
     """DeleteDirectConnectGatewayCcnRoutes返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class DeleteDirectConnectGatewayRequest(AbstractModel):
+    """DeleteDirectConnectGateway请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param DirectConnectGatewayId: 专线网关唯一`ID`，形如：`dcg-9o233uri`。
+        :type DirectConnectGatewayId: str
+        """
+        self.DirectConnectGatewayId = None
+
+
+    def _deserialize(self, params):
+        self.DirectConnectGatewayId = params.get("DirectConnectGatewayId")
+
+
+class DeleteDirectConnectGatewayResponse(AbstractModel):
+    """DeleteDirectConnectGateway返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class DeleteHaVipRequest(AbstractModel):
+    """DeleteHaVip请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param HaVipId: `HAVIP`唯一`ID`，形如：`havip-9o233uri`。
+        :type HaVipId: str
+        """
+        self.HaVipId = None
+
+
+    def _deserialize(self, params):
+        self.HaVipId = params.get("HaVipId")
+
+
+class DeleteHaVipResponse(AbstractModel):
+    """DeleteHaVip返回参数结构体
 
     """
 
@@ -3208,14 +3336,28 @@ class DescribeDirectConnectGatewayCcnRoutesRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param DirectConnectGatewayId: 专线网关ID，形如：dcg-prpqlmg1
+        :param DirectConnectGatewayId: 专线网关ID，形如：`dcg-prpqlmg1`。
         :type DirectConnectGatewayId: str
+        :param CcnRouteType: 云联网路由学习类型，可选值：
+<li>`BGP` - 自动学习。</li>
+<li>`STATIC` - 静态，即用户配置，默认值。</li>
+        :type CcnRouteType: str
+        :param Offset: 偏移量。
+        :type Offset: int
+        :param Limit: 返回数量。
+        :type Limit: int
         """
         self.DirectConnectGatewayId = None
+        self.CcnRouteType = None
+        self.Offset = None
+        self.Limit = None
 
 
     def _deserialize(self, params):
         self.DirectConnectGatewayId = params.get("DirectConnectGatewayId")
+        self.CcnRouteType = params.get("CcnRouteType")
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
 
 
 class DescribeDirectConnectGatewayCcnRoutesResponse(AbstractModel):
@@ -3245,6 +3387,146 @@ class DescribeDirectConnectGatewayCcnRoutesResponse(AbstractModel):
                 obj = DirectConnectGatewayCcnRoute()
                 obj._deserialize(item)
                 self.RouteSet.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeDirectConnectGatewaysRequest(AbstractModel):
+    """DescribeDirectConnectGateways请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param DirectConnectGatewayIds: 专线网关唯一`ID`，形如：`dcg-9o233uri`。
+        :type DirectConnectGatewayIds: list of str
+        :param Filters: 过滤条件，参数不支持同时指定`DirectConnectGatewayIds`和`Filters`。
+<li>direct-connect-gateway-id - String - 专线网关唯一`ID`，形如：`dcg-9o233uri`。</li>
+<li>direct-connect-gateway-name - String - 专线网关名称，默认模糊查询。</li>
+<li>direct-connect-gateway-ip - String - 专线网关`IP`。</li>
+<li>gateway-type - String - 网关类型，可选值：`NORMAL`（普通型）、`NAT`（NAT型）。</li>
+<li>network-type- String - 网络类型，可选值：`VPC`（私有网络类型）、`CCN`（云联网类型）。</li>
+<li>ccn-id - String - 专线网关所在私有网络`ID`。</li>
+<li>vpc-id - String - 专线网关所在云联网`ID`。</li>
+        :type Filters: list of Filter
+        :param Offset: 偏移量。
+        :type Offset: int
+        :param Limit: 返回数量。
+        :type Limit: int
+        """
+        self.DirectConnectGatewayIds = None
+        self.Filters = None
+        self.Offset = None
+        self.Limit = None
+
+
+    def _deserialize(self, params):
+        self.DirectConnectGatewayIds = params.get("DirectConnectGatewayIds")
+        if params.get("Filters") is not None:
+            self.Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self.Filters.append(obj)
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+
+
+class DescribeDirectConnectGatewaysResponse(AbstractModel):
+    """DescribeDirectConnectGateways返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param TotalCount: 符合条件的对象数。
+        :type TotalCount: int
+        :param DirectConnectGatewaySet: 专线网关对象数组。
+        :type DirectConnectGatewaySet: list of DirectConnectGateway
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.DirectConnectGatewaySet = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("DirectConnectGatewaySet") is not None:
+            self.DirectConnectGatewaySet = []
+            for item in params.get("DirectConnectGatewaySet"):
+                obj = DirectConnectGateway()
+                obj._deserialize(item)
+                self.DirectConnectGatewaySet.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeHaVipsRequest(AbstractModel):
+    """DescribeHaVips请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param HaVipIds: `HAVIP`唯一`ID`，形如：`havip-9o233uri`。
+        :type HaVipIds: list of str
+        :param Filters: 过滤条件，参数不支持同时指定`HaVipIds`和`Filters`。
+<li>havip-id - String - `HAVIP`唯一`ID`，形如：`havip-9o233uri`。</li>
+<li>havip-name - String - `HAVIP`名称。</li>
+<li>vpc-id - String - `HAVIP`所在私有网络`ID`。</li>
+<li>subnet-id - String - `HAVIP`所在子网`ID`。</li>
+<li>address-ip - String - `HAVIP`绑定的弹性公网`IP`。</li>
+        :type Filters: list of Filter
+        :param Offset: 偏移量
+        :type Offset: int
+        :param Limit: 返回数量
+        :type Limit: int
+        """
+        self.HaVipIds = None
+        self.Filters = None
+        self.Offset = None
+        self.Limit = None
+
+
+    def _deserialize(self, params):
+        self.HaVipIds = params.get("HaVipIds")
+        if params.get("Filters") is not None:
+            self.Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self.Filters.append(obj)
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+
+
+class DescribeHaVipsResponse(AbstractModel):
+    """DescribeHaVips返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param TotalCount: 符合条件的对象数。
+        :type TotalCount: int
+        :param HaVipSet: `HAVIP`对象数组。
+        :type HaVipSet: list of HaVip
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.HaVipSet = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("HaVipSet") is not None:
+            self.HaVipSet = []
+            for item in params.get("HaVipSet"):
+                obj = HaVip()
+                obj._deserialize(item)
+                self.HaVipSet.append(obj)
         self.RequestId = params.get("RequestId")
 
 
@@ -4106,27 +4388,37 @@ class DirectConnectGateway(AbstractModel):
 
     def __init__(self):
         """
-        :param DirectConnectGatewayId: 专线网关ID
+        :param DirectConnectGatewayId: 专线网关`ID`。
         :type DirectConnectGatewayId: str
-        :param DirectConnectGatewayName: 专线网关名称
+        :param DirectConnectGatewayName: 专线网关名称。
         :type DirectConnectGatewayName: str
-        :param VpcId: VPC实例ID
+        :param VpcId: 专线网关关联`VPC`实例`ID`。
         :type VpcId: str
-        :param NetworkType: 关联网络类型，可选值：
-<li>VPC - 私有网络</li>
-<li>CCN - 云联网</li>
+        :param NetworkType: 关联网络类型：
+<li>`VPC` - 私有网络</li>
+<li>`CCN` - 云联网</li>
         :type NetworkType: str
-        :param NetworkInstanceId: <li>NetworkType 为 VPC 时，这里传值为私有网络实例ID</li>
-<li>NetworkType 为 NAT 时，这里传值为云联网实例ID</li>
+        :param NetworkInstanceId: 关联网络实例`ID`：
+<li>`NetworkType`为`VPC`时，这里为私有网络实例`ID`</li>
+<li>`NetworkType`为`CCN`时，这里为云联网实例`ID`</li>
         :type NetworkInstanceId: str
-        :param GatewayType: 网关类型，可选值：
-<li>NORMAL - （默认）标准型，注：云联网只支持标准型</li>
-<li>NAT - NAT型</li>NAT类型支持网络地址转换配置，类型确定后不能修改；一个私有网络可以创建一个NAT类型的专线网关和一个非NAT类型的专线网关
+        :param GatewayType: 网关类型：
+<li>NORMAL - 标准型，注：云联网只支持标准型</li>
+<li>NAT - NAT型</li>
+NAT类型支持网络地址转换配置，类型确定后不能修改；一个私有网络可以创建一个NAT类型的专线网关和一个非NAT类型的专线网关
         :type GatewayType: str
-        :param DirectConnectTunnelCount: 专线通道数
-        :type DirectConnectTunnelCount: int
-        :param CreateTime: 创建时间
+        :param CreateTime: 创建时间。
         :type CreateTime: str
+        :param DirectConnectGatewayIp: 专线网关IP。
+        :type DirectConnectGatewayIp: str
+        :param CcnId: 专线网关关联`CCN`实例`ID`。
+        :type CcnId: str
+        :param CcnRouteType: 云联网路由学习类型：
+<li>`BGP` - 自动学习。</li>
+<li>`STATIC` - 静态，即用户配置。</li>
+        :type CcnRouteType: str
+        :param EnableBGP: 是否启用BGP。
+        :type EnableBGP: bool
         """
         self.DirectConnectGatewayId = None
         self.DirectConnectGatewayName = None
@@ -4134,8 +4426,11 @@ class DirectConnectGateway(AbstractModel):
         self.NetworkType = None
         self.NetworkInstanceId = None
         self.GatewayType = None
-        self.DirectConnectTunnelCount = None
         self.CreateTime = None
+        self.DirectConnectGatewayIp = None
+        self.CcnId = None
+        self.CcnRouteType = None
+        self.EnableBGP = None
 
 
     def _deserialize(self, params):
@@ -4145,8 +4440,11 @@ class DirectConnectGateway(AbstractModel):
         self.NetworkType = params.get("NetworkType")
         self.NetworkInstanceId = params.get("NetworkInstanceId")
         self.GatewayType = params.get("GatewayType")
-        self.DirectConnectTunnelCount = params.get("DirectConnectTunnelCount")
         self.CreateTime = params.get("CreateTime")
+        self.DirectConnectGatewayIp = params.get("DirectConnectGatewayIp")
+        self.CcnId = params.get("CcnId")
+        self.CcnRouteType = params.get("CcnRouteType")
+        self.EnableBGP = params.get("EnableBGP")
 
 
 class DirectConnectGatewayCcnRoute(AbstractModel):
@@ -4156,18 +4454,22 @@ class DirectConnectGatewayCcnRoute(AbstractModel):
 
     def __init__(self):
         """
-        :param RouteId: 路由ID
+        :param RouteId: 路由ID。
         :type RouteId: str
-        :param DestinationCidrBlock: IDC网段
+        :param DestinationCidrBlock: IDC网段。
         :type DestinationCidrBlock: str
+        :param ASPath: `BGP`的`AS-Path`属性。
+        :type ASPath: list of str
         """
         self.RouteId = None
         self.DestinationCidrBlock = None
+        self.ASPath = None
 
 
     def _deserialize(self, params):
         self.RouteId = params.get("RouteId")
         self.DestinationCidrBlock = params.get("DestinationCidrBlock")
+        self.ASPath = params.get("ASPath")
 
 
 class DisableCcnRoutesRequest(AbstractModel):
@@ -4452,6 +4754,133 @@ class FilterObject(AbstractModel):
     def _deserialize(self, params):
         self.Name = params.get("Name")
         self.Values = params.get("Values")
+
+
+class HaVip(AbstractModel):
+    """描述 HAVIP 信息
+
+    """
+
+    def __init__(self):
+        """
+        :param HaVipId: `HAVIP`的`ID`，是`HAVIP`的唯一标识。
+        :type HaVipId: str
+        :param HaVipName: `HAVIP`名称。
+        :type HaVipName: str
+        :param Vip: 虚拟IP地址。
+        :type Vip: str
+        :param VpcId: `HAVIP`所在私有网络`ID`。
+        :type VpcId: str
+        :param SubnetId: `HAVIP`所在子网`ID`。
+        :type SubnetId: str
+        :param NetworkInterfaceId: `HAVIP`关联弹性网卡`ID`。
+        :type NetworkInterfaceId: str
+        :param InstanceId: 被绑定的实例`ID`。
+        :type InstanceId: str
+        :param AddressIp: 绑定`EIP`。
+        :type AddressIp: str
+        :param State: 状态：
+<li>`AVAILABLE`：运行中</li>
+<li>`UNBIND`：未绑定</li>
+        :type State: str
+        :param CreatedTime: 创建时间。
+        :type CreatedTime: str
+        """
+        self.HaVipId = None
+        self.HaVipName = None
+        self.Vip = None
+        self.VpcId = None
+        self.SubnetId = None
+        self.NetworkInterfaceId = None
+        self.InstanceId = None
+        self.AddressIp = None
+        self.State = None
+        self.CreatedTime = None
+
+
+    def _deserialize(self, params):
+        self.HaVipId = params.get("HaVipId")
+        self.HaVipName = params.get("HaVipName")
+        self.Vip = params.get("Vip")
+        self.VpcId = params.get("VpcId")
+        self.SubnetId = params.get("SubnetId")
+        self.NetworkInterfaceId = params.get("NetworkInterfaceId")
+        self.InstanceId = params.get("InstanceId")
+        self.AddressIp = params.get("AddressIp")
+        self.State = params.get("State")
+        self.CreatedTime = params.get("CreatedTime")
+
+
+class HaVipAssociateAddressIpRequest(AbstractModel):
+    """HaVipAssociateAddressIp请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param HaVipId: `HAVIP`唯一`ID`，形如：`havip-9o233uri`。必须是没有绑定`EIP`的`HAVIP`
+        :type HaVipId: str
+        :param AddressIp: 弹性公网`IP`。必须是没有绑定`HAVIP`的`EIP`
+        :type AddressIp: str
+        """
+        self.HaVipId = None
+        self.AddressIp = None
+
+
+    def _deserialize(self, params):
+        self.HaVipId = params.get("HaVipId")
+        self.AddressIp = params.get("AddressIp")
+
+
+class HaVipAssociateAddressIpResponse(AbstractModel):
+    """HaVipAssociateAddressIp返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class HaVipDisassociateAddressIpRequest(AbstractModel):
+    """HaVipDisassociateAddressIp请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param HaVipId: `HAVIP`唯一`ID`，形如：`havip-9o233uri`。必须是已绑定`EIP`的`HAVIP`。
+        :type HaVipId: str
+        """
+        self.HaVipId = None
+
+
+    def _deserialize(self, params):
+        self.HaVipId = params.get("HaVipId")
+
+
+class HaVipDisassociateAddressIpResponse(AbstractModel):
+    """HaVipDisassociateAddressIp返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
 
 
 class IKEOptionsSpecification(AbstractModel):
@@ -5093,6 +5522,86 @@ class ModifyCustomerGatewayAttributeRequest(AbstractModel):
 
 class ModifyCustomerGatewayAttributeResponse(AbstractModel):
     """ModifyCustomerGatewayAttribute返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class ModifyDirectConnectGatewayAttributeRequest(AbstractModel):
+    """ModifyDirectConnectGatewayAttribute请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param DirectConnectGatewayId: 专线网关唯一`ID`，形如：`dcg-9o233uri`。
+        :type DirectConnectGatewayId: str
+        :param DirectConnectGatewayName: 专线网关名称，可任意命名，但不得超过60个字符。
+        :type DirectConnectGatewayName: str
+        :param CcnRouteType: 云联网路由学习类型，可选值：`BGP`（自动学习）、`STATIC`（静态，即用户配置）。只有云联网类型专线网关且开启了BGP功能才支持修改`CcnRouteType`。
+        :type CcnRouteType: str
+        """
+        self.DirectConnectGatewayId = None
+        self.DirectConnectGatewayName = None
+        self.CcnRouteType = None
+
+
+    def _deserialize(self, params):
+        self.DirectConnectGatewayId = params.get("DirectConnectGatewayId")
+        self.DirectConnectGatewayName = params.get("DirectConnectGatewayName")
+        self.CcnRouteType = params.get("CcnRouteType")
+
+
+class ModifyDirectConnectGatewayAttributeResponse(AbstractModel):
+    """ModifyDirectConnectGatewayAttribute返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class ModifyHaVipAttributeRequest(AbstractModel):
+    """ModifyHaVipAttribute请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param HaVipId: `HAVIP`唯一`ID`，形如：`havip-9o233uri`。
+        :type HaVipId: str
+        :param HaVipName: `HAVIP`名称，可任意命名，但不得超过60个字符。
+        :type HaVipName: str
+        """
+        self.HaVipId = None
+        self.HaVipName = None
+
+
+    def _deserialize(self, params):
+        self.HaVipId = params.get("HaVipId")
+        self.HaVipName = params.get("HaVipName")
+
+
+class ModifyHaVipAttributeResponse(AbstractModel):
+    """ModifyHaVipAttribute返回参数结构体
 
     """
 
@@ -6565,7 +7074,7 @@ class SecurityGroupPolicy(AbstractModel):
         :type ServiceTemplate: :class:`tencentcloud.vpc.v20170312.models.ServiceTemplateSpecification`
         :param CidrBlock: 网段或IP(互斥)。
         :type CidrBlock: str
-        :param SecurityGroupId: 已绑定安全组的网段或IP。
+        :param SecurityGroupId: 安全组实例ID，例如：sg-ohuuioma。
         :type SecurityGroupId: str
         :param AddressTemplate: IP地址ID或者ID地址组ID。
         :type AddressTemplate: :class:`tencentcloud.vpc.v20170312.models.AddressTemplateSpecification`
@@ -6875,7 +7384,7 @@ class UnassignPrivateIpAddressesRequest(AbstractModel):
         """
         :param NetworkInterfaceId: 弹性网卡实例ID，例如：eni-m6dyj72l。
         :type NetworkInterfaceId: str
-        :param PrivateIpAddresses: 指定的内网IP信息。
+        :param PrivateIpAddresses: 指定的内网IP信息，单次最多指定10个。
         :type PrivateIpAddresses: list of PrivateIpAddressSpecification
         """
         self.NetworkInterfaceId = None

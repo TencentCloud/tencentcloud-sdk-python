@@ -202,7 +202,7 @@ class CreatePullStreamConfigRequest(AbstractModel):
         """
         :param FromUrl: 源Url。
         :type FromUrl: str
-        :param ToUrl: 目的Url。
+        :param ToUrl: 目的Url，目前限制该目标地址为腾讯域名。
         :type ToUrl: str
         :param AreaId: 区域id,1-深圳,2-上海，3-天津,4-香港。
         :type AreaId: int
@@ -323,54 +323,6 @@ class DeleteLiveWatermarkResponse(AbstractModel):
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
-
-
-class DescribeDrmEncryptKeysRequest(AbstractModel):
-    """DescribeDrmEncryptKeys请求参数结构体
-
-    """
-
-    def __init__(self):
-        """
-        :param DrmGetKeyPara: 获取key所需要的参数。
-        :type DrmGetKeyPara: :class:`tencentcloud.live.v20180801.models.DrmGetKeyPara`
-        :param RsaSignature: base64 编码的DrmGetKeyPara参数数字签名。
-        :type RsaSignature: str
-        """
-        self.DrmGetKeyPara = None
-        self.RsaSignature = None
-
-
-    def _deserialize(self, params):
-        if params.get("DrmGetKeyPara") is not None:
-            self.DrmGetKeyPara = DrmGetKeyPara()
-            self.DrmGetKeyPara._deserialize(params.get("DrmGetKeyPara"))
-        self.RsaSignature = params.get("RsaSignature")
-
-
-class DescribeDrmEncryptKeysResponse(AbstractModel):
-    """DescribeDrmEncryptKeys返回参数结构体
-
-    """
-
-    def __init__(self):
-        """
-        :param EncryptKeys: base64加密后的EncryptKeys信息。
-        :type EncryptKeys: str
-        :param SessionKey: 使用公钥加密的sessionkey，用来使用aes-128 ecb模式解码encryptkeys中key和iv。
-        :type SessionKey: str
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
-        self.EncryptKeys = None
-        self.SessionKey = None
-        self.RequestId = None
-
-
-    def _deserialize(self, params):
-        self.EncryptKeys = params.get("EncryptKeys")
-        self.SessionKey = params.get("SessionKey")
         self.RequestId = params.get("RequestId")
 
 
@@ -816,175 +768,6 @@ class DescribePullStreamConfigsResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
-class DrmEncryptInfo(AbstractModel):
-    """Drm加密请求信息
-
-    """
-
-    def __init__(self):
-        """
-        :param CosEndPoint: cos的end point。
-        :type CosEndPoint: str
-        :param SecretId: cos api密钥id。
-        :type SecretId: str
-        :param SecretKey: cos api密钥。
-        :type SecretKey: str
-        :param DrmType: drm类型，widevine或fairplay
-        :type DrmType: str
-        :param SourceObject: cos上的原始视频。
-        :type SourceObject: :class:`tencentcloud.live.v20180801.models.DrmSourceObject`
-        :param OutputObjects: 加密的视频传输到cos位置。
-        :type OutputObjects: list of DrmOutputObject
-        """
-        self.CosEndPoint = None
-        self.SecretId = None
-        self.SecretKey = None
-        self.DrmType = None
-        self.SourceObject = None
-        self.OutputObjects = None
-
-
-    def _deserialize(self, params):
-        self.CosEndPoint = params.get("CosEndPoint")
-        self.SecretId = params.get("SecretId")
-        self.SecretKey = params.get("SecretKey")
-        self.DrmType = params.get("DrmType")
-        if params.get("SourceObject") is not None:
-            self.SourceObject = DrmSourceObject()
-            self.SourceObject._deserialize(params.get("SourceObject"))
-        if params.get("OutputObjects") is not None:
-            self.OutputObjects = []
-            for item in params.get("OutputObjects"):
-                obj = DrmOutputObject()
-                obj._deserialize(item)
-                self.OutputObjects.append(obj)
-
-
-class DrmGetKeyPara(AbstractModel):
-    """Drm获取key入参
-
-    """
-
-    def __init__(self):
-        """
-        :param DrmType: drm类型，widevine或fairplay
-        :type DrmType: str
-        :param Tracks: Tracks，audio,video
-        :type Tracks: list of str
-        :param PublicKey: rsa 公钥的base64 编码数据
-        :type PublicKey: str
-        :param ContentID: 内容id，标识唯一一个加密内容
-        :type ContentID: str
-        """
-        self.DrmType = None
-        self.Tracks = None
-        self.PublicKey = None
-        self.ContentID = None
-
-
-    def _deserialize(self, params):
-        self.DrmType = params.get("DrmType")
-        self.Tracks = params.get("Tracks")
-        self.PublicKey = params.get("PublicKey")
-        self.ContentID = params.get("ContentID")
-
-
-class DrmLicenseInfo(AbstractModel):
-    """DrmLicense信息
-
-    """
-
-    def __init__(self):
-        """
-        :param DrmType: drm类型，widevine或fairplay
-        :type DrmType: str
-        :param LicenseReq: base64编码后的License请求。
-        :type LicenseReq: str
-        :param PlaybackPolicy: 播放策略参数
-        :type PlaybackPolicy: :class:`tencentcloud.live.v20180801.models.PlaybackPolicy`
-        """
-        self.DrmType = None
-        self.LicenseReq = None
-        self.PlaybackPolicy = None
-
-
-    def _deserialize(self, params):
-        self.DrmType = params.get("DrmType")
-        self.LicenseReq = params.get("LicenseReq")
-        if params.get("PlaybackPolicy") is not None:
-            self.PlaybackPolicy = PlaybackPolicy()
-            self.PlaybackPolicy._deserialize(params.get("PlaybackPolicy"))
-
-
-class DrmOutputObject(AbstractModel):
-    """Drm加密接口入参
-
-    """
-
-    def __init__(self):
-        """
-        :param BucketName: 输出的桶名称。
-        :type BucketName: str
-        :param ObjectName: 输出的对象名称。
-        :type ObjectName: str
-        :param Para: 输出对象参数。
-        :type Para: :class:`tencentcloud.live.v20180801.models.DrmOutputPara`
-        """
-        self.BucketName = None
-        self.ObjectName = None
-        self.Para = None
-
-
-    def _deserialize(self, params):
-        self.BucketName = params.get("BucketName")
-        self.ObjectName = params.get("ObjectName")
-        if params.get("Para") is not None:
-            self.Para = DrmOutputPara()
-            self.Para._deserialize(params.get("Para"))
-
-
-class DrmOutputPara(AbstractModel):
-    """Drm加密接口入参
-
-    """
-
-    def __init__(self):
-        """
-        :param Type: 内容类型。例:video
-        :type Type: str
-        :param Language: 语言,例: en, zh-cn
-        :type Language: str
-        """
-        self.Type = None
-        self.Language = None
-
-
-    def _deserialize(self, params):
-        self.Type = params.get("Type")
-        self.Language = params.get("Language")
-
-
-class DrmSourceObject(AbstractModel):
-    """源对象
-
-    """
-
-    def __init__(self):
-        """
-        :param BucketName: 输入的桶名称。
-        :type BucketName: str
-        :param ObjectName: 输入对象名称。
-        :type ObjectName: str
-        """
-        self.BucketName = None
-        self.ObjectName = None
-
-
-    def _deserialize(self, params):
-        self.BucketName = params.get("BucketName")
-        self.ObjectName = params.get("ObjectName")
-
-
 class DropLiveStreamRequest(AbstractModel):
     """DropLiveStream请求参数结构体
 
@@ -1041,8 +824,7 @@ class ForbidLiveStreamRequest(AbstractModel):
         :param StreamName: 流名称。
         :type StreamName: str
         :param ResumeTime: 恢复流的时间。UTC 格式，例如：2018-11-29T19:00:00Z。
-
-UTC 时间，格式：2018-08-08T17:37:00Z。
+注意：默认禁播90天，且最长支持禁播90天。
         :type ResumeTime: str
         """
         self.AppName = None
@@ -1072,86 +854,6 @@ class ForbidLiveStreamResponse(AbstractModel):
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
-
-
-class GetLiveDrmLicenseRequest(AbstractModel):
-    """GetLiveDrmLicense请求参数结构体
-
-    """
-
-    def __init__(self):
-        """
-        :param DrmLicenseInfo: DRMlicense信息。
-        :type DrmLicenseInfo: :class:`tencentcloud.live.v20180801.models.DrmLicenseInfo`
-        """
-        self.DrmLicenseInfo = None
-
-
-    def _deserialize(self, params):
-        if params.get("DrmLicenseInfo") is not None:
-            self.DrmLicenseInfo = DrmLicenseInfo()
-            self.DrmLicenseInfo._deserialize(params.get("DrmLicenseInfo"))
-
-
-class GetLiveDrmLicenseResponse(AbstractModel):
-    """GetLiveDrmLicense返回参数结构体
-
-    """
-
-    def __init__(self):
-        """
-        :param License: base64加密后的二进制License信息
-        :type License: str
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
-        self.License = None
-        self.RequestId = None
-
-
-    def _deserialize(self, params):
-        self.License = params.get("License")
-        self.RequestId = params.get("RequestId")
-
-
-class GetVodDrmLicenseRequest(AbstractModel):
-    """GetVodDrmLicense请求参数结构体
-
-    """
-
-    def __init__(self):
-        """
-        :param DrmLicenseInfo: Drmlicense信息。
-        :type DrmLicenseInfo: :class:`tencentcloud.live.v20180801.models.DrmLicenseInfo`
-        """
-        self.DrmLicenseInfo = None
-
-
-    def _deserialize(self, params):
-        if params.get("DrmLicenseInfo") is not None:
-            self.DrmLicenseInfo = DrmLicenseInfo()
-            self.DrmLicenseInfo._deserialize(params.get("DrmLicenseInfo"))
-
-
-class GetVodDrmLicenseResponse(AbstractModel):
-    """GetVodDrmLicense返回参数结构体
-
-    """
-
-    def __init__(self):
-        """
-        :param License: base64 加密的license 二进制数据
-        :type License: str
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
-        self.License = None
-        self.RequestId = None
-
-
-    def _deserialize(self, params):
-        self.License = params.get("License")
         self.RequestId = params.get("RequestId")
 
 
@@ -1379,27 +1081,6 @@ class PlayAuthKeyInfo(AbstractModel):
         self.AuthDelta = params.get("AuthDelta")
 
 
-class PlaybackPolicy(AbstractModel):
-    """PlaybackPolicy参数
-
-    """
-
-    def __init__(self):
-        """
-        :param LicenseDurationSeconds: 播放license有效时长
-        :type LicenseDurationSeconds: int
-        :param PlaybackDurationSeconds: 开始播放后，license的有效时长
-        :type PlaybackDurationSeconds: int
-        """
-        self.LicenseDurationSeconds = None
-        self.PlaybackDurationSeconds = None
-
-
-    def _deserialize(self, params):
-        self.LicenseDurationSeconds = params.get("LicenseDurationSeconds")
-        self.PlaybackDurationSeconds = params.get("PlaybackDurationSeconds")
-
-
 class PublishTime(AbstractModel):
     """推流时间
 
@@ -1603,42 +1284,6 @@ class SetLiveWatermarkStatusRequest(AbstractModel):
 
 class SetLiveWatermarkStatusResponse(AbstractModel):
     """SetLiveWatermarkStatus返回参数结构体
-
-    """
-
-    def __init__(self):
-        """
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
-        self.RequestId = None
-
-
-    def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
-
-
-class StartDrmEncryptionRequest(AbstractModel):
-    """StartDrmEncryption请求参数结构体
-
-    """
-
-    def __init__(self):
-        """
-        :param DrmEncryptInfo: Drm加密所需要的信息。
-        :type DrmEncryptInfo: :class:`tencentcloud.live.v20180801.models.DrmEncryptInfo`
-        """
-        self.DrmEncryptInfo = None
-
-
-    def _deserialize(self, params):
-        if params.get("DrmEncryptInfo") is not None:
-            self.DrmEncryptInfo = DrmEncryptInfo()
-            self.DrmEncryptInfo._deserialize(params.get("DrmEncryptInfo"))
-
-
-class StartDrmEncryptionResponse(AbstractModel):
-    """StartDrmEncryption返回参数结构体
 
     """
 

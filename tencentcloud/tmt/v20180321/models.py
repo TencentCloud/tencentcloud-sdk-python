@@ -209,7 +209,7 @@ class SpeechTranslateRequest(AbstractModel):
         :type Seq: int
         :param IsEnd: 是否最后一片语音分片，0-否，1-是
         :type IsEnd: int
-        :param Data: 语音分片内容的base64字符串
+        :param Data: 语音分片内容的base64字符串，音频内容应含有效并可识别的文本
         :type Data: str
         :param ProjectId: 项目id，用户可自定义
         :type ProjectId: int
@@ -287,7 +287,7 @@ class TextTranslateRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param SourceText: 待翻译的文本，文本统一使用utf-8格式编码，非utf-8格式编码字符会翻译失败
+        :param SourceText: 待翻译的文本，文本统一使用utf-8格式编码，非utf-8格式编码字符会翻译失败，请传入有效文本，html标记等非常规翻译文本会翻译失败
         :type SourceText: str
         :param Source: 源语言，参照Target支持语言列表
         :type Source: str

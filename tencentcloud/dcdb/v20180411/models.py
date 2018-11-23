@@ -87,7 +87,7 @@ class CloneAccountResponse(AbstractModel):
         """
         :param FlowId: 异步任务流程ID
         :type FlowId: int
-        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.FlowId = None
@@ -125,7 +125,7 @@ class CloseDBExtranetAccessResponse(AbstractModel):
         """
         :param FlowId: 异步任务Id，可通过 DescribeFlow 查询任务状态。
         :type FlowId: int
-        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.FlowId = None
@@ -206,7 +206,7 @@ class CopyAccountPrivilegesResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.RequestId = None
@@ -273,7 +273,7 @@ class CreateAccountResponse(AbstractModel):
         :type Host: str
         :param ReadOnly: 透传入参。
         :type ReadOnly: int
-        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.InstanceId = None
@@ -371,7 +371,7 @@ class CreateDCDBInstanceResponse(AbstractModel):
         :type DealName: str
         :param InstanceIds: 订单对应的实例 ID 列表，如果此处没有返回实例 ID，可以通过订单查询接口获取。还可通过实例查询接口查询实例是否创建完成。
         :type InstanceIds: list of str
-        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.DealName = None
@@ -527,6 +527,8 @@ class DCDBInstanceInfo(AbstractModel):
         :type Paymode: str
         :param Locker: 实例处于异步任务状态时，表示异步任务流程ID
         :type Locker: int
+        :param WanStatus: 外网状态，0-未开通；1-已开通；2-关闭；3-开通中
+        :type WanStatus: int
         """
         self.InstanceId = None
         self.InstanceName = None
@@ -564,6 +566,7 @@ class DCDBInstanceInfo(AbstractModel):
         self.DbVersion = None
         self.Paymode = None
         self.Locker = None
+        self.WanStatus = None
 
 
     def _deserialize(self, params):
@@ -608,6 +611,7 @@ class DCDBInstanceInfo(AbstractModel):
         self.DbVersion = params.get("DbVersion")
         self.Paymode = params.get("Paymode")
         self.Locker = params.get("Locker")
+        self.WanStatus = params.get("WanStatus")
 
 
 class DCDBShardInfo(AbstractModel):
@@ -849,7 +853,7 @@ class DeleteAccountResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.RequestId = None
@@ -915,7 +919,7 @@ class DescribeAccountPrivilegesResponse(AbstractModel):
         :type UserName: str
         :param Host: 数据库账号Host
         :type Host: str
-        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.InstanceId = None
@@ -961,7 +965,7 @@ class DescribeAccountsResponse(AbstractModel):
         :type InstanceId: str
         :param Users: 实例用户列表。
         :type Users: list of DBAccount
-        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.InstanceId = None
@@ -1026,7 +1030,7 @@ class DescribeDBLogFilesResponse(AbstractModel):
         :type NormalPrefix: str
         :param ShardId: 分片 ID，形如：shard-7noic7tv
         :type ShardId: str
-        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.InstanceId = None
@@ -1083,7 +1087,7 @@ class DescribeDBParametersResponse(AbstractModel):
         :type InstanceId: str
         :param Params: 请求DB的当前参数值
         :type Params: list of ParamDesc
-        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.InstanceId = None
@@ -1130,7 +1134,7 @@ class DescribeDBSyncModeResponse(AbstractModel):
         :type SyncMode: int
         :param IsModifying: 是否有修改流程在执行中：1 是， 0 否。
         :type IsModifying: int
-        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.SyncMode = None
@@ -1220,7 +1224,7 @@ class DescribeDCDBInstancesResponse(AbstractModel):
         :type TotalCount: int
         :param Instances: 实例详细信息列表
         :type Instances: list of DCDBInstanceInfo
-        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.TotalCount = None
@@ -1294,7 +1298,7 @@ class DescribeDCDBPriceResponse(AbstractModel):
         :type OriginalPrice: int
         :param Price: 实际价格，单位：分。受折扣等影响，可能和原价不同。
         :type Price: int
-        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.OriginalPrice = None
@@ -1340,7 +1344,7 @@ class DescribeDCDBRenewalPriceResponse(AbstractModel):
         :type OriginalPrice: int
         :param Price: 实际价格，单位：分。受折扣等影响，可能和原价不同。
         :type Price: int
-        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.OriginalPrice = None
@@ -1369,7 +1373,7 @@ class DescribeDCDBSaleInfoResponse(AbstractModel):
         """
         :param RegionList: 可售卖地域信息列表
         :type RegionList: list of RegionInfo
-        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.RegionList = None
@@ -1434,7 +1438,7 @@ class DescribeDCDBShardsResponse(AbstractModel):
         :type TotalCount: int
         :param Shards: 分片信息列表
         :type Shards: list of DCDBShardInfo
-        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.TotalCount = None
@@ -1506,7 +1510,7 @@ class DescribeDCDBUpgradePriceResponse(AbstractModel):
         :type OriginalPrice: int
         :param Price: 实际价格，单位：分。受折扣等影响，可能和原价不同。
         :type Price: int
-        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.OriginalPrice = None
@@ -1560,7 +1564,7 @@ class DescribeDatabaseObjectsResponse(AbstractModel):
         :type Procs: list of DatabaseProcedure
         :param Funcs: 函数列表。
         :type Funcs: list of DatabaseFunction
-        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.InstanceId = None
@@ -1642,7 +1646,7 @@ class DescribeDatabaseTableResponse(AbstractModel):
         :type Table: str
         :param Cols: 列信息。
         :type Cols: list of TableColumn
-        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.InstanceId = None
@@ -1693,7 +1697,7 @@ class DescribeDatabasesResponse(AbstractModel):
         :type Databases: list of Database
         :param InstanceId: 透传入参。
         :type InstanceId: str
-        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.Databases = None
@@ -1740,7 +1744,7 @@ class DescribeOrdersResponse(AbstractModel):
         :type TotalCount: list of int
         :param Deals: 订单信息列表。
         :type Deals: list of Deal
-        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.TotalCount = None
@@ -1774,7 +1778,7 @@ class DescribeShardSpecResponse(AbstractModel):
         """
         :param SpecConfig: 按机型分类的可售卖规格列表
         :type SpecConfig: list of SpecConfig
-        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.SpecConfig = None
@@ -1835,7 +1839,7 @@ class DescribeSqlLogsResponse(AbstractModel):
         :type Count: int
         :param SqlItems: Sql日志列表。
         :type SqlItems: list of SqlLogItem
-        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.TotalCount = None
@@ -1943,7 +1947,7 @@ class GrantAccountPrivilegesResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.RequestId = None
@@ -1990,7 +1994,7 @@ class InitDCDBInstancesResponse(AbstractModel):
         :type FlowIds: list of int non-negative
         :param InstanceIds: 透传入参。
         :type InstanceIds: list of str
-        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.FlowIds = None
@@ -2065,7 +2069,7 @@ class ModifyAccountDescriptionResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.RequestId = None
@@ -2103,7 +2107,7 @@ class ModifyDBInstancesProjectResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.RequestId = None
@@ -2150,7 +2154,7 @@ class ModifyDBParametersResponse(AbstractModel):
         :type InstanceId: str
         :param Result: 各参数修改结果
         :type Result: list of ParamModifyResult
-        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.InstanceId = None
@@ -2199,7 +2203,7 @@ class ModifyDBSyncModeResponse(AbstractModel):
         """
         :param FlowId: 异步任务Id，可通过 DescribeFlow 查询任务状态。
         :type FlowId: int
-        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.FlowId = None
@@ -2237,7 +2241,7 @@ class OpenDBExtranetAccessResponse(AbstractModel):
         """
         :param FlowId: 异步任务Id，可通过 DescribeFlow 查询任务状态。
         :type FlowId: int
-        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.FlowId = None
@@ -2418,7 +2422,7 @@ class RenewDCDBInstanceResponse(AbstractModel):
         :param DealName: 长订单号。可以据此调用 DescribeOrders
  查询订单详细信息，或在支付失败时调用用户账号相关接口进行支付。
         :type DealName: str
-        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.DealName = None
@@ -2466,7 +2470,7 @@ class ResetAccountPasswordResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.RequestId = None
@@ -2783,7 +2787,7 @@ class UpgradeDCDBInstanceResponse(AbstractModel):
         :param DealName: 长订单号。可以据此调用 DescribeOrders
  查询订单详细信息，或在支付失败时调用用户账号相关接口进行支付。
         :type DealName: str
-        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.DealName = None

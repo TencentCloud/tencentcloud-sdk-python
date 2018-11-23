@@ -137,6 +137,34 @@ class RedisClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeInstanceDealDetail(self, request):
+        """查询订单信息
+
+        :param request: 调用DescribeInstanceDealDetail所需参数的结构体。
+        :type request: :class:`tencentcloud.redis.v20180412.models.DescribeInstanceDealDetailRequest`
+        :rtype: :class:`tencentcloud.redis.v20180412.models.DescribeInstanceDealDetailResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeInstanceDealDetail", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeInstanceDealDetailResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise e
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeInstances(self, request):
         """查询Redis实例列表
 
@@ -151,6 +179,62 @@ class RedisClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeInstancesResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise e
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeProductInfo(self, request):
+        """本接口查询指定可用区和实例类型下 Redis 的售卖规格， 如果用户不在购买白名单中，将不能查询该可用区或该类型的售卖规格详情。申请购买某地域白名单可以提交工单
+
+        :param request: 调用DescribeProductInfo所需参数的结构体。
+        :type request: :class:`tencentcloud.redis.v20180412.models.DescribeProductInfoRequest`
+        :rtype: :class:`tencentcloud.redis.v20180412.models.DescribeProductInfoResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeProductInfo", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeProductInfoResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise e
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeTaskInfo(self, request):
+        """用于查询任务结果
+
+        :param request: 调用DescribeTaskInfo所需参数的结构体。
+        :type request: :class:`tencentcloud.redis.v20180412.models.DescribeTaskInfoRequest`
+        :rtype: :class:`tencentcloud.redis.v20180412.models.DescribeTaskInfoResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeTaskInfo", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeTaskInfoResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

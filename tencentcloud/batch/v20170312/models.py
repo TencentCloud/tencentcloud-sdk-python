@@ -41,6 +41,8 @@ class Activity(AbstractModel):
         :type StartTime: str
         :param EndTime: 活动结束时间
         :type EndTime: str
+        :param InstanceId: 云服务器实例ID
+        :type InstanceId: str
         """
         self.ActivityId = None
         self.ComputeNodeId = None
@@ -51,6 +53,7 @@ class Activity(AbstractModel):
         self.StateReason = None
         self.StartTime = None
         self.EndTime = None
+        self.InstanceId = None
 
 
     def _deserialize(self, params):
@@ -63,6 +66,7 @@ class Activity(AbstractModel):
         self.StateReason = params.get("StateReason")
         self.StartTime = params.get("StartTime")
         self.EndTime = params.get("EndTime")
+        self.InstanceId = params.get("InstanceId")
 
 
 class AgentRunningMode(AbstractModel):
@@ -3252,9 +3256,9 @@ class VirtualPrivateCloud(AbstractModel):
 
     def __init__(self):
         """
-        :param VpcId: 私有网络ID，形如`vpc-xxx`。有效的VpcId可通过登录[控制台](https://console.cloud.tencent.com/vpc/vpc?rid=1)查询；也可以调用接口 [DescribeVpcEx](/document/api/215/1372) ，从接口返回中的`unVpcId`字段获取。
+        :param VpcId: 私有网络ID，形如`vpc-xxx`。有效的VpcId可通过登录[控制台](https://console.cloud.tencent.com/vpc/vpc?rid=1)查询；也可以调用接口 [DescribeVpcEx](/document/api/215/1372) ，从接口返回中的`unVpcId`字段获取。若在创建子机时VpcId与SubnetId同时传入`DEFAULT`，则强制使用默认vpc网络。
         :type VpcId: str
-        :param SubnetId: 私有网络子网ID，形如`subnet-xxx`。有效的私有网络子网ID可通过登录[控制台](https://console.cloud.tencent.com/vpc/subnet?rid=1)查询；也可以调用接口  [DescribeSubnets](/document/api/215/15784) ，从接口返回中的`unSubnetId`字段获取。
+        :param SubnetId: 私有网络子网ID，形如`subnet-xxx`。有效的私有网络子网ID可通过登录[控制台](https://console.cloud.tencent.com/vpc/subnet?rid=1)查询；也可以调用接口  [DescribeSubnets](/document/api/215/15784) ，从接口返回中的`unSubnetId`字段获取。若在创建子机时SubnetId与VpcId同时传入`DEFAULT`，则强制使用默认vpc网络。
         :type SubnetId: str
         :param AsVpcGateway: 是否用作公网网关。公网网关只有在实例拥有公网IP以及处于私有网络下时才能正常使用。取值范围：<br><li>TRUE：表示用作公网网关<br><li>FALSE：表示不用作公网网关<br><br>默认取值：FALSE。
         :type AsVpcGateway: bool

@@ -114,7 +114,7 @@ class VpcClient(AbstractClient):
 
     def AssignPrivateIpAddresses(self, request):
         """本接口（AssignPrivateIpAddresses）用于弹性网卡申请内网 IP。
-        * 一个弹性网卡支持绑定的IP地址是有限制的，更多资源限制信息详见<a href="https://cloud.tencent.com/document/product/215/6513">弹性网卡使用限制</a>。
+        * 一个弹性网卡支持绑定的IP地址是有限制的，更多资源限制信息详见<a href="/document/product/576/18527">弹性网卡使用限制</a>。
         * 可以指定内网IP地址申请，内网IP地址类型不能为主IP，主IP已存在，不能修改，内网IP必须要弹性网卡所在子网内，而且不能被占用。
         * 在弹性网卡上申请一个到多个辅助内网IP，接口会在弹性网卡所在子网网段内返回指定数量的辅助内网IP。
 
@@ -500,10 +500,39 @@ class VpcClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def CreateHaVip(self, request):
+        """本接口（CreateHaVip）用于创建高可用虚拟IP（HAVIP）
+
+        :param request: 调用CreateHaVip所需参数的结构体。
+        :type request: :class:`tencentcloud.vpc.v20170312.models.CreateHaVipRequest`
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.CreateHaVipResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("CreateHaVip", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateHaVipResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise e
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def CreateNetworkInterface(self, request):
         """本接口（CreateNetworkInterface）用于创建弹性网卡。
         * 创建弹性网卡时可以指定内网IP，并且可以指定一个主IP，指定的内网IP必须在弹性网卡所在子网内，而且不能被占用。
         * 创建弹性网卡时可以指定需要申请的内网IP数量，系统会随机生成内网IP地址。
+        * 一个弹性网卡支持绑定的IP地址是有限制的，更多资源限制信息详见<a href="/document/product/576/18527">弹性网卡使用限制</a>。
         * 创建弹性网卡同时可以绑定已有安全组。
 
         :param request: 调用CreateNetworkInterface所需参数的结构体。
@@ -973,6 +1002,37 @@ class VpcClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DeleteDirectConnectGateway(self, request):
+        """本接口（DeleteDirectConnectGateway）用于删除专线网关。
+        <li>如果是 NAT 网关，删除专线网关后，NAT 规则以及 ACL 策略都被清理了。</li>
+        <li>删除专线网关后，系统会删除路由表中跟该专线网关相关的路由策略。</li>
+        本接口是异步完成，如需查询异步任务执行结果，请使用本接口返回的`RequestId`轮询`QueryTask`接口
+
+        :param request: 调用DeleteDirectConnectGateway所需参数的结构体。
+        :type request: :class:`tencentcloud.vpc.v20170312.models.DeleteDirectConnectGatewayRequest`
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.DeleteDirectConnectGatewayResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DeleteDirectConnectGateway", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DeleteDirectConnectGatewayResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise e
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DeleteDirectConnectGatewayCcnRoutes(self, request):
         """本接口（DeleteDirectConnectGatewayCcnRoutes）用于删除专线网关的云联网路由（IDC网段）
 
@@ -987,6 +1047,35 @@ class VpcClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteDirectConnectGatewayCcnRoutesResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise e
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DeleteHaVip(self, request):
+        """本接口（DeleteHaVip）用于删除高可用虚拟IP（HAVIP）<br />
+        本接口是异步完成，如需查询异步任务执行结果，请使用本接口返回的`RequestId`轮询`QueryTask`接口
+
+        :param request: 调用DeleteHaVip所需参数的结构体。
+        :type request: :class:`tencentcloud.vpc.v20170312.models.DeleteHaVipRequest`
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.DeleteHaVipResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DeleteHaVip", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DeleteHaVipResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -1739,6 +1828,62 @@ class VpcClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeDirectConnectGateways(self, request):
+        """本接口（DescribeDirectConnectGateways）用于查询专线网关。
+
+        :param request: 调用DescribeDirectConnectGateways所需参数的结构体。
+        :type request: :class:`tencentcloud.vpc.v20170312.models.DescribeDirectConnectGatewaysRequest`
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.DescribeDirectConnectGatewaysResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeDirectConnectGateways", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeDirectConnectGatewaysResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise e
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeHaVips(self, request):
+        """本接口（DescribeHaVips）用于查询高可用虚拟IP（HAVIP）列表。
+
+        :param request: 调用DescribeHaVips所需参数的结构体。
+        :type request: :class:`tencentcloud.vpc.v20170312.models.DescribeHaVipsRequest`
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.DescribeHaVipsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeHaVips", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeHaVipsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise e
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeNetworkInterfaces(self, request):
         """本接口（DescribeNetworkInterfaces）用于查询弹性网卡列表。
 
@@ -2332,6 +2477,64 @@ class VpcClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def HaVipAssociateAddressIp(self, request):
+        """本接口（HaVipAssociateAddressIp）用于高可用虚拟IP（HAVIP）绑定弹性公网IP（EIP）<br />
+        本接口是异步完成，如需查询异步任务执行结果，请使用本接口返回的`RequestId`轮询`QueryTask`接口
+
+        :param request: 调用HaVipAssociateAddressIp所需参数的结构体。
+        :type request: :class:`tencentcloud.vpc.v20170312.models.HaVipAssociateAddressIpRequest`
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.HaVipAssociateAddressIpResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("HaVipAssociateAddressIp", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.HaVipAssociateAddressIpResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise e
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def HaVipDisassociateAddressIp(self, request):
+        """本接口（HaVipDisassociateAddressIp）用于将高可用虚拟IP（HAVIP）已绑定的弹性公网IP（EIP）解除绑定<br />
+        本接口是异步完成，如需查询异步任务执行结果，请使用本接口返回的`RequestId`轮询`QueryTask`接口
+
+        :param request: 调用HaVipDisassociateAddressIp所需参数的结构体。
+        :type request: :class:`tencentcloud.vpc.v20170312.models.HaVipDisassociateAddressIpRequest`
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.HaVipDisassociateAddressIpResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("HaVipDisassociateAddressIp", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.HaVipDisassociateAddressIpResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise e
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def InquiryPriceCreateVpnGateway(self, request):
         """本接口（InquiryPriceCreateVpnGateway）用于创建VPN网关询价。
 
@@ -2657,6 +2860,62 @@ class VpcClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyCustomerGatewayAttributeResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise e
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ModifyDirectConnectGatewayAttribute(self, request):
+        """本接口（ModifyDirectConnectGatewayAttribute）用于修改专线网关属性
+
+        :param request: 调用ModifyDirectConnectGatewayAttribute所需参数的结构体。
+        :type request: :class:`tencentcloud.vpc.v20170312.models.ModifyDirectConnectGatewayAttributeRequest`
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.ModifyDirectConnectGatewayAttributeResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ModifyDirectConnectGatewayAttribute", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ModifyDirectConnectGatewayAttributeResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise e
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ModifyHaVipAttribute(self, request):
+        """本接口（ModifyHaVipAttribute）用于修改高可用虚拟IP（HAVIP）属性
+
+        :param request: 调用ModifyHaVipAttribute所需参数的结构体。
+        :type request: :class:`tencentcloud.vpc.v20170312.models.ModifyHaVipAttributeRequest`
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.ModifyHaVipAttributeResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ModifyHaVipAttribute", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ModifyHaVipAttributeResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

@@ -508,12 +508,15 @@ class DescribeFaceIdByTempIdRequest(AbstractModel):
         :type CameraId: int
         :param PosId: pos机id
         :type PosId: str
+        :param PictureExpires: 图片url过期时间：在当前时间+PictureExpires秒后，图片url无法继续正常访问；单位s；默认值1*24*60*60（1天）
+        :type PictureExpires: int
         """
         self.CompanyId = None
         self.ShopId = None
         self.TempId = None
         self.CameraId = None
         self.PosId = None
+        self.PictureExpires = None
 
 
     def _deserialize(self, params):
@@ -522,6 +525,7 @@ class DescribeFaceIdByTempIdRequest(AbstractModel):
         self.TempId = params.get("TempId")
         self.CameraId = params.get("CameraId")
         self.PosId = params.get("PosId")
+        self.PictureExpires = params.get("PictureExpires")
 
 
 class DescribeFaceIdByTempIdResponse(AbstractModel):
@@ -543,6 +547,8 @@ class DescribeFaceIdByTempIdResponse(AbstractModel):
         :type TempId: str
         :param FaceId: 临时id对应的face id
         :type FaceId: int
+        :param PersonInfo: 顾客属性信息
+        :type PersonInfo: :class:`tencentcloud.youmall.v20180228.models.PersonInfo`
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -552,6 +558,7 @@ class DescribeFaceIdByTempIdResponse(AbstractModel):
         self.PosId = None
         self.TempId = None
         self.FaceId = None
+        self.PersonInfo = None
         self.RequestId = None
 
 
@@ -562,6 +569,9 @@ class DescribeFaceIdByTempIdResponse(AbstractModel):
         self.PosId = params.get("PosId")
         self.TempId = params.get("TempId")
         self.FaceId = params.get("FaceId")
+        if params.get("PersonInfo") is not None:
+            self.PersonInfo = PersonInfo()
+            self.PersonInfo._deserialize(params.get("PersonInfo"))
         self.RequestId = params.get("RequestId")
 
 
@@ -1019,34 +1029,42 @@ class DescribePersonVisitInfoRequest(AbstractModel):
         :type CompanyId: str
         :param ShopId: 门店ID
         :type ShopId: int
-        :param StartDate: 开始日期，格式yyyy-MM-dd
-        :type StartDate: str
-        :param EndDate: 结束日期，格式yyyy-MM-dd
-        :type EndDate: str
         :param Offset: 偏移量：分页控制参数，第一页传0，第n页Offset=(n-1)*Limit
         :type Offset: int
         :param Limit: Limit:每页的数据项，最大100，超过100会被强制指定为100
         :type Limit: int
+        :param StartDate: 开始日期，格式yyyy-MM-dd，已废弃，请使用StartDateTime
+        :type StartDate: str
+        :param EndDate: 结束日期，格式yyyy-MM-dd，已废弃，请使用EndDateTime
+        :type EndDate: str
         :param PictureExpires: 图片url过期时间：在当前时间+PictureExpires秒后，图片url无法继续正常访问；单位s；默认值1*24*60*60（1天）
         :type PictureExpires: int
+        :param StartDateTime: 开始时间，格式yyyy-MM-dd HH:mm:ss
+        :type StartDateTime: str
+        :param EndDateTime: 结束时间，格式yyyy-MM-dd HH:mm:ss
+        :type EndDateTime: str
         """
         self.CompanyId = None
         self.ShopId = None
-        self.StartDate = None
-        self.EndDate = None
         self.Offset = None
         self.Limit = None
+        self.StartDate = None
+        self.EndDate = None
         self.PictureExpires = None
+        self.StartDateTime = None
+        self.EndDateTime = None
 
 
     def _deserialize(self, params):
         self.CompanyId = params.get("CompanyId")
         self.ShopId = params.get("ShopId")
-        self.StartDate = params.get("StartDate")
-        self.EndDate = params.get("EndDate")
         self.Offset = params.get("Offset")
         self.Limit = params.get("Limit")
+        self.StartDate = params.get("StartDate")
+        self.EndDate = params.get("EndDate")
         self.PictureExpires = params.get("PictureExpires")
+        self.StartDateTime = params.get("StartDateTime")
+        self.EndDateTime = params.get("EndDateTime")
 
 
 class DescribePersonVisitInfoResponse(AbstractModel):
@@ -2459,6 +2477,8 @@ class PersonVisitInfo(AbstractModel):
         :type HairType: int
         :param CapturedPictureUrl: 抓拍到的头像Url，在有效期内可以访问下载
         :type CapturedPictureUrl: str
+        :param SceneInfo: 抓拍头像的场景图信息
+        :type SceneInfo: :class:`tencentcloud.youmall.v20180228.models.SceneInfo`
         """
         self.PersonId = None
         self.VisitId = None
@@ -2468,6 +2488,7 @@ class PersonVisitInfo(AbstractModel):
         self.GlassType = None
         self.HairType = None
         self.CapturedPictureUrl = None
+        self.SceneInfo = None
 
 
     def _deserialize(self, params):
@@ -2479,6 +2500,9 @@ class PersonVisitInfo(AbstractModel):
         self.GlassType = params.get("GlassType")
         self.HairType = params.get("HairType")
         self.CapturedPictureUrl = params.get("CapturedPictureUrl")
+        if params.get("SceneInfo") is not None:
+            self.SceneInfo = SceneInfo()
+            self.SceneInfo._deserialize(params.get("SceneInfo"))
 
 
 class RegisterCallbackRequest(AbstractModel):
@@ -2525,6 +2549,39 @@ class RegisterCallbackResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
+
+
+class SceneInfo(AbstractModel):
+    """场景图信息
+
+    """
+
+    def __init__(self):
+        """
+        :param ScenePictureURL: 场景图
+        :type ScenePictureURL: str
+        :param HeadX: 抓拍头像左上角X坐标在场景图中的像素点位置
+        :type HeadX: int
+        :param HeadY: 抓拍头像左上角Y坐标在场景图中的像素点位置
+        :type HeadY: int
+        :param HeadWidth: 抓拍头像在场景图中占有的像素宽度
+        :type HeadWidth: int
+        :param HeadHeight: 抓拍头像在场景图中占有的像素高度
+        :type HeadHeight: int
+        """
+        self.ScenePictureURL = None
+        self.HeadX = None
+        self.HeadY = None
+        self.HeadWidth = None
+        self.HeadHeight = None
+
+
+    def _deserialize(self, params):
+        self.ScenePictureURL = params.get("ScenePictureURL")
+        self.HeadX = params.get("HeadX")
+        self.HeadY = params.get("HeadY")
+        self.HeadWidth = params.get("HeadWidth")
+        self.HeadHeight = params.get("HeadHeight")
 
 
 class ShopDayTrafficInfo(AbstractModel):
