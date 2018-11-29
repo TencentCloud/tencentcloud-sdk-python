@@ -15,7 +15,7 @@ try:
 
 	# 实例化一个http选项，可选的，没有特殊需求可以跳过。
 	httpProfile = HttpProfile()
-	httpProfile.reqMethod = "GET"  # post请求(默认为post请求)
+	httpProfile.reqMethod = "POST"  # post请求(默认为post请求)
 	httpProfile.reqTimeout = 30  # 请求超时时间，单位为秒(默认60秒)
 	httpProfile.endpoint = "soe.tencentcloudapi.com"  # 指定接入地域域名(默认就近接入)
 
@@ -27,7 +27,7 @@ try:
 	client = soe_client.SoeClient(cred, "", clientProfile)
 	req = models.InitOralProcessRequest()
 	req.SessionId = "stress_test_956938"
-	req.RefText = "again"
+	req.RefText = "since"
 	req.WorkMode = 0
 	req.EvalMode = 1
 	req.ScoreCoeff = 3.5
