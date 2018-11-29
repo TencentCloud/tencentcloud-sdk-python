@@ -33,10 +33,12 @@ class InitOralProcessRequest(AbstractModel):
         :type EvalMode: int
         :param ScoreCoeff: 评价苛刻指数，取值为[1.0 - 4.0]范围内的浮点数，用于平滑不同年龄段的分数，1.0为小年龄段，4.0为最高年龄段
         :type ScoreCoeff: float
-        :param SoeAppId: 业务应用ID，与账号应用APPID无关，是用来方便客户管理服务的参数，需要结合[控制台](https://console.cloud.tencent.com/soe)使用。
+        :param SoeAppId: 业务应用ID，与账号应用APPID无关，是用来方便客户管理服务的参数，新的 SoeAppId 可以在[控制台](https://console.cloud.tencent.com/soe)【应用管理】下新建。
         :type SoeAppId: str
         :param IsLongLifeSession: 长效session标识，当该参数为1时，session的持续时间为300s，但会一定程度上影响第一个数据包的返回速度，且TransmitOralProcess必须同时为1才可生效。
         :type IsLongLifeSession: int
+        :param StorageMode: 音频存储模式，0：不存储，1：存储到公共对象存储
+        :type StorageMode: int
         """
         self.SessionId = None
         self.RefText = None
@@ -45,6 +47,7 @@ class InitOralProcessRequest(AbstractModel):
         self.ScoreCoeff = None
         self.SoeAppId = None
         self.IsLongLifeSession = None
+        self.StorageMode = None
 
 
     def _deserialize(self, params):
@@ -55,6 +58,7 @@ class InitOralProcessRequest(AbstractModel):
         self.ScoreCoeff = params.get("ScoreCoeff")
         self.SoeAppId = params.get("SoeAppId")
         self.IsLongLifeSession = params.get("IsLongLifeSession")
+        self.StorageMode = params.get("StorageMode")
 
 
 class InitOralProcessResponse(AbstractModel):
@@ -130,11 +134,11 @@ class TransmitOralProcessRequest(AbstractModel):
         :type VoiceFileType: int
         :param VoiceEncodeType: 语音编码类型	1:pcm。
         :type VoiceEncodeType: int
-        :param UserVoiceData: 当前数据包数据, 流式模式下数据包大小可以按需设置，数据包大小必须 >= 4K，编码格式要求为BASE64。
+        :param UserVoiceData: 当前数据包数据, 流式模式下数据包大小可以按需设置，数据包大小必须 >= 4K，且必须保证分片帧完整（16bit的数据必须保证音频长度为偶数），编码格式要求为BASE64。
         :type UserVoiceData: str
         :param SessionId: 语音段唯一标识，一个完整语音一个SessionId。
         :type SessionId: str
-        :param SoeAppId: 业务应用ID，与账号应用APPID无关，是用来方便客户管理服务的参数，需要结合[控制台](https://console.cloud.tencent.com/soe)使用。
+        :param SoeAppId: 业务应用ID，与账号应用APPID无关，是用来方便客户管理服务的参数，新的 SoeAppId 可以在[控制台](https://console.cloud.tencent.com/soe)【应用管理】下新建。
         :type SoeAppId: str
         :param IsLongLifeSession: 长效session标识，当该参数为1时，session的持续时间为300s，但会一定程度上影响第一个数据包的返回速度。当InitOralProcess接口调用时此项为1时，此项必填1才可生效。
         :type IsLongLifeSession: int
@@ -177,6 +181,8 @@ class TransmitOralProcessResponse(AbstractModel):
         :type Words: list of WordRsp
         :param SessionId: 语音段唯一标识，一段语音一个SessionId
         :type SessionId: str
+        :param AudioUrl: 保存语音音频文件下载地址
+        :type AudioUrl: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -185,6 +191,7 @@ class TransmitOralProcessResponse(AbstractModel):
         self.PronCompletion = None
         self.Words = None
         self.SessionId = None
+        self.AudioUrl = None
         self.RequestId = None
 
 
@@ -199,6 +206,7 @@ class TransmitOralProcessResponse(AbstractModel):
                 obj._deserialize(item)
                 self.Words.append(obj)
         self.SessionId = params.get("SessionId")
+        self.AudioUrl = params.get("AudioUrl")
         self.RequestId = params.get("RequestId")
 
 
