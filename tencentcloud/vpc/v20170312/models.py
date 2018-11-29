@@ -602,6 +602,8 @@ class CCN(AbstractModel):
         :type CreateTime: str
         :param State: 实例状态， 'ISOLATED': 隔离中（欠费停服），'AVAILABLE'：运行中。
         :type State: str
+        :param QosLevel: 实例服务质量，’PT’：白金，'AU'：金，'AG'：银。
+        :type QosLevel: str
         """
         self.CcnId = None
         self.CcnName = None
@@ -609,6 +611,7 @@ class CCN(AbstractModel):
         self.InstanceCount = None
         self.CreateTime = None
         self.State = None
+        self.QosLevel = None
 
 
     def _deserialize(self, params):
@@ -618,6 +621,7 @@ class CCN(AbstractModel):
         self.InstanceCount = params.get("InstanceCount")
         self.CreateTime = params.get("CreateTime")
         self.State = params.get("State")
+        self.QosLevel = params.get("QosLevel")
 
 
 class CcnAttachedInstance(AbstractModel):

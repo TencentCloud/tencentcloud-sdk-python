@@ -23,7 +23,7 @@ class ClearInstanceRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param InstanceId: 实例id
+        :param InstanceId: 实例Id
         :type InstanceId: str
         :param Password: redis的实例密码
         :type Password: str
@@ -67,7 +67,7 @@ class CreateInstancesRequest(AbstractModel):
         """
         :param ZoneId: 实例所属的可用区id
         :type ZoneId: int
-        :param TypeId: 实例类型：2 – 主从版，5-单机版
+        :param TypeId: 实例类型：2 – Redis2.8主从版，3 – Redis3.2主从版(CKV主从版)，4 – Redis3.2集群版(CKV集群版)，5-Redis2.8单机版，7 – Redis4.0集群版，
         :type TypeId: int
         :param MemSize: 实例容量，单位MB， 取值大小以 查询售卖规格接口返回的规格为准
         :type MemSize: int
@@ -79,9 +79,9 @@ class CreateInstancesRequest(AbstractModel):
         :type Password: str
         :param BillingMode: 付费方式:0-按量计费，1-包年包月。
         :type BillingMode: int
-        :param VpcId: 私有网络ID，如果不传则默认选择基础网络，请使用私有网络列表 查询
+        :param VpcId: 私有网络ID，如果不传则默认选择基础网络，请使用私有网络列表查询，如：vpc-sad23jfdfk
         :type VpcId: str
-        :param SubnetId: 基础网络下， subnetId无效； vpc子网下，取值以查询查询子网列表
+        :param SubnetId: 基础网络下， subnetId无效； vpc子网下，取值以查询子网列表，如：subnet-fdj24n34j2
         :type SubnetId: str
         :param ProjectId: 项目id，取值以用户账户>用户账户相关接口查询>项目列表返回的projectId为准
         :type ProjectId: int
@@ -91,6 +91,12 @@ class CreateInstancesRequest(AbstractModel):
         :type SecurityGroupIdList: list of str
         :param VPort: 用户自定义的端口 不填则默认为6379
         :type VPort: int
+        :param RedisShardNum: 实例分片数量，Redis2.8主从版、CKV主从版和Redis2.8单机版不需要填写
+        :type RedisShardNum: int
+        :param RedisReplicasNum: 实例副本数量，Redis2.8主从版、CKV主从版和Redis2.8单机版不需要填写
+        :type RedisReplicasNum: int
+        :param ReplicasReadonly: 是否支持副本只读，Redis2.8主从版、CKV主从版和Redis2.8单机版不需要填写
+        :type ReplicasReadonly: bool
         """
         self.ZoneId = None
         self.TypeId = None
@@ -105,6 +111,9 @@ class CreateInstancesRequest(AbstractModel):
         self.AutoRenew = None
         self.SecurityGroupIdList = None
         self.VPort = None
+        self.RedisShardNum = None
+        self.RedisReplicasNum = None
+        self.ReplicasReadonly = None
 
 
     def _deserialize(self, params):
@@ -121,6 +130,9 @@ class CreateInstancesRequest(AbstractModel):
         self.AutoRenew = params.get("AutoRenew")
         self.SecurityGroupIdList = params.get("SecurityGroupIdList")
         self.VPort = params.get("VPort")
+        self.RedisShardNum = params.get("RedisShardNum")
+        self.RedisReplicasNum = params.get("RedisReplicasNum")
+        self.ReplicasReadonly = params.get("ReplicasReadonly")
 
 
 class CreateInstancesResponse(AbstractModel):
@@ -199,7 +211,7 @@ class DescribeInstanceBackupsRequest(AbstractModel):
         """
         :param InstanceId: 待操作的实例ID，可通过 DescribeInstance 接口返回值中的 InstanceId 获取。
         :type InstanceId: str
-        :param Limit: 实例列表大小
+        :param Limit: 实例列表大小，默认大小20
         :type Limit: int
         :param Offset: 偏移量，取Limit整数倍
         :type Offset: int
@@ -307,28 +319,32 @@ class DescribeInstancesRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Limit: 实例列表大小
+        :param Limit: 实例列表的大小，参数默认值20
         :type Limit: int
         :param Offset: 偏移量，取Limit整数倍
         :type Offset: int
-        :param InstanceId: 实例Id
+        :param InstanceId: 实例Id，如：crs-6ubhgouj
         :type InstanceId: str
         :param OrderBy: 枚举范围： projectId,createtime,instancename,type,curDeadline
         :type OrderBy: str
         :param OrderType: 1倒序，0顺序，默认倒序
         :type OrderType: int
-        :param VpcIds: 私有网络ID数组，数组下标从0开始，如果不传则默认选择基础网络
+        :param VpcIds: 私有网络ID数组，数组下标从0开始，如果不传则默认选择基础网络，如：47525
         :type VpcIds: list of str
-        :param SubnetIds: 子网ID数组，数组下标从0开始
+        :param SubnetIds: 子网ID数组，数组下标从0开始，如：56854
         :type SubnetIds: list of str
         :param ProjectIds: 项目ID 组成的数组，数组下标从0开始
         :type ProjectIds: list of int
         :param SearchKey: 查找实例的ID。
         :type SearchKey: str
-        :param RegionIds: 查询的Region的列表。
-        :type RegionIds: list of int
         :param InstanceName: 实例名称
         :type InstanceName: str
+        :param UniqVpcIds: 私有网络ID数组，数组下标从0开始，如果不传则默认选择基础网络，如：vpc-sad23jfdfk
+        :type UniqVpcIds: list of str
+        :param UniqSubnetIds: 子网ID数组，数组下标从0开始，如：subnet-fdj24n34j2
+        :type UniqSubnetIds: list of str
+        :param RegionIds: 地域ID，已经弃用，可通过公共参数Region查询对应地域
+        :type RegionIds: list of int
         """
         self.Limit = None
         self.Offset = None
@@ -339,8 +355,10 @@ class DescribeInstancesRequest(AbstractModel):
         self.SubnetIds = None
         self.ProjectIds = None
         self.SearchKey = None
-        self.RegionIds = None
         self.InstanceName = None
+        self.UniqVpcIds = None
+        self.UniqSubnetIds = None
+        self.RegionIds = None
 
 
     def _deserialize(self, params):
@@ -353,8 +371,10 @@ class DescribeInstancesRequest(AbstractModel):
         self.SubnetIds = params.get("SubnetIds")
         self.ProjectIds = params.get("ProjectIds")
         self.SearchKey = params.get("SearchKey")
-        self.RegionIds = params.get("RegionIds")
         self.InstanceName = params.get("InstanceName")
+        self.UniqVpcIds = params.get("UniqVpcIds")
+        self.UniqSubnetIds = params.get("UniqSubnetIds")
+        self.RegionIds = params.get("RegionIds")
 
 
 class DescribeInstancesResponse(AbstractModel):
@@ -482,13 +502,13 @@ class InstanceSet(AbstractModel):
         """
         :param InstanceName: 实例名称
         :type InstanceName: str
-        :param InstanceId: 实例串号
+        :param InstanceId: 实例Id
         :type InstanceId: str
-        :param Appid: appid
+        :param Appid: 用户的Appid
         :type Appid: int
-        :param ProjectId: 项目id
+        :param ProjectId: 项目Id
         :type ProjectId: int
-        :param RegionId: 地域id 1--广州 4--上海 5-- 香港 6--多伦多 7--上海金融 8--北京 9-- 新加坡 11--深圳金融 15--美西（硅谷）
+        :param RegionId: 地域id 1--广州 4--上海 5-- 香港 6--多伦多 7--上海金融 8--北京 9-- 新加坡 11--深圳金融 15--美西（硅谷）16--成都 17--德国 18--韩国 19--重庆 21--印度 22--美东（弗吉尼亚）23--泰国 24--俄罗斯 25--日本
         :type RegionId: int
         :param ZoneId: 区域id
         :type ZoneId: int
@@ -496,7 +516,7 @@ class InstanceSet(AbstractModel):
         :type VpcId: int
         :param SubnetId: vpc网络下子网id 如：46315
         :type SubnetId: int
-        :param Status: 实例当前状态，0：待初始化；1：实例在流程中；2：实例运行中；-2：实例已隔离
+        :param Status: 实例当前状态，0：待初始化；1：实例在流程中；2：实例运行中；-2：实例已隔离；-3：实例待删除
         :type Status: int
         :param WanIp: 实例vip
         :type WanIp: str
@@ -508,7 +528,7 @@ class InstanceSet(AbstractModel):
         :type Size: float
         :param SizeUsed: 实例当前已使用容量，单位：MB
         :type SizeUsed: float
-        :param Type: 实例类型，1：集群版；2：主从版
+        :param Type: 实例类型，1：Redis2.8集群版；2：Redis2.8主从版；3：CKV主从版（Redis3.2）；4：CKV集群版（Redis3.2）；5：Redis2.8单机版；7：Redis4.0集群版；
         :type Type: int
         :param AutoRenewFlag: 实例是否设置自动续费标识，1：设置自动续费；0：未设置自动续费
         :type AutoRenewFlag: int
@@ -516,7 +536,7 @@ class InstanceSet(AbstractModel):
         :type DeadlineTime: str
         :param Engine: 引擎：社区版Redis、腾讯云CKV
         :type Engine: str
-        :param ProductType: 产品类型：Redis2.8集群版、Redis2.8主从版、Redis3.2主从版、Redis3.2集群版、Redis2.8单机版、Redis4.0集群版
+        :param ProductType: 产品类型：Redis2.8集群版、Redis2.8主从版、Redis3.2主从版（CKV主从版）、Redis3.2集群版（CKV集群版）、Redis2.8单机版、Redis4.0集群版
         :type ProductType: str
         :param UniqVpcId: vpc网络id 如：vpc-fk33jsf43kgv
         :type UniqVpcId: str
@@ -1012,18 +1032,26 @@ class UpgradeInstanceRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param InstanceId: 升级的实例Id
+        :param InstanceId: 实例Id
         :type InstanceId: str
-        :param MemSize: 规格 单位 MB
+        :param MemSize: 分片大小 单位 MB
         :type MemSize: int
+        :param RedisShardNum: 分片数量，Redis2.8主从版、CKV主从版和Redis2.8单机版不需要填写
+        :type RedisShardNum: int
+        :param RedisReplicasNum: 副本数量，Redis2.8主从版、CKV主从版和Redis2.8单机版不需要填写
+        :type RedisReplicasNum: int
         """
         self.InstanceId = None
         self.MemSize = None
+        self.RedisShardNum = None
+        self.RedisReplicasNum = None
 
 
     def _deserialize(self, params):
         self.InstanceId = params.get("InstanceId")
         self.MemSize = params.get("MemSize")
+        self.RedisShardNum = params.get("RedisShardNum")
+        self.RedisReplicasNum = params.get("RedisReplicasNum")
 
 
 class UpgradeInstanceResponse(AbstractModel):
@@ -1062,7 +1090,7 @@ class ZoneCapacityConf(AbstractModel):
         :type IsSaleout: bool
         :param IsDefault: 是否为默认可用区
         :type IsDefault: bool
-        :param NetWorkType: 网络类型
+        :param NetWorkType: 网络类型：basenet -- 基础网络；vpcnet -- VPC网络
         :type NetWorkType: list of str
         :param ProductSet: 可用区内产品规格等信息
         :type ProductSet: list of ProductConf

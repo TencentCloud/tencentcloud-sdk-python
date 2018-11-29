@@ -1091,7 +1091,7 @@ class VpcClient(AbstractClient):
 
 
     def DeleteNetworkInterface(self, request):
-        """本接口（DeleteNetworkInterface）用于创建弹性网卡。
+        """本接口（DeleteNetworkInterface）用于删除弹性网卡。
         * 弹性网卡上绑定了云主机时，不能被删除。
         * 删除指定弹性网卡，弹性网卡必须先和子机解绑才能删除。删除之后弹性网卡上所有内网IP都将被退还。
 

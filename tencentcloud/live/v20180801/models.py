@@ -125,9 +125,9 @@ class CreateLiveRecordRequest(AbstractModel):
         :type AppName: str
         :param DomainName: 推流域名。多域名推流必须设置。
         :type DomainName: str
-        :param StartTime: 任务起始时间，录制视频为精彩视频时，忽略此字段。如 2017-01-01 10:10:01。
+        :param StartTime: 任务起始时间，中国标准时间，需要URLEncode。如 2017-01-01 10:10:01，编码为：2017-01-01+10%3a10%3a01。录制视频为精彩视频时，忽略此字段。
         :type StartTime: str
-        :param EndTime: 任务结束时间。若指定精彩视频录制，结束时间不超过当前时间+30分钟，如果超过或小于起始时间，则实际结束时间为当前时间+30分钟。
+        :param EndTime: 任务结束时间，中国标准时间，需要URLEncode。如 2017-01-01 10:30:01，编码为：2017-01-01+10%3a30%3a01。若指定精彩视频录制，结束时间不超过当前时间+30分钟，如果超过或小于起始时间，则实际结束时间为当前时间+30分钟。
         :type EndTime: str
         :param RecordType: 录制类型。不区分大小写。
 “video” : 音视频录制【默认】。

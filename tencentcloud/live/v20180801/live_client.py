@@ -122,7 +122,7 @@ class LiveClient(AbstractClient):
 
 
     def CreatePullStreamConfig(self, request):
-        """添加拉流配置
+        """添加拉流配置，目前限制添加10条任务。
 
         :param request: 调用CreatePullStreamConfig所需参数的结构体。
         :type request: :class:`tencentcloud.live.v20180801.models.CreatePullStreamConfigRequest`

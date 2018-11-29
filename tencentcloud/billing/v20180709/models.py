@@ -53,6 +53,12 @@ class BillDetail(AbstractModel):
         :type FeeEndTime: str
         :param ComponentSet: 组件列表
         :type ComponentSet: list of BillDetailComponent
+        :param PayerUin: 支付者UIN
+        :type PayerUin: str
+        :param OwnerUin: 使用者UIN
+        :type OwnerUin: str
+        :param OperateUin: 操作者UIN
+        :type OperateUin: str
         """
         self.BusinessCodeName = None
         self.ProductCodeName = None
@@ -69,6 +75,9 @@ class BillDetail(AbstractModel):
         self.FeeBeginTime = None
         self.FeeEndTime = None
         self.ComponentSet = None
+        self.PayerUin = None
+        self.OwnerUin = None
+        self.OperateUin = None
 
 
     def _deserialize(self, params):
@@ -92,6 +101,9 @@ class BillDetail(AbstractModel):
                 obj = BillDetailComponent()
                 obj._deserialize(item)
                 self.ComponentSet.append(obj)
+        self.PayerUin = params.get("PayerUin")
+        self.OwnerUin = params.get("OwnerUin")
+        self.OperateUin = params.get("OperateUin")
 
 
 class BillDetailComponent(AbstractModel):
@@ -301,6 +313,20 @@ class Deal(AbstractModel):
         :type ProjectId: int
         :param GoodsCategoryId: 产品分类ID
         :type GoodsCategoryId: int
+        :param ProductInfo: 产品详情
+        :type ProductInfo: list of ProductInfo
+        :param TimeSpan: 时长
+        :type TimeSpan: float
+        :param TimeUnit: 时间单位
+        :type TimeUnit: str
+        :param Currency: 货币单位
+        :type Currency: str
+        :param Policy: 折扣率
+        :type Policy: float
+        :param Price: 单价（分）
+        :type Price: float
+        :param TotalCost: 原价（分）
+        :type TotalCost: float
         """
         self.OrderId = None
         self.Status = None
@@ -311,6 +337,13 @@ class Deal(AbstractModel):
         self.VoucherDecline = None
         self.ProjectId = None
         self.GoodsCategoryId = None
+        self.ProductInfo = None
+        self.TimeSpan = None
+        self.TimeUnit = None
+        self.Currency = None
+        self.Policy = None
+        self.Price = None
+        self.TotalCost = None
 
 
     def _deserialize(self, params):
@@ -323,6 +356,18 @@ class Deal(AbstractModel):
         self.VoucherDecline = params.get("VoucherDecline")
         self.ProjectId = params.get("ProjectId")
         self.GoodsCategoryId = params.get("GoodsCategoryId")
+        if params.get("ProductInfo") is not None:
+            self.ProductInfo = []
+            for item in params.get("ProductInfo"):
+                obj = ProductInfo()
+                obj._deserialize(item)
+                self.ProductInfo.append(obj)
+        self.TimeSpan = params.get("TimeSpan")
+        self.TimeUnit = params.get("TimeUnit")
+        self.Currency = params.get("Currency")
+        self.Policy = params.get("Policy")
+        self.Price = params.get("Price")
+        self.TotalCost = params.get("TotalCost")
 
 
 class DescribeAccountBalanceRequest(AbstractModel):
@@ -340,7 +385,7 @@ class DescribeAccountBalanceResponse(AbstractModel):
         """
         :param Balance: 云账户信息中的”展示可用余额”字段，单位为"分"
         :type Balance: int
-        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.Balance = None
@@ -367,11 +412,17 @@ class DescribeBillDetailRequest(AbstractModel):
         :type PeriodType: str
         :param Month: 月份，格式为yyyy-mm
         :type Month: str
+        :param BeginTime: 周期开始时间，格式为Y-m-d H:i:s，如果有该字段则Month字段无效。BeginTime和EndTime必须一起传
+        :type BeginTime: str
+        :param EndTime: 周期结束时间，格式为Y-m-d H:i:s，如果有该字段则Month字段无效。BeginTime和EndTime必须一起传
+        :type EndTime: str
         """
         self.Offset = None
         self.Limit = None
         self.PeriodType = None
         self.Month = None
+        self.BeginTime = None
+        self.EndTime = None
 
 
     def _deserialize(self, params):
@@ -379,6 +430,8 @@ class DescribeBillDetailRequest(AbstractModel):
         self.Limit = params.get("Limit")
         self.PeriodType = params.get("PeriodType")
         self.Month = params.get("Month")
+        self.BeginTime = params.get("BeginTime")
+        self.EndTime = params.get("EndTime")
 
 
 class DescribeBillDetailResponse(AbstractModel):
@@ -390,7 +443,7 @@ class DescribeBillDetailResponse(AbstractModel):
         """
         :param DetailSet: 详情列表
         :type DetailSet: list of BillDetail
-        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.DetailSet = None
@@ -445,7 +498,7 @@ class DescribeBillResourceSummaryResponse(AbstractModel):
         """
         :param ResourceSummarySet: 资源汇总列表
         :type ResourceSummarySet: list of BillResourceSummary
-        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.ResourceSummarySet = None
@@ -522,7 +575,7 @@ class DescribeDealsByCondResponse(AbstractModel):
         :type Deals: list of Deal
         :param TotalCount: 订单总数
         :type TotalCount: int
-        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.Deals = None
@@ -577,7 +630,7 @@ class PayDealsResponse(AbstractModel):
         :type OrderIds: list of str
         :param ResourceIds: 此次操作支付成功的资源Id数组
         :type ResourceIds: list of str
-        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.OrderIds = None
@@ -589,3 +642,24 @@ class PayDealsResponse(AbstractModel):
         self.OrderIds = params.get("OrderIds")
         self.ResourceIds = params.get("ResourceIds")
         self.RequestId = params.get("RequestId")
+
+
+class ProductInfo(AbstractModel):
+    """商品详细信息
+
+    """
+
+    def __init__(self):
+        """
+        :param Name: 商品详情名称标识
+        :type Name: str
+        :param Value: 商品详情
+        :type Value: str
+        """
+        self.Name = None
+        self.Value = None
+
+
+    def _deserialize(self, params):
+        self.Name = params.get("Name")
+        self.Value = params.get("Value")

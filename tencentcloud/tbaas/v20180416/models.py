@@ -23,17 +23,17 @@ class GetInvokeTxRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Module: 模块名
+        :param Module: 模块名，固定字段：transaction
         :type Module: str
-        :param Operation: 操作名
+        :param Operation: 操作名，固定地段：invoke
         :type Operation: str
-        :param ClusterId: cluster标识
+        :param ClusterId: 区块链网络ID，可在区块链网络详情或列表中获取
         :type ClusterId: str
-        :param ChannelName: 通道名称
+        :param ChannelName: 业务所属通道名称，可在通道详情或列表中获取
         :type ChannelName: str
-        :param PeerName: 节点名称
+        :param PeerName: 执行该查询交易的节点名称，可以在通道详情中获取该通道上的节点名称极其所属组织名称
         :type PeerName: str
-        :param PeerGroup: 节点所属组织名称
+        :param PeerGroup: 执行该查询交易的节点所属组织名称，可以在通道详情中获取该通道上的节点名称极其所属组织名称
         :type PeerGroup: str
         :param TxId: 事务ID
         :type TxId: str
@@ -89,23 +89,23 @@ class InvokeRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Module: 模块名
+        :param Module: 模块名，固定字段：transaction
         :type Module: str
-        :param Operation: 操作名
+        :param Operation: 操作名，固定地段：invoke
         :type Operation: str
-        :param ClusterId: cluster标识
+        :param ClusterId: 区块链网络ID，可在区块链网络详情或列表中获取
         :type ClusterId: str
-        :param ChaincodeName: 合约名称
+        :param ChaincodeName: 业务所属智能合约名称，可在智能合约详情或列表中获取
         :type ChaincodeName: str
-        :param ChannelName: 通道名称
+        :param ChannelName: 业务所属通道名称，可在通道详情或列表中获取
         :type ChannelName: str
-        :param Peers: 使用的节点名称及对应组织名称
+        :param Peers: 对该笔交易进行背书的节点列表（包括节点名称和节点所属组织名称，详见数据结构一节），可以在通道详情中获取该通道上的节点名称极其所属组织名称
         :type Peers: list of PeerSet
-        :param FuncName: 函数名
+        :param FuncName: 该笔交易需要调用的智能合约中的函数名称
         :type FuncName: str
-        :param Args: 函数参数列表
+        :param Args: 被调用的函数参数列表
         :type Args: list of str
-        :param AsyncFlag: 同步调用标识
+        :param AsyncFlag: 同步调用标识，可选参数，值为0或者不传表示使用同步方法调用，调用后会等待交易执行后再返回执行结果；值为1时表示使用异步方式调用Invoke，执行后会立即返回交易对应的Txid，后续需要通过GetInvokeTx这个API查询该交易的执行结果。（对于逻辑较为简单的交易，可以使用同步模式；对于逻辑较为复杂的交易，建议使用异步模式，否则容易导致API因等待时间过长，返回等待超时）
         :type AsyncFlag: int
         """
         self.Module = None
@@ -145,7 +145,7 @@ class InvokeResponse(AbstractModel):
         """
         :param Txid: 交易编号
         :type Txid: str
-        :param Events: 返回内容
+        :param Events: 交易执行结果
         :type Events: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -189,21 +189,21 @@ class QueryRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Module: 模块名
+        :param Module: 模块名，固定字段：transaction
         :type Module: str
-        :param Operation: 操作名
+        :param Operation: 操作名，固定地段：query
         :type Operation: str
-        :param ClusterId: cluster标识
+        :param ClusterId: 区块链网络ID，可在区块链网络详情或列表中获取
         :type ClusterId: str
-        :param ChaincodeName: 合约名称
+        :param ChaincodeName: 业务所属智能合约名称，可在智能合约详情或列表中获取
         :type ChaincodeName: str
-        :param ChannelName: 通道名称
+        :param ChannelName: 业务所属通道名称，可在通道详情或列表中获取
         :type ChannelName: str
-        :param Peers: 使用的节点名称及对应组织名称
+        :param Peers: 执行该查询交易的节点列表（包括节点名称和节点所属组织名称，详见数据结构一节），可以在通道详情中获取该通道上的节点名称极其所属组织名称
         :type Peers: list of PeerSet
-        :param FuncName: 函数名
+        :param FuncName: 该笔交易查询需要调用的智能合约中的函数名称
         :type FuncName: str
-        :param Args: 函数参数列表
+        :param Args: 被调用的函数参数列表
         :type Args: list of str
         """
         self.Module = None
