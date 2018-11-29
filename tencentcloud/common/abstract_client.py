@@ -101,11 +101,11 @@ class AbstractClient(object):
 
         raise TencentCloudSDKException("ClientParamsError", "some params type error")
 
-    def _build_req_inter(self, action, params, req_inter):
+    def _build_req_inter(self, action, params, req_inter, options=None):
         if self.profile.signMethod in ("HmacSHA1", "HmacSHA256"):
             self._build_req_with_old_signature(action, params, req_inter)
         elif self.profile.signMethod == "TC3-HMAC-SHA256":
-            self._build_req_with_tc3_signature(action, params, req_inter)
+            self._build_req_with_tc3_signature(action, params, req_inter, options)
         else:
             raise TencentCloudSDKException("ClientError", "Invalid signature method.")
 
@@ -137,14 +137,15 @@ class AbstractClient(object):
         req.data = urlencode(params)
         req.header["Content-Type"] = "application/x-www-form-urlencoded"
 
-    def _build_req_with_tc3_signature(self, action, params, req):
+    def _build_req_with_tc3_signature(self, action, params, req, options=None):
         content_type = self._default_content_type
         if req.method == 'GET':
             content_type = _form_urlencoded_content
         elif req.method == 'POST':
             content_type = _json_content
-            if req.header.get("Content-Type") == _multipart_content:
-                content_type = _multipart_content
+        options = options or {}
+        if options.get("IsMultipart"):
+            content_type = _multipart_content
         req.header["Content-Type"] = content_type
 
         endpoint = self._get_endpoint()
@@ -164,14 +165,14 @@ class AbstractClient(object):
         if self.credential.token:
             req.header['X-TC-Token'] = self.credential.token
 
-        signature = self._get_tc3_signature(params, req, date, service)
+        signature = self._get_tc3_signature(params, req, date, service, options)
 
         auth = "TC3-HMAC-SHA256"
         auth += " Credential=%s/%s/%s/tc3_request" % (self.credential.secretId, date, service)
         auth += ", SignedHeaders=content-type;host, Signature=%s" % signature
         req.header["Authorization"] = auth
 
-    def _get_tc3_signature(self, params, req, date, service):
+    def _get_tc3_signature(self, params, req, date, service, options=None):
         canonical_uri = req.uri
         canonical_querystring = ''
 
@@ -187,7 +188,7 @@ class AbstractClient(object):
             elif ct == _multipart_content:
                 boundary = uuid.uuid4().hex
                 req.header["Content-Type"] = ct + "; boundary=" + boundary
-                req.data = self._get_multipart_body(params, boundary)
+                req.data = self._get_multipart_body(params, boundary, options)
             else:
                 raise Exception("Unsupported content type: %s" % ct)
 
@@ -223,11 +224,18 @@ class AbstractClient(object):
         signature = Sign.sign_tc3(self.credential.secretKey, date, service, string2sign)
         return signature
 
-    def _get_multipart_body(self, params, boundary):
+    def _get_multipart_body(self, params, boundary, options=None):
+        if options is None:
+            options = {}
+        binparas = options.get("BinaryParams", [])
         body = ''
         for k, v in params.items():
             body += '--%s\r\n' % boundary
-            body += 'Content-Disposition: form-data; name="%s"\r\n' % k
+            body += 'Content-Disposition: form-data; name="%s"' % k
+            if k in binparas:
+                body += '; filename="%s"\r\n' % k
+            else:
+                body += "\r\n"
             if isinstance(v, list) or isinstance(v, dict):
                 v = json.dumps(v)
                 body += 'Content-Type: application/json\r\n'
@@ -255,18 +263,12 @@ class AbstractClient(object):
         return endpoint
 
     def call(self, action, params, options=None):
-        if options is None:
-            options = {}
         endpoint = self._get_endpoint()
-        headers = {}
-        if options.get("IsMultipart"):
-            headers["Content-Type"] = _multipart_content
 
         req_inter = RequestInternal(endpoint,
                                     self.profile.httpProfile.reqMethod,
-                                    self._requestPath,
-                                    header=headers)
-        self._build_req_inter(action, params, req_inter)
+                                    self._requestPath)
+        self._build_req_inter(action, params, req_inter, options)
 
         apiRequest = ApiRequest(self._get_endpoint(), self.profile.httpProfile.reqTimeout)
 
