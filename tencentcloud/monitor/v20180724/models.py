@@ -146,7 +146,7 @@ class GetMonitorDataRequest(AbstractModel):
         :type Instances: list of Instance
         :param Period: 监控统计周期。默认为取值为300，单位为s
         :type Period: int
-        :param StartTime: 起始时间，如 2018-01-01 00:00:00
+        :param StartTime: 起始时间，如2018-09-22T19:51:23+08:00
         :type StartTime: str
         :param EndTime: 结束时间，默认为当前时间。 EndTime不能小于EtartTime
         :type EndTime: str
