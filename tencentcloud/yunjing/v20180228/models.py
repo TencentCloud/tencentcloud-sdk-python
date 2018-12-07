@@ -2947,20 +2947,20 @@ class InquiryPriceOpenProVersionPrepaidResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param DiscountPrice: 预支费用的折扣价，单位：元。
-        :type DiscountPrice: float
+        :param OriginalPrice: 预支费用的原价，单位：元。
+        :type OriginalPrice: float
         :param DiscountPrice: 预支费用的折扣价，单位：元。
         :type DiscountPrice: float
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.DiscountPrice = None
+        self.OriginalPrice = None
         self.DiscountPrice = None
         self.RequestId = None
 
 
     def _deserialize(self, params):
-        self.DiscountPrice = params.get("DiscountPrice")
+        self.OriginalPrice = params.get("OriginalPrice")
         self.DiscountPrice = params.get("DiscountPrice")
         self.RequestId = params.get("RequestId")
 
