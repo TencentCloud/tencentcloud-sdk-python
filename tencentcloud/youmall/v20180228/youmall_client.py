@@ -362,6 +362,34 @@ class YoumallClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribePersonInfoByFacePicture(self, request):
+        """通过上传人脸图片检索系统face id、顾客身份信息及底图
+
+        :param request: 调用DescribePersonInfoByFacePicture所需参数的结构体。
+        :type request: :class:`tencentcloud.youmall.v20180228.models.DescribePersonInfoByFacePictureRequest`
+        :rtype: :class:`tencentcloud.youmall.v20180228.models.DescribePersonInfoByFacePictureResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribePersonInfoByFacePicture", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribePersonInfoByFacePictureResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise e
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribePersonTrace(self, request):
         """输出开始时间到结束时间段内的进出场数据。
 

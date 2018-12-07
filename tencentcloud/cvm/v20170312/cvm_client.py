@@ -87,6 +87,34 @@ class CvmClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def AssociateSecurityGroups(self, request):
+        """本接口 (AssociateSecurityGroups) 用于绑定安全组到指定实例。
+
+        :param request: 调用AssociateSecurityGroups所需参数的结构体。
+        :type request: :class:`tencentcloud.cvm.v20170312.models.AssociateSecurityGroupsRequest`
+        :rtype: :class:`tencentcloud.cvm.v20170312.models.AssociateSecurityGroupsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("AssociateSecurityGroups", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.AssociateSecurityGroupsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise e
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def CreateDisasterRecoverGroup(self, request):
         """本接口 (CreateDisasterRecoverGroup)用于创建[分散置放群组](https://cloud.tencent.com/document/product/213/15486)。创建好的置放群组，可在[创建实例](https://cloud.tencent.com/document/api/213/15730)时指定。
 
@@ -820,6 +848,34 @@ class CvmClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DisassociateInstancesKeyPairsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise e
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DisassociateSecurityGroups(self, request):
+        """本接口 (DisassociateSecurityGroups) 用于解绑实例的指定安全组。
+
+        :param request: 调用DisassociateSecurityGroups所需参数的结构体。
+        :type request: :class:`tencentcloud.cvm.v20170312.models.DisassociateSecurityGroupsRequest`
+        :rtype: :class:`tencentcloud.cvm.v20170312.models.DisassociateSecurityGroupsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DisassociateSecurityGroups", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DisassociateSecurityGroupsResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

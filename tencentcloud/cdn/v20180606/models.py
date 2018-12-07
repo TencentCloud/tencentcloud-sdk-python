@@ -243,6 +243,51 @@ class DescribeIpVisitResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeMapInfoRequest(AbstractModel):
+    """DescribeMapInfo请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Name: 映射查询类别：
+ips：运营商映射查询
+district：省份映射查询
+        :type Name: str
+        """
+        self.Name = None
+
+
+    def _deserialize(self, params):
+        self.Name = params.get("Name")
+
+
+class DescribeMapInfoResponse(AbstractModel):
+    """DescribeMapInfo返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param MapInfoList: 映射关系数组。
+        :type MapInfoList: list of MapInfo
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.MapInfoList = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("MapInfoList") is not None:
+            self.MapInfoList = []
+            for item in params.get("MapInfoList"):
+                obj = MapInfo()
+                obj._deserialize(item)
+                self.MapInfoList.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeOriginDataRequest(AbstractModel):
     """DescribeOriginData请求参数结构体
 
@@ -332,6 +377,50 @@ class DescribeOriginDataResponse(AbstractModel):
                 obj = ResourceOriginData()
                 obj._deserialize(item)
                 self.Data.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribePayTypeRequest(AbstractModel):
+    """DescribePayType请求参数结构体
+
+    """
+
+
+class DescribePayTypeResponse(AbstractModel):
+    """DescribePayType返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param PayType: 计费类型：
+flux：流量计费
+bandwidth：带宽计费
+        :type PayType: str
+        :param BillingCycle: 计费周期：
+day：日结计费
+month：月结计费
+        :type BillingCycle: str
+        :param StatType: 计费方式：
+monthMax：日峰值月平均计费，月结模式
+day95：日 95 带宽计费，月结模式
+month95：月95带宽计费，月结模式
+sum：总流量计费，日结与月结均有流量计费模式
+max：峰值带宽计费，日结模式
+        :type StatType: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.PayType = None
+        self.BillingCycle = None
+        self.StatType = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.PayType = params.get("PayType")
+        self.BillingCycle = params.get("BillingCycle")
+        self.StatType = params.get("StatType")
         self.RequestId = params.get("RequestId")
 
 
@@ -426,6 +515,27 @@ class ListTopDataResponse(AbstractModel):
                 obj._deserialize(item)
                 self.Data.append(obj)
         self.RequestId = params.get("RequestId")
+
+
+class MapInfo(AbstractModel):
+    """名称与ID映射关系
+
+    """
+
+    def __init__(self):
+        """
+        :param Id: 对象 Id
+        :type Id: int
+        :param Name: 对象名称
+        :type Name: str
+        """
+        self.Id = None
+        self.Name = None
+
+
+    def _deserialize(self, params):
+        self.Id = params.get("Id")
+        self.Name = params.get("Name")
 
 
 class ResourceData(AbstractModel):

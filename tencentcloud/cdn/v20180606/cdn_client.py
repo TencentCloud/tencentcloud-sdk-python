@@ -93,6 +93,34 @@ class CdnClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeMapInfo(self, request):
+        """DescribeMapInfo 用于查询省份对应的 ID，运营商对应的 ID 信息。
+
+        :param request: 调用DescribeMapInfo所需参数的结构体。
+        :type request: :class:`tencentcloud.cdn.v20180606.models.DescribeMapInfoRequest`
+        :rtype: :class:`tencentcloud.cdn.v20180606.models.DescribeMapInfoResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeMapInfo", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeMapInfoResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise e
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeOriginData(self, request):
         """DescribeOriginData 用于查询 CDN 实时回源监控数据，支持以下指标查询：
 
@@ -117,6 +145,34 @@ class CdnClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeOriginDataResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise e
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribePayType(self, request):
+        """DescribePayType 用于查询用户的计费类型，计费周期等信息。
+
+        :param request: 调用DescribePayType所需参数的结构体。
+        :type request: :class:`tencentcloud.cdn.v20180606.models.DescribePayTypeRequest`
+        :rtype: :class:`tencentcloud.cdn.v20180606.models.DescribePayTypeResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribePayType", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribePayTypeResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

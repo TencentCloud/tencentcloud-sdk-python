@@ -116,7 +116,7 @@ class AssociateInstancesKeyPairsRequest(AbstractModel):
         :type InstanceIds: list of str
         :param KeyIds: 一个或多个待操作的密钥对ID，每次请求批量密钥对的上限为100。密钥对ID形如：`skey-3glfot13`。<br>可以通过以下方式获取可用的密钥ID：<br><li>通过登录[控制台](https://console.cloud.tencent.com/cvm/sshkey)查询密钥ID。<br><li>通过调用接口 [DescribeKeyPairs](https://cloud.tencent.com/document/api/213/15699) ，取返回信息中的`KeyId`获取密钥对ID。
         :type KeyIds: list of str
-        :param ForceStop: 是否对运行中的实例选择强制关机。建议对运行中的实例先手动关机，然后再重置用户密码。取值范围：<br><li>TRUE：表示在正常关机失败后进行强制关机。<br><li>FALSE：表示在正常关机失败后不进行强制关机。<br>默认取值：FALSE。
+        :param ForceStop: 是否对运行中的实例选择强制关机。建议对运行中的实例先手动关机，然后再绑定密钥。取值范围：<br><li>TRUE：表示在正常关机失败后进行强制关机。<br><li>FALSE：表示在正常关机失败后不进行强制关机。<br>默认取值：FALSE。
         :type ForceStop: bool
         """
         self.InstanceIds = None
@@ -132,6 +132,44 @@ class AssociateInstancesKeyPairsRequest(AbstractModel):
 
 class AssociateInstancesKeyPairsResponse(AbstractModel):
     """AssociateInstancesKeyPairs返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class AssociateSecurityGroupsRequest(AbstractModel):
+    """AssociateSecurityGroups请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param SecurityGroupIds: 要绑定的`安全组ID`，类似sg-efil73jd，支持绑定多个安全组。
+        :type SecurityGroupIds: list of str
+        :param InstanceIds: 被绑定的`实例ID`，类似ins-lesecurk，只支持指定单个实例。
+        :type InstanceIds: list of str
+        """
+        self.SecurityGroupIds = None
+        self.InstanceIds = None
+
+
+    def _deserialize(self, params):
+        self.SecurityGroupIds = params.get("SecurityGroupIds")
+        self.InstanceIds = params.get("InstanceIds")
+
+
+class AssociateSecurityGroupsResponse(AbstractModel):
+    """AssociateSecurityGroups返回参数结构体
 
     """
 
@@ -241,10 +279,10 @@ class CreateImageRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param InstanceId: 需要制作镜像的实例ID
-        :type InstanceId: str
         :param ImageName: 镜像名称
         :type ImageName: str
+        :param InstanceId: 需要制作镜像的实例ID
+        :type InstanceId: str
         :param ImageDescription: 镜像描述
         :type ImageDescription: str
         :param ForcePoweroff: 软关机失败时是否执行强制关机以制作镜像
@@ -253,25 +291,33 @@ class CreateImageRequest(AbstractModel):
         :type Sysprep: str
         :param Reboot: 实例处于运行中时，是否允许关机执行制作镜像任务。
         :type Reboot: str
+        :param DataDiskIds: 实例需要制作镜像的数据盘Id
+        :type DataDiskIds: list of str
+        :param SnapshotIds: 需要制作镜像的快照Id,必须包含一个系统盘快照
+        :type SnapshotIds: list of str
         :param DryRun: DryRun
         :type DryRun: bool
         """
-        self.InstanceId = None
         self.ImageName = None
+        self.InstanceId = None
         self.ImageDescription = None
         self.ForcePoweroff = None
         self.Sysprep = None
         self.Reboot = None
+        self.DataDiskIds = None
+        self.SnapshotIds = None
         self.DryRun = None
 
 
     def _deserialize(self, params):
-        self.InstanceId = params.get("InstanceId")
         self.ImageName = params.get("ImageName")
+        self.InstanceId = params.get("InstanceId")
         self.ImageDescription = params.get("ImageDescription")
         self.ForcePoweroff = params.get("ForcePoweroff")
         self.Sysprep = params.get("Sysprep")
         self.Reboot = params.get("Reboot")
+        self.DataDiskIds = params.get("DataDiskIds")
+        self.SnapshotIds = params.get("SnapshotIds")
         self.DryRun = params.get("DryRun")
 
 
@@ -1355,7 +1401,7 @@ class DisassociateInstancesKeyPairsRequest(AbstractModel):
         :type InstanceIds: list of str
         :param KeyIds: 密钥对ID列表，每次请求批量密钥对的上限为100。密钥对ID形如：`skey-11112222`。<br><br>可以通过以下方式获取可用的密钥ID：<br><li>通过登录[控制台](https://console.cloud.tencent.com/cvm/sshkey)查询密钥ID。<br><li>通过调用接口 [DescribeKeyPairs](https://cloud.tencent.com/document/api/213/15699) ，取返回信息中的 `KeyId` 获取密钥对ID。
         :type KeyIds: list of str
-        :param ForceStop: 是否对运行中的实例选择强制关机。建议对运行中的实例先手动关机，然后再重置用户密码。取值范围：<br><li>TRUE：表示在正常关机失败后进行强制关机。<br><li>FALSE：表示在正常关机失败后不进行强制关机。<br><br>默认取值：FALSE。
+        :param ForceStop: 是否对运行中的实例选择强制关机。建议对运行中的实例先手动关机，然后再解绑密钥。取值范围：<br><li>TRUE：表示在正常关机失败后进行强制关机。<br><li>FALSE：表示在正常关机失败后不进行强制关机。<br><br>默认取值：FALSE。
         :type ForceStop: bool
         """
         self.InstanceIds = None
@@ -1371,6 +1417,44 @@ class DisassociateInstancesKeyPairsRequest(AbstractModel):
 
 class DisassociateInstancesKeyPairsResponse(AbstractModel):
     """DisassociateInstancesKeyPairs返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class DisassociateSecurityGroupsRequest(AbstractModel):
+    """DisassociateSecurityGroups请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param SecurityGroupIds: 要解绑的`安全组ID`，类似sg-efil73jd，支持解绑多个安全组。
+        :type SecurityGroupIds: list of str
+        :param InstanceIds: 被解绑的`实例ID`，类似ins-lesecurk 。
+        :type InstanceIds: list of str
+        """
+        self.SecurityGroupIds = None
+        self.InstanceIds = None
+
+
+    def _deserialize(self, params):
+        self.SecurityGroupIds = params.get("SecurityGroupIds")
+        self.InstanceIds = params.get("InstanceIds")
+
+
+class DisassociateSecurityGroupsResponse(AbstractModel):
+    """DisassociateSecurityGroups返回参数结构体
 
     """
 

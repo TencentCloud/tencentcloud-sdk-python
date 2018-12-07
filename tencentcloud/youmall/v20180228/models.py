@@ -145,31 +145,31 @@ class CreateFacePictureRequest(AbstractModel):
         """
         :param CompanyId: 集团ID
         :type CompanyId: str
-        :param ShopId: 店铺ID
-        :type ShopId: int
-        :param PersonType: 人物类型（0表示普通顾客，1 白名单，2 表示黑名单）
+        :param PersonType: 人物类型（0表示普通顾客，1 白名单，2 表示黑名单，101表示集团白名单，102表示集团黑名单）
         :type PersonType: int
         :param Picture: 图片BASE编码
         :type Picture: str
         :param PictureName: 图片名称
         :type PictureName: str
+        :param ShopId: 店铺ID，如果不填表示操作集团身份库
+        :type ShopId: int
         :param IsForceUpload: 是否强制更新：为ture时会为用户创建一个新的指定PersonType的身份;目前这个参数已废弃，可不传
         :type IsForceUpload: bool
         """
         self.CompanyId = None
-        self.ShopId = None
         self.PersonType = None
         self.Picture = None
         self.PictureName = None
+        self.ShopId = None
         self.IsForceUpload = None
 
 
     def _deserialize(self, params):
         self.CompanyId = params.get("CompanyId")
-        self.ShopId = params.get("ShopId")
         self.PersonType = params.get("PersonType")
         self.Picture = params.get("Picture")
         self.PictureName = params.get("PictureName")
+        self.ShopId = params.get("ShopId")
         self.IsForceUpload = params.get("IsForceUpload")
 
 
@@ -751,6 +751,76 @@ class DescribePersonArrivedMallResponse(AbstractModel):
                 obj = ArrivedMallInfo()
                 obj._deserialize(item)
                 self.ArrivedMallSet.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribePersonInfoByFacePictureRequest(AbstractModel):
+    """DescribePersonInfoByFacePicture请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param CompanyId: 优mall集团id，通过"指定身份标识获取客户门店列表"接口获取
+        :type CompanyId: str
+        :param ShopId: 优mall店铺id，通过"指定身份标识获取客户门店列表"接口获取
+        :type ShopId: int
+        :param Picture: 人脸图片BASE编码
+        :type Picture: str
+        """
+        self.CompanyId = None
+        self.ShopId = None
+        self.Picture = None
+
+
+    def _deserialize(self, params):
+        self.CompanyId = params.get("CompanyId")
+        self.ShopId = params.get("ShopId")
+        self.Picture = params.get("Picture")
+
+
+class DescribePersonInfoByFacePictureResponse(AbstractModel):
+    """DescribePersonInfoByFacePicture返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param CompanyId: 集团id
+        :type CompanyId: str
+        :param ShopId: 店铺id
+        :type ShopId: int
+        :param PersonId: 顾客face id
+        :type PersonId: int
+        :param PictureUrl: 顾客底图url
+        :type PictureUrl: str
+        :param PersonType: 顾客类型（0表示普通顾客，1 白名单，2 表示黑名单，101表示集团白名单，102表示集团黑名单）
+        :type PersonType: int
+        :param FirstVisitTime: 顾客首次进店时间
+        :type FirstVisitTime: str
+        :param VisitTimes: 顾客历史到访次数
+        :type VisitTimes: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.CompanyId = None
+        self.ShopId = None
+        self.PersonId = None
+        self.PictureUrl = None
+        self.PersonType = None
+        self.FirstVisitTime = None
+        self.VisitTimes = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.CompanyId = params.get("CompanyId")
+        self.ShopId = params.get("ShopId")
+        self.PersonId = params.get("PersonId")
+        self.PictureUrl = params.get("PictureUrl")
+        self.PersonType = params.get("PersonType")
+        self.FirstVisitTime = params.get("FirstVisitTime")
+        self.VisitTimes = params.get("VisitTimes")
         self.RequestId = params.get("RequestId")
 
 

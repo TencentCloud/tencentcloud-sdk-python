@@ -203,6 +203,32 @@ class BruteAttack(AbstractModel):
         self.Uuid = params.get("Uuid")
 
 
+class ChargePrepaid(AbstractModel):
+    """预付费模式，即包年包月相关参数设置。通过该参数可以指定包年包月实例的购买时长、是否设置自动续费等属性。
+
+    """
+
+    def __init__(self):
+        """
+        :param Period: 购买实例的时长，单位：月。取值范围：1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 24, 36。
+        :type Period: int
+        :param RenewFlag: 自动续费标识。取值范围：
+<li>NOTIFY_AND_AUTO_RENEW：通知过期且自动续费</li>
+<li>NOTIFY_AND_MANUAL_RENEW：通知过期不自动续费</li>
+<li>DISABLE_NOTIFY_AND_MANUAL_RENEW：不通知过期不自动续费</li>
+
+默认取值：NOTIFY_AND_MANUAL_RENEW。若该参数指定为NOTIFY_AND_AUTO_RENEW，在账户余额充足的情况下，实例到期后将按月自动续费。
+        :type RenewFlag: str
+        """
+        self.Period = None
+        self.RenewFlag = None
+
+
+    def _deserialize(self, params):
+        self.Period = params.get("Period")
+        self.RenewFlag = params.get("RenewFlag")
+
+
 class CloseProVersionRequest(AbstractModel):
     """CloseProVersion请求参数结构体
 
@@ -450,6 +476,40 @@ class DeleteMachineRequest(AbstractModel):
 
 class DeleteMachineResponse(AbstractModel):
     """DeleteMachine返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class DeleteMaliciousRequestsRequest(AbstractModel):
+    """DeleteMaliciousRequests请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Ids: 恶意请求记录ID数组，最大100条。
+        :type Ids: list of int non-negative
+        """
+        self.Ids = None
+
+
+    def _deserialize(self, params):
+        self.Ids = params.get("Ids")
+
+
+class DeleteMaliciousRequestsResponse(AbstractModel):
+    """DeleteMaliciousRequests返回参数结构体
 
     """
 
@@ -1374,6 +1434,73 @@ class DescribeMachinesResponse(AbstractModel):
                 obj._deserialize(item)
                 self.Machines.append(obj)
         self.TotalCount = params.get("TotalCount")
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeMaliciousRequestsRequest(AbstractModel):
+    """DescribeMaliciousRequests请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Limit: 返回数量，默认为10，最大值为100。
+        :type Limit: int
+        :param Offset: 偏移量，默认为0。
+        :type Offset: int
+        :param Filters: 过滤条件。
+<li>Status - String - 是否必填：否 - 状态筛选（UN_OPERATED: 待处理 | TRUSTED：已信任 | UN_TRUSTED：已取消信任）</li>
+<li>Domain - String - 是否必填：否 - 恶意请求的域名</li>
+<li>MachineIp - String - 是否必填：否 - 主机内网IP</li>
+        :type Filters: list of Filter
+        :param Uuid: 云镜客户端唯一UUID。
+        :type Uuid: str
+        """
+        self.Limit = None
+        self.Offset = None
+        self.Filters = None
+        self.Uuid = None
+
+
+    def _deserialize(self, params):
+        self.Limit = params.get("Limit")
+        self.Offset = params.get("Offset")
+        if params.get("Filters") is not None:
+            self.Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self.Filters.append(obj)
+        self.Uuid = params.get("Uuid")
+
+
+class DescribeMaliciousRequestsResponse(AbstractModel):
+    """DescribeMaliciousRequests返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param TotalCount: 记录总数。
+        :type TotalCount: int
+        :param MaliciousRequests: 恶意请求记录数组。
+        :type MaliciousRequests: list of MaliciousRequest
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.MaliciousRequests = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("MaliciousRequests") is not None:
+            self.MaliciousRequests = []
+            for item in params.get("MaliciousRequests"):
+                obj = MaliciousRequest()
+                obj._deserialize(item)
+                self.MaliciousRequests.append(obj)
         self.RequestId = params.get("RequestId")
 
 
@@ -2605,6 +2732,33 @@ class DescribeWeeklyReportsResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class ExportMaliciousRequestsRequest(AbstractModel):
+    """ExportMaliciousRequests请求参数结构体
+
+    """
+
+
+class ExportMaliciousRequestsResponse(AbstractModel):
+    """ExportMaliciousRequests返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param DownloadUrl: 导出文件下载链接地址。
+        :type DownloadUrl: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.DownloadUrl = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.DownloadUrl = params.get("DownloadUrl")
+        self.RequestId = params.get("RequestId")
+
+
 class Filter(AbstractModel):
     """描述键值对过滤器，用于条件过滤查询。例如过滤ID、名称、状态等
 
@@ -2758,6 +2912,59 @@ class ImpactedHost(AbstractModel):
         self.VulId = params.get("VulId")
 
 
+class InquiryPriceOpenProVersionPrepaidRequest(AbstractModel):
+    """InquiryPriceOpenProVersionPrepaid请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ChargePrepaid: 预付费模式(包年包月)参数设置。
+        :type ChargePrepaid: :class:`tencentcloud.yunjing.v20180228.models.ChargePrepaid`
+        :param Machines: 需要开通专业版机器列表数组。
+        :type Machines: list of ProVersionMachine
+        """
+        self.ChargePrepaid = None
+        self.Machines = None
+
+
+    def _deserialize(self, params):
+        if params.get("ChargePrepaid") is not None:
+            self.ChargePrepaid = ChargePrepaid()
+            self.ChargePrepaid._deserialize(params.get("ChargePrepaid"))
+        if params.get("Machines") is not None:
+            self.Machines = []
+            for item in params.get("Machines"):
+                obj = ProVersionMachine()
+                obj._deserialize(item)
+                self.Machines.append(obj)
+
+
+class InquiryPriceOpenProVersionPrepaidResponse(AbstractModel):
+    """InquiryPriceOpenProVersionPrepaid返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param DiscountPrice: 预支费用的折扣价，单位：元。
+        :type DiscountPrice: float
+        :param DiscountPrice: 预支费用的折扣价，单位：元。
+        :type DiscountPrice: float
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.DiscountPrice = None
+        self.DiscountPrice = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.DiscountPrice = params.get("DiscountPrice")
+        self.DiscountPrice = params.get("DiscountPrice")
+        self.RequestId = params.get("RequestId")
+
+
 class Machine(AbstractModel):
     """主机列表
 
@@ -2815,6 +3022,83 @@ class Machine(AbstractModel):
         self.IsProVersion = params.get("IsProVersion")
         self.MachineWanIp = params.get("MachineWanIp")
         self.PayMode = params.get("PayMode")
+
+
+class MaliciousRequest(AbstractModel):
+    """恶意请求数据。
+
+    """
+
+    def __init__(self):
+        """
+        :param Id: 记录ID。
+        :type Id: int
+        :param Uuid: 云镜客户端UUID。
+        :type Uuid: str
+        :param MachineIp: 主机内网IP。
+        :type MachineIp: str
+        :param MachineName: 主机名。
+        :type MachineName: str
+        :param Domain: 恶意请求域名。
+        :type Domain: str
+        :param Count: 恶意请求数。
+        :type Count: int
+        :param ProcessName: 进程名。
+        :type ProcessName: str
+        :param Status: 记录状态。
+<li>UN_OPERATED：待处理</li>
+<li>TRUSTED：已信任</li>
+<li>UN_TRUSTED：已取消信任</li>
+        :type Status: str
+        :param Description: 恶意请求域名描述。
+        :type Description: str
+        :param Reference: 参考地址。
+        :type Reference: str
+        :param CreateTime: 发现时间。
+        :type CreateTime: str
+        :param MergeTime: 记录合并时间。
+        :type MergeTime: str
+        :param ProcessMd5: 进程MD5
+值。
+        :type ProcessMd5: str
+        :param CmdLine: 执行命令行。
+        :type CmdLine: str
+        :param Pid: 进程PID。
+        :type Pid: int
+        """
+        self.Id = None
+        self.Uuid = None
+        self.MachineIp = None
+        self.MachineName = None
+        self.Domain = None
+        self.Count = None
+        self.ProcessName = None
+        self.Status = None
+        self.Description = None
+        self.Reference = None
+        self.CreateTime = None
+        self.MergeTime = None
+        self.ProcessMd5 = None
+        self.CmdLine = None
+        self.Pid = None
+
+
+    def _deserialize(self, params):
+        self.Id = params.get("Id")
+        self.Uuid = params.get("Uuid")
+        self.MachineIp = params.get("MachineIp")
+        self.MachineName = params.get("MachineName")
+        self.Domain = params.get("Domain")
+        self.Count = params.get("Count")
+        self.ProcessName = params.get("ProcessName")
+        self.Status = params.get("Status")
+        self.Description = params.get("Description")
+        self.Reference = params.get("Reference")
+        self.CreateTime = params.get("CreateTime")
+        self.MergeTime = params.get("MergeTime")
+        self.ProcessMd5 = params.get("ProcessMd5")
+        self.CmdLine = params.get("CmdLine")
+        self.Pid = params.get("Pid")
 
 
 class Malware(AbstractModel):
@@ -2982,6 +3266,47 @@ class ModifyAutoOpenProVersionConfigResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class ModifyProVersionRenewFlagRequest(AbstractModel):
+    """ModifyProVersionRenewFlag请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RenewFlag: 自动续费标识。取值范围：
+<li>NOTIFY_AND_AUTO_RENEW：通知过期且自动续费</li>
+<li>NOTIFY_AND_MANUAL_RENEW：通知过期不自动续费</li>
+<li>DISABLE_NOTIFY_AND_MANUAL_RENEW：不通知过期不自动续费</li>
+        :type RenewFlag: str
+        :param Quuid: 主机唯一ID，对应CVM的uuid、BM的instanceId。
+        :type Quuid: str
+        """
+        self.RenewFlag = None
+        self.Quuid = None
+
+
+    def _deserialize(self, params):
+        self.RenewFlag = params.get("RenewFlag")
+        self.Quuid = params.get("Quuid")
+
+
+class ModifyProVersionRenewFlagResponse(AbstractModel):
+    """ModifyProVersionRenewFlag返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class NonLocalLoginPlace(AbstractModel):
     """异地登录
 
@@ -3111,6 +3436,55 @@ class OpenPortStatistics(AbstractModel):
         self.MachineNum = params.get("MachineNum")
 
 
+class OpenProVersionPrepaidRequest(AbstractModel):
+    """OpenProVersionPrepaid请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ChargePrepaid: 购买相关参数。
+        :type ChargePrepaid: :class:`tencentcloud.yunjing.v20180228.models.ChargePrepaid`
+        :param Machines: 需要开通专业版主机信息数组。
+        :type Machines: list of ProVersionMachine
+        """
+        self.ChargePrepaid = None
+        self.Machines = None
+
+
+    def _deserialize(self, params):
+        if params.get("ChargePrepaid") is not None:
+            self.ChargePrepaid = ChargePrepaid()
+            self.ChargePrepaid._deserialize(params.get("ChargePrepaid"))
+        if params.get("Machines") is not None:
+            self.Machines = []
+            for item in params.get("Machines"):
+                obj = ProVersionMachine()
+                obj._deserialize(item)
+                self.Machines.append(obj)
+
+
+class OpenProVersionPrepaidResponse(AbstractModel):
+    """OpenProVersionPrepaid返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param DealIds: 订单ID列表。
+        :type DealIds: list of str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.DealIds = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.DealIds = params.get("DealIds")
+        self.RequestId = params.get("RequestId")
+
+
 class Place(AbstractModel):
     """登录地信息
 
@@ -3134,6 +3508,35 @@ class Place(AbstractModel):
         self.CityId = params.get("CityId")
         self.ProvinceId = params.get("ProvinceId")
         self.CountryId = params.get("CountryId")
+
+
+class ProVersionMachine(AbstractModel):
+    """需要开通专业版机器信息。
+
+    """
+
+    def __init__(self):
+        """
+        :param MachineType: 主机类型。
+<li>CVM: 虚拟主机</li>
+<li>BM: 黑石物理机</li>
+        :type MachineType: str
+        :param MachineRegion: 主机所在地域。
+如：ap-guangzhou、ap-beijing
+        :type MachineRegion: str
+        :param Quuid: 主机唯一标识Uuid。
+黑石的InstanceId，CVM的Uuid
+        :type Quuid: str
+        """
+        self.MachineType = None
+        self.MachineRegion = None
+        self.Quuid = None
+
+
+    def _deserialize(self, params):
+        self.MachineType = params.get("MachineType")
+        self.MachineRegion = params.get("MachineRegion")
+        self.Quuid = params.get("Quuid")
 
 
 class Process(AbstractModel):
@@ -3257,6 +3660,46 @@ class RecoverMalwaresResponse(AbstractModel):
     def _deserialize(self, params):
         self.SuccessIds = params.get("SuccessIds")
         self.FailedIds = params.get("FailedIds")
+        self.RequestId = params.get("RequestId")
+
+
+class RenewProVersionRequest(AbstractModel):
+    """RenewProVersion请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ChargePrepaid: 购买相关参数。
+        :type ChargePrepaid: :class:`tencentcloud.yunjing.v20180228.models.ChargePrepaid`
+        :param Quuid: 主机唯一ID，对应CVM的uuid、BM的InstanceId。
+        :type Quuid: str
+        """
+        self.ChargePrepaid = None
+        self.Quuid = None
+
+
+    def _deserialize(self, params):
+        if params.get("ChargePrepaid") is not None:
+            self.ChargePrepaid = ChargePrepaid()
+            self.ChargePrepaid._deserialize(params.get("ChargePrepaid"))
+        self.Quuid = params.get("Quuid")
+
+
+class RenewProVersionResponse(AbstractModel):
+    """RenewProVersion返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
 
 
@@ -3391,6 +3834,40 @@ class SeparateMalwaresResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class TrustMaliciousRequestRequest(AbstractModel):
+    """TrustMaliciousRequest请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Id: 恶意请求记录ID。
+        :type Id: int
+        """
+        self.Id = None
+
+
+    def _deserialize(self, params):
+        self.Id = params.get("Id")
+
+
+class TrustMaliciousRequestResponse(AbstractModel):
+    """TrustMaliciousRequest返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class TrustMalwaresRequest(AbstractModel):
     """TrustMalwares请求参数结构体
 
@@ -3410,6 +3887,40 @@ class TrustMalwaresRequest(AbstractModel):
 
 class TrustMalwaresResponse(AbstractModel):
     """TrustMalwares返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class UntrustMaliciousRequestRequest(AbstractModel):
+    """UntrustMaliciousRequest请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Id: 受信任记录ID。
+        :type Id: int
+        """
+        self.Id = None
+
+
+    def _deserialize(self, params):
+        self.Id = params.get("Id")
+
+
+class UntrustMaliciousRequestResponse(AbstractModel):
+    """UntrustMaliciousRequest返回参数结构体
 
     """
 

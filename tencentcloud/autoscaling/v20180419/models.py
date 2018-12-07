@@ -206,7 +206,9 @@ class CreateAutoScalingGroupRequest(AbstractModel):
         :type ForwardLoadBalancers: list of ForwardLoadBalancer
         :param SubnetIds: 子网ID列表，VPC场景下必须指定子网
         :type SubnetIds: list of str
-        :param TerminationPolicies: 销毁策略，目前长度上限为1
+        :param TerminationPolicies: 销毁策略，目前长度上限为1。取值包括 OLDEST_INSTANCE 和 NEWEST_INSTANCE，默认取值为 OLDEST_INSTANCE。
+<br><li> OLDEST_INSTANCE 优先销毁伸缩组中最旧的实例。
+<br><li> NEWEST_INSTANCE，优先销毁伸缩组中最新的实例。
         :type TerminationPolicies: list of str
         :param Zones: 可用区列表，基础网络场景下必须指定可用区
         :type Zones: list of str
@@ -214,6 +216,13 @@ class CreateAutoScalingGroupRequest(AbstractModel):
 <br><li> IMMEDIATE_RETRY，立即重试，在较短时间内快速重试，连续失败超过一定次数（5次）后不再重试。
 <br><li> INCREMENTAL_INTERVALS，间隔递增重试，随着连续失败次数的增加，重试间隔逐渐增大，重试间隔从秒级到1天不等。在连续失败超过一定次数（25次）后不再重试。
         :type RetryPolicy: str
+        :param ZonesCheckPolicy: 可用区校验策略，取值包括 ALL 和 ANY，默认取值为ANY。
+<br><li> ALL，所有可用区（Zone）或子网（SubnetId）都可用则通过校验，否则校验报错。
+<br><li> ANY，存在任何一个可用区（Zone）或子网（SubnetId）可用则通过校验，否则校验报错。
+
+可用区或子网不可用的常见原因包括该可用区CVM实例类型售罄、该可用区CBS云盘售罄、该可用区配额不足、该子网IP不足等。
+如果 Zones/SubnetIds 中可用区或者子网不存在，则无论 ZonesCheckPolicy 采用何种取值，都会校验报错。
+        :type ZonesCheckPolicy: str
         """
         self.AutoScalingGroupName = None
         self.LaunchConfigurationId = None
@@ -229,6 +238,7 @@ class CreateAutoScalingGroupRequest(AbstractModel):
         self.TerminationPolicies = None
         self.Zones = None
         self.RetryPolicy = None
+        self.ZonesCheckPolicy = None
 
 
     def _deserialize(self, params):
@@ -251,6 +261,7 @@ class CreateAutoScalingGroupRequest(AbstractModel):
         self.TerminationPolicies = params.get("TerminationPolicies")
         self.Zones = params.get("Zones")
         self.RetryPolicy = params.get("RetryPolicy")
+        self.ZonesCheckPolicy = params.get("ZonesCheckPolicy")
 
 
 class CreateAutoScalingGroupResponse(AbstractModel):
@@ -313,6 +324,13 @@ class CreateLaunchConfigurationRequest(AbstractModel):
         :param InstanceTypes: 实例机型列表，不同实例机型指定了不同的资源规格，最多支持5中实例机型。
 `InstanceType`和`InstanceTypes`参数互斥，二者必填一个且只能填写一个。
         :type InstanceTypes: list of str
+        :param InstanceTypesCheckPolicy: 实例类型校验策略，取值包括 ALL 和 ANY，默认取值为ANY。
+<br><li> ALL，所有实例类型（InstanceType）都可用则通过校验，否则校验报错。
+<br><li> ANY，存在任何一个实例类型（InstanceType）可用则通过校验，否则校验报错。
+
+实例类型不可用的常见原因包括该实例类型售罄、对应云盘售罄等。
+如果 InstanceTypes 中一款机型不存在或者已下线，则无论 InstanceTypesCheckPolicy 采用何种取值，都会校验报错。
+        :type InstanceTypesCheckPolicy: str
         """
         self.LaunchConfigurationName = None
         self.ImageId = None
@@ -328,6 +346,7 @@ class CreateLaunchConfigurationRequest(AbstractModel):
         self.InstanceChargeType = None
         self.InstanceMarketOptions = None
         self.InstanceTypes = None
+        self.InstanceTypesCheckPolicy = None
 
 
     def _deserialize(self, params):
@@ -360,6 +379,7 @@ class CreateLaunchConfigurationRequest(AbstractModel):
             self.InstanceMarketOptions = InstanceMarketOptionsRequest()
             self.InstanceMarketOptions._deserialize(params.get("InstanceMarketOptions"))
         self.InstanceTypes = params.get("InstanceTypes")
+        self.InstanceTypesCheckPolicy = params.get("InstanceTypesCheckPolicy")
 
 
 class CreateLaunchConfigurationResponse(AbstractModel):
@@ -1356,7 +1376,9 @@ class ModifyAutoScalingGroupRequest(AbstractModel):
         :type ProjectId: int
         :param SubnetIds: 子网ID列表
         :type SubnetIds: list of str
-        :param TerminationPolicies: 销毁策略，目前长度上限为1
+        :param TerminationPolicies: 销毁策略，目前长度上限为1。取值包括 OLDEST_INSTANCE 和 NEWEST_INSTANCE。
+<br><li> OLDEST_INSTANCE 优先销毁伸缩组中最旧的实例。
+<br><li> NEWEST_INSTANCE，优先销毁伸缩组中最新的实例。
         :type TerminationPolicies: list of str
         :param VpcId: VPC ID，基础网络则填空字符串。修改为具体VPC ID时，需指定相应的SubnetIds；修改为基础网络时，需指定相应的Zones。
         :type VpcId: str
@@ -1366,6 +1388,13 @@ class ModifyAutoScalingGroupRequest(AbstractModel):
 <br><li> IMMEDIATE_RETRY，立即重试，在较短时间内快速重试，连续失败超过一定次数（5次）后不再重试。
 <br><li> INCREMENTAL_INTERVALS，间隔递增重试，随着连续失败次数的增加，重试间隔逐渐增大，重试间隔从秒级到1天不等。在连续失败超过一定次数（25次）后不再重试。
         :type RetryPolicy: str
+        :param ZonesCheckPolicy: 可用区校验策略，取值包括 ALL 和 ANY，默认取值为ANY。在伸缩组实际变更资源相关字段时（启动配置、可用区、子网）发挥作用。
+<br><li> ALL，所有可用区（Zone）或子网（SubnetId）都可用则通过校验，否则校验报错。
+<br><li> ANY，存在任何一个可用区（Zone）或子网（SubnetId）可用则通过校验，否则校验报错。
+
+可用区或子网不可用的常见原因包括该可用区CVM实例类型售罄、该可用区CBS云盘售罄、该可用区配额不足、该子网IP不足等。
+如果 Zones/SubnetIds 中可用区或者子网不存在，则无论 ZonesCheckPolicy 采用何种取值，都会校验报错。
+        :type ZonesCheckPolicy: str
         """
         self.AutoScalingGroupId = None
         self.AutoScalingGroupName = None
@@ -1380,6 +1409,7 @@ class ModifyAutoScalingGroupRequest(AbstractModel):
         self.VpcId = None
         self.Zones = None
         self.RetryPolicy = None
+        self.ZonesCheckPolicy = None
 
 
     def _deserialize(self, params):
@@ -1396,6 +1426,7 @@ class ModifyAutoScalingGroupRequest(AbstractModel):
         self.VpcId = params.get("VpcId")
         self.Zones = params.get("Zones")
         self.RetryPolicy = params.get("RetryPolicy")
+        self.ZonesCheckPolicy = params.get("ZonesCheckPolicy")
 
 
 class ModifyAutoScalingGroupResponse(AbstractModel):
@@ -1438,6 +1469,62 @@ class ModifyDesiredCapacityRequest(AbstractModel):
 
 class ModifyDesiredCapacityResponse(AbstractModel):
     """ModifyDesiredCapacity返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class ModifyLaunchConfigurationAttributesRequest(AbstractModel):
+    """ModifyLaunchConfigurationAttributes请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param LaunchConfigurationId: 启动配置ID
+        :type LaunchConfigurationId: str
+        :param ImageId: 指定有效的[镜像](https://cloud.tencent.com/document/product/213/4940)ID，格式形如`img-8toqc6s3`。镜像类型分为四种：<br/><li>公共镜像</li><li>自定义镜像</li><li>共享镜像</li><li>服务市场镜像</li><br/>可通过以下方式获取可用的镜像ID：<br/><li>`公共镜像`、`自定义镜像`、`共享镜像`的镜像ID可通过登录[控制台](https://console.cloud.tencent.com/cvm/image?rid=1&imageType=PUBLIC_IMAGE)查询；`服务镜像市场`的镜像ID可通过[云市场](https://market.cloud.tencent.com/list)查询。</li><li>通过调用接口 [DescribeImages](https://cloud.tencent.com/document/api/213/15715) ，取返回信息中的`ImageId`字段。</li>
+        :type ImageId: str
+        :param InstanceTypes: 实例类型列表，不同实例机型指定了不同的资源规格，最多支持5中实例机型。
+启动配置，通过 InstanceType 表示单一实例类型，通过 InstanceTypes 表示多实例类型。指定 InstanceTypes 成功启动配置后，原有的 InstanceType 自动失效。
+        :type InstanceTypes: list of str
+        :param InstanceTypesCheckPolicy: 实例类型校验策略，在实际修改 InstanceTypes 时发挥作用，取值包括 ALL 和 ANY，默认取值为ANY。
+<br><li> ALL，所有实例类型（InstanceType）都可用则通过校验，否则校验报错。
+<br><li> ANY，存在任何一个实例类型（InstanceType）可用则通过校验，否则校验报错。
+
+实例类型不可用的常见原因包括该实例类型售罄、对应云盘售罄等。
+如果 InstanceTypes 中一款机型不存在或者已下线，则无论 InstanceTypesCheckPolicy 采用何种取值，都会校验报错。
+        :type InstanceTypesCheckPolicy: str
+        :param LaunchConfigurationName: 启动配置显示名称。名称仅支持中文、英文、数字、下划线、分隔符"-"、小数点，最大长度不能超60个字节。
+        :type LaunchConfigurationName: str
+        """
+        self.LaunchConfigurationId = None
+        self.ImageId = None
+        self.InstanceTypes = None
+        self.InstanceTypesCheckPolicy = None
+        self.LaunchConfigurationName = None
+
+
+    def _deserialize(self, params):
+        self.LaunchConfigurationId = params.get("LaunchConfigurationId")
+        self.ImageId = params.get("ImageId")
+        self.InstanceTypes = params.get("InstanceTypes")
+        self.InstanceTypesCheckPolicy = params.get("InstanceTypesCheckPolicy")
+        self.LaunchConfigurationName = params.get("LaunchConfigurationName")
+
+
+class ModifyLaunchConfigurationAttributesResponse(AbstractModel):
+    """ModifyLaunchConfigurationAttributes返回参数结构体
 
     """
 

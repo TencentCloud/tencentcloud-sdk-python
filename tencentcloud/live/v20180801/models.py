@@ -326,6 +326,40 @@ class DeleteLiveWatermarkResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DeletePullStreamConfigRequest(AbstractModel):
+    """DeletePullStreamConfig请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ConfigId: 配置id。
+        :type ConfigId: str
+        """
+        self.ConfigId = None
+
+
+    def _deserialize(self, params):
+        self.ConfigId = params.get("ConfigId")
+
+
+class DeletePullStreamConfigResponse(AbstractModel):
+    """DeletePullStreamConfig返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeLivePlayAuthKeyRequest(AbstractModel):
     """DescribeLivePlayAuthKey请求参数结构体
 
@@ -872,11 +906,14 @@ class ModifyLivePlayAuthKeyRequest(AbstractModel):
         :type AuthKey: str
         :param AuthDelta: 有效时间，单位：秒。
         :type AuthDelta: int
+        :param AuthBackKey: 鉴权backkey。
+        :type AuthBackKey: str
         """
         self.DomainName = None
         self.Enable = None
         self.AuthKey = None
         self.AuthDelta = None
+        self.AuthBackKey = None
 
 
     def _deserialize(self, params):
@@ -884,6 +921,7 @@ class ModifyLivePlayAuthKeyRequest(AbstractModel):
         self.Enable = params.get("Enable")
         self.AuthKey = params.get("AuthKey")
         self.AuthDelta = params.get("AuthDelta")
+        self.AuthBackKey = params.get("AuthBackKey")
 
 
 class ModifyLivePlayAuthKeyResponse(AbstractModel):
@@ -1067,11 +1105,14 @@ class PlayAuthKeyInfo(AbstractModel):
         :type AuthKey: str
         :param AuthDelta: 有效时间，单位：秒。
         :type AuthDelta: int
+        :param AuthBackKey: 鉴权BackKey。
+        :type AuthBackKey: str
         """
         self.DomainName = None
         self.Enable = None
         self.AuthKey = None
         self.AuthDelta = None
+        self.AuthBackKey = None
 
 
     def _deserialize(self, params):
@@ -1079,6 +1120,7 @@ class PlayAuthKeyInfo(AbstractModel):
         self.Enable = params.get("Enable")
         self.AuthKey = params.get("AuthKey")
         self.AuthDelta = params.get("AuthDelta")
+        self.AuthBackKey = params.get("AuthBackKey")
 
 
 class PublishTime(AbstractModel):

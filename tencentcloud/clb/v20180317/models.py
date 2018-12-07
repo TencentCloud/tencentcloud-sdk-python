@@ -68,7 +68,7 @@ class CertificateInput(AbstractModel):
 
     def __init__(self):
         """
-        :param SSLMode: 认证类型，unidirectional：单向认证，mutual：双向认证
+        :param SSLMode: 认证类型，UNIDIRECTIONAL：单向认证，MUTUAL：双向认证
         :type SSLMode: str
         :param CertId: 服务端证书的 ID，如果不填写此项则必须上传证书，包括 CertContent，CertKey，CertName。
         :type CertId: str
@@ -561,7 +561,7 @@ class DescribeLoadBalancersRequest(AbstractModel):
         :param LoadBalancerType: 负载均衡实例的网络类型：
 OPEN：公网属性， INTERNAL：内网属性。
         :type LoadBalancerType: str
-        :param Forward: 1：应用型，0：传统型，-1：全部类型。
+        :param Forward: 1：应用型，0：传统型。
         :type Forward: int
         :param LoadBalancerName: 负载均衡实例名称。
         :type LoadBalancerName: str
@@ -753,7 +753,7 @@ class HealthCheck(AbstractModel):
 
     def __init__(self):
         """
-        :param HealthSwitch: 是否开启健康检查：1（开启）、0（关闭）。默认值 1，表示打开。
+        :param HealthSwitch: 是否开启健康检查：1（开启）、0（关闭）。
         :type HealthSwitch: int
         :param TimeOut: 健康检查的响应超时时间，可选值：2~60，默认值：2，单位：秒。响应超时时间要小于检查间隔时间。
         :type TimeOut: int

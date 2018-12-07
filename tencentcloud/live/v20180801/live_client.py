@@ -205,6 +205,34 @@ class LiveClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DeletePullStreamConfig(self, request):
+        """删除直播拉流配置
+
+        :param request: 调用DeletePullStreamConfig所需参数的结构体。
+        :type request: :class:`tencentcloud.live.v20180801.models.DeletePullStreamConfigRequest`
+        :rtype: :class:`tencentcloud.live.v20180801.models.DeletePullStreamConfigResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DeletePullStreamConfig", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DeletePullStreamConfigResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise e
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeLivePlayAuthKey(self, request):
         """查询播放鉴权key
 

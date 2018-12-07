@@ -165,6 +165,34 @@ class YunjingClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DeleteMaliciousRequests(self, request):
+        """本接口 (DeleteMaliciousRequests) 用于删除恶意请求记录。
+
+        :param request: 调用DeleteMaliciousRequests所需参数的结构体。
+        :type request: :class:`tencentcloud.yunjing.v20180228.models.DeleteMaliciousRequestsRequest`
+        :rtype: :class:`tencentcloud.yunjing.v20180228.models.DeleteMaliciousRequestsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DeleteMaliciousRequests", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DeleteMaliciousRequestsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise e
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DeleteMalwares(self, request):
         """本接口 (DeleteMalwares) 用于删除木马记录。
 
@@ -571,6 +599,34 @@ class YunjingClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeMachinesResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise e
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeMaliciousRequests(self, request):
+        """本接口 (DescribeMaliciousRequests) 用于获取恶意请求数据。
+
+        :param request: 调用DescribeMaliciousRequests所需参数的结构体。
+        :type request: :class:`tencentcloud.yunjing.v20180228.models.DescribeMaliciousRequestsRequest`
+        :rtype: :class:`tencentcloud.yunjing.v20180228.models.DescribeMaliciousRequestsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeMaliciousRequests", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeMaliciousRequestsResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -1173,6 +1229,34 @@ class YunjingClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def ExportMaliciousRequests(self, request):
+        """本接口 (ExportMaliciousRequests) 用于导出下载恶意请求文件。
+
+        :param request: 调用ExportMaliciousRequests所需参数的结构体。
+        :type request: :class:`tencentcloud.yunjing.v20180228.models.ExportMaliciousRequestsRequest`
+        :rtype: :class:`tencentcloud.yunjing.v20180228.models.ExportMaliciousRequestsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ExportMaliciousRequests", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ExportMaliciousRequestsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise e
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def IgnoreImpactedHosts(self, request):
         """本接口 (IngoreImpactedHosts) 用于忽略漏洞。
 
@@ -1187,6 +1271,34 @@ class YunjingClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.IgnoreImpactedHostsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise e
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def InquiryPriceOpenProVersionPrepaid(self, request):
+        """本接口 (InquiryPriceOpenProVersionPrepaid) 用于开通专业版询价(预付费)。
+
+        :param request: 调用InquiryPriceOpenProVersionPrepaid所需参数的结构体。
+        :type request: :class:`tencentcloud.yunjing.v20180228.models.InquiryPriceOpenProVersionPrepaidRequest`
+        :rtype: :class:`tencentcloud.yunjing.v20180228.models.InquiryPriceOpenProVersionPrepaidResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("InquiryPriceOpenProVersionPrepaid", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.InquiryPriceOpenProVersionPrepaidResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -1285,6 +1397,62 @@ class YunjingClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def ModifyProVersionRenewFlag(self, request):
+        """本接口 (ModifyProVersionRenewFlag) 用于修改专业版包年包月续费标识。
+
+        :param request: 调用ModifyProVersionRenewFlag所需参数的结构体。
+        :type request: :class:`tencentcloud.yunjing.v20180228.models.ModifyProVersionRenewFlagRequest`
+        :rtype: :class:`tencentcloud.yunjing.v20180228.models.ModifyProVersionRenewFlagResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ModifyProVersionRenewFlag", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ModifyProVersionRenewFlagResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise e
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def OpenProVersionPrepaid(self, request):
+        """本接口 (OpenProVersionPrepaid) 用于开通专业版(包年包月)。
+
+        :param request: 调用OpenProVersionPrepaid所需参数的结构体。
+        :type request: :class:`tencentcloud.yunjing.v20180228.models.OpenProVersionPrepaidRequest`
+        :rtype: :class:`tencentcloud.yunjing.v20180228.models.OpenProVersionPrepaidResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("OpenProVersionPrepaid", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.OpenProVersionPrepaidResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise e
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def RecoverMalwares(self, request):
         """本接口（RecoverMalwares）用于批量恢复已经被隔离的木马文件。
 
@@ -1299,6 +1467,34 @@ class YunjingClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.RecoverMalwaresResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise e
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def RenewProVersion(self, request):
+        """本接口 (RenewProVersion) 用于续费专业版(包年包月)。
+
+        :param request: 调用RenewProVersion所需参数的结构体。
+        :type request: :class:`tencentcloud.yunjing.v20180228.models.RenewProVersionRequest`
+        :rtype: :class:`tencentcloud.yunjing.v20180228.models.RenewProVersionResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("RenewProVersion", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.RenewProVersionResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -1369,6 +1565,34 @@ class YunjingClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def TrustMaliciousRequest(self, request):
+        """本接口 (TrustMaliciousRequest) 用于恶意请求添加信任。
+
+        :param request: 调用TrustMaliciousRequest所需参数的结构体。
+        :type request: :class:`tencentcloud.yunjing.v20180228.models.TrustMaliciousRequestRequest`
+        :rtype: :class:`tencentcloud.yunjing.v20180228.models.TrustMaliciousRequestResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("TrustMaliciousRequest", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.TrustMaliciousRequestResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise e
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def TrustMalwares(self, request):
         """本接口(TrustMalwares)将被识别木马文件设为信任。
 
@@ -1383,6 +1607,34 @@ class YunjingClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.TrustMalwaresResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise e
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def UntrustMaliciousRequest(self, request):
+        """本接口 (UntrustMaliciousRequest) 用于取消信任恶意请求。
+
+        :param request: 调用UntrustMaliciousRequest所需参数的结构体。
+        :type request: :class:`tencentcloud.yunjing.v20180228.models.UntrustMaliciousRequestRequest`
+        :rtype: :class:`tencentcloud.yunjing.v20180228.models.UntrustMaliciousRequestResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("UntrustMaliciousRequest", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.UntrustMaliciousRequestResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

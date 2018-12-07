@@ -519,6 +519,37 @@ class AutoscalingClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def ModifyLaunchConfigurationAttributes(self, request):
+        """本接口（ModifyLaunchConfigurationAttributes）用于修改启动配置部分属性。
+
+        * 修改启动配置后，已经使用该启动配置扩容的存量实例不会发生变更，此后使用该启动配置的新增实例会按照新的配置进行扩容。
+        * 本接口支持修改部分简单类型。
+
+        :param request: 调用ModifyLaunchConfigurationAttributes所需参数的结构体。
+        :type request: :class:`tencentcloud.autoscaling.v20180419.models.ModifyLaunchConfigurationAttributesRequest`
+        :rtype: :class:`tencentcloud.autoscaling.v20180419.models.ModifyLaunchConfigurationAttributesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ModifyLaunchConfigurationAttributes", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ModifyLaunchConfigurationAttributesResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise e
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def ModifyScheduledAction(self, request):
         """本接口（ModifyScheduledAction）用于修改定时任务。
 
