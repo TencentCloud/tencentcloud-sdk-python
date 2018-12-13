@@ -25,7 +25,7 @@ class GetInvokeTxRequest(AbstractModel):
         """
         :param Module: 模块名，固定字段：transaction
         :type Module: str
-        :param Operation: 操作名，固定地段：invoke
+        :param Operation: 操作名，固定字段：query_txid
         :type Operation: str
         :param ClusterId: 区块链网络ID，可在区块链网络详情或列表中获取
         :type ClusterId: str
@@ -91,7 +91,7 @@ class InvokeRequest(AbstractModel):
         """
         :param Module: 模块名，固定字段：transaction
         :type Module: str
-        :param Operation: 操作名，固定地段：invoke
+        :param Operation: 操作名，固定字段：invoke
         :type Operation: str
         :param ClusterId: 区块链网络ID，可在区块链网络详情或列表中获取
         :type ClusterId: str
@@ -191,7 +191,7 @@ class QueryRequest(AbstractModel):
         """
         :param Module: 模块名，固定字段：transaction
         :type Module: str
-        :param Operation: 操作名，固定地段：query
+        :param Operation: 操作名，固定字段：query
         :type Operation: str
         :param ClusterId: 区块链网络ID，可在区块链网络详情或列表中获取
         :type ClusterId: str

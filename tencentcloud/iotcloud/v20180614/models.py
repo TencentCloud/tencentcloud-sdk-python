@@ -100,7 +100,7 @@ class CancelTaskResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.RequestId = None
@@ -131,6 +131,10 @@ class CreateDeviceRequest(AbstractModel):
         :type Imei: str
         :param LoraDevEui: LoRa设备的DevEui，当创建LoRa时，此字段必填
         :type LoraDevEui: str
+        :param LoraMoteType: LoRa设备的MoteType
+        :type LoraMoteType: int
+        :param Skey: 创建LoRa设备需要skey
+        :type Skey: str
         """
         self.ProductId = None
         self.DeviceName = None
@@ -139,6 +143,8 @@ class CreateDeviceRequest(AbstractModel):
         self.Isp = None
         self.Imei = None
         self.LoraDevEui = None
+        self.LoraMoteType = None
+        self.Skey = None
 
 
     def _deserialize(self, params):
@@ -151,6 +157,8 @@ class CreateDeviceRequest(AbstractModel):
         self.Isp = params.get("Isp")
         self.Imei = params.get("Imei")
         self.LoraDevEui = params.get("LoraDevEui")
+        self.LoraMoteType = params.get("LoraMoteType")
+        self.Skey = params.get("Skey")
 
 
 class CreateDeviceResponse(AbstractModel):
@@ -170,7 +178,13 @@ class CreateDeviceResponse(AbstractModel):
         :type DevicePrivateKey: str
         :param LoraDevEui: LoRa设备的DevEui，当设备是LoRa设备时，会返回该字段
         :type LoraDevEui: str
-        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :param LoraMoteType: LoRa设备的MoteType，当设备是LoRa设备时，会返回该字段
+        :type LoraMoteType: int
+        :param LoraAppKey: LoRa设备的AppKey，当设备是LoRa设备时，会返回该字段
+        :type LoraAppKey: str
+        :param LoraNwkKey: LoRa设备的NwkKey，当设备是LoRa设备时，会返回该字段
+        :type LoraNwkKey: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.DeviceName = None
@@ -178,6 +192,9 @@ class CreateDeviceResponse(AbstractModel):
         self.DeviceCert = None
         self.DevicePrivateKey = None
         self.LoraDevEui = None
+        self.LoraMoteType = None
+        self.LoraAppKey = None
+        self.LoraNwkKey = None
         self.RequestId = None
 
 
@@ -187,6 +204,9 @@ class CreateDeviceResponse(AbstractModel):
         self.DeviceCert = params.get("DeviceCert")
         self.DevicePrivateKey = params.get("DevicePrivateKey")
         self.LoraDevEui = params.get("LoraDevEui")
+        self.LoraMoteType = params.get("LoraMoteType")
+        self.LoraAppKey = params.get("LoraAppKey")
+        self.LoraNwkKey = params.get("LoraNwkKey")
         self.RequestId = params.get("RequestId")
 
 
@@ -220,7 +240,7 @@ class CreateMultiDeviceResponse(AbstractModel):
         """
         :param TaskId: 任务ID，腾讯云生成全局唯一的任务 ID，有效期一个月，一个月之后任务失效。可以调用获取创建多设备任务状态接口获取该任务的执行状态，当状态为成功时，可以调用获取创建多设备任务结果接口获取该任务的结果
         :type TaskId: str
-        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.TaskId = None
@@ -243,9 +263,12 @@ class CreateProductRequest(AbstractModel):
         :type ProductName: str
         :param ProductProperties: 产品属性
         :type ProductProperties: :class:`tencentcloud.iotcloud.v20180614.models.ProductProperties`
+        :param Skey: 创建LoRa产品需要的Skey
+        :type Skey: str
         """
         self.ProductName = None
         self.ProductProperties = None
+        self.Skey = None
 
 
     def _deserialize(self, params):
@@ -253,6 +276,7 @@ class CreateProductRequest(AbstractModel):
         if params.get("ProductProperties") is not None:
             self.ProductProperties = ProductProperties()
             self.ProductProperties._deserialize(params.get("ProductProperties"))
+        self.Skey = params.get("Skey")
 
 
 class CreateProductResponse(AbstractModel):
@@ -268,7 +292,7 @@ class CreateProductResponse(AbstractModel):
         :type ProductId: str
         :param ProductProperties: 产品属性
         :type ProductProperties: :class:`tencentcloud.iotcloud.v20180614.models.ProductProperties`
-        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.ProductName = None
@@ -334,7 +358,7 @@ class CreateTaskResponse(AbstractModel):
         """
         :param TaskId: 创建的任务ID
         :type TaskId: str
-        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.TaskId = None
@@ -343,6 +367,46 @@ class CreateTaskResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.TaskId = params.get("TaskId")
+        self.RequestId = params.get("RequestId")
+
+
+class CreateTopicRuleRequest(AbstractModel):
+    """CreateTopicRule请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RuleName: 规则名称
+        :type RuleName: str
+        :param TopicRulePayload: 规则内容
+        :type TopicRulePayload: :class:`tencentcloud.iotcloud.v20180614.models.TopicRulePayload`
+        """
+        self.RuleName = None
+        self.TopicRulePayload = None
+
+
+    def _deserialize(self, params):
+        self.RuleName = params.get("RuleName")
+        if params.get("TopicRulePayload") is not None:
+            self.TopicRulePayload = TopicRulePayload()
+            self.TopicRulePayload._deserialize(params.get("TopicRulePayload"))
+
+
+class CreateTopicRuleResponse(AbstractModel):
+    """CreateTopicRule返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
 
 
@@ -357,14 +421,18 @@ class DeleteDeviceRequest(AbstractModel):
         :type ProductId: str
         :param DeviceName: 需要删除的设备名称
         :type DeviceName: str
+        :param Skey: 删除LoRa设备以及LoRa网关设备需要skey
+        :type Skey: str
         """
         self.ProductId = None
         self.DeviceName = None
+        self.Skey = None
 
 
     def _deserialize(self, params):
         self.ProductId = params.get("ProductId")
         self.DeviceName = params.get("DeviceName")
+        self.Skey = params.get("Skey")
 
 
 class DeleteDeviceResponse(AbstractModel):
@@ -374,7 +442,7 @@ class DeleteDeviceResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.RequestId = None
@@ -393,12 +461,16 @@ class DeleteProductRequest(AbstractModel):
         """
         :param ProductId: 需要删除的产品 ID
         :type ProductId: str
+        :param Skey: 删除LoRa产品需要skey
+        :type Skey: str
         """
         self.ProductId = None
+        self.Skey = None
 
 
     def _deserialize(self, params):
         self.ProductId = params.get("ProductId")
+        self.Skey = params.get("Skey")
 
 
 class DeleteProductResponse(AbstractModel):
@@ -408,13 +480,150 @@ class DeleteProductResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.RequestId = None
 
 
     def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class DeleteTopicRuleRequest(AbstractModel):
+    """DeleteTopicRule请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RuleName: 规则名
+        :type RuleName: str
+        """
+        self.RuleName = None
+
+
+    def _deserialize(self, params):
+        self.RuleName = params.get("RuleName")
+
+
+class DeleteTopicRuleResponse(AbstractModel):
+    """DeleteTopicRule返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeDeviceRequest(AbstractModel):
+    """DescribeDevice请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ProductID: 产品ID
+        :type ProductID: str
+        :param DeviceName: 产品名
+        :type DeviceName: str
+        """
+        self.ProductID = None
+        self.DeviceName = None
+
+
+    def _deserialize(self, params):
+        self.ProductID = params.get("ProductID")
+        self.DeviceName = params.get("DeviceName")
+
+
+class DescribeDeviceResponse(AbstractModel):
+    """DescribeDevice返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param DeviceName: 设备名
+        :type DeviceName: str
+        :param Online: 设备是否在线，0不在线，1在线
+        :type Online: int
+        :param LoginTime: 设备登陆时间
+        :type LoginTime: int
+        :param Version: 设备固件版本
+        :type Version: str
+        :param LastUpdateTime: 设备最后更新时间
+        :type LastUpdateTime: int
+        :param DeviceCert: 设备证书
+        :type DeviceCert: str
+        :param DevicePsk: 设备密钥
+        :type DevicePsk: str
+        :param Tags: 设备属性
+        :type Tags: list of DeviceTag
+        :param DeviceType: 设备类型
+        :type DeviceType: int
+        :param Imei: IMEI
+        :type Imei: str
+        :param Isp: 运营商类型
+        :type Isp: int
+        :param ConnIP: IP地址
+        :type ConnIP: int
+        :param NbiotDeviceID: NB IoT运营商处的DeviceID
+        :type NbiotDeviceID: str
+        :param LoraDevEui: Lora设备的dev eui
+        :type LoraDevEui: str
+        :param LoraMoteType: Lora设备的mote type
+        :type LoraMoteType: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.DeviceName = None
+        self.Online = None
+        self.LoginTime = None
+        self.Version = None
+        self.LastUpdateTime = None
+        self.DeviceCert = None
+        self.DevicePsk = None
+        self.Tags = None
+        self.DeviceType = None
+        self.Imei = None
+        self.Isp = None
+        self.ConnIP = None
+        self.NbiotDeviceID = None
+        self.LoraDevEui = None
+        self.LoraMoteType = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.DeviceName = params.get("DeviceName")
+        self.Online = params.get("Online")
+        self.LoginTime = params.get("LoginTime")
+        self.Version = params.get("Version")
+        self.LastUpdateTime = params.get("LastUpdateTime")
+        self.DeviceCert = params.get("DeviceCert")
+        self.DevicePsk = params.get("DevicePsk")
+        if params.get("Tags") is not None:
+            self.Tags = []
+            for item in params.get("Tags"):
+                obj = DeviceTag()
+                obj._deserialize(item)
+                self.Tags.append(obj)
+        self.DeviceType = params.get("DeviceType")
+        self.Imei = params.get("Imei")
+        self.Isp = params.get("Isp")
+        self.ConnIP = params.get("ConnIP")
+        self.NbiotDeviceID = params.get("NbiotDeviceID")
+        self.LoraDevEui = params.get("LoraDevEui")
+        self.LoraMoteType = params.get("LoraMoteType")
         self.RequestId = params.get("RequestId")
 
 
@@ -448,7 +657,7 @@ class DescribeDeviceShadowResponse(AbstractModel):
         """
         :param Data: 设备影子数据
         :type Data: str
-        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.Data = None
@@ -500,7 +709,7 @@ class DescribeDevicesResponse(AbstractModel):
         :type TotalCount: int
         :param Devices: 设备详细信息列表
         :type Devices: list of DeviceInfo
-        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.TotalCount = None
@@ -551,7 +760,7 @@ class DescribeMultiDevTaskResponse(AbstractModel):
         :type TaskId: str
         :param TaskStatus: 任务是否完成。0 代表任务未开始，1 代表任务正在执行，2 代表任务已完成
         :type TaskStatus: int
-        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.TaskId = None
@@ -607,7 +816,7 @@ class DescribeMultiDevicesResponse(AbstractModel):
         :type DevicesInfo: list of MultiDevicesInfo
         :param TotalDevNum: 该任务创建设备的总数
         :type TotalDevNum: int
-        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.TaskId = None
@@ -669,7 +878,7 @@ class DescribeProductsResponse(AbstractModel):
         :type TotalCount: int
         :param Products: 产品详细信息列表
         :type Products: list of ProductInfo
-        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.TotalCount = None
@@ -738,7 +947,7 @@ class DescribeTaskResponse(AbstractModel):
         :type AllDeviceCnt: int
         :param DoneDeviceCnt: 已完成任务的设备数目
         :type DoneDeviceCnt: int
-        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.Type = None
@@ -806,7 +1015,7 @@ class DescribeTasksResponse(AbstractModel):
         :type TotalCount: int
         :param Tasks: 此页任务对象的数组，按创建时间排序
         :type Tasks: list of TaskInfo
-        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.TotalCount = None
@@ -926,6 +1135,74 @@ class DeviceTag(AbstractModel):
         self.Tag = params.get("Tag")
         self.Type = params.get("Type")
         self.Value = params.get("Value")
+
+
+class DisableTopicRuleRequest(AbstractModel):
+    """DisableTopicRule请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RuleName: 规则名称
+        :type RuleName: str
+        """
+        self.RuleName = None
+
+
+    def _deserialize(self, params):
+        self.RuleName = params.get("RuleName")
+
+
+class DisableTopicRuleResponse(AbstractModel):
+    """DisableTopicRule返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class EnableTopicRuleRequest(AbstractModel):
+    """EnableTopicRule请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RuleName: 规则名称
+        :type RuleName: str
+        """
+        self.RuleName = None
+
+
+    def _deserialize(self, params):
+        self.RuleName = params.get("RuleName")
+
+
+class EnableTopicRuleResponse(AbstractModel):
+    """EnableTopicRule返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
 
 
 class Filter(AbstractModel):
@@ -1057,6 +1334,10 @@ class ProductProperties(AbstractModel):
         :type Platform: str
         :param Appeui: LoRa产品运营侧APPEUI，只有LoRa产品需要填写
         :type Appeui: str
+        :param ModelId: 产品绑定的物模型ID，-1表示不绑定
+        :type ModelId: str
+        :param ModelName: 产品绑定的物模型名称
+        :type ModelName: str
         """
         self.ProductDescription = None
         self.EncryptionType = None
@@ -1065,6 +1346,8 @@ class ProductProperties(AbstractModel):
         self.Format = None
         self.Platform = None
         self.Appeui = None
+        self.ModelId = None
+        self.ModelName = None
 
 
     def _deserialize(self, params):
@@ -1075,6 +1358,8 @@ class ProductProperties(AbstractModel):
         self.Format = params.get("Format")
         self.Platform = params.get("Platform")
         self.Appeui = params.get("Appeui")
+        self.ModelId = params.get("ModelId")
+        self.ModelName = params.get("ModelName")
 
 
 class PublishMessageRequest(AbstractModel):
@@ -1117,7 +1402,55 @@ class PublishMessageResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class ReplaceTopicRuleRequest(AbstractModel):
+    """ReplaceTopicRule请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RuleName: 规则名称
+        :type RuleName: str
+        :param TopicRulePayload: 替换的规则包体
+        :type TopicRulePayload: :class:`tencentcloud.iotcloud.v20180614.models.TopicRulePayload`
+        :param ModifyType: 修改类型，0：其他，1：创建行为，2：更新行为，3：删除行为
+        :type ModifyType: int
+        :param ActionIndex: action增删改变更填对应topicRulePayload里面第几个action
+        :type ActionIndex: int
+        """
+        self.RuleName = None
+        self.TopicRulePayload = None
+        self.ModifyType = None
+        self.ActionIndex = None
+
+
+    def _deserialize(self, params):
+        self.RuleName = params.get("RuleName")
+        if params.get("TopicRulePayload") is not None:
+            self.TopicRulePayload = TopicRulePayload()
+            self.TopicRulePayload._deserialize(params.get("TopicRulePayload"))
+        self.ModifyType = params.get("ModifyType")
+        self.ActionIndex = params.get("ActionIndex")
+
+
+class ReplaceTopicRuleResponse(AbstractModel):
+    """ReplaceTopicRule返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.RequestId = None
@@ -1197,6 +1530,36 @@ class TaskInfo(AbstractModel):
         self.ErrMsg = params.get("ErrMsg")
 
 
+class TopicRulePayload(AbstractModel):
+    """创建规则请求包体
+
+    """
+
+    def __init__(self):
+        """
+        :param Sql: 规则的SQL语句，base64编码
+        :type Sql: str
+        :param Actions: 行为的JSON字符串，大部分种类举例如下：
+[{"republish":{"topic":"TEST/test"}},{"forward":{"api":"http://127.0.0.1:8080"}},{"ckafka":{"instance":{"id":"ckafka-test","name":""},"topic":{"id":"topic-test","name":"test"},"region":"gz"}},{"cmqqueue":{"queuename":"queue-test-TEST","region":"gz"}},{"mysql":{"instanceid":"cdb-test","region":"gz","username":"test","userpwd":"*****","dbname":"d_mqtt","tablename":"t_test","fieldpairs":[{"field":"test","value":"test"}],"devicetype":"CUSTOM"}}]
+        :type Actions: str
+        :param Description: 规则描述
+        :type Description: str
+        :param RuleDisabled: 规则不生效
+        :type RuleDisabled: bool
+        """
+        self.Sql = None
+        self.Actions = None
+        self.Description = None
+        self.RuleDisabled = None
+
+
+    def _deserialize(self, params):
+        self.Sql = params.get("Sql")
+        self.Actions = params.get("Actions")
+        self.Description = params.get("Description")
+        self.RuleDisabled = params.get("RuleDisabled")
+
+
 class UpdateDeviceShadowRequest(AbstractModel):
     """UpdateDeviceShadow请求参数结构体
 
@@ -1235,7 +1598,7 @@ class UpdateDeviceShadowResponse(AbstractModel):
         """
         :param Data: 设备影子数据，JSON字符串格式
         :type Data: str
-        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.Data = None

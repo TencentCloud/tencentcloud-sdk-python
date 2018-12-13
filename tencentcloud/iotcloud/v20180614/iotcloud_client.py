@@ -165,6 +165,34 @@ class IotcloudClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def CreateTopicRule(self, request):
+        """本接口（CreateTopicRule）用于创建一个规则
+
+        :param request: 调用CreateTopicRule所需参数的结构体。
+        :type request: :class:`tencentcloud.iotcloud.v20180614.models.CreateTopicRuleRequest`
+        :rtype: :class:`tencentcloud.iotcloud.v20180614.models.CreateTopicRuleResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("CreateTopicRule", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateTopicRuleResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise e
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DeleteDevice(self, request):
         """本接口（DeleteDevice）用于删除物联网通信设备。
 
@@ -207,6 +235,62 @@ class IotcloudClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteProductResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise e
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DeleteTopicRule(self, request):
+        """本接口（DeleteTopicRule）用于删除规则
+
+        :param request: 调用DeleteTopicRule所需参数的结构体。
+        :type request: :class:`tencentcloud.iotcloud.v20180614.models.DeleteTopicRuleRequest`
+        :rtype: :class:`tencentcloud.iotcloud.v20180614.models.DeleteTopicRuleResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DeleteTopicRule", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DeleteTopicRuleResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise e
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeDevice(self, request):
+        """本接口（DescribeDevice）用于查看设备信息
+
+        :param request: 调用DescribeDevice所需参数的结构体。
+        :type request: :class:`tencentcloud.iotcloud.v20180614.models.DescribeDeviceRequest`
+        :rtype: :class:`tencentcloud.iotcloud.v20180614.models.DescribeDeviceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeDevice", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeDeviceResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -417,6 +501,62 @@ class IotcloudClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DisableTopicRule(self, request):
+        """本接口（DisableTopicRule）用于禁用规则
+
+        :param request: 调用DisableTopicRule所需参数的结构体。
+        :type request: :class:`tencentcloud.iotcloud.v20180614.models.DisableTopicRuleRequest`
+        :rtype: :class:`tencentcloud.iotcloud.v20180614.models.DisableTopicRuleResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DisableTopicRule", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DisableTopicRuleResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise e
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def EnableTopicRule(self, request):
+        """本接口（EnableTopicRule）用于启用规则
+
+        :param request: 调用EnableTopicRule所需参数的结构体。
+        :type request: :class:`tencentcloud.iotcloud.v20180614.models.EnableTopicRuleRequest`
+        :rtype: :class:`tencentcloud.iotcloud.v20180614.models.EnableTopicRuleResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("EnableTopicRule", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.EnableTopicRuleResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise e
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def PublishMessage(self, request):
         """本接口（PublishMessage）用于向某个主题发消息。
 
@@ -431,6 +571,34 @@ class IotcloudClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.PublishMessageResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise e
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ReplaceTopicRule(self, request):
+        """本接口（ReplaceTopicRule）用于修改替换规则
+
+        :param request: 调用ReplaceTopicRule所需参数的结构体。
+        :type request: :class:`tencentcloud.iotcloud.v20180614.models.ReplaceTopicRuleRequest`
+        :rtype: :class:`tencentcloud.iotcloud.v20180614.models.ReplaceTopicRuleResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ReplaceTopicRule", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ReplaceTopicRuleResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
