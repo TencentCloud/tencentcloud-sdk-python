@@ -16,6 +16,102 @@
 from tencentcloud.common.abstract_model import AbstractModel
 
 
+class Activity(AbstractModel):
+    """符合条件的伸缩活动相关信息。
+
+    """
+
+    def __init__(self):
+        """
+        :param AutoScalingGroupId: 伸缩组ID。
+        :type AutoScalingGroupId: str
+        :param ActivityId: 伸缩活动ID。
+        :type ActivityId: str
+        :param ActivityType: 伸缩活动类型。取值如下：<br>
+<li>SCALE_OUT：扩容活动<li>SCALE_IN：缩容活动<li>ATTACH_INSTANCES：添加实例<li>REMOVE_INSTANCES：销毁实例<li>DETACH_INSTANCES：移出实例<li>TERMINATE_INSTANCES_UNEXPECTEDLY：实例在CVM控制台被销毁<li>REPLACE_UNHEALTHY_INSTANCE：替换不健康实例）
+        :type ActivityType: str
+        :param StatusCode: 伸缩活动状态。取值如下：<br>
+<li>INIT：初始化中
+<li>RUNNING：运行中
+<li>SUCCESSFUL：活动成功
+<li>PARTIALLY_SUCCESSFUL：活动部分成功
+<li>FAILED：活动失败
+<li>CANCELLED：活动取消
+        :type StatusCode: str
+        :param StatusMessage: 伸缩活动状态描述。
+        :type StatusMessage: str
+        :param Cause: 伸缩活动起因。
+        :type Cause: str
+        :param Description: 伸缩活动描述。
+        :type Description: str
+        :param StartTime: 伸缩活动开始时间。
+        :type StartTime: str
+        :param EndTime: 伸缩活动结束时间。
+        :type EndTime: str
+        :param CreatedTime: 伸缩活动创建时间。
+        :type CreatedTime: str
+        :param ActivityRelatedInstanceSet: 伸缩活动相关实例信息集合。
+        :type ActivityRelatedInstanceSet: list of ActivtyRelatedInstance
+        :param StatusMessageSimplified: 伸缩活动状态简要描述。
+        :type StatusMessageSimplified: str
+        """
+        self.AutoScalingGroupId = None
+        self.ActivityId = None
+        self.ActivityType = None
+        self.StatusCode = None
+        self.StatusMessage = None
+        self.Cause = None
+        self.Description = None
+        self.StartTime = None
+        self.EndTime = None
+        self.CreatedTime = None
+        self.ActivityRelatedInstanceSet = None
+        self.StatusMessageSimplified = None
+
+
+    def _deserialize(self, params):
+        self.AutoScalingGroupId = params.get("AutoScalingGroupId")
+        self.ActivityId = params.get("ActivityId")
+        self.ActivityType = params.get("ActivityType")
+        self.StatusCode = params.get("StatusCode")
+        self.StatusMessage = params.get("StatusMessage")
+        self.Cause = params.get("Cause")
+        self.Description = params.get("Description")
+        self.StartTime = params.get("StartTime")
+        self.EndTime = params.get("EndTime")
+        self.CreatedTime = params.get("CreatedTime")
+        if params.get("ActivityRelatedInstanceSet") is not None:
+            self.ActivityRelatedInstanceSet = []
+            for item in params.get("ActivityRelatedInstanceSet"):
+                obj = ActivtyRelatedInstance()
+                obj._deserialize(item)
+                self.ActivityRelatedInstanceSet.append(obj)
+        self.StatusMessageSimplified = params.get("StatusMessageSimplified")
+
+
+class ActivtyRelatedInstance(AbstractModel):
+    """与本次伸缩活动相关的实例信息。
+
+    """
+
+    def __init__(self):
+        """
+        :param InstanceId: 实例ID。
+        :type InstanceId: str
+        :param InstanceStatus: 实例在伸缩活动中的状态。取值如下：
+<li>SUCCESSFUL：活动成功
+<li>FAILED：活动失败
+        :type InstanceStatus: str
+        """
+        self.InstanceId = None
+        self.InstanceStatus = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.InstanceStatus = params.get("InstanceStatus")
+
+
 class AttachInstancesRequest(AbstractModel):
     """AttachInstances请求参数结构体
 
@@ -628,6 +724,75 @@ class DescribeAccountLimitsResponse(AbstractModel):
         self.NumberOfLaunchConfigurations = params.get("NumberOfLaunchConfigurations")
         self.MaxNumberOfAutoScalingGroups = params.get("MaxNumberOfAutoScalingGroups")
         self.NumberOfAutoScalingGroups = params.get("NumberOfAutoScalingGroups")
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeAutoScalingActivitiesRequest(AbstractModel):
+    """DescribeAutoScalingActivities请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ActivityIds: 按照一个或者多个伸缩活动ID查询。伸缩活动ID形如：`asa-5l2ejpfo`。每次请求的上限为100。参数不支持同时指定`ActivityIds`和`Filters`。
+        :type ActivityIds: list of str
+        :param Filters: 过滤条件。
+<li> auto-scaling-group-id - String - 是否必填：否 -（过滤条件）按照伸缩组ID过滤。</li>
+<li> activity-status-code - String - 是否必填：否 -（过滤条件）按照伸缩活动状态过滤。（INIT：初始化中|RUNNING：运行中|SUCCESSFUL：活动成功|PARTIALLY_SUCCESSFUL：活动部分成功|FAILED：活动失败|CANCELLED：活动取消）</li>
+<li> activity-type - String - 是否必填：否 -（过滤条件）按照伸缩活动类型过滤。（SCALE_OUT：扩容活动|SCALE_IN：缩容活动|ATTACH_INSTANCES：添加实例|REMOVE_INSTANCES：销毁实例|DETACH_INSTANCES：移出实例|TERMINATE_INSTANCES_UNEXPECTEDLY：实例在CVM控制台被销毁|REPLACE_UNHEALTHY_INSTANCE：替换不健康实例）</li>
+<li> activity-id - String - 是否必填：否 -（过滤条件）按照伸缩活动ID过滤。</li>
+每次请求的`Filters`的上限为10，`Filter.Values`的上限为5。参数不支持同时指定`ActivityIds`和`Filters`。
+        :type Filters: list of Filter
+        :param Limit: 返回数量，默认为20，最大值为100。关于`Limit`的更进一步介绍请参考 API [简介](https://cloud.tencent.com/document/api/213/15688)中的相关小节。
+        :type Limit: int
+        :param Offset: 偏移量，默认为0。关于`Offset`的更进一步介绍请参考 API [简介](https://cloud.tencent.com/document/api/213/15688)中的相关小节。
+        :type Offset: int
+        """
+        self.ActivityIds = None
+        self.Filters = None
+        self.Limit = None
+        self.Offset = None
+
+
+    def _deserialize(self, params):
+        self.ActivityIds = params.get("ActivityIds")
+        if params.get("Filters") is not None:
+            self.Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self.Filters.append(obj)
+        self.Limit = params.get("Limit")
+        self.Offset = params.get("Offset")
+
+
+class DescribeAutoScalingActivitiesResponse(AbstractModel):
+    """DescribeAutoScalingActivities返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param TotalCount: 符合条件的伸缩活动数量。
+        :type TotalCount: int
+        :param ActivitySet: 符合条件的伸缩活动信息集合。
+        :type ActivitySet: list of Activity
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.ActivitySet = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("ActivitySet") is not None:
+            self.ActivitySet = []
+            for item in params.get("ActivitySet"):
+                obj = Activity()
+                obj._deserialize(item)
+                self.ActivitySet.append(obj)
         self.RequestId = params.get("RequestId")
 
 
