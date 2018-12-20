@@ -17,28 +17,28 @@ import json
 
 from tencentcloud.common.exception.tencent_cloud_sdk_exception import TencentCloudSDKException
 from tencentcloud.common.abstract_client import AbstractClient
-from tencentcloud.cr.v20180321 import models
+from tencentcloud.mongodb.v20180408 import models
 
 
-class CrClient(AbstractClient):
-    _apiVersion = '2018-03-21'
-    _endpoint = 'cr.tencentcloudapi.com'
+class MongodbClient(AbstractClient):
+    _apiVersion = '2018-04-08'
+    _endpoint = 'mongodb.tencentcloudapi.com'
 
 
-    def ApplyBlackList(self, request):
-        """提交黑名单申请。
+    def CreateDBInstance(self, request):
+        """本接口(CreateDBInstance)用于创建包年包月的MongoDB云数据库实例。
 
-        :param request: 调用ApplyBlackList所需参数的结构体。
-        :type request: :class:`tencentcloud.cr.v20180321.models.ApplyBlackListRequest`
-        :rtype: :class:`tencentcloud.cr.v20180321.models.ApplyBlackListResponse`
+        :param request: 调用CreateDBInstance所需参数的结构体。
+        :type request: :class:`tencentcloud.mongodb.v20180408.models.CreateDBInstanceRequest`
+        :rtype: :class:`tencentcloud.mongodb.v20180408.models.CreateDBInstanceResponse`
 
         """
         try:
             params = request._serialize()
-            body = self.call("ApplyBlackList", params)
+            body = self.call("CreateDBInstance", params)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.ApplyBlackListResponse()
+                model = models.CreateDBInstanceResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -53,20 +53,20 @@ class CrClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def DescribeRecords(self, request):
-        """查询录音，返回录音列表。
+    def CreateDBInstanceHour(self, request):
+        """本接口(CreateDBInstanceHour)用于创建按量计费的MongoDB云数据库实例（包括主实例、灾备实例和只读实例），可通过传入实例规格、实例类型、MongoDB版本、购买时长和数量等信息创建云数据库实例。
 
-        :param request: 调用DescribeRecords所需参数的结构体。
-        :type request: :class:`tencentcloud.cr.v20180321.models.DescribeRecordsRequest`
-        :rtype: :class:`tencentcloud.cr.v20180321.models.DescribeRecordsResponse`
+        :param request: 调用CreateDBInstanceHour所需参数的结构体。
+        :type request: :class:`tencentcloud.mongodb.v20180408.models.CreateDBInstanceHourRequest`
+        :rtype: :class:`tencentcloud.mongodb.v20180408.models.CreateDBInstanceHourResponse`
 
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeRecords", params)
+            body = self.call("CreateDBInstanceHour", params)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.DescribeRecordsResponse()
+                model = models.CreateDBInstanceHourResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -81,20 +81,20 @@ class CrClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def DescribeTaskStatus(self, request):
-        """客户调用该接口查看任务执行状态。输入任务ID，输出任务执行状态或者结果
+    def TerminateDBInstance(self, request):
+        """本接口(TerminateDBInstance)用于销毁按量计费的MongoDB云数据库实例
 
-        :param request: 调用DescribeTaskStatus所需参数的结构体。
-        :type request: :class:`tencentcloud.cr.v20180321.models.DescribeTaskStatusRequest`
-        :rtype: :class:`tencentcloud.cr.v20180321.models.DescribeTaskStatusResponse`
+        :param request: 调用TerminateDBInstance所需参数的结构体。
+        :type request: :class:`tencentcloud.mongodb.v20180408.models.TerminateDBInstanceRequest`
+        :rtype: :class:`tencentcloud.mongodb.v20180408.models.TerminateDBInstanceResponse`
 
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeTaskStatus", params)
+            body = self.call("TerminateDBInstance", params)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.DescribeTaskStatusResponse()
+                model = models.TerminateDBInstanceResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -109,20 +109,20 @@ class CrClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def DownloadReport(self, request):
-        """客户调用该接口下载指定日期的催收报告
+    def UpgradeDBInstance(self, request):
+        """本接口(UpgradeDBInstance)用于升级包年包月的MongoDB云数据库实例，可以扩容内存、存储以及Oplog
 
-        :param request: 调用DownloadReport所需参数的结构体。
-        :type request: :class:`tencentcloud.cr.v20180321.models.DownloadReportRequest`
-        :rtype: :class:`tencentcloud.cr.v20180321.models.DownloadReportResponse`
+        :param request: 调用UpgradeDBInstance所需参数的结构体。
+        :type request: :class:`tencentcloud.mongodb.v20180408.models.UpgradeDBInstanceRequest`
+        :rtype: :class:`tencentcloud.mongodb.v20180408.models.UpgradeDBInstanceResponse`
 
         """
         try:
             params = request._serialize()
-            body = self.call("DownloadReport", params)
+            body = self.call("UpgradeDBInstance", params)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.DownloadReportResponse()
+                model = models.UpgradeDBInstanceResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -137,49 +137,20 @@ class CrClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def UploadDataFile(self, request):
-        """客户通过调用该接口上传需催收文档或还款文档，接口返回数据任务ID，支持xlsx、xls、csv、zip格式，文档大小不超过50MB。
+    def UpgradeDBInstanceHour(self, request):
+        """本接口(UpgradeDBInstanceHour)用于升级按量计费的MongoDB云数据库实例，可以扩容内存、存储以及oplog
 
-        :param request: 调用UploadDataFile所需参数的结构体。
-        :type request: :class:`tencentcloud.cr.v20180321.models.UploadDataFileRequest`
-        :rtype: :class:`tencentcloud.cr.v20180321.models.UploadDataFileResponse`
-
-        """
-        try:
-            params = request._serialize()
-            options = {'IsMultipart': True, 'BinaryParams': [u'File']}
-            body = self.call("UploadDataFile", params, options=options)
-            response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.UploadDataFileResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise e
-            else:
-                raise TencentCloudSDKException(e.message, e.message)
-
-
-    def UploadFile(self, request):
-        """客户通过调用该接口上传需催收文档，格式需为excel格式。接口返回任务ID。
-
-        :param request: 调用UploadFile所需参数的结构体。
-        :type request: :class:`tencentcloud.cr.v20180321.models.UploadFileRequest`
-        :rtype: :class:`tencentcloud.cr.v20180321.models.UploadFileResponse`
+        :param request: 调用UpgradeDBInstanceHour所需参数的结构体。
+        :type request: :class:`tencentcloud.mongodb.v20180408.models.UpgradeDBInstanceHourRequest`
+        :rtype: :class:`tencentcloud.mongodb.v20180408.models.UpgradeDBInstanceHourResponse`
 
         """
         try:
             params = request._serialize()
-            body = self.call("UploadFile", params)
+            body = self.call("UpgradeDBInstanceHour", params)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.UploadFileResponse()
+                model = models.UpgradeDBInstanceHourResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

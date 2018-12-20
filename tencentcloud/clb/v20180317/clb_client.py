@@ -228,6 +228,146 @@ class ClbClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DeregisterTargetsFromClassicalLB(self, request):
+        """DeregisterTargetsFromClassicalLB用于解绑后端服务器
+
+        :param request: 调用DeregisterTargetsFromClassicalLB所需参数的结构体。
+        :type request: :class:`tencentcloud.clb.v20180317.models.DeregisterTargetsFromClassicalLBRequest`
+        :rtype: :class:`tencentcloud.clb.v20180317.models.DeregisterTargetsFromClassicalLBResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DeregisterTargetsFromClassicalLB", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DeregisterTargetsFromClassicalLBResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise e
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeClassicalLBByInstanceId(self, request):
+        """DescribeClassicalLBByInstanceId用于通过后端实例ID获取传统型负载均衡ID列表
+
+        :param request: 调用DescribeClassicalLBByInstanceId所需参数的结构体。
+        :type request: :class:`tencentcloud.clb.v20180317.models.DescribeClassicalLBByInstanceIdRequest`
+        :rtype: :class:`tencentcloud.clb.v20180317.models.DescribeClassicalLBByInstanceIdResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeClassicalLBByInstanceId", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeClassicalLBByInstanceIdResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise e
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeClassicalLBHealthStatus(self, request):
+        """DescribeClassicalLBHealthStatus用于获取传统型负载均衡后端的健康状态
+
+        :param request: 调用DescribeClassicalLBHealthStatus所需参数的结构体。
+        :type request: :class:`tencentcloud.clb.v20180317.models.DescribeClassicalLBHealthStatusRequest`
+        :rtype: :class:`tencentcloud.clb.v20180317.models.DescribeClassicalLBHealthStatusResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeClassicalLBHealthStatus", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeClassicalLBHealthStatusResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise e
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeClassicalLBListeners(self, request):
+        """DescribeClassicalLBListeners用于获取传统型负载均衡信息
+
+        :param request: 调用DescribeClassicalLBListeners所需参数的结构体。
+        :type request: :class:`tencentcloud.clb.v20180317.models.DescribeClassicalLBListenersRequest`
+        :rtype: :class:`tencentcloud.clb.v20180317.models.DescribeClassicalLBListenersResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeClassicalLBListeners", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeClassicalLBListenersResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise e
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeClassicalLBTargets(self, request):
+        """DescribeClassicalLBTargets用于获取传统型负载均衡绑定的后端服务
+
+        :param request: 调用DescribeClassicalLBTargets所需参数的结构体。
+        :type request: :class:`tencentcloud.clb.v20180317.models.DescribeClassicalLBTargetsRequest`
+        :rtype: :class:`tencentcloud.clb.v20180317.models.DescribeClassicalLBTargetsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeClassicalLBTargets", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeClassicalLBTargetsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise e
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeListeners(self, request):
         """DescribeListeners 接口可根据负载均衡器 ID，监听器的协议或者端口作为过滤条件获取监听器列表。如果不指定任何过滤条件，默认返该负载均衡器下的默认数据长度（20 个）的监听器。
 
@@ -529,6 +669,34 @@ class ClbClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.RegisterTargetsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise e
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def RegisterTargetsWithClassicalLB(self, request):
+        """RegisterTargetsWithClassicalLB用于绑定后端服务到传统型负载均衡
+
+        :param request: 调用RegisterTargetsWithClassicalLB所需参数的结构体。
+        :type request: :class:`tencentcloud.clb.v20180317.models.RegisterTargetsWithClassicalLBRequest`
+        :rtype: :class:`tencentcloud.clb.v20180317.models.RegisterTargetsWithClassicalLBResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("RegisterTargetsWithClassicalLB", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.RegisterTargetsWithClassicalLBResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

@@ -290,3 +290,33 @@ class VodClient(AbstractClient):
                 raise e
             else:
                 raise TencentCloudSDKException(e.message, e.message)
+
+
+    def SearchMedia(self, request):
+        """搜索媒体信息，支持文本模糊搜索及条件过滤。
+        <li>该接口单次请求最多返回100条数据。</li>
+        <li>搜索结果超过 5000条，不再支持分页查询超过 5000 部分的数据。</li>
+
+        :param request: 调用SearchMedia所需参数的结构体。
+        :type request: :class:`tencentcloud.vod.v20180717.models.SearchMediaRequest`
+        :rtype: :class:`tencentcloud.vod.v20180717.models.SearchMediaResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("SearchMedia", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.SearchMediaResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise e
+            else:
+                raise TencentCloudSDKException(e.message, e.message)

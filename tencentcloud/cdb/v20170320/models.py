@@ -500,6 +500,8 @@ class CreateDBInstanceHourRequest(AbstractModel):
         :type AutoRenewFlag: int
         :param InstanceName: 实例名称
         :type InstanceName: str
+        :param ResourceTags: 实例标签
+        :type ResourceTags: list of TagInfo
         """
         self.GoodsNum = None
         self.Memory = None
@@ -523,6 +525,7 @@ class CreateDBInstanceHourRequest(AbstractModel):
         self.RoGroup = None
         self.AutoRenewFlag = None
         self.InstanceName = None
+        self.ResourceTags = None
 
 
     def _deserialize(self, params):
@@ -555,6 +558,12 @@ class CreateDBInstanceHourRequest(AbstractModel):
             self.RoGroup._deserialize(params.get("RoGroup"))
         self.AutoRenewFlag = params.get("AutoRenewFlag")
         self.InstanceName = params.get("InstanceName")
+        if params.get("ResourceTags") is not None:
+            self.ResourceTags = []
+            for item in params.get("ResourceTags"):
+                obj = TagInfo()
+                obj._deserialize(item)
+                self.ResourceTags.append(obj)
 
 
 class CreateDBInstanceHourResponse(AbstractModel):
@@ -635,6 +644,8 @@ class CreateDBInstanceRequest(AbstractModel):
         :type RoGroup: :class:`tencentcloud.cdb.v20170320.models.RoGroup`
         :param InstanceName: 实例名称
         :type InstanceName: str
+        :param ResourceTags: 实例要绑定的标签
+        :type ResourceTags: list of TagInfo
         """
         self.Memory = None
         self.Volume = None
@@ -659,6 +670,7 @@ class CreateDBInstanceRequest(AbstractModel):
         self.SecurityGroup = None
         self.RoGroup = None
         self.InstanceName = None
+        self.ResourceTags = None
 
 
     def _deserialize(self, params):
@@ -692,6 +704,12 @@ class CreateDBInstanceRequest(AbstractModel):
             self.RoGroup = RoGroup()
             self.RoGroup._deserialize(params.get("RoGroup"))
         self.InstanceName = params.get("InstanceName")
+        if params.get("ResourceTags") is not None:
+            self.ResourceTags = []
+            for item in params.get("ResourceTags"):
+                obj = TagInfo()
+                obj._deserialize(item)
+                self.ResourceTags.append(obj)
 
 
 class CreateDBInstanceResponse(AbstractModel):
@@ -1596,7 +1614,7 @@ class DescribeDBInstancesRequest(AbstractModel):
         :type PayTypes: list of int non-negative
         :param InstanceNames: 实例名称
         :type InstanceNames: list of str
-        :param TaskStatus: 实例任务状态，可能取值：<br>0-没有任务<br>1-升级中<br>2-数据导入中<br>3-开放Slave中<br>4-外网访问开通中<br>5-批量操作执行中<br>6-回档中<br>7-外网访问关闭中<br>8-密码修改中<br>9-实例名修改中<br>10-重启中<br>12-自建迁移中<br>13-删除库表中<br>14-灾备实例创建同步中
+        :param TaskStatus: 实例任务状态，可能取值：<br>0-没有任务<br>1-升级中<br>2-数据导入中<br>3-开放Slave中<br>4-外网访问开通中<br>5-批量操作执行中<br>6-回档中<br>7-外网访问关闭中<br>8-密码修改中<br>9-实例名修改中<br>10-重启中<br>12-自建迁移中<br>13-删除库表中<br>14-灾备实例创建同步中<br>15-升级待切换<br>16-升级切换中<br>17-升级切换完成
         :type TaskStatus: list of int non-negative
         :param EngineVersions: 实例数据库引擎版本，可能取值：5.1、5.5、5.6和5.7
         :type EngineVersions: list of str
@@ -2656,6 +2674,8 @@ class InstanceInfo(AbstractModel):
         :type UniqSubnetId: str
         :param PhysicalId: 物理ID
         :type PhysicalId: str
+        :param Cpu: 核心数
+        :type Cpu: int
         """
         self.WanStatus = None
         self.Zone = None
@@ -2692,6 +2712,7 @@ class InstanceInfo(AbstractModel):
         self.UniqVpcId = None
         self.UniqSubnetId = None
         self.PhysicalId = None
+        self.Cpu = None
 
 
     def _deserialize(self, params):
@@ -2746,6 +2767,7 @@ class InstanceInfo(AbstractModel):
         self.UniqVpcId = params.get("UniqVpcId")
         self.UniqSubnetId = params.get("UniqSubnetId")
         self.PhysicalId = params.get("PhysicalId")
+        self.Cpu = params.get("Cpu")
 
 
 class InstanceRebootTime(AbstractModel):
@@ -4503,6 +4525,27 @@ class TablePrivilege(AbstractModel):
         self.Database = params.get("Database")
         self.Table = params.get("Table")
         self.Privileges = params.get("Privileges")
+
+
+class TagInfo(AbstractModel):
+    """标签信息
+
+    """
+
+    def __init__(self):
+        """
+        :param TagKey: 标签键
+        :type TagKey: str
+        :param TagValue: 标签值
+        :type TagValue: list of str
+        """
+        self.TagKey = None
+        self.TagValue = None
+
+
+    def _deserialize(self, params):
+        self.TagKey = params.get("TagKey")
+        self.TagValue = params.get("TagValue")
 
 
 class UpgradeDBInstanceEngineVersionRequest(AbstractModel):

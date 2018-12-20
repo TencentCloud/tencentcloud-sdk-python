@@ -27,13 +27,13 @@ class FaceFusionRequest(AbstractModel):
         :type ProjectId: str
         :param ModelId: 素材 ID，请在人脸融合控制台查看。
         :type ModelId: str
-        :param Image: 图片 base64 数据。请确保人脸为正脸，无旋转。若某些手机拍摄后人脸被旋转，请使用图片的 EXIF 信息对图片进行旋转处理。图片大小不超过 500k，分辨率不超过 1080*1080。
+        :param Image: 图片 base64 数据。请确保人脸为正脸，无旋转。若某些手机拍摄后人脸被旋转，请使用图片的 EXIF 信息对图片进行旋转处理。
         :type Image: str
         :param RspImgType: 返回图像方式（url 或 base64) ，二选一。当前仅支持 url 方式，base64 方式后期开放。
         :type RspImgType: str
         :param PornDetect: 0表示不需要鉴黄，1表示需要鉴黄。2018年12月1号以前创建的活动默认值为0，其他情况默认值为1.
         :type PornDetect: int
-        :param CelebrityIdentify: 0表示不需要鉴政治，1表示需要鉴政。2018年12月1号以前创建的活动默认值为0，其他情况默认值为1。鉴政接口同时会对名人明星进行识别，您可以根据实际需要过滤。
+        :param CelebrityIdentify: 0表示不需要鉴政，1表示需要鉴政。2018年12月1号以前创建的活动默认值为0，其他情况默认值为1。鉴政接口同时会对名人明星进行识别，您可以根据实际需要过滤。
         :type CelebrityIdentify: int
         """
         self.ProjectId = None
@@ -96,7 +96,7 @@ class FuseFaceReviewDetail(AbstractModel):
         :type Label: str
         :param Confidence: 对应识别label的置信度
         :type Confidence: float
-        :param Suggestion: 对应子类审核建议: block,review,pass
+        :param Suggestion: 此字段为保留字段，目前统一返回pass。
         :type Suggestion: str
         """
         self.Field = None
@@ -127,7 +127,7 @@ class FuseFaceReviewResult(AbstractModel):
         :type CodeDescription: str
         :param Confidence: 对应识别种类的置信度
         :type Confidence: float
-        :param Suggestion: 此字段为保留字段，目前统一返回pass。请使用FusefaceReviewDetail中的“Suggestion”字段
+        :param Suggestion: 此字段为保留字段，目前统一返回pass。
         :type Suggestion: str
         :param DetailSet: 审核详细内容
         :type DetailSet: list of FuseFaceReviewDetail

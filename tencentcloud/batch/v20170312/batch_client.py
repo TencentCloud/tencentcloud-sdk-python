@@ -587,6 +587,35 @@ class BatchClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def RetryJobs(self, request):
+        """用于重试作业中失败的任务实例。
+        当且仅当作业处于“FAILED”状态，支持重试操作。重试操作成功后，作业会按照“DAG”中指定的任务依赖关系，依次重试各个任务中失败的任务实例。任务实例的历史信息将被重置，如同首次运行一样，参与后续的调度和执行。
+
+        :param request: 调用RetryJobs所需参数的结构体。
+        :type request: :class:`tencentcloud.batch.v20170312.models.RetryJobsRequest`
+        :rtype: :class:`tencentcloud.batch.v20170312.models.RetryJobsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("RetryJobs", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.RetryJobsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise e
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def SubmitJob(self, request):
         """用于提交一个作业
 

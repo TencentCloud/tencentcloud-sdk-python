@@ -1273,6 +1273,131 @@ class ModifyMediaInfoResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class SearchMediaRequest(AbstractModel):
+    """SearchMedia请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Text: 搜索文本，模糊匹配媒体文件名称或描述信息，匹配项越多，匹配度越高，排序越优先。长度限制：64 个字符。
+        :type Text: str
+        :param Tags: 标签集合，匹配集合中任意元素。
+<li>单个标签长度限制：8 个字符</li>
+<li>数组长度限制：10</li>
+        :type Tags: list of str
+        :param ClassIds: 分类 ID 集合，匹配集合指定 ID 的分类及其所有子类。数组长度限制：10。
+        :type ClassIds: list of int
+        :param StartTime: 创建时间的开始时间
+<li>大于等于开始时间</li>
+<li>格式按照 ISO 8601 标准表示，详见 [ISO 日期格式说明](https://cloud.tencent.com/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F)。</li>
+        :type StartTime: str
+        :param EndTime: 创建时间的结束时间
+<li>小于结束时间</li>
+<li>格式按照 ISO 8601 标准表示，详见 [ISO 日期格式说明](https://cloud.tencent.com/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F)。</li>
+        :type EndTime: str
+        :param SourceType: 媒体文件来源
+        :type SourceType: int
+        :param StreamId: 推流[直播码](https://cloud.tencent.com/document/product/267/5959)
+        :type StreamId: str
+        :param Vid: 直播录制文件的唯一标识
+        :type Vid: str
+        :param Sort: 排序方式
+<li>Sort.Field 可选值：CreateTime</li>
+<li>指定 Text 搜索时，将根据匹配度排序，该字段无效</li>
+        :type Sort: :class:`tencentcloud.vod.v20180717.models.SortBy`
+        :param Offset: 偏移量
+<li>默认值：0</li>
+<li>取值范围：Offset + Limit 不超过5000</li>
+        :type Offset: int
+        :param Limit: 返回记录条数，默认值：10。
+        :type Limit: int
+        :param SubAppId: 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
+        :type SubAppId: int
+        """
+        self.Text = None
+        self.Tags = None
+        self.ClassIds = None
+        self.StartTime = None
+        self.EndTime = None
+        self.SourceType = None
+        self.StreamId = None
+        self.Vid = None
+        self.Sort = None
+        self.Offset = None
+        self.Limit = None
+        self.SubAppId = None
+
+
+    def _deserialize(self, params):
+        self.Text = params.get("Text")
+        self.Tags = params.get("Tags")
+        self.ClassIds = params.get("ClassIds")
+        self.StartTime = params.get("StartTime")
+        self.EndTime = params.get("EndTime")
+        self.SourceType = params.get("SourceType")
+        self.StreamId = params.get("StreamId")
+        self.Vid = params.get("Vid")
+        if params.get("Sort") is not None:
+            self.Sort = SortBy()
+            self.Sort._deserialize(params.get("Sort"))
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+        self.SubAppId = params.get("SubAppId")
+
+
+class SearchMediaResponse(AbstractModel):
+    """SearchMedia返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param TotalCount: 符合搜索条件的记录总数
+<li>最大值：5000，即，当命中记录数超过 5000，该字段将返回 5000，而非实际命中总数。</li>
+        :type TotalCount: int
+        :param MediaInfoSet: 媒体文件信息列表，只包含基础信息（BasicInfo）
+        :type MediaInfoSet: list of MediaInfo
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.MediaInfoSet = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("MediaInfoSet") is not None:
+            self.MediaInfoSet = []
+            for item in params.get("MediaInfoSet"):
+                obj = MediaInfo()
+                obj._deserialize(item)
+                self.MediaInfoSet.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class SortBy(AbstractModel):
+    """排序依据
+
+    """
+
+    def __init__(self):
+        """
+        :param Field: 排序字段
+        :type Field: str
+        :param Order: 排序方式，可选值：Asc（升序）、Desc（降序）
+        :type Order: str
+        """
+        self.Field = None
+        self.Order = None
+
+
+    def _deserialize(self, params):
+        self.Field = params.get("Field")
+        self.Order = params.get("Order")
+
+
 class TempCertificate(AbstractModel):
     """临时凭证
 

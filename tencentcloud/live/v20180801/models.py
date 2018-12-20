@@ -709,7 +709,10 @@ class DescribeLiveStreamStateResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param StreamState: 流状态
+        :param StreamState: 流状态，
+active：活跃，
+inactive：非活跃，
+forbid：禁播。
         :type StreamState: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str

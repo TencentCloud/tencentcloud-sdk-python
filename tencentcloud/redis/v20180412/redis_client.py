@@ -333,6 +333,34 @@ class RedisClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def ModifyInstance(self, request):
+        """修改实例相关信息（目前支持：实例重命名）
+
+        :param request: 调用ModifyInstance所需参数的结构体。
+        :type request: :class:`tencentcloud.redis.v20180412.models.ModifyInstanceRequest`
+        :rtype: :class:`tencentcloud.redis.v20180412.models.ModifyInstanceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ModifyInstance", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ModifyInstanceResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise e
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def RenewInstance(self, request):
         """续费实例
 

@@ -1968,7 +1968,7 @@ class InstanceTypeQuotaItem(AbstractModel):
         :type TypeName: str
         :param LocalDiskTypeList: 本地磁盘规格列表。
         :type LocalDiskTypeList: list of LocalDiskType
-        :param Status: 实例是否售卖。
+        :param Status: 实例是否售卖。取值范围： <br><li>SELL：表示实例可购买<br><li>SOLD_OUT：表示实例已售罄。
         :type Status: str
         :param Price: 实例的售卖价格。
         :type Price: :class:`tencentcloud.batch.v20170312.models.ItemPrice`
@@ -2580,6 +2580,40 @@ class RedirectLocalInfo(AbstractModel):
         self.StderrLocalPath = params.get("StderrLocalPath")
         self.StdoutLocalFileName = params.get("StdoutLocalFileName")
         self.StderrLocalFileName = params.get("StderrLocalFileName")
+
+
+class RetryJobsRequest(AbstractModel):
+    """RetryJobs请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param JobIds: 作业ID列表。
+        :type JobIds: list of str
+        """
+        self.JobIds = None
+
+
+    def _deserialize(self, params):
+        self.JobIds = params.get("JobIds")
+
+
+class RetryJobsResponse(AbstractModel):
+    """RetryJobs返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
 
 
 class RunMonitorServiceEnabled(AbstractModel):

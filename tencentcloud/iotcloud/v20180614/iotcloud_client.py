@@ -165,6 +165,34 @@ class IotcloudClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def CreateTopicPolicy(self, request):
+        """本接口（CreateTopicPolicy）用于创建一个Topic
+
+        :param request: 调用CreateTopicPolicy所需参数的结构体。
+        :type request: :class:`tencentcloud.iotcloud.v20180614.models.CreateTopicPolicyRequest`
+        :rtype: :class:`tencentcloud.iotcloud.v20180614.models.CreateTopicPolicyResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("CreateTopicPolicy", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateTopicPolicyResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise e
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def CreateTopicRule(self, request):
         """本接口（CreateTopicRule）用于创建一个规则
 
@@ -627,6 +655,34 @@ class IotcloudClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.UpdateDeviceShadowResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise e
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def UpdateTopicPolicy(self, request):
+        """本接口（UpdateTopicPolicy）用于更新Topic信息
+
+        :param request: 调用UpdateTopicPolicy所需参数的结构体。
+        :type request: :class:`tencentcloud.iotcloud.v20180614.models.UpdateTopicPolicyRequest`
+        :rtype: :class:`tencentcloud.iotcloud.v20180614.models.UpdateTopicPolicyResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("UpdateTopicPolicy", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.UpdateTopicPolicyResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

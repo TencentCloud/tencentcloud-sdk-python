@@ -740,6 +740,48 @@ class ModifyAutoBackupConfigResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class ModifyInstanceRequest(AbstractModel):
+    """ModifyInstance请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Operation: 修改实例操作，如填写：rename（表示实例重命名）
+        :type Operation: str
+        :param InstanceId: 实例Id
+        :type InstanceId: str
+        :param InstanceName: 实例的新名称
+        :type InstanceName: str
+        """
+        self.Operation = None
+        self.InstanceId = None
+        self.InstanceName = None
+
+
+    def _deserialize(self, params):
+        self.Operation = params.get("Operation")
+        self.InstanceId = params.get("InstanceId")
+        self.InstanceName = params.get("InstanceName")
+
+
+class ModifyInstanceResponse(AbstractModel):
+    """ModifyInstance返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class ProductConf(AbstractModel):
     """产品信息
 

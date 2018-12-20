@@ -23,19 +23,21 @@ class DetectAuthRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param RuleId: 规则Id。a-zA-Z0-9组合。最长长度32位。
+        :param RuleId: 用于细分客户使用场景，由腾讯侧在线下对接时分配。
         :type RuleId: str
-        :param TerminalType: 终端类型。可选值有：weixinh5, weixinh5native, h5, tinyappsdk, iossdk, androidsdk。只有值为"weixinh5"时会返回跳转URL。
+        :param TerminalType: 本接口不需要传递此参数。
         :type TerminalType: str
-        :param IdCard: 身份证号或者是客户系统内部的唯一用户id。（传uid的时候只能使用ImageBase64传的照片进行一比一）a-zA-Z0-9组合。最长长度32位。
+        :param IdCard: 身份标识（与公安权威库比对时必须是身份证号）。
+规则：a-zA-Z0-9组合。最长长度32位。
         :type IdCard: str
         :param Name: 姓名。最长长度32位。
         :type Name: str
-        :param RedirectUrl: 回调地址。最长长度1024位。
+        :param RedirectUrl: 认证结束后重定向的回调链接地址。最长长度1024位。
         :type RedirectUrl: str
-        :param Extra: 额外参数，会在getDetectInfo时带回去。最长长度1024位。
+        :param Extra: 透传字段，在获取验证结果时返回。
         :type Extra: str
-        :param ImageBase64: 用于一比一时的照片base64。此时必须传入IdCard。
+        :param ImageBase64: 用于人脸比对的照片，图片的BASE64值；
+BASE64编码后的图片数据大小不超过3M，仅支持jpg、png格式。
         :type ImageBase64: str
         """
         self.RuleId = None
@@ -64,9 +66,10 @@ class DetectAuthResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param Url: 用于跳转的URL。只能于微信中打开。
+        :param Url: 用于发起核身流程的URL，仅微信H5场景使用。
         :type Url: str
-        :param BizToken: 业务流水号。在获取认证信息接口中作为BizToken传入
+        :param BizToken: 一次核身流程的标识，有效时间为7,200秒；
+完成核身后，可用该标识获取验证结果信息。
         :type BizToken: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -82,6 +85,33 @@ class DetectAuthResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class GetActionSequenceRequest(AbstractModel):
+    """GetActionSequence请求参数结构体
+
+    """
+
+
+class GetActionSequenceResponse(AbstractModel):
+    """GetActionSequence返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ActionSequence: 动作顺序(2,1 or 1,2) 。1代表张嘴，2代表闭眼。
+        :type ActionSequence: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.ActionSequence = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.ActionSequence = params.get("ActionSequence")
+        self.RequestId = params.get("RequestId")
+
+
 class GetDetectInfoRequest(AbstractModel):
     """GetDetectInfo请求参数结构体
 
@@ -89,11 +119,12 @@ class GetDetectInfoRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param BizToken: 业务流水号
+        :param BizToken: 人脸核身流程的标识，调用DetectAuth接口时生成。
         :type BizToken: str
-        :param RuleId: 规则Id。
+        :param RuleId: 用于细分客户使用场景，由腾讯侧在线下对接时分配。
         :type RuleId: str
-        :param InfoType: 指定需要拉取何种信息（0：全部；1：文本类；2：身份证正反面；3：截帧（最佳帧）；4：视频）。可拼接。如 134表示拉取文本类、截帧（最佳帧）、视频
+        :param InfoType: 指定拉取的结果信息，取值（0：全部；1：文本类；2：身份证正反面；3：视频最佳截图照片；4：视频）。
+如 134表示拉取文本类、视频最佳截图照片、视频。
         :type InfoType: str
         """
         self.BizToken = None
@@ -144,7 +175,7 @@ class GetDetectInfoResponse(AbstractModel):
     "OcrFront": null,
     "OcrBack": null
   },
-  // 最佳帧照片Base64
+  // 视频最佳帧截图Base64
   "BestFrame": {
     "BestFrame": null
   },
@@ -163,4 +194,211 @@ class GetDetectInfoResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.DetectInfo = params.get("DetectInfo")
+        self.RequestId = params.get("RequestId")
+
+
+class GetLiveCodeRequest(AbstractModel):
+    """GetLiveCode请求参数结构体
+
+    """
+
+
+class GetLiveCodeResponse(AbstractModel):
+    """GetLiveCode返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param LiveCode: 数字验证码，如：1234
+        :type LiveCode: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.LiveCode = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.LiveCode = params.get("LiveCode")
+        self.RequestId = params.get("RequestId")
+
+
+class ImageRecognitionRequest(AbstractModel):
+    """ImageRecognition请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param IdCard: 身份证号
+        :type IdCard: str
+        :param Name: 姓名
+        :type Name: str
+        :param ImageBase64: 用于人脸比对的照片，图片的BASE64值；
+BASE64编码后的图片数据大小不超过3M，仅支持jpg、png格式。
+        :type ImageBase64: str
+        :param Optional: 本接口不需要传递此参数。
+        :type Optional: str
+        """
+        self.IdCard = None
+        self.Name = None
+        self.ImageBase64 = None
+        self.Optional = None
+
+
+    def _deserialize(self, params):
+        self.IdCard = params.get("IdCard")
+        self.Name = params.get("Name")
+        self.ImageBase64 = params.get("ImageBase64")
+        self.Optional = params.get("Optional")
+
+
+class ImageRecognitionResponse(AbstractModel):
+    """ImageRecognition返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Sim: 相似度，取值范围 [0.00, 100.00]。推荐相似度大于等于70时可判断为同一人，可根据具体场景自行调整阈值（阈值70的误通过率为千分之一，阈值80的误通过率是万分之一）
+        :type Sim: float
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Sim = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Sim = params.get("Sim")
+        self.RequestId = params.get("RequestId")
+
+
+class LivenessCompareRequest(AbstractModel):
+    """LivenessCompare请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ImageBase64: 用于人脸比对的照片，图片的BASE64值；
+BASE64编码后的图片数据大小不超过3M，仅支持jpg、png格式。
+        :type ImageBase64: str
+        :param VideoBase64: 用于活体检测的视频，视频的BASE64值；
+BASE64编码后的大小不超过5M，支持mp4、avi、flv格式。
+        :type VideoBase64: str
+        :param LivenessType: 活体检测类型，取值：LIP/ACTION/SILENT。
+LIP为数字模式，ACTION为动作模式，SILENT为静默模式，三种模式选择一种传入。
+        :type LivenessType: str
+        :param ValidateData: 数字模式传参：唇语验证码(1234)，需先获取唇语验证码；
+动作模式传参：传动作顺序(12,21)，需先获取动作顺序；
+静默模式传参：空。
+        :type ValidateData: str
+        :param Optional: 本接口不需要传递此参数。
+        :type Optional: str
+        """
+        self.ImageBase64 = None
+        self.VideoBase64 = None
+        self.LivenessType = None
+        self.ValidateData = None
+        self.Optional = None
+
+
+    def _deserialize(self, params):
+        self.ImageBase64 = params.get("ImageBase64")
+        self.VideoBase64 = params.get("VideoBase64")
+        self.LivenessType = params.get("LivenessType")
+        self.ValidateData = params.get("ValidateData")
+        self.Optional = params.get("Optional")
+
+
+class LivenessCompareResponse(AbstractModel):
+    """LivenessCompare返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param BestFrameBase64: 验证通过后的视频最佳截图照片，照片为BASE64编码后的值，jpg格式。
+        :type BestFrameBase64: str
+        :param Sim: 相似度，取值范围 [0.00, 100.00]。推荐相似度大于等于70时可判断为同一人，可根据具体场景自行调整阈值（阈值70的误通过率为千分之一，阈值80的误通过率是万分之一）。
+        :type Sim: float
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.BestFrameBase64 = None
+        self.Sim = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.BestFrameBase64 = params.get("BestFrameBase64")
+        self.Sim = params.get("Sim")
+        self.RequestId = params.get("RequestId")
+
+
+class LivenessRecognitionRequest(AbstractModel):
+    """LivenessRecognition请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param IdCard: 身份证号
+        :type IdCard: str
+        :param Name: 姓名
+        :type Name: str
+        :param VideoBase64: 用于活体检测的视频，视频的BASE64值；
+BASE64编码后的大小不超过5M，支持mp4、avi、flv格式。
+        :type VideoBase64: str
+        :param LivenessType: 活体检测类型，取值：LIP/ACTION/SILENT。
+LIP为数字模式，ACTION为动作模式，SILENT为静默模式，三种模式选择一种传入。
+        :type LivenessType: str
+        :param ValidateData: 数字模式传参：唇语验证码(1234)，需先获取唇语验证码；
+动作模式传参：传动作顺序(12,21)，需先获取动作顺序；
+静默模式传参：空。
+        :type ValidateData: str
+        :param Optional: 本接口不需要传递此参数。
+        :type Optional: str
+        """
+        self.IdCard = None
+        self.Name = None
+        self.VideoBase64 = None
+        self.LivenessType = None
+        self.ValidateData = None
+        self.Optional = None
+
+
+    def _deserialize(self, params):
+        self.IdCard = params.get("IdCard")
+        self.Name = params.get("Name")
+        self.VideoBase64 = params.get("VideoBase64")
+        self.LivenessType = params.get("LivenessType")
+        self.ValidateData = params.get("ValidateData")
+        self.Optional = params.get("Optional")
+
+
+class LivenessRecognitionResponse(AbstractModel):
+    """LivenessRecognition返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param BestFrameBase64: 验证通过后的视频最佳截图照片，照片为BASE64编码后的值，jpg格式。
+        :type BestFrameBase64: str
+        :param Sim: 相似度，取值范围 [0.00, 100.00]。推荐相似度大于等于70时可判断为同一人，可根据具体场景自行调整阈值（阈值70的误通过率为千分之一，阈值80的误通过率是万分之一）
+        :type Sim: float
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.BestFrameBase64 = None
+        self.Sim = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.BestFrameBase64 = params.get("BestFrameBase64")
+        self.Sim = params.get("Sim")
         self.RequestId = params.get("RequestId")

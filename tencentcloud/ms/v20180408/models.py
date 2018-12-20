@@ -1126,6 +1126,41 @@ class DescribeShieldResultResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeUserBaseInfoInstanceRequest(AbstractModel):
+    """DescribeUserBaseInfoInstance请求参数结构体
+
+    """
+
+
+class DescribeUserBaseInfoInstanceResponse(AbstractModel):
+    """DescribeUserBaseInfoInstance返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param UserUin: 用户uin信息
+        :type UserUin: int
+        :param UserAppid: 用户APPID信息
+        :type UserAppid: int
+        :param TimeStamp: 系统时间戳
+        :type TimeStamp: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.UserUin = None
+        self.UserAppid = None
+        self.TimeStamp = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.UserUin = params.get("UserUin")
+        self.UserAppid = params.get("UserAppid")
+        self.TimeStamp = params.get("TimeStamp")
+        self.RequestId = params.get("RequestId")
+
+
 class Filter(AbstractModel):
     """筛选数据结构
 

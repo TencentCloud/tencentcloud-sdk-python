@@ -154,9 +154,9 @@ class AssociateSecurityGroupsRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param SecurityGroupIds: 要绑定的`安全组ID`，类似sg-efil73jd，支持绑定多个安全组。
+        :param SecurityGroupIds: 要绑定的`安全组ID`，类似sg-efil73jd，只支持绑定单个安全组。
         :type SecurityGroupIds: list of str
-        :param InstanceIds: 被绑定的`实例ID`，类似ins-lesecurk，只支持指定单个实例。
+        :param InstanceIds: 被绑定的`实例ID`，类似ins-lesecurk，支持指定多个实例。
         :type InstanceIds: list of str
         """
         self.SecurityGroupIds = None
@@ -1439,9 +1439,9 @@ class DisassociateSecurityGroupsRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param SecurityGroupIds: 要解绑的`安全组ID`，类似sg-efil73jd，支持解绑多个安全组。
+        :param SecurityGroupIds: 要解绑的`安全组ID`，类似sg-efil73jd，只支持解绑单个安全组。
         :type SecurityGroupIds: list of str
-        :param InstanceIds: 被解绑的`实例ID`，类似ins-lesecurk 。
+        :param InstanceIds: 被解绑的`实例ID`，类似ins-lesecurk，支持指定多个实例 。
         :type InstanceIds: list of str
         """
         self.SecurityGroupIds = None
@@ -2633,7 +2633,7 @@ class InstanceTypeQuotaItem(AbstractModel):
         :type TypeName: str
         :param LocalDiskTypeList: 本地磁盘规格列表。
         :type LocalDiskTypeList: list of LocalDiskType
-        :param Status: 实例是否售卖。
+        :param Status: 实例是否售卖。取值范围： <br><li>SELL：表示实例可购买<br><li>SOLD_OUT：表示实例已售罄。
         :type Status: str
         :param Price: 实例的售卖价格。
         :type Price: :class:`tencentcloud.cvm.v20170312.models.ItemPrice`
@@ -3210,7 +3210,7 @@ class ModifyInstancesVpcAttributeRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param InstanceIds: 待操作的实例ID数组。可通过[`DescribeInstances`](document/api/213/9388)接口返回值中的`InstanceId`获取。
+        :param InstanceIds: 待操作的实例ID数组。可通过[`DescribeInstances`](document/api/213/15728)接口返回值中的`InstanceId`获取。
         :type InstanceIds: list of str
         :param VirtualPrivateCloud: 私有网络相关信息配置。通过该参数指定私有网络的ID，子网ID，私有网络ip等信息。当指定私有网络ID和子网ID（子网必须在实例所在的可用区）与指定实例所在私有网络不一致时，会将实例迁移至指定的私有网络的子网下。可通过`PrivateIpAddresses`指定私有网络子网IP，若需指定则所有已指定的实例均需要指定子网IP，此时`InstanceIds`与`PrivateIpAddresses`一一对应。不指定`PrivateIpAddresses`时随机分配私有网络子网IP。
         :type VirtualPrivateCloud: :class:`tencentcloud.cvm.v20170312.models.VirtualPrivateCloud`
@@ -4020,16 +4020,22 @@ class StopInstancesRequest(AbstractModel):
         :type ForceStop: bool
         :param StopType: 实例的关闭模式。取值范围：<br><li>SOFT_FIRST：表示在正常关闭失败后进行强制关闭<br><li>HARD：直接强制关闭<br><li>SOFT：仅软关机<br>默认取值：SOFT。
         :type StopType: str
+        :param StoppedMode: 按量计费实例关机收费模式。
+取值范围：<br><li>KEEP_CHARGING：关机继续收费<br><li>STOP_CHARGING：关机停止收费<br>默认取值：KEEP_CHARGING。
+该参数只针对部分按量计费云硬盘实例生效，详情参考[按量计费实例关机不收费说明](https://cloud.tencent.com/document/product/213/19918)
+        :type StoppedMode: str
         """
         self.InstanceIds = None
         self.ForceStop = None
         self.StopType = None
+        self.StoppedMode = None
 
 
     def _deserialize(self, params):
         self.InstanceIds = params.get("InstanceIds")
         self.ForceStop = params.get("ForceStop")
         self.StopType = params.get("StopType")
+        self.StoppedMode = params.get("StoppedMode")
 
 
 class StopInstancesResponse(AbstractModel):

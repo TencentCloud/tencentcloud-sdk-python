@@ -76,6 +76,27 @@ class BatchUpdateShadow(AbstractModel):
         self.Desired = params.get("Desired")
 
 
+class BrokerSubscribe(AbstractModel):
+    """代理订阅信息
+
+    """
+
+    def __init__(self):
+        """
+        :param ProductId: 产品ID
+        :type ProductId: str
+        :param DeviceName: 设备名
+        :type DeviceName: str
+        """
+        self.ProductId = None
+        self.DeviceName = None
+
+
+    def _deserialize(self, params):
+        self.ProductId = params.get("ProductId")
+        self.DeviceName = params.get("DeviceName")
+
+
 class CancelTaskRequest(AbstractModel):
     """CancelTask请求参数结构体
 
@@ -367,6 +388,54 @@ class CreateTaskResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.TaskId = params.get("TaskId")
+        self.RequestId = params.get("RequestId")
+
+
+class CreateTopicPolicyRequest(AbstractModel):
+    """CreateTopicPolicy请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ProductID: 产品ID
+        :type ProductID: str
+        :param TopicName: Topic名称
+        :type TopicName: str
+        :param Privilege: Topic权限，1发布，2订阅，3订阅和发布
+        :type Privilege: int
+        :param BrokerSubscribe: 代理订阅信息
+        :type BrokerSubscribe: :class:`tencentcloud.iotcloud.v20180614.models.BrokerSubscribe`
+        """
+        self.ProductID = None
+        self.TopicName = None
+        self.Privilege = None
+        self.BrokerSubscribe = None
+
+
+    def _deserialize(self, params):
+        self.ProductID = params.get("ProductID")
+        self.TopicName = params.get("TopicName")
+        self.Privilege = params.get("Privilege")
+        if params.get("BrokerSubscribe") is not None:
+            self.BrokerSubscribe = BrokerSubscribe()
+            self.BrokerSubscribe._deserialize(params.get("BrokerSubscribe"))
+
+
+class CreateTopicPolicyResponse(AbstractModel):
+    """CreateTopicPolicy返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
 
 
@@ -1607,4 +1676,56 @@ class UpdateDeviceShadowResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.Data = params.get("Data")
+        self.RequestId = params.get("RequestId")
+
+
+class UpdateTopicPolicyRequest(AbstractModel):
+    """UpdateTopicPolicy请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ProductID: 产品ID
+        :type ProductID: str
+        :param TopicName: 更新前Topic名
+        :type TopicName: str
+        :param NewTopicName: 更新后Topic名
+        :type NewTopicName: str
+        :param Privilege: Topic权限
+        :type Privilege: int
+        :param BrokerSubscribe: 代理订阅信息
+        :type BrokerSubscribe: :class:`tencentcloud.iotcloud.v20180614.models.BrokerSubscribe`
+        """
+        self.ProductID = None
+        self.TopicName = None
+        self.NewTopicName = None
+        self.Privilege = None
+        self.BrokerSubscribe = None
+
+
+    def _deserialize(self, params):
+        self.ProductID = params.get("ProductID")
+        self.TopicName = params.get("TopicName")
+        self.NewTopicName = params.get("NewTopicName")
+        self.Privilege = params.get("Privilege")
+        if params.get("BrokerSubscribe") is not None:
+            self.BrokerSubscribe = BrokerSubscribe()
+            self.BrokerSubscribe._deserialize(params.get("BrokerSubscribe"))
+
+
+class UpdateTopicPolicyResponse(AbstractModel):
+    """UpdateTopicPolicy返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
         self.RequestId = params.get("RequestId")

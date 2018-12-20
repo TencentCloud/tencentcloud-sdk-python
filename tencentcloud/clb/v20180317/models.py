@@ -131,6 +131,208 @@ class CertificateOutput(AbstractModel):
         self.CertCaId = params.get("CertCaId")
 
 
+class ClassicalHealth(AbstractModel):
+    """传统型负载均衡健康状态信息
+
+    """
+
+    def __init__(self):
+        """
+        :param IP: 云服务器内网 IP
+        :type IP: str
+        :param Port: 云服务器端口
+        :type Port: int
+        :param ListenerPort: 负载均衡监听端口
+        :type ListenerPort: int
+        :param Protocol: 转发协议
+        :type Protocol: str
+        :param HealthStatus: 健康检查结果，1 表示健康，0 表示不健康
+        :type HealthStatus: int
+        """
+        self.IP = None
+        self.Port = None
+        self.ListenerPort = None
+        self.Protocol = None
+        self.HealthStatus = None
+
+
+    def _deserialize(self, params):
+        self.IP = params.get("IP")
+        self.Port = params.get("Port")
+        self.ListenerPort = params.get("ListenerPort")
+        self.Protocol = params.get("Protocol")
+        self.HealthStatus = params.get("HealthStatus")
+
+
+class ClassicalListener(AbstractModel):
+    """传统型负载均衡监听器信息
+
+    """
+
+    def __init__(self):
+        """
+        :param ListenerId: 负载均衡监听器ID
+        :type ListenerId: str
+        :param ListenerPort: 负载均衡监听器端口
+        :type ListenerPort: int
+        :param InstancePort: 监听器后端转发端口
+        :type InstancePort: int
+        :param ListenerName: 监听器名称
+        :type ListenerName: str
+        :param Protocol: 监听器协议类型
+        :type Protocol: str
+        :param SessionExpire: 会话保持时间
+        :type SessionExpire: int
+        :param HealthSwitch: 是否开启了检查：1（开启）、0（关闭）
+        :type HealthSwitch: int
+        :param TimeOut: 响应超时时间
+        :type TimeOut: int
+        :param IntervalTime: 检查间隔
+        :type IntervalTime: int
+        :param HealthNum: 健康阈值
+        :type HealthNum: int
+        :param UnhealthNum: 不健康阈值
+        :type UnhealthNum: int
+        :param HttpHash: 公网固定IP型的 HTTP、HTTPS 协议监听器的轮询方法。wrr 表示按权重轮询，ip_hash 表示根据访问的源 IP 进行一致性哈希方式来分发
+        :type HttpHash: str
+        :param HttpCode: 公网固定IP型的 HTTP、HTTPS 协议监听器的健康检查返回码。具体可参考创建监听器中对该字段的解释
+        :type HttpCode: int
+        :param HttpCheckPath: 公网固定IP型的 HTTP、HTTPS 协议监听器的健康检查路径
+        :type HttpCheckPath: str
+        :param SSLMode: 公网固定IP型的 HTTPS 协议监听器的认证方式
+        :type SSLMode: str
+        :param CertId: 公网固定IP型的 HTTPS 协议监听器服务端证书 ID
+        :type CertId: str
+        :param CertCaId: 公网固定IP型的 HTTPS 协议监听器客户端证书 ID
+        :type CertCaId: str
+        :param Status: 监听器的状态，0 表示创建中，1 表示运行中
+        :type Status: int
+        """
+        self.ListenerId = None
+        self.ListenerPort = None
+        self.InstancePort = None
+        self.ListenerName = None
+        self.Protocol = None
+        self.SessionExpire = None
+        self.HealthSwitch = None
+        self.TimeOut = None
+        self.IntervalTime = None
+        self.HealthNum = None
+        self.UnhealthNum = None
+        self.HttpHash = None
+        self.HttpCode = None
+        self.HttpCheckPath = None
+        self.SSLMode = None
+        self.CertId = None
+        self.CertCaId = None
+        self.Status = None
+
+
+    def _deserialize(self, params):
+        self.ListenerId = params.get("ListenerId")
+        self.ListenerPort = params.get("ListenerPort")
+        self.InstancePort = params.get("InstancePort")
+        self.ListenerName = params.get("ListenerName")
+        self.Protocol = params.get("Protocol")
+        self.SessionExpire = params.get("SessionExpire")
+        self.HealthSwitch = params.get("HealthSwitch")
+        self.TimeOut = params.get("TimeOut")
+        self.IntervalTime = params.get("IntervalTime")
+        self.HealthNum = params.get("HealthNum")
+        self.UnhealthNum = params.get("UnhealthNum")
+        self.HttpHash = params.get("HttpHash")
+        self.HttpCode = params.get("HttpCode")
+        self.HttpCheckPath = params.get("HttpCheckPath")
+        self.SSLMode = params.get("SSLMode")
+        self.CertId = params.get("CertId")
+        self.CertCaId = params.get("CertCaId")
+        self.Status = params.get("Status")
+
+
+class ClassicalLoadBalancerInfo(AbstractModel):
+    """负载均衡信息
+
+    """
+
+    def __init__(self):
+        """
+        :param InstanceId: 后端实例ID
+        :type InstanceId: str
+        :param LoadBalancerIds: 负载均衡实例ID列表
+        :type LoadBalancerIds: list of str
+        """
+        self.InstanceId = None
+        self.LoadBalancerIds = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.LoadBalancerIds = params.get("LoadBalancerIds")
+
+
+class ClassicalTarget(AbstractModel):
+    """传统型负载均衡后端信息
+
+    """
+
+    def __init__(self):
+        """
+        :param Type: 转发目标的类型，目前仅可取值为 CVM
+        :type Type: str
+        :param InstanceId: 云服务器的唯一 ID，可通过 DescribeInstances 接口返回字段中的 unInstanceId 字段获取
+        :type InstanceId: str
+        :param Weight: 后端云服务器的转发权重，取值范围：0~100，默认为 10。
+        :type Weight: int
+        :param PublicIpAddresses: 云服务器的外网 IP
+        :type PublicIpAddresses: list of str
+        :param PrivateIpAddresses: 云服务器的内网 IP
+        :type PrivateIpAddresses: list of str
+        :param InstanceName: 云服务器实例名称
+        :type InstanceName: str
+        :param RunFlag: 云服务器状态
+1：故障，2：运行中，3：创建中，4：已关机，5：已退还，6：退还中， 7：重启中，8：开机中，9：关机中，10：密码重置中，11：格式化中，12：镜像制作中，13：带宽设置中，14：重装系统中，19：升级中，21：热迁移中
+        :type RunFlag: int
+        """
+        self.Type = None
+        self.InstanceId = None
+        self.Weight = None
+        self.PublicIpAddresses = None
+        self.PrivateIpAddresses = None
+        self.InstanceName = None
+        self.RunFlag = None
+
+
+    def _deserialize(self, params):
+        self.Type = params.get("Type")
+        self.InstanceId = params.get("InstanceId")
+        self.Weight = params.get("Weight")
+        self.PublicIpAddresses = params.get("PublicIpAddresses")
+        self.PrivateIpAddresses = params.get("PrivateIpAddresses")
+        self.InstanceName = params.get("InstanceName")
+        self.RunFlag = params.get("RunFlag")
+
+
+class ClassicalTargetInfo(AbstractModel):
+    """传统型后端信息
+
+    """
+
+    def __init__(self):
+        """
+        :param InstanceId: 后端实例ID
+        :type InstanceId: str
+        :param Weight: 权重 取值为0-100
+        :type Weight: int
+        """
+        self.InstanceId = None
+        self.Weight = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.Weight = params.get("Weight")
+
+
 class CreateListenerRequest(AbstractModel):
     """CreateListener请求参数结构体
 
@@ -435,6 +637,44 @@ class DeleteRuleResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DeregisterTargetsFromClassicalLBRequest(AbstractModel):
+    """DeregisterTargetsFromClassicalLB请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param LoadBalancerId: 负载均衡实例 ID
+        :type LoadBalancerId: str
+        :param InstanceIds: 后端实例ID列表
+        :type InstanceIds: list of str
+        """
+        self.LoadBalancerId = None
+        self.InstanceIds = None
+
+
+    def _deserialize(self, params):
+        self.LoadBalancerId = params.get("LoadBalancerId")
+        self.InstanceIds = params.get("InstanceIds")
+
+
+class DeregisterTargetsFromClassicalLBResponse(AbstractModel):
+    """DeregisterTargetsFromClassicalLB返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class DeregisterTargetsRequest(AbstractModel):
     """DeregisterTargets请求参数结构体
 
@@ -491,6 +731,198 @@ class DeregisterTargetsResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeClassicalLBByInstanceIdRequest(AbstractModel):
+    """DescribeClassicalLBByInstanceId请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param InstanceIds: 后端实例ID列表
+        :type InstanceIds: list of str
+        """
+        self.InstanceIds = None
+
+
+    def _deserialize(self, params):
+        self.InstanceIds = params.get("InstanceIds")
+
+
+class DescribeClassicalLBByInstanceIdResponse(AbstractModel):
+    """DescribeClassicalLBByInstanceId返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param LoadBalancerInfoList: 负载均衡相关信息列表
+        :type LoadBalancerInfoList: list of ClassicalLoadBalancerInfo
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.LoadBalancerInfoList = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("LoadBalancerInfoList") is not None:
+            self.LoadBalancerInfoList = []
+            for item in params.get("LoadBalancerInfoList"):
+                obj = ClassicalLoadBalancerInfo()
+                obj._deserialize(item)
+                self.LoadBalancerInfoList.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeClassicalLBHealthStatusRequest(AbstractModel):
+    """DescribeClassicalLBHealthStatus请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param LoadBalancerId: 负载均衡实例 ID
+        :type LoadBalancerId: str
+        :param ListenerId: 负载均衡监听器ID
+        :type ListenerId: str
+        """
+        self.LoadBalancerId = None
+        self.ListenerId = None
+
+
+    def _deserialize(self, params):
+        self.LoadBalancerId = params.get("LoadBalancerId")
+        self.ListenerId = params.get("ListenerId")
+
+
+class DescribeClassicalLBHealthStatusResponse(AbstractModel):
+    """DescribeClassicalLBHealthStatus返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param HealthList: 后端健康状态列表
+        :type HealthList: list of ClassicalHealth
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.HealthList = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("HealthList") is not None:
+            self.HealthList = []
+            for item in params.get("HealthList"):
+                obj = ClassicalHealth()
+                obj._deserialize(item)
+                self.HealthList.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeClassicalLBListenersRequest(AbstractModel):
+    """DescribeClassicalLBListeners请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param LoadBalancerId: 负载均衡实例 ID
+        :type LoadBalancerId: str
+        :param ListenerIds: 负载均衡监听器ID列表， 范围[1-65535]
+        :type ListenerIds: list of str
+        :param Protocol: 负载均衡监听的协议, 'TCP', 'UDP', 'HTTP', 'HTTPS'
+        :type Protocol: str
+        :param ListenerPort: 负载均衡监听端口
+        :type ListenerPort: int
+        :param Status: 监听器的状态，0 表示创建中，1 表示运行中
+        :type Status: int
+        """
+        self.LoadBalancerId = None
+        self.ListenerIds = None
+        self.Protocol = None
+        self.ListenerPort = None
+        self.Status = None
+
+
+    def _deserialize(self, params):
+        self.LoadBalancerId = params.get("LoadBalancerId")
+        self.ListenerIds = params.get("ListenerIds")
+        self.Protocol = params.get("Protocol")
+        self.ListenerPort = params.get("ListenerPort")
+        self.Status = params.get("Status")
+
+
+class DescribeClassicalLBListenersResponse(AbstractModel):
+    """DescribeClassicalLBListeners返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Listeners: 监听器列表
+        :type Listeners: list of ClassicalListener
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Listeners = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Listeners") is not None:
+            self.Listeners = []
+            for item in params.get("Listeners"):
+                obj = ClassicalListener()
+                obj._deserialize(item)
+                self.Listeners.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeClassicalLBTargetsRequest(AbstractModel):
+    """DescribeClassicalLBTargets请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param LoadBalancerId: 负载均衡实例 ID
+        :type LoadBalancerId: str
+        """
+        self.LoadBalancerId = None
+
+
+    def _deserialize(self, params):
+        self.LoadBalancerId = params.get("LoadBalancerId")
+
+
+class DescribeClassicalLBTargetsResponse(AbstractModel):
+    """DescribeClassicalLBTargets返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Targets: 后端服务列表
+        :type Targets: list of ClassicalTarget
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Targets = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Targets") is not None:
+            self.Targets = []
+            for item in params.get("Targets"):
+                obj = ClassicalTarget()
+                obj._deserialize(item)
+                self.Targets.append(obj)
         self.RequestId = params.get("RequestId")
 
 
@@ -1357,6 +1789,49 @@ class RegisterTargetsRequest(AbstractModel):
 
 class RegisterTargetsResponse(AbstractModel):
     """RegisterTargets返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class RegisterTargetsWithClassicalLBRequest(AbstractModel):
+    """RegisterTargetsWithClassicalLB请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param LoadBalancerId: 负载均衡实例 ID
+        :type LoadBalancerId: str
+        :param Targets: 后端服务信息
+        :type Targets: list of ClassicalTargetInfo
+        """
+        self.LoadBalancerId = None
+        self.Targets = None
+
+
+    def _deserialize(self, params):
+        self.LoadBalancerId = params.get("LoadBalancerId")
+        if params.get("Targets") is not None:
+            self.Targets = []
+            for item in params.get("Targets"):
+                obj = ClassicalTargetInfo()
+                obj._deserialize(item)
+                self.Targets.append(obj)
+
+
+class RegisterTargetsWithClassicalLBResponse(AbstractModel):
+    """RegisterTargetsWithClassicalLB返回参数结构体
 
     """
 

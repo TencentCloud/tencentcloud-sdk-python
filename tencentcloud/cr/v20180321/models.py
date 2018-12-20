@@ -153,8 +153,8 @@ class DescribeTaskStatusRequest(AbstractModel):
         :type Module: str
         :param Operation: 操作名
         :type Operation: str
-        :param TaskId: 任务ID
-        :type TaskId: int
+        :param TaskId: 任务ID，形如abc-a0b1c2xyz
+        :type TaskId: str
         """
         self.Module = None
         self.Operation = None
@@ -176,7 +176,7 @@ class DescribeTaskStatusResponse(AbstractModel):
         """
         :param TaskResult: 任务结果
         :type TaskResult: str
-        :param TaskType: 任务类型，010代表上传任务
+        :param TaskType: 任务类型，001为报告下载，002为数据上传，003为还款数据上传。
         :type TaskType: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -335,9 +335,9 @@ class UploadDataFileRequest(AbstractModel):
         :type FileName: str
         :param UploadModel: 上传类型，不填默认催收文件，催收文件为data，还款文件为repay。
         :type UploadModel: str
-        :param File: 文件，文件与文件地址上传只可选用一种，使用 Content-Type: multipart/form-data 协议来上传二进制流文件。
+        :param File: 文件，文件与文件地址上传只可选用一种，必须使用multipart/form-data协议来上传二进制流文件，建议使用xlsx格式，大小不超过5MB。
         :type File: binary
-        :param FileUrl: 文件上传地址
+        :param FileUrl: 文件上传地址，文件与文件地址上传只可选用一种，大小不超过50MB。
         :type FileUrl: str
         """
         self.Module = None
