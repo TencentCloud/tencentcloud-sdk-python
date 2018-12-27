@@ -30,7 +30,7 @@ class DetectAuthRequest(AbstractModel):
         :param IdCard: 身份标识（与公安权威库比对时必须是身份证号）。
 规则：a-zA-Z0-9组合。最长长度32位。
         :type IdCard: str
-        :param Name: 姓名。最长长度32位。
+        :param Name: 姓名。最长长度32位。中文请使用UTF-8编码。
         :type Name: str
         :param RedirectUrl: 认证结束后重定向的回调链接地址。最长长度1024位。
         :type RedirectUrl: str
@@ -233,7 +233,7 @@ class ImageRecognitionRequest(AbstractModel):
         """
         :param IdCard: 身份证号
         :type IdCard: str
-        :param Name: 姓名
+        :param Name: 姓名。中文请使用UTF-8编码。
         :type Name: str
         :param ImageBase64: 用于人脸比对的照片，图片的BASE64值；
 BASE64编码后的图片数据大小不超过3M，仅支持jpg、png格式。
@@ -291,8 +291,8 @@ BASE64编码后的大小不超过5M，支持mp4、avi、flv格式。
         :param LivenessType: 活体检测类型，取值：LIP/ACTION/SILENT。
 LIP为数字模式，ACTION为动作模式，SILENT为静默模式，三种模式选择一种传入。
         :type LivenessType: str
-        :param ValidateData: 数字模式传参：唇语验证码(1234)，需先获取唇语验证码；
-动作模式传参：传动作顺序(12,21)，需先获取动作顺序；
+        :param ValidateData: 数字模式传参：数字验证码(1234)，需先调用接口获取数字验证码；
+动作模式传参：传动作顺序(2,1 or 1,2)，需先调用接口获取动作顺序；
 静默模式传参：空。
         :type ValidateData: str
         :param Optional: 本接口不需要传递此参数。
@@ -347,7 +347,7 @@ class LivenessRecognitionRequest(AbstractModel):
         """
         :param IdCard: 身份证号
         :type IdCard: str
-        :param Name: 姓名
+        :param Name: 姓名。中文请使用UTF-8编码。
         :type Name: str
         :param VideoBase64: 用于活体检测的视频，视频的BASE64值；
 BASE64编码后的大小不超过5M，支持mp4、avi、flv格式。
@@ -355,8 +355,8 @@ BASE64编码后的大小不超过5M，支持mp4、avi、flv格式。
         :param LivenessType: 活体检测类型，取值：LIP/ACTION/SILENT。
 LIP为数字模式，ACTION为动作模式，SILENT为静默模式，三种模式选择一种传入。
         :type LivenessType: str
-        :param ValidateData: 数字模式传参：唇语验证码(1234)，需先获取唇语验证码；
-动作模式传参：传动作顺序(12,21)，需先获取动作顺序；
+        :param ValidateData: 数字模式传参：数字验证码(1234)，需先调用接口获取数字验证码；
+动作模式传参：传动作顺序(2,1 or 1,2)，需先调用接口获取动作顺序；
 静默模式传参：空。
         :type ValidateData: str
         :param Optional: 本接口不需要传递此参数。

@@ -654,8 +654,10 @@ class CcnAttachedInstance(AbstractModel):
 <li>`EXPIRED`：已过期</li>
 <li>`REJECTED`：已拒绝</li>
 <li>`DELETED`：已删除</li>
+<li>`FAILED`：失败的（2小时后将异步强制解关联）</li>
 <li>`ATTACHING`：关联中</li>
 <li>`DETACHING`：解关联中</li>
+<li>`DETACHFAILED`：解关联失败（2小时后将异步强制解关联）</li>
         :type State: str
         :param AttachedTime: 关联时间。
         :type AttachedTime: str
@@ -726,14 +728,18 @@ class CcnRegionBandwidthLimit(AbstractModel):
         :type Region: str
         :param BandwidthLimit: 出带宽上限，单位：Mbps
         :type BandwidthLimit: int
+        :param IsBm: 是否黑石地域，默认`false`。
+        :type IsBm: bool
         """
         self.Region = None
         self.BandwidthLimit = None
+        self.IsBm = None
 
 
     def _deserialize(self, params):
         self.Region = params.get("Region")
         self.BandwidthLimit = params.get("BandwidthLimit")
+        self.IsBm = params.get("IsBm")
 
 
 class CcnRoute(AbstractModel):
@@ -963,14 +969,18 @@ class CreateCcnRequest(AbstractModel):
         :type CcnName: str
         :param CcnDescription: CCN描述信息，最大长度不能超过100个字节。
         :type CcnDescription: str
+        :param QosLevel: CCN服务质量，'PT'：白金，'AU'：金，'AG'：银，默认为‘AU’。
+        :type QosLevel: str
         """
         self.CcnName = None
         self.CcnDescription = None
+        self.QosLevel = None
 
 
     def _deserialize(self, params):
         self.CcnName = params.get("CcnName")
         self.CcnDescription = params.get("CcnDescription")
+        self.QosLevel = params.get("QosLevel")
 
 
 class CreateCcnResponse(AbstractModel):
@@ -1617,6 +1627,58 @@ class CreateSubnetResponse(AbstractModel):
         if params.get("Subnet") is not None:
             self.Subnet = Subnet()
             self.Subnet._deserialize(params.get("Subnet"))
+        self.RequestId = params.get("RequestId")
+
+
+class CreateSubnetsRequest(AbstractModel):
+    """CreateSubnets请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param VpcId: `VPC`实例`ID`。形如：`vpc-6v2ht8q5`
+        :type VpcId: str
+        :param Subnets: 子网对象列表。
+        :type Subnets: list of SubnetInput
+        """
+        self.VpcId = None
+        self.Subnets = None
+
+
+    def _deserialize(self, params):
+        self.VpcId = params.get("VpcId")
+        if params.get("Subnets") is not None:
+            self.Subnets = []
+            for item in params.get("Subnets"):
+                obj = SubnetInput()
+                obj._deserialize(item)
+                self.Subnets.append(obj)
+
+
+class CreateSubnetsResponse(AbstractModel):
+    """CreateSubnets返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param SubnetSet: 新创建的子网列表。
+        :type SubnetSet: list of Subnet
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.SubnetSet = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("SubnetSet") is not None:
+            self.SubnetSet = []
+            for item in params.get("SubnetSet"):
+                obj = Subnet()
+                obj._deserialize(item)
+                self.SubnetSet.append(obj)
         self.RequestId = params.get("RequestId")
 
 
@@ -3045,7 +3107,6 @@ class DescribeCcnRoutesRequest(AbstractModel):
         :param RouteIds: CCN路由策略唯一ID。形如：ccnr-f49l6u0z。
         :type RouteIds: list of str
         :param Filters: 过滤条件，参数不支持同时指定RouteIds和Filters。
-<li>ccn-id - String -（过滤条件）CCN实例ID。</li>
 <li>route-id - String -（过滤条件）路由策略ID。</li>
 <li>cidr-block - String -（过滤条件）目的端。</li>
 <li>instance-type - String -（过滤条件）下一跳类型。</li>
@@ -3409,8 +3470,8 @@ class DescribeDirectConnectGatewaysRequest(AbstractModel):
 <li>direct-connect-gateway-ip - String - 专线网关`IP`。</li>
 <li>gateway-type - String - 网关类型，可选值：`NORMAL`（普通型）、`NAT`（NAT型）。</li>
 <li>network-type- String - 网络类型，可选值：`VPC`（私有网络类型）、`CCN`（云联网类型）。</li>
-<li>ccn-id - String - 专线网关所在私有网络`ID`。</li>
-<li>vpc-id - String - 专线网关所在云联网`ID`。</li>
+<li>ccn-id - String - 专线网关所在云联网`ID`。</li>
+<li>vpc-id - String - 专线网关所在私有网络`ID`。</li>
         :type Filters: list of Filter
         :param Offset: 偏移量。
         :type Offset: int
@@ -6561,7 +6622,7 @@ class ReplaceRoutesRequest(AbstractModel):
         """
         :param RouteTableId: 路由表实例ID，例如：rtb-azd4dt1c。
         :type RouteTableId: str
-        :param Routes: 路由策略对象。只需要指定路由策略ID（RouteId）。
+        :param Routes: 路由策略对象。需要指定路由策略ID（RouteId）。
         :type Routes: list of Route
         """
         self.RouteTableId = None
@@ -7043,6 +7104,8 @@ class SecurityGroupAssociationStatistics(AbstractModel):
         :type SG: int
         :param CLB: 负载均衡实例数。
         :type CLB: int
+        :param InstanceStatistics: 全量实例的绑定统计。
+        :type InstanceStatistics: list of str
         """
         self.SecurityGroupId = None
         self.CVM = None
@@ -7050,6 +7113,7 @@ class SecurityGroupAssociationStatistics(AbstractModel):
         self.ENI = None
         self.SG = None
         self.CLB = None
+        self.InstanceStatistics = None
 
 
     def _deserialize(self, params):
@@ -7059,6 +7123,7 @@ class SecurityGroupAssociationStatistics(AbstractModel):
         self.ENI = params.get("ENI")
         self.SG = params.get("SG")
         self.CLB = params.get("CLB")
+        self.InstanceStatistics = params.get("InstanceStatistics")
 
 
 class SecurityGroupPolicy(AbstractModel):
@@ -7345,6 +7410,35 @@ class Subnet(AbstractModel):
         self.AvailableIpAddressCount = params.get("AvailableIpAddressCount")
 
 
+class SubnetInput(AbstractModel):
+    """子网对象
+
+    """
+
+    def __init__(self):
+        """
+        :param CidrBlock: 子网的`CIDR`。
+        :type CidrBlock: str
+        :param SubnetName: 子网名称。
+        :type SubnetName: str
+        :param Zone: 可用区。形如：`ap-guangzhou-2`。
+        :type Zone: str
+        :param RouteTableId: 指定关联路由表，形如：`rtb-3ryrwzuu`。
+        :type RouteTableId: str
+        """
+        self.CidrBlock = None
+        self.SubnetName = None
+        self.Zone = None
+        self.RouteTableId = None
+
+
+    def _deserialize(self, params):
+        self.CidrBlock = params.get("CidrBlock")
+        self.SubnetName = params.get("SubnetName")
+        self.Zone = params.get("Zone")
+        self.RouteTableId = params.get("RouteTableId")
+
+
 class TransformAddressRequest(AbstractModel):
     """TransformAddress请求参数结构体
 
@@ -7447,6 +7541,8 @@ class Vpc(AbstractModel):
         :type DomainName: str
         :param DhcpOptionsId: DHCP选项集ID
         :type DhcpOptionsId: str
+        :param EnableDhcp: 是否开启DHCP。
+        :type EnableDhcp: bool
         """
         self.VpcName = None
         self.VpcId = None
@@ -7457,6 +7553,7 @@ class Vpc(AbstractModel):
         self.DnsServerSet = None
         self.DomainName = None
         self.DhcpOptionsId = None
+        self.EnableDhcp = None
 
 
     def _deserialize(self, params):
@@ -7469,6 +7566,7 @@ class Vpc(AbstractModel):
         self.DnsServerSet = params.get("DnsServerSet")
         self.DomainName = params.get("DomainName")
         self.DhcpOptionsId = params.get("DhcpOptionsId")
+        self.EnableDhcp = params.get("EnableDhcp")
 
 
 class VpnConnection(AbstractModel):

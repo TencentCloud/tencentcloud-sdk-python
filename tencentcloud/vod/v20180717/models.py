@@ -1283,32 +1283,32 @@ class SearchMediaRequest(AbstractModel):
         :param Text: 搜索文本，模糊匹配媒体文件名称或描述信息，匹配项越多，匹配度越高，排序越优先。长度限制：64 个字符。
         :type Text: str
         :param Tags: 标签集合，匹配集合中任意元素。
-<li>单个标签长度限制：8 个字符</li>
-<li>数组长度限制：10</li>
+<li>单个标签长度限制：8 个字符。</li>
+<li>数组长度限制：10。</li>
         :type Tags: list of str
         :param ClassIds: 分类 ID 集合，匹配集合指定 ID 的分类及其所有子类。数组长度限制：10。
         :type ClassIds: list of int
-        :param StartTime: 创建时间的开始时间
-<li>大于等于开始时间</li>
+        :param StartTime: 创建时间的开始时间。
+<li>大于等于开始时间。</li>
 <li>格式按照 ISO 8601 标准表示，详见 [ISO 日期格式说明](https://cloud.tencent.com/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F)。</li>
         :type StartTime: str
-        :param EndTime: 创建时间的结束时间
-<li>小于结束时间</li>
+        :param EndTime: 创建时间的结束时间。
+<li>小于结束时间。</li>
 <li>格式按照 ISO 8601 标准表示，详见 [ISO 日期格式说明](https://cloud.tencent.com/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F)。</li>
         :type EndTime: str
-        :param SourceType: 媒体文件来源
-        :type SourceType: int
-        :param StreamId: 推流[直播码](https://cloud.tencent.com/document/product/267/5959)
+        :param SourceType: 媒体文件来源，来源取值参见 [SourceType](https://cloud.tencent.com/document/product/266/31773#MediaSourceData)。
+        :type SourceType: str
+        :param StreamId: 推流[直播码](https://cloud.tencent.com/document/product/267/5959)。
         :type StreamId: str
-        :param Vid: 直播录制文件的唯一标识
+        :param Vid: 直播录制文件的唯一标识。
         :type Vid: str
-        :param Sort: 排序方式
+        :param Sort: 排序方式。
 <li>Sort.Field 可选值：CreateTime</li>
 <li>指定 Text 搜索时，将根据匹配度排序，该字段无效</li>
         :type Sort: :class:`tencentcloud.vod.v20180717.models.SortBy`
-        :param Offset: 偏移量
-<li>默认值：0</li>
-<li>取值范围：Offset + Limit 不超过5000</li>
+        :param Offset: 偏移量。
+<li>默认值：0。</li>
+<li>取值范围：Offset + Limit 不超过 5000。</li>
         :type Offset: int
         :param Limit: 返回记录条数，默认值：10。
         :type Limit: int

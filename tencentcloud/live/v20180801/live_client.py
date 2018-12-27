@@ -26,7 +26,8 @@ class LiveClient(AbstractClient):
 
 
     def AddDelayLiveStream(self, request):
-        """对流设置延播
+        """对流设置延播时间
+        注意：如果在推流前设置延播，需要提前5分钟设置。
 
         :param request: 调用AddDelayLiveStream所需参数的结构体。
         :type request: :class:`tencentcloud.live.v20180801.models.AddDelayLiveStreamRequest`

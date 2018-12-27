@@ -417,7 +417,7 @@ class CreateLaunchConfigurationRequest(AbstractModel):
         :type InstanceChargeType: str
         :param InstanceMarketOptions: 实例的市场相关选项，如竞价实例相关参数，若指定实例的付费模式为竞价付费则该参数必传。
         :type InstanceMarketOptions: :class:`tencentcloud.autoscaling.v20180419.models.InstanceMarketOptionsRequest`
-        :param InstanceTypes: 实例机型列表，不同实例机型指定了不同的资源规格，最多支持5中实例机型。
+        :param InstanceTypes: 实例机型列表，不同实例机型指定了不同的资源规格，最多支持5种实例机型。
 `InstanceType`和`InstanceTypes`参数互斥，二者必填一个且只能填写一个。
         :type InstanceTypes: list of str
         :param InstanceTypesCheckPolicy: 实例类型校验策略，取值包括 ALL 和 ANY，默认取值为ANY。
@@ -576,14 +576,18 @@ class DataDisk(AbstractModel):
         :type DiskType: str
         :param DiskSize: 数据盘大小，单位：GB。最小调整步长为10G，不同数据盘类型取值范围不同，具体限制详见：[CVM实例配置](https://cloud.tencent.com/document/product/213/2177)。默认值为0，表示不购买数据盘。更多限制详见产品文档。
         :type DiskSize: int
+        :param SnapshotId: 数据盘快照 ID，类似 `snap-l8psqwnt`。
+        :type SnapshotId: str
         """
         self.DiskType = None
         self.DiskSize = None
+        self.SnapshotId = None
 
 
     def _deserialize(self, params):
         self.DiskType = params.get("DiskType")
         self.DiskSize = params.get("DiskSize")
+        self.SnapshotId = params.get("SnapshotId")
 
 
 class DeleteAutoScalingGroupRequest(AbstractModel):
@@ -871,7 +875,7 @@ class DescribeAutoScalingInstancesRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param InstanceIds: 待查询的云主机（CVM）实例ID。参数不支持同时指定InstanceIds和Filters。
+        :param InstanceIds: 待查询云服务器（CVM）的实例ID。参数不支持同时指定InstanceIds和Filters。
         :type InstanceIds: list of str
         :param Filters: 过滤条件。
 <li> instance-id - String - 是否必填：否 -（过滤条件）按照实例ID过滤。</li>
@@ -938,7 +942,7 @@ class DescribeLaunchConfigurationsRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param LaunchConfigurationIds: 按照一个或者多个启动配置ID查询。启动配置ID形如：`asc-ouy1ax38`。每次请求的上限为100。参数不支持同时指定`LaunchConfigurationIds`和`Filters`。
+        :param LaunchConfigurationIds: 按照一个或者多个启动配置ID查询。启动配置ID形如：`asc-ouy1ax38`。每次请求的上限为100。参数不支持同时指定`LaunchConfigurationIds`和`Filters`
         :type LaunchConfigurationIds: list of str
         :param Filters: 过滤条件。
 <li> launch-configuration-id - String - 是否必填：否 -（过滤条件）按照启动配置ID过滤。</li>
@@ -1660,7 +1664,7 @@ class ModifyLaunchConfigurationAttributesRequest(AbstractModel):
         :type LaunchConfigurationId: str
         :param ImageId: 指定有效的[镜像](https://cloud.tencent.com/document/product/213/4940)ID，格式形如`img-8toqc6s3`。镜像类型分为四种：<br/><li>公共镜像</li><li>自定义镜像</li><li>共享镜像</li><li>服务市场镜像</li><br/>可通过以下方式获取可用的镜像ID：<br/><li>`公共镜像`、`自定义镜像`、`共享镜像`的镜像ID可通过登录[控制台](https://console.cloud.tencent.com/cvm/image?rid=1&imageType=PUBLIC_IMAGE)查询；`服务镜像市场`的镜像ID可通过[云市场](https://market.cloud.tencent.com/list)查询。</li><li>通过调用接口 [DescribeImages](https://cloud.tencent.com/document/api/213/15715) ，取返回信息中的`ImageId`字段。</li>
         :type ImageId: str
-        :param InstanceTypes: 实例类型列表，不同实例机型指定了不同的资源规格，最多支持5中实例机型。
+        :param InstanceTypes: 实例类型列表，不同实例机型指定了不同的资源规格，最多支持5种实例机型。
 启动配置，通过 InstanceType 表示单一实例类型，通过 InstanceTypes 表示多实例类型。指定 InstanceTypes 成功启动配置后，原有的 InstanceType 自动失效。
         :type InstanceTypes: list of str
         :param InstanceTypesCheckPolicy: 实例类型校验策略，在实际修改 InstanceTypes 时发挥作用，取值包括 ALL 和 ANY，默认取值为ANY。

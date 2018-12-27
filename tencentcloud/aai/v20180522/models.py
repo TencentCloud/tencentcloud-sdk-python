@@ -50,7 +50,7 @@ class ChatResponse(AbstractModel):
         """
         :param Answer: 聊天输出文本
         :type Answer: str
-        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.Answer = None
@@ -120,7 +120,7 @@ class SentenceRecognitionResponse(AbstractModel):
         """
         :param Result: 识别结果。
         :type Result: str
-        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.Result = None
@@ -204,7 +204,7 @@ class SimultaneousInterpretingResponse(AbstractModel):
         :type AsrText: str
         :param NmtText: 机器翻译的结果
         :type NmtText: str
-        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.AsrText = None
@@ -239,7 +239,7 @@ class TextToVoiceRequest(AbstractModel):
         :type ProjectId: int
         :param VoiceType: 音色<li>0-女声1，亲和风格(默认)</li><li>1-男声1，成熟风格</li><li>2-男声2，成熟风格</li>
         :type VoiceType: int
-        :param PrimaryLanguage: 主语言类型<li>1-中文(包括粤语)，最大100字符</li><li>2-英文，最大支持400字符</li>
+        :param PrimaryLanguage: 主语言类型<li>1-中文，最大100个汉字（标点符号算一个汉子）</li><li>2-英文，最大支持400个字母（标点符号算一个字母）</li>
         :type PrimaryLanguage: int
         :param SampleRate: 音频采样率，16000：16k，8000：8k，默认16k
         :type SampleRate: int
@@ -278,7 +278,7 @@ class TextToVoiceResponse(AbstractModel):
         :type Audio: str
         :param SessionId: 一次请求对应一个SessionId
         :type SessionId: str
-        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.Audio = None

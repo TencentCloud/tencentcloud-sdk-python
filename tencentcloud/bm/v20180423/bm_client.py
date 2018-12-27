@@ -193,6 +193,118 @@ class BmClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeDeviceClass(self, request):
+        """获取获取设备类型
+
+        :param request: 调用DescribeDeviceClass所需参数的结构体。
+        :type request: :class:`tencentcloud.bm.v20180423.models.DescribeDeviceClassRequest`
+        :rtype: :class:`tencentcloud.bm.v20180423.models.DescribeDeviceClassResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeDeviceClass", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeDeviceClassResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise e
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeDeviceInventory(self, request):
+        """查询设备库存
+
+        :param request: 调用DescribeDeviceInventory所需参数的结构体。
+        :type request: :class:`tencentcloud.bm.v20180423.models.DescribeDeviceInventoryRequest`
+        :rtype: :class:`tencentcloud.bm.v20180423.models.DescribeDeviceInventoryResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeDeviceInventory", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeDeviceInventoryResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise e
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeDeviceOperationLog(self, request):
+        """查询设备操作日志， 如设备重启，重装，设置密码等操作
+
+        :param request: 调用DescribeDeviceOperationLog所需参数的结构体。
+        :type request: :class:`tencentcloud.bm.v20180423.models.DescribeDeviceOperationLogRequest`
+        :rtype: :class:`tencentcloud.bm.v20180423.models.DescribeDeviceOperationLogResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeDeviceOperationLog", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeDeviceOperationLogResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise e
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeDevicePosition(self, request):
+        """查询服务器所在的位置，如机架，上联交换机等信息
+
+        :param request: 调用DescribeDevicePosition所需参数的结构体。
+        :type request: :class:`tencentcloud.bm.v20180423.models.DescribeDevicePositionRequest`
+        :rtype: :class:`tencentcloud.bm.v20180423.models.DescribeDevicePositionResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeDevicePosition", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeDevicePositionResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise e
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeDevicePriceInfo(self, request):
         """查询服务器价格信息，支持设备的批量查找，支持标准机型和弹性机型的混合查找
 
@@ -235,6 +347,34 @@ class BmClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeDevicesResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise e
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeOsInfo(self, request):
+        """查询指定机型所支持的操作系统
+
+        :param request: 调用DescribeOsInfo所需参数的结构体。
+        :type request: :class:`tencentcloud.bm.v20180423.models.DescribeOsInfoRequest`
+        :rtype: :class:`tencentcloud.bm.v20180423.models.DescribeOsInfoResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeOsInfo", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeOsInfoResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -481,6 +621,34 @@ class BmClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def ModifyDeviceAutoRenewFlag(self, request):
+        """修改物理机服务器自动续费标志
+
+        :param request: 调用ModifyDeviceAutoRenewFlag所需参数的结构体。
+        :type request: :class:`tencentcloud.bm.v20180423.models.ModifyDeviceAutoRenewFlagRequest`
+        :rtype: :class:`tencentcloud.bm.v20180423.models.ModifyDeviceAutoRenewFlagResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ModifyDeviceAutoRenewFlag", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ModifyDeviceAutoRenewFlagResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise e
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def ModifyPayModePre2Post(self, request):
         """将设备的预付费模式修改为后付费计费模式，支持批量转换。（前提是客户要加入黑石物理机后付费计费的白名单，申请黑石物理机后付费可以联系腾讯云客服）
 
@@ -551,6 +719,34 @@ class BmClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyUserCmdResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise e
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def OfflineDevices(self, request):
+        """用于销毁可退还的服务器
+
+        :param request: 调用OfflineDevices所需参数的结构体。
+        :type request: :class:`tencentcloud.bm.v20180423.models.OfflineDevicesRequest`
+        :rtype: :class:`tencentcloud.bm.v20180423.models.OfflineDevicesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("OfflineDevices", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.OfflineDevicesResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -683,6 +879,34 @@ class BmClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.RunUserCmdResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise e
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def SetOutBandVpnAuthPassword(self, request):
+        """设置带外VPN认证用户密码
+
+        :param request: 调用SetOutBandVpnAuthPassword所需参数的结构体。
+        :type request: :class:`tencentcloud.bm.v20180423.models.SetOutBandVpnAuthPasswordRequest`
+        :rtype: :class:`tencentcloud.bm.v20180423.models.SetOutBandVpnAuthPasswordResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("SetOutBandVpnAuthPassword", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.SetOutBandVpnAuthPasswordResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

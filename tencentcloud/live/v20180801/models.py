@@ -31,11 +31,15 @@ class AddDelayLiveStreamRequest(AbstractModel):
         :type StreamName: str
         :param DelayTime: 延播时间，单位：秒，上限：600秒。
         :type DelayTime: int
+        :param ExpireTime: 延播设置的过期时间。UTC 格式，例如：2018-11-29T19:00:00Z。
+注意：默认7天后过期，且最长支持7天内生效。
+        :type ExpireTime: str
         """
         self.AppName = None
         self.DomainName = None
         self.StreamName = None
         self.DelayTime = None
+        self.ExpireTime = None
 
 
     def _deserialize(self, params):
@@ -43,6 +47,7 @@ class AddDelayLiveStreamRequest(AbstractModel):
         self.DomainName = params.get("DomainName")
         self.StreamName = params.get("StreamName")
         self.DelayTime = params.get("DelayTime")
+        self.ExpireTime = params.get("ExpireTime")
 
 
 class AddDelayLiveStreamResponse(AbstractModel):
@@ -451,9 +456,8 @@ class DescribeLiveStreamOnlineInfoRequest(AbstractModel):
 默认值：1
         :type PageNum: int
         :param PageSize: 分页大小。
-
 最大值：100。
-取值范围：1~100 之前的任意整数。
+取值范围：10~100 之前的任意整数。
 默认值：10
         :type PageSize: int
         :param Status: 0:未开始推流 1:正在推流 2:服务出错 3:已关闭。
@@ -686,7 +690,7 @@ class DescribeLiveStreamStateRequest(AbstractModel):
         """
         :param AppName: 应用名称。
         :type AppName: str
-        :param DomainName: 您的加速域名。
+        :param DomainName: 您的推流域名。
         :type DomainName: str
         :param StreamName: 流名称。
         :type StreamName: str
