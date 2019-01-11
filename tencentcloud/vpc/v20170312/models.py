@@ -730,16 +730,24 @@ class CcnRegionBandwidthLimit(AbstractModel):
         :type BandwidthLimit: int
         :param IsBm: 是否黑石地域，默认`false`。
         :type IsBm: bool
+        :param DstRegion: 目的地域，例如：ap-shanghai
+        :type DstRegion: str
+        :param DstIsBm: 目的地域是否为黑石地域，默认`false`。
+        :type DstIsBm: bool
         """
         self.Region = None
         self.BandwidthLimit = None
         self.IsBm = None
+        self.DstRegion = None
+        self.DstIsBm = None
 
 
     def _deserialize(self, params):
         self.Region = params.get("Region")
         self.BandwidthLimit = params.get("BandwidthLimit")
         self.IsBm = params.get("IsBm")
+        self.DstRegion = params.get("DstRegion")
+        self.DstIsBm = params.get("DstIsBm")
 
 
 class CcnRoute(AbstractModel):

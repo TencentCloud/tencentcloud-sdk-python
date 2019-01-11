@@ -527,6 +527,55 @@ class DescribeInstancesDiskNumResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeSnapshotOperationLogsRequest(AbstractModel):
+    """DescribeSnapshotOperationLogs请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Filters: 过滤条件。支持以下条件：
+<li>snapshot-id - Array of String - 是否必填：是 - 按快照ID过滤，每个请求最多可指定10个快照ID。
+        :type Filters: list of Filter
+        """
+        self.Filters = None
+
+
+    def _deserialize(self, params):
+        if params.get("Filters") is not None:
+            self.Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self.Filters.append(obj)
+
+
+class DescribeSnapshotOperationLogsResponse(AbstractModel):
+    """DescribeSnapshotOperationLogs返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param SnapshotOperationLogSet: 快照操作日志列表。
+        :type SnapshotOperationLogSet: list of SnapshotOperationLog
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.SnapshotOperationLogSet = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("SnapshotOperationLogSet") is not None:
+            self.SnapshotOperationLogSet = []
+            for item in params.get("SnapshotOperationLogSet"):
+                obj = SnapshotOperationLog()
+                obj._deserialize(item)
+                self.SnapshotOperationLogSet.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeSnapshotsRequest(AbstractModel):
     """DescribeSnapshots请求参数结构体
 
@@ -656,7 +705,7 @@ class Disk(AbstractModel):
         :type DiskName: str
         :param DiskSize: 云硬盘大小，单位GB。
         :type DiskSize: int
-        :param DiskState: 云盘状态。取值范围：<br><li>UNATTACHED：未挂载<br><li>ATTACHING：挂载中<br><li>ATTACHED：已挂载<br><li>DETACHING：解挂中<br><li>EXPANDING：扩容中<br><li>ROLLBACKING：回滚中。
+        :param DiskState: 云盘状态。取值范围：<br><li>UNATTACHED：未挂载<br><li>ATTACHING：挂载中<br><li>ATTACHED：已挂载<br><li>DETACHING：解挂中<br><li>EXPANDING：扩容中<br><li>ROLLBACKING：回滚中<br><li>TORECYCLE：待回收<br><li>DUMPING：拷贝硬盘中。
         :type DiskState: str
         :param DiskType: 云盘介质类型。取值范围：<br><li>CLOUD_BASIC：表示普通云硬<br><li>CLOUD_PREMIUM：表示高性能云硬盘<br><li>CLOUD_SSD：SSD表示SSD云硬盘。
         :type DiskType: str
@@ -692,6 +741,10 @@ class Disk(AbstractModel):
         :type DeleteWithInstance: bool
         :param DifferDaysOfDeadline: 当前时间距离盘到期的天数（仅对预付费盘有意义）。
         :type DifferDaysOfDeadline: int
+        :param Migrating: 云盘是否处于类型变更中。取值范围：<br><li>false:表示云盘不处于类型变更中<br><li>true:表示云盘已发起类型变更，正处于迁移中。
+        :type Migrating: bool
+        :param MigratePercent: 云盘类型变更的迁移进度，取值0到100。
+        :type MigratePercent: int
         """
         self.DiskId = None
         self.DiskUsage = None
@@ -719,6 +772,8 @@ class Disk(AbstractModel):
         self.Tags = None
         self.DeleteWithInstance = None
         self.DifferDaysOfDeadline = None
+        self.Migrating = None
+        self.MigratePercent = None
 
 
     def _deserialize(self, params):
@@ -755,6 +810,8 @@ class Disk(AbstractModel):
                 self.Tags.append(obj)
         self.DeleteWithInstance = params.get("DeleteWithInstance")
         self.DifferDaysOfDeadline = params.get("DifferDaysOfDeadline")
+        self.Migrating = params.get("Migrating")
+        self.MigratePercent = params.get("MigratePercent")
 
 
 class DiskChargePrepaid(AbstractModel):
@@ -768,7 +825,7 @@ class DiskChargePrepaid(AbstractModel):
         :type Period: int
         :param RenewFlag: 自动续费标识。取值范围：<br><li>NOTIFY_AND_AUTO_RENEW：通知过期且自动续费<br><li>NOTIFY_AND_MANUAL_RENEW：通知过期不自动续费<br><li>DISABLE_NOTIFY_AND_MANUAL_RENEW：不通知过期不自动续费<br><br>默认取值：NOTIFY_AND_MANUAL_RENEW：通知过期不自动续费。
         :type RenewFlag: str
-        :param CurInstanceDeadline: 需要将云盘的到期时间与挂载的子机对齐时，可传入该参数。该参数表示子机当前的到期时间，此时Period如果传入，则表示子机需要续费的时长，云盘会自动按对齐到子机续费后的到期时间续费。
+        :param CurInstanceDeadline: 需要将云盘的到期时间与挂载的子机对齐时，可传入该参数。该参数表示子机当前的到期时间，此时Period如果传入，则表示子机需要续费的时长，云盘会自动按对齐到子机续费后的到期时间续费，示例取值：2018-03-30 20:15:03。
         :type CurInstanceDeadline: str
         """
         self.Period = None
@@ -1251,15 +1308,18 @@ class Price(AbstractModel):
         :type OriginalPrice: float
         :param DiscountPrice: 预付费云盘预支费用的折扣价，单位：元。
         :type DiscountPrice: float
-        :param UnitPrice: 后付费云盘的单价，单位：元。
+        :param UnitPrice: 后付费云盘原单价，单位：元。
         :type UnitPrice: float
         :param ChargeUnit: 后付费云盘的计价单元，取值范围：<br><li>HOUR：表示后付费云盘的计价单元是按小时计算。
         :type ChargeUnit: str
+        :param UnitPriceDiscount: 后付费云盘折扣单价，单位：元。
+        :type UnitPriceDiscount: float
         """
         self.OriginalPrice = None
         self.DiscountPrice = None
         self.UnitPrice = None
         self.ChargeUnit = None
+        self.UnitPriceDiscount = None
 
 
     def _deserialize(self, params):
@@ -1267,6 +1327,7 @@ class Price(AbstractModel):
         self.DiscountPrice = params.get("DiscountPrice")
         self.UnitPrice = params.get("UnitPrice")
         self.ChargeUnit = params.get("ChargeUnit")
+        self.UnitPriceDiscount = params.get("UnitPriceDiscount")
 
 
 class RenewDiskRequest(AbstractModel):
@@ -1382,6 +1443,8 @@ class Snapshot(AbstractModel):
         :type CopyingToRegions: list of str
         :param CopyFromRemote: 是否为跨地域复制的快照。取值范围：<br><li>true：表示为跨地域复制的快照。<br><li>false:本地域的快照。
         :type CopyFromRemote: bool
+        :param ImageIds: 快照关联的镜像ID列表。
+        :type ImageIds: list of str
         """
         self.SnapshotId = None
         self.Placement = None
@@ -1397,6 +1460,7 @@ class Snapshot(AbstractModel):
         self.IsPermanent = None
         self.CopyingToRegions = None
         self.CopyFromRemote = None
+        self.ImageIds = None
 
 
     def _deserialize(self, params):
@@ -1416,6 +1480,54 @@ class Snapshot(AbstractModel):
         self.IsPermanent = params.get("IsPermanent")
         self.CopyingToRegions = params.get("CopyingToRegions")
         self.CopyFromRemote = params.get("CopyFromRemote")
+        self.ImageIds = params.get("ImageIds")
+
+
+class SnapshotOperationLog(AbstractModel):
+    """快照操作日志。
+
+    """
+
+    def __init__(self):
+        """
+        :param Operator: 操作者的UIN。
+        :type Operator: str
+        :param Operation: 操作类型。取值范围：
+SNAP_OPERATION_DELETE：删除快照
+SNAP_OPERATION_ROLLBACK：回滚快照
+SNAP_OPERATION_MODIFY：修改快照属性
+SNAP_OPERATION_CREATE：创建快照
+SNAP_OPERATION_COPY：跨地域复制快照
+ASP_OPERATION_CREATE_SNAP：由定期快照策略创建快照
+ASP_OPERATION_DELETE_SNAP：由定期快照策略删除快照
+        :type Operation: str
+        :param SnapshotId: 操作的快照ID。
+        :type SnapshotId: str
+        :param OperationState: 操作的状态。取值范围：
+SUCCESS :表示操作成功 
+FAILED :表示操作失败 
+PROCESSING :表示操作中。
+        :type OperationState: str
+        :param StartTime: 开始时间。
+        :type StartTime: str
+        :param EndTime: 结束时间。
+        :type EndTime: str
+        """
+        self.Operator = None
+        self.Operation = None
+        self.SnapshotId = None
+        self.OperationState = None
+        self.StartTime = None
+        self.EndTime = None
+
+
+    def _deserialize(self, params):
+        self.Operator = params.get("Operator")
+        self.Operation = params.get("Operation")
+        self.SnapshotId = params.get("SnapshotId")
+        self.OperationState = params.get("OperationState")
+        self.StartTime = params.get("StartTime")
+        self.EndTime = params.get("EndTime")
 
 
 class Tag(AbstractModel):

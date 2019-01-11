@@ -867,7 +867,7 @@ class VpcClient(AbstractClient):
 
 
     def CreateVpnGateway(self, request):
-        """本接口（CreateVpnGateways）用于创建VPN网关。
+        """本接口（CreateVpnGateway）用于创建VPN网关。
 
         :param request: 调用CreateVpnGateway所需参数的结构体。
         :type request: :class:`tencentcloud.vpc.v20170312.models.CreateVpnGatewayRequest`

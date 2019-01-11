@@ -782,6 +782,34 @@ class YoumallClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def ModifyPersonFeatureInfo(self, request):
+        """支持修改黑白名单类型的顾客特征
+
+        :param request: 调用ModifyPersonFeatureInfo所需参数的结构体。
+        :type request: :class:`tencentcloud.youmall.v20180228.models.ModifyPersonFeatureInfoRequest`
+        :rtype: :class:`tencentcloud.youmall.v20180228.models.ModifyPersonFeatureInfoResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ModifyPersonFeatureInfo", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ModifyPersonFeatureInfoResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise e
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def ModifyPersonTagInfo(self, request):
         """标记到店顾客的身份类型，例如黑名单、白名单等
 

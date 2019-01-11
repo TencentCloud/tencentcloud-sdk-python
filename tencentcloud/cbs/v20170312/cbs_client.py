@@ -301,6 +301,36 @@ class CbsClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeSnapshotOperationLogs(self, request):
+        """本接口（DescribeSnapshotOperationLogs）用于查询快照操作日志列表。
+
+        可根据快照ID过滤。快照ID形如：snap-a1kmcp13。
+
+        :param request: 调用DescribeSnapshotOperationLogs所需参数的结构体。
+        :type request: :class:`tencentcloud.cbs.v20170312.models.DescribeSnapshotOperationLogsRequest`
+        :rtype: :class:`tencentcloud.cbs.v20170312.models.DescribeSnapshotOperationLogsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeSnapshotOperationLogs", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeSnapshotOperationLogsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise e
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeSnapshots(self, request):
         """本接口（DescribeSnapshots）用于查询快照的详细信息。
 

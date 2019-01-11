@@ -70,12 +70,15 @@ class CameraPersonInfo(AbstractModel):
         :type FacePic: str
         :param Time: 当次抓拍时间戳
         :type Time: int
+        :param PersonInfo: 当前的person基本信息，图片以FacePic为准，结构体内未填
+        :type PersonInfo: :class:`tencentcloud.youmall.v20180228.models.PersonInfo`
         """
         self.TempId = None
         self.FaceId = None
         self.IdType = None
         self.FacePic = None
         self.Time = None
+        self.PersonInfo = None
 
 
     def _deserialize(self, params):
@@ -84,6 +87,9 @@ class CameraPersonInfo(AbstractModel):
         self.IdType = params.get("IdType")
         self.FacePic = params.get("FacePic")
         self.Time = params.get("Time")
+        if params.get("PersonInfo") is not None:
+            self.PersonInfo = PersonInfo()
+            self.PersonInfo._deserialize(params.get("PersonInfo"))
 
 
 class CreateAccountRequest(AbstractModel):
@@ -2016,6 +2022,84 @@ class HourTrafficInfoDetail(AbstractModel):
         self.HourTrafficTotalCount = params.get("HourTrafficTotalCount")
 
 
+class ModifyPersonFeatureInfoRequest(AbstractModel):
+    """ModifyPersonFeatureInfo请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param CompanyId: 集团ID
+        :type CompanyId: str
+        :param PersonId: 需要修改的顾客id
+        :type PersonId: int
+        :param Picture: 图片BASE编码
+        :type Picture: str
+        :param PictureName: 图片名称（尽量不要重复）
+        :type PictureName: str
+        :param PersonType: 人物类型，仅能操作黑白名单顾客（1 白名单，2 表示黑名单，101表示集团白名单，102表示集团黑名单）
+        :type PersonType: int
+        :param ShopId: 店铺ID，如果不填表示操作集团身份库
+        :type ShopId: int
+        """
+        self.CompanyId = None
+        self.PersonId = None
+        self.Picture = None
+        self.PictureName = None
+        self.PersonType = None
+        self.ShopId = None
+
+
+    def _deserialize(self, params):
+        self.CompanyId = params.get("CompanyId")
+        self.PersonId = params.get("PersonId")
+        self.Picture = params.get("Picture")
+        self.PictureName = params.get("PictureName")
+        self.PersonType = params.get("PersonType")
+        self.ShopId = params.get("ShopId")
+
+
+class ModifyPersonFeatureInfoResponse(AbstractModel):
+    """ModifyPersonFeatureInfo返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param CompanyId: 集团ID
+        :type CompanyId: str
+        :param ShopId: 店铺ID，如果不填表示操作集团身份库
+        :type ShopId: int
+        :param PersonId: 请求的顾客id
+        :type PersonId: int
+        :param PersonIdBind: 图片实际绑定person_id，可能与请求的person_id不同，以此id为准
+        :type PersonIdBind: int
+        :param PersonType: 请求的顾客类型
+        :type PersonType: int
+        :param SimilarPersonIds: 与请求的person_id类型相同、与请求图片特征相似的一个或多个person_id，需要额外确认这些id是否是同一个人
+        :type SimilarPersonIds: list of int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.CompanyId = None
+        self.ShopId = None
+        self.PersonId = None
+        self.PersonIdBind = None
+        self.PersonType = None
+        self.SimilarPersonIds = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.CompanyId = params.get("CompanyId")
+        self.ShopId = params.get("ShopId")
+        self.PersonId = params.get("PersonId")
+        self.PersonIdBind = params.get("PersonIdBind")
+        self.PersonType = params.get("PersonType")
+        self.SimilarPersonIds = params.get("SimilarPersonIds")
+        self.RequestId = params.get("RequestId")
+
+
 class ModifyPersonTagInfoRequest(AbstractModel):
     """ModifyPersonTagInfo请求参数结构体
 
@@ -2080,7 +2164,7 @@ class ModifyPersonTypeRequest(AbstractModel):
         :type PersonType: int
         :param PersonSubType: 身份子类型:
 PersonType=0时(普通顾客)，0普通顾客
-PersonType=1时(白名单)，0店员，1商场人员，2其他类型人员，3区域经理，4注册用户，5VIP用户
+PersonType=1时(白名单)，0店员，1商场人员，2其他类型人员，3区域经理，4注册会员，5VIP用户
 PersonType=2时(黑名单)，0普通黑名单，1小偷)
         :type PersonSubType: int
         """
@@ -2375,6 +2459,10 @@ PersonType=0时(普通顾客)，0普通顾客
 PersonType=1时(白名单)，0店员，1商场人员，2其他类型人员，3区域经理，4注册用户，5VIP用户
 PersonType=2时(黑名单)，0普通黑名单，1小偷)
         :type PersonSubType: int
+        :param VisitTimes: 到访次数，-1表示未知
+        :type VisitTimes: int
+        :param VisitDays: 到访天数，-1表示未知
+        :type VisitDays: int
         """
         self.PersonId = None
         self.PersonPicture = None
@@ -2383,6 +2471,8 @@ PersonType=2时(黑名单)，0普通黑名单，1小偷)
         self.PersonType = None
         self.PersonPictureUrl = None
         self.PersonSubType = None
+        self.VisitTimes = None
+        self.VisitDays = None
 
 
     def _deserialize(self, params):
@@ -2393,6 +2483,8 @@ PersonType=2时(黑名单)，0普通黑名单，1小偷)
         self.PersonType = params.get("PersonType")
         self.PersonPictureUrl = params.get("PersonPictureUrl")
         self.PersonSubType = params.get("PersonSubType")
+        self.VisitTimes = params.get("VisitTimes")
+        self.VisitDays = params.get("VisitDays")
 
 
 class PersonProfile(AbstractModel):
@@ -2480,6 +2572,10 @@ class PersonTracePoint(AbstractModel):
         :type TraceEventTime: str
         :param CapPic: 抓拍图片
         :type CapPic: str
+        :param ShoppingBagType: 购物袋类型
+        :type ShoppingBagType: int
+        :param ShoppingBagCount: 购物袋数量
+        :type ShoppingBagCount: int
         """
         self.MallAreaId = None
         self.ShopId = None
@@ -2487,6 +2583,8 @@ class PersonTracePoint(AbstractModel):
         self.TraceEventType = None
         self.TraceEventTime = None
         self.CapPic = None
+        self.ShoppingBagType = None
+        self.ShoppingBagCount = None
 
 
     def _deserialize(self, params):
@@ -2496,6 +2594,8 @@ class PersonTracePoint(AbstractModel):
         self.TraceEventType = params.get("TraceEventType")
         self.TraceEventTime = params.get("TraceEventTime")
         self.CapPic = params.get("CapPic")
+        self.ShoppingBagType = params.get("ShoppingBagType")
+        self.ShoppingBagCount = params.get("ShoppingBagCount")
 
 
 class PersonTraceRoute(AbstractModel):

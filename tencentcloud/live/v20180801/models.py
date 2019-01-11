@@ -126,13 +126,13 @@ class CreateLiveRecordRequest(AbstractModel):
         """
         :param StreamName: 流名称。
         :type StreamName: str
-        :param AppName: 直播流所属应用名称。
+        :param AppName: 推流App名。
         :type AppName: str
         :param DomainName: 推流域名。多域名推流必须设置。
         :type DomainName: str
-        :param StartTime: 任务起始时间，中国标准时间，需要URLEncode。如 2017-01-01 10:10:01，编码为：2017-01-01+10%3a10%3a01。录制视频为精彩视频时，忽略此字段。
+        :param StartTime: 录制开始时间。非精彩视频录制，必须设置该字段。中国标准时间，需要URLEncode。如 2017-01-01 10:10:01，编码为：2017-01-01+10%3a10%3a01。
         :type StartTime: str
-        :param EndTime: 任务结束时间，中国标准时间，需要URLEncode。如 2017-01-01 10:30:01，编码为：2017-01-01+10%3a30%3a01。若指定精彩视频录制，结束时间不超过当前时间+30分钟，如果超过或小于起始时间，则实际结束时间为当前时间+30分钟。
+        :param EndTime: 录制结束时间。非精彩视频录制，必须设置该字段。中国标准时间，需要URLEncode。如 2017-01-01 10:30:01，编码为：2017-01-01+10%3a30%3a01。如果通过Highlight参数，设置录制为精彩视频录制，结束时间不应超过当前时间+30分钟，如果结束时间超过当前时间+30分钟或小于当前时间，则实际结束时间为当前时间+30分钟。
         :type EndTime: str
         :param RecordType: 录制类型。不区分大小写。
 “video” : 音视频录制【默认】。
@@ -141,14 +141,14 @@ class CreateLiveRecordRequest(AbstractModel):
         :param FileFormat: 录制文件格式。不区分大小写。其值为：
 “flv”,“hls”,”mp4”,“aac”,”mp3”，默认“flv”。
         :type FileFormat: str
-        :param Highlight: 精彩视频标志。0：普通视频【默认】；1：精彩视频。
+        :param Highlight: 开启精彩视频录制标志；0：不开启精彩视频录制【默认】；1：开启精彩视频录制。
         :type Highlight: int
-        :param MixStream: A+B=C混流标志。0：非A+B=C混流录制【默认】；1：标示为A+B=C混流录制。
+        :param MixStream: 开启A+B=C混流C流录制标志。0：不开启A+B=C混流C流录制【默认】；1：开启A+B=C混流C流录制。
         :type MixStream: int
-        :param StreamParam: 录制流参数，当前支持以下参数： 
-interval 录制分片时长，单位 秒，0 - 7200
-storage_time 录制文件存储时长，单位 秒
-eg. interval=3600&storage_time=7200
+        :param StreamParam: 录制流参数。当前支持以下参数：
+record_interval - 录制分片时长，单位 秒，1800 - 7200
+storage_time - 录制文件存储时长，单位 秒
+eg. record_interval=3600&storage_time=7200
 注：参数需要url encode。
         :type StreamParam: str
         """
@@ -214,11 +214,15 @@ class CreatePullStreamConfigRequest(AbstractModel):
         :param IspId: 运营商id,1-电信,2-移动,3-联通,4-其他,AreaId为4的时候,IspId只能为其他。
         :type IspId: int
         :param StartTime: 开始时间。
+使用UTC格式时间，
+例如：2019-01-08T10:00:00Z。
         :type StartTime: str
         :param EndTime: 结束时间，注意：
 1. 结束时间必须大于开始时间；
 2. 结束时间和开始时间必须大于当前时间；
 3. 结束时间 和 开始时间 间隔必须小于七天。
+使用UTC格式时间，
+例如：2019-01-08T10:00:00Z。
         :type EndTime: str
         """
         self.FromUrl = None
@@ -1016,11 +1020,16 @@ class ModifyPullStreamConfigRequest(AbstractModel):
         :param IspId: 运营商id,1-电信,2-移动,3-联通,4-其他,AreaId为4的时候,IspId只能为其他。如有改动，需同时传入AreaId。
         :type IspId: int
         :param StartTime: 开始时间。
+使用UTC格式时间，
+例如：2019-01-08T10:00:00Z。
         :type StartTime: str
         :param EndTime: 结束时间，注意：
 1. 结束时间必须大于开始时间；
 2. 结束时间和开始时间必须大于当前时间；
 3. 结束时间 和 开始时间 间隔必须小于七天。
+
+使用UTC格式时间，
+例如：2019-01-08T10:00:00Z。
         :type EndTime: str
         """
         self.ConfigId = None
@@ -1166,8 +1175,13 @@ class PullStreamConfig(AbstractModel):
         :param IspName: 运营商名。
         :type IspName: str
         :param StartTime: 开始时间。
+UTC格式时间，
+例如：2019-01-08T10:00:00Z。
         :type StartTime: str
         :param EndTime: 结束时间。
+
+UTC格式时间，
+例如：2019-01-08T10:00:00Z。
         :type EndTime: str
         :param Status: 0无效，1初始状态，2正在运行，3拉起失败，4暂停。
         :type Status: str
@@ -1455,9 +1469,12 @@ class StreamOnlineInfo(AbstractModel):
         :type StreamName: str
         :param PublishTimeList: 推流时间列表
         :type PublishTimeList: list of PublishTime
+        :param AppName: 应用名称。
+        :type AppName: str
         """
         self.StreamName = None
         self.PublishTimeList = None
+        self.AppName = None
 
 
     def _deserialize(self, params):
@@ -1468,6 +1485,7 @@ class StreamOnlineInfo(AbstractModel):
                 obj = PublishTime()
                 obj._deserialize(item)
                 self.PublishTimeList.append(obj)
+        self.AppName = params.get("AppName")
 
 
 class UpdateLiveWatermarkRequest(AbstractModel):
