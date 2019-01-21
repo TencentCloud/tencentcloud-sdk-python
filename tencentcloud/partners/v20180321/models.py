@@ -147,6 +147,8 @@ class AgentClientElem(AbstractModel):
         :type Phone: str
         :param HasOverdueBill: 0表示不欠费，1表示欠费
         :type HasOverdueBill: int
+        :param Status: 1:待代理商审核;2:待腾讯云审核
+        :type Status: int
         """
         self.Uin = None
         self.ClientUin = None
@@ -155,6 +157,7 @@ class AgentClientElem(AbstractModel):
         self.Mail = None
         self.Phone = None
         self.HasOverdueBill = None
+        self.Status = None
 
 
     def _deserialize(self, params):
@@ -165,6 +168,7 @@ class AgentClientElem(AbstractModel):
         self.Mail = params.get("Mail")
         self.Phone = params.get("Phone")
         self.HasOverdueBill = params.get("HasOverdueBill")
+        self.Status = params.get("Status")
 
 
 class AgentPayDealsRequest(AbstractModel):
@@ -199,7 +203,7 @@ class AgentPayDealsResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.RequestId = None
@@ -237,7 +241,7 @@ class AgentTransferMoneyResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.RequestId = None
@@ -287,7 +291,7 @@ class AuditApplyClientResponse(AbstractModel):
         :type AuditResult: str
         :param AgentTime: 关联时间对应的时间戳
         :type AgentTime: int
-        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.Uin = None
@@ -365,7 +369,7 @@ class DescribeAgentAuditedClientsResponse(AbstractModel):
         :type AgentClientSet: list of AgentAuditedClient
         :param TotalCount: 符合条件的代客总数
         :type TotalCount: int
-        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.AgentClientSet = None
@@ -436,7 +440,7 @@ class DescribeAgentBillsResponse(AbstractModel):
         :type TotalCount: int
         :param AgentBillSet: 业务明细列表
         :type AgentBillSet: list of AgentBillElem
-        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.TotalCount = None
@@ -503,7 +507,7 @@ class DescribeAgentClientsResponse(AbstractModel):
         :type AgentClientSet: list of AgentClientElem
         :param TotalCount: 符合条件的代客总数
         :type TotalCount: int
-        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.AgentClientSet = None
@@ -548,7 +552,7 @@ class DescribeClientBalanceResponse(AbstractModel):
         """
         :param Balance: 账户余额，单位分
         :type Balance: int
-        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.Balance = None
@@ -596,7 +600,7 @@ class DescribeRebateInfosResponse(AbstractModel):
         :type RebateInfoSet: list of RebateInfoElem
         :param TotalCount: 符合查询条件返佣信息数目
         :type TotalCount: int
-        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.RebateInfoSet = None
@@ -643,7 +647,7 @@ class ModifyClientRemarkResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.RequestId = None

@@ -737,6 +737,65 @@ class CreateDBInstanceResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class CreateParamTemplateRequest(AbstractModel):
+    """CreateParamTemplate请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Name: 参数模板名称。
+        :type Name: str
+        :param Description: 参数模板描述。
+        :type Description: str
+        :param EngineVersion: mysql版本。
+        :type EngineVersion: str
+        :param TemplateId: 源参数模板ID。
+        :type TemplateId: int
+        :param ParamList: 参数列表。
+        :type ParamList: list of Parameter
+        """
+        self.Name = None
+        self.Description = None
+        self.EngineVersion = None
+        self.TemplateId = None
+        self.ParamList = None
+
+
+    def _deserialize(self, params):
+        self.Name = params.get("Name")
+        self.Description = params.get("Description")
+        self.EngineVersion = params.get("EngineVersion")
+        self.TemplateId = params.get("TemplateId")
+        if params.get("ParamList") is not None:
+            self.ParamList = []
+            for item in params.get("ParamList"):
+                obj = Parameter()
+                obj._deserialize(item)
+                self.ParamList.append(obj)
+
+
+class CreateParamTemplateResponse(AbstractModel):
+    """CreateParamTemplate返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param TemplateId: 参数模板ID。
+        :type TemplateId: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TemplateId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TemplateId = params.get("TemplateId")
+        self.RequestId = params.get("RequestId")
+
+
 class DBSwitchInfo(AbstractModel):
     """云数据库切换记录
 
@@ -1990,6 +2049,170 @@ class DescribeDatabasesResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeDefaultParamsRequest(AbstractModel):
+    """DescribeDefaultParams请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param EngineVersion: mysql版本，目前支持["5.1", "5.5", "5.6", "5.7"]
+        :type EngineVersion: str
+        """
+        self.EngineVersion = None
+
+
+    def _deserialize(self, params):
+        self.EngineVersion = params.get("EngineVersion")
+
+
+class DescribeDefaultParamsResponse(AbstractModel):
+    """DescribeDefaultParams返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param TotalCount: 参数个数
+        :type TotalCount: int
+        :param Items: 参数详情
+        :type Items: list of ParameterDetail
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.Items = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("Items") is not None:
+            self.Items = []
+            for item in params.get("Items"):
+                obj = ParameterDetail()
+                obj._deserialize(item)
+                self.Items.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeDeviceMonitorInfoRequest(AbstractModel):
+    """DescribeDeviceMonitorInfo请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param InstanceId: 实例ID，格式如：cdb-c1nl9rpv。与云数据库控制台页面中显示的实例ID相同。
+        :type InstanceId: str
+        :param Count: 返回当天最近Count个5分钟粒度的监控数据。最小值1，最大值288，不传该参数默认返回当天所有5分钟粒度监控数据。
+        :type Count: int
+        """
+        self.InstanceId = None
+        self.Count = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.Count = params.get("Count")
+
+
+class DescribeDeviceMonitorInfoResponse(AbstractModel):
+    """DescribeDeviceMonitorInfo返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Cpu: 实例CPU监控数据
+        :type Cpu: :class:`tencentcloud.cdb.v20170320.models.DeviceCpuInfo`
+        :param Mem: 实例内存监控数据
+        :type Mem: :class:`tencentcloud.cdb.v20170320.models.DeviceMemInfo`
+        :param Net: 实例网络监控数据
+        :type Net: :class:`tencentcloud.cdb.v20170320.models.DeviceNetInfo`
+        :param Disk: 实例磁盘监控数据
+        :type Disk: :class:`tencentcloud.cdb.v20170320.models.DeviceDiskInfo`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Cpu = None
+        self.Mem = None
+        self.Net = None
+        self.Disk = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Cpu") is not None:
+            self.Cpu = DeviceCpuInfo()
+            self.Cpu._deserialize(params.get("Cpu"))
+        if params.get("Mem") is not None:
+            self.Mem = DeviceMemInfo()
+            self.Mem._deserialize(params.get("Mem"))
+        if params.get("Net") is not None:
+            self.Net = DeviceNetInfo()
+            self.Net._deserialize(params.get("Net"))
+        if params.get("Disk") is not None:
+            self.Disk = DeviceDiskInfo()
+            self.Disk._deserialize(params.get("Disk"))
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeInstanceParamRecordsRequest(AbstractModel):
+    """DescribeInstanceParamRecords请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param InstanceId: 实例ID，格式如：cdb-c1nl9rpv，与云数据库控制台页面中显示的实例ID相同，可使用[查询实例列表](https://cloud.tencent.com/document/api/236/15872) 接口获取，其值为输出参数中字段 InstanceId 的值。
+        :type InstanceId: str
+        :param Offset: 分页偏移量。
+        :type Offset: int
+        :param Limit: 分页大小。
+        :type Limit: int
+        """
+        self.InstanceId = None
+        self.Offset = None
+        self.Limit = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+
+
+class DescribeInstanceParamRecordsResponse(AbstractModel):
+    """DescribeInstanceParamRecords返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param TotalCount: 符合条件的记录数
+        :type TotalCount: int
+        :param Items: 参数修改记录
+        :type Items: list of ParamRecord
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.Items = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("Items") is not None:
+            self.Items = []
+            for item in params.get("Items"):
+                obj = ParamRecord()
+                obj._deserialize(item)
+                self.Items.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeInstanceParamsRequest(AbstractModel):
     """DescribeInstanceParams请求参数结构体
 
@@ -2032,6 +2255,101 @@ class DescribeInstanceParamsResponse(AbstractModel):
             self.Items = []
             for item in params.get("Items"):
                 obj = ParameterDetail()
+                obj._deserialize(item)
+                self.Items.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeParamTemplateInfoRequest(AbstractModel):
+    """DescribeParamTemplateInfo请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param TemplateId: 参数模板Id。
+        :type TemplateId: int
+        """
+        self.TemplateId = None
+
+
+    def _deserialize(self, params):
+        self.TemplateId = params.get("TemplateId")
+
+
+class DescribeParamTemplateInfoResponse(AbstractModel):
+    """DescribeParamTemplateInfo返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param TemplateId: 参数模板Id。
+        :type TemplateId: int
+        :param Name: 参数模板名称。
+        :type Name: str
+        :param EngineVersion: 参数模板描述
+        :type EngineVersion: str
+        :param TotalCount: 参数模板中的参数数量
+        :type TotalCount: int
+        :param Items: 参数详情
+        :type Items: list of ParameterDetail
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TemplateId = None
+        self.Name = None
+        self.EngineVersion = None
+        self.TotalCount = None
+        self.Items = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TemplateId = params.get("TemplateId")
+        self.Name = params.get("Name")
+        self.EngineVersion = params.get("EngineVersion")
+        self.TotalCount = params.get("TotalCount")
+        if params.get("Items") is not None:
+            self.Items = []
+            for item in params.get("Items"):
+                obj = ParameterDetail()
+                obj._deserialize(item)
+                self.Items.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeParamTemplatesRequest(AbstractModel):
+    """DescribeParamTemplates请求参数结构体
+
+    """
+
+
+class DescribeParamTemplatesResponse(AbstractModel):
+    """DescribeParamTemplates返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param TotalCount: 该用户的参数模板数量。
+        :type TotalCount: int
+        :param Items: 参数模板详情。
+        :type Items: list of ParamTemplateInfo
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.Items = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("Items") is not None:
+            self.Items = []
+            for item in params.get("Items"):
+                obj = ParamTemplateInfo()
                 obj._deserialize(item)
                 self.Items.append(obj)
         self.RequestId = params.get("RequestId")
@@ -2240,6 +2558,65 @@ class DescribeTablesResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeTagsOfInstanceIdsRequest(AbstractModel):
+    """DescribeTagsOfInstanceIds请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param InstanceIds: 实例列表
+        :type InstanceIds: list of str
+        :param Offset: 偏移量
+        :type Offset: int
+        :param Limit: 每页返回多少个标签
+        :type Limit: int
+        """
+        self.InstanceIds = None
+        self.Offset = None
+        self.Limit = None
+
+
+    def _deserialize(self, params):
+        self.InstanceIds = params.get("InstanceIds")
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+
+
+class DescribeTagsOfInstanceIdsResponse(AbstractModel):
+    """DescribeTagsOfInstanceIds返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Offset: 偏移量
+        :type Offset: int
+        :param Limit: 每页返回多少个标签
+        :type Limit: int
+        :param Rows: 实例标签信息
+        :type Rows: list of TagsInfoOfInstance
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Offset = None
+        self.Limit = None
+        self.Rows = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+        if params.get("Rows") is not None:
+            self.Rows = []
+            for item in params.get("Rows"):
+                obj = TagsInfoOfInstance()
+                obj._deserialize(item)
+                self.Rows.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeTasksRequest(AbstractModel):
     """DescribeTasks请求参数结构体
 
@@ -2363,6 +2740,136 @@ class DescribeUploadedFilesResponse(AbstractModel):
                 obj._deserialize(item)
                 self.Items.append(obj)
         self.RequestId = params.get("RequestId")
+
+
+class DeviceCpuInfo(AbstractModel):
+    """CPU负载
+
+    """
+
+    def __init__(self):
+        """
+        :param Rate: 实例CPU平均使用率
+        :type Rate: list of DeviceCpuRateInfo
+        :param Load: 实例CPU监控数据
+        :type Load: list of int
+        """
+        self.Rate = None
+        self.Load = None
+
+
+    def _deserialize(self, params):
+        if params.get("Rate") is not None:
+            self.Rate = []
+            for item in params.get("Rate"):
+                obj = DeviceCpuRateInfo()
+                obj._deserialize(item)
+                self.Rate.append(obj)
+        self.Load = params.get("Load")
+
+
+class DeviceCpuRateInfo(AbstractModel):
+    """实例CPU平均使用率
+
+    """
+
+    def __init__(self):
+        """
+        :param CpuCore: Cpu核编号
+        :type CpuCore: int
+        :param Rate: Cpu使用率
+        :type Rate: list of int
+        """
+        self.CpuCore = None
+        self.Rate = None
+
+
+    def _deserialize(self, params):
+        self.CpuCore = params.get("CpuCore")
+        self.Rate = params.get("Rate")
+
+
+class DeviceDiskInfo(AbstractModel):
+    """实例磁盘监控数据
+
+    """
+
+    def __init__(self):
+        """
+        :param IoRatioPerSec: 平均每秒有百分之几的时间用于IO操作
+        :type IoRatioPerSec: list of int
+        :param IoWaitTime: 平均每次设备I/O操作的等待时间*100，单位为毫秒。例如：该值为201，表示平均每次I/O操作等待时间为：201/100=2.1毫秒
+        :type IoWaitTime: list of int
+        :param Read: 磁盘平均每秒完成的读操作次数总和*100。例如：该值为2002，表示磁盘平均每秒完成读操作为：2002/100=20.2次
+        :type Read: list of int
+        :param Write: 磁盘平均每秒完成的写操作次数总和*100。例如：该值为30001，表示磁盘平均每秒完成写操作为：30001/100=300.01次
+        :type Write: list of int
+        """
+        self.IoRatioPerSec = None
+        self.IoWaitTime = None
+        self.Read = None
+        self.Write = None
+
+
+    def _deserialize(self, params):
+        self.IoRatioPerSec = params.get("IoRatioPerSec")
+        self.IoWaitTime = params.get("IoWaitTime")
+        self.Read = params.get("Read")
+        self.Write = params.get("Write")
+
+
+class DeviceMemInfo(AbstractModel):
+    """实例所在物理机内存监控信息
+
+    """
+
+    def __init__(self):
+        """
+        :param Total: 总内存大小。free命令中Mem:一行total的值,单位：KB
+        :type Total: list of int
+        :param Used: 已使用内存。free命令中Mem:一行used的值,单位：KB
+        :type Used: list of int
+        """
+        self.Total = None
+        self.Used = None
+
+
+    def _deserialize(self, params):
+        self.Total = params.get("Total")
+        self.Used = params.get("Used")
+
+
+class DeviceNetInfo(AbstractModel):
+    """实例所在物理机网络监控信息
+
+    """
+
+    def __init__(self):
+        """
+        :param Conn: tcp连接数
+        :type Conn: list of int
+        :param PackageIn: 网卡入包量
+        :type PackageIn: list of int
+        :param PackageOut: 网卡出包量
+        :type PackageOut: list of int
+        :param FlowIn: 入流量，单位：KB
+        :type FlowIn: list of int
+        :param FlowOut: 出流量，单位：KB
+        :type FlowOut: list of int
+        """
+        self.Conn = None
+        self.PackageIn = None
+        self.PackageOut = None
+        self.FlowIn = None
+        self.FlowOut = None
+
+
+    def _deserialize(self, params):
+        self.Conn = params.get("Conn")
+        self.PackageIn = params.get("PackageIn")
+        self.PackageOut = params.get("PackageOut")
+        self.FlowIn = params.get("FlowIn")
+        self.FlowOut = params.get("FlowOut")
 
 
 class DisassociateSecurityGroupsRequest(AbstractModel):
@@ -2594,6 +3101,64 @@ class InitDBInstancesResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.AsyncRequestIds = params.get("AsyncRequestIds")
+        self.RequestId = params.get("RequestId")
+
+
+class InquiryPriceUpgradeInstancesRequest(AbstractModel):
+    """InquiryPriceUpgradeInstances请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param InstanceId: 实例ID，格式如：cdb-c1nl9rpv或者cdbro-c1nl9rpv。与云数据库控制台页面中显示的实例ID相同，可使用[查询实例列表](https://cloud.tencent.com/document/api/236/15872) 接口获取，其值为输出参数中字段 InstanceId 的值
+        :type InstanceId: str
+        :param Memory: 升级后的内存大小，单位：MB，为保证传入 Memory 值有效，请使用[查询可创建规格（支持可用区、配置自定义）](https://cloud.tencent.com/document/api/253/6109)接口获取可升级的内存规格
+        :type Memory: int
+        :param Volume: 升级后的硬盘大小，单位：GB，为保证传入 Volume 值有效，请使用[查询可创建规格（支持可用区、配置自定义）](https://cloud.tencent.com/document/api/253/6109)接口获取可升级的硬盘范围
+        :type Volume: int
+        :param Cpu: 升级后的核心数目，单位：核，为保证传入 CPU 值有效，请使用[查询可创建规格（支持可用区、配置自定义）](https://cloud.tencent.com/document/api/253/6109)接口获取可升级的核心数目，当未指定该值时，将按照 Memory 大小补全一个默认值
+        :type Cpu: int
+        :param ProtectMode: 数据复制方式，支持值包括：0-异步复制，1-半同步复制，2-强同步复制，升级主实例时可指定该参数，升级只读实例或者灾备实例时指定该参数无意义
+        :type ProtectMode: int
+        """
+        self.InstanceId = None
+        self.Memory = None
+        self.Volume = None
+        self.Cpu = None
+        self.ProtectMode = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.Memory = params.get("Memory")
+        self.Volume = params.get("Volume")
+        self.Cpu = params.get("Cpu")
+        self.ProtectMode = params.get("ProtectMode")
+
+
+class InquiryPriceUpgradeInstancesResponse(AbstractModel):
+    """InquiryPriceUpgradeInstances返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Price: 实例价格，单位：分（人民币）
+        :type Price: int
+        :param OriginalPrice: 实例原价，单位：分（人民币）
+        :type OriginalPrice: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Price = None
+        self.OriginalPrice = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Price = params.get("Price")
+        self.OriginalPrice = params.get("OriginalPrice")
         self.RequestId = params.get("RequestId")
 
 
@@ -3427,6 +3992,109 @@ class ModifyInstanceParamResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class ModifyInstanceTagRequest(AbstractModel):
+    """ModifyInstanceTag请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param InstanceId: 实例ID
+        :type InstanceId: str
+        :param ReplaceTags: 要增加或修改的标签
+        :type ReplaceTags: list of TagInfo
+        :param DeleteTags: 要删除的标签
+        :type DeleteTags: list of TagInfo
+        """
+        self.InstanceId = None
+        self.ReplaceTags = None
+        self.DeleteTags = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        if params.get("ReplaceTags") is not None:
+            self.ReplaceTags = []
+            for item in params.get("ReplaceTags"):
+                obj = TagInfo()
+                obj._deserialize(item)
+                self.ReplaceTags.append(obj)
+        if params.get("DeleteTags") is not None:
+            self.DeleteTags = []
+            for item in params.get("DeleteTags"):
+                obj = TagInfo()
+                obj._deserialize(item)
+                self.DeleteTags.append(obj)
+
+
+class ModifyInstanceTagResponse(AbstractModel):
+    """ModifyInstanceTag返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class ModifyParamTemplateRequest(AbstractModel):
+    """ModifyParamTemplate请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param TemplateId: 模板Id。
+        :type TemplateId: int
+        :param Name: 模板名称。
+        :type Name: str
+        :param Description: 模板描述。
+        :type Description: str
+        :param ParamList: 参数列表。
+        :type ParamList: list of Parameter
+        """
+        self.TemplateId = None
+        self.Name = None
+        self.Description = None
+        self.ParamList = None
+
+
+    def _deserialize(self, params):
+        self.TemplateId = params.get("TemplateId")
+        self.Name = params.get("Name")
+        self.Description = params.get("Description")
+        if params.get("ParamList") is not None:
+            self.ParamList = []
+            for item in params.get("ParamList"):
+                obj = Parameter()
+                obj._deserialize(item)
+                self.ParamList.append(obj)
+
+
+class ModifyParamTemplateResponse(AbstractModel):
+    """ModifyParamTemplate返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class OpenDBInstanceGTIDRequest(AbstractModel):
     """OpenDBInstanceGTID请求参数结构体
 
@@ -3555,6 +4223,72 @@ class ParamInfo(AbstractModel):
     def _deserialize(self, params):
         self.Name = params.get("Name")
         self.Value = params.get("Value")
+
+
+class ParamRecord(AbstractModel):
+    """参数修改记录
+
+    """
+
+    def __init__(self):
+        """
+        :param InstanceId: 实例ID
+        :type InstanceId: str
+        :param ParamName: 参数名称
+        :type ParamName: str
+        :param OldValue: 参数修改前的值
+        :type OldValue: str
+        :param NewValue: 参数修改后的值
+        :type NewValue: str
+        :param IsSucess: 参数是否修改成功
+        :type IsSucess: bool
+        :param ModifyTime: 修改时间
+        :type ModifyTime: str
+        """
+        self.InstanceId = None
+        self.ParamName = None
+        self.OldValue = None
+        self.NewValue = None
+        self.IsSucess = None
+        self.ModifyTime = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.ParamName = params.get("ParamName")
+        self.OldValue = params.get("OldValue")
+        self.NewValue = params.get("NewValue")
+        self.IsSucess = params.get("IsSucess")
+        self.ModifyTime = params.get("ModifyTime")
+
+
+class ParamTemplateInfo(AbstractModel):
+    """参数模板信息
+
+    """
+
+    def __init__(self):
+        """
+        :param TemplateId: 参数模板ID
+        :type TemplateId: int
+        :param Name: 参数模板名称
+        :type Name: str
+        :param Description: 参数模板描述
+        :type Description: str
+        :param EngineVersion: 实例引擎版本
+        :type EngineVersion: str
+        """
+        self.TemplateId = None
+        self.Name = None
+        self.Description = None
+        self.EngineVersion = None
+
+
+    def _deserialize(self, params):
+        self.TemplateId = params.get("TemplateId")
+        self.Name = params.get("Name")
+        self.Description = params.get("Description")
+        self.EngineVersion = params.get("EngineVersion")
 
 
 class Parameter(AbstractModel):
@@ -3758,7 +4492,7 @@ class RoGroup(AbstractModel):
         :type RoGroupId: str
         :param RoGroupName: 只读组名称
         :type RoGroupName: str
-        :param RoOfflineDelay: 是否启用延迟超限剔除功能，启用该功能后，只读实例与主实例的延迟超过延迟阈值值，只读实例将被隔离。可选值：1-启用；0-不启用
+        :param RoOfflineDelay: 是否启用延迟超限剔除功能，启用该功能后，只读实例与主实例的延迟超过延迟阀值，只读实例将被隔离。可选值：1-启用；0-不启用
         :type RoOfflineDelay: int
         :param RoMaxDelayTime: 延迟阀值
         :type RoMaxDelayTime: int
@@ -4546,6 +5280,53 @@ class TagInfo(AbstractModel):
     def _deserialize(self, params):
         self.TagKey = params.get("TagKey")
         self.TagValue = params.get("TagValue")
+
+
+class TagInfoUnit(AbstractModel):
+    """tag信息单元
+
+    """
+
+    def __init__(self):
+        """
+        :param TagKey: 标签键
+        :type TagKey: str
+        :param TagValue: 标签值
+        :type TagValue: str
+        """
+        self.TagKey = None
+        self.TagValue = None
+
+
+    def _deserialize(self, params):
+        self.TagKey = params.get("TagKey")
+        self.TagValue = params.get("TagValue")
+
+
+class TagsInfoOfInstance(AbstractModel):
+    """实例的标签信息
+
+    """
+
+    def __init__(self):
+        """
+        :param InstanceId: 实例Id
+        :type InstanceId: str
+        :param Tags: 标签信息
+        :type Tags: list of TagInfoUnit
+        """
+        self.InstanceId = None
+        self.Tags = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        if params.get("Tags") is not None:
+            self.Tags = []
+            for item in params.get("Tags"):
+                obj = TagInfoUnit()
+                obj._deserialize(item)
+                self.Tags.append(obj)
 
 
 class UpgradeDBInstanceEngineVersionRequest(AbstractModel):

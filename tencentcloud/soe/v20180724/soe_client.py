@@ -79,3 +79,31 @@ class SoeClient(AbstractClient):
                 raise e
             else:
                 raise TencentCloudSDKException(e.message, e.message)
+
+
+    def TransmitOralProcessWithInit(self, request):
+        """初始化并传输音频数据，分片传输时，尽量保证SeqId顺序传输。音频源目前仅支持16k采样率16bit单声道编码方式，如有不一致可能导致评估不准确或失败。
+
+        :param request: 调用TransmitOralProcessWithInit所需参数的结构体。
+        :type request: :class:`tencentcloud.soe.v20180724.models.TransmitOralProcessWithInitRequest`
+        :rtype: :class:`tencentcloud.soe.v20180724.models.TransmitOralProcessWithInitResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("TransmitOralProcessWithInit", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.TransmitOralProcessWithInitResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise e
+            else:
+                raise TencentCloudSDKException(e.message, e.message)

@@ -602,7 +602,7 @@ class DescribeDeviceRequest(AbstractModel):
         """
         :param ProductID: 产品ID
         :type ProductID: str
-        :param DeviceName: 产品名
+        :param DeviceName: 设备名
         :type DeviceName: str
         """
         self.ProductID = None
@@ -1114,7 +1114,7 @@ class DeviceInfo(AbstractModel):
         :type DeviceName: str
         :param Online: 设备是否在线，0不在线，1在线
         :type Online: int
-        :param LoginTime: 设备登陆时间
+        :param LoginTime: 设备登录时间
         :type LoginTime: int
         :param Version: 设备版本
         :type Version: str

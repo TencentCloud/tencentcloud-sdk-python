@@ -392,6 +392,72 @@ class DescribeMediaInfosResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class LiveRealTimeClipRequest(AbstractModel):
+    """LiveRealTimeClip请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param StreamId: 推流[直播码](https://cloud.tencent.com/document/product/267/5959)。
+        :type StreamId: str
+        :param StartTime: 流剪辑的开始时间，格式参照 [ISO 日期格式说明](https://cloud.tencent.com/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F)。
+        :type StartTime: str
+        :param EndTime: 流剪辑的结束时间，格式参照 [ISO 日期格式说明](https://cloud.tencent.com/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F)。
+        :type EndTime: str
+        :param IsPersistence: 是否固化。0 不固化，1 固化。默认不固化。
+        :type IsPersistence: int
+        :param ExpireTime: 剪辑固化后的视频存储过期时间。格式参照 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F)。填“9999-12-31T23:59:59Z”表示永不过期。过期后该媒体文件及其相关资源（转码结果、雪碧图等）将被永久删除。仅 IsPersistence 为 1 时有效，默认剪辑固化的视频永不过期。
+        :type ExpireTime: str
+        :param Procedure: 剪辑固化后的视频点播任务流处理，详见[上传指定任务流](https://cloud.tencent.com/document/product/266/9759)。仅 IsPersistence 为 1 时有效。
+        :type Procedure: str
+        """
+        self.StreamId = None
+        self.StartTime = None
+        self.EndTime = None
+        self.IsPersistence = None
+        self.ExpireTime = None
+        self.Procedure = None
+
+
+    def _deserialize(self, params):
+        self.StreamId = params.get("StreamId")
+        self.StartTime = params.get("StartTime")
+        self.EndTime = params.get("EndTime")
+        self.IsPersistence = params.get("IsPersistence")
+        self.ExpireTime = params.get("ExpireTime")
+        self.Procedure = params.get("Procedure")
+
+
+class LiveRealTimeClipResponse(AbstractModel):
+    """LiveRealTimeClip返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Url: 剪辑后的视频播放 URL。
+        :type Url: str
+        :param FileId: 剪辑固化后的视频的媒体文件的唯一标识。
+        :type FileId: str
+        :param VodTaskId: 剪辑固化后的视频任务流 ID。
+        :type VodTaskId: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Url = None
+        self.FileId = None
+        self.VodTaskId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Url = params.get("Url")
+        self.FileId = params.get("FileId")
+        self.VodTaskId = params.get("VodTaskId")
+        self.RequestId = params.get("RequestId")
+
+
 class MediaAnimatedGraphicsInfo(AbstractModel):
     """点播文件视频转动图结果信息
 

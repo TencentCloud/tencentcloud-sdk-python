@@ -25,16 +25,24 @@ class EvaluationRequest(AbstractModel):
         """
         :param SessionId: 图片唯一标识，一张图片一个SessionId；
         :type SessionId: str
-        :param Image: 图片数据，需要使用base64对图片的二进制数据进行编码；
+        :param Image: 图片数据，需要使用base64对图片的二进制数据进行编码，与url参数二者填一即可；
         :type Image: str
+        :param HcmAppid: 业务应用ID，与账号应用APPID无关，是用来方便客户管理服务的参数，新的 HcmAppId 可以在[控制台](https://console.cloud.tencent.com/hcm)【应用管理】下新建。
+        :type HcmAppid: str
+        :param Url: 图片url，与Image参数二者填一即可；
+        :type Url: str
         """
         self.SessionId = None
         self.Image = None
+        self.HcmAppid = None
+        self.Url = None
 
 
     def _deserialize(self, params):
         self.SessionId = params.get("SessionId")
         self.Image = params.get("Image")
+        self.HcmAppid = params.get("HcmAppid")
+        self.Url = params.get("Url")
 
 
 class EvaluationResponse(AbstractModel):

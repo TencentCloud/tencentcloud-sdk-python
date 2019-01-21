@@ -117,6 +117,335 @@ class AddLiveWatermarkResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class BindLiveDomainCertRequest(AbstractModel):
+    """BindLiveDomainCert请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param CertId: 证书Id。
+        :type CertId: int
+        :param DomainName: 播放域名。
+        :type DomainName: str
+        :param Status: 状态，0： 关闭  1：打开。
+        :type Status: int
+        """
+        self.CertId = None
+        self.DomainName = None
+        self.Status = None
+
+
+    def _deserialize(self, params):
+        self.CertId = params.get("CertId")
+        self.DomainName = params.get("DomainName")
+        self.Status = params.get("Status")
+
+
+class BindLiveDomainCertResponse(AbstractModel):
+    """BindLiveDomainCert返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class CallBackRuleInfo(AbstractModel):
+    """规则信息
+
+    """
+
+    def __init__(self):
+        """
+        :param CreateTime: 规则创建时间。
+        :type CreateTime: str
+        :param UpdateTime: 规则更新时间。
+        :type UpdateTime: str
+        :param TemplateId: 模板Id。
+        :type TemplateId: int
+        :param DomainName: 推流域名。
+        :type DomainName: str
+        :param AppName: 推流路径。
+        :type AppName: str
+        """
+        self.CreateTime = None
+        self.UpdateTime = None
+        self.TemplateId = None
+        self.DomainName = None
+        self.AppName = None
+
+
+    def _deserialize(self, params):
+        self.CreateTime = params.get("CreateTime")
+        self.UpdateTime = params.get("UpdateTime")
+        self.TemplateId = params.get("TemplateId")
+        self.DomainName = params.get("DomainName")
+        self.AppName = params.get("AppName")
+
+
+class CallBackTemplateInfo(AbstractModel):
+    """回调模板信息
+
+    """
+
+    def __init__(self):
+        """
+        :param TemplateId: 模板Id。
+        :type TemplateId: int
+        :param TemplateName: 模板名称。
+        :type TemplateName: str
+        :param Description: 描述信息。
+        :type Description: str
+        :param StreamBeginNotifyUrl: 开播回调URL。
+        :type StreamBeginNotifyUrl: str
+        :param StreamEndNotifyUrl: 断流回调URL。
+        :type StreamEndNotifyUrl: str
+        :param StreamMixNotifyUrl: 混流回调URL。
+        :type StreamMixNotifyUrl: str
+        :param RecordNotifyUrl: 录制回调URL。
+        :type RecordNotifyUrl: str
+        :param SnapshotNotifyUrl: 截图回调URL。
+        :type SnapshotNotifyUrl: str
+        :param PornCensorshipNotifyUrl: 鉴黄回调URL。
+        :type PornCensorshipNotifyUrl: str
+        """
+        self.TemplateId = None
+        self.TemplateName = None
+        self.Description = None
+        self.StreamBeginNotifyUrl = None
+        self.StreamEndNotifyUrl = None
+        self.StreamMixNotifyUrl = None
+        self.RecordNotifyUrl = None
+        self.SnapshotNotifyUrl = None
+        self.PornCensorshipNotifyUrl = None
+
+
+    def _deserialize(self, params):
+        self.TemplateId = params.get("TemplateId")
+        self.TemplateName = params.get("TemplateName")
+        self.Description = params.get("Description")
+        self.StreamBeginNotifyUrl = params.get("StreamBeginNotifyUrl")
+        self.StreamEndNotifyUrl = params.get("StreamEndNotifyUrl")
+        self.StreamMixNotifyUrl = params.get("StreamMixNotifyUrl")
+        self.RecordNotifyUrl = params.get("RecordNotifyUrl")
+        self.SnapshotNotifyUrl = params.get("SnapshotNotifyUrl")
+        self.PornCensorshipNotifyUrl = params.get("PornCensorshipNotifyUrl")
+
+
+class CertInfo(AbstractModel):
+    """证书信息
+
+    """
+
+    def __init__(self):
+        """
+        :param CertId: 证书Id。
+        :type CertId: int
+        :param CertName: 证书名称。
+        :type CertName: str
+        :param Description: 描述信息。
+        :type Description: str
+        :param CreateTime: 创建时间，UTC格式。
+        :type CreateTime: str
+        :param HttpsCrt: 证书内容。
+        :type HttpsCrt: str
+        :param CertType: 证书类型。
+0：腾讯云托管证书
+1：用户添加证书。
+        :type CertType: int
+        :param CertExpireTime: 证书过期时间，UTC格式。
+        :type CertExpireTime: str
+        :param DomainList: 使用此证书的域名列表。
+        :type DomainList: list of str
+        """
+        self.CertId = None
+        self.CertName = None
+        self.Description = None
+        self.CreateTime = None
+        self.HttpsCrt = None
+        self.CertType = None
+        self.CertExpireTime = None
+        self.DomainList = None
+
+
+    def _deserialize(self, params):
+        self.CertId = params.get("CertId")
+        self.CertName = params.get("CertName")
+        self.Description = params.get("Description")
+        self.CreateTime = params.get("CreateTime")
+        self.HttpsCrt = params.get("HttpsCrt")
+        self.CertType = params.get("CertType")
+        self.CertExpireTime = params.get("CertExpireTime")
+        self.DomainList = params.get("DomainList")
+
+
+class CreateLiveCallbackRuleRequest(AbstractModel):
+    """CreateLiveCallbackRule请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param DomainName: 推流域名。
+        :type DomainName: str
+        :param AppName: 推流路径。
+        :type AppName: str
+        :param TemplateId: 模板ID
+        :type TemplateId: int
+        """
+        self.DomainName = None
+        self.AppName = None
+        self.TemplateId = None
+
+
+    def _deserialize(self, params):
+        self.DomainName = params.get("DomainName")
+        self.AppName = params.get("AppName")
+        self.TemplateId = params.get("TemplateId")
+
+
+class CreateLiveCallbackRuleResponse(AbstractModel):
+    """CreateLiveCallbackRule返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class CreateLiveCallbackTemplateRequest(AbstractModel):
+    """CreateLiveCallbackTemplate请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param TemplateName: 模板名称。非空的字符串
+        :type TemplateName: str
+        :param Description: 描述信息。
+        :type Description: str
+        :param StreamBeginNotifyUrl: 开播回调URL。
+        :type StreamBeginNotifyUrl: str
+        :param StreamEndNotifyUrl: 断流回调URL。
+        :type StreamEndNotifyUrl: str
+        :param RecordNotifyUrl: 录制回调URL。
+        :type RecordNotifyUrl: str
+        :param SnapshotNotifyUrl: 截图回调URL。
+        :type SnapshotNotifyUrl: str
+        :param PornCensorshipNotifyUrl: 鉴黄回调URL。
+        :type PornCensorshipNotifyUrl: str
+        """
+        self.TemplateName = None
+        self.Description = None
+        self.StreamBeginNotifyUrl = None
+        self.StreamEndNotifyUrl = None
+        self.RecordNotifyUrl = None
+        self.SnapshotNotifyUrl = None
+        self.PornCensorshipNotifyUrl = None
+
+
+    def _deserialize(self, params):
+        self.TemplateName = params.get("TemplateName")
+        self.Description = params.get("Description")
+        self.StreamBeginNotifyUrl = params.get("StreamBeginNotifyUrl")
+        self.StreamEndNotifyUrl = params.get("StreamEndNotifyUrl")
+        self.RecordNotifyUrl = params.get("RecordNotifyUrl")
+        self.SnapshotNotifyUrl = params.get("SnapshotNotifyUrl")
+        self.PornCensorshipNotifyUrl = params.get("PornCensorshipNotifyUrl")
+
+
+class CreateLiveCallbackTemplateResponse(AbstractModel):
+    """CreateLiveCallbackTemplate返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param TemplateId: 模板Id。
+        :type TemplateId: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TemplateId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TemplateId = params.get("TemplateId")
+        self.RequestId = params.get("RequestId")
+
+
+class CreateLiveCertRequest(AbstractModel):
+    """CreateLiveCert请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param CertType: 证书类型。0-用户添加证书；1-腾讯云托管证书。
+        :type CertType: int
+        :param HttpsCrt: 证书内容，即公钥。
+        :type HttpsCrt: str
+        :param HttpsKey: 私钥。
+        :type HttpsKey: str
+        :param CertName: 证书名称。
+        :type CertName: str
+        :param Description: 描述。
+        :type Description: str
+        """
+        self.CertType = None
+        self.HttpsCrt = None
+        self.HttpsKey = None
+        self.CertName = None
+        self.Description = None
+
+
+    def _deserialize(self, params):
+        self.CertType = params.get("CertType")
+        self.HttpsCrt = params.get("HttpsCrt")
+        self.HttpsKey = params.get("HttpsKey")
+        self.CertName = params.get("CertName")
+        self.Description = params.get("Description")
+
+
+class CreateLiveCertResponse(AbstractModel):
+    """CreateLiveCert返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param CertId: 证书ID
+        :type CertId: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.CertId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.CertId = params.get("CertId")
+        self.RequestId = params.get("RequestId")
+
+
 class CreateLiveRecordRequest(AbstractModel):
     """CreateLiveRecord请求参数结构体
 
@@ -198,6 +527,431 @@ class CreateLiveRecordResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class CreateLiveRecordRuleRequest(AbstractModel):
+    """CreateLiveRecordRule请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param DomainName: 推流域名。
+        :type DomainName: str
+        :param AppName: 推流路径。
+        :type AppName: str
+        :param StreamName: 流名称。
+        :type StreamName: str
+        :param TemplateId: 模板Id。
+        :type TemplateId: int
+        """
+        self.DomainName = None
+        self.AppName = None
+        self.StreamName = None
+        self.TemplateId = None
+
+
+    def _deserialize(self, params):
+        self.DomainName = params.get("DomainName")
+        self.AppName = params.get("AppName")
+        self.StreamName = params.get("StreamName")
+        self.TemplateId = params.get("TemplateId")
+
+
+class CreateLiveRecordRuleResponse(AbstractModel):
+    """CreateLiveRecordRule返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class CreateLiveRecordTemplateRequest(AbstractModel):
+    """CreateLiveRecordTemplate请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param TemplateName: 模板名。非空的字符串
+        :type TemplateName: str
+        :param Description: 描述信息。
+        :type Description: str
+        :param FlvParam: Flv录制参数，开启Flv录制时设置。
+        :type FlvParam: :class:`tencentcloud.live.v20180801.models.RecordParam`
+        :param HlsParam: Hls录制参数，开启hls录制时设置。
+        :type HlsParam: :class:`tencentcloud.live.v20180801.models.RecordParam`
+        :param Mp4Param: Mp4录制参数，开启Mp4录制时设置。
+        :type Mp4Param: :class:`tencentcloud.live.v20180801.models.RecordParam`
+        :param AacParam: Aac录制参数，开启Aac录制时设置。
+        :type AacParam: :class:`tencentcloud.live.v20180801.models.RecordParam`
+        """
+        self.TemplateName = None
+        self.Description = None
+        self.FlvParam = None
+        self.HlsParam = None
+        self.Mp4Param = None
+        self.AacParam = None
+
+
+    def _deserialize(self, params):
+        self.TemplateName = params.get("TemplateName")
+        self.Description = params.get("Description")
+        if params.get("FlvParam") is not None:
+            self.FlvParam = RecordParam()
+            self.FlvParam._deserialize(params.get("FlvParam"))
+        if params.get("HlsParam") is not None:
+            self.HlsParam = RecordParam()
+            self.HlsParam._deserialize(params.get("HlsParam"))
+        if params.get("Mp4Param") is not None:
+            self.Mp4Param = RecordParam()
+            self.Mp4Param._deserialize(params.get("Mp4Param"))
+        if params.get("AacParam") is not None:
+            self.AacParam = RecordParam()
+            self.AacParam._deserialize(params.get("AacParam"))
+
+
+class CreateLiveRecordTemplateResponse(AbstractModel):
+    """CreateLiveRecordTemplate返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param TemplateId: 模板Id。
+        :type TemplateId: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TemplateId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TemplateId = params.get("TemplateId")
+        self.RequestId = params.get("RequestId")
+
+
+class CreateLiveSnapshotRuleRequest(AbstractModel):
+    """CreateLiveSnapshotRule请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param DomainName: 推流域名。
+        :type DomainName: str
+        :param AppName: 推流路径。
+        :type AppName: str
+        :param StreamName: 流名称。
+        :type StreamName: str
+        :param TemplateId: 模板Id。
+        :type TemplateId: int
+        """
+        self.DomainName = None
+        self.AppName = None
+        self.StreamName = None
+        self.TemplateId = None
+
+
+    def _deserialize(self, params):
+        self.DomainName = params.get("DomainName")
+        self.AppName = params.get("AppName")
+        self.StreamName = params.get("StreamName")
+        self.TemplateId = params.get("TemplateId")
+
+
+class CreateLiveSnapshotRuleResponse(AbstractModel):
+    """CreateLiveSnapshotRule返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class CreateLiveSnapshotTemplateRequest(AbstractModel):
+    """CreateLiveSnapshotTemplate请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param TemplateName: 模板名称。非空的字符串
+        :type TemplateName: str
+        :param CosAppId: Cos AppId。
+        :type CosAppId: int
+        :param CosBucket: Cos Bucket名称。
+        :type CosBucket: str
+        :param CosRegion: Cos地区。
+        :type CosRegion: str
+        :param Description: 描述信息。
+        :type Description: str
+        :param SnapshotInterval: 截图间隔，单位s，默认10s。
+        :type SnapshotInterval: int
+        :param Width: 截图宽度。默认：0（原始高）
+        :type Width: int
+        :param Height: 截图高度。默认：0（原始宽）
+        :type Height: int
+        :param PornFlag: 是否开启鉴黄，0：不开启，1：开启。默认：0.
+        :type PornFlag: int
+        """
+        self.TemplateName = None
+        self.CosAppId = None
+        self.CosBucket = None
+        self.CosRegion = None
+        self.Description = None
+        self.SnapshotInterval = None
+        self.Width = None
+        self.Height = None
+        self.PornFlag = None
+
+
+    def _deserialize(self, params):
+        self.TemplateName = params.get("TemplateName")
+        self.CosAppId = params.get("CosAppId")
+        self.CosBucket = params.get("CosBucket")
+        self.CosRegion = params.get("CosRegion")
+        self.Description = params.get("Description")
+        self.SnapshotInterval = params.get("SnapshotInterval")
+        self.Width = params.get("Width")
+        self.Height = params.get("Height")
+        self.PornFlag = params.get("PornFlag")
+
+
+class CreateLiveSnapshotTemplateResponse(AbstractModel):
+    """CreateLiveSnapshotTemplate返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param TemplateId: 模板Id。
+        :type TemplateId: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TemplateId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TemplateId = params.get("TemplateId")
+        self.RequestId = params.get("RequestId")
+
+
+class CreateLiveTranscodeRuleRequest(AbstractModel):
+    """CreateLiveTranscodeRule请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param DomainName: 推流域名。
+        :type DomainName: str
+        :param AppName: 推流路径。
+        :type AppName: str
+        :param StreamName: 流名称。
+        :type StreamName: str
+        :param TemplateId: 指定已有的模板Id。
+        :type TemplateId: int
+        """
+        self.DomainName = None
+        self.AppName = None
+        self.StreamName = None
+        self.TemplateId = None
+
+
+    def _deserialize(self, params):
+        self.DomainName = params.get("DomainName")
+        self.AppName = params.get("AppName")
+        self.StreamName = params.get("StreamName")
+        self.TemplateId = params.get("TemplateId")
+
+
+class CreateLiveTranscodeRuleResponse(AbstractModel):
+    """CreateLiveTranscodeRule返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class CreateLiveTranscodeTemplateRequest(AbstractModel):
+    """CreateLiveTranscodeTemplate请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param TemplateName: 模板名称，例：900 900p 仅支持字母和数字的组合。
+        :type TemplateName: str
+        :param VideoBitrate: 视频码率。
+        :type VideoBitrate: int
+        :param Vcodec: 视频编码：
+h264/h265。默认h264
+        :type Vcodec: str
+        :param Acodec: 音频编码：
+aac/mp3。默认原始音频格式
+        :type Acodec: str
+        :param AudioBitrate: 音频码率：默认0。0-500
+        :type AudioBitrate: int
+        :param Description: 模板描述。
+        :type Description: str
+        :param Width: 高，默认0。
+        :type Width: int
+        :param NeedVideo: 是否保留视频，0：否，1：是。默认1。
+        :type NeedVideo: int
+        :param NeedAudio: 是否保留音频，0：否，1：是。默认1。
+        :type NeedAudio: int
+        :param Height: 宽，默认0。
+        :type Height: int
+        :param Fps: 帧率，默认0。
+        :type Fps: int
+        :param Gop: 关键帧间隔，单位：秒。默认原始的间隔
+        :type Gop: int
+        :param Rotate: 是否旋转，0：否，1：是。默认0。
+        :type Rotate: int
+        :param Profile: 编码质量：
+baseline/main/high。默认baseline
+        :type Profile: str
+        :param BitrateToOrig: 是否不超过原始码率，0：否，1：是。默认0。
+        :type BitrateToOrig: int
+        :param HeightToOrig: 是否不超过原始高，0：否，1：是。默认0。
+        :type HeightToOrig: int
+        :param FpsToOrig: 是否不超过原始帧率，0：否，1：是。默认0。
+        :type FpsToOrig: int
+        """
+        self.TemplateName = None
+        self.VideoBitrate = None
+        self.Vcodec = None
+        self.Acodec = None
+        self.AudioBitrate = None
+        self.Description = None
+        self.Width = None
+        self.NeedVideo = None
+        self.NeedAudio = None
+        self.Height = None
+        self.Fps = None
+        self.Gop = None
+        self.Rotate = None
+        self.Profile = None
+        self.BitrateToOrig = None
+        self.HeightToOrig = None
+        self.FpsToOrig = None
+
+
+    def _deserialize(self, params):
+        self.TemplateName = params.get("TemplateName")
+        self.VideoBitrate = params.get("VideoBitrate")
+        self.Vcodec = params.get("Vcodec")
+        self.Acodec = params.get("Acodec")
+        self.AudioBitrate = params.get("AudioBitrate")
+        self.Description = params.get("Description")
+        self.Width = params.get("Width")
+        self.NeedVideo = params.get("NeedVideo")
+        self.NeedAudio = params.get("NeedAudio")
+        self.Height = params.get("Height")
+        self.Fps = params.get("Fps")
+        self.Gop = params.get("Gop")
+        self.Rotate = params.get("Rotate")
+        self.Profile = params.get("Profile")
+        self.BitrateToOrig = params.get("BitrateToOrig")
+        self.HeightToOrig = params.get("HeightToOrig")
+        self.FpsToOrig = params.get("FpsToOrig")
+
+
+class CreateLiveTranscodeTemplateResponse(AbstractModel):
+    """CreateLiveTranscodeTemplate返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param TemplateId: 模板Id。
+        :type TemplateId: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TemplateId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TemplateId = params.get("TemplateId")
+        self.RequestId = params.get("RequestId")
+
+
+class CreateLiveWatermarkRuleRequest(AbstractModel):
+    """CreateLiveWatermarkRule请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param DomainName: 推流域名。
+        :type DomainName: str
+        :param AppName: 推流路径。
+        :type AppName: str
+        :param StreamName: 流名称。
+        :type StreamName: str
+        :param TemplateId: 水印Id。
+        :type TemplateId: int
+        """
+        self.DomainName = None
+        self.AppName = None
+        self.StreamName = None
+        self.TemplateId = None
+
+
+    def _deserialize(self, params):
+        self.DomainName = params.get("DomainName")
+        self.AppName = params.get("AppName")
+        self.StreamName = params.get("StreamName")
+        self.TemplateId = params.get("TemplateId")
+
+
+class CreateLiveWatermarkRuleResponse(AbstractModel):
+    """CreateLiveWatermarkRule返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class CreatePullStreamConfigRequest(AbstractModel):
     """CreatePullStreamConfig请求参数结构体
 
@@ -263,6 +1017,112 @@ class CreatePullStreamConfigResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DeleteLiveCallbackRuleRequest(AbstractModel):
+    """DeleteLiveCallbackRule请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param DomainName: 推流域名。
+        :type DomainName: str
+        :param AppName: 推流路径。
+        :type AppName: str
+        """
+        self.DomainName = None
+        self.AppName = None
+
+
+    def _deserialize(self, params):
+        self.DomainName = params.get("DomainName")
+        self.AppName = params.get("AppName")
+
+
+class DeleteLiveCallbackRuleResponse(AbstractModel):
+    """DeleteLiveCallbackRule返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class DeleteLiveCallbackTemplateRequest(AbstractModel):
+    """DeleteLiveCallbackTemplate请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param TemplateId: 模板Id。
+        :type TemplateId: int
+        """
+        self.TemplateId = None
+
+
+    def _deserialize(self, params):
+        self.TemplateId = params.get("TemplateId")
+
+
+class DeleteLiveCallbackTemplateResponse(AbstractModel):
+    """DeleteLiveCallbackTemplate返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class DeleteLiveCertRequest(AbstractModel):
+    """DeleteLiveCert请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param CertId: 证书Id。
+        :type CertId: int
+        """
+        self.CertId = None
+
+
+    def _deserialize(self, params):
+        self.CertId = params.get("CertId")
+
+
+class DeleteLiveCertResponse(AbstractModel):
+    """DeleteLiveCert返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class DeleteLiveRecordRequest(AbstractModel):
     """DeleteLiveRecord请求参数结构体
 
@@ -286,6 +1146,238 @@ class DeleteLiveRecordRequest(AbstractModel):
 
 class DeleteLiveRecordResponse(AbstractModel):
     """DeleteLiveRecord返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class DeleteLiveRecordRuleRequest(AbstractModel):
+    """DeleteLiveRecordRule请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param DomainName: 推流域名。域名+AppName+StreamName唯一标识单个转码规则，如需删除需要强匹配，比如AppName为空也需要传空字符串进行强匹配
+        :type DomainName: str
+        :param AppName: 推流路径。域名+AppName+StreamName唯一标识单个转码规则，如需删除需要强匹配，比如AppName为空也需要传空字符串进行强匹配
+        :type AppName: str
+        :param StreamName: 流名称。域名+AppName+StreamName唯一标识单个转码规则，如需删除需要强匹配，比如AppName为空也需要传空字符串进行强匹配
+        :type StreamName: str
+        """
+        self.DomainName = None
+        self.AppName = None
+        self.StreamName = None
+
+
+    def _deserialize(self, params):
+        self.DomainName = params.get("DomainName")
+        self.AppName = params.get("AppName")
+        self.StreamName = params.get("StreamName")
+
+
+class DeleteLiveRecordRuleResponse(AbstractModel):
+    """DeleteLiveRecordRule返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class DeleteLiveRecordTemplateRequest(AbstractModel):
+    """DeleteLiveRecordTemplate请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param TemplateId: 模板Id。
+        :type TemplateId: int
+        """
+        self.TemplateId = None
+
+
+    def _deserialize(self, params):
+        self.TemplateId = params.get("TemplateId")
+
+
+class DeleteLiveRecordTemplateResponse(AbstractModel):
+    """DeleteLiveRecordTemplate返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class DeleteLiveSnapshotRuleRequest(AbstractModel):
+    """DeleteLiveSnapshotRule请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param DomainName: 推流域名。
+        :type DomainName: str
+        :param AppName: 推流路径。
+        :type AppName: str
+        :param StreamName: 流名称。
+        :type StreamName: str
+        """
+        self.DomainName = None
+        self.AppName = None
+        self.StreamName = None
+
+
+    def _deserialize(self, params):
+        self.DomainName = params.get("DomainName")
+        self.AppName = params.get("AppName")
+        self.StreamName = params.get("StreamName")
+
+
+class DeleteLiveSnapshotRuleResponse(AbstractModel):
+    """DeleteLiveSnapshotRule返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class DeleteLiveSnapshotTemplateRequest(AbstractModel):
+    """DeleteLiveSnapshotTemplate请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param TemplateId: 模板Id。
+        :type TemplateId: int
+        """
+        self.TemplateId = None
+
+
+    def _deserialize(self, params):
+        self.TemplateId = params.get("TemplateId")
+
+
+class DeleteLiveSnapshotTemplateResponse(AbstractModel):
+    """DeleteLiveSnapshotTemplate返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class DeleteLiveTranscodeRuleRequest(AbstractModel):
+    """DeleteLiveTranscodeRule请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param DomainName: 推流域名。域名维度转码，域名+AppName+StreamName唯一标识单个转码规则，如需删除需要强匹配，比如AppName为空也需要传空字符串进行强匹配
+        :type DomainName: str
+        :param AppName: 推流路径。域名+AppName+StreamName+TemplateId唯一标识单个转码规则，如需删除需要强匹配，比如AppName为空也需要传空字符串进行强匹配
+        :type AppName: str
+        :param StreamName: 流名称。域名+AppName+StreamName+TemplateId唯一标识单个转码规则，如需删除需要强匹配，比如AppName为空也需要传空字符串进行强匹配
+        :type StreamName: str
+        :param TemplateId: 模板ID域名+AppName+StreamName+TemplateId唯一标识单个转码规则，如需删除需要强匹配，比如AppName为空也需要传空字符串进行强匹配
+        :type TemplateId: int
+        """
+        self.DomainName = None
+        self.AppName = None
+        self.StreamName = None
+        self.TemplateId = None
+
+
+    def _deserialize(self, params):
+        self.DomainName = params.get("DomainName")
+        self.AppName = params.get("AppName")
+        self.StreamName = params.get("StreamName")
+        self.TemplateId = params.get("TemplateId")
+
+
+class DeleteLiveTranscodeRuleResponse(AbstractModel):
+    """DeleteLiveTranscodeRule返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class DeleteLiveTranscodeTemplateRequest(AbstractModel):
+    """DeleteLiveTranscodeTemplate请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param TemplateId: 模板Id。
+        :type TemplateId: int
+        """
+        self.TemplateId = None
+
+
+    def _deserialize(self, params):
+        self.TemplateId = params.get("TemplateId")
+
+
+class DeleteLiveTranscodeTemplateResponse(AbstractModel):
+    """DeleteLiveTranscodeTemplate返回参数结构体
 
     """
 
@@ -335,6 +1427,48 @@ class DeleteLiveWatermarkResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DeleteLiveWatermarkRuleRequest(AbstractModel):
+    """DeleteLiveWatermarkRule请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param DomainName: 推流域名。
+        :type DomainName: str
+        :param AppName: 推流路径。
+        :type AppName: str
+        :param StreamName: 流名称。
+        :type StreamName: str
+        """
+        self.DomainName = None
+        self.AppName = None
+        self.StreamName = None
+
+
+    def _deserialize(self, params):
+        self.DomainName = params.get("DomainName")
+        self.AppName = params.get("AppName")
+        self.StreamName = params.get("StreamName")
+
+
+class DeleteLiveWatermarkRuleResponse(AbstractModel):
+    """DeleteLiveWatermarkRule返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class DeletePullStreamConfigRequest(AbstractModel):
     """DeletePullStreamConfig请求参数结构体
 
@@ -366,6 +1500,222 @@ class DeletePullStreamConfigResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeLiveCallbackRulesRequest(AbstractModel):
+    """DescribeLiveCallbackRules请求参数结构体
+
+    """
+
+
+class DescribeLiveCallbackRulesResponse(AbstractModel):
+    """DescribeLiveCallbackRules返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Rules: 规则信息列表。
+        :type Rules: list of CallBackRuleInfo
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Rules = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Rules") is not None:
+            self.Rules = []
+            for item in params.get("Rules"):
+                obj = CallBackRuleInfo()
+                obj._deserialize(item)
+                self.Rules.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeLiveCallbackTemplateRequest(AbstractModel):
+    """DescribeLiveCallbackTemplate请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param TemplateId: 模板Id。
+        :type TemplateId: int
+        """
+        self.TemplateId = None
+
+
+    def _deserialize(self, params):
+        self.TemplateId = params.get("TemplateId")
+
+
+class DescribeLiveCallbackTemplateResponse(AbstractModel):
+    """DescribeLiveCallbackTemplate返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Template: 回调模板信息。
+        :type Template: :class:`tencentcloud.live.v20180801.models.CallBackTemplateInfo`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Template = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Template") is not None:
+            self.Template = CallBackTemplateInfo()
+            self.Template._deserialize(params.get("Template"))
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeLiveCallbackTemplatesRequest(AbstractModel):
+    """DescribeLiveCallbackTemplates请求参数结构体
+
+    """
+
+
+class DescribeLiveCallbackTemplatesResponse(AbstractModel):
+    """DescribeLiveCallbackTemplates返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Templates: 模板信息列表。
+        :type Templates: list of CallBackTemplateInfo
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Templates = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Templates") is not None:
+            self.Templates = []
+            for item in params.get("Templates"):
+                obj = CallBackTemplateInfo()
+                obj._deserialize(item)
+                self.Templates.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeLiveCertRequest(AbstractModel):
+    """DescribeLiveCert请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param CertId: 证书Id。
+        :type CertId: int
+        """
+        self.CertId = None
+
+
+    def _deserialize(self, params):
+        self.CertId = params.get("CertId")
+
+
+class DescribeLiveCertResponse(AbstractModel):
+    """DescribeLiveCert返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param CertInfo: 证书信息。
+        :type CertInfo: :class:`tencentcloud.live.v20180801.models.CertInfo`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.CertInfo = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("CertInfo") is not None:
+            self.CertInfo = CertInfo()
+            self.CertInfo._deserialize(params.get("CertInfo"))
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeLiveCertsRequest(AbstractModel):
+    """DescribeLiveCerts请求参数结构体
+
+    """
+
+
+class DescribeLiveCertsResponse(AbstractModel):
+    """DescribeLiveCerts返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param CertInfoSet: 证书信息列表。
+        :type CertInfoSet: list of CertInfo
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.CertInfoSet = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("CertInfoSet") is not None:
+            self.CertInfoSet = []
+            for item in params.get("CertInfoSet"):
+                obj = CertInfo()
+                obj._deserialize(item)
+                self.CertInfoSet.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeLiveDomainCertRequest(AbstractModel):
+    """DescribeLiveDomainCert请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param DomainName: 播放域名。
+        :type DomainName: str
+        """
+        self.DomainName = None
+
+
+    def _deserialize(self, params):
+        self.DomainName = params.get("DomainName")
+
+
+class DescribeLiveDomainCertResponse(AbstractModel):
+    """DescribeLiveDomainCert返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param DomainCertInfo: 证书信息。
+        :type DomainCertInfo: :class:`tencentcloud.live.v20180801.models.DomainCertInfo`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.DomainCertInfo = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("DomainCertInfo") is not None:
+            self.DomainCertInfo = DomainCertInfo()
+            self.DomainCertInfo._deserialize(params.get("DomainCertInfo"))
         self.RequestId = params.get("RequestId")
 
 
@@ -449,6 +1799,214 @@ class DescribeLivePushAuthKeyResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeLiveRecordRulesRequest(AbstractModel):
+    """DescribeLiveRecordRules请求参数结构体
+
+    """
+
+
+class DescribeLiveRecordRulesResponse(AbstractModel):
+    """DescribeLiveRecordRules返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Rules: 规则列表。
+        :type Rules: list of RuleInfo
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Rules = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Rules") is not None:
+            self.Rules = []
+            for item in params.get("Rules"):
+                obj = RuleInfo()
+                obj._deserialize(item)
+                self.Rules.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeLiveRecordTemplateRequest(AbstractModel):
+    """DescribeLiveRecordTemplate请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param TemplateId: 模板Id。
+        :type TemplateId: int
+        """
+        self.TemplateId = None
+
+
+    def _deserialize(self, params):
+        self.TemplateId = params.get("TemplateId")
+
+
+class DescribeLiveRecordTemplateResponse(AbstractModel):
+    """DescribeLiveRecordTemplate返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Template: 录制模板信息。
+        :type Template: :class:`tencentcloud.live.v20180801.models.RecordTemplateInfo`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Template = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Template") is not None:
+            self.Template = RecordTemplateInfo()
+            self.Template._deserialize(params.get("Template"))
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeLiveRecordTemplatesRequest(AbstractModel):
+    """DescribeLiveRecordTemplates请求参数结构体
+
+    """
+
+
+class DescribeLiveRecordTemplatesResponse(AbstractModel):
+    """DescribeLiveRecordTemplates返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Templates: 录制模板信息列表。
+        :type Templates: list of RecordTemplateInfo
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Templates = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Templates") is not None:
+            self.Templates = []
+            for item in params.get("Templates"):
+                obj = RecordTemplateInfo()
+                obj._deserialize(item)
+                self.Templates.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeLiveSnapshotRulesRequest(AbstractModel):
+    """DescribeLiveSnapshotRules请求参数结构体
+
+    """
+
+
+class DescribeLiveSnapshotRulesResponse(AbstractModel):
+    """DescribeLiveSnapshotRules返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Rules: 规则列表。
+        :type Rules: list of RuleInfo
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Rules = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Rules") is not None:
+            self.Rules = []
+            for item in params.get("Rules"):
+                obj = RuleInfo()
+                obj._deserialize(item)
+                self.Rules.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeLiveSnapshotTemplateRequest(AbstractModel):
+    """DescribeLiveSnapshotTemplate请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param TemplateId: 模板Id。
+        :type TemplateId: int
+        """
+        self.TemplateId = None
+
+
+    def _deserialize(self, params):
+        self.TemplateId = params.get("TemplateId")
+
+
+class DescribeLiveSnapshotTemplateResponse(AbstractModel):
+    """DescribeLiveSnapshotTemplate返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Template: 截图模板信息。
+        :type Template: :class:`tencentcloud.live.v20180801.models.SnapshotTemplateInfo`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Template = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Template") is not None:
+            self.Template = SnapshotTemplateInfo()
+            self.Template._deserialize(params.get("Template"))
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeLiveSnapshotTemplatesRequest(AbstractModel):
+    """DescribeLiveSnapshotTemplates请求参数结构体
+
+    """
+
+
+class DescribeLiveSnapshotTemplatesResponse(AbstractModel):
+    """DescribeLiveSnapshotTemplates返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Templates: 截图模板列表。
+        :type Templates: list of SnapshotTemplateInfo
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Templates = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Templates") is not None:
+            self.Templates = []
+            for item in params.get("Templates"):
+                obj = SnapshotTemplateInfo()
+                obj._deserialize(item)
+                self.Templates.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeLiveStreamOnlineInfoRequest(AbstractModel):
     """DescribeLiveStreamOnlineInfo请求参数结构体
 
@@ -457,14 +2015,14 @@ class DescribeLiveStreamOnlineInfoRequest(AbstractModel):
     def __init__(self):
         """
         :param PageNum: 取得第几页。
-默认值：1
+默认值：1。
         :type PageNum: int
         :param PageSize: 分页大小。
 最大值：100。
-取值范围：10~100 之前的任意整数。
-默认值：10
+取值范围：1~100 之前的任意整数。
+默认值：10。
         :type PageSize: int
-        :param Status: 0:未开始推流 1:正在推流 2:服务出错 3:已关闭。
+        :param Status: 0:未开始推流 1:正在推流
         :type Status: int
         :param StreamName: 流名称。
         :type StreamName: str
@@ -491,13 +2049,13 @@ class DescribeLiveStreamOnlineInfoResponse(AbstractModel):
         """
         :param PageNum: 分页的页码。
         :type PageNum: int
-        :param PageSize: 每页大小
+        :param PageSize: 每页大小。
         :type PageSize: int
         :param TotalNum: 符合条件的总个数。
         :type TotalNum: int
         :param TotalPage: 总页数。
         :type TotalPage: int
-        :param StreamInfoList: 流信息列表
+        :param StreamInfoList: 流信息列表。
         :type StreamInfoList: list of StreamInfo
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -531,7 +2089,7 @@ class DescribeLiveStreamOnlineListRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param DomainName: 您的加速域名。
+        :param DomainName: 推流域名。
         :type DomainName: str
         :param AppName: 应用名称。
         :type AppName: str
@@ -539,13 +2097,16 @@ class DescribeLiveStreamOnlineListRequest(AbstractModel):
         :type PageNum: int
         :param PageSize: 每页大小，最大100。 
 取值：1~100之前的任意整数。
-默认值：10
+默认值：10。
         :type PageSize: int
+        :param StreamName: 流名称，精确查询。
+        :type StreamName: str
         """
         self.DomainName = None
         self.AppName = None
         self.PageNum = None
         self.PageSize = None
+        self.StreamName = None
 
 
     def _deserialize(self, params):
@@ -553,6 +2114,7 @@ class DescribeLiveStreamOnlineListRequest(AbstractModel):
         self.AppName = params.get("AppName")
         self.PageNum = params.get("PageNum")
         self.PageSize = params.get("PageSize")
+        self.StreamName = params.get("StreamName")
 
 
 class DescribeLiveStreamOnlineListResponse(AbstractModel):
@@ -570,7 +2132,7 @@ class DescribeLiveStreamOnlineListResponse(AbstractModel):
         :type PageNum: int
         :param PageSize: 每页显示的条数。
         :type PageSize: int
-        :param OnlineInfo: 正在推送流的信息列表
+        :param OnlineInfo: 正在推送流的信息列表。
         :type OnlineInfo: list of StreamOnlineInfo
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -617,13 +2179,12 @@ UTC 格式，例如：2016-06-29T19:00:00Z。
         :param AppName: 直播流所属应用名称。
         :type AppName: str
         :param PageNum: 取得第几页。
-默认值：1
+默认值：1。
         :type PageNum: int
         :param PageSize: 分页大小。
-
 最大值：100。
 取值范围：1~100 之前的任意整数。
-默认值：10
+默认值：10。
         :type PageSize: int
         """
         self.DomainName = None
@@ -734,6 +2295,182 @@ forbid：禁播。
         self.RequestId = params.get("RequestId")
 
 
+class DescribeLiveTranscodeRulesRequest(AbstractModel):
+    """DescribeLiveTranscodeRules请求参数结构体
+
+    """
+
+
+class DescribeLiveTranscodeRulesResponse(AbstractModel):
+    """DescribeLiveTranscodeRules返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Rules: 转码规则列表。
+        :type Rules: list of RuleInfo
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Rules = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Rules") is not None:
+            self.Rules = []
+            for item in params.get("Rules"):
+                obj = RuleInfo()
+                obj._deserialize(item)
+                self.Rules.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeLiveTranscodeTemplateRequest(AbstractModel):
+    """DescribeLiveTranscodeTemplate请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param TemplateId: 模板Id。
+        :type TemplateId: int
+        """
+        self.TemplateId = None
+
+
+    def _deserialize(self, params):
+        self.TemplateId = params.get("TemplateId")
+
+
+class DescribeLiveTranscodeTemplateResponse(AbstractModel):
+    """DescribeLiveTranscodeTemplate返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Template: 模板信息。
+        :type Template: :class:`tencentcloud.live.v20180801.models.TemplateInfo`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Template = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Template") is not None:
+            self.Template = TemplateInfo()
+            self.Template._deserialize(params.get("Template"))
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeLiveTranscodeTemplatesRequest(AbstractModel):
+    """DescribeLiveTranscodeTemplates请求参数结构体
+
+    """
+
+
+class DescribeLiveTranscodeTemplatesResponse(AbstractModel):
+    """DescribeLiveTranscodeTemplates返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Templates: 转码模板列表。
+        :type Templates: list of TemplateInfo
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Templates = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Templates") is not None:
+            self.Templates = []
+            for item in params.get("Templates"):
+                obj = TemplateInfo()
+                obj._deserialize(item)
+                self.Templates.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeLiveWatermarkRequest(AbstractModel):
+    """DescribeLiveWatermark请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param WatermarkId: 水印ID。
+        :type WatermarkId: int
+        """
+        self.WatermarkId = None
+
+
+    def _deserialize(self, params):
+        self.WatermarkId = params.get("WatermarkId")
+
+
+class DescribeLiveWatermarkResponse(AbstractModel):
+    """DescribeLiveWatermark返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Watermark: 水印信息。
+        :type Watermark: :class:`tencentcloud.live.v20180801.models.WatermarkInfo`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Watermark = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Watermark") is not None:
+            self.Watermark = WatermarkInfo()
+            self.Watermark._deserialize(params.get("Watermark"))
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeLiveWatermarkRulesRequest(AbstractModel):
+    """DescribeLiveWatermarkRules请求参数结构体
+
+    """
+
+
+class DescribeLiveWatermarkRulesResponse(AbstractModel):
+    """DescribeLiveWatermarkRules返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Rules: 水印规则列表。
+        :type Rules: list of RuleInfo
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Rules = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Rules") is not None:
+            self.Rules = []
+            for item in params.get("Rules"):
+                obj = RuleInfo()
+                obj._deserialize(item)
+                self.Rules.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeLiveWatermarksRequest(AbstractModel):
     """DescribeLiveWatermarks请求参数结构体
 
@@ -813,6 +2550,57 @@ class DescribePullStreamConfigsResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DomainCertInfo(AbstractModel):
+    """域名证书信息
+
+    """
+
+    def __init__(self):
+        """
+        :param CertId: 证书Id。
+        :type CertId: int
+        :param CertName: 证书名称。
+        :type CertName: str
+        :param Description: 描述信息。
+        :type Description: str
+        :param CreateTime: 创建时间，UTC格式。
+        :type CreateTime: str
+        :param HttpsCrt: 证书内容。
+        :type HttpsCrt: str
+        :param CertType: 证书类型。
+0：腾讯云托管证书
+1：用户添加证书。
+        :type CertType: int
+        :param CertExpireTime: 证书过期时间，UTC格式。
+        :type CertExpireTime: str
+        :param DomainName: 使用此证书的域名名称。
+        :type DomainName: str
+        :param Status: 证书状态
+        :type Status: int
+        """
+        self.CertId = None
+        self.CertName = None
+        self.Description = None
+        self.CreateTime = None
+        self.HttpsCrt = None
+        self.CertType = None
+        self.CertExpireTime = None
+        self.DomainName = None
+        self.Status = None
+
+
+    def _deserialize(self, params):
+        self.CertId = params.get("CertId")
+        self.CertName = params.get("CertName")
+        self.Description = params.get("Description")
+        self.CreateTime = params.get("CreateTime")
+        self.HttpsCrt = params.get("HttpsCrt")
+        self.CertType = params.get("CertType")
+        self.CertExpireTime = params.get("CertExpireTime")
+        self.DomainName = params.get("DomainName")
+        self.Status = params.get("Status")
+
+
 class DropLiveStreamRequest(AbstractModel):
     """DropLiveStream请求参数结构体
 
@@ -887,6 +2675,164 @@ class ForbidLiveStreamRequest(AbstractModel):
 
 class ForbidLiveStreamResponse(AbstractModel):
     """ForbidLiveStream返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class ModifyLiveCallbackTemplateRequest(AbstractModel):
+    """ModifyLiveCallbackTemplate请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param TemplateId: 模板Id。
+        :type TemplateId: int
+        :param TemplateName: 模板名称。
+        :type TemplateName: str
+        :param Description: 描述信息。
+        :type Description: str
+        :param StreamBeginNotifyUrl: 开播回调URL。
+        :type StreamBeginNotifyUrl: str
+        :param StreamEndNotifyUrl: 断流回调URL。
+        :type StreamEndNotifyUrl: str
+        :param RecordNotifyUrl: 录制回调URL。
+        :type RecordNotifyUrl: str
+        :param SnapshotNotifyUrl: 截图回调URL。
+        :type SnapshotNotifyUrl: str
+        :param PornCensorshipNotifyUrl: 鉴黄回调URL。
+        :type PornCensorshipNotifyUrl: str
+        """
+        self.TemplateId = None
+        self.TemplateName = None
+        self.Description = None
+        self.StreamBeginNotifyUrl = None
+        self.StreamEndNotifyUrl = None
+        self.RecordNotifyUrl = None
+        self.SnapshotNotifyUrl = None
+        self.PornCensorshipNotifyUrl = None
+
+
+    def _deserialize(self, params):
+        self.TemplateId = params.get("TemplateId")
+        self.TemplateName = params.get("TemplateName")
+        self.Description = params.get("Description")
+        self.StreamBeginNotifyUrl = params.get("StreamBeginNotifyUrl")
+        self.StreamEndNotifyUrl = params.get("StreamEndNotifyUrl")
+        self.RecordNotifyUrl = params.get("RecordNotifyUrl")
+        self.SnapshotNotifyUrl = params.get("SnapshotNotifyUrl")
+        self.PornCensorshipNotifyUrl = params.get("PornCensorshipNotifyUrl")
+
+
+class ModifyLiveCallbackTemplateResponse(AbstractModel):
+    """ModifyLiveCallbackTemplate返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class ModifyLiveCertRequest(AbstractModel):
+    """ModifyLiveCert请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param CertId: 证书Id。
+        :type CertId: str
+        :param CertType: 证书类型。0-用户添加证书；1-腾讯云托管证书。
+        :type CertType: int
+        :param CertName: 证书名称。
+        :type CertName: str
+        :param HttpsCrt: 证书内容，即公钥。
+        :type HttpsCrt: str
+        :param HttpsKey: 私钥。
+        :type HttpsKey: str
+        :param Description: 描述信息。
+        :type Description: str
+        """
+        self.CertId = None
+        self.CertType = None
+        self.CertName = None
+        self.HttpsCrt = None
+        self.HttpsKey = None
+        self.Description = None
+
+
+    def _deserialize(self, params):
+        self.CertId = params.get("CertId")
+        self.CertType = params.get("CertType")
+        self.CertName = params.get("CertName")
+        self.HttpsCrt = params.get("HttpsCrt")
+        self.HttpsKey = params.get("HttpsKey")
+        self.Description = params.get("Description")
+
+
+class ModifyLiveCertResponse(AbstractModel):
+    """ModifyLiveCert返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class ModifyLiveDomainCertRequest(AbstractModel):
+    """ModifyLiveDomainCert请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param DomainName: 播放域名。
+        :type DomainName: str
+        :param CertId: 证书Id。
+        :type CertId: int
+        :param Status: 状态，0：关闭  1：打开。
+        :type Status: int
+        """
+        self.DomainName = None
+        self.CertId = None
+        self.Status = None
+
+
+    def _deserialize(self, params):
+        self.DomainName = params.get("DomainName")
+        self.CertId = params.get("CertId")
+        self.Status = params.get("Status")
+
+
+class ModifyLiveDomainCertResponse(AbstractModel):
+    """ModifyLiveDomainCert返回参数结构体
 
     """
 
@@ -987,6 +2933,243 @@ class ModifyLivePushAuthKeyRequest(AbstractModel):
 
 class ModifyLivePushAuthKeyResponse(AbstractModel):
     """ModifyLivePushAuthKey返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class ModifyLiveRecordTemplateRequest(AbstractModel):
+    """ModifyLiveRecordTemplate请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param TemplateId: 模板Id。
+        :type TemplateId: int
+        :param TemplateName: 模板名称。
+        :type TemplateName: str
+        :param Description: 描述信息。
+        :type Description: str
+        :param FlvParam: Flv录制参数，开启Flv录制时设置。
+        :type FlvParam: :class:`tencentcloud.live.v20180801.models.RecordParam`
+        :param HlsParam: Hls录制参数，开启hls录制时设置。
+        :type HlsParam: :class:`tencentcloud.live.v20180801.models.RecordParam`
+        :param Mp4Param: Mp4录制参数，开启Mp4录制时设置。
+        :type Mp4Param: :class:`tencentcloud.live.v20180801.models.RecordParam`
+        :param AacParam: Aac录制参数，开启Aac录制时设置。
+        :type AacParam: :class:`tencentcloud.live.v20180801.models.RecordParam`
+        """
+        self.TemplateId = None
+        self.TemplateName = None
+        self.Description = None
+        self.FlvParam = None
+        self.HlsParam = None
+        self.Mp4Param = None
+        self.AacParam = None
+
+
+    def _deserialize(self, params):
+        self.TemplateId = params.get("TemplateId")
+        self.TemplateName = params.get("TemplateName")
+        self.Description = params.get("Description")
+        if params.get("FlvParam") is not None:
+            self.FlvParam = RecordParam()
+            self.FlvParam._deserialize(params.get("FlvParam"))
+        if params.get("HlsParam") is not None:
+            self.HlsParam = RecordParam()
+            self.HlsParam._deserialize(params.get("HlsParam"))
+        if params.get("Mp4Param") is not None:
+            self.Mp4Param = RecordParam()
+            self.Mp4Param._deserialize(params.get("Mp4Param"))
+        if params.get("AacParam") is not None:
+            self.AacParam = RecordParam()
+            self.AacParam._deserialize(params.get("AacParam"))
+
+
+class ModifyLiveRecordTemplateResponse(AbstractModel):
+    """ModifyLiveRecordTemplate返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class ModifyLiveSnapshotTemplateRequest(AbstractModel):
+    """ModifyLiveSnapshotTemplate请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param TemplateId: 模板Id。
+        :type TemplateId: int
+        :param TemplateName: 模板名称。
+        :type TemplateName: str
+        :param Description: 描述信息。
+        :type Description: str
+        :param SnapshotInterval: 截图时间间隔
+        :type SnapshotInterval: int
+        :param Width: 截图宽度。
+        :type Width: int
+        :param Height: 截图高度。
+        :type Height: int
+        :param PornFlag: 是否开启鉴黄，0：不开启，1：开启。
+        :type PornFlag: int
+        :param CosAppId: Cos AppId。
+        :type CosAppId: int
+        :param CosBucket: Cos Bucket名称。
+        :type CosBucket: str
+        :param CosRegion: Cos 地域。
+        :type CosRegion: str
+        """
+        self.TemplateId = None
+        self.TemplateName = None
+        self.Description = None
+        self.SnapshotInterval = None
+        self.Width = None
+        self.Height = None
+        self.PornFlag = None
+        self.CosAppId = None
+        self.CosBucket = None
+        self.CosRegion = None
+
+
+    def _deserialize(self, params):
+        self.TemplateId = params.get("TemplateId")
+        self.TemplateName = params.get("TemplateName")
+        self.Description = params.get("Description")
+        self.SnapshotInterval = params.get("SnapshotInterval")
+        self.Width = params.get("Width")
+        self.Height = params.get("Height")
+        self.PornFlag = params.get("PornFlag")
+        self.CosAppId = params.get("CosAppId")
+        self.CosBucket = params.get("CosBucket")
+        self.CosRegion = params.get("CosRegion")
+
+
+class ModifyLiveSnapshotTemplateResponse(AbstractModel):
+    """ModifyLiveSnapshotTemplate返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class ModifyLiveTranscodeTemplateRequest(AbstractModel):
+    """ModifyLiveTranscodeTemplate请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param TemplateId: 模板Id。
+        :type TemplateId: int
+        :param Vcodec: 视频编码：
+h264/h265。
+        :type Vcodec: str
+        :param Acodec: 音频编码：
+aac/mp3。
+        :type Acodec: str
+        :param AudioBitrate: 音频码率，默认0。0-500
+        :type AudioBitrate: int
+        :param Description: 模板描述。
+        :type Description: str
+        :param VideoBitrate: 视频码率。100-8000
+        :type VideoBitrate: int
+        :param Width: 宽。0-3000
+        :type Width: int
+        :param NeedVideo: 是否保留视频，0：否，1：是。默认1。
+        :type NeedVideo: int
+        :param NeedAudio: 是否保留音频，0：否，1：是。默认1。
+        :type NeedAudio: int
+        :param Height: 高。0-3000
+        :type Height: int
+        :param Fps: 帧率。0-200
+        :type Fps: int
+        :param Gop: 关键帧间隔，单位：秒。0-50
+        :type Gop: int
+        :param Rotate: 旋转角度。0 90 180 270
+        :type Rotate: int
+        :param Profile: 编码质量：
+baseline/main/high。
+        :type Profile: str
+        :param BitrateToOrig: 是否不超过原始码率。0：否，1：是。默认0。
+        :type BitrateToOrig: int
+        :param HeightToOrig: 是否不超过原始高。0：否，1：是。默认0。
+        :type HeightToOrig: int
+        :param FpsToOrig: 是否不超过原始帧率。0：否，1：是。默认0。
+        :type FpsToOrig: int
+        """
+        self.TemplateId = None
+        self.Vcodec = None
+        self.Acodec = None
+        self.AudioBitrate = None
+        self.Description = None
+        self.VideoBitrate = None
+        self.Width = None
+        self.NeedVideo = None
+        self.NeedAudio = None
+        self.Height = None
+        self.Fps = None
+        self.Gop = None
+        self.Rotate = None
+        self.Profile = None
+        self.BitrateToOrig = None
+        self.HeightToOrig = None
+        self.FpsToOrig = None
+
+
+    def _deserialize(self, params):
+        self.TemplateId = params.get("TemplateId")
+        self.Vcodec = params.get("Vcodec")
+        self.Acodec = params.get("Acodec")
+        self.AudioBitrate = params.get("AudioBitrate")
+        self.Description = params.get("Description")
+        self.VideoBitrate = params.get("VideoBitrate")
+        self.Width = params.get("Width")
+        self.NeedVideo = params.get("NeedVideo")
+        self.NeedAudio = params.get("NeedAudio")
+        self.Height = params.get("Height")
+        self.Fps = params.get("Fps")
+        self.Gop = params.get("Gop")
+        self.Rotate = params.get("Rotate")
+        self.Profile = params.get("Profile")
+        self.BitrateToOrig = params.get("BitrateToOrig")
+        self.HeightToOrig = params.get("HeightToOrig")
+        self.FpsToOrig = params.get("FpsToOrig")
+
+
+class ModifyLiveTranscodeTemplateResponse(AbstractModel):
+    """ModifyLiveTranscodeTemplate返回参数结构体
 
     """
 
@@ -1240,6 +3423,85 @@ class PushAuthKeyInfo(AbstractModel):
         self.AuthDelta = params.get("AuthDelta")
 
 
+class RecordParam(AbstractModel):
+    """录制模板参数
+
+    """
+
+    def __init__(self):
+        """
+        :param RecordInterval: 录制间隔。
+单位秒，默认值1800。
+取值范围:300-7200。
+此参数对 HLS 无效，当录制 HLS 时从推流到断流生成一个文件。
+        :type RecordInterval: int
+        :param StorageTime: 录制存储时长。
+单位秒，取值范围： 0-5184000。
+0表示永久存储。
+        :type StorageTime: int
+        :param Enable: 是否开启当前格式录制，0 否 1是。默认值0。
+        :type Enable: int
+        """
+        self.RecordInterval = None
+        self.StorageTime = None
+        self.Enable = None
+
+
+    def _deserialize(self, params):
+        self.RecordInterval = params.get("RecordInterval")
+        self.StorageTime = params.get("StorageTime")
+        self.Enable = params.get("Enable")
+
+
+class RecordTemplateInfo(AbstractModel):
+    """录制模板信息
+
+    """
+
+    def __init__(self):
+        """
+        :param TemplateId: 模板Id。
+        :type TemplateId: int
+        :param TemplateName: 模板名称。
+        :type TemplateName: str
+        :param Description: 描述信息。
+        :type Description: str
+        :param FlvParam: Flv录制参数。
+        :type FlvParam: :class:`tencentcloud.live.v20180801.models.RecordParam`
+        :param HlsParam: Hls录制参数。
+        :type HlsParam: :class:`tencentcloud.live.v20180801.models.RecordParam`
+        :param Mp4Param: Mp4录制参数。
+        :type Mp4Param: :class:`tencentcloud.live.v20180801.models.RecordParam`
+        :param AacParam: Aac录制参数。
+        :type AacParam: :class:`tencentcloud.live.v20180801.models.RecordParam`
+        """
+        self.TemplateId = None
+        self.TemplateName = None
+        self.Description = None
+        self.FlvParam = None
+        self.HlsParam = None
+        self.Mp4Param = None
+        self.AacParam = None
+
+
+    def _deserialize(self, params):
+        self.TemplateId = params.get("TemplateId")
+        self.TemplateName = params.get("TemplateName")
+        self.Description = params.get("Description")
+        if params.get("FlvParam") is not None:
+            self.FlvParam = RecordParam()
+            self.FlvParam._deserialize(params.get("FlvParam"))
+        if params.get("HlsParam") is not None:
+            self.HlsParam = RecordParam()
+            self.HlsParam._deserialize(params.get("HlsParam"))
+        if params.get("Mp4Param") is not None:
+            self.Mp4Param = RecordParam()
+            self.Mp4Param._deserialize(params.get("Mp4Param"))
+        if params.get("AacParam") is not None:
+            self.AacParam = RecordParam()
+            self.AacParam._deserialize(params.get("AacParam"))
+
+
 class ResumeDelayLiveStreamRequest(AbstractModel):
     """ResumeDelayLiveStream请求参数结构体
 
@@ -1324,6 +3586,43 @@ class ResumeLiveStreamResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class RuleInfo(AbstractModel):
+    """规则信息
+
+    """
+
+    def __init__(self):
+        """
+        :param CreateTime: 规则创建时间。
+        :type CreateTime: str
+        :param UpdateTime: 规则更新时间。
+        :type UpdateTime: str
+        :param TemplateId: 模板Id。
+        :type TemplateId: int
+        :param DomainName: 推流域名。
+        :type DomainName: str
+        :param AppName: 推流路径。
+        :type AppName: str
+        :param StreamName: 流名称。
+        :type StreamName: str
+        """
+        self.CreateTime = None
+        self.UpdateTime = None
+        self.TemplateId = None
+        self.DomainName = None
+        self.AppName = None
+        self.StreamName = None
+
+
+    def _deserialize(self, params):
+        self.CreateTime = params.get("CreateTime")
+        self.UpdateTime = params.get("UpdateTime")
+        self.TemplateId = params.get("TemplateId")
+        self.DomainName = params.get("DomainName")
+        self.AppName = params.get("AppName")
+        self.StreamName = params.get("StreamName")
+
+
 class SetLiveWatermarkStatusRequest(AbstractModel):
     """SetLiveWatermarkStatus请求参数结构体
 
@@ -1360,6 +3659,59 @@ class SetLiveWatermarkStatusResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
+
+
+class SnapshotTemplateInfo(AbstractModel):
+    """截图模板信息
+
+    """
+
+    def __init__(self):
+        """
+        :param TemplateId: 模板Id。
+        :type TemplateId: int
+        :param TemplateName: 模板名称。
+        :type TemplateName: str
+        :param SnapshotInterval: 截图时间间隔。5-300
+        :type SnapshotInterval: int
+        :param Width: 截图宽度。0-3000 0原始宽度并适配原始比例
+        :type Width: int
+        :param Height: 截图高度。0-2000 0原始高度并适配原始比例
+        :type Height: int
+        :param PornFlag: 是否开启鉴黄，0：不开启，1：开启。
+        :type PornFlag: int
+        :param CosAppId: Cos AppId。
+        :type CosAppId: int
+        :param CosBucket: Cos Bucket名称。
+        :type CosBucket: str
+        :param CosRegion: Cos 地域。
+        :type CosRegion: str
+        :param Description: 模板描述
+        :type Description: str
+        """
+        self.TemplateId = None
+        self.TemplateName = None
+        self.SnapshotInterval = None
+        self.Width = None
+        self.Height = None
+        self.PornFlag = None
+        self.CosAppId = None
+        self.CosBucket = None
+        self.CosRegion = None
+        self.Description = None
+
+
+    def _deserialize(self, params):
+        self.TemplateId = params.get("TemplateId")
+        self.TemplateName = params.get("TemplateName")
+        self.SnapshotInterval = params.get("SnapshotInterval")
+        self.Width = params.get("Width")
+        self.Height = params.get("Height")
+        self.PornFlag = params.get("PornFlag")
+        self.CosAppId = params.get("CosAppId")
+        self.CosBucket = params.get("CosBucket")
+        self.CosRegion = params.get("CosRegion")
+        self.Description = params.get("Description")
 
 
 class StopLiveRecordRequest(AbstractModel):
@@ -1471,10 +3823,13 @@ class StreamOnlineInfo(AbstractModel):
         :type PublishTimeList: list of PublishTime
         :param AppName: 应用名称。
         :type AppName: str
+        :param DomainName: 推流域名。
+        :type DomainName: str
         """
         self.StreamName = None
         self.PublishTimeList = None
         self.AppName = None
+        self.DomainName = None
 
 
     def _deserialize(self, params):
@@ -1486,6 +3841,129 @@ class StreamOnlineInfo(AbstractModel):
                 obj._deserialize(item)
                 self.PublishTimeList.append(obj)
         self.AppName = params.get("AppName")
+        self.DomainName = params.get("DomainName")
+
+
+class TemplateInfo(AbstractModel):
+    """转码模板信息
+
+    """
+
+    def __init__(self):
+        """
+        :param Vcodec: 视频编码：
+h264/h265。
+        :type Vcodec: str
+        :param VideoBitrate: 视频码率。100-8000kbps
+        :type VideoBitrate: int
+        :param Acodec: 音频编码：aac/mp3
+aac/mp3。
+        :type Acodec: str
+        :param AudioBitrate: 音频码率。0-500
+        :type AudioBitrate: int
+        :param Width: 宽。0-3000
+        :type Width: int
+        :param Height: 高。0-3000
+        :type Height: int
+        :param Fps: 帧率。0-200
+        :type Fps: int
+        :param Gop: 关键帧间隔，单位：秒。1-50
+        :type Gop: int
+        :param Rotate: 旋转角度。0 90 180 270
+        :type Rotate: int
+        :param Profile: 编码质量：
+baseline/main/high。
+        :type Profile: str
+        :param BitrateToOrig: 是否不超过原始码率。0：否，1：是。
+        :type BitrateToOrig: int
+        :param HeightToOrig: 是否不超过原始高度。0：否，1：是。
+        :type HeightToOrig: int
+        :param FpsToOrig: 是否不超过原始帧率。0：否，1：是。
+        :type FpsToOrig: int
+        :param NeedVideo: 是否保留视频。0：否，1：是。
+        :type NeedVideo: int
+        :param NeedAudio: 是否保留音频。0：否，1：是。
+        :type NeedAudio: int
+        :param TemplateId: 模板Id。
+        :type TemplateId: int
+        :param TemplateName: 模板名称
+        :type TemplateName: str
+        :param Description: 模板描述
+        :type Description: str
+        """
+        self.Vcodec = None
+        self.VideoBitrate = None
+        self.Acodec = None
+        self.AudioBitrate = None
+        self.Width = None
+        self.Height = None
+        self.Fps = None
+        self.Gop = None
+        self.Rotate = None
+        self.Profile = None
+        self.BitrateToOrig = None
+        self.HeightToOrig = None
+        self.FpsToOrig = None
+        self.NeedVideo = None
+        self.NeedAudio = None
+        self.TemplateId = None
+        self.TemplateName = None
+        self.Description = None
+
+
+    def _deserialize(self, params):
+        self.Vcodec = params.get("Vcodec")
+        self.VideoBitrate = params.get("VideoBitrate")
+        self.Acodec = params.get("Acodec")
+        self.AudioBitrate = params.get("AudioBitrate")
+        self.Width = params.get("Width")
+        self.Height = params.get("Height")
+        self.Fps = params.get("Fps")
+        self.Gop = params.get("Gop")
+        self.Rotate = params.get("Rotate")
+        self.Profile = params.get("Profile")
+        self.BitrateToOrig = params.get("BitrateToOrig")
+        self.HeightToOrig = params.get("HeightToOrig")
+        self.FpsToOrig = params.get("FpsToOrig")
+        self.NeedVideo = params.get("NeedVideo")
+        self.NeedAudio = params.get("NeedAudio")
+        self.TemplateId = params.get("TemplateId")
+        self.TemplateName = params.get("TemplateName")
+        self.Description = params.get("Description")
+
+
+class UnBindLiveDomainCertRequest(AbstractModel):
+    """UnBindLiveDomainCert请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param DomainName: 播放域名。
+        :type DomainName: str
+        """
+        self.DomainName = None
+
+
+    def _deserialize(self, params):
+        self.DomainName = params.get("DomainName")
+
+
+class UnBindLiveDomainCertResponse(AbstractModel):
+    """UnBindLiveDomainCert返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
 
 
 class UpdateLiveWatermarkRequest(AbstractModel):

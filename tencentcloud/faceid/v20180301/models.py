@@ -263,15 +263,23 @@ class ImageRecognitionResponse(AbstractModel):
         """
         :param Sim: 相似度，取值范围 [0.00, 100.00]。推荐相似度大于等于70时可判断为同一人，可根据具体场景自行调整阈值（阈值70的误通过率为千分之一，阈值80的误通过率是万分之一）
         :type Sim: float
+        :param Result: 业务错误码，成功情况返回Success, 错误情况请参考下方错误码 列表中FailedOperation部分
+        :type Result: str
+        :param Description: 业务错误描述
+        :type Description: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.Sim = None
+        self.Result = None
+        self.Description = None
         self.RequestId = None
 
 
     def _deserialize(self, params):
         self.Sim = params.get("Sim")
+        self.Result = params.get("Result")
+        self.Description = params.get("Description")
         self.RequestId = params.get("RequestId")
 
 
@@ -324,17 +332,25 @@ class LivenessCompareResponse(AbstractModel):
         :type BestFrameBase64: str
         :param Sim: 相似度，取值范围 [0.00, 100.00]。推荐相似度大于等于70时可判断为同一人，可根据具体场景自行调整阈值（阈值70的误通过率为千分之一，阈值80的误通过率是万分之一）。
         :type Sim: float
+        :param Result: 业务错误码，成功情况返回Success, 错误情况请参考下方错误码 列表中FailedOperation部分
+        :type Result: str
+        :param Description: 业务错误描述
+        :type Description: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.BestFrameBase64 = None
         self.Sim = None
+        self.Result = None
+        self.Description = None
         self.RequestId = None
 
 
     def _deserialize(self, params):
         self.BestFrameBase64 = params.get("BestFrameBase64")
         self.Sim = params.get("Sim")
+        self.Result = params.get("Result")
+        self.Description = params.get("Description")
         self.RequestId = params.get("RequestId")
 
 
@@ -390,15 +406,23 @@ class LivenessRecognitionResponse(AbstractModel):
         :type BestFrameBase64: str
         :param Sim: 相似度，取值范围 [0.00, 100.00]。推荐相似度大于等于70时可判断为同一人，可根据具体场景自行调整阈值（阈值70的误通过率为千分之一，阈值80的误通过率是万分之一）
         :type Sim: float
+        :param Result: 业务错误码，成功情况返回Success, 错误情况请参考下方错误码 列表中FailedOperation部分
+        :type Result: str
+        :param Description: 业务错误描述
+        :type Description: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.BestFrameBase64 = None
         self.Sim = None
+        self.Result = None
+        self.Description = None
         self.RequestId = None
 
 
     def _deserialize(self, params):
         self.BestFrameBase64 = params.get("BestFrameBase64")
         self.Sim = params.get("Sim")
+        self.Result = params.get("Result")
+        self.Description = params.get("Description")
         self.RequestId = params.get("RequestId")
