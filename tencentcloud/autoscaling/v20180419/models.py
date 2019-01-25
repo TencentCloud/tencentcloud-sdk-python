@@ -743,7 +743,7 @@ class DescribeAutoScalingActivitiesRequest(AbstractModel):
         :param Filters: 过滤条件。
 <li> auto-scaling-group-id - String - 是否必填：否 -（过滤条件）按照伸缩组ID过滤。</li>
 <li> activity-status-code - String - 是否必填：否 -（过滤条件）按照伸缩活动状态过滤。（INIT：初始化中|RUNNING：运行中|SUCCESSFUL：活动成功|PARTIALLY_SUCCESSFUL：活动部分成功|FAILED：活动失败|CANCELLED：活动取消）</li>
-<li> activity-type - String - 是否必填：否 -（过滤条件）按照伸缩活动类型过滤。（SCALE_OUT：扩容活动|SCALE_IN：缩容活动|ATTACH_INSTANCES：添加实例|REMOVE_INSTANCES：销毁实例|DETACH_INSTANCES：移出实例|TERMINATE_INSTANCES_UNEXPECTEDLY：实例在CVM控制台被销毁|REPLACE_UNHEALTHY_INSTANCE：替换不健康实例）</li>
+<li> activity-type - String - 是否必填：否 -（过滤条件）按照伸缩活动类型过滤。（SCALE_OUT：扩容活动|SCALE_IN：缩容活动|ATTACH_INSTANCES：添加实例|REMOVE_INSTANCES：销毁实例|DETACH_INSTANCES：移出实例|TERMINATE_INSTANCES_UNEXPECTEDLY：实例在CVM控制台被销毁|REPLACE_UNHEALTHY_INSTANCE：替换不健康实例|UPDATE_LOAD_BALANCERS：更新负载均衡器）</li>
 <li> activity-id - String - 是否必填：否 -（过滤条件）按照伸缩活动ID过滤。</li>
 每次请求的`Filters`的上限为10，`Filter.Values`的上限为5。参数不支持同时指定`ActivityIds`和`Filters`。
         :type Filters: list of Filter
@@ -1676,12 +1676,15 @@ class ModifyLaunchConfigurationAttributesRequest(AbstractModel):
         :type InstanceTypesCheckPolicy: str
         :param LaunchConfigurationName: 启动配置显示名称。名称仅支持中文、英文、数字、下划线、分隔符"-"、小数点，最大长度不能超60个字节。
         :type LaunchConfigurationName: str
+        :param UserData: 经过 Base64 编码后的自定义数据，最大长度不超过16KB。如果要清空UserData，则指定其为空字符串''
+        :type UserData: str
         """
         self.LaunchConfigurationId = None
         self.ImageId = None
         self.InstanceTypes = None
         self.InstanceTypesCheckPolicy = None
         self.LaunchConfigurationName = None
+        self.UserData = None
 
 
     def _deserialize(self, params):
@@ -1690,6 +1693,7 @@ class ModifyLaunchConfigurationAttributesRequest(AbstractModel):
         self.InstanceTypes = params.get("InstanceTypes")
         self.InstanceTypesCheckPolicy = params.get("InstanceTypesCheckPolicy")
         self.LaunchConfigurationName = params.get("LaunchConfigurationName")
+        self.UserData = params.get("UserData")
 
 
 class ModifyLaunchConfigurationAttributesResponse(AbstractModel):
@@ -1706,6 +1710,57 @@ class ModifyLaunchConfigurationAttributesResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class ModifyLoadBalancersRequest(AbstractModel):
+    """ModifyLoadBalancers请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param AutoScalingGroupId: 伸缩组ID
+        :type AutoScalingGroupId: str
+        :param LoadBalancerIds: 传统负载均衡器ID列表，目前长度上限为1，LoadBalancerIds 和 ForwardLoadBalancers 二者同时最多只能指定一个
+        :type LoadBalancerIds: list of str
+        :param ForwardLoadBalancers: 应用型负载均衡器列表，目前长度上限为1，LoadBalancerIds 和 ForwardLoadBalancers 二者同时最多只能指定一个
+        :type ForwardLoadBalancers: list of ForwardLoadBalancer
+        """
+        self.AutoScalingGroupId = None
+        self.LoadBalancerIds = None
+        self.ForwardLoadBalancers = None
+
+
+    def _deserialize(self, params):
+        self.AutoScalingGroupId = params.get("AutoScalingGroupId")
+        self.LoadBalancerIds = params.get("LoadBalancerIds")
+        if params.get("ForwardLoadBalancers") is not None:
+            self.ForwardLoadBalancers = []
+            for item in params.get("ForwardLoadBalancers"):
+                obj = ForwardLoadBalancer()
+                obj._deserialize(item)
+                self.ForwardLoadBalancers.append(obj)
+
+
+class ModifyLoadBalancersResponse(AbstractModel):
+    """ModifyLoadBalancers返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ActivityId: 伸缩活动ID
+        :type ActivityId: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.ActivityId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.ActivityId = params.get("ActivityId")
         self.RequestId = params.get("RequestId")
 
 

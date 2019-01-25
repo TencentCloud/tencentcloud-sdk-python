@@ -940,6 +940,40 @@ class DeleteBackupResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DeleteParamTemplateRequest(AbstractModel):
+    """DeleteParamTemplate请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param TemplateId: 参数模板ID。
+        :type TemplateId: int
+        """
+        self.TemplateId = None
+
+
+    def _deserialize(self, params):
+        self.TemplateId = params.get("TemplateId")
+
+
+class DeleteParamTemplateResponse(AbstractModel):
+    """DeleteParamTemplate返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeAccountPrivilegesRequest(AbstractModel):
     """DescribeAccountPrivileges请求参数结构体
 
@@ -1798,7 +1832,7 @@ class DescribeDBPriceRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Zone: 可用区信息，格式如"ap-guangzhou-1"
+        :param Zone: 可用区信息，格式如"ap-guangzhou-2"。具体能设置的值请通过<a href="https://cloud.tencent.com/document/api/236/17229">DescribeDBZoneConfig</a>接口查询。
         :type Zone: str
         :param GoodsNum: 实例数量，默认值为1, 最小值1，最大值为100
         :type GoodsNum: int
@@ -2497,6 +2531,56 @@ class DescribeSlowLogsResponse(AbstractModel):
                 obj = SlowLogInfo()
                 obj._deserialize(item)
                 self.Items.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeSupportedPrivilegesRequest(AbstractModel):
+    """DescribeSupportedPrivileges请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param InstanceId: 实例ID，格式如：cdb-c1nl9rpv，与云数据库控制台页面中显示的实例ID相同。
+        :type InstanceId: str
+        """
+        self.InstanceId = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+
+
+class DescribeSupportedPrivilegesResponse(AbstractModel):
+    """DescribeSupportedPrivileges返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param GlobalSupportedPrivileges: 实例支持的全局权限。
+        :type GlobalSupportedPrivileges: list of str
+        :param DatabaseSupportedPrivileges: 实例支持的数据库权限。
+        :type DatabaseSupportedPrivileges: list of str
+        :param TableSupportedPrivileges: 实例支持的数据库表权限。
+        :type TableSupportedPrivileges: list of str
+        :param ColumnSupportedPrivileges: 实例支持的数据库列权限。
+        :type ColumnSupportedPrivileges: list of str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.GlobalSupportedPrivileges = None
+        self.DatabaseSupportedPrivileges = None
+        self.TableSupportedPrivileges = None
+        self.ColumnSupportedPrivileges = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.GlobalSupportedPrivileges = params.get("GlobalSupportedPrivileges")
+        self.DatabaseSupportedPrivileges = params.get("DatabaseSupportedPrivileges")
+        self.TableSupportedPrivileges = params.get("TableSupportedPrivileges")
+        self.ColumnSupportedPrivileges = params.get("ColumnSupportedPrivileges")
         self.RequestId = params.get("RequestId")
 
 

@@ -321,6 +321,34 @@ class CdbClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DeleteParamTemplate(self, request):
+        """该接口（DeleteParamTemplate）用于删除参数模板。
+
+        :param request: 调用DeleteParamTemplate所需参数的结构体。
+        :type request: :class:`tencentcloud.cdb.v20170320.models.DeleteParamTemplateRequest`
+        :rtype: :class:`tencentcloud.cdb.v20170320.models.DeleteParamTemplateResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DeleteParamTemplate", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DeleteParamTemplateResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise e
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeAccountPrivileges(self, request):
         """本接口(DescribeAccountPrivileges)用于查询云数据库账户支持的权限信息。
 
@@ -716,6 +744,8 @@ class CdbClient(AbstractClient):
     def DescribeDBPrice(self, request):
         """本接口(DescribeDBPrice)用于查询云数据库实例的价格，支持查询按量计费或者包年包月的价格。可传入实例类型、购买时长、购买数量、内存大小、硬盘大小和可用区信息等来查询实例价格。
 
+        注意：对某个地域进行询价，请使用对应地域的接入点，接入点信息请参照<a href="https://cloud.tencent.com/document/api/236/15832">服务地址</a>文档。例如：对广州地域进行询价，请把请求发到：cdb.ap-guangzhou.tencentcloudapi.com。同理对上海地域询价，把请求发到：cdb.ap-shanghai.tencentcloudapi.com
+
         :param request: 调用DescribeDBPrice所需参数的结构体。
         :type request: :class:`tencentcloud.cdb.v20170320.models.DescribeDBPriceRequest`
         :rtype: :class:`tencentcloud.cdb.v20170320.models.DescribeDBPriceResponse`
@@ -1091,6 +1121,34 @@ class CdbClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeSlowLogsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise e
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeSupportedPrivileges(self, request):
+        """本接口(DescribeSupportedPrivileges)用于查询云数据库的支持的权限信息，包括全局权限，数据库权限，表权限以及列权限。
+
+        :param request: 调用DescribeSupportedPrivileges所需参数的结构体。
+        :type request: :class:`tencentcloud.cdb.v20170320.models.DescribeSupportedPrivilegesRequest`
+        :rtype: :class:`tencentcloud.cdb.v20170320.models.DescribeSupportedPrivilegesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeSupportedPrivileges", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeSupportedPrivilegesResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

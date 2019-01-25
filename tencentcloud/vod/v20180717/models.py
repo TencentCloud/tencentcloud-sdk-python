@@ -1443,6 +1443,58 @@ class SearchMediaResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class SimpleHlsClipRequest(AbstractModel):
+    """SimpleHlsClip请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Url: 需要裁剪的腾讯云点播 HLS 视频 URL。
+        :type Url: str
+        :param StartTimeOffset: 裁剪的开始偏移时间，单位秒。默认 0，即从视频开头开始裁剪。负数表示距离视频结束多少秒开始裁剪。比如 -10 表示从倒数第 10 秒开始裁剪。
+        :type StartTimeOffset: float
+        :param EndTimeOffset: 裁剪的结束偏移时间，单位秒。默认 0，即裁剪到视频尾部。负数表示距离视频结束多少秒结束裁剪。比如 -10 表示到倒数第 10 秒结束裁剪。
+        :type EndTimeOffset: float
+        """
+        self.Url = None
+        self.StartTimeOffset = None
+        self.EndTimeOffset = None
+
+
+    def _deserialize(self, params):
+        self.Url = params.get("Url")
+        self.StartTimeOffset = params.get("StartTimeOffset")
+        self.EndTimeOffset = params.get("EndTimeOffset")
+
+
+class SimpleHlsClipResponse(AbstractModel):
+    """SimpleHlsClip返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Url: 裁剪后的视频地址。
+        :type Url: str
+        :param MetaData: 裁剪后的视频元信息。目前`Size`，`Rotate`，`VideoDuration`，`AudioDuration` 几个字段暂时缺省，没有真实数据。
+        :type MetaData: :class:`tencentcloud.vod.v20180717.models.MediaMetaData`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Url = None
+        self.MetaData = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Url = params.get("Url")
+        if params.get("MetaData") is not None:
+            self.MetaData = MediaMetaData()
+            self.MetaData._deserialize(params.get("MetaData"))
+        self.RequestId = params.get("RequestId")
+
+
 class SortBy(AbstractModel):
     """排序依据
 

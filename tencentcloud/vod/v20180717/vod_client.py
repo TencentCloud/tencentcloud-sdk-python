@@ -382,3 +382,33 @@ class VodClient(AbstractClient):
                 raise e
             else:
                 raise TencentCloudSDKException(e.message, e.message)
+
+
+    def SimpleHlsClip(self, request):
+        """对 HLS 视频进行按时间段裁剪。
+
+        注意：裁剪出来的视频与原始视频共用 ts，仅生成新的 m3u8。原始视频删除后，该裁剪视频也会被删除。
+
+        :param request: 调用SimpleHlsClip所需参数的结构体。
+        :type request: :class:`tencentcloud.vod.v20180717.models.SimpleHlsClipRequest`
+        :rtype: :class:`tencentcloud.vod.v20180717.models.SimpleHlsClipResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("SimpleHlsClip", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.SimpleHlsClipResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise e
+            else:
+                raise TencentCloudSDKException(e.message, e.message)

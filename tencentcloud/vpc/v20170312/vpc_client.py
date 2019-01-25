@@ -81,6 +81,36 @@ class VpcClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def AddIp6Rules(self, request):
+        """1. 该接口用于在转换实例下添加IPV6转换规则。
+        2. 支持在同一个转换实例下批量添加转换规则，一个账户在一个地域最多50个。
+        3. 一个完整的转换规则包括vip6:vport6:protocol:vip:vport，其中vip6:vport6:protocol必须是唯一。
+
+        :param request: 调用AddIp6Rules所需参数的结构体。
+        :type request: :class:`tencentcloud.vpc.v20170312.models.AddIp6RulesRequest`
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.AddIp6RulesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("AddIp6Rules", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.AddIp6RulesResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise e
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def AllocateAddresses(self, request):
         """本接口 (AllocateAddresses) 用于申请一个或多个[弹性公网IP](https://cloud.tencent.com/document/product/213/1941)（简称 EIP）。
         * EIP 是专为动态云计算设计的静态 IP 地址。借助 EIP，您可以快速将 EIP 重新映射到您的另一个实例上，从而屏蔽实例故障。
@@ -515,6 +545,35 @@ class VpcClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateHaVipResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise e
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def CreateIp6Translators(self, request):
+        """1. 该接口用于创建IPV6转换IPV4实例，支持批量
+        2. 同一个账户在在一个地域最多允许创建10个转换实例
+
+        :param request: 调用CreateIp6Translators所需参数的结构体。
+        :type request: :class:`tencentcloud.vpc.v20170312.models.CreateIp6TranslatorsRequest`
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.CreateIp6TranslatorsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("CreateIp6Translators", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateIp6TranslatorsResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -1110,6 +1169,35 @@ class VpcClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteHaVipResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise e
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DeleteIp6Translators(self, request):
+        """1. 该接口用于释放IPV6转换实例，支持批量。
+        2.  如果IPV6转换实例建立有转换规则，会一并删除。
+
+        :param request: 调用DeleteIp6Translators所需参数的结构体。
+        :type request: :class:`tencentcloud.vpc.v20170312.models.DeleteIp6TranslatorsRequest`
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.DeleteIp6TranslatorsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DeleteIp6Translators", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DeleteIp6TranslatorsResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -1918,6 +2006,63 @@ class VpcClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeIp6TranslatorQuota(self, request):
+        """查询账户在指定地域IPV6转换实例和规则的配额
+
+        :param request: 调用DescribeIp6TranslatorQuota所需参数的结构体。
+        :type request: :class:`tencentcloud.vpc.v20170312.models.DescribeIp6TranslatorQuotaRequest`
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.DescribeIp6TranslatorQuotaResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeIp6TranslatorQuota", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeIp6TranslatorQuotaResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise e
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeIp6Translators(self, request):
+        """1. 该接口用于查询账户下的IPV6转换实例及其绑定的转换规则信息
+        2. 支持过滤查询
+
+        :param request: 调用DescribeIp6Translators所需参数的结构体。
+        :type request: :class:`tencentcloud.vpc.v20170312.models.DescribeIp6TranslatorsRequest`
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.DescribeIp6TranslatorsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeIp6Translators", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeIp6TranslatorsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise e
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeNetworkInterfaces(self, request):
         """本接口（DescribeNetworkInterfaces）用于查询弹性网卡列表。
 
@@ -2156,6 +2301,35 @@ class VpcClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeSubnetsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise e
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeVpcPrivateIpAddresses(self, request):
+        """本接口（DescribeVpcPrivateIpAddresses）用于查询VPC内网IP信息。<br />
+        只能查询已使用的IP信息，当查询未使用的IP时，本接口不会报错，但不会出现在返回结果里。
+
+        :param request: 调用DescribeVpcPrivateIpAddresses所需参数的结构体。
+        :type request: :class:`tencentcloud.vpc.v20170312.models.DescribeVpcPrivateIpAddressesRequest`
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.DescribeVpcPrivateIpAddressesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeVpcPrivateIpAddresses", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeVpcPrivateIpAddressesResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -2966,6 +3140,62 @@ class VpcClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def ModifyIp6Rule(self, request):
+        """该接口用于修改IPV6转换规则，当前仅支持修改转换规则名称，IPV4地址和IPV4端口号
+
+        :param request: 调用ModifyIp6Rule所需参数的结构体。
+        :type request: :class:`tencentcloud.vpc.v20170312.models.ModifyIp6RuleRequest`
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.ModifyIp6RuleResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ModifyIp6Rule", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ModifyIp6RuleResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise e
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ModifyIp6Translator(self, request):
+        """该接口用于修改IP6转换实例属性，当前仅支持修改实例名称。
+
+        :param request: 调用ModifyIp6Translator所需参数的结构体。
+        :type request: :class:`tencentcloud.vpc.v20170312.models.ModifyIp6TranslatorRequest`
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.ModifyIp6TranslatorResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ModifyIp6Translator", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ModifyIp6TranslatorResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise e
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def ModifyNetworkInterfaceAttribute(self, request):
         """本接口（ModifyNetworkInterfaceAttribute）用于修改弹性网卡属性。
 
@@ -3355,6 +3585,35 @@ class VpcClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.RemoveBandwidthPackageResourcesResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise e
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def RemoveIp6Rules(self, request):
+        """1. 该接口用于删除IPV6转换规则
+        2. 支持批量删除同一个转换实例下的多个转换规则
+
+        :param request: 调用RemoveIp6Rules所需参数的结构体。
+        :type request: :class:`tencentcloud.vpc.v20170312.models.RemoveIp6RulesRequest`
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.RemoveIp6RulesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("RemoveIp6Rules", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.RemoveIp6RulesResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

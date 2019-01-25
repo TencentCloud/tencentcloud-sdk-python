@@ -126,6 +126,57 @@ class AddBandwidthPackageResourcesResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class AddIp6RulesRequest(AbstractModel):
+    """AddIp6Rules请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Ip6TranslatorId: IPV6转换实例唯一ID，形如ip6-xxxxxxxx
+        :type Ip6TranslatorId: str
+        :param Ip6RuleInfos: IPV6转换规则信息
+        :type Ip6RuleInfos: list of Ip6RuleInfo
+        :param Ip6RuleName: IPV6转换规则名称
+        :type Ip6RuleName: str
+        """
+        self.Ip6TranslatorId = None
+        self.Ip6RuleInfos = None
+        self.Ip6RuleName = None
+
+
+    def _deserialize(self, params):
+        self.Ip6TranslatorId = params.get("Ip6TranslatorId")
+        if params.get("Ip6RuleInfos") is not None:
+            self.Ip6RuleInfos = []
+            for item in params.get("Ip6RuleInfos"):
+                obj = Ip6RuleInfo()
+                obj._deserialize(item)
+                self.Ip6RuleInfos.append(obj)
+        self.Ip6RuleName = params.get("Ip6RuleName")
+
+
+class AddIp6RulesResponse(AbstractModel):
+    """AddIp6Rules返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Ip6RuleSet: IPV6转换规则唯一ID数组，形如rule6-xxxxxxxx
+        :type Ip6RuleSet: list of str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Ip6RuleSet = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Ip6RuleSet = params.get("Ip6RuleSet")
+        self.RequestId = params.get("RequestId")
+
+
 class Address(AbstractModel):
     """描述 EIP 信息
 
@@ -1254,6 +1305,52 @@ class CreateHaVipResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class CreateIp6TranslatorsRequest(AbstractModel):
+    """CreateIp6Translators请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Ip6TranslatorName: 转换实例名称
+        :type Ip6TranslatorName: str
+        :param Ip6TranslatorCount: 创建转换实例数量，默认是1个
+        :type Ip6TranslatorCount: int
+        :param Ip6InternetServiceProvider: 转换实例运营商属性，可取"CMCC","CTCC","CUCC","BGP"
+        :type Ip6InternetServiceProvider: str
+        """
+        self.Ip6TranslatorName = None
+        self.Ip6TranslatorCount = None
+        self.Ip6InternetServiceProvider = None
+
+
+    def _deserialize(self, params):
+        self.Ip6TranslatorName = params.get("Ip6TranslatorName")
+        self.Ip6TranslatorCount = params.get("Ip6TranslatorCount")
+        self.Ip6InternetServiceProvider = params.get("Ip6InternetServiceProvider")
+
+
+class CreateIp6TranslatorsResponse(AbstractModel):
+    """CreateIp6Translators返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Ip6TranslatorSet: 转换实例的唯一ID数组，形如"ip6-xxxxxxxx"
+        :type Ip6TranslatorSet: list of str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Ip6TranslatorSet = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Ip6TranslatorSet = params.get("Ip6TranslatorSet")
+        self.RequestId = params.get("RequestId")
+
+
 class CreateNetworkInterfaceRequest(AbstractModel):
     """CreateNetworkInterface请求参数结构体
 
@@ -2236,6 +2333,40 @@ class DeleteHaVipResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DeleteIp6TranslatorsRequest(AbstractModel):
+    """DeleteIp6Translators请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Ip6TranslatorIds: 待释放的IPV6转换实例的唯一ID，形如‘ip6-xxxxxxxx’
+        :type Ip6TranslatorIds: list of str
+        """
+        self.Ip6TranslatorIds = None
+
+
+    def _deserialize(self, params):
+        self.Ip6TranslatorIds = params.get("Ip6TranslatorIds")
+
+
+class DeleteIp6TranslatorsResponse(AbstractModel):
+    """DeleteIp6Translators返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class DeleteNetworkInterfaceRequest(AbstractModel):
     """DeleteNetworkInterface请求参数结构体
 
@@ -3011,11 +3142,17 @@ class DescribeCcnAttachedInstancesRequest(AbstractModel):
         :type Filters: list of Filter
         :param CcnId: 云联网实例ID
         :type CcnId: str
+        :param OrderField: 排序字段。支持：`CcnId` `InstanceType` `InstanceId` `InstanceName` `InstanceRegion` `AttachedTime` `State`。
+        :type OrderField: str
+        :param OrderDirection: 排序方法。顺序：`ASC`，倒序：`DESC`。
+        :type OrderDirection: str
         """
         self.Offset = None
         self.Limit = None
         self.Filters = None
         self.CcnId = None
+        self.OrderField = None
+        self.OrderDirection = None
 
 
     def _deserialize(self, params):
@@ -3028,6 +3165,8 @@ class DescribeCcnAttachedInstancesRequest(AbstractModel):
                 obj._deserialize(item)
                 self.Filters.append(obj)
         self.CcnId = params.get("CcnId")
+        self.OrderField = params.get("OrderField")
+        self.OrderDirection = params.get("OrderDirection")
 
 
 class DescribeCcnAttachedInstancesResponse(AbstractModel):
@@ -3603,6 +3742,118 @@ class DescribeHaVipsResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeIp6TranslatorQuotaRequest(AbstractModel):
+    """DescribeIp6TranslatorQuota请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Ip6TranslatorIds: 待查询IPV6转换实例的唯一ID列表，形如ip6-xxxxxxxx
+        :type Ip6TranslatorIds: list of str
+        """
+        self.Ip6TranslatorIds = None
+
+
+    def _deserialize(self, params):
+        self.Ip6TranslatorIds = params.get("Ip6TranslatorIds")
+
+
+class DescribeIp6TranslatorQuotaResponse(AbstractModel):
+    """DescribeIp6TranslatorQuota返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param QuotaSet: 账户在指定地域的IPV6转换实例及规则配额信息
+QUOTAID属性是TOTAL_TRANSLATOR_QUOTA，表示账户在指定地域的IPV6转换实例配额信息；QUOTAID属性是IPV6转转换实例唯一ID（形如ip6-xxxxxxxx），表示账户在该转换实例允许创建的转换规则配额
+        :type QuotaSet: list of Quota
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.QuotaSet = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("QuotaSet") is not None:
+            self.QuotaSet = []
+            for item in params.get("QuotaSet"):
+                obj = Quota()
+                obj._deserialize(item)
+                self.QuotaSet.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeIp6TranslatorsRequest(AbstractModel):
+    """DescribeIp6Translators请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Ip6TranslatorIds: IPV6转换实例唯一ID数组，形如ip6-xxxxxxxx
+        :type Ip6TranslatorIds: list of str
+        :param Filters: 每次请求的`Filters`的上限为10，`Filter.Values`的上限为5。参数不支持同时指定`Ip6TranslatorIds`和`Filters`。详细的过滤条件如下：
+<li> ip6-translator-id - String - 是否必填：否 - （过滤条件）按照IPV6转换实例的唯一ID过滤,形如ip6-xxxxxxx。</li>
+<li> ip6-translator-vip6 - String - 是否必填：否 - （过滤条件）按照IPV6地址过滤。不支持模糊过滤。</li>
+<li> ip6-translator-name - String - 是否必填：否 - （过滤条件）按照IPV6转换实例名称过滤。不支持模糊过滤。</li>
+<li> ip6-translator-status - String - 是否必填：否 - （过滤条件）按照IPV6转换实例的状态过滤。状态取值范围为"CREATING","RUNNING","DELETING","MODIFYING"
+        :type Filters: list of Filter
+        :param Offset: 偏移量，默认为0。关于`Offset`的更进一步介绍请参考 API [简介](https://cloud.tencent.com/document/api/213/11646)中的相关小节。
+        :type Offset: int
+        :param Limit: 返回数量，默认为20，最大值为100。关于`Limit`的更进一步介绍请参考 API [简介](https://cloud.tencent.com/document/api/213/11646)中的相关小节。
+        :type Limit: int
+        """
+        self.Ip6TranslatorIds = None
+        self.Filters = None
+        self.Offset = None
+        self.Limit = None
+
+
+    def _deserialize(self, params):
+        self.Ip6TranslatorIds = params.get("Ip6TranslatorIds")
+        if params.get("Filters") is not None:
+            self.Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self.Filters.append(obj)
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+
+
+class DescribeIp6TranslatorsResponse(AbstractModel):
+    """DescribeIp6Translators返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param TotalCount: 符合过滤条件的IPV6转换实例数量。
+        :type TotalCount: int
+        :param Ip6TranslatorSet: 符合过滤条件的IPV6转换实例详细信息
+        :type Ip6TranslatorSet: list of Ip6Translator
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.Ip6TranslatorSet = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("Ip6TranslatorSet") is not None:
+            self.Ip6TranslatorSet = []
+            for item in params.get("Ip6TranslatorSet"):
+                obj = Ip6Translator()
+                obj._deserialize(item)
+                self.Ip6TranslatorSet.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeNetworkInterfacesRequest(AbstractModel):
     """DescribeNetworkInterfaces请求参数结构体
 
@@ -4129,6 +4380,53 @@ class DescribeSubnetsResponse(AbstractModel):
                 obj = Subnet()
                 obj._deserialize(item)
                 self.SubnetSet.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeVpcPrivateIpAddressesRequest(AbstractModel):
+    """DescribeVpcPrivateIpAddresses请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param VpcId: `VPC`实例`ID`，形如：`vpc-f49l6u0z`。
+        :type VpcId: str
+        :param PrivateIpAddresses: 内网`IP`地址列表，批量查询单次请求最多支持`10`个。
+        :type PrivateIpAddresses: list of str
+        """
+        self.VpcId = None
+        self.PrivateIpAddresses = None
+
+
+    def _deserialize(self, params):
+        self.VpcId = params.get("VpcId")
+        self.PrivateIpAddresses = params.get("PrivateIpAddresses")
+
+
+class DescribeVpcPrivateIpAddressesResponse(AbstractModel):
+    """DescribeVpcPrivateIpAddresses返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param VpcPrivateIpAddressSet: 内网`IP`地址信息列表。
+        :type VpcPrivateIpAddressSet: list of VpcPrivateIpAddress
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.VpcPrivateIpAddressSet = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("VpcPrivateIpAddressSet") is not None:
+            self.VpcPrivateIpAddressSet = []
+            for item in params.get("VpcPrivateIpAddressSet"):
+                obj = VpcPrivateIpAddress()
+                obj._deserialize(item)
+                self.VpcPrivateIpAddressSet.append(obj)
         self.RequestId = params.get("RequestId")
 
 
@@ -5211,6 +5509,134 @@ class InstanceChargePrepaid(AbstractModel):
         self.RenewFlag = params.get("RenewFlag")
 
 
+class Ip6Rule(AbstractModel):
+    """IPV6转换规则
+
+    """
+
+    def __init__(self):
+        """
+        :param Ip6RuleId: IPV6转换规则唯一ID，形如rule6-xxxxxxxx
+        :type Ip6RuleId: str
+        :param Ip6RuleName: IPV6转换规则名称
+        :type Ip6RuleName: str
+        :param Vip6: IPV6地址
+        :type Vip6: str
+        :param Vport6: IPV6端口号
+        :type Vport6: int
+        :param Protocol: 协议类型，支持TCP/UDP
+        :type Protocol: str
+        :param Vip: IPV4地址
+        :type Vip: str
+        :param Vport: IPV4端口号
+        :type Vport: int
+        :param RuleStatus: 转换规则状态，限于CREATING,RUNNING,DELETING,MODIFYING
+        :type RuleStatus: str
+        :param CreatedTime: 转换规则创建时间
+        :type CreatedTime: str
+        """
+        self.Ip6RuleId = None
+        self.Ip6RuleName = None
+        self.Vip6 = None
+        self.Vport6 = None
+        self.Protocol = None
+        self.Vip = None
+        self.Vport = None
+        self.RuleStatus = None
+        self.CreatedTime = None
+
+
+    def _deserialize(self, params):
+        self.Ip6RuleId = params.get("Ip6RuleId")
+        self.Ip6RuleName = params.get("Ip6RuleName")
+        self.Vip6 = params.get("Vip6")
+        self.Vport6 = params.get("Vport6")
+        self.Protocol = params.get("Protocol")
+        self.Vip = params.get("Vip")
+        self.Vport = params.get("Vport")
+        self.RuleStatus = params.get("RuleStatus")
+        self.CreatedTime = params.get("CreatedTime")
+
+
+class Ip6RuleInfo(AbstractModel):
+    """IPV6转换规则
+
+    """
+
+    def __init__(self):
+        """
+        :param Vport6: IPV6端口号，可在0~65535范围取值
+        :type Vport6: int
+        :param Protocol: 协议类型，支持TCP/UDP
+        :type Protocol: str
+        :param Vip: IPV4地址
+        :type Vip: str
+        :param Vport: IPV4端口号，可在0~65535范围取值
+        :type Vport: int
+        """
+        self.Vport6 = None
+        self.Protocol = None
+        self.Vip = None
+        self.Vport = None
+
+
+    def _deserialize(self, params):
+        self.Vport6 = params.get("Vport6")
+        self.Protocol = params.get("Protocol")
+        self.Vip = params.get("Vip")
+        self.Vport = params.get("Vport")
+
+
+class Ip6Translator(AbstractModel):
+    """IPV6转换实例信息
+
+    """
+
+    def __init__(self):
+        """
+        :param Ip6TranslatorId: IPV6转换实例唯一ID，形如ip6-xxxxxxxx
+        :type Ip6TranslatorId: str
+        :param Ip6TranslatorName: IPV6转换实例名称
+        :type Ip6TranslatorName: str
+        :param Vip6: IPV6地址
+        :type Vip6: str
+        :param IspName: IPV6转换地址所属运营商
+        :type IspName: str
+        :param TranslatorStatus: 转换实例状态，限于CREATING,RUNNING,DELETING,MODIFYING
+        :type TranslatorStatus: str
+        :param CreatedTime: IPV6转换实例创建时间
+        :type CreatedTime: str
+        :param Ip6RuleCount: 绑定的IPV6转换规则数量
+        :type Ip6RuleCount: int
+        :param IP6RuleSet: IPV6转换规则信息
+        :type IP6RuleSet: list of Ip6Rule
+        """
+        self.Ip6TranslatorId = None
+        self.Ip6TranslatorName = None
+        self.Vip6 = None
+        self.IspName = None
+        self.TranslatorStatus = None
+        self.CreatedTime = None
+        self.Ip6RuleCount = None
+        self.IP6RuleSet = None
+
+
+    def _deserialize(self, params):
+        self.Ip6TranslatorId = params.get("Ip6TranslatorId")
+        self.Ip6TranslatorName = params.get("Ip6TranslatorName")
+        self.Vip6 = params.get("Vip6")
+        self.IspName = params.get("IspName")
+        self.TranslatorStatus = params.get("TranslatorStatus")
+        self.CreatedTime = params.get("CreatedTime")
+        self.Ip6RuleCount = params.get("Ip6RuleCount")
+        if params.get("IP6RuleSet") is not None:
+            self.IP6RuleSet = []
+            for item in params.get("IP6RuleSet"):
+                obj = Ip6Rule()
+                obj._deserialize(item)
+                self.IP6RuleSet.append(obj)
+
+
 class ItemPrice(AbstractModel):
     """单项计费价格信息
 
@@ -5675,6 +6101,94 @@ class ModifyHaVipAttributeRequest(AbstractModel):
 
 class ModifyHaVipAttributeResponse(AbstractModel):
     """ModifyHaVipAttribute返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class ModifyIp6RuleRequest(AbstractModel):
+    """ModifyIp6Rule请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Ip6TranslatorId: IPV6转换实例唯一ID，形如ip6-xxxxxxxx
+        :type Ip6TranslatorId: str
+        :param Ip6RuleId: IPV6转换规则唯一ID，形如rule6-xxxxxxxx
+        :type Ip6RuleId: str
+        :param Ip6RuleName: IPV6转换规则修改后的名称
+        :type Ip6RuleName: str
+        :param Vip: IPV6转换规则修改后的IPV4地址
+        :type Vip: str
+        :param Vport: IPV6转换规则修改后的IPV4端口号
+        :type Vport: int
+        """
+        self.Ip6TranslatorId = None
+        self.Ip6RuleId = None
+        self.Ip6RuleName = None
+        self.Vip = None
+        self.Vport = None
+
+
+    def _deserialize(self, params):
+        self.Ip6TranslatorId = params.get("Ip6TranslatorId")
+        self.Ip6RuleId = params.get("Ip6RuleId")
+        self.Ip6RuleName = params.get("Ip6RuleName")
+        self.Vip = params.get("Vip")
+        self.Vport = params.get("Vport")
+
+
+class ModifyIp6RuleResponse(AbstractModel):
+    """ModifyIp6Rule返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class ModifyIp6TranslatorRequest(AbstractModel):
+    """ModifyIp6Translator请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Ip6TranslatorId: IPV6转换实例唯一ID，形如ip6-xxxxxxxxx
+        :type Ip6TranslatorId: str
+        :param Ip6TranslatorName: IPV6转换实例修改名称
+        :type Ip6TranslatorName: str
+        """
+        self.Ip6TranslatorId = None
+        self.Ip6TranslatorName = None
+
+
+    def _deserialize(self, params):
+        self.Ip6TranslatorId = params.get("Ip6TranslatorId")
+        self.Ip6TranslatorName = params.get("Ip6TranslatorName")
+
+
+class ModifyIp6TranslatorResponse(AbstractModel):
+    """ModifyIp6Translator返回参数结构体
 
     """
 
@@ -6485,6 +6999,44 @@ class RemoveBandwidthPackageResourcesRequest(AbstractModel):
 
 class RemoveBandwidthPackageResourcesResponse(AbstractModel):
     """RemoveBandwidthPackageResources返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class RemoveIp6RulesRequest(AbstractModel):
+    """RemoveIp6Rules请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Ip6TranslatorId: IPV6转换规则所属的转换实例唯一ID，形如ip6-xxxxxxxx
+        :type Ip6TranslatorId: str
+        :param Ip6RuleIds: 待删除IPV6转换规则，形如rule6-xxxxxxxx
+        :type Ip6RuleIds: list of str
+        """
+        self.Ip6TranslatorId = None
+        self.Ip6RuleIds = None
+
+
+    def _deserialize(self, params):
+        self.Ip6TranslatorId = params.get("Ip6TranslatorId")
+        self.Ip6RuleIds = params.get("Ip6RuleIds")
+
+
+class RemoveIp6RulesResponse(AbstractModel):
+    """RemoveIp6Rules返回参数结构体
 
     """
 
@@ -7577,6 +8129,35 @@ class Vpc(AbstractModel):
         self.EnableDhcp = params.get("EnableDhcp")
 
 
+class VpcPrivateIpAddress(AbstractModel):
+    """VPC内网IP对象。
+
+    """
+
+    def __init__(self):
+        """
+        :param PrivateIpAddress: `VPC`内网`IP`。
+        :type PrivateIpAddress: str
+        :param CidrBlock: 所属子网`CIDR`。
+        :type CidrBlock: str
+        :param PrivateIpAddressType: 内网`IP`类型。
+        :type PrivateIpAddressType: str
+        :param CreatedTime: `IP`申请时间。
+        :type CreatedTime: str
+        """
+        self.PrivateIpAddress = None
+        self.CidrBlock = None
+        self.PrivateIpAddressType = None
+        self.CreatedTime = None
+
+
+    def _deserialize(self, params):
+        self.PrivateIpAddress = params.get("PrivateIpAddress")
+        self.CidrBlock = params.get("CidrBlock")
+        self.PrivateIpAddressType = params.get("PrivateIpAddressType")
+        self.CreatedTime = params.get("CreatedTime")
+
+
 class VpnConnection(AbstractModel):
     """VPN通道对象。
 
@@ -7678,7 +8259,7 @@ class VpnGateway(AbstractModel):
         :type State: str
         :param PublicIpAddress: 网关公网IP。
         :type PublicIpAddress: str
-        :param RenewFlag: 网关续费类型：'NOTIFY_AND_MANUAL_RENEW'：手动续费，'NOTIFY_AND_AUTO_RENEW'：自动续费
+        :param RenewFlag: 网关续费类型：'NOTIFY_AND_MANUAL_RENEW'：手动续费，'NOTIFY_AND_AUTO_RENEW'：自动续费，'NOT_NOTIFY_AND_NOT_RENEW'：到期不续费。
         :type RenewFlag: str
         :param InstanceChargeType: 网关付费类型：POSTPAID_BY_HOUR：按小时后付费，PREPAID：包年包月预付费，
         :type InstanceChargeType: str

@@ -17,28 +17,28 @@ import json
 
 from tencentcloud.common.exception.tencent_cloud_sdk_exception import TencentCloudSDKException
 from tencentcloud.common.abstract_client import AbstractClient
-from tencentcloud.autoscaling.v20180419 import models
+from tencentcloud.iai.v20180301 import models
 
 
-class AutoscalingClient(AbstractClient):
-    _apiVersion = '2018-04-19'
-    _endpoint = 'as.tencentcloudapi.com'
+class IaiClient(AbstractClient):
+    _apiVersion = '2018-03-01'
+    _endpoint = 'iai.tencentcloudapi.com'
 
 
-    def AttachInstances(self, request):
-        """本接口（AttachInstances）用于将 CVM 实例添加到伸缩组。
+    def AnalyzeFace(self, request):
+        """对请求图片进行五官定位（也称人脸关键点定位），计算构成人脸轮廓的 90 个点，包括眉毛（左右各 8 点）、眼睛（左右各 8 点）、鼻子（13 点）、嘴巴（22 点）、脸型轮廓（21 点）、眼珠[或瞳孔]（2点）。
 
-        :param request: 调用AttachInstances所需参数的结构体。
-        :type request: :class:`tencentcloud.autoscaling.v20180419.models.AttachInstancesRequest`
-        :rtype: :class:`tencentcloud.autoscaling.v20180419.models.AttachInstancesResponse`
+        :param request: 调用AnalyzeFace所需参数的结构体。
+        :type request: :class:`tencentcloud.iai.v20180301.models.AnalyzeFaceRequest`
+        :rtype: :class:`tencentcloud.iai.v20180301.models.AnalyzeFaceResponse`
 
         """
         try:
             params = request._serialize()
-            body = self.call("AttachInstances", params)
+            body = self.call("AnalyzeFace", params)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.AttachInstancesResponse()
+                model = models.AnalyzeFaceResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -53,20 +53,24 @@ class AutoscalingClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def CreateAutoScalingGroup(self, request):
-        """本接口（CreateAutoScalingGroup）用于创建伸缩组
+    def CompareFace(self, request):
+        """对两张图片中的人脸进行相似度比对，返回人脸相似度分数。
 
-        :param request: 调用CreateAutoScalingGroup所需参数的结构体。
-        :type request: :class:`tencentcloud.autoscaling.v20180419.models.CreateAutoScalingGroupRequest`
-        :rtype: :class:`tencentcloud.autoscaling.v20180419.models.CreateAutoScalingGroupResponse`
+        若您需要判断 “此人是否是某人”，即验证某张图片中的人是否是已知身份的某人，如常见的人脸登录场景，建议使用[人脸验证](https://cloud.tencent.com/document/product/867/32806)接口。
+
+        若您需要判断图片中人脸的具体身份信息，如是否是身份证上对应的人，建议使用[人脸核身·云智慧眼](https://cloud.tencent.com/product/facein)产品。
+
+        :param request: 调用CompareFace所需参数的结构体。
+        :type request: :class:`tencentcloud.iai.v20180301.models.CompareFaceRequest`
+        :rtype: :class:`tencentcloud.iai.v20180301.models.CompareFaceResponse`
 
         """
         try:
             params = request._serialize()
-            body = self.call("CreateAutoScalingGroup", params)
+            body = self.call("CompareFace", params)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.CreateAutoScalingGroupResponse()
+                model = models.CompareFaceResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -81,24 +85,20 @@ class AutoscalingClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def CreateLaunchConfiguration(self, request):
-        """本接口（CreateLaunchConfiguration）用于创建新的启动配置。
+    def CopyPerson(self, request):
+        """将已存在于某人员库的人员复制到其他人员库，该人员的描述信息不会被复制。单个人员最多只能同时存在100个人员库中。
 
-        * 启动配置，可以通过 `ModifyLaunchConfigurationAttributes` 修改少量字段。如需使用新的启动配置，建议重新创建启动配置。
-
-        * 每个项目最多只能创建20个启动配置，详见[使用限制](https://cloud.tencent.com/document/product/377/3120)。
-
-        :param request: 调用CreateLaunchConfiguration所需参数的结构体。
-        :type request: :class:`tencentcloud.autoscaling.v20180419.models.CreateLaunchConfigurationRequest`
-        :rtype: :class:`tencentcloud.autoscaling.v20180419.models.CreateLaunchConfigurationResponse`
+        :param request: 调用CopyPerson所需参数的结构体。
+        :type request: :class:`tencentcloud.iai.v20180301.models.CopyPersonRequest`
+        :rtype: :class:`tencentcloud.iai.v20180301.models.CopyPersonResponse`
 
         """
         try:
             params = request._serialize()
-            body = self.call("CreateLaunchConfiguration", params)
+            body = self.call("CopyPerson", params)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.CreateLaunchConfigurationResponse()
+                model = models.CopyPersonResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -113,20 +113,22 @@ class AutoscalingClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def CreateScheduledAction(self, request):
-        """本接口（CreateScheduledAction）用于创建定时任务。
+    def CreateFace(self, request):
+        """将一组人脸图片添加到一个人员中。一个人员最多允许包含 5 张图片。若该人员存在多个人员库中，所有人员库中该人员图片均会增加。
+        >
+        - 增加人脸完成后，生效时间一般不超过 1 秒，极端情况最多不超过 5 秒，之后您可以进行[人脸搜索](https://cloud.tencent.com/document/product/867/32798)或[人脸验证](https://cloud.tencent.com/document/product/867/32806)。
 
-        :param request: 调用CreateScheduledAction所需参数的结构体。
-        :type request: :class:`tencentcloud.autoscaling.v20180419.models.CreateScheduledActionRequest`
-        :rtype: :class:`tencentcloud.autoscaling.v20180419.models.CreateScheduledActionResponse`
+        :param request: 调用CreateFace所需参数的结构体。
+        :type request: :class:`tencentcloud.iai.v20180301.models.CreateFaceRequest`
+        :rtype: :class:`tencentcloud.iai.v20180301.models.CreateFaceResponse`
 
         """
         try:
             params = request._serialize()
-            body = self.call("CreateScheduledAction", params)
+            body = self.call("CreateFace", params)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.CreateScheduledActionResponse()
+                model = models.CreateFaceResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -141,20 +143,20 @@ class AutoscalingClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def DeleteAutoScalingGroup(self, request):
-        """本接口（DeleteAutoScalingGroup）用于删除指定伸缩组，删除前提是伸缩组内无实例且当前未在执行伸缩活动。
+    def CreateGroup(self, request):
+        """用于创建一个空的人员库，如果人员库已存在返回错误。可根据需要创建自定义描述字段，用于辅助描述该人员库下的人员信息。1个APPID下最多创建2万个人员库（Group）、最多包含1000万张人脸（Face），单个人员库（Group）最多包含100万张人脸（Face）。
 
-        :param request: 调用DeleteAutoScalingGroup所需参数的结构体。
-        :type request: :class:`tencentcloud.autoscaling.v20180419.models.DeleteAutoScalingGroupRequest`
-        :rtype: :class:`tencentcloud.autoscaling.v20180419.models.DeleteAutoScalingGroupResponse`
+        :param request: 调用CreateGroup所需参数的结构体。
+        :type request: :class:`tencentcloud.iai.v20180301.models.CreateGroupRequest`
+        :rtype: :class:`tencentcloud.iai.v20180301.models.CreateGroupResponse`
 
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteAutoScalingGroup", params)
+            body = self.call("CreateGroup", params)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.DeleteAutoScalingGroupResponse()
+                model = models.CreateGroupResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -169,22 +171,22 @@ class AutoscalingClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def DeleteLaunchConfiguration(self, request):
-        """本接口（DeleteLaunchConfiguration）用于删除启动配置。
+    def CreatePerson(self, request):
+        """创建人员，添加人脸、姓名、性别及其他相关信息。
+        >
+        - 创建人员完成后，生效时间一般不超过 1 秒，极端情况最多不超过 5 秒，之后您可以进行[人脸搜索](https://cloud.tencent.com/document/product/867/32798)或[人脸验证](https://cloud.tencent.com/document/product/867/32806)。
 
-        * 若启动配置在伸缩组中属于生效状态，则该启动配置不允许删除。
-
-        :param request: 调用DeleteLaunchConfiguration所需参数的结构体。
-        :type request: :class:`tencentcloud.autoscaling.v20180419.models.DeleteLaunchConfigurationRequest`
-        :rtype: :class:`tencentcloud.autoscaling.v20180419.models.DeleteLaunchConfigurationResponse`
+        :param request: 调用CreatePerson所需参数的结构体。
+        :type request: :class:`tencentcloud.iai.v20180301.models.CreatePersonRequest`
+        :rtype: :class:`tencentcloud.iai.v20180301.models.CreatePersonResponse`
 
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteLaunchConfiguration", params)
+            body = self.call("CreatePerson", params)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.DeleteLaunchConfigurationResponse()
+                model = models.CreatePersonResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -199,20 +201,20 @@ class AutoscalingClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def DeleteScheduledAction(self, request):
-        """本接口（DeleteScheduledAction）用于删除特定的定时任务。
+    def DeleteFace(self, request):
+        """删除一个人员下的人脸图片。如果该人员只有一张人脸图片，则返回错误。
 
-        :param request: 调用DeleteScheduledAction所需参数的结构体。
-        :type request: :class:`tencentcloud.autoscaling.v20180419.models.DeleteScheduledActionRequest`
-        :rtype: :class:`tencentcloud.autoscaling.v20180419.models.DeleteScheduledActionResponse`
+        :param request: 调用DeleteFace所需参数的结构体。
+        :type request: :class:`tencentcloud.iai.v20180301.models.DeleteFaceRequest`
+        :rtype: :class:`tencentcloud.iai.v20180301.models.DeleteFaceResponse`
 
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteScheduledAction", params)
+            body = self.call("DeleteFace", params)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.DeleteScheduledActionResponse()
+                model = models.DeleteFaceResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -227,20 +229,20 @@ class AutoscalingClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def DescribeAccountLimits(self, request):
-        """本接口（DescribeAccountLimits）用于查询用户账户在弹性伸缩中的资源限制。
+    def DeleteGroup(self, request):
+        """删除该人员库及包含的所有的人员。若某人员同时存在多个人员库中，该人员不会被删除，但属于该人员库中的自定义描述字段信息会被删除。注：删除人员库的操作为异步执行，删除单张人脸时间约为10ms，即一小时内可以删除36万张。删除期间，无法向该人员库添加人员。
 
-        :param request: 调用DescribeAccountLimits所需参数的结构体。
-        :type request: :class:`tencentcloud.autoscaling.v20180419.models.DescribeAccountLimitsRequest`
-        :rtype: :class:`tencentcloud.autoscaling.v20180419.models.DescribeAccountLimitsResponse`
+        :param request: 调用DeleteGroup所需参数的结构体。
+        :type request: :class:`tencentcloud.iai.v20180301.models.DeleteGroupRequest`
+        :rtype: :class:`tencentcloud.iai.v20180301.models.DeleteGroupResponse`
 
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeAccountLimits", params)
+            body = self.call("DeleteGroup", params)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.DescribeAccountLimitsResponse()
+                model = models.DeleteGroupResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -255,20 +257,20 @@ class AutoscalingClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def DescribeAutoScalingActivities(self, request):
-        """本接口（DescribeAutoScalingActivities）用于查询伸缩组的伸缩活动记录。
+    def DeletePerson(self, request):
+        """删除该人员信息，此操作会导致所有人员库均删除此人员。
 
-        :param request: 调用DescribeAutoScalingActivities所需参数的结构体。
-        :type request: :class:`tencentcloud.autoscaling.v20180419.models.DescribeAutoScalingActivitiesRequest`
-        :rtype: :class:`tencentcloud.autoscaling.v20180419.models.DescribeAutoScalingActivitiesResponse`
+        :param request: 调用DeletePerson所需参数的结构体。
+        :type request: :class:`tencentcloud.iai.v20180301.models.DeletePersonRequest`
+        :rtype: :class:`tencentcloud.iai.v20180301.models.DeletePersonResponse`
 
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeAutoScalingActivities", params)
+            body = self.call("DeletePerson", params)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.DescribeAutoScalingActivitiesResponse()
+                model = models.DeletePersonResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -283,23 +285,20 @@ class AutoscalingClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def DescribeAutoScalingGroups(self, request):
-        """本接口（DescribeAutoScalingGroups）用于查询伸缩组信息。
+    def DeletePersonFromGroup(self, request):
+        """从某人员库中删除人员，此操作仅影响该人员库。
 
-        * 可以根据伸缩组ID、伸缩组名称或者启动配置ID等信息来查询伸缩组的详细信息。过滤信息详细请见过滤器`Filter`。
-        * 如果参数为空，返回当前用户一定数量（`Limit`所指定的数量，默认为20）的伸缩组。
-
-        :param request: 调用DescribeAutoScalingGroups所需参数的结构体。
-        :type request: :class:`tencentcloud.autoscaling.v20180419.models.DescribeAutoScalingGroupsRequest`
-        :rtype: :class:`tencentcloud.autoscaling.v20180419.models.DescribeAutoScalingGroupsResponse`
+        :param request: 调用DeletePersonFromGroup所需参数的结构体。
+        :type request: :class:`tencentcloud.iai.v20180301.models.DeletePersonFromGroupRequest`
+        :rtype: :class:`tencentcloud.iai.v20180301.models.DeletePersonFromGroupResponse`
 
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeAutoScalingGroups", params)
+            body = self.call("DeletePersonFromGroup", params)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.DescribeAutoScalingGroupsResponse()
+                model = models.DeletePersonFromGroupResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -314,23 +313,32 @@ class AutoscalingClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def DescribeAutoScalingInstances(self, request):
-        """本接口（DescribeAutoScalingInstances）用于查询弹性伸缩关联实例的信息。
+    def DetectFace(self, request):
+        """检测给定图片中的人脸（Face）的位置、相应的面部属性和人脸质量信息，位置包括 (x，y，w，h)，面部属性包括性别（gender）、年龄（age）、表情（expression）、魅力（beauty）、眼镜（glass）、发型（hair）、口罩（mask）和姿态 (pitch，roll，yaw)，人脸质量信息包括整体质量分（score）、模糊分（sharpness）、光照分（brightness）和五官遮挡分（completeness）。
 
-        * 可以根据实例ID、伸缩组ID等信息来查询实例的详细信息。过滤信息详细请见过滤器`Filter`。
-        * 如果参数为空，返回当前用户一定数量（`Limit`所指定的数量，默认为20）的实例。
 
-        :param request: 调用DescribeAutoScalingInstances所需参数的结构体。
-        :type request: :class:`tencentcloud.autoscaling.v20180419.models.DescribeAutoScalingInstancesRequest`
-        :rtype: :class:`tencentcloud.autoscaling.v20180419.models.DescribeAutoScalingInstancesResponse`
+        其中，人脸质量信息主要用于评价输入的人脸图片的质量。在使用人脸识别服务时，建议您对输入的人脸图片进行质量检测，提升后续业务处理的效果。该功能的应用场景包括：
+
+        1） 人员库[创建人员](https://cloud.tencent.com/document/product/867/32793)/[增加人脸](https://cloud.tencent.com/document/product/867/32795)：保证人员人脸信息的质量，便于后续的业务处理。
+
+        2） [人脸搜索](https://cloud.tencent.com/document/product/867/32798)：保证输入的图片质量，快速准确匹配到对应的人员。
+
+        3） [人脸验证](https://cloud.tencent.com/document/product/867/32806)：保证人脸信息的质量，避免明明是本人却认证不通过的情况。
+
+        4） [人脸融合](https://cloud.tencent.com/product/facefusion)：保证上传的人脸质量，人脸融合的效果更好。
+
+
+        :param request: 调用DetectFace所需参数的结构体。
+        :type request: :class:`tencentcloud.iai.v20180301.models.DetectFaceRequest`
+        :rtype: :class:`tencentcloud.iai.v20180301.models.DetectFaceResponse`
 
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeAutoScalingInstances", params)
+            body = self.call("DetectFace", params)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.DescribeAutoScalingInstancesResponse()
+                model = models.DetectFaceResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -345,23 +353,22 @@ class AutoscalingClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def DescribeLaunchConfigurations(self, request):
-        """本接口（DescribeLaunchConfigurations）用于查询启动配置的信息。
+    def DetectLiveFace(self, request):
+        """用于对用户上传的静态图片进行人脸活体检测。与动态活体检测的区别是：静态活体检测中，用户不需要通过唇语或摇头眨眼等动作来识别。
 
-        * 可以根据启动配置ID、启动配置名称等信息来查询启动配置的详细信息。过滤信息详细请见过滤器`Filter`。
-        * 如果参数为空，返回当前用户一定数量（`Limit`所指定的数量，默认为20）的启动配置。
+        静态活体检测仅用于对防攻击要求不高的场景，如果对活体检测有更高安全性要求，请使用[人脸核身·云智慧眼](https://cloud.tencent.com/product/faceid)产品。
 
-        :param request: 调用DescribeLaunchConfigurations所需参数的结构体。
-        :type request: :class:`tencentcloud.autoscaling.v20180419.models.DescribeLaunchConfigurationsRequest`
-        :rtype: :class:`tencentcloud.autoscaling.v20180419.models.DescribeLaunchConfigurationsResponse`
+        :param request: 调用DetectLiveFace所需参数的结构体。
+        :type request: :class:`tencentcloud.iai.v20180301.models.DetectLiveFaceRequest`
+        :rtype: :class:`tencentcloud.iai.v20180301.models.DetectLiveFaceResponse`
 
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeLaunchConfigurations", params)
+            body = self.call("DetectLiveFace", params)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.DescribeLaunchConfigurationsResponse()
+                model = models.DetectLiveFaceResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -376,23 +383,20 @@ class AutoscalingClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def DescribeScheduledActions(self, request):
-        """本接口 (DescribeScheduledActions) 用于查询一个或多个定时任务的详细信息。
+    def GetGroupList(self, request):
+        """获取人员库列表。
 
-        * 可以根据定时任务ID、定时任务名称或者伸缩组ID等信息来查询定时任务的详细信息。过滤信息详细请见过滤器`Filter`。
-        * 如果参数为空，返回当前用户一定数量（Limit所指定的数量，默认为20）的定时任务。
-
-        :param request: 调用DescribeScheduledActions所需参数的结构体。
-        :type request: :class:`tencentcloud.autoscaling.v20180419.models.DescribeScheduledActionsRequest`
-        :rtype: :class:`tencentcloud.autoscaling.v20180419.models.DescribeScheduledActionsResponse`
+        :param request: 调用GetGroupList所需参数的结构体。
+        :type request: :class:`tencentcloud.iai.v20180301.models.GetGroupListRequest`
+        :rtype: :class:`tencentcloud.iai.v20180301.models.GetGroupListResponse`
 
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeScheduledActions", params)
+            body = self.call("GetGroupList", params)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.DescribeScheduledActionsResponse()
+                model = models.GetGroupListResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -407,20 +411,20 @@ class AutoscalingClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def DetachInstances(self, request):
-        """本接口（DettachInstances）用于从伸缩组移出 CVM 实例，本接口不会被销毁实例。
+    def GetPersonBaseInfo(self, request):
+        """获取指定人员的信息，包括姓名、性别、人脸等。
 
-        :param request: 调用DetachInstances所需参数的结构体。
-        :type request: :class:`tencentcloud.autoscaling.v20180419.models.DetachInstancesRequest`
-        :rtype: :class:`tencentcloud.autoscaling.v20180419.models.DetachInstancesResponse`
+        :param request: 调用GetPersonBaseInfo所需参数的结构体。
+        :type request: :class:`tencentcloud.iai.v20180301.models.GetPersonBaseInfoRequest`
+        :rtype: :class:`tencentcloud.iai.v20180301.models.GetPersonBaseInfoResponse`
 
         """
         try:
             params = request._serialize()
-            body = self.call("DetachInstances", params)
+            body = self.call("GetPersonBaseInfo", params)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.DetachInstancesResponse()
+                model = models.GetPersonBaseInfoResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -435,20 +439,20 @@ class AutoscalingClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def DisableAutoScalingGroup(self, request):
-        """本接口（DisableAutoScalingGroup）用于停用指定伸缩组。
+    def GetPersonGroupInfo(self, request):
+        """获取指定人员的信息，包括加入的人员库、描述内容等。
 
-        :param request: 调用DisableAutoScalingGroup所需参数的结构体。
-        :type request: :class:`tencentcloud.autoscaling.v20180419.models.DisableAutoScalingGroupRequest`
-        :rtype: :class:`tencentcloud.autoscaling.v20180419.models.DisableAutoScalingGroupResponse`
+        :param request: 调用GetPersonGroupInfo所需参数的结构体。
+        :type request: :class:`tencentcloud.iai.v20180301.models.GetPersonGroupInfoRequest`
+        :rtype: :class:`tencentcloud.iai.v20180301.models.GetPersonGroupInfoResponse`
 
         """
         try:
             params = request._serialize()
-            body = self.call("DisableAutoScalingGroup", params)
+            body = self.call("GetPersonGroupInfo", params)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.DisableAutoScalingGroupResponse()
+                model = models.GetPersonGroupInfoResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -463,20 +467,20 @@ class AutoscalingClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def EnableAutoScalingGroup(self, request):
-        """本接口（EnableAutoScalingGroup）用于启用指定伸缩组。
+    def GetPersonList(self, request):
+        """获取指定人员库中的人员列表。
 
-        :param request: 调用EnableAutoScalingGroup所需参数的结构体。
-        :type request: :class:`tencentcloud.autoscaling.v20180419.models.EnableAutoScalingGroupRequest`
-        :rtype: :class:`tencentcloud.autoscaling.v20180419.models.EnableAutoScalingGroupResponse`
+        :param request: 调用GetPersonList所需参数的结构体。
+        :type request: :class:`tencentcloud.iai.v20180301.models.GetPersonListRequest`
+        :rtype: :class:`tencentcloud.iai.v20180301.models.GetPersonListResponse`
 
         """
         try:
             params = request._serialize()
-            body = self.call("EnableAutoScalingGroup", params)
+            body = self.call("GetPersonList", params)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.EnableAutoScalingGroupResponse()
+                model = models.GetPersonListResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -491,20 +495,20 @@ class AutoscalingClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def ModifyAutoScalingGroup(self, request):
-        """本接口（ModifyAutoScalingGroup）用于修改伸缩组。
+    def GetPersonListNum(self, request):
+        """获取指定人员库中人员数量。
 
-        :param request: 调用ModifyAutoScalingGroup所需参数的结构体。
-        :type request: :class:`tencentcloud.autoscaling.v20180419.models.ModifyAutoScalingGroupRequest`
-        :rtype: :class:`tencentcloud.autoscaling.v20180419.models.ModifyAutoScalingGroupResponse`
+        :param request: 调用GetPersonListNum所需参数的结构体。
+        :type request: :class:`tencentcloud.iai.v20180301.models.GetPersonListNumRequest`
+        :rtype: :class:`tencentcloud.iai.v20180301.models.GetPersonListNumResponse`
 
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyAutoScalingGroup", params)
+            body = self.call("GetPersonListNum", params)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.ModifyAutoScalingGroupResponse()
+                model = models.GetPersonListNumResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -519,20 +523,20 @@ class AutoscalingClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def ModifyDesiredCapacity(self, request):
-        """本接口（ModifyDesiredCapacity）用于修改指定伸缩组的期望实例数
+    def ModifyGroup(self, request):
+        """修改人员库名称、备注、自定义描述字段名称。
 
-        :param request: 调用ModifyDesiredCapacity所需参数的结构体。
-        :type request: :class:`tencentcloud.autoscaling.v20180419.models.ModifyDesiredCapacityRequest`
-        :rtype: :class:`tencentcloud.autoscaling.v20180419.models.ModifyDesiredCapacityResponse`
+        :param request: 调用ModifyGroup所需参数的结构体。
+        :type request: :class:`tencentcloud.iai.v20180301.models.ModifyGroupRequest`
+        :rtype: :class:`tencentcloud.iai.v20180301.models.ModifyGroupResponse`
 
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyDesiredCapacity", params)
+            body = self.call("ModifyGroup", params)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.ModifyDesiredCapacityResponse()
+                model = models.ModifyGroupResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -547,23 +551,20 @@ class AutoscalingClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def ModifyLaunchConfigurationAttributes(self, request):
-        """本接口（ModifyLaunchConfigurationAttributes）用于修改启动配置部分属性。
+    def ModifyPersonBaseInfo(self, request):
+        """修改人员信息，包括名称、性别等。人员名称和性别修改会同步到包含该人员的所有人员库。
 
-        * 修改启动配置后，已经使用该启动配置扩容的存量实例不会发生变更，此后使用该启动配置的新增实例会按照新的配置进行扩容。
-        * 本接口支持修改部分简单类型。
-
-        :param request: 调用ModifyLaunchConfigurationAttributes所需参数的结构体。
-        :type request: :class:`tencentcloud.autoscaling.v20180419.models.ModifyLaunchConfigurationAttributesRequest`
-        :rtype: :class:`tencentcloud.autoscaling.v20180419.models.ModifyLaunchConfigurationAttributesResponse`
+        :param request: 调用ModifyPersonBaseInfo所需参数的结构体。
+        :type request: :class:`tencentcloud.iai.v20180301.models.ModifyPersonBaseInfoRequest`
+        :rtype: :class:`tencentcloud.iai.v20180301.models.ModifyPersonBaseInfoResponse`
 
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyLaunchConfigurationAttributes", params)
+            body = self.call("ModifyPersonBaseInfo", params)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.ModifyLaunchConfigurationAttributesResponse()
+                model = models.ModifyPersonBaseInfoResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -578,24 +579,20 @@ class AutoscalingClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def ModifyLoadBalancers(self, request):
-        """本接口（ModifyLoadBalancers）用于修改伸缩组的负载均衡器。
+    def ModifyPersonGroupInfo(self, request):
+        """修改指定人员库人员描述内容。
 
-        * 本接口用于为伸缩组指定新的负载均衡器配置，采用“完全覆盖”风格，无论之前配置如何，统一按照接口参数配置为新的负载均衡器。
-        * 如果要为伸缩组清空负载均衡器，则在调用本接口时仅指定伸缩组ID，不指定具体负载均衡器。
-        * 本接口会立即修改伸缩组的负载均衡器，并生成一个伸缩活动，异步修改存量实例的负载均衡器。
-
-        :param request: 调用ModifyLoadBalancers所需参数的结构体。
-        :type request: :class:`tencentcloud.autoscaling.v20180419.models.ModifyLoadBalancersRequest`
-        :rtype: :class:`tencentcloud.autoscaling.v20180419.models.ModifyLoadBalancersResponse`
+        :param request: 调用ModifyPersonGroupInfo所需参数的结构体。
+        :type request: :class:`tencentcloud.iai.v20180301.models.ModifyPersonGroupInfoRequest`
+        :rtype: :class:`tencentcloud.iai.v20180301.models.ModifyPersonGroupInfoResponse`
 
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyLoadBalancers", params)
+            body = self.call("ModifyPersonGroupInfo", params)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.ModifyLoadBalancersResponse()
+                model = models.ModifyPersonGroupInfoResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -610,20 +607,21 @@ class AutoscalingClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def ModifyScheduledAction(self, request):
-        """本接口（ModifyScheduledAction）用于修改定时任务。
+    def SearchFaces(self, request):
+        """用于对一张待识别的人脸图片，在一个或多个人员库中识别出最相似的 TopN 人员，识别结果按照相似度从大到小排序。单次搜索的人员库人脸总数量不得超过 100 万张。
+        此接口需与[人员库管理相关接口](https://cloud.tencent.com/document/product/867/32794)结合使用。
 
-        :param request: 调用ModifyScheduledAction所需参数的结构体。
-        :type request: :class:`tencentcloud.autoscaling.v20180419.models.ModifyScheduledActionRequest`
-        :rtype: :class:`tencentcloud.autoscaling.v20180419.models.ModifyScheduledActionResponse`
+        :param request: 调用SearchFaces所需参数的结构体。
+        :type request: :class:`tencentcloud.iai.v20180301.models.SearchFacesRequest`
+        :rtype: :class:`tencentcloud.iai.v20180301.models.SearchFacesResponse`
 
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyScheduledAction", params)
+            body = self.call("SearchFaces", params)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.ModifyScheduledActionResponse()
+                model = models.SearchFacesResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -638,20 +636,20 @@ class AutoscalingClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def RemoveInstances(self, request):
-        """本接口（RemoveInstances）用于从伸缩组删除 CVM 实例。根据当前的产品逻辑，如果实例由弹性伸缩自动创建，则实例会被销毁；如果实例系创建后加入伸缩组的，则会从伸缩组中移除，保留实例。
+    def VerifyFace(self, request):
+        """给定一张人脸图片和一个 PersonId，判断图片中的人和 PersonId 对应的人是否为同一人。PersonId 请参考[人员库管理相关接口](https://cloud.tencent.com/document/product/867/32794)。 和[人脸比对](https://cloud.tencent.com/document/product/867/32802)接口不同的是，[人脸验证](https://cloud.tencent.com/document/product/867/32806)用于判断 “此人是否是此人”，“此人”的信息已存于人员库中，“此人”可能存在多张人脸图片；而[人脸比对](https://cloud.tencent.com/document/product/867/32802)用于判断两张人脸的相似度。
 
-        :param request: 调用RemoveInstances所需参数的结构体。
-        :type request: :class:`tencentcloud.autoscaling.v20180419.models.RemoveInstancesRequest`
-        :rtype: :class:`tencentcloud.autoscaling.v20180419.models.RemoveInstancesResponse`
+        :param request: 调用VerifyFace所需参数的结构体。
+        :type request: :class:`tencentcloud.iai.v20180301.models.VerifyFaceRequest`
+        :rtype: :class:`tencentcloud.iai.v20180301.models.VerifyFaceResponse`
 
         """
         try:
             params = request._serialize()
-            body = self.call("RemoveInstances", params)
+            body = self.call("VerifyFace", params)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.RemoveInstancesResponse()
+                model = models.VerifyFaceResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
