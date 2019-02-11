@@ -12,7 +12,7 @@ try:
     # 实例化要进行语音合成请求的client对象
     client = AaiClient(cred, 'ap-shanghai')
     # 实例化一个请求对象
-    req = TextToVoiceRequest('先帝创业未半而中道崩殂，今天下三分')
+    req = TextToVoiceRequest('先帝创业未半而中道崩殂')
     # 请求对象属性封装
     req.Text = '先帝创业未半而中道崩殂'  # type: str # 要合成语音的文本
     req.SessionId = uuid4()  # type: int # 一次请求对应一个SessionId，会原样返回，建议传入类似于uuid的字符串防止重复
