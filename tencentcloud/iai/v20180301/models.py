@@ -115,18 +115,24 @@ class CompareFaceRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param ImageA: A 图片 base64 数据。支持PNG、JPG、JPEG、BMP，不支持 GIF 图片。
+        :param ImageA: A 图片 base64 数据。
+若图片中包含多张人脸，只选取其中人脸面积最大的人脸。
+支持PNG、JPG、JPEG、BMP，不支持 GIF 图片。
         :type ImageA: str
-        :param ImageB: B 图片 base64 数据。支持PNG、JPG、JPEG、BMP，不支持 GIF 图片。
+        :param ImageB: B 图片 base64 数据。
+若图片中包含多张人脸，只选取其中人脸面积最大的人脸。
+支持PNG、JPG、JPEG、BMP，不支持 GIF 图片。
         :type ImageB: str
         :param UrlA: A 图片的 Url 。A 图片的 Url、Image必须提供一个，如果都提供，只使用 Url。 
 图片存储于腾讯云的Url可保障更高下载速度和稳定性，建议图片存储于腾讯云。 
 非腾讯云存储的Url速度和稳定性可能受一定影响。
+若图片中包含多张人脸，只选取其中人脸面积最大的人脸。
 支持PNG、JPG、JPEG、BMP，不支持 GIF 图片。
         :type UrlA: str
         :param UrlB: B 图片的 Url 。B 图片的 Url、Image必须提供一个，如果都提供，只使用 Url。 
 图片存储于腾讯云的Url可保障更高下载速度和稳定性，建议图片存储于腾讯云。 
 非腾讯云存储的Url速度和稳定性可能受一定影响。
+若图片中包含多张人脸，只选取其中人脸面积最大的人脸。
 支持PNG、JPG、JPEG、BMP，不支持 GIF 图片。
         :type UrlB: str
         """
@@ -223,12 +229,14 @@ class CreateFaceRequest(AbstractModel):
         :param PersonId: 人员ID。
         :type PersonId: str
         :param Images: 图片 base64 数据。人员人脸总数量不可超过5张。
+若图片中包含多张人脸，只选取其中人脸面积最大的人脸。
 支持PNG、JPG、JPEG、BMP，不支持 GIF 图片。
         :type Images: list of str
         :param Urls: 图片的 Url、Image必须提供一个，如果都提供，只使用 Url。
 图片存储于腾讯云的Url可保障更高下载速度和稳定性，建议图片存储于腾讯云。 
 非腾讯云存储的Url速度和稳定性可能受一定影响。 
 人员人脸总数量不可超过5张。
+若图片中包含多张人脸，只选取其中人脸面积最大的人脸。
 支持PNG、JPG、JPEG、BMP，不支持 GIF 图片。
         :type Urls: list of str
         """
@@ -254,7 +262,7 @@ class CreateFaceResponse(AbstractModel):
         :type SucFaceNum: int
         :param SucFaceIds: 加入成功的人脸ID列表
         :type SucFaceIds: list of str
-        :param RetCode: 每张人脸图片添加结果的返回码
+        :param RetCode: 每张人脸图片添加结果，-1101 代表未检测到人脸，-1102 代表图片解码失败，其他非 0 值代表算法服务异常。
         :type RetCode: list of int
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -341,11 +349,14 @@ class CreatePersonRequest(AbstractModel):
         :type Gender: int
         :param PersonExDescriptionInfos: 人员描述字段内容，key-value。[0，60]个字符，可修改，可重复。
         :type PersonExDescriptionInfos: list of PersonExDescriptionInfo
-        :param Image: 图片 base64 数据。支持PNG、JPG、JPEG、BMP，不支持 GIF 图片。
+        :param Image: 图片 base64 数据。
+若图片中包含多张人脸，只选取其中人脸面积最大的人脸。
+支持PNG、JPG、JPEG、BMP，不支持 GIF 图片。
         :type Image: str
         :param Url: 图片的 Url、Image必须提供一个，如果都提供，只使用 Url。
 图片存储于腾讯云的Url可保障更高下载速度和稳定性，建议图片存储于腾讯云。 
 非腾讯云存储的Url速度和稳定性可能受一定影响。
+若图片中包含多张人脸，只选取其中人脸面积最大的人脸。
 支持PNG、JPG、JPEG、BMP，不支持 GIF 图片。
         :type Url: str
         """
@@ -1655,11 +1666,14 @@ class VerifyFaceRequest(AbstractModel):
         """
         :param PersonId: 待验证的人员ID。人员ID具体信息请参考人员库管理相关接口。
         :type PersonId: str
-        :param Image: 图片 base64 数据。支持PNG、JPG、JPEG、BMP，不支持 GIF 图片。
+        :param Image: 图片 base64 数据。
+若图片中包含多张人脸，只选取其中人脸面积最大的人脸。
+支持PNG、JPG、JPEG、BMP，不支持 GIF 图片。
         :type Image: str
         :param Url: 图片的 Url 。 图片的 Url、Image必须提供一个，如果都提供，只使用 Url。 
 图片存储于腾讯云的Url可保障更高下载速度和稳定性，建议图片存储于腾讯云。 
 非腾讯云存储的Url速度和稳定性可能受一定影响。
+若图片中包含多张人脸，只选取其中人脸面积最大的人脸。
 支持PNG、JPG、JPEG、BMP，不支持 GIF 图片。
         :type Url: str
         """

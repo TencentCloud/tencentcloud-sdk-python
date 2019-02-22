@@ -224,6 +224,57 @@ class GetLiveCodeResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class IdCardVerificationRequest(AbstractModel):
+    """IdCardVerification请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param IdCard: 身份证号
+        :type IdCard: str
+        :param Name: 姓名
+        :type Name: str
+        """
+        self.IdCard = None
+        self.Name = None
+
+
+    def _deserialize(self, params):
+        self.IdCard = params.get("IdCard")
+        self.Name = params.get("Name")
+
+
+class IdCardVerificationResponse(AbstractModel):
+    """IdCardVerification返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Result: 认证结果码。
+0: 姓名和身份证号一致
+-1: 姓名和身份证号不一致
+-2: 身份证号错误
+-3: 姓名错误
+-4: 认证出错
+        :type Result: str
+        :param Description: 认证结果信息。
+        :type Description: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Result = None
+        self.Description = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Result = params.get("Result")
+        self.Description = params.get("Description")
+        self.RequestId = params.get("RequestId")
+
+
 class ImageRecognitionRequest(AbstractModel):
     """ImageRecognition请求参数结构体
 

@@ -113,6 +113,62 @@ class AutoscalingClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def CreateNotificationConfiguration(self, request):
+        """本接口（CreateNotificationConfiguration）用于创建通知。
+
+        :param request: 调用CreateNotificationConfiguration所需参数的结构体。
+        :type request: :class:`tencentcloud.autoscaling.v20180419.models.CreateNotificationConfigurationRequest`
+        :rtype: :class:`tencentcloud.autoscaling.v20180419.models.CreateNotificationConfigurationResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("CreateNotificationConfiguration", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateNotificationConfigurationResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise e
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def CreateScalingPolicy(self, request):
+        """本接口（CreateScalingPolicy）用于创建告警触发策略。
+
+        :param request: 调用CreateScalingPolicy所需参数的结构体。
+        :type request: :class:`tencentcloud.autoscaling.v20180419.models.CreateScalingPolicyRequest`
+        :rtype: :class:`tencentcloud.autoscaling.v20180419.models.CreateScalingPolicyResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("CreateScalingPolicy", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateScalingPolicyResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise e
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def CreateScheduledAction(self, request):
         """本接口（CreateScheduledAction）用于创建定时任务。
 
@@ -185,6 +241,62 @@ class AutoscalingClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteLaunchConfigurationResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise e
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DeleteNotificationConfiguration(self, request):
+        """本接口（DeleteNotificationConfiguration）用于删除特定的通知。
+
+        :param request: 调用DeleteNotificationConfiguration所需参数的结构体。
+        :type request: :class:`tencentcloud.autoscaling.v20180419.models.DeleteNotificationConfigurationRequest`
+        :rtype: :class:`tencentcloud.autoscaling.v20180419.models.DeleteNotificationConfigurationResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DeleteNotificationConfiguration", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DeleteNotificationConfigurationResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise e
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DeleteScalingPolicy(self, request):
+        """本接口（DeleteScalingPolicy）用于删除告警触发策略。
+
+        :param request: 调用DeleteScalingPolicy所需参数的结构体。
+        :type request: :class:`tencentcloud.autoscaling.v20180419.models.DeleteScalingPolicyRequest`
+        :rtype: :class:`tencentcloud.autoscaling.v20180419.models.DeleteScalingPolicyResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DeleteScalingPolicy", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DeleteScalingPolicyResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -362,6 +474,65 @@ class AutoscalingClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeLaunchConfigurationsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise e
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeNotificationConfigurations(self, request):
+        """本接口 (DescribeNotificationConfigurations) 用于查询一个或多个通知的详细信息。
+
+        可以根据通知ID、伸缩组ID等信息来查询通知的详细信息。过滤信息详细请见过滤器`Filter`。
+        如果参数为空，返回当前用户一定数量（Limit所指定的数量，默认为20）的通知。
+
+        :param request: 调用DescribeNotificationConfigurations所需参数的结构体。
+        :type request: :class:`tencentcloud.autoscaling.v20180419.models.DescribeNotificationConfigurationsRequest`
+        :rtype: :class:`tencentcloud.autoscaling.v20180419.models.DescribeNotificationConfigurationsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeNotificationConfigurations", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeNotificationConfigurationsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise e
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeScalingPolicies(self, request):
+        """本接口（DescribeScalingPolicies）用于查询告警触发策略。
+
+        :param request: 调用DescribeScalingPolicies所需参数的结构体。
+        :type request: :class:`tencentcloud.autoscaling.v20180419.models.DescribeScalingPoliciesRequest`
+        :rtype: :class:`tencentcloud.autoscaling.v20180419.models.DescribeScalingPoliciesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeScalingPolicies", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeScalingPoliciesResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -610,6 +781,62 @@ class AutoscalingClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def ModifyNotificationConfiguration(self, request):
+        """本接口（ModifyNotificationConfiguration）用于修改通知。
+
+        :param request: 调用ModifyNotificationConfiguration所需参数的结构体。
+        :type request: :class:`tencentcloud.autoscaling.v20180419.models.ModifyNotificationConfigurationRequest`
+        :rtype: :class:`tencentcloud.autoscaling.v20180419.models.ModifyNotificationConfigurationResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ModifyNotificationConfiguration", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ModifyNotificationConfigurationResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise e
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ModifyScalingPolicy(self, request):
+        """本接口（ModifyScalingPolicy）用于修改告警触发策略。
+
+        :param request: 调用ModifyScalingPolicy所需参数的结构体。
+        :type request: :class:`tencentcloud.autoscaling.v20180419.models.ModifyScalingPolicyRequest`
+        :rtype: :class:`tencentcloud.autoscaling.v20180419.models.ModifyScalingPolicyResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ModifyScalingPolicy", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ModifyScalingPolicyResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise e
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def ModifyScheduledAction(self, request):
         """本接口（ModifyScheduledAction）用于修改定时任务。
 
@@ -652,6 +879,35 @@ class AutoscalingClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.RemoveInstancesResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise e
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def SetInstancesProtection(self, request):
+        """本接口（SetInstancesProtection）用于设置实例移除保护。
+        子机设置为移除保护之后，当发生不健康替换、报警策略、期望值变更等触发缩容时，将不对此子机缩容操作。
+
+        :param request: 调用SetInstancesProtection所需参数的结构体。
+        :type request: :class:`tencentcloud.autoscaling.v20180419.models.SetInstancesProtectionRequest`
+        :rtype: :class:`tencentcloud.autoscaling.v20180419.models.SetInstancesProtectionResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("SetInstancesProtection", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.SetInstancesProtectionResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

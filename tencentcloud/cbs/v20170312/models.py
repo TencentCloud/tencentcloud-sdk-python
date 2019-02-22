@@ -707,7 +707,7 @@ class Disk(AbstractModel):
         :type DiskSize: int
         :param DiskState: 云盘状态。取值范围：<br><li>UNATTACHED：未挂载<br><li>ATTACHING：挂载中<br><li>ATTACHED：已挂载<br><li>DETACHING：解挂中<br><li>EXPANDING：扩容中<br><li>ROLLBACKING：回滚中<br><li>TORECYCLE：待回收<br><li>DUMPING：拷贝硬盘中。
         :type DiskState: str
-        :param DiskType: 云盘介质类型。取值范围：<br><li>CLOUD_BASIC：表示普通云硬<br><li>CLOUD_PREMIUM：表示高性能云硬盘<br><li>CLOUD_SSD：SSD表示SSD云硬盘。
+        :param DiskType: 云盘介质类型。取值范围：<br><li>CLOUD_BASIC：表示普通云硬盘<br><li>CLOUD_PREMIUM：表示高性能云硬盘<br><li>CLOUD_SSD：SSD表示SSD云硬盘。
         :type DiskType: str
         :param Attached: 云盘是否挂载到云主机上。取值范围：<br><li>false:表示未挂载<br><li>true:表示已挂载。
         :type Attached: bool
@@ -958,6 +958,27 @@ class Filter(AbstractModel):
         self.Values = params.get("Values")
 
 
+class Image(AbstractModel):
+    """镜像。
+
+    """
+
+    def __init__(self):
+        """
+        :param ImageId: 镜像实例ID。
+        :type ImageId: str
+        :param ImageName: 镜像名称。
+        :type ImageName: str
+        """
+        self.ImageId = None
+        self.ImageName = None
+
+
+    def _deserialize(self, params):
+        self.ImageId = params.get("ImageId")
+        self.ImageName = params.get("ImageName")
+
+
 class InquiryPriceCreateDisksRequest(AbstractModel):
     """InquiryPriceCreateDisks请求参数结构体
 
@@ -1142,12 +1163,15 @@ class ModifyDiskAttributesRequest(AbstractModel):
         :type Portable: bool
         :param DeleteWithInstance: 成功挂载到云主机后该云硬盘是否随云主机销毁，TRUE表示随云主机销毁，FALSE表示不随云主机销毁。仅支持按量计费云硬盘数据盘。
         :type DeleteWithInstance: bool
+        :param DiskType: 变更云盘类型时，可传入该参数，表示变更的目标类型，取值范围：<br><li>CLOUD_PREMIUM：表示高性能云硬盘<br><li>CLOUD_SSD：表示SSD云硬盘。<br>当前不支持批量变更类型，即传入DiskType时，DiskIds仅支持传入一块云盘；<br>变更云盘类型时不支持同时变更其他属性。
+        :type DiskType: str
         """
         self.DiskIds = None
         self.ProjectId = None
         self.DiskName = None
         self.Portable = None
         self.DeleteWithInstance = None
+        self.DiskType = None
 
 
     def _deserialize(self, params):
@@ -1156,6 +1180,7 @@ class ModifyDiskAttributesRequest(AbstractModel):
         self.DiskName = params.get("DiskName")
         self.Portable = params.get("Portable")
         self.DeleteWithInstance = params.get("DeleteWithInstance")
+        self.DiskType = params.get("DiskType")
 
 
 class ModifyDiskAttributesResponse(AbstractModel):
@@ -1256,7 +1281,7 @@ class ModifySnapshotAttributeResponse(AbstractModel):
 
 
 class Placement(AbstractModel):
-    """描述了实例的抽象位置，包括其所在的可用区，所属的项目
+    """描述了实例的抽象位置，包括其所在的可用区，所属的项目，以及所属的独享集群的ID和名字。
 
     """
 
@@ -1266,14 +1291,26 @@ class Placement(AbstractModel):
         :type Zone: str
         :param ProjectId: 实例所属项目ID。该参数可以通过调用 [DescribeProject](/document/api/378/4400) 的返回值中的 projectId 字段来获取。不填为默认项目。
         :type ProjectId: int
+        :param CdcId: 实例所属的独享集群ID。作为入参时，表示对指定的CdcId独享集群的资源进行操作，可为空。 作为出参时，表示资源所属的独享集群的ID，可为空。
+        :type CdcId: str
+        :param CageId: 围笼Id。作为入参时，表示对指定的CageId的资源进行操作，可为空。 作为出参时，表示资源所属围笼ID，可为空。
+        :type CageId: str
+        :param CdcName: 独享集群名字。作为入参时，忽略。作为出参时，表示云硬盘所属的独享集群名，可为空。
+        :type CdcName: str
         """
         self.Zone = None
         self.ProjectId = None
+        self.CdcId = None
+        self.CageId = None
+        self.CdcName = None
 
 
     def _deserialize(self, params):
         self.Zone = params.get("Zone")
         self.ProjectId = params.get("ProjectId")
+        self.CdcId = params.get("CdcId")
+        self.CageId = params.get("CageId")
+        self.CdcName = params.get("CdcName")
 
 
 class PrepayPrice(AbstractModel):
@@ -1443,8 +1480,10 @@ class Snapshot(AbstractModel):
         :type CopyingToRegions: list of str
         :param CopyFromRemote: 是否为跨地域复制的快照。取值范围：<br><li>true：表示为跨地域复制的快照。<br><li>false:本地域的快照。
         :type CopyFromRemote: bool
-        :param ImageIds: 快照关联的镜像ID列表。
-        :type ImageIds: list of str
+        :param Images: 快照关联的镜像列表。
+        :type Images: list of Image
+        :param ImageCount: 快照关联的镜像个数。
+        :type ImageCount: int
         """
         self.SnapshotId = None
         self.Placement = None
@@ -1460,7 +1499,8 @@ class Snapshot(AbstractModel):
         self.IsPermanent = None
         self.CopyingToRegions = None
         self.CopyFromRemote = None
-        self.ImageIds = None
+        self.Images = None
+        self.ImageCount = None
 
 
     def _deserialize(self, params):
@@ -1480,7 +1520,13 @@ class Snapshot(AbstractModel):
         self.IsPermanent = params.get("IsPermanent")
         self.CopyingToRegions = params.get("CopyingToRegions")
         self.CopyFromRemote = params.get("CopyFromRemote")
-        self.ImageIds = params.get("ImageIds")
+        if params.get("Images") is not None:
+            self.Images = []
+            for item in params.get("Images"):
+                obj = Image()
+                obj._deserialize(item)
+                self.Images.append(obj)
+        self.ImageCount = params.get("ImageCount")
 
 
 class SnapshotOperationLog(AbstractModel):

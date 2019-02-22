@@ -54,7 +54,7 @@ class TiaClient(AbstractClient):
 
 
     def CreateModel(self, request):
-        """在指定的集群上部署一个模型，用以提供服务。
+        """部署模型，用以对外提供服务。有两种部署模式：`无服务器模式` 和 `集群模式`。`无服务器模式` 下，模型文件被部署到无服务器云函数，即 [SCF](https://cloud.tencent.com/product/scf)，用户可以在其控制台上进一步操作。`集群模式` 下，模型文件被部署到 TI-A 的计算集群中。
 
         :param request: 调用CreateModel所需参数的结构体。
         :type request: :class:`tencentcloud.tia.v20180226.models.CreateModelRequest`
@@ -110,7 +110,7 @@ class TiaClient(AbstractClient):
 
 
     def DeleteModel(self, request):
-        """删除一个指定的Model
+        """删除指定的部署模型。模型有两种部署模式：`无服务器模式` 和 `集群模式`。`无服务器模式` 下，模型文件被部署到无服务器云函数，即 [SCF](https://cloud.tencent.com/product/scf)，用户可以在其控制台上进一步操作。`集群模式` 下，模型文件被部署到 TI-A 的计算集群中。
 
         :param request: 调用DeleteModel所需参数的结构体。
         :type request: :class:`tencentcloud.tia.v20180226.models.DeleteModelRequest`
@@ -166,7 +166,7 @@ class TiaClient(AbstractClient):
 
 
     def DescribeModel(self, request):
-        """描述Model
+        """描述已经部署的某个模型。而模型部署有两种模式：`无服务器模式` 和 `集群模式`。`无服务器模式` 下，模型文件被部署到无服务器云函数，即 [SCF](https://cloud.tencent.com/product/scf)，用户可以在其控制台上进一步操作。`集群模式` 下，模型文件被部署到 TI-A 的计算集群中。
 
         :param request: 调用DescribeModel所需参数的结构体。
         :type request: :class:`tencentcloud.tia.v20180226.models.DescribeModelRequest`
@@ -250,7 +250,7 @@ class TiaClient(AbstractClient):
 
 
     def ListModels(self, request):
-        """列举某个指定集群上运行的模型。
+        """用以列举已经部署的模型。而部署有两种模式：`无服务器模式` 和 `集群模式`。`无服务器模式` 下，模型文件被部署到无服务器云函数，即 [SCF](https://cloud.tencent.com/product/scf)，用户可以在其控制台上进一步操作。`集群模式` 下，模型文件被部署到 TI-A 的计算集群中。不同部署模式下的模型分开列出。
 
         :param request: 调用ListModels所需参数的结构体。
         :type request: :class:`tencentcloud.tia.v20180226.models.ListModelsRequest`
@@ -278,7 +278,7 @@ class TiaClient(AbstractClient):
 
 
     def QueryLogs(self, request):
-        """查询日志
+        """查询 TI-A 训练任务的日志
 
         :param request: 调用QueryLogs所需参数的结构体。
         :type request: :class:`tencentcloud.tia.v20180226.models.QueryLogsRequest`

@@ -58,6 +58,236 @@ class BindPsaTagResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class BuyDevicesRequest(AbstractModel):
+    """BuyDevices请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Zone: 可用区ID。通过接口[查询地域以及可用区(DescribeRegions)](https://cloud.tencent.com/document/api/386/6634)获取可用区信息
+        :type Zone: str
+        :param OsTypeId: 部署服务器的操作系统ID。通过接口[查询操作系统信息(DescribeOsInfo)](https://cloud.tencent.com/document/api/386/31964)获取操作系统信息
+        :type OsTypeId: int
+        :param RaidId: RAID类型ID。通过接口[查询机型RAID方式以及系统盘大小(DescribeDeviceClassPartition)](https://cloud.tencent.com/document/api/386/7370)获取RAID信息
+        :type RaidId: int
+        :param GoodsCount: 购买数量
+        :type GoodsCount: int
+        :param VpcId: 购买至私有网络ID
+        :type VpcId: str
+        :param SubnetId: 购买至子网ID
+        :type SubnetId: str
+        :param DeviceClassCode: 购买的机型ID。通过接口[查询设备型号(DescribeDeviceClass)](https://cloud.tencent.com/document/api/386/6636)获取机型信息
+        :type DeviceClassCode: str
+        :param TimeUnit: 购买时长单位，取值：M(月) D(天)
+        :type TimeUnit: str
+        :param TimeSpan: 购买时长
+        :type TimeSpan: int
+        :param NeedSecurityAgent: 是否安装安全Agent，取值：1(安装) 0(不安装)，默认取值0
+        :type NeedSecurityAgent: int
+        :param NeedMonitorAgent: 是否安装监控Agent，取值：1(安装) 0(不安装)，默认取值0
+        :type NeedMonitorAgent: int
+        :param NeedEMRAgent: 是否安装EMR Agent，取值：1(安装) 0(不安装)，默认取值0
+        :type NeedEMRAgent: int
+        :param NeedEMRSoftware: 是否安装EMR软件包，取值：1(安装) 0(不安装)，默认取值0
+        :type NeedEMRSoftware: int
+        :param ApplyEip: 是否分配弹性公网IP，取值：1(分配) 0(不分配)，默认取值0
+        :type ApplyEip: int
+        :param EipPayMode: 弹性公网IP计费模式，取值：Flow(按流量计费) Bandwidth(按带宽计费)，默认取值Flow
+        :type EipPayMode: str
+        :param EipBandwidth: 弹性公网IP带宽限制，单位Mb
+        :type EipBandwidth: int
+        :param IsZoning: 数据盘是否格式化，取值：1(格式化) 0(不格式化)，默认取值为1
+        :type IsZoning: int
+        :param CpmPayMode: 物理机计费模式，取值：1(预付费) 2(后付费)，默认取值为1
+        :type CpmPayMode: int
+        :param ImageId: 自定义镜像ID，取值生效时用自定义镜像部署物理机
+        :type ImageId: str
+        :param Password: 设置Linux root或Windows Administrator的密码
+        :type Password: str
+        :param AutoRenewFlag: 自动续费标志位，取值：1(自动续费) 0(不自动续费)，默认取值0
+        :type AutoRenewFlag: int
+        :param SysRootSpace: 系统盘根分区大小，单位为G，默认取值10G。通过接口[查询机型RAID方式以及系统盘大小(DescribeDeviceClassPartition)](https://cloud.tencent.com/document/api/386/7370)获取根分区信息
+        :type SysRootSpace: int
+        :param SysSwaporuefiSpace: 系统盘swap分区或/boot/efi分区的大小，单位为G。若是uefi启动的机器，分区为/boot/efi，且此值是默认是2G。 普通机器为swap分区，可以不指定此分区。 机型是否是uefi启动，参见接口[查询设备型号(DescribeDeviceClass)](https://cloud.tencent.com/document/api/386/6636)
+        :type SysSwaporuefiSpace: int
+        :param SysUsrlocalSpace: /usr/local分区大小，单位为G
+        :type SysUsrlocalSpace: int
+        :param SysDataSpace: /data分区大小，单位为G。如果系统盘还有剩余大小，会分配给/data分区。（特殊情况：如果剩余空间不足10G，并且没有指定/data分区，则剩余空间会分配给Root分区）
+        :type SysDataSpace: int
+        :param HyperThreading: 是否开启超线程，取值：1(开启) 0(关闭)，默认取值1
+        :type HyperThreading: int
+        :param LanIps: 指定的内网IP列表，不指定时自动分配
+        :type LanIps: list of str
+        :param Aliases: 设备名称列表
+        :type Aliases: list of str
+        :param CpuId: CPU型号ID，自定义机型需要传入，取值：
+<br/><li>1: E5-2620v3 (6核) &#42; 2</li><li>2: E5-2680v4 (14核) &#42; 2</li><li>3: E5-2670v3 (12核) &#42; 2</li><li>4: E5-2620v4 (8核) &#42; 2</li><li>5: 4110 (8核) &#42; 2</li><li>6: 6133 (20核) &#42; 2</li><br/>
+        :type CpuId: int
+        :param ContainRaidCard: 是否有RAID卡，取值：1(有) 0(无)，自定义机型需要传入
+        :type ContainRaidCard: int
+        :param MemSize: 内存大小，单位为G，自定义机型需要传入。取值参考接口[查询自定义机型部件信息(DescribeHardwareSpecification)](https://cloud.tencent.com/document/api/386/10968)返回值
+        :type MemSize: int
+        :param SystemDiskTypeId: 系统盘ID，自定义机型需要传入。取值参考接口[查询自定义机型部件信息(DescribeHardwareSpecification)](https://cloud.tencent.com/document/api/386/10968)返回值
+        :type SystemDiskTypeId: int
+        :param SystemDiskCount: 系统盘数量，自定义机型需要传入。取值参考接口[查询自定义机型部件信息(DescribeHardwareSpecification)](https://cloud.tencent.com/document/api/386/10968)返回值
+        :type SystemDiskCount: int
+        :param DataDiskTypeId: 数据盘ID，自定义机型需要传入。取值参考接口[查询自定义机型部件信息(DescribeHardwareSpecification)](https://cloud.tencent.com/document/api/386/10968)返回值
+        :type DataDiskTypeId: int
+        :param DataDiskCount: 数据盘数量，自定义机型需要传入。取值参考接口[查询自定义机型部件信息(DescribeHardwareSpecification)](https://cloud.tencent.com/document/api/386/10968)返回值
+        :type DataDiskCount: int
+        :param Tags: 绑定的标签列表
+        :type Tags: list of Tag
+        """
+        self.Zone = None
+        self.OsTypeId = None
+        self.RaidId = None
+        self.GoodsCount = None
+        self.VpcId = None
+        self.SubnetId = None
+        self.DeviceClassCode = None
+        self.TimeUnit = None
+        self.TimeSpan = None
+        self.NeedSecurityAgent = None
+        self.NeedMonitorAgent = None
+        self.NeedEMRAgent = None
+        self.NeedEMRSoftware = None
+        self.ApplyEip = None
+        self.EipPayMode = None
+        self.EipBandwidth = None
+        self.IsZoning = None
+        self.CpmPayMode = None
+        self.ImageId = None
+        self.Password = None
+        self.AutoRenewFlag = None
+        self.SysRootSpace = None
+        self.SysSwaporuefiSpace = None
+        self.SysUsrlocalSpace = None
+        self.SysDataSpace = None
+        self.HyperThreading = None
+        self.LanIps = None
+        self.Aliases = None
+        self.CpuId = None
+        self.ContainRaidCard = None
+        self.MemSize = None
+        self.SystemDiskTypeId = None
+        self.SystemDiskCount = None
+        self.DataDiskTypeId = None
+        self.DataDiskCount = None
+        self.Tags = None
+
+
+    def _deserialize(self, params):
+        self.Zone = params.get("Zone")
+        self.OsTypeId = params.get("OsTypeId")
+        self.RaidId = params.get("RaidId")
+        self.GoodsCount = params.get("GoodsCount")
+        self.VpcId = params.get("VpcId")
+        self.SubnetId = params.get("SubnetId")
+        self.DeviceClassCode = params.get("DeviceClassCode")
+        self.TimeUnit = params.get("TimeUnit")
+        self.TimeSpan = params.get("TimeSpan")
+        self.NeedSecurityAgent = params.get("NeedSecurityAgent")
+        self.NeedMonitorAgent = params.get("NeedMonitorAgent")
+        self.NeedEMRAgent = params.get("NeedEMRAgent")
+        self.NeedEMRSoftware = params.get("NeedEMRSoftware")
+        self.ApplyEip = params.get("ApplyEip")
+        self.EipPayMode = params.get("EipPayMode")
+        self.EipBandwidth = params.get("EipBandwidth")
+        self.IsZoning = params.get("IsZoning")
+        self.CpmPayMode = params.get("CpmPayMode")
+        self.ImageId = params.get("ImageId")
+        self.Password = params.get("Password")
+        self.AutoRenewFlag = params.get("AutoRenewFlag")
+        self.SysRootSpace = params.get("SysRootSpace")
+        self.SysSwaporuefiSpace = params.get("SysSwaporuefiSpace")
+        self.SysUsrlocalSpace = params.get("SysUsrlocalSpace")
+        self.SysDataSpace = params.get("SysDataSpace")
+        self.HyperThreading = params.get("HyperThreading")
+        self.LanIps = params.get("LanIps")
+        self.Aliases = params.get("Aliases")
+        self.CpuId = params.get("CpuId")
+        self.ContainRaidCard = params.get("ContainRaidCard")
+        self.MemSize = params.get("MemSize")
+        self.SystemDiskTypeId = params.get("SystemDiskTypeId")
+        self.SystemDiskCount = params.get("SystemDiskCount")
+        self.DataDiskTypeId = params.get("DataDiskTypeId")
+        self.DataDiskCount = params.get("DataDiskCount")
+        if params.get("Tags") is not None:
+            self.Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self.Tags.append(obj)
+
+
+class BuyDevicesResponse(AbstractModel):
+    """BuyDevices返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param InstanceIds: 购买的物理机实例ID列表
+        :type InstanceIds: list of str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.InstanceIds = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.InstanceIds = params.get("InstanceIds")
+        self.RequestId = params.get("RequestId")
+
+
+class CreateCustomImageRequest(AbstractModel):
+    """CreateCustomImage请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param InstanceId: 用于制作镜像的物理机ID
+        :type InstanceId: str
+        :param ImageName: 镜像别名
+        :type ImageName: str
+        :param ImageDescription: 镜像描述
+        :type ImageDescription: str
+        """
+        self.InstanceId = None
+        self.ImageName = None
+        self.ImageDescription = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.ImageName = params.get("ImageName")
+        self.ImageDescription = params.get("ImageDescription")
+
+
+class CreateCustomImageResponse(AbstractModel):
+    """CreateCustomImage返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param TaskId: 黑石异步任务ID
+        :type TaskId: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TaskId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TaskId = params.get("TaskId")
+        self.RequestId = params.get("RequestId")
+
+
 class CreatePsaRegulationRequest(AbstractModel):
     """CreatePsaRegulation请求参数结构体
 
@@ -117,7 +347,7 @@ class CreateSpotDeviceRequest(AbstractModel):
         """
         :param Zone: 可用区名称。如ap-guangzhou-bls-1, 通过DescribeRegions获取
         :type Zone: str
-        :param ComputeType: 计算单元类型
+        :param ComputeType: 计算单元类型, 如v3.c2.medium，更详细的ComputeType参考[竞价实例产品文档](https://cloud.tencent.com/document/product/386/30256)
         :type ComputeType: str
         :param OsTypeId: 操作系统类型ID
         :type OsTypeId: int
@@ -228,6 +458,135 @@ class CreateUserCmdResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class CustomImage(AbstractModel):
+    """自定义镜像信息
+
+    """
+
+    def __init__(self):
+        """
+        :param ImageId: 镜像ID
+        :type ImageId: str
+        :param ImageName: 镜像别名
+        :type ImageName: str
+        :param ImageStatus: 镜像状态码
+        :type ImageStatus: int
+        :param OsClass: 镜像OS名
+        :type OsClass: str
+        :param OsVersion: 镜像OS版本
+        :type OsVersion: str
+        :param OsBit: OS是64还是32位
+        :type OsBit: int
+        :param ImageSize: 镜像大小(M)
+        :type ImageSize: int
+        :param CreateTime: 创建时间
+        :type CreateTime: str
+        :param PartitionInfoSet: 分区信息
+        :type PartitionInfoSet: list of PartitionInfo
+        :param DeviceClassCode: 适用机型
+        :type DeviceClassCode: str
+        :param ImageDescription: 备注
+        :type ImageDescription: str
+        :param OsTypeId: 原始镜像id
+        :type OsTypeId: int
+        """
+        self.ImageId = None
+        self.ImageName = None
+        self.ImageStatus = None
+        self.OsClass = None
+        self.OsVersion = None
+        self.OsBit = None
+        self.ImageSize = None
+        self.CreateTime = None
+        self.PartitionInfoSet = None
+        self.DeviceClassCode = None
+        self.ImageDescription = None
+        self.OsTypeId = None
+
+
+    def _deserialize(self, params):
+        self.ImageId = params.get("ImageId")
+        self.ImageName = params.get("ImageName")
+        self.ImageStatus = params.get("ImageStatus")
+        self.OsClass = params.get("OsClass")
+        self.OsVersion = params.get("OsVersion")
+        self.OsBit = params.get("OsBit")
+        self.ImageSize = params.get("ImageSize")
+        self.CreateTime = params.get("CreateTime")
+        if params.get("PartitionInfoSet") is not None:
+            self.PartitionInfoSet = []
+            for item in params.get("PartitionInfoSet"):
+                obj = PartitionInfo()
+                obj._deserialize(item)
+                self.PartitionInfoSet.append(obj)
+        self.DeviceClassCode = params.get("DeviceClassCode")
+        self.ImageDescription = params.get("ImageDescription")
+        self.OsTypeId = params.get("OsTypeId")
+
+
+class CustomImageProcess(AbstractModel):
+    """镜像制作进度列表
+
+    """
+
+    def __init__(self):
+        """
+        :param StepName: 步骤
+        :type StepName: str
+        :param StartTime: 此步骤开始时间
+        :type StartTime: str
+        :param StepType: 0: 已完成 1: 当前进行 2: 未开始
+        :type StepType: int
+        """
+        self.StepName = None
+        self.StartTime = None
+        self.StepType = None
+
+
+    def _deserialize(self, params):
+        self.StepName = params.get("StepName")
+        self.StartTime = params.get("StartTime")
+        self.StepType = params.get("StepType")
+
+
+class DeleteCustomImagesRequest(AbstractModel):
+    """DeleteCustomImages请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ImageIds: 准备删除的镜像ID列表
+        :type ImageIds: list of str
+        """
+        self.ImageIds = None
+
+
+    def _deserialize(self, params):
+        self.ImageIds = params.get("ImageIds")
+
+
+class DeleteCustomImagesResponse(AbstractModel):
+    """DeleteCustomImages返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param TaskId: 黑石异步任务ID
+        :type TaskId: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TaskId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TaskId = params.get("TaskId")
+        self.RequestId = params.get("RequestId")
+
+
 class DeletePsaRegulationRequest(AbstractModel):
     """DeletePsaRegulation请求参数结构体
 
@@ -293,6 +652,173 @@ class DeleteUserCmdsResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeCustomImageProcessRequest(AbstractModel):
+    """DescribeCustomImageProcess请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ImageId: 镜像ID
+        :type ImageId: str
+        """
+        self.ImageId = None
+
+
+    def _deserialize(self, params):
+        self.ImageId = params.get("ImageId")
+
+
+class DescribeCustomImageProcessResponse(AbstractModel):
+    """DescribeCustomImageProcess返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param CustomImageProcessSet: 镜像制作进度
+        :type CustomImageProcessSet: list of CustomImageProcess
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.CustomImageProcessSet = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("CustomImageProcessSet") is not None:
+            self.CustomImageProcessSet = []
+            for item in params.get("CustomImageProcessSet"):
+                obj = CustomImageProcess()
+                obj._deserialize(item)
+                self.CustomImageProcessSet.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeCustomImagesRequest(AbstractModel):
+    """DescribeCustomImages请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Offset: 偏移量
+        :type Offset: int
+        :param Limit: 数量限制
+        :type Limit: int
+        :param OrderField: 排序字段，仅支持CreateTime
+        :type OrderField: str
+        :param Order: 排序方式 0:递增(默认) 1:递减
+        :type Order: int
+        :param ImageId: 按ImageId查找指定镜像信息，ImageId字段存在时其他字段失效
+        :type ImageId: str
+        :param SearchKey: 模糊查询过滤，可以查询镜像ID或镜像名
+        :type SearchKey: str
+        :param ImageStatus: <ul>
+镜像状态过滤列表，有效取值为：
+<li>1：制作中</li>
+<li>2：制作失败</li>
+<li>3：正常</li>
+<li>4：删除中</li>
+</ul>
+        :type ImageStatus: list of int non-negative
+        """
+        self.Offset = None
+        self.Limit = None
+        self.OrderField = None
+        self.Order = None
+        self.ImageId = None
+        self.SearchKey = None
+        self.ImageStatus = None
+
+
+    def _deserialize(self, params):
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+        self.OrderField = params.get("OrderField")
+        self.Order = params.get("Order")
+        self.ImageId = params.get("ImageId")
+        self.SearchKey = params.get("SearchKey")
+        self.ImageStatus = params.get("ImageStatus")
+
+
+class DescribeCustomImagesResponse(AbstractModel):
+    """DescribeCustomImages返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param TotalCount: 返回镜像数量
+        :type TotalCount: int
+        :param CustomImageSet: 镜像信息列表
+        :type CustomImageSet: list of CustomImage
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.CustomImageSet = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("CustomImageSet") is not None:
+            self.CustomImageSet = []
+            for item in params.get("CustomImageSet"):
+                obj = CustomImage()
+                obj._deserialize(item)
+                self.CustomImageSet.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeDeviceClassPartitionRequest(AbstractModel):
+    """DescribeDeviceClassPartition请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param DeviceClassCode: 设备类型代号。代号通过接口[查询设备型号(DescribeDeviceClass)](https://cloud.tencent.com/document/api/386/17602)查询。标准机型需要传入此参数
+        :type DeviceClassCode: str
+        :param InstanceId: 需要查询自定义机型RAID信息时，传入自定义机型实例ID。InstanceId存在时DeviceClassCode失效
+        :type InstanceId: str
+        """
+        self.DeviceClassCode = None
+        self.InstanceId = None
+
+
+    def _deserialize(self, params):
+        self.DeviceClassCode = params.get("DeviceClassCode")
+        self.InstanceId = params.get("InstanceId")
+
+
+class DescribeDeviceClassPartitionResponse(AbstractModel):
+    """DescribeDeviceClassPartition返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param DeviceClassPartitionInfoSet: 支持的RAID格式列表
+        :type DeviceClassPartitionInfoSet: list of DeviceClassPartitionInfo
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.DeviceClassPartitionInfoSet = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("DeviceClassPartitionInfoSet") is not None:
+            self.DeviceClassPartitionInfoSet = []
+            for item in params.get("DeviceClassPartitionInfoSet"):
+                obj = DeviceClassPartitionInfo()
+                obj._deserialize(item)
+                self.DeviceClassPartitionInfoSet.append(obj)
         self.RequestId = params.get("RequestId")
 
 
@@ -465,6 +991,46 @@ class DescribeDeviceOperationLogResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeDevicePartitionRequest(AbstractModel):
+    """DescribeDevicePartition请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param InstanceId: 物理机ID
+        :type InstanceId: str
+        """
+        self.InstanceId = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+
+
+class DescribeDevicePartitionResponse(AbstractModel):
+    """DescribeDevicePartition返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param DevicePartition: 物理机分区格式
+        :type DevicePartition: :class:`tencentcloud.bm.v20180423.models.DevicePartition`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.DevicePartition = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("DevicePartition") is not None:
+            self.DevicePartition = DevicePartition()
+            self.DevicePartition._deserialize(params.get("DevicePartition"))
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeDevicePositionRequest(AbstractModel):
     """DescribeDevicePosition请求参数结构体
 
@@ -594,7 +1160,7 @@ class DescribeDevicesRequest(AbstractModel):
         :type Offset: int
         :param Limit: 返回数量
         :type Limit: int
-        :param DeviceClassCode: 机型ID，通过接口[查询设备型号(DescribeDeviceClass)](https://cloud.tencent.com/document/api/386/17602)查询
+        :param DeviceClassCode: 机型ID，通过接口[查询设备型号(DescribeDeviceClass)](https://cloud.tencent.com/document/api/386/31968)查询
         :type DeviceClassCode: str
         :param InstanceIds: 设备ID数组
         :type InstanceIds: list of str
@@ -700,6 +1266,60 @@ class DescribeDevicesResponse(AbstractModel):
                 obj = DeviceInfo()
                 obj._deserialize(item)
                 self.DeviceInfoSet.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeOperationResultRequest(AbstractModel):
+    """DescribeOperationResult请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param TaskId: 异步任务ID
+        :type TaskId: int
+        """
+        self.TaskId = None
+
+
+    def _deserialize(self, params):
+        self.TaskId = params.get("TaskId")
+
+
+class DescribeOperationResultResponse(AbstractModel):
+    """DescribeOperationResult返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param TaskStatus: 任务的整体状态，取值如下：<br>
+1：成功<br>
+2：失败<br>
+3：部分成功，部分失败<br>
+4：未完成<br>
+5：部分成功，部分未完成<br>
+6：部分未完成，部分失败<br>
+7：部分未完成，部分失败，部分成功
+        :type TaskStatus: int
+        :param SubtaskStatusSet: 各实例对应任务的状态ID
+        :type SubtaskStatusSet: list of SubtaskStatus
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TaskStatus = None
+        self.SubtaskStatusSet = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TaskStatus = params.get("TaskStatus")
+        if params.get("SubtaskStatusSet") is not None:
+            self.SubtaskStatusSet = []
+            for item in params.get("SubtaskStatusSet"):
+                obj = SubtaskStatus()
+                obj._deserialize(item)
+                self.SubtaskStatusSet.append(obj)
         self.RequestId = params.get("RequestId")
 
 
@@ -1275,6 +1895,89 @@ class DeviceClass(AbstractModel):
         self.Series = params.get("Series")
 
 
+class DeviceClassPartitionInfo(AbstractModel):
+    """RAID和设备分区结构
+
+    """
+
+    def __init__(self):
+        """
+        :param RaidId: RAID类型ID
+        :type RaidId: int
+        :param Raid: RAID名称
+        :type Raid: str
+        :param RaidDisplay: RAID名称（前台展示用）
+        :type RaidDisplay: str
+        :param SystemDiskSize: 系统盘总大小（单位GiB）
+        :type SystemDiskSize: int
+        :param SysRootSpace: 系统盘/分区默认大小（单位GiB）
+        :type SysRootSpace: int
+        :param SysSwaporuefiSpace: 系统盘swap分区默认大小（单位GiB）
+        :type SysSwaporuefiSpace: int
+        :param SysUsrlocalSpace: 系统盘/usr/local分区默认大小（单位GiB）
+        :type SysUsrlocalSpace: int
+        :param SysDataSpace: 系统盘/data分区默认大小（单位GiB）
+        :type SysDataSpace: int
+        :param SysIsUefiType: 设备是否是uefi启动方式。0:legacy启动; 1:uefi启动
+        :type SysIsUefiType: int
+        :param DataDiskSize: 数据盘总大小
+        :type DataDiskSize: int
+        :param DeviceDiskSizeInfoSet: 硬盘列表
+        :type DeviceDiskSizeInfoSet: list of DeviceDiskSizeInfo
+        """
+        self.RaidId = None
+        self.Raid = None
+        self.RaidDisplay = None
+        self.SystemDiskSize = None
+        self.SysRootSpace = None
+        self.SysSwaporuefiSpace = None
+        self.SysUsrlocalSpace = None
+        self.SysDataSpace = None
+        self.SysIsUefiType = None
+        self.DataDiskSize = None
+        self.DeviceDiskSizeInfoSet = None
+
+
+    def _deserialize(self, params):
+        self.RaidId = params.get("RaidId")
+        self.Raid = params.get("Raid")
+        self.RaidDisplay = params.get("RaidDisplay")
+        self.SystemDiskSize = params.get("SystemDiskSize")
+        self.SysRootSpace = params.get("SysRootSpace")
+        self.SysSwaporuefiSpace = params.get("SysSwaporuefiSpace")
+        self.SysUsrlocalSpace = params.get("SysUsrlocalSpace")
+        self.SysDataSpace = params.get("SysDataSpace")
+        self.SysIsUefiType = params.get("SysIsUefiType")
+        self.DataDiskSize = params.get("DataDiskSize")
+        if params.get("DeviceDiskSizeInfoSet") is not None:
+            self.DeviceDiskSizeInfoSet = []
+            for item in params.get("DeviceDiskSizeInfoSet"):
+                obj = DeviceDiskSizeInfo()
+                obj._deserialize(item)
+                self.DeviceDiskSizeInfoSet.append(obj)
+
+
+class DeviceDiskSizeInfo(AbstractModel):
+    """硬盘大小的描述
+
+    """
+
+    def __init__(self):
+        """
+        :param DiskName: 硬盘名称
+        :type DiskName: str
+        :param DiskSize: 硬盘大小（单位GiB）
+        :type DiskSize: int
+        """
+        self.DiskName = None
+        self.DiskSize = None
+
+
+    def _deserialize(self, params):
+        self.DiskName = params.get("DiskName")
+        self.DiskSize = params.get("DiskSize")
+
+
 class DeviceInfo(AbstractModel):
     """物理机信息
 
@@ -1442,6 +2145,47 @@ class DeviceOperationLog(AbstractModel):
         self.LogDescription = params.get("LogDescription")
 
 
+class DevicePartition(AbstractModel):
+    """物理机分区格式
+
+    """
+
+    def __init__(self):
+        """
+        :param SystemDiskSize: 系统盘大小
+        :type SystemDiskSize: int
+        :param DataDiskSize: 数据盘大小
+        :type DataDiskSize: int
+        :param SysIsUefiType: 是否兼容Uefi
+        :type SysIsUefiType: bool
+        :param SysRootSpace: root分区大小
+        :type SysRootSpace: int
+        :param SysSwaporuefiSpace: Swaporuefi分区大小
+        :type SysSwaporuefiSpace: int
+        :param SysUsrlocalSpace: Usrlocal分区大小
+        :type SysUsrlocalSpace: int
+        :param SysDataSpace: data分区大小
+        :type SysDataSpace: int
+        """
+        self.SystemDiskSize = None
+        self.DataDiskSize = None
+        self.SysIsUefiType = None
+        self.SysRootSpace = None
+        self.SysSwaporuefiSpace = None
+        self.SysUsrlocalSpace = None
+        self.SysDataSpace = None
+
+
+    def _deserialize(self, params):
+        self.SystemDiskSize = params.get("SystemDiskSize")
+        self.DataDiskSize = params.get("DataDiskSize")
+        self.SysIsUefiType = params.get("SysIsUefiType")
+        self.SysRootSpace = params.get("SysRootSpace")
+        self.SysSwaporuefiSpace = params.get("SysSwaporuefiSpace")
+        self.SysUsrlocalSpace = params.get("SysUsrlocalSpace")
+        self.SysDataSpace = params.get("SysDataSpace")
+
+
 class DevicePositionInfo(AbstractModel):
     """物理机机架信息
 
@@ -1601,6 +2345,48 @@ class FailedTaskInfo(AbstractModel):
         self.ErrorMsg = params.get("ErrorMsg")
 
 
+class ModifyCustomImageAttributeRequest(AbstractModel):
+    """ModifyCustomImageAttribute请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ImageId: 镜像ID
+        :type ImageId: str
+        :param ImageName: 设置新的镜像名
+        :type ImageName: str
+        :param ImageDescription: 设置新的镜像描述
+        :type ImageDescription: str
+        """
+        self.ImageId = None
+        self.ImageName = None
+        self.ImageDescription = None
+
+
+    def _deserialize(self, params):
+        self.ImageId = params.get("ImageId")
+        self.ImageName = params.get("ImageName")
+        self.ImageDescription = params.get("ImageDescription")
+
+
+class ModifyCustomImageAttributeResponse(AbstractModel):
+    """ModifyCustomImageAttribute返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class ModifyDeviceAliasesRequest(AbstractModel):
     """ModifyDeviceAliases请求参数结构体
 
@@ -1675,6 +2461,60 @@ class ModifyDeviceAutoRenewFlagResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class ModifyLanIpRequest(AbstractModel):
+    """ModifyLanIp请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param InstanceId: 物理机ID
+        :type InstanceId: str
+        :param VpcId: 指定新VPC
+        :type VpcId: str
+        :param SubnetId: 指定新子网
+        :type SubnetId: str
+        :param LanIp: 指定新内网IP
+        :type LanIp: str
+        :param RebootDevice: 是否需要重启机器，取值 1(需要) 0(不需要)，默认取值0
+        :type RebootDevice: int
+        """
+        self.InstanceId = None
+        self.VpcId = None
+        self.SubnetId = None
+        self.LanIp = None
+        self.RebootDevice = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.VpcId = params.get("VpcId")
+        self.SubnetId = params.get("SubnetId")
+        self.LanIp = params.get("LanIp")
+        self.RebootDevice = params.get("RebootDevice")
+
+
+class ModifyLanIpResponse(AbstractModel):
+    """ModifyLanIp返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param TaskId: 黑石异步任务ID
+        :type TaskId: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TaskId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TaskId = params.get("TaskId")
         self.RequestId = params.get("RequestId")
 
 
@@ -1885,6 +2725,27 @@ class OsInfo(AbstractModel):
         self.OsClass = params.get("OsClass")
         self.ImageTag = params.get("ImageTag")
         self.MaxPartitionSize = params.get("MaxPartitionSize")
+
+
+class PartitionInfo(AbstractModel):
+    """描述设备分区信息
+
+    """
+
+    def __init__(self):
+        """
+        :param Name: 分区名称
+        :type Name: str
+        :param Size: 分区大小
+        :type Size: int
+        """
+        self.Name = None
+        self.Size = None
+
+
+    def _deserialize(self, params):
+        self.Name = params.get("Name")
+        self.Size = params.get("Size")
 
 
 class PsaRegulation(AbstractModel):
@@ -2172,6 +3033,72 @@ class SetOutBandVpnAuthPasswordResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
+
+
+class ShutdownDevicesRequest(AbstractModel):
+    """ShutdownDevices请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param InstanceIds: 需要关闭的设备ID列表
+        :type InstanceIds: list of str
+        """
+        self.InstanceIds = None
+
+
+    def _deserialize(self, params):
+        self.InstanceIds = params.get("InstanceIds")
+
+
+class ShutdownDevicesResponse(AbstractModel):
+    """ShutdownDevices返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param TaskId: 异步任务ID
+        :type TaskId: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TaskId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TaskId = params.get("TaskId")
+        self.RequestId = params.get("RequestId")
+
+
+class SubtaskStatus(AbstractModel):
+    """各实例对应的异步任务执行结果
+
+    """
+
+    def __init__(self):
+        """
+        :param InstanceId: 实例ID
+        :type InstanceId: str
+        :param TaskStatus: 实例ID对应任务的状态，取值如下：<br>
+1：成功<br>
+2：失败<br>
+3：部分成功，部分失败<br>
+4：未完成<br>
+5：部分成功，部分未完成<br>
+6：部分未完成，部分失败<br>
+7：部分未完成，部分失败，部分成功
+        :type TaskStatus: int
+        """
+        self.InstanceId = None
+        self.TaskStatus = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.TaskStatus = params.get("TaskStatus")
 
 
 class SuccessTaskInfo(AbstractModel):

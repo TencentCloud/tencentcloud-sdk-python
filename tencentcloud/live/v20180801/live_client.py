@@ -201,7 +201,7 @@ class LiveClient(AbstractClient):
 
         - 模式说明
           该接口支持两种录制模式：
-          1. 定时录制模式。
+          1. 定时录制模式【默认模式】。
             需要传入开始时间与结束时间，录制任务根据时间自动开始与结束。
           2. 实时视频录制模式。
             忽略传入的开始时间，在录制任务创建后立即开始录制，录制时长支持最大为30分钟，如果传入的结束时间与当前时间差大于30分钟，则按30分钟计算，实时视频录制主要用于录制精彩视频场景，时长建议控制在5分钟以内。
@@ -990,6 +990,34 @@ class LiveClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeLiveForbidStreamList(self, request):
+        """获取禁推流列表
+
+        :param request: 调用DescribeLiveForbidStreamList所需参数的结构体。
+        :type request: :class:`tencentcloud.live.v20180801.models.DescribeLiveForbidStreamListRequest`
+        :rtype: :class:`tencentcloud.live.v20180801.models.DescribeLiveForbidStreamListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeLiveForbidStreamList", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeLiveForbidStreamListResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise e
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeLivePlayAuthKey(self, request):
         """查询播放鉴权key
 
@@ -1200,6 +1228,34 @@ class LiveClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeLiveSnapshotTemplatesResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise e
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeLiveStreamEventList(self, request):
+        """查询推断流事件
+
+        :param request: 调用DescribeLiveStreamEventList所需参数的结构体。
+        :type request: :class:`tencentcloud.live.v20180801.models.DescribeLiveStreamEventListRequest`
+        :rtype: :class:`tencentcloud.live.v20180801.models.DescribeLiveStreamEventListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeLiveStreamEventList", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeLiveStreamEventListResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

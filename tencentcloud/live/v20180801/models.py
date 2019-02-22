@@ -459,26 +459,32 @@ class CreateLiveRecordRequest(AbstractModel):
         :type AppName: str
         :param DomainName: 推流域名。多域名推流必须设置。
         :type DomainName: str
-        :param StartTime: 录制开始时间。非精彩视频录制，必须设置该字段。中国标准时间，需要URLEncode。如 2017-01-01 10:10:01，编码为：2017-01-01+10%3a10%3a01。
+        :param StartTime: 录制开始时间。中国标准时间，需要URLEncode。如 2017-01-01 10:10:01，编码为：2017-01-01+10%3a10%3a01。
+定时录制模式，必须设置该字段；实时视频录制模式，忽略该字段。
         :type StartTime: str
-        :param EndTime: 录制结束时间。非精彩视频录制，必须设置该字段。中国标准时间，需要URLEncode。如 2017-01-01 10:30:01，编码为：2017-01-01+10%3a30%3a01。如果通过Highlight参数，设置录制为精彩视频录制，结束时间不应超过当前时间+30分钟，如果结束时间超过当前时间+30分钟或小于当前时间，则实际结束时间为当前时间+30分钟。
+        :param EndTime: 录制结束时间。中国标准时间，需要URLEncode。如 2017-01-01 10:30:01，编码为：2017-01-01+10%3a30%3a01。
+定时录制模式，必须设置该字段；实时录制模式，为可选字段。如果通过Highlight参数，设置录制为实时视频录制模式，其设置的结束时间不应超过当前时间+30分钟，如果设置的结束时间超过当前时间+30分钟或者小于当前时间或者不设置该参数，则实际结束时间为当前时间+30分钟。
         :type EndTime: str
-        :param RecordType: 录制类型。不区分大小写。
+        :param RecordType: 录制类型。
 “video” : 音视频录制【默认】。
 “audio” : 纯音频录制。
+在定时录制模式或实时视频录制模式下，该参数均有效，不区分大小写。
         :type RecordType: str
-        :param FileFormat: 录制文件格式。不区分大小写。其值为：
+        :param FileFormat: 录制文件格式。其值为：
 “flv”,“hls”,”mp4”,“aac”,”mp3”，默认“flv”。
+在定时录制模式或实时视频录制模式下，该参数均有效，不区分大小写。
         :type FileFormat: str
-        :param Highlight: 开启精彩视频录制标志；0：不开启精彩视频录制【默认】；1：开启精彩视频录制。
+        :param Highlight: 开启实时视频录制模式标志。0：不开启实时视频录制模式，即采用定时录制模式【默认】；1：开启实时视频录制模式。
         :type Highlight: int
         :param MixStream: 开启A+B=C混流C流录制标志。0：不开启A+B=C混流C流录制【默认】；1：开启A+B=C混流C流录制。
+在定时录制模式或实时视频录制模式下，该参数均有效。
         :type MixStream: int
         :param StreamParam: 录制流参数。当前支持以下参数：
 record_interval - 录制分片时长，单位 秒，1800 - 7200
 storage_time - 录制文件存储时长，单位 秒
-eg. record_interval=3600&storage_time=7200
+eg. record_interval=3600&storage_time=2592000
 注：参数需要url encode。
+在定时录制模式或实时视频录制模式下，该参数均有效。
         :type StreamParam: str
         """
         self.StreamName = None
@@ -1719,6 +1725,71 @@ class DescribeLiveDomainCertResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeLiveForbidStreamListRequest(AbstractModel):
+    """DescribeLiveForbidStreamList请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param PageNum: 取得第几页，默认1。
+        :type PageNum: int
+        :param PageSize: 每页大小，最大100。 
+取值：1~100之前的任意整数。
+默认值：10。
+        :type PageSize: int
+        """
+        self.PageNum = None
+        self.PageSize = None
+
+
+    def _deserialize(self, params):
+        self.PageNum = params.get("PageNum")
+        self.PageSize = params.get("PageSize")
+
+
+class DescribeLiveForbidStreamListResponse(AbstractModel):
+    """DescribeLiveForbidStreamList返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param TotalNum: 符合条件的总个数。
+        :type TotalNum: int
+        :param TotalPage: 总页数。
+        :type TotalPage: int
+        :param PageNum: 分页的页码。
+        :type PageNum: int
+        :param PageSize: 每页显示的条数。
+        :type PageSize: int
+        :param ForbidStreamList: 禁推流列表。
+        :type ForbidStreamList: list of ForbidStreamInfo
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TotalNum = None
+        self.TotalPage = None
+        self.PageNum = None
+        self.PageSize = None
+        self.ForbidStreamList = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalNum = params.get("TotalNum")
+        self.TotalPage = params.get("TotalPage")
+        self.PageNum = params.get("PageNum")
+        self.PageSize = params.get("PageSize")
+        if params.get("ForbidStreamList") is not None:
+            self.ForbidStreamList = []
+            for item in params.get("ForbidStreamList"):
+                obj = ForbidStreamInfo()
+                obj._deserialize(item)
+                self.ForbidStreamList.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeLivePlayAuthKeyRequest(AbstractModel):
     """DescribeLivePlayAuthKey请求参数结构体
 
@@ -2004,6 +2075,119 @@ class DescribeLiveSnapshotTemplatesResponse(AbstractModel):
                 obj = SnapshotTemplateInfo()
                 obj._deserialize(item)
                 self.Templates.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeLiveStreamEventListRequest(AbstractModel):
+    """DescribeLiveStreamEventList请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param StartTime: 起始时间。 
+UTC 格式，例如：2018-12-29T19:00:00Z。
+支持查询60天内的历史记录。
+        :type StartTime: str
+        :param EndTime: 结束时间。
+UTC 格式，例如：2018-12-29T20:00:00Z。
+不超过当前时间，且和起始时间相差不得超过30天。
+        :type EndTime: str
+        :param AppName: 应用名称。
+        :type AppName: str
+        :param DomainName: 推流域名。
+        :type DomainName: str
+        :param StreamName: 流名称，不支持通配符（*）查询，默认模糊匹配。
+可使用IsStrict字段改为精确查询。
+        :type StreamName: str
+        :param PageNum: 取得第几页。
+默认值：1。
+注： 目前只支持10000条内的查询。
+        :type PageNum: int
+        :param PageSize: 分页大小。
+最大值：100。
+取值范围：1~100 之前的任意整数。
+默认值：10。
+注： 目前只支持10000条内的查询。
+        :type PageSize: int
+        :param IsFilter: 是否过滤，默认不过滤。
+0：不进行任何过滤。
+1：过滤掉开播失败的，只返回开播成功的。
+        :type IsFilter: int
+        :param IsStrict: 是否精确查询，默认模糊匹配。
+0：模糊匹配。
+1：精确查询。
+注：使用StreamName时该参数生效。
+        :type IsStrict: int
+        :param IsAsc: 是否按结束时间正序显示，默认逆序。
+0：逆序。
+1：正序。
+        :type IsAsc: int
+        """
+        self.StartTime = None
+        self.EndTime = None
+        self.AppName = None
+        self.DomainName = None
+        self.StreamName = None
+        self.PageNum = None
+        self.PageSize = None
+        self.IsFilter = None
+        self.IsStrict = None
+        self.IsAsc = None
+
+
+    def _deserialize(self, params):
+        self.StartTime = params.get("StartTime")
+        self.EndTime = params.get("EndTime")
+        self.AppName = params.get("AppName")
+        self.DomainName = params.get("DomainName")
+        self.StreamName = params.get("StreamName")
+        self.PageNum = params.get("PageNum")
+        self.PageSize = params.get("PageSize")
+        self.IsFilter = params.get("IsFilter")
+        self.IsStrict = params.get("IsStrict")
+        self.IsAsc = params.get("IsAsc")
+
+
+class DescribeLiveStreamEventListResponse(AbstractModel):
+    """DescribeLiveStreamEventList返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param EventList: 推断流事件列表。
+        :type EventList: list of StreamEventInfo
+        :param PageNum: 分页的页码。
+        :type PageNum: int
+        :param PageSize: 每页大小。
+        :type PageSize: int
+        :param TotalNum: 符合条件的总个数。
+        :type TotalNum: int
+        :param TotalPage: 总页数。
+        :type TotalPage: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.EventList = None
+        self.PageNum = None
+        self.PageSize = None
+        self.TotalNum = None
+        self.TotalPage = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("EventList") is not None:
+            self.EventList = []
+            for item in params.get("EventList"):
+                obj = StreamEventInfo()
+                obj._deserialize(item)
+                self.EventList.append(obj)
+        self.PageNum = params.get("PageNum")
+        self.PageSize = params.get("PageSize")
+        self.TotalNum = params.get("TotalNum")
+        self.TotalPage = params.get("TotalPage")
         self.RequestId = params.get("RequestId")
 
 
@@ -2688,6 +2872,31 @@ class ForbidLiveStreamResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
+
+
+class ForbidStreamInfo(AbstractModel):
+    """禁推流列表
+
+    """
+
+    def __init__(self):
+        """
+        :param StreamName: 流名称。
+        :type StreamName: str
+        :param CreateTime: 创建时间。
+        :type CreateTime: str
+        :param ExpireTime: 禁推过期时间。
+        :type ExpireTime: str
+        """
+        self.StreamName = None
+        self.CreateTime = None
+        self.ExpireTime = None
+
+
+    def _deserialize(self, params):
+        self.StreamName = params.get("StreamName")
+        self.CreateTime = params.get("CreateTime")
+        self.ExpireTime = params.get("ExpireTime")
 
 
 class ModifyLiveCallbackTemplateRequest(AbstractModel):
@@ -3750,6 +3959,59 @@ class StopLiveRecordResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
+
+
+class StreamEventInfo(AbstractModel):
+    """推断流事件信息。
+
+    """
+
+    def __init__(self):
+        """
+        :param AppName: 应用名称。
+        :type AppName: str
+        :param DomainName: 推流域名。
+        :type DomainName: str
+        :param StreamName: 流名称。
+        :type StreamName: str
+        :param StreamStartTime: 推流开始时间。
+UTC格式时间，
+例如：2019-01-07T12:00:00Z。
+        :type StreamStartTime: str
+        :param StreamEndTime: 推流结束时间。
+UTC格式时间，
+例如：2019-01-07T15:00:00Z。
+        :type StreamEndTime: str
+        :param StopReason: 停止原因。
+        :type StopReason: str
+        :param Duration: 推流持续时长，单位：秒。
+        :type Duration: int
+        :param ClientIp: 主播IP。
+        :type ClientIp: str
+        :param Resolution: 分辨率。
+        :type Resolution: str
+        """
+        self.AppName = None
+        self.DomainName = None
+        self.StreamName = None
+        self.StreamStartTime = None
+        self.StreamEndTime = None
+        self.StopReason = None
+        self.Duration = None
+        self.ClientIp = None
+        self.Resolution = None
+
+
+    def _deserialize(self, params):
+        self.AppName = params.get("AppName")
+        self.DomainName = params.get("DomainName")
+        self.StreamName = params.get("StreamName")
+        self.StreamStartTime = params.get("StreamStartTime")
+        self.StreamEndTime = params.get("StreamEndTime")
+        self.StopReason = params.get("StopReason")
+        self.Duration = params.get("Duration")
+        self.ClientIp = params.get("ClientIp")
+        self.Resolution = params.get("Resolution")
 
 
 class StreamInfo(AbstractModel):

@@ -137,6 +137,34 @@ class FaceidClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def IdCardVerification(self, request):
+        """传入姓名和身份证号，校验两者的真实性和一致性。
+
+        :param request: 调用IdCardVerification所需参数的结构体。
+        :type request: :class:`tencentcloud.faceid.v20180301.models.IdCardVerificationRequest`
+        :rtype: :class:`tencentcloud.faceid.v20180301.models.IdCardVerificationResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("IdCardVerification", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.IdCardVerificationResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise e
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def ImageRecognition(self, request):
         """传入照片和身份信息，判断该照片与公安权威库的证件照是否属于同一个人。
 

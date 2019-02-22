@@ -1391,11 +1391,12 @@ class ProductProperties(AbstractModel):
         """
         :param ProductDescription: 产品描述
         :type ProductDescription: str
-        :param EncryptionType: 加密类型，1表示非对称加密，2表示对称加密。如不填写，默认值是1
+        :param EncryptionType: 加密类型，1表示证书认证，2表示签名认证。如不填写，默认值是1
         :type EncryptionType: str
         :param Region: 产品所属区域，目前只支持广州（gz）
         :type Region: str
-        :param ProductType: 产品类型，0表示正常设备，2表示NB-IoT设备，默认值是0
+        :param ProductType: 产品类型，各个类型值代表的节点-类型如下：
+0 普通产品，2 NB-IoT产品，4 LoRa产品，3 LoRa网关产品，5 普通网关产品   默认值是0
         :type ProductType: int
         :param Format: 数据格式，取值为json或者custom，默认值是json
         :type Format: str
@@ -1407,6 +1408,8 @@ class ProductProperties(AbstractModel):
         :type ModelId: str
         :param ModelName: 产品绑定的物模型名称
         :type ModelName: str
+        :param ProductKey: 产品秘钥，suite产品才会有
+        :type ProductKey: str
         """
         self.ProductDescription = None
         self.EncryptionType = None
@@ -1417,6 +1420,7 @@ class ProductProperties(AbstractModel):
         self.Appeui = None
         self.ModelId = None
         self.ModelName = None
+        self.ProductKey = None
 
 
     def _deserialize(self, params):
@@ -1429,6 +1433,7 @@ class ProductProperties(AbstractModel):
         self.Appeui = params.get("Appeui")
         self.ModelId = params.get("ModelId")
         self.ModelName = params.get("ModelName")
+        self.ProductKey = params.get("ProductKey")
 
 
 class PublishMessageRequest(AbstractModel):

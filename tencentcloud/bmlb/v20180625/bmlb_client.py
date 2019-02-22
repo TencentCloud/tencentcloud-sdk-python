@@ -17,28 +17,28 @@ import json
 
 from tencentcloud.common.exception.tencent_cloud_sdk_exception import TencentCloudSDKException
 from tencentcloud.common.abstract_client import AbstractClient
-from tencentcloud.bm.v20180423 import models
+from tencentcloud.bmlb.v20180625 import models
 
 
-class BmClient(AbstractClient):
-    _apiVersion = '2018-04-23'
-    _endpoint = 'bm.tencentcloudapi.com'
+class BmlbClient(AbstractClient):
+    _apiVersion = '2018-06-25'
+    _endpoint = 'bmlb.tencentcloudapi.com'
 
 
-    def BindPsaTag(self, request):
-        """为预授权规则绑定标签
+    def BindL4Backends(self, request):
+        """绑定黑石服务器到四层监听器。服务器包括物理服务器、虚拟机以及半托管机器。
 
-        :param request: 调用BindPsaTag所需参数的结构体。
-        :type request: :class:`tencentcloud.bm.v20180423.models.BindPsaTagRequest`
-        :rtype: :class:`tencentcloud.bm.v20180423.models.BindPsaTagResponse`
+        :param request: 调用BindL4Backends所需参数的结构体。
+        :type request: :class:`tencentcloud.bmlb.v20180625.models.BindL4BackendsRequest`
+        :rtype: :class:`tencentcloud.bmlb.v20180625.models.BindL4BackendsResponse`
 
         """
         try:
             params = request._serialize()
-            body = self.call("BindPsaTag", params)
+            body = self.call("BindL4Backends", params)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.BindPsaTagResponse()
+                model = models.BindL4BackendsResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -53,20 +53,20 @@ class BmClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def BuyDevices(self, request):
-        """购买黑石物理机
+    def BindL7Backends(self, request):
+        """绑定黑石物理服务器或半托管服务器到七层转发路径。
 
-        :param request: 调用BuyDevices所需参数的结构体。
-        :type request: :class:`tencentcloud.bm.v20180423.models.BuyDevicesRequest`
-        :rtype: :class:`tencentcloud.bm.v20180423.models.BuyDevicesResponse`
+        :param request: 调用BindL7Backends所需参数的结构体。
+        :type request: :class:`tencentcloud.bmlb.v20180625.models.BindL7BackendsRequest`
+        :rtype: :class:`tencentcloud.bmlb.v20180625.models.BindL7BackendsResponse`
 
         """
         try:
             params = request._serialize()
-            body = self.call("BuyDevices", params)
+            body = self.call("BindL7Backends", params)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.BuyDevicesResponse()
+                model = models.BindL7BackendsResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -81,21 +81,20 @@ class BmClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def CreateCustomImage(self, request):
-        """创建自定义镜像<br>
-        每个AppId在每个可用区最多保留20个自定义镜像
+    def BindTrafficMirrorListeners(self, request):
+        """绑定黑石服务器七层监听器到流量镜像实例。
 
-        :param request: 调用CreateCustomImage所需参数的结构体。
-        :type request: :class:`tencentcloud.bm.v20180423.models.CreateCustomImageRequest`
-        :rtype: :class:`tencentcloud.bm.v20180423.models.CreateCustomImageResponse`
+        :param request: 调用BindTrafficMirrorListeners所需参数的结构体。
+        :type request: :class:`tencentcloud.bmlb.v20180625.models.BindTrafficMirrorListenersRequest`
+        :rtype: :class:`tencentcloud.bmlb.v20180625.models.BindTrafficMirrorListenersResponse`
 
         """
         try:
             params = request._serialize()
-            body = self.call("CreateCustomImage", params)
+            body = self.call("BindTrafficMirrorListeners", params)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.CreateCustomImageResponse()
+                model = models.BindTrafficMirrorListenersResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -110,20 +109,20 @@ class BmClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def CreatePsaRegulation(self, request):
-        """创建预授权规则
+    def BindTrafficMirrorReceivers(self, request):
+        """绑定黑石物理服务器成为流量镜像接收机。
 
-        :param request: 调用CreatePsaRegulation所需参数的结构体。
-        :type request: :class:`tencentcloud.bm.v20180423.models.CreatePsaRegulationRequest`
-        :rtype: :class:`tencentcloud.bm.v20180423.models.CreatePsaRegulationResponse`
+        :param request: 调用BindTrafficMirrorReceivers所需参数的结构体。
+        :type request: :class:`tencentcloud.bmlb.v20180625.models.BindTrafficMirrorReceiversRequest`
+        :rtype: :class:`tencentcloud.bmlb.v20180625.models.BindTrafficMirrorReceiversResponse`
 
         """
         try:
             params = request._serialize()
-            body = self.call("CreatePsaRegulation", params)
+            body = self.call("BindTrafficMirrorReceivers", params)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.CreatePsaRegulationResponse()
+                model = models.BindTrafficMirrorReceiversResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -138,20 +137,20 @@ class BmClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def CreateSpotDevice(self, request):
-        """创建黑石竞价实例
+    def CreateL4Listeners(self, request):
+        """创建黑石四层负载均衡监听器功能。黑石负载均衡四层监听器提供了转发用户请求的具体规则，包括端口、协议、会话保持、健康检查等参数。
 
-        :param request: 调用CreateSpotDevice所需参数的结构体。
-        :type request: :class:`tencentcloud.bm.v20180423.models.CreateSpotDeviceRequest`
-        :rtype: :class:`tencentcloud.bm.v20180423.models.CreateSpotDeviceResponse`
+        :param request: 调用CreateL4Listeners所需参数的结构体。
+        :type request: :class:`tencentcloud.bmlb.v20180625.models.CreateL4ListenersRequest`
+        :rtype: :class:`tencentcloud.bmlb.v20180625.models.CreateL4ListenersResponse`
 
         """
         try:
             params = request._serialize()
-            body = self.call("CreateSpotDevice", params)
+            body = self.call("CreateL4Listeners", params)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.CreateSpotDeviceResponse()
+                model = models.CreateL4ListenersResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -166,20 +165,20 @@ class BmClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def CreateUserCmd(self, request):
-        """创建自定义脚本
+    def CreateL7Listeners(self, request):
+        """创建黑石负载均衡七层监听器功能。负载均衡七层监听器提供了转发用户请求的具体规则，包括端口、协议等参数。
 
-        :param request: 调用CreateUserCmd所需参数的结构体。
-        :type request: :class:`tencentcloud.bm.v20180423.models.CreateUserCmdRequest`
-        :rtype: :class:`tencentcloud.bm.v20180423.models.CreateUserCmdResponse`
+        :param request: 调用CreateL7Listeners所需参数的结构体。
+        :type request: :class:`tencentcloud.bmlb.v20180625.models.CreateL7ListenersRequest`
+        :rtype: :class:`tencentcloud.bmlb.v20180625.models.CreateL7ListenersResponse`
 
         """
         try:
             params = request._serialize()
-            body = self.call("CreateUserCmd", params)
+            body = self.call("CreateL7Listeners", params)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.CreateUserCmdResponse()
+                model = models.CreateL7ListenersResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -194,21 +193,20 @@ class BmClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def DeleteCustomImages(self, request):
-        """删除自定义镜像<br>
-        正用于部署或重装中的镜像被删除后，镜像文件将保留一段时间，直到部署或重装结束
+    def CreateL7Rules(self, request):
+        """创建黑石负载均衡七层转发规则。
 
-        :param request: 调用DeleteCustomImages所需参数的结构体。
-        :type request: :class:`tencentcloud.bm.v20180423.models.DeleteCustomImagesRequest`
-        :rtype: :class:`tencentcloud.bm.v20180423.models.DeleteCustomImagesResponse`
+        :param request: 调用CreateL7Rules所需参数的结构体。
+        :type request: :class:`tencentcloud.bmlb.v20180625.models.CreateL7RulesRequest`
+        :rtype: :class:`tencentcloud.bmlb.v20180625.models.CreateL7RulesResponse`
 
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteCustomImages", params)
+            body = self.call("CreateL7Rules", params)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.DeleteCustomImagesResponse()
+                model = models.CreateL7RulesResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -223,20 +221,20 @@ class BmClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def DeletePsaRegulation(self, request):
-        """删除预授权规则
+    def CreateLoadBalancers(self, request):
+        """用来创建黑石负载均衡。为了使用黑石负载均衡服务，您必须要创建一个或者多个负载均衡实例。通过成功调用该接口，会返回负载均衡实例的唯一ID。用户可以购买的黑石负载均衡实例类型分为：公网类型、内网类型。公网类型负载均衡对应一个BGP VIP，可用于快速访问公网负载均衡绑定的物理服务器；内网类型负载均衡对应一个腾讯云内部的VIP，不能通过Internet访问，可快速访问内网负载均衡绑定的物理服务器。
 
-        :param request: 调用DeletePsaRegulation所需参数的结构体。
-        :type request: :class:`tencentcloud.bm.v20180423.models.DeletePsaRegulationRequest`
-        :rtype: :class:`tencentcloud.bm.v20180423.models.DeletePsaRegulationResponse`
+        :param request: 调用CreateLoadBalancers所需参数的结构体。
+        :type request: :class:`tencentcloud.bmlb.v20180625.models.CreateLoadBalancersRequest`
+        :rtype: :class:`tencentcloud.bmlb.v20180625.models.CreateLoadBalancersResponse`
 
         """
         try:
             params = request._serialize()
-            body = self.call("DeletePsaRegulation", params)
+            body = self.call("CreateLoadBalancers", params)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.DeletePsaRegulationResponse()
+                model = models.CreateLoadBalancersResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -251,20 +249,20 @@ class BmClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def DeleteUserCmds(self, request):
-        """删除自定义脚本
+    def CreateTrafficMirror(self, request):
+        """创建流量镜像实例。
 
-        :param request: 调用DeleteUserCmds所需参数的结构体。
-        :type request: :class:`tencentcloud.bm.v20180423.models.DeleteUserCmdsRequest`
-        :rtype: :class:`tencentcloud.bm.v20180423.models.DeleteUserCmdsResponse`
+        :param request: 调用CreateTrafficMirror所需参数的结构体。
+        :type request: :class:`tencentcloud.bmlb.v20180625.models.CreateTrafficMirrorRequest`
+        :rtype: :class:`tencentcloud.bmlb.v20180625.models.CreateTrafficMirrorResponse`
 
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteUserCmds", params)
+            body = self.call("CreateTrafficMirror", params)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.DeleteUserCmdsResponse()
+                model = models.CreateTrafficMirrorResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -279,20 +277,20 @@ class BmClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def DescribeCustomImageProcess(self, request):
-        """查询自定义镜像制作进度
+    def DeleteL7Domains(self, request):
+        """删除黑石负载均衡七层转发域名。
 
-        :param request: 调用DescribeCustomImageProcess所需参数的结构体。
-        :type request: :class:`tencentcloud.bm.v20180423.models.DescribeCustomImageProcessRequest`
-        :rtype: :class:`tencentcloud.bm.v20180423.models.DescribeCustomImageProcessResponse`
+        :param request: 调用DeleteL7Domains所需参数的结构体。
+        :type request: :class:`tencentcloud.bmlb.v20180625.models.DeleteL7DomainsRequest`
+        :rtype: :class:`tencentcloud.bmlb.v20180625.models.DeleteL7DomainsResponse`
 
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeCustomImageProcess", params)
+            body = self.call("DeleteL7Domains", params)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.DescribeCustomImageProcessResponse()
+                model = models.DeleteL7DomainsResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -307,20 +305,20 @@ class BmClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def DescribeCustomImages(self, request):
-        """查看自定义镜像列表
+    def DeleteL7Rules(self, request):
+        """删除黑石负载均衡七层转发规则。
 
-        :param request: 调用DescribeCustomImages所需参数的结构体。
-        :type request: :class:`tencentcloud.bm.v20180423.models.DescribeCustomImagesRequest`
-        :rtype: :class:`tencentcloud.bm.v20180423.models.DescribeCustomImagesResponse`
+        :param request: 调用DeleteL7Rules所需参数的结构体。
+        :type request: :class:`tencentcloud.bmlb.v20180625.models.DeleteL7RulesRequest`
+        :rtype: :class:`tencentcloud.bmlb.v20180625.models.DeleteL7RulesResponse`
 
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeCustomImages", params)
+            body = self.call("DeleteL7Rules", params)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.DescribeCustomImagesResponse()
+                model = models.DeleteL7RulesResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -335,20 +333,20 @@ class BmClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def DescribeDeviceClass(self, request):
-        """获取获取设备类型
+    def DeleteListeners(self, request):
+        """删除黑石负载均衡监听器。
 
-        :param request: 调用DescribeDeviceClass所需参数的结构体。
-        :type request: :class:`tencentcloud.bm.v20180423.models.DescribeDeviceClassRequest`
-        :rtype: :class:`tencentcloud.bm.v20180423.models.DescribeDeviceClassResponse`
+        :param request: 调用DeleteListeners所需参数的结构体。
+        :type request: :class:`tencentcloud.bmlb.v20180625.models.DeleteListenersRequest`
+        :rtype: :class:`tencentcloud.bmlb.v20180625.models.DeleteListenersResponse`
 
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeDeviceClass", params)
+            body = self.call("DeleteListeners", params)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.DescribeDeviceClassResponse()
+                model = models.DeleteListenersResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -363,20 +361,20 @@ class BmClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def DescribeDeviceClassPartition(self, request):
-        """查询机型支持的RAID方式， 并返回系统盘的分区和逻辑盘的列表
+    def DeleteLoadBalancer(self, request):
+        """删除用户指定的黑石负载均衡实例。
 
-        :param request: 调用DescribeDeviceClassPartition所需参数的结构体。
-        :type request: :class:`tencentcloud.bm.v20180423.models.DescribeDeviceClassPartitionRequest`
-        :rtype: :class:`tencentcloud.bm.v20180423.models.DescribeDeviceClassPartitionResponse`
+        :param request: 调用DeleteLoadBalancer所需参数的结构体。
+        :type request: :class:`tencentcloud.bmlb.v20180625.models.DeleteLoadBalancerRequest`
+        :rtype: :class:`tencentcloud.bmlb.v20180625.models.DeleteLoadBalancerResponse`
 
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeDeviceClassPartition", params)
+            body = self.call("DeleteLoadBalancer", params)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.DescribeDeviceClassPartitionResponse()
+                model = models.DeleteLoadBalancerResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -391,20 +389,20 @@ class BmClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def DescribeDeviceInventory(self, request):
-        """查询设备库存
+    def DeleteTrafficMirror(self, request):
+        """删除已创建的黑石流量镜像实例，删除过程是异步执行的，因此需要使用查询任务接口获取删除的结果。
 
-        :param request: 调用DescribeDeviceInventory所需参数的结构体。
-        :type request: :class:`tencentcloud.bm.v20180423.models.DescribeDeviceInventoryRequest`
-        :rtype: :class:`tencentcloud.bm.v20180423.models.DescribeDeviceInventoryResponse`
+        :param request: 调用DeleteTrafficMirror所需参数的结构体。
+        :type request: :class:`tencentcloud.bmlb.v20180625.models.DeleteTrafficMirrorRequest`
+        :rtype: :class:`tencentcloud.bmlb.v20180625.models.DeleteTrafficMirrorResponse`
 
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeDeviceInventory", params)
+            body = self.call("DeleteTrafficMirror", params)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.DescribeDeviceInventoryResponse()
+                model = models.DeleteTrafficMirrorResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -419,20 +417,20 @@ class BmClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def DescribeDeviceOperationLog(self, request):
-        """查询设备操作日志， 如设备重启，重装，设置密码等操作
+    def DescribeCertDetail(self, request):
+        """获取黑石负载均衡证书详情。
 
-        :param request: 调用DescribeDeviceOperationLog所需参数的结构体。
-        :type request: :class:`tencentcloud.bm.v20180423.models.DescribeDeviceOperationLogRequest`
-        :rtype: :class:`tencentcloud.bm.v20180423.models.DescribeDeviceOperationLogResponse`
+        :param request: 调用DescribeCertDetail所需参数的结构体。
+        :type request: :class:`tencentcloud.bmlb.v20180625.models.DescribeCertDetailRequest`
+        :rtype: :class:`tencentcloud.bmlb.v20180625.models.DescribeCertDetailResponse`
 
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeDeviceOperationLog", params)
+            body = self.call("DescribeCertDetail", params)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.DescribeDeviceOperationLogResponse()
+                model = models.DescribeCertDetailResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -447,20 +445,20 @@ class BmClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def DescribeDevicePartition(self, request):
-        """获取物理机的分区格式
+    def DescribeDevicesBindInfo(self, request):
+        """查询黑石物理机和虚机以及托管服务器绑定的黑石负载均衡详情。
 
-        :param request: 调用DescribeDevicePartition所需参数的结构体。
-        :type request: :class:`tencentcloud.bm.v20180423.models.DescribeDevicePartitionRequest`
-        :rtype: :class:`tencentcloud.bm.v20180423.models.DescribeDevicePartitionResponse`
+        :param request: 调用DescribeDevicesBindInfo所需参数的结构体。
+        :type request: :class:`tencentcloud.bmlb.v20180625.models.DescribeDevicesBindInfoRequest`
+        :rtype: :class:`tencentcloud.bmlb.v20180625.models.DescribeDevicesBindInfoResponse`
 
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeDevicePartition", params)
+            body = self.call("DescribeDevicesBindInfo", params)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.DescribeDevicePartitionResponse()
+                model = models.DescribeDevicesBindInfoResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -475,20 +473,20 @@ class BmClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def DescribeDevicePosition(self, request):
-        """查询服务器所在的位置，如机架，上联交换机等信息
+    def DescribeL4Backends(self, request):
+        """获取黑石负载均衡四层监听器绑定的主机列表。
 
-        :param request: 调用DescribeDevicePosition所需参数的结构体。
-        :type request: :class:`tencentcloud.bm.v20180423.models.DescribeDevicePositionRequest`
-        :rtype: :class:`tencentcloud.bm.v20180423.models.DescribeDevicePositionResponse`
+        :param request: 调用DescribeL4Backends所需参数的结构体。
+        :type request: :class:`tencentcloud.bmlb.v20180625.models.DescribeL4BackendsRequest`
+        :rtype: :class:`tencentcloud.bmlb.v20180625.models.DescribeL4BackendsResponse`
 
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeDevicePosition", params)
+            body = self.call("DescribeL4Backends", params)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.DescribeDevicePositionResponse()
+                model = models.DescribeL4BackendsResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -503,20 +501,20 @@ class BmClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def DescribeDevicePriceInfo(self, request):
-        """查询服务器价格信息，支持设备的批量查找，支持标准机型和弹性机型的混合查找
+    def DescribeL4ListenerInfo(self, request):
+        """查找绑定了某主机或者指定监听器名称的黑石负载均衡四层监听器。
 
-        :param request: 调用DescribeDevicePriceInfo所需参数的结构体。
-        :type request: :class:`tencentcloud.bm.v20180423.models.DescribeDevicePriceInfoRequest`
-        :rtype: :class:`tencentcloud.bm.v20180423.models.DescribeDevicePriceInfoResponse`
+        :param request: 调用DescribeL4ListenerInfo所需参数的结构体。
+        :type request: :class:`tencentcloud.bmlb.v20180625.models.DescribeL4ListenerInfoRequest`
+        :rtype: :class:`tencentcloud.bmlb.v20180625.models.DescribeL4ListenerInfoResponse`
 
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeDevicePriceInfo", params)
+            body = self.call("DescribeL4ListenerInfo", params)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.DescribeDevicePriceInfoResponse()
+                model = models.DescribeL4ListenerInfoResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -531,20 +529,20 @@ class BmClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def DescribeDevices(self, request):
-        """查询物理服务器，可以按照实例，业务IP等过滤
+    def DescribeL4Listeners(self, request):
+        """获取黑石负载均衡四层监听器。
 
-        :param request: 调用DescribeDevices所需参数的结构体。
-        :type request: :class:`tencentcloud.bm.v20180423.models.DescribeDevicesRequest`
-        :rtype: :class:`tencentcloud.bm.v20180423.models.DescribeDevicesResponse`
+        :param request: 调用DescribeL4Listeners所需参数的结构体。
+        :type request: :class:`tencentcloud.bmlb.v20180625.models.DescribeL4ListenersRequest`
+        :rtype: :class:`tencentcloud.bmlb.v20180625.models.DescribeL4ListenersResponse`
 
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeDevices", params)
+            body = self.call("DescribeL4Listeners", params)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.DescribeDevicesResponse()
+                model = models.DescribeL4ListenersResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -559,20 +557,20 @@ class BmClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def DescribeOperationResult(self, request):
-        """获取异步操作状态的完成状态
+    def DescribeL7Backends(self, request):
+        """获取黑石负载均衡七层监听器绑定的主机列表
 
-        :param request: 调用DescribeOperationResult所需参数的结构体。
-        :type request: :class:`tencentcloud.bm.v20180423.models.DescribeOperationResultRequest`
-        :rtype: :class:`tencentcloud.bm.v20180423.models.DescribeOperationResultResponse`
+        :param request: 调用DescribeL7Backends所需参数的结构体。
+        :type request: :class:`tencentcloud.bmlb.v20180625.models.DescribeL7BackendsRequest`
+        :rtype: :class:`tencentcloud.bmlb.v20180625.models.DescribeL7BackendsResponse`
 
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeOperationResult", params)
+            body = self.call("DescribeL7Backends", params)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.DescribeOperationResultResponse()
+                model = models.DescribeL7BackendsResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -587,20 +585,20 @@ class BmClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def DescribeOsInfo(self, request):
-        """查询指定机型所支持的操作系统
+    def DescribeL7ListenerInfo(self, request):
+        """查找绑定了某主机或者有某转发域名黑石负载均衡七层监听器。
 
-        :param request: 调用DescribeOsInfo所需参数的结构体。
-        :type request: :class:`tencentcloud.bm.v20180423.models.DescribeOsInfoRequest`
-        :rtype: :class:`tencentcloud.bm.v20180423.models.DescribeOsInfoResponse`
+        :param request: 调用DescribeL7ListenerInfo所需参数的结构体。
+        :type request: :class:`tencentcloud.bmlb.v20180625.models.DescribeL7ListenerInfoRequest`
+        :rtype: :class:`tencentcloud.bmlb.v20180625.models.DescribeL7ListenerInfoResponse`
 
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeOsInfo", params)
+            body = self.call("DescribeL7ListenerInfo", params)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.DescribeOsInfoResponse()
+                model = models.DescribeL7ListenerInfoResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -615,20 +613,20 @@ class BmClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def DescribePsaRegulations(self, request):
-        """获取预授权规则列表
+    def DescribeL7Listeners(self, request):
+        """获取黑石负载均衡七层监听器列表信息。
 
-        :param request: 调用DescribePsaRegulations所需参数的结构体。
-        :type request: :class:`tencentcloud.bm.v20180423.models.DescribePsaRegulationsRequest`
-        :rtype: :class:`tencentcloud.bm.v20180423.models.DescribePsaRegulationsResponse`
+        :param request: 调用DescribeL7Listeners所需参数的结构体。
+        :type request: :class:`tencentcloud.bmlb.v20180625.models.DescribeL7ListenersRequest`
+        :rtype: :class:`tencentcloud.bmlb.v20180625.models.DescribeL7ListenersResponse`
 
         """
         try:
             params = request._serialize()
-            body = self.call("DescribePsaRegulations", params)
+            body = self.call("DescribeL7Listeners", params)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.DescribePsaRegulationsResponse()
+                model = models.DescribeL7ListenersResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -643,20 +641,20 @@ class BmClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def DescribeRepairTaskConstant(self, request):
-        """维修任务配置获取
+    def DescribeL7ListenersEx(self, request):
+        """获取指定VPC下的7层监听器(支持模糊匹配)。
 
-        :param request: 调用DescribeRepairTaskConstant所需参数的结构体。
-        :type request: :class:`tencentcloud.bm.v20180423.models.DescribeRepairTaskConstantRequest`
-        :rtype: :class:`tencentcloud.bm.v20180423.models.DescribeRepairTaskConstantResponse`
+        :param request: 调用DescribeL7ListenersEx所需参数的结构体。
+        :type request: :class:`tencentcloud.bmlb.v20180625.models.DescribeL7ListenersExRequest`
+        :rtype: :class:`tencentcloud.bmlb.v20180625.models.DescribeL7ListenersExResponse`
 
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeRepairTaskConstant", params)
+            body = self.call("DescribeL7ListenersEx", params)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.DescribeRepairTaskConstantResponse()
+                model = models.DescribeL7ListenersExResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -671,28 +669,20 @@ class BmClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def DescribeTaskInfo(self, request):
-        """获取用户维修任务列表及详细信息<br>
-        <br>
-        TaskStatus（任务状态ID）与状态中文名的对应关系如下：<br>
-        1：未授权<br>
-        2：处理中<br>
-        3：待确认<br>
-        4：未授权-暂不处理<br>
-        5：已恢复<br>
-        6：待确认-未恢复<br>
+    def DescribeL7Rules(self, request):
+        """获取黑石负载均衡七层转发规则。
 
-        :param request: 调用DescribeTaskInfo所需参数的结构体。
-        :type request: :class:`tencentcloud.bm.v20180423.models.DescribeTaskInfoRequest`
-        :rtype: :class:`tencentcloud.bm.v20180423.models.DescribeTaskInfoResponse`
+        :param request: 调用DescribeL7Rules所需参数的结构体。
+        :type request: :class:`tencentcloud.bmlb.v20180625.models.DescribeL7RulesRequest`
+        :rtype: :class:`tencentcloud.bmlb.v20180625.models.DescribeL7RulesResponse`
 
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeTaskInfo", params)
+            body = self.call("DescribeL7Rules", params)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.DescribeTaskInfoResponse()
+                model = models.DescribeL7RulesResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -707,20 +697,20 @@ class BmClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def DescribeTaskOperationLog(self, request):
-        """获取维修任务操作日志
+    def DescribeLoadBalancerPortInfo(self, request):
+        """获取黑石负载均衡端口相关信息。
 
-        :param request: 调用DescribeTaskOperationLog所需参数的结构体。
-        :type request: :class:`tencentcloud.bm.v20180423.models.DescribeTaskOperationLogRequest`
-        :rtype: :class:`tencentcloud.bm.v20180423.models.DescribeTaskOperationLogResponse`
+        :param request: 调用DescribeLoadBalancerPortInfo所需参数的结构体。
+        :type request: :class:`tencentcloud.bmlb.v20180625.models.DescribeLoadBalancerPortInfoRequest`
+        :rtype: :class:`tencentcloud.bmlb.v20180625.models.DescribeLoadBalancerPortInfoResponse`
 
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeTaskOperationLog", params)
+            body = self.call("DescribeLoadBalancerPortInfo", params)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.DescribeTaskOperationLogResponse()
+                model = models.DescribeLoadBalancerPortInfoResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -735,20 +725,20 @@ class BmClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def DescribeUserCmdTaskInfo(self, request):
-        """获取自定义脚本任务详细信息
+    def DescribeLoadBalancerTaskResult(self, request):
+        """查询负载均衡实例异步任务的执行情况。
 
-        :param request: 调用DescribeUserCmdTaskInfo所需参数的结构体。
-        :type request: :class:`tencentcloud.bm.v20180423.models.DescribeUserCmdTaskInfoRequest`
-        :rtype: :class:`tencentcloud.bm.v20180423.models.DescribeUserCmdTaskInfoResponse`
+        :param request: 调用DescribeLoadBalancerTaskResult所需参数的结构体。
+        :type request: :class:`tencentcloud.bmlb.v20180625.models.DescribeLoadBalancerTaskResultRequest`
+        :rtype: :class:`tencentcloud.bmlb.v20180625.models.DescribeLoadBalancerTaskResultResponse`
 
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeUserCmdTaskInfo", params)
+            body = self.call("DescribeLoadBalancerTaskResult", params)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.DescribeUserCmdTaskInfoResponse()
+                model = models.DescribeLoadBalancerTaskResultResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -763,20 +753,20 @@ class BmClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def DescribeUserCmdTasks(self, request):
-        """获取自定义脚本任务列表
+    def DescribeLoadBalancers(self, request):
+        """获取黑石负载均衡实例列表
 
-        :param request: 调用DescribeUserCmdTasks所需参数的结构体。
-        :type request: :class:`tencentcloud.bm.v20180423.models.DescribeUserCmdTasksRequest`
-        :rtype: :class:`tencentcloud.bm.v20180423.models.DescribeUserCmdTasksResponse`
+        :param request: 调用DescribeLoadBalancers所需参数的结构体。
+        :type request: :class:`tencentcloud.bmlb.v20180625.models.DescribeLoadBalancersRequest`
+        :rtype: :class:`tencentcloud.bmlb.v20180625.models.DescribeLoadBalancersResponse`
 
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeUserCmdTasks", params)
+            body = self.call("DescribeLoadBalancers", params)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.DescribeUserCmdTasksResponse()
+                model = models.DescribeLoadBalancersResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -791,20 +781,20 @@ class BmClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def DescribeUserCmds(self, request):
-        """获取自定义脚本信息列表
+    def DescribeTrafficMirrorListeners(self, request):
+        """获取流量镜像的监听器列表信息。
 
-        :param request: 调用DescribeUserCmds所需参数的结构体。
-        :type request: :class:`tencentcloud.bm.v20180423.models.DescribeUserCmdsRequest`
-        :rtype: :class:`tencentcloud.bm.v20180423.models.DescribeUserCmdsResponse`
+        :param request: 调用DescribeTrafficMirrorListeners所需参数的结构体。
+        :type request: :class:`tencentcloud.bmlb.v20180625.models.DescribeTrafficMirrorListenersRequest`
+        :rtype: :class:`tencentcloud.bmlb.v20180625.models.DescribeTrafficMirrorListenersResponse`
 
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeUserCmds", params)
+            body = self.call("DescribeTrafficMirrorListeners", params)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.DescribeUserCmdsResponse()
+                model = models.DescribeTrafficMirrorListenersResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -819,20 +809,20 @@ class BmClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def ModifyCustomImageAttribute(self, request):
-        """用于修改自定义镜像名或描述
+    def DescribeTrafficMirrorReceiverHealthStatus(self, request):
+        """获取流量镜像接收机健康状态。
 
-        :param request: 调用ModifyCustomImageAttribute所需参数的结构体。
-        :type request: :class:`tencentcloud.bm.v20180423.models.ModifyCustomImageAttributeRequest`
-        :rtype: :class:`tencentcloud.bm.v20180423.models.ModifyCustomImageAttributeResponse`
+        :param request: 调用DescribeTrafficMirrorReceiverHealthStatus所需参数的结构体。
+        :type request: :class:`tencentcloud.bmlb.v20180625.models.DescribeTrafficMirrorReceiverHealthStatusRequest`
+        :rtype: :class:`tencentcloud.bmlb.v20180625.models.DescribeTrafficMirrorReceiverHealthStatusResponse`
 
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyCustomImageAttribute", params)
+            body = self.call("DescribeTrafficMirrorReceiverHealthStatus", params)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.ModifyCustomImageAttributeResponse()
+                model = models.DescribeTrafficMirrorReceiverHealthStatusResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -847,20 +837,20 @@ class BmClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def ModifyDeviceAliases(self, request):
-        """修改服务器名称
+    def DescribeTrafficMirrorReceivers(self, request):
+        """获取指定流量镜像实例的接收机信息。
 
-        :param request: 调用ModifyDeviceAliases所需参数的结构体。
-        :type request: :class:`tencentcloud.bm.v20180423.models.ModifyDeviceAliasesRequest`
-        :rtype: :class:`tencentcloud.bm.v20180423.models.ModifyDeviceAliasesResponse`
+        :param request: 调用DescribeTrafficMirrorReceivers所需参数的结构体。
+        :type request: :class:`tencentcloud.bmlb.v20180625.models.DescribeTrafficMirrorReceiversRequest`
+        :rtype: :class:`tencentcloud.bmlb.v20180625.models.DescribeTrafficMirrorReceiversResponse`
 
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyDeviceAliases", params)
+            body = self.call("DescribeTrafficMirrorReceivers", params)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.ModifyDeviceAliasesResponse()
+                model = models.DescribeTrafficMirrorReceiversResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -875,20 +865,20 @@ class BmClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def ModifyDeviceAutoRenewFlag(self, request):
-        """修改物理机服务器自动续费标志
+    def DescribeTrafficMirrors(self, request):
+        """获取流量镜像实例的列表信息。
 
-        :param request: 调用ModifyDeviceAutoRenewFlag所需参数的结构体。
-        :type request: :class:`tencentcloud.bm.v20180423.models.ModifyDeviceAutoRenewFlagRequest`
-        :rtype: :class:`tencentcloud.bm.v20180423.models.ModifyDeviceAutoRenewFlagResponse`
+        :param request: 调用DescribeTrafficMirrors所需参数的结构体。
+        :type request: :class:`tencentcloud.bmlb.v20180625.models.DescribeTrafficMirrorsRequest`
+        :rtype: :class:`tencentcloud.bmlb.v20180625.models.DescribeTrafficMirrorsResponse`
 
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyDeviceAutoRenewFlag", params)
+            body = self.call("DescribeTrafficMirrors", params)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.ModifyDeviceAutoRenewFlagResponse()
+                model = models.DescribeTrafficMirrorsResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -903,20 +893,20 @@ class BmClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def ModifyLanIp(self, request):
-        """修改物理机内网IP（不重装系统）
+    def ModifyL4BackendPort(self, request):
+        """修改黑石负载均衡四层监听器后端实例端口。
 
-        :param request: 调用ModifyLanIp所需参数的结构体。
-        :type request: :class:`tencentcloud.bm.v20180423.models.ModifyLanIpRequest`
-        :rtype: :class:`tencentcloud.bm.v20180423.models.ModifyLanIpResponse`
+        :param request: 调用ModifyL4BackendPort所需参数的结构体。
+        :type request: :class:`tencentcloud.bmlb.v20180625.models.ModifyL4BackendPortRequest`
+        :rtype: :class:`tencentcloud.bmlb.v20180625.models.ModifyL4BackendPortResponse`
 
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyLanIp", params)
+            body = self.call("ModifyL4BackendPort", params)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.ModifyLanIpResponse()
+                model = models.ModifyL4BackendPortResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -931,20 +921,20 @@ class BmClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def ModifyPayModePre2Post(self, request):
-        """将设备的预付费模式修改为后付费计费模式，支持批量转换。（前提是客户要加入黑石物理机后付费计费的白名单，申请黑石物理机后付费可以联系腾讯云客服）
+    def ModifyL4BackendProbePort(self, request):
+        """修改黑石负载均衡四层监听器后端探测端口。
 
-        :param request: 调用ModifyPayModePre2Post所需参数的结构体。
-        :type request: :class:`tencentcloud.bm.v20180423.models.ModifyPayModePre2PostRequest`
-        :rtype: :class:`tencentcloud.bm.v20180423.models.ModifyPayModePre2PostResponse`
+        :param request: 调用ModifyL4BackendProbePort所需参数的结构体。
+        :type request: :class:`tencentcloud.bmlb.v20180625.models.ModifyL4BackendProbePortRequest`
+        :rtype: :class:`tencentcloud.bmlb.v20180625.models.ModifyL4BackendProbePortResponse`
 
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyPayModePre2Post", params)
+            body = self.call("ModifyL4BackendProbePort", params)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.ModifyPayModePre2PostResponse()
+                model = models.ModifyL4BackendProbePortResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -959,20 +949,20 @@ class BmClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def ModifyPsaRegulation(self, request):
-        """允许修改规则信息及关联故障类型
+    def ModifyL4BackendWeight(self, request):
+        """修改黑石负载均衡四层监听器后端实例权重功能。
 
-        :param request: 调用ModifyPsaRegulation所需参数的结构体。
-        :type request: :class:`tencentcloud.bm.v20180423.models.ModifyPsaRegulationRequest`
-        :rtype: :class:`tencentcloud.bm.v20180423.models.ModifyPsaRegulationResponse`
+        :param request: 调用ModifyL4BackendWeight所需参数的结构体。
+        :type request: :class:`tencentcloud.bmlb.v20180625.models.ModifyL4BackendWeightRequest`
+        :rtype: :class:`tencentcloud.bmlb.v20180625.models.ModifyL4BackendWeightResponse`
 
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyPsaRegulation", params)
+            body = self.call("ModifyL4BackendWeight", params)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.ModifyPsaRegulationResponse()
+                model = models.ModifyL4BackendWeightResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -987,20 +977,20 @@ class BmClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def ModifyUserCmd(self, request):
-        """修改自定义脚本
+    def ModifyL4Listener(self, request):
+        """修改黑石负载均衡四层监听器。
 
-        :param request: 调用ModifyUserCmd所需参数的结构体。
-        :type request: :class:`tencentcloud.bm.v20180423.models.ModifyUserCmdRequest`
-        :rtype: :class:`tencentcloud.bm.v20180423.models.ModifyUserCmdResponse`
+        :param request: 调用ModifyL4Listener所需参数的结构体。
+        :type request: :class:`tencentcloud.bmlb.v20180625.models.ModifyL4ListenerRequest`
+        :rtype: :class:`tencentcloud.bmlb.v20180625.models.ModifyL4ListenerResponse`
 
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyUserCmd", params)
+            body = self.call("ModifyL4Listener", params)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.ModifyUserCmdResponse()
+                model = models.ModifyL4ListenerResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -1015,20 +1005,20 @@ class BmClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def OfflineDevices(self, request):
-        """用于销毁可退还的服务器
+    def ModifyL7BackendPort(self, request):
+        """修改黑石负载均衡七层转发路径后端实例端口。
 
-        :param request: 调用OfflineDevices所需参数的结构体。
-        :type request: :class:`tencentcloud.bm.v20180423.models.OfflineDevicesRequest`
-        :rtype: :class:`tencentcloud.bm.v20180423.models.OfflineDevicesResponse`
+        :param request: 调用ModifyL7BackendPort所需参数的结构体。
+        :type request: :class:`tencentcloud.bmlb.v20180625.models.ModifyL7BackendPortRequest`
+        :rtype: :class:`tencentcloud.bmlb.v20180625.models.ModifyL7BackendPortResponse`
 
         """
         try:
             params = request._serialize()
-            body = self.call("OfflineDevices", params)
+            body = self.call("ModifyL7BackendPort", params)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.OfflineDevicesResponse()
+                model = models.ModifyL7BackendPortResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -1043,20 +1033,20 @@ class BmClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def RebootDevices(self, request):
-        """重启机器
+    def ModifyL7BackendWeight(self, request):
+        """修改黑石负载均衡七层转发路径后端实例权重。
 
-        :param request: 调用RebootDevices所需参数的结构体。
-        :type request: :class:`tencentcloud.bm.v20180423.models.RebootDevicesRequest`
-        :rtype: :class:`tencentcloud.bm.v20180423.models.RebootDevicesResponse`
+        :param request: 调用ModifyL7BackendWeight所需参数的结构体。
+        :type request: :class:`tencentcloud.bmlb.v20180625.models.ModifyL7BackendWeightRequest`
+        :rtype: :class:`tencentcloud.bmlb.v20180625.models.ModifyL7BackendWeightResponse`
 
         """
         try:
             params = request._serialize()
-            body = self.call("RebootDevices", params)
+            body = self.call("ModifyL7BackendWeight", params)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.RebootDevicesResponse()
+                model = models.ModifyL7BackendWeightResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -1071,40 +1061,20 @@ class BmClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def RepairTaskControl(self, request):
-        """此接口用于操作维修任务<br>
-        入参TaskId为维修任务ID<br>
-        入参Operate表示对维修任务的操作，支持如下取值：<br>
-        AuthorizeRepair（授权维修）<br>
-        Ignore（暂不提醒）<br>
-        ConfirmRecovered（维修完成后，确认故障恢复）<br>
-        ConfirmUnRecovered（维修完成后，确认故障未恢复）<br>
-        <br>
-        操作约束（当前任务状态(TaskStatus)->对应可执行的操作）：<br>
-        未授权(1)->授权维修；暂不处理<br>
-        暂不处理(4)->授权维修<br>
-        待确认(3)->确认故障恢复；确认故障未恢复<br>
-        未恢复(6)->确认故障恢复<br>
-        <br>
-        对于Ping不可达故障的任务，还允许：<br>
-        未授权->确认故障恢复<br>
-        暂不处理->确认故障恢复<br>
-        <br>
-        处理中与已恢复状态的任务不允许进行操作。<br>
-        <br>
-        详细信息请访问：https://cloud.tencent.com/document/product/386/18190
+    def ModifyL7Listener(self, request):
+        """修改黑石负载均衡七层监听器。
 
-        :param request: 调用RepairTaskControl所需参数的结构体。
-        :type request: :class:`tencentcloud.bm.v20180423.models.RepairTaskControlRequest`
-        :rtype: :class:`tencentcloud.bm.v20180423.models.RepairTaskControlResponse`
+        :param request: 调用ModifyL7Listener所需参数的结构体。
+        :type request: :class:`tencentcloud.bmlb.v20180625.models.ModifyL7ListenerRequest`
+        :rtype: :class:`tencentcloud.bmlb.v20180625.models.ModifyL7ListenerResponse`
 
         """
         try:
             params = request._serialize()
-            body = self.call("RepairTaskControl", params)
+            body = self.call("ModifyL7Listener", params)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.RepairTaskControlResponse()
+                model = models.ModifyL7ListenerResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -1119,20 +1089,20 @@ class BmClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def ResetDevicePassword(self, request):
-        """重置服务器密码
+    def ModifyL7Locations(self, request):
+        """修改黑石负载均衡七层转发路径。
 
-        :param request: 调用ResetDevicePassword所需参数的结构体。
-        :type request: :class:`tencentcloud.bm.v20180423.models.ResetDevicePasswordRequest`
-        :rtype: :class:`tencentcloud.bm.v20180423.models.ResetDevicePasswordResponse`
+        :param request: 调用ModifyL7Locations所需参数的结构体。
+        :type request: :class:`tencentcloud.bmlb.v20180625.models.ModifyL7LocationsRequest`
+        :rtype: :class:`tencentcloud.bmlb.v20180625.models.ModifyL7LocationsResponse`
 
         """
         try:
             params = request._serialize()
-            body = self.call("ResetDevicePassword", params)
+            body = self.call("ModifyL7Locations", params)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.ResetDevicePasswordResponse()
+                model = models.ModifyL7LocationsResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -1147,20 +1117,20 @@ class BmClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def RunUserCmd(self, request):
-        """运行自定义脚本
+    def ModifyLoadBalancer(self, request):
+        """根据输入参数来修改黑石负载均衡实例的基本配置信息。可能的信息包括负载均衡实例的名称，域名前缀。
 
-        :param request: 调用RunUserCmd所需参数的结构体。
-        :type request: :class:`tencentcloud.bm.v20180423.models.RunUserCmdRequest`
-        :rtype: :class:`tencentcloud.bm.v20180423.models.RunUserCmdResponse`
+        :param request: 调用ModifyLoadBalancer所需参数的结构体。
+        :type request: :class:`tencentcloud.bmlb.v20180625.models.ModifyLoadBalancerRequest`
+        :rtype: :class:`tencentcloud.bmlb.v20180625.models.ModifyLoadBalancerResponse`
 
         """
         try:
             params = request._serialize()
-            body = self.call("RunUserCmd", params)
+            body = self.call("ModifyLoadBalancer", params)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.RunUserCmdResponse()
+                model = models.ModifyLoadBalancerResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -1175,20 +1145,20 @@ class BmClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def SetOutBandVpnAuthPassword(self, request):
-        """设置带外VPN认证用户密码
+    def ModifyLoadBalancerChargeMode(self, request):
+        """更改黑石负载均衡的计费方式
 
-        :param request: 调用SetOutBandVpnAuthPassword所需参数的结构体。
-        :type request: :class:`tencentcloud.bm.v20180423.models.SetOutBandVpnAuthPasswordRequest`
-        :rtype: :class:`tencentcloud.bm.v20180423.models.SetOutBandVpnAuthPasswordResponse`
+        :param request: 调用ModifyLoadBalancerChargeMode所需参数的结构体。
+        :type request: :class:`tencentcloud.bmlb.v20180625.models.ModifyLoadBalancerChargeModeRequest`
+        :rtype: :class:`tencentcloud.bmlb.v20180625.models.ModifyLoadBalancerChargeModeResponse`
 
         """
         try:
             params = request._serialize()
-            body = self.call("SetOutBandVpnAuthPassword", params)
+            body = self.call("ModifyLoadBalancerChargeMode", params)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.SetOutBandVpnAuthPasswordResponse()
+                model = models.ModifyLoadBalancerChargeModeResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -1203,20 +1173,20 @@ class BmClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def ShutdownDevices(self, request):
-        """关闭服务器
+    def ReplaceCert(self, request):
+        """更新黑石负载均衡证书。
 
-        :param request: 调用ShutdownDevices所需参数的结构体。
-        :type request: :class:`tencentcloud.bm.v20180423.models.ShutdownDevicesRequest`
-        :rtype: :class:`tencentcloud.bm.v20180423.models.ShutdownDevicesResponse`
+        :param request: 调用ReplaceCert所需参数的结构体。
+        :type request: :class:`tencentcloud.bmlb.v20180625.models.ReplaceCertRequest`
+        :rtype: :class:`tencentcloud.bmlb.v20180625.models.ReplaceCertResponse`
 
         """
         try:
             params = request._serialize()
-            body = self.call("ShutdownDevices", params)
+            body = self.call("ReplaceCert", params)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.ShutdownDevicesResponse()
+                model = models.ReplaceCertResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -1231,20 +1201,188 @@ class BmClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def UnbindPsaTag(self, request):
-        """解除标签与预授权规则的绑定
+    def SetTrafficMirrorAlias(self, request):
+        """设置流量镜像的别名。
 
-        :param request: 调用UnbindPsaTag所需参数的结构体。
-        :type request: :class:`tencentcloud.bm.v20180423.models.UnbindPsaTagRequest`
-        :rtype: :class:`tencentcloud.bm.v20180423.models.UnbindPsaTagResponse`
+        :param request: 调用SetTrafficMirrorAlias所需参数的结构体。
+        :type request: :class:`tencentcloud.bmlb.v20180625.models.SetTrafficMirrorAliasRequest`
+        :rtype: :class:`tencentcloud.bmlb.v20180625.models.SetTrafficMirrorAliasResponse`
 
         """
         try:
             params = request._serialize()
-            body = self.call("UnbindPsaTag", params)
+            body = self.call("SetTrafficMirrorAlias", params)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.UnbindPsaTagResponse()
+                model = models.SetTrafficMirrorAliasResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise e
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def SetTrafficMirrorHealthSwitch(self, request):
+        """设置流量镜像的健康检查参数。
+
+        :param request: 调用SetTrafficMirrorHealthSwitch所需参数的结构体。
+        :type request: :class:`tencentcloud.bmlb.v20180625.models.SetTrafficMirrorHealthSwitchRequest`
+        :rtype: :class:`tencentcloud.bmlb.v20180625.models.SetTrafficMirrorHealthSwitchResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("SetTrafficMirrorHealthSwitch", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.SetTrafficMirrorHealthSwitchResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise e
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def UnbindL4Backends(self, request):
+        """解绑黑石负载均衡四层监听器物理服务器。
+
+        :param request: 调用UnbindL4Backends所需参数的结构体。
+        :type request: :class:`tencentcloud.bmlb.v20180625.models.UnbindL4BackendsRequest`
+        :rtype: :class:`tencentcloud.bmlb.v20180625.models.UnbindL4BackendsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("UnbindL4Backends", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.UnbindL4BackendsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise e
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def UnbindL7Backends(self, request):
+        """解绑黑石物理服务器或者托管服务器到七层转发路径功能。
+
+        :param request: 调用UnbindL7Backends所需参数的结构体。
+        :type request: :class:`tencentcloud.bmlb.v20180625.models.UnbindL7BackendsRequest`
+        :rtype: :class:`tencentcloud.bmlb.v20180625.models.UnbindL7BackendsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("UnbindL7Backends", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.UnbindL7BackendsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise e
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def UnbindTrafficMirrorListeners(self, request):
+        """解绑流量镜像监听器。
+
+        :param request: 调用UnbindTrafficMirrorListeners所需参数的结构体。
+        :type request: :class:`tencentcloud.bmlb.v20180625.models.UnbindTrafficMirrorListenersRequest`
+        :rtype: :class:`tencentcloud.bmlb.v20180625.models.UnbindTrafficMirrorListenersResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("UnbindTrafficMirrorListeners", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.UnbindTrafficMirrorListenersResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise e
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def UnbindTrafficMirrorReceivers(self, request):
+        """从流量镜像实例上解绑流量镜像接收机。
+
+        :param request: 调用UnbindTrafficMirrorReceivers所需参数的结构体。
+        :type request: :class:`tencentcloud.bmlb.v20180625.models.UnbindTrafficMirrorReceiversRequest`
+        :rtype: :class:`tencentcloud.bmlb.v20180625.models.UnbindTrafficMirrorReceiversResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("UnbindTrafficMirrorReceivers", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.UnbindTrafficMirrorReceiversResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise e
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def UploadCert(self, request):
+        """创建黑石负载均衡证书。
+
+        :param request: 调用UploadCert所需参数的结构体。
+        :type request: :class:`tencentcloud.bmlb.v20180625.models.UploadCertRequest`
+        :rtype: :class:`tencentcloud.bmlb.v20180625.models.UploadCertResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("UploadCert", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.UploadCertResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
