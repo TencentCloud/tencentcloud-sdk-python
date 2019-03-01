@@ -29,10 +29,13 @@ class ApplyBlackListRequest(AbstractModel):
         :type Operation: str
         :param BlackList: 黑名单列表
         :type BlackList: list of SingleBlackApply
+        :param InstId: 实例ID，不传默认为系统分配的初始实例
+        :type InstId: str
         """
         self.Module = None
         self.Operation = None
         self.BlackList = None
+        self.InstId = None
 
 
     def _deserialize(self, params):
@@ -44,6 +47,7 @@ class ApplyBlackListRequest(AbstractModel):
                 obj = SingleBlackApply()
                 obj._deserialize(item)
                 self.BlackList.append(obj)
+        self.InstId = params.get("InstId")
 
 
 class ApplyBlackListResponse(AbstractModel):
@@ -88,6 +92,8 @@ class DescribeRecordsRequest(AbstractModel):
         :type Offset: str
         :param Limit: 分页参数，页长
         :type Limit: str
+        :param InstId: 实例ID，不传默认为系统分配的初始实例
+        :type InstId: str
         """
         self.Module = None
         self.Operation = None
@@ -98,6 +104,7 @@ class DescribeRecordsRequest(AbstractModel):
         self.EndBizDate = None
         self.Offset = None
         self.Limit = None
+        self.InstId = None
 
 
     def _deserialize(self, params):
@@ -110,6 +117,7 @@ class DescribeRecordsRequest(AbstractModel):
         self.EndBizDate = params.get("EndBizDate")
         self.Offset = params.get("Offset")
         self.Limit = params.get("Limit")
+        self.InstId = params.get("InstId")
 
 
 class DescribeRecordsResponse(AbstractModel):
@@ -339,6 +347,8 @@ class UploadDataFileRequest(AbstractModel):
         :type File: binary
         :param FileUrl: 文件上传地址，文件与文件地址上传只可选用一种，大小不超过50MB。
         :type FileUrl: str
+        :param InstId: 实例ID，不传默认为系统分配的初始实例。
+        :type InstId: str
         """
         self.Module = None
         self.Operation = None
@@ -346,6 +356,7 @@ class UploadDataFileRequest(AbstractModel):
         self.UploadModel = None
         self.File = None
         self.FileUrl = None
+        self.InstId = None
 
 
     def _deserialize(self, params):
@@ -355,6 +366,7 @@ class UploadDataFileRequest(AbstractModel):
         self.UploadModel = params.get("UploadModel")
         self.File = params.get("File")
         self.FileUrl = params.get("FileUrl")
+        self.InstId = params.get("InstId")
 
 
 class UploadDataFileResponse(AbstractModel):

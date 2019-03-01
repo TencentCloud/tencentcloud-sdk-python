@@ -655,6 +655,10 @@ class CCN(AbstractModel):
         :type State: str
         :param QosLevel: 实例服务质量，’PT’：白金，'AU'：金，'AG'：银。
         :type QosLevel: str
+        :param InstanceChargeType: 付费类型，PREPAID为预付费，POSTPAID为后付费。
+        :type InstanceChargeType: str
+        :param BandwidthLimitType: 限速类型，INTER_REGION_LIMIT为地域间限速；OUTER_REGION_LIMIT为地域出口限速。
+        :type BandwidthLimitType: str
         """
         self.CcnId = None
         self.CcnName = None
@@ -663,6 +667,8 @@ class CCN(AbstractModel):
         self.CreateTime = None
         self.State = None
         self.QosLevel = None
+        self.InstanceChargeType = None
+        self.BandwidthLimitType = None
 
 
     def _deserialize(self, params):
@@ -673,6 +679,8 @@ class CCN(AbstractModel):
         self.CreateTime = params.get("CreateTime")
         self.State = params.get("State")
         self.QosLevel = params.get("QosLevel")
+        self.InstanceChargeType = params.get("InstanceChargeType")
+        self.BandwidthLimitType = params.get("BandwidthLimitType")
 
 
 class CcnAttachedInstance(AbstractModel):
@@ -1210,7 +1218,7 @@ class CreateDirectConnectGatewayRequest(AbstractModel):
 <li>CCN - 云联网</li>
         :type NetworkType: str
         :param NetworkInstanceId: <li>NetworkType 为 VPC 时，这里传值为私有网络实例ID</li>
-<li>NetworkType 为 NAT 时，这里传值为云联网实例ID</li>
+<li>NetworkType 为 CCN 时，这里传值为云联网实例ID</li>
         :type NetworkInstanceId: str
         :param GatewayType: 网关类型，可选值：
 <li>NORMAL - （默认）标准型，注：云联网只支持标准型</li>
@@ -3673,6 +3681,85 @@ class DescribeDirectConnectGatewaysResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeGatewayFlowMonitorDetailRequest(AbstractModel):
+    """DescribeGatewayFlowMonitorDetail请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param TimePoint: 时间点。表示要查询这分钟内的明细。如：`2019-02-28 18:15:20`，将查询 `18:15` 这一分钟内的明细。
+        :type TimePoint: str
+        :param VpnId: VPN网关实例ID，形如：`vpn-ltjahce6`。
+        :type VpnId: str
+        :param DirectConnectGatewayId: 专线网关实例ID，形如：`dcg-ltjahce6`。
+        :type DirectConnectGatewayId: str
+        :param PeeringConnectionId: 对等连接实例ID，形如：`pcx-ltjahce6`。
+        :type PeeringConnectionId: str
+        :param NatId: NAT网关实例ID，形如：`nat-ltjahce6`。
+        :type NatId: str
+        :param Offset: 偏移量。
+        :type Offset: int
+        :param Limit: 返回数量。
+        :type Limit: int
+        :param OrderField: 排序字段。支持 `InPkg` `OutPkg` `InTraffic` `OutTraffic`。
+        :type OrderField: str
+        :param OrderDirection: 排序方法。顺序：`ASC`，倒序：`DESC`。
+        :type OrderDirection: str
+        """
+        self.TimePoint = None
+        self.VpnId = None
+        self.DirectConnectGatewayId = None
+        self.PeeringConnectionId = None
+        self.NatId = None
+        self.Offset = None
+        self.Limit = None
+        self.OrderField = None
+        self.OrderDirection = None
+
+
+    def _deserialize(self, params):
+        self.TimePoint = params.get("TimePoint")
+        self.VpnId = params.get("VpnId")
+        self.DirectConnectGatewayId = params.get("DirectConnectGatewayId")
+        self.PeeringConnectionId = params.get("PeeringConnectionId")
+        self.NatId = params.get("NatId")
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+        self.OrderField = params.get("OrderField")
+        self.OrderDirection = params.get("OrderDirection")
+
+
+class DescribeGatewayFlowMonitorDetailResponse(AbstractModel):
+    """DescribeGatewayFlowMonitorDetail返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param TotalCount: 符合条件的对象数。
+        :type TotalCount: int
+        :param GatewayFlowMonitorDetailSet: 网关流量监控明细。
+        :type GatewayFlowMonitorDetailSet: list of GatewayFlowMonitorDetail
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.GatewayFlowMonitorDetailSet = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("GatewayFlowMonitorDetailSet") is not None:
+            self.GatewayFlowMonitorDetailSet = []
+            for item in params.get("GatewayFlowMonitorDetailSet"):
+                obj = GatewayFlowMonitorDetail()
+                obj._deserialize(item)
+                self.GatewayFlowMonitorDetailSet.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeHaVipsRequest(AbstractModel):
     """DescribeHaVips请求参数结构体
 
@@ -5127,6 +5214,39 @@ class FilterObject(AbstractModel):
         self.Values = params.get("Values")
 
 
+class GatewayFlowMonitorDetail(AbstractModel):
+    """网关流量监控明细
+
+    """
+
+    def __init__(self):
+        """
+        :param PrivateIpAddress: 来源`IP`。
+        :type PrivateIpAddress: str
+        :param InPkg: 入包量。
+        :type InPkg: int
+        :param OutPkg: 出包量。
+        :type OutPkg: int
+        :param InTraffic: 入带宽，单位：`Byte`。
+        :type InTraffic: int
+        :param OutTraffic: 出带宽，单位：`Byte`。
+        :type OutTraffic: int
+        """
+        self.PrivateIpAddress = None
+        self.InPkg = None
+        self.OutPkg = None
+        self.InTraffic = None
+        self.OutTraffic = None
+
+
+    def _deserialize(self, params):
+        self.PrivateIpAddress = params.get("PrivateIpAddress")
+        self.InPkg = params.get("InPkg")
+        self.OutPkg = params.get("OutPkg")
+        self.InTraffic = params.get("InTraffic")
+        self.OutTraffic = params.get("OutTraffic")
+
+
 class HaVip(AbstractModel):
     """描述 HAVIP 信息
 
@@ -5635,6 +5755,47 @@ class Ip6Translator(AbstractModel):
                 obj = Ip6Rule()
                 obj._deserialize(item)
                 self.IP6RuleSet.append(obj)
+
+
+class Ipv6Address(AbstractModel):
+    """`IPv6`地址信息。
+
+    """
+
+    def __init__(self):
+        """
+        :param Address: `IPv6`地址，形如：`3402:4e00:20:100:0:8cd9:2a67:71f3`
+        :type Address: str
+        :param Primary: 是否是主`IP`。
+        :type Primary: bool
+        :param AddressId: `EIP`实例`ID`，形如：`eip-hxlqja90`。
+        :type AddressId: str
+        :param Description: 描述信息。
+        :type Description: str
+        :param IsWanIpBlocked: 公网IP是否被封堵。
+        :type IsWanIpBlocked: bool
+        :param State: `IPv6`地址状态：
+<li>`PENDING`：生产中</li>
+<li>`MIGRATING`：迁移中</li>
+<li>`DELETING`：删除中</li>
+<li>`AVAILABLE`：可用的</li>
+        :type State: str
+        """
+        self.Address = None
+        self.Primary = None
+        self.AddressId = None
+        self.Description = None
+        self.IsWanIpBlocked = None
+        self.State = None
+
+
+    def _deserialize(self, params):
+        self.Address = params.get("Address")
+        self.Primary = params.get("Primary")
+        self.AddressId = params.get("AddressId")
+        self.Description = params.get("Description")
+        self.IsWanIpBlocked = params.get("IsWanIpBlocked")
+        self.State = params.get("State")
 
 
 class ItemPrice(AbstractModel):
@@ -6732,6 +6893,8 @@ class NetworkInterface(AbstractModel):
         :type Zone: str
         :param CreatedTime: 创建时间。
         :type CreatedTime: str
+        :param Ipv6AddressSet: `IPv6`地址列表。
+        :type Ipv6AddressSet: list of Ipv6Address
         """
         self.NetworkInterfaceId = None
         self.NetworkInterfaceName = None
@@ -6746,6 +6909,7 @@ class NetworkInterface(AbstractModel):
         self.Attachment = None
         self.Zone = None
         self.CreatedTime = None
+        self.Ipv6AddressSet = None
 
 
     def _deserialize(self, params):
@@ -6769,6 +6933,12 @@ class NetworkInterface(AbstractModel):
             self.Attachment._deserialize(params.get("Attachment"))
         self.Zone = params.get("Zone")
         self.CreatedTime = params.get("CreatedTime")
+        if params.get("Ipv6AddressSet") is not None:
+            self.Ipv6AddressSet = []
+            for item in params.get("Ipv6AddressSet"):
+                obj = Ipv6Address()
+                obj._deserialize(item)
+                self.Ipv6AddressSet.append(obj)
 
 
 class NetworkInterfaceAttachment(AbstractModel):
@@ -7924,13 +8094,13 @@ class Subnet(AbstractModel):
 
     def __init__(self):
         """
-        :param VpcId: VPC实例ID。
+        :param VpcId: `VPC`实例`ID`。
         :type VpcId: str
-        :param SubnetId: 子网实例ID，例如：subnet-bthucmmy。
+        :param SubnetId: 子网实例`ID`，例如：subnet-bthucmmy。
         :type SubnetId: str
         :param SubnetName: 子网名称。
         :type SubnetName: str
-        :param CidrBlock: 子网的CIDR。
+        :param CidrBlock: 子网的 `IPv4` `CIDR`。
         :type CidrBlock: str
         :param IsDefault: 是否默认子网。
         :type IsDefault: bool
@@ -7942,8 +8112,10 @@ class Subnet(AbstractModel):
         :type RouteTableId: str
         :param CreatedTime: 创建时间。
         :type CreatedTime: str
-        :param AvailableIpAddressCount: 可用IP数。
+        :param AvailableIpAddressCount: 可用`IP`数。
         :type AvailableIpAddressCount: int
+        :param Ipv6CidrBlock: 子网的 `IPv6` `CIDR`。
+        :type Ipv6CidrBlock: str
         """
         self.VpcId = None
         self.SubnetId = None
@@ -7955,6 +8127,7 @@ class Subnet(AbstractModel):
         self.RouteTableId = None
         self.CreatedTime = None
         self.AvailableIpAddressCount = None
+        self.Ipv6CidrBlock = None
 
 
     def _deserialize(self, params):
@@ -7968,6 +8141,7 @@ class Subnet(AbstractModel):
         self.RouteTableId = params.get("RouteTableId")
         self.CreatedTime = params.get("CreatedTime")
         self.AvailableIpAddressCount = params.get("AvailableIpAddressCount")
+        self.Ipv6CidrBlock = params.get("Ipv6CidrBlock")
 
 
 class SubnetInput(AbstractModel):
@@ -8083,26 +8257,28 @@ class Vpc(AbstractModel):
 
     def __init__(self):
         """
-        :param VpcName: Vpc名称。
+        :param VpcName: `VPC`名称。
         :type VpcName: str
-        :param VpcId: VPC实例ID，例如：vpc-azd4dt1c。
+        :param VpcId: `VPC`实例`ID`，例如：vpc-azd4dt1c。
         :type VpcId: str
-        :param CidrBlock: VPC的cidr，只能为10.0.0.0/16，172.16.0.0/12，192.168.0.0/16这三个内网网段内。
+        :param CidrBlock: `VPC`的`IPv4` `CIDR`。
         :type CidrBlock: str
-        :param IsDefault: 是否默认VPC。
+        :param IsDefault: 是否默认`VPC`。
         :type IsDefault: bool
         :param EnableMulticast: 是否开启组播。
         :type EnableMulticast: bool
         :param CreatedTime: 创建时间。
         :type CreatedTime: str
-        :param DnsServerSet: DNS列表
+        :param DnsServerSet: `DNS`列表。
         :type DnsServerSet: list of str
-        :param DomainName: DHCP域名选项值
+        :param DomainName: `DHCP`域名选项值。
         :type DomainName: str
-        :param DhcpOptionsId: DHCP选项集ID
+        :param DhcpOptionsId: `DHCP`选项集`ID`。
         :type DhcpOptionsId: str
-        :param EnableDhcp: 是否开启DHCP。
+        :param EnableDhcp: 是否开启`DHCP`。
         :type EnableDhcp: bool
+        :param Ipv6CidrBlock: `VPC`的`IPv6` `CIDR`。
+        :type Ipv6CidrBlock: str
         """
         self.VpcName = None
         self.VpcId = None
@@ -8114,6 +8290,7 @@ class Vpc(AbstractModel):
         self.DomainName = None
         self.DhcpOptionsId = None
         self.EnableDhcp = None
+        self.Ipv6CidrBlock = None
 
 
     def _deserialize(self, params):
@@ -8127,6 +8304,7 @@ class Vpc(AbstractModel):
         self.DomainName = params.get("DomainName")
         self.DhcpOptionsId = params.get("DhcpOptionsId")
         self.EnableDhcp = params.get("EnableDhcp")
+        self.Ipv6CidrBlock = params.get("Ipv6CidrBlock")
 
 
 class VpcPrivateIpAddress(AbstractModel):

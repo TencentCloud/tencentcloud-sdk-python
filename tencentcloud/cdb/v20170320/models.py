@@ -5670,6 +5670,8 @@ class ZoneSellConf(AbstractModel):
         :type SellType: list of SellType
         :param ZoneConf: 多可用区信息
         :type ZoneConf: :class:`tencentcloud.cdb.v20170320.models.ZoneConf`
+        :param DrZone: 可支持的灾备可用区信息
+        :type DrZone: list of str
         """
         self.Status = None
         self.ZoneName = None
@@ -5684,6 +5686,7 @@ class ZoneSellConf(AbstractModel):
         self.Zone = None
         self.SellType = None
         self.ZoneConf = None
+        self.DrZone = None
 
 
     def _deserialize(self, params):
@@ -5707,3 +5710,4 @@ class ZoneSellConf(AbstractModel):
         if params.get("ZoneConf") is not None:
             self.ZoneConf = ZoneConf()
             self.ZoneConf._deserialize(params.get("ZoneConf"))
+        self.DrZone = params.get("DrZone")

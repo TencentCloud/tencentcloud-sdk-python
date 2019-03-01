@@ -779,9 +779,13 @@ class FaceInfo(AbstractModel):
 
     def __init__(self):
         """
-        :param X: 人脸框左上角 x。
+        :param X: 人脸框左上角横坐标。
+人脸框包含人脸五官位置并在此基础上进行一定的扩展，若人脸框超出图片范围，会导致坐标负值。 
+若需截取完整人脸，可以在完整分completess满足需求的情况下，将负值坐标取0。
         :type X: int
-        :param Y: 人脸框左上角 y。
+        :param Y: 人脸框左上角纵坐标。 
+人脸框包含人脸五官位置并在此基础上进行一定的扩展，若人脸框超出图片范围，会导致坐标负值。 
+若需截取完整人脸，可以在完整分completess满足需求的情况下，将负值坐标取0。
         :type Y: int
         :param Width: 人脸框宽度。
         :type Width: int
@@ -901,9 +905,13 @@ class FaceRect(AbstractModel):
 
     def __init__(self):
         """
-        :param X: 人脸位置左上角横坐标
+        :param X: 人脸框左上角纵坐标。 
+人脸框包含人脸五官位置并在此基础上进行一定的扩展，若人脸框超出图片范围，会导致坐标负值。 
+若需截取完整人脸，可以在完整分completess满足需求的情况下，将负值坐标取0。
         :type X: int
-        :param Y: 人脸位置左上角纵坐标
+        :param Y: 人脸框左上角纵坐标。 
+人脸框包含人脸五官位置并在此基础上进行一定的扩展，若人脸框超出图片范围，会导致坐标负值。 
+若需截取完整人脸，可以在完整分completess满足需求的情况下，将负值坐标取0。
         :type Y: int
         :param Width: 人脸宽度
         :type Width: int

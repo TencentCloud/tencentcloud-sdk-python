@@ -341,15 +341,20 @@ class CreateLiveCallbackTemplateRequest(AbstractModel):
         :type TemplateName: str
         :param Description: 描述信息。
         :type Description: str
-        :param StreamBeginNotifyUrl: 开播回调URL。
+        :param StreamBeginNotifyUrl: 开播回调URL，
+相关协议文档：[事件消息通知](/document/product/267/32744)。
         :type StreamBeginNotifyUrl: str
-        :param StreamEndNotifyUrl: 断流回调URL。
+        :param StreamEndNotifyUrl: 断流回调URL，
+相关协议文档：[事件消息通知](/document/product/267/32744)。
         :type StreamEndNotifyUrl: str
-        :param RecordNotifyUrl: 录制回调URL。
+        :param RecordNotifyUrl: 录制回调URL，
+相关协议文档：[事件消息通知](/document/product/267/32744)。
         :type RecordNotifyUrl: str
-        :param SnapshotNotifyUrl: 截图回调URL。
+        :param SnapshotNotifyUrl: 截图回调URL，
+相关协议文档：[事件消息通知](/document/product/267/32744)。
         :type SnapshotNotifyUrl: str
-        :param PornCensorshipNotifyUrl: 鉴黄回调URL。
+        :param PornCensorshipNotifyUrl: 鉴黄回调URL，
+相关协议文档：[事件消息通知](/document/product/267/32741)。
         :type PornCensorshipNotifyUrl: str
         """
         self.TemplateName = None
@@ -925,7 +930,7 @@ class CreateLiveWatermarkRuleRequest(AbstractModel):
         :type AppName: str
         :param StreamName: 流名称。
         :type StreamName: str
-        :param TemplateId: 水印Id。
+        :param TemplateId: 水印Id，即调用[AddLiveWatermark](/document/product/267/30154)接口返回的WatermarkId。
         :type TemplateId: int
         """
         self.DomainName = None

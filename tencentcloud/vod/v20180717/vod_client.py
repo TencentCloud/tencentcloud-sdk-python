@@ -82,6 +82,36 @@ class VodClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def ConfirmEvents(self, request):
+        """* 开发者调用拉取事件通知，获取到事件后，必须调用该接口来确认消息已经收到；
+        * 开发者获取到事件句柄后，等待确认的有效时间为 30 秒，超出 30 秒会报参数错误（4000）；
+        * 更多参考[服务端事件通知](https://cloud.tencent.com/document/product/266/7829)。
+
+        :param request: 调用ConfirmEvents所需参数的结构体。
+        :type request: :class:`tencentcloud.vod.v20180717.models.ConfirmEventsRequest`
+        :rtype: :class:`tencentcloud.vod.v20180717.models.ConfirmEventsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ConfirmEvents", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ConfirmEventsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise e
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def CreateClass(self, request):
         """* 用于对媒体进行分类管理；
         * 该接口不影响既有媒体的分类，如需修改媒体分类，请调用[修改媒体文件属性](/document/product/266/31762)接口。
@@ -236,6 +266,64 @@ class VodClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeTaskDetail(self, request):
+        """通过任务 ID 查询任务的执行状态和结果的详细信息（最多可以查询3天之内提交的任务）
+
+        :param request: 调用DescribeTaskDetail所需参数的结构体。
+        :type request: :class:`tencentcloud.vod.v20180717.models.DescribeTaskDetailRequest`
+        :rtype: :class:`tencentcloud.vod.v20180717.models.DescribeTaskDetailResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeTaskDetail", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeTaskDetailResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise e
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeTasks(self, request):
+        """* 该接口用于查询任务列表；
+        * 当列表数据比较多时，单次接口调用无法拉取整个列表，可通过 ScrollToken 参数，分批拉取；
+        * 只能查询到最近三天（72 小时）内的任务。
+
+        :param request: 调用DescribeTasks所需参数的结构体。
+        :type request: :class:`tencentcloud.vod.v20180717.models.DescribeTasksRequest`
+        :rtype: :class:`tencentcloud.vod.v20180717.models.DescribeTasksResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeTasks", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeTasksResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise e
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def LiveRealTimeClip(self, request):
         """直播即时剪辑，是指在直播过程中（即直播尚未结束时），客户可以在过往直播内容中选择一段，实时生成一个新的视频（HLS 格式），开发者可以将其立即分享出去，或者长久保存起来。
 
@@ -329,6 +417,104 @@ class VodClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyMediaInfoResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise e
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ProcessMedia(self, request):
+        """对点播中的音视频媒体发起处理任务，功能包括：
+        1. 视频转码（带水印）；
+        2. 视频转动图；
+        3. 对视频按指定时间点截图；
+        4. 对视频采样截图；
+        5. 对视频截图雪碧图；
+        6. 对视频截取一张图做封面；
+        7. 智能内容审核（鉴黄、鉴恐、鉴政）；
+        8. 智能内容分析（标签、分类、封面）。
+
+        :param request: 调用ProcessMedia所需参数的结构体。
+        :type request: :class:`tencentcloud.vod.v20180717.models.ProcessMediaRequest`
+        :rtype: :class:`tencentcloud.vod.v20180717.models.ProcessMediaResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ProcessMedia", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ProcessMediaResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise e
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ProcessMediaByUrl(self, request):
+        """对来源为 URL 的音视频媒体发起处理任务，功能包括：
+
+        1. 智能内容审核（鉴黄、鉴恐、鉴政）；
+        2. 智能内容分析（标签、分类、封面）。
+
+        :param request: 调用ProcessMediaByUrl所需参数的结构体。
+        :type request: :class:`tencentcloud.vod.v20180717.models.ProcessMediaByUrlRequest`
+        :rtype: :class:`tencentcloud.vod.v20180717.models.ProcessMediaByUrlResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ProcessMediaByUrl", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ProcessMediaByUrlResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise e
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def PullEvents(self, request):
+        """* 该接口用于从点播服务端获取事件通知，详见[服务端事件通知](https://cloud.tencent.com/document/product/266/7829)；
+        * 接口为长轮询模式，即：如果服务端存在未消费事件，则立即返回给请求方；如果服务端没有未消费事件，则后台会将请求挂起，直到有新的事件产生为止；
+        * 请求最多挂起 5 秒，建议请求方将超时时间设置为 10 秒；
+        * 若该接口有事件返回，调用方必须再调用[确认事件通知]接口，确认事件通知已经处理，否则该事件通知后续会再次被拉取到。
+
+        :param request: 调用PullEvents所需参数的结构体。
+        :type request: :class:`tencentcloud.vod.v20180717.models.PullEventsRequest`
+        :rtype: :class:`tencentcloud.vod.v20180717.models.PullEventsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("PullEvents", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.PullEventsResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
