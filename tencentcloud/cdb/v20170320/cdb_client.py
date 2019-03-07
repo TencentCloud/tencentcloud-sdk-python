@@ -176,6 +176,7 @@ class CdbClient(AbstractClient):
         2. 单次创建实例最大支持 100 个，实例时长最大支持 36 个月；
         3. 支持创建 MySQL5.5 、 MySQL5.6 、 MySQL5.7 版本；
         4. 支持创建主实例、只读实例、灾备实例；
+        5. 当入参指定Port或ParamList时，该实例会进行初始化操作；
 
         :param request: 调用CreateDBInstance所需参数的结构体。
         :type request: :class:`tencentcloud.cdb.v20170320.models.CreateDBInstanceRequest`
@@ -211,6 +212,7 @@ class CdbClient(AbstractClient):
         2. 单次创建实例最大支持 100 个，实例时长最大支持 36 个月；
         3. 支持创建 MySQL5.5、MySQL5.6和MySQL5.7 版本；
         4. 支持创建主实例、灾备实例和只读实例；
+        5. 当入参指定Port或ParamList时，该实例会进行初始化操作；
 
         :param request: 调用CreateDBInstanceHour所需参数的结构体。
         :type request: :class:`tencentcloud.cdb.v20170320.models.CreateDBInstanceHourRequest`

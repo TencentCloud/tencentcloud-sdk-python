@@ -4584,9 +4584,9 @@ class RoGroup(AbstractModel):
         :type RoGroupId: str
         :param RoGroupName: 只读组名称
         :type RoGroupName: str
-        :param RoOfflineDelay: 是否启用延迟超限剔除功能，启用该功能后，只读实例与主实例的延迟超过延迟阀值，只读实例将被隔离。可选值：1-启用；0-不启用
+        :param RoOfflineDelay: 是否启用延迟超限剔除功能，启用该功能后，只读实例与主实例的延迟超过延迟阈值，只读实例将被隔离。可选值：1-启用；0-不启用
         :type RoOfflineDelay: int
-        :param RoMaxDelayTime: 延迟阀值
+        :param RoMaxDelayTime: 延迟阈值
         :type RoMaxDelayTime: int
         :param MinRoInGroup: 最少实例保留个数，若购买只读实例数量小于设置数量将不做剔除
         :type MinRoInGroup: int

@@ -16,6 +16,27 @@
 from tencentcloud.common.abstract_model import AbstractModel
 
 
+class CosBackup(AbstractModel):
+    """ES cos自动备份信息
+
+    """
+
+    def __init__(self):
+        """
+        :param IsAutoBackup: 是否开启cos自动备份
+        :type IsAutoBackup: bool
+        :param BackupTime: 自动备份时间
+        :type BackupTime: str
+        """
+        self.IsAutoBackup = None
+        self.BackupTime = None
+
+
+    def _deserialize(self, params):
+        self.IsAutoBackup = params.get("IsAutoBackup")
+        self.BackupTime = params.get("BackupTime")
+
+
 class CreateInstanceRequest(AbstractModel):
     """CreateInstance请求参数结构体
 
@@ -71,6 +92,14 @@ CLOUD_SSD: SSD云硬盘
         :type AutoVoucher: int
         :param VoucherIds: 代金券ID列表，目前仅支持指定一张代金券
         :type VoucherIds: list of str
+        :param EnableDedicatedMaster: 是否创建专用主节点
+        :type EnableDedicatedMaster: bool
+        :param MasterNodeNum: 专用主节点个数
+        :type MasterNodeNum: int
+        :param MasterNodeType: 专用主节点类型
+        :type MasterNodeType: str
+        :param MasterNodeDiskSize: 专用主节点磁盘大小
+        :type MasterNodeDiskSize: int
         """
         self.Zone = None
         self.NodeNum = None
@@ -88,6 +117,10 @@ CLOUD_SSD: SSD云硬盘
         self.TimeUnit = None
         self.AutoVoucher = None
         self.VoucherIds = None
+        self.EnableDedicatedMaster = None
+        self.MasterNodeNum = None
+        self.MasterNodeType = None
+        self.MasterNodeDiskSize = None
 
 
     def _deserialize(self, params):
@@ -107,6 +140,10 @@ CLOUD_SSD: SSD云硬盘
         self.TimeUnit = params.get("TimeUnit")
         self.AutoVoucher = params.get("AutoVoucher")
         self.VoucherIds = params.get("VoucherIds")
+        self.EnableDedicatedMaster = params.get("EnableDedicatedMaster")
+        self.MasterNodeNum = params.get("MasterNodeNum")
+        self.MasterNodeType = params.get("MasterNodeType")
+        self.MasterNodeDiskSize = params.get("MasterNodeDiskSize")
 
 
 class CreateInstanceResponse(AbstractModel):
@@ -381,6 +418,10 @@ class InstanceInfo(AbstractModel):
         :type IkConfig: :class:`tencentcloud.es.v20180416.models.EsDictionaryInfo`
         :param MasterNodeInfo: 专用主节点配置
         :type MasterNodeInfo: :class:`tencentcloud.es.v20180416.models.MasterNodeInfo`
+        :param CosBackup: cos自动备份配置
+        :type CosBackup: :class:`tencentcloud.es.v20180416.models.CosBackup`
+        :param AllowCosBackup: 是否允许cos自动备份
+        :type AllowCosBackup: bool
         """
         self.InstanceId = None
         self.InstanceName = None
@@ -413,6 +454,8 @@ class InstanceInfo(AbstractModel):
         self.InstanceType = None
         self.IkConfig = None
         self.MasterNodeInfo = None
+        self.CosBackup = None
+        self.AllowCosBackup = None
 
 
     def _deserialize(self, params):
@@ -453,6 +496,10 @@ class InstanceInfo(AbstractModel):
         if params.get("MasterNodeInfo") is not None:
             self.MasterNodeInfo = MasterNodeInfo()
             self.MasterNodeInfo._deserialize(params.get("MasterNodeInfo"))
+        if params.get("CosBackup") is not None:
+            self.CosBackup = CosBackup()
+            self.CosBackup._deserialize(params.get("CosBackup"))
+        self.AllowCosBackup = params.get("AllowCosBackup")
 
 
 class MasterNodeInfo(AbstractModel):
@@ -474,6 +521,8 @@ class MasterNodeInfo(AbstractModel):
         :type MasterNodeMemSize: int
         :param MasterNodeDiskSize: 专用主节点磁盘大小，单位GB
         :type MasterNodeDiskSize: int
+        :param MasterNodeDiskType: 专用主节点磁盘类型
+        :type MasterNodeDiskType: str
         """
         self.EnableDedicatedMaster = None
         self.MasterNodeType = None
@@ -481,6 +530,7 @@ class MasterNodeInfo(AbstractModel):
         self.MasterNodeCpuNum = None
         self.MasterNodeMemSize = None
         self.MasterNodeDiskSize = None
+        self.MasterNodeDiskType = None
 
 
     def _deserialize(self, params):
@@ -490,6 +540,7 @@ class MasterNodeInfo(AbstractModel):
         self.MasterNodeCpuNum = params.get("MasterNodeCpuNum")
         self.MasterNodeMemSize = params.get("MasterNodeMemSize")
         self.MasterNodeDiskSize = params.get("MasterNodeDiskSize")
+        self.MasterNodeDiskType = params.get("MasterNodeDiskType")
 
 
 class RestartInstanceRequest(AbstractModel):
@@ -501,12 +552,16 @@ class RestartInstanceRequest(AbstractModel):
         """
         :param InstanceId: 要重启的实例ID
         :type InstanceId: str
+        :param ForceRestart: 是否强制重启
+        :type ForceRestart: bool
         """
         self.InstanceId = None
+        self.ForceRestart = None
 
 
     def _deserialize(self, params):
         self.InstanceId = params.get("InstanceId")
+        self.ForceRestart = params.get("ForceRestart")
 
 
 class RestartInstanceResponse(AbstractModel):
@@ -555,6 +610,14 @@ ES.S1.LARGE16: 4 核 16G
 ES.S1.2XLARGE32: 8 核 32G 
 ES.S1.4XLARGE64: 16 核 64G
         :type NodeType: str
+        :param MasterNodeNum: 专用主节点个数
+        :type MasterNodeNum: int
+        :param MasterNodeType: 专用主节点规格
+        :type MasterNodeType: str
+        :param MasterNodeDiskSize: 专用主节点磁盘大小
+        :type MasterNodeDiskSize: int
+        :param ForceRestart: 更新配置时是否强制重启
+        :type ForceRestart: bool
         """
         self.InstanceId = None
         self.InstanceName = None
@@ -564,6 +627,10 @@ ES.S1.4XLARGE64: 16 核 64G
         self.EsAcl = None
         self.DiskSize = None
         self.NodeType = None
+        self.MasterNodeNum = None
+        self.MasterNodeType = None
+        self.MasterNodeDiskSize = None
+        self.ForceRestart = None
 
 
     def _deserialize(self, params):
@@ -577,6 +644,10 @@ ES.S1.4XLARGE64: 16 核 64G
             self.EsAcl._deserialize(params.get("EsAcl"))
         self.DiskSize = params.get("DiskSize")
         self.NodeType = params.get("NodeType")
+        self.MasterNodeNum = params.get("MasterNodeNum")
+        self.MasterNodeType = params.get("MasterNodeType")
+        self.MasterNodeDiskSize = params.get("MasterNodeDiskSize")
+        self.ForceRestart = params.get("ForceRestart")
 
 
 class UpdateInstanceResponse(AbstractModel):
