@@ -242,6 +242,35 @@ class BuyDevicesResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class CpuInfo(AbstractModel):
+    """cpu信息
+
+    """
+
+    def __init__(self):
+        """
+        :param CpuId: CPU的ID
+        :type CpuId: int
+        :param CpuDescription: CPU型号描述
+        :type CpuDescription: str
+        :param Series: 机型序列
+        :type Series: int
+        :param ContainRaidCard: 支持的RAID方式，0：有RAID卡，1：没有RAID卡
+        :type ContainRaidCard: list of int non-negative
+        """
+        self.CpuId = None
+        self.CpuDescription = None
+        self.Series = None
+        self.ContainRaidCard = None
+
+
+    def _deserialize(self, params):
+        self.CpuId = params.get("CpuId")
+        self.CpuDescription = params.get("CpuDescription")
+        self.Series = params.get("Series")
+        self.ContainRaidCard = params.get("ContainRaidCard")
+
+
 class CreateCustomImageRequest(AbstractModel):
     """CreateCustomImage请求参数结构体
 
@@ -854,6 +883,49 @@ class DescribeDeviceClassResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeDeviceHardwareInfoRequest(AbstractModel):
+    """DescribeDeviceHardwareInfo请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param InstanceIds: 设备 ID 列表
+        :type InstanceIds: list of str
+        """
+        self.InstanceIds = None
+
+
+    def _deserialize(self, params):
+        self.InstanceIds = params.get("InstanceIds")
+
+
+class DescribeDeviceHardwareInfoResponse(AbstractModel):
+    """DescribeDeviceHardwareInfo返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param DeviceHardwareInfoSet: 设备硬件配置信息
+        :type DeviceHardwareInfoSet: list of DeviceHardwareInfo
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.DeviceHardwareInfoSet = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("DeviceHardwareInfoSet") is not None:
+            self.DeviceHardwareInfoSet = []
+            for item in params.get("DeviceHardwareInfoSet"):
+                obj = DeviceHardwareInfo()
+                obj._deserialize(item)
+                self.DeviceHardwareInfoSet.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeDeviceInventoryRequest(AbstractModel):
     """DescribeDeviceInventory请求参数结构体
 
@@ -1269,6 +1341,98 @@ class DescribeDevicesResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeHardwareSpecificationRequest(AbstractModel):
+    """DescribeHardwareSpecification请求参数结构体
+
+    """
+
+
+class DescribeHardwareSpecificationResponse(AbstractModel):
+    """DescribeHardwareSpecification返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param CpuInfoSet: CPU型号列表
+        :type CpuInfoSet: list of CpuInfo
+        :param MemSet: 内存的取值，单位为G
+        :type MemSet: list of int non-negative
+        :param DiskInfoSet: 硬盘型号列表
+        :type DiskInfoSet: list of DiskInfo
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.CpuInfoSet = None
+        self.MemSet = None
+        self.DiskInfoSet = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("CpuInfoSet") is not None:
+            self.CpuInfoSet = []
+            for item in params.get("CpuInfoSet"):
+                obj = CpuInfo()
+                obj._deserialize(item)
+                self.CpuInfoSet.append(obj)
+        self.MemSet = params.get("MemSet")
+        if params.get("DiskInfoSet") is not None:
+            self.DiskInfoSet = []
+            for item in params.get("DiskInfoSet"):
+                obj = DiskInfo()
+                obj._deserialize(item)
+                self.DiskInfoSet.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeHostedDeviceOutBandInfoRequest(AbstractModel):
+    """DescribeHostedDeviceOutBandInfo请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param InstanceIds: 托管设备的唯一ID数组,数组个数不超过20
+        :type InstanceIds: list of str
+        :param Zone: 可用区ID
+        :type Zone: str
+        """
+        self.InstanceIds = None
+        self.Zone = None
+
+
+    def _deserialize(self, params):
+        self.InstanceIds = params.get("InstanceIds")
+        self.Zone = params.get("Zone")
+
+
+class DescribeHostedDeviceOutBandInfoResponse(AbstractModel):
+    """DescribeHostedDeviceOutBandInfo返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param HostedDeviceOutBandInfoSet: 托管设备带外信息
+        :type HostedDeviceOutBandInfoSet: list of HostedDeviceOutBandInfo
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.HostedDeviceOutBandInfoSet = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("HostedDeviceOutBandInfoSet") is not None:
+            self.HostedDeviceOutBandInfoSet = []
+            for item in params.get("HostedDeviceOutBandInfoSet"):
+                obj = HostedDeviceOutBandInfo()
+                obj._deserialize(item)
+                self.HostedDeviceOutBandInfoSet.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeOperationResultRequest(AbstractModel):
     """DescribeOperationResult请求参数结构体
 
@@ -1439,6 +1603,49 @@ class DescribePsaRegulationsResponse(AbstractModel):
                 obj = PsaRegulation()
                 obj._deserialize(item)
                 self.PsaRegulations.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeRegionsRequest(AbstractModel):
+    """DescribeRegions请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RegionId: 地域整型ID，目前黑石可用地域包括：8-北京，4-上海，1-广州， 19-重庆
+        :type RegionId: int
+        """
+        self.RegionId = None
+
+
+    def _deserialize(self, params):
+        self.RegionId = params.get("RegionId")
+
+
+class DescribeRegionsResponse(AbstractModel):
+    """DescribeRegions返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RegionInfoSet: 地域信息
+        :type RegionInfoSet: list of RegionInfo
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RegionInfoSet = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("RegionInfoSet") is not None:
+            self.RegionInfoSet = []
+            for item in params.get("RegionInfoSet"):
+                obj = RegionInfo()
+                obj._deserialize(item)
+                self.RegionInfoSet.append(obj)
         self.RequestId = params.get("RequestId")
 
 
@@ -1978,6 +2185,79 @@ class DeviceDiskSizeInfo(AbstractModel):
         self.DiskSize = params.get("DiskSize")
 
 
+class DeviceHardwareInfo(AbstractModel):
+    """设备硬件配置信息
+
+    """
+
+    def __init__(self):
+        """
+        :param InstanceId: 设备实例 ID
+        :type InstanceId: str
+        :param IsElastic: 是否自定义机型
+        :type IsElastic: int
+        :param CpmPayMode: 机型计费模式，1 为预付费，2 为后付费
+        :type CpmPayMode: int
+        :param CpuId: 自定义机型，CPU 型号 ID（非自定义机型返回0）
+        :type CpuId: int
+        :param Mem: 自定义机型，内存大小, 单位 GB（非自定义机型返回0）
+        :type Mem: int
+        :param ContainRaidCard: 是否有 RAID 卡，0：没有 RAID 卡； 1：有 RAID 卡
+        :type ContainRaidCard: int
+        :param SystemDiskTypeId: 自定义机型系统盘类型ID（若没有则返回0）
+        :type SystemDiskTypeId: int
+        :param SystemDiskCount: 自定义机型系统盘数量（若没有则返回0）
+        :type SystemDiskCount: int
+        :param DataDiskTypeId: 自定义机型数据盘类型 ID（若没有则返回0）
+        :type DataDiskTypeId: int
+        :param DataDiskCount: 自定义机型数据盘数量（若没有则返回0）
+        :type DataDiskCount: int
+        :param CpuDescription: CPU 型号描述
+        :type CpuDescription: str
+        :param MemDescription: 内存描述
+        :type MemDescription: str
+        :param DiskDescription: 磁盘描述
+        :type DiskDescription: str
+        :param NicDescription: 网卡描述
+        :type NicDescription: str
+        :param RaidDescription: 是否支持 RAID 的描述
+        :type RaidDescription: str
+        """
+        self.InstanceId = None
+        self.IsElastic = None
+        self.CpmPayMode = None
+        self.CpuId = None
+        self.Mem = None
+        self.ContainRaidCard = None
+        self.SystemDiskTypeId = None
+        self.SystemDiskCount = None
+        self.DataDiskTypeId = None
+        self.DataDiskCount = None
+        self.CpuDescription = None
+        self.MemDescription = None
+        self.DiskDescription = None
+        self.NicDescription = None
+        self.RaidDescription = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.IsElastic = params.get("IsElastic")
+        self.CpmPayMode = params.get("CpmPayMode")
+        self.CpuId = params.get("CpuId")
+        self.Mem = params.get("Mem")
+        self.ContainRaidCard = params.get("ContainRaidCard")
+        self.SystemDiskTypeId = params.get("SystemDiskTypeId")
+        self.SystemDiskCount = params.get("SystemDiskCount")
+        self.DataDiskTypeId = params.get("DataDiskTypeId")
+        self.DataDiskCount = params.get("DataDiskCount")
+        self.CpuDescription = params.get("CpuDescription")
+        self.MemDescription = params.get("MemDescription")
+        self.DiskDescription = params.get("DiskDescription")
+        self.NicDescription = params.get("NicDescription")
+        self.RaidDescription = params.get("RaidDescription")
+
+
 class DeviceInfo(AbstractModel):
     """物理机信息
 
@@ -2324,6 +2604,31 @@ class DevicePriceInfo(AbstractModel):
         self.GoodsCount = params.get("GoodsCount")
 
 
+class DiskInfo(AbstractModel):
+    """自定义机型磁盘的描述
+
+    """
+
+    def __init__(self):
+        """
+        :param DiskTypeId: 磁盘ID
+        :type DiskTypeId: int
+        :param Size: 磁盘的容量，单位为G
+        :type Size: int
+        :param DiskDescription: 磁盘信息描述
+        :type DiskDescription: str
+        """
+        self.DiskTypeId = None
+        self.Size = None
+        self.DiskDescription = None
+
+
+    def _deserialize(self, params):
+        self.DiskTypeId = params.get("DiskTypeId")
+        self.Size = params.get("Size")
+        self.DiskDescription = params.get("DiskDescription")
+
+
 class FailedTaskInfo(AbstractModel):
     """运行失败的自定义脚本信息
 
@@ -2343,6 +2648,35 @@ class FailedTaskInfo(AbstractModel):
     def _deserialize(self, params):
         self.InstanceId = params.get("InstanceId")
         self.ErrorMsg = params.get("ErrorMsg")
+
+
+class HostedDeviceOutBandInfo(AbstractModel):
+    """托管设备带外信息
+
+    """
+
+    def __init__(self):
+        """
+        :param InstanceId: 物理机ID
+        :type InstanceId: str
+        :param OutBandIp: 带外IP
+        :type OutBandIp: str
+        :param VpnIp: VPN的IP
+        :type VpnIp: str
+        :param VpnPort: VPN的端口
+        :type VpnPort: int
+        """
+        self.InstanceId = None
+        self.OutBandIp = None
+        self.VpnIp = None
+        self.VpnPort = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.OutBandIp = params.get("OutBandIp")
+        self.VpnIp = params.get("VpnIp")
+        self.VpnPort = params.get("VpnPort")
 
 
 class ModifyCustomImageAttributeRequest(AbstractModel):
@@ -2844,6 +3178,78 @@ class RebootDevicesResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class RecoverDevicesRequest(AbstractModel):
+    """RecoverDevices请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param InstanceIds: 需要恢复的物理机ID列表
+        :type InstanceIds: list of str
+        """
+        self.InstanceIds = None
+
+
+    def _deserialize(self, params):
+        self.InstanceIds = params.get("InstanceIds")
+
+
+class RecoverDevicesResponse(AbstractModel):
+    """RecoverDevices返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param TaskId: 黑石异步任务ID
+        :type TaskId: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TaskId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TaskId = params.get("TaskId")
+        self.RequestId = params.get("RequestId")
+
+
+class RegionInfo(AbstractModel):
+    """地域信息
+
+    """
+
+    def __init__(self):
+        """
+        :param Region: 地域ID
+        :type Region: str
+        :param RegionId: 地域整型ID
+        :type RegionId: int
+        :param RegionDescription: 地域描述
+        :type RegionDescription: str
+        :param ZoneInfoSet: 该地域下的可用区信息
+        :type ZoneInfoSet: list of ZoneInfo
+        """
+        self.Region = None
+        self.RegionId = None
+        self.RegionDescription = None
+        self.ZoneInfoSet = None
+
+
+    def _deserialize(self, params):
+        self.Region = params.get("Region")
+        self.RegionId = params.get("RegionId")
+        self.RegionDescription = params.get("RegionDescription")
+        if params.get("ZoneInfoSet") is not None:
+            self.ZoneInfoSet = []
+            for item in params.get("ZoneInfoSet"):
+                obj = ZoneInfo()
+                obj._deserialize(item)
+                self.ZoneInfoSet.append(obj)
+
+
 class RepairTaskControlRequest(AbstractModel):
     """RepairTaskControl请求参数结构体
 
@@ -2910,6 +3316,44 @@ class ResetDevicePasswordRequest(AbstractModel):
 
 class ResetDevicePasswordResponse(AbstractModel):
     """ResetDevicePassword返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param TaskId: 黑石异步任务ID
+        :type TaskId: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TaskId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TaskId = params.get("TaskId")
+        self.RequestId = params.get("RequestId")
+
+
+class ReturnDevicesRequest(AbstractModel):
+    """ReturnDevices请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param InstanceIds: 需要退还的物理机ID列表
+        :type InstanceIds: list of str
+        """
+        self.InstanceIds = None
+
+
+    def _deserialize(self, params):
+        self.InstanceIds = params.get("InstanceIds")
+
+
+class ReturnDevicesResponse(AbstractModel):
+    """ReturnDevices返回参数结构体
 
     """
 
@@ -3006,7 +3450,7 @@ class SetOutBandVpnAuthPasswordRequest(AbstractModel):
         """
         :param Password: 设置的Vpn认证密码
         :type Password: str
-        :param Operate: 操作字段，取值为：create（创建）或update（修改）
+        :param Operate: 操作字段，取值为：Create（创建）或Update（修改）
         :type Operate: str
         """
         self.Password = None
@@ -3521,3 +3965,28 @@ class UserCmdTaskInfo(AbstractModel):
         self.CmdResult = params.get("CmdResult")
         self.AppId = params.get("AppId")
         self.LastShellExit = params.get("LastShellExit")
+
+
+class ZoneInfo(AbstractModel):
+    """可用区信息
+
+    """
+
+    def __init__(self):
+        """
+        :param Zone: 可用区ID
+        :type Zone: str
+        :param ZoneId: 可用区整型ID
+        :type ZoneId: int
+        :param ZoneDescription: 可用区描述
+        :type ZoneDescription: str
+        """
+        self.Zone = None
+        self.ZoneId = None
+        self.ZoneDescription = None
+
+
+    def _deserialize(self, params):
+        self.Zone = params.get("Zone")
+        self.ZoneId = params.get("ZoneId")
+        self.ZoneDescription = params.get("ZoneDescription")

@@ -712,10 +712,13 @@ class FaceAttributesInfo(AbstractModel):
         :param Beauty: 魅力[0~100]。NeedFaceAttributes 不为1 或检测超过 5 张人脸时，此参数仍返回，但不具备参考意义。
         :type Beauty: int
         :param Hat: 是否有帽子 [true,false]。NeedFaceAttributes 不为1 或检测超过 5 张人脸时，此参数仍返回，但不具备参考意义。
+注意：此字段可能返回 null，表示取不到有效值。
         :type Hat: bool
         :param Mask: 是否有口罩 [true,false]。NeedFaceAttributes 不为1 或检测超过 5 张人脸时，此参数仍返回，但不具备参考意义。
+注意：此字段可能返回 null，表示取不到有效值。
         :type Mask: bool
         :param Hair: 头发信息，包含头发长度（length）、有无刘海（bang）、头发颜色（color）。
+注意：此字段可能返回 null，表示取不到有效值。
         :type Hair: :class:`tencentcloud.iai.v20180301.models.FaceHairAttributesInfo`
         """
         self.Gender = None
@@ -755,10 +758,13 @@ class FaceHairAttributesInfo(AbstractModel):
     def __init__(self):
         """
         :param Length: 0：光头，1：短发，2：中发，3：长发，4：绑发
+注意：此字段可能返回 null，表示取不到有效值。
         :type Length: int
         :param Bang: 0：有刘海，1：无刘海
+注意：此字段可能返回 null，表示取不到有效值。
         :type Bang: int
         :param Color: 0：黑色，1：金色，2：棕色，3：灰白色
+注意：此字段可能返回 null，表示取不到有效值。
         :type Color: int
         """
         self.Length = None
@@ -795,6 +801,7 @@ class FaceInfo(AbstractModel):
 魅力( beauty )、眼镜( glass )、口罩（mask）、头发（hair）和姿态 (pitch，roll，yaw )。只有当 NeedFaceAttributes 设为 1 时才返回有效信息。
         :type FaceAttributesInfo: :class:`tencentcloud.iai.v20180301.models.FaceAttributesInfo`
         :param FaceQualityInfo: 人脸质量信息，包含质量分（score）、模糊分（sharpness）、光照分（brightness）、遮挡分（completeness）。只有当NeedFaceDetection设为1时才返回有效信息。
+注意：此字段可能返回 null，表示取不到有效值。
         :type FaceQualityInfo: :class:`tencentcloud.iai.v20180301.models.FaceQualityInfo`
         """
         self.X = None
@@ -827,21 +834,27 @@ class FaceQualityCompleteness(AbstractModel):
         """
         :param Eyebrow: 眉毛的遮挡分数[0,100]，分数越高遮挡越少。 
 参考范围：[0,80]表示发生遮挡。
+注意：此字段可能返回 null，表示取不到有效值。
         :type Eyebrow: int
         :param Eye: 眼睛的遮挡分数[0,100],分数越高遮挡越少。 
 参考范围：[0,80]表示发生遮挡。
+注意：此字段可能返回 null，表示取不到有效值。
         :type Eye: int
         :param Nose: 鼻子的遮挡分数[0,100],分数越高遮挡越少。 
 参考范围：[0,60]表示发生遮挡。
+注意：此字段可能返回 null，表示取不到有效值。
         :type Nose: int
         :param Cheek: 脸颊的遮挡分数[0,100],分数越高遮挡越少。 
 参考范围：[0,70]表示发生遮挡。
+注意：此字段可能返回 null，表示取不到有效值。
         :type Cheek: int
         :param Mouth: 嘴巴的遮挡分数[0,100],分数越高遮挡越少。 
 参考范围：[0,50]表示发生遮挡。
+注意：此字段可能返回 null，表示取不到有效值。
         :type Mouth: int
         :param Chin: 下巴的遮挡分数[0,100],分数越高遮挡越少。 
 参考范围：[0,70]表示发生遮挡。
+注意：此字段可能返回 null，表示取不到有效值。
         :type Chin: int
         """
         self.Eyebrow = None
@@ -871,16 +884,20 @@ class FaceQualityInfo(AbstractModel):
         :param Score: 质量分: [0,100]，综合评价图像质量是否适合人脸识别，分数越高质量越好。 
 参考范围：[0,40]较差，[40,60] 一般，[60,80]较好，[80,100]很好。 
 建议：人脸入库选取70以上的图片。
+注意：此字段可能返回 null，表示取不到有效值。
         :type Score: int
         :param Sharpness: 清晰分：[0,100]，评价图片清晰程度，分数越高越清晰。 
 参考范围：[0,40]特别模糊，[40,60]模糊，[60,80]一般，[80,100]清晰。 
 建议：人脸入库选取80以上的图片。
+注意：此字段可能返回 null，表示取不到有效值。
         :type Sharpness: int
         :param Brightness: 光照分：[0,100]，评价图片光照程度，分数越高越亮。 
 参考范围： [0,30]偏暗，[30,70]光照正常，[70,100]偏亮。 
 建议：人脸入库选取[30,70]的图片。
+注意：此字段可能返回 null，表示取不到有效值。
         :type Brightness: int
         :param Completeness: 五官遮挡分，评价眉毛（Eyebrow）、眼睛（Eye）、鼻子（Nose）、脸颊（Cheek）、嘴巴（Mouth）、下巴（Chin）的被遮挡程度。
+注意：此字段可能返回 null，表示取不到有效值。
         :type Completeness: :class:`tencentcloud.iai.v20180301.models.FaceQualityCompleteness`
         """
         self.Score = None
@@ -1056,6 +1073,7 @@ class GetGroupListResponse(AbstractModel):
         :param GroupInfos: 返回的人员库信息
         :type GroupInfos: list of GroupInfo
         :param GroupNum: 人员库总数量
+注意：此字段可能返回 null，表示取不到有效值。
         :type GroupNum: int
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -1157,6 +1175,7 @@ class GetPersonGroupInfoResponse(AbstractModel):
         :param PersonGroupInfos: 包含此人员的人员库及描述字段内容列表
         :type PersonGroupInfos: list of PersonGroupInfo
         :param GroupNum: 人员库总数量
+注意：此字段可能返回 null，表示取不到有效值。
         :type GroupNum: int
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -1254,8 +1273,10 @@ class GetPersonListResponse(AbstractModel):
         :param PersonInfos: 返回的人员信息
         :type PersonInfos: list of PersonInfo
         :param PersonNum: 该人员库的人员数量
+注意：此字段可能返回 null，表示取不到有效值。
         :type PersonNum: int
         :param FaceNum: 该人员库的人脸数量
+注意：此字段可能返回 null，表示取不到有效值。
         :type FaceNum: int
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -1311,8 +1332,10 @@ class GroupInfo(AbstractModel):
         :param GroupId: 人员库ID
         :type GroupId: str
         :param GroupExDescriptions: 人员库自定义描述字段
+注意：此字段可能返回 null，表示取不到有效值。
         :type GroupExDescriptions: list of str
         :param Tag: 人员库信息备注
+注意：此字段可能返回 null，表示取不到有效值。
         :type Tag: str
         """
         self.GroupName = None

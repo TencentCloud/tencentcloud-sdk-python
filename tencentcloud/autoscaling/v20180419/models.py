@@ -161,7 +161,7 @@ class AutoScalingGroup(AbstractModel):
         :type AutoScalingGroupId: str
         :param AutoScalingGroupName: 伸缩组名称
         :type AutoScalingGroupName: str
-        :param AutoScalingGroupStatus: 伸缩组状态
+        :param AutoScalingGroupStatus: 伸缩组当前状态。取值范围：<br><li>NORMAL：正常<br><li>CVM_ABNORMAL：启动配置异常<br><li>LB_ABNORMAL：负载均衡器异常<br><li>VPC_ABNORMAL：VPC网络异常<br><li>INSUFFICIENT_BALANCE：余额不足<br>
         :type AutoScalingGroupStatus: str
         :param CreatedTime: 创建时间，采用UTC标准计时
         :type CreatedTime: str
@@ -199,6 +199,8 @@ class AutoScalingGroup(AbstractModel):
         :type ZoneSet: list of str
         :param RetryPolicy: 重试策略
         :type RetryPolicy: str
+        :param InActivityStatus: 伸缩组是否处于伸缩活动中，`IN_ACTIVITY`表示处于伸缩活动中，`NOT_IN_ACTIVITY`表示不处于伸缩活动中。
+        :type InActivityStatus: str
         """
         self.AutoScalingGroupId = None
         self.AutoScalingGroupName = None
@@ -221,6 +223,7 @@ class AutoScalingGroup(AbstractModel):
         self.VpcId = None
         self.ZoneSet = None
         self.RetryPolicy = None
+        self.InActivityStatus = None
 
 
     def _deserialize(self, params):
@@ -250,6 +253,7 @@ class AutoScalingGroup(AbstractModel):
         self.VpcId = params.get("VpcId")
         self.ZoneSet = params.get("ZoneSet")
         self.RetryPolicy = params.get("RetryPolicy")
+        self.InActivityStatus = params.get("InActivityStatus")
 
 
 class AutoScalingGroupAbstract(AbstractModel):
@@ -718,10 +722,13 @@ class DataDisk(AbstractModel):
     def __init__(self):
         """
         :param DiskType: 数据盘类型。数据盘类型限制详见[CVM实例配置](https://cloud.tencent.com/document/product/213/2177)。取值范围：<br><li>LOCAL_BASIC：本地硬盘<br><li>LOCAL_SSD：本地SSD硬盘<br><li>CLOUD_BASIC：普通云硬盘<br><li>CLOUD_PREMIUM：高性能云硬盘<br><li>CLOUD_SSD：SSD云硬盘<br><br>默认取值：LOCAL_BASIC。
+注意：此字段可能返回 null，表示取不到有效值。
         :type DiskType: str
         :param DiskSize: 数据盘大小，单位：GB。最小调整步长为10G，不同数据盘类型取值范围不同，具体限制详见：[CVM实例配置](https://cloud.tencent.com/document/product/213/2177)。默认值为0，表示不购买数据盘。更多限制详见产品文档。
+注意：此字段可能返回 null，表示取不到有效值。
         :type DiskSize: int
         :param SnapshotId: 数据盘快照 ID，类似 `snap-l8psqwnt`。
+注意：此字段可能返回 null，表示取不到有效值。
         :type SnapshotId: str
         """
         self.DiskType = None
@@ -1689,6 +1696,7 @@ class InstanceMarketOptionsRequest(AbstractModel):
         :param SpotOptions: 竞价相关选项
         :type SpotOptions: :class:`tencentcloud.autoscaling.v20180419.models.SpotMarketOptions`
         :param MarketType: 市场选项类型，当前只支持取值：spot
+注意：此字段可能返回 null，表示取不到有效值。
         :type MarketType: str
         """
         self.SpotOptions = None
@@ -1710,10 +1718,13 @@ class InternetAccessible(AbstractModel):
     def __init__(self):
         """
         :param InternetChargeType: 网络计费类型。取值范围：<br><li>BANDWIDTH_PREPAID：预付费按带宽结算<br><li>TRAFFIC_POSTPAID_BY_HOUR：流量按小时后付费<br><li>BANDWIDTH_POSTPAID_BY_HOUR：带宽按小时后付费<br><li>BANDWIDTH_PACKAGE：带宽包用户<br>默认取值：TRAFFIC_POSTPAID_BY_HOUR。
+注意：此字段可能返回 null，表示取不到有效值。
         :type InternetChargeType: str
         :param InternetMaxBandwidthOut: 公网出带宽上限，单位：Mbps。默认值：0Mbps。不同机型带宽上限范围不一致，具体限制详见[购买网络带宽](https://cloud.tencent.com/document/product/213/509)。
+注意：此字段可能返回 null，表示取不到有效值。
         :type InternetMaxBandwidthOut: int
         :param PublicIpAssigned: 是否分配公网IP。取值范围：<br><li>TRUE：表示分配公网IP<br><li>FALSE：表示不分配公网IP<br><br>当公网带宽大于0Mbps时，可自由选择开通与否，默认开通公网IP；当公网带宽为0，则不允许分配公网IP。
+注意：此字段可能返回 null，表示取不到有效值。
         :type PublicIpAssigned: bool
         """
         self.InternetChargeType = None
@@ -1755,6 +1766,7 @@ class LaunchConfiguration(AbstractModel):
         :param AutoScalingGroupAbstractSet: 启动配置关联的伸缩组。
         :type AutoScalingGroupAbstractSet: list of AutoScalingGroupAbstract
         :param UserData: 自定义数据。
+注意：此字段可能返回 null，表示取不到有效值。
         :type UserData: str
         :param CreatedTime: 启动配置创建时间。
         :type CreatedTime: str
@@ -1769,6 +1781,7 @@ class LaunchConfiguration(AbstractModel):
 <br><li>SPOTPAID：竞价付费
         :type InstanceChargeType: str
         :param InstanceMarketOptions: 实例的市场相关选项，如竞价实例相关参数，若指定实例的付费模式为竞价付费则该参数必传。
+注意：此字段可能返回 null，表示取不到有效值。
         :type InstanceMarketOptions: :class:`tencentcloud.autoscaling.v20180419.models.InstanceMarketOptionsRequest`
         :param InstanceTypes: 实例机型列表。
         :type InstanceTypes: list of str
@@ -1859,10 +1872,12 @@ class LoginSettings(AbstractModel):
     def __init__(self):
         """
         :param Password: 实例登录密码。不同操作系统类型密码复杂度限制不一样，具体如下：<br><li>Linux实例密码必须8到16位，至少包括两项[a-z，A-Z]、[0-9] 和 [( ) ` ~ ! @ # $ % ^ & * - + = | { } [ ] : ; ' , . ? / ]中的特殊符号。<br><li>Windows实例密码必须12到16位，至少包括三项[a-z]，[A-Z]，[0-9] 和 [( ) ` ~ ! @ # $ % ^ & * - + = { } [ ] : ; ' , . ? /]中的特殊符号。<br><br>若不指定该参数，则由系统随机生成密码，并通过站内信方式通知到用户。
+注意：此字段可能返回 null，表示取不到有效值。
         :type Password: str
         :param KeyIds: 密钥ID列表。关联密钥后，就可以通过对应的私钥来访问实例；KeyId可通过接口DescribeKeyPairs获取，密钥与密码不能同时指定，同时Windows操作系统不支持指定密钥。当前仅支持购买的时候指定一个密钥。
         :type KeyIds: list of str
         :param KeepImageLogin: 保持镜像的原始设置。该参数与Password或KeyIds.N不能同时指定。只有使用自定义镜像、共享镜像或外部导入镜像创建实例时才能指定该参数为TRUE。取值范围：<br><li>TRUE：表示保持镜像的登录设置<br><li>FALSE：表示不保持镜像的登录设置<br><br>默认取值：FALSE。
+注意：此字段可能返回 null，表示取不到有效值。
         :type KeepImageLogin: bool
         """
         self.Password = None
@@ -2374,6 +2389,7 @@ class RunMonitorServiceEnabled(AbstractModel):
     def __init__(self):
         """
         :param Enabled: 是否开启[云监控](https://cloud.tencent.com/document/product/248)服务。取值范围：<br><li>TRUE：表示开启云监控服务<br><li>FALSE：表示不开启云监控服务<br><br>默认取值：TRUE。
+注意：此字段可能返回 null，表示取不到有效值。
         :type Enabled: bool
         """
         self.Enabled = None
@@ -2391,6 +2407,7 @@ class RunSecurityServiceEnabled(AbstractModel):
     def __init__(self):
         """
         :param Enabled: 是否开启[云安全](https://cloud.tencent.com/document/product/296)服务。取值范围：<br><li>TRUE：表示开启云安全服务<br><li>FALSE：表示不开启云安全服务<br><br>默认取值：TRUE。
+注意：此字段可能返回 null，表示取不到有效值。
         :type Enabled: bool
         """
         self.Enabled = None
@@ -2552,6 +2569,7 @@ class SpotMarketOptions(AbstractModel):
         :param MaxPrice: 竞价出价，例如“1.05”
         :type MaxPrice: str
         :param SpotInstanceType: 竞价请求类型，当前仅支持类型：one-time，默认值为one-time
+注意：此字段可能返回 null，表示取不到有效值。
         :type SpotInstanceType: str
         """
         self.MaxPrice = None
@@ -2571,8 +2589,10 @@ class SystemDisk(AbstractModel):
     def __init__(self):
         """
         :param DiskType: 系统盘类型。系统盘类型限制详见[CVM实例配置](https://cloud.tencent.com/document/product/213/2177)。取值范围：<br><li>LOCAL_BASIC：本地硬盘<br><li>LOCAL_SSD：本地SSD硬盘<br><li>CLOUD_BASIC：普通云硬盘<br><li>CLOUD_PREMIUM：高性能云硬盘<br><li>CLOUD_SSD：SSD云硬盘<br><br>默认取值：LOCAL_BASIC。
+注意：此字段可能返回 null，表示取不到有效值。
         :type DiskType: str
         :param DiskSize: 系统盘大小，单位：GB。默认值为 50
+注意：此字段可能返回 null，表示取不到有效值。
         :type DiskSize: int
         """
         self.DiskType = None

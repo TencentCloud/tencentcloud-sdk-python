@@ -217,6 +217,8 @@ class CallBackTemplateInfo(AbstractModel):
         :type SnapshotNotifyUrl: str
         :param PornCensorshipNotifyUrl: 鉴黄回调URL。
         :type PornCensorshipNotifyUrl: str
+        :param CallbackKey: 回调的鉴权key
+        :type CallbackKey: str
         """
         self.TemplateId = None
         self.TemplateName = None
@@ -227,6 +229,7 @@ class CallBackTemplateInfo(AbstractModel):
         self.RecordNotifyUrl = None
         self.SnapshotNotifyUrl = None
         self.PornCensorshipNotifyUrl = None
+        self.CallbackKey = None
 
 
     def _deserialize(self, params):
@@ -239,6 +242,7 @@ class CallBackTemplateInfo(AbstractModel):
         self.RecordNotifyUrl = params.get("RecordNotifyUrl")
         self.SnapshotNotifyUrl = params.get("SnapshotNotifyUrl")
         self.PornCensorshipNotifyUrl = params.get("PornCensorshipNotifyUrl")
+        self.CallbackKey = params.get("CallbackKey")
 
 
 class CertInfo(AbstractModel):
@@ -356,6 +360,8 @@ class CreateLiveCallbackTemplateRequest(AbstractModel):
         :param PornCensorshipNotifyUrl: 鉴黄回调URL，
 相关协议文档：[事件消息通知](/document/product/267/32741)。
         :type PornCensorshipNotifyUrl: str
+        :param CallbackKey: 回调key，回调URL公用，鉴权回调说明详见回调格式文档
+        :type CallbackKey: str
         """
         self.TemplateName = None
         self.Description = None
@@ -364,6 +370,7 @@ class CreateLiveCallbackTemplateRequest(AbstractModel):
         self.RecordNotifyUrl = None
         self.SnapshotNotifyUrl = None
         self.PornCensorshipNotifyUrl = None
+        self.CallbackKey = None
 
 
     def _deserialize(self, params):
@@ -374,6 +381,7 @@ class CreateLiveCallbackTemplateRequest(AbstractModel):
         self.RecordNotifyUrl = params.get("RecordNotifyUrl")
         self.SnapshotNotifyUrl = params.get("SnapshotNotifyUrl")
         self.PornCensorshipNotifyUrl = params.get("PornCensorshipNotifyUrl")
+        self.CallbackKey = params.get("CallbackKey")
 
 
 class CreateLiveCallbackTemplateResponse(AbstractModel):
@@ -2285,7 +2293,7 @@ class DescribeLiveStreamOnlineListRequest(AbstractModel):
         :param PageNum: 取得第几页，默认1。
         :type PageNum: int
         :param PageSize: 每页大小，最大100。 
-取值：1~100之前的任意整数。
+取值：10~100之间的任意整数。
 默认值：10。
         :type PageSize: int
         :param StreamName: 流名称，精确查询。
@@ -2927,6 +2935,8 @@ class ModifyLiveCallbackTemplateRequest(AbstractModel):
         :type SnapshotNotifyUrl: str
         :param PornCensorshipNotifyUrl: 鉴黄回调URL。
         :type PornCensorshipNotifyUrl: str
+        :param CallbackKey: 回调key，回调URL公用，鉴权回调说明详见回调格式文档
+        :type CallbackKey: str
         """
         self.TemplateId = None
         self.TemplateName = None
@@ -2936,6 +2946,7 @@ class ModifyLiveCallbackTemplateRequest(AbstractModel):
         self.RecordNotifyUrl = None
         self.SnapshotNotifyUrl = None
         self.PornCensorshipNotifyUrl = None
+        self.CallbackKey = None
 
 
     def _deserialize(self, params):
@@ -2947,6 +2958,7 @@ class ModifyLiveCallbackTemplateRequest(AbstractModel):
         self.RecordNotifyUrl = params.get("RecordNotifyUrl")
         self.SnapshotNotifyUrl = params.get("SnapshotNotifyUrl")
         self.PornCensorshipNotifyUrl = params.get("PornCensorshipNotifyUrl")
+        self.CallbackKey = params.get("CallbackKey")
 
 
 class ModifyLiveCallbackTemplateResponse(AbstractModel):

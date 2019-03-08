@@ -295,7 +295,7 @@ class CreateImageRequest(AbstractModel):
         :type DataDiskIds: list of str
         :param SnapshotIds: 需要制作镜像的快照Id,必须包含一个系统盘快照
         :type SnapshotIds: list of str
-        :param DryRun: DryRun
+        :param DryRun: 检测请求的合法性，但不会对操作的资源产生任何影响
         :type DryRun: bool
         """
         self.ImageName = None
@@ -403,6 +403,7 @@ class DataDisk(AbstractModel):
 <li>FALSE：子机销毁时，保留数据盘<br>
 默认取值：TRUE<br>
 该参数目前仅用于 `RunInstances` 接口。
+注意：此字段可能返回 null，表示取不到有效值。
         :type DeleteWithInstance: bool
         """
         self.DiskSize = None
@@ -1488,8 +1489,10 @@ class DisasterRecoverGroup(AbstractModel):
         :param CurrentNum: 分散置放群组内云主机当前数量。
         :type CurrentNum: int
         :param InstanceIds: 分散置放群组内，云主机id列表。
+注意：此字段可能返回 null，表示取不到有效值。
         :type InstanceIds: list of str
         :param CreateTime: 分散置放群组创建时间。
+注意：此字段可能返回 null，表示取不到有效值。
         :type CreateTime: str
         """
         self.DisasterRecoverGroupId = None
@@ -1544,10 +1547,13 @@ class Externals(AbstractModel):
     def __init__(self):
         """
         :param ReleaseAddress: 释放地址
+注意：此字段可能返回 null，表示取不到有效值。
         :type ReleaseAddress: bool
         :param UnsupportNetworks: 不支持的网络类型
+注意：此字段可能返回 null，表示取不到有效值。
         :type UnsupportNetworks: list of str
         :param StorageBlockAttr: HDD本地存储属性
+注意：此字段可能返回 null，表示取不到有效值。
         :type StorageBlockAttr: :class:`tencentcloud.cvm.v20170312.models.StorageBlock`
         """
         self.ReleaseAddress = None
@@ -1729,8 +1735,10 @@ class Image(AbstractModel):
         :param ImageSource: 镜像来源
         :type ImageSource: str
         :param SyncPercent: 同步百分比
+注意：此字段可能返回 null，表示取不到有效值。
         :type SyncPercent: int
         :param IsSupportCloudinit: 镜像是否支持cloud-init
+注意：此字段可能返回 null，表示取不到有效值。
         :type IsSupportCloudinit: bool
         """
         self.ImageId = None
@@ -1774,8 +1782,10 @@ class ImageOsList(AbstractModel):
     def __init__(self):
         """
         :param Windows: 支持的windows操作系统。
+注意：此字段可能返回 null，表示取不到有效值。
         :type Windows: list of str
         :param Linux: 支持的linux操作系统
+注意：此字段可能返回 null，表示取不到有效值。
         :type Linux: list of str
         """
         self.Windows = None
@@ -2382,6 +2392,7 @@ class Instance(AbstractModel):
         :param PrivateIpAddresses: 实例主网卡的内网`IP`列表。
         :type PrivateIpAddresses: list of str
         :param PublicIpAddresses: 实例主网卡的公网`IP`列表。
+注意：此字段可能返回 null，表示取不到有效值。
         :type PublicIpAddresses: list of str
         :param InternetAccessible: 实例带宽信息。
         :type InternetAccessible: :class:`tencentcloud.cvm.v20170312.models.InternetAccessible`
@@ -2622,6 +2633,7 @@ class InstanceTypeQuotaItem(AbstractModel):
         :param NetworkCard: 网卡类型，例如：25代表25G网卡
         :type NetworkCard: int
         :param Externals: 扩展属性。
+注意：此字段可能返回 null，表示取不到有效值。
         :type Externals: :class:`tencentcloud.cvm.v20170312.models.Externals`
         :param Cpu: 实例的CPU核数，单位：核。
         :type Cpu: int
@@ -2757,12 +2769,16 @@ class ItemPrice(AbstractModel):
     def __init__(self):
         """
         :param UnitPrice: 后续单价，单位：元。
+注意：此字段可能返回 null，表示取不到有效值。
         :type UnitPrice: float
         :param ChargeUnit: 后续计价单元，可取值范围： <br><li>HOUR：表示计价单元是按每小时来计算。当前涉及该计价单元的场景有：实例按小时后付费（POSTPAID_BY_HOUR）、带宽按小时后付费（BANDWIDTH_POSTPAID_BY_HOUR）：<br><li>GB：表示计价单元是按每GB来计算。当前涉及该计价单元的场景有：流量按小时后付费（TRAFFIC_POSTPAID_BY_HOUR）。
+注意：此字段可能返回 null，表示取不到有效值。
         :type ChargeUnit: str
         :param OriginalPrice: 预支费用的原价，单位：元。
+注意：此字段可能返回 null，表示取不到有效值。
         :type OriginalPrice: float
         :param DiscountPrice: 预支费用的折扣价，单位：元。
+注意：此字段可能返回 null，表示取不到有效值。
         :type DiscountPrice: float
         """
         self.UnitPrice = None
@@ -2860,10 +2876,13 @@ class LoginSettings(AbstractModel):
     def __init__(self):
         """
         :param Password: 实例登录密码。不同操作系统类型密码复杂度限制不一样，具体如下：<br><li>Linux实例密码必须8到16位，至少包括两项[a-z，A-Z]、[0-9] 和 [( ) ` ~ ! @ # $ % ^ & * - + = | { } [ ] : ; ' , . ? / ]中的特殊符号。<br><li>Windows实例密码必须12到16位，至少包括三项[a-z]，[A-Z]，[0-9] 和 [( ) ` ~ ! @ # $ % ^ & * - + = { } [ ] : ; ' , . ? /]中的特殊符号。<br><br>若不指定该参数，则由系统随机生成密码，并通过站内信方式通知到用户。
+注意：此字段可能返回 null，表示取不到有效值。
         :type Password: str
         :param KeyIds: 密钥ID列表。关联密钥后，就可以通过对应的私钥来访问实例；KeyId可通过接口DescribeKeyPairs获取，密钥与密码不能同时指定，同时Windows操作系统不支持指定密钥。当前仅支持购买的时候指定一个密钥。
+注意：此字段可能返回 null，表示取不到有效值。
         :type KeyIds: list of str
         :param KeepImageLogin: 保持镜像的原始设置。该参数与Password或KeyIds.N不能同时指定。只有使用自定义镜像、共享镜像或外部导入镜像创建实例时才能指定该参数为TRUE。取值范围：<br><li>TRUE：表示保持镜像的登录设置<br><li>FALSE：表示不保持镜像的登录设置<br><br>默认取值：FALSE。
+注意：此字段可能返回 null，表示取不到有效值。
         :type KeepImageLogin: str
         """
         self.Password = None
@@ -4063,10 +4082,13 @@ class StorageBlock(AbstractModel):
     def __init__(self):
         """
         :param Type: HDD本地存储类型，值为：LOCAL_PRO.
+注意：此字段可能返回 null，表示取不到有效值。
         :type Type: str
         :param MinSize: HDD本地存储的最小容量
+注意：此字段可能返回 null，表示取不到有效值。
         :type MinSize: int
         :param MaxSize: HDD本地存储的最大容量
+注意：此字段可能返回 null，表示取不到有效值。
         :type MaxSize: int
         """
         self.Type = None

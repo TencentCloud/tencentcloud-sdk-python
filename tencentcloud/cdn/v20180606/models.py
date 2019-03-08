@@ -16,6 +16,29 @@
 from tencentcloud.common.abstract_model import AbstractModel
 
 
+class CacheOptResult(AbstractModel):
+    """违规资源封禁/解封返回类型
+
+    """
+
+    def __init__(self):
+        """
+        :param SuccessUrls: 成功的url列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SuccessUrls: list of str
+        :param FailUrls: 失败的url列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FailUrls: list of str
+        """
+        self.SuccessUrls = None
+        self.FailUrls = None
+
+
+    def _deserialize(self, params):
+        self.SuccessUrls = params.get("SuccessUrls")
+        self.FailUrls = params.get("FailUrls")
+
+
 class CdnData(AbstractModel):
     """访问明细数据类型
 
@@ -78,11 +101,11 @@ flux：流量，单位为 byte
 bandwidth：带宽，单位为 bps
 request：请求数，单位为 次
 fluxHitRate：流量命中率，单位为 %
-statusCode：状态码，返回 2XX、3XX、4XX、5XX 汇总数据，单位为 个
-2XX：返回 2XX 状态码汇总及各 2 开头状态码数据，单位为 个
-3XX：返回 3XX 状态码汇总及各 3 开头状态码数据，单位为 个
-4XX：返回 4XX 状态码汇总及各 4 开头状态码数据，单位为 个
-5XX：返回 5XX 状态码汇总及各 5 开头状态码数据，单位为 个
+statusCode：状态码，返回 2xx、3xx、4xx、5xx 汇总数据，单位为 个
+2xx：返回 2xx 状态码汇总及各 2 开头状态码数据，单位为 个
+3xx：返回 3xx 状态码汇总及各 3 开头状态码数据，单位为 个
+4xx：返回 4xx 状态码汇总及各 4 开头状态码数据，单位为 个
+5xx：返回 5xx 状态码汇总及各 5 开头状态码数据，单位为 个
 支持指定具体状态码查询，若未产生过，则返回为空
         :type Metric: str
         :param Domains: 指定查询域名列表
@@ -113,6 +136,11 @@ https：指定查询 HTTPS 对应指标
         :type Protocol: str
         :param DataSource: 指定数据源查询，白名单功能
         :type DataSource: str
+        :param IpProtocol: 指定IP协议查询，不填充表示查询所有协议
+all：所有协议
+ipv4：指定查询 ipv4对应指标
+ipv6：指定查询 ipv6 对应指标
+        :type IpProtocol: str
         """
         self.StartTime = None
         self.EndTime = None
@@ -125,6 +153,7 @@ https：指定查询 HTTPS 对应指标
         self.District = None
         self.Protocol = None
         self.DataSource = None
+        self.IpProtocol = None
 
 
     def _deserialize(self, params):
@@ -139,6 +168,7 @@ https：指定查询 HTTPS 对应指标
         self.District = params.get("District")
         self.Protocol = params.get("Protocol")
         self.DataSource = params.get("DataSource")
+        self.IpProtocol = params.get("IpProtocol")
 
 
 class DescribeCdnDataResponse(AbstractModel):
@@ -309,11 +339,11 @@ bandwidth：回源带宽，单位为 bps
 request：回源请求数，单位为 次
 failRequest：回源失败请求数，单位为 次
 failRate：回源失败率，单位为 %
-statusCode：回源状态码，返回 2XX、3XX、4XX、5XX 汇总数据，单位为 个
-2XX：返回 2XX 回源状态码汇总及各 2 开头回源状态码数据，单位为 个
-3XX：返回 3XX 回源状态码汇总及各 3 开头回源状态码数据，单位为 个
-4XX：返回 4XX 回源状态码汇总及各 4 开头回源状态码数据，单位为 个
-5XX：返回 5XX 回源状态码汇总及各 5 开头回源状态码数据，单位为 个
+statusCode：回源状态码，返回 2xx、3xx、4xx、5xx 汇总数据，单位为 个
+2xx：返回 2xx 回源状态码汇总及各 2 开头回源状态码数据，单位为 个
+3xx：返回 3xx 回源状态码汇总及各 3 开头回源状态码数据，单位为 个
+4xx：返回 4xx 回源状态码汇总及各 4 开头回源状态码数据，单位为 个
+5xx：返回 5xx 回源状态码汇总及各 5 开头回源状态码数据，单位为 个
 支持指定具体状态码查询，若未产生过，则返回为空
         :type Metric: str
         :param Domains: 指定查询域名列表，最多可一次性查询 30 个加速域名明细
@@ -421,6 +451,147 @@ max：峰值带宽计费，日结模式
         self.PayType = params.get("PayType")
         self.BillingCycle = params.get("BillingCycle")
         self.StatType = params.get("StatType")
+        self.RequestId = params.get("RequestId")
+
+
+class DisableCachesRequest(AbstractModel):
+    """DisableCaches请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Urls: 需要禁用的 URL 列表
+每次最多可提交 100 条，每日最多可提交 3000 条
+        :type Urls: list of str
+        """
+        self.Urls = None
+
+
+    def _deserialize(self, params):
+        self.Urls = params.get("Urls")
+
+
+class DisableCachesResponse(AbstractModel):
+    """DisableCaches返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param CacheOptResult: 提交结果
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CacheOptResult: :class:`tencentcloud.cdn.v20180606.models.CacheOptResult`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.CacheOptResult = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("CacheOptResult") is not None:
+            self.CacheOptResult = CacheOptResult()
+            self.CacheOptResult._deserialize(params.get("CacheOptResult"))
+        self.RequestId = params.get("RequestId")
+
+
+class EnableCachesRequest(AbstractModel):
+    """EnableCaches请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Urls: 解封 URL 列表
+        :type Urls: list of str
+        """
+        self.Urls = None
+
+
+    def _deserialize(self, params):
+        self.Urls = params.get("Urls")
+
+
+class EnableCachesResponse(AbstractModel):
+    """EnableCaches返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param CacheOptResult: 结果列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CacheOptResult: :class:`tencentcloud.cdn.v20180606.models.CacheOptResult`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.CacheOptResult = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("CacheOptResult") is not None:
+            self.CacheOptResult = CacheOptResult()
+            self.CacheOptResult._deserialize(params.get("CacheOptResult"))
+        self.RequestId = params.get("RequestId")
+
+
+class GetDisableRecordsRequest(AbstractModel):
+    """GetDisableRecords请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param StartTime: 开始时间
+        :type StartTime: str
+        :param EndTime: 结束时间
+        :type EndTime: str
+        :param Url: 指定 URL 查询
+        :type Url: str
+        :param Status: URL 当前状态
+disable：当前仍为禁用状态，访问返回 403
+enable：当前为可用状态，已解禁，可正常访问
+        :type Status: str
+        """
+        self.StartTime = None
+        self.EndTime = None
+        self.Url = None
+        self.Status = None
+
+
+    def _deserialize(self, params):
+        self.StartTime = params.get("StartTime")
+        self.EndTime = params.get("EndTime")
+        self.Url = params.get("Url")
+        self.Status = params.get("Status")
+
+
+class GetDisableRecordsResponse(AbstractModel):
+    """GetDisableRecords返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param UrlRecordList: 封禁历史记录
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UrlRecordList: list of UrlRecord
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.UrlRecordList = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("UrlRecordList") is not None:
+            self.UrlRecordList = []
+            for item in params.get("UrlRecordList"):
+                obj = UrlRecord()
+                obj._deserialize(item)
+                self.UrlRecordList.append(obj)
         self.RequestId = params.get("RequestId")
 
 
@@ -693,3 +864,36 @@ class TopDetailData(AbstractModel):
     def _deserialize(self, params):
         self.Name = params.get("Name")
         self.Value = params.get("Value")
+
+
+class UrlRecord(AbstractModel):
+    """封禁url的详细信息
+
+    """
+
+    def __init__(self):
+        """
+        :param Status: 状态(disable表示封禁，enable表示解封)
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Status: str
+        :param RealUrl: 对应的url
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RealUrl: str
+        :param CreateTime: 创建时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CreateTime: str
+        :param UpdateTime: 更新时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UpdateTime: str
+        """
+        self.Status = None
+        self.RealUrl = None
+        self.CreateTime = None
+        self.UpdateTime = None
+
+
+    def _deserialize(self, params):
+        self.Status = params.get("Status")
+        self.RealUrl = params.get("RealUrl")
+        self.CreateTime = params.get("CreateTime")
+        self.UpdateTime = params.get("UpdateTime")

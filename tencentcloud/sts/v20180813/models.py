@@ -81,9 +81,9 @@ class Credentials(AbstractModel):
         """
         :param Token: token
         :type Token: str
-        :param TmpSecretId: 临时证书秘钥ID
+        :param TmpSecretId: 临时证书密钥ID
         :type TmpSecretId: str
-        :param TmpSecretKey: 临时证书秘钥Key
+        :param TmpSecretKey: 临时证书密钥Key
         :type TmpSecretKey: str
         """
         self.Token = None

@@ -32,10 +32,13 @@ class AiAnalysisResult(AbstractModel):
 <li>FrameTag：智能按帧标签</li>
         :type Type: str
         :param ClassificationTask: 视频内容分析智能分类任务的查询结果，当任务类型为 Classification 时有效。
+注意：此字段可能返回 null，表示取不到有效值。
         :type ClassificationTask: :class:`tencentcloud.vod.v20180717.models.AiAnalysisTaskClassificationResult`
         :param CoverTask: 视频内容分析智能封面任务的查询结果，当任务类型为 Cover 时有效。
+注意：此字段可能返回 null，表示取不到有效值。
         :type CoverTask: :class:`tencentcloud.vod.v20180717.models.AiAnalysisTaskCoverResult`
         :param TagTask: 视频内容分析智能标签任务的查询结果，当任务类型为 Tag 时有效。
+注意：此字段可能返回 null，表示取不到有效值。
         :type TagTask: :class:`tencentcloud.vod.v20180717.models.AiAnalysisTaskTagResult`
         """
         self.Type = None
@@ -82,6 +85,7 @@ class AiAnalysisTaskClassificationOutput(AbstractModel):
     def __init__(self):
         """
         :param ClassificationSet: 视频智能分类列表。
+注意：此字段可能返回 null，表示取不到有效值。
         :type ClassificationSet: list of MediaAiAnalysisClassificationItem
         """
         self.ClassificationSet = None
@@ -106,12 +110,15 @@ class AiAnalysisTaskClassificationResult(AbstractModel):
         :param Status: 任务状态，有 PROCESSING，SUCCESS 和 FAIL 三种。
         :type Status: str
         :param ErrCode: 错误码，0：成功，其他值：失败。
+注意：此字段可能返回 null，表示取不到有效值。
         :type ErrCode: int
         :param Message: 错误信息。
+注意：此字段可能返回 null，表示取不到有效值。
         :type Message: str
         :param Input: 智能分类任务输入。
         :type Input: :class:`tencentcloud.vod.v20180717.models.AiAnalysisTaskClassificationInput`
         :param Output: 智能分类任务输出。
+注意：此字段可能返回 null，表示取不到有效值。
         :type Output: :class:`tencentcloud.vod.v20180717.models.AiAnalysisTaskClassificationOutput`
         """
         self.Status = None
@@ -158,6 +165,7 @@ class AiAnalysisTaskCoverOutput(AbstractModel):
     def __init__(self):
         """
         :param CoverSet: 智能封面列表。
+注意：此字段可能返回 null，表示取不到有效值。
         :type CoverSet: list of MediaAiAnalysisCoverItem
         """
         self.CoverSet = None
@@ -182,12 +190,15 @@ class AiAnalysisTaskCoverResult(AbstractModel):
         :param Status: 任务状态，有 PROCESSING，SUCCESS 和 FAIL 三种。
         :type Status: str
         :param ErrCode: 错误码，0：成功，其他值：失败。
+注意：此字段可能返回 null，表示取不到有效值。
         :type ErrCode: int
         :param Message: 错误信息。
+注意：此字段可能返回 null，表示取不到有效值。
         :type Message: str
         :param Input: 智能封面任务输入。
         :type Input: :class:`tencentcloud.vod.v20180717.models.AiAnalysisTaskCoverInput`
         :param Output: 智能分类任务输出。
+注意：此字段可能返回 null，表示取不到有效值。
         :type Output: :class:`tencentcloud.vod.v20180717.models.AiAnalysisTaskCoverOutput`
         """
         self.Status = None
@@ -251,6 +262,7 @@ class AiAnalysisTaskTagOutput(AbstractModel):
     def __init__(self):
         """
         :param TagSet: 视频智能标签列表。
+注意：此字段可能返回 null，表示取不到有效值。
         :type TagSet: :class:`tencentcloud.vod.v20180717.models.MediaAiAnalysisTagItem`
         """
         self.TagSet = None
@@ -272,12 +284,15 @@ class AiAnalysisTaskTagResult(AbstractModel):
         :param Status: 任务状态，有 PROCESSING，SUCCESS 和 FAIL 三种。
         :type Status: str
         :param ErrCode: 错误码，0：成功，其他值：失败。
+注意：此字段可能返回 null，表示取不到有效值。
         :type ErrCode: int
         :param Message: 错误信息。
+注意：此字段可能返回 null，表示取不到有效值。
         :type Message: str
         :param Input: 智能标签任务输入。
         :type Input: :class:`tencentcloud.vod.v20180717.models.AiAnalysisTaskTagInput`
         :param Output: 智能标签任务输出。
+注意：此字段可能返回 null，表示取不到有效值。
         :type Output: list of AiAnalysisTaskTagOutput
         """
         self.Status = None
@@ -319,18 +334,25 @@ class AiContentReviewResult(AbstractModel):
 <li>Political.Ocr：Ocr 文字鉴政</li>
         :type Type: str
         :param PornTask: 视频内容审核智能画面鉴黄任务的查询结果，当任务类型为 Porn 时有效。
+注意：此字段可能返回 null，表示取不到有效值。
         :type PornTask: :class:`tencentcloud.vod.v20180717.models.AiReviewTaskPornResult`
         :param TerrorismTask: 视频内容审核智能画面鉴恐任务的查询结果，当任务类型为 Terrorism 时有效。
+注意：此字段可能返回 null，表示取不到有效值。
         :type TerrorismTask: :class:`tencentcloud.vod.v20180717.models.AiReviewTaskTerrorismResult`
         :param PoliticalTask: 视频内容审核智能画面鉴恐任务的查询结果，当任务类型为 Political 时有效。
+注意：此字段可能返回 null，表示取不到有效值。
         :type PoliticalTask: :class:`tencentcloud.vod.v20180717.models.AiReviewTaskPoliticalResult`
         :param PornAsrTask: 视频内容审核 Asr 文字鉴黄任务的查询结果，当任务类型为 Porn.Asr 时有效。
+注意：此字段可能返回 null，表示取不到有效值。
         :type PornAsrTask: :class:`tencentcloud.vod.v20180717.models.AiReviewTaskPornAsrResult`
         :param PornOcrTask: 视频内容审核 Ocr 文字鉴黄任务的查询结果，当任务类型为 Porn.Ocr 时有效。
+注意：此字段可能返回 null，表示取不到有效值。
         :type PornOcrTask: :class:`tencentcloud.vod.v20180717.models.AiReviewTaskPornOcrResult`
         :param PoliticalAsrTask: 视频内容审核 Asr 文字鉴政任务的查询结果，当任务类型为 Political.Asr 时有效。
+注意：此字段可能返回 null，表示取不到有效值。
         :type PoliticalAsrTask: :class:`tencentcloud.vod.v20180717.models.AiReviewTaskPoliticalAsrResult`
         :param PoliticalOcrTask: 视频内容审核 Ocr 文字鉴政任务的查询结果，当任务类型为 Political.Ocr 时有效。
+注意：此字段可能返回 null，表示取不到有效值。
         :type PoliticalOcrTask: :class:`tencentcloud.vod.v20180717.models.AiReviewTaskPoliticalOcrResult`
         """
         self.Type = None
@@ -410,13 +432,16 @@ class AiReviewPoliticalAsrTaskOutput(AbstractModel):
     def __init__(self):
         """
         :param Confidence: Asr 文字涉政、敏感评分，分值为0到100。
+注意：此字段可能返回 null，表示取不到有效值。
         :type Confidence: float
         :param Suggestion: Asr 文字涉政、敏感结果建议，取值范围：
 <li>pass。</li>
 <li>review。</li>
 <li>block。</li>
+注意：此字段可能返回 null，表示取不到有效值。
         :type Suggestion: str
         :param SegmentSet: Asr 文字有涉政、敏感嫌疑的视频片段列表。
+注意：此字段可能返回 null，表示取不到有效值。
         :type SegmentSet: list of MediaContentReviewAsrTextSegmentItem
         """
         self.Confidence = None
@@ -467,6 +492,7 @@ class AiReviewPoliticalOcrTaskOutput(AbstractModel):
 <li>block。</li>
         :type Suggestion: str
         :param SegmentSet: Ocr 文字有涉政、敏感嫌疑的视频片段列表。
+注意：此字段可能返回 null，表示取不到有效值。
         :type SegmentSet: list of MediaContentReviewOcrTextSegmentItem
         """
         self.Confidence = None
@@ -510,17 +536,21 @@ class AiReviewPoliticalTaskOutput(AbstractModel):
     def __init__(self):
         """
         :param Confidence: 视频涉政评分，分值为0到100。
+注意：此字段可能返回 null，表示取不到有效值。
         :type Confidence: float
         :param Suggestion: 涉政结果建议，取值范围：
 <li>pass。</li>
 <li>review。</li>
 <li>block。</li>
+注意：此字段可能返回 null，表示取不到有效值。
         :type Suggestion: str
         :param Label: 视频鉴政结果标签，取值范围：
 <li>politician：政治人物。</li>
 <li>violation_photo：违规图标。</li>
+注意：此字段可能返回 null，表示取不到有效值。
         :type Label: str
         :param SegmentSet: 有涉政嫌疑的视频片段列表。
+注意：此字段可能返回 null，表示取不到有效值。
         :type SegmentSet: list of MediaContentReviewPoliticalSegmentItem
         """
         self.Confidence = None
@@ -566,13 +596,16 @@ class AiReviewPornAsrTaskOutput(AbstractModel):
     def __init__(self):
         """
         :param Confidence: Asr 文字涉黄评分，分值为0到100。
+注意：此字段可能返回 null，表示取不到有效值。
         :type Confidence: float
         :param Suggestion: Asr 文字涉黄结果建议，取值范围：
 <li>pass。</li>
 <li>review。</li>
 <li>block。</li>
+注意：此字段可能返回 null，表示取不到有效值。
         :type Suggestion: str
         :param SegmentSet: Asr 文字有涉黄嫌疑的视频片段列表。
+注意：此字段可能返回 null，表示取不到有效值。
         :type SegmentSet: list of MediaContentReviewAsrTextSegmentItem
         """
         self.Confidence = None
@@ -616,13 +649,16 @@ class AiReviewPornOcrTaskOutput(AbstractModel):
     def __init__(self):
         """
         :param Confidence: Ocr 文字涉黄评分，分值为0到100。
+注意：此字段可能返回 null，表示取不到有效值。
         :type Confidence: float
         :param Suggestion: Ocr 文字涉黄结果建议，取值范围：
 <li>pass。</li>
 <li>review。</li>
 <li>block。</li>
+注意：此字段可能返回 null，表示取不到有效值。
         :type Suggestion: str
         :param SegmentSet: Ocr 文字有涉黄嫌疑的视频片段列表。
+注意：此字段可能返回 null，表示取不到有效值。
         :type SegmentSet: list of MediaContentReviewOcrTextSegmentItem
         """
         self.Confidence = None
@@ -666,19 +702,23 @@ class AiReviewPornTaskOutput(AbstractModel):
     def __init__(self):
         """
         :param Confidence: 视频鉴黄评分，分值为0到100。
+注意：此字段可能返回 null，表示取不到有效值。
         :type Confidence: float
         :param Suggestion: 鉴黄结果建议，取值范围：
 <li>pass。</li>
 <li>review。</li>
 <li>block。</li>
+注意：此字段可能返回 null，表示取不到有效值。
         :type Suggestion: str
         :param Label: 视频鉴黄结果标签，取值范围：
 <li>porn：色情。</li>
 <li>sexy：性感。</li>
 <li>vulgar：低俗。</li>
 <li>intimacy：亲密行为。</li>
+注意：此字段可能返回 null，表示取不到有效值。
         :type Label: str
         :param SegmentSet: 有涉黄嫌疑的视频片段列表。
+注意：此字段可能返回 null，表示取不到有效值。
         :type SegmentSet: list of MediaContentReviewSegmentItem
         """
         self.Confidence = None
@@ -709,8 +749,10 @@ class AiReviewTaskPoliticalAsrResult(AbstractModel):
         :param Status: 任务状态，有 PROCESSING，SUCCESS 和 FAIL 三种。
         :type Status: str
         :param ErrCode: 错误码，0：成功，其他值：失败。
+注意：此字段可能返回 null，表示取不到有效值。
         :type ErrCode: int
         :param Message: 错误信息。
+注意：此字段可能返回 null，表示取不到有效值。
         :type Message: str
         :param Input: 内容审核 Asr 文字鉴政任务输入。
         :type Input: :class:`tencentcloud.vod.v20180717.models.AiReviewPoliticalAsrTaskInput`
@@ -746,12 +788,15 @@ class AiReviewTaskPoliticalOcrResult(AbstractModel):
         :param Status: 任务状态，有 PROCESSING，SUCCESS 和 FAIL 三种。
         :type Status: str
         :param ErrCode: 错误码，0：成功，其他值：失败。
+注意：此字段可能返回 null，表示取不到有效值。
         :type ErrCode: int
         :param Message: 错误信息。
+注意：此字段可能返回 null，表示取不到有效值。
         :type Message: str
         :param Input: 内容审核 Ocr 文字鉴政任务输入。
         :type Input: :class:`tencentcloud.vod.v20180717.models.AiReviewPoliticalOcrTaskInput`
         :param Output: 内容审核 Ocr 文字鉴政任务输出。
+注意：此字段可能返回 null，表示取不到有效值。
         :type Output: :class:`tencentcloud.vod.v20180717.models.AiReviewPoliticalOcrTaskOutput`
         """
         self.Status = None
@@ -783,12 +828,15 @@ class AiReviewTaskPoliticalResult(AbstractModel):
         :param Status: 任务状态，有 PROCESSING，SUCCESS 和 FAIL 三种。
         :type Status: str
         :param ErrCode: 错误码，0：成功，其他值：失败。
+注意：此字段可能返回 null，表示取不到有效值。
         :type ErrCode: int
         :param Message: 错误信息。
+注意：此字段可能返回 null，表示取不到有效值。
         :type Message: str
         :param Input: 内容审核鉴政任务输入。
         :type Input: :class:`tencentcloud.vod.v20180717.models.AiReviewPoliticalTaskInput`
         :param Output: 内容审核鉴政任务输出。
+注意：此字段可能返回 null，表示取不到有效值。
         :type Output: :class:`tencentcloud.vod.v20180717.models.AiReviewPoliticalTaskOutput`
         """
         self.Status = None
@@ -820,12 +868,15 @@ class AiReviewTaskPornAsrResult(AbstractModel):
         :param Status: 任务状态，有 PROCESSING，SUCCESS 和 FAIL 三种。
         :type Status: str
         :param ErrCode: 错误码，0：成功，其他值：失败。
+注意：此字段可能返回 null，表示取不到有效值。
         :type ErrCode: int
         :param Message: 错误信息。
+注意：此字段可能返回 null，表示取不到有效值。
         :type Message: str
         :param Input: 内容审核 Asr 文字鉴黄任务输入。
         :type Input: :class:`tencentcloud.vod.v20180717.models.AiReviewPornAsrTaskInput`
         :param Output: 内容审核 Asr 文字鉴黄任务输出。
+注意：此字段可能返回 null，表示取不到有效值。
         :type Output: :class:`tencentcloud.vod.v20180717.models.AiReviewPornAsrTaskOutput`
         """
         self.Status = None
@@ -857,12 +908,15 @@ class AiReviewTaskPornOcrResult(AbstractModel):
         :param Status: 任务状态，有 PROCESSING，SUCCESS 和 FAIL 三种。
         :type Status: str
         :param ErrCode: 错误码，0：成功，其他值：失败。
+注意：此字段可能返回 null，表示取不到有效值。
         :type ErrCode: int
         :param Message: 错误信息。
+注意：此字段可能返回 null，表示取不到有效值。
         :type Message: str
         :param Input: 内容审核 Ocr 文字鉴黄任务输入。
         :type Input: :class:`tencentcloud.vod.v20180717.models.AiReviewPornOcrTaskInput`
         :param Output: 内容审核 Ocr 文字鉴黄任务输出。
+注意：此字段可能返回 null，表示取不到有效值。
         :type Output: :class:`tencentcloud.vod.v20180717.models.AiReviewPornOcrTaskOutput`
         """
         self.Status = None
@@ -894,12 +948,15 @@ class AiReviewTaskPornResult(AbstractModel):
         :param Status: 任务状态，有 PROCESSING，SUCCESS 和 FAIL 三种。
         :type Status: str
         :param ErrCode: 错误码，0：成功，其他值：失败。
+注意：此字段可能返回 null，表示取不到有效值。
         :type ErrCode: int
         :param Message: 错误信息。
+注意：此字段可能返回 null，表示取不到有效值。
         :type Message: str
         :param Input: 内容审核鉴黄任务输入。
         :type Input: :class:`tencentcloud.vod.v20180717.models.AiReviewPornTaskInput`
         :param Output: 内容审核鉴黄任务输出。
+注意：此字段可能返回 null，表示取不到有效值。
         :type Output: :class:`tencentcloud.vod.v20180717.models.AiReviewPornTaskOutput`
         """
         self.Status = None
@@ -931,12 +988,15 @@ class AiReviewTaskTerrorismResult(AbstractModel):
         :param Status: 任务状态，有 PROCESSING，SUCCESS 和 FAIL 三种。
         :type Status: str
         :param ErrCode: 错误码，0：成功，其他值：失败。
+注意：此字段可能返回 null，表示取不到有效值。
         :type ErrCode: int
         :param Message: 错误信息。
+注意：此字段可能返回 null，表示取不到有效值。
         :type Message: str
         :param Input: 内容审核鉴恐任务输入。
         :type Input: :class:`tencentcloud.vod.v20180717.models.AiReviewTerrorismTaskInput`
         :param Output: 内容审核鉴恐任务输出。
+注意：此字段可能返回 null，表示取不到有效值。
         :type Output: :class:`tencentcloud.vod.v20180717.models.AiReviewTerrorismTaskOutput`
         """
         self.Status = None
@@ -983,11 +1043,13 @@ class AiReviewTerrorismTaskOutput(AbstractModel):
     def __init__(self):
         """
         :param Confidence: 视频暴恐评分，分值为0到100。
+注意：此字段可能返回 null，表示取不到有效值。
         :type Confidence: float
         :param Suggestion: 暴恐结果建议，取值范围：
 <li>pass。</li>
 <li>review。</li>
 <li>block。</li>
+注意：此字段可能返回 null，表示取不到有效值。
         :type Suggestion: str
         :param Label: 视频暴恐结果标签，取值范围：
 <li>guns：武器枪支。</li>
@@ -998,8 +1060,10 @@ class AiReviewTerrorismTaskOutput(AbstractModel):
 <li>militant：武装分子。</li>
 <li>explosion：爆炸火灾。</li>
 <li>terrorists：暴恐人物。</li>
+注意：此字段可能返回 null，表示取不到有效值。
         :type Label: str
         :param SegmentSet: 有暴恐嫌疑的视频片段列表。
+注意：此字段可能返回 null，表示取不到有效值。
         :type SegmentSet: list of MediaContentReviewSegmentItem
         """
         self.Confidence = None
@@ -1109,8 +1173,10 @@ class ApplyUploadResponse(AbstractModel):
         :param VodSessionKey: 点播会话，用于确认上传接口的参数 VodSessionKey。
         :type VodSessionKey: str
         :param MediaStoragePath: 媒体存储路径，用于上传接口存储媒体的对象键（Key）。
+注意：此字段可能返回 null，表示取不到有效值。
         :type MediaStoragePath: str
         :param CoverStoragePath: 封面存储路径，用于上传接口存储封面的对象键（Key）。
+注意：此字段可能返回 null，表示取不到有效值。
         :type CoverStoragePath: str
         :param TempCertificate: 临时凭证，用于上传接口的权限验证。
         :type TempCertificate: :class:`tencentcloud.vod.v20180717.models.TempCertificate`
@@ -1148,14 +1214,19 @@ class ClipFileInfo2017(AbstractModel):
         :param ErrCode: 错误码
 <li>0：成功；</li>
 <li>其他值：失败。</li>
+注意：此字段可能返回 null，表示取不到有效值。
         :type ErrCode: int
         :param Message: 错误描述。
+注意：此字段可能返回 null，表示取不到有效值。
         :type Message: float
         :param FileId: 输出目标文件的文件 ID。
+注意：此字段可能返回 null，表示取不到有效值。
         :type FileId: str
         :param FileUrl: 输出目标文件的文件地址。
+注意：此字段可能返回 null，表示取不到有效值。
         :type FileUrl: str
         :param FileType: 输出目标文件的文件类型。
+注意：此字段可能返回 null，表示取不到有效值。
         :type FileType: str
         """
         self.ErrCode = None
@@ -1231,8 +1302,10 @@ class CommitUploadResponse(AbstractModel):
         :param FileId: 媒体文件的唯一标识。
         :type FileId: str
         :param MediaUrl: 媒体播放地址。
+注意：此字段可能返回 null，表示取不到有效值。
         :type MediaUrl: str
         :param CoverUrl: 媒体封面地址。
+注意：此字段可能返回 null，表示取不到有效值。
         :type CoverUrl: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -1260,14 +1333,19 @@ class ConcatFileInfo2017(AbstractModel):
         :param ErrCode: 错误码
 <li>0：成功；</li>
 <li>其他值：失败。</li>
+注意：此字段可能返回 null，表示取不到有效值。
         :type ErrCode: int
         :param Message: 错误信息。
+注意：此字段可能返回 null，表示取不到有效值。
         :type Message: str
         :param FileId: 视频拼接源文件的 ID。
+注意：此字段可能返回 null，表示取不到有效值。
         :type FileId: str
         :param FileUrl: 视频拼接源文件的地址。
+注意：此字段可能返回 null，表示取不到有效值。
         :type FileUrl: str
         :param FileType: 视频拼接源文件的格式。
+注意：此字段可能返回 null，表示取不到有效值。
         :type FileType: str
         """
         self.ErrCode = None
@@ -1367,6 +1445,7 @@ class CoverBySnapshotTaskInput(AbstractModel):
 <li>对于依照百分比截图，该值表示使用视频百分之多少的截图作为封面</li>
         :type PositionValue: float
         :param WatermarkSet: 水印列表，支持多张图片或文字水印，最大可支持 10 张。
+注意：此字段可能返回 null，表示取不到有效值。
         :type WatermarkSet: list of WatermarkInput
         """
         self.Definition = None
@@ -1462,18 +1541,25 @@ class CreateImageSpriteTask2017(AbstractModel):
         :param ErrCode: 错误码
 <li>0：成功；</li>
 <li>其他值：失败。</li>
+注意：此字段可能返回 null，表示取不到有效值。
         :type ErrCode: int
         :param Message: 错误信息。
+注意：此字段可能返回 null，表示取不到有效值。
         :type Message: str
         :param FileId: 截取雪碧图文件 ID。
+注意：此字段可能返回 null，表示取不到有效值。
         :type FileId: str
         :param Definition: 雪碧图规格，参见[雪碧图截图模板](https://cloud.tencent.com/document/product/266/11702#.E9.9B.AA.E7.A2.A7.E5.9B.BE.E6.88.AA.E5.9B.BE.E6.A8.A1.E6.9D.BF)。
+注意：此字段可能返回 null，表示取不到有效值。
         :type Definition: int
         :param TotalCount: 雪碧图小图总数量。
+注意：此字段可能返回 null，表示取不到有效值。
         :type TotalCount: int
         :param ImageSpriteUrlSet: 截取雪碧图输出的地址。
+注意：此字段可能返回 null，表示取不到有效值。
         :type ImageSpriteUrlSet: list of str
         :param WebVttUrl: 雪碧图子图位置与时间关系 WebVtt 文件地址。
+注意：此字段可能返回 null，表示取不到有效值。
         :type WebVttUrl: str
         """
         self.TaskId = None
@@ -1607,6 +1693,7 @@ class DescribeAllClassResponse(AbstractModel):
     def __init__(self):
         """
         :param ClassInfoSet: 分类信息集合
+注意：此字段可能返回 null，表示取不到有效值。
         :type ClassInfoSet: list of MediaClassInfo
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -1666,8 +1753,10 @@ class DescribeMediaInfosResponse(AbstractModel):
     def __init__(self):
         """
         :param MediaInfoSet: 媒体文件信息列表。
+注意：此字段可能返回 null，表示取不到有效值。
         :type MediaInfoSet: list of MediaInfo
         :param NotExistFileIdSet: 不存在的文件 ID 列表。
+注意：此字段可能返回 null，表示取不到有效值。
         :type NotExistFileIdSet: list of str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -1739,20 +1828,28 @@ class DescribeTaskDetailResponse(AbstractModel):
         :param FinishTime: 任务执行完毕的时间，采用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F)。
         :type FinishTime: str
         :param ProcedureTask: 视频处理任务信息，仅当 TaskType 为 Procedure，该字段有值。
+注意：此字段可能返回 null，表示取不到有效值。
         :type ProcedureTask: :class:`tencentcloud.vod.v20180717.models.ProcedureTask`
         :param EditMediaTask: 视频编辑任务信息，仅当 TaskType 为 EditMedia，该字段有值。
+注意：此字段可能返回 null，表示取不到有效值。
         :type EditMediaTask: :class:`tencentcloud.vod.v20180717.models.EditMediaTask`
         :param WechatPublishTask: 微信发布任务信息，仅当 TaskType 为 WechatPublish，该字段有值。
+注意：此字段可能返回 null，表示取不到有效值。
         :type WechatPublishTask: :class:`tencentcloud.vod.v20180717.models.WechatPublishTask`
         :param TranscodeTask: 视频转码任务信息，仅当 TaskType 为 Transcode，该字段有值。
+注意：此字段可能返回 null，表示取不到有效值。
         :type TranscodeTask: :class:`tencentcloud.vod.v20180717.models.TranscodeTask2017`
         :param SnapshotByTimeOffsetTask: 视频指定时间点截图任务信息，仅当 TaskType 为 SnapshotByTimeOffset，该字段有值。
+注意：此字段可能返回 null，表示取不到有效值。
         :type SnapshotByTimeOffsetTask: :class:`tencentcloud.vod.v20180717.models.SnapshotByTimeOffsetTask2017`
         :param ConcatTask: 视频拼接任务信息，仅当 TaskType 为 Concat，该字段有值。
+注意：此字段可能返回 null，表示取不到有效值。
         :type ConcatTask: :class:`tencentcloud.vod.v20180717.models.ConcatTask2017`
         :param ClipTask: 视频剪辑任务信息，仅当 TaskType 为 Clip，该字段有值。
+注意：此字段可能返回 null，表示取不到有效值。
         :type ClipTask: :class:`tencentcloud.vod.v20180717.models.ClipTask2017`
         :param CreateImageSpriteTask: 截取雪碧图任务信息，仅当 TaskType 为 ImageSprite，该字段有值。
+注意：此字段可能返回 null，表示取不到有效值。
         :type CreateImageSpriteTask: :class:`tencentcloud.vod.v20180717.models.CreateImageSpriteTask2017`
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -1847,8 +1944,10 @@ class DescribeTasksResponse(AbstractModel):
     def __init__(self):
         """
         :param TaskSet: 任务概要列表。
+注意：此字段可能返回 null，表示取不到有效值。
         :type TaskSet: list of TaskSimpleInfo
         :param ScrollToken: 翻页标识，当请求未返回所有数据，该字段表示下一条记录的 ID。当该字段为空，说明已无更多数据。
+注意：此字段可能返回 null，表示取不到有效值。
         :type ScrollToken: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -1879,8 +1978,10 @@ class EditMediaFileInfo(AbstractModel):
         :param FileId: 视频的 ID。
         :type FileId: str
         :param StartTimeOffset: 视频剪辑的起始偏移时间偏移，单位：秒。
+注意：此字段可能返回 null，表示取不到有效值。
         :type StartTimeOffset: float
         :param EndTimeOffset: 视频剪辑的起始结束时间偏移，单位：秒。
+注意：此字段可能返回 null，表示取不到有效值。
         :type EndTimeOffset: float
         """
         self.FileId = None
@@ -1904,8 +2005,10 @@ class EditMediaStreamInfo(AbstractModel):
         :param StreamId: 录制的流 ID
         :type StreamId: str
         :param StartTime: 流剪辑的起始时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F)。
+注意：此字段可能返回 null，表示取不到有效值。
         :type StartTime: str
         :param EndTime: 流剪辑的结束时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F)。
+注意：此字段可能返回 null，表示取不到有效值。
         :type EndTime: str
         """
         self.StreamId = None
@@ -1931,18 +2034,24 @@ class EditMediaTask(AbstractModel):
         :param Status: 任务流状态，取值：
 <li>PROCESSING：处理中；</li>
 <li>FINISH：已完成。</li>
+注意：此字段可能返回 null，表示取不到有效值。
         :type Status: str
         :param ErrCode: 错误码
 <li>0：成功；</li>
 <li>其他值：失败。</li>
+注意：此字段可能返回 null，表示取不到有效值。
         :type ErrCode: int
         :param Message: 错误信息。
+注意：此字段可能返回 null，表示取不到有效值。
         :type Message: str
         :param Input: 视频编辑任务的输入。
+注意：此字段可能返回 null，表示取不到有效值。
         :type Input: :class:`tencentcloud.vod.v20180717.models.EditMediaTaskInput`
         :param Output: 视频编辑任务的输出。
+注意：此字段可能返回 null，表示取不到有效值。
         :type Output: :class:`tencentcloud.vod.v20180717.models.EditMediaTaskOutput`
         :param ProcedureTaskId: 若发起视频编辑任务时指定了视频处理流程，则该字段为流程任务 ID。
+注意：此字段可能返回 null，表示取不到有效值。
         :type ProcedureTaskId: str
         """
         self.TaskId = None
@@ -1978,8 +2087,10 @@ class EditMediaTaskInput(AbstractModel):
         :param InputType: 输入视频的来源类型，可以取的值为 File，Stream 两种。
         :type InputType: str
         :param FileInfoSet: 输入的视频文件信息，当 InputType 为 File 时，该字段有值。
+注意：此字段可能返回 null，表示取不到有效值。
         :type FileInfoSet: list of EditMediaFileInfo
         :param StreamInfoSet: 输入的流信息，当 InputType 为 Stream 时，该字段有值。
+注意：此字段可能返回 null，表示取不到有效值。
         :type StreamInfoSet: list of EditMediaStreamInfo
         """
         self.InputType = None
@@ -2011,10 +2122,13 @@ class EditMediaTaskOutput(AbstractModel):
     def __init__(self):
         """
         :param FileType: 文件类型，例如 mp4、flv 等。
+注意：此字段可能返回 null，表示取不到有效值。
         :type FileType: str
         :param FileId: 媒体文件 ID。
+注意：此字段可能返回 null，表示取不到有效值。
         :type FileId: str
         :param FileUrl: 媒体文件播放地址。
+注意：此字段可能返回 null，表示取不到有效值。
         :type FileUrl: str
         """
         self.FileType = None
@@ -2052,26 +2166,37 @@ class EventContent(AbstractModel):
 <li>CreateSnapshotByTimeOffsetComplete：视频按时间点截图完成。</li>
         :type EventType: str
         :param FileUploadEvent: 视频上传完成事件，当事件类型为 NewFileUpload 时有效。
+注意：此字段可能返回 null，表示取不到有效值。
         :type FileUploadEvent: :class:`tencentcloud.vod.v20180717.models.FileUploadTask`
         :param ProcedureStateChangeEvent: 任务流状态变更事件，当事件类型为 ProcedureStateChanged 时有效。
+注意：此字段可能返回 null，表示取不到有效值。
         :type ProcedureStateChangeEvent: :class:`tencentcloud.vod.v20180717.models.ProcedureTask`
         :param FileDeleteEvent: 文件删除事件，当事件类型为 FileDeleted 时有效。
+注意：此字段可能返回 null，表示取不到有效值。
         :type FileDeleteEvent: :class:`tencentcloud.vod.v20180717.models.FileDeleteTask`
         :param PullCompleteEvent: 视频转拉完成事件，当事件类型为 PullComplete 时有效。
+注意：此字段可能返回 null，表示取不到有效值。
         :type PullCompleteEvent: :class:`tencentcloud.vod.v20180717.models.PullFileTask`
         :param EditMediaCompleteEvent: 视频编辑完成事件，当事件类型为 EditMediaComplete 时有效。
+注意：此字段可能返回 null，表示取不到有效值。
         :type EditMediaCompleteEvent: :class:`tencentcloud.vod.v20180717.models.EditMediaTask`
         :param WechatPublishComplete: 微信发布完成事件，当事件类型为 WechatPublishComplete 时有效。
+注意：此字段可能返回 null，表示取不到有效值。
         :type WechatPublishComplete: :class:`tencentcloud.vod.v20180717.models.WechatPublishTask`
         :param TranscodeCompleteEvent: 视频转码完成事件，当事件类型为 TranscodeComplete 时有效。
+注意：此字段可能返回 null，表示取不到有效值。
         :type TranscodeCompleteEvent: :class:`tencentcloud.vod.v20180717.models.TranscodeTask2017`
         :param ConcatCompleteEvent: 视频拼接完成事件，当事件类型为 ConcatComplete 时有效。
+注意：此字段可能返回 null，表示取不到有效值。
         :type ConcatCompleteEvent: :class:`tencentcloud.vod.v20180717.models.ConcatTask2017`
         :param ClipCompleteEvent: 视频剪辑完成事件，当事件类型为 ClipComplete 时有效。
+注意：此字段可能返回 null，表示取不到有效值。
         :type ClipCompleteEvent: :class:`tencentcloud.vod.v20180717.models.ClipTask2017`
         :param CreateImageSpriteCompleteEvent: 视频截取雪碧图完成事件，当事件类型为 CreateImageSpriteComplete 时有效。
+注意：此字段可能返回 null，表示取不到有效值。
         :type CreateImageSpriteCompleteEvent: :class:`tencentcloud.vod.v20180717.models.CreateImageSpriteTask2017`
         :param SnapshotByTimeOffsetCompleteEvent: 视频按时间点截图完成事件，当事件类型为 CreateSnapshotByTimeOffsetComplete 时有效。
+注意：此字段可能返回 null，表示取不到有效值。
         :type SnapshotByTimeOffsetCompleteEvent: :class:`tencentcloud.vod.v20180717.models.SnapshotByTimeOffsetTask2017`
         """
         self.EventHandle = None
@@ -2156,6 +2281,7 @@ class FileUploadTask(AbstractModel):
         :param MediaBasicInfo: 上传完成后生成的媒体文件基础信息。
         :type MediaBasicInfo: :class:`tencentcloud.vod.v20180717.models.MediaBasicInfo`
         :param ProcedureTaskId: 若视频上传时指定了视频处理流程，则该字段为流程任务 ID。
+注意：此字段可能返回 null，表示取不到有效值。
         :type ProcedureTaskId: str
         """
         self.FileId = None
@@ -2235,8 +2361,10 @@ class LiveRealTimeClipResponse(AbstractModel):
         :param Url: 剪辑后的视频播放 URL。
         :type Url: str
         :param FileId: 剪辑固化后的视频的媒体文件的唯一标识。
+注意：此字段可能返回 null，表示取不到有效值。
         :type FileId: str
         :param VodTaskId: 剪辑固化后的视频任务流 ID。
+注意：此字段可能返回 null，表示取不到有效值。
         :type VodTaskId: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -2262,8 +2390,10 @@ class MediaAiAnalysisClassificationItem(AbstractModel):
     def __init__(self):
         """
         :param Classification: 智能分类的类别名称。
+注意：此字段可能返回 null，表示取不到有效值。
         :type Classification: str
         :param Confidence: 智能分类的可信度，取值范围是 0 到 100。
+注意：此字段可能返回 null，表示取不到有效值。
         :type Confidence: float
         """
         self.Classification = None
@@ -2283,8 +2413,10 @@ class MediaAiAnalysisCoverItem(AbstractModel):
     def __init__(self):
         """
         :param CoverUrl: 智能封面地址。
+注意：此字段可能返回 null，表示取不到有效值。
         :type CoverUrl: str
         :param Confidence: 智能封面的可信度，取值范围是 0 到 100。
+注意：此字段可能返回 null，表示取不到有效值。
         :type Confidence: float
         """
         self.CoverUrl = None
@@ -2304,8 +2436,10 @@ class MediaAiAnalysisTagItem(AbstractModel):
     def __init__(self):
         """
         :param Tag: 标签名称。
+注意：此字段可能返回 null，表示取不到有效值。
         :type Tag: str
         :param Confidence: 标签的可信度，取值范围是 0 到 100。
+注意：此字段可能返回 null，表示取不到有效值。
         :type Confidence: float
         """
         self.Tag = None
@@ -2325,6 +2459,7 @@ class MediaAnimatedGraphicsInfo(AbstractModel):
     def __init__(self):
         """
         :param AnimatedGraphicsSet: 视频转动图结果信息
+注意：此字段可能返回 null，表示取不到有效值。
         :type AnimatedGraphicsSet: list of MediaAnimatedGraphicsItem
         """
         self.AnimatedGraphicsSet = None
@@ -2347,24 +2482,34 @@ class MediaAnimatedGraphicsItem(AbstractModel):
     def __init__(self):
         """
         :param Url: 转动图的文件地址。
+注意：此字段可能返回 null，表示取不到有效值。
         :type Url: str
         :param Definition: 转动图模板 ID，参见[转动图参数模板](https://cloud.tencent.com/document/product/266/11701#.E9.A2.84.E7.BD.AE.E8.BD.AC.E5.8A.A8.E5.9B.BE.E6.A8.A1.E6.9D.BF)。
+注意：此字段可能返回 null，表示取不到有效值。
         :type Definition: int
         :param Container: 动图格式，如 gif。
+注意：此字段可能返回 null，表示取不到有效值。
         :type Container: str
         :param Height: 动图的高度，单位：px。
+注意：此字段可能返回 null，表示取不到有效值。
         :type Height: int
         :param Width: 动图的宽度，单位：px。
+注意：此字段可能返回 null，表示取不到有效值。
         :type Width: int
         :param Bitrate: 动图码率，单位：bps。
+注意：此字段可能返回 null，表示取不到有效值。
         :type Bitrate: int
         :param Size: 动图大小，单位：字节。
+注意：此字段可能返回 null，表示取不到有效值。
         :type Size: int
         :param Md5: 动图的md5值。
+注意：此字段可能返回 null，表示取不到有效值。
         :type Md5: str
         :param StartTimeOffset: 动图在视频中的起始时间偏移，单位：秒。
+注意：此字段可能返回 null，表示取不到有效值。
         :type StartTimeOffset: float
         :param EndTimeOffset: 动图在视频中的结束时间偏移，单位：秒。
+注意：此字段可能返回 null，表示取不到有效值。
         :type EndTimeOffset: float
         """
         self.Url = None
@@ -2400,10 +2545,13 @@ class MediaAudioStreamItem(AbstractModel):
     def __init__(self):
         """
         :param Bitrate: 音频流的码率，单位：bps。
+注意：此字段可能返回 null，表示取不到有效值。
         :type Bitrate: int
         :param SamplingRate: 音频流的采样率，单位：hz。
+注意：此字段可能返回 null，表示取不到有效值。
         :type SamplingRate: int
         :param Codec: 音频流的编码格式，例如 aac。
+注意：此字段可能返回 null，表示取不到有效值。
         :type Codec: str
         """
         self.Bitrate = None
@@ -2425,34 +2573,49 @@ class MediaBasicInfo(AbstractModel):
     def __init__(self):
         """
         :param Name: 媒体文件名称。
+注意：此字段可能返回 null，表示取不到有效值。
         :type Name: str
         :param Description: 媒体文件描述。
+注意：此字段可能返回 null，表示取不到有效值。
         :type Description: str
         :param CreateTime: 媒体文件的创建时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F)。
+注意：此字段可能返回 null，表示取不到有效值。
         :type CreateTime: str
         :param UpdateTime: 媒体文件的最近更新时间（如修改视频属性、发起视频处理等会触发更新媒体文件信息的操作），使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F)。
+注意：此字段可能返回 null，表示取不到有效值。
         :type UpdateTime: str
         :param ExpireTime: 媒体文件的过期时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F)。过期后该媒体文件及其相关资源（转码结果、雪碧图等）将被永久删除。“9999-12-31T23:59:59Z”表示永不过期。
+注意：此字段可能返回 null，表示取不到有效值。
         :type ExpireTime: str
         :param ClassId: 媒体文件的分类 ID。
+注意：此字段可能返回 null，表示取不到有效值。
         :type ClassId: int
         :param ClassName: 媒体文件的分类名称。
+注意：此字段可能返回 null，表示取不到有效值。
         :type ClassName: str
         :param ClassPath: 媒体文件的分类路径，分类间以“-”分隔，如“新的一级分类 - 新的二级分类”。
+注意：此字段可能返回 null，表示取不到有效值。
         :type ClassPath: str
         :param CoverUrl: 媒体文件的封面图片地址。
+注意：此字段可能返回 null，表示取不到有效值。
         :type CoverUrl: str
         :param Type: 媒体文件的封装格式，例如 mp4、flv 等。
+注意：此字段可能返回 null，表示取不到有效值。
         :type Type: str
         :param MediaUrl: 原始媒体文件的 URL 地址。
+注意：此字段可能返回 null，表示取不到有效值。
         :type MediaUrl: str
         :param SourceInfo: 该媒体文件的来源信息。
+注意：此字段可能返回 null，表示取不到有效值。
         :type SourceInfo: :class:`tencentcloud.vod.v20180717.models.MediaSourceData`
         :param StorageRegion: 媒体文件存储地区，如 ap-guangzhou，参见[地域列表](https://cloud.tencent.com/document/api/213/15692#.E5.9C.B0.E5.9F.9F.E5.88.97.E8.A1.A8)。
+注意：此字段可能返回 null，表示取不到有效值。
         :type StorageRegion: str
         :param TagSet: 媒体文件的标签信息。
+注意：此字段可能返回 null，表示取不到有效值。
         :type TagSet: list of str
         :param Vid: 直播录制文件的唯一标识
+注意：此字段可能返回 null，表示取不到有效值。
         :type Vid: str
         """
         self.Name = None
@@ -2508,6 +2671,7 @@ class MediaClassInfo(AbstractModel):
         :param Level: 分类级别，一级分类为 0，最大值为 3，即最多允许 4 级分类层次。
         :type Level: int
         :param SubClassIdSet: 当前分类的第一级子类 ID 集合
+注意：此字段可能返回 null，表示取不到有效值。
         :type SubClassIdSet: list of int
         """
         self.ClassId = None
@@ -2533,17 +2697,22 @@ class MediaContentReviewAsrTextSegmentItem(AbstractModel):
     def __init__(self):
         """
         :param StartTimeOffset: 嫌疑片段起始的偏移时间，单位：秒。
+注意：此字段可能返回 null，表示取不到有效值。
         :type StartTimeOffset: float
         :param EndTimeOffset: 嫌疑片段结束的偏移时间，单位：秒。
+注意：此字段可能返回 null，表示取不到有效值。
         :type EndTimeOffset: float
         :param Confidence: 嫌疑片段置信度。
+注意：此字段可能返回 null，表示取不到有效值。
         :type Confidence: float
         :param Suggestion: 嫌疑片段审核结果建议，取值范围：
 <li>pass。</li>
 <li>review。</li>
 <li>block。</li>
+注意：此字段可能返回 null，表示取不到有效值。
         :type Suggestion: str
         :param KeywordSet: 嫌疑关键词列表。
+注意：此字段可能返回 null，表示取不到有效值。
         :type KeywordSet: list of str
         """
         self.StartTimeOffset = None
@@ -2569,19 +2738,25 @@ class MediaContentReviewOcrTextSegmentItem(AbstractModel):
     def __init__(self):
         """
         :param StartTimeOffset: 嫌疑片段起始的偏移时间，单位：秒。
+注意：此字段可能返回 null，表示取不到有效值。
         :type StartTimeOffset: float
         :param EndTimeOffset: 嫌疑片段结束的偏移时间，单位：秒。
+注意：此字段可能返回 null，表示取不到有效值。
         :type EndTimeOffset: float
         :param Confidence: 嫌疑片段置信度。
+注意：此字段可能返回 null，表示取不到有效值。
         :type Confidence: float
         :param Suggestion: 嫌疑片段审核结果建议，取值范围：
 <li>pass。</li>
 <li>review。</li>
 <li>block。</li>
+注意：此字段可能返回 null，表示取不到有效值。
         :type Suggestion: str
         :param KeywordSet: 嫌疑关键词列表。
+注意：此字段可能返回 null，表示取不到有效值。
         :type KeywordSet: list of str
         :param AreaCoordSet: 嫌疑文字出现的区域坐标 (像素级)，[x1, y1, x2, y2]，即左上角坐标、右下角坐标。
+注意：此字段可能返回 null，表示取不到有效值。
         :type AreaCoordSet: list of int
         """
         self.StartTimeOffset = None
@@ -2609,26 +2784,35 @@ class MediaContentReviewPoliticalSegmentItem(AbstractModel):
     def __init__(self):
         """
         :param StartTimeOffset: 嫌疑片段起始的偏移时间，单位：秒。
+注意：此字段可能返回 null，表示取不到有效值。
         :type StartTimeOffset: float
         :param EndTimeOffset: 嫌疑片段结束的偏移时间，单位：秒。
+注意：此字段可能返回 null，表示取不到有效值。
         :type EndTimeOffset: float
         :param Confidence: 嫌疑片段涉政分数。
+注意：此字段可能返回 null，表示取不到有效值。
         :type Confidence: float
         :param Suggestion: 嫌疑片段鉴政结果建议，取值范围：
 <li>pass。</li>
 <li>review。</li>
 <li>block。</li>
+注意：此字段可能返回 null，表示取不到有效值。
         :type Suggestion: str
         :param Name: 涉政人物、违规图标名字。
+注意：此字段可能返回 null，表示取不到有效值。
         :type Name: str
         :param Label: 嫌疑片段鉴政结果标签。
+注意：此字段可能返回 null，表示取不到有效值。
         :type Label: str
         :param Url: 嫌疑图片 URL （图片不会永久存储，到达
  PicUrlExpireTime 时间点后图片将被删除）。
+注意：此字段可能返回 null，表示取不到有效值。
         :type Url: str
         :param AreaCoordSet: 涉政人物、违规图标出现的区域坐标 (像素级)，[x1, y1, x2, y2]，即左上角坐标、右下角坐标。
+注意：此字段可能返回 null，表示取不到有效值。
         :type AreaCoordSet: list of int
         :param PicUrlExpireTimeStamp: 嫌疑图片 URL 失效时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F)。
+注意：此字段可能返回 null，表示取不到有效值。
         :type PicUrlExpireTimeStamp: int
         """
         self.StartTimeOffset = None
@@ -2662,22 +2846,29 @@ class MediaContentReviewSegmentItem(AbstractModel):
     def __init__(self):
         """
         :param StartTimeOffset: 嫌疑片段起始的偏移时间，单位：秒。
+注意：此字段可能返回 null，表示取不到有效值。
         :type StartTimeOffset: float
         :param EndTimeOffset: 嫌疑片段结束的偏移时间，单位：秒。
+注意：此字段可能返回 null，表示取不到有效值。
         :type EndTimeOffset: float
         :param Confidence: 嫌疑片段涉黄分数。
+注意：此字段可能返回 null，表示取不到有效值。
         :type Confidence: float
         :param Label: 嫌疑片段鉴黄结果标签。
+注意：此字段可能返回 null，表示取不到有效值。
         :type Label: str
         :param Suggestion: 嫌疑片段鉴黄结果建议，取值范围：
 <li>pass。</li>
 <li>review。</li>
 <li>block。</li>
+注意：此字段可能返回 null，表示取不到有效值。
         :type Suggestion: str
         :param Url: 嫌疑图片 URL （图片不会永久存储，到达
  PicUrlExpireTime 时间点后图片将被删除）。
+注意：此字段可能返回 null，表示取不到有效值。
         :type Url: str
         :param PicUrlExpireTimeStamp: 嫌疑图片 URL 失效时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F)。
+注意：此字段可能返回 null，表示取不到有效值。
         :type PicUrlExpireTimeStamp: int
         """
         self.StartTimeOffset = None
@@ -2731,6 +2922,7 @@ class MediaImageSpriteInfo(AbstractModel):
     def __init__(self):
         """
         :param ImageSpriteSet: 特定规格的雪碧图信息集合，每个元素代表一套相同规格的雪碧图。
+注意：此字段可能返回 null，表示取不到有效值。
         :type ImageSpriteSet: list of MediaImageSpriteItem
         """
         self.ImageSpriteSet = None
@@ -2753,16 +2945,22 @@ class MediaImageSpriteItem(AbstractModel):
     def __init__(self):
         """
         :param Definition: 雪碧图规格，参见[雪碧图参数模板](https://cloud.tencent.com/document/product/266/11702#.E9.9B.AA.E7.A2.A7.E5.9B.BE.E6.88.AA.E5.9B.BE.E6.A8.A1.E6.9D.BF)。
+注意：此字段可能返回 null，表示取不到有效值。
         :type Definition: int
         :param Height: 雪碧图小图的高度。
+注意：此字段可能返回 null，表示取不到有效值。
         :type Height: int
         :param Width: 雪碧图小图的宽度。
+注意：此字段可能返回 null，表示取不到有效值。
         :type Width: int
         :param TotalCount: 每一张雪碧图大图里小图的数量。
+注意：此字段可能返回 null，表示取不到有效值。
         :type TotalCount: int
         :param ImageUrlSet: 每一张雪碧图大图的地址。
+注意：此字段可能返回 null，表示取不到有效值。
         :type ImageUrlSet: list of str
         :param WebVttUrl: 雪碧图子图位置与时间关系的 WebVtt 文件地址。WebVtt 文件表明了各个雪碧图小图对应的时间点，以及在在雪碧大图里的坐标位置，一般被播放器用于实现预览。
+注意：此字段可能返回 null，表示取不到有效值。
         :type WebVttUrl: str
         """
         self.Definition = None
@@ -2790,20 +2988,28 @@ class MediaInfo(AbstractModel):
     def __init__(self):
         """
         :param BasicInfo: 基础信息。包括视频名称、大小、时长、封面图片等。
+注意：此字段可能返回 null，表示取不到有效值。
         :type BasicInfo: :class:`tencentcloud.vod.v20180717.models.MediaBasicInfo`
         :param MetaData: 元信息。包括视频流信息、音频流信息等。
+注意：此字段可能返回 null，表示取不到有效值。
         :type MetaData: :class:`tencentcloud.vod.v20180717.models.MediaMetaData`
         :param TranscodeInfo: 转码结果信息。包括该视频转码生成的各种码率的视频的地址、规格、码率、分辨率等。
+注意：此字段可能返回 null，表示取不到有效值。
         :type TranscodeInfo: :class:`tencentcloud.vod.v20180717.models.MediaTranscodeInfo`
         :param AnimatedGraphicsInfo: 转动图结果信息。对视频转动图（如 gif）后，动图相关信息。
+注意：此字段可能返回 null，表示取不到有效值。
         :type AnimatedGraphicsInfo: :class:`tencentcloud.vod.v20180717.models.MediaAnimatedGraphicsInfo`
         :param SampleSnapshotInfo: 采样截图信息。对视频采样截图后，相关截图信息。
+注意：此字段可能返回 null，表示取不到有效值。
         :type SampleSnapshotInfo: :class:`tencentcloud.vod.v20180717.models.MediaSampleSnapshotInfo`
         :param ImageSpriteInfo: 雪碧图信息。对视频截取雪碧图之后，雪碧的相关信息。
+注意：此字段可能返回 null，表示取不到有效值。
         :type ImageSpriteInfo: :class:`tencentcloud.vod.v20180717.models.MediaImageSpriteInfo`
         :param SnapshotByTimeOffsetInfo: 指定时间点截图信息。对视频依照指定时间点截图后，各个截图的信息。
+注意：此字段可能返回 null，表示取不到有效值。
         :type SnapshotByTimeOffsetInfo: :class:`tencentcloud.vod.v20180717.models.MediaSnapshotByTimeOffsetInfo`
         :param KeyFrameDescInfo: 视频打点信息。对视频设置的各个打点信息。
+注意：此字段可能返回 null，表示取不到有效值。
         :type KeyFrameDescInfo: :class:`tencentcloud.vod.v20180717.models.MediaKeyFrameDescInfo`
         :param FileId: 媒体文件唯一标识 ID。
         :type FileId: str
@@ -2880,6 +3086,7 @@ class MediaKeyFrameDescInfo(AbstractModel):
     def __init__(self):
         """
         :param KeyFrameDescSet: 视频打点信息数组。
+注意：此字段可能返回 null，表示取不到有效值。
         :type KeyFrameDescSet: list of MediaKeyFrameDescItem
         """
         self.KeyFrameDescSet = None
@@ -2923,26 +3130,37 @@ class MediaMetaData(AbstractModel):
     def __init__(self):
         """
         :param Size: 上传的媒体文件大小（视频为 HLS 时，大小是 m3u8 和 ts 文件大小的总和），单位：字节。
+注意：此字段可能返回 null，表示取不到有效值。
         :type Size: int
         :param Container: 容器类型，例如 m4a，mp4 等。
+注意：此字段可能返回 null，表示取不到有效值。
         :type Container: str
         :param Bitrate: 视频流码率平均值与音频流码率平均值之和，单位：bps。
+注意：此字段可能返回 null，表示取不到有效值。
         :type Bitrate: int
         :param Height: 视频流高度的最大值，单位：px。
+注意：此字段可能返回 null，表示取不到有效值。
         :type Height: int
         :param Width: 视频流宽度的最大值，单位：px。
+注意：此字段可能返回 null，表示取不到有效值。
         :type Width: int
         :param Duration: 视频时长，单位：秒。
+注意：此字段可能返回 null，表示取不到有效值。
         :type Duration: float
         :param Rotate: 视频拍摄时的选择角度，单位：度。
+注意：此字段可能返回 null，表示取不到有效值。
         :type Rotate: int
         :param VideoStreamSet: 视频流信息。
+注意：此字段可能返回 null，表示取不到有效值。
         :type VideoStreamSet: list of MediaVideoStreamItem
         :param AudioStreamSet: 音频流信息。
+注意：此字段可能返回 null，表示取不到有效值。
         :type AudioStreamSet: list of MediaAudioStreamItem
         :param VideoDuration: 视频时长，单位：秒。
+注意：此字段可能返回 null，表示取不到有效值。
         :type VideoDuration: float
         :param AudioDuration: 音频时长，单位：秒。
+注意：此字段可能返回 null，表示取不到有效值。
         :type AudioDuration: float
         """
         self.Size = None
@@ -3017,12 +3235,15 @@ class MediaProcessTaskAnimatedGraphicResult(AbstractModel):
         :param Status: 任务状态，有 PROCESSING，SUCCESS 和 FAIL 三种。
         :type Status: str
         :param ErrCode: 错误码，0：成功，其他值：失败。
+注意：此字段可能返回 null，表示取不到有效值。
         :type ErrCode: int
         :param Message: 错误信息。
+注意：此字段可能返回 null，表示取不到有效值。
         :type Message: str
         :param Input: 转动图任务的输入。
         :type Input: :class:`tencentcloud.vod.v20180717.models.AnimatedGraphicTaskInput`
         :param Output: 转动图任务的输出。
+注意：此字段可能返回 null，表示取不到有效值。
         :type Output: :class:`tencentcloud.vod.v20180717.models.MediaAnimatedGraphicsItem`
         """
         self.Status = None
@@ -3054,8 +3275,10 @@ class MediaProcessTaskCoverBySnapshotResult(AbstractModel):
         :param Status: 任务状态，有 PROCESSING，SUCCESS 和 FAIL 三种。
         :type Status: str
         :param ErrCode: 错误码，0：成功，其他值：失败。
+注意：此字段可能返回 null，表示取不到有效值。
         :type ErrCode: int
         :param Message: 错误信息。
+注意：此字段可能返回 null，表示取不到有效值。
         :type Message: str
         :param Input: 对视频截图做封面任务的输入。
         :type Input: :class:`tencentcloud.vod.v20180717.models.CoverBySnapshotTaskInput`
@@ -3091,12 +3314,15 @@ class MediaProcessTaskImageSpriteResult(AbstractModel):
         :param Status: 任务状态，有 PROCESSING，SUCCESS 和 FAIL 三种。
         :type Status: str
         :param ErrCode: 错误码，0：成功，其他值：失败。
+注意：此字段可能返回 null，表示取不到有效值。
         :type ErrCode: int
         :param Message: 错误信息。
+注意：此字段可能返回 null，表示取不到有效值。
         :type Message: str
         :param Input: 对视频截雪碧图任务的输入。
         :type Input: :class:`tencentcloud.vod.v20180717.models.ImageSpriteTaskInput`
         :param Output: 对视频截雪碧图任务的输出。
+注意：此字段可能返回 null，表示取不到有效值。
         :type Output: :class:`tencentcloud.vod.v20180717.models.MediaImageSpriteItem`
         """
         self.Status = None
@@ -3126,16 +3352,22 @@ class MediaProcessTaskInput(AbstractModel):
     def __init__(self):
         """
         :param TranscodeTaskSet: 视频转码任务列表。
+注意：此字段可能返回 null，表示取不到有效值。
         :type TranscodeTaskSet: list of TranscodeTaskInput
         :param AnimatedGraphicTaskSet: 视频转动图任务列表。
+注意：此字段可能返回 null，表示取不到有效值。
         :type AnimatedGraphicTaskSet: list of AnimatedGraphicTaskInput
         :param SnapshotByTimeOffsetTaskSet: 对视频按时间点截图任务列表。
+注意：此字段可能返回 null，表示取不到有效值。
         :type SnapshotByTimeOffsetTaskSet: list of SnapshotByTimeOffsetTaskInput
         :param SampleSnapshotTaskSet: 对视频采样截图任务列表。
+注意：此字段可能返回 null，表示取不到有效值。
         :type SampleSnapshotTaskSet: list of SampleSnapshotTaskInput
         :param ImageSpriteTaskSet: 对视频截雪碧图任务列表。
+注意：此字段可能返回 null，表示取不到有效值。
         :type ImageSpriteTaskSet: list of ImageSpriteTaskInput
         :param CoverBySnapshotTaskSet: 对视频截图做封面任务列表。
+注意：此字段可能返回 null，表示取不到有效值。
         :type CoverBySnapshotTaskSet: list of CoverBySnapshotTaskInput
         """
         self.TranscodeTaskSet = None
@@ -3201,16 +3433,22 @@ class MediaProcessTaskResult(AbstractModel):
 <li>CoverBySnapshot：截图做封面</li>
         :type Type: str
         :param TranscodeTask: 视频转码任务的查询结果，当任务类型为 Transcode 时有效。
+注意：此字段可能返回 null，表示取不到有效值。
         :type TranscodeTask: :class:`tencentcloud.vod.v20180717.models.MediaProcessTaskTranscodeResult`
         :param AnimatedGraphicTask: 视频转动图任务的查询结果，当任务类型为 AnimatedGraphics 时有效。
+注意：此字段可能返回 null，表示取不到有效值。
         :type AnimatedGraphicTask: :class:`tencentcloud.vod.v20180717.models.MediaProcessTaskAnimatedGraphicResult`
         :param SnapshotByTimeOffsetTask: 对视频按时间点截图任务的查询结果，当任务类型为 SnapshotByTimeOffset 时有效。
+注意：此字段可能返回 null，表示取不到有效值。
         :type SnapshotByTimeOffsetTask: :class:`tencentcloud.vod.v20180717.models.MediaProcessTaskSnapshotByTimeOffsetResult`
         :param SampleSnapshotTask: 对视频采样截图任务的查询结果，当任务类型为 SampleSnapshot 时有效。
+注意：此字段可能返回 null，表示取不到有效值。
         :type SampleSnapshotTask: :class:`tencentcloud.vod.v20180717.models.MediaProcessTaskSampleSnapshotResult`
         :param ImageSpriteTask: 对视频截雪碧图任务的查询结果，当任务类型为 ImageSprite 时有效。
+注意：此字段可能返回 null，表示取不到有效值。
         :type ImageSpriteTask: :class:`tencentcloud.vod.v20180717.models.MediaProcessTaskImageSpriteResult`
         :param CoverBySnapshotTask: 对视频截图做封面任务的查询结果，当任务类型为 CoverBySnapshot 时有效。
+注意：此字段可能返回 null，表示取不到有效值。
         :type CoverBySnapshotTask: :class:`tencentcloud.vod.v20180717.models.MediaProcessTaskCoverBySnapshotResult`
         """
         self.Type = None
@@ -3254,12 +3492,15 @@ class MediaProcessTaskSampleSnapshotResult(AbstractModel):
         :param Status: 任务状态，有 PROCESSING，SUCCESS 和 FAIL 三种。
         :type Status: str
         :param ErrCode: 错误码，0：成功，其他值：失败。
+注意：此字段可能返回 null，表示取不到有效值。
         :type ErrCode: int
         :param Message: 错误信息。
+注意：此字段可能返回 null，表示取不到有效值。
         :type Message: str
         :param Input: 对视频做采样截图任务输入。
         :type Input: :class:`tencentcloud.vod.v20180717.models.SampleSnapshotTaskInput`
         :param Output: 对视频做采样截图任务输出。
+注意：此字段可能返回 null，表示取不到有效值。
         :type Output: :class:`tencentcloud.vod.v20180717.models.MediaSampleSnapshotItem`
         """
         self.Status = None
@@ -3291,12 +3532,15 @@ class MediaProcessTaskSnapshotByTimeOffsetResult(AbstractModel):
         :param Status: 任务状态，有 PROCESSING，SUCCESS 和 FAIL 三种。
         :type Status: str
         :param ErrCode: 错误码，0：成功，其他值：失败。
+注意：此字段可能返回 null，表示取不到有效值。
         :type ErrCode: int
         :param Message: 错误信息。
+注意：此字段可能返回 null，表示取不到有效值。
         :type Message: str
         :param Input: 对视频按指定时间点截图任务输入。
         :type Input: :class:`tencentcloud.vod.v20180717.models.SnapshotByTimeOffsetTaskInput`
         :param Output: 对视频按指定时间点截图任务输出。
+注意：此字段可能返回 null，表示取不到有效值。
         :type Output: :class:`tencentcloud.vod.v20180717.models.MediaSnapshotByTimeOffsetItem`
         """
         self.Status = None
@@ -3328,8 +3572,10 @@ class MediaProcessTaskTranscodeResult(AbstractModel):
         :param Status: 任务状态，有 PROCESSING，SUCCESS 和 FAIL 三种。
         :type Status: str
         :param ErrCode: 错误码，0：成功，其他值：失败。
+注意：此字段可能返回 null，表示取不到有效值。
         :type ErrCode: int
         :param Message: 错误信息。
+注意：此字段可能返回 null，表示取不到有效值。
         :type Message: str
         :param Input: 转码任务的输入。
         :type Input: :class:`tencentcloud.vod.v20180717.models.TranscodeTaskInput`
@@ -3363,6 +3609,7 @@ class MediaSampleSnapshotInfo(AbstractModel):
     def __init__(self):
         """
         :param SampleSnapshotSet: 特定规格的采样截图信息集合，每个元素代表一套相同规格的采样截图。
+注意：此字段可能返回 null，表示取不到有效值。
         :type SampleSnapshotSet: list of MediaSampleSnapshotItem
         """
         self.SampleSnapshotSet = None
@@ -3385,18 +3632,23 @@ class MediaSampleSnapshotItem(AbstractModel):
     def __init__(self):
         """
         :param Definition: 采样截图规格 ID，参见[采样截图参数模板](https://cloud.tencent.com/document/product/266/11702#.E9.87.87.E6.A0.B7.E6.88.AA.E5.9B.BE.E6.A8.A1.E6.9D.BF)。
+注意：此字段可能返回 null，表示取不到有效值。
         :type Definition: int
         :param SampleType: 采样方式，取值范围：
 <li>Percent：根据百分比间隔采样。</li>
 <li>Time：根据时间间隔采样。</li>
+注意：此字段可能返回 null，表示取不到有效值。
         :type SampleType: str
         :param Interval: 采样间隔
 <li>当 SampleType 为 Percent 时，该值表示多少百分比一张图。</li>
 <li>当 SampleType 为 Time 时，该值表示多少时间间隔一张图，单位秒， 第一张图均为视频首帧。</li>
+注意：此字段可能返回 null，表示取不到有效值。
         :type Interval: int
         :param ImageUrlSet: 生成的截图 url 列表。
+注意：此字段可能返回 null，表示取不到有效值。
         :type ImageUrlSet: list of str
         :param WaterMarkDefinition: 截图如果被打上了水印，被打水印的模板 ID 列表。
+注意：此字段可能返回 null，表示取不到有效值。
         :type WaterMarkDefinition: list of int
         """
         self.Definition = None
@@ -3422,6 +3674,7 @@ class MediaSnapshotByTimeOffsetInfo(AbstractModel):
     def __init__(self):
         """
         :param SnapshotByTimeOffsetSet: 特定规格的指定时间点截图信息集合。目前每种规格只能有一套截图。
+注意：此字段可能返回 null，表示取不到有效值。
         :type SnapshotByTimeOffsetSet: list of MediaSnapshotByTimeOffsetItem
         """
         self.SnapshotByTimeOffsetSet = None
@@ -3444,8 +3697,10 @@ class MediaSnapshotByTimeOffsetItem(AbstractModel):
     def __init__(self):
         """
         :param Definition: 指定时间点截图规格，参见[指定时间点截图参数模板](https://cloud.tencent.com/document/product/266/11702#.E6.8C.87.E5.AE.9A.E6.97.B6.E9.97.B4.E7.82.B9.E6.88.AA.E5.9B.BE.E6.A8.A1.E6.9D.BF)。
+注意：此字段可能返回 null，表示取不到有效值。
         :type Definition: int
         :param PicInfoSet: 同一规格的截图信息集合，每个元素代表一张截图。
+注意：此字段可能返回 null，表示取不到有效值。
         :type PicInfoSet: list of MediaSnapshotByTimePicInfoItem
         """
         self.Definition = None
@@ -3470,10 +3725,13 @@ class MediaSnapshotByTimePicInfoItem(AbstractModel):
     def __init__(self):
         """
         :param TimeOffset: 该张截图对应视频文件中的时间偏移，单位：秒。
+注意：此字段可能返回 null，表示取不到有效值。
         :type TimeOffset: float
         :param Url: 该张截图的 URL 地址。
+注意：此字段可能返回 null，表示取不到有效值。
         :type Url: str
         :param WaterMarkDefinition: 截图如果被打上了水印，被打水印的模板 ID 列表。
+注意：此字段可能返回 null，表示取不到有效值。
         :type WaterMarkDefinition: list of int
         """
         self.TimeOffset = None
@@ -3499,8 +3757,10 @@ class MediaSourceData(AbstractModel):
 <li>Upload：来自上传。如拉取上传、服务端上传、客户端 UGC 上传等。</li>
 <li>VideoProcessing：来自视频处理。如视频拼接、视频剪辑等。</li>
 <li>Unknown：未知来源。</li>
+注意：此字段可能返回 null，表示取不到有效值。
         :type SourceType: str
         :param SourceContext: 用户创建文件时透传的字段
+注意：此字段可能返回 null，表示取不到有效值。
         :type SourceContext: str
         """
         self.SourceType = None
@@ -3520,6 +3780,7 @@ class MediaTranscodeInfo(AbstractModel):
     def __init__(self):
         """
         :param TranscodeSet: 各规格的转码信息集合，每个元素代表一个规格的转码结果。
+注意：此字段可能返回 null，表示取不到有效值。
         :type TranscodeSet: list of MediaTranscodeItem
         """
         self.TranscodeSet = None
@@ -3542,26 +3803,37 @@ class MediaTranscodeItem(AbstractModel):
     def __init__(self):
         """
         :param Url: 转码后的视频文件地址。
+注意：此字段可能返回 null，表示取不到有效值。
         :type Url: str
         :param Definition: 转码规格 ID，参见[转码参数模板](https://cloud.tencent.com/document/product/266/11701#.E8.BD.AC.E7.A0.81.E6.A8.A1.E6.9D.BF)。
+注意：此字段可能返回 null，表示取不到有效值。
         :type Definition: int
         :param Bitrate: 视频流码率平均值与音频流码率平均值之和， 单位：bps。
+注意：此字段可能返回 null，表示取不到有效值。
         :type Bitrate: int
         :param Height: 视频流高度的最大值，单位：px。
+注意：此字段可能返回 null，表示取不到有效值。
         :type Height: int
         :param Width: 视频流宽度的最大值，单位：px。
+注意：此字段可能返回 null，表示取不到有效值。
         :type Width: int
         :param Size: 媒体文件总大小（视频为 HLS 时，大小是 m3u8 和 ts 文件大小的总和），单位：字节。
+注意：此字段可能返回 null，表示取不到有效值。
         :type Size: int
         :param Duration: 视频时长，单位：秒。
+注意：此字段可能返回 null，表示取不到有效值。
         :type Duration: float
         :param Container: 容器类型，例如 m4a，mp4 等。
+注意：此字段可能返回 null，表示取不到有效值。
         :type Container: str
         :param Md5: 视频的 md5 值。
+注意：此字段可能返回 null，表示取不到有效值。
         :type Md5: str
         :param AudioStreamSet: 音频流信息。
+注意：此字段可能返回 null，表示取不到有效值。
         :type AudioStreamSet: list of MediaAudioStreamItem
         :param VideoStreamSet: 视频流信息。
+注意：此字段可能返回 null，表示取不到有效值。
         :type VideoStreamSet: list of MediaVideoStreamItem
         """
         self.Url = None
@@ -3609,14 +3881,19 @@ class MediaVideoStreamItem(AbstractModel):
     def __init__(self):
         """
         :param Bitrate: 视频流的码率，单位：bps。
+注意：此字段可能返回 null，表示取不到有效值。
         :type Bitrate: int
         :param Height: 视频流的高度，单位：px。
+注意：此字段可能返回 null，表示取不到有效值。
         :type Height: int
         :param Width: 视频流的宽度，单位：px。
+注意：此字段可能返回 null，表示取不到有效值。
         :type Width: int
         :param Codec: 视频流的编码格式，例如 h264。
+注意：此字段可能返回 null，表示取不到有效值。
         :type Codec: str
         :param Fps: 帧率，单位：hz。
+注意：此字段可能返回 null，表示取不到有效值。
         :type Fps: int
         """
         self.Bitrate = None
@@ -3757,6 +4034,7 @@ class ModifyMediaInfoResponse(AbstractModel):
         """
         :param CoverUrl: 新的视频封面 URL。
 * 注意：仅当请求携带 CoverData 时此返回值有效。 *
+注意：此字段可能返回 null，表示取不到有效值。
         :type CoverUrl: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -3786,35 +4064,44 @@ class ProcedureTask(AbstractModel):
         :param ErrCode: 错误码
 <li>0：成功；</li>
 <li>其他值：失败。</li>
+注意：此字段可能返回 null，表示取不到有效值。
         :type ErrCode: int
         :param Message: 错误信息。
+注意：此字段可能返回 null，表示取不到有效值。
         :type Message: str
         :param FileId: 媒体文件 ID
-<li>若流程由 [ProcessMedia](http://139.199.214.26/document/product/266/30248) 发起，该字段表示 [MediaInfo](http://139.199.214.26/document/product/266/16694?!preview&preview_docmenu=1&lang=cn&!document=1#MediaInfo) 的 FileId；</li>
-<li>若流程由 [ProcessMediaByUrl](http://139.199.214.26/document/product/266/31058?!document=1&!preview) 发起，该字段表示 [MediaInputInfo](http://139.199.214.26/document/product/266/16694?!preview&preview_docmenu=1&lang=cn&!document=1#MediaInputInfo) 的 Id。</li>
+<li>若流程由 [ProcessMedia](https://cloud.tencent.com/document/product/266/33427) 发起，该字段表示 [MediaInfo](https://cloud.tencent.com/document/product/266/31773#MediaInfo) 的 FileId；</li>
+<li>若流程由 [ProcessMediaByUrl](https://cloud.tencent.com/document/product/266/33426) 发起，该字段表示 [MediaInputInfo](https://cloud.tencent.com/document/product/266/31773#MediaInputInfo) 的 Id。</li>
+注意：此字段可能返回 null，表示取不到有效值。
         :type FileId: str
         :param FileName: 媒体文件名称
-<li>若流程由 [ProcessMedia](http://139.199.214.26/document/product/266/30248) 发起，该字段表示 [MediaInfo](http://139.199.214.26/document/product/266/16694?!preview&preview_docmenu=1&lang=cn&!document=1#MediaInfo) 的 BasicInfo.Name；</li>
-<li>若流程由 [ProcessMediaByUrl](http://139.199.214.26/document/product/266/31058?!document=1&!preview) 发起，该字段表示 [MediaInputInfo](http://139.199.214.26/document/product/266/16694?!preview&preview_docmenu=1&lang=cn&!document=1#MediaInputInfo) 的 Name。</li>
+<li>若流程由 [ProcessMedia](https://cloud.tencent.com/document/product/266/33427) 发起，该字段表示 [MediaInfo](https://cloud.tencent.com/document/product/266/31773#MediaInfo) 的 BasicInfo.Name；</li>
+<li>若流程由 [ProcessMediaByUrl](https://cloud.tencent.com/document/product/266/33426) 发起，该字段表示 [MediaInputInfo](https://cloud.tencent.com/document/product/266/31773#MediaInputInfo) 的 Name。</li>
+注意：此字段可能返回 null，表示取不到有效值。
         :type FileName: str
         :param FileUrl: 媒体文件地址
-<li>若流程由 [ProcessMedia](http://139.199.214.26/document/product/266/30248) 发起，该字段表示 [MediaInfo](http://139.199.214.26/document/product/266/16694?!preview&preview_docmenu=1&lang=cn&!document=1#MediaInfo) 的 BasicInfo.MediaUrl；</li>
-<li>若流程由 [ProcessMediaByUrl](http://139.199.214.26/document/product/266/31058?!document=1&!preview) 发起，该字段表示 [MediaInputInfo](http://139.199.214.26/document/product/266/16694?!preview&preview_docmenu=1&lang=cn&!document=1#MediaInputInfo) 的 Url。</li>
+<li>若流程由 [ProcessMedia](https://cloud.tencent.com/document/product/266/33427) 发起，该字段表示 [MediaInfo](https://cloud.tencent.com/document/product/266/31773#MediaInfo) 的 BasicInfo.MediaUrl；</li>
+<li>若流程由 [ProcessMediaByUrl](https://cloud.tencent.com/document/product/266/33426) 发起，该字段表示 [MediaInputInfo](https://cloud.tencent.com/document/product/266/31773#MediaInputInfo) 的 Url。</li>
         :type FileUrl: str
         :param MetaData: 原始视频的元信息。
         :type MetaData: :class:`tencentcloud.vod.v20180717.models.MediaMetaData`
         :param MediaProcessResultSet: 视频处理任务的执行状态与结果。
+注意：此字段可能返回 null，表示取不到有效值。
         :type MediaProcessResultSet: list of MediaProcessTaskResult
         :param AiContentReviewResultSet: 视频内容审核任务的执行状态与结果。
+注意：此字段可能返回 null，表示取不到有效值。
         :type AiContentReviewResultSet: list of AiContentReviewResult
         :param AiAnalysisResultSet: 视频内容分析任务的执行状态与结果。
+注意：此字段可能返回 null，表示取不到有效值。
         :type AiAnalysisResultSet: list of AiAnalysisResult
         :param TasksPriority: 任务流的优先级，取值范围为 [-10, 10]。
+注意：此字段可能返回 null，表示取不到有效值。
         :type TasksPriority: int
         :param TasksNotifyMode: 任务流状态变更通知模式。
 <li>Finish：只有当任务流全部执行完毕时，才发起一次事件通知；</li>
 <li>Change：只要任务流中每个子任务的状态发生变化，都进行事件通知；</li>
 <li>None：不接受该任务流回调。</li>
+注意：此字段可能返回 null，表示取不到有效值。
         :type TasksNotifyMode: str
         """
         self.TaskId = None
@@ -4044,6 +4331,7 @@ class PullEventsResponse(AbstractModel):
     def __init__(self):
         """
         :param EventSet: 事件列表。
+注意：此字段可能返回 null，表示取不到有效值。
         :type EventSet: list of EventContent
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -4074,14 +4362,19 @@ class PullFileTask(AbstractModel):
         :param ErrCode: 错误码
 <li>0：成功；</li>
 <li>其他值：失败。</li>
+注意：此字段可能返回 null，表示取不到有效值。
         :type ErrCode: int
         :param Message: 错误信息。
+注意：此字段可能返回 null，表示取不到有效值。
         :type Message: str
         :param FileId: 转拉上传完成后生成的视频 ID。
+注意：此字段可能返回 null，表示取不到有效值。
         :type FileId: str
         :param FileUrl: 转拉上传完成后生成的播放地址。
+注意：此字段可能返回 null，表示取不到有效值。
         :type FileUrl: str
         :param ProcedureTaskId: 若转拉上传时指定了视频处理流程，则该参数为流程任务 ID。
+注意：此字段可能返回 null，表示取不到有效值。
         :type ProcedureTaskId: str
         """
         self.TaskId = None
@@ -4111,6 +4404,7 @@ class SampleSnapshotTaskInput(AbstractModel):
         :param Definition: 采样截图模板 ID。
         :type Definition: int
         :param WatermarkSet: 水印列表，支持多张图片或文字水印，最大可支持 10 张。
+注意：此字段可能返回 null，表示取不到有效值。
         :type WatermarkSet: list of WatermarkInput
         """
         self.Definition = None
@@ -4211,6 +4505,7 @@ class SearchMediaResponse(AbstractModel):
 <li>最大值：5000，即，当命中记录数超过 5000，该字段将返回 5000，而非实际命中总数。</li>
         :type TotalCount: int
         :param MediaInfoSet: 媒体文件信息列表，只包含基础信息（BasicInfo）
+注意：此字段可能返回 null，表示取不到有效值。
         :type MediaInfoSet: list of MediaInfo
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -4293,10 +4588,13 @@ class SnapshotByTimeOffset2017(AbstractModel):
         :param ErrCode: 错误码
 <li>0：成功；</li>
 <li>其他值：失败。</li>
+注意：此字段可能返回 null，表示取不到有效值。
         :type ErrCode: str
         :param TimeOffset: 截图的具体时间点，单位：毫秒。
+注意：此字段可能返回 null，表示取不到有效值。
         :type TimeOffset: int
         :param Url: 截图输出文件地址。
+注意：此字段可能返回 null，表示取不到有效值。
         :type Url: str
         """
         self.ErrCode = None
@@ -4354,8 +4652,10 @@ class SnapshotByTimeOffsetTaskInput(AbstractModel):
         :param Definition: 指定时间点截图模板 ID。
         :type Definition: int
         :param TimeOffsetSet: 截图时间点列表，单位为秒。
+注意：此字段可能返回 null，表示取不到有效值。
         :type TimeOffsetSet: list of float
         :param WatermarkSet: 水印列表，支持多张图片或文字水印，最大可支持 10 张。
+注意：此字段可能返回 null，表示取不到有效值。
         :type WatermarkSet: list of WatermarkInput
         """
         self.Definition = None
@@ -4418,8 +4718,10 @@ class TaskSimpleInfo(AbstractModel):
         :param CreatTime: 任务创建时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F)。
         :type CreatTime: str
         :param BeginProcessTime: 任务开始执行时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F)。若任务尚未开始，该字段为空。
+注意：此字段可能返回 null，表示取不到有效值。
         :type BeginProcessTime: str
         :param FinishTime: 任务结束时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F)。若任务尚未完成，该字段为空。
+注意：此字段可能返回 null，表示取不到有效值。
         :type FinishTime: str
         """
         self.TaskId = None
@@ -4511,18 +4813,25 @@ class TranscodeTask2017(AbstractModel):
         :param ErrCode: 错误码
 <li>0：成功；</li>
 <li>其他值：失败。</li>
+注意：此字段可能返回 null，表示取不到有效值。
         :type ErrCode: int
         :param Message: 错误信息。
+注意：此字段可能返回 null，表示取不到有效值。
         :type Message: str
         :param FileId: 被转码文件 ID。
+注意：此字段可能返回 null，表示取不到有效值。
         :type FileId: str
         :param FileName: 被转码文件名称。
+注意：此字段可能返回 null，表示取不到有效值。
         :type FileName: str
         :param Duration: 视频时长，单位：秒。
+注意：此字段可能返回 null，表示取不到有效值。
         :type Duration: int
         :param CoverUrl: 封面地址。
+注意：此字段可能返回 null，表示取不到有效值。
         :type CoverUrl: str
         :param PlayInfoSet: 视频转码后生成的播放信息。
+注意：此字段可能返回 null，表示取不到有效值。
         :type PlayInfoSet: list of TranscodePlayInfo2017
         """
         self.TaskId = None
@@ -4561,6 +4870,7 @@ class TranscodeTaskInput(AbstractModel):
         :param Definition: 视频转码模板 ID。
         :type Definition: int
         :param WatermarkSet: 水印列表，支持多张图片或文字水印，最大可支持 10 张。
+注意：此字段可能返回 null，表示取不到有效值。
         :type WatermarkSet: list of WatermarkInput
         """
         self.Definition = None
@@ -4615,24 +4925,32 @@ FINISH：已完成。
         :param ErrCode: 错误码
 <li>0：成功；</li>
 <li>其他值：失败。</li>
+注意：此字段可能返回 null，表示取不到有效值。
         :type ErrCode: int
         :param Message: 错误信息。
+注意：此字段可能返回 null，表示取不到有效值。
         :type Message: str
         :param FileId: 发布视频文件 ID。
+注意：此字段可能返回 null，表示取不到有效值。
         :type FileId: str
         :param Definition: 微信发布模板 ID。
+注意：此字段可能返回 null，表示取不到有效值。
         :type Definition: int
         :param SourceDefinition: 发布视频所对应的转码模板 ID，为 0 代表原始视频。
+注意：此字段可能返回 null，表示取不到有效值。
         :type SourceDefinition: int
         :param WechatStatus: 微信发布状态，取值：
 <li>FAIL：失败；</li>
 <li>SUCCESS：成功；</li>
 <li>AUDITNOTPASS：审核未通过；</li>
 <li>NOTTRIGGERED：尚未发起微信发布。</li>
+注意：此字段可能返回 null，表示取不到有效值。
         :type WechatStatus: str
         :param WechatVid: 微信 Vid。
+注意：此字段可能返回 null，表示取不到有效值。
         :type WechatVid: str
         :param WechatUrl: 微信地址。
+注意：此字段可能返回 null，表示取不到有效值。
         :type WechatUrl: str
         """
         self.TaskId = None

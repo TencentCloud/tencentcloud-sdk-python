@@ -121,6 +121,169 @@ class AttachDisksResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class AutoSnapshotPolicy(AbstractModel):
+    """描述了定期快照策略的详细信息
+
+    """
+
+    def __init__(self):
+        """
+        :param AutoSnapshotPolicyId: 定期快照策略ID。
+        :type AutoSnapshotPolicyId: str
+        :param AutoSnapshotPolicyName: 定期快照策略名称。
+        :type AutoSnapshotPolicyName: str
+        :param AutoSnapshotPolicyState: 定期快照策略的状态。取值范围：<br><li>NORMAL：正常<br><li>ISOLATED：已隔离。
+        :type AutoSnapshotPolicyState: str
+        :param IsActivated: 定期快照策略是否激活。
+        :type IsActivated: bool
+        :param IsPermanent: 使用该定期快照策略创建出来的快照是否永久保留。
+        :type IsPermanent: bool
+        :param RetentionDays: 使用该定期快照策略创建出来的快照保留天数。
+        :type RetentionDays: int
+        :param CreateTime: 定期快照策略的创建时间。
+        :type CreateTime: str
+        :param NextTriggerTime: 定期快照下次触发的时间。
+        :type NextTriggerTime: str
+        :param Policy: 定期快照的执行策略。
+        :type Policy: list of Policy
+        :param DiskIdSet: 已绑定当前定期快照策略的云盘ID列表。
+        :type DiskIdSet: list of str
+        """
+        self.AutoSnapshotPolicyId = None
+        self.AutoSnapshotPolicyName = None
+        self.AutoSnapshotPolicyState = None
+        self.IsActivated = None
+        self.IsPermanent = None
+        self.RetentionDays = None
+        self.CreateTime = None
+        self.NextTriggerTime = None
+        self.Policy = None
+        self.DiskIdSet = None
+
+
+    def _deserialize(self, params):
+        self.AutoSnapshotPolicyId = params.get("AutoSnapshotPolicyId")
+        self.AutoSnapshotPolicyName = params.get("AutoSnapshotPolicyName")
+        self.AutoSnapshotPolicyState = params.get("AutoSnapshotPolicyState")
+        self.IsActivated = params.get("IsActivated")
+        self.IsPermanent = params.get("IsPermanent")
+        self.RetentionDays = params.get("RetentionDays")
+        self.CreateTime = params.get("CreateTime")
+        self.NextTriggerTime = params.get("NextTriggerTime")
+        if params.get("Policy") is not None:
+            self.Policy = []
+            for item in params.get("Policy"):
+                obj = Policy()
+                obj._deserialize(item)
+                self.Policy.append(obj)
+        self.DiskIdSet = params.get("DiskIdSet")
+
+
+class BindAutoSnapshotPolicyRequest(AbstractModel):
+    """BindAutoSnapshotPolicy请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param AutoSnapshotPolicyId: 要绑定的定期快照策略ID。
+        :type AutoSnapshotPolicyId: str
+        :param DiskIds: 要绑定的云硬盘ID列表，一次请求最多绑定80块云盘。
+        :type DiskIds: list of str
+        """
+        self.AutoSnapshotPolicyId = None
+        self.DiskIds = None
+
+
+    def _deserialize(self, params):
+        self.AutoSnapshotPolicyId = params.get("AutoSnapshotPolicyId")
+        self.DiskIds = params.get("DiskIds")
+
+
+class BindAutoSnapshotPolicyResponse(AbstractModel):
+    """BindAutoSnapshotPolicy返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class CreateAutoSnapshotPolicyRequest(AbstractModel):
+    """CreateAutoSnapshotPolicy请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Policy: 定期快照的执行策略。
+        :type Policy: list of Policy
+        :param AutoSnapshotPolicyName: 要创建的定期快照策略名。不传则默认为“未命名”。最大长度不能超60个字节。
+        :type AutoSnapshotPolicyName: str
+        :param IsActivated: 是否激活定期快照策略，FALSE表示未激活，TRUE表示激活，默认为TRUE。
+        :type IsActivated: bool
+        :param IsPermanent: 通过该定期快照策略创建的快照是否永久保留。FALSE表示非永久保留，TRUE表示永久保留，默认为FALSE。
+        :type IsPermanent: bool
+        :param RetentionDays: 通过该定期快照策略创建的快照保留天数，默认保留7天。如果指定本参数，则IsPermanent入参不可指定为TRUE，否则会产生冲突。
+        :type RetentionDays: int
+        :param DryRun: 是否创建定期快照的执行策略。TRUE表示只需获取首次开始备份的时间，不实际创建定期快照策略，FALSE表示创建，默认为FALSE。
+        :type DryRun: bool
+        """
+        self.Policy = None
+        self.AutoSnapshotPolicyName = None
+        self.IsActivated = None
+        self.IsPermanent = None
+        self.RetentionDays = None
+        self.DryRun = None
+
+
+    def _deserialize(self, params):
+        if params.get("Policy") is not None:
+            self.Policy = []
+            for item in params.get("Policy"):
+                obj = Policy()
+                obj._deserialize(item)
+                self.Policy.append(obj)
+        self.AutoSnapshotPolicyName = params.get("AutoSnapshotPolicyName")
+        self.IsActivated = params.get("IsActivated")
+        self.IsPermanent = params.get("IsPermanent")
+        self.RetentionDays = params.get("RetentionDays")
+        self.DryRun = params.get("DryRun")
+
+
+class CreateAutoSnapshotPolicyResponse(AbstractModel):
+    """CreateAutoSnapshotPolicy返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param AutoSnapshotPolicyId: 新创建的定期快照策略ID。
+        :type AutoSnapshotPolicyId: str
+        :param NextTriggerTime: 首次开始备份的时间。
+        :type NextTriggerTime: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.AutoSnapshotPolicyId = None
+        self.NextTriggerTime = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.AutoSnapshotPolicyId = params.get("AutoSnapshotPolicyId")
+        self.NextTriggerTime = params.get("NextTriggerTime")
+        self.RequestId = params.get("RequestId")
+
+
 class CreateDisksRequest(AbstractModel):
     """CreateDisks请求参数结构体
 
@@ -254,6 +417,40 @@ class CreateSnapshotResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DeleteAutoSnapshotPoliciesRequest(AbstractModel):
+    """DeleteAutoSnapshotPolicies请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param AutoSnapshotPolicyIds: 要删除的定期快照策略ID列表。
+        :type AutoSnapshotPolicyIds: list of str
+        """
+        self.AutoSnapshotPolicyIds = None
+
+
+    def _deserialize(self, params):
+        self.AutoSnapshotPolicyIds = params.get("AutoSnapshotPolicyIds")
+
+
+class DeleteAutoSnapshotPoliciesResponse(AbstractModel):
+    """DeleteAutoSnapshotPolicies返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class DeleteSnapshotsRequest(AbstractModel):
     """DeleteSnapshots请求参数结构体
 
@@ -285,6 +482,125 @@ class DeleteSnapshotsResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeAutoSnapshotPoliciesRequest(AbstractModel):
+    """DescribeAutoSnapshotPolicies请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param AutoSnapshotPolicyIds: 要查询的定期快照策略ID列表。参数不支持同时指定`AutoSnapshotPolicyIds`和`Filters`。
+        :type AutoSnapshotPolicyIds: list of str
+        :param Filters: 过滤条件。参数不支持同时指定`AutoSnapshotPolicyIds`和`Filters`。<br><li>auto-snapshot-policy-id - Array of String - 是否必填：否 -（过滤条件）按定期快照策略ID进行过滤。定期快照策略ID形如：`asp-11112222`。<br><li>auto-snapshot-policy-state - Array of String - 是否必填：否 -（过滤条件）按定期快照策略的状态进行过滤。定期快照策略ID形如：`asp-11112222`。(NORMAL：正常 | ISOLATED：已隔离。)<br><li>auto-snapshot-policy-name - Array of String - 是否必填：否 -（过滤条件）按定期快照策略名称进行过滤。
+        :type Filters: list of Filter
+        :param Limit: 返回数量，默认为20，最大值为100。关于`Limit`的更进一步介绍请参考 API [简介](/document/362/13158)中的相关小节。
+        :type Limit: int
+        :param Offset: 偏移量，默认为0。关于`Offset`的更进一步介绍请参考API[简介](/document/362/13158)中的相关小节。
+        :type Offset: int
+        :param Order: 输出定期快照列表的排列顺序。取值范围：<br><li>ASC：升序排列<br><li>DESC：降序排列。
+        :type Order: str
+        :param OrderField: 定期快照列表排序的依据字段。取值范围：<br><li>CREATETIME：依据定期快照的创建时间排序<br>默认按创建时间排序。
+        :type OrderField: str
+        """
+        self.AutoSnapshotPolicyIds = None
+        self.Filters = None
+        self.Limit = None
+        self.Offset = None
+        self.Order = None
+        self.OrderField = None
+
+
+    def _deserialize(self, params):
+        self.AutoSnapshotPolicyIds = params.get("AutoSnapshotPolicyIds")
+        if params.get("Filters") is not None:
+            self.Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self.Filters.append(obj)
+        self.Limit = params.get("Limit")
+        self.Offset = params.get("Offset")
+        self.Order = params.get("Order")
+        self.OrderField = params.get("OrderField")
+
+
+class DescribeAutoSnapshotPoliciesResponse(AbstractModel):
+    """DescribeAutoSnapshotPolicies返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param TotalCount: 有效的定期快照策略数量。
+        :type TotalCount: int
+        :param AutoSnapshotPolicySet: 定期快照策略列表。
+        :type AutoSnapshotPolicySet: list of AutoSnapshotPolicy
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.AutoSnapshotPolicySet = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("AutoSnapshotPolicySet") is not None:
+            self.AutoSnapshotPolicySet = []
+            for item in params.get("AutoSnapshotPolicySet"):
+                obj = AutoSnapshotPolicy()
+                obj._deserialize(item)
+                self.AutoSnapshotPolicySet.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeDiskAssociatedAutoSnapshotPolicyRequest(AbstractModel):
+    """DescribeDiskAssociatedAutoSnapshotPolicy请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param DiskId: 要查询的云硬盘ID。
+        :type DiskId: str
+        """
+        self.DiskId = None
+
+
+    def _deserialize(self, params):
+        self.DiskId = params.get("DiskId")
+
+
+class DescribeDiskAssociatedAutoSnapshotPolicyResponse(AbstractModel):
+    """DescribeDiskAssociatedAutoSnapshotPolicy返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param TotalCount: 云盘绑定的定期快照数量。
+        :type TotalCount: int
+        :param AutoSnapshotPolicySet: 云盘绑定的定期快照列表。
+        :type AutoSnapshotPolicySet: list of AutoSnapshotPolicy
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.AutoSnapshotPolicySet = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("AutoSnapshotPolicySet") is not None:
+            self.AutoSnapshotPolicySet = []
+            for item in params.get("AutoSnapshotPolicySet"):
+                obj = AutoSnapshotPolicy()
+                obj._deserialize(item)
+                self.AutoSnapshotPolicySet.append(obj)
         self.RequestId = params.get("RequestId")
 
 
@@ -724,26 +1040,37 @@ class Disk(AbstractModel):
         :param Encrypt: 云盘是否为加密盘。取值范围：<br><li>false:表示非加密盘<br><li>true:表示加密盘。
         :type Encrypt: bool
         :param AutoRenewFlagError: 云盘已挂载到子机，且子机与云盘都是包年包月。<br><li>true：子机设置了自动续费标识，但云盘未设置<br><li>false：云盘自动续费标识正常。
+注意：此字段可能返回 null，表示取不到有效值。
         :type AutoRenewFlagError: bool
         :param RenewFlag: 自动续费标识。取值范围：<br><li>NOTIFY_AND_AUTO_RENEW：通知过期且自动续费<br><li>NOTIFY_AND_MANUAL_RENEW：通知过期不自动续费<br><li>DISABLE_NOTIFY_AND_MANUAL_RENEW：不通知过期不自动续费。
+注意：此字段可能返回 null，表示取不到有效值。
         :type RenewFlag: str
         :param DeadlineError: 在云盘已挂载到实例，且实例与云盘都是包年包月的条件下，此字段才有意义。<br><li>true:云盘到期时间早于实例。<br><li>false：云盘到期时间晚于实例。
+注意：此字段可能返回 null，表示取不到有效值。
         :type DeadlineError: bool
         :param IsReturnable: 判断预付费的云盘是否支持主动退还。<br><li>true:支持主动退还<br><li>false:不支持主动退还。
+注意：此字段可能返回 null，表示取不到有效值。
         :type IsReturnable: bool
         :param ReturnFailCode: 预付费云盘在不支持主动退还的情况下，该参数表明不支持主动退还的具体原因。取值范围：<br><li>1：云硬盘已经退还<br><li>2：云硬盘已过期<br><li>3：云盘不支持退还<br><li>8：超过可退还数量的限制。
+注意：此字段可能返回 null，表示取不到有效值。
         :type ReturnFailCode: int
         :param AutoSnapshotPolicyIds: 云盘关联的定期快照ID。只有在调用DescribeDisks接口时，入参ReturnBindAutoSnapshotPolicy取值为TRUE才会返回该参数。
+注意：此字段可能返回 null，表示取不到有效值。
         :type AutoSnapshotPolicyIds: list of str
         :param Tags: 与云盘绑定的标签，云盘未绑定标签则取值为空。
+注意：此字段可能返回 null，表示取不到有效值。
         :type Tags: list of Tag
         :param DeleteWithInstance: 云盘是否与挂载的实例一起销毁。<br><li>true:销毁实例时会同时销毁云盘，只支持按小时后付费云盘。<br><li>false：销毁实例时不销毁云盘。
+注意：此字段可能返回 null，表示取不到有效值。
         :type DeleteWithInstance: bool
         :param DifferDaysOfDeadline: 当前时间距离盘到期的天数（仅对预付费盘有意义）。
+注意：此字段可能返回 null，表示取不到有效值。
         :type DifferDaysOfDeadline: int
         :param Migrating: 云盘是否处于类型变更中。取值范围：<br><li>false:表示云盘不处于类型变更中<br><li>true:表示云盘已发起类型变更，正处于迁移中。
+注意：此字段可能返回 null，表示取不到有效值。
         :type Migrating: bool
         :param MigratePercent: 云盘类型变更的迁移进度，取值0到100。
+注意：此字段可能返回 null，表示取不到有效值。
         :type MigratePercent: int
         """
         self.DiskId = None
@@ -861,8 +1188,10 @@ class DiskConfig(AbstractModel):
         :param Zone: 所在[可用区](/document/api/213/9452#zone)。
         :type Zone: str
         :param DeviceClass: 实例机型。
+注意：此字段可能返回 null，表示取不到有效值。
         :type DeviceClass: str
         :param InstanceFamily: 实例机型系列。详见[实例类型](https://cloud.tencent.com/document/product/213/11518)
+注意：此字段可能返回 null，表示取不到有效值。
         :type InstanceFamily: str
         """
         self.Available = None
@@ -1292,10 +1621,13 @@ class Placement(AbstractModel):
         :param ProjectId: 实例所属项目ID。该参数可以通过调用 [DescribeProject](/document/api/378/4400) 的返回值中的 projectId 字段来获取。不填为默认项目。
         :type ProjectId: int
         :param CdcId: 实例所属的独享集群ID。作为入参时，表示对指定的CdcId独享集群的资源进行操作，可为空。 作为出参时，表示资源所属的独享集群的ID，可为空。
+注意：此字段可能返回 null，表示取不到有效值。
         :type CdcId: str
         :param CageId: 围笼Id。作为入参时，表示对指定的CageId的资源进行操作，可为空。 作为出参时，表示资源所属围笼ID，可为空。
+注意：此字段可能返回 null，表示取不到有效值。
         :type CageId: str
         :param CdcName: 独享集群名字。作为入参时，忽略。作为出参时，表示云硬盘所属的独享集群名，可为空。
+注意：此字段可能返回 null，表示取不到有效值。
         :type CdcName: str
         """
         self.Zone = None
@@ -1311,6 +1643,27 @@ class Placement(AbstractModel):
         self.CdcId = params.get("CdcId")
         self.CageId = params.get("CageId")
         self.CdcName = params.get("CdcName")
+
+
+class Policy(AbstractModel):
+    """描述了定期快照的执行策略。可理解为在DayOfWeek指定的那几天中，在Hour指定的小时执行该条定期快照策略。
+
+    """
+
+    def __init__(self):
+        """
+        :param DayOfWeek: 选定周一到周日中需要创建快照的日期，取值范围：[0, 6]。0表示周一触发，依此类推。
+        :type DayOfWeek: list of int non-negative
+        :param Hour: 指定定期快照策略的触发时间。单位为小时，取值范围：[0, 23]。00:00 ~ 23:00 共 24 个时间点可选，1表示 01:00，依此类推。
+        :type Hour: list of int non-negative
+        """
+        self.DayOfWeek = None
+        self.Hour = None
+
+
+    def _deserialize(self, params):
+        self.DayOfWeek = params.get("DayOfWeek")
+        self.Hour = params.get("Hour")
 
 
 class PrepayPrice(AbstractModel):
@@ -1342,14 +1695,19 @@ class Price(AbstractModel):
     def __init__(self):
         """
         :param OriginalPrice: 预付费云盘预支费用的原价，单位：元。
+注意：此字段可能返回 null，表示取不到有效值。
         :type OriginalPrice: float
         :param DiscountPrice: 预付费云盘预支费用的折扣价，单位：元。
+注意：此字段可能返回 null，表示取不到有效值。
         :type DiscountPrice: float
         :param UnitPrice: 后付费云盘原单价，单位：元。
+注意：此字段可能返回 null，表示取不到有效值。
         :type UnitPrice: float
         :param ChargeUnit: 后付费云盘的计价单元，取值范围：<br><li>HOUR：表示后付费云盘的计价单元是按小时计算。
+注意：此字段可能返回 null，表示取不到有效值。
         :type ChargeUnit: str
         :param UnitPriceDiscount: 后付费云盘折扣单价，单位：元。
+注意：此字段可能返回 null，表示取不到有效值。
         :type UnitPriceDiscount: float
         """
         self.OriginalPrice = None
@@ -1537,6 +1895,7 @@ class SnapshotOperationLog(AbstractModel):
     def __init__(self):
         """
         :param Operator: 操作者的UIN。
+注意：此字段可能返回 null，表示取不到有效值。
         :type Operator: str
         :param Operation: 操作类型。取值范围：
 SNAP_OPERATION_DELETE：删除快照
@@ -1616,6 +1975,44 @@ class TerminateDisksRequest(AbstractModel):
 
 class TerminateDisksResponse(AbstractModel):
     """TerminateDisks返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class UnbindAutoSnapshotPolicyRequest(AbstractModel):
+    """UnbindAutoSnapshotPolicy请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param DiskIds: 要解绑定期快照策略的云盘ID列表。
+        :type DiskIds: list of str
+        :param AutoSnapshotPolicyId: 要解绑的定期快照策略ID。
+        :type AutoSnapshotPolicyId: str
+        """
+        self.DiskIds = None
+        self.AutoSnapshotPolicyId = None
+
+
+    def _deserialize(self, params):
+        self.DiskIds = params.get("DiskIds")
+        self.AutoSnapshotPolicyId = params.get("AutoSnapshotPolicyId")
+
+
+class UnbindAutoSnapshotPolicyResponse(AbstractModel):
+    """UnbindAutoSnapshotPolicy返回参数结构体
 
     """
 
