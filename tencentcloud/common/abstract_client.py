@@ -278,5 +278,5 @@ class AbstractClient(object):
         if sys.version_info[0] > 2:
             data = data.decode()
         else:
-            data = data.decode(encoding='UTF-8')
+            data = data.decode('UTF-8')
         return data
