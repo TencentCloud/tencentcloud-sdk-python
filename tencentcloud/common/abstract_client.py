@@ -102,10 +102,11 @@ class AbstractClient(object):
         raise TencentCloudSDKException("ClientParamsError", "some params type error")
 
     def _build_req_inter(self, action, params, req_inter, options=None):
-        if self.profile.signMethod in ("HmacSHA1", "HmacSHA256"):
-            self._build_req_with_old_signature(action, params, req_inter)
-        elif self.profile.signMethod == "TC3-HMAC-SHA256":
+        options = options or {}
+        if self.profile.signMethod == "TC3-HMAC-SHA256" or options.get("IsMultipart") is True:
             self._build_req_with_tc3_signature(action, params, req_inter, options)
+        elif self.profile.signMethod in ("HmacSHA1", "HmacSHA256"):
+            self._build_req_with_old_signature(action, params, req_inter)
         else:
             raise TencentCloudSDKException("ClientError", "Invalid signature method.")
 
@@ -173,10 +174,11 @@ class AbstractClient(object):
         req.header["Authorization"] = auth
 
     def _get_tc3_signature(self, params, req, date, service, options=None):
+        options = options or {}
         canonical_uri = req.uri
         canonical_querystring = ''
 
-        if req.method == 'GET':
+        if req.method == 'GET' and options.get("IsMultipart") is not True:
             params = copy.deepcopy(self._fix_params(params))
             req.data = urlencode(params)
             canonical_querystring = req.data
@@ -197,7 +199,7 @@ class AbstractClient(object):
         if req.header.get("X-TC-Content-SHA256") == "UNSIGNED-PAYLOAD":
             payload = "UNSIGNED-PAYLOAD"
 
-        if sys.version_info[0] == 3:
+        if sys.version_info[0] == 3 and isinstance(payload, type("")):
             payload = payload.encode("utf8")
         payload_hash = hashlib.sha256(payload).hexdigest()
 
@@ -224,24 +226,30 @@ class AbstractClient(object):
         signature = Sign.sign_tc3(self.credential.secretKey, date, service, string2sign)
         return signature
 
+    # it must return bytes instead of string
     def _get_multipart_body(self, params, boundary, options=None):
         if options is None:
             options = {}
+        # boundary and params key will never contain unicode characters
+        boundary = boundary.encode()
         binparas = options.get("BinaryParams", [])
-        body = ''
+        body = b''
         for k, v in params.items():
-            body += '--%s\r\n' % boundary
-            body += 'Content-Disposition: form-data; name="%s"' % k
+            kbytes = k.encode()
+            body += b'--%s\r\n' % boundary
+            body += b'Content-Disposition: form-data; name="%s"' % kbytes
             if k in binparas:
-                body += '; filename="%s"\r\n' % k
+                body += b'; filename="%s"\r\n' % kbytes
             else:
-                body += "\r\n"
-            if isinstance(v, list) or isinstance(v, dict):
-                v = json.dumps(v)
-                body += 'Content-Type: application/json\r\n'
-            body += '\r\n%s\r\n' % v
-        if body != '':
-            body += '--%s--\r\n' % boundary
+                body += b"\r\n"
+                if isinstance(v, list) or isinstance(v, dict):
+                    v = json.dumps(v)
+                    body += b'Content-Type: application/json\r\n'
+            if sys.version_info[0] == 3 and isinstance(v, type("")):
+                v = v.encode()
+            body += b'\r\n%s\r\n' % v
+        if body != b'':
+            body += b'--%s--\r\n' % boundary
         return body
 
     def _check_status(self, resp_inter):
