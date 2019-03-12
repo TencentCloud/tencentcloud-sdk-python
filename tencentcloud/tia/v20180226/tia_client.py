@@ -48,7 +48,7 @@ class TiaClient(AbstractClient):
                 raise TencentCloudSDKException(code, message, reqid)
         except Exception as e:
             if isinstance(e, TencentCloudSDKException):
-                raise e
+                raise
             else:
                 raise TencentCloudSDKException(e.message, e.message)
 
@@ -76,7 +76,7 @@ class TiaClient(AbstractClient):
                 raise TencentCloudSDKException(code, message, reqid)
         except Exception as e:
             if isinstance(e, TencentCloudSDKException):
-                raise e
+                raise
             else:
                 raise TencentCloudSDKException(e.message, e.message)
 
@@ -104,7 +104,7 @@ class TiaClient(AbstractClient):
                 raise TencentCloudSDKException(code, message, reqid)
         except Exception as e:
             if isinstance(e, TencentCloudSDKException):
-                raise e
+                raise
             else:
                 raise TencentCloudSDKException(e.message, e.message)
 
@@ -132,7 +132,7 @@ class TiaClient(AbstractClient):
                 raise TencentCloudSDKException(code, message, reqid)
         except Exception as e:
             if isinstance(e, TencentCloudSDKException):
-                raise e
+                raise
             else:
                 raise TencentCloudSDKException(e.message, e.message)
 
@@ -160,7 +160,7 @@ class TiaClient(AbstractClient):
                 raise TencentCloudSDKException(code, message, reqid)
         except Exception as e:
             if isinstance(e, TencentCloudSDKException):
-                raise e
+                raise
             else:
                 raise TencentCloudSDKException(e.message, e.message)
 
@@ -188,7 +188,7 @@ class TiaClient(AbstractClient):
                 raise TencentCloudSDKException(code, message, reqid)
         except Exception as e:
             if isinstance(e, TencentCloudSDKException):
-                raise e
+                raise
             else:
                 raise TencentCloudSDKException(e.message, e.message)
 
@@ -216,7 +216,7 @@ class TiaClient(AbstractClient):
                 raise TencentCloudSDKException(code, message, reqid)
         except Exception as e:
             if isinstance(e, TencentCloudSDKException):
-                raise e
+                raise
             else:
                 raise TencentCloudSDKException(e.message, e.message)
 
@@ -244,7 +244,7 @@ class TiaClient(AbstractClient):
                 raise TencentCloudSDKException(code, message, reqid)
         except Exception as e:
             if isinstance(e, TencentCloudSDKException):
-                raise e
+                raise
             else:
                 raise TencentCloudSDKException(e.message, e.message)
 
@@ -272,7 +272,7 @@ class TiaClient(AbstractClient):
                 raise TencentCloudSDKException(code, message, reqid)
         except Exception as e:
             if isinstance(e, TencentCloudSDKException):
-                raise e
+                raise
             else:
                 raise TencentCloudSDKException(e.message, e.message)
 
@@ -300,6 +300,6 @@ class TiaClient(AbstractClient):
                 raise TencentCloudSDKException(code, message, reqid)
         except Exception as e:
             if isinstance(e, TencentCloudSDKException):
-                raise e
+                raise
             else:
                 raise TencentCloudSDKException(e.message, e.message)
