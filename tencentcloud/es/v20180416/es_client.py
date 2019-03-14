@@ -81,6 +81,62 @@ class EsClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeInstanceLogs(self, request):
+        """查询用户该地域下符合条件的ES集群的日志
+
+        :param request: 调用DescribeInstanceLogs所需参数的结构体。
+        :type request: :class:`tencentcloud.es.v20180416.models.DescribeInstanceLogsRequest`
+        :rtype: :class:`tencentcloud.es.v20180416.models.DescribeInstanceLogsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeInstanceLogs", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeInstanceLogsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeInstanceOperations(self, request):
+        """查询实例指定条件下的操作记录
+
+        :param request: 调用DescribeInstanceOperations所需参数的结构体。
+        :type request: :class:`tencentcloud.es.v20180416.models.DescribeInstanceOperationsRequest`
+        :rtype: :class:`tencentcloud.es.v20180416.models.DescribeInstanceOperationsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeInstanceOperations", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeInstanceOperationsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeInstances(self, request):
         """查询用户该地域下符合条件的所有实例
 
@@ -138,7 +194,17 @@ class EsClient(AbstractClient):
 
 
     def UpdateInstance(self, request):
-        """对已存在的集群进行扩缩容，修改实例名称，修改配置，重置密码， 添加Kibana黑白名单等操作
+        """对集群进行扩缩容，修改实例名称，修改配置，重置密码， 添加Kibana黑白名单等操作。参数中InstanceId为必传参数，ForceRestart为选填参数，剩余参数传递组合及含义如下：<br>
+          InstanceName：修改实例名称(仅用于标识实例)<br>
+          NodeNum：集群数据节点横向扩缩容<br>
+          NodeType, DiskSize：集群数据节点纵向扩缩容<br>
+          MasterNodeNum: 集群专用主节点横向扩缩容<br>
+          MasterNodeType, MasterNodeDiskSize: 集群专用主节点纵向扩缩容<br>
+          EsConfig：修改集群配置<br>
+          Password：修改集群密码<br>
+          EsAcl：修改Kibana密码<br>
+          CosBackUp: 设置集群COS自动备份信息<br>
+        以上参数组合只能传递一种，多传或少传均会导致请求失败<br>
 
         :param request: 调用UpdateInstance所需参数的结构体。
         :type request: :class:`tencentcloud.es.v20180416.models.UpdateInstanceRequest`

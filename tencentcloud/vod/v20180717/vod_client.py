@@ -143,6 +143,62 @@ class VodClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def CreateTranscodeTemplate(self, request):
+        """创建用户自定义转码模板，数量上限：1000。
+
+        :param request: 调用CreateTranscodeTemplate所需参数的结构体。
+        :type request: :class:`tencentcloud.vod.v20180717.models.CreateTranscodeTemplateRequest`
+        :rtype: :class:`tencentcloud.vod.v20180717.models.CreateTranscodeTemplateResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("CreateTranscodeTemplate", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateTranscodeTemplateResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def CreateWatermarkTemplate(self, request):
+        """创建用户自定义水印模板，数量上限：1000。
+
+        :param request: 调用CreateWatermarkTemplate所需参数的结构体。
+        :type request: :class:`tencentcloud.vod.v20180717.models.CreateWatermarkTemplateRequest`
+        :rtype: :class:`tencentcloud.vod.v20180717.models.CreateWatermarkTemplateResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("CreateWatermarkTemplate", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateWatermarkTemplateResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DeleteClass(self, request):
         """* 仅当待删分类无子分类且无媒体关联情况下，可删除分类；
         * 否则，请先执行[删除媒体](/document/product/266/31764)及子分类，再删除该分类；
@@ -187,6 +243,62 @@ class VodClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteMediaResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DeleteTranscodeTemplate(self, request):
+        """删除用户自定义转码模板。
+
+        :param request: 调用DeleteTranscodeTemplate所需参数的结构体。
+        :type request: :class:`tencentcloud.vod.v20180717.models.DeleteTranscodeTemplateRequest`
+        :rtype: :class:`tencentcloud.vod.v20180717.models.DeleteTranscodeTemplateResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DeleteTranscodeTemplate", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DeleteTranscodeTemplateResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DeleteWatermarkTemplate(self, request):
+        """删除用户自定义水印模板。
+
+        :param request: 调用DeleteWatermarkTemplate所需参数的结构体。
+        :type request: :class:`tencentcloud.vod.v20180717.models.DeleteWatermarkTemplateRequest`
+        :rtype: :class:`tencentcloud.vod.v20180717.models.DeleteWatermarkTemplateResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DeleteWatermarkTemplate", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DeleteWatermarkTemplateResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -324,6 +436,62 @@ class VodClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeTranscodeTemplates(self, request):
+        """根据转码模板唯一标识，获取转码模板详情列表。返回结果包含符合条件的所有用户自定义模板及[系统预置转码模板](https://cloud.tencent.com/document/product/266/11701#.E9.A2.84.E7.BD.AE.E8.BD.AC.E7.A0.81.E6.A8.A1.E6.9D.BF)。
+
+        :param request: 调用DescribeTranscodeTemplates所需参数的结构体。
+        :type request: :class:`tencentcloud.vod.v20180717.models.DescribeTranscodeTemplatesRequest`
+        :rtype: :class:`tencentcloud.vod.v20180717.models.DescribeTranscodeTemplatesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeTranscodeTemplates", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeTranscodeTemplatesResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeWatermarkTemplates(self, request):
+        """查询用户自定义水印模板，支持根据条件，分页查询。
+
+        :param request: 调用DescribeWatermarkTemplates所需参数的结构体。
+        :type request: :class:`tencentcloud.vod.v20180717.models.DescribeWatermarkTemplatesRequest`
+        :rtype: :class:`tencentcloud.vod.v20180717.models.DescribeWatermarkTemplatesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeWatermarkTemplates", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeWatermarkTemplatesResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def LiveRealTimeClip(self, request):
         """直播即时剪辑，是指在直播过程中（即直播尚未结束时），客户可以在过往直播内容中选择一段，实时生成一个新的视频（HLS 格式），开发者可以将其立即分享出去，或者长久保存起来。
 
@@ -417,6 +585,62 @@ class VodClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyMediaInfoResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ModifyTranscodeTemplate(self, request):
+        """修改用户自定义转码模板信息。
+
+        :param request: 调用ModifyTranscodeTemplate所需参数的结构体。
+        :type request: :class:`tencentcloud.vod.v20180717.models.ModifyTranscodeTemplateRequest`
+        :rtype: :class:`tencentcloud.vod.v20180717.models.ModifyTranscodeTemplateResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ModifyTranscodeTemplate", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ModifyTranscodeTemplateResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ModifyWatermarkTemplate(self, request):
+        """修改用户自定义水印模板，水印类型不允许修改。
+
+        :param request: 调用ModifyWatermarkTemplate所需参数的结构体。
+        :type request: :class:`tencentcloud.vod.v20180717.models.ModifyWatermarkTemplateRequest`
+        :rtype: :class:`tencentcloud.vod.v20180717.models.ModifyWatermarkTemplateResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ModifyWatermarkTemplate", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ModifyWatermarkTemplateResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

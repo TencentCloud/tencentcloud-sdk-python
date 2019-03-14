@@ -579,7 +579,7 @@ class AutoscalingClient(AbstractClient):
 
 
     def DetachInstances(self, request):
-        """本接口（DettachInstances）用于从伸缩组移出 CVM 实例，本接口不会被销毁实例。
+        """本接口（DetachInstances）用于从伸缩组移出 CVM 实例，本接口不会销毁实例。
 
         :param request: 调用DetachInstances所需参数的结构体。
         :type request: :class:`tencentcloud.autoscaling.v20180419.models.DetachInstancesRequest`

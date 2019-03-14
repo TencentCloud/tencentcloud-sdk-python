@@ -49,7 +49,7 @@ class ImageTranslateRequest(AbstractModel):
         :type SessionUuid: str
         :param Scene: doc:文档扫描
         :type Scene: str
-        :param Data: 图片数据的Base64字符串
+        :param Data: 图片数据的Base64字符串，图片大小上限为4M，建议对源图片进行一定程度压缩
         :type Data: str
         :param Source: 源语言，支持语言列表<li> zh : 中文 </li> <li> en : 英文 </li>
         :type Source: str
@@ -213,6 +213,8 @@ class SpeechTranslateRequest(AbstractModel):
         :type Data: str
         :param ProjectId: 项目id，用户可自定义
         :type ProjectId: int
+        :param Mode: 识别模式，不填则由调用放进行vad(静音检测)，填bvad则由服务放进行vad，前者适合段语音翻译（收到所有语音分片后翻译），后者适合长语音翻译（在完成一个断句识别后就会返回部分结果）
+        :type Mode: str
         """
         self.SessionUuid = None
         self.Source = None
@@ -222,6 +224,7 @@ class SpeechTranslateRequest(AbstractModel):
         self.IsEnd = None
         self.Data = None
         self.ProjectId = None
+        self.Mode = None
 
 
     def _deserialize(self, params):
@@ -233,6 +236,7 @@ class SpeechTranslateRequest(AbstractModel):
         self.IsEnd = params.get("IsEnd")
         self.Data = params.get("Data")
         self.ProjectId = params.get("ProjectId")
+        self.Mode = params.get("Mode")
 
 
 class SpeechTranslateResponse(AbstractModel):
@@ -256,6 +260,8 @@ class SpeechTranslateResponse(AbstractModel):
         :type Source: str
         :param Target: 目标语言
         :type Target: str
+        :param VadSeq: 当请求的Mode参数填写bvad是，启动VadSeq。此时Seq会被设置为后台vad（静音检测）后的新序号，而VadSeq代表客户端原始Seq值
+        :type VadSeq: int
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -266,6 +272,7 @@ class SpeechTranslateResponse(AbstractModel):
         self.Seq = None
         self.Source = None
         self.Target = None
+        self.VadSeq = None
         self.RequestId = None
 
 
@@ -277,6 +284,7 @@ class SpeechTranslateResponse(AbstractModel):
         self.Seq = params.get("Seq")
         self.Source = params.get("Source")
         self.Target = params.get("Target")
+        self.VadSeq = params.get("VadSeq")
         self.RequestId = params.get("RequestId")
 
 

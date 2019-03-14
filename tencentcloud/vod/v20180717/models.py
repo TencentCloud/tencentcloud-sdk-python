@@ -1204,6 +1204,47 @@ class ApplyUploadResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class AudioTemplateInfo(AbstractModel):
+    """音频流配置参数
+
+    """
+
+    def __init__(self):
+        """
+        :param Codec: 音频流的编码格式，可选值：
+<li>libfdk_aac：更适合 mp4 和 hls；</li>
+<li>libmp3lame：更适合 flv；</li>
+<li>mp2。</li>
+        :type Codec: str
+        :param Bitrate: 音频流的码率，取值范围：0 和 [26, 256]，单位：kbps。
+当取值为 0，表示音频码率和原始音频保持一致。
+        :type Bitrate: int
+        :param SampleRate: 音频流的采样率，可选值：
+<li>32000</li>
+<li>44100</li>
+<li>48000</li>
+单位：Hz。
+        :type SampleRate: int
+        :param AudioChannel: 音频通道方式，可选值：
+<li>1：单通道</li>
+<li>2：双通道</li>
+<li>6：立体声</li>
+默认值：2。
+        :type AudioChannel: int
+        """
+        self.Codec = None
+        self.Bitrate = None
+        self.SampleRate = None
+        self.AudioChannel = None
+
+
+    def _deserialize(self, params):
+        self.Codec = params.get("Codec")
+        self.Bitrate = params.get("Bitrate")
+        self.SampleRate = params.get("SampleRate")
+        self.AudioChannel = params.get("AudioChannel")
+
+
 class ClipFileInfo2017(AbstractModel):
     """视频裁剪结果文件信息（2017 版）
 
@@ -1583,6 +1624,174 @@ class CreateImageSpriteTask2017(AbstractModel):
         self.WebVttUrl = params.get("WebVttUrl")
 
 
+class CreateTranscodeTemplateRequest(AbstractModel):
+    """CreateTranscodeTemplate请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Container: 封装格式，可选值：mp4、flv、hls、mp3、flac、ogg。其中，mp3、flac、ogg 为纯音频文件。
+        :type Container: str
+        :param Name: 转码模板名称，长度限制：64 个字符。
+        :type Name: str
+        :param Comment: 模板描述信息，长度限制：256 个字符。
+        :type Comment: str
+        :param RemoveVideo: 是否去除视频数据，可选值：
+<li>0：保留</li>
+<li>1：去除</li>
+默认值：0。
+        :type RemoveVideo: int
+        :param RemoveAudio: 是否去除音频数据，可选值：
+<li>0：保留</li>
+<li>1：去除</li>
+默认值：0。
+        :type RemoveAudio: int
+        :param VideoTemplate: 视频流配置参数，当 RemoveVideo 为 0，该字段必填。
+        :type VideoTemplate: :class:`tencentcloud.vod.v20180717.models.VideoTemplateInfo`
+        :param AudioTemplate: 音频流配置参数，当 RemoveAudio 为 0，该字段必填。
+        :type AudioTemplate: :class:`tencentcloud.vod.v20180717.models.AudioTemplateInfo`
+        :param SubAppId: 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
+        :type SubAppId: int
+        """
+        self.Container = None
+        self.Name = None
+        self.Comment = None
+        self.RemoveVideo = None
+        self.RemoveAudio = None
+        self.VideoTemplate = None
+        self.AudioTemplate = None
+        self.SubAppId = None
+
+
+    def _deserialize(self, params):
+        self.Container = params.get("Container")
+        self.Name = params.get("Name")
+        self.Comment = params.get("Comment")
+        self.RemoveVideo = params.get("RemoveVideo")
+        self.RemoveAudio = params.get("RemoveAudio")
+        if params.get("VideoTemplate") is not None:
+            self.VideoTemplate = VideoTemplateInfo()
+            self.VideoTemplate._deserialize(params.get("VideoTemplate"))
+        if params.get("AudioTemplate") is not None:
+            self.AudioTemplate = AudioTemplateInfo()
+            self.AudioTemplate._deserialize(params.get("AudioTemplate"))
+        self.SubAppId = params.get("SubAppId")
+
+
+class CreateTranscodeTemplateResponse(AbstractModel):
+    """CreateTranscodeTemplate返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Definition: 转码模板唯一标识。
+        :type Definition: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Definition = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Definition = params.get("Definition")
+        self.RequestId = params.get("RequestId")
+
+
+class CreateWatermarkTemplateRequest(AbstractModel):
+    """CreateWatermarkTemplate请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Type: 水印类型，可选值：
+<li>image：图片水印；</li>
+<li>text：文字水印。</li>
+        :type Type: str
+        :param Name: 水印模板名称，长度限制：64 个字符。
+        :type Name: str
+        :param Comment: 模板描述信息，长度限制：256 个字符。
+        :type Comment: str
+        :param CoordinateOrigin: 原点位置，可选值：
+<li>topLeft：表示坐标原点位于视频图像左上角，水印原点为图片或文字的左上角；</li>
+<li>topRight：表示坐标原点位于视频图像的右上角，水印原点为图片或文字的右上角；</li>
+<li>bottomLeft：表示坐标原点位于视频图像的左下角，水印原点为图片或文字的左下角；</li>
+<li>bottomRight：表示坐标原点位于视频图像的右下角，水印原点为图片或文字的右下角。</li>
+默认值：topLeft。目前，当 Type 为 image，该字段仅支持 topLeft。
+        :type CoordinateOrigin: str
+        :param XPos: 水印原点距离视频图像坐标原点的水平位置。支持 %、px 两种格式：
+<li>当字符串以 % 结尾，表示水印 Left 为视频宽度指定百分比的位置，如 10% 表示 Left 为视频宽度的 10%；</li>
+<li>当字符串以 px 结尾，表示水印 Left 为视频宽度指定像素的位置，如 100px 表示 Left 为 100 像素。</li>
+默认值：0px。
+        :type XPos: str
+        :param YPos: 水印原点距离视频图像坐标原点的垂直位置。支持 %、px 两种格式：
+<li>当字符串以 % 结尾，表示水印 Top 为视频高度指定百分比的位置，如 10% 表示 Top 为视频高度的 10%；</li>
+<li>当字符串以 px 结尾，表示水印 Top 为视频高度指定像素的位置，如 100px 表示 Top 为 100 像素。</li>
+默认值：0px。
+        :type YPos: str
+        :param ImageTemplate: 图片水印模板，当 Type 为 image，该字段必填。当 Type 为 text，该字段无效。
+        :type ImageTemplate: :class:`tencentcloud.vod.v20180717.models.ImageWatermarkInput`
+        :param TextTemplate: 文字水印模板，当 Type 为 text，该字段必填。当 Type 为 image，该字段无效。
+        :type TextTemplate: :class:`tencentcloud.vod.v20180717.models.TextWatermarkTemplate`
+        :param SubAppId: 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
+        :type SubAppId: int
+        """
+        self.Type = None
+        self.Name = None
+        self.Comment = None
+        self.CoordinateOrigin = None
+        self.XPos = None
+        self.YPos = None
+        self.ImageTemplate = None
+        self.TextTemplate = None
+        self.SubAppId = None
+
+
+    def _deserialize(self, params):
+        self.Type = params.get("Type")
+        self.Name = params.get("Name")
+        self.Comment = params.get("Comment")
+        self.CoordinateOrigin = params.get("CoordinateOrigin")
+        self.XPos = params.get("XPos")
+        self.YPos = params.get("YPos")
+        if params.get("ImageTemplate") is not None:
+            self.ImageTemplate = ImageWatermarkInput()
+            self.ImageTemplate._deserialize(params.get("ImageTemplate"))
+        if params.get("TextTemplate") is not None:
+            self.TextTemplate = TextWatermarkTemplate()
+            self.TextTemplate._deserialize(params.get("TextTemplate"))
+        self.SubAppId = params.get("SubAppId")
+
+
+class CreateWatermarkTemplateResponse(AbstractModel):
+    """CreateWatermarkTemplate返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Definition: 水印模板唯一标识。
+        :type Definition: int
+        :param ImageUrl: 水印图片地址，仅当 Type 为 image，该字段有值。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ImageUrl: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Definition = None
+        self.ImageUrl = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Definition = params.get("Definition")
+        self.ImageUrl = params.get("ImageUrl")
+        self.RequestId = params.get("RequestId")
+
+
 class DeleteClassRequest(AbstractModel):
     """DeleteClass请求参数结构体
 
@@ -1653,6 +1862,82 @@ class DeleteMediaRequest(AbstractModel):
 
 class DeleteMediaResponse(AbstractModel):
     """DeleteMedia返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class DeleteTranscodeTemplateRequest(AbstractModel):
+    """DeleteTranscodeTemplate请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Definition: 转码模板唯一标识。
+        :type Definition: int
+        :param SubAppId: 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
+        :type SubAppId: int
+        """
+        self.Definition = None
+        self.SubAppId = None
+
+
+    def _deserialize(self, params):
+        self.Definition = params.get("Definition")
+        self.SubAppId = params.get("SubAppId")
+
+
+class DeleteTranscodeTemplateResponse(AbstractModel):
+    """DeleteTranscodeTemplate返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class DeleteWatermarkTemplateRequest(AbstractModel):
+    """DeleteWatermarkTemplate请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Definition: 水印模板唯一标识。
+        :type Definition: int
+        :param SubAppId: 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
+        :type SubAppId: int
+        """
+        self.Definition = None
+        self.SubAppId = None
+
+
+    def _deserialize(self, params):
+        self.Definition = params.get("Definition")
+        self.SubAppId = params.get("SubAppId")
+
+
+class DeleteWatermarkTemplateResponse(AbstractModel):
+    """DeleteWatermarkTemplate返回参数结构体
 
     """
 
@@ -1965,6 +2250,146 @@ class DescribeTasksResponse(AbstractModel):
                 obj._deserialize(item)
                 self.TaskSet.append(obj)
         self.ScrollToken = params.get("ScrollToken")
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeTranscodeTemplatesRequest(AbstractModel):
+    """DescribeTranscodeTemplates请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Definitions: 转码模板唯一标识过滤条件，数组长度限制：100。
+        :type Definitions: list of int
+        :param Type: 模板类型过滤条件，可选值：
+<li>Preset：系统预置模板；</li>
+<li>Custom：用户自定义模板。</li>
+        :type Type: str
+        :param ContainerType: 封装格式过滤条件，可选值：
+<li>Video：视频格式，可以同时包含视频流和音频流的封装格式板；</li>
+<li>PureAudio：纯音频格式，只能包含音频流的封装格式。</li>
+        :type ContainerType: str
+        :param Offset: 分页偏移量，默认值：0。
+        :type Offset: int
+        :param Limit: 返回记录条数，默认值：10，最大值：100。
+        :type Limit: int
+        :param SubAppId: 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
+        :type SubAppId: int
+        """
+        self.Definitions = None
+        self.Type = None
+        self.ContainerType = None
+        self.Offset = None
+        self.Limit = None
+        self.SubAppId = None
+
+
+    def _deserialize(self, params):
+        self.Definitions = params.get("Definitions")
+        self.Type = params.get("Type")
+        self.ContainerType = params.get("ContainerType")
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+        self.SubAppId = params.get("SubAppId")
+
+
+class DescribeTranscodeTemplatesResponse(AbstractModel):
+    """DescribeTranscodeTemplates返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param TotalCount: 符合过滤条件的记录总数。
+        :type TotalCount: int
+        :param TranscodeTemplateSet: 转码模板详情列表。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TranscodeTemplateSet: list of TranscodeTemplate
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.TranscodeTemplateSet = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("TranscodeTemplateSet") is not None:
+            self.TranscodeTemplateSet = []
+            for item in params.get("TranscodeTemplateSet"):
+                obj = TranscodeTemplate()
+                obj._deserialize(item)
+                self.TranscodeTemplateSet.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeWatermarkTemplatesRequest(AbstractModel):
+    """DescribeWatermarkTemplates请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Definitions: 水印模板唯一标识过滤条件，数组长度限制：100。
+        :type Definitions: list of int
+        :param Type: 水印类型过滤条件，可选值：
+<li>image：图片水印；</li>
+<li>text：文字水印。</li>
+        :type Type: str
+        :param Offset: 分页偏移量，默认值：0。
+        :type Offset: int
+        :param Limit: 返回记录条数
+<li>默认值：10；</li>
+<li>最大值：100。</li>
+        :type Limit: int
+        :param SubAppId: 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
+        :type SubAppId: int
+        """
+        self.Definitions = None
+        self.Type = None
+        self.Offset = None
+        self.Limit = None
+        self.SubAppId = None
+
+
+    def _deserialize(self, params):
+        self.Definitions = params.get("Definitions")
+        self.Type = params.get("Type")
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+        self.SubAppId = params.get("SubAppId")
+
+
+class DescribeWatermarkTemplatesResponse(AbstractModel):
+    """DescribeWatermarkTemplates返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param TotalCount: 符合过滤条件的记录总数。
+        :type TotalCount: int
+        :param WatermarkTemplateSet: 水印模板详情列表。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type WatermarkTemplateSet: list of WatermarkTemplate
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.WatermarkTemplateSet = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("WatermarkTemplateSet") is not None:
+            self.WatermarkTemplateSet = []
+            for item in params.get("WatermarkTemplateSet"):
+                obj = WatermarkTemplate()
+                obj._deserialize(item)
+                self.WatermarkTemplateSet.append(obj)
         self.RequestId = params.get("RequestId")
 
 
@@ -2312,6 +2737,67 @@ class ImageSpriteTaskInput(AbstractModel):
 
     def _deserialize(self, params):
         self.Definition = params.get("Definition")
+
+
+class ImageWatermarkInput(AbstractModel):
+    """图片水印模板输入参数
+
+    """
+
+    def __init__(self):
+        """
+        :param ImageContent: 水印图片 [Base64](https://tools.ietf.org/html/rfc4648) 编码后的字符串。支持 jpeg、png 图片格式。
+        :type ImageContent: str
+        :param Width: 水印的宽度。支持 %、px 两种格式：
+<li>当字符串以 % 结尾，表示水印 Width 为视频宽度的百分比大小，如 10% 表示 Width 为视频宽度的 10%；</li>
+<li>当字符串以 px 结尾，表示水印 Width 单位为像素，如 100px 表示 Width 为 100 像素。</li>
+默认值：10%。
+        :type Width: str
+        :param Height: 水印的高度。支持 %、px 两种格式：
+<li>当字符串以 % 结尾，表示水印 Height 为视频高度的百分比大小，如 10% 表示 Height 为视频高度的 10%；</li>
+<li>当字符串以 px 结尾，表示水印 Width 单位为像素，如 100px 表示 Width 为 100 像素。</li>
+默认值：0px，表示 Height 按照 Width 对视频宽度的比例缩放。
+        :type Height: str
+        """
+        self.ImageContent = None
+        self.Width = None
+        self.Height = None
+
+
+    def _deserialize(self, params):
+        self.ImageContent = params.get("ImageContent")
+        self.Width = params.get("Width")
+        self.Height = params.get("Height")
+
+
+class ImageWatermarkTemplate(AbstractModel):
+    """图片水印模板
+
+    """
+
+    def __init__(self):
+        """
+        :param ImageUrl: 水印图片地址。
+        :type ImageUrl: str
+        :param Width: 水印的宽度。支持 %、px 两种格式：
+<li>当字符串以 % 结尾，表示水印 Width 为视频宽度的百分比大小，如 10% 表示 Width 为视频宽度的 10%；</li>
+<li>当字符串以 px 结尾，表示水印 Width 单位为像素，如 100px 表示 Width 为 100 像素。</li>
+        :type Width: str
+        :param Height: 水印的高度。支持 %、px 两种格式：
+<li>当字符串以 % 结尾，表示水印 Height 为视频高度的百分比大小，如 10% 表示 Height 为视频高度的 10%；</li>
+<li>当字符串以 px 结尾，表示水印 Width 单位为像素，如 100px 表示 Width 为 100 像素；</li>
+0px：表示 Height 按照 Width 对视频宽度的比例缩放。
+        :type Height: str
+        """
+        self.ImageUrl = None
+        self.Width = None
+        self.Height = None
+
+
+    def _deserialize(self, params):
+        self.ImageUrl = params.get("ImageUrl")
+        self.Width = params.get("Width")
+        self.Height = params.get("Height")
 
 
 class LiveRealTimeClipRequest(AbstractModel):
@@ -4048,6 +4534,164 @@ class ModifyMediaInfoResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class ModifyTranscodeTemplateRequest(AbstractModel):
+    """ModifyTranscodeTemplate请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Definition: 转码模板唯一标识。
+        :type Definition: int
+        :param Container: 封装格式，可选值：mp4、flv、hls、mp3、flac、ogg。其中，mp3、flac、ogg 为纯音频文件。
+        :type Container: str
+        :param Name: 转码模板名称，长度限制：64 个字符。
+        :type Name: str
+        :param Comment: 模板描述信息，长度限制：256 个字节。
+        :type Comment: str
+        :param RemoveVideo: 是否去除视频数据，可选值：
+<li>0：保留</li>
+<li>1：去除</li>
+        :type RemoveVideo: int
+        :param RemoveAudio: 是否去除音频数据，可选值：
+<li>0：保留</li>
+<li>1：去除</li>
+        :type RemoveAudio: int
+        :param VideoTemplate: 视频流配置参数。
+        :type VideoTemplate: :class:`tencentcloud.vod.v20180717.models.VideoTemplateInfo`
+        :param AudioTemplate: 音频流配置参数。
+        :type AudioTemplate: :class:`tencentcloud.vod.v20180717.models.AudioTemplateInfo`
+        :param SubAppId: 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
+        :type SubAppId: int
+        """
+        self.Definition = None
+        self.Container = None
+        self.Name = None
+        self.Comment = None
+        self.RemoveVideo = None
+        self.RemoveAudio = None
+        self.VideoTemplate = None
+        self.AudioTemplate = None
+        self.SubAppId = None
+
+
+    def _deserialize(self, params):
+        self.Definition = params.get("Definition")
+        self.Container = params.get("Container")
+        self.Name = params.get("Name")
+        self.Comment = params.get("Comment")
+        self.RemoveVideo = params.get("RemoveVideo")
+        self.RemoveAudio = params.get("RemoveAudio")
+        if params.get("VideoTemplate") is not None:
+            self.VideoTemplate = VideoTemplateInfo()
+            self.VideoTemplate._deserialize(params.get("VideoTemplate"))
+        if params.get("AudioTemplate") is not None:
+            self.AudioTemplate = AudioTemplateInfo()
+            self.AudioTemplate._deserialize(params.get("AudioTemplate"))
+        self.SubAppId = params.get("SubAppId")
+
+
+class ModifyTranscodeTemplateResponse(AbstractModel):
+    """ModifyTranscodeTemplate返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class ModifyWatermarkTemplateRequest(AbstractModel):
+    """ModifyWatermarkTemplate请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Definition: 水印模板唯一标识。
+        :type Definition: int
+        :param Name: 水印模板名称，长度限制：64 个字符。
+        :type Name: str
+        :param Comment: 模板描述信息，长度限制：256 个字符。
+        :type Comment: str
+        :param CoordinateOrigin: 原点位置，可选值：
+<li>topLeft：表示坐标原点位于视频图像左上角，水印原点为图片或文字的左上角；</li>
+<li>topRight：表示坐标原点位于视频图像的右上角，水印原点为图片或文字的右上角；</li>
+<li>bottomLeft：表示坐标原点位于视频图像的左下角，水印原点为图片或文字的左下角；</li>
+<li>bottomRight：表示坐标原点位于视频图像的右下角，水印原点为图片或文字的右下角。</li>
+目前，当 Type 为 image，该字段仅支持 topLeft。
+        :type CoordinateOrigin: str
+        :param XPos: 水印原点距离视频图像坐标原点的水平位置。支持 %、px 两种格式：
+<li>当字符串以 % 结尾，表示水印 Left 为视频宽度指定百分比的位置，如 10% 表示 Left 为视频宽度的 10%；</li>
+<li>当字符串以 px 结尾，表示水印 Left 为视频宽度指定像素的位置，如 100px 表示 Left 为 100 像素。</li>
+        :type XPos: str
+        :param YPos: 水印原点距离视频图像坐标原点的垂直位置。支持 %、px 两种格式：
+<li>当字符串以 % 结尾，表示水印 Top 为视频高度指定百分比的位置，如 10% 表示 Top 为视频高度的 10%；</li>
+<li>当字符串以 px 结尾，表示水印 Top 为视频高度指定像素的位置，如 100px 表示 Top 为 100 像素。</li>
+        :type YPos: str
+        :param ImageTemplate: 图片水印模板，该字段仅对图片水印模板有效。
+        :type ImageTemplate: :class:`tencentcloud.vod.v20180717.models.ImageWatermarkInput`
+        :param TextTemplate: 文字水印模板，该字段仅对文字水印模板有效。
+        :type TextTemplate: :class:`tencentcloud.vod.v20180717.models.TextWatermarkTemplate`
+        :param SubAppId: 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
+        :type SubAppId: int
+        """
+        self.Definition = None
+        self.Name = None
+        self.Comment = None
+        self.CoordinateOrigin = None
+        self.XPos = None
+        self.YPos = None
+        self.ImageTemplate = None
+        self.TextTemplate = None
+        self.SubAppId = None
+
+
+    def _deserialize(self, params):
+        self.Definition = params.get("Definition")
+        self.Name = params.get("Name")
+        self.Comment = params.get("Comment")
+        self.CoordinateOrigin = params.get("CoordinateOrigin")
+        self.XPos = params.get("XPos")
+        self.YPos = params.get("YPos")
+        if params.get("ImageTemplate") is not None:
+            self.ImageTemplate = ImageWatermarkInput()
+            self.ImageTemplate._deserialize(params.get("ImageTemplate"))
+        if params.get("TextTemplate") is not None:
+            self.TextTemplate = TextWatermarkTemplate()
+            self.TextTemplate._deserialize(params.get("TextTemplate"))
+        self.SubAppId = params.get("SubAppId")
+
+
+class ModifyWatermarkTemplateResponse(AbstractModel):
+    """ModifyWatermarkTemplate返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ImageUrl: 图片水印地址，仅当 ImageTemplate.ImageContent 非空，该字段有值。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ImageUrl: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.ImageUrl = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.ImageUrl = params.get("ImageUrl")
+        self.RequestId = params.get("RequestId")
+
+
 class ProcedureTask(AbstractModel):
     """视频处理任务信息
 
@@ -4768,6 +5412,38 @@ class TempCertificate(AbstractModel):
         self.ExpiredTime = params.get("ExpiredTime")
 
 
+class TextWatermarkTemplate(AbstractModel):
+    """文字水印模板
+
+    """
+
+    def __init__(self):
+        """
+        :param FontType: 字体类型，目前仅支持 arial.ttf。
+        :type FontType: str
+        :param FontSize: 字体大小，格式：Npx，N 为数值。
+        :type FontSize: str
+        :param FontColor: 字体颜色，格式：0xRRGGBB，默认值：0xFFFFFF（黑色）。
+        :type FontColor: str
+        :param FontAlpha: 文字透明度，取值范围：(0, 1]
+<li>0：完全透明</li>
+<li>1：完全不透明</li>
+默认值：1。
+        :type FontAlpha: float
+        """
+        self.FontType = None
+        self.FontSize = None
+        self.FontColor = None
+        self.FontAlpha = None
+
+
+    def _deserialize(self, params):
+        self.FontType = params.get("FontType")
+        self.FontSize = params.get("FontSize")
+        self.FontColor = params.get("FontColor")
+        self.FontAlpha = params.get("FontAlpha")
+
+
 class TranscodePlayInfo2017(AbstractModel):
     """视频转码播放信息（2017 版）
 
@@ -4887,6 +5563,141 @@ class TranscodeTaskInput(AbstractModel):
                 self.WatermarkSet.append(obj)
 
 
+class TranscodeTemplate(AbstractModel):
+    """转码模板详情
+
+    """
+
+    def __init__(self):
+        """
+        :param Definition: 转码模板唯一标识。
+        :type Definition: str
+        :param Container: 封装格式，取值：mp4、flv、hls、mp3、flac、ogg。
+        :type Container: str
+        :param Name: 转码模板名称。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Name: str
+        :param Comment: 模板描述信息。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Comment: str
+        :param Type: 模板类型，取值：
+<li>Preset：系统预置模板；</li>
+<li>Custom：用户自定义模板。</li>
+        :type Type: str
+        :param RemoveVideo: 是否去除视频数据，取值：
+<li>0：保留；</li>
+<li>1：去除。</li>
+        :type RemoveVideo: int
+        :param RemoveAudio: 是否去除音频数据，取值：
+<li>0：保留；</li>
+<li>1：去除。</li>
+        :type RemoveAudio: int
+        :param VideoTemplate: 视频流配置参数，仅当 RemoveVideo 为 0，该字段有效。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type VideoTemplate: :class:`tencentcloud.vod.v20180717.models.VideoTemplateInfo`
+        :param AudioTemplate: 音频流配置参数，仅当 RemoveAudio 为 0，该字段有效 。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AudioTemplate: :class:`tencentcloud.vod.v20180717.models.AudioTemplateInfo`
+        :param ContainerType: 封装格式过滤条件，可选值：
+<li>Video：视频格式，可以同时包含视频流和音频流的封装格式；</li>
+<li>PureAudio：纯音频格式，只能包含音频流的封装格式板。</li>
+        :type ContainerType: str
+        :param CreateTime: 模板创建时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F)。
+        :type CreateTime: str
+        :param UpdateTime: 模板最后修改时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F)。
+        :type UpdateTime: str
+        """
+        self.Definition = None
+        self.Container = None
+        self.Name = None
+        self.Comment = None
+        self.Type = None
+        self.RemoveVideo = None
+        self.RemoveAudio = None
+        self.VideoTemplate = None
+        self.AudioTemplate = None
+        self.ContainerType = None
+        self.CreateTime = None
+        self.UpdateTime = None
+
+
+    def _deserialize(self, params):
+        self.Definition = params.get("Definition")
+        self.Container = params.get("Container")
+        self.Name = params.get("Name")
+        self.Comment = params.get("Comment")
+        self.Type = params.get("Type")
+        self.RemoveVideo = params.get("RemoveVideo")
+        self.RemoveAudio = params.get("RemoveAudio")
+        if params.get("VideoTemplate") is not None:
+            self.VideoTemplate = VideoTemplateInfo()
+            self.VideoTemplate._deserialize(params.get("VideoTemplate"))
+        if params.get("AudioTemplate") is not None:
+            self.AudioTemplate = AudioTemplateInfo()
+            self.AudioTemplate._deserialize(params.get("AudioTemplate"))
+        self.ContainerType = params.get("ContainerType")
+        self.CreateTime = params.get("CreateTime")
+        self.UpdateTime = params.get("UpdateTime")
+
+
+class VideoTemplateInfo(AbstractModel):
+    """视频流配置参数
+
+    """
+
+    def __init__(self):
+        """
+        :param Codec: 视频流的编码格式，可选值：
+<li>libx264：H.264 编码</li>
+<li>libx265：H.265 编码</li>
+目前 H.265 编码必须指定分辨率，并且需要在 640*480 以内。
+        :type Codec: str
+        :param Fps: 视频帧率，取值范围：[0, 60],单位：Hz。
+当取值为 0，表示帧率和原始视频保持一致。
+        :type Fps: int
+        :param Bitrate: 视频流的码率，取值范围：0 和 [128, 35000]，单位：kbps。
+当取值为 0，表示视频码率和原始视频保持一致。
+        :type Bitrate: int
+        :param ResolutionAdaptive: 分辨率自适应，可选值：
+<li>open：开启，此时，Width 代表视频的宽度，Height 表示视频的高度；</li>
+<li>close：关闭，此时，Width 代表视频的长边，Height 表示视频的短边。</li>
+默认值：open。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ResolutionAdaptive: str
+        :param Width: 视频流宽度（或长边）的最大值，取值范围：0 和 [128, 4096]，单位：px。
+<li>当 Width、Height 均为 0，则分辨率同源；</li>
+<li>当 Width 为 0，Height 非 0，则 Width 按比例缩放；</li>
+<li>当 Width 非 0，Height 为 0，则 Height 按比例缩放；</li>
+<li>当 Width、Height 均非 0，则分辨率按用户指定。</li>
+默认值：0。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Width: int
+        :param Height: 视频流高度（或短边）的最大值，取值范围：0 和 [128, 4096]，单位：px。
+<li>当 Width、Height 均为 0，则分辨率同源；</li>
+<li>当 Width 为 0，Height 非 0，则 Width 按比例缩放；</li>
+<li>当 Width 非 0，Height 为 0，则 Height 按比例缩放；</li>
+<li>当 Width、Height 均非 0，则分辨率按用户指定。</li>
+默认值：0。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Height: int
+        """
+        self.Codec = None
+        self.Fps = None
+        self.Bitrate = None
+        self.ResolutionAdaptive = None
+        self.Width = None
+        self.Height = None
+
+
+    def _deserialize(self, params):
+        self.Codec = params.get("Codec")
+        self.Fps = params.get("Fps")
+        self.Bitrate = params.get("Bitrate")
+        self.ResolutionAdaptive = params.get("ResolutionAdaptive")
+        self.Width = params.get("Width")
+        self.Height = params.get("Height")
+
+
 class WatermarkInput(AbstractModel):
     """视频处理任务中的水印参数类型
 
@@ -4906,6 +5717,80 @@ class WatermarkInput(AbstractModel):
     def _deserialize(self, params):
         self.Definition = params.get("Definition")
         self.TextContent = params.get("TextContent")
+
+
+class WatermarkTemplate(AbstractModel):
+    """水印模板详情
+
+    """
+
+    def __init__(self):
+        """
+        :param Definition: 水印模板唯一标识。
+        :type Definition: int
+        :param Type: 水印类型，取值：
+<li>image：图片水印；</li>
+<li>text：文字水印。</li>
+        :type Type: str
+        :param Name: 水印模板名称。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Name: str
+        :param Comment: 模板描述信息。
+        :type Comment: str
+        :param XPos: 水印图片原点距离视频图像原点的水平位置。
+<li>当字符串以 % 结尾，表示水印 Left 为视频宽度指定百分比的位置，如 10% 表示 Left 为视频宽度的 10%；</li>
+<li>当字符串以 px 结尾，表示水印 Left 为视频宽度指定像素的位置，如 100px 表示 Left 为 100 像素。</li>
+        :type XPos: str
+        :param YPos: 水印图片原点距离视频图像原点的垂直位置。
+<li>当字符串以 % 结尾，表示水印 Top 为视频高度指定百分比的位置，如 10% 表示 Top 为视频高度的 10%；</li>
+<li>当字符串以 px 结尾，表示水印 Top 为视频高度指定像素的位置，如 100px 表示 Top 为 100 像素。</li>
+        :type YPos: str
+        :param ImageTemplate: 图片水印模板，仅当 Type 为 image，该字段有值。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ImageTemplate: :class:`tencentcloud.vod.v20180717.models.ImageWatermarkTemplate`
+        :param TextTemplate: 文字水印模板，仅当 Type 为 text，该字段有值。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TextTemplate: :class:`tencentcloud.vod.v20180717.models.TextWatermarkTemplate`
+        :param CreateTime: 模板创建时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F)。
+        :type CreateTime: str
+        :param UpdateTime: 模板最后修改时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F)。
+        :type UpdateTime: str
+        :param CoordinateOrigin: 原点位置，可选值：
+<li>topLeft：表示坐标原点位于视频图像左上角，水印原点为图片或文字的左上角；</li>
+<li>topRight：表示坐标原点位于视频图像的右上角，水印原点为图片或文字的右上角；</li>
+<li>bottomLeft：表示坐标原点位于视频图像的左下角，水印原点为图片或文字的左下角；</li>
+<li>bottomRight：表示坐标原点位于视频图像的右下角，水印原点为图片或文字的右下。；</li>
+        :type CoordinateOrigin: str
+        """
+        self.Definition = None
+        self.Type = None
+        self.Name = None
+        self.Comment = None
+        self.XPos = None
+        self.YPos = None
+        self.ImageTemplate = None
+        self.TextTemplate = None
+        self.CreateTime = None
+        self.UpdateTime = None
+        self.CoordinateOrigin = None
+
+
+    def _deserialize(self, params):
+        self.Definition = params.get("Definition")
+        self.Type = params.get("Type")
+        self.Name = params.get("Name")
+        self.Comment = params.get("Comment")
+        self.XPos = params.get("XPos")
+        self.YPos = params.get("YPos")
+        if params.get("ImageTemplate") is not None:
+            self.ImageTemplate = ImageWatermarkTemplate()
+            self.ImageTemplate._deserialize(params.get("ImageTemplate"))
+        if params.get("TextTemplate") is not None:
+            self.TextTemplate = TextWatermarkTemplate()
+            self.TextTemplate._deserialize(params.get("TextTemplate"))
+        self.CreateTime = params.get("CreateTime")
+        self.UpdateTime = params.get("UpdateTime")
+        self.CoordinateOrigin = params.get("CoordinateOrigin")
 
 
 class WechatPublishTask(AbstractModel):

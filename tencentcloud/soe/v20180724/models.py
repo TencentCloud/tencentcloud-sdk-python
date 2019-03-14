@@ -45,6 +45,8 @@ class InitOralProcessRequest(AbstractModel):
         :type ServerType: int
         :param IsAsync: 异步模式标识，0：同步模式，1：异步模式。
         :type IsAsync: int
+        :param TextMode: 输入文本模式，0: 普通文本，1: 音素结构文本
+        :type TextMode: int
         """
         self.SessionId = None
         self.RefText = None
@@ -57,6 +59,7 @@ class InitOralProcessRequest(AbstractModel):
         self.SentenceInfoEnabled = None
         self.ServerType = None
         self.IsAsync = None
+        self.TextMode = None
 
 
     def _deserialize(self, params):
@@ -71,6 +74,7 @@ class InitOralProcessRequest(AbstractModel):
         self.SentenceInfoEnabled = params.get("SentenceInfoEnabled")
         self.ServerType = params.get("ServerType")
         self.IsAsync = params.get("IsAsync")
+        self.TextMode = params.get("TextMode")
 
 
 class InitOralProcessResponse(AbstractModel):
@@ -316,6 +320,8 @@ class TransmitOralProcessWithInitRequest(AbstractModel):
         :type IsAsync: int
         :param IsQuery: 查询标识，当该参数为1时，该请求为查询请求，请求返回该 Session 评估结果。
         :type IsQuery: int
+        :param TextMode: 输入文本模式，0: 普通文本，1: 音素结构文本
+        :type TextMode: int
         """
         self.SeqId = None
         self.IsEnd = None
@@ -333,6 +339,7 @@ class TransmitOralProcessWithInitRequest(AbstractModel):
         self.ServerType = None
         self.IsAsync = None
         self.IsQuery = None
+        self.TextMode = None
 
 
     def _deserialize(self, params):
@@ -352,6 +359,7 @@ class TransmitOralProcessWithInitRequest(AbstractModel):
         self.ServerType = params.get("ServerType")
         self.IsAsync = params.get("IsAsync")
         self.IsQuery = params.get("IsQuery")
+        self.TextMode = params.get("TextMode")
 
 
 class TransmitOralProcessWithInitResponse(AbstractModel):
