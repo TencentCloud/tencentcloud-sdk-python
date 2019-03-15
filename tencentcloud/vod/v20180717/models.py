@@ -267,7 +267,6 @@ class AiAnalysisTaskTagOutput(AbstractModel):
         """
         self.TagSet = None
 
-
     def _deserialize(self, params):
         if params.get("TagSet") is not None:
             self.TagSet = []
