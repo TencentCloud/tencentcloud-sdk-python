@@ -270,9 +270,11 @@ class AiAnalysisTaskTagOutput(AbstractModel):
 
     def _deserialize(self, params):
         if params.get("TagSet") is not None:
-            self.TagSet = MediaAiAnalysisTagItem()
-            self.TagSet._deserialize(params.get("TagSet"))
-
+            self.TagSet = []
+            for item in params.get("TagSet"):
+                obj = MediaAiAnalysisTagItem()
+                obj._deserialize(item)
+                self.TagSet.append(obj)
 
 class AiAnalysisTaskTagResult(AbstractModel):
     """智能标签结果类型
@@ -310,11 +312,8 @@ class AiAnalysisTaskTagResult(AbstractModel):
             self.Input = AiAnalysisTaskTagInput()
             self.Input._deserialize(params.get("Input"))
         if params.get("Output") is not None:
-            self.Output = []
-            for item in params.get("Output"):
-                obj = AiAnalysisTaskTagOutput()
-                obj._deserialize(item)
-                self.Output.append(obj)
+            self.Output = AiAnalysisTaskTagOutput()
+            self.Output._deserialize(params.get("Output"))
 
 
 class AiContentReviewResult(AbstractModel):
