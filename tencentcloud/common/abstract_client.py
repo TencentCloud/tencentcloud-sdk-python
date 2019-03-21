@@ -57,6 +57,9 @@ class AbstractClient(object):
         self.credential = credential
         self.region = region
         self.profile = ClientProfile() if profile is None else profile
+        self.request = ApiRequest(self._get_endpoint(), self.profile.httpProfile.reqTimeout)
+        if self.profile.httpProfile.keepAlive:
+            self.request.set_keep_alive()
 
         # self.secretId = self.credential.secretId
         # self.secretKey = self.credential.secretKey
@@ -278,9 +281,7 @@ class AbstractClient(object):
                                     self._requestPath)
         self._build_req_inter(action, params, req_inter, options)
 
-        apiRequest = ApiRequest(self._get_endpoint(), self.profile.httpProfile.reqTimeout)
-
-        resp_inter = apiRequest.send_request(req_inter)
+        resp_inter = self.request.send_request(req_inter)
         self._check_status(resp_inter)
         data = resp_inter.data
         if sys.version_info[0] > 2:

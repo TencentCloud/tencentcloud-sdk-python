@@ -56,24 +56,31 @@ class ApiRequest(object):
     def is_keep_alive(self):
         return self.keep_alive
 
+    def set_keep_alive(self, flag=True):
+        self.keep_alive = flag
+
     def set_debug(self, debug):
         self.debug = debug
 
+    def _request(self, req_inter):
+        if self.keep_alive:
+            req_inter.header["Connection"] = "Keep-Alive"
+        if self.debug:
+            print("SendRequest %s" % req_inter)
+        if req_inter.method == 'GET':
+            req_inter_url = '%s?%s' % (req_inter.uri, req_inter.data)
+            self.conn.request(req_inter.method, req_inter_url,
+                              None, req_inter.header)
+        elif req_inter.method == 'POST':
+            self.conn.request(req_inter.method, req_inter.uri,
+                              req_inter.data, req_inter.header)
+        else:
+            raise TencentCloudSDKException(
+                "ClientParamsError", 'Method only support (GET, POST)')
+
     def send_request(self, req_inter):
         try:
-            if self.debug:
-                print("SendRequest %s" % req_inter)
-            if req_inter.method == 'GET':
-                req_inter_url = '%s?%s' % (req_inter.uri, req_inter.data)
-                self.conn.request(req_inter.method, req_inter_url,
-                                  None, req_inter.header)
-            elif req_inter.method == 'POST':
-                self.conn.request(req_inter.method, req_inter.uri,
-                                  req_inter.data, req_inter.header)
-            else:
-                raise TencentCloudSDKException(
-                    "ClientParamsError", 'Method only support (GET, POST)')
-
+            self._request(req_inter)
             try:
                 http_resp = self.conn.getresponse()
             except BadStatusLine:
@@ -83,10 +90,7 @@ class ApiRequest(object):
                 if self.debug:
                     print("keep-alive timeout, reopen connection")
                 self.conn.close()
-
-                self.conn.request(req_inter.method, req_inter.uri,
-                                  req_inter.data, req_inter.header)
-
+                self._request(req_inter)
                 http_resp = self.conn.getresponse()
             headers = dict(http_resp.getheaders())
             resp_inter = ResponseInternal(status=http_resp.status,
