@@ -16,6 +16,74 @@
 from tencentcloud.common.abstract_model import AbstractModel
 
 
+class BankCardVerificationRequest(AbstractModel):
+    """BankCardVerification请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param IdCard: 身份证号
+        :type IdCard: str
+        :param Name: 姓名
+        :type Name: str
+        :param BankCard: 银行卡
+        :type BankCard: str
+        """
+        self.IdCard = None
+        self.Name = None
+        self.BankCard = None
+
+
+    def _deserialize(self, params):
+        self.IdCard = params.get("IdCard")
+        self.Name = params.get("Name")
+        self.BankCard = params.get("BankCard")
+
+
+class BankCardVerificationResponse(AbstractModel):
+    """BankCardVerification返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Result: 认证结果码。
+'0': '认证通过'
+'-1': '认证未通过'
+'-2': '姓名校验不通过'
+'-3': '身份证号码有误'
+'-4': '银行卡号码有误'
+'-5': '持卡人信息有误'
+'-6': '未开通无卡支付'
+'-7': '此卡被没收'
+'-8': '无效卡号'
+'-9': '此卡无对应发卡行'
+'-10': '该卡未初始化或睡眠卡'
+'-11': '作弊卡、吞卡'
+'-12': '此卡已挂失'
+'-13': '该卡已过期'
+'-14': '受限制的卡'
+'-15': '密码错误次数超限'
+'-16': '发卡行不支持此交易'
+'-17': '服务繁忙'
+        :type Result: str
+        :param Description: 认证结果信息。
+        :type Description: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Result = None
+        self.Description = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Result = params.get("Result")
+        self.Description = params.get("Description")
+        self.RequestId = params.get("RequestId")
+
+
 class DetectAuthRequest(AbstractModel):
     """DetectAuth请求参数结构体
 

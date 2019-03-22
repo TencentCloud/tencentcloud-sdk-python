@@ -25,6 +25,34 @@ class CdbClient(AbstractClient):
     _endpoint = 'cdb.tencentcloudapi.com'
 
 
+    def AddTimeWindow(self, request):
+        """本接口(AddTimeWindow)用于添加云数据库实例的维护时间窗口，以指定实例在哪些时间段可以自动执行切换访问操作。
+
+        :param request: 调用AddTimeWindow所需参数的结构体。
+        :type request: :class:`tencentcloud.cdb.v20170320.models.AddTimeWindowRequest`
+        :rtype: :class:`tencentcloud.cdb.v20170320.models.AddTimeWindowResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("AddTimeWindow", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.AddTimeWindowResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def AssociateSecurityGroups(self, request):
         """本接口(AssociateSecurityGroups)用于安全组批量绑定实例。
 
@@ -337,6 +365,34 @@ class CdbClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteParamTemplateResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DeleteTimeWindow(self, request):
+        """本接口(DeleteTimeWindow)用于删除云数据库实例的维护时间窗口。删除实例维护时间窗口之后，默认的维护时间窗为 03:00-04:00，即当选择在维护时间窗口内切换访问新实例时，默认会在03:00-04:00点进行切换访问新实例。
+
+        :param request: 调用DeleteTimeWindow所需参数的结构体。
+        :type request: :class:`tencentcloud.cdb.v20170320.models.DeleteTimeWindowRequest`
+        :rtype: :class:`tencentcloud.cdb.v20170320.models.DeleteTimeWindowResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DeleteTimeWindow", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DeleteTimeWindowResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -1249,6 +1305,34 @@ class CdbClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeTimeWindow(self, request):
+        """本接口(DescribeTimeWindow)用于查询云数据库实例的维护时间窗口。
+
+        :param request: 调用DescribeTimeWindow所需参数的结构体。
+        :type request: :class:`tencentcloud.cdb.v20170320.models.DescribeTimeWindowRequest`
+        :rtype: :class:`tencentcloud.cdb.v20170320.models.DescribeTimeWindowResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeTimeWindow", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeTimeWindowResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeUploadedFiles(self, request):
         """本接口(DescribeUploadedFiles)用于查询用户导入的SQL文件列表。
 
@@ -1711,6 +1795,34 @@ class CdbClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyParamTemplateResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ModifyTimeWindow(self, request):
+        """本接口(ModifyTimeWindow)用于更新云数据库实例的维护时间窗口。
+
+        :param request: 调用ModifyTimeWindow所需参数的结构体。
+        :type request: :class:`tencentcloud.cdb.v20170320.models.ModifyTimeWindowRequest`
+        :rtype: :class:`tencentcloud.cdb.v20170320.models.ModifyTimeWindowResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ModifyTimeWindow", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ModifyTimeWindowResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

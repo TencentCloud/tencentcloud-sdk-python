@@ -31,11 +31,17 @@ class Code(AbstractModel):
         :type ZipFile: str
         :param CosBucketRegion: 对象存储的地域，地域为北京时需要传入ap-beijing,北京一区时需要传递ap-beijing-1，其他的地域不需要传递。
         :type CosBucketRegion: str
+        :param DemoId: 如果是通过Demo创建的话，需要传入DemoId
+        :type DemoId: str
+        :param TempCosObjectName: 如果是从TempCos创建的话，需要传入TempCosObjectName
+        :type TempCosObjectName: str
         """
         self.CosBucketName = None
         self.CosObjectName = None
         self.ZipFile = None
         self.CosBucketRegion = None
+        self.DemoId = None
+        self.TempCosObjectName = None
 
 
     def _deserialize(self, params):
@@ -43,6 +49,62 @@ class Code(AbstractModel):
         self.CosObjectName = params.get("CosObjectName")
         self.ZipFile = params.get("ZipFile")
         self.CosBucketRegion = params.get("CosBucketRegion")
+        self.DemoId = params.get("DemoId")
+        self.TempCosObjectName = params.get("TempCosObjectName")
+
+
+class CopyFunctionRequest(AbstractModel):
+    """CopyFunction请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param FunctionName: 函数名
+        :type FunctionName: str
+        :param NewFunctionName: 新函数的名称
+        :type NewFunctionName: str
+        :param Namespace: 命名空间，默认为default
+        :type Namespace: str
+        :param TargetNamespace: 将函数复制到的命名空间，默认为default
+        :type TargetNamespace: str
+        :param Description: 函数描述
+        :type Description: str
+        :param TargetRegion: 要将函数复制到的地域，不填则默认为当前地域
+        :type TargetRegion: str
+        """
+        self.FunctionName = None
+        self.NewFunctionName = None
+        self.Namespace = None
+        self.TargetNamespace = None
+        self.Description = None
+        self.TargetRegion = None
+
+
+    def _deserialize(self, params):
+        self.FunctionName = params.get("FunctionName")
+        self.NewFunctionName = params.get("NewFunctionName")
+        self.Namespace = params.get("Namespace")
+        self.TargetNamespace = params.get("TargetNamespace")
+        self.Description = params.get("Description")
+        self.TargetRegion = params.get("TargetRegion")
+
+
+class CopyFunctionResponse(AbstractModel):
+    """CopyFunction返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
 
 
 class CreateFunctionRequest(AbstractModel):
@@ -70,6 +132,10 @@ class CreateFunctionRequest(AbstractModel):
         :type Runtime: str
         :param VpcConfig: 函数的私有网络配置
         :type VpcConfig: :class:`tencentcloud.scf.v20180416.models.VpcConfig`
+        :param ClsLogsetId: 函数日志投递到的CLS LogsetID
+        :type ClsLogsetId: str
+        :param ClsTopicId: 函数日志投递到的CLS TopicID
+        :type ClsTopicId: str
         """
         self.FunctionName = None
         self.Code = None
@@ -80,6 +146,8 @@ class CreateFunctionRequest(AbstractModel):
         self.Environment = None
         self.Runtime = None
         self.VpcConfig = None
+        self.ClsLogsetId = None
+        self.ClsTopicId = None
 
 
     def _deserialize(self, params):
@@ -98,6 +166,8 @@ class CreateFunctionRequest(AbstractModel):
         if params.get("VpcConfig") is not None:
             self.VpcConfig = VpcConfig()
             self.VpcConfig._deserialize(params.get("VpcConfig"))
+        self.ClsLogsetId = params.get("ClsLogsetId")
+        self.ClsTopicId = params.get("ClsTopicId")
 
 
 class CreateFunctionResponse(AbstractModel):
@@ -107,7 +177,7 @@ class CreateFunctionResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.RequestId = None
@@ -128,18 +198,21 @@ class CreateTriggerRequest(AbstractModel):
         :type FunctionName: str
         :param TriggerName: 新建触发器名称。如果是定时触发器，名称支持英文字母、数字、连接符和下划线，最长100个字符；如果是其他触发器，见具体触发器绑定参数的说明
         :type TriggerName: str
-        :param Type: 触发器类型，目前支持 cos 、cmq、 timers、 ckafka类型
+        :param Type: 触发器类型，目前支持 cos 、cmq、 timer、 ckafka类型
         :type Type: str
         :param TriggerDesc: 触发器对应的参数，如果是 timer 类型的触发器其内容是 Linux cron 表达式，如果是其他触发器，见具体触发器说明
         :type TriggerDesc: str
         :param Qualifier: 函数的版本
         :type Qualifier: str
+        :param Enable: 触发器的初始是能状态 OPEN表示开启 CLOSE表示关闭
+        :type Enable: str
         """
         self.FunctionName = None
         self.TriggerName = None
         self.Type = None
         self.TriggerDesc = None
         self.Qualifier = None
+        self.Enable = None
 
 
     def _deserialize(self, params):
@@ -148,6 +221,7 @@ class CreateTriggerRequest(AbstractModel):
         self.Type = params.get("Type")
         self.TriggerDesc = params.get("TriggerDesc")
         self.Qualifier = params.get("Qualifier")
+        self.Enable = params.get("Enable")
 
 
 class CreateTriggerResponse(AbstractModel):
@@ -157,13 +231,19 @@ class CreateTriggerResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :param TriggerInfo: 触发器信息
+        :type TriggerInfo: :class:`tencentcloud.scf.v20180416.models.Trigger`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
+        self.TriggerInfo = None
         self.RequestId = None
 
 
     def _deserialize(self, params):
+        if params.get("TriggerInfo") is not None:
+            self.TriggerInfo = Trigger()
+            self.TriggerInfo._deserialize(params.get("TriggerInfo"))
         self.RequestId = params.get("RequestId")
 
 
@@ -191,7 +271,7 @@ class DeleteFunctionResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.RequestId = None
@@ -241,7 +321,7 @@ class DeleteTriggerResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.RequestId = None
@@ -274,20 +354,26 @@ class Environment(AbstractModel):
 
 
 class Filter(AbstractModel):
-    """日志过滤条件，用于区分正确与错误日志
+    """描述键值对过滤器，用于条件过滤查询。例如过滤ID、名称、状态等
+    若存在多个Filter时，Filter间的关系为逻辑与（AND）关系。
+    若同一个Filter存在多个Values，同一Filter下Values间的关系为逻辑或（OR）关系。
 
     """
 
     def __init__(self):
         """
-        :param RetCode: filter.RetCode=not0 表示只返回错误日志，filter.RetCode=is0 表示只返回正确日志，无输入则返回所有日志。
-        :type RetCode: str
+        :param Name: 需要过滤的字段。
+        :type Name: str
+        :param Values: 字段的过滤值。
+        :type Values: list of str
         """
-        self.RetCode = None
+        self.Name = None
+        self.Values = None
 
 
     def _deserialize(self, params):
-        self.RetCode = params.get("RetCode")
+        self.Name = params.get("Name")
+        self.Values = params.get("Values")
 
 
 class Function(AbstractModel):
@@ -309,6 +395,14 @@ class Function(AbstractModel):
         :type FunctionId: str
         :param Namespace: 命名空间
         :type Namespace: str
+        :param Status: 函数状态
+        :type Status: str
+        :param StatusDesc: 函数状态详情
+        :type StatusDesc: str
+        :param Description: 函数描述
+        :type Description: str
+        :param Tags: 函数标签
+        :type Tags: list of Tag
         """
         self.ModTime = None
         self.AddTime = None
@@ -316,6 +410,10 @@ class Function(AbstractModel):
         self.FunctionName = None
         self.FunctionId = None
         self.Namespace = None
+        self.Status = None
+        self.StatusDesc = None
+        self.Description = None
+        self.Tags = None
 
 
     def _deserialize(self, params):
@@ -325,6 +423,15 @@ class Function(AbstractModel):
         self.FunctionName = params.get("FunctionName")
         self.FunctionId = params.get("FunctionId")
         self.Namespace = params.get("Namespace")
+        self.Status = params.get("Status")
+        self.StatusDesc = params.get("StatusDesc")
+        self.Description = params.get("Description")
+        if params.get("Tags") is not None:
+            self.Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self.Tags.append(obj)
 
 
 class FunctionLog(AbstractModel):
@@ -393,12 +500,12 @@ class GetFunctionLogsRequest(AbstractModel):
         :type Offset: int
         :param Limit: 返回数据的长度，Offset+Limit不能大于10000
         :type Limit: int
-        :param Order: 以升序还是降序的方式对日志进行排序，可选值 desc和 acs
+        :param Order: 以升序还是降序的方式对日志进行排序，可选值 desc和 asc
         :type Order: str
-        :param OrderBy: 根据某个字段排序日志,支持以下字段：startTime、functionName、requestId、duration和 memUsage
+        :param OrderBy: 根据某个字段排序日志,支持以下字段：function_name, duration, mem_usage, start_time
         :type OrderBy: str
         :param Filter: 日志过滤条件。可用来区分正确和错误日志，filter.retCode=not0 表示只返回错误日志，filter.retCode=is0 表示只返回正确日志，不传，则返回所有日志
-        :type Filter: :class:`tencentcloud.scf.v20180416.models.Filter`
+        :type Filter: :class:`tencentcloud.scf.v20180416.models.LogFilter`
         :param Qualifier: 函数的版本
         :type Qualifier: str
         :param FunctionRequestId: 执行该函数对应的requestId
@@ -427,7 +534,7 @@ class GetFunctionLogsRequest(AbstractModel):
         self.Order = params.get("Order")
         self.OrderBy = params.get("OrderBy")
         if params.get("Filter") is not None:
-            self.Filter = Filter()
+            self.Filter = LogFilter()
             self.Filter._deserialize(params.get("Filter"))
         self.Qualifier = params.get("Qualifier")
         self.FunctionRequestId = params.get("FunctionRequestId")
@@ -446,7 +553,7 @@ class GetFunctionLogsResponse(AbstractModel):
         :type TotalCount: int
         :param Data: 函数日志信息
         :type Data: list of FunctionLog
-        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.TotalCount = None
@@ -535,7 +642,21 @@ class GetFunctionResponse(AbstractModel):
         :type Namespace: str
         :param Role: 函数绑定的角色
         :type Role: str
-        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :param InstallDependency: 是否自动安装依赖
+        :type InstallDependency: str
+        :param Status: 函数状态
+        :type Status: str
+        :param StatusDesc: 状态描述
+        :type StatusDesc: str
+        :param ClsLogsetId: 日志投递到的Cls日志集
+        :type ClsLogsetId: str
+        :param ClsTopicId: 日志投递到的Cls Topic
+        :type ClsTopicId: str
+        :param FunctionId: 函数ID
+        :type FunctionId: str
+        :param Tags: 函数的标签列表
+        :type Tags: list of Tag
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.ModTime = None
@@ -557,6 +678,13 @@ class GetFunctionResponse(AbstractModel):
         self.ErrNo = None
         self.Namespace = None
         self.Role = None
+        self.InstallDependency = None
+        self.Status = None
+        self.StatusDesc = None
+        self.ClsLogsetId = None
+        self.ClsTopicId = None
+        self.FunctionId = None
+        self.Tags = None
         self.RequestId = None
 
 
@@ -589,6 +717,18 @@ class GetFunctionResponse(AbstractModel):
         self.ErrNo = params.get("ErrNo")
         self.Namespace = params.get("Namespace")
         self.Role = params.get("Role")
+        self.InstallDependency = params.get("InstallDependency")
+        self.Status = params.get("Status")
+        self.StatusDesc = params.get("StatusDesc")
+        self.ClsLogsetId = params.get("ClsLogsetId")
+        self.ClsTopicId = params.get("ClsTopicId")
+        self.FunctionId = params.get("FunctionId")
+        if params.get("Tags") is not None:
+            self.Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self.Tags.append(obj)
         self.RequestId = params.get("RequestId")
 
 
@@ -638,7 +778,7 @@ class InvokeResponse(AbstractModel):
         """
         :param Result: 函数执行结果
         :type Result: :class:`tencentcloud.scf.v20180416.models.Result`
-        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.Result = None
@@ -669,12 +809,21 @@ class ListFunctionsRequest(AbstractModel):
         :type Limit: int
         :param SearchKey: 支持FunctionName模糊匹配
         :type SearchKey: str
+        :param Description: 函数描述，支持模糊搜索
+        :type Description: str
+        :param Filters: 过滤条件。
+- tag:tag-key - String - 是否必填：否 - （过滤条件）按照标签键值对进行过滤。 tag-key使用具体的标签键进行替换。
+
+每次请求的Filters的上限为10，Filter.Values的上限为5。
+        :type Filters: list of Filter
         """
         self.Order = None
         self.Orderby = None
         self.Offset = None
         self.Limit = None
         self.SearchKey = None
+        self.Description = None
+        self.Filters = None
 
 
     def _deserialize(self, params):
@@ -683,6 +832,13 @@ class ListFunctionsRequest(AbstractModel):
         self.Offset = params.get("Offset")
         self.Limit = params.get("Limit")
         self.SearchKey = params.get("SearchKey")
+        self.Description = params.get("Description")
+        if params.get("Filters") is not None:
+            self.Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self.Filters.append(obj)
 
 
 class ListFunctionsResponse(AbstractModel):
@@ -696,7 +852,7 @@ class ListFunctionsResponse(AbstractModel):
         :type Functions: list of Function
         :param TotalCount: 总数
         :type TotalCount: int
-        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.Functions = None
@@ -713,6 +869,23 @@ class ListFunctionsResponse(AbstractModel):
                 self.Functions.append(obj)
         self.TotalCount = params.get("TotalCount")
         self.RequestId = params.get("RequestId")
+
+
+class LogFilter(AbstractModel):
+    """日志过滤条件，用于区分正确与错误日志
+
+    """
+
+    def __init__(self):
+        """
+        :param RetCode: filter.RetCode=not0 表示只返回错误日志，filter.RetCode=is0 表示只返回正确日志，无输入则返回所有日志。
+        :type RetCode: str
+        """
+        self.RetCode = None
+
+
+    def _deserialize(self, params):
+        self.RetCode = params.get("RetCode")
 
 
 class Result(AbstractModel):
@@ -760,6 +933,27 @@ class Result(AbstractModel):
         self.InvokeResult = params.get("InvokeResult")
 
 
+class Tag(AbstractModel):
+    """函数标签
+
+    """
+
+    def __init__(self):
+        """
+        :param Key: 标签的key
+        :type Key: str
+        :param Value: 标签的value
+        :type Value: str
+        """
+        self.Key = None
+        self.Value = None
+
+
+    def _deserialize(self, params):
+        self.Key = params.get("Key")
+        self.Value = params.get("Value")
+
+
 class Trigger(AbstractModel):
     """触发器类型
 
@@ -777,12 +971,18 @@ class Trigger(AbstractModel):
         :type TriggerName: str
         :param AddTime: 触发器创建时间
         :type AddTime: str
+        :param Enable: 使能开关
+        :type Enable: int
+        :param CustomArgument: 客户自定义参数
+        :type CustomArgument: str
         """
         self.ModTime = None
         self.Type = None
         self.TriggerDesc = None
         self.TriggerName = None
         self.AddTime = None
+        self.Enable = None
+        self.CustomArgument = None
 
 
     def _deserialize(self, params):
@@ -791,6 +991,8 @@ class Trigger(AbstractModel):
         self.TriggerDesc = params.get("TriggerDesc")
         self.TriggerName = params.get("TriggerName")
         self.AddTime = params.get("AddTime")
+        self.Enable = params.get("Enable")
+        self.CustomArgument = params.get("CustomArgument")
 
 
 class UpdateFunctionCodeRequest(AbstractModel):
@@ -810,7 +1012,7 @@ class UpdateFunctionCodeRequest(AbstractModel):
         :type CosObjectName: str
         :param ZipFile: 包含函数代码文件及其依赖项的 zip 格式文件，使用该接口时要求将 zip 文件的内容转成 base64 编码，最大支持20M
         :type ZipFile: str
-        :param CosBucketRegion: 对象存储的地域，地域为北京时需要传入ap-beijing,北京一区时需要传递ap-beijing-1，其他的地域不需要传递。
+        :param CosBucketRegion: 对象存储的地域，注：北京分为ap-beijing和ap-beijing-1
         :type CosBucketRegion: str
         """
         self.Handler = None
@@ -837,7 +1039,7 @@ class UpdateFunctionCodeResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.RequestId = None
@@ -899,7 +1101,7 @@ class UpdateFunctionConfigurationResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.RequestId = None

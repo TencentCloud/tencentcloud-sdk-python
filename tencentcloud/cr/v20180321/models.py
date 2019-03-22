@@ -67,6 +67,159 @@ class ApplyBlackListResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class ApplyCreditAuditRequest(AbstractModel):
+    """ApplyCreditAudit请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Module: 模块
+        :type Module: str
+        :param Operation: 操作
+        :type Operation: str
+        :param InstId: 实例ID
+        :type InstId: str
+        :param ProductId: 产品ID，形如P******。
+        :type ProductId: str
+        :param CaseId: 信审任务ID，同一天内，同一InstId下，同一CaseId只能调用一次。
+        :type CaseId: str
+        :param CallbackUrl: 回调地址
+        :type CallbackUrl: str
+        :param Data: JSON格式的业务字段。
+        :type Data: str
+        """
+        self.Module = None
+        self.Operation = None
+        self.InstId = None
+        self.ProductId = None
+        self.CaseId = None
+        self.CallbackUrl = None
+        self.Data = None
+
+
+    def _deserialize(self, params):
+        self.Module = params.get("Module")
+        self.Operation = params.get("Operation")
+        self.InstId = params.get("InstId")
+        self.ProductId = params.get("ProductId")
+        self.CaseId = params.get("CaseId")
+        self.CallbackUrl = params.get("CallbackUrl")
+        self.Data = params.get("Data")
+
+
+class ApplyCreditAuditResponse(AbstractModel):
+    """ApplyCreditAudit返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestDate: 请求日期
+        :type RequestDate: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestDate = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestDate = params.get("RequestDate")
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeCreditResultRequest(AbstractModel):
+    """DescribeCreditResult请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Module: 模块
+        :type Module: str
+        :param Operation: 操作
+        :type Operation: str
+        :param InstId: 实例ID
+        :type InstId: str
+        :param ProductId: 产品ID，形如P******。
+        :type ProductId: str
+        :param CaseId: 信审任务ID
+        :type CaseId: str
+        :param RequestDate: 请求日期
+        :type RequestDate: str
+        """
+        self.Module = None
+        self.Operation = None
+        self.InstId = None
+        self.ProductId = None
+        self.CaseId = None
+        self.RequestDate = None
+
+
+    def _deserialize(self, params):
+        self.Module = params.get("Module")
+        self.Operation = params.get("Operation")
+        self.InstId = params.get("InstId")
+        self.ProductId = params.get("ProductId")
+        self.CaseId = params.get("CaseId")
+        self.RequestDate = params.get("RequestDate")
+
+
+class DescribeCreditResultResponse(AbstractModel):
+    """DescribeCreditResult返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ResultCode: 呼叫结果，取值范围：
+<li>NON：接通
+<li>DBU：号码忙
+<li>DRF：不在服务区
+<li>ANA：欠费未接听
+<li>REJ：拒接
+<li>SHU：关机
+<li>NAN：空号
+<li>HAL：停机
+<li>DAD：未接听
+<li>EXE：其他异常
+        :type ResultCode: str
+        :param ClientCode: 客户标识代码，多个标识码以英文逗号分隔，ResultCode为NON时才有。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ClientCode: str
+        :param RingStartTime: 开始振铃时间，ResultCode为NON或DAD时才有此字段。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RingStartTime: str
+        :param RingDuration: 振铃时长
+        :type RingDuration: int
+        :param AnswerDuration: 接通时长
+        :type AnswerDuration: int
+        :param ContextValue: JSON格式的扩展信息字段，ResultCode为NON时才有。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ContextValue: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.ResultCode = None
+        self.ClientCode = None
+        self.RingStartTime = None
+        self.RingDuration = None
+        self.AnswerDuration = None
+        self.ContextValue = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.ResultCode = params.get("ResultCode")
+        self.ClientCode = params.get("ClientCode")
+        self.RingStartTime = params.get("RingStartTime")
+        self.RingDuration = params.get("RingDuration")
+        self.AnswerDuration = params.get("AnswerDuration")
+        self.ContextValue = params.get("ContextValue")
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeRecordsRequest(AbstractModel):
     """DescribeRecords请求参数结构体
 
@@ -128,6 +281,7 @@ class DescribeRecordsResponse(AbstractModel):
     def __init__(self):
         """
         :param RecordList: 录音列表。
+注意：此字段可能返回 null，表示取不到有效值。
         :type RecordList: list of SingleRecord
         :param TotalCount: 录音总量。
         :type TotalCount: int
@@ -213,16 +367,20 @@ class DownloadReportRequest(AbstractModel):
         :type Operation: str
         :param ReportDate: 报告日期
         :type ReportDate: str
+        :param InstId: 实例ID，不传默认为系统分配的初始实例。
+        :type InstId: str
         """
         self.Module = None
         self.Operation = None
         self.ReportDate = None
+        self.InstId = None
 
 
     def _deserialize(self, params):
         self.Module = params.get("Module")
         self.Operation = params.get("Operation")
         self.ReportDate = params.get("ReportDate")
+        self.InstId = params.get("InstId")
 
 
 class DownloadReportResponse(AbstractModel):
@@ -232,18 +390,33 @@ class DownloadReportResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param DailyReportUrl: 日报下载地址
+        :param DailyReportUrl: 催收日报下载地址
+注意：此字段可能返回 null，表示取不到有效值。
         :type DailyReportUrl: str
-        :param ResultReportUrl: 结果下载地址
+        :param ResultReportUrl: 催收结果下载地址
+注意：此字段可能返回 null，表示取不到有效值。
         :type ResultReportUrl: str
-        :param DetailReportUrl: 明细下载地址
+        :param DetailReportUrl: 催收明细下载地址
+注意：此字段可能返回 null，表示取不到有效值。
         :type DetailReportUrl: str
+        :param CallbackDailyReportUrl: 回访日报下载地址
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CallbackDailyReportUrl: str
+        :param CallbackResultReportUrl: 回访结果下载地址
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CallbackResultReportUrl: str
+        :param CallbackDetailReportUrl: 回访明细下载地址
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CallbackDetailReportUrl: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.DailyReportUrl = None
         self.ResultReportUrl = None
         self.DetailReportUrl = None
+        self.CallbackDailyReportUrl = None
+        self.CallbackResultReportUrl = None
+        self.CallbackDetailReportUrl = None
         self.RequestId = None
 
 
@@ -251,6 +424,9 @@ class DownloadReportResponse(AbstractModel):
         self.DailyReportUrl = params.get("DailyReportUrl")
         self.ResultReportUrl = params.get("ResultReportUrl")
         self.DetailReportUrl = params.get("DetailReportUrl")
+        self.CallbackDailyReportUrl = params.get("CallbackDailyReportUrl")
+        self.CallbackResultReportUrl = params.get("CallbackResultReportUrl")
+        self.CallbackDetailReportUrl = params.get("CallbackDetailReportUrl")
         self.RequestId = params.get("RequestId")
 
 
@@ -303,8 +479,10 @@ class SingleRecord(AbstractModel):
         :param Duration: 通话时长。
         :type Duration: int
         :param ProductId: 产品ID。
+注意：此字段可能返回 null，表示取不到有效值。
         :type ProductId: str
         :param RecordCosUrl: 录音下载链接。
+注意：此字段可能返回 null，表示取不到有效值。
         :type RecordCosUrl: str
         """
         self.AccountNum = None

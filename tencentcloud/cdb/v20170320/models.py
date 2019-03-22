@@ -74,6 +74,68 @@ class AccountInfo(AbstractModel):
         self.CreateTime = params.get("CreateTime")
 
 
+class AddTimeWindowRequest(AbstractModel):
+    """AddTimeWindow请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param InstanceId: 实例ID，格式如：cdb-c1nl9rpv或者cdbro-c1nl9rpv，与云数据库控制台页面中显示的实例ID相同。
+        :type InstanceId: str
+        :param Monday: 星期一的可维护时间段，其中每一个时间段的格式形如：10:00-12:00；起始时间按半个小时对齐；最短半个小时，最长三个小时；最多设置两个时间段；下同。
+        :type Monday: list of str
+        :param Tuesday: 星期二的可维护时间窗口。
+        :type Tuesday: list of str
+        :param Wednesday: 星期三的可维护时间窗口。
+        :type Wednesday: list of str
+        :param Thursday: 星期四的可维护时间窗口。
+        :type Thursday: list of str
+        :param Friday: 星期五的可维护时间窗口。
+        :type Friday: list of str
+        :param Saturday: 星期六的可维护时间窗口。
+        :type Saturday: list of str
+        :param Sunday: 星期日的可维护时间窗口。
+        :type Sunday: list of str
+        """
+        self.InstanceId = None
+        self.Monday = None
+        self.Tuesday = None
+        self.Wednesday = None
+        self.Thursday = None
+        self.Friday = None
+        self.Saturday = None
+        self.Sunday = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.Monday = params.get("Monday")
+        self.Tuesday = params.get("Tuesday")
+        self.Wednesday = params.get("Wednesday")
+        self.Thursday = params.get("Thursday")
+        self.Friday = params.get("Friday")
+        self.Saturday = params.get("Saturday")
+        self.Sunday = params.get("Sunday")
+
+
+class AddTimeWindowResponse(AbstractModel):
+    """AddTimeWindow返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class AssociateSecurityGroupsRequest(AbstractModel):
     """AssociateSecurityGroups请求参数结构体
 
@@ -959,6 +1021,40 @@ class DeleteParamTemplateRequest(AbstractModel):
 
 class DeleteParamTemplateResponse(AbstractModel):
     """DeleteParamTemplate返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class DeleteTimeWindowRequest(AbstractModel):
+    """DeleteTimeWindow请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param InstanceId: 实例ID，格式如：cdb-c1nl9rpv或者cdbro-c1nl9rpv，与云数据库控制台页面中显示的实例ID相同。
+        :type InstanceId: str
+        """
+        self.InstanceId = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+
+
+class DeleteTimeWindowResponse(AbstractModel):
+    """DeleteTimeWindow返回参数结构体
 
     """
 
@@ -2771,6 +2867,68 @@ class DescribeTasksResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeTimeWindowRequest(AbstractModel):
+    """DescribeTimeWindow请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param InstanceId: 实例ID，格式如：cdb-c1nl9rpv或者cdbro-c1nl9rpv，与云数据库控制台页面中显示的实例ID相同。
+        :type InstanceId: str
+        """
+        self.InstanceId = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+
+
+class DescribeTimeWindowResponse(AbstractModel):
+    """DescribeTimeWindow返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Monday: 星期一的可维护时间列表。
+        :type Monday: list of str
+        :param Tuesday: 星期二的可维护时间列表。
+        :type Tuesday: list of str
+        :param Wednesday: 星期三的可维护时间列表。
+        :type Wednesday: list of str
+        :param Thursday: 星期四的可维护时间列表。
+        :type Thursday: list of str
+        :param Friday: 星期五的可维护时间列表。
+        :type Friday: list of str
+        :param Saturday: 星期六的可维护时间列表。
+        :type Saturday: list of str
+        :param Sunday: 星期日的可维护时间列表。
+        :type Sunday: list of str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Monday = None
+        self.Tuesday = None
+        self.Wednesday = None
+        self.Thursday = None
+        self.Friday = None
+        self.Saturday = None
+        self.Sunday = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Monday = params.get("Monday")
+        self.Tuesday = params.get("Tuesday")
+        self.Wednesday = params.get("Wednesday")
+        self.Thursday = params.get("Thursday")
+        self.Friday = params.get("Friday")
+        self.Saturday = params.get("Saturday")
+        self.Sunday = params.get("Sunday")
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeUploadedFilesRequest(AbstractModel):
     """DescribeUploadedFiles请求参数结构体
 
@@ -4172,6 +4330,48 @@ class ModifyParamTemplateRequest(AbstractModel):
 
 class ModifyParamTemplateResponse(AbstractModel):
     """ModifyParamTemplate返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class ModifyTimeWindowRequest(AbstractModel):
+    """ModifyTimeWindow请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param InstanceId: 实例ID，格式如：cdb-c1nl9rpv或者cdbro-c1nl9rpv，与云数据库控制台页面中显示的实例ID相同。
+        :type InstanceId: str
+        :param TimeRanges: 修改后的可维护时间段，其中每一个时间段的格式形如：10:00-12:00；起止时间按半个小时对齐；最短半个小时，最长三个小时；最多设置两个时间段；起止时间范围为：[00:00, 24:00]。
+        :type TimeRanges: list of str
+        :param Weekdays: 指定修改哪一天的客户时间段，可能的取值为：monday, tuesday, wednesday, thursday, friday, saturday, sunday。如果不指定该值或者为空，则默认一周七天都修改。
+        :type Weekdays: list of str
+        """
+        self.InstanceId = None
+        self.TimeRanges = None
+        self.Weekdays = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.TimeRanges = params.get("TimeRanges")
+        self.Weekdays = params.get("Weekdays")
+
+
+class ModifyTimeWindowResponse(AbstractModel):
+    """ModifyTimeWindow返回参数结构体
 
     """
 

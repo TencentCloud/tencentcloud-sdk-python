@@ -67,6 +67,48 @@ class AddDelayLiveStreamResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class AddLiveDomainRequest(AbstractModel):
+    """AddLiveDomain请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param DomainName: 域名名称
+        :type DomainName: str
+        :param DomainType: 域名类型。0-推流域名，1-播放域名
+        :type DomainType: int
+        :param PlayType: 拉流域名类型。1-国内；2-全球；3-境外
+        :type PlayType: int
+        """
+        self.DomainName = None
+        self.DomainType = None
+        self.PlayType = None
+
+
+    def _deserialize(self, params):
+        self.DomainName = params.get("DomainName")
+        self.DomainType = params.get("DomainType")
+        self.PlayType = params.get("PlayType")
+
+
+class AddLiveDomainResponse(AbstractModel):
+    """AddLiveDomain返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class AddLiveWatermarkRequest(AbstractModel):
     """AddLiveWatermark请求参数结构体
 
@@ -459,6 +501,44 @@ class CreateLiveCertResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class CreateLiveDomainStrategyRequest(AbstractModel):
+    """CreateLiveDomainStrategy请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param PushDomainName: 推流域名。
+        :type PushDomainName: str
+        :param PlayDomainName: 播放域名。
+        :type PlayDomainName: str
+        """
+        self.PushDomainName = None
+        self.PlayDomainName = None
+
+
+    def _deserialize(self, params):
+        self.PushDomainName = params.get("PushDomainName")
+        self.PlayDomainName = params.get("PlayDomainName")
+
+
+class CreateLiveDomainStrategyResponse(AbstractModel):
+    """CreateLiveDomainStrategy返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class CreateLiveRecordRequest(AbstractModel):
     """CreateLiveRecord请求参数结构体
 
@@ -831,11 +911,11 @@ class CreateLiveTranscodeTemplateRequest(AbstractModel):
         :type TemplateName: str
         :param VideoBitrate: 视频码率。
         :type VideoBitrate: int
-        :param Vcodec: 视频编码：
-h264/h265。默认h264
+        :param Vcodec: 视频编码：h264/h265，默认h264。
+注意：当前该参数未生效，待后续支持！
         :type Vcodec: str
-        :param Acodec: 音频编码：
-aac/mp3。默认原始音频格式
+        :param Acodec: 音频编码：aac，默认原始音频格式。
+注意：当前该参数未生效，待后续支持！
         :type Acodec: str
         :param AudioBitrate: 音频码率：默认0。0-500
         :type AudioBitrate: int
@@ -844,8 +924,10 @@ aac/mp3。默认原始音频格式
         :param Width: 高，默认0。
         :type Width: int
         :param NeedVideo: 是否保留视频，0：否，1：是。默认1。
+注意：当前该参数未生效，待后续支持！
         :type NeedVideo: int
         :param NeedAudio: 是否保留音频，0：否，1：是。默认1。
+注意：当前该参数未生效，待后续支持！
         :type NeedAudio: int
         :param Height: 宽，默认0。
         :type Height: int
@@ -1036,6 +1118,39 @@ class CreatePullStreamConfigResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DayStreamPlayInfo(AbstractModel):
+    """流播放信息
+
+    """
+
+    def __init__(self):
+        """
+        :param Time: 数据时间点，格式：yyyy-mm-dd HH:MM:SS。
+        :type Time: str
+        :param Bandwidth: 带宽（单位Mbps）。
+        :type Bandwidth: float
+        :param Flux: 流量 （单位MB）。
+        :type Flux: float
+        :param Request: 请求数。
+        :type Request: int
+        :param Online: 在线人数。
+        :type Online: int
+        """
+        self.Time = None
+        self.Bandwidth = None
+        self.Flux = None
+        self.Request = None
+        self.Online = None
+
+
+    def _deserialize(self, params):
+        self.Time = params.get("Time")
+        self.Bandwidth = params.get("Bandwidth")
+        self.Flux = params.get("Flux")
+        self.Request = params.get("Request")
+        self.Online = params.get("Online")
+
+
 class DeleteLiveCallbackRuleRequest(AbstractModel):
     """DeleteLiveCallbackRule请求参数结构体
 
@@ -1127,6 +1242,82 @@ class DeleteLiveCertRequest(AbstractModel):
 
 class DeleteLiveCertResponse(AbstractModel):
     """DeleteLiveCert返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class DeleteLiveDomainRequest(AbstractModel):
+    """DeleteLiveDomain请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param DomainName: 要删除的域名
+        :type DomainName: str
+        :param DomainType: 类型。0-推流，1-播放
+        :type DomainType: int
+        """
+        self.DomainName = None
+        self.DomainType = None
+
+
+    def _deserialize(self, params):
+        self.DomainName = params.get("DomainName")
+        self.DomainType = params.get("DomainType")
+
+
+class DeleteLiveDomainResponse(AbstractModel):
+    """DeleteLiveDomain返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class DeleteLiveDomainStrategyRequest(AbstractModel):
+    """DeleteLiveDomainStrategy请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param PushDomainName: 推流域名。
+        :type PushDomainName: str
+        :param PlayDomainName: 播放域名。
+        :type PlayDomainName: str
+        """
+        self.PushDomainName = None
+        self.PlayDomainName = None
+
+
+    def _deserialize(self, params):
+        self.PushDomainName = params.get("PushDomainName")
+        self.PlayDomainName = params.get("PlayDomainName")
+
+
+class DeleteLiveDomainStrategyResponse(AbstractModel):
+    """DeleteLiveDomainStrategy返回参数结构体
 
     """
 
@@ -1735,6 +1926,148 @@ class DescribeLiveDomainCertResponse(AbstractModel):
         if params.get("DomainCertInfo") is not None:
             self.DomainCertInfo = DomainCertInfo()
             self.DomainCertInfo._deserialize(params.get("DomainCertInfo"))
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeLiveDomainRequest(AbstractModel):
+    """DescribeLiveDomain请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param DomainName: 域名。
+        :type DomainName: str
+        """
+        self.DomainName = None
+
+
+    def _deserialize(self, params):
+        self.DomainName = params.get("DomainName")
+
+
+class DescribeLiveDomainResponse(AbstractModel):
+    """DescribeLiveDomain返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param DomainInfo: 域名信息。
+        :type DomainInfo: :class:`tencentcloud.live.v20180801.models.DomainInfo`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.DomainInfo = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("DomainInfo") is not None:
+            self.DomainInfo = DomainInfo()
+            self.DomainInfo._deserialize(params.get("DomainInfo"))
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeLiveDomainStrategysRequest(AbstractModel):
+    """DescribeLiveDomainStrategys请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param DomainName: 查询某个域名的鉴权规则
+        :type DomainName: str
+        """
+        self.DomainName = None
+
+
+    def _deserialize(self, params):
+        self.DomainName = params.get("DomainName")
+
+
+class DescribeLiveDomainStrategysResponse(AbstractModel):
+    """DescribeLiveDomainStrategys返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param StrategyList: 域名策略信息。
+        :type StrategyList: list of StrategyInfo
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.StrategyList = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("StrategyList") is not None:
+            self.StrategyList = []
+            for item in params.get("StrategyList"):
+                obj = StrategyInfo()
+                obj._deserialize(item)
+                self.StrategyList.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeLiveDomainsRequest(AbstractModel):
+    """DescribeLiveDomains请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param DomainStatus: 域名状态过滤。0-停用，1-启用
+        :type DomainStatus: int
+        :param DomainType: 域名类型过滤。0-推流，1-播放
+        :type DomainType: int
+        :param PageSize: 分页大小，范围：10~100。默认10
+        :type PageSize: int
+        :param PageNum: 取第几页，范围：1~100000。默认1
+        :type PageNum: int
+        """
+        self.DomainStatus = None
+        self.DomainType = None
+        self.PageSize = None
+        self.PageNum = None
+
+
+    def _deserialize(self, params):
+        self.DomainStatus = params.get("DomainStatus")
+        self.DomainType = params.get("DomainType")
+        self.PageSize = params.get("PageSize")
+        self.PageNum = params.get("PageNum")
+
+
+class DescribeLiveDomainsResponse(AbstractModel):
+    """DescribeLiveDomains返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param AllCount: 总记录数
+        :type AllCount: int
+        :param DomainList: 域名详细信息列表
+        :type DomainList: list of DomainInfo
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.AllCount = None
+        self.DomainList = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.AllCount = params.get("AllCount")
+        if params.get("DomainList") is not None:
+            self.DomainList = []
+            for item in params.get("DomainList"):
+                obj = DomainInfo()
+                obj._deserialize(item)
+                self.DomainList.append(obj)
         self.RequestId = params.get("RequestId")
 
 
@@ -2492,6 +2825,85 @@ forbid：禁播。
         self.RequestId = params.get("RequestId")
 
 
+class DescribeLiveTranscodeDetailInfoRequest(AbstractModel):
+    """DescribeLiveTranscodeDetailInfo请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param DayTime: 起始时间，北京时间，
+格式：yyyymmdd。
+注意：当前只支持查询近30天内某天的详细数据。
+        :type DayTime: str
+        :param PushDomain: 推流域名。
+        :type PushDomain: str
+        :param StreamName: 流名称。
+        :type StreamName: str
+        :param PageNum: 页数，默认1，
+不超过100页。
+        :type PageNum: int
+        :param PageSize: 每页个数，默认20，
+范围：[10,1000]。
+        :type PageSize: int
+        """
+        self.DayTime = None
+        self.PushDomain = None
+        self.StreamName = None
+        self.PageNum = None
+        self.PageSize = None
+
+
+    def _deserialize(self, params):
+        self.DayTime = params.get("DayTime")
+        self.PushDomain = params.get("PushDomain")
+        self.StreamName = params.get("StreamName")
+        self.PageNum = params.get("PageNum")
+        self.PageSize = params.get("PageSize")
+
+
+class DescribeLiveTranscodeDetailInfoResponse(AbstractModel):
+    """DescribeLiveTranscodeDetailInfo返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param DataInfoList: 统计数据列表。
+        :type DataInfoList: list of TranscodeDetailInfo
+        :param PageNum: 页码。
+        :type PageNum: int
+        :param PageSize: 每页个数。
+        :type PageSize: int
+        :param TotalNum: 总个数。
+        :type TotalNum: int
+        :param TotalPage: 总页数。
+        :type TotalPage: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.DataInfoList = None
+        self.PageNum = None
+        self.PageSize = None
+        self.TotalNum = None
+        self.TotalPage = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("DataInfoList") is not None:
+            self.DataInfoList = []
+            for item in params.get("DataInfoList"):
+                obj = TranscodeDetailInfo()
+                obj._deserialize(item)
+                self.DataInfoList.append(obj)
+        self.PageNum = params.get("PageNum")
+        self.PageSize = params.get("PageSize")
+        self.TotalNum = params.get("TotalNum")
+        self.TotalPage = params.get("TotalPage")
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeLiveTranscodeRulesRequest(AbstractModel):
     """DescribeLiveTranscodeRules请求参数结构体
 
@@ -2747,6 +3159,65 @@ class DescribePullStreamConfigsResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeStreamPlayInfoListRequest(AbstractModel):
+    """DescribeStreamPlayInfoList请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param StartTime: 开始时间，北京时间，
+当前时间 和 开始时间 间隔不超过30天。
+        :type StartTime: str
+        :param EndTime: 结束时间，北京时间，
+结束时间 和 开始时间  必须在同一天内。
+        :type EndTime: str
+        :param PlayDomain: 播放域名，
+若不填，则为查询所有播放域名的在线流数据。
+        :type PlayDomain: str
+        :param StreamName: 流名称，精确匹配。
+若不填，则为查询总体播放数据。
+        :type StreamName: str
+        """
+        self.StartTime = None
+        self.EndTime = None
+        self.PlayDomain = None
+        self.StreamName = None
+
+
+    def _deserialize(self, params):
+        self.StartTime = params.get("StartTime")
+        self.EndTime = params.get("EndTime")
+        self.PlayDomain = params.get("PlayDomain")
+        self.StreamName = params.get("StreamName")
+
+
+class DescribeStreamPlayInfoListResponse(AbstractModel):
+    """DescribeStreamPlayInfoList返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param DataInfoList: 统计信息列表。
+        :type DataInfoList: list of DayStreamPlayInfo
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.DataInfoList = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("DataInfoList") is not None:
+            self.DataInfoList = []
+            for item in params.get("DataInfoList"):
+                obj = DayStreamPlayInfo()
+                obj._deserialize(item)
+                self.DataInfoList.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class DomainCertInfo(AbstractModel):
     """域名证书信息
 
@@ -2798,6 +3269,48 @@ class DomainCertInfo(AbstractModel):
         self.Status = params.get("Status")
 
 
+class DomainInfo(AbstractModel):
+    """直播域名信息
+
+    """
+
+    def __init__(self):
+        """
+        :param Name: 直播域名
+        :type Name: str
+        :param Type: 域名类型。0-推流，1-播放
+        :type Type: int
+        :param Status: 域名状态。0-停用，1-启用
+        :type Status: int
+        :param CreateTime: 添加时间
+        :type CreateTime: str
+        :param BCName: 是否有CName到固定规则域名。0-否，1-是
+        :type BCName: int
+        :param TargetDomain: cname对应的域名
+        :type TargetDomain: str
+        :param PlayType: 播放区域，只在Type=1时该参数有意义。
+1-国内，2-全球，3-海外。
+        :type PlayType: int
+        """
+        self.Name = None
+        self.Type = None
+        self.Status = None
+        self.CreateTime = None
+        self.BCName = None
+        self.TargetDomain = None
+        self.PlayType = None
+
+
+    def _deserialize(self, params):
+        self.Name = params.get("Name")
+        self.Type = params.get("Type")
+        self.Status = params.get("Status")
+        self.CreateTime = params.get("CreateTime")
+        self.BCName = params.get("BCName")
+        self.TargetDomain = params.get("TargetDomain")
+        self.PlayType = params.get("PlayType")
+
+
 class DropLiveStreamRequest(AbstractModel):
     """DropLiveStream请求参数结构体
 
@@ -2825,6 +3338,74 @@ class DropLiveStreamRequest(AbstractModel):
 
 class DropLiveStreamResponse(AbstractModel):
     """DropLiveStream返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class EnableLiveDomainRequest(AbstractModel):
+    """EnableLiveDomain请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param DomainName: 待启用的直播域名
+        :type DomainName: str
+        """
+        self.DomainName = None
+
+
+    def _deserialize(self, params):
+        self.DomainName = params.get("DomainName")
+
+
+class EnableLiveDomainResponse(AbstractModel):
+    """EnableLiveDomain返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class ForbidLiveDomainRequest(AbstractModel):
+    """ForbidLiveDomain请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param DomainName: 停用的直播域名
+        :type DomainName: str
+        """
+        self.DomainName = None
+
+
+    def _deserialize(self, params):
+        self.DomainName = params.get("DomainName")
+
+
+class ForbidLiveDomainResponse(AbstractModel):
+    """ForbidLiveDomain返回参数结构体
 
     """
 
@@ -3109,6 +3690,44 @@ class ModifyLivePlayAuthKeyRequest(AbstractModel):
 
 class ModifyLivePlayAuthKeyResponse(AbstractModel):
     """ModifyLivePlayAuthKey返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class ModifyLivePlayDomainRequest(AbstractModel):
+    """ModifyLivePlayDomain请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param DomainName: 播放域名。
+        :type DomainName: str
+        :param PlayType: 拉流域名类型。1-国内；2-全球；3-境外
+        :type PlayType: int
+        """
+        self.DomainName = None
+        self.PlayType = None
+
+
+    def _deserialize(self, params):
+        self.DomainName = params.get("DomainName")
+        self.PlayType = params.get("PlayType")
+
+
+class ModifyLivePlayDomainResponse(AbstractModel):
+    """ModifyLivePlayDomain返回参数结构体
 
     """
 
@@ -3978,6 +4597,31 @@ class StopLiveRecordResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class StrategyInfo(AbstractModel):
+    """直播域名策略信息
+
+    """
+
+    def __init__(self):
+        """
+        :param PushDomainName: 推流域名。
+        :type PushDomainName: str
+        :param PlayDomainName: 播放域名。
+        :type PlayDomainName: str
+        :param CreateTime: 创建时间。
+        :type CreateTime: str
+        """
+        self.PushDomainName = None
+        self.PlayDomainName = None
+        self.CreateTime = None
+
+
+    def _deserialize(self, params):
+        self.PushDomainName = params.get("PushDomainName")
+        self.PlayDomainName = params.get("PlayDomainName")
+        self.CreateTime = params.get("CreateTime")
+
+
 class StreamEventInfo(AbstractModel):
     """推断流事件信息。
 
@@ -4209,6 +4853,59 @@ baseline/main/high。
         self.TemplateId = params.get("TemplateId")
         self.TemplateName = params.get("TemplateName")
         self.Description = params.get("Description")
+
+
+class TranscodeDetailInfo(AbstractModel):
+    """转码详细信息
+
+    """
+
+    def __init__(self):
+        """
+        :param StreamName: 流名称。
+        :type StreamName: str
+        :param StartTime: 开始时间，北京时间，
+格式：yyyy-mm-dd HH:MM。
+        :type StartTime: str
+        :param EndTime: 结束时间，北京时间，
+格式：yyyy-mm-dd HH:MM。
+        :type EndTime: str
+        :param Duration: 转码时长，单位：分钟。
+注意：因推流过程中可能有中断重推情况，此处时长为真实转码时长累加值，并非结束时间和开始时间的间隔。
+        :type Duration: int
+        :param ModuleCodec: 编码方式，带模块，
+示例：
+liveprocessor_H264 =》直播转码-H264，
+liveprocessor_H265 =》 直播转码-H265，
+topspeed_H264 =》极速高清-H264，
+topspeed_H265 =》极速高清-H265。
+        :type ModuleCodec: str
+        :param Bitrate: 码率。
+        :type Bitrate: int
+        :param Type: 类型，包含：转码(Transcode)，混流(MixStream)，水印(WaterMark)。
+        :type Type: str
+        :param PushDomain: 推流域名。
+        :type PushDomain: str
+        """
+        self.StreamName = None
+        self.StartTime = None
+        self.EndTime = None
+        self.Duration = None
+        self.ModuleCodec = None
+        self.Bitrate = None
+        self.Type = None
+        self.PushDomain = None
+
+
+    def _deserialize(self, params):
+        self.StreamName = params.get("StreamName")
+        self.StartTime = params.get("StartTime")
+        self.EndTime = params.get("EndTime")
+        self.Duration = params.get("Duration")
+        self.ModuleCodec = params.get("ModuleCodec")
+        self.Bitrate = params.get("Bitrate")
+        self.Type = params.get("Type")
+        self.PushDomain = params.get("PushDomain")
 
 
 class UnBindLiveDomainCertRequest(AbstractModel):

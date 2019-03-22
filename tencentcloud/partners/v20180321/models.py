@@ -108,6 +108,12 @@ class AgentBillElem(AbstractModel):
         :type Amt: int
         :param PayerMode: agentpay：代付；selfpay：自付
         :type PayerMode: str
+        :param ClientType: 客户类型：可以为new(新拓)/assign(指定)/old(存量)/空
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ClientType: str
+        :param ProjectType: 项目类型：可以为self(自拓项目)/platform(合作项目)/repeat(复算项目  )/空
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ProjectType: str
         """
         self.Uin = None
         self.OrderId = None
@@ -119,6 +125,8 @@ class AgentBillElem(AbstractModel):
         self.SettleMonth = None
         self.Amt = None
         self.PayerMode = None
+        self.ClientType = None
+        self.ProjectType = None
 
 
     def _deserialize(self, params):
@@ -132,6 +140,8 @@ class AgentBillElem(AbstractModel):
         self.SettleMonth = params.get("SettleMonth")
         self.Amt = params.get("Amt")
         self.PayerMode = params.get("PayerMode")
+        self.ClientType = params.get("ClientType")
+        self.ProjectType = params.get("ProjectType")
 
 
 class AgentClientElem(AbstractModel):

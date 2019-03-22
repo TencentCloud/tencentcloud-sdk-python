@@ -143,6 +143,34 @@ class VodClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def CreateProcedureTemplate(self, request):
+        """创建用户自定义的任务流模板，模板上限：50。
+
+        :param request: 调用CreateProcedureTemplate所需参数的结构体。
+        :type request: :class:`tencentcloud.vod.v20180717.models.CreateProcedureTemplateRequest`
+        :rtype: :class:`tencentcloud.vod.v20180717.models.CreateProcedureTemplateResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("CreateProcedureTemplate", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateProcedureTemplateResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def CreateTranscodeTemplate(self, request):
         """创建用户自定义转码模板，数量上限：1000。
 
@@ -243,6 +271,34 @@ class VodClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteMediaResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DeleteProcedureTemplate(self, request):
+        """删除指定名字的任务流模板
+
+        :param request: 调用DeleteProcedureTemplate所需参数的结构体。
+        :type request: :class:`tencentcloud.vod.v20180717.models.DeleteProcedureTemplateRequest`
+        :rtype: :class:`tencentcloud.vod.v20180717.models.DeleteProcedureTemplateResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DeleteProcedureTemplate", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DeleteProcedureTemplateResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -378,8 +434,36 @@ class VodClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeProcedureTemplates(self, request):
+        """根据任务流模板名字，获取任务流模板详情列表。
+
+        :param request: 调用DescribeProcedureTemplates所需参数的结构体。
+        :type request: :class:`tencentcloud.vod.v20180717.models.DescribeProcedureTemplatesRequest`
+        :rtype: :class:`tencentcloud.vod.v20180717.models.DescribeProcedureTemplatesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeProcedureTemplates", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeProcedureTemplatesResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeTaskDetail(self, request):
-        """通过任务 ID 查询任务的执行状态和结果的详细信息（最多可以查询3天之内提交的任务）
+        """通过任务 ID 查询任务的执行状态和结果的详细信息（最多可以查询3天之内提交的任务）。
 
         :param request: 调用DescribeTaskDetail所需参数的结构体。
         :type request: :class:`tencentcloud.vod.v20180717.models.DescribeTaskDetailRequest`
@@ -500,7 +584,7 @@ class VodClient(AbstractClient):
         - 剪辑不固化：剪辑得到的视频附属于直播录制文件，没有独立 FileId；适用于将精彩片段**临时分享**的场景。
 
         注意：
-        - 使用直播即时剪辑功能的前提是：目标直播流开启了[时移回看](https://cloud.tencent.com/document/product/267/18472)功能。
+        - 使用直播即时剪辑功能的前提是：目标直播流开启了[时移回看](https://cloud.tencent.com/document/product/267/32742#.E5.BC.80.E9.80.9A.E6.AD.A5.E9.AA.A4)功能。
         - 直播即时剪辑是基于直播录制生成的 m3u8 文件进行的，故而其最小剪辑精度为一个 ts 切片，无法实现秒级或者更为精确的剪辑精度。
 
 
@@ -663,8 +747,9 @@ class VodClient(AbstractClient):
         4. 对视频采样截图；
         5. 对视频截图雪碧图；
         6. 对视频截取一张图做封面；
-        7. 智能内容审核（鉴黄、鉴恐、鉴政）；
-        8. 智能内容分析（标签、分类、封面）。
+        7. 对视频转自适应码流（并加密）；
+        8. 智能内容审核（鉴黄、鉴恐、鉴政）；
+        9. 智能内容分析（标签、分类、封面）。
 
         :param request: 调用ProcessMedia所需参数的结构体。
         :type request: :class:`tencentcloud.vod.v20180717.models.ProcessMediaRequest`
@@ -739,6 +824,34 @@ class VodClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.PullEventsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ResetProcedureTemplate(self, request):
+        """重新设置已存在的任务流模板的任务内容
+
+        :param request: 调用ResetProcedureTemplate所需参数的结构体。
+        :type request: :class:`tencentcloud.vod.v20180717.models.ResetProcedureTemplateRequest`
+        :rtype: :class:`tencentcloud.vod.v20180717.models.ResetProcedureTemplateResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ResetProcedureTemplate", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ResetProcedureTemplateResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

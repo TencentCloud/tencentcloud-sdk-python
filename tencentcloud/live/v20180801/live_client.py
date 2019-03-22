@@ -54,6 +54,34 @@ class LiveClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def AddLiveDomain(self, request):
+        """添加域名，一次只能提交一个域名。域名必须已备案。
+
+        :param request: 调用AddLiveDomain所需参数的结构体。
+        :type request: :class:`tencentcloud.live.v20180801.models.AddLiveDomainRequest`
+        :rtype: :class:`tencentcloud.live.v20180801.models.AddLiveDomainResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("AddLiveDomain", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.AddLiveDomainResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def AddLiveWatermark(self, request):
         """添加水印，成功返回水印id后，需要调用[CreateLiveWatermarkRule](/document/product/267/32629)接口将水印id绑定到流使用。
 
@@ -182,6 +210,34 @@ class LiveClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateLiveCertResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def CreateLiveDomainStrategy(self, request):
+        """该接口用于新增直播推流和播放的域名映射
+
+        :param request: 调用CreateLiveDomainStrategy所需参数的结构体。
+        :type request: :class:`tencentcloud.live.v20180801.models.CreateLiveDomainStrategyRequest`
+        :rtype: :class:`tencentcloud.live.v20180801.models.CreateLiveDomainStrategyResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("CreateLiveDomainStrategy", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateLiveDomainStrategyResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -536,6 +592,62 @@ class LiveClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteLiveCertResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DeleteLiveDomain(self, request):
+        """删除已添加的直播域名
+
+        :param request: 调用DeleteLiveDomain所需参数的结构体。
+        :type request: :class:`tencentcloud.live.v20180801.models.DeleteLiveDomainRequest`
+        :rtype: :class:`tencentcloud.live.v20180801.models.DeleteLiveDomainResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DeleteLiveDomain", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DeleteLiveDomainResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DeleteLiveDomainStrategy(self, request):
+        """该接口用于删除已新增的播放和推流域名映射关系
+
+        :param request: 调用DeleteLiveDomainStrategy所需参数的结构体。
+        :type request: :class:`tencentcloud.live.v20180801.models.DeleteLiveDomainStrategyRequest`
+        :rtype: :class:`tencentcloud.live.v20180801.models.DeleteLiveDomainStrategyResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DeleteLiveDomainStrategy", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DeleteLiveDomainStrategyResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -970,6 +1082,34 @@ class LiveClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeLiveDomain(self, request):
+        """查询直播域名信息
+
+        :param request: 调用DescribeLiveDomain所需参数的结构体。
+        :type request: :class:`tencentcloud.live.v20180801.models.DescribeLiveDomainRequest`
+        :rtype: :class:`tencentcloud.live.v20180801.models.DescribeLiveDomainResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeLiveDomain", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeLiveDomainResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeLiveDomainCert(self, request):
         """获取域名证书信息
 
@@ -984,6 +1124,62 @@ class LiveClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeLiveDomainCertResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeLiveDomainStrategys(self, request):
+        """该接口用于查询已有域名策略
+
+        :param request: 调用DescribeLiveDomainStrategys所需参数的结构体。
+        :type request: :class:`tencentcloud.live.v20180801.models.DescribeLiveDomainStrategysRequest`
+        :rtype: :class:`tencentcloud.live.v20180801.models.DescribeLiveDomainStrategysResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeLiveDomainStrategys", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeLiveDomainStrategysResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeLiveDomains(self, request):
+        """根据域名状态、类型等信息查询用户的域名信息
+
+        :param request: 调用DescribeLiveDomains所需参数的结构体。
+        :type request: :class:`tencentcloud.live.v20180801.models.DescribeLiveDomainsRequest`
+        :rtype: :class:`tencentcloud.live.v20180801.models.DescribeLiveDomainsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeLiveDomains", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeLiveDomainsResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -1390,6 +1586,35 @@ class LiveClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeLiveTranscodeDetailInfo(self, request):
+        """支持查询某天的转码详细信息。
+        注意：当前只支持查询近30天内某天的详细数据。
+
+        :param request: 调用DescribeLiveTranscodeDetailInfo所需参数的结构体。
+        :type request: :class:`tencentcloud.live.v20180801.models.DescribeLiveTranscodeDetailInfoRequest`
+        :rtype: :class:`tencentcloud.live.v20180801.models.DescribeLiveTranscodeDetailInfoResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeLiveTranscodeDetailInfo", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeLiveTranscodeDetailInfoResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeLiveTranscodeRules(self, request):
         """获取转码规则列表
 
@@ -1586,6 +1811,34 @@ class LiveClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeStreamPlayInfoList(self, request):
+        """查询播放数据，支持按流名称查询详细播放数据，也可按播放域名查询详细总数据。
+
+        :param request: 调用DescribeStreamPlayInfoList所需参数的结构体。
+        :type request: :class:`tencentcloud.live.v20180801.models.DescribeStreamPlayInfoListRequest`
+        :rtype: :class:`tencentcloud.live.v20180801.models.DescribeStreamPlayInfoListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeStreamPlayInfoList", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeStreamPlayInfoListResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DropLiveStream(self, request):
         """断开推流连接，但可以重新推流
 
@@ -1600,6 +1853,62 @@ class LiveClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DropLiveStreamResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def EnableLiveDomain(self, request):
+        """启用状态为停用的直播域名
+
+        :param request: 调用EnableLiveDomain所需参数的结构体。
+        :type request: :class:`tencentcloud.live.v20180801.models.EnableLiveDomainRequest`
+        :rtype: :class:`tencentcloud.live.v20180801.models.EnableLiveDomainResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("EnableLiveDomain", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.EnableLiveDomainResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ForbidLiveDomain(self, request):
+        """停用使用某个直播域名
+
+        :param request: 调用ForbidLiveDomain所需参数的结构体。
+        :type request: :class:`tencentcloud.live.v20180801.models.ForbidLiveDomainRequest`
+        :rtype: :class:`tencentcloud.live.v20180801.models.ForbidLiveDomainResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ForbidLiveDomain", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ForbidLiveDomainResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -1740,6 +2049,34 @@ class LiveClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyLivePlayAuthKeyResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ModifyLivePlayDomain(self, request):
+        """修改播放域名信息
+
+        :param request: 调用ModifyLivePlayDomain所需参数的结构体。
+        :type request: :class:`tencentcloud.live.v20180801.models.ModifyLivePlayDomainRequest`
+        :rtype: :class:`tencentcloud.live.v20180801.models.ModifyLivePlayDomainResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ModifyLivePlayDomain", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ModifyLivePlayDomainResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

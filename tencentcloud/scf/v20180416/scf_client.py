@@ -25,6 +25,40 @@ class ScfClient(AbstractClient):
     _endpoint = 'scf.tencentcloudapi.com'
 
 
+    def CopyFunction(self, request):
+        """复制一个函数，可以选择将复制出的新函数放置在同一个namespace或另一个namespace。
+        注：本接口**不会**复制函数的以下对象或属性：
+        1. 函数的触发器
+        2. 除了$LATEST以外的其它版本
+        3. 函数配置的日志投递到的CLS目标
+
+        如有需要，您可以在复制后手动修改新函数。
+
+        :param request: 调用CopyFunction所需参数的结构体。
+        :type request: :class:`tencentcloud.scf.v20180416.models.CopyFunctionRequest`
+        :rtype: :class:`tencentcloud.scf.v20180416.models.CopyFunctionResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("CopyFunction", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CopyFunctionResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def CreateFunction(self, request):
         """该接口根据传入参数创建新的函数。
 
@@ -166,7 +200,7 @@ class ScfClient(AbstractClient):
 
 
     def GetFunctionLogs(self, request):
-        """该接口根据设置的日志查询条件返回函数日志。
+        """该接口根据指定的日志查询条件返回函数运行日志。
 
         :param request: 调用GetFunctionLogs所需参数的结构体。
         :type request: :class:`tencentcloud.scf.v20180416.models.GetFunctionLogsRequest`

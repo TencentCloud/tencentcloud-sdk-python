@@ -4138,7 +4138,7 @@ class TrafficMirror(AbstractModel):
         :type HealthSwitch: int
         :param HealthNum: 健康阈值。
         :type HealthNum: int
-        :param UnhealthNum: 不健康阀值。
+        :param UnhealthNum: 不健康阈值。
         :type UnhealthNum: int
         :param IntervalTime: 检查间隔。
         :type IntervalTime: int

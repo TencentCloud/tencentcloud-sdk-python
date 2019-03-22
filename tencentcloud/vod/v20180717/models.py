@@ -16,6 +16,52 @@
 from tencentcloud.common.abstract_model import AbstractModel
 
 
+class AdaptiveDynamicStreamingInfoItem(AbstractModel):
+    """转自适应码流信息
+
+    """
+
+    def __init__(self):
+        """
+        :param Definition: 转自适应码流规格。
+        :type Definition: int
+        :param Package: 打包格式，可能为 hls 和 dash 两种。
+        :type Package: str
+        :param DrmType: 加密类型。
+        :type DrmType: str
+        :param Url: 播放地址。
+        :type Url: str
+        """
+        self.Definition = None
+        self.Package = None
+        self.DrmType = None
+        self.Url = None
+
+
+    def _deserialize(self, params):
+        self.Definition = params.get("Definition")
+        self.Package = params.get("Package")
+        self.DrmType = params.get("DrmType")
+        self.Url = params.get("Url")
+
+
+class AdaptiveDynamicStreamingTaskInput(AbstractModel):
+    """对视频转自适应码流的输入参数类型
+
+    """
+
+    def __init__(self):
+        """
+        :param Definition: 转自适应码流模板 ID。
+        :type Definition: int
+        """
+        self.Definition = None
+
+
+    def _deserialize(self, params):
+        self.Definition = params.get("Definition")
+
+
 class AiAnalysisResult(AbstractModel):
     """智能分析结果
 
@@ -263,15 +309,18 @@ class AiAnalysisTaskTagOutput(AbstractModel):
         """
         :param TagSet: 视频智能标签列表。
 注意：此字段可能返回 null，表示取不到有效值。
-        :type TagSet: :class:`tencentcloud.vod.v20180717.models.MediaAiAnalysisTagItem`
+        :type TagSet: list of MediaAiAnalysisTagItem
         """
         self.TagSet = None
 
 
     def _deserialize(self, params):
         if params.get("TagSet") is not None:
-            self.TagSet = MediaAiAnalysisTagItem()
-            self.TagSet._deserialize(params.get("TagSet"))
+            self.TagSet = []
+            for item in params.get("TagSet"):
+                obj = MediaAiAnalysisTagItem()
+                obj._deserialize(item)
+                self.TagSet.append(obj)
 
 
 class AiAnalysisTaskTagResult(AbstractModel):
@@ -293,7 +342,7 @@ class AiAnalysisTaskTagResult(AbstractModel):
         :type Input: :class:`tencentcloud.vod.v20180717.models.AiAnalysisTaskTagInput`
         :param Output: 智能标签任务输出。
 注意：此字段可能返回 null，表示取不到有效值。
-        :type Output: list of AiAnalysisTaskTagOutput
+        :type Output: :class:`tencentcloud.vod.v20180717.models.AiAnalysisTaskTagOutput`
         """
         self.Status = None
         self.ErrCode = None
@@ -310,11 +359,8 @@ class AiAnalysisTaskTagResult(AbstractModel):
             self.Input = AiAnalysisTaskTagInput()
             self.Input._deserialize(params.get("Input"))
         if params.get("Output") is not None:
-            self.Output = []
-            for item in params.get("Output"):
-                obj = AiAnalysisTaskTagOutput()
-                obj._deserialize(item)
-                self.Output.append(obj)
+            self.Output = AiAnalysisTaskTagOutput()
+            self.Output._deserialize(params.get("Output"))
 
 
 class AiContentReviewResult(AbstractModel):
@@ -398,6 +444,23 @@ class AiContentReviewTaskInput(AbstractModel):
     def __init__(self):
         """
         :param Definition: 视频内容审核模板 ID，可以填 10 和 20。<li>10：对视频画面进行鉴黄、鉴暴、鉴政审核；</li><li>20：对视频画面进行鉴黄、鉴暴、鉴政审核，并对 Asr 和 Ocr 文字进行鉴黄、鉴政审核。</li>
+        :type Definition: int
+        """
+        self.Definition = None
+
+
+    def _deserialize(self, params):
+        self.Definition = params.get("Definition")
+
+
+class AiRecognitionTaskInput(AbstractModel):
+    """AI 视频内容识别输入参数类型
+
+    """
+
+    def __init__(self):
+        """
+        :param Definition: 视频智能识别模板 ID ，固定为 10，同时进行按帧标签识别、精彩片段识别、视频头尾识别、拆条、人脸识别、文字识别、语音识别、文字全文识别、语音全文识别，后续会推出用户自定义模板，可根据需要选择相应的识别任务。
         :type Definition: int
         """
         self.Definition = None
@@ -1245,6 +1308,45 @@ class AudioTemplateInfo(AbstractModel):
         self.AudioChannel = params.get("AudioChannel")
 
 
+class AudioTemplateInfoForUpdate(AbstractModel):
+    """音频流配置参数
+
+    """
+
+    def __init__(self):
+        """
+        :param Codec: 音频流的编码格式，可选值：
+<li>libfdk_aac：更适合 mp4 和 hls；</li>
+<li>libmp3lame：更适合 flv；</li>
+<li>mp2。</li>
+        :type Codec: str
+        :param Bitrate: 音频流的码率，取值范围：0 和 [26, 256]，单位：kbps。 当取值为 0，表示音频码率和原始音频保持一致。
+        :type Bitrate: int
+        :param SampleRate: 音频流的采样率，可选值：
+<li>32000</li>
+<li>44100</li>
+<li>48000</li>
+单位：Hz。
+        :type SampleRate: int
+        :param AudioChannel: 音频通道方式，可选值：
+<li>1：单通道</li>
+<li>2：双通道</li>
+<li>6：立体声</li>
+        :type AudioChannel: int
+        """
+        self.Codec = None
+        self.Bitrate = None
+        self.SampleRate = None
+        self.AudioChannel = None
+
+
+    def _deserialize(self, params):
+        self.Codec = params.get("Codec")
+        self.Bitrate = params.get("Bitrate")
+        self.SampleRate = params.get("SampleRate")
+        self.AudioChannel = params.get("AudioChannel")
+
+
 class ClipFileInfo2017(AbstractModel):
     """视频裁剪结果文件信息（2017 版）
 
@@ -1259,7 +1361,7 @@ class ClipFileInfo2017(AbstractModel):
         :type ErrCode: int
         :param Message: 错误描述。
 注意：此字段可能返回 null，表示取不到有效值。
-        :type Message: float
+        :type Message: str
         :param FileId: 输出目标文件的文件 ID。
 注意：此字段可能返回 null，表示取不到有效值。
         :type FileId: str
@@ -1624,6 +1726,68 @@ class CreateImageSpriteTask2017(AbstractModel):
         self.WebVttUrl = params.get("WebVttUrl")
 
 
+class CreateProcedureTemplateRequest(AbstractModel):
+    """CreateProcedureTemplate请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Name: 任务流名字（支持中文，不超过20个字）。
+        :type Name: str
+        :param MediaProcessTask: 视频处理类型任务参数。
+        :type MediaProcessTask: :class:`tencentcloud.vod.v20180717.models.MediaProcessTaskInput`
+        :param AiContentReviewTask: AI 智能内容审核类型任务参数。
+        :type AiContentReviewTask: :class:`tencentcloud.vod.v20180717.models.AiContentReviewTaskInput`
+        :param AiAnalysisTask: AI 智能内容分析类型任务参数。
+        :type AiAnalysisTask: :class:`tencentcloud.vod.v20180717.models.AiAnalysisTaskInput`
+        :param AiRecognitionTask: AI 内容识别类型任务参数。
+        :type AiRecognitionTask: :class:`tencentcloud.vod.v20180717.models.AiRecognitionTaskInput`
+        :param SubAppId: 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
+        :type SubAppId: int
+        """
+        self.Name = None
+        self.MediaProcessTask = None
+        self.AiContentReviewTask = None
+        self.AiAnalysisTask = None
+        self.AiRecognitionTask = None
+        self.SubAppId = None
+
+
+    def _deserialize(self, params):
+        self.Name = params.get("Name")
+        if params.get("MediaProcessTask") is not None:
+            self.MediaProcessTask = MediaProcessTaskInput()
+            self.MediaProcessTask._deserialize(params.get("MediaProcessTask"))
+        if params.get("AiContentReviewTask") is not None:
+            self.AiContentReviewTask = AiContentReviewTaskInput()
+            self.AiContentReviewTask._deserialize(params.get("AiContentReviewTask"))
+        if params.get("AiAnalysisTask") is not None:
+            self.AiAnalysisTask = AiAnalysisTaskInput()
+            self.AiAnalysisTask._deserialize(params.get("AiAnalysisTask"))
+        if params.get("AiRecognitionTask") is not None:
+            self.AiRecognitionTask = AiRecognitionTaskInput()
+            self.AiRecognitionTask._deserialize(params.get("AiRecognitionTask"))
+        self.SubAppId = params.get("SubAppId")
+
+
+class CreateProcedureTemplateResponse(AbstractModel):
+    """CreateProcedureTemplate返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class CreateTranscodeTemplateRequest(AbstractModel):
     """CreateTranscodeTemplate请求参数结构体
 
@@ -1631,7 +1795,7 @@ class CreateTranscodeTemplateRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Container: 封装格式，可选值：mp4、flv、hls、mp3、flac、ogg。其中，mp3、flac、ogg 为纯音频文件。
+        :param Container: 封装格式，可选值：mp4、flv、hls、mp3、flac、ogg、m4a。其中，mp3、flac、ogg、m4a 为纯音频文件。
         :type Container: str
         :param Name: 转码模板名称，长度限制：64 个字符。
         :type Name: str
@@ -1716,11 +1880,11 @@ class CreateWatermarkTemplateRequest(AbstractModel):
         :param Comment: 模板描述信息，长度限制：256 个字符。
         :type Comment: str
         :param CoordinateOrigin: 原点位置，可选值：
-<li>topLeft：表示坐标原点位于视频图像左上角，水印原点为图片或文字的左上角；</li>
-<li>topRight：表示坐标原点位于视频图像的右上角，水印原点为图片或文字的右上角；</li>
-<li>bottomLeft：表示坐标原点位于视频图像的左下角，水印原点为图片或文字的左下角；</li>
-<li>bottomRight：表示坐标原点位于视频图像的右下角，水印原点为图片或文字的右下角。</li>
-默认值：topLeft。目前，当 Type 为 image，该字段仅支持 topLeft。
+<li>TopLeft：表示坐标原点位于视频图像左上角，水印原点为图片或文字的左上角；</li>
+<li>TopRight：表示坐标原点位于视频图像的右上角，水印原点为图片或文字的右上角；</li>
+<li>BottomLeft：表示坐标原点位于视频图像的左下角，水印原点为图片或文字的左下角；</li>
+<li>BottomRight：表示坐标原点位于视频图像的右下角，水印原点为图片或文字的右下角。</li>
+默认值：TopLeft。目前，当 Type 为 image，该字段仅支持 TopLeft。
         :type CoordinateOrigin: str
         :param XPos: 水印原点距离视频图像坐标原点的水平位置。支持 %、px 两种格式：
 <li>当字符串以 % 结尾，表示水印 Left 为视频宽度指定百分比的位置，如 10% 表示 Left 为视频宽度的 10%；</li>
@@ -1735,7 +1899,9 @@ class CreateWatermarkTemplateRequest(AbstractModel):
         :param ImageTemplate: 图片水印模板，当 Type 为 image，该字段必填。当 Type 为 text，该字段无效。
         :type ImageTemplate: :class:`tencentcloud.vod.v20180717.models.ImageWatermarkInput`
         :param TextTemplate: 文字水印模板，当 Type 为 text，该字段必填。当 Type 为 image，该字段无效。
-        :type TextTemplate: :class:`tencentcloud.vod.v20180717.models.TextWatermarkTemplate`
+        :type TextTemplate: :class:`tencentcloud.vod.v20180717.models.TextWatermarkTemplateInput`
+        :param SvgTemplate: SVG水印模板，当 Type 为 svg，该字段必填。当 Type 为 image 或 text，该字段无效。
+        :type SvgTemplate: :class:`tencentcloud.vod.v20180717.models.SvgWatermarkInput`
         :param SubAppId: 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
         :type SubAppId: int
         """
@@ -1747,6 +1913,7 @@ class CreateWatermarkTemplateRequest(AbstractModel):
         self.YPos = None
         self.ImageTemplate = None
         self.TextTemplate = None
+        self.SvgTemplate = None
         self.SubAppId = None
 
 
@@ -1761,8 +1928,11 @@ class CreateWatermarkTemplateRequest(AbstractModel):
             self.ImageTemplate = ImageWatermarkInput()
             self.ImageTemplate._deserialize(params.get("ImageTemplate"))
         if params.get("TextTemplate") is not None:
-            self.TextTemplate = TextWatermarkTemplate()
+            self.TextTemplate = TextWatermarkTemplateInput()
             self.TextTemplate._deserialize(params.get("TextTemplate"))
+        if params.get("SvgTemplate") is not None:
+            self.SvgTemplate = SvgWatermarkInput()
+            self.SvgTemplate._deserialize(params.get("SvgTemplate"))
         self.SubAppId = params.get("SubAppId")
 
 
@@ -1775,8 +1945,7 @@ class CreateWatermarkTemplateResponse(AbstractModel):
         """
         :param Definition: 水印模板唯一标识。
         :type Definition: int
-        :param ImageUrl: 水印图片地址，仅当 Type 为 image，该字段有值。
-注意：此字段可能返回 null，表示取不到有效值。
+        :param ImageUrl: 水印图片地址，仅当 Type 为 image，该字段有效。
         :type ImageUrl: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -1862,6 +2031,44 @@ class DeleteMediaRequest(AbstractModel):
 
 class DeleteMediaResponse(AbstractModel):
     """DeleteMedia返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class DeleteProcedureTemplateRequest(AbstractModel):
+    """DeleteProcedureTemplate请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Name: 任务流名字。
+        :type Name: str
+        :param SubAppId: 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
+        :type SubAppId: int
+        """
+        self.Name = None
+        self.SubAppId = None
+
+
+    def _deserialize(self, params):
+        self.Name = params.get("Name")
+        self.SubAppId = params.get("SubAppId")
+
+
+class DeleteProcedureTemplateResponse(AbstractModel):
+    """DeleteProcedureTemplate返回参数结构体
 
     """
 
@@ -2062,6 +2269,65 @@ class DescribeMediaInfosResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeProcedureTemplatesRequest(AbstractModel):
+    """DescribeProcedureTemplates请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Names: 任务流模板名字过滤条件，数组长度限制：100。
+        :type Names: list of str
+        :param Offset: 分页偏移量，默认值：0。
+        :type Offset: int
+        :param Limit: 返回记录条数，默认值：10，最大值：100。
+        :type Limit: int
+        :param SubAppId: 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
+        :type SubAppId: int
+        """
+        self.Names = None
+        self.Offset = None
+        self.Limit = None
+        self.SubAppId = None
+
+
+    def _deserialize(self, params):
+        self.Names = params.get("Names")
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+        self.SubAppId = params.get("SubAppId")
+
+
+class DescribeProcedureTemplatesResponse(AbstractModel):
+    """DescribeProcedureTemplates返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param TotalCount: 符合过滤条件的记录总数。
+        :type TotalCount: int
+        :param ProcedureTemplateSet: 任务流模板详情列表。
+        :type ProcedureTemplateSet: list of ProcedureTemplate
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.ProcedureTemplateSet = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("ProcedureTemplateSet") is not None:
+            self.ProcedureTemplateSet = []
+            for item in params.get("ProcedureTemplateSet"):
+                obj = ProcedureTemplate()
+                obj._deserialize(item)
+                self.ProcedureTemplateSet.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeTaskDetailRequest(AbstractModel):
     """DescribeTaskDetail请求参数结构体
 
@@ -2069,7 +2335,7 @@ class DescribeTaskDetailRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param TaskId: 视频处理任务的任务 ID
+        :param TaskId: 视频处理任务的任务 ID。
         :type TaskId: str
         :param SubAppId: 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
         :type SubAppId: int
@@ -2605,9 +2871,9 @@ class EventContent(AbstractModel):
         :param EditMediaCompleteEvent: 视频编辑完成事件，当事件类型为 EditMediaComplete 时有效。
 注意：此字段可能返回 null，表示取不到有效值。
         :type EditMediaCompleteEvent: :class:`tencentcloud.vod.v20180717.models.EditMediaTask`
-        :param WechatPublishComplete: 微信发布完成事件，当事件类型为 WechatPublishComplete 时有效。
+        :param WechatPublishCompleteEvent: 微信发布完成事件，当事件类型为 WechatPublishComplete 时有效。
 注意：此字段可能返回 null，表示取不到有效值。
-        :type WechatPublishComplete: :class:`tencentcloud.vod.v20180717.models.WechatPublishTask`
+        :type WechatPublishCompleteEvent: :class:`tencentcloud.vod.v20180717.models.WechatPublishTask`
         :param TranscodeCompleteEvent: 视频转码完成事件，当事件类型为 TranscodeComplete 时有效。
 注意：此字段可能返回 null，表示取不到有效值。
         :type TranscodeCompleteEvent: :class:`tencentcloud.vod.v20180717.models.TranscodeTask2017`
@@ -2631,7 +2897,7 @@ class EventContent(AbstractModel):
         self.FileDeleteEvent = None
         self.PullCompleteEvent = None
         self.EditMediaCompleteEvent = None
-        self.WechatPublishComplete = None
+        self.WechatPublishCompleteEvent = None
         self.TranscodeCompleteEvent = None
         self.ConcatCompleteEvent = None
         self.ClipCompleteEvent = None
@@ -2657,9 +2923,9 @@ class EventContent(AbstractModel):
         if params.get("EditMediaCompleteEvent") is not None:
             self.EditMediaCompleteEvent = EditMediaTask()
             self.EditMediaCompleteEvent._deserialize(params.get("EditMediaCompleteEvent"))
-        if params.get("WechatPublishComplete") is not None:
-            self.WechatPublishComplete = WechatPublishTask()
-            self.WechatPublishComplete._deserialize(params.get("WechatPublishComplete"))
+        if params.get("WechatPublishCompleteEvent") is not None:
+            self.WechatPublishCompleteEvent = WechatPublishTask()
+            self.WechatPublishCompleteEvent._deserialize(params.get("WechatPublishCompleteEvent"))
         if params.get("TranscodeCompleteEvent") is not None:
             self.TranscodeCompleteEvent = TranscodeTask2017()
             self.TranscodeCompleteEvent._deserialize(params.get("TranscodeCompleteEvent"))
@@ -2770,6 +3036,36 @@ class ImageWatermarkInput(AbstractModel):
         self.Height = params.get("Height")
 
 
+class ImageWatermarkInputForUpdate(AbstractModel):
+    """图片水印模板输入参数
+
+    """
+
+    def __init__(self):
+        """
+        :param ImageContent: 水印图片 [Base64](https://tools.ietf.org/html/rfc4648) 编码后的字符串。支持 jpeg、png 图片格式。
+        :type ImageContent: str
+        :param Width: 水印的宽度。支持 %、px 两种格式：
+<li>当字符串以 % 结尾，表示水印 Width 为视频宽度的百分比大小，如 10% 表示 Width 为视频宽度的 10%；</li>
+<li>当字符串以 px 结尾，表示水印 Width 单位为像素，如 100px 表示 Width 为 100 像素。</li>
+        :type Width: str
+        :param Height: 水印的高度。支持 %、px 两种格式：
+<li>当字符串以 % 结尾，表示水印 Height 为视频高度的百分比大小，如 10% 表示 Height 为视频高度的 10%；</li>
+<li>当字符串以 px 结尾，表示水印 Width 单位为像素，如 100px 表示 Width 为 100 像素。</li>
+0px 表示 Height 按照 Width 对视频宽度的比例缩放。
+        :type Height: str
+        """
+        self.ImageContent = None
+        self.Width = None
+        self.Height = None
+
+
+    def _deserialize(self, params):
+        self.ImageContent = params.get("ImageContent")
+        self.Width = params.get("Width")
+        self.Height = params.get("Height")
+
+
 class ImageWatermarkTemplate(AbstractModel):
     """图片水印模板
 
@@ -2819,6 +3115,10 @@ class LiveRealTimeClipRequest(AbstractModel):
         :type ExpireTime: str
         :param Procedure: 剪辑固化后的视频点播任务流处理，详见[上传指定任务流](https://cloud.tencent.com/document/product/266/9759)。仅 IsPersistence 为 1 时有效。
         :type Procedure: str
+        :param MetaDataRequired: 是否需要返回剪辑后的视频元信息。0 不需要，1 需要。默认不需要。
+        :type MetaDataRequired: int
+        :param SubAppId: 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
+        :type SubAppId: int
         """
         self.StreamId = None
         self.StartTime = None
@@ -2826,6 +3126,8 @@ class LiveRealTimeClipRequest(AbstractModel):
         self.IsPersistence = None
         self.ExpireTime = None
         self.Procedure = None
+        self.MetaDataRequired = None
+        self.SubAppId = None
 
 
     def _deserialize(self, params):
@@ -2835,6 +3137,8 @@ class LiveRealTimeClipRequest(AbstractModel):
         self.IsPersistence = params.get("IsPersistence")
         self.ExpireTime = params.get("ExpireTime")
         self.Procedure = params.get("Procedure")
+        self.MetaDataRequired = params.get("MetaDataRequired")
+        self.SubAppId = params.get("SubAppId")
 
 
 class LiveRealTimeClipResponse(AbstractModel):
@@ -2852,12 +3156,16 @@ class LiveRealTimeClipResponse(AbstractModel):
         :param VodTaskId: 剪辑固化后的视频任务流 ID。
 注意：此字段可能返回 null，表示取不到有效值。
         :type VodTaskId: str
+        :param MetaData: 剪辑后的视频元信息。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MetaData: :class:`tencentcloud.vod.v20180717.models.MediaMetaData`
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.Url = None
         self.FileId = None
         self.VodTaskId = None
+        self.MetaData = None
         self.RequestId = None
 
 
@@ -2865,6 +3173,9 @@ class LiveRealTimeClipResponse(AbstractModel):
         self.Url = params.get("Url")
         self.FileId = params.get("FileId")
         self.VodTaskId = params.get("VodTaskId")
+        if params.get("MetaData") is not None:
+            self.MetaData = MediaMetaData()
+            self.MetaData._deserialize(params.get("MetaData"))
         self.RequestId = params.get("RequestId")
 
 
@@ -3711,6 +4022,43 @@ class MediaOutputInfo(AbstractModel):
         self.Dir = params.get("Dir")
 
 
+class MediaProcessTaskAdaptiveDynamicStreamingResult(AbstractModel):
+    """对视频转自适应码流任务结果类型
+
+    """
+
+    def __init__(self):
+        """
+        :param Status: 任务状态，有 PROCESSING，SUCCESS 和 FAIL 三种。
+        :type Status: str
+        :param ErrCode: 错误码，0：成功，其他值：失败。
+        :type ErrCode: int
+        :param Message: 错误信息。
+        :type Message: str
+        :param Input: 对视频转自适应码流任务的输入。
+        :type Input: :class:`tencentcloud.vod.v20180717.models.AdaptiveDynamicStreamingTaskInput`
+        :param Output: 对视频转自适应码流任务的输出。
+        :type Output: :class:`tencentcloud.vod.v20180717.models.AdaptiveDynamicStreamingInfoItem`
+        """
+        self.Status = None
+        self.ErrCode = None
+        self.Message = None
+        self.Input = None
+        self.Output = None
+
+
+    def _deserialize(self, params):
+        self.Status = params.get("Status")
+        self.ErrCode = params.get("ErrCode")
+        self.Message = params.get("Message")
+        if params.get("Input") is not None:
+            self.Input = AdaptiveDynamicStreamingTaskInput()
+            self.Input._deserialize(params.get("Input"))
+        if params.get("Output") is not None:
+            self.Output = AdaptiveDynamicStreamingInfoItem()
+            self.Output._deserialize(params.get("Output"))
+
+
 class MediaProcessTaskAnimatedGraphicResult(AbstractModel):
     """转动图任务结果类型
 
@@ -3855,6 +4203,9 @@ class MediaProcessTaskInput(AbstractModel):
         :param CoverBySnapshotTaskSet: 对视频截图做封面任务列表。
 注意：此字段可能返回 null，表示取不到有效值。
         :type CoverBySnapshotTaskSet: list of CoverBySnapshotTaskInput
+        :param AdaptiveDynamicStreamingTaskSet: 对视频转自适应码流任务列表。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AdaptiveDynamicStreamingTaskSet: list of AdaptiveDynamicStreamingTaskInput
         """
         self.TranscodeTaskSet = None
         self.AnimatedGraphicTaskSet = None
@@ -3862,6 +4213,7 @@ class MediaProcessTaskInput(AbstractModel):
         self.SampleSnapshotTaskSet = None
         self.ImageSpriteTaskSet = None
         self.CoverBySnapshotTaskSet = None
+        self.AdaptiveDynamicStreamingTaskSet = None
 
 
     def _deserialize(self, params):
@@ -3901,6 +4253,12 @@ class MediaProcessTaskInput(AbstractModel):
                 obj = CoverBySnapshotTaskInput()
                 obj._deserialize(item)
                 self.CoverBySnapshotTaskSet.append(obj)
+        if params.get("AdaptiveDynamicStreamingTaskSet") is not None:
+            self.AdaptiveDynamicStreamingTaskSet = []
+            for item in params.get("AdaptiveDynamicStreamingTaskSet"):
+                obj = AdaptiveDynamicStreamingTaskInput()
+                obj._deserialize(item)
+                self.AdaptiveDynamicStreamingTaskSet.append(obj)
 
 
 class MediaProcessTaskResult(AbstractModel):
@@ -3917,6 +4275,7 @@ class MediaProcessTaskResult(AbstractModel):
 <li>SampleSnapshot：采样截图</li>
 <li>ImageSprites：雪碧图</li>
 <li>CoverBySnapshot：截图做封面</li>
+<li>AdaptiveDynamicStreaming：自适应码流</li>
         :type Type: str
         :param TranscodeTask: 视频转码任务的查询结果，当任务类型为 Transcode 时有效。
 注意：此字段可能返回 null，表示取不到有效值。
@@ -3936,6 +4295,9 @@ class MediaProcessTaskResult(AbstractModel):
         :param CoverBySnapshotTask: 对视频截图做封面任务的查询结果，当任务类型为 CoverBySnapshot 时有效。
 注意：此字段可能返回 null，表示取不到有效值。
         :type CoverBySnapshotTask: :class:`tencentcloud.vod.v20180717.models.MediaProcessTaskCoverBySnapshotResult`
+        :param AdaptiveDynamicStreamingTask: 对视频转自适应码流任务的查询结果，当任务类型为 AdaptiveDynamicStreaming 时有效。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AdaptiveDynamicStreamingTask: :class:`tencentcloud.vod.v20180717.models.MediaProcessTaskAdaptiveDynamicStreamingResult`
         """
         self.Type = None
         self.TranscodeTask = None
@@ -3944,6 +4306,7 @@ class MediaProcessTaskResult(AbstractModel):
         self.SampleSnapshotTask = None
         self.ImageSpriteTask = None
         self.CoverBySnapshotTask = None
+        self.AdaptiveDynamicStreamingTask = None
 
 
     def _deserialize(self, params):
@@ -3966,6 +4329,9 @@ class MediaProcessTaskResult(AbstractModel):
         if params.get("CoverBySnapshotTask") is not None:
             self.CoverBySnapshotTask = MediaProcessTaskCoverBySnapshotResult()
             self.CoverBySnapshotTask._deserialize(params.get("CoverBySnapshotTask"))
+        if params.get("AdaptiveDynamicStreamingTask") is not None:
+            self.AdaptiveDynamicStreamingTask = MediaProcessTaskAdaptiveDynamicStreamingResult()
+            self.AdaptiveDynamicStreamingTask._deserialize(params.get("AdaptiveDynamicStreamingTask"))
 
 
 class MediaProcessTaskSampleSnapshotResult(AbstractModel):
@@ -4543,7 +4909,7 @@ class ModifyTranscodeTemplateRequest(AbstractModel):
         """
         :param Definition: 转码模板唯一标识。
         :type Definition: int
-        :param Container: 封装格式，可选值：mp4、flv、hls、mp3、flac、ogg。其中，mp3、flac、ogg 为纯音频文件。
+        :param Container: 封装格式，可选值：mp4、flv、hls、mp3、flac、ogg、m4a。其中，mp3、flac、ogg、m4a 为纯音频文件。
         :type Container: str
         :param Name: 转码模板名称，长度限制：64 个字符。
         :type Name: str
@@ -4558,9 +4924,9 @@ class ModifyTranscodeTemplateRequest(AbstractModel):
 <li>1：去除</li>
         :type RemoveAudio: int
         :param VideoTemplate: 视频流配置参数。
-        :type VideoTemplate: :class:`tencentcloud.vod.v20180717.models.VideoTemplateInfo`
+        :type VideoTemplate: :class:`tencentcloud.vod.v20180717.models.VideoTemplateInfoForUpdate`
         :param AudioTemplate: 音频流配置参数。
-        :type AudioTemplate: :class:`tencentcloud.vod.v20180717.models.AudioTemplateInfo`
+        :type AudioTemplate: :class:`tencentcloud.vod.v20180717.models.AudioTemplateInfoForUpdate`
         :param SubAppId: 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
         :type SubAppId: int
         """
@@ -4583,10 +4949,10 @@ class ModifyTranscodeTemplateRequest(AbstractModel):
         self.RemoveVideo = params.get("RemoveVideo")
         self.RemoveAudio = params.get("RemoveAudio")
         if params.get("VideoTemplate") is not None:
-            self.VideoTemplate = VideoTemplateInfo()
+            self.VideoTemplate = VideoTemplateInfoForUpdate()
             self.VideoTemplate._deserialize(params.get("VideoTemplate"))
         if params.get("AudioTemplate") is not None:
-            self.AudioTemplate = AudioTemplateInfo()
+            self.AudioTemplate = AudioTemplateInfoForUpdate()
             self.AudioTemplate._deserialize(params.get("AudioTemplate"))
         self.SubAppId = params.get("SubAppId")
 
@@ -4622,11 +4988,11 @@ class ModifyWatermarkTemplateRequest(AbstractModel):
         :param Comment: 模板描述信息，长度限制：256 个字符。
         :type Comment: str
         :param CoordinateOrigin: 原点位置，可选值：
-<li>topLeft：表示坐标原点位于视频图像左上角，水印原点为图片或文字的左上角；</li>
-<li>topRight：表示坐标原点位于视频图像的右上角，水印原点为图片或文字的右上角；</li>
-<li>bottomLeft：表示坐标原点位于视频图像的左下角，水印原点为图片或文字的左下角；</li>
-<li>bottomRight：表示坐标原点位于视频图像的右下角，水印原点为图片或文字的右下角。</li>
-目前，当 Type 为 image，该字段仅支持 topLeft。
+<li>TopLeft：表示坐标原点位于视频图像左上角，水印原点为图片或文字的左上角；</li>
+<li>TopRight：表示坐标原点位于视频图像的右上角，水印原点为图片或文字的右上角；</li>
+<li>BottomLeft：表示坐标原点位于视频图像的左下角，水印原点为图片或文字的左下角；</li>
+<li>BottomRight：表示坐标原点位于视频图像的右下角，水印原点为图片或文字的右下角。</li>
+目前，当 Type 为 image，该字段仅支持 TopLeft。
         :type CoordinateOrigin: str
         :param XPos: 水印原点距离视频图像坐标原点的水平位置。支持 %、px 两种格式：
 <li>当字符串以 % 结尾，表示水印 Left 为视频宽度指定百分比的位置，如 10% 表示 Left 为视频宽度的 10%；</li>
@@ -4637,9 +5003,11 @@ class ModifyWatermarkTemplateRequest(AbstractModel):
 <li>当字符串以 px 结尾，表示水印 Top 为视频高度指定像素的位置，如 100px 表示 Top 为 100 像素。</li>
         :type YPos: str
         :param ImageTemplate: 图片水印模板，该字段仅对图片水印模板有效。
-        :type ImageTemplate: :class:`tencentcloud.vod.v20180717.models.ImageWatermarkInput`
+        :type ImageTemplate: :class:`tencentcloud.vod.v20180717.models.ImageWatermarkInputForUpdate`
         :param TextTemplate: 文字水印模板，该字段仅对文字水印模板有效。
-        :type TextTemplate: :class:`tencentcloud.vod.v20180717.models.TextWatermarkTemplate`
+        :type TextTemplate: :class:`tencentcloud.vod.v20180717.models.TextWatermarkTemplateInputForUpdate`
+        :param SvgTemplate: SVG水印模板，当 Type 为 svg，该字段必填。当 Type 为 image 或 text，该字段无效。
+        :type SvgTemplate: :class:`tencentcloud.vod.v20180717.models.SvgWatermarkInputForUpdate`
         :param SubAppId: 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
         :type SubAppId: int
         """
@@ -4651,6 +5019,7 @@ class ModifyWatermarkTemplateRequest(AbstractModel):
         self.YPos = None
         self.ImageTemplate = None
         self.TextTemplate = None
+        self.SvgTemplate = None
         self.SubAppId = None
 
 
@@ -4662,11 +5031,14 @@ class ModifyWatermarkTemplateRequest(AbstractModel):
         self.XPos = params.get("XPos")
         self.YPos = params.get("YPos")
         if params.get("ImageTemplate") is not None:
-            self.ImageTemplate = ImageWatermarkInput()
+            self.ImageTemplate = ImageWatermarkInputForUpdate()
             self.ImageTemplate._deserialize(params.get("ImageTemplate"))
         if params.get("TextTemplate") is not None:
-            self.TextTemplate = TextWatermarkTemplate()
+            self.TextTemplate = TextWatermarkTemplateInputForUpdate()
             self.TextTemplate._deserialize(params.get("TextTemplate"))
+        if params.get("SvgTemplate") is not None:
+            self.SvgTemplate = SvgWatermarkInputForUpdate()
+            self.SvgTemplate._deserialize(params.get("SvgTemplate"))
         self.SubAppId = params.get("SubAppId")
 
 
@@ -4794,6 +5166,59 @@ class ProcedureTask(AbstractModel):
                 self.AiAnalysisResultSet.append(obj)
         self.TasksPriority = params.get("TasksPriority")
         self.TasksNotifyMode = params.get("TasksNotifyMode")
+
+
+class ProcedureTemplate(AbstractModel):
+    """任务流模板详情
+
+    """
+
+    def __init__(self):
+        """
+        :param Name: 任务流名字。
+        :type Name: str
+        :param MediaProcessTask: 视频处理类型任务参数。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MediaProcessTask: :class:`tencentcloud.vod.v20180717.models.MediaProcessTaskInput`
+        :param AiContentReviewTask: AI 智能内容审核类型任务参数。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AiContentReviewTask: :class:`tencentcloud.vod.v20180717.models.AiContentReviewTaskInput`
+        :param AiAnalysisTask: AI 智能内容分析类型任务参数。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AiAnalysisTask: :class:`tencentcloud.vod.v20180717.models.AiAnalysisTaskInput`
+        :param AiRecognitionTask: AI 内容识别类型任务参数。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AiRecognitionTask: :class:`tencentcloud.vod.v20180717.models.AiRecognitionTaskInput`
+        :param CreateTime: 模板创建时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F)。
+        :type CreateTime: str
+        :param UpdateTime: 模板最后修改时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F)。
+        :type UpdateTime: str
+        """
+        self.Name = None
+        self.MediaProcessTask = None
+        self.AiContentReviewTask = None
+        self.AiAnalysisTask = None
+        self.AiRecognitionTask = None
+        self.CreateTime = None
+        self.UpdateTime = None
+
+
+    def _deserialize(self, params):
+        self.Name = params.get("Name")
+        if params.get("MediaProcessTask") is not None:
+            self.MediaProcessTask = MediaProcessTaskInput()
+            self.MediaProcessTask._deserialize(params.get("MediaProcessTask"))
+        if params.get("AiContentReviewTask") is not None:
+            self.AiContentReviewTask = AiContentReviewTaskInput()
+            self.AiContentReviewTask._deserialize(params.get("AiContentReviewTask"))
+        if params.get("AiAnalysisTask") is not None:
+            self.AiAnalysisTask = AiAnalysisTaskInput()
+            self.AiAnalysisTask._deserialize(params.get("AiAnalysisTask"))
+        if params.get("AiRecognitionTask") is not None:
+            self.AiRecognitionTask = AiRecognitionTaskInput()
+            self.AiRecognitionTask._deserialize(params.get("AiRecognitionTask"))
+        self.CreateTime = params.get("CreateTime")
+        self.UpdateTime = params.get("UpdateTime")
 
 
 class ProcessMediaByUrlRequest(AbstractModel):
@@ -5038,6 +5463,68 @@ class PullFileTask(AbstractModel):
         self.ProcedureTaskId = params.get("ProcedureTaskId")
 
 
+class ResetProcedureTemplateRequest(AbstractModel):
+    """ResetProcedureTemplate请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Name: 任务流名字
+        :type Name: str
+        :param MediaProcessTask: 视频处理类型任务参数。
+        :type MediaProcessTask: :class:`tencentcloud.vod.v20180717.models.MediaProcessTaskInput`
+        :param AiContentReviewTask: AI 智能内容审核类型任务参数。
+        :type AiContentReviewTask: :class:`tencentcloud.vod.v20180717.models.AiContentReviewTaskInput`
+        :param AiAnalysisTask: AI 智能内容分析类型任务参数。
+        :type AiAnalysisTask: :class:`tencentcloud.vod.v20180717.models.AiAnalysisTaskInput`
+        :param AiRecognitionTask: AI 内容识别类型任务参数。
+        :type AiRecognitionTask: :class:`tencentcloud.vod.v20180717.models.AiRecognitionTaskInput`
+        :param SubAppId: 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
+        :type SubAppId: int
+        """
+        self.Name = None
+        self.MediaProcessTask = None
+        self.AiContentReviewTask = None
+        self.AiAnalysisTask = None
+        self.AiRecognitionTask = None
+        self.SubAppId = None
+
+
+    def _deserialize(self, params):
+        self.Name = params.get("Name")
+        if params.get("MediaProcessTask") is not None:
+            self.MediaProcessTask = MediaProcessTaskInput()
+            self.MediaProcessTask._deserialize(params.get("MediaProcessTask"))
+        if params.get("AiContentReviewTask") is not None:
+            self.AiContentReviewTask = AiContentReviewTaskInput()
+            self.AiContentReviewTask._deserialize(params.get("AiContentReviewTask"))
+        if params.get("AiAnalysisTask") is not None:
+            self.AiAnalysisTask = AiAnalysisTaskInput()
+            self.AiAnalysisTask._deserialize(params.get("AiAnalysisTask"))
+        if params.get("AiRecognitionTask") is not None:
+            self.AiRecognitionTask = AiRecognitionTaskInput()
+            self.AiRecognitionTask._deserialize(params.get("AiRecognitionTask"))
+        self.SubAppId = params.get("SubAppId")
+
+
+class ResetProcedureTemplateResponse(AbstractModel):
+    """ResetProcedureTemplate返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class SampleSnapshotTaskInput(AbstractModel):
     """对视频做采样截图任务输入参数类型
 
@@ -5233,7 +5720,7 @@ class SnapshotByTimeOffset2017(AbstractModel):
 <li>0：成功；</li>
 <li>其他值：失败。</li>
 注意：此字段可能返回 null，表示取不到有效值。
-        :type ErrCode: str
+        :type ErrCode: int
         :param TimeOffset: 截图的具体时间点，单位：毫秒。
 注意：此字段可能返回 null，表示取不到有效值。
         :type TimeOffset: int
@@ -5339,6 +5826,80 @@ class SortBy(AbstractModel):
         self.Order = params.get("Order")
 
 
+class SvgWatermarkInput(AbstractModel):
+    """SVG水印模板输入参数
+
+    """
+
+    def __init__(self):
+        """
+        :param Width: 水印的宽度，支持 px，%，W%，H%，S%，L% 六种格式：
+<li>当字符串以 px 结尾，表示水印 Width 单位为像素，如 100px 表示 Width 为 100 像素；当填 0px 且
+ Height 不为 0px 时，表示水印的宽度按原始 SVG 图像等比缩放；当 Width、Height 都填 0px 时，表示水印的宽度取原始 SVG 图像的宽度；</li>
+<li>当字符串以 W% 结尾，表示水印 Width 为视频宽度的百分比大小，如 10W% 表示 Width 为视频宽度的 10%；</li>
+<li>当字符串以 H% 结尾，表示水印 Width 为视频高度的百分比大小，如 10H% 表示 Width 为视频高度的 10%；</li>
+<li>当字符串以 S% 结尾，表示水印 Width 为视频短边的百分比大小，如 10S% 表示 Width 为视频短片的 10%；</li>
+<li>当字符串以 L% 结尾，表示水印 Width 为视频长边的百分比大小，如 10L% 表示 Width 为视频长边的 10%；</li>
+<li>当字符串以 % 结尾时，含义同 W%。</li>
+默认值为 10W%。
+        :type Width: str
+        :param Height: 水印的高度，支持 px，W%，H%，S%，L% 六种格式：
+<li>当字符串以 px 结尾，表示水印 Height 单位为像素，如 100px 表示 Height 为 100 像素；当填 0px 且
+ Width 不为 0px 时，表示水印的高度按原始 SVG 图像等比缩放；当 Width、Height 都填 0px 时，表示水印的高度取原始 SVG 图像的高度；</li>
+<li>当字符串以 W% 结尾，表示水印 Height 为视频宽度的百分比大小，如 10W% 表示 Height 为视频宽度的 10%；</li>
+<li>当字符串以 H% 结尾，表示水印 Height 为视频高度的百分比大小，如 10H% 表示 Height 为视频高度的 10%；</li>
+<li>当字符串以 S% 结尾，表示水印 Height 为视频短边的百分比大小，如 10S% 表示 Height 为视频短片的 10%；</li>
+<li>当字符串以 L% 结尾，表示水印 Height 为视频长边的百分比大小，如 10L% 表示 Height 为视频长边的 10%；</li>
+<li>当字符串以 % 结尾时，含义同 H%。</li>
+默认值为 0px。
+        :type Height: str
+        """
+        self.Width = None
+        self.Height = None
+
+
+    def _deserialize(self, params):
+        self.Width = params.get("Width")
+        self.Height = params.get("Height")
+
+
+class SvgWatermarkInputForUpdate(AbstractModel):
+    """SVG水印模板输入参数
+
+    """
+
+    def __init__(self):
+        """
+        :param Width: 水印的宽度，支持 px，%，W%，H%，S%，L% 六种格式：
+<li>当字符串以 px 结尾，表示水印 Width 单位为像素，如 100px 表示 Width 为 100 像素；当填 0px 且
+ Height 不为 0px 时，表示水印的宽度按原始 SVG 图像等比缩放；当 Width、Height 都填 0px 时，表示水印的宽度取原始 SVG 图像的宽度；</li>
+<li>当字符串以 W% 结尾，表示水印 Width 为视频宽度的百分比大小，如 10W% 表示 Width 为视频宽度的 10%；</li>
+<li>当字符串以 H% 结尾，表示水印 Width 为视频高度的百分比大小，如 10H% 表示 Width 为视频高度的 10%；</li>
+<li>当字符串以 S% 结尾，表示水印 Width 为视频短边的百分比大小，如 10S% 表示 Width 为视频短片的 10%；</li>
+<li>当字符串以 L% 结尾，表示水印 Width 为视频长边的百分比大小，如 10L% 表示 Width 为视频长边的 10%；</li>
+<li>当字符串以 % 结尾时，含义同 W%。</li>
+默认值为 10W%。
+        :type Width: str
+        :param Height: 水印的高度，支持 px，%，W%，H%，S%，L% 六种格式：
+<li>当字符串以 px 结尾，表示水印 Height 单位为像素，如 100px 表示 Height 为 100 像素；当填 0px 且
+ Width 不为 0px 时，表示水印的高度按原始 SVG 图像等比缩放；当 Width、Height 都填 0px 时，表示水印的高度取原始 SVG 图像的高度；</li>
+<li>当字符串以 W% 结尾，表示水印 Height 为视频宽度的百分比大小，如 10W% 表示 Height 为视频宽度的 10%；</li>
+<li>当字符串以 H% 结尾，表示水印 Height 为视频高度的百分比大小，如 10H% 表示 Height 为视频高度的 10%；</li>
+<li>当字符串以 S% 结尾，表示水印 Height 为视频短边的百分比大小，如 10S% 表示 Height 为视频短片的 10%；</li>
+<li>当字符串以 L% 结尾，表示水印 Height 为视频长边的百分比大小，如 10L% 表示 Height 为视频长边的 10%；</li>
+<li>当字符串以 % 结尾时，含义同 H%。
+默认值为 0px。
+        :type Height: str
+        """
+        self.Width = None
+        self.Height = None
+
+
+    def _deserialize(self, params):
+        self.Width = params.get("Width")
+        self.Height = params.get("Height")
+
+
 class TaskSimpleInfo(AbstractModel):
     """任务概要信息
 
@@ -5412,7 +5973,7 @@ class TempCertificate(AbstractModel):
         self.ExpiredTime = params.get("ExpiredTime")
 
 
-class TextWatermarkTemplate(AbstractModel):
+class TextWatermarkTemplateInput(AbstractModel):
     """文字水印模板
 
     """
@@ -5429,6 +5990,37 @@ class TextWatermarkTemplate(AbstractModel):
 <li>0：完全透明</li>
 <li>1：完全不透明</li>
 默认值：1。
+        :type FontAlpha: float
+        """
+        self.FontType = None
+        self.FontSize = None
+        self.FontColor = None
+        self.FontAlpha = None
+
+
+    def _deserialize(self, params):
+        self.FontType = params.get("FontType")
+        self.FontSize = params.get("FontSize")
+        self.FontColor = params.get("FontColor")
+        self.FontAlpha = params.get("FontAlpha")
+
+
+class TextWatermarkTemplateInputForUpdate(AbstractModel):
+    """文字水印模板
+
+    """
+
+    def __init__(self):
+        """
+        :param FontType: 字体类型，目前仅支持 arial.ttf。
+        :type FontType: str
+        :param FontSize: 字体大小，格式：Npx，N 为数值。
+        :type FontSize: str
+        :param FontColor: 字体颜色，格式：0xRRGGBB，默认值：0xFFFFFF（黑色）。
+        :type FontColor: str
+        :param FontAlpha: 文字透明度，取值范围：(0, 1]
+<li>0：完全透明</li>
+<li>1：完全不透明</li>
         :type FontAlpha: float
         """
         self.FontType = None
@@ -5652,7 +6244,7 @@ class VideoTemplateInfo(AbstractModel):
 <li>libx265：H.265 编码</li>
 目前 H.265 编码必须指定分辨率，并且需要在 640*480 以内。
         :type Codec: str
-        :param Fps: 视频帧率，取值范围：[0, 60],单位：Hz。
+        :param Fps: 视频帧率，取值范围：[0, 60]，单位：Hz。
 当取值为 0，表示帧率和原始视频保持一致。
         :type Fps: int
         :param Bitrate: 视频流的码率，取值范围：0 和 [128, 35000]，单位：kbps。
@@ -5698,6 +6290,54 @@ class VideoTemplateInfo(AbstractModel):
         self.Height = params.get("Height")
 
 
+class VideoTemplateInfoForUpdate(AbstractModel):
+    """视频流配置参数
+
+    """
+
+    def __init__(self):
+        """
+        :param Codec: 视频流的编码格式，可选值：
+<li>libx264：H.264 编码</li>
+<li>libx265：H.265 编码</li>
+目前 H.265 编码必须指定分辨率，并且需要在 640*480 以内。
+        :type Codec: str
+        :param Fps: 视频帧率，取值范围：[0, 60]，单位：Hz。
+当取值为 0，表示帧率和原始视频保持一致。
+        :type Fps: int
+        :param Bitrate: 视频流的码率，取值范围：0 和 [128, 35000]，单位：kbps。
+当取值为 0，表示视频码率和原始视频保持一致。
+        :type Bitrate: int
+        :param ResolutionAdaptive: 分辨率自适应，可选值：
+<li>open：开启，此时，Width 代表视频的宽度，Height 表示视频的高度；</li>
+<li>close：关闭，此时，Width 代表视频的长边，Height 表示视频的短边。</li>
+        :type ResolutionAdaptive: str
+        :param Width: 视频流宽度（或长边）的最大值，取值范围：0 和 [128, 4096]，单位：px。
+<li>当 Width、Height 均为 0，则分辨率同源；</li>
+<li>当 Width 为 0，Height 非 0，则 Width 按比例缩放；</li>
+<li>当 Width 非 0，Height 为 0，则 Height 按比例缩放；</li>
+<li>当 Width、Height 均非 0，则分辨率按用户指定。</li>
+        :type Width: int
+        :param Height: 视频流高度（或短边）的最大值，取值范围：0 和 [128, 4096]，单位：px。
+        :type Height: int
+        """
+        self.Codec = None
+        self.Fps = None
+        self.Bitrate = None
+        self.ResolutionAdaptive = None
+        self.Width = None
+        self.Height = None
+
+
+    def _deserialize(self, params):
+        self.Codec = params.get("Codec")
+        self.Fps = params.get("Fps")
+        self.Bitrate = params.get("Bitrate")
+        self.ResolutionAdaptive = params.get("ResolutionAdaptive")
+        self.Width = params.get("Width")
+        self.Height = params.get("Height")
+
+
 class WatermarkInput(AbstractModel):
     """视频处理任务中的水印参数类型
 
@@ -5708,15 +6348,21 @@ class WatermarkInput(AbstractModel):
         :param Definition: 水印模板 ID。
         :type Definition: int
         :param TextContent: 文字内容，长度不超过100个字符。仅当水印类型为文字水印时填写。
+注意：此字段可能返回 null，表示取不到有效值。
         :type TextContent: str
+        :param SvgContent: SVG 内容。长度不超过 2000000 个字符。仅当水印类型为 SVG 水印时填写。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SvgContent: str
         """
         self.Definition = None
         self.TextContent = None
+        self.SvgContent = None
 
 
     def _deserialize(self, params):
         self.Definition = params.get("Definition")
         self.TextContent = params.get("TextContent")
+        self.SvgContent = params.get("SvgContent")
 
 
 class WatermarkTemplate(AbstractModel):
@@ -5750,7 +6396,7 @@ class WatermarkTemplate(AbstractModel):
         :type ImageTemplate: :class:`tencentcloud.vod.v20180717.models.ImageWatermarkTemplate`
         :param TextTemplate: 文字水印模板，仅当 Type 为 text，该字段有值。
 注意：此字段可能返回 null，表示取不到有效值。
-        :type TextTemplate: :class:`tencentcloud.vod.v20180717.models.TextWatermarkTemplate`
+        :type TextTemplate: :class:`tencentcloud.vod.v20180717.models.TextWatermarkTemplateInput`
         :param CreateTime: 模板创建时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F)。
         :type CreateTime: str
         :param UpdateTime: 模板最后修改时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F)。
@@ -5786,7 +6432,7 @@ class WatermarkTemplate(AbstractModel):
             self.ImageTemplate = ImageWatermarkTemplate()
             self.ImageTemplate._deserialize(params.get("ImageTemplate"))
         if params.get("TextTemplate") is not None:
-            self.TextTemplate = TextWatermarkTemplate()
+            self.TextTemplate = TextWatermarkTemplateInput()
             self.TextTemplate._deserialize(params.get("TextTemplate"))
         self.CreateTime = params.get("CreateTime")
         self.UpdateTime = params.get("UpdateTime")

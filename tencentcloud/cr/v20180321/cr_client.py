@@ -54,6 +54,62 @@ class CrClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def ApplyCreditAudit(self, request):
+        """提交信审外呼申请，返回当次请求日期。
+
+        :param request: 调用ApplyCreditAudit所需参数的结构体。
+        :type request: :class:`tencentcloud.cr.v20180321.models.ApplyCreditAuditRequest`
+        :rtype: :class:`tencentcloud.cr.v20180321.models.ApplyCreditAuditResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ApplyCreditAudit", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ApplyCreditAuditResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeCreditResult(self, request):
+        """根据信审任务ID和请求日期，获取相关信审结果。
+
+        :param request: 调用DescribeCreditResult所需参数的结构体。
+        :type request: :class:`tencentcloud.cr.v20180321.models.DescribeCreditResultRequest`
+        :rtype: :class:`tencentcloud.cr.v20180321.models.DescribeCreditResultResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeCreditResult", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeCreditResultResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeRecords(self, request):
         """用于获取指定案件的录音地址，次日早上8:00后可查询前日录音。
 
@@ -111,7 +167,7 @@ class CrClient(AbstractClient):
 
 
     def DownloadReport(self, request):
-        """用于下载当日催收结果报表，当日23:00后，可获取当日催收结果。
+        """用于下载当日催收和回访结果报表。当日23:00后，可获取当日催收结果，次日00:30后，可获取昨日回访结果。
 
         :param request: 调用DownloadReport所需参数的结构体。
         :type request: :class:`tencentcloud.cr.v20180321.models.DownloadReportRequest`

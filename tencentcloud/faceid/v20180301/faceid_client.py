@@ -25,6 +25,34 @@ class FaceidClient(AbstractClient):
     _endpoint = 'faceid.tencentcloudapi.com'
 
 
+    def BankCardVerification(self, request):
+        """银行卡核验
+
+        :param request: 调用BankCardVerification所需参数的结构体。
+        :type request: :class:`tencentcloud.faceid.v20180301.models.BankCardVerificationRequest`
+        :rtype: :class:`tencentcloud.faceid.v20180301.models.BankCardVerificationResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("BankCardVerification", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.BankCardVerificationResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DetectAuth(self, request):
         """每次开始核身前，需先调用本接口获取BizToken，用来串联核身流程，在核身完成后，用于获取验证结果信息。
 
