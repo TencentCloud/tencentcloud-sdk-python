@@ -656,8 +656,10 @@ class CCN(AbstractModel):
         :param QosLevel: 实例服务质量，’PT’：白金，'AU'：金，'AG'：银。
         :type QosLevel: str
         :param InstanceChargeType: 付费类型，PREPAID为预付费，POSTPAID为后付费。
+注意：此字段可能返回 null，表示取不到有效值。
         :type InstanceChargeType: str
         :param BandwidthLimitType: 限速类型，INTER_REGION_LIMIT为地域间限速；OUTER_REGION_LIMIT为地域出口限速。
+注意：此字段可能返回 null，表示取不到有效值。
         :type BandwidthLimitType: str
         """
         self.CcnId = None
@@ -790,6 +792,7 @@ class CcnRegionBandwidthLimit(AbstractModel):
         :param IsBm: 是否黑石地域，默认`false`。
         :type IsBm: bool
         :param DstRegion: 目的地域，例如：ap-shanghai
+注意：此字段可能返回 null，表示取不到有效值。
         :type DstRegion: str
         :param DstIsBm: 目的地域是否为黑石地域，默认`false`。
         :type DstIsBm: bool
@@ -3495,6 +3498,9 @@ class DescribeCustomerGatewaysRequest(AbstractModel):
         :param CustomerGatewayIds: 对端网关ID，例如：cgw-2wqq41m9。每次请求的实例的上限为100。参数不支持同时指定CustomerGatewayIds和Filters。
         :type CustomerGatewayIds: list of str
         :param Filters: 过滤条件，详见下表：实例过滤条件表。每次请求的Filters的上限为10，Filter.Values的上限为5。参数不支持同时指定CustomerGatewayIds和Filters。
+<li>customer-gateway-id - String - （过滤条件）用户网关唯一ID形如：`cgw-mgp33pll`。</li>
+<li>customer-gateway-name - String - （过滤条件）用户网关名称形如：`test-cgw`。</li>
+<li>ip-address - String - （过滤条件）公网地址形如：`58.211.1.12`。</li>
         :type Filters: list of Filter
         :param Offset: 偏移量，默认为0。关于Offset的更进一步介绍请参考 API 简介中的相关小节。
         :type Offset: int
@@ -4595,6 +4601,11 @@ class DescribeVpnConnectionsRequest(AbstractModel):
         :param VpnConnectionIds: VPN通道实例ID。形如：vpnx-f49l6u0z。每次请求的实例的上限为100。参数不支持同时指定VpnConnectionIds和Filters。
         :type VpnConnectionIds: list of str
         :param Filters: 过滤条件，详见下表：实例过滤条件表。每次请求的Filters的上限为10，Filter.Values的上限为5。参数不支持同时指定VpnConnectionIds和Filters。
+<li>vpc-id - String - VPC实例ID，形如：`vpc-0a36uwkr`。</li>
+<li>vpn-gateway-id - String - VPN网关实例ID，形如：`vpngw-p4lmqawn`。</li>
+<li>customer-gateway-id - String - 对端网关实例ID，形如：`cgw-l4rblw63`。</li>
+<li>vpn-connection-name - String - 通道名称，形如：`test-vpn`。</li>
+<li>vpn-connection-id - String - 通道实例ID，形如：`vpnx-5p7vkch8"`。</li>
         :type Filters: list of Filter
         :param Offset: 偏移量，默认为0。关于Offset的更进一步介绍请参考 API 简介中的相关小节。
         :type Offset: int
@@ -5615,7 +5626,7 @@ class InstanceChargePrepaid(AbstractModel):
 
     def __init__(self):
         """
-        :param Period: 购买实例的时长，单位：月。取值范围：1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 24, 36。
+        :param Period: 购买实例的时长，单位：月。取值范围：1, 2, 3, 4, 5, 6, 7, 8, 9, 12, 24, 36。
         :type Period: int
         :param RenewFlag: 自动续费标识。取值范围： NOTIFY_AND_AUTO_RENEW：通知过期且自动续费， NOTIFY_AND_MANUAL_RENEW：通知过期不自动续费。默认：NOTIFY_AND_MANUAL_RENEW
         :type RenewFlag: str
@@ -5627,6 +5638,27 @@ class InstanceChargePrepaid(AbstractModel):
     def _deserialize(self, params):
         self.Period = params.get("Period")
         self.RenewFlag = params.get("RenewFlag")
+
+
+class InstanceStatistic(AbstractModel):
+    """用于描述实例的统计信息
+
+    """
+
+    def __init__(self):
+        """
+        :param InstanceType: 实例的类型
+        :type InstanceType: str
+        :param InstanceCount: 实例的个数
+        :type InstanceCount: int
+        """
+        self.InstanceType = None
+        self.InstanceCount = None
+
+
+    def _deserialize(self, params):
+        self.InstanceType = params.get("InstanceType")
+        self.InstanceCount = params.get("InstanceCount")
 
 
 class Ip6Rule(AbstractModel):
@@ -6888,6 +6920,7 @@ class NetworkInterface(AbstractModel):
         :param PrivateIpAddressSet: 内网IP信息。
         :type PrivateIpAddressSet: list of PrivateIpAddressSpecification
         :param Attachment: 绑定的云服务器对象。
+注意：此字段可能返回 null，表示取不到有效值。
         :type Attachment: :class:`tencentcloud.vpc.v20170312.models.NetworkInterfaceAttachment`
         :param Zone: 可用区。
         :type Zone: str
@@ -7835,7 +7868,7 @@ class SecurityGroupAssociationStatistics(AbstractModel):
         :param CLB: 负载均衡实例数。
         :type CLB: int
         :param InstanceStatistics: 全量实例的绑定统计。
-        :type InstanceStatistics: list of str
+        :type InstanceStatistics: list of InstanceStatistic
         """
         self.SecurityGroupId = None
         self.CVM = None
@@ -7853,7 +7886,12 @@ class SecurityGroupAssociationStatistics(AbstractModel):
         self.ENI = params.get("ENI")
         self.SG = params.get("SG")
         self.CLB = params.get("CLB")
-        self.InstanceStatistics = params.get("InstanceStatistics")
+        if params.get("InstanceStatistics") is not None:
+            self.InstanceStatistics = []
+            for item in params.get("InstanceStatistics"):
+                obj = InstanceStatistic()
+                obj._deserialize(item)
+                self.InstanceStatistics.append(obj)
 
 
 class SecurityGroupPolicy(AbstractModel):

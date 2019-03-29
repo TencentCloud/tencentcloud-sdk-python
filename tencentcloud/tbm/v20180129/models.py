@@ -209,7 +209,7 @@ class DescribeBrandCommentCountResponse(AbstractModel):
         """
         :param CommentSet: 按天统计好评/差评数
         :type CommentSet: list of Comment
-        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.CommentSet = None
@@ -262,7 +262,7 @@ class DescribeBrandExposureResponse(AbstractModel):
         :type TotalCount: int
         :param DateCountSet: 按天计算的统计数据
         :type DateCountSet: list of DateCount
-        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.TotalCount = None
@@ -317,7 +317,7 @@ class DescribeBrandMediaReportResponse(AbstractModel):
         :type TotalCount: int
         :param DateCountSet: 按天计算的每天文章数
         :type DateCountSet: list of DateCount
-        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.TotalCount = None
@@ -380,7 +380,7 @@ class DescribeBrandNegCommentsResponse(AbstractModel):
         :type BrandCommentSet: list of CommentInfo
         :param TotalComments: 总的差评个数
         :type TotalComments: int
-        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.BrandCommentSet = None
@@ -443,7 +443,7 @@ class DescribeBrandPosCommentsResponse(AbstractModel):
         :type BrandCommentSet: list of CommentInfo
         :param TotalComments: 总的好评个数
         :type TotalComments: int
-        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.BrandCommentSet = None
@@ -514,7 +514,7 @@ class DescribeBrandSocialOpinionResponse(AbstractModel):
         :type AdverseCount: int
         :param ArticleSet: 文章列表详情
         :type ArticleSet: list of BrandReportArticle
-        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.ArticleCount = None
@@ -573,7 +573,7 @@ class DescribeBrandSocialReportResponse(AbstractModel):
         :type TotalCount: int
         :param DateCountSet: 按天计算的统计数据
         :type DateCountSet: list of DateCount
-        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.TotalCount = None
@@ -646,7 +646,7 @@ class DescribeIndustryNewsResponse(AbstractModel):
         :type NewsSet: list of IndustryNews
         :param DateCountSet: 按天统计的数量列表
         :type DateCountSet: list of DateCount
-        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.NewsCount = None
@@ -710,7 +710,7 @@ class DescribeUserPortraitResponse(AbstractModel):
         :type Movie: :class:`tencentcloud.tbm.v20180129.models.MoviePortraitInfo`
         :param Star: 明星喜好画像
         :type Star: :class:`tencentcloud.tbm.v20180129.models.StarPortraitInfo`
-        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.Age = None

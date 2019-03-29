@@ -195,9 +195,12 @@ class CrClient(AbstractClient):
 
 
     def UploadDataFile(self, request):
-        """该接口包含上传：
-        1、入催文件 — 用于每天入催文件的上传；
-        2、还款文件 — 实时上传当前已还款客户，用于还款客户的实时停催；
+        """<p>该接口包含上传下列文件：</p>
+        <ol style="margin-bottom:10px;">
+          <li>入催文件：用于每天入催文件的上传</li>
+          <li>回访文件：用于每天贷中回访文件的上传</li>
+          <li>还款文件：实时上传当前已还款客户，用于还款客户的实时停催</li>
+        </ol>
         接口返回数据任务ID，支持xlsx、xls、csv、zip格式，文档大小不超过50MB。
 
         :param request: 调用UploadDataFile所需参数的结构体。

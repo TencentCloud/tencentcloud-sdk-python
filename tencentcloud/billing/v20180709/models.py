@@ -594,6 +594,148 @@ class DescribeDealsByCondResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeDosageDetailByDateRequest(AbstractModel):
+    """DescribeDosageDetailByDate请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param StartDate: 查询账单开始日期，如 2019-01-01
+        :type StartDate: str
+        :param EndDate: 查询账单结束日期，如 2019-01-01
+        :type EndDate: str
+        :param ProductCode: 视频业务：
+10194   互动直播-核心机房           :
+10195   互动直播-边缘机房
+
+cdn业务：
+10180：CDN静态加速流量(国内)
+10181：CDN静态加速带宽(国内)
+10182：CDN静态加速普通流量
+10183：CDN静态加速普通带宽
+10231：CDN静态加速流量(海外)
+10232：CDN静态加速带宽(海外)
+
+100967：弹性公网IP-按流量计费
+101065：公网负载均衡-按流量计费
+        :type ProductCode: str
+        :param Domain: 查询域名 例如 www.qq.com
+非CDN业务查询时可以设置为空
+        :type Domain: str
+        :param InstanceID: 1、如果为空，则返回EIP或CLB所有实例的明细；
+2、如果传入实例名，则返回该实例明细
+        :type InstanceID: str
+        """
+        self.StartDate = None
+        self.EndDate = None
+        self.ProductCode = None
+        self.Domain = None
+        self.InstanceID = None
+
+
+    def _deserialize(self, params):
+        self.StartDate = params.get("StartDate")
+        self.EndDate = params.get("EndDate")
+        self.ProductCode = params.get("ProductCode")
+        self.Domain = params.get("Domain")
+        self.InstanceID = params.get("InstanceID")
+
+
+class DescribeDosageDetailByDateResponse(AbstractModel):
+    """DescribeDosageDetailByDate返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Unit: 计量单位
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Unit: str
+        :param DetailSets: 用量数组
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DetailSets: list of DetailSet
+        :param RetCode: 错误码
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RetCode: int
+        :param RetMsg: 错误信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RetMsg: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Unit = None
+        self.DetailSets = None
+        self.RetCode = None
+        self.RetMsg = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Unit = params.get("Unit")
+        if params.get("DetailSets") is not None:
+            self.DetailSets = []
+            for item in params.get("DetailSets"):
+                obj = DetailSet()
+                obj._deserialize(item)
+                self.DetailSets.append(obj)
+        self.RetCode = params.get("RetCode")
+        self.RetMsg = params.get("RetMsg")
+        self.RequestId = params.get("RequestId")
+
+
+class DetailPoint(AbstractModel):
+    """由时间和值组成的数据结构
+
+    """
+
+    def __init__(self):
+        """
+        :param Time: 时间
+        :type Time: str
+        :param Value: 值
+        :type Value: str
+        """
+        self.Time = None
+        self.Value = None
+
+
+    def _deserialize(self, params):
+        self.Time = params.get("Time")
+        self.Value = params.get("Value")
+
+
+class DetailSet(AbstractModel):
+    """由域名和使用明细组成的数据结构
+
+    """
+
+    def __init__(self):
+        """
+        :param Domain: 域名
+        :type Domain: str
+        :param DetailPoints: 使用数据明细
+        :type DetailPoints: list of DetailPoint
+        :param InstanceID: 实例ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InstanceID: str
+        """
+        self.Domain = None
+        self.DetailPoints = None
+        self.InstanceID = None
+
+
+    def _deserialize(self, params):
+        self.Domain = params.get("Domain")
+        if params.get("DetailPoints") is not None:
+            self.DetailPoints = []
+            for item in params.get("DetailPoints"):
+                obj = DetailPoint()
+                obj._deserialize(item)
+                self.DetailPoints.append(obj)
+        self.InstanceID = params.get("InstanceID")
+
+
 class PayDealsRequest(AbstractModel):
     """PayDeals请求参数结构体
 

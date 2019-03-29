@@ -224,34 +224,6 @@ class LiveClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def CreateLiveDomainStrategy(self, request):
-        """该接口用于新增直播推流和播放的域名映射
-
-        :param request: 调用CreateLiveDomainStrategy所需参数的结构体。
-        :type request: :class:`tencentcloud.live.v20180801.models.CreateLiveDomainStrategyRequest`
-        :rtype: :class:`tencentcloud.live.v20180801.models.CreateLiveDomainStrategyResponse`
-
-        """
-        try:
-            params = request._serialize()
-            body = self.call("CreateLiveDomainStrategy", params)
-            response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.CreateLiveDomainStrategyResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(e.message, e.message)
-
-
     def CreateLiveRecord(self, request):
         """- 使用前提
           1. 录制文件存放于点播平台，所以用户如需使用录制功能，需首先自行开通点播服务。
@@ -620,34 +592,6 @@ class LiveClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteLiveDomainResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(e.message, e.message)
-
-
-    def DeleteLiveDomainStrategy(self, request):
-        """该接口用于删除已新增的播放和推流域名映射关系
-
-        :param request: 调用DeleteLiveDomainStrategy所需参数的结构体。
-        :type request: :class:`tencentcloud.live.v20180801.models.DeleteLiveDomainStrategyRequest`
-        :rtype: :class:`tencentcloud.live.v20180801.models.DeleteLiveDomainStrategyResponse`
-
-        """
-        try:
-            params = request._serialize()
-            body = self.call("DeleteLiveDomainStrategy", params)
-            response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.DeleteLiveDomainStrategyResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -1138,34 +1082,6 @@ class LiveClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def DescribeLiveDomainStrategys(self, request):
-        """该接口用于查询已有域名策略
-
-        :param request: 调用DescribeLiveDomainStrategys所需参数的结构体。
-        :type request: :class:`tencentcloud.live.v20180801.models.DescribeLiveDomainStrategysRequest`
-        :rtype: :class:`tencentcloud.live.v20180801.models.DescribeLiveDomainStrategysResponse`
-
-        """
-        try:
-            params = request._serialize()
-            body = self.call("DescribeLiveDomainStrategys", params)
-            response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.DescribeLiveDomainStrategysResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(e.message, e.message)
-
-
     def DescribeLiveDomains(self, request):
         """根据域名状态、类型等信息查询用户的域名信息
 
@@ -1558,6 +1474,34 @@ class LiveClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeLiveStreamPushInfoList(self, request):
+        """查询所有实时流的推流信息，包括客户端IP，服务端IP，帧率，码率，域名，开始推流时间。
+
+        :param request: 调用DescribeLiveStreamPushInfoList所需参数的结构体。
+        :type request: :class:`tencentcloud.live.v20180801.models.DescribeLiveStreamPushInfoListRequest`
+        :rtype: :class:`tencentcloud.live.v20180801.models.DescribeLiveStreamPushInfoListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeLiveStreamPushInfoList", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeLiveStreamPushInfoListResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeLiveStreamState(self, request):
         """返回直播中、无推流或者禁播等状态
 
@@ -1783,6 +1727,62 @@ class LiveClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeProIspPlaySumInfoList(self, request):
+        """查询某段时间内每个省份每个运营商的平均每秒流量，总流量，总请求数信息。
+
+        :param request: 调用DescribeProIspPlaySumInfoList所需参数的结构体。
+        :type request: :class:`tencentcloud.live.v20180801.models.DescribeProIspPlaySumInfoListRequest`
+        :rtype: :class:`tencentcloud.live.v20180801.models.DescribeProIspPlaySumInfoListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeProIspPlaySumInfoList", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeProIspPlaySumInfoListResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeProvinceIspPlayInfoList(self, request):
+        """查询某省份某运营商下行播放数据，包括带宽，流量，请求数，并发连接数信息。
+
+        :param request: 调用DescribeProvinceIspPlayInfoList所需参数的结构体。
+        :type request: :class:`tencentcloud.live.v20180801.models.DescribeProvinceIspPlayInfoListRequest`
+        :rtype: :class:`tencentcloud.live.v20180801.models.DescribeProvinceIspPlayInfoListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeProvinceIspPlayInfoList", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeProvinceIspPlayInfoListResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribePullStreamConfigs(self, request):
         """查询拉流配置
 
@@ -1797,6 +1797,34 @@ class LiveClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribePullStreamConfigsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeStreamDayPlayInfoList(self, request):
+        """查询天维度每条流的播放数据，包括总流量等。
+
+        :param request: 调用DescribeStreamDayPlayInfoList所需参数的结构体。
+        :type request: :class:`tencentcloud.live.v20180801.models.DescribeStreamDayPlayInfoListRequest`
+        :rtype: :class:`tencentcloud.live.v20180801.models.DescribeStreamDayPlayInfoListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeStreamDayPlayInfoList", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeStreamDayPlayInfoListResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

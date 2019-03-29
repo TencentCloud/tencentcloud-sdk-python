@@ -230,7 +230,9 @@ class IaiClient(AbstractClient):
 
 
     def DeleteGroup(self, request):
-        """删除该人员库及包含的所有的人员。若某人员同时存在多个人员库中，该人员不会被删除，但属于该人员库中的自定义描述字段信息会被删除。注：删除人员库的操作为异步执行，删除单张人脸时间约为10ms，即一小时内可以删除36万张。删除期间，无法向该人员库添加人员。
+        """删除该人员库及包含的所有的人员。同时，人员对应的所有人脸信息将被删除。若某人员同时存在多个人员库中，该人员不会被删除，但属于该人员库中的自定义描述字段信息会被删除。
+
+        注：删除人员库的操作为异步执行，删除单张人脸时间约为10ms，即一小时内可以删除36万张。删除期间，无法向该人员库添加人员。
 
         :param request: 调用DeleteGroup所需参数的结构体。
         :type request: :class:`tencentcloud.iai.v20180301.models.DeleteGroupRequest`
@@ -258,7 +260,7 @@ class IaiClient(AbstractClient):
 
 
     def DeletePerson(self, request):
-        """删除该人员信息，此操作会导致所有人员库均删除此人员。
+        """删除该人员信息，此操作会导致所有人员库均删除此人员。同时，该人员的所有人脸信息将被删除。
 
         :param request: 调用DeletePerson所需参数的结构体。
         :type request: :class:`tencentcloud.iai.v20180301.models.DeletePersonRequest`
@@ -286,7 +288,7 @@ class IaiClient(AbstractClient):
 
 
     def DeletePersonFromGroup(self, request):
-        """从某人员库中删除人员，此操作仅影响该人员库。
+        """从某人员库中删除人员，此操作仅影响该人员库。若该人员仅存在于指定的人员库中，该人员将被删除，其所有的人脸信息也将被删除。
 
         :param request: 调用DeletePersonFromGroup所需参数的结构体。
         :type request: :class:`tencentcloud.iai.v20180301.models.DeletePersonFromGroupRequest`

@@ -385,7 +385,7 @@ class AiContentReviewResult(AbstractModel):
         :param TerrorismTask: 视频内容审核智能画面鉴恐任务的查询结果，当任务类型为 Terrorism 时有效。
 注意：此字段可能返回 null，表示取不到有效值。
         :type TerrorismTask: :class:`tencentcloud.vod.v20180717.models.AiReviewTaskTerrorismResult`
-        :param PoliticalTask: 视频内容审核智能画面鉴恐任务的查询结果，当任务类型为 Political 时有效。
+        :param PoliticalTask: 视频内容审核智能画面鉴政任务的查询结果，当任务类型为 Political 时有效。
 注意：此字段可能返回 null，表示取不到有效值。
         :type PoliticalTask: :class:`tencentcloud.vod.v20180717.models.AiReviewTaskPoliticalResult`
         :param PornAsrTask: 视频内容审核 Asr 文字鉴黄任务的查询结果，当任务类型为 Porn.Asr 时有效。
@@ -5119,6 +5119,12 @@ class ProcedureTask(AbstractModel):
 <li>None：不接受该任务流回调。</li>
 注意：此字段可能返回 null，表示取不到有效值。
         :type TasksNotifyMode: str
+        :param SessionContext: 来源上下文，用于透传用户请求信息，任务流状态变更回调将返回该字段值，最长 250 个字符。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SessionContext: str
+        :param SessionId: 用于去重的识别码，如果七天内曾有过相同的识别码的请求，则本次的请求会返回错误。最长 50 个字符，不带或者带空字符串表示不做去重。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SessionId: str
         """
         self.TaskId = None
         self.Status = None
@@ -5133,6 +5139,8 @@ class ProcedureTask(AbstractModel):
         self.AiAnalysisResultSet = None
         self.TasksPriority = None
         self.TasksNotifyMode = None
+        self.SessionContext = None
+        self.SessionId = None
 
 
     def _deserialize(self, params):
@@ -5166,6 +5174,8 @@ class ProcedureTask(AbstractModel):
                 self.AiAnalysisResultSet.append(obj)
         self.TasksPriority = params.get("TasksPriority")
         self.TasksNotifyMode = params.get("TasksNotifyMode")
+        self.SessionContext = params.get("SessionContext")
+        self.SessionId = params.get("SessionId")
 
 
 class ProcedureTemplate(AbstractModel):

@@ -134,7 +134,7 @@ class CardInfo(AbstractModel):
         :param AllowArrears: 0 不需要开通达量不停卡 1 需要开通达量不停卡
 注意：此字段可能返回 null，表示取不到有效值。
         :type AllowArrears: int
-        :param NeedSms: 是否开通短息
+        :param NeedSms: 是否开通短信0:未开短信 1:开通短信
         :type NeedSms: int
         :param Provider: 服务
         :type Provider: int
