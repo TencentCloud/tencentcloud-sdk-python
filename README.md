@@ -60,8 +60,10 @@ except TencentCloudSDKException as err:
     print(err)
 ```
 
-注意，如果是有代理的环境下，需要设置系统环境变量 `https_proxy` ，否则可能无法正常调用。
-
 您可以在[github](https://github.com/tencentcloud/tencentcloud-sdk-python)中examples目录下找到更详细的示例。
 
+# 相关配置
 
+## 代理
+
+如果是有代理的环境下，需要设置系统环境变量 `https_proxy` ，否则可能无法正常调用，抛出连接超时的异常。
