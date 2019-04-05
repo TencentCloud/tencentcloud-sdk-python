@@ -225,7 +225,7 @@ class TextToVoiceRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Text: 合成语音的源文本，中文最大支持100个汉字（标点符号算一个汉字）；英文最大支持400个字母（标点符号算一个字母）。
+        :param Text: 合成语音的源文本，按UTF-8编码统一计算，中文最大支持350字符，英文最大支持500字符
         :type Text: str
         :param SessionId: 一次请求对应一个SessionId，会原样返回，建议传入类似于uuid的字符串防止重复。
         :type SessionId: str
@@ -238,7 +238,7 @@ class TextToVoiceRequest(AbstractModel):
         :type Speed: float
         :param ProjectId: 项目id，用户自定义，默认为0。
         :type ProjectId: int
-        :param VoiceType: 音色<li>0-女声1，亲和风格(默认)</li><li>1-男声1，成熟风格</li><li>2-男声2，成熟风格</li>
+        :param VoiceType: 音色<li>0-亲和女声默认)</li><li>1-亲和男声</li><li>2-成熟男声</li><li>3-活力男声</li><li>4-温暖女声</li><li>5-情感女声</li><li>6-情感男声</li>
         :type VoiceType: int
         :param PrimaryLanguage: 主语言类型：<li>1-中文（默认）</li><li>2-英文</li>
         :type PrimaryLanguage: int
@@ -275,7 +275,7 @@ class TextToVoiceResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param Audio: base64编码的wav音频
+        :param Audio: base64编码的wav音频数据
         :type Audio: str
         :param SessionId: 一次请求对应一个SessionId
         :type SessionId: str

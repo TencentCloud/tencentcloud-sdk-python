@@ -1632,6 +1632,9 @@ class HostItem(AbstractModel):
         :type HostIp: str
         :param HostResource: cdh实例资源信息
         :type HostResource: :class:`tencentcloud.cvm.v20170312.models.HostResource`
+        :param CageId: 专用宿主机所属的围笼ID。该字段仅对金融专区围笼内的专用宿主机有效。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CageId: str
         """
         self.Placement = None
         self.HostId = None
@@ -1645,6 +1648,7 @@ class HostItem(AbstractModel):
         self.HostState = None
         self.HostIp = None
         self.HostResource = None
+        self.CageId = None
 
 
     def _deserialize(self, params):
@@ -1664,6 +1668,7 @@ class HostItem(AbstractModel):
         if params.get("HostResource") is not None:
             self.HostResource = HostResource()
             self.HostResource._deserialize(params.get("HostResource"))
+        self.CageId = params.get("CageId")
 
 
 class HostResource(AbstractModel):
@@ -2138,18 +2143,14 @@ class InquiryPriceResetInstancesTypeRequest(AbstractModel):
         :type InstanceIds: list of str
         :param InstanceType: 实例机型。不同实例机型指定了不同的资源规格，具体取值可参见附表实例资源规格对照表，也可以调用查询实例资源规格列表接口获得最新的规格表。
         :type InstanceType: str
-        :param ForceStop: 是否对运行中的实例选择强制关机。建议对运行中的实例先手动关机，然后再重置用户密码。取值范围：<br><li>TRUE：表示在正常关机失败后进行强制关机<br><li>FALSE：表示在正常关机失败后不进行强制关机<br><br>默认取值：FALSE。<br><br>强制关机的效果等同于关闭物理计算机的电源开关。强制关机可能会导致数据丢失或文件系统损坏，请仅在服务器不能正常关机时使用。
-        :type ForceStop: bool
         """
         self.InstanceIds = None
         self.InstanceType = None
-        self.ForceStop = None
 
 
     def _deserialize(self, params):
         self.InstanceIds = params.get("InstanceIds")
         self.InstanceType = params.get("InstanceType")
-        self.ForceStop = params.get("ForceStop")
 
 
 class InquiryPriceResetInstancesTypeResponse(AbstractModel):
@@ -3815,7 +3816,7 @@ class RunInstancesRequest(AbstractModel):
         :type HostName: str
         :param ActionTimer: 定时任务。通过该参数可以为实例指定定时任务，目前仅支持定时销毁。
         :type ActionTimer: :class:`tencentcloud.cvm.v20170312.models.ActionTimer`
-        :param DisasterRecoverGroupIds: 容灾组id，仅支持指定一个。
+        :param DisasterRecoverGroupIds: 置放群组id，仅支持指定一个。
         :type DisasterRecoverGroupIds: list of str
         :param TagSpecification: 标签描述列表。通过指定该参数可以同时绑定标签到相应的资源实例，当前仅支持绑定标签到云主机实例。
         :type TagSpecification: list of TagSpecification

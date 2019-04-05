@@ -1727,6 +1727,34 @@ class LiveClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeLogDownloadList(self, request):
+        """批量获取日志URL。
+
+        :param request: 调用DescribeLogDownloadList所需参数的结构体。
+        :type request: :class:`tencentcloud.live.v20180801.models.DescribeLogDownloadListRequest`
+        :rtype: :class:`tencentcloud.live.v20180801.models.DescribeLogDownloadListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeLogDownloadList", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeLogDownloadListResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeProIspPlaySumInfoList(self, request):
         """查询某段时间内每个省份每个运营商的平均每秒流量，总流量，总请求数信息。
 

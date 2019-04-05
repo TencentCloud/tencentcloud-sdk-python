@@ -84,7 +84,7 @@ class CardInfo(AbstractModel):
         :type Sdkappid: str
         :param Teleoperator: 运营商编号
         :type Teleoperator: int
-        :param CardStatus: 卡片状态
+        :param CardStatus: 卡片状态 1:未激活 2：激活 3：停卡 5：销卡
         :type CardStatus: int
         :param NetworkStatus: 网络状态
 注意：此字段可能返回 null，表示取不到有效值。

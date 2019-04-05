@@ -345,7 +345,7 @@ class CreateLiveCallbackRuleRequest(AbstractModel):
         :type DomainName: str
         :param AppName: 推流路径。
         :type AppName: str
-        :param TemplateId: 模板ID
+        :param TemplateId: 模板ID。
         :type TemplateId: int
         """
         self.DomainName = None
@@ -433,7 +433,7 @@ class CreateLiveCallbackTemplateResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param TemplateId: 模板Id。
+        :param TemplateId: 模板ID。
         :type TemplateId: int
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -753,7 +753,7 @@ class CreateLiveSnapshotTemplateRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param TemplateName: 模板名称。非空的字符串
+        :param TemplateName: 模板名称。非空的字符串。
         :type TemplateName: str
         :param CosAppId: Cos AppId。
         :type CosAppId: int
@@ -765,11 +765,11 @@ class CreateLiveSnapshotTemplateRequest(AbstractModel):
         :type Description: str
         :param SnapshotInterval: 截图间隔，单位s，默认10s。
         :type SnapshotInterval: int
-        :param Width: 截图宽度。默认：0（原始高）
+        :param Width: 截图宽度。默认：0（原始宽）。
         :type Width: int
-        :param Height: 截图高度。默认：0（原始宽）
+        :param Height: 截图高度。默认：0（原始高）。
         :type Height: int
-        :param PornFlag: 是否开启鉴黄，0：不开启，1：开启。默认：0.
+        :param PornFlag: 是否开启鉴黄，0：不开启，1：开启。默认：0。
         :type PornFlag: int
         """
         self.TemplateName = None
@@ -871,7 +871,7 @@ class CreateLiveTranscodeTemplateRequest(AbstractModel):
         """
         :param TemplateName: 模板名称，例：900 900p 仅支持字母和数字的组合。
         :type TemplateName: str
-        :param VideoBitrate: 视频码率。
+        :param VideoBitrate: 视频码率。范围：100-8000。
         :type VideoBitrate: int
         :param Vcodec: 视频编码：h264/h265，默认h264。
 注意：当前该参数未生效，待后续支持！
@@ -879,11 +879,11 @@ class CreateLiveTranscodeTemplateRequest(AbstractModel):
         :param Acodec: 音频编码：aac，默认原始音频格式。
 注意：当前该参数未生效，待后续支持！
         :type Acodec: str
-        :param AudioBitrate: 音频码率：默认0。0-500
+        :param AudioBitrate: 音频码率：默认0。0-500。
         :type AudioBitrate: int
         :param Description: 模板描述。
         :type Description: str
-        :param Width: 款，默认0。
+        :param Width: 宽，默认0。
         :type Width: int
         :param NeedVideo: 是否保留视频，0：否，1：是。默认1。
 注意：当前该参数未生效，待后续支持！
@@ -1344,7 +1344,7 @@ class DeleteLiveRecordTemplateRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param TemplateId: 模板Id。
+        :param TemplateId: 模板ID。
         :type TemplateId: int
         """
         self.TemplateId = None
@@ -3072,6 +3072,64 @@ class DescribeLiveWatermarksResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeLogDownloadListRequest(AbstractModel):
+    """DescribeLogDownloadList请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param StartTime: 开始时间，北京时间。
+格式：yyyy-mm-dd HH:MM:SS。
+        :type StartTime: str
+        :param EndTime: 结束时间，北京时间。
+格式：yyyy-mm-dd HH:MM:SS。
+注意：结束时间 - 开始时间 <=7天。
+        :type EndTime: str
+        :param PlayDomains: 域名列表。
+        :type PlayDomains: list of str
+        """
+        self.StartTime = None
+        self.EndTime = None
+        self.PlayDomains = None
+
+
+    def _deserialize(self, params):
+        self.StartTime = params.get("StartTime")
+        self.EndTime = params.get("EndTime")
+        self.PlayDomains = params.get("PlayDomains")
+
+
+class DescribeLogDownloadListResponse(AbstractModel):
+    """DescribeLogDownloadList返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param LogInfoList: 日志信息列表。
+        :type LogInfoList: list of LogInfo
+        :param TotalNum: 总条数。
+        :type TotalNum: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.LogInfoList = None
+        self.TotalNum = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("LogInfoList") is not None:
+            self.LogInfoList = []
+            for item in params.get("LogInfoList"):
+                obj = LogInfo()
+                obj._deserialize(item)
+                self.LogInfoList.append(obj)
+        self.TotalNum = params.get("TotalNum")
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeProIspPlaySumInfoListRequest(AbstractModel):
     """DescribeProIspPlaySumInfoList请求参数结构体
 
@@ -3705,6 +3763,31 @@ class ForbidStreamInfo(AbstractModel):
         self.StreamName = params.get("StreamName")
         self.CreateTime = params.get("CreateTime")
         self.ExpireTime = params.get("ExpireTime")
+
+
+class LogInfo(AbstractModel):
+    """日志url信息
+
+    """
+
+    def __init__(self):
+        """
+        :param LogName: 日志名称。
+        :type LogName: str
+        :param LogUrl: 日志Url。
+        :type LogUrl: str
+        :param LogTime: 日志生成时间
+        :type LogTime: str
+        """
+        self.LogName = None
+        self.LogUrl = None
+        self.LogTime = None
+
+
+    def _deserialize(self, params):
+        self.LogName = params.get("LogName")
+        self.LogUrl = params.get("LogUrl")
+        self.LogTime = params.get("LogTime")
 
 
 class ModifyLiveCallbackTemplateRequest(AbstractModel):

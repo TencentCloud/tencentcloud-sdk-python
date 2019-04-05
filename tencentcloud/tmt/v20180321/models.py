@@ -154,7 +154,7 @@ class LanguageDetectRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Text: 待识别的文本，文本统一使用utf-8格式编码，非utf-8格式编码字符会翻译失败
+        :param Text: 待识别的文本，文本统一使用utf-8格式编码，非utf-8格式编码字符会翻译失败。单次请求的文本长度需要低于2000。
         :type Text: str
         :param ProjectId: 项目id
         :type ProjectId: int
@@ -295,7 +295,7 @@ class TextTranslateRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param SourceText: 待翻译的文本，文本统一使用utf-8格式编码，非utf-8格式编码字符会翻译失败，请传入有效文本，html标记等非常规翻译文本会翻译失败
+        :param SourceText: 待翻译的文本，文本统一使用utf-8格式编码，非utf-8格式编码字符会翻译失败，请传入有效文本，html标记等非常规翻译文本会翻译失败。单次请求的文本长度需要低于2000。
         :type SourceText: str
         :param Source: 源语言，参照Target支持语言列表
         :type Source: str
