@@ -61,15 +61,19 @@ class CreateLicenseResponse(AbstractModel):
         """
         :param License: Base64 编码的许可证二进制数据。
         :type License: str
+        :param ContentId: 加密内容的内容ID
+        :type ContentId: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.License = None
+        self.ContentId = None
         self.RequestId = None
 
 
     def _deserialize(self, params):
         self.License = params.get("License")
+        self.ContentId = params.get("ContentId")
         self.RequestId = params.get("RequestId")
 
 

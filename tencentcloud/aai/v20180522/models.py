@@ -83,7 +83,7 @@ class SentenceRecognitionRequest(AbstractModel):
         :type UsrAudioKey: str
         :param Url: 语音 URL，公网可下载。当 SourceType 值为 0 时须填写该字段，为 1 时不填；URL 的长度大于 0，小于 2048，需进行urlencode编码。音频时间长度要小于60s。
         :type Url: str
-        :param Data: 语音数据，当SourceType 值为1时必须填写，为0可不写。要base64编码(采用python语言时注意读取文件应该为string而不是byte，以byte格式读取后要decode()。编码后的数据不可带有回车换行符)。音频数据要小于900k。
+        :param Data: 语音数据，当SourceType 值为1时必须填写，为0可不写。要base64编码(采用python语言时注意读取文件应该为string而不是byte，以byte格式读取后要decode()。编码后的数据不可带有回车换行符)。音频数据要小于600kB。
         :type Data: str
         :param DataLen: 数据长度，当 SourceType 值为1时必须填写，为0可不写（此数据长度为数据未进行base64编码时的数据长度）。
         :type DataLen: int
@@ -225,23 +225,24 @@ class TextToVoiceRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Text: 合成语音的源文本
+        :param Text: 合成语音的源文本，按UTF-8编码统一计算，中文最大支持350字符，英文最大支持500字符
         :type Text: str
-        :param SessionId: 一次请求对应一个SessionId，会原样返回，建议传入类似于uuid的字符串防止重复
+        :param SessionId: 一次请求对应一个SessionId，会原样返回，建议传入类似于uuid的字符串防止重复。
         :type SessionId: str
-        :param ModelType: 模型类型，1-默认模型
+        :param ModelType: 模型类型，1-默认模型。
         :type ModelType: int
-        :param Volume: 音量大小，范围：[0，10]，分别对应10个等级的音量，默认为0
+        :param Volume: 音量大小，范围：[0，10]，分别对应11个等级的音量，默认为0，代表正常音量。没有静音选项。
+输入除以上整数之外的其他参数不生效，按默认值处理。
         :type Volume: float
-        :param Speed: 语速，范围：[-2，2]，分别对应不同语速：0.6倍，0.8倍，1.0倍，1.2倍，1.5倍，默认为0
+        :param Speed: 语速，范围：[-2，2]，分别对应不同语速：<li>-2代表0.6倍</li><li>-1代表0.8倍</li><li>0代表1.0倍（默认）</li><li>1代表1.2倍</li><li>2代表1.5倍</li>输入除以上整数之外的其他参数不生效，按默认值处理。
         :type Speed: float
-        :param ProjectId: 项目id，用户自定义，默认为0
+        :param ProjectId: 项目id，用户自定义，默认为0。
         :type ProjectId: int
-        :param VoiceType: 音色<li>0-女声1，亲和风格(默认)</li><li>1-男声1，成熟风格</li><li>2-男声2，成熟风格</li>
+        :param VoiceType: 音色<li>0-亲和女声默认)</li><li>1-亲和男声</li><li>2-成熟男声</li><li>3-活力男声</li><li>4-温暖女声</li><li>5-情感女声</li><li>6-情感男声</li>
         :type VoiceType: int
-        :param PrimaryLanguage: 主语言类型<li>1-中文，最大100个汉字（标点符号算一个汉子）</li><li>2-英文，最大支持400个字母（标点符号算一个字母）</li>
+        :param PrimaryLanguage: 主语言类型：<li>1-中文（默认）</li><li>2-英文</li>
         :type PrimaryLanguage: int
-        :param SampleRate: 音频采样率，16000：16k，8000：8k，默认16k
+        :param SampleRate: 音频采样率：<li>16000：16k（默认）</li><li>8000：8k</li>
         :type SampleRate: int
         """
         self.Text = None
@@ -274,7 +275,7 @@ class TextToVoiceResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param Audio: base编码的wav音频
+        :param Audio: base64编码的wav音频数据
         :type Audio: str
         :param SessionId: 一次请求对应一个SessionId
         :type SessionId: str

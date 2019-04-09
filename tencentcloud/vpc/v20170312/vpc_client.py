@@ -48,7 +48,7 @@ class VpcClient(AbstractClient):
                 raise TencentCloudSDKException(code, message, reqid)
         except Exception as e:
             if isinstance(e, TencentCloudSDKException):
-                raise e
+                raise
             else:
                 raise TencentCloudSDKException(e.message, e.message)
 
@@ -76,7 +76,7 @@ class VpcClient(AbstractClient):
                 raise TencentCloudSDKException(code, message, reqid)
         except Exception as e:
             if isinstance(e, TencentCloudSDKException):
-                raise e
+                raise
             else:
                 raise TencentCloudSDKException(e.message, e.message)
 
@@ -106,7 +106,7 @@ class VpcClient(AbstractClient):
                 raise TencentCloudSDKException(code, message, reqid)
         except Exception as e:
             if isinstance(e, TencentCloudSDKException):
-                raise e
+                raise
             else:
                 raise TencentCloudSDKException(e.message, e.message)
 
@@ -137,7 +137,7 @@ class VpcClient(AbstractClient):
                 raise TencentCloudSDKException(code, message, reqid)
         except Exception as e:
             if isinstance(e, TencentCloudSDKException):
-                raise e
+                raise
             else:
                 raise TencentCloudSDKException(e.message, e.message)
 
@@ -168,7 +168,7 @@ class VpcClient(AbstractClient):
                 raise TencentCloudSDKException(code, message, reqid)
         except Exception as e:
             if isinstance(e, TencentCloudSDKException):
-                raise e
+                raise
             else:
                 raise TencentCloudSDKException(e.message, e.message)
 
@@ -202,7 +202,7 @@ class VpcClient(AbstractClient):
                 raise TencentCloudSDKException(code, message, reqid)
         except Exception as e:
             if isinstance(e, TencentCloudSDKException):
-                raise e
+                raise
             else:
                 raise TencentCloudSDKException(e.message, e.message)
 
@@ -231,7 +231,7 @@ class VpcClient(AbstractClient):
                 raise TencentCloudSDKException(code, message, reqid)
         except Exception as e:
             if isinstance(e, TencentCloudSDKException):
-                raise e
+                raise
             else:
                 raise TencentCloudSDKException(e.message, e.message)
 
@@ -261,7 +261,7 @@ class VpcClient(AbstractClient):
                 raise TencentCloudSDKException(code, message, reqid)
         except Exception as e:
             if isinstance(e, TencentCloudSDKException):
-                raise e
+                raise
             else:
                 raise TencentCloudSDKException(e.message, e.message)
 
@@ -293,13 +293,13 @@ class VpcClient(AbstractClient):
                 raise TencentCloudSDKException(code, message, reqid)
         except Exception as e:
             if isinstance(e, TencentCloudSDKException):
-                raise e
+                raise
             else:
                 raise TencentCloudSDKException(e.message, e.message)
 
 
     def CreateAddressTemplate(self, request):
-        """创建IP地址模版
+        """本接口（CreateAddressTemplate）用于创建IP地址模版
 
         :param request: 调用CreateAddressTemplate所需参数的结构体。
         :type request: :class:`tencentcloud.vpc.v20170312.models.CreateAddressTemplateRequest`
@@ -321,13 +321,13 @@ class VpcClient(AbstractClient):
                 raise TencentCloudSDKException(code, message, reqid)
         except Exception as e:
             if isinstance(e, TencentCloudSDKException):
-                raise e
+                raise
             else:
                 raise TencentCloudSDKException(e.message, e.message)
 
 
     def CreateAddressTemplateGroup(self, request):
-        """创建IP地址模版集合
+        """本接口（CreateAddressTemplateGroup）用于创建IP地址模版集合
 
         :param request: 调用CreateAddressTemplateGroup所需参数的结构体。
         :type request: :class:`tencentcloud.vpc.v20170312.models.CreateAddressTemplateGroupRequest`
@@ -349,7 +349,7 @@ class VpcClient(AbstractClient):
                 raise TencentCloudSDKException(code, message, reqid)
         except Exception as e:
             if isinstance(e, TencentCloudSDKException):
-                raise e
+                raise
             else:
                 raise TencentCloudSDKException(e.message, e.message)
 
@@ -377,7 +377,7 @@ class VpcClient(AbstractClient):
                 raise TencentCloudSDKException(code, message, reqid)
         except Exception as e:
             if isinstance(e, TencentCloudSDKException):
-                raise e
+                raise
             else:
                 raise TencentCloudSDKException(e.message, e.message)
 
@@ -406,7 +406,7 @@ class VpcClient(AbstractClient):
                 raise TencentCloudSDKException(code, message, reqid)
         except Exception as e:
             if isinstance(e, TencentCloudSDKException):
-                raise e
+                raise
             else:
                 raise TencentCloudSDKException(e.message, e.message)
 
@@ -434,7 +434,7 @@ class VpcClient(AbstractClient):
                 raise TencentCloudSDKException(code, message, reqid)
         except Exception as e:
             if isinstance(e, TencentCloudSDKException):
-                raise e
+                raise
             else:
                 raise TencentCloudSDKException(e.message, e.message)
 
@@ -470,7 +470,7 @@ class VpcClient(AbstractClient):
                 raise TencentCloudSDKException(code, message, reqid)
         except Exception as e:
             if isinstance(e, TencentCloudSDKException):
-                raise e
+                raise
             else:
                 raise TencentCloudSDKException(e.message, e.message)
 
@@ -498,7 +498,7 @@ class VpcClient(AbstractClient):
                 raise TencentCloudSDKException(code, message, reqid)
         except Exception as e:
             if isinstance(e, TencentCloudSDKException):
-                raise e
+                raise
             else:
                 raise TencentCloudSDKException(e.message, e.message)
 
@@ -526,7 +526,7 @@ class VpcClient(AbstractClient):
                 raise TencentCloudSDKException(code, message, reqid)
         except Exception as e:
             if isinstance(e, TencentCloudSDKException):
-                raise e
+                raise
             else:
                 raise TencentCloudSDKException(e.message, e.message)
 
@@ -554,7 +554,7 @@ class VpcClient(AbstractClient):
                 raise TencentCloudSDKException(code, message, reqid)
         except Exception as e:
             if isinstance(e, TencentCloudSDKException):
-                raise e
+                raise
             else:
                 raise TencentCloudSDKException(e.message, e.message)
 
@@ -583,7 +583,7 @@ class VpcClient(AbstractClient):
                 raise TencentCloudSDKException(code, message, reqid)
         except Exception as e:
             if isinstance(e, TencentCloudSDKException):
-                raise e
+                raise
             else:
                 raise TencentCloudSDKException(e.message, e.message)
 
@@ -615,7 +615,7 @@ class VpcClient(AbstractClient):
                 raise TencentCloudSDKException(code, message, reqid)
         except Exception as e:
             if isinstance(e, TencentCloudSDKException):
-                raise e
+                raise
             else:
                 raise TencentCloudSDKException(e.message, e.message)
 
@@ -644,7 +644,7 @@ class VpcClient(AbstractClient):
                 raise TencentCloudSDKException(code, message, reqid)
         except Exception as e:
             if isinstance(e, TencentCloudSDKException):
-                raise e
+                raise
             else:
                 raise TencentCloudSDKException(e.message, e.message)
 
@@ -673,7 +673,7 @@ class VpcClient(AbstractClient):
                 raise TencentCloudSDKException(code, message, reqid)
         except Exception as e:
             if isinstance(e, TencentCloudSDKException):
-                raise e
+                raise
             else:
                 raise TencentCloudSDKException(e.message, e.message)
 
@@ -703,7 +703,7 @@ class VpcClient(AbstractClient):
                 raise TencentCloudSDKException(code, message, reqid)
         except Exception as e:
             if isinstance(e, TencentCloudSDKException):
-                raise e
+                raise
             else:
                 raise TencentCloudSDKException(e.message, e.message)
 
@@ -740,13 +740,13 @@ class VpcClient(AbstractClient):
                 raise TencentCloudSDKException(code, message, reqid)
         except Exception as e:
             if isinstance(e, TencentCloudSDKException):
-                raise e
+                raise
             else:
                 raise TencentCloudSDKException(e.message, e.message)
 
 
     def CreateServiceTemplate(self, request):
-        """创建协议端口模板
+        """本接口（CreateServiceTemplate）用于创建协议端口模板
 
         :param request: 调用CreateServiceTemplate所需参数的结构体。
         :type request: :class:`tencentcloud.vpc.v20170312.models.CreateServiceTemplateRequest`
@@ -768,13 +768,13 @@ class VpcClient(AbstractClient):
                 raise TencentCloudSDKException(code, message, reqid)
         except Exception as e:
             if isinstance(e, TencentCloudSDKException):
-                raise e
+                raise
             else:
                 raise TencentCloudSDKException(e.message, e.message)
 
 
     def CreateServiceTemplateGroup(self, request):
-        """创建协议端口模板集合
+        """本接口（CreateServiceTemplateGroup）用于创建协议端口模板集合
 
         :param request: 调用CreateServiceTemplateGroup所需参数的结构体。
         :type request: :class:`tencentcloud.vpc.v20170312.models.CreateServiceTemplateGroupRequest`
@@ -796,7 +796,7 @@ class VpcClient(AbstractClient):
                 raise TencentCloudSDKException(code, message, reqid)
         except Exception as e:
             if isinstance(e, TencentCloudSDKException):
-                raise e
+                raise
             else:
                 raise TencentCloudSDKException(e.message, e.message)
 
@@ -829,7 +829,7 @@ class VpcClient(AbstractClient):
                 raise TencentCloudSDKException(code, message, reqid)
         except Exception as e:
             if isinstance(e, TencentCloudSDKException):
-                raise e
+                raise
             else:
                 raise TencentCloudSDKException(e.message, e.message)
 
@@ -862,7 +862,7 @@ class VpcClient(AbstractClient):
                 raise TencentCloudSDKException(code, message, reqid)
         except Exception as e:
             if isinstance(e, TencentCloudSDKException):
-                raise e
+                raise
             else:
                 raise TencentCloudSDKException(e.message, e.message)
 
@@ -892,7 +892,7 @@ class VpcClient(AbstractClient):
                 raise TencentCloudSDKException(code, message, reqid)
         except Exception as e:
             if isinstance(e, TencentCloudSDKException):
-                raise e
+                raise
             else:
                 raise TencentCloudSDKException(e.message, e.message)
 
@@ -920,7 +920,7 @@ class VpcClient(AbstractClient):
                 raise TencentCloudSDKException(code, message, reqid)
         except Exception as e:
             if isinstance(e, TencentCloudSDKException):
-                raise e
+                raise
             else:
                 raise TencentCloudSDKException(e.message, e.message)
 
@@ -948,13 +948,13 @@ class VpcClient(AbstractClient):
                 raise TencentCloudSDKException(code, message, reqid)
         except Exception as e:
             if isinstance(e, TencentCloudSDKException):
-                raise e
+                raise
             else:
                 raise TencentCloudSDKException(e.message, e.message)
 
 
     def DeleteAddressTemplate(self, request):
-        """删除IP地址模板
+        """本接口（DeleteAddressTemplate）用于删除IP地址模板
 
         :param request: 调用DeleteAddressTemplate所需参数的结构体。
         :type request: :class:`tencentcloud.vpc.v20170312.models.DeleteAddressTemplateRequest`
@@ -976,13 +976,13 @@ class VpcClient(AbstractClient):
                 raise TencentCloudSDKException(code, message, reqid)
         except Exception as e:
             if isinstance(e, TencentCloudSDKException):
-                raise e
+                raise
             else:
                 raise TencentCloudSDKException(e.message, e.message)
 
 
     def DeleteAddressTemplateGroup(self, request):
-        """删除IP地址模板集合
+        """本接口（DeleteAddressTemplateGroup）用于删除IP地址模板集合
 
         :param request: 调用DeleteAddressTemplateGroup所需参数的结构体。
         :type request: :class:`tencentcloud.vpc.v20170312.models.DeleteAddressTemplateGroupRequest`
@@ -1004,7 +1004,7 @@ class VpcClient(AbstractClient):
                 raise TencentCloudSDKException(code, message, reqid)
         except Exception as e:
             if isinstance(e, TencentCloudSDKException):
-                raise e
+                raise
             else:
                 raise TencentCloudSDKException(e.message, e.message)
 
@@ -1032,7 +1032,7 @@ class VpcClient(AbstractClient):
                 raise TencentCloudSDKException(code, message, reqid)
         except Exception as e:
             if isinstance(e, TencentCloudSDKException):
-                raise e
+                raise
             else:
                 raise TencentCloudSDKException(e.message, e.message)
 
@@ -1062,7 +1062,7 @@ class VpcClient(AbstractClient):
                 raise TencentCloudSDKException(code, message, reqid)
         except Exception as e:
             if isinstance(e, TencentCloudSDKException):
-                raise e
+                raise
             else:
                 raise TencentCloudSDKException(e.message, e.message)
 
@@ -1090,7 +1090,7 @@ class VpcClient(AbstractClient):
                 raise TencentCloudSDKException(code, message, reqid)
         except Exception as e:
             if isinstance(e, TencentCloudSDKException):
-                raise e
+                raise
             else:
                 raise TencentCloudSDKException(e.message, e.message)
 
@@ -1121,7 +1121,7 @@ class VpcClient(AbstractClient):
                 raise TencentCloudSDKException(code, message, reqid)
         except Exception as e:
             if isinstance(e, TencentCloudSDKException):
-                raise e
+                raise
             else:
                 raise TencentCloudSDKException(e.message, e.message)
 
@@ -1149,7 +1149,7 @@ class VpcClient(AbstractClient):
                 raise TencentCloudSDKException(code, message, reqid)
         except Exception as e:
             if isinstance(e, TencentCloudSDKException):
-                raise e
+                raise
             else:
                 raise TencentCloudSDKException(e.message, e.message)
 
@@ -1178,7 +1178,7 @@ class VpcClient(AbstractClient):
                 raise TencentCloudSDKException(code, message, reqid)
         except Exception as e:
             if isinstance(e, TencentCloudSDKException):
-                raise e
+                raise
             else:
                 raise TencentCloudSDKException(e.message, e.message)
 
@@ -1207,7 +1207,7 @@ class VpcClient(AbstractClient):
                 raise TencentCloudSDKException(code, message, reqid)
         except Exception as e:
             if isinstance(e, TencentCloudSDKException):
-                raise e
+                raise
             else:
                 raise TencentCloudSDKException(e.message, e.message)
 
@@ -1237,7 +1237,7 @@ class VpcClient(AbstractClient):
                 raise TencentCloudSDKException(code, message, reqid)
         except Exception as e:
             if isinstance(e, TencentCloudSDKException):
-                raise e
+                raise
             else:
                 raise TencentCloudSDKException(e.message, e.message)
 
@@ -1265,7 +1265,7 @@ class VpcClient(AbstractClient):
                 raise TencentCloudSDKException(code, message, reqid)
         except Exception as e:
             if isinstance(e, TencentCloudSDKException):
-                raise e
+                raise
             else:
                 raise TencentCloudSDKException(e.message, e.message)
 
@@ -1293,7 +1293,7 @@ class VpcClient(AbstractClient):
                 raise TencentCloudSDKException(code, message, reqid)
         except Exception as e:
             if isinstance(e, TencentCloudSDKException):
-                raise e
+                raise
             else:
                 raise TencentCloudSDKException(e.message, e.message)
 
@@ -1324,7 +1324,7 @@ class VpcClient(AbstractClient):
                 raise TencentCloudSDKException(code, message, reqid)
         except Exception as e:
             if isinstance(e, TencentCloudSDKException):
-                raise e
+                raise
             else:
                 raise TencentCloudSDKException(e.message, e.message)
 
@@ -1353,13 +1353,13 @@ class VpcClient(AbstractClient):
                 raise TencentCloudSDKException(code, message, reqid)
         except Exception as e:
             if isinstance(e, TencentCloudSDKException):
-                raise e
+                raise
             else:
                 raise TencentCloudSDKException(e.message, e.message)
 
 
     def DeleteServiceTemplate(self, request):
-        """删除协议端口模板
+        """本接口（DeleteServiceTemplate）用于删除协议端口模板
 
         :param request: 调用DeleteServiceTemplate所需参数的结构体。
         :type request: :class:`tencentcloud.vpc.v20170312.models.DeleteServiceTemplateRequest`
@@ -1381,13 +1381,13 @@ class VpcClient(AbstractClient):
                 raise TencentCloudSDKException(code, message, reqid)
         except Exception as e:
             if isinstance(e, TencentCloudSDKException):
-                raise e
+                raise
             else:
                 raise TencentCloudSDKException(e.message, e.message)
 
 
     def DeleteServiceTemplateGroup(self, request):
-        """删除协议端口模板集合
+        """本接口（DeleteServiceTemplateGroup）用于删除协议端口模板集合
 
         :param request: 调用DeleteServiceTemplateGroup所需参数的结构体。
         :type request: :class:`tencentcloud.vpc.v20170312.models.DeleteServiceTemplateGroupRequest`
@@ -1409,7 +1409,7 @@ class VpcClient(AbstractClient):
                 raise TencentCloudSDKException(code, message, reqid)
         except Exception as e:
             if isinstance(e, TencentCloudSDKException):
-                raise e
+                raise
             else:
                 raise TencentCloudSDKException(e.message, e.message)
 
@@ -1438,7 +1438,7 @@ class VpcClient(AbstractClient):
                 raise TencentCloudSDKException(code, message, reqid)
         except Exception as e:
             if isinstance(e, TencentCloudSDKException):
-                raise e
+                raise
             else:
                 raise TencentCloudSDKException(e.message, e.message)
 
@@ -1468,7 +1468,7 @@ class VpcClient(AbstractClient):
                 raise TencentCloudSDKException(code, message, reqid)
         except Exception as e:
             if isinstance(e, TencentCloudSDKException):
-                raise e
+                raise
             else:
                 raise TencentCloudSDKException(e.message, e.message)
 
@@ -1496,7 +1496,7 @@ class VpcClient(AbstractClient):
                 raise TencentCloudSDKException(code, message, reqid)
         except Exception as e:
             if isinstance(e, TencentCloudSDKException):
-                raise e
+                raise
             else:
                 raise TencentCloudSDKException(e.message, e.message)
 
@@ -1524,7 +1524,7 @@ class VpcClient(AbstractClient):
                 raise TencentCloudSDKException(code, message, reqid)
         except Exception as e:
             if isinstance(e, TencentCloudSDKException):
-                raise e
+                raise
             else:
                 raise TencentCloudSDKException(e.message, e.message)
 
@@ -1552,7 +1552,7 @@ class VpcClient(AbstractClient):
                 raise TencentCloudSDKException(code, message, reqid)
         except Exception as e:
             if isinstance(e, TencentCloudSDKException):
-                raise e
+                raise
             else:
                 raise TencentCloudSDKException(e.message, e.message)
 
@@ -1580,13 +1580,13 @@ class VpcClient(AbstractClient):
                 raise TencentCloudSDKException(code, message, reqid)
         except Exception as e:
             if isinstance(e, TencentCloudSDKException):
-                raise e
+                raise
             else:
                 raise TencentCloudSDKException(e.message, e.message)
 
 
     def DescribeAddressTemplateGroups(self, request):
-        """查询IP地址模板集合
+        """本接口（DescribeAddressTemplateGroups）用于查询IP地址模板集合
 
         :param request: 调用DescribeAddressTemplateGroups所需参数的结构体。
         :type request: :class:`tencentcloud.vpc.v20170312.models.DescribeAddressTemplateGroupsRequest`
@@ -1608,13 +1608,13 @@ class VpcClient(AbstractClient):
                 raise TencentCloudSDKException(code, message, reqid)
         except Exception as e:
             if isinstance(e, TencentCloudSDKException):
-                raise e
+                raise
             else:
                 raise TencentCloudSDKException(e.message, e.message)
 
 
     def DescribeAddressTemplates(self, request):
-        """查询IP地址模板
+        """本接口（DescribeAddressTemplates）用于查询IP地址模板
 
         :param request: 调用DescribeAddressTemplates所需参数的结构体。
         :type request: :class:`tencentcloud.vpc.v20170312.models.DescribeAddressTemplatesRequest`
@@ -1636,7 +1636,7 @@ class VpcClient(AbstractClient):
                 raise TencentCloudSDKException(code, message, reqid)
         except Exception as e:
             if isinstance(e, TencentCloudSDKException):
-                raise e
+                raise
             else:
                 raise TencentCloudSDKException(e.message, e.message)
 
@@ -1665,7 +1665,7 @@ class VpcClient(AbstractClient):
                 raise TencentCloudSDKException(code, message, reqid)
         except Exception as e:
             if isinstance(e, TencentCloudSDKException):
-                raise e
+                raise
             else:
                 raise TencentCloudSDKException(e.message, e.message)
 
@@ -1693,7 +1693,7 @@ class VpcClient(AbstractClient):
                 raise TencentCloudSDKException(code, message, reqid)
         except Exception as e:
             if isinstance(e, TencentCloudSDKException):
-                raise e
+                raise
             else:
                 raise TencentCloudSDKException(e.message, e.message)
 
@@ -1721,7 +1721,7 @@ class VpcClient(AbstractClient):
                 raise TencentCloudSDKException(code, message, reqid)
         except Exception as e:
             if isinstance(e, TencentCloudSDKException):
-                raise e
+                raise
             else:
                 raise TencentCloudSDKException(e.message, e.message)
 
@@ -1749,7 +1749,7 @@ class VpcClient(AbstractClient):
                 raise TencentCloudSDKException(code, message, reqid)
         except Exception as e:
             if isinstance(e, TencentCloudSDKException):
-                raise e
+                raise
             else:
                 raise TencentCloudSDKException(e.message, e.message)
 
@@ -1777,7 +1777,7 @@ class VpcClient(AbstractClient):
                 raise TencentCloudSDKException(code, message, reqid)
         except Exception as e:
             if isinstance(e, TencentCloudSDKException):
-                raise e
+                raise
             else:
                 raise TencentCloudSDKException(e.message, e.message)
 
@@ -1805,7 +1805,7 @@ class VpcClient(AbstractClient):
                 raise TencentCloudSDKException(code, message, reqid)
         except Exception as e:
             if isinstance(e, TencentCloudSDKException):
-                raise e
+                raise
             else:
                 raise TencentCloudSDKException(e.message, e.message)
 
@@ -1833,7 +1833,7 @@ class VpcClient(AbstractClient):
                 raise TencentCloudSDKException(code, message, reqid)
         except Exception as e:
             if isinstance(e, TencentCloudSDKException):
-                raise e
+                raise
             else:
                 raise TencentCloudSDKException(e.message, e.message)
 
@@ -1861,7 +1861,7 @@ class VpcClient(AbstractClient):
                 raise TencentCloudSDKException(code, message, reqid)
         except Exception as e:
             if isinstance(e, TencentCloudSDKException):
-                raise e
+                raise
             else:
                 raise TencentCloudSDKException(e.message, e.message)
 
@@ -1889,7 +1889,7 @@ class VpcClient(AbstractClient):
                 raise TencentCloudSDKException(code, message, reqid)
         except Exception as e:
             if isinstance(e, TencentCloudSDKException):
-                raise e
+                raise
             else:
                 raise TencentCloudSDKException(e.message, e.message)
 
@@ -1917,7 +1917,7 @@ class VpcClient(AbstractClient):
                 raise TencentCloudSDKException(code, message, reqid)
         except Exception as e:
             if isinstance(e, TencentCloudSDKException):
-                raise e
+                raise
             else:
                 raise TencentCloudSDKException(e.message, e.message)
 
@@ -1945,7 +1945,7 @@ class VpcClient(AbstractClient):
                 raise TencentCloudSDKException(code, message, reqid)
         except Exception as e:
             if isinstance(e, TencentCloudSDKException):
-                raise e
+                raise
             else:
                 raise TencentCloudSDKException(e.message, e.message)
 
@@ -1973,7 +1973,37 @@ class VpcClient(AbstractClient):
                 raise TencentCloudSDKException(code, message, reqid)
         except Exception as e:
             if isinstance(e, TencentCloudSDKException):
-                raise e
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeGatewayFlowMonitorDetail(self, request):
+        """本接口（DescribeGatewayFlowMonitorDetail）用于查询网关流量监控明细。
+        * 只支持单个网关实例查询。即入参 `VpnId` `DirectConnectGatewayId` `PeeringConnectionId` `NatId` 最多只支持传一个，且必须传一个。
+        * 如果网关有流量，但调用本接口没有返回数据，请在控制台对应网关详情页确认是否开启网关流量监控。
+
+        :param request: 调用DescribeGatewayFlowMonitorDetail所需参数的结构体。
+        :type request: :class:`tencentcloud.vpc.v20170312.models.DescribeGatewayFlowMonitorDetailRequest`
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.DescribeGatewayFlowMonitorDetailResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeGatewayFlowMonitorDetail", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeGatewayFlowMonitorDetailResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
             else:
                 raise TencentCloudSDKException(e.message, e.message)
 
@@ -2001,7 +2031,7 @@ class VpcClient(AbstractClient):
                 raise TencentCloudSDKException(code, message, reqid)
         except Exception as e:
             if isinstance(e, TencentCloudSDKException):
-                raise e
+                raise
             else:
                 raise TencentCloudSDKException(e.message, e.message)
 
@@ -2029,7 +2059,7 @@ class VpcClient(AbstractClient):
                 raise TencentCloudSDKException(code, message, reqid)
         except Exception as e:
             if isinstance(e, TencentCloudSDKException):
-                raise e
+                raise
             else:
                 raise TencentCloudSDKException(e.message, e.message)
 
@@ -2058,7 +2088,7 @@ class VpcClient(AbstractClient):
                 raise TencentCloudSDKException(code, message, reqid)
         except Exception as e:
             if isinstance(e, TencentCloudSDKException):
-                raise e
+                raise
             else:
                 raise TencentCloudSDKException(e.message, e.message)
 
@@ -2086,7 +2116,7 @@ class VpcClient(AbstractClient):
                 raise TencentCloudSDKException(code, message, reqid)
         except Exception as e:
             if isinstance(e, TencentCloudSDKException):
-                raise e
+                raise
             else:
                 raise TencentCloudSDKException(e.message, e.message)
 
@@ -2114,7 +2144,7 @@ class VpcClient(AbstractClient):
                 raise TencentCloudSDKException(code, message, reqid)
         except Exception as e:
             if isinstance(e, TencentCloudSDKException):
-                raise e
+                raise
             else:
                 raise TencentCloudSDKException(e.message, e.message)
 
@@ -2142,7 +2172,7 @@ class VpcClient(AbstractClient):
                 raise TencentCloudSDKException(code, message, reqid)
         except Exception as e:
             if isinstance(e, TencentCloudSDKException):
-                raise e
+                raise
             else:
                 raise TencentCloudSDKException(e.message, e.message)
 
@@ -2170,7 +2200,7 @@ class VpcClient(AbstractClient):
                 raise TencentCloudSDKException(code, message, reqid)
         except Exception as e:
             if isinstance(e, TencentCloudSDKException):
-                raise e
+                raise
             else:
                 raise TencentCloudSDKException(e.message, e.message)
 
@@ -2198,7 +2228,7 @@ class VpcClient(AbstractClient):
                 raise TencentCloudSDKException(code, message, reqid)
         except Exception as e:
             if isinstance(e, TencentCloudSDKException):
-                raise e
+                raise
             else:
                 raise TencentCloudSDKException(e.message, e.message)
 
@@ -2226,13 +2256,13 @@ class VpcClient(AbstractClient):
                 raise TencentCloudSDKException(code, message, reqid)
         except Exception as e:
             if isinstance(e, TencentCloudSDKException):
-                raise e
+                raise
             else:
                 raise TencentCloudSDKException(e.message, e.message)
 
 
     def DescribeServiceTemplateGroups(self, request):
-        """查询协议端口模板集合
+        """本接口（DescribeServiceTemplateGroups）用于查询协议端口模板集合
 
         :param request: 调用DescribeServiceTemplateGroups所需参数的结构体。
         :type request: :class:`tencentcloud.vpc.v20170312.models.DescribeServiceTemplateGroupsRequest`
@@ -2254,13 +2284,13 @@ class VpcClient(AbstractClient):
                 raise TencentCloudSDKException(code, message, reqid)
         except Exception as e:
             if isinstance(e, TencentCloudSDKException):
-                raise e
+                raise
             else:
                 raise TencentCloudSDKException(e.message, e.message)
 
 
     def DescribeServiceTemplates(self, request):
-        """查询协议端口模板
+        """本接口（DescribeServiceTemplates）用于查询协议端口模板
 
         :param request: 调用DescribeServiceTemplates所需参数的结构体。
         :type request: :class:`tencentcloud.vpc.v20170312.models.DescribeServiceTemplatesRequest`
@@ -2282,7 +2312,7 @@ class VpcClient(AbstractClient):
                 raise TencentCloudSDKException(code, message, reqid)
         except Exception as e:
             if isinstance(e, TencentCloudSDKException):
-                raise e
+                raise
             else:
                 raise TencentCloudSDKException(e.message, e.message)
 
@@ -2310,7 +2340,7 @@ class VpcClient(AbstractClient):
                 raise TencentCloudSDKException(code, message, reqid)
         except Exception as e:
             if isinstance(e, TencentCloudSDKException):
-                raise e
+                raise
             else:
                 raise TencentCloudSDKException(e.message, e.message)
 
@@ -2339,7 +2369,7 @@ class VpcClient(AbstractClient):
                 raise TencentCloudSDKException(code, message, reqid)
         except Exception as e:
             if isinstance(e, TencentCloudSDKException):
-                raise e
+                raise
             else:
                 raise TencentCloudSDKException(e.message, e.message)
 
@@ -2367,7 +2397,7 @@ class VpcClient(AbstractClient):
                 raise TencentCloudSDKException(code, message, reqid)
         except Exception as e:
             if isinstance(e, TencentCloudSDKException):
-                raise e
+                raise
             else:
                 raise TencentCloudSDKException(e.message, e.message)
 
@@ -2395,7 +2425,7 @@ class VpcClient(AbstractClient):
                 raise TencentCloudSDKException(code, message, reqid)
         except Exception as e:
             if isinstance(e, TencentCloudSDKException):
-                raise e
+                raise
             else:
                 raise TencentCloudSDKException(e.message, e.message)
 
@@ -2423,7 +2453,7 @@ class VpcClient(AbstractClient):
                 raise TencentCloudSDKException(code, message, reqid)
         except Exception as e:
             if isinstance(e, TencentCloudSDKException):
-                raise e
+                raise
             else:
                 raise TencentCloudSDKException(e.message, e.message)
 
@@ -2452,7 +2482,7 @@ class VpcClient(AbstractClient):
                 raise TencentCloudSDKException(code, message, reqid)
         except Exception as e:
             if isinstance(e, TencentCloudSDKException):
-                raise e
+                raise
             else:
                 raise TencentCloudSDKException(e.message, e.message)
 
@@ -2480,7 +2510,7 @@ class VpcClient(AbstractClient):
                 raise TencentCloudSDKException(code, message, reqid)
         except Exception as e:
             if isinstance(e, TencentCloudSDKException):
-                raise e
+                raise
             else:
                 raise TencentCloudSDKException(e.message, e.message)
 
@@ -2508,7 +2538,7 @@ class VpcClient(AbstractClient):
                 raise TencentCloudSDKException(code, message, reqid)
         except Exception as e:
             if isinstance(e, TencentCloudSDKException):
-                raise e
+                raise
             else:
                 raise TencentCloudSDKException(e.message, e.message)
 
@@ -2536,7 +2566,7 @@ class VpcClient(AbstractClient):
                 raise TencentCloudSDKException(code, message, reqid)
         except Exception as e:
             if isinstance(e, TencentCloudSDKException):
-                raise e
+                raise
             else:
                 raise TencentCloudSDKException(e.message, e.message)
 
@@ -2564,7 +2594,7 @@ class VpcClient(AbstractClient):
                 raise TencentCloudSDKException(code, message, reqid)
         except Exception as e:
             if isinstance(e, TencentCloudSDKException):
-                raise e
+                raise
             else:
                 raise TencentCloudSDKException(e.message, e.message)
 
@@ -2596,7 +2626,7 @@ class VpcClient(AbstractClient):
                 raise TencentCloudSDKException(code, message, reqid)
         except Exception as e:
             if isinstance(e, TencentCloudSDKException):
-                raise e
+                raise
             else:
                 raise TencentCloudSDKException(e.message, e.message)
 
@@ -2624,7 +2654,7 @@ class VpcClient(AbstractClient):
                 raise TencentCloudSDKException(code, message, reqid)
         except Exception as e:
             if isinstance(e, TencentCloudSDKException):
-                raise e
+                raise
             else:
                 raise TencentCloudSDKException(e.message, e.message)
 
@@ -2653,7 +2683,7 @@ class VpcClient(AbstractClient):
                 raise TencentCloudSDKException(code, message, reqid)
         except Exception as e:
             if isinstance(e, TencentCloudSDKException):
-                raise e
+                raise
             else:
                 raise TencentCloudSDKException(e.message, e.message)
 
@@ -2682,7 +2712,7 @@ class VpcClient(AbstractClient):
                 raise TencentCloudSDKException(code, message, reqid)
         except Exception as e:
             if isinstance(e, TencentCloudSDKException):
-                raise e
+                raise
             else:
                 raise TencentCloudSDKException(e.message, e.message)
 
@@ -2711,7 +2741,7 @@ class VpcClient(AbstractClient):
                 raise TencentCloudSDKException(code, message, reqid)
         except Exception as e:
             if isinstance(e, TencentCloudSDKException):
-                raise e
+                raise
             else:
                 raise TencentCloudSDKException(e.message, e.message)
 
@@ -2740,7 +2770,7 @@ class VpcClient(AbstractClient):
                 raise TencentCloudSDKException(code, message, reqid)
         except Exception as e:
             if isinstance(e, TencentCloudSDKException):
-                raise e
+                raise
             else:
                 raise TencentCloudSDKException(e.message, e.message)
 
@@ -2768,7 +2798,7 @@ class VpcClient(AbstractClient):
                 raise TencentCloudSDKException(code, message, reqid)
         except Exception as e:
             if isinstance(e, TencentCloudSDKException):
-                raise e
+                raise
             else:
                 raise TencentCloudSDKException(e.message, e.message)
 
@@ -2796,7 +2826,7 @@ class VpcClient(AbstractClient):
                 raise TencentCloudSDKException(code, message, reqid)
         except Exception as e:
             if isinstance(e, TencentCloudSDKException):
-                raise e
+                raise
             else:
                 raise TencentCloudSDKException(e.message, e.message)
 
@@ -2824,7 +2854,7 @@ class VpcClient(AbstractClient):
                 raise TencentCloudSDKException(code, message, reqid)
         except Exception as e:
             if isinstance(e, TencentCloudSDKException):
-                raise e
+                raise
             else:
                 raise TencentCloudSDKException(e.message, e.message)
 
@@ -2852,7 +2882,7 @@ class VpcClient(AbstractClient):
                 raise TencentCloudSDKException(code, message, reqid)
         except Exception as e:
             if isinstance(e, TencentCloudSDKException):
-                raise e
+                raise
             else:
                 raise TencentCloudSDKException(e.message, e.message)
 
@@ -2883,7 +2913,7 @@ class VpcClient(AbstractClient):
                 raise TencentCloudSDKException(code, message, reqid)
         except Exception as e:
             if isinstance(e, TencentCloudSDKException):
-                raise e
+                raise
             else:
                 raise TencentCloudSDKException(e.message, e.message)
 
@@ -2911,13 +2941,13 @@ class VpcClient(AbstractClient):
                 raise TencentCloudSDKException(code, message, reqid)
         except Exception as e:
             if isinstance(e, TencentCloudSDKException):
-                raise e
+                raise
             else:
                 raise TencentCloudSDKException(e.message, e.message)
 
 
     def ModifyAddressTemplateAttribute(self, request):
-        """修改IP地址模板
+        """本接口（ModifyAddressTemplateAttribute）用于修改IP地址模板
 
         :param request: 调用ModifyAddressTemplateAttribute所需参数的结构体。
         :type request: :class:`tencentcloud.vpc.v20170312.models.ModifyAddressTemplateAttributeRequest`
@@ -2939,13 +2969,13 @@ class VpcClient(AbstractClient):
                 raise TencentCloudSDKException(code, message, reqid)
         except Exception as e:
             if isinstance(e, TencentCloudSDKException):
-                raise e
+                raise
             else:
                 raise TencentCloudSDKException(e.message, e.message)
 
 
     def ModifyAddressTemplateGroupAttribute(self, request):
-        """修改IP地址模板集合
+        """本接口（ModifyAddressTemplateGroupAttribute）用于修改IP地址模板集合
 
         :param request: 调用ModifyAddressTemplateGroupAttribute所需参数的结构体。
         :type request: :class:`tencentcloud.vpc.v20170312.models.ModifyAddressTemplateGroupAttributeRequest`
@@ -2967,13 +2997,13 @@ class VpcClient(AbstractClient):
                 raise TencentCloudSDKException(code, message, reqid)
         except Exception as e:
             if isinstance(e, TencentCloudSDKException):
-                raise e
+                raise
             else:
                 raise TencentCloudSDKException(e.message, e.message)
 
 
     def ModifyAddressesBandwidth(self, request):
-        """接口用于调整[弹性公网IP](https://cloud.tencent.com/document/product/213/1941)(简称EIP)带宽，包括后付费EIP, 预付费EIP和带宽包EIP
+        """本接口（ModifyAddressesBandwidth）用于调整[弹性公网IP](https://cloud.tencent.com/document/product/213/1941)(简称EIP)带宽，包括后付费EIP, 预付费EIP和带宽包EIP
 
         :param request: 调用ModifyAddressesBandwidth所需参数的结构体。
         :type request: :class:`tencentcloud.vpc.v20170312.models.ModifyAddressesBandwidthRequest`
@@ -2995,7 +3025,7 @@ class VpcClient(AbstractClient):
                 raise TencentCloudSDKException(code, message, reqid)
         except Exception as e:
             if isinstance(e, TencentCloudSDKException):
-                raise e
+                raise
             else:
                 raise TencentCloudSDKException(e.message, e.message)
 
@@ -3023,7 +3053,7 @@ class VpcClient(AbstractClient):
                 raise TencentCloudSDKException(code, message, reqid)
         except Exception as e:
             if isinstance(e, TencentCloudSDKException):
-                raise e
+                raise
             else:
                 raise TencentCloudSDKException(e.message, e.message)
 
@@ -3051,7 +3081,7 @@ class VpcClient(AbstractClient):
                 raise TencentCloudSDKException(code, message, reqid)
         except Exception as e:
             if isinstance(e, TencentCloudSDKException):
-                raise e
+                raise
             else:
                 raise TencentCloudSDKException(e.message, e.message)
 
@@ -3079,7 +3109,7 @@ class VpcClient(AbstractClient):
                 raise TencentCloudSDKException(code, message, reqid)
         except Exception as e:
             if isinstance(e, TencentCloudSDKException):
-                raise e
+                raise
             else:
                 raise TencentCloudSDKException(e.message, e.message)
 
@@ -3107,7 +3137,7 @@ class VpcClient(AbstractClient):
                 raise TencentCloudSDKException(code, message, reqid)
         except Exception as e:
             if isinstance(e, TencentCloudSDKException):
-                raise e
+                raise
             else:
                 raise TencentCloudSDKException(e.message, e.message)
 
@@ -3135,7 +3165,7 @@ class VpcClient(AbstractClient):
                 raise TencentCloudSDKException(code, message, reqid)
         except Exception as e:
             if isinstance(e, TencentCloudSDKException):
-                raise e
+                raise
             else:
                 raise TencentCloudSDKException(e.message, e.message)
 
@@ -3163,7 +3193,7 @@ class VpcClient(AbstractClient):
                 raise TencentCloudSDKException(code, message, reqid)
         except Exception as e:
             if isinstance(e, TencentCloudSDKException):
-                raise e
+                raise
             else:
                 raise TencentCloudSDKException(e.message, e.message)
 
@@ -3191,7 +3221,7 @@ class VpcClient(AbstractClient):
                 raise TencentCloudSDKException(code, message, reqid)
         except Exception as e:
             if isinstance(e, TencentCloudSDKException):
-                raise e
+                raise
             else:
                 raise TencentCloudSDKException(e.message, e.message)
 
@@ -3219,7 +3249,7 @@ class VpcClient(AbstractClient):
                 raise TencentCloudSDKException(code, message, reqid)
         except Exception as e:
             if isinstance(e, TencentCloudSDKException):
-                raise e
+                raise
             else:
                 raise TencentCloudSDKException(e.message, e.message)
 
@@ -3247,7 +3277,7 @@ class VpcClient(AbstractClient):
                 raise TencentCloudSDKException(code, message, reqid)
         except Exception as e:
             if isinstance(e, TencentCloudSDKException):
-                raise e
+                raise
             else:
                 raise TencentCloudSDKException(e.message, e.message)
 
@@ -3275,7 +3305,7 @@ class VpcClient(AbstractClient):
                 raise TencentCloudSDKException(code, message, reqid)
         except Exception as e:
             if isinstance(e, TencentCloudSDKException):
-                raise e
+                raise
             else:
                 raise TencentCloudSDKException(e.message, e.message)
 
@@ -3303,7 +3333,7 @@ class VpcClient(AbstractClient):
                 raise TencentCloudSDKException(code, message, reqid)
         except Exception as e:
             if isinstance(e, TencentCloudSDKException):
-                raise e
+                raise
             else:
                 raise TencentCloudSDKException(e.message, e.message)
 
@@ -3340,13 +3370,13 @@ class VpcClient(AbstractClient):
                 raise TencentCloudSDKException(code, message, reqid)
         except Exception as e:
             if isinstance(e, TencentCloudSDKException):
-                raise e
+                raise
             else:
                 raise TencentCloudSDKException(e.message, e.message)
 
 
     def ModifyServiceTemplateAttribute(self, request):
-        """修改协议端口模板
+        """本接口（ModifyServiceTemplateAttribute）用于修改协议端口模板
 
         :param request: 调用ModifyServiceTemplateAttribute所需参数的结构体。
         :type request: :class:`tencentcloud.vpc.v20170312.models.ModifyServiceTemplateAttributeRequest`
@@ -3368,7 +3398,7 @@ class VpcClient(AbstractClient):
                 raise TencentCloudSDKException(code, message, reqid)
         except Exception as e:
             if isinstance(e, TencentCloudSDKException):
-                raise e
+                raise
             else:
                 raise TencentCloudSDKException(e.message, e.message)
 
@@ -3396,7 +3426,7 @@ class VpcClient(AbstractClient):
                 raise TencentCloudSDKException(code, message, reqid)
         except Exception as e:
             if isinstance(e, TencentCloudSDKException):
-                raise e
+                raise
             else:
                 raise TencentCloudSDKException(e.message, e.message)
 
@@ -3424,7 +3454,7 @@ class VpcClient(AbstractClient):
                 raise TencentCloudSDKException(code, message, reqid)
         except Exception as e:
             if isinstance(e, TencentCloudSDKException):
-                raise e
+                raise
             else:
                 raise TencentCloudSDKException(e.message, e.message)
 
@@ -3452,7 +3482,7 @@ class VpcClient(AbstractClient):
                 raise TencentCloudSDKException(code, message, reqid)
         except Exception as e:
             if isinstance(e, TencentCloudSDKException):
-                raise e
+                raise
             else:
                 raise TencentCloudSDKException(e.message, e.message)
 
@@ -3480,7 +3510,7 @@ class VpcClient(AbstractClient):
                 raise TencentCloudSDKException(code, message, reqid)
         except Exception as e:
             if isinstance(e, TencentCloudSDKException):
-                raise e
+                raise
             else:
                 raise TencentCloudSDKException(e.message, e.message)
 
@@ -3508,7 +3538,7 @@ class VpcClient(AbstractClient):
                 raise TencentCloudSDKException(code, message, reqid)
         except Exception as e:
             if isinstance(e, TencentCloudSDKException):
-                raise e
+                raise
             else:
                 raise TencentCloudSDKException(e.message, e.message)
 
@@ -3536,7 +3566,7 @@ class VpcClient(AbstractClient):
                 raise TencentCloudSDKException(code, message, reqid)
         except Exception as e:
             if isinstance(e, TencentCloudSDKException):
-                raise e
+                raise
             else:
                 raise TencentCloudSDKException(e.message, e.message)
 
@@ -3566,7 +3596,7 @@ class VpcClient(AbstractClient):
                 raise TencentCloudSDKException(code, message, reqid)
         except Exception as e:
             if isinstance(e, TencentCloudSDKException):
-                raise e
+                raise
             else:
                 raise TencentCloudSDKException(e.message, e.message)
 
@@ -3594,7 +3624,7 @@ class VpcClient(AbstractClient):
                 raise TencentCloudSDKException(code, message, reqid)
         except Exception as e:
             if isinstance(e, TencentCloudSDKException):
-                raise e
+                raise
             else:
                 raise TencentCloudSDKException(e.message, e.message)
 
@@ -3623,7 +3653,7 @@ class VpcClient(AbstractClient):
                 raise TencentCloudSDKException(code, message, reqid)
         except Exception as e:
             if isinstance(e, TencentCloudSDKException):
-                raise e
+                raise
             else:
                 raise TencentCloudSDKException(e.message, e.message)
 
@@ -3651,7 +3681,7 @@ class VpcClient(AbstractClient):
                 raise TencentCloudSDKException(code, message, reqid)
         except Exception as e:
             if isinstance(e, TencentCloudSDKException):
-                raise e
+                raise
             else:
                 raise TencentCloudSDKException(e.message, e.message)
 
@@ -3679,7 +3709,7 @@ class VpcClient(AbstractClient):
                 raise TencentCloudSDKException(code, message, reqid)
         except Exception as e:
             if isinstance(e, TencentCloudSDKException):
-                raise e
+                raise
             else:
                 raise TencentCloudSDKException(e.message, e.message)
 
@@ -3708,7 +3738,7 @@ class VpcClient(AbstractClient):
                 raise TencentCloudSDKException(code, message, reqid)
         except Exception as e:
             if isinstance(e, TencentCloudSDKException):
-                raise e
+                raise
             else:
                 raise TencentCloudSDKException(e.message, e.message)
 
@@ -3736,7 +3766,7 @@ class VpcClient(AbstractClient):
                 raise TencentCloudSDKException(code, message, reqid)
         except Exception as e:
             if isinstance(e, TencentCloudSDKException):
-                raise e
+                raise
             else:
                 raise TencentCloudSDKException(e.message, e.message)
 
@@ -3765,7 +3795,7 @@ class VpcClient(AbstractClient):
                 raise TencentCloudSDKException(code, message, reqid)
         except Exception as e:
             if isinstance(e, TencentCloudSDKException):
-                raise e
+                raise
             else:
                 raise TencentCloudSDKException(e.message, e.message)
 
@@ -3793,7 +3823,7 @@ class VpcClient(AbstractClient):
                 raise TencentCloudSDKException(code, message, reqid)
         except Exception as e:
             if isinstance(e, TencentCloudSDKException):
-                raise e
+                raise
             else:
                 raise TencentCloudSDKException(e.message, e.message)
 
@@ -3822,7 +3852,7 @@ class VpcClient(AbstractClient):
                 raise TencentCloudSDKException(code, message, reqid)
         except Exception as e:
             if isinstance(e, TencentCloudSDKException):
-                raise e
+                raise
             else:
                 raise TencentCloudSDKException(e.message, e.message)
 
@@ -3850,7 +3880,7 @@ class VpcClient(AbstractClient):
                 raise TencentCloudSDKException(code, message, reqid)
         except Exception as e:
             if isinstance(e, TencentCloudSDKException):
-                raise e
+                raise
             else:
                 raise TencentCloudSDKException(e.message, e.message)
 
@@ -3878,7 +3908,7 @@ class VpcClient(AbstractClient):
                 raise TencentCloudSDKException(code, message, reqid)
         except Exception as e:
             if isinstance(e, TencentCloudSDKException):
-                raise e
+                raise
             else:
                 raise TencentCloudSDKException(e.message, e.message)
 
@@ -3906,7 +3936,7 @@ class VpcClient(AbstractClient):
                 raise TencentCloudSDKException(code, message, reqid)
         except Exception as e:
             if isinstance(e, TencentCloudSDKException):
-                raise e
+                raise
             else:
                 raise TencentCloudSDKException(e.message, e.message)
 
@@ -3935,7 +3965,7 @@ class VpcClient(AbstractClient):
                 raise TencentCloudSDKException(code, message, reqid)
         except Exception as e:
             if isinstance(e, TencentCloudSDKException):
-                raise e
+                raise
             else:
                 raise TencentCloudSDKException(e.message, e.message)
 
@@ -3964,6 +3994,6 @@ class VpcClient(AbstractClient):
                 raise TencentCloudSDKException(code, message, reqid)
         except Exception as e:
             if isinstance(e, TencentCloudSDKException):
-                raise e
+                raise
             else:
                 raise TencentCloudSDKException(e.message, e.message)

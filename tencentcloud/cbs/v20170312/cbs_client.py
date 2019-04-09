@@ -52,7 +52,7 @@ class CbsClient(AbstractClient):
                 raise TencentCloudSDKException(code, message, reqid)
         except Exception as e:
             if isinstance(e, TencentCloudSDKException):
-                raise e
+                raise
             else:
                 raise TencentCloudSDKException(e.message, e.message)
 
@@ -83,7 +83,69 @@ class CbsClient(AbstractClient):
                 raise TencentCloudSDKException(code, message, reqid)
         except Exception as e:
             if isinstance(e, TencentCloudSDKException):
-                raise e
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def BindAutoSnapshotPolicy(self, request):
+        """本接口（BindAutoSnapshotPolicy）用于绑定云硬盘到指定的定期快照策略。
+
+        * 每个地域下的定期快照策略配额限制请参考文档[定期快照](/document/product/362/8191)。
+        * 当已绑定定期快照策略的云硬盘处于未使用状态（即弹性云盘未挂载或非弹性云盘的主机处于关机状态）将不会创建定期快照。
+
+        :param request: 调用BindAutoSnapshotPolicy所需参数的结构体。
+        :type request: :class:`tencentcloud.cbs.v20170312.models.BindAutoSnapshotPolicyRequest`
+        :rtype: :class:`tencentcloud.cbs.v20170312.models.BindAutoSnapshotPolicyResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("BindAutoSnapshotPolicy", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.BindAutoSnapshotPolicyResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def CreateAutoSnapshotPolicy(self, request):
+        """本接口（CreateAutoSnapshotPolicy）用于创建定期快照策略。
+
+        * 每个地域可创建的定期快照策略数量限制请参考文档[定期快照](/document/product/362/8191)。
+        * 每个地域可创建的快照有数量和容量的限制，具体请见腾讯云控制台快照页面提示，如果快照超配额，定期快照创建会失败。
+
+        :param request: 调用CreateAutoSnapshotPolicy所需参数的结构体。
+        :type request: :class:`tencentcloud.cbs.v20170312.models.CreateAutoSnapshotPolicyRequest`
+        :rtype: :class:`tencentcloud.cbs.v20170312.models.CreateAutoSnapshotPolicyResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("CreateAutoSnapshotPolicy", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateAutoSnapshotPolicyResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
             else:
                 raise TencentCloudSDKException(e.message, e.message)
 
@@ -115,7 +177,7 @@ class CbsClient(AbstractClient):
                 raise TencentCloudSDKException(code, message, reqid)
         except Exception as e:
             if isinstance(e, TencentCloudSDKException):
-                raise e
+                raise
             else:
                 raise TencentCloudSDKException(e.message, e.message)
 
@@ -146,7 +208,37 @@ class CbsClient(AbstractClient):
                 raise TencentCloudSDKException(code, message, reqid)
         except Exception as e:
             if isinstance(e, TencentCloudSDKException):
-                raise e
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DeleteAutoSnapshotPolicies(self, request):
+        """本接口（DeleteAutoSnapshotPolicies）用于删除定期快照策略。
+
+        *  支持批量操作。如果多个定期快照策略存在无法删除的，则操作不执行，以特定错误码返回。
+
+        :param request: 调用DeleteAutoSnapshotPolicies所需参数的结构体。
+        :type request: :class:`tencentcloud.cbs.v20170312.models.DeleteAutoSnapshotPoliciesRequest`
+        :rtype: :class:`tencentcloud.cbs.v20170312.models.DeleteAutoSnapshotPoliciesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DeleteAutoSnapshotPolicies", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DeleteAutoSnapshotPoliciesResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
             else:
                 raise TencentCloudSDKException(e.message, e.message)
 
@@ -177,7 +269,66 @@ class CbsClient(AbstractClient):
                 raise TencentCloudSDKException(code, message, reqid)
         except Exception as e:
             if isinstance(e, TencentCloudSDKException):
-                raise e
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeAutoSnapshotPolicies(self, request):
+        """本接口（DescribeAutoSnapshotPolicies）用于查询定期快照策略。
+
+        * 可以根据定期快照策略ID、名称或者状态等信息来查询定期快照策略的详细信息，不同条件之间为与(AND)的关系，过滤信息详细请见过滤器`Filter`。
+        * 如果参数为空，返回当前用户一定数量（`Limit`所指定的数量，默认为20）的定期快照策略表。
+
+        :param request: 调用DescribeAutoSnapshotPolicies所需参数的结构体。
+        :type request: :class:`tencentcloud.cbs.v20170312.models.DescribeAutoSnapshotPoliciesRequest`
+        :rtype: :class:`tencentcloud.cbs.v20170312.models.DescribeAutoSnapshotPoliciesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeAutoSnapshotPolicies", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeAutoSnapshotPoliciesResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeDiskAssociatedAutoSnapshotPolicy(self, request):
+        """本接口（DescribeDiskAssociatedAutoSnapshotPolicy）用于查询云盘绑定的定期快照策略。
+
+        :param request: 调用DescribeDiskAssociatedAutoSnapshotPolicy所需参数的结构体。
+        :type request: :class:`tencentcloud.cbs.v20170312.models.DescribeDiskAssociatedAutoSnapshotPolicyRequest`
+        :rtype: :class:`tencentcloud.cbs.v20170312.models.DescribeDiskAssociatedAutoSnapshotPolicyResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeDiskAssociatedAutoSnapshotPolicy", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeDiskAssociatedAutoSnapshotPolicyResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
             else:
                 raise TencentCloudSDKException(e.message, e.message)
 
@@ -205,7 +356,7 @@ class CbsClient(AbstractClient):
                 raise TencentCloudSDKException(code, message, reqid)
         except Exception as e:
             if isinstance(e, TencentCloudSDKException):
-                raise e
+                raise
             else:
                 raise TencentCloudSDKException(e.message, e.message)
 
@@ -235,7 +386,7 @@ class CbsClient(AbstractClient):
                 raise TencentCloudSDKException(code, message, reqid)
         except Exception as e:
             if isinstance(e, TencentCloudSDKException):
-                raise e
+                raise
             else:
                 raise TencentCloudSDKException(e.message, e.message)
 
@@ -266,7 +417,7 @@ class CbsClient(AbstractClient):
                 raise TencentCloudSDKException(code, message, reqid)
         except Exception as e:
             if isinstance(e, TencentCloudSDKException):
-                raise e
+                raise
             else:
                 raise TencentCloudSDKException(e.message, e.message)
 
@@ -296,7 +447,7 @@ class CbsClient(AbstractClient):
                 raise TencentCloudSDKException(code, message, reqid)
         except Exception as e:
             if isinstance(e, TencentCloudSDKException):
-                raise e
+                raise
             else:
                 raise TencentCloudSDKException(e.message, e.message)
 
@@ -326,7 +477,7 @@ class CbsClient(AbstractClient):
                 raise TencentCloudSDKException(code, message, reqid)
         except Exception as e:
             if isinstance(e, TencentCloudSDKException):
-                raise e
+                raise
             else:
                 raise TencentCloudSDKException(e.message, e.message)
 
@@ -357,7 +508,7 @@ class CbsClient(AbstractClient):
                 raise TencentCloudSDKException(code, message, reqid)
         except Exception as e:
             if isinstance(e, TencentCloudSDKException):
-                raise e
+                raise
             else:
                 raise TencentCloudSDKException(e.message, e.message)
 
@@ -388,7 +539,7 @@ class CbsClient(AbstractClient):
                 raise TencentCloudSDKException(code, message, reqid)
         except Exception as e:
             if isinstance(e, TencentCloudSDKException):
-                raise e
+                raise
             else:
                 raise TencentCloudSDKException(e.message, e.message)
 
@@ -418,7 +569,7 @@ class CbsClient(AbstractClient):
                 raise TencentCloudSDKException(code, message, reqid)
         except Exception as e:
             if isinstance(e, TencentCloudSDKException):
-                raise e
+                raise
             else:
                 raise TencentCloudSDKException(e.message, e.message)
 
@@ -450,7 +601,7 @@ class CbsClient(AbstractClient):
                 raise TencentCloudSDKException(code, message, reqid)
         except Exception as e:
             if isinstance(e, TencentCloudSDKException):
-                raise e
+                raise
             else:
                 raise TencentCloudSDKException(e.message, e.message)
 
@@ -480,15 +631,13 @@ class CbsClient(AbstractClient):
                 raise TencentCloudSDKException(code, message, reqid)
         except Exception as e:
             if isinstance(e, TencentCloudSDKException):
-                raise e
+                raise
             else:
                 raise TencentCloudSDKException(e.message, e.message)
 
 
     def ModifyDiskAttributes(self, request):
-        """本接口（ModifyDiskAttributes）用于修改云硬盘属性。
-
-        * 只支持修改弹性云盘的项目ID。随云主机创建的云硬盘项目ID与云主机联动。可以通过[DescribeDisks](/document/product/362/16315)接口查询，见输出参数中Portable字段解释。
+        """* 只支持修改弹性云盘的项目ID。随云主机创建的云硬盘项目ID与云主机联动。可以通过[DescribeDisks](/document/product/362/16315)接口查询，见输出参数中Portable字段解释。
         * “云硬盘名称”仅为方便用户自己管理之用，腾讯云并不以此名称作为提交工单或是进行云盘管理操作的依据。
         * 支持批量操作，如果传入多个云盘ID，则所有云盘修改为同一属性。如果存在不允许操作的云盘，则操作不执行，以特定错误码返回。
 
@@ -512,7 +661,7 @@ class CbsClient(AbstractClient):
                 raise TencentCloudSDKException(code, message, reqid)
         except Exception as e:
             if isinstance(e, TencentCloudSDKException):
-                raise e
+                raise
             else:
                 raise TencentCloudSDKException(e.message, e.message)
 
@@ -540,7 +689,7 @@ class CbsClient(AbstractClient):
                 raise TencentCloudSDKException(code, message, reqid)
         except Exception as e:
             if isinstance(e, TencentCloudSDKException):
-                raise e
+                raise
             else:
                 raise TencentCloudSDKException(e.message, e.message)
 
@@ -571,7 +720,7 @@ class CbsClient(AbstractClient):
                 raise TencentCloudSDKException(code, message, reqid)
         except Exception as e:
             if isinstance(e, TencentCloudSDKException):
-                raise e
+                raise
             else:
                 raise TencentCloudSDKException(e.message, e.message)
 
@@ -581,7 +730,6 @@ class CbsClient(AbstractClient):
 
         * 只支持预付费的云硬盘。云硬盘类型可以通过[DescribeDisks](/document/product/362/16315)接口查询，见输出参数中DiskChargeType字段解释。
         * 支持与挂载实例一起续费的场景，需要在[DiskChargePrepaid](/document/product/362/15669#DiskChargePrepaid)参数中指定CurInstanceDeadline，此时会按对齐到子机续费后的到期时间来续费。
-        * 续费时请确保账户余额充足。可通过[DescribeAccountBalance](/document/product/378/4397)接口查询账户余额。
 
         :param request: 调用RenewDisk所需参数的结构体。
         :type request: :class:`tencentcloud.cbs.v20170312.models.RenewDiskRequest`
@@ -603,7 +751,7 @@ class CbsClient(AbstractClient):
                 raise TencentCloudSDKException(code, message, reqid)
         except Exception as e:
             if isinstance(e, TencentCloudSDKException):
-                raise e
+                raise
             else:
                 raise TencentCloudSDKException(e.message, e.message)
 
@@ -634,7 +782,7 @@ class CbsClient(AbstractClient):
                 raise TencentCloudSDKException(code, message, reqid)
         except Exception as e:
             if isinstance(e, TencentCloudSDKException):
-                raise e
+                raise
             else:
                 raise TencentCloudSDKException(e.message, e.message)
 
@@ -666,6 +814,37 @@ class CbsClient(AbstractClient):
                 raise TencentCloudSDKException(code, message, reqid)
         except Exception as e:
             if isinstance(e, TencentCloudSDKException):
-                raise e
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def UnbindAutoSnapshotPolicy(self, request):
+        """本接口（UnbindAutoSnapshotPolicy）用于解除云硬盘绑定的定期快照策略。
+
+        * 支持批量操作，可一次解除多个云盘与同一定期快照策略的绑定。
+        * 如果传入的云盘未绑定到当前定期快照策略，接口将自动跳过，仅解绑与当前定期快照策略绑定的云盘。
+
+        :param request: 调用UnbindAutoSnapshotPolicy所需参数的结构体。
+        :type request: :class:`tencentcloud.cbs.v20170312.models.UnbindAutoSnapshotPolicyRequest`
+        :rtype: :class:`tencentcloud.cbs.v20170312.models.UnbindAutoSnapshotPolicyResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("UnbindAutoSnapshotPolicy", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.UnbindAutoSnapshotPolicyResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
             else:
                 raise TencentCloudSDKException(e.message, e.message)

@@ -45,6 +45,10 @@ class AgentAuditedClient(AbstractModel):
         :type ThisMonthAmt: int
         :param HasOverdueBill: 是否欠费,0：不欠费；1：欠费
         :type HasOverdueBill: int
+        :param ClientType: 客户类型：可以为new(新拓)/assign(指定)/old(存量)/空
+        :type ClientType: str
+        :param ProjectType: 项目类型：可以为self(自拓项目)/platform(合作项目)/repeat(复算项目  )/空
+        :type ProjectType: str
         """
         self.Uin = None
         self.ClientUin = None
@@ -57,6 +61,8 @@ class AgentAuditedClient(AbstractModel):
         self.LastMonthAmt = None
         self.ThisMonthAmt = None
         self.HasOverdueBill = None
+        self.ClientType = None
+        self.ProjectType = None
 
 
     def _deserialize(self, params):
@@ -71,6 +77,8 @@ class AgentAuditedClient(AbstractModel):
         self.LastMonthAmt = params.get("LastMonthAmt")
         self.ThisMonthAmt = params.get("ThisMonthAmt")
         self.HasOverdueBill = params.get("HasOverdueBill")
+        self.ClientType = params.get("ClientType")
+        self.ProjectType = params.get("ProjectType")
 
 
 class AgentBillElem(AbstractModel):
@@ -100,6 +108,12 @@ class AgentBillElem(AbstractModel):
         :type Amt: int
         :param PayerMode: agentpay：代付；selfpay：自付
         :type PayerMode: str
+        :param ClientType: 客户类型：可以为new(新拓)/assign(指定)/old(存量)/空
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ClientType: str
+        :param ProjectType: 项目类型：可以为self(自拓项目)/platform(合作项目)/repeat(复算项目  )/空
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ProjectType: str
         """
         self.Uin = None
         self.OrderId = None
@@ -111,6 +125,8 @@ class AgentBillElem(AbstractModel):
         self.SettleMonth = None
         self.Amt = None
         self.PayerMode = None
+        self.ClientType = None
+        self.ProjectType = None
 
 
     def _deserialize(self, params):
@@ -124,6 +140,8 @@ class AgentBillElem(AbstractModel):
         self.SettleMonth = params.get("SettleMonth")
         self.Amt = params.get("Amt")
         self.PayerMode = params.get("PayerMode")
+        self.ClientType = params.get("ClientType")
+        self.ProjectType = params.get("ProjectType")
 
 
 class AgentClientElem(AbstractModel):
@@ -334,6 +352,10 @@ class DescribeAgentAuditedClientsRequest(AbstractModel):
         :type Offset: int
         :param Limit: 限制数目
         :type Limit: int
+        :param ClientType: 客户类型：可以为new(新拓)/assign(指定)/old(存量)/空
+        :type ClientType: str
+        :param ProjectType: 项目类型：可以为self(自拓项目)/platform(合作项目)/repeat(复算项目  )/空
+        :type ProjectType: str
         """
         self.ClientUin = None
         self.ClientName = None
@@ -344,6 +366,8 @@ class DescribeAgentAuditedClientsRequest(AbstractModel):
         self.ClientRemark = None
         self.Offset = None
         self.Limit = None
+        self.ClientType = None
+        self.ProjectType = None
 
 
     def _deserialize(self, params):
@@ -356,6 +380,8 @@ class DescribeAgentAuditedClientsRequest(AbstractModel):
         self.ClientRemark = params.get("ClientRemark")
         self.Offset = params.get("Offset")
         self.Limit = params.get("Limit")
+        self.ClientType = params.get("ClientType")
+        self.ProjectType = params.get("ProjectType")
 
 
 class DescribeAgentAuditedClientsResponse(AbstractModel):

@@ -25,29 +25,29 @@ class CreateJobRequest(AbstractModel):
         """
         :param Name: 任务名称
         :type Name: str
-        :param Cluster: 运行任务的集群
+        :param Cluster: 运行任务的集群，详见 [使用集群](https://cloud.tencent.com/document/product/851/17317)
         :type Cluster: str
-        :param RuntimeVersion: 运行任务的环境
+        :param RuntimeVersion: 运行任务的环境，详见 [运行环境](https://cloud.tencent.com/document/product/851/17320)
         :type RuntimeVersion: str
-        :param PackageDir: 挂载的路径，支持nfs,cos(cos只在tia运行环境中支持)
+        :param PackageDir: 挂载的路径，支持 NFS，[CFS](https://cloud.tencent.com/product/cfs) 和 [COS](https://cloud.tencent.com/product/cos)，其中 COS 只在 [TI-A 定制环境](https://cloud.tencent.com/document/product/851/17320#ti-a-.E5.AE.9A.E5.88.B6.E7.8E.AF.E5.A2.83) 中支持
         :type PackageDir: list of str
         :param Command: 任务启动命令
         :type Command: list of str
         :param Args: 任务启动参数
         :type Args: list of str
-        :param ScaleTier: 运行任务的配置信息
+        :param ScaleTier: 运行任务的配置信息，详见 [训练规模](https://cloud.tencent.com/document/product/851/17319)
         :type ScaleTier: str
-        :param MasterType: （ScaleTier为Custom时）master机器类型
+        :param MasterType: Master 机器类型，ScaleTier 取值为 `CUSTOM` 时必填，详见 [训练规模](https://cloud.tencent.com/document/product/851/17319)
         :type MasterType: str
-        :param WorkerType: （ScaleTier为Custom时）worker机器类型
+        :param WorkerType: Worker 机器类型，ScaleTier 取值为 `CUSTOM` 时必填，详见 [训练规模](https://cloud.tencent.com/document/product/851/17319)
         :type WorkerType: str
-        :param ParameterServerType: （ScaleTier为Custom时）parameter server机器类型
+        :param ParameterServerType: Parameter server 机器类型，ScaleTier 取值为 `CUSTOM` 时必填,详见 [训练规模](https://cloud.tencent.com/document/product/851/17319)
         :type ParameterServerType: str
-        :param WorkerCount: （ScaleTier为Custom时）worker机器数量
+        :param WorkerCount: Worker 机器数量，ScaleTier 取值为 `CUSTOM` 时必填,详见 [训练规模](https://cloud.tencent.com/document/product/851/17319)
         :type WorkerCount: int
-        :param ParameterServerCount: （ScaleTier为Custom时）parameter server机器数量
+        :param ParameterServerCount: Parameter server 机器数量，ScaleTier 取值为 `CUSTOM` 时必填,详见 [训练规模](https://cloud.tencent.com/document/product/851/17319)
         :type ParameterServerCount: int
-        :param Debug: 启动debug mode，默认为false
+        :param Debug: 启动 debug 模式，默认为 false
         :type Debug: bool
         :param RuntimeConf: 运行任务的其他配置信息
         :type RuntimeConf: list of str
@@ -94,7 +94,7 @@ class CreateJobResponse(AbstractModel):
         """
         :param Job: 训练任务信息
         :type Job: :class:`tencentcloud.tia.v20180226.models.Job`
-        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.Job = None
@@ -117,21 +117,21 @@ class CreateModelRequest(AbstractModel):
         """
         :param Name: 模型名称
         :type Name: str
-        :param Model: 要部署模型的路径名
+        :param Model: 要部署的模型文件路径名
         :type Model: str
         :param Description: 关于模型的描述
         :type Description: str
-        :param Cluster: 指定集群的名称（集群模式下必填）
+        :param Cluster: 部署目标集群的名称，`集群模式` 必填
         :type Cluster: str
-        :param RuntimeVersion: 运行环境镜像的标签
+        :param RuntimeVersion: 运行环境镜像的标签，详见 [Serving 环境](https://cloud.tencent.com/document/product/851/17320#serving-.E7.8E.AF.E5.A2.83)
         :type RuntimeVersion: str
-        :param Replicas: 要部署的模型副本数目（集群模式下选填）
+        :param Replicas: 要部署的模型副本数目，`集群模式` 选填
         :type Replicas: int
-        :param Expose: 暴露外网或内网，默认暴露外网（集群模式下选填）
+        :param Expose: 暴露外网或内网，默认暴露外网，`集群模式` 选填
         :type Expose: str
-        :param ServType: 部署模式（无服务器函数模式/集群模式）
+        :param ServType: 部署模式，取值 `serverless` 即为 `无服务器模式`，否则为 `集群模式` 下服务的运行规模，形如 `2U4G1P`，详见 [自定义的训练规模](https://cloud.tencent.com/document/product/851/17319#.E8.87.AA.E5.AE.9A.E4.B9.89.E7.9A.84.E8.AE.AD.E7.BB.83.E8.A7.84.E6.A8.A1)
         :type ServType: str
-        :param RuntimeConf: 部署模型的其他配置信息
+        :param RuntimeConf: `无服务器模式` 可选的其他配置信息，详见 [利用无服务器函数部署](https://cloud.tencent.com/document/product/851/17049#.E5.88.A9.E7.94.A8.E6.97.A0.E6.9C.8D.E5.8A.A1.E5.99.A8.E5.87.BD.E6.95.B0.E9.83.A8.E7.BD.B2)
         :type RuntimeConf: list of str
         """
         self.Name = None
@@ -166,7 +166,7 @@ class CreateModelResponse(AbstractModel):
         """
         :param Model: 模型的详细信息
         :type Model: :class:`tencentcloud.tia.v20180226.models.Model`
-        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.Model = None
@@ -208,7 +208,7 @@ class DeleteJobResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.RequestId = None
@@ -227,9 +227,9 @@ class DeleteModelRequest(AbstractModel):
         """
         :param Name: 要删除的模型名称
         :type Name: str
-        :param Cluster: 要删除的模型所在的集群名称
+        :param Cluster: 要删除的模型所在的集群名称，`集群模式` 必填
         :type Cluster: str
-        :param ServType: 模型类型
+        :param ServType: 模型类型，取值 `serverless` 即为 `无服务器模式`，否则为 `集群模式`
         :type ServType: str
         """
         self.Name = None
@@ -250,7 +250,7 @@ class DeleteModelResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.RequestId = None
@@ -290,7 +290,7 @@ class DescribeJobResponse(AbstractModel):
         """
         :param Job: 训练任务信息
         :type Job: :class:`tencentcloud.tia.v20180226.models.Job`
-        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.Job = None
@@ -313,9 +313,9 @@ class DescribeModelRequest(AbstractModel):
         """
         :param Name: 模型名称
         :type Name: str
-        :param Cluster: 模型所在集群名称
+        :param Cluster: 模型所在集群名称，`集群模式` 必填
         :type Cluster: str
-        :param ServType: 模型类型
+        :param ServType: 模型类型，取值 `serverless` 即为 `无服务器模式`，否则为 `集群模式`
         :type ServType: str
         """
         self.Name = None
@@ -338,7 +338,7 @@ class DescribeModelResponse(AbstractModel):
         """
         :param Model: 模型信息
         :type Model: :class:`tencentcloud.tia.v20180226.models.Model`
-        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.Model = None
@@ -386,7 +386,7 @@ class InstallAgentResponse(AbstractModel):
         """
         :param TiaVersion: Agent版本, 用于私有集群的agent安装
         :type TiaVersion: str
-        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.TiaVersion = None
@@ -537,7 +537,7 @@ class ListJobsResponse(AbstractModel):
         """
         :param Jobs: 训练任务列表
         :type Jobs: list of Job
-        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.Jobs = None
@@ -561,13 +561,13 @@ class ListModelsRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Cluster: 部署模型的集群
+        :param Cluster: 部署模型的集群， `集群模式` 必填
         :type Cluster: str
-        :param Limit: 分页参数，返回数量
+        :param Limit: 分页参数，返回数量上限
         :type Limit: int
-        :param Offset: 分页参数，起始位置
+        :param Offset: 分页参数，分页起始位置
         :type Offset: int
-        :param ServType: 模型类型
+        :param ServType: 部署类型，取值 `serverless` 即为 `无服务器模式`，否则为 `集群模式`。
         :type ServType: str
         """
         self.Cluster = None
@@ -590,9 +590,9 @@ class ListModelsResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param Models: Model数组，用以显示所有模型的信息
+        :param Models: Model 数组，用以显示所有模型的信息
         :type Models: list of Model
-        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.Models = None
@@ -692,6 +692,12 @@ class Model(AbstractModel):
         :type Expose: str
         :param Replicas: 部署副本数量
         :type Replicas: int
+        :param Id: 模型Id
+        :type Id: str
+        :param Uin: 创建任务的Uin
+        :type Uin: str
+        :param DelTime: 模型删除时间，格式为：2006-01-02 15:04:05.999999999 -0700 MST
+        :type DelTime: str
         """
         self.Name = None
         self.Description = None
@@ -706,6 +712,9 @@ class Model(AbstractModel):
         self.ServType = None
         self.Expose = None
         self.Replicas = None
+        self.Id = None
+        self.Uin = None
+        self.DelTime = None
 
 
     def _deserialize(self, params):
@@ -722,6 +731,9 @@ class Model(AbstractModel):
         self.ServType = params.get("ServType")
         self.Expose = params.get("Expose")
         self.Replicas = params.get("Replicas")
+        self.Id = params.get("Id")
+        self.Uin = params.get("Uin")
+        self.DelTime = params.get("DelTime")
 
 
 class QueryLogsRequest(AbstractModel):
@@ -731,17 +743,17 @@ class QueryLogsRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param JobName: 任务名称
+        :param JobName: 任务的名称
         :type JobName: str
-        :param Cluster: 集群名称
+        :param Cluster: 任务所在集群的名称
         :type Cluster: str
-        :param StartTime: 查询日志的开始时间
+        :param StartTime: 查询日志的开始时间，格式：2019-01-01 00:00:00
         :type StartTime: str
-        :param EndTime: 查询日志的结束时间
+        :param EndTime: 查询日志的结束时间，格式：2019-01-01 00:00:00
         :type EndTime: str
-        :param Limit: 单次要返回的日志条数
+        :param Limit: 单次要返回的日志条数上限
         :type Limit: int
-        :param Context: 加载更多使用，透传上次返回的context值，获取后续的日志内容，使用context翻页最多能获取10000条日志
+        :param Context: 加载更多日志时使用，透传上次返回的 Context 值，获取后续的日志内容；使用 Context 翻页最多能获取 10000 条日志
         :type Context: str
         """
         self.JobName = None
@@ -774,7 +786,7 @@ class QueryLogsResponse(AbstractModel):
         :type Logs: list of Log
         :param Listover: 是否已经返回所有符合条件的日志
         :type Listover: bool
-        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.Context = None

@@ -88,10 +88,13 @@ class Item(AbstractModel):
         :type ItemString: str
         :param ItemCoord: 识别的算式在图片上的位置信息
         :type ItemCoord: :class:`tencentcloud.hcm.v20181106.models.ItemCoord`
+        :param Answer: 推荐的答案
+        :type Answer: str
         """
         self.Item = None
         self.ItemString = None
         self.ItemCoord = None
+        self.Answer = None
 
 
     def _deserialize(self, params):
@@ -100,6 +103,7 @@ class Item(AbstractModel):
         if params.get("ItemCoord") is not None:
             self.ItemCoord = ItemCoord()
             self.ItemCoord._deserialize(params.get("ItemCoord"))
+        self.Answer = params.get("Answer")
 
 
 class ItemCoord(AbstractModel):

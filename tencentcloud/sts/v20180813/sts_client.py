@@ -48,13 +48,13 @@ class StsClient(AbstractClient):
                 raise TencentCloudSDKException(code, message, reqid)
         except Exception as e:
             if isinstance(e, TencentCloudSDKException):
-                raise e
+                raise
             else:
                 raise TencentCloudSDKException(e.message, e.message)
 
 
     def GetFederationToken(self, request):
-        """获取临时证书
+        """获取联合身份临时访问凭证
 
         :param request: 调用GetFederationToken所需参数的结构体。
         :type request: :class:`tencentcloud.sts.v20180813.models.GetFederationTokenRequest`
@@ -76,6 +76,6 @@ class StsClient(AbstractClient):
                 raise TencentCloudSDKException(code, message, reqid)
         except Exception as e:
             if isinstance(e, TencentCloudSDKException):
-                raise e
+                raise
             else:
                 raise TencentCloudSDKException(e.message, e.message)

@@ -32,12 +32,16 @@ class Backend(AbstractModel):
         :param Weight: 后端云服务器的转发权重，取值范围：0~100，默认为 10。
         :type Weight: int
         :param PublicIpAddresses: 云服务器的外网 IP
+注意：此字段可能返回 null，表示取不到有效值。
         :type PublicIpAddresses: list of str
         :param PrivateIpAddresses: 云服务器的内网 IP
+注意：此字段可能返回 null，表示取不到有效值。
         :type PrivateIpAddresses: list of str
         :param InstanceName: 云服务器实例名称
+注意：此字段可能返回 null，表示取不到有效值。
         :type InstanceName: str
         :param RegisteredTime: 云服务器被绑定到监听器的时间
+注意：此字段可能返回 null，表示取不到有效值。
         :type RegisteredTime: str
         """
         self.Type = None
@@ -118,6 +122,7 @@ class CertificateOutput(AbstractModel):
         :param CertId: 服务端证书的 ID。
         :type CertId: str
         :param CertCaId: 客户端证书的 ID。
+注意：此字段可能返回 null，表示取不到有效值。
         :type CertCaId: str
         """
         self.SSLMode = None
@@ -259,6 +264,7 @@ class ClassicalLoadBalancerInfo(AbstractModel):
         :param InstanceId: 后端实例ID
         :type InstanceId: str
         :param LoadBalancerIds: 负载均衡实例ID列表
+注意：此字段可能返回 null，表示取不到有效值。
         :type LoadBalancerIds: list of str
         """
         self.InstanceId = None
@@ -284,13 +290,17 @@ class ClassicalTarget(AbstractModel):
         :param Weight: 后端云服务器的转发权重，取值范围：0~100，默认为 10。
         :type Weight: int
         :param PublicIpAddresses: 云服务器的外网 IP
+注意：此字段可能返回 null，表示取不到有效值。
         :type PublicIpAddresses: list of str
         :param PrivateIpAddresses: 云服务器的内网 IP
+注意：此字段可能返回 null，表示取不到有效值。
         :type PrivateIpAddresses: list of str
         :param InstanceName: 云服务器实例名称
+注意：此字段可能返回 null，表示取不到有效值。
         :type InstanceName: str
         :param RunFlag: 云服务器状态
 1：故障，2：运行中，3：创建中，4：已关机，5：已退还，6：退还中， 7：重启中，8：开机中，9：关机中，10：密码重置中，11：格式化中，12：镜像制作中，13：带宽设置中，14：重装系统中，19：升级中，21：热迁移中
+注意：此字段可能返回 null，表示取不到有效值。
         :type RunFlag: int
         """
         self.Type = None
@@ -344,7 +354,7 @@ class CreateListenerRequest(AbstractModel):
         :type LoadBalancerId: str
         :param Ports: 要将监听器创建到哪些端口，每个端口对应一个新的监听器
         :type Ports: list of int
-        :param Protocol: 监听器协议：HTTP | HTTPS | TCP | TCP_SSL
+        :param Protocol: 监听器协议： TCP | UDP | HTTP | HTTPS | TCP_SSL（TCP_SSL 正在内测中，如需使用请通过工单申请）
         :type Protocol: str
         :param ListenerNames: 要创建的监听器名称列表，名称与Ports数组按序一一对应，如不需立即命名，则无需提供此参数
         :type ListenerNames: list of str
@@ -806,6 +816,7 @@ class DescribeClassicalLBHealthStatusResponse(AbstractModel):
     def __init__(self):
         """
         :param HealthList: 后端健康状态列表
+注意：此字段可能返回 null，表示取不到有效值。
         :type HealthList: list of ClassicalHealth
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -865,6 +876,7 @@ class DescribeClassicalLBListenersResponse(AbstractModel):
     def __init__(self):
         """
         :param Listeners: 监听器列表
+注意：此字段可能返回 null，表示取不到有效值。
         :type Listeners: list of ClassicalListener
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -908,6 +920,7 @@ class DescribeClassicalLBTargetsResponse(AbstractModel):
     def __init__(self):
         """
         :param Targets: 后端服务列表
+注意：此字段可能返回 null，表示取不到有效值。
         :type Targets: list of ClassicalTarget
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -1188,21 +1201,29 @@ class HealthCheck(AbstractModel):
         :param HealthSwitch: 是否开启健康检查：1（开启）、0（关闭）。
         :type HealthSwitch: int
         :param TimeOut: 健康检查的响应超时时间，可选值：2~60，默认值：2，单位：秒。响应超时时间要小于检查间隔时间。
+注意：此字段可能返回 null，表示取不到有效值。
         :type TimeOut: int
         :param IntervalTime: 健康检查探测间隔时间，默认值：5，可选值：5~300，单位：秒。
+注意：此字段可能返回 null，表示取不到有效值。
         :type IntervalTime: int
         :param HealthNum: 健康阈值，默认值：3，表示当连续探测三次健康则表示该转发正常，可选值：2~10，单位：次。
+注意：此字段可能返回 null，表示取不到有效值。
         :type HealthNum: int
         :param UnHealthNum: 不健康阈值，默认值：3，表示当连续探测三次不健康则表示该转发异常，可选值：2~10，单位：次。
+注意：此字段可能返回 null，表示取不到有效值。
         :type UnHealthNum: int
         :param HttpCode: 健康检查状态码（仅适用于HTTP/HTTPS转发规则）。可选值：1~31，默认 31。
 1 表示探测后返回值 1xx 表示健康，2 表示返回 2xx 表示健康，4 表示返回 3xx 表示健康，8 表示返回 4xx 表示健康，16 表示返回 5xx 表示健康。若希望多种码都表示健康，则将相应的值相加。
+注意：此字段可能返回 null，表示取不到有效值。
         :type HttpCode: int
         :param HttpCheckPath: 健康检查路径（仅适用于HTTP/HTTPS转发规则）。
+注意：此字段可能返回 null，表示取不到有效值。
         :type HttpCheckPath: str
         :param HttpCheckDomain: 健康检查域名（仅适用于HTTP/HTTPS转发规则）。
+注意：此字段可能返回 null，表示取不到有效值。
         :type HttpCheckDomain: str
         :param HttpCheckMethod: 健康检查方法（仅适用于HTTP/HTTPS转发规则），取值为HEAD或GET。
+注意：此字段可能返回 null，表示取不到有效值。
         :type HttpCheckMethod: str
         """
         self.HealthSwitch = None
@@ -1242,18 +1263,25 @@ class Listener(AbstractModel):
         :param Port: 监听器端口
         :type Port: int
         :param Certificate: 监听器绑定的证书信息
+注意：此字段可能返回 null，表示取不到有效值。
         :type Certificate: :class:`tencentcloud.clb.v20180317.models.CertificateOutput`
         :param HealthCheck: 监听器的健康检查信息
+注意：此字段可能返回 null，表示取不到有效值。
         :type HealthCheck: :class:`tencentcloud.clb.v20180317.models.HealthCheck`
         :param Scheduler: 请求调度方式
+注意：此字段可能返回 null，表示取不到有效值。
         :type Scheduler: str
         :param SessionExpireTime: 会话保持时间
+注意：此字段可能返回 null，表示取不到有效值。
         :type SessionExpireTime: int
         :param SniSwitch: 是否开启SNI特性（本参数仅对于HTTPS监听器有意义）
+注意：此字段可能返回 null，表示取不到有效值。
         :type SniSwitch: int
         :param Rules: 监听器下的全部转发规则（本参数仅对于HTTP/HTTPS监听器有意义）
+注意：此字段可能返回 null，表示取不到有效值。
         :type Rules: list of RuleOutput
         :param ListenerName: 监听器的名称
+注意：此字段可能返回 null，表示取不到有效值。
         :type ListenerName: str
         """
         self.ListenerId = None
@@ -1304,8 +1332,10 @@ class ListenerBackend(AbstractModel):
         :param Port: 监听器的端口
         :type Port: int
         :param Rules: 监听器下的规则信息（仅适用于HTTP/HTTPS监听器）
+注意：此字段可能返回 null，表示取不到有效值。
         :type Rules: list of RuleTargets
         :param Targets: 监听器上注册的机器列表（仅适用于TCP/UDP/TCP_SSL监听器）
+注意：此字段可能返回 null，表示取不到有效值。
         :type Targets: list of Backend
         """
         self.ListenerId = None
@@ -1350,29 +1380,40 @@ OPEN：公网属性， INTERNAL：内网属性。
         :param Forward: 应用型负载均衡标识，1：应用型负载均衡，0：传统型的负载均衡。
         :type Forward: int
         :param Domain: 负载均衡实例的域名，内网类型负载均衡以及应用型负载均衡实例不提供该字段
+注意：此字段可能返回 null，表示取不到有效值。
         :type Domain: str
         :param LoadBalancerVips: 负载均衡实例的 VIP 列表。
+注意：此字段可能返回 null，表示取不到有效值。
         :type LoadBalancerVips: list of str
         :param Status: 负载均衡实例的状态，包括
 0：创建中，1：正常运行。
+注意：此字段可能返回 null，表示取不到有效值。
         :type Status: int
         :param CreateTime: 负载均衡实例的创建时间。
+注意：此字段可能返回 null，表示取不到有效值。
         :type CreateTime: str
         :param StatusTime: 负载均衡实例的上次状态转换时间。
+注意：此字段可能返回 null，表示取不到有效值。
         :type StatusTime: str
         :param ProjectId: 负载均衡实例所属的项目 ID， 0 表示默认项目。
         :type ProjectId: int
         :param VpcId: 私有网络的 ID
+注意：此字段可能返回 null，表示取不到有效值。
         :type VpcId: str
         :param OpenBgp: 高防 LB 的标识，1：高防负载均衡 0：非高防负载均衡。
+注意：此字段可能返回 null，表示取不到有效值。
         :type OpenBgp: int
         :param Snat: 在 2016 年 12 月份之前的传统型内网负载均衡都是开启了 snat 的。
+注意：此字段可能返回 null，表示取不到有效值。
         :type Snat: bool
         :param Isolation: 0：表示未被隔离，1：表示被隔离。
+注意：此字段可能返回 null，表示取不到有效值。
         :type Isolation: int
         :param Log: 用户开启日志的信息，日志只有公网属性创建了 HTTP 、HTTPS 监听器的负载均衡才会有日志。
+注意：此字段可能返回 null，表示取不到有效值。
         :type Log: str
         :param SubnetId: 负载均衡实例所在的子网（仅对内网VPC型LB有意义）
+注意：此字段可能返回 null，表示取不到有效值。
         :type SubnetId: str
         """
         self.LoadBalancerId = None
@@ -1898,14 +1939,18 @@ class RuleOutput(AbstractModel):
         :param LocationId: 转发规则的 ID，作为输入时无需此字段
         :type LocationId: str
         :param Domain: 转发规则的域名。
+注意：此字段可能返回 null，表示取不到有效值。
         :type Domain: str
         :param Url: 转发规则的路径。
+注意：此字段可能返回 null，表示取不到有效值。
         :type Url: str
         :param SessionExpireTime: 会话保持时间
         :type SessionExpireTime: int
         :param HealthCheck: 健康检查信息
+注意：此字段可能返回 null，表示取不到有效值。
         :type HealthCheck: :class:`tencentcloud.clb.v20180317.models.HealthCheck`
         :param Certificate: 证书信息
+注意：此字段可能返回 null，表示取不到有效值。
         :type Certificate: :class:`tencentcloud.clb.v20180317.models.CertificateOutput`
         :param Scheduler: 规则的请求转发方式
         :type Scheduler: str
@@ -1947,6 +1992,7 @@ class RuleTargets(AbstractModel):
         :param Url: 转发规则的路径。
         :type Url: str
         :param Targets: 后端机器的信息
+注意：此字段可能返回 null，表示取不到有效值。
         :type Targets: list of Backend
         """
         self.LocationId = None
@@ -1975,10 +2021,13 @@ class Target(AbstractModel):
     def __init__(self):
         """
         :param InstanceId: 云服务器的唯一 ID，可通过 DescribeInstances 接口返回字段中的 unInstanceId 字段获取
+注意：此字段可能返回 null，表示取不到有效值。
         :type InstanceId: str
         :param Port: 后端云服务器监听端口
+注意：此字段可能返回 null，表示取不到有效值。
         :type Port: int
         :param Type: 转发目标的类型，目前仅可取值为 CVM
+注意：此字段可能返回 null，表示取不到有效值。
         :type Type: str
         :param Weight: 后端云服务器的转发权重，取值范围：0~100，默认为 10。
         :type Weight: int

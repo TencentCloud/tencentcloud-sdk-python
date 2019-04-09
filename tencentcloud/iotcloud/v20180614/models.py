@@ -625,7 +625,7 @@ class DescribeDeviceResponse(AbstractModel):
         :type DeviceName: str
         :param Online: 设备是否在线，0不在线，1在线
         :type Online: int
-        :param LoginTime: 设备登陆时间
+        :param LoginTime: 设备登录时间
         :type LoginTime: int
         :param Version: 设备固件版本
         :type Version: str
@@ -1140,6 +1140,18 @@ class DeviceInfo(AbstractModel):
         :type LoraDevEui: str
         :param LoraMoteType: LoRa设备的Mote type
         :type LoraMoteType: int
+        :param FirstOnlineTime: 首次上线时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FirstOnlineTime: int
+        :param LastOfflineTime: 最近下线时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LastOfflineTime: int
+        :param CreateTime: 设备创建时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CreateTime: int
+        :param LogLevel: 设备日志级别
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LogLevel: int
         """
         self.DeviceName = None
         self.Online = None
@@ -1156,6 +1168,10 @@ class DeviceInfo(AbstractModel):
         self.LastUpdateTime = None
         self.LoraDevEui = None
         self.LoraMoteType = None
+        self.FirstOnlineTime = None
+        self.LastOfflineTime = None
+        self.CreateTime = None
+        self.LogLevel = None
 
 
     def _deserialize(self, params):
@@ -1179,6 +1195,10 @@ class DeviceInfo(AbstractModel):
         self.LastUpdateTime = params.get("LastUpdateTime")
         self.LoraDevEui = params.get("LoraDevEui")
         self.LoraMoteType = params.get("LoraMoteType")
+        self.FirstOnlineTime = params.get("FirstOnlineTime")
+        self.LastOfflineTime = params.get("LastOfflineTime")
+        self.CreateTime = params.get("CreateTime")
+        self.LogLevel = params.get("LogLevel")
 
 
 class DeviceTag(AbstractModel):
@@ -1391,11 +1411,12 @@ class ProductProperties(AbstractModel):
         """
         :param ProductDescription: 产品描述
         :type ProductDescription: str
-        :param EncryptionType: 加密类型，1表示非对称加密，2表示对称加密。如不填写，默认值是1
+        :param EncryptionType: 加密类型，1表示证书认证，2表示签名认证。如不填写，默认值是1
         :type EncryptionType: str
         :param Region: 产品所属区域，目前只支持广州（gz）
         :type Region: str
-        :param ProductType: 产品类型，0表示正常设备，2表示NB-IoT设备，默认值是0
+        :param ProductType: 产品类型，各个类型值代表的节点-类型如下：
+0 普通产品，2 NB-IoT产品，4 LoRa产品，3 LoRa网关产品，5 普通网关产品   默认值是0
         :type ProductType: int
         :param Format: 数据格式，取值为json或者custom，默认值是json
         :type Format: str
@@ -1407,6 +1428,8 @@ class ProductProperties(AbstractModel):
         :type ModelId: str
         :param ModelName: 产品绑定的物模型名称
         :type ModelName: str
+        :param ProductKey: 产品密钥，suite产品才会有
+        :type ProductKey: str
         """
         self.ProductDescription = None
         self.EncryptionType = None
@@ -1417,6 +1440,7 @@ class ProductProperties(AbstractModel):
         self.Appeui = None
         self.ModelId = None
         self.ModelName = None
+        self.ProductKey = None
 
 
     def _deserialize(self, params):
@@ -1429,6 +1453,7 @@ class ProductProperties(AbstractModel):
         self.Appeui = params.get("Appeui")
         self.ModelId = params.get("ModelId")
         self.ModelName = params.get("ModelName")
+        self.ProductKey = params.get("ProductKey")
 
 
 class PublishMessageRequest(AbstractModel):
@@ -1606,14 +1631,14 @@ class TopicRulePayload(AbstractModel):
 
     def __init__(self):
         """
-        :param Sql: 规则的SQL语句，base64编码
+        :param Sql: 规则的SQL语句，如： SELECT * FROM 'pid/dname/event'，然后对其进行base64编码，得：U0VMRUNUICogRlJPTSAncGlkL2RuYW1lL2V2ZW50Jw==
         :type Sql: str
         :param Actions: 行为的JSON字符串，大部分种类举例如下：
 [{"republish":{"topic":"TEST/test"}},{"forward":{"api":"http://127.0.0.1:8080"}},{"ckafka":{"instance":{"id":"ckafka-test","name":""},"topic":{"id":"topic-test","name":"test"},"region":"gz"}},{"cmqqueue":{"queuename":"queue-test-TEST","region":"gz"}},{"mysql":{"instanceid":"cdb-test","region":"gz","username":"test","userpwd":"*****","dbname":"d_mqtt","tablename":"t_test","fieldpairs":[{"field":"test","value":"test"}],"devicetype":"CUSTOM"}}]
         :type Actions: str
         :param Description: 规则描述
         :type Description: str
-        :param RuleDisabled: 规则不生效
+        :param RuleDisabled: 是否禁用规则
         :type RuleDisabled: bool
         """
         self.Sql = None

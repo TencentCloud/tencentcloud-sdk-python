@@ -48,7 +48,7 @@ class BillingClient(AbstractClient):
                 raise TencentCloudSDKException(code, message, reqid)
         except Exception as e:
             if isinstance(e, TencentCloudSDKException):
-                raise e
+                raise
             else:
                 raise TencentCloudSDKException(e.message, e.message)
 
@@ -76,7 +76,7 @@ class BillingClient(AbstractClient):
                 raise TencentCloudSDKException(code, message, reqid)
         except Exception as e:
             if isinstance(e, TencentCloudSDKException):
-                raise e
+                raise
             else:
                 raise TencentCloudSDKException(e.message, e.message)
 
@@ -104,7 +104,7 @@ class BillingClient(AbstractClient):
                 raise TencentCloudSDKException(code, message, reqid)
         except Exception as e:
             if isinstance(e, TencentCloudSDKException):
-                raise e
+                raise
             else:
                 raise TencentCloudSDKException(e.message, e.message)
 
@@ -132,7 +132,35 @@ class BillingClient(AbstractClient):
                 raise TencentCloudSDKException(code, message, reqid)
         except Exception as e:
             if isinstance(e, TencentCloudSDKException):
-                raise e
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeDosageDetailByDate(self, request):
+        """按日期获取产品用量明细
+
+        :param request: 调用DescribeDosageDetailByDate所需参数的结构体。
+        :type request: :class:`tencentcloud.billing.v20180709.models.DescribeDosageDetailByDateRequest`
+        :rtype: :class:`tencentcloud.billing.v20180709.models.DescribeDosageDetailByDateResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeDosageDetailByDate", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeDosageDetailByDateResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
             else:
                 raise TencentCloudSDKException(e.message, e.message)
 
@@ -160,6 +188,6 @@ class BillingClient(AbstractClient):
                 raise TencentCloudSDKException(code, message, reqid)
         except Exception as e:
             if isinstance(e, TencentCloudSDKException):
-                raise e
+                raise
             else:
                 raise TencentCloudSDKException(e.message, e.message)

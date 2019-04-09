@@ -24,7 +24,12 @@ class AbstractModel(object):
         def dfs(obj):
             if isinstance(obj, AbstractModel):
                 d = vars(obj)
-                return {k[0].upper() + k[1:]: dfs(d[k]) for k in d if allow_none or dfs(d[k]) is not None}
+                ret = {}
+                for k in d:
+                    r = dfs(d[k])
+                    if allow_none or r is not None:
+                        ret[k[0].upper() + k[1:]] = r
+                return ret
             elif isinstance(obj, list):
                 return [dfs(o) for o in obj if allow_none or dfs(o) is not None]
             else:

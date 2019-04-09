@@ -88,7 +88,7 @@ class Cluster(AbstractModel):
         :param ClusterName: 集群名称
         :type ClusterName: str
         :param ClusterDescription: 集群描述
-        :type ClusterDescription: list of str
+        :type ClusterDescription: str
         :param ClusterVersion: 集群版本（默认值为1.10.5）
         :type ClusterVersion: str
         :param ClusterOs: 集群系统。centos7.2x86_64 或者 ubuntu16.04.1 LTSx86_64，默认取值为ubuntu16.04.1 LTSx86_64
@@ -97,6 +97,8 @@ class Cluster(AbstractModel):
         :type ClusterType: str
         :param ClusterNetworkSettings: 集群网络相关参数
         :type ClusterNetworkSettings: :class:`tencentcloud.tke.v20180525.models.ClusterNetworkSettings`
+        :param ClusterNodeNum: 集群当前node数量
+        :type ClusterNodeNum: int
         """
         self.ClusterId = None
         self.ClusterName = None
@@ -105,6 +107,7 @@ class Cluster(AbstractModel):
         self.ClusterOs = None
         self.ClusterType = None
         self.ClusterNetworkSettings = None
+        self.ClusterNodeNum = None
 
 
     def _deserialize(self, params):
@@ -117,6 +120,7 @@ class Cluster(AbstractModel):
         if params.get("ClusterNetworkSettings") is not None:
             self.ClusterNetworkSettings = ClusterNetworkSettings()
             self.ClusterNetworkSettings._deserialize(params.get("ClusterNetworkSettings"))
+        self.ClusterNodeNum = params.get("ClusterNodeNum")
 
 
 class ClusterNetworkSettings(AbstractModel):
@@ -134,8 +138,8 @@ class ClusterNetworkSettings(AbstractModel):
         :type MaxNodePodNum: int
         :param MaxClusterServiceNum: 集群最大的service数量(默认为256)
         :type MaxClusterServiceNum: int
-        :param IPVS: 是否启用IPVS(默认不开启)
-        :type IPVS: bool
+        :param Ipvs: 是否启用IPVS(默认不开启)
+        :type Ipvs: bool
         :param VpcId: 集群的VPCID（如果创建空集群，为必传值，否则自动设置为和集群的节点保持一致）
         :type VpcId: str
         """
@@ -143,7 +147,7 @@ class ClusterNetworkSettings(AbstractModel):
         self.IgnoreClusterCIDRConflict = None
         self.MaxNodePodNum = None
         self.MaxClusterServiceNum = None
-        self.IPVS = None
+        self.Ipvs = None
         self.VpcId = None
 
 
@@ -152,7 +156,7 @@ class ClusterNetworkSettings(AbstractModel):
         self.IgnoreClusterCIDRConflict = params.get("IgnoreClusterCIDRConflict")
         self.MaxNodePodNum = params.get("MaxNodePodNum")
         self.MaxClusterServiceNum = params.get("MaxClusterServiceNum")
-        self.IPVS = params.get("IPVS")
+        self.Ipvs = params.get("Ipvs")
         self.VpcId = params.get("VpcId")
 
 
@@ -271,16 +275,25 @@ class DescribeClustersRequest(AbstractModel):
         :type Offset: int
         :param Limit: 最大输出条数，默认20
         :type Limit: int
+        :param Filters: 过滤条件,当前只支持按照单个条件ClusterName进行过滤
+        :type Filters: list of Filter
         """
         self.ClusterIds = None
         self.Offset = None
         self.Limit = None
+        self.Filters = None
 
 
     def _deserialize(self, params):
         self.ClusterIds = params.get("ClusterIds")
         self.Offset = params.get("Offset")
         self.Limit = params.get("Limit")
+        if params.get("Filters") is not None:
+            self.Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self.Filters.append(obj)
 
 
 class DescribeClustersResponse(AbstractModel):
@@ -336,6 +349,27 @@ class EnhancedService(AbstractModel):
         if params.get("MonitorService") is not None:
             self.MonitorService = RunMonitorServiceEnabled()
             self.MonitorService._deserialize(params.get("MonitorService"))
+
+
+class Filter(AbstractModel):
+    """过滤器
+
+    """
+
+    def __init__(self):
+        """
+        :param Name: 属性名称, 若存在多个Filter时，Filter间的关系为逻辑与（AND）关系。
+        :type Name: str
+        :param Values: 属性值, 若同一个Filter存在多个Values，同一Filter下Values间的关系为逻辑或（OR）关系。
+        :type Values: list of str
+        """
+        self.Name = None
+        self.Values = None
+
+
+    def _deserialize(self, params):
+        self.Name = params.get("Name")
+        self.Values = params.get("Values")
 
 
 class Instance(AbstractModel):

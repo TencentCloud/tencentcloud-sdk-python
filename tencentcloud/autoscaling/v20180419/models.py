@@ -161,7 +161,7 @@ class AutoScalingGroup(AbstractModel):
         :type AutoScalingGroupId: str
         :param AutoScalingGroupName: 伸缩组名称
         :type AutoScalingGroupName: str
-        :param AutoScalingGroupStatus: 伸缩组状态
+        :param AutoScalingGroupStatus: 伸缩组当前状态。取值范围：<br><li>NORMAL：正常<br><li>CVM_ABNORMAL：启动配置异常<br><li>LB_ABNORMAL：负载均衡器异常<br><li>VPC_ABNORMAL：VPC网络异常<br><li>INSUFFICIENT_BALANCE：余额不足<br>
         :type AutoScalingGroupStatus: str
         :param CreatedTime: 创建时间，采用UTC标准计时
         :type CreatedTime: str
@@ -184,11 +184,11 @@ class AutoScalingGroup(AbstractModel):
         :param LoadBalancerIdSet: 传统型负载均衡器ID列表
         :type LoadBalancerIdSet: list of str
         :param MaxSize: 最大实例数
-        :type MaxSize: list of int non-negative
+        :type MaxSize: int
         :param MinSize: 最小实例数
-        :type MinSize: list of int non-negative
+        :type MinSize: int
         :param ProjectId: 项目ID
-        :type ProjectId: list of int non-negative
+        :type ProjectId: int
         :param SubnetIdSet: 子网ID列表
         :type SubnetIdSet: list of str
         :param TerminationPolicySet: 销毁策略
@@ -199,6 +199,8 @@ class AutoScalingGroup(AbstractModel):
         :type ZoneSet: list of str
         :param RetryPolicy: 重试策略
         :type RetryPolicy: str
+        :param InActivityStatus: 伸缩组是否处于伸缩活动中，`IN_ACTIVITY`表示处于伸缩活动中，`NOT_IN_ACTIVITY`表示不处于伸缩活动中。
+        :type InActivityStatus: str
         """
         self.AutoScalingGroupId = None
         self.AutoScalingGroupName = None
@@ -221,6 +223,7 @@ class AutoScalingGroup(AbstractModel):
         self.VpcId = None
         self.ZoneSet = None
         self.RetryPolicy = None
+        self.InActivityStatus = None
 
 
     def _deserialize(self, params):
@@ -250,6 +253,7 @@ class AutoScalingGroup(AbstractModel):
         self.VpcId = params.get("VpcId")
         self.ZoneSet = params.get("ZoneSet")
         self.RetryPolicy = params.get("RetryPolicy")
+        self.InActivityStatus = params.get("InActivityStatus")
 
 
 class AutoScalingGroupAbstract(AbstractModel):
@@ -271,6 +275,35 @@ class AutoScalingGroupAbstract(AbstractModel):
     def _deserialize(self, params):
         self.AutoScalingGroupId = params.get("AutoScalingGroupId")
         self.AutoScalingGroupName = params.get("AutoScalingGroupName")
+
+
+class AutoScalingNotification(AbstractModel):
+    """弹性伸缩事件通知
+
+    """
+
+    def __init__(self):
+        """
+        :param AutoScalingGroupId: 伸缩组ID。
+        :type AutoScalingGroupId: str
+        :param NotificationUserGroupIds: 用户组ID列表。
+        :type NotificationUserGroupIds: list of str
+        :param NotificationTypes: 通知事件列表。
+        :type NotificationTypes: list of str
+        :param AutoScalingNotificationId: 事件通知ID。
+        :type AutoScalingNotificationId: str
+        """
+        self.AutoScalingGroupId = None
+        self.NotificationUserGroupIds = None
+        self.NotificationTypes = None
+        self.AutoScalingNotificationId = None
+
+
+    def _deserialize(self, params):
+        self.AutoScalingGroupId = params.get("AutoScalingGroupId")
+        self.NotificationUserGroupIds = params.get("NotificationUserGroupIds")
+        self.NotificationTypes = params.get("NotificationTypes")
+        self.AutoScalingNotificationId = params.get("AutoScalingNotificationId")
 
 
 class CreateAutoScalingGroupRequest(AbstractModel):
@@ -499,6 +532,122 @@ class CreateLaunchConfigurationResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class CreateNotificationConfigurationRequest(AbstractModel):
+    """CreateNotificationConfiguration请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param AutoScalingGroupId: 伸缩组ID。
+        :type AutoScalingGroupId: str
+        :param NotificationTypes: 通知类型，即为需要订阅的通知类型集合，取值范围如下：
+<li>SCALE_OUT_SUCCESSFUL：扩容成功</li>
+<li>SCALE_OUT_FAILED：扩容失败</li>
+<li>SCALE_IN_SUCCESSFUL：缩容成功</li>
+<li>SCALE_IN_FAILED：缩容失败</li>
+<li>REPLACE_UNHEALTHY_INSTANCE_SUCCESSFUL：替换不健康子机成功</li>
+<li>REPLACE_UNHEALTHY_INSTANCE_FAILED：替换不健康子机失败</li>
+        :type NotificationTypes: list of str
+        :param NotificationUserGroupIds: 通知组ID，即为用户组ID集合，用户组ID可以通过[DescribeUserGroup](https://cloud.tencent.com/document/api/378/4404)查询。
+        :type NotificationUserGroupIds: list of str
+        """
+        self.AutoScalingGroupId = None
+        self.NotificationTypes = None
+        self.NotificationUserGroupIds = None
+
+
+    def _deserialize(self, params):
+        self.AutoScalingGroupId = params.get("AutoScalingGroupId")
+        self.NotificationTypes = params.get("NotificationTypes")
+        self.NotificationUserGroupIds = params.get("NotificationUserGroupIds")
+
+
+class CreateNotificationConfigurationResponse(AbstractModel):
+    """CreateNotificationConfiguration返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param AutoScalingNotificationId: 通知ID。
+        :type AutoScalingNotificationId: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.AutoScalingNotificationId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.AutoScalingNotificationId = params.get("AutoScalingNotificationId")
+        self.RequestId = params.get("RequestId")
+
+
+class CreateScalingPolicyRequest(AbstractModel):
+    """CreateScalingPolicy请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param AutoScalingGroupId: 伸缩组ID。
+        :type AutoScalingGroupId: str
+        :param ScalingPolicyName: 告警触发策略名称。
+        :type ScalingPolicyName: str
+        :param AdjustmentType: 告警触发后，期望实例数修改方式。取值 ：<br><li>CHANGE_IN_CAPACITY：增加或减少若干期望实例数</li><li>EXACT_CAPACITY：调整至指定期望实例数</li> <li>PERCENT_CHANGE_IN_CAPACITY：按百分比调整期望实例数</li>
+        :type AdjustmentType: str
+        :param AdjustmentValue: 告警触发后，期望实例数的调整值。取值：<br><li>当 AdjustmentType 为 CHANGE_IN_CAPACITY 时，AdjustmentValue 为正数表示告警触发后增加实例，为负数表示告警触发后减少实例 </li> <li> 当 AdjustmentType 为 EXACT_CAPACITY 时，AdjustmentValue 的值即为告警触发后新的期望实例数，需要大于或等于0 </li> <li> 当 AdjustmentType 为 PERCENT_CHANGE_IN_CAPACITY 时，AdjusmentValue 为正数表示告警触发后按百分比增加实例，为负数表示告警触发后按百分比减少实例，单位是：%。
+        :type AdjustmentValue: int
+        :param MetricAlarm: 告警监控指标。
+        :type MetricAlarm: :class:`tencentcloud.autoscaling.v20180419.models.MetricAlarm`
+        :param Cooldown: 冷却时间，单位为秒。默认冷却时间300秒。
+        :type Cooldown: int
+        :param NotificationUserGroupIds: 通知组ID，即为用户组ID集合，用户组ID可以通过[DescribeUserGroup](https://cloud.tencent.com/document/api/378/4404)查询。
+        :type NotificationUserGroupIds: list of str
+        """
+        self.AutoScalingGroupId = None
+        self.ScalingPolicyName = None
+        self.AdjustmentType = None
+        self.AdjustmentValue = None
+        self.MetricAlarm = None
+        self.Cooldown = None
+        self.NotificationUserGroupIds = None
+
+
+    def _deserialize(self, params):
+        self.AutoScalingGroupId = params.get("AutoScalingGroupId")
+        self.ScalingPolicyName = params.get("ScalingPolicyName")
+        self.AdjustmentType = params.get("AdjustmentType")
+        self.AdjustmentValue = params.get("AdjustmentValue")
+        if params.get("MetricAlarm") is not None:
+            self.MetricAlarm = MetricAlarm()
+            self.MetricAlarm._deserialize(params.get("MetricAlarm"))
+        self.Cooldown = params.get("Cooldown")
+        self.NotificationUserGroupIds = params.get("NotificationUserGroupIds")
+
+
+class CreateScalingPolicyResponse(AbstractModel):
+    """CreateScalingPolicy返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param AutoScalingPolicyId: 告警触发策略ID。
+        :type AutoScalingPolicyId: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.AutoScalingPolicyId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.AutoScalingPolicyId = params.get("AutoScalingPolicyId")
+        self.RequestId = params.get("RequestId")
+
+
 class CreateScheduledActionRequest(AbstractModel):
     """CreateScheduledAction请求参数结构体
 
@@ -573,10 +722,13 @@ class DataDisk(AbstractModel):
     def __init__(self):
         """
         :param DiskType: 数据盘类型。数据盘类型限制详见[CVM实例配置](https://cloud.tencent.com/document/product/213/2177)。取值范围：<br><li>LOCAL_BASIC：本地硬盘<br><li>LOCAL_SSD：本地SSD硬盘<br><li>CLOUD_BASIC：普通云硬盘<br><li>CLOUD_PREMIUM：高性能云硬盘<br><li>CLOUD_SSD：SSD云硬盘<br><br>默认取值：LOCAL_BASIC。
+注意：此字段可能返回 null，表示取不到有效值。
         :type DiskType: str
         :param DiskSize: 数据盘大小，单位：GB。最小调整步长为10G，不同数据盘类型取值范围不同，具体限制详见：[CVM实例配置](https://cloud.tencent.com/document/product/213/2177)。默认值为0，表示不购买数据盘。更多限制详见产品文档。
+注意：此字段可能返回 null，表示取不到有效值。
         :type DiskSize: int
         :param SnapshotId: 数据盘快照 ID，类似 `snap-l8psqwnt`。
+注意：此字段可能返回 null，表示取不到有效值。
         :type SnapshotId: str
         """
         self.DiskType = None
@@ -643,6 +795,74 @@ class DeleteLaunchConfigurationRequest(AbstractModel):
 
 class DeleteLaunchConfigurationResponse(AbstractModel):
     """DeleteLaunchConfiguration返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class DeleteNotificationConfigurationRequest(AbstractModel):
+    """DeleteNotificationConfiguration请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param AutoScalingNotificationId: 待删除的通知ID。
+        :type AutoScalingNotificationId: str
+        """
+        self.AutoScalingNotificationId = None
+
+
+    def _deserialize(self, params):
+        self.AutoScalingNotificationId = params.get("AutoScalingNotificationId")
+
+
+class DeleteNotificationConfigurationResponse(AbstractModel):
+    """DeleteNotificationConfiguration返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class DeleteScalingPolicyRequest(AbstractModel):
+    """DeleteScalingPolicy请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param AutoScalingPolicyId: 待删除的告警策略ID。
+        :type AutoScalingPolicyId: str
+        """
+        self.AutoScalingPolicyId = None
+
+
+    def _deserialize(self, params):
+        self.AutoScalingPolicyId = params.get("AutoScalingPolicyId")
+
+
+class DeleteScalingPolicyResponse(AbstractModel):
+    """DeleteScalingPolicy返回参数结构体
 
     """
 
@@ -751,11 +971,17 @@ class DescribeAutoScalingActivitiesRequest(AbstractModel):
         :type Limit: int
         :param Offset: 偏移量，默认为0。关于`Offset`的更进一步介绍请参考 API [简介](https://cloud.tencent.com/document/api/213/15688)中的相关小节。
         :type Offset: int
+        :param StartTime: 伸缩活动最早的开始时间，如果指定了ActivityIds，此参数将被忽略。取值为`UTC`时间，按照`ISO8601`标准，格式：`YYYY-MM-DDThh:mm:ssZ`。
+        :type StartTime: str
+        :param EndTime: 伸缩活动最晚的结束时间，如果指定了ActivityIds，此参数将被忽略。取值为`UTC`时间，按照`ISO8601`标准，格式：`YYYY-MM-DDThh:mm:ssZ`。
+        :type EndTime: str
         """
         self.ActivityIds = None
         self.Filters = None
         self.Limit = None
         self.Offset = None
+        self.StartTime = None
+        self.EndTime = None
 
 
     def _deserialize(self, params):
@@ -768,6 +994,8 @@ class DescribeAutoScalingActivitiesRequest(AbstractModel):
                 self.Filters.append(obj)
         self.Limit = params.get("Limit")
         self.Offset = params.get("Offset")
+        self.StartTime = params.get("StartTime")
+        self.EndTime = params.get("EndTime")
 
 
 class DescribeAutoScalingActivitiesResponse(AbstractModel):
@@ -1002,6 +1230,141 @@ class DescribeLaunchConfigurationsResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeNotificationConfigurationsRequest(AbstractModel):
+    """DescribeNotificationConfigurations请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param AutoScalingNotificationIds: 按照一个或者多个通知ID查询。实例ID形如：asn-2sestqbr。每次请求的实例的上限为100。参数不支持同时指定`AutoScalingNotificationIds`和`Filters`。
+        :type AutoScalingNotificationIds: list of str
+        :param Filters: 过滤条件。
+<li> auto-scaling-notification-id - String - 是否必填：否 -（过滤条件）按照通知ID过滤。</li>
+<li> auto-scaling-group-id - String - 是否必填：否 -（过滤条件）按照伸缩组ID过滤。</li>
+每次请求的`Filters`的上限为10，`Filter.Values`的上限为5。参数不支持同时指定`AutoScalingNotificationIds`和`Filters`。
+        :type Filters: list of Filter
+        :param Limit: 返回数量，默认为20，最大值为100。关于`Limit`的更进一步介绍请参考 API [简介](https://cloud.tencent.com/document/api/213/15688)中的相关小节。
+        :type Limit: int
+        :param Offset: 偏移量，默认为0。关于`Offset`的更进一步介绍请参考 API [简介](https://cloud.tencent.com/document/api/213/15688)中的相关小节。
+        :type Offset: int
+        """
+        self.AutoScalingNotificationIds = None
+        self.Filters = None
+        self.Limit = None
+        self.Offset = None
+
+
+    def _deserialize(self, params):
+        self.AutoScalingNotificationIds = params.get("AutoScalingNotificationIds")
+        if params.get("Filters") is not None:
+            self.Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self.Filters.append(obj)
+        self.Limit = params.get("Limit")
+        self.Offset = params.get("Offset")
+
+
+class DescribeNotificationConfigurationsResponse(AbstractModel):
+    """DescribeNotificationConfigurations返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param TotalCount: 符合条件的通知数量。
+        :type TotalCount: int
+        :param AutoScalingNotificationSet: 弹性伸缩事件通知详细信息列表。
+        :type AutoScalingNotificationSet: list of AutoScalingNotification
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.AutoScalingNotificationSet = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("AutoScalingNotificationSet") is not None:
+            self.AutoScalingNotificationSet = []
+            for item in params.get("AutoScalingNotificationSet"):
+                obj = AutoScalingNotification()
+                obj._deserialize(item)
+                self.AutoScalingNotificationSet.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeScalingPoliciesRequest(AbstractModel):
+    """DescribeScalingPolicies请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param AutoScalingPolicyIds: 按照一个或者多个告警策略ID查询。告警策略ID形如：asp-i9vkg894。每次请求的实例的上限为100。参数不支持同时指定`AutoScalingPolicyIds`和`Filters`。
+        :type AutoScalingPolicyIds: list of str
+        :param Filters: 过滤条件。
+<li> auto-scaling-policy-id - String - 是否必填：否 -（过滤条件）按照告警策略ID过滤。</li>
+<li> auto-scaling-group-id - String - 是否必填：否 -（过滤条件）按照伸缩组ID过滤。</li>
+<li> scaling-policy-name - String - 是否必填：否 -（过滤条件）按照告警策略名称过滤。</li>
+每次请求的`Filters`的上限为10，`Filter.Values`的上限为5。参数不支持同时指定`AutoScalingPolicyIds`和`Filters`。
+        :type Filters: list of Filter
+        :param Limit: 返回数量，默认为20，最大值为100。关于`Limit`的更进一步介绍请参考 API [简介](https://cloud.tencent.com/document/api/213/15688)中的相关小节。
+        :type Limit: int
+        :param Offset: 偏移量，默认为0。关于`Offset`的更进一步介绍请参考 API [简介](https://cloud.tencent.com/document/api/213/15688)中的相关小节。
+        :type Offset: int
+        """
+        self.AutoScalingPolicyIds = None
+        self.Filters = None
+        self.Limit = None
+        self.Offset = None
+
+
+    def _deserialize(self, params):
+        self.AutoScalingPolicyIds = params.get("AutoScalingPolicyIds")
+        if params.get("Filters") is not None:
+            self.Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self.Filters.append(obj)
+        self.Limit = params.get("Limit")
+        self.Offset = params.get("Offset")
+
+
+class DescribeScalingPoliciesResponse(AbstractModel):
+    """DescribeScalingPolicies返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ScalingPolicySet: 弹性伸缩告警触发策略详细信息列表。
+        :type ScalingPolicySet: list of ScalingPolicy
+        :param TotalCount: 符合条件的通知数量。
+        :type TotalCount: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.ScalingPolicySet = None
+        self.TotalCount = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("ScalingPolicySet") is not None:
+            self.ScalingPolicySet = []
+            for item in params.get("ScalingPolicySet"):
+                obj = ScalingPolicy()
+                obj._deserialize(item)
+                self.ScalingPolicySet.append(obj)
+        self.TotalCount = params.get("TotalCount")
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeScheduledActionsRequest(AbstractModel):
     """DescribeScheduledActions请求参数结构体
 
@@ -1207,11 +1570,11 @@ class Filter(AbstractModel):
     >
     > 以[DescribeInstances](https://cloud.tencent.com/document/api/213/9388)接口的`Filter`为例。若我们需要查询可用区（`zone`）为广州一区 ***并且*** 实例计费模式（`instance-charge-type`）为包年包月 ***或者*** 按量计费的实例时，可如下实现：
     ```
-    Filters.1.Name=zone
-    &Filters.1.Values.1=ap-guangzhou-1
-    &Filters.2.Name=instance-charge-type
-    &Filters.2.Values.1=PREPAID
-    &Filters.3.Values.2=POSTPAID_BY_HOUR
+    Filters.0.Name=zone
+    &Filters.0.Values.1=ap-guangzhou-1
+    &Filters.1.Name=instance-charge-type
+    &Filters.1.Values.1=PREPAID
+    &Filters.1.Values.2=POSTPAID_BY_HOUR
     ```
 
     """
@@ -1333,6 +1696,7 @@ class InstanceMarketOptionsRequest(AbstractModel):
         :param SpotOptions: 竞价相关选项
         :type SpotOptions: :class:`tencentcloud.autoscaling.v20180419.models.SpotMarketOptions`
         :param MarketType: 市场选项类型，当前只支持取值：spot
+注意：此字段可能返回 null，表示取不到有效值。
         :type MarketType: str
         """
         self.SpotOptions = None
@@ -1354,10 +1718,13 @@ class InternetAccessible(AbstractModel):
     def __init__(self):
         """
         :param InternetChargeType: 网络计费类型。取值范围：<br><li>BANDWIDTH_PREPAID：预付费按带宽结算<br><li>TRAFFIC_POSTPAID_BY_HOUR：流量按小时后付费<br><li>BANDWIDTH_POSTPAID_BY_HOUR：带宽按小时后付费<br><li>BANDWIDTH_PACKAGE：带宽包用户<br>默认取值：TRAFFIC_POSTPAID_BY_HOUR。
+注意：此字段可能返回 null，表示取不到有效值。
         :type InternetChargeType: str
         :param InternetMaxBandwidthOut: 公网出带宽上限，单位：Mbps。默认值：0Mbps。不同机型带宽上限范围不一致，具体限制详见[购买网络带宽](https://cloud.tencent.com/document/product/213/509)。
+注意：此字段可能返回 null，表示取不到有效值。
         :type InternetMaxBandwidthOut: int
         :param PublicIpAssigned: 是否分配公网IP。取值范围：<br><li>TRUE：表示分配公网IP<br><li>FALSE：表示不分配公网IP<br><br>当公网带宽大于0Mbps时，可自由选择开通与否，默认开通公网IP；当公网带宽为0，则不允许分配公网IP。
+注意：此字段可能返回 null，表示取不到有效值。
         :type PublicIpAssigned: bool
         """
         self.InternetChargeType = None
@@ -1399,6 +1766,7 @@ class LaunchConfiguration(AbstractModel):
         :param AutoScalingGroupAbstractSet: 启动配置关联的伸缩组。
         :type AutoScalingGroupAbstractSet: list of AutoScalingGroupAbstract
         :param UserData: 自定义数据。
+注意：此字段可能返回 null，表示取不到有效值。
         :type UserData: str
         :param CreatedTime: 启动配置创建时间。
         :type CreatedTime: str
@@ -1413,6 +1781,7 @@ class LaunchConfiguration(AbstractModel):
 <br><li>SPOTPAID：竞价付费
         :type InstanceChargeType: str
         :param InstanceMarketOptions: 实例的市场相关选项，如竞价实例相关参数，若指定实例的付费模式为竞价付费则该参数必传。
+注意：此字段可能返回 null，表示取不到有效值。
         :type InstanceMarketOptions: :class:`tencentcloud.autoscaling.v20180419.models.InstanceMarketOptionsRequest`
         :param InstanceTypes: 实例机型列表。
         :type InstanceTypes: list of str
@@ -1503,10 +1872,12 @@ class LoginSettings(AbstractModel):
     def __init__(self):
         """
         :param Password: 实例登录密码。不同操作系统类型密码复杂度限制不一样，具体如下：<br><li>Linux实例密码必须8到16位，至少包括两项[a-z，A-Z]、[0-9] 和 [( ) ` ~ ! @ # $ % ^ & * - + = | { } [ ] : ; ' , . ? / ]中的特殊符号。<br><li>Windows实例密码必须12到16位，至少包括三项[a-z]，[A-Z]，[0-9] 和 [( ) ` ~ ! @ # $ % ^ & * - + = { } [ ] : ; ' , . ? /]中的特殊符号。<br><br>若不指定该参数，则由系统随机生成密码，并通过站内信方式通知到用户。
+注意：此字段可能返回 null，表示取不到有效值。
         :type Password: str
         :param KeyIds: 密钥ID列表。关联密钥后，就可以通过对应的私钥来访问实例；KeyId可通过接口DescribeKeyPairs获取，密钥与密码不能同时指定，同时Windows操作系统不支持指定密钥。当前仅支持购买的时候指定一个密钥。
         :type KeyIds: list of str
         :param KeepImageLogin: 保持镜像的原始设置。该参数与Password或KeyIds.N不能同时指定。只有使用自定义镜像、共享镜像或外部导入镜像创建实例时才能指定该参数为TRUE。取值范围：<br><li>TRUE：表示保持镜像的登录设置<br><li>FALSE：表示不保持镜像的登录设置<br><br>默认取值：FALSE。
+注意：此字段可能返回 null，表示取不到有效值。
         :type KeepImageLogin: bool
         """
         self.Password = None
@@ -1518,6 +1889,43 @@ class LoginSettings(AbstractModel):
         self.Password = params.get("Password")
         self.KeyIds = params.get("KeyIds")
         self.KeepImageLogin = params.get("KeepImageLogin")
+
+
+class MetricAlarm(AbstractModel):
+    """弹性伸缩告警指标
+
+    """
+
+    def __init__(self):
+        """
+        :param ComparisonOperator: 比较运算符，可选值：<br><li>GREATER_THAN：大于</li><li>GREATER_THAN_OR_EQUAL_TO：大于或等于</li><li>LESS_THAN：小于</li><li> LESS_THAN_OR_EQUAL_TO：小于或等于</li><li> EQUAL_TO：等于</li> <li>NOT_EQUAL_TO：不等于</li>
+        :type ComparisonOperator: str
+        :param MetricName: 指标名称，可选字段如下：<br><li>CPU_UTILIZATION：CPU利用率</li><li>MEM_UTILIZATION：内存利用率</li><li>LAN_TRAFFIC_OUT：内网出带宽</li><li>LAN_TRAFFIC_IN：内网入带宽</li><li>WAN_TRAFFIC_OUT：外网出带宽</li><li>WAN_TRAFFIC_IN：外网入带宽</li>
+        :type MetricName: str
+        :param Threshold: 告警阈值：<br><li>CPU_UTILIZATION：[1, 100]，单位：%</li><li>MEM_UTILIZATION：[1, 100]，单位：%</li><li>LAN_TRAFFIC_OUT：>0，单位：Mbps </li><li>LAN_TRAFFIC_IN：>0，单位：Mbps</li><li>WAN_TRAFFIC_OUT：>0，单位：Mbps</li><li>WAN_TRAFFIC_IN：>0，单位：Mbps</li>
+        :type Threshold: int
+        :param Period: 时间周期。单位：秒
+        :type Period: int
+        :param ContinuousTime: 重复次数。取值范围 [1, 10]
+        :type ContinuousTime: int
+        :param Statistic: 统计类型，可选字段如下：<br><li>AVERAGE：平均值</li><li>MAXIMUM：最大值<li>MINIMUM：最小值</li><br> 默认取值：AVERAGE
+        :type Statistic: str
+        """
+        self.ComparisonOperator = None
+        self.MetricName = None
+        self.Threshold = None
+        self.Period = None
+        self.ContinuousTime = None
+        self.Statistic = None
+
+
+    def _deserialize(self, params):
+        self.ComparisonOperator = params.get("ComparisonOperator")
+        self.MetricName = params.get("MetricName")
+        self.Threshold = params.get("Threshold")
+        self.Period = params.get("Period")
+        self.ContinuousTime = params.get("ContinuousTime")
+        self.Statistic = params.get("Statistic")
 
 
 class ModifyAutoScalingGroupRequest(AbstractModel):
@@ -1676,7 +2084,7 @@ class ModifyLaunchConfigurationAttributesRequest(AbstractModel):
         :type InstanceTypesCheckPolicy: str
         :param LaunchConfigurationName: 启动配置显示名称。名称仅支持中文、英文、数字、下划线、分隔符"-"、小数点，最大长度不能超60个字节。
         :type LaunchConfigurationName: str
-        :param UserData: 经过 Base64 编码后的自定义数据，最大长度不超过16KB。如果要清空UserData，则指定其为空字符串''
+        :param UserData: 经过 Base64 编码后的自定义数据，最大长度不超过16KB。如果要清空UserData，则指定其为空字符串
         :type UserData: str
         """
         self.LaunchConfigurationId = None
@@ -1761,6 +2169,115 @@ class ModifyLoadBalancersResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.ActivityId = params.get("ActivityId")
+        self.RequestId = params.get("RequestId")
+
+
+class ModifyNotificationConfigurationRequest(AbstractModel):
+    """ModifyNotificationConfiguration请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param AutoScalingNotificationId: 待修改的通知ID。
+        :type AutoScalingNotificationId: str
+        :param NotificationTypes: 通知类型，即为需要订阅的通知类型集合，取值范围如下：
+<li>SCALE_OUT_SUCCESSFUL：扩容成功</li>
+<li>SCALE_OUT_FAILED：扩容失败</li>
+<li>SCALE_IN_SUCCESSFUL：缩容成功</li>
+<li>SCALE_IN_FAILED：缩容失败</li>
+<li>REPLACE_UNHEALTHY_INSTANCE_SUCCESSFUL：替换不健康子机成功</li>
+<li>REPLACE_UNHEALTHY_INSTANCE_FAILED：替换不健康子机失败</li>
+        :type NotificationTypes: list of str
+        :param NotificationUserGroupIds: 通知组ID，即为用户组ID集合，用户组ID可以通过[DescribeUserGroup](https://cloud.tencent.com/document/api/378/4404)查询。
+        :type NotificationUserGroupIds: list of str
+        """
+        self.AutoScalingNotificationId = None
+        self.NotificationTypes = None
+        self.NotificationUserGroupIds = None
+
+
+    def _deserialize(self, params):
+        self.AutoScalingNotificationId = params.get("AutoScalingNotificationId")
+        self.NotificationTypes = params.get("NotificationTypes")
+        self.NotificationUserGroupIds = params.get("NotificationUserGroupIds")
+
+
+class ModifyNotificationConfigurationResponse(AbstractModel):
+    """ModifyNotificationConfiguration返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class ModifyScalingPolicyRequest(AbstractModel):
+    """ModifyScalingPolicy请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param AutoScalingPolicyId: 告警策略ID。
+        :type AutoScalingPolicyId: str
+        :param ScalingPolicyName: 告警策略名称。
+        :type ScalingPolicyName: str
+        :param AdjustmentType: 告警触发后，期望实例数修改方式。取值 ：<br><li>CHANGE_IN_CAPACITY：增加或减少若干期望实例数</li><li>EXACT_CAPACITY：调整至指定期望实例数</li> <li>PERCENT_CHANGE_IN_CAPACITY：按百分比调整期望实例数</li>
+        :type AdjustmentType: str
+        :param AdjustmentValue: 告警触发后，期望实例数的调整值。取值：<br><li>当 AdjustmentType 为 CHANGE_IN_CAPACITY 时，AdjustmentValue 为正数表示告警触发后增加实例，为负数表示告警触发后减少实例 </li> <li> 当 AdjustmentType 为 EXACT_CAPACITY 时，AdjustmentValue 的值即为告警触发后新的期望实例数，需要大于或等于0 </li> <li> 当 AdjustmentType 为 PERCENT_CHANGE_IN_CAPACITY 时，AdjusmentValue 为正数表示告警触发后按百分比增加实例，为负数表示告警触发后按百分比减少实例，单位是：%。
+        :type AdjustmentValue: int
+        :param Cooldown: 冷却时间，单位为秒。
+        :type Cooldown: int
+        :param MetricAlarm: 告警监控指标。
+        :type MetricAlarm: :class:`tencentcloud.autoscaling.v20180419.models.MetricAlarm`
+        :param NotificationUserGroupIds: 通知组ID，即为用户组ID集合，用户组ID可以通过[DescribeUserGroup](https://cloud.tencent.com/document/api/378/4404)查询。
+如果需要清空通知用户组，需要在列表中传入特定字符串 "NULL"。
+        :type NotificationUserGroupIds: list of str
+        """
+        self.AutoScalingPolicyId = None
+        self.ScalingPolicyName = None
+        self.AdjustmentType = None
+        self.AdjustmentValue = None
+        self.Cooldown = None
+        self.MetricAlarm = None
+        self.NotificationUserGroupIds = None
+
+
+    def _deserialize(self, params):
+        self.AutoScalingPolicyId = params.get("AutoScalingPolicyId")
+        self.ScalingPolicyName = params.get("ScalingPolicyName")
+        self.AdjustmentType = params.get("AdjustmentType")
+        self.AdjustmentValue = params.get("AdjustmentValue")
+        self.Cooldown = params.get("Cooldown")
+        if params.get("MetricAlarm") is not None:
+            self.MetricAlarm = MetricAlarm()
+            self.MetricAlarm._deserialize(params.get("MetricAlarm"))
+        self.NotificationUserGroupIds = params.get("NotificationUserGroupIds")
+
+
+class ModifyScalingPolicyResponse(AbstractModel):
+    """ModifyScalingPolicy返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
 
 
@@ -1872,6 +2389,7 @@ class RunMonitorServiceEnabled(AbstractModel):
     def __init__(self):
         """
         :param Enabled: 是否开启[云监控](https://cloud.tencent.com/document/product/248)服务。取值范围：<br><li>TRUE：表示开启云监控服务<br><li>FALSE：表示不开启云监控服务<br><br>默认取值：TRUE。
+注意：此字段可能返回 null，表示取不到有效值。
         :type Enabled: bool
         """
         self.Enabled = None
@@ -1889,6 +2407,7 @@ class RunSecurityServiceEnabled(AbstractModel):
     def __init__(self):
         """
         :param Enabled: 是否开启[云安全](https://cloud.tencent.com/document/product/296)服务。取值范围：<br><li>TRUE：表示开启云安全服务<br><li>FALSE：表示不开启云安全服务<br><br>默认取值：TRUE。
+注意：此字段可能返回 null，表示取不到有效值。
         :type Enabled: bool
         """
         self.Enabled = None
@@ -1896,6 +2415,53 @@ class RunSecurityServiceEnabled(AbstractModel):
 
     def _deserialize(self, params):
         self.Enabled = params.get("Enabled")
+
+
+class ScalingPolicy(AbstractModel):
+    """告警触发策略。
+
+    """
+
+    def __init__(self):
+        """
+        :param AutoScalingGroupId: 伸缩组ID。
+        :type AutoScalingGroupId: str
+        :param AutoScalingPolicyId: 告警触发策略ID。
+        :type AutoScalingPolicyId: str
+        :param ScalingPolicyName: 告警触发策略名称。
+        :type ScalingPolicyName: str
+        :param AdjustmentType: 告警触发后，期望实例数修改方式。取值 ：<br><li>CHANGE_IN_CAPACITY：增加或减少若干期望实例数</li><li>EXACT_CAPACITY：调整至指定期望实例数</li> <li>PERCENT_CHANGE_IN_CAPACITY：按百分比调整期望实例数</li>
+        :type AdjustmentType: str
+        :param AdjustmentValue: 告警触发后，期望实例数的调整值。
+        :type AdjustmentValue: str
+        :param Cooldown: 冷却时间。
+        :type Cooldown: int
+        :param MetricAlarm: 告警监控指标。
+        :type MetricAlarm: :class:`tencentcloud.autoscaling.v20180419.models.MetricAlarm`
+        :param NotificationUserGroupIds: 通知组ID，即为用户组ID集合。
+        :type NotificationUserGroupIds: list of str
+        """
+        self.AutoScalingGroupId = None
+        self.AutoScalingPolicyId = None
+        self.ScalingPolicyName = None
+        self.AdjustmentType = None
+        self.AdjustmentValue = None
+        self.Cooldown = None
+        self.MetricAlarm = None
+        self.NotificationUserGroupIds = None
+
+
+    def _deserialize(self, params):
+        self.AutoScalingGroupId = params.get("AutoScalingGroupId")
+        self.AutoScalingPolicyId = params.get("AutoScalingPolicyId")
+        self.ScalingPolicyName = params.get("ScalingPolicyName")
+        self.AdjustmentType = params.get("AdjustmentType")
+        self.AdjustmentValue = params.get("AdjustmentValue")
+        self.Cooldown = params.get("Cooldown")
+        if params.get("MetricAlarm") is not None:
+            self.MetricAlarm = MetricAlarm()
+            self.MetricAlarm._deserialize(params.get("MetricAlarm"))
+        self.NotificationUserGroupIds = params.get("NotificationUserGroupIds")
 
 
 class ScheduledAction(AbstractModel):
@@ -1951,6 +2517,48 @@ class ScheduledAction(AbstractModel):
         self.CreatedTime = params.get("CreatedTime")
 
 
+class SetInstancesProtectionRequest(AbstractModel):
+    """SetInstancesProtection请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param AutoScalingGroupId: 伸缩组ID。
+        :type AutoScalingGroupId: str
+        :param InstanceIds: 实例ID。
+        :type InstanceIds: list of str
+        :param ProtectedFromScaleIn: 实例是否需要移出保护。
+        :type ProtectedFromScaleIn: bool
+        """
+        self.AutoScalingGroupId = None
+        self.InstanceIds = None
+        self.ProtectedFromScaleIn = None
+
+
+    def _deserialize(self, params):
+        self.AutoScalingGroupId = params.get("AutoScalingGroupId")
+        self.InstanceIds = params.get("InstanceIds")
+        self.ProtectedFromScaleIn = params.get("ProtectedFromScaleIn")
+
+
+class SetInstancesProtectionResponse(AbstractModel):
+    """SetInstancesProtection返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class SpotMarketOptions(AbstractModel):
     """竞价相关选项
 
@@ -1961,6 +2569,7 @@ class SpotMarketOptions(AbstractModel):
         :param MaxPrice: 竞价出价，例如“1.05”
         :type MaxPrice: str
         :param SpotInstanceType: 竞价请求类型，当前仅支持类型：one-time，默认值为one-time
+注意：此字段可能返回 null，表示取不到有效值。
         :type SpotInstanceType: str
         """
         self.MaxPrice = None
@@ -1980,8 +2589,10 @@ class SystemDisk(AbstractModel):
     def __init__(self):
         """
         :param DiskType: 系统盘类型。系统盘类型限制详见[CVM实例配置](https://cloud.tencent.com/document/product/213/2177)。取值范围：<br><li>LOCAL_BASIC：本地硬盘<br><li>LOCAL_SSD：本地SSD硬盘<br><li>CLOUD_BASIC：普通云硬盘<br><li>CLOUD_PREMIUM：高性能云硬盘<br><li>CLOUD_SSD：SSD云硬盘<br><br>默认取值：LOCAL_BASIC。
+注意：此字段可能返回 null，表示取不到有效值。
         :type DiskType: str
         :param DiskSize: 系统盘大小，单位：GB。默认值为 50
+注意：此字段可能返回 null，表示取不到有效值。
         :type DiskSize: int
         """
         self.DiskType = None

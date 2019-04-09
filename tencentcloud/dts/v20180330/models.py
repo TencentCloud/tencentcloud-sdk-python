@@ -40,7 +40,7 @@ class CompleteMigrateJobResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.RequestId = None
@@ -99,7 +99,7 @@ class CreateMigrateCheckJobResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.RequestId = None
@@ -181,7 +181,7 @@ class CreateMigrateJobResponse(AbstractModel):
         """
         :param JobId: 数据迁移任务ID
         :type JobId: str
-        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.JobId = None
@@ -217,7 +217,7 @@ class CreateSyncCheckJobResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.RequestId = None
@@ -293,7 +293,7 @@ class CreateSyncJobResponse(AbstractModel):
         """
         :param JobId: 灾备同步任务ID
         :type JobId: str
-        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.JobId = None
@@ -329,7 +329,7 @@ class DeleteMigrateJobResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.RequestId = None
@@ -363,7 +363,7 @@ class DeleteSyncJobResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.RequestId = None
@@ -407,7 +407,7 @@ class DescribeMigrateCheckJobResponse(AbstractModel):
         :type Progress: str
         :param CheckFlag: 校验是否通过,0-未通过，1-校验通过, 3-未校验
         :type CheckFlag: int
-        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.Status = None
@@ -475,7 +475,7 @@ class DescribeMigrateJobsResponse(AbstractModel):
         :type TotalCount: int
         :param JobList: 任务详情数组
         :type JobList: list of MigrateJobInfo
-        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.TotalCount = None
@@ -518,7 +518,7 @@ class DescribeSyncCheckJobResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param Status: 任务校验状态
+        :param Status: 任务校验状态： starting(开始中)，running(校验中)，finished(校验完成)
         :type Status: str
         :param ErrorCode: 任务校验结果代码
         :type ErrorCode: int
@@ -526,9 +526,9 @@ class DescribeSyncCheckJobResponse(AbstractModel):
         :type ErrorMessage: str
         :param StepInfo: 任务执行步骤描述
         :type StepInfo: list of SyncCheckStepInfo
-        :param CheckFlag: 校验标志
+        :param CheckFlag: 校验标志：0（尚未校验成功） ， 1（校验成功）
         :type CheckFlag: int
-        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.Status = None
@@ -601,7 +601,7 @@ class DescribeSyncJobsResponse(AbstractModel):
         :type TotalCount: int
         :param JobList: 任务详情数组
         :type JobList: list of SyncJobInfo
-        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.TotalCount = None
@@ -935,7 +935,7 @@ class ModifyMigrateJobResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.RequestId = None
@@ -985,7 +985,7 @@ class ModifySyncJobResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.RequestId = None
@@ -1088,7 +1088,7 @@ class StartMigrateJobResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.RequestId = None
@@ -1122,7 +1122,7 @@ class StartSyncJobResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.RequestId = None
@@ -1156,7 +1156,7 @@ class StopMigrateJobResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.RequestId = None
@@ -1198,7 +1198,7 @@ class SwitchDrToMasterResponse(AbstractModel):
         """
         :param AsyncRequestId: 后台异步任务请求id
         :type AsyncRequestId: str
-        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.AsyncRequestId = None
@@ -1398,9 +1398,9 @@ class SyncOption(AbstractModel):
         :type SyncObject: int
         :param RunMode: 同步开始设置，1-立即开始
         :type RunMode: int
-        :param SyncType: 同步模式， 3-增量同步
+        :param SyncType: 同步模式， 3-全量且增量同步
         :type SyncType: int
-        :param ConsistencyType: 数据一致性检测， 1-不配置
+        :param ConsistencyType: 数据一致性检测， 1-无需配置
         :type ConsistencyType: int
         """
         self.SyncObject = None

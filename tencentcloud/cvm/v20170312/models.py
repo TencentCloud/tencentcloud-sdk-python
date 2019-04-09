@@ -295,7 +295,7 @@ class CreateImageRequest(AbstractModel):
         :type DataDiskIds: list of str
         :param SnapshotIds: 需要制作镜像的快照Id,必须包含一个系统盘快照
         :type SnapshotIds: list of str
-        :param DryRun: DryRun
+        :param DryRun: 检测请求的合法性，但不会对操作的资源产生任何影响
         :type DryRun: bool
         """
         self.ImageName = None
@@ -403,6 +403,7 @@ class DataDisk(AbstractModel):
 <li>FALSE：子机销毁时，保留数据盘<br>
 默认取值：TRUE<br>
 该参数目前仅用于 `RunInstances` 接口。
+注意：此字段可能返回 null，表示取不到有效值。
         :type DeleteWithInstance: bool
         """
         self.DiskSize = None
@@ -1488,8 +1489,10 @@ class DisasterRecoverGroup(AbstractModel):
         :param CurrentNum: 分散置放群组内云主机当前数量。
         :type CurrentNum: int
         :param InstanceIds: 分散置放群组内，云主机id列表。
+注意：此字段可能返回 null，表示取不到有效值。
         :type InstanceIds: list of str
         :param CreateTime: 分散置放群组创建时间。
+注意：此字段可能返回 null，表示取不到有效值。
         :type CreateTime: str
         """
         self.DisasterRecoverGroupId = None
@@ -1544,10 +1547,13 @@ class Externals(AbstractModel):
     def __init__(self):
         """
         :param ReleaseAddress: 释放地址
+注意：此字段可能返回 null，表示取不到有效值。
         :type ReleaseAddress: bool
         :param UnsupportNetworks: 不支持的网络类型
+注意：此字段可能返回 null，表示取不到有效值。
         :type UnsupportNetworks: list of str
         :param StorageBlockAttr: HDD本地存储属性
+注意：此字段可能返回 null，表示取不到有效值。
         :type StorageBlockAttr: :class:`tencentcloud.cvm.v20170312.models.StorageBlock`
         """
         self.ReleaseAddress = None
@@ -1626,6 +1632,9 @@ class HostItem(AbstractModel):
         :type HostIp: str
         :param HostResource: cdh实例资源信息
         :type HostResource: :class:`tencentcloud.cvm.v20170312.models.HostResource`
+        :param CageId: 专用宿主机所属的围笼ID。该字段仅对金融专区围笼内的专用宿主机有效。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CageId: str
         """
         self.Placement = None
         self.HostId = None
@@ -1639,6 +1648,7 @@ class HostItem(AbstractModel):
         self.HostState = None
         self.HostIp = None
         self.HostResource = None
+        self.CageId = None
 
 
     def _deserialize(self, params):
@@ -1658,6 +1668,7 @@ class HostItem(AbstractModel):
         if params.get("HostResource") is not None:
             self.HostResource = HostResource()
             self.HostResource._deserialize(params.get("HostResource"))
+        self.CageId = params.get("CageId")
 
 
 class HostResource(AbstractModel):
@@ -1729,8 +1740,10 @@ class Image(AbstractModel):
         :param ImageSource: 镜像来源
         :type ImageSource: str
         :param SyncPercent: 同步百分比
+注意：此字段可能返回 null，表示取不到有效值。
         :type SyncPercent: int
         :param IsSupportCloudinit: 镜像是否支持cloud-init
+注意：此字段可能返回 null，表示取不到有效值。
         :type IsSupportCloudinit: bool
         """
         self.ImageId = None
@@ -1774,8 +1787,10 @@ class ImageOsList(AbstractModel):
     def __init__(self):
         """
         :param Windows: 支持的windows操作系统。
+注意：此字段可能返回 null，表示取不到有效值。
         :type Windows: list of str
         :param Linux: 支持的linux操作系统
+注意：此字段可能返回 null，表示取不到有效值。
         :type Linux: list of str
         """
         self.Windows = None
@@ -2128,18 +2143,14 @@ class InquiryPriceResetInstancesTypeRequest(AbstractModel):
         :type InstanceIds: list of str
         :param InstanceType: 实例机型。不同实例机型指定了不同的资源规格，具体取值可参见附表实例资源规格对照表，也可以调用查询实例资源规格列表接口获得最新的规格表。
         :type InstanceType: str
-        :param ForceStop: 是否对运行中的实例选择强制关机。建议对运行中的实例先手动关机，然后再重置用户密码。取值范围：<br><li>TRUE：表示在正常关机失败后进行强制关机<br><li>FALSE：表示在正常关机失败后不进行强制关机<br><br>默认取值：FALSE。<br><br>强制关机的效果等同于关闭物理计算机的电源开关。强制关机可能会导致数据丢失或文件系统损坏，请仅在服务器不能正常关机时使用。
-        :type ForceStop: bool
         """
         self.InstanceIds = None
         self.InstanceType = None
-        self.ForceStop = None
 
 
     def _deserialize(self, params):
         self.InstanceIds = params.get("InstanceIds")
         self.InstanceType = params.get("InstanceType")
-        self.ForceStop = params.get("ForceStop")
 
 
 class InquiryPriceResetInstancesTypeResponse(AbstractModel):
@@ -2382,6 +2393,7 @@ class Instance(AbstractModel):
         :param PrivateIpAddresses: 实例主网卡的内网`IP`列表。
         :type PrivateIpAddresses: list of str
         :param PublicIpAddresses: 实例主网卡的公网`IP`列表。
+注意：此字段可能返回 null，表示取不到有效值。
         :type PublicIpAddresses: list of str
         :param InternetAccessible: 实例带宽信息。
         :type InternetAccessible: :class:`tencentcloud.cvm.v20170312.models.InternetAccessible`
@@ -2622,6 +2634,7 @@ class InstanceTypeQuotaItem(AbstractModel):
         :param NetworkCard: 网卡类型，例如：25代表25G网卡
         :type NetworkCard: int
         :param Externals: 扩展属性。
+注意：此字段可能返回 null，表示取不到有效值。
         :type Externals: :class:`tencentcloud.cvm.v20170312.models.Externals`
         :param Cpu: 实例的CPU核数，单位：核。
         :type Cpu: int
@@ -2689,16 +2702,20 @@ class InternetAccessible(AbstractModel):
         :type InternetMaxBandwidthOut: int
         :param PublicIpAssigned: 是否分配公网IP。取值范围：<br><li>TRUE：表示分配公网IP<br><li>FALSE：表示不分配公网IP<br><br>当公网带宽大于0Mbps时，可自由选择开通与否，默认开通公网IP；当公网带宽为0，则不允许分配公网IP。
         :type PublicIpAssigned: bool
+        :param BandwidthPackageId: 带宽包ID。可通过[`DescribeBandwidthPackages`](https://cloud.tencent.com/document/api/215/19209)接口返回值中的`BandwidthPackageId`获取。
+        :type BandwidthPackageId: str
         """
         self.InternetChargeType = None
         self.InternetMaxBandwidthOut = None
         self.PublicIpAssigned = None
+        self.BandwidthPackageId = None
 
 
     def _deserialize(self, params):
         self.InternetChargeType = params.get("InternetChargeType")
         self.InternetMaxBandwidthOut = params.get("InternetMaxBandwidthOut")
         self.PublicIpAssigned = params.get("PublicIpAssigned")
+        self.BandwidthPackageId = params.get("BandwidthPackageId")
 
 
 class InternetBandwidthConfig(AbstractModel):
@@ -2757,12 +2774,16 @@ class ItemPrice(AbstractModel):
     def __init__(self):
         """
         :param UnitPrice: 后续单价，单位：元。
+注意：此字段可能返回 null，表示取不到有效值。
         :type UnitPrice: float
         :param ChargeUnit: 后续计价单元，可取值范围： <br><li>HOUR：表示计价单元是按每小时来计算。当前涉及该计价单元的场景有：实例按小时后付费（POSTPAID_BY_HOUR）、带宽按小时后付费（BANDWIDTH_POSTPAID_BY_HOUR）：<br><li>GB：表示计价单元是按每GB来计算。当前涉及该计价单元的场景有：流量按小时后付费（TRAFFIC_POSTPAID_BY_HOUR）。
+注意：此字段可能返回 null，表示取不到有效值。
         :type ChargeUnit: str
         :param OriginalPrice: 预支费用的原价，单位：元。
+注意：此字段可能返回 null，表示取不到有效值。
         :type OriginalPrice: float
         :param DiscountPrice: 预支费用的折扣价，单位：元。
+注意：此字段可能返回 null，表示取不到有效值。
         :type DiscountPrice: float
         """
         self.UnitPrice = None
@@ -2860,10 +2881,13 @@ class LoginSettings(AbstractModel):
     def __init__(self):
         """
         :param Password: 实例登录密码。不同操作系统类型密码复杂度限制不一样，具体如下：<br><li>Linux实例密码必须8到16位，至少包括两项[a-z，A-Z]、[0-9] 和 [( ) ` ~ ! @ # $ % ^ & * - + = | { } [ ] : ; ' , . ? / ]中的特殊符号。<br><li>Windows实例密码必须12到16位，至少包括三项[a-z]，[A-Z]，[0-9] 和 [( ) ` ~ ! @ # $ % ^ & * - + = { } [ ] : ; ' , . ? /]中的特殊符号。<br><br>若不指定该参数，则由系统随机生成密码，并通过站内信方式通知到用户。
+注意：此字段可能返回 null，表示取不到有效值。
         :type Password: str
         :param KeyIds: 密钥ID列表。关联密钥后，就可以通过对应的私钥来访问实例；KeyId可通过接口DescribeKeyPairs获取，密钥与密码不能同时指定，同时Windows操作系统不支持指定密钥。当前仅支持购买的时候指定一个密钥。
+注意：此字段可能返回 null，表示取不到有效值。
         :type KeyIds: list of str
         :param KeepImageLogin: 保持镜像的原始设置。该参数与Password或KeyIds.N不能同时指定。只有使用自定义镜像、共享镜像或外部导入镜像创建实例时才能指定该参数为TRUE。取值范围：<br><li>TRUE：表示保持镜像的登录设置<br><li>FALSE：表示不保持镜像的登录设置<br><br>默认取值：FALSE。
+注意：此字段可能返回 null，表示取不到有效值。
         :type KeepImageLogin: str
         """
         self.Password = None
@@ -3792,7 +3816,7 @@ class RunInstancesRequest(AbstractModel):
         :type HostName: str
         :param ActionTimer: 定时任务。通过该参数可以为实例指定定时任务，目前仅支持定时销毁。
         :type ActionTimer: :class:`tencentcloud.cvm.v20170312.models.ActionTimer`
-        :param DisasterRecoverGroupIds: 容灾组id，仅支持指定一个。
+        :param DisasterRecoverGroupIds: 置放群组id，仅支持指定一个。
         :type DisasterRecoverGroupIds: list of str
         :param TagSpecification: 标签描述列表。通过指定该参数可以同时绑定标签到相应的资源实例，当前仅支持绑定标签到云主机实例。
         :type TagSpecification: list of TagSpecification
@@ -4063,10 +4087,13 @@ class StorageBlock(AbstractModel):
     def __init__(self):
         """
         :param Type: HDD本地存储类型，值为：LOCAL_PRO.
+注意：此字段可能返回 null，表示取不到有效值。
         :type Type: str
         :param MinSize: HDD本地存储的最小容量
+注意：此字段可能返回 null，表示取不到有效值。
         :type MinSize: int
         :param MaxSize: HDD本地存储的最大容量
+注意：此字段可能返回 null，表示取不到有效值。
         :type MaxSize: int
         """
         self.Type = None
@@ -4165,13 +4192,13 @@ class Tag(AbstractModel):
 
 
 class TagSpecification(AbstractModel):
-    """创建云主机实例时同时绑定的标签对说明
+    """创建资源实例时同时绑定的标签对说明
 
     """
 
     def __init__(self):
         """
-        :param ResourceType: 标签绑定的资源类型，当前仅支持类型："instance"
+        :param ResourceType: 标签绑定的资源类型，当前支持类型："instance"和"host"
         :type ResourceType: str
         :param Tags: 标签对列表
         :type Tags: list of Tag

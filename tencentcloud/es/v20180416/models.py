@@ -16,6 +16,27 @@
 from tencentcloud.common.abstract_model import AbstractModel
 
 
+class CosBackup(AbstractModel):
+    """ES cos自动备份信息
+
+    """
+
+    def __init__(self):
+        """
+        :param IsAutoBackup: 是否开启cos自动备份
+        :type IsAutoBackup: bool
+        :param BackupTime: 自动备份时间
+        :type BackupTime: str
+        """
+        self.IsAutoBackup = None
+        self.BackupTime = None
+
+
+    def _deserialize(self, params):
+        self.IsAutoBackup = params.get("IsAutoBackup")
+        self.BackupTime = params.get("BackupTime")
+
+
 class CreateInstanceRequest(AbstractModel):
     """CreateInstance请求参数结构体
 
@@ -27,7 +48,7 @@ class CreateInstanceRequest(AbstractModel):
         :type Zone: str
         :param NodeNum: 节点数量
         :type NodeNum: int
-        :param EsVersion: 实例版本,当前只支持5.6.4
+        :param EsVersion: 实例版本,支持"5.6.4"、"6.4.3"
         :type EsVersion: str
         :param NodeType: 节点规格： 
 ES.S1.SMALL2: 1核2G
@@ -58,10 +79,7 @@ RENEW_FLAG_AUTO：自动续费
 RENEW_FLAG_MANUAL：不自动续费，用户手动续费
 如不传递该参数，普通用于默认不自动续费，SVIP用户自动续费
         :type RenewFlag: str
-        :param DiskType: 节点存储类型,取值范围:  
-LOCAL_BASIC: 本地硬盘  
-LOCAL_SSD: 本地SSD硬盘，默认值  
-CLOUD_BASIC: 普通云硬盘  
+        :param DiskType: 节点存储类型,取值范围:    
 CLOUD_PREMIUM: 高硬能云硬盘  
 CLOUD_SSD: SSD云硬盘
         :type DiskType: str
@@ -71,6 +89,16 @@ CLOUD_SSD: SSD云硬盘
         :type AutoVoucher: int
         :param VoucherIds: 代金券ID列表，目前仅支持指定一张代金券
         :type VoucherIds: list of str
+        :param EnableDedicatedMaster: 是否创建专用主节点
+        :type EnableDedicatedMaster: bool
+        :param MasterNodeNum: 专用主节点个数
+        :type MasterNodeNum: int
+        :param MasterNodeType: 专用主节点类型，与NodeType支持的规格相同
+        :type MasterNodeType: str
+        :param MasterNodeDiskSize: 专用主节点磁盘大小，单位GB（系统默认配置50GB，暂不支持自定义）
+        :type MasterNodeDiskSize: int
+        :param ClusterNameInConf: 配置文件中的ClusterName（系统默认配置为实例ID，暂不支持自定义）
+        :type ClusterNameInConf: str
         """
         self.Zone = None
         self.NodeNum = None
@@ -88,6 +116,11 @@ CLOUD_SSD: SSD云硬盘
         self.TimeUnit = None
         self.AutoVoucher = None
         self.VoucherIds = None
+        self.EnableDedicatedMaster = None
+        self.MasterNodeNum = None
+        self.MasterNodeType = None
+        self.MasterNodeDiskSize = None
+        self.ClusterNameInConf = None
 
 
     def _deserialize(self, params):
@@ -107,6 +140,11 @@ CLOUD_SSD: SSD云硬盘
         self.TimeUnit = params.get("TimeUnit")
         self.AutoVoucher = params.get("AutoVoucher")
         self.VoucherIds = params.get("VoucherIds")
+        self.EnableDedicatedMaster = params.get("EnableDedicatedMaster")
+        self.MasterNodeNum = params.get("MasterNodeNum")
+        self.MasterNodeType = params.get("MasterNodeType")
+        self.MasterNodeDiskSize = params.get("MasterNodeDiskSize")
+        self.ClusterNameInConf = params.get("ClusterNameInConf")
 
 
 class CreateInstanceResponse(AbstractModel):
@@ -161,6 +199,144 @@ class DeleteInstanceResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeInstanceLogsRequest(AbstractModel):
+    """DescribeInstanceLogs请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param InstanceId: 集群实例ID
+        :type InstanceId: str
+        :param LogType: 日志类型
+        :type LogType: int
+        :param SearchKey: 搜索词
+        :type SearchKey: str
+        :param StartTime: 日志开始时间
+        :type StartTime: str
+        :param EndTime: 日志结束时间
+        :type EndTime: str
+        :param Offset: 分页起始值
+        :type Offset: int
+        :param Limit: 分页大小
+        :type Limit: int
+        :param OrderByType: 时间排序方式
+        :type OrderByType: int
+        """
+        self.InstanceId = None
+        self.LogType = None
+        self.SearchKey = None
+        self.StartTime = None
+        self.EndTime = None
+        self.Offset = None
+        self.Limit = None
+        self.OrderByType = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.LogType = params.get("LogType")
+        self.SearchKey = params.get("SearchKey")
+        self.StartTime = params.get("StartTime")
+        self.EndTime = params.get("EndTime")
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+        self.OrderByType = params.get("OrderByType")
+
+
+class DescribeInstanceLogsResponse(AbstractModel):
+    """DescribeInstanceLogs返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param TotalCount: 返回的日志条数
+        :type TotalCount: int
+        :param InstanceLogList: 日志详细信息列表
+        :type InstanceLogList: list of InstanceLog
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.InstanceLogList = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("InstanceLogList") is not None:
+            self.InstanceLogList = []
+            for item in params.get("InstanceLogList"):
+                obj = InstanceLog()
+                obj._deserialize(item)
+                self.InstanceLogList.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeInstanceOperationsRequest(AbstractModel):
+    """DescribeInstanceOperations请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param InstanceId: 集群实例ID
+        :type InstanceId: str
+        :param StartTime: 起始时间
+        :type StartTime: str
+        :param EndTime: 结束时间
+        :type EndTime: str
+        :param Offset: 分页起始值
+        :type Offset: int
+        :param Limit: 分页大小
+        :type Limit: int
+        """
+        self.InstanceId = None
+        self.StartTime = None
+        self.EndTime = None
+        self.Offset = None
+        self.Limit = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.StartTime = params.get("StartTime")
+        self.EndTime = params.get("EndTime")
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+
+
+class DescribeInstanceOperationsResponse(AbstractModel):
+    """DescribeInstanceOperations返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param TotalCount: 操作记录总数
+        :type TotalCount: int
+        :param Operations: 操作记录
+        :type Operations: list of Operation
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.Operations = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("Operations") is not None:
+            self.Operations = []
+            for item in params.get("Operations"):
+                obj = Operation()
+                obj._deserialize(item)
+                self.Operations.append(obj)
         self.RequestId = params.get("RequestId")
 
 
@@ -381,6 +557,10 @@ class InstanceInfo(AbstractModel):
         :type IkConfig: :class:`tencentcloud.es.v20180416.models.EsDictionaryInfo`
         :param MasterNodeInfo: 专用主节点配置
         :type MasterNodeInfo: :class:`tencentcloud.es.v20180416.models.MasterNodeInfo`
+        :param CosBackup: cos自动备份配置
+        :type CosBackup: :class:`tencentcloud.es.v20180416.models.CosBackup`
+        :param AllowCosBackup: 是否允许cos自动备份
+        :type AllowCosBackup: bool
         """
         self.InstanceId = None
         self.InstanceName = None
@@ -413,6 +593,8 @@ class InstanceInfo(AbstractModel):
         self.InstanceType = None
         self.IkConfig = None
         self.MasterNodeInfo = None
+        self.CosBackup = None
+        self.AllowCosBackup = None
 
 
     def _deserialize(self, params):
@@ -453,6 +635,60 @@ class InstanceInfo(AbstractModel):
         if params.get("MasterNodeInfo") is not None:
             self.MasterNodeInfo = MasterNodeInfo()
             self.MasterNodeInfo._deserialize(params.get("MasterNodeInfo"))
+        if params.get("CosBackup") is not None:
+            self.CosBackup = CosBackup()
+            self.CosBackup._deserialize(params.get("CosBackup"))
+        self.AllowCosBackup = params.get("AllowCosBackup")
+
+
+class InstanceLog(AbstractModel):
+    """ES集群日志详细信息
+
+    """
+
+    def __init__(self):
+        """
+        :param Time: 日志时间
+        :type Time: str
+        :param Level: 日志级别
+        :type Level: str
+        :param Ip: 集群节点ip
+        :type Ip: str
+        :param Message: 日志内容
+        :type Message: str
+        """
+        self.Time = None
+        self.Level = None
+        self.Ip = None
+        self.Message = None
+
+
+    def _deserialize(self, params):
+        self.Time = params.get("Time")
+        self.Level = params.get("Level")
+        self.Ip = params.get("Ip")
+        self.Message = params.get("Message")
+
+
+class KeyValue(AbstractModel):
+    """OperationDetail使用此结构的数组描述新旧配置
+
+    """
+
+    def __init__(self):
+        """
+        :param Key: 键
+        :type Key: str
+        :param Value: 值
+        :type Value: str
+        """
+        self.Key = None
+        self.Value = None
+
+
+    def _deserialize(self, params):
+        self.Key = params.get("Key")
+        self.Value = params.get("Value")
 
 
 class MasterNodeInfo(AbstractModel):
@@ -474,6 +710,8 @@ class MasterNodeInfo(AbstractModel):
         :type MasterNodeMemSize: int
         :param MasterNodeDiskSize: 专用主节点磁盘大小，单位GB
         :type MasterNodeDiskSize: int
+        :param MasterNodeDiskType: 专用主节点磁盘类型
+        :type MasterNodeDiskType: str
         """
         self.EnableDedicatedMaster = None
         self.MasterNodeType = None
@@ -481,6 +719,7 @@ class MasterNodeInfo(AbstractModel):
         self.MasterNodeCpuNum = None
         self.MasterNodeMemSize = None
         self.MasterNodeDiskSize = None
+        self.MasterNodeDiskType = None
 
 
     def _deserialize(self, params):
@@ -490,6 +729,86 @@ class MasterNodeInfo(AbstractModel):
         self.MasterNodeCpuNum = params.get("MasterNodeCpuNum")
         self.MasterNodeMemSize = params.get("MasterNodeMemSize")
         self.MasterNodeDiskSize = params.get("MasterNodeDiskSize")
+        self.MasterNodeDiskType = params.get("MasterNodeDiskType")
+
+
+class Operation(AbstractModel):
+    """ES集群操作详细信息
+
+    """
+
+    def __init__(self):
+        """
+        :param Id: 操作唯一id
+        :type Id: int
+        :param StartTime: 操作开始时间
+        :type StartTime: str
+        :param Type: 操作类型
+        :type Type: str
+        :param Detail: 操作详情
+        :type Detail: :class:`tencentcloud.es.v20180416.models.OperationDetail`
+        :param Result: 操作结果
+        :type Result: str
+        :param Tasks: 流程任务信息
+        :type Tasks: list of TaskDetail
+        :param Progress: 操作进度
+        :type Progress: float
+        """
+        self.Id = None
+        self.StartTime = None
+        self.Type = None
+        self.Detail = None
+        self.Result = None
+        self.Tasks = None
+        self.Progress = None
+
+
+    def _deserialize(self, params):
+        self.Id = params.get("Id")
+        self.StartTime = params.get("StartTime")
+        self.Type = params.get("Type")
+        if params.get("Detail") is not None:
+            self.Detail = OperationDetail()
+            self.Detail._deserialize(params.get("Detail"))
+        self.Result = params.get("Result")
+        if params.get("Tasks") is not None:
+            self.Tasks = []
+            for item in params.get("Tasks"):
+                obj = TaskDetail()
+                obj._deserialize(item)
+                self.Tasks.append(obj)
+        self.Progress = params.get("Progress")
+
+
+class OperationDetail(AbstractModel):
+    """操作详情
+
+    """
+
+    def __init__(self):
+        """
+        :param OldInfo: 实例原始配置信息
+        :type OldInfo: list of KeyValue
+        :param NewInfo: 实例更新后配置信息
+        :type NewInfo: list of KeyValue
+        """
+        self.OldInfo = None
+        self.NewInfo = None
+
+
+    def _deserialize(self, params):
+        if params.get("OldInfo") is not None:
+            self.OldInfo = []
+            for item in params.get("OldInfo"):
+                obj = KeyValue()
+                obj._deserialize(item)
+                self.OldInfo.append(obj)
+        if params.get("NewInfo") is not None:
+            self.NewInfo = []
+            for item in params.get("NewInfo"):
+                obj = KeyValue()
+                obj._deserialize(item)
+                self.NewInfo.append(obj)
 
 
 class RestartInstanceRequest(AbstractModel):
@@ -501,12 +820,16 @@ class RestartInstanceRequest(AbstractModel):
         """
         :param InstanceId: 要重启的实例ID
         :type InstanceId: str
+        :param ForceRestart: 是否强制重启
+        :type ForceRestart: bool
         """
         self.InstanceId = None
+        self.ForceRestart = None
 
 
     def _deserialize(self, params):
         self.InstanceId = params.get("InstanceId")
+        self.ForceRestart = params.get("ForceRestart")
 
 
 class RestartInstanceResponse(AbstractModel):
@@ -526,6 +849,65 @@ class RestartInstanceResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class SubTaskDetail(AbstractModel):
+    """实例操作记录流程任务中的子任务信息（如升级检查任务中的各个检查项）
+
+    """
+
+    def __init__(self):
+        """
+        :param Name: 子任务名
+        :type Name: str
+        :param Result: 子任务结果
+        :type Result: bool
+        :param ErrMsg: 子任务错误信息
+        :type ErrMsg: str
+        """
+        self.Name = None
+        self.Result = None
+        self.ErrMsg = None
+
+
+    def _deserialize(self, params):
+        self.Name = params.get("Name")
+        self.Result = params.get("Result")
+        self.ErrMsg = params.get("ErrMsg")
+
+
+class TaskDetail(AbstractModel):
+    """实例操作记录中的流程任务信息
+
+    """
+
+    def __init__(self):
+        """
+        :param Name: 任务名
+        :type Name: str
+        :param Progress: 任务进度
+        :type Progress: float
+        :param FinishTime: 任务完成时间
+        :type FinishTime: str
+        :param SubTasks: 子任务
+        :type SubTasks: list of SubTaskDetail
+        """
+        self.Name = None
+        self.Progress = None
+        self.FinishTime = None
+        self.SubTasks = None
+
+
+    def _deserialize(self, params):
+        self.Name = params.get("Name")
+        self.Progress = params.get("Progress")
+        self.FinishTime = params.get("FinishTime")
+        if params.get("SubTasks") is not None:
+            self.SubTasks = []
+            for item in params.get("SubTasks"):
+                obj = SubTaskDetail()
+                obj._deserialize(item)
+                self.SubTasks.append(obj)
+
+
 class UpdateInstanceRequest(AbstractModel):
     """UpdateInstance请求参数结构体
 
@@ -539,7 +921,10 @@ class UpdateInstanceRequest(AbstractModel):
         :type InstanceName: str
         :param NodeNum: 横向扩缩容后的节点个数
         :type NodeNum: int
-        :param EsConfig: 修改后的配置项, JSON格式字符串
+        :param EsConfig: 修改后的配置项, JSON格式字符串。当前仅支持以下配置项：
+action.destructive_requires_name
+indices.fielddata.cache.size
+indices.query.bool.max_clause_count
         :type EsConfig: str
         :param Password: 重置后的Kibana密码, 8到16位，至少包括两项（[a-z,A-Z],[0-9]和[-!@#$%&^*+=_:;,.?]的特殊符号
         :type Password: str
@@ -555,6 +940,16 @@ ES.S1.LARGE16: 4 核 16G
 ES.S1.2XLARGE32: 8 核 32G 
 ES.S1.4XLARGE64: 16 核 64G
         :type NodeType: str
+        :param MasterNodeNum: 专用主节点个数
+        :type MasterNodeNum: int
+        :param MasterNodeType: 专用主节点规格，与NodeType支持的规格相同
+        :type MasterNodeType: str
+        :param MasterNodeDiskSize: 专用主节点磁盘大小， 单位GB（系统默认配置为50GB,暂不支持自定义）
+        :type MasterNodeDiskSize: int
+        :param ForceRestart: 更新配置时是否强制重启
+        :type ForceRestart: bool
+        :param CosBackup: COS自动备份信息
+        :type CosBackup: :class:`tencentcloud.es.v20180416.models.CosBackup`
         """
         self.InstanceId = None
         self.InstanceName = None
@@ -564,6 +959,11 @@ ES.S1.4XLARGE64: 16 核 64G
         self.EsAcl = None
         self.DiskSize = None
         self.NodeType = None
+        self.MasterNodeNum = None
+        self.MasterNodeType = None
+        self.MasterNodeDiskSize = None
+        self.ForceRestart = None
+        self.CosBackup = None
 
 
     def _deserialize(self, params):
@@ -577,6 +977,13 @@ ES.S1.4XLARGE64: 16 核 64G
             self.EsAcl._deserialize(params.get("EsAcl"))
         self.DiskSize = params.get("DiskSize")
         self.NodeType = params.get("NodeType")
+        self.MasterNodeNum = params.get("MasterNodeNum")
+        self.MasterNodeType = params.get("MasterNodeType")
+        self.MasterNodeDiskSize = params.get("MasterNodeDiskSize")
+        self.ForceRestart = params.get("ForceRestart")
+        if params.get("CosBackup") is not None:
+            self.CosBackup = CosBackup()
+            self.CosBackup._deserialize(params.get("CosBackup"))
 
 
 class UpdateInstanceResponse(AbstractModel):

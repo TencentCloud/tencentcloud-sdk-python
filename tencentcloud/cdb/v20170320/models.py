@@ -74,6 +74,68 @@ class AccountInfo(AbstractModel):
         self.CreateTime = params.get("CreateTime")
 
 
+class AddTimeWindowRequest(AbstractModel):
+    """AddTimeWindow请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param InstanceId: 实例ID，格式如：cdb-c1nl9rpv或者cdbro-c1nl9rpv，与云数据库控制台页面中显示的实例ID相同。
+        :type InstanceId: str
+        :param Monday: 星期一的可维护时间段，其中每一个时间段的格式形如：10:00-12:00；起始时间按半个小时对齐；最短半个小时，最长三个小时；最多设置两个时间段；下同。
+        :type Monday: list of str
+        :param Tuesday: 星期二的可维护时间窗口。
+        :type Tuesday: list of str
+        :param Wednesday: 星期三的可维护时间窗口。
+        :type Wednesday: list of str
+        :param Thursday: 星期四的可维护时间窗口。
+        :type Thursday: list of str
+        :param Friday: 星期五的可维护时间窗口。
+        :type Friday: list of str
+        :param Saturday: 星期六的可维护时间窗口。
+        :type Saturday: list of str
+        :param Sunday: 星期日的可维护时间窗口。
+        :type Sunday: list of str
+        """
+        self.InstanceId = None
+        self.Monday = None
+        self.Tuesday = None
+        self.Wednesday = None
+        self.Thursday = None
+        self.Friday = None
+        self.Saturday = None
+        self.Sunday = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.Monday = params.get("Monday")
+        self.Tuesday = params.get("Tuesday")
+        self.Wednesday = params.get("Wednesday")
+        self.Thursday = params.get("Thursday")
+        self.Friday = params.get("Friday")
+        self.Saturday = params.get("Saturday")
+        self.Sunday = params.get("Sunday")
+
+
+class AddTimeWindowResponse(AbstractModel):
+    """AddTimeWindow返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class AssociateSecurityGroupsRequest(AbstractModel):
     """AssociateSecurityGroups请求参数结构体
 
@@ -482,7 +544,7 @@ class CreateDBInstanceHourRequest(AbstractModel):
         :type Port: int
         :param Password: 设置root帐号密码，密码规则：8-64个字符，至少包含字母、数字、字符（支持的字符：_+-&=!@#$%^*()）中的两种，购买主实例时可指定该参数，购买只读实例或者灾备实例时指定该参数无意义
         :type Password: str
-        :param ParamList: 参数列表，参数格式如ParamList.0.Name=auto_increment_increment&ParamList.0.Value=1。可通过[查询参数列表](/document/product/236/6369)查询支持设置的参数
+        :param ParamList: 参数列表，参数格式如ParamList.0.Name=auto_increment&ParamList.0.Value=1。可通过[查询实例的可设置参数列表](https://cloud.tencent.com/document/api/236/20411)查询支持设置的参数
         :type ParamList: list of ParamInfo
         :param ProtectMode: 数据复制方式，默认为0，支持值包括：0-表示异步复制，1-表示半同步复制，2-表示强同步复制，购买主实例时可指定该参数，购买只读实例或者灾备实例时指定该参数无意义
         :type ProtectMode: int
@@ -630,7 +692,7 @@ class CreateDBInstanceRequest(AbstractModel):
         :type DeployMode: int
         :param SlaveZone: 备库1的可用区信息，默认为zone的值
         :type SlaveZone: str
-        :param ParamList: 参数列表，参数格式如ParamList.0.Name=auto_increment&ParamList.0.Value=1。可通过[查询参数列表](/document/product/236/6369)查询支持设置的参数
+        :param ParamList: 参数列表，参数格式如ParamList.0.Name=auto_increment&ParamList.0.Value=1。可通过[查询实例的可设置参数列表](https://cloud.tencent.com/document/api/236/20411)查询支持设置的参数
         :type ParamList: list of ParamInfo
         :param BackupZone: 备库2的可用区ID，默认为0，购买主实例时可指定该参数，购买只读实例或者灾备实例时指定该参数无意义
         :type BackupZone: str
@@ -959,6 +1021,40 @@ class DeleteParamTemplateRequest(AbstractModel):
 
 class DeleteParamTemplateResponse(AbstractModel):
     """DeleteParamTemplate返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class DeleteTimeWindowRequest(AbstractModel):
+    """DeleteTimeWindow请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param InstanceId: 实例ID，格式如：cdb-c1nl9rpv或者cdbro-c1nl9rpv，与云数据库控制台页面中显示的实例ID相同。
+        :type InstanceId: str
+        """
+        self.InstanceId = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+
+
+class DeleteTimeWindowResponse(AbstractModel):
+    """DeleteTimeWindow返回参数结构体
 
     """
 
@@ -2771,6 +2867,68 @@ class DescribeTasksResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeTimeWindowRequest(AbstractModel):
+    """DescribeTimeWindow请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param InstanceId: 实例ID，格式如：cdb-c1nl9rpv或者cdbro-c1nl9rpv，与云数据库控制台页面中显示的实例ID相同。
+        :type InstanceId: str
+        """
+        self.InstanceId = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+
+
+class DescribeTimeWindowResponse(AbstractModel):
+    """DescribeTimeWindow返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Monday: 星期一的可维护时间列表。
+        :type Monday: list of str
+        :param Tuesday: 星期二的可维护时间列表。
+        :type Tuesday: list of str
+        :param Wednesday: 星期三的可维护时间列表。
+        :type Wednesday: list of str
+        :param Thursday: 星期四的可维护时间列表。
+        :type Thursday: list of str
+        :param Friday: 星期五的可维护时间列表。
+        :type Friday: list of str
+        :param Saturday: 星期六的可维护时间列表。
+        :type Saturday: list of str
+        :param Sunday: 星期日的可维护时间列表。
+        :type Sunday: list of str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Monday = None
+        self.Tuesday = None
+        self.Wednesday = None
+        self.Thursday = None
+        self.Friday = None
+        self.Saturday = None
+        self.Sunday = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Monday = params.get("Monday")
+        self.Tuesday = params.get("Tuesday")
+        self.Wednesday = params.get("Wednesday")
+        self.Thursday = params.get("Thursday")
+        self.Friday = params.get("Friday")
+        self.Saturday = params.get("Saturday")
+        self.Sunday = params.get("Sunday")
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeUploadedFilesRequest(AbstractModel):
     """DescribeUploadedFiles请求参数结构体
 
@@ -3197,11 +3355,11 @@ class InquiryPriceUpgradeInstancesRequest(AbstractModel):
         """
         :param InstanceId: 实例ID，格式如：cdb-c1nl9rpv或者cdbro-c1nl9rpv。与云数据库控制台页面中显示的实例ID相同，可使用[查询实例列表](https://cloud.tencent.com/document/api/236/15872) 接口获取，其值为输出参数中字段 InstanceId 的值
         :type InstanceId: str
-        :param Memory: 升级后的内存大小，单位：MB，为保证传入 Memory 值有效，请使用[查询可创建规格（支持可用区、配置自定义）](https://cloud.tencent.com/document/api/253/6109)接口获取可升级的内存规格
+        :param Memory: 升级后的内存大小，单位：MB，为保证传入 Memory 值有效，请使用[获取云数据库可售卖规格](https://cloud.tencent.com/document/product/236/17229)接口获取可升级的内存规格
         :type Memory: int
-        :param Volume: 升级后的硬盘大小，单位：GB，为保证传入 Volume 值有效，请使用[查询可创建规格（支持可用区、配置自定义）](https://cloud.tencent.com/document/api/253/6109)接口获取可升级的硬盘范围
+        :param Volume: 升级后的硬盘大小，单位：GB，为保证传入 Volume 值有效，请使用[获取云数据库可售卖规格](https://cloud.tencent.com/document/product/236/17229)接口获取可升级的硬盘范围
         :type Volume: int
-        :param Cpu: 升级后的核心数目，单位：核，为保证传入 CPU 值有效，请使用[查询可创建规格（支持可用区、配置自定义）](https://cloud.tencent.com/document/api/253/6109)接口获取可升级的核心数目，当未指定该值时，将按照 Memory 大小补全一个默认值
+        :param Cpu: 升级后的核心数目，单位：核，为保证传入 CPU 值有效，请使用[获取云数据库可售卖规格](https://cloud.tencent.com/document/product/236/17229)接口获取可升级的核心数目，当未指定该值时，将按照 Memory 大小补全一个默认值
         :type Cpu: int
         :param ProtectMode: 数据复制方式，支持值包括：0-异步复制，1-半同步复制，2-强同步复制，升级主实例时可指定该参数，升级只读实例或者灾备实例时指定该参数无意义
         :type ProtectMode: int
@@ -3325,6 +3483,10 @@ class InstanceInfo(AbstractModel):
         :type PhysicalId: str
         :param Cpu: 核心数
         :type Cpu: int
+        :param Qps: 每秒查询数量
+        :type Qps: int
+        :param ZoneName: 可用区中文名称
+        :type ZoneName: str
         """
         self.WanStatus = None
         self.Zone = None
@@ -3362,6 +3524,8 @@ class InstanceInfo(AbstractModel):
         self.UniqSubnetId = None
         self.PhysicalId = None
         self.Cpu = None
+        self.Qps = None
+        self.ZoneName = None
 
 
     def _deserialize(self, params):
@@ -3417,6 +3581,8 @@ class InstanceInfo(AbstractModel):
         self.UniqSubnetId = params.get("UniqSubnetId")
         self.PhysicalId = params.get("PhysicalId")
         self.Cpu = params.get("Cpu")
+        self.Qps = params.get("Qps")
+        self.ZoneName = params.get("ZoneName")
 
 
 class InstanceRebootTime(AbstractModel):
@@ -4015,7 +4181,7 @@ class ModifyDBInstanceVipVportResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param AsyncRequestId: 异步任务ID，可使用[查询任务列表](https://cloud.tencent.com/document/api/236/8010)获取其执行情况。
+        :param AsyncRequestId: 异步任务ID。
         :type AsyncRequestId: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -4164,6 +4330,48 @@ class ModifyParamTemplateRequest(AbstractModel):
 
 class ModifyParamTemplateResponse(AbstractModel):
     """ModifyParamTemplate返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class ModifyTimeWindowRequest(AbstractModel):
+    """ModifyTimeWindow请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param InstanceId: 实例ID，格式如：cdb-c1nl9rpv或者cdbro-c1nl9rpv，与云数据库控制台页面中显示的实例ID相同。
+        :type InstanceId: str
+        :param TimeRanges: 修改后的可维护时间段，其中每一个时间段的格式形如：10:00-12:00；起止时间按半个小时对齐；最短半个小时，最长三个小时；最多设置两个时间段；起止时间范围为：[00:00, 24:00]。
+        :type TimeRanges: list of str
+        :param Weekdays: 指定修改哪一天的客户时间段，可能的取值为：monday, tuesday, wednesday, thursday, friday, saturday, sunday。如果不指定该值或者为空，则默认一周七天都修改。
+        :type Weekdays: list of str
+        """
+        self.InstanceId = None
+        self.TimeRanges = None
+        self.Weekdays = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.TimeRanges = params.get("TimeRanges")
+        self.Weekdays = params.get("Weekdays")
+
+
+class ModifyTimeWindowResponse(AbstractModel):
+    """ModifyTimeWindow返回参数结构体
 
     """
 
@@ -4576,9 +4784,9 @@ class RoGroup(AbstractModel):
         :type RoGroupId: str
         :param RoGroupName: 只读组名称
         :type RoGroupName: str
-        :param RoOfflineDelay: 是否启用延迟超限剔除功能，启用该功能后，只读实例与主实例的延迟超过延迟阀值，只读实例将被隔离。可选值：1-启用；0-不启用
+        :param RoOfflineDelay: 是否启用延迟超限剔除功能，启用该功能后，只读实例与主实例的延迟超过延迟阈值，只读实例将被隔离。可选值：1-启用；0-不启用
         :type RoOfflineDelay: int
-        :param RoMaxDelayTime: 延迟阀值
+        :param RoMaxDelayTime: 延迟阈值
         :type RoMaxDelayTime: int
         :param MinRoInGroup: 最少实例保留个数，若购买只读实例数量小于设置数量将不做剔除
         :type MinRoInGroup: int
@@ -5424,7 +5632,7 @@ class UpgradeDBInstanceEngineVersionRequest(AbstractModel):
         :type InstanceId: str
         :param EngineVersion: 主实例数据库引擎版本，支持值包括：5.6和5.7
         :type EngineVersion: str
-        :param WaitSwitch: 切换访问新实例的方式，默认为0，升级主实例时，可指定该参数，升级只读实例或者灾备实例时指定该参数无意义，支持值包括：0-立刻切换，1-时间窗切换；当该值为1时，升级中过程中，切换访问新实例的流程将会在时间窗内进行，或者用户主动调用接口[切换访问新实例](https://cloud.tencent.com/document/api/403/4392)触发该流程
+        :param WaitSwitch: 切换访问新实例的方式，默认为0，升级主实例时，可指定该参数，升级只读实例或者灾备实例时指定该参数无意义，支持值包括：0-立刻切换，1-时间窗切换；当该值为1时，升级中过程中，切换访问新实例的流程将会在时间窗内进行，或者用户主动调用接口[切换访问新实例](https://cloud.tencent.com/document/product/236/15864)触发该流程
         :type WaitSwitch: int
         """
         self.InstanceId = None
@@ -5445,7 +5653,7 @@ class UpgradeDBInstanceEngineVersionResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param AsyncRequestId: 异步任务ID，可使用[查询任务列表](https://cloud.tencent.com/document/api/236/8010)获取其执行情况
+        :param AsyncRequestId: 异步任务ID，可使用[查询异步任务的执行结果](https://cloud.tencent.com/document/api/236/20410)获取其执行情况。
         :type AsyncRequestId: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -5468,19 +5676,19 @@ class UpgradeDBInstanceRequest(AbstractModel):
         """
         :param InstanceId: 实例ID，格式如：cdb-c1nl9rpv或者cdbro-c1nl9rpv。与云数据库控制台页面中显示的实例ID相同，可使用[查询实例列表](https://cloud.tencent.com/document/api/236/15872) 接口获取，其值为输出参数中字段 InstanceId 的值
         :type InstanceId: str
-        :param Memory: 升级后的内存大小，单位：MB，为保证传入 Memory 值有效，请使用[查询可创建规格（支持可用区、配置自定义）](https://cloud.tencent.com/document/api/253/6109)接口获取可升级的内存规格
+        :param Memory: 升级后的内存大小，单位：MB，为保证传入 Memory 值有效，请使用[获取云数据库可售卖规格](https://cloud.tencent.com/document/product/236/17229)接口获取可升级的内存规格
         :type Memory: int
-        :param Volume: 升级后的硬盘大小，单位：GB，为保证传入 Volume 值有效，请使用[查询可创建规格（支持可用区、配置自定义）](https://cloud.tencent.com/document/api/253/6109)接口获取可升级的硬盘范围
+        :param Volume: 升级后的硬盘大小，单位：GB，为保证传入 Volume 值有效，请使用[获取云数据库可售卖规格](https://cloud.tencent.com/document/product/236/17229)接口获取可升级的硬盘范围
         :type Volume: int
         :param ProtectMode: 数据复制方式，支持值包括：0-异步复制，1-半同步复制，2-强同步复制，升级主实例时可指定该参数，升级只读实例或者灾备实例时指定该参数无意义
         :type ProtectMode: int
         :param DeployMode: 部署模式，默认为0，支持值包括：0-单可用区部署，1-多可用区部署，升级主实例时可指定该参数，升级只读实例或者灾备实例时指定该参数无意义
         :type DeployMode: int
-        :param SlaveZone: 备库1的可用区信息，默认为实例的Zone，升级主实例为多可用区部署时可指定该参数，升级只读实例或者灾备实例时指定该参数无意义。可通过<a href='/document/product/236/6921' title='查询云数据库可售卖规格'>查询云数据库可售卖规格</a>查询支持的可用区
+        :param SlaveZone: 备库1的可用区信息，默认和实例的Zone参数一致，升级主实例为多可用区部署时可指定该参数，升级只读实例或者灾备实例时指定该参数无意义。可通过[获取云数据库可售卖规格](https://cloud.tencent.com/document/product/236/17229)接口查询支持的可用区
         :type SlaveZone: str
         :param EngineVersion: 主实例数据库引擎版本，支持值包括：5.5、5.6和5.7
         :type EngineVersion: str
-        :param WaitSwitch: 切换访问新实例的方式，默认为0，升级主实例时，可指定该参数，升级只读实例或者灾备实例时指定该参数无意义，支持值包括：0-立刻切换，1-时间窗切换；当该值为1时，升级中过程中，切换访问新实例的流程将会在时间窗内进行，或者用户主动调用接口[切换访问新实例](https://cloud.tencent.com/document/api/403/4392)触发该流程
+        :param WaitSwitch: 切换访问新实例的方式，默认为0，升级主实例时，可指定该参数，升级只读实例或者灾备实例时指定该参数无意义，支持值包括：0-立刻切换，1-时间窗切换；当该值为1时，升级中过程中，切换访问新实例的流程将会在时间窗内进行，或者用户主动调用接口[切换访问新实例](https://cloud.tencent.com/document/product/236/15864)触发该流程
         :type WaitSwitch: int
         :param BackupZone: 备库2的可用区ID，默认为0，升级主实例时可指定该参数，升级只读实例或者灾备实例时指定该参数无意义
         :type BackupZone: str
@@ -5519,7 +5727,7 @@ class UpgradeDBInstanceResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param DealIds: 订单ID，用于调用云API相关接口，如[获取订单信息](https://cloud.tencent.com/document/api/403/4392)
+        :param DealIds: 订单ID
         :type DealIds: list of str
         :param AsyncRequestId: 异步任务的请求ID，可使用此ID查询异步任务的执行结果
         :type AsyncRequestId: str
@@ -5662,6 +5870,8 @@ class ZoneSellConf(AbstractModel):
         :type SellType: list of SellType
         :param ZoneConf: 多可用区信息
         :type ZoneConf: :class:`tencentcloud.cdb.v20170320.models.ZoneConf`
+        :param DrZone: 可支持的灾备可用区信息
+        :type DrZone: list of str
         """
         self.Status = None
         self.ZoneName = None
@@ -5676,6 +5886,7 @@ class ZoneSellConf(AbstractModel):
         self.Zone = None
         self.SellType = None
         self.ZoneConf = None
+        self.DrZone = None
 
 
     def _deserialize(self, params):
@@ -5699,3 +5910,4 @@ class ZoneSellConf(AbstractModel):
         if params.get("ZoneConf") is not None:
             self.ZoneConf = ZoneConf()
             self.ZoneConf._deserialize(params.get("ZoneConf"))
+        self.DrZone = params.get("DrZone")

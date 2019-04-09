@@ -115,18 +115,24 @@ class CompareFaceRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param ImageA: A 图片 base64 数据。支持PNG、JPG、JPEG、BMP，不支持 GIF 图片。
+        :param ImageA: A 图片 base64 数据。
+若图片中包含多张人脸，只选取其中人脸面积最大的人脸。
+支持PNG、JPG、JPEG、BMP，不支持 GIF 图片。
         :type ImageA: str
-        :param ImageB: B 图片 base64 数据。支持PNG、JPG、JPEG、BMP，不支持 GIF 图片。
+        :param ImageB: B 图片 base64 数据。
+若图片中包含多张人脸，只选取其中人脸面积最大的人脸。
+支持PNG、JPG、JPEG、BMP，不支持 GIF 图片。
         :type ImageB: str
         :param UrlA: A 图片的 Url 。A 图片的 Url、Image必须提供一个，如果都提供，只使用 Url。 
 图片存储于腾讯云的Url可保障更高下载速度和稳定性，建议图片存储于腾讯云。 
 非腾讯云存储的Url速度和稳定性可能受一定影响。
+若图片中包含多张人脸，只选取其中人脸面积最大的人脸。
 支持PNG、JPG、JPEG、BMP，不支持 GIF 图片。
         :type UrlA: str
         :param UrlB: B 图片的 Url 。B 图片的 Url、Image必须提供一个，如果都提供，只使用 Url。 
 图片存储于腾讯云的Url可保障更高下载速度和稳定性，建议图片存储于腾讯云。 
 非腾讯云存储的Url速度和稳定性可能受一定影响。
+若图片中包含多张人脸，只选取其中人脸面积最大的人脸。
 支持PNG、JPG、JPEG、BMP，不支持 GIF 图片。
         :type UrlB: str
         """
@@ -223,12 +229,14 @@ class CreateFaceRequest(AbstractModel):
         :param PersonId: 人员ID。
         :type PersonId: str
         :param Images: 图片 base64 数据。人员人脸总数量不可超过5张。
+若图片中包含多张人脸，只选取其中人脸面积最大的人脸。
 支持PNG、JPG、JPEG、BMP，不支持 GIF 图片。
         :type Images: list of str
         :param Urls: 图片的 Url、Image必须提供一个，如果都提供，只使用 Url。
 图片存储于腾讯云的Url可保障更高下载速度和稳定性，建议图片存储于腾讯云。 
 非腾讯云存储的Url速度和稳定性可能受一定影响。 
 人员人脸总数量不可超过5张。
+若图片中包含多张人脸，只选取其中人脸面积最大的人脸。
 支持PNG、JPG、JPEG、BMP，不支持 GIF 图片。
         :type Urls: list of str
         """
@@ -254,7 +262,7 @@ class CreateFaceResponse(AbstractModel):
         :type SucFaceNum: int
         :param SucFaceIds: 加入成功的人脸ID列表
         :type SucFaceIds: list of str
-        :param RetCode: 每张人脸图片添加结果的返回码
+        :param RetCode: 每张人脸图片添加结果，-1101 代表未检测到人脸，-1102 代表图片解码失败，其他非 0 值代表算法服务异常。
         :type RetCode: list of int
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -341,11 +349,14 @@ class CreatePersonRequest(AbstractModel):
         :type Gender: int
         :param PersonExDescriptionInfos: 人员描述字段内容，key-value。[0，60]个字符，可修改，可重复。
         :type PersonExDescriptionInfos: list of PersonExDescriptionInfo
-        :param Image: 图片 base64 数据。支持PNG、JPG、JPEG、BMP，不支持 GIF 图片。
+        :param Image: 图片 base64 数据。
+若图片中包含多张人脸，只选取其中人脸面积最大的人脸。
+支持PNG、JPG、JPEG、BMP，不支持 GIF 图片。
         :type Image: str
         :param Url: 图片的 Url、Image必须提供一个，如果都提供，只使用 Url。
 图片存储于腾讯云的Url可保障更高下载速度和稳定性，建议图片存储于腾讯云。 
 非腾讯云存储的Url速度和稳定性可能受一定影响。
+若图片中包含多张人脸，只选取其中人脸面积最大的人脸。
 支持PNG、JPG、JPEG、BMP，不支持 GIF 图片。
         :type Url: str
         """
@@ -701,10 +712,13 @@ class FaceAttributesInfo(AbstractModel):
         :param Beauty: 魅力[0~100]。NeedFaceAttributes 不为1 或检测超过 5 张人脸时，此参数仍返回，但不具备参考意义。
         :type Beauty: int
         :param Hat: 是否有帽子 [true,false]。NeedFaceAttributes 不为1 或检测超过 5 张人脸时，此参数仍返回，但不具备参考意义。
+注意：此字段可能返回 null，表示取不到有效值。
         :type Hat: bool
         :param Mask: 是否有口罩 [true,false]。NeedFaceAttributes 不为1 或检测超过 5 张人脸时，此参数仍返回，但不具备参考意义。
+注意：此字段可能返回 null，表示取不到有效值。
         :type Mask: bool
         :param Hair: 头发信息，包含头发长度（length）、有无刘海（bang）、头发颜色（color）。
+注意：此字段可能返回 null，表示取不到有效值。
         :type Hair: :class:`tencentcloud.iai.v20180301.models.FaceHairAttributesInfo`
         """
         self.Gender = None
@@ -744,10 +758,13 @@ class FaceHairAttributesInfo(AbstractModel):
     def __init__(self):
         """
         :param Length: 0：光头，1：短发，2：中发，3：长发，4：绑发
+注意：此字段可能返回 null，表示取不到有效值。
         :type Length: int
         :param Bang: 0：有刘海，1：无刘海
+注意：此字段可能返回 null，表示取不到有效值。
         :type Bang: int
         :param Color: 0：黑色，1：金色，2：棕色，3：灰白色
+注意：此字段可能返回 null，表示取不到有效值。
         :type Color: int
         """
         self.Length = None
@@ -768,9 +785,13 @@ class FaceInfo(AbstractModel):
 
     def __init__(self):
         """
-        :param X: 人脸框左上角 x。
+        :param X: 人脸框左上角横坐标。
+人脸框包含人脸五官位置并在此基础上进行一定的扩展，若人脸框超出图片范围，会导致坐标负值。 
+若需截取完整人脸，可以在完整分completess满足需求的情况下，将负值坐标取0。
         :type X: int
-        :param Y: 人脸框左上角 y。
+        :param Y: 人脸框左上角纵坐标。 
+人脸框包含人脸五官位置并在此基础上进行一定的扩展，若人脸框超出图片范围，会导致坐标负值。 
+若需截取完整人脸，可以在完整分completess满足需求的情况下，将负值坐标取0。
         :type Y: int
         :param Width: 人脸框宽度。
         :type Width: int
@@ -780,6 +801,7 @@ class FaceInfo(AbstractModel):
 魅力( beauty )、眼镜( glass )、口罩（mask）、头发（hair）和姿态 (pitch，roll，yaw )。只有当 NeedFaceAttributes 设为 1 时才返回有效信息。
         :type FaceAttributesInfo: :class:`tencentcloud.iai.v20180301.models.FaceAttributesInfo`
         :param FaceQualityInfo: 人脸质量信息，包含质量分（score）、模糊分（sharpness）、光照分（brightness）、遮挡分（completeness）。只有当NeedFaceDetection设为1时才返回有效信息。
+注意：此字段可能返回 null，表示取不到有效值。
         :type FaceQualityInfo: :class:`tencentcloud.iai.v20180301.models.FaceQualityInfo`
         """
         self.X = None
@@ -812,21 +834,27 @@ class FaceQualityCompleteness(AbstractModel):
         """
         :param Eyebrow: 眉毛的遮挡分数[0,100]，分数越高遮挡越少。 
 参考范围：[0,80]表示发生遮挡。
+注意：此字段可能返回 null，表示取不到有效值。
         :type Eyebrow: int
         :param Eye: 眼睛的遮挡分数[0,100],分数越高遮挡越少。 
 参考范围：[0,80]表示发生遮挡。
+注意：此字段可能返回 null，表示取不到有效值。
         :type Eye: int
         :param Nose: 鼻子的遮挡分数[0,100],分数越高遮挡越少。 
 参考范围：[0,60]表示发生遮挡。
+注意：此字段可能返回 null，表示取不到有效值。
         :type Nose: int
         :param Cheek: 脸颊的遮挡分数[0,100],分数越高遮挡越少。 
 参考范围：[0,70]表示发生遮挡。
+注意：此字段可能返回 null，表示取不到有效值。
         :type Cheek: int
         :param Mouth: 嘴巴的遮挡分数[0,100],分数越高遮挡越少。 
 参考范围：[0,50]表示发生遮挡。
+注意：此字段可能返回 null，表示取不到有效值。
         :type Mouth: int
         :param Chin: 下巴的遮挡分数[0,100],分数越高遮挡越少。 
 参考范围：[0,70]表示发生遮挡。
+注意：此字段可能返回 null，表示取不到有效值。
         :type Chin: int
         """
         self.Eyebrow = None
@@ -856,16 +884,20 @@ class FaceQualityInfo(AbstractModel):
         :param Score: 质量分: [0,100]，综合评价图像质量是否适合人脸识别，分数越高质量越好。 
 参考范围：[0,40]较差，[40,60] 一般，[60,80]较好，[80,100]很好。 
 建议：人脸入库选取70以上的图片。
+注意：此字段可能返回 null，表示取不到有效值。
         :type Score: int
         :param Sharpness: 清晰分：[0,100]，评价图片清晰程度，分数越高越清晰。 
 参考范围：[0,40]特别模糊，[40,60]模糊，[60,80]一般，[80,100]清晰。 
 建议：人脸入库选取80以上的图片。
+注意：此字段可能返回 null，表示取不到有效值。
         :type Sharpness: int
         :param Brightness: 光照分：[0,100]，评价图片光照程度，分数越高越亮。 
 参考范围： [0,30]偏暗，[30,70]光照正常，[70,100]偏亮。 
 建议：人脸入库选取[30,70]的图片。
+注意：此字段可能返回 null，表示取不到有效值。
         :type Brightness: int
         :param Completeness: 五官遮挡分，评价眉毛（Eyebrow）、眼睛（Eye）、鼻子（Nose）、脸颊（Cheek）、嘴巴（Mouth）、下巴（Chin）的被遮挡程度。
+注意：此字段可能返回 null，表示取不到有效值。
         :type Completeness: :class:`tencentcloud.iai.v20180301.models.FaceQualityCompleteness`
         """
         self.Score = None
@@ -890,9 +922,13 @@ class FaceRect(AbstractModel):
 
     def __init__(self):
         """
-        :param X: 人脸位置左上角横坐标
+        :param X: 人脸框左上角纵坐标。 
+人脸框包含人脸五官位置并在此基础上进行一定的扩展，若人脸框超出图片范围，会导致坐标负值。 
+若需截取完整人脸，可以在完整分completess满足需求的情况下，将负值坐标取0。
         :type X: int
-        :param Y: 人脸位置左上角纵坐标
+        :param Y: 人脸框左上角纵坐标。 
+人脸框包含人脸五官位置并在此基础上进行一定的扩展，若人脸框超出图片范围，会导致坐标负值。 
+若需截取完整人脸，可以在完整分completess满足需求的情况下，将负值坐标取0。
         :type Y: int
         :param Width: 人脸宽度
         :type Width: int
@@ -1037,6 +1073,7 @@ class GetGroupListResponse(AbstractModel):
         :param GroupInfos: 返回的人员库信息
         :type GroupInfos: list of GroupInfo
         :param GroupNum: 人员库总数量
+注意：此字段可能返回 null，表示取不到有效值。
         :type GroupNum: int
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -1138,6 +1175,7 @@ class GetPersonGroupInfoResponse(AbstractModel):
         :param PersonGroupInfos: 包含此人员的人员库及描述字段内容列表
         :type PersonGroupInfos: list of PersonGroupInfo
         :param GroupNum: 人员库总数量
+注意：此字段可能返回 null，表示取不到有效值。
         :type GroupNum: int
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -1235,8 +1273,10 @@ class GetPersonListResponse(AbstractModel):
         :param PersonInfos: 返回的人员信息
         :type PersonInfos: list of PersonInfo
         :param PersonNum: 该人员库的人员数量
+注意：此字段可能返回 null，表示取不到有效值。
         :type PersonNum: int
         :param FaceNum: 该人员库的人脸数量
+注意：此字段可能返回 null，表示取不到有效值。
         :type FaceNum: int
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -1292,8 +1332,10 @@ class GroupInfo(AbstractModel):
         :param GroupId: 人员库ID
         :type GroupId: str
         :param GroupExDescriptions: 人员库自定义描述字段
+注意：此字段可能返回 null，表示取不到有效值。
         :type GroupExDescriptions: list of str
         :param Tag: 人员库信息备注
+注意：此字段可能返回 null，表示取不到有效值。
         :type Tag: str
         """
         self.GroupName = None
@@ -1655,11 +1697,14 @@ class VerifyFaceRequest(AbstractModel):
         """
         :param PersonId: 待验证的人员ID。人员ID具体信息请参考人员库管理相关接口。
         :type PersonId: str
-        :param Image: 图片 base64 数据。支持PNG、JPG、JPEG、BMP，不支持 GIF 图片。
+        :param Image: 图片 base64 数据。
+若图片中包含多张人脸，只选取其中人脸面积最大的人脸。
+支持PNG、JPG、JPEG、BMP，不支持 GIF 图片。
         :type Image: str
         :param Url: 图片的 Url 。 图片的 Url、Image必须提供一个，如果都提供，只使用 Url。 
 图片存储于腾讯云的Url可保障更高下载速度和稳定性，建议图片存储于腾讯云。 
 非腾讯云存储的Url速度和稳定性可能受一定影响。
+若图片中包含多张人脸，只选取其中人脸面积最大的人脸。
 支持PNG、JPG、JPEG、BMP，不支持 GIF 图片。
         :type Url: str
         """

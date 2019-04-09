@@ -340,6 +340,7 @@ class CreateDBInstanceResponse(AbstractModel):
  查询订单详细信息，或在支付失败时调用用户账号相关接口进行支付。
         :type DealName: str
         :param InstanceIds: 订单对应的实例 ID 列表，如果此处没有返回实例 ID，可以通过订单查询接口获取。还可通过实例查询接口查询实例是否创建完成。
+注意：此字段可能返回 null，表示取不到有效值。
         :type InstanceIds: list of str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -375,6 +376,7 @@ class DBAccount(AbstractModel):
         :param ReadOnly: 只读标记，0：否， 1：该账号的sql请求优先选择备机执行，备机不可用时选择主机执行，2：优先选择备机执行，备机不可用时操作失败。
         :type ReadOnly: int
         :param DelayThresh: 该字段对只读帐号有意义，表示选择主备延迟小于该值的备机
+注意：此字段可能返回 null，表示取不到有效值。
         :type DelayThresh: int
         """
         self.UserName = None
@@ -491,13 +493,20 @@ class DBInstance(AbstractModel):
         :param Qps: 最大 Qps 值
         :type Qps: int
         :param Paymode: 付费模式
+注意：此字段可能返回 null，表示取不到有效值。
         :type Paymode: str
         :param Locker: 实例处于异步任务时的异步任务流程ID
+注意：此字段可能返回 null，表示取不到有效值。
         :type Locker: int
         :param StatusDesc: 实例目前运行状态描述
+注意：此字段可能返回 null，表示取不到有效值。
         :type StatusDesc: str
         :param WanStatus: 外网状态，0-未开通；1-已开通；2-关闭；3-开通中
         :type WanStatus: int
+        :param IsAuditSupported: 该实例是否支持审计。1-支持；0-不支持
+        :type IsAuditSupported: int
+        :param Machine: 机器型号
+        :type Machine: str
         """
         self.InstanceId = None
         self.InstanceName = None
@@ -534,6 +543,8 @@ class DBInstance(AbstractModel):
         self.Locker = None
         self.StatusDesc = None
         self.WanStatus = None
+        self.IsAuditSupported = None
+        self.Machine = None
 
 
     def _deserialize(self, params):
@@ -572,6 +583,8 @@ class DBInstance(AbstractModel):
         self.Locker = params.get("Locker")
         self.StatusDesc = params.get("StatusDesc")
         self.WanStatus = params.get("WanStatus")
+        self.IsAuditSupported = params.get("IsAuditSupported")
+        self.Machine = params.get("Machine")
 
 
 class DBParamValue(AbstractModel):
@@ -611,6 +624,7 @@ class Deal(AbstractModel):
         :param FlowId: 关联的流程 Id，可用于查询流程执行状态
         :type FlowId: int
         :param InstanceIds: 只有创建实例的订单会填充该字段，表示该订单创建的实例的 ID。
+注意：此字段可能返回 null，表示取不到有效值。
         :type InstanceIds: list of str
         :param PayMode: 付费模式，0后付费/1预付费
         :type PayMode: int
@@ -822,6 +836,7 @@ class DescribeBackupTimeResponse(AbstractModel):
         :param TotalCount: 返回的配置数量
         :type TotalCount: int
         :param Items: 实例备份时间配置信息
+注意：此字段可能返回 null，表示取不到有效值。
         :type Items: :class:`tencentcloud.mariadb.v20170312.models.DBBackupTimeConfig`
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -1281,8 +1296,10 @@ class DescribeDBResourceUsageDetailsResponse(AbstractModel):
         :param Master: 主节点资源使用情况监控数据
         :type Master: :class:`tencentcloud.mariadb.v20170312.models.ResourceUsageMonitorSet`
         :param Slave1: 备机1资源使用情况监控数据
+注意：此字段可能返回 null，表示取不到有效值。
         :type Slave1: :class:`tencentcloud.mariadb.v20170312.models.ResourceUsageMonitorSet`
         :param Slave2: 备机2资源使用情况监控数据
+注意：此字段可能返回 null，表示取不到有效值。
         :type Slave2: :class:`tencentcloud.mariadb.v20170312.models.ResourceUsageMonitorSet`
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -1865,7 +1882,7 @@ class GrantAccountPrivilegesRequest(AbstractModel):
         :type UserName: str
         :param Host: 用户允许的访问 host，用户名+host唯一确定一个账号。
         :type Host: str
-        :param DbName: 数据库名。如果为 \*，表示设置全局权限（即 \*.\*），此时忽略 Type 和 Object 参数
+        :param DbName: 数据库名。如果为 \*，表示设置全局权限（即 \*.\*），此时忽略 Type 和 Object 参数。当DbName不为\*时，需要传入参 Type。
         :type DbName: str
         :param Privileges: 全局权限： SELECT，INSERT，UPDATE，DELETE，CREATE，DROP，REFERENCES，INDEX，ALTER，CREATE TEMPORARY TABLES，LOCK TABLES，EXECUTE，CREATE VIEW，SHOW VIEW，CREATE ROUTINE，ALTER ROUTINE，EVENT，TRIGGER，SHOW DATABASES 
 库权限： SELECT，INSERT，UPDATE，DELETE，CREATE，DROP，REFERENCES，INDEX，ALTER，CREATE TEMPORARY TABLES，LOCK TABLES，EXECUTE，CREATE VIEW，SHOW VIEW，CREATE ROUTINE，ALTER ROUTINE，EVENT，TRIGGER 
@@ -2386,6 +2403,7 @@ class ParamConstraint(AbstractModel):
         :param Enum: 约束类型为enum时的可选值列表
         :type Enum: str
         :param Range: 约束类型为section时的范围
+注意：此字段可能返回 null，表示取不到有效值。
         :type Range: :class:`tencentcloud.mariadb.v20170312.models.ConstraintRange`
         :param String: 约束类型为string时的可选值列表
         :type String: str
@@ -2417,6 +2435,7 @@ class ParamDesc(AbstractModel):
         :param Value: 当前参数值
         :type Value: str
         :param SetValue: 设置过的值，参数生效后，该值和value一样。未设置过就不返回该字段。
+注意：此字段可能返回 null，表示取不到有效值。
         :type SetValue: str
         :param Default: 系统默认值
         :type Default: str

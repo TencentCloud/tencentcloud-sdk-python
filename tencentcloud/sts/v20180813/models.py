@@ -81,9 +81,9 @@ class Credentials(AbstractModel):
         """
         :param Token: token
         :type Token: str
-        :param TmpSecretId: 临时证书秘钥ID
+        :param TmpSecretId: 临时证书密钥ID
         :type TmpSecretId: str
-        :param TmpSecretKey: 临时证书秘钥Key
+        :param TmpSecretKey: 临时证书密钥Key
         :type TmpSecretKey: str
         """
         self.Token = None
@@ -114,52 +114,16 @@ class GetFederationTokenRequest(AbstractModel):
         :type Policy: str
         :param DurationSeconds: 指定临时证书的有效期，单位：秒，默认1800秒，最长可设定有效期为7200秒
         :type DurationSeconds: int
-        :param OpenUin: 兼容uin名单
-        :type OpenUin: int
-        :param OpenOwnerUin: 兼容OwnerUin名单
-        :type OpenOwnerUin: int
-        :param Ua: ua
-        :type Ua: str
-        :param Mfa: mfa
-        :type Mfa: int
-        :param InterfaceName: interfaceName
-        :type InterfaceName: str
-        :param ExtraInfo: extraInfo
-        :type ExtraInfo: str
-        :param ThUin: thUin
-        :type ThUin: int
-        :param ThOwnerUin: thOwnerUin
-        :type ThOwnerUin: int
-        :param CodeMode: codeMode
-        :type CodeMode: str
         """
         self.Name = None
         self.Policy = None
         self.DurationSeconds = None
-        self.OpenUin = None
-        self.OpenOwnerUin = None
-        self.Ua = None
-        self.Mfa = None
-        self.InterfaceName = None
-        self.ExtraInfo = None
-        self.ThUin = None
-        self.ThOwnerUin = None
-        self.CodeMode = None
 
 
     def _deserialize(self, params):
         self.Name = params.get("Name")
         self.Policy = params.get("Policy")
         self.DurationSeconds = params.get("DurationSeconds")
-        self.OpenUin = params.get("OpenUin")
-        self.OpenOwnerUin = params.get("OpenOwnerUin")
-        self.Ua = params.get("Ua")
-        self.Mfa = params.get("Mfa")
-        self.InterfaceName = params.get("InterfaceName")
-        self.ExtraInfo = params.get("ExtraInfo")
-        self.ThUin = params.get("ThUin")
-        self.ThOwnerUin = params.get("ThOwnerUin")
-        self.CodeMode = params.get("CodeMode")
 
 
 class GetFederationTokenResponse(AbstractModel):

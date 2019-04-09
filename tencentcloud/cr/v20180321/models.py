@@ -29,10 +29,13 @@ class ApplyBlackListRequest(AbstractModel):
         :type Operation: str
         :param BlackList: 黑名单列表
         :type BlackList: list of SingleBlackApply
+        :param InstId: 实例ID，不传默认为系统分配的初始实例
+        :type InstId: str
         """
         self.Module = None
         self.Operation = None
         self.BlackList = None
+        self.InstId = None
 
 
     def _deserialize(self, params):
@@ -44,6 +47,7 @@ class ApplyBlackListRequest(AbstractModel):
                 obj = SingleBlackApply()
                 obj._deserialize(item)
                 self.BlackList.append(obj)
+        self.InstId = params.get("InstId")
 
 
 class ApplyBlackListResponse(AbstractModel):
@@ -60,6 +64,149 @@ class ApplyBlackListResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class ApplyCreditAuditRequest(AbstractModel):
+    """ApplyCreditAudit请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Module: 模块
+        :type Module: str
+        :param Operation: 操作
+        :type Operation: str
+        :param InstId: 实例ID
+        :type InstId: str
+        :param ProductId: 产品ID，形如P******。
+        :type ProductId: str
+        :param CaseId: 信审任务ID，同一天内，同一InstId下，同一CaseId只能调用一次。
+        :type CaseId: str
+        :param CallbackUrl: 回调地址
+        :type CallbackUrl: str
+        :param Data: JSON格式的业务字段。
+        :type Data: str
+        """
+        self.Module = None
+        self.Operation = None
+        self.InstId = None
+        self.ProductId = None
+        self.CaseId = None
+        self.CallbackUrl = None
+        self.Data = None
+
+
+    def _deserialize(self, params):
+        self.Module = params.get("Module")
+        self.Operation = params.get("Operation")
+        self.InstId = params.get("InstId")
+        self.ProductId = params.get("ProductId")
+        self.CaseId = params.get("CaseId")
+        self.CallbackUrl = params.get("CallbackUrl")
+        self.Data = params.get("Data")
+
+
+class ApplyCreditAuditResponse(AbstractModel):
+    """ApplyCreditAudit返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestDate: 请求日期
+        :type RequestDate: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestDate = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestDate = params.get("RequestDate")
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeCreditResultRequest(AbstractModel):
+    """DescribeCreditResult请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Module: 模块
+        :type Module: str
+        :param Operation: 操作
+        :type Operation: str
+        :param InstId: 实例ID
+        :type InstId: str
+        :param ProductId: 产品ID，形如P******。
+        :type ProductId: str
+        :param CaseId: 信审任务ID
+        :type CaseId: str
+        :param RequestDate: 请求日期
+        :type RequestDate: str
+        """
+        self.Module = None
+        self.Operation = None
+        self.InstId = None
+        self.ProductId = None
+        self.CaseId = None
+        self.RequestDate = None
+
+
+    def _deserialize(self, params):
+        self.Module = params.get("Module")
+        self.Operation = params.get("Operation")
+        self.InstId = params.get("InstId")
+        self.ProductId = params.get("ProductId")
+        self.CaseId = params.get("CaseId")
+        self.RequestDate = params.get("RequestDate")
+
+
+class DescribeCreditResultResponse(AbstractModel):
+    """DescribeCreditResult返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ResultCode: <p>呼叫结果，取值范围：</p><ul style="margin-bottom:0px;"><li>NON：接通</li><li>DBU：号码忙</li><li>DRF：不在服务区</li><li>ANA：欠费未接听</li><li>REJ：拒接</li><li>SHU：关机</li><li>NAN：空号</li><li>HAL：停机</li><li>DAD：未接听</li><li>EXE：其他异常</li></ul>
+        :type ResultCode: str
+        :param ClientCode: 客户标识代码，多个标识码以英文逗号分隔，ResultCode为NON时才有。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ClientCode: str
+        :param RingStartTime: 开始振铃时间，ResultCode为NON或DAD时才有此字段。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RingStartTime: str
+        :param RingDuration: 振铃时长
+        :type RingDuration: int
+        :param AnswerDuration: 接通时长
+        :type AnswerDuration: int
+        :param ContextValue: JSON格式的扩展信息字段，ResultCode为NON时才有。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ContextValue: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.ResultCode = None
+        self.ClientCode = None
+        self.RingStartTime = None
+        self.RingDuration = None
+        self.AnswerDuration = None
+        self.ContextValue = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.ResultCode = params.get("ResultCode")
+        self.ClientCode = params.get("ClientCode")
+        self.RingStartTime = params.get("RingStartTime")
+        self.RingDuration = params.get("RingDuration")
+        self.AnswerDuration = params.get("AnswerDuration")
+        self.ContextValue = params.get("ContextValue")
         self.RequestId = params.get("RequestId")
 
 
@@ -88,6 +235,8 @@ class DescribeRecordsRequest(AbstractModel):
         :type Offset: str
         :param Limit: 分页参数，页长
         :type Limit: str
+        :param InstId: 实例ID，不传默认为系统分配的初始实例
+        :type InstId: str
         """
         self.Module = None
         self.Operation = None
@@ -98,6 +247,7 @@ class DescribeRecordsRequest(AbstractModel):
         self.EndBizDate = None
         self.Offset = None
         self.Limit = None
+        self.InstId = None
 
 
     def _deserialize(self, params):
@@ -110,6 +260,7 @@ class DescribeRecordsRequest(AbstractModel):
         self.EndBizDate = params.get("EndBizDate")
         self.Offset = params.get("Offset")
         self.Limit = params.get("Limit")
+        self.InstId = params.get("InstId")
 
 
 class DescribeRecordsResponse(AbstractModel):
@@ -120,6 +271,7 @@ class DescribeRecordsResponse(AbstractModel):
     def __init__(self):
         """
         :param RecordList: 录音列表。
+注意：此字段可能返回 null，表示取不到有效值。
         :type RecordList: list of SingleRecord
         :param TotalCount: 录音总量。
         :type TotalCount: int
@@ -205,16 +357,20 @@ class DownloadReportRequest(AbstractModel):
         :type Operation: str
         :param ReportDate: 报告日期
         :type ReportDate: str
+        :param InstId: 实例ID，不传默认为系统分配的初始实例。
+        :type InstId: str
         """
         self.Module = None
         self.Operation = None
         self.ReportDate = None
+        self.InstId = None
 
 
     def _deserialize(self, params):
         self.Module = params.get("Module")
         self.Operation = params.get("Operation")
         self.ReportDate = params.get("ReportDate")
+        self.InstId = params.get("InstId")
 
 
 class DownloadReportResponse(AbstractModel):
@@ -224,18 +380,33 @@ class DownloadReportResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param DailyReportUrl: 日报下载地址
+        :param DailyReportUrl: 催收日报下载地址
+注意：此字段可能返回 null，表示取不到有效值。
         :type DailyReportUrl: str
-        :param ResultReportUrl: 结果下载地址
+        :param ResultReportUrl: 催收结果下载地址
+注意：此字段可能返回 null，表示取不到有效值。
         :type ResultReportUrl: str
-        :param DetailReportUrl: 明细下载地址
+        :param DetailReportUrl: 催收明细下载地址
+注意：此字段可能返回 null，表示取不到有效值。
         :type DetailReportUrl: str
+        :param CallbackDailyReportUrl: 回访日报下载地址
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CallbackDailyReportUrl: str
+        :param CallbackResultReportUrl: 回访结果下载地址
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CallbackResultReportUrl: str
+        :param CallbackDetailReportUrl: 回访明细下载地址
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CallbackDetailReportUrl: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.DailyReportUrl = None
         self.ResultReportUrl = None
         self.DetailReportUrl = None
+        self.CallbackDailyReportUrl = None
+        self.CallbackResultReportUrl = None
+        self.CallbackDetailReportUrl = None
         self.RequestId = None
 
 
@@ -243,6 +414,9 @@ class DownloadReportResponse(AbstractModel):
         self.DailyReportUrl = params.get("DailyReportUrl")
         self.ResultReportUrl = params.get("ResultReportUrl")
         self.DetailReportUrl = params.get("DetailReportUrl")
+        self.CallbackDailyReportUrl = params.get("CallbackDailyReportUrl")
+        self.CallbackResultReportUrl = params.get("CallbackResultReportUrl")
+        self.CallbackDetailReportUrl = params.get("CallbackDetailReportUrl")
         self.RequestId = params.get("RequestId")
 
 
@@ -295,8 +469,10 @@ class SingleRecord(AbstractModel):
         :param Duration: 通话时长。
         :type Duration: int
         :param ProductId: 产品ID。
+注意：此字段可能返回 null，表示取不到有效值。
         :type ProductId: str
         :param RecordCosUrl: 录音下载链接。
+注意：此字段可能返回 null，表示取不到有效值。
         :type RecordCosUrl: str
         """
         self.AccountNum = None
@@ -333,12 +509,14 @@ class UploadDataFileRequest(AbstractModel):
         :type Operation: str
         :param FileName: 文件名
         :type FileName: str
-        :param UploadModel: 上传类型，不填默认催收文件，催收文件为data，还款文件为repay。
+        :param UploadModel: <p>上传类型，不填默认催收文件，取值范围：</p><ul style="margin-bottom:0px;"><li>data：催收文件</li><li>repay：还款文件</li><li>callback：回访文件</li></ul>
         :type UploadModel: str
         :param File: 文件，文件与文件地址上传只可选用一种，必须使用multipart/form-data协议来上传二进制流文件，建议使用xlsx格式，大小不超过5MB。
         :type File: binary
         :param FileUrl: 文件上传地址，文件与文件地址上传只可选用一种，大小不超过50MB。
         :type FileUrl: str
+        :param InstId: 实例ID，不传默认为系统分配的初始实例。
+        :type InstId: str
         """
         self.Module = None
         self.Operation = None
@@ -346,6 +524,7 @@ class UploadDataFileRequest(AbstractModel):
         self.UploadModel = None
         self.File = None
         self.FileUrl = None
+        self.InstId = None
 
 
     def _deserialize(self, params):
@@ -355,6 +534,7 @@ class UploadDataFileRequest(AbstractModel):
         self.UploadModel = params.get("UploadModel")
         self.File = params.get("File")
         self.FileUrl = params.get("FileUrl")
+        self.InstId = params.get("InstId")
 
 
 class UploadDataFileResponse(AbstractModel):
