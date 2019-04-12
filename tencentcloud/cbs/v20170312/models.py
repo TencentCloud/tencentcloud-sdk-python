@@ -1072,6 +1072,10 @@ class Disk(AbstractModel):
         :param MigratePercent: 云盘类型变更的迁移进度，取值0到100。
 注意：此字段可能返回 null，表示取不到有效值。
         :type MigratePercent: int
+        :param Shareable: 云盘是否为共享型云盘。
+        :type Shareable: bool
+        :param InstanceIdList: 对于非共享型云盘，该参数为空数组。对于共享型云盘，则表示该云盘当前被挂载到的CVM实例InstanceId
+        :type InstanceIdList: list of str
         """
         self.DiskId = None
         self.DiskUsage = None
@@ -1101,6 +1105,8 @@ class Disk(AbstractModel):
         self.DifferDaysOfDeadline = None
         self.Migrating = None
         self.MigratePercent = None
+        self.Shareable = None
+        self.InstanceIdList = None
 
 
     def _deserialize(self, params):
@@ -1139,6 +1145,8 @@ class Disk(AbstractModel):
         self.DifferDaysOfDeadline = params.get("DifferDaysOfDeadline")
         self.Migrating = params.get("Migrating")
         self.MigratePercent = params.get("MigratePercent")
+        self.Shareable = params.get("Shareable")
+        self.InstanceIdList = params.get("InstanceIdList")
 
 
 class DiskChargePrepaid(AbstractModel):
@@ -1652,7 +1660,7 @@ class Policy(AbstractModel):
 
     def __init__(self):
         """
-        :param DayOfWeek: 选定周一到周日中需要创建快照的日期，取值范围：[0, 6]。0表示周一触发，依此类推。
+        :param DayOfWeek: 指定每周从周一到周日需要触发定期快照的日期，取值范围：[0, 6]。0表示周日触发，1-6分别表示周一至周六。
         :type DayOfWeek: list of int non-negative
         :param Hour: 指定定期快照策略的触发时间。单位为小时，取值范围：[0, 23]。00:00 ~ 23:00 共 24 个时间点可选，1表示 01:00，依此类推。
         :type Hour: list of int non-negative

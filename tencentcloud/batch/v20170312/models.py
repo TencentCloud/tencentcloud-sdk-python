@@ -40,8 +40,10 @@ class Activity(AbstractModel):
         :param StartTime: 活动开始时间
         :type StartTime: str
         :param EndTime: 活动结束时间
+注意：此字段可能返回 null，表示取不到有效值。
         :type EndTime: str
         :param InstanceId: 云服务器实例ID
+注意：此字段可能返回 null，表示取不到有效值。
         :type InstanceId: str
         """
         self.ActivityId = None
@@ -198,20 +200,26 @@ class ComputeEnvCreateInfo(AbstractModel):
         :param EnvId: 计算环境 ID
         :type EnvId: str
         :param EnvName: 计算环境名称
+注意：此字段可能返回 null，表示取不到有效值。
         :type EnvName: str
         :param EnvDescription: 计算环境描述
+注意：此字段可能返回 null，表示取不到有效值。
         :type EnvDescription: str
         :param EnvType: 计算环境类型，仅支持“MANAGED”类型
         :type EnvType: str
         :param EnvData: 计算环境参数
         :type EnvData: :class:`tencentcloud.batch.v20170312.models.EnvData`
         :param MountDataDisks: 数据盘挂载选项
+注意：此字段可能返回 null，表示取不到有效值。
         :type MountDataDisks: list of MountDataDisk
         :param InputMappings: 输入映射
+注意：此字段可能返回 null，表示取不到有效值。
         :type InputMappings: list of InputMapping
         :param Authentications: 授权信息
+注意：此字段可能返回 null，表示取不到有效值。
         :type Authentications: list of Authentication
         :param Notifications: 通知信息
+注意：此字段可能返回 null，表示取不到有效值。
         :type Notifications: list of Notification
         :param DesiredComputeNodeCount: 计算节点期望个数
         :type DesiredComputeNodeCount: int
@@ -531,10 +539,11 @@ class DataDisk(AbstractModel):
         :param DiskId: 数据盘ID。LOCAL_BASIC 和 LOCAL_SSD 类型没有ID。暂时不支持该参数。
         :type DiskId: str
         :param DeleteWithInstance: 数据盘是否随子机销毁。取值范围：
-<li>TRUE：子机销毁时，销毁数据盘
+<li>TRUE：子机销毁时，销毁数据盘，只支持按小时后付费云盘
 <li>FALSE：子机销毁时，保留数据盘<br>
 默认取值：TRUE<br>
 该参数目前仅用于 `RunInstances` 接口。
+注意：此字段可能返回 null，表示取不到有效值。
         :type DeleteWithInstance: bool
         """
         self.DiskSize = None
@@ -814,6 +823,7 @@ class DescribeComputeEnvCreateInfoResponse(AbstractModel):
         :param EnvName: 计算环境名称
         :type EnvName: str
         :param EnvDescription: 计算环境描述
+注意：此字段可能返回 null，表示取不到有效值。
         :type EnvDescription: str
         :param EnvType: 计算环境类型，仅支持“MANAGED”类型
         :type EnvType: str
@@ -1658,7 +1668,7 @@ class EnvData(AbstractModel):
 
     def __init__(self):
         """
-        :param InstanceType: CVM实例类型，不能与InstanceTypes同时出现。
+        :param InstanceType: CVM实例类型，不能与InstanceTypes和InstanceTypeOptions同时出现。
         :type InstanceType: str
         :param ImageId: CVM镜像ID
         :type ImageId: str
@@ -1682,8 +1692,10 @@ class EnvData(AbstractModel):
         :type InstanceChargeType: str
         :param InstanceMarketOptions: 实例的市场相关选项，如竞价实例相关参数
         :type InstanceMarketOptions: :class:`tencentcloud.batch.v20170312.models.InstanceMarketOptionsRequest`
-        :param InstanceTypes: CVM实例类型列表，不能与InstanceType同时出现。指定该字段后，计算节点按照机型先后顺序依次尝试创建，直到实例创建成功，结束遍历过程。最多支持10个机型。
+        :param InstanceTypes: CVM实例类型列表，不能与InstanceType和InstanceTypeOptions同时出现。指定该字段后，计算节点按照机型先后顺序依次尝试创建，直到实例创建成功，结束遍历过程。最多支持10个机型。
         :type InstanceTypes: list of str
+        :param InstanceTypeOptions: CVM实例机型配置。不能与InstanceType和InstanceTypes同时出现。
+        :type InstanceTypeOptions: :class:`tencentcloud.batch.v20170312.models.InstanceTypeOptions`
         """
         self.InstanceType = None
         self.ImageId = None
@@ -1698,6 +1710,7 @@ class EnvData(AbstractModel):
         self.InstanceChargeType = None
         self.InstanceMarketOptions = None
         self.InstanceTypes = None
+        self.InstanceTypeOptions = None
 
 
     def _deserialize(self, params):
@@ -1731,6 +1744,9 @@ class EnvData(AbstractModel):
             self.InstanceMarketOptions = InstanceMarketOptionsRequest()
             self.InstanceMarketOptions._deserialize(params.get("InstanceMarketOptions"))
         self.InstanceTypes = params.get("InstanceTypes")
+        if params.get("InstanceTypeOptions") is not None:
+            self.InstanceTypeOptions = InstanceTypeOptions()
+            self.InstanceTypeOptions._deserialize(params.get("InstanceTypeOptions"))
 
 
 class EnvVar(AbstractModel):
@@ -1809,10 +1825,13 @@ class Externals(AbstractModel):
     def __init__(self):
         """
         :param ReleaseAddress: 释放地址
+注意：此字段可能返回 null，表示取不到有效值。
         :type ReleaseAddress: bool
         :param UnsupportNetworks: 不支持的网络类型
+注意：此字段可能返回 null，表示取不到有效值。
         :type UnsupportNetworks: list of str
         :param StorageBlockAttr: HDD本地存储属性
+注意：此字段可能返回 null，表示取不到有效值。
         :type StorageBlockAttr: :class:`tencentcloud.batch.v20170312.models.StorageBlock`
         """
         self.ReleaseAddress = None
@@ -1892,20 +1911,20 @@ class InstanceMarketOptionsRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param MarketType: 市场选项类型，当前只支持取值：spot
-        :type MarketType: str
         :param SpotOptions: 竞价相关选项
         :type SpotOptions: :class:`tencentcloud.batch.v20170312.models.SpotMarketOptions`
+        :param MarketType: 市场选项类型，当前只支持取值：spot
+        :type MarketType: str
         """
-        self.MarketType = None
         self.SpotOptions = None
+        self.MarketType = None
 
 
     def _deserialize(self, params):
-        self.MarketType = params.get("MarketType")
         if params.get("SpotOptions") is not None:
             self.SpotOptions = SpotMarketOptions()
             self.SpotOptions._deserialize(params.get("SpotOptions"))
+        self.MarketType = params.get("MarketType")
 
 
 class InstanceTypeConfig(AbstractModel):
@@ -1941,6 +1960,31 @@ class InstanceTypeConfig(AbstractModel):
         self.InstanceFamily = params.get("InstanceFamily")
 
 
+class InstanceTypeOptions(AbstractModel):
+    """实例机型配置。
+
+    """
+
+    def __init__(self):
+        """
+        :param CPU: CPU核数。
+        :type CPU: int
+        :param Memory: 内存值，单位GB。
+        :type Memory: int
+        :param InstanceCategories: 实例机型类别，可选参数：“ALL”、“GENERAL_2”、“GENERAL_3”、“COMPUTE_2”和“COMPUTE_3”。默认值“ALL”。
+        :type InstanceCategories: list of str
+        """
+        self.CPU = None
+        self.Memory = None
+        self.InstanceCategories = None
+
+
+    def _deserialize(self, params):
+        self.CPU = params.get("CPU")
+        self.Memory = params.get("Memory")
+        self.InstanceCategories = params.get("InstanceCategories")
+
+
 class InstanceTypeQuotaItem(AbstractModel):
     """描述实例机型配额信息。
 
@@ -1957,6 +2001,7 @@ class InstanceTypeQuotaItem(AbstractModel):
         :param NetworkCard: 网卡类型，例如：25代表25G网卡
         :type NetworkCard: int
         :param Externals: 扩展属性。
+注意：此字段可能返回 null，表示取不到有效值。
         :type Externals: :class:`tencentcloud.batch.v20170312.models.Externals`
         :param Cpu: 实例的CPU核数，单位：核。
         :type Cpu: int
@@ -2024,16 +2069,20 @@ class InternetAccessible(AbstractModel):
         :type InternetMaxBandwidthOut: int
         :param PublicIpAssigned: 是否分配公网IP。取值范围：<br><li>TRUE：表示分配公网IP<br><li>FALSE：表示不分配公网IP<br><br>当公网带宽大于0Mbps时，可自由选择开通与否，默认开通公网IP；当公网带宽为0，则不允许分配公网IP。
         :type PublicIpAssigned: bool
+        :param BandwidthPackageId: 带宽包ID。可通过[`DescribeBandwidthPackages`](https://cloud.tencent.com/document/api/215/19209)接口返回值中的`BandwidthPackageId`获取。
+        :type BandwidthPackageId: str
         """
         self.InternetChargeType = None
         self.InternetMaxBandwidthOut = None
         self.PublicIpAssigned = None
+        self.BandwidthPackageId = None
 
 
     def _deserialize(self, params):
         self.InternetChargeType = params.get("InternetChargeType")
         self.InternetMaxBandwidthOut = params.get("InternetMaxBandwidthOut")
         self.PublicIpAssigned = params.get("PublicIpAssigned")
+        self.BandwidthPackageId = params.get("BandwidthPackageId")
 
 
 class ItemPrice(AbstractModel):
@@ -2044,12 +2093,16 @@ class ItemPrice(AbstractModel):
     def __init__(self):
         """
         :param UnitPrice: 后续单价，单位：元。
+注意：此字段可能返回 null，表示取不到有效值。
         :type UnitPrice: float
         :param ChargeUnit: 后续计价单元，可取值范围： <br><li>HOUR：表示计价单元是按每小时来计算。当前涉及该计价单元的场景有：实例按小时后付费（POSTPAID_BY_HOUR）、带宽按小时后付费（BANDWIDTH_POSTPAID_BY_HOUR）：<br><li>GB：表示计价单元是按每GB来计算。当前涉及该计价单元的场景有：流量按小时后付费（TRAFFIC_POSTPAID_BY_HOUR）。
+注意：此字段可能返回 null，表示取不到有效值。
         :type ChargeUnit: str
         :param OriginalPrice: 预支费用的原价，单位：元。
+注意：此字段可能返回 null，表示取不到有效值。
         :type OriginalPrice: float
         :param DiscountPrice: 预支费用的折扣价，单位：元。
+注意：此字段可能返回 null，表示取不到有效值。
         :type DiscountPrice: float
         """
         self.UnitPrice = None
@@ -2141,10 +2194,12 @@ class JobView(AbstractModel):
         :param Priority: 作业优先级
         :type Priority: int
         :param Placement: 位置信息
+注意：此字段可能返回 null，表示取不到有效值。
         :type Placement: :class:`tencentcloud.batch.v20170312.models.Placement`
         :param CreateTime: 创建时间
         :type CreateTime: str
         :param EndTime: 结束时间
+注意：此字段可能返回 null，表示取不到有效值。
         :type EndTime: str
         :param TaskMetrics: 任务统计指标
         :type TaskMetrics: :class:`tencentcloud.batch.v20170312.models.TaskMetrics`
@@ -2211,10 +2266,13 @@ class LoginSettings(AbstractModel):
     def __init__(self):
         """
         :param Password: 实例登录密码。不同操作系统类型密码复杂度限制不一样，具体如下：<br><li>Linux实例密码必须8到16位，至少包括两项[a-z，A-Z]、[0-9] 和 [( ) ` ~ ! @ # $ % ^ & * - + = | { } [ ] : ; ' , . ? / ]中的特殊符号。<br><li>Windows实例密码必须12到16位，至少包括三项[a-z]，[A-Z]，[0-9] 和 [( ) ` ~ ! @ # $ % ^ & * - + = { } [ ] : ; ' , . ? /]中的特殊符号。<br><br>若不指定该参数，则由系统随机生成密码，并通过站内信方式通知到用户。
+注意：此字段可能返回 null，表示取不到有效值。
         :type Password: str
         :param KeyIds: 密钥ID列表。关联密钥后，就可以通过对应的私钥来访问实例；KeyId可通过接口DescribeKeyPairs获取，密钥与密码不能同时指定，同时Windows操作系统不支持指定密钥。当前仅支持购买的时候指定一个密钥。
+注意：此字段可能返回 null，表示取不到有效值。
         :type KeyIds: list of str
         :param KeepImageLogin: 保持镜像的原始设置。该参数与Password或KeyIds.N不能同时指定。只有使用自定义镜像、共享镜像或外部导入镜像创建实例时才能指定该参数为TRUE。取值范围：<br><li>TRUE：表示保持镜像的登录设置<br><li>FALSE：表示不保持镜像的登录设置<br><br>默认取值：FALSE。
+注意：此字段可能返回 null，表示取不到有效值。
         :type KeepImageLogin: str
         """
         self.Password = None
@@ -2679,10 +2737,13 @@ class StorageBlock(AbstractModel):
     def __init__(self):
         """
         :param Type: HDD本地存储类型，值为：LOCAL_PRO.
+注意：此字段可能返回 null，表示取不到有效值。
         :type Type: str
         :param MinSize: HDD本地存储的最小容量
+注意：此字段可能返回 null，表示取不到有效值。
         :type MinSize: int
         :param MaxSize: HDD本地存储的最大容量
+注意：此字段可能返回 null，表示取不到有效值。
         :type MaxSize: int
         """
         self.Type = None
@@ -2808,6 +2869,8 @@ class Task(AbstractModel):
         :type MaxRetryCount: int
         :param Timeout: 任务启动后的超时时间，单位秒，默认为86400秒
         :type Timeout: int
+        :param MaxConcurrentNum: 任务最大并发数限制，默认没有限制。
+        :type MaxConcurrentNum: int
         """
         self.Application = None
         self.TaskName = None
@@ -2824,6 +2887,7 @@ class Task(AbstractModel):
         self.FailedAction = None
         self.MaxRetryCount = None
         self.Timeout = None
+        self.MaxConcurrentNum = None
 
 
     def _deserialize(self, params):
@@ -2875,6 +2939,7 @@ class Task(AbstractModel):
         self.FailedAction = params.get("FailedAction")
         self.MaxRetryCount = params.get("MaxRetryCount")
         self.Timeout = params.get("Timeout")
+        self.MaxConcurrentNum = params.get("MaxConcurrentNum")
 
 
 class TaskInstanceLog(AbstractModel):
@@ -2887,16 +2952,22 @@ class TaskInstanceLog(AbstractModel):
         :param TaskInstanceIndex: 任务实例
         :type TaskInstanceIndex: int
         :param StdoutLog: 标准输出日志（Base64编码）
+注意：此字段可能返回 null，表示取不到有效值。
         :type StdoutLog: str
         :param StderrLog: 标准错误日志（Base64编码）
+注意：此字段可能返回 null，表示取不到有效值。
         :type StderrLog: str
         :param StdoutRedirectPath: 标准输出重定向路径
+注意：此字段可能返回 null，表示取不到有效值。
         :type StdoutRedirectPath: str
         :param StderrRedirectPath: 标准错误重定向路径
+注意：此字段可能返回 null，表示取不到有效值。
         :type StderrRedirectPath: str
         :param StdoutRedirectFileName: 标准输出重定向文件名
+注意：此字段可能返回 null，表示取不到有效值。
         :type StdoutRedirectFileName: str
         :param StderrRedirectFileName: 标准错误重定向文件名
+注意：此字段可能返回 null，表示取不到有效值。
         :type StderrRedirectFileName: str
         """
         self.TaskInstanceIndex = None
@@ -2975,18 +3046,23 @@ class TaskInstanceView(AbstractModel):
         :param TaskInstanceState: 任务实例状态
         :type TaskInstanceState: str
         :param ExitCode: 应用程序执行结束的exit code
+注意：此字段可能返回 null，表示取不到有效值。
         :type ExitCode: int
         :param StateReason: 任务实例状态原因，任务实例失败时，会记录失败原因
         :type StateReason: str
         :param ComputeNodeInstanceId: 任务实例运行时所在计算节点（例如CVM）的InstanceId。任务实例未运行或者完结时，本字段为空。任务实例重试时，本字段会随之变化
+注意：此字段可能返回 null，表示取不到有效值。
         :type ComputeNodeInstanceId: str
         :param CreateTime: 创建时间
         :type CreateTime: str
         :param LaunchTime: 启动时间
+注意：此字段可能返回 null，表示取不到有效值。
         :type LaunchTime: str
         :param RunningTime: 开始运行时间
+注意：此字段可能返回 null，表示取不到有效值。
         :type RunningTime: str
         :param EndTime: 结束时间
+注意：此字段可能返回 null，表示取不到有效值。
         :type EndTime: str
         :param RedirectInfo: 重定向信息
         :type RedirectInfo: :class:`tencentcloud.batch.v20170312.models.RedirectInfo`
@@ -3116,6 +3192,7 @@ class TaskView(AbstractModel):
         :param CreateTime: 开始时间
         :type CreateTime: str
         :param EndTime: 结束时间
+注意：此字段可能返回 null，表示取不到有效值。
         :type EndTime: str
         """
         self.TaskName = None

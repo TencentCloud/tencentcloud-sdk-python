@@ -236,6 +236,12 @@ class BillResourceSummary(AbstractModel):
         :type CashPayAmount: str
         :param IncentivePayAmount: 赠送账户支付金额，单位为元
         :type IncentivePayAmount: str
+        :param ExtendField3: 扩展字段3
+        :type ExtendField3: str
+        :param ExtendField4: 扩展字段4
+        :type ExtendField4: str
+        :param ExtendField5: 扩展字段5
+        :type ExtendField5: str
         """
         self.BusinessCodeName = None
         self.ProductCodeName = None
@@ -260,6 +266,9 @@ class BillResourceSummary(AbstractModel):
         self.VoucherPayAmount = None
         self.CashPayAmount = None
         self.IncentivePayAmount = None
+        self.ExtendField3 = None
+        self.ExtendField4 = None
+        self.ExtendField5 = None
 
 
     def _deserialize(self, params):
@@ -286,6 +295,9 @@ class BillResourceSummary(AbstractModel):
         self.VoucherPayAmount = params.get("VoucherPayAmount")
         self.CashPayAmount = params.get("CashPayAmount")
         self.IncentivePayAmount = params.get("IncentivePayAmount")
+        self.ExtendField3 = params.get("ExtendField3")
+        self.ExtendField4 = params.get("ExtendField4")
+        self.ExtendField5 = params.get("ExtendField5")
 
 
 class Deal(AbstractModel):

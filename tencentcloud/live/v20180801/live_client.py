@@ -1027,7 +1027,7 @@ class LiveClient(AbstractClient):
 
 
     def DescribeLiveDomain(self, request):
-        """查询直播域名信息
+        """查询直播域名信息。
 
         :param request: 调用DescribeLiveDomain所需参数的结构体。
         :type request: :class:`tencentcloud.live.v20180801.models.DescribeLiveDomainRequest`

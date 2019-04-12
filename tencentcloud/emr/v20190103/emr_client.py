@@ -25,6 +25,62 @@ class EmrClient(AbstractClient):
     _endpoint = 'emr.tencentcloudapi.com'
 
 
+    def CreateInstance(self, request):
+        """创建EMR实例
+
+        :param request: 调用CreateInstance所需参数的结构体。
+        :type request: :class:`tencentcloud.emr.v20190103.models.CreateInstanceRequest`
+        :rtype: :class:`tencentcloud.emr.v20190103.models.CreateInstanceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("CreateInstance", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateInstanceResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeInstances(self, request):
+        """查询EMR实例
+
+        :param request: 调用DescribeInstances所需参数的结构体。
+        :type request: :class:`tencentcloud.emr.v20190103.models.DescribeInstancesRequest`
+        :rtype: :class:`tencentcloud.emr.v20190103.models.DescribeInstancesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeInstances", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeInstancesResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def InquiryPriceCreateInstance(self, request):
         """创建实例询价
 
@@ -39,6 +95,118 @@ class EmrClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.InquiryPriceCreateInstanceResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def InquiryPriceScaleOutInstance(self, request):
+        """扩容询价. 当扩容时候，请通过该接口查询价格。
+
+        :param request: 调用InquiryPriceScaleOutInstance所需参数的结构体。
+        :type request: :class:`tencentcloud.emr.v20190103.models.InquiryPriceScaleOutInstanceRequest`
+        :rtype: :class:`tencentcloud.emr.v20190103.models.InquiryPriceScaleOutInstanceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("InquiryPriceScaleOutInstance", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.InquiryPriceScaleOutInstanceResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ScaleOutInstance(self, request):
+        """实例扩容
+
+        :param request: 调用ScaleOutInstance所需参数的结构体。
+        :type request: :class:`tencentcloud.emr.v20190103.models.ScaleOutInstanceRequest`
+        :rtype: :class:`tencentcloud.emr.v20190103.models.ScaleOutInstanceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ScaleOutInstance", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ScaleOutInstanceResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def TerminateInstance(self, request):
+        """销毁EMR实例
+
+        :param request: 调用TerminateInstance所需参数的结构体。
+        :type request: :class:`tencentcloud.emr.v20190103.models.TerminateInstanceRequest`
+        :rtype: :class:`tencentcloud.emr.v20190103.models.TerminateInstanceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("TerminateInstance", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.TerminateInstanceResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def TerminateTasks(self, request):
+        """缩容Task节点
+
+        :param request: 调用TerminateTasks所需参数的结构体。
+        :type request: :class:`tencentcloud.emr.v20190103.models.TerminateTasksRequest`
+        :rtype: :class:`tencentcloud.emr.v20190103.models.TerminateTasksResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("TerminateTasks", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.TerminateTasksResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

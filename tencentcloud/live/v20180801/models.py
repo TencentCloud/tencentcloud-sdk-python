@@ -74,22 +74,32 @@ class AddLiveDomainRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param DomainName: 域名名称
+        :param DomainName: 域名名称。
         :type DomainName: str
-        :param DomainType: 域名类型。0-推流域名，1-播放域名
+        :param DomainType: 域名类型，
+0：推流域名，
+1：播放域名。
         :type DomainType: int
-        :param PlayType: 拉流域名类型。1-国内；2-全球；3-境外
+        :param PlayType: 拉流域名类型：
+1：国内，
+2：全球，
+3：境外。
         :type PlayType: int
+        :param IsDelayLive: 默认 0 ：普通直播，
+1：慢直播。
+        :type IsDelayLive: int
         """
         self.DomainName = None
         self.DomainType = None
         self.PlayType = None
+        self.IsDelayLive = None
 
 
     def _deserialize(self, params):
         self.DomainName = params.get("DomainName")
         self.DomainType = params.get("DomainType")
         self.PlayType = params.get("PlayType")
+        self.IsDelayLive = params.get("IsDelayLive")
 
 
 class AddLiveDomainResponse(AbstractModel):
@@ -653,6 +663,9 @@ class CreateLiveRecordTemplateRequest(AbstractModel):
         :type Mp4Param: :class:`tencentcloud.live.v20180801.models.RecordParam`
         :param AacParam: Aac录制参数，开启Aac录制时设置。
         :type AacParam: :class:`tencentcloud.live.v20180801.models.RecordParam`
+        :param IsDelayLive: 0：普通直播，
+1：慢直播。
+        :type IsDelayLive: int
         """
         self.TemplateName = None
         self.Description = None
@@ -660,6 +673,7 @@ class CreateLiveRecordTemplateRequest(AbstractModel):
         self.HlsParam = None
         self.Mp4Param = None
         self.AacParam = None
+        self.IsDelayLive = None
 
 
     def _deserialize(self, params):
@@ -677,6 +691,7 @@ class CreateLiveRecordTemplateRequest(AbstractModel):
         if params.get("AacParam") is not None:
             self.AacParam = RecordParam()
             self.AacParam._deserialize(params.get("AacParam"))
+        self.IsDelayLive = params.get("IsDelayLive")
 
 
 class CreateLiveRecordTemplateResponse(AbstractModel):
@@ -1908,11 +1923,14 @@ class DescribeLiveDomainsRequest(AbstractModel):
         :type PageSize: int
         :param PageNum: 取第几页，范围：1~100000。默认1
         :type PageNum: int
+        :param IsDelayLive: 0 普通直播 1慢直播 默认0
+        :type IsDelayLive: int
         """
         self.DomainStatus = None
         self.DomainType = None
         self.PageSize = None
         self.PageNum = None
+        self.IsDelayLive = None
 
 
     def _deserialize(self, params):
@@ -1920,6 +1938,7 @@ class DescribeLiveDomainsRequest(AbstractModel):
         self.DomainType = params.get("DomainType")
         self.PageSize = params.get("PageSize")
         self.PageNum = params.get("PageNum")
+        self.IsDelayLive = params.get("IsDelayLive")
 
 
 class DescribeLiveDomainsResponse(AbstractModel):
@@ -2173,6 +2192,17 @@ class DescribeLiveRecordTemplatesRequest(AbstractModel):
     """DescribeLiveRecordTemplates请求参数结构体
 
     """
+
+    def __init__(self):
+        """
+        :param IsDelayLive: 是否属于慢直播模板
+        :type IsDelayLive: int
+        """
+        self.IsDelayLive = None
+
+
+    def _deserialize(self, params):
+        self.IsDelayLive = params.get("IsDelayLive")
 
 
 class DescribeLiveRecordTemplatesResponse(AbstractModel):
