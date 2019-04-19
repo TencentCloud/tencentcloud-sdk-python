@@ -25,6 +25,35 @@ class ClbClient(AbstractClient):
     _endpoint = 'clb.tencentcloudapi.com'
 
 
+    def BatchModifyTargetWeight(self, request):
+        """BatchModifyTargetWeight接口用于批量修改监听器绑定的后端机器的转发权重，当前接口只支持应用型HTTP/HTTPS监听器。
+        本接口为异步接口，本接口返回成功后需以返回的RequestID为入参，调用DescribeTaskStatus接口查询本次任务是否成功。
+
+        :param request: 调用BatchModifyTargetWeight所需参数的结构体。
+        :type request: :class:`tencentcloud.clb.v20180317.models.BatchModifyTargetWeightRequest`
+        :rtype: :class:`tencentcloud.clb.v20180317.models.BatchModifyTargetWeightResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("BatchModifyTargetWeight", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.BatchModifyTargetWeightResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def CreateListener(self, request):
         """在一个负载均衡实例下创建监听器。
         本接口为异步接口，本接口返回成功后需以返回的RequestID为入参，调用DescribeTaskStatus接口查询本次任务是否成功。

@@ -27,7 +27,7 @@ class AssumeRoleRequest(AbstractModel):
         :type RoleArn: str
         :param RoleSessionName: 临时会话名称，由用户自定义名称
         :type RoleSessionName: str
-        :param DurationSeconds: 指定临时证书的有效期，单位：秒，默认 1800 秒，最长可设定有效期为 7200 秒
+        :param DurationSeconds: 指定临时证书的有效期，单位：秒，默认 7200 秒，最长可设定有效期为 43200 秒
         :type DurationSeconds: int
         """
         self.RoleArn = None

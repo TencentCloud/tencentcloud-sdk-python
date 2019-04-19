@@ -656,6 +656,36 @@ class CvmClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeInstancesOperationLimit(self, request):
+        """本接口（DescribeInstancesOperationLimit）用于查询实例操作限制。
+
+        * 目前支持调整配置操作限制次数查询。
+
+        :param request: 调用DescribeInstancesOperationLimit所需参数的结构体。
+        :type request: :class:`tencentcloud.cvm.v20170312.models.DescribeInstancesOperationLimitRequest`
+        :rtype: :class:`tencentcloud.cvm.v20170312.models.DescribeInstancesOperationLimitResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeInstancesOperationLimit", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeInstancesOperationLimitResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeInstancesStatus(self, request):
         """本接口 (DescribeInstancesStatus) 用于查询一个或多个实例的状态。
 

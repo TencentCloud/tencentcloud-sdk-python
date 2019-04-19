@@ -65,6 +65,49 @@ class Backend(AbstractModel):
         self.RegisteredTime = params.get("RegisteredTime")
 
 
+class BatchModifyTargetWeightRequest(AbstractModel):
+    """BatchModifyTargetWeight请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param LoadBalancerId: 负载均衡实例 ID
+        :type LoadBalancerId: str
+        :param ModifyList: 要批量修改权重的列表
+        :type ModifyList: list of RsWeightRule
+        """
+        self.LoadBalancerId = None
+        self.ModifyList = None
+
+
+    def _deserialize(self, params):
+        self.LoadBalancerId = params.get("LoadBalancerId")
+        if params.get("ModifyList") is not None:
+            self.ModifyList = []
+            for item in params.get("ModifyList"):
+                obj = RsWeightRule()
+                obj._deserialize(item)
+                self.ModifyList.append(obj)
+
+
+class BatchModifyTargetWeightResponse(AbstractModel):
+    """BatchModifyTargetWeight返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class CertificateInput(AbstractModel):
     """证书信息
 
@@ -696,7 +739,7 @@ class DeregisterTargetsRequest(AbstractModel):
         :type LoadBalancerId: str
         :param ListenerId: 监听器 ID
         :type ListenerId: str
-        :param Targets: 要解绑的后端机器列表
+        :param Targets: 要解绑的后端机器列表，数组长度最大支持20
         :type Targets: list of Target
         :param LocationId: 转发规则的ID，当从七层转发规则解绑机器时，必须提供此参数或Domain+Url两者之一
         :type LocationId: str
@@ -1032,6 +1075,8 @@ OPEN：公网属性， INTERNAL：内网属性。
         :type ProjectId: int
         :param WithRs: 查询的负载均衡是否绑定后端服务器，0：没有绑定云服务器，1：绑定云服务器，-1：查询全部。
         :type WithRs: int
+        :param VpcId: 负载均衡实例所属网络，如 vpc-bhqkbhdx
+        :type VpcId: str
         """
         self.LoadBalancerIds = None
         self.LoadBalancerType = None
@@ -1048,6 +1093,7 @@ OPEN：公网属性， INTERNAL：内网属性。
         self.SearchKey = None
         self.ProjectId = None
         self.WithRs = None
+        self.VpcId = None
 
 
     def _deserialize(self, params):
@@ -1066,6 +1112,7 @@ OPEN：公网属性， INTERNAL：内网属性。
         self.SearchKey = params.get("SearchKey")
         self.ProjectId = params.get("ProjectId")
         self.WithRs = params.get("WithRs")
+        self.VpcId = params.get("VpcId")
 
 
 class DescribeLoadBalancersResponse(AbstractModel):
@@ -1268,7 +1315,7 @@ class Listener(AbstractModel):
         :param HealthCheck: 监听器的健康检查信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type HealthCheck: :class:`tencentcloud.clb.v20180317.models.HealthCheck`
-        :param Scheduler: 请求调度方式
+        :param Scheduler: 请求的调度方式
 注意：此字段可能返回 null，表示取不到有效值。
         :type Scheduler: str
         :param SessionExpireTime: 会话保持时间
@@ -1415,6 +1462,24 @@ OPEN：公网属性， INTERNAL：内网属性。
         :param SubnetId: 负载均衡实例所在的子网（仅对内网VPC型LB有意义）
 注意：此字段可能返回 null，表示取不到有效值。
         :type SubnetId: str
+        :param Tags: 负载均衡实例的标签信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Tags: list of TagInfo
+        :param SecureGroups: 负载均衡实例的安全组
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SecureGroups: list of str
+        :param TargetRegionInfo: 负载均衡实例绑定的后端设备的基本信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TargetRegionInfo: :class:`tencentcloud.clb.v20180317.models.TargetRegionInfo`
+        :param AnycastZone: anycast负载均衡的发布域，对于非anycast的负载均衡，此字段返回为空字符串
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AnycastZone: str
+        :param AddressIPVersion: IP版本，ipv4 | ipv6
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AddressIPVersion: str
+        :param NumericalVpcId: 数值形式的私有网络 ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type NumericalVpcId: int
         """
         self.LoadBalancerId = None
         self.LoadBalancerName = None
@@ -1432,6 +1497,12 @@ OPEN：公网属性， INTERNAL：内网属性。
         self.Isolation = None
         self.Log = None
         self.SubnetId = None
+        self.Tags = None
+        self.SecureGroups = None
+        self.TargetRegionInfo = None
+        self.AnycastZone = None
+        self.AddressIPVersion = None
+        self.NumericalVpcId = None
 
 
     def _deserialize(self, params):
@@ -1451,6 +1522,19 @@ OPEN：公网属性， INTERNAL：内网属性。
         self.Isolation = params.get("Isolation")
         self.Log = params.get("Log")
         self.SubnetId = params.get("SubnetId")
+        if params.get("Tags") is not None:
+            self.Tags = []
+            for item in params.get("Tags"):
+                obj = TagInfo()
+                obj._deserialize(item)
+                self.Tags.append(obj)
+        self.SecureGroups = params.get("SecureGroups")
+        if params.get("TargetRegionInfo") is not None:
+            self.TargetRegionInfo = TargetRegionInfo()
+            self.TargetRegionInfo._deserialize(params.get("TargetRegionInfo"))
+        self.AnycastZone = params.get("AnycastZone")
+        self.AddressIPVersion = params.get("AddressIPVersion")
+        self.NumericalVpcId = params.get("NumericalVpcId")
 
 
 class ModifyDomainRequest(AbstractModel):
@@ -1797,7 +1881,7 @@ class RegisterTargetsRequest(AbstractModel):
         :type LoadBalancerId: str
         :param ListenerId: 负载均衡监听器 ID
         :type ListenerId: str
-        :param Targets: 要注册的后端机器列表
+        :param Targets: 要注册的后端机器列表，数组长度最大支持20
         :type Targets: list of Target
         :param LocationId: 转发规则的ID，当注册机器到七层转发规则时，必须提供此参数或Domain+Url两者之一
         :type LocationId: str
@@ -1888,6 +1972,73 @@ class RegisterTargetsWithClassicalLBResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class RewriteTarget(AbstractModel):
+    """重定向目标的信息
+
+    """
+
+    def __init__(self):
+        """
+        :param TargetListenerId: 重定向目标的监听器ID
+注意：此字段可能返回 null，表示无重定向。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TargetListenerId: str
+        :param TargetLocationId: 重定向目标的转发规则ID
+注意：此字段可能返回 null，表示无重定向。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TargetLocationId: str
+        """
+        self.TargetListenerId = None
+        self.TargetLocationId = None
+
+
+    def _deserialize(self, params):
+        self.TargetListenerId = params.get("TargetListenerId")
+        self.TargetLocationId = params.get("TargetLocationId")
+
+
+class RsWeightRule(AbstractModel):
+    """修改节点权重的数据类型
+
+    """
+
+    def __init__(self):
+        """
+        :param ListenerId: 负载均衡监听器 ID
+        :type ListenerId: str
+        :param LocationId: 转发规则的ID
+        :type LocationId: str
+        :param Targets: 要修改权重的后端机器列表
+        :type Targets: list of Target
+        :param Domain: 目标规则的域名，提供LocationId参数时本参数不生效
+        :type Domain: str
+        :param Url: 目标规则的URL，提供LocationId参数时本参数不生效
+        :type Url: str
+        :param Weight: 后端云服务器新的转发权重，取值范围：0~100。
+        :type Weight: int
+        """
+        self.ListenerId = None
+        self.LocationId = None
+        self.Targets = None
+        self.Domain = None
+        self.Url = None
+        self.Weight = None
+
+
+    def _deserialize(self, params):
+        self.ListenerId = params.get("ListenerId")
+        self.LocationId = params.get("LocationId")
+        if params.get("Targets") is not None:
+            self.Targets = []
+            for item in params.get("Targets"):
+                obj = Target()
+                obj._deserialize(item)
+                self.Targets.append(obj)
+        self.Domain = params.get("Domain")
+        self.Url = params.get("Url")
+        self.Weight = params.get("Weight")
+
+
 class RuleInput(AbstractModel):
     """HTTP/HTTPS转发规则（输入）
 
@@ -1930,13 +2081,13 @@ class RuleInput(AbstractModel):
 
 
 class RuleOutput(AbstractModel):
-    """HTTP/HTTPS转发规则（输出）
+    """HTTP/HTTPS监听器的转发规则（输出）
 
     """
 
     def __init__(self):
         """
-        :param LocationId: 转发规则的 ID，作为输入时无需此字段
+        :param LocationId: 转发规则的 ID
         :type LocationId: str
         :param Domain: 转发规则的域名。
 注意：此字段可能返回 null，表示取不到有效值。
@@ -1954,6 +2105,19 @@ class RuleOutput(AbstractModel):
         :type Certificate: :class:`tencentcloud.clb.v20180317.models.CertificateOutput`
         :param Scheduler: 规则的请求转发方式
         :type Scheduler: str
+        :param ListenerId: 转发规则所属的监听器 ID
+        :type ListenerId: str
+        :param RewriteTarget: 转发规则的重定向目标信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RewriteTarget: :class:`tencentcloud.clb.v20180317.models.RewriteTarget`
+        :param HttpGzip: 是否开启gzip
+        :type HttpGzip: bool
+        :param BeAutoCreated: 转发规则是否为自动创建
+        :type BeAutoCreated: bool
+        :param DefaultServer: 是否作为默认域名
+        :type DefaultServer: bool
+        :param Http2: 是否开启Http2
+        :type Http2: bool
         """
         self.LocationId = None
         self.Domain = None
@@ -1962,6 +2126,12 @@ class RuleOutput(AbstractModel):
         self.HealthCheck = None
         self.Certificate = None
         self.Scheduler = None
+        self.ListenerId = None
+        self.RewriteTarget = None
+        self.HttpGzip = None
+        self.BeAutoCreated = None
+        self.DefaultServer = None
+        self.Http2 = None
 
 
     def _deserialize(self, params):
@@ -1976,6 +2146,14 @@ class RuleOutput(AbstractModel):
             self.Certificate = CertificateOutput()
             self.Certificate._deserialize(params.get("Certificate"))
         self.Scheduler = params.get("Scheduler")
+        self.ListenerId = params.get("ListenerId")
+        if params.get("RewriteTarget") is not None:
+            self.RewriteTarget = RewriteTarget()
+            self.RewriteTarget._deserialize(params.get("RewriteTarget"))
+        self.HttpGzip = params.get("HttpGzip")
+        self.BeAutoCreated = params.get("BeAutoCreated")
+        self.DefaultServer = params.get("DefaultServer")
+        self.Http2 = params.get("Http2")
 
 
 class RuleTargets(AbstractModel):
@@ -2013,6 +2191,27 @@ class RuleTargets(AbstractModel):
                 self.Targets.append(obj)
 
 
+class TagInfo(AbstractModel):
+    """负载均衡的标签信息
+
+    """
+
+    def __init__(self):
+        """
+        :param TagKey: 标签的键
+        :type TagKey: str
+        :param TagValue: 标签的值
+        :type TagValue: str
+        """
+        self.TagKey = None
+        self.TagValue = None
+
+
+    def _deserialize(self, params):
+        self.TagKey = params.get("TagKey")
+        self.TagValue = params.get("TagValue")
+
+
 class Target(AbstractModel):
     """转发目标，即绑定在负载均衡上的后端机器
 
@@ -2043,3 +2242,24 @@ class Target(AbstractModel):
         self.Port = params.get("Port")
         self.Type = params.get("Type")
         self.Weight = params.get("Weight")
+
+
+class TargetRegionInfo(AbstractModel):
+    """负载均衡实例所绑定的后端信息，包括所属地域、所属VPC网络。
+
+    """
+
+    def __init__(self):
+        """
+        :param Region: Target所属地域
+        :type Region: str
+        :param VpcId: Target所属VPC网络
+        :type VpcId: str
+        """
+        self.Region = None
+        self.VpcId = None
+
+
+    def _deserialize(self, params):
+        self.Region = params.get("Region")
+        self.VpcId = params.get("VpcId")

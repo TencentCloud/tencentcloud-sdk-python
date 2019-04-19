@@ -62,6 +62,8 @@ class AllocateHostsRequest(AbstractModel):
         :type HostType: str
         :param HostCount: 购买CDH实例数量。
         :type HostCount: int
+        :param TagSpecification: 标签描述列表。通过指定该参数可以同时绑定标签到相应的资源实例。
+        :type TagSpecification: list of TagSpecification
         """
         self.Placement = None
         self.ClientToken = None
@@ -69,6 +71,7 @@ class AllocateHostsRequest(AbstractModel):
         self.HostChargeType = None
         self.HostType = None
         self.HostCount = None
+        self.TagSpecification = None
 
 
     def _deserialize(self, params):
@@ -82,6 +85,12 @@ class AllocateHostsRequest(AbstractModel):
         self.HostChargeType = params.get("HostChargeType")
         self.HostType = params.get("HostType")
         self.HostCount = params.get("HostCount")
+        if params.get("TagSpecification") is not None:
+            self.TagSpecification = []
+            for item in params.get("TagSpecification"):
+                obj = TagSpecification()
+                obj._deserialize(item)
+                self.TagSpecification.append(obj)
 
 
 class AllocateHostsResponse(AbstractModel):
@@ -1028,6 +1037,54 @@ class DescribeInstanceVncUrlResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.InstanceVncUrl = params.get("InstanceVncUrl")
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeInstancesOperationLimitRequest(AbstractModel):
+    """DescribeInstancesOperationLimit请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param InstanceIds: 按照一个或者多个实例ID查询，可通过[DescribeInstances](https://cloud.tencent.com/document/api/213/9388)API返回值中的InstanceId获取。实例ID形如：ins-xxxxxxxx。（此参数的具体格式可参考API[简介](https://cloud.tencent.com/document/api/213/15688)的id.N一节）。每次请求的实例的上限为100。
+        :type InstanceIds: list of str
+        :param Operation: 实例操作。
+<li> INSTANCE_DEGRADE：实例降配操作</li>
+        :type Operation: str
+        """
+        self.InstanceIds = None
+        self.Operation = None
+
+
+    def _deserialize(self, params):
+        self.InstanceIds = params.get("InstanceIds")
+        self.Operation = params.get("Operation")
+
+
+class DescribeInstancesOperationLimitResponse(AbstractModel):
+    """DescribeInstancesOperationLimit返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param InstanceOperationLimitSet: 该参数表示调整配置操作（降配）限制次数查询。
+        :type InstanceOperationLimitSet: list of OperationCountLimit
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.InstanceOperationLimitSet = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("InstanceOperationLimitSet") is not None:
+            self.InstanceOperationLimitSet = []
+            for item in params.get("InstanceOperationLimitSet"):
+                obj = OperationCountLimit()
+                obj._deserialize(item)
+                self.InstanceOperationLimitSet.append(obj)
         self.RequestId = params.get("RequestId")
 
 
@@ -3311,6 +3368,35 @@ class ModifyKeyPairAttributeResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
+
+
+class OperationCountLimit(AbstractModel):
+    """描述了单台实例操作次数限制
+
+    """
+
+    def __init__(self):
+        """
+        :param Operation: 实例操作。
+        :type Operation: str
+        :param InstanceId: 实例ID。
+        :type InstanceId: str
+        :param CurrentCount: 当前已使用次数，如果返回值为-1表示该操作无次数限制。
+        :type CurrentCount: int
+        :param LimitCount: 操作次数最高额度，如果返回值为-1表示该操作无次数限制，如果返回值为0表示不支持调整配置。
+        :type LimitCount: int
+        """
+        self.Operation = None
+        self.InstanceId = None
+        self.CurrentCount = None
+        self.LimitCount = None
+
+
+    def _deserialize(self, params):
+        self.Operation = params.get("Operation")
+        self.InstanceId = params.get("InstanceId")
+        self.CurrentCount = params.get("CurrentCount")
+        self.LimitCount = params.get("LimitCount")
 
 
 class OsVersion(AbstractModel):

@@ -2171,7 +2171,7 @@ class Filter(AbstractModel):
 
 
 class IKEOptionsSpecification(AbstractModel):
-    """IKE配置（Internet Key Exchange，因特网密钥交换），IKE具有一套自保护机制，用户配置网络安全协议
+    """IKE配置（Internet Key Exchange，因特网密钥交换），IKE具有一套自我保护机制，用户配置网络安全协议
 
     """
 
@@ -2606,7 +2606,7 @@ class ModifyVpnConnectionAttributeRequest(AbstractModel):
         :type PreShareKey: str
         :param SecurityPolicyDatabases: SPD策略组，例如：{"10.0.0.5/24":["172.123.10.5/16"]}，10.0.0.5/24是vpc内网段172.123.10.5/16是IDC网段。用户指定VPC内哪些网段可以和您IDC中哪些网段通信。
         :type SecurityPolicyDatabases: list of SecurityPolicyDatabase
-        :param IKEOptionsSpecification: IKE配置（Internet Key Exchange，因特网密钥交换），IKE具有一套自保护机制，用户配置网络安全协议。
+        :param IKEOptionsSpecification: IKE配置（Internet Key Exchange，因特网密钥交换），IKE具有一套自我保护机制，用户配置网络安全协议。
         :type IKEOptionsSpecification: :class:`tencentcloud.bmvpc.v20180625.models.IKEOptionsSpecification`
         :param IPSECOptionsSpecification: IPSec配置，腾讯云提供IPSec安全会话设置。
         :type IPSECOptionsSpecification: :class:`tencentcloud.bmvpc.v20180625.models.IPSECOptionsSpecification`
