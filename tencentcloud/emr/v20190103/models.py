@@ -572,7 +572,7 @@ class InquiryPriceScaleOutInstanceResponse(AbstractModel):
 
 
 class LoginSettings(AbstractModel):
-    """登陆设置
+    """登录设置
 
     """
 

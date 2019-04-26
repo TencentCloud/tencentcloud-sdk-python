@@ -29,7 +29,7 @@ class InitOralProcessRequest(AbstractModel):
         :type RefText: str
         :param WorkMode: 语音输入模式，0：流式分片，1：非流式一次性评估
         :type WorkMode: int
-        :param EvalMode: 评估模式，0：词模式，,1：:句子模式，2：段落模式，3：自由说模式，当为词模式评估时，能够提供每个音节的评估信息，当为句子模式时，能够提供完整度和流利度信息。
+        :param EvalMode: 评估模式，0：词模式（中文评测模式下为文字模式），1：句子模式，2：段落模式，3：自由说模式，当为词模式评估时，能够提供每个音节的评估信息，当为句子模式时，能够提供完整度和流利度信息。
         :type EvalMode: int
         :param ScoreCoeff: 评价苛刻指数，取值为[1.0 - 4.0]范围内的浮点数，用于平滑不同年龄段的分数，1.0为小年龄段，4.0为最高年龄段
         :type ScoreCoeff: float
@@ -146,18 +146,21 @@ class SentenceInfo(AbstractModel):
         :type SentenceId: int
         :param Words: 详细发音评估结果
         :type Words: list of WordRsp
-        :param PronAccuracy: 发音精准度，取值范围[-1, 100]，当取-1时指完全不匹配，当为句子模式时，是所有已识别单词准确度的加权平均值。当为流式模式且请求中IsEnd未置1时，取值无意义
+        :param PronAccuracy: 发音精准度，取值范围[-1, 100]，当取-1时指完全不匹配，当为句子模式时，是所有已识别单词准确度的加权平均值，在reftext中但未识别出来的词不计入分数中。
         :type PronAccuracy: float
         :param PronFluency: 发音流利度，取值范围[0, 1]，当为词模式时，取值无意义；当为流式模式且请求中IsEnd未置1时，取值无意义
         :type PronFluency: float
         :param PronCompletion: 发音完整度，取值范围[0, 1]，当为词模式时，取值无意义；当为流式模式且请求中IsEnd未置1时，取值无意义
         :type PronCompletion: float
+        :param SuggestedScore: 建议评分，取值范围[0,100]，评分方式为建议评分 = 准确度（PronAccuracyfloat）* 完整度（PronCompletionfloat）*（2 - 完整度（PronCompletionfloat）），如若评分策略不符合请参考Words数组中的详细分数自定义评分逻辑。
+        :type SuggestedScore: float
         """
         self.SentenceId = None
         self.Words = None
         self.PronAccuracy = None
         self.PronFluency = None
         self.PronCompletion = None
+        self.SuggestedScore = None
 
 
     def _deserialize(self, params):
@@ -171,6 +174,7 @@ class SentenceInfo(AbstractModel):
         self.PronAccuracy = params.get("PronAccuracy")
         self.PronFluency = params.get("PronFluency")
         self.PronCompletion = params.get("PronCompletion")
+        self.SuggestedScore = params.get("SuggestedScore")
 
 
 class TransmitOralProcessRequest(AbstractModel):
@@ -188,7 +192,7 @@ class TransmitOralProcessRequest(AbstractModel):
         :type VoiceFileType: int
         :param VoiceEncodeType: 语音编码类型	1:pcm。
         :type VoiceEncodeType: int
-        :param UserVoiceData: 当前数据包数据, 流式模式下数据包大小可以按需设置，数据包大小必须 >= 4K，且必须保证分片帧完整（16bit的数据必须保证音频长度为偶数），编码格式要求为BASE64。
+        :param UserVoiceData: 当前数据包数据, 流式模式下数据包大小可以按需设置，在网络稳定时，分片大小建议设置0.5k，且必须保证分片帧完整（16bit的数据必须保证音频长度为偶数），编码格式要求为BASE64。
         :type UserVoiceData: str
         :param SessionId: 语音段唯一标识，一个完整语音一个SessionId。
         :type SessionId: str
@@ -229,7 +233,7 @@ class TransmitOralProcessResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param PronAccuracy: 发音精准度，取值范围[-1, 100]，当取-1时指完全不匹配，当为句子模式时，是所有已识别单词准确度的加权平均值。当为流式模式且请求中IsEnd未置1时，取值无意义
+        :param PronAccuracy: 发音精准度，取值范围[-1, 100]，当取-1时指完全不匹配，当为句子模式时，是所有已识别单词准确度的加权平均值，在reftext中但未识别出来的词不计入分数中。当为流式模式且请求中IsEnd未置1时，取值无意义。
         :type PronAccuracy: float
         :param PronFluency: 发音流利度，取值范围[0, 1]，当为词模式时，取值无意义；当为流式模式且请求中IsEnd未置1时，取值无意义
         :type PronFluency: float
@@ -245,6 +249,8 @@ class TransmitOralProcessResponse(AbstractModel):
         :type SentenceInfoSet: list of SentenceInfo
         :param Status: 评估 session 状态，“Evaluating"：评估中、"Failed"：评估失败、"Finished"：评估完成
         :type Status: str
+        :param SuggestedScore: 建议评分，取值范围[0,100]，评分方式为建议评分 = 准确度（PronAccuracyfloat）* 完整度（PronCompletionfloat）*（2 - 完整度（PronCompletionfloat）），如若评分策略不符合请参考Words数组中的详细分数自定义评分逻辑。
+        :type SuggestedScore: float
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -256,6 +262,7 @@ class TransmitOralProcessResponse(AbstractModel):
         self.AudioUrl = None
         self.SentenceInfoSet = None
         self.Status = None
+        self.SuggestedScore = None
         self.RequestId = None
 
 
@@ -278,6 +285,7 @@ class TransmitOralProcessResponse(AbstractModel):
                 obj._deserialize(item)
                 self.SentenceInfoSet.append(obj)
         self.Status = params.get("Status")
+        self.SuggestedScore = params.get("SuggestedScore")
         self.RequestId = params.get("RequestId")
 
 
@@ -296,7 +304,7 @@ class TransmitOralProcessWithInitRequest(AbstractModel):
         :type VoiceFileType: int
         :param VoiceEncodeType: 语音编码类型	1:pcm。
         :type VoiceEncodeType: int
-        :param UserVoiceData: 当前数据包数据, 流式模式下数据包大小可以按需设置，数据包大小必须 >= 4K，且必须保证分片帧完整（16bit的数据必须保证音频长度为偶数），编码格式要求为BASE64。
+        :param UserVoiceData: 当前数据包数据, 流式模式下数据包大小可以按需设置，在网络良好的情况下，建议设置为0.5k，且必须保证分片帧完整（16bit的数据必须保证音频长度为偶数），编码格式要求为BASE64。
         :type UserVoiceData: str
         :param SessionId: 语音段唯一标识，一个完整语音一个SessionId。
         :type SessionId: str
@@ -304,7 +312,7 @@ class TransmitOralProcessWithInitRequest(AbstractModel):
         :type RefText: str
         :param WorkMode: 语音输入模式，0：流式分片，1：非流式一次性评估
         :type WorkMode: int
-        :param EvalMode: 评估模式，0：词模式，,1：:句子模式，2：段落模式，3：自由说模式，当为词模式评估时，能够提供每个音节的评估信息，当为句子模式时，能够提供完整度和流利度信息。
+        :param EvalMode: 评估模式，0：词模式（中文评测模式下为文字模式），1：句子模式，2：段落模式，3：自由说模式，当为词模式评估时，能够提供每个音节的评估信息，当为句子模式时，能够提供完整度和流利度信息。
         :type EvalMode: int
         :param ScoreCoeff: 评价苛刻指数，取值为[1.0 - 4.0]范围内的浮点数，用于平滑不同年龄段的分数，1.0为小年龄段，4.0为最高年龄段
         :type ScoreCoeff: float
@@ -369,7 +377,7 @@ class TransmitOralProcessWithInitResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param PronAccuracy: 发音精准度，取值范围[-1, 100]，当取-1时指完全不匹配，当为句子模式时，是所有已识别单词准确度的加权平均值。当为流式模式且请求中IsEnd未置1时，取值无意义
+        :param PronAccuracy: 发音精准度，取值范围[-1, 100]，当取-1时指完全不匹配，当为句子模式时，是所有已识别单词准确度的加权平均值，在reftext中但未识别出来的词不计入分数中。当为流式模式且请求中IsEnd未置1时，取值无意义。
         :type PronAccuracy: float
         :param PronFluency: 发音流利度，取值范围[0, 1]，当为词模式时，取值无意义；当为流式模式且请求中IsEnd未置1时，取值无意义
         :type PronFluency: float
@@ -385,6 +393,8 @@ class TransmitOralProcessWithInitResponse(AbstractModel):
         :type SentenceInfoSet: list of SentenceInfo
         :param Status: 评估 session 状态，“Evaluating"：评估中、"Failed"：评估失败、"Finished"：评估完成
         :type Status: str
+        :param SuggestedScore: 建议评分，取值范围[0,100]，评分方式为建议评分 = 准确度（PronAccuracyfloat）* 完整度（PronCompletionfloat）*（2 - 完整度（PronCompletionfloat）），如若评分策略不符合请参考Words数组中的详细分数自定义评分逻辑。
+        :type SuggestedScore: float
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -396,6 +406,7 @@ class TransmitOralProcessWithInitResponse(AbstractModel):
         self.AudioUrl = None
         self.SentenceInfoSet = None
         self.Status = None
+        self.SuggestedScore = None
         self.RequestId = None
 
 
@@ -418,6 +429,7 @@ class TransmitOralProcessWithInitResponse(AbstractModel):
                 obj._deserialize(item)
                 self.SentenceInfoSet.append(obj)
         self.Status = params.get("Status")
+        self.SuggestedScore = params.get("SuggestedScore")
         self.RequestId = params.get("RequestId")
 
 

@@ -142,6 +142,99 @@ class VpcClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def AssignIpv6Addresses(self, request):
+        """本接口（AssignIpv6Addresses）用于弹性网卡申请`IPv6`地址。<br />
+        本接口是异步完成，如需查询异步任务执行结果，请使用本接口返回的`RequestId`轮询`QueryTask`接口。
+        * 一个弹性网卡支持绑定的IP地址是有限制的，更多资源限制信息详见<a href="/document/product/576/18527">弹性网卡使用限制</a>。
+        * 可以指定`IPv6`地址申请，地址类型不能为主`IP`，`IPv6`地址暂时只支持作为辅助`IP`。
+        * 地址必须要在弹性网卡所在子网内，而且不能被占用。
+        * 在弹性网卡上申请一个到多个辅助`IPv6`地址，接口会在弹性网卡所在子网段内返回指定数量的辅助`IPv6`地址。
+
+        :param request: 调用AssignIpv6Addresses所需参数的结构体。
+        :type request: :class:`tencentcloud.vpc.v20170312.models.AssignIpv6AddressesRequest`
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.AssignIpv6AddressesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("AssignIpv6Addresses", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.AssignIpv6AddressesResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def AssignIpv6CidrBlock(self, request):
+        """本接口（AssignIpv6CidrBlock）用于分配IPv6网段。
+        * 使用本接口前，你需要已有VPC实例，如果没有可通过接口<a href="https://cloud.tencent.com/document/api/215/15774" title="CreateVpc" target="_blank">CreateVpc</a>创建。
+        * 每个VPC只能申请一个IPv6网段
+
+        :param request: 调用AssignIpv6CidrBlock所需参数的结构体。
+        :type request: :class:`tencentcloud.vpc.v20170312.models.AssignIpv6CidrBlockRequest`
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.AssignIpv6CidrBlockResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("AssignIpv6CidrBlock", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.AssignIpv6CidrBlockResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def AssignIpv6SubnetCidrBlock(self, request):
+        """本接口（AssignIpv6SubnetCidrBlock）用于分配IPv6子网段。
+        * 给子网分配 `IPv6` 网段，要求子网所属 `VPC` 已获得 `IPv6` 网段。如果尚未分配，请先通过接口 `AssignIpv6CidrBlock` 给子网所属 `VPC` 分配一个 `IPv6` 网段。否则无法分配 `IPv6` 子网段。
+        * 每个子网只能分配一个IPv6网段。
+
+        :param request: 调用AssignIpv6SubnetCidrBlock所需参数的结构体。
+        :type request: :class:`tencentcloud.vpc.v20170312.models.AssignIpv6SubnetCidrBlockRequest`
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.AssignIpv6SubnetCidrBlockResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("AssignIpv6SubnetCidrBlock", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.AssignIpv6SubnetCidrBlockResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def AssignPrivateIpAddresses(self, request):
         """本接口（AssignPrivateIpAddresses）用于弹性网卡申请内网 IP。
         * 一个弹性网卡支持绑定的IP地址是有限制的，更多资源限制信息详见<a href="/document/product/576/18527">弹性网卡使用限制</a>。
@@ -2345,6 +2438,35 @@ class VpcClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeVpcIpv6Addresses(self, request):
+        """本接口（DescribeVpcIpv6Addresses）用于查询 `VPC` `IPv6` 信息。
+        只能查询已使用的`IPv6`信息，当查询未使用的IP时，本接口不会报错，但不会出现在返回结果里。
+
+        :param request: 调用DescribeVpcIpv6Addresses所需参数的结构体。
+        :type request: :class:`tencentcloud.vpc.v20170312.models.DescribeVpcIpv6AddressesRequest`
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.DescribeVpcIpv6AddressesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeVpcIpv6Addresses", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeVpcIpv6AddressesResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeVpcPrivateIpAddresses(self, request):
         """本接口（DescribeVpcPrivateIpAddresses）用于查询VPC内网IP信息。<br />
         只能查询已使用的IP信息，当查询未使用的IP时，本接口不会报错，但不会出现在返回结果里。
@@ -3226,6 +3348,34 @@ class VpcClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def ModifyIpv6AddressesAttribute(self, request):
+        """本接口（ModifyIpv6AddressesAttribute）用于修改弹性网卡内网IPv6地址属性。
+
+        :param request: 调用ModifyIpv6AddressesAttribute所需参数的结构体。
+        :type request: :class:`tencentcloud.vpc.v20170312.models.ModifyIpv6AddressesAttributeRequest`
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.ModifyIpv6AddressesAttributeResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ModifyIpv6AddressesAttribute", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ModifyIpv6AddressesAttributeResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def ModifyNetworkInterfaceAttribute(self, request):
         """本接口（ModifyNetworkInterfaceAttribute）用于修改弹性网卡属性。
 
@@ -3956,6 +4106,93 @@ class VpcClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.TransformAddressResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def UnassignIpv6Addresses(self, request):
+        """本接口（UnassignIpv6Addresses）用于释放弹性网卡`IPv6`地址。<br />
+        本接口是异步完成，如需查询异步任务执行结果，请使用本接口返回的`RequestId`轮询`QueryTask`接口。
+
+        :param request: 调用UnassignIpv6Addresses所需参数的结构体。
+        :type request: :class:`tencentcloud.vpc.v20170312.models.UnassignIpv6AddressesRequest`
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.UnassignIpv6AddressesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("UnassignIpv6Addresses", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.UnassignIpv6AddressesResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def UnassignIpv6CidrBlock(self, request):
+        """本接口（UnassignIpv6CidrBlock）用于释放IPv6网段。<br />
+        网段如果还有IP占用且未回收，则网段无法释放。
+
+        :param request: 调用UnassignIpv6CidrBlock所需参数的结构体。
+        :type request: :class:`tencentcloud.vpc.v20170312.models.UnassignIpv6CidrBlockRequest`
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.UnassignIpv6CidrBlockResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("UnassignIpv6CidrBlock", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.UnassignIpv6CidrBlockResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def UnassignIpv6SubnetCidrBlock(self, request):
+        """本接口（UnassignIpv6SubnetCidrBlock）用于释放IPv6子网段。<br />
+        子网段如果还有IP占用且未回收，则子网段无法释放。
+
+        :param request: 调用UnassignIpv6SubnetCidrBlock所需参数的结构体。
+        :type request: :class:`tencentcloud.vpc.v20170312.models.UnassignIpv6SubnetCidrBlockRequest`
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.UnassignIpv6SubnetCidrBlockResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("UnassignIpv6SubnetCidrBlock", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.UnassignIpv6SubnetCidrBlockResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

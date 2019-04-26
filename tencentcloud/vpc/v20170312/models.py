@@ -359,6 +359,152 @@ class AllocateAddressesResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class AssignIpv6AddressesRequest(AbstractModel):
+    """AssignIpv6Addresses请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param NetworkInterfaceId: 弹性网卡实例`ID`，形如：`eni-m6dyj72l`。
+        :type NetworkInterfaceId: str
+        :param Ipv6Addresses: 指定的`IPv6`地址列表，单次最多指定10个。与入参`Ipv6AddressCount`合并计算配额。
+        :type Ipv6Addresses: list of Ipv6Address
+        :param Ipv6AddressCount: 自动分配`IPv6`地址个数，内网IP地址个数总和不能超过配数。与入参`Ipv6Addresses`合并计算配额。
+        :type Ipv6AddressCount: int
+        """
+        self.NetworkInterfaceId = None
+        self.Ipv6Addresses = None
+        self.Ipv6AddressCount = None
+
+
+    def _deserialize(self, params):
+        self.NetworkInterfaceId = params.get("NetworkInterfaceId")
+        if params.get("Ipv6Addresses") is not None:
+            self.Ipv6Addresses = []
+            for item in params.get("Ipv6Addresses"):
+                obj = Ipv6Address()
+                obj._deserialize(item)
+                self.Ipv6Addresses.append(obj)
+        self.Ipv6AddressCount = params.get("Ipv6AddressCount")
+
+
+class AssignIpv6AddressesResponse(AbstractModel):
+    """AssignIpv6Addresses返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Ipv6AddressSet: 分配给弹性网卡的`IPv6`地址列表。
+        :type Ipv6AddressSet: list of Ipv6Address
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Ipv6AddressSet = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Ipv6AddressSet") is not None:
+            self.Ipv6AddressSet = []
+            for item in params.get("Ipv6AddressSet"):
+                obj = Ipv6Address()
+                obj._deserialize(item)
+                self.Ipv6AddressSet.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class AssignIpv6CidrBlockRequest(AbstractModel):
+    """AssignIpv6CidrBlock请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param VpcId: `VPC`实例`ID`，形如：`vpc-f49l6u0z`。
+        :type VpcId: str
+        """
+        self.VpcId = None
+
+
+    def _deserialize(self, params):
+        self.VpcId = params.get("VpcId")
+
+
+class AssignIpv6CidrBlockResponse(AbstractModel):
+    """AssignIpv6CidrBlock返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Ipv6CidrBlock: 分配的 `IPv6` 网段。形如：`3402:4e00:20:1000::/56`
+        :type Ipv6CidrBlock: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Ipv6CidrBlock = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Ipv6CidrBlock = params.get("Ipv6CidrBlock")
+        self.RequestId = params.get("RequestId")
+
+
+class AssignIpv6SubnetCidrBlockRequest(AbstractModel):
+    """AssignIpv6SubnetCidrBlock请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param VpcId: 子网所在私有网络`ID`。形如：`vpc-f49l6u0z`。
+        :type VpcId: str
+        :param Ipv6SubnetCidrBlocks: 分配 `IPv6` 子网段列表。
+        :type Ipv6SubnetCidrBlocks: list of Ipv6SubnetCidrBlock
+        """
+        self.VpcId = None
+        self.Ipv6SubnetCidrBlocks = None
+
+
+    def _deserialize(self, params):
+        self.VpcId = params.get("VpcId")
+        if params.get("Ipv6SubnetCidrBlocks") is not None:
+            self.Ipv6SubnetCidrBlocks = []
+            for item in params.get("Ipv6SubnetCidrBlocks"):
+                obj = Ipv6SubnetCidrBlock()
+                obj._deserialize(item)
+                self.Ipv6SubnetCidrBlocks.append(obj)
+
+
+class AssignIpv6SubnetCidrBlockResponse(AbstractModel):
+    """AssignIpv6SubnetCidrBlock返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Ipv6SubnetCidrBlockSet: 分配 `IPv6` 子网段列表。
+        :type Ipv6SubnetCidrBlockSet: list of Ipv6SubnetCidrBlock
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Ipv6SubnetCidrBlockSet = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Ipv6SubnetCidrBlockSet") is not None:
+            self.Ipv6SubnetCidrBlockSet = []
+            for item in params.get("Ipv6SubnetCidrBlockSet"):
+                obj = Ipv6SubnetCidrBlock()
+                obj._deserialize(item)
+                self.Ipv6SubnetCidrBlockSet.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class AssignPrivateIpAddressesRequest(AbstractModel):
     """AssignPrivateIpAddresses请求参数结构体
 
@@ -4418,8 +4564,9 @@ class DescribeSubnetsRequest(AbstractModel):
         :param Filters: 过滤条件，参数不支持同时指定SubnetIds和Filters。
 <li>subnet-id - String - （过滤条件）Subnet实例名称。</li>
 <li>vpc-id - String - （过滤条件）VPC实例ID，形如：vpc-f49l6u0z。</li>
-<li>cidr-block - String - （过滤条件）vpc的cidr。</li>
+<li>cidr-block - String - （过滤条件）子网网段，形如: 192.168.1.0 。</li>
 <li>is-default - Boolean - （过滤条件）是否是默认子网。</li>
+<li>is-remote-vpc-snat - Boolean - （过滤条件）是否为VPC SNAT地址池子网。</li>
 <li>subnet-name - String - （过滤条件）子网名称。</li>
 <li>zone - String - （过滤条件）可用区。</li>
         :type Filters: list of Filter
@@ -4473,6 +4620,65 @@ class DescribeSubnetsResponse(AbstractModel):
                 obj = Subnet()
                 obj._deserialize(item)
                 self.SubnetSet.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeVpcIpv6AddressesRequest(AbstractModel):
+    """DescribeVpcIpv6Addresses请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param VpcId: `VPC`实例`ID`，形如：`vpc-f49l6u0z`。
+        :type VpcId: str
+        :param Ipv6Addresses: `IP`地址列表，批量查询单次请求最多支持`10`个。
+        :type Ipv6Addresses: list of str
+        :param Offset: 偏移量。
+        :type Offset: int
+        :param Limit: 返回数量。
+        :type Limit: int
+        """
+        self.VpcId = None
+        self.Ipv6Addresses = None
+        self.Offset = None
+        self.Limit = None
+
+
+    def _deserialize(self, params):
+        self.VpcId = params.get("VpcId")
+        self.Ipv6Addresses = params.get("Ipv6Addresses")
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+
+
+class DescribeVpcIpv6AddressesResponse(AbstractModel):
+    """DescribeVpcIpv6Addresses返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Ipv6AddressSet: `IPv6`地址列表。
+        :type Ipv6AddressSet: list of VpcIpv6Address
+        :param TotalCount: `IPv6`地址总数。
+        :type TotalCount: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Ipv6AddressSet = None
+        self.TotalCount = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Ipv6AddressSet") is not None:
+            self.Ipv6AddressSet = []
+            for item in params.get("Ipv6AddressSet"):
+                obj = VpcIpv6Address()
+                obj._deserialize(item)
+                self.Ipv6AddressSet.append(obj)
+        self.TotalCount = params.get("TotalCount")
         self.RequestId = params.get("RequestId")
 
 
@@ -5830,6 +6036,27 @@ class Ipv6Address(AbstractModel):
         self.State = params.get("State")
 
 
+class Ipv6SubnetCidrBlock(AbstractModel):
+    """IPv6子网段对象。
+
+    """
+
+    def __init__(self):
+        """
+        :param SubnetId: 子网实例`ID`。形如：`subnet-pxir56ns`。
+        :type SubnetId: str
+        :param Ipv6CidrBlock: `IPv6`子网段。形如：`3402:4e00:20:1001::/64`
+        :type Ipv6CidrBlock: str
+        """
+        self.SubnetId = None
+        self.Ipv6CidrBlock = None
+
+
+    def _deserialize(self, params):
+        self.SubnetId = params.get("SubnetId")
+        self.Ipv6CidrBlock = params.get("Ipv6CidrBlock")
+
+
 class ItemPrice(AbstractModel):
     """单项计费价格信息
 
@@ -6382,6 +6609,49 @@ class ModifyIp6TranslatorRequest(AbstractModel):
 
 class ModifyIp6TranslatorResponse(AbstractModel):
     """ModifyIp6Translator返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class ModifyIpv6AddressesAttributeRequest(AbstractModel):
+    """ModifyIpv6AddressesAttribute请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param NetworkInterfaceId: 弹性网卡实例`ID`，形如：`eni-m6dyj72l`。
+        :type NetworkInterfaceId: str
+        :param Ipv6Addresses: 指定的内网IPv6`地址信息。
+        :type Ipv6Addresses: list of Ipv6Address
+        """
+        self.NetworkInterfaceId = None
+        self.Ipv6Addresses = None
+
+
+    def _deserialize(self, params):
+        self.NetworkInterfaceId = params.get("NetworkInterfaceId")
+        if params.get("Ipv6Addresses") is not None:
+            self.Ipv6Addresses = []
+            for item in params.get("Ipv6Addresses"):
+                obj = Ipv6Address()
+                obj._deserialize(item)
+                self.Ipv6Addresses.append(obj)
+
+
+class ModifyIpv6AddressesAttributeResponse(AbstractModel):
+    """ModifyIpv6AddressesAttribute返回参数结构体
 
     """
 
@@ -8154,6 +8424,10 @@ class Subnet(AbstractModel):
         :type AvailableIpAddressCount: int
         :param Ipv6CidrBlock: 子网的 `IPv6` `CIDR`。
         :type Ipv6CidrBlock: str
+        :param NetworkAclId: 关联`ACL`ID
+        :type NetworkAclId: str
+        :param IsRemoteVpcSnat: 是否为 `SNAT` 地址池子网。
+        :type IsRemoteVpcSnat: bool
         """
         self.VpcId = None
         self.SubnetId = None
@@ -8166,6 +8440,8 @@ class Subnet(AbstractModel):
         self.CreatedTime = None
         self.AvailableIpAddressCount = None
         self.Ipv6CidrBlock = None
+        self.NetworkAclId = None
+        self.IsRemoteVpcSnat = None
 
 
     def _deserialize(self, params):
@@ -8180,6 +8456,8 @@ class Subnet(AbstractModel):
         self.CreatedTime = params.get("CreatedTime")
         self.AvailableIpAddressCount = params.get("AvailableIpAddressCount")
         self.Ipv6CidrBlock = params.get("Ipv6CidrBlock")
+        self.NetworkAclId = params.get("NetworkAclId")
+        self.IsRemoteVpcSnat = params.get("IsRemoteVpcSnat")
 
 
 class SubnetInput(AbstractModel):
@@ -8230,6 +8508,130 @@ class TransformAddressRequest(AbstractModel):
 
 class TransformAddressResponse(AbstractModel):
     """TransformAddress返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class UnassignIpv6AddressesRequest(AbstractModel):
+    """UnassignIpv6Addresses请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param NetworkInterfaceId: 弹性网卡实例`ID`，形如：`eni-m6dyj72l`。
+        :type NetworkInterfaceId: str
+        :param Ipv6Addresses: 指定的`IPv6`地址列表，单次最多指定10个。
+        :type Ipv6Addresses: list of Ipv6Address
+        """
+        self.NetworkInterfaceId = None
+        self.Ipv6Addresses = None
+
+
+    def _deserialize(self, params):
+        self.NetworkInterfaceId = params.get("NetworkInterfaceId")
+        if params.get("Ipv6Addresses") is not None:
+            self.Ipv6Addresses = []
+            for item in params.get("Ipv6Addresses"):
+                obj = Ipv6Address()
+                obj._deserialize(item)
+                self.Ipv6Addresses.append(obj)
+
+
+class UnassignIpv6AddressesResponse(AbstractModel):
+    """UnassignIpv6Addresses返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class UnassignIpv6CidrBlockRequest(AbstractModel):
+    """UnassignIpv6CidrBlock请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param VpcId: `VPC`实例`ID`，形如：`vpc-f49l6u0z`。
+        :type VpcId: str
+        :param Ipv6CidrBlock: `IPv6`网段。形如：`3402:4e00:20:1000::/56`
+        :type Ipv6CidrBlock: str
+        """
+        self.VpcId = None
+        self.Ipv6CidrBlock = None
+
+
+    def _deserialize(self, params):
+        self.VpcId = params.get("VpcId")
+        self.Ipv6CidrBlock = params.get("Ipv6CidrBlock")
+
+
+class UnassignIpv6CidrBlockResponse(AbstractModel):
+    """UnassignIpv6CidrBlock返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class UnassignIpv6SubnetCidrBlockRequest(AbstractModel):
+    """UnassignIpv6SubnetCidrBlock请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param VpcId: 子网所在私有网络`ID`。形如：`vpc-f49l6u0z`。
+        :type VpcId: str
+        :param Ipv6SubnetCidrBlocks: `IPv6` 子网段列表。
+        :type Ipv6SubnetCidrBlocks: list of Ipv6SubnetCidrBlock
+        """
+        self.VpcId = None
+        self.Ipv6SubnetCidrBlocks = None
+
+
+    def _deserialize(self, params):
+        self.VpcId = params.get("VpcId")
+        if params.get("Ipv6SubnetCidrBlocks") is not None:
+            self.Ipv6SubnetCidrBlocks = []
+            for item in params.get("Ipv6SubnetCidrBlocks"):
+                obj = Ipv6SubnetCidrBlock()
+                obj._deserialize(item)
+                self.Ipv6SubnetCidrBlocks.append(obj)
+
+
+class UnassignIpv6SubnetCidrBlockResponse(AbstractModel):
+    """UnassignIpv6SubnetCidrBlock返回参数结构体
 
     """
 
@@ -8343,6 +8745,35 @@ class Vpc(AbstractModel):
         self.DhcpOptionsId = params.get("DhcpOptionsId")
         self.EnableDhcp = params.get("EnableDhcp")
         self.Ipv6CidrBlock = params.get("Ipv6CidrBlock")
+
+
+class VpcIpv6Address(AbstractModel):
+    """VPC内网IPv6对象。
+
+    """
+
+    def __init__(self):
+        """
+        :param Ipv6Address: `VPC`内`IPv6`地址。
+        :type Ipv6Address: str
+        :param CidrBlock: 所属子网 `IPv6` `CIDR`。
+        :type CidrBlock: str
+        :param Ipv6AddressType: `IPv6`类型。
+        :type Ipv6AddressType: str
+        :param CreatedTime: `IPv6`申请时间。
+        :type CreatedTime: str
+        """
+        self.Ipv6Address = None
+        self.CidrBlock = None
+        self.Ipv6AddressType = None
+        self.CreatedTime = None
+
+
+    def _deserialize(self, params):
+        self.Ipv6Address = params.get("Ipv6Address")
+        self.CidrBlock = params.get("CidrBlock")
+        self.Ipv6AddressType = params.get("Ipv6AddressType")
+        self.CreatedTime = params.get("CreatedTime")
 
 
 class VpcPrivateIpAddress(AbstractModel):

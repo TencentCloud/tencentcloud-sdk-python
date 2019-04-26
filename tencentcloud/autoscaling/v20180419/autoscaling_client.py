@@ -53,6 +53,36 @@ class AutoscalingClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def CompleteLifecycleAction(self, request):
+        """本接口（CompleteLifecycleAction）用于完成生命周期动作。
+
+        * 用户通过调用本接口，指定一个具体的生命周期挂钩的结果（“CONITNUE”或者“ABANDON”）。如果一直不调用本接口，则生命周期挂钩会在超时后按照“DefaultResult”进行处理。
+
+        :param request: 调用CompleteLifecycleAction所需参数的结构体。
+        :type request: :class:`tencentcloud.autoscaling.v20180419.models.CompleteLifecycleActionRequest`
+        :rtype: :class:`tencentcloud.autoscaling.v20180419.models.CompleteLifecycleActionResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("CompleteLifecycleAction", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CompleteLifecycleActionResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def CreateAutoScalingGroup(self, request):
         """本接口（CreateAutoScalingGroup）用于创建伸缩组
 
@@ -113,6 +143,52 @@ class AutoscalingClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def CreateLifecycleHook(self, request):
+        """本接口（CreateLifecycleHook）用于创建生命周期挂钩。
+
+        * 您可以为生命周期挂钩配置消息通知，弹性伸缩会通知您的CMQ消息队列，通知内容形如：
+
+        ```
+        {
+        	"Service": "Tencent Cloud Auto Scaling",
+        	"Time": "2019-03-14T10:15:11Z",
+        	"AppId": "1251783334",
+        	"ActivityId": "asa-fznnvrja",
+        	"AutoScalingGroupId": "asg-rrrrtttt",
+        	"LifecycleHookId": "ash-xxxxyyyy",
+        	"LifecycleHookName": "my-hook",
+        	"LifecycleActionToken": "3080e1c9-0efe-4dd7-ad3b-90cd6618298f",
+        	"InstanceId": "ins-aaaabbbb",
+        	"LifecycleTransition": "INSTANCE_LAUNCHING",
+        	"NotificationMetadata": ""
+        }
+        ```
+
+        :param request: 调用CreateLifecycleHook所需参数的结构体。
+        :type request: :class:`tencentcloud.autoscaling.v20180419.models.CreateLifecycleHookRequest`
+        :rtype: :class:`tencentcloud.autoscaling.v20180419.models.CreateLifecycleHookResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("CreateLifecycleHook", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateLifecycleHookResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def CreateNotificationConfiguration(self, request):
         """本接口（CreateNotificationConfiguration）用于创建通知。
 
@@ -127,6 +203,34 @@ class AutoscalingClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateNotificationConfigurationResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def CreatePaiInstance(self, request):
+        """本接口 (CreatePaiInstance) 用于创建一个指定配置的PAI实例。
+
+        :param request: 调用CreatePaiInstance所需参数的结构体。
+        :type request: :class:`tencentcloud.autoscaling.v20180419.models.CreatePaiInstanceRequest`
+        :rtype: :class:`tencentcloud.autoscaling.v20180419.models.CreatePaiInstanceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("CreatePaiInstance", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreatePaiInstanceResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -241,6 +345,34 @@ class AutoscalingClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteLaunchConfigurationResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DeleteLifecycleHook(self, request):
+        """本接口（DeleteLifecycleHook）用于删除生命周期挂钩。
+
+        :param request: 调用DeleteLifecycleHook所需参数的结构体。
+        :type request: :class:`tencentcloud.autoscaling.v20180419.models.DeleteLifecycleHookRequest`
+        :rtype: :class:`tencentcloud.autoscaling.v20180419.models.DeleteLifecycleHookResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DeleteLifecycleHook", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DeleteLifecycleHookResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -488,6 +620,37 @@ class AutoscalingClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeLifecycleHooks(self, request):
+        """本接口（DescribeLifecycleHooks）用于查询生命周期挂钩信息。
+
+        * 可以根据伸缩组ID、生命周期挂钩ID或者生命周期挂钩名称等信息来查询生命周期挂钩的详细信息。过滤信息详细请见过滤器`Filter`。
+        * 如果参数为空，返回当前用户一定数量（`Limit`所指定的数量，默认为20）的生命周期挂钩。
+
+        :param request: 调用DescribeLifecycleHooks所需参数的结构体。
+        :type request: :class:`tencentcloud.autoscaling.v20180419.models.DescribeLifecycleHooksRequest`
+        :rtype: :class:`tencentcloud.autoscaling.v20180419.models.DescribeLifecycleHooksResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeLifecycleHooks", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeLifecycleHooksResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeNotificationConfigurations(self, request):
         """本接口 (DescribeNotificationConfigurations) 用于查询一个或多个通知的详细信息。
 
@@ -505,6 +668,37 @@ class AutoscalingClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeNotificationConfigurationsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribePaiInstances(self, request):
+        """本接口（DescribePaiInstances）用于查询PAI实例信息。
+
+        * 可以根据实例ID、实例域名等信息来查询PAI实例的详细信息。过滤信息详细请见过滤器`Filter`。
+        * 如果参数为空，返回当前用户一定数量（`Limit`所指定的数量，默认为20）的PAI实例。
+
+        :param request: 调用DescribePaiInstances所需参数的结构体。
+        :type request: :class:`tencentcloud.autoscaling.v20180419.models.DescribePaiInstancesRequest`
+        :rtype: :class:`tencentcloud.autoscaling.v20180419.models.DescribePaiInstancesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribePaiInstances", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribePaiInstancesResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -865,6 +1059,34 @@ class AutoscalingClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def PreviewPaiDomainName(self, request):
+        """本接口（PreviewPaiDomainName）用于预览PAI实例域名。
+
+        :param request: 调用PreviewPaiDomainName所需参数的结构体。
+        :type request: :class:`tencentcloud.autoscaling.v20180419.models.PreviewPaiDomainNameRequest`
+        :rtype: :class:`tencentcloud.autoscaling.v20180419.models.PreviewPaiDomainNameResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("PreviewPaiDomainName", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.PreviewPaiDomainNameResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def RemoveInstances(self, request):
         """本接口（RemoveInstances）用于从伸缩组删除 CVM 实例。根据当前的产品逻辑，如果实例由弹性伸缩自动创建，则实例会被销毁；如果实例系创建后加入伸缩组的，则会从伸缩组中移除，保留实例。
 
@@ -908,6 +1130,36 @@ class AutoscalingClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.SetInstancesProtectionResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def UpgradeLifecycleHook(self, request):
+        """本接口（UpgradeLifecycleHook）用于升级生命周期挂钩。
+
+        * 本接口用于升级生命周期挂钩，采用“完全覆盖”风格，无论之前参数如何，统一按照接口参数设置为新的配置。对于非必填字段，不填写则按照默认值赋值。
+
+        :param request: 调用UpgradeLifecycleHook所需参数的结构体。
+        :type request: :class:`tencentcloud.autoscaling.v20180419.models.UpgradeLifecycleHookRequest`
+        :rtype: :class:`tencentcloud.autoscaling.v20180419.models.UpgradeLifecycleHookResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("UpgradeLifecycleHook", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.UpgradeLifecycleHookResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

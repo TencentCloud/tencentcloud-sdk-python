@@ -112,6 +112,34 @@ class VodClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def CreateAIAnalysisTemplate(self, request):
+        """创建用户自定义视频内容分析模板，数量上限：50。
+
+        :param request: 调用CreateAIAnalysisTemplate所需参数的结构体。
+        :type request: :class:`tencentcloud.vod.v20180717.models.CreateAIAnalysisTemplateRequest`
+        :rtype: :class:`tencentcloud.vod.v20180717.models.CreateAIAnalysisTemplateResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("CreateAIAnalysisTemplate", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateAIAnalysisTemplateResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def CreateClass(self, request):
         """* 用于对媒体进行分类管理；
         * 该接口不影响既有媒体的分类，如需修改媒体分类，请调用[修改媒体文件属性](/document/product/266/31762)接口。
@@ -213,6 +241,36 @@ class VodClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateWatermarkTemplateResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DeleteAIAnalysisTemplate(self, request):
+        """删除用户自定义视频内容分析模板。
+
+        注意：模板 ID 为 10000 以下的为系统预置模板，不允许删除。
+
+        :param request: 调用DeleteAIAnalysisTemplate所需参数的结构体。
+        :type request: :class:`tencentcloud.vod.v20180717.models.DeleteAIAnalysisTemplateRequest`
+        :rtype: :class:`tencentcloud.vod.v20180717.models.DeleteAIAnalysisTemplateResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DeleteAIAnalysisTemplate", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DeleteAIAnalysisTemplateResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -355,6 +413,34 @@ class VodClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteWatermarkTemplateResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeAIAnalysisTemplates(self, request):
+        """根据视频内容分析模板唯一标识，获取视频内容分析模板详情列表。返回结果包含符合条件的所有用户自定义视频内容分析模板及[系统预置视频内容分析模板]
+
+        :param request: 调用DescribeAIAnalysisTemplates所需参数的结构体。
+        :type request: :class:`tencentcloud.vod.v20180717.models.DescribeAIAnalysisTemplatesRequest`
+        :rtype: :class:`tencentcloud.vod.v20180717.models.DescribeAIAnalysisTemplatesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeAIAnalysisTemplates", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeAIAnalysisTemplatesResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -627,6 +713,36 @@ class VodClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def ModifyAIAnalysisTemplate(self, request):
+        """修改用户自定义视频内容分析模板。
+
+        注意：模板 ID 10000 以下的为系统预置模板，不允许修改。
+
+        :param request: 调用ModifyAIAnalysisTemplate所需参数的结构体。
+        :type request: :class:`tencentcloud.vod.v20180717.models.ModifyAIAnalysisTemplateRequest`
+        :rtype: :class:`tencentcloud.vod.v20180717.models.ModifyAIAnalysisTemplateResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ModifyAIAnalysisTemplate", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ModifyAIAnalysisTemplateResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def ModifyClass(self, request):
         """修改媒体分类属性。
 
@@ -811,7 +927,7 @@ class VodClient(AbstractClient):
         """* 该接口用于从点播服务端获取事件通知，详见[服务端事件通知](https://cloud.tencent.com/document/product/266/7829)；
         * 接口为长轮询模式，即：如果服务端存在未消费事件，则立即返回给请求方；如果服务端没有未消费事件，则后台会将请求挂起，直到有新的事件产生为止；
         * 请求最多挂起 5 秒，建议请求方将超时时间设置为 10 秒；
-        * 若该接口有事件返回，调用方必须再调用[确认事件通知]接口，确认事件通知已经处理，否则该事件通知后续会再次被拉取到。
+        * 若该接口有事件返回，调用方必须再调用[确认事件通知](https://cloud.tencent.com/document/product/266/33434)接口，确认事件通知已经处理，否则该事件通知后续会再次被拉取到。
 
         :param request: 调用PullEvents所需参数的结构体。
         :type request: :class:`tencentcloud.vod.v20180717.models.PullEventsRequest`

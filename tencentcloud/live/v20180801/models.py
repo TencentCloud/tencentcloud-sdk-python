@@ -607,24 +607,25 @@ class CreateLiveRecordRuleRequest(AbstractModel):
         """
         :param DomainName: 推流域名。
         :type DomainName: str
+        :param TemplateId: 模板Id。
+        :type TemplateId: int
         :param AppName: 推流路径。
         :type AppName: str
         :param StreamName: 流名称。
+注：如果本参数设置为非空字符串，规则将只对此推流起作用。
         :type StreamName: str
-        :param TemplateId: 模板Id。
-        :type TemplateId: int
         """
         self.DomainName = None
+        self.TemplateId = None
         self.AppName = None
         self.StreamName = None
-        self.TemplateId = None
 
 
     def _deserialize(self, params):
         self.DomainName = params.get("DomainName")
+        self.TemplateId = params.get("TemplateId")
         self.AppName = params.get("AppName")
         self.StreamName = params.get("StreamName")
-        self.TemplateId = params.get("TemplateId")
 
 
 class CreateLiveRecordRuleResponse(AbstractModel):
@@ -666,6 +667,8 @@ class CreateLiveRecordTemplateRequest(AbstractModel):
         :param IsDelayLive: 0：普通直播，
 1：慢直播。
         :type IsDelayLive: int
+        :param HlsSpecialParam: HLS专属录制参数。
+        :type HlsSpecialParam: :class:`tencentcloud.live.v20180801.models.HlsSpecialParam`
         """
         self.TemplateName = None
         self.Description = None
@@ -674,6 +677,7 @@ class CreateLiveRecordTemplateRequest(AbstractModel):
         self.Mp4Param = None
         self.AacParam = None
         self.IsDelayLive = None
+        self.HlsSpecialParam = None
 
 
     def _deserialize(self, params):
@@ -692,6 +696,9 @@ class CreateLiveRecordTemplateRequest(AbstractModel):
             self.AacParam = RecordParam()
             self.AacParam._deserialize(params.get("AacParam"))
         self.IsDelayLive = params.get("IsDelayLive")
+        if params.get("HlsSpecialParam") is not None:
+            self.HlsSpecialParam = HlsSpecialParam()
+            self.HlsSpecialParam._deserialize(params.get("HlsSpecialParam"))
 
 
 class CreateLiveRecordTemplateResponse(AbstractModel):
@@ -3463,10 +3470,10 @@ class DescribeStreamPlayInfoListRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param StartTime: 开始时间，北京时间，
+        :param StartTime: 开始时间，北京时间，格式为yyyy-mm-dd HH:MM:SS，
 当前时间 和 开始时间 间隔不超过30天。
         :type StartTime: str
-        :param EndTime: 结束时间，北京时间，
+        :param EndTime: 结束时间，北京时间，格式为yyyy-mm-dd HH:MM:SS，
 结束时间 和 开始时间  必须在同一天内。
         :type EndTime: str
         :param PlayDomain: 播放域名，
@@ -3475,11 +3482,15 @@ class DescribeStreamPlayInfoListRequest(AbstractModel):
         :param StreamName: 流名称，精确匹配。
 若不填，则为查询总体播放数据。
         :type StreamName: str
+        :param AppName: 播放路径，精确匹配，不支持。
+若不填，则为查询总体播放数据。
+        :type AppName: str
         """
         self.StartTime = None
         self.EndTime = None
         self.PlayDomain = None
         self.StreamName = None
+        self.AppName = None
 
 
     def _deserialize(self, params):
@@ -3487,6 +3498,7 @@ class DescribeStreamPlayInfoListRequest(AbstractModel):
         self.EndTime = params.get("EndTime")
         self.PlayDomain = params.get("PlayDomain")
         self.StreamName = params.get("StreamName")
+        self.AppName = params.get("AppName")
 
 
 class DescribeStreamPlayInfoListResponse(AbstractModel):
@@ -3793,6 +3805,23 @@ class ForbidStreamInfo(AbstractModel):
         self.StreamName = params.get("StreamName")
         self.CreateTime = params.get("CreateTime")
         self.ExpireTime = params.get("ExpireTime")
+
+
+class HlsSpecialParam(AbstractModel):
+    """HLS专属录制参数
+
+    """
+
+    def __init__(self):
+        """
+        :param FlowContinueDuration: HLS续流超时时间。
+        :type FlowContinueDuration: int
+        """
+        self.FlowContinueDuration = None
+
+
+    def _deserialize(self, params):
+        self.FlowContinueDuration = params.get("FlowContinueDuration")
 
 
 class LogInfo(AbstractModel):
@@ -4788,6 +4817,8 @@ class RecordTemplateInfo(AbstractModel):
         :param IsDelayLive: 0：普通直播，
 1：慢直播。
         :type IsDelayLive: int
+        :param HlsSpecialParam: HLS录制定制参数
+        :type HlsSpecialParam: :class:`tencentcloud.live.v20180801.models.HlsSpecialParam`
         """
         self.TemplateId = None
         self.TemplateName = None
@@ -4797,6 +4828,7 @@ class RecordTemplateInfo(AbstractModel):
         self.Mp4Param = None
         self.AacParam = None
         self.IsDelayLive = None
+        self.HlsSpecialParam = None
 
 
     def _deserialize(self, params):
@@ -4816,6 +4848,9 @@ class RecordTemplateInfo(AbstractModel):
             self.AacParam = RecordParam()
             self.AacParam._deserialize(params.get("AacParam"))
         self.IsDelayLive = params.get("IsDelayLive")
+        if params.get("HlsSpecialParam") is not None:
+            self.HlsSpecialParam = HlsSpecialParam()
+            self.HlsSpecialParam._deserialize(params.get("HlsSpecialParam"))
 
 
 class ResumeDelayLiveStreamRequest(AbstractModel):

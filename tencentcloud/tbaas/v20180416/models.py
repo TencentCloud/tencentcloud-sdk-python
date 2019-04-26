@@ -37,6 +37,8 @@ class GetInvokeTxRequest(AbstractModel):
         :type PeerGroup: str
         :param TxId: 事务ID
         :type TxId: str
+        :param GroupName: 调用合约的组织名称，可以在组织管理列表中获取当前组织的名称
+        :type GroupName: str
         """
         self.Module = None
         self.Operation = None
@@ -45,6 +47,7 @@ class GetInvokeTxRequest(AbstractModel):
         self.PeerName = None
         self.PeerGroup = None
         self.TxId = None
+        self.GroupName = None
 
 
     def _deserialize(self, params):
@@ -55,6 +58,7 @@ class GetInvokeTxRequest(AbstractModel):
         self.PeerName = params.get("PeerName")
         self.PeerGroup = params.get("PeerGroup")
         self.TxId = params.get("TxId")
+        self.GroupName = params.get("GroupName")
 
 
 class GetInvokeTxResponse(AbstractModel):
@@ -103,6 +107,8 @@ class InvokeRequest(AbstractModel):
         :type Peers: list of PeerSet
         :param FuncName: 该笔交易需要调用的智能合约中的函数名称
         :type FuncName: str
+        :param GroupName: 调用合约的组织名称，可以在组织管理列表中获取当前组织的名称
+        :type GroupName: str
         :param Args: 被调用的函数参数列表
         :type Args: list of str
         :param AsyncFlag: 同步调用标识，可选参数，值为0或者不传表示使用同步方法调用，调用后会等待交易执行后再返回执行结果；值为1时表示使用异步方式调用Invoke，执行后会立即返回交易对应的Txid，后续需要通过GetInvokeTx这个API查询该交易的执行结果。（对于逻辑较为简单的交易，可以使用同步模式；对于逻辑较为复杂的交易，建议使用异步模式，否则容易导致API因等待时间过长，返回等待超时）
@@ -115,6 +121,7 @@ class InvokeRequest(AbstractModel):
         self.ChannelName = None
         self.Peers = None
         self.FuncName = None
+        self.GroupName = None
         self.Args = None
         self.AsyncFlag = None
 
@@ -132,6 +139,7 @@ class InvokeRequest(AbstractModel):
                 obj._deserialize(item)
                 self.Peers.append(obj)
         self.FuncName = params.get("FuncName")
+        self.GroupName = params.get("GroupName")
         self.Args = params.get("Args")
         self.AsyncFlag = params.get("AsyncFlag")
 
@@ -203,6 +211,8 @@ class QueryRequest(AbstractModel):
         :type Peers: list of PeerSet
         :param FuncName: 该笔交易查询需要调用的智能合约中的函数名称
         :type FuncName: str
+        :param GroupName: 调用合约的组织名称，可以在组织管理列表中获取当前组织的名称
+        :type GroupName: str
         :param Args: 被调用的函数参数列表
         :type Args: list of str
         """
@@ -213,6 +223,7 @@ class QueryRequest(AbstractModel):
         self.ChannelName = None
         self.Peers = None
         self.FuncName = None
+        self.GroupName = None
         self.Args = None
 
 
@@ -229,6 +240,7 @@ class QueryRequest(AbstractModel):
                 obj._deserialize(item)
                 self.Peers.append(obj)
         self.FuncName = params.get("FuncName")
+        self.GroupName = params.get("GroupName")
         self.Args = params.get("Args")
 
 

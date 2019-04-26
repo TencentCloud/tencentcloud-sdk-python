@@ -99,6 +99,8 @@ class ActivtyRelatedInstance(AbstractModel):
         :param InstanceId: 实例ID。
         :type InstanceId: str
         :param InstanceStatus: 实例在伸缩活动中的状态。取值如下：
+<li>INIT：初始化中
+<li>RUNNING：实例操作中
 <li>SUCCESSFUL：活动成功
 <li>FAILED：活动失败
         :type InstanceStatus: str
@@ -306,6 +308,52 @@ class AutoScalingNotification(AbstractModel):
         self.AutoScalingNotificationId = params.get("AutoScalingNotificationId")
 
 
+class CompleteLifecycleActionRequest(AbstractModel):
+    """CompleteLifecycleAction请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param LifecycleHookId: 生命周期挂钩ID
+        :type LifecycleHookId: str
+        :param LifecycleActionResult: 生命周期动作的结果，取值范围为“CONTINUE”或“ABANDON”
+        :type LifecycleActionResult: str
+        :param InstanceId: 实例ID，“InstanceId”和“LifecycleActionToken”必须填充其中一个
+        :type InstanceId: str
+        :param LifecycleActionToken: “InstanceId”和“LifecycleActionToken”必须填充其中一个
+        :type LifecycleActionToken: str
+        """
+        self.LifecycleHookId = None
+        self.LifecycleActionResult = None
+        self.InstanceId = None
+        self.LifecycleActionToken = None
+
+
+    def _deserialize(self, params):
+        self.LifecycleHookId = params.get("LifecycleHookId")
+        self.LifecycleActionResult = params.get("LifecycleActionResult")
+        self.InstanceId = params.get("InstanceId")
+        self.LifecycleActionToken = params.get("LifecycleActionToken")
+
+
+class CompleteLifecycleActionResponse(AbstractModel):
+    """CompleteLifecycleAction返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class CreateAutoScalingGroupRequest(AbstractModel):
     """CreateAutoScalingGroup请求参数结构体
 
@@ -460,6 +508,8 @@ class CreateLaunchConfigurationRequest(AbstractModel):
 实例类型不可用的常见原因包括该实例类型售罄、对应云盘售罄等。
 如果 InstanceTypes 中一款机型不存在或者已下线，则无论 InstanceTypesCheckPolicy 采用何种取值，都会校验报错。
         :type InstanceTypesCheckPolicy: str
+        :param InstanceTags: 标签列表。通过指定该参数，可以为扩容的实例绑定标签。最多支持指定10个标签。
+        :type InstanceTags: list of InstanceTag
         """
         self.LaunchConfigurationName = None
         self.ImageId = None
@@ -476,6 +526,7 @@ class CreateLaunchConfigurationRequest(AbstractModel):
         self.InstanceMarketOptions = None
         self.InstanceTypes = None
         self.InstanceTypesCheckPolicy = None
+        self.InstanceTags = None
 
 
     def _deserialize(self, params):
@@ -509,6 +560,12 @@ class CreateLaunchConfigurationRequest(AbstractModel):
             self.InstanceMarketOptions._deserialize(params.get("InstanceMarketOptions"))
         self.InstanceTypes = params.get("InstanceTypes")
         self.InstanceTypesCheckPolicy = params.get("InstanceTypesCheckPolicy")
+        if params.get("InstanceTags") is not None:
+            self.InstanceTags = []
+            for item in params.get("InstanceTags"):
+                obj = InstanceTag()
+                obj._deserialize(item)
+                self.InstanceTags.append(obj)
 
 
 class CreateLaunchConfigurationResponse(AbstractModel):
@@ -529,6 +586,70 @@ class CreateLaunchConfigurationResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.LaunchConfigurationId = params.get("LaunchConfigurationId")
+        self.RequestId = params.get("RequestId")
+
+
+class CreateLifecycleHookRequest(AbstractModel):
+    """CreateLifecycleHook请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param AutoScalingGroupId: 伸缩组ID
+        :type AutoScalingGroupId: str
+        :param LifecycleHookName: 生命周期挂钩名称
+        :type LifecycleHookName: str
+        :param LifecycleTransition: 进行生命周期挂钩的场景，取值范围包括“INSTANCE_LAUNCHING”和“INSTANCE_TERMINATING”
+        :type LifecycleTransition: str
+        :param DefaultResult: 定义伸缩组在生命周期挂钩超时的情况下应采取的操作，取值范围是“CONTINUE”或“ABANDON”，默认值为“CONTINUE”
+        :type DefaultResult: str
+        :param HeartbeatTimeout: 生命周期挂钩超时之前可以经过的最长时间（以秒为单位），范围从30到3600秒，默认值为300秒
+        :type HeartbeatTimeout: int
+        :param NotificationMetadata: 弹性伸缩向通知目标发送的附加信息，默认值为''
+        :type NotificationMetadata: str
+        :param NotificationTarget: 通知目标
+        :type NotificationTarget: :class:`tencentcloud.autoscaling.v20180419.models.NotificationTarget`
+        """
+        self.AutoScalingGroupId = None
+        self.LifecycleHookName = None
+        self.LifecycleTransition = None
+        self.DefaultResult = None
+        self.HeartbeatTimeout = None
+        self.NotificationMetadata = None
+        self.NotificationTarget = None
+
+
+    def _deserialize(self, params):
+        self.AutoScalingGroupId = params.get("AutoScalingGroupId")
+        self.LifecycleHookName = params.get("LifecycleHookName")
+        self.LifecycleTransition = params.get("LifecycleTransition")
+        self.DefaultResult = params.get("DefaultResult")
+        self.HeartbeatTimeout = params.get("HeartbeatTimeout")
+        self.NotificationMetadata = params.get("NotificationMetadata")
+        if params.get("NotificationTarget") is not None:
+            self.NotificationTarget = NotificationTarget()
+            self.NotificationTarget._deserialize(params.get("NotificationTarget"))
+
+
+class CreateLifecycleHookResponse(AbstractModel):
+    """CreateLifecycleHook返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param LifecycleHookId: 生命周期挂钩ID
+        :type LifecycleHookId: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.LifecycleHookId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.LifecycleHookId = params.get("LifecycleHookId")
         self.RequestId = params.get("RequestId")
 
 
@@ -581,6 +702,90 @@ class CreateNotificationConfigurationResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.AutoScalingNotificationId = params.get("AutoScalingNotificationId")
+        self.RequestId = params.get("RequestId")
+
+
+class CreatePaiInstanceRequest(AbstractModel):
+    """CreatePaiInstance请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param DomainName: PAI实例的域名。
+        :type DomainName: str
+        :param InternetAccessible: 公网带宽相关信息设置。
+        :type InternetAccessible: :class:`tencentcloud.autoscaling.v20180419.models.InternetAccessible`
+        :param InitScript: 启动脚本的base64编码字符串。
+        :type InitScript: str
+        :param Zones: 可用区列表。
+        :type Zones: list of str
+        :param VpcId: VpcId。
+        :type VpcId: str
+        :param SubnetIds: 子网列表。
+        :type SubnetIds: list of str
+        :param InstanceName: 实例显示名称。
+        :type InstanceName: str
+        :param InstanceTypes: 实例机型列表。
+        :type InstanceTypes: list of str
+        :param LoginSettings: 实例登录设置。
+        :type LoginSettings: :class:`tencentcloud.autoscaling.v20180419.models.LoginSettings`
+        :param InstanceChargeType: 实例计费类型。
+        :type InstanceChargeType: str
+        :param InstanceChargePrepaid: 预付费模式，即包年包月相关参数设置。通过该参数可以指定包年包月实例的购买时长、是否设置自动续费等属性。若指定实例的付费模式为预付费则该参数必传。
+        :type InstanceChargePrepaid: :class:`tencentcloud.autoscaling.v20180419.models.InstanceChargePrepaid`
+        """
+        self.DomainName = None
+        self.InternetAccessible = None
+        self.InitScript = None
+        self.Zones = None
+        self.VpcId = None
+        self.SubnetIds = None
+        self.InstanceName = None
+        self.InstanceTypes = None
+        self.LoginSettings = None
+        self.InstanceChargeType = None
+        self.InstanceChargePrepaid = None
+
+
+    def _deserialize(self, params):
+        self.DomainName = params.get("DomainName")
+        if params.get("InternetAccessible") is not None:
+            self.InternetAccessible = InternetAccessible()
+            self.InternetAccessible._deserialize(params.get("InternetAccessible"))
+        self.InitScript = params.get("InitScript")
+        self.Zones = params.get("Zones")
+        self.VpcId = params.get("VpcId")
+        self.SubnetIds = params.get("SubnetIds")
+        self.InstanceName = params.get("InstanceName")
+        self.InstanceTypes = params.get("InstanceTypes")
+        if params.get("LoginSettings") is not None:
+            self.LoginSettings = LoginSettings()
+            self.LoginSettings._deserialize(params.get("LoginSettings"))
+        self.InstanceChargeType = params.get("InstanceChargeType")
+        if params.get("InstanceChargePrepaid") is not None:
+            self.InstanceChargePrepaid = InstanceChargePrepaid()
+            self.InstanceChargePrepaid._deserialize(params.get("InstanceChargePrepaid"))
+
+
+class CreatePaiInstanceResponse(AbstractModel):
+    """CreatePaiInstance返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param InstanceIdSet: 当通过本接口来创建实例时会返回该参数，表示一个或多个实例`ID`。返回实例`ID`列表并不代表实例创建成功，可根据 [DescribeInstances](https://cloud.tencent.com/document/api/213/15728) 接口查询返回的InstancesSet中对应实例的`ID`的状态来判断创建是否完成；如果实例状态由“准备中”变为“正在运行”，则为创建成功。
+        :type InstanceIdSet: list of str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.InstanceIdSet = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.InstanceIdSet = params.get("InstanceIdSet")
         self.RequestId = params.get("RequestId")
 
 
@@ -795,6 +1000,40 @@ class DeleteLaunchConfigurationRequest(AbstractModel):
 
 class DeleteLaunchConfigurationResponse(AbstractModel):
     """DeleteLaunchConfiguration返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class DeleteLifecycleHookRequest(AbstractModel):
+    """DeleteLifecycleHook请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param LifecycleHookId: 生命周期挂钩ID
+        :type LifecycleHookId: str
+        """
+        self.LifecycleHookId = None
+
+
+    def _deserialize(self, params):
+        self.LifecycleHookId = params.get("LifecycleHookId")
+
+
+class DeleteLifecycleHookResponse(AbstractModel):
+    """DeleteLifecycleHook返回参数结构体
 
     """
 
@@ -1035,7 +1274,7 @@ class DescribeAutoScalingGroupsRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param AutoScalingGroupIds: 按照一个或者多个伸缩组ID查询。伸缩组ID形如：`asg-nkdwoui0`。每次请求的上限为100。参数不支持同时指定`AutoScalingGroups`和`Filters`。
+        :param AutoScalingGroupIds: 按照一个或者多个伸缩组ID查询。伸缩组ID形如：`asg-nkdwoui0`。每次请求的上限为100。参数不支持同时指定`AutoScalingGroupIds`和`Filters`。
         :type AutoScalingGroupIds: list of str
         :param Filters: 过滤条件。
 <li> auto-scaling-group-id - String - 是否必填：否 -（过滤条件）按照伸缩组ID过滤。</li>
@@ -1230,6 +1469,78 @@ class DescribeLaunchConfigurationsResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeLifecycleHooksRequest(AbstractModel):
+    """DescribeLifecycleHooks请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param LifecycleHookIds: 按照一个或者多个生命周期挂钩ID查询。生命周期挂钩ID形如：`ash-8azjzxcl`。每次请求的上限为100。参数不支持同时指定`LifecycleHookIds`和`Filters`。
+        :type LifecycleHookIds: list of str
+        :param Filters: 过滤条件。
+<li> lifecycle-hook-id - String - 是否必填：否 -（过滤条件）按照生命周期挂钩ID过滤。</li>
+<li> lifecycle-hook-name - String - 是否必填：否 -（过滤条件）按照生命周期挂钩名称过滤。</li>
+<li> auto-scaling-group-id - String - 是否必填：否 -（过滤条件）按照伸缩组ID过滤。</li>
+过滤条件。
+<li> lifecycle-hook-id - String - 是否必填：否 -（过滤条件）按照生命周期挂钩ID过滤。</li>
+<li> lifecycle-hook-name - String - 是否必填：否 -（过滤条件）按照生命周期挂钩名称过滤。</li>
+<li> auto-scaling-group-id - String - 是否必填：否 -（过滤条件）按照伸缩组ID过滤。</li>
+每次请求的`Filters`的上限为10，`Filter.Values`的上限为5。参数不支持同时指定`LifecycleHookIds `和`Filters`。
+        :type Filters: list of Filter
+        :param Limit: 返回数量，默认为20，最大值为100。关于`Limit`的更进一步介绍请参考 API [简介](https://cloud.tencent.com/document/api/213/15688)中的相关小节。
+        :type Limit: int
+        :param Offset: 偏移量，默认为0。关于`Offset`的更进一步介绍请参考 API [简介](https://cloud.tencent.com/document/api/213/15688)中的相关小节。
+        :type Offset: int
+        """
+        self.LifecycleHookIds = None
+        self.Filters = None
+        self.Limit = None
+        self.Offset = None
+
+
+    def _deserialize(self, params):
+        self.LifecycleHookIds = params.get("LifecycleHookIds")
+        if params.get("Filters") is not None:
+            self.Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self.Filters.append(obj)
+        self.Limit = params.get("Limit")
+        self.Offset = params.get("Offset")
+
+
+class DescribeLifecycleHooksResponse(AbstractModel):
+    """DescribeLifecycleHooks返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param LifecycleHookSet: 生命周期挂钩数组
+        :type LifecycleHookSet: list of LifecycleHook
+        :param TotalCount: 总体数量
+        :type TotalCount: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.LifecycleHookSet = None
+        self.TotalCount = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("LifecycleHookSet") is not None:
+            self.LifecycleHookSet = []
+            for item in params.get("LifecycleHookSet"):
+                obj = LifecycleHook()
+                obj._deserialize(item)
+                self.LifecycleHookSet.append(obj)
+        self.TotalCount = params.get("TotalCount")
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeNotificationConfigurationsRequest(AbstractModel):
     """DescribeNotificationConfigurations请求参数结构体
 
@@ -1294,6 +1605,70 @@ class DescribeNotificationConfigurationsResponse(AbstractModel):
                 obj = AutoScalingNotification()
                 obj._deserialize(item)
                 self.AutoScalingNotificationSet.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribePaiInstancesRequest(AbstractModel):
+    """DescribePaiInstances请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param InstanceIds: 依据PAI实例的实例ID进行查询。
+        :type InstanceIds: list of str
+        :param Filters: 过滤条件。
+        :type Filters: list of Filter
+        :param Limit: 返回数量，默认为20，最大值为100。
+        :type Limit: int
+        :param Offset: 偏移量，默认为0。
+        :type Offset: int
+        """
+        self.InstanceIds = None
+        self.Filters = None
+        self.Limit = None
+        self.Offset = None
+
+
+    def _deserialize(self, params):
+        self.InstanceIds = params.get("InstanceIds")
+        if params.get("Filters") is not None:
+            self.Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self.Filters.append(obj)
+        self.Limit = params.get("Limit")
+        self.Offset = params.get("Offset")
+
+
+class DescribePaiInstancesResponse(AbstractModel):
+    """DescribePaiInstances返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param TotalCount: 符合条件的PAI实例数量
+        :type TotalCount: int
+        :param PaiInstanceSet: PAI实例详细信息
+        :type PaiInstanceSet: list of PaiInstance
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.PaiInstanceSet = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("PaiInstanceSet") is not None:
+            self.PaiInstanceSet = []
+            for item in params.get("PaiInstanceSet"):
+                obj = PaiInstance()
+                obj._deserialize(item)
+                self.PaiInstanceSet.append(obj)
         self.RequestId = params.get("RequestId")
 
 
@@ -1686,6 +2061,27 @@ class Instance(AbstractModel):
         self.InstanceType = params.get("InstanceType")
 
 
+class InstanceChargePrepaid(AbstractModel):
+    """描述了了实例的计费模式
+
+    """
+
+    def __init__(self):
+        """
+        :param Period: 购买实例的时长，单位：月。取值范围：1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 24, 36。
+        :type Period: int
+        :param RenewFlag: 自动续费标识。取值范围：<br><li>NOTIFY_AND_AUTO_RENEW：通知过期且自动续费<br><li>NOTIFY_AND_MANUAL_RENEW：通知过期不自动续费<br><li>DISABLE_NOTIFY_AND_MANUAL_RENEW：不通知过期不自动续费<br><br>默认取值：NOTIFY_AND_MANUAL_RENEW。若该参数指定为NOTIFY_AND_AUTO_RENEW，在账户余额充足的情况下，实例到期后将按月自动续费。
+        :type RenewFlag: str
+        """
+        self.Period = None
+        self.RenewFlag = None
+
+
+    def _deserialize(self, params):
+        self.Period = params.get("Period")
+        self.RenewFlag = params.get("RenewFlag")
+
+
 class InstanceMarketOptionsRequest(AbstractModel):
     """CVM竞价请求相关选项
 
@@ -1708,6 +2104,27 @@ class InstanceMarketOptionsRequest(AbstractModel):
             self.SpotOptions = SpotMarketOptions()
             self.SpotOptions._deserialize(params.get("SpotOptions"))
         self.MarketType = params.get("MarketType")
+
+
+class InstanceTag(AbstractModel):
+    """实例标签。通过指定该参数，可以为扩容的实例绑定标签。
+
+    """
+
+    def __init__(self):
+        """
+        :param Key: 标签键
+        :type Key: str
+        :param Value: 标签值
+        :type Value: str
+        """
+        self.Key = None
+        self.Value = None
+
+
+    def _deserialize(self, params):
+        self.Key = params.get("Key")
+        self.Value = params.get("Value")
 
 
 class InternetAccessible(AbstractModel):
@@ -1785,6 +2202,8 @@ class LaunchConfiguration(AbstractModel):
         :type InstanceMarketOptions: :class:`tencentcloud.autoscaling.v20180419.models.InstanceMarketOptionsRequest`
         :param InstanceTypes: 实例机型列表。
         :type InstanceTypes: list of str
+        :param InstanceTags: 标签列表。
+        :type InstanceTags: list of InstanceTag
         """
         self.ProjectId = None
         self.LaunchConfigurationId = None
@@ -1804,6 +2223,7 @@ class LaunchConfiguration(AbstractModel):
         self.InstanceChargeType = None
         self.InstanceMarketOptions = None
         self.InstanceTypes = None
+        self.InstanceTags = None
 
 
     def _deserialize(self, params):
@@ -1845,6 +2265,61 @@ class LaunchConfiguration(AbstractModel):
             self.InstanceMarketOptions = InstanceMarketOptionsRequest()
             self.InstanceMarketOptions._deserialize(params.get("InstanceMarketOptions"))
         self.InstanceTypes = params.get("InstanceTypes")
+        if params.get("InstanceTags") is not None:
+            self.InstanceTags = []
+            for item in params.get("InstanceTags"):
+                obj = InstanceTag()
+                obj._deserialize(item)
+                self.InstanceTags.append(obj)
+
+
+class LifecycleHook(AbstractModel):
+    """生命周期挂钩
+
+    """
+
+    def __init__(self):
+        """
+        :param LifecycleHookId: 生命周期挂钩ID
+        :type LifecycleHookId: str
+        :param LifecycleHookName: 生命周期挂钩名称
+        :type LifecycleHookName: str
+        :param AutoScalingGroupId: 伸缩组ID
+        :type AutoScalingGroupId: str
+        :param DefaultResult: 生命周期挂钩默认结果
+        :type DefaultResult: str
+        :param HeartbeatTimeout: 生命周期挂钩等待超时时间
+        :type HeartbeatTimeout: int
+        :param LifecycleTransition: 生命周期挂钩适用场景
+        :type LifecycleTransition: str
+        :param NotificationMetadata: 通知目标的附加信息
+        :type NotificationMetadata: str
+        :param CreatedTime: 创建时间
+        :type CreatedTime: str
+        :param NotificationTarget: 通知目标
+        :type NotificationTarget: str
+        """
+        self.LifecycleHookId = None
+        self.LifecycleHookName = None
+        self.AutoScalingGroupId = None
+        self.DefaultResult = None
+        self.HeartbeatTimeout = None
+        self.LifecycleTransition = None
+        self.NotificationMetadata = None
+        self.CreatedTime = None
+        self.NotificationTarget = None
+
+
+    def _deserialize(self, params):
+        self.LifecycleHookId = params.get("LifecycleHookId")
+        self.LifecycleHookName = params.get("LifecycleHookName")
+        self.AutoScalingGroupId = params.get("AutoScalingGroupId")
+        self.DefaultResult = params.get("DefaultResult")
+        self.HeartbeatTimeout = params.get("HeartbeatTimeout")
+        self.LifecycleTransition = params.get("LifecycleTransition")
+        self.NotificationMetadata = params.get("NotificationMetadata")
+        self.CreatedTime = params.get("CreatedTime")
+        self.NotificationTarget = params.get("NotificationTarget")
 
 
 class LimitedLoginSettings(AbstractModel):
@@ -2343,6 +2818,92 @@ class ModifyScheduledActionResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class NotificationTarget(AbstractModel):
+    """通知目标
+
+    """
+
+    def __init__(self):
+        """
+        :param TargetType: 目标类型，取值范围包括`CMQ_QUEUE`、`CMQ_TOPIC`。
+<li> CMQ_QUEUE，指腾讯云消息队列-队列模型。</li>
+<li> CMQ_TOPIC，指腾讯云消息队列-主题模型。</li>
+        :type TargetType: str
+        :param QueueName: 队列名称，如果`TargetType`取值为`CMQ_QUEUE`，则本字段必填。
+        :type QueueName: str
+        :param TopicName: 主题名称，如果`TargetType`取值为`CMQ_TOPIC`，则本字段必填。
+        :type TopicName: str
+        """
+        self.TargetType = None
+        self.QueueName = None
+        self.TopicName = None
+
+
+    def _deserialize(self, params):
+        self.TargetType = params.get("TargetType")
+        self.QueueName = params.get("QueueName")
+        self.TopicName = params.get("TopicName")
+
+
+class PaiInstance(AbstractModel):
+    """PAI实例
+
+    """
+
+    def __init__(self):
+        """
+        :param InstanceId: 实例ID
+        :type InstanceId: str
+        :param DomainName: 实例域名
+        :type DomainName: str
+        """
+        self.InstanceId = None
+        self.DomainName = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.DomainName = params.get("DomainName")
+
+
+class PreviewPaiDomainNameRequest(AbstractModel):
+    """PreviewPaiDomainName请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param DomainNameType: 域名类型
+        :type DomainNameType: str
+        """
+        self.DomainNameType = None
+
+
+    def _deserialize(self, params):
+        self.DomainNameType = params.get("DomainNameType")
+
+
+class PreviewPaiDomainNameResponse(AbstractModel):
+    """PreviewPaiDomainName返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param DomainName: 可用的PAI域名
+        :type DomainName: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.DomainName = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.DomainName = params.get("DomainName")
+        self.RequestId = params.get("RequestId")
+
+
 class RemoveInstancesRequest(AbstractModel):
     """RemoveInstances请求参数结构体
 
@@ -2623,3 +3184,63 @@ class TargetAttribute(AbstractModel):
     def _deserialize(self, params):
         self.Port = params.get("Port")
         self.Weight = params.get("Weight")
+
+
+class UpgradeLifecycleHookRequest(AbstractModel):
+    """UpgradeLifecycleHook请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param LifecycleHookId: 生命周期挂钩ID
+        :type LifecycleHookId: str
+        :param LifecycleHookName: 生命周期挂钩名称
+        :type LifecycleHookName: str
+        :param LifecycleTransition: 进行生命周期挂钩的场景，取值范围包括“INSTANCE_LAUNCHING”和“INSTANCE_TERMINATING”
+        :type LifecycleTransition: str
+        :param DefaultResult: 定义伸缩组在生命周期挂钩超时的情况下应采取的操作，取值范围是“CONTINUE”或“ABANDON”，默认值为“CONTINUE”
+        :type DefaultResult: str
+        :param HeartbeatTimeout: 生命周期挂钩超时之前可以经过的最长时间（以秒为单位），范围从30到3600秒，默认值为300秒
+        :type HeartbeatTimeout: int
+        :param NotificationMetadata: 弹性伸缩向通知目标发送的附加信息，默认值为''
+        :type NotificationMetadata: str
+        :param NotificationTarget: 通知目标
+        :type NotificationTarget: :class:`tencentcloud.autoscaling.v20180419.models.NotificationTarget`
+        """
+        self.LifecycleHookId = None
+        self.LifecycleHookName = None
+        self.LifecycleTransition = None
+        self.DefaultResult = None
+        self.HeartbeatTimeout = None
+        self.NotificationMetadata = None
+        self.NotificationTarget = None
+
+
+    def _deserialize(self, params):
+        self.LifecycleHookId = params.get("LifecycleHookId")
+        self.LifecycleHookName = params.get("LifecycleHookName")
+        self.LifecycleTransition = params.get("LifecycleTransition")
+        self.DefaultResult = params.get("DefaultResult")
+        self.HeartbeatTimeout = params.get("HeartbeatTimeout")
+        self.NotificationMetadata = params.get("NotificationMetadata")
+        if params.get("NotificationTarget") is not None:
+            self.NotificationTarget = NotificationTarget()
+            self.NotificationTarget._deserialize(params.get("NotificationTarget"))
+
+
+class UpgradeLifecycleHookResponse(AbstractModel):
+    """UpgradeLifecycleHook返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")

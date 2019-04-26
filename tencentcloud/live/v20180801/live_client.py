@@ -28,6 +28,7 @@ class LiveClient(AbstractClient):
     def AddDelayLiveStream(self, request):
         """对流设置延播时间
         注意：如果在推流前设置延播，需要提前5分钟设置。
+        目前该接口只支持流粒度的，域名及应用粒度功能支持当前开发中。
 
         :param request: 调用AddDelayLiveStream所需参数的结构体。
         :type request: :class:`tencentcloud.live.v20180801.models.AddDelayLiveStreamRequest`

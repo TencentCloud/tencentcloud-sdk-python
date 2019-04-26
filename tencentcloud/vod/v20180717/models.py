@@ -16,6 +16,67 @@
 from tencentcloud.common.abstract_model import AbstractModel
 
 
+class AIAnalysisTemplateItem(AbstractModel):
+    """AI 智能分析模板详情
+
+    """
+
+    def __init__(self):
+        """
+        :param Definition: 智能分析模板唯一标识。
+        :type Definition: int
+        :param Name: 智能分析模板名称。
+        :type Name: str
+        :param Comment: 智能分析模板描述信息。
+        :type Comment: str
+        :param ClassificationConfigure: 智能分类任务控制参数。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ClassificationConfigure: :class:`tencentcloud.vod.v20180717.models.ClassificationConfigureInfo`
+        :param TagConfigure: 智能标签任务控制参数。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TagConfigure: :class:`tencentcloud.vod.v20180717.models.TagConfigureInfo`
+        :param CoverConfigure: 智能封面任务控制参数。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CoverConfigure: :class:`tencentcloud.vod.v20180717.models.CoverConfigureInfo`
+        :param FrameTagConfigure: 智能按帧标签任务控制参数。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FrameTagConfigure: :class:`tencentcloud.vod.v20180717.models.FrameTagConfigureInfo`
+        :param CreateTime: 模板创建时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F)。
+        :type CreateTime: str
+        :param UpdateTime: 模板最后修改时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F)。
+        :type UpdateTime: str
+        """
+        self.Definition = None
+        self.Name = None
+        self.Comment = None
+        self.ClassificationConfigure = None
+        self.TagConfigure = None
+        self.CoverConfigure = None
+        self.FrameTagConfigure = None
+        self.CreateTime = None
+        self.UpdateTime = None
+
+
+    def _deserialize(self, params):
+        self.Definition = params.get("Definition")
+        self.Name = params.get("Name")
+        self.Comment = params.get("Comment")
+        if params.get("ClassificationConfigure") is not None:
+            self.ClassificationConfigure = ClassificationConfigureInfo()
+            self.ClassificationConfigure._deserialize(params.get("ClassificationConfigure"))
+        if params.get("TagConfigure") is not None:
+            self.TagConfigure = TagConfigureInfo()
+            self.TagConfigure._deserialize(params.get("TagConfigure"))
+        if params.get("CoverConfigure") is not None:
+            self.CoverConfigure = CoverConfigureInfo()
+            self.CoverConfigure._deserialize(params.get("CoverConfigure"))
+        if params.get("FrameTagConfigure") is not None:
+            self.FrameTagConfigure = FrameTagConfigureInfo()
+            self.FrameTagConfigure._deserialize(params.get("FrameTagConfigure"))
+        self.CreateTime = params.get("CreateTime")
+        self.UpdateTime = params.get("UpdateTime")
+
+
 class AdaptiveDynamicStreamingInfoItem(AbstractModel):
     """转自适应码流信息
 
@@ -72,8 +133,6 @@ class AiAnalysisResult(AbstractModel):
         :param Type: 任务的类型，可以取的值有：
 <li>Classification：智能分类</li>
 <li>Cover：智能封面</li>
-<li>Description：智能描述</li>
-<li>Highlight：智能精彩片断</li>
 <li>Tag：智能标签</li>
 <li>FrameTag：智能按帧标签</li>
         :type Type: str
@@ -86,11 +145,15 @@ class AiAnalysisResult(AbstractModel):
         :param TagTask: 视频内容分析智能标签任务的查询结果，当任务类型为 Tag 时有效。
 注意：此字段可能返回 null，表示取不到有效值。
         :type TagTask: :class:`tencentcloud.vod.v20180717.models.AiAnalysisTaskTagResult`
+        :param FrameTagTask: 视频内容分析智能按帧标签任务的查询结果，当任务类型为 FrameTag 时有效。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FrameTagTask: :class:`tencentcloud.vod.v20180717.models.AiAnalysisTaskFrameTagResult`
         """
         self.Type = None
         self.ClassificationTask = None
         self.CoverTask = None
         self.TagTask = None
+        self.FrameTagTask = None
 
 
     def _deserialize(self, params):
@@ -104,6 +167,9 @@ class AiAnalysisResult(AbstractModel):
         if params.get("TagTask") is not None:
             self.TagTask = AiAnalysisTaskTagResult()
             self.TagTask._deserialize(params.get("TagTask"))
+        if params.get("FrameTagTask") is not None:
+            self.FrameTagTask = AiAnalysisTaskFrameTagResult()
+            self.FrameTagTask._deserialize(params.get("FrameTagTask"))
 
 
 class AiAnalysisTaskClassificationInput(AbstractModel):
@@ -113,7 +179,7 @@ class AiAnalysisTaskClassificationInput(AbstractModel):
 
     def __init__(self):
         """
-        :param Definition: 视频智能分类模板 ID ，固定为 10 。
+        :param Definition: 视频智能分类模板 ID。
         :type Definition: int
         """
         self.Definition = None
@@ -131,7 +197,6 @@ class AiAnalysisTaskClassificationOutput(AbstractModel):
     def __init__(self):
         """
         :param ClassificationSet: 视频智能分类列表。
-注意：此字段可能返回 null，表示取不到有效值。
         :type ClassificationSet: list of MediaAiAnalysisClassificationItem
         """
         self.ClassificationSet = None
@@ -156,10 +221,8 @@ class AiAnalysisTaskClassificationResult(AbstractModel):
         :param Status: 任务状态，有 PROCESSING，SUCCESS 和 FAIL 三种。
         :type Status: str
         :param ErrCode: 错误码，0：成功，其他值：失败。
-注意：此字段可能返回 null，表示取不到有效值。
         :type ErrCode: int
         :param Message: 错误信息。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Message: str
         :param Input: 智能分类任务输入。
         :type Input: :class:`tencentcloud.vod.v20180717.models.AiAnalysisTaskClassificationInput`
@@ -193,7 +256,7 @@ class AiAnalysisTaskCoverInput(AbstractModel):
 
     def __init__(self):
         """
-        :param Definition: 视频智能封面模板 ID ，固定为 10 。
+        :param Definition: 视频智能封面模板 ID。
         :type Definition: int
         """
         self.Definition = None
@@ -211,7 +274,6 @@ class AiAnalysisTaskCoverOutput(AbstractModel):
     def __init__(self):
         """
         :param CoverSet: 智能封面列表。
-注意：此字段可能返回 null，表示取不到有效值。
         :type CoverSet: list of MediaAiAnalysisCoverItem
         """
         self.CoverSet = None
@@ -236,14 +298,12 @@ class AiAnalysisTaskCoverResult(AbstractModel):
         :param Status: 任务状态，有 PROCESSING，SUCCESS 和 FAIL 三种。
         :type Status: str
         :param ErrCode: 错误码，0：成功，其他值：失败。
-注意：此字段可能返回 null，表示取不到有效值。
         :type ErrCode: int
         :param Message: 错误信息。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Message: str
         :param Input: 智能封面任务输入。
         :type Input: :class:`tencentcloud.vod.v20180717.models.AiAnalysisTaskCoverInput`
-        :param Output: 智能分类任务输出。
+        :param Output: 智能封面任务输出。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Output: :class:`tencentcloud.vod.v20180717.models.AiAnalysisTaskCoverOutput`
         """
@@ -266,6 +326,83 @@ class AiAnalysisTaskCoverResult(AbstractModel):
             self.Output._deserialize(params.get("Output"))
 
 
+class AiAnalysisTaskFrameTagInput(AbstractModel):
+    """智能按帧标签任务输入类型
+
+    """
+
+    def __init__(self):
+        """
+        :param Definition: 视频智能按帧标签模板 ID。
+        :type Definition: int
+        """
+        self.Definition = None
+
+
+    def _deserialize(self, params):
+        self.Definition = params.get("Definition")
+
+
+class AiAnalysisTaskFrameTagOutput(AbstractModel):
+    """智能按帧标签结果信息
+
+    """
+
+    def __init__(self):
+        """
+        :param SegmentSet: 视频按帧标签列表。
+        :type SegmentSet: list of MediaAiAnalysisFrameTagSegmentItem
+        """
+        self.SegmentSet = None
+
+
+    def _deserialize(self, params):
+        if params.get("SegmentSet") is not None:
+            self.SegmentSet = []
+            for item in params.get("SegmentSet"):
+                obj = MediaAiAnalysisFrameTagSegmentItem()
+                obj._deserialize(item)
+                self.SegmentSet.append(obj)
+
+
+class AiAnalysisTaskFrameTagResult(AbstractModel):
+    """智能按帧标签结果类型
+
+    """
+
+    def __init__(self):
+        """
+        :param Status: 任务状态，有 PROCESSING，SUCCESS 和 FAIL 三种。
+        :type Status: str
+        :param ErrCode: 错误码，0：成功，其他值：失败。
+        :type ErrCode: int
+        :param Message: 错误信息。
+        :type Message: str
+        :param Input: 智能按帧标签任务输入。
+        :type Input: :class:`tencentcloud.vod.v20180717.models.AiAnalysisTaskFrameTagInput`
+        :param Output: 智能按帧标签任务输出。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Output: :class:`tencentcloud.vod.v20180717.models.AiAnalysisTaskFrameTagOutput`
+        """
+        self.Status = None
+        self.ErrCode = None
+        self.Message = None
+        self.Input = None
+        self.Output = None
+
+
+    def _deserialize(self, params):
+        self.Status = params.get("Status")
+        self.ErrCode = params.get("ErrCode")
+        self.Message = params.get("Message")
+        if params.get("Input") is not None:
+            self.Input = AiAnalysisTaskFrameTagInput()
+            self.Input._deserialize(params.get("Input"))
+        if params.get("Output") is not None:
+            self.Output = AiAnalysisTaskFrameTagOutput()
+            self.Output._deserialize(params.get("Output"))
+
+
 class AiAnalysisTaskInput(AbstractModel):
     """AI 视频智能分析输入参数类型
 
@@ -273,7 +410,7 @@ class AiAnalysisTaskInput(AbstractModel):
 
     def __init__(self):
         """
-        :param Definition: 视频内容分析模板 ID ，固定为 10，同时进行智能分类、智能标签分析、智能封面分析。
+        :param Definition: 视频内容分析模板 ID。
         :type Definition: int
         """
         self.Definition = None
@@ -290,7 +427,7 @@ class AiAnalysisTaskTagInput(AbstractModel):
 
     def __init__(self):
         """
-        :param Definition: 视频智能分类模板 ID ，固定为 10 。
+        :param Definition: 视频智能标签模板 ID。
         :type Definition: int
         """
         self.Definition = None
@@ -308,7 +445,6 @@ class AiAnalysisTaskTagOutput(AbstractModel):
     def __init__(self):
         """
         :param TagSet: 视频智能标签列表。
-注意：此字段可能返回 null，表示取不到有效值。
         :type TagSet: list of MediaAiAnalysisTagItem
         """
         self.TagSet = None
@@ -333,10 +469,8 @@ class AiAnalysisTaskTagResult(AbstractModel):
         :param Status: 任务状态，有 PROCESSING，SUCCESS 和 FAIL 三种。
         :type Status: str
         :param ErrCode: 错误码，0：成功，其他值：失败。
-注意：此字段可能返回 null，表示取不到有效值。
         :type ErrCode: int
         :param Message: 错误信息。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Message: str
         :param Input: 智能标签任务输入。
         :type Input: :class:`tencentcloud.vod.v20180717.models.AiAnalysisTaskTagInput`
@@ -443,7 +577,7 @@ class AiContentReviewTaskInput(AbstractModel):
 
     def __init__(self):
         """
-        :param Definition: 视频内容审核模板 ID，可以填 10 和 20。<li>10：对视频画面进行鉴黄、鉴暴、鉴政审核；</li><li>20：对视频画面进行鉴黄、鉴暴、鉴政审核，并对 Asr 和 Ocr 文字进行鉴黄、鉴政审核。</li>
+        :param Definition: 视频内容审核模板 ID。
         :type Definition: int
         """
         self.Definition = None
@@ -453,8 +587,552 @@ class AiContentReviewTaskInput(AbstractModel):
         self.Definition = params.get("Definition")
 
 
+class AiRecognitionResult(AbstractModel):
+    """智能识别结果。
+
+    """
+
+    def __init__(self):
+        """
+        :param Type: 任务的类型，取值范围：
+<li>FaceRecognition：人脸识别，</li>
+<li>AsrFullTextRecognition：语音全文识别，</li>
+<li>OcrFullTextRecognition：文本全文识别，</li>
+<li>AsrWordsRecognition：用户自定义语音识别，</li>
+<li>OcrWordsRecognition：用户自定义文本识别，</li>
+<li>HeadTailRecognition：视频片头片尾识别，</li>
+<li>ObjectRecognition：物体识别。</li>
+        :type Type: str
+        :param FaceRecognitionTask: 人脸识别结果，当 Type 为 
+ FaceRecognition 时有效。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FaceRecognitionTask: :class:`tencentcloud.vod.v20180717.models.AiRecognitionTaskFaceResult`
+        :param AsrFullTextTask: 语音全文识别结果，当 Type 为
+ AsrFullTextRecognition 时有效。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AsrFullTextTask: :class:`tencentcloud.vod.v20180717.models.AiRecognitionTaskAsrFullTextResult`
+        :param OcrFullTextTask: 文本全文识别结果，当 Type 为
+ OcrFullTextRecognition 时有效。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OcrFullTextTask: :class:`tencentcloud.vod.v20180717.models.AiRecognitionTaskOcrFullTextResult`
+        :param AsrWordsTask: 用户自定义语音识别结果集，当 Type 为
+ AsrWordsRecognition 时有效。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AsrWordsTask: :class:`tencentcloud.vod.v20180717.models.AiRecognitionTaskAsrWordsResult`
+        :param OcrWordsTask: 用户自定义文本识别结果集，当 Type 为
+ OcrWordsRecognition 时有效。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OcrWordsTask: :class:`tencentcloud.vod.v20180717.models.AiRecognitionTaskOcrWordsResult`
+        :param HeadTailTask: 视频片头片尾识别结果，当 Type 为
+ HeadTailRecognition 时有效。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type HeadTailTask: :class:`tencentcloud.vod.v20180717.models.AiRecognitionTaskHeadTailResult`
+        :param ObjectTask: 物体识别结果，当 Type 为
+ ObjectRecognition 时有效。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ObjectTask: :class:`tencentcloud.vod.v20180717.models.AiRecognitionTaskObjectResult`
+        """
+        self.Type = None
+        self.FaceRecognitionTask = None
+        self.AsrFullTextTask = None
+        self.OcrFullTextTask = None
+        self.AsrWordsTask = None
+        self.OcrWordsTask = None
+        self.HeadTailTask = None
+        self.ObjectTask = None
+
+
+    def _deserialize(self, params):
+        self.Type = params.get("Type")
+        if params.get("FaceRecognitionTask") is not None:
+            self.FaceRecognitionTask = AiRecognitionTaskFaceResult()
+            self.FaceRecognitionTask._deserialize(params.get("FaceRecognitionTask"))
+        if params.get("AsrFullTextTask") is not None:
+            self.AsrFullTextTask = AiRecognitionTaskAsrFullTextResult()
+            self.AsrFullTextTask._deserialize(params.get("AsrFullTextTask"))
+        if params.get("OcrFullTextTask") is not None:
+            self.OcrFullTextTask = AiRecognitionTaskOcrFullTextResult()
+            self.OcrFullTextTask._deserialize(params.get("OcrFullTextTask"))
+        if params.get("AsrWordsTask") is not None:
+            self.AsrWordsTask = AiRecognitionTaskAsrWordsResult()
+            self.AsrWordsTask._deserialize(params.get("AsrWordsTask"))
+        if params.get("OcrWordsTask") is not None:
+            self.OcrWordsTask = AiRecognitionTaskOcrWordsResult()
+            self.OcrWordsTask._deserialize(params.get("OcrWordsTask"))
+        if params.get("HeadTailTask") is not None:
+            self.HeadTailTask = AiRecognitionTaskHeadTailResult()
+            self.HeadTailTask._deserialize(params.get("HeadTailTask"))
+        if params.get("ObjectTask") is not None:
+            self.ObjectTask = AiRecognitionTaskObjectResult()
+            self.ObjectTask._deserialize(params.get("ObjectTask"))
+
+
+class AiRecognitionTaskAsrFullTextResult(AbstractModel):
+    """语音全文识别结果。
+
+    """
+
+    def __init__(self):
+        """
+        :param Status: 任务状态，有 PROCESSING，SUCCESS 和 FAIL 三种。
+        :type Status: str
+        :param ErrCode: 错误码，0：成功，其他值：失败。
+        :type ErrCode: int
+        :param Message: 错误信息。
+        :type Message: str
+        :param Input: 语音全文识别任务输入信息。
+        :type Input: :class:`tencentcloud.vod.v20180717.models.AiRecognitionTaskAsrFullTextResultInput`
+        :param Output: 语音全文识别任务输出信息。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Output: :class:`tencentcloud.vod.v20180717.models.AiRecognitionTaskAsrFullTextResultOutput`
+        """
+        self.Status = None
+        self.ErrCode = None
+        self.Message = None
+        self.Input = None
+        self.Output = None
+
+
+    def _deserialize(self, params):
+        self.Status = params.get("Status")
+        self.ErrCode = params.get("ErrCode")
+        self.Message = params.get("Message")
+        if params.get("Input") is not None:
+            self.Input = AiRecognitionTaskAsrFullTextResultInput()
+            self.Input._deserialize(params.get("Input"))
+        if params.get("Output") is not None:
+            self.Output = AiRecognitionTaskAsrFullTextResultOutput()
+            self.Output._deserialize(params.get("Output"))
+
+
+class AiRecognitionTaskAsrFullTextResultInput(AbstractModel):
+    """语音全文识别的输入。
+
+    """
+
+    def __init__(self):
+        """
+        :param Definition: 语音全文识别模板 ID。
+        :type Definition: int
+        """
+        self.Definition = None
+
+
+    def _deserialize(self, params):
+        self.Definition = params.get("Definition")
+
+
+class AiRecognitionTaskAsrFullTextResultOutput(AbstractModel):
+    """语音全文识别输出。
+
+    """
+
+    def __init__(self):
+        """
+        :param SegmentSet: 语音全文识别结果集。
+        :type SegmentSet: list of AiRecognitionTaskAsrFullTextSegmentItem
+        :param SubtitleUrl: 字幕文件 Url。
+        :type SubtitleUrl: str
+        """
+        self.SegmentSet = None
+        self.SubtitleUrl = None
+
+
+    def _deserialize(self, params):
+        if params.get("SegmentSet") is not None:
+            self.SegmentSet = []
+            for item in params.get("SegmentSet"):
+                obj = AiRecognitionTaskAsrFullTextSegmentItem()
+                obj._deserialize(item)
+                self.SegmentSet.append(obj)
+        self.SubtitleUrl = params.get("SubtitleUrl")
+
+
+class AiRecognitionTaskAsrFullTextSegmentItem(AbstractModel):
+    """语音全文识别片段。
+
+    """
+
+    def __init__(self):
+        """
+        :param Confidence: 识别片段置信度。取值：0~100。
+        :type Confidence: float
+        :param StartTimeOffset: 识别片段起始的偏移时间，单位：秒。
+        :type StartTimeOffset: float
+        :param EndTimeOffset: 识别片段终止的偏移时间，单位：秒。
+        :type EndTimeOffset: float
+        :param Text: 识别文本。
+        :type Text: str
+        """
+        self.Confidence = None
+        self.StartTimeOffset = None
+        self.EndTimeOffset = None
+        self.Text = None
+
+
+    def _deserialize(self, params):
+        self.Confidence = params.get("Confidence")
+        self.StartTimeOffset = params.get("StartTimeOffset")
+        self.EndTimeOffset = params.get("EndTimeOffset")
+        self.Text = params.get("Text")
+
+
+class AiRecognitionTaskAsrWordsResult(AbstractModel):
+    """用户自定义语音识别结果。
+
+    """
+
+    def __init__(self):
+        """
+        :param Status: 任务状态，有 PROCESSING，SUCCESS 和 FAIL 三种。
+        :type Status: str
+        :param ErrCode: 错误码，0：成功，其他值：失败。
+        :type ErrCode: int
+        :param Message: 错误信息。
+        :type Message: str
+        :param Input: 用户自定义语音识别任务输入信息。
+        :type Input: :class:`tencentcloud.vod.v20180717.models.AiRecognitionTaskAsrWordsResultInput`
+        :param Output: 用户自定义语音识别任务输出信息。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Output: :class:`tencentcloud.vod.v20180717.models.AiRecognitionTaskAsrWordsResultOutput`
+        """
+        self.Status = None
+        self.ErrCode = None
+        self.Message = None
+        self.Input = None
+        self.Output = None
+
+
+    def _deserialize(self, params):
+        self.Status = params.get("Status")
+        self.ErrCode = params.get("ErrCode")
+        self.Message = params.get("Message")
+        if params.get("Input") is not None:
+            self.Input = AiRecognitionTaskAsrWordsResultInput()
+            self.Input._deserialize(params.get("Input"))
+        if params.get("Output") is not None:
+            self.Output = AiRecognitionTaskAsrWordsResultOutput()
+            self.Output._deserialize(params.get("Output"))
+
+
+class AiRecognitionTaskAsrWordsResultInput(AbstractModel):
+    """用户自定义语音识别输入。
+
+    """
+
+    def __init__(self):
+        """
+        :param Definition: 用户自定义语音识别模板 ID。
+        :type Definition: int
+        """
+        self.Definition = None
+
+
+    def _deserialize(self, params):
+        self.Definition = params.get("Definition")
+
+
+class AiRecognitionTaskAsrWordsResultItem(AbstractModel):
+    """用户自定义语音识别结果。
+
+    """
+
+    def __init__(self):
+        """
+        :param Word: 语音识别词。
+        :type Word: str
+        :param SegmentSet: 用户自定义语音识别结果集。
+        :type SegmentSet: list of AiRecognitionTaskAsrWordsSegmentItem
+        """
+        self.Word = None
+        self.SegmentSet = None
+
+
+    def _deserialize(self, params):
+        self.Word = params.get("Word")
+        if params.get("SegmentSet") is not None:
+            self.SegmentSet = []
+            for item in params.get("SegmentSet"):
+                obj = AiRecognitionTaskAsrWordsSegmentItem()
+                obj._deserialize(item)
+                self.SegmentSet.append(obj)
+
+
+class AiRecognitionTaskAsrWordsResultOutput(AbstractModel):
+    """用户自定义语音识别输出。
+
+    """
+
+    def __init__(self):
+        """
+        :param ResultSet: 用户自定义语音识别结果集。
+        :type ResultSet: list of AiRecognitionTaskAsrWordsResultItem
+        """
+        self.ResultSet = None
+
+
+    def _deserialize(self, params):
+        if params.get("ResultSet") is not None:
+            self.ResultSet = []
+            for item in params.get("ResultSet"):
+                obj = AiRecognitionTaskAsrWordsResultItem()
+                obj._deserialize(item)
+                self.ResultSet.append(obj)
+
+
+class AiRecognitionTaskAsrWordsSegmentItem(AbstractModel):
+    """语音识别片段。
+
+    """
+
+    def __init__(self):
+        """
+        :param StartTimeOffset: 识别片段起始的偏移时间，单位：秒。
+        :type StartTimeOffset: float
+        :param EndTimeOffset: 识别片段终止的偏移时间，单位：秒。
+        :type EndTimeOffset: float
+        :param Confidence: 识别片段置信度。取值：0~100。
+        :type Confidence: float
+        """
+        self.StartTimeOffset = None
+        self.EndTimeOffset = None
+        self.Confidence = None
+
+
+    def _deserialize(self, params):
+        self.StartTimeOffset = params.get("StartTimeOffset")
+        self.EndTimeOffset = params.get("EndTimeOffset")
+        self.Confidence = params.get("Confidence")
+
+
+class AiRecognitionTaskFaceResult(AbstractModel):
+    """人脸识别结果。
+
+    """
+
+    def __init__(self):
+        """
+        :param Status: 任务状态，有 PROCESSING，SUCCESS 和 FAIL 三种。
+        :type Status: str
+        :param ErrCode: 错误码，0：成功，其他值：失败。
+        :type ErrCode: int
+        :param Message: 错误信息。
+        :type Message: str
+        :param Input: 人脸识别任务输入信息。
+        :type Input: :class:`tencentcloud.vod.v20180717.models.AiRecognitionTaskFaceResultInput`
+        :param Output: 人脸识别任务输出信息。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Output: :class:`tencentcloud.vod.v20180717.models.AiRecognitionTaskFaceResultOutput`
+        """
+        self.Status = None
+        self.ErrCode = None
+        self.Message = None
+        self.Input = None
+        self.Output = None
+
+
+    def _deserialize(self, params):
+        self.Status = params.get("Status")
+        self.ErrCode = params.get("ErrCode")
+        self.Message = params.get("Message")
+        if params.get("Input") is not None:
+            self.Input = AiRecognitionTaskFaceResultInput()
+            self.Input._deserialize(params.get("Input"))
+        if params.get("Output") is not None:
+            self.Output = AiRecognitionTaskFaceResultOutput()
+            self.Output._deserialize(params.get("Output"))
+
+
+class AiRecognitionTaskFaceResultInput(AbstractModel):
+    """人脸识别输入。
+
+    """
+
+    def __init__(self):
+        """
+        :param Definition: 人脸识别模板 ID。
+        :type Definition: int
+        """
+        self.Definition = None
+
+
+    def _deserialize(self, params):
+        self.Definition = params.get("Definition")
+
+
+class AiRecognitionTaskFaceResultItem(AbstractModel):
+    """人脸识别结果
+
+    """
+
+    def __init__(self):
+        """
+        :param Id: 人物唯一标识 ID。
+        :type Id: str
+        :param Type: 人物库类型，表示识别出的人物来自哪个人物库：
+<li>Default：默认人物库；</li>
+<li>UserDefine：用户自定义人物库。</li>
+        :type Type: str
+        :param Name: 人物名称。
+        :type Name: str
+        :param SegmentSet: 人物出现的片段结果集。
+        :type SegmentSet: list of AiRecognitionTaskFaceSegmentItem
+        """
+        self.Id = None
+        self.Type = None
+        self.Name = None
+        self.SegmentSet = None
+
+
+    def _deserialize(self, params):
+        self.Id = params.get("Id")
+        self.Type = params.get("Type")
+        self.Name = params.get("Name")
+        if params.get("SegmentSet") is not None:
+            self.SegmentSet = []
+            for item in params.get("SegmentSet"):
+                obj = AiRecognitionTaskFaceSegmentItem()
+                obj._deserialize(item)
+                self.SegmentSet.append(obj)
+
+
+class AiRecognitionTaskFaceResultOutput(AbstractModel):
+    """智能人脸识别输出。
+
+    """
+
+    def __init__(self):
+        """
+        :param ResultSet: 智能人脸识别结果集。
+        :type ResultSet: list of AiRecognitionTaskFaceResultItem
+        """
+        self.ResultSet = None
+
+
+    def _deserialize(self, params):
+        if params.get("ResultSet") is not None:
+            self.ResultSet = []
+            for item in params.get("ResultSet"):
+                obj = AiRecognitionTaskFaceResultItem()
+                obj._deserialize(item)
+                self.ResultSet.append(obj)
+
+
+class AiRecognitionTaskFaceSegmentItem(AbstractModel):
+    """人脸识别结果片段
+
+    """
+
+    def __init__(self):
+        """
+        :param StartTimeOffset: 识别片段起始的偏移时间，单位：秒。
+        :type StartTimeOffset: float
+        :param EndTimeOffset: 识别片段终止的偏移时间，单位：秒。
+        :type EndTimeOffset: float
+        :param Confidence: 识别片段置信度。取值：0~100。
+        :type Confidence: float
+        :param AreaCoordSet: 识别结果的区域坐标。数组包含 4 个元素 [x1,y1,x2,y2]，依次表示区域左上点、右下点的横纵坐标。
+        :type AreaCoordSet: list of int
+        """
+        self.StartTimeOffset = None
+        self.EndTimeOffset = None
+        self.Confidence = None
+        self.AreaCoordSet = None
+
+
+    def _deserialize(self, params):
+        self.StartTimeOffset = params.get("StartTimeOffset")
+        self.EndTimeOffset = params.get("EndTimeOffset")
+        self.Confidence = params.get("Confidence")
+        self.AreaCoordSet = params.get("AreaCoordSet")
+
+
+class AiRecognitionTaskHeadTailResult(AbstractModel):
+    """视频片头片尾识别结果。
+
+    """
+
+    def __init__(self):
+        """
+        :param Status: 任务状态，有 PROCESSING，SUCCESS 和 FAIL 三种。
+        :type Status: str
+        :param ErrCode: 错误码，0：成功，其他值：失败。
+        :type ErrCode: int
+        :param Message: 错误信息。
+        :type Message: str
+        :param Input: 视频片头片尾识别任务输入信息。
+        :type Input: :class:`tencentcloud.vod.v20180717.models.AiRecognitionTaskHeadTailResultInput`
+        :param Output: 视频片头片尾识别任务输出信息。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Output: :class:`tencentcloud.vod.v20180717.models.AiRecognitionTaskHeadTailResultOutput`
+        """
+        self.Status = None
+        self.ErrCode = None
+        self.Message = None
+        self.Input = None
+        self.Output = None
+
+
+    def _deserialize(self, params):
+        self.Status = params.get("Status")
+        self.ErrCode = params.get("ErrCode")
+        self.Message = params.get("Message")
+        if params.get("Input") is not None:
+            self.Input = AiRecognitionTaskHeadTailResultInput()
+            self.Input._deserialize(params.get("Input"))
+        if params.get("Output") is not None:
+            self.Output = AiRecognitionTaskHeadTailResultOutput()
+            self.Output._deserialize(params.get("Output"))
+
+
+class AiRecognitionTaskHeadTailResultInput(AbstractModel):
+    """视频片头片尾识别的输入。
+
+    """
+
+    def __init__(self):
+        """
+        :param Definition: 视频片头片尾识别模板 ID。
+        :type Definition: int
+        """
+        self.Definition = None
+
+
+    def _deserialize(self, params):
+        self.Definition = params.get("Definition")
+
+
+class AiRecognitionTaskHeadTailResultOutput(AbstractModel):
+    """视频片头片尾识别输出。
+
+    """
+
+    def __init__(self):
+        """
+        :param HeadConfidence: 片头识别置信度。取值：0~100。
+        :type HeadConfidence: float
+        :param HeadTimeOffset: 视频片头的结束时间点，单位：秒。
+        :type HeadTimeOffset: float
+        :param TailConfidence: 片尾识别置信度。取值：0~100。
+        :type TailConfidence: float
+        :param TailTimeOffset: 视频片尾的开始时间点，单位：秒。
+        :type TailTimeOffset: float
+        """
+        self.HeadConfidence = None
+        self.HeadTimeOffset = None
+        self.TailConfidence = None
+        self.TailTimeOffset = None
+
+
+    def _deserialize(self, params):
+        self.HeadConfidence = params.get("HeadConfidence")
+        self.HeadTimeOffset = params.get("HeadTimeOffset")
+        self.TailConfidence = params.get("TailConfidence")
+        self.TailTimeOffset = params.get("TailTimeOffset")
+
+
 class AiRecognitionTaskInput(AbstractModel):
-    """AI 视频内容识别输入参数类型
+    """视频内容识别输入参数类型
 
     """
 
@@ -468,6 +1146,402 @@ class AiRecognitionTaskInput(AbstractModel):
 
     def _deserialize(self, params):
         self.Definition = params.get("Definition")
+
+
+class AiRecognitionTaskObjectResult(AbstractModel):
+    """物体识别结果。
+
+    """
+
+    def __init__(self):
+        """
+        :param Status: 任务状态，有 PROCESSING，SUCCESS 和 FAIL 三种。
+        :type Status: str
+        :param ErrCode: 错误码，0：成功，其他值：失败。
+        :type ErrCode: int
+        :param Message: 错误信息。
+        :type Message: str
+        :param Input: 物体识别任务输入信息。
+        :type Input: :class:`tencentcloud.vod.v20180717.models.AiRecognitionTaskObjectResultInput`
+        :param Output: 物体识别任务输出信息。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Output: :class:`tencentcloud.vod.v20180717.models.AiRecognitionTaskObjectResultOutput`
+        """
+        self.Status = None
+        self.ErrCode = None
+        self.Message = None
+        self.Input = None
+        self.Output = None
+
+
+    def _deserialize(self, params):
+        self.Status = params.get("Status")
+        self.ErrCode = params.get("ErrCode")
+        self.Message = params.get("Message")
+        if params.get("Input") is not None:
+            self.Input = AiRecognitionTaskObjectResultInput()
+            self.Input._deserialize(params.get("Input"))
+        if params.get("Output") is not None:
+            self.Output = AiRecognitionTaskObjectResultOutput()
+            self.Output._deserialize(params.get("Output"))
+
+
+class AiRecognitionTaskObjectResultInput(AbstractModel):
+    """物体识别任务输入类型。
+
+    """
+
+    def __init__(self):
+        """
+        :param Definition: 物体识别模板 ID。
+        :type Definition: int
+        """
+        self.Definition = None
+
+
+    def _deserialize(self, params):
+        self.Definition = params.get("Definition")
+
+
+class AiRecognitionTaskObjectResultItem(AbstractModel):
+    """单个物体识别结果。
+
+    """
+
+    def __init__(self):
+        """
+        :param Name: 识别的物体名称。
+        :type Name: str
+        :param SegmentSet: 物体出现的片段列表。
+        :type SegmentSet: list of AiRecognitionTaskObjectSeqmentItem
+        """
+        self.Name = None
+        self.SegmentSet = None
+
+
+    def _deserialize(self, params):
+        self.Name = params.get("Name")
+        if params.get("SegmentSet") is not None:
+            self.SegmentSet = []
+            for item in params.get("SegmentSet"):
+                obj = AiRecognitionTaskObjectSeqmentItem()
+                obj._deserialize(item)
+                self.SegmentSet.append(obj)
+
+
+class AiRecognitionTaskObjectResultOutput(AbstractModel):
+    """智能物体识别输出。
+
+    """
+
+    def __init__(self):
+        """
+        :param ResultSet: 智能物体识别结果集。
+        :type ResultSet: list of AiRecognitionTaskObjectResultItem
+        """
+        self.ResultSet = None
+
+
+    def _deserialize(self, params):
+        if params.get("ResultSet") is not None:
+            self.ResultSet = []
+            for item in params.get("ResultSet"):
+                obj = AiRecognitionTaskObjectResultItem()
+                obj._deserialize(item)
+                self.ResultSet.append(obj)
+
+
+class AiRecognitionTaskObjectSeqmentItem(AbstractModel):
+    """物体识别结果片段。
+
+    """
+
+    def __init__(self):
+        """
+        :param StartTimeOffset: 识别片段起始的偏移时间，单位：秒。
+        :type StartTimeOffset: float
+        :param EndTimeOffset: 识别片段终止的偏移时间，单位：秒。
+        :type EndTimeOffset: float
+        :param Confidence: 识别片段置信度。取值：0~100。
+        :type Confidence: float
+        :param AreaCoordSet: 识别结果的区域坐标。数组包含 4 个元素 [x1,y1,x2,y2]，依次表示区域左上点、右下点的横纵坐标。
+        :type AreaCoordSet: list of int
+        """
+        self.StartTimeOffset = None
+        self.EndTimeOffset = None
+        self.Confidence = None
+        self.AreaCoordSet = None
+
+
+    def _deserialize(self, params):
+        self.StartTimeOffset = params.get("StartTimeOffset")
+        self.EndTimeOffset = params.get("EndTimeOffset")
+        self.Confidence = params.get("Confidence")
+        self.AreaCoordSet = params.get("AreaCoordSet")
+
+
+class AiRecognitionTaskOcrFullTextResult(AbstractModel):
+    """文本全文识别结果。
+
+    """
+
+    def __init__(self):
+        """
+        :param Status: 任务状态，有 PROCESSING，SUCCESS 和 FAIL 三种。
+        :type Status: str
+        :param ErrCode: 错误码，0：成功，其他值：失败。
+        :type ErrCode: int
+        :param Message: 错误信息。
+        :type Message: str
+        :param Input: 文本全文识别任务输入信息。
+        :type Input: :class:`tencentcloud.vod.v20180717.models.AiRecognitionTaskOcrFullTextResultInput`
+        :param Output: 文本全文识别任务输出信息。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Output: :class:`tencentcloud.vod.v20180717.models.AiRecognitionTaskOcrFullTextResultOutput`
+        """
+        self.Status = None
+        self.ErrCode = None
+        self.Message = None
+        self.Input = None
+        self.Output = None
+
+
+    def _deserialize(self, params):
+        self.Status = params.get("Status")
+        self.ErrCode = params.get("ErrCode")
+        self.Message = params.get("Message")
+        if params.get("Input") is not None:
+            self.Input = AiRecognitionTaskOcrFullTextResultInput()
+            self.Input._deserialize(params.get("Input"))
+        if params.get("Output") is not None:
+            self.Output = AiRecognitionTaskOcrFullTextResultOutput()
+            self.Output._deserialize(params.get("Output"))
+
+
+class AiRecognitionTaskOcrFullTextResultInput(AbstractModel):
+    """文本全文识别输入。
+
+    """
+
+    def __init__(self):
+        """
+        :param Definition: 文本全文识别模板 ID。
+        :type Definition: int
+        """
+        self.Definition = None
+
+
+    def _deserialize(self, params):
+        self.Definition = params.get("Definition")
+
+
+class AiRecognitionTaskOcrFullTextResultOutput(AbstractModel):
+    """文本全文识别输出。
+
+    """
+
+    def __init__(self):
+        """
+        :param SegmentSet: 文本全文识别结果集。
+        :type SegmentSet: list of AiRecognitionTaskOcrFullTextSegmentItem
+        """
+        self.SegmentSet = None
+
+
+    def _deserialize(self, params):
+        if params.get("SegmentSet") is not None:
+            self.SegmentSet = []
+            for item in params.get("SegmentSet"):
+                obj = AiRecognitionTaskOcrFullTextSegmentItem()
+                obj._deserialize(item)
+                self.SegmentSet.append(obj)
+
+
+class AiRecognitionTaskOcrFullTextSegmentItem(AbstractModel):
+    """文本全文识别片段。
+
+    """
+
+    def __init__(self):
+        """
+        :param StartTimeOffset: 识别片段起始的偏移时间，单位：秒。
+        :type StartTimeOffset: float
+        :param EndTimeOffset: 识别片段终止的偏移时间，单位：秒。
+        :type EndTimeOffset: float
+        :param TextSet: 识别片段结果集。
+        :type TextSet: list of AiRecognitionTaskOcrFullTextSegmentTextItem
+        """
+        self.StartTimeOffset = None
+        self.EndTimeOffset = None
+        self.TextSet = None
+
+
+    def _deserialize(self, params):
+        self.StartTimeOffset = params.get("StartTimeOffset")
+        self.EndTimeOffset = params.get("EndTimeOffset")
+        if params.get("TextSet") is not None:
+            self.TextSet = []
+            for item in params.get("TextSet"):
+                obj = AiRecognitionTaskOcrFullTextSegmentTextItem()
+                obj._deserialize(item)
+                self.TextSet.append(obj)
+
+
+class AiRecognitionTaskOcrFullTextSegmentTextItem(AbstractModel):
+    """文本全文识别片段。
+
+    """
+
+    def __init__(self):
+        """
+        :param Confidence: 识别片段置信度。取值：0~100。
+        :type Confidence: float
+        :param AreaCoordSet: 识别结果的区域坐标。数组包含 4 个元素 [x1,y1,x2,y2]，依次表示区域左上点、右下点的横纵坐标。
+        :type AreaCoordSet: list of int
+        :param Text: 识别文本。
+        :type Text: str
+        """
+        self.Confidence = None
+        self.AreaCoordSet = None
+        self.Text = None
+
+
+    def _deserialize(self, params):
+        self.Confidence = params.get("Confidence")
+        self.AreaCoordSet = params.get("AreaCoordSet")
+        self.Text = params.get("Text")
+
+
+class AiRecognitionTaskOcrWordsResult(AbstractModel):
+    """用户自定义文本识别结果。
+
+    """
+
+    def __init__(self):
+        """
+        :param Status: 任务状态，有 PROCESSING，SUCCESS 和 FAIL 三种。
+        :type Status: str
+        :param ErrCode: 错误码，0：成功，其他值：失败。
+        :type ErrCode: int
+        :param Message: 错误信息。
+        :type Message: str
+        :param Input: 用户自定义文本识别任务输入信息。
+        :type Input: :class:`tencentcloud.vod.v20180717.models.AiRecognitionTaskOcrWordsResultInput`
+        :param Output: 用户自定义文本识别任务输出信息。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Output: :class:`tencentcloud.vod.v20180717.models.AiRecognitionTaskOcrWordsResultOutput`
+        """
+        self.Status = None
+        self.ErrCode = None
+        self.Message = None
+        self.Input = None
+        self.Output = None
+
+
+    def _deserialize(self, params):
+        self.Status = params.get("Status")
+        self.ErrCode = params.get("ErrCode")
+        self.Message = params.get("Message")
+        if params.get("Input") is not None:
+            self.Input = AiRecognitionTaskOcrWordsResultInput()
+            self.Input._deserialize(params.get("Input"))
+        if params.get("Output") is not None:
+            self.Output = AiRecognitionTaskOcrWordsResultOutput()
+            self.Output._deserialize(params.get("Output"))
+
+
+class AiRecognitionTaskOcrWordsResultInput(AbstractModel):
+    """用户自定义文本识别输入。
+
+    """
+
+    def __init__(self):
+        """
+        :param Definition: 用户自定义文本识别模板 ID。
+        :type Definition: int
+        """
+        self.Definition = None
+
+
+    def _deserialize(self, params):
+        self.Definition = params.get("Definition")
+
+
+class AiRecognitionTaskOcrWordsResultItem(AbstractModel):
+    """用户自定义文本识别结果。
+
+    """
+
+    def __init__(self):
+        """
+        :param Word: 文本识别词。
+        :type Word: str
+        :param SegmentSet: 文本文字识别结果集。
+        :type SegmentSet: list of AiRecognitionTaskOcrWordsSegmentItem
+        """
+        self.Word = None
+        self.SegmentSet = None
+
+
+    def _deserialize(self, params):
+        self.Word = params.get("Word")
+        if params.get("SegmentSet") is not None:
+            self.SegmentSet = []
+            for item in params.get("SegmentSet"):
+                obj = AiRecognitionTaskOcrWordsSegmentItem()
+                obj._deserialize(item)
+                self.SegmentSet.append(obj)
+
+
+class AiRecognitionTaskOcrWordsResultOutput(AbstractModel):
+    """用户自定义文本识别输出。
+
+    """
+
+    def __init__(self):
+        """
+        :param ResultSet: 用户自定义文本识别结果集。
+        :type ResultSet: list of AiRecognitionTaskOcrWordsResultItem
+        """
+        self.ResultSet = None
+
+
+    def _deserialize(self, params):
+        if params.get("ResultSet") is not None:
+            self.ResultSet = []
+            for item in params.get("ResultSet"):
+                obj = AiRecognitionTaskOcrWordsResultItem()
+                obj._deserialize(item)
+                self.ResultSet.append(obj)
+
+
+class AiRecognitionTaskOcrWordsSegmentItem(AbstractModel):
+    """文本识别片段。
+
+    """
+
+    def __init__(self):
+        """
+        :param StartTimeOffset: 识别片段起始的偏移时间，单位：秒。
+        :type StartTimeOffset: float
+        :param EndTimeOffset: 识别片段终止的偏移时间，单位：秒。
+        :type EndTimeOffset: float
+        :param Confidence: 识别片段置信度。取值：0~100。
+        :type Confidence: float
+        :param AreaCoordSet: 识别结果的区域坐标。数组包含 4 个元素 [x1,y1,x2,y2]，依次表示区域左上点、右下点的横纵坐标。
+        :type AreaCoordSet: list of int
+        """
+        self.StartTimeOffset = None
+        self.EndTimeOffset = None
+        self.Confidence = None
+        self.AreaCoordSet = None
+
+
+    def _deserialize(self, params):
+        self.StartTimeOffset = params.get("StartTimeOffset")
+        self.EndTimeOffset = params.get("EndTimeOffset")
+        self.Confidence = params.get("Confidence")
+        self.AreaCoordSet = params.get("AreaCoordSet")
 
 
 class AiReviewPoliticalAsrTaskInput(AbstractModel):
@@ -1347,6 +2421,44 @@ class AudioTemplateInfoForUpdate(AbstractModel):
         self.AudioChannel = params.get("AudioChannel")
 
 
+class ClassificationConfigureInfo(AbstractModel):
+    """智能分类任务控制参数
+
+    """
+
+    def __init__(self):
+        """
+        :param Switch: 智能分类任务开关，可选值：
+<li>ON：开启智能分类任务；</li>
+<li>OFF：关闭智能分类任务。</li>
+        :type Switch: str
+        """
+        self.Switch = None
+
+
+    def _deserialize(self, params):
+        self.Switch = params.get("Switch")
+
+
+class ClassificationConfigureInfoForUpdate(AbstractModel):
+    """智能分类任务控制参数
+
+    """
+
+    def __init__(self):
+        """
+        :param Switch: 智能分类任务开关，可选值：
+<li>ON：开启智能分类任务；</li>
+<li>OFF：关闭智能分类任务。</li>
+        :type Switch: str
+        """
+        self.Switch = None
+
+
+    def _deserialize(self, params):
+        self.Switch = params.get("Switch")
+
+
 class ClipFileInfo2017(AbstractModel):
     """视频裁剪结果文件信息（2017 版）
 
@@ -1626,6 +2738,114 @@ class CoverBySnapshotTaskOutput(AbstractModel):
         self.CoverUrl = params.get("CoverUrl")
 
 
+class CoverConfigureInfo(AbstractModel):
+    """智能封面任务控制参数
+
+    """
+
+    def __init__(self):
+        """
+        :param Switch: 智能封面任务开关，可选值：
+<li>ON：开启智能封面任务；</li>
+<li>OFF：关闭智能封面任务。</li>
+        :type Switch: str
+        """
+        self.Switch = None
+
+
+    def _deserialize(self, params):
+        self.Switch = params.get("Switch")
+
+
+class CoverConfigureInfoForUpdate(AbstractModel):
+    """智能封面任务控制参数
+
+    """
+
+    def __init__(self):
+        """
+        :param Switch: 智能封面任务开关，可选值：
+<li>ON：开启智能封面任务；</li>
+<li>OFF：关闭智能封面任务。</li>
+        :type Switch: str
+        """
+        self.Switch = None
+
+
+    def _deserialize(self, params):
+        self.Switch = params.get("Switch")
+
+
+class CreateAIAnalysisTemplateRequest(AbstractModel):
+    """CreateAIAnalysisTemplate请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Name: 视频内容分析模板名称，长度限制：64 个字符。
+        :type Name: str
+        :param Comment: 视频内容分析模板描述信息，长度限制：256 个字符。
+        :type Comment: str
+        :param ClassificationConfigure: 智能分类任务控制参数。
+        :type ClassificationConfigure: :class:`tencentcloud.vod.v20180717.models.ClassificationConfigureInfo`
+        :param TagConfigure: 智能标签任务控制参数。
+        :type TagConfigure: :class:`tencentcloud.vod.v20180717.models.TagConfigureInfo`
+        :param CoverConfigure: 智能封面任务控制参数。
+        :type CoverConfigure: :class:`tencentcloud.vod.v20180717.models.CoverConfigureInfo`
+        :param FrameTagConfigure: 智能按帧标签任务控制参数。
+        :type FrameTagConfigure: :class:`tencentcloud.vod.v20180717.models.FrameTagConfigureInfo`
+        :param SubAppId: 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
+        :type SubAppId: int
+        """
+        self.Name = None
+        self.Comment = None
+        self.ClassificationConfigure = None
+        self.TagConfigure = None
+        self.CoverConfigure = None
+        self.FrameTagConfigure = None
+        self.SubAppId = None
+
+
+    def _deserialize(self, params):
+        self.Name = params.get("Name")
+        self.Comment = params.get("Comment")
+        if params.get("ClassificationConfigure") is not None:
+            self.ClassificationConfigure = ClassificationConfigureInfo()
+            self.ClassificationConfigure._deserialize(params.get("ClassificationConfigure"))
+        if params.get("TagConfigure") is not None:
+            self.TagConfigure = TagConfigureInfo()
+            self.TagConfigure._deserialize(params.get("TagConfigure"))
+        if params.get("CoverConfigure") is not None:
+            self.CoverConfigure = CoverConfigureInfo()
+            self.CoverConfigure._deserialize(params.get("CoverConfigure"))
+        if params.get("FrameTagConfigure") is not None:
+            self.FrameTagConfigure = FrameTagConfigureInfo()
+            self.FrameTagConfigure._deserialize(params.get("FrameTagConfigure"))
+        self.SubAppId = params.get("SubAppId")
+
+
+class CreateAIAnalysisTemplateResponse(AbstractModel):
+    """CreateAIAnalysisTemplate返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Definition: 视频内容分析模板唯一标识。
+        :type Definition: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Definition = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Definition = params.get("Definition")
+        self.RequestId = params.get("RequestId")
+
+
 class CreateClassRequest(AbstractModel):
     """CreateClass请求参数结构体
 
@@ -1887,13 +3107,13 @@ class CreateWatermarkTemplateRequest(AbstractModel):
 默认值：TopLeft。目前，当 Type 为 image，该字段仅支持 TopLeft。
         :type CoordinateOrigin: str
         :param XPos: 水印原点距离视频图像坐标原点的水平位置。支持 %、px 两种格式：
-<li>当字符串以 % 结尾，表示水印 Left 为视频宽度指定百分比的位置，如 10% 表示 Left 为视频宽度的 10%；</li>
-<li>当字符串以 px 结尾，表示水印 Left 为视频宽度指定像素的位置，如 100px 表示 Left 为 100 像素。</li>
+<li>当字符串以 % 结尾，表示水印 XPos 为视频宽度指定百分比，如 10% 表示 XPos 为视频宽度的 10%；</li>
+<li>当字符串以 px 结尾，表示水印 XPos 为指定像素，如 100px 表示 XPos 为 100 像素。</li>
 默认值：0px。
         :type XPos: str
         :param YPos: 水印原点距离视频图像坐标原点的垂直位置。支持 %、px 两种格式：
-<li>当字符串以 % 结尾，表示水印 Top 为视频高度指定百分比的位置，如 10% 表示 Top 为视频高度的 10%；</li>
-<li>当字符串以 px 结尾，表示水印 Top 为视频高度指定像素的位置，如 100px 表示 Top 为 100 像素。</li>
+<li>当字符串以 % 结尾，表示水印 YPos 为视频高度指定百分比，如 10% 表示 YPos 为视频高度的 10%；</li>
+<li>当字符串以 px 结尾，表示水印 YPos 为指定像素，如 100px 表示 YPos 为 100 像素。</li>
 默认值：0px。
         :type YPos: str
         :param ImageTemplate: 图片水印模板，当 Type 为 image，该字段必填。当 Type 为 text，该字段无效。
@@ -1958,6 +3178,44 @@ class CreateWatermarkTemplateResponse(AbstractModel):
     def _deserialize(self, params):
         self.Definition = params.get("Definition")
         self.ImageUrl = params.get("ImageUrl")
+        self.RequestId = params.get("RequestId")
+
+
+class DeleteAIAnalysisTemplateRequest(AbstractModel):
+    """DeleteAIAnalysisTemplate请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Definition: 视频内容分析模板唯一标识。
+        :type Definition: int
+        :param SubAppId: 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
+        :type SubAppId: int
+        """
+        self.Definition = None
+        self.SubAppId = None
+
+
+    def _deserialize(self, params):
+        self.Definition = params.get("Definition")
+        self.SubAppId = params.get("SubAppId")
+
+
+class DeleteAIAnalysisTemplateResponse(AbstractModel):
+    """DeleteAIAnalysisTemplate返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
 
 
@@ -2157,6 +3415,65 @@ class DeleteWatermarkTemplateResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeAIAnalysisTemplatesRequest(AbstractModel):
+    """DescribeAIAnalysisTemplates请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Definitions: 视频内容分析模板唯一标识过滤条件，数组长度限制：10。
+        :type Definitions: list of int
+        :param Offset: 分页偏移量，默认值：0。
+        :type Offset: int
+        :param Limit: 返回记录条数，默认值：10，最大值：100。
+        :type Limit: int
+        :param SubAppId: 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
+        :type SubAppId: int
+        """
+        self.Definitions = None
+        self.Offset = None
+        self.Limit = None
+        self.SubAppId = None
+
+
+    def _deserialize(self, params):
+        self.Definitions = params.get("Definitions")
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+        self.SubAppId = params.get("SubAppId")
+
+
+class DescribeAIAnalysisTemplatesResponse(AbstractModel):
+    """DescribeAIAnalysisTemplates返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param TotalCount: 符合过滤条件的记录总数。
+        :type TotalCount: int
+        :param AIAnalysisTemplateSet: 视频内容分析模板详情列表。
+        :type AIAnalysisTemplateSet: list of AIAnalysisTemplateItem
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.AIAnalysisTemplateSet = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("AIAnalysisTemplateSet") is not None:
+            self.AIAnalysisTemplateSet = []
+            for item in params.get("AIAnalysisTemplateSet"):
+                obj = AIAnalysisTemplateItem()
+                obj._deserialize(item)
+                self.AIAnalysisTemplateSet.append(obj)
         self.RequestId = params.get("RequestId")
 
 
@@ -2988,6 +4305,52 @@ class FileUploadTask(AbstractModel):
         self.ProcedureTaskId = params.get("ProcedureTaskId")
 
 
+class FrameTagConfigureInfo(AbstractModel):
+    """智能按帧标签任务控制参数
+
+    """
+
+    def __init__(self):
+        """
+        :param Switch: 智能按帧标签任务开关，可选值：
+<li>ON：开启智能按帧标签任务；</li>
+<li>OFF：关闭智能按帧标签任务。</li>
+        :type Switch: str
+        :param ScreenshotInterval: 截帧间隔，单位为秒，当不填时，默认截帧间隔为 1 秒，最小值为 0.5 秒。
+        :type ScreenshotInterval: float
+        """
+        self.Switch = None
+        self.ScreenshotInterval = None
+
+
+    def _deserialize(self, params):
+        self.Switch = params.get("Switch")
+        self.ScreenshotInterval = params.get("ScreenshotInterval")
+
+
+class FrameTagConfigureInfoForUpdate(AbstractModel):
+    """智能按帧标签任务控制参数
+
+    """
+
+    def __init__(self):
+        """
+        :param Switch: 智能按帧标签任务开关，可选值：
+<li>ON：开启智能按帧标签任务；</li>
+<li>OFF：关闭智能按帧标签任务。</li>
+        :type Switch: str
+        :param ScreenshotInterval: 截帧间隔，单位为秒，最小值为 0.5 秒。
+        :type ScreenshotInterval: float
+        """
+        self.Switch = None
+        self.ScreenshotInterval = None
+
+
+    def _deserialize(self, params):
+        self.Switch = params.get("Switch")
+        self.ScreenshotInterval = params.get("ScreenshotInterval")
+
+
 class ImageSpriteTaskInput(AbstractModel):
     """对视频截雪碧图任务输入参数类型
 
@@ -3187,10 +4550,8 @@ class MediaAiAnalysisClassificationItem(AbstractModel):
     def __init__(self):
         """
         :param Classification: 智能分类的类别名称。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Classification: str
         :param Confidence: 智能分类的可信度，取值范围是 0 到 100。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Confidence: float
         """
         self.Classification = None
@@ -3210,10 +4571,8 @@ class MediaAiAnalysisCoverItem(AbstractModel):
     def __init__(self):
         """
         :param CoverUrl: 智能封面地址。
-注意：此字段可能返回 null，表示取不到有效值。
         :type CoverUrl: str
         :param Confidence: 智能封面的可信度，取值范围是 0 到 100。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Confidence: float
         """
         self.CoverUrl = None
@@ -3225,6 +4584,57 @@ class MediaAiAnalysisCoverItem(AbstractModel):
         self.Confidence = params.get("Confidence")
 
 
+class MediaAiAnalysisFrameTagItem(AbstractModel):
+    """智能按帧标签结果信息
+
+    """
+
+    def __init__(self):
+        """
+        :param Tag: 按帧标签名称。
+        :type Tag: str
+        :param Confidence: 按帧标签的可信度，取值范围是 0 到 100。
+        :type Confidence: float
+        """
+        self.Tag = None
+        self.Confidence = None
+
+
+    def _deserialize(self, params):
+        self.Tag = params.get("Tag")
+        self.Confidence = params.get("Confidence")
+
+
+class MediaAiAnalysisFrameTagSegmentItem(AbstractModel):
+    """按帧标签片段列表
+
+    """
+
+    def __init__(self):
+        """
+        :param StartTimeOffset: 按帧标签起始的偏移时间。
+        :type StartTimeOffset: float
+        :param EndTimeOffset: 按帧标签结束的偏移时间。
+        :type EndTimeOffset: float
+        :param TagSet: 时间片段内的标签列表。
+        :type TagSet: list of MediaAiAnalysisFrameTagItem
+        """
+        self.StartTimeOffset = None
+        self.EndTimeOffset = None
+        self.TagSet = None
+
+
+    def _deserialize(self, params):
+        self.StartTimeOffset = params.get("StartTimeOffset")
+        self.EndTimeOffset = params.get("EndTimeOffset")
+        if params.get("TagSet") is not None:
+            self.TagSet = []
+            for item in params.get("TagSet"):
+                obj = MediaAiAnalysisFrameTagItem()
+                obj._deserialize(item)
+                self.TagSet.append(obj)
+
+
 class MediaAiAnalysisTagItem(AbstractModel):
     """智能标签结果信息
 
@@ -3233,10 +4643,8 @@ class MediaAiAnalysisTagItem(AbstractModel):
     def __init__(self):
         """
         :param Tag: 标签名称。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Tag: str
         :param Confidence: 标签的可信度，取值范围是 0 到 100。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Confidence: float
         """
         self.Tag = None
@@ -4763,6 +6171,76 @@ class MediaVideoStreamItem(AbstractModel):
         self.Fps = params.get("Fps")
 
 
+class ModifyAIAnalysisTemplateRequest(AbstractModel):
+    """ModifyAIAnalysisTemplate请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Definition: 视频内容分析模板唯一标识。
+        :type Definition: int
+        :param Name: 视频内容分析模板名称，长度限制：64 个字符。
+        :type Name: str
+        :param Comment: 视频内容分析模板描述信息，长度限制：256 个字符。
+        :type Comment: str
+        :param ClassificationConfigure: 智能分类任务控制参数。
+        :type ClassificationConfigure: :class:`tencentcloud.vod.v20180717.models.ClassificationConfigureInfoForUpdate`
+        :param TagConfigure: 智能标签任务控制参数。
+        :type TagConfigure: :class:`tencentcloud.vod.v20180717.models.TagConfigureInfoForUpdate`
+        :param CoverConfigure: 智能封面任务控制参数。
+        :type CoverConfigure: :class:`tencentcloud.vod.v20180717.models.CoverConfigureInfoForUpdate`
+        :param FrameTagConfigure: 智能按帧标签任务控制参数。
+        :type FrameTagConfigure: :class:`tencentcloud.vod.v20180717.models.FrameTagConfigureInfoForUpdate`
+        :param SubAppId: 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
+        :type SubAppId: int
+        """
+        self.Definition = None
+        self.Name = None
+        self.Comment = None
+        self.ClassificationConfigure = None
+        self.TagConfigure = None
+        self.CoverConfigure = None
+        self.FrameTagConfigure = None
+        self.SubAppId = None
+
+
+    def _deserialize(self, params):
+        self.Definition = params.get("Definition")
+        self.Name = params.get("Name")
+        self.Comment = params.get("Comment")
+        if params.get("ClassificationConfigure") is not None:
+            self.ClassificationConfigure = ClassificationConfigureInfoForUpdate()
+            self.ClassificationConfigure._deserialize(params.get("ClassificationConfigure"))
+        if params.get("TagConfigure") is not None:
+            self.TagConfigure = TagConfigureInfoForUpdate()
+            self.TagConfigure._deserialize(params.get("TagConfigure"))
+        if params.get("CoverConfigure") is not None:
+            self.CoverConfigure = CoverConfigureInfoForUpdate()
+            self.CoverConfigure._deserialize(params.get("CoverConfigure"))
+        if params.get("FrameTagConfigure") is not None:
+            self.FrameTagConfigure = FrameTagConfigureInfoForUpdate()
+            self.FrameTagConfigure._deserialize(params.get("FrameTagConfigure"))
+        self.SubAppId = params.get("SubAppId")
+
+
+class ModifyAIAnalysisTemplateResponse(AbstractModel):
+    """ModifyAIAnalysisTemplate返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class ModifyClassRequest(AbstractModel):
     """ModifyClass请求参数结构体
 
@@ -4995,12 +6473,12 @@ class ModifyWatermarkTemplateRequest(AbstractModel):
 目前，当 Type 为 image，该字段仅支持 TopLeft。
         :type CoordinateOrigin: str
         :param XPos: 水印原点距离视频图像坐标原点的水平位置。支持 %、px 两种格式：
-<li>当字符串以 % 结尾，表示水印 Left 为视频宽度指定百分比的位置，如 10% 表示 Left 为视频宽度的 10%；</li>
-<li>当字符串以 px 结尾，表示水印 Left 为视频宽度指定像素的位置，如 100px 表示 Left 为 100 像素。</li>
+<li>当字符串以 % 结尾，表示水印 XPos 为视频宽度指定百分比，如 10% 表示 XPos 为视频宽度的 10%；</li>
+<li>当字符串以 px 结尾，表示水印 XPos 为指定像素，如 100px 表示 XPos 为 100 像素。</li>
         :type XPos: str
         :param YPos: 水印原点距离视频图像坐标原点的垂直位置。支持 %、px 两种格式：
-<li>当字符串以 % 结尾，表示水印 Top 为视频高度指定百分比的位置，如 10% 表示 Top 为视频高度的 10%；</li>
-<li>当字符串以 px 结尾，表示水印 Top 为视频高度指定像素的位置，如 100px 表示 Top 为 100 像素。</li>
+<li>当字符串以 % 结尾，表示水印 YPos 为视频高度指定百分比，如 10% 表示 YPos 为视频高度的 10%；</li>
+<li>当字符串以 px 结尾，表示水印 YPos 为指定像素，如 100px 表示 YPos 为 100 像素。</li>
         :type YPos: str
         :param ImageTemplate: 图片水印模板，该字段仅对图片水印模板有效。
         :type ImageTemplate: :class:`tencentcloud.vod.v20180717.models.ImageWatermarkInputForUpdate`
@@ -5110,6 +6588,9 @@ class ProcedureTask(AbstractModel):
         :param AiAnalysisResultSet: 视频内容分析任务的执行状态与结果。
 注意：此字段可能返回 null，表示取不到有效值。
         :type AiAnalysisResultSet: list of AiAnalysisResult
+        :param AiRecognitionResultSet: 视频内容识别任务的执行状态与结果。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AiRecognitionResultSet: list of AiRecognitionResult
         :param TasksPriority: 任务流的优先级，取值范围为 [-10, 10]。
 注意：此字段可能返回 null，表示取不到有效值。
         :type TasksPriority: int
@@ -5137,6 +6618,7 @@ class ProcedureTask(AbstractModel):
         self.MediaProcessResultSet = None
         self.AiContentReviewResultSet = None
         self.AiAnalysisResultSet = None
+        self.AiRecognitionResultSet = None
         self.TasksPriority = None
         self.TasksNotifyMode = None
         self.SessionContext = None
@@ -5172,6 +6654,12 @@ class ProcedureTask(AbstractModel):
                 obj = AiAnalysisResult()
                 obj._deserialize(item)
                 self.AiAnalysisResultSet.append(obj)
+        if params.get("AiRecognitionResultSet") is not None:
+            self.AiRecognitionResultSet = []
+            for item in params.get("AiRecognitionResultSet"):
+                obj = AiRecognitionResult()
+                obj._deserialize(item)
+                self.AiRecognitionResultSet.append(obj)
         self.TasksPriority = params.get("TasksPriority")
         self.TasksNotifyMode = params.get("TasksNotifyMode")
         self.SessionContext = params.get("SessionContext")
@@ -5848,7 +7336,7 @@ class SvgWatermarkInput(AbstractModel):
  Height 不为 0px 时，表示水印的宽度按原始 SVG 图像等比缩放；当 Width、Height 都填 0px 时，表示水印的宽度取原始 SVG 图像的宽度；</li>
 <li>当字符串以 W% 结尾，表示水印 Width 为视频宽度的百分比大小，如 10W% 表示 Width 为视频宽度的 10%；</li>
 <li>当字符串以 H% 结尾，表示水印 Width 为视频高度的百分比大小，如 10H% 表示 Width 为视频高度的 10%；</li>
-<li>当字符串以 S% 结尾，表示水印 Width 为视频短边的百分比大小，如 10S% 表示 Width 为视频短片的 10%；</li>
+<li>当字符串以 S% 结尾，表示水印 Width 为视频短边的百分比大小，如 10S% 表示 Width 为视频短边的 10%；</li>
 <li>当字符串以 L% 结尾，表示水印 Width 为视频长边的百分比大小，如 10L% 表示 Width 为视频长边的 10%；</li>
 <li>当字符串以 % 结尾时，含义同 W%。</li>
 默认值为 10W%。
@@ -5858,7 +7346,7 @@ class SvgWatermarkInput(AbstractModel):
  Width 不为 0px 时，表示水印的高度按原始 SVG 图像等比缩放；当 Width、Height 都填 0px 时，表示水印的高度取原始 SVG 图像的高度；</li>
 <li>当字符串以 W% 结尾，表示水印 Height 为视频宽度的百分比大小，如 10W% 表示 Height 为视频宽度的 10%；</li>
 <li>当字符串以 H% 结尾，表示水印 Height 为视频高度的百分比大小，如 10H% 表示 Height 为视频高度的 10%；</li>
-<li>当字符串以 S% 结尾，表示水印 Height 为视频短边的百分比大小，如 10S% 表示 Height 为视频短片的 10%；</li>
+<li>当字符串以 S% 结尾，表示水印 Height 为视频短边的百分比大小，如 10S% 表示 Height 为视频短边的 10%；</li>
 <li>当字符串以 L% 结尾，表示水印 Height 为视频长边的百分比大小，如 10L% 表示 Height 为视频长边的 10%；</li>
 <li>当字符串以 % 结尾时，含义同 H%。</li>
 默认值为 0px。
@@ -5885,7 +7373,7 @@ class SvgWatermarkInputForUpdate(AbstractModel):
  Height 不为 0px 时，表示水印的宽度按原始 SVG 图像等比缩放；当 Width、Height 都填 0px 时，表示水印的宽度取原始 SVG 图像的宽度；</li>
 <li>当字符串以 W% 结尾，表示水印 Width 为视频宽度的百分比大小，如 10W% 表示 Width 为视频宽度的 10%；</li>
 <li>当字符串以 H% 结尾，表示水印 Width 为视频高度的百分比大小，如 10H% 表示 Width 为视频高度的 10%；</li>
-<li>当字符串以 S% 结尾，表示水印 Width 为视频短边的百分比大小，如 10S% 表示 Width 为视频短片的 10%；</li>
+<li>当字符串以 S% 结尾，表示水印 Width 为视频短边的百分比大小，如 10S% 表示 Width 为视频短边的 10%；</li>
 <li>当字符串以 L% 结尾，表示水印 Width 为视频长边的百分比大小，如 10L% 表示 Width 为视频长边的 10%；</li>
 <li>当字符串以 % 结尾时，含义同 W%。</li>
 默认值为 10W%。
@@ -5895,7 +7383,7 @@ class SvgWatermarkInputForUpdate(AbstractModel):
  Width 不为 0px 时，表示水印的高度按原始 SVG 图像等比缩放；当 Width、Height 都填 0px 时，表示水印的高度取原始 SVG 图像的高度；</li>
 <li>当字符串以 W% 结尾，表示水印 Height 为视频宽度的百分比大小，如 10W% 表示 Height 为视频宽度的 10%；</li>
 <li>当字符串以 H% 结尾，表示水印 Height 为视频高度的百分比大小，如 10H% 表示 Height 为视频高度的 10%；</li>
-<li>当字符串以 S% 结尾，表示水印 Height 为视频短边的百分比大小，如 10S% 表示 Height 为视频短片的 10%；</li>
+<li>当字符串以 S% 结尾，表示水印 Height 为视频短边的百分比大小，如 10S% 表示 Height 为视频短边的 10%；</li>
 <li>当字符串以 L% 结尾，表示水印 Height 为视频长边的百分比大小，如 10L% 表示 Height 为视频长边的 10%；</li>
 <li>当字符串以 % 结尾时，含义同 H%。
 默认值为 0px。
@@ -5908,6 +7396,44 @@ class SvgWatermarkInputForUpdate(AbstractModel):
     def _deserialize(self, params):
         self.Width = params.get("Width")
         self.Height = params.get("Height")
+
+
+class TagConfigureInfo(AbstractModel):
+    """智能标签任务控制参数
+
+    """
+
+    def __init__(self):
+        """
+        :param Switch: 智能标签任务开关，可选值：
+<li>ON：开启智能标签任务；</li>
+<li>OFF：关闭智能标签任务。</li>
+        :type Switch: str
+        """
+        self.Switch = None
+
+
+    def _deserialize(self, params):
+        self.Switch = params.get("Switch")
+
+
+class TagConfigureInfoForUpdate(AbstractModel):
+    """智能标签任务控制参数
+
+    """
+
+    def __init__(self):
+        """
+        :param Switch: 智能标签任务开关，可选值：
+<li>ON：开启智能标签任务；</li>
+<li>OFF：关闭智能标签任务。</li>
+        :type Switch: str
+        """
+        self.Switch = None
+
+
+    def _deserialize(self, params):
+        self.Switch = params.get("Switch")
 
 
 class TaskSimpleInfo(AbstractModel):
@@ -6401,12 +7927,15 @@ class WatermarkTemplate(AbstractModel):
 <li>当字符串以 % 结尾，表示水印 Top 为视频高度指定百分比的位置，如 10% 表示 Top 为视频高度的 10%；</li>
 <li>当字符串以 px 结尾，表示水印 Top 为视频高度指定像素的位置，如 100px 表示 Top 为 100 像素。</li>
         :type YPos: str
-        :param ImageTemplate: 图片水印模板，仅当 Type 为 image，该字段有值。
+        :param ImageTemplate: 图片水印模板，仅当 Type 为 image，该字段有效。
 注意：此字段可能返回 null，表示取不到有效值。
         :type ImageTemplate: :class:`tencentcloud.vod.v20180717.models.ImageWatermarkTemplate`
-        :param TextTemplate: 文字水印模板，仅当 Type 为 text，该字段有值。
+        :param TextTemplate: 文字水印模板，仅当 Type 为 text，该字段有效。
 注意：此字段可能返回 null，表示取不到有效值。
         :type TextTemplate: :class:`tencentcloud.vod.v20180717.models.TextWatermarkTemplateInput`
+        :param SvgTemplate: SVG 水印模板，当 Type 为 svg，该字段有效。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SvgTemplate: :class:`tencentcloud.vod.v20180717.models.SvgWatermarkInput`
         :param CreateTime: 模板创建时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F)。
         :type CreateTime: str
         :param UpdateTime: 模板最后修改时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F)。
@@ -6426,6 +7955,7 @@ class WatermarkTemplate(AbstractModel):
         self.YPos = None
         self.ImageTemplate = None
         self.TextTemplate = None
+        self.SvgTemplate = None
         self.CreateTime = None
         self.UpdateTime = None
         self.CoordinateOrigin = None
@@ -6444,6 +7974,9 @@ class WatermarkTemplate(AbstractModel):
         if params.get("TextTemplate") is not None:
             self.TextTemplate = TextWatermarkTemplateInput()
             self.TextTemplate._deserialize(params.get("TextTemplate"))
+        if params.get("SvgTemplate") is not None:
+            self.SvgTemplate = SvgWatermarkInput()
+            self.SvgTemplate._deserialize(params.get("SvgTemplate"))
         self.CreateTime = params.get("CreateTime")
         self.UpdateTime = params.get("UpdateTime")
         self.CoordinateOrigin = params.get("CoordinateOrigin")
