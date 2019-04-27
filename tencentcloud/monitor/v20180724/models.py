@@ -140,7 +140,7 @@ class GetMonitorDataRequest(AbstractModel):
         """
         :param Namespace: 命名空间，每个云产品会有一个命名空间
         :type Namespace: str
-        :param MetricName: 指标名称
+        :param MetricName: 指标名称，各个云产品的详细指标说明请参阅各个产品[监控接口](<https://cloud.tencent.com/document/product/248/30384>)文档
         :type MetricName: str
         :param Instances: 实例对象的维度组合
         :type Instances: list of Instance
