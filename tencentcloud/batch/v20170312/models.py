@@ -1152,6 +1152,38 @@ class DescribeCvmZoneInstanceConfigInfosResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeInstanceCategoriesRequest(AbstractModel):
+    """DescribeInstanceCategories请求参数结构体
+
+    """
+
+
+class DescribeInstanceCategoriesResponse(AbstractModel):
+    """DescribeInstanceCategories返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param InstanceCategorySet: CVM实例分类列表
+        :type InstanceCategorySet: list of InstanceCategoryItem
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.InstanceCategorySet = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("InstanceCategorySet") is not None:
+            self.InstanceCategorySet = []
+            for item in params.get("InstanceCategorySet"):
+                obj = InstanceCategoryItem()
+                obj._deserialize(item)
+                self.InstanceCategorySet.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeJobRequest(AbstractModel):
     """DescribeJob请求参数结构体
 
@@ -1676,7 +1708,7 @@ class EnvData(AbstractModel):
         :type SystemDisk: :class:`tencentcloud.batch.v20170312.models.SystemDisk`
         :param DataDisks: 实例数据盘配置信息
         :type DataDisks: list of DataDisk
-        :param VirtualPrivateCloud: 私有网络相关信息配置
+        :param VirtualPrivateCloud: 私有网络相关信息配置，与Zones和VirtualPrivateClouds不能同时指定。
         :type VirtualPrivateCloud: :class:`tencentcloud.batch.v20170312.models.VirtualPrivateCloud`
         :param InternetAccessible: 公网带宽相关信息设置
         :type InternetAccessible: :class:`tencentcloud.batch.v20170312.models.InternetAccessible`
@@ -1696,6 +1728,10 @@ class EnvData(AbstractModel):
         :type InstanceTypes: list of str
         :param InstanceTypeOptions: CVM实例机型配置。不能与InstanceType和InstanceTypes同时出现。
         :type InstanceTypeOptions: :class:`tencentcloud.batch.v20170312.models.InstanceTypeOptions`
+        :param Zones: 可用区列表，支持跨可用区创建CVM实例。与VirtualPrivateCloud和VirtualPrivateClouds不能同时指定。
+        :type Zones: list of str
+        :param VirtualPrivateClouds: 私有网络列表，支持跨私有网络创建CVM实例。与VirtualPrivateCloud和Zones不能同时指定。
+        :type VirtualPrivateClouds: list of VirtualPrivateCloud
         """
         self.InstanceType = None
         self.ImageId = None
@@ -1711,6 +1747,8 @@ class EnvData(AbstractModel):
         self.InstanceMarketOptions = None
         self.InstanceTypes = None
         self.InstanceTypeOptions = None
+        self.Zones = None
+        self.VirtualPrivateClouds = None
 
 
     def _deserialize(self, params):
@@ -1747,6 +1785,13 @@ class EnvData(AbstractModel):
         if params.get("InstanceTypeOptions") is not None:
             self.InstanceTypeOptions = InstanceTypeOptions()
             self.InstanceTypeOptions._deserialize(params.get("InstanceTypeOptions"))
+        self.Zones = params.get("Zones")
+        if params.get("VirtualPrivateClouds") is not None:
+            self.VirtualPrivateClouds = []
+            for item in params.get("VirtualPrivateClouds"):
+                obj = VirtualPrivateCloud()
+                obj._deserialize(item)
+                self.VirtualPrivateClouds.append(obj)
 
 
 class EnvVar(AbstractModel):
@@ -1902,6 +1947,27 @@ class InputMapping(AbstractModel):
         self.SourcePath = params.get("SourcePath")
         self.DestinationPath = params.get("DestinationPath")
         self.MountOptionParameter = params.get("MountOptionParameter")
+
+
+class InstanceCategoryItem(AbstractModel):
+    """实例分类列表
+
+    """
+
+    def __init__(self):
+        """
+        :param InstanceCategory: 实例类型名
+        :type InstanceCategory: str
+        :param InstanceFamilySet: 实例族列表
+        :type InstanceFamilySet: list of str
+        """
+        self.InstanceCategory = None
+        self.InstanceFamilySet = None
+
+
+    def _deserialize(self, params):
+        self.InstanceCategory = params.get("InstanceCategory")
+        self.InstanceFamilySet = params.get("InstanceFamilySet")
 
 
 class InstanceMarketOptionsRequest(AbstractModel):

@@ -99,6 +99,8 @@ class Cluster(AbstractModel):
         :type ClusterNetworkSettings: :class:`tencentcloud.tke.v20180525.models.ClusterNetworkSettings`
         :param ClusterNodeNum: 集群当前node数量
         :type ClusterNodeNum: int
+        :param ProjectId: 集群所属的项目ID
+        :type ProjectId: int
         """
         self.ClusterId = None
         self.ClusterName = None
@@ -108,6 +110,7 @@ class Cluster(AbstractModel):
         self.ClusterType = None
         self.ClusterNetworkSettings = None
         self.ClusterNodeNum = None
+        self.ProjectId = None
 
 
     def _deserialize(self, params):
@@ -121,6 +124,94 @@ class Cluster(AbstractModel):
             self.ClusterNetworkSettings = ClusterNetworkSettings()
             self.ClusterNetworkSettings._deserialize(params.get("ClusterNetworkSettings"))
         self.ClusterNodeNum = params.get("ClusterNodeNum")
+        self.ProjectId = params.get("ProjectId")
+
+
+class ClusterAdvancedSettings(AbstractModel):
+    """集群高级配置
+
+    """
+
+    def __init__(self):
+        """
+        :param IPVS: 是否启用IPVS
+        :type IPVS: bool
+        :param AsEnabled: 是否启用集群节点扩缩容
+        :type AsEnabled: bool
+        """
+        self.IPVS = None
+        self.AsEnabled = None
+
+
+    def _deserialize(self, params):
+        self.IPVS = params.get("IPVS")
+        self.AsEnabled = params.get("AsEnabled")
+
+
+class ClusterBasicSettings(AbstractModel):
+    """描述集群的基本配置信息
+
+    """
+
+    def __init__(self):
+        """
+        :param ClusterOs: 集群系统。centos7.2x86_64 或者 ubuntu16.04.1 LTSx86_64，默认取值为ubuntu16.04.1 LTSx86_64
+        :type ClusterOs: str
+        :param ClusterVersion: 集群版本,默认值为1.10.5
+        :type ClusterVersion: str
+        :param ClusterName: 集群名称
+        :type ClusterName: str
+        :param ClusterDescription: 集群描述
+        :type ClusterDescription: str
+        :param VpcId: 私有网络ID，形如vpc-xxx。创建托管空集群时必传。
+        :type VpcId: str
+        :param ProjectId: 集群内新增资源所属项目ID。
+        :type ProjectId: int
+        """
+        self.ClusterOs = None
+        self.ClusterVersion = None
+        self.ClusterName = None
+        self.ClusterDescription = None
+        self.VpcId = None
+        self.ProjectId = None
+
+
+    def _deserialize(self, params):
+        self.ClusterOs = params.get("ClusterOs")
+        self.ClusterVersion = params.get("ClusterVersion")
+        self.ClusterName = params.get("ClusterName")
+        self.ClusterDescription = params.get("ClusterDescription")
+        self.VpcId = params.get("VpcId")
+        self.ProjectId = params.get("ProjectId")
+
+
+class ClusterCIDRSettings(AbstractModel):
+    """集群容器网络相关参数
+
+    """
+
+    def __init__(self):
+        """
+        :param ClusterCIDR: 用于分配集群容器和服务 IP 的 CIDR，不得与 VPC CIDR 冲突，也不得与同 VPC 内其他集群 CIDR 冲突
+        :type ClusterCIDR: str
+        :param IgnoreClusterCIDRConflict: 是否忽略 ClusterCIDR 冲突错误, 默认不忽略
+        :type IgnoreClusterCIDRConflict: bool
+        :param MaxNodePodNum: 集群中每个Node上最大的Pod数量
+        :type MaxNodePodNum: int
+        :param MaxClusterServiceNum: 集群最大的service数量
+        :type MaxClusterServiceNum: int
+        """
+        self.ClusterCIDR = None
+        self.IgnoreClusterCIDRConflict = None
+        self.MaxNodePodNum = None
+        self.MaxClusterServiceNum = None
+
+
+    def _deserialize(self, params):
+        self.ClusterCIDR = params.get("ClusterCIDR")
+        self.IgnoreClusterCIDRConflict = params.get("IgnoreClusterCIDRConflict")
+        self.MaxNodePodNum = params.get("MaxNodePodNum")
+        self.MaxClusterServiceNum = params.get("MaxClusterServiceNum")
 
 
 class ClusterNetworkSettings(AbstractModel):
@@ -158,6 +249,86 @@ class ClusterNetworkSettings(AbstractModel):
         self.MaxClusterServiceNum = params.get("MaxClusterServiceNum")
         self.Ipvs = params.get("Ipvs")
         self.VpcId = params.get("VpcId")
+
+
+class CreateClusterRequest(AbstractModel):
+    """CreateCluster请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ClusterCIDRSettings: 集群容器网络配置信息
+        :type ClusterCIDRSettings: :class:`tencentcloud.tke.v20180525.models.ClusterCIDRSettings`
+        :param ClusterType: 集群类型，托管集群：MANAGED_CLUSTER，独立集群：INDEPENDENT_CLUSTER。
+        :type ClusterType: str
+        :param RunInstancesForNode: CVM创建透传参数，json化字符串格式，详见[CVM创建实例](https://cloud.tencent.com/document/product/213/15730)接口。
+        :type RunInstancesForNode: list of RunInstancesForNode
+        :param ClusterBasicSettings: 集群的基本配置信息
+        :type ClusterBasicSettings: :class:`tencentcloud.tke.v20180525.models.ClusterBasicSettings`
+        :param ClusterAdvancedSettings: 集群高级配置信息
+        :type ClusterAdvancedSettings: :class:`tencentcloud.tke.v20180525.models.ClusterAdvancedSettings`
+        :param InstanceAdvancedSettings: 节点高级配置信息
+        :type InstanceAdvancedSettings: :class:`tencentcloud.tke.v20180525.models.InstanceAdvancedSettings`
+        :param ExistedInstancesForNode: 已存在实例的配置信息
+        :type ExistedInstancesForNode: list of ExistedInstancesForNode
+        """
+        self.ClusterCIDRSettings = None
+        self.ClusterType = None
+        self.RunInstancesForNode = None
+        self.ClusterBasicSettings = None
+        self.ClusterAdvancedSettings = None
+        self.InstanceAdvancedSettings = None
+        self.ExistedInstancesForNode = None
+
+
+    def _deserialize(self, params):
+        if params.get("ClusterCIDRSettings") is not None:
+            self.ClusterCIDRSettings = ClusterCIDRSettings()
+            self.ClusterCIDRSettings._deserialize(params.get("ClusterCIDRSettings"))
+        self.ClusterType = params.get("ClusterType")
+        if params.get("RunInstancesForNode") is not None:
+            self.RunInstancesForNode = []
+            for item in params.get("RunInstancesForNode"):
+                obj = RunInstancesForNode()
+                obj._deserialize(item)
+                self.RunInstancesForNode.append(obj)
+        if params.get("ClusterBasicSettings") is not None:
+            self.ClusterBasicSettings = ClusterBasicSettings()
+            self.ClusterBasicSettings._deserialize(params.get("ClusterBasicSettings"))
+        if params.get("ClusterAdvancedSettings") is not None:
+            self.ClusterAdvancedSettings = ClusterAdvancedSettings()
+            self.ClusterAdvancedSettings._deserialize(params.get("ClusterAdvancedSettings"))
+        if params.get("InstanceAdvancedSettings") is not None:
+            self.InstanceAdvancedSettings = InstanceAdvancedSettings()
+            self.InstanceAdvancedSettings._deserialize(params.get("InstanceAdvancedSettings"))
+        if params.get("ExistedInstancesForNode") is not None:
+            self.ExistedInstancesForNode = []
+            for item in params.get("ExistedInstancesForNode"):
+                obj = ExistedInstancesForNode()
+                obj._deserialize(item)
+                self.ExistedInstancesForNode.append(obj)
+
+
+class CreateClusterResponse(AbstractModel):
+    """CreateCluster返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ClusterId: 集群ID
+        :type ClusterId: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.ClusterId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.ClusterId = params.get("ClusterId")
+        self.RequestId = params.get("RequestId")
 
 
 class DeleteClusterInstancesRequest(AbstractModel):
@@ -216,7 +387,7 @@ class DescribeClusterInstancesRequest(AbstractModel):
         :param Limit: 最大输出条数，默认20
         :type Limit: int
         :param InstanceIds: 需要获取的节点实例Id列表(默认为空，表示拉取集群下所有节点实例)
-        :type InstanceIds: str
+        :type InstanceIds: list of str
         """
         self.ClusterId = None
         self.Offset = None
@@ -351,6 +522,68 @@ class EnhancedService(AbstractModel):
             self.MonitorService._deserialize(params.get("MonitorService"))
 
 
+class ExistedInstancesForNode(AbstractModel):
+    """不同角色的已存在节点配置参数
+
+    """
+
+    def __init__(self):
+        """
+        :param NodeRole: 节点角色，取值:MASTER_ETCD, WORKER。MASTER_ETCD只有在创建 INDEPENDENT_CLUSTER 独立集群时需要指定。
+        :type NodeRole: str
+        :param ExistedInstancesPara: 已存在实例的重装参数
+        :type ExistedInstancesPara: :class:`tencentcloud.tke.v20180525.models.ExistedInstancesPara`
+        """
+        self.NodeRole = None
+        self.ExistedInstancesPara = None
+
+
+    def _deserialize(self, params):
+        self.NodeRole = params.get("NodeRole")
+        if params.get("ExistedInstancesPara") is not None:
+            self.ExistedInstancesPara = ExistedInstancesPara()
+            self.ExistedInstancesPara._deserialize(params.get("ExistedInstancesPara"))
+
+
+class ExistedInstancesPara(AbstractModel):
+    """已存在实例的重装参数
+
+    """
+
+    def __init__(self):
+        """
+        :param InstanceIds: 集群ID
+        :type InstanceIds: list of str
+        :param InstanceAdvancedSettings: 实例额外需要设置参数信息
+        :type InstanceAdvancedSettings: :class:`tencentcloud.tke.v20180525.models.InstanceAdvancedSettings`
+        :param EnhancedService: 增强服务。通过该参数可以指定是否开启云安全、云监控等服务。若不指定该参数，则默认开启云监控、云安全服务。
+        :type EnhancedService: :class:`tencentcloud.tke.v20180525.models.EnhancedService`
+        :param LoginSettings: 节点登录信息（目前仅支持使用Password或者单个KeyIds）
+        :type LoginSettings: :class:`tencentcloud.tke.v20180525.models.LoginSettings`
+        :param SecurityGroupIds: 实例所属安全组。该参数可以通过调用 DescribeSecurityGroups 的返回值中的sgId字段来获取。若不指定该参数，则绑定默认安全组。（目前仅支持设置单个sgId）
+        :type SecurityGroupIds: list of str
+        """
+        self.InstanceIds = None
+        self.InstanceAdvancedSettings = None
+        self.EnhancedService = None
+        self.LoginSettings = None
+        self.SecurityGroupIds = None
+
+
+    def _deserialize(self, params):
+        self.InstanceIds = params.get("InstanceIds")
+        if params.get("InstanceAdvancedSettings") is not None:
+            self.InstanceAdvancedSettings = InstanceAdvancedSettings()
+            self.InstanceAdvancedSettings._deserialize(params.get("InstanceAdvancedSettings"))
+        if params.get("EnhancedService") is not None:
+            self.EnhancedService = EnhancedService()
+            self.EnhancedService._deserialize(params.get("EnhancedService"))
+        if params.get("LoginSettings") is not None:
+            self.LoginSettings = LoginSettings()
+            self.LoginSettings._deserialize(params.get("LoginSettings"))
+        self.SecurityGroupIds = params.get("SecurityGroupIds")
+
+
 class Filter(AbstractModel):
     """过滤器
 
@@ -444,10 +677,13 @@ class LoginSettings(AbstractModel):
     def __init__(self):
         """
         :param Password: 实例登录密码。不同操作系统类型密码复杂度限制不一样，具体如下：<br><li>Linux实例密码必须8到16位，至少包括两项[a-z，A-Z]、[0-9] 和 [( ) ` ~ ! @ # $ % ^ & * - + = | { } [ ] : ; ' , . ? / ]中的特殊符号。<br><li>Windows实例密码必须12到16位，至少包括三项[a-z]，[A-Z]，[0-9] 和 [( ) ` ~ ! @ # $ % ^ & * - + = { } [ ] : ; ' , . ? /]中的特殊符号。<br><br>若不指定该参数，则由系统随机生成密码，并通过站内信方式通知到用户。
+注意：此字段可能返回 null，表示取不到有效值。
         :type Password: str
         :param KeyIds: 密钥ID列表。关联密钥后，就可以通过对应的私钥来访问实例；KeyId可通过接口DescribeKeyPairs获取，密钥与密码不能同时指定，同时Windows操作系统不支持指定密钥。当前仅支持购买的时候指定一个密钥。
+注意：此字段可能返回 null，表示取不到有效值。
         :type KeyIds: list of str
         :param KeepImageLogin: 保持镜像的原始设置。该参数与Password或KeyIds.N不能同时指定。只有使用自定义镜像、共享镜像或外部导入镜像创建实例时才能指定该参数为TRUE。取值范围：<br><li>TRUE：表示保持镜像的登录设置<br><li>FALSE：表示不保持镜像的登录设置<br><br>默认取值：FALSE。
+注意：此字段可能返回 null，表示取不到有效值。
         :type KeepImageLogin: str
         """
         self.Password = None
@@ -459,6 +695,27 @@ class LoginSettings(AbstractModel):
         self.Password = params.get("Password")
         self.KeyIds = params.get("KeyIds")
         self.KeepImageLogin = params.get("KeepImageLogin")
+
+
+class RunInstancesForNode(AbstractModel):
+    """不同角色的节点配置参数
+
+    """
+
+    def __init__(self):
+        """
+        :param NodeRole: 节点角色，取值:MASTER_ETCD, WORKER。MASTER_ETCD只有在创建 INDEPENDENT_CLUSTER 独立集群时需要指定。
+        :type NodeRole: str
+        :param RunInstancesPara: CVM创建透传参数，json化字符串格式，详见[CVM创建实例](https://cloud.tencent.com/document/product/213/15730)接口，传入公共参数外的其他参数即可，其中ImageId会替换为TKE集群OS对应的镜像。
+        :type RunInstancesPara: list of str
+        """
+        self.NodeRole = None
+        self.RunInstancesPara = None
+
+
+    def _deserialize(self, params):
+        self.NodeRole = params.get("NodeRole")
+        self.RunInstancesPara = params.get("RunInstancesPara")
 
 
 class RunMonitorServiceEnabled(AbstractModel):

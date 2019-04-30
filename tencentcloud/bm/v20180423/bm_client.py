@@ -1399,6 +1399,34 @@ class BmClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def StartDevices(self, request):
+        """开启服务器
+
+        :param request: 调用StartDevices所需参数的结构体。
+        :type request: :class:`tencentcloud.bm.v20180423.models.StartDevicesRequest`
+        :rtype: :class:`tencentcloud.bm.v20180423.models.StartDevicesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("StartDevices", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.StartDevicesResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def UnbindPsaTag(self, request):
         """解除标签与预授权规则的绑定
 

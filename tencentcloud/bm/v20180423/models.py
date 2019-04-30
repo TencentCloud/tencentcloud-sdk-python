@@ -138,6 +138,8 @@ class BuyDevicesRequest(AbstractModel):
         :type DataDiskCount: int
         :param Tags: 绑定的标签列表
         :type Tags: list of Tag
+        :param FileSystem: 指定数据盘的文件系统格式，当前支持 EXT4和XFS选项， 默认为EXT4。 参数适用于数据盘和Linux， 且在IsZoning为1时生效
+        :type FileSystem: str
         """
         self.Zone = None
         self.OsTypeId = None
@@ -175,6 +177,7 @@ class BuyDevicesRequest(AbstractModel):
         self.DataDiskTypeId = None
         self.DataDiskCount = None
         self.Tags = None
+        self.FileSystem = None
 
 
     def _deserialize(self, params):
@@ -219,6 +222,7 @@ class BuyDevicesRequest(AbstractModel):
                 obj = Tag()
                 obj._deserialize(item)
                 self.Tags.append(obj)
+        self.FileSystem = params.get("FileSystem")
 
 
 class BuyDevicesResponse(AbstractModel):
@@ -2271,13 +2275,14 @@ class DeviceInfo(AbstractModel):
         :type VpcId: str
         :param SubnetId: 子网ID
         :type SubnetId: str
-        :param DeviceStatus: 设备状态ID
+        :param DeviceStatus: 设备状态ID，取值：<li>1：申领设备中</li><li>2：初始化中</li><li>4：运营中</li><li>7：隔离中</li><li>8：已隔离</li><li>10：解隔离中</li><li>16：故障中</li>
         :type DeviceStatus: int
-        :param OperateStatus: 设备操作状态
+        :param OperateStatus: 设备操作状态ID，取值：
+<li>1：运行中</li><li>2：正在关机</li><li>3：已关机</li><li>5：正在开机</li><li>7：重启中</li><li>9：重装中</li><li>12：绑定EIP</li><li>13：解绑EIP</li><li>14：绑定LB</li><li>15：解绑LB</li><li>19：更换IP中</li><li>20：制作镜像中</li><li>21：制作镜像失败</li>
         :type OperateStatus: int
-        :param OsTypeId: 操作系统ID
+        :param OsTypeId: 操作系统ID，参考接口[查询操作系统信息(DescribeOsInfo)](https://cloud.tencent.com/document/product/386/32902)
         :type OsTypeId: int
-        :param RaidId: RAID类型ID
+        :param RaidId: RAID类型ID，参考接口[查询机型RAID方式以及系统盘大小(DescribeDeviceClassPartition)](https://cloud.tencent.com/document/product/386/32910)
         :type RaidId: int
         :param Alias: 设备别名
         :type Alias: str
@@ -3517,6 +3522,44 @@ class ShutdownDevicesResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class StartDevicesRequest(AbstractModel):
+    """StartDevices请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param InstanceIds: 需要开机的设备ID列表
+        :type InstanceIds: list of str
+        """
+        self.InstanceIds = None
+
+
+    def _deserialize(self, params):
+        self.InstanceIds = params.get("InstanceIds")
+
+
+class StartDevicesResponse(AbstractModel):
+    """StartDevices返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param TaskId: 异步任务ID
+        :type TaskId: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TaskId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TaskId = params.get("TaskId")
+        self.RequestId = params.get("RequestId")
+
+
 class SubtaskStatus(AbstractModel):
     """各实例对应的异步任务执行结果
 
@@ -3556,14 +3599,18 @@ class SuccessTaskInfo(AbstractModel):
         :type InstanceId: str
         :param TaskId: 黑石异步任务ID
         :type TaskId: int
+        :param CmdTaskId: 黑石自定义脚本运行任务ID
+        :type CmdTaskId: str
         """
         self.InstanceId = None
         self.TaskId = None
+        self.CmdTaskId = None
 
 
     def _deserialize(self, params):
         self.InstanceId = params.get("InstanceId")
         self.TaskId = params.get("TaskId")
+        self.CmdTaskId = params.get("CmdTaskId")
 
 
 class Tag(AbstractModel):

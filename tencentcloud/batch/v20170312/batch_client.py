@@ -363,6 +363,34 @@ class BatchClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeInstanceCategories(self, request):
+        """目前对CVM现有实例族划分为四类，每一类包含若干实例族。该接口用于查询实例分类信息。
+
+        :param request: 调用DescribeInstanceCategories所需参数的结构体。
+        :type request: :class:`tencentcloud.batch.v20170312.models.DescribeInstanceCategoriesRequest`
+        :rtype: :class:`tencentcloud.batch.v20170312.models.DescribeInstanceCategoriesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeInstanceCategories", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeInstanceCategoriesResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeJob(self, request):
         """用于查看一个作业的详细信息，包括内部任务（Task）和依赖（Dependence）信息。
 
