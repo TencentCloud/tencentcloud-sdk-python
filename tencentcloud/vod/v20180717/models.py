@@ -77,6 +77,92 @@ class AIAnalysisTemplateItem(AbstractModel):
         self.UpdateTime = params.get("UpdateTime")
 
 
+class AIRecognitionTemplateItem(AbstractModel):
+    """视频内容识别模板详情
+
+    """
+
+    def __init__(self):
+        """
+        :param Definition: 视频内容识别模板唯一标识。
+        :type Definition: int
+        :param Name: 视频内容识别模板名称。
+        :type Name: str
+        :param Comment: 视频内容识别模板描述信息。
+        :type Comment: str
+        :param HeadTailConfigure: 头尾识别控制参数。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type HeadTailConfigure: :class:`tencentcloud.vod.v20180717.models.HeadTailConfigureInfo`
+        :param FaceConfigure: 人脸识别控制参数。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FaceConfigure: :class:`tencentcloud.vod.v20180717.models.FaceConfigureInfo`
+        :param OcrFullTextConfigure: 文本全文识别控制参数。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OcrFullTextConfigure: :class:`tencentcloud.vod.v20180717.models.OcrFullTextConfigureInfo`
+        :param OcrWordsConfigure: 文本关键词识别控制参数。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OcrWordsConfigure: :class:`tencentcloud.vod.v20180717.models.OcrWordsConfigureInfo`
+        :param AsrFullTextConfigure: 语音全文识别控制参数。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AsrFullTextConfigure: :class:`tencentcloud.vod.v20180717.models.AsrFullTextConfigureInfo`
+        :param AsrWordsConfigure: 语音关键词识别控制参数。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AsrWordsConfigure: :class:`tencentcloud.vod.v20180717.models.AsrWordsConfigureInfo`
+        :param ObjectConfigure: 物体识别控制参数。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ObjectConfigure: :class:`tencentcloud.vod.v20180717.models.ObjectConfigureInfo`
+        :param ScreenshotInterval: 截图时间间隔，单位：秒。
+        :type ScreenshotInterval: float
+        :param CreateTime: 模板创建时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F)。
+        :type CreateTime: str
+        :param UpdateTime: 模板最后修改时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F)。
+        :type UpdateTime: str
+        """
+        self.Definition = None
+        self.Name = None
+        self.Comment = None
+        self.HeadTailConfigure = None
+        self.FaceConfigure = None
+        self.OcrFullTextConfigure = None
+        self.OcrWordsConfigure = None
+        self.AsrFullTextConfigure = None
+        self.AsrWordsConfigure = None
+        self.ObjectConfigure = None
+        self.ScreenshotInterval = None
+        self.CreateTime = None
+        self.UpdateTime = None
+
+
+    def _deserialize(self, params):
+        self.Definition = params.get("Definition")
+        self.Name = params.get("Name")
+        self.Comment = params.get("Comment")
+        if params.get("HeadTailConfigure") is not None:
+            self.HeadTailConfigure = HeadTailConfigureInfo()
+            self.HeadTailConfigure._deserialize(params.get("HeadTailConfigure"))
+        if params.get("FaceConfigure") is not None:
+            self.FaceConfigure = FaceConfigureInfo()
+            self.FaceConfigure._deserialize(params.get("FaceConfigure"))
+        if params.get("OcrFullTextConfigure") is not None:
+            self.OcrFullTextConfigure = OcrFullTextConfigureInfo()
+            self.OcrFullTextConfigure._deserialize(params.get("OcrFullTextConfigure"))
+        if params.get("OcrWordsConfigure") is not None:
+            self.OcrWordsConfigure = OcrWordsConfigureInfo()
+            self.OcrWordsConfigure._deserialize(params.get("OcrWordsConfigure"))
+        if params.get("AsrFullTextConfigure") is not None:
+            self.AsrFullTextConfigure = AsrFullTextConfigureInfo()
+            self.AsrFullTextConfigure._deserialize(params.get("AsrFullTextConfigure"))
+        if params.get("AsrWordsConfigure") is not None:
+            self.AsrWordsConfigure = AsrWordsConfigureInfo()
+            self.AsrWordsConfigure._deserialize(params.get("AsrWordsConfigure"))
+        if params.get("ObjectConfigure") is not None:
+            self.ObjectConfigure = ObjectConfigureInfo()
+            self.ObjectConfigure._deserialize(params.get("ObjectConfigure"))
+        self.ScreenshotInterval = params.get("ScreenshotInterval")
+        self.CreateTime = params.get("CreateTime")
+        self.UpdateTime = params.get("UpdateTime")
+
+
 class AdaptiveDynamicStreamingInfoItem(AbstractModel):
     """转自适应码流信息
 
@@ -596,33 +682,33 @@ class AiRecognitionResult(AbstractModel):
         """
         :param Type: 任务的类型，取值范围：
 <li>FaceRecognition：人脸识别，</li>
+<li>AsrWordsRecognition：语音关键词识别，</li>
+<li>OcrWordsRecognition：文本关键词识别，</li>
 <li>AsrFullTextRecognition：语音全文识别，</li>
 <li>OcrFullTextRecognition：文本全文识别，</li>
-<li>AsrWordsRecognition：用户自定义语音识别，</li>
-<li>OcrWordsRecognition：用户自定义文本识别，</li>
 <li>HeadTailRecognition：视频片头片尾识别，</li>
 <li>ObjectRecognition：物体识别。</li>
         :type Type: str
-        :param FaceRecognitionTask: 人脸识别结果，当 Type 为 
+        :param FaceTask: 人脸识别结果，当 Type 为 
  FaceRecognition 时有效。
 注意：此字段可能返回 null，表示取不到有效值。
-        :type FaceRecognitionTask: :class:`tencentcloud.vod.v20180717.models.AiRecognitionTaskFaceResult`
+        :type FaceTask: :class:`tencentcloud.vod.v20180717.models.AiRecognitionTaskFaceResult`
+        :param AsrWordsTask: 语音关键词识别结果，当 Type 为
+ AsrWordsRecognition 时有效。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AsrWordsTask: :class:`tencentcloud.vod.v20180717.models.AiRecognitionTaskAsrWordsResult`
         :param AsrFullTextTask: 语音全文识别结果，当 Type 为
  AsrFullTextRecognition 时有效。
 注意：此字段可能返回 null，表示取不到有效值。
         :type AsrFullTextTask: :class:`tencentcloud.vod.v20180717.models.AiRecognitionTaskAsrFullTextResult`
+        :param OcrWordsTask: 文本关键词识别结果，当 Type 为
+ OcrWordsRecognition 时有效。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OcrWordsTask: :class:`tencentcloud.vod.v20180717.models.AiRecognitionTaskOcrWordsResult`
         :param OcrFullTextTask: 文本全文识别结果，当 Type 为
  OcrFullTextRecognition 时有效。
 注意：此字段可能返回 null，表示取不到有效值。
         :type OcrFullTextTask: :class:`tencentcloud.vod.v20180717.models.AiRecognitionTaskOcrFullTextResult`
-        :param AsrWordsTask: 用户自定义语音识别结果集，当 Type 为
- AsrWordsRecognition 时有效。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type AsrWordsTask: :class:`tencentcloud.vod.v20180717.models.AiRecognitionTaskAsrWordsResult`
-        :param OcrWordsTask: 用户自定义文本识别结果集，当 Type 为
- OcrWordsRecognition 时有效。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type OcrWordsTask: :class:`tencentcloud.vod.v20180717.models.AiRecognitionTaskOcrWordsResult`
         :param HeadTailTask: 视频片头片尾识别结果，当 Type 为
  HeadTailRecognition 时有效。
 注意：此字段可能返回 null，表示取不到有效值。
@@ -633,32 +719,32 @@ class AiRecognitionResult(AbstractModel):
         :type ObjectTask: :class:`tencentcloud.vod.v20180717.models.AiRecognitionTaskObjectResult`
         """
         self.Type = None
-        self.FaceRecognitionTask = None
-        self.AsrFullTextTask = None
-        self.OcrFullTextTask = None
+        self.FaceTask = None
         self.AsrWordsTask = None
+        self.AsrFullTextTask = None
         self.OcrWordsTask = None
+        self.OcrFullTextTask = None
         self.HeadTailTask = None
         self.ObjectTask = None
 
 
     def _deserialize(self, params):
         self.Type = params.get("Type")
-        if params.get("FaceRecognitionTask") is not None:
-            self.FaceRecognitionTask = AiRecognitionTaskFaceResult()
-            self.FaceRecognitionTask._deserialize(params.get("FaceRecognitionTask"))
-        if params.get("AsrFullTextTask") is not None:
-            self.AsrFullTextTask = AiRecognitionTaskAsrFullTextResult()
-            self.AsrFullTextTask._deserialize(params.get("AsrFullTextTask"))
-        if params.get("OcrFullTextTask") is not None:
-            self.OcrFullTextTask = AiRecognitionTaskOcrFullTextResult()
-            self.OcrFullTextTask._deserialize(params.get("OcrFullTextTask"))
+        if params.get("FaceTask") is not None:
+            self.FaceTask = AiRecognitionTaskFaceResult()
+            self.FaceTask._deserialize(params.get("FaceTask"))
         if params.get("AsrWordsTask") is not None:
             self.AsrWordsTask = AiRecognitionTaskAsrWordsResult()
             self.AsrWordsTask._deserialize(params.get("AsrWordsTask"))
+        if params.get("AsrFullTextTask") is not None:
+            self.AsrFullTextTask = AiRecognitionTaskAsrFullTextResult()
+            self.AsrFullTextTask._deserialize(params.get("AsrFullTextTask"))
         if params.get("OcrWordsTask") is not None:
             self.OcrWordsTask = AiRecognitionTaskOcrWordsResult()
             self.OcrWordsTask._deserialize(params.get("OcrWordsTask"))
+        if params.get("OcrFullTextTask") is not None:
+            self.OcrFullTextTask = AiRecognitionTaskOcrFullTextResult()
+            self.OcrFullTextTask._deserialize(params.get("OcrFullTextTask"))
         if params.get("HeadTailTask") is not None:
             self.HeadTailTask = AiRecognitionTaskHeadTailResult()
             self.HeadTailTask._deserialize(params.get("HeadTailTask"))
@@ -723,13 +809,13 @@ class AiRecognitionTaskAsrFullTextResultInput(AbstractModel):
 
 
 class AiRecognitionTaskAsrFullTextResultOutput(AbstractModel):
-    """语音全文识别输出。
+    """语音全文识别结果。
 
     """
 
     def __init__(self):
         """
-        :param SegmentSet: 语音全文识别结果集。
+        :param SegmentSet: 语音全文识别片段列表。
         :type SegmentSet: list of AiRecognitionTaskAsrFullTextSegmentItem
         :param SubtitleUrl: 字幕文件 Url。
         :type SubtitleUrl: str
@@ -778,7 +864,7 @@ class AiRecognitionTaskAsrFullTextSegmentItem(AbstractModel):
 
 
 class AiRecognitionTaskAsrWordsResult(AbstractModel):
-    """用户自定义语音识别结果。
+    """语音关键词识别结果。
 
     """
 
@@ -790,9 +876,9 @@ class AiRecognitionTaskAsrWordsResult(AbstractModel):
         :type ErrCode: int
         :param Message: 错误信息。
         :type Message: str
-        :param Input: 用户自定义语音识别任务输入信息。
+        :param Input: 语音关键词识别任务输入信息。
         :type Input: :class:`tencentcloud.vod.v20180717.models.AiRecognitionTaskAsrWordsResultInput`
-        :param Output: 用户自定义语音识别任务输出信息。
+        :param Output: 语音关键词识别任务输出信息。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Output: :class:`tencentcloud.vod.v20180717.models.AiRecognitionTaskAsrWordsResultOutput`
         """
@@ -816,13 +902,13 @@ class AiRecognitionTaskAsrWordsResult(AbstractModel):
 
 
 class AiRecognitionTaskAsrWordsResultInput(AbstractModel):
-    """用户自定义语音识别输入。
+    """语音关键词识别输入。
 
     """
 
     def __init__(self):
         """
-        :param Definition: 用户自定义语音识别模板 ID。
+        :param Definition: 语音关键词识别模板 ID。
         :type Definition: int
         """
         self.Definition = None
@@ -833,15 +919,15 @@ class AiRecognitionTaskAsrWordsResultInput(AbstractModel):
 
 
 class AiRecognitionTaskAsrWordsResultItem(AbstractModel):
-    """用户自定义语音识别结果。
+    """语音关键词识别结果。
 
     """
 
     def __init__(self):
         """
-        :param Word: 语音识别词。
+        :param Word: 语音关键词。
         :type Word: str
-        :param SegmentSet: 用户自定义语音识别结果集。
+        :param SegmentSet: 语音关键词出现的时间片段列表。
         :type SegmentSet: list of AiRecognitionTaskAsrWordsSegmentItem
         """
         self.Word = None
@@ -859,13 +945,13 @@ class AiRecognitionTaskAsrWordsResultItem(AbstractModel):
 
 
 class AiRecognitionTaskAsrWordsResultOutput(AbstractModel):
-    """用户自定义语音识别输出。
+    """语音关键词识别输出。
 
     """
 
     def __init__(self):
         """
-        :param ResultSet: 用户自定义语音识别结果集。
+        :param ResultSet: 语音关键词识别结果集。
         :type ResultSet: list of AiRecognitionTaskAsrWordsResultItem
         """
         self.ResultSet = None
@@ -1138,7 +1224,7 @@ class AiRecognitionTaskInput(AbstractModel):
 
     def __init__(self):
         """
-        :param Definition: 视频智能识别模板 ID ，固定为 10，同时进行按帧标签识别、精彩片段识别、视频头尾识别、拆条、人脸识别、文字识别、语音识别、文字全文识别、语音全文识别，后续会推出用户自定义模板，可根据需要选择相应的识别任务。
+        :param Definition: 视频智能识别模板 ID 。
         :type Definition: int
         """
         self.Definition = None
@@ -1413,7 +1499,7 @@ class AiRecognitionTaskOcrFullTextSegmentTextItem(AbstractModel):
 
 
 class AiRecognitionTaskOcrWordsResult(AbstractModel):
-    """用户自定义文本识别结果。
+    """文本关键识别结果。
 
     """
 
@@ -1425,9 +1511,9 @@ class AiRecognitionTaskOcrWordsResult(AbstractModel):
         :type ErrCode: int
         :param Message: 错误信息。
         :type Message: str
-        :param Input: 用户自定义文本识别任务输入信息。
+        :param Input: 文本关键词识别任务输入信息。
         :type Input: :class:`tencentcloud.vod.v20180717.models.AiRecognitionTaskOcrWordsResultInput`
-        :param Output: 用户自定义文本识别任务输出信息。
+        :param Output: 文本关键词识别任务输出信息。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Output: :class:`tencentcloud.vod.v20180717.models.AiRecognitionTaskOcrWordsResultOutput`
         """
@@ -1451,13 +1537,13 @@ class AiRecognitionTaskOcrWordsResult(AbstractModel):
 
 
 class AiRecognitionTaskOcrWordsResultInput(AbstractModel):
-    """用户自定义文本识别输入。
+    """文本关键词识别输入。
 
     """
 
     def __init__(self):
         """
-        :param Definition: 用户自定义文本识别模板 ID。
+        :param Definition: 文本关键词识别模板 ID。
         :type Definition: int
         """
         self.Definition = None
@@ -1468,15 +1554,15 @@ class AiRecognitionTaskOcrWordsResultInput(AbstractModel):
 
 
 class AiRecognitionTaskOcrWordsResultItem(AbstractModel):
-    """用户自定义文本识别结果。
+    """文本关键词识别结果。
 
     """
 
     def __init__(self):
         """
-        :param Word: 文本识别词。
+        :param Word: 文本关键词。
         :type Word: str
-        :param SegmentSet: 文本文字识别结果集。
+        :param SegmentSet: 文本关键出现的片段列表。
         :type SegmentSet: list of AiRecognitionTaskOcrWordsSegmentItem
         """
         self.Word = None
@@ -1494,13 +1580,13 @@ class AiRecognitionTaskOcrWordsResultItem(AbstractModel):
 
 
 class AiRecognitionTaskOcrWordsResultOutput(AbstractModel):
-    """用户自定义文本识别输出。
+    """文本关键词识别输出。
 
     """
 
     def __init__(self):
         """
-        :param ResultSet: 用户自定义文本识别结果集。
+        :param ResultSet: 文本关键词识别结果集。
         :type ResultSet: list of AiRecognitionTaskOcrWordsResultItem
         """
         self.ResultSet = None
@@ -2221,6 +2307,210 @@ class AiReviewTerrorismTaskOutput(AbstractModel):
                 self.SegmentSet.append(obj)
 
 
+class AiSampleFaceInfo(AbstractModel):
+    """AI 样本管理，人脸信息。
+
+    """
+
+    def __init__(self):
+        """
+        :param FaceId: 人脸图片 ID。
+        :type FaceId: str
+        :param Url: 人脸图片地址。
+        :type Url: str
+        """
+        self.FaceId = None
+        self.Url = None
+
+
+    def _deserialize(self, params):
+        self.FaceId = params.get("FaceId")
+        self.Url = params.get("Url")
+
+
+class AiSampleFaceOperation(AbstractModel):
+    """AI 样本管理，人脸数据操作。
+
+    """
+
+    def __init__(self):
+        """
+        :param Type: 操作类型，可选值：add（添加）、delete（删除）、reset（重置）。重置操作将清空该人物已有人脸数据，并添加 FaceContents 指定人脸数据。
+        :type Type: str
+        :param FaceIds: 人脸 ID 集合，当 Type为delete 时，该字段必填。
+        :type FaceIds: list of str
+        :param FaceContents: 人脸图片 [Base64](https://tools.ietf.org/html/rfc4648) 编码后的字符串集合。
+<li>当 Type为add 或 reset 时，该字段必填；</li>
+<li>数组长度限制：5 张图片。</li>
+        :type FaceContents: list of str
+        """
+        self.Type = None
+        self.FaceIds = None
+        self.FaceContents = None
+
+
+    def _deserialize(self, params):
+        self.Type = params.get("Type")
+        self.FaceIds = params.get("FaceIds")
+        self.FaceContents = params.get("FaceContents")
+
+
+class AiSampleFailFaceInfo(AbstractModel):
+    """AI 样本管理，处理失败的人脸信息
+
+    """
+
+    def __init__(self):
+        """
+        :param Index: 对应入参 FaceContents 中错误图片下标，从 0 开始。
+        :type Index: int
+        :param ErrCode: 错误码，取值：
+<li>0：成功；</li>
+<li>其他：失败。</li>
+        :type ErrCode: int
+        :param Message: 错误描述。
+        :type Message: str
+        """
+        self.Index = None
+        self.ErrCode = None
+        self.Message = None
+
+
+    def _deserialize(self, params):
+        self.Index = params.get("Index")
+        self.ErrCode = params.get("ErrCode")
+        self.Message = params.get("Message")
+
+
+class AiSamplePerson(AbstractModel):
+    """AI 样本管理，人物信息。
+
+    """
+
+    def __init__(self):
+        """
+        :param PersonId: 人物 ID。
+        :type PersonId: str
+        :param Name: 人物名称。
+        :type Name: str
+        :param Description: 人物描述。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Description: str
+        :param FaceInfoSet: 人脸信息。
+        :type FaceInfoSet: list of AiSampleFaceInfo
+        :param TagSet: 人物标签。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TagSet: list of str
+        :param UsageSet: 应用场景。
+        :type UsageSet: list of str
+        :param CreateTime: 创建时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F)。
+        :type CreateTime: str
+        :param UpdateTime: 最后修改时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F)。
+        :type UpdateTime: str
+        """
+        self.PersonId = None
+        self.Name = None
+        self.Description = None
+        self.FaceInfoSet = None
+        self.TagSet = None
+        self.UsageSet = None
+        self.CreateTime = None
+        self.UpdateTime = None
+
+
+    def _deserialize(self, params):
+        self.PersonId = params.get("PersonId")
+        self.Name = params.get("Name")
+        self.Description = params.get("Description")
+        if params.get("FaceInfoSet") is not None:
+            self.FaceInfoSet = []
+            for item in params.get("FaceInfoSet"):
+                obj = AiSampleFaceInfo()
+                obj._deserialize(item)
+                self.FaceInfoSet.append(obj)
+        self.TagSet = params.get("TagSet")
+        self.UsageSet = params.get("UsageSet")
+        self.CreateTime = params.get("CreateTime")
+        self.UpdateTime = params.get("UpdateTime")
+
+
+class AiSampleTagOperation(AbstractModel):
+    """AI 样本管理，标签操作。
+
+    """
+
+    def __init__(self):
+        """
+        :param Type: 操作类型，可选值：add（添加）、delete（删除）、reset（重置）。
+        :type Type: str
+        :param Tags: 标签，长度限制：128 个字符。
+        :type Tags: list of str
+        """
+        self.Type = None
+        self.Tags = None
+
+
+    def _deserialize(self, params):
+        self.Type = params.get("Type")
+        self.Tags = params.get("Tags")
+
+
+class AiSampleWord(AbstractModel):
+    """AI 样本管理，关键词输出信息。
+
+    """
+
+    def __init__(self):
+        """
+        :param Keyword: 关键词。
+        :type Keyword: str
+        :param TagSet: 关键词标签。
+        :type TagSet: list of str
+        :param UsageSet: 关键词应用场景。
+        :type UsageSet: list of str
+        :param CreateTime: 创建时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F)。
+        :type CreateTime: str
+        :param UpdateTime: 最后修改时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F)。
+        :type UpdateTime: str
+        """
+        self.Keyword = None
+        self.TagSet = None
+        self.UsageSet = None
+        self.CreateTime = None
+        self.UpdateTime = None
+
+
+    def _deserialize(self, params):
+        self.Keyword = params.get("Keyword")
+        self.TagSet = params.get("TagSet")
+        self.UsageSet = params.get("UsageSet")
+        self.CreateTime = params.get("CreateTime")
+        self.UpdateTime = params.get("UpdateTime")
+
+
+class AiSampleWordInfo(AbstractModel):
+    """AI 样本管理，关键词输入信息。
+
+    """
+
+    def __init__(self):
+        """
+        :param Keyword: 关键词，长度限制：20 个字符。
+        :type Keyword: str
+        :param Tags: 关键词标签
+<li>数组长度限制：20 个标签；</li>
+<li>单个标签长度限制：128 个字符。</li>
+        :type Tags: list of str
+        """
+        self.Keyword = None
+        self.Tags = None
+
+
+    def _deserialize(self, params):
+        self.Keyword = params.get("Keyword")
+        self.Tags = params.get("Tags")
+
+
 class AnimatedGraphicTaskInput(AbstractModel):
     """转动图任务类型
 
@@ -2339,6 +2629,102 @@ class ApplyUploadResponse(AbstractModel):
             self.TempCertificate = TempCertificate()
             self.TempCertificate._deserialize(params.get("TempCertificate"))
         self.RequestId = params.get("RequestId")
+
+
+class AsrFullTextConfigureInfo(AbstractModel):
+    """语音全文识别任务控制参数
+
+    """
+
+    def __init__(self):
+        """
+        :param Switch: 语音全文识别任务开关，可选值：
+<li>ON：开启智能语音全文识别任务；</li>
+<li>OFF：关闭智能语音全文识别任务。</li>
+        :type Switch: str
+        :param SubtitleFormat: 生成的字幕文件格式，不填或者填空字符串表示不生成字幕文件，可选值：
+<li>vtt：生成 WebVTT 字幕文件。</li>
+        :type SubtitleFormat: str
+        """
+        self.Switch = None
+        self.SubtitleFormat = None
+
+
+    def _deserialize(self, params):
+        self.Switch = params.get("Switch")
+        self.SubtitleFormat = params.get("SubtitleFormat")
+
+
+class AsrFullTextConfigureInfoForUpdate(AbstractModel):
+    """语音全文识别任务控制参数
+
+    """
+
+    def __init__(self):
+        """
+        :param Switch: 语音全文识别任务开关，可选值：
+<li>ON：开启智能语音全文识别任务；</li>
+<li>OFF：关闭智能语音全文识别任务。</li>
+        :type Switch: str
+        :param SubtitleFormat: 生成的字幕文件格式，填空字符串表示不生成字幕文件，可选值：
+<li>vtt：生成 WebVTT 字幕文件。</li>
+        :type SubtitleFormat: str
+        """
+        self.Switch = None
+        self.SubtitleFormat = None
+
+
+    def _deserialize(self, params):
+        self.Switch = params.get("Switch")
+        self.SubtitleFormat = params.get("SubtitleFormat")
+
+
+class AsrWordsConfigureInfo(AbstractModel):
+    """语音关键词识别控制参数。
+
+    """
+
+    def __init__(self):
+        """
+        :param Switch: 语音关键词识别任务开关，可选值：
+<li>ON：开启语音关键词识别任务；</li>
+<li>OFF：关闭语音关键词识别任务。</li>
+        :type Switch: str
+        :param LabelSet: 关键词过滤标签，指定需要返回的关键词的标签。如果未填或者为空，则全部结果都返回。
+标签个数最多 10 个，每个标签长度最多 16 个字符。
+        :type LabelSet: list of str
+        """
+        self.Switch = None
+        self.LabelSet = None
+
+
+    def _deserialize(self, params):
+        self.Switch = params.get("Switch")
+        self.LabelSet = params.get("LabelSet")
+
+
+class AsrWordsConfigureInfoForUpdate(AbstractModel):
+    """语音关键词识别控制参数。
+
+    """
+
+    def __init__(self):
+        """
+        :param Switch: 语音关键词识别任务开关，可选值：
+<li>ON：开启语音关键词识别任务；</li>
+<li>OFF：关闭语音关键词识别任务。</li>
+        :type Switch: str
+        :param LabelSet: 关键词过滤标签，指定需要返回的关键词的标签。如果未填或者为空，则全部结果都返回。
+标签个数最多 10 个，每个标签长度最多 16 个字符。
+        :type LabelSet: list of str
+        """
+        self.Switch = None
+        self.LabelSet = None
+
+
+    def _deserialize(self, params):
+        self.Switch = params.get("Switch")
+        self.LabelSet = params.get("LabelSet")
 
 
 class AudioTemplateInfo(AbstractModel):
@@ -2682,6 +3068,77 @@ class ConfirmEventsResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class ContentReviewTemplateItem(AbstractModel):
+    """内容审核模板详情
+
+    """
+
+    def __init__(self):
+        """
+        :param Definition: 内容审核模板唯一标识。
+        :type Definition: int
+        :param Name: 内容审核模板名称，长度限制：64 个字符。
+        :type Name: str
+        :param Comment: 内容审核模板描述信息，长度限制：256 个字符。
+        :type Comment: str
+        :param PornConfigure: 鉴黄控制参数。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PornConfigure: :class:`tencentcloud.vod.v20180717.models.PornConfigureInfo`
+        :param TerrorismConfigure: 鉴恐控制参数。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TerrorismConfigure: :class:`tencentcloud.vod.v20180717.models.TerrorismConfigureInfo`
+        :param PoliticalConfigure: 鉴政控制参数。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PoliticalConfigure: :class:`tencentcloud.vod.v20180717.models.PoliticalConfigureInfo`
+        :param UserDefineConfigure: 用户自定义内容审核控制参数。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UserDefineConfigure: :class:`tencentcloud.vod.v20180717.models.UserDefineConfigureInfo`
+        :param ReviewWallSwitch: 审核结果是否进入审核墙（对审核结果进行人工复核）的开关。
+<li>ON：是；</li>
+<li>OFF：否。</li>
+        :type ReviewWallSwitch: str
+        :param ScreenshotInterval: 截帧间隔，单位为秒。当不填时，默认截帧间隔为 1 秒，最小值为 0.5 秒。
+        :type ScreenshotInterval: float
+        :param CreateTime: 模板创建时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F)。
+        :type CreateTime: str
+        :param UpdateTime: 模板最后修改时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F)。
+        :type UpdateTime: str
+        """
+        self.Definition = None
+        self.Name = None
+        self.Comment = None
+        self.PornConfigure = None
+        self.TerrorismConfigure = None
+        self.PoliticalConfigure = None
+        self.UserDefineConfigure = None
+        self.ReviewWallSwitch = None
+        self.ScreenshotInterval = None
+        self.CreateTime = None
+        self.UpdateTime = None
+
+
+    def _deserialize(self, params):
+        self.Definition = params.get("Definition")
+        self.Name = params.get("Name")
+        self.Comment = params.get("Comment")
+        if params.get("PornConfigure") is not None:
+            self.PornConfigure = PornConfigureInfo()
+            self.PornConfigure._deserialize(params.get("PornConfigure"))
+        if params.get("TerrorismConfigure") is not None:
+            self.TerrorismConfigure = TerrorismConfigureInfo()
+            self.TerrorismConfigure._deserialize(params.get("TerrorismConfigure"))
+        if params.get("PoliticalConfigure") is not None:
+            self.PoliticalConfigure = PoliticalConfigureInfo()
+            self.PoliticalConfigure._deserialize(params.get("PoliticalConfigure"))
+        if params.get("UserDefineConfigure") is not None:
+            self.UserDefineConfigure = UserDefineConfigureInfo()
+            self.UserDefineConfigure._deserialize(params.get("UserDefineConfigure"))
+        self.ReviewWallSwitch = params.get("ReviewWallSwitch")
+        self.ScreenshotInterval = params.get("ScreenshotInterval")
+        self.CreateTime = params.get("CreateTime")
+        self.UpdateTime = params.get("UpdateTime")
+
+
 class CoverBySnapshotTaskInput(AbstractModel):
     """对视频截图做封面任务输入参数类型
 
@@ -2846,6 +3303,98 @@ class CreateAIAnalysisTemplateResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class CreateAIRecognitionTemplateRequest(AbstractModel):
+    """CreateAIRecognitionTemplate请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Name: 视频内容识别模板名称，长度限制：64 个字符。
+        :type Name: str
+        :param Comment: 视频内容识别模板描述信息，长度限制：256 个字符。
+        :type Comment: str
+        :param HeadTailConfigure: 视频片头片尾识别控制参数。
+        :type HeadTailConfigure: :class:`tencentcloud.vod.v20180717.models.HeadTailConfigureInfo`
+        :param FaceConfigure: 人脸识别控制参数。
+        :type FaceConfigure: :class:`tencentcloud.vod.v20180717.models.FaceConfigureInfo`
+        :param OcrFullTextConfigure: 文本全文识别控制参数。
+        :type OcrFullTextConfigure: :class:`tencentcloud.vod.v20180717.models.OcrFullTextConfigureInfo`
+        :param OcrWordsConfigure: 文本关键词识别控制参数。
+        :type OcrWordsConfigure: :class:`tencentcloud.vod.v20180717.models.OcrWordsConfigureInfo`
+        :param AsrFullTextConfigure: 语音全文识别控制参数。
+        :type AsrFullTextConfigure: :class:`tencentcloud.vod.v20180717.models.AsrFullTextConfigureInfo`
+        :param AsrWordsConfigure: 语音关键词识别控制参数。
+        :type AsrWordsConfigure: :class:`tencentcloud.vod.v20180717.models.AsrWordsConfigureInfo`
+        :param ObjectConfigure: 物体识别控制参数。
+        :type ObjectConfigure: :class:`tencentcloud.vod.v20180717.models.ObjectConfigureInfo`
+        :param ScreenshotInterval: 截帧间隔，单位为秒。当不填时，默认截帧间隔为 1 秒，最小值为 0.5 秒。
+        :type ScreenshotInterval: float
+        :param SubAppId: 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
+        :type SubAppId: int
+        """
+        self.Name = None
+        self.Comment = None
+        self.HeadTailConfigure = None
+        self.FaceConfigure = None
+        self.OcrFullTextConfigure = None
+        self.OcrWordsConfigure = None
+        self.AsrFullTextConfigure = None
+        self.AsrWordsConfigure = None
+        self.ObjectConfigure = None
+        self.ScreenshotInterval = None
+        self.SubAppId = None
+
+
+    def _deserialize(self, params):
+        self.Name = params.get("Name")
+        self.Comment = params.get("Comment")
+        if params.get("HeadTailConfigure") is not None:
+            self.HeadTailConfigure = HeadTailConfigureInfo()
+            self.HeadTailConfigure._deserialize(params.get("HeadTailConfigure"))
+        if params.get("FaceConfigure") is not None:
+            self.FaceConfigure = FaceConfigureInfo()
+            self.FaceConfigure._deserialize(params.get("FaceConfigure"))
+        if params.get("OcrFullTextConfigure") is not None:
+            self.OcrFullTextConfigure = OcrFullTextConfigureInfo()
+            self.OcrFullTextConfigure._deserialize(params.get("OcrFullTextConfigure"))
+        if params.get("OcrWordsConfigure") is not None:
+            self.OcrWordsConfigure = OcrWordsConfigureInfo()
+            self.OcrWordsConfigure._deserialize(params.get("OcrWordsConfigure"))
+        if params.get("AsrFullTextConfigure") is not None:
+            self.AsrFullTextConfigure = AsrFullTextConfigureInfo()
+            self.AsrFullTextConfigure._deserialize(params.get("AsrFullTextConfigure"))
+        if params.get("AsrWordsConfigure") is not None:
+            self.AsrWordsConfigure = AsrWordsConfigureInfo()
+            self.AsrWordsConfigure._deserialize(params.get("AsrWordsConfigure"))
+        if params.get("ObjectConfigure") is not None:
+            self.ObjectConfigure = ObjectConfigureInfo()
+            self.ObjectConfigure._deserialize(params.get("ObjectConfigure"))
+        self.ScreenshotInterval = params.get("ScreenshotInterval")
+        self.SubAppId = params.get("SubAppId")
+
+
+class CreateAIRecognitionTemplateResponse(AbstractModel):
+    """CreateAIRecognitionTemplate返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Definition: 视频内容识别模板唯一标识。
+        :type Definition: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Definition = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Definition = params.get("Definition")
+        self.RequestId = params.get("RequestId")
+
+
 class CreateClassRequest(AbstractModel):
     """CreateClass请求参数结构体
 
@@ -2892,6 +3441,86 @@ class CreateClassResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class CreateContentReviewTemplateRequest(AbstractModel):
+    """CreateContentReviewTemplate请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ReviewWallSwitch: 审核结果是否进入审核墙（对审核结果进行人工复核）的开关。
+<li>ON：是；</li>
+<li>OFF：否。</li>
+        :type ReviewWallSwitch: str
+        :param Name: 内容审核模板名称，长度限制：64 个字符。
+        :type Name: str
+        :param Comment: 内容审核模板描述信息，长度限制：256 个字符。
+        :type Comment: str
+        :param PornConfigure: 鉴黄控制参数。
+        :type PornConfigure: :class:`tencentcloud.vod.v20180717.models.PornConfigureInfo`
+        :param TerrorismConfigure: 鉴恐控制参数。
+        :type TerrorismConfigure: :class:`tencentcloud.vod.v20180717.models.TerrorismConfigureInfo`
+        :param PoliticalConfigure: 鉴政控制参数。
+        :type PoliticalConfigure: :class:`tencentcloud.vod.v20180717.models.PoliticalConfigureInfo`
+        :param UserDefineConfigure: 用户自定义内容审核控制参数。
+        :type UserDefineConfigure: :class:`tencentcloud.vod.v20180717.models.UserDefineConfigureInfo`
+        :param ScreenshotInterval: 截帧间隔，单位为秒。当不填时，默认截帧间隔为 1 秒，最小值为 0.5 秒。
+        :type ScreenshotInterval: float
+        :param SubAppId: 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
+        :type SubAppId: int
+        """
+        self.ReviewWallSwitch = None
+        self.Name = None
+        self.Comment = None
+        self.PornConfigure = None
+        self.TerrorismConfigure = None
+        self.PoliticalConfigure = None
+        self.UserDefineConfigure = None
+        self.ScreenshotInterval = None
+        self.SubAppId = None
+
+
+    def _deserialize(self, params):
+        self.ReviewWallSwitch = params.get("ReviewWallSwitch")
+        self.Name = params.get("Name")
+        self.Comment = params.get("Comment")
+        if params.get("PornConfigure") is not None:
+            self.PornConfigure = PornConfigureInfo()
+            self.PornConfigure._deserialize(params.get("PornConfigure"))
+        if params.get("TerrorismConfigure") is not None:
+            self.TerrorismConfigure = TerrorismConfigureInfo()
+            self.TerrorismConfigure._deserialize(params.get("TerrorismConfigure"))
+        if params.get("PoliticalConfigure") is not None:
+            self.PoliticalConfigure = PoliticalConfigureInfo()
+            self.PoliticalConfigure._deserialize(params.get("PoliticalConfigure"))
+        if params.get("UserDefineConfigure") is not None:
+            self.UserDefineConfigure = UserDefineConfigureInfo()
+            self.UserDefineConfigure._deserialize(params.get("UserDefineConfigure"))
+        self.ScreenshotInterval = params.get("ScreenshotInterval")
+        self.SubAppId = params.get("SubAppId")
+
+
+class CreateContentReviewTemplateResponse(AbstractModel):
+    """CreateContentReviewTemplate返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Definition: 内容审核模板唯一标识。
+        :type Definition: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Definition = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Definition = params.get("Definition")
+        self.RequestId = params.get("RequestId")
+
+
 class CreateImageSpriteTask2017(AbstractModel):
     """视频截取雪碧图任务，该结构仅用于对 2017 版[截取雪碧图](https://cloud.tencent.com/document/product/266/8101)接口发起的任务。
 
@@ -2912,7 +3541,7 @@ class CreateImageSpriteTask2017(AbstractModel):
         :param FileId: 截取雪碧图文件 ID。
 注意：此字段可能返回 null，表示取不到有效值。
         :type FileId: str
-        :param Definition: 雪碧图规格，参见[雪碧图截图模板](https://cloud.tencent.com/document/product/266/11702#.E9.9B.AA.E7.A2.A7.E5.9B.BE.E6.88.AA.E5.9B.BE.E6.A8.A1.E6.9D.BF)。
+        :param Definition: 雪碧图规格，参见[雪碧图截图模板](https://cloud.tencent.com/document/product/266/33480#.E9.9B.AA.E7.A2.A7.E5.9B.BE.E6.A8.A1.E6.9D.BF)。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Definition: int
         :param TotalCount: 雪碧图小图总数量。
@@ -2944,6 +3573,81 @@ class CreateImageSpriteTask2017(AbstractModel):
         self.TotalCount = params.get("TotalCount")
         self.ImageSpriteUrlSet = params.get("ImageSpriteUrlSet")
         self.WebVttUrl = params.get("WebVttUrl")
+
+
+class CreatePersonSampleRequest(AbstractModel):
+    """CreatePersonSample请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Name: 人物名称，长度限制：20 个字符。
+        :type Name: str
+        :param FaceContents: 人脸图片 [Base64](https://tools.ietf.org/html/rfc4648) 编码后的字符串，仅支持 jpeg、png 图片格式。数组长度限制：5 张图片。
+        :type FaceContents: list of str
+        :param Usages: 人物应用场景，可选值：
+1. Recognition：用于内容识别，等价于 Recognition.Face。
+2. Review：用于内容审核，等价于 Review.Face。
+3. All：用于内容识别、内容审核，等价于 1+2。
+        :type Usages: list of str
+        :param Description: 人物描述，长度限制：1024 个字符。
+        :type Description: str
+        :param Tags: 人物标签
+<li>数组长度限制：20 个标签；</li>
+<li>单个标签长度限制：128 个字符。</li>
+        :type Tags: list of str
+        :param SubAppId: 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
+        :type SubAppId: int
+        """
+        self.Name = None
+        self.FaceContents = None
+        self.Usages = None
+        self.Description = None
+        self.Tags = None
+        self.SubAppId = None
+
+
+    def _deserialize(self, params):
+        self.Name = params.get("Name")
+        self.FaceContents = params.get("FaceContents")
+        self.Usages = params.get("Usages")
+        self.Description = params.get("Description")
+        self.Tags = params.get("Tags")
+        self.SubAppId = params.get("SubAppId")
+
+
+class CreatePersonSampleResponse(AbstractModel):
+    """CreatePersonSample返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Person: 人物信息。
+        :type Person: :class:`tencentcloud.vod.v20180717.models.AiSamplePerson`
+        :param FailFaceInfoSet: 处理失败的人脸信息。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FailFaceInfoSet: list of AiSampleFailFaceInfo
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Person = None
+        self.FailFaceInfoSet = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Person") is not None:
+            self.Person = AiSamplePerson()
+            self.Person._deserialize(params.get("Person"))
+        if params.get("FailFaceInfoSet") is not None:
+            self.FailFaceInfoSet = []
+            for item in params.get("FailFaceInfoSet"):
+                obj = AiSampleFailFaceInfo()
+                obj._deserialize(item)
+                self.FailFaceInfoSet.append(obj)
+        self.RequestId = params.get("RequestId")
 
 
 class CreateProcedureTemplateRequest(AbstractModel):
@@ -3181,6 +3885,61 @@ class CreateWatermarkTemplateResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class CreateWordSamplesRequest(AbstractModel):
+    """CreateWordSamples请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Usages: <b>关键词应用场景，可选值：</b>
+1. Recognition.Ocr：通过光学字符识别技术，进行内容识别；
+2. Recognition.Asr：通过语音识别技术，进行内容识别；
+3. Review.Ocr：通过光学字符识别技术，进行内容审核；
+4. Review.Asr：通过语音识别技术，进行内容审核；
+<b>可合并简写为：</b>
+5. Recognition：通过光学字符识别技术、语音识别技术，进行内容识别，等价于 1+2；
+6. Review：通过光学字符识别技术、语音识别技术，进行内容审核，等价于 3+4；
+7. All：通过光学字符识别技术、语音识别技术，进行内容识别、内容审核，等价于 1+2+3+4。
+        :type Usages: list of str
+        :param Words: 关键词，数组长度限制：100。
+        :type Words: list of AiSampleWordInfo
+        :param SubAppId: 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
+        :type SubAppId: int
+        """
+        self.Usages = None
+        self.Words = None
+        self.SubAppId = None
+
+
+    def _deserialize(self, params):
+        self.Usages = params.get("Usages")
+        if params.get("Words") is not None:
+            self.Words = []
+            for item in params.get("Words"):
+                obj = AiSampleWordInfo()
+                obj._deserialize(item)
+                self.Words.append(obj)
+        self.SubAppId = params.get("SubAppId")
+
+
+class CreateWordSamplesResponse(AbstractModel):
+    """CreateWordSamples返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class DeleteAIAnalysisTemplateRequest(AbstractModel):
     """DeleteAIAnalysisTemplate请求参数结构体
 
@@ -3204,6 +3963,44 @@ class DeleteAIAnalysisTemplateRequest(AbstractModel):
 
 class DeleteAIAnalysisTemplateResponse(AbstractModel):
     """DeleteAIAnalysisTemplate返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class DeleteAIRecognitionTemplateRequest(AbstractModel):
+    """DeleteAIRecognitionTemplate请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Definition: 视频内容识别模板唯一标识。
+        :type Definition: int
+        :param SubAppId: 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
+        :type SubAppId: int
+        """
+        self.Definition = None
+        self.SubAppId = None
+
+
+    def _deserialize(self, params):
+        self.Definition = params.get("Definition")
+        self.SubAppId = params.get("SubAppId")
+
+
+class DeleteAIRecognitionTemplateResponse(AbstractModel):
+    """DeleteAIRecognitionTemplate返回参数结构体
 
     """
 
@@ -3257,6 +4054,44 @@ class DeleteClassResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DeleteContentReviewTemplateRequest(AbstractModel):
+    """DeleteContentReviewTemplate请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Definition: 内容审核模板唯一标识。
+        :type Definition: int
+        :param SubAppId: 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
+        :type SubAppId: int
+        """
+        self.Definition = None
+        self.SubAppId = None
+
+
+    def _deserialize(self, params):
+        self.Definition = params.get("Definition")
+        self.SubAppId = params.get("SubAppId")
+
+
+class DeleteContentReviewTemplateResponse(AbstractModel):
+    """DeleteContentReviewTemplate返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class DeleteMediaRequest(AbstractModel):
     """DeleteMedia请求参数结构体
 
@@ -3289,6 +4124,44 @@ class DeleteMediaRequest(AbstractModel):
 
 class DeleteMediaResponse(AbstractModel):
     """DeleteMedia返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class DeletePersonSampleRequest(AbstractModel):
+    """DeletePersonSample请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param PersonId: 人物 ID。
+        :type PersonId: str
+        :param SubAppId: 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
+        :type SubAppId: int
+        """
+        self.PersonId = None
+        self.SubAppId = None
+
+
+    def _deserialize(self, params):
+        self.PersonId = params.get("PersonId")
+        self.SubAppId = params.get("SubAppId")
+
+
+class DeletePersonSampleResponse(AbstractModel):
+    """DeletePersonSample返回参数结构体
 
     """
 
@@ -3418,6 +4291,44 @@ class DeleteWatermarkTemplateResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DeleteWordSamplesRequest(AbstractModel):
+    """DeleteWordSamples请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Keywords: 关键词，数组长度限制：100 个词。
+        :type Keywords: list of str
+        :param SubAppId: 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
+        :type SubAppId: int
+        """
+        self.Keywords = None
+        self.SubAppId = None
+
+
+    def _deserialize(self, params):
+        self.Keywords = params.get("Keywords")
+        self.SubAppId = params.get("SubAppId")
+
+
+class DeleteWordSamplesResponse(AbstractModel):
+    """DeleteWordSamples返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeAIAnalysisTemplatesRequest(AbstractModel):
     """DescribeAIAnalysisTemplates请求参数结构体
 
@@ -3477,6 +4388,65 @@ class DescribeAIAnalysisTemplatesResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeAIRecognitionTemplatesRequest(AbstractModel):
+    """DescribeAIRecognitionTemplates请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Definitions: 视频内容识别模板唯一标识过滤条件，数组长度限制：10。
+        :type Definitions: list of int
+        :param Offset: 分页偏移量，默认值：0。
+        :type Offset: int
+        :param Limit: 返回记录条数，默认值：10，最大值：50。
+        :type Limit: int
+        :param SubAppId: 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
+        :type SubAppId: int
+        """
+        self.Definitions = None
+        self.Offset = None
+        self.Limit = None
+        self.SubAppId = None
+
+
+    def _deserialize(self, params):
+        self.Definitions = params.get("Definitions")
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+        self.SubAppId = params.get("SubAppId")
+
+
+class DescribeAIRecognitionTemplatesResponse(AbstractModel):
+    """DescribeAIRecognitionTemplates返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param TotalCount: 符合过滤条件的记录总数。
+        :type TotalCount: int
+        :param AIRecognitionTemplateSet: 视频内容识别模板详情列表。
+        :type AIRecognitionTemplateSet: list of AIRecognitionTemplateItem
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.AIRecognitionTemplateSet = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("AIRecognitionTemplateSet") is not None:
+            self.AIRecognitionTemplateSet = []
+            for item in params.get("AIRecognitionTemplateSet"):
+                obj = AIRecognitionTemplateItem()
+                obj._deserialize(item)
+                self.AIRecognitionTemplateSet.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeAllClassRequest(AbstractModel):
     """DescribeAllClass请求参数结构体
 
@@ -3518,6 +4488,65 @@ class DescribeAllClassResponse(AbstractModel):
                 obj = MediaClassInfo()
                 obj._deserialize(item)
                 self.ClassInfoSet.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeContentReviewTemplatesRequest(AbstractModel):
+    """DescribeContentReviewTemplates请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Definitions: 内容审核模板唯一标识过滤条件，数组长度限制：50。
+        :type Definitions: list of int
+        :param Offset: 分页偏移量，默认值：0。
+        :type Offset: int
+        :param Limit: 返回记录条数，默认值：10，最大值：50。
+        :type Limit: int
+        :param SubAppId: 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
+        :type SubAppId: int
+        """
+        self.Definitions = None
+        self.Offset = None
+        self.Limit = None
+        self.SubAppId = None
+
+
+    def _deserialize(self, params):
+        self.Definitions = params.get("Definitions")
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+        self.SubAppId = params.get("SubAppId")
+
+
+class DescribeContentReviewTemplatesResponse(AbstractModel):
+    """DescribeContentReviewTemplates返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param TotalCount: 符合过滤条件的记录总数。
+        :type TotalCount: int
+        :param ContentReviewTemplateSet: 内容审核模板详情列表。
+        :type ContentReviewTemplateSet: list of ContentReviewTemplateItem
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.ContentReviewTemplateSet = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("ContentReviewTemplateSet") is not None:
+            self.ContentReviewTemplateSet = []
+            for item in params.get("ContentReviewTemplateSet"):
+                obj = ContentReviewTemplateItem()
+                obj._deserialize(item)
+                self.ContentReviewTemplateSet.append(obj)
         self.RequestId = params.get("RequestId")
 
 
@@ -3583,6 +4612,82 @@ class DescribeMediaInfosResponse(AbstractModel):
                 obj._deserialize(item)
                 self.MediaInfoSet.append(obj)
         self.NotExistFileIdSet = params.get("NotExistFileIdSet")
+        self.RequestId = params.get("RequestId")
+
+
+class DescribePersonSamplesRequest(AbstractModel):
+    """DescribePersonSamples请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Type: 拉取的人物类型，可选值：
+<li>UserDefine：用户自定义人物库；</li>
+<li>Default：系统默认人物库。</li>
+
+默认值：UserDefine，拉取用户自定义人物库人物。
+说明：如果是拉取系统默认人物库，只能使用人物名字或者人物 ID + 人物名字的方式进行拉取，且人脸图片只返回一张。
+        :type Type: str
+        :param PersonIds: 人物 ID，数组长度限制：100。
+        :type PersonIds: list of str
+        :param Names: 人物名称，数组长度限制：20。
+        :type Names: list of str
+        :param Tags: 人物标签，数组长度限制：20。
+        :type Tags: list of str
+        :param Offset: 分页偏移量，默认值：0。
+        :type Offset: int
+        :param Limit: 返回记录条数，默认值：100，最大值：100。
+        :type Limit: int
+        :param SubAppId: 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
+        :type SubAppId: int
+        """
+        self.Type = None
+        self.PersonIds = None
+        self.Names = None
+        self.Tags = None
+        self.Offset = None
+        self.Limit = None
+        self.SubAppId = None
+
+
+    def _deserialize(self, params):
+        self.Type = params.get("Type")
+        self.PersonIds = params.get("PersonIds")
+        self.Names = params.get("Names")
+        self.Tags = params.get("Tags")
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+        self.SubAppId = params.get("SubAppId")
+
+
+class DescribePersonSamplesResponse(AbstractModel):
+    """DescribePersonSamples返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param TotalCount: 符合条件的记录总数。
+        :type TotalCount: int
+        :param PersonSet: 人物信息。
+        :type PersonSet: list of AiSamplePerson
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.PersonSet = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("PersonSet") is not None:
+            self.PersonSet = []
+            for item in params.get("PersonSet"):
+                obj = AiSamplePerson()
+                obj._deserialize(item)
+                self.PersonSet.append(obj)
         self.RequestId = params.get("RequestId")
 
 
@@ -3976,6 +5081,83 @@ class DescribeWatermarkTemplatesResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeWordSamplesRequest(AbstractModel):
+    """DescribeWordSamples请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Usages: <b>关键词应用场景过滤条件，可选值：</b>
+1. Recognition.Ocr：通过光学字符识别技术，进行内容识别；
+2. Recognition.Asr：通过语音识别技术，进行内容识别；
+3. Review.Ocr：通过光学字符识别技术，进行内容审核；
+4. Review.Asr：通过语音识别技术，进行内容审核；
+<b>可合并简写为：</b>
+5. Recognition：通过光学字符识别技术、语音识别技术，进行内容识别，等价于 1+2；
+6. Review：通过光学字符识别技术、语音识别技术，进行内容审核，等价于 3+4；
+可多选，元素间关系为 or，即关键词的应用场景包含该字段集合中任意元素的记录，均符合该条件。
+        :type Usages: list of str
+        :param Keywords: 关键词过滤条件，数组长度限制：100 个词。
+        :type Keywords: list of str
+        :param Tags: 标签过滤条件，数组长度限制：20 个词。
+        :type Tags: list of str
+        :param Offset: 分页偏移量，默认值：0。
+        :type Offset: int
+        :param Limit: 返回记录条数，默认值：100，最大值：100。
+        :type Limit: int
+        :param SubAppId: 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
+        :type SubAppId: int
+        """
+        self.Usages = None
+        self.Keywords = None
+        self.Tags = None
+        self.Offset = None
+        self.Limit = None
+        self.SubAppId = None
+
+
+    def _deserialize(self, params):
+        self.Usages = params.get("Usages")
+        self.Keywords = params.get("Keywords")
+        self.Tags = params.get("Tags")
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+        self.SubAppId = params.get("SubAppId")
+
+
+class DescribeWordSamplesResponse(AbstractModel):
+    """DescribeWordSamples返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param TotalCount: 符合条件的记录总数。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TotalCount: int
+        :param WordSet: 关键词信息。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type WordSet: list of AiSampleWord
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.WordSet = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("WordSet") is not None:
+            self.WordSet = []
+            for item in params.get("WordSet"):
+                obj = AiSampleWord()
+                obj._deserialize(item)
+                self.WordSet.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class EditMediaFileInfo(AbstractModel):
     """编辑点播视频文件信息
 
@@ -4001,6 +5183,70 @@ class EditMediaFileInfo(AbstractModel):
         self.FileId = params.get("FileId")
         self.StartTimeOffset = params.get("StartTimeOffset")
         self.EndTimeOffset = params.get("EndTimeOffset")
+
+
+class EditMediaRequest(AbstractModel):
+    """EditMedia请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param InputType: 输入视频的类型，可以取的值为  File，Stream 两种。
+        :type InputType: str
+        :param FileInfos: 输入的视频文件信息，当 InputType 为 File 时必填。
+        :type FileInfos: list of EditMediaFileInfo
+        :param StreamInfos: 输入的流信息，当 InputType 为 Stream 时必填。
+        :type StreamInfos: list of EditMediaStreamInfo
+        :param ProcedureName: [任务流模板](/document/product/266/11700#.E4.BB.BB.E5.8A.A1.E6.B5.81.E6.A8.A1.E6.9D.BF)名字，如果要对生成的新视频执行任务流时填写。
+        :type ProcedureName: str
+        :param SubAppId: 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
+        :type SubAppId: int
+        """
+        self.InputType = None
+        self.FileInfos = None
+        self.StreamInfos = None
+        self.ProcedureName = None
+        self.SubAppId = None
+
+
+    def _deserialize(self, params):
+        self.InputType = params.get("InputType")
+        if params.get("FileInfos") is not None:
+            self.FileInfos = []
+            for item in params.get("FileInfos"):
+                obj = EditMediaFileInfo()
+                obj._deserialize(item)
+                self.FileInfos.append(obj)
+        if params.get("StreamInfos") is not None:
+            self.StreamInfos = []
+            for item in params.get("StreamInfos"):
+                obj = EditMediaStreamInfo()
+                obj._deserialize(item)
+                self.StreamInfos.append(obj)
+        self.ProcedureName = params.get("ProcedureName")
+        self.SubAppId = params.get("SubAppId")
+
+
+class EditMediaResponse(AbstractModel):
+    """EditMedia返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param TaskId: 编辑视频的任务 ID，可以通过该 ID 查询编辑任务（任务类型为 EditMedia）的状态。
+        :type TaskId: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TaskId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TaskId = params.get("TaskId")
+        self.RequestId = params.get("RequestId")
 
 
 class EditMediaStreamInfo(AbstractModel):
@@ -4260,6 +5506,91 @@ class EventContent(AbstractModel):
             self.SnapshotByTimeOffsetCompleteEvent._deserialize(params.get("SnapshotByTimeOffsetCompleteEvent"))
 
 
+class FaceConfigureInfo(AbstractModel):
+    """人脸识别任务控制参数
+
+    """
+
+    def __init__(self):
+        """
+        :param Switch: 人脸识别任务开关，可选值：
+<li>ON：开启智能人脸识别任务；</li>
+<li>OFF：关闭智能人脸识别任务。</li>
+        :type Switch: str
+        :param Score: 人脸识别过滤分数，当识别结果达到该分数以上，返回识别结果。默认 90 分。取值范围：0 - 100。
+        :type Score: float
+        :param DefaultLibraryLabelSet: 默认人物过滤标签，指定需要返回的默认人物的标签。如果未填或者为空，则全部默认人物结果都返回。标签可选值：
+<li>entertainments：娱乐明星；</li>
+<li>sports：体育明星；</li>
+<li>politician：政治人物。</li>
+        :type DefaultLibraryLabelSet: list of str
+        :param UserDefineLibraryLabelSet: 用户自定义人物过滤标签，指定需要返回的用户自定义人物的标签。如果未填或者为空，则全部自定义人物结果都返回。
+标签个数最多 10 个，每个标签长度最多 16 个字符。
+        :type UserDefineLibraryLabelSet: list of str
+        :param FaceLibrary: 人物库选择，可选值：
+<li>Default：使用默认人物库；</li>
+<li>UserDefine：使用用户自定义人物库。</li>
+<li>All：同时使用默认人物库和用户自定义人物库。</li>
+默认值：All，使用系统默认人物库及用户自定义人物库。
+        :type FaceLibrary: str
+        """
+        self.Switch = None
+        self.Score = None
+        self.DefaultLibraryLabelSet = None
+        self.UserDefineLibraryLabelSet = None
+        self.FaceLibrary = None
+
+
+    def _deserialize(self, params):
+        self.Switch = params.get("Switch")
+        self.Score = params.get("Score")
+        self.DefaultLibraryLabelSet = params.get("DefaultLibraryLabelSet")
+        self.UserDefineLibraryLabelSet = params.get("UserDefineLibraryLabelSet")
+        self.FaceLibrary = params.get("FaceLibrary")
+
+
+class FaceConfigureInfoForUpdate(AbstractModel):
+    """人脸识别任务控制参数
+
+    """
+
+    def __init__(self):
+        """
+        :param Switch: 人脸识别任务开关，可选值：
+<li>ON：开启智能人脸识别任务；</li>
+<li>OFF：关闭智能人脸识别任务。</li>
+        :type Switch: str
+        :param Score: 人脸识别过滤分数，当识别结果达到该分数以上，返回识别结果。取值范围：0-100。
+        :type Score: float
+        :param DefaultLibraryLabelSet: 默认人物过滤标签，指定需要返回的默认人物的标签。如果未填或者为空，则全部默认人物结果都返回。标签可选值：
+<li>entertainments：娱乐明星；</li>
+<li>sports：体育明星；</li>
+<li>politician：政治人物。</li>
+        :type DefaultLibraryLabelSet: list of str
+        :param UserDefineLibraryLabelSet: 用户自定义人物过滤标签，指定需要返回的用户自定义人物的标签。如果未填或者为空，则全部自定义人物结果都返回。
+标签个数最多 10 个，每个标签长度最多 16 个字符。
+        :type UserDefineLibraryLabelSet: list of str
+        :param FaceLibrary: 人物库选择，可选值：
+<li>Default：使用默认人物库；</li>
+<li>UserDefine：使用用户自定义人物库。</li>
+<li>All：同时使用默认人物库和用户自定义人物库。</li>
+        :type FaceLibrary: str
+        """
+        self.Switch = None
+        self.Score = None
+        self.DefaultLibraryLabelSet = None
+        self.UserDefineLibraryLabelSet = None
+        self.FaceLibrary = None
+
+
+    def _deserialize(self, params):
+        self.Switch = params.get("Switch")
+        self.Score = params.get("Score")
+        self.DefaultLibraryLabelSet = params.get("DefaultLibraryLabelSet")
+        self.UserDefineLibraryLabelSet = params.get("UserDefineLibraryLabelSet")
+        self.FaceLibrary = params.get("FaceLibrary")
+
+
 class FileDeleteTask(AbstractModel):
     """文件删除任务
 
@@ -4351,6 +5682,44 @@ class FrameTagConfigureInfoForUpdate(AbstractModel):
         self.ScreenshotInterval = params.get("ScreenshotInterval")
 
 
+class HeadTailConfigureInfo(AbstractModel):
+    """视频片头片尾识别任务控制参数
+
+    """
+
+    def __init__(self):
+        """
+        :param Switch: 视频片头片尾识别任务开关，可选值：
+<li>ON：开启智能视频片头片尾识别任务；</li>
+<li>OFF：关闭智能视频片头片尾识别任务。</li>
+        :type Switch: str
+        """
+        self.Switch = None
+
+
+    def _deserialize(self, params):
+        self.Switch = params.get("Switch")
+
+
+class HeadTailConfigureInfoForUpdate(AbstractModel):
+    """视频片头片尾识别任务控制参数
+
+    """
+
+    def __init__(self):
+        """
+        :param Switch: 视频片头片尾识别任务开关，可选值：
+<li>ON：开启智能视频片头片尾识别任务；</li>
+<li>OFF：关闭智能视频片头片尾识别任务。</li>
+        :type Switch: str
+        """
+        self.Switch = None
+
+
+    def _deserialize(self, params):
+        self.Switch = params.get("Switch")
+
+
 class ImageSpriteTaskInput(AbstractModel):
     """对视频截雪碧图任务输入参数类型
 
@@ -4385,7 +5754,7 @@ class ImageWatermarkInput(AbstractModel):
         :param Height: 水印的高度。支持 %、px 两种格式：
 <li>当字符串以 % 结尾，表示水印 Height 为视频高度的百分比大小，如 10% 表示 Height 为视频高度的 10%；</li>
 <li>当字符串以 px 结尾，表示水印 Width 单位为像素，如 100px 表示 Width 为 100 像素。</li>
-默认值：0px，表示 Height 按照 Width 对视频宽度的比例缩放。
+默认值：0px，表示 Height 按照原始水印图片的宽高比缩放。
         :type Height: str
         """
         self.ImageContent = None
@@ -4689,7 +6058,7 @@ class MediaAnimatedGraphicsItem(AbstractModel):
         :param Url: 转动图的文件地址。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Url: str
-        :param Definition: 转动图模板 ID，参见[转动图参数模板](https://cloud.tencent.com/document/product/266/11701#.E9.A2.84.E7.BD.AE.E8.BD.AC.E5.8A.A8.E5.9B.BE.E6.A8.A1.E6.9D.BF)。
+        :param Definition: 转动图模板 ID，参见[转动图参数模板](https://cloud.tencent.com/document/product/266/33481#.E8.BD.AC.E5.8A.A8.E5.9B.BE.E6.A8.A1.E6.9D.BF)。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Definition: int
         :param Container: 动图格式，如 gif。
@@ -5106,7 +6475,7 @@ class MediaDeleteItem(AbstractModel):
 <li>TranscodeFiles（删除转码文件）。</li>
 <li>WechatPublishFiles（删除微信发布文件）。</li>
         :type Type: str
-        :param Definition: 删除由Type参数指定的种类下的视频模板号，模板定义参见[转码模板](https://cloud.tencent.com/document/product/266/11701#.E8.BD.AC.E7.A0.81.E6.A8.A1.E6.9D.BF)。
+        :param Definition: 删除由Type参数指定的种类下的视频模板号，模板定义参见[转码模板](https://cloud.tencent.com/document/product/266/33478#.E8.BD.AC.E7.A0.81.E6.A8.A1.E6.9D.BF)。
 默认值为0，表示删除参数Type指定种类下所有的视频。
         :type Definition: int
         """
@@ -5149,7 +6518,7 @@ class MediaImageSpriteItem(AbstractModel):
 
     def __init__(self):
         """
-        :param Definition: 雪碧图规格，参见[雪碧图参数模板](https://cloud.tencent.com/document/product/266/11702#.E9.9B.AA.E7.A2.A7.E5.9B.BE.E6.88.AA.E5.9B.BE.E6.A8.A1.E6.9D.BF)。
+        :param Definition: 雪碧图规格，参见[雪碧图参数模板](https://cloud.tencent.com/document/product/266/33480#.E9.9B.AA.E7.A2.A7.E5.9B.BE.E6.A8.A1.E6.9D.BF)。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Definition: int
         :param Height: 雪碧图小图的高度。
@@ -5891,7 +7260,7 @@ class MediaSampleSnapshotItem(AbstractModel):
 
     def __init__(self):
         """
-        :param Definition: 采样截图规格 ID，参见[采样截图参数模板](https://cloud.tencent.com/document/product/266/11702#.E9.87.87.E6.A0.B7.E6.88.AA.E5.9B.BE.E6.A8.A1.E6.9D.BF)。
+        :param Definition: 采样截图规格 ID，参见[采样截图参数模板](https://cloud.tencent.com/document/product/266/33480#.E9.87.87.E6.A0.B7.E6.88.AA.E5.9B.BE.E6.A8.A1.E6.9D.BF)。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Definition: int
         :param SampleType: 采样方式，取值范围：
@@ -5956,7 +7325,7 @@ class MediaSnapshotByTimeOffsetItem(AbstractModel):
 
     def __init__(self):
         """
-        :param Definition: 指定时间点截图规格，参见[指定时间点截图参数模板](https://cloud.tencent.com/document/product/266/11702#.E6.8C.87.E5.AE.9A.E6.97.B6.E9.97.B4.E7.82.B9.E6.88.AA.E5.9B.BE.E6.A8.A1.E6.9D.BF)。
+        :param Definition: 指定时间点截图规格，参见[指定时间点截图参数模板](https://cloud.tencent.com/document/product/266/33480#.E6.97.B6.E9.97.B4.E7.82.B9.E6.88.AA.E5.9B.BE.E6.A8.A1.E6.9D.BF)。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Definition: int
         :param PicInfoSet: 同一规格的截图信息集合，每个元素代表一张截图。
@@ -6065,7 +7434,7 @@ class MediaTranscodeItem(AbstractModel):
         :param Url: 转码后的视频文件地址。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Url: str
-        :param Definition: 转码规格 ID，参见[转码参数模板](https://cloud.tencent.com/document/product/266/11701#.E8.BD.AC.E7.A0.81.E6.A8.A1.E6.9D.BF)。
+        :param Definition: 转码规格 ID，参见[转码参数模板](https://cloud.tencent.com/document/product/266/33478#.E8.BD.AC.E7.A0.81.E6.A8.A1.E6.9D.BF)。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Definition: int
         :param Bitrate: 视频流码率平均值与音频流码率平均值之和， 单位：bps。
@@ -6241,6 +7610,98 @@ class ModifyAIAnalysisTemplateResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class ModifyAIRecognitionTemplateRequest(AbstractModel):
+    """ModifyAIRecognitionTemplate请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Definition: 视频内容识别模板唯一标识。
+        :type Definition: int
+        :param Name: 视频内容识别模板名称，长度限制：64 个字符。
+        :type Name: str
+        :param Comment: 视频内容识别模板描述信息，长度限制：256 个字符。
+        :type Comment: str
+        :param HeadTailConfigure: 视频片头片尾识别控制参数。
+        :type HeadTailConfigure: :class:`tencentcloud.vod.v20180717.models.HeadTailConfigureInfoForUpdate`
+        :param FaceConfigure: 人脸识别控制参数。
+        :type FaceConfigure: :class:`tencentcloud.vod.v20180717.models.FaceConfigureInfoForUpdate`
+        :param OcrFullTextConfigure: 文本全文识别控制参数。
+        :type OcrFullTextConfigure: :class:`tencentcloud.vod.v20180717.models.OcrFullTextConfigureInfoForUpdate`
+        :param OcrWordsConfigure: 文本关键词识别控制参数。
+        :type OcrWordsConfigure: :class:`tencentcloud.vod.v20180717.models.OcrWordsConfigureInfoForUpdate`
+        :param AsrFullTextConfigure: 语音全文识别控制参数。
+        :type AsrFullTextConfigure: :class:`tencentcloud.vod.v20180717.models.AsrFullTextConfigureInfoForUpdate`
+        :param AsrWordsConfigure: 语音关键词识别控制参数。
+        :type AsrWordsConfigure: :class:`tencentcloud.vod.v20180717.models.AsrWordsConfigureInfoForUpdate`
+        :param ObjectConfigure: 物体识别控制参数。
+        :type ObjectConfigure: :class:`tencentcloud.vod.v20180717.models.ObjectConfigureInfoForUpdate`
+        :param ScreenshotInterval: 截帧间隔，单位为秒，最小值为 0.5 秒。
+        :type ScreenshotInterval: float
+        :param SubAppId: 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
+        :type SubAppId: int
+        """
+        self.Definition = None
+        self.Name = None
+        self.Comment = None
+        self.HeadTailConfigure = None
+        self.FaceConfigure = None
+        self.OcrFullTextConfigure = None
+        self.OcrWordsConfigure = None
+        self.AsrFullTextConfigure = None
+        self.AsrWordsConfigure = None
+        self.ObjectConfigure = None
+        self.ScreenshotInterval = None
+        self.SubAppId = None
+
+
+    def _deserialize(self, params):
+        self.Definition = params.get("Definition")
+        self.Name = params.get("Name")
+        self.Comment = params.get("Comment")
+        if params.get("HeadTailConfigure") is not None:
+            self.HeadTailConfigure = HeadTailConfigureInfoForUpdate()
+            self.HeadTailConfigure._deserialize(params.get("HeadTailConfigure"))
+        if params.get("FaceConfigure") is not None:
+            self.FaceConfigure = FaceConfigureInfoForUpdate()
+            self.FaceConfigure._deserialize(params.get("FaceConfigure"))
+        if params.get("OcrFullTextConfigure") is not None:
+            self.OcrFullTextConfigure = OcrFullTextConfigureInfoForUpdate()
+            self.OcrFullTextConfigure._deserialize(params.get("OcrFullTextConfigure"))
+        if params.get("OcrWordsConfigure") is not None:
+            self.OcrWordsConfigure = OcrWordsConfigureInfoForUpdate()
+            self.OcrWordsConfigure._deserialize(params.get("OcrWordsConfigure"))
+        if params.get("AsrFullTextConfigure") is not None:
+            self.AsrFullTextConfigure = AsrFullTextConfigureInfoForUpdate()
+            self.AsrFullTextConfigure._deserialize(params.get("AsrFullTextConfigure"))
+        if params.get("AsrWordsConfigure") is not None:
+            self.AsrWordsConfigure = AsrWordsConfigureInfoForUpdate()
+            self.AsrWordsConfigure._deserialize(params.get("AsrWordsConfigure"))
+        if params.get("ObjectConfigure") is not None:
+            self.ObjectConfigure = ObjectConfigureInfoForUpdate()
+            self.ObjectConfigure._deserialize(params.get("ObjectConfigure"))
+        self.ScreenshotInterval = params.get("ScreenshotInterval")
+        self.SubAppId = params.get("SubAppId")
+
+
+class ModifyAIRecognitionTemplateResponse(AbstractModel):
+    """ModifyAIRecognitionTemplate返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class ModifyClassRequest(AbstractModel):
     """ModifyClass请求参数结构体
 
@@ -6268,6 +7729,86 @@ class ModifyClassRequest(AbstractModel):
 
 class ModifyClassResponse(AbstractModel):
     """ModifyClass返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class ModifyContentReviewTemplateRequest(AbstractModel):
+    """ModifyContentReviewTemplate请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Definition: 内容审核模板唯一标识。
+        :type Definition: int
+        :param Name: 内容审核模板名称，长度限制：64 个字符。
+        :type Name: str
+        :param Comment: 内容审核模板描述信息，长度限制：256 个字符。
+        :type Comment: str
+        :param PornConfigure: 鉴黄控制参数。
+        :type PornConfigure: :class:`tencentcloud.vod.v20180717.models.PornConfigureInfoForUpdate`
+        :param TerrorismConfigure: 鉴恐控制参数。
+        :type TerrorismConfigure: :class:`tencentcloud.vod.v20180717.models.TerrorismConfigureInfoForUpdate`
+        :param PoliticalConfigure: 鉴政控制参数。
+        :type PoliticalConfigure: :class:`tencentcloud.vod.v20180717.models.PoliticalConfigureInfoForUpdate`
+        :param UserDefineConfigure: 用户自定义内容审核控制参数。
+        :type UserDefineConfigure: :class:`tencentcloud.vod.v20180717.models.UserDefineConfigureInfoForUpdate`
+        :param ScreenshotInterval: 截帧间隔，单位为秒，最小值为 0.5 秒。
+        :type ScreenshotInterval: float
+        :param ReviewWallSwitch: 审核结果是否进入审核墙（对审核结果进行人工复核）的开关。
+<li>ON：是；</li>
+<li>OFF：否。</li>
+        :type ReviewWallSwitch: str
+        :param SubAppId: 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
+        :type SubAppId: int
+        """
+        self.Definition = None
+        self.Name = None
+        self.Comment = None
+        self.PornConfigure = None
+        self.TerrorismConfigure = None
+        self.PoliticalConfigure = None
+        self.UserDefineConfigure = None
+        self.ScreenshotInterval = None
+        self.ReviewWallSwitch = None
+        self.SubAppId = None
+
+
+    def _deserialize(self, params):
+        self.Definition = params.get("Definition")
+        self.Name = params.get("Name")
+        self.Comment = params.get("Comment")
+        if params.get("PornConfigure") is not None:
+            self.PornConfigure = PornConfigureInfoForUpdate()
+            self.PornConfigure._deserialize(params.get("PornConfigure"))
+        if params.get("TerrorismConfigure") is not None:
+            self.TerrorismConfigure = TerrorismConfigureInfoForUpdate()
+            self.TerrorismConfigure._deserialize(params.get("TerrorismConfigure"))
+        if params.get("PoliticalConfigure") is not None:
+            self.PoliticalConfigure = PoliticalConfigureInfoForUpdate()
+            self.PoliticalConfigure._deserialize(params.get("PoliticalConfigure"))
+        if params.get("UserDefineConfigure") is not None:
+            self.UserDefineConfigure = UserDefineConfigureInfoForUpdate()
+            self.UserDefineConfigure._deserialize(params.get("UserDefineConfigure"))
+        self.ScreenshotInterval = params.get("ScreenshotInterval")
+        self.ReviewWallSwitch = params.get("ReviewWallSwitch")
+        self.SubAppId = params.get("SubAppId")
+
+
+class ModifyContentReviewTemplateResponse(AbstractModel):
+    """ModifyContentReviewTemplate返回参数结构体
 
     """
 
@@ -6375,6 +7916,87 @@ class ModifyMediaInfoResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.CoverUrl = params.get("CoverUrl")
+        self.RequestId = params.get("RequestId")
+
+
+class ModifyPersonSampleRequest(AbstractModel):
+    """ModifyPersonSample请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param PersonId: 人物 ID。
+        :type PersonId: str
+        :param Name: 名称，长度限制：128 个字符。
+        :type Name: str
+        :param Description: 描述，长度限制：1024 个字符。
+        :type Description: str
+        :param Usages: 人物应用场景，可选值：
+1. Recognition：用于内容识别，等价于 Recognition.Face。
+2. Review：用于内容审核，等价于 Review.Face。
+3. All：用于内容识别、内容审核，等价于 1+2。
+        :type Usages: list of str
+        :param FaceOperationInfo: 人脸操作信息。
+        :type FaceOperationInfo: :class:`tencentcloud.vod.v20180717.models.AiSampleFaceOperation`
+        :param TagOperationInfo: 标签操作信息。
+        :type TagOperationInfo: :class:`tencentcloud.vod.v20180717.models.AiSampleTagOperation`
+        :param SubAppId: 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
+        :type SubAppId: int
+        """
+        self.PersonId = None
+        self.Name = None
+        self.Description = None
+        self.Usages = None
+        self.FaceOperationInfo = None
+        self.TagOperationInfo = None
+        self.SubAppId = None
+
+
+    def _deserialize(self, params):
+        self.PersonId = params.get("PersonId")
+        self.Name = params.get("Name")
+        self.Description = params.get("Description")
+        self.Usages = params.get("Usages")
+        if params.get("FaceOperationInfo") is not None:
+            self.FaceOperationInfo = AiSampleFaceOperation()
+            self.FaceOperationInfo._deserialize(params.get("FaceOperationInfo"))
+        if params.get("TagOperationInfo") is not None:
+            self.TagOperationInfo = AiSampleTagOperation()
+            self.TagOperationInfo._deserialize(params.get("TagOperationInfo"))
+        self.SubAppId = params.get("SubAppId")
+
+
+class ModifyPersonSampleResponse(AbstractModel):
+    """ModifyPersonSample返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Person: 人物信息。
+        :type Person: :class:`tencentcloud.vod.v20180717.models.AiSamplePerson`
+        :param FailFaceInfoSet: 处理失败的人脸信息。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FailFaceInfoSet: list of AiSampleFailFaceInfo
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Person = None
+        self.FailFaceInfoSet = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Person") is not None:
+            self.Person = AiSamplePerson()
+            self.Person._deserialize(params.get("Person"))
+        if params.get("FailFaceInfoSet") is not None:
+            self.FailFaceInfoSet = []
+            for item in params.get("FailFaceInfoSet"):
+                obj = AiSampleFailFaceInfo()
+                obj._deserialize(item)
+                self.FailFaceInfoSet.append(obj)
         self.RequestId = params.get("RequestId")
 
 
@@ -6540,6 +8162,683 @@ class ModifyWatermarkTemplateResponse(AbstractModel):
     def _deserialize(self, params):
         self.ImageUrl = params.get("ImageUrl")
         self.RequestId = params.get("RequestId")
+
+
+class ModifyWordSampleRequest(AbstractModel):
+    """ModifyWordSample请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Keyword: 关键词，长度限制：128 个字符。
+        :type Keyword: str
+        :param Usages: <b>关键词应用场景，可选值：</b>
+1. Recognition.Ocr：通过光学字符识别技术，进行内容识别；
+2. Recognition.Asr：通过语音识别技术，进行内容识别；
+3. Review.Ocr：通过光学字符识别技术，进行内容审核；
+4. Review.Asr：通过语音识别技术，进行内容审核；
+<b>可合并简写为：</b>
+5. Recognition：通过光学字符识别技术、语音识别技术，进行内容识别，等价于 1+2；
+6. Review：通过光学字符识别技术、语音识别技术，进行内容审核，等价于 3+4；
+7. All：通过光学字符识别技术、语音识别技术，进行内容识别、内容审核，等价于 1+2+3+4。
+        :type Usages: list of str
+        :param TagOperationInfo: 标签操作信息。
+        :type TagOperationInfo: :class:`tencentcloud.vod.v20180717.models.AiSampleTagOperation`
+        :param SubAppId: 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
+        :type SubAppId: int
+        """
+        self.Keyword = None
+        self.Usages = None
+        self.TagOperationInfo = None
+        self.SubAppId = None
+
+
+    def _deserialize(self, params):
+        self.Keyword = params.get("Keyword")
+        self.Usages = params.get("Usages")
+        if params.get("TagOperationInfo") is not None:
+            self.TagOperationInfo = AiSampleTagOperation()
+            self.TagOperationInfo._deserialize(params.get("TagOperationInfo"))
+        self.SubAppId = params.get("SubAppId")
+
+
+class ModifyWordSampleResponse(AbstractModel):
+    """ModifyWordSample返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class ObjectConfigureInfo(AbstractModel):
+    """物体识别任务控制参数
+
+    """
+
+    def __init__(self):
+        """
+        :param Switch: 物体识别任务开关，可选值：
+<li>ON：开启智能物体识别任务；</li>
+<li>OFF：关闭智能物体识别任务。</li>
+        :type Switch: str
+        :param ObjectLibrary: 物体库选择，可选值：
+<li>Default：使用默认物体库；</li>
+<li>UserDefine：使用用户自定义物体库。</li>
+<li>All：同时使用默认物体库和用户自定义物体库。</li>
+默认值： All，同时使用默认物体库和用户自定义物体库。
+        :type ObjectLibrary: str
+        """
+        self.Switch = None
+        self.ObjectLibrary = None
+
+
+    def _deserialize(self, params):
+        self.Switch = params.get("Switch")
+        self.ObjectLibrary = params.get("ObjectLibrary")
+
+
+class ObjectConfigureInfoForUpdate(AbstractModel):
+    """物体识别任务控制参数
+
+    """
+
+    def __init__(self):
+        """
+        :param Switch: 物体识别任务开关，可选值：
+<li>ON：开启智能物体识别任务；</li>
+<li>OFF：关闭智能物体识别任务。</li>
+        :type Switch: str
+        :param ObjectLibrary: 物体库选择，可选值：
+<li>Default：使用默认物体库；</li>
+<li>UserDefine：使用用户自定义物体库。</li>
+<li>All：同时使用默认物体库和用户自定义物体库。</li>
+        :type ObjectLibrary: str
+        """
+        self.Switch = None
+        self.ObjectLibrary = None
+
+
+    def _deserialize(self, params):
+        self.Switch = params.get("Switch")
+        self.ObjectLibrary = params.get("ObjectLibrary")
+
+
+class OcrFullTextConfigureInfo(AbstractModel):
+    """文本全文本识别任务控制参数
+
+    """
+
+    def __init__(self):
+        """
+        :param Switch: 文本全文识别任务开关，可选值：
+<li>ON：开启智能文本全文识别任务；</li>
+<li>OFF：关闭智能文本全文识别任务。</li>
+        :type Switch: str
+        """
+        self.Switch = None
+
+
+    def _deserialize(self, params):
+        self.Switch = params.get("Switch")
+
+
+class OcrFullTextConfigureInfoForUpdate(AbstractModel):
+    """文本全文本识别任务控制参数
+
+    """
+
+    def __init__(self):
+        """
+        :param Switch: 文本全文识别任务开关，可选值：
+<li>ON：开启智能文本全文识别任务；</li>
+<li>OFF：关闭智能文本全文识别任务。</li>
+        :type Switch: str
+        """
+        self.Switch = None
+
+
+    def _deserialize(self, params):
+        self.Switch = params.get("Switch")
+
+
+class OcrWordsConfigureInfo(AbstractModel):
+    """文本关键词识别控制参数。
+
+    """
+
+    def __init__(self):
+        """
+        :param Switch: 文本关键词识别任务开关，可选值：
+<li>ON：开启文本关键词识别任务；</li>
+<li>OFF：关闭文本关键词识别任务。</li>
+        :type Switch: str
+        :param LabelSet: 关键词过滤标签，指定需要返回的关键词的标签。如果未填或者为空，则全部结果都返回。
+标签个数最多 10 个，每个标签长度最多 16 个字符。
+        :type LabelSet: list of str
+        """
+        self.Switch = None
+        self.LabelSet = None
+
+
+    def _deserialize(self, params):
+        self.Switch = params.get("Switch")
+        self.LabelSet = params.get("LabelSet")
+
+
+class OcrWordsConfigureInfoForUpdate(AbstractModel):
+    """文本关键词识别控制参数。
+
+    """
+
+    def __init__(self):
+        """
+        :param Switch: 文本关键词识别任务开关，可选值：
+<li>ON：开启文本关键词识别任务；</li>
+<li>OFF：关闭文本关键词识别任务。</li>
+        :type Switch: str
+        :param LabelSet: 关键词过滤标签，指定需要返回的关键词的标签。如果未填或者为空，则全部结果都返回。
+标签个数最多 10 个，每个标签长度最多 16 个字符。
+        :type LabelSet: list of str
+        """
+        self.Switch = None
+        self.LabelSet = None
+
+
+    def _deserialize(self, params):
+        self.Switch = params.get("Switch")
+        self.LabelSet = params.get("LabelSet")
+
+
+class PoliticalAsrReviewTemplateInfo(AbstractModel):
+    """语音鉴政任务控制参数
+
+    """
+
+    def __init__(self):
+        """
+        :param Switch: 语音鉴政任务开关，可选值：
+<li>ON：开启语音鉴政任务；</li>
+<li>OFF：关闭语音鉴政任务。</li>
+        :type Switch: str
+        :param BlockConfidence: 判定涉嫌违规的分数阈值，当智能审核达到该分数以上，认为涉嫌违规，不填默认为 100 分。取值范围：0~100。
+        :type BlockConfidence: int
+        :param ReviewConfidence: 判定需人工复核是否违规的分数阈值，当智能审核达到该分数以上，认为需人工复核，不填默认为 75 分。取值范围：0~100。
+        :type ReviewConfidence: int
+        """
+        self.Switch = None
+        self.BlockConfidence = None
+        self.ReviewConfidence = None
+
+
+    def _deserialize(self, params):
+        self.Switch = params.get("Switch")
+        self.BlockConfidence = params.get("BlockConfidence")
+        self.ReviewConfidence = params.get("ReviewConfidence")
+
+
+class PoliticalAsrReviewTemplateInfoForUpdate(AbstractModel):
+    """语音鉴政任务控制参数。
+
+    """
+
+    def __init__(self):
+        """
+        :param Switch: 语音鉴政任务开关，可选值：
+<li>ON：开启语音鉴政任务；</li>
+<li>OFF：关闭语音鉴政任务。</li>
+        :type Switch: str
+        :param BlockConfidence: 判定涉嫌违规的分数阈值，当智能审核达到该分数以上，认为涉嫌违规。取值范围：0~100。
+        :type BlockConfidence: int
+        :param ReviewConfidence: 判定需人工复核是否违规的分数阈值，当智能审核达到该分数以上，认为需人工复核。取值范围：0~100。
+        :type ReviewConfidence: int
+        """
+        self.Switch = None
+        self.BlockConfidence = None
+        self.ReviewConfidence = None
+
+
+    def _deserialize(self, params):
+        self.Switch = params.get("Switch")
+        self.BlockConfidence = params.get("BlockConfidence")
+        self.ReviewConfidence = params.get("ReviewConfidence")
+
+
+class PoliticalConfigureInfo(AbstractModel):
+    """鉴政任务控制参数
+
+    """
+
+    def __init__(self):
+        """
+        :param ImgReviewInfo: 画面鉴政控制参数。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ImgReviewInfo: :class:`tencentcloud.vod.v20180717.models.PoliticalImgReviewTemplateInfo`
+        :param AsrReviewInfo: 语音鉴政控制参数。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AsrReviewInfo: :class:`tencentcloud.vod.v20180717.models.PoliticalAsrReviewTemplateInfo`
+        :param OcrReviewInfo: 文本鉴政控制参数。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OcrReviewInfo: :class:`tencentcloud.vod.v20180717.models.PoliticalOcrReviewTemplateInfo`
+        """
+        self.ImgReviewInfo = None
+        self.AsrReviewInfo = None
+        self.OcrReviewInfo = None
+
+
+    def _deserialize(self, params):
+        if params.get("ImgReviewInfo") is not None:
+            self.ImgReviewInfo = PoliticalImgReviewTemplateInfo()
+            self.ImgReviewInfo._deserialize(params.get("ImgReviewInfo"))
+        if params.get("AsrReviewInfo") is not None:
+            self.AsrReviewInfo = PoliticalAsrReviewTemplateInfo()
+            self.AsrReviewInfo._deserialize(params.get("AsrReviewInfo"))
+        if params.get("OcrReviewInfo") is not None:
+            self.OcrReviewInfo = PoliticalOcrReviewTemplateInfo()
+            self.OcrReviewInfo._deserialize(params.get("OcrReviewInfo"))
+
+
+class PoliticalConfigureInfoForUpdate(AbstractModel):
+    """鉴政任务控制参数。
+
+    """
+
+    def __init__(self):
+        """
+        :param ImgReviewInfo: 画面鉴政控制参数。
+        :type ImgReviewInfo: :class:`tencentcloud.vod.v20180717.models.PoliticalImgReviewTemplateInfoForUpdate`
+        :param AsrReviewInfo: 语音鉴政控制参数。
+        :type AsrReviewInfo: :class:`tencentcloud.vod.v20180717.models.PoliticalAsrReviewTemplateInfoForUpdate`
+        :param OcrReviewInfo: 文本鉴政控制参数。
+        :type OcrReviewInfo: :class:`tencentcloud.vod.v20180717.models.PoliticalOcrReviewTemplateInfoForUpdate`
+        """
+        self.ImgReviewInfo = None
+        self.AsrReviewInfo = None
+        self.OcrReviewInfo = None
+
+
+    def _deserialize(self, params):
+        if params.get("ImgReviewInfo") is not None:
+            self.ImgReviewInfo = PoliticalImgReviewTemplateInfoForUpdate()
+            self.ImgReviewInfo._deserialize(params.get("ImgReviewInfo"))
+        if params.get("AsrReviewInfo") is not None:
+            self.AsrReviewInfo = PoliticalAsrReviewTemplateInfoForUpdate()
+            self.AsrReviewInfo._deserialize(params.get("AsrReviewInfo"))
+        if params.get("OcrReviewInfo") is not None:
+            self.OcrReviewInfo = PoliticalOcrReviewTemplateInfoForUpdate()
+            self.OcrReviewInfo._deserialize(params.get("OcrReviewInfo"))
+
+
+class PoliticalImgReviewTemplateInfo(AbstractModel):
+    """画面鉴政任务控制参数
+
+    """
+
+    def __init__(self):
+        """
+        :param Switch: 画面鉴政任务开关，可选值：
+<li>ON：开启画面鉴政任务；</li>
+<li>OFF：关闭画面鉴政任务。</li>
+        :type Switch: str
+        :param LabelSet: 画面鉴政过滤标签，审核结果包含选择的标签则返回结果，如果过滤标签为空，则审核结果全部返回，可选值为：
+<li>violation_photo：违规图标；</li>
+<li>politician：政治人物。</li>
+        :type LabelSet: list of str
+        :param BlockConfidence: 判定涉嫌违规的分数阈值，当智能审核达到该分数以上，认为涉嫌违规，不填默认为 97 分。取值范围：0~100。
+        :type BlockConfidence: int
+        :param ReviewConfidence: 判定需人工复核是否违规的分数阈值，当智能审核达到该分数以上，认为需人工复核，不填默认为 95 分。取值范围：0~100。
+        :type ReviewConfidence: int
+        """
+        self.Switch = None
+        self.LabelSet = None
+        self.BlockConfidence = None
+        self.ReviewConfidence = None
+
+
+    def _deserialize(self, params):
+        self.Switch = params.get("Switch")
+        self.LabelSet = params.get("LabelSet")
+        self.BlockConfidence = params.get("BlockConfidence")
+        self.ReviewConfidence = params.get("ReviewConfidence")
+
+
+class PoliticalImgReviewTemplateInfoForUpdate(AbstractModel):
+    """画面鉴政任务控制参数。
+
+    """
+
+    def __init__(self):
+        """
+        :param Switch: 画面鉴政任务开关，可选值：
+<li>ON：开启画面鉴政任务；</li>
+<li>OFF：关闭画面鉴政任务。</li>
+        :type Switch: str
+        :param LabelSet: 画面鉴政过滤标签，审核结果包含选择的标签则返回结果，如果过滤标签为空，则审核结果全部返回，可选值为：
+<li>violation_photo：违规图标；</li>
+<li>politician：政治人物。</li>
+        :type LabelSet: list of str
+        :param BlockConfidence: 判定涉嫌违规的分数阈值，当智能审核达到该分数以上，认为涉嫌违规。取值范围：0~100。
+        :type BlockConfidence: int
+        :param ReviewConfidence: 判定需人工复核是否违规的分数阈值，当智能审核达到该分数以上，认为需人工复核。取值范围：0~100。
+        :type ReviewConfidence: int
+        """
+        self.Switch = None
+        self.LabelSet = None
+        self.BlockConfidence = None
+        self.ReviewConfidence = None
+
+
+    def _deserialize(self, params):
+        self.Switch = params.get("Switch")
+        self.LabelSet = params.get("LabelSet")
+        self.BlockConfidence = params.get("BlockConfidence")
+        self.ReviewConfidence = params.get("ReviewConfidence")
+
+
+class PoliticalOcrReviewTemplateInfo(AbstractModel):
+    """文本鉴政任务控制参数
+
+    """
+
+    def __init__(self):
+        """
+        :param Switch: 文本鉴政任务开关，可选值：
+<li>ON：开启文本鉴政任务；</li>
+<li>OFF：关闭文本鉴政任务。</li>
+        :type Switch: str
+        :param BlockConfidence: 判定涉嫌违规的分数阈值，当智能审核达到该分数以上，认为涉嫌违规，不填默认为 100 分。取值范围：0~100。
+        :type BlockConfidence: int
+        :param ReviewConfidence: 判定需人工复核是否违规的分数阈值，当智能审核达到该分数以上，认为需人工复核，不填默认为 75 分。取值范围：0~100。
+        :type ReviewConfidence: int
+        """
+        self.Switch = None
+        self.BlockConfidence = None
+        self.ReviewConfidence = None
+
+
+    def _deserialize(self, params):
+        self.Switch = params.get("Switch")
+        self.BlockConfidence = params.get("BlockConfidence")
+        self.ReviewConfidence = params.get("ReviewConfidence")
+
+
+class PoliticalOcrReviewTemplateInfoForUpdate(AbstractModel):
+    """文本鉴政任务控制参数。
+
+    """
+
+    def __init__(self):
+        """
+        :param Switch: 文本鉴政任务开关，可选值：
+<li>ON：开启文本鉴政任务；</li>
+<li>OFF：关闭文本鉴政任务。</li>
+        :type Switch: str
+        :param BlockConfidence: 判定涉嫌违规的分数阈值，当智能审核达到该分数以上，认为涉嫌违规。取值范围：0~100。
+        :type BlockConfidence: int
+        :param ReviewConfidence: 判定需人工复核是否违规的分数阈值，当智能审核达到该分数以上，认为需人工复核。取值范围：0~100。
+        :type ReviewConfidence: int
+        """
+        self.Switch = None
+        self.BlockConfidence = None
+        self.ReviewConfidence = None
+
+
+    def _deserialize(self, params):
+        self.Switch = params.get("Switch")
+        self.BlockConfidence = params.get("BlockConfidence")
+        self.ReviewConfidence = params.get("ReviewConfidence")
+
+
+class PornAsrReviewTemplateInfo(AbstractModel):
+    """语音鉴黄任务控制参数
+
+    """
+
+    def __init__(self):
+        """
+        :param Switch: 语音鉴黄任务开关，可选值：
+<li>ON：开启语音鉴黄任务；</li>
+<li>OFF：关闭语音鉴黄任务。</li>
+        :type Switch: str
+        :param BlockConfidence: 判定涉嫌违规的分数阈值，当智能审核达到该分数以上，认为涉嫌违规，不填默认为 100 分。取值范围：0~100。
+        :type BlockConfidence: int
+        :param ReviewConfidence: 判定需人工复核是否违规的分数阈值，当智能审核达到该分数以上，认为需人工复核，不填默认为 75 分。取值范围：0~100。
+        :type ReviewConfidence: int
+        """
+        self.Switch = None
+        self.BlockConfidence = None
+        self.ReviewConfidence = None
+
+
+    def _deserialize(self, params):
+        self.Switch = params.get("Switch")
+        self.BlockConfidence = params.get("BlockConfidence")
+        self.ReviewConfidence = params.get("ReviewConfidence")
+
+
+class PornAsrReviewTemplateInfoForUpdate(AbstractModel):
+    """语音鉴黄任务控制参数。
+
+    """
+
+    def __init__(self):
+        """
+        :param Switch: 语音鉴黄任务开关，可选值：
+<li>ON：开启语音鉴黄任务；</li>
+<li>OFF：关闭语音鉴黄任务。</li>
+        :type Switch: str
+        :param BlockConfidence: 判定涉嫌违规的分数阈值，当智能审核达到该分数以上，认为涉嫌违规。取值范围：0~100。
+        :type BlockConfidence: int
+        :param ReviewConfidence: 判定需人工复核是否违规的分数阈值，当智能审核达到该分数以上，认为需人工复核。取值范围：0~100。
+        :type ReviewConfidence: int
+        """
+        self.Switch = None
+        self.BlockConfidence = None
+        self.ReviewConfidence = None
+
+
+    def _deserialize(self, params):
+        self.Switch = params.get("Switch")
+        self.BlockConfidence = params.get("BlockConfidence")
+        self.ReviewConfidence = params.get("ReviewConfidence")
+
+
+class PornConfigureInfo(AbstractModel):
+    """鉴黄任务控制参数
+
+    """
+
+    def __init__(self):
+        """
+        :param ImgReviewInfo: 画面鉴黄控制参数。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ImgReviewInfo: :class:`tencentcloud.vod.v20180717.models.PornImgReviewTemplateInfo`
+        :param AsrReviewInfo: 语音鉴黄控制参数。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AsrReviewInfo: :class:`tencentcloud.vod.v20180717.models.PornAsrReviewTemplateInfo`
+        :param OcrReviewInfo: 文本鉴黄控制参数。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OcrReviewInfo: :class:`tencentcloud.vod.v20180717.models.PornOcrReviewTemplateInfo`
+        """
+        self.ImgReviewInfo = None
+        self.AsrReviewInfo = None
+        self.OcrReviewInfo = None
+
+
+    def _deserialize(self, params):
+        if params.get("ImgReviewInfo") is not None:
+            self.ImgReviewInfo = PornImgReviewTemplateInfo()
+            self.ImgReviewInfo._deserialize(params.get("ImgReviewInfo"))
+        if params.get("AsrReviewInfo") is not None:
+            self.AsrReviewInfo = PornAsrReviewTemplateInfo()
+            self.AsrReviewInfo._deserialize(params.get("AsrReviewInfo"))
+        if params.get("OcrReviewInfo") is not None:
+            self.OcrReviewInfo = PornOcrReviewTemplateInfo()
+            self.OcrReviewInfo._deserialize(params.get("OcrReviewInfo"))
+
+
+class PornConfigureInfoForUpdate(AbstractModel):
+    """鉴黄任务控制参数。
+
+    """
+
+    def __init__(self):
+        """
+        :param ImgReviewInfo: 画面鉴黄控制参数。
+        :type ImgReviewInfo: :class:`tencentcloud.vod.v20180717.models.PornImgReviewTemplateInfoForUpdate`
+        :param AsrReviewInfo: 语音鉴黄控制参数。
+        :type AsrReviewInfo: :class:`tencentcloud.vod.v20180717.models.PornAsrReviewTemplateInfoForUpdate`
+        :param OcrReviewInfo: 文本鉴黄控制参数。
+        :type OcrReviewInfo: :class:`tencentcloud.vod.v20180717.models.PornOcrReviewTemplateInfoForUpdate`
+        """
+        self.ImgReviewInfo = None
+        self.AsrReviewInfo = None
+        self.OcrReviewInfo = None
+
+
+    def _deserialize(self, params):
+        if params.get("ImgReviewInfo") is not None:
+            self.ImgReviewInfo = PornImgReviewTemplateInfoForUpdate()
+            self.ImgReviewInfo._deserialize(params.get("ImgReviewInfo"))
+        if params.get("AsrReviewInfo") is not None:
+            self.AsrReviewInfo = PornAsrReviewTemplateInfoForUpdate()
+            self.AsrReviewInfo._deserialize(params.get("AsrReviewInfo"))
+        if params.get("OcrReviewInfo") is not None:
+            self.OcrReviewInfo = PornOcrReviewTemplateInfoForUpdate()
+            self.OcrReviewInfo._deserialize(params.get("OcrReviewInfo"))
+
+
+class PornImgReviewTemplateInfo(AbstractModel):
+    """画面鉴黄任务控制参数
+
+    """
+
+    def __init__(self):
+        """
+        :param Switch: 画面鉴黄任务开关，可选值：
+<li>ON：开启画面鉴黄任务；</li>
+<li>OFF：关闭画面鉴黄任务。</li>
+        :type Switch: str
+        :param LabelSet: 画面鉴黄过滤标签，审核结果包含选择的标签则返回结果，如果过滤标签为空，则审核结果全部返回，可选值为：
+<li>porn：色情；</li>
+<li>vulgar：低俗；</li>
+<li>intimacy：亲密行为；</li>
+<li>sexy：性感。</li>
+        :type LabelSet: list of str
+        :param BlockConfidence: 判定涉嫌违规的分数阈值，当智能审核达到该分数以上，认为涉嫌违规，不填默认为 90 分。取值范围：0~100。
+        :type BlockConfidence: int
+        :param ReviewConfidence: 判定需人工复核是否违规的分数阈值，当智能审核达到该分数以上，认为需人工复核，不填默认为 0 分。取值范围：0~100。
+        :type ReviewConfidence: int
+        """
+        self.Switch = None
+        self.LabelSet = None
+        self.BlockConfidence = None
+        self.ReviewConfidence = None
+
+
+    def _deserialize(self, params):
+        self.Switch = params.get("Switch")
+        self.LabelSet = params.get("LabelSet")
+        self.BlockConfidence = params.get("BlockConfidence")
+        self.ReviewConfidence = params.get("ReviewConfidence")
+
+
+class PornImgReviewTemplateInfoForUpdate(AbstractModel):
+    """画面鉴黄任务控制参数。
+
+    """
+
+    def __init__(self):
+        """
+        :param Switch: 画面鉴黄任务开关，可选值：
+<li>ON：开启画面鉴黄任务；</li>
+<li>OFF：关闭画面鉴黄任务。</li>
+        :type Switch: str
+        :param LabelSet: 画面鉴黄过滤标签，审核结果包含选择的标签则返回结果，如果过滤标签为空，则审核结果全部返回，可选值为：
+<li>porn：色情；</li>
+<li>vulgar：低俗；</li>
+<li>intimacy：亲密行为；</li>
+<li>sexy：性感。</li>
+        :type LabelSet: list of str
+        :param BlockConfidence: 判定涉嫌违规的分数阈值，当智能审核达到该分数以上，认为涉嫌违规。取值范围：0~100。
+        :type BlockConfidence: int
+        :param ReviewConfidence: 判定需人工复核是否违规的分数阈值，当智能审核达到该分数以上，认为需人工复核。取值范围：0~100。
+        :type ReviewConfidence: int
+        """
+        self.Switch = None
+        self.LabelSet = None
+        self.BlockConfidence = None
+        self.ReviewConfidence = None
+
+
+    def _deserialize(self, params):
+        self.Switch = params.get("Switch")
+        self.LabelSet = params.get("LabelSet")
+        self.BlockConfidence = params.get("BlockConfidence")
+        self.ReviewConfidence = params.get("ReviewConfidence")
+
+
+class PornOcrReviewTemplateInfo(AbstractModel):
+    """文本鉴黄任务控制参数
+
+    """
+
+    def __init__(self):
+        """
+        :param Switch: 文本鉴黄任务开关，可选值：
+<li>ON：开启文本鉴黄任务；</li>
+<li>OFF：关闭文本鉴黄任务。</li>
+        :type Switch: str
+        :param BlockConfidence: 判定涉嫌违规的分数阈值，当智能审核达到该分数以上，认为涉嫌违规，不填默认为 100 分。取值范围：0~100。
+        :type BlockConfidence: int
+        :param ReviewConfidence: 判定需人工复核是否违规的分数阈值，当智能审核达到该分数以上，认为需人工复核，不填默认为 75 分。取值范围：0~100。
+        :type ReviewConfidence: int
+        """
+        self.Switch = None
+        self.BlockConfidence = None
+        self.ReviewConfidence = None
+
+
+    def _deserialize(self, params):
+        self.Switch = params.get("Switch")
+        self.BlockConfidence = params.get("BlockConfidence")
+        self.ReviewConfidence = params.get("ReviewConfidence")
+
+
+class PornOcrReviewTemplateInfoForUpdate(AbstractModel):
+    """文本鉴黄任务控制参数。
+
+    """
+
+    def __init__(self):
+        """
+        :param Switch: 文本鉴黄任务开关，可选值：
+<li>ON：开启文本鉴黄任务；</li>
+<li>OFF：关闭文本鉴黄任务。</li>
+        :type Switch: str
+        :param BlockConfidence: 判定涉嫌违规的分数阈值，当智能审核达到该分数以上，认为涉嫌违规。取值范围：0~100。
+        :type BlockConfidence: int
+        :param ReviewConfidence: 判定需人工复核是否违规的分数阈值，当智能审核达到该分数以上，认为需人工复核。取值范围：0~100。
+        :type ReviewConfidence: int
+        """
+        self.Switch = None
+        self.BlockConfidence = None
+        self.ReviewConfidence = None
+
+
+    def _deserialize(self, params):
+        self.Switch = params.get("Switch")
+        self.BlockConfidence = params.get("BlockConfidence")
+        self.ReviewConfidence = params.get("ReviewConfidence")
 
 
 class ProcedureTask(AbstractModel):
@@ -6719,6 +9018,68 @@ class ProcedureTemplate(AbstractModel):
         self.UpdateTime = params.get("UpdateTime")
 
 
+class ProcessMediaByProcedureRequest(AbstractModel):
+    """ProcessMediaByProcedure请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param FileId: 媒体文件 ID。
+        :type FileId: str
+        :param ProcedureName: [任务流模板](/document/product/266/11700#.E4.BB.BB.E5.8A.A1.E6.B5.81.E6.A8.A1.E6.9D.BF)名字。
+        :type ProcedureName: str
+        :param TasksPriority: 任务流的优先级，数值越大优先级越高，取值范围是-10到10，不填代表0。
+        :type TasksPriority: int
+        :param TasksNotifyMode: 任务流状态变更通知模式，可取值有 Finish，Change 和 None，不填代表 Finish。
+        :type TasksNotifyMode: str
+        :param SessionContext: 来源上下文，用于透传用户请求信息，任务流状态变更回调将返回该字段值，最长 250 个字符。
+        :type SessionContext: str
+        :param SessionId: 用于去重的识别码，如果一天内曾有过相同的识别码的请求，则本次的请求会返回错误。最长 50 个字符，不带或者带空字符串表示不做去重。
+        :type SessionId: str
+        :param SubAppId: 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
+        :type SubAppId: int
+        """
+        self.FileId = None
+        self.ProcedureName = None
+        self.TasksPriority = None
+        self.TasksNotifyMode = None
+        self.SessionContext = None
+        self.SessionId = None
+        self.SubAppId = None
+
+
+    def _deserialize(self, params):
+        self.FileId = params.get("FileId")
+        self.ProcedureName = params.get("ProcedureName")
+        self.TasksPriority = params.get("TasksPriority")
+        self.TasksNotifyMode = params.get("TasksNotifyMode")
+        self.SessionContext = params.get("SessionContext")
+        self.SessionId = params.get("SessionId")
+        self.SubAppId = params.get("SubAppId")
+
+
+class ProcessMediaByProcedureResponse(AbstractModel):
+    """ProcessMediaByProcedure返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param TaskId: 任务 ID。
+        :type TaskId: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TaskId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TaskId = params.get("TaskId")
+        self.RequestId = params.get("RequestId")
+
+
 class ProcessMediaByUrlRequest(AbstractModel):
     """ProcessMediaByUrl请求参数结构体
 
@@ -6734,6 +9095,8 @@ class ProcessMediaByUrlRequest(AbstractModel):
         :type AiContentReviewTask: :class:`tencentcloud.vod.v20180717.models.AiContentReviewTaskInput`
         :param AiAnalysisTask: 视频内容分析类型任务参数。
         :type AiAnalysisTask: :class:`tencentcloud.vod.v20180717.models.AiAnalysisTaskInput`
+        :param AiRecognitionTask: 视频内容识别类型任务参数。
+        :type AiRecognitionTask: :class:`tencentcloud.vod.v20180717.models.AiRecognitionTaskInput`
         :param TasksPriority: 任务流的优先级，数值越大优先级越高，取值范围是 -10 到 10，不填代表 0。
         :type TasksPriority: int
         :param TasksNotifyMode: 任务流状态变更通知模式，可取值有 Finish，Change 和 None，不填代表 Finish。
@@ -6749,6 +9112,7 @@ class ProcessMediaByUrlRequest(AbstractModel):
         self.OutputInfo = None
         self.AiContentReviewTask = None
         self.AiAnalysisTask = None
+        self.AiRecognitionTask = None
         self.TasksPriority = None
         self.TasksNotifyMode = None
         self.SessionContext = None
@@ -6769,6 +9133,9 @@ class ProcessMediaByUrlRequest(AbstractModel):
         if params.get("AiAnalysisTask") is not None:
             self.AiAnalysisTask = AiAnalysisTaskInput()
             self.AiAnalysisTask._deserialize(params.get("AiAnalysisTask"))
+        if params.get("AiRecognitionTask") is not None:
+            self.AiRecognitionTask = AiRecognitionTaskInput()
+            self.AiRecognitionTask._deserialize(params.get("AiRecognitionTask"))
         self.TasksPriority = params.get("TasksPriority")
         self.TasksNotifyMode = params.get("TasksNotifyMode")
         self.SessionContext = params.get("SessionContext")
@@ -6812,6 +9179,8 @@ class ProcessMediaRequest(AbstractModel):
         :type AiContentReviewTask: :class:`tencentcloud.vod.v20180717.models.AiContentReviewTaskInput`
         :param AiAnalysisTask: 视频内容分析类型任务参数。
         :type AiAnalysisTask: :class:`tencentcloud.vod.v20180717.models.AiAnalysisTaskInput`
+        :param AiRecognitionTask: 视频内容识别类型任务参数。
+        :type AiRecognitionTask: :class:`tencentcloud.vod.v20180717.models.AiRecognitionTaskInput`
         :param TasksPriority: 任务流的优先级，数值越大优先级越高，取值范围是 -10 到 10，不填代表 0。
         :type TasksPriority: int
         :param TasksNotifyMode: 任务流状态变更通知模式，可取值有 Finish，Change 和 None，不填代表 Finish。
@@ -6827,6 +9196,7 @@ class ProcessMediaRequest(AbstractModel):
         self.MediaProcessTask = None
         self.AiContentReviewTask = None
         self.AiAnalysisTask = None
+        self.AiRecognitionTask = None
         self.TasksPriority = None
         self.TasksNotifyMode = None
         self.SessionContext = None
@@ -6845,6 +9215,9 @@ class ProcessMediaRequest(AbstractModel):
         if params.get("AiAnalysisTask") is not None:
             self.AiAnalysisTask = AiAnalysisTaskInput()
             self.AiAnalysisTask._deserialize(params.get("AiAnalysisTask"))
+        if params.get("AiRecognitionTask") is not None:
+            self.AiRecognitionTask = AiRecognitionTaskInput()
+            self.AiRecognitionTask._deserialize(params.get("AiRecognitionTask"))
         self.TasksPriority = params.get("TasksPriority")
         self.TasksNotifyMode = params.get("TasksNotifyMode")
         self.SessionContext = params.get("SessionContext")
@@ -7248,7 +9621,7 @@ class SnapshotByTimeOffsetTask2017(AbstractModel):
         :type TaskId: str
         :param FileId: 截图文件 ID。
         :type FileId: str
-        :param Definition: 截图规格，参见[指定时间点截图参数模板](https://cloud.tencent.com/document/product/266/11702#.E6.8C.87.E5.AE.9A.E6.97.B6.E9.97.B4.E7.82.B9.E6.88.AA.E5.9B.BE.E6.A8.A1.E6.9D.BF)。
+        :param Definition: 截图规格，参见[指定时间点截图参数模板](https://cloud.tencent.com/document/product/266/33480#.E6.97.B6.E9.97.B4.E7.82.B9.E6.88.AA.E5.9B.BE.E6.A8.A1.E6.9D.BF)。
         :type Definition: int
         :param SnapshotInfoSet: 截图结果信息。
         :type SnapshotInfoSet: list of SnapshotByTimeOffset2017
@@ -7509,6 +9882,123 @@ class TempCertificate(AbstractModel):
         self.ExpiredTime = params.get("ExpiredTime")
 
 
+class TerrorismConfigureInfo(AbstractModel):
+    """鉴恐任务控制参数
+
+    """
+
+    def __init__(self):
+        """
+        :param ImgReviewInfo: 画面鉴恐任务控制参数。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ImgReviewInfo: :class:`tencentcloud.vod.v20180717.models.TerrorismImgReviewTemplateInfo`
+        """
+        self.ImgReviewInfo = None
+
+
+    def _deserialize(self, params):
+        if params.get("ImgReviewInfo") is not None:
+            self.ImgReviewInfo = TerrorismImgReviewTemplateInfo()
+            self.ImgReviewInfo._deserialize(params.get("ImgReviewInfo"))
+
+
+class TerrorismConfigureInfoForUpdate(AbstractModel):
+    """鉴恐任务控制参数。
+
+    """
+
+    def __init__(self):
+        """
+        :param ImgReviewInfo: 画面鉴恐任务控制参数。
+        :type ImgReviewInfo: :class:`tencentcloud.vod.v20180717.models.TerrorismImgReviewTemplateInfoForUpdate`
+        """
+        self.ImgReviewInfo = None
+
+
+    def _deserialize(self, params):
+        if params.get("ImgReviewInfo") is not None:
+            self.ImgReviewInfo = TerrorismImgReviewTemplateInfoForUpdate()
+            self.ImgReviewInfo._deserialize(params.get("ImgReviewInfo"))
+
+
+class TerrorismImgReviewTemplateInfo(AbstractModel):
+    """画面鉴恐任务控制参数
+
+    """
+
+    def __init__(self):
+        """
+        :param Switch: 画面鉴恐任务开关，可选值：
+<li>ON：开启画面鉴恐任务；</li>
+<li>OFF：关闭画面鉴恐任务。</li>
+        :type Switch: str
+        :param LabelSet: 画面鉴恐过滤标签，审核结果包含选择的标签则返回结果，如果过滤标签为空，则审核结果全部返回，可选值为：
+<li>guns：武器枪支；</li>
+<li>crowd：人群聚集；</li>
+<li>bloody：血腥画面；</li>
+<li>police：警察部队；</li>
+<li>banners：暴恐旗帜；</li>
+<li>militant：武装分子；</li>
+<li>explosion：爆炸火灾；</li>
+<li>terrorists：暴恐人物。</li>
+        :type LabelSet: list of str
+        :param BlockConfidence: 判定涉嫌违规的分数阈值，当智能审核达到该分数以上，认为涉嫌违规，不填默认为 90 分。取值范围：0~100。
+        :type BlockConfidence: int
+        :param ReviewConfidence: 判定需人工复核是否违规的分数阈值，当智能审核达到该分数以上，认为需人工复核，不填默认为 80 分。取值范围：0~100。
+        :type ReviewConfidence: int
+        """
+        self.Switch = None
+        self.LabelSet = None
+        self.BlockConfidence = None
+        self.ReviewConfidence = None
+
+
+    def _deserialize(self, params):
+        self.Switch = params.get("Switch")
+        self.LabelSet = params.get("LabelSet")
+        self.BlockConfidence = params.get("BlockConfidence")
+        self.ReviewConfidence = params.get("ReviewConfidence")
+
+
+class TerrorismImgReviewTemplateInfoForUpdate(AbstractModel):
+    """画面鉴恐任务控制参数。
+
+    """
+
+    def __init__(self):
+        """
+        :param Switch: 画面鉴恐任务开关，可选值：
+<li>ON：开启画面鉴恐任务；</li>
+<li>OFF：关闭画面鉴恐任务。</li>
+        :type Switch: str
+        :param LabelSet: 画面鉴恐过滤标签，审核结果包含选择的标签则返回结果，如果过滤标签为空，则审核结果全部返回，可选值为：
+<li>guns：武器枪支；</li>
+<li>crowd：人群聚集；</li>
+<li>bloody：血腥画面；</li>
+<li>police：警察部队；</li>
+<li>banners：暴恐旗帜；</li>
+<li>militant：武装分子；</li>
+<li>explosion：爆炸火灾；</li>
+<li>terrorists：暴恐人物。</li>
+        :type LabelSet: list of str
+        :param BlockConfidence: 判定涉嫌违规的分数阈值，当智能审核达到该分数以上，认为涉嫌违规。取值范围：0~100。
+        :type BlockConfidence: int
+        :param ReviewConfidence: 判定需人工复核是否违规的分数阈值，当智能审核达到该分数以上，认为需人工复核。取值范围：0~100。
+        :type ReviewConfidence: int
+        """
+        self.Switch = None
+        self.LabelSet = None
+        self.BlockConfidence = None
+        self.ReviewConfidence = None
+
+
+    def _deserialize(self, params):
+        self.Switch = params.get("Switch")
+        self.LabelSet = params.get("LabelSet")
+        self.BlockConfidence = params.get("BlockConfidence")
+        self.ReviewConfidence = params.get("ReviewConfidence")
+
+
 class TextWatermarkTemplateInput(AbstractModel):
     """文字水印模板
 
@@ -7581,7 +10071,7 @@ class TranscodePlayInfo2017(AbstractModel):
         """
         :param Url: 播放地址。
         :type Url: str
-        :param Definition: 转码规格 ID，参见[转码参数模板](https://cloud.tencent.com/document/product/266/11701#.E8.BD.AC.E7.A0.81.E6.A8.A1.E6.9D.BF)。
+        :param Definition: 转码规格 ID，参见[转码参数模板](https://cloud.tencent.com/document/product/266/33478#.E8.BD.AC.E7.A0.81.E6.A8.A1.E6.9D.BF)。
         :type Definition: int
         :param Bitrate: 视频流码率平均值与音频流码率平均值之和， 单位：bps。
         :type Bitrate: int
@@ -7766,6 +10256,263 @@ class TranscodeTemplate(AbstractModel):
         self.ContainerType = params.get("ContainerType")
         self.CreateTime = params.get("CreateTime")
         self.UpdateTime = params.get("UpdateTime")
+
+
+class UserDefineAsrTextReviewTemplateInfo(AbstractModel):
+    """用户自定义语音审核任务控制参数
+
+    """
+
+    def __init__(self):
+        """
+        :param Switch: 用户自定语音审核任务开关，可选值：
+<li>ON：开启自定义语音审核任务；</li>
+<li>OFF：关闭自定义语音审核任务。</li>
+        :type Switch: str
+        :param LabelSet: 用户自定义语音过滤标签，审核结果包含选择的标签则返回结果，如果过滤标签为空，则审核结果全部返回。如果要使用标签过滤功能，添加自定义语音关键词素材时需要添加对应标签。
+标签个数最多 10 个，每个标签长度最多 16 个字符。
+        :type LabelSet: list of str
+        :param BlockConfidence: 判定涉嫌违规的分数阈值，当智能审核达到该分数以上，认为涉嫌违规，不填默认为 100 分。取值范围：0~100。
+        :type BlockConfidence: int
+        :param ReviewConfidence: 判定需人工复核是否违规的分数阈值，当智能审核达到该分数以上，认为需人工复核，不填默认为 75 分。取值范围：0~100。
+        :type ReviewConfidence: int
+        """
+        self.Switch = None
+        self.LabelSet = None
+        self.BlockConfidence = None
+        self.ReviewConfidence = None
+
+
+    def _deserialize(self, params):
+        self.Switch = params.get("Switch")
+        self.LabelSet = params.get("LabelSet")
+        self.BlockConfidence = params.get("BlockConfidence")
+        self.ReviewConfidence = params.get("ReviewConfidence")
+
+
+class UserDefineAsrTextReviewTemplateInfoForUpdate(AbstractModel):
+    """用户自定义语音审核任务控制参数
+
+    """
+
+    def __init__(self):
+        """
+        :param Switch: 用户自定语音审核任务开关，可选值：
+<li>ON：开启自定义语音审核任务；</li>
+<li>OFF：关闭自定义语音审核任务。</li>
+        :type Switch: str
+        :param LabelSet: 用户自定义语音过滤标签，审核结果包含选择的标签则返回结果，如果过滤标签为空，则审核结果全部返回。如果要使用标签过滤功能，添加自定义语音关键词素材时需要添加对应标签。
+标签个数最多 10 个，每个标签长度最多 16 个字符。
+        :type LabelSet: list of str
+        :param BlockConfidence: 判定涉嫌违规的分数阈值，当智能审核达到该分数以上，认为涉嫌违规。取值范围：0~100。
+        :type BlockConfidence: int
+        :param ReviewConfidence: 判定需人工复核是否违规的分数阈值，当智能审核达到该分数以上，认为需人工复核。取值范围：0~100。
+        :type ReviewConfidence: int
+        """
+        self.Switch = None
+        self.LabelSet = None
+        self.BlockConfidence = None
+        self.ReviewConfidence = None
+
+
+    def _deserialize(self, params):
+        self.Switch = params.get("Switch")
+        self.LabelSet = params.get("LabelSet")
+        self.BlockConfidence = params.get("BlockConfidence")
+        self.ReviewConfidence = params.get("ReviewConfidence")
+
+
+class UserDefineConfigureInfo(AbstractModel):
+    """用户自定义审核任务控制参数
+
+    """
+
+    def __init__(self):
+        """
+        :param FaceReviewInfo: 用户自定义人物审核控制参数。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FaceReviewInfo: :class:`tencentcloud.vod.v20180717.models.UserDefineFaceReviewTemplateInfo`
+        :param AsrReviewInfo: 用户自定义语音审核控制参数。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AsrReviewInfo: :class:`tencentcloud.vod.v20180717.models.UserDefineAsrTextReviewTemplateInfo`
+        :param OcrReviewInfo: 用户自定义文本审核控制参数。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OcrReviewInfo: :class:`tencentcloud.vod.v20180717.models.UserDefineOcrTextReviewTemplateInfo`
+        """
+        self.FaceReviewInfo = None
+        self.AsrReviewInfo = None
+        self.OcrReviewInfo = None
+
+
+    def _deserialize(self, params):
+        if params.get("FaceReviewInfo") is not None:
+            self.FaceReviewInfo = UserDefineFaceReviewTemplateInfo()
+            self.FaceReviewInfo._deserialize(params.get("FaceReviewInfo"))
+        if params.get("AsrReviewInfo") is not None:
+            self.AsrReviewInfo = UserDefineAsrTextReviewTemplateInfo()
+            self.AsrReviewInfo._deserialize(params.get("AsrReviewInfo"))
+        if params.get("OcrReviewInfo") is not None:
+            self.OcrReviewInfo = UserDefineOcrTextReviewTemplateInfo()
+            self.OcrReviewInfo._deserialize(params.get("OcrReviewInfo"))
+
+
+class UserDefineConfigureInfoForUpdate(AbstractModel):
+    """用户自定义审核任务控制参数。
+
+    """
+
+    def __init__(self):
+        """
+        :param FaceReviewInfo: 用户自定义人物审核控制参数。
+        :type FaceReviewInfo: :class:`tencentcloud.vod.v20180717.models.UserDefineFaceReviewTemplateInfoForUpdate`
+        :param AsrReviewInfo: 用户自定义语音审核控制参数。
+        :type AsrReviewInfo: :class:`tencentcloud.vod.v20180717.models.UserDefineAsrTextReviewTemplateInfoForUpdate`
+        :param OcrReviewInfo: 用户自定义文本审核控制参数。
+        :type OcrReviewInfo: :class:`tencentcloud.vod.v20180717.models.UserDefineOcrTextReviewTemplateInfoForUpdate`
+        """
+        self.FaceReviewInfo = None
+        self.AsrReviewInfo = None
+        self.OcrReviewInfo = None
+
+
+    def _deserialize(self, params):
+        if params.get("FaceReviewInfo") is not None:
+            self.FaceReviewInfo = UserDefineFaceReviewTemplateInfoForUpdate()
+            self.FaceReviewInfo._deserialize(params.get("FaceReviewInfo"))
+        if params.get("AsrReviewInfo") is not None:
+            self.AsrReviewInfo = UserDefineAsrTextReviewTemplateInfoForUpdate()
+            self.AsrReviewInfo._deserialize(params.get("AsrReviewInfo"))
+        if params.get("OcrReviewInfo") is not None:
+            self.OcrReviewInfo = UserDefineOcrTextReviewTemplateInfoForUpdate()
+            self.OcrReviewInfo._deserialize(params.get("OcrReviewInfo"))
+
+
+class UserDefineFaceReviewTemplateInfo(AbstractModel):
+    """用户自定义人物审核任务控制参数
+
+    """
+
+    def __init__(self):
+        """
+        :param Switch: 用户自定义人物审核任务开关，可选值：
+<li>ON：开启自定义人物审核任务；</li>
+<li>OFF：关闭自定义人物审核任务。</li>
+        :type Switch: str
+        :param LabelSet: 用户自定义人物过滤标签，审核结果包含选择的标签则返回结果，如果过滤标签为空，则审核结果全部返回。如果要使用标签过滤功能，添加自定义人物库的时，需要添加对应人物标签。
+标签个数最多 10 个，每个标签长度最多 16 个字符。
+        :type LabelSet: list of str
+        :param BlockConfidence: 判定涉嫌违规的分数阈值，当智能审核达到该分数以上，认为涉嫌违规，不填默认为 97 分。取值范围：0~100。
+        :type BlockConfidence: int
+        :param ReviewConfidence: 判定需人工复核是否违规的分数阈值，当智能审核达到该分数以上，认为需人工复核，不填默认为 95 分。取值范围：0~100。
+        :type ReviewConfidence: int
+        """
+        self.Switch = None
+        self.LabelSet = None
+        self.BlockConfidence = None
+        self.ReviewConfidence = None
+
+
+    def _deserialize(self, params):
+        self.Switch = params.get("Switch")
+        self.LabelSet = params.get("LabelSet")
+        self.BlockConfidence = params.get("BlockConfidence")
+        self.ReviewConfidence = params.get("ReviewConfidence")
+
+
+class UserDefineFaceReviewTemplateInfoForUpdate(AbstractModel):
+    """用户自定义人物审核任务控制参数。
+
+    """
+
+    def __init__(self):
+        """
+        :param Switch: 用户自定义人物审核任务开关，可选值：
+<li>ON：开启自定义人物审核任务；</li>
+<li>OFF：关闭自定义人物审核任务。</li>
+        :type Switch: str
+        :param LabelSet: 用户自定义人物过滤标签，审核结果包含选择的标签则返回结果，如果过滤标签为空，则审核结果全部返回。如果要使用标签过滤功能，添加自定义人物库的时，需要添加对应人物标签。
+标签个数最多 10 个，每个标签长度最多 16 个字符。
+        :type LabelSet: list of str
+        :param BlockConfidence: 判定涉嫌违规的分数阈值，当智能审核达到该分数以上，认为涉嫌违规。取值范围：0~100。
+        :type BlockConfidence: int
+        :param ReviewConfidence: 判定需人工复核是否违规的分数阈值，当智能审核达到该分数以上，认为需人工复核。取值范围：0~100。
+        :type ReviewConfidence: int
+        """
+        self.Switch = None
+        self.LabelSet = None
+        self.BlockConfidence = None
+        self.ReviewConfidence = None
+
+
+    def _deserialize(self, params):
+        self.Switch = params.get("Switch")
+        self.LabelSet = params.get("LabelSet")
+        self.BlockConfidence = params.get("BlockConfidence")
+        self.ReviewConfidence = params.get("ReviewConfidence")
+
+
+class UserDefineOcrTextReviewTemplateInfo(AbstractModel):
+    """用户自定义文本审核任务控制参数
+
+    """
+
+    def __init__(self):
+        """
+        :param Switch: 用户自定文本审核任务开关，可选值：
+<li>ON：开启自定义文本审核任务；</li>
+<li>OFF：关闭自定义文本审核任务。</li>
+        :type Switch: str
+        :param LabelSet: 用户自定义文本过滤标签，审核结果包含选择的标签则返回结果，如果过滤标签为空，则审核结果全部返回。如果要使用标签过滤功能，添加自定义文本关键词素材时需要添加对应标签。
+标签个数最多 10 个，每个标签长度最多 16 个字符。
+        :type LabelSet: list of str
+        :param BlockConfidence: 判定涉嫌违规的分数阈值，当智能审核达到该分数以上，认为涉嫌违规，不填默认为 100 分。取值范围：0~100。
+        :type BlockConfidence: int
+        :param ReviewConfidence: 判定需人工复核是否违规的分数阈值，当智能审核达到该分数以上，认为需人工复核，不填默认为 75 分。取值范围：0~100。
+        :type ReviewConfidence: int
+        """
+        self.Switch = None
+        self.LabelSet = None
+        self.BlockConfidence = None
+        self.ReviewConfidence = None
+
+
+    def _deserialize(self, params):
+        self.Switch = params.get("Switch")
+        self.LabelSet = params.get("LabelSet")
+        self.BlockConfidence = params.get("BlockConfidence")
+        self.ReviewConfidence = params.get("ReviewConfidence")
+
+
+class UserDefineOcrTextReviewTemplateInfoForUpdate(AbstractModel):
+    """用户自定义文本审核任务控制参数。
+
+    """
+
+    def __init__(self):
+        """
+        :param Switch: 用户自定文本审核任务开关，可选值：
+<li>ON：开启自定义文本审核任务；</li>
+<li>OFF：关闭自定义文本审核任务。</li>
+        :type Switch: str
+        :param LabelSet: 用户自定义文本过滤标签，审核结果包含选择的标签则返回结果，如果过滤标签为空，则审核结果全部返回。如果要使用标签过滤功能，添加自定义文本关键词素材时需要添加对应标签。
+标签个数最多 10 个，每个标签长度最多 16 个字符。
+        :type LabelSet: list of str
+        :param BlockConfidence: 判定涉嫌违规的分数阈值，当智能审核达到该分数以上，认为涉嫌违规。取值范围：0~100。
+        :type BlockConfidence: int
+        :param ReviewConfidence: 判定需人工复核是否违规的分数阈值，当智能审核达到该分数以上，认为需人工复核。取值范围：0~100。
+        :type ReviewConfidence: int
+        """
+        self.Switch = None
+        self.LabelSet = None
+        self.BlockConfidence = None
+        self.ReviewConfidence = None
+
+
+    def _deserialize(self, params):
+        self.Switch = params.get("Switch")
+        self.LabelSet = params.get("LabelSet")
+        self.BlockConfidence = params.get("BlockConfidence")
+        self.ReviewConfidence = params.get("ReviewConfidence")
 
 
 class VideoTemplateInfo(AbstractModel):

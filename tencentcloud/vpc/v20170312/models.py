@@ -200,7 +200,7 @@ class Address(AbstractModel):
         :type NetworkInterfaceId: str
         :param PrivateAddressIp: 绑定的资源内网ip
         :type PrivateAddressIp: str
-        :param IsArrears: 资源隔离状态。true表示eip处于隔离状态，false表示资源处于未隔离装填
+        :param IsArrears: 资源隔离状态。true表示eip处于隔离状态，false表示资源处于未隔离状态
         :type IsArrears: bool
         :param IsBlocked: 资源封堵状态。true表示eip处于封堵状态，false表示eip处于未封堵状态
         :type IsBlocked: bool

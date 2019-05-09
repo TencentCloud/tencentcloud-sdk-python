@@ -81,6 +81,34 @@ class IotcloudClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def CreateLoraDevice(self, request):
+        """创建lora类型的设备
+
+        :param request: 调用CreateLoraDevice所需参数的结构体。
+        :type request: :class:`tencentcloud.iotcloud.v20180614.models.CreateLoraDeviceRequest`
+        :rtype: :class:`tencentcloud.iotcloud.v20180614.models.CreateLoraDeviceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("CreateLoraDevice", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateLoraDeviceResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def CreateMultiDevice(self, request):
         """本接口（CreateMultiDevice）用于批量创建物联云设备。
 
@@ -249,6 +277,34 @@ class IotcloudClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DeleteLoraDevice(self, request):
+        """删除lora类型的设备
+
+        :param request: 调用DeleteLoraDevice所需参数的结构体。
+        :type request: :class:`tencentcloud.iotcloud.v20180614.models.DeleteLoraDeviceRequest`
+        :rtype: :class:`tencentcloud.iotcloud.v20180614.models.DeleteLoraDeviceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DeleteLoraDevice", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DeleteLoraDeviceResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DeleteProduct(self, request):
         """本接口（DeleteProduct）用于删除一个物联网通信产品。
 
@@ -375,6 +431,34 @@ class IotcloudClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeDevicesResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeLoraDevice(self, request):
+        """获取lora类型设备的详细信息
+
+        :param request: 调用DescribeLoraDevice所需参数的结构体。
+        :type request: :class:`tencentcloud.iotcloud.v20180614.models.DescribeLoraDeviceRequest`
+        :rtype: :class:`tencentcloud.iotcloud.v20180614.models.DescribeLoraDeviceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeLoraDevice", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeLoraDeviceResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -585,6 +669,34 @@ class IotcloudClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def PublishAsDevice(self, request):
+        """模拟lora类型的设备端向服务器端发送消息
+
+        :param request: 调用PublishAsDevice所需参数的结构体。
+        :type request: :class:`tencentcloud.iotcloud.v20180614.models.PublishAsDeviceRequest`
+        :rtype: :class:`tencentcloud.iotcloud.v20180614.models.PublishAsDeviceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("PublishAsDevice", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.PublishAsDeviceResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def PublishMessage(self, request):
         """本接口（PublishMessage）用于向某个主题发消息。
 
@@ -599,6 +711,34 @@ class IotcloudClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.PublishMessageResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def PublishToDevice(self, request):
+        """服务器端下发消息给lora类型的设备
+
+        :param request: 调用PublishToDevice所需参数的结构体。
+        :type request: :class:`tencentcloud.iotcloud.v20180614.models.PublishToDeviceRequest`
+        :rtype: :class:`tencentcloud.iotcloud.v20180614.models.PublishToDeviceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("PublishToDevice", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.PublishToDeviceResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

@@ -55,7 +55,7 @@ class ImageTranslateRequest(AbstractModel):
         :type Source: str
         :param Target: 目标语言，支持语言列表<li> zh : 中文 </li> <li> en : 英文 </li>
         :type Target: str
-        :param ProjectId: 项目id
+        :param ProjectId: 项目ID，可以根据控制台-账号中心-项目管理中的配置填写，如无配置请填写默认项目ID:0
         :type ProjectId: int
         """
         self.SessionUuid = None
@@ -156,7 +156,7 @@ class LanguageDetectRequest(AbstractModel):
         """
         :param Text: 待识别的文本，文本统一使用utf-8格式编码，非utf-8格式编码字符会翻译失败。单次请求的文本长度需要低于2000。
         :type Text: str
-        :param ProjectId: 项目id
+        :param ProjectId: 项目ID，可以根据控制台-账号中心-项目管理中的配置填写，如无配置请填写默认项目ID:0
         :type ProjectId: int
         """
         self.Text = None
@@ -211,7 +211,7 @@ class SpeechTranslateRequest(AbstractModel):
         :type IsEnd: int
         :param Data: 语音分片内容的base64字符串，音频内容应含有效并可识别的文本
         :type Data: str
-        :param ProjectId: 项目id，用户可自定义
+        :param ProjectId: 项目ID，可以根据控制台-账号中心-项目管理中的配置填写，如无配置请填写默认项目ID:0
         :type ProjectId: int
         :param Mode: 识别模式，不填则由调用放进行vad(静音检测)，填bvad则由服务放进行vad，前者适合段语音翻译（收到所有语音分片后翻译），后者适合长语音翻译（在完成一个断句识别后就会返回部分结果）
         :type Mode: str
@@ -302,7 +302,7 @@ class TextTranslateRequest(AbstractModel):
         :param Target: 目标语言，参照支持语言列表
 <li> zh : 中文 </li> <li> en : 英文 </li><li> jp : 日语 </li> <li> kr : 韩语 </li><li> de : 德语 </li><li> fr : 法语 </li><li> es : 西班牙文 </li> <li> it : 意大利文 </li><li> tr : 土耳其文 </li><li> ru : 俄文 </li><li> pt : 葡萄牙文 </li><li> vi : 越南文 </li><li> id : 印度尼西亚文 </li><li> ms : 马来西亚文 </li><li> th : 泰文 </li><li> auto : 自动识别源语言，只能用于source字段 </li>
         :type Target: str
-        :param ProjectId: 项目id
+        :param ProjectId: 项目ID，可以根据控制台-账号中心-项目管理中的配置填写，如无配置请填写默认项目ID:0
         :type ProjectId: int
         """
         self.SourceText = None

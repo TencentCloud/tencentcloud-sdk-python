@@ -79,7 +79,7 @@ class CloseDBExtranetAccessResponse(AbstractModel):
         """
         :param FlowId: 异步任务流程ID
         :type FlowId: int
-        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.FlowId = None
@@ -161,7 +161,7 @@ class CreateDBInstancesResponse(AbstractModel):
         """
         :param DealNames: 订单号列表。每个实例对应一个订单号。
         :type DealNames: list of str
-        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.DealNames = None
@@ -190,11 +190,11 @@ class DBBackup(AbstractModel):
         :type Size: int
         :param Strategy: 策略（0-实例备份；1-多库备份）
         :type Strategy: int
-        :param Way: 类型（0-定时；1-临时）
+        :param Way: 类型（0-定时）
         :type Way: int
-        :param Type: 备份方式（1-完整；2-日志；3-差异）
+        :param Type: 备份方式（1-完整）
         :type Type: int
-        :param Status: 状态（0-创建中；1-成功；2-失败）
+        :param Status: 状态（1-创建中；2-成功；3-失败）
         :type Status: int
         :param DbList: DB列表
         :type DbList: list of str
@@ -417,7 +417,7 @@ class DescribeAccountsResponse(AbstractModel):
         :type TotalCount: int
         :param Details: 帐号列表详细信息。
         :type Details: list of AccountInfo
-        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.TotalCount = None
@@ -484,7 +484,7 @@ class DescribeDBBackupsResponse(AbstractModel):
         :type TotalCount: int
         :param BackupList: 备份列表
         :type BackupList: list of DBBackup
-        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.TotalCount = None
@@ -555,7 +555,7 @@ class DescribeDBErrlogsResponse(AbstractModel):
         :type TotalCount: int
         :param Details: 错误日志列表
         :type Details: list of ErrLogDetail
-        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.TotalCount = None
@@ -600,7 +600,7 @@ class DescribeDBInstanceAttributeResponse(AbstractModel):
         """
         :param DBInstance: 实例详细信息。
         :type DBInstance: :class:`tencentcloud.postgres.v20170312.models.DBInstance`
-        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.DBInstance = None
@@ -655,7 +655,7 @@ class DescribeDBInstancesResponse(AbstractModel):
         :type TotalCount: int
         :param DBInstanceSet: 实例详细信息集合。
         :type DBInstanceSet: list of DBInstance
-        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.TotalCount = None
@@ -730,7 +730,7 @@ class DescribeDBSlowlogsResponse(AbstractModel):
         :type TotalCount: int
         :param Detail: 慢查询日志详情
         :type Detail: :class:`tencentcloud.postgres.v20170312.models.SlowlogDetail`
-        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.TotalCount = None
@@ -790,7 +790,7 @@ class DescribeDBXlogsResponse(AbstractModel):
         :type TotalCount: int
         :param XlogList: Xlog列表
         :type XlogList: list of Xlog
-        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.TotalCount = None
@@ -837,7 +837,7 @@ class DescribeOrdersResponse(AbstractModel):
         :type TotalCount: int
         :param Deals: 订单数组
         :type Deals: list of PgDeal
-        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.TotalCount = None
@@ -882,7 +882,7 @@ class DescribeProductConfigResponse(AbstractModel):
         """
         :param SpecInfoList: 售卖规格列表。
         :type SpecInfoList: list of SpecInfo
-        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.SpecInfoList = None
@@ -916,7 +916,7 @@ class DescribeRegionsResponse(AbstractModel):
         :type TotalCount: int
         :param RegionSet: 地域信息集合。
         :type RegionSet: list of RegionInfo
-        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.TotalCount = None
@@ -952,7 +952,7 @@ class DescribeZonesResponse(AbstractModel):
         :type TotalCount: int
         :param ZoneSet: 可用区信息集合。
         :type ZoneSet: list of ZoneInfo
-        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.TotalCount = None
@@ -1061,7 +1061,7 @@ class InitDBInstancesResponse(AbstractModel):
         """
         :param DBInstanceIdSet: 实例ID集合。
         :type DBInstanceIdSet: list of str
-        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.DBInstanceIdSet = None
@@ -1125,7 +1125,7 @@ class InquiryPriceCreateDBInstancesResponse(AbstractModel):
         :type OriginalPrice: int
         :param Price: 折后价格，单位：分
         :type Price: int
-        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.OriginalPrice = None
@@ -1171,7 +1171,7 @@ class InquiryPriceRenewDBInstanceResponse(AbstractModel):
         :type OriginalPrice: int
         :param Price: 实际需要付款金额。比如24650表示246.5元
         :type Price: int
-        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.OriginalPrice = None
@@ -1225,7 +1225,7 @@ class InquiryPriceUpgradeDBInstanceResponse(AbstractModel):
         :type OriginalPrice: int
         :param Price: 实际需要付款金额
         :type Price: int
-        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.OriginalPrice = None
@@ -1271,7 +1271,7 @@ class ModifyAccountRemarkResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.RequestId = None
@@ -1309,7 +1309,7 @@ class ModifyDBInstanceNameResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.RequestId = None
@@ -1349,7 +1349,7 @@ class ModifyDBInstancesProjectResponse(AbstractModel):
         """
         :param Count: 转移项目成功的实例个数
         :type Count: int
-        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.Count = None
@@ -1460,7 +1460,7 @@ class OpenDBExtranetAccessResponse(AbstractModel):
         """
         :param FlowId: 异步任务流程ID
         :type FlowId: int
-        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.FlowId = None
@@ -1576,7 +1576,7 @@ class RenewInstanceResponse(AbstractModel):
         """
         :param DealName: 订单名
         :type DealName: str
-        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.DealName = None
@@ -1620,7 +1620,7 @@ class ResetAccountPasswordResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.RequestId = None
@@ -1656,7 +1656,7 @@ class RestartDBInstanceResponse(AbstractModel):
         """
         :param FlowId: 异步流程ID
         :type FlowId: int
-        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.FlowId = None
@@ -1698,7 +1698,7 @@ class SetAutoRenewFlagResponse(AbstractModel):
         """
         :param Count: 设置成功的实例个数
         :type Count: int
-        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.Count = None
@@ -1861,7 +1861,7 @@ class UpgradeDBInstanceResponse(AbstractModel):
         """
         :param DealName: 交易名字。
         :type DealName: str
-        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.DealName = None

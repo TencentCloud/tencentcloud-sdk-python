@@ -40,7 +40,7 @@ class AcceptDirectConnectTunnelResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.RequestId = None
@@ -48,6 +48,43 @@ class AcceptDirectConnectTunnelResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
+
+
+class AccessPoint(AbstractModel):
+    """接入点信息。
+
+    """
+
+    def __init__(self):
+        """
+        :param AccessPointName: 接入点的名称。
+        :type AccessPointName: str
+        :param AccessPointId: 接入点唯一ID。
+        :type AccessPointId: str
+        :param State: 接入点的状态。可用，不可用。
+        :type State: str
+        :param Location: 接入点的位置。
+        :type Location: str
+        :param LineOperator: 接入点支持的运营商列表。
+        :type LineOperator: list of str
+        :param RegionId: 接入点管理的大区ID。
+        :type RegionId: str
+        """
+        self.AccessPointName = None
+        self.AccessPointId = None
+        self.State = None
+        self.Location = None
+        self.LineOperator = None
+        self.RegionId = None
+
+
+    def _deserialize(self, params):
+        self.AccessPointName = params.get("AccessPointName")
+        self.AccessPointId = params.get("AccessPointId")
+        self.State = params.get("State")
+        self.Location = params.get("Location")
+        self.LineOperator = params.get("LineOperator")
+        self.RegionId = params.get("RegionId")
 
 
 class BgpPeer(AbstractModel):
@@ -69,6 +106,105 @@ class BgpPeer(AbstractModel):
     def _deserialize(self, params):
         self.Asn = params.get("Asn")
         self.AuthKey = params.get("AuthKey")
+
+
+class CreateDirectConnectRequest(AbstractModel):
+    """CreateDirectConnect请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param DirectConnectName: 物理专线的名称。
+        :type DirectConnectName: str
+        :param AccessPointId: 物理专线所在的接入点。
+您可以通过调用 DescribeAccessPoints接口获取地域ID。所选择的接入点必须存在且处于可接入的状态。
+        :type AccessPointId: str
+        :param LineOperator: 提供接入物理专线的运营商。ChinaTelecom：中国电信， ChinaMobile：中国移动，ChinaUnicom：中国联通， In-houseWiring：楼内线，ChinaOther：中国其他， InternationalOperator：境外其他。
+        :type LineOperator: str
+        :param Location: 本地数据中心的地理位置。
+        :type Location: str
+        :param PortType: 物理专线接入端口类型,取值：100Base-T：百兆电口,1000Base-T（默认值）：千兆电口,1000Base-LX：千兆单模光口（10千米）,10GBase-T：万兆电口10GBase-LR：万兆单模光口（10千米），默认值，千兆单模光口（10千米）。
+        :type PortType: str
+        :param CircuitCode: 运营商或者服务商为物理专线提供的电路编码。
+        :type CircuitCode: str
+        :param Bandwidth: 物理专线接入接口带宽，单位为Mbps，默认值为1000，取值范围为 [2, 10240]。
+        :type Bandwidth: int
+        :param RedundantDirectConnectId: 冗余物理专线的ID。
+        :type RedundantDirectConnectId: str
+        :param Vlan: 物理专线调试VLAN。默认开启VLAN，自动分配VLAN。
+        :type Vlan: int
+        :param TencentAddress: 物理专线调试腾讯侧互联 IP。默认自动分配。
+        :type TencentAddress: str
+        :param CustomerAddress: 物理专线调试用户侧互联 IP。默认自动分配。
+        :type CustomerAddress: str
+        :param CustomerName: 物理专线申请者姓名。默认从账户体系获取。
+        :type CustomerName: str
+        :param CustomerContactMail: 物理专线申请者联系邮箱。默认从账户体系获取。
+        :type CustomerContactMail: str
+        :param CustomerContactNumber: 物理专线申请者联系号码。默认从账户体系获取。
+        :type CustomerContactNumber: str
+        :param FaultReportContactPerson: 报障联系人。
+        :type FaultReportContactPerson: str
+        :param FaultReportContactNumber: 报障联系电话。
+        :type FaultReportContactNumber: str
+        """
+        self.DirectConnectName = None
+        self.AccessPointId = None
+        self.LineOperator = None
+        self.Location = None
+        self.PortType = None
+        self.CircuitCode = None
+        self.Bandwidth = None
+        self.RedundantDirectConnectId = None
+        self.Vlan = None
+        self.TencentAddress = None
+        self.CustomerAddress = None
+        self.CustomerName = None
+        self.CustomerContactMail = None
+        self.CustomerContactNumber = None
+        self.FaultReportContactPerson = None
+        self.FaultReportContactNumber = None
+
+
+    def _deserialize(self, params):
+        self.DirectConnectName = params.get("DirectConnectName")
+        self.AccessPointId = params.get("AccessPointId")
+        self.LineOperator = params.get("LineOperator")
+        self.Location = params.get("Location")
+        self.PortType = params.get("PortType")
+        self.CircuitCode = params.get("CircuitCode")
+        self.Bandwidth = params.get("Bandwidth")
+        self.RedundantDirectConnectId = params.get("RedundantDirectConnectId")
+        self.Vlan = params.get("Vlan")
+        self.TencentAddress = params.get("TencentAddress")
+        self.CustomerAddress = params.get("CustomerAddress")
+        self.CustomerName = params.get("CustomerName")
+        self.CustomerContactMail = params.get("CustomerContactMail")
+        self.CustomerContactNumber = params.get("CustomerContactNumber")
+        self.FaultReportContactPerson = params.get("FaultReportContactPerson")
+        self.FaultReportContactNumber = params.get("FaultReportContactNumber")
+
+
+class CreateDirectConnectResponse(AbstractModel):
+    """CreateDirectConnect返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param DirectConnectIdSet: 物理专线的ID。
+        :type DirectConnectIdSet: list of str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.DirectConnectIdSet = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.DirectConnectIdSet = params.get("DirectConnectIdSet")
+        self.RequestId = params.get("RequestId")
 
 
 class CreateDirectConnectTunnelRequest(AbstractModel):
@@ -165,7 +301,7 @@ class CreateDirectConnectTunnelResponse(AbstractModel):
         """
         :param DirectConnectTunnelIdSet: 专用通道ID
         :type DirectConnectTunnelIdSet: list of str
-        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.DirectConnectTunnelIdSet = None
@@ -174,6 +310,40 @@ class CreateDirectConnectTunnelResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.DirectConnectTunnelIdSet = params.get("DirectConnectTunnelIdSet")
+        self.RequestId = params.get("RequestId")
+
+
+class DeleteDirectConnectRequest(AbstractModel):
+    """DeleteDirectConnect请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param DirectConnectId: 物理专线的ID。
+        :type DirectConnectId: str
+        """
+        self.DirectConnectId = None
+
+
+    def _deserialize(self, params):
+        self.DirectConnectId = params.get("DirectConnectId")
+
+
+class DeleteDirectConnectResponse(AbstractModel):
+    """DeleteDirectConnect返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
 
 
@@ -201,13 +371,70 @@ class DeleteDirectConnectTunnelResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.RequestId = None
 
 
     def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeAccessPointsRequest(AbstractModel):
+    """DescribeAccessPoints请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RegionId: 接入点所在的地域。使用DescribeRegions查询
+
+您可以通过调用 DescribeRegions接口获取地域ID。
+        :type RegionId: str
+        :param Offset: 偏移量，默认为0。
+        :type Offset: int
+        :param Limit: 返回数量，默认为20，最大值为100。
+        :type Limit: int
+        """
+        self.RegionId = None
+        self.Offset = None
+        self.Limit = None
+
+
+    def _deserialize(self, params):
+        self.RegionId = params.get("RegionId")
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+
+
+class DescribeAccessPointsResponse(AbstractModel):
+    """DescribeAccessPoints返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param AccessPointSet: 接入点信息。
+        :type AccessPointSet: list of AccessPoint
+        :param TotalCount: 符合接入点数量。
+        :type TotalCount: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.AccessPointSet = None
+        self.TotalCount = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("AccessPointSet") is not None:
+            self.AccessPointSet = []
+            for item in params.get("AccessPointSet"):
+                obj = AccessPoint()
+                obj._deserialize(item)
+                self.AccessPointSet.append(obj)
+        self.TotalCount = params.get("TotalCount")
         self.RequestId = params.get("RequestId")
 
 
@@ -260,7 +487,7 @@ class DescribeDirectConnectTunnelsResponse(AbstractModel):
         :type DirectConnectTunnelSet: list of DirectConnectTunnel
         :param TotalCount: 符合专用通道数量。
         :type TotalCount: int
-        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.DirectConnectTunnelSet = None
@@ -277,6 +504,190 @@ class DescribeDirectConnectTunnelsResponse(AbstractModel):
                 self.DirectConnectTunnelSet.append(obj)
         self.TotalCount = params.get("TotalCount")
         self.RequestId = params.get("RequestId")
+
+
+class DescribeDirectConnectsRequest(AbstractModel):
+    """DescribeDirectConnects请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Filters: 过滤条件:
+        :type Filters: list of Filter
+        :param DirectConnectIds: 物理专线 ID数组
+        :type DirectConnectIds: list of str
+        :param Offset: 偏移量，默认为0
+        :type Offset: int
+        :param Limit: 返回数量，默认为20，最大值为100
+        :type Limit: int
+        """
+        self.Filters = None
+        self.DirectConnectIds = None
+        self.Offset = None
+        self.Limit = None
+
+
+    def _deserialize(self, params):
+        if params.get("Filters") is not None:
+            self.Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self.Filters.append(obj)
+        self.DirectConnectIds = params.get("DirectConnectIds")
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+
+
+class DescribeDirectConnectsResponse(AbstractModel):
+    """DescribeDirectConnects返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param DirectConnectSet: 物理专线列表。
+        :type DirectConnectSet: list of DirectConnect
+        :param TotalCount: 符合物理专线列表数量。
+        :type TotalCount: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.DirectConnectSet = None
+        self.TotalCount = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("DirectConnectSet") is not None:
+            self.DirectConnectSet = []
+            for item in params.get("DirectConnectSet"):
+                obj = DirectConnect()
+                obj._deserialize(item)
+                self.DirectConnectSet.append(obj)
+        self.TotalCount = params.get("TotalCount")
+        self.RequestId = params.get("RequestId")
+
+
+class DirectConnect(AbstractModel):
+    """物理专线信息列表
+
+    """
+
+    def __init__(self):
+        """
+        :param DirectConnectId: 物理专线ID。
+        :type DirectConnectId: str
+        :param DirectConnectName: 物理专线的名称。
+        :type DirectConnectName: str
+        :param AccessPointId: 物理专线的接入点ID。
+        :type AccessPointId: str
+        :param State: 物理专线的状态。
+申请中：PENDING 
+申请驳回：REJECTED   
+待付款：TOPAY 
+已付款：PAID 
+建设中：ALLOCATED   
+已开通：AVAILABLE  
+删除中 ：DELETING
+已删除：DELETED 。
+        :type State: str
+        :param CreatedTime: 物理专线创建时间。
+        :type CreatedTime: str
+        :param EnabledTime: 物理专线的开通时间。
+        :type EnabledTime: str
+        :param LineOperator: 提供接入物理专线的运营商。ChinaTelecom：中国电信， ChinaMobile：中国移动，ChinaUnicom：中国联通， In-houseWiring：楼内线，ChinaOther：中国其他， InternationalOperator：境外其他。
+        :type LineOperator: str
+        :param Location: 本地数据中心的地理位置。
+        :type Location: str
+        :param Bandwidth: 物理专线接入接口带宽，单位为Mbps。
+        :type Bandwidth: int
+        :param PortType: 用户侧物理专线接入端口类型,取值：100Base-T：百兆电口,1000Base-T（默认值）：千兆电口,1000Base-LX：千兆单模光口（10千米）,10GBase-T：万兆电口10GBase-LR：万兆单模光口（10千米），默认值，千兆单模光口（10千米）
+        :type PortType: str
+        :param CircuitCode: 运营商或者服务商为物理专线提供的电路编码。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CircuitCode: str
+        :param RedundantDirectConnectId: 冗余物理专线的ID。
+        :type RedundantDirectConnectId: str
+        :param Vlan: 物理专线调试VLAN。默认开启VLAN，自动分配VLAN。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Vlan: int
+        :param TencentAddress: 物理专线调试腾讯侧互联IP。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TencentAddress: str
+        :param CustomerAddress: 物理专线调试用户侧互联IP。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CustomerAddress: str
+        :param CustomerName: 物理专线申请者姓名。默认从账户体系获取。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CustomerName: str
+        :param CustomerContactMail: 物理专线申请者联系邮箱。默认从账户体系获取。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CustomerContactMail: str
+        :param CustomerContactNumber: 物理专线申请者联系号码。默认从账户体系获取。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CustomerContactNumber: str
+        :param ExpiredTime: 物理专线的过期时间。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ExpiredTime: str
+        :param ChargeType: 物理专线计费类型。 NON_RECURRING_CHARGE：一次性接入费用；PREPAID_BY_YEAR：按年预付费。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ChargeType: str
+        :param FaultReportContactPerson: 报障联系人。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FaultReportContactPerson: str
+        :param FaultReportContactNumber: 报障联系电话。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FaultReportContactNumber: str
+        """
+        self.DirectConnectId = None
+        self.DirectConnectName = None
+        self.AccessPointId = None
+        self.State = None
+        self.CreatedTime = None
+        self.EnabledTime = None
+        self.LineOperator = None
+        self.Location = None
+        self.Bandwidth = None
+        self.PortType = None
+        self.CircuitCode = None
+        self.RedundantDirectConnectId = None
+        self.Vlan = None
+        self.TencentAddress = None
+        self.CustomerAddress = None
+        self.CustomerName = None
+        self.CustomerContactMail = None
+        self.CustomerContactNumber = None
+        self.ExpiredTime = None
+        self.ChargeType = None
+        self.FaultReportContactPerson = None
+        self.FaultReportContactNumber = None
+
+
+    def _deserialize(self, params):
+        self.DirectConnectId = params.get("DirectConnectId")
+        self.DirectConnectName = params.get("DirectConnectName")
+        self.AccessPointId = params.get("AccessPointId")
+        self.State = params.get("State")
+        self.CreatedTime = params.get("CreatedTime")
+        self.EnabledTime = params.get("EnabledTime")
+        self.LineOperator = params.get("LineOperator")
+        self.Location = params.get("Location")
+        self.Bandwidth = params.get("Bandwidth")
+        self.PortType = params.get("PortType")
+        self.CircuitCode = params.get("CircuitCode")
+        self.RedundantDirectConnectId = params.get("RedundantDirectConnectId")
+        self.Vlan = params.get("Vlan")
+        self.TencentAddress = params.get("TencentAddress")
+        self.CustomerAddress = params.get("CustomerAddress")
+        self.CustomerName = params.get("CustomerName")
+        self.CustomerContactMail = params.get("CustomerContactMail")
+        self.CustomerContactNumber = params.get("CustomerContactNumber")
+        self.ExpiredTime = params.get("ExpiredTime")
+        self.ChargeType = params.get("ChargeType")
+        self.FaultReportContactPerson = params.get("FaultReportContactPerson")
+        self.FaultReportContactNumber = params.get("FaultReportContactNumber")
 
 
 class DirectConnectTunnel(AbstractModel):
@@ -402,6 +813,80 @@ class Filter(AbstractModel):
         self.Values = params.get("Values")
 
 
+class ModifyDirectConnectAttributeRequest(AbstractModel):
+    """ModifyDirectConnectAttribute请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param DirectConnectId: 物理专线的ID。
+        :type DirectConnectId: str
+        :param DirectConnectName: 物理专线名称。
+        :type DirectConnectName: str
+        :param CircuitCode: 运营商或者服务商为物理专线提供的电路编码。
+        :type CircuitCode: str
+        :param Vlan: 物理专线调试VLAN。
+        :type Vlan: int
+        :param TencentAddress: 物理专线调试腾讯侧互联 IP。
+        :type TencentAddress: str
+        :param CustomerAddress: 物理专线调试用户侧互联 IP。
+        :type CustomerAddress: str
+        :param CustomerName: 物理专线申请者姓名。默认从账户体系获取。
+        :type CustomerName: str
+        :param CustomerContactMail: 物理专线申请者联系邮箱。默认从账户体系获取。
+        :type CustomerContactMail: str
+        :param CustomerContactNumber: 物理专线申请者联系号码。默认从账户体系获取。
+        :type CustomerContactNumber: str
+        :param FaultReportContactPerson: 报障联系人。
+        :type FaultReportContactPerson: str
+        :param FaultReportContactNumber: 报障联系电话。
+        :type FaultReportContactNumber: str
+        """
+        self.DirectConnectId = None
+        self.DirectConnectName = None
+        self.CircuitCode = None
+        self.Vlan = None
+        self.TencentAddress = None
+        self.CustomerAddress = None
+        self.CustomerName = None
+        self.CustomerContactMail = None
+        self.CustomerContactNumber = None
+        self.FaultReportContactPerson = None
+        self.FaultReportContactNumber = None
+
+
+    def _deserialize(self, params):
+        self.DirectConnectId = params.get("DirectConnectId")
+        self.DirectConnectName = params.get("DirectConnectName")
+        self.CircuitCode = params.get("CircuitCode")
+        self.Vlan = params.get("Vlan")
+        self.TencentAddress = params.get("TencentAddress")
+        self.CustomerAddress = params.get("CustomerAddress")
+        self.CustomerName = params.get("CustomerName")
+        self.CustomerContactMail = params.get("CustomerContactMail")
+        self.CustomerContactNumber = params.get("CustomerContactNumber")
+        self.FaultReportContactPerson = params.get("FaultReportContactPerson")
+        self.FaultReportContactNumber = params.get("FaultReportContactNumber")
+
+
+class ModifyDirectConnectAttributeResponse(AbstractModel):
+    """ModifyDirectConnectAttribute返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class ModifyDirectConnectTunnelAttributeRequest(AbstractModel):
     """ModifyDirectConnectTunnelAttribute请求参数结构体
 
@@ -457,7 +942,7 @@ class ModifyDirectConnectTunnelAttributeResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.RequestId = None
@@ -491,7 +976,7 @@ class RejectDirectConnectTunnelResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.RequestId = None

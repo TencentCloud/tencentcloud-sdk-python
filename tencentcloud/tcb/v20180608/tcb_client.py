@@ -17,29 +17,28 @@ import json
 
 from tencentcloud.common.exception.tencent_cloud_sdk_exception import TencentCloudSDKException
 from tencentcloud.common.abstract_client import AbstractClient
-from tencentcloud.tmt.v20180321 import models
+from tencentcloud.tcb.v20180608 import models
 
 
-class TmtClient(AbstractClient):
-    _apiVersion = '2018-03-21'
-    _endpoint = 'tmt.tencentcloudapi.com'
+class TcbClient(AbstractClient):
+    _apiVersion = '2018-06-08'
+    _endpoint = 'tcb.tencentcloudapi.com'
 
 
-    def ImageTranslate(self, request):
-        """提供中文到英文、英文到中文两种语言的图片翻译服务，可自动识别图片中的文本内容并翻译成目标语言，识别后的文本按行翻译，后续会提供可按段落翻译的版本。<br />
-        提示：对于一般开发者，我们建议优先使用SDK接入简化开发。SDK使用介绍请直接查看 5. 开发者资源 部分。
+    def DescribeDatabaseACL(self, request):
+        """获取数据库权限
 
-        :param request: 调用ImageTranslate所需参数的结构体。
-        :type request: :class:`tencentcloud.tmt.v20180321.models.ImageTranslateRequest`
-        :rtype: :class:`tencentcloud.tmt.v20180321.models.ImageTranslateResponse`
+        :param request: 调用DescribeDatabaseACL所需参数的结构体。
+        :type request: :class:`tencentcloud.tcb.v20180608.models.DescribeDatabaseACLRequest`
+        :rtype: :class:`tencentcloud.tcb.v20180608.models.DescribeDatabaseACLResponse`
 
         """
         try:
             params = request._serialize()
-            body = self.call("ImageTranslate", params)
+            body = self.call("DescribeDatabaseACL", params)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.ImageTranslateResponse()
+                model = models.DescribeDatabaseACLResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -54,21 +53,20 @@ class TmtClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def LanguageDetect(self, request):
-        """可自动识别文本内容的语言种类，轻量高效，无需额外实现判断方式，使面向客户的服务体验更佳。 <br />
-        提示：对于一般开发者，我们建议优先使用SDK接入简化开发。SDK使用介绍请直接查看 5. 开发者资源 部分。
+    def DescribeEnvs(self, request):
+        """获取环境列表，含环境下的各个资源信息。尤其是各资源的唯一标识，是请求各资源的关键参数
 
-        :param request: 调用LanguageDetect所需参数的结构体。
-        :type request: :class:`tencentcloud.tmt.v20180321.models.LanguageDetectRequest`
-        :rtype: :class:`tencentcloud.tmt.v20180321.models.LanguageDetectResponse`
+        :param request: 调用DescribeEnvs所需参数的结构体。
+        :type request: :class:`tencentcloud.tcb.v20180608.models.DescribeEnvsRequest`
+        :rtype: :class:`tencentcloud.tcb.v20180608.models.DescribeEnvsResponse`
 
         """
         try:
             params = request._serialize()
-            body = self.call("LanguageDetect", params)
+            body = self.call("DescribeEnvs", params)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.LanguageDetectResponse()
+                model = models.DescribeEnvsResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -83,22 +81,20 @@ class TmtClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def SpeechTranslate(self, request):
-        """本接口提供音频内文字识别 + 翻译功能，目前开放中到英的语音翻译服务。
-        待识别和翻译的音频文件可以是 pcm、mp3、amr和speex 格式，音频内语音清晰，采用流式传输和翻译的方式。<br />
-        提示：对于一般开发者，我们建议优先使用SDK接入简化开发。SDK使用介绍请直接查看 5. 开发者资源 部分。
+    def ModifyDatabaseACL(self, request):
+        """修改数据库权限
 
-        :param request: 调用SpeechTranslate所需参数的结构体。
-        :type request: :class:`tencentcloud.tmt.v20180321.models.SpeechTranslateRequest`
-        :rtype: :class:`tencentcloud.tmt.v20180321.models.SpeechTranslateResponse`
+        :param request: 调用ModifyDatabaseACL所需参数的结构体。
+        :type request: :class:`tencentcloud.tcb.v20180608.models.ModifyDatabaseACLRequest`
+        :rtype: :class:`tencentcloud.tcb.v20180608.models.ModifyDatabaseACLResponse`
 
         """
         try:
             params = request._serialize()
-            body = self.call("SpeechTranslate", params)
+            body = self.call("ModifyDatabaseACL", params)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.SpeechTranslateResponse()
+                model = models.ModifyDatabaseACLResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -113,21 +109,20 @@ class TmtClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def TextTranslate(self, request):
-        """提供中文到英文、英文到中文的等多种语言的文本内容翻译服务， 经过大数据语料库、多种解码算法、翻译引擎深度优化，在新闻文章、生活口语等不同语言场景中都有深厚积累，翻译结果专业评价处于行业领先水平。<br />
-        提示：对于一般开发者，我们建议优先使用SDK接入简化开发。SDK使用介绍请直接查看 5. 开发者资源 部分。
+    def ModifyEnv(self, request):
+        """更新环境信息
 
-        :param request: 调用TextTranslate所需参数的结构体。
-        :type request: :class:`tencentcloud.tmt.v20180321.models.TextTranslateRequest`
-        :rtype: :class:`tencentcloud.tmt.v20180321.models.TextTranslateResponse`
+        :param request: 调用ModifyEnv所需参数的结构体。
+        :type request: :class:`tencentcloud.tcb.v20180608.models.ModifyEnvRequest`
+        :rtype: :class:`tencentcloud.tcb.v20180608.models.ModifyEnvResponse`
 
         """
         try:
             params = request._serialize()
-            body = self.call("TextTranslate", params)
+            body = self.call("ModifyEnv", params)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.TextTranslateResponse()
+                model = models.ModifyEnvResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

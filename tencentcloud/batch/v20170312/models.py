@@ -394,19 +394,19 @@ class ComputeNodeMetrics(AbstractModel):
     def __init__(self):
         """
         :param SubmittedCount: 已经完成提交的计算节点数量
-        :type SubmittedCount: str
+        :type SubmittedCount: int
         :param CreatingCount: 创建中的计算节点数量
-        :type CreatingCount: str
+        :type CreatingCount: int
         :param CreationFailedCount: 创建失败的计算节点数量
-        :type CreationFailedCount: str
+        :type CreationFailedCount: int
         :param CreatedCount: 完成创建的计算节点数量
-        :type CreatedCount: str
+        :type CreatedCount: int
         :param RunningCount: 运行中的计算节点数量
-        :type RunningCount: str
+        :type RunningCount: int
         :param DeletingCount: 销毁中的计算节点数量
-        :type DeletingCount: str
+        :type DeletingCount: int
         :param AbnormalCount: 异常的计算节点数量
-        :type AbnormalCount: str
+        :type AbnormalCount: int
         """
         self.SubmittedCount = None
         self.CreatingCount = None

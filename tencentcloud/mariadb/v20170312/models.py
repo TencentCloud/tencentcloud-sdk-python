@@ -291,13 +291,13 @@ class CreateDBInstanceRequest(AbstractModel):
         :type AutoVoucher: bool
         :param VoucherIds: 代金券ID列表，目前仅支持指定一张代金券。
         :type VoucherIds: list of str
-        :param VpcId: 虚拟私有网络 ID，不传或传 0 表示创建为基础网络
+        :param VpcId: 虚拟私有网络 ID，不传表示创建为基础网络
         :type VpcId: str
-        :param SubnetId: 虚拟私有网络子网 ID，VpcId 不为0时必填
+        :param SubnetId: 虚拟私有网络子网 ID，VpcId 不为空时必填
         :type SubnetId: str
         :param ProjectId: 项目 ID，可以通过查看项目列表获取，不传则关联到默认项目
         :type ProjectId: int
-        :param DbVersionId: 数据库引擎版本，当前可选：10.0.10，10.1.9，5.7.17
+        :param DbVersionId: 数据库引擎版本，当前可选：10.0.10，10.1.9，5.7.17。如果不传的话，默认为 Mariadb 10.1.9。
         :type DbVersionId: str
         """
         self.Zones = None
@@ -507,6 +507,8 @@ class DBInstance(AbstractModel):
         :type IsAuditSupported: int
         :param Machine: 机器型号
         :type Machine: str
+        :param IsEncryptSupported: 是否支持数据加密。1-支持；0-不支持
+        :type IsEncryptSupported: int
         """
         self.InstanceId = None
         self.InstanceName = None
@@ -545,6 +547,7 @@ class DBInstance(AbstractModel):
         self.WanStatus = None
         self.IsAuditSupported = None
         self.Machine = None
+        self.IsEncryptSupported = None
 
 
     def _deserialize(self, params):
@@ -585,6 +588,7 @@ class DBInstance(AbstractModel):
         self.WanStatus = params.get("WanStatus")
         self.IsAuditSupported = params.get("IsAuditSupported")
         self.Machine = params.get("Machine")
+        self.IsEncryptSupported = params.get("IsEncryptSupported")
 
 
 class DBParamValue(AbstractModel):
@@ -837,7 +841,7 @@ class DescribeBackupTimeResponse(AbstractModel):
         :type TotalCount: int
         :param Items: 实例备份时间配置信息
 注意：此字段可能返回 null，表示取不到有效值。
-        :type Items: :class:`tencentcloud.mariadb.v20170312.models.DBBackupTimeConfig`
+        :type Items: list of DBBackupTimeConfig
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -849,8 +853,11 @@ class DescribeBackupTimeResponse(AbstractModel):
     def _deserialize(self, params):
         self.TotalCount = params.get("TotalCount")
         if params.get("Items") is not None:
-            self.Items = DBBackupTimeConfig()
-            self.Items._deserialize(params.get("Items"))
+            self.Items = []
+            for item in params.get("Items"):
+                obj = DBBackupTimeConfig()
+                obj._deserialize(item)
+                self.Items.append(obj)
         self.RequestId = params.get("RequestId")
 
 
@@ -919,8 +926,10 @@ class DescribeDBInstancesRequest(AbstractModel):
         :type OriginSerialIds: list of str
         :param IsFilterExcluster: 标识是否使用ExclusterType字段, false不使用，true使用
         :type IsFilterExcluster: bool
-        :param ExclusterType: 1非独享集群，2独享集群， 0全部
+        :param ExclusterType: 实例所属独享集群类型。取值范围：1-非独享集群，2-独享集群， 0-全部
         :type ExclusterType: int
+        :param ExclusterIds: 按独享集群Id过滤实例，独享集群Id形如dbdc-4ih6uct9
+        :type ExclusterIds: list of str
         """
         self.InstanceIds = None
         self.SearchName = None
@@ -936,6 +945,7 @@ class DescribeDBInstancesRequest(AbstractModel):
         self.OriginSerialIds = None
         self.IsFilterExcluster = None
         self.ExclusterType = None
+        self.ExclusterIds = None
 
 
     def _deserialize(self, params):
@@ -953,6 +963,7 @@ class DescribeDBInstancesRequest(AbstractModel):
         self.OriginSerialIds = params.get("OriginSerialIds")
         self.IsFilterExcluster = params.get("IsFilterExcluster")
         self.ExclusterType = params.get("ExclusterType")
+        self.ExclusterIds = params.get("ExclusterIds")
 
 
 class DescribeDBInstancesResponse(AbstractModel):
@@ -1112,16 +1123,20 @@ class DescribeDBPerformanceDetailsRequest(AbstractModel):
         :type StartTime: str
         :param EndTime: 结束日期，格式yyyy-mm-dd
         :type EndTime: str
+        :param MetricName: 拉取的指标名，支持的值为：long_query,select_total,update_total,insert_total,delete_total,mem_hit_rate,disk_iops,conn_active,is_master_switched,slave_delay
+        :type MetricName: str
         """
         self.InstanceId = None
         self.StartTime = None
         self.EndTime = None
+        self.MetricName = None
 
 
     def _deserialize(self, params):
         self.InstanceId = params.get("InstanceId")
         self.StartTime = params.get("StartTime")
         self.EndTime = params.get("EndTime")
+        self.MetricName = params.get("MetricName")
 
 
 class DescribeDBPerformanceDetailsResponse(AbstractModel):
@@ -1134,8 +1149,10 @@ class DescribeDBPerformanceDetailsResponse(AbstractModel):
         :param Master: 主节点性能监控数据
         :type Master: :class:`tencentcloud.mariadb.v20170312.models.PerformanceMonitorSet`
         :param Slave1: 备机1性能监控数据
+注意：此字段可能返回 null，表示取不到有效值。
         :type Slave1: :class:`tencentcloud.mariadb.v20170312.models.PerformanceMonitorSet`
         :param Slave2: 备机2性能监控数据，如果实例是一主一从，则没有该字段
+注意：此字段可能返回 null，表示取不到有效值。
         :type Slave2: :class:`tencentcloud.mariadb.v20170312.models.PerformanceMonitorSet`
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -1172,16 +1189,20 @@ class DescribeDBPerformanceRequest(AbstractModel):
         :type StartTime: str
         :param EndTime: 结束日期，格式yyyy-mm-dd
         :type EndTime: str
+        :param MetricName: 拉取的指标名，支持的值为：long_query,select_total,update_total,insert_total,delete_total,mem_hit_rate,disk_iops,conn_active,is_master_switched,slave_delay
+        :type MetricName: str
         """
         self.InstanceId = None
         self.StartTime = None
         self.EndTime = None
+        self.MetricName = None
 
 
     def _deserialize(self, params):
         self.InstanceId = params.get("InstanceId")
         self.StartTime = params.get("StartTime")
         self.EndTime = params.get("EndTime")
+        self.MetricName = params.get("MetricName")
 
 
 class DescribeDBPerformanceResponse(AbstractModel):
@@ -1274,16 +1295,20 @@ class DescribeDBResourceUsageDetailsRequest(AbstractModel):
         :type StartTime: str
         :param EndTime: 结束日期，格式yyyy-mm-dd
         :type EndTime: str
+        :param MetricName: 拉取的指标名称，支持的值为：data_disk_available,binlog_disk_available,mem_available,cpu_usage_rate
+        :type MetricName: str
         """
         self.InstanceId = None
         self.StartTime = None
         self.EndTime = None
+        self.MetricName = None
 
 
     def _deserialize(self, params):
         self.InstanceId = params.get("InstanceId")
         self.StartTime = params.get("StartTime")
         self.EndTime = params.get("EndTime")
+        self.MetricName = params.get("MetricName")
 
 
 class DescribeDBResourceUsageDetailsResponse(AbstractModel):
@@ -1336,16 +1361,20 @@ class DescribeDBResourceUsageRequest(AbstractModel):
         :type StartTime: str
         :param EndTime: 结束日期，格式yyyy-mm-dd
         :type EndTime: str
+        :param MetricName: 拉取的指标名称，支持的值为：data_disk_available,binlog_disk_available,mem_available,cpu_usage_rate
+        :type MetricName: str
         """
         self.InstanceId = None
         self.StartTime = None
         self.EndTime = None
+        self.MetricName = None
 
 
     def _deserialize(self, params):
         self.InstanceId = params.get("InstanceId")
         self.StartTime = params.get("StartTime")
         self.EndTime = params.get("EndTime")
+        self.MetricName = params.get("MetricName")
 
 
 class DescribeDBResourceUsageResponse(AbstractModel):
@@ -1412,6 +1441,8 @@ class DescribeDBSlowLogsRequest(AbstractModel):
         :type OrderBy: str
         :param OrderByType: 排序类型，desc或者asc
         :type OrderByType: str
+        :param Slave: 是否查询从机的慢查询，0-主机; 1-从机
+        :type Slave: int
         """
         self.InstanceId = None
         self.Offset = None
@@ -1421,6 +1452,7 @@ class DescribeDBSlowLogsRequest(AbstractModel):
         self.Db = None
         self.OrderBy = None
         self.OrderByType = None
+        self.Slave = None
 
 
     def _deserialize(self, params):
@@ -1432,6 +1464,7 @@ class DescribeDBSlowLogsRequest(AbstractModel):
         self.Db = params.get("Db")
         self.OrderBy = params.get("OrderBy")
         self.OrderByType = params.get("OrderByType")
+        self.Slave = params.get("Slave")
 
 
 class DescribeDBSlowLogsResponse(AbstractModel):
@@ -1757,7 +1790,7 @@ class DescribeSqlLogsRequest(AbstractModel):
         :type InstanceId: str
         :param Offset: SQL日志偏移。
         :type Offset: int
-        :param Limit: 拉取数量（0-1000，为0时拉取总数信息）。
+        :param Limit: 拉取数量（0-10000，为0时拉取总数信息）。
         :type Limit: int
         """
         self.InstanceId = None
@@ -1944,7 +1977,7 @@ class InitDBInstancesRequest(AbstractModel):
         """
         :param InstanceIds: 待初始化的实例Id列表，形如：tdsql-ow728lmc，可以通过 DescribeDBInstances 查询实例详情获得。
         :type InstanceIds: list of str
-        :param Params: 参数列表。本接口的可选值为：character_set_server（字符集，必传），lower_case_table_names（表名大小写敏感，必传），innodb_page_size（innodb数据页，默认16K），sync_mode（同步模式：0 - 异步； 1 - 强同步；2 - 强同步可退化。默认为强同步）。
+        :param Params: 参数列表。本接口的可选值为：character_set_server（字符集，必传），lower_case_table_names（表名大小写敏感，必传，0 - 敏感；1-不敏感），innodb_page_size（innodb数据页，默认16K），sync_mode（同步模式：0 - 异步； 1 - 强同步；2 - 强同步可退化。默认为强同步）。
         :type Params: list of DBParamValue
         """
         self.InstanceIds = None
@@ -2025,16 +2058,20 @@ class LogFileInfo(AbstractModel):
         :type Length: int
         :param Uri: 下载Log时用到的统一资源标识符
         :type Uri: str
+        :param FileName: 文件名
+        :type FileName: str
         """
         self.Mtime = None
         self.Length = None
         self.Uri = None
+        self.FileName = None
 
 
     def _deserialize(self, params):
         self.Mtime = params.get("Mtime")
         self.Length = params.get("Length")
         self.Uri = params.get("Uri")
+        self.FileName = params.get("FileName")
 
 
 class ModifyAccountDescriptionRequest(AbstractModel):
@@ -2328,31 +2365,6 @@ class MonitorData(AbstractModel):
         self.Data = params.get("Data")
 
 
-class MonitorIntData(AbstractModel):
-    """整形监控数据
-
-    """
-
-    def __init__(self):
-        """
-        :param StartTime: 起始时间
-        :type StartTime: str
-        :param EndTime: 结束时间
-        :type EndTime: str
-        :param Data: 监控数据
-        :type Data: int
-        """
-        self.StartTime = None
-        self.EndTime = None
-        self.Data = None
-
-
-    def _deserialize(self, params):
-        self.StartTime = params.get("StartTime")
-        self.EndTime = params.get("EndTime")
-        self.Data = params.get("Data")
-
-
 class OpenDBExtranetAccessRequest(AbstractModel):
     """OpenDBExtranetAccess请求参数结构体
 
@@ -2434,19 +2446,22 @@ class ParamDesc(AbstractModel):
         :type Param: str
         :param Value: 当前参数值
         :type Value: str
-        :param SetValue: 设置过的值，参数生效后，该值和value一样。未设置过就不返回该字段。
+        :param SetValue: 设置过的值，参数生效后，该值和value一样。
 注意：此字段可能返回 null，表示取不到有效值。
         :type SetValue: str
         :param Default: 系统默认值
         :type Default: str
         :param Constraint: 参数限制
         :type Constraint: :class:`tencentcloud.mariadb.v20170312.models.ParamConstraint`
+        :param HaveSetValue: 是否有设置过值，false:没有设置过值，true:有设置过值。
+        :type HaveSetValue: bool
         """
         self.Param = None
         self.Value = None
         self.SetValue = None
         self.Default = None
         self.Constraint = None
+        self.HaveSetValue = None
 
 
     def _deserialize(self, params):
@@ -2457,6 +2472,7 @@ class ParamDesc(AbstractModel):
         if params.get("Constraint") is not None:
             self.Constraint = ParamConstraint()
             self.Constraint._deserialize(params.get("Constraint"))
+        self.HaveSetValue = params.get("HaveSetValue")
 
 
 class ParamModifyResult(AbstractModel):
@@ -2707,7 +2723,7 @@ class ResourceUsageMonitorSet(AbstractModel):
         :param MemAvailable: 内存可用空间,单位GB
         :type MemAvailable: :class:`tencentcloud.mariadb.v20170312.models.MonitorData`
         :param DataDiskAvailable: 磁盘可用空间,单位GB
-        :type DataDiskAvailable: :class:`tencentcloud.mariadb.v20170312.models.MonitorIntData`
+        :type DataDiskAvailable: :class:`tencentcloud.mariadb.v20170312.models.MonitorData`
         """
         self.BinlogDiskAvailable = None
         self.CpuUsageRate = None
@@ -2726,7 +2742,7 @@ class ResourceUsageMonitorSet(AbstractModel):
             self.MemAvailable = MonitorData()
             self.MemAvailable._deserialize(params.get("MemAvailable"))
         if params.get("DataDiskAvailable") is not None:
-            self.DataDiskAvailable = MonitorIntData()
+            self.DataDiskAvailable = MonitorData()
             self.DataDiskAvailable._deserialize(params.get("DataDiskAvailable"))
 
 
@@ -2744,27 +2760,27 @@ class SlowLogData(AbstractModel):
         :param FingerPrint: 抽象的SQL语句
         :type FingerPrint: str
         :param LockTimeAvg: 平均的锁时间
-        :type LockTimeAvg: float
+        :type LockTimeAvg: str
         :param LockTimeMax: 最大锁时间
-        :type LockTimeMax: float
+        :type LockTimeMax: str
         :param LockTimeMin: 最小锁时间
-        :type LockTimeMin: float
+        :type LockTimeMin: str
         :param LockTimeSum: 锁时间总和
-        :type LockTimeSum: float
+        :type LockTimeSum: str
         :param QueryCount: 查询次数
-        :type QueryCount: int
+        :type QueryCount: str
         :param QueryTimeAvg: 平均查询时间
-        :type QueryTimeAvg: float
+        :type QueryTimeAvg: str
         :param QueryTimeMax: 最大查询时间
-        :type QueryTimeMax: float
+        :type QueryTimeMax: str
         :param QueryTimeMin: 最小查询时间
-        :type QueryTimeMin: float
+        :type QueryTimeMin: str
         :param QueryTimeSum: 查询时间总和
-        :type QueryTimeSum: float
+        :type QueryTimeSum: str
         :param RowsExaminedSum: 扫描行数
-        :type RowsExaminedSum: int
+        :type RowsExaminedSum: str
         :param RowsSentSum: 发送行数
-        :type RowsSentSum: int
+        :type RowsSentSum: str
         :param TsMax: 最后执行时间
         :type TsMax: str
         :param TsMin: 首次执行时间

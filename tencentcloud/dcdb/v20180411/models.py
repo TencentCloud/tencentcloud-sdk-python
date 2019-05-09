@@ -321,7 +321,11 @@ class CreateDCDBInstanceRequest(AbstractModel):
         :type VpcId: str
         :param SubnetId: 虚拟私有网络子网 ID，VpcId不为空时必填
         :type SubnetId: str
-        :param DbVersionId: 数据库引擎版本，当前可选：10.0.10，10.1.9，5.7.17
+        :param DbVersionId: 数据库引擎版本，当前可选：10.0.10，10.1.9，5.7.17。
+10.0.10 - Mariadb 10.0.10；
+10.1.9 - Mariadb 10.1.9；
+5.7.17 - Percona 5.7.17。
+如果不填的话，默认为10.1.9，表示Mariadb 10.1.9。
         :type DbVersionId: str
         :param AutoVoucher: 是否自动使用代金券进行支付，默认不使用。
         :type AutoVoucher: bool
@@ -370,6 +374,7 @@ class CreateDCDBInstanceResponse(AbstractModel):
  查询订单详细信息，或在支付失败时调用用户账号相关接口进行支付。
         :type DealName: str
         :param InstanceIds: 订单对应的实例 ID 列表，如果此处没有返回实例 ID，可以通过订单查询接口获取。还可通过实例查询接口查询实例是否创建完成。
+注意：此字段可能返回 null，表示取不到有效值。
         :type InstanceIds: list of str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -526,9 +531,12 @@ class DCDBInstanceInfo(AbstractModel):
         :param Paymode: 付费模式
         :type Paymode: str
         :param Locker: 实例处于异步任务状态时，表示异步任务流程ID
+注意：此字段可能返回 null，表示取不到有效值。
         :type Locker: int
         :param WanStatus: 外网状态，0-未开通；1-已开通；2-关闭；3-开通中
         :type WanStatus: int
+        :param IsAuditSupported: 该实例是否支持审计。1-支持；0-不支持
+        :type IsAuditSupported: int
         """
         self.InstanceId = None
         self.InstanceName = None
@@ -567,6 +575,7 @@ class DCDBInstanceInfo(AbstractModel):
         self.Paymode = None
         self.Locker = None
         self.WanStatus = None
+        self.IsAuditSupported = None
 
 
     def _deserialize(self, params):
@@ -612,6 +621,7 @@ class DCDBInstanceInfo(AbstractModel):
         self.Paymode = params.get("Paymode")
         self.Locker = params.get("Locker")
         self.WanStatus = params.get("WanStatus")
+        self.IsAuditSupported = params.get("IsAuditSupported")
 
 
 class DCDBShardInfo(AbstractModel):
@@ -800,6 +810,7 @@ class Deal(AbstractModel):
         :param FlowId: 关联的流程 Id，可用于查询流程执行状态
         :type FlowId: int
         :param InstanceIds: 只有创建实例的订单会填充该字段，表示该订单创建的实例的 ID。
+注意：此字段可能返回 null，表示取不到有效值。
         :type InstanceIds: list of str
         :param PayMode: 付费模式，0后付费/1预付费
         :type PayMode: int
@@ -964,6 +975,7 @@ class DescribeAccountsResponse(AbstractModel):
         :param InstanceId: 实例ID，透传入参。
         :type InstanceId: str
         :param Users: 实例用户列表。
+注意：此字段可能返回 null，表示取不到有效值。
         :type Users: list of DBAccount
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -1806,7 +1818,7 @@ class DescribeSqlLogsRequest(AbstractModel):
         :type InstanceId: str
         :param Offset: SQL日志偏移。
         :type Offset: int
-        :param Limit: 拉取数量（0-1000，为0时拉取总数信息）。
+        :param Limit: 拉取数量（0-10000，为0时拉取总数信息）。
         :type Limit: int
         """
         self.InstanceId = None
@@ -1966,7 +1978,7 @@ class InitDCDBInstancesRequest(AbstractModel):
         """
         :param InstanceIds: 待初始化的实例Id列表，形如：dcdbt-ow728lmc，可以通过 DescribeDCDBInstances 查询实例详情获得。
         :type InstanceIds: list of str
-        :param Params: 参数列表。本接口的可选值为：character_set_server（字符集，必传），lower_case_table_names（表名大小写敏感，必传），innodb_page_size（innodb数据页，默认16K），sync_mode（同步模式：0 - 异步； 1 - 强同步；2 - 强同步可退化。默认为强同步）。
+        :param Params: 参数列表。本接口的可选值为：character_set_server（字符集，必传），lower_case_table_names（表名大小写敏感，必传，0 - 敏感；1-不敏感），innodb_page_size（innodb数据页，默认16K），sync_mode（同步模式：0 - 异步； 1 - 强同步；2 - 强同步可退化。默认为强同步）。
         :type Params: list of DBParamValue
         """
         self.InstanceIds = None
@@ -2021,16 +2033,20 @@ class LogFileInfo(AbstractModel):
         :type Length: int
         :param Uri: 下载Log时用到的统一资源标识符
         :type Uri: str
+        :param FileName: 文件名
+        :type FileName: str
         """
         self.Mtime = None
         self.Length = None
         self.Uri = None
+        self.FileName = None
 
 
     def _deserialize(self, params):
         self.Mtime = params.get("Mtime")
         self.Length = params.get("Length")
         self.Uri = params.get("Uri")
+        self.FileName = params.get("FileName")
 
 
 class ModifyAccountDescriptionRequest(AbstractModel):
@@ -2265,6 +2281,7 @@ class ParamConstraint(AbstractModel):
         :param Enum: 约束类型为enum时的可选值列表
         :type Enum: str
         :param Range: 约束类型为section时的范围
+注意：此字段可能返回 null，表示取不到有效值。
         :type Range: :class:`tencentcloud.dcdb.v20180411.models.ConstraintRange`
         :param String: 约束类型为string时的可选值列表
         :type String: str
@@ -2296,6 +2313,7 @@ class ParamDesc(AbstractModel):
         :param Value: 当前参数值
         :type Value: str
         :param SetValue: 设置过的值，参数生效后，该值和value一样。未设置过就不返回该字段。
+注意：此字段可能返回 null，表示取不到有效值。
         :type SetValue: str
         :param Default: 系统默认值
         :type Default: str

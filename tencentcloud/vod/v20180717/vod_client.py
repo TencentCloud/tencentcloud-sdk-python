@@ -27,7 +27,7 @@ class VodClient(AbstractClient):
 
     def ApplyUpload(self, request):
         """* 该接口用于申请媒体文件（和封面文件）的上传，获取文件上传到腾讯云点播的元信息（包括上传路径、上传签名等），用于后续上传接口。
-        * 上传流程请参考[服务端上传综述](https://cloud.tencent.com/document/product/266/9759#.E4.B8.8A.E4.BC.A0.E6.B5.81.E7.A8.8B)。
+        * 上传流程请参考[服务端上传综述](https://cloud.tencent.com/document/product/266/9759)。
 
         :param request: 调用ApplyUpload所需参数的结构体。
         :type request: :class:`tencentcloud.vod.v20180717.models.ApplyUploadRequest`
@@ -140,6 +140,34 @@ class VodClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def CreateAIRecognitionTemplate(self, request):
+        """创建用户自定义视频内容识别模板，数量上限：50。
+
+        :param request: 调用CreateAIRecognitionTemplate所需参数的结构体。
+        :type request: :class:`tencentcloud.vod.v20180717.models.CreateAIRecognitionTemplateRequest`
+        :rtype: :class:`tencentcloud.vod.v20180717.models.CreateAIRecognitionTemplateResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("CreateAIRecognitionTemplate", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateAIRecognitionTemplateResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def CreateClass(self, request):
         """* 用于对媒体进行分类管理；
         * 该接口不影响既有媒体的分类，如需修改媒体分类，请调用[修改媒体文件属性](/document/product/266/31762)接口。
@@ -157,6 +185,62 @@ class VodClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateClassResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def CreateContentReviewTemplate(self, request):
+        """创建用户自定义视频内容审核模板，数量上限：50。
+
+        :param request: 调用CreateContentReviewTemplate所需参数的结构体。
+        :type request: :class:`tencentcloud.vod.v20180717.models.CreateContentReviewTemplateRequest`
+        :rtype: :class:`tencentcloud.vod.v20180717.models.CreateContentReviewTemplateResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("CreateContentReviewTemplate", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateContentReviewTemplateResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def CreatePersonSample(self, request):
+        """该接口用于创建人物样本，用于通过人脸识别等技术，进行内容识别、内容审核等视频处理。
+
+        :param request: 调用CreatePersonSample所需参数的结构体。
+        :type request: :class:`tencentcloud.vod.v20180717.models.CreatePersonSampleRequest`
+        :rtype: :class:`tencentcloud.vod.v20180717.models.CreatePersonSampleResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("CreatePersonSample", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreatePersonSampleResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -255,6 +339,34 @@ class VodClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def CreateWordSamples(self, request):
+        """该接口用于批量创建关键词样本，样本用于通过OCR、ASR技术，进行内容审核、内容识别等视频处理。关键词样本不可重复创建，如需变更，可先删除后，重新创建。
+
+        :param request: 调用CreateWordSamples所需参数的结构体。
+        :type request: :class:`tencentcloud.vod.v20180717.models.CreateWordSamplesRequest`
+        :rtype: :class:`tencentcloud.vod.v20180717.models.CreateWordSamplesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("CreateWordSamples", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateWordSamplesResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DeleteAIAnalysisTemplate(self, request):
         """删除用户自定义视频内容分析模板。
 
@@ -271,6 +383,34 @@ class VodClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteAIAnalysisTemplateResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DeleteAIRecognitionTemplate(self, request):
+        """删除用户自定义视频内容识别模板。
+
+        :param request: 调用DeleteAIRecognitionTemplate所需参数的结构体。
+        :type request: :class:`tencentcloud.vod.v20180717.models.DeleteAIRecognitionTemplateRequest`
+        :rtype: :class:`tencentcloud.vod.v20180717.models.DeleteAIRecognitionTemplateResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DeleteAIRecognitionTemplate", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DeleteAIRecognitionTemplateResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -314,6 +454,34 @@ class VodClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DeleteContentReviewTemplate(self, request):
+        """删除用户自定义视频内容审核模板。
+
+        :param request: 调用DeleteContentReviewTemplate所需参数的结构体。
+        :type request: :class:`tencentcloud.vod.v20180717.models.DeleteContentReviewTemplateRequest`
+        :rtype: :class:`tencentcloud.vod.v20180717.models.DeleteContentReviewTemplateResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DeleteContentReviewTemplate", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DeleteContentReviewTemplateResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DeleteMedia(self, request):
         """* 删除媒体及其对应的视频处理文件（如转码视频、雪碧图、截图、微信发布视频等）；
         * 可单独删除指定 ID 的视频文件下的转码，或者微信发布文件；
@@ -329,6 +497,34 @@ class VodClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteMediaResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DeletePersonSample(self, request):
+        """该接口用于根据人物 ID，删除人物样本。
+
+        :param request: 调用DeletePersonSample所需参数的结构体。
+        :type request: :class:`tencentcloud.vod.v20180717.models.DeletePersonSampleRequest`
+        :rtype: :class:`tencentcloud.vod.v20180717.models.DeletePersonSampleResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DeletePersonSample", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DeletePersonSampleResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -427,6 +623,34 @@ class VodClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DeleteWordSamples(self, request):
+        """该接口用于批量删除关键词样本。
+
+        :param request: 调用DeleteWordSamples所需参数的结构体。
+        :type request: :class:`tencentcloud.vod.v20180717.models.DeleteWordSamplesRequest`
+        :rtype: :class:`tencentcloud.vod.v20180717.models.DeleteWordSamplesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DeleteWordSamples", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DeleteWordSamplesResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeAIAnalysisTemplates(self, request):
         """根据视频内容分析模板唯一标识，获取视频内容分析模板详情列表。返回结果包含符合条件的所有用户自定义视频内容分析模板及[系统预置视频内容分析模板]
 
@@ -441,6 +665,34 @@ class VodClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeAIAnalysisTemplatesResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeAIRecognitionTemplates(self, request):
+        """根据视频内容识别模板唯一标识，获取视频内容识别模板详情列表。返回结果包含符合条件的所有用户自定义视频内容识别模板及[系统预置视频内容识别模板]
+
+        :param request: 调用DescribeAIRecognitionTemplates所需参数的结构体。
+        :type request: :class:`tencentcloud.vod.v20180717.models.DescribeAIRecognitionTemplatesRequest`
+        :rtype: :class:`tencentcloud.vod.v20180717.models.DescribeAIRecognitionTemplatesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeAIRecognitionTemplates", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeAIRecognitionTemplatesResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -483,6 +735,34 @@ class VodClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeContentReviewTemplates(self, request):
+        """根据视频内容审核模板唯一标识，获取视频内容审核模板详情列表。返回结果包含符合条件的所有用户自定义模板及[系统预置内容审核模板]。
+
+        :param request: 调用DescribeContentReviewTemplates所需参数的结构体。
+        :type request: :class:`tencentcloud.vod.v20180717.models.DescribeContentReviewTemplatesRequest`
+        :rtype: :class:`tencentcloud.vod.v20180717.models.DescribeContentReviewTemplatesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeContentReviewTemplates", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeContentReviewTemplatesResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeMediaInfos(self, request):
         """1. 该接口可以获取多个视频的多种信息，包括：
             1. 基础信息（basicInfo）：包括视频名称、大小、时长、封面图片等。
@@ -506,6 +786,34 @@ class VodClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeMediaInfosResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribePersonSamples(self, request):
+        """该接口用于查询人物样本信息，支持根据人物 ID、名称、标签，分页查询。
+
+        :param request: 调用DescribePersonSamples所需参数的结构体。
+        :type request: :class:`tencentcloud.vod.v20180717.models.DescribePersonSamplesRequest`
+        :rtype: :class:`tencentcloud.vod.v20180717.models.DescribePersonSamplesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribePersonSamples", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribePersonSamplesResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -607,7 +915,7 @@ class VodClient(AbstractClient):
 
 
     def DescribeTranscodeTemplates(self, request):
-        """根据转码模板唯一标识，获取转码模板详情列表。返回结果包含符合条件的所有用户自定义模板及[系统预置转码模板](https://cloud.tencent.com/document/product/266/11701#.E9.A2.84.E7.BD.AE.E8.BD.AC.E7.A0.81.E6.A8.A1.E6.9D.BF)。
+        """根据转码模板唯一标识，获取转码模板详情列表。返回结果包含符合条件的所有用户自定义模板及[系统预置转码模板](https://cloud.tencent.com/document/product/266/33476#.E9.A2.84.E7.BD.AE.E8.BD.AC.E7.A0.81.E6.A8.A1.E6.9D.BF)。
 
         :param request: 调用DescribeTranscodeTemplates所需参数的结构体。
         :type request: :class:`tencentcloud.vod.v20180717.models.DescribeTranscodeTemplatesRequest`
@@ -662,6 +970,72 @@ class VodClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeWordSamples(self, request):
+        """该接口用于根据应用场景、关键词、标签，分页查询关键词样本信息。
+
+        :param request: 调用DescribeWordSamples所需参数的结构体。
+        :type request: :class:`tencentcloud.vod.v20180717.models.DescribeWordSamplesRequest`
+        :rtype: :class:`tencentcloud.vod.v20180717.models.DescribeWordSamplesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeWordSamples", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeWordSamplesResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def EditMedia(self, request):
+        """对视频进行编辑（剪辑、拼接等），生成一个新的点播视频。编辑的功能包括：
+
+        1. 对点播中的一个文件进行剪辑，生成一个新的视频；
+        2. 对点播中的多个文件进行拼接，生成一个新的视频；
+        3. 对点播中的多个文件进行剪辑，然后再拼接，生成一个新的视频；
+        4. 对点播中的一个流，直接生成一个新的视频；
+        5. 对点播中的一个流进行剪辑，生成一个新的视频；
+        6. 对点播中的多个流进行拼接，生成一个新的视频；
+        7. 对点播中的多个流进行剪辑，然后拼接，生成一个新的视频。
+
+        对于生成的新视频，还可以指定生成后的视频是否要执行任务流。
+
+        :param request: 调用EditMedia所需参数的结构体。
+        :type request: :class:`tencentcloud.vod.v20180717.models.EditMediaRequest`
+        :rtype: :class:`tencentcloud.vod.v20180717.models.EditMediaResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("EditMedia", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.EditMediaResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def LiveRealTimeClip(self, request):
         """直播即时剪辑，是指在直播过程中（即直播尚未结束时），客户可以在过往直播内容中选择一段，实时生成一个新的视频（HLS 格式），开发者可以将其立即分享出去，或者长久保存起来。
 
@@ -670,7 +1044,7 @@ class VodClient(AbstractClient):
         - 剪辑不固化：剪辑得到的视频附属于直播录制文件，没有独立 FileId；适用于将精彩片段**临时分享**的场景。
 
         注意：
-        - 使用直播即时剪辑功能的前提是：目标直播流开启了[时移回看](https://cloud.tencent.com/document/product/267/32742#.E5.BC.80.E9.80.9A.E6.AD.A5.E9.AA.A4)功能。
+        - 使用直播即时剪辑功能的前提是：目标直播流开启了[时移回看](https://cloud.tencent.com/document/product/267/32742)功能。
         - 直播即时剪辑是基于直播录制生成的 m3u8 文件进行的，故而其最小剪辑精度为一个 ts 切片，无法实现秒级或者更为精确的剪辑精度。
 
 
@@ -743,6 +1117,34 @@ class VodClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def ModifyAIRecognitionTemplate(self, request):
+        """修改用户自定义视频内容识别模板。
+
+        :param request: 调用ModifyAIRecognitionTemplate所需参数的结构体。
+        :type request: :class:`tencentcloud.vod.v20180717.models.ModifyAIRecognitionTemplateRequest`
+        :rtype: :class:`tencentcloud.vod.v20180717.models.ModifyAIRecognitionTemplateResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ModifyAIRecognitionTemplate", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ModifyAIRecognitionTemplateResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def ModifyClass(self, request):
         """修改媒体分类属性。
 
@@ -771,6 +1173,34 @@ class VodClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def ModifyContentReviewTemplate(self, request):
+        """修改用户自定义视频内容审核模板。
+
+        :param request: 调用ModifyContentReviewTemplate所需参数的结构体。
+        :type request: :class:`tencentcloud.vod.v20180717.models.ModifyContentReviewTemplateRequest`
+        :rtype: :class:`tencentcloud.vod.v20180717.models.ModifyContentReviewTemplateResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ModifyContentReviewTemplate", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ModifyContentReviewTemplateResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def ModifyMediaInfo(self, request):
         """修改媒体文件的属性，包括分类、名称、描述、标签、过期时间、打点信息、视频封面等。
 
@@ -785,6 +1215,34 @@ class VodClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyMediaInfoResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ModifyPersonSample(self, request):
+        """该接口用于根据人物 ID，修改人物样本信息，包括名称、描述的修改，以及人脸、标签的添加、删除、重置操作。人脸删除操作需保证至少剩余 1 张图片，否则，请使用重置操作。
+
+        :param request: 调用ModifyPersonSample所需参数的结构体。
+        :type request: :class:`tencentcloud.vod.v20180717.models.ModifyPersonSampleRequest`
+        :rtype: :class:`tencentcloud.vod.v20180717.models.ModifyPersonSampleResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ModifyPersonSample", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ModifyPersonSampleResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -855,6 +1313,34 @@ class VodClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def ModifyWordSample(self, request):
+        """该接口用于修改关键词的应用场景、标签，关键词本身不可修改，如需修改，可删除重建。
+
+        :param request: 调用ModifyWordSample所需参数的结构体。
+        :type request: :class:`tencentcloud.vod.v20180717.models.ModifyWordSampleRequest`
+        :rtype: :class:`tencentcloud.vod.v20180717.models.ModifyWordSampleResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ModifyWordSample", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ModifyWordSampleResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def ProcessMedia(self, request):
         """对点播中的音视频媒体发起处理任务，功能包括：
         1. 视频转码（带水印）；
@@ -865,7 +1351,8 @@ class VodClient(AbstractClient):
         6. 对视频截取一张图做封面；
         7. 对视频转自适应码流（并加密）；
         8. 智能内容审核（鉴黄、鉴恐、鉴政）；
-        9. 智能内容分析（标签、分类、封面）。
+        9. 智能内容分析（标签、分类、封面、按帧标签）；
+        10. 智能内容识别（视频片头片尾、人脸、文本全文、文本关键词、语音全文、语音关键词、物体）。
 
         :param request: 调用ProcessMedia所需参数的结构体。
         :type request: :class:`tencentcloud.vod.v20180717.models.ProcessMediaRequest`
@@ -892,11 +1379,43 @@ class VodClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def ProcessMediaByProcedure(self, request):
+        """使用任务流模板，对点播中的视频发起处理任务。
+        有两种方式创建任务流模板：
+        1. 在控制台上创建和修改任务流模板；
+        2. 通过任务流模板接口创建任务流模板。
+
+        :param request: 调用ProcessMediaByProcedure所需参数的结构体。
+        :type request: :class:`tencentcloud.vod.v20180717.models.ProcessMediaByProcedureRequest`
+        :rtype: :class:`tencentcloud.vod.v20180717.models.ProcessMediaByProcedureResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ProcessMediaByProcedure", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ProcessMediaByProcedureResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def ProcessMediaByUrl(self, request):
         """对来源为 URL 的音视频媒体发起处理任务，功能包括：
 
         1. 智能内容审核（鉴黄、鉴恐、鉴政）；
-        2. 智能内容分析（标签、分类、封面）。
+        2. 智能内容分析（标签、分类、封面、按帧标签）；
+        3. 智能内容识别（视频片头片尾、人脸、文本全文、文本关键词、语音全文、语音关键词、物体）。
 
         :param request: 调用ProcessMediaByUrl所需参数的结构体。
         :type request: :class:`tencentcloud.vod.v20180717.models.ProcessMediaByUrlRequest`

@@ -293,7 +293,7 @@ class CreateDisksRequest(AbstractModel):
         """
         :param DiskType: 硬盘介质类型。取值范围：<br><li>CLOUD_BASIC：表示普通云硬盘<br><li>CLOUD_PREMIUM：表示高性能云硬盘<br><li>CLOUD_SSD：表示SSD云硬盘。
         :type DiskType: str
-        :param DiskChargeType: 云硬盘计费类型。<br><li>PREPAID：预付费，即包年包月<br><li>POSTPAID_BY_HOUR：按小时后付费<br>各类型价格请参考云硬盘[价格总览](/document/product/362/2413)。
+        :param DiskChargeType: 云硬盘计费类型。<br><li>PREPAID：预付费，即包年包月<br><li>POSTPAID_BY_HOUR：按小时后付费<br><li>CDCPAID：独享集群付费<br>各类型价格请参考云硬盘[价格总览](/document/product/362/2413)。
         :type DiskChargeType: str
         :param Placement: 实例所在的位置。通过该参数可以指定实例所属可用区，所属项目。若不指定项目，将在默认项目下进行创建。
         :type Placement: :class:`tencentcloud.cbs.v20170312.models.Placement`
@@ -313,8 +313,10 @@ class CreateDisksRequest(AbstractModel):
         :type Encrypt: str
         :param Tags: 云盘绑定的标签。
         :type Tags: list of Tag
-        :param DeleteWithInstance: 可选参数，不传该参数则仅执行挂载操作。传入True时，新创建的云盘将设置为随云主机销毁模式，仅对按量计费云硬盘有效。
+        :param DeleteWithInstance: 可选参数。传入True时，新创建的云盘将设置为随云主机销毁模式，仅对按量计费云硬盘有效。
         :type DeleteWithInstance: bool
+        :param Shareable: 可选参数，默认为False。传入True时，云盘将创建为共享型云盘。
+        :type Shareable: bool
         """
         self.DiskType = None
         self.DiskChargeType = None
@@ -328,6 +330,7 @@ class CreateDisksRequest(AbstractModel):
         self.Encrypt = None
         self.Tags = None
         self.DeleteWithInstance = None
+        self.Shareable = None
 
 
     def _deserialize(self, params):
@@ -352,6 +355,7 @@ class CreateDisksRequest(AbstractModel):
                 obj._deserialize(item)
                 self.Tags.append(obj)
         self.DeleteWithInstance = params.get("DeleteWithInstance")
+        self.Shareable = params.get("Shareable")
 
 
 class CreateDisksResponse(AbstractModel):

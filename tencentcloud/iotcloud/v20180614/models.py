@@ -156,6 +156,8 @@ class CreateDeviceRequest(AbstractModel):
         :type LoraMoteType: int
         :param Skey: 创建LoRa设备需要skey
         :type Skey: str
+        :param LoraAppKey: LoRa设备的AppKey
+        :type LoraAppKey: str
         """
         self.ProductId = None
         self.DeviceName = None
@@ -166,6 +168,7 @@ class CreateDeviceRequest(AbstractModel):
         self.LoraDevEui = None
         self.LoraMoteType = None
         self.Skey = None
+        self.LoraAppKey = None
 
 
     def _deserialize(self, params):
@@ -180,6 +183,7 @@ class CreateDeviceRequest(AbstractModel):
         self.LoraDevEui = params.get("LoraDevEui")
         self.LoraMoteType = params.get("LoraMoteType")
         self.Skey = params.get("Skey")
+        self.LoraAppKey = params.get("LoraAppKey")
 
 
 class CreateDeviceResponse(AbstractModel):
@@ -228,6 +232,84 @@ class CreateDeviceResponse(AbstractModel):
         self.LoraMoteType = params.get("LoraMoteType")
         self.LoraAppKey = params.get("LoraAppKey")
         self.LoraNwkKey = params.get("LoraNwkKey")
+        self.RequestId = params.get("RequestId")
+
+
+class CreateLoraDeviceRequest(AbstractModel):
+    """CreateLoraDevice请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ProductId: 产品 ID ，创建产品时腾讯云为用户分配全局唯一的 ID
+        :type ProductId: str
+        :param DeviceName: 设备名称
+        :type DeviceName: str
+        :param DeviceType: 设备类型 ，目前支持A、B、C三种
+        :type DeviceType: str
+        :param AppEui: LoRa应用UUID
+        :type AppEui: str
+        :param DeviceEui: LoRa设备UUID
+        :type DeviceEui: str
+        :param AppKey: LoRa应用密钥
+        :type AppKey: str
+        :param AuthKey: LoRa设备验证密钥
+        :type AuthKey: str
+        :param Memo: 设备备注
+        :type Memo: str
+        """
+        self.ProductId = None
+        self.DeviceName = None
+        self.DeviceType = None
+        self.AppEui = None
+        self.DeviceEui = None
+        self.AppKey = None
+        self.AuthKey = None
+        self.Memo = None
+
+
+    def _deserialize(self, params):
+        self.ProductId = params.get("ProductId")
+        self.DeviceName = params.get("DeviceName")
+        self.DeviceType = params.get("DeviceType")
+        self.AppEui = params.get("AppEui")
+        self.DeviceEui = params.get("DeviceEui")
+        self.AppKey = params.get("AppKey")
+        self.AuthKey = params.get("AuthKey")
+        self.Memo = params.get("Memo")
+
+
+class CreateLoraDeviceResponse(AbstractModel):
+    """CreateLoraDevice返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param AppEui: LoRa应用UUID
+        :type AppEui: str
+        :param DeviceEui: LoRa设备UUID
+        :type DeviceEui: str
+        :param ClassType: 设备类型,目前支持A、B、C三种
+        :type ClassType: str
+        :param DeviceName: 设备名称
+        :type DeviceName: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.AppEui = None
+        self.DeviceEui = None
+        self.ClassType = None
+        self.DeviceName = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.AppEui = params.get("AppEui")
+        self.DeviceEui = params.get("DeviceEui")
+        self.ClassType = params.get("ClassType")
+        self.DeviceName = params.get("DeviceName")
         self.RequestId = params.get("RequestId")
 
 
@@ -521,6 +603,44 @@ class DeleteDeviceResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DeleteLoraDeviceRequest(AbstractModel):
+    """DeleteLoraDevice请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ProductId: 设备所属产品id
+        :type ProductId: str
+        :param DeviceName: 设备名称
+        :type DeviceName: str
+        """
+        self.ProductId = None
+        self.DeviceName = None
+
+
+    def _deserialize(self, params):
+        self.ProductId = params.get("ProductId")
+        self.DeviceName = params.get("DeviceName")
+
+
+class DeleteLoraDeviceResponse(AbstractModel):
+    """DeleteLoraDevice返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class DeleteProductRequest(AbstractModel):
     """DeleteProduct请求参数结构体
 
@@ -651,6 +771,9 @@ class DescribeDeviceResponse(AbstractModel):
         :type LoraDevEui: str
         :param LoraMoteType: Lora设备的mote type
         :type LoraMoteType: int
+        :param LogLevel: 设备的sdk日志等级
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LogLevel: int
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -669,6 +792,7 @@ class DescribeDeviceResponse(AbstractModel):
         self.NbiotDeviceID = None
         self.LoraDevEui = None
         self.LoraMoteType = None
+        self.LogLevel = None
         self.RequestId = None
 
 
@@ -693,6 +817,7 @@ class DescribeDeviceResponse(AbstractModel):
         self.NbiotDeviceID = params.get("NbiotDeviceID")
         self.LoraDevEui = params.get("LoraDevEui")
         self.LoraMoteType = params.get("LoraMoteType")
+        self.LogLevel = params.get("LogLevel")
         self.RequestId = params.get("RequestId")
 
 
@@ -794,6 +919,68 @@ class DescribeDevicesResponse(AbstractModel):
                 obj = DeviceInfo()
                 obj._deserialize(item)
                 self.Devices.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeLoraDeviceRequest(AbstractModel):
+    """DescribeLoraDevice请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ProductId: 产品id
+        :type ProductId: str
+        :param DeviceName: 设备名称
+        :type DeviceName: str
+        """
+        self.ProductId = None
+        self.DeviceName = None
+
+
+    def _deserialize(self, params):
+        self.ProductId = params.get("ProductId")
+        self.DeviceName = params.get("DeviceName")
+
+
+class DescribeLoraDeviceResponse(AbstractModel):
+    """DescribeLoraDevice返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param DeviceName: 设备名称
+        :type DeviceName: str
+        :param AppEui: LoRa应用UUID
+        :type AppEui: str
+        :param DeviceEui: LoRa设备UUID
+        :type DeviceEui: str
+        :param AppKey: LoRa应用密钥
+        :type AppKey: str
+        :param ClassType: 设备类型,目前支持A、B、C三种
+        :type ClassType: str
+        :param ProductId: 设备所属产品id
+        :type ProductId: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.DeviceName = None
+        self.AppEui = None
+        self.DeviceEui = None
+        self.AppKey = None
+        self.ClassType = None
+        self.ProductId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.DeviceName = params.get("DeviceName")
+        self.AppEui = params.get("AppEui")
+        self.DeviceEui = params.get("DeviceEui")
+        self.AppKey = params.get("AppKey")
+        self.ClassType = params.get("ClassType")
+        self.ProductId = params.get("ProductId")
         self.RequestId = params.get("RequestId")
 
 
@@ -1430,6 +1617,12 @@ class ProductProperties(AbstractModel):
         :type ModelName: str
         :param ProductKey: 产品密钥，suite产品才会有
         :type ProductKey: str
+        :param RegisterType: 动态注册类型 0-关闭, 1-预定义设备名 2-动态定义设备名
+        :type RegisterType: int
+        :param ProductSecret: 动态注册产品秘钥
+        :type ProductSecret: str
+        :param RegisterLimit: RegisterType为2时，设备动态创建的限制数量
+        :type RegisterLimit: int
         """
         self.ProductDescription = None
         self.EncryptionType = None
@@ -1441,6 +1634,9 @@ class ProductProperties(AbstractModel):
         self.ModelId = None
         self.ModelName = None
         self.ProductKey = None
+        self.RegisterType = None
+        self.ProductSecret = None
+        self.RegisterLimit = None
 
 
     def _deserialize(self, params):
@@ -1454,6 +1650,55 @@ class ProductProperties(AbstractModel):
         self.ModelId = params.get("ModelId")
         self.ModelName = params.get("ModelName")
         self.ProductKey = params.get("ProductKey")
+        self.RegisterType = params.get("RegisterType")
+        self.ProductSecret = params.get("ProductSecret")
+        self.RegisterLimit = params.get("RegisterLimit")
+
+
+class PublishAsDeviceRequest(AbstractModel):
+    """PublishAsDevice请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ProductId: 产品id
+        :type ProductId: str
+        :param DeviceName: 设备名称
+        :type DeviceName: str
+        :param Port: LoRa 设备端口
+        :type Port: int
+        :param Payload: 消息内容
+        :type Payload: str
+        """
+        self.ProductId = None
+        self.DeviceName = None
+        self.Port = None
+        self.Payload = None
+
+
+    def _deserialize(self, params):
+        self.ProductId = params.get("ProductId")
+        self.DeviceName = params.get("DeviceName")
+        self.Port = params.get("Port")
+        self.Payload = params.get("Payload")
+
+
+class PublishAsDeviceResponse(AbstractModel):
+    """PublishAsDevice返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
 
 
 class PublishMessageRequest(AbstractModel):
@@ -1471,7 +1716,7 @@ class PublishMessageRequest(AbstractModel):
         :type ProductId: str
         :param DeviceName: 设备名称
         :type DeviceName: str
-        :param Qos: 服务质量等级，取值为0， 1
+        :param Qos: 服务质量等级，取值为0或1
         :type Qos: int
         """
         self.Topic = None
@@ -1491,6 +1736,52 @@ class PublishMessageRequest(AbstractModel):
 
 class PublishMessageResponse(AbstractModel):
     """PublishMessage返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class PublishToDeviceRequest(AbstractModel):
+    """PublishToDevice请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ProductId: 产品id
+        :type ProductId: str
+        :param DeviceName: 设备名称
+        :type DeviceName: str
+        :param Port: LoRa 端口
+        :type Port: int
+        :param Payload: 消息内容
+        :type Payload: str
+        """
+        self.ProductId = None
+        self.DeviceName = None
+        self.Port = None
+        self.Payload = None
+
+
+    def _deserialize(self, params):
+        self.ProductId = params.get("ProductId")
+        self.DeviceName = params.get("DeviceName")
+        self.Port = params.get("Port")
+        self.Payload = params.get("Payload")
+
+
+class PublishToDeviceResponse(AbstractModel):
+    """PublishToDevice返回参数结构体
 
     """
 

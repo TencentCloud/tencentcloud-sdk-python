@@ -53,6 +53,37 @@ class DcClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def CreateDirectConnect(self, request):
+        """申请物理专线接入。
+        调用该接口时，请注意：
+        账号要进行实名认证，否则不允许申请物理专线；
+        若账户下存在欠费状态的物理专线，则不能申请更多的物理专线。
+
+        :param request: 调用CreateDirectConnect所需参数的结构体。
+        :type request: :class:`tencentcloud.dc.v20180410.models.CreateDirectConnectRequest`
+        :rtype: :class:`tencentcloud.dc.v20180410.models.CreateDirectConnectResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("CreateDirectConnect", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateDirectConnectResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def CreateDirectConnectTunnel(self, request):
         """用于创建专用通道的接口
 
@@ -67,6 +98,35 @@ class DcClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateDirectConnectTunnelResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DeleteDirectConnect(self, request):
+        """删除物理专线。
+        只能删除处于状态的物理专线。
+
+        :param request: 调用DeleteDirectConnect所需参数的结构体。
+        :type request: :class:`tencentcloud.dc.v20180410.models.DeleteDirectConnectRequest`
+        :rtype: :class:`tencentcloud.dc.v20180410.models.DeleteDirectConnectResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DeleteDirectConnect", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DeleteDirectConnectResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -109,6 +169,34 @@ class DcClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeAccessPoints(self, request):
+        """查询物理专线接入点
+
+        :param request: 调用DescribeAccessPoints所需参数的结构体。
+        :type request: :class:`tencentcloud.dc.v20180410.models.DescribeAccessPointsRequest`
+        :rtype: :class:`tencentcloud.dc.v20180410.models.DescribeAccessPointsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeAccessPoints", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeAccessPointsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeDirectConnectTunnels(self, request):
         """用于查询专用通道列表。
 
@@ -123,6 +211,62 @@ class DcClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeDirectConnectTunnelsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeDirectConnects(self, request):
+        """查询物理专线列表。
+
+        :param request: 调用DescribeDirectConnects所需参数的结构体。
+        :type request: :class:`tencentcloud.dc.v20180410.models.DescribeDirectConnectsRequest`
+        :rtype: :class:`tencentcloud.dc.v20180410.models.DescribeDirectConnectsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeDirectConnects", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeDirectConnectsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ModifyDirectConnectAttribute(self, request):
+        """修改物理专线的属性。
+
+        :param request: 调用ModifyDirectConnectAttribute所需参数的结构体。
+        :type request: :class:`tencentcloud.dc.v20180410.models.ModifyDirectConnectAttributeRequest`
+        :rtype: :class:`tencentcloud.dc.v20180410.models.ModifyDirectConnectAttributeResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ModifyDirectConnectAttribute", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ModifyDirectConnectAttributeResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

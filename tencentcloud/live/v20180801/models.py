@@ -134,11 +134,17 @@ class AddLiveWatermarkRequest(AbstractModel):
         :type XPosition: int
         :param YPosition: 显示位置,Y轴偏移。
         :type YPosition: int
+        :param Width: 水印宽度，占直播原始画面宽度百分比，建议高宽只设置一项，另外一项会自适应缩放，避免变形。
+        :type Width: int
+        :param Height: 水印高度，占直播原始画面宽度百分比，建议高宽只设置一项，另外一项会自适应缩放，避免变形。
+        :type Height: int
         """
         self.PictureUrl = None
         self.WatermarkName = None
         self.XPosition = None
         self.YPosition = None
+        self.Width = None
+        self.Height = None
 
 
     def _deserialize(self, params):
@@ -146,6 +152,8 @@ class AddLiveWatermarkRequest(AbstractModel):
         self.WatermarkName = params.get("WatermarkName")
         self.XPosition = params.get("XPosition")
         self.YPosition = params.get("YPosition")
+        self.Width = params.get("Width")
+        self.Height = params.get("Height")
 
 
 class AddLiveWatermarkResponse(AbstractModel):
@@ -4170,6 +4178,8 @@ class ModifyLiveRecordTemplateRequest(AbstractModel):
         :type Mp4Param: :class:`tencentcloud.live.v20180801.models.RecordParam`
         :param AacParam: Aac录制参数，开启Aac录制时设置。
         :type AacParam: :class:`tencentcloud.live.v20180801.models.RecordParam`
+        :param HlsSpecialParam: HLS录制定制参数
+        :type HlsSpecialParam: :class:`tencentcloud.live.v20180801.models.HlsSpecialParam`
         """
         self.TemplateId = None
         self.TemplateName = None
@@ -4178,6 +4188,7 @@ class ModifyLiveRecordTemplateRequest(AbstractModel):
         self.HlsParam = None
         self.Mp4Param = None
         self.AacParam = None
+        self.HlsSpecialParam = None
 
 
     def _deserialize(self, params):
@@ -4196,6 +4207,9 @@ class ModifyLiveRecordTemplateRequest(AbstractModel):
         if params.get("AacParam") is not None:
             self.AacParam = RecordParam()
             self.AacParam._deserialize(params.get("AacParam"))
+        if params.get("HlsSpecialParam") is not None:
+            self.HlsSpecialParam = HlsSpecialParam()
+            self.HlsSpecialParam._deserialize(params.get("HlsSpecialParam"))
 
 
 class ModifyLiveRecordTemplateResponse(AbstractModel):
@@ -5440,12 +5454,18 @@ class UpdateLiveWatermarkRequest(AbstractModel):
         :type YPosition: int
         :param WatermarkName: 水印名称。
         :type WatermarkName: str
+        :param Width: 水印宽度，占直播原始画面宽度百分比，建议高宽只设置一项，另外一项会自适应缩放，避免变形。
+        :type Width: int
+        :param Height: 水印高度，占直播原始画面宽度百分比，建议高宽只设置一项，另外一项会自适应缩放，避免变形。
+        :type Height: int
         """
         self.WatermarkId = None
         self.PictureUrl = None
         self.XPosition = None
         self.YPosition = None
         self.WatermarkName = None
+        self.Width = None
+        self.Height = None
 
 
     def _deserialize(self, params):
@@ -5454,6 +5474,8 @@ class UpdateLiveWatermarkRequest(AbstractModel):
         self.XPosition = params.get("XPosition")
         self.YPosition = params.get("YPosition")
         self.WatermarkName = params.get("WatermarkName")
+        self.Width = params.get("Width")
+        self.Height = params.get("Height")
 
 
 class UpdateLiveWatermarkResponse(AbstractModel):
@@ -5494,6 +5516,10 @@ class WatermarkInfo(AbstractModel):
         :type Status: int
         :param CreateTime: 添加时间。
         :type CreateTime: str
+        :param Width: 水印宽
+        :type Width: int
+        :param Height: 水印高
+        :type Height: int
         """
         self.WatermarkId = None
         self.PictureUrl = None
@@ -5502,6 +5528,8 @@ class WatermarkInfo(AbstractModel):
         self.WatermarkName = None
         self.Status = None
         self.CreateTime = None
+        self.Width = None
+        self.Height = None
 
 
     def _deserialize(self, params):
@@ -5512,3 +5540,5 @@ class WatermarkInfo(AbstractModel):
         self.WatermarkName = params.get("WatermarkName")
         self.Status = params.get("Status")
         self.CreateTime = params.get("CreateTime")
+        self.Width = params.get("Width")
+        self.Height = params.get("Height")
