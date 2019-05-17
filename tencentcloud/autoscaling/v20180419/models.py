@@ -598,7 +598,7 @@ class CreateLifecycleHookRequest(AbstractModel):
         """
         :param AutoScalingGroupId: 伸缩组ID
         :type AutoScalingGroupId: str
-        :param LifecycleHookName: 生命周期挂钩名称
+        :param LifecycleHookName: 生命周期挂钩名称。名称仅支持中文、英文、数字、下划线、分隔符"-"、小数点，最大长度不能超128个字节。
         :type LifecycleHookName: str
         :param LifecycleTransition: 进行生命周期挂钩的场景，取值范围包括“INSTANCE_LAUNCHING”和“INSTANCE_TERMINATING”
         :type LifecycleTransition: str
@@ -606,7 +606,7 @@ class CreateLifecycleHookRequest(AbstractModel):
         :type DefaultResult: str
         :param HeartbeatTimeout: 生命周期挂钩超时之前可以经过的最长时间（以秒为单位），范围从30到3600秒，默认值为300秒
         :type HeartbeatTimeout: int
-        :param NotificationMetadata: 弹性伸缩向通知目标发送的附加信息，默认值为''
+        :param NotificationMetadata: 弹性伸缩向通知目标发送的附加信息，默认值为''。最大长度不能超过1024个字节。
         :type NotificationMetadata: str
         :param NotificationTarget: 通知目标
         :type NotificationTarget: :class:`tencentcloud.autoscaling.v20180419.models.NotificationTarget`
@@ -2033,6 +2033,8 @@ class Instance(AbstractModel):
         :type AddTime: str
         :param InstanceType: 实例类型
         :type InstanceType: str
+        :param VersionNumber: 版本号
+        :type VersionNumber: int
         """
         self.InstanceId = None
         self.AutoScalingGroupId = None
@@ -2045,6 +2047,7 @@ class Instance(AbstractModel):
         self.CreationType = None
         self.AddTime = None
         self.InstanceType = None
+        self.VersionNumber = None
 
 
     def _deserialize(self, params):
@@ -2059,6 +2062,7 @@ class Instance(AbstractModel):
         self.CreationType = params.get("CreationType")
         self.AddTime = params.get("AddTime")
         self.InstanceType = params.get("InstanceType")
+        self.VersionNumber = params.get("VersionNumber")
 
 
 class InstanceChargePrepaid(AbstractModel):
@@ -2204,6 +2208,10 @@ class LaunchConfiguration(AbstractModel):
         :type InstanceTypes: list of str
         :param InstanceTags: 标签列表。
         :type InstanceTags: list of InstanceTag
+        :param VersionNumber: 版本号。
+        :type VersionNumber: int
+        :param UpdatedTime: 更新时间
+        :type UpdatedTime: str
         """
         self.ProjectId = None
         self.LaunchConfigurationId = None
@@ -2224,6 +2232,8 @@ class LaunchConfiguration(AbstractModel):
         self.InstanceMarketOptions = None
         self.InstanceTypes = None
         self.InstanceTags = None
+        self.VersionNumber = None
+        self.UpdatedTime = None
 
 
     def _deserialize(self, params):
@@ -2271,6 +2281,8 @@ class LaunchConfiguration(AbstractModel):
                 obj = InstanceTag()
                 obj._deserialize(item)
                 self.InstanceTags.append(obj)
+        self.VersionNumber = params.get("VersionNumber")
+        self.UpdatedTime = params.get("UpdatedTime")
 
 
 class LifecycleHook(AbstractModel):

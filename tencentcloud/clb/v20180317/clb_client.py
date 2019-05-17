@@ -25,6 +25,34 @@ class ClbClient(AbstractClient):
     _endpoint = 'clb.tencentcloudapi.com'
 
 
+    def AutoRewrite(self, request):
+        """系统自动为已存在的HTTPS:443监听器创建HTTP监听器进行转发，默认使用80端口。创建成功后可以通过HTTP:80地址自动跳转为HTTPS:443地址进行访问。
+
+        :param request: 调用AutoRewrite所需参数的结构体。
+        :type request: :class:`tencentcloud.clb.v20180317.models.AutoRewriteRequest`
+        :rtype: :class:`tencentcloud.clb.v20180317.models.AutoRewriteResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("AutoRewrite", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.AutoRewriteResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def BatchModifyTargetWeight(self, request):
         """BatchModifyTargetWeight接口用于批量修改监听器绑定的后端机器的转发权重，当前接口只支持应用型HTTP/HTTPS监听器。
         本接口为异步接口，本接口返回成功后需以返回的RequestID为入参，调用DescribeTaskStatus接口查询本次任务是否成功。
@@ -185,6 +213,34 @@ class ClbClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteLoadBalancerResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DeleteRewrite(self, request):
+        """DeleteRewrite 接口支持删除指定转发规则之间的重定向关系。
+
+        :param request: 调用DeleteRewrite所需参数的结构体。
+        :type request: :class:`tencentcloud.clb.v20180317.models.DeleteRewriteRequest`
+        :rtype: :class:`tencentcloud.clb.v20180317.models.DeleteRewriteResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DeleteRewrite", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DeleteRewriteResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -453,6 +509,62 @@ class ClbClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeRewrite(self, request):
+        """DescribeRewrite 接口可根据负载均衡实例ID，查询一个负载均衡实例下转发规则的重定向关系。如果不指定监听器ID或转发规则ID，则返回该负载均衡实例下的所有重定向关系。
+
+        :param request: 调用DescribeRewrite所需参数的结构体。
+        :type request: :class:`tencentcloud.clb.v20180317.models.DescribeRewriteRequest`
+        :rtype: :class:`tencentcloud.clb.v20180317.models.DescribeRewriteResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeRewrite", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeRewriteResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeTargetHealth(self, request):
+        """DescribeTargetHealth 接口用来获取应用型负载均衡后端的健康检查结果。
+
+        :param request: 调用DescribeTargetHealth所需参数的结构体。
+        :type request: :class:`tencentcloud.clb.v20180317.models.DescribeTargetHealthRequest`
+        :rtype: :class:`tencentcloud.clb.v20180317.models.DescribeTargetHealthResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeTargetHealth", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeTargetHealthResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeTargets(self, request):
         """DescribeTargets 接口用来查询应用型负载均衡实例的某些监听器后端绑定的机器列表。
 
@@ -495,6 +607,34 @@ class ClbClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeTaskStatusResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ManualRewrite(self, request):
+        """用户手动配置原访问地址和重定向地址，系统自动将原访问地址的请求重定向至对应路径的目的地址。同一域名下可以配置多条路径作为重定向策略，实现http/https之间请求的自动跳转。
+
+        :param request: 调用ManualRewrite所需参数的结构体。
+        :type request: :class:`tencentcloud.clb.v20180317.models.ManualRewriteRequest`
+        :rtype: :class:`tencentcloud.clb.v20180317.models.ManualRewriteResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ManualRewrite", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ManualRewriteResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -568,7 +708,7 @@ class ClbClient(AbstractClient):
 
 
     def ModifyLoadBalancerAttributes(self, request):
-        """修改负载均衡实例的属性，目前仅用于修改负载均衡实例的名称。
+        """修改负载均衡实例的属性，支持修改负载均衡实例的名称、设置负载均衡的跨域属性。
         本接口为异步接口，本接口返回成功后需以返回的RequestID为入参，调用DescribeTaskStatus接口查询本次任务是否成功。
 
         :param request: 调用ModifyLoadBalancerAttributes所需参数的结构体。
@@ -726,6 +866,36 @@ class ClbClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.RegisterTargetsWithClassicalLBResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def SetLoadBalancerSecurityGroups(self, request):
+        """SetLoadBalancerSecurityGroups 接口支持对一个负载均衡实例执行设置（绑定、解绑）安全组操作，查询一个负载均衡实例目前已绑定的安全组，可使用 DescribeLoadBalancers 接口。
+        绑定操作时，入参需要传入负载均衡实例要绑定的所有安全组（已绑定的+新增绑定的）。
+        解绑操作时，入参需要传入负载均衡实例执行解绑后所绑定的所有安全组；如果要解绑所有安全组，可传入空数组。
+
+        :param request: 调用SetLoadBalancerSecurityGroups所需参数的结构体。
+        :type request: :class:`tencentcloud.clb.v20180317.models.SetLoadBalancerSecurityGroupsRequest`
+        :rtype: :class:`tencentcloud.clb.v20180317.models.SetLoadBalancerSecurityGroupsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("SetLoadBalancerSecurityGroups", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.SetLoadBalancerSecurityGroupsResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

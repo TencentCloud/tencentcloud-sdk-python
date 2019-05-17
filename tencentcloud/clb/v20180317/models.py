@@ -16,6 +16,48 @@
 from tencentcloud.common.abstract_model import AbstractModel
 
 
+class AutoRewriteRequest(AbstractModel):
+    """AutoRewrite请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param LoadBalancerId: 负载均衡实例ID
+        :type LoadBalancerId: str
+        :param ListenerId: 监听器ID
+        :type ListenerId: str
+        :param Domains: 需要重定向的域名
+        :type Domains: list of str
+        """
+        self.LoadBalancerId = None
+        self.ListenerId = None
+        self.Domains = None
+
+
+    def _deserialize(self, params):
+        self.LoadBalancerId = params.get("LoadBalancerId")
+        self.ListenerId = params.get("ListenerId")
+        self.Domains = params.get("Domains")
+
+
+class AutoRewriteResponse(AbstractModel):
+    """AutoRewrite返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class Backend(AbstractModel):
     """监听器后端绑定机器的详细信息
 
@@ -640,6 +682,57 @@ class DeleteLoadBalancerResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DeleteRewriteRequest(AbstractModel):
+    """DeleteRewrite请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param LoadBalancerId: 负载均衡实例ID
+        :type LoadBalancerId: str
+        :param SourceListenerId: 源监听器ID
+        :type SourceListenerId: str
+        :param TargetListenerId: 目标监听器ID
+        :type TargetListenerId: str
+        :param RewriteInfos: 转发规则之间的重定向关系
+        :type RewriteInfos: list of RewriteLocationMap
+        """
+        self.LoadBalancerId = None
+        self.SourceListenerId = None
+        self.TargetListenerId = None
+        self.RewriteInfos = None
+
+
+    def _deserialize(self, params):
+        self.LoadBalancerId = params.get("LoadBalancerId")
+        self.SourceListenerId = params.get("SourceListenerId")
+        self.TargetListenerId = params.get("TargetListenerId")
+        if params.get("RewriteInfos") is not None:
+            self.RewriteInfos = []
+            for item in params.get("RewriteInfos"):
+                obj = RewriteLocationMap()
+                obj._deserialize(item)
+                self.RewriteInfos.append(obj)
+
+
+class DeleteRewriteResponse(AbstractModel):
+    """DeleteRewrite返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class DeleteRuleRequest(AbstractModel):
     """DeleteRule请求参数结构体
 
@@ -1075,8 +1168,11 @@ OPEN：公网属性， INTERNAL：内网属性。
         :type ProjectId: int
         :param WithRs: 查询的负载均衡是否绑定后端服务器，0：没有绑定云服务器，1：绑定云服务器，-1：查询全部。
         :type WithRs: int
-        :param VpcId: 负载均衡实例所属网络，如 vpc-bhqkbhdx
+        :param VpcId: 负载均衡实例所属私有网络，如 vpc-bhqkbhdx，
+基础网络不支持通过VpcId查询。
         :type VpcId: str
+        :param SecurityGroup: 安全组ID，如 sg-m1cc9123
+        :type SecurityGroup: str
         """
         self.LoadBalancerIds = None
         self.LoadBalancerType = None
@@ -1094,6 +1190,7 @@ OPEN：公网属性， INTERNAL：内网属性。
         self.ProjectId = None
         self.WithRs = None
         self.VpcId = None
+        self.SecurityGroup = None
 
 
     def _deserialize(self, params):
@@ -1113,6 +1210,7 @@ OPEN：公网属性， INTERNAL：内网属性。
         self.ProjectId = params.get("ProjectId")
         self.WithRs = params.get("WithRs")
         self.VpcId = params.get("VpcId")
+        self.SecurityGroup = params.get("SecurityGroup")
 
 
 class DescribeLoadBalancersResponse(AbstractModel):
@@ -1142,6 +1240,101 @@ class DescribeLoadBalancersResponse(AbstractModel):
                 obj = LoadBalancer()
                 obj._deserialize(item)
                 self.LoadBalancerSet.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeRewriteRequest(AbstractModel):
+    """DescribeRewrite请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param LoadBalancerId: 负载均衡实例ID
+        :type LoadBalancerId: str
+        :param SourceListenerIds: 负载均衡监听器ID数组
+        :type SourceListenerIds: list of str
+        :param SourceLocationIds: 负载均衡转发规则的ID数组
+        :type SourceLocationIds: list of str
+        """
+        self.LoadBalancerId = None
+        self.SourceListenerIds = None
+        self.SourceLocationIds = None
+
+
+    def _deserialize(self, params):
+        self.LoadBalancerId = params.get("LoadBalancerId")
+        self.SourceListenerIds = params.get("SourceListenerIds")
+        self.SourceLocationIds = params.get("SourceLocationIds")
+
+
+class DescribeRewriteResponse(AbstractModel):
+    """DescribeRewrite返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RewriteSet: 重定向转发规则构成的数组，若无重定向规则，则返回空数组
+        :type RewriteSet: list of RuleOutput
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RewriteSet = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("RewriteSet") is not None:
+            self.RewriteSet = []
+            for item in params.get("RewriteSet"):
+                obj = RuleOutput()
+                obj._deserialize(item)
+                self.RewriteSet.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeTargetHealthRequest(AbstractModel):
+    """DescribeTargetHealth请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param LoadBalancerIds: 要查询的负载均衡实例 ID列表
+        :type LoadBalancerIds: list of str
+        """
+        self.LoadBalancerIds = None
+
+
+    def _deserialize(self, params):
+        self.LoadBalancerIds = params.get("LoadBalancerIds")
+
+
+class DescribeTargetHealthResponse(AbstractModel):
+    """DescribeTargetHealth返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param LoadBalancers: 负载均衡实例列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LoadBalancers: list of LoadBalancerHealth
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.LoadBalancers = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("LoadBalancers") is not None:
+            self.LoadBalancers = []
+            for item in params.get("LoadBalancers"):
+                obj = LoadBalancerHealth()
+                obj._deserialize(item)
+                self.LoadBalancers.append(obj)
         self.RequestId = params.get("RequestId")
 
 
@@ -1410,6 +1603,46 @@ class ListenerBackend(AbstractModel):
                 self.Targets.append(obj)
 
 
+class ListenerHealth(AbstractModel):
+    """监听器的健康检查信息
+
+    """
+
+    def __init__(self):
+        """
+        :param ListenerId: 监听器ID
+        :type ListenerId: str
+        :param ListenerName: 监听器名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ListenerName: str
+        :param Protocol: 监听器的协议
+        :type Protocol: str
+        :param Port: 监听器的端口
+        :type Port: int
+        :param Rules: 监听器的转发规则列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Rules: list of RuleHealth
+        """
+        self.ListenerId = None
+        self.ListenerName = None
+        self.Protocol = None
+        self.Port = None
+        self.Rules = None
+
+
+    def _deserialize(self, params):
+        self.ListenerId = params.get("ListenerId")
+        self.ListenerName = params.get("ListenerName")
+        self.Protocol = params.get("Protocol")
+        self.Port = params.get("Port")
+        if params.get("Rules") is not None:
+            self.Rules = []
+            for item in params.get("Rules"):
+                obj = RuleHealth()
+                obj._deserialize(item)
+                self.Rules.append(obj)
+
+
 class LoadBalancer(AbstractModel):
     """负载均衡实例的信息
 
@@ -1537,6 +1770,89 @@ OPEN：公网属性， INTERNAL：内网属性。
         self.NumericalVpcId = params.get("NumericalVpcId")
 
 
+class LoadBalancerHealth(AbstractModel):
+    """负载均衡实例的健康检查状态
+
+    """
+
+    def __init__(self):
+        """
+        :param LoadBalancerId: 负载均衡实例ID
+        :type LoadBalancerId: str
+        :param LoadBalancerName: 负载均衡实例名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LoadBalancerName: str
+        :param Listeners: 监听器列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Listeners: list of ListenerHealth
+        """
+        self.LoadBalancerId = None
+        self.LoadBalancerName = None
+        self.Listeners = None
+
+
+    def _deserialize(self, params):
+        self.LoadBalancerId = params.get("LoadBalancerId")
+        self.LoadBalancerName = params.get("LoadBalancerName")
+        if params.get("Listeners") is not None:
+            self.Listeners = []
+            for item in params.get("Listeners"):
+                obj = ListenerHealth()
+                obj._deserialize(item)
+                self.Listeners.append(obj)
+
+
+class ManualRewriteRequest(AbstractModel):
+    """ManualRewrite请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param LoadBalancerId: 负载均衡实例ID
+        :type LoadBalancerId: str
+        :param SourceListenerId: 源监听器ID
+        :type SourceListenerId: str
+        :param TargetListenerId: 目标监听器ID
+        :type TargetListenerId: str
+        :param RewriteInfos: 转发规则之间的重定向关系
+        :type RewriteInfos: list of RewriteLocationMap
+        """
+        self.LoadBalancerId = None
+        self.SourceListenerId = None
+        self.TargetListenerId = None
+        self.RewriteInfos = None
+
+
+    def _deserialize(self, params):
+        self.LoadBalancerId = params.get("LoadBalancerId")
+        self.SourceListenerId = params.get("SourceListenerId")
+        self.TargetListenerId = params.get("TargetListenerId")
+        if params.get("RewriteInfos") is not None:
+            self.RewriteInfos = []
+            for item in params.get("RewriteInfos"):
+                obj = RewriteLocationMap()
+                obj._deserialize(item)
+                self.RewriteInfos.append(obj)
+
+
+class ManualRewriteResponse(AbstractModel):
+    """ManualRewrite返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class ModifyDomainRequest(AbstractModel):
     """ModifyDomain请求参数结构体
 
@@ -1657,14 +1973,20 @@ class ModifyLoadBalancerAttributesRequest(AbstractModel):
         :type LoadBalancerId: str
         :param LoadBalancerName: 负载均衡实例名称
         :type LoadBalancerName: str
+        :param TargetRegionInfo: 负载均衡绑定的后端服务的地域信息
+        :type TargetRegionInfo: :class:`tencentcloud.clb.v20180317.models.TargetRegionInfo`
         """
         self.LoadBalancerId = None
         self.LoadBalancerName = None
+        self.TargetRegionInfo = None
 
 
     def _deserialize(self, params):
         self.LoadBalancerId = params.get("LoadBalancerId")
         self.LoadBalancerName = params.get("LoadBalancerName")
+        if params.get("TargetRegionInfo") is not None:
+            self.TargetRegionInfo = TargetRegionInfo()
+            self.TargetRegionInfo._deserialize(params.get("TargetRegionInfo"))
 
 
 class ModifyLoadBalancerAttributesResponse(AbstractModel):
@@ -1972,6 +2294,27 @@ class RegisterTargetsWithClassicalLBResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class RewriteLocationMap(AbstractModel):
+    """转发规则之间的重定向关系
+
+    """
+
+    def __init__(self):
+        """
+        :param SourceLocationId: 源转发规则ID
+        :type SourceLocationId: str
+        :param TargetLocationId: 重定向至的目标转发规则ID
+        :type TargetLocationId: str
+        """
+        self.SourceLocationId = None
+        self.TargetLocationId = None
+
+
+    def _deserialize(self, params):
+        self.SourceLocationId = params.get("SourceLocationId")
+        self.TargetLocationId = params.get("TargetLocationId")
+
+
 class RewriteTarget(AbstractModel):
     """重定向目标的信息
 
@@ -2037,6 +2380,43 @@ class RsWeightRule(AbstractModel):
         self.Domain = params.get("Domain")
         self.Url = params.get("Url")
         self.Weight = params.get("Weight")
+
+
+class RuleHealth(AbstractModel):
+    """一条转发规则的健康检查状态
+
+    """
+
+    def __init__(self):
+        """
+        :param LocationId: 转发规则ID
+        :type LocationId: str
+        :param Domain: 转发规则的域名
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Domain: str
+        :param Url: 转发规则的Url
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Url: str
+        :param Targets: 本规则上绑定的后端的健康检查状态
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Targets: list of TargetHealth
+        """
+        self.LocationId = None
+        self.Domain = None
+        self.Url = None
+        self.Targets = None
+
+
+    def _deserialize(self, params):
+        self.LocationId = params.get("LocationId")
+        self.Domain = params.get("Domain")
+        self.Url = params.get("Url")
+        if params.get("Targets") is not None:
+            self.Targets = []
+            for item in params.get("Targets"):
+                obj = TargetHealth()
+                obj._deserialize(item)
+                self.Targets.append(obj)
 
 
 class RuleInput(AbstractModel):
@@ -2191,6 +2571,44 @@ class RuleTargets(AbstractModel):
                 self.Targets.append(obj)
 
 
+class SetLoadBalancerSecurityGroupsRequest(AbstractModel):
+    """SetLoadBalancerSecurityGroups请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param LoadBalancerId: 负载均衡实例 ID
+        :type LoadBalancerId: str
+        :param SecurityGroups: 安全组ID构成的数组，一个负载均衡实例最多关联50个安全组，如果要解绑所有安全组，可不传此参数。
+        :type SecurityGroups: list of str
+        """
+        self.LoadBalancerId = None
+        self.SecurityGroups = None
+
+
+    def _deserialize(self, params):
+        self.LoadBalancerId = params.get("LoadBalancerId")
+        self.SecurityGroups = params.get("SecurityGroups")
+
+
+class SetLoadBalancerSecurityGroupsResponse(AbstractModel):
+    """SetLoadBalancerSecurityGroups返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class TagInfo(AbstractModel):
     """负载均衡的标签信息
 
@@ -2244,16 +2662,45 @@ class Target(AbstractModel):
         self.Weight = params.get("Weight")
 
 
-class TargetRegionInfo(AbstractModel):
-    """负载均衡实例所绑定的后端信息，包括所属地域、所属VPC网络。
+class TargetHealth(AbstractModel):
+    """描述一个Target的健康信息
 
     """
 
     def __init__(self):
         """
-        :param Region: Target所属地域
+        :param IP: Target的内网IP
+        :type IP: str
+        :param Port: Target绑定的端口
+        :type Port: int
+        :param HealthStatus: 当前健康状态，true：健康，false：不健康。
+        :type HealthStatus: bool
+        :param TargetId: Target的实例ID，如 ins-12345678
+        :type TargetId: str
+        """
+        self.IP = None
+        self.Port = None
+        self.HealthStatus = None
+        self.TargetId = None
+
+
+    def _deserialize(self, params):
+        self.IP = params.get("IP")
+        self.Port = params.get("Port")
+        self.HealthStatus = params.get("HealthStatus")
+        self.TargetId = params.get("TargetId")
+
+
+class TargetRegionInfo(AbstractModel):
+    """负载均衡实例所绑定的后端服务的信息，包括所属地域、所属网络。
+
+    """
+
+    def __init__(self):
+        """
+        :param Region: Target所属地域，如 ap-guangzhou
         :type Region: str
-        :param VpcId: Target所属VPC网络
+        :param VpcId: Target所属网络，私有网络格式如 vpc-abcd1234，如果是基础网络，则为"0"
         :type VpcId: str
         """
         self.Region = None

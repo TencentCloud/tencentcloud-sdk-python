@@ -916,10 +916,8 @@ class CreateLiveTranscodeTemplateRequest(AbstractModel):
         :param Width: 宽，默认0。
         :type Width: int
         :param NeedVideo: 是否保留视频，0：否，1：是。默认1。
-注意：当前该参数未生效，待后续支持！
         :type NeedVideo: int
         :param NeedAudio: 是否保留音频，0：否，1：是。默认1。
-注意：当前该参数未生效，待后续支持！
         :type NeedAudio: int
         :param Height: 高，默认0。
         :type Height: int

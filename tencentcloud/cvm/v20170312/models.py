@@ -414,11 +414,15 @@ class DataDisk(AbstractModel):
 该参数目前仅用于 `RunInstances` 接口。
 注意：此字段可能返回 null，表示取不到有效值。
         :type DeleteWithInstance: bool
+        :param SnapshotId: 数据盘快照ID。选择的数据盘快照大小需小于数据盘大小。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SnapshotId: str
         """
         self.DiskSize = None
         self.DiskType = None
         self.DiskId = None
         self.DeleteWithInstance = None
+        self.SnapshotId = None
 
 
     def _deserialize(self, params):
@@ -426,6 +430,7 @@ class DataDisk(AbstractModel):
         self.DiskType = params.get("DiskType")
         self.DiskId = params.get("DiskId")
         self.DeleteWithInstance = params.get("DeleteWithInstance")
+        self.SnapshotId = params.get("SnapshotId")
 
 
 class DeleteDisasterRecoverGroupsRequest(AbstractModel):
@@ -2711,7 +2716,7 @@ class InstanceTypeQuotaItem(AbstractModel):
         :type InstanceFamily: str
         :param TypeName: 机型名称。
         :type TypeName: str
-        :param LocalDiskTypeList: 本地磁盘规格列表。
+        :param LocalDiskTypeList: 本地磁盘规格列表。当该参数返回为空值时，表示当前情况下无法创建本地盘。
         :type LocalDiskTypeList: list of LocalDiskType
         :param Status: 实例是否售卖。取值范围： <br><li>SELL：表示实例可购买<br><li>SOLD_OUT：表示实例已售罄。
         :type Status: str
@@ -4425,7 +4430,7 @@ class ZoneInfo(AbstractModel):
         :type ZoneName: str
         :param ZoneId: 可用区ID
         :type ZoneId: str
-        :param ZoneState: 可用区状态
+        :param ZoneState: 可用区状态，包含AVAILABLE和UNAVAILABLE。AVAILABLE代表可用，UNAVAILABLE代表不可用。
         :type ZoneState: str
         """
         self.Zone = None

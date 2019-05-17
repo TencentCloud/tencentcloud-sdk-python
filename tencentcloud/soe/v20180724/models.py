@@ -25,7 +25,7 @@ class InitOralProcessRequest(AbstractModel):
         """
         :param SessionId: 语音段唯一标识，一段语音一个SessionId
         :type SessionId: str
-        :param RefText: 被评估语音对应的文本，句子模式下不超过个 20 单词或者中文文字，段落模式不超过 120 单词或者中文文字，中文评估使用 utf-8 编码，自由说模式该值传空。
+        :param RefText: 被评估语音对应的文本，句子模式下不超过个 20 单词或者中文文字，段落模式不超过 120 单词或者中文文字，中文评估使用 utf-8 编码，自由说模式该值传空。如需要在单词模式和句子模式下使用自定义音素，可以通过设置 TextMode 使用[音素标注](https://cloud.tencent.com/document/product/884/33698)。
         :type RefText: str
         :param WorkMode: 语音输入模式，0：流式分片，1：非流式一次性评估
         :type WorkMode: int
@@ -43,9 +43,9 @@ class InitOralProcessRequest(AbstractModel):
         :type SentenceInfoEnabled: int
         :param ServerType: 评估语言，0：英文，1：中文。
         :type ServerType: int
-        :param IsAsync: 异步模式标识，0：同步模式，1：异步模式。
+        :param IsAsync: 异步模式标识，0：同步模式，1：异步模式，可选值参考[服务模式](https://cloud.tencent.com/document/product/884/33697)。
         :type IsAsync: int
-        :param TextMode: 输入文本模式，0: 普通文本，1: 音素结构文本
+        :param TextMode: 输入文本模式，0: 普通文本，1：[音素结构](https://cloud.tencent.com/document/product/884/33698)文本。
         :type TextMode: int
         """
         self.SessionId = None
@@ -249,7 +249,7 @@ class TransmitOralProcessResponse(AbstractModel):
         :type SentenceInfoSet: list of SentenceInfo
         :param Status: 评估 session 状态，“Evaluating"：评估中、"Failed"：评估失败、"Finished"：评估完成
         :type Status: str
-        :param SuggestedScore: 建议评分，取值范围[0,100]，评分方式为建议评分 = 准确度（PronAccuracyfloat）* 完整度（PronCompletionfloat）*（2 - 完整度（PronCompletionfloat）），如若评分策略不符合请参考Words数组中的详细分数自定义评分逻辑。
+        :param SuggestedScore: 建议评分，取值范围[0,100]，评分方式为建议评分 = 准确度（PronAccuracyfloat）× 完整度（PronCompletionfloat）×（2 - 完整度（PronCompletionfloat）），如若评分策略不符合请参考Words数组中的详细分数自定义评分逻辑。
         :type SuggestedScore: float
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -308,7 +308,7 @@ class TransmitOralProcessWithInitRequest(AbstractModel):
         :type UserVoiceData: str
         :param SessionId: 语音段唯一标识，一个完整语音一个SessionId。
         :type SessionId: str
-        :param RefText: 被评估语音对应的文本，句子模式下不超过个 20 单词或者中文文字，段落模式不超过 120 单词或者中文文字，中文评估使用 utf-8 编码，自由说模式该值传空。
+        :param RefText: 被评估语音对应的文本，句子模式下不超过个 20 单词或者中文文字，段落模式不超过 120 单词或者中文文字，中文评估使用 utf-8 编码，自由说模式该值无效。如需要在单词模式和句子模式下使用自定义音素，可以通过设置 TextMode 使用[音素标注](https://cloud.tencent.com/document/product/884/33698)。
         :type RefText: str
         :param WorkMode: 语音输入模式，0：流式分片，1：非流式一次性评估
         :type WorkMode: int
@@ -324,11 +324,11 @@ class TransmitOralProcessWithInitRequest(AbstractModel):
         :type SentenceInfoEnabled: int
         :param ServerType: 评估语言，0：英文，1：中文。
         :type ServerType: int
-        :param IsAsync: 异步模式标识，0：同步模式，1：异步模式。
+        :param IsAsync: 异步模式标识，0：同步模式，1：异步模式，可选值参考[服务模式](https://cloud.tencent.com/document/product/884/33697)。
         :type IsAsync: int
         :param IsQuery: 查询标识，当该参数为1时，该请求为查询请求，请求返回该 Session 评估结果。
         :type IsQuery: int
-        :param TextMode: 输入文本模式，0: 普通文本，1: 音素结构文本
+        :param TextMode: 输入文本模式，0: 普通文本，1：[音素结构](https://cloud.tencent.com/document/product/884/33698)文本。
         :type TextMode: int
         """
         self.SeqId = None
@@ -393,7 +393,7 @@ class TransmitOralProcessWithInitResponse(AbstractModel):
         :type SentenceInfoSet: list of SentenceInfo
         :param Status: 评估 session 状态，“Evaluating"：评估中、"Failed"：评估失败、"Finished"：评估完成
         :type Status: str
-        :param SuggestedScore: 建议评分，取值范围[0,100]，评分方式为建议评分 = 准确度（PronAccuracyfloat）* 完整度（PronCompletionfloat）*（2 - 完整度（PronCompletionfloat）），如若评分策略不符合请参考Words数组中的详细分数自定义评分逻辑。
+        :param SuggestedScore: 建议评分，取值范围[0,100]，评分方式为建议评分 = 准确度（PronAccuracyfloat）× 完整度（PronCompletionfloat）×（2 - 完整度（PronCompletionfloat）），如若评分策略不符合请参考Words数组中的详细分数自定义评分逻辑。
         :type SuggestedScore: float
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -450,7 +450,7 @@ class WordRsp(AbstractModel):
         :type PronFluency: float
         :param Word: 当前词
         :type Word: str
-        :param MatchTag: 当前词与输入语句的匹配情况，0:匹配单词、1：新增单词、2：缺少单词
+        :param MatchTag: 当前词与输入语句的匹配情况，0：匹配单词、1：新增单词、2：缺少单词、3：错读的词、4：未录入单词。
         :type MatchTag: int
         :param PhoneInfos: 音节评估详情
         :type PhoneInfos: list of PhoneInfo

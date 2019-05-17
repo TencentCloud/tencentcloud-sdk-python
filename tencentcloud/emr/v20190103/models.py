@@ -160,7 +160,7 @@ class CreateInstanceRequest(AbstractModel):
         :type TimeSpan: int
         :param TimeUnit: 时间单位
         :type TimeUnit: str
-        :param LoginSettings: 登陆配置
+        :param LoginSettings: 登录配置
         :type LoginSettings: :class:`tencentcloud.emr.v20190103.models.LoginSettings`
         :param ClientToken: 客户端Token
         :type ClientToken: str
@@ -172,6 +172,8 @@ class CreateInstanceRequest(AbstractModel):
         :type PreExecutedFileSettings: :class:`tencentcloud.emr.v20190103.models.PreExecuteFileSettings`
         :param AutoRenew: 自动续费
         :type AutoRenew: int
+        :param NeedMasterWan: 是否需要外网Ip。支持填NEED_MASTER_WAN，不支持使用NOT_NEED_MASTER_WAN，默认使用NEED_MASTER_WAN
+        :type NeedMasterWan: str
         """
         self.ProductId = None
         self.VPCSettings = None
@@ -189,6 +191,7 @@ class CreateInstanceRequest(AbstractModel):
         self.SgId = None
         self.PreExecutedFileSettings = None
         self.AutoRenew = None
+        self.NeedMasterWan = None
 
 
     def _deserialize(self, params):
@@ -220,6 +223,7 @@ class CreateInstanceRequest(AbstractModel):
             self.PreExecutedFileSettings = PreExecuteFileSettings()
             self.PreExecutedFileSettings._deserialize(params.get("PreExecutedFileSettings"))
         self.AutoRenew = params.get("AutoRenew")
+        self.NeedMasterWan = params.get("NeedMasterWan")
 
 
 class CreateInstanceResponse(AbstractModel):
@@ -592,6 +596,27 @@ class LoginSettings(AbstractModel):
         self.PublicKeyId = params.get("PublicKeyId")
 
 
+class MultiDisk(AbstractModel):
+    """多云盘参数
+
+    """
+
+    def __init__(self):
+        """
+        :param DiskType: 云盘类型("CLOUD_PREMIUM","CLOUD_SSD","CLOUD_BASIC")的一种
+        :type DiskType: str
+        :param Volume: 云盘大小
+        :type Volume: int
+        """
+        self.DiskType = None
+        self.Volume = None
+
+
+    def _deserialize(self, params):
+        self.DiskType = params.get("DiskType")
+        self.Volume = params.get("Volume")
+
+
 class NodeSpec(AbstractModel):
     """节点描述
 
@@ -623,6 +648,9 @@ class NodeSpec(AbstractModel):
         :param SpecName: 规格名称
 注意：此字段可能返回 null，表示取不到有效值。
         :type SpecName: str
+        :param MultiDisks: 多云盘参数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MultiDisks: list of MultiDisk
         """
         self.Memory = None
         self.CPUCores = None
@@ -632,6 +660,7 @@ class NodeSpec(AbstractModel):
         self.RootDiskVolume = None
         self.StorageType = None
         self.SpecName = None
+        self.MultiDisks = None
 
 
     def _deserialize(self, params):
@@ -643,6 +672,12 @@ class NodeSpec(AbstractModel):
         self.RootDiskVolume = params.get("RootDiskVolume")
         self.StorageType = params.get("StorageType")
         self.SpecName = params.get("SpecName")
+        if params.get("MultiDisks") is not None:
+            self.MultiDisks = []
+            for item in params.get("MultiDisks"):
+                obj = MultiDisk()
+                obj._deserialize(item)
+                self.MultiDisks.append(obj)
 
 
 class Placement(AbstractModel):

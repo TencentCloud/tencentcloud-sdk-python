@@ -927,7 +927,7 @@ class FaceRect(AbstractModel):
 
     def __init__(self):
         """
-        :param X: 人脸框左上角纵坐标。 
+        :param X: 人脸框左上角横坐标。 
 人脸框包含人脸五官位置并在此基础上进行一定的扩展，若人脸框超出图片范围，会导致坐标负值。 
 若需截取完整人脸，可以在完整分completess满足需求的情况下，将负值坐标取0。
         :type X: int
@@ -962,13 +962,13 @@ class FaceShape(AbstractModel):
         """
         :param FaceProfile: 描述脸型轮廓的 21 点。
         :type FaceProfile: list of Point
-        :param LeftEye: 描述左测眼睛轮廓的 8 点。
+        :param LeftEye: 描述左侧眼睛轮廓的 8 点。
         :type LeftEye: list of Point
-        :param RightEye: 描述右测眼睛轮廓的 8 点。
+        :param RightEye: 描述右侧眼睛轮廓的 8 点。
         :type RightEye: list of Point
-        :param LeftEyeBrow: 描述左测眉毛轮廓的 8 点。
+        :param LeftEyeBrow: 描述左侧眉毛轮廓的 8 点。
         :type LeftEyeBrow: list of Point
-        :param RightEyeBrow: 描述右测眉毛轮廓的 8 点。
+        :param RightEyeBrow: 描述右侧眉毛轮廓的 8 点。
         :type RightEyeBrow: list of Point
         :param Mouth: 描述嘴巴轮廓的 22 点。
         :type Mouth: list of Point

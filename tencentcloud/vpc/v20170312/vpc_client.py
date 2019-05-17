@@ -624,6 +624,34 @@ class VpcClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def CreateFlowLog(self, request):
+        """本接口（CreateFlowLog）用于创建流日志
+
+        :param request: 调用CreateFlowLog所需参数的结构体。
+        :type request: :class:`tencentcloud.vpc.v20170312.models.CreateFlowLogRequest`
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.CreateFlowLogResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("CreateFlowLog", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateFlowLogResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def CreateHaVip(self, request):
         """本接口（CreateHaVip）用于创建高可用虚拟IP（HAVIP）
 
@@ -1233,6 +1261,34 @@ class VpcClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteDirectConnectGatewayCcnRoutesResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DeleteFlowLog(self, request):
+        """本接口（DeleteFlowLog）用于删除流日志
+
+        :param request: 调用DeleteFlowLog所需参数的结构体。
+        :type request: :class:`tencentcloud.vpc.v20170312.models.DeleteFlowLogRequest`
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.DeleteFlowLogResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DeleteFlowLog", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DeleteFlowLogResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -2057,6 +2113,62 @@ class VpcClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeDirectConnectGatewaysResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeFlowLog(self, request):
+        """本接口（DescribeFlowLog）用于查询流日志实例信息
+
+        :param request: 调用DescribeFlowLog所需参数的结构体。
+        :type request: :class:`tencentcloud.vpc.v20170312.models.DescribeFlowLogRequest`
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.DescribeFlowLogResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeFlowLog", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeFlowLogResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeFlowLogs(self, request):
+        """本接口（DescribeFlowLogs）用于查询获取流日志集合
+
+        :param request: 调用DescribeFlowLogs所需参数的结构体。
+        :type request: :class:`tencentcloud.vpc.v20170312.models.DescribeFlowLogsRequest`
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.DescribeFlowLogsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeFlowLogs", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeFlowLogsResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -3250,6 +3362,34 @@ class VpcClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyDirectConnectGatewayAttributeResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ModifyFlowLogAttribute(self, request):
+        """本接口（ModifyFlowLogAttribute）用于修改流日志属性
+
+        :param request: 调用ModifyFlowLogAttribute所需参数的结构体。
+        :type request: :class:`tencentcloud.vpc.v20170312.models.ModifyFlowLogAttributeRequest`
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.ModifyFlowLogAttributeResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ModifyFlowLogAttribute", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ModifyFlowLogAttributeResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

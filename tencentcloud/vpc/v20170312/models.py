@@ -1410,6 +1410,73 @@ class CreateDirectConnectGatewayResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class CreateFlowLogRequest(AbstractModel):
+    """CreateFlowLog请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param VpcId: 私用网络ID或者统一ID，建议使用统一ID
+        :type VpcId: str
+        :param FlowLogName: 流日志实例名字
+        :type FlowLogName: str
+        :param ResourceType: 流日志所属资源类型，VPC|SUBNET|NETWORKINTERFACE
+        :type ResourceType: str
+        :param ResourceId: 资源唯一ID
+        :type ResourceId: str
+        :param TrafficType: 流日志采集类型，ACCEPT|REJECT|ALL
+        :type TrafficType: str
+        :param CloudLogId: 流日志存储ID
+        :type CloudLogId: str
+        :param FlowLogDescription: 流日志实例描述
+        :type FlowLogDescription: str
+        """
+        self.VpcId = None
+        self.FlowLogName = None
+        self.ResourceType = None
+        self.ResourceId = None
+        self.TrafficType = None
+        self.CloudLogId = None
+        self.FlowLogDescription = None
+
+
+    def _deserialize(self, params):
+        self.VpcId = params.get("VpcId")
+        self.FlowLogName = params.get("FlowLogName")
+        self.ResourceType = params.get("ResourceType")
+        self.ResourceId = params.get("ResourceId")
+        self.TrafficType = params.get("TrafficType")
+        self.CloudLogId = params.get("CloudLogId")
+        self.FlowLogDescription = params.get("FlowLogDescription")
+
+
+class CreateFlowLogResponse(AbstractModel):
+    """CreateFlowLog返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param FlowLog: 创建的流日志信息
+        :type FlowLog: list of FlowLog
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.FlowLog = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("FlowLog") is not None:
+            self.FlowLog = []
+            for item in params.get("FlowLog"):
+                obj = FlowLog()
+                obj._deserialize(item)
+                self.FlowLog.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class CreateHaVipRequest(AbstractModel):
     """CreateHaVip请求参数结构体
 
@@ -2441,6 +2508,44 @@ class DeleteDirectConnectGatewayRequest(AbstractModel):
 
 class DeleteDirectConnectGatewayResponse(AbstractModel):
     """DeleteDirectConnectGateway返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class DeleteFlowLogRequest(AbstractModel):
+    """DeleteFlowLog请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param VpcId: 私用网络ID或者统一ID，建议使用统一ID
+        :type VpcId: str
+        :param FlowLogId: 流日志唯一ID
+        :type FlowLogId: str
+        """
+        self.VpcId = None
+        self.FlowLogId = None
+
+
+    def _deserialize(self, params):
+        self.VpcId = params.get("VpcId")
+        self.FlowLogId = params.get("FlowLogId")
+
+
+class DeleteFlowLogResponse(AbstractModel):
+    """DeleteFlowLog返回参数结构体
 
     """
 
@@ -3830,6 +3935,144 @@ class DescribeDirectConnectGatewaysResponse(AbstractModel):
                 obj = DirectConnectGateway()
                 obj._deserialize(item)
                 self.DirectConnectGatewaySet.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeFlowLogRequest(AbstractModel):
+    """DescribeFlowLog请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param VpcId: 私用网络ID或者统一ID，建议使用统一ID
+        :type VpcId: str
+        :param FlowLogId: 流日志唯一ID
+        :type FlowLogId: str
+        """
+        self.VpcId = None
+        self.FlowLogId = None
+
+
+    def _deserialize(self, params):
+        self.VpcId = params.get("VpcId")
+        self.FlowLogId = params.get("FlowLogId")
+
+
+class DescribeFlowLogResponse(AbstractModel):
+    """DescribeFlowLog返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param FlowLog: 流日志信息
+        :type FlowLog: list of FlowLog
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.FlowLog = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("FlowLog") is not None:
+            self.FlowLog = []
+            for item in params.get("FlowLog"):
+                obj = FlowLog()
+                obj._deserialize(item)
+                self.FlowLog.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeFlowLogsRequest(AbstractModel):
+    """DescribeFlowLogs请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param VpcId: 私用网络ID或者统一ID，建议使用统一ID
+        :type VpcId: str
+        :param FlowLogId: 流日志唯一ID
+        :type FlowLogId: str
+        :param FlowLogName: 流日志实例名字
+        :type FlowLogName: str
+        :param ResourceType: 流日志所属资源类型，VPC|SUBNET|NETWORKINTERFACE
+        :type ResourceType: str
+        :param ResourceId: 资源唯一ID
+        :type ResourceId: str
+        :param TrafficType: 流日志采集类型，ACCEPT|REJECT|ALL
+        :type TrafficType: str
+        :param CloudLogId: 流日志存储ID
+        :type CloudLogId: str
+        :param CloudLogState: 流日志存储ID状态
+        :type CloudLogState: str
+        :param OrderField: 按某个字段排序,支持字段：flowLogName,createTime，默认按createTime
+        :type OrderField: str
+        :param OrderDirection: 升序（asc）还是降序（desc）,默认：desc
+        :type OrderDirection: str
+        :param Offset: 偏移量，默认为0。
+        :type Offset: int
+        :param Limit: 每页行数，默认为10
+        :type Limit: int
+        """
+        self.VpcId = None
+        self.FlowLogId = None
+        self.FlowLogName = None
+        self.ResourceType = None
+        self.ResourceId = None
+        self.TrafficType = None
+        self.CloudLogId = None
+        self.CloudLogState = None
+        self.OrderField = None
+        self.OrderDirection = None
+        self.Offset = None
+        self.Limit = None
+
+
+    def _deserialize(self, params):
+        self.VpcId = params.get("VpcId")
+        self.FlowLogId = params.get("FlowLogId")
+        self.FlowLogName = params.get("FlowLogName")
+        self.ResourceType = params.get("ResourceType")
+        self.ResourceId = params.get("ResourceId")
+        self.TrafficType = params.get("TrafficType")
+        self.CloudLogId = params.get("CloudLogId")
+        self.CloudLogState = params.get("CloudLogState")
+        self.OrderField = params.get("OrderField")
+        self.OrderDirection = params.get("OrderDirection")
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+
+
+class DescribeFlowLogsResponse(AbstractModel):
+    """DescribeFlowLogs返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param FlowLog: 流日志实例集合
+        :type FlowLog: list of FlowLog
+        :param TotalNum: 流日志总数目
+        :type TotalNum: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.FlowLog = None
+        self.TotalNum = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("FlowLog") is not None:
+            self.FlowLog = []
+            for item in params.get("FlowLog"):
+                obj = FlowLog()
+                obj._deserialize(item)
+                self.FlowLog.append(obj)
+        self.TotalNum = params.get("TotalNum")
         self.RequestId = params.get("RequestId")
 
 
@@ -5431,6 +5674,59 @@ class FilterObject(AbstractModel):
         self.Values = params.get("Values")
 
 
+class FlowLog(AbstractModel):
+    """流日志
+
+    """
+
+    def __init__(self):
+        """
+        :param VpcId: 私用网络ID或者统一ID，建议使用统一ID
+        :type VpcId: str
+        :param FlowLogId: 流日志唯一ID
+        :type FlowLogId: str
+        :param FlowLogName: 流日志实例名字
+        :type FlowLogName: str
+        :param ResourceType: 流日志所属资源类型，VPC|SUBNET|NETWORKINTERFACE
+        :type ResourceType: str
+        :param ResourceId: 资源唯一ID
+        :type ResourceId: str
+        :param TrafficType: 流日志采集类型，ACCEPT|REJECT|ALL
+        :type TrafficType: str
+        :param CloudLogId: 流日志存储ID
+        :type CloudLogId: str
+        :param CloudLogState: 流日志存储ID状态
+        :type CloudLogState: str
+        :param FlowLogDescription: 流日志描述信息
+        :type FlowLogDescription: str
+        :param CreatedTime: 流日志创建时间
+        :type CreatedTime: str
+        """
+        self.VpcId = None
+        self.FlowLogId = None
+        self.FlowLogName = None
+        self.ResourceType = None
+        self.ResourceId = None
+        self.TrafficType = None
+        self.CloudLogId = None
+        self.CloudLogState = None
+        self.FlowLogDescription = None
+        self.CreatedTime = None
+
+
+    def _deserialize(self, params):
+        self.VpcId = params.get("VpcId")
+        self.FlowLogId = params.get("FlowLogId")
+        self.FlowLogName = params.get("FlowLogName")
+        self.ResourceType = params.get("ResourceType")
+        self.ResourceId = params.get("ResourceId")
+        self.TrafficType = params.get("TrafficType")
+        self.CloudLogId = params.get("CloudLogId")
+        self.CloudLogState = params.get("CloudLogState")
+        self.FlowLogDescription = params.get("FlowLogDescription")
+        self.CreatedTime = params.get("CreatedTime")
+
+
 class GatewayFlowMonitorDetail(AbstractModel):
     """网关流量监控明细
 
@@ -6483,6 +6779,52 @@ class ModifyDirectConnectGatewayAttributeRequest(AbstractModel):
 
 class ModifyDirectConnectGatewayAttributeResponse(AbstractModel):
     """ModifyDirectConnectGatewayAttribute返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class ModifyFlowLogAttributeRequest(AbstractModel):
+    """ModifyFlowLogAttribute请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param VpcId: 私用网络ID或者统一ID，建议使用统一ID
+        :type VpcId: str
+        :param FlowLogId: 流日志唯一ID
+        :type FlowLogId: str
+        :param FlowLogName: 流日志实例名字
+        :type FlowLogName: str
+        :param FlowLogDescription: 流日志实例描述
+        :type FlowLogDescription: str
+        """
+        self.VpcId = None
+        self.FlowLogId = None
+        self.FlowLogName = None
+        self.FlowLogDescription = None
+
+
+    def _deserialize(self, params):
+        self.VpcId = params.get("VpcId")
+        self.FlowLogId = params.get("FlowLogId")
+        self.FlowLogName = params.get("FlowLogName")
+        self.FlowLogDescription = params.get("FlowLogDescription")
+
+
+class ModifyFlowLogAttributeResponse(AbstractModel):
+    """ModifyFlowLogAttribute返回参数结构体
 
     """
 

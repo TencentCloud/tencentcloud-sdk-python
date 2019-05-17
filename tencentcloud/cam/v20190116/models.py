@@ -72,7 +72,7 @@ class AddUserResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param Uin: 子用户用户 ID
+        :param Uin: 子用户 UIN
         :type Uin: int
         :param Name: 子用户用户名
         :type Name: str
@@ -82,6 +82,8 @@ class AddUserResponse(AbstractModel):
         :type SecretId: str
         :param SecretKey: 子用户密钥 Key
         :type SecretKey: str
+        :param Uid: 子用户 UID
+        :type Uid: int
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -90,6 +92,7 @@ class AddUserResponse(AbstractModel):
         self.Password = None
         self.SecretId = None
         self.SecretKey = None
+        self.Uid = None
         self.RequestId = None
 
 
@@ -99,6 +102,7 @@ class AddUserResponse(AbstractModel):
         self.Password = params.get("Password")
         self.SecretId = params.get("SecretId")
         self.SecretKey = params.get("SecretKey")
+        self.Uid = params.get("Uid")
         self.RequestId = params.get("RequestId")
 
 
@@ -109,7 +113,7 @@ class AddUserToGroupRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Info: 添加的子用户 ID 和用户组 ID 关联关系
+        :param Info: 添加的子用户 UID 和用户组 ID 关联关系
         :type Info: list of GroupIdOfUidInfo
         """
         self.Info = None
@@ -885,7 +889,7 @@ class GroupIdOfUidInfo(AbstractModel):
 
     def __init__(self):
         """
-        :param Uid: 子用户 ID
+        :param Uid: 子用户 UID
         :type Uid: int
         :param GroupId: 用户组 ID
         :type GroupId: int
