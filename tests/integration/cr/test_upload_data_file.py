@@ -14,7 +14,8 @@ def test_cr_upload_data_file_multipart():
     req.Module = "Data"
     req.Operation = "Upload"
     req.FileName = "data.xlsx"
-    with open("/tmp/data.xlsx", "rb+") as f:
+    curdir = os.path.dirname(os.path.abspath(__file__))
+    with open(os.path.join(curdir, "data.xlsx"), "rb+") as f:
         req.File = f.read()
     try:
         resp = client.UploadDataFile(req)

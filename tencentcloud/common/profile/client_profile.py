@@ -26,4 +26,4 @@ class ClientProfile(object):
         :type httpProfile: :class:`HttpProfile`
         """
         self.httpProfile = HttpProfile() if httpProfile is None else httpProfile
-        self.signMethod = "HmacSHA256" if signMethod is None else signMethod
+        self.signMethod = "TC3-HMAC-SHA256" if signMethod is None else signMethod
