@@ -520,7 +520,7 @@ class CdbClient(AbstractClient):
 
 
     def DescribeBackupDatabases(self, request):
-        """本接口(DescribeBackupDatabases)用于查询备份数据库列表。
+        """本接口(DescribeBackupDatabases)用于查询备份数据库列表 (将废弃)。
 
         :param request: 调用DescribeBackupDatabases所需参数的结构体。
         :type request: :class:`tencentcloud.cdb.v20170320.models.DescribeBackupDatabasesRequest`
@@ -548,7 +548,7 @@ class CdbClient(AbstractClient):
 
 
     def DescribeBackupTables(self, request):
-        """本接口(DescribeBackupTables)用于查询指定的数据库的备份数据表名。
+        """本接口(DescribeBackupTables)用于查询指定的数据库的备份数据表名 (将废弃)。
 
         :param request: 调用DescribeBackupTables所需参数的结构体。
         :type request: :class:`tencentcloud.cdb.v20170320.models.DescribeBackupTablesRequest`

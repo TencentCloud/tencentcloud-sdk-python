@@ -1144,6 +1144,36 @@ class AutoscalingClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def UpgradeLaunchConfiguration(self, request):
+        """本接口（UpgradeLaunchConfiguration）用于升级启动配置。
+
+        * 本接口用于升级启动配置，采用“完全覆盖”风格，无论之前参数如何，统一按照接口参数设置为新的配置。对于非必填字段，不填写则按照默认值赋值。
+
+        :param request: 调用UpgradeLaunchConfiguration所需参数的结构体。
+        :type request: :class:`tencentcloud.autoscaling.v20180419.models.UpgradeLaunchConfigurationRequest`
+        :rtype: :class:`tencentcloud.autoscaling.v20180419.models.UpgradeLaunchConfigurationResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("UpgradeLaunchConfiguration", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.UpgradeLaunchConfigurationResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def UpgradeLifecycleHook(self, request):
         """本接口（UpgradeLifecycleHook）用于升级生命周期挂钩。
 

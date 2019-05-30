@@ -545,11 +545,15 @@ class DataDisk(AbstractModel):
 该参数目前仅用于 `RunInstances` 接口。
 注意：此字段可能返回 null，表示取不到有效值。
         :type DeleteWithInstance: bool
+        :param SnapshotId: 数据盘快照ID。选择的数据盘快照大小需小于数据盘大小。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SnapshotId: str
         """
         self.DiskSize = None
         self.DiskType = None
         self.DiskId = None
         self.DeleteWithInstance = None
+        self.SnapshotId = None
 
 
     def _deserialize(self, params):
@@ -557,6 +561,7 @@ class DataDisk(AbstractModel):
         self.DiskType = params.get("DiskType")
         self.DiskId = params.get("DiskId")
         self.DeleteWithInstance = params.get("DeleteWithInstance")
+        self.SnapshotId = params.get("SnapshotId")
 
 
 class DeleteComputeEnvRequest(AbstractModel):
@@ -2077,7 +2082,7 @@ class InstanceTypeQuotaItem(AbstractModel):
         :type InstanceFamily: str
         :param TypeName: 机型名称。
         :type TypeName: str
-        :param LocalDiskTypeList: 本地磁盘规格列表。
+        :param LocalDiskTypeList: 本地磁盘规格列表。当该参数返回为空值时，表示当前情况下无法创建本地盘。
         :type LocalDiskTypeList: list of LocalDiskType
         :param Status: 实例是否售卖。取值范围： <br><li>SELL：表示实例可购买<br><li>SOLD_OUT：表示实例已售罄。
         :type Status: str
@@ -2624,7 +2629,7 @@ class OutputMappingConfig(AbstractModel):
 
 
 class Placement(AbstractModel):
-    """描述了实例的抽象位置，包括其所在的可用区，所属的项目，宿主机等（仅CDH产品可用）
+    """描述了实例的抽象位置，包括其所在的可用区，所属的项目，宿主机（仅CDH产品可用），母机ip等
 
     """
 
@@ -2636,16 +2641,20 @@ class Placement(AbstractModel):
         :type ProjectId: int
         :param HostIds: 实例所属的专用宿主机ID列表。如果您有购买专用宿主机并且指定了该参数，则您购买的实例就会随机的部署在这些专用宿主机上。
         :type HostIds: list of str
+        :param HostIps: 指定母机ip生产子机
+        :type HostIps: list of str
         """
         self.Zone = None
         self.ProjectId = None
         self.HostIds = None
+        self.HostIps = None
 
 
     def _deserialize(self, params):
         self.Zone = params.get("Zone")
         self.ProjectId = params.get("ProjectId")
         self.HostIds = params.get("HostIds")
+        self.HostIps = params.get("HostIps")
 
 
 class RedirectInfo(AbstractModel):
@@ -2937,6 +2946,8 @@ class Task(AbstractModel):
         :type Timeout: int
         :param MaxConcurrentNum: 任务最大并发数限制，默认没有限制。
         :type MaxConcurrentNum: int
+        :param RestartComputeNode: 任务完成后，重启计算节点。适用于指定计算环境执行任务。
+        :type RestartComputeNode: bool
         """
         self.Application = None
         self.TaskName = None
@@ -2954,6 +2965,7 @@ class Task(AbstractModel):
         self.MaxRetryCount = None
         self.Timeout = None
         self.MaxConcurrentNum = None
+        self.RestartComputeNode = None
 
 
     def _deserialize(self, params):
@@ -3006,6 +3018,7 @@ class Task(AbstractModel):
         self.MaxRetryCount = params.get("MaxRetryCount")
         self.Timeout = params.get("Timeout")
         self.MaxConcurrentNum = params.get("MaxConcurrentNum")
+        self.RestartComputeNode = params.get("RestartComputeNode")
 
 
 class TaskInstanceLog(AbstractModel):

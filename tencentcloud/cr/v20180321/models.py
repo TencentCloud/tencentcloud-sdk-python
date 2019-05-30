@@ -326,21 +326,26 @@ class DescribeTaskStatusResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param TaskResult: 任务结果
+        :param TaskResult: 任务结果，例如上传成功时返回“File Uploading Task Success.”
         :type TaskResult: str
-        :param TaskType: <p>任务类型：</p><ul style="margin-bottom:0px;"><li>报告下载：001</li><li>催收数据上传：002</li><li>还款数据上传：003</li><li>回访数据上传：004</li></ul>
+        :param TaskType: <p>任务类型：</p><ul style="margin-bottom:0px;"><li>报告下载：001</li><li>催收数据上传：002</li><li>还款数据上传：003</li><li>回访数据上传：004</li><li>停拨数据上传：005</li></ul>
         :type TaskType: str
+        :param TaskFileUrl: 过滤文件下载链接，有过滤数据时才存在。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TaskFileUrl: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.TaskResult = None
         self.TaskType = None
+        self.TaskFileUrl = None
         self.RequestId = None
 
 
     def _deserialize(self, params):
         self.TaskResult = params.get("TaskResult")
         self.TaskType = params.get("TaskType")
+        self.TaskFileUrl = params.get("TaskFileUrl")
         self.RequestId = params.get("RequestId")
 
 
@@ -435,11 +440,14 @@ class SingleBlackApply(AbstractModel):
         :type BlackValue: str
         :param BlackDescription: 备注。
         :type BlackDescription: str
+        :param BlackValidDate: 黑名单生效截止日期，格式为YYYY-MM-DD，不填默认为永久。
+        :type BlackValidDate: str
         """
         self.BlackType = None
         self.OperationType = None
         self.BlackValue = None
         self.BlackDescription = None
+        self.BlackValidDate = None
 
 
     def _deserialize(self, params):
@@ -447,6 +455,7 @@ class SingleBlackApply(AbstractModel):
         self.OperationType = params.get("OperationType")
         self.BlackValue = params.get("BlackValue")
         self.BlackDescription = params.get("BlackDescription")
+        self.BlackValidDate = params.get("BlackValidDate")
 
 
 class SingleRecord(AbstractModel):

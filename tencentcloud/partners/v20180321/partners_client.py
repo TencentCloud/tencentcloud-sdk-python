@@ -193,6 +193,62 @@ class PartnersClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeAgentDealsCache(self, request):
+        """供超大型代理商（代客数量>=3000 ）拉取缓存的全量客户订单。
+
+        :param request: 调用DescribeAgentDealsCache所需参数的结构体。
+        :type request: :class:`tencentcloud.partners.v20180321.models.DescribeAgentDealsCacheRequest`
+        :rtype: :class:`tencentcloud.partners.v20180321.models.DescribeAgentDealsCacheResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeAgentDealsCache", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeAgentDealsCacheResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeAgentPayDeals(self, request):
+        """可以查询代理商代付的所有订单
+
+        :param request: 调用DescribeAgentPayDeals所需参数的结构体。
+        :type request: :class:`tencentcloud.partners.v20180321.models.DescribeAgentPayDealsRequest`
+        :rtype: :class:`tencentcloud.partners.v20180321.models.DescribeAgentPayDealsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeAgentPayDeals", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeAgentPayDealsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeClientBalance(self, request):
         """为合作伙伴提供查询客户余额能力。调用者必须是合作伙伴，只能查询自己名下客户余额
 
@@ -235,6 +291,34 @@ class PartnersClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeRebateInfosResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeSalesmans(self, request):
+        """代理商查询名下业务员列表信息
+
+        :param request: 调用DescribeSalesmans所需参数的结构体。
+        :type request: :class:`tencentcloud.partners.v20180321.models.DescribeSalesmansRequest`
+        :rtype: :class:`tencentcloud.partners.v20180321.models.DescribeSalesmansResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeSalesmans", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeSalesmansResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

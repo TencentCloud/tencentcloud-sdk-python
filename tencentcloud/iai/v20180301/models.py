@@ -564,7 +564,7 @@ class DetectFaceRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param MaxFaceNum: 最多处理的人脸数目。默认值为1（仅检测图片中面积最大的那张人脸），最大值为30。 
+        :param MaxFaceNum: 最多处理的人脸数目。默认值为1（仅检测图片中面积最大的那张人脸），最大值为120。 
 此参数用于控制处理待检测图片中的人脸个数，值越小，处理速度越快。
         :type MaxFaceNum: int
         :param MinFaceSize: 人脸长和宽的最小尺寸，单位为像素。默认为40。低于此尺寸的人脸不会被检测。
@@ -582,7 +582,8 @@ class DetectFaceRequest(AbstractModel):
 提取人脸属性信息较为耗时，如不需要人脸属性信息，建议关闭此项功能，加快人脸检测速度。
         :type NeedFaceAttributes: int
         :param NeedQualityDetection: 是否开启质量检测。0 为关闭，1 为开启。默认为 0。 
-非 1 值均视为不进行质量检测。  
+非 1 值均视为不进行质量检测。
+最多返回面积最大的 5 张人脸质量分信息，超过 5 张人脸（第 6 张及以后的人脸）的 FaceQualityInfo不具备参考意义。  
 建议：人脸入库操作建议开启此功能。
         :type NeedQualityDetection: int
         """
@@ -692,11 +693,11 @@ class FaceAttributesInfo(AbstractModel):
 
     def __init__(self):
         """
-        :param Gender: 性别 [0(female)~100(male)]。 NeedFaceAttributes 不为 1 或检测超过 5 张人脸时，此参数仍返回，但不具备参考意义。
+        :param Gender: 性别 [0(female，女性)~100(male，男性)]。 NeedFaceAttributes 不为 1 或检测超过 5 张人脸时，此参数仍返回，但不具备参考意义。
         :type Gender: int
         :param Age: 年龄 [0~100]。NeedFaceAttributes 不为1 或检测超过 5 张人脸时，此参数仍返回，但不具备参考意义。
         :type Age: int
-        :param Expression: 微笑[0(normal)~50(smile)~100(laugh)]。NeedFaceAttributes 不为1 或检测超过 5 张人脸时，此参数仍返回，但不具备参考意义。
+        :param Expression: 微笑[0(normal，正常)~50(smile，微笑)~100(laugh，大笑)]。NeedFaceAttributes 不为1 或检测超过 5 张人脸时，此参数仍返回，但不具备参考意义。
         :type Expression: int
         :param Glass: 是否有眼镜 [true,false]。NeedFaceAttributes 不为1 或检测超过 5 张人脸时，此参数仍返回，但不具备参考意义。
         :type Glass: bool

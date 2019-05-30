@@ -23,9 +23,9 @@ class AddDelayLiveStreamRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param AppName: 应用名称。
+        :param AppName: 推流路径，与推流和播放地址中的AppName保持一致，默认为live。
         :type AppName: str
-        :param DomainName: 您的加速域名。
+        :param DomainName: 推流域名。
         :type DomainName: str
         :param StreamName: 流名称。
         :type StreamName: str
@@ -361,7 +361,7 @@ class CreateLiveCallbackRuleRequest(AbstractModel):
         """
         :param DomainName: 推流域名。
         :type DomainName: str
-        :param AppName: 推流路径。
+        :param AppName: 推流路径，与推流和播放地址中的AppName保持一致，默认为live。
         :type AppName: str
         :param TemplateId: 模板ID。
         :type TemplateId: int
@@ -528,7 +528,7 @@ class CreateLiveRecordRequest(AbstractModel):
         """
         :param StreamName: 流名称。
         :type StreamName: str
-        :param AppName: 推流App名。
+        :param AppName: 推流路径，与推流和播放地址中的AppName保持一致，默认为 live。
         :type AppName: str
         :param DomainName: 推流域名。多域名推流必须设置。
         :type DomainName: str
@@ -617,7 +617,7 @@ class CreateLiveRecordRuleRequest(AbstractModel):
         :type DomainName: str
         :param TemplateId: 模板Id。
         :type TemplateId: int
-        :param AppName: 推流路径。
+        :param AppName: 推流路径，与推流和播放地址中的AppName保持一致，默认为 live。
         :type AppName: str
         :param StreamName: 流名称。
 注：如果本参数设置为非空字符串，规则将只对此推流起作用。
@@ -739,24 +739,25 @@ class CreateLiveSnapshotRuleRequest(AbstractModel):
         """
         :param DomainName: 推流域名。
         :type DomainName: str
-        :param AppName: 推流路径。
-        :type AppName: str
-        :param StreamName: 流名称。
-        :type StreamName: str
         :param TemplateId: 模板Id。
         :type TemplateId: int
+        :param AppName: 推流路径，与推流和播放地址中的AppName保持一致，默认为 live。
+        :type AppName: str
+        :param StreamName: 流名称。
+注：如果本参数设置为非空字符串，规则将只对此推流起作用。
+        :type StreamName: str
         """
         self.DomainName = None
+        self.TemplateId = None
         self.AppName = None
         self.StreamName = None
-        self.TemplateId = None
 
 
     def _deserialize(self, params):
         self.DomainName = params.get("DomainName")
+        self.TemplateId = params.get("TemplateId")
         self.AppName = params.get("AppName")
         self.StreamName = params.get("StreamName")
-        self.TemplateId = params.get("TemplateId")
 
 
 class CreateLiveSnapshotRuleResponse(AbstractModel):
@@ -853,9 +854,9 @@ class CreateLiveTranscodeRuleRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param DomainName: 推流域名。
+        :param DomainName: 播放域名。
         :type DomainName: str
-        :param AppName: 推流路径。
+        :param AppName: 推流路径，与推流和播放地址中的AppName保持一致，默认为 live。
         :type AppName: str
         :param StreamName: 流名称。
         :type StreamName: str
@@ -1006,7 +1007,7 @@ class CreateLiveWatermarkRuleRequest(AbstractModel):
         """
         :param DomainName: 推流域名。
         :type DomainName: str
-        :param AppName: 推流路径。
+        :param AppName: 推流路径，与推流和播放地址中的AppName保持一致，默认为live。
         :type AppName: str
         :param StreamName: 流名称。
         :type StreamName: str
@@ -1150,7 +1151,7 @@ class DeleteLiveCallbackRuleRequest(AbstractModel):
         """
         :param DomainName: 推流域名。
         :type DomainName: str
-        :param AppName: 推流路径。
+        :param AppName: 推流路径，与推流和播放地址中的AppName保持一致，默认为live。
         :type AppName: str
         """
         self.DomainName = None
@@ -1330,11 +1331,14 @@ class DeleteLiveRecordRuleRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param DomainName: 推流域名。域名+AppName+StreamName唯一标识单个转码规则，如需删除需要强匹配，比如AppName为空也需要传空字符串进行强匹配
+        :param DomainName: 推流域名。
+域名+AppName+StreamName唯一标识单个转码规则，如需删除需要强匹配，比如AppName为空也需要传空字符串进行强匹配。
         :type DomainName: str
-        :param AppName: 推流路径。域名+AppName+StreamName唯一标识单个转码规则，如需删除需要强匹配，比如AppName为空也需要传空字符串进行强匹配
+        :param AppName: 推流路径，与推流和播放地址中的AppName保持一致，默认为 live。
+域名+AppName+StreamName唯一标识单个转码规则，如需删除需要强匹配，比如AppName为空也需要传空字符串进行强匹配。
         :type AppName: str
-        :param StreamName: 流名称。域名+AppName+StreamName唯一标识单个转码规则，如需删除需要强匹配，比如AppName为空也需要传空字符串进行强匹配
+        :param StreamName: 流名称。
+域名+AppName+StreamName唯一标识单个转码规则，如需删除需要强匹配，比如AppName为空也需要传空字符串进行强匹配。
         :type StreamName: str
         """
         self.DomainName = None
@@ -1408,7 +1412,7 @@ class DeleteLiveSnapshotRuleRequest(AbstractModel):
         """
         :param DomainName: 推流域名。
         :type DomainName: str
-        :param AppName: 推流路径。
+        :param AppName: 推流路径，与推流和播放地址中的AppName保持一致，默认为 live。
         :type AppName: str
         :param StreamName: 流名称。
         :type StreamName: str
@@ -1482,13 +1486,17 @@ class DeleteLiveTranscodeRuleRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param DomainName: 推流域名。域名维度转码，域名+AppName+StreamName唯一标识单个转码规则，如需删除需要强匹配，比如AppName为空也需要传空字符串进行强匹配
+        :param DomainName: 推流域名。
+域名维度转码，域名+AppName+StreamName唯一标识单个转码规则，如需删除需要强匹配，比如AppName为空也需要传空字符串进行强匹配。
         :type DomainName: str
-        :param AppName: 推流路径。域名+AppName+StreamName+TemplateId唯一标识单个转码规则，如需删除需要强匹配，比如AppName为空也需要传空字符串进行强匹配
+        :param AppName: 推流路径，与推流和播放地址中的AppName保持一致，默认为 live。
+域名+AppName+StreamName+TemplateId唯一标识单个转码规则，如需删除需要强匹配，比如AppName为空也需要传空字符串进行强匹配。
         :type AppName: str
-        :param StreamName: 流名称。域名+AppName+StreamName+TemplateId唯一标识单个转码规则，如需删除需要强匹配，比如AppName为空也需要传空字符串进行强匹配
+        :param StreamName: 流名称。
+域名+AppName+StreamName+TemplateId唯一标识单个转码规则，如需删除需要强匹配，比如AppName为空也需要传空字符串进行强匹配。
         :type StreamName: str
-        :param TemplateId: 模板ID域名+AppName+StreamName+TemplateId唯一标识单个转码规则，如需删除需要强匹配，比如AppName为空也需要传空字符串进行强匹配
+        :param TemplateId: 模板ID。
+域名+AppName+StreamName+TemplateId唯一标识单个转码规则，如需删除需要强匹配，比如AppName为空也需要传空字符串进行强匹配。
         :type TemplateId: int
         """
         self.DomainName = None
@@ -2363,7 +2371,7 @@ UTC 格式，例如：2018-12-29T19:00:00Z。
 UTC 格式，例如：2018-12-29T20:00:00Z。
 不超过当前时间，且和起始时间相差不得超过30天。
         :type EndTime: str
-        :param AppName: 应用名称。
+        :param AppName: 推流路径，与推流和播放地址中的AppName保持一致，默认为 live。
         :type AppName: str
         :param DomainName: 推流域名。
         :type DomainName: str
@@ -2545,7 +2553,7 @@ class DescribeLiveStreamOnlineListRequest(AbstractModel):
         """
         :param DomainName: 推流域名。
         :type DomainName: str
-        :param AppName: 应用名称。
+        :param AppName: 推流路径，与推流和播放地址中的AppName保持一致，默认为 live。
         :type AppName: str
         :param PageNum: 取得第几页，默认1。
         :type PageNum: int
@@ -2553,7 +2561,7 @@ class DescribeLiveStreamOnlineListRequest(AbstractModel):
 取值：10~100之间的任意整数。
 默认值：10。
         :type PageSize: int
-        :param StreamName: 流名称，精确查询。
+        :param StreamName: 流名称，用于精确查询。
         :type StreamName: str
         """
         self.DomainName = None
@@ -2630,7 +2638,7 @@ UTC 格式，例如：2016-06-30T19:00:00Z。
 UTC 格式，例如：2016-06-29T19:00:00Z。
 和当前时间相隔不超过7天。
         :type StartTime: str
-        :param AppName: 直播流所属应用名称。
+        :param AppName: 推流路径，与推流和播放地址中的AppName保持一致，默认为 live。
         :type AppName: str
         :param PageNum: 取得第几页。
 默认值：1。
@@ -2709,7 +2717,7 @@ class DescribeLiveStreamPushInfoListRequest(AbstractModel):
         """
         :param PushDomain: 推流域名。
         :type PushDomain: str
-        :param AppName: 推流路径。
+        :param AppName: 推流路径，与推流和播放地址中的AppName保持一致，默认为live。
         :type AppName: str
         :param PageNum: 页数，
 范围[1,10000]，
@@ -2782,7 +2790,7 @@ class DescribeLiveStreamStateRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param AppName: 应用名称。
+        :param AppName: 推流路径，与推流和播放地址中的AppName保持一致，默认为 live。
         :type AppName: str
         :param DomainName: 您的推流域名。
         :type DomainName: str
@@ -3488,7 +3496,7 @@ class DescribeStreamPlayInfoListRequest(AbstractModel):
         :param StreamName: 流名称，精确匹配。
 若不填，则为查询总体播放数据。
         :type StreamName: str
-        :param AppName: 播放路径，精确匹配，不支持。
+        :param AppName: 推流路径，与推流和播放地址中的AppName保持一致，默认为live。精确匹配，不支持。
 若不填，则为查询总体播放数据。
         :type AppName: str
         """
@@ -3642,7 +3650,7 @@ class DropLiveStreamRequest(AbstractModel):
         :type StreamName: str
         :param DomainName: 您的加速域名。
         :type DomainName: str
-        :param AppName: 应用名称。
+        :param AppName: 推流路径，与推流和播放地址中的AppName保持一致，默认为 live。
         :type AppName: str
         """
         self.StreamName = None
@@ -3748,7 +3756,7 @@ class ForbidLiveStreamRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param AppName: 应用名称。
+        :param AppName: 推流路径，与推流和播放地址中的AppName保持一致，默认为 live。
         :type AppName: str
         :param DomainName: 您的加速域名。
         :type DomainName: str
@@ -4872,9 +4880,9 @@ class ResumeDelayLiveStreamRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param AppName: 应用名称。
+        :param AppName: 推流路径，与推流和播放地址中的AppName保持一致，默认为live。
         :type AppName: str
-        :param DomainName: 您的加速域名。
+        :param DomainName: 推流域名。
         :type DomainName: str
         :param StreamName: 流名称。
         :type StreamName: str
@@ -4914,7 +4922,7 @@ class ResumeLiveStreamRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param AppName: 应用名称。
+        :param AppName: 推流路径，与推流和播放地址中的AppName保持一致，默认为 live。
         :type AppName: str
         :param DomainName: 您的加速域名。
         :type DomainName: str

@@ -49,6 +49,12 @@ class AgentAuditedClient(AbstractModel):
         :type ClientType: str
         :param ProjectType: 项目类型：可以为self(自拓项目)/platform(合作项目)/repeat(复算项目  )/空
         :type ProjectType: str
+        :param SalesUin: 业务员ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SalesUin: str
+        :param SalesName: 业务员姓名
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SalesName: str
         """
         self.Uin = None
         self.ClientUin = None
@@ -63,6 +69,8 @@ class AgentAuditedClient(AbstractModel):
         self.HasOverdueBill = None
         self.ClientType = None
         self.ProjectType = None
+        self.SalesUin = None
+        self.SalesName = None
 
 
     def _deserialize(self, params):
@@ -79,6 +87,8 @@ class AgentAuditedClient(AbstractModel):
         self.HasOverdueBill = params.get("HasOverdueBill")
         self.ClientType = params.get("ClientType")
         self.ProjectType = params.get("ProjectType")
+        self.SalesUin = params.get("SalesUin")
+        self.SalesName = params.get("SalesName")
 
 
 class AgentBillElem(AbstractModel):
@@ -189,6 +199,132 @@ class AgentClientElem(AbstractModel):
         self.Status = params.get("Status")
 
 
+class AgentDealElem(AbstractModel):
+    """描述代理商代付的订单信息
+
+    """
+
+    def __init__(self):
+        """
+        :param DealId: 订单自增 ID
+        :type DealId: str
+        :param DealName: 订单号
+        :type DealName: str
+        :param GoodsCategoryId: 商品类型 ID
+        :type GoodsCategoryId: str
+        :param OwnerUin: 订单所有者
+        :type OwnerUin: str
+        :param AppId: 订单所有者对应 appId
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AppId: str
+        :param GoodsNum: 商品数量
+注意：此字段可能返回 null，表示取不到有效值。
+        :type GoodsNum: str
+        :param GoodsPrice: 价格详情
+注意：此字段可能返回 null，表示取不到有效值。
+        :type GoodsPrice: :class:`tencentcloud.partners.v20180321.models.DealGoodsPriceElem`
+        :param Creater: 下单人
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Creater: str
+        :param CreatTime: 下单时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CreatTime: str
+        :param PayEndTime: 支付结束时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PayEndTime: str
+        :param BillId: 扣费流水号
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BillId: str
+        :param Payer: 支付人
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Payer: str
+        :param DealStatus: 订单状态，中文描述
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DealStatus: str
+        :param Status: 订单的状态(1：未支付;2：已支付;3：发货中;4：已发货;5：发货失败;6：已退款;7：已关单;8：订单过期;9：订单已失效;10：产品已失效;11：代付拒绝;12：支付中)
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Status: str
+        :param GoodsName: 产品名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type GoodsName: str
+        :param ClientRemark: 客户备注
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ClientRemark: str
+        :param ActionType: 订单操作类型，purchase（新购），renew（续费），modify（配置变更）
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ActionType: str
+        :param VoucherDecline: 代金券抵扣金额，单位分
+注意：此字段可能返回 null，表示取不到有效值。
+        :type VoucherDecline: str
+        :param BigDealId: 大订单号
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BigDealId: str
+        :param ClientType: 客户类型（new：新拓；old：存量；assign：指派）
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ClientType: str
+        :param ProjectType: 项目类型（self：自拓；repeat：直销；platform：官网合作）
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ProjectType: str
+        :param SalesUin: 业务员账号ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SalesUin: str
+        :param PayerMode: 支付方式，0：自付；1：代付
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PayerMode: str
+        """
+        self.DealId = None
+        self.DealName = None
+        self.GoodsCategoryId = None
+        self.OwnerUin = None
+        self.AppId = None
+        self.GoodsNum = None
+        self.GoodsPrice = None
+        self.Creater = None
+        self.CreatTime = None
+        self.PayEndTime = None
+        self.BillId = None
+        self.Payer = None
+        self.DealStatus = None
+        self.Status = None
+        self.GoodsName = None
+        self.ClientRemark = None
+        self.ActionType = None
+        self.VoucherDecline = None
+        self.BigDealId = None
+        self.ClientType = None
+        self.ProjectType = None
+        self.SalesUin = None
+        self.PayerMode = None
+
+
+    def _deserialize(self, params):
+        self.DealId = params.get("DealId")
+        self.DealName = params.get("DealName")
+        self.GoodsCategoryId = params.get("GoodsCategoryId")
+        self.OwnerUin = params.get("OwnerUin")
+        self.AppId = params.get("AppId")
+        self.GoodsNum = params.get("GoodsNum")
+        if params.get("GoodsPrice") is not None:
+            self.GoodsPrice = DealGoodsPriceElem()
+            self.GoodsPrice._deserialize(params.get("GoodsPrice"))
+        self.Creater = params.get("Creater")
+        self.CreatTime = params.get("CreatTime")
+        self.PayEndTime = params.get("PayEndTime")
+        self.BillId = params.get("BillId")
+        self.Payer = params.get("Payer")
+        self.DealStatus = params.get("DealStatus")
+        self.Status = params.get("Status")
+        self.GoodsName = params.get("GoodsName")
+        self.ClientRemark = params.get("ClientRemark")
+        self.ActionType = params.get("ActionType")
+        self.VoucherDecline = params.get("VoucherDecline")
+        self.BigDealId = params.get("BigDealId")
+        self.ClientType = params.get("ClientType")
+        self.ProjectType = params.get("ProjectType")
+        self.SalesUin = params.get("SalesUin")
+        self.PayerMode = params.get("PayerMode")
+
+
 class AgentPayDealsRequest(AbstractModel):
     """AgentPayDeals请求参数结构体
 
@@ -229,6 +365,35 @@ class AgentPayDealsResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
+
+
+class AgentSalesmanElem(AbstractModel):
+    """代理商业务员信息
+
+    """
+
+    def __init__(self):
+        """
+        :param Uin: 代理商账号ID
+        :type Uin: str
+        :param SalesUin: 业务员ID
+        :type SalesUin: str
+        :param SalesName: 业务员姓名
+        :type SalesName: str
+        :param CreateTime: 业务员创建时间
+        :type CreateTime: str
+        """
+        self.Uin = None
+        self.SalesUin = None
+        self.SalesName = None
+        self.CreateTime = None
+
+
+    def _deserialize(self, params):
+        self.Uin = params.get("Uin")
+        self.SalesUin = params.get("SalesUin")
+        self.SalesName = params.get("SalesName")
+        self.CreateTime = params.get("CreateTime")
 
 
 class AgentTransferMoneyRequest(AbstractModel):
@@ -327,6 +492,23 @@ class AuditApplyClientResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DealGoodsPriceElem(AbstractModel):
+    """订单价格详情
+
+    """
+
+    def __init__(self):
+        """
+        :param RealTotalCost: 实付金额
+        :type RealTotalCost: int
+        """
+        self.RealTotalCost = None
+
+
+    def _deserialize(self, params):
+        self.RealTotalCost = params.get("RealTotalCost")
+
+
 class DescribeAgentAuditedClientsRequest(AbstractModel):
     """DescribeAgentAuditedClients请求参数结构体
 
@@ -356,6 +538,10 @@ class DescribeAgentAuditedClientsRequest(AbstractModel):
         :type ClientType: str
         :param ProjectType: 项目类型：可以为self(自拓项目)/platform(合作项目)/repeat(复算项目  )/空
         :type ProjectType: str
+        :param SalesUin: 业务员ID
+        :type SalesUin: str
+        :param SalesName: 业务员姓名（模糊查询）
+        :type SalesName: str
         """
         self.ClientUin = None
         self.ClientName = None
@@ -368,6 +554,8 @@ class DescribeAgentAuditedClientsRequest(AbstractModel):
         self.Limit = None
         self.ClientType = None
         self.ProjectType = None
+        self.SalesUin = None
+        self.SalesName = None
 
 
     def _deserialize(self, params):
@@ -382,6 +570,8 @@ class DescribeAgentAuditedClientsRequest(AbstractModel):
         self.Limit = params.get("Limit")
         self.ClientType = params.get("ClientType")
         self.ProjectType = params.get("ProjectType")
+        self.SalesUin = params.get("SalesUin")
+        self.SalesName = params.get("SalesName")
 
 
 class DescribeAgentAuditedClientsResponse(AbstractModel):
@@ -552,6 +742,160 @@ class DescribeAgentClientsResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeAgentDealsCacheRequest(AbstractModel):
+    """DescribeAgentDealsCache请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Offset: 偏移量
+        :type Offset: int
+        :param Limit: 限制数目
+        :type Limit: int
+        :param CreatTimeRangeStart: 下单时间范围起始点
+        :type CreatTimeRangeStart: str
+        :param CreatTimeRangeEnd: 下单时间范围终止点
+        :type CreatTimeRangeEnd: str
+        :param Order: 0:下单时间降序；其他：下单时间升序
+        :type Order: int
+        :param Status: 订单的状态(1：未支付;2：已支付;3：发货中;4：已发货;5：发货失败;6：已退款;7：已关单;8：订单过期;9：订单已失效;10：产品已失效;11：代付拒绝;12：支付中)
+        :type Status: int
+        :param OwnerUins: 下单人账号ID列表
+        :type OwnerUins: list of str
+        :param DealNames: 订单号列表
+        :type DealNames: list of str
+        :param PayerMode: 支付方式，0：自付；1：代付
+        :type PayerMode: int
+        """
+        self.Offset = None
+        self.Limit = None
+        self.CreatTimeRangeStart = None
+        self.CreatTimeRangeEnd = None
+        self.Order = None
+        self.Status = None
+        self.OwnerUins = None
+        self.DealNames = None
+        self.PayerMode = None
+
+
+    def _deserialize(self, params):
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+        self.CreatTimeRangeStart = params.get("CreatTimeRangeStart")
+        self.CreatTimeRangeEnd = params.get("CreatTimeRangeEnd")
+        self.Order = params.get("Order")
+        self.Status = params.get("Status")
+        self.OwnerUins = params.get("OwnerUins")
+        self.DealNames = params.get("DealNames")
+        self.PayerMode = params.get("PayerMode")
+
+
+class DescribeAgentDealsCacheResponse(AbstractModel):
+    """DescribeAgentDealsCache返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param AgentDealSet: 订单数组
+        :type AgentDealSet: list of AgentDealElem
+        :param TotalCount: 符合条件的订单总数量
+        :type TotalCount: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.AgentDealSet = None
+        self.TotalCount = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("AgentDealSet") is not None:
+            self.AgentDealSet = []
+            for item in params.get("AgentDealSet"):
+                obj = AgentDealElem()
+                obj._deserialize(item)
+                self.AgentDealSet.append(obj)
+        self.TotalCount = params.get("TotalCount")
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeAgentPayDealsRequest(AbstractModel):
+    """DescribeAgentPayDeals请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Offset: 偏移量
+        :type Offset: int
+        :param Limit: 限制数目
+        :type Limit: int
+        :param CreatTimeRangeStart: 下单时间范围起始点
+        :type CreatTimeRangeStart: str
+        :param CreatTimeRangeEnd: 下单时间范围终止点
+        :type CreatTimeRangeEnd: str
+        :param Order: 0:下单时间降序；其他：下单时间升序
+        :type Order: int
+        :param Status: 订单的状态(1：未支付;2：已支付;3：发货中;4：已发货;5：发货失败;6：已退款;7：已关单;8：订单过期;9：订单已失效;10：产品已失效;11：代付拒绝;12：支付中)
+        :type Status: int
+        :param OwnerUins: 下单人账号ID列表
+        :type OwnerUins: list of str
+        :param DealNames: 订单号列表
+        :type DealNames: list of str
+        """
+        self.Offset = None
+        self.Limit = None
+        self.CreatTimeRangeStart = None
+        self.CreatTimeRangeEnd = None
+        self.Order = None
+        self.Status = None
+        self.OwnerUins = None
+        self.DealNames = None
+
+
+    def _deserialize(self, params):
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+        self.CreatTimeRangeStart = params.get("CreatTimeRangeStart")
+        self.CreatTimeRangeEnd = params.get("CreatTimeRangeEnd")
+        self.Order = params.get("Order")
+        self.Status = params.get("Status")
+        self.OwnerUins = params.get("OwnerUins")
+        self.DealNames = params.get("DealNames")
+
+
+class DescribeAgentPayDealsResponse(AbstractModel):
+    """DescribeAgentPayDeals返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param AgentPayDealSet: 订单数组
+        :type AgentPayDealSet: list of AgentDealElem
+        :param TotalCount: 符合条件的订单总数量
+        :type TotalCount: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.AgentPayDealSet = None
+        self.TotalCount = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("AgentPayDealSet") is not None:
+            self.AgentPayDealSet = []
+            for item in params.get("AgentPayDealSet"):
+                obj = AgentDealElem()
+                obj._deserialize(item)
+                self.AgentPayDealSet.append(obj)
+        self.TotalCount = params.get("TotalCount")
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeClientBalanceRequest(AbstractModel):
     """DescribeClientBalance请求参数结构体
 
@@ -641,6 +985,69 @@ class DescribeRebateInfosResponse(AbstractModel):
                 obj = RebateInfoElem()
                 obj._deserialize(item)
                 self.RebateInfoSet.append(obj)
+        self.TotalCount = params.get("TotalCount")
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeSalesmansRequest(AbstractModel):
+    """DescribeSalesmans请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Offset: 偏移量
+        :type Offset: int
+        :param Limit: 限制数目
+        :type Limit: int
+        :param SalesName: 业务员姓名(模糊查询)
+        :type SalesName: str
+        :param SalesUin: 业务员ID
+        :type SalesUin: str
+        :param OrderDirection: ASC/DESC， 不区分大小写，按创建通过时间排序
+        :type OrderDirection: str
+        """
+        self.Offset = None
+        self.Limit = None
+        self.SalesName = None
+        self.SalesUin = None
+        self.OrderDirection = None
+
+
+    def _deserialize(self, params):
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+        self.SalesName = params.get("SalesName")
+        self.SalesUin = params.get("SalesUin")
+        self.OrderDirection = params.get("OrderDirection")
+
+
+class DescribeSalesmansResponse(AbstractModel):
+    """DescribeSalesmans返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param AgentSalesmanSet: 业务员列表
+        :type AgentSalesmanSet: list of AgentSalesmanElem
+        :param TotalCount: 符合条件的代客总数
+        :type TotalCount: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.AgentSalesmanSet = None
+        self.TotalCount = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("AgentSalesmanSet") is not None:
+            self.AgentSalesmanSet = []
+            for item in params.get("AgentSalesmanSet"):
+                obj = AgentSalesmanElem()
+                obj._deserialize(item)
+                self.AgentSalesmanSet.append(obj)
         self.TotalCount = params.get("TotalCount")
         self.RequestId = params.get("RequestId")
 

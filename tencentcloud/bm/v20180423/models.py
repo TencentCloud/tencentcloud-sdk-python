@@ -122,7 +122,7 @@ class BuyDevicesRequest(AbstractModel):
         :param Aliases: 设备名称列表
         :type Aliases: list of str
         :param CpuId: CPU型号ID，自定义机型需要传入，取值：
-<br/><li>1: E5-2620v3 (6核) &#42; 2</li><li>2: E5-2680v4 (14核) &#42; 2</li><li>3: E5-2670v3 (12核) &#42; 2</li><li>4: E5-2620v4 (8核) &#42; 2</li><li>5: 4110 (8核) &#42; 2</li><li>6: 6133 (20核) &#42; 2</li><br/>
+<br/><li>1: E5-2620v3 (6核) * 2</li><li>2: E5-2680v4 (14核) * 2</li><li>3: E5-2670v3 (12核) * 2</li><li>4: E5-2620v4 (8核) * 2</li><li>5: 4110 (8核) * 2</li><li>6: 6133 (20核) * 2</li><br/>
         :type CpuId: int
         :param ContainRaidCard: 是否有RAID卡，取值：1(有) 0(无)，自定义机型需要传入
         :type ContainRaidCard: int
@@ -2451,6 +2451,8 @@ class DevicePartition(AbstractModel):
         :type SysUsrlocalSpace: int
         :param SysDataSpace: data分区大小
         :type SysDataSpace: int
+        :param DeviceDiskSizeInfoSet: 硬盘大小详情
+        :type DeviceDiskSizeInfoSet: list of DeviceDiskSizeInfo
         """
         self.SystemDiskSize = None
         self.DataDiskSize = None
@@ -2459,6 +2461,7 @@ class DevicePartition(AbstractModel):
         self.SysSwaporuefiSpace = None
         self.SysUsrlocalSpace = None
         self.SysDataSpace = None
+        self.DeviceDiskSizeInfoSet = None
 
 
     def _deserialize(self, params):
@@ -2469,6 +2472,12 @@ class DevicePartition(AbstractModel):
         self.SysSwaporuefiSpace = params.get("SysSwaporuefiSpace")
         self.SysUsrlocalSpace = params.get("SysUsrlocalSpace")
         self.SysDataSpace = params.get("SysDataSpace")
+        if params.get("DeviceDiskSizeInfoSet") is not None:
+            self.DeviceDiskSizeInfoSet = []
+            for item in params.get("DeviceDiskSizeInfoSet"):
+                obj = DeviceDiskSizeInfo()
+                obj._deserialize(item)
+                self.DeviceDiskSizeInfoSet.append(obj)
 
 
 class DevicePositionInfo(AbstractModel):

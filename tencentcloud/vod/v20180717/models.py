@@ -201,12 +201,22 @@ class AdaptiveDynamicStreamingTaskInput(AbstractModel):
         """
         :param Definition: 转自适应码流模板 ID。
         :type Definition: int
+        :param WatermarkSet: 水印列表，支持多张图片或文字水印，最大可支持 10 张。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type WatermarkSet: list of WatermarkInput
         """
         self.Definition = None
+        self.WatermarkSet = None
 
 
     def _deserialize(self, params):
         self.Definition = params.get("Definition")
+        if params.get("WatermarkSet") is not None:
+            self.WatermarkSet = []
+            for item in params.get("WatermarkSet"):
+                obj = WatermarkInput()
+                obj._deserialize(item)
+                self.WatermarkSet.append(obj)
 
 
 class AiAnalysisResult(AbstractModel):
@@ -2342,6 +2352,7 @@ class AiSampleFaceOperation(AbstractModel):
         :param FaceContents: 人脸图片 [Base64](https://tools.ietf.org/html/rfc4648) 编码后的字符串集合。
 <li>当 Type为add 或 reset 时，该字段必填；</li>
 <li>数组长度限制：5 张图片。</li>
+注意：图片必须是单人像正面人脸较清晰的照片，像素不低于 200*200。
         :type FaceContents: list of str
         """
         self.Type = None
@@ -2807,6 +2818,124 @@ class AudioTemplateInfoForUpdate(AbstractModel):
         self.AudioChannel = params.get("AudioChannel")
 
 
+class AudioTrackItem(AbstractModel):
+    """音频轨道上的音频片段信息。
+
+    """
+
+    def __init__(self):
+        """
+        :param SourceMedia: 音频素材的媒体文件来源。可以是点播的文件 ID，也可以是其它文件的 URL。
+        :type SourceMedia: str
+        :param SourceMediaStartTime: 音频片段取自素材文件的起始时间，单位为秒。0 表示从素材开始位置截取。默认为0。
+        :type SourceMediaStartTime: float
+        :param Duration: 音频片段的时长，单位为秒。默认和素材本身长度一致，表示截取全部素材。
+        :type Duration: float
+        :param AudioOperations: 对音频片段进行的操作，如音量调节等。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AudioOperations: list of AudioTransform
+        """
+        self.SourceMedia = None
+        self.SourceMediaStartTime = None
+        self.Duration = None
+        self.AudioOperations = None
+
+
+    def _deserialize(self, params):
+        self.SourceMedia = params.get("SourceMedia")
+        self.SourceMediaStartTime = params.get("SourceMediaStartTime")
+        self.Duration = params.get("Duration")
+        if params.get("AudioOperations") is not None:
+            self.AudioOperations = []
+            for item in params.get("AudioOperations"):
+                obj = AudioTransform()
+                obj._deserialize(item)
+                self.AudioOperations.append(obj)
+
+
+class AudioTransform(AbstractModel):
+    """音频操作
+
+    """
+
+    def __init__(self):
+        """
+        :param Type: 音频操作类型，取值有：
+<li>Volume：音量调节。</li>
+        :type Type: str
+        :param VolumeParam: 音量调节参数， 当 Type = Volume 时有效。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type VolumeParam: :class:`tencentcloud.vod.v20180717.models.AudioVolumeParam`
+        """
+        self.Type = None
+        self.VolumeParam = None
+
+
+    def _deserialize(self, params):
+        self.Type = params.get("Type")
+        if params.get("VolumeParam") is not None:
+            self.VolumeParam = AudioVolumeParam()
+            self.VolumeParam._deserialize(params.get("VolumeParam"))
+
+
+class AudioVolumeParam(AbstractModel):
+    """音频增益调节参数
+
+    """
+
+    def __init__(self):
+        """
+        :param Gain: 音频增益，取值范围0~10。仅在Mute=0时生效。
+<li>大于1表示增加音量。</li>
+<li>小于1表示降低音量。</li>
+<li>1：表示不改变。</li>
+默认是1。
+        :type Gain: float
+        :param Mute: 是否静音，取值范围0或1。
+<li>0表示不静音。</li>
+<li>1表示静音。</li>
+默认是0。
+        :type Mute: int
+        """
+        self.Gain = None
+        self.Mute = None
+
+
+    def _deserialize(self, params):
+        self.Gain = params.get("Gain")
+        self.Mute = params.get("Mute")
+
+
+class Canvas(AbstractModel):
+    """画布信息。制作视频时，如果源素材（视频或者图片）不能填满输出的视频窗口，将用设置的画布进行背景绘制。
+
+    """
+
+    def __init__(self):
+        """
+        :param Color: 背景颜色，取值有：
+<li>Black：黑色背景</li>
+<li>White：白色背景</li>
+默认值：Black。
+        :type Color: str
+        :param Width: 画布宽度，即输出视频的宽度，取值范围：0~ 4096，单位：px。
+默认值：0，表示和第一个视频轨的第一个视频片段的视频宽度一致。
+        :type Width: int
+        :param Height: 画布高度，即输出视频的高度（或长边），取值范围：0~ 4096，单位：px。
+默认值：0，表示和第一个视频轨的第一个视频片段的视频高度一致。
+        :type Height: int
+        """
+        self.Color = None
+        self.Width = None
+        self.Height = None
+
+
+    def _deserialize(self, params):
+        self.Color = params.get("Color")
+        self.Width = params.get("Width")
+        self.Height = params.get("Height")
+
+
 class ClassificationConfigureInfo(AbstractModel):
     """智能分类任务控制参数
 
@@ -2962,6 +3091,169 @@ class CommitUploadResponse(AbstractModel):
         self.MediaUrl = params.get("MediaUrl")
         self.CoverUrl = params.get("CoverUrl")
         self.RequestId = params.get("RequestId")
+
+
+class ComposeMediaOutput(AbstractModel):
+    """输出的媒体文件信息。
+
+    """
+
+    def __init__(self):
+        """
+        :param FileName: 文件名称，最长 64 个字符。
+        :type FileName: str
+        :param Description: 描述信息，最长 128 个字符。
+        :type Description: str
+        :param Container: 封装格式，可选值：mp4、mp3。其中，mp3 为纯音频文件。
+        :type Container: str
+        :param VideoStream: 输出的视频信息。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type VideoStream: :class:`tencentcloud.vod.v20180717.models.OutputVideoStream`
+        :param AudioStream: 输出的音频信息。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AudioStream: :class:`tencentcloud.vod.v20180717.models.OutputAudioStream`
+        :param RemoveVideo: 是否去除视频数据，可选值：
+<li>0：保留</li>
+<li>1：去除</li>
+默认值：0。
+        :type RemoveVideo: int
+        :param RemoveAudio: 是否去除音频数据，可选值：
+<li>0：保留</li>
+<li>1：去除</li>
+默认值：0。
+        :type RemoveAudio: int
+        """
+        self.FileName = None
+        self.Description = None
+        self.Container = None
+        self.VideoStream = None
+        self.AudioStream = None
+        self.RemoveVideo = None
+        self.RemoveAudio = None
+
+
+    def _deserialize(self, params):
+        self.FileName = params.get("FileName")
+        self.Description = params.get("Description")
+        self.Container = params.get("Container")
+        if params.get("VideoStream") is not None:
+            self.VideoStream = OutputVideoStream()
+            self.VideoStream._deserialize(params.get("VideoStream"))
+        if params.get("AudioStream") is not None:
+            self.AudioStream = OutputAudioStream()
+            self.AudioStream._deserialize(params.get("AudioStream"))
+        self.RemoveVideo = params.get("RemoveVideo")
+        self.RemoveAudio = params.get("RemoveAudio")
+
+
+class ComposeMediaTask(AbstractModel):
+    """制作媒体文件任务信息
+
+    """
+
+    def __init__(self):
+        """
+        :param TaskId: 任务 ID。
+        :type TaskId: str
+        :param Status: 任务流状态，取值：
+<li>PROCESSING：处理中；</li>
+<li>FINISH：已完成。</li>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Status: str
+        :param ErrCode: 错误码
+<li>0：成功；</li>
+<li>其他值：失败。</li>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ErrCode: int
+        :param Message: 错误信息。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Message: str
+        :param Input: 制作媒体文件任务的输入。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Input: :class:`tencentcloud.vod.v20180717.models.ComposeMediaTaskInput`
+        :param Output: 制作媒体文件任务的输出。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Output: :class:`tencentcloud.vod.v20180717.models.ComposeMediaTaskOutput`
+        """
+        self.TaskId = None
+        self.Status = None
+        self.ErrCode = None
+        self.Message = None
+        self.Input = None
+        self.Output = None
+
+
+    def _deserialize(self, params):
+        self.TaskId = params.get("TaskId")
+        self.Status = params.get("Status")
+        self.ErrCode = params.get("ErrCode")
+        self.Message = params.get("Message")
+        if params.get("Input") is not None:
+            self.Input = ComposeMediaTaskInput()
+            self.Input._deserialize(params.get("Input"))
+        if params.get("Output") is not None:
+            self.Output = ComposeMediaTaskOutput()
+            self.Output._deserialize(params.get("Output"))
+
+
+class ComposeMediaTaskInput(AbstractModel):
+    """制作媒体文件任务的输入。
+
+    """
+
+    def __init__(self):
+        """
+        :param Tracks: 输入的媒体轨道列表，包括视频、音频、图片等素材组成的多个轨道信息。
+        :type Tracks: list of MediaTrack
+        :param Canvas: 制作视频文件时使用的画布。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Canvas: :class:`tencentcloud.vod.v20180717.models.Canvas`
+        :param Output: 输出的媒体文件信息。
+        :type Output: :class:`tencentcloud.vod.v20180717.models.ComposeMediaOutput`
+        """
+        self.Tracks = None
+        self.Canvas = None
+        self.Output = None
+
+
+    def _deserialize(self, params):
+        if params.get("Tracks") is not None:
+            self.Tracks = []
+            for item in params.get("Tracks"):
+                obj = MediaTrack()
+                obj._deserialize(item)
+                self.Tracks.append(obj)
+        if params.get("Canvas") is not None:
+            self.Canvas = Canvas()
+            self.Canvas._deserialize(params.get("Canvas"))
+        if params.get("Output") is not None:
+            self.Output = ComposeMediaOutput()
+            self.Output._deserialize(params.get("Output"))
+
+
+class ComposeMediaTaskOutput(AbstractModel):
+    """制作媒体文件任务的输出。
+
+    """
+
+    def __init__(self):
+        """
+        :param FileType: 文件类型，例如 mp4、mp3 等。
+        :type FileType: str
+        :param FileId: 媒体文件 ID。
+        :type FileId: str
+        :param FileUrl: 媒体文件播放地址。
+        :type FileUrl: str
+        """
+        self.FileType = None
+        self.FileId = None
+        self.FileUrl = None
+
+
+    def _deserialize(self, params):
+        self.FileType = params.get("FileType")
+        self.FileId = params.get("FileId")
+        self.FileUrl = params.get("FileUrl")
 
 
 class ConcatFileInfo2017(AbstractModel):
@@ -3585,6 +3877,7 @@ class CreatePersonSampleRequest(AbstractModel):
         :param Name: 人物名称，长度限制：20 个字符。
         :type Name: str
         :param FaceContents: 人脸图片 [Base64](https://tools.ietf.org/html/rfc4648) 编码后的字符串，仅支持 jpeg、png 图片格式。数组长度限制：5 张图片。
+注意：图片必须是单人像正面人脸较清晰的照片，像素不低于 200*200。
         :type FaceContents: list of str
         :param Usages: 人物应用场景，可选值：
 1. Recognition：用于内容识别，等价于 Recognition.Face。
@@ -4568,6 +4861,7 @@ class DescribeMediaInfosRequest(AbstractModel):
 <li>snapshotByTimeOffsetInfo（视频指定时间点截图信息）。</li>
 <li>sampleSnapshotInfo（采样截图信息）。</li>
 <li>keyFrameDescInfo（打点信息）。</li>
+<li>adaptiveDynamicStreamingInfo（转自适应码流信息）。</li>
         :type Filters: list of str
         :param SubAppId: 点播[子应用](/document/product/266/14574) ID 。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
         :type SubAppId: int
@@ -5396,6 +5690,23 @@ class EditMediaTaskOutput(AbstractModel):
         self.FileUrl = params.get("FileUrl")
 
 
+class EmptyTrackItem(AbstractModel):
+    """空的轨道片段，用来进行时间轴的占位。如需要两个音频片段之间有一段时间的静音，可以用 EmptyTrackItem 来进行占位。
+
+    """
+
+    def __init__(self):
+        """
+        :param Duration: 持续时间，单位为秒。
+        :type Duration: float
+        """
+        self.Duration = None
+
+
+    def _deserialize(self, params):
+        self.Duration = params.get("Duration")
+
+
 class EventContent(AbstractModel):
     """事件通知内容，其中，TranscodeCompleteEvent、ConcatCompleteEvent、ClipCompleteEvent、CreateImageSpriteCompleteEvent、SnapshotByTimeOffsetCompleteEvent 为兼容 2017 版接口发起任务的事件通知。
 
@@ -5411,7 +5722,9 @@ class EventContent(AbstractModel):
 <li>FileDeleted：视频删除完成；</li>
 <li>PullComplete：视频转拉完成；</li>
 <li>EditMediaComplete：视频编辑完成；</li>
-<li>WechatPublishComplete：微信发布完成。</li>
+<li>WechatPublishComplete：微信发布完成；</li>
+<li>ComposeMediaComplete：制作媒体文件完成；</li>
+<li>WechatMiniProgramPublishComplete：微信小程序发布完成。</li>
 <b>兼容 2017 版的事件类型：</b>
 <li>TranscodeComplete：视频转码完成；</li>
 <li>ConcatComplete：视频拼接完成；</li>
@@ -5452,6 +5765,12 @@ class EventContent(AbstractModel):
         :param SnapshotByTimeOffsetCompleteEvent: 视频按时间点截图完成事件，当事件类型为 CreateSnapshotByTimeOffsetComplete 时有效。
 注意：此字段可能返回 null，表示取不到有效值。
         :type SnapshotByTimeOffsetCompleteEvent: :class:`tencentcloud.vod.v20180717.models.SnapshotByTimeOffsetTask2017`
+        :param ComposeMediaCompleteEvent: 制作媒体文件任务完成事件，当事件类型为 ComposeMediaComplete 时有效。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ComposeMediaCompleteEvent: :class:`tencentcloud.vod.v20180717.models.ComposeMediaTask`
+        :param WechatMiniProgramPublishEvent: 微信小程序视频发布完成事件，当事件类型为 WechatMiniProgramPublishComplete 时有效。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type WechatMiniProgramPublishEvent: :class:`tencentcloud.vod.v20180717.models.WechatMiniProgramPublishTask`
         """
         self.EventHandle = None
         self.EventType = None
@@ -5466,6 +5785,8 @@ class EventContent(AbstractModel):
         self.ClipCompleteEvent = None
         self.CreateImageSpriteCompleteEvent = None
         self.SnapshotByTimeOffsetCompleteEvent = None
+        self.ComposeMediaCompleteEvent = None
+        self.WechatMiniProgramPublishEvent = None
 
 
     def _deserialize(self, params):
@@ -5504,6 +5825,12 @@ class EventContent(AbstractModel):
         if params.get("SnapshotByTimeOffsetCompleteEvent") is not None:
             self.SnapshotByTimeOffsetCompleteEvent = SnapshotByTimeOffsetTask2017()
             self.SnapshotByTimeOffsetCompleteEvent._deserialize(params.get("SnapshotByTimeOffsetCompleteEvent"))
+        if params.get("ComposeMediaCompleteEvent") is not None:
+            self.ComposeMediaCompleteEvent = ComposeMediaTask()
+            self.ComposeMediaCompleteEvent._deserialize(params.get("ComposeMediaCompleteEvent"))
+        if params.get("WechatMiniProgramPublishEvent") is not None:
+            self.WechatMiniProgramPublishEvent = WechatMiniProgramPublishTask()
+            self.WechatMiniProgramPublishEvent._deserialize(params.get("WechatMiniProgramPublishEvent"))
 
 
 class FaceConfigureInfo(AbstractModel):
@@ -5737,6 +6064,36 @@ class ImageSpriteTaskInput(AbstractModel):
         self.Definition = params.get("Definition")
 
 
+class ImageTransform(AbstractModel):
+    """图像旋转、翻转等操作
+
+    """
+
+    def __init__(self):
+        """
+        :param Type: 类型，取值有：
+<li> Rotate：图像旋转。</li>
+<li> Flip：图像翻转。</li>
+        :type Type: str
+        :param RotateAngle: 图像以中心点为原点进行旋转的角度，取值范围0~360。当 Type = Rotate 时有效。
+        :type RotateAngle: float
+        :param Flip: 图像翻转动作，取值有：
+<li>Horizental：水平翻转，即左右镜像。</li>
+<li>Vertical：垂直翻转，即上下镜像。</li>
+当 Type = Flip 时有效。
+        :type Flip: str
+        """
+        self.Type = None
+        self.RotateAngle = None
+        self.Flip = None
+
+
+    def _deserialize(self, params):
+        self.Type = params.get("Type")
+        self.RotateAngle = params.get("RotateAngle")
+        self.Flip = params.get("Flip")
+
+
 class ImageWatermarkInput(AbstractModel):
     """图片水印模板输入参数
 
@@ -5909,6 +6266,29 @@ class LiveRealTimeClipResponse(AbstractModel):
             self.MetaData = MediaMetaData()
             self.MetaData._deserialize(params.get("MetaData"))
         self.RequestId = params.get("RequestId")
+
+
+class MediaAdaptiveDynamicStreamingInfo(AbstractModel):
+    """转自适应码流信息
+
+    """
+
+    def __init__(self):
+        """
+        :param AdaptiveDynamicStreamingSet: 转自适应码流信息数组。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AdaptiveDynamicStreamingSet: list of AdaptiveDynamicStreamingInfoItem
+        """
+        self.AdaptiveDynamicStreamingSet = None
+
+
+    def _deserialize(self, params):
+        if params.get("AdaptiveDynamicStreamingSet") is not None:
+            self.AdaptiveDynamicStreamingSet = []
+            for item in params.get("AdaptiveDynamicStreamingSet"):
+                obj = AdaptiveDynamicStreamingInfoItem()
+                obj._deserialize(item)
+                self.AdaptiveDynamicStreamingSet.append(obj)
 
 
 class MediaAiAnalysisClassificationItem(AbstractModel):
@@ -6585,6 +6965,9 @@ class MediaInfo(AbstractModel):
         :param KeyFrameDescInfo: 视频打点信息。对视频设置的各个打点信息。
 注意：此字段可能返回 null，表示取不到有效值。
         :type KeyFrameDescInfo: :class:`tencentcloud.vod.v20180717.models.MediaKeyFrameDescInfo`
+        :param AdaptiveDynamicStreamingInfo: 转自适应码流信息。包括规格、加密类型、打包格式等相关信息。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AdaptiveDynamicStreamingInfo: :class:`tencentcloud.vod.v20180717.models.MediaAdaptiveDynamicStreamingInfo`
         :param FileId: 媒体文件唯一标识 ID。
         :type FileId: str
         """
@@ -6596,6 +6979,7 @@ class MediaInfo(AbstractModel):
         self.ImageSpriteInfo = None
         self.SnapshotByTimeOffsetInfo = None
         self.KeyFrameDescInfo = None
+        self.AdaptiveDynamicStreamingInfo = None
         self.FileId = None
 
 
@@ -6624,6 +7008,9 @@ class MediaInfo(AbstractModel):
         if params.get("KeyFrameDescInfo") is not None:
             self.KeyFrameDescInfo = MediaKeyFrameDescInfo()
             self.KeyFrameDescInfo._deserialize(params.get("KeyFrameDescInfo"))
+        if params.get("AdaptiveDynamicStreamingInfo") is not None:
+            self.AdaptiveDynamicStreamingInfo = MediaAdaptiveDynamicStreamingInfo()
+            self.AdaptiveDynamicStreamingInfo._deserialize(params.get("AdaptiveDynamicStreamingInfo"))
         self.FileId = params.get("FileId")
 
 
@@ -7401,6 +7788,96 @@ class MediaSourceData(AbstractModel):
         self.SourceContext = params.get("SourceContext")
 
 
+class MediaTrack(AbstractModel):
+    """轨道信息
+
+    """
+
+    def __init__(self):
+        """
+        :param Type: 轨道类型，取值有：
+<ul>
+<li>Video ：视频轨道。视频轨道由以下 Item 组成：<ul><li>VideoTrackItem</li><li>MediaTransitionItem</li> <li>EmptyTrackItem</li></ul> </li>
+<li>Audio ：音频轨道。音频轨道由以下 Item 组成：<ul><li>AudioTrackItem</li><li>MediaTransitionItem</li><li>EmptyTrackItem</li></ul></li>
+<li>Sticker ：贴图轨道。贴图轨道以下 Item 组成：<ul><li> StickerTrackItem</li><li>EmptyTrackItem</li></ul></li>	
+</ul>
+        :type Type: str
+        :param TrackItems: 轨道上的媒体片段列表。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TrackItems: list of MediaTrackItem
+        """
+        self.Type = None
+        self.TrackItems = None
+
+
+    def _deserialize(self, params):
+        self.Type = params.get("Type")
+        if params.get("TrackItems") is not None:
+            self.TrackItems = []
+            for item in params.get("TrackItems"):
+                obj = MediaTrackItem()
+                obj._deserialize(item)
+                self.TrackItems.append(obj)
+
+
+class MediaTrackItem(AbstractModel):
+    """媒体轨道的片段信息
+
+    """
+
+    def __init__(self):
+        """
+        :param Type: 片段类型。取值有：
+<li>Video：视频片段。</li>
+<li>Audio：音频片段。</li>
+<li>Sticker：贴图片段。</li>
+<li>Transition：转场。</li>
+<li>Empty：空白片段。</li>
+        :type Type: str
+        :param VideoItem: 视频片段，当 Type = Video 时有效。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type VideoItem: :class:`tencentcloud.vod.v20180717.models.VideoTrackItem`
+        :param AudioItem: 音频片段，当 Type = Audio 时有效。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AudioItem: :class:`tencentcloud.vod.v20180717.models.AudioTrackItem`
+        :param StickerItem: 贴图片段，当 Type = Sticker 时有效。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type StickerItem: :class:`tencentcloud.vod.v20180717.models.StickerTrackItem`
+        :param TransitionItem: 转场，当 Type = Transition 时有效。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TransitionItem: :class:`tencentcloud.vod.v20180717.models.MediaTransitionItem`
+        :param EmptyItem: 空白片段，当 Type = Empty 时有效。空片段用于时间轴的占位。<li>如需要两个音频片段之间有一段时间的静音，可以用 EmptyTrackItem 来进行占位。</li>
+<li>使用 EmptyTrackItem 进行占位，来定位某个Item。</li>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EmptyItem: :class:`tencentcloud.vod.v20180717.models.EmptyTrackItem`
+        """
+        self.Type = None
+        self.VideoItem = None
+        self.AudioItem = None
+        self.StickerItem = None
+        self.TransitionItem = None
+        self.EmptyItem = None
+
+
+    def _deserialize(self, params):
+        self.Type = params.get("Type")
+        if params.get("VideoItem") is not None:
+            self.VideoItem = VideoTrackItem()
+            self.VideoItem._deserialize(params.get("VideoItem"))
+        if params.get("AudioItem") is not None:
+            self.AudioItem = AudioTrackItem()
+            self.AudioItem._deserialize(params.get("AudioItem"))
+        if params.get("StickerItem") is not None:
+            self.StickerItem = StickerTrackItem()
+            self.StickerItem._deserialize(params.get("StickerItem"))
+        if params.get("TransitionItem") is not None:
+            self.TransitionItem = MediaTransitionItem()
+            self.TransitionItem._deserialize(params.get("TransitionItem"))
+        if params.get("EmptyItem") is not None:
+            self.EmptyItem = EmptyTrackItem()
+            self.EmptyItem._deserialize(params.get("EmptyItem"))
+
+
 class MediaTranscodeInfo(AbstractModel):
     """点播文件转码信息
 
@@ -7500,6 +7977,33 @@ class MediaTranscodeItem(AbstractModel):
                 obj = MediaVideoStreamItem()
                 obj._deserialize(item)
                 self.VideoStreamSet.append(obj)
+
+
+class MediaTransitionItem(AbstractModel):
+    """转场信息
+
+    """
+
+    def __init__(self):
+        """
+        :param Duration: 转场持续时间，单位为秒。进行转场处理的两个媒体片段，第二个片段在轨道上的起始时间会自动进行调整，设置为前面一个片段的结束时间减去转场的持续时间。
+        :type Duration: float
+        :param Transitions: 转场操作列表。图像转场操作和音频转场操作各自最多支持一个。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Transitions: list of TransitionOpertion
+        """
+        self.Duration = None
+        self.Transitions = None
+
+
+    def _deserialize(self, params):
+        self.Duration = params.get("Duration")
+        if params.get("Transitions") is not None:
+            self.Transitions = []
+            for item in params.get("Transitions"):
+                obj = TransitionOpertion()
+                obj._deserialize(item)
+                self.Transitions.append(obj)
 
 
 class MediaVideoStreamItem(AbstractModel):
@@ -8357,6 +8861,67 @@ class OcrWordsConfigureInfoForUpdate(AbstractModel):
     def _deserialize(self, params):
         self.Switch = params.get("Switch")
         self.LabelSet = params.get("LabelSet")
+
+
+class OutputAudioStream(AbstractModel):
+    """输出的音频流信息
+
+    """
+
+    def __init__(self):
+        """
+        :param Codec: 音频流的编码格式，可选值：
+<li>libfdk_aac：适合 mp4 文件。</li>
+<li>libmp3lame：适合 mp3 文件。</li>
+默认值：libfdk_aac。
+        :type Codec: str
+        :param SampleRate: 音频流的采样率，可选值：
+<li>16000</li>
+<li>32000</li>
+<li>44100</li>
+<li>48000</li>
+单位：Hz。
+默认值：16000。
+        :type SampleRate: int
+        :param AudioChannel: 音频声道数，可选值：
+<li>1：单声道 。</li>
+<li>2：双声道</li>
+默认值：2。
+        :type AudioChannel: int
+        """
+        self.Codec = None
+        self.SampleRate = None
+        self.AudioChannel = None
+
+
+    def _deserialize(self, params):
+        self.Codec = params.get("Codec")
+        self.SampleRate = params.get("SampleRate")
+        self.AudioChannel = params.get("AudioChannel")
+
+
+class OutputVideoStream(AbstractModel):
+    """输出的视频流信息
+
+    """
+
+    def __init__(self):
+        """
+        :param Codec: 视频流的编码格式，可选值：
+<li>libx264：H.264 编码 </li>
+默认值：libx264。
+        :type Codec: str
+        :param Fps: 视频帧率，取值范围：[0, 60]，单位：Hz。
+默认值：0，表示和第一个视频轨的第一个视频片段的视频帧率一致。
+        :type Fps: int
+        """
+        self.Codec = None
+        self.Fps = None
+
+
+    def _deserialize(self, params):
+        self.Codec = params.get("Codec")
+        self.Fps = params.get("Fps")
 
 
 class PoliticalAsrReviewTemplateInfo(AbstractModel):
@@ -9302,25 +9867,24 @@ class PullFileTask(AbstractModel):
         :param ErrCode: 错误码
 <li>0：成功；</li>
 <li>其他值：失败。</li>
-注意：此字段可能返回 null，表示取不到有效值。
         :type ErrCode: int
         :param Message: 错误信息。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Message: str
         :param FileId: 转拉上传完成后生成的视频 ID。
-注意：此字段可能返回 null，表示取不到有效值。
         :type FileId: str
-        :param FileUrl: 转拉上传完成后生成的播放地址。
+        :param MediaBasicInfo: 上传完成后生成的媒体文件基础信息。
 注意：此字段可能返回 null，表示取不到有效值。
+        :type MediaBasicInfo: str
+        :param FileUrl: 转拉上传完成后生成的播放地址。
         :type FileUrl: str
         :param ProcedureTaskId: 若转拉上传时指定了视频处理流程，则该参数为流程任务 ID。
-注意：此字段可能返回 null，表示取不到有效值。
         :type ProcedureTaskId: str
         """
         self.TaskId = None
         self.ErrCode = None
         self.Message = None
         self.FileId = None
+        self.MediaBasicInfo = None
         self.FileUrl = None
         self.ProcedureTaskId = None
 
@@ -9330,6 +9894,7 @@ class PullFileTask(AbstractModel):
         self.ErrCode = params.get("ErrCode")
         self.Message = params.get("Message")
         self.FileId = params.get("FileId")
+        self.MediaBasicInfo = params.get("MediaBasicInfo")
         self.FileUrl = params.get("FileUrl")
         self.ProcedureTaskId = params.get("ProcedureTaskId")
 
@@ -9695,6 +10260,78 @@ class SortBy(AbstractModel):
     def _deserialize(self, params):
         self.Field = params.get("Field")
         self.Order = params.get("Order")
+
+
+class StickerTrackItem(AbstractModel):
+    """贴图轨上的贴图信息。
+
+    """
+
+    def __init__(self):
+        """
+        :param SourceMedia: 贴图素材的媒体文件来源。可以是点播的文件 ID，也可以是其它文件的 URL。
+        :type SourceMedia: str
+        :param Duration: 贴图的持续时间，单位为秒。
+        :type Duration: float
+        :param StartTime: 贴图在轨道上的起始时间，单位为秒。
+        :type StartTime: float
+        :param CoordinateOrigin: 原点位置，取值有：
+<li>Center：坐标原点为中心位置，如画布中心。</li>
+默认值：Center。
+        :type CoordinateOrigin: str
+        :param XPos: 贴图原点距离画布原点的水平位置。支持 %、px 两种格式：
+<li>当字符串以 % 结尾，表示贴图 XPos 为画布宽度指定百分比的位置，如 10% 表示 XPos 为画布宽度的 10%。</li><li>当字符串以 px 结尾，表示贴图 XPos 单位为像素，如 100px 表示 XPos 为 100 像素。</li>
+默认值：0px。
+        :type XPos: str
+        :param YPos: 贴图原点距离画布原点的垂直位置。支持 %、px 两种格式：
+<li>当字符串以 % 结尾，表示贴图 YPos 为画布高度指定百分比的位置，如 10% 表示 YPos 为画布高度的 10%。</li>
+<li>当字符串以 px 结尾，表示贴图 YPos 单位为像素，如 100px 表示 YPos 为 100 像素。</li>
+默认值：0px。
+        :type YPos: str
+        :param Width: 贴图的宽度。支持 %、px 两种格式：
+<li>当字符串以 % 结尾，表示贴图 Width 为画布宽度的百分比大小，如 10% 表示 Width 为画布宽度的 10%。</li>
+<li>当字符串以 px 结尾，表示贴图 Width 单位为像素，如 100px 表示 Width 为 100 像素。</li>
+<li>当 Width、Height 均为空，则 Width 和 Height 取贴图素材本身的 Width、Height。</li>
+<li>当 Width 为空0，Height 非空，则 Width 按比例缩放</li>
+<li>当 Width 非空，Height 为空，则 Height 按比例缩放。</li>
+        :type Width: str
+        :param Height: 贴图的高度。支持 %、px 两种格式：
+<li>当字符串以 % 结尾，表示贴图 Height 为画布高度的百分比大小，如 10% 表示 Height 为画布高度的 10%。</li>
+<li>当字符串以 px 结尾，表示贴图 Height 单位为像素，如 100px 表示 Hieght 为 100 像素。</li>
+<li>当 Width、Height 均为空，则 Width 和 Height 取贴图素材本身的 Width、Height。</li>
+<li>当 Width 为空，Height 非空，则 Width 按比例缩放</li>
+<li>当 Width 非空，Height 为空，则 Height 按比例缩放。</li>
+        :type Height: str
+        :param ImageOperations: 对贴图进行的操作，如图像旋转等。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ImageOperations: list of ImageTransform
+        """
+        self.SourceMedia = None
+        self.Duration = None
+        self.StartTime = None
+        self.CoordinateOrigin = None
+        self.XPos = None
+        self.YPos = None
+        self.Width = None
+        self.Height = None
+        self.ImageOperations = None
+
+
+    def _deserialize(self, params):
+        self.SourceMedia = params.get("SourceMedia")
+        self.Duration = params.get("Duration")
+        self.StartTime = params.get("StartTime")
+        self.CoordinateOrigin = params.get("CoordinateOrigin")
+        self.XPos = params.get("XPos")
+        self.YPos = params.get("YPos")
+        self.Width = params.get("Width")
+        self.Height = params.get("Height")
+        if params.get("ImageOperations") is not None:
+            self.ImageOperations = []
+            for item in params.get("ImageOperations"):
+                obj = ImageTransform()
+                obj._deserialize(item)
+                self.ImageOperations.append(obj)
 
 
 class SvgWatermarkInput(AbstractModel):
@@ -10258,6 +10895,69 @@ class TranscodeTemplate(AbstractModel):
         self.UpdateTime = params.get("UpdateTime")
 
 
+class TransitionOpertion(AbstractModel):
+    """转场操作
+
+    """
+
+    def __init__(self):
+        """
+        :param Type: 转场类型，取值有：
+<ul>
+<li>图像的转场操作，用于两个视频片段图像间的转场处理：
+<ul>
+<li>ImageFadeInFadeOut：图像淡入淡出。 </li>
+<li>BowTieHorizontal：水平蝴蝶结。 </li>
+<li>BowTieVertical：垂直蝴蝶结。 </li>
+<li>ButterflyWaveScrawler：晃动。 </li>
+<li>Cannabisleaf：枫叶。 </li>
+<li>Circle：弧形收放。 </li>
+<li>CircleCrop：圆环聚拢。 </li>
+<li>Circleopen：椭圆聚拢。 </li>
+<li>Crosswarp：横向翘曲。 </li>
+<li>Cube：立方体。 </li>
+<li>DoomScreenTransition：幕布。 </li>
+<li>Doorway：门廊。 </li>
+<li>Dreamy：波浪。 </li>
+<li>DreamyZoom：水平聚拢。 </li>
+<li>FilmBurn：火烧云。 </li>
+<li>GlitchMemories：抖动。 </li>
+<li>Heart：心形。 </li>
+<li>InvertedPageCurl：翻页。 </li>
+<li>Luma：腐蚀。 </li>
+<li>Mosaic：九宫格。 </li>
+<li>Pinwheel：风车。 </li>
+<li>PolarFunction：椭圆扩散。 </li>
+<li>PolkaDotsCurtain：弧形扩散。 </li>
+<li>Radial：雷达扫描 </li>
+<li>RotateScaleFade：上下收放。 </li>
+<li>Squeeze：上下聚拢。 </li>
+<li>Swap：放大切换。 </li>
+<li>Swirl：螺旋。 </li>
+<li>UndulatingBurnOutSwirl：水流蔓延。 </li>
+<li>Windowblinds：百叶窗。 </li>
+<li>WipeDown：向下收起。 </li>
+<li>WipeLeft：向左收起。 </li>
+<li>WipeRight：向右收起。 </li>
+<li>WipeUp：向上收起。 </li>
+<li>ZoomInCircles：水波纹。 </li>
+</ul>
+</li>
+<li>音频的转场操作，用于两个音频片段间的转场处理：
+<ul>
+<li>AudioFadeInFadeOut：声音淡入淡出。 </li>
+</ul>
+</li>
+</ul>
+        :type Type: str
+        """
+        self.Type = None
+
+
+    def _deserialize(self, params):
+        self.Type = params.get("Type")
+
+
 class UserDefineAsrTextReviewTemplateInfo(AbstractModel):
     """用户自定义语音审核任务控制参数
 
@@ -10621,6 +11321,89 @@ class VideoTemplateInfoForUpdate(AbstractModel):
         self.Height = params.get("Height")
 
 
+class VideoTrackItem(AbstractModel):
+    """视频轨的视频片段信息。
+
+    """
+
+    def __init__(self):
+        """
+        :param SourceMedia: 视频片段的媒体素材来源，可以是点播的文件 ID，或者是其它文件的 URL。
+        :type SourceMedia: str
+        :param SourceMediaStartTime: 视频片段取自素材文件的起始时间，单位为秒。默认为0。
+        :type SourceMediaStartTime: float
+        :param Duration: 视频片段时长，单位为秒。默认取视频素材本身长度，表示截取全部素材。如果源文件是图片，Duration需要大于0。
+        :type Duration: float
+        :param CoordinateOrigin: 视频原点位置，取值有：
+<li>Center：坐标原点为中心位置，如画布中心。</li>
+默认值 ：Center。
+        :type CoordinateOrigin: str
+        :param XPos: 视频片段原点距离画布原点的水平位置。支持 %、px 两种格式：
+<li>当字符串以 % 结尾，表示视频片段 XPos 为画布宽度指定百分比的位置，如 10% 表示 XPos 为画布口宽度的 10%。</li>
+<li>当字符串以 px 结尾，表示视频片段 XPos 单位为像素，如 100px 表示 XPos 为100像素。</li>
+默认值：0px。
+        :type XPos: str
+        :param YPos: 视频片段原点距离画布原点的垂直位置。支持 %、px 两种格式：
+<li>当字符串以 % 结尾，表示视频片段 YPos 为画布高度指定百分比的位置，如 10% 表示 YPos 为画布高度的 10%。</li>
+<li>当字符串以 px 结尾，表示视频片段 YPos 单位为像素，如 100px 表示 YPos 为100像素。</li>
+默认值：0px。
+        :type YPos: str
+        :param Width: 视频片段的宽度。支持 %、px 两种格式：
+<li>当字符串以 % 结尾，表示视频片段 Width 为画布宽度的百分比大小，如 10% 表示 Width 为画布宽度的 10%。</li>
+<li>当字符串以 px 结尾，表示视频片段 Width 单位为像素，如 100px 表示 Width 为100像素。</li>
+<li>当 Width、Height 均为空，则 Width 和 Height 取视频素材本身的 Width、Height。</li>
+<li>当 Width 为空，Height 非空，则 Width 按比例缩放</li>
+<li>当 Width 非空，Height 为空，则 Height 按比例缩放。</li>
+        :type Width: str
+        :param Height: 视频片段的高度。支持 %、px 两种格式：
+<li>当字符串以 % 结尾，表示视频片段 Height 为画布高度的百分比大小，如 10% 表示 Height 为画布高度的 10%；
+</li><li>当字符串以 px 结尾，表示视频片段 Height 单位为像素，如 100px 表示 Height 为100像素。</li>
+<li>当 Width、Height 均为空，则 Width 和 Height 取视频素材本身的 Width、Height。</li>
+<li>当 Width 为空，Height 非空，则 Width 按比例缩放</li>
+<li>当 Width 非空，Height 为空，则 Height 按比例缩放。</li>
+        :type Height: str
+        :param ImageOperations: 对图像进行的操作，如图像旋转等。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ImageOperations: list of ImageTransform
+        :param AudioOperations: 对音频进行操作，如静音等。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AudioOperations: list of AudioTransform
+        """
+        self.SourceMedia = None
+        self.SourceMediaStartTime = None
+        self.Duration = None
+        self.CoordinateOrigin = None
+        self.XPos = None
+        self.YPos = None
+        self.Width = None
+        self.Height = None
+        self.ImageOperations = None
+        self.AudioOperations = None
+
+
+    def _deserialize(self, params):
+        self.SourceMedia = params.get("SourceMedia")
+        self.SourceMediaStartTime = params.get("SourceMediaStartTime")
+        self.Duration = params.get("Duration")
+        self.CoordinateOrigin = params.get("CoordinateOrigin")
+        self.XPos = params.get("XPos")
+        self.YPos = params.get("YPos")
+        self.Width = params.get("Width")
+        self.Height = params.get("Height")
+        if params.get("ImageOperations") is not None:
+            self.ImageOperations = []
+            for item in params.get("ImageOperations"):
+                obj = ImageTransform()
+                obj._deserialize(item)
+                self.ImageOperations.append(obj)
+        if params.get("AudioOperations") is not None:
+            self.AudioOperations = []
+            for item in params.get("AudioOperations"):
+                obj = AudioTransform()
+                obj._deserialize(item)
+                self.AudioOperations.append(obj)
+
+
 class WatermarkInput(AbstractModel):
     """视频处理任务中的水印参数类型
 
@@ -10727,6 +11510,54 @@ class WatermarkTemplate(AbstractModel):
         self.CreateTime = params.get("CreateTime")
         self.UpdateTime = params.get("UpdateTime")
         self.CoordinateOrigin = params.get("CoordinateOrigin")
+
+
+class WechatMiniProgramPublishTask(AbstractModel):
+    """微信小程序发布任务信息
+
+    """
+
+    def __init__(self):
+        """
+        :param TaskId: 任务 ID。
+        :type TaskId: str
+        :param Status: 任务状态，取值：
+WAITING：等待中；
+PROCESSING：处理中；
+FINISH：已完成。
+        :type Status: str
+        :param ErrCode: 错误码
+<li>0：成功；</li>
+<li>其他值：失败。</li>
+        :type ErrCode: int
+        :param Message: 错误信息。
+        :type Message: str
+        :param FileId: 发布视频文件 ID。
+        :type FileId: str
+        :param SourceDefinition: 发布视频所对应的转码模板 ID，为 0 代表原始视频。
+        :type SourceDefinition: int
+        :param PublishResult: 微信小程序视频发布状态，取值：
+<li>Pass：成功；</li>
+<li>Rejected：审核未通过。</li>
+        :type PublishResult: str
+        """
+        self.TaskId = None
+        self.Status = None
+        self.ErrCode = None
+        self.Message = None
+        self.FileId = None
+        self.SourceDefinition = None
+        self.PublishResult = None
+
+
+    def _deserialize(self, params):
+        self.TaskId = params.get("TaskId")
+        self.Status = params.get("Status")
+        self.ErrCode = params.get("ErrCode")
+        self.Message = params.get("Message")
+        self.FileId = params.get("FileId")
+        self.SourceDefinition = params.get("SourceDefinition")
+        self.PublishResult = params.get("PublishResult")
 
 
 class WechatPublishTask(AbstractModel):

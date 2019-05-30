@@ -575,7 +575,7 @@ class CreateDBInstanceHourRequest(AbstractModel):
         :type Port: int
         :param Password: 设置root帐号密码，密码规则：8-64个字符，至少包含字母、数字、字符（支持的字符：_+-&=!@#$%^*()）中的两种，购买主实例时可指定该参数，购买只读实例或者灾备实例时指定该参数无意义
         :type Password: str
-        :param ParamList: 参数列表，参数格式如ParamList.0.Name=auto_increment&ParamList.0.Value=1。可通过[查询实例的可设置参数列表](https://cloud.tencent.com/document/api/236/20411)查询支持设置的参数
+        :param ParamList: 参数列表，参数格式如ParamList.0.Name=auto_increment&ParamList.0.Value=1。可通过[查询默认的可设置参数列表](https://cloud.tencent.com/document/api/236/32662)查询支持设置的参数
         :type ParamList: list of ParamInfo
         :param ProtectMode: 数据复制方式，默认为0，支持值包括：0-表示异步复制，1-表示半同步复制，2-表示强同步复制，购买主实例时可指定该参数，购买只读实例或者灾备实例时指定该参数无意义
         :type ProtectMode: int
@@ -723,7 +723,7 @@ class CreateDBInstanceRequest(AbstractModel):
         :type DeployMode: int
         :param SlaveZone: 备库1的可用区信息，默认为zone的值
         :type SlaveZone: str
-        :param ParamList: 参数列表，参数格式如ParamList.0.Name=auto_increment&ParamList.0.Value=1。可通过[查询实例的可设置参数列表](https://cloud.tencent.com/document/api/236/20411)查询支持设置的参数
+        :param ParamList: 参数列表，参数格式如ParamList.0.Name=auto_increment&ParamList.0.Value=1。可通过[查询默认的可设置参数列表](https://cloud.tencent.com/document/api/236/32662)查询支持设置的参数
         :type ParamList: list of ParamInfo
         :param BackupZone: 备库2的可用区ID，默认为0，购买主实例时可指定该参数，购买只读实例或者灾备实例时指定该参数无意义
         :type BackupZone: str
@@ -3854,7 +3854,7 @@ class ModifyAccountPasswordRequest(AbstractModel):
         """
         :param InstanceId: 实例ID，格式如：cdb-c1nl9rpv，与云数据库控制台页面中显示的实例ID相同。
         :type InstanceId: str
-        :param NewPassword: 数据库账号的新密码。
+        :param NewPassword: 数据库账号的新密码。密码应至少包含字母、数字和字符（_+-&=!@#$%^*()）中的两种，长度为8-64个字符。
         :type NewPassword: str
         :param Accounts: 云数据库账号。
         :type Accounts: list of Account

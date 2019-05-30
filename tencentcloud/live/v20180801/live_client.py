@@ -468,7 +468,11 @@ class LiveClient(AbstractClient):
 
 
     def CreatePullStreamConfig(self, request):
-        """添加拉流配置，目前限制添加10条任务。
+        """创建临时拉流转推任务，目前限制添加10条任务。
+
+        注意：该接口用于创建临时拉流转推任务，
+        拉流源地址即FromUrl 可以是腾讯或非腾讯数据源，
+        但转推目标地址即ToUrl 目前限制为已注册的腾讯直播域名。
 
         :param request: 调用CreatePullStreamConfig所需参数的结构体。
         :type request: :class:`tencentcloud.live.v20180801.models.CreatePullStreamConfigRequest`
@@ -608,7 +612,7 @@ class LiveClient(AbstractClient):
 
 
     def DeleteLiveRecord(self, request):
-        """用于删除录制任务
+        """用于删除录制任务。
 
         :param request: 调用DeleteLiveRecord所需参数的结构体。
         :type request: :class:`tencentcloud.live.v20180801.models.DeleteLiveRecordRequest`
@@ -1364,7 +1368,9 @@ class LiveClient(AbstractClient):
 
 
     def DescribeLiveStreamEventList(self, request):
-        """查询推断流事件
+        """用于查询推断流事件。
+
+        注意：该接口可通过使用IsFilter进行过滤，返回推流历史记录。
 
         :param request: 调用DescribeLiveStreamEventList所需参数的结构体。
         :type request: :class:`tencentcloud.live.v20180801.models.DescribeLiveStreamEventListRequest`

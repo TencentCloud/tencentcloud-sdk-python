@@ -25,6 +25,62 @@ class TbaasClient(AbstractClient):
     _endpoint = 'tbaas.tencentcloudapi.com'
 
 
+    def GetBlockList(self, request):
+        """查看当前网络下的所有区块列表，分页展示
+
+        :param request: 调用GetBlockList所需参数的结构体。
+        :type request: :class:`tencentcloud.tbaas.v20180416.models.GetBlockListRequest`
+        :rtype: :class:`tencentcloud.tbaas.v20180416.models.GetBlockListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("GetBlockList", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.GetBlockListResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def GetClusterSummary(self, request):
+        """获取区块链网络概要
+
+        :param request: 调用GetClusterSummary所需参数的结构体。
+        :type request: :class:`tencentcloud.tbaas.v20180416.models.GetClusterSummaryRequest`
+        :rtype: :class:`tencentcloud.tbaas.v20180416.models.GetClusterSummaryResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("GetClusterSummary", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.GetClusterSummaryResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def GetInvokeTx(self, request):
         """Invoke异步调用结果查询
 
@@ -39,6 +95,34 @@ class TbaasClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.GetInvokeTxResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def GetLatesdTransactionList(self, request):
+        """获取最新交易列表
+
+        :param request: 调用GetLatesdTransactionList所需参数的结构体。
+        :type request: :class:`tencentcloud.tbaas.v20180416.models.GetLatesdTransactionListRequest`
+        :rtype: :class:`tencentcloud.tbaas.v20180416.models.GetLatesdTransactionListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("GetLatesdTransactionList", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.GetLatesdTransactionListResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

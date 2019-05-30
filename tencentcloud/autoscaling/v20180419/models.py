@@ -142,13 +142,17 @@ class AttachInstancesResponse(AbstractModel):
 
     def __init__(self):
         """
+        :param ActivityId: 伸缩活动ID
+        :type ActivityId: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
+        self.ActivityId = None
         self.RequestId = None
 
 
     def _deserialize(self, params):
+        self.ActivityId = params.get("ActivityId")
         self.RequestId = params.get("RequestId")
 
 
@@ -1835,13 +1839,17 @@ class DetachInstancesResponse(AbstractModel):
 
     def __init__(self):
         """
+        :param ActivityId: 伸缩活动ID
+        :type ActivityId: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
+        self.ActivityId = None
         self.RequestId = None
 
 
     def _deserialize(self, params):
+        self.ActivityId = params.get("ActivityId")
         self.RequestId = params.get("RequestId")
 
 
@@ -2309,7 +2317,7 @@ class LifecycleHook(AbstractModel):
         :param CreatedTime: 创建时间
         :type CreatedTime: str
         :param NotificationTarget: 通知目标
-        :type NotificationTarget: str
+        :type NotificationTarget: :class:`tencentcloud.autoscaling.v20180419.models.NotificationTarget`
         """
         self.LifecycleHookId = None
         self.LifecycleHookName = None
@@ -2331,7 +2339,9 @@ class LifecycleHook(AbstractModel):
         self.LifecycleTransition = params.get("LifecycleTransition")
         self.NotificationMetadata = params.get("NotificationMetadata")
         self.CreatedTime = params.get("CreatedTime")
-        self.NotificationTarget = params.get("NotificationTarget")
+        if params.get("NotificationTarget") is not None:
+            self.NotificationTarget = NotificationTarget()
+            self.NotificationTarget._deserialize(params.get("NotificationTarget"))
 
 
 class LimitedLoginSettings(AbstractModel):
@@ -2391,7 +2401,7 @@ class MetricAlarm(AbstractModel):
         :type MetricName: str
         :param Threshold: 告警阈值：<br><li>CPU_UTILIZATION：[1, 100]，单位：%</li><li>MEM_UTILIZATION：[1, 100]，单位：%</li><li>LAN_TRAFFIC_OUT：>0，单位：Mbps </li><li>LAN_TRAFFIC_IN：>0，单位：Mbps</li><li>WAN_TRAFFIC_OUT：>0，单位：Mbps</li><li>WAN_TRAFFIC_IN：>0，单位：Mbps</li>
         :type Threshold: int
-        :param Period: 时间周期。单位：秒
+        :param Period: 时间周期，单位：秒，取值枚举值为60、300。
         :type Period: int
         :param ContinuousTime: 重复次数。取值范围 [1, 10]
         :type ContinuousTime: int
@@ -2944,13 +2954,17 @@ class RemoveInstancesResponse(AbstractModel):
 
     def __init__(self):
         """
+        :param ActivityId: 伸缩活动ID
+        :type ActivityId: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
+        self.ActivityId = None
         self.RequestId = None
 
 
     def _deserialize(self, params):
+        self.ActivityId = params.get("ActivityId")
         self.RequestId = params.get("RequestId")
 
 
@@ -3006,7 +3020,7 @@ class ScalingPolicy(AbstractModel):
         :param AdjustmentType: 告警触发后，期望实例数修改方式。取值 ：<br><li>CHANGE_IN_CAPACITY：增加或减少若干期望实例数</li><li>EXACT_CAPACITY：调整至指定期望实例数</li> <li>PERCENT_CHANGE_IN_CAPACITY：按百分比调整期望实例数</li>
         :type AdjustmentType: str
         :param AdjustmentValue: 告警触发后，期望实例数的调整值。
-        :type AdjustmentValue: str
+        :type AdjustmentValue: int
         :param Cooldown: 冷却时间。
         :type Cooldown: int
         :param MetricAlarm: 告警监控指标。
@@ -3196,6 +3210,127 @@ class TargetAttribute(AbstractModel):
     def _deserialize(self, params):
         self.Port = params.get("Port")
         self.Weight = params.get("Weight")
+
+
+class UpgradeLaunchConfigurationRequest(AbstractModel):
+    """UpgradeLaunchConfiguration请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param LaunchConfigurationId: 启动配置ID。
+        :type LaunchConfigurationId: str
+        :param ImageId: 指定有效的[镜像](https://cloud.tencent.com/document/product/213/4940)ID，格式形如`img-8toqc6s3`。镜像类型分为四种：<br/><li>公共镜像</li><li>自定义镜像</li><li>共享镜像</li><li>服务市场镜像</li><br/>可通过以下方式获取可用的镜像ID：<br/><li>`公共镜像`、`自定义镜像`、`共享镜像`的镜像ID可通过登录[控制台](https://console.cloud.tencent.com/cvm/image?rid=1&imageType=PUBLIC_IMAGE)查询；`服务镜像市场`的镜像ID可通过[云市场](https://market.cloud.tencent.com/list)查询。</li><li>通过调用接口 [DescribeImages](https://cloud.tencent.com/document/api/213/15715) ，取返回信息中的`ImageId`字段。</li>
+        :type ImageId: str
+        :param InstanceTypes: 实例机型列表，不同实例机型指定了不同的资源规格，最多支持5种实例机型。
+        :type InstanceTypes: list of str
+        :param LaunchConfigurationName: 启动配置显示名称。名称仅支持中文、英文、数字、下划线、分隔符"-"、小数点，最大长度不能超60个字节。
+        :type LaunchConfigurationName: str
+        :param DataDisks: 实例数据盘配置信息。若不指定该参数，则默认不购买数据盘，最多支持指定11块数据盘。
+        :type DataDisks: list of DataDisk
+        :param EnhancedService: 增强服务。通过该参数可以指定是否开启云安全、云监控等服务。若不指定该参数，则默认开启云监控、云安全服务。
+        :type EnhancedService: :class:`tencentcloud.autoscaling.v20180419.models.EnhancedService`
+        :param InstanceChargeType: 实例计费类型，CVM默认值按照POSTPAID_BY_HOUR处理。
+<br><li>POSTPAID_BY_HOUR：按小时后付费
+<br><li>SPOTPAID：竞价付费
+        :type InstanceChargeType: str
+        :param InstanceMarketOptions: 实例的市场相关选项，如竞价实例相关参数，若指定实例的付费模式为竞价付费则该参数必传。
+        :type InstanceMarketOptions: :class:`tencentcloud.autoscaling.v20180419.models.InstanceMarketOptionsRequest`
+        :param InstanceTypesCheckPolicy: 实例类型校验策略，取值包括 ALL 和 ANY，默认取值为ANY。
+<br><li> ALL，所有实例类型（InstanceType）都可用则通过校验，否则校验报错。
+<br><li> ANY，存在任何一个实例类型（InstanceType）可用则通过校验，否则校验报错。
+
+实例类型不可用的常见原因包括该实例类型售罄、对应云盘售罄等。
+如果 InstanceTypes 中一款机型不存在或者已下线，则无论 InstanceTypesCheckPolicy 采用何种取值，都会校验报错。
+        :type InstanceTypesCheckPolicy: str
+        :param InternetAccessible: 公网带宽相关信息设置。若不指定该参数，则默认公网带宽为0Mbps。
+        :type InternetAccessible: :class:`tencentcloud.autoscaling.v20180419.models.InternetAccessible`
+        :param LoginSettings: 实例登录设置。通过该参数可以设置实例的登录方式密码、密钥或保持镜像的原始登录设置。默认情况下会随机生成密码，并以站内信方式知会到用户。
+        :type LoginSettings: :class:`tencentcloud.autoscaling.v20180419.models.LoginSettings`
+        :param ProjectId: 实例所属项目ID。该参数可以通过调用 [DescribeProject](https://cloud.tencent.com/document/api/378/4400) 的返回值中的`projectId`字段来获取。不填为默认项目。
+        :type ProjectId: int
+        :param SecurityGroupIds: 实例所属安全组。该参数可以通过调用 [DescribeSecurityGroups](https://cloud.tencent.com/document/api/215/15808) 的返回值中的`SecurityGroupId`字段来获取。若不指定该参数，则默认不绑定安全组。
+        :type SecurityGroupIds: list of str
+        :param SystemDisk: 实例系统盘配置信息。若不指定该参数，则按照系统默认值进行分配。
+        :type SystemDisk: :class:`tencentcloud.autoscaling.v20180419.models.SystemDisk`
+        :param UserData: 经过 Base64 编码后的自定义数据，最大长度不超过16KB。
+        :type UserData: str
+        :param InstanceTags: 标签列表。通过指定该参数，可以为扩容的实例绑定标签。最多支持指定10个标签。
+        :type InstanceTags: list of InstanceTag
+        """
+        self.LaunchConfigurationId = None
+        self.ImageId = None
+        self.InstanceTypes = None
+        self.LaunchConfigurationName = None
+        self.DataDisks = None
+        self.EnhancedService = None
+        self.InstanceChargeType = None
+        self.InstanceMarketOptions = None
+        self.InstanceTypesCheckPolicy = None
+        self.InternetAccessible = None
+        self.LoginSettings = None
+        self.ProjectId = None
+        self.SecurityGroupIds = None
+        self.SystemDisk = None
+        self.UserData = None
+        self.InstanceTags = None
+
+
+    def _deserialize(self, params):
+        self.LaunchConfigurationId = params.get("LaunchConfigurationId")
+        self.ImageId = params.get("ImageId")
+        self.InstanceTypes = params.get("InstanceTypes")
+        self.LaunchConfigurationName = params.get("LaunchConfigurationName")
+        if params.get("DataDisks") is not None:
+            self.DataDisks = []
+            for item in params.get("DataDisks"):
+                obj = DataDisk()
+                obj._deserialize(item)
+                self.DataDisks.append(obj)
+        if params.get("EnhancedService") is not None:
+            self.EnhancedService = EnhancedService()
+            self.EnhancedService._deserialize(params.get("EnhancedService"))
+        self.InstanceChargeType = params.get("InstanceChargeType")
+        if params.get("InstanceMarketOptions") is not None:
+            self.InstanceMarketOptions = InstanceMarketOptionsRequest()
+            self.InstanceMarketOptions._deserialize(params.get("InstanceMarketOptions"))
+        self.InstanceTypesCheckPolicy = params.get("InstanceTypesCheckPolicy")
+        if params.get("InternetAccessible") is not None:
+            self.InternetAccessible = InternetAccessible()
+            self.InternetAccessible._deserialize(params.get("InternetAccessible"))
+        if params.get("LoginSettings") is not None:
+            self.LoginSettings = LoginSettings()
+            self.LoginSettings._deserialize(params.get("LoginSettings"))
+        self.ProjectId = params.get("ProjectId")
+        self.SecurityGroupIds = params.get("SecurityGroupIds")
+        if params.get("SystemDisk") is not None:
+            self.SystemDisk = SystemDisk()
+            self.SystemDisk._deserialize(params.get("SystemDisk"))
+        self.UserData = params.get("UserData")
+        if params.get("InstanceTags") is not None:
+            self.InstanceTags = []
+            for item in params.get("InstanceTags"):
+                obj = InstanceTag()
+                obj._deserialize(item)
+                self.InstanceTags.append(obj)
+
+
+class UpgradeLaunchConfigurationResponse(AbstractModel):
+    """UpgradeLaunchConfiguration返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
 
 
 class UpgradeLifecycleHookRequest(AbstractModel):

@@ -480,13 +480,13 @@ class CreateTopicPolicyRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param ProductID: 产品ID
+        :param ProductID: 产品自身id
         :type ProductID: str
         :param TopicName: Topic名称
         :type TopicName: str
         :param Privilege: Topic权限，1发布，2订阅，3订阅和发布
         :type Privilege: int
-        :param BrokerSubscribe: 代理订阅信息
+        :param BrokerSubscribe: 代理订阅信息，网关产品为绑定的子产品创建topic时需要填写，内容为子产品的id和设备信息。
         :type BrokerSubscribe: :class:`tencentcloud.iotcloud.v20180614.models.BrokerSubscribe`
         """
         self.ProductID = None
@@ -710,6 +710,48 @@ class DeleteTopicRuleResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeDeviceClientKeyRequest(AbstractModel):
+    """DescribeDeviceClientKey请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ProductId: 所属产品的Id
+        :type ProductId: str
+        :param DeviceName: 设备名称
+        :type DeviceName: str
+        """
+        self.ProductId = None
+        self.DeviceName = None
+
+
+    def _deserialize(self, params):
+        self.ProductId = params.get("ProductId")
+        self.DeviceName = params.get("DeviceName")
+
+
+class DescribeDeviceClientKeyResponse(AbstractModel):
+    """DescribeDeviceClientKey返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ClientKey: 设备的私钥
+        :type ClientKey: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.ClientKey = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.ClientKey = params.get("ClientKey")
         self.RequestId = params.get("RequestId")
 
 
@@ -1339,6 +1381,9 @@ class DeviceInfo(AbstractModel):
         :param LogLevel: 设备日志级别
 注意：此字段可能返回 null，表示取不到有效值。
         :type LogLevel: int
+        :param CertState: 设备证书获取状态, 1 已获取过设备密钥，0 未获取过设备密钥
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CertState: int
         """
         self.DeviceName = None
         self.Online = None
@@ -1359,6 +1404,7 @@ class DeviceInfo(AbstractModel):
         self.LastOfflineTime = None
         self.CreateTime = None
         self.LogLevel = None
+        self.CertState = None
 
 
     def _deserialize(self, params):
@@ -1386,6 +1432,7 @@ class DeviceInfo(AbstractModel):
         self.LastOfflineTime = params.get("LastOfflineTime")
         self.CreateTime = params.get("CreateTime")
         self.LogLevel = params.get("LogLevel")
+        self.CertState = params.get("CertState")
 
 
 class DeviceTag(AbstractModel):
@@ -1830,6 +1877,44 @@ class ReplaceTopicRuleRequest(AbstractModel):
 
 class ReplaceTopicRuleResponse(AbstractModel):
     """ReplaceTopicRule返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class ResetDeviceStateRequest(AbstractModel):
+    """ResetDeviceState请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ProductId: 产品Id
+        :type ProductId: str
+        :param DeviceNames: 设备名称
+        :type DeviceNames: list of str
+        """
+        self.ProductId = None
+        self.DeviceNames = None
+
+
+    def _deserialize(self, params):
+        self.ProductId = params.get("ProductId")
+        self.DeviceNames = params.get("DeviceNames")
+
+
+class ResetDeviceStateResponse(AbstractModel):
+    """ResetDeviceState返回参数结构体
 
     """
 

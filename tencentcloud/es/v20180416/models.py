@@ -25,7 +25,7 @@ class CosBackup(AbstractModel):
         """
         :param IsAutoBackup: 是否开启cos自动备份
         :type IsAutoBackup: bool
-        :param BackupTime: 自动备份时间
+        :param BackupTime: 自动备份执行时间（精确到小时）, e.g. "22:00"
         :type BackupTime: str
         """
         self.IsAutoBackup = None
@@ -46,59 +46,52 @@ class CreateInstanceRequest(AbstractModel):
         """
         :param Zone: 可用区
         :type Zone: str
-        :param NodeNum: 节点数量
+        :param NodeNum: 节点数量（2-50个）
         :type NodeNum: int
-        :param EsVersion: 实例版本,支持"5.6.4"、"6.4.3"
+        :param EsVersion: 实例版本（支持"5.6.4"、"6.4.3"）
         :type EsVersion: str
-        :param NodeType: 节点规格： 
-ES.S1.SMALL2: 1核2G
-ES.S1.MEDIUM4: 2核4G
-ES.S1.MEDIUM8: 2核8G
-ES.S1.LARGE16: 4核16G
-ES.S1.2XLARGE32: 8核32G
-ES.S1.4XLARGE64: 16核64G
+        :param NodeType: 节点规格<li>ES.S1.SMALL2：1核2G</li><li>ES.S1.MEDIUM4：2核4G</li><li>ES.S1.MEDIUM8：2核8G</li><li>ES.S1.LARGE16：4核16G</li><li>ES.S1.2XLARGE32：8核32G</li><li>ES.S1.4XLARGE32：16核32G</li><li>ES.S1.4XLARGE64：16核64G</li>
         :type NodeType: str
-        :param DiskSize: 节点存储容量，单位GB
+        :param DiskSize: 节点磁盘容量（单位GB）
         :type DiskSize: int
         :param VpcId: 私有网络ID
         :type VpcId: str
         :param SubnetId: 子网ID
         :type SubnetId: str
-        :param Password: 访问密码，密码需8到16位，至少包括两项（[a-z,A-Z],[0-9]和[()`~!@#$%^&*-+=_|{}:;' <>,.?/]的特殊符号
+        :param Password: 访问密码（密码需8到16位，至少包括两项（[a-z,A-Z],[0-9]和[-!@#$%&^*+=_:;,.?]的特殊符号）
         :type Password: str
-        :param InstanceName: 实例名称，1-50 个英文、汉字、数字、连接线-或下划线_
+        :param InstanceName: 实例名称（1-50 个英文、汉字、数字、连接线-或下划线_）
         :type InstanceName: str
-        :param ChargeType: 计费类型: 
-PREPAID：预付费，即包年包月 
-POSTPAID_BY_HOUR：按小时后付费，默认值
+        :param ChargeType: 计费类型<li>PREPAID：预付费，即包年包月</li><li>POSTPAID_BY_HOUR：按小时后付费</li>默认值POSTPAID_BY_HOUR
         :type ChargeType: str
-        :param ChargePeriod: 包年包月购买时长，单位由TimeUint决定，默认为月
+        :param ChargePeriod: 包年包月购买时长（单位由参数TimeUint决定）
         :type ChargePeriod: int
-        :param RenewFlag: 自动续费标识，取值范围： 
-RENEW_FLAG_AUTO：自动续费
-RENEW_FLAG_MANUAL：不自动续费，用户手动续费
-如不传递该参数，普通用于默认不自动续费，SVIP用户自动续费
+        :param RenewFlag: 自动续费标识<li>RENEW_FLAG_AUTO：自动续费</li><li>RENEW_FLAG_MANUAL：不自动续费，用户手动续费</li>ChargeType为PREPAID时需要设置，如不传递该参数，普通用于默认不自动续费，SVIP用户自动续费
         :type RenewFlag: str
-        :param DiskType: 节点存储类型,取值范围:    
-CLOUD_PREMIUM: 高硬能云硬盘  
-CLOUD_SSD: SSD云硬盘
+        :param DiskType: 节点磁盘类型<li>CLOUD_SSD：SSD云硬盘</li><li>CLOUD_PREMIUM：高硬能云硬盘</li>默认值CLOUD_SSD
         :type DiskType: str
-        :param TimeUnit: 计费时长单位，当前只支持“m”，表示月
+        :param TimeUnit: 计费时长单位（ChargeType为PREPAID时需要设置，默认值为“m”，表示月，当前只支持“m”）
         :type TimeUnit: str
-        :param AutoVoucher: 是否自动使用代金券，1是，0否，默认不使用
+        :param AutoVoucher: 是否自动使用代金券<li>0：不自动使用</li><li>1：自动使用</li>默认值0
         :type AutoVoucher: int
-        :param VoucherIds: 代金券ID列表，目前仅支持指定一张代金券
+        :param VoucherIds: 代金券ID列表（目前仅支持指定一张代金券）
         :type VoucherIds: list of str
-        :param EnableDedicatedMaster: 是否创建专用主节点
+        :param EnableDedicatedMaster: 是否创建专用主节点<li>true：开启专用主节点</li><li>false：不开启专用主节点</li>默认值false
         :type EnableDedicatedMaster: bool
-        :param MasterNodeNum: 专用主节点个数
+        :param MasterNodeNum: 专用主节点个数（只支持3个和5个，EnableDedicatedMaster为true时该值必传）
         :type MasterNodeNum: int
-        :param MasterNodeType: 专用主节点类型，与NodeType支持的规格相同
+        :param MasterNodeType: 专用主节点类型（EnableDedicatedMaster为true时必传）<li>ES.S1.SMALL2：1核2G</li><li>ES.S1.MEDIUM4：2核4G</li><li>ES.S1.MEDIUM8：2核8G</li><li>ES.S1.LARGE16：4核16G</li><li>ES.S1.2XLARGE32：8核32G</li><li>ES.S1.4XLARGE32：16核32G</li><li>ES.S1.4XLARGE64：16核64G</li>
         :type MasterNodeType: str
-        :param MasterNodeDiskSize: 专用主节点磁盘大小，单位GB（系统默认配置50GB，暂不支持自定义）
+        :param MasterNodeDiskSize: 专用主节点磁盘大小（单位GB，非必传，若传递则必须为50，暂不支持自定义）
         :type MasterNodeDiskSize: int
-        :param ClusterNameInConf: 配置文件中的ClusterName（系统默认配置为实例ID，暂不支持自定义）
+        :param ClusterNameInConf: 集群配置文件中的ClusterName（系统默认配置为实例ID，暂不支持自定义）
         :type ClusterNameInConf: str
+        :param DeployMode: 集群部署方式<li>0：单可用区部署</li><li>1：多可用区部署</li>默认为0
+        :type DeployMode: int
+        :param MultiZoneInfo: 多可用区部署时可用区的详细信息(DeployMode为1时必传)
+        :type MultiZoneInfo: list of MultiZoneInfo
+        :param LicenseType: License类型<li>oss：开源版</li><li>basic：基础版</li><li>platinum：白金版</li>默认值platinum
+        :type LicenseType: str
         """
         self.Zone = None
         self.NodeNum = None
@@ -121,6 +114,9 @@ CLOUD_SSD: SSD云硬盘
         self.MasterNodeType = None
         self.MasterNodeDiskSize = None
         self.ClusterNameInConf = None
+        self.DeployMode = None
+        self.MultiZoneInfo = None
+        self.LicenseType = None
 
 
     def _deserialize(self, params):
@@ -145,6 +141,14 @@ CLOUD_SSD: SSD云硬盘
         self.MasterNodeType = params.get("MasterNodeType")
         self.MasterNodeDiskSize = params.get("MasterNodeDiskSize")
         self.ClusterNameInConf = params.get("ClusterNameInConf")
+        self.DeployMode = params.get("DeployMode")
+        if params.get("MultiZoneInfo") is not None:
+            self.MultiZoneInfo = []
+            for item in params.get("MultiZoneInfo"):
+                obj = MultiZoneInfo()
+                obj._deserialize(item)
+                self.MultiZoneInfo.append(obj)
+        self.LicenseType = params.get("LicenseType")
 
 
 class CreateInstanceResponse(AbstractModel):
@@ -175,7 +179,7 @@ class DeleteInstanceRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param InstanceId: 要销毁的实例ID
+        :param InstanceId: 实例ID
         :type InstanceId: str
         """
         self.InstanceId = None
@@ -211,19 +215,25 @@ class DescribeInstanceLogsRequest(AbstractModel):
         """
         :param InstanceId: 集群实例ID
         :type InstanceId: str
-        :param LogType: 日志类型
+        :param LogType: 日志类型，默认值为1
+<li>1, 主日志</li>
+<li>2, 搜索慢日志</li>
+<li>3, 索引慢日志</li>
+<li>4, GC日志</li>
         :type LogType: int
-        :param SearchKey: 搜索词
+        :param SearchKey: 搜索词，支持LUCENE语法，如 level:WARN、ip:1.1.1.1、message:test-index等
         :type SearchKey: str
-        :param StartTime: 日志开始时间
+        :param StartTime: 日志开始时间，格式为YYYY-MM-DD HH:MM:SS, 如2019-01-22 20:15:53
         :type StartTime: str
-        :param EndTime: 日志结束时间
+        :param EndTime: 日志结束时间，格式为YYYY-MM-DD HH:MM:SS, 如2019-01-22 20:15:53
         :type EndTime: str
-        :param Offset: 分页起始值
+        :param Offset: 分页起始值, 默认值为0
         :type Offset: int
-        :param Limit: 分页大小
+        :param Limit: 分页大小，默认值为100，最大值100
         :type Limit: int
-        :param OrderByType: 时间排序方式
+        :param OrderByType: 时间排序方式，默认值为0
+<li>0, 降序</li>
+<li>1, 升序</li>
         :type OrderByType: int
         """
         self.InstanceId = None
@@ -286,9 +296,9 @@ class DescribeInstanceOperationsRequest(AbstractModel):
         """
         :param InstanceId: 集群实例ID
         :type InstanceId: str
-        :param StartTime: 起始时间
+        :param StartTime: 起始时间, e.g. "2019-03-07 16:30:39"
         :type StartTime: str
-        :param EndTime: 结束时间
+        :param EndTime: 结束时间, e.g. "2019-03-30 20:18:03"
         :type EndTime: str
         :param Offset: 分页起始值
         :type Offset: int
@@ -349,17 +359,17 @@ class DescribeInstancesRequest(AbstractModel):
         """
         :param Zone: 集群实例所属可用区，不传则默认所有可用区
         :type Zone: str
-        :param InstanceIds: 一个或多个集群实例ID
+        :param InstanceIds: 集群实例ID列表
         :type InstanceIds: list of str
-        :param InstanceNames: 一个或多个集群实例名称
+        :param InstanceNames: 集群实例名称列表
         :type InstanceNames: list of str
         :param Offset: 分页起始值, 默认值0
         :type Offset: int
         :param Limit: 分页大小，默认值20
         :type Limit: int
-        :param OrderByKey: 排序字段：1，实例ID；2，实例名称；3，可用区；4，创建时间，若orderKey未传递则按创建时间降序排序
+        :param OrderByKey: 排序字段<li>1：实例ID</li><li>2：实例名称</li><li>3：可用区</li><li>4：创建时间</li>若orderKey未传递则按创建时间降序排序
         :type OrderByKey: int
-        :param OrderByType: 排序方式：0，升序；1，降序；若传递了orderByKey未传递orderByType, 则默认升序
+        :param OrderByType: 排序方式<li>0：升序</li><li>1：降序</li>若传递了orderByKey未传递orderByType, 则默认升序
         :type OrderByType: int
         """
         self.Zone = None
@@ -519,7 +529,7 @@ class InstanceInfo(AbstractModel):
         :type ChargePeriod: int
         :param RenewFlag: 自动续费标识。取值范围：  NOTIFY_AND_AUTO_RENEW：通知过期且自动续费  NOTIFY_AND_MANUAL_RENEW：通知过期不自动续费  DISABLE_NOTIFY_AND_MANUAL_RENEW：不通知过期不自动续费  默认取值：NOTIFY_AND_AUTO_RENEW。若该参数指定为NOTIFY_AND_AUTO_RENEW，在账户余额充足的情况下，实例到期后将按月自动续费。
         :type RenewFlag: str
-        :param NodeType: 节点规格:  ES.S1.SMALL2 : 1核2G  ES.S1.MEDIUM4 : 2核4G  ES.S1.MEDIUM8 : 2核8G  ES.S1.LARGE16 : 4核16G  ES.S1.2XLARGE32 : 8核32G  ES.S1.3XLARGE32 : 12核32G  ES.S1.6XLARGE32 : 24核32G
+        :param NodeType: 节点规格<li>ES.S1.SMALL2：1核2G</li><li>ES.S1.MEDIUM4：2核4G</li><li>ES.S1.MEDIUM8：2核8G</li><li>ES.S1.LARGE16：4核16G</li><li>ES.S1.2XLARGE32：8核32G</li><li>ES.S1.4XLARGE32：16核32G</li><li>ES.S1.4XLARGE64：16核64G</li>
         :type NodeType: str
         :param NodeNum: 节点个数
         :type NodeNum: int
@@ -561,6 +571,10 @@ class InstanceInfo(AbstractModel):
         :type CosBackup: :class:`tencentcloud.es.v20180416.models.CosBackup`
         :param AllowCosBackup: 是否允许cos自动备份
         :type AllowCosBackup: bool
+        :param TagList: 实例拥有的标签列表
+        :type TagList: list of TagInfo
+        :param LicenseType: License类型<li>oss：开源版</li><li>basic：基础版</li><li>platinum：白金版</li>默认值platinum
+        :type LicenseType: str
         """
         self.InstanceId = None
         self.InstanceName = None
@@ -595,6 +609,8 @@ class InstanceInfo(AbstractModel):
         self.MasterNodeInfo = None
         self.CosBackup = None
         self.AllowCosBackup = None
+        self.TagList = None
+        self.LicenseType = None
 
 
     def _deserialize(self, params):
@@ -639,6 +655,13 @@ class InstanceInfo(AbstractModel):
             self.CosBackup = CosBackup()
             self.CosBackup._deserialize(params.get("CosBackup"))
         self.AllowCosBackup = params.get("AllowCosBackup")
+        if params.get("TagList") is not None:
+            self.TagList = []
+            for item in params.get("TagList"):
+                obj = TagInfo()
+                obj._deserialize(item)
+                self.TagList.append(obj)
+        self.LicenseType = params.get("LicenseType")
 
 
 class InstanceLog(AbstractModel):
@@ -700,7 +723,7 @@ class MasterNodeInfo(AbstractModel):
         """
         :param EnableDedicatedMaster: 是否启用了专用主节点
         :type EnableDedicatedMaster: bool
-        :param MasterNodeType: 专用主节点规格
+        :param MasterNodeType: 专用主节点规格<li>ES.S1.SMALL2：1核2G</li><li>ES.S1.MEDIUM4：2核4G</li><li>ES.S1.MEDIUM8：2核8G</li><li>ES.S1.LARGE16：4核16G</li><li>ES.S1.2XLARGE32：8核32G</li><li>ES.S1.4XLARGE32：16核32G</li><li>ES.S1.4XLARGE64：16核64G</li>
         :type MasterNodeType: str
         :param MasterNodeNum: 专用主节点个数
         :type MasterNodeNum: int
@@ -730,6 +753,27 @@ class MasterNodeInfo(AbstractModel):
         self.MasterNodeMemSize = params.get("MasterNodeMemSize")
         self.MasterNodeDiskSize = params.get("MasterNodeDiskSize")
         self.MasterNodeDiskType = params.get("MasterNodeDiskType")
+
+
+class MultiZoneInfo(AbstractModel):
+    """多可用区部署时可用区的详细信息
+
+    """
+
+    def __init__(self):
+        """
+        :param Zone: 可用区
+        :type Zone: str
+        :param SubnetId: 子网ID
+        :type SubnetId: str
+        """
+        self.Zone = None
+        self.SubnetId = None
+
+
+    def _deserialize(self, params):
+        self.Zone = params.get("Zone")
+        self.SubnetId = params.get("SubnetId")
 
 
 class Operation(AbstractModel):
@@ -818,9 +862,9 @@ class RestartInstanceRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param InstanceId: 要重启的实例ID
+        :param InstanceId: 实例ID
         :type InstanceId: str
-        :param ForceRestart: 是否强制重启
+        :param ForceRestart: 是否强制重启<li>true：强制重启</li><li>false：不强制重启</li>默认false
         :type ForceRestart: bool
         """
         self.InstanceId = None
@@ -874,6 +918,27 @@ class SubTaskDetail(AbstractModel):
         self.ErrMsg = params.get("ErrMsg")
 
 
+class TagInfo(AbstractModel):
+    """实例标签信息
+
+    """
+
+    def __init__(self):
+        """
+        :param TagKey: 标签键
+        :type TagKey: str
+        :param TagValue: 标签值
+        :type TagValue: str
+        """
+        self.TagKey = None
+        self.TagValue = None
+
+
+    def _deserialize(self, params):
+        self.TagKey = params.get("TagKey")
+        self.TagValue = params.get("TagValue")
+
+
 class TaskDetail(AbstractModel):
     """实例操作记录中的流程任务信息
 
@@ -915,38 +980,29 @@ class UpdateInstanceRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param InstanceId: 要操作的实例ID
+        :param InstanceId: 实例ID
         :type InstanceId: str
-        :param InstanceName: 修改后的实例名称, 1-50 个英文、汉字、数字、连接线-或下划线_
+        :param InstanceName: 实例名称（1-50 个英文、汉字、数字、连接线-或下划线_）
         :type InstanceName: str
-        :param NodeNum: 横向扩缩容后的节点个数
+        :param NodeNum: 节点个数（2-50个）
         :type NodeNum: int
-        :param EsConfig: 修改后的配置项, JSON格式字符串。当前仅支持以下配置项：
-action.destructive_requires_name
-indices.fielddata.cache.size
-indices.query.bool.max_clause_count
+        :param EsConfig: 配置项（JSON格式字符串）。当前仅支持以下配置项：<li>action.destructive_requires_name</li><li>indices.fielddata.cache.size</li><li>indices.query.bool.max_clause_count</li>
         :type EsConfig: str
-        :param Password: 重置后的Kibana密码, 8到16位，至少包括两项（[a-z,A-Z],[0-9]和[-!@#$%&^*+=_:;,.?]的特殊符号
+        :param Password: 默认用户elastic的密码（8到16位，至少包括两项（[a-z,A-Z],[0-9]和[-!@#$%&^*+=_:;,.?]的特殊符号）
         :type Password: str
-        :param EsAcl: 修改后的访问控制列表
+        :param EsAcl: 访问控制列表
         :type EsAcl: :class:`tencentcloud.es.v20180416.models.EsAcl`
-        :param DiskSize: 磁盘大小,单位GB
+        :param DiskSize: 磁盘大小（单位GB）
         :type DiskSize: int
-        :param NodeType: 节点规格: 
-ES.S1.SMALL2: 1 核 2G
-ES.S1.MEDIUM4: 2 核 4G 
-ES.S1.MEDIUM8: 2 核 8G 
-ES.S1.LARGE16: 4 核 16G 
-ES.S1.2XLARGE32: 8 核 32G 
-ES.S1.4XLARGE64: 16 核 64G
+        :param NodeType: 节点规格<li>ES.S1.SMALL2：1核2G</li><li>ES.S1.MEDIUM4：2核4G</li><li>ES.S1.MEDIUM8：2核8G</li><li>ES.S1.LARGE16：4核16G</li><li>ES.S1.2XLARGE32：8核32G</li><li>ES.S1.4XLARGE32：16核32G</li><li>ES.S1.4XLARGE64：16核64G</li>
         :type NodeType: str
-        :param MasterNodeNum: 专用主节点个数
+        :param MasterNodeNum: 专用主节点个数（只支持3个或5个）
         :type MasterNodeNum: int
-        :param MasterNodeType: 专用主节点规格，与NodeType支持的规格相同
+        :param MasterNodeType: 专用主节点规格<li>ES.S1.SMALL2：1核2G</li><li>ES.S1.MEDIUM4：2核4G</li><li>ES.S1.MEDIUM8：2核8G</li><li>ES.S1.LARGE16：4核16G</li><li>ES.S1.2XLARGE32：8核32G</li><li>ES.S1.4XLARGE32：16核32G</li><li>ES.S1.4XLARGE64：16核64G</li>
         :type MasterNodeType: str
-        :param MasterNodeDiskSize: 专用主节点磁盘大小， 单位GB（系统默认配置为50GB,暂不支持自定义）
+        :param MasterNodeDiskSize: 专用主节点磁盘大小（单位GB系统默认配置为50GB,暂不支持自定义）
         :type MasterNodeDiskSize: int
-        :param ForceRestart: 更新配置时是否强制重启
+        :param ForceRestart: 更新配置时是否强制重启<li>true强制重启</li><li>false不强制重启</li>当前仅更新EsConfig时需要设置，默认值为false
         :type ForceRestart: bool
         :param CosBackup: COS自动备份信息
         :type CosBackup: :class:`tencentcloud.es.v20180416.models.CosBackup`

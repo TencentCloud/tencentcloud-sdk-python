@@ -27,15 +27,21 @@ class EvaluationRequest(AbstractModel):
         :type SessionId: str
         :param Image: 图片数据，需要使用base64对图片的二进制数据进行编码，与url参数二者填一即可；
         :type Image: str
-        :param HcmAppid: 业务应用ID，与账号应用APPID无关，是用来方便客户管理服务的参数，新的 HcmAppId 可以在[控制台](https://console.cloud.tencent.com/hcm)【应用管理】下新建。
+        :param HcmAppid: 业务应用ID，与账号应用APPID无关，是用来方便客户管理服务的参数，新的 HcmAppid 可以在[控制台](https://console.cloud.tencent.com/hcm)【应用管理】下新建。
         :type HcmAppid: str
         :param Url: 图片url，与Image参数二者填一即可；
         :type Url: str
+        :param SupportHorizontalImage: 横屏拍摄开关，若开启则支持传输横屏拍摄的图片；
+        :type SupportHorizontalImage: bool
+        :param RejectNonArithmeticImage: 拒绝非速算图（如风景图、人物图）开关，若开启，则遇到非速算图会快速返回拒绝的结果，但极端情况下可能会影响评估结果（比如算式截图贴到风景画里可能被判为非速算图直接返回了）。
+        :type RejectNonArithmeticImage: bool
         """
         self.SessionId = None
         self.Image = None
         self.HcmAppid = None
         self.Url = None
+        self.SupportHorizontalImage = None
+        self.RejectNonArithmeticImage = None
 
 
     def _deserialize(self, params):
@@ -43,6 +49,8 @@ class EvaluationRequest(AbstractModel):
         self.Image = params.get("Image")
         self.HcmAppid = params.get("HcmAppid")
         self.Url = params.get("Url")
+        self.SupportHorizontalImage = params.get("SupportHorizontalImage")
+        self.RejectNonArithmeticImage = params.get("RejectNonArithmeticImage")
 
 
 class EvaluationResponse(AbstractModel):
@@ -88,13 +96,17 @@ class Item(AbstractModel):
         :type ItemString: str
         :param ItemCoord: 识别的算式在图片上的位置信息
         :type ItemCoord: :class:`tencentcloud.hcm.v20181106.models.ItemCoord`
-        :param Answer: 推荐的答案
+        :param Answer: 推荐的答案，暂不支持多个关系运算符、无关系运算符、单位换算错题的推荐答案返回。
         :type Answer: str
+        :param ExpressionType: 算式题型编号，如加减乘除四则题型，具体题型及编号如下：1 加减乘除四则 2 加减乘除已知结果求运算因子3 判断大小 4 约等于估算 5 带余数除法 6 分数四则运算 7 单位换算 8 竖式加减法 9 竖式乘除法 10 脱式计算 11 解方程
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ExpressionType: str
         """
         self.Item = None
         self.ItemString = None
         self.ItemCoord = None
         self.Answer = None
+        self.ExpressionType = None
 
 
     def _deserialize(self, params):
@@ -104,6 +116,7 @@ class Item(AbstractModel):
             self.ItemCoord = ItemCoord()
             self.ItemCoord._deserialize(params.get("ItemCoord"))
         self.Answer = params.get("Answer")
+        self.ExpressionType = params.get("ExpressionType")
 
 
 class ItemCoord(AbstractModel):

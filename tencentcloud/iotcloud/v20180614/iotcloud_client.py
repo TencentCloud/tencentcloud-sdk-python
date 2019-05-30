@@ -389,6 +389,34 @@ class IotcloudClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeDeviceClientKey(self, request):
+        """获取证书认证类型设备的私钥，刚生成或者重置设备后仅可调用一次
+
+        :param request: 调用DescribeDeviceClientKey所需参数的结构体。
+        :type request: :class:`tencentcloud.iotcloud.v20180614.models.DescribeDeviceClientKeyRequest`
+        :rtype: :class:`tencentcloud.iotcloud.v20180614.models.DescribeDeviceClientKeyResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeDeviceClientKey", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeDeviceClientKeyResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeDeviceShadow(self, request):
         """本接口（DescribeDeviceShadow）用于查询虚拟设备信息。
 
@@ -767,6 +795,34 @@ class IotcloudClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ReplaceTopicRuleResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ResetDeviceState(self, request):
+        """重置设备的连接状态
+
+        :param request: 调用ResetDeviceState所需参数的结构体。
+        :type request: :class:`tencentcloud.iotcloud.v20180614.models.ResetDeviceStateRequest`
+        :rtype: :class:`tencentcloud.iotcloud.v20180614.models.ResetDeviceStateResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ResetDeviceState", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ResetDeviceStateResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

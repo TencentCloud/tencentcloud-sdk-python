@@ -562,7 +562,7 @@ GeneralBasicOcr接口返回段落信息Parag，包含ParagNo。
 
 
 class TextDetectionEn(AbstractModel):
-    """文本识别结果
+    """英文识别结果
 
     """
 

@@ -487,11 +487,15 @@ class DescribeBillResourceSummaryRequest(AbstractModel):
         :type PeriodType: str
         :param Month: 月份，格式为yyyy-mm。不能早于开通账单2.0的月份，最多可拉取24个月内的数据。
         :type Month: str
+        :param NeedRecordNum: 是否需要访问列表的总记录数，用于前端分页
+1-表示需要， 0-表示不需要
+        :type NeedRecordNum: int
         """
         self.Offset = None
         self.Limit = None
         self.PeriodType = None
         self.Month = None
+        self.NeedRecordNum = None
 
 
     def _deserialize(self, params):
@@ -499,6 +503,7 @@ class DescribeBillResourceSummaryRequest(AbstractModel):
         self.Limit = params.get("Limit")
         self.PeriodType = params.get("PeriodType")
         self.Month = params.get("Month")
+        self.NeedRecordNum = params.get("NeedRecordNum")
 
 
 class DescribeBillResourceSummaryResponse(AbstractModel):
@@ -510,10 +515,14 @@ class DescribeBillResourceSummaryResponse(AbstractModel):
         """
         :param ResourceSummarySet: 资源汇总列表
         :type ResourceSummarySet: list of BillResourceSummary
+        :param Total: 资源汇总列表总数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Total: int
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.ResourceSummarySet = None
+        self.Total = None
         self.RequestId = None
 
 
@@ -524,6 +533,7 @@ class DescribeBillResourceSummaryResponse(AbstractModel):
                 obj = BillResourceSummary()
                 obj._deserialize(item)
                 self.ResourceSummarySet.append(obj)
+        self.Total = params.get("Total")
         self.RequestId = params.get("RequestId")
 
 
@@ -615,9 +625,9 @@ class DescribeDosageDetailByDateRequest(AbstractModel):
         """
         :param StartDate: 查询账单开始日期，如 2019-01-01
         :type StartDate: str
-        :param EndDate: 查询账单结束日期，如 2019-01-01
+        :param EndDate: 查询账单结束日期，如 2019-01-01， 时间跨度不超过7天
         :type EndDate: str
-        :param ProductCode: 视频业务：
+        :param ProductCode: 互动直播：
 10194   互动直播-核心机房           :
 10195   互动直播-边缘机房
 
@@ -631,9 +641,15 @@ cdn业务：
 
 100967：弹性公网IP-按流量计费
 101065：公网负载均衡-按流量计费
+
+视频直播
+10226 视频直播流量(国内)
+10227 视频直播带宽(国内)
+100763 视频直播流量(海外)
+100762 视频直播宽带(海外)
         :type ProductCode: str
         :param Domain: 查询域名 例如 www.qq.com
-非CDN业务查询时可以设置为空
+非CDN业务查询时值为空
         :type Domain: str
         :param InstanceID: 1、如果为空，则返回EIP或CLB所有实例的明细；
 2、如果传入实例名，则返回该实例明细
