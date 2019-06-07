@@ -29,16 +29,28 @@ class BankCardVerificationRequest(AbstractModel):
         :type Name: str
         :param BankCard: 银行卡
         :type BankCard: str
+        :param CertType: 证件类型（不填默认0）
+0 身份证
+1 军官证
+2 护照
+3 港澳证
+4 台胞证
+5 警官证
+6 士兵证
+7 其它证件
+        :type CertType: int
         """
         self.IdCard = None
         self.Name = None
         self.BankCard = None
+        self.CertType = None
 
 
     def _deserialize(self, params):
         self.IdCard = params.get("IdCard")
         self.Name = params.get("Name")
         self.BankCard = params.get("BankCard")
+        self.CertType = params.get("CertType")
 
 
 class BankCardVerificationResponse(AbstractModel):
@@ -91,7 +103,7 @@ class DetectAuthRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param RuleId: 用于细分客户使用场景，由腾讯侧在线下对接时分配。
+        :param RuleId: 用于细分客户使用场景，申请开通服务后，可以在腾讯云慧眼人脸核身控制台（https://console.cloud.tencent.com/faceid） 自助接入里面创建，审核通过后即可调用。如有疑问，请加慧眼小助手微信（faceid001）进行咨询。
         :type RuleId: str
         :param TerminalType: 本接口不需要传递此参数。
         :type TerminalType: str
@@ -218,7 +230,7 @@ class GetDetectInfoResponse(AbstractModel):
   // 文本类信息
   "Text": {
     "ErrCode": null,      // 本次核身最终结果。0为成功
-    "ErrMsg": null,       // 本次核身的错误信息。
+    "ErrMsg": null,       // 本次核身最终结果信息描述。
     "IdCard": "",         // 本次核身最终获得的身份证号。
     "Name": "",           // 本次核身最终获得的姓名。
     "OcrNation": null,    // ocr阶段获取的民族
@@ -233,6 +245,7 @@ class GetDetectInfoResponse(AbstractModel):
     "LiveMsg": null,      // 活体检测阶段的错误信息
     "Comparestatus": null,// 一比一阶段的错误码。0为成功
     "Comparemsg": null,   // 一比一阶段的错误信息
+    "Location": null, // 地理位置信息
     "Extra": "",          // DetectAuth结果传进来的Extra信息
     "Detail": {           // 活体一比一信息详情
       "LivenessData": []
@@ -542,6 +555,68 @@ class LivenessRecognitionResponse(AbstractModel):
     def _deserialize(self, params):
         self.BestFrameBase64 = params.get("BestFrameBase64")
         self.Sim = params.get("Sim")
+        self.Result = params.get("Result")
+        self.Description = params.get("Description")
+        self.RequestId = params.get("RequestId")
+
+
+class LivenessRequest(AbstractModel):
+    """Liveness请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param VideoBase64: 用于活体检测的视频，视频的BASE64值；
+BASE64编码后的大小不超过5M，支持mp4、avi、flv格式。
+        :type VideoBase64: str
+        :param LivenessType: 活体检测类型，取值：LIP/ACTION/SILENT。
+LIP为数字模式，ACTION为动作模式，SILENT为静默模式，三种模式选择一种传入。
+        :type LivenessType: str
+        :param ValidateData: 数字模式传参：数字验证码(1234)，需先调用接口获取数字验证码；
+动作模式传参：传动作顺序(2,1 or 1,2)，需先调用接口获取动作顺序；
+静默模式传参：不需要传递此参数。
+        :type ValidateData: str
+        :param Optional: 本接口不需要传递此参数。
+        :type Optional: str
+        """
+        self.VideoBase64 = None
+        self.LivenessType = None
+        self.ValidateData = None
+        self.Optional = None
+
+
+    def _deserialize(self, params):
+        self.VideoBase64 = params.get("VideoBase64")
+        self.LivenessType = params.get("LivenessType")
+        self.ValidateData = params.get("ValidateData")
+        self.Optional = params.get("Optional")
+
+
+class LivenessResponse(AbstractModel):
+    """Liveness返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param BestFrameBase64: 验证通过后的视频最佳截图照片，照片为BASE64编码后的值，jpg格式。
+        :type BestFrameBase64: str
+        :param Result: 业务错误码，成功情况返回Success, 错误情况请参考下方错误码 列表中FailedOperation部分
+        :type Result: str
+        :param Description: 业务错误描述
+        :type Description: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.BestFrameBase64 = None
+        self.Result = None
+        self.Description = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.BestFrameBase64 = params.get("BestFrameBase64")
         self.Result = params.get("Result")
         self.Description = params.get("Description")
         self.RequestId = params.get("RequestId")

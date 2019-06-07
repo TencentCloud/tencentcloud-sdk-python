@@ -442,7 +442,7 @@ class CreateL4ListenersResponse(AbstractModel):
     def __init__(self):
         """
         :param TaskId: 任务ID。该接口为异步任务，可根据本参数调用DescribeLoadBalancerTaskResult接口来查询任务操作结果
-        :type TaskId: int
+        :type TaskId: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -985,7 +985,7 @@ class DeleteLoadBalancerResponse(AbstractModel):
     def __init__(self):
         """
         :param TaskId: 任务ID。该接口为异步任务，可根据本参数调用DescribeLoadBalancerTaskResult接口来查询任务操作结果。
-        :type TaskId: int
+        :type TaskId: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -2516,6 +2516,20 @@ class L4ListenerInfo(AbstractModel):
         :type Status: int
         :param AddTimestamp: 创建时间戳。
         :type AddTimestamp: str
+        :param CustomHealthSwitch: 是否开启自定义健康检查：1（开启）、0（关闭）。默认值0，表示关闭。（该字段在健康检查开启的情况下才生效）
+        :type CustomHealthSwitch: int
+        :param InputType: 自定义健康探测内容类型，可选值：text（文本）、hexadecimal（十六进制）。
+        :type InputType: str
+        :param LineSeparatorType: 探测内容类型为文本方式时，针对请求文本中换行替换方式。可选值：1（替换为LF）、2（替换为CR）、3（替换为LF+CR）。
+        :type LineSeparatorType: int
+        :param HealthRequest: 自定义探测请求内容。
+        :type HealthRequest: str
+        :param HealthResponse: 自定义探测返回内容。
+        :type HealthResponse: str
+        :param ToaFlag: 是否开启toa：1（开启）、0（关闭）。
+        :type ToaFlag: int
+        :param BalanceMode: 转发后端服务器调度类型。
+        :type BalanceMode: str
         """
         self.ListenerId = None
         self.ListenerName = None
@@ -2531,6 +2545,13 @@ class L4ListenerInfo(AbstractModel):
         self.UnhealthNum = None
         self.Status = None
         self.AddTimestamp = None
+        self.CustomHealthSwitch = None
+        self.InputType = None
+        self.LineSeparatorType = None
+        self.HealthRequest = None
+        self.HealthResponse = None
+        self.ToaFlag = None
+        self.BalanceMode = None
 
 
     def _deserialize(self, params):
@@ -2548,6 +2569,13 @@ class L4ListenerInfo(AbstractModel):
         self.UnhealthNum = params.get("UnhealthNum")
         self.Status = params.get("Status")
         self.AddTimestamp = params.get("AddTimestamp")
+        self.CustomHealthSwitch = params.get("CustomHealthSwitch")
+        self.InputType = params.get("InputType")
+        self.LineSeparatorType = params.get("LineSeparatorType")
+        self.HealthRequest = params.get("HealthRequest")
+        self.HealthResponse = params.get("HealthResponse")
+        self.ToaFlag = params.get("ToaFlag")
+        self.BalanceMode = params.get("BalanceMode")
 
 
 class L7Backend(AbstractModel):
@@ -3130,8 +3158,6 @@ class LoadBalancer(AbstractModel):
         :type BzL4Metrics: str
         :param BzL7Metrics: 保障型网关七层计费指标
         :type BzL7Metrics: str
-        :param IspId: Isp类型。5:腾讯CAP;7:内网。
-        :type IspId: str
         """
         self.LoadBalancerId = None
         self.ProjectId = None
@@ -3159,7 +3185,6 @@ class LoadBalancer(AbstractModel):
         self.BzPayMode = None
         self.BzL4Metrics = None
         self.BzL7Metrics = None
-        self.IspId = None
 
 
     def _deserialize(self, params):
@@ -3189,7 +3214,6 @@ class LoadBalancer(AbstractModel):
         self.BzPayMode = params.get("BzPayMode")
         self.BzL4Metrics = params.get("BzL4Metrics")
         self.BzL7Metrics = params.get("BzL7Metrics")
-        self.IspId = params.get("IspId")
 
 
 class LoadBalancerPortInfoListener(AbstractModel):
@@ -3710,7 +3734,7 @@ class ModifyL7ListenerResponse(AbstractModel):
     def __init__(self):
         """
         :param TaskId: 任务ID。该接口为异步任务，可根据本参数调用[DescribeLoadBalancerTaskResult](/document/product/386/9308)接口来查询任务操作结果
-        :type TaskId: int
+        :type TaskId: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """

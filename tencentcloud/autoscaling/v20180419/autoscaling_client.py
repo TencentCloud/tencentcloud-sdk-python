@@ -1148,6 +1148,7 @@ class AutoscalingClient(AbstractClient):
         """本接口（UpgradeLaunchConfiguration）用于升级启动配置。
 
         * 本接口用于升级启动配置，采用“完全覆盖”风格，无论之前参数如何，统一按照接口参数设置为新的配置。对于非必填字段，不填写则按照默认值赋值。
+        * 升级修改启动配置后，已经使用该启动配置扩容的存量实例不会发生变更，此后使用该启动配置的新增实例会按照新的配置进行扩容。
 
         :param request: 调用UpgradeLaunchConfiguration所需参数的结构体。
         :type request: :class:`tencentcloud.autoscaling.v20180419.models.UpgradeLaunchConfigurationRequest`

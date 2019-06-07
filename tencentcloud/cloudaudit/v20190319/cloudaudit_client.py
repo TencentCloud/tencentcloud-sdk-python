@@ -17,28 +17,28 @@ import json
 
 from tencentcloud.common.exception.tencent_cloud_sdk_exception import TencentCloudSDKException
 from tencentcloud.common.abstract_client import AbstractClient
-from tencentcloud.faceid.v20180301 import models
+from tencentcloud.cloudaudit.v20190319 import models
 
 
-class FaceidClient(AbstractClient):
-    _apiVersion = '2018-03-01'
-    _endpoint = 'faceid.tencentcloudapi.com'
+class CloudauditClient(AbstractClient):
+    _apiVersion = '2019-03-19'
+    _endpoint = 'cloudaudit.tencentcloudapi.com'
 
 
-    def BankCardVerification(self, request):
-        """银行卡核验
+    def CreateAudit(self, request):
+        """创建跟踪集
 
-        :param request: 调用BankCardVerification所需参数的结构体。
-        :type request: :class:`tencentcloud.faceid.v20180301.models.BankCardVerificationRequest`
-        :rtype: :class:`tencentcloud.faceid.v20180301.models.BankCardVerificationResponse`
+        :param request: 调用CreateAudit所需参数的结构体。
+        :type request: :class:`tencentcloud.cloudaudit.v20190319.models.CreateAuditRequest`
+        :rtype: :class:`tencentcloud.cloudaudit.v20190319.models.CreateAuditResponse`
 
         """
         try:
             params = request._serialize()
-            body = self.call("BankCardVerification", params)
+            body = self.call("CreateAudit", params)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.BankCardVerificationResponse()
+                model = models.CreateAuditResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -53,20 +53,20 @@ class FaceidClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def DetectAuth(self, request):
-        """每次调用人脸核身SaaS化服务前，需先调用本接口获取BizToken，用来串联核身流程，在验证完成后，用于获取验证结果信息。
+    def DeleteAudit(self, request):
+        """删除跟踪集
 
-        :param request: 调用DetectAuth所需参数的结构体。
-        :type request: :class:`tencentcloud.faceid.v20180301.models.DetectAuthRequest`
-        :rtype: :class:`tencentcloud.faceid.v20180301.models.DetectAuthResponse`
+        :param request: 调用DeleteAudit所需参数的结构体。
+        :type request: :class:`tencentcloud.cloudaudit.v20190319.models.DeleteAuditRequest`
+        :rtype: :class:`tencentcloud.cloudaudit.v20190319.models.DeleteAuditResponse`
 
         """
         try:
             params = request._serialize()
-            body = self.call("DetectAuth", params)
+            body = self.call("DeleteAudit", params)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.DetectAuthResponse()
+                model = models.DeleteAuditResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -81,20 +81,20 @@ class FaceidClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def GetActionSequence(self, request):
-        """使用动作活体检测模式前，需调用本接口获取动作顺序。
+    def DescribeAudit(self, request):
+        """查询跟踪集详情
 
-        :param request: 调用GetActionSequence所需参数的结构体。
-        :type request: :class:`tencentcloud.faceid.v20180301.models.GetActionSequenceRequest`
-        :rtype: :class:`tencentcloud.faceid.v20180301.models.GetActionSequenceResponse`
+        :param request: 调用DescribeAudit所需参数的结构体。
+        :type request: :class:`tencentcloud.cloudaudit.v20190319.models.DescribeAuditRequest`
+        :rtype: :class:`tencentcloud.cloudaudit.v20190319.models.DescribeAuditResponse`
 
         """
         try:
             params = request._serialize()
-            body = self.call("GetActionSequence", params)
+            body = self.call("DescribeAudit", params)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.GetActionSequenceResponse()
+                model = models.DescribeAuditResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -109,20 +109,20 @@ class FaceidClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def GetDetectInfo(self, request):
-        """完成验证后，用BizToken调用本接口获取结果信息，BizToken生成后三天内（3\*24\*3,600秒）可多次拉取。
+    def GetAttributeKey(self, request):
+        """查询AttributeKey的有效取值范围
 
-        :param request: 调用GetDetectInfo所需参数的结构体。
-        :type request: :class:`tencentcloud.faceid.v20180301.models.GetDetectInfoRequest`
-        :rtype: :class:`tencentcloud.faceid.v20180301.models.GetDetectInfoResponse`
+        :param request: 调用GetAttributeKey所需参数的结构体。
+        :type request: :class:`tencentcloud.cloudaudit.v20190319.models.GetAttributeKeyRequest`
+        :rtype: :class:`tencentcloud.cloudaudit.v20190319.models.GetAttributeKeyResponse`
 
         """
         try:
             params = request._serialize()
-            body = self.call("GetDetectInfo", params)
+            body = self.call("GetAttributeKey", params)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.GetDetectInfoResponse()
+                model = models.GetAttributeKeyResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -137,20 +137,20 @@ class FaceidClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def GetLiveCode(self, request):
-        """使用数字活体检测模式前，需调用本接口获取数字验证码。
+    def InquireAuditCredit(self, request):
+        """查询用户可创建跟踪集的数量
 
-        :param request: 调用GetLiveCode所需参数的结构体。
-        :type request: :class:`tencentcloud.faceid.v20180301.models.GetLiveCodeRequest`
-        :rtype: :class:`tencentcloud.faceid.v20180301.models.GetLiveCodeResponse`
+        :param request: 调用InquireAuditCredit所需参数的结构体。
+        :type request: :class:`tencentcloud.cloudaudit.v20190319.models.InquireAuditCreditRequest`
+        :rtype: :class:`tencentcloud.cloudaudit.v20190319.models.InquireAuditCreditResponse`
 
         """
         try:
             params = request._serialize()
-            body = self.call("GetLiveCode", params)
+            body = self.call("InquireAuditCredit", params)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.GetLiveCodeResponse()
+                model = models.InquireAuditCreditResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -165,20 +165,20 @@ class FaceidClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def IdCardVerification(self, request):
-        """传入姓名和身份证号，校验两者的真实性和一致性。
+    def ListAudits(self, request):
+        """查询跟踪集概要
 
-        :param request: 调用IdCardVerification所需参数的结构体。
-        :type request: :class:`tencentcloud.faceid.v20180301.models.IdCardVerificationRequest`
-        :rtype: :class:`tencentcloud.faceid.v20180301.models.IdCardVerificationResponse`
+        :param request: 调用ListAudits所需参数的结构体。
+        :type request: :class:`tencentcloud.cloudaudit.v20190319.models.ListAuditsRequest`
+        :rtype: :class:`tencentcloud.cloudaudit.v20190319.models.ListAuditsResponse`
 
         """
         try:
             params = request._serialize()
-            body = self.call("IdCardVerification", params)
+            body = self.call("ListAudits", params)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.IdCardVerificationResponse()
+                model = models.ListAuditsResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -193,20 +193,20 @@ class FaceidClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def ImageRecognition(self, request):
-        """传入照片和身份信息，判断该照片与公安权威库的证件照是否属于同一个人。
+    def ListCmqEnableRegion(self, request):
+        """查询云审计支持的cmq的可用区
 
-        :param request: 调用ImageRecognition所需参数的结构体。
-        :type request: :class:`tencentcloud.faceid.v20180301.models.ImageRecognitionRequest`
-        :rtype: :class:`tencentcloud.faceid.v20180301.models.ImageRecognitionResponse`
+        :param request: 调用ListCmqEnableRegion所需参数的结构体。
+        :type request: :class:`tencentcloud.cloudaudit.v20190319.models.ListCmqEnableRegionRequest`
+        :rtype: :class:`tencentcloud.cloudaudit.v20190319.models.ListCmqEnableRegionResponse`
 
         """
         try:
             params = request._serialize()
-            body = self.call("ImageRecognition", params)
+            body = self.call("ListCmqEnableRegion", params)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.ImageRecognitionResponse()
+                model = models.ListCmqEnableRegionResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -221,20 +221,20 @@ class FaceidClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def Liveness(self, request):
-        """活体检测
+    def ListCosEnableRegion(self, request):
+        """查询云审计支持的cos可用区
 
-        :param request: 调用Liveness所需参数的结构体。
-        :type request: :class:`tencentcloud.faceid.v20180301.models.LivenessRequest`
-        :rtype: :class:`tencentcloud.faceid.v20180301.models.LivenessResponse`
+        :param request: 调用ListCosEnableRegion所需参数的结构体。
+        :type request: :class:`tencentcloud.cloudaudit.v20190319.models.ListCosEnableRegionRequest`
+        :rtype: :class:`tencentcloud.cloudaudit.v20190319.models.ListCosEnableRegionResponse`
 
         """
         try:
             params = request._serialize()
-            body = self.call("Liveness", params)
+            body = self.call("ListCosEnableRegion", params)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.LivenessResponse()
+                model = models.ListCosEnableRegionResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -249,20 +249,20 @@ class FaceidClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def LivenessCompare(self, request):
-        """传入视频和照片，先判断视频中是否为真人，判断为真人后，再判断该视频中的人与上传照片是否属于同一个人。
+    def LookUpEvents(self, request):
+        """用于对操作日志进行检索，便于用户进行查询相关的操作信息。
 
-        :param request: 调用LivenessCompare所需参数的结构体。
-        :type request: :class:`tencentcloud.faceid.v20180301.models.LivenessCompareRequest`
-        :rtype: :class:`tencentcloud.faceid.v20180301.models.LivenessCompareResponse`
+        :param request: 调用LookUpEvents所需参数的结构体。
+        :type request: :class:`tencentcloud.cloudaudit.v20190319.models.LookUpEventsRequest`
+        :rtype: :class:`tencentcloud.cloudaudit.v20190319.models.LookUpEventsResponse`
 
         """
         try:
             params = request._serialize()
-            body = self.call("LivenessCompare", params)
+            body = self.call("LookUpEvents", params)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.LivenessCompareResponse()
+                model = models.LookUpEventsResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -277,20 +277,79 @@ class FaceidClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def LivenessRecognition(self, request):
-        """传入视频和身份信息，先判断视频中是否为真人，判断为真人后，再判断该视频中的人与公安权威库的证件照是否属于同一个人。
+    def StartLogging(self, request):
+        """开启跟踪集
 
-        :param request: 调用LivenessRecognition所需参数的结构体。
-        :type request: :class:`tencentcloud.faceid.v20180301.models.LivenessRecognitionRequest`
-        :rtype: :class:`tencentcloud.faceid.v20180301.models.LivenessRecognitionResponse`
+        :param request: 调用StartLogging所需参数的结构体。
+        :type request: :class:`tencentcloud.cloudaudit.v20190319.models.StartLoggingRequest`
+        :rtype: :class:`tencentcloud.cloudaudit.v20190319.models.StartLoggingResponse`
 
         """
         try:
             params = request._serialize()
-            body = self.call("LivenessRecognition", params)
+            body = self.call("StartLogging", params)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.LivenessRecognitionResponse()
+                model = models.StartLoggingResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def StopLogging(self, request):
+        """关闭跟踪集
+
+        :param request: 调用StopLogging所需参数的结构体。
+        :type request: :class:`tencentcloud.cloudaudit.v20190319.models.StopLoggingRequest`
+        :rtype: :class:`tencentcloud.cloudaudit.v20190319.models.StopLoggingResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("StopLogging", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.StopLoggingResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def UpdateAudit(self, request):
+        """参数要求：
+        1、如果IsCreateNewBucket的值存在的话，cosRegion和cosBucketName都是必填参数。
+        2、如果IsEnableCmqNotify的值是1的话，IsCreateNewQueue、CmqRegion和CmqQueueName都是必填参数。
+        3、如果IsEnableCmqNotify的值是0的话，IsCreateNewQueue、CmqRegion和CmqQueueName都不能传。
+
+        :param request: 调用UpdateAudit所需参数的结构体。
+        :type request: :class:`tencentcloud.cloudaudit.v20190319.models.UpdateAuditRequest`
+        :rtype: :class:`tencentcloud.cloudaudit.v20190319.models.UpdateAuditResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("UpdateAudit", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.UpdateAuditResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

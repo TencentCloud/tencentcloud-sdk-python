@@ -198,7 +198,7 @@ class DescribeIpInfoRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Key: 要查询的域名
+        :param Key: 要查询的IP
         :type Key: str
         :param Option: 附加字段，是否返回上下文。当为0时不返回上下文，当为1时返回上下文。
         :type Option: int

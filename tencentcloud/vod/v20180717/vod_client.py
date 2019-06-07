@@ -82,6 +82,38 @@ class VodClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def ComposeMedia(self, request):
+        """该接口用于制作媒体文件，可以
+
+        1. 对一个媒体文件进行剪辑，生成一个新的媒体文件；
+        2. 对多个媒体文件进行裁剪拼接，生成一个新的媒体文件；
+        3. 对多个媒体文件的媒体流进行裁剪拼接，生成一个新的媒体文件；
+
+        :param request: 调用ComposeMedia所需参数的结构体。
+        :type request: :class:`tencentcloud.vod.v20180717.models.ComposeMediaRequest`
+        :rtype: :class:`tencentcloud.vod.v20180717.models.ComposeMediaResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ComposeMedia", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ComposeMediaResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def ConfirmEvents(self, request):
         """* 开发者调用拉取事件通知，获取到事件后，必须调用该接口来确认消息已经收到；
         * 开发者获取到事件句柄后，等待确认的有效时间为 30 秒，超出 30 秒会报参数错误（4000）；
@@ -843,6 +875,37 @@ class VodClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeProcedureTemplatesResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeReviewDetails(self, request):
+        """该接口返回查询时间范围内每天使用的视频内容审核时长数据，单位： 秒。
+
+        1. 可以查询最近 90 天内的转码时长统计数据。
+        2. 查询时间跨度不超过 60 天。
+
+        :param request: 调用DescribeReviewDetails所需参数的结构体。
+        :type request: :class:`tencentcloud.vod.v20180717.models.DescribeReviewDetailsRequest`
+        :rtype: :class:`tencentcloud.vod.v20180717.models.DescribeReviewDetailsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeReviewDetails", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeReviewDetailsResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

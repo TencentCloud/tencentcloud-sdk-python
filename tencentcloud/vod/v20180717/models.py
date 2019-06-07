@@ -3146,6 +3146,61 @@ class ComposeMediaOutput(AbstractModel):
         self.RemoveAudio = params.get("RemoveAudio")
 
 
+class ComposeMediaRequest(AbstractModel):
+    """ComposeMedia请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Tracks: 输入的媒体轨道列表，包括视频、音频、图片等素材组成的多个轨道信息。输入的多个轨道在时间轴上和输出媒体文件的时间轴对齐，时间轴上相同时间点的各个轨道的素材进行重叠，视频或者图片按轨道顺序进行图像的叠加，轨道顺序高的素材叠加在上面；音频素材进行混音。
+        :type Tracks: list of MediaTrack
+        :param Output: 输出的媒体文件信息。
+        :type Output: :class:`tencentcloud.vod.v20180717.models.ComposeMediaOutput`
+        :param Canvas: 制作视频文件时使用的画布。
+        :type Canvas: :class:`tencentcloud.vod.v20180717.models.Canvas`
+        """
+        self.Tracks = None
+        self.Output = None
+        self.Canvas = None
+
+
+    def _deserialize(self, params):
+        if params.get("Tracks") is not None:
+            self.Tracks = []
+            for item in params.get("Tracks"):
+                obj = MediaTrack()
+                obj._deserialize(item)
+                self.Tracks.append(obj)
+        if params.get("Output") is not None:
+            self.Output = ComposeMediaOutput()
+            self.Output._deserialize(params.get("Output"))
+        if params.get("Canvas") is not None:
+            self.Canvas = Canvas()
+            self.Canvas._deserialize(params.get("Canvas"))
+
+
+class ComposeMediaResponse(AbstractModel):
+    """ComposeMedia返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param TaskId: 制作媒体文件的任务 ID，可以通过该 ID 查询制作任务（任务类型为 MakeMedia）的状态。
+        :type TaskId: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TaskId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TaskId = params.get("TaskId")
+        self.RequestId = params.get("RequestId")
+
+
 class ComposeMediaTask(AbstractModel):
     """制作媒体文件任务信息
 
@@ -5044,6 +5099,65 @@ class DescribeProcedureTemplatesResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeReviewDetailsRequest(AbstractModel):
+    """DescribeReviewDetails请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param StartTime: 起始日期。使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F)。
+        :type StartTime: str
+        :param EndTime: 结束日期，需大于开始日期。使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F)。
+        :type EndTime: str
+        :param SubAppId: 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
+        :type SubAppId: int
+        """
+        self.StartTime = None
+        self.EndTime = None
+        self.SubAppId = None
+
+
+    def _deserialize(self, params):
+        self.StartTime = params.get("StartTime")
+        self.EndTime = params.get("EndTime")
+        self.SubAppId = params.get("SubAppId")
+
+
+class DescribeReviewDetailsResponse(AbstractModel):
+    """DescribeReviewDetails返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param TotalCount: 发起内容审核次数。
+        :type TotalCount: int
+        :param TotalDuration: 内容审核总时长。
+        :type TotalDuration: int
+        :param Data: 内容审核时长统计数据，每天一个数据。
+        :type Data: list of StatDataItem
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.TotalDuration = None
+        self.Data = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        self.TotalDuration = params.get("TotalDuration")
+        if params.get("Data") is not None:
+            self.Data = []
+            for item in params.get("Data"):
+                obj = StatDataItem()
+                obj._deserialize(item)
+                self.Data.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeTaskDetailRequest(AbstractModel):
     """DescribeTaskDetail请求参数结构体
 
@@ -5075,7 +5189,8 @@ class DescribeTaskDetailResponse(AbstractModel):
         :param TaskType: 任务类型，取值：
 <li>Procedure：视频处理任务；</li>
 <li>EditMedia：视频编辑任务；</li>
-<li>WechatPublish：微信发布任务。</li>
+<li>WechatPublish：微信发布任务；</li>
+<li>ComposeMedia：制作媒体文件任务。</li>
 兼容 2017 版的任务类型：
 <li>Transcode：视频转码任务；</li>
 <li>SnapshotByTimeOffset：视频截图任务；</li>
@@ -5118,6 +5233,9 @@ class DescribeTaskDetailResponse(AbstractModel):
         :param CreateImageSpriteTask: 截取雪碧图任务信息，仅当 TaskType 为 ImageSprite，该字段有值。
 注意：此字段可能返回 null，表示取不到有效值。
         :type CreateImageSpriteTask: :class:`tencentcloud.vod.v20180717.models.CreateImageSpriteTask2017`
+        :param ComposeMediaTask: 制作媒体文件任务信息，仅当 TaskType 为 ComposeMedia，该字段有值。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ComposeMediaTask: :class:`tencentcloud.vod.v20180717.models.ComposeMediaTask`
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -5134,6 +5252,7 @@ class DescribeTaskDetailResponse(AbstractModel):
         self.ConcatTask = None
         self.ClipTask = None
         self.CreateImageSpriteTask = None
+        self.ComposeMediaTask = None
         self.RequestId = None
 
 
@@ -5167,6 +5286,9 @@ class DescribeTaskDetailResponse(AbstractModel):
         if params.get("CreateImageSpriteTask") is not None:
             self.CreateImageSpriteTask = CreateImageSpriteTask2017()
             self.CreateImageSpriteTask._deserialize(params.get("CreateImageSpriteTask"))
+        if params.get("ComposeMediaTask") is not None:
+            self.ComposeMediaTask = ComposeMediaTask()
+            self.ComposeMediaTask._deserialize(params.get("ComposeMediaTask"))
         self.RequestId = params.get("RequestId")
 
 
@@ -5768,9 +5890,6 @@ class EventContent(AbstractModel):
         :param ComposeMediaCompleteEvent: 制作媒体文件任务完成事件，当事件类型为 ComposeMediaComplete 时有效。
 注意：此字段可能返回 null，表示取不到有效值。
         :type ComposeMediaCompleteEvent: :class:`tencentcloud.vod.v20180717.models.ComposeMediaTask`
-        :param WechatMiniProgramPublishEvent: 微信小程序视频发布完成事件，当事件类型为 WechatMiniProgramPublishComplete 时有效。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type WechatMiniProgramPublishEvent: :class:`tencentcloud.vod.v20180717.models.WechatMiniProgramPublishTask`
         """
         self.EventHandle = None
         self.EventType = None
@@ -5786,7 +5905,6 @@ class EventContent(AbstractModel):
         self.CreateImageSpriteCompleteEvent = None
         self.SnapshotByTimeOffsetCompleteEvent = None
         self.ComposeMediaCompleteEvent = None
-        self.WechatMiniProgramPublishEvent = None
 
 
     def _deserialize(self, params):
@@ -5828,9 +5946,6 @@ class EventContent(AbstractModel):
         if params.get("ComposeMediaCompleteEvent") is not None:
             self.ComposeMediaCompleteEvent = ComposeMediaTask()
             self.ComposeMediaCompleteEvent._deserialize(params.get("ComposeMediaCompleteEvent"))
-        if params.get("WechatMiniProgramPublishEvent") is not None:
-            self.WechatMiniProgramPublishEvent = WechatMiniProgramPublishTask()
-            self.WechatMiniProgramPublishEvent._deserialize(params.get("WechatMiniProgramPublishEvent"))
 
 
 class FaceConfigureInfo(AbstractModel):
@@ -8872,7 +8987,6 @@ class OutputAudioStream(AbstractModel):
         """
         :param Codec: 音频流的编码格式，可选值：
 <li>libfdk_aac：适合 mp4 文件。</li>
-<li>libmp3lame：适合 mp3 文件。</li>
 默认值：libfdk_aac。
         :type Codec: str
         :param SampleRate: 音频流的采样率，可选值：
@@ -9598,7 +9712,7 @@ class ProcessMediaByProcedureRequest(AbstractModel):
         :type TasksPriority: int
         :param TasksNotifyMode: 任务流状态变更通知模式，可取值有 Finish，Change 和 None，不填代表 Finish。
         :type TasksNotifyMode: str
-        :param SessionContext: 来源上下文，用于透传用户请求信息，任务流状态变更回调将返回该字段值，最长 250 个字符。
+        :param SessionContext: 来源上下文，用于透传用户请求信息，任务流状态变更回调将返回该字段值，最长 1000 个字符。
         :type SessionContext: str
         :param SessionId: 用于去重的识别码，如果一天内曾有过相同的识别码的请求，则本次的请求会返回错误。最长 50 个字符，不带或者带空字符串表示不做去重。
         :type SessionId: str
@@ -9666,7 +9780,7 @@ class ProcessMediaByUrlRequest(AbstractModel):
         :type TasksPriority: int
         :param TasksNotifyMode: 任务流状态变更通知模式，可取值有 Finish，Change 和 None，不填代表 Finish。
         :type TasksNotifyMode: str
-        :param SessionContext: 来源上下文，用于透传用户请求信息，任务流状态变更回调将返回该字段值，最长 250 个字符。
+        :param SessionContext: 来源上下文，用于透传用户请求信息，任务流状态变更回调将返回该字段值，最长 1000 个字符。
         :type SessionContext: str
         :param SessionId: 用于去重的识别码，如果七天内曾有过相同的识别码的请求，则本次的请求会返回错误。最长 50 个字符，不带或者带空字符串表示不做去重。
         :type SessionId: str
@@ -9750,7 +9864,7 @@ class ProcessMediaRequest(AbstractModel):
         :type TasksPriority: int
         :param TasksNotifyMode: 任务流状态变更通知模式，可取值有 Finish，Change 和 None，不填代表 Finish。
         :type TasksNotifyMode: str
-        :param SessionContext: 来源上下文，用于透传用户请求信息，任务流状态变更回调将返回该字段值，最长 250 个字符。
+        :param SessionContext: 来源上下文，用于透传用户请求信息，任务流状态变更回调将返回该字段值，最长 1000 个字符。
         :type SessionContext: str
         :param SessionId: 用于去重的识别码，如果七天内曾有过相同的识别码的请求，则本次的请求会返回错误。最长 50 个字符，不带或者带空字符串表示不做去重。
         :type SessionId: str
@@ -10260,6 +10374,31 @@ class SortBy(AbstractModel):
     def _deserialize(self, params):
         self.Field = params.get("Field")
         self.Order = params.get("Order")
+
+
+class StatDataItem(AbstractModel):
+    """统计数据
+
+    """
+
+    def __init__(self):
+        """
+        :param Time: 数据所在时间区间的开始时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F)。如：当时间粒度为天，2018-12-01T00:00:00+08:00，表示2018年12月1日（含）到2018年12月2日（不含）区间。
+        :type Time: str
+        :param Value: 数据大小。
+<li>存储空间的数据，单位是字节。</li>
+<li>转码时长的数据，单位是秒。</li>
+<li>流量数据，单位是字节。</li>
+<li>带宽数据，单位是比特每秒。</li>
+        :type Value: int
+        """
+        self.Time = None
+        self.Value = None
+
+
+    def _deserialize(self, params):
+        self.Time = params.get("Time")
+        self.Value = params.get("Value")
 
 
 class StickerTrackItem(AbstractModel):
@@ -11510,54 +11649,6 @@ class WatermarkTemplate(AbstractModel):
         self.CreateTime = params.get("CreateTime")
         self.UpdateTime = params.get("UpdateTime")
         self.CoordinateOrigin = params.get("CoordinateOrigin")
-
-
-class WechatMiniProgramPublishTask(AbstractModel):
-    """微信小程序发布任务信息
-
-    """
-
-    def __init__(self):
-        """
-        :param TaskId: 任务 ID。
-        :type TaskId: str
-        :param Status: 任务状态，取值：
-WAITING：等待中；
-PROCESSING：处理中；
-FINISH：已完成。
-        :type Status: str
-        :param ErrCode: 错误码
-<li>0：成功；</li>
-<li>其他值：失败。</li>
-        :type ErrCode: int
-        :param Message: 错误信息。
-        :type Message: str
-        :param FileId: 发布视频文件 ID。
-        :type FileId: str
-        :param SourceDefinition: 发布视频所对应的转码模板 ID，为 0 代表原始视频。
-        :type SourceDefinition: int
-        :param PublishResult: 微信小程序视频发布状态，取值：
-<li>Pass：成功；</li>
-<li>Rejected：审核未通过。</li>
-        :type PublishResult: str
-        """
-        self.TaskId = None
-        self.Status = None
-        self.ErrCode = None
-        self.Message = None
-        self.FileId = None
-        self.SourceDefinition = None
-        self.PublishResult = None
-
-
-    def _deserialize(self, params):
-        self.TaskId = params.get("TaskId")
-        self.Status = params.get("Status")
-        self.ErrCode = params.get("ErrCode")
-        self.Message = params.get("Message")
-        self.FileId = params.get("FileId")
-        self.SourceDefinition = params.get("SourceDefinition")
-        self.PublishResult = params.get("PublishResult")
 
 
 class WechatPublishTask(AbstractModel):

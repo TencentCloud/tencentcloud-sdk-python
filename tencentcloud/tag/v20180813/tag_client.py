@@ -17,28 +17,28 @@ import json
 
 from tencentcloud.common.exception.tencent_cloud_sdk_exception import TencentCloudSDKException
 from tencentcloud.common.abstract_client import AbstractClient
-from tencentcloud.faceid.v20180301 import models
+from tencentcloud.tag.v20180813 import models
 
 
-class FaceidClient(AbstractClient):
-    _apiVersion = '2018-03-01'
-    _endpoint = 'faceid.tencentcloudapi.com'
+class TagClient(AbstractClient):
+    _apiVersion = '2018-08-13'
+    _endpoint = 'tag.tencentcloudapi.com'
 
 
-    def BankCardVerification(self, request):
-        """银行卡核验
+    def AddResourceTag(self, request):
+        """本接口用于给标签关联资源
 
-        :param request: 调用BankCardVerification所需参数的结构体。
-        :type request: :class:`tencentcloud.faceid.v20180301.models.BankCardVerificationRequest`
-        :rtype: :class:`tencentcloud.faceid.v20180301.models.BankCardVerificationResponse`
+        :param request: 调用AddResourceTag所需参数的结构体。
+        :type request: :class:`tencentcloud.tag.v20180813.models.AddResourceTagRequest`
+        :rtype: :class:`tencentcloud.tag.v20180813.models.AddResourceTagResponse`
 
         """
         try:
             params = request._serialize()
-            body = self.call("BankCardVerification", params)
+            body = self.call("AddResourceTag", params)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.BankCardVerificationResponse()
+                model = models.AddResourceTagResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -53,20 +53,20 @@ class FaceidClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def DetectAuth(self, request):
-        """每次调用人脸核身SaaS化服务前，需先调用本接口获取BizToken，用来串联核身流程，在验证完成后，用于获取验证结果信息。
+    def CreateTag(self, request):
+        """本接口用于创建一对标签键和标签值
 
-        :param request: 调用DetectAuth所需参数的结构体。
-        :type request: :class:`tencentcloud.faceid.v20180301.models.DetectAuthRequest`
-        :rtype: :class:`tencentcloud.faceid.v20180301.models.DetectAuthResponse`
+        :param request: 调用CreateTag所需参数的结构体。
+        :type request: :class:`tencentcloud.tag.v20180813.models.CreateTagRequest`
+        :rtype: :class:`tencentcloud.tag.v20180813.models.CreateTagResponse`
 
         """
         try:
             params = request._serialize()
-            body = self.call("DetectAuth", params)
+            body = self.call("CreateTag", params)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.DetectAuthResponse()
+                model = models.CreateTagResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -81,20 +81,20 @@ class FaceidClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def GetActionSequence(self, request):
-        """使用动作活体检测模式前，需调用本接口获取动作顺序。
+    def DeleteResourceTag(self, request):
+        """本接口用于解除标签和资源的关联关系
 
-        :param request: 调用GetActionSequence所需参数的结构体。
-        :type request: :class:`tencentcloud.faceid.v20180301.models.GetActionSequenceRequest`
-        :rtype: :class:`tencentcloud.faceid.v20180301.models.GetActionSequenceResponse`
+        :param request: 调用DeleteResourceTag所需参数的结构体。
+        :type request: :class:`tencentcloud.tag.v20180813.models.DeleteResourceTagRequest`
+        :rtype: :class:`tencentcloud.tag.v20180813.models.DeleteResourceTagResponse`
 
         """
         try:
             params = request._serialize()
-            body = self.call("GetActionSequence", params)
+            body = self.call("DeleteResourceTag", params)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.GetActionSequenceResponse()
+                model = models.DeleteResourceTagResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -109,20 +109,20 @@ class FaceidClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def GetDetectInfo(self, request):
-        """完成验证后，用BizToken调用本接口获取结果信息，BizToken生成后三天内（3\*24\*3,600秒）可多次拉取。
+    def DeleteTag(self, request):
+        """本接口用于删除一对标签键和标签值
 
-        :param request: 调用GetDetectInfo所需参数的结构体。
-        :type request: :class:`tencentcloud.faceid.v20180301.models.GetDetectInfoRequest`
-        :rtype: :class:`tencentcloud.faceid.v20180301.models.GetDetectInfoResponse`
+        :param request: 调用DeleteTag所需参数的结构体。
+        :type request: :class:`tencentcloud.tag.v20180813.models.DeleteTagRequest`
+        :rtype: :class:`tencentcloud.tag.v20180813.models.DeleteTagResponse`
 
         """
         try:
             params = request._serialize()
-            body = self.call("GetDetectInfo", params)
+            body = self.call("DeleteTag", params)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.GetDetectInfoResponse()
+                model = models.DeleteTagResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -137,20 +137,20 @@ class FaceidClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def GetLiveCode(self, request):
-        """使用数字活体检测模式前，需调用本接口获取数字验证码。
+    def DescribeResourceTagsByResourceIds(self, request):
+        """用于查询已有资源标签键值对
 
-        :param request: 调用GetLiveCode所需参数的结构体。
-        :type request: :class:`tencentcloud.faceid.v20180301.models.GetLiveCodeRequest`
-        :rtype: :class:`tencentcloud.faceid.v20180301.models.GetLiveCodeResponse`
+        :param request: 调用DescribeResourceTagsByResourceIds所需参数的结构体。
+        :type request: :class:`tencentcloud.tag.v20180813.models.DescribeResourceTagsByResourceIdsRequest`
+        :rtype: :class:`tencentcloud.tag.v20180813.models.DescribeResourceTagsByResourceIdsResponse`
 
         """
         try:
             params = request._serialize()
-            body = self.call("GetLiveCode", params)
+            body = self.call("DescribeResourceTagsByResourceIds", params)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.GetLiveCodeResponse()
+                model = models.DescribeResourceTagsByResourceIdsResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -165,20 +165,20 @@ class FaceidClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def IdCardVerification(self, request):
-        """传入姓名和身份证号，校验两者的真实性和一致性。
+    def DescribeTagKeys(self, request):
+        """用于查询已建立的标签列表中的标签键。
 
-        :param request: 调用IdCardVerification所需参数的结构体。
-        :type request: :class:`tencentcloud.faceid.v20180301.models.IdCardVerificationRequest`
-        :rtype: :class:`tencentcloud.faceid.v20180301.models.IdCardVerificationResponse`
+        :param request: 调用DescribeTagKeys所需参数的结构体。
+        :type request: :class:`tencentcloud.tag.v20180813.models.DescribeTagKeysRequest`
+        :rtype: :class:`tencentcloud.tag.v20180813.models.DescribeTagKeysResponse`
 
         """
         try:
             params = request._serialize()
-            body = self.call("IdCardVerification", params)
+            body = self.call("DescribeTagKeys", params)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.IdCardVerificationResponse()
+                model = models.DescribeTagKeysResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -193,20 +193,20 @@ class FaceidClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def ImageRecognition(self, request):
-        """传入照片和身份信息，判断该照片与公安权威库的证件照是否属于同一个人。
+    def DescribeTagValues(self, request):
+        """用于查询已建立的标签列表中的标签值。
 
-        :param request: 调用ImageRecognition所需参数的结构体。
-        :type request: :class:`tencentcloud.faceid.v20180301.models.ImageRecognitionRequest`
-        :rtype: :class:`tencentcloud.faceid.v20180301.models.ImageRecognitionResponse`
+        :param request: 调用DescribeTagValues所需参数的结构体。
+        :type request: :class:`tencentcloud.tag.v20180813.models.DescribeTagValuesRequest`
+        :rtype: :class:`tencentcloud.tag.v20180813.models.DescribeTagValuesResponse`
 
         """
         try:
             params = request._serialize()
-            body = self.call("ImageRecognition", params)
+            body = self.call("DescribeTagValues", params)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.ImageRecognitionResponse()
+                model = models.DescribeTagValuesResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -221,20 +221,20 @@ class FaceidClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def Liveness(self, request):
-        """活体检测
+    def DescribeTags(self, request):
+        """用于查询已建立的标签列表。
 
-        :param request: 调用Liveness所需参数的结构体。
-        :type request: :class:`tencentcloud.faceid.v20180301.models.LivenessRequest`
-        :rtype: :class:`tencentcloud.faceid.v20180301.models.LivenessResponse`
+        :param request: 调用DescribeTags所需参数的结构体。
+        :type request: :class:`tencentcloud.tag.v20180813.models.DescribeTagsRequest`
+        :rtype: :class:`tencentcloud.tag.v20180813.models.DescribeTagsResponse`
 
         """
         try:
             params = request._serialize()
-            body = self.call("Liveness", params)
+            body = self.call("DescribeTags", params)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.LivenessResponse()
+                model = models.DescribeTagsResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -249,20 +249,20 @@ class FaceidClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def LivenessCompare(self, request):
-        """传入视频和照片，先判断视频中是否为真人，判断为真人后，再判断该视频中的人与上传照片是否属于同一个人。
+    def ModifyResourceTags(self, request):
+        """本接口用于修改资源关联的所有标签
 
-        :param request: 调用LivenessCompare所需参数的结构体。
-        :type request: :class:`tencentcloud.faceid.v20180301.models.LivenessCompareRequest`
-        :rtype: :class:`tencentcloud.faceid.v20180301.models.LivenessCompareResponse`
+        :param request: 调用ModifyResourceTags所需参数的结构体。
+        :type request: :class:`tencentcloud.tag.v20180813.models.ModifyResourceTagsRequest`
+        :rtype: :class:`tencentcloud.tag.v20180813.models.ModifyResourceTagsResponse`
 
         """
         try:
             params = request._serialize()
-            body = self.call("LivenessCompare", params)
+            body = self.call("ModifyResourceTags", params)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.LivenessCompareResponse()
+                model = models.ModifyResourceTagsResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -277,20 +277,20 @@ class FaceidClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def LivenessRecognition(self, request):
-        """传入视频和身份信息，先判断视频中是否为真人，判断为真人后，再判断该视频中的人与公安权威库的证件照是否属于同一个人。
+    def UpdateResourceTagValue(self, request):
+        """本接口用于修改资源已关联的标签值（标签键不变）
 
-        :param request: 调用LivenessRecognition所需参数的结构体。
-        :type request: :class:`tencentcloud.faceid.v20180301.models.LivenessRecognitionRequest`
-        :rtype: :class:`tencentcloud.faceid.v20180301.models.LivenessRecognitionResponse`
+        :param request: 调用UpdateResourceTagValue所需参数的结构体。
+        :type request: :class:`tencentcloud.tag.v20180813.models.UpdateResourceTagValueRequest`
+        :rtype: :class:`tencentcloud.tag.v20180813.models.UpdateResourceTagValueResponse`
 
         """
         try:
             params = request._serialize()
-            body = self.call("LivenessRecognition", params)
+            body = self.call("UpdateResourceTagValue", params)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.LivenessRecognitionResponse()
+                model = models.UpdateResourceTagValueResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

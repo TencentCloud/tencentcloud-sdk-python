@@ -207,6 +207,8 @@ class AutoScalingGroup(AbstractModel):
         :type RetryPolicy: str
         :param InActivityStatus: 伸缩组是否处于伸缩活动中，`IN_ACTIVITY`表示处于伸缩活动中，`NOT_IN_ACTIVITY`表示不处于伸缩活动中。
         :type InActivityStatus: str
+        :param Tags: 伸缩组标签列表
+        :type Tags: list of Tag
         """
         self.AutoScalingGroupId = None
         self.AutoScalingGroupName = None
@@ -230,6 +232,7 @@ class AutoScalingGroup(AbstractModel):
         self.ZoneSet = None
         self.RetryPolicy = None
         self.InActivityStatus = None
+        self.Tags = None
 
 
     def _deserialize(self, params):
@@ -260,6 +263,12 @@ class AutoScalingGroup(AbstractModel):
         self.ZoneSet = params.get("ZoneSet")
         self.RetryPolicy = params.get("RetryPolicy")
         self.InActivityStatus = params.get("InActivityStatus")
+        if params.get("Tags") is not None:
+            self.Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self.Tags.append(obj)
 
 
 class AutoScalingGroupAbstract(AbstractModel):
@@ -404,6 +413,8 @@ class CreateAutoScalingGroupRequest(AbstractModel):
 可用区或子网不可用的常见原因包括该可用区CVM实例类型售罄、该可用区CBS云盘售罄、该可用区配额不足、该子网IP不足等。
 如果 Zones/SubnetIds 中可用区或者子网不存在，则无论 ZonesCheckPolicy 采用何种取值，都会校验报错。
         :type ZonesCheckPolicy: str
+        :param Tags: 标签描述列表。通过指定该参数可以支持绑定标签到伸缩组。同时绑定标签到相应的资源实例，
+        :type Tags: list of Tag
         """
         self.AutoScalingGroupName = None
         self.LaunchConfigurationId = None
@@ -420,6 +431,7 @@ class CreateAutoScalingGroupRequest(AbstractModel):
         self.Zones = None
         self.RetryPolicy = None
         self.ZonesCheckPolicy = None
+        self.Tags = None
 
 
     def _deserialize(self, params):
@@ -443,6 +455,12 @@ class CreateAutoScalingGroupRequest(AbstractModel):
         self.Zones = params.get("Zones")
         self.RetryPolicy = params.get("RetryPolicy")
         self.ZonesCheckPolicy = params.get("ZonesCheckPolicy")
+        if params.get("Tags") is not None:
+            self.Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self.Tags.append(obj)
 
 
 class CreateAutoScalingGroupResponse(AbstractModel):
@@ -1284,6 +1302,9 @@ class DescribeAutoScalingGroupsRequest(AbstractModel):
 <li> auto-scaling-group-id - String - 是否必填：否 -（过滤条件）按照伸缩组ID过滤。</li>
 <li> auto-scaling-group-name - String - 是否必填：否 -（过滤条件）按照伸缩组名称过滤。</li>
 <li> launch-configuration-id - String - 是否必填：否 -（过滤条件）按照启动配置ID过滤。</li>
+<li> tag-key - String - 是否必填：否 -（过滤条件）按照标签键进行过滤。</li>
+<li> tag-value - String - 是否必填：否 -（过滤条件）按照标签值进行过滤。</li>
+<li> tag:tag-key - String - 是否必填：否 -（过滤条件）按照标签键值对进行过滤。 tag-key使用具体的标签键进行替换。使用请参考示例2</li>
 每次请求的`Filters`的上限为10，`Filter.Values`的上限为5。参数不支持同时指定`AutoScalingGroupIds`和`Filters`。
         :type Filters: list of Filter
         :param Limit: 返回数量，默认为20，最大值为100。关于`Limit`的更进一步介绍请参考 API [简介](https://cloud.tencent.com/document/api/213/15688)中的相关小节。
@@ -3189,6 +3210,32 @@ class SystemDisk(AbstractModel):
     def _deserialize(self, params):
         self.DiskType = params.get("DiskType")
         self.DiskSize = params.get("DiskSize")
+
+
+class Tag(AbstractModel):
+    """资源类型及标签键值对
+
+    """
+
+    def __init__(self):
+        """
+        :param Key: 标签键
+        :type Key: str
+        :param Value: 标签值
+        :type Value: str
+        :param ResourceType: 标签绑定的资源类型，当前支持类型："auto-scaling-group
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ResourceType: str
+        """
+        self.Key = None
+        self.Value = None
+        self.ResourceType = None
+
+
+    def _deserialize(self, params):
+        self.Key = params.get("Key")
+        self.Value = params.get("Value")
+        self.ResourceType = params.get("ResourceType")
 
 
 class TargetAttribute(AbstractModel):
