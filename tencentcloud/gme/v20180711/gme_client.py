@@ -17,28 +17,28 @@ import json
 
 from tencentcloud.common.exception.tencent_cloud_sdk_exception import TencentCloudSDKException
 from tencentcloud.common.abstract_client import AbstractClient
-from tencentcloud.tbp.v20190311 import models
+from tencentcloud.gme.v20180711 import models
 
 
-class TbpClient(AbstractClient):
-    _apiVersion = '2019-03-11'
-    _endpoint = 'tbp.tencentcloudapi.com'
+class GmeClient(AbstractClient):
+    _apiVersion = '2018-07-11'
+    _endpoint = 'gme.tencentcloudapi.com'
 
 
-    def PostText(self, request):
-        """机器人会话接口，接收文本信息，传递给后台机器人
+    def DescribeFilterResultList(self, request):
+        """根据日期查询识别结果列表，按分页反回
 
-        :param request: 调用PostText所需参数的结构体。
-        :type request: :class:`tencentcloud.tbp.v20190311.models.PostTextRequest`
-        :rtype: :class:`tencentcloud.tbp.v20190311.models.PostTextResponse`
+        :param request: 调用DescribeFilterResultList所需参数的结构体。
+        :type request: :class:`tencentcloud.gme.v20180711.models.DescribeFilterResultListRequest`
+        :rtype: :class:`tencentcloud.gme.v20180711.models.DescribeFilterResultListResponse`
 
         """
         try:
             params = request._serialize()
-            body = self.call("PostText", params)
+            body = self.call("DescribeFilterResultList", params)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.PostTextResponse()
+                model = models.DescribeFilterResultListResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -53,20 +53,21 @@ class TbpClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def Reset(self, request):
-        """对当前机器人的会话状态进行复位
+    def VoiceFilter(self, request):
+        """本接口用于识别涉黄、涉政、涉恐等违规音频，成功会回调配置在应用的回调地址。回调示例如下：
+        {"BizId":0,"FileId":"test_file_id","FileName":"test_file_name","TimeStamp":"0000-00-00 00:00:00","Data":[{"Type":1,"Word":"xx"}]}
 
-        :param request: 调用Reset所需参数的结构体。
-        :type request: :class:`tencentcloud.tbp.v20190311.models.ResetRequest`
-        :rtype: :class:`tencentcloud.tbp.v20190311.models.ResetResponse`
+        :param request: 调用VoiceFilter所需参数的结构体。
+        :type request: :class:`tencentcloud.gme.v20180711.models.VoiceFilterRequest`
+        :rtype: :class:`tencentcloud.gme.v20180711.models.VoiceFilterResponse`
 
         """
         try:
             params = request._serialize()
-            body = self.call("Reset", params)
+            body = self.call("VoiceFilter", params)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.ResetResponse()
+                model = models.VoiceFilterResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

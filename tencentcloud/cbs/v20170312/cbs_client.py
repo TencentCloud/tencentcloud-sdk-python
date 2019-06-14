@@ -636,6 +636,37 @@ class CbsClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def ModifyAutoSnapshotPolicyAttribute(self, request):
+        """本接口（ModifyAutoSnapshotPolicyAttribute）用于修改定期快照策略属性。
+
+        * 可通过该接口修改定期快照策略的执行策略、名称、是否激活等属性。
+        * 修改保留天数时必须保证不与是否永久保留属性冲突，否则整个操作失败，以特定的错误码返回。
+
+        :param request: 调用ModifyAutoSnapshotPolicyAttribute所需参数的结构体。
+        :type request: :class:`tencentcloud.cbs.v20170312.models.ModifyAutoSnapshotPolicyAttributeRequest`
+        :rtype: :class:`tencentcloud.cbs.v20170312.models.ModifyAutoSnapshotPolicyAttributeResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ModifyAutoSnapshotPolicyAttribute", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ModifyAutoSnapshotPolicyAttributeResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def ModifyDiskAttributes(self, request):
         """* 只支持修改弹性云盘的项目ID。随云主机创建的云硬盘项目ID与云主机联动。可以通过[DescribeDisks](/document/product/362/16315)接口查询，见输出参数中Portable字段解释。
         * “云硬盘名称”仅为方便用户自己管理之用，腾讯云并不以此名称作为提交工单或是进行云盘管理操作的依据。

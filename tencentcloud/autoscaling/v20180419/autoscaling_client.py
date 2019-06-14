@@ -856,6 +856,37 @@ class AutoscalingClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def ExecuteScalingPolicy(self, request):
+        """本接口（ExecuteScalingPolicy）用于执行伸缩策略。
+
+        * 可以根据伸缩策略ID执行伸缩策略。
+        * 伸缩策略所属伸缩组处于伸缩活动时，会拒绝执行伸缩策略。
+
+        :param request: 调用ExecuteScalingPolicy所需参数的结构体。
+        :type request: :class:`tencentcloud.autoscaling.v20180419.models.ExecuteScalingPolicyRequest`
+        :rtype: :class:`tencentcloud.autoscaling.v20180419.models.ExecuteScalingPolicyResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ExecuteScalingPolicy", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ExecuteScalingPolicyResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def ModifyAutoScalingGroup(self, request):
         """本接口（ModifyAutoScalingGroup）用于修改伸缩组。
 

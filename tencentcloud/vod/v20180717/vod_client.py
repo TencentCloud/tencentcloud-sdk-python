@@ -1100,6 +1100,34 @@ class VodClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def ExecuteFunction(self, request):
+        """本接口仅用于定制开发的特殊场景，除非云点播客服人员主动告知您需要使用本接口，其它情况请勿调用。
+
+        :param request: 调用ExecuteFunction所需参数的结构体。
+        :type request: :class:`tencentcloud.vod.v20180717.models.ExecuteFunctionRequest`
+        :rtype: :class:`tencentcloud.vod.v20180717.models.ExecuteFunctionResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ExecuteFunction", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ExecuteFunctionResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def LiveRealTimeClip(self, request):
         """直播即时剪辑，是指在直播过程中（即直播尚未结束时），客户可以在过往直播内容中选择一段，实时生成一个新的视频（HLS 格式），开发者可以将其立即分享出去，或者长久保存起来。
 
@@ -1523,6 +1551,36 @@ class VodClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.PullEventsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def PushUrlCache(self, request):
+        """1. 预热指定的 URL 列表。
+        2. URL 的域名必须已在云点播中注册。
+        3. 单次请求最多指定20个 URL。
+
+        :param request: 调用PushUrlCache所需参数的结构体。
+        :type request: :class:`tencentcloud.vod.v20180717.models.PushUrlCacheRequest`
+        :rtype: :class:`tencentcloud.vod.v20180717.models.PushUrlCacheResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("PushUrlCache", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.PushUrlCacheResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

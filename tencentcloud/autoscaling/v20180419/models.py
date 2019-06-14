@@ -1967,6 +1967,48 @@ class EnhancedService(AbstractModel):
             self.MonitorService._deserialize(params.get("MonitorService"))
 
 
+class ExecuteScalingPolicyRequest(AbstractModel):
+    """ExecuteScalingPolicy请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param AutoScalingPolicyId: 告警伸缩策略ID
+        :type AutoScalingPolicyId: str
+        :param HonorCooldown: 是否检查伸缩组活动处于冷却时间内，默认值为false
+        :type HonorCooldown: bool
+        """
+        self.AutoScalingPolicyId = None
+        self.HonorCooldown = None
+
+
+    def _deserialize(self, params):
+        self.AutoScalingPolicyId = params.get("AutoScalingPolicyId")
+        self.HonorCooldown = params.get("HonorCooldown")
+
+
+class ExecuteScalingPolicyResponse(AbstractModel):
+    """ExecuteScalingPolicy返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ActivityId: 伸缩活动ID
+        :type ActivityId: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.ActivityId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.ActivityId = params.get("ActivityId")
+        self.RequestId = params.get("RequestId")
+
+
 class Filter(AbstractModel):
     """>描述键值对过滤器，用于条件过滤查询。例如过滤ID、名称、状态等
     > * 若存在多个`Filter`时，`Filter`间的关系为逻辑与（`AND`）关系。

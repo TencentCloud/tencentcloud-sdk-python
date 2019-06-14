@@ -145,7 +145,7 @@ class CreateAuditRequest(AbstractModel):
         :type CmqRegion: str
         :param IsCreateNewQueue: 是否创建新的队列。1：是，0：否。如果IsEnableCmqNotify值是1的话，此值属于必填字段。
         :type IsCreateNewQueue: int
-        :param LogFilePrefix: 日志文件前缀。3-40个字符，只能包含 ASCII 编码字母 a-z，A-Z，数字 0-9。可以不填，默认以账号ID做为日志前缀。
+        :param LogFilePrefix: 日志文件前缀。3-40个字符，只能包含 ASCII 编码字母 a-z，A-Z，数字 0-9。可以不填，默认以账号ID作为日志前缀。
         :type LogFilePrefix: str
         """
         self.AuditName = None
@@ -578,8 +578,6 @@ class LookUpEventsRequest(AbstractModel):
         :type StartTime: int
         :param LookupAttributes: 检索条件
         :type LookupAttributes: list of LookupAttribute
-        :param IsApiV3: 是否调用新的查询接口
-        :type IsApiV3: int
         :param MaxResults: 返回日志的最大条数
         :type MaxResults: int
         :param NextToken: 查看更多日志的凭证
@@ -588,7 +586,6 @@ class LookUpEventsRequest(AbstractModel):
         self.EndTime = None
         self.StartTime = None
         self.LookupAttributes = None
-        self.IsApiV3 = None
         self.MaxResults = None
         self.NextToken = None
 
@@ -602,7 +599,6 @@ class LookUpEventsRequest(AbstractModel):
                 obj = LookupAttribute()
                 obj._deserialize(item)
                 self.LookupAttributes.append(obj)
-        self.IsApiV3 = params.get("IsApiV3")
         self.MaxResults = params.get("MaxResults")
         self.NextToken = params.get("NextToken")
 

@@ -17,28 +17,28 @@ import json
 
 from tencentcloud.common.exception.tencent_cloud_sdk_exception import TencentCloudSDKException
 from tencentcloud.common.abstract_client import AbstractClient
-from tencentcloud.tbp.v20190311 import models
+from tencentcloud.tiia.v20190529 import models
 
 
-class TbpClient(AbstractClient):
-    _apiVersion = '2019-03-11'
-    _endpoint = 'tbp.tencentcloudapi.com'
+class TiiaClient(AbstractClient):
+    _apiVersion = '2019-05-29'
+    _endpoint = 'tiia.tencentcloudapi.com'
 
 
-    def PostText(self, request):
-        """机器人会话接口，接收文本信息，传递给后台机器人
+    def DetectLabel(self, request):
+        """传入一张图片，识别出图片中存在的物体，并返回物体的名称（分类）、置信度，一张图片会给出多个可能的标签。
 
-        :param request: 调用PostText所需参数的结构体。
-        :type request: :class:`tencentcloud.tbp.v20190311.models.PostTextRequest`
-        :rtype: :class:`tencentcloud.tbp.v20190311.models.PostTextResponse`
+        :param request: 调用DetectLabel所需参数的结构体。
+        :type request: :class:`tencentcloud.tiia.v20190529.models.DetectLabelRequest`
+        :rtype: :class:`tencentcloud.tiia.v20190529.models.DetectLabelResponse`
 
         """
         try:
             params = request._serialize()
-            body = self.call("PostText", params)
+            body = self.call("DetectLabel", params)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.PostTextResponse()
+                model = models.DetectLabelResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -53,20 +53,20 @@ class TbpClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def Reset(self, request):
-        """对当前机器人的会话状态进行复位
+    def ImageModeration(self, request):
+        """本接口提供多种维度的图像审核能力，支持色情和性感内容识别，政治人物和涉政敏感场景识别，以及暴恐人物、场景、旗帜标识等违禁内容的识别。
 
-        :param request: 调用Reset所需参数的结构体。
-        :type request: :class:`tencentcloud.tbp.v20190311.models.ResetRequest`
-        :rtype: :class:`tencentcloud.tbp.v20190311.models.ResetResponse`
+        :param request: 调用ImageModeration所需参数的结构体。
+        :type request: :class:`tencentcloud.tiia.v20190529.models.ImageModerationRequest`
+        :rtype: :class:`tencentcloud.tiia.v20190529.models.ImageModerationResponse`
 
         """
         try:
             params = request._serialize()
-            body = self.call("Reset", params)
+            body = self.call("ImageModeration", params)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.ResetResponse()
+                model = models.ImageModerationResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

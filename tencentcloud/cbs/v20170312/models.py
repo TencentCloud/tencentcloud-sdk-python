@@ -1197,7 +1197,7 @@ class DiskConfig(AbstractModel):
         :type MaxDiskSize: int
         :param MinDiskSize: 最小可配置云盘大小，单位GB。
         :type MinDiskSize: int
-        :param Zone: 所在[可用区](/document/api/213/9452#zone)。
+        :param Zone: 云硬盘所属的[可用区](/document/product/213/15753#ZoneInfo)。
         :type Zone: str
         :param DeviceClass: 实例机型。
 注意：此字段可能返回 null，表示取不到有效值。
@@ -1487,6 +1487,65 @@ class InquiryPriceResizeDiskResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class ModifyAutoSnapshotPolicyAttributeRequest(AbstractModel):
+    """ModifyAutoSnapshotPolicyAttribute请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param AutoSnapshotPolicyId: 定期快照策略ID。
+        :type AutoSnapshotPolicyId: str
+        :param Policy: 定期快照的执行策略。
+        :type Policy: list of Policy
+        :param AutoSnapshotPolicyName: 要创建的定期快照策略名。不传则默认为“未命名”。最大长度不能超60个字节。
+        :type AutoSnapshotPolicyName: str
+        :param IsActivated: 是否激活定期快照策略，FALSE表示未激活，TRUE表示激活，默认为TRUE。
+        :type IsActivated: bool
+        :param IsPermanent: 通过该定期快照策略创建的快照是否永久保留。FALSE表示非永久保留，TRUE表示永久保留，默认为FALSE。
+        :type IsPermanent: bool
+        :param RetentionDays: 通过该定期快照策略创建的快照保留天数，该参数不可与`IsPermanent`参数冲突，即若定期快照策略设置为永久保留，`RetentionDays`应置0。
+        :type RetentionDays: int
+        """
+        self.AutoSnapshotPolicyId = None
+        self.Policy = None
+        self.AutoSnapshotPolicyName = None
+        self.IsActivated = None
+        self.IsPermanent = None
+        self.RetentionDays = None
+
+
+    def _deserialize(self, params):
+        self.AutoSnapshotPolicyId = params.get("AutoSnapshotPolicyId")
+        if params.get("Policy") is not None:
+            self.Policy = []
+            for item in params.get("Policy"):
+                obj = Policy()
+                obj._deserialize(item)
+                self.Policy.append(obj)
+        self.AutoSnapshotPolicyName = params.get("AutoSnapshotPolicyName")
+        self.IsActivated = params.get("IsActivated")
+        self.IsPermanent = params.get("IsPermanent")
+        self.RetentionDays = params.get("RetentionDays")
+
+
+class ModifyAutoSnapshotPolicyAttributeResponse(AbstractModel):
+    """ModifyAutoSnapshotPolicyAttribute返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class ModifyDiskAttributesRequest(AbstractModel):
     """ModifyDiskAttributes请求参数结构体
 
@@ -1628,7 +1687,10 @@ class Placement(AbstractModel):
 
     def __init__(self):
         """
-        :param Zone: 云硬盘所属的[可用区](/document/product/213/15753#ZoneInfo)ID。该参数也可以通过调用  [DescribeZones](/document/product/213/15707) 的返回值中的Zone字段来获取。
+        :param Zone: 所在[可用区](/document/api/213/9452#zone)。
+
+
+云硬盘所属的[可用区](/document/product/213/15753#ZoneInfo)。该参数也可以通过调用  [DescribeZones](/document/product/213/15707) 的返回值中的Zone字段来获取。
         :type Zone: str
         :param ProjectId: 实例所属项目ID。该参数可以通过调用 [DescribeProject](/document/api/378/4400) 的返回值中的 projectId 字段来获取。不填为默认项目。
         :type ProjectId: int
