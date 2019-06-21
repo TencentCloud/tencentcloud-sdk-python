@@ -98,6 +98,166 @@ class InitOralProcessResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class Keyword(AbstractModel):
+    """评测关键词
+
+    """
+
+    def __init__(self):
+        """
+        :param RefText: 被评估语音对应的文本，句子模式下不超过个 20 单词或者中文文字，段落模式不超过 120 单词或者中文文字，中文评估使用 utf-8 编码，自由说模式该值无效。如需要在单词模式和句子模式下使用自定义音素，可以通过设置 TextMode 使用[音素标注](https://cloud.tencent.com/document/product/884/33698)。
+        :type RefText: str
+        :param EvalMode: 评估模式，0：词模式（中文评测模式下为文字模式），1：句子模式，2：段落模式，3：自由说模式，当为词模式评估时，能够提供每个音节的评估信息，当为句子模式时，能够提供完整度和流利度信息。
+        :type EvalMode: int
+        :param ScoreCoeff: 评价苛刻指数，取值为[1.0 - 4.0]范围内的浮点数，用于平滑不同年龄段的分数，1.0为小年龄段，4.0为最高年龄段
+        :type ScoreCoeff: float
+        :param ServerType: 评估语言，0：英文，1：中文。
+        :type ServerType: int
+        :param TextMode: 输入文本模式，0: 普通文本，1：[音素结构](https://cloud.tencent.com/document/product/884/33698)文本。
+        :type TextMode: int
+        """
+        self.RefText = None
+        self.EvalMode = None
+        self.ScoreCoeff = None
+        self.ServerType = None
+        self.TextMode = None
+
+
+    def _deserialize(self, params):
+        self.RefText = params.get("RefText")
+        self.EvalMode = params.get("EvalMode")
+        self.ScoreCoeff = params.get("ScoreCoeff")
+        self.ServerType = params.get("ServerType")
+        self.TextMode = params.get("TextMode")
+
+
+class KeywordEvaluateRequest(AbstractModel):
+    """KeywordEvaluate请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param SeqId: 流式数据包的序号，从1开始，当IsEnd字段为1后后续序号无意义，当IsLongLifeSession不为1且为非流式模式时无意义。
+        :type SeqId: int
+        :param IsEnd: 是否传输完毕标志，若为0表示未完毕，若为1则传输完毕开始评估，非流式模式下无意义。
+        :type IsEnd: int
+        :param VoiceFileType: 语音文件类型 	1: raw, 2: wav, 3: mp3, 4: speex (语言文件格式目前仅支持 16k 采样率 16bit 编码单声道，如有不一致可能导致评估不准确或失败)。
+        :type VoiceFileType: int
+        :param VoiceEncodeType: 语音编码类型	1:pcm。
+        :type VoiceEncodeType: int
+        :param UserVoiceData: 当前数据包数据, 流式模式下数据包大小可以按需设置，在网络良好的情况下，建议设置为0.5k，且必须保证分片帧完整（16bit的数据必须保证音频长度为偶数），编码格式要求为BASE64。
+        :type UserVoiceData: str
+        :param SessionId: 语音段唯一标识，一个完整语音一个SessionId。
+        :type SessionId: str
+        :param Keywords: 关键词列表
+        :type Keywords: list of Keyword
+        :param SoeAppId: 业务应用ID，与账号应用APPID无关，是用来方便客户管理服务的参数，新的 SoeAppId 可以在[控制台](https://console.cloud.tencent.com/soe)【应用管理】下新建。
+        :type SoeAppId: str
+        :param IsQuery: 查询标识，当该参数为1时，该请求为查询请求，请求返回该 Session 评估结果。
+        :type IsQuery: int
+        """
+        self.SeqId = None
+        self.IsEnd = None
+        self.VoiceFileType = None
+        self.VoiceEncodeType = None
+        self.UserVoiceData = None
+        self.SessionId = None
+        self.Keywords = None
+        self.SoeAppId = None
+        self.IsQuery = None
+
+
+    def _deserialize(self, params):
+        self.SeqId = params.get("SeqId")
+        self.IsEnd = params.get("IsEnd")
+        self.VoiceFileType = params.get("VoiceFileType")
+        self.VoiceEncodeType = params.get("VoiceEncodeType")
+        self.UserVoiceData = params.get("UserVoiceData")
+        self.SessionId = params.get("SessionId")
+        if params.get("Keywords") is not None:
+            self.Keywords = []
+            for item in params.get("Keywords"):
+                obj = Keyword()
+                obj._deserialize(item)
+                self.Keywords.append(obj)
+        self.SoeAppId = params.get("SoeAppId")
+        self.IsQuery = params.get("IsQuery")
+
+
+class KeywordEvaluateResponse(AbstractModel):
+    """KeywordEvaluate返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param KeywordScores: 关键词得分
+        :type KeywordScores: list of KeywordScore
+        :param SessionId: 语音段唯一标识，一段语音一个SessionId
+        :type SessionId: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.KeywordScores = None
+        self.SessionId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("KeywordScores") is not None:
+            self.KeywordScores = []
+            for item in params.get("KeywordScores"):
+                obj = KeywordScore()
+                obj._deserialize(item)
+                self.KeywordScores.append(obj)
+        self.SessionId = params.get("SessionId")
+        self.RequestId = params.get("RequestId")
+
+
+class KeywordScore(AbstractModel):
+    """关键词得分
+
+    """
+
+    def __init__(self):
+        """
+        :param Keyword: 关键词
+        :type Keyword: str
+        :param PronAccuracy: 发音精准度，取值范围[-1, 100]，当取-1时指完全不匹配，当为句子模式时，是所有已识别单词准确度的加权平均值，在reftext中但未识别出来的词不计入分数中。当为流式模式且请求中IsEnd未置1时，取值无意义。
+        :type PronAccuracy: float
+        :param PronFluency: 发音流利度，取值范围[0, 1]，当为词模式时，取值无意义；当为流式模式且请求中IsEnd未置1时，取值无意义
+        :type PronFluency: float
+        :param PronCompletion: 发音完整度，取值范围[0, 1]，当为词模式时，取值无意义；当为流式模式且请求中IsEnd未置1时，取值无意义
+        :type PronCompletion: float
+        :param Words: 详细发音评估结果
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Words: list of WordRsp
+        :param SuggestedScore: 建议评分，取值范围[0,100]，评分方式为建议评分 = 准确度（PronAccuracyfloat）× 完整度（PronCompletionfloat）×（2 - 完整度（PronCompletionfloat）），如若评分策略不符合请参考Words数组中的详细分数自定义评分逻辑。
+        :type SuggestedScore: float
+        """
+        self.Keyword = None
+        self.PronAccuracy = None
+        self.PronFluency = None
+        self.PronCompletion = None
+        self.Words = None
+        self.SuggestedScore = None
+
+
+    def _deserialize(self, params):
+        self.Keyword = params.get("Keyword")
+        self.PronAccuracy = params.get("PronAccuracy")
+        self.PronFluency = params.get("PronFluency")
+        self.PronCompletion = params.get("PronCompletion")
+        if params.get("Words") is not None:
+            self.Words = []
+            for item in params.get("Words"):
+                obj = WordRsp()
+                obj._deserialize(item)
+                self.Words.append(obj)
+        self.SuggestedScore = params.get("SuggestedScore")
+
+
 class PhoneInfo(AbstractModel):
     """单音节评价结果
 

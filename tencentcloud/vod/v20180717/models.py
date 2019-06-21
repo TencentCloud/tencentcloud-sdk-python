@@ -5108,7 +5108,7 @@ class DescribeReviewDetailsRequest(AbstractModel):
         """
         :param StartTime: 起始日期。使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F)。
         :type StartTime: str
-        :param EndTime: 结束日期，需大于开始日期。使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F)。
+        :param EndTime: 结束日期，需大于起始日期。使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F)。
         :type EndTime: str
         :param SubAppId: 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
         :type SubAppId: int
@@ -5190,7 +5190,9 @@ class DescribeTaskDetailResponse(AbstractModel):
 <li>Procedure：视频处理任务；</li>
 <li>EditMedia：视频编辑任务；</li>
 <li>WechatPublish：微信发布任务；</li>
-<li>ComposeMedia：制作媒体文件任务。</li>
+<li>ComposeMedia：制作媒体文件任务；</li>
+<li>PullUpload：拉取上传媒体文件任务。</li>
+
 兼容 2017 版的任务类型：
 <li>Transcode：视频转码任务；</li>
 <li>SnapshotByTimeOffset：视频截图任务；</li>
@@ -5218,6 +5220,12 @@ class DescribeTaskDetailResponse(AbstractModel):
         :param WechatPublishTask: 微信发布任务信息，仅当 TaskType 为 WechatPublish，该字段有值。
 注意：此字段可能返回 null，表示取不到有效值。
         :type WechatPublishTask: :class:`tencentcloud.vod.v20180717.models.WechatPublishTask`
+        :param ComposeMediaTask: 制作媒体文件任务信息，仅当 TaskType 为 ComposeMedia，该字段有值。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ComposeMediaTask: :class:`tencentcloud.vod.v20180717.models.ComposeMediaTask`
+        :param PullUploadTask: 拉取上传媒体文件任务信息，仅当 TaskType 为 PullUpload，该字段有值。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PullUploadTask: :class:`tencentcloud.vod.v20180717.models.PullUploadTask`
         :param TranscodeTask: 视频转码任务信息，仅当 TaskType 为 Transcode，该字段有值。
 注意：此字段可能返回 null，表示取不到有效值。
         :type TranscodeTask: :class:`tencentcloud.vod.v20180717.models.TranscodeTask2017`
@@ -5233,9 +5241,6 @@ class DescribeTaskDetailResponse(AbstractModel):
         :param CreateImageSpriteTask: 截取雪碧图任务信息，仅当 TaskType 为 ImageSprite，该字段有值。
 注意：此字段可能返回 null，表示取不到有效值。
         :type CreateImageSpriteTask: :class:`tencentcloud.vod.v20180717.models.CreateImageSpriteTask2017`
-        :param ComposeMediaTask: 制作媒体文件任务信息，仅当 TaskType 为 ComposeMedia，该字段有值。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type ComposeMediaTask: :class:`tencentcloud.vod.v20180717.models.ComposeMediaTask`
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -5247,12 +5252,13 @@ class DescribeTaskDetailResponse(AbstractModel):
         self.ProcedureTask = None
         self.EditMediaTask = None
         self.WechatPublishTask = None
+        self.ComposeMediaTask = None
+        self.PullUploadTask = None
         self.TranscodeTask = None
         self.SnapshotByTimeOffsetTask = None
         self.ConcatTask = None
         self.ClipTask = None
         self.CreateImageSpriteTask = None
-        self.ComposeMediaTask = None
         self.RequestId = None
 
 
@@ -5271,6 +5277,12 @@ class DescribeTaskDetailResponse(AbstractModel):
         if params.get("WechatPublishTask") is not None:
             self.WechatPublishTask = WechatPublishTask()
             self.WechatPublishTask._deserialize(params.get("WechatPublishTask"))
+        if params.get("ComposeMediaTask") is not None:
+            self.ComposeMediaTask = ComposeMediaTask()
+            self.ComposeMediaTask._deserialize(params.get("ComposeMediaTask"))
+        if params.get("PullUploadTask") is not None:
+            self.PullUploadTask = PullUploadTask()
+            self.PullUploadTask._deserialize(params.get("PullUploadTask"))
         if params.get("TranscodeTask") is not None:
             self.TranscodeTask = TranscodeTask2017()
             self.TranscodeTask._deserialize(params.get("TranscodeTask"))
@@ -5286,9 +5298,6 @@ class DescribeTaskDetailResponse(AbstractModel):
         if params.get("CreateImageSpriteTask") is not None:
             self.CreateImageSpriteTask = CreateImageSpriteTask2017()
             self.CreateImageSpriteTask._deserialize(params.get("CreateImageSpriteTask"))
-        if params.get("ComposeMediaTask") is not None:
-            self.ComposeMediaTask = ComposeMediaTask()
-            self.ComposeMediaTask._deserialize(params.get("ComposeMediaTask"))
         self.RequestId = params.get("RequestId")
 
 
@@ -5723,6 +5732,12 @@ class EditMediaTask(AbstractModel):
         :param ProcedureTaskId: 若发起视频编辑任务时指定了视频处理流程，则该字段为流程任务 ID。
 注意：此字段可能返回 null，表示取不到有效值。
         :type ProcedureTaskId: str
+        :param SessionContext: 来源上下文，用于透传用户请求信息，任务流状态变更回调将返回该字段值，最长 1000 个字符。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SessionContext: str
+        :param SessionId: 用于去重的识别码，如果七天内曾有过相同的识别码的请求，则本次的请求会返回错误。最长 50 个字符，不带或者带空字符串表示不做去重。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SessionId: str
         """
         self.TaskId = None
         self.Status = None
@@ -5731,6 +5746,8 @@ class EditMediaTask(AbstractModel):
         self.Input = None
         self.Output = None
         self.ProcedureTaskId = None
+        self.SessionContext = None
+        self.SessionId = None
 
 
     def _deserialize(self, params):
@@ -5745,6 +5762,8 @@ class EditMediaTask(AbstractModel):
             self.Output = EditMediaTaskOutput()
             self.Output._deserialize(params.get("Output"))
         self.ProcedureTaskId = params.get("ProcedureTaskId")
+        self.SessionContext = params.get("SessionContext")
+        self.SessionId = params.get("SessionId")
 
 
 class EditMediaTaskInput(AbstractModel):
@@ -5865,7 +5884,7 @@ class EventContent(AbstractModel):
         :type FileDeleteEvent: :class:`tencentcloud.vod.v20180717.models.FileDeleteTask`
         :param PullCompleteEvent: 视频转拉完成事件，当事件类型为 PullComplete 时有效。
 注意：此字段可能返回 null，表示取不到有效值。
-        :type PullCompleteEvent: :class:`tencentcloud.vod.v20180717.models.PullFileTask`
+        :type PullCompleteEvent: :class:`tencentcloud.vod.v20180717.models.PullUploadTask`
         :param EditMediaCompleteEvent: 视频编辑完成事件，当事件类型为 EditMediaComplete 时有效。
 注意：此字段可能返回 null，表示取不到有效值。
         :type EditMediaCompleteEvent: :class:`tencentcloud.vod.v20180717.models.EditMediaTask`
@@ -5920,7 +5939,7 @@ class EventContent(AbstractModel):
             self.FileDeleteEvent = FileDeleteTask()
             self.FileDeleteEvent._deserialize(params.get("FileDeleteEvent"))
         if params.get("PullCompleteEvent") is not None:
-            self.PullCompleteEvent = PullFileTask()
+            self.PullCompleteEvent = PullUploadTask()
             self.PullCompleteEvent._deserialize(params.get("PullCompleteEvent"))
         if params.get("EditMediaCompleteEvent") is not None:
             self.EditMediaCompleteEvent = EditMediaTask()
@@ -9629,7 +9648,7 @@ class ProcedureTask(AbstractModel):
 <li>None：不接受该任务流回调。</li>
 注意：此字段可能返回 null，表示取不到有效值。
         :type TasksNotifyMode: str
-        :param SessionContext: 来源上下文，用于透传用户请求信息，任务流状态变更回调将返回该字段值，最长 250 个字符。
+        :param SessionContext: 来源上下文，用于透传用户请求信息，任务流状态变更回调将返回该字段值，最长 1000 个字符。
 注意：此字段可能返回 null，表示取不到有效值。
         :type SessionContext: str
         :param SessionId: 用于去重的识别码，如果七天内曾有过相同的识别码的请求，则本次的请求会返回错误。最长 50 个字符，不带或者带空字符串表示不做去重。
@@ -10020,7 +10039,86 @@ class PullEventsResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
-class PullFileTask(AbstractModel):
+class PullUploadRequest(AbstractModel):
+    """PullUpload请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param MediaUrl: 要拉取的媒体 URL，暂不支持拉取 HLS 和 Dash 格式。
+<li>URL 里文件名需要包括扩展名, 比如 ```https://xxxx.mp4``` ，扩展名为 mp4，支持的扩展名详见[文件类型](https://cloud.tencent.com/document/product/266/9760#.E6.96.87.E4.BB.B6.E7.B1.BB.E5.9E.8B)。</li>
+        :type MediaUrl: str
+        :param MediaName: 媒体名称。
+        :type MediaName: str
+        :param CoverUrl: 要拉取的视频封面 URL。
+<li>URL 里文件名需要包括扩展名, 比如 ```https://xxxx.jpg``` ，扩展名为 jpg，支持的扩展名详见[封面类型](https://cloud.tencent.com/document/product/266/9760#.E5.B0.81.E9.9D.A2.E7.B1.BB.E5.9E.8B)。</li>
+        :type CoverUrl: str
+        :param Procedure: 媒体后续任务操作，详见[上传指定任务流](https://cloud.tencent.com/document/product/266/9759)。
+        :type Procedure: str
+        :param ExpireTime: 媒体文件过期时间，格式按照 ISO 8601 标准表示，详见 [ISO 日期格式说明](https://cloud.tencent.com/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F)。
+        :type ExpireTime: str
+        :param StorageRegion: 指定上传园区，仅适用于对上传地域有特殊需求的用户。目前支持的园区：
+<li>ap-chongqing：重庆园区，</li>
+<li>ap-beijing：北京园区，</li>
+<li>ap-shanghai：上海园区。</li>
+        :type StorageRegion: str
+        :param ClassId: 分类ID，用于对媒体进行分类管理，可通过[创建分类](https://cloud.tencent.com/document/product/266/7812)接口，创建分类，获得分类 ID。
+        :type ClassId: int
+        :param SessionContext: 来源上下文，用于透传用户请求信息，当指定 Procedure 任务后，任务流状态变更回调将返回该字段值，最长 1000 个字符。
+        :type SessionContext: str
+        :param SessionId: 用于去重的识别码，如果七天内曾有过相同的识别码的请求，则本次的请求会返回错误。最长 50 个字符，不带或者带空字符串表示不做去重。
+        :type SessionId: str
+        :param SubAppId: 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
+        :type SubAppId: int
+        """
+        self.MediaUrl = None
+        self.MediaName = None
+        self.CoverUrl = None
+        self.Procedure = None
+        self.ExpireTime = None
+        self.StorageRegion = None
+        self.ClassId = None
+        self.SessionContext = None
+        self.SessionId = None
+        self.SubAppId = None
+
+
+    def _deserialize(self, params):
+        self.MediaUrl = params.get("MediaUrl")
+        self.MediaName = params.get("MediaName")
+        self.CoverUrl = params.get("CoverUrl")
+        self.Procedure = params.get("Procedure")
+        self.ExpireTime = params.get("ExpireTime")
+        self.StorageRegion = params.get("StorageRegion")
+        self.ClassId = params.get("ClassId")
+        self.SessionContext = params.get("SessionContext")
+        self.SessionId = params.get("SessionId")
+        self.SubAppId = params.get("SubAppId")
+
+
+class PullUploadResponse(AbstractModel):
+    """PullUpload返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param TaskId: 拉取上传视频的任务 ID，可以通过该 ID 查询拉取上传任务的状态。
+        :type TaskId: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TaskId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TaskId = params.get("TaskId")
+        self.RequestId = params.get("RequestId")
+
+
+class PullUploadTask(AbstractModel):
     """视频转拉任务信息
 
     """
@@ -10029,6 +10127,12 @@ class PullFileTask(AbstractModel):
         """
         :param TaskId: 转拉上传任务 ID。
         :type TaskId: str
+        :param Status: 任务流状态，取值：
+<li>PROCESSING：处理中；</li>
+<li>FINISH：已完成。</li>
+
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Status: str
         :param ErrCode: 错误码
 <li>0：成功；</li>
 <li>其他值：失败。</li>
@@ -10044,18 +10148,26 @@ class PullFileTask(AbstractModel):
         :type FileUrl: str
         :param ProcedureTaskId: 若转拉上传时指定了视频处理流程，则该参数为流程任务 ID。
         :type ProcedureTaskId: str
+        :param SessionContext: 来源上下文，用于透传用户请求信息，任务流状态变更回调将返回该字段值，最长 1000 个字符。
+        :type SessionContext: str
+        :param SessionId: 用于去重的识别码，如果七天内曾有过相同的识别码的请求，则本次的请求会返回错误。最长 50 个字符，不带或者带空字符串表示不做去重。
+        :type SessionId: str
         """
         self.TaskId = None
+        self.Status = None
         self.ErrCode = None
         self.Message = None
         self.FileId = None
         self.MediaBasicInfo = None
         self.FileUrl = None
         self.ProcedureTaskId = None
+        self.SessionContext = None
+        self.SessionId = None
 
 
     def _deserialize(self, params):
         self.TaskId = params.get("TaskId")
+        self.Status = params.get("Status")
         self.ErrCode = params.get("ErrCode")
         self.Message = params.get("Message")
         self.FileId = params.get("FileId")
@@ -10064,6 +10176,8 @@ class PullFileTask(AbstractModel):
             self.MediaBasicInfo._deserialize(params.get("MediaBasicInfo"))
         self.FileUrl = params.get("FileUrl")
         self.ProcedureTaskId = params.get("ProcedureTaskId")
+        self.SessionContext = params.get("SessionContext")
+        self.SessionId = params.get("SessionId")
 
 
 class PushUrlCacheRequest(AbstractModel):
@@ -10873,7 +10987,9 @@ class TextWatermarkTemplateInput(AbstractModel):
 
     def __init__(self):
         """
-        :param FontType: 字体类型，目前仅支持 arial.ttf。
+        :param FontType: 字体类型，目前可以支持两种：
+<li>simkai.ttf：可以支持中文和英文；</li>
+<li>arial.ttf：仅支持英文。</li>
         :type FontType: str
         :param FontSize: 字体大小，格式：Npx，N 为数值。
         :type FontSize: str
@@ -10905,7 +11021,9 @@ class TextWatermarkTemplateInputForUpdate(AbstractModel):
 
     def __init__(self):
         """
-        :param FontType: 字体类型，目前仅支持 arial.ttf。
+        :param FontType: 字体类型，目前可以支持两种：
+<li>simkai.ttf：可以支持中文和英文；</li>
+<li>arial.ttf：仅支持英文。</li>
         :type FontType: str
         :param FontSize: 字体大小，格式：Npx，N 为数值。
         :type FontSize: str

@@ -139,7 +139,7 @@ class AppInfo(AbstractModel):
         :type AppSize: int
         :param FileName: app的文件名，指定后加固后的文件名是{FileName}_legu.apk
         :type FileName: str
-        :param AppPkgName: app的包名，如果是专业版加固和企业版本加固，需要正确的传递此字段
+        :param AppPkgName: app的包名，需要正确的传递此字段
         :type AppPkgName: str
         :param AppVersion: app的版本号
         :type AppVersion: str
@@ -1394,7 +1394,7 @@ class ScanInfo(AbstractModel):
         """
         :param CallbackUrl: 任务处理完成后的反向通知回调地址,批量提交app每扫描完成一个会通知一次,通知为POST请求，post信息{ItemId:
         :type CallbackUrl: str
-        :param ScanTypes: VULSCAN-漏洞扫描信息，VIRUSSCAN-返回病毒扫描信息， ADSCAN-广告扫描信息，PLUGINSCAN-插件扫描信息，可以自由组合
+        :param ScanTypes: VULSCAN-漏洞扫描信息，VIRUSSCAN-返回病毒扫描信息， ADSCAN-广告扫描信息，PLUGINSCAN-插件扫描信息，PERMISSION-系统权限信息，SENSITIVE-敏感词信息，可以自由组合
         :type ScanTypes: list of str
         """
         self.CallbackUrl = None
@@ -1404,6 +1404,92 @@ class ScanInfo(AbstractModel):
     def _deserialize(self, params):
         self.CallbackUrl = params.get("CallbackUrl")
         self.ScanTypes = params.get("ScanTypes")
+
+
+class ScanPermissionInfo(AbstractModel):
+    """安全扫描系统权限信息
+
+    """
+
+    def __init__(self):
+        """
+        :param Permission: 系统权限
+        :type Permission: str
+        """
+        self.Permission = None
+
+
+    def _deserialize(self, params):
+        self.Permission = params.get("Permission")
+
+
+class ScanPermissionList(AbstractModel):
+    """安全扫描系统权限信息
+
+    """
+
+    def __init__(self):
+        """
+        :param PermissionList: 系统权限信息
+        :type PermissionList: list of ScanPermissionInfo
+        """
+        self.PermissionList = None
+
+
+    def _deserialize(self, params):
+        if params.get("PermissionList") is not None:
+            self.PermissionList = []
+            for item in params.get("PermissionList"):
+                obj = ScanPermissionInfo()
+                obj._deserialize(item)
+                self.PermissionList.append(obj)
+
+
+class ScanSensitiveInfo(AbstractModel):
+    """安全扫描敏感词
+
+    """
+
+    def __init__(self):
+        """
+        :param WordList: 敏感词
+        :type WordList: list of str
+        :param FilePath: 敏感词对应的文件信息
+        :type FilePath: str
+        :param FileSha: 文件sha1值
+        :type FileSha: str
+        """
+        self.WordList = None
+        self.FilePath = None
+        self.FileSha = None
+
+
+    def _deserialize(self, params):
+        self.WordList = params.get("WordList")
+        self.FilePath = params.get("FilePath")
+        self.FileSha = params.get("FileSha")
+
+
+class ScanSensitiveList(AbstractModel):
+    """安全扫描敏感词列表
+
+    """
+
+    def __init__(self):
+        """
+        :param SensitiveList: 敏感词列表
+        :type SensitiveList: list of ScanSensitiveInfo
+        """
+        self.SensitiveList = None
+
+
+    def _deserialize(self, params):
+        if params.get("SensitiveList") is not None:
+            self.SensitiveList = []
+            for item in params.get("SensitiveList"):
+                obj = ScanSensitiveInfo()
+                obj._deserialize(item)
+                self.SensitiveList.append(obj)
 
 
 class ScanSetInfo(AbstractModel):
@@ -1431,6 +1517,10 @@ class ScanSetInfo(AbstractModel):
         :type StatusDesc: str
         :param StatusRef: 状态操作指引
         :type StatusRef: str
+        :param PermissionInfo: 系统权限信息
+        :type PermissionInfo: :class:`tencentcloud.ms.v20180408.models.ScanPermissionList`
+        :param SensitiveInfo: 敏感词列表
+        :type SensitiveInfo: :class:`tencentcloud.ms.v20180408.models.ScanSensitiveList`
         """
         self.TaskStatus = None
         self.AppDetailInfo = None
@@ -1441,6 +1531,8 @@ class ScanSetInfo(AbstractModel):
         self.StatusCode = None
         self.StatusDesc = None
         self.StatusRef = None
+        self.PermissionInfo = None
+        self.SensitiveInfo = None
 
 
     def _deserialize(self, params):
@@ -1461,6 +1553,12 @@ class ScanSetInfo(AbstractModel):
         self.StatusCode = params.get("StatusCode")
         self.StatusDesc = params.get("StatusDesc")
         self.StatusRef = params.get("StatusRef")
+        if params.get("PermissionInfo") is not None:
+            self.PermissionInfo = ScanPermissionList()
+            self.PermissionInfo._deserialize(params.get("PermissionInfo"))
+        if params.get("SensitiveInfo") is not None:
+            self.SensitiveInfo = ScanSensitiveList()
+            self.SensitiveInfo._deserialize(params.get("SensitiveInfo"))
 
 
 class ServiceInfo(AbstractModel):

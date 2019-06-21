@@ -3518,6 +3518,9 @@ class InstanceInfo(AbstractModel):
         :type Qps: int
         :param ZoneName: 可用区中文名称
         :type ZoneName: str
+        :param DeviceClass: 物理机型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DeviceClass: str
         """
         self.WanStatus = None
         self.Zone = None
@@ -3557,6 +3560,7 @@ class InstanceInfo(AbstractModel):
         self.Cpu = None
         self.Qps = None
         self.ZoneName = None
+        self.DeviceClass = None
 
 
     def _deserialize(self, params):
@@ -3614,6 +3618,7 @@ class InstanceInfo(AbstractModel):
         self.Cpu = params.get("Cpu")
         self.Qps = params.get("Qps")
         self.ZoneName = params.get("ZoneName")
+        self.DeviceClass = params.get("DeviceClass")
 
 
 class InstanceRebootTime(AbstractModel):

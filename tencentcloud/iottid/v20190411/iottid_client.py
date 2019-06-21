@@ -17,28 +17,28 @@ import json
 
 from tencentcloud.common.exception.tencent_cloud_sdk_exception import TencentCloudSDKException
 from tencentcloud.common.abstract_client import AbstractClient
-from tencentcloud.soe.v20180724 import models
+from tencentcloud.iottid.v20190411 import models
 
 
-class SoeClient(AbstractClient):
-    _apiVersion = '2018-07-24'
-    _endpoint = 'soe.tencentcloudapi.com'
+class IottidClient(AbstractClient):
+    _apiVersion = '2019-04-11'
+    _endpoint = 'iottid.tencentcloudapi.com'
 
 
-    def InitOralProcess(self, request):
-        """初始化发音评估过程，每一轮评估前进行调用。语音输入模式分为流式模式和非流式模式，流式模式支持数据分片传输，可以加快评估响应速度。评估模式分为词模式和句子模式，词模式会标注每个音节的详细信息；句子模式会有完整度和流利度的评估。
+    def BurnTidNotify(self, request):
+        """安全芯片TID烧录回执
 
-        :param request: 调用InitOralProcess所需参数的结构体。
-        :type request: :class:`tencentcloud.soe.v20180724.models.InitOralProcessRequest`
-        :rtype: :class:`tencentcloud.soe.v20180724.models.InitOralProcessResponse`
+        :param request: 调用BurnTidNotify所需参数的结构体。
+        :type request: :class:`tencentcloud.iottid.v20190411.models.BurnTidNotifyRequest`
+        :rtype: :class:`tencentcloud.iottid.v20190411.models.BurnTidNotifyResponse`
 
         """
         try:
             params = request._serialize()
-            body = self.call("InitOralProcess", params)
+            body = self.call("BurnTidNotify", params)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.InitOralProcessResponse()
+                model = models.BurnTidNotifyResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -53,20 +53,20 @@ class SoeClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def KeywordEvaluate(self, request):
-        """指定主题关键词词汇评估，分析语音与关键词的切合程度，可指定多个关键词，支持中文英文同时评测。分片传输时，尽量保证纯异步调用，即不等待上一个分片的传输结果边录边传，这样可以尽可能早的提供音频数据。音频源目前仅支持16k采样率16bit单声道编码方式，如有不一致可能导致评估不准确或失败。
+    def DeliverTidNotify(self, request):
+        """安全芯片为载体的TID空发回执，绑定TID与订单号。
 
-        :param request: 调用KeywordEvaluate所需参数的结构体。
-        :type request: :class:`tencentcloud.soe.v20180724.models.KeywordEvaluateRequest`
-        :rtype: :class:`tencentcloud.soe.v20180724.models.KeywordEvaluateResponse`
+        :param request: 调用DeliverTidNotify所需参数的结构体。
+        :type request: :class:`tencentcloud.iottid.v20190411.models.DeliverTidNotifyRequest`
+        :rtype: :class:`tencentcloud.iottid.v20190411.models.DeliverTidNotifyResponse`
 
         """
         try:
             params = request._serialize()
-            body = self.call("KeywordEvaluate", params)
+            body = self.call("DeliverTidNotify", params)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.KeywordEvaluateResponse()
+                model = models.DeliverTidNotifyResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -81,20 +81,20 @@ class SoeClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def TransmitOralProcess(self, request):
-        """传输音频数据，必须在完成发音评估初始化接口之后调用，且SessonId要与初始化接口保持一致。分片传输时，尽量保证SeqId顺序传输。音频源目前仅支持16k采样率16bit单声道编码方式，如有不一致可能导致评估不准确或失败。
+    def DeliverTids(self, request):
+        """设备服务商请求空发产品订单的TID信息
 
-        :param request: 调用TransmitOralProcess所需参数的结构体。
-        :type request: :class:`tencentcloud.soe.v20180724.models.TransmitOralProcessRequest`
-        :rtype: :class:`tencentcloud.soe.v20180724.models.TransmitOralProcessResponse`
+        :param request: 调用DeliverTids所需参数的结构体。
+        :type request: :class:`tencentcloud.iottid.v20190411.models.DeliverTidsRequest`
+        :rtype: :class:`tencentcloud.iottid.v20190411.models.DeliverTidsResponse`
 
         """
         try:
             params = request._serialize()
-            body = self.call("TransmitOralProcess", params)
+            body = self.call("DeliverTids", params)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.TransmitOralProcessResponse()
+                model = models.DeliverTidsResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -109,20 +109,48 @@ class SoeClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def TransmitOralProcessWithInit(self, request):
-        """初始化并传输音频数据，分片传输时，尽量保证SeqId顺序传输。音频源目前仅支持16k采样率16bit单声道编码方式，如有不一致可能导致评估不准确或失败。
+    def DescribePermission(self, request):
+        """查询企业用户TID平台控制台权限
 
-        :param request: 调用TransmitOralProcessWithInit所需参数的结构体。
-        :type request: :class:`tencentcloud.soe.v20180724.models.TransmitOralProcessWithInitRequest`
-        :rtype: :class:`tencentcloud.soe.v20180724.models.TransmitOralProcessWithInitResponse`
+        :param request: 调用DescribePermission所需参数的结构体。
+        :type request: :class:`tencentcloud.iottid.v20190411.models.DescribePermissionRequest`
+        :rtype: :class:`tencentcloud.iottid.v20190411.models.DescribePermissionResponse`
 
         """
         try:
             params = request._serialize()
-            body = self.call("TransmitOralProcessWithInit", params)
+            body = self.call("DescribePermission", params)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.TransmitOralProcessWithInitResponse()
+                model = models.DescribePermissionResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DownloadTids(self, request):
+        """下载芯片订单的TID
+
+        :param request: 调用DownloadTids所需参数的结构体。
+        :type request: :class:`tencentcloud.iottid.v20190411.models.DownloadTidsRequest`
+        :rtype: :class:`tencentcloud.iottid.v20190411.models.DownloadTidsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DownloadTids", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DownloadTidsResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

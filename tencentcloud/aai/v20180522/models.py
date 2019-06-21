@@ -238,12 +238,14 @@ class TextToVoiceRequest(AbstractModel):
         :type Speed: float
         :param ProjectId: 项目id，用户自定义，默认为0。
         :type ProjectId: int
-        :param VoiceType: 音色<li>0-亲和女声默认)</li><li>1-亲和男声</li><li>2-成熟男声</li><li>3-活力男声</li><li>4-温暖女声</li><li>5-情感女声</li><li>6-情感男声</li>
+        :param VoiceType: 音色<li>0-亲和女声(默认)</li><li>1-亲和男声</li><li>2-成熟男声</li><li>3-活力男声</li><li>4-温暖女声</li><li>5-情感女声</li><li>6-情感男声</li>
         :type VoiceType: int
         :param PrimaryLanguage: 主语言类型：<li>1-中文（默认）</li><li>2-英文</li>
         :type PrimaryLanguage: int
         :param SampleRate: 音频采样率：<li>16000：16k（默认）</li><li>8000：8k</li>
         :type SampleRate: int
+        :param Codec: 返回音频格式，可取值：wav（默认），mp3
+        :type Codec: str
         """
         self.Text = None
         self.SessionId = None
@@ -254,6 +256,7 @@ class TextToVoiceRequest(AbstractModel):
         self.VoiceType = None
         self.PrimaryLanguage = None
         self.SampleRate = None
+        self.Codec = None
 
 
     def _deserialize(self, params):
@@ -266,6 +269,7 @@ class TextToVoiceRequest(AbstractModel):
         self.VoiceType = params.get("VoiceType")
         self.PrimaryLanguage = params.get("PrimaryLanguage")
         self.SampleRate = params.get("SampleRate")
+        self.Codec = params.get("Codec")
 
 
 class TextToVoiceResponse(AbstractModel):

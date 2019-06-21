@@ -71,6 +71,104 @@ class AudioModerationResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class CreateTextSampleRequest(AbstractModel):
+    """CreateTextSample请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Contents: 关键词数组
+        :type Contents: list of str
+        :param EvilType: 恶意类型
+100：正常
+20001：政治
+20002：色情 
+20006：涉毒违法
+20007：谩骂 
+24001：暴恐
+21000：综合
+20105：广告引流
+        :type EvilType: int
+        :param Label: 样本类型
+1：黑库
+2：白库
+        :type Label: int
+        """
+        self.Contents = None
+        self.EvilType = None
+        self.Label = None
+
+
+    def _deserialize(self, params):
+        self.Contents = params.get("Contents")
+        self.EvilType = params.get("EvilType")
+        self.Label = params.get("Label")
+
+
+class CreateTextSampleResponse(AbstractModel):
+    """CreateTextSample返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Progress: 任务状态
+1：已完成
+2：处理中
+        :type Progress: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Progress = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Progress = params.get("Progress")
+        self.RequestId = params.get("RequestId")
+
+
+class DeleteTextSampleRequest(AbstractModel):
+    """DeleteTextSample请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Ids: 唯一标识数组，目前暂时只支持单个删除
+        :type Ids: list of str
+        """
+        self.Ids = None
+
+
+    def _deserialize(self, params):
+        self.Ids = params.get("Ids")
+
+
+class DeleteTextSampleResponse(AbstractModel):
+    """DeleteTextSample返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Progress: 任务状态
+1：已完成
+2：处理中
+        :type Progress: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Progress = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Progress = params.get("Progress")
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeModerationOverviewRequest(AbstractModel):
     """DescribeModerationOverview请求参数结构体
 
@@ -122,6 +220,95 @@ class DescribeModerationOverviewResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeTextSampleRequest(AbstractModel):
+    """DescribeTextSample请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Filters: 支持通过标签值进行筛选
+        :type Filters: list of Filter
+        :param Limit: 数量限制，默认为20，最大值为100
+        :type Limit: int
+        :param Offset: 偏移量，默认为0
+        :type Offset: int
+        :param OrderDirection: 升序（asc）还是降序（desc），默认：desc
+        :type OrderDirection: str
+        :param OrderField: 按某个字段排序，目前仅支持CreatedAt排序
+        :type OrderField: str
+        """
+        self.Filters = None
+        self.Limit = None
+        self.Offset = None
+        self.OrderDirection = None
+        self.OrderField = None
+
+
+    def _deserialize(self, params):
+        if params.get("Filters") is not None:
+            self.Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self.Filters.append(obj)
+        self.Limit = params.get("Limit")
+        self.Offset = params.get("Offset")
+        self.OrderDirection = params.get("OrderDirection")
+        self.OrderField = params.get("OrderField")
+
+
+class DescribeTextSampleResponse(AbstractModel):
+    """DescribeTextSample返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param TextSampleSet: 符合要求的样本的信息
+        :type TextSampleSet: list of TextSample
+        :param TotalCount: 符合要求的样本的数量
+        :type TotalCount: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TextSampleSet = None
+        self.TotalCount = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("TextSampleSet") is not None:
+            self.TextSampleSet = []
+            for item in params.get("TextSampleSet"):
+                obj = TextSample()
+                obj._deserialize(item)
+                self.TextSampleSet.append(obj)
+        self.TotalCount = params.get("TotalCount")
+        self.RequestId = params.get("RequestId")
+
+
+class Filter(AbstractModel):
+    """筛选数据结构
+
+    """
+
+    def __init__(self):
+        """
+        :param Name: 需要过滤的字段
+        :type Name: str
+        :param Value: 需要过滤字段的值
+        :type Value: str
+        """
+        self.Name = None
+        self.Value = None
+
+
+    def _deserialize(self, params):
+        self.Name = params.get("Name")
+        self.Value = params.get("Value")
+
+
 class ImageData(AbstractModel):
     """图片识别结果详情
 
@@ -140,6 +327,8 @@ class ImageData(AbstractModel):
 24001：暴恐
 21000：综合
         :type EvilType: int
+        :param HotDetect: 图片性感详情
+        :type HotDetect: :class:`tencentcloud.cms.v20190321.models.ImageHotDetect`
         :param IllegalDetect: 图片违法详情
         :type IllegalDetect: :class:`tencentcloud.cms.v20190321.models.ImageIllegalDetect`
         :param PolityDetect: 图片涉政详情
@@ -153,6 +342,7 @@ class ImageData(AbstractModel):
         """
         self.EvilFlag = None
         self.EvilType = None
+        self.HotDetect = None
         self.IllegalDetect = None
         self.PolityDetect = None
         self.PornDetect = None
@@ -163,6 +353,9 @@ class ImageData(AbstractModel):
     def _deserialize(self, params):
         self.EvilFlag = params.get("EvilFlag")
         self.EvilType = params.get("EvilType")
+        if params.get("HotDetect") is not None:
+            self.HotDetect = ImageHotDetect()
+            self.HotDetect._deserialize(params.get("HotDetect"))
         if params.get("IllegalDetect") is not None:
             self.IllegalDetect = ImageIllegalDetect()
             self.IllegalDetect._deserialize(params.get("IllegalDetect"))
@@ -178,6 +371,46 @@ class ImageData(AbstractModel):
         if params.get("TerrorDetect") is not None:
             self.TerrorDetect = ImageTerrorDetect()
             self.TerrorDetect._deserialize(params.get("TerrorDetect"))
+
+
+class ImageHotDetect(AbstractModel):
+    """图片性感详情
+
+    """
+
+    def __init__(self):
+        """
+        :param EvilType: 恶意类型
+100：正常 
+20001：政治
+20002：色情 
+20006：涉毒违法
+20007：谩骂 
+24001：暴恐
+21000：综合
+        :type EvilType: int
+        :param HitFlag: 处置判定 0：正常 1：可疑
+        :type HitFlag: int
+        :param Keywords: 关键词明细
+        :type Keywords: list of str
+        :param Labels: 性感标签：性感特征中文描述
+        :type Labels: list of str
+        :param Score: 性感分：分值范围 0-100，分数越高性感倾向越明显
+        :type Score: int
+        """
+        self.EvilType = None
+        self.HitFlag = None
+        self.Keywords = None
+        self.Labels = None
+        self.Score = None
+
+
+    def _deserialize(self, params):
+        self.EvilType = params.get("EvilType")
+        self.HitFlag = params.get("HitFlag")
+        self.Keywords = params.get("Keywords")
+        self.Labels = params.get("Labels")
+        self.Score = params.get("Score")
 
 
 class ImageIllegalDetect(AbstractModel):
@@ -294,6 +527,8 @@ class ImagePolityDetect(AbstractModel):
         :type FaceNames: list of str
         :param Keywords: 关键词明细
         :type Keywords: list of str
+        :param PolityItems: 命中的政治物品名称
+        :type PolityItems: list of str
         :param Score: 政治（人脸）分：分值范围 0-100，分数越高可疑程度越高
         :type Score: int
         """
@@ -301,6 +536,7 @@ class ImagePolityDetect(AbstractModel):
         self.HitFlag = None
         self.FaceNames = None
         self.Keywords = None
+        self.PolityItems = None
         self.Score = None
 
 
@@ -309,6 +545,7 @@ class ImagePolityDetect(AbstractModel):
         self.HitFlag = params.get("HitFlag")
         self.FaceNames = params.get("FaceNames")
         self.Keywords = params.get("Keywords")
+        self.PolityItems = params.get("PolityItems")
         self.Score = params.get("Score")
 
 
@@ -527,6 +764,58 @@ class TextModerationResponse(AbstractModel):
             self.Data._deserialize(params.get("Data"))
         self.BusinessCode = params.get("BusinessCode")
         self.RequestId = params.get("RequestId")
+
+
+class TextSample(AbstractModel):
+    """文字样本信息
+
+    """
+
+    def __init__(self):
+        """
+        :param Code: 处理错误码
+        :type Code: int
+        :param Content: 关键词
+        :type Content: str
+        :param CreatedAt: 创建时间戳
+        :type CreatedAt: int
+        :param EvilType: 恶意类型
+100：正常
+20001：政治
+20002：色情 
+20006：涉毒违法
+20007：谩骂 
+24001：暴恐
+21000：综合
+        :type EvilType: int
+        :param Id: 唯一标识
+        :type Id: str
+        :param Label: 样本类型
+1：黑库
+2：白库
+        :type Label: int
+        :param Status: 任务状态
+1：已完成
+2：处理中
+        :type Status: int
+        """
+        self.Code = None
+        self.Content = None
+        self.CreatedAt = None
+        self.EvilType = None
+        self.Id = None
+        self.Label = None
+        self.Status = None
+
+
+    def _deserialize(self, params):
+        self.Code = params.get("Code")
+        self.Content = params.get("Content")
+        self.CreatedAt = params.get("CreatedAt")
+        self.EvilType = params.get("EvilType")
+        self.Id = params.get("Id")
+        self.Label = params.get("Label")
+        self.Status = params.get("Status")
 
 
 class VideoModerationRequest(AbstractModel):

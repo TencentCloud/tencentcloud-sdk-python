@@ -366,7 +366,7 @@ class CreateProductRequest(AbstractModel):
         :type ProductName: str
         :param ProductProperties: 产品属性
         :type ProductProperties: :class:`tencentcloud.iotcloud.v20180614.models.ProductProperties`
-        :param Skey: 创建LoRa产品需要的Skey
+        :param Skey: 创建CLAA产品时，需要Skey
         :type Skey: str
         """
         self.ProductName = None
@@ -816,6 +816,21 @@ class DescribeDeviceResponse(AbstractModel):
         :param LogLevel: 设备的sdk日志等级
 注意：此字段可能返回 null，表示取不到有效值。
         :type LogLevel: int
+        :param FirstOnlineTime: 首次上线时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FirstOnlineTime: int
+        :param LastOfflineTime: 最近下线时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LastOfflineTime: int
+        :param CreateTime: 设备创建时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CreateTime: int
+        :param CertState: 设备证书获取状态，0 未获取过设备密钥, 1 已获取过设备密钥
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CertState: int
+        :param EnableState: 设备启用状态
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EnableState: int
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -835,6 +850,11 @@ class DescribeDeviceResponse(AbstractModel):
         self.LoraDevEui = None
         self.LoraMoteType = None
         self.LogLevel = None
+        self.FirstOnlineTime = None
+        self.LastOfflineTime = None
+        self.CreateTime = None
+        self.CertState = None
+        self.EnableState = None
         self.RequestId = None
 
 
@@ -860,6 +880,11 @@ class DescribeDeviceResponse(AbstractModel):
         self.LoraDevEui = params.get("LoraDevEui")
         self.LoraMoteType = params.get("LoraMoteType")
         self.LogLevel = params.get("LogLevel")
+        self.FirstOnlineTime = params.get("FirstOnlineTime")
+        self.LastOfflineTime = params.get("LastOfflineTime")
+        self.CreateTime = params.get("CreateTime")
+        self.CertState = params.get("CertState")
+        self.EnableState = params.get("EnableState")
         self.RequestId = params.get("RequestId")
 
 
@@ -1384,6 +1409,9 @@ class DeviceInfo(AbstractModel):
         :param CertState: 设备证书获取状态, 1 已获取过设备密钥，0 未获取过设备密钥
 注意：此字段可能返回 null，表示取不到有效值。
         :type CertState: int
+        :param EnableState: 设备可用状态，0禁用，1启用
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EnableState: int
         """
         self.DeviceName = None
         self.Online = None
@@ -1405,6 +1433,7 @@ class DeviceInfo(AbstractModel):
         self.CreateTime = None
         self.LogLevel = None
         self.CertState = None
+        self.EnableState = None
 
 
     def _deserialize(self, params):
@@ -1433,6 +1462,7 @@ class DeviceInfo(AbstractModel):
         self.CreateTime = params.get("CreateTime")
         self.LogLevel = params.get("LogLevel")
         self.CertState = params.get("CertState")
+        self.EnableState = params.get("EnableState")
 
 
 class DeviceTag(AbstractModel):

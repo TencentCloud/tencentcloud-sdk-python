@@ -25,34 +25,6 @@ class TbpClient(AbstractClient):
     _endpoint = 'tbp.tencentcloudapi.com'
 
 
-    def PostText(self, request):
-        """机器人会话接口，接收文本信息，传递给后台机器人
-
-        :param request: 调用PostText所需参数的结构体。
-        :type request: :class:`tencentcloud.tbp.v20190311.models.PostTextRequest`
-        :rtype: :class:`tencentcloud.tbp.v20190311.models.PostTextResponse`
-
-        """
-        try:
-            params = request._serialize()
-            body = self.call("PostText", params)
-            response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.PostTextResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(e.message, e.message)
-
-
     def Reset(self, request):
         """对当前机器人的会话状态进行复位
 
@@ -67,6 +39,62 @@ class TbpClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ResetResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def TextProcess(self, request):
+        """接收调用侧的文本输入，返回应答文本。
+
+        :param request: 调用TextProcess所需参数的结构体。
+        :type request: :class:`tencentcloud.tbp.v20190311.models.TextProcessRequest`
+        :rtype: :class:`tencentcloud.tbp.v20190311.models.TextProcessResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("TextProcess", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.TextProcessResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def TextReset(self, request):
+        """会话重置接口
+
+        :param request: 调用TextReset所需参数的结构体。
+        :type request: :class:`tencentcloud.tbp.v20190311.models.TextResetRequest`
+        :rtype: :class:`tencentcloud.tbp.v20190311.models.TextResetResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("TextReset", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.TextResetResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

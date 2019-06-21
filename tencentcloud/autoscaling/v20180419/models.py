@@ -388,11 +388,11 @@ class CreateAutoScalingGroupRequest(AbstractModel):
         :type DefaultCooldown: int
         :param DesiredCapacity: 期望实例数，大小介于最小实例数和最大实例数之间
         :type DesiredCapacity: int
-        :param LoadBalancerIds: 传统负载均衡器ID列表，目前长度上限为1，LoadBalancerIds 和 ForwardLoadBalancers 二者同时最多只能指定一个
+        :param LoadBalancerIds: 传统负载均衡器ID列表，目前长度上限为5，LoadBalancerIds 和 ForwardLoadBalancers 二者同时最多只能指定一个
         :type LoadBalancerIds: list of str
         :param ProjectId: 项目ID
         :type ProjectId: int
-        :param ForwardLoadBalancers: 应用型负载均衡器列表，目前长度上限为1，LoadBalancerIds 和 ForwardLoadBalancers 二者同时最多只能指定一个
+        :param ForwardLoadBalancers: 应用型负载均衡器列表，目前长度上限为5，LoadBalancerIds 和 ForwardLoadBalancers 二者同时最多只能指定一个
         :type ForwardLoadBalancers: list of ForwardLoadBalancer
         :param SubnetIds: 子网ID列表，VPC场景下必须指定子网
         :type SubnetIds: list of str
@@ -2690,9 +2690,9 @@ class ModifyLoadBalancersRequest(AbstractModel):
         """
         :param AutoScalingGroupId: 伸缩组ID
         :type AutoScalingGroupId: str
-        :param LoadBalancerIds: 传统负载均衡器ID列表，目前长度上限为1，LoadBalancerIds 和 ForwardLoadBalancers 二者同时最多只能指定一个
+        :param LoadBalancerIds: 传统负载均衡器ID列表，目前长度上限为5，LoadBalancerIds 和 ForwardLoadBalancers 二者同时最多只能指定一个
         :type LoadBalancerIds: list of str
-        :param ForwardLoadBalancers: 应用型负载均衡器列表，目前长度上限为1，LoadBalancerIds 和 ForwardLoadBalancers 二者同时最多只能指定一个
+        :param ForwardLoadBalancers: 应用型负载均衡器列表，目前长度上限为5，LoadBalancerIds 和 ForwardLoadBalancers 二者同时最多只能指定一个
         :type ForwardLoadBalancers: list of ForwardLoadBalancer
         """
         self.AutoScalingGroupId = None
