@@ -3159,10 +3159,13 @@ class ComposeMediaRequest(AbstractModel):
         :type Output: :class:`tencentcloud.vod.v20180717.models.ComposeMediaOutput`
         :param Canvas: 制作视频文件时使用的画布。
         :type Canvas: :class:`tencentcloud.vod.v20180717.models.Canvas`
+        :param SubAppId: 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
+        :type SubAppId: int
         """
         self.Tracks = None
         self.Output = None
         self.Canvas = None
+        self.SubAppId = None
 
 
     def _deserialize(self, params):
@@ -3178,6 +3181,7 @@ class ComposeMediaRequest(AbstractModel):
         if params.get("Canvas") is not None:
             self.Canvas = Canvas()
             self.Canvas._deserialize(params.get("Canvas"))
+        self.SubAppId = params.get("SubAppId")
 
 
 class ComposeMediaResponse(AbstractModel):
@@ -5909,6 +5913,9 @@ class EventContent(AbstractModel):
         :param ComposeMediaCompleteEvent: 制作媒体文件任务完成事件，当事件类型为 ComposeMediaComplete 时有效。
 注意：此字段可能返回 null，表示取不到有效值。
         :type ComposeMediaCompleteEvent: :class:`tencentcloud.vod.v20180717.models.ComposeMediaTask`
+        :param WechatMiniProgramPublishCompleteEvent: 微信小程序发布任务完成事件，当事件类型为 WechatMiniProgramPublishComplete 时有效。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type WechatMiniProgramPublishCompleteEvent: :class:`tencentcloud.vod.v20180717.models.WechatMiniProgramPublishTask`
         """
         self.EventHandle = None
         self.EventType = None
@@ -5924,6 +5931,7 @@ class EventContent(AbstractModel):
         self.CreateImageSpriteCompleteEvent = None
         self.SnapshotByTimeOffsetCompleteEvent = None
         self.ComposeMediaCompleteEvent = None
+        self.WechatMiniProgramPublishCompleteEvent = None
 
 
     def _deserialize(self, params):
@@ -5965,6 +5973,9 @@ class EventContent(AbstractModel):
         if params.get("ComposeMediaCompleteEvent") is not None:
             self.ComposeMediaCompleteEvent = ComposeMediaTask()
             self.ComposeMediaCompleteEvent._deserialize(params.get("ComposeMediaCompleteEvent"))
+        if params.get("WechatMiniProgramPublishCompleteEvent") is not None:
+            self.WechatMiniProgramPublishCompleteEvent = WechatMiniProgramPublishTask()
+            self.WechatMiniProgramPublishCompleteEvent._deserialize(params.get("WechatMiniProgramPublishCompleteEvent"))
 
 
 class ExecuteFunctionRequest(AbstractModel):
@@ -10051,8 +10062,7 @@ class PullUploadRequest(AbstractModel):
         :type MediaUrl: str
         :param MediaName: 媒体名称。
         :type MediaName: str
-        :param CoverUrl: 要拉取的视频封面 URL。
-<li>URL 里文件名需要包括扩展名, 比如 ```https://xxxx.jpg``` ，扩展名为 jpg，支持的扩展名详见[封面类型](https://cloud.tencent.com/document/product/266/9760#.E5.B0.81.E9.9D.A2.E7.B1.BB.E5.9E.8B)。</li>
+        :param CoverUrl: 要拉取的视频封面 URL。仅支持 gif、jpeg、png 三种图片格式。
         :type CoverUrl: str
         :param Procedure: 媒体后续任务操作，详见[上传指定任务流](https://cloud.tencent.com/document/product/266/9759)。
         :type Procedure: str
@@ -11858,6 +11868,55 @@ class WatermarkTemplate(AbstractModel):
         self.CreateTime = params.get("CreateTime")
         self.UpdateTime = params.get("UpdateTime")
         self.CoordinateOrigin = params.get("CoordinateOrigin")
+
+
+class WechatMiniProgramPublishTask(AbstractModel):
+    """微信小程序发布任务信息
+
+    """
+
+    def __init__(self):
+        """
+        :param TaskId: 任务 ID。
+        :type TaskId: str
+        :param Status: 任务状态，取值：
+WAITING：等待中；
+PROCESSING：处理中；
+FINISH：已完成。
+        :type Status: str
+        :param ErrCode: 错误码
+<li>0：成功；</li>
+<li>其他值：失败。</li>
+        :type ErrCode: int
+        :param Message: 错误信息。
+        :type Message: str
+        :param FileId: 发布视频文件 ID。
+        :type FileId: str
+        :param SourceDefinition: 发布视频所对应的转码模板 ID，为 0 代表原始视频。
+        :type SourceDefinition: int
+        :param PublishResult: 微信小程序视频发布状态，取值：
+<li>Pass：发布成功；</li>
+<li>Failed：发布失败；</li>
+<li>Rejected：审核未通过。</li>
+        :type PublishResult: str
+        """
+        self.TaskId = None
+        self.Status = None
+        self.ErrCode = None
+        self.Message = None
+        self.FileId = None
+        self.SourceDefinition = None
+        self.PublishResult = None
+
+
+    def _deserialize(self, params):
+        self.TaskId = params.get("TaskId")
+        self.Status = params.get("Status")
+        self.ErrCode = params.get("ErrCode")
+        self.Message = params.get("Message")
+        self.FileId = params.get("FileId")
+        self.SourceDefinition = params.get("SourceDefinition")
+        self.PublishResult = params.get("PublishResult")
 
 
 class WechatPublishTask(AbstractModel):

@@ -53,6 +53,34 @@ class StsClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def AssumeRoleWithSAML(self, request):
+        """本接口（AssumeRoleWithSAML）用于根据 SAML 断言申请角色临时凭证。
+
+        :param request: 调用AssumeRoleWithSAML所需参数的结构体。
+        :type request: :class:`tencentcloud.sts.v20180813.models.AssumeRoleWithSAMLRequest`
+        :rtype: :class:`tencentcloud.sts.v20180813.models.AssumeRoleWithSAMLResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("AssumeRoleWithSAML", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.AssumeRoleWithSAMLResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def GetFederationToken(self, request):
         """获取联合身份临时访问凭证
 

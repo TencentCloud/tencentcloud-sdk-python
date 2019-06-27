@@ -25,6 +25,62 @@ class FaceidClient(AbstractClient):
     _endpoint = 'faceid.tencentcloudapi.com'
 
 
+    def BankCard2EVerification(self, request):
+        """银行卡二要素核验
+
+        :param request: 调用BankCard2EVerification所需参数的结构体。
+        :type request: :class:`tencentcloud.faceid.v20180301.models.BankCard2EVerificationRequest`
+        :rtype: :class:`tencentcloud.faceid.v20180301.models.BankCard2EVerificationResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("BankCard2EVerification", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.BankCard2EVerificationResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def BankCard4EVerification(self, request):
+        """银行卡四要素核验
+
+        :param request: 调用BankCard4EVerification所需参数的结构体。
+        :type request: :class:`tencentcloud.faceid.v20180301.models.BankCard4EVerificationRequest`
+        :rtype: :class:`tencentcloud.faceid.v20180301.models.BankCard4EVerificationResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("BankCard4EVerification", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.BankCard4EVerificationResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def BankCardVerification(self, request):
         """银行卡核验
 

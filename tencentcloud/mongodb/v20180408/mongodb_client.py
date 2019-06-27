@@ -25,6 +25,35 @@ class MongodbClient(AbstractClient):
     _endpoint = 'mongodb.tencentcloudapi.com'
 
 
+    def AssignProject(self, request):
+        """本接口(AssignProject)用于指定云数据库实例的所属项目。
+
+
+        :param request: 调用AssignProject所需参数的结构体。
+        :type request: :class:`tencentcloud.mongodb.v20180408.models.AssignProjectRequest`
+        :rtype: :class:`tencentcloud.mongodb.v20180408.models.AssignProjectResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("AssignProject", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.AssignProjectResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def CreateDBInstance(self, request):
         """本接口(CreateDBInstance)用于创建包年包月的MongoDB云数据库实例。
 
@@ -67,6 +96,175 @@ class MongodbClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateDBInstanceHourResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeDBInstances(self, request):
+        """本接口(DescribeDBInstances)用于查询云数据库实例列表，支持通过项目ID、实例ID、实例状态等过滤条件来筛选实例。支持查询主实例、灾备实例和只读实例信息列表。
+
+        :param request: 调用DescribeDBInstances所需参数的结构体。
+        :type request: :class:`tencentcloud.mongodb.v20180408.models.DescribeDBInstancesRequest`
+        :rtype: :class:`tencentcloud.mongodb.v20180408.models.DescribeDBInstancesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeDBInstances", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeDBInstancesResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeSlowLog(self, request):
+        """本接口(DescribeSlowLogs)用于获取云数据库实例的慢查询日志。
+
+        :param request: 调用DescribeSlowLog所需参数的结构体。
+        :type request: :class:`tencentcloud.mongodb.v20180408.models.DescribeSlowLogRequest`
+        :rtype: :class:`tencentcloud.mongodb.v20180408.models.DescribeSlowLogResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeSlowLog", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeSlowLogResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeSpecInfo(self, request):
+        """本接口(DescribeSpecInfo)用于查询实例的售卖规格。
+
+        :param request: 调用DescribeSpecInfo所需参数的结构体。
+        :type request: :class:`tencentcloud.mongodb.v20180408.models.DescribeSpecInfoRequest`
+        :rtype: :class:`tencentcloud.mongodb.v20180408.models.DescribeSpecInfoResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeSpecInfo", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeSpecInfoResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def RenameInstance(self, request):
+        """本接口(RenameInstance)用于修改云数据库实例的名称。
+
+        :param request: 调用RenameInstance所需参数的结构体。
+        :type request: :class:`tencentcloud.mongodb.v20180408.models.RenameInstanceRequest`
+        :rtype: :class:`tencentcloud.mongodb.v20180408.models.RenameInstanceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("RenameInstance", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.RenameInstanceResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def SetAutoRenew(self, request):
+        """本接口(SetAutoRenew)用于设置包年包月云数据库实例的续费选项。
+
+        :param request: 调用SetAutoRenew所需参数的结构体。
+        :type request: :class:`tencentcloud.mongodb.v20180408.models.SetAutoRenewRequest`
+        :rtype: :class:`tencentcloud.mongodb.v20180408.models.SetAutoRenewResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("SetAutoRenew", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.SetAutoRenewResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def SetPassword(self, request):
+        """本接口(SetPassword)用于设置云数据库账户的密码。
+
+
+        :param request: 调用SetPassword所需参数的结构体。
+        :type request: :class:`tencentcloud.mongodb.v20180408.models.SetPasswordRequest`
+        :rtype: :class:`tencentcloud.mongodb.v20180408.models.SetPasswordResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("SetPassword", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.SetPasswordResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

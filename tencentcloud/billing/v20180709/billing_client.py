@@ -109,6 +109,118 @@ class BillingClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeBillSummaryByPayMode(self, request):
+        """获取按付费模式汇总费用分布
+
+        :param request: 调用DescribeBillSummaryByPayMode所需参数的结构体。
+        :type request: :class:`tencentcloud.billing.v20180709.models.DescribeBillSummaryByPayModeRequest`
+        :rtype: :class:`tencentcloud.billing.v20180709.models.DescribeBillSummaryByPayModeResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeBillSummaryByPayMode", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeBillSummaryByPayModeResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeBillSummaryByProduct(self, request):
+        """获取产品汇总费用分布
+
+        :param request: 调用DescribeBillSummaryByProduct所需参数的结构体。
+        :type request: :class:`tencentcloud.billing.v20180709.models.DescribeBillSummaryByProductRequest`
+        :rtype: :class:`tencentcloud.billing.v20180709.models.DescribeBillSummaryByProductResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeBillSummaryByProduct", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeBillSummaryByProductResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeBillSummaryByProject(self, request):
+        """获取按项目汇总费用分布
+
+        :param request: 调用DescribeBillSummaryByProject所需参数的结构体。
+        :type request: :class:`tencentcloud.billing.v20180709.models.DescribeBillSummaryByProjectRequest`
+        :rtype: :class:`tencentcloud.billing.v20180709.models.DescribeBillSummaryByProjectResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeBillSummaryByProject", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeBillSummaryByProjectResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeBillSummaryByRegion(self, request):
+        """获取按地域汇总费用分布
+
+        :param request: 调用DescribeBillSummaryByRegion所需参数的结构体。
+        :type request: :class:`tencentcloud.billing.v20180709.models.DescribeBillSummaryByRegionRequest`
+        :rtype: :class:`tencentcloud.billing.v20180709.models.DescribeBillSummaryByRegionResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeBillSummaryByRegion", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeBillSummaryByRegionResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeDealsByCond(self, request):
         """查询订单
 

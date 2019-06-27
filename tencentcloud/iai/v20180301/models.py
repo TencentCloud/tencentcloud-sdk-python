@@ -1343,20 +1343,11 @@ class GroupInfo(AbstractModel):
         :param Tag: 人员库信息备注
 注意：此字段可能返回 null，表示取不到有效值。
         :type Tag: str
-        :param FaceModelVersion: 人脸识别服务所用的算法模型版本
-注意：此字段可能返回 null，表示取不到有效值。
-        :type FaceModelVersion: str
-        :param CreationTimestamp: Group的创建时间和日期 CreationTimestamp。CreationTimestamp 的值是自 Unix 纪元时间到Group创建时间的毫秒数。 
-Unix 纪元时间是 1970 年 1 月 1 日星期四，协调世界时 (UTC) 00:00:00。有关更多信息，请参阅 Unix 时间。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type CreationTimestamp: str
         """
         self.GroupName = None
         self.GroupId = None
         self.GroupExDescriptions = None
         self.Tag = None
-        self.FaceModelVersion = None
-        self.CreationTimestamp = None
 
 
     def _deserialize(self, params):
@@ -1364,8 +1355,6 @@ Unix 纪元时间是 1970 年 1 月 1 日星期四，协调世界时 (UTC) 00:00
         self.GroupId = params.get("GroupId")
         self.GroupExDescriptions = params.get("GroupExDescriptions")
         self.Tag = params.get("Tag")
-        self.FaceModelVersion = params.get("FaceModelVersion")
-        self.CreationTimestamp = params.get("CreationTimestamp")
 
 
 class ModifyGroupRequest(AbstractModel):
@@ -1650,7 +1639,7 @@ class SearchFacesRequest(AbstractModel):
         :type Url: str
         :param MaxFaceNum: 最多处理的人脸数目。默认值为1（仅检测图片中面积最大的那张人脸），最大值为10。 
 MaxFaceNum用于，当待识别图片包含多张人脸时，要搜索的人脸数量。 
-当 MaxFaceNum 不为1时，设MaxFaceNum=M，则实际上是 M:N 的人脸搜索。
+当 MaxFaceNum 不为1时，设MaxFaceNum=M，则实际上是 M:N 的人脸搜索（N为待搜索的人脸数）。
         :type MaxFaceNum: int
         :param MinFaceSize: 人脸长和宽的最小尺寸，单位为像素。默认为80。低于40将影响搜索精度。建议设置为80。
         :type MinFaceSize: int

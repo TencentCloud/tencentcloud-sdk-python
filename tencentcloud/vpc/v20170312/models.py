@@ -1721,13 +1721,26 @@ class CreateRoutesResponse(AbstractModel):
 
     def __init__(self):
         """
+        :param TotalCount: 新增的实例个数。
+        :type TotalCount: int
+        :param RouteTableSet: 路由表对象。
+        :type RouteTableSet: list of RouteTable
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
+        self.TotalCount = None
+        self.RouteTableSet = None
         self.RequestId = None
 
 
     def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("RouteTableSet") is not None:
+            self.RouteTableSet = []
+            for item in params.get("RouteTableSet"):
+                obj = RouteTable()
+                obj._deserialize(item)
+                self.RouteTableSet.append(obj)
         self.RequestId = params.get("RequestId")
 
 
@@ -3596,11 +3609,17 @@ class DescribeCcnsRequest(AbstractModel):
         :type Offset: int
         :param Limit: 返回数量
         :type Limit: int
+        :param OrderField: 排序字段。支持：`CcnId` `CcnName` `CreateTime` `State` `QosLevel`
+        :type OrderField: str
+        :param OrderDirection: 排序方法。顺序：`ASC`，倒序：`DESC`。
+        :type OrderDirection: str
         """
         self.CcnIds = None
         self.Filters = None
         self.Offset = None
         self.Limit = None
+        self.OrderField = None
+        self.OrderDirection = None
 
 
     def _deserialize(self, params):
@@ -3613,6 +3632,8 @@ class DescribeCcnsRequest(AbstractModel):
                 self.Filters.append(obj)
         self.Offset = params.get("Offset")
         self.Limit = params.get("Limit")
+        self.OrderField = params.get("OrderField")
+        self.OrderDirection = params.get("OrderDirection")
 
 
 class DescribeCcnsResponse(AbstractModel):
@@ -8831,6 +8852,29 @@ class SubnetInput(AbstractModel):
         self.RouteTableId = params.get("RouteTableId")
 
 
+class Tag(AbstractModel):
+    """标签键值对
+
+    """
+
+    def __init__(self):
+        """
+        :param Key: 标签键
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Key: str
+        :param Value: 标签值
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Value: str
+        """
+        self.Key = None
+        self.Value = None
+
+
+    def _deserialize(self, params):
+        self.Key = params.get("Key")
+        self.Value = params.get("Value")
+
+
 class TransformAddressRequest(AbstractModel):
     """TransformAddress请求参数结构体
 
@@ -9061,6 +9105,8 @@ class Vpc(AbstractModel):
         :type EnableDhcp: bool
         :param Ipv6CidrBlock: `VPC`的`IPv6` `CIDR`。
         :type Ipv6CidrBlock: str
+        :param TagSet: 标签键值对
+        :type TagSet: list of Tag
         """
         self.VpcName = None
         self.VpcId = None
@@ -9073,6 +9119,7 @@ class Vpc(AbstractModel):
         self.DhcpOptionsId = None
         self.EnableDhcp = None
         self.Ipv6CidrBlock = None
+        self.TagSet = None
 
 
     def _deserialize(self, params):
@@ -9087,6 +9134,12 @@ class Vpc(AbstractModel):
         self.DhcpOptionsId = params.get("DhcpOptionsId")
         self.EnableDhcp = params.get("EnableDhcp")
         self.Ipv6CidrBlock = params.get("Ipv6CidrBlock")
+        if params.get("TagSet") is not None:
+            self.TagSet = []
+            for item in params.get("TagSet"):
+                obj = Tag()
+                obj._deserialize(item)
+                self.TagSet.append(obj)
 
 
 class VpcIpv6Address(AbstractModel):
