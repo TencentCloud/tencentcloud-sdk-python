@@ -2298,6 +2298,34 @@ class VpcClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeNatGateways(self, request):
+        """本接口（DescribeNatGateways）用于查询 NAT 网关。
+
+        :param request: 调用DescribeNatGateways所需参数的结构体。
+        :type request: :class:`tencentcloud.vpc.v20170312.models.DescribeNatGatewaysRequest`
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.DescribeNatGatewaysResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeNatGateways", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeNatGatewaysResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeNetworkInterfaces(self, request):
         """本接口（DescribeNetworkInterfaces）用于查询弹性网卡列表。
 

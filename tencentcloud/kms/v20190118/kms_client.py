@@ -25,6 +25,34 @@ class KmsClient(AbstractClient):
     _endpoint = 'kms.tencentcloudapi.com'
 
 
+    def CancelKeyDeletion(self, request):
+        """取消CMK的计划删除操作
+
+        :param request: 调用CancelKeyDeletion所需参数的结构体。
+        :type request: :class:`tencentcloud.kms.v20190118.models.CancelKeyDeletionRequest`
+        :rtype: :class:`tencentcloud.kms.v20190118.models.CancelKeyDeletionResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("CancelKeyDeletion", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CancelKeyDeletionResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def CreateKey(self, request):
         """创建用户管理数据密钥的主密钥CMK（Custom Master Key）。
 
@@ -487,6 +515,34 @@ class KmsClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ReEncryptResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ScheduleKeyDeletion(self, request):
+        """CMK计划删除接口，用于指定CMK删除的时间，可选时间区间为[7,30]天
+
+        :param request: 调用ScheduleKeyDeletion所需参数的结构体。
+        :type request: :class:`tencentcloud.kms.v20190118.models.ScheduleKeyDeletionRequest`
+        :rtype: :class:`tencentcloud.kms.v20190118.models.ScheduleKeyDeletionResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ScheduleKeyDeletion", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ScheduleKeyDeletionResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

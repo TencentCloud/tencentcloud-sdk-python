@@ -891,6 +891,91 @@ class LiveClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeBillBandwidthAndFluxList(self, request):
+        """直播计费带宽和流量数据查询。
+
+        :param request: 调用DescribeBillBandwidthAndFluxList所需参数的结构体。
+        :type request: :class:`tencentcloud.live.v20180801.models.DescribeBillBandwidthAndFluxListRequest`
+        :rtype: :class:`tencentcloud.live.v20180801.models.DescribeBillBandwidthAndFluxListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeBillBandwidthAndFluxList", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeBillBandwidthAndFluxListResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeGroupProIspPlayInfoList(self, request):
+        """查询按省份和运营商分组的下行播放数据。
+
+        :param request: 调用DescribeGroupProIspPlayInfoList所需参数的结构体。
+        :type request: :class:`tencentcloud.live.v20180801.models.DescribeGroupProIspPlayInfoListRequest`
+        :rtype: :class:`tencentcloud.live.v20180801.models.DescribeGroupProIspPlayInfoListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeGroupProIspPlayInfoList", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeGroupProIspPlayInfoListResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeHttpStatusInfoList(self, request):
+        """查询某段时间内5分钟粒度的各播放http状态码的个数。
+        备注：数据延迟1小时，如10:00-10:59点的数据12点才能查到。
+
+        :param request: 调用DescribeHttpStatusInfoList所需参数的结构体。
+        :type request: :class:`tencentcloud.live.v20180801.models.DescribeHttpStatusInfoListRequest`
+        :rtype: :class:`tencentcloud.live.v20180801.models.DescribeHttpStatusInfoListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeHttpStatusInfoList", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeHttpStatusInfoListResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeLiveCallbackRules(self, request):
         """获取回调规则列表
 
@@ -1031,6 +1116,34 @@ class LiveClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeLiveDelayInfoList(self, request):
+        """获取直播延播列表。
+
+        :param request: 调用DescribeLiveDelayInfoList所需参数的结构体。
+        :type request: :class:`tencentcloud.live.v20180801.models.DescribeLiveDelayInfoListRequest`
+        :rtype: :class:`tencentcloud.live.v20180801.models.DescribeLiveDelayInfoListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeLiveDelayInfoList", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeLiveDelayInfoListResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeLiveDomain(self, request):
         """查询直播域名信息。
 
@@ -1073,6 +1186,34 @@ class LiveClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeLiveDomainCertResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeLiveDomainPlayInfoList(self, request):
+        """查询实时的域名维度下行播放数据。
+
+        :param request: 调用DescribeLiveDomainPlayInfoList所需参数的结构体。
+        :type request: :class:`tencentcloud.live.v20180801.models.DescribeLiveDomainPlayInfoListRequest`
+        :rtype: :class:`tencentcloud.live.v20180801.models.DescribeLiveDomainPlayInfoListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeLiveDomainPlayInfoList", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeLiveDomainPlayInfoListResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -1144,7 +1285,7 @@ class LiveClient(AbstractClient):
 
 
     def DescribeLivePlayAuthKey(self, request):
-        """查询播放鉴权key
+        """查询播放鉴权key。
 
         :param request: 调用DescribeLivePlayAuthKey所需参数的结构体。
         :type request: :class:`tencentcloud.live.v20180801.models.DescribeLivePlayAuthKeyRequest`
@@ -1762,6 +1903,63 @@ class LiveClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribePlayErrorCodeDetailInfoList(self, request):
+        """查询下行播放错误码信息，某段时间内1分钟粒度的各http错误码出现的次数，包括4xx，5xx。
+
+
+        :param request: 调用DescribePlayErrorCodeDetailInfoList所需参数的结构体。
+        :type request: :class:`tencentcloud.live.v20180801.models.DescribePlayErrorCodeDetailInfoListRequest`
+        :rtype: :class:`tencentcloud.live.v20180801.models.DescribePlayErrorCodeDetailInfoListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribePlayErrorCodeDetailInfoList", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribePlayErrorCodeDetailInfoListResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribePlayErrorCodeSumInfoList(self, request):
+        """查询下行播放错误码信息。
+
+        :param request: 调用DescribePlayErrorCodeSumInfoList所需参数的结构体。
+        :type request: :class:`tencentcloud.live.v20180801.models.DescribePlayErrorCodeSumInfoListRequest`
+        :rtype: :class:`tencentcloud.live.v20180801.models.DescribePlayErrorCodeSumInfoListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribePlayErrorCodeSumInfoList", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribePlayErrorCodeSumInfoListResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeProIspPlaySumInfoList(self, request):
         """查询某段时间内每个省份每个运营商的平均每秒流量，总流量，总请求数信息。
 
@@ -1876,6 +2074,7 @@ class LiveClient(AbstractClient):
 
     def DescribeStreamPlayInfoList(self, request):
         """查询播放数据，支持按流名称查询详细播放数据，也可按播放域名查询详细总数据。
+        注意：按AppName查询，需要联系客服同学提单支持。
 
         :param request: 调用DescribeStreamPlayInfoList所需参数的结构体。
         :type request: :class:`tencentcloud.live.v20180801.models.DescribeStreamPlayInfoListRequest`
@@ -1888,6 +2087,90 @@ class LiveClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeStreamPlayInfoListResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeStreamPushInfoList(self, request):
+        """查询流id的上行推流质量数据，包括音视频的帧率，码率，流逝时间，编码格式等。
+
+        :param request: 调用DescribeStreamPushInfoList所需参数的结构体。
+        :type request: :class:`tencentcloud.live.v20180801.models.DescribeStreamPushInfoListRequest`
+        :rtype: :class:`tencentcloud.live.v20180801.models.DescribeStreamPushInfoListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeStreamPushInfoList", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeStreamPushInfoListResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeTopClientIpSumInfoList(self, request):
+        """查询某段时间top n客户端ip汇总信息（暂支持top 1000）
+
+        :param request: 调用DescribeTopClientIpSumInfoList所需参数的结构体。
+        :type request: :class:`tencentcloud.live.v20180801.models.DescribeTopClientIpSumInfoListRequest`
+        :rtype: :class:`tencentcloud.live.v20180801.models.DescribeTopClientIpSumInfoListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeTopClientIpSumInfoList", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeTopClientIpSumInfoListResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeVisitTopSumInfoList(self, request):
+        """查询某时间段top n的域名或流id信息（暂支持top 1000）。
+
+        :param request: 调用DescribeVisitTopSumInfoList所需参数的结构体。
+        :type request: :class:`tencentcloud.live.v20180801.models.DescribeVisitTopSumInfoListRequest`
+        :rtype: :class:`tencentcloud.live.v20180801.models.DescribeVisitTopSumInfoListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeVisitTopSumInfoList", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeVisitTopSumInfoListResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

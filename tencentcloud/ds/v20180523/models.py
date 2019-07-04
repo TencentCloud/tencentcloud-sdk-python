@@ -766,7 +766,7 @@ class SignKeyword(AbstractModel):
         :type OffsetCoordX: str
         :param OffsetCoordY: Y轴偏移坐标
         :type OffsetCoordY: str
-        :param ImageWidth: 签章突破宽度
+        :param ImageWidth: 签章图片宽度
         :type ImageWidth: str
         :param ImageHeight: 签章图片高度
         :type ImageHeight: str

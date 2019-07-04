@@ -177,6 +177,31 @@ class AddLiveWatermarkResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class BillDataInfo(AbstractModel):
+    """带宽和流量信息
+
+    """
+
+    def __init__(self):
+        """
+        :param Time: 时间点，格式为yyyy-mm-dd HH:MM:SS。
+        :type Time: str
+        :param Bandwidth: 带宽，单位是Mbps。
+        :type Bandwidth: float
+        :param Flux: 流量，单位是MB。
+        :type Flux: float
+        """
+        self.Time = None
+        self.Bandwidth = None
+        self.Flux = None
+
+
+    def _deserialize(self, params):
+        self.Time = params.get("Time")
+        self.Bandwidth = params.get("Bandwidth")
+        self.Flux = params.get("Flux")
+
+
 class BindLiveDomainCertRequest(AbstractModel):
     """BindLiveDomainCert请求参数结构体
 
@@ -305,6 +330,39 @@ class CallBackTemplateInfo(AbstractModel):
         self.CallbackKey = params.get("CallbackKey")
 
 
+class CdnPlayStatData(AbstractModel):
+    """下行播放统计指标
+
+    """
+
+    def __init__(self):
+        """
+        :param Time: 时间点，格式为yyyy-mm-dd HH:MM:SS。
+        :type Time: str
+        :param Bandwidth: 带宽，（单位Mbps）。
+        :type Bandwidth: float
+        :param Flux: 流量，（单位MB）。
+        :type Flux: float
+        :param Request: 新增请求数。
+        :type Request: int
+        :param Online: 并发连接数。
+        :type Online: int
+        """
+        self.Time = None
+        self.Bandwidth = None
+        self.Flux = None
+        self.Request = None
+        self.Online = None
+
+
+    def _deserialize(self, params):
+        self.Time = params.get("Time")
+        self.Bandwidth = params.get("Bandwidth")
+        self.Flux = params.get("Flux")
+        self.Request = params.get("Request")
+        self.Online = params.get("Online")
+
+
 class CertInfo(AbstractModel):
     """证书信息
 
@@ -350,6 +408,39 @@ class CertInfo(AbstractModel):
         self.CertType = params.get("CertType")
         self.CertExpireTime = params.get("CertExpireTime")
         self.DomainList = params.get("DomainList")
+
+
+class ClientIpPlaySumInfo(AbstractModel):
+    """客户端ip播放汇总信息
+
+    """
+
+    def __init__(self):
+        """
+        :param ClientIp: 客户端ip，点分型。
+        :type ClientIp: str
+        :param Province: 客户端所在省份。
+        :type Province: str
+        :param TotalFlux: 总流量。
+        :type TotalFlux: float
+        :param TotalRequest: 总请求数。
+        :type TotalRequest: int
+        :param TotalFailedRequest: 总失败请求数。
+        :type TotalFailedRequest: int
+        """
+        self.ClientIp = None
+        self.Province = None
+        self.TotalFlux = None
+        self.TotalRequest = None
+        self.TotalFailedRequest = None
+
+
+    def _deserialize(self, params):
+        self.ClientIp = params.get("ClientIp")
+        self.Province = params.get("Province")
+        self.TotalFlux = params.get("TotalFlux")
+        self.TotalRequest = params.get("TotalRequest")
+        self.TotalFailedRequest = params.get("TotalFailedRequest")
 
 
 class CreateLiveCallbackRuleRequest(AbstractModel):
@@ -677,6 +768,8 @@ class CreateLiveRecordTemplateRequest(AbstractModel):
         :type IsDelayLive: int
         :param HlsSpecialParam: HLS专属录制参数。
         :type HlsSpecialParam: :class:`tencentcloud.live.v20180801.models.HlsSpecialParam`
+        :param Mp3Param: Mp3录制参数，开启Mp3录制时设置。
+        :type Mp3Param: :class:`tencentcloud.live.v20180801.models.RecordParam`
         """
         self.TemplateName = None
         self.Description = None
@@ -686,6 +779,7 @@ class CreateLiveRecordTemplateRequest(AbstractModel):
         self.AacParam = None
         self.IsDelayLive = None
         self.HlsSpecialParam = None
+        self.Mp3Param = None
 
 
     def _deserialize(self, params):
@@ -707,6 +801,9 @@ class CreateLiveRecordTemplateRequest(AbstractModel):
         if params.get("HlsSpecialParam") is not None:
             self.HlsSpecialParam = HlsSpecialParam()
             self.HlsSpecialParam._deserialize(params.get("HlsSpecialParam"))
+        if params.get("Mp3Param") is not None:
+            self.Mp3Param = RecordParam()
+            self.Mp3Param._deserialize(params.get("Mp3Param"))
 
 
 class CreateLiveRecordTemplateResponse(AbstractModel):
@@ -1140,6 +1237,53 @@ class DayStreamPlayInfo(AbstractModel):
         self.Flux = params.get("Flux")
         self.Request = params.get("Request")
         self.Online = params.get("Online")
+
+
+class DelayInfo(AbstractModel):
+    """延播信息
+
+    """
+
+    def __init__(self):
+        """
+        :param DomainName: 推流域名。
+        :type DomainName: str
+        :param AppName: 推流路径，与推流和播放地址中的AppName保持一致，默认为 live。
+        :type AppName: str
+        :param StreamName: 流名称。
+        :type StreamName: str
+        :param DelayInterval: 延播时间，单位：秒。
+        :type DelayInterval: int
+        :param CreateTime: 创建时间，UTC时间。
+注意：UTC时间和北京时间相差8小时。
+例如：2019-06-18T12:00:00Z（为北京时间 2019 年 6 月 18 日 20 点 0 分 0 秒）。
+        :type CreateTime: str
+        :param ExpireTime: 过期时间，UTC时间。
+注意：UTC时间和北京时间相差8小时。
+例如：2019-06-18T12:00:00Z（为北京时间 2019 年 6 月 18 日 20 点 0 分 0 秒）。
+        :type ExpireTime: str
+        :param Status: 当前状态，
+-1：已过期，
+1： 生效中。
+        :type Status: int
+        """
+        self.DomainName = None
+        self.AppName = None
+        self.StreamName = None
+        self.DelayInterval = None
+        self.CreateTime = None
+        self.ExpireTime = None
+        self.Status = None
+
+
+    def _deserialize(self, params):
+        self.DomainName = params.get("DomainName")
+        self.AppName = params.get("AppName")
+        self.StreamName = params.get("StreamName")
+        self.DelayInterval = params.get("DelayInterval")
+        self.CreateTime = params.get("CreateTime")
+        self.ExpireTime = params.get("ExpireTime")
+        self.Status = params.get("Status")
 
 
 class DeleteLiveCallbackRuleRequest(AbstractModel):
@@ -1673,6 +1817,207 @@ class DeletePullStreamConfigResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeBillBandwidthAndFluxListRequest(AbstractModel):
+    """DescribeBillBandwidthAndFluxList请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param StartTime: 起始时间点，格式为yyyy-mm-dd HH:MM:SS。
+        :type StartTime: str
+        :param EndTime: 结束时间点，格式为yyyy-mm-dd HH:MM:SS，起始和结束时间跨度不支持超过31天。
+        :type EndTime: str
+        :param PlayDomains: 直播播放域名，若不填，表示总体数据。
+        :type PlayDomains: list of str
+        :param MainlandOrOversea: 国内还是国外，若不填，表示国内+国外。
+        :type MainlandOrOversea: str
+        :param Granularity: 数据粒度，支持如下粒度：
+5：5分钟粒度，默认值（跨度不支持超过1天）；
+60：1小时粒度（跨度不支持超过一个月）；
+1440：天粒度（跨度不支持超过一个月）。
+        :type Granularity: int
+        """
+        self.StartTime = None
+        self.EndTime = None
+        self.PlayDomains = None
+        self.MainlandOrOversea = None
+        self.Granularity = None
+
+
+    def _deserialize(self, params):
+        self.StartTime = params.get("StartTime")
+        self.EndTime = params.get("EndTime")
+        self.PlayDomains = params.get("PlayDomains")
+        self.MainlandOrOversea = params.get("MainlandOrOversea")
+        self.Granularity = params.get("Granularity")
+
+
+class DescribeBillBandwidthAndFluxListResponse(AbstractModel):
+    """DescribeBillBandwidthAndFluxList返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param PeakBandwidthTime: 峰值带宽所在时间点，格式为yyyy-mm-dd HH:MM:SS。
+        :type PeakBandwidthTime: str
+        :param PeakBandwidth: 峰值带宽，单位是Mbps。
+        :type PeakBandwidth: float
+        :param P95PeakBandwidthTime: 95峰值带宽所在时间点，格式为yyyy-mm-dd HH:MM:SS。
+        :type P95PeakBandwidthTime: str
+        :param P95PeakBandwidth: 95峰值带宽，单位是Mbps。
+        :type P95PeakBandwidth: float
+        :param SumFlux: 总流量，单位是MB。
+        :type SumFlux: float
+        :param DataInfoList: 明细数据信息。
+        :type DataInfoList: list of BillDataInfo
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.PeakBandwidthTime = None
+        self.PeakBandwidth = None
+        self.P95PeakBandwidthTime = None
+        self.P95PeakBandwidth = None
+        self.SumFlux = None
+        self.DataInfoList = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.PeakBandwidthTime = params.get("PeakBandwidthTime")
+        self.PeakBandwidth = params.get("PeakBandwidth")
+        self.P95PeakBandwidthTime = params.get("P95PeakBandwidthTime")
+        self.P95PeakBandwidth = params.get("P95PeakBandwidth")
+        self.SumFlux = params.get("SumFlux")
+        if params.get("DataInfoList") is not None:
+            self.DataInfoList = []
+            for item in params.get("DataInfoList"):
+                obj = BillDataInfo()
+                obj._deserialize(item)
+                self.DataInfoList.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeGroupProIspPlayInfoListRequest(AbstractModel):
+    """DescribeGroupProIspPlayInfoList请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param StartTime: 起始时间点，格式为yyyy-mm-dd HH:MM:SS。
+        :type StartTime: str
+        :param EndTime: 结束时间点，格式为yyyy-mm-dd HH:MM:SS
+时间跨度在（0,3小时]，支持最近1个月数据查询。
+        :type EndTime: str
+        :param PlayDomains: 播放域名，默认为不填，表示求总体数据。
+        :type PlayDomains: list of str
+        :param ProvinceNames: 省份列表，默认不填，则返回各省份的数据。
+        :type ProvinceNames: list of str
+        :param IspNames: 运营商列表，默认不填，则返回个运营商的数据。
+        :type IspNames: list of str
+        :param MainlandOrOversea: 国内还是国外，如果为空，查询所有地区数据；如果为“Mainland”，查询国内数据；如果为“Oversea”，则查询国外数据。
+        :type MainlandOrOversea: str
+        """
+        self.StartTime = None
+        self.EndTime = None
+        self.PlayDomains = None
+        self.ProvinceNames = None
+        self.IspNames = None
+        self.MainlandOrOversea = None
+
+
+    def _deserialize(self, params):
+        self.StartTime = params.get("StartTime")
+        self.EndTime = params.get("EndTime")
+        self.PlayDomains = params.get("PlayDomains")
+        self.ProvinceNames = params.get("ProvinceNames")
+        self.IspNames = params.get("IspNames")
+        self.MainlandOrOversea = params.get("MainlandOrOversea")
+
+
+class DescribeGroupProIspPlayInfoListResponse(AbstractModel):
+    """DescribeGroupProIspPlayInfoList返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param DataInfoList: 数据内容。
+        :type DataInfoList: list of GroupProIspDataInfo
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.DataInfoList = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("DataInfoList") is not None:
+            self.DataInfoList = []
+            for item in params.get("DataInfoList"):
+                obj = GroupProIspDataInfo()
+                obj._deserialize(item)
+                self.DataInfoList.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeHttpStatusInfoListRequest(AbstractModel):
+    """DescribeHttpStatusInfoList请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param StartTime: 起始时间，北京时间，
+格式：yyyy-mm-dd HH:MM:SS。
+StartTime不能为3个月前。
+        :type StartTime: str
+        :param EndTime: 结束时间，北京时间，
+格式：yyyy-mm-dd HH:MM:SS。
+注：EndTime 和 StartTime 只支持最近1天的数据查询。
+        :type EndTime: str
+        :param PlayDomains: 播放域名列表。
+        :type PlayDomains: list of str
+        """
+        self.StartTime = None
+        self.EndTime = None
+        self.PlayDomains = None
+
+
+    def _deserialize(self, params):
+        self.StartTime = params.get("StartTime")
+        self.EndTime = params.get("EndTime")
+        self.PlayDomains = params.get("PlayDomains")
+
+
+class DescribeHttpStatusInfoListResponse(AbstractModel):
+    """DescribeHttpStatusInfoList返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param DataInfoList: 播放状态码列表。
+        :type DataInfoList: list of HttpStatusData
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.DataInfoList = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("DataInfoList") is not None:
+            self.DataInfoList = []
+            for item in params.get("DataInfoList"):
+                obj = HttpStatusData()
+                obj._deserialize(item)
+                self.DataInfoList.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeLiveCallbackRulesRequest(AbstractModel):
     """DescribeLiveCallbackRules请求参数结构体
 
@@ -1849,6 +2194,38 @@ class DescribeLiveCertsResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeLiveDelayInfoListRequest(AbstractModel):
+    """DescribeLiveDelayInfoList请求参数结构体
+
+    """
+
+
+class DescribeLiveDelayInfoListResponse(AbstractModel):
+    """DescribeLiveDelayInfoList返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param DelayInfoList: 延播信息列表。
+        :type DelayInfoList: list of DelayInfo
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.DelayInfoList = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("DelayInfoList") is not None:
+            self.DelayInfoList = []
+            for item in params.get("DelayInfoList"):
+                obj = DelayInfo()
+                obj._deserialize(item)
+                self.DelayInfoList.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeLiveDomainCertRequest(AbstractModel):
     """DescribeLiveDomainCert请求参数结构体
 
@@ -1886,6 +2263,69 @@ class DescribeLiveDomainCertResponse(AbstractModel):
         if params.get("DomainCertInfo") is not None:
             self.DomainCertInfo = DomainCertInfo()
             self.DomainCertInfo._deserialize(params.get("DomainCertInfo"))
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeLiveDomainPlayInfoListRequest(AbstractModel):
+    """DescribeLiveDomainPlayInfoList请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param PlayDomains: 播放域名列表。
+        :type PlayDomains: list of str
+        """
+        self.PlayDomains = None
+
+
+    def _deserialize(self, params):
+        self.PlayDomains = params.get("PlayDomains")
+
+
+class DescribeLiveDomainPlayInfoListResponse(AbstractModel):
+    """DescribeLiveDomainPlayInfoList返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Time: 数据时间，格式为yyyy-mm-dd HH:MM:SS。
+        :type Time: str
+        :param TotalBandwidth: 实时总带宽。
+        :type TotalBandwidth: float
+        :param TotalFlux: 实时总流量。
+        :type TotalFlux: float
+        :param TotalRequest: TotalRequest。
+        :type TotalRequest: int
+        :param TotalOnline: 实时总连接数。
+        :type TotalOnline: int
+        :param DomainInfoList: 分域名的数据情况。
+        :type DomainInfoList: list of DomainInfoList
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Time = None
+        self.TotalBandwidth = None
+        self.TotalFlux = None
+        self.TotalRequest = None
+        self.TotalOnline = None
+        self.DomainInfoList = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Time = params.get("Time")
+        self.TotalBandwidth = params.get("TotalBandwidth")
+        self.TotalFlux = params.get("TotalFlux")
+        self.TotalRequest = params.get("TotalRequest")
+        self.TotalOnline = params.get("TotalOnline")
+        if params.get("DomainInfoList") is not None:
+            self.DomainInfoList = []
+            for item in params.get("DomainInfoList"):
+                obj = DomainInfoList()
+                obj._deserialize(item)
+                self.DomainInfoList.append(obj)
         self.RequestId = params.get("RequestId")
 
 
@@ -3181,6 +3621,176 @@ class DescribeLogDownloadListResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribePlayErrorCodeDetailInfoListRequest(AbstractModel):
+    """DescribePlayErrorCodeDetailInfoList请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param StartTime: 起始时间，北京时间，
+格式：yyyy-mm-dd HH:MM:SS。
+        :type StartTime: str
+        :param EndTime: 结束时间，北京时间，
+格式：yyyy-mm-dd HH:MM:SS。
+注：EndTime 和 StartTime 只支持最近1天的数据查询。
+        :type EndTime: str
+        :param Granularity: 查询粒度：
+1-1分钟粒度。
+        :type Granularity: int
+        :param StatType: 是，可选值包括”4xx”,”5xx”，支持”4xx,5xx”等这种混合模式。
+        :type StatType: str
+        :param PlayDomains: 播放域名列表。
+        :type PlayDomains: list of str
+        """
+        self.StartTime = None
+        self.EndTime = None
+        self.Granularity = None
+        self.StatType = None
+        self.PlayDomains = None
+
+
+    def _deserialize(self, params):
+        self.StartTime = params.get("StartTime")
+        self.EndTime = params.get("EndTime")
+        self.Granularity = params.get("Granularity")
+        self.StatType = params.get("StatType")
+        self.PlayDomains = params.get("PlayDomains")
+
+
+class DescribePlayErrorCodeDetailInfoListResponse(AbstractModel):
+    """DescribePlayErrorCodeDetailInfoList返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param HttpCodeList: 统计信息列表。
+        :type HttpCodeList: list of HttpCodeInfo
+        :param StatType: 统计类型。
+        :type StatType: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.HttpCodeList = None
+        self.StatType = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("HttpCodeList") is not None:
+            self.HttpCodeList = []
+            for item in params.get("HttpCodeList"):
+                obj = HttpCodeInfo()
+                obj._deserialize(item)
+                self.HttpCodeList.append(obj)
+        self.StatType = params.get("StatType")
+        self.RequestId = params.get("RequestId")
+
+
+class DescribePlayErrorCodeSumInfoListRequest(AbstractModel):
+    """DescribePlayErrorCodeSumInfoList请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param StartTime: 起始时间点，北京时间。
+格式：yyyy-mm-dd HH:MM:SS。
+        :type StartTime: str
+        :param EndTime: 结束时间点，北京时间。
+格式：yyyy-mm-dd HH:MM:SS。
+注：EndTime 和 StartTime 只支持最近1天的数据查询。
+        :type EndTime: str
+        :param PlayDomains: 播放域名列表，不填表示总体数据。
+        :type PlayDomains: list of str
+        :param PageNum: 页数，
+范围[1,1000]，
+默认值：1。
+        :type PageNum: int
+        :param PageSize: 每页个数，
+范围：[1,1000]，
+默认值： 20。
+        :type PageSize: int
+        """
+        self.StartTime = None
+        self.EndTime = None
+        self.PlayDomains = None
+        self.PageNum = None
+        self.PageSize = None
+
+
+    def _deserialize(self, params):
+        self.StartTime = params.get("StartTime")
+        self.EndTime = params.get("EndTime")
+        self.PlayDomains = params.get("PlayDomains")
+        self.PageNum = params.get("PageNum")
+        self.PageSize = params.get("PageSize")
+
+
+class DescribePlayErrorCodeSumInfoListResponse(AbstractModel):
+    """DescribePlayErrorCodeSumInfoList返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ProIspInfoList: 分省份分运营商错误码为4或5开头的状态码数据信息。
+        :type ProIspInfoList: list of ProIspPlayCodeDataInfo
+        :param TotalCodeAll: 所有状态码的加和的次数。
+        :type TotalCodeAll: int
+        :param TotalCode4xx: 状态码为4开头的总次数。
+        :type TotalCode4xx: int
+        :param TotalCode5xx: 状态码为5开头的总次数。
+        :type TotalCode5xx: int
+        :param TotalCodeList: 各状态码的总次数，暂时支持400,403,404,500,502,503,504。
+        :type TotalCodeList: list of PlayCodeTotalInfo
+        :param PageNum: 页号。
+        :type PageNum: int
+        :param PageSize: 每页大小。
+        :type PageSize: int
+        :param TotalPage: 总页数。
+        :type TotalPage: int
+        :param TotalNum: 总记录数。
+        :type TotalNum: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.ProIspInfoList = None
+        self.TotalCodeAll = None
+        self.TotalCode4xx = None
+        self.TotalCode5xx = None
+        self.TotalCodeList = None
+        self.PageNum = None
+        self.PageSize = None
+        self.TotalPage = None
+        self.TotalNum = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("ProIspInfoList") is not None:
+            self.ProIspInfoList = []
+            for item in params.get("ProIspInfoList"):
+                obj = ProIspPlayCodeDataInfo()
+                obj._deserialize(item)
+                self.ProIspInfoList.append(obj)
+        self.TotalCodeAll = params.get("TotalCodeAll")
+        self.TotalCode4xx = params.get("TotalCode4xx")
+        self.TotalCode5xx = params.get("TotalCode5xx")
+        if params.get("TotalCodeList") is not None:
+            self.TotalCodeList = []
+            for item in params.get("TotalCodeList"):
+                obj = PlayCodeTotalInfo()
+                obj._deserialize(item)
+                self.TotalCodeList.append(obj)
+        self.PageNum = params.get("PageNum")
+        self.PageSize = params.get("PageSize")
+        self.TotalPage = params.get("TotalPage")
+        self.TotalNum = params.get("TotalNum")
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeProIspPlaySumInfoListRequest(AbstractModel):
     """DescribeProIspPlaySumInfoList请求参数结构体
 
@@ -3195,16 +3805,16 @@ class DescribeProIspPlaySumInfoListRequest(AbstractModel):
 格式：yyyy-mm-dd HH:MM:SS。
 注：EndTime 和 StartTime 只支持最近1天的数据查询。
         :type EndTime: str
-        :param StatType: 统计的类型，可选值包括”Province”，”Isp”
+        :param StatType: 统计的类型，可选值包括”Province”，”Isp”。
         :type StatType: str
         :param PlayDomains: 不填则为总体数据。
         :type PlayDomains: list of str
         :param PageNum: 页号，
 范围是[1,1000]，
-默认值是1
+默认值是1。
         :type PageNum: int
         :param PageSize: 每页个数，范围是[1,1000]，
-默认值是20
+默认值是20。
         :type PageSize: int
         """
         self.StartTime = None
@@ -3237,17 +3847,17 @@ class DescribeProIspPlaySumInfoListResponse(AbstractModel):
         :type TotalRequest: int
         :param StatType: 统计的类型。
         :type StatType: str
-        :param PageSize: 每页的记录数
+        :param PageSize: 每页的记录数。
         :type PageSize: int
-        :param PageNum: 页号
+        :param PageNum: 页号。
         :type PageNum: int
-        :param TotalNum: 总记录数
+        :param TotalNum: 总记录数。
         :type TotalNum: int
-        :param TotalPage: 总页数
+        :param TotalPage: 总页数。
         :type TotalPage: int
-        :param DataInfoList: 省份或运营商汇总数据列表
+        :param DataInfoList: 省份或运营商汇总数据列表。
         :type DataInfoList: list of ProIspPlaySumInfo
-        :param AvgFluxPerSecond: 平均带宽
+        :param AvgFluxPerSecond: 平均带宽。
         :type AvgFluxPerSecond: float
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -3498,6 +4108,7 @@ class DescribeStreamPlayInfoListRequest(AbstractModel):
         :type StreamName: str
         :param AppName: 推流路径，与推流和播放地址中的AppName保持一致，默认为live。精确匹配，不支持。
 若不填，则为查询总体播放数据。
+注意：按AppName查询，需要联系客服同学提单支持。
         :type AppName: str
         """
         self.StartTime = None
@@ -3536,6 +4147,253 @@ class DescribeStreamPlayInfoListResponse(AbstractModel):
             self.DataInfoList = []
             for item in params.get("DataInfoList"):
                 obj = DayStreamPlayInfo()
+                obj._deserialize(item)
+                self.DataInfoList.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeStreamPushInfoListRequest(AbstractModel):
+    """DescribeStreamPushInfoList请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param StreamName: 流名称。
+        :type StreamName: str
+        :param StartTime: 起始时间点，格式为yyyy-mm-dd HH:MM:SS。
+        :type StartTime: str
+        :param EndTime: 结束时间点，格式为yyyy-mm-dd HH:MM:SS，最大时间跨度支持6小时，支持最近6天数据查询。
+        :type EndTime: str
+        :param PushDomain: 推流域名。
+        :type PushDomain: str
+        :param AppName: 推流路径，与推流和播放地址中的AppName保持一致，默认为 live。
+        :type AppName: str
+        """
+        self.StreamName = None
+        self.StartTime = None
+        self.EndTime = None
+        self.PushDomain = None
+        self.AppName = None
+
+
+    def _deserialize(self, params):
+        self.StreamName = params.get("StreamName")
+        self.StartTime = params.get("StartTime")
+        self.EndTime = params.get("EndTime")
+        self.PushDomain = params.get("PushDomain")
+        self.AppName = params.get("AppName")
+
+
+class DescribeStreamPushInfoListResponse(AbstractModel):
+    """DescribeStreamPushInfoList返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param DataInfoList: 返回的数据列表。
+        :type DataInfoList: list of PushQualityData
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.DataInfoList = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("DataInfoList") is not None:
+            self.DataInfoList = []
+            for item in params.get("DataInfoList"):
+                obj = PushQualityData()
+                obj._deserialize(item)
+                self.DataInfoList.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeTopClientIpSumInfoListRequest(AbstractModel):
+    """DescribeTopClientIpSumInfoList请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param StartTime: 起始时间点，格式为yyyy-mm-dd HH:MM:SS。
+        :type StartTime: str
+        :param EndTime: 结束时间点，格式为yyyy-mm-dd HH:MM:SS
+时间跨度在（0,4小时]，支持最近1天数据查询。
+        :type EndTime: str
+        :param PlayDomains: 播放域名，默认为不填，表示求总体数据。
+        :type PlayDomains: list of str
+        :param PageNum: 页号，
+范围是[1,1000]，
+默认值是1。
+        :type PageNum: int
+        :param PageSize: 每页个数，范围是[1,1000]，
+默认值是20。
+        :type PageSize: int
+        :param OrderParam: 排序指标，可选值包括”TotalRequest”，”FailedRequest”,“TotalFlux”。
+        :type OrderParam: str
+        """
+        self.StartTime = None
+        self.EndTime = None
+        self.PlayDomains = None
+        self.PageNum = None
+        self.PageSize = None
+        self.OrderParam = None
+
+
+    def _deserialize(self, params):
+        self.StartTime = params.get("StartTime")
+        self.EndTime = params.get("EndTime")
+        self.PlayDomains = params.get("PlayDomains")
+        self.PageNum = params.get("PageNum")
+        self.PageSize = params.get("PageSize")
+        self.OrderParam = params.get("OrderParam")
+
+
+class DescribeTopClientIpSumInfoListResponse(AbstractModel):
+    """DescribeTopClientIpSumInfoList返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param PageNum: 页号，
+范围是[1,1000]，
+默认值是1。
+        :type PageNum: int
+        :param PageSize: 每页个数，范围是[1,1000]，
+默认值是20。
+        :type PageSize: int
+        :param OrderParam: 排序指标，可选值包括”TotalRequest”，”FailedRequest”,“TotalFlux”。
+        :type OrderParam: str
+        :param TotalNum: 记录总数。
+        :type TotalNum: int
+        :param TotalPage: 记录总页数。
+        :type TotalPage: int
+        :param DataInfoList: 数据内容。
+        :type DataInfoList: list of ClientIpPlaySumInfo
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.PageNum = None
+        self.PageSize = None
+        self.OrderParam = None
+        self.TotalNum = None
+        self.TotalPage = None
+        self.DataInfoList = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.PageNum = params.get("PageNum")
+        self.PageSize = params.get("PageSize")
+        self.OrderParam = params.get("OrderParam")
+        self.TotalNum = params.get("TotalNum")
+        self.TotalPage = params.get("TotalPage")
+        if params.get("DataInfoList") is not None:
+            self.DataInfoList = []
+            for item in params.get("DataInfoList"):
+                obj = ClientIpPlaySumInfo()
+                obj._deserialize(item)
+                self.DataInfoList.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeVisitTopSumInfoListRequest(AbstractModel):
+    """DescribeVisitTopSumInfoList请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param StartTime: 起始时间点，格式为yyyy-mm-dd HH:MM:SS。
+        :type StartTime: str
+        :param EndTime: 结束时间点，格式为yyyy-mm-dd HH:MM:SS
+时间跨度在（0,4小时]，支持最近1天数据查询。
+        :type EndTime: str
+        :param TopIndex: 峰值指标，可选值包括”Domain”，”StreamId”。
+        :type TopIndex: str
+        :param PlayDomains: 播放域名，默认为不填，表示求总体数据。
+        :type PlayDomains: list of str
+        :param PageNum: 页号，
+范围是[1,1000]，
+默认值是1。
+        :type PageNum: int
+        :param PageSize: 每页个数，范围是[1,1000]，
+默认值是20。
+        :type PageSize: int
+        :param OrderParam: 排序指标，可选值包括” AvgFluxPerSecond”，”TotalRequest”（默认）,“TotalFlux”。
+        :type OrderParam: str
+        """
+        self.StartTime = None
+        self.EndTime = None
+        self.TopIndex = None
+        self.PlayDomains = None
+        self.PageNum = None
+        self.PageSize = None
+        self.OrderParam = None
+
+
+    def _deserialize(self, params):
+        self.StartTime = params.get("StartTime")
+        self.EndTime = params.get("EndTime")
+        self.TopIndex = params.get("TopIndex")
+        self.PlayDomains = params.get("PlayDomains")
+        self.PageNum = params.get("PageNum")
+        self.PageSize = params.get("PageSize")
+        self.OrderParam = params.get("OrderParam")
+
+
+class DescribeVisitTopSumInfoListResponse(AbstractModel):
+    """DescribeVisitTopSumInfoList返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param PageNum: 页号，
+范围是[1,1000]，
+默认值是1。
+        :type PageNum: int
+        :param PageSize: 每页个数，范围是[1,1000]，
+默认值是20。
+        :type PageSize: int
+        :param TopIndex: 峰值指标，可选值包括”Domain”，”StreamId”。
+        :type TopIndex: str
+        :param OrderParam: 排序指标，可选值包括” AvgFluxPerSecond”，”TotalRequest”（默认）,“TotalFlux”。
+        :type OrderParam: str
+        :param TotalNum: 记录总数。
+        :type TotalNum: int
+        :param TotalPage: 记录总页数。
+        :type TotalPage: int
+        :param DataInfoList: 数据内容。
+        :type DataInfoList: list of PlaySumStatInfo
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.PageNum = None
+        self.PageSize = None
+        self.TopIndex = None
+        self.OrderParam = None
+        self.TotalNum = None
+        self.TotalPage = None
+        self.DataInfoList = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.PageNum = params.get("PageNum")
+        self.PageSize = params.get("PageSize")
+        self.TopIndex = params.get("TopIndex")
+        self.OrderParam = params.get("OrderParam")
+        self.TotalNum = params.get("TotalNum")
+        self.TotalPage = params.get("TotalPage")
+        if params.get("DataInfoList") is not None:
+            self.DataInfoList = []
+            for item in params.get("DataInfoList"):
+                obj = PlaySumStatInfo()
                 obj._deserialize(item)
                 self.DataInfoList.append(obj)
         self.RequestId = params.get("RequestId")
@@ -3592,6 +4450,39 @@ class DomainCertInfo(AbstractModel):
         self.Status = params.get("Status")
 
 
+class DomainDetailInfo(AbstractModel):
+    """每个域名的统计信息
+
+    """
+
+    def __init__(self):
+        """
+        :param MainlandOrOversea: 国内还是国外，可选值包括Mainland和Oversea，如果为“Mainland”，表示国内数据；如果为“Oversea”，表示国外数据。
+        :type MainlandOrOversea: str
+        :param Bandwidth: 带宽，单位是Mbps。
+        :type Bandwidth: float
+        :param Flux: 流量，单位是MB。
+        :type Flux: float
+        :param Online: 人数。
+        :type Online: int
+        :param Request: 请求数。
+        :type Request: int
+        """
+        self.MainlandOrOversea = None
+        self.Bandwidth = None
+        self.Flux = None
+        self.Online = None
+        self.Request = None
+
+
+    def _deserialize(self, params):
+        self.MainlandOrOversea = params.get("MainlandOrOversea")
+        self.Bandwidth = params.get("Bandwidth")
+        self.Flux = params.get("Flux")
+        self.Online = params.get("Online")
+        self.Request = params.get("Request")
+
+
 class DomainInfo(AbstractModel):
     """直播域名信息
 
@@ -3637,6 +4528,32 @@ class DomainInfo(AbstractModel):
         self.TargetDomain = params.get("TargetDomain")
         self.PlayType = params.get("PlayType")
         self.IsDelayLive = params.get("IsDelayLive")
+
+
+class DomainInfoList(AbstractModel):
+    """多个域名信息列表
+
+    """
+
+    def __init__(self):
+        """
+        :param Domain: 域名。
+        :type Domain: str
+        :param DetailInfoList: 明细信息。
+        :type DetailInfoList: list of DomainDetailInfo
+        """
+        self.Domain = None
+        self.DetailInfoList = None
+
+
+    def _deserialize(self, params):
+        self.Domain = params.get("Domain")
+        if params.get("DetailInfoList") is not None:
+            self.DetailInfoList = []
+            for item in params.get("DetailInfoList"):
+                obj = DomainDetailInfo()
+                obj._deserialize(item)
+                self.DetailInfoList.append(obj)
 
 
 class DropLiveStreamRequest(AbstractModel):
@@ -3821,6 +4738,36 @@ class ForbidStreamInfo(AbstractModel):
         self.ExpireTime = params.get("ExpireTime")
 
 
+class GroupProIspDataInfo(AbstractModel):
+    """某省份某运营商在某段时间内的带宽，流量，请求数和并发数
+
+    """
+
+    def __init__(self):
+        """
+        :param ProvinceName: 省份。
+        :type ProvinceName: str
+        :param IspName: 运营商。
+        :type IspName: str
+        :param DetailInfoList: 分钟维度的明细数据。
+        :type DetailInfoList: list of CdnPlayStatData
+        """
+        self.ProvinceName = None
+        self.IspName = None
+        self.DetailInfoList = None
+
+
+    def _deserialize(self, params):
+        self.ProvinceName = params.get("ProvinceName")
+        self.IspName = params.get("IspName")
+        if params.get("DetailInfoList") is not None:
+            self.DetailInfoList = []
+            for item in params.get("DetailInfoList"):
+                obj = CdnPlayStatData()
+                obj._deserialize(item)
+                self.DetailInfoList.append(obj)
+
+
 class HlsSpecialParam(AbstractModel):
     """HLS专属录制参数
 
@@ -3836,6 +4783,106 @@ class HlsSpecialParam(AbstractModel):
 
     def _deserialize(self, params):
         self.FlowContinueDuration = params.get("FlowContinueDuration")
+
+
+class HttpCodeInfo(AbstractModel):
+    """http返回码和统计数据
+
+    """
+
+    def __init__(self):
+        """
+        :param HttpCode: http协议返回码。
+例："2xx", "3xx", "4xx", "5xx"。
+        :type HttpCode: str
+        :param ValueList: 统计信息，对于无数据的时间点，会补0。
+        :type ValueList: list of HttpCodeValue
+        """
+        self.HttpCode = None
+        self.ValueList = None
+
+
+    def _deserialize(self, params):
+        self.HttpCode = params.get("HttpCode")
+        if params.get("ValueList") is not None:
+            self.ValueList = []
+            for item in params.get("ValueList"):
+                obj = HttpCodeValue()
+                obj._deserialize(item)
+                self.ValueList.append(obj)
+
+
+class HttpCodeValue(AbstractModel):
+    """http返回码数据信息
+
+    """
+
+    def __init__(self):
+        """
+        :param Time: 时间，格式：yyyy-mm-dd HH:MM:SS。
+        :type Time: str
+        :param Numbers: 次数。
+        :type Numbers: int
+        :param Percentage: 占比。
+        :type Percentage: float
+        """
+        self.Time = None
+        self.Numbers = None
+        self.Percentage = None
+
+
+    def _deserialize(self, params):
+        self.Time = params.get("Time")
+        self.Numbers = params.get("Numbers")
+        self.Percentage = params.get("Percentage")
+
+
+class HttpStatusData(AbstractModel):
+    """播放错误码信息
+
+    """
+
+    def __init__(self):
+        """
+        :param Time: 数据时间点，
+格式：yyyy-mm-dd HH:MM:SS。
+        :type Time: str
+        :param HttpStatusInfoList: 播放状态码详细信息。
+        :type HttpStatusInfoList: list of HttpStatusInfo
+        """
+        self.Time = None
+        self.HttpStatusInfoList = None
+
+
+    def _deserialize(self, params):
+        self.Time = params.get("Time")
+        if params.get("HttpStatusInfoList") is not None:
+            self.HttpStatusInfoList = []
+            for item in params.get("HttpStatusInfoList"):
+                obj = HttpStatusInfo()
+                obj._deserialize(item)
+                self.HttpStatusInfoList.append(obj)
+
+
+class HttpStatusInfo(AbstractModel):
+    """播放错误码信息
+
+    """
+
+    def __init__(self):
+        """
+        :param HttpStatus: 播放http状态码。
+        :type HttpStatus: str
+        :param Num: 个数。
+        :type Num: int
+        """
+        self.HttpStatus = None
+        self.Num = None
+
+
+    def _deserialize(self, params):
+        self.HttpStatus = params.get("HttpStatus")
+        self.Num = params.get("Num")
 
 
 class LogInfo(AbstractModel):
@@ -4186,6 +5233,8 @@ class ModifyLiveRecordTemplateRequest(AbstractModel):
         :type AacParam: :class:`tencentcloud.live.v20180801.models.RecordParam`
         :param HlsSpecialParam: HLS录制定制参数
         :type HlsSpecialParam: :class:`tencentcloud.live.v20180801.models.HlsSpecialParam`
+        :param Mp3Param: Mp3录制参数，开启Mp3录制时设置。
+        :type Mp3Param: :class:`tencentcloud.live.v20180801.models.RecordParam`
         """
         self.TemplateId = None
         self.TemplateName = None
@@ -4195,6 +5244,7 @@ class ModifyLiveRecordTemplateRequest(AbstractModel):
         self.Mp4Param = None
         self.AacParam = None
         self.HlsSpecialParam = None
+        self.Mp3Param = None
 
 
     def _deserialize(self, params):
@@ -4216,6 +5266,9 @@ class ModifyLiveRecordTemplateRequest(AbstractModel):
         if params.get("HlsSpecialParam") is not None:
             self.HlsSpecialParam = HlsSpecialParam()
             self.HlsSpecialParam._deserialize(params.get("HlsSpecialParam"))
+        if params.get("Mp3Param") is not None:
+            self.Mp3Param = RecordParam()
+            self.Mp3Param._deserialize(params.get("Mp3Param"))
 
 
 class ModifyLiveRecordTemplateResponse(AbstractModel):
@@ -4543,6 +5596,27 @@ class PlayAuthKeyInfo(AbstractModel):
         self.AuthBackKey = params.get("AuthBackKey")
 
 
+class PlayCodeTotalInfo(AbstractModel):
+    """各状态码的总次数，暂时支持400,403,404,500,502,503,504
+
+    """
+
+    def __init__(self):
+        """
+        :param Code: http code，可选值包括400,403,404,500,502,503,504
+        :type Code: str
+        :param Num: 总次数
+        :type Num: int
+        """
+        self.Code = None
+        self.Num = None
+
+
+    def _deserialize(self, params):
+        self.Code = params.get("Code")
+        self.Num = params.get("Num")
+
+
 class PlayDataInfoByStream(AbstractModel):
     """流维度的播放信息
 
@@ -4584,6 +5658,64 @@ class PlayStatInfo(AbstractModel):
     def _deserialize(self, params):
         self.Time = params.get("Time")
         self.Value = params.get("Value")
+
+
+class PlaySumStatInfo(AbstractModel):
+    """播放汇总统计信息
+
+    """
+
+    def __init__(self):
+        """
+        :param Name: 域名或流id。
+        :type Name: str
+        :param AvgFluxPerSecond: 平均下载速度，单位是MB/s，计算公式是每分钟的下载速度求平均值。
+        :type AvgFluxPerSecond: float
+        :param TotalFlux: 总流量，单位是MB。
+        :type TotalFlux: float
+        :param TotalRequest: 总请求数。
+        :type TotalRequest: int
+        """
+        self.Name = None
+        self.AvgFluxPerSecond = None
+        self.TotalFlux = None
+        self.TotalRequest = None
+
+
+    def _deserialize(self, params):
+        self.Name = params.get("Name")
+        self.AvgFluxPerSecond = params.get("AvgFluxPerSecond")
+        self.TotalFlux = params.get("TotalFlux")
+        self.TotalRequest = params.get("TotalRequest")
+
+
+class ProIspPlayCodeDataInfo(AbstractModel):
+    """播放错误码信息
+
+    """
+
+    def __init__(self):
+        """
+        :param ProvinceName: 省份。
+        :type ProvinceName: str
+        :param IspName: 运营商。
+        :type IspName: str
+        :param Code4xx: 错误码为4开头的次数。
+        :type Code4xx: int
+        :param Code5xx: 错误码为5开头的次数。
+        :type Code5xx: int
+        """
+        self.ProvinceName = None
+        self.IspName = None
+        self.Code4xx = None
+        self.Code5xx = None
+
+
+    def _deserialize(self, params):
+        self.ProvinceName = params.get("ProvinceName")
+        self.IspName = params.get("IspName")
+        self.Code4xx = params.get("Code4xx")
+        self.Code5xx = params.get("Code5xx")
 
 
 class ProIspPlaySumInfo(AbstractModel):
@@ -4783,6 +5915,83 @@ class PushDataInfo(AbstractModel):
         self.Resolution = params.get("Resolution")
 
 
+class PushQualityData(AbstractModel):
+    """某条流的推流质量详情数据。
+
+    """
+
+    def __init__(self):
+        """
+        :param Time: 数据时间，格式是%Y-%m-%d %H:%M:%S.%ms，精确到毫秒级。
+        :type Time: str
+        :param PushDomain: 推流域名。
+        :type PushDomain: str
+        :param AppName: 推流路径。
+        :type AppName: str
+        :param ClientIp: 推流客户端ip。
+        :type ClientIp: str
+        :param BeginPushTime: 开始推流时间，格式是%Y-%m-%d %H:%M:%S.%ms，精确到毫秒级。
+        :type BeginPushTime: str
+        :param Resolution: 分辨率信息。
+        :type Resolution: str
+        :param VCodec: 视频编码格式。
+        :type VCodec: str
+        :param ACodec: 音频编码格式。
+        :type ACodec: str
+        :param Sequence: 推流序列号，用来唯一的标志一次推流。
+        :type Sequence: str
+        :param VideoFps: 视频帧率。
+        :type VideoFps: int
+        :param VideoRate: 视频码率，单位是bps。
+        :type VideoRate: int
+        :param AudioFps: 音频帧率。
+        :type AudioFps: int
+        :param AudioRate: 音频码率，单位是bps。
+        :type AudioRate: int
+        :param LocalTs: 本地流逝时间，单位是ms，音视频流逝时间与本地流逝时间的差距越大表示推流质量越差，上行卡顿越严重。
+        :type LocalTs: int
+        :param VideoTs: 视频流逝时间，单位是ms。
+        :type VideoTs: int
+        :param AudioTs: 音频流逝时间，单位是ms。
+        :type AudioTs: int
+        """
+        self.Time = None
+        self.PushDomain = None
+        self.AppName = None
+        self.ClientIp = None
+        self.BeginPushTime = None
+        self.Resolution = None
+        self.VCodec = None
+        self.ACodec = None
+        self.Sequence = None
+        self.VideoFps = None
+        self.VideoRate = None
+        self.AudioFps = None
+        self.AudioRate = None
+        self.LocalTs = None
+        self.VideoTs = None
+        self.AudioTs = None
+
+
+    def _deserialize(self, params):
+        self.Time = params.get("Time")
+        self.PushDomain = params.get("PushDomain")
+        self.AppName = params.get("AppName")
+        self.ClientIp = params.get("ClientIp")
+        self.BeginPushTime = params.get("BeginPushTime")
+        self.Resolution = params.get("Resolution")
+        self.VCodec = params.get("VCodec")
+        self.ACodec = params.get("ACodec")
+        self.Sequence = params.get("Sequence")
+        self.VideoFps = params.get("VideoFps")
+        self.VideoRate = params.get("VideoRate")
+        self.AudioFps = params.get("AudioFps")
+        self.AudioRate = params.get("AudioRate")
+        self.LocalTs = params.get("LocalTs")
+        self.VideoTs = params.get("VideoTs")
+        self.AudioTs = params.get("AudioTs")
+
+
 class RecordParam(AbstractModel):
     """录制模板参数
 
@@ -4796,7 +6005,7 @@ class RecordParam(AbstractModel):
 此参数对 HLS 无效，当录制 HLS 时从推流到断流生成一个文件。
         :type RecordInterval: int
         :param StorageTime: 录制存储时长。
-单位秒，取值范围： 0-5184000。
+单位秒，取值范围： 0-93312000。
 0表示永久存储。
         :type StorageTime: int
         :param Enable: 是否开启当前格式录制，0 否 1是。默认值0。
@@ -4839,6 +6048,8 @@ class RecordTemplateInfo(AbstractModel):
         :type IsDelayLive: int
         :param HlsSpecialParam: HLS录制定制参数
         :type HlsSpecialParam: :class:`tencentcloud.live.v20180801.models.HlsSpecialParam`
+        :param Mp3Param: Mp3录制参数。
+        :type Mp3Param: :class:`tencentcloud.live.v20180801.models.RecordParam`
         """
         self.TemplateId = None
         self.TemplateName = None
@@ -4849,6 +6060,7 @@ class RecordTemplateInfo(AbstractModel):
         self.AacParam = None
         self.IsDelayLive = None
         self.HlsSpecialParam = None
+        self.Mp3Param = None
 
 
     def _deserialize(self, params):
@@ -4871,6 +6083,9 @@ class RecordTemplateInfo(AbstractModel):
         if params.get("HlsSpecialParam") is not None:
             self.HlsSpecialParam = HlsSpecialParam()
             self.HlsSpecialParam._deserialize(params.get("HlsSpecialParam"))
+        if params.get("Mp3Param") is not None:
+            self.Mp3Param = RecordParam()
+            self.Mp3Param._deserialize(params.get("Mp3Param"))
 
 
 class ResumeDelayLiveStreamRequest(AbstractModel):

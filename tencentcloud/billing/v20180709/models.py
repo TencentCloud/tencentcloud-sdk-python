@@ -536,10 +536,14 @@ class DescribeBillDetailResponse(AbstractModel):
         """
         :param DetailSet: 详情列表
         :type DetailSet: list of BillDetail
+        :param Total: 总记录数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Total: int
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.DetailSet = None
+        self.Total = None
         self.RequestId = None
 
 
@@ -550,6 +554,7 @@ class DescribeBillDetailResponse(AbstractModel):
                 obj = BillDetail()
                 obj._deserialize(item)
                 self.DetailSet.append(obj)
+        self.Total = params.get("Total")
         self.RequestId = params.get("RequestId")
 
 

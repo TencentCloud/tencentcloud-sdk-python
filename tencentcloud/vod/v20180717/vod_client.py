@@ -1720,3 +1720,31 @@ class VodClient(AbstractClient):
                 raise
             else:
                 raise TencentCloudSDKException(e.message, e.message)
+
+
+    def WeChatMiniProgramPublish(self, request):
+        """将点播视频发布到微信小程序，供微信小程序播放器播放。
+
+        :param request: 调用WeChatMiniProgramPublish所需参数的结构体。
+        :type request: :class:`tencentcloud.vod.v20180717.models.WeChatMiniProgramPublishRequest`
+        :rtype: :class:`tencentcloud.vod.v20180717.models.WeChatMiniProgramPublishResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("WeChatMiniProgramPublish", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.WeChatMiniProgramPublishResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)

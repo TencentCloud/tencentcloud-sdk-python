@@ -16,6 +16,44 @@
 from tencentcloud.common.abstract_model import AbstractModel
 
 
+class CancelKeyDeletionRequest(AbstractModel):
+    """CancelKeyDeletion请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param KeyId: 需要被取消删除的CMK的唯一标志
+        :type KeyId: str
+        """
+        self.KeyId = None
+
+
+    def _deserialize(self, params):
+        self.KeyId = params.get("KeyId")
+
+
+class CancelKeyDeletionResponse(AbstractModel):
+    """CancelKeyDeletion返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param KeyId: 唯一标志被取消删除的CMK。
+        :type KeyId: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.KeyId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.KeyId = params.get("KeyId")
+        self.RequestId = params.get("RequestId")
+
+
 class CreateKeyRequest(AbstractModel):
     """CreateKey请求参数结构体
 
@@ -23,7 +61,7 @@ class CreateKeyRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Alias: 作为密钥更容易辨识，更容易被人看懂的别名， 不可为空，1-60个字符或数字的组合
+        :param Alias: 作为密钥更容易辨识，更容易被人看懂的别名， 不可为空，1-60个字母数字 - _ 的组合。以 kms- 作为前缀的用于云产品使用，Alias 不可重复。
         :type Alias: str
         :param Description: CMK 的描述，最大1024字节
         :type Description: str
@@ -481,7 +519,7 @@ class GenerateDataKeyRequest(AbstractModel):
         """
         :param KeyId: CMK全局唯一标识符
         :type KeyId: str
-        :param KeySpec: 指定生成Datakey的加密算法以及Datakey大小，AES_128或者AES_256。默认为AES_256
+        :param KeySpec: 指定生成Datakey的加密算法以及Datakey大小，AES_128或者AES_256。
         :type KeySpec: str
         :param NumberOfBytes: 生成的DataKey的长度，同时指定NumberOfBytes和KeySpec时，以NumberOfBytes为准。最小值为1， 最大值为1024
         :type NumberOfBytes: int
@@ -583,15 +621,20 @@ class GetServiceStatusResponse(AbstractModel):
         """
         :param ServiceEnabled: KMS服务是否开通， true 表示已开通
         :type ServiceEnabled: bool
+        :param InvalidType: 服务不可用类型： 0-未购买，1-正常， 2-欠费停服， 3-资源释放
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InvalidType: int
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.ServiceEnabled = None
+        self.InvalidType = None
         self.RequestId = None
 
 
     def _deserialize(self, params):
         self.ServiceEnabled = params.get("ServiceEnabled")
+        self.InvalidType = params.get("InvalidType")
         self.RequestId = params.get("RequestId")
 
 
@@ -627,7 +670,7 @@ class KeyMetadata(AbstractModel):
         :type CreateTime: int
         :param Description: CMK的描述
         :type Description: str
-        :param KeyState: CMK的状态， Enabled 或者 Disabled 或者 Deleted
+        :param KeyState: CMK的状态， Enabled 或者 Disabled 或者PendingDelete状态
         :type KeyState: str
         :param KeyUsage: CMK用途，当前是 ENCRYPT_DECRYPT
         :type KeyUsage: str
@@ -641,6 +684,9 @@ class KeyMetadata(AbstractModel):
         :type Owner: str
         :param NextRotateTime: 在密钥轮换开启状态下，下次轮换的时间
         :type NextRotateTime: int
+        :param DeletionDate: 计划删除的时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DeletionDate: int
         """
         self.KeyId = None
         self.Alias = None
@@ -653,6 +699,7 @@ class KeyMetadata(AbstractModel):
         self.KeyRotationEnabled = None
         self.Owner = None
         self.NextRotateTime = None
+        self.DeletionDate = None
 
 
     def _deserialize(self, params):
@@ -667,6 +714,7 @@ class KeyMetadata(AbstractModel):
         self.KeyRotationEnabled = params.get("KeyRotationEnabled")
         self.Owner = params.get("Owner")
         self.NextRotateTime = params.get("NextRotateTime")
+        self.DeletionDate = params.get("DeletionDate")
 
 
 class ListKeyDetailRequest(AbstractModel):
@@ -684,7 +732,7 @@ class ListKeyDetailRequest(AbstractModel):
         :type Role: int
         :param OrderType: 根据CMK创建时间排序， 0 表示按照降序排序，1表示按照升序排序
         :type OrderType: int
-        :param KeyState: 根据CMK状态筛选， 0表示全部CMK， 1 表示仅查询Enabled CMK， 2 表示仅查询Disabled CMK
+        :param KeyState: 根据CMK状态筛选， 0表示全部CMK， 1 表示仅查询Enabled CMK， 2 表示仅查询Disabled CMK，3表示查询PendingDelete CMK(处于计划删除状态的Key)
         :type KeyState: int
         :param SearchKeyAlias: 根据KeyId或者Alias进行模糊匹配查询
         :type SearchKeyAlias: str
@@ -855,6 +903,52 @@ class ReEncryptResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class ScheduleKeyDeletionRequest(AbstractModel):
+    """ScheduleKeyDeletion请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param KeyId: CMK的唯一标志
+        :type KeyId: str
+        :param PendingWindowInDays: 计划删除时间区间[7,30]
+        :type PendingWindowInDays: int
+        """
+        self.KeyId = None
+        self.PendingWindowInDays = None
+
+
+    def _deserialize(self, params):
+        self.KeyId = params.get("KeyId")
+        self.PendingWindowInDays = params.get("PendingWindowInDays")
+
+
+class ScheduleKeyDeletionResponse(AbstractModel):
+    """ScheduleKeyDeletion返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param DeletionDate: 计划删除执行时间
+        :type DeletionDate: int
+        :param KeyId: 唯一标志被计划删除的CMK
+        :type KeyId: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.DeletionDate = None
+        self.KeyId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.DeletionDate = params.get("DeletionDate")
+        self.KeyId = params.get("KeyId")
+        self.RequestId = params.get("RequestId")
+
+
 class UpdateAliasRequest(AbstractModel):
     """UpdateAlias请求参数结构体
 
@@ -862,7 +956,7 @@ class UpdateAliasRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Alias: 新的别名，1-64个字符或数字的组合
+        :param Alias: 新的别名，1-60个字符或数字的组合
         :type Alias: str
         :param KeyId: CMK的全局唯一标识符
         :type KeyId: str
