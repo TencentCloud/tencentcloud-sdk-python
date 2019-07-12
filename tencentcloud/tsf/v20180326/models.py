@@ -33,7 +33,7 @@ class AddInstancesRequest(AbstractModel):
         :type ImageId: str
         :param Password: 重装系统密码设置
         :type Password: str
-        :param KeyId: 重装系统，关联秘钥设置
+        :param KeyId: 重装系统，关联密钥设置
         :type KeyId: str
         :param SgId: 安全组设置
         :type SgId: str

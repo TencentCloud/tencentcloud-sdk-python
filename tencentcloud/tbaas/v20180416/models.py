@@ -27,9 +27,9 @@ class Block(AbstractModel):
         :type BlockNum: int
         :param DataHash: 区块Hash数值
         :type DataHash: str
-        :param BlockId: 区块ID，与区块编号一直
+        :param BlockId: 区块ID，与区块编号一致
         :type BlockId: int
-        :param PreHash: 前一个区块Hash（未使用）,与区块Hash数值一直
+        :param PreHash: 前一个区块Hash（未使用）,与区块Hash数值一致
         :type PreHash: str
         :param TxCount: 区块内的交易数量
         :type TxCount: int

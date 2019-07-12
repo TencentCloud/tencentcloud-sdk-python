@@ -783,8 +783,18 @@ class DescribeImagesRequest(AbstractModel):
         :type ImageIds: list of str
         :param Filters: 过滤条件，每次请求的`Filters`的上限为0，`Filters.Values`的上限为5。参数不可以同时指定`ImageIds`和`Filters`。详细的过滤条件如下：
 <li> image-id - String - 是否必填： 否 - （过滤条件）按照镜像ID进行过滤</li>
-<li> image-type - String - 是否必填： 否 - （过滤条件）按照镜像类型进行过滤。取值范围：详见[镜像类型](https://cloud.tencent.com/document/product/213/9452#image_type)。</li>
-<li> image-state - String - 是否必填： 否 - （过滤条件）按照镜像状态进行过滤。取值范围：详见[镜像状态](https://cloud.tencent.com/document/product/213/9452#image_state)。</li>
+<li> image-type - String - 是否必填： 否 - （过滤条件）按照镜像类型进行过滤。取值范围：
+    PRIVATE_IMAGE: 私有镜像 (本帐户创建的镜像) 
+    PUBLIC_IMAGE: 公共镜像 (腾讯云官方镜像)
+    MARKET_IMAGE: 服务市场 (服务市场提供的镜像) 
+   SHARED_IMAGE: 共享镜像(其他账户共享给本帐户的镜像) 。</li>
+<li> image-state - String - 是否必填： 否 - （过滤条件）按照镜像状态进行过滤。取值范围：
+    CREATING: 创建中
+    NORMAL: 正常
+    USING: 使用中
+    SYNCING: 同步中
+    IMPORTING: 导入中
+    DELETING: 删除中。</li>
         :type Filters: list of Filter
         :param Offset: 偏移量，默认为0。关于Offset详见[API简介](/document/api/213/568#.E8.BE.93.E5.85.A5.E5.8F.82.E6.95.B0.E4.B8.8E.E8.BF.94.E5.9B.9E.E5.8F.82.E6.95.B0.E9.87.8A.E4.B9.89)。
         :type Offset: int
@@ -3444,7 +3454,7 @@ class OsVersion(AbstractModel):
 
 
 class Placement(AbstractModel):
-    """描述了实例的抽象位置，包括其所在的可用区，所属的项目，宿主机等（仅CDH产品可用）
+    """描述了实例的抽象位置，包括其所在的可用区，所属的项目，宿主机（仅CDH产品可用），母机ip等
 
     """
 
@@ -3456,16 +3466,20 @@ class Placement(AbstractModel):
         :type ProjectId: int
         :param HostIds: 实例所属的专用宿主机ID列表。如果您有购买专用宿主机并且指定了该参数，则您购买的实例就会随机的部署在这些专用宿主机上。
         :type HostIds: list of str
+        :param HostIps: 指定母机ip生产子机
+        :type HostIps: list of str
         """
         self.Zone = None
         self.ProjectId = None
         self.HostIds = None
+        self.HostIps = None
 
 
     def _deserialize(self, params):
         self.Zone = params.get("Zone")
         self.ProjectId = params.get("ProjectId")
         self.HostIds = params.get("HostIds")
+        self.HostIps = params.get("HostIps")
 
 
 class Price(AbstractModel):
@@ -3504,14 +3518,18 @@ class RebootInstancesRequest(AbstractModel):
         :type InstanceIds: list of str
         :param ForceReboot: 是否在正常重启失败后选择强制重启实例。取值范围：<br><li>TRUE：表示在正常重启失败后进行强制重启<br><li>FALSE：表示在正常重启失败后不进行强制重启<br><br>默认取值：FALSE。
         :type ForceReboot: bool
+        :param StopType: 关机类型。取值范围：<br><li>SOFT：表示软关机<br><li>HARD：表示硬关机<br><li>SOFT_FIRST：表示优先软关机，失败再执行硬关机<br><br>默认取值：SOFT。
+        :type StopType: str
         """
         self.InstanceIds = None
         self.ForceReboot = None
+        self.StopType = None
 
 
     def _deserialize(self, params):
         self.InstanceIds = params.get("InstanceIds")
         self.ForceReboot = params.get("ForceReboot")
+        self.StopType = params.get("StopType")
 
 
 class RebootInstancesResponse(AbstractModel):
@@ -3758,7 +3776,9 @@ class ResetInstancesPasswordRequest(AbstractModel):
         """
         :param InstanceIds: 一个或多个待操作的实例ID。可通过[`DescribeInstances`](https://cloud.tencent.com/document/api/213/15728) API返回值中的`InstanceId`获取。每次请求允许操作的实例数量上限是100。
         :type InstanceIds: list of str
-        :param Password: 实例登录密码。不同操作系统类型密码复杂度限制不一样，具体如下：<br><li>`Linux`实例密码必须8到16位，至少包括两项`[a-z，A-Z]、[0-9]`和`[( ) ~ ~ ! @ # $ % ^ & * - + = _ | { } [ ] : ; ' < > , . ? /]`中的符号。密码不允许以`/`符号开头。<br><li>`Windows`实例密码必须12到16位，至少包括三项`[a-z]，[A-Z]，[0-9]`和`[( ) ~ ~ ! @ # $ % ^ & * - + = _ | { } [ ] : ; ' < > , . ? /]`中的符号。密码不允许以`/`符号开头。<br><li>如果实例即包含`Linux`实例又包含`Windows`实例，则密码复杂度限制按照`Windows`实例的限制。
+        :param Password: 实例登录密码。不同操作系统类型密码复杂度限制不一样，具体如下：
+Linux实例密码必须8-30位，推荐使用12位以上密码，不能以“/”开头，至少包含以下字符中的三种不同字符，字符种类：<br><li>小写字母：[a-z]<br><li>大写字母：[A-Z]<br><li>数字：0-9<br><li>特殊字符： ()\`~!@#$%^&\*-+=\_|{}[]:;'<>,.?/:
+Windows实例密码必须12~30位，不能以“/”开头且不包括用户名，至少包含以下字符中的三种不同字符<br><li>小写字母：[a-z]<br><li>大写字母：[A-Z]<br><li>数字： 0-9<br><li>特殊字符：()\`~!@#$%^&\*-+=\_|{}[]:;' <>,.?/:<br><li>如果实例即包含`Linux`实例又包含`Windows`实例，则密码复杂度限制按照`Windows`实例的限制。
         :type Password: str
         :param UserName: 待重置密码的实例操作系统用户名。不得超过64个字符。
         :type UserName: str
@@ -4425,6 +4445,43 @@ class ZoneInfo(AbstractModel):
     def __init__(self):
         """
         :param Zone: 可用区名称，例如，ap-guangzhou-3
+全网可用区名称如下：
+<li> ap-chongqing-1 </li>
+<li> ap-seoul-1 </li>
+<li> ap-chengdu-1 </li>
+<li> ap-chengdu-2 </li>
+<li> ap-hongkong-1 </li>
+<li> ap-hongkong-2 </li>
+<li> ap-shenzhen-fsi-1 </li>
+<li> ap-shenzhen-fsi-2 </li>
+<li> ap-shenzhen-fsi-3 </li>
+<li> ap-guangzhou-1（售罄）</li>
+<li> ap-guangzhou-2（售罄）</li>
+<li> ap-guangzhou-3 </li>
+<li> ap-guangzhou-4 </li>
+<li> ap-tokyo-1 </li>
+<li> ap-singapore-1 </li>
+<li> ap-shanghai-fsi-1 </li>
+<li> ap-shanghai-fsi-2 </li>
+<li> ap-shanghai-fsi-3 </li>
+<li> ap-bangkok-1 </li>
+<li> ap-shanghai-1（售罄） </li>
+<li> ap-shanghai-2 </li>
+<li> ap-shanghai-3 </li>
+<li> ap-shanghai-4 </li>
+<li> ap-mumbai-1 </li>
+<li> ap-mumbai-2 </li>
+<li> eu-moscow-1 </li>
+<li> ap-beijing-1 </li>
+<li> ap-beijing-2 </li>
+<li> ap-beijing-3 </li>
+<li> ap-beijing-4 </li>
+<li> na-siliconvalley-1 </li>
+<li> na-siliconvalley-2 </li>
+<li> eu-frankfurt-1 </li>
+<li> na-toronto-1 </li>
+<li> na-ashburn-1 </li>
+<li> na-ashburn-2 </li>
         :type Zone: str
         :param ZoneName: 可用区描述，例如，广州三区
         :type ZoneName: str

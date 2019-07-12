@@ -25,6 +25,34 @@ class GmeClient(AbstractClient):
     _endpoint = 'gme.tencentcloudapi.com'
 
 
+    def DescribeFilterResult(self, request):
+        """根据应用ID和文件ID查询识别结果
+
+        :param request: 调用DescribeFilterResult所需参数的结构体。
+        :type request: :class:`tencentcloud.gme.v20180711.models.DescribeFilterResultRequest`
+        :rtype: :class:`tencentcloud.gme.v20180711.models.DescribeFilterResultResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeFilterResult", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeFilterResultResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeFilterResultList(self, request):
         """根据日期查询识别结果列表
 

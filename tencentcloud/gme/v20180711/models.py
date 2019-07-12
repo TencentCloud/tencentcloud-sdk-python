@@ -23,7 +23,7 @@ class DescribeFilterResultListRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param BizId: 应用id
+        :param BizId: 应用ID
         :type BizId: int
         :param StartDate: 开始时间，格式为 年-月-日，如: 2018-07-11
         :type StartDate: str
@@ -81,6 +81,51 @@ class DescribeFilterResultListResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeFilterResultRequest(AbstractModel):
+    """DescribeFilterResult请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param BizId: 应用ID
+        :type BizId: int
+        :param FileId: 文件ID
+        :type FileId: str
+        """
+        self.BizId = None
+        self.FileId = None
+
+
+    def _deserialize(self, params):
+        self.BizId = params.get("BizId")
+        self.FileId = params.get("FileId")
+
+
+class DescribeFilterResultResponse(AbstractModel):
+    """DescribeFilterResult返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Data: 过滤结果
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Data: :class:`tencentcloud.gme.v20180711.models.VoiceFilterInfo`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Data = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self.Data = VoiceFilterInfo()
+            self.Data._deserialize(params.get("Data"))
+        self.RequestId = params.get("RequestId")
+
+
 class VoiceFilter(AbstractModel):
     """过滤结果
 
@@ -88,7 +133,7 @@ class VoiceFilter(AbstractModel):
 
     def __init__(self):
         """
-        :param Type: 过滤类型，1：政治，2：色情，3：涉毒
+        :param Type: 过滤类型，1：政治，2：色情，3：涉毒，4：谩骂
 注意：此字段可能返回 null，表示取不到有效值。
         :type Type: int
         :param Word: 过滤命中关键词
@@ -159,17 +204,17 @@ class VoiceFilterRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param BizId: 应用id
+        :param BizId: 应用ID，创建应用得到的AppID: https://console.cloud.tencent.com/gamegme
         :type BizId: int
-        :param FileId: 文件id，表示文件唯一id
+        :param FileId: 文件ID，表示文件唯一id
         :type FileId: str
         :param FileName: 文件名
         :type FileName: str
-        :param FileUrl: 文件内容url，FileUrl和FileContent二选一
+        :param FileUrl: 文件url，urlencode编码，FileUrl和FileContent二选一
         :type FileUrl: str
         :param FileContent: 文件内容，base64编码，FileUrl和FileContent二选一
         :type FileContent: str
-        :param OpenId: 用户id
+        :param OpenId: 用户ID
         :type OpenId: str
         """
         self.BizId = None

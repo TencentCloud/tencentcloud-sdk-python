@@ -225,7 +225,7 @@ class TextToVoiceRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Text: 合成语音的源文本，按UTF-8编码统一计算，中文最大支持350字符，英文最大支持500字符
+        :param Text: 合成语音的源文本，按UTF-8编码统一计算，中文最大支持350字符，英文最大支持500字符。包含空格等字符时需要url encode再传输。
         :type Text: str
         :param SessionId: 一次请求对应一个SessionId，会原样返回，建议传入类似于uuid的字符串防止重复。
         :type SessionId: str
@@ -279,7 +279,7 @@ class TextToVoiceResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param Audio: base64编码的wav音频数据
+        :param Audio: base64编码的wav/mp3音频数据
         :type Audio: str
         :param SessionId: 一次请求对应一个SessionId
         :type SessionId: str

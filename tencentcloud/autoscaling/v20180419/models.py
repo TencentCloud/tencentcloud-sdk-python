@@ -209,6 +209,8 @@ class AutoScalingGroup(AbstractModel):
         :type InActivityStatus: str
         :param Tags: 伸缩组标签列表
         :type Tags: list of Tag
+        :param ServiceSettings: 服务设置
+        :type ServiceSettings: :class:`tencentcloud.autoscaling.v20180419.models.ServiceSettings`
         """
         self.AutoScalingGroupId = None
         self.AutoScalingGroupName = None
@@ -233,6 +235,7 @@ class AutoScalingGroup(AbstractModel):
         self.RetryPolicy = None
         self.InActivityStatus = None
         self.Tags = None
+        self.ServiceSettings = None
 
 
     def _deserialize(self, params):
@@ -269,6 +272,9 @@ class AutoScalingGroup(AbstractModel):
                 obj = Tag()
                 obj._deserialize(item)
                 self.Tags.append(obj)
+        if params.get("ServiceSettings") is not None:
+            self.ServiceSettings = ServiceSettings()
+            self.ServiceSettings._deserialize(params.get("ServiceSettings"))
 
 
 class AutoScalingGroupAbstract(AbstractModel):
@@ -402,9 +408,10 @@ class CreateAutoScalingGroupRequest(AbstractModel):
         :type TerminationPolicies: list of str
         :param Zones: 可用区列表，基础网络场景下必须指定可用区
         :type Zones: list of str
-        :param RetryPolicy: 重试策略，取值包括 IMMEDIATE_RETRY 和 INCREMENTAL_INTERVALS，默认取值为 IMMEDIATE_RETRY。
+        :param RetryPolicy: 重试策略，取值包括 IMMEDIATE_RETRY、 INCREMENTAL_INTERVALS、NO_RETRY，默认取值为 IMMEDIATE_RETRY。
 <br><li> IMMEDIATE_RETRY，立即重试，在较短时间内快速重试，连续失败超过一定次数（5次）后不再重试。
 <br><li> INCREMENTAL_INTERVALS，间隔递增重试，随着连续失败次数的增加，重试间隔逐渐增大，重试间隔从秒级到1天不等。
+<br><li> NO_RETRY，不进行重试，直到再次收到用户调用或者告警信息后才会重试。
         :type RetryPolicy: str
         :param ZonesCheckPolicy: 可用区校验策略，取值包括 ALL 和 ANY，默认取值为ANY。
 <br><li> ALL，所有可用区（Zone）或子网（SubnetId）都可用则通过校验，否则校验报错。
@@ -415,6 +422,8 @@ class CreateAutoScalingGroupRequest(AbstractModel):
         :type ZonesCheckPolicy: str
         :param Tags: 标签描述列表。通过指定该参数可以支持绑定标签到伸缩组。同时绑定标签到相应的资源实例，
         :type Tags: list of Tag
+        :param ServiceSettings: 服务设置，包括云监控不健康替换等服务设置。
+        :type ServiceSettings: :class:`tencentcloud.autoscaling.v20180419.models.ServiceSettings`
         """
         self.AutoScalingGroupName = None
         self.LaunchConfigurationId = None
@@ -432,6 +441,7 @@ class CreateAutoScalingGroupRequest(AbstractModel):
         self.RetryPolicy = None
         self.ZonesCheckPolicy = None
         self.Tags = None
+        self.ServiceSettings = None
 
 
     def _deserialize(self, params):
@@ -461,6 +471,9 @@ class CreateAutoScalingGroupRequest(AbstractModel):
                 obj = Tag()
                 obj._deserialize(item)
                 self.Tags.append(obj)
+        if params.get("ServiceSettings") is not None:
+            self.ServiceSettings = ServiceSettings()
+            self.ServiceSettings._deserialize(params.get("ServiceSettings"))
 
 
 class CreateAutoScalingGroupResponse(AbstractModel):
@@ -532,6 +545,8 @@ class CreateLaunchConfigurationRequest(AbstractModel):
         :type InstanceTypesCheckPolicy: str
         :param InstanceTags: 标签列表。通过指定该参数，可以为扩容的实例绑定标签。最多支持指定10个标签。
         :type InstanceTags: list of InstanceTag
+        :param CamRoleName: CAM角色名称。可通过DescribeRoleList接口返回值中的roleName获取。
+        :type CamRoleName: str
         """
         self.LaunchConfigurationName = None
         self.ImageId = None
@@ -549,6 +564,7 @@ class CreateLaunchConfigurationRequest(AbstractModel):
         self.InstanceTypes = None
         self.InstanceTypesCheckPolicy = None
         self.InstanceTags = None
+        self.CamRoleName = None
 
 
     def _deserialize(self, params):
@@ -588,6 +604,7 @@ class CreateLaunchConfigurationRequest(AbstractModel):
                 obj = InstanceTag()
                 obj._deserialize(item)
                 self.InstanceTags.append(obj)
+        self.CamRoleName = params.get("CamRoleName")
 
 
 class CreateLaunchConfigurationResponse(AbstractModel):
@@ -2283,6 +2300,8 @@ class LaunchConfiguration(AbstractModel):
         :type VersionNumber: int
         :param UpdatedTime: 更新时间
         :type UpdatedTime: str
+        :param CamRoleName: CAM角色名称。可通过DescribeRoleList接口返回值中的roleName获取。
+        :type CamRoleName: str
         """
         self.ProjectId = None
         self.LaunchConfigurationId = None
@@ -2305,6 +2324,7 @@ class LaunchConfiguration(AbstractModel):
         self.InstanceTags = None
         self.VersionNumber = None
         self.UpdatedTime = None
+        self.CamRoleName = None
 
 
     def _deserialize(self, params):
@@ -2354,6 +2374,7 @@ class LaunchConfiguration(AbstractModel):
                 self.InstanceTags.append(obj)
         self.VersionNumber = params.get("VersionNumber")
         self.UpdatedTime = params.get("UpdatedTime")
+        self.CamRoleName = params.get("CamRoleName")
 
 
 class LifecycleHook(AbstractModel):
@@ -2521,9 +2542,10 @@ class ModifyAutoScalingGroupRequest(AbstractModel):
         :type VpcId: str
         :param Zones: 可用区列表
         :type Zones: list of str
-        :param RetryPolicy: 重试策略，取值包括 IMMEDIATE_RETRY 和 INCREMENTAL_INTERVALS，默认取值为 IMMEDIATE_RETRY。
+        :param RetryPolicy: 重试策略，取值包括 IMMEDIATE_RETRY、 INCREMENTAL_INTERVALS、NO_RETRY，默认取值为 IMMEDIATE_RETRY。
 <br><li> IMMEDIATE_RETRY，立即重试，在较短时间内快速重试，连续失败超过一定次数（5次）后不再重试。
 <br><li> INCREMENTAL_INTERVALS，间隔递增重试，随着连续失败次数的增加，重试间隔逐渐增大，重试间隔从秒级到1天不等。
+<br><li> NO_RETRY，不进行重试，直到再次收到用户调用或者告警信息后才会重试。
         :type RetryPolicy: str
         :param ZonesCheckPolicy: 可用区校验策略，取值包括 ALL 和 ANY，默认取值为ANY。在伸缩组实际变更资源相关字段时（启动配置、可用区、子网）发挥作用。
 <br><li> ALL，所有可用区（Zone）或子网（SubnetId）都可用则通过校验，否则校验报错。
@@ -2532,6 +2554,8 @@ class ModifyAutoScalingGroupRequest(AbstractModel):
 可用区或子网不可用的常见原因包括该可用区CVM实例类型售罄、该可用区CBS云盘售罄、该可用区配额不足、该子网IP不足等。
 如果 Zones/SubnetIds 中可用区或者子网不存在，则无论 ZonesCheckPolicy 采用何种取值，都会校验报错。
         :type ZonesCheckPolicy: str
+        :param ServiceSettings: 服务设置，包括云监控不健康替换等服务设置。
+        :type ServiceSettings: :class:`tencentcloud.autoscaling.v20180419.models.ServiceSettings`
         """
         self.AutoScalingGroupId = None
         self.AutoScalingGroupName = None
@@ -2547,6 +2571,7 @@ class ModifyAutoScalingGroupRequest(AbstractModel):
         self.Zones = None
         self.RetryPolicy = None
         self.ZonesCheckPolicy = None
+        self.ServiceSettings = None
 
 
     def _deserialize(self, params):
@@ -2564,6 +2589,9 @@ class ModifyAutoScalingGroupRequest(AbstractModel):
         self.Zones = params.get("Zones")
         self.RetryPolicy = params.get("RetryPolicy")
         self.ZonesCheckPolicy = params.get("ZonesCheckPolicy")
+        if params.get("ServiceSettings") is not None:
+            self.ServiceSettings = ServiceSettings()
+            self.ServiceSettings._deserialize(params.get("ServiceSettings"))
 
 
 class ModifyAutoScalingGroupResponse(AbstractModel):
@@ -3167,6 +3195,23 @@ class ScheduledAction(AbstractModel):
         self.CreatedTime = params.get("CreatedTime")
 
 
+class ServiceSettings(AbstractModel):
+    """服务设置
+
+    """
+
+    def __init__(self):
+        """
+        :param ReplaceMonitorUnhealthy: 开启监控不健康替换服务。若开启则对于云监控标记为不健康的实例，弹性伸缩服务会进行替换。若不指定该参数，则默认为 False。
+        :type ReplaceMonitorUnhealthy: bool
+        """
+        self.ReplaceMonitorUnhealthy = None
+
+
+    def _deserialize(self, params):
+        self.ReplaceMonitorUnhealthy = params.get("ReplaceMonitorUnhealthy")
+
+
 class SetInstancesProtectionRequest(AbstractModel):
     """SetInstancesProtection请求参数结构体
 
@@ -3347,6 +3392,8 @@ class UpgradeLaunchConfigurationRequest(AbstractModel):
         :type UserData: str
         :param InstanceTags: 标签列表。通过指定该参数，可以为扩容的实例绑定标签。最多支持指定10个标签。
         :type InstanceTags: list of InstanceTag
+        :param CamRoleName: CAM角色名称。可通过DescribeRoleList接口返回值中的roleName获取。
+        :type CamRoleName: str
         """
         self.LaunchConfigurationId = None
         self.ImageId = None
@@ -3364,6 +3411,7 @@ class UpgradeLaunchConfigurationRequest(AbstractModel):
         self.SystemDisk = None
         self.UserData = None
         self.InstanceTags = None
+        self.CamRoleName = None
 
 
     def _deserialize(self, params):
@@ -3403,6 +3451,7 @@ class UpgradeLaunchConfigurationRequest(AbstractModel):
                 obj = InstanceTag()
                 obj._deserialize(item)
                 self.InstanceTags.append(obj)
+        self.CamRoleName = params.get("CamRoleName")
 
 
 class UpgradeLaunchConfigurationResponse(AbstractModel):

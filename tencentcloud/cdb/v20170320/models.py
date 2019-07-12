@@ -841,9 +841,9 @@ class CreateParamTemplateRequest(AbstractModel):
         :type Name: str
         :param Description: 参数模板描述。
         :type Description: str
-        :param EngineVersion: mysql版本。
+        :param EngineVersion: MySQL 版本号。
         :type EngineVersion: str
-        :param TemplateId: 源参数模板ID。
+        :param TemplateId: 源参数模板 ID。
         :type TemplateId: int
         :param ParamList: 参数列表。
         :type ParamList: list of Parameter
@@ -875,7 +875,7 @@ class CreateParamTemplateResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param TemplateId: 参数模板ID。
+        :param TemplateId: 参数模板 ID。
         :type TemplateId: int
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -1828,7 +1828,7 @@ class DescribeDBInstancesRequest(AbstractModel):
         :type Offset: int
         :param Limit: 单次请求返回的数量，默认值为 20，最大值为 2000。
         :type Limit: int
-        :param SecurityGroupId: 安全组 ID。
+        :param SecurityGroupId: 安全组 ID。当使用安全组 ID 为过滤条件时，需指定 WithSecurityGroup 参数为 1。
         :type SecurityGroupId: str
         :param PayTypes: 付费类型，可取值：0 - 包年包月，1 - 小时计费。
         :type PayTypes: list of int non-negative
@@ -1850,7 +1850,7 @@ class DescribeDBInstancesRequest(AbstractModel):
         :type OrderBy: str
         :param OrderDirection: 返回结果集排序方式，目前支持："ASC" 或者 "DESC"。
         :type OrderDirection: str
-        :param WithSecurityGroup: 是否包含安全组详细信息，可取值：0 - 不包含，1 - 包含。
+        :param WithSecurityGroup: 是否以安全组 ID 为过滤条件。
         :type WithSecurityGroup: int
         :param WithExCluster: 是否包含独享集群详细信息，可取值：0 - 不包含，1 - 包含。
         :type WithExCluster: int
@@ -4408,6 +4408,40 @@ class ModifyTimeWindowRequest(AbstractModel):
 
 class ModifyTimeWindowResponse(AbstractModel):
     """ModifyTimeWindow返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class OfflineIsolatedInstancesRequest(AbstractModel):
+    """OfflineIsolatedInstances请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param InstanceIds: 实例 ID，格式如：cdb-c1nl9rpv，与云数据库控制台页面中显示的实例 ID 相同。
+        :type InstanceIds: list of str
+        """
+        self.InstanceIds = None
+
+
+    def _deserialize(self, params):
+        self.InstanceIds = params.get("InstanceIds")
+
+
+class OfflineIsolatedInstancesResponse(AbstractModel):
+    """OfflineIsolatedInstances返回参数结构体
 
     """
 

@@ -2661,34 +2661,6 @@ class LiveClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def SetLiveWatermarkStatus(self, request):
-        """设置水印是否启用
-
-        :param request: 调用SetLiveWatermarkStatus所需参数的结构体。
-        :type request: :class:`tencentcloud.live.v20180801.models.SetLiveWatermarkStatusRequest`
-        :rtype: :class:`tencentcloud.live.v20180801.models.SetLiveWatermarkStatusResponse`
-
-        """
-        try:
-            params = request._serialize()
-            body = self.call("SetLiveWatermarkStatus", params)
-            response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.SetLiveWatermarkStatusResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(e.message, e.message)
-
-
     def StopLiveRecord(self, request):
         """说明：录制后的文件存放于点播平台。用户如需使用录制功能，需首先自行开通点播账号并确保账号可用。录制文件存放后，相关费用（含存储以及下行播放流量）按照点播平台计费方式收取，请参考对应文档。
 

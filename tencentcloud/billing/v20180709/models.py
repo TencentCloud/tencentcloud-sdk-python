@@ -496,7 +496,7 @@ class DescribeBillDetailRequest(AbstractModel):
         :type Offset: int
         :param Limit: 数量，最大值为100
         :type Limit: int
-        :param PeriodType: 周期类型，byPayTime按扣费周期/byUsedTime按计费周期。需要与费用中心该月份账单的周期保持一致。
+        :param PeriodType: 周期类型，byPayTime按扣费周期/byUsedTime按计费周期。需要与费用中心该月份账单的周期保持一致。您可前往账单概览页面顶部查看确认您的账单统计周期类型。
         :type PeriodType: str
         :param Month: 月份，格式为yyyy-mm，Month和BeginTime&EndTime必传一个，如果有传BeginTime&EndTime则Month字段无效。不能早于开通账单2.0的月份，最多可拉取24个月内的数据。
         :type Month: str
@@ -569,7 +569,7 @@ class DescribeBillResourceSummaryRequest(AbstractModel):
         :type Offset: int
         :param Limit: 数量，最大值为1000
         :type Limit: int
-        :param PeriodType: 周期类型，byUsedTime按计费周期/byPayTime按扣费周期。需要与费用中心该月份账单的周期保持一致。
+        :param PeriodType: 周期类型，byUsedTime按计费周期/byPayTime按扣费周期。需要与费用中心该月份账单的周期保持一致。您可前往账单概览页面顶部查看确认您的账单统计周期类型。
         :type PeriodType: str
         :param Month: 月份，格式为yyyy-mm。不能早于开通账单2.0的月份，最多可拉取24个月内的数据。
         :type Month: str
