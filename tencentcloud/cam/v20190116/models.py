@@ -251,6 +251,48 @@ class AttachPolicyInfo(AbstractModel):
         self.PolicyType = params.get("PolicyType")
 
 
+class AttachRolePolicyRequest(AbstractModel):
+    """AttachRolePolicy请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param PolicyId: 策略ID
+        :type PolicyId: int
+        :param AttachRoleId: 角色ID，用于指定角色，入参 AttachRoleId 与 AttachRoleName 二选一
+        :type AttachRoleId: str
+        :param AttachRoleName: 角色名称，用于指定角色，入参 AttachRoleId 与 AttachRoleName 二选一
+        :type AttachRoleName: str
+        """
+        self.PolicyId = None
+        self.AttachRoleId = None
+        self.AttachRoleName = None
+
+
+    def _deserialize(self, params):
+        self.PolicyId = params.get("PolicyId")
+        self.AttachRoleId = params.get("AttachRoleId")
+        self.AttachRoleName = params.get("AttachRoleName")
+
+
+class AttachRolePolicyResponse(AbstractModel):
+    """AttachRolePolicy返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class AttachUserPolicyRequest(AbstractModel):
     """AttachUserPolicy请求参数结构体
 
@@ -274,6 +316,74 @@ class AttachUserPolicyRequest(AbstractModel):
 
 class AttachUserPolicyResponse(AbstractModel):
     """AttachUserPolicy返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class AttachedPolicyOfRole(AbstractModel):
+    """角色关联的策略信息
+
+    """
+
+    def __init__(self):
+        """
+        :param PolicyId: 策略ID
+        :type PolicyId: int
+        :param PolicyName: 策略名称
+        :type PolicyName: str
+        :param AddTime: 绑定时间
+        :type AddTime: str
+        :param PolicyType: 策略类型，User表示自定义策略，QCS表示预设策略
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PolicyType: str
+        :param CreateMode: 策略创建方式，1表示按产品功能或项目权限创建，其他表示按策略语法创建
+        :type CreateMode: int
+        """
+        self.PolicyId = None
+        self.PolicyName = None
+        self.AddTime = None
+        self.PolicyType = None
+        self.CreateMode = None
+
+
+    def _deserialize(self, params):
+        self.PolicyId = params.get("PolicyId")
+        self.PolicyName = params.get("PolicyName")
+        self.AddTime = params.get("AddTime")
+        self.PolicyType = params.get("PolicyType")
+        self.CreateMode = params.get("CreateMode")
+
+
+class ConsumeCustomMFATokenRequest(AbstractModel):
+    """ConsumeCustomMFAToken请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param MFAToken: 自定义多因子验证Token
+        :type MFAToken: str
+        """
+        self.MFAToken = None
+
+
+    def _deserialize(self, params):
+        self.MFAToken = params.get("MFAToken")
+
+
+class ConsumeCustomMFATokenResponse(AbstractModel):
+    """ConsumeCustomMFAToken返回参数结构体
 
     """
 
@@ -374,6 +484,57 @@ class CreatePolicyResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.PolicyId = params.get("PolicyId")
+        self.RequestId = params.get("RequestId")
+
+
+class CreateRoleRequest(AbstractModel):
+    """CreateRole请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RoleName: 角色名称
+        :type RoleName: str
+        :param PolicyDocument: 策略文档
+        :type PolicyDocument: str
+        :param Description: 角色描述
+        :type Description: str
+        :param ConsoleLogin: 是否允许登录
+        :type ConsoleLogin: int
+        """
+        self.RoleName = None
+        self.PolicyDocument = None
+        self.Description = None
+        self.ConsoleLogin = None
+
+
+    def _deserialize(self, params):
+        self.RoleName = params.get("RoleName")
+        self.PolicyDocument = params.get("PolicyDocument")
+        self.Description = params.get("Description")
+        self.ConsoleLogin = params.get("ConsoleLogin")
+
+
+class CreateRoleResponse(AbstractModel):
+    """CreateRole返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RoleId: 角色ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RoleId: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RoleId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RoleId = params.get("RoleId")
         self.RequestId = params.get("RequestId")
 
 
@@ -491,6 +652,44 @@ class DeletePolicyResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DeleteRoleRequest(AbstractModel):
+    """DeleteRole请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RoleId: 角色ID，用于指定角色，入参 RoleId 与 RoleName 二选一
+        :type RoleId: str
+        :param RoleName: 角色名称，用于指定角色，入参 RoleId 与 RoleName 二选一
+        :type RoleName: str
+        """
+        self.RoleId = None
+        self.RoleName = None
+
+
+    def _deserialize(self, params):
+        self.RoleId = params.get("RoleId")
+        self.RoleName = params.get("RoleName")
+
+
+class DeleteRoleResponse(AbstractModel):
+    """DeleteRole返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class DeleteSAMLProviderRequest(AbstractModel):
     """DeleteSAMLProvider请求参数结构体
 
@@ -559,6 +758,58 @@ class DeleteUserResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeRoleListRequest(AbstractModel):
+    """DescribeRoleList请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Page: 页码，从1开始
+        :type Page: int
+        :param Rp: 每页行数，不能大于200
+        :type Rp: int
+        """
+        self.Page = None
+        self.Rp = None
+
+
+    def _deserialize(self, params):
+        self.Page = params.get("Page")
+        self.Rp = params.get("Rp")
+
+
+class DescribeRoleListResponse(AbstractModel):
+    """DescribeRoleList返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param List: 角色详情列表。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type List: list of RoleInfo
+        :param TotalNum: 角色总数
+        :type TotalNum: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.List = None
+        self.TotalNum = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("List") is not None:
+            self.List = []
+            for item in params.get("List"):
+                obj = RoleInfo()
+                obj._deserialize(item)
+                self.List.append(obj)
+        self.TotalNum = params.get("TotalNum")
+        self.RequestId = params.get("RequestId")
+
+
 class DetachGroupPolicyRequest(AbstractModel):
     """DetachGroupPolicy请求参数结构体
 
@@ -582,6 +833,48 @@ class DetachGroupPolicyRequest(AbstractModel):
 
 class DetachGroupPolicyResponse(AbstractModel):
     """DetachGroupPolicy返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class DetachRolePolicyRequest(AbstractModel):
+    """DetachRolePolicy请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param PolicyId: 策略ID
+        :type PolicyId: int
+        :param DetachRoleId: 角色ID，用于指定角色，入参 AttachRoleId 与 AttachRoleName 二选一
+        :type DetachRoleId: str
+        :param DetachRoleName: 角色名称，用于指定角色，入参 AttachRoleId 与 AttachRoleName 二选一
+        :type DetachRoleName: str
+        """
+        self.PolicyId = None
+        self.DetachRoleId = None
+        self.DetachRoleName = None
+
+
+    def _deserialize(self, params):
+        self.PolicyId = params.get("PolicyId")
+        self.DetachRoleId = params.get("DetachRoleId")
+        self.DetachRoleName = params.get("DetachRoleName")
+
+
+class DetachRolePolicyResponse(AbstractModel):
+    """DetachRolePolicy返回参数结构体
 
     """
 
@@ -632,6 +925,44 @@ class DetachUserPolicyResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class GetCustomMFATokenInfoRequest(AbstractModel):
+    """GetCustomMFATokenInfo请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param MFAToken: 自定义多因子验证Token
+        :type MFAToken: str
+        """
+        self.MFAToken = None
+
+
+    def _deserialize(self, params):
+        self.MFAToken = params.get("MFAToken")
+
+
+class GetCustomMFATokenInfoResponse(AbstractModel):
+    """GetCustomMFATokenInfo返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Uin: 自定义多因子验证Token对应的帐号Id
+        :type Uin: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Uin = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Uin = params.get("Uin")
         self.RequestId = params.get("RequestId")
 
 
@@ -759,6 +1090,50 @@ class GetPolicyResponse(AbstractModel):
         self.AddTime = params.get("AddTime")
         self.UpdateTime = params.get("UpdateTime")
         self.PolicyDocument = params.get("PolicyDocument")
+        self.RequestId = params.get("RequestId")
+
+
+class GetRoleRequest(AbstractModel):
+    """GetRole请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RoleId: 角色 ID，用于指定角色，入参 RoleId 与 RoleName 二选一
+        :type RoleId: str
+        :param RoleName: 角色名，用于指定角色，入参 RoleId 与 RoleName 二选一
+        :type RoleName: str
+        """
+        self.RoleId = None
+        self.RoleName = None
+
+
+    def _deserialize(self, params):
+        self.RoleId = params.get("RoleId")
+        self.RoleName = params.get("RoleName")
+
+
+class GetRoleResponse(AbstractModel):
+    """GetRole返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RoleInfo: 角色详情
+        :type RoleInfo: :class:`tencentcloud.cam.v20190116.models.RoleInfo`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RoleInfo = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("RoleInfo") is not None:
+            self.RoleInfo = RoleInfo()
+            self.RoleInfo._deserialize(params.get("RoleInfo"))
         self.RequestId = params.get("RequestId")
 
 
@@ -1041,6 +1416,69 @@ class ListAttachedGroupPoliciesResponse(AbstractModel):
                 obj = AttachPolicyInfo()
                 obj._deserialize(item)
                 self.List.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class ListAttachedRolePoliciesRequest(AbstractModel):
+    """ListAttachedRolePolicies请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Page: 页码，从 1 开始
+        :type Page: int
+        :param Rp: 每页行数，不能大于200
+        :type Rp: int
+        :param RoleId: 角色 ID。用于指定角色，入参 RoleId 与 RoleName 二选一
+        :type RoleId: str
+        :param RoleName: 角色名。用于指定角色，入参 RoleId 与 RoleName 二选一
+        :type RoleName: str
+        :param PolicyType: 按策略类型过滤，User表示仅查询自定义策略，QCS表示仅查询预设策略
+        :type PolicyType: str
+        """
+        self.Page = None
+        self.Rp = None
+        self.RoleId = None
+        self.RoleName = None
+        self.PolicyType = None
+
+
+    def _deserialize(self, params):
+        self.Page = params.get("Page")
+        self.Rp = params.get("Rp")
+        self.RoleId = params.get("RoleId")
+        self.RoleName = params.get("RoleName")
+        self.PolicyType = params.get("PolicyType")
+
+
+class ListAttachedRolePoliciesResponse(AbstractModel):
+    """ListAttachedRolePolicies返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param List: 角色关联的策略列表
+        :type List: list of AttachedPolicyOfRole
+        :param TotalNum: 角色关联的策略总数
+        :type TotalNum: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.List = None
+        self.TotalNum = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("List") is not None:
+            self.List = []
+            for item in params.get("List"):
+                obj = AttachedPolicyOfRole()
+                obj._deserialize(item)
+                self.List.append(obj)
+        self.TotalNum = params.get("TotalNum")
         self.RequestId = params.get("RequestId")
 
 
@@ -1463,6 +1901,68 @@ class ListUsersResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class LoginActionFlag(AbstractModel):
+    """登录和敏感操作flag
+
+    """
+
+    def __init__(self):
+        """
+        :param Phone: 手机
+        :type Phone: int
+        :param Token: 硬token
+        :type Token: int
+        :param Stoken: 软token
+        :type Stoken: int
+        :param Wechat: 微信
+        :type Wechat: int
+        :param Custom: 自定义
+        :type Custom: int
+        """
+        self.Phone = None
+        self.Token = None
+        self.Stoken = None
+        self.Wechat = None
+        self.Custom = None
+
+
+    def _deserialize(self, params):
+        self.Phone = params.get("Phone")
+        self.Token = params.get("Token")
+        self.Stoken = params.get("Stoken")
+        self.Wechat = params.get("Wechat")
+        self.Custom = params.get("Custom")
+
+
+class OffsiteFlag(AbstractModel):
+    """异地登录设置
+
+    """
+
+    def __init__(self):
+        """
+        :param VerifyFlag: 验证标识
+        :type VerifyFlag: int
+        :param NotifyPhone: 手机通知
+        :type NotifyPhone: int
+        :param NotifyEmail: 邮箱通知
+        :type NotifyEmail: int
+        :param NotifyWechat: 微信通知
+        :type NotifyWechat: int
+        """
+        self.VerifyFlag = None
+        self.NotifyPhone = None
+        self.NotifyEmail = None
+        self.NotifyWechat = None
+
+
+    def _deserialize(self, params):
+        self.VerifyFlag = params.get("VerifyFlag")
+        self.NotifyPhone = params.get("NotifyPhone")
+        self.NotifyEmail = params.get("NotifyEmail")
+        self.NotifyWechat = params.get("NotifyWechat")
+
+
 class RemoveUserFromGroupRequest(AbstractModel):
     """RemoveUserFromGroup请求参数结构体
 
@@ -1502,6 +2002,47 @@ class RemoveUserFromGroupResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class RoleInfo(AbstractModel):
+    """角色详细信息
+
+    """
+
+    def __init__(self):
+        """
+        :param RoleId: 角色ID
+        :type RoleId: str
+        :param RoleName: 角色名称
+        :type RoleName: str
+        :param PolicyDocument: 角色的策略文档
+        :type PolicyDocument: str
+        :param Description: 角色描述
+        :type Description: str
+        :param AddTime: 角色的创建时间
+        :type AddTime: str
+        :param UpdateTime: 角色的最近一次时间
+        :type UpdateTime: str
+        :param ConsoleLogin: 角色是否允许登录
+        :type ConsoleLogin: int
+        """
+        self.RoleId = None
+        self.RoleName = None
+        self.PolicyDocument = None
+        self.Description = None
+        self.AddTime = None
+        self.UpdateTime = None
+        self.ConsoleLogin = None
+
+
+    def _deserialize(self, params):
+        self.RoleId = params.get("RoleId")
+        self.RoleName = params.get("RoleName")
+        self.PolicyDocument = params.get("PolicyDocument")
+        self.Description = params.get("Description")
+        self.AddTime = params.get("AddTime")
+        self.UpdateTime = params.get("UpdateTime")
+        self.ConsoleLogin = params.get("ConsoleLogin")
+
+
 class SAMLProviderInfo(AbstractModel):
     """SAML身份提供商
 
@@ -1529,6 +2070,62 @@ class SAMLProviderInfo(AbstractModel):
         self.Description = params.get("Description")
         self.CreateTime = params.get("CreateTime")
         self.ModifyTime = params.get("ModifyTime")
+
+
+class SetFlagRequest(AbstractModel):
+    """SetFlag请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param OpUin: 设置用户的uin
+        :type OpUin: int
+        :param LoginFlag: 登录设置
+        :type LoginFlag: :class:`tencentcloud.cam.v20190116.models.LoginActionFlag`
+        :param ActionFlag: 敏感操作设置
+        :type ActionFlag: :class:`tencentcloud.cam.v20190116.models.LoginActionFlag`
+        :param OffsiteFlag: 异地登录设置
+        :type OffsiteFlag: :class:`tencentcloud.cam.v20190116.models.OffsiteFlag`
+        :param NeedResetMfa: 是否需要充值mfa
+        :type NeedResetMfa: int
+        """
+        self.OpUin = None
+        self.LoginFlag = None
+        self.ActionFlag = None
+        self.OffsiteFlag = None
+        self.NeedResetMfa = None
+
+
+    def _deserialize(self, params):
+        self.OpUin = params.get("OpUin")
+        if params.get("LoginFlag") is not None:
+            self.LoginFlag = LoginActionFlag()
+            self.LoginFlag._deserialize(params.get("LoginFlag"))
+        if params.get("ActionFlag") is not None:
+            self.ActionFlag = LoginActionFlag()
+            self.ActionFlag._deserialize(params.get("ActionFlag"))
+        if params.get("OffsiteFlag") is not None:
+            self.OffsiteFlag = OffsiteFlag()
+            self.OffsiteFlag._deserialize(params.get("OffsiteFlag"))
+        self.NeedResetMfa = params.get("NeedResetMfa")
+
+
+class SetFlagResponse(AbstractModel):
+    """SetFlag返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
 
 
 class StrategyInfo(AbstractModel):
@@ -1624,6 +2221,48 @@ class SubAccountInfo(AbstractModel):
         self.Email = params.get("Email")
 
 
+class UpdateAssumeRolePolicyRequest(AbstractModel):
+    """UpdateAssumeRolePolicy请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param PolicyDocument: 策略文档
+        :type PolicyDocument: str
+        :param RoleId: 角色ID，用于指定角色，入参 RoleId 与 RoleName 二选一
+        :type RoleId: str
+        :param RoleName: 角色名称，用于指定角色，入参 RoleId 与 RoleName 二选一
+        :type RoleName: str
+        """
+        self.PolicyDocument = None
+        self.RoleId = None
+        self.RoleName = None
+
+
+    def _deserialize(self, params):
+        self.PolicyDocument = params.get("PolicyDocument")
+        self.RoleId = params.get("RoleId")
+        self.RoleName = params.get("RoleName")
+
+
+class UpdateAssumeRolePolicyResponse(AbstractModel):
+    """UpdateAssumeRolePolicy返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class UpdateGroupRequest(AbstractModel):
     """UpdateGroup请求参数结构体
 
@@ -1697,6 +2336,48 @@ class UpdatePolicyRequest(AbstractModel):
 
 class UpdatePolicyResponse(AbstractModel):
     """UpdatePolicy返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class UpdateRoleDescriptionRequest(AbstractModel):
+    """UpdateRoleDescription请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Description: 角色描述
+        :type Description: str
+        :param RoleId: 角色ID，用于指定角色，入参 RoleId 与 RoleName 二选一
+        :type RoleId: str
+        :param RoleName: 角色名称，用于指定角色，入参 RoleId 与 RoleName 二选一
+        :type RoleName: str
+        """
+        self.Description = None
+        self.RoleId = None
+        self.RoleName = None
+
+
+    def _deserialize(self, params):
+        self.Description = params.get("Description")
+        self.RoleId = params.get("RoleId")
+        self.RoleName = params.get("RoleName")
+
+
+class UpdateRoleDescriptionResponse(AbstractModel):
+    """UpdateRoleDescription返回参数结构体
 
     """
 

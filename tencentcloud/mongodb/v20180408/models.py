@@ -73,7 +73,7 @@ class CreateDBInstanceHourRequest(AbstractModel):
         :type ReplicateSetNum: int
         :param SecondaryNum: 每个副本集内从节点个数，目前只支持从节点数为2
         :type SecondaryNum: int
-        :param EngineVersion: MongoDB引擎版本，值包括：MONGO_2、MONGO_3_MMAP、MONGO_3_WT 、MONGO_3_ROCKS和MONGO_36_WT
+        :param EngineVersion: MongoDB引擎版本，值包括MONGO_3_WT 、MONGO_3_ROCKS和MONGO_36_WT
         :type EngineVersion: str
         :param Machine: 实例类型，GIO：高IO版；TGIO：高IO万兆
         :type Machine: str
@@ -140,15 +140,19 @@ class CreateDBInstanceHourResponse(AbstractModel):
         """
         :param DealId: 订单ID
         :type DealId: str
+        :param InstanceIds: 创建的实例ID列表
+        :type InstanceIds: list of str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.DealId = None
+        self.InstanceIds = None
         self.RequestId = None
 
 
     def _deserialize(self, params):
         self.DealId = params.get("DealId")
+        self.InstanceIds = params.get("InstanceIds")
         self.RequestId = params.get("RequestId")
 
 
@@ -165,7 +169,7 @@ class CreateDBInstanceRequest(AbstractModel):
         :type Memory: int
         :param Volume: 实例硬盘大小，单位：GB
         :type Volume: int
-        :param MongoVersion: 版本号，当前仅支持 MONGO_3_WT
+        :param MongoVersion: 版本号，当前支持 MONGO_3_WT、MONGO_3_ROCKS、MONGO_36_WT
         :type MongoVersion: str
         :param MachineCode: 机器类型，GIO：高IO版；TGIO：高IO万兆
         :type MachineCode: str
@@ -226,15 +230,19 @@ class CreateDBInstanceResponse(AbstractModel):
         """
         :param DealId: 订单ID
         :type DealId: str
+        :param InstanceIds: 创建的实例ID列表
+        :type InstanceIds: list of str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.DealId = None
+        self.InstanceIds = None
         self.RequestId = None
 
 
     def _deserialize(self, params):
         self.DealId = params.get("DealId")
+        self.InstanceIds = params.get("InstanceIds")
         self.RequestId = params.get("RequestId")
 
 

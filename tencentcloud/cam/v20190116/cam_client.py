@@ -109,6 +109,34 @@ class CamClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def AttachRolePolicy(self, request):
+        """本接口（AttachRolePolicy）用于绑定策略到角色。
+
+        :param request: 调用AttachRolePolicy所需参数的结构体。
+        :type request: :class:`tencentcloud.cam.v20190116.models.AttachRolePolicyRequest`
+        :rtype: :class:`tencentcloud.cam.v20190116.models.AttachRolePolicyResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("AttachRolePolicy", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.AttachRolePolicyResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def AttachUserPolicy(self, request):
         """本接口（AttachUserPolicy）可用于绑定到用户的策略。
 
@@ -123,6 +151,34 @@ class CamClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.AttachUserPolicyResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ConsumeCustomMFAToken(self, request):
+        """验证自定义多因子Token
+
+        :param request: 调用ConsumeCustomMFAToken所需参数的结构体。
+        :type request: :class:`tencentcloud.cam.v20190116.models.ConsumeCustomMFATokenRequest`
+        :rtype: :class:`tencentcloud.cam.v20190116.models.ConsumeCustomMFATokenResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ConsumeCustomMFAToken", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ConsumeCustomMFATokenResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -179,6 +235,34 @@ class CamClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreatePolicyResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def CreateRole(self, request):
+        """本接口（CreateRole）用于创建角色。
+
+        :param request: 调用CreateRole所需参数的结构体。
+        :type request: :class:`tencentcloud.cam.v20190116.models.CreateRoleRequest`
+        :rtype: :class:`tencentcloud.cam.v20190116.models.CreateRoleResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("CreateRole", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateRoleResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -277,6 +361,34 @@ class CamClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DeleteRole(self, request):
+        """本接口（DeleteRole）用于删除指定角色。
+
+        :param request: 调用DeleteRole所需参数的结构体。
+        :type request: :class:`tencentcloud.cam.v20190116.models.DeleteRoleRequest`
+        :rtype: :class:`tencentcloud.cam.v20190116.models.DeleteRoleResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DeleteRole", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DeleteRoleResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DeleteSAMLProvider(self, request):
         """删除SAML身份提供商
 
@@ -333,6 +445,34 @@ class CamClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeRoleList(self, request):
+        """本接口（DescribeRoleList）用于获取账号下的角色列表。
+
+        :param request: 调用DescribeRoleList所需参数的结构体。
+        :type request: :class:`tencentcloud.cam.v20190116.models.DescribeRoleListRequest`
+        :rtype: :class:`tencentcloud.cam.v20190116.models.DescribeRoleListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeRoleList", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeRoleListResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DetachGroupPolicy(self, request):
         """本接口（DetachGroupPolicy）可用于解除绑定到用户组的策略。
 
@@ -361,6 +501,34 @@ class CamClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DetachRolePolicy(self, request):
+        """本接口（DetachRolePolicy）用于解除绑定角色的策略。
+
+        :param request: 调用DetachRolePolicy所需参数的结构体。
+        :type request: :class:`tencentcloud.cam.v20190116.models.DetachRolePolicyRequest`
+        :rtype: :class:`tencentcloud.cam.v20190116.models.DetachRolePolicyResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DetachRolePolicy", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DetachRolePolicyResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DetachUserPolicy(self, request):
         """本接口（DetachUserPolicy）可用于解除绑定到用户的策略。
 
@@ -375,6 +543,34 @@ class CamClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DetachUserPolicyResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def GetCustomMFATokenInfo(self, request):
+        """获取自定义多因子Token关联信息
+
+        :param request: 调用GetCustomMFATokenInfo所需参数的结构体。
+        :type request: :class:`tencentcloud.cam.v20190116.models.GetCustomMFATokenInfoRequest`
+        :rtype: :class:`tencentcloud.cam.v20190116.models.GetCustomMFATokenInfoResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("GetCustomMFATokenInfo", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.GetCustomMFATokenInfoResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -431,6 +627,34 @@ class CamClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.GetPolicyResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def GetRole(self, request):
+        """本接口（GetRole）用于获取指定角色的详细信息。
+
+        :param request: 调用GetRole所需参数的结构体。
+        :type request: :class:`tencentcloud.cam.v20190116.models.GetRoleRequest`
+        :rtype: :class:`tencentcloud.cam.v20190116.models.GetRoleResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("GetRole", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.GetRoleResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -515,6 +739,34 @@ class CamClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ListAttachedGroupPoliciesResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ListAttachedRolePolicies(self, request):
+        """本接口（ListAttachedRolePolicies）用于获取角色绑定的策略列表。
+
+        :param request: 调用ListAttachedRolePolicies所需参数的结构体。
+        :type request: :class:`tencentcloud.cam.v20190116.models.ListAttachedRolePoliciesRequest`
+        :rtype: :class:`tencentcloud.cam.v20190116.models.ListAttachedRolePoliciesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ListAttachedRolePolicies", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ListAttachedRolePoliciesResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -781,6 +1033,62 @@ class CamClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def SetFlag(self, request):
+        """设置用户的登录，敏感操作，异步登录设置
+
+        :param request: 调用SetFlag所需参数的结构体。
+        :type request: :class:`tencentcloud.cam.v20190116.models.SetFlagRequest`
+        :rtype: :class:`tencentcloud.cam.v20190116.models.SetFlagResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("SetFlag", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.SetFlagResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def UpdateAssumeRolePolicy(self, request):
+        """本接口（UpdateAssumeRolePolicy）用于修改角色信任策略的策略文档。
+
+        :param request: 调用UpdateAssumeRolePolicy所需参数的结构体。
+        :type request: :class:`tencentcloud.cam.v20190116.models.UpdateAssumeRolePolicyRequest`
+        :rtype: :class:`tencentcloud.cam.v20190116.models.UpdateAssumeRolePolicyResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("UpdateAssumeRolePolicy", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.UpdateAssumeRolePolicyResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def UpdateGroup(self, request):
         """更新用户组
 
@@ -823,6 +1131,34 @@ class CamClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.UpdatePolicyResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def UpdateRoleDescription(self, request):
+        """本接口（UpdateRoleDescription）用于修改角色的描述信息。
+
+        :param request: 调用UpdateRoleDescription所需参数的结构体。
+        :type request: :class:`tencentcloud.cam.v20190116.models.UpdateRoleDescriptionRequest`
+        :rtype: :class:`tencentcloud.cam.v20190116.models.UpdateRoleDescriptionResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("UpdateRoleDescription", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.UpdateRoleDescriptionResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
