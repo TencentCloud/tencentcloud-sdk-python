@@ -797,8 +797,8 @@ class VodClient(AbstractClient):
 
     def DescribeMediaInfos(self, request):
         """1. 该接口可以获取多个视频的多种信息，包括：
-            1. 基础信息（basicInfo）：包括视频名称、大小、时长、封面图片等。
-            2. 元信息（metaData）：包括视频流信息、音频流信息等。
+            1. 基础信息（basicInfo）：包括视频名称、分类、播放地址、封面图片等。
+            2. 元信息（metaData）：包括大小、时长、视频流信息、音频流信息等。
             3. 转码结果信息（transcodeInfo）：包括该视频转码生成的各种码率的视频的地址、规格、码率、分辨率等。
             4. 转动图结果信息（animatedGraphicsInfo）：对视频转动图（如 gif）后，动图相关信息。
             5. 采样截图信息（sampleSnapshotInfo）：对视频采样截图后，相关截图信息。
@@ -906,6 +906,35 @@ class VodClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeReviewDetailsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeSubAppIds(self, request):
+        """该接口用于获取当前账号有权限的子应用列表，包含主应用。若尚未开通子应用功能，接口将返回
+         FailedOperation。
+
+        :param request: 调用DescribeSubAppIds所需参数的结构体。
+        :type request: :class:`tencentcloud.vod.v20180717.models.DescribeSubAppIdsRequest`
+        :rtype: :class:`tencentcloud.vod.v20180717.models.DescribeSubAppIdsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeSubAppIds", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeSubAppIdsResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -1335,6 +1364,62 @@ class VodClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyPersonSampleResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ModifySubAppIdInfo(self, request):
+        """该接口用于修改子应用信息，但不允许修改主应用信息。
+
+        :param request: 调用ModifySubAppIdInfo所需参数的结构体。
+        :type request: :class:`tencentcloud.vod.v20180717.models.ModifySubAppIdInfoRequest`
+        :rtype: :class:`tencentcloud.vod.v20180717.models.ModifySubAppIdInfoResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ModifySubAppIdInfo", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ModifySubAppIdInfoResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ModifySubAppIdStatus(self, request):
+        """该接口用于启用、停用子应用。被停用的子应用将封停对应域名，并限制控制台访问。
+
+        :param request: 调用ModifySubAppIdStatus所需参数的结构体。
+        :type request: :class:`tencentcloud.vod.v20180717.models.ModifySubAppIdStatusRequest`
+        :rtype: :class:`tencentcloud.vod.v20180717.models.ModifySubAppIdStatusResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ModifySubAppIdStatus", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ModifySubAppIdStatusResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

@@ -2578,6 +2578,34 @@ class VpcClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeTaskResult(self, request):
+        """查询EIP异步任务执行结果
+
+        :param request: 调用DescribeTaskResult所需参数的结构体。
+        :type request: :class:`tencentcloud.vpc.v20170312.models.DescribeTaskResultRequest`
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.DescribeTaskResultResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeTaskResult", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeTaskResultResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeVpcIpv6Addresses(self, request):
         """本接口（DescribeVpcIpv6Addresses）用于查询 `VPC` `IPv6` 信息。
         只能查询已使用的`IPv6`信息，当查询未使用的IP时，本接口不会报错，但不会出现在返回结果里。

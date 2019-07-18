@@ -628,6 +628,80 @@ class CreateLibraryResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class CreatePersonRequest(AbstractModel):
+    """CreatePerson请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param LibraryId: 人员库唯一标识符
+        :type LibraryId: str
+        :param PersonName: 人员名称
+        :type PersonName: str
+        :param JobNumber: 人员工作号码
+        :type JobNumber: str
+        :param Mail: 人员邮箱
+        :type Mail: str
+        :param Male: 人员性别，0：未知 1：男性，2：女性
+        :type Male: int
+        :param PersonId: 自定义人员 ID，注意不能使用 tci_person_ 前缀
+        :type PersonId: str
+        :param PhoneNumber: 人员电话号码
+        :type PhoneNumber: str
+        :param StudentNumber: 人员学生号码
+        :type StudentNumber: str
+        """
+        self.LibraryId = None
+        self.PersonName = None
+        self.JobNumber = None
+        self.Mail = None
+        self.Male = None
+        self.PersonId = None
+        self.PhoneNumber = None
+        self.StudentNumber = None
+
+
+    def _deserialize(self, params):
+        self.LibraryId = params.get("LibraryId")
+        self.PersonName = params.get("PersonName")
+        self.JobNumber = params.get("JobNumber")
+        self.Mail = params.get("Mail")
+        self.Male = params.get("Male")
+        self.PersonId = params.get("PersonId")
+        self.PhoneNumber = params.get("PhoneNumber")
+        self.StudentNumber = params.get("StudentNumber")
+
+
+class CreatePersonResponse(AbstractModel):
+    """CreatePerson返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param LibraryId: 人员库唯一标识符
+        :type LibraryId: str
+        :param PersonId: 人员唯一标识符
+        :type PersonId: str
+        :param PersonName: 人员名称
+        :type PersonName: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.LibraryId = None
+        self.PersonId = None
+        self.PersonName = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.LibraryId = params.get("LibraryId")
+        self.PersonId = params.get("PersonId")
+        self.PersonName = params.get("PersonName")
+        self.RequestId = params.get("RequestId")
+
+
 class CreateVocabLibRequest(AbstractModel):
     """CreateVocabLib请求参数结构体
 
@@ -1079,6 +1153,8 @@ class DescribeAudioTaskResponse(AbstractModel):
         :type VocabAnalysisDetailInfo: list of VocabDetailInfomation
         :param VocabAnalysisStatInfo: 返回词汇库中的单词出现的次数信息。
         :type VocabAnalysisStatInfo: list of VocabStatInfomation
+        :param AllTexts: 返回音频全部文本。
+        :type AllTexts: str
         :param JobId: 音频任务唯一id。在URL方式时提交请求后会返回一个jobid，后续查询该url的结果时使用这个jobid进行查询。
         :type JobId: int
         :param Progress: 返回的当前处理进度。
@@ -1092,6 +1168,7 @@ class DescribeAudioTaskResponse(AbstractModel):
         self.Texts = None
         self.VocabAnalysisDetailInfo = None
         self.VocabAnalysisStatInfo = None
+        self.AllTexts = None
         self.JobId = None
         self.Progress = None
         self.TotalCount = None
@@ -1120,6 +1197,7 @@ class DescribeAudioTaskResponse(AbstractModel):
                 obj = VocabStatInfomation()
                 obj._deserialize(item)
                 self.VocabAnalysisStatInfo.append(obj)
+        self.AllTexts = params.get("AllTexts")
         self.JobId = params.get("JobId")
         self.Progress = params.get("Progress")
         self.TotalCount = params.get("TotalCount")
@@ -1170,6 +1248,8 @@ class DescribeConversationTaskResponse(AbstractModel):
         :type VocabAnalysisDetailInfo: list of VocabDetailInfomation
         :param VocabAnalysisStatInfo: 返回词汇库中的单词出现的次数信息。
         :type VocabAnalysisStatInfo: list of VocabStatInfomation
+        :param AllTexts: 整个音频流的全部文本
+        :type AllTexts: str
         :param JobId: 音频任务唯一id。在URL方式时提交请求后会返回一个jobid，后续查询该url的结果时使用这个jobid进行查询。
         :type JobId: int
         :param Progress: 返回的当前处理进度。
@@ -1183,6 +1263,7 @@ class DescribeConversationTaskResponse(AbstractModel):
         self.Texts = None
         self.VocabAnalysisDetailInfo = None
         self.VocabAnalysisStatInfo = None
+        self.AllTexts = None
         self.JobId = None
         self.Progress = None
         self.TotalCount = None
@@ -1211,6 +1292,7 @@ class DescribeConversationTaskResponse(AbstractModel):
                 obj = VocabStatInfomation()
                 obj._deserialize(item)
                 self.VocabAnalysisStatInfo.append(obj)
+        self.AllTexts = params.get("AllTexts")
         self.JobId = params.get("JobId")
         self.Progress = params.get("Progress")
         self.TotalCount = params.get("TotalCount")
@@ -1619,13 +1701,13 @@ class DescribeVocabResponse(AbstractModel):
 
 
 class DetailInfo(AbstractModel):
-    """单词出现的起始时间和结束时间信息
+    """单词出现的那个句子的起始时间和结束时间信息
 
     """
 
     def __init__(self):
         """
-        :param Value: 单词出现在该音频中的时间戳，出现了几次， 就返回对应次数的起始和结束时间戳
+        :param Value: 单词出现在该音频中的那个句子的时间戳，出现了几次， 就返回对应次数的起始和结束时间戳
         :type Value: list of WordTimePair
         :param Keyword: 词汇库中的单词
         :type Keyword: str
@@ -2021,6 +2103,8 @@ class Function(AbstractModel):
 
     def __init__(self):
         """
+        :param EnableAllText: 输出全部文本标识，当该值设置为true时，会输出当前音频的全部文本
+        :type EnableAllText: bool
         :param EnableKeyword: 输出关键词信息标识，当该值设置为true时，会输出当前音频的关键词信息。
         :type EnableKeyword: bool
         :param EnableVadInfo: 输出音频统计信息标识，当设置为 true 时，任务查询结果会输出音频的统计信息（AsrStat）
@@ -2028,12 +2112,14 @@ class Function(AbstractModel):
         :param EnableVolume: 输出音频音量信息标识，当设置为 true 时，会输出当前音频音量信息。
         :type EnableVolume: bool
         """
+        self.EnableAllText = None
         self.EnableKeyword = None
         self.EnableVadInfo = None
         self.EnableVolume = None
 
 
     def _deserialize(self, params):
+        self.EnableAllText = params.get("EnableAllText")
         self.EnableKeyword = params.get("EnableKeyword")
         self.EnableVadInfo = params.get("EnableVadInfo")
         self.EnableVolume = params.get("EnableVolume")
@@ -2192,7 +2278,7 @@ class ImageTaskFunction(AbstractModel):
 
     def __init__(self):
         """
-        :param EnableActionClass: 大教室场景肢体动作识别选项
+        :param EnableActionClass: 大教室场景学生肢体动作识别选项
         :type EnableActionClass: bool
         :param EnableFaceDetect: 人脸检测选项
         :type EnableFaceDetect: bool
@@ -2200,15 +2286,15 @@ class ImageTaskFunction(AbstractModel):
         :type EnableFaceExpression: bool
         :param EnableFaceIdentify: 人脸检索选项
         :type EnableFaceIdentify: bool
-        :param EnableGesture: 动作选项
+        :param EnableGesture: 手势选项
         :type EnableGesture: bool
-        :param EnableHandTracking: 手势选项
+        :param EnableHandTracking: 优图手势选项（该功能尚未支持）
         :type EnableHandTracking: bool
         :param EnableLightJudge: 光照选项
         :type EnableLightJudge: bool
-        :param EnableStudentBodyMovements: 学生动作选项
+        :param EnableStudentBodyMovements: 小班课场景学生肢体动作识别选项
         :type EnableStudentBodyMovements: bool
-        :param EnableTeacherBodyMovements: 教师动作选项
+        :param EnableTeacherBodyMovements: 教师动作选项（该功能尚未支持）
         :type EnableTeacherBodyMovements: bool
         """
         self.EnableActionClass = None
@@ -2897,14 +2983,12 @@ class SubmitAudioTaskRequest(AbstractModel):
         :type Url: str
         :param VoiceEncodeType: 语音编码类型 1:pcm
         :type VoiceEncodeType: int
-        :param VoiceFileType: 语音文件类型 1:raw, 2:wav, 3:mp3（三种格式目前仅支持16k采样率16bit）
+        :param VoiceFileType: 语音文件类型 1:raw, 2:wav, 3:mp3，10:视频（三种音频格式目前仅支持16k采样率16bit）
         :type VoiceFileType: int
         :param Functions: 功能开关列表，表示是否需要打开相应的功能，返回相应的信息
         :type Functions: :class:`tencentcloud.tci.v20190318.models.Function`
-        :param ClassId: 课堂标识符
-        :type ClassId: str
-        :param Identity: 身份，1：老师 2：学生
-        :type Identity: int
+        :param FileType: 视频文件类型，默认点播，直播天 live_url
+        :type FileType: str
         :param VocabLibNameList: 识别词库名列表，评估过程使用这些词汇库中的词汇进行词汇使用行为分析
         :type VocabLibNameList: list of str
         """
@@ -2913,8 +2997,7 @@ class SubmitAudioTaskRequest(AbstractModel):
         self.VoiceEncodeType = None
         self.VoiceFileType = None
         self.Functions = None
-        self.ClassId = None
-        self.Identity = None
+        self.FileType = None
         self.VocabLibNameList = None
 
 
@@ -2926,8 +3009,7 @@ class SubmitAudioTaskRequest(AbstractModel):
         if params.get("Functions") is not None:
             self.Functions = Function()
             self.Functions._deserialize(params.get("Functions"))
-        self.ClassId = params.get("ClassId")
-        self.Identity = params.get("Identity")
+        self.FileType = params.get("FileType")
         self.VocabLibNameList = params.get("VocabLibNameList")
 
 
@@ -3025,6 +3107,70 @@ class SubmitCheckAttendanceTaskResponse(AbstractModel):
     def _deserialize(self, params):
         self.JobId = params.get("JobId")
         self.NotRegisteredSet = params.get("NotRegisteredSet")
+        self.RequestId = params.get("RequestId")
+
+
+class SubmitConversationTaskRequest(AbstractModel):
+    """SubmitConversationTask请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Lang: 音频源的语言，默认0为英文，1为中文
+        :type Lang: int
+        :param VoiceEncodeType: 语音编码类型 1:pcm
+        :type VoiceEncodeType: int
+        :param VoiceFileType: 语音文件类型 1:raw, 2:wav, 3:mp3（三种格式目前仅支持16k采样率16bit）
+        :type VoiceFileType: int
+        :param Functions: 功能开关列表，表示是否需要打开相应的功能，返回相应的信息
+        :type Functions: :class:`tencentcloud.tci.v20190318.models.Function`
+        :param StudentUrl: 学生音频流
+        :type StudentUrl: str
+        :param TeacherUrl: 教师音频流
+        :type TeacherUrl: str
+        :param VocabLibNameList: 识别词库名列表，评估过程使用这些词汇库中的词汇进行词汇使用行为分析
+        :type VocabLibNameList: list of str
+        """
+        self.Lang = None
+        self.VoiceEncodeType = None
+        self.VoiceFileType = None
+        self.Functions = None
+        self.StudentUrl = None
+        self.TeacherUrl = None
+        self.VocabLibNameList = None
+
+
+    def _deserialize(self, params):
+        self.Lang = params.get("Lang")
+        self.VoiceEncodeType = params.get("VoiceEncodeType")
+        self.VoiceFileType = params.get("VoiceFileType")
+        if params.get("Functions") is not None:
+            self.Functions = Function()
+            self.Functions._deserialize(params.get("Functions"))
+        self.StudentUrl = params.get("StudentUrl")
+        self.TeacherUrl = params.get("TeacherUrl")
+        self.VocabLibNameList = params.get("VocabLibNameList")
+
+
+class SubmitConversationTaskResponse(AbstractModel):
+    """SubmitConversationTask返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param JobId: 	查询结果时指名的jobid。在URL方式时提交请求后会返回一个jobid，后续查询该url的结果时使用这个jobid进行查询。
+        :type JobId: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.JobId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.JobId = params.get("JobId")
         self.RequestId = params.get("RequestId")
 
 
@@ -3186,19 +3332,19 @@ class SubmitImageTaskRequest(AbstractModel):
         """
         :param FileContent: 输入分析对象内容
         :type FileContent: str
-        :param FileType: 输入分析对象类型，picture_url:图片地址，vod_url:视频地址，live_url：直播地址
+        :param FileType: 输入分析对象类型，picture：二进制图片的 base64 编码字符串，picture_url:图片地址，vod_url：视频地址，live_url：直播地址
         :type FileType: str
         :param Functions: 任务控制选项
         :type Functions: :class:`tencentcloud.tci.v20190318.models.ImageTaskFunction`
         :param LightStandardSet: 光照标准列表
         :type LightStandardSet: list of LightStandard
-        :param FrameInterval: 抽帧的时间间隔，单位毫秒，默认值1000。
+        :param FrameInterval: 抽帧的时间间隔，单位毫秒，默认值1000，保留字段，当前不支持填写。
         :type FrameInterval: int
         :param LibrarySet: 查询人员库列表
         :type LibrarySet: list of str
         :param MaxVideoDuration: 最大的视频长度，单位毫秒，默认值为两小时
         :type MaxVideoDuration: int
-        :param SimThreshold: 人脸识别中的相似度阈值，默认值为0.89
+        :param SimThreshold: 人脸识别中的相似度阈值，默认值为0.89，保留字段，当前不支持填写。
         :type SimThreshold: float
         """
         self.FileContent = None
@@ -3451,6 +3597,8 @@ class TransmitAudioStreamResponse(AbstractModel):
         :type VocabAnalysisDetailInfo: list of VocabDetailInfomation
         :param VocabAnalysisStatInfo: 返回词汇库中的单词出现的次数信息。
         :type VocabAnalysisStatInfo: list of VocabStatInfomation
+        :param AllTexts: 音频全部文本。
+        :type AllTexts: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -3458,6 +3606,7 @@ class TransmitAudioStreamResponse(AbstractModel):
         self.Texts = None
         self.VocabAnalysisDetailInfo = None
         self.VocabAnalysisStatInfo = None
+        self.AllTexts = None
         self.RequestId = None
 
 
@@ -3483,18 +3632,19 @@ class TransmitAudioStreamResponse(AbstractModel):
                 obj = VocabStatInfomation()
                 obj._deserialize(item)
                 self.VocabAnalysisStatInfo.append(obj)
+        self.AllTexts = params.get("AllTexts")
         self.RequestId = params.get("RequestId")
 
 
 class VocabDetailInfomation(AbstractModel):
-    """词汇库中的单词出现在音频中的起始时间和结束时间信息
+    """词汇库中的单词出现在音频中的那个句子的起始时间和结束时间信息
 
     """
 
     def __init__(self):
         """
-        :param VocabDetailInfo: 词汇库中的单词出现在该音频中的时间戳，出现了几次，就返回对应次数的起始和结束时间戳
-        :type VocabDetailInfo: :class:`tencentcloud.tci.v20190318.models.DetailInfo`
+        :param VocabDetailInfo: 词汇库中的单词出现在该音频中的那个句子的时间戳，出现了几次，就返回对应次数的起始和结束时间戳
+        :type VocabDetailInfo: list of DetailInfo
         :param VocabLibName: 词汇库名
         :type VocabLibName: str
         """
@@ -3504,8 +3654,11 @@ class VocabDetailInfomation(AbstractModel):
 
     def _deserialize(self, params):
         if params.get("VocabDetailInfo") is not None:
-            self.VocabDetailInfo = DetailInfo()
-            self.VocabDetailInfo._deserialize(params.get("VocabDetailInfo"))
+            self.VocabDetailInfo = []
+            for item in params.get("VocabDetailInfo"):
+                obj = DetailInfo()
+                obj._deserialize(item)
+                self.VocabDetailInfo.append(obj)
         self.VocabLibName = params.get("VocabLibName")
 
 
@@ -3604,15 +3757,15 @@ class Word(AbstractModel):
 
 
 class WordTimePair(AbstractModel):
-    """起始时间和结束时间信息
+    """单词出现的那个句子的起始时间和结束时间信息
 
     """
 
     def __init__(self):
         """
-        :param Mbtm: 单词的起始时间
+        :param Mbtm: 单词出现的那个句子的起始时间
         :type Mbtm: int
-        :param Metm: 	单词的结束时间
+        :param Metm: 	单词出现的那个句子的结束时间
         :type Metm: int
         """
         self.Mbtm = None

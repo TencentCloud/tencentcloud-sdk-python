@@ -16,6 +16,44 @@
 from tencentcloud.common.abstract_model import AbstractModel
 
 
+class AuthTestTidRequest(AbstractModel):
+    """AuthTestTid请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Data: 设备端SDK填入测试TID参数后生成的加密数据串
+        :type Data: str
+        """
+        self.Data = None
+
+
+    def _deserialize(self, params):
+        self.Data = params.get("Data")
+
+
+class AuthTestTidResponse(AbstractModel):
+    """AuthTestTid返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Pass: 认证结果
+        :type Pass: bool
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Pass = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Pass = params.get("Pass")
+        self.RequestId = params.get("RequestId")
+
+
 class BurnTidNotifyRequest(AbstractModel):
     """BurnTidNotify请求参数结构体
 
@@ -270,3 +308,41 @@ class TidKeysInfo(AbstractModel):
         self.PublicKey = params.get("PublicKey")
         self.PrivateKey = params.get("PrivateKey")
         self.Psk = params.get("Psk")
+
+
+class VerifyChipBurnInfoRequest(AbstractModel):
+    """VerifyChipBurnInfo请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Data: 验证数据
+        :type Data: str
+        """
+        self.Data = None
+
+
+    def _deserialize(self, params):
+        self.Data = params.get("Data")
+
+
+class VerifyChipBurnInfoResponse(AbstractModel):
+    """VerifyChipBurnInfo返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Pass: 验证结果
+        :type Pass: bool
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Pass = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Pass = params.get("Pass")
+        self.RequestId = params.get("RequestId")

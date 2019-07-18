@@ -4921,6 +4921,7 @@ class DescribeMediaInfosRequest(AbstractModel):
 <li>sampleSnapshotInfo（采样截图信息）。</li>
 <li>keyFrameDescInfo（打点信息）。</li>
 <li>adaptiveDynamicStreamingInfo（转自适应码流信息）。</li>
+<li>miniProgramReviewInfo（小程序审核信息）。</li>
         :type Filters: list of str
         :param SubAppId: 点播[子应用](/document/product/266/14574) ID 。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
         :type SubAppId: int
@@ -5159,6 +5160,38 @@ class DescribeReviewDetailsResponse(AbstractModel):
                 obj = StatDataItem()
                 obj._deserialize(item)
                 self.Data.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeSubAppIdsRequest(AbstractModel):
+    """DescribeSubAppIds请求参数结构体
+
+    """
+
+
+class DescribeSubAppIdsResponse(AbstractModel):
+    """DescribeSubAppIds返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param SubAppIdInfoSet: 子应用信息集合。
+        :type SubAppIdInfoSet: list of SubAppIdInfo
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.SubAppIdInfoSet = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("SubAppIdInfoSet") is not None:
+            self.SubAppIdInfoSet = []
+            for item in params.get("SubAppIdInfoSet"):
+                obj = SubAppIdInfo()
+                obj._deserialize(item)
+                self.SubAppIdInfoSet.append(obj)
         self.RequestId = params.get("RequestId")
 
 
@@ -7141,10 +7174,10 @@ class MediaInfo(AbstractModel):
 
     def __init__(self):
         """
-        :param BasicInfo: 基础信息。包括视频名称、大小、时长、封面图片等。
+        :param BasicInfo: 基础信息。包括视频名称、分类、播放地址、封面图片等。
 注意：此字段可能返回 null，表示取不到有效值。
         :type BasicInfo: :class:`tencentcloud.vod.v20180717.models.MediaBasicInfo`
-        :param MetaData: 元信息。包括视频流信息、音频流信息等。
+        :param MetaData: 元信息。包括大小、时长、视频流信息、音频流信息等。
 注意：此字段可能返回 null，表示取不到有效值。
         :type MetaData: :class:`tencentcloud.vod.v20180717.models.MediaMetaData`
         :param TranscodeInfo: 转码结果信息。包括该视频转码生成的各种码率的视频的地址、规格、码率、分辨率等。
@@ -8701,6 +8734,88 @@ class ModifyPersonSampleResponse(AbstractModel):
                 obj = AiSampleFailFaceInfo()
                 obj._deserialize(item)
                 self.FailFaceInfoSet.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class ModifySubAppIdInfoRequest(AbstractModel):
+    """ModifySubAppIdInfo请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param SubAppId: 子应用 ID。
+        :type SubAppId: int
+        :param Name: 子应用名称，长度限制：40个字符。
+        :type Name: str
+        :param Description: 子应用简介，长度限制： 300个字符。
+        :type Description: str
+        """
+        self.SubAppId = None
+        self.Name = None
+        self.Description = None
+
+
+    def _deserialize(self, params):
+        self.SubAppId = params.get("SubAppId")
+        self.Name = params.get("Name")
+        self.Description = params.get("Description")
+
+
+class ModifySubAppIdInfoResponse(AbstractModel):
+    """ModifySubAppIdInfo返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class ModifySubAppIdStatusRequest(AbstractModel):
+    """ModifySubAppIdStatus请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param SubAppId: 子应用 ID。
+        :type SubAppId: int
+        :param Status: 子应用状态，取值范围：
+<li>On：启用</li>
+<li>Off：停用</li>
+        :type Status: str
+        """
+        self.SubAppId = None
+        self.Status = None
+
+
+    def _deserialize(self, params):
+        self.SubAppId = params.get("SubAppId")
+        self.Status = params.get("Status")
+
+
+class ModifySubAppIdStatusResponse(AbstractModel):
+    """ModifySubAppIdStatus返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
 
 
@@ -10697,6 +10812,41 @@ class StickerTrackItem(AbstractModel):
                 self.ImageOperations.append(obj)
 
 
+class SubAppIdInfo(AbstractModel):
+    """子应用信息。
+
+    """
+
+    def __init__(self):
+        """
+        :param SubAppId: 子应用 ID。
+        :type SubAppId: int
+        :param Name: 子应用名称。
+        :type Name: str
+        :param Description: 子应用简介。
+        :type Description: str
+        :param CreateTime: 子应用创建时间，采用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F)。
+        :type CreateTime: str
+        :param Status: 子应用状态，有效值：
+<li>On：启用；</li>
+<li>Off：停用。</li>
+        :type Status: str
+        """
+        self.SubAppId = None
+        self.Name = None
+        self.Description = None
+        self.CreateTime = None
+        self.Status = None
+
+
+    def _deserialize(self, params):
+        self.SubAppId = params.get("SubAppId")
+        self.Name = params.get("Name")
+        self.Description = params.get("Description")
+        self.CreateTime = params.get("CreateTime")
+        self.Status = params.get("Status")
+
+
 class SvgWatermarkInput(AbstractModel):
     """SVG水印模板输入参数
 
@@ -11601,8 +11751,8 @@ class VideoTemplateInfo(AbstractModel):
 当取值为 0，表示视频码率和原始视频保持一致。
         :type Bitrate: int
         :param ResolutionAdaptive: 分辨率自适应，可选值：
-<li>open：开启，此时，Width 代表视频的宽度，Height 表示视频的高度；</li>
-<li>close：关闭，此时，Width 代表视频的长边，Height 表示视频的短边。</li>
+<li>open：开启，此时，Width 代表视频的长边，Height 表示视频的短边；</li>
+<li>close：关闭，此时，Width 代表视频的宽度，Height 表示视频的高度。</li>
 默认值：open。
 注意：此字段可能返回 null，表示取不到有效值。
         :type ResolutionAdaptive: str
@@ -11659,8 +11809,8 @@ class VideoTemplateInfoForUpdate(AbstractModel):
 当取值为 0，表示视频码率和原始视频保持一致。
         :type Bitrate: int
         :param ResolutionAdaptive: 分辨率自适应，可选值：
-<li>open：开启，此时，Width 代表视频的宽度，Height 表示视频的高度；</li>
-<li>close：关闭，此时，Width 代表视频的长边，Height 表示视频的短边。</li>
+<li>open：开启，此时，Width 代表视频的长边，Height 表示视频的短边；</li>
+<li>close：关闭，此时，Width 代表视频的宽度，Height 表示视频的高度。</li>
         :type ResolutionAdaptive: str
         :param Width: 视频流宽度（或长边）的最大值，取值范围：0 和 [128, 4096]，单位：px。
 <li>当 Width、Height 均为 0，则分辨率同源；</li>

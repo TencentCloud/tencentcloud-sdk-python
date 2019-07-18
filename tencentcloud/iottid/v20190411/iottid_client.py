@@ -25,6 +25,34 @@ class IottidClient(AbstractClient):
     _endpoint = 'iottid.tencentcloudapi.com'
 
 
+    def AuthTestTid(self, request):
+        """单向认证测试TID
+
+        :param request: 调用AuthTestTid所需参数的结构体。
+        :type request: :class:`tencentcloud.iottid.v20190411.models.AuthTestTidRequest`
+        :rtype: :class:`tencentcloud.iottid.v20190411.models.AuthTestTidResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("AuthTestTid", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.AuthTestTidResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def BurnTidNotify(self, request):
         """安全芯片TID烧录回执
 
@@ -151,6 +179,34 @@ class IottidClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DownloadTidsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def VerifyChipBurnInfo(self, request):
+        """下载控制台验证芯片烧录信息，保证TID与中心信息一致
+
+        :param request: 调用VerifyChipBurnInfo所需参数的结构体。
+        :type request: :class:`tencentcloud.iottid.v20190411.models.VerifyChipBurnInfoRequest`
+        :rtype: :class:`tencentcloud.iottid.v20190411.models.VerifyChipBurnInfoResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("VerifyChipBurnInfo", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.VerifyChipBurnInfoResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

@@ -896,7 +896,7 @@ class CreateLiveSnapshotTemplateRequest(AbstractModel):
         :param Description: 描述信息。
         :type Description: str
         :param SnapshotInterval: 截图间隔，单位s，默认10s。
-范围： 10s ~ 600s。
+范围： 5s ~ 600s。
         :type SnapshotInterval: int
         :param Width: 截图宽度。默认：0（原始宽）。
         :type Width: int
@@ -6408,12 +6408,48 @@ class StreamName(AbstractModel):
         """
         :param StreamName: 流名称。
         :type StreamName: str
+        :param AppName: 应用名称。
+        :type AppName: str
+        :param DomainName: 推流域名。
+        :type DomainName: str
+        :param StreamStartTime: 推流开始时间。
+UTC格式时间，
+例如：2019-01-07T12:00:00Z。
+        :type StreamStartTime: str
+        :param StreamEndTime: 推流结束时间。
+UTC格式时间，
+例如：2019-01-07T15:00:00Z。
+        :type StreamEndTime: str
+        :param StopReason: 停止原因。
+        :type StopReason: str
+        :param Duration: 推流持续时长，单位：秒。
+        :type Duration: int
+        :param ClientIp: 主播IP。
+        :type ClientIp: str
+        :param Resolution: 分辨率。
+        :type Resolution: str
         """
         self.StreamName = None
+        self.AppName = None
+        self.DomainName = None
+        self.StreamStartTime = None
+        self.StreamEndTime = None
+        self.StopReason = None
+        self.Duration = None
+        self.ClientIp = None
+        self.Resolution = None
 
 
     def _deserialize(self, params):
         self.StreamName = params.get("StreamName")
+        self.AppName = params.get("AppName")
+        self.DomainName = params.get("DomainName")
+        self.StreamStartTime = params.get("StreamStartTime")
+        self.StreamEndTime = params.get("StreamEndTime")
+        self.StopReason = params.get("StopReason")
+        self.Duration = params.get("Duration")
+        self.ClientIp = params.get("ClientIp")
+        self.Resolution = params.get("Resolution")
 
 
 class StreamOnlineInfo(AbstractModel):

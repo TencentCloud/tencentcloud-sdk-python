@@ -16,6 +16,71 @@
 from tencentcloud.common.abstract_model import AbstractModel
 
 
+class AddFairPlayPemRequest(AbstractModel):
+    """AddFairPlayPem请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Pem: 加密后的fairplay方案申请时使用的私钥。
+请使用腾讯云DRM 提供的公钥，使用rsa加密算法，PKCS1填充方式对私钥文件中的字段进行加密，并对加密结果进行base64编码。
+        :type Pem: str
+        :param Ask: 加密后的fairplay方案申请返回的ask数据。
+请使用腾讯云DRM 提供的公钥，使用rsa加密算法，PKCS1填充方式对Ask字符串进行加密，并对加密结果进行base64编码。
+        :type Ask: str
+        :param PemDecryptKey: 私钥的解密密钥。
+openssl在生成rsa时，可能会需要设置加密密钥，请记住设置的密钥。
+请使用腾讯云DRM 提供的公钥，使用rsa加密算法，PKCS1填充方式对解密密钥进行加密，并对加密结果进行base64编码。
+        :type PemDecryptKey: str
+        :param BailorId: 委托者Id,适用于托管自身证书的客户。普通客户无需填该字段。
+        :type BailorId: int
+        :param Priority: 私钥的优先级，优先级数值越高，优先级越高。
+该值可以不传，后台将自动分配一个优先级。
+        :type Priority: int
+        """
+        self.Pem = None
+        self.Ask = None
+        self.PemDecryptKey = None
+        self.BailorId = None
+        self.Priority = None
+
+
+    def _deserialize(self, params):
+        self.Pem = params.get("Pem")
+        self.Ask = params.get("Ask")
+        self.PemDecryptKey = params.get("PemDecryptKey")
+        self.BailorId = params.get("BailorId")
+        self.Priority = params.get("Priority")
+
+
+class AddFairPlayPemResponse(AbstractModel):
+    """AddFairPlayPem返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param FairPlayPemId: 设置私钥后，后台返回的pem id，用来唯一标识一个私钥。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FairPlayPemId: int
+        :param Priority: 私钥的优先级，优先级数值越高，优先级越高。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Priority: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.FairPlayPemId = None
+        self.Priority = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.FairPlayPemId = params.get("FairPlayPemId")
+        self.Priority = params.get("Priority")
+        self.RequestId = params.get("RequestId")
+
+
 class CreateLicenseRequest(AbstractModel):
     """CreateLicense请求参数结构体
 
@@ -74,6 +139,94 @@ class CreateLicenseResponse(AbstractModel):
     def _deserialize(self, params):
         self.License = params.get("License")
         self.ContentId = params.get("ContentId")
+        self.RequestId = params.get("RequestId")
+
+
+class DeleteFairPlayPemRequest(AbstractModel):
+    """DeleteFairPlayPem请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param BailorId: 委托者Id,适用于托管自身证书的客户。普通客户无需填该字段。
+        :type BailorId: int
+        :param FairPlayPemId: 要删除的pem id。
+当未传入该值时，将删除所有的私钥。
+        :type FairPlayPemId: int
+        """
+        self.BailorId = None
+        self.FairPlayPemId = None
+
+
+    def _deserialize(self, params):
+        self.BailorId = params.get("BailorId")
+        self.FairPlayPemId = params.get("FairPlayPemId")
+
+
+class DeleteFairPlayPemResponse(AbstractModel):
+    """DeleteFairPlayPem返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeFairPlayPemRequest(AbstractModel):
+    """DescribeFairPlayPem请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param BailorId: 委托者Id,适用于托管自身证书的客户。普通客户无需填该字段。
+        :type BailorId: int
+        :param FairPlayPemId: 需要查询的pem id。
+当该值未填入时，将返回所有的私钥信息。
+        :type FairPlayPemId: int
+        """
+        self.BailorId = None
+        self.FairPlayPemId = None
+
+
+    def _deserialize(self, params):
+        self.BailorId = params.get("BailorId")
+        self.FairPlayPemId = params.get("FairPlayPemId")
+
+
+class DescribeFairPlayPemResponse(AbstractModel):
+    """DescribeFairPlayPem返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param FairPlayPems: 该账户下，所有设置的FairPlay私钥摘要信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FairPlayPems: list of FairPlayPemDigestInfo
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.FairPlayPems = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("FairPlayPems") is not None:
+            self.FairPlayPems = []
+            for item in params.get("FairPlayPems"):
+                obj = FairPlayPemDigestInfo()
+                obj._deserialize(item)
+                self.FairPlayPems.append(obj)
         self.RequestId = params.get("RequestId")
 
 
@@ -222,6 +375,44 @@ class DrmSourceObject(AbstractModel):
         self.ObjectName = params.get("ObjectName")
 
 
+class FairPlayPemDigestInfo(AbstractModel):
+    """FairPlay 私钥摘要信息。
+
+    """
+
+    def __init__(self):
+        """
+        :param FairPlayPemId: fairplay 私钥pem id。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FairPlayPemId: int
+        :param Priority: 私钥的优先级。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Priority: int
+        :param Md5Pem: 私钥的md5 信息。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Md5Pem: str
+        :param Md5Ask: ASK的md5信息。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Md5Ask: str
+        :param Md5PemDecryptKey: 私钥解密密钥的md5值。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Md5PemDecryptKey: str
+        """
+        self.FairPlayPemId = None
+        self.Priority = None
+        self.Md5Pem = None
+        self.Md5Ask = None
+        self.Md5PemDecryptKey = None
+
+
+    def _deserialize(self, params):
+        self.FairPlayPemId = params.get("FairPlayPemId")
+        self.Priority = params.get("Priority")
+        self.Md5Pem = params.get("Md5Pem")
+        self.Md5Ask = params.get("Md5Ask")
+        self.Md5PemDecryptKey = params.get("Md5PemDecryptKey")
+
+
 class Key(AbstractModel):
     """DRM加密密钥
 
@@ -249,6 +440,75 @@ class Key(AbstractModel):
         self.KeyId = params.get("KeyId")
         self.Key = params.get("Key")
         self.Iv = params.get("Iv")
+
+
+class ModifyFairPlayPemRequest(AbstractModel):
+    """ModifyFairPlayPem请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Pem: 加密后的fairplay方案申请时使用的私钥。
+请使用腾讯云DRM 提供的公钥，使用rsa加密算法，PKCS1填充方式对私钥文件中的字段进行加密，并对加密结果进行base64编码。
+        :type Pem: str
+        :param Ask: 加密后的fairplay方案申请返回的ask数据。
+请使用腾讯云DRM 提供的公钥，使用rsa加密算法，PKCS1填充方式对Ask字符串进行加密，并对加密结果进行base64编码。
+        :type Ask: str
+        :param FairPlayPemId: 要修改的私钥id
+        :type FairPlayPemId: int
+        :param PemDecryptKey: 私钥的解密密钥。
+openssl在生成rsa时，可能会需要设置加密密钥，请记住设置的密钥。
+请使用腾讯云DRM 提供的公钥，使用rsa加密算法，PKCS1填充方式对解密密钥进行加密，并对加密结果进行base64编码。
+        :type PemDecryptKey: str
+        :param BailorId: 委托者Id,适用于托管自身证书的客户。普通客户无需填该字段。
+        :type BailorId: int
+        :param Priority: 私钥的优先级，优先级数值越高，优先级越高。
+该值可以不传，后台将自动分配一个优先级。
+        :type Priority: int
+        """
+        self.Pem = None
+        self.Ask = None
+        self.FairPlayPemId = None
+        self.PemDecryptKey = None
+        self.BailorId = None
+        self.Priority = None
+
+
+    def _deserialize(self, params):
+        self.Pem = params.get("Pem")
+        self.Ask = params.get("Ask")
+        self.FairPlayPemId = params.get("FairPlayPemId")
+        self.PemDecryptKey = params.get("PemDecryptKey")
+        self.BailorId = params.get("BailorId")
+        self.Priority = params.get("Priority")
+
+
+class ModifyFairPlayPemResponse(AbstractModel):
+    """ModifyFairPlayPem返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param FairPlayPemId: 设置私钥后，后台返回的pem id，用来唯一标识一个私钥。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FairPlayPemId: int
+        :param Priority: 私钥的优先级，优先级数值越高，优先级越高。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Priority: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.FairPlayPemId = None
+        self.Priority = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.FairPlayPemId = params.get("FairPlayPemId")
+        self.Priority = params.get("Priority")
+        self.RequestId = params.get("RequestId")
 
 
 class PlaybackPolicy(AbstractModel):

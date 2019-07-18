@@ -4556,6 +4556,8 @@ class DescribeRouteTablesRequest(AbstractModel):
 <li>route-table-name - String - （过滤条件）路由表名称。</li>
 <li>vpc-id - String - （过滤条件）VPC实例ID，形如：vpc-f49l6u0z。</li>
 <li>association.main - String - （过滤条件）是否主路由表。</li>
+<li>tag-key - String -是否必填：否- （过滤条件）按照标签键进行过滤。</li>
+<li>tag:tag-key - String - 是否必填：否 - （过滤条件）按照标签键值对进行过滤。 tag-key使用具体的标签键进行替换。使用请参考示例2。</li>
         :type Filters: list of Filter
         :param Offset: 偏移量。
         :type Offset: str
@@ -4900,6 +4902,8 @@ class DescribeSubnetsRequest(AbstractModel):
 <li>is-remote-vpc-snat - Boolean - （过滤条件）是否为VPC SNAT地址池子网。</li>
 <li>subnet-name - String - （过滤条件）子网名称。</li>
 <li>zone - String - （过滤条件）可用区。</li>
+<li>tag-key - String -是否必填：否- （过滤条件）按照标签键进行过滤。</li>
+<li>tag:tag-key - String - 是否必填：否 - （过滤条件）按照标签键值对进行过滤。 tag-key使用具体的标签键进行替换。使用请参考示例2。</li>
         :type Filters: list of Filter
         :param Offset: 偏移量
         :type Offset: str
@@ -4951,6 +4955,52 @@ class DescribeSubnetsResponse(AbstractModel):
                 obj = Subnet()
                 obj._deserialize(item)
                 self.SubnetSet.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeTaskResultRequest(AbstractModel):
+    """DescribeTaskResult请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param TaskId: 异步任务ID
+        :type TaskId: int
+        :param DealName: 计费订单号
+        :type DealName: str
+        """
+        self.TaskId = None
+        self.DealName = None
+
+
+    def _deserialize(self, params):
+        self.TaskId = params.get("TaskId")
+        self.DealName = params.get("DealName")
+
+
+class DescribeTaskResultResponse(AbstractModel):
+    """DescribeTaskResult返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param TaskId: 任务ID
+        :type TaskId: int
+        :param Result: 执行结果，包括"SUCCESS", "FAILED", "RUNNING"
+        :type Result: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TaskId = None
+        self.Result = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TaskId = params.get("TaskId")
+        self.Result = params.get("Result")
         self.RequestId = params.get("RequestId")
 
 
@@ -5074,6 +5124,8 @@ class DescribeVpcsRequest(AbstractModel):
 <li>is-default - String - （过滤条件）是否默认VPC。</li>
 <li>vpc-id - String - （过滤条件）VPC实例ID形如：vpc-f49l6u0z。</li>
 <li>cidr-block - String - （过滤条件）vpc的cidr。</li>
+<li>tag-key - String -是否必填：否- （过滤条件）按照标签键进行过滤。</li>
+<li>tag:tag-key - String - 是否必填：否 - （过滤条件）按照标签键值对进行过滤。 tag-key使用具体的标签键进行替换。使用请参考示例2。</li>
         :type Filters: list of Filter
         :param Offset: 偏移量
         :type Offset: str
@@ -7759,6 +7811,8 @@ class NetworkInterface(AbstractModel):
         :type CreatedTime: str
         :param Ipv6AddressSet: `IPv6`地址列表。
         :type Ipv6AddressSet: list of Ipv6Address
+        :param TagSet: 标签键值对。
+        :type TagSet: list of Tag
         """
         self.NetworkInterfaceId = None
         self.NetworkInterfaceName = None
@@ -7774,6 +7828,7 @@ class NetworkInterface(AbstractModel):
         self.Zone = None
         self.CreatedTime = None
         self.Ipv6AddressSet = None
+        self.TagSet = None
 
 
     def _deserialize(self, params):
@@ -7803,6 +7858,12 @@ class NetworkInterface(AbstractModel):
                 obj = Ipv6Address()
                 obj._deserialize(item)
                 self.Ipv6AddressSet.append(obj)
+        if params.get("TagSet") is not None:
+            self.TagSet = []
+            for item in params.get("TagSet"):
+                obj = Tag()
+                obj._deserialize(item)
+                self.TagSet.append(obj)
 
 
 class NetworkInterfaceAttachment(AbstractModel):

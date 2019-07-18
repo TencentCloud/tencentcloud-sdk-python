@@ -64,9 +64,9 @@ class CreateInstanceRequest(AbstractModel):
         :type InstanceName: str
         :param ChargeType: 计费类型<li>PREPAID：预付费，即包年包月</li><li>POSTPAID_BY_HOUR：按小时后付费</li>默认值POSTPAID_BY_HOUR
         :type ChargeType: str
-        :param ChargePeriod: 包年包月购买时长（单位由参数TimeUint决定）
+        :param ChargePeriod: 包年包月购买时长（单位由参数TimeUnit决定）
         :type ChargePeriod: int
-        :param RenewFlag: 自动续费标识<li>RENEW_FLAG_AUTO：自动续费</li><li>RENEW_FLAG_MANUAL：不自动续费，用户手动续费</li>ChargeType为PREPAID时需要设置，如不传递该参数，普通用于默认不自动续费，SVIP用户自动续费
+        :param RenewFlag: 自动续费标识<li>RENEW_FLAG_AUTO：自动续费</li><li>RENEW_FLAG_MANUAL：不自动续费，用户手动续费</li>ChargeType为PREPAID时需要设置，如不传递该参数，普通用户默认不自动续费，SVIP用户自动续费
         :type RenewFlag: str
         :param DiskType: 节点磁盘类型<li>CLOUD_SSD：SSD云硬盘</li><li>CLOUD_PREMIUM：高硬能云硬盘</li>默认值CLOUD_SSD
         :type DiskType: str
@@ -422,7 +422,7 @@ class DescribeInstancesResponse(AbstractModel):
 
 
 class DictInfo(AbstractModel):
-    """ik插件词典新
+    """ik插件词典信息
 
     """
 
@@ -906,16 +906,36 @@ class SubTaskDetail(AbstractModel):
         :type Result: bool
         :param ErrMsg: 子任务错误信息
         :type ErrMsg: str
+        :param Type: 子任务类型
+        :type Type: str
+        :param Status: 子任务状态，0处理中 1成功 -1失败
+        :type Status: int
+        :param FailedIndices: 升级检查失败的索引名
+        :type FailedIndices: list of str
+        :param FinishTime: 子任务结束时间
+        :type FinishTime: str
+        :param Level: 子任务等级，1警告 2失败
+        :type Level: int
         """
         self.Name = None
         self.Result = None
         self.ErrMsg = None
+        self.Type = None
+        self.Status = None
+        self.FailedIndices = None
+        self.FinishTime = None
+        self.Level = None
 
 
     def _deserialize(self, params):
         self.Name = params.get("Name")
         self.Result = params.get("Result")
         self.ErrMsg = params.get("ErrMsg")
+        self.Type = params.get("Type")
+        self.Status = params.get("Status")
+        self.FailedIndices = params.get("FailedIndices")
+        self.FinishTime = params.get("FinishTime")
+        self.Level = params.get("Level")
 
 
 class TagInfo(AbstractModel):
@@ -1044,6 +1064,98 @@ class UpdateInstanceRequest(AbstractModel):
 
 class UpdateInstanceResponse(AbstractModel):
     """UpdateInstance返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class UpgradeInstanceRequest(AbstractModel):
+    """UpgradeInstance请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param InstanceId: 实例ID
+        :type InstanceId: str
+        :param EsVersion: 目标ES版本
+        :type EsVersion: str
+        :param CheckOnly: 是否只做升级检查，默认值为false
+        :type CheckOnly: bool
+        :param LicenseType: 目标商业特性版本：<li>oss 开源版</li><li>basic 基础版</li>当前仅在5.6.4升级6.x版本时使用，默认值为basic
+        :type LicenseType: str
+        """
+        self.InstanceId = None
+        self.EsVersion = None
+        self.CheckOnly = None
+        self.LicenseType = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.EsVersion = params.get("EsVersion")
+        self.CheckOnly = params.get("CheckOnly")
+        self.LicenseType = params.get("LicenseType")
+
+
+class UpgradeInstanceResponse(AbstractModel):
+    """UpgradeInstance返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class UpgradeLicenseRequest(AbstractModel):
+    """UpgradeLicense请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param InstanceId: 实例ID
+        :type InstanceId: str
+        :param LicenseType: License类型<li>oss：开源版</li><li>basic：基础版</li><li>platinum：白金版</li>默认值platinum
+        :type LicenseType: str
+        :param AutoVoucher: 是否自动使用代金券<li>0：不自动使用</li><li>1：自动使用</li>默认值0
+        :type AutoVoucher: int
+        :param VoucherIds: 代金券ID列表（目前仅支持指定一张代金券）
+        :type VoucherIds: list of str
+        """
+        self.InstanceId = None
+        self.LicenseType = None
+        self.AutoVoucher = None
+        self.VoucherIds = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.LicenseType = params.get("LicenseType")
+        self.AutoVoucher = params.get("AutoVoucher")
+        self.VoucherIds = params.get("VoucherIds")
+
+
+class UpgradeLicenseResponse(AbstractModel):
+    """UpgradeLicense返回参数结构体
 
     """
 

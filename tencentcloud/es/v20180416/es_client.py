@@ -229,3 +229,59 @@ class EsClient(AbstractClient):
                 raise
             else:
                 raise TencentCloudSDKException(e.message, e.message)
+
+
+    def UpgradeInstance(self, request):
+        """升级ES集群版本
+
+        :param request: 调用UpgradeInstance所需参数的结构体。
+        :type request: :class:`tencentcloud.es.v20180416.models.UpgradeInstanceRequest`
+        :rtype: :class:`tencentcloud.es.v20180416.models.UpgradeInstanceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("UpgradeInstance", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.UpgradeInstanceResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def UpgradeLicense(self, request):
+        """升级ES商业特性
+
+        :param request: 调用UpgradeLicense所需参数的结构体。
+        :type request: :class:`tencentcloud.es.v20180416.models.UpgradeLicenseRequest`
+        :rtype: :class:`tencentcloud.es.v20180416.models.UpgradeLicenseResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("UpgradeLicense", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.UpgradeLicenseResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)

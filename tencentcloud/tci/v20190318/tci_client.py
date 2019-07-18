@@ -193,6 +193,34 @@ class TciClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def CreatePerson(self, request):
+        """创建人员
+
+        :param request: 调用CreatePerson所需参数的结构体。
+        :type request: :class:`tencentcloud.tci.v20190318.models.CreatePersonRequest`
+        :rtype: :class:`tencentcloud.tci.v20190318.models.CreatePersonResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("CreatePerson", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreatePersonResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def CreateVocab(self, request):
         """创建词汇
 
@@ -823,6 +851,34 @@ class TciClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.SubmitCheckAttendanceTaskResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def SubmitConversationTask(self, request):
+        """对话任务分析接口
+
+        :param request: 调用SubmitConversationTask所需参数的结构体。
+        :type request: :class:`tencentcloud.tci.v20190318.models.SubmitConversationTaskRequest`
+        :rtype: :class:`tencentcloud.tci.v20190318.models.SubmitConversationTaskResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("SubmitConversationTask", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.SubmitConversationTaskResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

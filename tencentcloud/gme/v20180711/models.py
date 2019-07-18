@@ -29,9 +29,9 @@ class DescribeFilterResultListRequest(AbstractModel):
         :type StartDate: str
         :param EndDate: 结束时间，格式为 年-月-日，如: 2018-07-11
         :type EndDate: str
-        :param Offset: 偏移量, 默认0
+        :param Offset: 偏移量，默认值为0。
         :type Offset: int
-        :param Limit: 限制数目	, 默认10, 最大100
+        :param Limit: 返回数量，默认值为10，最大值为100。
         :type Limit: int
         """
         self.BizId = None
@@ -204,9 +204,9 @@ class VoiceFilterRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param BizId: 应用ID，创建应用得到的AppID: https://console.cloud.tencent.com/gamegme
+        :param BizId: 应用ID，登录[控制台](https://console.cloud.tencent.com/gamegme)创建应用得到的AppID
         :type BizId: int
-        :param FileId: 文件ID，表示文件唯一id
+        :param FileId: 文件ID，表示文件唯一ID
         :type FileId: str
         :param FileName: 文件名
         :type FileName: str
