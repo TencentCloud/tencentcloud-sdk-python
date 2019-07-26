@@ -37,6 +37,64 @@ class Candidate(AbstractModel):
         self.Confidence = params.get("Confidence")
 
 
+class CarTagItem(AbstractModel):
+    """车辆属性识别的结果
+
+    """
+
+    def __init__(self):
+        """
+        :param Serial: 车系
+        :type Serial: str
+        :param Brand: 车辆品牌
+        :type Brand: str
+        :param Type: 车辆类型
+        :type Type: str
+        :param Color: 车辆颜色
+        :type Color: str
+        :param Confidence: 置信度，0-100
+        :type Confidence: int
+        :param Year: 年份，没识别出年份的时候返回0
+        :type Year: int
+        """
+        self.Serial = None
+        self.Brand = None
+        self.Type = None
+        self.Color = None
+        self.Confidence = None
+        self.Year = None
+
+
+    def _deserialize(self, params):
+        self.Serial = params.get("Serial")
+        self.Brand = params.get("Brand")
+        self.Type = params.get("Type")
+        self.Color = params.get("Color")
+        self.Confidence = params.get("Confidence")
+        self.Year = params.get("Year")
+
+
+class Coord(AbstractModel):
+    """汽车坐标信息
+
+    """
+
+    def __init__(self):
+        """
+        :param X: 横坐标x
+        :type X: int
+        :param Y: 纵坐标y
+        :type Y: int
+        """
+        self.X = None
+        self.Y = None
+
+
+    def _deserialize(self, params):
+        self.X = params.get("X")
+        self.Y = params.get("Y")
+
+
 class DetectLabelItem(AbstractModel):
     """图像标签检测结果。
 
@@ -104,6 +162,60 @@ class DetectLabelResponse(AbstractModel):
                 obj = DetectLabelItem()
                 obj._deserialize(item)
                 self.Labels.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DetectProductRequest(AbstractModel):
+    """DetectProduct请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ImageUrl: 图片URL地址。 
+图片限制： 
+• 图片格式：PNG、JPG、JPEG。 
+• 图片大小：所下载图片经Base64编码后不超过4M。图片下载时间不超过3秒。 
+建议：
+• 图片像素：大于50*50像素，否则影响识别效果； 
+• 长宽比：长边：短边<5； 
+接口响应时间会受到图片下载时间的影响，建议使用更可靠的存储服务，推荐将图片存储在腾讯云COS。
+        :type ImageUrl: str
+        :param ImageBase64: 图片经过base64编码的内容。最大不超过4M。与ImageUrl同时存在时优先使用ImageUrl字段。
+        :type ImageBase64: str
+        """
+        self.ImageUrl = None
+        self.ImageBase64 = None
+
+
+    def _deserialize(self, params):
+        self.ImageUrl = params.get("ImageUrl")
+        self.ImageBase64 = params.get("ImageBase64")
+
+
+class DetectProductResponse(AbstractModel):
+    """DetectProduct返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Products: 商品识别结果数组
+        :type Products: list of Product
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Products = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Products") is not None:
+            self.Products = []
+            for item in params.get("Products"):
+                obj = Product()
+                obj._deserialize(item)
+                self.Products.append(obj)
         self.RequestId = params.get("RequestId")
 
 
@@ -403,6 +515,106 @@ BLOCK：违规
         self.Confidence = params.get("Confidence")
         self.AdvancedInfo = params.get("AdvancedInfo")
         self.Type = params.get("Type")
+
+
+class Product(AbstractModel):
+    """检测到的单个商品结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Name: 图片中商品的三级分类识别结果，选取所有三级分类中的置信度最大者
+        :type Name: str
+        :param Parents: 三级商品分类对应的一级分类和二级分类，两级之间用“-”（中划线）隔开，例如商品名称是“硬盘”，那么Parents输出为“电脑、办公-电脑配件”
+        :type Parents: str
+        :param Confidence: 算法对于Name的置信度，0-100之间，值越高，表示对于Name越确定
+        :type Confidence: int
+        :param XMin: 商品坐标X轴的最小值
+        :type XMin: int
+        :param YMin: 商品坐标Y轴的最小值
+        :type YMin: int
+        :param XMax: 商品坐标X轴的最大值
+        :type XMax: int
+        :param YMax: 商品坐标Y轴的最大值
+        :type YMax: int
+        """
+        self.Name = None
+        self.Parents = None
+        self.Confidence = None
+        self.XMin = None
+        self.YMin = None
+        self.XMax = None
+        self.YMax = None
+
+
+    def _deserialize(self, params):
+        self.Name = params.get("Name")
+        self.Parents = params.get("Parents")
+        self.Confidence = params.get("Confidence")
+        self.XMin = params.get("XMin")
+        self.YMin = params.get("YMin")
+        self.XMax = params.get("XMax")
+        self.YMax = params.get("YMax")
+
+
+class RecognizeCarRequest(AbstractModel):
+    """RecognizeCar请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ImageBase64: 图片的BASE64值；
+BASE64编码后的图片数据大小不超过3M，支持PNG、JPG、JPEG、BMP格式，暂不支持GIF格式。
+        :type ImageBase64: str
+        :param ImageUrl: 图片的 ImageUrl、ImageBase64必须提供一个，如果都提供，只使用ImageUrl。
+
+图片URL地址。支持的图片格式：PNG、JPG、JPEG、BMP，暂不支持GIF格式。支持的图片大小：所下载图片经Base64编码后不超过4M。图片下载时间不超过3秒。
+        :type ImageUrl: str
+        """
+        self.ImageBase64 = None
+        self.ImageUrl = None
+
+
+    def _deserialize(self, params):
+        self.ImageBase64 = params.get("ImageBase64")
+        self.ImageUrl = params.get("ImageUrl")
+
+
+class RecognizeCarResponse(AbstractModel):
+    """RecognizeCar返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param CarCoords: 汽车的四个矩形顶点坐标
+        :type CarCoords: list of Coord
+        :param CarTags: 车辆属性识别的结果数组
+        :type CarTags: list of CarTagItem
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.CarCoords = None
+        self.CarTags = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("CarCoords") is not None:
+            self.CarCoords = []
+            for item in params.get("CarCoords"):
+                obj = Coord()
+                obj._deserialize(item)
+                self.CarCoords.append(obj)
+        if params.get("CarTags") is not None:
+            self.CarTags = []
+            for item in params.get("CarTags"):
+                obj = CarTagItem()
+                obj._deserialize(item)
+                self.CarTags.append(obj)
+        self.RequestId = params.get("RequestId")
 
 
 class TerrorismResult(AbstractModel):

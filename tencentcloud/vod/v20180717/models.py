@@ -93,6 +93,9 @@ class AIRecognitionTemplateItem(AbstractModel):
         :param HeadTailConfigure: 头尾识别控制参数。
 注意：此字段可能返回 null，表示取不到有效值。
         :type HeadTailConfigure: :class:`tencentcloud.vod.v20180717.models.HeadTailConfigureInfo`
+        :param SegmentConfigure: 拆条识别控制参数。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SegmentConfigure: :class:`tencentcloud.vod.v20180717.models.SegmentConfigureInfo`
         :param FaceConfigure: 人脸识别控制参数。
 注意：此字段可能返回 null，表示取不到有效值。
         :type FaceConfigure: :class:`tencentcloud.vod.v20180717.models.FaceConfigureInfo`
@@ -122,6 +125,7 @@ class AIRecognitionTemplateItem(AbstractModel):
         self.Name = None
         self.Comment = None
         self.HeadTailConfigure = None
+        self.SegmentConfigure = None
         self.FaceConfigure = None
         self.OcrFullTextConfigure = None
         self.OcrWordsConfigure = None
@@ -140,6 +144,9 @@ class AIRecognitionTemplateItem(AbstractModel):
         if params.get("HeadTailConfigure") is not None:
             self.HeadTailConfigure = HeadTailConfigureInfo()
             self.HeadTailConfigure._deserialize(params.get("HeadTailConfigure"))
+        if params.get("SegmentConfigure") is not None:
+            self.SegmentConfigure = SegmentConfigureInfo()
+            self.SegmentConfigure._deserialize(params.get("SegmentConfigure"))
         if params.get("FaceConfigure") is not None:
             self.FaceConfigure = FaceConfigureInfo()
             self.FaceConfigure._deserialize(params.get("FaceConfigure"))
@@ -699,6 +706,14 @@ class AiRecognitionResult(AbstractModel):
 <li>HeadTailRecognition：视频片头片尾识别，</li>
 <li>ObjectRecognition：物体识别。</li>
         :type Type: str
+        :param HeadTailTask: 视频片头片尾识别结果，当 Type 为
+ HeadTailRecognition 时有效。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type HeadTailTask: :class:`tencentcloud.vod.v20180717.models.AiRecognitionTaskHeadTailResult`
+        :param SegmentTask: 视频拆条识别结果，当 Type 为
+ SegmentRecognition 时有效。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SegmentTask: :class:`tencentcloud.vod.v20180717.models.AiRecognitionTaskSegmentResult`
         :param FaceTask: 人脸识别结果，当 Type 为 
  FaceRecognition 时有效。
 注意：此字段可能返回 null，表示取不到有效值。
@@ -719,27 +734,30 @@ class AiRecognitionResult(AbstractModel):
  OcrFullTextRecognition 时有效。
 注意：此字段可能返回 null，表示取不到有效值。
         :type OcrFullTextTask: :class:`tencentcloud.vod.v20180717.models.AiRecognitionTaskOcrFullTextResult`
-        :param HeadTailTask: 视频片头片尾识别结果，当 Type 为
- HeadTailRecognition 时有效。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type HeadTailTask: :class:`tencentcloud.vod.v20180717.models.AiRecognitionTaskHeadTailResult`
         :param ObjectTask: 物体识别结果，当 Type 为
  ObjectRecognition 时有效。
 注意：此字段可能返回 null，表示取不到有效值。
         :type ObjectTask: :class:`tencentcloud.vod.v20180717.models.AiRecognitionTaskObjectResult`
         """
         self.Type = None
+        self.HeadTailTask = None
+        self.SegmentTask = None
         self.FaceTask = None
         self.AsrWordsTask = None
         self.AsrFullTextTask = None
         self.OcrWordsTask = None
         self.OcrFullTextTask = None
-        self.HeadTailTask = None
         self.ObjectTask = None
 
 
     def _deserialize(self, params):
         self.Type = params.get("Type")
+        if params.get("HeadTailTask") is not None:
+            self.HeadTailTask = AiRecognitionTaskHeadTailResult()
+            self.HeadTailTask._deserialize(params.get("HeadTailTask"))
+        if params.get("SegmentTask") is not None:
+            self.SegmentTask = AiRecognitionTaskSegmentResult()
+            self.SegmentTask._deserialize(params.get("SegmentTask"))
         if params.get("FaceTask") is not None:
             self.FaceTask = AiRecognitionTaskFaceResult()
             self.FaceTask._deserialize(params.get("FaceTask"))
@@ -755,9 +773,6 @@ class AiRecognitionResult(AbstractModel):
         if params.get("OcrFullTextTask") is not None:
             self.OcrFullTextTask = AiRecognitionTaskOcrFullTextResult()
             self.OcrFullTextTask._deserialize(params.get("OcrFullTextTask"))
-        if params.get("HeadTailTask") is not None:
-            self.HeadTailTask = AiRecognitionTaskHeadTailResult()
-            self.HeadTailTask._deserialize(params.get("HeadTailTask"))
         if params.get("ObjectTask") is not None:
             self.ObjectTask = AiRecognitionTaskObjectResult()
             self.ObjectTask._deserialize(params.get("ObjectTask"))
@@ -1638,6 +1653,121 @@ class AiRecognitionTaskOcrWordsSegmentItem(AbstractModel):
         self.EndTimeOffset = params.get("EndTimeOffset")
         self.Confidence = params.get("Confidence")
         self.AreaCoordSet = params.get("AreaCoordSet")
+
+
+class AiRecognitionTaskSegmentResult(AbstractModel):
+    """视频拆条结果。
+
+    """
+
+    def __init__(self):
+        """
+        :param Status: 任务状态，有 PROCESSING，SUCCESS 和 FAIL 三种。
+        :type Status: str
+        :param ErrCode: 错误码，0：成功，其他值：失败。
+        :type ErrCode: int
+        :param Message: 错误信息。
+        :type Message: str
+        :param Input: 视频拆条任务输入信息。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Input: :class:`tencentcloud.vod.v20180717.models.AiRecognitionTaskSegmentResultInput`
+        :param Output: 视频拆条任务输出信息。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Output: :class:`tencentcloud.vod.v20180717.models.AiRecognitionTaskSegmentResultOutput`
+        """
+        self.Status = None
+        self.ErrCode = None
+        self.Message = None
+        self.Input = None
+        self.Output = None
+
+
+    def _deserialize(self, params):
+        self.Status = params.get("Status")
+        self.ErrCode = params.get("ErrCode")
+        self.Message = params.get("Message")
+        if params.get("Input") is not None:
+            self.Input = AiRecognitionTaskSegmentResultInput()
+            self.Input._deserialize(params.get("Input"))
+        if params.get("Output") is not None:
+            self.Output = AiRecognitionTaskSegmentResultOutput()
+            self.Output._deserialize(params.get("Output"))
+
+
+class AiRecognitionTaskSegmentResultInput(AbstractModel):
+    """视频拆条输入。
+
+    """
+
+    def __init__(self):
+        """
+        :param Definition: 视频拆条模板 ID。
+        :type Definition: int
+        """
+        self.Definition = None
+
+
+    def _deserialize(self, params):
+        self.Definition = params.get("Definition")
+
+
+class AiRecognitionTaskSegmentResultOutput(AbstractModel):
+    """视频拆条输出。
+
+    """
+
+    def __init__(self):
+        """
+        :param SegmentSet: 视频拆条片段列表。
+        :type SegmentSet: list of AiRecognitionTaskSegmentSegmentItem
+        """
+        self.SegmentSet = None
+
+
+    def _deserialize(self, params):
+        if params.get("SegmentSet") is not None:
+            self.SegmentSet = []
+            for item in params.get("SegmentSet"):
+                obj = AiRecognitionTaskSegmentSegmentItem()
+                obj._deserialize(item)
+                self.SegmentSet.append(obj)
+
+
+class AiRecognitionTaskSegmentSegmentItem(AbstractModel):
+    """视频拆条片段。
+
+    """
+
+    def __init__(self):
+        """
+        :param SegmentUrl: 视频拆条片段 Url。
+        :type SegmentUrl: str
+        :param Confidence: 拆条片段置信度。取值：0~100。
+        :type Confidence: float
+        :param StartTimeOffset: 拆条片段起始的偏移时间，单位：秒。
+        :type StartTimeOffset: float
+        :param EndTimeOffset: 拆条片段终止的偏移时间，单位：秒。
+        :type EndTimeOffset: float
+        :param CovImgUrl: 拆条封面图片 Url。
+        :type CovImgUrl: str
+        :param SpecialInfo: 特殊字段，请忽略。
+        :type SpecialInfo: str
+        """
+        self.SegmentUrl = None
+        self.Confidence = None
+        self.StartTimeOffset = None
+        self.EndTimeOffset = None
+        self.CovImgUrl = None
+        self.SpecialInfo = None
+
+
+    def _deserialize(self, params):
+        self.SegmentUrl = params.get("SegmentUrl")
+        self.Confidence = params.get("Confidence")
+        self.StartTimeOffset = params.get("StartTimeOffset")
+        self.EndTimeOffset = params.get("EndTimeOffset")
+        self.CovImgUrl = params.get("CovImgUrl")
+        self.SpecialInfo = params.get("SpecialInfo")
 
 
 class AiReviewPoliticalAsrTaskInput(AbstractModel):
@@ -7201,6 +7331,9 @@ class MediaInfo(AbstractModel):
         :param AdaptiveDynamicStreamingInfo: 转自适应码流信息。包括规格、加密类型、打包格式等相关信息。
 注意：此字段可能返回 null，表示取不到有效值。
         :type AdaptiveDynamicStreamingInfo: :class:`tencentcloud.vod.v20180717.models.MediaAdaptiveDynamicStreamingInfo`
+        :param MiniProgramReviewInfo: 小程序审核信息。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MiniProgramReviewInfo: :class:`tencentcloud.vod.v20180717.models.MediaMiniProgramReviewInfo`
         :param FileId: 媒体文件唯一标识 ID。
         :type FileId: str
         """
@@ -7213,6 +7346,7 @@ class MediaInfo(AbstractModel):
         self.SnapshotByTimeOffsetInfo = None
         self.KeyFrameDescInfo = None
         self.AdaptiveDynamicStreamingInfo = None
+        self.MiniProgramReviewInfo = None
         self.FileId = None
 
 
@@ -7244,6 +7378,9 @@ class MediaInfo(AbstractModel):
         if params.get("AdaptiveDynamicStreamingInfo") is not None:
             self.AdaptiveDynamicStreamingInfo = MediaAdaptiveDynamicStreamingInfo()
             self.AdaptiveDynamicStreamingInfo._deserialize(params.get("AdaptiveDynamicStreamingInfo"))
+        if params.get("MiniProgramReviewInfo") is not None:
+            self.MiniProgramReviewInfo = MediaMiniProgramReviewInfo()
+            self.MiniProgramReviewInfo._deserialize(params.get("MiniProgramReviewInfo"))
         self.FileId = params.get("FileId")
 
 
@@ -7392,6 +7529,104 @@ class MediaMetaData(AbstractModel):
                 self.AudioStreamSet.append(obj)
         self.VideoDuration = params.get("VideoDuration")
         self.AudioDuration = params.get("AudioDuration")
+
+
+class MediaMiniProgramReviewElem(AbstractModel):
+    """小程序审核概要元信息
+
+    """
+
+    def __init__(self):
+        """
+        :param Type: 审核类型。 
+<li>Porn：画面涉黄，</li>
+<li>Porn.Ocr：文字涉黄，</li>
+<li>Porn.Asr：声音涉黄，</li>
+<li>Terrorism：画面涉暴恐，</li>
+<li>Political：画面涉政，</li>
+<li>Political.Ocr：文字涉政，</li>
+<li>Political.Asr：声音涉政。</li>
+        :type Type: str
+        :param Suggestion: 审核意见。
+<li>pass：确认正常，</li>
+<li>block：确认违规，</li>
+<li>review：疑似违规。</li>
+        :type Suggestion: str
+        :param Confidence: 审核结果置信度。取值 0~100。
+        :type Confidence: str
+        """
+        self.Type = None
+        self.Suggestion = None
+        self.Confidence = None
+
+
+    def _deserialize(self, params):
+        self.Type = params.get("Type")
+        self.Suggestion = params.get("Suggestion")
+        self.Confidence = params.get("Confidence")
+
+
+class MediaMiniProgramReviewInfo(AbstractModel):
+    """小程序审核信息
+
+    """
+
+    def __init__(self):
+        """
+        :param MiniProgramReivewList: 审核信息列表。
+        :type MiniProgramReivewList: list of MediaMiniProgramReviewInfoItem
+        """
+        self.MiniProgramReivewList = None
+
+
+    def _deserialize(self, params):
+        if params.get("MiniProgramReivewList") is not None:
+            self.MiniProgramReivewList = []
+            for item in params.get("MiniProgramReivewList"):
+                obj = MediaMiniProgramReviewInfoItem()
+                obj._deserialize(item)
+                self.MiniProgramReivewList.append(obj)
+
+
+class MediaMiniProgramReviewInfoItem(AbstractModel):
+    """小程序审核信息单元
+
+    """
+
+    def __init__(self):
+        """
+        :param Definition: 模板id。小程序视频发布的视频所对应的转码模板ID，为0代表原始视频。
+        :type Definition: int
+        :param MetaData: 视频元信息。
+        :type MetaData: :class:`tencentcloud.vod.v20180717.models.MediaMetaData`
+        :param Url: 小程序审核视频播放地址。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Url: str
+        :param ReviewResult: 小程序视频发布状态：
+<li>Pass：成功。</li>
+<li>Rejected：未通过。</li>
+        :type ReviewResult: str
+        :param ReviewSummery: 小程序审核元素。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ReviewSummery: :class:`tencentcloud.vod.v20180717.models.MediaMiniProgramReviewElem`
+        """
+        self.Definition = None
+        self.MetaData = None
+        self.Url = None
+        self.ReviewResult = None
+        self.ReviewSummery = None
+
+
+    def _deserialize(self, params):
+        self.Definition = params.get("Definition")
+        if params.get("MetaData") is not None:
+            self.MetaData = MediaMetaData()
+            self.MetaData._deserialize(params.get("MetaData"))
+        self.Url = params.get("Url")
+        self.ReviewResult = params.get("ReviewResult")
+        if params.get("ReviewSummery") is not None:
+            self.ReviewSummery = MediaMiniProgramReviewElem()
+            self.ReviewSummery._deserialize(params.get("ReviewSummery"))
 
 
 class MediaOutputInfo(AbstractModel):
@@ -10546,6 +10781,25 @@ class SearchMediaResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class SegmentConfigureInfo(AbstractModel):
+    """视频拆条任务识别控制参数
+
+    """
+
+    def __init__(self):
+        """
+        :param Switch: 视频拆条识别任务开关，可选值：
+<li>ON：开启智能视频拆条识别任务；</li>
+<li>OFF：关闭智能视频拆条识别任务。</li>
+        :type Switch: str
+        """
+        self.Switch = None
+
+
+    def _deserialize(self, params):
+        self.Switch = params.get("Switch")
+
+
 class SimpleHlsClipRequest(AbstractModel):
     """SimpleHlsClip请求参数结构体
 
@@ -11772,6 +12026,12 @@ class VideoTemplateInfo(AbstractModel):
 默认值：0。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Height: int
+        :param FillType: 填充方式，当视频流配置宽高参数与原始视频的宽高比不一致时，对转码的处理方式，即为“填充”。可选填充方式：
+<li> stretch：拉伸，对每一帧进行拉伸，填满整个画面，可能导致转码后的视频被“压扁“或者“拉长“；</li>
+<li>black：留黑，保持视频宽高比不变，边缘剩余部分使用黑色填充。</li>
+默认值：black 。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FillType: str
         """
         self.Codec = None
         self.Fps = None
@@ -11779,6 +12039,7 @@ class VideoTemplateInfo(AbstractModel):
         self.ResolutionAdaptive = None
         self.Width = None
         self.Height = None
+        self.FillType = None
 
 
     def _deserialize(self, params):
@@ -11788,6 +12049,7 @@ class VideoTemplateInfo(AbstractModel):
         self.ResolutionAdaptive = params.get("ResolutionAdaptive")
         self.Width = params.get("Width")
         self.Height = params.get("Height")
+        self.FillType = params.get("FillType")
 
 
 class VideoTemplateInfoForUpdate(AbstractModel):

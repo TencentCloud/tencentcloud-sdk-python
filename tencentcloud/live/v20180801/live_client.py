@@ -1509,7 +1509,7 @@ class LiveClient(AbstractClient):
 
 
     def DescribeLiveStreamEventList(self, request):
-        """用于查询推断流事件。
+        """用于查询推断流事件。<br>
 
         注意：该接口可通过使用IsFilter进行过滤，返回推流历史记录。
 
@@ -1595,7 +1595,8 @@ class LiveClient(AbstractClient):
 
 
     def DescribeLiveStreamPublishedList(self, request):
-        """返回已经推过流的流列表
+        """返回已经推过流的流列表。<br>
+        注意：分页最多支持查询1万条记录，可通过调整查询时间范围来获取更多数据。
 
         :param request: 调用DescribeLiveStreamPublishedList所需参数的结构体。
         :type request: :class:`tencentcloud.live.v20180801.models.DescribeLiveStreamPublishedListRequest`

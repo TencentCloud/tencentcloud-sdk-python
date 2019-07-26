@@ -1153,7 +1153,7 @@ class CreatePullStreamConfigRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param FromUrl: 源Url。
+        :param FromUrl: 源Url。目前可支持直播流及点播文件。
         :type FromUrl: str
         :param ToUrl: 目的Url，目前限制该目标地址为腾讯域名。
         :type ToUrl: str
@@ -3073,17 +3073,18 @@ class DescribeLiveStreamPublishedListRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param DomainName: 您的域名。
+        :param DomainName: 您的推流域名。
         :type DomainName: str
         :param EndTime: 结束时间。
 UTC 格式，例如：2016-06-30T19:00:00Z。
 不超过当前时间。
+注意：EndTime和StartTime相差不可超过30天。
         :type EndTime: str
         :param StartTime: 起始时间。 
 UTC 格式，例如：2016-06-29T19:00:00Z。
-和当前时间相隔不超过7天。
+最长支持查询60天内数据。
         :type StartTime: str
-        :param AppName: 推流路径，与推流和播放地址中的AppName保持一致，默认为 live。
+        :param AppName: 推流路径，与推流和播放地址中的AppName保持一致，默认为 live。不支持模糊匹配。
         :type AppName: str
         :param PageNum: 取得第几页。
 默认值：1。
@@ -3093,6 +3094,8 @@ UTC 格式，例如：2016-06-29T19:00:00Z。
 取值范围：1~100 之前的任意整数。
 默认值：10。
         :type PageSize: int
+        :param StreamName: 流名称，支持模糊匹配。
+        :type StreamName: str
         """
         self.DomainName = None
         self.EndTime = None
@@ -3100,6 +3103,7 @@ UTC 格式，例如：2016-06-29T19:00:00Z。
         self.AppName = None
         self.PageNum = None
         self.PageSize = None
+        self.StreamName = None
 
 
     def _deserialize(self, params):
@@ -3109,6 +3113,7 @@ UTC 格式，例如：2016-06-29T19:00:00Z。
         self.AppName = params.get("AppName")
         self.PageNum = params.get("PageNum")
         self.PageSize = params.get("PageSize")
+        self.StreamName = params.get("StreamName")
 
 
 class DescribeLiveStreamPublishedListResponse(AbstractModel):

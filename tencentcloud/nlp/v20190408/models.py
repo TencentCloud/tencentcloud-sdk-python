@@ -337,9 +337,12 @@ class LexicalAnalysisResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param NerTokens: 命名实体识别结果
+        :param NerTokens: 命名实体识别结果。取值范围：
+<li>PER：表示人名</li>
+<li>LOC：表示地名</li>
+<li>ORG：表示机构团体名</li>
         :type NerTokens: list of NerToken
-        :param PosTokens: 分词&词性标注结果
+        :param PosTokens: 分词&词性标注结果（词性表请参见附录）
         :type PosTokens: list of PosToken
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -671,7 +674,7 @@ class TextClassificationResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param Classes: 文本分类结果
+        :param Classes: 文本分类结果（文本分类映射表请参见附录）
         :type Classes: list of ClassificationResult
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
