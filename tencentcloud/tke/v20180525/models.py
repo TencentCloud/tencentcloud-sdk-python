@@ -66,13 +66,25 @@ class AddExistedInstancesResponse(AbstractModel):
 
     def __init__(self):
         """
+        :param FailedInstanceIds: 失败的节点ID
+        :type FailedInstanceIds: list of str
+        :param SuccInstanceIds: 成功的节点ID
+        :type SuccInstanceIds: list of str
+        :param TimeoutInstanceIds: 超时未返回出来节点的ID(可能失败，也可能成功)
+        :type TimeoutInstanceIds: list of str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
+        self.FailedInstanceIds = None
+        self.SuccInstanceIds = None
+        self.TimeoutInstanceIds = None
         self.RequestId = None
 
 
     def _deserialize(self, params):
+        self.FailedInstanceIds = params.get("FailedInstanceIds")
+        self.SuccInstanceIds = params.get("SuccInstanceIds")
+        self.TimeoutInstanceIds = params.get("TimeoutInstanceIds")
         self.RequestId = params.get("RequestId")
 
 
@@ -138,14 +150,18 @@ class ClusterAdvancedSettings(AbstractModel):
         :type IPVS: bool
         :param AsEnabled: 是否启用集群节点扩缩容
         :type AsEnabled: bool
+        :param ContainerRuntime: 集群使用的runtime类型，包括"docker"和"containerd"两种类型，默认为"docker"
+        :type ContainerRuntime: str
         """
         self.IPVS = None
         self.AsEnabled = None
+        self.ContainerRuntime = None
 
 
     def _deserialize(self, params):
         self.IPVS = params.get("IPVS")
         self.AsEnabled = params.get("AsEnabled")
+        self.ContainerRuntime = params.get("ContainerRuntime")
 
 
 class ClusterBasicSettings(AbstractModel):
@@ -233,6 +249,8 @@ class ClusterNetworkSettings(AbstractModel):
         :type Ipvs: bool
         :param VpcId: 集群的VPCID（如果创建空集群，为必传值，否则自动设置为和集群的节点保持一致）
         :type VpcId: str
+        :param Cni: 网络插件是否启用CNI(默认开启)
+        :type Cni: bool
         """
         self.ClusterCIDR = None
         self.IgnoreClusterCIDRConflict = None
@@ -240,6 +258,7 @@ class ClusterNetworkSettings(AbstractModel):
         self.MaxClusterServiceNum = None
         self.Ipvs = None
         self.VpcId = None
+        self.Cni = None
 
 
     def _deserialize(self, params):
@@ -249,6 +268,55 @@ class ClusterNetworkSettings(AbstractModel):
         self.MaxClusterServiceNum = params.get("MaxClusterServiceNum")
         self.Ipvs = params.get("Ipvs")
         self.VpcId = params.get("VpcId")
+        self.Cni = params.get("Cni")
+
+
+class CreateClusterInstancesRequest(AbstractModel):
+    """CreateClusterInstances请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ClusterId: 集群 ID，请填写 查询集群列表 接口中返回的 clusterId 字段
+        :type ClusterId: str
+        :param RunInstancePara: CVM创建透传参数，json化字符串格式，详见[CVM创建实例](https://cloud.tencent.com/document/product/213/15730)接口。
+        :type RunInstancePara: str
+        :param InstanceAdvancedSettings: 实例额外需要设置参数信息
+        :type InstanceAdvancedSettings: :class:`tencentcloud.tke.v20180525.models.InstanceAdvancedSettings`
+        """
+        self.ClusterId = None
+        self.RunInstancePara = None
+        self.InstanceAdvancedSettings = None
+
+
+    def _deserialize(self, params):
+        self.ClusterId = params.get("ClusterId")
+        self.RunInstancePara = params.get("RunInstancePara")
+        if params.get("InstanceAdvancedSettings") is not None:
+            self.InstanceAdvancedSettings = InstanceAdvancedSettings()
+            self.InstanceAdvancedSettings._deserialize(params.get("InstanceAdvancedSettings"))
+
+
+class CreateClusterInstancesResponse(AbstractModel):
+    """CreateClusterInstances返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param InstanceIdSet: 节点实例ID
+        :type InstanceIdSet: list of str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.InstanceIdSet = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.InstanceIdSet = params.get("InstanceIdSet")
+        self.RequestId = params.get("RequestId")
 
 
 class CreateClusterRequest(AbstractModel):
@@ -373,6 +441,44 @@ class DeleteClusterInstancesResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DeleteClusterRequest(AbstractModel):
+    """DeleteCluster请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ClusterId: 集群ID
+        :type ClusterId: str
+        :param InstanceDeleteMode: 集群实例删除时的策略：terminate（销毁实例，仅支持按量计费云主机实例） retain （仅移除，保留实例）
+        :type InstanceDeleteMode: str
+        """
+        self.ClusterId = None
+        self.InstanceDeleteMode = None
+
+
+    def _deserialize(self, params):
+        self.ClusterId = params.get("ClusterId")
+        self.InstanceDeleteMode = params.get("InstanceDeleteMode")
+
+
+class DeleteClusterResponse(AbstractModel):
+    """DeleteCluster返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeClusterInstancesRequest(AbstractModel):
     """DescribeClusterInstances请求参数结构体
 
@@ -429,6 +535,68 @@ class DescribeClusterInstancesResponse(AbstractModel):
                 obj = Instance()
                 obj._deserialize(item)
                 self.InstanceSet.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeClusterSecurityRequest(AbstractModel):
+    """DescribeClusterSecurity请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ClusterId: 集群 ID，请填写 查询集群列表 接口中返回的 clusterId 字段
+        :type ClusterId: str
+        """
+        self.ClusterId = None
+
+
+    def _deserialize(self, params):
+        self.ClusterId = params.get("ClusterId")
+
+
+class DescribeClusterSecurityResponse(AbstractModel):
+    """DescribeClusterSecurity返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param UserName: 集群的账号名称
+        :type UserName: str
+        :param Password: 集群的访问密码
+        :type Password: str
+        :param CertificationAuthority: 集群访问CA证书
+        :type CertificationAuthority: str
+        :param ClusterExternalEndpoint: 集群访问的地址
+        :type ClusterExternalEndpoint: str
+        :param Domain: 集群访问的域名
+        :type Domain: str
+        :param PgwEndpoint: 集群Endpoint地址
+        :type PgwEndpoint: str
+        :param SecurityPolicy: 集群访问策略组
+        :type SecurityPolicy: list of str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.UserName = None
+        self.Password = None
+        self.CertificationAuthority = None
+        self.ClusterExternalEndpoint = None
+        self.Domain = None
+        self.PgwEndpoint = None
+        self.SecurityPolicy = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.UserName = params.get("UserName")
+        self.Password = params.get("Password")
+        self.CertificationAuthority = params.get("CertificationAuthority")
+        self.ClusterExternalEndpoint = params.get("ClusterExternalEndpoint")
+        self.Domain = params.get("Domain")
+        self.PgwEndpoint = params.get("PgwEndpoint")
+        self.SecurityPolicy = params.get("SecurityPolicy")
         self.RequestId = params.get("RequestId")
 
 
@@ -497,6 +665,80 @@ class DescribeClustersResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeExistedInstancesRequest(AbstractModel):
+    """DescribeExistedInstances请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ClusterId: 集群 ID，请填写查询集群列表 接口中返回的 ClusterId 字段（仅通过ClusterId获取需要过滤条件中的VPCID，比较状态时会使用该地域下所有集群中的节点进行比较。参数不支持同时指定InstanceIds和ClusterId。
+        :type ClusterId: str
+        :param InstanceIds: 按照一个或者多个实例ID查询。实例ID形如：ins-xxxxxxxx。（此参数的具体格式可参考API简介的id.N一节）。每次请求的实例的上限为100。参数不支持同时指定InstanceIds和Filters。
+        :type InstanceIds: list of str
+        :param Filters: 过滤条件,字段和详见[CVM查询实例](https://cloud.tencent.com/document/api/213/15728)如果设置了ClusterId，会附加集群的VPCID作为查询字段，在此情况下如果在Filter中指定了"vpc-id"作为过滤字段，指定的VPCID必须与集群的VPCID相同。
+        :type Filters: :class:`tencentcloud.tke.v20180525.models.Filter`
+        :param VagueIpAddress: 实例IP进行过滤(同时支持内网IP和外网IP)
+        :type VagueIpAddress: str
+        :param VagueInstanceName: 实例名称进行过滤
+        :type VagueInstanceName: str
+        :param Offset: 偏移量，默认为0。关于Offset的更进一步介绍请参考 API [简介](https://cloud.tencent.com/document/api/213/15688)中的相关小节。
+        :type Offset: int
+        :param Limit: 返回数量，默认为20，最大值为100。关于Limit的更进一步介绍请参考 API [简介](https://cloud.tencent.com/document/api/213/15688)中的相关小节。
+        :type Limit: int
+        """
+        self.ClusterId = None
+        self.InstanceIds = None
+        self.Filters = None
+        self.VagueIpAddress = None
+        self.VagueInstanceName = None
+        self.Offset = None
+        self.Limit = None
+
+
+    def _deserialize(self, params):
+        self.ClusterId = params.get("ClusterId")
+        self.InstanceIds = params.get("InstanceIds")
+        if params.get("Filters") is not None:
+            self.Filters = Filter()
+            self.Filters._deserialize(params.get("Filters"))
+        self.VagueIpAddress = params.get("VagueIpAddress")
+        self.VagueInstanceName = params.get("VagueInstanceName")
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+
+
+class DescribeExistedInstancesResponse(AbstractModel):
+    """DescribeExistedInstances返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ExistedInstanceSet: 已经存在的实例信息数组。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ExistedInstanceSet: list of ExistedInstance
+        :param TotalCount: 符合条件的实例数量。
+        :type TotalCount: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.ExistedInstanceSet = None
+        self.TotalCount = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("ExistedInstanceSet") is not None:
+            self.ExistedInstanceSet = []
+            for item in params.get("ExistedInstanceSet"):
+                obj = ExistedInstance()
+                obj._deserialize(item)
+                self.ExistedInstanceSet.append(obj)
+        self.TotalCount = params.get("TotalCount")
+        self.RequestId = params.get("RequestId")
+
+
 class EnhancedService(AbstractModel):
     """描述了实例的增强服务启用情况与其设置，如云安全，云监控等实例 Agent
 
@@ -520,6 +762,86 @@ class EnhancedService(AbstractModel):
         if params.get("MonitorService") is not None:
             self.MonitorService = RunMonitorServiceEnabled()
             self.MonitorService._deserialize(params.get("MonitorService"))
+
+
+class ExistedInstance(AbstractModel):
+    """已经存在的实例信息
+
+    """
+
+    def __init__(self):
+        """
+        :param Usable: 实例是否支持加入集群(TRUE 可以加入 FALSE 不能加入)。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Usable: bool
+        :param UnusableReason: 实例不支持加入的原因。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UnusableReason: str
+        :param AlreadyInCluster: 实例已经所在的集群ID。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AlreadyInCluster: str
+        :param InstanceId: 实例ID形如：ins-xxxxxxxx。
+        :type InstanceId: str
+        :param InstanceName: 实例名称。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InstanceName: str
+        :param PrivateIpAddresses: 实例主网卡的内网IP列表。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PrivateIpAddresses: list of str
+        :param PublicIpAddresses: 实例主网卡的公网IP列表。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PublicIpAddresses: list of str
+        :param CreatedTime: 创建时间。按照ISO8601标准表示，并且使用UTC时间。格式为：YYYY-MM-DDThh:mm:ssZ。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CreatedTime: str
+        :param InstanceChargeType: 实例计费模式。取值范围：
+PREPAID：表示预付费，即包年包月
+POSTPAID_BY_HOUR：表示后付费，即按量计费
+CDHPAID：CDH付费，即只对CDH计费，不对CDH上的实例计费。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InstanceChargeType: str
+        :param CPU: 实例的CPU核数，单位：核。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CPU: int
+        :param Memory: 实例内存容量，单位：GB。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Memory: int
+        :param OsName: 操作系统名称。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OsName: str
+        :param InstanceType: 实例机型。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InstanceType: str
+        """
+        self.Usable = None
+        self.UnusableReason = None
+        self.AlreadyInCluster = None
+        self.InstanceId = None
+        self.InstanceName = None
+        self.PrivateIpAddresses = None
+        self.PublicIpAddresses = None
+        self.CreatedTime = None
+        self.InstanceChargeType = None
+        self.CPU = None
+        self.Memory = None
+        self.OsName = None
+        self.InstanceType = None
+
+
+    def _deserialize(self, params):
+        self.Usable = params.get("Usable")
+        self.UnusableReason = params.get("UnusableReason")
+        self.AlreadyInCluster = params.get("AlreadyInCluster")
+        self.InstanceId = params.get("InstanceId")
+        self.InstanceName = params.get("InstanceName")
+        self.PrivateIpAddresses = params.get("PrivateIpAddresses")
+        self.PublicIpAddresses = params.get("PublicIpAddresses")
+        self.CreatedTime = params.get("CreatedTime")
+        self.InstanceChargeType = params.get("InstanceChargeType")
+        self.CPU = params.get("CPU")
+        self.Memory = params.get("Memory")
+        self.OsName = params.get("OsName")
+        self.InstanceType = params.get("InstanceType")
 
 
 class ExistedInstancesForNode(AbstractModel):
@@ -612,8 +934,6 @@ class Instance(AbstractModel):
 
     def __init__(self):
         """
-        :param InstanceAdvanceSettings: 实例的附加信息
-        :type InstanceAdvanceSettings: :class:`tencentcloud.tke.v20180525.models.InstanceAdvancedSettings`
         :param InstanceId: 实例ID
         :type InstanceId: str
         :param InstanceRole: 节点角色, MASTER, WORKER, ETCD, MASTER_ETCD,ALL, 默认为WORKER
@@ -623,7 +943,6 @@ class Instance(AbstractModel):
         :param InstanceState: 实例的状态（running 运行中，initializing 初始化中，failed 异常）
         :type InstanceState: str
         """
-        self.InstanceAdvanceSettings = None
         self.InstanceId = None
         self.InstanceRole = None
         self.FailedReason = None
@@ -631,9 +950,6 @@ class Instance(AbstractModel):
 
 
     def _deserialize(self, params):
-        if params.get("InstanceAdvanceSettings") is not None:
-            self.InstanceAdvanceSettings = InstanceAdvancedSettings()
-            self.InstanceAdvanceSettings._deserialize(params.get("InstanceAdvanceSettings"))
         self.InstanceId = params.get("InstanceId")
         self.InstanceRole = params.get("InstanceRole")
         self.FailedReason = params.get("FailedReason")

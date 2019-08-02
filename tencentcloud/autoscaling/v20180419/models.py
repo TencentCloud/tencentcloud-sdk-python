@@ -400,13 +400,13 @@ class CreateAutoScalingGroupRequest(AbstractModel):
         :type ProjectId: int
         :param ForwardLoadBalancers: 应用型负载均衡器列表，目前长度上限为5，LoadBalancerIds 和 ForwardLoadBalancers 二者同时最多只能指定一个
         :type ForwardLoadBalancers: list of ForwardLoadBalancer
-        :param SubnetIds: 子网ID列表，VPC场景下必须指定子网
+        :param SubnetIds: 子网ID列表，VPC场景下必须指定子网。多个子网以填写顺序为优先级，依次进行尝试，直至可以成功创建实例。
         :type SubnetIds: list of str
         :param TerminationPolicies: 销毁策略，目前长度上限为1。取值包括 OLDEST_INSTANCE 和 NEWEST_INSTANCE，默认取值为 OLDEST_INSTANCE。
 <br><li> OLDEST_INSTANCE 优先销毁伸缩组中最旧的实例。
 <br><li> NEWEST_INSTANCE，优先销毁伸缩组中最新的实例。
         :type TerminationPolicies: list of str
-        :param Zones: 可用区列表，基础网络场景下必须指定可用区
+        :param Zones: 可用区列表，基础网络场景下必须指定可用区。多个可用区以填写顺序为优先级，依次进行尝试，直至可以成功创建实例。
         :type Zones: list of str
         :param RetryPolicy: 重试策略，取值包括 IMMEDIATE_RETRY、 INCREMENTAL_INTERVALS、NO_RETRY，默认取值为 IMMEDIATE_RETRY。
 <br><li> IMMEDIATE_RETRY，立即重试，在较短时间内快速重试，连续失败超过一定次数（5次）后不再重试。
@@ -2123,6 +2123,8 @@ class Instance(AbstractModel):
         :type InstanceType: str
         :param VersionNumber: 版本号
         :type VersionNumber: int
+        :param AutoScalingGroupName: 伸缩组名称
+        :type AutoScalingGroupName: str
         """
         self.InstanceId = None
         self.AutoScalingGroupId = None
@@ -2136,6 +2138,7 @@ class Instance(AbstractModel):
         self.AddTime = None
         self.InstanceType = None
         self.VersionNumber = None
+        self.AutoScalingGroupName = None
 
 
     def _deserialize(self, params):
@@ -2151,6 +2154,7 @@ class Instance(AbstractModel):
         self.AddTime = params.get("AddTime")
         self.InstanceType = params.get("InstanceType")
         self.VersionNumber = params.get("VersionNumber")
+        self.AutoScalingGroupName = params.get("AutoScalingGroupName")
 
 
 class InstanceChargePrepaid(AbstractModel):

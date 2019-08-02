@@ -84,9 +84,12 @@ class AddLiveDomainRequest(AbstractModel):
 1：国内，
 2：全球，
 3：境外。
+默认值：1。
         :type PlayType: int
-        :param IsDelayLive: 默认 0 ：普通直播，
-1：慢直播。
+        :param IsDelayLive: 是否是慢直播：
+0： 普通直播，
+1 ：慢直播 。
+默认值： 0。
         :type IsDelayLive: int
         """
         self.DomainName = None
@@ -492,9 +495,11 @@ class CreateLiveCallbackTemplateRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param TemplateName: 模板名称。非空的字符串
+        :param TemplateName: 模板名称，非空的字符串。
+长度上限：255字节。
         :type TemplateName: str
         :param Description: 描述信息。
+长度上限：1024字节。
         :type Description: str
         :param StreamBeginNotifyUrl: 开播回调URL，
 相关协议文档：[事件消息通知](/document/product/267/32744)。
@@ -885,7 +890,8 @@ class CreateLiveSnapshotTemplateRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param TemplateName: 模板名称。非空的字符串。
+        :param TemplateName: 模板名称，非空的字符串。
+长度上限：255字节。
         :type TemplateName: str
         :param CosAppId: Cos AppId。
         :type CosAppId: int
@@ -894,6 +900,7 @@ class CreateLiveSnapshotTemplateRequest(AbstractModel):
         :param CosRegion: Cos地区。
         :type CosRegion: str
         :param Description: 描述信息。
+长度上限：1024字节。
         :type Description: str
         :param SnapshotInterval: 截图间隔，单位s，默认10s。
 范围： 5s ~ 600s。
@@ -1157,9 +1164,18 @@ class CreatePullStreamConfigRequest(AbstractModel):
         :type FromUrl: str
         :param ToUrl: 目的Url，目前限制该目标地址为腾讯域名。
         :type ToUrl: str
-        :param AreaId: 区域id,1-深圳,2-上海，3-天津,4-香港。
+        :param AreaId: 区域id：
+1-深圳，
+2-上海，
+3-天津，
+4-香港。
         :type AreaId: int
-        :param IspId: 运营商id,1-电信,2-移动,3-联通,4-其他,AreaId为4的时候,IspId只能为其他。
+        :param IspId: 运营商id：
+1-电信，
+2-移动，
+3-联通，
+4-其他。
+注：AreaId为4的时候,IspId只能为其他。
         :type IspId: int
         :param StartTime: 开始时间。
 使用UTC格式时间，
@@ -1835,12 +1851,16 @@ class DescribeBillBandwidthAndFluxListRequest(AbstractModel):
         :type EndTime: str
         :param PlayDomains: 直播播放域名，若不填，表示总体数据。
         :type PlayDomains: list of str
-        :param MainlandOrOversea: 国内还是国外，若不填，表示国内+国外。
+        :param MainlandOrOversea: 可选值：
+Mainland：查询国内数据，
+Oversea：则查询国外数据。
+默认：查询国内+国外的数据。
         :type MainlandOrOversea: str
         :param Granularity: 数据粒度，支持如下粒度：
-5：5分钟粒度，默认值（跨度不支持超过1天）；
-60：1小时粒度（跨度不支持超过一个月）；
+5：5分钟粒度，（跨度不支持超过1天），
+60：1小时粒度（跨度不支持超过一个月），
 1440：天粒度（跨度不支持超过一个月）。
+默认值：5。
         :type Granularity: int
         """
         self.StartTime = None
@@ -4649,7 +4669,7 @@ class ForbidLiveDomainRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param DomainName: 停用的直播域名
+        :param DomainName: 待停用的直播域名。
         :type DomainName: str
         """
         self.DomainName = None
@@ -5308,14 +5328,17 @@ class ModifyLiveSnapshotTemplateRequest(AbstractModel):
         :param TemplateId: 模板Id。
         :type TemplateId: int
         :param TemplateName: 模板名称。
+长度上限：255字节。
         :type TemplateName: str
         :param Description: 描述信息。
+长度上限：1024字节。
         :type Description: str
-        :param SnapshotInterval: 截图时间间隔
+        :param SnapshotInterval: 截图间隔，单位s，默认10s。
+范围： 5s ~ 600s。
         :type SnapshotInterval: int
-        :param Width: 截图宽度。
+        :param Width: 截图宽度。默认：0（原始宽）。
         :type Width: int
-        :param Height: 截图高度。
+        :param Height: 截图高度。默认：0（原始高）。
         :type Height: int
         :param PornFlag: 是否开启鉴黄，0：不开启，1：开启。
         :type PornFlag: int
@@ -6230,7 +6253,7 @@ class SnapshotTemplateInfo(AbstractModel):
         :type TemplateId: int
         :param TemplateName: 模板名称。
         :type TemplateName: str
-        :param SnapshotInterval: 截图时间间隔。5-300
+        :param SnapshotInterval: 截图时间间隔。5-300秒。
         :type SnapshotInterval: int
         :param Width: 截图宽度。0-3000 0原始宽度并适配原始比例
         :type Width: int

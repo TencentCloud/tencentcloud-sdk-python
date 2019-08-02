@@ -2243,7 +2243,7 @@ class LiveClient(AbstractClient):
 
 
     def ForbidLiveDomain(self, request):
-        """停用使用某个直播域名
+        """停止使用某个直播域名。
 
         :param request: 调用ForbidLiveDomain所需参数的结构体。
         :type request: :class:`tencentcloud.live.v20180801.models.ForbidLiveDomainRequest`

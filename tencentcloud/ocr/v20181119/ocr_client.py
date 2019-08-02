@@ -306,7 +306,7 @@ class OcrClient(AbstractClient):
 
 
     def IDCardOCR(self, request):
-        """本接口支持二代身份证正反面所有字段的识别，包括姓名、性别、民族、出生日期、住址、公民身份证号、签发机关、有效期限；具备身份证照片、人像照片的裁剪功能和翻拍件、复印件的识别告警功能。
+        """本接口支持中国大陆居民二代身份证正反面所有字段的识别，包括姓名、性别、民族、出生日期、住址、公民身份证号、签发机关、有效期限；具备身份证照片、人像照片的裁剪功能和翻拍、PS、复印件告警功能，以及边框和框内遮挡告警、临时身份证告警和身份证有效期不合法告警等扩展功能。
 
         :param request: 调用IDCardOCR所需参数的结构体。
         :type request: :class:`tencentcloud.ocr.v20181119.models.IDCardOCRRequest`

@@ -63,7 +63,7 @@ class ClearInstanceRequest(AbstractModel):
         """
         :param InstanceId: 实例Id
         :type InstanceId: str
-        :param Password: redis的实例密码
+        :param Password: redis的实例密码（免密实例不需要传密码，非免密实例必传）
         :type Password: str
         """
         self.InstanceId = None
@@ -105,7 +105,7 @@ class CreateInstancesRequest(AbstractModel):
         """
         :param ZoneId: 实例所属的可用区id
         :type ZoneId: int
-        :param TypeId: 实例类型：2 – Redis2.8主从版，3 – Redis3.2主从版(CKV主从版)，4 – Redis3.2集群版(CKV集群版)，5-Redis2.8单机版，7 – Redis4.0集群版，
+        :param TypeId: 实例类型：2 – Redis2.8主从版，3 – Redis3.2主从版(CKV主从版)，4 – Redis3.2集群版(CKV集群版)，5-Redis2.8单机版，6 – Redis4.0主从版，7 – Redis4.0集群版，
         :type TypeId: int
         :param MemSize: 实例容量，单位MB， 取值大小以 查询售卖规格接口返回的规格为准
         :type MemSize: int
@@ -113,10 +113,10 @@ class CreateInstancesRequest(AbstractModel):
         :type GoodsNum: int
         :param Period: 购买时长，在创建包年包月实例的时候需要填写，按量计费实例填1即可，单位：月，取值范围 [1,2,3,4,5,6,7,8,9,10,11,12,24,36]
         :type Period: int
-        :param Password: 实例密码，密码规则：1.长度为8-16个字符；2:至少包含字母、数字和字符!@^*()中的两种
-        :type Password: str
         :param BillingMode: 付费方式:0-按量计费，1-包年包月。
         :type BillingMode: int
+        :param Password: 实例密码，密码规则：1.长度为8-16个字符；2:至少包含字母、数字和字符!@^*()中的两种（创建免密实例时，可不传入该字段，该字段内容会忽略）
+        :type Password: str
         :param VpcId: 私有网络ID，如果不传则默认选择基础网络，请使用私有网络列表查询，如：vpc-sad23jfdfk
         :type VpcId: str
         :param SubnetId: 基础网络下， subnetId无效； vpc子网下，取值以查询子网列表，如：subnet-fdj24n34j2
@@ -129,7 +129,7 @@ class CreateInstancesRequest(AbstractModel):
         :type SecurityGroupIdList: list of str
         :param VPort: 用户自定义的端口 不填则默认为6379
         :type VPort: int
-        :param RedisShardNum: 实例分片数量，Redis2.8主从版、CKV主从版和Redis2.8单机版不需要填写
+        :param RedisShardNum: 实例分片数量，Redis2.8主从版、CKV主从版和Redis2.8单机版、Redis4.0主从版不需要填写
         :type RedisShardNum: int
         :param RedisReplicasNum: 实例副本数量，Redis2.8主从版、CKV主从版和Redis2.8单机版不需要填写
         :type RedisReplicasNum: int
@@ -137,14 +137,16 @@ class CreateInstancesRequest(AbstractModel):
         :type ReplicasReadonly: bool
         :param InstanceName: 实例名称
         :type InstanceName: str
+        :param NoAuth: 是否支持免密，true-免密实例，false-非免密实例，默认为非免密实例
+        :type NoAuth: bool
         """
         self.ZoneId = None
         self.TypeId = None
         self.MemSize = None
         self.GoodsNum = None
         self.Period = None
-        self.Password = None
         self.BillingMode = None
+        self.Password = None
         self.VpcId = None
         self.SubnetId = None
         self.ProjectId = None
@@ -155,6 +157,7 @@ class CreateInstancesRequest(AbstractModel):
         self.RedisReplicasNum = None
         self.ReplicasReadonly = None
         self.InstanceName = None
+        self.NoAuth = None
 
 
     def _deserialize(self, params):
@@ -163,8 +166,8 @@ class CreateInstancesRequest(AbstractModel):
         self.MemSize = params.get("MemSize")
         self.GoodsNum = params.get("GoodsNum")
         self.Period = params.get("Period")
-        self.Password = params.get("Password")
         self.BillingMode = params.get("BillingMode")
+        self.Password = params.get("Password")
         self.VpcId = params.get("VpcId")
         self.SubnetId = params.get("SubnetId")
         self.ProjectId = params.get("ProjectId")
@@ -175,6 +178,7 @@ class CreateInstancesRequest(AbstractModel):
         self.RedisReplicasNum = params.get("RedisReplicasNum")
         self.ReplicasReadonly = params.get("ReplicasReadonly")
         self.InstanceName = params.get("InstanceName")
+        self.NoAuth = params.get("NoAuth")
 
 
 class CreateInstancesResponse(AbstractModel):
@@ -186,15 +190,19 @@ class CreateInstancesResponse(AbstractModel):
         """
         :param DealId: 交易的Id
         :type DealId: str
+        :param InstanceIds: 实例ID(该字段灰度中，部分地域不可见)
+        :type InstanceIds: list of str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.DealId = None
+        self.InstanceIds = None
         self.RequestId = None
 
 
     def _deserialize(self, params):
         self.DealId = params.get("DealId")
+        self.InstanceIds = params.get("InstanceIds")
         self.RequestId = params.get("RequestId")
 
 
@@ -487,6 +495,8 @@ class DescribeInstanceParamsResponse(AbstractModel):
         :type InstanceIntegerParam: list of InstanceIntegerParam
         :param InstanceTextParam: 实例字符型参数
         :type InstanceTextParam: list of InstanceTextParam
+        :param InstanceMultiParam: 实例多选项型参数
+        :type InstanceMultiParam: list of InstanceMultiParam
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -494,6 +504,7 @@ class DescribeInstanceParamsResponse(AbstractModel):
         self.InstanceEnumParam = None
         self.InstanceIntegerParam = None
         self.InstanceTextParam = None
+        self.InstanceMultiParam = None
         self.RequestId = None
 
 
@@ -517,6 +528,12 @@ class DescribeInstanceParamsResponse(AbstractModel):
                 obj = InstanceTextParam()
                 obj._deserialize(item)
                 self.InstanceTextParam.append(obj)
+        if params.get("InstanceMultiParam") is not None:
+            self.InstanceMultiParam = []
+            for item in params.get("InstanceMultiParam"):
+                obj = InstanceMultiParam()
+                obj._deserialize(item)
+                self.InstanceMultiParam.append(obj)
         self.RequestId = params.get("RequestId")
 
 
@@ -1157,6 +1174,8 @@ class InstanceEnumParam(AbstractModel):
         :type Tips: str
         :param EnumValue: 参数可取值
         :type EnumValue: list of str
+        :param Status: 参数状态, 1: 修改中， 2：修改完成
+        :type Status: int
         """
         self.ParamName = None
         self.ValueType = None
@@ -1165,6 +1184,7 @@ class InstanceEnumParam(AbstractModel):
         self.CurrentValue = None
         self.Tips = None
         self.EnumValue = None
+        self.Status = None
 
 
     def _deserialize(self, params):
@@ -1175,6 +1195,7 @@ class InstanceEnumParam(AbstractModel):
         self.CurrentValue = params.get("CurrentValue")
         self.Tips = params.get("Tips")
         self.EnumValue = params.get("EnumValue")
+        self.Status = params.get("Status")
 
 
 class InstanceIntegerParam(AbstractModel):
@@ -1200,6 +1221,8 @@ class InstanceIntegerParam(AbstractModel):
         :type Min: str
         :param Max: 参数最大值
         :type Max: str
+        :param Status: 参数状态, 1: 修改中， 2：修改完成
+        :type Status: int
         """
         self.ParamName = None
         self.ValueType = None
@@ -1209,6 +1232,7 @@ class InstanceIntegerParam(AbstractModel):
         self.Tips = None
         self.Min = None
         self.Max = None
+        self.Status = None
 
 
     def _deserialize(self, params):
@@ -1220,6 +1244,52 @@ class InstanceIntegerParam(AbstractModel):
         self.Tips = params.get("Tips")
         self.Min = params.get("Min")
         self.Max = params.get("Max")
+        self.Status = params.get("Status")
+
+
+class InstanceMultiParam(AbstractModel):
+    """实例多选项类型参数描述
+
+    """
+
+    def __init__(self):
+        """
+        :param ParamName: 参数名
+        :type ParamName: str
+        :param ValueType: 参数类型：multi
+        :type ValueType: str
+        :param NeedRestart: 修改后是否需要重启：true，false
+        :type NeedRestart: str
+        :param DefaultValue: 参数默认值
+        :type DefaultValue: str
+        :param CurrentValue: 当前运行参数值
+        :type CurrentValue: str
+        :param Tips: 参数说明
+        :type Tips: str
+        :param EnumValue: 参数说明
+        :type EnumValue: str
+        :param Status: 参数状态, 1: 修改中， 2：修改完成
+        :type Status: int
+        """
+        self.ParamName = None
+        self.ValueType = None
+        self.NeedRestart = None
+        self.DefaultValue = None
+        self.CurrentValue = None
+        self.Tips = None
+        self.EnumValue = None
+        self.Status = None
+
+
+    def _deserialize(self, params):
+        self.ParamName = params.get("ParamName")
+        self.ValueType = params.get("ValueType")
+        self.NeedRestart = params.get("NeedRestart")
+        self.DefaultValue = params.get("DefaultValue")
+        self.CurrentValue = params.get("CurrentValue")
+        self.Tips = params.get("Tips")
+        self.EnumValue = params.get("EnumValue")
+        self.Status = params.get("Status")
 
 
 class InstanceNode(AbstractModel):
@@ -1407,6 +1477,9 @@ class InstanceSet(AbstractModel):
         :param ProjectName: 项目名称
 注意：此字段可能返回 null，表示取不到有效值。
         :type ProjectName: str
+        :param NoAuth: 是否为免密实例，true-免密实例；false-非免密实例
+注意：此字段可能返回 null，表示取不到有效值。
+        :type NoAuth: bool
         """
         self.InstanceName = None
         self.InstanceId = None
@@ -1443,6 +1516,7 @@ class InstanceSet(AbstractModel):
         self.SlaveReadWeight = None
         self.InstanceTags = None
         self.ProjectName = None
+        self.NoAuth = None
 
 
     def _deserialize(self, params):
@@ -1491,6 +1565,7 @@ class InstanceSet(AbstractModel):
                 obj._deserialize(item)
                 self.InstanceTags.append(obj)
         self.ProjectName = params.get("ProjectName")
+        self.NoAuth = params.get("NoAuth")
 
 
 class InstanceTagInfo(AbstractModel):
@@ -1535,6 +1610,8 @@ class InstanceTextParam(AbstractModel):
         :type Tips: str
         :param TextValue: 参数可取值
         :type TextValue: list of str
+        :param Status: 参数状态, 1: 修改中， 2：修改完成
+        :type Status: int
         """
         self.ParamName = None
         self.ValueType = None
@@ -1543,6 +1620,7 @@ class InstanceTextParam(AbstractModel):
         self.CurrentValue = None
         self.Tips = None
         self.TextValue = None
+        self.Status = None
 
 
     def _deserialize(self, params):
@@ -1553,6 +1631,7 @@ class InstanceTextParam(AbstractModel):
         self.CurrentValue = params.get("CurrentValue")
         self.Tips = params.get("Tips")
         self.TextValue = params.get("TextValue")
+        self.Status = params.get("Status")
 
 
 class ManualBackupInstanceRequest(AbstractModel):
@@ -1736,15 +1815,19 @@ class ModifyInstanceParamsResponse(AbstractModel):
         """
         :param Changed: 修改是否成功。
         :type Changed: bool
+        :param TaskId: 任务ID
+        :type TaskId: int
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.Changed = None
+        self.TaskId = None
         self.RequestId = None
 
 
     def _deserialize(self, params):
         self.Changed = params.get("Changed")
+        self.TaskId = params.get("TaskId")
         self.RequestId = params.get("RequestId")
 
 
@@ -2053,18 +2136,22 @@ class ResetPasswordRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Password: 重置的密码
-        :type Password: str
         :param InstanceId: Redis实例ID
         :type InstanceId: str
+        :param Password: 重置的密码（切换为免密实例时，可不传；其他情况必传）
+        :type Password: str
+        :param NoAuth: 是否切换免密实例，false-切换为非免密码实例，true-切换为免密码实例；默认false
+        :type NoAuth: bool
         """
-        self.Password = None
         self.InstanceId = None
+        self.Password = None
+        self.NoAuth = None
 
 
     def _deserialize(self, params):
-        self.Password = params.get("Password")
         self.InstanceId = params.get("InstanceId")
+        self.Password = params.get("Password")
+        self.NoAuth = params.get("NoAuth")
 
 
 class ResetPasswordResponse(AbstractModel):
@@ -2074,7 +2161,7 @@ class ResetPasswordResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param TaskId: 任务ID
+        :param TaskId: 任务ID（修改密码时的任务ID，如果时切换免密码或者非免密码实例，则无需关注此返回值）
         :type TaskId: int
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -2097,20 +2184,20 @@ class RestoreInstanceRequest(AbstractModel):
         """
         :param InstanceId: 待操作的实例ID，可通过 DescribeRedis 接口返回值中的 redisId 获取。
         :type InstanceId: str
-        :param Password: 实例密码，恢复实例时，需要校验实例密码
-        :type Password: str
         :param BackupId: 备份ID，可通过 GetRedisBackupList 接口返回值中的 backupId 获取
         :type BackupId: str
+        :param Password: 实例密码，恢复实例时，需要校验实例密码（免密实例不需要传密码）
+        :type Password: str
         """
         self.InstanceId = None
-        self.Password = None
         self.BackupId = None
+        self.Password = None
 
 
     def _deserialize(self, params):
         self.InstanceId = params.get("InstanceId")
-        self.Password = params.get("Password")
         self.BackupId = params.get("BackupId")
+        self.Password = params.get("Password")
 
 
 class RestoreInstanceResponse(AbstractModel):

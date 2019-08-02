@@ -3797,6 +3797,8 @@ class CreateAIRecognitionTemplateRequest(AbstractModel):
         :type Comment: str
         :param HeadTailConfigure: 视频片头片尾识别控制参数。
         :type HeadTailConfigure: :class:`tencentcloud.vod.v20180717.models.HeadTailConfigureInfo`
+        :param SegmentConfigure: 视频拆条识别控制参数。
+        :type SegmentConfigure: :class:`tencentcloud.vod.v20180717.models.SegmentConfigureInfo`
         :param FaceConfigure: 人脸识别控制参数。
         :type FaceConfigure: :class:`tencentcloud.vod.v20180717.models.FaceConfigureInfo`
         :param OcrFullTextConfigure: 文本全文识别控制参数。
@@ -3817,6 +3819,7 @@ class CreateAIRecognitionTemplateRequest(AbstractModel):
         self.Name = None
         self.Comment = None
         self.HeadTailConfigure = None
+        self.SegmentConfigure = None
         self.FaceConfigure = None
         self.OcrFullTextConfigure = None
         self.OcrWordsConfigure = None
@@ -3833,6 +3836,9 @@ class CreateAIRecognitionTemplateRequest(AbstractModel):
         if params.get("HeadTailConfigure") is not None:
             self.HeadTailConfigure = HeadTailConfigureInfo()
             self.HeadTailConfigure._deserialize(params.get("HeadTailConfigure"))
+        if params.get("SegmentConfigure") is not None:
+            self.SegmentConfigure = SegmentConfigureInfo()
+            self.SegmentConfigure._deserialize(params.get("SegmentConfigure"))
         if params.get("FaceConfigure") is not None:
             self.FaceConfigure = FaceConfigureInfo()
             self.FaceConfigure._deserialize(params.get("FaceConfigure"))
@@ -4818,7 +4824,7 @@ class DescribeAIAnalysisTemplatesRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Definitions: 视频内容分析模板唯一标识过滤条件，数组长度限制：10。
+        :param Definitions: 视频内容分析模板唯一标识过滤条件，数组长度最大值：100。
         :type Definitions: list of int
         :param Offset: 分页偏移量，默认值：0。
         :type Offset: int
@@ -4877,11 +4883,11 @@ class DescribeAIRecognitionTemplatesRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Definitions: 视频内容识别模板唯一标识过滤条件，数组长度限制：10。
+        :param Definitions: 视频内容识别模板唯一标识过滤条件，数组长度限制：100。
         :type Definitions: list of int
         :param Offset: 分页偏移量，默认值：0。
         :type Offset: int
-        :param Limit: 返回记录条数，默认值：10，最大值：50。
+        :param Limit: 返回记录条数，默认值：10，最大值：100。
         :type Limit: int
         :param SubAppId: 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
         :type SubAppId: int
@@ -4980,11 +4986,11 @@ class DescribeContentReviewTemplatesRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Definitions: 内容审核模板唯一标识过滤条件，数组长度限制：50。
+        :param Definitions: 内容审核模板唯一标识过滤条件，数组长度限制：100。
         :type Definitions: list of int
         :param Offset: 分页偏移量，默认值：0。
         :type Offset: int
-        :param Limit: 返回记录条数，默认值：10，最大值：50。
+        :param Limit: 返回记录条数，默认值：10，最大值：100。
         :type Limit: int
         :param SubAppId: 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
         :type SubAppId: int
@@ -5785,6 +5791,27 @@ class EditMediaFileInfo(AbstractModel):
         self.EndTimeOffset = params.get("EndTimeOffset")
 
 
+class EditMediaOutputConfig(AbstractModel):
+    """编辑视频的结果文件输出。
+
+    """
+
+    def __init__(self):
+        """
+        :param Type: 输出文件格式，可选值：mp4、hls。默认是 mp4。
+        :type Type: str
+        :param ExpireTime: 输出文件的过期时间，超过该时间文件将被删除，默认为永久不过期，格式按照 ISO 8601标准表示，详见 [ISO 日期格式说明](https://cloud.tencent.com/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F)。
+        :type ExpireTime: str
+        """
+        self.Type = None
+        self.ExpireTime = None
+
+
+    def _deserialize(self, params):
+        self.Type = params.get("Type")
+        self.ExpireTime = params.get("ExpireTime")
+
+
 class EditMediaRequest(AbstractModel):
     """EditMedia请求参数结构体
 
@@ -5798,15 +5825,23 @@ class EditMediaRequest(AbstractModel):
         :type FileInfos: list of EditMediaFileInfo
         :param StreamInfos: 输入的流信息，当 InputType 为 Stream 时必填。
         :type StreamInfos: list of EditMediaStreamInfo
+        :param Definition: 编辑模板 ID，取值有 10，20，不填代表使用 10 模板。
+<li>10：拼接时，以分辨率最高的输入为基准；</li>
+<li>20：拼接时，以码率最高的输入为基准；</li>
+        :type Definition: int
         :param ProcedureName: [任务流模板](/document/product/266/11700#.E4.BB.BB.E5.8A.A1.E6.B5.81.E6.A8.A1.E6.9D.BF)名字，如果要对生成的新视频执行任务流时填写。
         :type ProcedureName: str
+        :param OutputConfig: 编辑后生成的文件配置。
+        :type OutputConfig: :class:`tencentcloud.vod.v20180717.models.EditMediaOutputConfig`
         :param SubAppId: 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
         :type SubAppId: int
         """
         self.InputType = None
         self.FileInfos = None
         self.StreamInfos = None
+        self.Definition = None
         self.ProcedureName = None
+        self.OutputConfig = None
         self.SubAppId = None
 
 
@@ -5824,7 +5859,11 @@ class EditMediaRequest(AbstractModel):
                 obj = EditMediaStreamInfo()
                 obj._deserialize(item)
                 self.StreamInfos.append(obj)
+        self.Definition = params.get("Definition")
         self.ProcedureName = params.get("ProcedureName")
+        if params.get("OutputConfig") is not None:
+            self.OutputConfig = EditMediaOutputConfig()
+            self.OutputConfig._deserialize(params.get("OutputConfig"))
         self.SubAppId = params.get("SubAppId")
 
 
@@ -8597,6 +8636,8 @@ class ModifyAIRecognitionTemplateRequest(AbstractModel):
         :type Comment: str
         :param HeadTailConfigure: 视频片头片尾识别控制参数。
         :type HeadTailConfigure: :class:`tencentcloud.vod.v20180717.models.HeadTailConfigureInfoForUpdate`
+        :param SegmentConfigure: 视频拆条识别控制参数。
+        :type SegmentConfigure: :class:`tencentcloud.vod.v20180717.models.SegmentConfigureInfoForUpdate`
         :param FaceConfigure: 人脸识别控制参数。
         :type FaceConfigure: :class:`tencentcloud.vod.v20180717.models.FaceConfigureInfoForUpdate`
         :param OcrFullTextConfigure: 文本全文识别控制参数。
@@ -8618,6 +8659,7 @@ class ModifyAIRecognitionTemplateRequest(AbstractModel):
         self.Name = None
         self.Comment = None
         self.HeadTailConfigure = None
+        self.SegmentConfigure = None
         self.FaceConfigure = None
         self.OcrFullTextConfigure = None
         self.OcrWordsConfigure = None
@@ -8635,6 +8677,9 @@ class ModifyAIRecognitionTemplateRequest(AbstractModel):
         if params.get("HeadTailConfigure") is not None:
             self.HeadTailConfigure = HeadTailConfigureInfoForUpdate()
             self.HeadTailConfigure._deserialize(params.get("HeadTailConfigure"))
+        if params.get("SegmentConfigure") is not None:
+            self.SegmentConfigure = SegmentConfigureInfoForUpdate()
+            self.SegmentConfigure._deserialize(params.get("SegmentConfigure"))
         if params.get("FaceConfigure") is not None:
             self.FaceConfigure = FaceConfigureInfoForUpdate()
             self.FaceConfigure._deserialize(params.get("FaceConfigure"))
@@ -9160,7 +9205,7 @@ class ModifyWatermarkTemplateRequest(AbstractModel):
         :type ImageTemplate: :class:`tencentcloud.vod.v20180717.models.ImageWatermarkInputForUpdate`
         :param TextTemplate: 文字水印模板，该字段仅对文字水印模板有效。
         :type TextTemplate: :class:`tencentcloud.vod.v20180717.models.TextWatermarkTemplateInputForUpdate`
-        :param SvgTemplate: SVG水印模板，当 Type 为 svg，该字段必填。当 Type 为 image 或 text，该字段无效。
+        :param SvgTemplate: SVG 水印模板，该字段仅对 SVG 水印模板有效。
         :type SvgTemplate: :class:`tencentcloud.vod.v20180717.models.SvgWatermarkInputForUpdate`
         :param SubAppId: 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
         :type SubAppId: int
@@ -10426,11 +10471,7 @@ class PullUploadRequest(AbstractModel):
         :type Procedure: str
         :param ExpireTime: 媒体文件过期时间，格式按照 ISO 8601 标准表示，详见 [ISO 日期格式说明](https://cloud.tencent.com/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F)。
         :type ExpireTime: str
-        :param StorageRegion: 指定上传园区，目前支持的园区：
-<li>ap-chongqing：重庆园区，</li>
-<li>ap-beijing：北京园区，</li>
-<li>ap-shanghai：上海园区。</li>
-注意：不填此参数默认上传至重庆园区。
+        :param StorageRegion: 指定上传园区，仅适用于对上传地域有特殊需求的用户（目前仅支持北京、上海和重庆园区）。
         :type StorageRegion: str
         :param ClassId: 分类ID，用于对媒体进行分类管理，可通过[创建分类](https://cloud.tencent.com/document/product/266/7812)接口，创建分类，获得分类 ID。
         :type ClassId: int
@@ -10783,6 +10824,25 @@ class SearchMediaResponse(AbstractModel):
 
 class SegmentConfigureInfo(AbstractModel):
     """视频拆条任务识别控制参数
+
+    """
+
+    def __init__(self):
+        """
+        :param Switch: 视频拆条识别任务开关，可选值：
+<li>ON：开启智能视频拆条识别任务；</li>
+<li>OFF：关闭智能视频拆条识别任务。</li>
+        :type Switch: str
+        """
+        self.Switch = None
+
+
+    def _deserialize(self, params):
+        self.Switch = params.get("Switch")
+
+
+class SegmentConfigureInfoForUpdate(AbstractModel):
+    """视频拆条识别任务控制参数
 
     """
 
@@ -12082,6 +12142,11 @@ class VideoTemplateInfoForUpdate(AbstractModel):
         :type Width: int
         :param Height: 视频流高度（或短边）的最大值，取值范围：0 和 [128, 4096]，单位：px。
         :type Height: int
+        :param FillType: 填充方式，当视频流配置宽高参数与原始视频的宽高比不一致时，对转码的处理方式，即为“填充”。可选填充方式：
+<li> stretch：拉伸，对每一帧进行拉伸，填满整个画面，可能导致转码后的视频被“压扁“或者“拉长“；</li>
+<li>black：留黑，保持视频宽高比不变，边缘剩余部分使用黑色填充。</li>
+默认值：black 。
+        :type FillType: str
         """
         self.Codec = None
         self.Fps = None
@@ -12089,6 +12154,7 @@ class VideoTemplateInfoForUpdate(AbstractModel):
         self.ResolutionAdaptive = None
         self.Width = None
         self.Height = None
+        self.FillType = None
 
 
     def _deserialize(self, params):
@@ -12098,6 +12164,7 @@ class VideoTemplateInfoForUpdate(AbstractModel):
         self.ResolutionAdaptive = params.get("ResolutionAdaptive")
         self.Width = params.get("Width")
         self.Height = params.get("Height")
+        self.FillType = params.get("FillType")
 
 
 class VideoTrackItem(AbstractModel):
