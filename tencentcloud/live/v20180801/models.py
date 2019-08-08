@@ -1046,6 +1046,10 @@ baseline/main/high。默认baseline
         :type HeightToOrig: int
         :param FpsToOrig: 是否不超过原始帧率，0：否，1：是。默认0。
         :type FpsToOrig: int
+        :param AiTransCode: 是否是急速高清模板，0：否，1：是。默认0。
+        :type AiTransCode: int
+        :param AdaptBitratePercent: 急速高清相比VideoBitrate少多少码率，0.1到0.5
+        :type AdaptBitratePercent: float
         """
         self.TemplateName = None
         self.VideoBitrate = None
@@ -1064,6 +1068,8 @@ baseline/main/high。默认baseline
         self.BitrateToOrig = None
         self.HeightToOrig = None
         self.FpsToOrig = None
+        self.AiTransCode = None
+        self.AdaptBitratePercent = None
 
 
     def _deserialize(self, params):
@@ -1084,6 +1090,8 @@ baseline/main/high。默认baseline
         self.BitrateToOrig = params.get("BitrateToOrig")
         self.HeightToOrig = params.get("HeightToOrig")
         self.FpsToOrig = params.get("FpsToOrig")
+        self.AiTransCode = params.get("AiTransCode")
+        self.AdaptBitratePercent = params.get("AdaptBitratePercent")
 
 
 class CreateLiveTranscodeTemplateResponse(AbstractModel):
@@ -5435,6 +5443,8 @@ baseline/main/high。
         :type HeightToOrig: int
         :param FpsToOrig: 是否不超过原始帧率。0：否，1：是。默认0。
         :type FpsToOrig: int
+        :param AdaptBitratePercent: 急速高清相比VideoBitrate少多少码率，0.1到0.5
+        :type AdaptBitratePercent: float
         """
         self.TemplateId = None
         self.Vcodec = None
@@ -5453,6 +5463,7 @@ baseline/main/high。
         self.BitrateToOrig = None
         self.HeightToOrig = None
         self.FpsToOrig = None
+        self.AdaptBitratePercent = None
 
 
     def _deserialize(self, params):
@@ -5473,6 +5484,7 @@ baseline/main/high。
         self.BitrateToOrig = params.get("BitrateToOrig")
         self.HeightToOrig = params.get("HeightToOrig")
         self.FpsToOrig = params.get("FpsToOrig")
+        self.AdaptBitratePercent = params.get("AdaptBitratePercent")
 
 
 class ModifyLiveTranscodeTemplateResponse(AbstractModel):
@@ -6560,6 +6572,10 @@ baseline/main/high。
         :type TemplateName: str
         :param Description: 模板描述
         :type Description: str
+        :param AiTransCode: 是否是急速高清模板，0：否，1：是。默认0。
+        :type AiTransCode: int
+        :param AdaptBitratePercent: 急速高清相比VideoBitrate少多少码率，0.1到0.5
+        :type AdaptBitratePercent: float
         """
         self.Vcodec = None
         self.VideoBitrate = None
@@ -6579,6 +6595,8 @@ baseline/main/high。
         self.TemplateId = None
         self.TemplateName = None
         self.Description = None
+        self.AiTransCode = None
+        self.AdaptBitratePercent = None
 
 
     def _deserialize(self, params):
@@ -6600,6 +6618,8 @@ baseline/main/high。
         self.TemplateId = params.get("TemplateId")
         self.TemplateName = params.get("TemplateName")
         self.Description = params.get("Description")
+        self.AiTransCode = params.get("AiTransCode")
+        self.AdaptBitratePercent = params.get("AdaptBitratePercent")
 
 
 class TranscodeDetailInfo(AbstractModel):

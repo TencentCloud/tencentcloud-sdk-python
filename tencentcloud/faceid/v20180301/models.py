@@ -92,7 +92,7 @@ class BankCard4EVerificationRequest(AbstractModel):
         :type BankCard: str
         :param Phone: 手机号码
         :type Phone: str
-        :param IdCard: 身份证号码
+        :param IdCard: 开户证件号，与CertType参数的证件类型一致，如：身份证，则传入身份证号。
         :type IdCard: str
         :param CertType: 证件类型，请确认该证件为开户时使用的证件类型，未用于开户的证件信息不支持验证。（不填默认0）
 0 身份证
@@ -171,7 +171,7 @@ class BankCardVerificationRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param IdCard: 身份证号
+        :param IdCard: 开户证件号，与CertType参数的证件类型一致，如：身份证，则传入身份证号。
         :type IdCard: str
         :param Name: 姓名
         :type Name: str

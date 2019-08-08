@@ -26,7 +26,7 @@ class FaceidClient(AbstractClient):
 
 
     def BankCard2EVerification(self, request):
-        """银行卡二要素核验
+        """输入银行卡号、姓名，校验信息的真实性和一致性。
 
         :param request: 调用BankCard2EVerification所需参数的结构体。
         :type request: :class:`tencentcloud.faceid.v20180301.models.BankCard2EVerificationRequest`
@@ -54,7 +54,7 @@ class FaceidClient(AbstractClient):
 
 
     def BankCard4EVerification(self, request):
-        """银行卡四要素核验
+        """输入银行卡号、姓名、开户证件号、开户手机号，校验信息的真实性和一致性。
 
         :param request: 调用BankCard4EVerification所需参数的结构体。
         :type request: :class:`tencentcloud.faceid.v20180301.models.BankCard4EVerificationRequest`
@@ -82,7 +82,7 @@ class FaceidClient(AbstractClient):
 
 
     def BankCardVerification(self, request):
-        """银行卡核验
+        """银行卡三要素核验，输入银行卡号、姓名、开户证件号，校验信息的真实性和一致性。
 
         :param request: 调用BankCardVerification所需参数的结构体。
         :type request: :class:`tencentcloud.faceid.v20180301.models.BankCardVerificationRequest`

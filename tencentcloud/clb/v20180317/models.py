@@ -207,7 +207,7 @@ class CertificateOutput(AbstractModel):
 
     def __init__(self):
         """
-        :param SSLMode: 认证类型，unidirectional：单向认证，mutual：双向认证
+        :param SSLMode: 认证类型，UNIDIRECTIONAL：单向认证，MUTUAL：双向认证
         :type SSLMode: str
         :param CertId: 服务端证书的 ID。
         :type CertId: str
@@ -1487,7 +1487,7 @@ class HealthCheck(AbstractModel):
         """
         :param HealthSwitch: 是否开启健康检查：1（开启）、0（关闭）。
         :type HealthSwitch: int
-        :param TimeOut: 健康检查的响应超时时间，可选值：2~60，默认值：2，单位：秒。响应超时时间要小于检查间隔时间。
+        :param TimeOut: 健康检查的响应超时时间（仅适用于四层监听器），可选值：2~60，默认值：2，单位：秒。响应超时时间要小于检查间隔时间。
 注意：此字段可能返回 null，表示取不到有效值。
         :type TimeOut: int
         :param IntervalTime: 健康检查探测间隔时间，默认值：5，可选值：5~300，单位：秒。
@@ -1865,6 +1865,9 @@ OPEN：公网属性， INTERNAL：内网属性。
         :param LogTopicId: 负载均衡日志服务(CLS)的日志主题ID
 注意：此字段可能返回 null，表示取不到有效值。
         :type LogTopicId: str
+        :param AddressIPv6: 负载均衡实例的IPv6地址
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AddressIPv6: str
         """
         self.LoadBalancerId = None
         self.LoadBalancerName = None
@@ -1898,6 +1901,7 @@ OPEN：公网属性， INTERNAL：内网属性。
         self.PrepaidAttributes = None
         self.LogSetId = None
         self.LogTopicId = None
+        self.AddressIPv6 = None
 
 
     def _deserialize(self, params):
@@ -1951,6 +1955,7 @@ OPEN：公网属性， INTERNAL：内网属性。
             self.PrepaidAttributes._deserialize(params.get("PrepaidAttributes"))
         self.LogSetId = params.get("LogSetId")
         self.LogTopicId = params.get("LogTopicId")
+        self.AddressIPv6 = params.get("AddressIPv6")
 
 
 class LoadBalancerHealth(AbstractModel):
@@ -2482,6 +2487,46 @@ class RegisterTargetsWithClassicalLBResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class ReplaceCertForLoadBalancersRequest(AbstractModel):
+    """ReplaceCertForLoadBalancers请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param OldCertificateId: 需要被替换的证书的ID，可以是服务端证书或客户端证书
+        :type OldCertificateId: str
+        :param Certificate: 新证书的内容等相关信息
+        :type Certificate: :class:`tencentcloud.clb.v20180317.models.CertificateInput`
+        """
+        self.OldCertificateId = None
+        self.Certificate = None
+
+
+    def _deserialize(self, params):
+        self.OldCertificateId = params.get("OldCertificateId")
+        if params.get("Certificate") is not None:
+            self.Certificate = CertificateInput()
+            self.Certificate._deserialize(params.get("Certificate"))
+
+
+class ReplaceCertForLoadBalancersResponse(AbstractModel):
+    """ReplaceCertForLoadBalancers返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class RewriteLocationMap(AbstractModel):
     """转发规则之间的重定向关系
 
@@ -2614,11 +2659,11 @@ class RuleInput(AbstractModel):
 
     def __init__(self):
         """
-        :param Domain: 转发规则的域名。
+        :param Domain: 转发规则的域名。长度限制为：1~80。
         :type Domain: str
-        :param Url: 转发规则的路径。
+        :param Url: 转发规则的路径。长度限制为：1~200。
         :type Url: str
-        :param SessionExpireTime: 会话保持时间
+        :param SessionExpireTime: 会话保持时间。设置为0表示关闭会话保持，开启会话保持可取值30~3600，单位：秒。
         :type SessionExpireTime: int
         :param HealthCheck: 健康检查信息
         :type HealthCheck: :class:`tencentcloud.clb.v20180317.models.HealthCheck`

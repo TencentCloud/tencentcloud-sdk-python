@@ -25,6 +25,64 @@ class TiiaClient(AbstractClient):
     _endpoint = 'tiia.tencentcloudapi.com'
 
 
+    def AssessQuality(self, request):
+        """评估输入图片在视觉上的质量，从多个方面评估，并同时给出综合的、客观的清晰度评分，和主观的美观度评分。
+
+        :param request: 调用AssessQuality所需参数的结构体。
+        :type request: :class:`tencentcloud.tiia.v20190529.models.AssessQualityRequest`
+        :rtype: :class:`tencentcloud.tiia.v20190529.models.AssessQualityResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("AssessQuality", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.AssessQualityResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DetectCelebrity(self, request):
+        """传入一张图片，可以识别图片中包含的人物是否为公众人物，如果是，输出人物的姓名、基本信息、脸部坐标。
+
+        支持识别一张图片中存在的多个人脸，针对每个人脸，会给出与之最相似的公众人物。
+
+        :param request: 调用DetectCelebrity所需参数的结构体。
+        :type request: :class:`tencentcloud.tiia.v20190529.models.DetectCelebrityRequest`
+        :rtype: :class:`tencentcloud.tiia.v20190529.models.DetectCelebrityResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DetectCelebrity", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DetectCelebrityResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DetectLabel(self, request):
         """传入一张图片，识别出图片中存在的物体，并返回物体的名称（分类）、置信度，一张图片会给出多个可能的标签。
 
@@ -67,6 +125,37 @@ class TiiaClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DetectProductResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def EnhanceImage(self, request):
+        """传入一张图片，输出清晰度提升后的图片。
+
+        可以消除图片有损压缩导致的噪声，和使用滤镜、拍摄失焦导致的模糊。让图片的边缘和细节更加清晰自然。
+
+
+        :param request: 调用EnhanceImage所需参数的结构体。
+        :type request: :class:`tencentcloud.tiia.v20190529.models.EnhanceImageRequest`
+        :rtype: :class:`tencentcloud.tiia.v20190529.models.EnhanceImageResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("EnhanceImage", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.EnhanceImageResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

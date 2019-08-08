@@ -732,7 +732,7 @@ class MigrateJobInfo(AbstractModel):
         :type StartTime: str
         :param EndTime: 任务执行结束时间
         :type EndTime: str
-        :param Status: 任务状态,取值为：1-创建中(Creating),3-校验中(Checking)4-校验通过(CheckPass),5-校验不通过（CheckNotPass）,7-任务运行(Running),8-准备完成（ReadyComplete）,9-任务成功（Success）,10-任务失败（Failed）,11-撤销中（Stoping）,12-完成中（Completing）
+        :param Status: 任务状态,取值为：1-创建中(Creating),3-校验中(Checking)4-校验通过(CheckPass),5-校验不通过（CheckNotPass）,7-任务运行(Running),8-准备完成（ReadyComplete）,9-任务成功（Success）,10-任务失败（Failed）,11-撤销中（Stopping）,12-完成中（Completing）
         :type Status: int
         :param Detail: 任务详情
         :type Detail: :class:`tencentcloud.dts.v20180330.models.MigrateDetailInfo`
@@ -1025,12 +1025,15 @@ class SrcInfo(AbstractModel):
         :type SubnetId: str
         :param UniqVpnGwId: VPN网关ID，格式如：vpngw-9ghexg7q
         :type UniqVpnGwId: str
-        :param InstanceId: 数据库实例ID,格式如：cdb-powiqx8q
+        :param InstanceId: 数据库实例ID，格式如：cdb-powiqx8q
         :type InstanceId: str
         :param Region: 地域英文名，如：ap-guangzhou
         :type Region: str
         :param Supplier: 当实例为RDS实例时，填写为aliyun, 其他情况均填写others
         :type Supplier: str
+        :param CcnId: 云联网ID，如：ccn-afp6kltc
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CcnId: str
         """
         self.AccessKey = None
         self.Ip = None
@@ -1046,6 +1049,7 @@ class SrcInfo(AbstractModel):
         self.InstanceId = None
         self.Region = None
         self.Supplier = None
+        self.CcnId = None
 
 
     def _deserialize(self, params):
@@ -1063,6 +1067,7 @@ class SrcInfo(AbstractModel):
         self.InstanceId = params.get("InstanceId")
         self.Region = params.get("Region")
         self.Supplier = params.get("Supplier")
+        self.CcnId = params.get("CcnId")
 
 
 class StartMigrateJobRequest(AbstractModel):
