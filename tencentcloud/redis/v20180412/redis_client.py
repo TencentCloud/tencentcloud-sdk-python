@@ -809,6 +809,34 @@ class RedisClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def SwitchInstanceVip(self, request):
+        """在通过DTS支持跨可用区灾备的场景中，通过该接口交换实例VIP完成实例灾备切换。交换VIP后目标实例可写，源和目标实例VIP互换，同时源与目标实例间DTS同步任务断开
+
+        :param request: 调用SwitchInstanceVip所需参数的结构体。
+        :type request: :class:`tencentcloud.redis.v20180412.models.SwitchInstanceVipRequest`
+        :rtype: :class:`tencentcloud.redis.v20180412.models.SwitchInstanceVipResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("SwitchInstanceVip", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.SwitchInstanceVipResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def UpgradeInstance(self, request):
         """升级实例
 

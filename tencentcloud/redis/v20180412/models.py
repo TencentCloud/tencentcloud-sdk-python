@@ -2301,6 +2301,60 @@ class SecurityGroupsInboundAndOutbound(AbstractModel):
         self.Proto = params.get("Proto")
 
 
+class SwitchInstanceVipRequest(AbstractModel):
+    """SwitchInstanceVip请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param SrcInstanceId: 源实例ID
+        :type SrcInstanceId: str
+        :param DstInstanceId: 目标实例ID
+        :type DstInstanceId: str
+        :param TimeDelay: 单位为秒。源实例与目标实例间DTS已断开时间，如果DTS断开时间大于TimeDelay，则不切换VIP，建议尽量根据业务设置一个可接受的值。
+        :type TimeDelay: int
+        :param ForceSwitch: 在DTS断开的情况下是否强制切换。1：强制切换，0：不强制切换
+        :type ForceSwitch: int
+        :param SwitchTime: now: 立即切换，syncComplete：等待同步完成后切换
+        :type SwitchTime: str
+        """
+        self.SrcInstanceId = None
+        self.DstInstanceId = None
+        self.TimeDelay = None
+        self.ForceSwitch = None
+        self.SwitchTime = None
+
+
+    def _deserialize(self, params):
+        self.SrcInstanceId = params.get("SrcInstanceId")
+        self.DstInstanceId = params.get("DstInstanceId")
+        self.TimeDelay = params.get("TimeDelay")
+        self.ForceSwitch = params.get("ForceSwitch")
+        self.SwitchTime = params.get("SwitchTime")
+
+
+class SwitchInstanceVipResponse(AbstractModel):
+    """SwitchInstanceVip返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param TaskId: 任务ID
+        :type TaskId: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TaskId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TaskId = params.get("TaskId")
+        self.RequestId = params.get("RequestId")
+
+
 class TradeDealDetail(AbstractModel):
     """订单交易信息
 
