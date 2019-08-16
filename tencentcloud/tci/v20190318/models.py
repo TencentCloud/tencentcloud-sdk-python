@@ -31,6 +31,8 @@ class AIAssistantRequest(AbstractModel):
         :type Lang: int
         :param LibrarySet: 查询人员库列表
         :type LibrarySet: list of str
+        :param MaxVideoDuration: 直播流评估时间，在FileType为live_url时生效，默认值为10分钟。
+        :type MaxVideoDuration: int
         :param Template: 标准化模板选择：0：AI助教基础版本，1：AI评教基础版本，2：AI评教标准版本。AI 助教基础版本功能包括：人脸检索、人脸检测、人脸表情识别、学生动作选项，音频信息分析，微笑识别。AI 评教基础版本功能包括：人脸检索、人脸检测、人脸表情识别、音频信息分析。AI 评教标准版功能包括人脸检索、人脸检测、人脸表情识别、手势识别、音频信息分析、音频关键词分析、视频精彩集锦分析。
         :type Template: int
         :param VocabLibNameList: 识别词库名列表，评估过程使用这些词汇库中的词汇进行词汇使用行为分析
@@ -44,6 +46,7 @@ class AIAssistantRequest(AbstractModel):
         self.FileType = None
         self.Lang = None
         self.LibrarySet = None
+        self.MaxVideoDuration = None
         self.Template = None
         self.VocabLibNameList = None
         self.VoiceEncodeType = None
@@ -55,6 +58,7 @@ class AIAssistantRequest(AbstractModel):
         self.FileType = params.get("FileType")
         self.Lang = params.get("Lang")
         self.LibrarySet = params.get("LibrarySet")
+        self.MaxVideoDuration = params.get("MaxVideoDuration")
         self.Template = params.get("Template")
         self.VocabLibNameList = params.get("VocabLibNameList")
         self.VoiceEncodeType = params.get("VoiceEncodeType")
@@ -415,76 +419,6 @@ class CancelTaskResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
-class CheckAttendanceRequest(AbstractModel):
-    """CheckAttendance请求参数结构体
-
-    """
-
-    def __init__(self):
-        """
-        :param FileContent: 输入数据
-        :type FileContent: str
-        :param FileType: 输入类型，picture_url:图片，vod_url:视频文件
-        :type FileType: str
-        :param LibraryId: 人员库 ID
-        :type LibraryId: str
-        :param PersonIdSet: 人员 ID 列表
-        :type PersonIdSet: list of str
-        :param AttendanceThreshold: 确定出勤阀值；默认为0.92
-        :type AttendanceThreshold: float
-        :param EndTime: 考勤结束时间（到视频的第几秒结束考勤），单位秒；默认为900
-        :type EndTime: int
-        :param StartTime: 考勤开始时间（从视频的第几秒开始考勤），单位秒；默认为0
-        :type StartTime: int
-        :param Threshold: 识别阈值；默认为0.7
-        :type Threshold: float
-        """
-        self.FileContent = None
-        self.FileType = None
-        self.LibraryId = None
-        self.PersonIdSet = None
-        self.AttendanceThreshold = None
-        self.EndTime = None
-        self.StartTime = None
-        self.Threshold = None
-
-
-    def _deserialize(self, params):
-        self.FileContent = params.get("FileContent")
-        self.FileType = params.get("FileType")
-        self.LibraryId = params.get("LibraryId")
-        self.PersonIdSet = params.get("PersonIdSet")
-        self.AttendanceThreshold = params.get("AttendanceThreshold")
-        self.EndTime = params.get("EndTime")
-        self.StartTime = params.get("StartTime")
-        self.Threshold = params.get("Threshold")
-
-
-class CheckAttendanceResponse(AbstractModel):
-    """CheckAttendance返回参数结构体
-
-    """
-
-    def __init__(self):
-        """
-        :param JobId: 任务标识符
-        :type JobId: int
-        :param NotRegisteredSet: 没有注册的人的ID列表
-        :type NotRegisteredSet: list of str
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
-        self.JobId = None
-        self.NotRegisteredSet = None
-        self.RequestId = None
-
-
-    def _deserialize(self, params):
-        self.JobId = params.get("JobId")
-        self.NotRegisteredSet = params.get("NotRegisteredSet")
-        self.RequestId = params.get("RequestId")
-
-
 class CheckFacePhotoRequest(AbstractModel):
     """CheckFacePhoto请求参数结构体
 
@@ -639,6 +573,8 @@ class CreatePersonRequest(AbstractModel):
         :type LibraryId: str
         :param PersonName: 人员名称
         :type PersonName: str
+        :param Images: 图片数据 base64 字符串，与 Urls 参数选择一个输入
+        :type Images: list of str
         :param JobNumber: 人员工作号码
         :type JobNumber: str
         :param Mail: 人员邮箱
@@ -651,26 +587,32 @@ class CreatePersonRequest(AbstractModel):
         :type PhoneNumber: str
         :param StudentNumber: 人员学生号码
         :type StudentNumber: str
+        :param Urls: 图片下载地址，与 Images 参数选择一个输入
+        :type Urls: list of str
         """
         self.LibraryId = None
         self.PersonName = None
+        self.Images = None
         self.JobNumber = None
         self.Mail = None
         self.Male = None
         self.PersonId = None
         self.PhoneNumber = None
         self.StudentNumber = None
+        self.Urls = None
 
 
     def _deserialize(self, params):
         self.LibraryId = params.get("LibraryId")
         self.PersonName = params.get("PersonName")
+        self.Images = params.get("Images")
         self.JobNumber = params.get("JobNumber")
         self.Mail = params.get("Mail")
         self.Male = params.get("Male")
         self.PersonId = params.get("PersonId")
         self.PhoneNumber = params.get("PhoneNumber")
         self.StudentNumber = params.get("StudentNumber")
+        self.Urls = params.get("Urls")
 
 
 class CreatePersonResponse(AbstractModel):
@@ -680,6 +622,8 @@ class CreatePersonResponse(AbstractModel):
 
     def __init__(self):
         """
+        :param FaceInfoSet: 人脸操作结果信息
+        :type FaceInfoSet: list of FaceInfo
         :param LibraryId: 人员库唯一标识符
         :type LibraryId: str
         :param PersonId: 人员唯一标识符
@@ -689,6 +633,7 @@ class CreatePersonResponse(AbstractModel):
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
+        self.FaceInfoSet = None
         self.LibraryId = None
         self.PersonId = None
         self.PersonName = None
@@ -696,6 +641,12 @@ class CreatePersonResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        if params.get("FaceInfoSet") is not None:
+            self.FaceInfoSet = []
+            for item in params.get("FaceInfoSet"):
+                obj = FaceInfo()
+                obj._deserialize(item)
+                self.FaceInfoSet.append(obj)
         self.LibraryId = params.get("LibraryId")
         self.PersonId = params.get("PersonId")
         self.PersonName = params.get("PersonName")
@@ -895,6 +846,8 @@ class DeletePersonResponse(AbstractModel):
 
     def __init__(self):
         """
+        :param FaceInfoSet: 人脸信息
+        :type FaceInfoSet: list of FaceInfo
         :param LibraryId: 人员库唯一标识符
         :type LibraryId: str
         :param PersonId: 人员唯一标识符
@@ -904,6 +857,7 @@ class DeletePersonResponse(AbstractModel):
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
+        self.FaceInfoSet = None
         self.LibraryId = None
         self.PersonId = None
         self.PersonName = None
@@ -911,6 +865,12 @@ class DeletePersonResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        if params.get("FaceInfoSet") is not None:
+            self.FaceInfoSet = []
+            for item in params.get("FaceInfoSet"):
+                obj = FaceInfo()
+                obj._deserialize(item)
+                self.FaceInfoSet.append(obj)
         self.LibraryId = params.get("LibraryId")
         self.PersonId = params.get("PersonId")
         self.PersonName = params.get("PersonName")
@@ -1027,6 +987,8 @@ class DescribeAITaskResultResponse(AbstractModel):
         :type ImageResult: :class:`tencentcloud.tci.v20190318.models.StandardImageResult`
         :param VideoResult: 视频分析结果
         :type VideoResult: :class:`tencentcloud.tci.v20190318.models.StandardVideoResult`
+        :param Status: 任务状态
+        :type Status: str
         :param TaskId: 任务唯一id。在URL方式时提交请求后会返回一个jobid，后续查询该url的结果时使用这个jobid进行查询。
         :type TaskId: int
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -1035,6 +997,7 @@ class DescribeAITaskResultResponse(AbstractModel):
         self.AudioResult = None
         self.ImageResult = None
         self.VideoResult = None
+        self.Status = None
         self.TaskId = None
         self.RequestId = None
 
@@ -1049,6 +1012,7 @@ class DescribeAITaskResultResponse(AbstractModel):
         if params.get("VideoResult") is not None:
             self.VideoResult = StandardVideoResult()
             self.VideoResult._deserialize(params.get("VideoResult"))
+        self.Status = params.get("Status")
         self.TaskId = params.get("TaskId")
         self.RequestId = params.get("RequestId")
 
@@ -1750,22 +1714,26 @@ class ExpressRatioStatistic(AbstractModel):
 
     def __init__(self):
         """
-        :param Express: 表情
-        :type Express: str
-        :param Ratio: 表情所占比例
-        :type Ratio: float
         :param Count: 出现次数
         :type Count: int
+        :param Express: 表情
+        :type Express: str
+        :param Ratio: 该表情时长占所有表情时长的比例
+        :type Ratio: float
+        :param RatioUseDuration: 该表情时长占视频总时长的比例
+        :type RatioUseDuration: float
         """
+        self.Count = None
         self.Express = None
         self.Ratio = None
-        self.Count = None
+        self.RatioUseDuration = None
 
 
     def _deserialize(self, params):
+        self.Count = params.get("Count")
         self.Express = params.get("Express")
         self.Ratio = params.get("Ratio")
-        self.Count = params.get("Count")
+        self.RatioUseDuration = params.get("RatioUseDuration")
 
 
 class Face(AbstractModel):
@@ -2296,6 +2264,8 @@ class ImageTaskFunction(AbstractModel):
         :type EnableStudentBodyMovements: bool
         :param EnableTeacherBodyMovements: 教师动作选项（该功能尚未支持）
         :type EnableTeacherBodyMovements: bool
+        :param EnableTeacherOutScreen: 判断老师是否在屏幕中
+        :type EnableTeacherOutScreen: bool
         """
         self.EnableActionClass = None
         self.EnableFaceDetect = None
@@ -2306,6 +2276,7 @@ class ImageTaskFunction(AbstractModel):
         self.EnableLightJudge = None
         self.EnableStudentBodyMovements = None
         self.EnableTeacherBodyMovements = None
+        self.EnableTeacherOutScreen = None
 
 
     def _deserialize(self, params):
@@ -2318,6 +2289,7 @@ class ImageTaskFunction(AbstractModel):
         self.EnableLightJudge = params.get("EnableLightJudge")
         self.EnableStudentBodyMovements = params.get("EnableStudentBodyMovements")
         self.EnableTeacherBodyMovements = params.get("EnableTeacherBodyMovements")
+        self.EnableTeacherOutScreen = params.get("EnableTeacherOutScreen")
 
 
 class ImageTaskResult(AbstractModel):
@@ -2349,6 +2321,8 @@ class ImageTaskResult(AbstractModel):
         :type StudentBodyMovement: :class:`tencentcloud.tci.v20190318.models.BodyMovementResult`
         :param TeacherBodyMovement: 老师肢体动作识别结果
         :type TeacherBodyMovement: :class:`tencentcloud.tci.v20190318.models.BodyMovementResult`
+        :param TeacherOutScreen: 教师是否在屏幕内判断结果
+        :type TeacherOutScreen: :class:`tencentcloud.tci.v20190318.models.TeacherOutScreenResult`
         :param TimeInfo: 时间统计结果
         :type TimeInfo: :class:`tencentcloud.tci.v20190318.models.TimeInfoResult`
         """
@@ -2363,6 +2337,7 @@ class ImageTaskResult(AbstractModel):
         self.Light = None
         self.StudentBodyMovement = None
         self.TeacherBodyMovement = None
+        self.TeacherOutScreen = None
         self.TimeInfo = None
 
 
@@ -2400,6 +2375,9 @@ class ImageTaskResult(AbstractModel):
         if params.get("TeacherBodyMovement") is not None:
             self.TeacherBodyMovement = BodyMovementResult()
             self.TeacherBodyMovement._deserialize(params.get("TeacherBodyMovement"))
+        if params.get("TeacherOutScreen") is not None:
+            self.TeacherOutScreen = TeacherOutScreenResult()
+            self.TeacherOutScreen._deserialize(params.get("TeacherOutScreen"))
         if params.get("TimeInfo") is not None:
             self.TimeInfo = TimeInfoResult()
             self.TimeInfo._deserialize(params.get("TimeInfo"))
@@ -2987,7 +2965,7 @@ class SubmitAudioTaskRequest(AbstractModel):
         :type VoiceFileType: int
         :param Functions: 功能开关列表，表示是否需要打开相应的功能，返回相应的信息
         :type Functions: :class:`tencentcloud.tci.v20190318.models.Function`
-        :param FileType: 视频文件类型，默认点播，直播天 live_url
+        :param FileType: 视频文件类型，默认点播，直播填 live_url
         :type FileType: str
         :param VocabLibNameList: 识别词库名列表，评估过程使用这些词汇库中的词汇进行词汇使用行为分析
         :type VocabLibNameList: list of str
@@ -3047,9 +3025,9 @@ class SubmitCheckAttendanceTaskRequest(AbstractModel):
         :type FileType: str
         :param LibraryIds: 人员库 ID列表
         :type LibraryIds: list of str
-        :param AttendanceThreshold: 确定出勤阀值；默认为0.92
+        :param AttendanceThreshold: 确定出勤阈值；默认为0.92
         :type AttendanceThreshold: float
-        :param EnableStranger: 是否开启陌生人模式，开启后才会推送陌生人事件，默认不开启
+        :param EnableStranger: 是否开启陌生人模式，陌生人模式是指在任务中发现的非注册人脸库中的人脸也返回相关统计信息，默认不开启
         :type EnableStranger: bool
         :param EndTime: 考勤结束时间（到视频的第几秒结束考勤），单位秒；默认为900 
 对于直播场景，使用绝对时间戳，单位秒，默认当前时间往后12小时
@@ -3251,6 +3229,81 @@ class SubmitDoubleVideoHighlightsResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class SubmitFullBodyClassTaskRequest(AbstractModel):
+    """SubmitFullBodyClassTask请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param FileContent: 输入分析对象内容
+        :type FileContent: str
+        :param FileType: 输入分析对象类型，picture_url:图片地址，vod_url:视频地址，live_url：直播地址，picture: 图片二进制数据的BASE64编码
+        :type FileType: str
+        :param Lang: 音频源的语言，默认0为英文，1为中文
+        :type Lang: int
+        :param LibrarySet: 查询人员库列表，可填写老师的注册照所在人员库
+        :type LibrarySet: list of str
+        :param MaxVideoDuration: 直播流评估时间，在FileType为live_url时生效，默认值为10分钟。
+        :type MaxVideoDuration: int
+        :param VocabLibNameList: 识别词库名列表，这些词汇库用来维护关键词，评估老师授课过程中，对这些关键词的使用情况
+        :type VocabLibNameList: list of str
+        :param VoiceEncodeType: 语音编码类型 1:pcm，当FileType为vod_url或live_url时为必填
+        :type VoiceEncodeType: int
+        :param VoiceFileType: 语音文件类型 10:视频（三种音频格式目前仅支持16k采样率16bit），当FileType为vod_url或live_url时为必填
+        :type VoiceFileType: int
+        """
+        self.FileContent = None
+        self.FileType = None
+        self.Lang = None
+        self.LibrarySet = None
+        self.MaxVideoDuration = None
+        self.VocabLibNameList = None
+        self.VoiceEncodeType = None
+        self.VoiceFileType = None
+
+
+    def _deserialize(self, params):
+        self.FileContent = params.get("FileContent")
+        self.FileType = params.get("FileType")
+        self.Lang = params.get("Lang")
+        self.LibrarySet = params.get("LibrarySet")
+        self.MaxVideoDuration = params.get("MaxVideoDuration")
+        self.VocabLibNameList = params.get("VocabLibNameList")
+        self.VoiceEncodeType = params.get("VoiceEncodeType")
+        self.VoiceFileType = params.get("VoiceFileType")
+
+
+class SubmitFullBodyClassTaskResponse(AbstractModel):
+    """SubmitFullBodyClassTask返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ImageResults: 图像任务直接返回结果，包括： FaceAttr、 FaceExpression、 FaceIdentify、 FaceInfo、 FacePose、 TeacherBodyMovement、TimeInfo
+        :type ImageResults: list of ImageTaskResult
+        :param TaskId: 任务ID
+        :type TaskId: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.ImageResults = None
+        self.TaskId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("ImageResults") is not None:
+            self.ImageResults = []
+            for item in params.get("ImageResults"):
+                obj = ImageTaskResult()
+                obj._deserialize(item)
+                self.ImageResults.append(obj)
+        self.TaskId = params.get("TaskId")
+        self.RequestId = params.get("RequestId")
+
+
 class SubmitHighlightsRequest(AbstractModel):
     """SubmitHighlights请求参数结构体
 
@@ -3413,6 +3466,274 @@ class SubmitImageTaskResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class SubmitOneByOneClassTaskRequest(AbstractModel):
+    """SubmitOneByOneClassTask请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param FileContent: 输入分析对象内容
+        :type FileContent: str
+        :param FileType: 输入分析对象类型，picture_url:图片地址，vod_url:视频地址，live_url：直播地址，picture: 图片二进制数据的BASE64编码
+        :type FileType: str
+        :param Lang: 音频源的语言，默认0为英文，1为中文 
+        :type Lang: int
+        :param LibrarySet: 查询人员库列表，可填写学生的注册照所在人员库
+        :type LibrarySet: list of str
+        :param MaxVideoDuration: 直播流评估时间，在FileType为live_url时生效，默认值为10分钟。
+        :type MaxVideoDuration: int
+        :param VocabLibNameList: 识别词库名列表，这些词汇库用来维护关键词，评估学生对这些关键词的使用情况
+        :type VocabLibNameList: list of str
+        :param VoiceEncodeType: 语音编码类型 1:pcm，当FileType为vod_url或live_url时为必填
+        :type VoiceEncodeType: int
+        :param VoiceFileType: 语音文件类型10:视频（三种音频格式目前仅支持16k采样率16bit），当FileType为vod_url或live_url时为必填
+        :type VoiceFileType: int
+        """
+        self.FileContent = None
+        self.FileType = None
+        self.Lang = None
+        self.LibrarySet = None
+        self.MaxVideoDuration = None
+        self.VocabLibNameList = None
+        self.VoiceEncodeType = None
+        self.VoiceFileType = None
+
+
+    def _deserialize(self, params):
+        self.FileContent = params.get("FileContent")
+        self.FileType = params.get("FileType")
+        self.Lang = params.get("Lang")
+        self.LibrarySet = params.get("LibrarySet")
+        self.MaxVideoDuration = params.get("MaxVideoDuration")
+        self.VocabLibNameList = params.get("VocabLibNameList")
+        self.VoiceEncodeType = params.get("VoiceEncodeType")
+        self.VoiceFileType = params.get("VoiceFileType")
+
+
+class SubmitOneByOneClassTaskResponse(AbstractModel):
+    """SubmitOneByOneClassTask返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ImageResults: 图像任务直接返回结果，包括：FaceAttr、 FaceExpression、 FaceIdentify、 FaceInfo、 FacePose、TimeInfo
+        :type ImageResults: list of ImageTaskResult
+        :param TaskId: 任务ID
+        :type TaskId: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.ImageResults = None
+        self.TaskId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("ImageResults") is not None:
+            self.ImageResults = []
+            for item in params.get("ImageResults"):
+                obj = ImageTaskResult()
+                obj._deserialize(item)
+                self.ImageResults.append(obj)
+        self.TaskId = params.get("TaskId")
+        self.RequestId = params.get("RequestId")
+
+
+class SubmitOpenClassTaskRequest(AbstractModel):
+    """SubmitOpenClassTask请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param FileContent: 输入分析对象内容
+        :type FileContent: str
+        :param FileType: 输入分析对象类型，picture_url:图片地址，vod_url:视频地址，live_url：直播地址,picture: 图片二进制数据的BASE64编码
+        :type FileType: str
+        :param LibrarySet: 查询人员库列表，可填写学生们的注册照所在人员库
+        :type LibrarySet: list of str
+        :param MaxVideoDuration: 直播流评估时间，在FileType为live_url时生效，默认值为10分钟。
+        :type MaxVideoDuration: int
+        """
+        self.FileContent = None
+        self.FileType = None
+        self.LibrarySet = None
+        self.MaxVideoDuration = None
+
+
+    def _deserialize(self, params):
+        self.FileContent = params.get("FileContent")
+        self.FileType = params.get("FileType")
+        self.LibrarySet = params.get("LibrarySet")
+        self.MaxVideoDuration = params.get("MaxVideoDuration")
+
+
+class SubmitOpenClassTaskResponse(AbstractModel):
+    """SubmitOpenClassTask返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ImageResults: 图像任务直接返回结果，包括：FaceAttr、 FaceExpression、 FaceIdentify、 FaceInfo、 FacePose、 StudentBodyMovement、TimeInfo
+        :type ImageResults: list of ImageTaskResult
+        :param TaskId: 任务ID
+        :type TaskId: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.ImageResults = None
+        self.TaskId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("ImageResults") is not None:
+            self.ImageResults = []
+            for item in params.get("ImageResults"):
+                obj = ImageTaskResult()
+                obj._deserialize(item)
+                self.ImageResults.append(obj)
+        self.TaskId = params.get("TaskId")
+        self.RequestId = params.get("RequestId")
+
+
+class SubmitPartialBodyClassTaskRequest(AbstractModel):
+    """SubmitPartialBodyClassTask请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param FileContent: 输入分析对象内容
+        :type FileContent: str
+        :param FileType: 输入分析对象类型，picture_url:图片地址，vod_url:视频地址，live_url：直播地址，picture: 图片二进制数据的BASE64编码
+        :type FileType: str
+        :param Lang: 音频源的语言，默认0为英文，1为中文
+        :type Lang: int
+        :param LibrarySet: 查询人员库列表，可填写老师的注册照所在人员库
+        :type LibrarySet: list of str
+        :param MaxVideoDuration: 直播流评估时间，在FileType为live_url时生效，默认值为10分钟。
+        :type MaxVideoDuration: int
+        :param VocabLibNameList: 识别词库名列表，这些词汇库用来维护关键词，评估老师授课过程中，对这些关键词的使用情况
+        :type VocabLibNameList: list of str
+        :param VoiceEncodeType: 语音编码类型 1:pcm，当FileType为vod_url或live_url时为必填
+        :type VoiceEncodeType: int
+        :param VoiceFileType: 语音文件类型 10:视频（三种音频格式目前仅支持16k采样率16bit），当FileType为vod_url或live_url时为必填
+        :type VoiceFileType: int
+        """
+        self.FileContent = None
+        self.FileType = None
+        self.Lang = None
+        self.LibrarySet = None
+        self.MaxVideoDuration = None
+        self.VocabLibNameList = None
+        self.VoiceEncodeType = None
+        self.VoiceFileType = None
+
+
+    def _deserialize(self, params):
+        self.FileContent = params.get("FileContent")
+        self.FileType = params.get("FileType")
+        self.Lang = params.get("Lang")
+        self.LibrarySet = params.get("LibrarySet")
+        self.MaxVideoDuration = params.get("MaxVideoDuration")
+        self.VocabLibNameList = params.get("VocabLibNameList")
+        self.VoiceEncodeType = params.get("VoiceEncodeType")
+        self.VoiceFileType = params.get("VoiceFileType")
+
+
+class SubmitPartialBodyClassTaskResponse(AbstractModel):
+    """SubmitPartialBodyClassTask返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ImageResults: 图像任务直接返回结果，包括： FaceAttr、 FaceExpression、 FaceIdentify、 FaceInfo、 FacePose、 Gesture 、 Light、 TimeInfo
+        :type ImageResults: list of ImageTaskResult
+        :param TaskId: 任务ID
+        :type TaskId: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.ImageResults = None
+        self.TaskId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("ImageResults") is not None:
+            self.ImageResults = []
+            for item in params.get("ImageResults"):
+                obj = ImageTaskResult()
+                obj._deserialize(item)
+                self.ImageResults.append(obj)
+        self.TaskId = params.get("TaskId")
+        self.RequestId = params.get("RequestId")
+
+
+class SubmitTraditionalClassTaskRequest(AbstractModel):
+    """SubmitTraditionalClassTask请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param FileContent: 输入分析对象内容，仅支持url，暂不支持直接上传base64图片
+        :type FileContent: str
+        :param FileType: 输入分析对象类型，picture_url:图片地址，vod_url:视频地址，live_url：直播地址
+        :type FileType: str
+        :param LibrarySet: 查询人员库列表，可填写学生们的注册照所在人员库
+        :type LibrarySet: list of str
+        :param MaxVideoDuration: 直播流评估时间，在FileType为live_url时生效，默认值为10分钟。
+        :type MaxVideoDuration: int
+        """
+        self.FileContent = None
+        self.FileType = None
+        self.LibrarySet = None
+        self.MaxVideoDuration = None
+
+
+    def _deserialize(self, params):
+        self.FileContent = params.get("FileContent")
+        self.FileType = params.get("FileType")
+        self.LibrarySet = params.get("LibrarySet")
+        self.MaxVideoDuration = params.get("MaxVideoDuration")
+
+
+class SubmitTraditionalClassTaskResponse(AbstractModel):
+    """SubmitTraditionalClassTask返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ImageResults: 图像任务直接返回结果，包括： ActionInfo、FaceAttr、 FaceExpression、 FaceIdentify、 FaceInfo、 FacePose、 TimeInfo
+        :type ImageResults: list of ImageTaskResult
+        :param TaskId: 任务ID
+        :type TaskId: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.ImageResults = None
+        self.TaskId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("ImageResults") is not None:
+            self.ImageResults = []
+            for item in params.get("ImageResults"):
+                obj = ImageTaskResult()
+                obj._deserialize(item)
+                self.ImageResults.append(obj)
+        self.TaskId = params.get("TaskId")
+        self.RequestId = params.get("RequestId")
+
+
 class SuspectedInfo(AbstractModel):
     """疑似出席人员
 
@@ -3437,6 +3758,39 @@ class SuspectedInfo(AbstractModel):
                 obj._deserialize(item)
                 self.FaceSet.append(obj)
         self.PersonId = params.get("PersonId")
+
+
+class TeacherOutScreenResult(AbstractModel):
+    """教师是否在屏幕内判断结果
+
+    """
+
+    def __init__(self):
+        """
+        :param Class: 动作识别结果
+        :type Class: str
+        :param Height: 识别结果高度
+        :type Height: int
+        :param Left: 识别结果左坐标
+        :type Left: int
+        :param Top: 识别结果顶坐标
+        :type Top: int
+        :param Width: 识别结果宽度
+        :type Width: int
+        """
+        self.Class = None
+        self.Height = None
+        self.Left = None
+        self.Top = None
+        self.Width = None
+
+
+    def _deserialize(self, params):
+        self.Class = params.get("Class")
+        self.Height = params.get("Height")
+        self.Left = params.get("Left")
+        self.Top = params.get("Top")
+        self.Width = params.get("Width")
 
 
 class TextItem(AbstractModel):
@@ -3554,6 +3908,8 @@ class TransmitAudioStreamRequest(AbstractModel):
         :type IsEnd: int
         :param Lang: 音频源的语言，默认0为英文，1为中文
         :type Lang: int
+        :param StorageMode: 是否临时保存 音频链接
+        :type StorageMode: int
         :param VocabLibNameList: 识别词库名列表，评估过程使用这些词汇库中的词汇进行词汇使用行为分析
         :type VocabLibNameList: list of str
         """
@@ -3565,6 +3921,7 @@ class TransmitAudioStreamRequest(AbstractModel):
         self.VoiceFileType = None
         self.IsEnd = None
         self.Lang = None
+        self.StorageMode = None
         self.VocabLibNameList = None
 
 
@@ -3579,6 +3936,7 @@ class TransmitAudioStreamRequest(AbstractModel):
         self.VoiceFileType = params.get("VoiceFileType")
         self.IsEnd = params.get("IsEnd")
         self.Lang = params.get("Lang")
+        self.StorageMode = params.get("StorageMode")
         self.VocabLibNameList = params.get("VocabLibNameList")
 
 
@@ -3599,6 +3957,8 @@ class TransmitAudioStreamResponse(AbstractModel):
         :type VocabAnalysisStatInfo: list of VocabStatInfomation
         :param AllTexts: 音频全部文本。
         :type AllTexts: str
+        :param AudioUrl: 临时保存的音频链接
+        :type AudioUrl: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -3607,6 +3967,7 @@ class TransmitAudioStreamResponse(AbstractModel):
         self.VocabAnalysisDetailInfo = None
         self.VocabAnalysisStatInfo = None
         self.AllTexts = None
+        self.AudioUrl = None
         self.RequestId = None
 
 
@@ -3633,6 +3994,7 @@ class TransmitAudioStreamResponse(AbstractModel):
                 obj._deserialize(item)
                 self.VocabAnalysisStatInfo.append(obj)
         self.AllTexts = params.get("AllTexts")
+        self.AudioUrl = params.get("AudioUrl")
         self.RequestId = params.get("RequestId")
 
 

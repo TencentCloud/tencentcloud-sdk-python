@@ -1567,7 +1567,7 @@ class HealthCheck(AbstractModel):
 
 
 class InternetAccessible(AbstractModel):
-    """网络计费方式
+    """网络计费方式，最大出带宽
 
     """
 
@@ -2674,6 +2674,10 @@ class RuleInput(AbstractModel):
         :type Scheduler: str
         :param ForwardType: 负载均衡与后端服务之间的转发协议，目前支持 HTTP
         :type ForwardType: str
+        :param DefaultServer: 是否将该域名设为默认域名，注意，一个监听器下只能设置一个默认域名。
+        :type DefaultServer: bool
+        :param Http2: 是否开启Http2，注意，只用HTTPS域名才能开启Http2。
+        :type Http2: bool
         """
         self.Domain = None
         self.Url = None
@@ -2682,6 +2686,8 @@ class RuleInput(AbstractModel):
         self.Certificate = None
         self.Scheduler = None
         self.ForwardType = None
+        self.DefaultServer = None
+        self.Http2 = None
 
 
     def _deserialize(self, params):
@@ -2696,6 +2702,8 @@ class RuleInput(AbstractModel):
             self.Certificate._deserialize(params.get("Certificate"))
         self.Scheduler = params.get("Scheduler")
         self.ForwardType = params.get("ForwardType")
+        self.DefaultServer = params.get("DefaultServer")
+        self.Http2 = params.get("Http2")
 
 
 class RuleOutput(AbstractModel):

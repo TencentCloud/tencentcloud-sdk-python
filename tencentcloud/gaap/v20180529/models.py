@@ -156,7 +156,7 @@ class BindListenerRealServersRequest(AbstractModel):
         """
         :param ListenerId: 监听器ID
         :type ListenerId: str
-        :param RealServerBindSet: 待绑定源站列表
+        :param RealServerBindSet: 待绑定源站列表。如果该监听器的源站调度策略是加权轮询，需要填写源站权重 RealServerWeight, 不填或者其他调度类型默认源站权重为1。
         :type RealServerBindSet: list of RealServerBindSetReq
         """
         self.ListenerId = None
@@ -283,6 +283,7 @@ class BindRuleRealServersRequest(AbstractModel):
         :param RealServerBindSet: 需要绑定的源站信息列表。
 如果已经存在绑定的源站，则会覆盖更新成这个源站列表。
 当不带该字段时，表示解绑该规则上的所有源站。
+如果该规则的源站调度策略是加权轮询，需要填写源站权重 RealServerWeight, 不填或者其他调度类型默认源站权重为1。
         :type RealServerBindSet: list of RealServerBindSetReq
         """
         self.RuleId = None
@@ -3547,7 +3548,12 @@ class HTTPListener(AbstractModel):
         :type CreateTime: int
         :param Protocol: 监听器协议
         :type Protocol: str
-        :param ListenerStatus: 监听器状态
+        :param ListenerStatus: 监听器状态，其中：
+0， 运行中；
+1， 创建中；
+2，销毁中；
+3，源站调整中；
+4，配置变更中。
         :type ListenerStatus: int
         """
         self.ListenerId = None
@@ -3580,9 +3586,14 @@ class HTTPSListener(AbstractModel):
         :type ListenerName: str
         :param Port: 监听器端口
         :type Port: int
-        :param Protocol: 监听器协议， HTTP
+        :param Protocol: 监听器协议， 值为：HTTP
         :type Protocol: str
-        :param ListenerStatus: 监听器状态
+        :param ListenerStatus: 监听器状态，其中：
+0， 运行中；
+1， 创建中；
+2，销毁中；
+3，源站调整中；
+4，配置变更中。
         :type ListenerStatus: int
         :param CertificateId: 监听器服务器SSL证书ID
         :type CertificateId: str
@@ -5002,24 +5013,24 @@ class RealServerBindSetReq(AbstractModel):
         """
         :param RealServerId: 源站id
         :type RealServerId: str
-        :param RealServerWeight: 源站权重
-        :type RealServerWeight: int
         :param RealServerPort: 源站端口
         :type RealServerPort: int
         :param RealServerIP: 源站IP
         :type RealServerIP: str
+        :param RealServerWeight: 源站权重
+        :type RealServerWeight: int
         """
         self.RealServerId = None
-        self.RealServerWeight = None
         self.RealServerPort = None
         self.RealServerIP = None
+        self.RealServerWeight = None
 
 
     def _deserialize(self, params):
         self.RealServerId = params.get("RealServerId")
-        self.RealServerWeight = params.get("RealServerWeight")
         self.RealServerPort = params.get("RealServerPort")
         self.RealServerIP = params.get("RealServerIP")
+        self.RealServerWeight = params.get("RealServerWeight")
 
 
 class RealServerStatus(AbstractModel):
@@ -5402,7 +5413,12 @@ class TCPListener(AbstractModel):
         :type RealServerType: str
         :param Protocol: 监听器协议， TCP
         :type Protocol: str
-        :param ListenerStatus: 监听器状态
+        :param ListenerStatus: 监听器状态，其中：
+0， 运行中；
+1， 创建中；
+2，销毁中；
+3，源站调整中；
+4，配置变更中。
         :type ListenerStatus: int
         :param Scheduler: 监听器源站访问策略，其中：
 rr，轮询；
@@ -5530,7 +5546,12 @@ class UDPListener(AbstractModel):
         :type RealServerType: str
         :param Protocol: 监听器协议， UDP
         :type Protocol: str
-        :param ListenerStatus: 监听器状态
+        :param ListenerStatus: 监听器状态，其中：
+0， 运行中；
+1， 创建中；
+2，销毁中；
+3，源站调整中；
+4，配置变更中。
         :type ListenerStatus: int
         :param Scheduler: 监听器源站访问策略
         :type Scheduler: str

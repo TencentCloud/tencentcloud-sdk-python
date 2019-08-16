@@ -277,6 +277,11 @@ class PhoneInfo(AbstractModel):
         :type Phone: str
         :param Stress: 当前音节是否应为重音
         :type Stress: bool
+        :param ReferencePhone: 参考音素，在单词诊断模式下，代表标准
+音素
+        :type ReferencePhone: str
+        :param MatchTag: 当前词与输入语句的匹配情况，0：匹配单词、1：新增单词、2：缺少单词、3：错读的词、4：未录入单词。
+        :type MatchTag: int
         """
         self.MemBeginTime = None
         self.MemEndTime = None
@@ -284,6 +289,8 @@ class PhoneInfo(AbstractModel):
         self.DetectedStress = None
         self.Phone = None
         self.Stress = None
+        self.ReferencePhone = None
+        self.MatchTag = None
 
 
     def _deserialize(self, params):
@@ -293,6 +300,8 @@ class PhoneInfo(AbstractModel):
         self.DetectedStress = params.get("DetectedStress")
         self.Phone = params.get("Phone")
         self.Stress = params.get("Stress")
+        self.ReferencePhone = params.get("ReferencePhone")
+        self.MatchTag = params.get("MatchTag")
 
 
 class SentenceInfo(AbstractModel):
@@ -614,6 +623,8 @@ class WordRsp(AbstractModel):
         :type MatchTag: int
         :param PhoneInfos: 音节评估详情
         :type PhoneInfos: list of PhoneInfo
+        :param ReferenceWord: 参考词，目前为保留字段。
+        :type ReferenceWord: str
         """
         self.MemBeginTime = None
         self.MemEndTime = None
@@ -622,6 +633,7 @@ class WordRsp(AbstractModel):
         self.Word = None
         self.MatchTag = None
         self.PhoneInfos = None
+        self.ReferenceWord = None
 
 
     def _deserialize(self, params):
@@ -637,3 +649,4 @@ class WordRsp(AbstractModel):
                 obj = PhoneInfo()
                 obj._deserialize(item)
                 self.PhoneInfos.append(obj)
+        self.ReferenceWord = params.get("ReferenceWord")

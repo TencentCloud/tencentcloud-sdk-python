@@ -1176,7 +1176,7 @@ class CreatePullStreamConfigRequest(AbstractModel):
 1-深圳，
 2-上海，
 3-天津，
-4-香港。
+4-中国香港。
         :type AreaId: int
         :param IspId: 运营商id：
 1-电信，
@@ -1505,13 +1505,13 @@ class DeleteLiveRecordRuleRequest(AbstractModel):
     def __init__(self):
         """
         :param DomainName: 推流域名。
-域名+AppName+StreamName唯一标识单个转码规则，如需删除需要强匹配，比如AppName为空也需要传空字符串进行强匹配。
+域名+AppName+StreamName唯一标识单个转码规则，如需删除需要强匹配，例如AppName为空也需要传空字符串进行强匹配。
         :type DomainName: str
         :param AppName: 推流路径，与推流和播放地址中的AppName保持一致，默认为 live。
-域名+AppName+StreamName唯一标识单个转码规则，如需删除需要强匹配，比如AppName为空也需要传空字符串进行强匹配。
+域名+AppName+StreamName唯一标识单个转码规则，如需删除需要强匹配，例如AppName为空也需要传空字符串进行强匹配。
         :type AppName: str
         :param StreamName: 流名称。
-域名+AppName+StreamName唯一标识单个转码规则，如需删除需要强匹配，比如AppName为空也需要传空字符串进行强匹配。
+域名+AppName+StreamName唯一标识单个转码规则，如需删除需要强匹配，例如AppName为空也需要传空字符串进行强匹配。
         :type StreamName: str
         """
         self.DomainName = None
@@ -1660,16 +1660,16 @@ class DeleteLiveTranscodeRuleRequest(AbstractModel):
     def __init__(self):
         """
         :param DomainName: 推流域名。
-域名维度转码，域名+AppName+StreamName唯一标识单个转码规则，如需删除需要强匹配，比如AppName为空也需要传空字符串进行强匹配。
+域名维度转码，域名+AppName+StreamName唯一标识单个转码规则，如需删除需要强匹配，例如AppName为空也需要传空字符串进行强匹配。
         :type DomainName: str
         :param AppName: 推流路径，与推流和播放地址中的AppName保持一致，默认为 live。
-域名+AppName+StreamName+TemplateId唯一标识单个转码规则，如需删除需要强匹配，比如AppName为空也需要传空字符串进行强匹配。
+域名+AppName+StreamName+TemplateId唯一标识单个转码规则，如需删除需要强匹配，例如AppName为空也需要传空字符串进行强匹配。
         :type AppName: str
         :param StreamName: 流名称。
-域名+AppName+StreamName+TemplateId唯一标识单个转码规则，如需删除需要强匹配，比如AppName为空也需要传空字符串进行强匹配。
+域名+AppName+StreamName+TemplateId唯一标识单个转码规则，如需删除需要强匹配，例如AppName为空也需要传空字符串进行强匹配。
         :type StreamName: str
         :param TemplateId: 模板ID。
-域名+AppName+StreamName+TemplateId唯一标识单个转码规则，如需删除需要强匹配，比如AppName为空也需要传空字符串进行强匹配。
+域名+AppName+StreamName+TemplateId唯一标识单个转码规则，如需删除需要强匹配，例如AppName为空也需要传空字符串进行强匹配。
         :type TemplateId: int
         """
         self.DomainName = None
@@ -4546,6 +4546,8 @@ class DomainInfo(AbstractModel):
         :param IsDelayLive: 0：普通直播，
 1：慢直播。
         :type IsDelayLive: int
+        :param CurrentCName: 当前客户使用的cname信息
+        :type CurrentCName: str
         """
         self.Name = None
         self.Type = None
@@ -4555,6 +4557,7 @@ class DomainInfo(AbstractModel):
         self.TargetDomain = None
         self.PlayType = None
         self.IsDelayLive = None
+        self.CurrentCName = None
 
 
     def _deserialize(self, params):
@@ -4566,6 +4569,7 @@ class DomainInfo(AbstractModel):
         self.TargetDomain = params.get("TargetDomain")
         self.PlayType = params.get("PlayType")
         self.IsDelayLive = params.get("IsDelayLive")
+        self.CurrentCName = params.get("CurrentCName")
 
 
 class DomainInfoList(AbstractModel):
@@ -4720,11 +4724,16 @@ class ForbidLiveStreamRequest(AbstractModel):
         :param ResumeTime: 恢复流的时间。UTC 格式，例如：2018-11-29T19:00:00Z。
 注意：默认禁播90天，且最长支持禁播90天。
         :type ResumeTime: str
+        :param Reason: 禁推原因。
+注明：请务必填写禁推原因，防止误操作。
+长度限制：2048字节。
+        :type Reason: str
         """
         self.AppName = None
         self.DomainName = None
         self.StreamName = None
         self.ResumeTime = None
+        self.Reason = None
 
 
     def _deserialize(self, params):
@@ -4732,6 +4741,7 @@ class ForbidLiveStreamRequest(AbstractModel):
         self.DomainName = params.get("DomainName")
         self.StreamName = params.get("StreamName")
         self.ResumeTime = params.get("ResumeTime")
+        self.Reason = params.get("Reason")
 
 
 class ForbidLiveStreamResponse(AbstractModel):
@@ -4824,13 +4834,13 @@ class HlsSpecialParam(AbstractModel):
 
 
 class HttpCodeInfo(AbstractModel):
-    """http返回码和统计数据
+    """HTTP返回码和统计数据
 
     """
 
     def __init__(self):
         """
-        :param HttpCode: http协议返回码。
+        :param HttpCode: HTTP协议返回码。
 例："2xx", "3xx", "4xx", "5xx"。
         :type HttpCode: str
         :param ValueList: 统计信息，对于无数据的时间点，会补0。
@@ -4851,7 +4861,7 @@ class HttpCodeInfo(AbstractModel):
 
 
 class HttpCodeValue(AbstractModel):
-    """http返回码数据信息
+    """HTTP返回码数据信息
 
     """
 
@@ -4909,7 +4919,7 @@ class HttpStatusInfo(AbstractModel):
 
     def __init__(self):
         """
-        :param HttpStatus: 播放http状态码。
+        :param HttpStatus: 播放HTTP状态码。
         :type HttpStatus: str
         :param Num: 个数。
         :type Num: int
@@ -5517,7 +5527,12 @@ class ModifyPullStreamConfigRequest(AbstractModel):
         :type FromUrl: str
         :param ToUrl: 目的Url。
         :type ToUrl: str
-        :param AreaId: 区域id,1-深圳,2-上海，3-天津,4-香港。如有改动，需同时传入IspId。
+        :param AreaId: 区域id：
+1-深圳，
+2-上海，
+3-天津，
+4-中国香港。
+如有改动，需同时传入IspId。
         :type AreaId: int
         :param IspId: 运营商id,1-电信,2-移动,3-联通,4-其他,AreaId为4的时候,IspId只能为其他。如有改动，需同时传入AreaId。
         :type IspId: int
@@ -5648,7 +5663,7 @@ class PlayCodeTotalInfo(AbstractModel):
 
     def __init__(self):
         """
-        :param Code: http code，可选值包括400,403,404,500,502,503,504
+        :param Code: HTTP code，可选值包括400,403,404,500,502,503,504
         :type Code: str
         :param Num: 总次数
         :type Num: int

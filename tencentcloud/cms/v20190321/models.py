@@ -71,6 +71,76 @@ class AudioModerationResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class CreateFileSampleRequest(AbstractModel):
+    """CreateFileSample请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Contents: 文件类型结构数组
+        :type Contents: list of FileSample
+        :param EvilType: 恶意类型
+100：正常
+20001：政治
+20002：色情 
+20006：涉毒违法
+20007：谩骂 
+24001：暴恐
+21000：综合
+20105：广告引流
+        :type EvilType: int
+        :param FileType: 文件类型
+image：图片
+audio：音频
+video：视频
+        :type FileType: str
+        :param Label: 样本类型
+1：黑库
+2：白库
+        :type Label: int
+        """
+        self.Contents = None
+        self.EvilType = None
+        self.FileType = None
+        self.Label = None
+
+
+    def _deserialize(self, params):
+        if params.get("Contents") is not None:
+            self.Contents = []
+            for item in params.get("Contents"):
+                obj = FileSample()
+                obj._deserialize(item)
+                self.Contents.append(obj)
+        self.EvilType = params.get("EvilType")
+        self.FileType = params.get("FileType")
+        self.Label = params.get("Label")
+
+
+class CreateFileSampleResponse(AbstractModel):
+    """CreateFileSample返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Progress: 任务状态
+1：已完成
+2：处理中
+        :type Progress: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Progress = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Progress = params.get("Progress")
+        self.RequestId = params.get("RequestId")
+
+
 class CreateTextSampleRequest(AbstractModel):
     """CreateTextSample请求参数结构体
 
@@ -129,6 +199,46 @@ class CreateTextSampleResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DeleteFileSampleRequest(AbstractModel):
+    """DeleteFileSample请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Ids: 唯一标识数组
+        :type Ids: list of str
+        """
+        self.Ids = None
+
+
+    def _deserialize(self, params):
+        self.Ids = params.get("Ids")
+
+
+class DeleteFileSampleResponse(AbstractModel):
+    """DeleteFileSample返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Progress: 任务状态
+1：已完成
+2：处理中
+        :type Progress: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Progress = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Progress = params.get("Progress")
+        self.RequestId = params.get("RequestId")
+
+
 class DeleteTextSampleRequest(AbstractModel):
     """DeleteTextSample请求参数结构体
 
@@ -166,6 +276,74 @@ class DeleteTextSampleResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.Progress = params.get("Progress")
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeFileSampleRequest(AbstractModel):
+    """DescribeFileSample请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Filters: 支持通过标签值进行筛选
+        :type Filters: list of Filter
+        :param Limit: 数量限制，默认为20，最大值为100
+        :type Limit: int
+        :param Offset: 偏移量，默认为0
+        :type Offset: int
+        :param OrderDirection: 升序（asc）还是降序（desc），默认：desc
+        :type OrderDirection: str
+        :param OrderField: 按某个字段排序，目前仅支持CreatedAt排序
+        :type OrderField: str
+        """
+        self.Filters = None
+        self.Limit = None
+        self.Offset = None
+        self.OrderDirection = None
+        self.OrderField = None
+
+
+    def _deserialize(self, params):
+        if params.get("Filters") is not None:
+            self.Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self.Filters.append(obj)
+        self.Limit = params.get("Limit")
+        self.Offset = params.get("Offset")
+        self.OrderDirection = params.get("OrderDirection")
+        self.OrderField = params.get("OrderField")
+
+
+class DescribeFileSampleResponse(AbstractModel):
+    """DescribeFileSample返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param FileSampleSet: 符合要求的样本的信息
+        :type FileSampleSet: list of FileSampleInfo
+        :param TotalCount: 符合要求的样本的数量
+        :type TotalCount: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.FileSampleSet = None
+        self.TotalCount = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("FileSampleSet") is not None:
+            self.FileSampleSet = []
+            for item in params.get("FileSampleSet"):
+                obj = FileSampleInfo()
+                obj._deserialize(item)
+                self.FileSampleSet.append(obj)
+        self.TotalCount = params.get("TotalCount")
         self.RequestId = params.get("RequestId")
 
 
@@ -288,6 +466,95 @@ class DescribeTextSampleResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class FileSample(AbstractModel):
+    """文件类型样本
+
+    """
+
+    def __init__(self):
+        """
+        :param FileMd5: 文件md5
+        :type FileMd5: str
+        :param FileName: 文件名称
+        :type FileName: str
+        :param FileUrl: 文件url
+        :type FileUrl: str
+        """
+        self.FileMd5 = None
+        self.FileName = None
+        self.FileUrl = None
+
+
+    def _deserialize(self, params):
+        self.FileMd5 = params.get("FileMd5")
+        self.FileName = params.get("FileName")
+        self.FileUrl = params.get("FileUrl")
+
+
+class FileSampleInfo(AbstractModel):
+    """文件样本返回信息
+
+    """
+
+    def __init__(self):
+        """
+        :param Code: 处理错误码
+        :type Code: int
+        :param CreatedAt: 创建时间戳
+        :type CreatedAt: int
+        :param EvilType: 恶意类型
+100：正常
+20001：政治
+20002：色情 
+20006：涉毒违法
+20007：谩骂 
+24001：暴恐
+21000：综合
+        :type EvilType: int
+        :param FileMd5: 文件的md5
+        :type FileMd5: str
+        :param FileName: 文件名称
+        :type FileName: str
+        :param FileType: 文件类型
+        :type FileType: str
+        :param Id: 唯一标识
+        :type Id: str
+        :param Label: 样本类型
+1：黑库
+2：白库
+        :type Label: int
+        :param Status: 任务状态
+1：已完成
+2：处理中
+        :type Status: int
+        :param FileUrl: 文件的url
+        :type FileUrl: str
+        """
+        self.Code = None
+        self.CreatedAt = None
+        self.EvilType = None
+        self.FileMd5 = None
+        self.FileName = None
+        self.FileType = None
+        self.Id = None
+        self.Label = None
+        self.Status = None
+        self.FileUrl = None
+
+
+    def _deserialize(self, params):
+        self.Code = params.get("Code")
+        self.CreatedAt = params.get("CreatedAt")
+        self.EvilType = params.get("EvilType")
+        self.FileMd5 = params.get("FileMd5")
+        self.FileName = params.get("FileName")
+        self.FileType = params.get("FileType")
+        self.Id = params.get("Id")
+        self.Label = params.get("Label")
+        self.Status = params.get("Status")
+        self.FileUrl = params.get("FileUrl")
+
+
 class Filter(AbstractModel):
     """筛选数据结构
 
@@ -324,6 +591,7 @@ class ImageData(AbstractModel):
 20002：色情 
 20006：涉毒违法
 20007：谩骂 
+20103：性感
 24001：暴恐
 21000：综合
         :type EvilType: int
@@ -331,6 +599,8 @@ class ImageData(AbstractModel):
         :type HotDetect: :class:`tencentcloud.cms.v20190321.models.ImageHotDetect`
         :param IllegalDetect: 图片违法详情
         :type IllegalDetect: :class:`tencentcloud.cms.v20190321.models.ImageIllegalDetect`
+        :param OCRDetect: 图片OCR详情
+        :type OCRDetect: :class:`tencentcloud.cms.v20190321.models.OCRDetect`
         :param PolityDetect: 图片涉政详情
         :type PolityDetect: :class:`tencentcloud.cms.v20190321.models.ImagePolityDetect`
         :param PornDetect: 图片涉黄详情
@@ -344,6 +614,7 @@ class ImageData(AbstractModel):
         self.EvilType = None
         self.HotDetect = None
         self.IllegalDetect = None
+        self.OCRDetect = None
         self.PolityDetect = None
         self.PornDetect = None
         self.Similar = None
@@ -359,6 +630,9 @@ class ImageData(AbstractModel):
         if params.get("IllegalDetect") is not None:
             self.IllegalDetect = ImageIllegalDetect()
             self.IllegalDetect._deserialize(params.get("IllegalDetect"))
+        if params.get("OCRDetect") is not None:
+            self.OCRDetect = OCRDetect()
+            self.OCRDetect._deserialize(params.get("OCRDetect"))
         if params.get("PolityDetect") is not None:
             self.PolityDetect = ImagePolityDetect()
             self.PolityDetect._deserialize(params.get("PolityDetect"))
@@ -381,13 +655,8 @@ class ImageHotDetect(AbstractModel):
     def __init__(self):
         """
         :param EvilType: 恶意类型
-100：正常 
-20001：政治
-20002：色情 
-20006：涉毒违法
-20007：谩骂 
-24001：暴恐
-21000：综合
+100：正常
+20103：性感
         :type EvilType: int
         :param HitFlag: 处置判定 0：正常 1：可疑
         :type HitFlag: int
@@ -422,12 +691,7 @@ class ImageIllegalDetect(AbstractModel):
         """
         :param EvilType: 恶意类型
 100：正常 
-20001：政治
-20002：色情 
 20006：涉毒违法
-20007：谩骂 
-24001：暴恐
-21000：综合
         :type EvilType: int
         :param HitFlag: 处置判定 0：正常 1：可疑
         :type HitFlag: int
@@ -515,11 +779,6 @@ class ImagePolityDetect(AbstractModel):
         :param EvilType: 恶意类型
 100：正常 
 20001：政治
-20002：色情 
-20006：涉毒违法
-20007：谩骂 
-24001：暴恐
-21000：综合
         :type EvilType: int
         :param HitFlag: 处置判定  0：正常 1：可疑
         :type HitFlag: int
@@ -557,13 +816,8 @@ class ImagePornDetect(AbstractModel):
     def __init__(self):
         """
         :param EvilType: 恶意类型
-100：正常 
-20001：政治
-20002：色情 
-20006：涉毒违法
-20007：谩骂 
-24001：暴恐
-21000：综合
+100：正常
+20002：色情
         :type EvilType: int
         :param HitFlag: 处置判定 0：正常 1：可疑
         :type HitFlag: int
@@ -597,13 +851,8 @@ class ImageTerrorDetect(AbstractModel):
     def __init__(self):
         """
         :param EvilType: 恶意类型
-100：正常 
-20001：政治
-20002：色情 
-20006：涉毒违法
-20007：谩骂 
+100：正常
 24001：暴恐
-21000：综合
         :type EvilType: int
         :param HitFlag: 处置判定 0：正常 1：可疑
         :type HitFlag: int
@@ -627,6 +876,23 @@ class ImageTerrorDetect(AbstractModel):
         self.Keywords = params.get("Keywords")
         self.Labels = params.get("Labels")
         self.Score = params.get("Score")
+
+
+class OCRDetect(AbstractModel):
+    """OCR识别结果详情
+
+    """
+
+    def __init__(self):
+        """
+        :param TextInfo: 识别到的文本信息
+        :type TextInfo: str
+        """
+        self.TextInfo = None
+
+
+    def _deserialize(self, params):
+        self.TextInfo = params.get("TextInfo")
 
 
 class OverviewRecord(AbstractModel):
@@ -704,7 +970,8 @@ class TextData(AbstractModel):
 20001：政治
 20002：色情 
 20006：涉毒违法
-20007：谩骂 
+20007：谩骂
+20105：广告引流 
 24001：暴恐
 21000：综合
         :type EvilType: int

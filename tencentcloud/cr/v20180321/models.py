@@ -23,9 +23,9 @@ class ApplyBlackListRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Module: 模块
+        :param Module: 模块名，本接口取值：account
         :type Module: str
-        :param Operation: 操作
+        :param Operation: 操作名，本接口取值：ApplyBlackList
         :type Operation: str
         :param BlackList: 黑名单列表
         :type BlackList: list of SingleBlackApply
@@ -74,9 +74,9 @@ class ApplyCreditAuditRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Module: 模块
+        :param Module: 模块名，本接口取值：Credit
         :type Module: str
-        :param Operation: 操作
+        :param Operation: 操作名，本接口取值：Apply
         :type Operation: str
         :param InstId: 实例ID
         :type InstId: str
@@ -136,9 +136,9 @@ class DescribeCreditResultRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Module: 模块
+        :param Module: 模块名，本接口取值：Credit
         :type Module: str
-        :param Operation: 操作
+        :param Operation: 操作名，本接口取值：Get
         :type Operation: str
         :param InstId: 实例ID
         :type InstId: str
@@ -146,7 +146,7 @@ class DescribeCreditResultRequest(AbstractModel):
         :type ProductId: str
         :param CaseId: 信审任务ID
         :type CaseId: str
-        :param RequestDate: 请求日期
+        :param RequestDate: 请求日期，格式为YYYY-MM-DD
         :type RequestDate: str
         """
         self.Module = None
@@ -217,9 +217,9 @@ class DescribeRecordsRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Module: 模块
+        :param Module: 模块名，本接口取值：Record
         :type Module: str
-        :param Operation: 操作
+        :param Operation: 操作名，本接口取值：List
         :type Operation: str
         :param ProductId: 产品ID
         :type ProductId: str
@@ -227,13 +227,13 @@ class DescribeRecordsRequest(AbstractModel):
         :type AccountNum: str
         :param CalledPhone: 被叫号码
         :type CalledPhone: str
-        :param StartBizDate: 查询起始日期
+        :param StartBizDate: 查询起始日期，格式为YYYY-MM-DD
         :type StartBizDate: str
-        :param EndBizDate: 查询结束日期
+        :param EndBizDate: 查询结束日期，格式为YYYY-MM-DD
         :type EndBizDate: str
-        :param Offset: 分页参数，索引，从0开始
+        :param Offset: 分页参数，索引，默认为0
         :type Offset: str
-        :param Limit: 分页参数，页长
+        :param Limit: 分页参数，页长，默认为20
         :type Limit: str
         :param InstId: 实例ID，不传默认为系统分配的初始实例
         :type InstId: str
@@ -301,22 +301,26 @@ class DescribeTaskStatusRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Module: 模块名
+        :param Module: 模块名，本接口取值：Task
         :type Module: str
-        :param Operation: 操作名
+        :param Operation: 操作名，本接口取值：DescribeTaskStatus
         :type Operation: str
-        :param TaskId: 任务ID，形如abc-a0b1c2xyz
+        :param TaskId: 任务ID，"上传文件"接口返回的DataResId，形如abc-xyz123
         :type TaskId: str
+        :param InstId: 实例ID，不传默认为系统分配的初始实例。
+        :type InstId: str
         """
         self.Module = None
         self.Operation = None
         self.TaskId = None
+        self.InstId = None
 
 
     def _deserialize(self, params):
         self.Module = params.get("Module")
         self.Operation = params.get("Operation")
         self.TaskId = params.get("TaskId")
+        self.InstId = params.get("InstId")
 
 
 class DescribeTaskStatusResponse(AbstractModel):
@@ -326,9 +330,9 @@ class DescribeTaskStatusResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param TaskResult: 任务结果，例如上传成功时返回“File Uploading Task Success.”
+        :param TaskResult: <p>任务结果：</p><ul style="margin-bottom:0px;"><li>处理中："Uploading Data."</li><li>上传成功："File Uploading Task Success."</li><li>上传失败：具体失败原因</li></ul>
         :type TaskResult: str
-        :param TaskType: <p>任务类型：</p><ul style="margin-bottom:0px;"><li>报告下载：001</li><li>催收数据上传：002</li><li>还款数据上传：003</li><li>回访数据上传：004</li><li>停拨数据上传：005</li></ul>
+        :param TaskType: <p>任务类型：</p><ul style="margin-bottom:0px;"><li>催收数据上传：002</li><li>还款数据上传：003</li><li>回访数据上传：004</li><li>停拨数据上传：005</li></ul>
         :type TaskType: str
         :param TaskFileUrl: 过滤文件下载链接，有过滤数据时才存在。
 注意：此字段可能返回 null，表示取不到有效值。
@@ -349,6 +353,106 @@ class DescribeTaskStatusResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DownloadDialogueTextRequest(AbstractModel):
+    """DownloadDialogueText请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Module: 模块名，本接口取值：Report
+        :type Module: str
+        :param Operation: 操作名，本接口取值：DownloadTextReport
+        :type Operation: str
+        :param ReportDate: 报告日期，格式为YYYY-MM-DD
+        :type ReportDate: str
+        :param InstId: 实例ID
+        :type InstId: str
+        """
+        self.Module = None
+        self.Operation = None
+        self.ReportDate = None
+        self.InstId = None
+
+
+    def _deserialize(self, params):
+        self.Module = params.get("Module")
+        self.Operation = params.get("Operation")
+        self.ReportDate = params.get("ReportDate")
+        self.InstId = params.get("InstId")
+
+
+class DownloadDialogueTextResponse(AbstractModel):
+    """DownloadDialogueText返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param TextReportUrl: 对话文本下载地址
+        :type TextReportUrl: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TextReportUrl = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TextReportUrl = params.get("TextReportUrl")
+        self.RequestId = params.get("RequestId")
+
+
+class DownloadRecordListRequest(AbstractModel):
+    """DownloadRecordList请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Module: 模块名，本接口取值：Record
+        :type Module: str
+        :param Operation: 操作名，本接口取值：DownloadList
+        :type Operation: str
+        :param BizDate: 录音日期，格式为YYYY-MM-DD
+        :type BizDate: str
+        :param InstId: 实例ID
+        :type InstId: str
+        """
+        self.Module = None
+        self.Operation = None
+        self.BizDate = None
+        self.InstId = None
+
+
+    def _deserialize(self, params):
+        self.Module = params.get("Module")
+        self.Operation = params.get("Operation")
+        self.BizDate = params.get("BizDate")
+        self.InstId = params.get("InstId")
+
+
+class DownloadRecordListResponse(AbstractModel):
+    """DownloadRecordList返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RecordListUrl: 录音列表下载地址
+        :type RecordListUrl: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RecordListUrl = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RecordListUrl = params.get("RecordListUrl")
+        self.RequestId = params.get("RequestId")
+
+
 class DownloadReportRequest(AbstractModel):
     """DownloadReport请求参数结构体
 
@@ -356,11 +460,11 @@ class DownloadReportRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Module: 模块名
+        :param Module: 模块名，本接口取值：Report
         :type Module: str
-        :param Operation: 操作名
+        :param Operation: 操作名，本接口取值：DownloadReport
         :type Operation: str
-        :param ReportDate: 报告日期
+        :param ReportDate: 报告日期，格式为YYYY-MM-DD
         :type ReportDate: str
         :param InstId: 实例ID，不传默认为系统分配的初始实例。
         :type InstId: str
@@ -512,13 +616,13 @@ class UploadDataFileRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Module: 模块名
+        :param Module: 模块名，本接口取值：Data
         :type Module: str
-        :param Operation: 操作名
+        :param Operation: 操作名，本接口取值：Upload
         :type Operation: str
         :param FileName: 文件名
         :type FileName: str
-        :param UploadModel: <p>上传类型，不填默认催收文件，取值范围：</p><ul style="margin-bottom:0px;"><li>data：催收文件</li><li>repay：还款文件</li><li>callback：回访文件</li></ul>
+        :param UploadModel: <p>上传类型，不填默认催收文件，取值范围：</p><ul style="margin-bottom:0px;"><li>data：入催文件</li><li>repay：还款文件</li><li>callback：回访文件</li><li>callstop：回访停拨文件</li></ul>
         :type UploadModel: str
         :param File: 文件，文件与文件地址上传只可选用一种，必须使用multipart/form-data协议来上传二进制流文件，建议使用xlsx格式，大小不超过5MB。
         :type File: binary

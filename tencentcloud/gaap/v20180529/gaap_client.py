@@ -83,7 +83,7 @@ class GaapClient(AbstractClient):
 
 
     def BindRuleRealServers(self, request):
-        """该接口用于7层监听器转发规则绑定源站。
+        """该接口用于7层监听器的转发规则绑定源站。注意：本接口会解绑之前绑定的源站，绑定本次调用所选择的源站。
 
         :param request: 调用BindRuleRealServers所需参数的结构体。
         :type request: :class:`tencentcloud.gaap.v20180529.models.BindRuleRealServersRequest`

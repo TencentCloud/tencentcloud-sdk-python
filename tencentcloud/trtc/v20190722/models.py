@@ -16,8 +16,8 @@
 from tencentcloud.common.abstract_model import AbstractModel
 
 
-class DissloveRoomRequest(AbstractModel):
-    """DissloveRoom请求参数结构体
+class DissolveRoomRequest(AbstractModel):
+    """DissolveRoom请求参数结构体
 
     """
 
@@ -37,8 +37,8 @@ class DissloveRoomRequest(AbstractModel):
         self.RoomId = params.get("RoomId")
 
 
-class DissloveRoomResponse(AbstractModel):
-    """DissloveRoom返回参数结构体
+class DissolveRoomResponse(AbstractModel):
+    """DissolveRoom返回参数结构体
 
     """
 

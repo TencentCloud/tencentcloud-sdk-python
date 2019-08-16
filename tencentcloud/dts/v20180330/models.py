@@ -629,27 +629,27 @@ class DstInfo(AbstractModel):
         """
         :param InstanceId: 目标实例Id，如cdb-jd92ijd8
         :type InstanceId: str
+        :param Region: 目标实例地域，如ap-guangzhou
+        :type Region: str
         :param Ip: 目标实例vip。已废弃，无需填写
         :type Ip: str
         :param Port: 目标实例vport。已废弃，无需填写
         :type Port: int
-        :param Region: 目标实例地域，如ap-guangzhou
-        :type Region: str
         :param ReadOnly: 目前只对MySQL有效。当为整实例迁移时，1-只读，0-可读写。
         :type ReadOnly: int
         """
         self.InstanceId = None
+        self.Region = None
         self.Ip = None
         self.Port = None
-        self.Region = None
         self.ReadOnly = None
 
 
     def _deserialize(self, params):
         self.InstanceId = params.get("InstanceId")
+        self.Region = params.get("Region")
         self.Ip = params.get("Ip")
         self.Port = params.get("Port")
-        self.Region = params.get("Region")
         self.ReadOnly = params.get("ReadOnly")
 
 

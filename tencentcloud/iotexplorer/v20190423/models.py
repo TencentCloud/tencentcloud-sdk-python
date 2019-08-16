@@ -29,16 +29,24 @@ class ControlDeviceDataRequest(AbstractModel):
         :type DeviceName: str
         :param Data: 属性数据
         :type Data: str
+        :param Method: 请求类型
+        :type Method: str
+        :param DeviceId: 设备ID，该字段有值将代替 ProductId/DeviceName
+        :type DeviceId: str
         """
         self.ProductId = None
         self.DeviceName = None
         self.Data = None
+        self.Method = None
+        self.DeviceId = None
 
 
     def _deserialize(self, params):
         self.ProductId = params.get("ProductId")
         self.DeviceName = params.get("DeviceName")
         self.Data = params.get("Data")
+        self.Method = params.get("Method")
+        self.DeviceId = params.get("DeviceId")
 
 
 class ControlDeviceDataResponse(AbstractModel):
@@ -50,6 +58,54 @@ class ControlDeviceDataResponse(AbstractModel):
         """
         :param Data: 返回信息
         :type Data: str
+        :param Result: JSON字符串， 返回下发控制的结果信息, 
+Sent = 1 表示设备已经在线并且订阅了控制下发的mqtt topic
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Result: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Data = None
+        self.Result = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Data = params.get("Data")
+        self.Result = params.get("Result")
+        self.RequestId = params.get("RequestId")
+
+
+class CreateDeviceRequest(AbstractModel):
+    """CreateDevice请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ProductId: 产品ID。
+        :type ProductId: str
+        :param DeviceName: 设备名称。
+        :type DeviceName: str
+        """
+        self.ProductId = None
+        self.DeviceName = None
+
+
+    def _deserialize(self, params):
+        self.ProductId = params.get("ProductId")
+        self.DeviceName = params.get("DeviceName")
+
+
+class CreateDeviceResponse(AbstractModel):
+    """CreateDevice返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Data: 设备参数描述。
+        :type Data: :class:`tencentcloud.iotexplorer.v20190423.models.DeviceData`
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -58,7 +114,9 @@ class ControlDeviceDataResponse(AbstractModel):
 
 
     def _deserialize(self, params):
-        self.Data = params.get("Data")
+        if params.get("Data") is not None:
+            self.Data = DeviceData()
+            self.Data._deserialize(params.get("Data"))
         self.RequestId = params.get("RequestId")
 
 
@@ -174,6 +232,44 @@ class CreateStudioProductResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DeleteDeviceRequest(AbstractModel):
+    """DeleteDevice请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ProductId: 产品ID。
+        :type ProductId: str
+        :param DeviceName: 设备名称。
+        :type DeviceName: str
+        """
+        self.ProductId = None
+        self.DeviceName = None
+
+
+    def _deserialize(self, params):
+        self.ProductId = params.get("ProductId")
+        self.DeviceName = params.get("DeviceName")
+
+
+class DeleteDeviceResponse(AbstractModel):
+    """DeleteDevice返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class DeleteProjectRequest(AbstractModel):
     """DeleteProject请求参数结构体
 
@@ -182,7 +278,7 @@ class DeleteProjectRequest(AbstractModel):
     def __init__(self):
         """
         :param ProjectId: 项目ID
-        :type ProjectId: int
+        :type ProjectId: str
         """
         self.ProjectId = None
 
@@ -415,7 +511,7 @@ class DescribeProjectRequest(AbstractModel):
     def __init__(self):
         """
         :param ProjectId: 项目ID
-        :type ProjectId: int
+        :type ProjectId: str
         """
         self.ProjectId = None
 
@@ -487,6 +583,39 @@ class DescribeStudioProductResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DeviceData(AbstractModel):
+    """DeviceData
+
+    """
+
+    def __init__(self):
+        """
+        :param DeviceCert: 设备证书，用于 TLS 建立链接时校验客户端身份。采用非对称加密时返回该参数。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DeviceCert: str
+        :param DeviceName: 设备名称。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DeviceName: str
+        :param DevicePrivateKey: 设备私钥，用于 TLS 建立链接时校验客户端身份，腾讯云后台不保存，请妥善保管。采用非对称加密时返回该参数。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DevicePrivateKey: str
+        :param DevicePsk: 对称加密密钥，base64编码。采用对称加密时返回该参数。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DevicePsk: str
+        """
+        self.DeviceCert = None
+        self.DeviceName = None
+        self.DevicePrivateKey = None
+        self.DevicePsk = None
+
+
+    def _deserialize(self, params):
+        self.DeviceCert = params.get("DeviceCert")
+        self.DeviceName = params.get("DeviceName")
+        self.DevicePrivateKey = params.get("DevicePrivateKey")
+        self.DevicePsk = params.get("DevicePsk")
+
+
 class DeviceDataHistoryItem(AbstractModel):
     """设备历史数据结构
 
@@ -537,8 +666,10 @@ class GetProjectListResponse(AbstractModel):
     def __init__(self):
         """
         :param Projects: 项目列表
+注意：此字段可能返回 null，表示取不到有效值。
         :type Projects: list of ProjectEntryEx
         :param Total: 列表项个数
+注意：此字段可能返回 null，表示取不到有效值。
         :type Total: int
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -664,7 +795,7 @@ class ModifyProjectRequest(AbstractModel):
     def __init__(self):
         """
         :param ProjectId: 项目ID
-        :type ProjectId: int
+        :type ProjectId: str
         :param ProjectName: 项目名称
         :type ProjectName: str
         :param ProjectDesc: 项目描述
@@ -840,11 +971,15 @@ class ProductModelDefinition(AbstractModel):
         :type UpdateTime: int
         :param CreateTime: 创建时间，秒级时间戳
         :type CreateTime: int
+        :param CategoryModel: 产品所属分类的模型快照（产品创建时刻的）
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CategoryModel: str
         """
         self.ProductId = None
         self.ModelDefine = None
         self.UpdateTime = None
         self.CreateTime = None
+        self.CategoryModel = None
 
 
     def _deserialize(self, params):
@@ -852,6 +987,7 @@ class ProductModelDefinition(AbstractModel):
         self.ModelDefine = params.get("ModelDefine")
         self.UpdateTime = params.get("UpdateTime")
         self.CreateTime = params.get("CreateTime")
+        self.CategoryModel = params.get("CategoryModel")
 
 
 class ProjectEntry(AbstractModel):
@@ -862,7 +998,7 @@ class ProjectEntry(AbstractModel):
     def __init__(self):
         """
         :param ProjectId: 项目ID
-        :type ProjectId: int
+        :type ProjectId: str
         :param ProjectName: 项目名称
         :type ProjectName: str
         :param ProjectDesc: 项目描述
@@ -895,7 +1031,7 @@ class ProjectEntryEx(AbstractModel):
     def __init__(self):
         """
         :param ProjectId: 项目ID
-        :type ProjectId: int
+        :type ProjectId: str
         :param ProjectName: 项目名称
         :type ProjectName: str
         :param ProjectDesc: 项目描述
@@ -985,11 +1121,14 @@ class SearchStudioProductRequest(AbstractModel):
         :type Limit: int
         :param Offset: 列表Offset
         :type Offset: int
+        :param DevStatus: 产品Status
+        :type DevStatus: str
         """
         self.ProjectId = None
         self.ProductName = None
         self.Limit = None
         self.Offset = None
+        self.DevStatus = None
 
 
     def _deserialize(self, params):
@@ -997,6 +1136,7 @@ class SearchStudioProductRequest(AbstractModel):
         self.ProductName = params.get("ProductName")
         self.Limit = params.get("Limit")
         self.Offset = params.get("Offset")
+        self.DevStatus = params.get("DevStatus")
 
 
 class SearchStudioProductResponse(AbstractModel):

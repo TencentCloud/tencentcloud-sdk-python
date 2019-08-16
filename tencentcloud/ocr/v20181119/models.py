@@ -1305,7 +1305,7 @@ class TextArithmetic(AbstractModel):
         :type Result: bool
         :param Confidence: 保留字段，暂无意义
         :type Confidence: int
-        :param Polygon: 文本行坐标，以四个顶点坐标表示
+        :param Polygon: 文本行坐标，以四个顶点坐标表示（预留字段，目前不支持）
 注意：此字段可能返回 null，表示取不到有效值。
         :type Polygon: list of Coord
         :param AdvancedInfo: 此字段为扩展字段

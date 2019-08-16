@@ -26,13 +26,13 @@ class ScfClient(AbstractClient):
 
 
     def CopyFunction(self, request):
-        """复制一个函数，可以选择将复制出的新函数放置在同一个namespace或另一个namespace。
+        """复制一个函数，您可以选择将复制出的新函数放置在特定的Region和Namespace。
         注：本接口**不会**复制函数的以下对象或属性：
         1. 函数的触发器
         2. 除了$LATEST以外的其它版本
-        3. 函数配置的日志投递到的CLS目标
+        3. 函数配置的日志投递到的CLS目标。
 
-        如有需要，您可以在复制后手动修改新函数。
+        如有需要，您可以在复制后手动配置新函数。
 
         :param request: 调用CopyFunction所需参数的结构体。
         :type request: :class:`tencentcloud.scf.v20180416.models.CopyFunctionRequest`
@@ -73,6 +73,34 @@ class ScfClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateFunctionResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def CreateNamespace(self, request):
+        """该接口根据传入的参数创建命名空间。
+
+        :param request: 调用CreateNamespace所需参数的结构体。
+        :type request: :class:`tencentcloud.scf.v20180416.models.CreateNamespaceRequest`
+        :rtype: :class:`tencentcloud.scf.v20180416.models.CreateNamespaceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("CreateNamespace", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateNamespaceResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -143,6 +171,34 @@ class ScfClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DeleteNamespace(self, request):
+        """该接口根据传入的参数创建命名空间。
+
+        :param request: 调用DeleteNamespace所需参数的结构体。
+        :type request: :class:`tencentcloud.scf.v20180416.models.DeleteNamespaceRequest`
+        :rtype: :class:`tencentcloud.scf.v20180416.models.DeleteNamespaceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DeleteNamespace", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DeleteNamespaceResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DeleteTrigger(self, request):
         """该接口根据参数传入删除已有的触发方式。
 
@@ -185,6 +241,34 @@ class ScfClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.GetFunctionResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def GetFunctionAddress(self, request):
+        """该接口用于获取函数代码包的下载地址。
+
+        :param request: 调用GetFunctionAddress所需参数的结构体。
+        :type request: :class:`tencentcloud.scf.v20180416.models.GetFunctionAddressRequest`
+        :rtype: :class:`tencentcloud.scf.v20180416.models.GetFunctionAddressResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("GetFunctionAddress", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.GetFunctionAddressResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -283,6 +367,90 @@ class ScfClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def ListNamespaces(self, request):
+        """列出命名空间列表
+
+        :param request: 调用ListNamespaces所需参数的结构体。
+        :type request: :class:`tencentcloud.scf.v20180416.models.ListNamespacesRequest`
+        :rtype: :class:`tencentcloud.scf.v20180416.models.ListNamespacesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ListNamespaces", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ListNamespacesResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ListVersionByFunction(self, request):
+        """该接口根据传入的参数查询函数的版本。
+
+        :param request: 调用ListVersionByFunction所需参数的结构体。
+        :type request: :class:`tencentcloud.scf.v20180416.models.ListVersionByFunctionRequest`
+        :rtype: :class:`tencentcloud.scf.v20180416.models.ListVersionByFunctionResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ListVersionByFunction", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ListVersionByFunctionResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def PublishVersion(self, request):
+        """该接口用于用户发布新版本函数。
+
+        :param request: 调用PublishVersion所需参数的结构体。
+        :type request: :class:`tencentcloud.scf.v20180416.models.PublishVersionRequest`
+        :rtype: :class:`tencentcloud.scf.v20180416.models.PublishVersionResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("PublishVersion", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.PublishVersionResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def UpdateFunctionCode(self, request):
         """该接口根据传入参数更新函数代码。
 
@@ -325,6 +493,34 @@ class ScfClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.UpdateFunctionConfigurationResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def UpdateNamespace(self, request):
+        """更新命名空间
+
+        :param request: 调用UpdateNamespace所需参数的结构体。
+        :type request: :class:`tencentcloud.scf.v20180416.models.UpdateNamespaceRequest`
+        :rtype: :class:`tencentcloud.scf.v20180416.models.UpdateNamespaceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("UpdateNamespace", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.UpdateNamespaceResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

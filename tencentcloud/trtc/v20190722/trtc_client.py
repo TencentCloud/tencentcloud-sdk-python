@@ -25,20 +25,20 @@ class TrtcClient(AbstractClient):
     _endpoint = 'trtc.tencentcloudapi.com'
 
 
-    def DissloveRoom(self, request):
+    def DissolveRoom(self, request):
         """接口说明：把房间所有用户从房间踢出，解散房间。
 
-        :param request: 调用DissloveRoom所需参数的结构体。
-        :type request: :class:`tencentcloud.trtc.v20190722.models.DissloveRoomRequest`
-        :rtype: :class:`tencentcloud.trtc.v20190722.models.DissloveRoomResponse`
+        :param request: 调用DissolveRoom所需参数的结构体。
+        :type request: :class:`tencentcloud.trtc.v20190722.models.DissolveRoomRequest`
+        :rtype: :class:`tencentcloud.trtc.v20190722.models.DissolveRoomResponse`
 
         """
         try:
             params = request._serialize()
-            body = self.call("DissloveRoom", params)
+            body = self.call("DissolveRoom", params)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.DissloveRoomResponse()
+                model = models.DissolveRoomResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

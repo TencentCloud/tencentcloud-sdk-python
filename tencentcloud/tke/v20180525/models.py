@@ -148,7 +148,7 @@ class ClusterAdvancedSettings(AbstractModel):
         """
         :param IPVS: 是否启用IPVS
         :type IPVS: bool
-        :param AsEnabled: 是否启用集群节点扩缩容
+        :param AsEnabled: 是否启用集群节点自动扩缩容(创建集群流程不支持开启此功能)
         :type AsEnabled: bool
         :param ContainerRuntime: 集群使用的runtime类型，包括"docker"和"containerd"两种类型，默认为"docker"
         :type ContainerRuntime: str
@@ -399,6 +399,94 @@ class CreateClusterResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class CreateClusterRouteRequest(AbstractModel):
+    """CreateClusterRoute请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RouteTableName: 路由表名称。
+        :type RouteTableName: str
+        :param DestinationCidrBlock: 目的端CIDR。
+        :type DestinationCidrBlock: str
+        :param GatewayIp: 下一跳地址。
+        :type GatewayIp: str
+        """
+        self.RouteTableName = None
+        self.DestinationCidrBlock = None
+        self.GatewayIp = None
+
+
+    def _deserialize(self, params):
+        self.RouteTableName = params.get("RouteTableName")
+        self.DestinationCidrBlock = params.get("DestinationCidrBlock")
+        self.GatewayIp = params.get("GatewayIp")
+
+
+class CreateClusterRouteResponse(AbstractModel):
+    """CreateClusterRoute返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class CreateClusterRouteTableRequest(AbstractModel):
+    """CreateClusterRouteTable请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RouteTableName: 路由表名称
+        :type RouteTableName: str
+        :param RouteTableCidrBlock: 路由表CIDR
+        :type RouteTableCidrBlock: str
+        :param VpcId: 路由表绑定的VPC
+        :type VpcId: str
+        :param IgnoreClusterCidrConflict: 是否忽略CIDR冲突
+        :type IgnoreClusterCidrConflict: int
+        """
+        self.RouteTableName = None
+        self.RouteTableCidrBlock = None
+        self.VpcId = None
+        self.IgnoreClusterCidrConflict = None
+
+
+    def _deserialize(self, params):
+        self.RouteTableName = params.get("RouteTableName")
+        self.RouteTableCidrBlock = params.get("RouteTableCidrBlock")
+        self.VpcId = params.get("VpcId")
+        self.IgnoreClusterCidrConflict = params.get("IgnoreClusterCidrConflict")
+
+
+class CreateClusterRouteTableResponse(AbstractModel):
+    """CreateClusterRouteTable返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class DeleteClusterInstancesRequest(AbstractModel):
     """DeleteClusterInstances请求参数结构体
 
@@ -479,6 +567,82 @@ class DeleteClusterResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DeleteClusterRouteRequest(AbstractModel):
+    """DeleteClusterRoute请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RouteTableName: 路由表名称。
+        :type RouteTableName: str
+        :param GatewayIp: 下一跳地址。
+        :type GatewayIp: str
+        :param DestinationCidrBlock: 目的端CIDR。
+        :type DestinationCidrBlock: str
+        """
+        self.RouteTableName = None
+        self.GatewayIp = None
+        self.DestinationCidrBlock = None
+
+
+    def _deserialize(self, params):
+        self.RouteTableName = params.get("RouteTableName")
+        self.GatewayIp = params.get("GatewayIp")
+        self.DestinationCidrBlock = params.get("DestinationCidrBlock")
+
+
+class DeleteClusterRouteResponse(AbstractModel):
+    """DeleteClusterRoute返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class DeleteClusterRouteTableRequest(AbstractModel):
+    """DeleteClusterRouteTable请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RouteTableName: 路由表名称
+        :type RouteTableName: str
+        """
+        self.RouteTableName = None
+
+
+    def _deserialize(self, params):
+        self.RouteTableName = params.get("RouteTableName")
+
+
+class DeleteClusterRouteTableResponse(AbstractModel):
+    """DeleteClusterRouteTable返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeClusterInstancesRequest(AbstractModel):
     """DescribeClusterInstances请求参数结构体
 
@@ -535,6 +699,89 @@ class DescribeClusterInstancesResponse(AbstractModel):
                 obj = Instance()
                 obj._deserialize(item)
                 self.InstanceSet.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeClusterRouteTablesRequest(AbstractModel):
+    """DescribeClusterRouteTables请求参数结构体
+
+    """
+
+
+class DescribeClusterRouteTablesResponse(AbstractModel):
+    """DescribeClusterRouteTables返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param TotalCount: 符合条件的实例数量。
+        :type TotalCount: int
+        :param RouteTableSet: 集群路由表对象。
+        :type RouteTableSet: list of RouteTableInfo
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.RouteTableSet = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("RouteTableSet") is not None:
+            self.RouteTableSet = []
+            for item in params.get("RouteTableSet"):
+                obj = RouteTableInfo()
+                obj._deserialize(item)
+                self.RouteTableSet.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeClusterRoutesRequest(AbstractModel):
+    """DescribeClusterRoutes请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RouteTableName: 路由表名称。
+        :type RouteTableName: str
+        """
+        self.RouteTableName = None
+
+
+    def _deserialize(self, params):
+        self.RouteTableName = params.get("RouteTableName")
+
+
+class DescribeClusterRoutesResponse(AbstractModel):
+    """DescribeClusterRoutes返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param TotalCount: 符合条件的实例数量。
+        :type TotalCount: int
+        :param RouteSet: 集群路由对象。
+        :type RouteSet: list of RouteInfo
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.RouteSet = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("RouteSet") is not None:
+            self.RouteSet = []
+            for item in params.get("RouteSet"):
+                obj = RouteInfo()
+                obj._deserialize(item)
+                self.RouteSet.append(obj)
         self.RequestId = params.get("RequestId")
 
 
@@ -677,7 +924,7 @@ class DescribeExistedInstancesRequest(AbstractModel):
         :param InstanceIds: 按照一个或者多个实例ID查询。实例ID形如：ins-xxxxxxxx。（此参数的具体格式可参考API简介的id.N一节）。每次请求的实例的上限为100。参数不支持同时指定InstanceIds和Filters。
         :type InstanceIds: list of str
         :param Filters: 过滤条件,字段和详见[CVM查询实例](https://cloud.tencent.com/document/api/213/15728)如果设置了ClusterId，会附加集群的VPCID作为查询字段，在此情况下如果在Filter中指定了"vpc-id"作为过滤字段，指定的VPCID必须与集群的VPCID相同。
-        :type Filters: :class:`tencentcloud.tke.v20180525.models.Filter`
+        :type Filters: list of Filter
         :param VagueIpAddress: 实例IP进行过滤(同时支持内网IP和外网IP)
         :type VagueIpAddress: str
         :param VagueInstanceName: 实例名称进行过滤
@@ -700,8 +947,11 @@ class DescribeExistedInstancesRequest(AbstractModel):
         self.ClusterId = params.get("ClusterId")
         self.InstanceIds = params.get("InstanceIds")
         if params.get("Filters") is not None:
-            self.Filters = Filter()
-            self.Filters._deserialize(params.get("Filters"))
+            self.Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self.Filters.append(obj)
         self.VagueIpAddress = params.get("VagueIpAddress")
         self.VagueInstanceName = params.get("VagueInstanceName")
         self.Offset = params.get("Offset")
@@ -736,6 +986,58 @@ class DescribeExistedInstancesResponse(AbstractModel):
                 obj._deserialize(item)
                 self.ExistedInstanceSet.append(obj)
         self.TotalCount = params.get("TotalCount")
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeRouteTableConflictsRequest(AbstractModel):
+    """DescribeRouteTableConflicts请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RouteTableCidrBlock: 路由表CIDR
+        :type RouteTableCidrBlock: str
+        :param VpcId: 路由表绑定的VPC
+        :type VpcId: str
+        """
+        self.RouteTableCidrBlock = None
+        self.VpcId = None
+
+
+    def _deserialize(self, params):
+        self.RouteTableCidrBlock = params.get("RouteTableCidrBlock")
+        self.VpcId = params.get("VpcId")
+
+
+class DescribeRouteTableConflictsResponse(AbstractModel):
+    """DescribeRouteTableConflicts返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param HasConflict: 路由表是否冲突。
+        :type HasConflict: bool
+        :param RouteTableConflictSet: 路由表冲突列表。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RouteTableConflictSet: list of RouteTableConflict
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.HasConflict = None
+        self.RouteTableConflictSet = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.HasConflict = params.get("HasConflict")
+        if params.get("RouteTableConflictSet") is not None:
+            self.RouteTableConflictSet = []
+            for item in params.get("RouteTableConflictSet"):
+                obj = RouteTableConflict()
+                obj._deserialize(item)
+                self.RouteTableConflictSet.append(obj)
         self.RequestId = params.get("RequestId")
 
 
@@ -1011,6 +1313,88 @@ class LoginSettings(AbstractModel):
         self.Password = params.get("Password")
         self.KeyIds = params.get("KeyIds")
         self.KeepImageLogin = params.get("KeepImageLogin")
+
+
+class RouteInfo(AbstractModel):
+    """集群路由对象
+
+    """
+
+    def __init__(self):
+        """
+        :param RouteTableName: 路由表名称。
+        :type RouteTableName: str
+        :param DestinationCidrBlock: 目的端CIDR。
+        :type DestinationCidrBlock: str
+        :param GatewayIp: 下一跳地址。
+        :type GatewayIp: str
+        """
+        self.RouteTableName = None
+        self.DestinationCidrBlock = None
+        self.GatewayIp = None
+
+
+    def _deserialize(self, params):
+        self.RouteTableName = params.get("RouteTableName")
+        self.DestinationCidrBlock = params.get("DestinationCidrBlock")
+        self.GatewayIp = params.get("GatewayIp")
+
+
+class RouteTableConflict(AbstractModel):
+    """路由表冲突对象
+
+    """
+
+    def __init__(self):
+        """
+        :param RouteTableType: 路由表类型。
+        :type RouteTableType: str
+        :param RouteTableCidrBlock: 路由表CIDR。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RouteTableCidrBlock: str
+        :param RouteTableName: 路由表名称。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RouteTableName: str
+        :param RouteTableId: 路由表ID。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RouteTableId: str
+        """
+        self.RouteTableType = None
+        self.RouteTableCidrBlock = None
+        self.RouteTableName = None
+        self.RouteTableId = None
+
+
+    def _deserialize(self, params):
+        self.RouteTableType = params.get("RouteTableType")
+        self.RouteTableCidrBlock = params.get("RouteTableCidrBlock")
+        self.RouteTableName = params.get("RouteTableName")
+        self.RouteTableId = params.get("RouteTableId")
+
+
+class RouteTableInfo(AbstractModel):
+    """集群路由表对象
+
+    """
+
+    def __init__(self):
+        """
+        :param RouteTableName: 路由表名称。
+        :type RouteTableName: str
+        :param RouteTableCidrBlock: 路由表CIDR。
+        :type RouteTableCidrBlock: str
+        :param VpcId: VPC实例ID。
+        :type VpcId: str
+        """
+        self.RouteTableName = None
+        self.RouteTableCidrBlock = None
+        self.VpcId = None
+
+
+    def _deserialize(self, params):
+        self.RouteTableName = params.get("RouteTableName")
+        self.RouteTableCidrBlock = params.get("RouteTableCidrBlock")
+        self.VpcId = params.get("VpcId")
 
 
 class RunInstancesForNode(AbstractModel):
