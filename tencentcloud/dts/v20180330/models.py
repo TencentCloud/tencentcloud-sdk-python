@@ -57,11 +57,11 @@ class ConsistencyParams(AbstractModel):
 
     def __init__(self):
         """
-        :param SelectRowsPerTable: 1-100的整数值，select(*)对比时每张表的抽样行数比例
+        :param SelectRowsPerTable: 数据内容检测参数。表中选出用来数据对比的行，占表的总行数的百分比。取值范围是整数[1-100]
         :type SelectRowsPerTable: int
-        :param TablesSelectAll: 1-100的整数值，select(*)对比的表的比例
+        :param TablesSelectAll: 数据内容检测参数。迁移库表中，要进行数据内容检测的表，占所有表的百分比。取值范围是整数[1-100]
         :type TablesSelectAll: int
-        :param TablesSelectCount: 1-100的整数值，select count(*)对比的表的比例
+        :param TablesSelectCount: 数据数量检测，检测表行数是否一致。迁移库表中，要进行数据数量检测的表，占所有表的百分比。取值范围是整数[1-100]
         :type TablesSelectCount: int
         """
         self.SelectRowsPerTable = None
@@ -120,19 +120,19 @@ class CreateMigrateJobRequest(AbstractModel):
         :type JobName: str
         :param MigrateOption: 迁移任务配置选项
         :type MigrateOption: :class:`tencentcloud.dts.v20180330.models.MigrateOption`
-        :param SrcDatabaseType: 源实例数据库类型:mysql,redis,mongodb
+        :param SrcDatabaseType: 源实例数据库类型，目前支持：mysql，redis，mongodb，postgresql，mariadb，percona。不同地域数据库类型的具体支持情况，请参考控制台创建迁移页面。
         :type SrcDatabaseType: str
-        :param SrcAccessType: 源实例接入类型，值包括：extranet(外网),cvm(cvm自建实例),dcg(专线接入的实例),vpncloud(云vpn接入的实例),vpnselfbuild(自建vpn接入的实例)，cdb(云上cdb实例)
+        :param SrcAccessType: 源实例接入类型，值包括：extranet(外网),cvm(cvm自建实例),dcg(专线接入的实例),vpncloud(云vpn接入的实例),cdb(腾讯云数据库实例),ccn(云联网实例)
         :type SrcAccessType: str
         :param SrcInfo: 源实例信息，具体内容跟迁移任务类型相关
         :type SrcInfo: :class:`tencentcloud.dts.v20180330.models.SrcInfo`
-        :param DstDatabaseType: 目标实例数据库类型,mysql,redis,mongodb
+        :param DstDatabaseType: 目标实例数据库类型，目前支持：mysql，redis，mongodb，postgresql，mariadb，percona。不同地域数据库类型的具体支持情况，请参考控制台创建迁移页面。
         :type DstDatabaseType: str
-        :param DstAccessType: 目标实例接入类型，值包括：extranet(外网),cvm(cvm自建实例),dcg(专线接入的实例),vpncloud(云vpn接入的实例),vpnselfbuild(自建vpn接入的实例)，cdb(云上cdb实例). 目前只支持cdb.
+        :param DstAccessType: 目标实例接入类型，目前支持：cdb（腾讯云数据库实例）
         :type DstAccessType: str
         :param DstInfo: 目标实例信息
         :type DstInfo: :class:`tencentcloud.dts.v20180330.models.DstInfo`
-        :param DatabaseInfo: 需要迁移的源数据库表信息，用json格式的字符串描述。
+        :param DatabaseInfo: 需要迁移的源数据库表信息，用json格式的字符串描述。当MigrateOption.MigrateObject配置为2（指定库表迁移）时必填。
 对于database-table两级结构的数据库：
 [{Database:db1,Table:[table1,table2]},{Database:db2}]
 对于database-schema-table三级结构：
@@ -627,29 +627,29 @@ class DstInfo(AbstractModel):
 
     def __init__(self):
         """
-        :param InstanceId: 目标实例Id
+        :param InstanceId: 目标实例Id，如cdb-jd92ijd8
         :type InstanceId: str
-        :param Ip: 目标实例vip
-        :type Ip: str
-        :param Port: 目标实例vport
-        :type Port: int
-        :param Region: 目标实例Id
+        :param Region: 目标实例地域，如ap-guangzhou
         :type Region: str
-        :param ReadOnly: 只读开关
+        :param Ip: 目标实例vip。已废弃，无需填写
+        :type Ip: str
+        :param Port: 目标实例vport。已废弃，无需填写
+        :type Port: int
+        :param ReadOnly: 目前只对MySQL有效。当为整实例迁移时，1-只读，0-可读写。
         :type ReadOnly: int
         """
         self.InstanceId = None
+        self.Region = None
         self.Ip = None
         self.Port = None
-        self.Region = None
         self.ReadOnly = None
 
 
     def _deserialize(self, params):
         self.InstanceId = params.get("InstanceId")
+        self.Region = params.get("Region")
         self.Ip = params.get("Ip")
         self.Port = params.get("Port")
-        self.Region = params.get("Region")
         self.ReadOnly = params.get("ReadOnly")
 
 
@@ -712,17 +712,17 @@ class MigrateJobInfo(AbstractModel):
         :type JobName: str
         :param MigrateOption: 迁移任务配置选项
         :type MigrateOption: :class:`tencentcloud.dts.v20180330.models.MigrateOption`
-        :param SrcDatabaseType: 源实例数据库类型:mysql,redis,percona,mongodb,postgresql,sqlserver,mariadb
+        :param SrcDatabaseType: 源实例数据库类型:mysql，redis，mongodb，postgresql，mariadb，percona
         :type SrcDatabaseType: str
-        :param SrcAccessType: 源实例接入类型，值包括：extranet(外网),cvm(cvm自建实例),dcg(专线接入的实例),vpncloud(云vpn接入的实例),vpnselfbuild(自建vpn接入的实例)，cdb(云上cdb实例)
+        :param SrcAccessType: 源实例接入类型，值包括：extranet(外网),cvm(cvm自建实例),dcg(专线接入的实例),vpncloud(云vpn接入的实例),cdb(腾讯云数据库实例),ccn(云联网实例)
         :type SrcAccessType: str
         :param SrcInfo: 源实例信息，具体内容跟迁移任务类型相关
         :type SrcInfo: :class:`tencentcloud.dts.v20180330.models.SrcInfo`
-        :param DstDatabaseType: 目标实例数据库类型,mysql,redis,percona,mongodb,postgresql,sqlserver,mariadb
+        :param DstDatabaseType: 目标实例数据库类型:mysql，redis，mongodb，postgresql，mariadb，percona
         :type DstDatabaseType: str
-        :param DstAccessType: 源实例接入类型，值包括：extranet(外网),cvm(cvm自建实例),dcg(专线接入的实例),vpncloud(云vpn接入的实例),vpnselfbuild(自建vpn接入的实例)，cdb(云上cdb实例)
+        :param DstAccessType: 目标实例接入类型，目前支持：cdb(腾讯云数据库实例)
         :type DstAccessType: str
-        :param DstInfo: 目的实例信息
+        :param DstInfo: 目标实例信息
         :type DstInfo: :class:`tencentcloud.dts.v20180330.models.DstInfo`
         :param DatabaseInfo: 需要迁移的源数据库表信息，如果需要迁移的是整个实例，该字段为[]
         :type DatabaseInfo: str
@@ -732,7 +732,7 @@ class MigrateJobInfo(AbstractModel):
         :type StartTime: str
         :param EndTime: 任务执行结束时间
         :type EndTime: str
-        :param Status: 任务状态,取值为：1-创建中(Creating),2-创建完成(Created),3-校验中(Checking)4-校验通过(CheckPass),5-校验不通过（CheckNotPass）,6-准备运行(ReadyRun),7-任务运行(Running),8-准备完成（ReadyComplete）,9-任务成功（Success）,10-任务失败（Failed）,11-中止中（Stoping）,12-完成中（Completing）
+        :param Status: 任务状态,取值为：1-创建中(Creating),3-校验中(Checking)4-校验通过(CheckPass),5-校验不通过（CheckNotPass）,7-任务运行(Running),8-准备完成（ReadyComplete）,9-任务成功（Success）,10-任务失败（Failed）,11-撤销中（Stopping）,12-完成中（Completing）
         :type Status: int
         :param Detail: 任务详情
         :type Detail: :class:`tencentcloud.dts.v20180330.models.MigrateDetailInfo`
@@ -795,7 +795,7 @@ class MigrateOption(AbstractModel):
         :type MigrateType: int
         :param MigrateObject: 迁移对象，1-整个实例，2-指定库表
         :type MigrateObject: int
-        :param ConsistencyType: 数据对比类型，1-未配置,2-全量检测,3-抽样检测, 4-仅校验不一致表,5-不检测
+        :param ConsistencyType: 抽样数据一致性检测参数，1-未配置,2-全量检测,3-抽样检测, 4-仅校验不一致表,5-不检测
         :type ConsistencyType: int
         :param IsOverrideRoot: 是否用源库Root账户覆盖目标库，值包括：0-不覆盖，1-覆盖，选择库表或者结构迁移时应该为0
         :type IsOverrideRoot: int
@@ -814,8 +814,9 @@ MongoDB可定义如下的参数:
 	'SrcAuthFlag': "1", 
 	'SrcAuthMechanism':"SCRAM-SHA-1"
 }
+MySQL暂不支持额外参数设置。
         :type ExternParams: str
-        :param ConsistencyParams: 抽样检验时的抽样参数
+        :param ConsistencyParams: 仅用于“抽样数据一致性检测”，ConsistencyType配置为抽样检测时，必选
         :type ConsistencyParams: :class:`tencentcloud.dts.v20180330.models.ConsistencyParams`
         """
         self.RunMode = None
@@ -1002,7 +1003,7 @@ class SrcInfo(AbstractModel):
 
     def __init__(self):
         """
-        :param AccessKey: 阿里云AccessKey
+        :param AccessKey: 阿里云AccessKey。源库是阿里云RDS5.6适用
         :type AccessKey: str
         :param Ip: 实例的IP地址
         :type Ip: str
@@ -1012,24 +1013,27 @@ class SrcInfo(AbstractModel):
         :type User: str
         :param Password: 实例的密码
         :type Password: str
-        :param RdsInstanceId: 阿里云rds实例id
+        :param RdsInstanceId: 阿里云RDS实例ID。源库是阿里云RDS5.6适用
         :type RdsInstanceId: str
-        :param CvmInstanceId: CVM实例短ID，格式如：ins-olgl89y8，与云主机控制台页面显示的实例ID相同，如果是CVM自建实例或者通过自建VPN接入的公网实例，需要传递此字段
+        :param CvmInstanceId: CVM实例短ID，格式如：ins-olgl39y8，与云主机控制台页面显示的实例ID相同。如果是CVM自建实例，需要传递此字段
         :type CvmInstanceId: str
-        :param UniqDcgId: 专线网关ID
+        :param UniqDcgId: 专线网关ID，格式如：dcg-0rxtqqxb
         :type UniqDcgId: str
-        :param VpcId: 私有网络ID，和原来的数字vpcId对应，需要调vpc的接口去转换
+        :param VpcId: 私有网络ID，格式如：vpc-92jblxto
         :type VpcId: str
-        :param SubnetId: 私有网络下的子网ID, 和原来的数字子网ID对应，需要调用vpc的接口去转换
+        :param SubnetId: 私有网络下的子网ID，格式如：subnet-3paxmkdz
         :type SubnetId: str
-        :param UniqVpnGwId: 系统分配的VPN网关ID
+        :param UniqVpnGwId: VPN网关ID，格式如：vpngw-9ghexg7q
         :type UniqVpnGwId: str
-        :param InstanceId: 实例短Id
+        :param InstanceId: 数据库实例ID，格式如：cdb-powiqx8q
         :type InstanceId: str
         :param Region: 地域英文名，如：ap-guangzhou
         :type Region: str
-        :param Supplier: 服务提供商，如:aliyun,others
+        :param Supplier: 当实例为RDS实例时，填写为aliyun, 其他情况均填写others
         :type Supplier: str
+        :param CcnId: 云联网ID，如：ccn-afp6kltc
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CcnId: str
         """
         self.AccessKey = None
         self.Ip = None
@@ -1045,6 +1049,7 @@ class SrcInfo(AbstractModel):
         self.InstanceId = None
         self.Region = None
         self.Supplier = None
+        self.CcnId = None
 
 
     def _deserialize(self, params):
@@ -1062,6 +1067,7 @@ class SrcInfo(AbstractModel):
         self.InstanceId = params.get("InstanceId")
         self.Region = params.get("Region")
         self.Supplier = params.get("Supplier")
+        self.CcnId = params.get("CcnId")
 
 
 class StartMigrateJobRequest(AbstractModel):

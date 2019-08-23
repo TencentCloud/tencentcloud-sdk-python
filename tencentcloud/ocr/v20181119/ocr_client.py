@@ -137,6 +137,34 @@ class OcrClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def CarInvoiceOCR(self, request):
+        """本接口支持机动车销售统一发票和二手车销售统一发票的识别，包括发票号码、发票代码、合计金额、合计税额等二十多个字段。
+
+        :param request: 调用CarInvoiceOCR所需参数的结构体。
+        :type request: :class:`tencentcloud.ocr.v20181119.models.CarInvoiceOCRRequest`
+        :rtype: :class:`tencentcloud.ocr.v20181119.models.CarInvoiceOCRResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("CarInvoiceOCR", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CarInvoiceOCRResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DriverLicenseOCR(self, request):
         """本接口支持对驾驶证主页所有字段的自动定位与识别，包含证号、姓名、性别、国籍、住址、出生日期、初次领证日期、准驾车型、有效期限等。
 
@@ -179,6 +207,34 @@ class OcrClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.EnglishOCRResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def FlightInvoiceOCR(self, request):
+        """本接口支持机票行程单关键字段的识别，包括姓名、身份证件号码、航班号、票价 、合计、电子客票号码、填开日期等。
+
+        :param request: 调用FlightInvoiceOCR所需参数的结构体。
+        :type request: :class:`tencentcloud.ocr.v20181119.models.FlightInvoiceOCRRequest`
+        :rtype: :class:`tencentcloud.ocr.v20181119.models.FlightInvoiceOCRResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("FlightInvoiceOCR", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.FlightInvoiceOCRResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -306,7 +362,7 @@ class OcrClient(AbstractClient):
 
 
     def IDCardOCR(self, request):
-        """本接口支持二代身份证正反面所有字段的识别，包括姓名、性别、民族、出生日期、住址、公民身份证号、签发机关、有效期限；具备身份证照片、人像照片的裁剪功能和翻拍件、复印件的识别告警功能。
+        """本接口支持中国大陆居民二代身份证正反面所有字段的识别，包括姓名、性别、民族、出生日期、住址、公民身份证号、签发机关、有效期限；具备身份证照片、人像照片的裁剪功能和翻拍、PS、复印件告警功能，以及边框和框内遮挡告警、临时身份证告警和身份证有效期不合法告警等扩展功能。
 
         :param request: 调用IDCardOCR所需参数的结构体。
         :type request: :class:`tencentcloud.ocr.v20181119.models.IDCardOCRRequest`
@@ -361,6 +417,62 @@ class OcrClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def PermitOCR(self, request):
+        """本接口支持对卡式港澳台通行证的识别，包括签发地点、签发机关、有效期限、性别、出生日期、英文姓名、姓名、证件号等字段。
+
+        :param request: 调用PermitOCR所需参数的结构体。
+        :type request: :class:`tencentcloud.ocr.v20181119.models.PermitOCRRequest`
+        :rtype: :class:`tencentcloud.ocr.v20181119.models.PermitOCRResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("PermitOCR", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.PermitOCRResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def QuotaInvoiceOCR(self, request):
+        """本接口支持定额发票的发票号码、发票代码及金额等关键字段的识别。
+
+        :param request: 调用QuotaInvoiceOCR所需参数的结构体。
+        :type request: :class:`tencentcloud.ocr.v20181119.models.QuotaInvoiceOCRRequest`
+        :rtype: :class:`tencentcloud.ocr.v20181119.models.QuotaInvoiceOCRResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("QuotaInvoiceOCR", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.QuotaInvoiceOCRResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def TableOCR(self, request):
         """本接口支持图片内表格文档的检测和识别，返回每个单元格的文字内容，支持将识别结果保存为 Excel 格式。
 
@@ -375,6 +487,62 @@ class OcrClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.TableOCRResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def TaxiInvoiceOCR(self, request):
+        """本接口支持出租车发票关键字段的识别，包括发票号码、发票代码、金额、日期等字段。
+
+        :param request: 调用TaxiInvoiceOCR所需参数的结构体。
+        :type request: :class:`tencentcloud.ocr.v20181119.models.TaxiInvoiceOCRRequest`
+        :rtype: :class:`tencentcloud.ocr.v20181119.models.TaxiInvoiceOCRResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("TaxiInvoiceOCR", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.TaxiInvoiceOCRResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def TrainTicketOCR(self, request):
+        """本接口支持火车票全字段的识别，包括编号、票价、姓名、座位号、出发时间、出发站、到达站、车次、席别等。
+
+        :param request: 调用TrainTicketOCR所需参数的结构体。
+        :type request: :class:`tencentcloud.ocr.v20181119.models.TrainTicketOCRRequest`
+        :rtype: :class:`tencentcloud.ocr.v20181119.models.TrainTicketOCRResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("TrainTicketOCR", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.TrainTicketOCRResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

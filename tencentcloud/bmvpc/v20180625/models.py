@@ -247,6 +247,54 @@ class BindSubnetsToNatGatewayResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class CreateCustomerGatewayRequest(AbstractModel):
+    """CreateCustomerGateway请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param CustomerGatewayName: 对端网关名称，可任意命名，但不得超过60个字符。
+        :type CustomerGatewayName: str
+        :param IpAddress: 对端网关公网IP。
+        :type IpAddress: str
+        :param Zone: 可用区ID
+        :type Zone: str
+        """
+        self.CustomerGatewayName = None
+        self.IpAddress = None
+        self.Zone = None
+
+
+    def _deserialize(self, params):
+        self.CustomerGatewayName = params.get("CustomerGatewayName")
+        self.IpAddress = params.get("IpAddress")
+        self.Zone = params.get("Zone")
+
+
+class CreateCustomerGatewayResponse(AbstractModel):
+    """CreateCustomerGateway返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param CustomerGateway: 对端网关对象
+        :type CustomerGateway: :class:`tencentcloud.bmvpc.v20180625.models.CustomerGateway`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.CustomerGateway = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("CustomerGateway") is not None:
+            self.CustomerGateway = CustomerGateway()
+            self.CustomerGateway._deserialize(params.get("CustomerGateway"))
+        self.RequestId = params.get("RequestId")
+
+
 class CreateDockerSubnetWithVlanRequest(AbstractModel):
     """CreateDockerSubnetWithVlan请求参数结构体
 
@@ -1891,6 +1939,72 @@ class DescribeTaskStatusResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeVpcPeerConnectionsRequest(AbstractModel):
+    """DescribeVpcPeerConnections请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param VpcPeerConnectionIds: 对等连接实例ID
+        :type VpcPeerConnectionIds: list of str
+        :param Filters: 过滤条件，详见下表：实例过滤条件表。每次请求的Filters的上限为10，Filter.Values的上限为5。参数不支持同时指定VpcPeerConnectionIds和Filters。
+过滤条件，参数不支持同时指定VpcPeerConnectionIds和Filters。
+<li>peer-name - String - （过滤条件）对等连接名称。</li>
+        :type Filters: list of Filter
+        :param Offset: 偏移量，默认为0。关于Offset的更进一步介绍请参考 API 简介中的相关小节。
+        :type Offset: int
+        :param Limit: 返回数量，默认为20，最大值为100。
+        :type Limit: int
+        """
+        self.VpcPeerConnectionIds = None
+        self.Filters = None
+        self.Offset = None
+        self.Limit = None
+
+
+    def _deserialize(self, params):
+        self.VpcPeerConnectionIds = params.get("VpcPeerConnectionIds")
+        if params.get("Filters") is not None:
+            self.Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self.Filters.append(obj)
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+
+
+class DescribeVpcPeerConnectionsResponse(AbstractModel):
+    """DescribeVpcPeerConnections返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param TotalCount: 符合条件的实例数量。
+        :type TotalCount: int
+        :param VpcPeerConnectionSet: 对等连接实例。
+        :type VpcPeerConnectionSet: list of VpcPeerConnection
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.VpcPeerConnectionSet = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("VpcPeerConnectionSet") is not None:
+            self.VpcPeerConnectionSet = []
+            for item in params.get("VpcPeerConnectionSet"):
+                obj = VpcPeerConnection()
+                obj._deserialize(item)
+                self.VpcPeerConnectionSet.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeVpcQuotaRequest(AbstractModel):
     """DescribeVpcQuota请求参数结构体
 
@@ -2107,6 +2221,141 @@ class DescribeVpcsResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeVpnConnectionsRequest(AbstractModel):
+    """DescribeVpnConnections请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param VpnConnectionIds: VPN通道实例ID。形如：bmvpnx-f49l6u0z。每次请求的实例的上限为100。参数不支持同时指定VpnConnectionIds和Filters。
+        :type VpnConnectionIds: list of str
+        :param Filters: 过滤条件，详见下表：实例过滤条件表。每次请求的Filters的上限为10，Filter.Values的上限为5。参数不支持同时指定VpnConnectionIds和Filters。
+<li>vpc-id - String - （过滤条件）VPC实例ID形如：vpc-f49l6u0z。</li>
+<li>state - String - （过滤条件 VPN状态：creating，available，createfailed，changing，changefailed，deleting，deletefailed。</li>
+<li>zone - String - （过滤条件）VPN所在可用区，形如：ap-guangzhou-2。</li>
+        :type Filters: list of Filter
+        :param Offset: 偏移量，默认为0。关于Offset的更进一步介绍请参考 API 简介中的相关小节。
+        :type Offset: int
+        :param Limit: 返回数量，默认为20，最大值为100。
+        :type Limit: int
+        """
+        self.VpnConnectionIds = None
+        self.Filters = None
+        self.Offset = None
+        self.Limit = None
+
+
+    def _deserialize(self, params):
+        self.VpnConnectionIds = params.get("VpnConnectionIds")
+        if params.get("Filters") is not None:
+            self.Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self.Filters.append(obj)
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+
+
+class DescribeVpnConnectionsResponse(AbstractModel):
+    """DescribeVpnConnections返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param TotalCount: 符合条件的实例数量。
+        :type TotalCount: int
+        :param VpnConnectionSet: VPN通道实例。
+        :type VpnConnectionSet: list of VpnConnection
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.VpnConnectionSet = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("VpnConnectionSet") is not None:
+            self.VpnConnectionSet = []
+            for item in params.get("VpnConnectionSet"):
+                obj = VpnConnection()
+                obj._deserialize(item)
+                self.VpnConnectionSet.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeVpnGatewaysRequest(AbstractModel):
+    """DescribeVpnGateways请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param VpnGatewayIds: VPN网关实例ID。形如：bmvpngw-f49l6u0z。每次请求的实例的上限为100。参数不支持同时指定VpnGatewayIds和Filters。
+        :type VpnGatewayIds: list of str
+        :param Filters: 过滤条件，参数不支持同时指定VpnGatewayIds和Filters。
+<li>vpc-id - String - （过滤条件）VPC实例ID形如：vpc-f49l6u0z。</li>
+<li>state - String - （过滤条件 VPN状态：creating，available，createfailed，changing，changefailed，deleting，deletefailed。</li>
+<li>zone - String - （过滤条件）VPN所在可用区，形如：ap-guangzhou-2。</li>
+<li>vpngw-name - String - （过滤条件）vpn网关名称。</li>
+        :type Filters: list of Filter
+        :param Offset: 偏移量
+        :type Offset: int
+        :param Limit: 请求对象个数
+        :type Limit: int
+        """
+        self.VpnGatewayIds = None
+        self.Filters = None
+        self.Offset = None
+        self.Limit = None
+
+
+    def _deserialize(self, params):
+        self.VpnGatewayIds = params.get("VpnGatewayIds")
+        if params.get("Filters") is not None:
+            self.Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self.Filters.append(obj)
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+
+
+class DescribeVpnGatewaysResponse(AbstractModel):
+    """DescribeVpnGateways返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param TotalCount: 符合条件的实例数量。
+        :type TotalCount: int
+        :param VpnGatewaySet: VPN网关实例详细信息列表。
+        :type VpnGatewaySet: list of VpnGateway
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.VpnGatewaySet = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("VpnGatewaySet") is not None:
+            self.VpnGatewaySet = []
+            for item in params.get("VpnGatewaySet"):
+                obj = VpnGateway()
+                obj._deserialize(item)
+                self.VpnGatewaySet.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class DownloadCustomerGatewayConfigurationRequest(AbstractModel):
     """DownloadCustomerGatewayConfiguration请求参数结构体
 
@@ -2177,7 +2426,7 @@ class IKEOptionsSpecification(AbstractModel):
 
     def __init__(self):
         """
-        :param PropoEncryAlgorithm: 加密算法，可选值：'3DES-CBC', 'AES-CBC-128', 'AES-CBS-192', 'AES-CBC-256', 'DES-CBC'，默认为3DES-CBC
+        :param PropoEncryAlgorithm: 加密算法，可选值：'3DES-CBC', 'AES-CBC-128', 'AES-CBC-192', 'AES-CBC-256', 'DES-CBC'，默认为3DES-CBC
         :type PropoEncryAlgorithm: str
         :param PropoAuthenAlgorithm: 认证算法：可选值：'MD5', 'SHA1'，默认为MD5
         :type PropoAuthenAlgorithm: str
@@ -3342,6 +3591,90 @@ class VpcInfo(AbstractModel):
         self.CreateTime = params.get("CreateTime")
 
 
+class VpcPeerConnection(AbstractModel):
+    """对等连接对象
+
+    """
+
+    def __init__(self):
+        """
+        :param VpcId: 本端VPC唯一ID
+        :type VpcId: str
+        :param PeerVpcId: 对端VPC唯一ID
+        :type PeerVpcId: str
+        :param AppId: 本端APPID
+        :type AppId: str
+        :param PeerAppId: 对端APPID
+        :type PeerAppId: str
+        :param VpcPeerConnectionId: 对等连接唯一ID
+        :type VpcPeerConnectionId: str
+        :param VpcPeerConnectionName: 对等连接名称
+        :type VpcPeerConnectionName: str
+        :param State: 对等连接状态
+        :type State: str
+        :param VpcZone: 本端VPC所属可用区
+注意：此字段可能返回 null，表示取不到有效值。
+        :type VpcZone: str
+        :param PeerVpcZone: 对端VPC所属可用区
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PeerVpcZone: str
+        :param Uin: 本端Uin
+        :type Uin: int
+        :param PeerUin: 对端Uin
+        :type PeerUin: int
+        :param PeerType: 对等连接类型
+        :type PeerType: int
+        :param Bandwidth: 对等连接带宽
+        :type Bandwidth: int
+        :param Region: 本端VPC地域
+        :type Region: str
+        :param PeerRegion: 对端VPC地域
+        :type PeerRegion: str
+        :param DeleteFlag: 是否允许删除
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DeleteFlag: int
+        :param CreateTime: 创建时间
+        :type CreateTime: str
+        """
+        self.VpcId = None
+        self.PeerVpcId = None
+        self.AppId = None
+        self.PeerAppId = None
+        self.VpcPeerConnectionId = None
+        self.VpcPeerConnectionName = None
+        self.State = None
+        self.VpcZone = None
+        self.PeerVpcZone = None
+        self.Uin = None
+        self.PeerUin = None
+        self.PeerType = None
+        self.Bandwidth = None
+        self.Region = None
+        self.PeerRegion = None
+        self.DeleteFlag = None
+        self.CreateTime = None
+
+
+    def _deserialize(self, params):
+        self.VpcId = params.get("VpcId")
+        self.PeerVpcId = params.get("PeerVpcId")
+        self.AppId = params.get("AppId")
+        self.PeerAppId = params.get("PeerAppId")
+        self.VpcPeerConnectionId = params.get("VpcPeerConnectionId")
+        self.VpcPeerConnectionName = params.get("VpcPeerConnectionName")
+        self.State = params.get("State")
+        self.VpcZone = params.get("VpcZone")
+        self.PeerVpcZone = params.get("PeerVpcZone")
+        self.Uin = params.get("Uin")
+        self.PeerUin = params.get("PeerUin")
+        self.PeerType = params.get("PeerType")
+        self.Bandwidth = params.get("Bandwidth")
+        self.Region = params.get("Region")
+        self.PeerRegion = params.get("PeerRegion")
+        self.DeleteFlag = params.get("DeleteFlag")
+        self.CreateTime = params.get("CreateTime")
+
+
 class VpcQuota(AbstractModel):
     """VPC限额信息
 
@@ -3566,3 +3899,146 @@ class VpcViewInfo(AbstractModel):
                 obj = VpcSubnetViewInfo()
                 obj._deserialize(item)
                 self.SubnetSet.append(obj)
+
+
+class VpnConnection(AbstractModel):
+    """VPN通道对象。
+
+    """
+
+    def __init__(self):
+        """
+        :param VpnConnectionId: 通道实例ID。
+        :type VpnConnectionId: str
+        :param VpnConnectionName: 通道名称。
+        :type VpnConnectionName: str
+        :param VpcId: VPC实例ID。
+        :type VpcId: str
+        :param VpnGatewayId: VPN网关实例ID。
+        :type VpnGatewayId: str
+        :param CustomerGatewayId: 对端网关实例ID。
+        :type CustomerGatewayId: str
+        :param PreShareKey: 预共享密钥。
+        :type PreShareKey: str
+        :param VpnProto: 通道传输协议。
+        :type VpnProto: str
+        :param CreateTime: 创建时间。
+        :type CreateTime: str
+        :param State: 通道的生产状态
+        :type State: str
+        :param NetStatus: 通道连接状态
+        :type NetStatus: str
+        :param SecurityPolicyDatabaseSet: SPD。
+        :type SecurityPolicyDatabaseSet: list of SecurityPolicyDatabase
+        :param IKEOptionsSpecification: IKE选项。
+        :type IKEOptionsSpecification: :class:`tencentcloud.bmvpc.v20180625.models.IKEOptionsSpecification`
+        :param IPSECOptionsSpecification: IPSEC选项。
+        :type IPSECOptionsSpecification: :class:`tencentcloud.bmvpc.v20180625.models.IPSECOptionsSpecification`
+        :param Zone: 可用区
+        :type Zone: str
+        :param VpcCidrBlock: VPC网段
+        :type VpcCidrBlock: str
+        :param VpcName: VPC名称
+        :type VpcName: str
+        """
+        self.VpnConnectionId = None
+        self.VpnConnectionName = None
+        self.VpcId = None
+        self.VpnGatewayId = None
+        self.CustomerGatewayId = None
+        self.PreShareKey = None
+        self.VpnProto = None
+        self.CreateTime = None
+        self.State = None
+        self.NetStatus = None
+        self.SecurityPolicyDatabaseSet = None
+        self.IKEOptionsSpecification = None
+        self.IPSECOptionsSpecification = None
+        self.Zone = None
+        self.VpcCidrBlock = None
+        self.VpcName = None
+
+
+    def _deserialize(self, params):
+        self.VpnConnectionId = params.get("VpnConnectionId")
+        self.VpnConnectionName = params.get("VpnConnectionName")
+        self.VpcId = params.get("VpcId")
+        self.VpnGatewayId = params.get("VpnGatewayId")
+        self.CustomerGatewayId = params.get("CustomerGatewayId")
+        self.PreShareKey = params.get("PreShareKey")
+        self.VpnProto = params.get("VpnProto")
+        self.CreateTime = params.get("CreateTime")
+        self.State = params.get("State")
+        self.NetStatus = params.get("NetStatus")
+        if params.get("SecurityPolicyDatabaseSet") is not None:
+            self.SecurityPolicyDatabaseSet = []
+            for item in params.get("SecurityPolicyDatabaseSet"):
+                obj = SecurityPolicyDatabase()
+                obj._deserialize(item)
+                self.SecurityPolicyDatabaseSet.append(obj)
+        if params.get("IKEOptionsSpecification") is not None:
+            self.IKEOptionsSpecification = IKEOptionsSpecification()
+            self.IKEOptionsSpecification._deserialize(params.get("IKEOptionsSpecification"))
+        if params.get("IPSECOptionsSpecification") is not None:
+            self.IPSECOptionsSpecification = IPSECOptionsSpecification()
+            self.IPSECOptionsSpecification._deserialize(params.get("IPSECOptionsSpecification"))
+        self.Zone = params.get("Zone")
+        self.VpcCidrBlock = params.get("VpcCidrBlock")
+        self.VpcName = params.get("VpcName")
+
+
+class VpnGateway(AbstractModel):
+    """VPN网关对象。
+
+    """
+
+    def __init__(self):
+        """
+        :param VpnGatewayId: 网关实例ID。
+        :type VpnGatewayId: str
+        :param VpcId: VPC实例ID。
+        :type VpcId: str
+        :param VpnGatewayName: 网关实例名称。
+        :type VpnGatewayName: str
+        :param VpcCidrBlock: VPC网段
+        :type VpcCidrBlock: str
+        :param VpcName: VPC名称
+        :type VpcName: str
+        :param InternetMaxBandwidthOut: 网关出带宽。
+        :type InternetMaxBandwidthOut: int
+        :param State: 网关实例状态
+        :type State: str
+        :param PublicIpAddress: 网关公网IP。
+        :type PublicIpAddress: str
+        :param CreateTime: 创建时间。
+        :type CreateTime: str
+        :param Zone: 可用区，如：ap-guangzhou
+        :type Zone: str
+        :param VpnConnNum: VPN网关的通道数
+        :type VpnConnNum: int
+        """
+        self.VpnGatewayId = None
+        self.VpcId = None
+        self.VpnGatewayName = None
+        self.VpcCidrBlock = None
+        self.VpcName = None
+        self.InternetMaxBandwidthOut = None
+        self.State = None
+        self.PublicIpAddress = None
+        self.CreateTime = None
+        self.Zone = None
+        self.VpnConnNum = None
+
+
+    def _deserialize(self, params):
+        self.VpnGatewayId = params.get("VpnGatewayId")
+        self.VpcId = params.get("VpcId")
+        self.VpnGatewayName = params.get("VpnGatewayName")
+        self.VpcCidrBlock = params.get("VpcCidrBlock")
+        self.VpcName = params.get("VpcName")
+        self.InternetMaxBandwidthOut = params.get("InternetMaxBandwidthOut")
+        self.State = params.get("State")
+        self.PublicIpAddress = params.get("PublicIpAddress")
+        self.CreateTime = params.get("CreateTime")
+        self.Zone = params.get("Zone")
+        self.VpnConnNum = params.get("VpnConnNum")

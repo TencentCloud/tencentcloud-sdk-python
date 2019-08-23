@@ -239,6 +239,7 @@ class LiveClient(AbstractClient):
 
         - 注意事项
           1. 调用接口超时设置应大于3秒，小于3秒重试以及频繁调用都有可能产生重复录制任务。
+          2. 受限于音视频文件格式（FLV/MP4/HLS）对编码类型的支持，视频编码类型支持 H.264，音频编码类型支持 AAC。
 
         :param request: 调用CreateLiveRecord所需参数的结构体。
         :type request: :class:`tencentcloud.live.v20180801.models.CreateLiveRecordRequest`
@@ -1509,7 +1510,7 @@ class LiveClient(AbstractClient):
 
 
     def DescribeLiveStreamEventList(self, request):
-        """用于查询推断流事件。
+        """用于查询推断流事件。<br>
 
         注意：该接口可通过使用IsFilter进行过滤，返回推流历史记录。
 
@@ -1595,7 +1596,8 @@ class LiveClient(AbstractClient):
 
 
     def DescribeLiveStreamPublishedList(self, request):
-        """返回已经推过流的流列表
+        """返回已经推过流的流列表。<br>
+        注意：分页最多支持查询1万条记录，可通过调整查询时间范围来获取更多数据。
 
         :param request: 调用DescribeLiveStreamPublishedList所需参数的结构体。
         :type request: :class:`tencentcloud.live.v20180801.models.DescribeLiveStreamPublishedListRequest`
@@ -2242,7 +2244,7 @@ class LiveClient(AbstractClient):
 
 
     def ForbidLiveDomain(self, request):
-        """停用使用某个直播域名
+        """停止使用某个直播域名。
 
         :param request: 调用ForbidLiveDomain所需参数的结构体。
         :type request: :class:`tencentcloud.live.v20180801.models.ForbidLiveDomainRequest`

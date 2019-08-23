@@ -16,6 +16,27 @@
 from tencentcloud.common.abstract_model import AbstractModel
 
 
+class AccessInfo(AbstractModel):
+    """HTTP域名相关信息
+
+    """
+
+    def __init__(self):
+        """
+        :param Host: 域名
+        :type Host: str
+        :param Vip: VIP
+        :type Vip: str
+        """
+        self.Host = None
+        self.Vip = None
+
+
+    def _deserialize(self, params):
+        self.Host = params.get("Host")
+        self.Vip = params.get("Vip")
+
+
 class Code(AbstractModel):
     """函数代码
 
@@ -35,6 +56,22 @@ class Code(AbstractModel):
         :type DemoId: str
         :param TempCosObjectName: 如果是从TempCos创建的话，需要传入TempCosObjectName
         :type TempCosObjectName: str
+        :param GitUrl: Git地址
+        :type GitUrl: str
+        :param GitUserName: Git用户名
+        :type GitUserName: str
+        :param GitPassword: Git密码
+        :type GitPassword: str
+        :param GitPasswordSecret: 加密后的Git密码，一般无需指定
+        :type GitPasswordSecret: str
+        :param GitBranch: Git分支
+        :type GitBranch: str
+        :param GitDirectory: 代码在Git仓库中的路径
+        :type GitDirectory: str
+        :param GitCommitId: 指定要拉取的版本
+        :type GitCommitId: str
+        :param GitUserNameSecret: 加密后的Git用户名，一般无需指定
+        :type GitUserNameSecret: str
         """
         self.CosBucketName = None
         self.CosObjectName = None
@@ -42,6 +79,14 @@ class Code(AbstractModel):
         self.CosBucketRegion = None
         self.DemoId = None
         self.TempCosObjectName = None
+        self.GitUrl = None
+        self.GitUserName = None
+        self.GitPassword = None
+        self.GitPasswordSecret = None
+        self.GitBranch = None
+        self.GitDirectory = None
+        self.GitCommitId = None
+        self.GitUserNameSecret = None
 
 
     def _deserialize(self, params):
@@ -51,6 +96,14 @@ class Code(AbstractModel):
         self.CosBucketRegion = params.get("CosBucketRegion")
         self.DemoId = params.get("DemoId")
         self.TempCosObjectName = params.get("TempCosObjectName")
+        self.GitUrl = params.get("GitUrl")
+        self.GitUserName = params.get("GitUserName")
+        self.GitPassword = params.get("GitPassword")
+        self.GitPasswordSecret = params.get("GitPasswordSecret")
+        self.GitBranch = params.get("GitBranch")
+        self.GitDirectory = params.get("GitDirectory")
+        self.GitCommitId = params.get("GitCommitId")
+        self.GitUserNameSecret = params.get("GitUserNameSecret")
 
 
 class CopyFunctionRequest(AbstractModel):
@@ -60,18 +113,27 @@ class CopyFunctionRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param FunctionName: 函数名
+        :param FunctionName: 要复制的函数的名称
         :type FunctionName: str
         :param NewFunctionName: 新函数的名称
         :type NewFunctionName: str
-        :param Namespace: 命名空间，默认为default
+        :param Namespace: 要复制的函数所在的命名空间，默认为default
         :type Namespace: str
         :param TargetNamespace: 将函数复制到的命名空间，默认为default
         :type TargetNamespace: str
-        :param Description: 函数描述
+        :param Description: 新函数的描述
         :type Description: str
         :param TargetRegion: 要将函数复制到的地域，不填则默认为当前地域
         :type TargetRegion: str
+        :param Override: 如果目标Namespace下已有同名函数，是否覆盖，默认为否
+（注意：如果选择覆盖，会导致同名函数被删除，请慎重操作）
+TRUE：覆盖同名函数
+FALSE：不覆盖同名函数
+        :type Override: bool
+        :param CopyConfiguration: 是否复制函数的属性，包括环境变量、内存、超时、函数描述、标签、VPC等，默认为是。
+TRUE：复制函数配置
+FALSE：不复制函数配置
+        :type CopyConfiguration: bool
         """
         self.FunctionName = None
         self.NewFunctionName = None
@@ -79,6 +141,8 @@ class CopyFunctionRequest(AbstractModel):
         self.TargetNamespace = None
         self.Description = None
         self.TargetRegion = None
+        self.Override = None
+        self.CopyConfiguration = None
 
 
     def _deserialize(self, params):
@@ -88,6 +152,8 @@ class CopyFunctionRequest(AbstractModel):
         self.TargetNamespace = params.get("TargetNamespace")
         self.Description = params.get("Description")
         self.TargetRegion = params.get("TargetRegion")
+        self.Override = params.get("Override")
+        self.CopyConfiguration = params.get("CopyConfiguration")
 
 
 class CopyFunctionResponse(AbstractModel):
@@ -132,10 +198,18 @@ class CreateFunctionRequest(AbstractModel):
         :type Runtime: str
         :param VpcConfig: 函数的私有网络配置
         :type VpcConfig: :class:`tencentcloud.scf.v20180416.models.VpcConfig`
+        :param Namespace: 函数所属命名空间
+        :type Namespace: str
+        :param Role: 函数绑定的角色
+        :type Role: str
         :param ClsLogsetId: 函数日志投递到的CLS LogsetID
         :type ClsLogsetId: str
         :param ClsTopicId: 函数日志投递到的CLS TopicID
         :type ClsTopicId: str
+        :param Type: 函数类型，默认值为Event，创建触发器函数请填写Event，创建HTTP函数级服务请填写HTTP
+        :type Type: str
+        :param CodeSource: CodeSource 代码来源，支持以下'ZipFile', 'Cos', 'Demo', 'TempCos', 'Git'之一，使用Git来源必须指定此字段
+        :type CodeSource: str
         """
         self.FunctionName = None
         self.Code = None
@@ -146,8 +220,12 @@ class CreateFunctionRequest(AbstractModel):
         self.Environment = None
         self.Runtime = None
         self.VpcConfig = None
+        self.Namespace = None
+        self.Role = None
         self.ClsLogsetId = None
         self.ClsTopicId = None
+        self.Type = None
+        self.CodeSource = None
 
 
     def _deserialize(self, params):
@@ -166,12 +244,54 @@ class CreateFunctionRequest(AbstractModel):
         if params.get("VpcConfig") is not None:
             self.VpcConfig = VpcConfig()
             self.VpcConfig._deserialize(params.get("VpcConfig"))
+        self.Namespace = params.get("Namespace")
+        self.Role = params.get("Role")
         self.ClsLogsetId = params.get("ClsLogsetId")
         self.ClsTopicId = params.get("ClsTopicId")
+        self.Type = params.get("Type")
+        self.CodeSource = params.get("CodeSource")
 
 
 class CreateFunctionResponse(AbstractModel):
     """CreateFunction返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class CreateNamespaceRequest(AbstractModel):
+    """CreateNamespace请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Namespace: 命名空间名称
+        :type Namespace: str
+        :param Description: 命名空间描述
+        :type Description: str
+        """
+        self.Namespace = None
+        self.Description = None
+
+
+    def _deserialize(self, params):
+        self.Namespace = params.get("Namespace")
+        self.Description = params.get("Description")
+
+
+class CreateNamespaceResponse(AbstractModel):
+    """CreateNamespace返回参数结构体
 
     """
 
@@ -202,6 +322,8 @@ class CreateTriggerRequest(AbstractModel):
         :type Type: str
         :param TriggerDesc: 触发器对应的参数，如果是 timer 类型的触发器其内容是 Linux cron 表达式，如果是其他触发器，见具体触发器说明
         :type TriggerDesc: str
+        :param Namespace: 函数的命名空间
+        :type Namespace: str
         :param Qualifier: 函数的版本
         :type Qualifier: str
         :param Enable: 触发器的初始是能状态 OPEN表示开启 CLOSE表示关闭
@@ -211,6 +333,7 @@ class CreateTriggerRequest(AbstractModel):
         self.TriggerName = None
         self.Type = None
         self.TriggerDesc = None
+        self.Namespace = None
         self.Qualifier = None
         self.Enable = None
 
@@ -220,6 +343,7 @@ class CreateTriggerRequest(AbstractModel):
         self.TriggerName = params.get("TriggerName")
         self.Type = params.get("Type")
         self.TriggerDesc = params.get("TriggerDesc")
+        self.Namespace = params.get("Namespace")
         self.Qualifier = params.get("Qualifier")
         self.Enable = params.get("Enable")
 
@@ -256,16 +380,54 @@ class DeleteFunctionRequest(AbstractModel):
         """
         :param FunctionName: 要删除的函数名称
         :type FunctionName: str
+        :param Namespace: 函数所属命名空间
+        :type Namespace: str
         """
         self.FunctionName = None
+        self.Namespace = None
 
 
     def _deserialize(self, params):
         self.FunctionName = params.get("FunctionName")
+        self.Namespace = params.get("Namespace")
 
 
 class DeleteFunctionResponse(AbstractModel):
     """DeleteFunction返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class DeleteNamespaceRequest(AbstractModel):
+    """DeleteNamespace请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Namespace: 命名空间名称
+        :type Namespace: str
+        """
+        self.Namespace = None
+
+
+    def _deserialize(self, params):
+        self.Namespace = params.get("Namespace")
+
+
+class DeleteNamespaceResponse(AbstractModel):
+    """DeleteNamespace返回参数结构体
 
     """
 
@@ -294,6 +456,8 @@ class DeleteTriggerRequest(AbstractModel):
         :type TriggerName: str
         :param Type: 要删除的触发器类型，目前支持 cos 、cmq、 timer、ckafka 类型
         :type Type: str
+        :param Namespace: 函数所属命名空间
+        :type Namespace: str
         :param TriggerDesc: 如果删除的触发器类型为 COS 触发器，该字段为必填值，存放 JSON 格式的数据 {"event":"cos:ObjectCreated:*"}，数据内容和 SetTrigger 接口中该字段的格式相同；如果删除的触发器类型为定时触发器或 CMQ 触发器，可以不指定该字段
         :type TriggerDesc: str
         :param Qualifier: 函数的版本信息
@@ -302,6 +466,7 @@ class DeleteTriggerRequest(AbstractModel):
         self.FunctionName = None
         self.TriggerName = None
         self.Type = None
+        self.Namespace = None
         self.TriggerDesc = None
         self.Qualifier = None
 
@@ -310,6 +475,7 @@ class DeleteTriggerRequest(AbstractModel):
         self.FunctionName = params.get("FunctionName")
         self.TriggerName = params.get("TriggerName")
         self.Type = params.get("Type")
+        self.Namespace = params.get("Namespace")
         self.TriggerDesc = params.get("TriggerDesc")
         self.Qualifier = params.get("Qualifier")
 
@@ -329,6 +495,27 @@ class DeleteTriggerResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
+
+
+class EipOutConfig(AbstractModel):
+    """EipOutConfig
+
+    """
+
+    def __init__(self):
+        """
+        :param EipFixed: 是否是固定IP，["TRUE","FALSE"]
+        :type EipFixed: str
+        :param Eips: IP列表
+        :type Eips: list of str
+        """
+        self.EipFixed = None
+        self.Eips = None
+
+
+    def _deserialize(self, params):
+        self.EipFixed = params.get("EipFixed")
+        self.Eips = params.get("Eips")
 
 
 class Environment(AbstractModel):
@@ -403,6 +590,8 @@ class Function(AbstractModel):
         :type Description: str
         :param Tags: 函数标签
         :type Tags: list of Tag
+        :param Type: 函数类型，取值为 HTTP 或者 Event
+        :type Type: str
         """
         self.ModTime = None
         self.AddTime = None
@@ -414,6 +603,7 @@ class Function(AbstractModel):
         self.StatusDesc = None
         self.Description = None
         self.Tags = None
+        self.Type = None
 
 
     def _deserialize(self, params):
@@ -432,6 +622,7 @@ class Function(AbstractModel):
                 obj = Tag()
                 obj._deserialize(item)
                 self.Tags.append(obj)
+        self.Type = params.get("Type")
 
 
 class FunctionLog(AbstractModel):
@@ -461,6 +652,10 @@ class FunctionLog(AbstractModel):
         :type MemUsage: int
         :param Log: 函数执行过程中的日志输出
         :type Log: str
+        :param Level: 日志等级
+        :type Level: str
+        :param Source: 日志来源
+        :type Source: str
         """
         self.FunctionName = None
         self.RetMsg = None
@@ -472,6 +667,8 @@ class FunctionLog(AbstractModel):
         self.BillDuration = None
         self.MemUsage = None
         self.Log = None
+        self.Level = None
+        self.Source = None
 
 
     def _deserialize(self, params):
@@ -485,6 +682,80 @@ class FunctionLog(AbstractModel):
         self.BillDuration = params.get("BillDuration")
         self.MemUsage = params.get("MemUsage")
         self.Log = params.get("Log")
+        self.Level = params.get("Level")
+        self.Source = params.get("Source")
+
+
+class FunctionVersion(AbstractModel):
+    """函数版本信息
+
+    """
+
+    def __init__(self):
+        """
+        :param Version: 函数版本名称
+        :type Version: str
+        :param Description: 版本描述信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Description: str
+        """
+        self.Version = None
+        self.Description = None
+
+
+    def _deserialize(self, params):
+        self.Version = params.get("Version")
+        self.Description = params.get("Description")
+
+
+class GetFunctionAddressRequest(AbstractModel):
+    """GetFunctionAddress请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param FunctionName: 函数的名称
+        :type FunctionName: str
+        :param Qualifier: 函数的版本
+        :type Qualifier: str
+        :param Namespace: 函数的命名空间
+        :type Namespace: str
+        """
+        self.FunctionName = None
+        self.Qualifier = None
+        self.Namespace = None
+
+
+    def _deserialize(self, params):
+        self.FunctionName = params.get("FunctionName")
+        self.Qualifier = params.get("Qualifier")
+        self.Namespace = params.get("Namespace")
+
+
+class GetFunctionAddressResponse(AbstractModel):
+    """GetFunctionAddress返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Url: 函数的Cos地址
+        :type Url: str
+        :param CodeSha256: 函数的SHA256编码
+        :type CodeSha256: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Url = None
+        self.CodeSha256 = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Url = params.get("Url")
+        self.CodeSha256 = params.get("CodeSha256")
+        self.RequestId = params.get("RequestId")
 
 
 class GetFunctionLogsRequest(AbstractModel):
@@ -506,6 +777,8 @@ class GetFunctionLogsRequest(AbstractModel):
         :type OrderBy: str
         :param Filter: 日志过滤条件。可用来区分正确和错误日志，filter.retCode=not0 表示只返回错误日志，filter.retCode=is0 表示只返回正确日志，不传，则返回所有日志
         :type Filter: :class:`tencentcloud.scf.v20180416.models.LogFilter`
+        :param Namespace: 函数的命名空间
+        :type Namespace: str
         :param Qualifier: 函数的版本
         :type Qualifier: str
         :param FunctionRequestId: 执行该函数对应的requestId
@@ -514,6 +787,8 @@ class GetFunctionLogsRequest(AbstractModel):
         :type StartTime: str
         :param EndTime: 查询的具体日期，例如：2017-05-16 20:59:59，只能与startTime相差一天之内
         :type EndTime: str
+        :param SearchContext: 服务日志相关参数，第一页日志 Offset 为空字符串，后续分页按响应字段里的SearchContext填写
+        :type SearchContext: :class:`tencentcloud.scf.v20180416.models.LogSearchContext`
         """
         self.FunctionName = None
         self.Offset = None
@@ -521,10 +796,12 @@ class GetFunctionLogsRequest(AbstractModel):
         self.Order = None
         self.OrderBy = None
         self.Filter = None
+        self.Namespace = None
         self.Qualifier = None
         self.FunctionRequestId = None
         self.StartTime = None
         self.EndTime = None
+        self.SearchContext = None
 
 
     def _deserialize(self, params):
@@ -536,10 +813,14 @@ class GetFunctionLogsRequest(AbstractModel):
         if params.get("Filter") is not None:
             self.Filter = LogFilter()
             self.Filter._deserialize(params.get("Filter"))
+        self.Namespace = params.get("Namespace")
         self.Qualifier = params.get("Qualifier")
         self.FunctionRequestId = params.get("FunctionRequestId")
         self.StartTime = params.get("StartTime")
         self.EndTime = params.get("EndTime")
+        if params.get("SearchContext") is not None:
+            self.SearchContext = LogSearchContext()
+            self.SearchContext._deserialize(params.get("SearchContext"))
 
 
 class GetFunctionLogsResponse(AbstractModel):
@@ -553,11 +834,14 @@ class GetFunctionLogsResponse(AbstractModel):
         :type TotalCount: int
         :param Data: 函数日志信息
         :type Data: list of FunctionLog
+        :param SearchContext: 日志服务分页参数
+        :type SearchContext: :class:`tencentcloud.scf.v20180416.models.LogSearchContext`
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.TotalCount = None
         self.Data = None
+        self.SearchContext = None
         self.RequestId = None
 
 
@@ -569,6 +853,9 @@ class GetFunctionLogsResponse(AbstractModel):
                 obj = FunctionLog()
                 obj._deserialize(item)
                 self.Data.append(obj)
+        if params.get("SearchContext") is not None:
+            self.SearchContext = LogSearchContext()
+            self.SearchContext._deserialize(params.get("SearchContext"))
         self.RequestId = params.get("RequestId")
 
 
@@ -583,17 +870,21 @@ class GetFunctionRequest(AbstractModel):
         :type FunctionName: str
         :param Qualifier: 函数的版本号
         :type Qualifier: str
+        :param Namespace: 函数所属命名空间
+        :type Namespace: str
         :param ShowCode: 是否显示代码, TRUE表示显示代码，FALSE表示不显示代码,大于1M的入口文件不会显示
         :type ShowCode: str
         """
         self.FunctionName = None
         self.Qualifier = None
+        self.Namespace = None
         self.ShowCode = None
 
 
     def _deserialize(self, params):
         self.FunctionName = params.get("FunctionName")
         self.Qualifier = params.get("Qualifier")
+        self.Namespace = params.get("Namespace")
         self.ShowCode = params.get("ShowCode")
 
 
@@ -656,6 +947,12 @@ class GetFunctionResponse(AbstractModel):
         :type FunctionId: str
         :param Tags: 函数的标签列表
         :type Tags: list of Tag
+        :param EipConfig: EipConfig配置
+        :type EipConfig: :class:`tencentcloud.scf.v20180416.models.EipOutConfig`
+        :param AccessInfo: 域名信息
+        :type AccessInfo: :class:`tencentcloud.scf.v20180416.models.AccessInfo`
+        :param Type: 函数类型，取值为HTTP或者Event
+        :type Type: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -685,6 +982,9 @@ class GetFunctionResponse(AbstractModel):
         self.ClsTopicId = None
         self.FunctionId = None
         self.Tags = None
+        self.EipConfig = None
+        self.AccessInfo = None
+        self.Type = None
         self.RequestId = None
 
 
@@ -729,6 +1029,13 @@ class GetFunctionResponse(AbstractModel):
                 obj = Tag()
                 obj._deserialize(item)
                 self.Tags.append(obj)
+        if params.get("EipConfig") is not None:
+            self.EipConfig = EipOutConfig()
+            self.EipConfig._deserialize(params.get("EipConfig"))
+        if params.get("AccessInfo") is not None:
+            self.AccessInfo = AccessInfo()
+            self.AccessInfo._deserialize(params.get("AccessInfo"))
+        self.Type = params.get("Type")
         self.RequestId = params.get("RequestId")
 
 
@@ -809,6 +1116,8 @@ class ListFunctionsRequest(AbstractModel):
         :type Limit: int
         :param SearchKey: 支持FunctionName模糊匹配
         :type SearchKey: str
+        :param Namespace: 命名空间
+        :type Namespace: str
         :param Description: 函数描述，支持模糊搜索
         :type Description: str
         :param Filters: 过滤条件。
@@ -822,6 +1131,7 @@ class ListFunctionsRequest(AbstractModel):
         self.Offset = None
         self.Limit = None
         self.SearchKey = None
+        self.Namespace = None
         self.Description = None
         self.Filters = None
 
@@ -832,6 +1142,7 @@ class ListFunctionsRequest(AbstractModel):
         self.Offset = params.get("Offset")
         self.Limit = params.get("Limit")
         self.SearchKey = params.get("SearchKey")
+        self.Namespace = params.get("Namespace")
         self.Description = params.get("Description")
         if params.get("Filters") is not None:
             self.Filters = []
@@ -871,6 +1182,117 @@ class ListFunctionsResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class ListNamespacesRequest(AbstractModel):
+    """ListNamespaces请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Limit: 返回数据长度，默认值为 20
+        :type Limit: int
+        :param Offset: 数据的偏移量，默认值为 0
+        :type Offset: int
+        :param Orderby: 根据哪个字段进行返回结果排序,支持以下字段：Name,Updatetime
+        :type Orderby: str
+        :param Order: 以升序还是降序的方式返回结果，可选值 ASC 和 DESC
+        :type Order: str
+        """
+        self.Limit = None
+        self.Offset = None
+        self.Orderby = None
+        self.Order = None
+
+
+    def _deserialize(self, params):
+        self.Limit = params.get("Limit")
+        self.Offset = params.get("Offset")
+        self.Orderby = params.get("Orderby")
+        self.Order = params.get("Order")
+
+
+class ListNamespacesResponse(AbstractModel):
+    """ListNamespaces返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Namespaces: namespace详情
+        :type Namespaces: list of Namespace
+        :param TotalCount: 返回的namespace数量
+        :type TotalCount: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Namespaces = None
+        self.TotalCount = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Namespaces") is not None:
+            self.Namespaces = []
+            for item in params.get("Namespaces"):
+                obj = Namespace()
+                obj._deserialize(item)
+                self.Namespaces.append(obj)
+        self.TotalCount = params.get("TotalCount")
+        self.RequestId = params.get("RequestId")
+
+
+class ListVersionByFunctionRequest(AbstractModel):
+    """ListVersionByFunction请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param FunctionName: 函数ID
+        :type FunctionName: str
+        :param Namespace: 命名空间
+        :type Namespace: str
+        """
+        self.FunctionName = None
+        self.Namespace = None
+
+
+    def _deserialize(self, params):
+        self.FunctionName = params.get("FunctionName")
+        self.Namespace = params.get("Namespace")
+
+
+class ListVersionByFunctionResponse(AbstractModel):
+    """ListVersionByFunction返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param FunctionVersion: 函数版本。
+        :type FunctionVersion: list of str
+        :param Versions: 函数版本列表。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Versions: list of FunctionVersion
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.FunctionVersion = None
+        self.Versions = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.FunctionVersion = params.get("FunctionVersion")
+        if params.get("Versions") is not None:
+            self.Versions = []
+            for item in params.get("Versions"):
+                obj = FunctionVersion()
+                obj._deserialize(item)
+                self.Versions.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class LogFilter(AbstractModel):
     """日志过滤条件，用于区分正确与错误日志
 
@@ -878,7 +1300,13 @@ class LogFilter(AbstractModel):
 
     def __init__(self):
         """
-        :param RetCode: filter.RetCode=not0 表示只返回错误日志，filter.RetCode=is0 表示只返回正确日志，无输入则返回所有日志。
+        :param RetCode: filter.RetCode的取值有：
+not0 表示只返回错误日志，
+is0 表示只返回正确日志，
+TimeLimitExceeded 返回函数调用发生超时的日志，
+ResourceLimitExceeded 返回函数调用发生资源超限的日志，
+UserCodeException 返回函数调用发生用户代码错误的日志，
+无输入则返回所有日志。
         :type RetCode: str
         """
         self.RetCode = None
@@ -886,6 +1314,142 @@ class LogFilter(AbstractModel):
 
     def _deserialize(self, params):
         self.RetCode = params.get("RetCode")
+
+
+class LogSearchContext(AbstractModel):
+    """日志搜索上下文
+
+    """
+
+    def __init__(self):
+        """
+        :param Offset: 偏移量
+        :type Offset: str
+        :param Limit: 日志条数
+        :type Limit: int
+        :param Keyword: 日志关键词
+        :type Keyword: str
+        :param Type: 日志类型，支持Application和Platform，默认为Application
+        :type Type: str
+        """
+        self.Offset = None
+        self.Limit = None
+        self.Keyword = None
+        self.Type = None
+
+
+    def _deserialize(self, params):
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+        self.Keyword = params.get("Keyword")
+        self.Type = params.get("Type")
+
+
+class Namespace(AbstractModel):
+    """命名空间
+
+    """
+
+    def __init__(self):
+        """
+        :param ModTime: 命名空间创建时间
+        :type ModTime: str
+        :param AddTime: 命名空间修改时间
+        :type AddTime: str
+        :param Description: 命名空间描述
+        :type Description: str
+        :param Name: 命名空间名称
+        :type Name: str
+        :param Type: 默认default，TCB表示是小程序云开发创建的
+        :type Type: str
+        """
+        self.ModTime = None
+        self.AddTime = None
+        self.Description = None
+        self.Name = None
+        self.Type = None
+
+
+    def _deserialize(self, params):
+        self.ModTime = params.get("ModTime")
+        self.AddTime = params.get("AddTime")
+        self.Description = params.get("Description")
+        self.Name = params.get("Name")
+        self.Type = params.get("Type")
+
+
+class PublishVersionRequest(AbstractModel):
+    """PublishVersion请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param FunctionName: 发布函数的名称
+        :type FunctionName: str
+        :param Description: 函数的描述
+        :type Description: str
+        :param Namespace: 函数的命名空间
+        :type Namespace: str
+        """
+        self.FunctionName = None
+        self.Description = None
+        self.Namespace = None
+
+
+    def _deserialize(self, params):
+        self.FunctionName = params.get("FunctionName")
+        self.Description = params.get("Description")
+        self.Namespace = params.get("Namespace")
+
+
+class PublishVersionResponse(AbstractModel):
+    """PublishVersion返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param FunctionVersion: 函数的版本
+        :type FunctionVersion: str
+        :param CodeSize: 代码大小
+        :type CodeSize: int
+        :param MemorySize: 最大可用内存
+        :type MemorySize: int
+        :param Description: 函数的描述
+        :type Description: str
+        :param Handler: 函数的入口
+        :type Handler: str
+        :param Timeout: 函数的超时时间
+        :type Timeout: int
+        :param Runtime: 函数的运行环境
+        :type Runtime: str
+        :param Namespace: 函数的命名空间
+        :type Namespace: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.FunctionVersion = None
+        self.CodeSize = None
+        self.MemorySize = None
+        self.Description = None
+        self.Handler = None
+        self.Timeout = None
+        self.Runtime = None
+        self.Namespace = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.FunctionVersion = params.get("FunctionVersion")
+        self.CodeSize = params.get("CodeSize")
+        self.MemorySize = params.get("MemorySize")
+        self.Description = params.get("Description")
+        self.Handler = params.get("Handler")
+        self.Timeout = params.get("Timeout")
+        self.Runtime = params.get("Runtime")
+        self.Namespace = params.get("Namespace")
+        self.RequestId = params.get("RequestId")
 
 
 class Result(AbstractModel):
@@ -1012,15 +1576,24 @@ class UpdateFunctionCodeRequest(AbstractModel):
         :type CosObjectName: str
         :param ZipFile: 包含函数代码文件及其依赖项的 zip 格式文件，使用该接口时要求将 zip 文件的内容转成 base64 编码，最大支持20M
         :type ZipFile: str
+        :param Namespace: 函数所属命名空间
+        :type Namespace: str
         :param CosBucketRegion: 对象存储的地域，注：北京分为ap-beijing和ap-beijing-1
         :type CosBucketRegion: str
+        :param EnvId: 函数所属环境
+        :type EnvId: str
+        :param Publish: 在更新时是否同步发布新版本，默认为：FALSE，不发布
+        :type Publish: str
         """
         self.Handler = None
         self.FunctionName = None
         self.CosBucketName = None
         self.CosObjectName = None
         self.ZipFile = None
+        self.Namespace = None
         self.CosBucketRegion = None
+        self.EnvId = None
+        self.Publish = None
 
 
     def _deserialize(self, params):
@@ -1029,7 +1602,10 @@ class UpdateFunctionCodeRequest(AbstractModel):
         self.CosBucketName = params.get("CosBucketName")
         self.CosObjectName = params.get("CosObjectName")
         self.ZipFile = params.get("ZipFile")
+        self.Namespace = params.get("Namespace")
         self.CosBucketRegion = params.get("CosBucketRegion")
+        self.EnvId = params.get("EnvId")
+        self.Publish = params.get("Publish")
 
 
 class UpdateFunctionCodeResponse(AbstractModel):
@@ -1068,8 +1644,18 @@ class UpdateFunctionConfigurationRequest(AbstractModel):
         :type Runtime: str
         :param Environment: 函数的环境变量
         :type Environment: :class:`tencentcloud.scf.v20180416.models.Environment`
+        :param Namespace: 函数所属命名空间
+        :type Namespace: str
         :param VpcConfig: 函数的私有网络配置
         :type VpcConfig: :class:`tencentcloud.scf.v20180416.models.VpcConfig`
+        :param Role: 函数绑定的角色
+        :type Role: str
+        :param ClsLogsetId: 日志投递到的cls日志集ID
+        :type ClsLogsetId: str
+        :param ClsTopicId: 日志投递到的cls Topic ID
+        :type ClsTopicId: str
+        :param Publish: 在更新时是否同步发布新版本，默认为：FALSE，不发布
+        :type Publish: str
         """
         self.FunctionName = None
         self.Description = None
@@ -1077,7 +1663,12 @@ class UpdateFunctionConfigurationRequest(AbstractModel):
         self.Timeout = None
         self.Runtime = None
         self.Environment = None
+        self.Namespace = None
         self.VpcConfig = None
+        self.Role = None
+        self.ClsLogsetId = None
+        self.ClsTopicId = None
+        self.Publish = None
 
 
     def _deserialize(self, params):
@@ -1089,13 +1680,56 @@ class UpdateFunctionConfigurationRequest(AbstractModel):
         if params.get("Environment") is not None:
             self.Environment = Environment()
             self.Environment._deserialize(params.get("Environment"))
+        self.Namespace = params.get("Namespace")
         if params.get("VpcConfig") is not None:
             self.VpcConfig = VpcConfig()
             self.VpcConfig._deserialize(params.get("VpcConfig"))
+        self.Role = params.get("Role")
+        self.ClsLogsetId = params.get("ClsLogsetId")
+        self.ClsTopicId = params.get("ClsTopicId")
+        self.Publish = params.get("Publish")
 
 
 class UpdateFunctionConfigurationResponse(AbstractModel):
     """UpdateFunctionConfiguration返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class UpdateNamespaceRequest(AbstractModel):
+    """UpdateNamespace请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Namespace: 命名空间名称
+        :type Namespace: str
+        :param Description: 命名空间描述
+        :type Description: str
+        """
+        self.Namespace = None
+        self.Description = None
+
+
+    def _deserialize(self, params):
+        self.Namespace = params.get("Namespace")
+        self.Description = params.get("Description")
+
+
+class UpdateNamespaceResponse(AbstractModel):
+    """UpdateNamespace返回参数结构体
 
     """
 

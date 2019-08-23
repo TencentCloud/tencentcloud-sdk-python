@@ -32,16 +32,22 @@ class AnalyzeFaceRequest(AbstractModel):
 非腾讯云存储的Url速度和稳定性可能受一定影响。
 支持PNG、JPG、JPEG、BMP，不支持 GIF 图片。
         :type Url: str
+        :param FaceModelVersion: 人脸识别服务所用的算法模型版本。目前入参支持 “2.0”和“3.0“ 两个输入。  
+默认为"2.0"。 
+不同算法模型版本对应的人脸识别算法不同，新版本的整体效果会优于旧版本，建议使用最新版本。
+        :type FaceModelVersion: str
         """
         self.Mode = None
         self.Image = None
         self.Url = None
+        self.FaceModelVersion = None
 
 
     def _deserialize(self, params):
         self.Mode = params.get("Mode")
         self.Image = params.get("Image")
         self.Url = params.get("Url")
+        self.FaceModelVersion = params.get("FaceModelVersion")
 
 
 class AnalyzeFaceResponse(AbstractModel):
@@ -96,16 +102,36 @@ class Candidate(AbstractModel):
 误识率百分之一对应分数为60分，误识率千分之一对应分数为70分，误识率万分之一对应分数为80分。 
 建议分数不要超过90分。您可以根据实际情况选择合适的分数。
         :type Score: float
+        :param PersonName: 人员名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PersonName: str
+        :param Gender: 人员性别
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Gender: int
+        :param PersonGroupInfos: 包含此人员的人员库及描述字段内容列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PersonGroupInfos: list of PersonGroupInfo
         """
         self.PersonId = None
         self.FaceId = None
         self.Score = None
+        self.PersonName = None
+        self.Gender = None
+        self.PersonGroupInfos = None
 
 
     def _deserialize(self, params):
         self.PersonId = params.get("PersonId")
         self.FaceId = params.get("FaceId")
         self.Score = params.get("Score")
+        self.PersonName = params.get("PersonName")
+        self.Gender = params.get("Gender")
+        if params.get("PersonGroupInfos") is not None:
+            self.PersonGroupInfos = []
+            for item in params.get("PersonGroupInfos"):
+                obj = PersonGroupInfo()
+                obj._deserialize(item)
+                self.PersonGroupInfos.append(obj)
 
 
 class CompareFaceRequest(AbstractModel):
@@ -583,7 +609,7 @@ class DetectFaceRequest(AbstractModel):
         :type NeedFaceAttributes: int
         :param NeedQualityDetection: 是否开启质量检测。0 为关闭，1 为开启。默认为 0。 
 非 1 值均视为不进行质量检测。
-最多返回面积最大的 5 张人脸质量分信息，超过 5 张人脸（第 6 张及以后的人脸）的 FaceQualityInfo不具备参考意义。  
+最多返回面积最大的 30 张人脸质量分信息，超过 30 张人脸（第 31 张及以后的人脸）的 FaceQualityInfo不具备参考意义。  
 建议：人脸入库操作建议开启此功能。
         :type NeedQualityDetection: int
         """
@@ -693,7 +719,7 @@ class FaceAttributesInfo(AbstractModel):
 
     def __init__(self):
         """
-        :param Gender: 性别 [0(female，女性)~100(male，男性)]。 NeedFaceAttributes 不为 1 或检测超过 5 张人脸时，此参数仍返回，但不具备参考意义。
+        :param Gender: 性别[0~49]为女性，[50，100]为男性，越接近0和100表示置信度越高。NeedFaceAttributes 不为 1 或检测超过 5 张人脸时，此参数仍返回，但不具备参考意义。
         :type Gender: int
         :param Age: 年龄 [0~100]。NeedFaceAttributes 不为1 或检测超过 5 张人脸时，此参数仍返回，但不具备参考意义。
         :type Age: int
@@ -888,6 +914,7 @@ class FaceQualityInfo(AbstractModel):
     def __init__(self):
         """
         :param Score: 质量分: [0,100]，综合评价图像质量是否适合人脸识别，分数越高质量越好。 
+正常情况，只需要使用Score作为质量分总体的判断标准即可。
 参考范围：[0,40]较差，[40,60] 一般，[60,80]较好，[80,100]很好。 
 建议：人脸入库选取70以上的图片。
 注意：此字段可能返回 null，表示取不到有效值。
@@ -1648,15 +1675,18 @@ class SearchFacesRequest(AbstractModel):
 非腾讯云存储的Url速度和稳定性可能受一定影响。
 支持PNG、JPG、JPEG、BMP，不支持 GIF 图片。
         :type Url: str
-        :param MaxFaceNum: 最多处理的人脸数目。默认值为1（仅检测图片中面积最大的那张人脸），最大值为10。 
-MaxFaceNum用于，当待识别图片包含多张人脸时，要搜索的人脸数量。 
-当 MaxFaceNum 不为1时，设MaxFaceNum=M，则实际上是 M:N 的人脸搜索（N为待搜索的人脸数）。
+        :param MaxFaceNum: 最多识别的人脸数目。默认值为1（仅检测图片中面积最大的那张人脸），最大值为10。 
+MaxFaceNum用于，当输入的待识别图片包含多张人脸时，设定要搜索的人脸的数量。 
+例：输入的Image或Url中的图片包含多张人脸，设MaxFaceNum=5，则会识别图片中面积最大的5张人脸。
         :type MaxFaceNum: int
-        :param MinFaceSize: 人脸长和宽的最小尺寸，单位为像素。默认为80。低于40将影响搜索精度。建议设置为80。
+        :param MinFaceSize: 人脸长和宽的最小尺寸，单位为像素。默认为80。低于40的人脸图片无法被识别。建议设置为80。
         :type MinFaceSize: int
-        :param MaxPersonNum: 被检测到的人脸，对应最多返回的最相似人员数目。默认值为5，最大值为10。  
-例，设MaxFaceNum为3，MaxPersonNum为5，则最多可能返回3*5=15个人员。
+        :param MaxPersonNum: 单张被识别的人脸返回的最相似人员数量。默认值为5，最大值为100。 
+例，设MaxFaceNum为1，MaxPersonNum为8，则返回Top8相似的人员信息。
+值越大，需要处理的时间越长。建议不要超过10。
         :type MaxPersonNum: int
+        :param NeedPersonInfo: 是否返回人员具体信息。0 为关闭，1 为开启。默认为 0。其他非0非1值默认为0
+        :type NeedPersonInfo: int
         """
         self.GroupIds = None
         self.Image = None
@@ -1664,6 +1694,7 @@ MaxFaceNum用于，当待识别图片包含多张人脸时，要搜索的人脸�
         self.MaxFaceNum = None
         self.MinFaceSize = None
         self.MaxPersonNum = None
+        self.NeedPersonInfo = None
 
 
     def _deserialize(self, params):
@@ -1673,6 +1704,7 @@ MaxFaceNum用于，当待识别图片包含多张人脸时，要搜索的人脸�
         self.MaxFaceNum = params.get("MaxFaceNum")
         self.MinFaceSize = params.get("MinFaceSize")
         self.MaxPersonNum = params.get("MaxPersonNum")
+        self.NeedPersonInfo = params.get("NeedPersonInfo")
 
 
 class SearchFacesResponse(AbstractModel):

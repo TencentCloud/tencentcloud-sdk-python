@@ -81,6 +81,118 @@ class TkeClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def CreateClusterInstances(self, request):
+        """扩展(新建)集群节点
+
+        :param request: 调用CreateClusterInstances所需参数的结构体。
+        :type request: :class:`tencentcloud.tke.v20180525.models.CreateClusterInstancesRequest`
+        :rtype: :class:`tencentcloud.tke.v20180525.models.CreateClusterInstancesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("CreateClusterInstances", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateClusterInstancesResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def CreateClusterRoute(self, request):
+        """创建集群路由
+
+        :param request: 调用CreateClusterRoute所需参数的结构体。
+        :type request: :class:`tencentcloud.tke.v20180525.models.CreateClusterRouteRequest`
+        :rtype: :class:`tencentcloud.tke.v20180525.models.CreateClusterRouteResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("CreateClusterRoute", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateClusterRouteResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def CreateClusterRouteTable(self, request):
+        """创建集群路由表
+
+        :param request: 调用CreateClusterRouteTable所需参数的结构体。
+        :type request: :class:`tencentcloud.tke.v20180525.models.CreateClusterRouteTableRequest`
+        :rtype: :class:`tencentcloud.tke.v20180525.models.CreateClusterRouteTableResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("CreateClusterRouteTable", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateClusterRouteTableResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DeleteCluster(self, request):
+        """删除集群(YUNAPI V3版本)
+
+        :param request: 调用DeleteCluster所需参数的结构体。
+        :type request: :class:`tencentcloud.tke.v20180525.models.DeleteClusterRequest`
+        :rtype: :class:`tencentcloud.tke.v20180525.models.DeleteClusterResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DeleteCluster", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DeleteClusterResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DeleteClusterInstances(self, request):
         """删除集群中的实例
 
@@ -95,6 +207,62 @@ class TkeClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteClusterInstancesResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DeleteClusterRoute(self, request):
+        """删除集群路由
+
+        :param request: 调用DeleteClusterRoute所需参数的结构体。
+        :type request: :class:`tencentcloud.tke.v20180525.models.DeleteClusterRouteRequest`
+        :rtype: :class:`tencentcloud.tke.v20180525.models.DeleteClusterRouteResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DeleteClusterRoute", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DeleteClusterRouteResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DeleteClusterRouteTable(self, request):
+        """删除集群路由表
+
+        :param request: 调用DeleteClusterRouteTable所需参数的结构体。
+        :type request: :class:`tencentcloud.tke.v20180525.models.DeleteClusterRouteTableRequest`
+        :rtype: :class:`tencentcloud.tke.v20180525.models.DeleteClusterRouteTableResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DeleteClusterRouteTable", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DeleteClusterRouteTableResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -137,6 +305,90 @@ class TkeClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeClusterRouteTables(self, request):
+        """查询集群路由表
+
+        :param request: 调用DescribeClusterRouteTables所需参数的结构体。
+        :type request: :class:`tencentcloud.tke.v20180525.models.DescribeClusterRouteTablesRequest`
+        :rtype: :class:`tencentcloud.tke.v20180525.models.DescribeClusterRouteTablesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeClusterRouteTables", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeClusterRouteTablesResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeClusterRoutes(self, request):
+        """查询集群路由
+
+        :param request: 调用DescribeClusterRoutes所需参数的结构体。
+        :type request: :class:`tencentcloud.tke.v20180525.models.DescribeClusterRoutesRequest`
+        :rtype: :class:`tencentcloud.tke.v20180525.models.DescribeClusterRoutesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeClusterRoutes", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeClusterRoutesResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeClusterSecurity(self, request):
+        """集群的密钥信息
+
+        :param request: 调用DescribeClusterSecurity所需参数的结构体。
+        :type request: :class:`tencentcloud.tke.v20180525.models.DescribeClusterSecurityRequest`
+        :rtype: :class:`tencentcloud.tke.v20180525.models.DescribeClusterSecurityResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeClusterSecurity", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeClusterSecurityResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeClusters(self, request):
         """查询集群列表
 
@@ -151,6 +403,62 @@ class TkeClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeClustersResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeExistedInstances(self, request):
+        """查询已经存在的节点，判断是否可以加入集群
+
+        :param request: 调用DescribeExistedInstances所需参数的结构体。
+        :type request: :class:`tencentcloud.tke.v20180525.models.DescribeExistedInstancesRequest`
+        :rtype: :class:`tencentcloud.tke.v20180525.models.DescribeExistedInstancesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeExistedInstances", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeExistedInstancesResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeRouteTableConflicts(self, request):
+        """查询路由表冲突列表
+
+        :param request: 调用DescribeRouteTableConflicts所需参数的结构体。
+        :type request: :class:`tencentcloud.tke.v20180525.models.DescribeRouteTableConflictsRequest`
+        :rtype: :class:`tencentcloud.tke.v20180525.models.DescribeRouteTableConflictsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeRouteTableConflicts", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeRouteTableConflictsResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

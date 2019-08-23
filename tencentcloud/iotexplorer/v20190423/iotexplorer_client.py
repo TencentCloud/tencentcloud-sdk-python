@@ -53,6 +53,34 @@ class IotexplorerClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def CreateDevice(self, request):
+        """创建设备
+
+        :param request: 调用CreateDevice所需参数的结构体。
+        :type request: :class:`tencentcloud.iotexplorer.v20190423.models.CreateDeviceRequest`
+        :rtype: :class:`tencentcloud.iotexplorer.v20190423.models.CreateDeviceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("CreateDevice", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateDeviceResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def CreateProject(self, request):
         """为用户提供新建项目的能力，用于集中管理产品和应用。
 
@@ -95,6 +123,34 @@ class IotexplorerClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateStudioProductResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DeleteDevice(self, request):
+        """删除设备
+
+        :param request: 调用DeleteDevice所需参数的结构体。
+        :type request: :class:`tencentcloud.iotexplorer.v20190423.models.DeleteDeviceRequest`
+        :rtype: :class:`tencentcloud.iotexplorer.v20190423.models.DeleteDeviceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DeleteDevice", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DeleteDeviceResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

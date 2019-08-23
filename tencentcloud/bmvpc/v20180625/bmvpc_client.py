@@ -165,6 +165,34 @@ class BmvpcClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def CreateCustomerGateway(self, request):
+        """本接口（CreateCustomerGateway）用于创建对端网关。
+
+        :param request: 调用CreateCustomerGateway所需参数的结构体。
+        :type request: :class:`tencentcloud.bmvpc.v20180625.models.CreateCustomerGatewayRequest`
+        :rtype: :class:`tencentcloud.bmvpc.v20180625.models.CreateCustomerGatewayResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("CreateCustomerGateway", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateCustomerGatewayResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def CreateDockerSubnetWithVlan(self, request):
         """创建黑石Docker子网， 如果不指定VlanId，将会分配2000--2999范围的VlanId; 子网会关闭分布式网关
 
@@ -1071,6 +1099,34 @@ class BmvpcClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeVpcPeerConnections(self, request):
+        """获取对等连接列表
+
+        :param request: 调用DescribeVpcPeerConnections所需参数的结构体。
+        :type request: :class:`tencentcloud.bmvpc.v20180625.models.DescribeVpcPeerConnectionsRequest`
+        :rtype: :class:`tencentcloud.bmvpc.v20180625.models.DescribeVpcPeerConnectionsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeVpcPeerConnections", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeVpcPeerConnectionsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeVpcQuota(self, request):
         """本接口（DescribeVpcQuota）用于查询用户VPC相关配额限制。
 
@@ -1170,6 +1226,62 @@ class BmvpcClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeVpcsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeVpnConnections(self, request):
+        """本接口（DescribeVpnConnections）查询VPN通道列表。
+
+        :param request: 调用DescribeVpnConnections所需参数的结构体。
+        :type request: :class:`tencentcloud.bmvpc.v20180625.models.DescribeVpnConnectionsRequest`
+        :rtype: :class:`tencentcloud.bmvpc.v20180625.models.DescribeVpnConnectionsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeVpnConnections", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeVpnConnectionsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeVpnGateways(self, request):
+        """本接口（DescribeVpnGateways）用于查询VPN网关列表。
+
+        :param request: 调用DescribeVpnGateways所需参数的结构体。
+        :type request: :class:`tencentcloud.bmvpc.v20180625.models.DescribeVpnGatewaysRequest`
+        :rtype: :class:`tencentcloud.bmvpc.v20180625.models.DescribeVpnGatewaysResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeVpnGateways", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeVpnGatewaysResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

@@ -58,6 +58,27 @@ class AssignProjectResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class ClientConnection(AbstractModel):
+    """客户端连接信息，包括客户端IP和连接数
+
+    """
+
+    def __init__(self):
+        """
+        :param IP: 连接的客户端IP
+        :type IP: str
+        :param Count: 对应客户端IP的连接数
+        :type Count: int
+        """
+        self.IP = None
+        self.Count = None
+
+
+    def _deserialize(self, params):
+        self.IP = params.get("IP")
+        self.Count = params.get("Count")
+
+
 class CreateDBInstanceHourRequest(AbstractModel):
     """CreateDBInstanceHour请求参数结构体
 
@@ -243,6 +264,50 @@ class CreateDBInstanceResponse(AbstractModel):
     def _deserialize(self, params):
         self.DealId = params.get("DealId")
         self.InstanceIds = params.get("InstanceIds")
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeClientConnectionsRequest(AbstractModel):
+    """DescribeClientConnections请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param InstanceId: 实例ID，格式如：cmgo-p8vnipr5。与云数据库控制台页面中显示的实例ID相同
+        :type InstanceId: str
+        """
+        self.InstanceId = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+
+
+class DescribeClientConnectionsResponse(AbstractModel):
+    """DescribeClientConnections返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Clients: 客户端连接信息，包括客户端IP和对应IP的连接数量
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Clients: list of ClientConnection
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Clients = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Clients") is not None:
+            self.Clients = []
+            for item in params.get("Clients"):
+                obj = ClientConnection()
+                obj._deserialize(item)
+                self.Clients.append(obj)
         self.RequestId = params.get("RequestId")
 
 
@@ -439,7 +504,7 @@ class DescribeSpecInfoResponse(AbstractModel):
 
 
 class MongoDBInstance(AbstractModel):
-    """关联实例信息实例信息
+    """实例信息
 
     """
 

@@ -496,9 +496,9 @@ class DescribeAutoSnapshotPoliciesRequest(AbstractModel):
         :type AutoSnapshotPolicyIds: list of str
         :param Filters: 过滤条件。参数不支持同时指定`AutoSnapshotPolicyIds`和`Filters`。<br><li>auto-snapshot-policy-id - Array of String - 是否必填：否 -（过滤条件）按定期快照策略ID进行过滤。定期快照策略ID形如：`asp-11112222`。<br><li>auto-snapshot-policy-state - Array of String - 是否必填：否 -（过滤条件）按定期快照策略的状态进行过滤。定期快照策略ID形如：`asp-11112222`。(NORMAL：正常 | ISOLATED：已隔离。)<br><li>auto-snapshot-policy-name - Array of String - 是否必填：否 -（过滤条件）按定期快照策略名称进行过滤。
         :type Filters: list of Filter
-        :param Limit: 返回数量，默认为20，最大值为100。关于`Limit`的更进一步介绍请参考 API [简介](/document/362/13158)中的相关小节。
+        :param Limit: 返回数量，默认为20，最大值为100。关于`Limit`的更进一步介绍请参考 API [简介](/document/product/362/15633)中的相关小节。
         :type Limit: int
-        :param Offset: 偏移量，默认为0。关于`Offset`的更进一步介绍请参考API[简介](/document/362/13158)中的相关小节。
+        :param Offset: 偏移量，默认为0。关于`Offset`的更进一步介绍请参考API[简介](/document/product/362/15633)中的相关小节。
         :type Offset: int
         :param Order: 输出定期快照列表的排列顺序。取值范围：<br><li>ASC：升序排列<br><li>DESC：降序排列。
         :type Order: str
@@ -1080,6 +1080,12 @@ class Disk(AbstractModel):
         :type Shareable: bool
         :param InstanceIdList: 对于非共享型云盘，该参数为空数组。对于共享型云盘，则表示该云盘当前被挂载到的CVM实例InstanceId
         :type InstanceIdList: list of str
+        :param AttachDeviceId: 云硬盘挂载目标设备的ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AttachDeviceId: str
+        :param AttachDeviceType: 云硬盘挂载目标设备的类型，目前包括CVM和POD
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AttachDeviceType: str
         """
         self.DiskId = None
         self.DiskUsage = None
@@ -1111,6 +1117,8 @@ class Disk(AbstractModel):
         self.MigratePercent = None
         self.Shareable = None
         self.InstanceIdList = None
+        self.AttachDeviceId = None
+        self.AttachDeviceType = None
 
 
     def _deserialize(self, params):
@@ -1151,6 +1159,8 @@ class Disk(AbstractModel):
         self.MigratePercent = params.get("MigratePercent")
         self.Shareable = params.get("Shareable")
         self.InstanceIdList = params.get("InstanceIdList")
+        self.AttachDeviceId = params.get("AttachDeviceId")
+        self.AttachDeviceType = params.get("AttachDeviceType")
 
 
 class DiskChargePrepaid(AbstractModel):
@@ -1913,6 +1923,8 @@ class Snapshot(AbstractModel):
         :type Images: list of Image
         :param ImageCount: 快照关联的镜像个数。
         :type ImageCount: int
+        :param SnapshotType: 快照类型，目前该项取值可以为PRIVATE_SNAPSHOT或者SHARED_SNAPSHOT
+        :type SnapshotType: str
         """
         self.SnapshotId = None
         self.Placement = None
@@ -1930,6 +1942,7 @@ class Snapshot(AbstractModel):
         self.CopyFromRemote = None
         self.Images = None
         self.ImageCount = None
+        self.SnapshotType = None
 
 
     def _deserialize(self, params):
@@ -1956,6 +1969,7 @@ class Snapshot(AbstractModel):
                 obj._deserialize(item)
                 self.Images.append(obj)
         self.ImageCount = params.get("ImageCount")
+        self.SnapshotType = params.get("SnapshotType")
 
 
 class SnapshotOperationLog(AbstractModel):

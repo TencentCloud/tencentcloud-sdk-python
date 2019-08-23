@@ -169,11 +169,13 @@ class CreateInstanceRequest(AbstractModel):
         :param SgId: 安全组ID
         :type SgId: str
         :param PreExecutedFileSettings: 预执行脚本设置
-        :type PreExecutedFileSettings: :class:`tencentcloud.emr.v20190103.models.PreExecuteFileSettings`
+        :type PreExecutedFileSettings: list of PreExecuteFileSettings
         :param AutoRenew: 自动续费
         :type AutoRenew: int
         :param NeedMasterWan: 是否需要外网Ip。支持填NEED_MASTER_WAN，不支持使用NOT_NEED_MASTER_WAN，默认使用NEED_MASTER_WAN
         :type NeedMasterWan: str
+        :param RemoteLoginAtCreate: 是否需要开启外网远程登录，即22号端口，在SgId不为空时，该选项无效
+        :type RemoteLoginAtCreate: int
         """
         self.ProductId = None
         self.VPCSettings = None
@@ -192,6 +194,7 @@ class CreateInstanceRequest(AbstractModel):
         self.PreExecutedFileSettings = None
         self.AutoRenew = None
         self.NeedMasterWan = None
+        self.RemoteLoginAtCreate = None
 
 
     def _deserialize(self, params):
@@ -220,10 +223,14 @@ class CreateInstanceRequest(AbstractModel):
             self.COSSettings._deserialize(params.get("COSSettings"))
         self.SgId = params.get("SgId")
         if params.get("PreExecutedFileSettings") is not None:
-            self.PreExecutedFileSettings = PreExecuteFileSettings()
-            self.PreExecutedFileSettings._deserialize(params.get("PreExecutedFileSettings"))
+            self.PreExecutedFileSettings = []
+            for item in params.get("PreExecutedFileSettings"):
+                obj = PreExecuteFileSettings()
+                obj._deserialize(item)
+                self.PreExecutedFileSettings.append(obj)
         self.AutoRenew = params.get("AutoRenew")
         self.NeedMasterWan = params.get("NeedMasterWan")
+        self.RemoteLoginAtCreate = params.get("RemoteLoginAtCreate")
 
 
 class CreateInstanceResponse(AbstractModel):
@@ -607,14 +614,18 @@ class MultiDisk(AbstractModel):
         :type DiskType: str
         :param Volume: 云盘大小
         :type Volume: int
+        :param Count: 该类型云盘个数
+        :type Count: int
         """
         self.DiskType = None
         self.Volume = None
+        self.Count = None
 
 
     def _deserialize(self, params):
         self.DiskType = params.get("DiskType")
         self.Volume = params.get("Volume")
+        self.Count = params.get("Count")
 
 
 class NodeSpec(AbstractModel):
@@ -648,7 +659,7 @@ class NodeSpec(AbstractModel):
         :param SpecName: 规格名称
 注意：此字段可能返回 null，表示取不到有效值。
         :type SpecName: str
-        :param MultiDisks: 多云盘参数
+        :param MultiDisks: 多盘数据
 注意：此字段可能返回 null，表示取不到有效值。
         :type MultiDisks: list of MultiDisk
         """
@@ -718,12 +729,33 @@ class PreExecuteFileSettings(AbstractModel):
         :type Region: str
         :param Domain: COS的Domain数据
         :type Domain: str
+        :param RunOrder: 执行顺序
+        :type RunOrder: int
+        :param WhenRun: resourceAfter 或 clusterAfter
+        :type WhenRun: str
+        :param CosFileName: 脚本文件名
+        :type CosFileName: str
+        :param CosFileURI: 脚本的cos地址
+        :type CosFileURI: str
+        :param CosSecretId: cos的SecretId
+        :type CosSecretId: str
+        :param CosSecretKey: Cos的SecretKey
+        :type CosSecretKey: str
+        :param AppId: cos的appid
+        :type AppId: str
         """
         self.Path = None
         self.Args = None
         self.Bucket = None
         self.Region = None
         self.Domain = None
+        self.RunOrder = None
+        self.WhenRun = None
+        self.CosFileName = None
+        self.CosFileURI = None
+        self.CosSecretId = None
+        self.CosSecretKey = None
+        self.AppId = None
 
 
     def _deserialize(self, params):
@@ -732,6 +764,13 @@ class PreExecuteFileSettings(AbstractModel):
         self.Bucket = params.get("Bucket")
         self.Region = params.get("Region")
         self.Domain = params.get("Domain")
+        self.RunOrder = params.get("RunOrder")
+        self.WhenRun = params.get("WhenRun")
+        self.CosFileName = params.get("CosFileName")
+        self.CosFileURI = params.get("CosFileURI")
+        self.CosSecretId = params.get("CosSecretId")
+        self.CosSecretKey = params.get("CosSecretKey")
+        self.AppId = params.get("AppId")
 
 
 class ResourceSpec(AbstractModel):
@@ -805,7 +844,7 @@ class ScaleOutInstanceRequest(AbstractModel):
         :param PayMode: 付费类型
         :type PayMode: int
         :param PreExecutedFileSettings: 预执行脚本设置
-        :type PreExecutedFileSettings: :class:`tencentcloud.emr.v20190103.models.PreExecuteFileSettings`
+        :type PreExecutedFileSettings: list of PreExecuteFileSettings
         :param TaskCount: 扩容Task节点数量
         :type TaskCount: int
         :param CoreCount: 扩容Core节点数量
@@ -828,8 +867,11 @@ class ScaleOutInstanceRequest(AbstractModel):
         self.InstanceId = params.get("InstanceId")
         self.PayMode = params.get("PayMode")
         if params.get("PreExecutedFileSettings") is not None:
-            self.PreExecutedFileSettings = PreExecuteFileSettings()
-            self.PreExecutedFileSettings._deserialize(params.get("PreExecutedFileSettings"))
+            self.PreExecutedFileSettings = []
+            for item in params.get("PreExecutedFileSettings"):
+                obj = PreExecuteFileSettings()
+                obj._deserialize(item)
+                self.PreExecutedFileSettings.append(obj)
         self.TaskCount = params.get("TaskCount")
         self.CoreCount = params.get("CoreCount")
 

@@ -113,6 +113,7 @@ class ClbClient(AbstractClient):
 
     def CreateLoadBalancer(self, request):
         """CreateLoadBalancer 接口用来创建负载均衡实例。为了使用负载均衡服务，您必须购买一个或多个负载均衡实例。成功调用该接口后，会返回负载均衡实例的唯一 ID。负载均衡实例的类型分为：公网、内网。详情可参考产品说明中的产品类型。
+        注意：(1)指定可用区申请负载均衡、跨zone容灾【如需使用，请提交工单（ https://console.cloud.tencent.com/workorder/category ）申请】；(2)目前只有北京、上海、广州支持IPv6；
         本接口为异步接口，接口成功返回后，可使用 DescribeLoadBalancers 接口查询负载均衡实例的状态（如创建中、正常），以确定是否创建成功。
 
         :param request: 调用CreateLoadBalancer所需参数的结构体。
@@ -285,7 +286,7 @@ class ClbClient(AbstractClient):
 
 
     def DeregisterTargets(self, request):
-        """DeregisterTargets 接口用来将一台或多台后端机器从应用型负载均衡的监听器上解绑，对于四层监听器（TCP、UDP），只需指定监听器ID即可，对于七层监听器（HTTP、HTTPS），还需通过LocationId或者Domain+Url指定转发规则。
+        """DeregisterTargets 接口用来将一台或多台后端服务从负载均衡的监听器或转发规则上解绑，对于四层监听器，只需指定监听器ID即可，对于七层监听器，还需通过LocationId或Domain+Url指定转发规则。
         本接口为异步接口，本接口返回成功后需以返回的RequestID为入参，调用DescribeTaskStatus接口查询本次任务是否成功。
 
         :param request: 调用DeregisterTargets所需参数的结构体。
@@ -567,7 +568,7 @@ class ClbClient(AbstractClient):
 
 
     def DescribeTargets(self, request):
-        """DescribeTargets 接口用来查询应用型负载均衡实例的某些监听器后端绑定的机器列表。
+        """DescribeTargets 接口用来查询负载均衡实例的某些监听器绑定的后端服务列表。
 
         :param request: 调用DescribeTargets所需参数的结构体。
         :type request: :class:`tencentcloud.clb.v20180317.models.DescribeTargetsRequest`
@@ -766,7 +767,7 @@ class ClbClient(AbstractClient):
 
 
     def ModifyTargetPort(self, request):
-        """ModifyTargetPort接口用于修改监听器绑定的后端云服务器的端口。
+        """ModifyTargetPort接口用于修改监听器绑定的后端服务的端口。
         本接口为异步接口，本接口返回成功后需以返回的RequestID为入参，调用DescribeTaskStatus接口查询本次任务是否成功。
 
         :param request: 调用ModifyTargetPort所需参数的结构体。
@@ -795,7 +796,7 @@ class ClbClient(AbstractClient):
 
 
     def ModifyTargetWeight(self, request):
-        """ModifyTargetWeight 接口用于修改监听器绑定的后端机器的转发权重。
+        """ModifyTargetWeight 接口用于修改负载均衡绑定的后端服务的转发权重。
         本接口为异步接口，本接口返回成功后需以返回的RequestID为入参，调用DescribeTaskStatus接口查询本次任务是否成功。
 
         :param request: 调用ModifyTargetWeight所需参数的结构体。
@@ -867,6 +868,37 @@ class ClbClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.RegisterTargetsWithClassicalLBResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ReplaceCertForLoadBalancers(self, request):
+        """ReplaceCertForLoadBalancers 接口用以替换负载均衡实例所关联的证书，对于各个地域的负载均衡，如果指定的老的证书ID与其有关联关系，则会先解除关联，再建立新证书与该负载均衡的关联关系。
+        此接口支持替换服务端证书或客户端证书。
+        需要使用的新证书，可以通过传入证书ID来指定，如果不指定证书ID，则必须传入证书内容等相关信息，用以新建证书并绑定至负载均衡。
+        注：本接口仅可从广州地域调用，其他地域存在域名解析问题，会报错。
+
+        :param request: 调用ReplaceCertForLoadBalancers所需参数的结构体。
+        :type request: :class:`tencentcloud.clb.v20180317.models.ReplaceCertForLoadBalancersRequest`
+        :rtype: :class:`tencentcloud.clb.v20180317.models.ReplaceCertForLoadBalancersResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ReplaceCertForLoadBalancers", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ReplaceCertForLoadBalancersResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

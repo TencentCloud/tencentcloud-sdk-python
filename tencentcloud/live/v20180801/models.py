@@ -84,9 +84,12 @@ class AddLiveDomainRequest(AbstractModel):
 1：国内，
 2：全球，
 3：境外。
+默认值：1。
         :type PlayType: int
-        :param IsDelayLive: 默认 0 ：普通直播，
-1：慢直播。
+        :param IsDelayLive: 是否是慢直播：
+0： 普通直播，
+1 ：慢直播 。
+默认值： 0。
         :type IsDelayLive: int
         """
         self.DomainName = None
@@ -492,9 +495,11 @@ class CreateLiveCallbackTemplateRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param TemplateName: 模板名称。非空的字符串
+        :param TemplateName: 模板名称，非空的字符串。
+长度上限：255字节。
         :type TemplateName: str
         :param Description: 描述信息。
+长度上限：1024字节。
         :type Description: str
         :param StreamBeginNotifyUrl: 开播回调URL，
 相关协议文档：[事件消息通知](/document/product/267/32744)。
@@ -885,7 +890,8 @@ class CreateLiveSnapshotTemplateRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param TemplateName: 模板名称。非空的字符串。
+        :param TemplateName: 模板名称，非空的字符串。
+长度上限：255字节。
         :type TemplateName: str
         :param CosAppId: Cos AppId。
         :type CosAppId: int
@@ -894,6 +900,7 @@ class CreateLiveSnapshotTemplateRequest(AbstractModel):
         :param CosRegion: Cos地区。
         :type CosRegion: str
         :param Description: 描述信息。
+长度上限：1024字节。
         :type Description: str
         :param SnapshotInterval: 截图间隔，单位s，默认10s。
 范围： 5s ~ 600s。
@@ -1039,6 +1046,10 @@ baseline/main/high。默认baseline
         :type HeightToOrig: int
         :param FpsToOrig: 是否不超过原始帧率，0：否，1：是。默认0。
         :type FpsToOrig: int
+        :param AiTransCode: 是否是急速高清模板，0：否，1：是。默认0。
+        :type AiTransCode: int
+        :param AdaptBitratePercent: 急速高清相比VideoBitrate少多少码率，0.1到0.5
+        :type AdaptBitratePercent: float
         """
         self.TemplateName = None
         self.VideoBitrate = None
@@ -1057,6 +1068,8 @@ baseline/main/high。默认baseline
         self.BitrateToOrig = None
         self.HeightToOrig = None
         self.FpsToOrig = None
+        self.AiTransCode = None
+        self.AdaptBitratePercent = None
 
 
     def _deserialize(self, params):
@@ -1077,6 +1090,8 @@ baseline/main/high。默认baseline
         self.BitrateToOrig = params.get("BitrateToOrig")
         self.HeightToOrig = params.get("HeightToOrig")
         self.FpsToOrig = params.get("FpsToOrig")
+        self.AiTransCode = params.get("AiTransCode")
+        self.AdaptBitratePercent = params.get("AdaptBitratePercent")
 
 
 class CreateLiveTranscodeTemplateResponse(AbstractModel):
@@ -1153,13 +1168,22 @@ class CreatePullStreamConfigRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param FromUrl: 源Url。
+        :param FromUrl: 源Url。目前可支持直播流及点播文件。
         :type FromUrl: str
         :param ToUrl: 目的Url，目前限制该目标地址为腾讯域名。
         :type ToUrl: str
-        :param AreaId: 区域id,1-深圳,2-上海，3-天津,4-香港。
+        :param AreaId: 区域id：
+1-深圳，
+2-上海，
+3-天津，
+4-中国香港。
         :type AreaId: int
-        :param IspId: 运营商id,1-电信,2-移动,3-联通,4-其他,AreaId为4的时候,IspId只能为其他。
+        :param IspId: 运营商id：
+1-电信，
+2-移动，
+3-联通，
+4-其他。
+注：AreaId为4的时候,IspId只能为其他。
         :type IspId: int
         :param StartTime: 开始时间。
 使用UTC格式时间，
@@ -1481,13 +1505,13 @@ class DeleteLiveRecordRuleRequest(AbstractModel):
     def __init__(self):
         """
         :param DomainName: 推流域名。
-域名+AppName+StreamName唯一标识单个转码规则，如需删除需要强匹配，比如AppName为空也需要传空字符串进行强匹配。
+域名+AppName+StreamName唯一标识单个转码规则，如需删除需要强匹配，例如AppName为空也需要传空字符串进行强匹配。
         :type DomainName: str
         :param AppName: 推流路径，与推流和播放地址中的AppName保持一致，默认为 live。
-域名+AppName+StreamName唯一标识单个转码规则，如需删除需要强匹配，比如AppName为空也需要传空字符串进行强匹配。
+域名+AppName+StreamName唯一标识单个转码规则，如需删除需要强匹配，例如AppName为空也需要传空字符串进行强匹配。
         :type AppName: str
         :param StreamName: 流名称。
-域名+AppName+StreamName唯一标识单个转码规则，如需删除需要强匹配，比如AppName为空也需要传空字符串进行强匹配。
+域名+AppName+StreamName唯一标识单个转码规则，如需删除需要强匹配，例如AppName为空也需要传空字符串进行强匹配。
         :type StreamName: str
         """
         self.DomainName = None
@@ -1636,16 +1660,16 @@ class DeleteLiveTranscodeRuleRequest(AbstractModel):
     def __init__(self):
         """
         :param DomainName: 推流域名。
-域名维度转码，域名+AppName+StreamName唯一标识单个转码规则，如需删除需要强匹配，比如AppName为空也需要传空字符串进行强匹配。
+域名维度转码，域名+AppName+StreamName唯一标识单个转码规则，如需删除需要强匹配，例如AppName为空也需要传空字符串进行强匹配。
         :type DomainName: str
         :param AppName: 推流路径，与推流和播放地址中的AppName保持一致，默认为 live。
-域名+AppName+StreamName+TemplateId唯一标识单个转码规则，如需删除需要强匹配，比如AppName为空也需要传空字符串进行强匹配。
+域名+AppName+StreamName+TemplateId唯一标识单个转码规则，如需删除需要强匹配，例如AppName为空也需要传空字符串进行强匹配。
         :type AppName: str
         :param StreamName: 流名称。
-域名+AppName+StreamName+TemplateId唯一标识单个转码规则，如需删除需要强匹配，比如AppName为空也需要传空字符串进行强匹配。
+域名+AppName+StreamName+TemplateId唯一标识单个转码规则，如需删除需要强匹配，例如AppName为空也需要传空字符串进行强匹配。
         :type StreamName: str
         :param TemplateId: 模板ID。
-域名+AppName+StreamName+TemplateId唯一标识单个转码规则，如需删除需要强匹配，比如AppName为空也需要传空字符串进行强匹配。
+域名+AppName+StreamName+TemplateId唯一标识单个转码规则，如需删除需要强匹配，例如AppName为空也需要传空字符串进行强匹配。
         :type TemplateId: int
         """
         self.DomainName = None
@@ -1835,12 +1859,16 @@ class DescribeBillBandwidthAndFluxListRequest(AbstractModel):
         :type EndTime: str
         :param PlayDomains: 直播播放域名，若不填，表示总体数据。
         :type PlayDomains: list of str
-        :param MainlandOrOversea: 国内还是国外，若不填，表示国内+国外。
+        :param MainlandOrOversea: 可选值：
+Mainland：查询国内数据，
+Oversea：则查询国外数据。
+默认：查询国内+国外的数据。
         :type MainlandOrOversea: str
         :param Granularity: 数据粒度，支持如下粒度：
-5：5分钟粒度，默认值（跨度不支持超过1天）；
-60：1小时粒度（跨度不支持超过一个月）；
+5：5分钟粒度，（跨度不支持超过1天），
+60：1小时粒度（跨度不支持超过一个月），
 1440：天粒度（跨度不支持超过一个月）。
+默认值：5。
         :type Granularity: int
         """
         self.StartTime = None
@@ -3073,17 +3101,18 @@ class DescribeLiveStreamPublishedListRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param DomainName: 您的域名。
+        :param DomainName: 您的推流域名。
         :type DomainName: str
         :param EndTime: 结束时间。
 UTC 格式，例如：2016-06-30T19:00:00Z。
 不超过当前时间。
+注意：EndTime和StartTime相差不可超过30天。
         :type EndTime: str
         :param StartTime: 起始时间。 
 UTC 格式，例如：2016-06-29T19:00:00Z。
-和当前时间相隔不超过7天。
+最长支持查询60天内数据。
         :type StartTime: str
-        :param AppName: 推流路径，与推流和播放地址中的AppName保持一致，默认为 live。
+        :param AppName: 推流路径，与推流和播放地址中的AppName保持一致，默认为 live。不支持模糊匹配。
         :type AppName: str
         :param PageNum: 取得第几页。
 默认值：1。
@@ -3093,6 +3122,8 @@ UTC 格式，例如：2016-06-29T19:00:00Z。
 取值范围：1~100 之前的任意整数。
 默认值：10。
         :type PageSize: int
+        :param StreamName: 流名称，支持模糊匹配。
+        :type StreamName: str
         """
         self.DomainName = None
         self.EndTime = None
@@ -3100,6 +3131,7 @@ UTC 格式，例如：2016-06-29T19:00:00Z。
         self.AppName = None
         self.PageNum = None
         self.PageSize = None
+        self.StreamName = None
 
 
     def _deserialize(self, params):
@@ -3109,6 +3141,7 @@ UTC 格式，例如：2016-06-29T19:00:00Z。
         self.AppName = params.get("AppName")
         self.PageNum = params.get("PageNum")
         self.PageSize = params.get("PageSize")
+        self.StreamName = params.get("StreamName")
 
 
 class DescribeLiveStreamPublishedListResponse(AbstractModel):
@@ -4513,6 +4546,8 @@ class DomainInfo(AbstractModel):
         :param IsDelayLive: 0：普通直播，
 1：慢直播。
         :type IsDelayLive: int
+        :param CurrentCName: 当前客户使用的cname信息
+        :type CurrentCName: str
         """
         self.Name = None
         self.Type = None
@@ -4522,6 +4557,7 @@ class DomainInfo(AbstractModel):
         self.TargetDomain = None
         self.PlayType = None
         self.IsDelayLive = None
+        self.CurrentCName = None
 
 
     def _deserialize(self, params):
@@ -4533,6 +4569,7 @@ class DomainInfo(AbstractModel):
         self.TargetDomain = params.get("TargetDomain")
         self.PlayType = params.get("PlayType")
         self.IsDelayLive = params.get("IsDelayLive")
+        self.CurrentCName = params.get("CurrentCName")
 
 
 class DomainInfoList(AbstractModel):
@@ -4644,7 +4681,7 @@ class ForbidLiveDomainRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param DomainName: 停用的直播域名
+        :param DomainName: 待停用的直播域名。
         :type DomainName: str
         """
         self.DomainName = None
@@ -4687,11 +4724,16 @@ class ForbidLiveStreamRequest(AbstractModel):
         :param ResumeTime: 恢复流的时间。UTC 格式，例如：2018-11-29T19:00:00Z。
 注意：默认禁播90天，且最长支持禁播90天。
         :type ResumeTime: str
+        :param Reason: 禁推原因。
+注明：请务必填写禁推原因，防止误操作。
+长度限制：2048字节。
+        :type Reason: str
         """
         self.AppName = None
         self.DomainName = None
         self.StreamName = None
         self.ResumeTime = None
+        self.Reason = None
 
 
     def _deserialize(self, params):
@@ -4699,6 +4741,7 @@ class ForbidLiveStreamRequest(AbstractModel):
         self.DomainName = params.get("DomainName")
         self.StreamName = params.get("StreamName")
         self.ResumeTime = params.get("ResumeTime")
+        self.Reason = params.get("Reason")
 
 
 class ForbidLiveStreamResponse(AbstractModel):
@@ -4791,13 +4834,13 @@ class HlsSpecialParam(AbstractModel):
 
 
 class HttpCodeInfo(AbstractModel):
-    """http返回码和统计数据
+    """HTTP返回码和统计数据
 
     """
 
     def __init__(self):
         """
-        :param HttpCode: http协议返回码。
+        :param HttpCode: HTTP协议返回码。
 例："2xx", "3xx", "4xx", "5xx"。
         :type HttpCode: str
         :param ValueList: 统计信息，对于无数据的时间点，会补0。
@@ -4818,7 +4861,7 @@ class HttpCodeInfo(AbstractModel):
 
 
 class HttpCodeValue(AbstractModel):
-    """http返回码数据信息
+    """HTTP返回码数据信息
 
     """
 
@@ -4876,7 +4919,7 @@ class HttpStatusInfo(AbstractModel):
 
     def __init__(self):
         """
-        :param HttpStatus: 播放http状态码。
+        :param HttpStatus: 播放HTTP状态码。
         :type HttpStatus: str
         :param Num: 个数。
         :type Num: int
@@ -5303,14 +5346,17 @@ class ModifyLiveSnapshotTemplateRequest(AbstractModel):
         :param TemplateId: 模板Id。
         :type TemplateId: int
         :param TemplateName: 模板名称。
+长度上限：255字节。
         :type TemplateName: str
         :param Description: 描述信息。
+长度上限：1024字节。
         :type Description: str
-        :param SnapshotInterval: 截图时间间隔
+        :param SnapshotInterval: 截图间隔，单位s，默认10s。
+范围： 5s ~ 600s。
         :type SnapshotInterval: int
-        :param Width: 截图宽度。
+        :param Width: 截图宽度。默认：0（原始宽）。
         :type Width: int
-        :param Height: 截图高度。
+        :param Height: 截图高度。默认：0（原始高）。
         :type Height: int
         :param PornFlag: 是否开启鉴黄，0：不开启，1：开启。
         :type PornFlag: int
@@ -5407,6 +5453,8 @@ baseline/main/high。
         :type HeightToOrig: int
         :param FpsToOrig: 是否不超过原始帧率。0：否，1：是。默认0。
         :type FpsToOrig: int
+        :param AdaptBitratePercent: 急速高清相比VideoBitrate少多少码率，0.1到0.5
+        :type AdaptBitratePercent: float
         """
         self.TemplateId = None
         self.Vcodec = None
@@ -5425,6 +5473,7 @@ baseline/main/high。
         self.BitrateToOrig = None
         self.HeightToOrig = None
         self.FpsToOrig = None
+        self.AdaptBitratePercent = None
 
 
     def _deserialize(self, params):
@@ -5445,6 +5494,7 @@ baseline/main/high。
         self.BitrateToOrig = params.get("BitrateToOrig")
         self.HeightToOrig = params.get("HeightToOrig")
         self.FpsToOrig = params.get("FpsToOrig")
+        self.AdaptBitratePercent = params.get("AdaptBitratePercent")
 
 
 class ModifyLiveTranscodeTemplateResponse(AbstractModel):
@@ -5477,7 +5527,12 @@ class ModifyPullStreamConfigRequest(AbstractModel):
         :type FromUrl: str
         :param ToUrl: 目的Url。
         :type ToUrl: str
-        :param AreaId: 区域id,1-深圳,2-上海，3-天津,4-香港。如有改动，需同时传入IspId。
+        :param AreaId: 区域id：
+1-深圳，
+2-上海，
+3-天津，
+4-中国香港。
+如有改动，需同时传入IspId。
         :type AreaId: int
         :param IspId: 运营商id,1-电信,2-移动,3-联通,4-其他,AreaId为4的时候,IspId只能为其他。如有改动，需同时传入AreaId。
         :type IspId: int
@@ -5608,7 +5663,7 @@ class PlayCodeTotalInfo(AbstractModel):
 
     def __init__(self):
         """
-        :param Code: http code，可选值包括400,403,404,500,502,503,504
+        :param Code: HTTP code，可选值包括400,403,404,500,502,503,504
         :type Code: str
         :param Num: 总次数
         :type Num: int
@@ -6225,7 +6280,7 @@ class SnapshotTemplateInfo(AbstractModel):
         :type TemplateId: int
         :param TemplateName: 模板名称。
         :type TemplateName: str
-        :param SnapshotInterval: 截图时间间隔。5-300
+        :param SnapshotInterval: 截图时间间隔。5-300秒。
         :type SnapshotInterval: int
         :param Width: 截图宽度。0-3000 0原始宽度并适配原始比例
         :type Width: int
@@ -6532,6 +6587,10 @@ baseline/main/high。
         :type TemplateName: str
         :param Description: 模板描述
         :type Description: str
+        :param AiTransCode: 是否是急速高清模板，0：否，1：是。默认0。
+        :type AiTransCode: int
+        :param AdaptBitratePercent: 急速高清相比VideoBitrate少多少码率，0.1到0.5
+        :type AdaptBitratePercent: float
         """
         self.Vcodec = None
         self.VideoBitrate = None
@@ -6551,6 +6610,8 @@ baseline/main/high。
         self.TemplateId = None
         self.TemplateName = None
         self.Description = None
+        self.AiTransCode = None
+        self.AdaptBitratePercent = None
 
 
     def _deserialize(self, params):
@@ -6572,6 +6633,8 @@ baseline/main/high。
         self.TemplateId = params.get("TemplateId")
         self.TemplateName = params.get("TemplateName")
         self.Description = params.get("Description")
+        self.AiTransCode = params.get("AiTransCode")
+        self.AdaptBitratePercent = params.get("AdaptBitratePercent")
 
 
 class TranscodeDetailInfo(AbstractModel):

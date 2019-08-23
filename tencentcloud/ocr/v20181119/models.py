@@ -79,12 +79,12 @@ class BankCardOCRRequest(AbstractModel):
         """
         :param ImageBase64: 图片的 Base64 值。
 支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。
-支持的图片大小：所下载图片经Base64编码后不超过 3M。图片下载时间不超过 3 秒。
+支持的图片大小：所下载图片经Base64编码后不超过 7M。图片下载时间不超过 3 秒。
 图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
         :type ImageBase64: str
         :param ImageUrl: 图片的 Url 地址。
 支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。
-支持的图片大小：所下载图片经 Base64 编码后不超过 3M。图片下载时间不超过 3 秒。
+支持的图片大小：所下载图片经 Base64 编码后不超过 7M。图片下载时间不超过 3 秒。
 图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。
 非腾讯云存储的 Url 速度和稳定性可能受一定影响。
         :type ImageUrl: str
@@ -136,12 +136,12 @@ class BizLicenseOCRRequest(AbstractModel):
         """
         :param ImageBase64: 图片的 Base64 值。
 支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。
-支持的图片大小：所下载图片经Base64编码后不超过 3M。图片下载时间不超过 3 秒。
+支持的图片大小：所下载图片经Base64编码后不超过 7M。图片下载时间不超过 3 秒。
 图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
         :type ImageBase64: str
         :param ImageUrl: 图片的 Url 地址。
 支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。
-支持的图片大小：所下载图片经 Base64 编码后不超过 3M。图片下载时间不超过 3 秒。
+支持的图片大小：所下载图片经 Base64 编码后不超过 7M。图片下载时间不超过 3 秒。
 图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。
 非腾讯云存储的 Url 速度和稳定性可能受一定影响。
         :type ImageUrl: str
@@ -239,12 +239,12 @@ class BusinessCardOCRRequest(AbstractModel):
         """
         :param ImageBase64: 图片的 Base64 值。
 支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。
-支持的图片大小：所下载图片经Base64编码后不超过 3M。图片下载时间不超过 3 秒。
+支持的图片大小：所下载图片经Base64编码后不超过 7M。图片下载时间不超过 3 秒。
 图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
         :type ImageBase64: str
         :param ImageUrl: 图片的 Url 地址。
 支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。
-支持的图片大小：所下载图片经 Base64 编码后不超过 3M。图片下载时间不超过 3 秒。
+支持的图片大小：所下载图片经 Base64 编码后不超过 7M。图片下载时间不超过 3 秒。
 图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。
 非腾讯云存储的 Url 速度和稳定性可能受一定影响。
         :type ImageUrl: str
@@ -277,7 +277,7 @@ class BusinessCardOCRResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param BusinessCardInfos: 名片识别内容。
+        :param BusinessCardInfos: 名片识别结果，具体内容请点击左侧链接。
         :type BusinessCardInfos: list of BusinessCardInfo
         :param RetImageBase64: 返回图像预处理后的图片，图像预处理未开启时返回内容为空。
         :type RetImageBase64: str
@@ -297,6 +297,81 @@ class BusinessCardOCRResponse(AbstractModel):
                 obj._deserialize(item)
                 self.BusinessCardInfos.append(obj)
         self.RetImageBase64 = params.get("RetImageBase64")
+        self.RequestId = params.get("RequestId")
+
+
+class CarInvoiceInfo(AbstractModel):
+    """购车发票识别结果
+
+    """
+
+    def __init__(self):
+        """
+        :param Name: 识别出的字段名称（关键字）。
+        :type Name: str
+        :param Value: 识别出的字段名称对应的值，也就是字段name对应的字符串结果。
+        :type Value: str
+        """
+        self.Name = None
+        self.Value = None
+
+
+    def _deserialize(self, params):
+        self.Name = params.get("Name")
+        self.Value = params.get("Value")
+
+
+class CarInvoiceOCRRequest(AbstractModel):
+    """CarInvoiceOCR请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ImageBase64: 图片的 Base64 值。
+支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。
+支持的图片大小：所下载图片经Base64编码后不超过 3M。图片下载时间不超过 3 秒。
+图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
+        :type ImageBase64: str
+        :param ImageUrl: 图片的 Url 地址。
+支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。
+支持的图片大小：所下载图片经 Base64 编码后不超过 3M。图片下载时间不超过 3 秒。
+图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。
+非腾讯云存储的 Url 速度和稳定性可能受一定影响。
+        :type ImageUrl: str
+        """
+        self.ImageBase64 = None
+        self.ImageUrl = None
+
+
+    def _deserialize(self, params):
+        self.ImageBase64 = params.get("ImageBase64")
+        self.ImageUrl = params.get("ImageUrl")
+
+
+class CarInvoiceOCRResponse(AbstractModel):
+    """CarInvoiceOCR返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param CarInvoiceInfos: 购车发票识别结果，具体内容请点击左侧链接。
+        :type CarInvoiceInfos: list of CarInvoiceInfo
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.CarInvoiceInfos = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("CarInvoiceInfos") is not None:
+            self.CarInvoiceInfos = []
+            for item in params.get("CarInvoiceInfos"):
+                obj = CarInvoiceInfo()
+                obj._deserialize(item)
+                self.CarInvoiceInfos.append(obj)
         self.RequestId = params.get("RequestId")
 
 
@@ -330,12 +405,12 @@ class DriverLicenseOCRRequest(AbstractModel):
         """
         :param ImageBase64: 图片的 Base64 值。
 支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。
-支持的图片大小：所下载图片经Base64编码后不超过 3M。图片下载时间不超过 3 秒。
+支持的图片大小：所下载图片经Base64编码后不超过 7M。图片下载时间不超过 3 秒。
 图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
         :type ImageBase64: str
         :param ImageUrl: 图片的 Url 地址。
 支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。
-支持的图片大小：所下载图片经 Base64 编码后不超过 3M。图片下载时间不超过 3 秒。
+支持的图片大小：所下载图片经 Base64 编码后不超过 7M。图片下载时间不超过 3 秒。
 图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。
 非腾讯云存储的 Url 速度和稳定性可能受一定影响。
         :type ImageUrl: str
@@ -460,6 +535,81 @@ class EnglishOCRResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class FlightInvoiceInfo(AbstractModel):
+    """机票行程单识别结果
+
+    """
+
+    def __init__(self):
+        """
+        :param Name: 识别出的字段名称（关键字）。
+        :type Name: str
+        :param Value: 识别出的字段名称对应的值，也就是字段 Name 对应的字符串结果。
+        :type Value: str
+        """
+        self.Name = None
+        self.Value = None
+
+
+    def _deserialize(self, params):
+        self.Name = params.get("Name")
+        self.Value = params.get("Value")
+
+
+class FlightInvoiceOCRRequest(AbstractModel):
+    """FlightInvoiceOCR请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ImageBase64: 图片的 Base64 值。
+支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。
+支持的图片大小：所下载图片经Base64编码后不超过 3M。图片下载时间不超过 3 秒。
+图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
+        :type ImageBase64: str
+        :param ImageUrl: 图片的 Url 地址。
+支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。
+支持的图片大小：所下载图片经 Base64 编码后不超过 3M。图片下载时间不超过 3 秒。
+图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。
+非腾讯云存储的 Url 速度和稳定性可能受一定影响。
+        :type ImageUrl: str
+        """
+        self.ImageBase64 = None
+        self.ImageUrl = None
+
+
+    def _deserialize(self, params):
+        self.ImageBase64 = params.get("ImageBase64")
+        self.ImageUrl = params.get("ImageUrl")
+
+
+class FlightInvoiceOCRResponse(AbstractModel):
+    """FlightInvoiceOCR返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param FlightInvoiceInfos: 机票行程单识别结果，具体内容请点击左侧链接。
+        :type FlightInvoiceInfos: list of FlightInvoiceInfo
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.FlightInvoiceInfos = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("FlightInvoiceInfos") is not None:
+            self.FlightInvoiceInfos = []
+            for item in params.get("FlightInvoiceInfos"):
+                obj = FlightInvoiceInfo()
+                obj._deserialize(item)
+                self.FlightInvoiceInfos.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class GeneralAccurateOCRRequest(AbstractModel):
     """GeneralAccurateOCR请求参数结构体
 
@@ -541,13 +691,13 @@ zh\auto\jap\kor\
 spa\fre\ger\por\
 vie\may\rus\ita\
 hol\swe\fin\dan\
-nor\hun\tha
+nor\hun\tha\lat
 可选值分别表示：
 中英文混合、自动识别、日语、韩语、
 西班牙语、法语、德语、葡萄牙语、
 越南语、马来语、俄语、意大利语、
 荷兰语、瑞典语、芬兰语、丹麦语、
-挪威语、匈牙利语、泰语。
+挪威语、匈牙利语、泰语、拉丁语系。
         :type LanguageType: str
         """
         self.ImageBase64 = None
@@ -715,12 +865,12 @@ class IDCardOCRRequest(AbstractModel):
         """
         :param ImageBase64: 图片的 Base64 值。
 支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。
-支持的图片大小：所下载图片经Base64编码后不超过 3M。图片下载时间不超过 3 秒。
+支持的图片大小：所下载图片经Base64编码后不超过 7M。图片下载时间不超过 3 秒。
 图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
         :type ImageBase64: str
         :param ImageUrl: 图片的 Url 地址。
 支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。
-支持的图片大小：所下载图片经 Base64 编码后不超过 3M。图片下载时间不超过 3 秒。
+支持的图片大小：所下载图片经 Base64 编码后不超过 7M。图片下载时间不超过 3 秒。
 图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。
 非腾讯云存储的 Url 速度和稳定性可能受一定影响。
         :type ImageUrl: str
@@ -729,11 +879,14 @@ BACK 为身份证有国徽的一面（国徽面）。
         :type CardSide: str
         :param Config: 可选字段，根据需要选择是否请求对应字段。
 目前包含的字段为：
-CropIdCard，身份证照片裁剪，bool 类型，
-CropPortrait，人像照片裁剪，bool 类型，
-CopyWarn，复印件告警，bool 类型，
-BorderCheckWarn，遮挡告警，bool 类型，
-ReshootWarn，翻拍告警，bool 类型。
+CropIdCard，身份证照片裁剪，bool 类型，默认false，
+CropPortrait，人像照片裁剪，bool 类型，默认false，
+CopyWarn，复印件告警，bool 类型，默认false，
+BorderCheckWarn，边框和框内遮挡告警，bool 类型，默认false，
+ReshootWarn，翻拍告警，bool 类型，默认false，
+DetectPsWarn，PS检测告警，bool类型，默认false，
+TempIdWarn，临时身份证告警，bool类型，默认false，
+InvalidDateWarn，身份证有效日期不合法告警，bool类型，默认false。
 
 SDK 设置方式参考：
 Config = Json.stringify({"CropIdCard":true,"CropPortrait":true})
@@ -777,15 +930,21 @@ class IDCardOCRResponse(AbstractModel):
         :type Authority: str
         :param ValidDate: 证件有效期（国徽面）
         :type ValidDate: str
-        :param AdvancedInfo: 扩展信息，根据请求的可选字段返回对应内容，不请求则不返回，具体输入参考示例3。目前支持的扩展字段为：
+        :param AdvancedInfo: 扩展信息，根据请求的可选字段返回对应内容，不请求则不返回，具体输入参考示例3和示例4。
+
+目前支持的扩展字段为：
 IdCard，身份证照片，请求 CropIdCard 时返回；
 Portrait，人像照片，请求 CropPortrait 时返回；
-WarnInfos，告警信息（Code - 告警码，Msg - 告警信息内容），识别出翻拍件或复印件时返回。
+WarnInfos，告警信息（Code - 告警码），识别出以下告警内容时返回。
 
 Code 告警码列表和释义：
--9103	身份证翻拍告警，
+-9100	身份证有效日期不合法告警，
+-9101	身份证边框不完整告警，
 -9102	身份证复印件告警，
--9105	身份证框内遮挡告警。
+-9103	身份证翻拍告警，
+-9105	身份证框内遮挡告警，
+-9104	临时身份证告警，
+-9106	身份证 PS 告警。
         :type AdvancedInfo: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -868,6 +1027,140 @@ class LicensePlateOCRResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class PermitOCRRequest(AbstractModel):
+    """PermitOCR请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ImageBase64: 图片的 Base64 值。
+支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。
+支持的图片大小：所下载图片经Base64编码后不超过 3M。图片下载时间不超过 3 秒。
+图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
+        :type ImageBase64: str
+        :param ImageUrl: 图片的 Url 地址。
+支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。
+支持的图片大小：所下载图片经 Base64 编码后不超过 3M。图片下载时间不超过 3 秒。
+图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。
+非腾讯云存储的 Url 速度和稳定性可能受一定影响。
+        :type ImageUrl: str
+        """
+        self.ImageBase64 = None
+        self.ImageUrl = None
+
+
+    def _deserialize(self, params):
+        self.ImageBase64 = params.get("ImageBase64")
+        self.ImageUrl = params.get("ImageUrl")
+
+
+class PermitOCRResponse(AbstractModel):
+    """PermitOCR返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Name: 姓名
+        :type Name: str
+        :param EnglishName: 英文姓名
+        :type EnglishName: str
+        :param Number: 证件号
+        :type Number: str
+        :param Sex: 性别
+        :type Sex: str
+        :param ValidDate: 有效期限
+        :type ValidDate: str
+        :param IssueAuthority: 签发机关
+        :type IssueAuthority: str
+        :param IssueAddress: 签发地点
+        :type IssueAddress: str
+        :param Birthday: 出生日期
+        :type Birthday: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Name = None
+        self.EnglishName = None
+        self.Number = None
+        self.Sex = None
+        self.ValidDate = None
+        self.IssueAuthority = None
+        self.IssueAddress = None
+        self.Birthday = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Name = params.get("Name")
+        self.EnglishName = params.get("EnglishName")
+        self.Number = params.get("Number")
+        self.Sex = params.get("Sex")
+        self.ValidDate = params.get("ValidDate")
+        self.IssueAuthority = params.get("IssueAuthority")
+        self.IssueAddress = params.get("IssueAddress")
+        self.Birthday = params.get("Birthday")
+        self.RequestId = params.get("RequestId")
+
+
+class QuotaInvoiceOCRRequest(AbstractModel):
+    """QuotaInvoiceOCR请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ImageBase64: 图片的 Base64 值。
+支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。
+支持的图片大小：所下载图片经Base64编码后不超过 3M。图片下载时间不超过 3 秒。
+图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
+        :type ImageBase64: str
+        :param ImageUrl: 图片的 Url 地址。
+支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。
+支持的图片大小：所下载图片经 Base64 编码后不超过 3M。图片下载时间不超过 3 秒。
+图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。
+非腾讯云存储的 Url 速度和稳定性可能受一定影响。
+        :type ImageUrl: str
+        """
+        self.ImageBase64 = None
+        self.ImageUrl = None
+
+
+    def _deserialize(self, params):
+        self.ImageBase64 = params.get("ImageBase64")
+        self.ImageUrl = params.get("ImageUrl")
+
+
+class QuotaInvoiceOCRResponse(AbstractModel):
+    """QuotaInvoiceOCR返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param InvoiceNum: 发票号码
+        :type InvoiceNum: str
+        :param InvoiceCode: 发票代码
+        :type InvoiceCode: str
+        :param Rate: 大写金额
+        :type Rate: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.InvoiceNum = None
+        self.InvoiceCode = None
+        self.Rate = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.InvoiceNum = params.get("InvoiceNum")
+        self.InvoiceCode = params.get("InvoiceCode")
+        self.Rate = params.get("Rate")
+        self.RequestId = params.get("RequestId")
+
+
 class TableOCRRequest(AbstractModel):
     """TableOCR请求参数结构体
 
@@ -926,6 +1219,79 @@ class TableOCRResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class TaxiInvoiceOCRRequest(AbstractModel):
+    """TaxiInvoiceOCR请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ImageBase64: 图片的 Base64 值。
+支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。
+支持的图片大小：所下载图片经Base64编码后不超过 3M。图片下载时间不超过 3 秒。
+图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
+        :type ImageBase64: str
+        :param ImageUrl: 图片的 Url 地址。
+支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。
+支持的图片大小：所下载图片经 Base64 编码后不超过 3M。图片下载时间不超过 3 秒。
+图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。
+非腾讯云存储的 Url 速度和稳定性可能受一定影响。
+        :type ImageUrl: str
+        """
+        self.ImageBase64 = None
+        self.ImageUrl = None
+
+
+    def _deserialize(self, params):
+        self.ImageBase64 = params.get("ImageBase64")
+        self.ImageUrl = params.get("ImageUrl")
+
+
+class TaxiInvoiceOCRResponse(AbstractModel):
+    """TaxiInvoiceOCR返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param InvoiceNum: 发票代码
+        :type InvoiceNum: str
+        :param InvoiceCode: 发票号码
+        :type InvoiceCode: str
+        :param Date: 日期
+        :type Date: str
+        :param Fare: 金额
+        :type Fare: str
+        :param GetOnTime: 上车时间
+        :type GetOnTime: str
+        :param GetOffTime: 下车时间
+        :type GetOffTime: str
+        :param Distance: 里程
+        :type Distance: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.InvoiceNum = None
+        self.InvoiceCode = None
+        self.Date = None
+        self.Fare = None
+        self.GetOnTime = None
+        self.GetOffTime = None
+        self.Distance = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.InvoiceNum = params.get("InvoiceNum")
+        self.InvoiceCode = params.get("InvoiceCode")
+        self.Date = params.get("Date")
+        self.Fare = params.get("Fare")
+        self.GetOnTime = params.get("GetOnTime")
+        self.GetOffTime = params.get("GetOffTime")
+        self.Distance = params.get("Distance")
+        self.RequestId = params.get("RequestId")
+
+
 class TextArithmetic(AbstractModel):
     """算式识别结果
 
@@ -937,12 +1303,12 @@ class TextArithmetic(AbstractModel):
         :type DetectedText: str
         :param Result: 结果
         :type Result: bool
-        :param Confidence: 置信度 0 ~100
+        :param Confidence: 保留字段，暂无意义
         :type Confidence: int
-        :param Polygon: 文本行坐标，以四个顶点坐标表示
+        :param Polygon: 文本行坐标，以四个顶点坐标表示（预留字段，目前不支持）
 注意：此字段可能返回 null，表示取不到有效值。
         :type Polygon: list of Coord
-        :param AdvancedInfo: 此字段为扩展字段。
+        :param AdvancedInfo: 此字段为扩展字段
         :type AdvancedInfo: str
         """
         self.DetectedText = None
@@ -1146,7 +1512,7 @@ class TextVatInvoice(AbstractModel):
 
 
 class TextVehicleBack(AbstractModel):
-    """TextVehicleBack
+    """行驶证副页正面的识别结果
 
     """
 
@@ -1209,7 +1575,7 @@ class TextVehicleBack(AbstractModel):
 
 
 class TextVehicleFront(AbstractModel):
-    """TextVehicleFront
+    """行驶证主页正面的识别结果
 
     """
 
@@ -1331,6 +1697,87 @@ class TextWaybill(AbstractModel):
             self.WaybillNum._deserialize(params.get("WaybillNum"))
 
 
+class TrainTicketOCRRequest(AbstractModel):
+    """TrainTicketOCR请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ImageBase64: 图片的 Base64 值。
+支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。
+支持的图片大小：所下载图片经Base64编码后不超过 3M。图片下载时间不超过 3 秒。
+图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
+        :type ImageBase64: str
+        :param ImageUrl: 图片的 Url 地址。
+支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。
+支持的图片大小：所下载图片经 Base64 编码后不超过 3M。图片下载时间不超过 3 秒。
+图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。
+非腾讯云存储的 Url 速度和稳定性可能受一定影响。
+        :type ImageUrl: str
+        """
+        self.ImageBase64 = None
+        self.ImageUrl = None
+
+
+    def _deserialize(self, params):
+        self.ImageBase64 = params.get("ImageBase64")
+        self.ImageUrl = params.get("ImageUrl")
+
+
+class TrainTicketOCRResponse(AbstractModel):
+    """TrainTicketOCR返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param TicketNum: 编号
+        :type TicketNum: str
+        :param StartStation: 出发站
+        :type StartStation: str
+        :param DestinationStation: 到达站
+        :type DestinationStation: str
+        :param Date: 出发时间
+        :type Date: str
+        :param TrainNum: 车次
+        :type TrainNum: str
+        :param Seat: 座位号
+        :type Seat: str
+        :param Name: 姓名
+        :type Name: str
+        :param Price: 票价
+        :type Price: str
+        :param SeatCategory: 席别
+        :type SeatCategory: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TicketNum = None
+        self.StartStation = None
+        self.DestinationStation = None
+        self.Date = None
+        self.TrainNum = None
+        self.Seat = None
+        self.Name = None
+        self.Price = None
+        self.SeatCategory = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TicketNum = params.get("TicketNum")
+        self.StartStation = params.get("StartStation")
+        self.DestinationStation = params.get("DestinationStation")
+        self.Date = params.get("Date")
+        self.TrainNum = params.get("TrainNum")
+        self.Seat = params.get("Seat")
+        self.Name = params.get("Name")
+        self.Price = params.get("Price")
+        self.SeatCategory = params.get("SeatCategory")
+        self.RequestId = params.get("RequestId")
+
+
 class VatInvoiceOCRRequest(AbstractModel):
     """VatInvoiceOCR请求参数结构体
 
@@ -1394,12 +1841,12 @@ class VehicleLicenseOCRRequest(AbstractModel):
         """
         :param ImageBase64: 图片的 Base64 值。
 支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。
-支持的图片大小：所下载图片经Base64编码后不超过 3M。图片下载时间不超过 3 秒。
+支持的图片大小：所下载图片经Base64编码后不超过 7M。图片下载时间不超过 3 秒。
 图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
         :type ImageBase64: str
         :param ImageUrl: 图片的 Url 地址。
 支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。
-支持的图片大小：所下载图片经 Base64 编码后不超过 3M。图片下载时间不超过 3 秒。
+支持的图片大小：所下载图片经 Base64 编码后不超过 7M。图片下载时间不超过 3 秒。
 图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。
 非腾讯云存储的 Url 速度和稳定性可能受一定影响。
         :type ImageUrl: str
@@ -1534,7 +1981,6 @@ class WaybillOCRResponse(AbstractModel):
     def __init__(self):
         """
         :param TextDetections: 检测到的文本信息，具体内容请点击左侧链接。
-注意：此字段可能返回 null，表示取不到有效值。
         :type TextDetections: :class:`tencentcloud.ocr.v20181119.models.TextWaybill`
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str

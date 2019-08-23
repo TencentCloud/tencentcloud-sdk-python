@@ -110,6 +110,34 @@ class MongodbClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeClientConnections(self, request):
+        """本接口(DescribeClientConnections)用于查询实例客户端连接信息，包括连接IP和连接数量。目前只支持3.2版本的MongoDB实例。
+
+        :param request: 调用DescribeClientConnections所需参数的结构体。
+        :type request: :class:`tencentcloud.mongodb.v20180408.models.DescribeClientConnectionsRequest`
+        :rtype: :class:`tencentcloud.mongodb.v20180408.models.DescribeClientConnectionsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeClientConnections", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeClientConnectionsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeDBInstances(self, request):
         """本接口(DescribeDBInstances)用于查询云数据库实例列表，支持通过项目ID、实例ID、实例状态等过滤条件来筛选实例。支持查询主实例、灾备实例和只读实例信息列表。
 

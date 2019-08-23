@@ -28,6 +28,28 @@ class CmsClient(AbstractClient):
     def AudioModeration(self, request):
         """音频内容检测（Audio Moderation, AM）服务使用了波形分析、声纹分析等技术，能识别涉黄、涉政、涉恐等违规音频，同时支持用户配置音频黑库，打击自定义的违规内容。
 
+        <br>
+        接口返回值说明：调用本接口有两个返回值，一个是同步返回值，一个是识别完成后的异步回调返回值。
+
+        音频识别结果存在于异步回调返回值中，异步回调返回值明细：
+
+        参数名 | 类型 | 描述
+        -|-|-
+        SeqID | String | 请求seqId唯一标识
+        EvilFlag | Integer | 是否恶意：0正常，1可疑（Homology模块下：0未匹配到，1恶意，2白样本）
+        EvilType | Integer | 恶意类型：100正常，20001政治，20002色情，20007谩骂
+        Duration | Integer | 音频时长（单位：毫秒）
+        PornDetect | | 音频智能鉴黄
+        PolityDetect | | 音频涉政识别
+        CurseDetect | | 音频谩骂识别
+        Homology | | 相似度识别
+        HitFlag | Integer | 0正常，1可疑
+        Score | Integer | 判断分值
+        Keywords | Array of String | 关键词明细
+        StartTime | Array of String | 恶意开始时间
+        EndTime | Array of String | 恶意结束时间
+        SeedUrl | String | 命中的种子URL
+
         :param request: 调用AudioModeration所需参数的结构体。
         :type request: :class:`tencentcloud.cms.v20190321.models.AudioModerationRequest`
         :rtype: :class:`tencentcloud.cms.v20190321.models.AudioModerationResponse`
@@ -39,6 +61,34 @@ class CmsClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.AudioModerationResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def CreateFileSample(self, request):
+        """通过该接口可以将文件新增到样本库
+
+        :param request: 调用CreateFileSample所需参数的结构体。
+        :type request: :class:`tencentcloud.cms.v20190321.models.CreateFileSampleRequest`
+        :rtype: :class:`tencentcloud.cms.v20190321.models.CreateFileSampleResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("CreateFileSample", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateFileSampleResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -81,6 +131,34 @@ class CmsClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DeleteFileSample(self, request):
+        """删除文件样本库，支持批量删除，一次提交不超过20个
+
+        :param request: 调用DeleteFileSample所需参数的结构体。
+        :type request: :class:`tencentcloud.cms.v20190321.models.DeleteFileSampleRequest`
+        :rtype: :class:`tencentcloud.cms.v20190321.models.DeleteFileSampleResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DeleteFileSample", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DeleteFileSampleResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DeleteTextSample(self, request):
         """删除文字样本库，暂时只支持单个删除
 
@@ -95,6 +173,34 @@ class CmsClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteTextSampleResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeFileSample(self, request):
+        """查询文件样本库，支持批量查询
+
+        :param request: 调用DescribeFileSample所需参数的结构体。
+        :type request: :class:`tencentcloud.cms.v20190321.models.DescribeFileSampleRequest`
+        :rtype: :class:`tencentcloud.cms.v20190321.models.DescribeFileSampleResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeFileSample", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeFileSampleResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -223,6 +329,24 @@ class CmsClient(AbstractClient):
 
     def VideoModeration(self, request):
         """视频内容检测（Video Moderation, VM）服务能识别涉黄、涉政、涉恐等违规视频，同时支持用户配置视频黑库，打击自定义的违规内容。
+
+        <br>
+        接口返回值说明：调用本接口有两个返回值，一个是同步返回值，一个是识别完成后的异步回调返回值。
+
+        视频识别结果存在于异步回调返回值中，异步回调返回值明细：
+
+        参数名 | 类型 | 描述
+        -|-|-
+        SeqID | String | 请求seqId唯一标识
+        EvilFlag | Integer | 是否恶意：0正常，1可疑（Homology模块下：0未匹配到，1恶意，2白样本）
+        EvilType | Integer | 恶意类型：100正常，20001政治，20002色情
+        Duration | Integer | 视频时长（单位：秒）
+        PornDetect |  | 视频智能鉴黄
+        PolityDetect | | 视频涉政识别
+        Homology | | 相似度识别
+        HitFlag | Integer  | 0正常，1可疑
+        Score | Integer | 判断分值
+        SeedUrl | String | 命中的种子URL
 
         :param request: 调用VideoModeration所需参数的结构体。
         :type request: :class:`tencentcloud.cms.v20190321.models.VideoModerationRequest`

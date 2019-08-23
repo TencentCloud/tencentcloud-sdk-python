@@ -25,6 +25,64 @@ class TiiaClient(AbstractClient):
     _endpoint = 'tiia.tencentcloudapi.com'
 
 
+    def AssessQuality(self, request):
+        """评估输入图片在视觉上的质量，从多个方面评估，并同时给出综合的、客观的清晰度评分，和主观的美观度评分。
+
+        :param request: 调用AssessQuality所需参数的结构体。
+        :type request: :class:`tencentcloud.tiia.v20190529.models.AssessQualityRequest`
+        :rtype: :class:`tencentcloud.tiia.v20190529.models.AssessQualityResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("AssessQuality", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.AssessQualityResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DetectCelebrity(self, request):
+        """传入一张图片，可以识别图片中包含的人物是否为公众人物，如果是，输出人物的姓名、基本信息、脸部坐标。
+
+        支持识别一张图片中存在的多个人脸，针对每个人脸，会给出与之最相似的公众人物。
+
+        :param request: 调用DetectCelebrity所需参数的结构体。
+        :type request: :class:`tencentcloud.tiia.v20190529.models.DetectCelebrityRequest`
+        :rtype: :class:`tencentcloud.tiia.v20190529.models.DetectCelebrityResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DetectCelebrity", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DetectCelebrityResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DetectLabel(self, request):
         """传入一张图片，识别出图片中存在的物体，并返回物体的名称（分类）、置信度，一张图片会给出多个可能的标签。
 
@@ -53,6 +111,65 @@ class TiiaClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DetectProduct(self, request):
+        """本接口支持识别图片中包含的商品，能够输出商品的品类名称、类别，还可以输出商品在图片中的位置。支持一张图片多个商品的识别。
+
+        :param request: 调用DetectProduct所需参数的结构体。
+        :type request: :class:`tencentcloud.tiia.v20190529.models.DetectProductRequest`
+        :rtype: :class:`tencentcloud.tiia.v20190529.models.DetectProductResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DetectProduct", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DetectProductResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def EnhanceImage(self, request):
+        """传入一张图片，输出清晰度提升后的图片。
+
+        可以消除图片有损压缩导致的噪声，和使用滤镜、拍摄失焦导致的模糊。让图片的边缘和细节更加清晰自然。
+
+
+        :param request: 调用EnhanceImage所需参数的结构体。
+        :type request: :class:`tencentcloud.tiia.v20190529.models.EnhanceImageRequest`
+        :rtype: :class:`tencentcloud.tiia.v20190529.models.EnhanceImageResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("EnhanceImage", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.EnhanceImageResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def ImageModeration(self, request):
         """本接口提供多种维度的图像审核能力，支持色情和性感内容识别，政治人物和涉政敏感场景识别，以及暴恐人物、场景、旗帜标识等违禁内容的识别。
 
@@ -67,6 +184,34 @@ class TiiaClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ImageModerationResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def RecognizeCar(self, request):
+        """腾讯云车辆属性识别可对汽车车身及车辆属性进行检测与识别，目前支持11种车身颜色、20多种车型、300多种品牌、4000多种车系+年款的识别，同时支持对车标的位置进行检测。
+
+        :param request: 调用RecognizeCar所需参数的结构体。
+        :type request: :class:`tencentcloud.tiia.v20190529.models.RecognizeCarRequest`
+        :rtype: :class:`tencentcloud.tiia.v20190529.models.RecognizeCarResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("RecognizeCar", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.RecognizeCarResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

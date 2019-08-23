@@ -207,7 +207,7 @@ class CertificateOutput(AbstractModel):
 
     def __init__(self):
         """
-        :param SSLMode: 认证类型，unidirectional：单向认证，mutual：双向认证
+        :param SSLMode: 认证类型，UNIDIRECTIONAL：单向认证，MUTUAL：双向认证
         :type SSLMode: str
         :param CertId: 服务端证书的 ID。
         :type CertId: str
@@ -529,21 +529,21 @@ OPEN：公网属性， INTERNAL：内网属性。
         :type SubnetId: str
         :param ProjectId: 负载均衡实例所属的项目 ID，可以通过 DescribeProject 接口获取。不传此参数则视为默认项目。
         :type ProjectId: int
-        :param AddressIPVersion: IP版本，IPV4 | IPV6，默认值 IPV4。
+        :param AddressIPVersion: 仅适用于公网负载均衡。IP版本，IPV4 | IPV6，默认值 IPV4。
         :type AddressIPVersion: str
-        :param Number: 创建负载均衡的个数
+        :param Number: 创建负载均衡的个数，默认值 1。
         :type Number: int
-        :param MasterZoneId: 设置跨可用区容灾时的主可用区ID，例如 100001 或 ap-guangzhou-1
-注：主可用区是需要承载流量的可用区，备可用区默认不承载流量，主可用区不可用时才使用备可用区，平台将为您自动选择最佳备可用区
+        :param MasterZoneId: 仅适用于公网负载均衡。设置跨可用区容灾时的主可用区ID，例如 100001 或 ap-guangzhou-1
+注：主可用区是需要承载流量的可用区，备可用区默认不承载流量，主可用区不可用时才使用备可用区，平台将为您自动选择最佳备可用区。可通过 DescribeMasterZones 接口查询一个地域的主可用区的列表。
         :type MasterZoneId: str
-        :param ZoneId: 可用区ID，指定可用区以创建负载均衡实例。如：ap-guangzhou-1
+        :param ZoneId: 仅适用于公网负载均衡。可用区ID，指定可用区以创建负载均衡实例。如：ap-guangzhou-1
         :type ZoneId: str
-        :param AnycastZone: Anycast的发布域，可取 ZONE_A 或 ZONE_B
+        :param AnycastZone: 仅适用于公网负载均衡。Anycast的发布域，可取 ZONE_A 或 ZONE_B。仅带宽非上移用户支持此参数。
         :type AnycastZone: str
-        :param InternetAccessible: 负载均衡的网络计费方式，此参数仅对带宽上移用户生效
+        :param InternetAccessible: 仅适用于公网负载均衡。负载均衡的网络计费方式，此参数仅对带宽上移用户生效。
         :type InternetAccessible: :class:`tencentcloud.clb.v20180317.models.InternetAccessible`
-        :param VipIsp: CMCC | CTCC | CUCC，分别对应 移动 | 电信 | 联通，如果不指定本参数，则默认使用BGP。可通过 DescribeSingleIsp 接口查询一个地域所支持的Isp。
-        :type VipIsp: str
+        :param Tags: 购买负载均衡同时，给负载均衡打上标签
+        :type Tags: list of TagInfo
         """
         self.LoadBalancerType = None
         self.Forward = None
@@ -557,7 +557,7 @@ OPEN：公网属性， INTERNAL：内网属性。
         self.ZoneId = None
         self.AnycastZone = None
         self.InternetAccessible = None
-        self.VipIsp = None
+        self.Tags = None
 
 
     def _deserialize(self, params):
@@ -575,7 +575,12 @@ OPEN：公网属性， INTERNAL：内网属性。
         if params.get("InternetAccessible") is not None:
             self.InternetAccessible = InternetAccessible()
             self.InternetAccessible._deserialize(params.get("InternetAccessible"))
-        self.VipIsp = params.get("VipIsp")
+        if params.get("Tags") is not None:
+            self.Tags = []
+            for item in params.get("Tags"):
+                obj = TagInfo()
+                obj._deserialize(item)
+                self.Tags.append(obj)
 
 
 class CreateLoadBalancerResponse(AbstractModel):
@@ -868,7 +873,7 @@ class DeregisterTargetsRequest(AbstractModel):
         :type LoadBalancerId: str
         :param ListenerId: 监听器 ID，格式如 lbl-12345678
         :type ListenerId: str
-        :param Targets: 要解绑的后端机器列表，数组长度最大支持20
+        :param Targets: 要解绑的后端服务列表，数组长度最大支持20
         :type Targets: list of Target
         :param LocationId: 转发规则的ID，格式如 loc-12345678，当从七层转发规则解绑机器时，必须提供此参数或Domain+Url两者之一
         :type LocationId: str
@@ -1391,7 +1396,7 @@ class DescribeTargetsRequest(AbstractModel):
         :type ListenerIds: list of str
         :param Protocol: 监听器协议类型
         :type Protocol: str
-        :param Port: 负载均衡监听器端口
+        :param Port: 监听器端口
         :type Port: int
         """
         self.LoadBalancerId = None
@@ -1415,6 +1420,7 @@ class DescribeTargetsResponse(AbstractModel):
     def __init__(self):
         """
         :param Listeners: 监听器后端绑定的机器信息
+注意：此字段可能返回 null，表示取不到有效值。
         :type Listeners: list of ListenerBackend
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -1481,7 +1487,7 @@ class HealthCheck(AbstractModel):
         """
         :param HealthSwitch: 是否开启健康检查：1（开启）、0（关闭）。
         :type HealthSwitch: int
-        :param TimeOut: 健康检查的响应超时时间，可选值：2~60，默认值：2，单位：秒。响应超时时间要小于检查间隔时间。
+        :param TimeOut: 健康检查的响应超时时间（仅适用于四层监听器），可选值：2~60，默认值：2，单位：秒。响应超时时间要小于检查间隔时间。
 注意：此字段可能返回 null，表示取不到有效值。
         :type TimeOut: int
         :param IntervalTime: 健康检查探测间隔时间，默认值：5，可选值：5~300，单位：秒。
@@ -1561,7 +1567,7 @@ class HealthCheck(AbstractModel):
 
 
 class InternetAccessible(AbstractModel):
-    """网络计费方式
+    """网络计费方式，最大出带宽
 
     """
 
@@ -1853,6 +1859,15 @@ OPEN：公网属性， INTERNAL：内网属性。
         :param PrepaidAttributes: 负载均衡实例的预付费相关属性
 注意：此字段可能返回 null，表示取不到有效值。
         :type PrepaidAttributes: :class:`tencentcloud.clb.v20180317.models.LBChargePrepaid`
+        :param LogSetId: 负载均衡日志服务(CLS)的日志集ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LogSetId: str
+        :param LogTopicId: 负载均衡日志服务(CLS)的日志主题ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LogTopicId: str
+        :param AddressIPv6: 负载均衡实例的IPv6地址
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AddressIPv6: str
         """
         self.LoadBalancerId = None
         self.LoadBalancerName = None
@@ -1884,6 +1899,9 @@ OPEN：公网属性， INTERNAL：内网属性。
         self.ChargeType = None
         self.NetworkAttributes = None
         self.PrepaidAttributes = None
+        self.LogSetId = None
+        self.LogTopicId = None
+        self.AddressIPv6 = None
 
 
     def _deserialize(self, params):
@@ -1935,6 +1953,9 @@ OPEN：公网属性， INTERNAL：内网属性。
         if params.get("PrepaidAttributes") is not None:
             self.PrepaidAttributes = LBChargePrepaid()
             self.PrepaidAttributes._deserialize(params.get("PrepaidAttributes"))
+        self.LogSetId = params.get("LogSetId")
+        self.LogTopicId = params.get("LogTopicId")
+        self.AddressIPv6 = params.get("AddressIPv6")
 
 
 class LoadBalancerHealth(AbstractModel):
@@ -2033,7 +2054,7 @@ class ModifyDomainRequest(AbstractModel):
         :type ListenerId: str
         :param Domain: 监听器下的某个旧域名。
         :type Domain: str
-        :param NewDomain: 新域名，	长度限制为：1-80。有三种使用格式：非正则表达式格式，通配符格式，正则表达式格式。非正则表达式格式只能使用字母、数字、‘-’、‘.’。通配符格式的使用 ‘*’ 只能在开头或者结尾。正则表达式以'~'开头。
+        :param NewDomain: 新域名，	长度限制为：1-120。有三种使用格式：非正则表达式格式，通配符格式，正则表达式格式。非正则表达式格式只能使用字母、数字、‘-’、‘.’。通配符格式的使用 ‘*’ 只能在开头或者结尾。正则表达式以'~'开头。
         :type NewDomain: str
         """
         self.LoadBalancerId = None
@@ -2249,11 +2270,11 @@ class ModifyTargetPortRequest(AbstractModel):
         :type LoadBalancerId: str
         :param ListenerId: 负载均衡监听器 ID
         :type ListenerId: str
-        :param Targets: 要修改端口的后端机器列表
+        :param Targets: 要修改端口的后端服务列表
         :type Targets: list of Target
-        :param NewPort: 后端机器绑定到监听器的新端口
+        :param NewPort: 后端服务绑定到监听器或转发规则的新端口
         :type NewPort: int
-        :param LocationId: 转发规则的ID
+        :param LocationId: 转发规则的ID，当后端服务绑定到七层转发规则时，必须提供此参数或Domain+Url两者之一
         :type LocationId: str
         :param Domain: 目标规则的域名，提供LocationId参数时本参数不生效
         :type Domain: str
@@ -2312,30 +2333,29 @@ class ModifyTargetWeightRequest(AbstractModel):
         :type LoadBalancerId: str
         :param ListenerId: 负载均衡监听器 ID
         :type ListenerId: str
-        :param Weight: 后端云服务器新的转发权重，取值范围：0~100。
-        :type Weight: int
         :param LocationId: 转发规则的ID，当绑定机器到七层转发规则时，必须提供此参数或Domain+Url两者之一
         :type LocationId: str
         :param Domain: 目标规则的域名，提供LocationId参数时本参数不生效
         :type Domain: str
         :param Url: 目标规则的URL，提供LocationId参数时本参数不生效
         :type Url: str
-        :param Targets: 要修改权重的后端机器列表
+        :param Targets: 要修改权重的后端服务列表
         :type Targets: list of Target
+        :param Weight: 后端服务服务新的转发权重，取值范围：0~100，默认值10。如果设置了 Targets.Weight 参数，则此参数不生效。
+        :type Weight: int
         """
         self.LoadBalancerId = None
         self.ListenerId = None
-        self.Weight = None
         self.LocationId = None
         self.Domain = None
         self.Url = None
         self.Targets = None
+        self.Weight = None
 
 
     def _deserialize(self, params):
         self.LoadBalancerId = params.get("LoadBalancerId")
         self.ListenerId = params.get("ListenerId")
-        self.Weight = params.get("Weight")
         self.LocationId = params.get("LocationId")
         self.Domain = params.get("Domain")
         self.Url = params.get("Url")
@@ -2345,6 +2365,7 @@ class ModifyTargetWeightRequest(AbstractModel):
                 obj = Target()
                 obj._deserialize(item)
                 self.Targets.append(obj)
+        self.Weight = params.get("Weight")
 
 
 class ModifyTargetWeightResponse(AbstractModel):
@@ -2451,6 +2472,46 @@ class RegisterTargetsWithClassicalLBRequest(AbstractModel):
 
 class RegisterTargetsWithClassicalLBResponse(AbstractModel):
     """RegisterTargetsWithClassicalLB返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class ReplaceCertForLoadBalancersRequest(AbstractModel):
+    """ReplaceCertForLoadBalancers请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param OldCertificateId: 需要被替换的证书的ID，可以是服务端证书或客户端证书
+        :type OldCertificateId: str
+        :param Certificate: 新证书的内容等相关信息
+        :type Certificate: :class:`tencentcloud.clb.v20180317.models.CertificateInput`
+        """
+        self.OldCertificateId = None
+        self.Certificate = None
+
+
+    def _deserialize(self, params):
+        self.OldCertificateId = params.get("OldCertificateId")
+        if params.get("Certificate") is not None:
+            self.Certificate = CertificateInput()
+            self.Certificate._deserialize(params.get("Certificate"))
+
+
+class ReplaceCertForLoadBalancersResponse(AbstractModel):
+    """ReplaceCertForLoadBalancers返回参数结构体
 
     """
 
@@ -2598,11 +2659,11 @@ class RuleInput(AbstractModel):
 
     def __init__(self):
         """
-        :param Domain: 转发规则的域名。
+        :param Domain: 转发规则的域名。长度限制为：1~80。
         :type Domain: str
-        :param Url: 转发规则的路径。
+        :param Url: 转发规则的路径。长度限制为：1~200。
         :type Url: str
-        :param SessionExpireTime: 会话保持时间
+        :param SessionExpireTime: 会话保持时间。设置为0表示关闭会话保持，开启会话保持可取值30~3600，单位：秒。
         :type SessionExpireTime: int
         :param HealthCheck: 健康检查信息
         :type HealthCheck: :class:`tencentcloud.clb.v20180317.models.HealthCheck`
@@ -2613,6 +2674,10 @@ class RuleInput(AbstractModel):
         :type Scheduler: str
         :param ForwardType: 负载均衡与后端服务之间的转发协议，目前支持 HTTP
         :type ForwardType: str
+        :param DefaultServer: 是否将该域名设为默认域名，注意，一个监听器下只能设置一个默认域名。
+        :type DefaultServer: bool
+        :param Http2: 是否开启Http2，注意，只用HTTPS域名才能开启Http2。
+        :type Http2: bool
         """
         self.Domain = None
         self.Url = None
@@ -2621,6 +2686,8 @@ class RuleInput(AbstractModel):
         self.Certificate = None
         self.Scheduler = None
         self.ForwardType = None
+        self.DefaultServer = None
+        self.Http2 = None
 
 
     def _deserialize(self, params):
@@ -2635,6 +2702,8 @@ class RuleInput(AbstractModel):
             self.Certificate._deserialize(params.get("Certificate"))
         self.Scheduler = params.get("Scheduler")
         self.ForwardType = params.get("ForwardType")
+        self.DefaultServer = params.get("DefaultServer")
+        self.Http2 = params.get("Http2")
 
 
 class RuleOutput(AbstractModel):
@@ -2864,7 +2933,7 @@ class Target(AbstractModel):
         :param Port: 后端服务的监听端口
 注意：此字段可能返回 null，表示取不到有效值。
         :type Port: int
-        :param Type: 后端服务的类型，可取：CVM（云服务器）、ENI（弹性网卡）
+        :param Type: 后端服务的类型，可取：CVM（云服务器）、ENI（弹性网卡）；作为入参时，目前本参数暂不生效。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Type: str
         :param InstanceId: 绑定CVM时需要传入此参数，代表CVM的唯一 ID，可通过 DescribeInstances 接口返回字段中的 InstanceId 字段获取。
@@ -2873,7 +2942,7 @@ class Target(AbstractModel):
         :type InstanceId: str
         :param Weight: 后端服务的转发权重，取值范围：[0, 100]，默认为 10。
         :type Weight: int
-        :param EniIp: 绑定弹性网卡时需要传入此参数，代表弹性网卡的IP，弹性网卡必须先绑定至CVM，然后才能绑定到负载均衡实例。注意：参数 InstanceId 和 EniIp 只能传入一个且必须传入一个。
+        :param EniIp: 绑定弹性网卡时需要传入此参数，代表弹性网卡的IP，弹性网卡必须先绑定至CVM，然后才能绑定到负载均衡实例。注意：参数 InstanceId 和 EniIp 只能传入一个且必须传入一个。注意：绑定弹性网卡需要先提交工单开白名单使用。
 注意：此字段可能返回 null，表示取不到有效值。
         :type EniIp: str
         """

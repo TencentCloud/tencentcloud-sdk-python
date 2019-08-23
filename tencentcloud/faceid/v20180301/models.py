@@ -92,7 +92,7 @@ class BankCard4EVerificationRequest(AbstractModel):
         :type BankCard: str
         :param Phone: 手机号码
         :type Phone: str
-        :param IdCard: 身份证号码
+        :param IdCard: 开户证件号，与CertType参数的证件类型一致，如：身份证，则传入身份证号。
         :type IdCard: str
         :param CertType: 证件类型，请确认该证件为开户时使用的证件类型，未用于开户的证件信息不支持验证。（不填默认0）
 0 身份证
@@ -171,7 +171,7 @@ class BankCardVerificationRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param IdCard: 身份证号
+        :param IdCard: 开户证件号，与CertType参数的证件类型一致，如：身份证，则传入身份证号。
         :type IdCard: str
         :param Name: 姓名
         :type Name: str
@@ -481,12 +481,15 @@ class IdCardVerificationResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param Result: 认证结果码。
+        :param Result: 认证结果码，收费情况如下。
+收费结果码：
 0: 姓名和身份证号一致
 -1: 姓名和身份证号不一致
--2: 身份证号错误
--3: 姓名错误
--4: 认证出错
+不收费结果码：
+-2: 非法身份证号（长度、校验位等不正确）
+-3: 非法姓名（长度、格式等不正确）
+-4: 证件库服务异常
+-5: 证件库中无此身份证记录
         :type Result: str
         :param Description: 认证结果信息。
         :type Description: str

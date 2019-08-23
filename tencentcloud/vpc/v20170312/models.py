@@ -330,12 +330,24 @@ class AllocateAddressesRequest(AbstractModel):
         """
         :param AddressCount: 申请 EIP 数量，默认值为1。
         :type AddressCount: int
+        :param InternetServiceProvider: 运营商名称，可选值[BGP|CTCC|CMCC|CUCC]，默认BGP。
+        :type InternetServiceProvider: str
+        :param AddressType: EIP类型，EIP|AnycastEIP，默认EIP。
+        :type AddressType: str
+        :param AnycastZone: Anycast发布域，ANYCAST_ZONE_A|ANYCAST_ZONE_B，默认为当前地域可选的任一发布域。
+        :type AnycastZone: str
         """
         self.AddressCount = None
+        self.InternetServiceProvider = None
+        self.AddressType = None
+        self.AnycastZone = None
 
 
     def _deserialize(self, params):
         self.AddressCount = params.get("AddressCount")
+        self.InternetServiceProvider = params.get("InternetServiceProvider")
+        self.AddressType = params.get("AddressType")
+        self.AnycastZone = params.get("AnycastZone")
 
 
 class AllocateAddressesResponse(AbstractModel):
@@ -592,6 +604,52 @@ class AssociateAddressRequest(AbstractModel):
 
 class AssociateAddressResponse(AbstractModel):
     """AssociateAddress返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class AssociateNatGatewayAddressRequest(AbstractModel):
+    """AssociateNatGatewayAddress请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param NatGatewayId: NAT网关的ID，形如：`nat-df45454`。
+        :type NatGatewayId: str
+        :param AddressCount: 需要申请的弹性IP个数，系统会按您的要求生产N个弹性IP, 其中AddressCount和PublicAddresses至少传递一个。
+        :type AddressCount: int
+        :param PublicIpAddresses: 绑定NAT网关的弹性IP数组，其中AddressCount和PublicAddresses至少传递一个。。
+        :type PublicIpAddresses: list of str
+        :param Zone: 弹性IP可以区，自动分配弹性IP时传递。
+        :type Zone: str
+        """
+        self.NatGatewayId = None
+        self.AddressCount = None
+        self.PublicIpAddresses = None
+        self.Zone = None
+
+
+    def _deserialize(self, params):
+        self.NatGatewayId = params.get("NatGatewayId")
+        self.AddressCount = params.get("AddressCount")
+        self.PublicIpAddresses = params.get("PublicIpAddresses")
+        self.Zone = params.get("Zone")
+
+
+class AssociateNatGatewayAddressResponse(AbstractModel):
+    """AssociateNatGatewayAddress返回参数结构体
 
     """
 
@@ -1572,6 +1630,120 @@ class CreateIp6TranslatorsResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.Ip6TranslatorSet = params.get("Ip6TranslatorSet")
+        self.RequestId = params.get("RequestId")
+
+
+class CreateNatGatewayDestinationIpPortTranslationNatRuleRequest(AbstractModel):
+    """CreateNatGatewayDestinationIpPortTranslationNatRule请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param NatGatewayId: NAT网关的ID，形如：`nat-df45454`。
+        :type NatGatewayId: str
+        :param DestinationIpPortTranslationNatRules: NAT网关的端口转换规则。
+        :type DestinationIpPortTranslationNatRules: list of DestinationIpPortTranslationNatRule
+        """
+        self.NatGatewayId = None
+        self.DestinationIpPortTranslationNatRules = None
+
+
+    def _deserialize(self, params):
+        self.NatGatewayId = params.get("NatGatewayId")
+        if params.get("DestinationIpPortTranslationNatRules") is not None:
+            self.DestinationIpPortTranslationNatRules = []
+            for item in params.get("DestinationIpPortTranslationNatRules"):
+                obj = DestinationIpPortTranslationNatRule()
+                obj._deserialize(item)
+                self.DestinationIpPortTranslationNatRules.append(obj)
+
+
+class CreateNatGatewayDestinationIpPortTranslationNatRuleResponse(AbstractModel):
+    """CreateNatGatewayDestinationIpPortTranslationNatRule返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class CreateNatGatewayRequest(AbstractModel):
+    """CreateNatGateway请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param NatGatewayName: NAT网关名称
+        :type NatGatewayName: str
+        :param VpcId: VPC实例ID。可通过DescribeVpcs接口返回值中的VpcId获取。
+        :type VpcId: str
+        :param InternetMaxBandwidthOut: NAT网关最大外网出带宽(单位:Mbps)，支持的参数值：`20, 50, 100, 200, 500, 1000, 2000, 5000`，默认: `100Mbps`。
+        :type InternetMaxBandwidthOut: int
+        :param MaxConcurrentConnection: NAT网关并发连接上限，支持参数值：`1000000、3000000、10000000`，默认值为`100000`。
+        :type MaxConcurrentConnection: int
+        :param AddressCount: 需要申请的弹性IP个数，系统会按您的要求生产N个弹性IP，其中AddressCount和PublicAddresses至少传递一个。
+        :type AddressCount: int
+        :param PublicIpAddresses: 绑定NAT网关的弹性IP数组，其中AddressCount和PublicAddresses至少传递一个。
+        :type PublicIpAddresses: list of str
+        :param Zone: 可用区，形如：`ap-guangzhou-1`。
+        :type Zone: str
+        """
+        self.NatGatewayName = None
+        self.VpcId = None
+        self.InternetMaxBandwidthOut = None
+        self.MaxConcurrentConnection = None
+        self.AddressCount = None
+        self.PublicIpAddresses = None
+        self.Zone = None
+
+
+    def _deserialize(self, params):
+        self.NatGatewayName = params.get("NatGatewayName")
+        self.VpcId = params.get("VpcId")
+        self.InternetMaxBandwidthOut = params.get("InternetMaxBandwidthOut")
+        self.MaxConcurrentConnection = params.get("MaxConcurrentConnection")
+        self.AddressCount = params.get("AddressCount")
+        self.PublicIpAddresses = params.get("PublicIpAddresses")
+        self.Zone = params.get("Zone")
+
+
+class CreateNatGatewayResponse(AbstractModel):
+    """CreateNatGateway返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param NatGatewaySet: NAT网关对象数组。
+        :type NatGatewaySet: list of NatGateway
+        :param TotalCount: 符合条件的 NAT网关对象数量。
+        :type TotalCount: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.NatGatewaySet = None
+        self.TotalCount = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("NatGatewaySet") is not None:
+            self.NatGatewaySet = []
+            for item in params.get("NatGatewaySet"):
+                obj = NatGateway()
+                obj._deserialize(item)
+                self.NatGatewaySet.append(obj)
+        self.TotalCount = params.get("TotalCount")
         self.RequestId = params.get("RequestId")
 
 
@@ -2627,6 +2799,83 @@ class DeleteIp6TranslatorsRequest(AbstractModel):
 
 class DeleteIp6TranslatorsResponse(AbstractModel):
     """DeleteIp6Translators返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class DeleteNatGatewayDestinationIpPortTranslationNatRuleRequest(AbstractModel):
+    """DeleteNatGatewayDestinationIpPortTranslationNatRule请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param NatGatewayId: NAT网关的ID，形如：`nat-df45454`。
+        :type NatGatewayId: str
+        :param DestinationIpPortTranslationNatRules: NAT网关的端口转换规则。
+        :type DestinationIpPortTranslationNatRules: list of DestinationIpPortTranslationNatRule
+        """
+        self.NatGatewayId = None
+        self.DestinationIpPortTranslationNatRules = None
+
+
+    def _deserialize(self, params):
+        self.NatGatewayId = params.get("NatGatewayId")
+        if params.get("DestinationIpPortTranslationNatRules") is not None:
+            self.DestinationIpPortTranslationNatRules = []
+            for item in params.get("DestinationIpPortTranslationNatRules"):
+                obj = DestinationIpPortTranslationNatRule()
+                obj._deserialize(item)
+                self.DestinationIpPortTranslationNatRules.append(obj)
+
+
+class DeleteNatGatewayDestinationIpPortTranslationNatRuleResponse(AbstractModel):
+    """DeleteNatGatewayDestinationIpPortTranslationNatRule返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class DeleteNatGatewayRequest(AbstractModel):
+    """DeleteNatGateway请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param NatGatewayId: NAT网关的ID，形如：`nat-df45454`。
+        :type NatGatewayId: str
+        """
+        self.NatGatewayId = None
+
+
+    def _deserialize(self, params):
+        self.NatGatewayId = params.get("NatGatewayId")
+
+
+class DeleteNatGatewayResponse(AbstractModel):
+    """DeleteNatGateway返回参数结构体
 
     """
 
@@ -4357,6 +4606,78 @@ class DescribeIp6TranslatorsResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeNatGatewayDestinationIpPortTranslationNatRulesRequest(AbstractModel):
+    """DescribeNatGatewayDestinationIpPortTranslationNatRules请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param NatGatewayIds: NAT网关ID。
+        :type NatGatewayIds: list of str
+        :param Filters: 过滤条件:
+参数不支持同时指定NatGatewayIds和Filters。
+<li> nat-gateway-id，NAT网关的ID，如`nat-0yi4hekt`</li>
+<li> vpc-id，私有网络VPC的ID，如`vpc-0yi4hekt`</li>
+<li> public-ip-address， 弹性IP，如`139.199.232.238`。</li>
+<li>public-port， 公网端口。</li>
+<li>private-ip-address， 内网IP，如`10.0.0.1`。</li>
+<li>private-port， 内网端口。</li>
+<li>description，规则描述。</li>
+        :type Filters: list of Filter
+        :param Offset: 偏移量，默认为0。
+        :type Offset: int
+        :param Limit: 返回数量，默认为20，最大值为100。
+        :type Limit: int
+        """
+        self.NatGatewayIds = None
+        self.Filters = None
+        self.Offset = None
+        self.Limit = None
+
+
+    def _deserialize(self, params):
+        self.NatGatewayIds = params.get("NatGatewayIds")
+        if params.get("Filters") is not None:
+            self.Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self.Filters.append(obj)
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+
+
+class DescribeNatGatewayDestinationIpPortTranslationNatRulesResponse(AbstractModel):
+    """DescribeNatGatewayDestinationIpPortTranslationNatRules返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param NatGatewayDestinationIpPortTranslationNatRuleSet: NAT网关端口转发规则对象数组。
+        :type NatGatewayDestinationIpPortTranslationNatRuleSet: list of NatGatewayDestinationIpPortTranslationNatRule
+        :param TotalCount: 符合条件的NAT网关端口转发规则对象数目。
+        :type TotalCount: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.NatGatewayDestinationIpPortTranslationNatRuleSet = None
+        self.TotalCount = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("NatGatewayDestinationIpPortTranslationNatRuleSet") is not None:
+            self.NatGatewayDestinationIpPortTranslationNatRuleSet = []
+            for item in params.get("NatGatewayDestinationIpPortTranslationNatRuleSet"):
+                obj = NatGatewayDestinationIpPortTranslationNatRule()
+                obj._deserialize(item)
+                self.NatGatewayDestinationIpPortTranslationNatRuleSet.append(obj)
+        self.TotalCount = params.get("TotalCount")
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeNatGatewaysRequest(AbstractModel):
     """DescribeNatGateways请求参数结构体
 
@@ -4441,6 +4762,7 @@ class DescribeNetworkInterfacesRequest(AbstractModel):
 <li>groups.security-group-id - String - （过滤条件）绑定的安全组实例ID，例如：sg-f9ekbxeq。</li>
 <li>network-interface-name - String - （过滤条件）网卡实例名称。</li>
 <li>network-interface-description - String - （过滤条件）网卡实例描述。</li>
+<li>address-ip - String - （过滤条件）内网IPv4地址。</li>
         :type Filters: list of Filter
         :param Offset: 偏移量，默认为0。
         :type Offset: int
@@ -5666,6 +5988,44 @@ class DisassociateAddressRequest(AbstractModel):
 
 class DisassociateAddressResponse(AbstractModel):
     """DisassociateAddress返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class DisassociateNatGatewayAddressRequest(AbstractModel):
+    """DisassociateNatGatewayAddress请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param NatGatewayId: NAT网关的ID，形如：`nat-df45454`。
+        :type NatGatewayId: str
+        :param PublicIpAddresses: 绑定NAT网关的弹性IP数组。
+        :type PublicIpAddresses: list of str
+        """
+        self.NatGatewayId = None
+        self.PublicIpAddresses = None
+
+
+    def _deserialize(self, params):
+        self.NatGatewayId = params.get("NatGatewayId")
+        self.PublicIpAddresses = params.get("PublicIpAddresses")
+
+
+class DisassociateNatGatewayAddressResponse(AbstractModel):
+    """DisassociateNatGatewayAddress返回参数结构体
 
     """
 
@@ -7186,6 +7546,94 @@ class ModifyIpv6AddressesAttributeResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class ModifyNatGatewayAttributeRequest(AbstractModel):
+    """ModifyNatGatewayAttribute请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param NatGatewayId: NAT网关的ID，形如：`nat-df45454`。
+        :type NatGatewayId: str
+        :param NatGatewayName: NAT网关的名称，形如：`test_nat`。
+        :type NatGatewayName: str
+        :param InternetMaxBandwidthOut: NAT网关最大外网出带宽(单位:Mbps)。
+        :type InternetMaxBandwidthOut: int
+        """
+        self.NatGatewayId = None
+        self.NatGatewayName = None
+        self.InternetMaxBandwidthOut = None
+
+
+    def _deserialize(self, params):
+        self.NatGatewayId = params.get("NatGatewayId")
+        self.NatGatewayName = params.get("NatGatewayName")
+        self.InternetMaxBandwidthOut = params.get("InternetMaxBandwidthOut")
+
+
+class ModifyNatGatewayAttributeResponse(AbstractModel):
+    """ModifyNatGatewayAttribute返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class ModifyNatGatewayDestinationIpPortTranslationNatRuleRequest(AbstractModel):
+    """ModifyNatGatewayDestinationIpPortTranslationNatRule请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param NatGatewayId: NAT网关的ID，形如：`nat-df45454`。
+        :type NatGatewayId: str
+        :param SourceNatRule: 源NAT网关的端口转换规则。
+        :type SourceNatRule: :class:`tencentcloud.vpc.v20170312.models.DestinationIpPortTranslationNatRule`
+        :param DestinationNatRule: 目的NAT网关的端口转换规则。
+        :type DestinationNatRule: :class:`tencentcloud.vpc.v20170312.models.DestinationIpPortTranslationNatRule`
+        """
+        self.NatGatewayId = None
+        self.SourceNatRule = None
+        self.DestinationNatRule = None
+
+
+    def _deserialize(self, params):
+        self.NatGatewayId = params.get("NatGatewayId")
+        if params.get("SourceNatRule") is not None:
+            self.SourceNatRule = DestinationIpPortTranslationNatRule()
+            self.SourceNatRule._deserialize(params.get("SourceNatRule"))
+        if params.get("DestinationNatRule") is not None:
+            self.DestinationNatRule = DestinationIpPortTranslationNatRule()
+            self.DestinationNatRule._deserialize(params.get("DestinationNatRule"))
+
+
+class ModifyNatGatewayDestinationIpPortTranslationNatRuleResponse(AbstractModel):
+    """ModifyNatGatewayDestinationIpPortTranslationNatRule返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class ModifyNetworkInterfaceAttributeRequest(AbstractModel):
     """ModifyNetworkInterfaceAttribute请求参数结构体
 
@@ -7768,6 +8216,58 @@ class NatGatewayAddress(AbstractModel):
         self.AddressId = params.get("AddressId")
         self.PublicIpAddress = params.get("PublicIpAddress")
         self.IsBlocked = params.get("IsBlocked")
+
+
+class NatGatewayDestinationIpPortTranslationNatRule(AbstractModel):
+    """NAT网关的端口转发规则
+
+    """
+
+    def __init__(self):
+        """
+        :param IpProtocol: 网络协议，可选值：`TCP`、`UDP`。
+        :type IpProtocol: str
+        :param PublicIpAddress: 弹性IP。
+        :type PublicIpAddress: str
+        :param PublicPort: 公网端口。
+        :type PublicPort: int
+        :param PrivateIpAddress: 内网地址。
+        :type PrivateIpAddress: str
+        :param PrivatePort: 内网端口。
+        :type PrivatePort: int
+        :param Description: NAT网关转发规则描述。
+        :type Description: str
+        :param NatGatewayId: NAT网关的ID。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type NatGatewayId: str
+        :param VpcId: 私有网络VPC的ID。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type VpcId: str
+        :param CreatedTime: NAT网关转发规则创建时间。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CreatedTime: str
+        """
+        self.IpProtocol = None
+        self.PublicIpAddress = None
+        self.PublicPort = None
+        self.PrivateIpAddress = None
+        self.PrivatePort = None
+        self.Description = None
+        self.NatGatewayId = None
+        self.VpcId = None
+        self.CreatedTime = None
+
+
+    def _deserialize(self, params):
+        self.IpProtocol = params.get("IpProtocol")
+        self.PublicIpAddress = params.get("PublicIpAddress")
+        self.PublicPort = params.get("PublicPort")
+        self.PrivateIpAddress = params.get("PrivateIpAddress")
+        self.PrivatePort = params.get("PrivatePort")
+        self.Description = params.get("Description")
+        self.NatGatewayId = params.get("NatGatewayId")
+        self.VpcId = params.get("VpcId")
+        self.CreatedTime = params.get("CreatedTime")
 
 
 class NetworkInterface(AbstractModel):
@@ -8383,6 +8883,44 @@ class ResetAttachCcnInstancesRequest(AbstractModel):
 
 class ResetAttachCcnInstancesResponse(AbstractModel):
     """ResetAttachCcnInstances返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class ResetNatGatewayConnectionRequest(AbstractModel):
+    """ResetNatGatewayConnection请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param NatGatewayId: NAT网关ID。
+        :type NatGatewayId: str
+        :param MaxConcurrentConnection: NAT网关并发连接上限，形如：1000000、3000000、10000000。
+        :type MaxConcurrentConnection: int
+        """
+        self.NatGatewayId = None
+        self.MaxConcurrentConnection = None
+
+
+    def _deserialize(self, params):
+        self.NatGatewayId = params.get("NatGatewayId")
+        self.MaxConcurrentConnection = params.get("MaxConcurrentConnection")
+
+
+class ResetNatGatewayConnectionResponse(AbstractModel):
+    """ResetNatGatewayConnection返回参数结构体
 
     """
 
