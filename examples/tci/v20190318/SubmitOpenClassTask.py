@@ -12,7 +12,7 @@ from tencentcloud.common.profile.http_profile import HttpProfile
 try:
     # 实例化一个认证对象，入参需要传入腾讯云账户secretId，secretKey
     cred = credential.Credential("", "")
-    #cred = credential.Credential(
+    # cred = credential.Credential(
     #     os.environ.get("TENCENTCLOUD_SECRET_ID"),
     #     os.environ.get("TENCENTCLOUD_SECRET_KEY"))
 
@@ -30,14 +30,11 @@ try:
     clientProfile.httpProfile = httpProfile
 
     client = tci_client.TciClient(cred, "", clientProfile)
-    req = models.CreatePersonRequest()
-    req.LibraryId="tci_library_156403897035611372834"
-    req.PersonName="fxh"
-    req.JobNumber="3512635"
-    req.StudentNumber="3628642364"
-    req.Male=1
-    req.Mail="79322391@qq.com"
-    resp = client.CreatePerson(req)
+    req = models.SubmitOpenClassTaskRequest()
+    req.FileContent="https://edu-test-1253131631.cos.ap-guangzhou.myqcloud.com/aieduautotest/autotest_vedio.mp4"
+    req.FileType="vod_url"
+    req.LibrarySet=["library_15603955264181591716"]
+    resp = client.SubmitOpenClassTask(req)
 
     # 输出json格式的字符串回包
     print("%s" % resp.to_json_string())
