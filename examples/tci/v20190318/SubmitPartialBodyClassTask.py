@@ -30,16 +30,16 @@ try:
     clientProfile.httpProfile = httpProfile
 
     client = tci_client.TciClient(cred, "", clientProfile)
-    req = models.AIAssistantRequest()
-    req.FileContent = "https%3A%2F%2Fedu-test-1253131631.cos.ap-guangzhou.myqcloud.com%2Faieduautotest%2Fautotest_vedio.mp4"
-    req.FileType = "vod_url"
-    req.LibrarySet=["tci_library_156403897035611372834"]
+    req = models.SubmitPartialBodyClassTaskRequest()
+    req.FileContent="https://edu-test-1253131631.cos.ap-guangzhou.myqcloud.com/aieduautotest/autotest_vedio.mp4"
+    req.FileType="vod_url"
+    req.Lang=0
+    req.LibrarySet=["library_15603955264181591716"]
+    req.VocabLibNameList=["testlib2"]
     req.VoiceEncodeType=1
     req.VoiceFileType=10
-    req.VocabLibNameList=["testlib2"]
-    req.Lang=0
     
-    resp = client.AIAssistant(req)
+    resp = client.SubmitPartialBodyClassTask(req)
 
     # 输出json格式的字符串回包
     print("%s" % resp.to_json_string())

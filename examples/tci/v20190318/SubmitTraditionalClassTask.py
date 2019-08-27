@@ -30,11 +30,11 @@ try:
     clientProfile.httpProfile = httpProfile
 
     client = tci_client.TciClient(cred, "", clientProfile)
-    req = models.CreateFaceRequest()
-    req.LibraryId = "tci_library_156403897035611372834"
-    req.PersonId = "tci_person_1564039695429032573626"
-    req.urls=["https://img-blog.csdn.net/20161128171723259"]
-    resp = client.CreateFace(req)
+    req = models.SubmitTraditionalClassTaskRequest()
+    req.FileContent="https://edu-test-1253131631.cos.ap-guangzhou.myqcloud.com/aieduautotest/autotest_vedio.mp4"
+    req.FileType="vod_url"
+    req.LibrarySet=["library_15603955264181591716"]
+    resp = client.SubmitTraditionalClassTask(req)
 
     # 输出json格式的字符串回包
     print("%s" % resp.to_json_string())
