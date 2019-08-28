@@ -251,12 +251,16 @@ class AiAnalysisResult(AbstractModel):
         :param FrameTagTask: 视频内容分析智能按帧标签任务的查询结果，当任务类型为 FrameTag 时有效。
 注意：此字段可能返回 null，表示取不到有效值。
         :type FrameTagTask: :class:`tencentcloud.vod.v20180717.models.AiAnalysisTaskFrameTagResult`
+        :param HighlightsTask: 视频内容分析智能按集锦任务的查询结果，当任务类型为 Highlight 时有效。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type HighlightsTask: list of AiAnalysisTaskHighlightResult
         """
         self.Type = None
         self.ClassificationTask = None
         self.CoverTask = None
         self.TagTask = None
         self.FrameTagTask = None
+        self.HighlightsTask = None
 
 
     def _deserialize(self, params):
@@ -273,6 +277,12 @@ class AiAnalysisResult(AbstractModel):
         if params.get("FrameTagTask") is not None:
             self.FrameTagTask = AiAnalysisTaskFrameTagResult()
             self.FrameTagTask._deserialize(params.get("FrameTagTask"))
+        if params.get("HighlightsTask") is not None:
+            self.HighlightsTask = []
+            for item in params.get("HighlightsTask"):
+                obj = AiAnalysisTaskHighlightResult()
+                obj._deserialize(item)
+                self.HighlightsTask.append(obj)
 
 
 class AiAnalysisTaskClassificationInput(AbstractModel):
@@ -503,6 +513,83 @@ class AiAnalysisTaskFrameTagResult(AbstractModel):
             self.Input._deserialize(params.get("Input"))
         if params.get("Output") is not None:
             self.Output = AiAnalysisTaskFrameTagOutput()
+            self.Output._deserialize(params.get("Output"))
+
+
+class AiAnalysisTaskHighlightInput(AbstractModel):
+    """智能精彩片段任务输入类型
+
+    """
+
+    def __init__(self):
+        """
+        :param Definition: 视频智能精彩片段模板 ID。
+        :type Definition: int
+        """
+        self.Definition = None
+
+
+    def _deserialize(self, params):
+        self.Definition = params.get("Definition")
+
+
+class AiAnalysisTaskHighlightOutput(AbstractModel):
+    """智能精彩片段结果信息
+
+    """
+
+    def __init__(self):
+        """
+        :param HighlightSet: 视频智能精彩片段列表。
+        :type HighlightSet: list of MediaAiAnalysisHighlightItem
+        """
+        self.HighlightSet = None
+
+
+    def _deserialize(self, params):
+        if params.get("HighlightSet") is not None:
+            self.HighlightSet = []
+            for item in params.get("HighlightSet"):
+                obj = MediaAiAnalysisHighlightItem()
+                obj._deserialize(item)
+                self.HighlightSet.append(obj)
+
+
+class AiAnalysisTaskHighlightResult(AbstractModel):
+    """智能精彩片段结果类型
+
+    """
+
+    def __init__(self):
+        """
+        :param Status: 任务状态，有 PROCESSING，SUCCESS 和 FAIL 三种。
+        :type Status: str
+        :param ErrCode: 错误码，0：成功，其他值：失败。
+        :type ErrCode: int
+        :param Message: 错误信息。
+        :type Message: str
+        :param Input: 智能精彩片段任务输入。
+        :type Input: :class:`tencentcloud.vod.v20180717.models.AiAnalysisTaskHighlightInput`
+        :param Output: 智能精彩片段任务输出。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Output: :class:`tencentcloud.vod.v20180717.models.AiAnalysisTaskHighlightOutput`
+        """
+        self.Status = None
+        self.ErrCode = None
+        self.Message = None
+        self.Input = None
+        self.Output = None
+
+
+    def _deserialize(self, params):
+        self.Status = params.get("Status")
+        self.ErrCode = params.get("ErrCode")
+        self.Message = params.get("Message")
+        if params.get("Input") is not None:
+            self.Input = AiAnalysisTaskHighlightInput()
+            self.Input._deserialize(params.get("Input"))
+        if params.get("Output") is not None:
+            self.Output = AiAnalysisTaskHighlightOutput()
             self.Output._deserialize(params.get("Output"))
 
 
@@ -2684,24 +2771,26 @@ class ApplyUploadRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param MediaType: 媒体类型，可选值请参考[上传能力综述](https://cloud.tencent.com/document/product/266/9760#.E6.96.87.E4.BB.B6.E7.B1.BB.E5.9E.8B)。
+        :param MediaType: 媒体类型，可选值请参考 [上传能力综述](/document/product/266/9760#.E6.96.87.E4.BB.B6.E7.B1.BB.E5.9E.8B)。
         :type MediaType: str
         :param MediaName: 媒体名称。
         :type MediaName: str
-        :param CoverType: 封面类型，可选值请参考[上传能力综述](https://cloud.tencent.com/document/product/266/9760#.E6.96.87.E4.BB.B6.E7.B1.BB.E5.9E.8B)。
+        :param CoverType: 封面类型，可选值请参考 [上传能力综述](/document/product/266/9760#.E6.96.87.E4.BB.B6.E7.B1.BB.E5.9E.8B)。
         :type CoverType: str
-        :param Procedure: 媒体后续任务操作，详见[上传指定任务流](https://cloud.tencent.com/document/product/266/9759)。
+        :param Procedure: 媒体后续任务处理操作，即完成媒体上传后，可自动发起任务流操作。参数值为任务流模板名，云点播支持 [创建任务流模板](/document/product/266/33819) 并为模板命名。
         :type Procedure: str
-        :param ExpireTime: 媒体文件过期时间，格式按照 ISO 8601 标准表示，详见 [ISO 日期格式说明](https://cloud.tencent.com/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F)。
+        :param ExpireTime: 媒体文件过期时间，格式按照 ISO 8601 标准表示，详见 [ISO 日期格式说明](/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F)。
         :type ExpireTime: str
         :param StorageRegion: 指定上传园区，仅适用于对上传地域有特殊需求的用户。
         :type StorageRegion: str
-        :param ClassId: 分类ID，用于对媒体进行分类管理，可通过[创建分类](https://cloud.tencent.com/document/product/266/7812)接口，创建分类，获得分类 ID。
+        :param ClassId: 分类ID，用于对媒体进行分类管理，可通过 [创建分类](/document/product/266/7812) 接口，创建分类，获得分类 ID。
 <li>默认值：0，表示其他分类。</li>
         :type ClassId: int
-        :param SourceContext: 来源上下文，用于透传用户请求信息，上传回调接口将返回该字段值，最长 250 个字符。
+        :param SourceContext: 来源上下文，用于透传用户请求信息，[上传完成回调](/document/product/266/7830) 将返回该字段值，最长 250 个字符。
         :type SourceContext: str
-        :param SubAppId: 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
+        :param SessionContext: 会话上下文，用于透传用户请求信息，当指定 Procedure 参数后，[任务流状态变更回调](/document/product/266/9636) 将返回该字段值，最长 1000 个字符。
+        :type SessionContext: str
+        :param SubAppId: 点播 [子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
         :type SubAppId: int
         """
         self.MediaType = None
@@ -2712,6 +2801,7 @@ class ApplyUploadRequest(AbstractModel):
         self.StorageRegion = None
         self.ClassId = None
         self.SourceContext = None
+        self.SessionContext = None
         self.SubAppId = None
 
 
@@ -2724,6 +2814,7 @@ class ApplyUploadRequest(AbstractModel):
         self.StorageRegion = params.get("StorageRegion")
         self.ClassId = params.get("ClassId")
         self.SourceContext = params.get("SourceContext")
+        self.SessionContext = params.get("SessionContext")
         self.SubAppId = params.get("SubAppId")
 
 
@@ -2884,10 +2975,13 @@ class AudioTemplateInfo(AbstractModel):
 <li>libfdk_aac；</li>
 <li>libmp3lame；</li>
 <li>ac3。</li>
-当外层参数 Container 为视频格式（mp4、flv 或 hls）时，可选值为：
-<li>libfdk_aac：更适合 mp4 和 hls；</li>
+当外层参数 Container 为 mp4 或 flv 时，可选值为：
+<li>libfdk_aac：更适合 mp4；</li>
 <li>libmp3lame：更适合 flv；</li>
 <li>mp2。</li>
+当外层参数 Container 为 hls 时，可选值为：
+<li>libfdk_aac；</li>
+<li>libmp3lame。</li>
         :type Codec: str
         :param Bitrate: 音频流的码率，取值范围：0 和 [26, 256]，单位：kbps。
 当取值为 0，表示音频码率和原始音频保持一致。
@@ -2934,10 +3028,13 @@ class AudioTemplateInfoForUpdate(AbstractModel):
 <li>libfdk_aac；</li>
 <li>libmp3lame；</li>
 <li>ac3。</li>
-当外层参数 Container 为视频格式（mp4、flv 或 hls）时，可选值为：
-<li>libfdk_aac：更适合 mp4 和 hls；</li>
+当外层参数 Container 为 mp4 或 flv 时，可选值为：
+<li>libfdk_aac：更适合 mp4；</li>
 <li>libmp3lame：更适合 flv；</li>
 <li>mp2。</li>
+当外层参数 Container 为 hls 时，可选值为：
+<li>libfdk_aac；</li>
+<li>libmp3lame。</li>
         :type Codec: str
         :param Bitrate: 音频流的码率，取值范围：0 和 [26, 256]，单位：kbps。 当取值为 0，表示音频码率和原始音频保持一致。
         :type Bitrate: int
@@ -6804,6 +6901,35 @@ class MediaAiAnalysisFrameTagSegmentItem(AbstractModel):
                 self.TagSet.append(obj)
 
 
+class MediaAiAnalysisHighlightItem(AbstractModel):
+    """智能精彩片段信息
+
+    """
+
+    def __init__(self):
+        """
+        :param HighlightUrl: 智能精彩片段地址。
+        :type HighlightUrl: str
+        :param CovImgUrl: 智能精彩片段封面地址。
+        :type CovImgUrl: str
+        :param Confidence: 智能精彩片段的可信度，取值范围是 0 到 100。
+        :type Confidence: float
+        :param Duration: 智能精彩片段持续时间。
+        :type Duration: float
+        """
+        self.HighlightUrl = None
+        self.CovImgUrl = None
+        self.Confidence = None
+        self.Duration = None
+
+
+    def _deserialize(self, params):
+        self.HighlightUrl = params.get("HighlightUrl")
+        self.CovImgUrl = params.get("CovImgUrl")
+        self.Confidence = params.get("Confidence")
+        self.Duration = params.get("Duration")
+
+
 class MediaAiAnalysisTagItem(AbstractModel):
     """智能标签结果信息
 
@@ -8265,7 +8391,7 @@ class MediaSnapshotByTimePicInfoItem(AbstractModel):
 
     def __init__(self):
         """
-        :param TimeOffset: 该张截图对应视频文件中的时间偏移，单位：秒。
+        :param TimeOffset: 该张截图对应视频文件中的时间偏移，单位为<font color=red>毫秒</font>。
 注意：此字段可能返回 null，表示取不到有效值。
         :type TimeOffset: float
         :param Url: 该张截图的 URL 地址。
@@ -11003,7 +11129,7 @@ class SnapshotByTimeOffsetTaskInput(AbstractModel):
         """
         :param Definition: 指定时间点截图模板 ID。
         :type Definition: int
-        :param TimeOffsetSet: 截图时间点列表，单位为秒。
+        :param TimeOffsetSet: 截图时间点列表，单位为<font color=red>毫秒</font>。
 注意：此字段可能返回 null，表示取不到有效值。
         :type TimeOffsetSet: list of float
         :param WatermarkSet: 水印列表，支持多张图片或文字水印，最大可支持 10 张。
@@ -11251,6 +11377,30 @@ class SvgWatermarkInputForUpdate(AbstractModel):
     def _deserialize(self, params):
         self.Width = params.get("Width")
         self.Height = params.get("Height")
+
+
+class TEHDConfig(AbstractModel):
+    """极速高清参数配置。
+
+    """
+
+    def __init__(self):
+        """
+        :param Type: 极速高清类型，可选值：
+<li>TEHD-100：极速高清-100。</li>
+不填代表不启用极速高清。
+        :type Type: str
+        :param MaxVideoBitrate: 视频码率上限，当 Type 指定了极速高清类型时有效。
+不填或填0表示不设视频码率上限。
+        :type MaxVideoBitrate: int
+        """
+        self.Type = None
+        self.MaxVideoBitrate = None
+
+
+    def _deserialize(self, params):
+        self.Type = params.get("Type")
+        self.MaxVideoBitrate = params.get("MaxVideoBitrate")
 
 
 class TagConfigureInfo(AbstractModel):
@@ -11702,6 +11852,9 @@ class TranscodeTemplate(AbstractModel):
         :param AudioTemplate: 音频流配置参数，仅当 RemoveAudio 为 0，该字段有效 。
 注意：此字段可能返回 null，表示取不到有效值。
         :type AudioTemplate: :class:`tencentcloud.vod.v20180717.models.AudioTemplateInfo`
+        :param TEHDConfig: 极速高清转码参数，需联系商务架构师开通后才能使用。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TEHDConfig: :class:`tencentcloud.vod.v20180717.models.TEHDConfig`
         :param ContainerType: 封装格式过滤条件，可选值：
 <li>Video：视频格式，可以同时包含视频流和音频流的封装格式；</li>
 <li>PureAudio：纯音频格式，只能包含音频流的封装格式板。</li>
@@ -11720,6 +11873,7 @@ class TranscodeTemplate(AbstractModel):
         self.RemoveAudio = None
         self.VideoTemplate = None
         self.AudioTemplate = None
+        self.TEHDConfig = None
         self.ContainerType = None
         self.CreateTime = None
         self.UpdateTime = None
@@ -11739,6 +11893,9 @@ class TranscodeTemplate(AbstractModel):
         if params.get("AudioTemplate") is not None:
             self.AudioTemplate = AudioTemplateInfo()
             self.AudioTemplate._deserialize(params.get("AudioTemplate"))
+        if params.get("TEHDConfig") is not None:
+            self.TEHDConfig = TEHDConfig()
+            self.TEHDConfig._deserialize(params.get("TEHDConfig"))
         self.ContainerType = params.get("ContainerType")
         self.CreateTime = params.get("CreateTime")
         self.UpdateTime = params.get("UpdateTime")

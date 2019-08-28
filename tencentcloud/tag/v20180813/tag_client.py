@@ -165,6 +165,34 @@ class TagClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeResourcesByTags(self, request):
+        """通过标签查询资源列表
+
+        :param request: 调用DescribeResourcesByTags所需参数的结构体。
+        :type request: :class:`tencentcloud.tag.v20180813.models.DescribeResourcesByTagsRequest`
+        :rtype: :class:`tencentcloud.tag.v20180813.models.DescribeResourcesByTagsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeResourcesByTags", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeResourcesByTagsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeTagKeys(self, request):
         """用于查询已建立的标签列表中的标签键。
 

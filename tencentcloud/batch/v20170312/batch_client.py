@@ -53,6 +53,34 @@ class BatchClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def CreateCpmComputeEnv(self, request):
+        """创建黑石计算环境
+
+        :param request: 调用CreateCpmComputeEnv所需参数的结构体。
+        :type request: :class:`tencentcloud.batch.v20170312.models.CreateCpmComputeEnvRequest`
+        :rtype: :class:`tencentcloud.batch.v20170312.models.CreateCpmComputeEnvResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("CreateCpmComputeEnv", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateCpmComputeEnvResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def CreateTaskTemplate(self, request):
         """用于创建任务模板
 

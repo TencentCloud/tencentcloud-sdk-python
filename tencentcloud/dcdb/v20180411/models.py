@@ -667,6 +667,10 @@ class DCDBShardInfo(AbstractModel):
         :type MemoryUsage: float
         :param ShardId: 数字分片Id（过时字段，请勿依赖该值）
         :type ShardId: int
+        :param Pid: 产品ProductID
+        :type Pid: int
+        :param ProxyVersion: Proxy版本
+        :type ProxyVersion: str
         """
         self.InstanceId = None
         self.ShardSerialId = None
@@ -686,6 +690,8 @@ class DCDBShardInfo(AbstractModel):
         self.StorageUsage = None
         self.MemoryUsage = None
         self.ShardId = None
+        self.Pid = None
+        self.ProxyVersion = None
 
 
     def _deserialize(self, params):
@@ -707,6 +713,8 @@ class DCDBShardInfo(AbstractModel):
         self.StorageUsage = params.get("StorageUsage")
         self.MemoryUsage = params.get("MemoryUsage")
         self.ShardId = params.get("ShardId")
+        self.Pid = params.get("Pid")
+        self.ProxyVersion = params.get("ProxyVersion")
 
 
 class Database(AbstractModel):
@@ -1193,6 +1201,8 @@ class DescribeDCDBInstancesRequest(AbstractModel):
         :type ExclusterType: int
         :param IsFilterExcluster: 标识是否使用ExclusterType字段, false不使用，true使用
         :type IsFilterExcluster: bool
+        :param ExclusterIds: 独享集群ID
+        :type ExclusterIds: list of str
         """
         self.InstanceIds = None
         self.SearchName = None
@@ -1207,6 +1217,7 @@ class DescribeDCDBInstancesRequest(AbstractModel):
         self.Limit = None
         self.ExclusterType = None
         self.IsFilterExcluster = None
+        self.ExclusterIds = None
 
 
     def _deserialize(self, params):
@@ -1223,6 +1234,7 @@ class DescribeDCDBInstancesRequest(AbstractModel):
         self.Limit = params.get("Limit")
         self.ExclusterType = params.get("ExclusterType")
         self.IsFilterExcluster = params.get("IsFilterExcluster")
+        self.ExclusterIds = params.get("ExclusterIds")
 
 
 class DescribeDCDBInstancesResponse(AbstractModel):

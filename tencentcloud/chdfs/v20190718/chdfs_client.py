@@ -17,28 +17,28 @@ import json
 
 from tencentcloud.common.exception.tencent_cloud_sdk_exception import TencentCloudSDKException
 from tencentcloud.common.abstract_client import AbstractClient
-from tencentcloud.tke.v20180525 import models
+from tencentcloud.chdfs.v20190718 import models
 
 
-class TkeClient(AbstractClient):
-    _apiVersion = '2018-05-25'
-    _endpoint = 'tke.tencentcloudapi.com'
+class ChdfsClient(AbstractClient):
+    _apiVersion = '2019-07-18'
+    _endpoint = 'chdfs.tencentcloudapi.com'
 
 
-    def AddExistedInstances(self, request):
-        """添加已经存在的实例到集群
+    def CreateAccessGroup(self, request):
+        """创建权限组
 
-        :param request: 调用AddExistedInstances所需参数的结构体。
-        :type request: :class:`tencentcloud.tke.v20180525.models.AddExistedInstancesRequest`
-        :rtype: :class:`tencentcloud.tke.v20180525.models.AddExistedInstancesResponse`
+        :param request: 调用CreateAccessGroup所需参数的结构体。
+        :type request: :class:`tencentcloud.chdfs.v20190718.models.CreateAccessGroupRequest`
+        :rtype: :class:`tencentcloud.chdfs.v20190718.models.CreateAccessGroupResponse`
 
         """
         try:
             params = request._serialize()
-            body = self.call("AddExistedInstances", params)
+            body = self.call("CreateAccessGroup", params)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.AddExistedInstancesResponse()
+                model = models.CreateAccessGroupResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -53,20 +53,20 @@ class TkeClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def CreateCluster(self, request):
-        """创建集群
+    def CreateAccessRules(self, request):
+        """批量创建权限规则
 
-        :param request: 调用CreateCluster所需参数的结构体。
-        :type request: :class:`tencentcloud.tke.v20180525.models.CreateClusterRequest`
-        :rtype: :class:`tencentcloud.tke.v20180525.models.CreateClusterResponse`
+        :param request: 调用CreateAccessRules所需参数的结构体。
+        :type request: :class:`tencentcloud.chdfs.v20190718.models.CreateAccessRulesRequest`
+        :rtype: :class:`tencentcloud.chdfs.v20190718.models.CreateAccessRulesResponse`
 
         """
         try:
             params = request._serialize()
-            body = self.call("CreateCluster", params)
+            body = self.call("CreateAccessRules", params)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.CreateClusterResponse()
+                model = models.CreateAccessRulesResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -81,20 +81,20 @@ class TkeClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def CreateClusterAsGroup(self, request):
-        """为已经存在的集群创建伸缩组
+    def CreateFileSystem(self, request):
+        """创建文件系统（异步创建）
 
-        :param request: 调用CreateClusterAsGroup所需参数的结构体。
-        :type request: :class:`tencentcloud.tke.v20180525.models.CreateClusterAsGroupRequest`
-        :rtype: :class:`tencentcloud.tke.v20180525.models.CreateClusterAsGroupResponse`
+        :param request: 调用CreateFileSystem所需参数的结构体。
+        :type request: :class:`tencentcloud.chdfs.v20190718.models.CreateFileSystemRequest`
+        :rtype: :class:`tencentcloud.chdfs.v20190718.models.CreateFileSystemResponse`
 
         """
         try:
             params = request._serialize()
-            body = self.call("CreateClusterAsGroup", params)
+            body = self.call("CreateFileSystem", params)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.CreateClusterAsGroupResponse()
+                model = models.CreateFileSystemResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -109,20 +109,20 @@ class TkeClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def CreateClusterInstances(self, request):
-        """扩展(新建)集群节点
+    def CreateMountPoint(self, request):
+        """创建挂载点
 
-        :param request: 调用CreateClusterInstances所需参数的结构体。
-        :type request: :class:`tencentcloud.tke.v20180525.models.CreateClusterInstancesRequest`
-        :rtype: :class:`tencentcloud.tke.v20180525.models.CreateClusterInstancesResponse`
+        :param request: 调用CreateMountPoint所需参数的结构体。
+        :type request: :class:`tencentcloud.chdfs.v20190718.models.CreateMountPointRequest`
+        :rtype: :class:`tencentcloud.chdfs.v20190718.models.CreateMountPointResponse`
 
         """
         try:
             params = request._serialize()
-            body = self.call("CreateClusterInstances", params)
+            body = self.call("CreateMountPoint", params)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.CreateClusterInstancesResponse()
+                model = models.CreateMountPointResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -137,20 +137,20 @@ class TkeClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def CreateClusterRoute(self, request):
-        """创建集群路由
+    def DeleteAccessGroup(self, request):
+        """删除权限组
 
-        :param request: 调用CreateClusterRoute所需参数的结构体。
-        :type request: :class:`tencentcloud.tke.v20180525.models.CreateClusterRouteRequest`
-        :rtype: :class:`tencentcloud.tke.v20180525.models.CreateClusterRouteResponse`
+        :param request: 调用DeleteAccessGroup所需参数的结构体。
+        :type request: :class:`tencentcloud.chdfs.v20190718.models.DeleteAccessGroupRequest`
+        :rtype: :class:`tencentcloud.chdfs.v20190718.models.DeleteAccessGroupResponse`
 
         """
         try:
             params = request._serialize()
-            body = self.call("CreateClusterRoute", params)
+            body = self.call("DeleteAccessGroup", params)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.CreateClusterRouteResponse()
+                model = models.DeleteAccessGroupResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -165,20 +165,20 @@ class TkeClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def CreateClusterRouteTable(self, request):
-        """创建集群路由表
+    def DeleteAccessRules(self, request):
+        """批量删除权限规则
 
-        :param request: 调用CreateClusterRouteTable所需参数的结构体。
-        :type request: :class:`tencentcloud.tke.v20180525.models.CreateClusterRouteTableRequest`
-        :rtype: :class:`tencentcloud.tke.v20180525.models.CreateClusterRouteTableResponse`
+        :param request: 调用DeleteAccessRules所需参数的结构体。
+        :type request: :class:`tencentcloud.chdfs.v20190718.models.DeleteAccessRulesRequest`
+        :rtype: :class:`tencentcloud.chdfs.v20190718.models.DeleteAccessRulesResponse`
 
         """
         try:
             params = request._serialize()
-            body = self.call("CreateClusterRouteTable", params)
+            body = self.call("DeleteAccessRules", params)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.CreateClusterRouteTableResponse()
+                model = models.DeleteAccessRulesResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -193,20 +193,20 @@ class TkeClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def DeleteCluster(self, request):
-        """删除集群(YUNAPI V3版本)
+    def DeleteFileSystem(self, request):
+        """删除文件系统
 
-        :param request: 调用DeleteCluster所需参数的结构体。
-        :type request: :class:`tencentcloud.tke.v20180525.models.DeleteClusterRequest`
-        :rtype: :class:`tencentcloud.tke.v20180525.models.DeleteClusterResponse`
+        :param request: 调用DeleteFileSystem所需参数的结构体。
+        :type request: :class:`tencentcloud.chdfs.v20190718.models.DeleteFileSystemRequest`
+        :rtype: :class:`tencentcloud.chdfs.v20190718.models.DeleteFileSystemResponse`
 
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteCluster", params)
+            body = self.call("DeleteFileSystem", params)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.DeleteClusterResponse()
+                model = models.DeleteFileSystemResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -221,20 +221,20 @@ class TkeClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def DeleteClusterInstances(self, request):
-        """删除集群中的实例
+    def DeleteMountPoint(self, request):
+        """删除挂载点
 
-        :param request: 调用DeleteClusterInstances所需参数的结构体。
-        :type request: :class:`tencentcloud.tke.v20180525.models.DeleteClusterInstancesRequest`
-        :rtype: :class:`tencentcloud.tke.v20180525.models.DeleteClusterInstancesResponse`
+        :param request: 调用DeleteMountPoint所需参数的结构体。
+        :type request: :class:`tencentcloud.chdfs.v20190718.models.DeleteMountPointRequest`
+        :rtype: :class:`tencentcloud.chdfs.v20190718.models.DeleteMountPointResponse`
 
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteClusterInstances", params)
+            body = self.call("DeleteMountPoint", params)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.DeleteClusterInstancesResponse()
+                model = models.DeleteMountPointResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -249,20 +249,20 @@ class TkeClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def DeleteClusterRoute(self, request):
-        """删除集群路由
+    def DescribeAccessGroups(self, request):
+        """查看权限组列表
 
-        :param request: 调用DeleteClusterRoute所需参数的结构体。
-        :type request: :class:`tencentcloud.tke.v20180525.models.DeleteClusterRouteRequest`
-        :rtype: :class:`tencentcloud.tke.v20180525.models.DeleteClusterRouteResponse`
+        :param request: 调用DescribeAccessGroups所需参数的结构体。
+        :type request: :class:`tencentcloud.chdfs.v20190718.models.DescribeAccessGroupsRequest`
+        :rtype: :class:`tencentcloud.chdfs.v20190718.models.DescribeAccessGroupsResponse`
 
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteClusterRoute", params)
+            body = self.call("DescribeAccessGroups", params)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.DeleteClusterRouteResponse()
+                model = models.DescribeAccessGroupsResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -277,20 +277,20 @@ class TkeClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def DeleteClusterRouteTable(self, request):
-        """删除集群路由表
+    def DescribeAccessRules(self, request):
+        """查看权限规则列表
 
-        :param request: 调用DeleteClusterRouteTable所需参数的结构体。
-        :type request: :class:`tencentcloud.tke.v20180525.models.DeleteClusterRouteTableRequest`
-        :rtype: :class:`tencentcloud.tke.v20180525.models.DeleteClusterRouteTableResponse`
+        :param request: 调用DescribeAccessRules所需参数的结构体。
+        :type request: :class:`tencentcloud.chdfs.v20190718.models.DescribeAccessRulesRequest`
+        :rtype: :class:`tencentcloud.chdfs.v20190718.models.DescribeAccessRulesResponse`
 
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteClusterRouteTable", params)
+            body = self.call("DescribeAccessRules", params)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.DeleteClusterRouteTableResponse()
+                model = models.DescribeAccessRulesResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -305,20 +305,20 @@ class TkeClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def DescribeClusterInstances(self, request):
-        """查询集群下节点实例信息
+    def DescribeFileSystem(self, request):
+        """查看文件系统详细信息
 
-        :param request: 调用DescribeClusterInstances所需参数的结构体。
-        :type request: :class:`tencentcloud.tke.v20180525.models.DescribeClusterInstancesRequest`
-        :rtype: :class:`tencentcloud.tke.v20180525.models.DescribeClusterInstancesResponse`
+        :param request: 调用DescribeFileSystem所需参数的结构体。
+        :type request: :class:`tencentcloud.chdfs.v20190718.models.DescribeFileSystemRequest`
+        :rtype: :class:`tencentcloud.chdfs.v20190718.models.DescribeFileSystemResponse`
 
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeClusterInstances", params)
+            body = self.call("DescribeFileSystem", params)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.DescribeClusterInstancesResponse()
+                model = models.DescribeFileSystemResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -333,20 +333,20 @@ class TkeClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def DescribeClusterRouteTables(self, request):
-        """查询集群路由表
+    def DescribeFileSystems(self, request):
+        """查看文件系统列表
 
-        :param request: 调用DescribeClusterRouteTables所需参数的结构体。
-        :type request: :class:`tencentcloud.tke.v20180525.models.DescribeClusterRouteTablesRequest`
-        :rtype: :class:`tencentcloud.tke.v20180525.models.DescribeClusterRouteTablesResponse`
+        :param request: 调用DescribeFileSystems所需参数的结构体。
+        :type request: :class:`tencentcloud.chdfs.v20190718.models.DescribeFileSystemsRequest`
+        :rtype: :class:`tencentcloud.chdfs.v20190718.models.DescribeFileSystemsResponse`
 
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeClusterRouteTables", params)
+            body = self.call("DescribeFileSystems", params)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.DescribeClusterRouteTablesResponse()
+                model = models.DescribeFileSystemsResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -361,20 +361,20 @@ class TkeClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def DescribeClusterRoutes(self, request):
-        """查询集群路由
+    def DescribeMountPoint(self, request):
+        """查看挂载点详细信息
 
-        :param request: 调用DescribeClusterRoutes所需参数的结构体。
-        :type request: :class:`tencentcloud.tke.v20180525.models.DescribeClusterRoutesRequest`
-        :rtype: :class:`tencentcloud.tke.v20180525.models.DescribeClusterRoutesResponse`
+        :param request: 调用DescribeMountPoint所需参数的结构体。
+        :type request: :class:`tencentcloud.chdfs.v20190718.models.DescribeMountPointRequest`
+        :rtype: :class:`tencentcloud.chdfs.v20190718.models.DescribeMountPointResponse`
 
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeClusterRoutes", params)
+            body = self.call("DescribeMountPoint", params)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.DescribeClusterRoutesResponse()
+                model = models.DescribeMountPointResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -389,20 +389,20 @@ class TkeClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def DescribeClusterSecurity(self, request):
-        """集群的密钥信息
+    def DescribeMountPoints(self, request):
+        """查看挂载点列表
 
-        :param request: 调用DescribeClusterSecurity所需参数的结构体。
-        :type request: :class:`tencentcloud.tke.v20180525.models.DescribeClusterSecurityRequest`
-        :rtype: :class:`tencentcloud.tke.v20180525.models.DescribeClusterSecurityResponse`
+        :param request: 调用DescribeMountPoints所需参数的结构体。
+        :type request: :class:`tencentcloud.chdfs.v20190718.models.DescribeMountPointsRequest`
+        :rtype: :class:`tencentcloud.chdfs.v20190718.models.DescribeMountPointsResponse`
 
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeClusterSecurity", params)
+            body = self.call("DescribeMountPoints", params)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.DescribeClusterSecurityResponse()
+                model = models.DescribeMountPointsResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -417,20 +417,20 @@ class TkeClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def DescribeClusters(self, request):
-        """查询集群列表
+    def ModifyAccessGroup(self, request):
+        """修改权限组属性
 
-        :param request: 调用DescribeClusters所需参数的结构体。
-        :type request: :class:`tencentcloud.tke.v20180525.models.DescribeClustersRequest`
-        :rtype: :class:`tencentcloud.tke.v20180525.models.DescribeClustersResponse`
+        :param request: 调用ModifyAccessGroup所需参数的结构体。
+        :type request: :class:`tencentcloud.chdfs.v20190718.models.ModifyAccessGroupRequest`
+        :rtype: :class:`tencentcloud.chdfs.v20190718.models.ModifyAccessGroupResponse`
 
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeClusters", params)
+            body = self.call("ModifyAccessGroup", params)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.DescribeClustersResponse()
+                model = models.ModifyAccessGroupResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -445,20 +445,20 @@ class TkeClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def DescribeExistedInstances(self, request):
-        """查询已经存在的节点，判断是否可以加入集群
+    def ModifyAccessRules(self, request):
+        """批量修改权限规则属性
 
-        :param request: 调用DescribeExistedInstances所需参数的结构体。
-        :type request: :class:`tencentcloud.tke.v20180525.models.DescribeExistedInstancesRequest`
-        :rtype: :class:`tencentcloud.tke.v20180525.models.DescribeExistedInstancesResponse`
+        :param request: 调用ModifyAccessRules所需参数的结构体。
+        :type request: :class:`tencentcloud.chdfs.v20190718.models.ModifyAccessRulesRequest`
+        :rtype: :class:`tencentcloud.chdfs.v20190718.models.ModifyAccessRulesResponse`
 
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeExistedInstances", params)
+            body = self.call("ModifyAccessRules", params)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.DescribeExistedInstancesResponse()
+                model = models.ModifyAccessRulesResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -473,20 +473,48 @@ class TkeClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def DescribeRouteTableConflicts(self, request):
-        """查询路由表冲突列表
+    def ModifyFileSystem(self, request):
+        """修改文件系统属性
 
-        :param request: 调用DescribeRouteTableConflicts所需参数的结构体。
-        :type request: :class:`tencentcloud.tke.v20180525.models.DescribeRouteTableConflictsRequest`
-        :rtype: :class:`tencentcloud.tke.v20180525.models.DescribeRouteTableConflictsResponse`
+        :param request: 调用ModifyFileSystem所需参数的结构体。
+        :type request: :class:`tencentcloud.chdfs.v20190718.models.ModifyFileSystemRequest`
+        :rtype: :class:`tencentcloud.chdfs.v20190718.models.ModifyFileSystemResponse`
 
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeRouteTableConflicts", params)
+            body = self.call("ModifyFileSystem", params)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.DescribeRouteTableConflictsResponse()
+                model = models.ModifyFileSystemResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ModifyMountPoint(self, request):
+        """修改挂载点属性
+
+        :param request: 调用ModifyMountPoint所需参数的结构体。
+        :type request: :class:`tencentcloud.chdfs.v20190718.models.ModifyMountPointRequest`
+        :rtype: :class:`tencentcloud.chdfs.v20190718.models.ModifyMountPointResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ModifyMountPoint", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ModifyMountPointResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

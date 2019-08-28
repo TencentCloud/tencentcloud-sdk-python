@@ -25,9 +25,11 @@ class AnalyzeFaceRequest(AbstractModel):
         """
         :param Mode: 检测模式。0 为检测所有出现的人脸， 1 为检测面积最大的人脸。默认为 0。最多返回 10 张人脸的五官定位（人脸关键点）具体信息。
         :type Mode: int
-        :param Image: 图片 base64 数据。支持PNG、JPG、JPEG、BMP，不支持 GIF 图片。
+        :param Image: 图片 base64 数据，base64 编码后大小不可超过5M。
+支持PNG、JPG、JPEG、BMP，不支持 GIF 图片。
         :type Image: str
-        :param Url: 图片的 Url、Image必须提供一个，如果都提供，只使用 Url。  
+        :param Url: 图片的 Url 。对应图片 base64 编码后大小不可超过5M。
+Url、Image必须提供一个，如果都提供，只使用 Url。  
 图片存储于腾讯云的Url可保障更高下载速度和稳定性，建议图片存储于腾讯云。 
 非腾讯云存储的Url速度和稳定性可能受一定影响。
 支持PNG、JPG、JPEG、BMP，不支持 GIF 图片。
@@ -63,12 +65,15 @@ class AnalyzeFaceResponse(AbstractModel):
         :type ImageHeight: int
         :param FaceShapeSet: 五官定位（人脸关键点）具体信息。
         :type FaceShapeSet: list of FaceShape
+        :param FaceModelVersion: 人脸识别所用的算法模型版本。
+        :type FaceModelVersion: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.ImageWidth = None
         self.ImageHeight = None
         self.FaceShapeSet = None
+        self.FaceModelVersion = None
         self.RequestId = None
 
 
@@ -81,6 +86,7 @@ class AnalyzeFaceResponse(AbstractModel):
                 obj = FaceShape()
                 obj._deserialize(item)
                 self.FaceShapeSet.append(obj)
+        self.FaceModelVersion = params.get("FaceModelVersion")
         self.RequestId = params.get("RequestId")
 
 
@@ -141,21 +147,23 @@ class CompareFaceRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param ImageA: A 图片 base64 数据。
+        :param ImageA: A 图片 base64 数据，base64 编码后大小不可超过5M。
 若图片中包含多张人脸，只选取其中人脸面积最大的人脸。
 支持PNG、JPG、JPEG、BMP，不支持 GIF 图片。
         :type ImageA: str
-        :param ImageB: B 图片 base64 数据。
+        :param ImageB: B 图片 base64 数据，base64 编码后大小不可超过5M。
 若图片中包含多张人脸，只选取其中人脸面积最大的人脸。
 支持PNG、JPG、JPEG、BMP，不支持 GIF 图片。
         :type ImageB: str
-        :param UrlA: A 图片的 Url 。A 图片的 Url、Image必须提供一个，如果都提供，只使用 Url。 
+        :param UrlA: A 图片的 Url ，对应图片 base64 编码后大小不可超过5M。
+A 图片的 Url、Image必须提供一个，如果都提供，只使用 Url。 
 图片存储于腾讯云的Url可保障更高下载速度和稳定性，建议图片存储于腾讯云。 
 非腾讯云存储的Url速度和稳定性可能受一定影响。
 若图片中包含多张人脸，只选取其中人脸面积最大的人脸。
 支持PNG、JPG、JPEG、BMP，不支持 GIF 图片。
         :type UrlA: str
-        :param UrlB: B 图片的 Url 。B 图片的 Url、Image必须提供一个，如果都提供，只使用 Url。 
+        :param UrlB: B 图片的 Url ，对应图片 base64 编码后大小不可超过5M。
+B 图片的 Url、Image必须提供一个，如果都提供，只使用 Url。 
 图片存储于腾讯云的Url可保障更高下载速度和稳定性，建议图片存储于腾讯云。 
 非腾讯云存储的Url速度和稳定性可能受一定影响。
 若图片中包含多张人脸，只选取其中人脸面积最大的人脸。
@@ -254,16 +262,18 @@ class CreateFaceRequest(AbstractModel):
         """
         :param PersonId: 人员ID。
         :type PersonId: str
-        :param Images: 图片 base64 数据。人员人脸总数量不可超过5张。
-若图片中包含多张人脸，只选取其中人脸面积最大的人脸。
-支持PNG、JPG、JPEG、BMP，不支持 GIF 图片。
-        :type Images: list of str
-        :param Urls: 图片的 Url、Image必须提供一个，如果都提供，只使用 Url。
-图片存储于腾讯云的Url可保障更高下载速度和稳定性，建议图片存储于腾讯云。 
-非腾讯云存储的Url速度和稳定性可能受一定影响。 
+        :param Images: 图片 base64 数据，base64 编码后大小不可超过5M。
 人员人脸总数量不可超过5张。
 若图片中包含多张人脸，只选取其中人脸面积最大的人脸。
 支持PNG、JPG、JPEG、BMP，不支持 GIF 图片。
+        :type Images: list of str
+        :param Urls: 图片的 Url 。对应图片 base64 编码后大小不可超过5M。
+Url、Image必须提供一个，如果都提供，只使用 Url。  
+图片存储于腾讯云的Url可保障更高下载速度和稳定性，建议图片存储于腾讯云。 
+非腾讯云存储的Url速度和稳定性可能受一定影响。
+支持PNG、JPG、JPEG、BMP，不支持 GIF 图片。
+人员人脸总数量不可超过5张。
+若图片中包含多张人脸，只选取其中人脸面积最大的人脸。
         :type Urls: list of str
         """
         self.PersonId = None
@@ -375,14 +385,13 @@ class CreatePersonRequest(AbstractModel):
         :type Gender: int
         :param PersonExDescriptionInfos: 人员描述字段内容，key-value。[0，60]个字符，可修改，可重复。
         :type PersonExDescriptionInfos: list of PersonExDescriptionInfo
-        :param Image: 图片 base64 数据。
-若图片中包含多张人脸，只选取其中人脸面积最大的人脸。
+        :param Image: 图片 base64 数据，base64 编码后大小不可超过5M。
 支持PNG、JPG、JPEG、BMP，不支持 GIF 图片。
         :type Image: str
-        :param Url: 图片的 Url、Image必须提供一个，如果都提供，只使用 Url。
+        :param Url: 图片的 Url 。对应图片 base64 编码后大小不可超过5M。
+Url、Image必须提供一个，如果都提供，只使用 Url。  
 图片存储于腾讯云的Url可保障更高下载速度和稳定性，建议图片存储于腾讯云。 
 非腾讯云存储的Url速度和稳定性可能受一定影响。
-若图片中包含多张人脸，只选取其中人脸面积最大的人脸。
 支持PNG、JPG、JPEG、BMP，不支持 GIF 图片。
         :type Url: str
         """
@@ -595,9 +604,11 @@ class DetectFaceRequest(AbstractModel):
         :type MaxFaceNum: int
         :param MinFaceSize: 人脸长和宽的最小尺寸，单位为像素。默认为40。低于此尺寸的人脸不会被检测。
         :type MinFaceSize: int
-        :param Image: 图片 base64 数据。支持PNG、JPG、JPEG、BMP，不支持 GIF 图片。
+        :param Image: 图片 base64 数据，base64 编码后大小不可超过5M。
+支持PNG、JPG、JPEG、BMP，不支持 GIF 图片。
         :type Image: str
-        :param Url: 图片的 Url、Image必须提供一个，如果都提供，只使用 Url。 
+        :param Url: 图片的 Url 。对应图片 base64 编码后大小不可超过5M。
+Url、Image必须提供一个，如果都提供，只使用 Url。  
 图片存储于腾讯云的Url可保障更高下载速度和稳定性，建议图片存储于腾讯云。 
 非腾讯云存储的Url速度和稳定性可能受一定影响。
 支持PNG、JPG、JPEG、BMP，不支持 GIF 图片。
@@ -612,6 +623,10 @@ class DetectFaceRequest(AbstractModel):
 最多返回面积最大的 30 张人脸质量分信息，超过 30 张人脸（第 31 张及以后的人脸）的 FaceQualityInfo不具备参考意义。  
 建议：人脸入库操作建议开启此功能。
         :type NeedQualityDetection: int
+        :param FaceModelVersion: 人脸识别服务所用的算法模型版本。目前入参支持 “2.0”和“3.0“ 两个输入。  
+默认为"2.0"。 
+不同算法模型版本对应的人脸识别算法不同，新版本的整体效果会优于旧版本，建议使用最新版本。
+        :type FaceModelVersion: str
         """
         self.MaxFaceNum = None
         self.MinFaceSize = None
@@ -619,6 +634,7 @@ class DetectFaceRequest(AbstractModel):
         self.Url = None
         self.NeedFaceAttributes = None
         self.NeedQualityDetection = None
+        self.FaceModelVersion = None
 
 
     def _deserialize(self, params):
@@ -628,6 +644,7 @@ class DetectFaceRequest(AbstractModel):
         self.Url = params.get("Url")
         self.NeedFaceAttributes = params.get("NeedFaceAttributes")
         self.NeedQualityDetection = params.get("NeedQualityDetection")
+        self.FaceModelVersion = params.get("FaceModelVersion")
 
 
 class DetectFaceResponse(AbstractModel):
@@ -643,12 +660,15 @@ class DetectFaceResponse(AbstractModel):
         :type ImageHeight: int
         :param FaceInfos: 人脸信息列表。
         :type FaceInfos: list of FaceInfo
+        :param FaceModelVersion: 人脸识别所用的算法模型版本。
+        :type FaceModelVersion: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.ImageWidth = None
         self.ImageHeight = None
         self.FaceInfos = None
+        self.FaceModelVersion = None
         self.RequestId = None
 
 
@@ -661,6 +681,7 @@ class DetectFaceResponse(AbstractModel):
                 obj = FaceInfo()
                 obj._deserialize(item)
                 self.FaceInfos.append(obj)
+        self.FaceModelVersion = params.get("FaceModelVersion")
         self.RequestId = params.get("RequestId")
 
 
@@ -671,10 +692,11 @@ class DetectLiveFaceRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Image: 图片 base64 数据（图片的宽高比请接近3:4，不符合宽高比的图片返回的分值不具备参考意义）。
+        :param Image: 图片 base64 数据，base64 编码后大小不可超过5M（图片的宽高比请接近3:4，不符合宽高比的图片返回的分值不具备参考意义）。
 支持PNG、JPG、JPEG、BMP，不支持 GIF 图片。
         :type Image: str
-        :param Url: 图片的 Url 。图片的 Url、Image必须提供一个，如果都提供，只使用 Url。 
+        :param Url: 图片的 Url 。对应图片 base64 编码后大小不可超过5M。
+Url、Image必须提供一个，如果都提供，只使用 Url。 
 （图片的宽高比请接近 3:4，不符合宽高比的图片返回的分值不具备参考意义） 
 图片存储于腾讯云的Url可保障更高下载速度和稳定性，建议图片存储于腾讯云。 
 非腾讯云存储的Url速度和稳定性可能受一定影响。
@@ -914,7 +936,7 @@ class FaceQualityInfo(AbstractModel):
     def __init__(self):
         """
         :param Score: 质量分: [0,100]，综合评价图像质量是否适合人脸识别，分数越高质量越好。 
-正常情况，只需要使用Score作为质量分总体的判断标准即可。
+正常情况，只需要使用Score作为质量分总体的判断标准即可。Sharpness、Brightness、Completeness等细项分仅供参考。
 参考范围：[0,40]较差，[40,60] 一般，[60,80]较好，[80,100]很好。 
 建议：人脸入库选取70以上的图片。
 注意：此字段可能返回 null，表示取不到有效值。
@@ -1668,9 +1690,11 @@ class SearchFacesRequest(AbstractModel):
         """
         :param GroupIds: 希望搜索的人员库列表，上限100个。
         :type GroupIds: list of str
-        :param Image: 图片 base64 数据。支持PNG、JPG、JPEG、BMP，不支持 GIF 图片。
+        :param Image: 图片 base64 数据，base64 编码后大小不可超过5M。
+支持PNG、JPG、JPEG、BMP，不支持 GIF 图片。
         :type Image: str
-        :param Url: 图片的 Url、Image必须提供一个，如果都提供，只使用 Url。
+        :param Url: 图片的 Url 。对应图片 base64 编码后大小不可超过5M。
+Url、Image必须提供一个，如果都提供，只使用 Url。  
 图片存储于腾讯云的Url可保障更高下载速度和稳定性，建议图片存储于腾讯云。 
 非腾讯云存储的Url速度和稳定性可能受一定影响。
 支持PNG、JPG、JPEG、BMP，不支持 GIF 图片。
@@ -1746,11 +1770,12 @@ class VerifyFaceRequest(AbstractModel):
         """
         :param PersonId: 待验证的人员ID。人员ID具体信息请参考人员库管理相关接口。
         :type PersonId: str
-        :param Image: 图片 base64 数据。
+        :param Image: 图片 base64 数据，base64 编码后大小不可超过5M。
 若图片中包含多张人脸，只选取其中人脸面积最大的人脸。
 支持PNG、JPG、JPEG、BMP，不支持 GIF 图片。
         :type Image: str
-        :param Url: 图片的 Url 。 图片的 Url、Image必须提供一个，如果都提供，只使用 Url。 
+        :param Url: 图片的 Url 。对应图片 base64 编码后大小不可超过5M。
+Url、Image必须提供一个，如果都提供，只使用 Url。  
 图片存储于腾讯云的Url可保障更高下载速度和稳定性，建议图片存储于腾讯云。 
 非腾讯云存储的Url速度和稳定性可能受一定影响。
 若图片中包含多张人脸，只选取其中人脸面积最大的人脸。

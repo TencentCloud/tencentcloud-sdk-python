@@ -17,48 +17,20 @@ import json
 
 from tencentcloud.common.exception.tencent_cloud_sdk_exception import TencentCloudSDKException
 from tencentcloud.common.abstract_client import AbstractClient
-from tencentcloud.tbp.v20190311 import models
+from tencentcloud.tbp.v20190627 import models
 
 
 class TbpClient(AbstractClient):
-    _apiVersion = '2019-03-11'
+    _apiVersion = '2019-06-27'
     _endpoint = 'tbp.tencentcloudapi.com'
 
 
-    def Reset(self, request):
-        """对当前机器人的会话状态进行复位
-
-        :param request: 调用Reset所需参数的结构体。
-        :type request: :class:`tencentcloud.tbp.v20190311.models.ResetRequest`
-        :rtype: :class:`tencentcloud.tbp.v20190311.models.ResetResponse`
-
-        """
-        try:
-            params = request._serialize()
-            body = self.call("Reset", params)
-            response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.ResetResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(e.message, e.message)
-
-
     def TextProcess(self, request):
-        """接收调用侧的文本输入，返回应答文本。已废弃，推荐使用最新版TextProcess接口。
+        """接收调用侧的文本输入，返回应答文本。
 
         :param request: 调用TextProcess所需参数的结构体。
-        :type request: :class:`tencentcloud.tbp.v20190311.models.TextProcessRequest`
-        :rtype: :class:`tencentcloud.tbp.v20190311.models.TextProcessResponse`
+        :type request: :class:`tencentcloud.tbp.v20190627.models.TextProcessRequest`
+        :rtype: :class:`tencentcloud.tbp.v20190627.models.TextProcessResponse`
 
         """
         try:
@@ -82,11 +54,11 @@ class TbpClient(AbstractClient):
 
 
     def TextReset(self, request):
-        """会话重置接口。已废弃，推荐使用最新版TextReset接口。
+        """会话重置接口。
 
         :param request: 调用TextReset所需参数的结构体。
-        :type request: :class:`tencentcloud.tbp.v20190311.models.TextResetRequest`
-        :rtype: :class:`tencentcloud.tbp.v20190311.models.TextResetResponse`
+        :type request: :class:`tencentcloud.tbp.v20190627.models.TextResetRequest`
+        :rtype: :class:`tencentcloud.tbp.v20190627.models.TextResetResponse`
 
         """
         try:

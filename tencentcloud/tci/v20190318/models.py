@@ -2699,6 +2699,8 @@ class ModifyPersonResponse(AbstractModel):
 
     def __init__(self):
         """
+        :param FaceInfoSet: 人脸信息
+        :type FaceInfoSet: list of FaceInfo
         :param LibraryId: 人员所属人员库标识符
         :type LibraryId: str
         :param PersonId: 人员唯一标识符
@@ -2708,6 +2710,7 @@ class ModifyPersonResponse(AbstractModel):
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
+        self.FaceInfoSet = None
         self.LibraryId = None
         self.PersonId = None
         self.PersonName = None
@@ -2715,6 +2718,12 @@ class ModifyPersonResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        if params.get("FaceInfoSet") is not None:
+            self.FaceInfoSet = []
+            for item in params.get("FaceInfoSet"):
+                obj = FaceInfo()
+                obj._deserialize(item)
+                self.FaceInfoSet.append(obj)
         self.LibraryId = params.get("LibraryId")
         self.PersonId = params.get("PersonId")
         self.PersonName = params.get("PersonName")
@@ -3172,7 +3181,7 @@ class SubmitDoubleVideoHighlightsRequest(AbstractModel):
         :param PersonIds: 旧版本需要匹配的人员信息列表。
         :type PersonIds: list of str
         :param SimThreshold: 人脸检索的相似度阈值，默认值0.89。建议留空。
-        :type SimThreshold: int
+        :type SimThreshold: float
         :param TeacherFileContent: 老师视频url
         :type TeacherFileContent: str
         """

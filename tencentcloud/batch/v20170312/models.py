@@ -427,6 +427,27 @@ class ComputeNodeMetrics(AbstractModel):
         self.AbnormalCount = params.get("AbnormalCount")
 
 
+class CpmVirtualPrivateCloud(AbstractModel):
+    """黑石私有网络
+
+    """
+
+    def __init__(self):
+        """
+        :param VpcId: 黑石私有网络ID
+        :type VpcId: str
+        :param SubnetId: 黑石子网ID
+        :type SubnetId: str
+        """
+        self.VpcId = None
+        self.SubnetId = None
+
+
+    def _deserialize(self, params):
+        self.VpcId = params.get("VpcId")
+        self.SubnetId = params.get("SubnetId")
+
+
 class CreateComputeEnvRequest(AbstractModel):
     """CreateComputeEnv请求参数结构体
 
@@ -458,6 +479,56 @@ class CreateComputeEnvRequest(AbstractModel):
 
 class CreateComputeEnvResponse(AbstractModel):
     """CreateComputeEnv返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param EnvId: 计算环境ID
+        :type EnvId: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.EnvId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.EnvId = params.get("EnvId")
+        self.RequestId = params.get("RequestId")
+
+
+class CreateCpmComputeEnvRequest(AbstractModel):
+    """CreateCpmComputeEnv请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ComputeEnv: 计算环境信息
+        :type ComputeEnv: :class:`tencentcloud.batch.v20170312.models.NamedCpmComputeEnv`
+        :param Placement: 位置信息
+        :type Placement: :class:`tencentcloud.batch.v20170312.models.Placement`
+        :param ClientToken: 用于保证请求幂等性的字符串。该字符串由用户生成，需保证不同请求之间唯一，最大值不超过64个ASCII字符。若不指定该参数，则无法保证请求的幂等性。
+        :type ClientToken: str
+        """
+        self.ComputeEnv = None
+        self.Placement = None
+        self.ClientToken = None
+
+
+    def _deserialize(self, params):
+        if params.get("ComputeEnv") is not None:
+            self.ComputeEnv = NamedCpmComputeEnv()
+            self.ComputeEnv._deserialize(params.get("ComputeEnv"))
+        if params.get("Placement") is not None:
+            self.Placement = Placement()
+            self.Placement._deserialize(params.get("Placement"))
+        self.ClientToken = params.get("ClientToken")
+
+
+class CreateCpmComputeEnvResponse(AbstractModel):
+    """CreateCpmComputeEnv返回参数结构体
 
     """
 
@@ -1799,6 +1870,52 @@ class EnvData(AbstractModel):
                 self.VirtualPrivateClouds.append(obj)
 
 
+class EnvDataCpm(AbstractModel):
+    """黑石计算环境数据
+
+    """
+
+    def __init__(self):
+        """
+        :param Zones: 黑石可用区列表。可通过黑石[DescribeRegions](https://cloud.tencent.com/document/api/386/33564)接口查询。目前仅支持一个可用区。
+        :type Zones: list of str
+        :param ComputeTypes: 黑石计算单元类型列表。如v3.c2.medium，更详细的ComputeType参考[黑石竞价实例产品文档](https://cloud.tencent.com/document/product/386/30256)。目前仅支持一个计算单元类型。
+        :type ComputeTypes: list of str
+        :param OsTypeId: 黑石操作系统类型ID。
+        :type OsTypeId: int
+        :param VirtualPrivateClouds: 黑石VPC列表，目前仅支持一个VPC。
+        :type VirtualPrivateClouds: list of CpmVirtualPrivateCloud
+        :param DeployType: DeployType参数值为fast时，将选取黑石预部署机器发货，发货快。如果无此参数，则选取黑石常规机器发货。
+        :type DeployType: str
+        :param SpotStrategy: 出价策略。默认取值为SpotAsPriceGo，表示出价方式为随市场价的策略。目前只可取值SpotAsPriceGo。
+        :type SpotStrategy: str
+        :param Passwd: 设置黑石竞价实例密码。若不指定会生成随机密码，可到站内信中查看。
+        :type Passwd: str
+        """
+        self.Zones = None
+        self.ComputeTypes = None
+        self.OsTypeId = None
+        self.VirtualPrivateClouds = None
+        self.DeployType = None
+        self.SpotStrategy = None
+        self.Passwd = None
+
+
+    def _deserialize(self, params):
+        self.Zones = params.get("Zones")
+        self.ComputeTypes = params.get("ComputeTypes")
+        self.OsTypeId = params.get("OsTypeId")
+        if params.get("VirtualPrivateClouds") is not None:
+            self.VirtualPrivateClouds = []
+            for item in params.get("VirtualPrivateClouds"):
+                obj = CpmVirtualPrivateCloud()
+                obj._deserialize(item)
+                self.VirtualPrivateClouds.append(obj)
+        self.DeployType = params.get("DeployType")
+        self.SpotStrategy = params.get("SpotStrategy")
+        self.Passwd = params.get("Passwd")
+
+
 class EnvVar(AbstractModel):
     """环境变量
 
@@ -2550,6 +2667,69 @@ class NamedComputeEnv(AbstractModel):
         if params.get("AgentRunningMode") is not None:
             self.AgentRunningMode = AgentRunningMode()
             self.AgentRunningMode._deserialize(params.get("AgentRunningMode"))
+        if params.get("Notifications") is not None:
+            self.Notifications = Notification()
+            self.Notifications._deserialize(params.get("Notifications"))
+        self.ActionIfComputeNodeInactive = params.get("ActionIfComputeNodeInactive")
+
+
+class NamedCpmComputeEnv(AbstractModel):
+    """黑石计算环境
+
+    """
+
+    def __init__(self):
+        """
+        :param EnvName: 计算环境名称
+        :type EnvName: str
+        :param EnvData: 计算环境具体参数
+        :type EnvData: :class:`tencentcloud.batch.v20170312.models.EnvDataCpm`
+        :param DesiredComputeNodeCount: 计算节点期望个数
+        :type DesiredComputeNodeCount: int
+        :param EnvDescription: 计算环境描述
+        :type EnvDescription: str
+        :param EnvType: 计算环境管理类型
+        :type EnvType: str
+        :param Authentications: 授权信息
+        :type Authentications: list of Authentication
+        :param InputMappings: 输入映射信息
+        :type InputMappings: list of InputMapping
+        :param Notifications: 通知信息
+        :type Notifications: :class:`tencentcloud.batch.v20170312.models.Notification`
+        :param ActionIfComputeNodeInactive: 非活跃节点处理策略，默认“RECREATE”，即对于实例创建失败或异常退还的计算节点，定期重新创建实例资源。
+        :type ActionIfComputeNodeInactive: str
+        """
+        self.EnvName = None
+        self.EnvData = None
+        self.DesiredComputeNodeCount = None
+        self.EnvDescription = None
+        self.EnvType = None
+        self.Authentications = None
+        self.InputMappings = None
+        self.Notifications = None
+        self.ActionIfComputeNodeInactive = None
+
+
+    def _deserialize(self, params):
+        self.EnvName = params.get("EnvName")
+        if params.get("EnvData") is not None:
+            self.EnvData = EnvDataCpm()
+            self.EnvData._deserialize(params.get("EnvData"))
+        self.DesiredComputeNodeCount = params.get("DesiredComputeNodeCount")
+        self.EnvDescription = params.get("EnvDescription")
+        self.EnvType = params.get("EnvType")
+        if params.get("Authentications") is not None:
+            self.Authentications = []
+            for item in params.get("Authentications"):
+                obj = Authentication()
+                obj._deserialize(item)
+                self.Authentications.append(obj)
+        if params.get("InputMappings") is not None:
+            self.InputMappings = []
+            for item in params.get("InputMappings"):
+                obj = InputMapping()
+                obj._deserialize(item)
+                self.InputMappings.append(obj)
         if params.get("Notifications") is not None:
             self.Notifications = Notification()
             self.Notifications._deserialize(params.get("Notifications"))

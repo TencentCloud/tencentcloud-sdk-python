@@ -208,13 +208,13 @@ class ClusterCIDRSettings(AbstractModel):
 
     def __init__(self):
         """
-        :param ClusterCIDR: 用于分配集群容器和服务 IP 的 CIDR，不得与 VPC CIDR 冲突，也不得与同 VPC 内其他集群 CIDR 冲突
+        :param ClusterCIDR: 用于分配集群容器和服务 IP 的 CIDR，不得与 VPC CIDR 冲突，也不得与同 VPC 内其他集群 CIDR 冲突。且网段范围必须在内网网段内，例如:10.1.0.0/14, 192.168.0.1/18,172.16.0.0/16。
         :type ClusterCIDR: str
         :param IgnoreClusterCIDRConflict: 是否忽略 ClusterCIDR 冲突错误, 默认不忽略
         :type IgnoreClusterCIDRConflict: bool
-        :param MaxNodePodNum: 集群中每个Node上最大的Pod数量
+        :param MaxNodePodNum: 集群中每个Node上最大的Pod数量。取值范围4～256。不为2的幂值时会向上取最接近的2的幂值。
         :type MaxNodePodNum: int
-        :param MaxClusterServiceNum: 集群最大的service数量
+        :param MaxClusterServiceNum: 集群最大的service数量。取值范围32～32768，不为2的幂值时会向上取最接近的2的幂值。
         :type MaxClusterServiceNum: int
         """
         self.ClusterCIDR = None
@@ -269,6 +269,71 @@ class ClusterNetworkSettings(AbstractModel):
         self.Ipvs = params.get("Ipvs")
         self.VpcId = params.get("VpcId")
         self.Cni = params.get("Cni")
+
+
+class CreateClusterAsGroupRequest(AbstractModel):
+    """CreateClusterAsGroup请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ClusterId: 集群ID
+        :type ClusterId: str
+        :param AutoScalingGroupPara: 伸缩组创建透传参数，json化字符串格式，详见[伸缩组创建实例](https://cloud.tencent.com/document/api/377/20440)接口。LaunchConfigurationId由LaunchConfigurePara参数创建，不支持填写
+        :type AutoScalingGroupPara: str
+        :param LaunchConfigurePara: 启动配置创建透传参数，json化字符串格式，详见[创建启动配置](https://cloud.tencent.com/document/api/377/20447)接口。另外ImageId参数由于集群维度已经有的ImageId信息，这个字段不需要填写。UserData字段设置通过UserScript设置，这个字段不需要填写。
+        :type LaunchConfigurePara: str
+        :param InstanceAdvancedSettings: 节点高级配置信息
+        :type InstanceAdvancedSettings: :class:`tencentcloud.tke.v20180525.models.InstanceAdvancedSettings`
+        :param Labels: 节点Label数组
+        :type Labels: list of Label
+        """
+        self.ClusterId = None
+        self.AutoScalingGroupPara = None
+        self.LaunchConfigurePara = None
+        self.InstanceAdvancedSettings = None
+        self.Labels = None
+
+
+    def _deserialize(self, params):
+        self.ClusterId = params.get("ClusterId")
+        self.AutoScalingGroupPara = params.get("AutoScalingGroupPara")
+        self.LaunchConfigurePara = params.get("LaunchConfigurePara")
+        if params.get("InstanceAdvancedSettings") is not None:
+            self.InstanceAdvancedSettings = InstanceAdvancedSettings()
+            self.InstanceAdvancedSettings._deserialize(params.get("InstanceAdvancedSettings"))
+        if params.get("Labels") is not None:
+            self.Labels = []
+            for item in params.get("Labels"):
+                obj = Label()
+                obj._deserialize(item)
+                self.Labels.append(obj)
+
+
+class CreateClusterAsGroupResponse(AbstractModel):
+    """CreateClusterAsGroup返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param LaunchConfigurationId: 启动配置ID
+        :type LaunchConfigurationId: str
+        :param AutoScalingGroupId: 伸缩组ID
+        :type AutoScalingGroupId: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.LaunchConfigurationId = None
+        self.AutoScalingGroupId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.LaunchConfigurationId = params.get("LaunchConfigurationId")
+        self.AutoScalingGroupId = params.get("AutoScalingGroupId")
+        self.RequestId = params.get("RequestId")
 
 
 class CreateClusterInstancesRequest(AbstractModel):
@@ -330,7 +395,7 @@ class CreateClusterRequest(AbstractModel):
         :type ClusterCIDRSettings: :class:`tencentcloud.tke.v20180525.models.ClusterCIDRSettings`
         :param ClusterType: 集群类型，托管集群：MANAGED_CLUSTER，独立集群：INDEPENDENT_CLUSTER。
         :type ClusterType: str
-        :param RunInstancesForNode: CVM创建透传参数，json化字符串格式，详见[CVM创建实例](https://cloud.tencent.com/document/product/213/15730)接口。
+        :param RunInstancesForNode: CVM创建透传参数，json化字符串格式，详见[CVM创建实例](https://cloud.tencent.com/document/product/213/15730)接口。总机型(包括地域)数量不超过10个，相同机型(地域)购买多台机器可以通过设置参数中RunInstances中InstanceCount来实现。
         :type RunInstancesForNode: list of RunInstancesForNode
         :param ClusterBasicSettings: 集群的基本配置信息
         :type ClusterBasicSettings: :class:`tencentcloud.tke.v20180525.models.ClusterBasicSettings`
@@ -338,7 +403,7 @@ class CreateClusterRequest(AbstractModel):
         :type ClusterAdvancedSettings: :class:`tencentcloud.tke.v20180525.models.ClusterAdvancedSettings`
         :param InstanceAdvancedSettings: 节点高级配置信息
         :type InstanceAdvancedSettings: :class:`tencentcloud.tke.v20180525.models.InstanceAdvancedSettings`
-        :param ExistedInstancesForNode: 已存在实例的配置信息
+        :param ExistedInstancesForNode: 已存在实例的配置信息。所有实例必须在同一个VPC中，最大数量不超过100。
         :type ExistedInstancesForNode: list of ExistedInstancesForNode
         """
         self.ClusterCIDRSettings = None
@@ -652,17 +717,20 @@ class DescribeClusterInstancesRequest(AbstractModel):
         """
         :param ClusterId: 集群ID
         :type ClusterId: str
-        :param Offset: 偏移量,默认0
+        :param Offset: 偏移量，默认为0。关于Offset的更进一步介绍请参考 API [简介](https://cloud.tencent.com/document/api/213/15688)中的相关小节。
         :type Offset: int
-        :param Limit: 最大输出条数，默认20
+        :param Limit: 返回数量，默认为20，最大值为100。关于Limit的更进一步介绍请参考 API [简介](https://cloud.tencent.com/document/api/213/15688)中的相关小节。
         :type Limit: int
-        :param InstanceIds: 需要获取的节点实例Id列表(默认为空，表示拉取集群下所有节点实例)
+        :param InstanceIds: 需要获取的节点实例Id列表。如果为空，表示拉取集群下所有节点实例。
         :type InstanceIds: list of str
+        :param InstanceRole: 节点角色, MASTER, WORKER, ETCD, MASTER_ETCD,ALL, 默认为WORKER。默认为WORKER类型。
+        :type InstanceRole: str
         """
         self.ClusterId = None
         self.Offset = None
         self.Limit = None
         self.InstanceIds = None
+        self.InstanceRole = None
 
 
     def _deserialize(self, params):
@@ -670,6 +738,7 @@ class DescribeClusterInstancesRequest(AbstractModel):
         self.Offset = params.get("Offset")
         self.Limit = params.get("Limit")
         self.InstanceIds = params.get("InstanceIds")
+        self.InstanceRole = params.get("InstanceRole")
 
 
 class DescribeClusterInstancesResponse(AbstractModel):
@@ -859,7 +928,7 @@ class DescribeClustersRequest(AbstractModel):
         :type ClusterIds: list of str
         :param Offset: 偏移量,默认0
         :type Offset: int
-        :param Limit: 最大输出条数，默认20
+        :param Limit: 最大输出条数，默认20，最大为100
         :type Limit: int
         :param Filters: 过滤条件,当前只支持按照单个条件ClusterName进行过滤
         :type Filters: list of Filter
@@ -1153,7 +1222,7 @@ class ExistedInstancesForNode(AbstractModel):
 
     def __init__(self):
         """
-        :param NodeRole: 节点角色，取值:MASTER_ETCD, WORKER。MASTER_ETCD只有在创建 INDEPENDENT_CLUSTER 独立集群时需要指定。
+        :param NodeRole: 节点角色，取值:MASTER_ETCD, WORKER。MASTER_ETCD只有在创建 INDEPENDENT_CLUSTER 独立集群时需要指定。MASTER_ETCD节点数量为3～7，建议为奇数。MASTER_ETCD最小配置为4C8G。
         :type NodeRole: str
         :param ExistedInstancesPara: 已存在实例的重装参数
         :type ExistedInstancesPara: :class:`tencentcloud.tke.v20180525.models.ExistedInstancesPara`
@@ -1287,6 +1356,27 @@ class InstanceAdvancedSettings(AbstractModel):
         self.Unschedulable = params.get("Unschedulable")
 
 
+class Label(AbstractModel):
+    """k8s中标签，一般以数组的方式存在
+
+    """
+
+    def __init__(self):
+        """
+        :param Name: map表中的Name
+        :type Name: str
+        :param Value: map表中的Value
+        :type Value: str
+        """
+        self.Name = None
+        self.Value = None
+
+
+    def _deserialize(self, params):
+        self.Name = params.get("Name")
+        self.Value = params.get("Value")
+
+
 class LoginSettings(AbstractModel):
     """描述了实例登录相关配置与信息。
 
@@ -1404,7 +1494,7 @@ class RunInstancesForNode(AbstractModel):
 
     def __init__(self):
         """
-        :param NodeRole: 节点角色，取值:MASTER_ETCD, WORKER。MASTER_ETCD只有在创建 INDEPENDENT_CLUSTER 独立集群时需要指定。
+        :param NodeRole: 节点角色，取值:MASTER_ETCD, WORKER。MASTER_ETCD只有在创建 INDEPENDENT_CLUSTER 独立集群时需要指定。MASTER_ETCD节点数量为3～7，建议为奇数。MASTER_ETCD节点最小配置为4C8G。
         :type NodeRole: str
         :param RunInstancesPara: CVM创建透传参数，json化字符串格式，详见[CVM创建实例](https://cloud.tencent.com/document/product/213/15730)接口，传入公共参数外的其他参数即可，其中ImageId会替换为TKE集群OS对应的镜像。
         :type RunInstancesPara: list of str

@@ -16,99 +16,54 @@
 from tencentcloud.common.abstract_model import AbstractModel
 
 
-class ResetRequest(AbstractModel):
-    """Reset请求参数结构体
+class Group(AbstractModel):
+    """Group是消息组的具体定义，当前包含ContentType、Url、Content三个字段。其中，具体的ContentType字段定义，参考互联网MIME类型标准。
 
     """
 
     def __init__(self):
         """
-        :param BotId: 机器人标识
-        :type BotId: str
-        :param UserId: 子账户id，每个终端对应一个
-        :type UserId: str
-        :param BotVersion: 机器人版本号。BotVersion/BotEnv二选一：二者均填，仅BotVersion有效；二者均不填，默认BotEnv=dev
-        :type BotVersion: str
-        :param BotEnv: 机器人环境{dev:测试;release:线上}。BotVersion/BotEnv二选一：二者均填，仅BotVersion有效；二者均不填，默认BotEnv=dev
-        :type BotEnv: str
+        :param ContentType: 消息类型参考互联网MIME类型标准，当前仅支持"text/plain"。
+        :type ContentType: str
+        :param Url: 返回内容以链接形式提供。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Url: str
+        :param Content: 普通文本。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Content: str
         """
-        self.BotId = None
-        self.UserId = None
-        self.BotVersion = None
-        self.BotEnv = None
+        self.ContentType = None
+        self.Url = None
+        self.Content = None
 
 
     def _deserialize(self, params):
-        self.BotId = params.get("BotId")
-        self.UserId = params.get("UserId")
-        self.BotVersion = params.get("BotVersion")
-        self.BotEnv = params.get("BotEnv")
+        self.ContentType = params.get("ContentType")
+        self.Url = params.get("Url")
+        self.Content = params.get("Content")
 
 
-class ResetResponse(AbstractModel):
-    """Reset返回参数结构体
+class ResponseMessage(AbstractModel):
+    """从TBP-RTS服务v1.3版本起，机器人以消息组列表的形式响应，消息组列表GroupList包含多组消息，用户根据需要对部分或全部消息组进行组合使用。
 
     """
 
     def __init__(self):
         """
-        :param DialogStatus: 当前会话状态。取值:"start"/"continue"/"complete"
+        :param GroupList: 消息组列表。
 注意：此字段可能返回 null，表示取不到有效值。
-        :type DialogStatus: str
-        :param BotName: 匹配到的机器人名称
-注意：此字段可能返回 null，表示取不到有效值。
-        :type BotName: str
-        :param IntentName: 匹配到的意图名称
-注意：此字段可能返回 null，表示取不到有效值。
-        :type IntentName: str
-        :param ResponseText: 机器人回答
-        :type ResponseText: str
-        :param SlotInfoList: 语义解析的槽位结果列表
-注意：此字段可能返回 null，表示取不到有效值。
-        :type SlotInfoList: list of SlotInfo
-        :param SessionAttributes: 透传字段
-注意：此字段可能返回 null，表示取不到有效值。
-        :type SessionAttributes: str
-        :param Question: 用户说法。该说法是用户原生说法或ASR识别结果，未经过语义优化
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Question: str
-        :param WaveUrl: tts合成pcm音频存储链接。仅当请求参数NeedTts=true时返回
-注意：此字段可能返回 null，表示取不到有效值。
-        :type WaveUrl: str
-        :param WaveData: tts合成的pcm音频。二进制数组经过base64编码(暂时不返回)
-注意：此字段可能返回 null，表示取不到有效值。
-        :type WaveData: str
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
+        :type GroupList: list of Group
         """
-        self.DialogStatus = None
-        self.BotName = None
-        self.IntentName = None
-        self.ResponseText = None
-        self.SlotInfoList = None
-        self.SessionAttributes = None
-        self.Question = None
-        self.WaveUrl = None
-        self.WaveData = None
-        self.RequestId = None
+        self.GroupList = None
 
 
     def _deserialize(self, params):
-        self.DialogStatus = params.get("DialogStatus")
-        self.BotName = params.get("BotName")
-        self.IntentName = params.get("IntentName")
-        self.ResponseText = params.get("ResponseText")
-        if params.get("SlotInfoList") is not None:
-            self.SlotInfoList = []
-            for item in params.get("SlotInfoList"):
-                obj = SlotInfo()
+        if params.get("GroupList") is not None:
+            self.GroupList = []
+            for item in params.get("GroupList"):
+                obj = Group()
                 obj._deserialize(item)
-                self.SlotInfoList.append(obj)
-        self.SessionAttributes = params.get("SessionAttributes")
-        self.Question = params.get("Question")
-        self.WaveUrl = params.get("WaveUrl")
-        self.WaveData = params.get("WaveData")
-        self.RequestId = params.get("RequestId")
+                self.GroupList.append(obj)
 
 
 class SlotInfo(AbstractModel):
@@ -143,28 +98,32 @@ class TextProcessRequest(AbstractModel):
         """
         :param BotId: 机器人标识，用于定义抽象机器人。
         :type BotId: str
+        :param BotEnv: 机器人版本，取值"dev"或"release"，{调试版本：dev；线上版本：release}。
+        :type BotEnv: str
         :param TerminalId: 终端标识，每个终端(或线程)对应一个，区分并发多用户。
         :type TerminalId: str
         :param InputText: 请求的文本。
         :type InputText: str
-        :param BotEnv: 机器人版本，取值"dev"或"release"，{调试版本：dev；线上版本：release}。
-        :type BotEnv: str
         :param SessionAttributes: 透传字段，透传给用户自定义的WebService服务。
         :type SessionAttributes: str
+        :param PlatformType: 平台类型，{小程序：MiniProgram；小微：XiaoWei；公众号：OfficialAccount}。
+        :type PlatformType: str
         """
         self.BotId = None
+        self.BotEnv = None
         self.TerminalId = None
         self.InputText = None
-        self.BotEnv = None
         self.SessionAttributes = None
+        self.PlatformType = None
 
 
     def _deserialize(self, params):
         self.BotId = params.get("BotId")
+        self.BotEnv = params.get("BotEnv")
         self.TerminalId = params.get("TerminalId")
         self.InputText = params.get("InputText")
-        self.BotEnv = params.get("BotEnv")
         self.SessionAttributes = params.get("SessionAttributes")
+        self.PlatformType = params.get("PlatformType")
 
 
 class TextProcessResponse(AbstractModel):
@@ -189,12 +148,15 @@ class TextProcessResponse(AbstractModel):
         :param InputText: 原始的用户说法。
 注意：此字段可能返回 null，表示取不到有效值。
         :type InputText: str
+        :param ResponseMessage: 机器人应答。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ResponseMessage: :class:`tencentcloud.tbp.v20190627.models.ResponseMessage`
         :param SessionAttributes: 透传字段，由用户自定义的WebService服务返回。
 注意：此字段可能返回 null，表示取不到有效值。
         :type SessionAttributes: str
-        :param ResponseText: 机器人对话的应答文本。
+        :param ResultType: 结果类型 {0:未命中机器人; 1:任务型机器人; 2:问答型机器人; 3:闲聊型机器人}
 注意：此字段可能返回 null，表示取不到有效值。
-        :type ResponseText: str
+        :type ResultType: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -203,8 +165,9 @@ class TextProcessResponse(AbstractModel):
         self.IntentName = None
         self.SlotInfoList = None
         self.InputText = None
+        self.ResponseMessage = None
         self.SessionAttributes = None
-        self.ResponseText = None
+        self.ResultType = None
         self.RequestId = None
 
 
@@ -219,8 +182,11 @@ class TextProcessResponse(AbstractModel):
                 obj._deserialize(item)
                 self.SlotInfoList.append(obj)
         self.InputText = params.get("InputText")
+        if params.get("ResponseMessage") is not None:
+            self.ResponseMessage = ResponseMessage()
+            self.ResponseMessage._deserialize(params.get("ResponseMessage"))
         self.SessionAttributes = params.get("SessionAttributes")
-        self.ResponseText = params.get("ResponseText")
+        self.ResultType = params.get("ResultType")
         self.RequestId = params.get("RequestId")
 
 
@@ -233,20 +199,24 @@ class TextResetRequest(AbstractModel):
         """
         :param BotId: 机器人标识，用于定义抽象机器人。
         :type BotId: str
-        :param TerminalId: 终端标识，每个终端(或线程)对应一个，区分并发多用户。
-        :type TerminalId: str
         :param BotEnv: 机器人版本，取值"dev"或"release"，{调试版本：dev；线上版本：release}。
         :type BotEnv: str
+        :param TerminalId: 终端标识，每个终端(或线程)对应一个，区分并发多用户。
+        :type TerminalId: str
+        :param PlatformType: 平台类型，{小程序：MiniProgram；小微：XiaoWei；公众号：OfficialAccount}。
+        :type PlatformType: str
         """
         self.BotId = None
-        self.TerminalId = None
         self.BotEnv = None
+        self.TerminalId = None
+        self.PlatformType = None
 
 
     def _deserialize(self, params):
         self.BotId = params.get("BotId")
-        self.TerminalId = params.get("TerminalId")
         self.BotEnv = params.get("BotEnv")
+        self.TerminalId = params.get("TerminalId")
+        self.PlatformType = params.get("PlatformType")
 
 
 class TextResetResponse(AbstractModel):
@@ -256,7 +226,7 @@ class TextResetResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param DialogStatus: 当前会话状态，取值："START"/"COUTINUE"/"COMPLETE"。
+        :param DialogStatus: 当前会话状态{会话开始: START; 会话中: COUTINUE; 会话结束: COMPLETE}。
 注意：此字段可能返回 null，表示取不到有效值。
         :type DialogStatus: str
         :param BotName: 匹配到的机器人名称。
@@ -271,12 +241,15 @@ class TextResetResponse(AbstractModel):
         :param InputText: 原始的用户说法。
 注意：此字段可能返回 null，表示取不到有效值。
         :type InputText: str
+        :param ResponseMessage: 机器人应答。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ResponseMessage: :class:`tencentcloud.tbp.v20190627.models.ResponseMessage`
         :param SessionAttributes: 透传字段，由用户自定义的WebService服务返回。
 注意：此字段可能返回 null，表示取不到有效值。
         :type SessionAttributes: str
-        :param ResponseText: 机器人对话的应答文本。
+        :param ResultType: 结果类型 {未命中机器人:0; 任务型机器人:1; 问答型机器人:2; 闲聊型机器人:3}。
 注意：此字段可能返回 null，表示取不到有效值。
-        :type ResponseText: str
+        :type ResultType: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -285,8 +258,9 @@ class TextResetResponse(AbstractModel):
         self.IntentName = None
         self.SlotInfoList = None
         self.InputText = None
+        self.ResponseMessage = None
         self.SessionAttributes = None
-        self.ResponseText = None
+        self.ResultType = None
         self.RequestId = None
 
 
@@ -301,6 +275,9 @@ class TextResetResponse(AbstractModel):
                 obj._deserialize(item)
                 self.SlotInfoList.append(obj)
         self.InputText = params.get("InputText")
+        if params.get("ResponseMessage") is not None:
+            self.ResponseMessage = ResponseMessage()
+            self.ResponseMessage._deserialize(params.get("ResponseMessage"))
         self.SessionAttributes = params.get("SessionAttributes")
-        self.ResponseText = params.get("ResponseText")
+        self.ResultType = params.get("ResultType")
         self.RequestId = params.get("RequestId")

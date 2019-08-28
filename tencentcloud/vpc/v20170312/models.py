@@ -188,7 +188,7 @@ class Address(AbstractModel):
         :type AddressId: str
         :param AddressName: `EIP`名称。
         :type AddressName: str
-        :param AddressStatus: `EIP`状态。
+        :param AddressStatus: `EIP`状态，包含'CREATING'(创建中),'BINDING'(绑定中),'BIND'(已绑定),'UNBINDING'(解绑中),'UNBIND'(已解绑),'OFFLINING'(释放中),'BIND_ENI'(绑定悬空弹性网卡)
         :type AddressStatus: str
         :param AddressIp: 外网IP地址
         :type AddressIp: str
@@ -528,7 +528,7 @@ class AssignPrivateIpAddressesRequest(AbstractModel):
         :type NetworkInterfaceId: str
         :param PrivateIpAddresses: 指定的内网IP信息，单次最多指定10个。
         :type PrivateIpAddresses: list of PrivateIpAddressSpecification
-        :param SecondaryPrivateIpAddressCount: 新申请的内网IP地址个数，内网IP地址个数总和不能超过配数。
+        :param SecondaryPrivateIpAddressCount: 新申请的内网IP地址个数，内网IP地址个数总和不能超过配额数，详见<a href="/document/product/576/18527">弹性网卡使用限制</a>。
         :type SecondaryPrivateIpAddressCount: int
         """
         self.NetworkInterfaceId = None
@@ -571,6 +571,41 @@ class AssignPrivateIpAddressesResponse(AbstractModel):
                 obj._deserialize(item)
                 self.PrivateIpAddressSet.append(obj)
         self.RequestId = params.get("RequestId")
+
+
+class AssistantCidr(AbstractModel):
+    """VPC辅助CIDR信息。
+
+    """
+
+    def __init__(self):
+        """
+        :param VpcId: `VPC`实例`ID`。形如：`vpc-6v2ht8q5`
+        :type VpcId: str
+        :param CidrBlock: 辅助CIDR。形如：`172.16.0.0/16`
+        :type CidrBlock: str
+        :param AssistantType: 辅助CIDR类型（0：普通辅助CIDR，1：容器辅助CIDR），默认都是0。
+        :type AssistantType: int
+        :param SubnetSet: 辅助CIDR拆分的子网。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SubnetSet: list of Subnet
+        """
+        self.VpcId = None
+        self.CidrBlock = None
+        self.AssistantType = None
+        self.SubnetSet = None
+
+
+    def _deserialize(self, params):
+        self.VpcId = params.get("VpcId")
+        self.CidrBlock = params.get("CidrBlock")
+        self.AssistantType = params.get("AssistantType")
+        if params.get("SubnetSet") is not None:
+            self.SubnetSet = []
+            for item in params.get("SubnetSet"):
+                obj = Subnet()
+                obj._deserialize(item)
+                self.SubnetSet.append(obj)
 
 
 class AssociateAddressRequest(AbstractModel):
@@ -2205,7 +2240,7 @@ class CreateVpcRequest(AbstractModel):
         """
         :param VpcName: vpc名称，最大长度不能超过60个字节。
         :type VpcName: str
-        :param CidrBlock: vpc的cidr，只能为10.0.0.0/16，172.16.0.0/12，192.168.0.0/16这三个内网网段内。
+        :param CidrBlock: vpc的cidr，只能为10.0.0.0/16，172.16.0.0/16，192.168.0.0/16这三个内网网段内。
         :type CidrBlock: str
         :param EnableMulticast: 是否开启组播。true: 开启, false: 不开启。
         :type EnableMulticast: str
@@ -3485,7 +3520,7 @@ class DescribeAddressesRequest(AbstractModel):
 <li> address-id - String - 是否必填：否 - （过滤条件）按照 EIP 的唯一 ID 过滤。EIP 唯一 ID 形如：eip-11112222。</li>
 <li> address-name - String - 是否必填：否 - （过滤条件）按照 EIP 名称过滤。不支持模糊过滤。</li>
 <li> address-ip - String - 是否必填：否 - （过滤条件）按照 EIP 的 IP 地址过滤。</li>
-<li> address-status - String - 是否必填：否 - （过滤条件）按照 EIP 的状态过滤。取值范围：[详见EIP状态列表](https://cloud.tencent.com/document/api/213/9452#eip_state)。</li>
+<li> address-status - String - 是否必填：否 - （过滤条件）按照 EIP 的状态过滤。状态包含：'CREATING'，'BINDING'，'BIND'，'UNBINDING'，'UNBIND'，'OFFLINING'，'BIND_ENI'。</li>
 <li> instance-id - String - 是否必填：否 - （过滤条件）按照 EIP 绑定的实例 ID 过滤。实例 ID 形如：ins-11112222。</li>
 <li> private-ip-address - String - 是否必填：否 - （过滤条件）按照 EIP 绑定的内网 IP 过滤。</li>
 <li> network-interface-id - String - 是否必填：否 - （过滤条件）按照 EIP 绑定的弹性网卡 ID 过滤。弹性网卡 ID 形如：eni-11112222。</li>
@@ -4763,6 +4798,8 @@ class DescribeNetworkInterfacesRequest(AbstractModel):
 <li>network-interface-name - String - （过滤条件）网卡实例名称。</li>
 <li>network-interface-description - String - （过滤条件）网卡实例描述。</li>
 <li>address-ip - String - （过滤条件）内网IPv4地址。</li>
+<li>tag-key - String -是否必填：否- （过滤条件）按照标签键进行过滤。使用请参考示例2</li>
+<li>tag:tag-key - String - 是否必填：否 - （过滤条件）按照标签键值对进行过滤。 tag-key使用具体的标签键进行替换。使用请参考示例3。</li>
         :type Filters: list of Filter
         :param Offset: 偏移量，默认为0。
         :type Offset: int
@@ -5027,8 +5064,11 @@ class DescribeSecurityGroupsRequest(AbstractModel):
         :param SecurityGroupIds: 安全组实例ID，例如：sg-33ocnj9n，可通过DescribeSecurityGroups获取。每次请求的实例的上限为100。参数不支持同时指定SecurityGroupIds和Filters。
         :type SecurityGroupIds: list of str
         :param Filters: 过滤条件，参数不支持同时指定SecurityGroupIds和Filters。
+<li>security-group-id - String - （过滤条件）安全组ID。</li>
 <li>project-id - Integer - （过滤条件）项目id。</li>
 <li>security-group-name - String - （过滤条件）安全组名称。</li>
+<li>tag-key - String -是否必填：否- （过滤条件）按照标签键进行过滤。使用请参考示例2。</li>
+<li>tag:tag-key - String - 是否必填：否 - （过滤条件）按照标签键值对进行过滤。 tag-key使用具体的标签键进行替换。使用请参考示例3。</li>
         :type Filters: list of Filter
         :param Offset: 偏移量。
         :type Offset: str
@@ -7014,14 +7054,18 @@ class ModifyAddressAttributeRequest(AbstractModel):
         :type AddressId: str
         :param AddressName: 修改后的 EIP 名称。长度上限为20个字符。
         :type AddressName: str
+        :param EipDirectConnection: 设定EIP是否直通，"TRUE"表示直通，"FALSE"表示非直通。注意该参数仅对EIP直通功能可见的用户可以设定。
+        :type EipDirectConnection: str
         """
         self.AddressId = None
         self.AddressName = None
+        self.EipDirectConnection = None
 
 
     def _deserialize(self, params):
         self.AddressId = params.get("AddressId")
         self.AddressName = params.get("AddressName")
+        self.EipDirectConnection = params.get("EipDirectConnection")
 
 
 class ModifyAddressAttributeResponse(AbstractModel):
@@ -9904,6 +9948,9 @@ class Vpc(AbstractModel):
         :type Ipv6CidrBlock: str
         :param TagSet: 标签键值对
         :type TagSet: list of Tag
+        :param AssistantCidrSet: 辅助CIDR
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AssistantCidrSet: list of AssistantCidr
         """
         self.VpcName = None
         self.VpcId = None
@@ -9917,6 +9964,7 @@ class Vpc(AbstractModel):
         self.EnableDhcp = None
         self.Ipv6CidrBlock = None
         self.TagSet = None
+        self.AssistantCidrSet = None
 
 
     def _deserialize(self, params):
@@ -9937,6 +9985,12 @@ class Vpc(AbstractModel):
                 obj = Tag()
                 obj._deserialize(item)
                 self.TagSet.append(obj)
+        if params.get("AssistantCidrSet") is not None:
+            self.AssistantCidrSet = []
+            for item in params.get("AssistantCidrSet"):
+                obj = AssistantCidr()
+                obj._deserialize(item)
+                self.AssistantCidrSet.append(obj)
 
 
 class VpcIpv6Address(AbstractModel):

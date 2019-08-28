@@ -879,7 +879,8 @@ class TciClient(AbstractClient):
 
 
     def SubmitDoubleVideoHighlights(self, request):
-        """发起双路视频生成精彩集锦接口。该接口可以通过客户传入的学生音视频及老师视频两路Url，自动生成一堂课程的精彩集锦。需要通过SubmitDoubleVideoHighlights接口获取生成结果。
+        """发起双路视频生成精彩集锦接口。该接口可以通过客户传入的学生音视频及老师视频两路Url，自动生成一堂课程的精彩集锦。需要通过DescribeHighlightResult
+        接口获取生成结果。
 
         :param request: 调用SubmitDoubleVideoHighlights所需参数的结构体。
         :type request: :class:`tencentcloud.tci.v20190318.models.SubmitDoubleVideoHighlightsRequest`

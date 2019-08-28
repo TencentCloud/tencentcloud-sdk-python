@@ -29,7 +29,7 @@ class InitOralProcessRequest(AbstractModel):
         :type RefText: str
         :param WorkMode: 语音输入模式，0：流式分片，1：非流式一次性评估
         :type WorkMode: int
-        :param EvalMode: 评估模式，0：词模式（中文评测模式下为文字模式），1：句子模式，2：段落模式，3：自由说模式，当为词模式评估时，能够提供每个音节的评估信息，当为句子模式时，能够提供完整度和流利度信息。
+        :param EvalMode: 评估模式，0：词模式（中文评测模式下为文字模式），1：句子模式，2：段落模式，3：自由说模式，当为词模式评估时，能够提供每个音节的评估信息，当为句子模式时，能够提供完整度和流利度信息。4: 英文单词音素诊断评测模式，针对一个单词音素诊断评测。
         :type EvalMode: int
         :param ScoreCoeff: 评价苛刻指数，取值为[1.0 - 4.0]范围内的浮点数，用于平滑不同年龄段的分数，1.0为小年龄段，4.0为最高年龄段
         :type ScoreCoeff: float
@@ -469,7 +469,7 @@ class TransmitOralProcessWithInitRequest(AbstractModel):
         :type SeqId: int
         :param IsEnd: 是否传输完毕标志，若为0表示未完毕，若为1则传输完毕开始评估，非流式模式下无意义。
         :type IsEnd: int
-        :param VoiceFileType: 语音文件类型 	1:raw, 2:wav, 3:mp3(三种格式目前仅支持16k采样率16bit编码单声道，如有不一致可能导致评估不准确或失败)。
+        :param VoiceFileType: 语音文件类型 	1: raw, 2: wav, 3: mp3, 4: speex (语言文件格式目前仅支持 16k 采样率 16bit 编码单声道，如有不一致可能导致评估不准确或失败)。
         :type VoiceFileType: int
         :param VoiceEncodeType: 语音编码类型	1:pcm。
         :type VoiceEncodeType: int
@@ -481,7 +481,7 @@ class TransmitOralProcessWithInitRequest(AbstractModel):
         :type RefText: str
         :param WorkMode: 语音输入模式，0：流式分片，1：非流式一次性评估
         :type WorkMode: int
-        :param EvalMode: 评估模式，0：词模式（中文评测模式下为文字模式），1：句子模式，2：段落模式，3：自由说模式，当为词模式评估时，能够提供每个音节的评估信息，当为句子模式时，能够提供完整度和流利度信息。
+        :param EvalMode: 评估模式，0：词模式（中文评测模式下为文字模式），1：句子模式，2：段落模式，3：自由说模式，当为词模式评估时，能够提供每个音节的评估信息，当为句子模式时，能够提供完整度和流利度信息，4：单词纠错模式：能够对单词和句子中的读错读音进行纠正，给出参考正确读音。
         :type EvalMode: int
         :param ScoreCoeff: 评价苛刻指数，取值为[1.0 - 4.0]范围内的浮点数，用于平滑不同年龄段的分数，1.0为小年龄段，4.0为最高年龄段
         :type ScoreCoeff: float
@@ -609,9 +609,9 @@ class WordRsp(AbstractModel):
 
     def __init__(self):
         """
-        :param MemBeginTime: 当前单词语音起始时间点，单位为ms
+        :param MemBeginTime: 当前单词语音起始时间点，单位为ms，该字段段落模式下无意义。
         :type MemBeginTime: int
-        :param MemEndTime: 当前单词语音终止时间点，单位为ms
+        :param MemEndTime: 当前单词语音终止时间点，单位为ms，该字段段落模式下无意义。
         :type MemEndTime: int
         :param PronAccuracy: 单词发音准确度，取值范围[-1, 100]，当取-1时指完全不匹配
         :type PronAccuracy: float

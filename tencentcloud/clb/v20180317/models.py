@@ -67,7 +67,7 @@ class Backend(AbstractModel):
         """
         :param Type: 后端服务的类型，可取：CVM、ENI（即将支持）
         :type Type: str
-        :param InstanceId: 后端服务的唯一 ID，可通过 DescribeInstances 接口返回字段中的 unInstanceId 字段获取
+        :param InstanceId: 后端服务的唯一 ID，如 ins-abcd1234
         :type InstanceId: str
         :param Port: 后端服务的监听端口
         :type Port: int
@@ -85,7 +85,7 @@ class Backend(AbstractModel):
         :param RegisteredTime: 后端服务被绑定的时间
 注意：此字段可能返回 null，表示取不到有效值。
         :type RegisteredTime: str
-        :param EniId: 弹性网卡唯一ID
+        :param EniId: 弹性网卡唯一ID，如 eni-1234abcd
 注意：此字段可能返回 null，表示取不到有效值。
         :type EniId: str
         """
@@ -1477,6 +1477,29 @@ class DescribeTaskStatusResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class ExtraInfo(AbstractModel):
+    """暂做保留，一般用户无需关注。
+
+    """
+
+    def __init__(self):
+        """
+        :param ZhiTong: 是否开通VIP直通
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ZhiTong: bool
+        :param TgwGroupName: TgwGroup名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TgwGroupName: str
+        """
+        self.ZhiTong = None
+        self.TgwGroupName = None
+
+
+    def _deserialize(self, params):
+        self.ZhiTong = params.get("ZhiTong")
+        self.TgwGroupName = params.get("TgwGroupName")
+
+
 class HealthCheck(AbstractModel):
     """健康检查信息。
     注意，自定义探测相关参数 目前只有少量区域灰度支持。
@@ -1868,6 +1891,9 @@ OPEN：公网属性， INTERNAL：内网属性。
         :param AddressIPv6: 负载均衡实例的IPv6地址
 注意：此字段可能返回 null，表示取不到有效值。
         :type AddressIPv6: str
+        :param ExtraInfo: 暂做保留，一般用户无需关注。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ExtraInfo: :class:`tencentcloud.clb.v20180317.models.ExtraInfo`
         """
         self.LoadBalancerId = None
         self.LoadBalancerName = None
@@ -1902,6 +1928,7 @@ OPEN：公网属性， INTERNAL：内网属性。
         self.LogSetId = None
         self.LogTopicId = None
         self.AddressIPv6 = None
+        self.ExtraInfo = None
 
 
     def _deserialize(self, params):
@@ -1956,6 +1983,9 @@ OPEN：公网属性， INTERNAL：内网属性。
         self.LogSetId = params.get("LogSetId")
         self.LogTopicId = params.get("LogTopicId")
         self.AddressIPv6 = params.get("AddressIPv6")
+        if params.get("ExtraInfo") is not None:
+            self.ExtraInfo = ExtraInfo()
+            self.ExtraInfo._deserialize(params.get("ExtraInfo"))
 
 
 class LoadBalancerHealth(AbstractModel):
@@ -2972,15 +3002,18 @@ class TargetHealth(AbstractModel):
         :type IP: str
         :param Port: Target绑定的端口
         :type Port: int
-        :param HealthStatus: 当前健康状态，true：健康，false：不健康。
+        :param HealthStatus: 当前健康状态，true：健康，false：不健康（包括尚未开始探测、探测中、状态异常等几种状态）。只有处于健康状态（且权重大于0），负载均衡才会向其转发流量。
         :type HealthStatus: bool
         :param TargetId: Target的实例ID，如 ins-12345678
         :type TargetId: str
+        :param HealthStatusDetial: 当前健康状态的详细信息。如：Alive、Dead、Unknown。Alive状态为健康，Dead状态为异常，Unknown状态包括尚未开始探测、探测中、状态未知。
+        :type HealthStatusDetial: str
         """
         self.IP = None
         self.Port = None
         self.HealthStatus = None
         self.TargetId = None
+        self.HealthStatusDetial = None
 
 
     def _deserialize(self, params):
@@ -2988,6 +3021,7 @@ class TargetHealth(AbstractModel):
         self.Port = params.get("Port")
         self.HealthStatus = params.get("HealthStatus")
         self.TargetId = params.get("TargetId")
+        self.HealthStatusDetial = params.get("HealthStatusDetial")
 
 
 class TargetRegionInfo(AbstractModel):

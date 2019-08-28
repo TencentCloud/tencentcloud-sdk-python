@@ -17,28 +17,28 @@ import json
 
 from tencentcloud.common.exception.tencent_cloud_sdk_exception import TencentCloudSDKException
 from tencentcloud.common.abstract_client import AbstractClient
-from tencentcloud.tbp.v20190311 import models
+from tencentcloud.wss.v20180426 import models
 
 
-class TbpClient(AbstractClient):
-    _apiVersion = '2019-03-11'
-    _endpoint = 'tbp.tencentcloudapi.com'
+class WssClient(AbstractClient):
+    _apiVersion = '2018-04-26'
+    _endpoint = 'wss.tencentcloudapi.com'
 
 
-    def Reset(self, request):
-        """对当前机器人的会话状态进行复位
+    def DeleteCert(self, request):
+        """本接口（DeleteCert）用于删除证书。
 
-        :param request: 调用Reset所需参数的结构体。
-        :type request: :class:`tencentcloud.tbp.v20190311.models.ResetRequest`
-        :rtype: :class:`tencentcloud.tbp.v20190311.models.ResetResponse`
+        :param request: 调用DeleteCert所需参数的结构体。
+        :type request: :class:`tencentcloud.wss.v20180426.models.DeleteCertRequest`
+        :rtype: :class:`tencentcloud.wss.v20180426.models.DeleteCertResponse`
 
         """
         try:
             params = request._serialize()
-            body = self.call("Reset", params)
+            body = self.call("DeleteCert", params)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.ResetResponse()
+                model = models.DeleteCertResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -53,20 +53,20 @@ class TbpClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def TextProcess(self, request):
-        """接收调用侧的文本输入，返回应答文本。已废弃，推荐使用最新版TextProcess接口。
+    def DescribeCertList(self, request):
+        """本接口(DescribeCertList)用于获取证书列表。
 
-        :param request: 调用TextProcess所需参数的结构体。
-        :type request: :class:`tencentcloud.tbp.v20190311.models.TextProcessRequest`
-        :rtype: :class:`tencentcloud.tbp.v20190311.models.TextProcessResponse`
+        :param request: 调用DescribeCertList所需参数的结构体。
+        :type request: :class:`tencentcloud.wss.v20180426.models.DescribeCertListRequest`
+        :rtype: :class:`tencentcloud.wss.v20180426.models.DescribeCertListResponse`
 
         """
         try:
             params = request._serialize()
-            body = self.call("TextProcess", params)
+            body = self.call("DescribeCertList", params)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.TextProcessResponse()
+                model = models.DescribeCertListResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -81,20 +81,20 @@ class TbpClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def TextReset(self, request):
-        """会话重置接口。已废弃，推荐使用最新版TextReset接口。
+    def UploadCert(self, request):
+        """本接口（UploadCert）用于上传证书。
 
-        :param request: 调用TextReset所需参数的结构体。
-        :type request: :class:`tencentcloud.tbp.v20190311.models.TextResetRequest`
-        :rtype: :class:`tencentcloud.tbp.v20190311.models.TextResetResponse`
+        :param request: 调用UploadCert所需参数的结构体。
+        :type request: :class:`tencentcloud.wss.v20180426.models.UploadCertRequest`
+        :rtype: :class:`tencentcloud.wss.v20180426.models.UploadCertResponse`
 
         """
         try:
             params = request._serialize()
-            body = self.call("TextReset", params)
+            body = self.call("UploadCert", params)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.TextResetResponse()
+                model = models.UploadCertResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
