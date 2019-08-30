@@ -126,6 +126,303 @@ class DescribeFilterResultResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeScanResult(AbstractModel):
+    """语音检测结果返回
+
+    """
+
+    def __init__(self):
+        """
+        :param Code: 业务返回码
+        :type Code: int
+        :param DataId: 数据唯一 ID
+        :type DataId: str
+        :param ScanFinishTime: 检测完成的时间戳
+        :type ScanFinishTime: int
+        :param HitFlag: 是否违规
+        :type HitFlag: bool
+        :param Live: 是否为流
+        :type Live: bool
+        :param Msg: 业务返回描述
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Msg: str
+        :param ScanPiece: 检测结果，Code 为 0 时返回
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ScanPiece: list of ScanPiece
+        :param ScanStartTime: 提交检测的时间戳
+        :type ScanStartTime: int
+        :param Scenes: 语音检测场景，对应请求时的 Scene
+        :type Scenes: list of str
+        :param TaskId: 语音检测任务 ID，由后台分配
+        :type TaskId: str
+        :param Url: 文件或接流地址
+        :type Url: str
+        :param Status: 检测任务执行结果状态，分别为：
+<li>Start: 任务开始</li>
+<li>Success: 成功结束</li>
+<li>Error: 异常</li>
+        :type Status: str
+        """
+        self.Code = None
+        self.DataId = None
+        self.ScanFinishTime = None
+        self.HitFlag = None
+        self.Live = None
+        self.Msg = None
+        self.ScanPiece = None
+        self.ScanStartTime = None
+        self.Scenes = None
+        self.TaskId = None
+        self.Url = None
+        self.Status = None
+
+
+    def _deserialize(self, params):
+        self.Code = params.get("Code")
+        self.DataId = params.get("DataId")
+        self.ScanFinishTime = params.get("ScanFinishTime")
+        self.HitFlag = params.get("HitFlag")
+        self.Live = params.get("Live")
+        self.Msg = params.get("Msg")
+        if params.get("ScanPiece") is not None:
+            self.ScanPiece = []
+            for item in params.get("ScanPiece"):
+                obj = ScanPiece()
+                obj._deserialize(item)
+                self.ScanPiece.append(obj)
+        self.ScanStartTime = params.get("ScanStartTime")
+        self.Scenes = params.get("Scenes")
+        self.TaskId = params.get("TaskId")
+        self.Url = params.get("Url")
+        self.Status = params.get("Status")
+
+
+class DescribeScanResultListRequest(AbstractModel):
+    """DescribeScanResultList请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param BizId: 应用 ID，在控制台统一创建。
+        :type BizId: int
+        :param TaskIdList: 查询的任务 ID 列表，任务 ID 列表最多支持 100 个。
+        :type TaskIdList: list of str
+        """
+        self.BizId = None
+        self.TaskIdList = None
+
+
+    def _deserialize(self, params):
+        self.BizId = params.get("BizId")
+        self.TaskIdList = params.get("TaskIdList")
+
+
+class DescribeScanResultListResponse(AbstractModel):
+    """DescribeScanResultList返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Data: 要查询的语音检测任务的结果
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Data: list of DescribeScanResult
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Data = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self.Data = []
+            for item in params.get("Data"):
+                obj = DescribeScanResult()
+                obj._deserialize(item)
+                self.Data.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class ScanDetail(AbstractModel):
+    """语音检测详情
+
+    """
+
+    def __init__(self):
+        """
+        :param Label: 违规场景，参照Label定义
+        :type Label: str
+        :param Rate: 该场景下概率[0.00,100.00],分值越大违规概率越高
+        :type Rate: str
+        :param KeyWord: 违规关键字
+        :type KeyWord: str
+        :param StartTime: 关键字在音频的开始时间，从0开始的偏移量，单位为毫秒
+        :type StartTime: int
+        :param EndTime: 关键字在音频的结束时间，从0开始的偏移量,，单位为毫秒
+        :type EndTime: int
+        """
+        self.Label = None
+        self.Rate = None
+        self.KeyWord = None
+        self.StartTime = None
+        self.EndTime = None
+
+
+    def _deserialize(self, params):
+        self.Label = params.get("Label")
+        self.Rate = params.get("Rate")
+        self.KeyWord = params.get("KeyWord")
+        self.StartTime = params.get("StartTime")
+        self.EndTime = params.get("EndTime")
+
+
+class ScanPiece(AbstractModel):
+    """语音检测结果，Code 为 0 时返回
+
+    """
+
+    def __init__(self):
+        """
+        :param DumpUrl: 流检测时返回，音频转存地址，保留30min
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DumpUrl: str
+        :param HitFlag: 是否违规
+        :type HitFlag: bool
+        :param MainType: 违规主要类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MainType: str
+        :param ScanDetail: 语音检测详情
+        :type ScanDetail: list of ScanDetail
+        """
+        self.DumpUrl = None
+        self.HitFlag = None
+        self.MainType = None
+        self.ScanDetail = None
+
+
+    def _deserialize(self, params):
+        self.DumpUrl = params.get("DumpUrl")
+        self.HitFlag = params.get("HitFlag")
+        self.MainType = params.get("MainType")
+        if params.get("ScanDetail") is not None:
+            self.ScanDetail = []
+            for item in params.get("ScanDetail"):
+                obj = ScanDetail()
+                obj._deserialize(item)
+                self.ScanDetail.append(obj)
+
+
+class ScanVoiceRequest(AbstractModel):
+    """ScanVoice请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param BizId: 应用ID，登录控制台创建应用得到的AppID。
+        :type BizId: int
+        :param Scenes: 语音检测场景，参数值目前要求为 default。 预留场景设置： 谩骂、色情、涉政、广告、暴恐、违禁等场景，<a href="#Label_Value">具体取值见上述 Label 说明。</a>
+        :type Scenes: list of str
+        :param Live: 是否为直播流。值为 false 时表示普通语音文件检测；为 true 时表示语音流检测。
+        :type Live: bool
+        :param Tasks: 语音检测任务列表，列表最多支持100个检测任务。结构体中包含：
+<li>DataId：数据的唯一ID</li>
+<li>Url：数据文件的url，为 urlencode 编码，流式则为拉流地址</li>
+        :type Tasks: list of Task
+        :param Callback: 异步检测结果回调地址，具体见上述<a href="#Callback_Declare">回调相关说明</a>。（说明：该字段为空时，必须通过接口(查询语音检测结果)获取检测结果）。
+        :type Callback: str
+        """
+        self.BizId = None
+        self.Scenes = None
+        self.Live = None
+        self.Tasks = None
+        self.Callback = None
+
+
+    def _deserialize(self, params):
+        self.BizId = params.get("BizId")
+        self.Scenes = params.get("Scenes")
+        self.Live = params.get("Live")
+        if params.get("Tasks") is not None:
+            self.Tasks = []
+            for item in params.get("Tasks"):
+                obj = Task()
+                obj._deserialize(item)
+                self.Tasks.append(obj)
+        self.Callback = params.get("Callback")
+
+
+class ScanVoiceResponse(AbstractModel):
+    """ScanVoice返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Data: 语音检测返回。Data 字段是 JSON 数组，每一个元素包含：<li>DataId： 请求中对应的 DataId。</li>
+<li>TaskID ：该检测任务的 ID，用于轮询语音检测结果。</li>
+        :type Data: list of ScanVoiceResult
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Data = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self.Data = []
+            for item in params.get("Data"):
+                obj = ScanVoiceResult()
+                obj._deserialize(item)
+                self.Data.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class ScanVoiceResult(AbstractModel):
+    """语音检测返回结果
+
+    """
+
+    def __init__(self):
+        """
+        :param DataId: 数据ID
+        :type DataId: str
+        :param TaskId: 任务ID
+        :type TaskId: str
+        """
+        self.DataId = None
+        self.TaskId = None
+
+
+    def _deserialize(self, params):
+        self.DataId = params.get("DataId")
+        self.TaskId = params.get("TaskId")
+
+
+class Task(AbstractModel):
+    """语音检测任务列表
+
+    """
+
+    def __init__(self):
+        """
+        :param DataId: 数据的唯一ID
+        :type DataId: str
+        :param Url: 数据文件的url，为 urlencode 编码，流式则为拉流地址
+        :type Url: str
+        """
+        self.DataId = None
+        self.Url = None
+
+
+    def _deserialize(self, params):
+        self.DataId = params.get("DataId")
+        self.Url = params.get("Url")
+
+
 class VoiceFilter(AbstractModel):
     """过滤结果
 

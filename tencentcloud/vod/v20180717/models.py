@@ -7756,19 +7756,19 @@ class MediaMiniProgramReviewInfo(AbstractModel):
 
     def __init__(self):
         """
-        :param MiniProgramReivewList: 审核信息列表。
-        :type MiniProgramReivewList: list of MediaMiniProgramReviewInfoItem
+        :param MiniProgramReviewList: 审核信息列表。
+        :type MiniProgramReviewList: list of MediaMiniProgramReviewInfoItem
         """
-        self.MiniProgramReivewList = None
+        self.MiniProgramReviewList = None
 
 
     def _deserialize(self, params):
-        if params.get("MiniProgramReivewList") is not None:
-            self.MiniProgramReivewList = []
-            for item in params.get("MiniProgramReivewList"):
+        if params.get("MiniProgramReviewList") is not None:
+            self.MiniProgramReviewList = []
+            for item in params.get("MiniProgramReviewList"):
                 obj = MediaMiniProgramReviewInfoItem()
                 obj._deserialize(item)
-                self.MiniProgramReivewList.append(obj)
+                self.MiniProgramReviewList.append(obj)
 
 
 class MediaMiniProgramReviewInfoItem(AbstractModel):
@@ -7791,7 +7791,7 @@ class MediaMiniProgramReviewInfoItem(AbstractModel):
         :type ReviewResult: str
         :param ReviewSummery: 小程序审核元素。
 注意：此字段可能返回 null，表示取不到有效值。
-        :type ReviewSummery: :class:`tencentcloud.vod.v20180717.models.MediaMiniProgramReviewElem`
+        :type ReviewSummery: list of MediaMiniProgramReviewElem
         """
         self.Definition = None
         self.MetaData = None
@@ -7808,8 +7808,11 @@ class MediaMiniProgramReviewInfoItem(AbstractModel):
         self.Url = params.get("Url")
         self.ReviewResult = params.get("ReviewResult")
         if params.get("ReviewSummery") is not None:
-            self.ReviewSummery = MediaMiniProgramReviewElem()
-            self.ReviewSummery._deserialize(params.get("ReviewSummery"))
+            self.ReviewSummery = []
+            for item in params.get("ReviewSummery"):
+                obj = MediaMiniProgramReviewElem()
+                obj._deserialize(item)
+                self.ReviewSummery.append(obj)
 
 
 class MediaOutputInfo(AbstractModel):

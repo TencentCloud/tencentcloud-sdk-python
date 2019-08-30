@@ -221,6 +221,34 @@ class IotexplorerClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeDevice(self, request):
+        """用于查看某个设备的详细信息
+
+        :param request: 调用DescribeDevice所需参数的结构体。
+        :type request: :class:`tencentcloud.iotexplorer.v20190423.models.DescribeDeviceRequest`
+        :rtype: :class:`tencentcloud.iotexplorer.v20190423.models.DescribeDeviceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeDevice", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeDeviceResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeDeviceData(self, request):
         """根据设备产品ID、设备名称，获取设备上报的属性数据。
 
@@ -361,6 +389,34 @@ class IotexplorerClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def GetDeviceList(self, request):
+        """用于查询某个产品下的设备列表
+
+        :param request: 调用GetDeviceList所需参数的结构体。
+        :type request: :class:`tencentcloud.iotexplorer.v20190423.models.GetDeviceListRequest`
+        :rtype: :class:`tencentcloud.iotexplorer.v20190423.models.GetDeviceListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("GetDeviceList", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.GetDeviceListResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def GetProjectList(self, request):
         """提供查询用户所创建的项目列表查询功能。
 
@@ -403,6 +459,34 @@ class IotexplorerClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.GetStudioProductListResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ListEventHistory(self, request):
+        """获取设备的历史事件
+
+        :param request: 调用ListEventHistory所需参数的结构体。
+        :type request: :class:`tencentcloud.iotexplorer.v20190423.models.ListEventHistoryRequest`
+        :rtype: :class:`tencentcloud.iotexplorer.v20190423.models.ListEventHistoryResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ListEventHistory", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ListEventHistoryResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

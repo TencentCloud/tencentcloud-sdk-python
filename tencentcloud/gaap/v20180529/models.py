@@ -627,7 +627,7 @@ class CreateCertificateRequest(AbstractModel):
         :type CertificateContent: str
         :param CertificateAlias: 证书名称
         :type CertificateAlias: str
-        :param CertificateKey: 秘钥内容。采用url编码。仅当证书类型为SSL证书时，需要填写该参数。格式为pem。
+        :param CertificateKey: 密钥内容。采用url编码。仅当证书类型为SSL证书时，需要填写该参数。格式为pem。
         :type CertificateKey: str
         """
         self.CertificateType = None

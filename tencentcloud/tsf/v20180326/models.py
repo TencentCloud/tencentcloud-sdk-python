@@ -142,6 +142,9 @@ class ApplicationForPage(AbstractModel):
         :param UpdateTime: 更新时间
 注意：此字段可能返回 null，表示取不到有效值。
         :type UpdateTime: str
+        :param ApplicationResourceType: 应用资源类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ApplicationResourceType: str
         """
         self.ApplicationId = None
         self.ApplicationName = None
@@ -151,6 +154,7 @@ class ApplicationForPage(AbstractModel):
         self.ProgLang = None
         self.CreateTime = None
         self.UpdateTime = None
+        self.ApplicationResourceType = None
 
 
     def _deserialize(self, params):
@@ -162,6 +166,7 @@ class ApplicationForPage(AbstractModel):
         self.ProgLang = params.get("ProgLang")
         self.CreateTime = params.get("CreateTime")
         self.UpdateTime = params.get("UpdateTime")
+        self.ApplicationResourceType = params.get("ApplicationResourceType")
 
 
 class Cluster(AbstractModel):
@@ -719,12 +724,15 @@ class CreateApplicationRequest(AbstractModel):
         :type ApplicationLogConfig: str
         :param MicroserviceType: 应用微服务类型
         :type MicroserviceType: str
+        :param ApplicationResourceType: 应有资源类型
+        :type ApplicationResourceType: str
         """
         self.ApplicationName = None
         self.ApplicationType = None
         self.ApplicationDesc = None
         self.ApplicationLogConfig = None
         self.MicroserviceType = None
+        self.ApplicationResourceType = None
 
 
     def _deserialize(self, params):
@@ -733,6 +741,7 @@ class CreateApplicationRequest(AbstractModel):
         self.ApplicationDesc = params.get("ApplicationDesc")
         self.ApplicationLogConfig = params.get("ApplicationLogConfig")
         self.MicroserviceType = params.get("MicroserviceType")
+        self.ApplicationResourceType = params.get("ApplicationResourceType")
 
 
 class CreateApplicationResponse(AbstractModel):
@@ -1032,16 +1041,20 @@ class CreateNamespaceRequest(AbstractModel):
         :type NamespaceName: str
         :param NamespaceDesc: 命名空间描述
         :type NamespaceDesc: str
+        :param NamespaceResourceType: 命名空间资源类型(默认值为DEF)
+        :type NamespaceResourceType: str
         """
         self.ClusterId = None
         self.NamespaceName = None
         self.NamespaceDesc = None
+        self.NamespaceResourceType = None
 
 
     def _deserialize(self, params):
         self.ClusterId = params.get("ClusterId")
         self.NamespaceName = params.get("NamespaceName")
         self.NamespaceDesc = params.get("NamespaceDesc")
+        self.NamespaceResourceType = params.get("NamespaceResourceType")
 
 
 class CreateNamespaceResponse(AbstractModel):
@@ -1051,10 +1064,9 @@ class CreateNamespaceResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param Result: 创建命名空间是否成功。
-true：创建成功。
-false：创建失败。
-        :type Result: bool
+        :param Result: 成功时为命名空间ID，失败为null
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Result: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -1620,6 +1632,8 @@ class DescribeApplicationsRequest(AbstractModel):
         :type ApplicationType: str
         :param MicroserviceType: 应用的微服务类型
         :type MicroserviceType: str
+        :param ApplicationResourceTypeList: 应用资源类型数组
+        :type ApplicationResourceTypeList: list of str
         """
         self.SearchWord = None
         self.OrderBy = None
@@ -1628,6 +1642,7 @@ class DescribeApplicationsRequest(AbstractModel):
         self.Limit = None
         self.ApplicationType = None
         self.MicroserviceType = None
+        self.ApplicationResourceTypeList = None
 
 
     def _deserialize(self, params):
@@ -1638,6 +1653,7 @@ class DescribeApplicationsRequest(AbstractModel):
         self.Limit = params.get("Limit")
         self.ApplicationType = params.get("ApplicationType")
         self.MicroserviceType = params.get("MicroserviceType")
+        self.ApplicationResourceTypeList = params.get("ApplicationResourceTypeList")
 
 
 class DescribeApplicationsResponse(AbstractModel):
@@ -2002,6 +2018,8 @@ class DescribeGroupsRequest(AbstractModel):
         :type NamespaceId: str
         :param ClusterId: 集群ID
         :type ClusterId: str
+        :param GroupResourceTypeList: 部署组资源类型列表
+        :type GroupResourceTypeList: list of str
         """
         self.SearchWord = None
         self.ApplicationId = None
@@ -2011,6 +2029,7 @@ class DescribeGroupsRequest(AbstractModel):
         self.Limit = None
         self.NamespaceId = None
         self.ClusterId = None
+        self.GroupResourceTypeList = None
 
 
     def _deserialize(self, params):
@@ -2022,6 +2041,7 @@ class DescribeGroupsRequest(AbstractModel):
         self.Limit = params.get("Limit")
         self.NamespaceId = params.get("NamespaceId")
         self.ClusterId = params.get("ClusterId")
+        self.GroupResourceTypeList = params.get("GroupResourceTypeList")
 
 
 class DescribeGroupsResponse(AbstractModel):
@@ -2287,12 +2307,15 @@ class DescribeSimpleApplicationsRequest(AbstractModel):
         :type Offset: int
         :param MicroserviceType: 微服务类型
         :type MicroserviceType: str
+        :param ApplicationResourceTypeList: 资源类型数组
+        :type ApplicationResourceTypeList: list of str
         """
         self.ApplicationIdList = None
         self.ApplicationType = None
         self.Limit = None
         self.Offset = None
         self.MicroserviceType = None
+        self.ApplicationResourceTypeList = None
 
 
     def _deserialize(self, params):
@@ -2301,6 +2324,7 @@ class DescribeSimpleApplicationsRequest(AbstractModel):
         self.Limit = params.get("Limit")
         self.Offset = params.get("Offset")
         self.MicroserviceType = params.get("MicroserviceType")
+        self.ApplicationResourceTypeList = params.get("ApplicationResourceTypeList")
 
 
 class DescribeSimpleApplicationsResponse(AbstractModel):
@@ -2466,12 +2490,15 @@ class DescribeSimpleNamespacesRequest(AbstractModel):
         :type Offset: int
         :param NamespaceId: 命名空间ID，不传入时查询全量
         :type NamespaceId: str
+        :param NamespaceResourceTypeList: 查询资源类型列表
+        :type NamespaceResourceTypeList: list of str
         """
         self.NamespaceIdList = None
         self.ClusterId = None
         self.Limit = None
         self.Offset = None
         self.NamespaceId = None
+        self.NamespaceResourceTypeList = None
 
 
     def _deserialize(self, params):
@@ -2480,6 +2507,7 @@ class DescribeSimpleNamespacesRequest(AbstractModel):
         self.Limit = params.get("Limit")
         self.Offset = params.get("Offset")
         self.NamespaceId = params.get("NamespaceId")
+        self.NamespaceResourceTypeList = params.get("NamespaceResourceTypeList")
 
 
 class DescribeSimpleNamespacesResponse(AbstractModel):
@@ -3564,11 +3592,31 @@ class SimpleApplication(AbstractModel):
         :param MicroserviceType: 应用微服务类型
 注意：此字段可能返回 null，表示取不到有效值。
         :type MicroserviceType: str
+        :param ApplicationDesc: ApplicationDesc
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ApplicationDesc: str
+        :param ProgLang: ProgLang
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ProgLang: str
+        :param ApplicationResourceType: ApplicationResourceType
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ApplicationResourceType: str
+        :param CreateTime: CreateTime
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CreateTime: str
+        :param UpdateTime: UpdateTime
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UpdateTime: str
         """
         self.ApplicationId = None
         self.ApplicationName = None
         self.ApplicationType = None
         self.MicroserviceType = None
+        self.ApplicationDesc = None
+        self.ProgLang = None
+        self.ApplicationResourceType = None
+        self.CreateTime = None
+        self.UpdateTime = None
 
 
     def _deserialize(self, params):
@@ -3576,6 +3624,11 @@ class SimpleApplication(AbstractModel):
         self.ApplicationName = params.get("ApplicationName")
         self.ApplicationType = params.get("ApplicationType")
         self.MicroserviceType = params.get("MicroserviceType")
+        self.ApplicationDesc = params.get("ApplicationDesc")
+        self.ProgLang = params.get("ProgLang")
+        self.ApplicationResourceType = params.get("ApplicationResourceType")
+        self.CreateTime = params.get("CreateTime")
+        self.UpdateTime = params.get("UpdateTime")
 
 
 class SimpleGroup(AbstractModel):

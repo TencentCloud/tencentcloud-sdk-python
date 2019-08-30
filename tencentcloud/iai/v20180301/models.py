@@ -1177,7 +1177,7 @@ class GetPersonBaseInfoResponse(AbstractModel):
         :type PersonName: str
         :param Gender: 人员性别
         :type Gender: int
-        :param FaceIds: 包含的人脸图片列表
+        :param FaceIds: 包含的人脸 ID 列表
         :type FaceIds: list of str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str

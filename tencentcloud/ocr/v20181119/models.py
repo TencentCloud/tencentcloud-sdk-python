@@ -1027,6 +1027,158 @@ class LicensePlateOCRResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class MLIDCardOCRRequest(AbstractModel):
+    """MLIDCardOCR请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ImageBase64: 图片的 Base64 值。
+支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。
+支持的图片大小：所下载图片经Base64编码后不超过 3M。图片下载时间不超过 3 秒。
+        :type ImageBase64: str
+        :param ImageUrl: 图片的 Url 地址。( 中国地区之外不支持这个字段 )
+支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。
+支持的图片大小：所下载图片经 Base64 编码后不超过 3M。图片下载时间不超过 3 秒。
+图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。
+非腾讯云存储的 Url 速度和稳定性可能受一定影响。
+        :type ImageUrl: str
+        :param RetImage: 是否返回图片
+        :type RetImage: bool
+        """
+        self.ImageBase64 = None
+        self.ImageUrl = None
+        self.RetImage = None
+
+
+    def _deserialize(self, params):
+        self.ImageBase64 = params.get("ImageBase64")
+        self.ImageUrl = params.get("ImageUrl")
+        self.RetImage = params.get("RetImage")
+
+
+class MLIDCardOCRResponse(AbstractModel):
+    """MLIDCardOCR返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ID: 身份证号
+        :type ID: str
+        :param Name: 姓名
+        :type Name: str
+        :param Address: 地址
+        :type Address: str
+        :param Sex: 性别
+        :type Sex: str
+        :param Warn: 告警码
+-9103	证照翻拍告警
+-9102	证照复印件告警
+        :type Warn: list of int
+        :param Image: 证件图片
+        :type Image: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.ID = None
+        self.Name = None
+        self.Address = None
+        self.Sex = None
+        self.Warn = None
+        self.Image = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.ID = params.get("ID")
+        self.Name = params.get("Name")
+        self.Address = params.get("Address")
+        self.Sex = params.get("Sex")
+        self.Warn = params.get("Warn")
+        self.Image = params.get("Image")
+        self.RequestId = params.get("RequestId")
+
+
+class MLIDPassportOCRRequest(AbstractModel):
+    """MLIDPassportOCR请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ImageBase64: 图片的 Base64 值。
+支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。
+支持的图片大小：所下载图片经Base64编码后不超过 3M。图片下载时间不超过 3 秒。
+        :type ImageBase64: str
+        :param RetImage: 是否返回图片
+        :type RetImage: bool
+        """
+        self.ImageBase64 = None
+        self.RetImage = None
+
+
+    def _deserialize(self, params):
+        self.ImageBase64 = params.get("ImageBase64")
+        self.RetImage = params.get("RetImage")
+
+
+class MLIDPassportOCRResponse(AbstractModel):
+    """MLIDPassportOCR返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ID: 护照ID
+        :type ID: str
+        :param Name: 姓名
+        :type Name: str
+        :param DateOfBirth: 出生日期
+        :type DateOfBirth: str
+        :param Sex: 性别（F女，M男）
+        :type Sex: str
+        :param DateOfExpiration: 有效期
+        :type DateOfExpiration: str
+        :param IssuingCountry: 发行国
+        :type IssuingCountry: str
+        :param Nationality: 国籍
+        :type Nationality: str
+        :param Warn: 告警码
+-9103	证照翻拍告警
+-9102	证照复印件告警
+        :type Warn: list of int
+        :param Image: 证件图片
+        :type Image: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.ID = None
+        self.Name = None
+        self.DateOfBirth = None
+        self.Sex = None
+        self.DateOfExpiration = None
+        self.IssuingCountry = None
+        self.Nationality = None
+        self.Warn = None
+        self.Image = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.ID = params.get("ID")
+        self.Name = params.get("Name")
+        self.DateOfBirth = params.get("DateOfBirth")
+        self.Sex = params.get("Sex")
+        self.DateOfExpiration = params.get("DateOfExpiration")
+        self.IssuingCountry = params.get("IssuingCountry")
+        self.Nationality = params.get("Nationality")
+        self.Warn = params.get("Warn")
+        self.Image = params.get("Image")
+        self.RequestId = params.get("RequestId")
+
+
 class PermitOCRRequest(AbstractModel):
     """PermitOCR请求参数结构体
 
@@ -1301,14 +1453,14 @@ class TextArithmetic(AbstractModel):
         """
         :param DetectedText: 识别出的文本行内容
         :type DetectedText: str
-        :param Result: 结果
+        :param Result: 算式运算结果
         :type Result: bool
-        :param Confidence: 保留字段，暂无意义
+        :param Confidence: 保留字段，暂不支持
         :type Confidence: int
-        :param Polygon: 文本行坐标，以四个顶点坐标表示（预留字段，目前不支持）
+        :param Polygon: 文本行坐标，以四个顶点坐标表示（保留字段，暂不支持）
 注意：此字段可能返回 null，表示取不到有效值。
         :type Polygon: list of Coord
-        :param AdvancedInfo: 此字段为扩展字段
+        :param AdvancedInfo: 保留字段，暂不支持
         :type AdvancedInfo: str
         """
         self.DetectedText = None

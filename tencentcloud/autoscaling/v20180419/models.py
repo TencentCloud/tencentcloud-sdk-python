@@ -1306,6 +1306,49 @@ class DescribeAutoScalingActivitiesResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeAutoScalingGroupLastActivitiesRequest(AbstractModel):
+    """DescribeAutoScalingGroupLastActivities请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param AutoScalingGroupIds: 伸缩组ID列表
+        :type AutoScalingGroupIds: list of str
+        """
+        self.AutoScalingGroupIds = None
+
+
+    def _deserialize(self, params):
+        self.AutoScalingGroupIds = params.get("AutoScalingGroupIds")
+
+
+class DescribeAutoScalingGroupLastActivitiesResponse(AbstractModel):
+    """DescribeAutoScalingGroupLastActivities返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ActivitySet: 符合条件的伸缩活动信息集合。说明：伸缩组伸缩活动不存在的则不返回，如传50个伸缩组ID，返回45条数据，说明其中有5个伸缩组伸缩活动不存在。
+        :type ActivitySet: list of Activity
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.ActivitySet = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("ActivitySet") is not None:
+            self.ActivitySet = []
+            for item in params.get("ActivitySet"):
+                obj = Activity()
+                obj._deserialize(item)
+                self.ActivitySet.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeAutoScalingGroupsRequest(AbstractModel):
     """DescribeAutoScalingGroups请求参数结构体
 
@@ -2071,7 +2114,7 @@ class ForwardLoadBalancer(AbstractModel):
         :type ListenerId: str
         :param TargetAttributes: 目标规则属性列表
         :type TargetAttributes: list of TargetAttribute
-        :param LocationId: 转发规则ID
+        :param LocationId: 转发规则ID，注意：针对七层监听器此参数必填
         :type LocationId: str
         """
         self.LoadBalancerId = None

@@ -463,6 +463,50 @@ class DescribeDeviceDataResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeDeviceRequest(AbstractModel):
+    """DescribeDevice请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ProductId: 产品ID
+        :type ProductId: str
+        :param DeviceName: 设备名
+        :type DeviceName: str
+        """
+        self.ProductId = None
+        self.DeviceName = None
+
+
+    def _deserialize(self, params):
+        self.ProductId = params.get("ProductId")
+        self.DeviceName = params.get("DeviceName")
+
+
+class DescribeDeviceResponse(AbstractModel):
+    """DescribeDevice返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Device: 设备信息
+        :type Device: :class:`tencentcloud.iotexplorer.v20190423.models.DeviceInfo`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Device = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Device") is not None:
+            self.Device = DeviceInfo()
+            self.Device._deserialize(params.get("Device"))
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeModelDefinitionRequest(AbstractModel):
     """DescribeModelDefinition请求参数结构体
 
@@ -637,6 +681,157 @@ class DeviceDataHistoryItem(AbstractModel):
         self.Value = params.get("Value")
 
 
+class DeviceInfo(AbstractModel):
+    """设备详细信息
+
+    """
+
+    def __init__(self):
+        """
+        :param DeviceName: 设备名
+        :type DeviceName: str
+        :param Status: 0: 离线, 1: 在线, 2: 获取失败, 3 未激活
+        :type Status: int
+        :param DevicePsk: 设备密钥，密钥加密的设备返回
+        :type DevicePsk: str
+        :param FirstOnlineTime: 首次上线时间
+注意：此字段可能返回 null，表示取不到有效值。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FirstOnlineTime: int
+        :param LoginTime: 最后一次上线时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LoginTime: int
+        :param CreateTime: 设备创建时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CreateTime: int
+        :param Version: 设备固件版本
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Version: str
+        :param DeviceCert: 设备证书
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DeviceCert: str
+        """
+        self.DeviceName = None
+        self.Status = None
+        self.DevicePsk = None
+        self.FirstOnlineTime = None
+        self.LoginTime = None
+        self.CreateTime = None
+        self.Version = None
+        self.DeviceCert = None
+
+
+    def _deserialize(self, params):
+        self.DeviceName = params.get("DeviceName")
+        self.Status = params.get("Status")
+        self.DevicePsk = params.get("DevicePsk")
+        self.FirstOnlineTime = params.get("FirstOnlineTime")
+        self.LoginTime = params.get("LoginTime")
+        self.CreateTime = params.get("CreateTime")
+        self.Version = params.get("Version")
+        self.DeviceCert = params.get("DeviceCert")
+
+
+class EventHistoryItem(AbstractModel):
+    """设备事件的搜索结果项
+
+    """
+
+    def __init__(self):
+        """
+        :param TimeStamp: 事件的时间戳
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TimeStamp: int
+        :param ProductId: 事件的产品ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ProductId: str
+        :param DeviceName: 事件的设备名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DeviceName: str
+        :param EventId: 事件的标识符ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EventId: str
+        :param Type: 事件的类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Type: str
+        :param Data: 事件的数据
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Data: str
+        """
+        self.TimeStamp = None
+        self.ProductId = None
+        self.DeviceName = None
+        self.EventId = None
+        self.Type = None
+        self.Data = None
+
+
+    def _deserialize(self, params):
+        self.TimeStamp = params.get("TimeStamp")
+        self.ProductId = params.get("ProductId")
+        self.DeviceName = params.get("DeviceName")
+        self.EventId = params.get("EventId")
+        self.Type = params.get("Type")
+        self.Data = params.get("Data")
+
+
+class GetDeviceListRequest(AbstractModel):
+    """GetDeviceList请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ProductId: 需要查看设备列表的产品 ID
+        :type ProductId: str
+        :param Offset: 分页偏移
+        :type Offset: int
+        :param Limit: 分页的大小，数值范围 10-100
+        :type Limit: int
+        """
+        self.ProductId = None
+        self.Offset = None
+        self.Limit = None
+
+
+    def _deserialize(self, params):
+        self.ProductId = params.get("ProductId")
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+
+
+class GetDeviceListResponse(AbstractModel):
+    """GetDeviceList返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Devices: 返回的设备列表, 注意列表设备的 DevicePsk 为空, 要获取设备的 DevicePsk 请使用 DescribeDevice
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Devices: list of DeviceInfo
+        :param Total: 产品下的设备总数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Total: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Devices = None
+        self.Total = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Devices") is not None:
+            self.Devices = []
+            for item in params.get("Devices"):
+                obj = DeviceInfo()
+                obj._deserialize(item)
+                self.Devices.append(obj)
+        self.Total = params.get("Total")
+        self.RequestId = params.get("RequestId")
+
+
 class GetProjectListRequest(AbstractModel):
     """GetProjectList请求参数结构体
 
@@ -746,6 +941,89 @@ class GetStudioProductListResponse(AbstractModel):
                 obj._deserialize(item)
                 self.Products.append(obj)
         self.Total = params.get("Total")
+        self.RequestId = params.get("RequestId")
+
+
+class ListEventHistoryRequest(AbstractModel):
+    """ListEventHistory请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ProductId: 产品ID
+        :type ProductId: str
+        :param DeviceName: 设备名称
+        :type DeviceName: str
+        :param Type: 搜索的事件类型
+        :type Type: str
+        :param StartTime: 起始时间, 为0 表示 当前时间 - 24h
+        :type StartTime: int
+        :param EndTime: 结束时间, 为0 表示当前时间
+        :type EndTime: int
+        :param Context: 搜索上下文, 用作查询游标
+        :type Context: str
+        :param Size: 单次获取的历史数据项目的最大数量
+        :type Size: int
+        """
+        self.ProductId = None
+        self.DeviceName = None
+        self.Type = None
+        self.StartTime = None
+        self.EndTime = None
+        self.Context = None
+        self.Size = None
+
+
+    def _deserialize(self, params):
+        self.ProductId = params.get("ProductId")
+        self.DeviceName = params.get("DeviceName")
+        self.Type = params.get("Type")
+        self.StartTime = params.get("StartTime")
+        self.EndTime = params.get("EndTime")
+        self.Context = params.get("Context")
+        self.Size = params.get("Size")
+
+
+class ListEventHistoryResponse(AbstractModel):
+    """ListEventHistory返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Context: 搜索上下文, 用作查询游标
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Context: str
+        :param Total: 搜索结果数量
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Total: int
+        :param Listover: 搜索结果是否已经结束
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Listover: bool
+        :param EventHistory: 搜集结果集
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EventHistory: list of EventHistoryItem
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Context = None
+        self.Total = None
+        self.Listover = None
+        self.EventHistory = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Context = params.get("Context")
+        self.Total = params.get("Total")
+        self.Listover = params.get("Listover")
+        if params.get("EventHistory") is not None:
+            self.EventHistory = []
+            for item in params.get("EventHistory"):
+                obj = EventHistoryItem()
+                obj._deserialize(item)
+                self.EventHistory.append(obj)
         self.RequestId = params.get("RequestId")
 
 

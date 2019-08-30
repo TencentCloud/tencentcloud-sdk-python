@@ -26,7 +26,7 @@ class TrtcClient(AbstractClient):
 
 
     def DissolveRoom(self, request):
-        """接口说明：把房间所有用户从房间踢出，解散房间。
+        """接口说明：把房间所有用户从房间踢出，解散房间。支持 TRTC SDK 6.6及以上版本，包括Android、iOS、Windows 和 macOS。
 
         :param request: 调用DissolveRoom所需参数的结构体。
         :type request: :class:`tencentcloud.trtc.v20190722.models.DissolveRoomRequest`
@@ -54,7 +54,7 @@ class TrtcClient(AbstractClient):
 
 
     def KickOutUser(self, request):
-        """接口说明：将用户从房间踢出。
+        """接口说明：将用户从房间踢出。支持 TRTC SDK 6.6及以上版本，包括Android、iOS、Windows 和 macOS。
 
         :param request: 调用KickOutUser所需参数的结构体。
         :type request: :class:`tencentcloud.trtc.v20190722.models.KickOutUserRequest`

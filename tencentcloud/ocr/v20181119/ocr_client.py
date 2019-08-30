@@ -417,6 +417,64 @@ class OcrClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def MLIDCardOCR(self, request):
+        """本接口支持马来西亚身份证识别，识别字段包括身份证号、姓名、性别、地址；具备身份证人像照片的裁剪功能和翻拍、复印件告警功能。
+        本接口暂未完全对外开放，如需咨询，请[联系商务](https://cloud.tencent.com/about/connect)
+
+        :param request: 调用MLIDCardOCR所需参数的结构体。
+        :type request: :class:`tencentcloud.ocr.v20181119.models.MLIDCardOCRRequest`
+        :rtype: :class:`tencentcloud.ocr.v20181119.models.MLIDCardOCRResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("MLIDCardOCR", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.MLIDCardOCRResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def MLIDPassportOCR(self, request):
+        """本接口支持马来西亚身护照识别，识别字段包括护照ID、姓名、出生日期、性别、有效期、发行国、国籍；具备护照人像照片的裁剪功能和翻拍、复印件告警功能。
+        本接口暂未完全对外开放，如需咨询，请[联系商务](https://cloud.tencent.com/about/connect)
+
+        :param request: 调用MLIDPassportOCR所需参数的结构体。
+        :type request: :class:`tencentcloud.ocr.v20181119.models.MLIDPassportOCRRequest`
+        :rtype: :class:`tencentcloud.ocr.v20181119.models.MLIDPassportOCRResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("MLIDPassportOCR", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.MLIDPassportOCRResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def PermitOCR(self, request):
         """本接口支持对卡式港澳台通行证的识别，包括签发地点、签发机关、有效期限、性别、出生日期、英文姓名、姓名、证件号等字段。
 

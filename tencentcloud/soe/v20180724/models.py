@@ -37,7 +37,7 @@ class InitOralProcessRequest(AbstractModel):
         :type SoeAppId: str
         :param IsLongLifeSession: 长效session标识，当该参数为1时，session的持续时间为300s，但会一定程度上影响第一个数据包的返回速度，且TransmitOralProcess必须同时为1才可生效。
         :type IsLongLifeSession: int
-        :param StorageMode: 音频存储模式，0：不存储，1：存储到公共对象存储，输出结果为该会话最后一个分片TransmitOralProcess 返回结果 AudioUrl 字段。
+        :param StorageMode: 音频存储模式，0：不存储，1：存储到公共对象存储，输出结果为该会话最后一个分片TransmitOralProcess 返回结果 AudioUrl 字段，2：永久存储音频，需要提工单申请，会产生一定存储费用，3：自定义存储，将音频存储到自定义的腾讯云[对象存储](https://cloud.tencent.com/product/cos)中，需要提工单登记存储信息。
         :type StorageMode: int
         :param SentenceInfoEnabled: 输出断句中间结果标识，0：不输出，1：输出，通过设置该参数，可以在评估过程中的分片传输请求中，返回已经评估断句的中间结果，中间结果可用于客户端 UI 更新，输出结果为TransmitOralProcess请求返回结果 SentenceInfoSet 字段。
         :type SentenceInfoEnabled: int
@@ -45,7 +45,7 @@ class InitOralProcessRequest(AbstractModel):
         :type ServerType: int
         :param IsAsync: 异步模式标识，0：同步模式，1：异步模式，可选值参考[服务模式](https://cloud.tencent.com/document/product/884/33697)。
         :type IsAsync: int
-        :param TextMode: 输入文本模式，0: 普通文本，1：[音素结构](https://cloud.tencent.com/document/product/884/33698)文本。
+        :param TextMode: 输入文本模式，0: 普通文本，1：[音素结构](https://cloud.tencent.com/document/product/884/33698)文本。2：音素注册模式（提工单注册需要使用音素的单词）。
         :type TextMode: int
         """
         self.SessionId = None
@@ -277,8 +277,7 @@ class PhoneInfo(AbstractModel):
         :type Phone: str
         :param Stress: 当前音节是否应为重音
         :type Stress: bool
-        :param ReferencePhone: 参考音素，在单词诊断模式下，代表标准
-音素
+        :param ReferencePhone: 参考音素，在单词诊断模式下，代表标准音素
         :type ReferencePhone: str
         :param MatchTag: 当前词与输入语句的匹配情况，0：匹配单词、1：新增单词、2：缺少单词、3：错读的词、4：未录入单词。
         :type MatchTag: int
@@ -487,7 +486,7 @@ class TransmitOralProcessWithInitRequest(AbstractModel):
         :type ScoreCoeff: float
         :param SoeAppId: 业务应用ID，与账号应用APPID无关，是用来方便客户管理服务的参数，新的 SoeAppId 可以在[控制台](https://console.cloud.tencent.com/soe)【应用管理】下新建。
         :type SoeAppId: str
-        :param StorageMode: 音频存储模式，0：不存储，1：存储到公共对象存储，输出结果为该会话最后一个分片TransmitOralProcess 返回结果 AudioUrl 字段。
+        :param StorageMode: 音频存储模式，0：不存储，1：存储到公共对象存储，输出结果为该会话最后一个分片TransmitOralProcess 返回结果 AudioUrl 字段，2：永久存储音频，需要提工单申请，会产生一定存储费用，3：自定义存储，将音频存储到自定义的腾讯云[对象存储](https://cloud.tencent.com/product/cos)中，需要提工单登记存储信息。
         :type StorageMode: int
         :param SentenceInfoEnabled: 输出断句中间结果标识，0：不输出，1：输出，通过设置该参数，可以在评估过程中的分片传输请求中，返回已经评估断句的中间结果，中间结果可用于客户端 UI 更新，输出结果为TransmitOralProcess请求返回结果 SentenceInfoSet 字段。
         :type SentenceInfoEnabled: int
@@ -497,7 +496,7 @@ class TransmitOralProcessWithInitRequest(AbstractModel):
         :type IsAsync: int
         :param IsQuery: 查询标识，当该参数为1时，该请求为查询请求，请求返回该 Session 评估结果。
         :type IsQuery: int
-        :param TextMode: 输入文本模式，0: 普通文本，1：[音素结构](https://cloud.tencent.com/document/product/884/33698)文本。
+        :param TextMode: 输入文本模式，0: 普通文本，1：[音素结构](https://cloud.tencent.com/document/product/884/33698)文本。2：音素注册模式（提工单注册需要使用音素的单词）。
         :type TextMode: int
         """
         self.SeqId = None

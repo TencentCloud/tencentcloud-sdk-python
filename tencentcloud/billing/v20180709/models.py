@@ -23,7 +23,7 @@ class ActionSummaryOverviewItem(AbstractModel):
 
     def __init__(self):
         """
-        :param ActionType: 交易类型
+        :param ActionType: 交易类型：包年包月新购/续费/升降配/退款、按量计费扣费、调账补偿/扣费等类型
         :type ActionType: str
         :param ActionTypeName: 交易类型名称
         :type ActionTypeName: str
@@ -52,17 +52,17 @@ class BillDetail(AbstractModel):
 
     def __init__(self):
         """
-        :param BusinessCodeName: 产品名称
+        :param BusinessCodeName: 产品名称：云产品大类，如云服务器CVM、云数据库MySQL
         :type BusinessCodeName: str
-        :param ProductCodeName: 子产品名称
+        :param ProductCodeName: 子产品名称：云产品子类，如云服务器CVM-标准型S1
         :type ProductCodeName: str
-        :param PayModeName: 计费模式
+        :param PayModeName: 计费模式：包年包月和按量计费
         :type PayModeName: str
-        :param ProjectName: 项目
+        :param ProjectName: 项目:资源所属项目
         :type ProjectName: str
-        :param RegionName: 区域
+        :param RegionName: 区域：资源所属地域，如华南地区（广州）
         :type RegionName: str
-        :param ZoneName: 可用区
+        :param ZoneName: 可用区：资源所属可用区，如广州三区
         :type ZoneName: str
         :param ResourceId: 资源实例ID
         :type ResourceId: str
@@ -142,11 +142,11 @@ class BillDetailComponent(AbstractModel):
 
     def __init__(self):
         """
-        :param ComponentCodeName: 组件名称
+        :param ComponentCodeName: 组件类型:资源组件类型的名称，如内存、硬盘等
         :type ComponentCodeName: str
-        :param ItemCodeName: 组件类型名称
+        :param ItemCodeName: 组件名称:资源组件的名称，如云数据库MySQL-内存等
         :type ItemCodeName: str
-        :param SinglePrice: 组件刊例价
+        :param SinglePrice: 组件刊例价:资源组件的原始价格，保持原始粒度
         :type SinglePrice: str
         :param SpecifiedPrice: 组件指定价
         :type SpecifiedPrice: str
@@ -219,11 +219,11 @@ class BillResourceSummary(AbstractModel):
 
     def __init__(self):
         """
-        :param BusinessCodeName: 产品
+        :param BusinessCodeName: 产品名称：云产品大类，如云服务器CVM、云数据库MySQL
         :type BusinessCodeName: str
-        :param ProductCodeName: 子产品
+        :param ProductCodeName: 子产品：云产品子类，如云服务器CVM-标准型S1
         :type ProductCodeName: str
-        :param PayModeName: 计费模式
+        :param PayModeName: 计费模式：包年包月和按量计费
         :type PayModeName: str
         :param ProjectName: 项目
         :type ProjectName: str
@@ -235,7 +235,7 @@ class BillResourceSummary(AbstractModel):
         :type ResourceId: str
         :param ResourceName: 资源实例名称
         :type ResourceName: str
-        :param ActionTypeName: 交易类型
+        :param ActionTypeName: 交易类型：包年包月新购/续费/升降配/退款、按量计费扣费、调账补偿/扣费等类型
         :type ActionTypeName: str
         :param OrderId: 订单ID
         :type OrderId: str
@@ -339,7 +339,7 @@ class BusinessSummaryOverviewItem(AbstractModel):
         :param BusinessCode: 产品码
 注意：此字段可能返回 null，表示取不到有效值。
         :type BusinessCode: str
-        :param BusinessCodeName: 产品名称
+        :param BusinessCodeName: 产品名称：云产品大类，如云服务器CVM、云数据库MySQL
         :type BusinessCodeName: str
         :param RealTotalCost: 实际花费
         :type RealTotalCost: str
@@ -1146,7 +1146,7 @@ class PayModeSummaryOverviewItem(AbstractModel):
         :type RealTotalCost: str
         :param RealTotalCostRatio: 费用所占百分比，两位小数
         :type RealTotalCostRatio: str
-        :param Detail: 按交易类型汇总消费详情
+        :param Detail: 按交易类型：包年包月新购/续费/升降配/退款、按量计费扣费、调账补偿/扣费等类型汇总消费详情
         :type Detail: list of ActionSummaryOverviewItem
         """
         self.PayMode = None
