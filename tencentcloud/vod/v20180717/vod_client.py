@@ -200,6 +200,34 @@ class VodClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def CreateAnimatedGraphicsTemplate(self, request):
+        """创建用户自定义转动图模板，数量上限：16。
+
+        :param request: 调用CreateAnimatedGraphicsTemplate所需参数的结构体。
+        :type request: :class:`tencentcloud.vod.v20180717.models.CreateAnimatedGraphicsTemplateRequest`
+        :rtype: :class:`tencentcloud.vod.v20180717.models.CreateAnimatedGraphicsTemplateResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("CreateAnimatedGraphicsTemplate", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateAnimatedGraphicsTemplateResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def CreateClass(self, request):
         """* 用于对媒体进行分类管理；
         * 该接口不影响既有媒体的分类，如需修改媒体分类，请调用[修改媒体文件属性](/document/product/266/31762)接口。
@@ -259,6 +287,34 @@ class VodClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def CreateImageSpriteTemplate(self, request):
+        """创建用户自定义雪碧图模板，数量上限：16。
+
+        :param request: 调用CreateImageSpriteTemplate所需参数的结构体。
+        :type request: :class:`tencentcloud.vod.v20180717.models.CreateImageSpriteTemplateRequest`
+        :rtype: :class:`tencentcloud.vod.v20180717.models.CreateImageSpriteTemplateResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("CreateImageSpriteTemplate", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateImageSpriteTemplateResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def CreatePersonSample(self, request):
         """该接口用于创建人物样本，用于通过人脸识别等技术，进行内容识别、内容审核等视频处理。
 
@@ -301,6 +357,62 @@ class VodClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateProcedureTemplateResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def CreateSampleSnapshotTemplate(self, request):
+        """创建用户自定义采样截图模板，数量上限：16。
+
+        :param request: 调用CreateSampleSnapshotTemplate所需参数的结构体。
+        :type request: :class:`tencentcloud.vod.v20180717.models.CreateSampleSnapshotTemplateRequest`
+        :rtype: :class:`tencentcloud.vod.v20180717.models.CreateSampleSnapshotTemplateResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("CreateSampleSnapshotTemplate", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateSampleSnapshotTemplateResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def CreateSnapshotByTimeOffsetTemplate(self, request):
+        """创建用户自定义指定时间点截图模板，数量上限：16。
+
+        :param request: 调用CreateSnapshotByTimeOffsetTemplate所需参数的结构体。
+        :type request: :class:`tencentcloud.vod.v20180717.models.CreateSnapshotByTimeOffsetTemplateRequest`
+        :rtype: :class:`tencentcloud.vod.v20180717.models.CreateSnapshotByTimeOffsetTemplateResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("CreateSnapshotByTimeOffsetTemplate", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateSnapshotByTimeOffsetTemplateResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -457,6 +569,34 @@ class VodClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DeleteAnimatedGraphicsTemplate(self, request):
+        """删除用户自定义转动图模板。
+
+        :param request: 调用DeleteAnimatedGraphicsTemplate所需参数的结构体。
+        :type request: :class:`tencentcloud.vod.v20180717.models.DeleteAnimatedGraphicsTemplateRequest`
+        :rtype: :class:`tencentcloud.vod.v20180717.models.DeleteAnimatedGraphicsTemplateResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DeleteAnimatedGraphicsTemplate", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DeleteAnimatedGraphicsTemplateResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DeleteClass(self, request):
         """* 仅当待删分类无子分类且无媒体关联情况下，可删除分类；
         * 否则，请先执行[删除媒体](/document/product/266/31764)及子分类，再删除该分类；
@@ -500,6 +640,34 @@ class VodClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteContentReviewTemplateResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DeleteImageSpriteTemplate(self, request):
+        """删除雪碧图模板。
+
+        :param request: 调用DeleteImageSpriteTemplate所需参数的结构体。
+        :type request: :class:`tencentcloud.vod.v20180717.models.DeleteImageSpriteTemplateRequest`
+        :rtype: :class:`tencentcloud.vod.v20180717.models.DeleteImageSpriteTemplateResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DeleteImageSpriteTemplate", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DeleteImageSpriteTemplateResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -585,6 +753,62 @@ class VodClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteProcedureTemplateResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DeleteSampleSnapshotTemplate(self, request):
+        """删除用户自定义采样截图模板。
+
+        :param request: 调用DeleteSampleSnapshotTemplate所需参数的结构体。
+        :type request: :class:`tencentcloud.vod.v20180717.models.DeleteSampleSnapshotTemplateRequest`
+        :rtype: :class:`tencentcloud.vod.v20180717.models.DeleteSampleSnapshotTemplateResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DeleteSampleSnapshotTemplate", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DeleteSampleSnapshotTemplateResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DeleteSnapshotByTimeOffsetTemplate(self, request):
+        """删除用户自定义指定时间点截图模板。
+
+        :param request: 调用DeleteSnapshotByTimeOffsetTemplate所需参数的结构体。
+        :type request: :class:`tencentcloud.vod.v20180717.models.DeleteSnapshotByTimeOffsetTemplateRequest`
+        :rtype: :class:`tencentcloud.vod.v20180717.models.DeleteSnapshotByTimeOffsetTemplateResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DeleteSnapshotByTimeOffsetTemplate", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DeleteSnapshotByTimeOffsetTemplateResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -767,6 +991,34 @@ class VodClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeAnimatedGraphicsTemplates(self, request):
+        """查询转动图模板列表，支持根据条件，分页查询。
+
+        :param request: 调用DescribeAnimatedGraphicsTemplates所需参数的结构体。
+        :type request: :class:`tencentcloud.vod.v20180717.models.DescribeAnimatedGraphicsTemplatesRequest`
+        :rtype: :class:`tencentcloud.vod.v20180717.models.DescribeAnimatedGraphicsTemplatesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeAnimatedGraphicsTemplates", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeAnimatedGraphicsTemplatesResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeContentReviewTemplates(self, request):
         """根据视频内容审核模板唯一标识，获取视频内容审核模板详情列表。返回结果包含符合条件的所有用户自定义模板及[系统预置内容审核模板](https://cloud.tencent.com/document/product/266/33476#.E9.A2.84.E7.BD.AE.E8.A7.86.E9.A2.91.E5.86.85.E5.AE.B9.E5.AE.A1.E6.A0.B8.E6.A8.A1.E6.9D.BF)。
 
@@ -781,6 +1033,34 @@ class VodClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeContentReviewTemplatesResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeImageSpriteTemplates(self, request):
+        """查询雪碧图模板，支持根据条件，分页查询。
+
+        :param request: 调用DescribeImageSpriteTemplates所需参数的结构体。
+        :type request: :class:`tencentcloud.vod.v20180717.models.DescribeImageSpriteTemplatesRequest`
+        :rtype: :class:`tencentcloud.vod.v20180717.models.DescribeImageSpriteTemplatesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeImageSpriteTemplates", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeImageSpriteTemplatesResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -892,8 +1172,8 @@ class VodClient(AbstractClient):
     def DescribeReviewDetails(self, request):
         """该接口返回查询时间范围内每天使用的视频内容审核时长数据，单位： 秒。
 
-        1. 可以查询最近90天内的视频内容审核时长统计数据。
-        2. 查询时间跨度不超过60天。
+        1. 可以查询最近365天内的视频内容审核时长统计数据。
+        2. 查询时间跨度不超过90天。
 
         :param request: 调用DescribeReviewDetails所需参数的结构体。
         :type request: :class:`tencentcloud.vod.v20180717.models.DescribeReviewDetailsRequest`
@@ -906,6 +1186,62 @@ class VodClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeReviewDetailsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeSampleSnapshotTemplates(self, request):
+        """查询采样截图模板，支持根据条件，分页查询。
+
+        :param request: 调用DescribeSampleSnapshotTemplates所需参数的结构体。
+        :type request: :class:`tencentcloud.vod.v20180717.models.DescribeSampleSnapshotTemplatesRequest`
+        :rtype: :class:`tencentcloud.vod.v20180717.models.DescribeSampleSnapshotTemplatesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeSampleSnapshotTemplates", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeSampleSnapshotTemplatesResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeSnapshotByTimeOffsetTemplates(self, request):
+        """查询指定时间点截图模板，支持根据条件，分页查询。
+
+        :param request: 调用DescribeSnapshotByTimeOffsetTemplates所需参数的结构体。
+        :type request: :class:`tencentcloud.vod.v20180717.models.DescribeSnapshotByTimeOffsetTemplatesRequest`
+        :rtype: :class:`tencentcloud.vod.v20180717.models.DescribeSnapshotByTimeOffsetTemplatesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeSnapshotByTimeOffsetTemplates", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeSnapshotByTimeOffsetTemplatesResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -1266,6 +1602,34 @@ class VodClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def ModifyAnimatedGraphicsTemplate(self, request):
+        """修改用户自定义转动图模板。
+
+        :param request: 调用ModifyAnimatedGraphicsTemplate所需参数的结构体。
+        :type request: :class:`tencentcloud.vod.v20180717.models.ModifyAnimatedGraphicsTemplateRequest`
+        :rtype: :class:`tencentcloud.vod.v20180717.models.ModifyAnimatedGraphicsTemplateResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ModifyAnimatedGraphicsTemplate", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ModifyAnimatedGraphicsTemplateResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def ModifyClass(self, request):
         """修改媒体分类属性。
 
@@ -1322,6 +1686,34 @@ class VodClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def ModifyImageSpriteTemplate(self, request):
+        """修改用户自定义雪碧图模板。
+
+        :param request: 调用ModifyImageSpriteTemplate所需参数的结构体。
+        :type request: :class:`tencentcloud.vod.v20180717.models.ModifyImageSpriteTemplateRequest`
+        :rtype: :class:`tencentcloud.vod.v20180717.models.ModifyImageSpriteTemplateResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ModifyImageSpriteTemplate", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ModifyImageSpriteTemplateResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def ModifyMediaInfo(self, request):
         """修改媒体文件的属性，包括分类、名称、描述、标签、过期时间、打点信息、视频封面等。
 
@@ -1364,6 +1756,62 @@ class VodClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyPersonSampleResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ModifySampleSnapshotTemplate(self, request):
+        """修改用户自定义采样截图模板。
+
+        :param request: 调用ModifySampleSnapshotTemplate所需参数的结构体。
+        :type request: :class:`tencentcloud.vod.v20180717.models.ModifySampleSnapshotTemplateRequest`
+        :rtype: :class:`tencentcloud.vod.v20180717.models.ModifySampleSnapshotTemplateResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ModifySampleSnapshotTemplate", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ModifySampleSnapshotTemplateResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ModifySnapshotByTimeOffsetTemplate(self, request):
+        """修改用户自定义指定时间点截图模板。
+
+        :param request: 调用ModifySnapshotByTimeOffsetTemplate所需参数的结构体。
+        :type request: :class:`tencentcloud.vod.v20180717.models.ModifySnapshotByTimeOffsetTemplateRequest`
+        :rtype: :class:`tencentcloud.vod.v20180717.models.ModifySnapshotByTimeOffsetTemplateResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ModifySnapshotByTimeOffsetTemplate", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ModifySnapshotByTimeOffsetTemplateResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

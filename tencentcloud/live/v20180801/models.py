@@ -193,16 +193,20 @@ class BillDataInfo(AbstractModel):
         :type Bandwidth: float
         :param Flux: 流量，单位是MB。
         :type Flux: float
+        :param PeakTime: 峰值时间点，格式为yyyy-mm-dd HH:MM:SS，原始数据为5分钟粒度，如果查询小时和天粒度数据，则返回对应粒度内的带宽峰值时间点。
+        :type PeakTime: str
         """
         self.Time = None
         self.Bandwidth = None
         self.Flux = None
+        self.PeakTime = None
 
 
     def _deserialize(self, params):
         self.Time = params.get("Time")
         self.Bandwidth = params.get("Bandwidth")
         self.Flux = params.get("Flux")
+        self.PeakTime = params.get("PeakTime")
 
 
 class BindLiveDomainCertRequest(AbstractModel):
@@ -2419,12 +2423,15 @@ class DescribeLiveDomainsRequest(AbstractModel):
         :type PageNum: int
         :param IsDelayLive: 0 普通直播 1慢直播 默认0
         :type IsDelayLive: int
+        :param DomainPrefix: 域名前缀
+        :type DomainPrefix: str
         """
         self.DomainStatus = None
         self.DomainType = None
         self.PageSize = None
         self.PageNum = None
         self.IsDelayLive = None
+        self.DomainPrefix = None
 
 
     def _deserialize(self, params):
@@ -2433,6 +2440,7 @@ class DescribeLiveDomainsRequest(AbstractModel):
         self.PageSize = params.get("PageSize")
         self.PageNum = params.get("PageNum")
         self.IsDelayLive = params.get("IsDelayLive")
+        self.DomainPrefix = params.get("DomainPrefix")
 
 
 class DescribeLiveDomainsResponse(AbstractModel):
@@ -5539,6 +5547,7 @@ class ModifyPullStreamConfigRequest(AbstractModel):
         :param StartTime: 开始时间。
 使用UTC格式时间，
 例如：2019-01-08T10:00:00Z。
+格式按照 ISO 8601 标准表示，详见 [ISO 日期格式说明](document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F)。
         :type StartTime: str
         :param EndTime: 结束时间，注意：
 1. 结束时间必须大于开始时间；
@@ -5547,6 +5556,7 @@ class ModifyPullStreamConfigRequest(AbstractModel):
 
 使用UTC格式时间，
 例如：2019-01-08T10:00:00Z。
+格式按照 ISO 8601 标准表示，详见 [ISO 日期格式说明](document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F)。
         :type EndTime: str
         """
         self.ConfigId = None

@@ -53,3 +53,31 @@ class FacefusionClient(AbstractClient):
                 raise
             else:
                 raise TencentCloudSDKException(e.message, e.message)
+
+
+    def FuseFace(self, request):
+        """选脸融合
+
+        :param request: 调用FuseFace所需参数的结构体。
+        :type request: :class:`tencentcloud.facefusion.v20181201.models.FuseFaceRequest`
+        :rtype: :class:`tencentcloud.facefusion.v20181201.models.FuseFaceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("FuseFace", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.FuseFaceResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)

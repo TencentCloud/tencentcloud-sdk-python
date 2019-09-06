@@ -931,6 +931,39 @@ class MpsClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def ProcessLiveMedia(self, request):
+        """对直播流媒体发起处理任务，功能包括：
+
+        1. 智能内容识别（人脸、文本全文、文本关键词、语音全文、语音关键词、物体）。
+        2. 智能内容分析（精彩集锦）。
+
+        直播流处理事件通知实时写入用户指定的消息队列 CMQ 中，用户需要从消息队列 CMQ 中获取事件通知结果，同时处理过程中存在输出文件的，会写入用户指定的输出文件的目标存储中。
+
+        :param request: 调用ProcessLiveMedia所需参数的结构体。
+        :type request: :class:`tencentcloud.mps.v20190612.models.ProcessLiveMediaRequest`
+        :rtype: :class:`tencentcloud.mps.v20190612.models.ProcessLiveMediaResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ProcessLiveMedia", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ProcessLiveMediaResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def ProcessMedia(self, request):
         """对 COS 中的媒体文件发起处理任务，功能包括：
         1. 视频转码（带水印）；

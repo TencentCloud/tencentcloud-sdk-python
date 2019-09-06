@@ -294,15 +294,14 @@ class CreateImageRequest(AbstractModel):
         :type InstanceId: str
         :param ImageDescription: 镜像描述
         :type ImageDescription: str
-        :param ForcePoweroff: 软关机失败时是否执行强制关机以制作镜像
+        :param ForcePoweroff: 是否执行强制关机以制作镜像。
+取值范围：<br><li>TRUE：表示关机之后制作镜像<br><li>FALSE：表示开机状态制作镜像<br><br>默认取值：FALSE。<br><br>开机状态制作镜像，可能导致部分数据未备份，影响数据安全。
         :type ForcePoweroff: str
         :param Sysprep: 创建Windows镜像时是否启用Sysprep
         :type Sysprep: str
-        :param Reboot: 实例处于运行中时，是否允许关机执行制作镜像任务。
-        :type Reboot: str
         :param DataDiskIds: 实例需要制作镜像的数据盘Id
         :type DataDiskIds: list of str
-        :param SnapshotIds: 需要制作镜像的快照Id,必须包含一个系统盘快照
+        :param SnapshotIds: 需要制作镜像的快照ID,必须包含一个系统盘快照
         :type SnapshotIds: list of str
         :param DryRun: 检测请求的合法性，但不会对操作的资源产生任何影响
         :type DryRun: bool
@@ -312,7 +311,6 @@ class CreateImageRequest(AbstractModel):
         self.ImageDescription = None
         self.ForcePoweroff = None
         self.Sysprep = None
-        self.Reboot = None
         self.DataDiskIds = None
         self.SnapshotIds = None
         self.DryRun = None
@@ -324,7 +322,6 @@ class CreateImageRequest(AbstractModel):
         self.ImageDescription = params.get("ImageDescription")
         self.ForcePoweroff = params.get("ForcePoweroff")
         self.Sysprep = params.get("Sysprep")
-        self.Reboot = params.get("Reboot")
         self.DataDiskIds = params.get("DataDiskIds")
         self.SnapshotIds = params.get("SnapshotIds")
         self.DryRun = params.get("DryRun")
@@ -2495,6 +2492,8 @@ class Instance(AbstractModel):
         :param StopChargingMode: 实例的关机计费模式。
 取值范围：<br><li>KEEP_CHARGING：关机继续收费<br><li>STOP_CHARGING：关机停止收费<li>NOT_APPLICABLE：实例处于非关机状态或者不适用关机停止计费的条件<br>
         :type StopChargingMode: str
+        :param Uuid: 实例全局唯一ID
+        :type Uuid: str
         """
         self.Placement = None
         self.InstanceId = None
@@ -2520,6 +2519,7 @@ class Instance(AbstractModel):
         self.InstanceState = None
         self.Tags = None
         self.StopChargingMode = None
+        self.Uuid = None
 
 
     def _deserialize(self, params):
@@ -2567,6 +2567,7 @@ class Instance(AbstractModel):
                 obj._deserialize(item)
                 self.Tags.append(obj)
         self.StopChargingMode = params.get("StopChargingMode")
+        self.Uuid = params.get("Uuid")
 
 
 class InstanceChargePrepaid(AbstractModel):
@@ -2775,9 +2776,9 @@ class InternetAccessible(AbstractModel):
         :type InternetChargeType: str
         :param InternetMaxBandwidthOut: 公网出带宽上限，单位：Mbps。默认值：0Mbps。不同机型带宽上限范围不一致，具体限制详见[购买网络带宽](/document/product/213/509)。
         :type InternetMaxBandwidthOut: int
-        :param PublicIpAssigned: 是否分配公网IP。取值范围：<br><li>TRUE：表示分配公网IP<br><li>FALSE：表示不分配公网IP<br><br>当公网带宽大于0Mbps时，可自由选择开通与否，默认开通公网IP；当公网带宽为0，则不允许分配公网IP。
+        :param PublicIpAssigned: 是否分配公网IP。取值范围：<br><li>TRUE：表示分配公网IP<br><li>FALSE：表示不分配公网IP<br><br>当公网带宽大于0Mbps时，可自由选择开通与否，默认开通公网IP；当公网带宽为0，则不允许分配公网IP。该参数仅在RunInstances接口中作为入参使用。
         :type PublicIpAssigned: bool
-        :param BandwidthPackageId: 带宽包ID。可通过[`DescribeBandwidthPackages`](https://cloud.tencent.com/document/api/215/19209)接口返回值中的`BandwidthPackageId`获取。
+        :param BandwidthPackageId: 带宽包ID。可通过[`DescribeBandwidthPackages`](https://cloud.tencent.com/document/api/215/19209)接口返回值中的`BandwidthPackageId`获取。该参数仅在RunInstances接口中作为入参使用。
         :type BandwidthPackageId: str
         """
         self.InternetChargeType = None

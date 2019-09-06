@@ -1042,7 +1042,11 @@ class CvmClient(AbstractClient):
 
 
     def InquiryPriceResetInstance(self, request):
-        """本接口 (InquiryPriceResetInstance) 用于重装实例询价。* 如果指定了`ImageId`参数，则使用指定的镜像进行重装询价；否则按照当前实例使用的镜像进行重装询价。* 目前只支持[系统盘类型](/document/api/213/9452#block_device)是`CLOUD_BASIC`、`CLOUD_PREMIUM`、`CLOUD_SSD`类型的实例使用该接口实现`Linux`和`Windows`操作系统切换的重装询价。* 目前不支持海外地域的实例使用该接口实现`Linux`和`Windows`操作系统切换的重装询价。
+        """本接口 (InquiryPriceResetInstance) 用于重装实例询价。
+
+        * 如果指定了`ImageId`参数，则使用指定的镜像进行重装询价；否则按照当前实例使用的镜像进行重装询价。
+        * 目前只支持[系统盘类型](/document/api/213/9452#block_device)是`CLOUD_BASIC`、`CLOUD_PREMIUM`、`CLOUD_SSD`类型的实例使用该接口实现`Linux`和`Windows`操作系统切换的重装询价。
+        * 目前不支持海外地域的实例使用该接口实现`Linux`和`Windows`操作系统切换的重装询价。
 
         :param request: 调用InquiryPriceResetInstance所需参数的结构体。
         :type request: :class:`tencentcloud.cvm.v20170312.models.InquiryPriceResetInstanceRequest`

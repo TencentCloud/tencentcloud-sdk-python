@@ -76,6 +76,56 @@ class BatchUpdateShadow(AbstractModel):
         self.Desired = params.get("Desired")
 
 
+class BindDevicesRequest(AbstractModel):
+    """BindDevices请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param GatewayProductId: 网关设备的产品ID
+        :type GatewayProductId: str
+        :param GatewayDeviceName: 网关设备的设备名
+        :type GatewayDeviceName: str
+        :param ProductId: 被绑定设备的产品ID
+        :type ProductId: str
+        :param DeviceNames: 被绑定的多个设备名
+        :type DeviceNames: list of str
+        :param Skey: 中兴CLAA设备的绑定需要skey，普通的设备不需要
+        :type Skey: str
+        """
+        self.GatewayProductId = None
+        self.GatewayDeviceName = None
+        self.ProductId = None
+        self.DeviceNames = None
+        self.Skey = None
+
+
+    def _deserialize(self, params):
+        self.GatewayProductId = params.get("GatewayProductId")
+        self.GatewayDeviceName = params.get("GatewayDeviceName")
+        self.ProductId = params.get("ProductId")
+        self.DeviceNames = params.get("DeviceNames")
+        self.Skey = params.get("Skey")
+
+
+class BindDevicesResponse(AbstractModel):
+    """BindDevices返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class BrokerSubscribe(AbstractModel):
     """代理订阅信息
 
@@ -996,7 +1046,7 @@ class DescribeLoraDeviceRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param ProductId: 产品id
+        :param ProductId: 产品Id
         :type ProductId: str
         :param DeviceName: 设备名称
         :type DeviceName: str
@@ -2058,6 +2108,98 @@ class TopicRulePayload(AbstractModel):
         self.Actions = params.get("Actions")
         self.Description = params.get("Description")
         self.RuleDisabled = params.get("RuleDisabled")
+
+
+class UnbindDevicesRequest(AbstractModel):
+    """UnbindDevices请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param GatewayProductId: 网关设备的产品ID
+        :type GatewayProductId: str
+        :param GatewayDeviceName: 网关设备的设备名
+        :type GatewayDeviceName: str
+        :param ProductId: 产品ID
+        :type ProductId: str
+        :param DeviceNames: 多个设备名
+        :type DeviceNames: list of str
+        :param Skey: 中兴CLAA设备的解绑需要Skey，普通设备不需要
+        :type Skey: str
+        """
+        self.GatewayProductId = None
+        self.GatewayDeviceName = None
+        self.ProductId = None
+        self.DeviceNames = None
+        self.Skey = None
+
+
+    def _deserialize(self, params):
+        self.GatewayProductId = params.get("GatewayProductId")
+        self.GatewayDeviceName = params.get("GatewayDeviceName")
+        self.ProductId = params.get("ProductId")
+        self.DeviceNames = params.get("DeviceNames")
+        self.Skey = params.get("Skey")
+
+
+class UnbindDevicesResponse(AbstractModel):
+    """UnbindDevices返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class UpdateDeviceAvailableStateRequest(AbstractModel):
+    """UpdateDeviceAvailableState请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ProductId: 设备所属产品id
+        :type ProductId: str
+        :param DeviceName: 设备名称
+        :type DeviceName: str
+        :param EnableState: 要设置的设备状态，1为启用，0为禁用
+        :type EnableState: int
+        """
+        self.ProductId = None
+        self.DeviceName = None
+        self.EnableState = None
+
+
+    def _deserialize(self, params):
+        self.ProductId = params.get("ProductId")
+        self.DeviceName = params.get("DeviceName")
+        self.EnableState = params.get("EnableState")
+
+
+class UpdateDeviceAvailableStateResponse(AbstractModel):
+    """UpdateDeviceAvailableState返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
 
 
 class UpdateDeviceShadowRequest(AbstractModel):

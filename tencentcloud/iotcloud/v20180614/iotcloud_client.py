@@ -25,6 +25,34 @@ class IotcloudClient(AbstractClient):
     _endpoint = 'iotcloud.tencentcloudapi.com'
 
 
+    def BindDevices(self, request):
+        """本接口（BindDevices）用于网关设备批量绑定子设备
+
+        :param request: 调用BindDevices所需参数的结构体。
+        :type request: :class:`tencentcloud.iotcloud.v20180614.models.BindDevicesRequest`
+        :rtype: :class:`tencentcloud.iotcloud.v20180614.models.BindDevicesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("BindDevices", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.BindDevicesResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def CancelTask(self, request):
         """本接口（CancelTask）用于取消一个未被调度的任务。
 
@@ -823,6 +851,62 @@ class IotcloudClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ResetDeviceStateResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def UnbindDevices(self, request):
+        """本接口（UnbindDevices）用于网关设备批量解绑子设备
+
+        :param request: 调用UnbindDevices所需参数的结构体。
+        :type request: :class:`tencentcloud.iotcloud.v20180614.models.UnbindDevicesRequest`
+        :rtype: :class:`tencentcloud.iotcloud.v20180614.models.UnbindDevicesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("UnbindDevices", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.UnbindDevicesResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def UpdateDeviceAvailableState(self, request):
+        """启用或者禁用设备
+
+        :param request: 调用UpdateDeviceAvailableState所需参数的结构体。
+        :type request: :class:`tencentcloud.iotcloud.v20180614.models.UpdateDeviceAvailableStateRequest`
+        :rtype: :class:`tencentcloud.iotcloud.v20180614.models.UpdateDeviceAvailableStateResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("UpdateDeviceAvailableState", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.UpdateDeviceAvailableStateResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

@@ -25,6 +25,34 @@ class EccClient(AbstractClient):
     _endpoint = 'ecc.tencentcloudapi.com'
 
 
+    def DescribeTask(self, request):
+        """异步任务结果查询接口
+
+        :param request: 调用DescribeTask所需参数的结构体。
+        :type request: :class:`tencentcloud.ecc.v20181213.models.DescribeTaskRequest`
+        :rtype: :class:`tencentcloud.ecc.v20181213.models.DescribeTaskResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeTask", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeTaskResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def ECC(self, request):
         """接口请求域名： ecc.tencentcloudapi.com
         纯文本英语作文批改
@@ -56,7 +84,7 @@ class EccClient(AbstractClient):
 
     def EHOCR(self, request):
         """https://ecc.tencentcloudapi.com/?Action=EHOCR
-        作文识别
+        图像识别批改接口
 
         :param request: 调用EHOCR所需参数的结构体。
         :type request: :class:`tencentcloud.ecc.v20181213.models.EHOCRRequest`

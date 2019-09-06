@@ -41,6 +41,8 @@ class AIAnalysisTemplateItem(AbstractModel):
         :param FrameTagConfigure: 智能按帧标签任务控制参数。
 注意：此字段可能返回 null，表示取不到有效值。
         :type FrameTagConfigure: :class:`tencentcloud.vod.v20180717.models.FrameTagConfigureInfo`
+        :param HighlightConfigure: 智能精彩集锦任务控制参数。
+        :type HighlightConfigure: :class:`tencentcloud.vod.v20180717.models.HighlightsConfigureInfo`
         :param CreateTime: 模板创建时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F)。
         :type CreateTime: str
         :param UpdateTime: 模板最后修改时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F)。
@@ -53,6 +55,7 @@ class AIAnalysisTemplateItem(AbstractModel):
         self.TagConfigure = None
         self.CoverConfigure = None
         self.FrameTagConfigure = None
+        self.HighlightConfigure = None
         self.CreateTime = None
         self.UpdateTime = None
 
@@ -73,6 +76,9 @@ class AIAnalysisTemplateItem(AbstractModel):
         if params.get("FrameTagConfigure") is not None:
             self.FrameTagConfigure = FrameTagConfigureInfo()
             self.FrameTagConfigure._deserialize(params.get("FrameTagConfigure"))
+        if params.get("HighlightConfigure") is not None:
+            self.HighlightConfigure = HighlightsConfigureInfo()
+            self.HighlightConfigure._deserialize(params.get("HighlightConfigure"))
         self.CreateTime = params.get("CreateTime")
         self.UpdateTime = params.get("UpdateTime")
 
@@ -238,6 +244,7 @@ class AiAnalysisResult(AbstractModel):
 <li>Cover：智能封面</li>
 <li>Tag：智能标签</li>
 <li>FrameTag：智能按帧标签</li>
+<li>Highlight：智能精彩集锦</li>
         :type Type: str
         :param ClassificationTask: 视频内容分析智能分类任务的查询结果，当任务类型为 Classification 时有效。
 注意：此字段可能返回 null，表示取不到有效值。
@@ -251,16 +258,16 @@ class AiAnalysisResult(AbstractModel):
         :param FrameTagTask: 视频内容分析智能按帧标签任务的查询结果，当任务类型为 FrameTag 时有效。
 注意：此字段可能返回 null，表示取不到有效值。
         :type FrameTagTask: :class:`tencentcloud.vod.v20180717.models.AiAnalysisTaskFrameTagResult`
-        :param HighlightsTask: 视频内容分析智能按集锦任务的查询结果，当任务类型为 Highlight 时有效。
+        :param HighlightTask: 视频内容分析智能精彩集锦任务的查询结果，当任务类型为 Highlight 时有效。
 注意：此字段可能返回 null，表示取不到有效值。
-        :type HighlightsTask: list of AiAnalysisTaskHighlightResult
+        :type HighlightTask: :class:`tencentcloud.vod.v20180717.models.AiAnalysisTaskHighlightResult`
         """
         self.Type = None
         self.ClassificationTask = None
         self.CoverTask = None
         self.TagTask = None
         self.FrameTagTask = None
-        self.HighlightsTask = None
+        self.HighlightTask = None
 
 
     def _deserialize(self, params):
@@ -277,12 +284,9 @@ class AiAnalysisResult(AbstractModel):
         if params.get("FrameTagTask") is not None:
             self.FrameTagTask = AiAnalysisTaskFrameTagResult()
             self.FrameTagTask._deserialize(params.get("FrameTagTask"))
-        if params.get("HighlightsTask") is not None:
-            self.HighlightsTask = []
-            for item in params.get("HighlightsTask"):
-                obj = AiAnalysisTaskHighlightResult()
-                obj._deserialize(item)
-                self.HighlightsTask.append(obj)
+        if params.get("HighlightTask") is not None:
+            self.HighlightTask = AiAnalysisTaskHighlightResult()
+            self.HighlightTask._deserialize(params.get("HighlightTask"))
 
 
 class AiAnalysisTaskClassificationInput(AbstractModel):
@@ -2764,6 +2768,65 @@ class AnimatedGraphicTaskInput(AbstractModel):
         self.EndTimeOffset = params.get("EndTimeOffset")
 
 
+class AnimatedGraphicsTemplate(AbstractModel):
+    """转动图模板详情。
+
+    """
+
+    def __init__(self):
+        """
+        :param Definition: 转动图模板唯一标识。
+        :type Definition: int
+        :param Type: 模板类型，取值范围：
+<li>Preset：系统预置模板；</li>
+<li>Custom：用户自定义模板。</li>
+        :type Type: str
+        :param Name: 转动图模板名称。
+        :type Name: str
+        :param Comment: 转动图模板描述信息。
+        :type Comment: str
+        :param Width: 动图宽度（或长边）的最大值。
+        :type Width: int
+        :param Height: 动图高度（或短边）的最大值。
+        :type Height: int
+        :param Format: 动图格式。
+        :type Format: str
+        :param Fps: 帧率。
+        :type Fps: int
+        :param Quality: 图片质量。
+        :type Quality: float
+        :param CreateTime: 模板创建时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F)。
+        :type CreateTime: str
+        :param UpdateTime: 模板最后修改时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F)。
+        :type UpdateTime: str
+        """
+        self.Definition = None
+        self.Type = None
+        self.Name = None
+        self.Comment = None
+        self.Width = None
+        self.Height = None
+        self.Format = None
+        self.Fps = None
+        self.Quality = None
+        self.CreateTime = None
+        self.UpdateTime = None
+
+
+    def _deserialize(self, params):
+        self.Definition = params.get("Definition")
+        self.Type = params.get("Type")
+        self.Name = params.get("Name")
+        self.Comment = params.get("Comment")
+        self.Width = params.get("Width")
+        self.Height = params.get("Height")
+        self.Format = params.get("Format")
+        self.Fps = params.get("Fps")
+        self.Quality = params.get("Quality")
+        self.CreateTime = params.get("CreateTime")
+        self.UpdateTime = params.get("UpdateTime")
+
+
 class ApplyUploadRequest(AbstractModel):
     """ApplyUpload请求参数结构体
 
@@ -3848,6 +3911,8 @@ class CreateAIAnalysisTemplateRequest(AbstractModel):
         :type CoverConfigure: :class:`tencentcloud.vod.v20180717.models.CoverConfigureInfo`
         :param FrameTagConfigure: 智能按帧标签任务控制参数。
         :type FrameTagConfigure: :class:`tencentcloud.vod.v20180717.models.FrameTagConfigureInfo`
+        :param HighlightConfigure: 智能精彩集锦任务控制参数。
+        :type HighlightConfigure: :class:`tencentcloud.vod.v20180717.models.HighlightsConfigureInfo`
         :param SubAppId: 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
         :type SubAppId: int
         """
@@ -3857,6 +3922,7 @@ class CreateAIAnalysisTemplateRequest(AbstractModel):
         self.TagConfigure = None
         self.CoverConfigure = None
         self.FrameTagConfigure = None
+        self.HighlightConfigure = None
         self.SubAppId = None
 
 
@@ -3875,6 +3941,9 @@ class CreateAIAnalysisTemplateRequest(AbstractModel):
         if params.get("FrameTagConfigure") is not None:
             self.FrameTagConfigure = FrameTagConfigureInfo()
             self.FrameTagConfigure._deserialize(params.get("FrameTagConfigure"))
+        if params.get("HighlightConfigure") is not None:
+            self.HighlightConfigure = HighlightsConfigureInfo()
+            self.HighlightConfigure._deserialize(params.get("HighlightConfigure"))
         self.SubAppId = params.get("SubAppId")
 
 
@@ -3984,6 +4053,82 @@ class CreateAIRecognitionTemplateResponse(AbstractModel):
     def __init__(self):
         """
         :param Definition: 视频内容识别模板唯一标识。
+        :type Definition: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Definition = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Definition = params.get("Definition")
+        self.RequestId = params.get("RequestId")
+
+
+class CreateAnimatedGraphicsTemplateRequest(AbstractModel):
+    """CreateAnimatedGraphicsTemplate请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Width: 动图宽度（或长边）的最大值，取值范围：0 和 [128, 4096]，单位：px。
+<li>当 Width、Height 均为 0，则分辨率同源；</li>
+<li>当 Width 为 0，Height 非 0，则 Width 按比例缩放；</li>
+<li>当 Width 非 0，Height 为 0，则 Height 按比例缩放；</li>
+<li>当 Width、Height 均非 0，则分辨率按用户指定。</li>
+默认值：0。
+        :type Width: int
+        :param Height: 视频流高度（或短边）的最大值，取值范围：0 和 [128, 4096]，单位：px。
+<li>当 Width、Height 均为 0，则分辨率同源；</li>
+<li>当 Width 为 0，Height 非 0，则 Width 按比例缩放；</li>
+<li>当 Width 非 0，Height 为 0，则 Height 按比例缩放；</li>
+<li>当 Width、Height 均非 0，则分辨率按用户指定。</li>
+默认值：0。
+        :type Height: int
+        :param Fps: 帧率，取值范围：[1, 30]，单位：Hz。
+        :type Fps: int
+        :param Format: 动图格式，取值为 gif 和 webp。默认为 gif。
+        :type Format: str
+        :param Quality: 图片质量，取值范围：[1, 100]，默认值为 75。
+        :type Quality: float
+        :param Name: 转动图模板名称，长度限制：64 个字符。
+        :type Name: str
+        :param Comment: 模板描述信息，长度限制：256 个字符。
+        :type Comment: str
+        :param SubAppId: 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
+        :type SubAppId: int
+        """
+        self.Width = None
+        self.Height = None
+        self.Fps = None
+        self.Format = None
+        self.Quality = None
+        self.Name = None
+        self.Comment = None
+        self.SubAppId = None
+
+
+    def _deserialize(self, params):
+        self.Width = params.get("Width")
+        self.Height = params.get("Height")
+        self.Fps = params.get("Fps")
+        self.Format = params.get("Format")
+        self.Quality = params.get("Quality")
+        self.Name = params.get("Name")
+        self.Comment = params.get("Comment")
+        self.SubAppId = params.get("SubAppId")
+
+
+class CreateAnimatedGraphicsTemplateResponse(AbstractModel):
+    """CreateAnimatedGraphicsTemplate返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Definition: 转动图模板唯一标识。
         :type Definition: int
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -4177,6 +4322,76 @@ class CreateImageSpriteTask2017(AbstractModel):
         self.WebVttUrl = params.get("WebVttUrl")
 
 
+class CreateImageSpriteTemplateRequest(AbstractModel):
+    """CreateImageSpriteTemplate请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Width: 雪碧图中小图的宽度，取值范围： [128, 4096]，单位：px。
+        :type Width: int
+        :param Height: 雪碧图中小图的高度，取值范围： [128, 4096]，单位：px。
+        :type Height: int
+        :param SampleType: 采样类型，取值：
+<li>Percent：按百分比。</li>
+<li>Time：按时间间隔。</li>
+        :type SampleType: str
+        :param SampleInterval: 采样间隔。
+<li>当 SampleType 为 Percent 时，指定采样间隔的百分比。</li>
+<li>当 SampleType 为 Time 时，指定采样间隔的时间，单位为秒。</li>
+        :type SampleInterval: int
+        :param RowCount: 雪碧图中小图的行数。
+        :type RowCount: int
+        :param ColumnCount: 雪碧图中小图的列数。
+        :type ColumnCount: int
+        :param Name: 雪碧图模板名称，长度限制：64 个字符。
+        :type Name: str
+        :param SubAppId: 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
+        :type SubAppId: int
+        """
+        self.Width = None
+        self.Height = None
+        self.SampleType = None
+        self.SampleInterval = None
+        self.RowCount = None
+        self.ColumnCount = None
+        self.Name = None
+        self.SubAppId = None
+
+
+    def _deserialize(self, params):
+        self.Width = params.get("Width")
+        self.Height = params.get("Height")
+        self.SampleType = params.get("SampleType")
+        self.SampleInterval = params.get("SampleInterval")
+        self.RowCount = params.get("RowCount")
+        self.ColumnCount = params.get("ColumnCount")
+        self.Name = params.get("Name")
+        self.SubAppId = params.get("SubAppId")
+
+
+class CreateImageSpriteTemplateResponse(AbstractModel):
+    """CreateImageSpriteTemplate返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Definition: 雪碧图模板唯一标识。
+        :type Definition: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Definition = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Definition = params.get("Definition")
+        self.RequestId = params.get("RequestId")
+
+
 class CreatePersonSampleRequest(AbstractModel):
     """CreatePersonSample请求参数结构体
 
@@ -4315,6 +4530,134 @@ class CreateProcedureTemplateResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class CreateSampleSnapshotTemplateRequest(AbstractModel):
+    """CreateSampleSnapshotTemplate请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Width: 图片宽度，取值范围： [128, 4096]，单位：px。
+        :type Width: int
+        :param Height: 图片高度，取值范围： [128, 4096]，单位：px。
+        :type Height: int
+        :param SampleType: 采样截图类型，取值：
+<li>Percent：按百分比。</li>
+<li>Time：按时间间隔。</li>
+        :type SampleType: str
+        :param SampleInterval: 采样间隔。
+<li>当 SampleType 为 Percent 时，指定采样间隔的百分比。</li>
+<li>当 SampleType 为 Time 时，指定采样间隔的时间，单位为秒。</li>
+        :type SampleInterval: int
+        :param Name: 采样截图模板名称，长度限制：64 个字符。
+        :type Name: str
+        :param Format: 图片格式，取值为 jpg 和 png。默认为 jpg。
+        :type Format: str
+        :param Comment: 模板描述信息，长度限制：256 个字符。
+        :type Comment: str
+        :param SubAppId: 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
+        :type SubAppId: int
+        """
+        self.Width = None
+        self.Height = None
+        self.SampleType = None
+        self.SampleInterval = None
+        self.Name = None
+        self.Format = None
+        self.Comment = None
+        self.SubAppId = None
+
+
+    def _deserialize(self, params):
+        self.Width = params.get("Width")
+        self.Height = params.get("Height")
+        self.SampleType = params.get("SampleType")
+        self.SampleInterval = params.get("SampleInterval")
+        self.Name = params.get("Name")
+        self.Format = params.get("Format")
+        self.Comment = params.get("Comment")
+        self.SubAppId = params.get("SubAppId")
+
+
+class CreateSampleSnapshotTemplateResponse(AbstractModel):
+    """CreateSampleSnapshotTemplate返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Definition: 采样截图模板唯一标识。
+        :type Definition: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Definition = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Definition = params.get("Definition")
+        self.RequestId = params.get("RequestId")
+
+
+class CreateSnapshotByTimeOffsetTemplateRequest(AbstractModel):
+    """CreateSnapshotByTimeOffsetTemplate请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Width: 图片宽度，取值范围： [128, 4096]，单位：px。
+        :type Width: int
+        :param Height: 图片高度，取值范围： [128, 4096]，单位：px。
+        :type Height: int
+        :param Name: 指定时间点截图模板名称，长度限制：64 个字符。
+        :type Name: str
+        :param Format: 图片格式，取值可以为 jpg 和 png。默认为 jpg。
+        :type Format: str
+        :param Comment: 模板描述信息，长度限制：256 个字符。
+        :type Comment: str
+        :param SubAppId: 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
+        :type SubAppId: int
+        """
+        self.Width = None
+        self.Height = None
+        self.Name = None
+        self.Format = None
+        self.Comment = None
+        self.SubAppId = None
+
+
+    def _deserialize(self, params):
+        self.Width = params.get("Width")
+        self.Height = params.get("Height")
+        self.Name = params.get("Name")
+        self.Format = params.get("Format")
+        self.Comment = params.get("Comment")
+        self.SubAppId = params.get("SubAppId")
+
+
+class CreateSnapshotByTimeOffsetTemplateResponse(AbstractModel):
+    """CreateSnapshotByTimeOffsetTemplate返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Definition: 时间点截图模板唯一标识。
+        :type Definition: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Definition = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Definition = params.get("Definition")
+        self.RequestId = params.get("RequestId")
+
+
 class CreateTranscodeTemplateRequest(AbstractModel):
     """CreateTranscodeTemplate请求参数结构体
 
@@ -4342,6 +4685,8 @@ class CreateTranscodeTemplateRequest(AbstractModel):
         :type VideoTemplate: :class:`tencentcloud.vod.v20180717.models.VideoTemplateInfo`
         :param AudioTemplate: 音频流配置参数，当 RemoveAudio 为 0，该字段必填。
         :type AudioTemplate: :class:`tencentcloud.vod.v20180717.models.AudioTemplateInfo`
+        :param TEHDConfig: 极速高清转码参数，需联系商务架构师开通后才能使用。
+        :type TEHDConfig: :class:`tencentcloud.vod.v20180717.models.TEHDConfig`
         :param SubAppId: 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
         :type SubAppId: int
         """
@@ -4352,6 +4697,7 @@ class CreateTranscodeTemplateRequest(AbstractModel):
         self.RemoveAudio = None
         self.VideoTemplate = None
         self.AudioTemplate = None
+        self.TEHDConfig = None
         self.SubAppId = None
 
 
@@ -4367,6 +4713,9 @@ class CreateTranscodeTemplateRequest(AbstractModel):
         if params.get("AudioTemplate") is not None:
             self.AudioTemplate = AudioTemplateInfo()
             self.AudioTemplate._deserialize(params.get("AudioTemplate"))
+        if params.get("TEHDConfig") is not None:
+            self.TEHDConfig = TEHDConfig()
+            self.TEHDConfig._deserialize(params.get("TEHDConfig"))
         self.SubAppId = params.get("SubAppId")
 
 
@@ -4619,6 +4968,44 @@ class DeleteAIRecognitionTemplateResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DeleteAnimatedGraphicsTemplateRequest(AbstractModel):
+    """DeleteAnimatedGraphicsTemplate请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Definition: 转动图模板唯一标识。
+        :type Definition: int
+        :param SubAppId: 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
+        :type SubAppId: int
+        """
+        self.Definition = None
+        self.SubAppId = None
+
+
+    def _deserialize(self, params):
+        self.Definition = params.get("Definition")
+        self.SubAppId = params.get("SubAppId")
+
+
+class DeleteAnimatedGraphicsTemplateResponse(AbstractModel):
+    """DeleteAnimatedGraphicsTemplate返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class DeleteClassRequest(AbstractModel):
     """DeleteClass请求参数结构体
 
@@ -4680,6 +5067,44 @@ class DeleteContentReviewTemplateRequest(AbstractModel):
 
 class DeleteContentReviewTemplateResponse(AbstractModel):
     """DeleteContentReviewTemplate返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class DeleteImageSpriteTemplateRequest(AbstractModel):
+    """DeleteImageSpriteTemplate请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Definition: 雪碧图模板唯一标识。
+        :type Definition: int
+        :param SubAppId: 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
+        :type SubAppId: int
+        """
+        self.Definition = None
+        self.SubAppId = None
+
+
+    def _deserialize(self, params):
+        self.Definition = params.get("Definition")
+        self.SubAppId = params.get("SubAppId")
+
+
+class DeleteImageSpriteTemplateResponse(AbstractModel):
+    """DeleteImageSpriteTemplate返回参数结构体
 
     """
 
@@ -4803,6 +5228,82 @@ class DeleteProcedureTemplateRequest(AbstractModel):
 
 class DeleteProcedureTemplateResponse(AbstractModel):
     """DeleteProcedureTemplate返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class DeleteSampleSnapshotTemplateRequest(AbstractModel):
+    """DeleteSampleSnapshotTemplate请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Definition: 采样截图模板唯一标识。
+        :type Definition: int
+        :param SubAppId: 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
+        :type SubAppId: int
+        """
+        self.Definition = None
+        self.SubAppId = None
+
+
+    def _deserialize(self, params):
+        self.Definition = params.get("Definition")
+        self.SubAppId = params.get("SubAppId")
+
+
+class DeleteSampleSnapshotTemplateResponse(AbstractModel):
+    """DeleteSampleSnapshotTemplate返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class DeleteSnapshotByTimeOffsetTemplateRequest(AbstractModel):
+    """DeleteSnapshotByTimeOffsetTemplate请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Definition: 指定时间点截图模板唯一标识。
+        :type Definition: int
+        :param SubAppId: 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
+        :type SubAppId: int
+        """
+        self.Definition = None
+        self.SubAppId = None
+
+
+    def _deserialize(self, params):
+        self.Definition = params.get("Definition")
+        self.SubAppId = params.get("SubAppId")
+
+
+class DeleteSnapshotByTimeOffsetTemplateResponse(AbstractModel):
+    """DeleteSnapshotByTimeOffsetTemplate返回参数结构体
 
     """
 
@@ -5094,6 +5595,71 @@ class DescribeAllClassResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeAnimatedGraphicsTemplatesRequest(AbstractModel):
+    """DescribeAnimatedGraphicsTemplates请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Definitions: 转动图模板唯一标识过滤条件，数组长度限制：100。
+        :type Definitions: list of int non-negative
+        :param Offset: 分页偏移量，默认值：0。
+        :type Offset: int
+        :param Limit: 返回记录条数，默认值：10，最大值：100。
+        :type Limit: int
+        :param Type: 模板类型过滤条件，可选值：
+<li>Preset：系统预置模板；</li>
+<li>Custom：用户自定义模板。</li>
+        :type Type: str
+        :param SubAppId: 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
+        :type SubAppId: int
+        """
+        self.Definitions = None
+        self.Offset = None
+        self.Limit = None
+        self.Type = None
+        self.SubAppId = None
+
+
+    def _deserialize(self, params):
+        self.Definitions = params.get("Definitions")
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+        self.Type = params.get("Type")
+        self.SubAppId = params.get("SubAppId")
+
+
+class DescribeAnimatedGraphicsTemplatesResponse(AbstractModel):
+    """DescribeAnimatedGraphicsTemplates返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param TotalCount: 符合过滤条件的记录总数。
+        :type TotalCount: int
+        :param AnimatedGraphicsTemplateSet: 转动图模板详情列表。
+        :type AnimatedGraphicsTemplateSet: list of AnimatedGraphicsTemplate
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.AnimatedGraphicsTemplateSet = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("AnimatedGraphicsTemplateSet") is not None:
+            self.AnimatedGraphicsTemplateSet = []
+            for item in params.get("AnimatedGraphicsTemplateSet"):
+                obj = AnimatedGraphicsTemplate()
+                obj._deserialize(item)
+                self.AnimatedGraphicsTemplateSet.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeContentReviewTemplatesRequest(AbstractModel):
     """DescribeContentReviewTemplates请求参数结构体
 
@@ -5150,6 +5716,71 @@ class DescribeContentReviewTemplatesResponse(AbstractModel):
                 obj = ContentReviewTemplateItem()
                 obj._deserialize(item)
                 self.ContentReviewTemplateSet.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeImageSpriteTemplatesRequest(AbstractModel):
+    """DescribeImageSpriteTemplates请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Definitions: 雪碧图模板唯一标识过滤条件，数组长度限制：100。
+        :type Definitions: list of int non-negative
+        :param Offset: 分页偏移量，默认值：0。
+        :type Offset: int
+        :param Limit: 返回记录条数，默认值：10，最大值：100。
+        :type Limit: int
+        :param Type: 模板类型过滤条件，可选值：
+<li>Preset：系统预置模板；</li>
+<li>Custom：用户自定义模板。</li>
+        :type Type: str
+        :param SubAppId: 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
+        :type SubAppId: int
+        """
+        self.Definitions = None
+        self.Offset = None
+        self.Limit = None
+        self.Type = None
+        self.SubAppId = None
+
+
+    def _deserialize(self, params):
+        self.Definitions = params.get("Definitions")
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+        self.Type = params.get("Type")
+        self.SubAppId = params.get("SubAppId")
+
+
+class DescribeImageSpriteTemplatesResponse(AbstractModel):
+    """DescribeImageSpriteTemplates返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param TotalCount: 符合过滤条件的记录总数。
+        :type TotalCount: int
+        :param ImageSpriteTemplateSet: 雪碧图模板详情列表。
+        :type ImageSpriteTemplateSet: list of ImageSpriteTemplate
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.ImageSpriteTemplateSet = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("ImageSpriteTemplateSet") is not None:
+            self.ImageSpriteTemplateSet = []
+            for item in params.get("ImageSpriteTemplateSet"):
+                obj = ImageSpriteTemplate()
+                obj._deserialize(item)
+                self.ImageSpriteTemplateSet.append(obj)
         self.RequestId = params.get("RequestId")
 
 
@@ -5411,6 +6042,136 @@ class DescribeReviewDetailsResponse(AbstractModel):
                 obj = StatDataItem()
                 obj._deserialize(item)
                 self.Data.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeSampleSnapshotTemplatesRequest(AbstractModel):
+    """DescribeSampleSnapshotTemplates请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Definitions: 采样截图模板唯一标识过滤条件，数组长度限制：100。
+        :type Definitions: list of int non-negative
+        :param Offset: 分页偏移量，默认值：0。
+        :type Offset: int
+        :param Limit: 返回记录条数，默认值：10，最大值：100。
+        :type Limit: int
+        :param Type: 模板类型过滤条件，可选值：
+<li>Preset：系统预置模板；</li>
+<li>Custom：用户自定义模板。</li>
+        :type Type: str
+        :param SubAppId: 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
+        :type SubAppId: int
+        """
+        self.Definitions = None
+        self.Offset = None
+        self.Limit = None
+        self.Type = None
+        self.SubAppId = None
+
+
+    def _deserialize(self, params):
+        self.Definitions = params.get("Definitions")
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+        self.Type = params.get("Type")
+        self.SubAppId = params.get("SubAppId")
+
+
+class DescribeSampleSnapshotTemplatesResponse(AbstractModel):
+    """DescribeSampleSnapshotTemplates返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param TotalCount: 符合过滤条件的记录总数。
+        :type TotalCount: int
+        :param SampleSnapshotTemplateSet: 采样截图模板详情列表。
+        :type SampleSnapshotTemplateSet: list of SampleSnapshotTemplate
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.SampleSnapshotTemplateSet = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("SampleSnapshotTemplateSet") is not None:
+            self.SampleSnapshotTemplateSet = []
+            for item in params.get("SampleSnapshotTemplateSet"):
+                obj = SampleSnapshotTemplate()
+                obj._deserialize(item)
+                self.SampleSnapshotTemplateSet.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeSnapshotByTimeOffsetTemplatesRequest(AbstractModel):
+    """DescribeSnapshotByTimeOffsetTemplates请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Definitions: 指定时间点截图模板唯一标识过滤条件，数组长度限制：100。
+        :type Definitions: list of int non-negative
+        :param Offset: 分页偏移量，默认值：0。
+        :type Offset: int
+        :param Limit: 返回记录条数，默认值：10，最大值：100。
+        :type Limit: int
+        :param Type: 模板类型过滤条件，可选值：
+<li>Preset：系统预置模板；</li>
+<li>Custom：用户自定义模板。</li>
+        :type Type: str
+        :param SubAppId: 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
+        :type SubAppId: int
+        """
+        self.Definitions = None
+        self.Offset = None
+        self.Limit = None
+        self.Type = None
+        self.SubAppId = None
+
+
+    def _deserialize(self, params):
+        self.Definitions = params.get("Definitions")
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+        self.Type = params.get("Type")
+        self.SubAppId = params.get("SubAppId")
+
+
+class DescribeSnapshotByTimeOffsetTemplatesResponse(AbstractModel):
+    """DescribeSnapshotByTimeOffsetTemplates返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param TotalCount: 符合过滤条件的记录总数。
+        :type TotalCount: int
+        :param SnapshotByTimeOffsetTemplateSet: 指定时间点截图模板详情列表。
+        :type SnapshotByTimeOffsetTemplateSet: list of SnapshotByTimeOffsetTemplate
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.SnapshotByTimeOffsetTemplateSet = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("SnapshotByTimeOffsetTemplateSet") is not None:
+            self.SnapshotByTimeOffsetTemplateSet = []
+            for item in params.get("SnapshotByTimeOffsetTemplateSet"):
+                obj = SnapshotByTimeOffsetTemplate()
+                obj._deserialize(item)
+                self.SnapshotByTimeOffsetTemplateSet.append(obj)
         self.RequestId = params.get("RequestId")
 
 
@@ -5679,6 +6440,10 @@ class DescribeTranscodeTemplatesRequest(AbstractModel):
 <li>Video：视频格式，可以同时包含视频流和音频流的封装格式板；</li>
 <li>PureAudio：纯音频格式，只能包含音频流的封装格式。</li>
         :type ContainerType: str
+        :param TEHDType: 极速高清过滤条件，用于过滤普通转码或极速高清转码模板，可选值：
+<li>Common：普通转码模板；</li>
+<li>TEHD：极速高清模板。</li>
+        :type TEHDType: str
         :param Offset: 分页偏移量，默认值：0。
         :type Offset: int
         :param Limit: 返回记录条数，默认值：10，最大值：100。
@@ -5689,6 +6454,7 @@ class DescribeTranscodeTemplatesRequest(AbstractModel):
         self.Definitions = None
         self.Type = None
         self.ContainerType = None
+        self.TEHDType = None
         self.Offset = None
         self.Limit = None
         self.SubAppId = None
@@ -5698,6 +6464,7 @@ class DescribeTranscodeTemplatesRequest(AbstractModel):
         self.Definitions = params.get("Definitions")
         self.Type = params.get("Type")
         self.ContainerType = params.get("ContainerType")
+        self.TEHDType = params.get("TEHDType")
         self.Offset = params.get("Offset")
         self.Limit = params.get("Limit")
         self.SubAppId = params.get("SubAppId")
@@ -6564,6 +7331,69 @@ class HeadTailConfigureInfoForUpdate(AbstractModel):
         self.Switch = params.get("Switch")
 
 
+class HighlightSegmentItem(AbstractModel):
+    """智能精彩集锦片段列表。
+
+    """
+
+    def __init__(self):
+        """
+        :param Confidence: 置信度。
+        :type Confidence: float
+        :param StartTimeOffset: 片段起始时间偏移。
+        :type StartTimeOffset: float
+        :param EndTimeOffset: 片段结束时间偏移。
+        :type EndTimeOffset: float
+        """
+        self.Confidence = None
+        self.StartTimeOffset = None
+        self.EndTimeOffset = None
+
+
+    def _deserialize(self, params):
+        self.Confidence = params.get("Confidence")
+        self.StartTimeOffset = params.get("StartTimeOffset")
+        self.EndTimeOffset = params.get("EndTimeOffset")
+
+
+class HighlightsConfigureInfo(AbstractModel):
+    """智能精彩片段任务控制参数
+
+    """
+
+    def __init__(self):
+        """
+        :param Switch: 智能精彩片段任务开关，可选值：
+<li>ON：开启智能精彩片段任务；</li>
+<li>OFF：关闭智能精彩片段任务。</li>
+        :type Switch: str
+        """
+        self.Switch = None
+
+
+    def _deserialize(self, params):
+        self.Switch = params.get("Switch")
+
+
+class HighlightsConfigureInfoForUpdate(AbstractModel):
+    """智能精彩片段任务控制参数
+
+    """
+
+    def __init__(self):
+        """
+        :param Switch: 智能精彩片段任务开关，可选值：
+<li>ON：开启智能精彩片段任务；</li>
+<li>OFF：关闭智能精彩片段任务。</li>
+        :type Switch: str
+        """
+        self.Switch = None
+
+
+    def _deserialize(self, params):
+        self.Switch = params.get("Switch")
+
+
 class ImageSpriteTaskInput(AbstractModel):
     """对视频截雪碧图任务输入参数类型
 
@@ -6579,6 +7409,65 @@ class ImageSpriteTaskInput(AbstractModel):
 
     def _deserialize(self, params):
         self.Definition = params.get("Definition")
+
+
+class ImageSpriteTemplate(AbstractModel):
+    """雪碧图模板详情
+
+    """
+
+    def __init__(self):
+        """
+        :param Definition: 雪碧图模板唯一标识。
+        :type Definition: int
+        :param Type: 模板类型，取值范围：
+<li>Preset：系统预置模板；</li>
+<li>Custom：用户自定义模板。</li>
+        :type Type: str
+        :param Name: 雪碧图模板名称。
+        :type Name: str
+        :param Width: 雪碧图中小图的宽度。
+        :type Width: int
+        :param Height: 雪碧图中小图的高度。
+        :type Height: int
+        :param SampleType: 采样类型。
+        :type SampleType: str
+        :param SampleInterval: 采样间隔。
+        :type SampleInterval: int
+        :param RowCount: 雪碧图中小图的行数。
+        :type RowCount: int
+        :param ColumnCount: 雪碧图中小图的列数。
+        :type ColumnCount: int
+        :param CreateTime: 模板创建时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F)。
+        :type CreateTime: str
+        :param UpdateTime: 模板最后修改时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F)。
+        :type UpdateTime: str
+        """
+        self.Definition = None
+        self.Type = None
+        self.Name = None
+        self.Width = None
+        self.Height = None
+        self.SampleType = None
+        self.SampleInterval = None
+        self.RowCount = None
+        self.ColumnCount = None
+        self.CreateTime = None
+        self.UpdateTime = None
+
+
+    def _deserialize(self, params):
+        self.Definition = params.get("Definition")
+        self.Type = params.get("Type")
+        self.Name = params.get("Name")
+        self.Width = params.get("Width")
+        self.Height = params.get("Height")
+        self.SampleType = params.get("SampleType")
+        self.SampleInterval = params.get("SampleInterval")
+        self.RowCount = params.get("RowCount")
+        self.ColumnCount = params.get("ColumnCount")
+        self.CreateTime = params.get("CreateTime")
+        self.UpdateTime = params.get("UpdateTime")
 
 
 class ImageTransform(AbstractModel):
@@ -6908,19 +7797,22 @@ class MediaAiAnalysisHighlightItem(AbstractModel):
 
     def __init__(self):
         """
-        :param HighlightUrl: 智能精彩片段地址。
+        :param HighlightUrl: 智能精彩集锦地址。
         :type HighlightUrl: str
-        :param CovImgUrl: 智能精彩片段封面地址。
+        :param CovImgUrl: 智能精彩集锦封面地址。
         :type CovImgUrl: str
-        :param Confidence: 智能精彩片段的可信度，取值范围是 0 到 100。
+        :param Confidence: 智能精彩集锦的可信度，取值范围是 0 到 100。
         :type Confidence: float
-        :param Duration: 智能精彩片段持续时间。
+        :param Duration: 智能精彩集锦持续时间。
         :type Duration: float
+        :param SegmentSet: 智能精彩集锦子片段列表，精彩集锦片段由这些子片段拼接生成。
+        :type SegmentSet: list of HighlightSegmentItem
         """
         self.HighlightUrl = None
         self.CovImgUrl = None
         self.Confidence = None
         self.Duration = None
+        self.SegmentSet = None
 
 
     def _deserialize(self, params):
@@ -6928,6 +7820,12 @@ class MediaAiAnalysisHighlightItem(AbstractModel):
         self.CovImgUrl = params.get("CovImgUrl")
         self.Confidence = params.get("Confidence")
         self.Duration = params.get("Duration")
+        if params.get("SegmentSet") is not None:
+            self.SegmentSet = []
+            for item in params.get("SegmentSet"):
+                obj = HighlightSegmentItem()
+                obj._deserialize(item)
+                self.SegmentSet.append(obj)
 
 
 class MediaAiAnalysisTagItem(AbstractModel):
@@ -7736,7 +8634,7 @@ class MediaMiniProgramReviewElem(AbstractModel):
 <li>review：疑似违规。</li>
         :type Suggestion: str
         :param Confidence: 审核结果置信度。取值 0~100。
-        :type Confidence: str
+        :type Confidence: float
         """
         self.Type = None
         self.Suggestion = None
@@ -7789,15 +8687,15 @@ class MediaMiniProgramReviewInfoItem(AbstractModel):
 <li>Pass：成功。</li>
 <li>Rejected：未通过。</li>
         :type ReviewResult: str
-        :param ReviewSummery: 小程序审核元素。
+        :param ReviewSummary: 小程序审核元素。
 注意：此字段可能返回 null，表示取不到有效值。
-        :type ReviewSummery: list of MediaMiniProgramReviewElem
+        :type ReviewSummary: list of MediaMiniProgramReviewElem
         """
         self.Definition = None
         self.MetaData = None
         self.Url = None
         self.ReviewResult = None
-        self.ReviewSummery = None
+        self.ReviewSummary = None
 
 
     def _deserialize(self, params):
@@ -7807,12 +8705,12 @@ class MediaMiniProgramReviewInfoItem(AbstractModel):
             self.MetaData._deserialize(params.get("MetaData"))
         self.Url = params.get("Url")
         self.ReviewResult = params.get("ReviewResult")
-        if params.get("ReviewSummery") is not None:
-            self.ReviewSummery = []
-            for item in params.get("ReviewSummery"):
+        if params.get("ReviewSummary") is not None:
+            self.ReviewSummary = []
+            for item in params.get("ReviewSummary"):
                 obj = MediaMiniProgramReviewElem()
                 obj._deserialize(item)
-                self.ReviewSummery.append(obj)
+                self.ReviewSummary.append(obj)
 
 
 class MediaOutputInfo(AbstractModel):
@@ -8719,6 +9617,8 @@ class ModifyAIAnalysisTemplateRequest(AbstractModel):
         :type CoverConfigure: :class:`tencentcloud.vod.v20180717.models.CoverConfigureInfoForUpdate`
         :param FrameTagConfigure: 智能按帧标签任务控制参数。
         :type FrameTagConfigure: :class:`tencentcloud.vod.v20180717.models.FrameTagConfigureInfoForUpdate`
+        :param HighlightConfigure: 智能精彩集锦任务控制参数。
+        :type HighlightConfigure: :class:`tencentcloud.vod.v20180717.models.HighlightsConfigureInfoForUpdate`
         :param SubAppId: 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
         :type SubAppId: int
         """
@@ -8729,6 +9629,7 @@ class ModifyAIAnalysisTemplateRequest(AbstractModel):
         self.TagConfigure = None
         self.CoverConfigure = None
         self.FrameTagConfigure = None
+        self.HighlightConfigure = None
         self.SubAppId = None
 
 
@@ -8748,6 +9649,9 @@ class ModifyAIAnalysisTemplateRequest(AbstractModel):
         if params.get("FrameTagConfigure") is not None:
             self.FrameTagConfigure = FrameTagConfigureInfoForUpdate()
             self.FrameTagConfigure._deserialize(params.get("FrameTagConfigure"))
+        if params.get("HighlightConfigure") is not None:
+            self.HighlightConfigure = HighlightsConfigureInfoForUpdate()
+            self.HighlightConfigure._deserialize(params.get("HighlightConfigure"))
         self.SubAppId = params.get("SubAppId")
 
 
@@ -8851,6 +9755,82 @@ class ModifyAIRecognitionTemplateRequest(AbstractModel):
 
 class ModifyAIRecognitionTemplateResponse(AbstractModel):
     """ModifyAIRecognitionTemplate返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class ModifyAnimatedGraphicsTemplateRequest(AbstractModel):
+    """ModifyAnimatedGraphicsTemplate请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Definition: 转动图模板唯一标识。
+        :type Definition: int
+        :param Name: 转动图模板名称，长度限制：64 个字符。
+        :type Name: str
+        :param Width: 动图宽度（或长边）的最大值，取值范围：0 和 [128, 4096]，单位：px。
+<li>当 Width、Height 均为 0，则分辨率同源；</li>
+<li>当 Width 为 0，Height 非 0，则 Width 按比例缩放；</li>
+<li>当 Width 非 0，Height 为 0，则 Height 按比例缩放；</li>
+<li>当 Width、Height 均非 0，则分辨率按用户指定。</li>
+默认值：0。
+        :type Width: int
+        :param Height: 视频流高度（或短边）的最大值，取值范围：0 和 [128, 4096]，单位：px。
+<li>当 Width、Height 均为 0，则分辨率同源；</li>
+<li>当 Width 为 0，Height 非 0，则 Width 按比例缩放；</li>
+<li>当 Width 非 0，Height 为 0，则 Height 按比例缩放；</li>
+<li>当 Width、Height 均非 0，则分辨率按用户指定。</li>
+默认值：0。
+        :type Height: int
+        :param Format: 动图格式，取值为 gif 和 webp。
+        :type Format: str
+        :param Fps: 帧率，取值范围：[1, 30]，单位：Hz。
+        :type Fps: int
+        :param Quality: 图片质量，取值范围：[1, 100]，默认值为 75。
+        :type Quality: float
+        :param Comment: 模板描述信息，长度限制：256 个字符。
+        :type Comment: str
+        :param SubAppId: 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
+        :type SubAppId: int
+        """
+        self.Definition = None
+        self.Name = None
+        self.Width = None
+        self.Height = None
+        self.Format = None
+        self.Fps = None
+        self.Quality = None
+        self.Comment = None
+        self.SubAppId = None
+
+
+    def _deserialize(self, params):
+        self.Definition = params.get("Definition")
+        self.Name = params.get("Name")
+        self.Width = params.get("Width")
+        self.Height = params.get("Height")
+        self.Format = params.get("Format")
+        self.Fps = params.get("Fps")
+        self.Quality = params.get("Quality")
+        self.Comment = params.get("Comment")
+        self.SubAppId = params.get("SubAppId")
+
+
+class ModifyAnimatedGraphicsTemplateResponse(AbstractModel):
+    """ModifyAnimatedGraphicsTemplate返回参数结构体
 
     """
 
@@ -8973,6 +9953,76 @@ class ModifyContentReviewTemplateRequest(AbstractModel):
 
 class ModifyContentReviewTemplateResponse(AbstractModel):
     """ModifyContentReviewTemplate返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class ModifyImageSpriteTemplateRequest(AbstractModel):
+    """ModifyImageSpriteTemplate请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Definition: 雪碧图模板唯一标识。
+        :type Definition: int
+        :param Name: 雪碧图模板名称，长度限制：64 个字符。
+        :type Name: str
+        :param Width: 雪碧图中小图的宽度，取值范围： [128, 4096]，单位：px。
+        :type Width: int
+        :param Height: 雪碧图中小图的高度，取值范围： [128, 4096]，单位：px。
+        :type Height: int
+        :param SampleType: 采样类型，取值：
+<li>Percent：按百分比。</li>
+<li>Time：按时间间隔。</li>
+        :type SampleType: str
+        :param SampleInterval: 采样间隔。
+<li>当 SampleType 为 Percent 时，指定采样间隔的百分比。</li>
+<li>当 SampleType 为 Time 时，指定采样间隔的时间，单位为秒。</li>
+        :type SampleInterval: int
+        :param RowCount: 雪碧图中小图的行数。
+        :type RowCount: int
+        :param ColumnCount: 雪碧图中小图的列数。
+        :type ColumnCount: int
+        :param SubAppId: 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
+        :type SubAppId: int
+        """
+        self.Definition = None
+        self.Name = None
+        self.Width = None
+        self.Height = None
+        self.SampleType = None
+        self.SampleInterval = None
+        self.RowCount = None
+        self.ColumnCount = None
+        self.SubAppId = None
+
+
+    def _deserialize(self, params):
+        self.Definition = params.get("Definition")
+        self.Name = params.get("Name")
+        self.Width = params.get("Width")
+        self.Height = params.get("Height")
+        self.SampleType = params.get("SampleType")
+        self.SampleInterval = params.get("SampleInterval")
+        self.RowCount = params.get("RowCount")
+        self.ColumnCount = params.get("ColumnCount")
+        self.SubAppId = params.get("SubAppId")
+
+
+class ModifyImageSpriteTemplateResponse(AbstractModel):
+    """ModifyImageSpriteTemplate返回参数结构体
 
     """
 
@@ -9164,6 +10214,134 @@ class ModifyPersonSampleResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class ModifySampleSnapshotTemplateRequest(AbstractModel):
+    """ModifySampleSnapshotTemplate请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Definition: 采样截图模板唯一标识。
+        :type Definition: int
+        :param Name: 采样截图模板名称，长度限制：64 个字符。
+        :type Name: str
+        :param Width: 图片宽度，取值范围： [128, 4096]，单位：px。
+        :type Width: int
+        :param Height: 图片高度，取值范围： [128, 4096]，单位：px。
+        :type Height: int
+        :param SampleType: 采样截图类型，取值：
+<li>Percent：按百分比。</li>
+<li>Time：按时间间隔。</li>
+        :type SampleType: str
+        :param SampleInterval: 采样间隔。
+<li>当 SampleType 为 Percent 时，指定采样间隔的百分比。</li>
+<li>当 SampleType 为 Time 时，指定采样间隔的时间，单位为秒。</li>
+        :type SampleInterval: int
+        :param Format: 图片格式，取值为 jpg 和 png。
+        :type Format: str
+        :param Comment: 模板描述信息，长度限制：256 个字符。
+        :type Comment: str
+        :param SubAppId: 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
+        :type SubAppId: int
+        """
+        self.Definition = None
+        self.Name = None
+        self.Width = None
+        self.Height = None
+        self.SampleType = None
+        self.SampleInterval = None
+        self.Format = None
+        self.Comment = None
+        self.SubAppId = None
+
+
+    def _deserialize(self, params):
+        self.Definition = params.get("Definition")
+        self.Name = params.get("Name")
+        self.Width = params.get("Width")
+        self.Height = params.get("Height")
+        self.SampleType = params.get("SampleType")
+        self.SampleInterval = params.get("SampleInterval")
+        self.Format = params.get("Format")
+        self.Comment = params.get("Comment")
+        self.SubAppId = params.get("SubAppId")
+
+
+class ModifySampleSnapshotTemplateResponse(AbstractModel):
+    """ModifySampleSnapshotTemplate返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class ModifySnapshotByTimeOffsetTemplateRequest(AbstractModel):
+    """ModifySnapshotByTimeOffsetTemplate请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Definition: 指定时间点截图模板唯一标识。
+        :type Definition: int
+        :param Name: 指定时间点截图模板名称，长度限制：64 个字符。
+        :type Name: str
+        :param Width: 图片宽度，取值范围： [128, 4096]，单位：px。
+        :type Width: int
+        :param Height: 图片高度，取值范围： [128, 4096]，单位：px。
+        :type Height: int
+        :param Format: 图片格式，取值可以为 jpg 和 png。
+        :type Format: str
+        :param Comment: 模板描述信息，长度限制：256 个字符。
+        :type Comment: str
+        :param SubAppId: 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
+        :type SubAppId: int
+        """
+        self.Definition = None
+        self.Name = None
+        self.Width = None
+        self.Height = None
+        self.Format = None
+        self.Comment = None
+        self.SubAppId = None
+
+
+    def _deserialize(self, params):
+        self.Definition = params.get("Definition")
+        self.Name = params.get("Name")
+        self.Width = params.get("Width")
+        self.Height = params.get("Height")
+        self.Format = params.get("Format")
+        self.Comment = params.get("Comment")
+        self.SubAppId = params.get("SubAppId")
+
+
+class ModifySnapshotByTimeOffsetTemplateResponse(AbstractModel):
+    """ModifySnapshotByTimeOffsetTemplate返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class ModifySubAppIdInfoRequest(AbstractModel):
     """ModifySubAppIdInfo请求参数结构体
 
@@ -9273,6 +10451,8 @@ class ModifyTranscodeTemplateRequest(AbstractModel):
         :type VideoTemplate: :class:`tencentcloud.vod.v20180717.models.VideoTemplateInfoForUpdate`
         :param AudioTemplate: 音频流配置参数。
         :type AudioTemplate: :class:`tencentcloud.vod.v20180717.models.AudioTemplateInfoForUpdate`
+        :param TEHDConfig: 极速高清转码参数，需联系商务架构师开通后才能使用。
+        :type TEHDConfig: :class:`tencentcloud.vod.v20180717.models.TEHDConfigForUpdate`
         :param SubAppId: 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
         :type SubAppId: int
         """
@@ -9284,6 +10464,7 @@ class ModifyTranscodeTemplateRequest(AbstractModel):
         self.RemoveAudio = None
         self.VideoTemplate = None
         self.AudioTemplate = None
+        self.TEHDConfig = None
         self.SubAppId = None
 
 
@@ -9300,6 +10481,9 @@ class ModifyTranscodeTemplateRequest(AbstractModel):
         if params.get("AudioTemplate") is not None:
             self.AudioTemplate = AudioTemplateInfoForUpdate()
             self.AudioTemplate._deserialize(params.get("AudioTemplate"))
+        if params.get("TEHDConfig") is not None:
+            self.TEHDConfig = TEHDConfigForUpdate()
+            self.TEHDConfig._deserialize(params.get("TEHDConfig"))
         self.SubAppId = params.get("SubAppId")
 
 
@@ -10864,6 +12048,65 @@ class SampleSnapshotTaskInput(AbstractModel):
                 self.WatermarkSet.append(obj)
 
 
+class SampleSnapshotTemplate(AbstractModel):
+    """采样截图模板详情
+
+    """
+
+    def __init__(self):
+        """
+        :param Definition: 采样截图模板唯一标识。
+        :type Definition: int
+        :param Type: 模板类型，取值范围：
+<li>Preset：系统预置模板；</li>
+<li>Custom：用户自定义模板。</li>
+        :type Type: str
+        :param Name: 采样截图模板名称。
+        :type Name: str
+        :param Comment: 模板描述信息。
+        :type Comment: str
+        :param Width: 图片宽度。
+        :type Width: int
+        :param Height: 图片高度。
+        :type Height: int
+        :param Format: 图片格式。
+        :type Format: str
+        :param SampleType: 采样截图类型。
+        :type SampleType: str
+        :param SampleInterval: 采样间隔。
+        :type SampleInterval: int
+        :param CreateTime: 模板创建时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F)。
+        :type CreateTime: str
+        :param UpdateTime: 模板最后修改时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F)。
+        :type UpdateTime: str
+        """
+        self.Definition = None
+        self.Type = None
+        self.Name = None
+        self.Comment = None
+        self.Width = None
+        self.Height = None
+        self.Format = None
+        self.SampleType = None
+        self.SampleInterval = None
+        self.CreateTime = None
+        self.UpdateTime = None
+
+
+    def _deserialize(self, params):
+        self.Definition = params.get("Definition")
+        self.Type = params.get("Type")
+        self.Name = params.get("Name")
+        self.Comment = params.get("Comment")
+        self.Width = params.get("Width")
+        self.Height = params.get("Height")
+        self.Format = params.get("Format")
+        self.SampleType = params.get("SampleType")
+        self.SampleInterval = params.get("SampleInterval")
+        self.CreateTime = params.get("CreateTime")
+        self.UpdateTime = params.get("UpdateTime")
+
+
 class SearchMediaRequest(AbstractModel):
     """SearchMedia请求参数结构体
 
@@ -11155,6 +12398,57 @@ class SnapshotByTimeOffsetTaskInput(AbstractModel):
                 self.WatermarkSet.append(obj)
 
 
+class SnapshotByTimeOffsetTemplate(AbstractModel):
+    """指定时间点截图模板详情
+
+    """
+
+    def __init__(self):
+        """
+        :param Definition: 指定时间点截图模板唯一标识。
+        :type Definition: int
+        :param Type: 模板类型，取值范围：
+<li>Preset：系统预置模板；</li>
+<li>Custom：用户自定义模板。</li>
+        :type Type: str
+        :param Name: 指定时间点截图模板名称。
+        :type Name: str
+        :param Comment: 模板描述信息。
+        :type Comment: str
+        :param Width: 图片宽度。
+        :type Width: int
+        :param Height: 图片高度。
+        :type Height: int
+        :param Format: 图片格式。
+        :type Format: str
+        :param CreateTime: 模板创建时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F)。
+        :type CreateTime: str
+        :param UpdateTime: 模板最后修改时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F)。
+        :type UpdateTime: str
+        """
+        self.Definition = None
+        self.Type = None
+        self.Name = None
+        self.Comment = None
+        self.Width = None
+        self.Height = None
+        self.Format = None
+        self.CreateTime = None
+        self.UpdateTime = None
+
+
+    def _deserialize(self, params):
+        self.Definition = params.get("Definition")
+        self.Type = params.get("Type")
+        self.Name = params.get("Name")
+        self.Comment = params.get("Comment")
+        self.Width = params.get("Width")
+        self.Height = params.get("Height")
+        self.Format = params.get("Format")
+        self.CreateTime = params.get("CreateTime")
+        self.UpdateTime = params.get("UpdateTime")
+
+
 class SortBy(AbstractModel):
     """排序依据
 
@@ -11395,6 +12689,29 @@ class TEHDConfig(AbstractModel):
         :type Type: str
         :param MaxVideoBitrate: 视频码率上限，当 Type 指定了极速高清类型时有效。
 不填或填0表示不设视频码率上限。
+        :type MaxVideoBitrate: int
+        """
+        self.Type = None
+        self.MaxVideoBitrate = None
+
+
+    def _deserialize(self, params):
+        self.Type = params.get("Type")
+        self.MaxVideoBitrate = params.get("MaxVideoBitrate")
+
+
+class TEHDConfigForUpdate(AbstractModel):
+    """极速高清参数配置。
+
+    """
+
+    def __init__(self):
+        """
+        :param Type: 极速高清类型，可选值：
+<li>TEHD-100：极速高清-100。</li>
+不填代表不修改。
+        :type Type: str
+        :param MaxVideoBitrate: 视频码率上限，不填代表不修改。
         :type MaxVideoBitrate: int
         """
         self.Type = None

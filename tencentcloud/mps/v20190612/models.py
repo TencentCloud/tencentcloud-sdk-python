@@ -16,59 +16,6 @@
 from tencentcloud.common.abstract_model import AbstractModel
 
 
-class AdaptiveDynamicStreamingTaskInput(AbstractModel):
-    """对视频转自适应码流的输入参数类型
-
-    """
-
-    def __init__(self):
-        """
-        :param Definition: 转自适应码流模板 ID。
-        :type Definition: int
-        :param WatermarkSet: 水印列表，支持多张图片或文字水印，最大可支持 10 张。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type WatermarkSet: list of WatermarkInput
-        :param OutputStorage: 转自适应码流后文件的目标存储，不填则继承上层的 OutputStorage 值。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type OutputStorage: :class:`tencentcloud.mps.v20190612.models.TaskOutputStorage`
-        :param OutputObjectPath: 转自适应码流后，manifest 文件的输出路径，可以为相对路径或者绝对路径。如果不填，则默认为相对路径：`{inputName}_adaptiveDynamicStreaming_{definition}.{format}`。
-        :type OutputObjectPath: str
-        :param SubStreamManifestObjectName: 转自适应码流（HLS）后，二级 index 文件的输出路径，只能为相对路径。如果不填，则默认为相对路径：`{inputName}_adaptiveDynamicStreaming_{definition}_{trackType}_{trackDefinition}.{format}`。
-        :type SubStreamManifestObjectName: str
-        :param SegmentObjectName: 转自适应码流后，分片文件的输出路径，只能为相对路径。如果不填，则默认为相对路径：`{inputName}_adaptiveDynamicStreaming_{definition}_{trackType}_{trackDefinition}_{number}.{format}`。
-        :type SegmentObjectName: str
-        :param ObjectNumberFormat: 转自适应码流后输出路径中的`{number}`变量的规则。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type ObjectNumberFormat: :class:`tencentcloud.mps.v20190612.models.NumberFormat`
-        """
-        self.Definition = None
-        self.WatermarkSet = None
-        self.OutputStorage = None
-        self.OutputObjectPath = None
-        self.SubStreamManifestObjectName = None
-        self.SegmentObjectName = None
-        self.ObjectNumberFormat = None
-
-
-    def _deserialize(self, params):
-        self.Definition = params.get("Definition")
-        if params.get("WatermarkSet") is not None:
-            self.WatermarkSet = []
-            for item in params.get("WatermarkSet"):
-                obj = WatermarkInput()
-                obj._deserialize(item)
-                self.WatermarkSet.append(obj)
-        if params.get("OutputStorage") is not None:
-            self.OutputStorage = TaskOutputStorage()
-            self.OutputStorage._deserialize(params.get("OutputStorage"))
-        self.OutputObjectPath = params.get("OutputObjectPath")
-        self.SubStreamManifestObjectName = params.get("SubStreamManifestObjectName")
-        self.SegmentObjectName = params.get("SegmentObjectName")
-        if params.get("ObjectNumberFormat") is not None:
-            self.ObjectNumberFormat = NumberFormat()
-            self.ObjectNumberFormat._deserialize(params.get("ObjectNumberFormat"))
-
-
 class AiAnalysisTaskInput(AbstractModel):
     """AI 视频智能分析输入参数类型
 
@@ -679,6 +626,8 @@ class CreateTranscodeTemplateRequest(AbstractModel):
         :type VideoTemplate: :class:`tencentcloud.mps.v20190612.models.VideoTemplateInfo`
         :param AudioTemplate: 音频流配置参数，当 RemoveAudio 为 0，该字段必填。
         :type AudioTemplate: :class:`tencentcloud.mps.v20190612.models.AudioTemplateInfo`
+        :param TEHDConfig: 极速高清转码参数，需联系商务架构师开通后才能使用。
+        :type TEHDConfig: :class:`tencentcloud.mps.v20190612.models.TEHDConfig`
         """
         self.Container = None
         self.Name = None
@@ -687,6 +636,7 @@ class CreateTranscodeTemplateRequest(AbstractModel):
         self.RemoveAudio = None
         self.VideoTemplate = None
         self.AudioTemplate = None
+        self.TEHDConfig = None
 
 
     def _deserialize(self, params):
@@ -701,6 +651,9 @@ class CreateTranscodeTemplateRequest(AbstractModel):
         if params.get("AudioTemplate") is not None:
             self.AudioTemplate = AudioTemplateInfo()
             self.AudioTemplate._deserialize(params.get("AudioTemplate"))
+        if params.get("TEHDConfig") is not None:
+            self.TEHDConfig = TEHDConfig()
+            self.TEHDConfig._deserialize(params.get("TEHDConfig"))
 
 
 class CreateTranscodeTemplateResponse(AbstractModel):
@@ -1524,6 +1477,10 @@ class DescribeTranscodeTemplatesRequest(AbstractModel):
 <li>Video：视频格式，可以同时包含视频流和音频流的封装格式板；</li>
 <li>PureAudio：纯音频格式，只能包含音频流的封装格式。</li>
         :type ContainerType: str
+        :param TEHDType: 极速高清过滤条件，用于过滤普通转码或极速高清转码模板，可选值：
+<li>Common：普通转码模板；</li>
+<li>TEHD：极速高清模板。</li>
+        :type TEHDType: str
         :param Offset: 分页偏移量，默认值：0。
         :type Offset: int
         :param Limit: 返回记录条数，默认值：10，最大值：100。
@@ -1532,6 +1489,7 @@ class DescribeTranscodeTemplatesRequest(AbstractModel):
         self.Definitions = None
         self.Type = None
         self.ContainerType = None
+        self.TEHDType = None
         self.Offset = None
         self.Limit = None
 
@@ -1540,6 +1498,7 @@ class DescribeTranscodeTemplatesRequest(AbstractModel):
         self.Definitions = params.get("Definitions")
         self.Type = params.get("Type")
         self.ContainerType = params.get("ContainerType")
+        self.TEHDType = params.get("TEHDType")
         self.Offset = params.get("Offset")
         self.Limit = params.get("Limit")
 
@@ -2308,30 +2267,21 @@ class MediaProcessTaskInput(AbstractModel):
     def __init__(self):
         """
         :param TranscodeTaskSet: 视频转码任务列表。
-注意：此字段可能返回 null，表示取不到有效值。
         :type TranscodeTaskSet: list of TranscodeTaskInput
         :param AnimatedGraphicTaskSet: 视频转动图任务列表。
-注意：此字段可能返回 null，表示取不到有效值。
         :type AnimatedGraphicTaskSet: list of AnimatedGraphicTaskInput
         :param SnapshotByTimeOffsetTaskSet: 对视频按时间点截图任务列表。
-注意：此字段可能返回 null，表示取不到有效值。
         :type SnapshotByTimeOffsetTaskSet: list of SnapshotByTimeOffsetTaskInput
         :param SampleSnapshotTaskSet: 对视频采样截图任务列表。
-注意：此字段可能返回 null，表示取不到有效值。
         :type SampleSnapshotTaskSet: list of SampleSnapshotTaskInput
         :param ImageSpriteTaskSet: 对视频截雪碧图任务列表。
-注意：此字段可能返回 null，表示取不到有效值。
         :type ImageSpriteTaskSet: list of ImageSpriteTaskInput
-        :param AdaptiveDynamicStreamingTaskSet: 对视频转自适应码流任务列表。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type AdaptiveDynamicStreamingTaskSet: list of AdaptiveDynamicStreamingTaskInput
         """
         self.TranscodeTaskSet = None
         self.AnimatedGraphicTaskSet = None
         self.SnapshotByTimeOffsetTaskSet = None
         self.SampleSnapshotTaskSet = None
         self.ImageSpriteTaskSet = None
-        self.AdaptiveDynamicStreamingTaskSet = None
 
 
     def _deserialize(self, params):
@@ -2365,12 +2315,6 @@ class MediaProcessTaskInput(AbstractModel):
                 obj = ImageSpriteTaskInput()
                 obj._deserialize(item)
                 self.ImageSpriteTaskSet.append(obj)
-        if params.get("AdaptiveDynamicStreamingTaskSet") is not None:
-            self.AdaptiveDynamicStreamingTaskSet = []
-            for item in params.get("AdaptiveDynamicStreamingTaskSet"):
-                obj = AdaptiveDynamicStreamingTaskInput()
-                obj._deserialize(item)
-                self.AdaptiveDynamicStreamingTaskSet.append(obj)
 
 
 class MediaProcessTaskResult(AbstractModel):
@@ -3046,6 +2990,8 @@ class ModifyTranscodeTemplateRequest(AbstractModel):
         :type VideoTemplate: :class:`tencentcloud.mps.v20190612.models.VideoTemplateInfoForUpdate`
         :param AudioTemplate: 音频流配置参数。
         :type AudioTemplate: :class:`tencentcloud.mps.v20190612.models.AudioTemplateInfoForUpdate`
+        :param TEHDConfig: 极速高清转码参数，需联系商务架构师开通后才能使用。
+        :type TEHDConfig: :class:`tencentcloud.mps.v20190612.models.TEHDConfigForUpdate`
         """
         self.Definition = None
         self.Container = None
@@ -3055,6 +3001,7 @@ class ModifyTranscodeTemplateRequest(AbstractModel):
         self.RemoveAudio = None
         self.VideoTemplate = None
         self.AudioTemplate = None
+        self.TEHDConfig = None
 
 
     def _deserialize(self, params):
@@ -3070,6 +3017,9 @@ class ModifyTranscodeTemplateRequest(AbstractModel):
         if params.get("AudioTemplate") is not None:
             self.AudioTemplate = AudioTemplateInfoForUpdate()
             self.AudioTemplate._deserialize(params.get("AudioTemplate"))
+        if params.get("TEHDConfig") is not None:
+            self.TEHDConfig = TEHDConfigForUpdate()
+            self.TEHDConfig._deserialize(params.get("TEHDConfig"))
 
 
 class ModifyTranscodeTemplateResponse(AbstractModel):
@@ -3201,6 +3151,84 @@ class NumberFormat(AbstractModel):
         self.Increment = params.get("Increment")
         self.MinLength = params.get("MinLength")
         self.PlaceHolder = params.get("PlaceHolder")
+
+
+class ProcessLiveMediaRequest(AbstractModel):
+    """ProcessLiveMedia请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Url: 直播流 URL。
+        :type Url: str
+        :param OutputStorage: 直播流处理输出文件的目标存储。如处理有文件输出，该参数为必填项。
+        :type OutputStorage: :class:`tencentcloud.mps.v20190612.models.TaskOutputStorage`
+        :param OutputDir: 直播流处理生成的文件输出的目标目录，如`/movie/201909/`，如果不填为 `/` 目录。
+        :type OutputDir: str
+        :param AiRecognitionTask: 直播流内容识别类型任务参数。
+        :type AiRecognitionTask: :class:`tencentcloud.mps.v20190612.models.AiRecognitionTaskInput`
+        :param AiAnalysisTask: 直播流内容分析类型任务参数。
+        :type AiAnalysisTask: :class:`tencentcloud.mps.v20190612.models.AiAnalysisTaskInput`
+        :param TaskNotifyConfig: 任务的事件通知信息，不填代表不获取事件通知。
+        :type TaskNotifyConfig: :class:`tencentcloud.mps.v20190612.models.TaskNotifyConfig`
+        :param SessionContext: 来源上下文，用于透传用户请求信息，任务流状态变更回调将返回该字段值，最长 1000 个字符。
+        :type SessionContext: str
+        :param SessionId: 用于去重的识别码，如果七天内曾有过相同的识别码的请求，则本次的请求会返回错误。最长 50 个字符，不带或者带空字符串表示不做去重。
+        :type SessionId: str
+        :param StartTime: 直播开始时间戳（UTC 时间 单位为秒，该参数仅对于直播流分析有效）。
+        :type StartTime: int
+        """
+        self.Url = None
+        self.OutputStorage = None
+        self.OutputDir = None
+        self.AiRecognitionTask = None
+        self.AiAnalysisTask = None
+        self.TaskNotifyConfig = None
+        self.SessionContext = None
+        self.SessionId = None
+        self.StartTime = None
+
+
+    def _deserialize(self, params):
+        self.Url = params.get("Url")
+        if params.get("OutputStorage") is not None:
+            self.OutputStorage = TaskOutputStorage()
+            self.OutputStorage._deserialize(params.get("OutputStorage"))
+        self.OutputDir = params.get("OutputDir")
+        if params.get("AiRecognitionTask") is not None:
+            self.AiRecognitionTask = AiRecognitionTaskInput()
+            self.AiRecognitionTask._deserialize(params.get("AiRecognitionTask"))
+        if params.get("AiAnalysisTask") is not None:
+            self.AiAnalysisTask = AiAnalysisTaskInput()
+            self.AiAnalysisTask._deserialize(params.get("AiAnalysisTask"))
+        if params.get("TaskNotifyConfig") is not None:
+            self.TaskNotifyConfig = TaskNotifyConfig()
+            self.TaskNotifyConfig._deserialize(params.get("TaskNotifyConfig"))
+        self.SessionContext = params.get("SessionContext")
+        self.SessionId = params.get("SessionId")
+        self.StartTime = params.get("StartTime")
+
+
+class ProcessLiveMediaResponse(AbstractModel):
+    """ProcessLiveMedia返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param TaskId: 任务 ID
+        :type TaskId: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TaskId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TaskId = params.get("TaskId")
+        self.RequestId = params.get("RequestId")
 
 
 class ProcessMediaRequest(AbstractModel):
@@ -3572,7 +3600,7 @@ class SvgWatermarkInput(AbstractModel):
 <li>当字符串以 px 结尾，表示水印 Height 单位为像素，如 100px 表示 Height 为 100 像素；当填 0px 且
  Width 不为 0px 时，表示水印的高度按原始 SVG 图像等比缩放；当 Width、Height 都填 0px 时，表示水印的高度取原始 SVG 图像的高度；</li>
 <li>当字符串以 W% 结尾，表示水印 Height 为视频宽度的百分比大小，如 10W% 表示 Height 为视频宽度的 10%；</li>
-<li>当字符串以 H% 结尾，表示水印 Height 为视频高度的百分比大小，如 10H% 表示 Height 为��频高度的 10%；</li>
+<li>当字符串以 H% 结尾，表示水印 Height 为视频高度的百分比大小，如 10H% 表示 Height 为视频高度的 10%；</li>
 <li>当字符串以 S% 结尾，表示水印 Height 为视频短边的百分比大小，如 10S% 表示 Height 为视频短边的 10%；</li>
 <li>当字符串以 L% 结尾，表示水印 Height 为视频长边的百分比大小，如 10L% 表示 Height 为视频长边的 10%；</li>
 <li>当字符串以 % 结尾时，含义同 H%。</li>
@@ -3606,7 +3634,7 @@ class SvgWatermarkInputForUpdate(AbstractModel):
 默认值为 10W%。
         :type Width: str
         :param Height: 水印的高度，支持 px，%，W%，H%，S%，L% 六种格式：
-<li>当字符串以 px 结尾，表示水印 Height 单位为像素，如 100px 表示 Height 为 100 像��；当填 0px 且
+<li>当字符串以 px 结尾，表示水印 Height 单位为像素，如 100px 表示 Height 为 100 像素；当填 0px 且
  Width 不为 0px 时，表示水印的高度按原始 SVG 图像等比缩放；当 Width、Height 都填 0px 时，表示水印的高度取原始 SVG 图像的高度；</li>
 <li>当字符串以 W% 结尾，表示水印 Height 为视频宽度的百分比大小，如 10W% 表示 Height 为视频宽度的 10%；</li>
 <li>当字符串以 H% 结尾，表示水印 Height 为视频高度的百分比大小，如 10H% 表示 Height 为视频高度的 10%；</li>
@@ -3625,6 +3653,53 @@ class SvgWatermarkInputForUpdate(AbstractModel):
         self.Height = params.get("Height")
 
 
+class TEHDConfig(AbstractModel):
+    """极速高清参数配置。
+
+    """
+
+    def __init__(self):
+        """
+        :param Type: 极速高清类型，可选值：
+<li>TEHD-100：极速高清-100。</li>
+不填代表不启用极速高清。
+        :type Type: str
+        :param MaxVideoBitrate: 视频码率上限，当 Type 指定了极速高清类型时有效。
+不填或填0表示不设视频码率上限。
+        :type MaxVideoBitrate: int
+        """
+        self.Type = None
+        self.MaxVideoBitrate = None
+
+
+    def _deserialize(self, params):
+        self.Type = params.get("Type")
+        self.MaxVideoBitrate = params.get("MaxVideoBitrate")
+
+
+class TEHDConfigForUpdate(AbstractModel):
+    """极速高清参数配置。
+
+    """
+
+    def __init__(self):
+        """
+        :param Type: 极速高清类型，可选值：
+<li>TEHD-100：极速高清-100。</li>
+不填代表不修改。
+        :type Type: str
+        :param MaxVideoBitrate: 视频码率上限，不填代表不修改。
+        :type MaxVideoBitrate: int
+        """
+        self.Type = None
+        self.MaxVideoBitrate = None
+
+
+    def _deserialize(self, params):
+        self.Type = params.get("Type")
+        self.MaxVideoBitrate = params.get("MaxVideoBitrate")
+
+
 class TaskNotifyConfig(AbstractModel):
     """任务的事件通知配置。
 
@@ -3632,7 +3707,7 @@ class TaskNotifyConfig(AbstractModel):
 
     def __init__(self):
         """
-        :param CmqModel: CMQ 的模型，有 Queue 和 Topic 两种。
+        :param CmqModel: CMQ 的模型，有 Queue 和 Topic 两种，目前仅支持 Queue。
         :type CmqModel: str
         :param CmqRegion: CMQ 的园区，如 sh，bj 等。
         :type CmqRegion: str
@@ -3866,6 +3941,9 @@ class TranscodeTemplate(AbstractModel):
         :param AudioTemplate: 音频流配置参数，仅当 RemoveAudio 为 0，该字段有效 。
 注意：此字段可能返回 null，表示取不到有效值。
         :type AudioTemplate: :class:`tencentcloud.mps.v20190612.models.AudioTemplateInfo`
+        :param TEHDConfig: 极速高清转码参数，需联系商务架构师开通后才能使用。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TEHDConfig: :class:`tencentcloud.mps.v20190612.models.TEHDConfig`
         :param ContainerType: 封装格式过滤条件，可选值：
 <li>Video：视频格式，可以同时包含视频流和音频流的封装格式；</li>
 <li>PureAudio：纯音频格式，只能包含音频流的封装格式板。</li>
@@ -3884,6 +3962,7 @@ class TranscodeTemplate(AbstractModel):
         self.RemoveAudio = None
         self.VideoTemplate = None
         self.AudioTemplate = None
+        self.TEHDConfig = None
         self.ContainerType = None
         self.CreateTime = None
         self.UpdateTime = None
@@ -3903,6 +3982,9 @@ class TranscodeTemplate(AbstractModel):
         if params.get("AudioTemplate") is not None:
             self.AudioTemplate = AudioTemplateInfo()
             self.AudioTemplate._deserialize(params.get("AudioTemplate"))
+        if params.get("TEHDConfig") is not None:
+            self.TEHDConfig = TEHDConfig()
+            self.TEHDConfig._deserialize(params.get("TEHDConfig"))
         self.ContainerType = params.get("ContainerType")
         self.CreateTime = params.get("CreateTime")
         self.UpdateTime = params.get("UpdateTime")
