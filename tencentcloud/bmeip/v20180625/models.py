@@ -551,7 +551,7 @@ class DescribeEipsRequest(AbstractModel):
         :param ExclusiveTag: 独占标志，0：共享，1：独占
         :type ExclusiveTag: int
         :param AclId: EIP ACL实例ID
-        :type AclId: int
+        :type AclId: str
         :param BindAcl: 搜索条件，是否绑定了EIP ACL， 0：未绑定，1：绑定
         :type BindAcl: int
         """
@@ -734,7 +734,7 @@ class EipInfo(AbstractModel):
         :type EipName: str
         :param Eip: EIP地址
         :type Eip: str
-        :param IspId: 运营商ID 0：电信； 1：联通； 2：移动； 3：教育网； 4：盈科； 5：BGP； 6：香港
+        :param IspId: 运营商ID 0：电信； 1：联通； 2：移动； 3：教育网； 4：盈科； 5：BGP； 6：中国香港
         :type IspId: int
         :param Status: 状态 0：创建中； 1：绑定中； 2：已绑定； 3：解绑中； 4：未绑定； 6：下线中； 9：创建失败
         :type Status: int

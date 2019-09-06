@@ -32,7 +32,9 @@ class AddDelayLiveStreamRequest(AbstractModel):
         :param DelayTime: 延播时间，单位：秒，上限：600秒。
         :type DelayTime: int
         :param ExpireTime: 延播设置的过期时间。UTC 格式，例如：2018-11-29T19:00:00Z。
-注意：默认7天后过期，且最长支持7天内生效。
+注意：
+1. 默认7天后过期，且最长支持7天内生效。
+2. 北京时间值为 UTC 时间值 + 8 小时，格式按照 ISO 8601 标准表示，详见 [ISO 日期格式说明](https://cloud.tencent.com/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F)。
         :type ExpireTime: str
         """
         self.AppName = None
@@ -1192,6 +1194,7 @@ class CreatePullStreamConfigRequest(AbstractModel):
         :param StartTime: 开始时间。
 使用UTC格式时间，
 例如：2019-01-08T10:00:00Z。
+注意：北京时间值为 UTC 时间值 + 8 小时，格式按照 ISO 8601 标准表示，详见 [ISO 日期格式说明](https://cloud.tencent.com/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F)。
         :type StartTime: str
         :param EndTime: 结束时间，注意：
 1. 结束时间必须大于开始时间；
@@ -1199,6 +1202,7 @@ class CreatePullStreamConfigRequest(AbstractModel):
 3. 结束时间 和 开始时间 间隔必须小于七天。
 使用UTC格式时间，
 例如：2019-01-08T10:00:00Z。
+注意：北京时间值为 UTC 时间值 + 8 小时，格式按照 ISO 8601 标准表示，详见 [ISO 日期格式说明](https://cloud.tencent.com/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F)。
         :type EndTime: str
         """
         self.FromUrl = None
@@ -4730,7 +4734,9 @@ class ForbidLiveStreamRequest(AbstractModel):
         :param StreamName: 流名称。
         :type StreamName: str
         :param ResumeTime: 恢复流的时间。UTC 格式，例如：2018-11-29T19:00:00Z。
-注意：默认禁播90天，且最长支持禁播90天。
+注意：
+1. 默认禁播90天，且最长支持禁播90天。
+2. 北京时间值为 UTC 时间值 + 8 小时，格式按照 ISO 8601 标准表示，详见 [ISO 日期格式说明](https://cloud.tencent.com/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F)。
         :type ResumeTime: str
         :param Reason: 禁推原因。
 注明：请务必填写禁推原因，防止误操作。
@@ -5547,7 +5553,7 @@ class ModifyPullStreamConfigRequest(AbstractModel):
         :param StartTime: 开始时间。
 使用UTC格式时间，
 例如：2019-01-08T10:00:00Z。
-格式按照 ISO 8601 标准表示，详见 [ISO 日期格式说明](document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F)。
+注意：北京时间值为 UTC 时间值 + 8 小时，格式按照 ISO 8601 标准表示，详见 [ISO 日期格式说明](https://cloud.tencent.com/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F)。
         :type StartTime: str
         :param EndTime: 结束时间，注意：
 1. 结束时间必须大于开始时间；
@@ -5556,7 +5562,7 @@ class ModifyPullStreamConfigRequest(AbstractModel):
 
 使用UTC格式时间，
 例如：2019-01-08T10:00:00Z。
-格式按照 ISO 8601 标准表示，详见 [ISO 日期格式说明](document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F)。
+注意：北京时间值为 UTC 时间值 + 8 小时，格式按照 ISO 8601 标准表示，详见 [ISO 日期格式说明](https://cloud.tencent.com/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F)。
         :type EndTime: str
         """
         self.ConfigId = None
@@ -5855,11 +5861,13 @@ class PullStreamConfig(AbstractModel):
         :param StartTime: 开始时间。
 UTC格式时间，
 例如：2019-01-08T10:00:00Z。
+注意：北京时间值为 UTC 时间值 + 8 小时，格式按照 ISO 8601 标准表示，详见 [ISO 日期格式说明](https://cloud.tencent.com/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F)。
         :type StartTime: str
         :param EndTime: 结束时间。
 
 UTC格式时间，
 例如：2019-01-08T10:00:00Z。
+注意：北京时间值为 UTC 时间值 + 8 小时，格式按照 ISO 8601 标准表示，详见 [ISO 日期格式说明](https://cloud.tencent.com/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F)。
         :type EndTime: str
         :param Status: 0无效，1初始状态，2正在运行，3拉起失败，4暂停。
         :type Status: str

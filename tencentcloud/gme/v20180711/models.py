@@ -295,11 +295,19 @@ class ScanPiece(AbstractModel):
         :type MainType: str
         :param ScanDetail: 语音检测详情
         :type ScanDetail: list of ScanDetail
+        :param RoomId: gme实时语音房间id，透传任务传入时的RoomId
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RoomId: str
+        :param OpenId: gme实时语音用户id，透传任务传入时的OpenId
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OpenId: str
         """
         self.DumpUrl = None
         self.HitFlag = None
         self.MainType = None
         self.ScanDetail = None
+        self.RoomId = None
+        self.OpenId = None
 
 
     def _deserialize(self, params):
@@ -312,6 +320,8 @@ class ScanPiece(AbstractModel):
                 obj = ScanDetail()
                 obj._deserialize(item)
                 self.ScanDetail.append(obj)
+        self.RoomId = params.get("RoomId")
+        self.OpenId = params.get("OpenId")
 
 
 class ScanVoiceRequest(AbstractModel):
@@ -413,14 +423,22 @@ class Task(AbstractModel):
         :type DataId: str
         :param Url: 数据文件的url，为 urlencode 编码，流式则为拉流地址
         :type Url: str
+        :param RoomId: gme实时语音房间id，通过gme实时语音进行语音分析时输入
+        :type RoomId: str
+        :param OpenId: gme实时语音用户id，通过gme实时语音进行语音分析时输入
+        :type OpenId: str
         """
         self.DataId = None
         self.Url = None
+        self.RoomId = None
+        self.OpenId = None
 
 
     def _deserialize(self, params):
         self.DataId = params.get("DataId")
         self.Url = params.get("Url")
+        self.RoomId = params.get("RoomId")
+        self.OpenId = params.get("OpenId")
 
 
 class VoiceFilter(AbstractModel):

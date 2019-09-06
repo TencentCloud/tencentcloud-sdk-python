@@ -208,6 +208,91 @@ class BizLicenseOCRResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class BusInvoiceInfo(AbstractModel):
+    """汽车票字段信息
+
+    """
+
+    def __init__(self):
+        """
+        :param Name: 识别出的字段名称（关键字）。
+        :type Name: str
+        :param Value: 识别出的字段名称对应的值，也就是字段Name对应的字符串结果。
+        :type Value: str
+        :param Rect: 文本行在旋转纠正之后的图像中的像素坐标。
+        :type Rect: :class:`tencentcloud.ocr.v20181119.models.Rect`
+        """
+        self.Name = None
+        self.Value = None
+        self.Rect = None
+
+
+    def _deserialize(self, params):
+        self.Name = params.get("Name")
+        self.Value = params.get("Value")
+        if params.get("Rect") is not None:
+            self.Rect = Rect()
+            self.Rect._deserialize(params.get("Rect"))
+
+
+class BusInvoiceOCRRequest(AbstractModel):
+    """BusInvoiceOCR请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ImageBase64: 图片的 Base64 值。
+支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。
+支持的图片大小：所下载图片经Base64编码后不超过 3M。图片下载时间不超过 3 秒。
+图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
+        :type ImageBase64: str
+        :param ImageUrl: 图片的 Url 地址。
+支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。
+支持的图片大小：所下载图片经 Base64 编码后不超过 3M。图片下载时间不超过 3 秒。
+图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。
+非腾讯云存储的 Url 速度和稳定性可能受一定影响。
+        :type ImageUrl: str
+        """
+        self.ImageBase64 = None
+        self.ImageUrl = None
+
+
+    def _deserialize(self, params):
+        self.ImageBase64 = params.get("ImageBase64")
+        self.ImageUrl = params.get("ImageUrl")
+
+
+class BusInvoiceOCRResponse(AbstractModel):
+    """BusInvoiceOCR返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param BusInvoiceInfos: 汽车票识别结果，具体内容请点击左侧链接。
+        :type BusInvoiceInfos: list of BusInvoiceInfo
+        :param Angle: 图片旋转角度（角度制），文本的水平方向为0°，顺时针为正，逆时针为负。
+        :type Angle: float
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.BusInvoiceInfos = None
+        self.Angle = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("BusInvoiceInfos") is not None:
+            self.BusInvoiceInfos = []
+            for item in params.get("BusInvoiceInfos"):
+                obj = BusInvoiceInfo()
+                obj._deserialize(item)
+                self.BusInvoiceInfos.append(obj)
+        self.Angle = params.get("Angle")
+        self.RequestId = params.get("RequestId")
+
+
 class BusinessCardInfo(AbstractModel):
     """名片识别结果
 
@@ -481,6 +566,91 @@ class DriverLicenseOCRResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DutyPaidProofInfo(AbstractModel):
+    """识别出的字段
+
+    """
+
+    def __init__(self):
+        """
+        :param Name: 识别出的字段名称（关键字）。
+        :type Name: str
+        :param Value: 识别出的字段名称对应的值，也就是字段Name对应的字符串结果。
+        :type Value: str
+        :param Rect: 文本行在旋转纠正之后的图像中的像素坐标。
+        :type Rect: :class:`tencentcloud.ocr.v20181119.models.Rect`
+        """
+        self.Name = None
+        self.Value = None
+        self.Rect = None
+
+
+    def _deserialize(self, params):
+        self.Name = params.get("Name")
+        self.Value = params.get("Value")
+        if params.get("Rect") is not None:
+            self.Rect = Rect()
+            self.Rect._deserialize(params.get("Rect"))
+
+
+class DutyPaidProofOCRRequest(AbstractModel):
+    """DutyPaidProofOCR请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ImageBase64: 图片的 Base64 值。
+支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。
+支持的图片大小：所下载图片经Base64编码后不超过 3M。图片下载时间不超过 3 秒。
+图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
+        :type ImageBase64: str
+        :param ImageUrl: 图片的 Url 地址。
+支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。
+支持的图片大小：所下载图片经 Base64 编码后不超过 3M。图片下载时间不超过 3 秒。
+图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。
+非腾讯云存储的 Url 速度和稳定性可能受一定影响。
+        :type ImageUrl: str
+        """
+        self.ImageBase64 = None
+        self.ImageUrl = None
+
+
+    def _deserialize(self, params):
+        self.ImageBase64 = params.get("ImageBase64")
+        self.ImageUrl = params.get("ImageUrl")
+
+
+class DutyPaidProofOCRResponse(AbstractModel):
+    """DutyPaidProofOCR返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param DutyPaidProofInfos: 完税证明识别结果，具体内容请点击左侧链接。
+        :type DutyPaidProofInfos: list of DutyPaidProofInfo
+        :param Angle: 图片旋转角度（角度制），文本的水平方向为0°，顺时针为正，逆时针为负。
+        :type Angle: float
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.DutyPaidProofInfos = None
+        self.Angle = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("DutyPaidProofInfos") is not None:
+            self.DutyPaidProofInfos = []
+            for item in params.get("DutyPaidProofInfos"):
+                obj = DutyPaidProofInfo()
+                obj._deserialize(item)
+                self.DutyPaidProofInfos.append(obj)
+        self.Angle = params.get("Angle")
+        self.RequestId = params.get("RequestId")
+
+
 class EnglishOCRRequest(AbstractModel):
     """EnglishOCR请求参数结构体
 
@@ -743,6 +913,60 @@ class GeneralBasicOCRResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class GeneralEfficientOCRRequest(AbstractModel):
+    """GeneralEfficientOCR请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ImageBase64: 图片的 Base64 值。
+支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。
+支持的图片大小：所下载图片经Base64编码后不超过 3M。图片下载时间不超过 3 秒。
+图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
+        :type ImageBase64: str
+        :param ImageUrl: 图片的 Url 地址。
+支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。
+支持的图片大小：所下载图片经 Base64 编码后不超过 3M。图片下载时间不超过 3 秒。
+图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。
+非腾讯云存储的 Url 速度和稳定性可能受一定影响。
+        :type ImageUrl: str
+        """
+        self.ImageBase64 = None
+        self.ImageUrl = None
+
+
+    def _deserialize(self, params):
+        self.ImageBase64 = params.get("ImageBase64")
+        self.ImageUrl = params.get("ImageUrl")
+
+
+class GeneralEfficientOCRResponse(AbstractModel):
+    """GeneralEfficientOCR返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param TextDetections: 检测到的文本信息，具体内容请点击左侧链接。
+        :type TextDetections: list of TextDetection
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TextDetections = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("TextDetections") is not None:
+            self.TextDetections = []
+            for item in params.get("TextDetections"):
+                obj = TextDetection()
+                obj._deserialize(item)
+                self.TextDetections.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class GeneralFastOCRRequest(AbstractModel):
     """GeneralFastOCR请求参数结构体
 
@@ -974,6 +1198,139 @@ Code 告警码列表和释义：
         self.RequestId = params.get("RequestId")
 
 
+class InvoiceDetectInfo(AbstractModel):
+    """票据检测结果
+
+    """
+
+    def __init__(self):
+        """
+        :param Angle: 识别出的图片在混贴票据图片中的旋转角度。
+        :type Angle: float
+        :param Type: 识别出的图片所属的票据类型。
+-1：未知类型
+0：出租车发票
+1：定额发票
+2：火车票
+3：增值税发票
+4：客运限额发票
+5：机票行程单
+6：酒店账单
+7：完税证明
+8：通用机打发票
+9：汽车票
+10：轮船票
+11：增值税发票（卷票 ）
+12：购车发票
+13：过路过桥费发票
+14：购物小票
+        :type Type: int
+        :param Rect: 识别出的图片在混贴票据图片中的位置信息。
+        :type Rect: :class:`tencentcloud.ocr.v20181119.models.Rect`
+        :param Image: 入参 ReturnImage 为 True 时返回 Base64 编码后的图片。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Image: str
+        """
+        self.Angle = None
+        self.Type = None
+        self.Rect = None
+        self.Image = None
+
+
+    def _deserialize(self, params):
+        self.Angle = params.get("Angle")
+        self.Type = params.get("Type")
+        if params.get("Rect") is not None:
+            self.Rect = Rect()
+            self.Rect._deserialize(params.get("Rect"))
+        self.Image = params.get("Image")
+
+
+class InvoiceGeneralInfo(AbstractModel):
+    """通用机打发票信息
+
+    """
+
+    def __init__(self):
+        """
+        :param Name: 识别出的字段名称（关键字）。
+        :type Name: str
+        :param Value: 识别出的字段名称对应的值，也就是字段Name对应的字符串结果。
+        :type Value: str
+        :param Rect: 文本行在旋转纠正之后的图像中的像素坐标。
+        :type Rect: :class:`tencentcloud.ocr.v20181119.models.Rect`
+        """
+        self.Name = None
+        self.Value = None
+        self.Rect = None
+
+
+    def _deserialize(self, params):
+        self.Name = params.get("Name")
+        self.Value = params.get("Value")
+        if params.get("Rect") is not None:
+            self.Rect = Rect()
+            self.Rect._deserialize(params.get("Rect"))
+
+
+class InvoiceGeneralOCRRequest(AbstractModel):
+    """InvoiceGeneralOCR请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ImageBase64: 图片的 Base64 值。
+支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。
+支持的图片大小：所下载图片经Base64编码后不超过 3M。图片下载时间不超过 3 秒。
+图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
+        :type ImageBase64: str
+        :param ImageUrl: 图片的 Url 地址。
+支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。
+支持的图片大小：所下载图片经 Base64 编码后不超过 3M。图片下载时间不超过 3 秒。
+图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。
+非腾讯云存储的 Url 速度和稳定性可能受一定影响。
+        :type ImageUrl: str
+        """
+        self.ImageBase64 = None
+        self.ImageUrl = None
+
+
+    def _deserialize(self, params):
+        self.ImageBase64 = params.get("ImageBase64")
+        self.ImageUrl = params.get("ImageUrl")
+
+
+class InvoiceGeneralOCRResponse(AbstractModel):
+    """InvoiceGeneralOCR返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param InvoiceGeneralInfos: 通用机打发票识别结果，具体内容请点击左侧链接。
+        :type InvoiceGeneralInfos: list of InvoiceGeneralInfo
+        :param Angle: 图片旋转角度（角度制），文本的水平方向为0°，顺时针为正，逆时针为负。
+        :type Angle: float
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.InvoiceGeneralInfos = None
+        self.Angle = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("InvoiceGeneralInfos") is not None:
+            self.InvoiceGeneralInfos = []
+            for item in params.get("InvoiceGeneralInfos"):
+                obj = InvoiceGeneralInfo()
+                obj._deserialize(item)
+                self.InvoiceGeneralInfos.append(obj)
+        self.Angle = params.get("Angle")
+        self.RequestId = params.get("RequestId")
+
+
 class LicensePlateOCRRequest(AbstractModel):
     """LicensePlateOCR请求参数结构体
 
@@ -1179,6 +1536,290 @@ class MLIDPassportOCRResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class MixedInvoiceDetectRequest(AbstractModel):
+    """MixedInvoiceDetect请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ReturnImage: 是否需要返回裁剪后的图片。
+        :type ReturnImage: bool
+        :param ImageBase64: 图片的 Base64 值。
+支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。
+支持的图片大小：所下载图片经Base64编码后不超过 3M。图片下载时间不超过 3 秒。
+图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
+        :type ImageBase64: str
+        :param ImageUrl: 图片的 Url 地址。
+支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。
+支持的图片大小：所下载图片经 Base64 编码后不超过 3M。图片下载时间不超过 3 秒。
+图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。
+非腾讯云存储的 Url 速度和稳定性可能受一定影响。
+        :type ImageUrl: str
+        """
+        self.ReturnImage = None
+        self.ImageBase64 = None
+        self.ImageUrl = None
+
+
+    def _deserialize(self, params):
+        self.ReturnImage = params.get("ReturnImage")
+        self.ImageBase64 = params.get("ImageBase64")
+        self.ImageUrl = params.get("ImageUrl")
+
+
+class MixedInvoiceDetectResponse(AbstractModel):
+    """MixedInvoiceDetect返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param InvoiceDetectInfos: 检测出的票据类型列表，具体内容请点击左侧链接。
+        :type InvoiceDetectInfos: list of InvoiceDetectInfo
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.InvoiceDetectInfos = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("InvoiceDetectInfos") is not None:
+            self.InvoiceDetectInfos = []
+            for item in params.get("InvoiceDetectInfos"):
+                obj = InvoiceDetectInfo()
+                obj._deserialize(item)
+                self.InvoiceDetectInfos.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class MixedInvoiceItem(AbstractModel):
+    """混贴票据单张发票识别信息
+
+    """
+
+    def __init__(self):
+        """
+        :param Code: 识别结果。
+OK：表示识别成功；FailedOperation.UnsupportedInvioce：表示不支持识别；
+FailedOperation.UnKnowError： 表示识别失败；
+其它错误码见各个票据接口的定义。
+        :type Code: str
+        :param Type: 识别出的图片所属的票据类型。
+-1：未知类型
+0：出租车发票
+1：定额发票
+2：火车票
+3：增值税发票
+4：客运限额发票（仅支持类型检测，不支持识别）
+5：机票行程单
+6：酒店账单（仅支持类型检测，不支持识别）
+7：完税证明
+8：通用机打发票
+9：汽车票
+10：轮船票
+11：增值税发票（卷票 ）
+12：购车发票
+13：过路过桥费发票
+14：购物小票（仅支持类型检测，不支持识别）
+        :type Type: int
+        :param Rect: 识别出的图片在混贴票据图片中的位置信息。
+        :type Rect: :class:`tencentcloud.ocr.v20181119.models.Rect`
+        :param Angle: 识别出的图片在混贴票据图片中的旋转角度。
+        :type Angle: float
+        :param SingleInvoiceInfos: 识别到的内容。
+        :type SingleInvoiceInfos: list of SingleInvoiceInfo
+        """
+        self.Code = None
+        self.Type = None
+        self.Rect = None
+        self.Angle = None
+        self.SingleInvoiceInfos = None
+
+
+    def _deserialize(self, params):
+        self.Code = params.get("Code")
+        self.Type = params.get("Type")
+        if params.get("Rect") is not None:
+            self.Rect = Rect()
+            self.Rect._deserialize(params.get("Rect"))
+        self.Angle = params.get("Angle")
+        if params.get("SingleInvoiceInfos") is not None:
+            self.SingleInvoiceInfos = []
+            for item in params.get("SingleInvoiceInfos"):
+                obj = SingleInvoiceInfo()
+                obj._deserialize(item)
+                self.SingleInvoiceInfos.append(obj)
+
+
+class MixedInvoiceOCRRequest(AbstractModel):
+    """MixedInvoiceOCR请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ImageBase64: 图片的 Base64 值。
+支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。
+支持的图片大小：所下载图片经Base64编码后不超过 3M。图片下载时间不超过 3 秒。
+图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
+        :type ImageBase64: str
+        :param ImageUrl: 图片的 Url 地址。
+支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。
+支持的图片大小：所下载图片经 Base64 编码后不超过 3M。图片下载时间不超过 3 秒。
+图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。
+非腾讯云存储的 Url 速度和稳定性可能受一定影响。
+        :type ImageUrl: str
+        """
+        self.ImageBase64 = None
+        self.ImageUrl = None
+
+
+    def _deserialize(self, params):
+        self.ImageBase64 = params.get("ImageBase64")
+        self.ImageUrl = params.get("ImageUrl")
+
+
+class MixedInvoiceOCRResponse(AbstractModel):
+    """MixedInvoiceOCR返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param MixedInvoiceItems: 混贴票据识别结果，具体内容请点击左侧链接。
+        :type MixedInvoiceItems: list of MixedInvoiceItem
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.MixedInvoiceItems = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("MixedInvoiceItems") is not None:
+            self.MixedInvoiceItems = []
+            for item in params.get("MixedInvoiceItems"):
+                obj = MixedInvoiceItem()
+                obj._deserialize(item)
+                self.MixedInvoiceItems.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class PassportOCRRequest(AbstractModel):
+    """PassportOCR请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ImageBase64: 图片的 Base64 值。
+支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。
+支持的图片大小：所下载图片经Base64编码后不超过 7M。图片下载时间不超过 3 秒。
+图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
+        :type ImageBase64: str
+        :param ImageUrl: 图片的 Url 地址。
+支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。
+支持的图片大小：所下载图片经 Base64 编码后不超过 7M。图片下载时间不超过 3 秒。
+图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。
+非腾讯云存储的 Url 速度和稳定性可能受一定影响。
+        :type ImageUrl: str
+        :param Type: 护照类型（默认CN）：
+CN：支持中国大陆居民护照，字段较多，精度更高；
+HK：支持中国香港护照（部分主要字段）；
+GENERAL：支持国外护照（部分主要字段）；
+THAI：支持泰国护照（部分主要字段）。
+        :type Type: str
+        """
+        self.ImageBase64 = None
+        self.ImageUrl = None
+        self.Type = None
+
+
+    def _deserialize(self, params):
+        self.ImageBase64 = params.get("ImageBase64")
+        self.ImageUrl = params.get("ImageUrl")
+        self.Type = params.get("Type")
+
+
+class PassportOCRResponse(AbstractModel):
+    """PassportOCR返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Country: 国家码
+        :type Country: str
+        :param PassportNo: 护照号
+        :type PassportNo: str
+        :param Sex: 性别
+        :type Sex: str
+        :param Nationality: 国籍
+        :type Nationality: str
+        :param BirthDate: 出生日期
+        :type BirthDate: str
+        :param BirthPlace: 出生地点
+        :type BirthPlace: str
+        :param IssueDate: 签发日期
+        :type IssueDate: str
+        :param IssuePlace: 签发地点
+        :type IssuePlace: str
+        :param ExpiryDate: 有效期
+        :type ExpiryDate: str
+        :param Signature: 持证人签名
+        :type Signature: str
+        :param CodeSet: 最下方第一行 MRZ Code 序列
+        :type CodeSet: str
+        :param CodeCrc: 最下方第二行 MRZ Code 序列
+        :type CodeCrc: str
+        :param Name: 姓名
+        :type Name: str
+        :param FamilyName: 姓
+        :type FamilyName: str
+        :param FirstName: 名
+        :type FirstName: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Country = None
+        self.PassportNo = None
+        self.Sex = None
+        self.Nationality = None
+        self.BirthDate = None
+        self.BirthPlace = None
+        self.IssueDate = None
+        self.IssuePlace = None
+        self.ExpiryDate = None
+        self.Signature = None
+        self.CodeSet = None
+        self.CodeCrc = None
+        self.Name = None
+        self.FamilyName = None
+        self.FirstName = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Country = params.get("Country")
+        self.PassportNo = params.get("PassportNo")
+        self.Sex = params.get("Sex")
+        self.Nationality = params.get("Nationality")
+        self.BirthDate = params.get("BirthDate")
+        self.BirthPlace = params.get("BirthPlace")
+        self.IssueDate = params.get("IssueDate")
+        self.IssuePlace = params.get("IssuePlace")
+        self.ExpiryDate = params.get("ExpiryDate")
+        self.Signature = params.get("Signature")
+        self.CodeSet = params.get("CodeSet")
+        self.CodeCrc = params.get("CodeCrc")
+        self.Name = params.get("Name")
+        self.FamilyName = params.get("FamilyName")
+        self.FirstName = params.get("FirstName")
+        self.RequestId = params.get("RequestId")
+
+
 class PermitOCRRequest(AbstractModel):
     """PermitOCR请求参数结构体
 
@@ -1311,6 +1952,141 @@ class QuotaInvoiceOCRResponse(AbstractModel):
         self.InvoiceCode = params.get("InvoiceCode")
         self.Rate = params.get("Rate")
         self.RequestId = params.get("RequestId")
+
+
+class Rect(AbstractModel):
+    """矩形坐标
+
+    """
+
+    def __init__(self):
+        """
+        :param X: 左上角x
+        :type X: int
+        :param Y: 左上角y
+        :type Y: int
+        :param Width: 宽度
+        :type Width: int
+        :param Height: 高度
+        :type Height: int
+        """
+        self.X = None
+        self.Y = None
+        self.Width = None
+        self.Height = None
+
+
+    def _deserialize(self, params):
+        self.X = params.get("X")
+        self.Y = params.get("Y")
+        self.Width = params.get("Width")
+        self.Height = params.get("Height")
+
+
+class ShipInvoiceInfo(AbstractModel):
+    """轮船票字段信息
+
+    """
+
+    def __init__(self):
+        """
+        :param Name: 识别出的字段名称（关键字）。
+        :type Name: str
+        :param Value: 识别出的字段名称对应的值，也就是字段Name对应的字符串结果。
+        :type Value: str
+        :param Rect: 文本行在旋转纠正之后的图像中的像素坐标。
+        :type Rect: :class:`tencentcloud.ocr.v20181119.models.Rect`
+        """
+        self.Name = None
+        self.Value = None
+        self.Rect = None
+
+
+    def _deserialize(self, params):
+        self.Name = params.get("Name")
+        self.Value = params.get("Value")
+        if params.get("Rect") is not None:
+            self.Rect = Rect()
+            self.Rect._deserialize(params.get("Rect"))
+
+
+class ShipInvoiceOCRRequest(AbstractModel):
+    """ShipInvoiceOCR请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ImageBase64: 图片的 Base64 值。
+支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。
+支持的图片大小：所下载图片经Base64编码后不超过 3M。图片下载时间不超过 3 秒。
+图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
+        :type ImageBase64: str
+        :param ImageUrl: 图片的 Url 地址。
+支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。
+支持的图片大小：所下载图片经 Base64 编码后不超过 3M。图片下载时间不超过 3 秒。
+图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。
+非腾讯云存储的 Url 速度和稳定性可能受一定影响。
+        :type ImageUrl: str
+        """
+        self.ImageBase64 = None
+        self.ImageUrl = None
+
+
+    def _deserialize(self, params):
+        self.ImageBase64 = params.get("ImageBase64")
+        self.ImageUrl = params.get("ImageUrl")
+
+
+class ShipInvoiceOCRResponse(AbstractModel):
+    """ShipInvoiceOCR返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ShipInvoiceInfos: 轮船票识别结果，具体内容请点击左侧链接。
+        :type ShipInvoiceInfos: list of ShipInvoiceInfo
+        :param Angle: 图片旋转角度（角度制），文本的水平方向为0°，顺时针为正，逆时针为负。
+        :type Angle: float
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.ShipInvoiceInfos = None
+        self.Angle = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("ShipInvoiceInfos") is not None:
+            self.ShipInvoiceInfos = []
+            for item in params.get("ShipInvoiceInfos"):
+                obj = ShipInvoiceInfo()
+                obj._deserialize(item)
+                self.ShipInvoiceInfos.append(obj)
+        self.Angle = params.get("Angle")
+        self.RequestId = params.get("RequestId")
+
+
+class SingleInvoiceInfo(AbstractModel):
+    """混贴票据中单张发票的内容
+
+    """
+
+    def __init__(self):
+        """
+        :param Name: 识别出的字段名称
+        :type Name: str
+        :param Value: 识别出的字段名称对应的值，也就是字段name对应的字符串结果。
+        :type Value: str
+        """
+        self.Name = None
+        self.Value = None
+
+
+    def _deserialize(self, params):
+        self.Name = params.get("Name")
+        self.Value = params.get("Value")
 
 
 class TableOCRRequest(AbstractModel):
@@ -1481,6 +2257,55 @@ class TextArithmetic(AbstractModel):
                 obj._deserialize(item)
                 self.Polygon.append(obj)
         self.AdvancedInfo = params.get("AdvancedInfo")
+
+
+class TextDetectRequest(AbstractModel):
+    """TextDetect请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ImageBase64: 图片的 Base64 值。
+支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。
+支持的图片大小：所下载图片经Base64编码后不超过 3M。图片下载时间不超过 3 秒。
+图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
+        :type ImageBase64: str
+        :param ImageUrl: 图片的 Url 地址。
+支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。
+支持的图片大小：所下载图片经 Base64 编码后不超过 3M。图片下载时间不超过 3 秒。
+图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。
+非腾讯云存储的 Url 速度和稳定性可能受一定影响。
+        :type ImageUrl: str
+        """
+        self.ImageBase64 = None
+        self.ImageUrl = None
+
+
+    def _deserialize(self, params):
+        self.ImageBase64 = params.get("ImageBase64")
+        self.ImageUrl = params.get("ImageUrl")
+
+
+class TextDetectResponse(AbstractModel):
+    """TextDetect返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param HasText: 图片中是否包含文字。
+        :type HasText: bool
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.HasText = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.HasText = params.get("HasText")
+        self.RequestId = params.get("RequestId")
 
 
 class TextDetection(AbstractModel):
@@ -1849,6 +2674,91 @@ class TextWaybill(AbstractModel):
             self.WaybillNum._deserialize(params.get("WaybillNum"))
 
 
+class TollInvoiceInfo(AbstractModel):
+    """过路过桥费字段信息
+
+    """
+
+    def __init__(self):
+        """
+        :param Name: 识别出的字段名称（关键字）。
+        :type Name: str
+        :param Value: 识别出的字段名称对应的值，也就是字段Name对应的字符串结果。
+        :type Value: str
+        :param Rect: 文本行在旋转纠正之后的图像中的像素坐标。
+        :type Rect: :class:`tencentcloud.ocr.v20181119.models.Rect`
+        """
+        self.Name = None
+        self.Value = None
+        self.Rect = None
+
+
+    def _deserialize(self, params):
+        self.Name = params.get("Name")
+        self.Value = params.get("Value")
+        if params.get("Rect") is not None:
+            self.Rect = Rect()
+            self.Rect._deserialize(params.get("Rect"))
+
+
+class TollInvoiceOCRRequest(AbstractModel):
+    """TollInvoiceOCR请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ImageBase64: 图片的 Base64 值。
+支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。
+支持的图片大小：所下载图片经Base64编码后不超过 3M。图片下载时间不超过 3 秒。
+图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
+        :type ImageBase64: str
+        :param ImageUrl: 图片的 Url 地址。
+支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。
+支持的图片大小：所下载图片经 Base64 编码后不超过 3M。图片下载时间不超过 3 秒。
+图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。
+非腾讯云存储的 Url 速度和稳定性可能受一定影响。
+        :type ImageUrl: str
+        """
+        self.ImageBase64 = None
+        self.ImageUrl = None
+
+
+    def _deserialize(self, params):
+        self.ImageBase64 = params.get("ImageBase64")
+        self.ImageUrl = params.get("ImageUrl")
+
+
+class TollInvoiceOCRResponse(AbstractModel):
+    """TollInvoiceOCR返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param TollInvoiceInfos: 过路过桥费发票识别结果，具体内容请点击左侧链接。
+        :type TollInvoiceInfos: list of TollInvoiceInfo
+        :param Angle: 图片旋转角度（角度制），文本的水平方向为0°，顺时针为正，逆时针为负。
+        :type Angle: float
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TollInvoiceInfos = None
+        self.Angle = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("TollInvoiceInfos") is not None:
+            self.TollInvoiceInfos = []
+            for item in params.get("TollInvoiceInfos"):
+                obj = TollInvoiceInfo()
+                obj._deserialize(item)
+                self.TollInvoiceInfos.append(obj)
+        self.Angle = params.get("Angle")
+        self.RequestId = params.get("RequestId")
+
+
 class TrainTicketOCRRequest(AbstractModel):
     """TrainTicketOCR请求参数结构体
 
@@ -1981,6 +2891,91 @@ class VatInvoiceOCRResponse(AbstractModel):
                 obj = TextVatInvoice()
                 obj._deserialize(item)
                 self.VatInvoiceInfos.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class VatRollInvoiceInfo(AbstractModel):
+    """增值税发票卷票信息
+
+    """
+
+    def __init__(self):
+        """
+        :param Name: 识别出的字段名称（关键字）。
+        :type Name: str
+        :param Value: 识别出的字段名称对应的值，也就是字段Name对应的字符串结果。
+        :type Value: str
+        :param Rect: 文本行在旋转纠正之后的图像中的像素坐标。
+        :type Rect: :class:`tencentcloud.ocr.v20181119.models.Rect`
+        """
+        self.Name = None
+        self.Value = None
+        self.Rect = None
+
+
+    def _deserialize(self, params):
+        self.Name = params.get("Name")
+        self.Value = params.get("Value")
+        if params.get("Rect") is not None:
+            self.Rect = Rect()
+            self.Rect._deserialize(params.get("Rect"))
+
+
+class VatRollInvoiceOCRRequest(AbstractModel):
+    """VatRollInvoiceOCR请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ImageBase64: 图片的 Base64 值。
+支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。
+支持的图片大小：所下载图片经Base64编码后不超过 3M。图片下载时间不超过 3 秒。
+图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
+        :type ImageBase64: str
+        :param ImageUrl: 图片的 Url 地址。
+支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。
+支持的图片大小：所下载图片经 Base64 编码后不超过 3M。图片下载时间不超过 3 秒。
+图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。
+非腾讯云存储的 Url 速度和稳定性可能受一定影响。
+        :type ImageUrl: str
+        """
+        self.ImageBase64 = None
+        self.ImageUrl = None
+
+
+    def _deserialize(self, params):
+        self.ImageBase64 = params.get("ImageBase64")
+        self.ImageUrl = params.get("ImageUrl")
+
+
+class VatRollInvoiceOCRResponse(AbstractModel):
+    """VatRollInvoiceOCR返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param VatRollInvoiceInfos: 增值税发票（卷票）识别结果，具体内容请点击左侧链接。
+        :type VatRollInvoiceInfos: list of VatRollInvoiceInfo
+        :param Angle: 图片旋转角度（角度制），文本的水平方向为0°，顺时针为正，逆时针为负。
+        :type Angle: float
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.VatRollInvoiceInfos = None
+        self.Angle = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("VatRollInvoiceInfos") is not None:
+            self.VatRollInvoiceInfos = []
+            for item in params.get("VatRollInvoiceInfos"):
+                obj = VatRollInvoiceInfo()
+                obj._deserialize(item)
+                self.VatRollInvoiceInfos.append(obj)
+        self.Angle = params.get("Angle")
         self.RequestId = params.get("RequestId")
 
 

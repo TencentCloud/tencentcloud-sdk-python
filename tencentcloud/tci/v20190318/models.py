@@ -23,15 +23,15 @@ class AIAssistantRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param FileContent: 输入分析对象内容
+        :param FileContent: 输入分析对象内容，输入数据格式参考FileType参数释义
         :type FileContent: str
-        :param FileType: 输入分析对象类型，picture_url:图片地址，vod_url:视频地址，live_url：直播地址,audio_url: 音频文件
+        :param FileType: 输入分析对象类型，picture_url:图片地址，vod_url:视频地址，live_url：直播地址，audio_url: 音频文件，picture：图片二进制数据的BASE64编码
         :type FileType: str
         :param Lang: 音频源的语言，默认0为英文，1为中文
         :type Lang: int
         :param LibrarySet: 查询人员库列表
         :type LibrarySet: list of str
-        :param MaxVideoDuration: 直播流评估时间，在FileType为live_url时生效，默认值为10分钟。
+        :param MaxVideoDuration: 视频评估时间，单位毫秒，点播场景默认值为2小时（无法探测长度时）或完整视频，直播场景默认值为10分钟或直播提前结束
         :type MaxVideoDuration: int
         :param Template: 标准化模板选择：0：AI助教基础版本，1：AI评教基础版本，2：AI评教标准版本。AI 助教基础版本功能包括：人脸检索、人脸检测、人脸表情识别、学生动作选项，音频信息分析，微笑识别。AI 评教基础版本功能包括：人脸检索、人脸检测、人脸表情识别、音频信息分析。AI 评教标准版功能包括人脸检索、人脸检测、人脸表情识别、手势识别、音频信息分析、音频关键词分析、视频精彩集锦分析。
         :type Template: int
@@ -214,13 +214,13 @@ class ActionInfo(AbstractModel):
 
     def __init__(self):
         """
-        :param BodyPosture: 躯体动作识别结果
+        :param BodyPosture: 躯体动作识别结果，包含坐着（sit）、站立（stand）和趴睡（sleep）
         :type BodyPosture: :class:`tencentcloud.tci.v20190318.models.ActionType`
-        :param Handup: 举手识别结果
+        :param Handup: 举手识别结果，包含举手（hand）和未检测到举手（nothand）
         :type Handup: :class:`tencentcloud.tci.v20190318.models.ActionType`
-        :param LookHead: 是否低头识别结果
+        :param LookHead: 是否低头识别结果，包含抬头（lookingahead）和未检测到抬头（notlookingahead）
         :type LookHead: :class:`tencentcloud.tci.v20190318.models.ActionType`
-        :param Writing: 是否写字识别结果
+        :param Writing: 是否写字识别结果，包含写字（write）和未检测到写字（notlookingahead）
         :type Writing: :class:`tencentcloud.tci.v20190318.models.ActionType`
         :param Height: 动作图像高度
         :type Height: int
@@ -345,7 +345,7 @@ class AttendanceInfo(AbstractModel):
 
 
 class BodyMovementResult(AbstractModel):
-    """BodyMovementResult
+    """老师肢体动作识别结果
 
     """
 
@@ -357,7 +357,11 @@ class BodyMovementResult(AbstractModel):
         :type Height: int
         :param Left: 识别结果左坐标
         :type Left: int
-        :param Movements: 动作识别结果
+        :param Movements: 老师动作识别结果，包含
+1、teach_on_positive_attitude 正面讲解
+2、point_to_the_blackboard 指黑板
+3、writing_blackboard 写板书
+4、other 其他
         :type Movements: str
         :param Top: 识别结果顶坐标
         :type Top: int
@@ -825,18 +829,18 @@ class DeletePersonRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param PersonId: 人员唯一标识符
-        :type PersonId: str
         :param LibraryId: 人员库唯一标识符
         :type LibraryId: str
+        :param PersonId: 人员唯一标识符
+        :type PersonId: str
         """
-        self.PersonId = None
         self.LibraryId = None
+        self.PersonId = None
 
 
     def _deserialize(self, params):
-        self.PersonId = params.get("PersonId")
         self.LibraryId = params.get("LibraryId")
+        self.PersonId = params.get("PersonId")
 
 
 class DeletePersonResponse(AbstractModel):
@@ -1464,18 +1468,18 @@ class DescribePersonRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param PersonId: 人员唯一标识符
-        :type PersonId: str
         :param LibraryId: 人员库唯一标识符
         :type LibraryId: str
+        :param PersonId: 人员唯一标识符
+        :type PersonId: str
         """
-        self.PersonId = None
         self.LibraryId = None
+        self.PersonId = None
 
 
     def _deserialize(self, params):
-        self.PersonId = params.get("PersonId")
         self.LibraryId = params.get("LibraryId")
+        self.PersonId = params.get("PersonId")
 
 
 class DescribePersonResponse(AbstractModel):
@@ -1862,7 +1866,7 @@ class FaceExpressionResult(AbstractModel):
         """
         :param Confidence: 表情置信度
         :type Confidence: float
-        :param Expression: 表情识别结果
+        :param Expression: 表情识别结果，包括"neutral":中性,"happiness":开心，"angry":"生气"，"disgust":厌恶，"fear":"恐惧"，"sadness":"悲伤"，"surprise":"惊讶"，"contempt":"蔑视"
         :type Expression: str
         """
         self.Confidence = None
@@ -2019,11 +2023,11 @@ class FacePoseResult(AbstractModel):
         """
         :param Direction: 正脸或侧脸的消息
         :type Direction: str
-        :param Pitch: Pitch
+        :param Pitch: 围绕Z轴旋转角度，俯仰角
         :type Pitch: float
-        :param Roll: Roll
+        :param Roll: 围绕X轴旋转角度，翻滚角
         :type Roll: float
-        :param Yaw: 角度信息选填
+        :param Yaw: 围绕Y轴旋转角度，偏航角
         :type Yaw: float
         """
         self.Direction = None
@@ -2100,7 +2104,7 @@ class GestureResult(AbstractModel):
 
     def __init__(self):
         """
-        :param Class: 识别结果
+        :param Class: 识别结果，包含"USPEAK":听你说，"LISTEN":听我说，"GOOD":GOOD，"TOOLS":拿教具，"OTHERS":其他
         :type Class: str
         :param Confidence: 置信度
         :type Confidence: float
@@ -2318,7 +2322,7 @@ class ImageTaskResult(AbstractModel):
         :param Light: 光照识别结果
         :type Light: :class:`tencentcloud.tci.v20190318.models.LightResult`
         :param StudentBodyMovement: 学生肢体动作识别结果
-        :type StudentBodyMovement: :class:`tencentcloud.tci.v20190318.models.BodyMovementResult`
+        :type StudentBodyMovement: :class:`tencentcloud.tci.v20190318.models.StudentBodyMovementResult`
         :param TeacherBodyMovement: 老师肢体动作识别结果
         :type TeacherBodyMovement: :class:`tencentcloud.tci.v20190318.models.BodyMovementResult`
         :param TeacherOutScreen: 教师是否在屏幕内判断结果
@@ -2370,7 +2374,7 @@ class ImageTaskResult(AbstractModel):
             self.Light = LightResult()
             self.Light._deserialize(params.get("Light"))
         if params.get("StudentBodyMovement") is not None:
-            self.StudentBodyMovement = BodyMovementResult()
+            self.StudentBodyMovement = StudentBodyMovementResult()
             self.StudentBodyMovement._deserialize(params.get("StudentBodyMovement"))
         if params.get("TeacherBodyMovement") is not None:
             self.TeacherBodyMovement = BodyMovementResult()
@@ -2535,7 +2539,7 @@ class LightResult(AbstractModel):
 
     def __init__(self):
         """
-        :param LightLevel: 光照程度
+        :param LightLevel: 光照程度，参考提交任务时的LightStandard指定的Name参数
         :type LightLevel: str
         :param LightValue: 光照亮度
         :type LightValue: float
@@ -2550,7 +2554,12 @@ class LightResult(AbstractModel):
 
 
 class LightStandard(AbstractModel):
-    """光照标准
+    """光照标准，结构的相关示例为：
+    {
+        "Name":"dark"，
+        "Range":[0,30]
+    }
+    当光照的区间落入在0到30的范围时，就会命中dark的光照标准
 
     """
 
@@ -2654,12 +2663,12 @@ class ModifyPersonRequest(AbstractModel):
 
     def __init__(self):
         """
+        :param LibraryId: 人员库唯一标识符
+        :type LibraryId: str
         :param PersonId: 人员唯一标识符
         :type PersonId: str
         :param JobNumber: 人员工作号码
         :type JobNumber: str
-        :param LibraryId: 人员库唯一标识符
-        :type LibraryId: str
         :param Mail: 人员邮箱
         :type Mail: str
         :param Male: 人员性别
@@ -2671,9 +2680,9 @@ class ModifyPersonRequest(AbstractModel):
         :param StudentNumber: 人员学生号码
         :type StudentNumber: str
         """
+        self.LibraryId = None
         self.PersonId = None
         self.JobNumber = None
-        self.LibraryId = None
         self.Mail = None
         self.Male = None
         self.PersonName = None
@@ -2682,9 +2691,9 @@ class ModifyPersonRequest(AbstractModel):
 
 
     def _deserialize(self, params):
+        self.LibraryId = params.get("LibraryId")
         self.PersonId = params.get("PersonId")
         self.JobNumber = params.get("JobNumber")
-        self.LibraryId = params.get("LibraryId")
         self.Mail = params.get("Mail")
         self.Male = params.get("Male")
         self.PersonName = params.get("PersonName")
@@ -2957,6 +2966,59 @@ class StatInfo(AbstractModel):
         self.Value = params.get("Value")
 
 
+class StudentBodyMovementResult(AbstractModel):
+    """学生肢体动作结果
+
+    """
+
+    def __init__(self):
+        """
+        :param Confidence: 置信度（已废弃）
+        :type Confidence: float
+        :param HandupConfidence: 举手识别结果置信度
+        :type HandupConfidence: float
+        :param HandupStatus: 举手识别结果，包含举手（handup）和未举手（nothandup）
+        :type HandupStatus: str
+        :param Height: 识别结果高度
+        :type Height: int
+        :param Left: 识别结果左坐标
+        :type Left: int
+        :param Movements: 动作识别结果（已废弃）
+        :type Movements: str
+        :param StandConfidence: 站立识别结果置信度
+        :type StandConfidence: float
+        :param StandStatus: 站立识别结果，包含站立（stand）和坐着（sit）
+        :type StandStatus: str
+        :param Top: 识别结果顶坐标
+        :type Top: int
+        :param Width: 识别结果宽度
+        :type Width: int
+        """
+        self.Confidence = None
+        self.HandupConfidence = None
+        self.HandupStatus = None
+        self.Height = None
+        self.Left = None
+        self.Movements = None
+        self.StandConfidence = None
+        self.StandStatus = None
+        self.Top = None
+        self.Width = None
+
+
+    def _deserialize(self, params):
+        self.Confidence = params.get("Confidence")
+        self.HandupConfidence = params.get("HandupConfidence")
+        self.HandupStatus = params.get("HandupStatus")
+        self.Height = params.get("Height")
+        self.Left = params.get("Left")
+        self.Movements = params.get("Movements")
+        self.StandConfidence = params.get("StandConfidence")
+        self.StandStatus = params.get("StandStatus")
+        self.Top = params.get("Top")
+        self.Width = params.get("Width")
+
+
 class SubmitAudioTaskRequest(AbstractModel):
     """SubmitAudioTask请求参数结构体
 
@@ -3106,37 +3168,37 @@ class SubmitConversationTaskRequest(AbstractModel):
         """
         :param Lang: 音频源的语言，默认0为英文，1为中文
         :type Lang: int
+        :param StudentUrl: 学生音频流
+        :type StudentUrl: str
+        :param TeacherUrl: 教师音频流
+        :type TeacherUrl: str
         :param VoiceEncodeType: 语音编码类型 1:pcm
         :type VoiceEncodeType: int
         :param VoiceFileType: 语音文件类型 1:raw, 2:wav, 3:mp3（三种格式目前仅支持16k采样率16bit）
         :type VoiceFileType: int
         :param Functions: 功能开关列表，表示是否需要打开相应的功能，返回相应的信息
         :type Functions: :class:`tencentcloud.tci.v20190318.models.Function`
-        :param StudentUrl: 学生音频流
-        :type StudentUrl: str
-        :param TeacherUrl: 教师音频流
-        :type TeacherUrl: str
         :param VocabLibNameList: 识别词库名列表，评估过程使用这些词汇库中的词汇进行词汇使用行为分析
         :type VocabLibNameList: list of str
         """
         self.Lang = None
+        self.StudentUrl = None
+        self.TeacherUrl = None
         self.VoiceEncodeType = None
         self.VoiceFileType = None
         self.Functions = None
-        self.StudentUrl = None
-        self.TeacherUrl = None
         self.VocabLibNameList = None
 
 
     def _deserialize(self, params):
         self.Lang = params.get("Lang")
+        self.StudentUrl = params.get("StudentUrl")
+        self.TeacherUrl = params.get("TeacherUrl")
         self.VoiceEncodeType = params.get("VoiceEncodeType")
         self.VoiceFileType = params.get("VoiceFileType")
         if params.get("Functions") is not None:
             self.Functions = Function()
             self.Functions._deserialize(params.get("Functions"))
-        self.StudentUrl = params.get("StudentUrl")
-        self.TeacherUrl = params.get("TeacherUrl")
         self.VocabLibNameList = params.get("VocabLibNameList")
 
 
@@ -3245,7 +3307,7 @@ class SubmitFullBodyClassTaskRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param FileContent: 输入分析对象内容
+        :param FileContent: 输入分析对象内容，输入数据格式参考FileType参数释义
         :type FileContent: str
         :param FileType: 输入分析对象类型，picture_url:图片地址，vod_url:视频地址，live_url：直播地址，picture: 图片二进制数据的BASE64编码
         :type FileType: str
@@ -3253,7 +3315,7 @@ class SubmitFullBodyClassTaskRequest(AbstractModel):
         :type Lang: int
         :param LibrarySet: 查询人员库列表，可填写老师的注册照所在人员库
         :type LibrarySet: list of str
-        :param MaxVideoDuration: 直播流评估时间，在FileType为live_url时生效，默认值为10分钟。
+        :param MaxVideoDuration: 视频评估时间，单位毫秒，点播场景默认值为2小时（无法探测长度时）或完整视频，直播场景默认值为10分钟或直播提前结束
         :type MaxVideoDuration: int
         :param VocabLibNameList: 识别词库名列表，这些词汇库用来维护关键词，评估老师授课过程中，对这些关键词的使用情况
         :type VocabLibNameList: list of str
@@ -3392,7 +3454,7 @@ class SubmitImageTaskRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param FileContent: 输入分析对象内容
+        :param FileContent: 输入分析对象内容，输入数据格式参考FileType参数释义
         :type FileContent: str
         :param FileType: 输入分析对象类型，picture：二进制图片的 base64 编码字符串，picture_url:图片地址，vod_url：视频地址，live_url：直播地址
         :type FileType: str
@@ -3404,7 +3466,7 @@ class SubmitImageTaskRequest(AbstractModel):
         :type FrameInterval: int
         :param LibrarySet: 查询人员库列表
         :type LibrarySet: list of str
-        :param MaxVideoDuration: 最大的视频长度，单位毫秒，默认值为两小时
+        :param MaxVideoDuration: 视频评估时间，单位毫秒，点播场景默认值为2小时（无法探测长度时）或完整视频，直播场景默认值为10分钟或直播提前结束
         :type MaxVideoDuration: int
         :param SimThreshold: 人脸识别中的相似度阈值，默认值为0.89，保留字段，当前不支持填写。
         :type SimThreshold: float
@@ -3482,7 +3544,7 @@ class SubmitOneByOneClassTaskRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param FileContent: 输入分析对象内容
+        :param FileContent: 输入分析对象内容，输入数据格式参考FileType参数释义
         :type FileContent: str
         :param FileType: 输入分析对象类型，picture_url:图片地址，vod_url:视频地址，live_url：直播地址，picture: 图片二进制数据的BASE64编码
         :type FileType: str
@@ -3490,7 +3552,7 @@ class SubmitOneByOneClassTaskRequest(AbstractModel):
         :type Lang: int
         :param LibrarySet: 查询人员库列表，可填写学生的注册照所在人员库
         :type LibrarySet: list of str
-        :param MaxVideoDuration: 直播流评估时间，在FileType为live_url时生效，默认值为10分钟。
+        :param MaxVideoDuration: 视频评估时间，单位毫秒，点播场景默认值为2小时（无法探测长度时）或完整视频，直播场景默认值为10分钟或直播提前结束
         :type MaxVideoDuration: int
         :param VocabLibNameList: 识别词库名列表，这些词汇库用来维护关键词，评估学生对这些关键词的使用情况
         :type VocabLibNameList: list of str
@@ -3557,13 +3619,13 @@ class SubmitOpenClassTaskRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param FileContent: 输入分析对象内容
+        :param FileContent: 输入分析对象内容，输入数据格式参考FileType参数释义
         :type FileContent: str
         :param FileType: 输入分析对象类型，picture_url:图片地址，vod_url:视频地址，live_url：直播地址,picture: 图片二进制数据的BASE64编码
         :type FileType: str
         :param LibrarySet: 查询人员库列表，可填写学生们的注册照所在人员库
         :type LibrarySet: list of str
-        :param MaxVideoDuration: 直播流评估时间，在FileType为live_url时生效，默认值为10分钟。
+        :param MaxVideoDuration: 视频评估时间，单位毫秒，点播场景默认值为2小时（无法探测长度时）或完整视频，直播场景默认值为10分钟或直播提前结束
         :type MaxVideoDuration: int
         """
         self.FileContent = None
@@ -3616,7 +3678,7 @@ class SubmitPartialBodyClassTaskRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param FileContent: 输入分析对象内容
+        :param FileContent: 输入分析对象内容，输入数据格式参考FileType参数释义
         :type FileContent: str
         :param FileType: 输入分析对象类型，picture_url:图片地址，vod_url:视频地址，live_url：直播地址，picture: 图片二进制数据的BASE64编码
         :type FileType: str
@@ -3624,7 +3686,7 @@ class SubmitPartialBodyClassTaskRequest(AbstractModel):
         :type Lang: int
         :param LibrarySet: 查询人员库列表，可填写老师的注册照所在人员库
         :type LibrarySet: list of str
-        :param MaxVideoDuration: 直播流评估时间，在FileType为live_url时生效，默认值为10分钟。
+        :param MaxVideoDuration: 视频评估时间，单位毫秒，点播场景默认值为2小时（无法探测长度时）或完整视频，直播场景默认值为10分钟或直播提前结束
         :type MaxVideoDuration: int
         :param VocabLibNameList: 识别词库名列表，这些词汇库用来维护关键词，评估老师授课过程中，对这些关键词的使用情况
         :type VocabLibNameList: list of str
@@ -3691,13 +3753,13 @@ class SubmitTraditionalClassTaskRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param FileContent: 输入分析对象内容，仅支持url，暂不支持直接上传base64图片
+        :param FileContent: 输入分析对象内容，输入数据格式参考FileType参数释义
         :type FileContent: str
-        :param FileType: 输入分析对象类型，picture_url:图片地址，vod_url:视频地址，live_url：直播地址
+        :param FileType: 输入分析对象类型，picture_url:图片地址，vod_url:视频地址，live_url：直播地址，picture：图片二进制数据的BASE64编码
         :type FileType: str
         :param LibrarySet: 查询人员库列表，可填写学生们的注册照所在人员库
         :type LibrarySet: list of str
-        :param MaxVideoDuration: 直播流评估时间，在FileType为live_url时生效，默认值为10分钟。
+        :param MaxVideoDuration: 视频评估时间，单位毫秒，点播场景默认值为2小时（无法探测长度时）或完整视频，直播场景默认值为10分钟或直播提前结束
         :type MaxVideoDuration: int
         """
         self.FileContent = None
@@ -3776,7 +3838,8 @@ class TeacherOutScreenResult(AbstractModel):
 
     def __init__(self):
         """
-        :param Class: 动作识别结果
+        :param Class: 动作识别结果，InScreen：在屏幕内
+OutScreen：不在屏幕内
         :type Class: str
         :param Height: 识别结果高度
         :type Height: int

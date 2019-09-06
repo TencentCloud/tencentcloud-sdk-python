@@ -2255,9 +2255,9 @@ class InternetAccessible(AbstractModel):
         :type InternetChargeType: str
         :param InternetMaxBandwidthOut: 公网出带宽上限，单位：Mbps。默认值：0Mbps。不同机型带宽上限范围不一致，具体限制详见[购买网络带宽](/document/product/213/509)。
         :type InternetMaxBandwidthOut: int
-        :param PublicIpAssigned: 是否分配公网IP。取值范围：<br><li>TRUE：表示分配公网IP<br><li>FALSE：表示不分配公网IP<br><br>当公网带宽大于0Mbps时，可自由选择开通与否，默认开通公网IP；当公网带宽为0，则不允许分配公网IP。
+        :param PublicIpAssigned: 是否分配公网IP。取值范围：<br><li>TRUE：表示分配公网IP<br><li>FALSE：表示不分配公网IP<br><br>当公网带宽大于0Mbps时，可自由选择开通与否，默认开通公网IP；当公网带宽为0，则不允许分配公网IP。该参数仅在RunInstances接口中作为入参使用。
         :type PublicIpAssigned: bool
-        :param BandwidthPackageId: 带宽包ID。可通过[`DescribeBandwidthPackages`](https://cloud.tencent.com/document/api/215/19209)接口返回值中的`BandwidthPackageId`获取。
+        :param BandwidthPackageId: 带宽包ID。可通过[`DescribeBandwidthPackages`](https://cloud.tencent.com/document/api/215/19209)接口返回值中的`BandwidthPackageId`获取。该参数仅在RunInstances接口中作为入参使用。
         :type BandwidthPackageId: str
         """
         self.InternetChargeType = None
@@ -2794,7 +2794,7 @@ class OutputMappingConfig(AbstractModel):
         :type Scene: str
         :param WorkerNum: 并行worker数量
         :type WorkerNum: int
-        :param WorkerPartSize: worker分块大小
+        :param WorkerPartSize: worker分块大小，单位MB
         :type WorkerPartSize: int
         """
         self.Scene = None

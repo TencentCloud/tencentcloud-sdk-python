@@ -81,6 +81,66 @@ statusCode：状态码，返回 2XX、3XX、4XX、5XX 汇总数据，单位为 �
             self.SummarizedData._deserialize(params.get("SummarizedData"))
 
 
+class CdnIp(AbstractModel):
+    """CdnIp 属性详情。
+
+    """
+
+    def __init__(self):
+        """
+        :param Ip: 节点 ip。
+        :type Ip: str
+        :param Platform: 是否为腾讯云 CDN 加速节点。yes 表示该节点为腾讯云 CDN 节点，no 表示该节点不是腾讯云 CDN 节点。
+        :type Platform: str
+        :param Location: 表示该节点所处的省份/国家。unknown 表示节点位置未知。
+        :type Location: str
+        :param History: 节点上下线历史记录。
+        :type History: list of CdnIpHistory
+        :param Area: 节点的服务地域。mainland 表示服务地域为中国境内，overseas 表示服务地域为中国境外， unknown 表示服务地域未知。
+        :type Area: str
+        """
+        self.Ip = None
+        self.Platform = None
+        self.Location = None
+        self.History = None
+        self.Area = None
+
+
+    def _deserialize(self, params):
+        self.Ip = params.get("Ip")
+        self.Platform = params.get("Platform")
+        self.Location = params.get("Location")
+        if params.get("History") is not None:
+            self.History = []
+            for item in params.get("History"):
+                obj = CdnIpHistory()
+                obj._deserialize(item)
+                self.History.append(obj)
+        self.Area = params.get("Area")
+
+
+class CdnIpHistory(AbstractModel):
+    """CdnIp 节点上下线历史
+
+    """
+
+    def __init__(self):
+        """
+        :param Status: 上下线状态。online 为上线，offline 为下线。
+        :type Status: str
+        :param Datetime: 操作时间。当该值为 null 时表示无历史状态变更记录。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Datetime: str
+        """
+        self.Status = None
+        self.Datetime = None
+
+
+    def _deserialize(self, params):
+        self.Status = params.get("Status")
+        self.Datetime = params.get("Datetime")
+
+
 class DescribeCdnDataRequest(AbstractModel):
     """DescribeCdnData请求参数结构体
 
@@ -202,6 +262,49 @@ day：天粒度
                 obj = ResourceData()
                 obj._deserialize(item)
                 self.Data.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeCdnIpRequest(AbstractModel):
+    """DescribeCdnIp请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Ips: 需要查询的 IP 列表
+        :type Ips: list of str
+        """
+        self.Ips = None
+
+
+    def _deserialize(self, params):
+        self.Ips = params.get("Ips")
+
+
+class DescribeCdnIpResponse(AbstractModel):
+    """DescribeCdnIp返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Ips: 查询的节点归属详情。
+        :type Ips: list of CdnIp
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Ips = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Ips") is not None:
+            self.Ips = []
+            for item in params.get("Ips"):
+                obj = CdnIp()
+                obj._deserialize(item)
+                self.Ips.append(obj)
         self.RequestId = params.get("RequestId")
 
 
@@ -451,6 +554,160 @@ max：峰值带宽计费，日结模式
         self.PayType = params.get("PayType")
         self.BillingCycle = params.get("BillingCycle")
         self.StatType = params.get("StatType")
+        self.RequestId = params.get("RequestId")
+
+
+class DescribePurgeTasksRequest(AbstractModel):
+    """DescribePurgeTasks请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param PurgeType: 查询刷新类型。url：查询 url 刷新记录；path：查询目录刷新记录。
+        :type PurgeType: str
+        :param StartTime: 开始时间，如2018-08-08 00:00:00。
+        :type StartTime: str
+        :param EndTime: 结束时间，如2018-08-08 23:59:59。
+        :type EndTime: str
+        :param TaskId: 提交时返回的任务 Id，查询时 TaskId 和起始时间必须指定一项。
+        :type TaskId: str
+        :param Offset: 分页查询偏移量，默认为 0 （第一页）。
+        :type Offset: int
+        :param Limit: 分页查询限制数目，默认为20。
+        :type Limit: int
+        :param Keyword: 查询关键字，请输入域名或 http(s):// 开头完整 URL。
+        :type Keyword: str
+        :param Status: 查询指定任务状态，fail表示失败，done表示成功，process表示刷新中。
+        :type Status: str
+        """
+        self.PurgeType = None
+        self.StartTime = None
+        self.EndTime = None
+        self.TaskId = None
+        self.Offset = None
+        self.Limit = None
+        self.Keyword = None
+        self.Status = None
+
+
+    def _deserialize(self, params):
+        self.PurgeType = params.get("PurgeType")
+        self.StartTime = params.get("StartTime")
+        self.EndTime = params.get("EndTime")
+        self.TaskId = params.get("TaskId")
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+        self.Keyword = params.get("Keyword")
+        self.Status = params.get("Status")
+
+
+class DescribePurgeTasksResponse(AbstractModel):
+    """DescribePurgeTasks返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param PurgeLogs: 刷新历史记录
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PurgeLogs: list of PurgeTask
+        :param TotalCount: 任务总数，用于分页
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TotalCount: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.PurgeLogs = None
+        self.TotalCount = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("PurgeLogs") is not None:
+            self.PurgeLogs = []
+            for item in params.get("PurgeLogs"):
+                obj = PurgeTask()
+                obj._deserialize(item)
+                self.PurgeLogs.append(obj)
+        self.TotalCount = params.get("TotalCount")
+        self.RequestId = params.get("RequestId")
+
+
+class DescribePushTasksRequest(AbstractModel):
+    """DescribePushTasks请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param StartTime: 开始时间，如2018-08-08 00:00:00。
+        :type StartTime: str
+        :param EndTime: 结束时间，如2018-08-08 23:59:59。
+        :type EndTime: str
+        :param TaskId: 提交时返回的任务 Id，查询时 TaskId 和起始时间必须指定一项。
+        :type TaskId: str
+        :param Keyword: 查询关键字，请输入域名或 http(s):// 开头完整 URL。
+        :type Keyword: str
+        :param Offset: 分页查询偏移量，默认为 0 （第一页）。
+        :type Offset: int
+        :param Limit: 分页查询限制数目，默认为20。
+        :type Limit: int
+        :param Area: 查询刷新记录指定地区。mainland：中国大陆。
+        :type Area: str
+        :param Status: 查询指定任务状态，fail表示失败，done表示成功，process表示刷新中。
+        :type Status: str
+        """
+        self.StartTime = None
+        self.EndTime = None
+        self.TaskId = None
+        self.Keyword = None
+        self.Offset = None
+        self.Limit = None
+        self.Area = None
+        self.Status = None
+
+
+    def _deserialize(self, params):
+        self.StartTime = params.get("StartTime")
+        self.EndTime = params.get("EndTime")
+        self.TaskId = params.get("TaskId")
+        self.Keyword = params.get("Keyword")
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+        self.Area = params.get("Area")
+        self.Status = params.get("Status")
+
+
+class DescribePushTasksResponse(AbstractModel):
+    """DescribePushTasks返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param PushLogs: 预热历史记录
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PushLogs: list of PushTask
+        :param TotalCount: 任务总数，用于分页
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TotalCount: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.PushLogs = None
+        self.TotalCount = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("PushLogs") is not None:
+            self.PushLogs = []
+            for item in params.get("PushLogs"):
+                obj = PushTask()
+                obj._deserialize(item)
+                self.PushLogs.append(obj)
+        self.TotalCount = params.get("TotalCount")
         self.RequestId = params.get("RequestId")
 
 
@@ -707,6 +964,198 @@ class MapInfo(AbstractModel):
     def _deserialize(self, params):
         self.Id = params.get("Id")
         self.Name = params.get("Name")
+
+
+class PurgePathCacheRequest(AbstractModel):
+    """PurgePathCache请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Paths: 要刷新的目录列表，必须包含协议头部。
+        :type Paths: list of str
+        :param FlushType: 刷新类型，flush 代表刷新有更新的资源，delete 表示刷新全部资源。
+        :type FlushType: str
+        """
+        self.Paths = None
+        self.FlushType = None
+
+
+    def _deserialize(self, params):
+        self.Paths = params.get("Paths")
+        self.FlushType = params.get("FlushType")
+
+
+class PurgePathCacheResponse(AbstractModel):
+    """PurgePathCache返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param TaskId: 刷新任务Id，前十位为提交任务时的UTC时间。
+        :type TaskId: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TaskId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TaskId = params.get("TaskId")
+        self.RequestId = params.get("RequestId")
+
+
+class PurgeTask(AbstractModel):
+    """刷新任务日志详情
+
+    """
+
+    def __init__(self):
+        """
+        :param TaskId: 刷新任务ID。
+        :type TaskId: str
+        :param Url: 刷新Url。
+        :type Url: str
+        :param Status: 刷新任务状态，fail表示失败，done表示成功，process表示刷新中。
+        :type Status: str
+        :param PurgeType: 刷新类型，url表示url刷新，path表示目录刷新。
+        :type PurgeType: str
+        :param FlushType: 刷新资源方式，flush代表刷新更新资源，delete代表刷新全部资源。
+        :type FlushType: str
+        :param CreateTime: 刷新任务提交时间
+        :type CreateTime: str
+        """
+        self.TaskId = None
+        self.Url = None
+        self.Status = None
+        self.PurgeType = None
+        self.FlushType = None
+        self.CreateTime = None
+
+
+    def _deserialize(self, params):
+        self.TaskId = params.get("TaskId")
+        self.Url = params.get("Url")
+        self.Status = params.get("Status")
+        self.PurgeType = params.get("PurgeType")
+        self.FlushType = params.get("FlushType")
+        self.CreateTime = params.get("CreateTime")
+
+
+class PurgeUrlsCacheRequest(AbstractModel):
+    """PurgeUrlsCache请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Urls: 要刷新的Url列表，必须包含协议头部。
+        :type Urls: list of str
+        """
+        self.Urls = None
+
+
+    def _deserialize(self, params):
+        self.Urls = params.get("Urls")
+
+
+class PurgeUrlsCacheResponse(AbstractModel):
+    """PurgeUrlsCache返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param TaskId: 刷新任务Id，前十位为提交任务时的UTC时间。
+        :type TaskId: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TaskId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TaskId = params.get("TaskId")
+        self.RequestId = params.get("RequestId")
+
+
+class PushTask(AbstractModel):
+    """预热任务日志详情。
+
+    """
+
+    def __init__(self):
+        """
+        :param TaskId: 预热任务Id，前十位为时间戳。
+        :type TaskId: str
+        :param Url: 预热Url。
+        :type Url: str
+        :param Status: 预热任务状态，fail表示失败，done表示成功，process表示预热中。
+        :type Status: str
+        :param Percent: 预热百分比。
+        :type Percent: int
+        :param CreateTime: 预热任务提交时间。
+        :type CreateTime: str
+        """
+        self.TaskId = None
+        self.Url = None
+        self.Status = None
+        self.Percent = None
+        self.CreateTime = None
+
+
+    def _deserialize(self, params):
+        self.TaskId = params.get("TaskId")
+        self.Url = params.get("Url")
+        self.Status = params.get("Status")
+        self.Percent = params.get("Percent")
+        self.CreateTime = params.get("CreateTime")
+
+
+class PushUrlsCacheRequest(AbstractModel):
+    """PushUrlsCache请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Urls: URL 列表，提交时需要包含协议头部（http:// 或 https://）
+        :type Urls: list of str
+        :param UserAgent: 预热请求回源时 HTTP 请求的 User-Agent 头部，默认为 TencentCdn
+        :type UserAgent: str
+        """
+        self.Urls = None
+        self.UserAgent = None
+
+
+    def _deserialize(self, params):
+        self.Urls = params.get("Urls")
+        self.UserAgent = params.get("UserAgent")
+
+
+class PushUrlsCacheResponse(AbstractModel):
+    """PushUrlsCache返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param TaskId: 此批次提交任务对应的 Id，值唯一
+        :type TaskId: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TaskId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TaskId = params.get("TaskId")
+        self.RequestId = params.get("RequestId")
 
 
 class ResourceData(AbstractModel):

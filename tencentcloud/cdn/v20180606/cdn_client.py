@@ -62,6 +62,34 @@ class CdnClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeCdnIp(self, request):
+        """DescribeCdnIp 用于查询 CDN IP 归属。
+
+        :param request: 调用DescribeCdnIp所需参数的结构体。
+        :type request: :class:`tencentcloud.cdn.v20180606.models.DescribeCdnIpRequest`
+        :rtype: :class:`tencentcloud.cdn.v20180606.models.DescribeCdnIpResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeCdnIp", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeCdnIpResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeIpVisit(self, request):
         """DescribeIpVisit 用于查询 5 分钟活跃用户数，及日活跃用户数明细
 
@@ -187,6 +215,62 @@ class CdnClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribePurgeTasks(self, request):
+        """DescribePurgeTasks 用于查询刷新任务提交历史记录及执行进度。
+
+        :param request: 调用DescribePurgeTasks所需参数的结构体。
+        :type request: :class:`tencentcloud.cdn.v20180606.models.DescribePurgeTasksRequest`
+        :rtype: :class:`tencentcloud.cdn.v20180606.models.DescribePurgeTasksResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribePurgeTasks", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribePurgeTasksResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribePushTasks(self, request):
+        """DescribePushTasks 用于查询预热任务提交历史记录及执行进度。（接口尚在批量公测中，暂未全量开放使用）
+
+        :param request: 调用DescribePushTasks所需参数的结构体。
+        :type request: :class:`tencentcloud.cdn.v20180606.models.DescribePushTasksRequest`
+        :rtype: :class:`tencentcloud.cdn.v20180606.models.DescribePushTasksResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribePushTasks", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribePushTasksResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DisableCaches(self, request):
         """DisableCaches 用于禁用 CDN 上指定 URL 的访问，禁用完成后，全网访问会直接返回 403。（接口尚在内测中，暂未全量开放使用）
 
@@ -291,6 +375,90 @@ class CdnClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ListTopDataResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def PurgePathCache(self, request):
+        """PurgeUrlsCache 用于批量刷新目录缓存，一次提交将返回一个刷新任务id。
+
+        :param request: 调用PurgePathCache所需参数的结构体。
+        :type request: :class:`tencentcloud.cdn.v20180606.models.PurgePathCacheRequest`
+        :rtype: :class:`tencentcloud.cdn.v20180606.models.PurgePathCacheResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("PurgePathCache", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.PurgePathCacheResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def PurgeUrlsCache(self, request):
+        """PurgeUrlsCache 用于批量刷新Url，一次提交将返回一个刷新任务id。
+
+        :param request: 调用PurgeUrlsCache所需参数的结构体。
+        :type request: :class:`tencentcloud.cdn.v20180606.models.PurgeUrlsCacheRequest`
+        :rtype: :class:`tencentcloud.cdn.v20180606.models.PurgeUrlsCacheResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("PurgeUrlsCache", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.PurgeUrlsCacheResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def PushUrlsCache(self, request):
+        """PushUrlsCache 用于将指定 URL 资源列表加载至 CDN 节点，默认情况下每次调用可提交 20 条 URL，每日一共可提交 1000 条。
+
+        :param request: 调用PushUrlsCache所需参数的结构体。
+        :type request: :class:`tencentcloud.cdn.v20180606.models.PushUrlsCacheRequest`
+        :rtype: :class:`tencentcloud.cdn.v20180606.models.PushUrlsCacheResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("PushUrlsCache", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.PushUrlsCacheResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
