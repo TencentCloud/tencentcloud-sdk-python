@@ -2,6 +2,10 @@
 
 ## latest
 
+* support common parameter `Language`.
+
+## 3.0.28 (Sep 28, 2018)
+
 * fix #6: print all attributs, includes those value is null
 
 ## 3.0.27

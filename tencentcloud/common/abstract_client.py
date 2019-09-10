@@ -133,6 +133,9 @@ class AbstractClient(object):
         if self.profile.signMethod:
             params['SignatureMethod'] = self.profile.signMethod
 
+        if self.profile.language:
+            params['Language'] = self.profile.language
+
         signInParam = self._format_sign_string(params)
         params['Signature'] = Sign.sign(str(self.credential.secretKey),
                                         str(signInParam),
@@ -168,6 +171,8 @@ class AbstractClient(object):
             req.header['X-TC-Region'] = self.region
         if self.credential.token:
             req.header['X-TC-Token'] = self.credential.token
+        if self.profile.language:
+            req.header['X-TC-Language'] = self.profile.language
 
         signature = self._get_tc3_signature(params, req, date, service, options)
 

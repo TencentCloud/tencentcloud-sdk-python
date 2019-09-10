@@ -23,7 +23,8 @@ try:
 
     # 实例化一个client选项，可选的，没有特殊需求可以跳过。
     clientProfile = ClientProfile()
-    clientProfile.signMethod = "TC3-HMAC-SHA256"  # 指定签名算法(默认为HmacSHA256)
+    clientProfile.signMethod = "TC3-HMAC-SHA256"  # 指定签名算法
+    clientProfile.language = "en-US"
     clientProfile.httpProfile = httpProfile
 
     # 实例化要请求产品(以cvm为例)的client对象，clientProfile是可选的。
