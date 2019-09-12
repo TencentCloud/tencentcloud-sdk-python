@@ -155,7 +155,7 @@ class DeliverTidsRequest(AbstractModel):
         """
         :param OrderId: 订单ID
         :type OrderId: str
-        :param Quantity: 数量，1~10
+        :param Quantity: 数量，1~100
         :type Quantity: int
         """
         self.OrderId = None
@@ -195,6 +195,44 @@ class DeliverTidsResponse(AbstractModel):
                 obj._deserialize(item)
                 self.TidSet.append(obj)
         self.ProductKey = params.get("ProductKey")
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeAvailableLibCountRequest(AbstractModel):
+    """DescribeAvailableLibCount请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param OrderId: 订单编号
+        :type OrderId: str
+        """
+        self.OrderId = None
+
+
+    def _deserialize(self, params):
+        self.OrderId = params.get("OrderId")
+
+
+class DescribeAvailableLibCountResponse(AbstractModel):
+    """DescribeAvailableLibCount返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Quantity: 可空发的白盒秘钥数量
+        :type Quantity: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Quantity = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Quantity = params.get("Quantity")
         self.RequestId = params.get("RequestId")
 
 
@@ -296,11 +334,17 @@ class TidKeysInfo(AbstractModel):
         :type PrivateKey: str
         :param Psk: 共享密钥
         :type Psk: str
+        :param DownloadUrl: 软加固白盒秘钥下载地址
+        :type DownloadUrl: str
+        :param DeviceCode: 软加固设备标识码
+        :type DeviceCode: str
         """
         self.Tid = None
         self.PublicKey = None
         self.PrivateKey = None
         self.Psk = None
+        self.DownloadUrl = None
+        self.DeviceCode = None
 
 
     def _deserialize(self, params):
@@ -308,6 +352,8 @@ class TidKeysInfo(AbstractModel):
         self.PublicKey = params.get("PublicKey")
         self.PrivateKey = params.get("PrivateKey")
         self.Psk = params.get("Psk")
+        self.DownloadUrl = params.get("DownloadUrl")
+        self.DeviceCode = params.get("DeviceCode")
 
 
 class VerifyChipBurnInfoRequest(AbstractModel):
@@ -336,13 +382,21 @@ class VerifyChipBurnInfoResponse(AbstractModel):
         """
         :param Pass: 验证结果
         :type Pass: bool
+        :param VerifiedTimes: 已验证次数
+        :type VerifiedTimes: int
+        :param LeftTimes: 剩余验证次数
+        :type LeftTimes: int
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.Pass = None
+        self.VerifiedTimes = None
+        self.LeftTimes = None
         self.RequestId = None
 
 
     def _deserialize(self, params):
         self.Pass = params.get("Pass")
+        self.VerifiedTimes = params.get("VerifiedTimes")
+        self.LeftTimes = params.get("LeftTimes")
         self.RequestId = params.get("RequestId")

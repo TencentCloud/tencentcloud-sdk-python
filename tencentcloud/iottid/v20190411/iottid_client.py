@@ -137,6 +137,34 @@ class IottidClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeAvailableLibCount(self, request):
+        """查询指定订单的可空发的白盒秘钥数量
+
+        :param request: 调用DescribeAvailableLibCount所需参数的结构体。
+        :type request: :class:`tencentcloud.iottid.v20190411.models.DescribeAvailableLibCountRequest`
+        :rtype: :class:`tencentcloud.iottid.v20190411.models.DescribeAvailableLibCountResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeAvailableLibCount", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeAvailableLibCountResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribePermission(self, request):
         """查询企业用户TID平台控制台权限
 

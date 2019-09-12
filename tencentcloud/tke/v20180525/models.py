@@ -113,6 +113,9 @@ class Cluster(AbstractModel):
         :type ClusterNodeNum: int
         :param ProjectId: 集群所属的项目ID
         :type ProjectId: int
+        :param TagSpecification: 标签描述列表。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TagSpecification: list of TagSpecification
         """
         self.ClusterId = None
         self.ClusterName = None
@@ -123,6 +126,7 @@ class Cluster(AbstractModel):
         self.ClusterNetworkSettings = None
         self.ClusterNodeNum = None
         self.ProjectId = None
+        self.TagSpecification = None
 
 
     def _deserialize(self, params):
@@ -137,6 +141,12 @@ class Cluster(AbstractModel):
             self.ClusterNetworkSettings._deserialize(params.get("ClusterNetworkSettings"))
         self.ClusterNodeNum = params.get("ClusterNodeNum")
         self.ProjectId = params.get("ProjectId")
+        if params.get("TagSpecification") is not None:
+            self.TagSpecification = []
+            for item in params.get("TagSpecification"):
+                obj = TagSpecification()
+                obj._deserialize(item)
+                self.TagSpecification.append(obj)
 
 
 class ClusterAdvancedSettings(AbstractModel):
@@ -183,6 +193,10 @@ class ClusterBasicSettings(AbstractModel):
         :type VpcId: str
         :param ProjectId: 集群内新增资源所属项目ID。
         :type ProjectId: int
+        :param TagSpecification: 标签描述列表。通过指定该参数可以同时绑定标签到相应的资源实例，当前仅支持绑定标签到集群实例。
+        :type TagSpecification: list of TagSpecification
+        :param OsCustomizeType: 容器的镜像版本，"DOCKER_CUSTOMIZE"(容器定制版),"GENERAL"(普通版本，默认值)
+        :type OsCustomizeType: str
         """
         self.ClusterOs = None
         self.ClusterVersion = None
@@ -190,6 +204,8 @@ class ClusterBasicSettings(AbstractModel):
         self.ClusterDescription = None
         self.VpcId = None
         self.ProjectId = None
+        self.TagSpecification = None
+        self.OsCustomizeType = None
 
 
     def _deserialize(self, params):
@@ -199,6 +215,13 @@ class ClusterBasicSettings(AbstractModel):
         self.ClusterDescription = params.get("ClusterDescription")
         self.VpcId = params.get("VpcId")
         self.ProjectId = params.get("ProjectId")
+        if params.get("TagSpecification") is not None:
+            self.TagSpecification = []
+            for item in params.get("TagSpecification"):
+                obj = TagSpecification()
+                obj._deserialize(item)
+                self.TagSpecification.append(obj)
+        self.OsCustomizeType = params.get("OsCustomizeType")
 
 
 class ClusterCIDRSettings(AbstractModel):
@@ -537,6 +560,48 @@ class CreateClusterRouteTableRequest(AbstractModel):
 
 class CreateClusterRouteTableResponse(AbstractModel):
     """CreateClusterRouteTable返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class DeleteClusterAsGroupsRequest(AbstractModel):
+    """DeleteClusterAsGroups请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ClusterId: 集群ID，通过[DescribeClusters](https://cloud.tencent.com/document/api/457/31862)接口获取。
+        :type ClusterId: str
+        :param AutoScalingGroupIds: 集群伸缩组ID的列表
+        :type AutoScalingGroupIds: list of str
+        :param KeepInstance: 是否保留伸缩组中的节点(默认值： false(不保留))
+        :type KeepInstance: bool
+        """
+        self.ClusterId = None
+        self.AutoScalingGroupIds = None
+        self.KeepInstance = None
+
+
+    def _deserialize(self, params):
+        self.ClusterId = params.get("ClusterId")
+        self.AutoScalingGroupIds = params.get("AutoScalingGroupIds")
+        self.KeepInstance = params.get("KeepInstance")
+
+
+class DeleteClusterAsGroupsResponse(AbstractModel):
+    """DeleteClusterAsGroups返回参数结构体
 
     """
 
@@ -1540,3 +1605,52 @@ class RunSecurityServiceEnabled(AbstractModel):
 
     def _deserialize(self, params):
         self.Enabled = params.get("Enabled")
+
+
+class Tag(AbstractModel):
+    """标签绑定的资源类型，当前支持类型："cluster"
+
+    """
+
+    def __init__(self):
+        """
+        :param Key: 标签键
+        :type Key: str
+        :param Value: 标签值
+        :type Value: str
+        """
+        self.Key = None
+        self.Value = None
+
+
+    def _deserialize(self, params):
+        self.Key = params.get("Key")
+        self.Value = params.get("Value")
+
+
+class TagSpecification(AbstractModel):
+    """标签描述列表。通过指定该参数可以同时绑定标签到相应的资源实例，当前仅支持绑定标签到云主机实例。
+
+    """
+
+    def __init__(self):
+        """
+        :param ResourceType: 标签绑定的资源类型，当前支持类型："cluster"
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ResourceType: str
+        :param Tags: 标签对列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Tags: list of Tag
+        """
+        self.ResourceType = None
+        self.Tags = None
+
+
+    def _deserialize(self, params):
+        self.ResourceType = params.get("ResourceType")
+        if params.get("Tags") is not None:
+            self.Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self.Tags.append(obj)

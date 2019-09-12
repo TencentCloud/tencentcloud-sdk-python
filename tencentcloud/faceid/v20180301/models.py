@@ -453,6 +453,103 @@ class GetLiveCodeResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class IdCardOCRVerificationRequest(AbstractModel):
+    """IdCardOCRVerification请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param IdCard: 身份证号
+姓名和身份证号、ImageBase64、ImageUrl三者必须提供其中之一。若都提供了，则按照姓名和身份证号>ImageBase64>ImageUrl的优先级使用参数。
+        :type IdCard: str
+        :param Name: 姓名
+        :type Name: str
+        :param ImageBase64: 身份证人像面的 Base64 值
+支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。
+支持的图片大小：所下载图片经Base64编码后不超过 3M。图片下载时间不超过 3 秒。
+        :type ImageBase64: str
+        :param ImageUrl: 身份证人像面的 Url 地址
+支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。
+支持的图片大小：所下载图片经 Base64 编码后不超过 3M。图片下载时间不超过 3 秒。
+图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。
+非腾讯云存储的 Url 速度和稳定性可能受一定影响。
+        :type ImageUrl: str
+        """
+        self.IdCard = None
+        self.Name = None
+        self.ImageBase64 = None
+        self.ImageUrl = None
+
+
+    def _deserialize(self, params):
+        self.IdCard = params.get("IdCard")
+        self.Name = params.get("Name")
+        self.ImageBase64 = params.get("ImageBase64")
+        self.ImageUrl = params.get("ImageUrl")
+
+
+class IdCardOCRVerificationResponse(AbstractModel):
+    """IdCardOCRVerification返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Result: 认证结果码，收费情况如下。
+收费结果码：
+0: 姓名和身份证号一致
+-1: 姓名和身份证号不一致
+不收费结果码：
+-2: 非法身份证号（长度、校验位等不正确）
+-3: 非法姓名（长度、格式等不正确）
+-4: 证件库服务异常
+-5: 证件库中无此身份证记录
+        :type Result: str
+        :param Description: 认证结果信息。
+        :type Description: str
+        :param Name: 用于验证的姓名
+        :type Name: str
+        :param IdCard: 用于验证的身份证号
+        :type IdCard: str
+        :param Sex: OCR得到的性别
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Sex: str
+        :param Nation: OCR得到的民族
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Nation: str
+        :param Birth: OCR得到的生日
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Birth: str
+        :param Address: OCR得到的地址
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Address: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Result = None
+        self.Description = None
+        self.Name = None
+        self.IdCard = None
+        self.Sex = None
+        self.Nation = None
+        self.Birth = None
+        self.Address = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Result = params.get("Result")
+        self.Description = params.get("Description")
+        self.Name = params.get("Name")
+        self.IdCard = params.get("IdCard")
+        self.Sex = params.get("Sex")
+        self.Nation = params.get("Nation")
+        self.Birth = params.get("Birth")
+        self.Address = params.get("Address")
+        self.RequestId = params.get("RequestId")
+
+
 class IdCardVerificationRequest(AbstractModel):
     """IdCardVerification请求参数结构体
 

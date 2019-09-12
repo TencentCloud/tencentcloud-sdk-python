@@ -221,6 +221,34 @@ class TkeClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DeleteClusterAsGroups(self, request):
+        """删除集群伸缩组
+
+        :param request: 调用DeleteClusterAsGroups所需参数的结构体。
+        :type request: :class:`tencentcloud.tke.v20180525.models.DeleteClusterAsGroupsRequest`
+        :rtype: :class:`tencentcloud.tke.v20180525.models.DeleteClusterAsGroupsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DeleteClusterAsGroups", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DeleteClusterAsGroupsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DeleteClusterInstances(self, request):
         """删除集群中的实例
 

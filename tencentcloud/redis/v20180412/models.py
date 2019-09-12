@@ -833,6 +833,73 @@ class DescribeProjectSecurityGroupResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeSlowLogRequest(AbstractModel):
+    """DescribeSlowLog请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param InstanceId: 实例Id
+        :type InstanceId: str
+        :param BeginTime: 开始时间
+        :type BeginTime: str
+        :param EndTime: 结束时间
+        :type EndTime: str
+        :param MinQueryTime: 慢查询阈值（单位：微秒）
+        :type MinQueryTime: int
+        :param Limit: 页面大小
+        :type Limit: int
+        :param Offset: 偏移量，取Limit整数倍
+        :type Offset: int
+        """
+        self.InstanceId = None
+        self.BeginTime = None
+        self.EndTime = None
+        self.MinQueryTime = None
+        self.Limit = None
+        self.Offset = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.BeginTime = params.get("BeginTime")
+        self.EndTime = params.get("EndTime")
+        self.MinQueryTime = params.get("MinQueryTime")
+        self.Limit = params.get("Limit")
+        self.Offset = params.get("Offset")
+
+
+class DescribeSlowLogResponse(AbstractModel):
+    """DescribeSlowLog返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param TotalCount: 慢查询总数
+        :type TotalCount: int
+        :param InstanceSlowlogDetail: 慢查询详情
+        :type InstanceSlowlogDetail: list of InstanceSlowlogDetail
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.InstanceSlowlogDetail = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("InstanceSlowlogDetail") is not None:
+            self.InstanceSlowlogDetail = []
+            for item in params.get("InstanceSlowlogDetail"):
+                obj = InstanceSlowlogDetail()
+                obj._deserialize(item)
+                self.InstanceSlowlogDetail.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeTaskInfoRequest(AbstractModel):
     """DescribeTaskInfo请求参数结构体
 
@@ -1566,6 +1633,39 @@ class InstanceSet(AbstractModel):
                 self.InstanceTags.append(obj)
         self.ProjectName = params.get("ProjectName")
         self.NoAuth = params.get("NoAuth")
+
+
+class InstanceSlowlogDetail(AbstractModel):
+    """慢查询详情
+
+    """
+
+    def __init__(self):
+        """
+        :param Duration: 慢查询耗时
+        :type Duration: int
+        :param Client: 客户端地址
+        :type Client: str
+        :param Command: 命令
+        :type Command: str
+        :param CommandLine: 详细命令行信息
+        :type CommandLine: str
+        :param ExecuteTime: 执行时间
+        :type ExecuteTime: str
+        """
+        self.Duration = None
+        self.Client = None
+        self.Command = None
+        self.CommandLine = None
+        self.ExecuteTime = None
+
+
+    def _deserialize(self, params):
+        self.Duration = params.get("Duration")
+        self.Client = params.get("Client")
+        self.Command = params.get("Command")
+        self.CommandLine = params.get("CommandLine")
+        self.ExecuteTime = params.get("ExecuteTime")
 
 
 class InstanceTagInfo(AbstractModel):

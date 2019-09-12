@@ -221,6 +221,34 @@ class FaceidClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def IdCardOCRVerification(self, request):
+        """本接口用于校验姓名和身份证号的真实性和一致性，您可以通过输入姓名和身份证号或传入身份证人像面照片提供所需验证信息。
+
+        :param request: 调用IdCardOCRVerification所需参数的结构体。
+        :type request: :class:`tencentcloud.faceid.v20180301.models.IdCardOCRVerificationRequest`
+        :rtype: :class:`tencentcloud.faceid.v20180301.models.IdCardOCRVerificationResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("IdCardOCRVerification", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.IdCardOCRVerificationResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def IdCardVerification(self, request):
         """传入姓名和身份证号，校验两者的真实性和一致性。
 
