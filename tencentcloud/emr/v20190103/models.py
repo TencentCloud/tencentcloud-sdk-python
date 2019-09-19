@@ -23,114 +23,147 @@ class COSSettings(AbstractModel):
 
     def __init__(self):
         """
-        :param LogOnCosPath: 日志存储在COS上的路径
-        :type LogOnCosPath: str
         :param CosSecretId: COS SecretId
         :type CosSecretId: str
         :param CosSecretKey: COS SecrectKey
         :type CosSecretKey: str
+        :param LogOnCosPath: 日志存储在COS上的路径
+        :type LogOnCosPath: str
         """
-        self.LogOnCosPath = None
         self.CosSecretId = None
         self.CosSecretKey = None
+        self.LogOnCosPath = None
 
 
     def _deserialize(self, params):
-        self.LogOnCosPath = params.get("LogOnCosPath")
         self.CosSecretId = params.get("CosSecretId")
         self.CosSecretKey = params.get("CosSecretKey")
+        self.LogOnCosPath = params.get("LogOnCosPath")
 
 
-class ClusterInfoResult(AbstractModel):
-    """查询结果
-
-    """
-
-    def __init__(self):
-        """
-        :param TotalCnt: 数量
-注意：此字段可能返回 null，表示取不到有效值。
-        :type TotalCnt: int
-        :param ClusterList: 集群信息列表
-注意：此字段可能返回 null，表示取不到有效值。
-        :type ClusterList: list of ClusterInstanceInfo
-        """
-        self.TotalCnt = None
-        self.ClusterList = None
-
-
-    def _deserialize(self, params):
-        self.TotalCnt = params.get("TotalCnt")
-        if params.get("ClusterList") is not None:
-            self.ClusterList = []
-            for item in params.get("ClusterList"):
-                obj = ClusterInstanceInfo()
-                obj._deserialize(item)
-                self.ClusterList.append(obj)
-
-
-class ClusterInstanceInfo(AbstractModel):
-    """实例信息
+class ClusterInstancesInfo(AbstractModel):
+    """集群实例信息
 
     """
 
     def __init__(self):
         """
-        :param ClusterId: clusterId
+        :param Id: ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Id: int
+        :param ClusterId: 集群ID
+注意：此字段可能返回 null，表示取不到有效值。
         :type ClusterId: str
-        :param StatusDesc: 状态描述
+        :param Ftitle: 标题
 注意：此字段可能返回 null，表示取不到有效值。
-        :type StatusDesc: str
-        :param ClusterName: 集群名字
+        :type Ftitle: str
+        :param ClusterName: 集群名
 注意：此字段可能返回 null，表示取不到有效值。
         :type ClusterName: str
-        :param ZoneId: 集群地域
+        :param RegionId: 地域ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RegionId: int
+        :param ZoneId: 地区ID
+注意：此字段可能返回 null，表示取不到有效值。
         :type ZoneId: int
         :param AppId: 用户APPID
+注意：此字段可能返回 null，表示取不到有效值。
         :type AppId: int
-        :param Addtime: 创建时间
+        :param Uin: 用户UIN
 注意：此字段可能返回 null，表示取不到有效值。
-        :type Addtime: str
-        :param Runtime: 运行时间
+        :type Uin: str
+        :param ProjectId: 项目Id
 注意：此字段可能返回 null，表示取不到有效值。
-        :type Runtime: str
-        :param Config: 集群配置
+        :type ProjectId: int
+        :param VpcId: 集群VPCID
 注意：此字段可能返回 null，表示取不到有效值。
-        :type Config: :class:`tencentcloud.emr.v20190103.models.EMRProductConfigSettings`
-        :param MasterIp: 集群IP
+        :type VpcId: int
+        :param SubnetId: 子网ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SubnetId: int
+        :param Status: 状态
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Status: int
+        :param AddTime: 添加时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AddTime: str
+        :param RunTime: 已经运行时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RunTime: str
+        :param Config: 集群产品配置信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Config: :class:`tencentcloud.emr.v20190103.models.EmrProductConfigOutter`
+        :param MasterIp: 主节点外网IP
+注意：此字段可能返回 null，表示取不到有效值。
         :type MasterIp: str
-        :param EmrVersion: 集群版本
+        :param EmrVersion: EMR版本
+注意：此字段可能返回 null，表示取不到有效值。
         :type EmrVersion: str
-        :param ChargeType: 集群计费类型
+        :param ChargeType: 收费类型
+注意：此字段可能返回 null，表示取不到有效值。
         :type ChargeType: int
+        :param TradeVersion: 交易版本
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TradeVersion: int
+        :param ResourceOrderId: 资源订单ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ResourceOrderId: int
+        :param IsTradeCluster: 是否计费集群
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IsTradeCluster: int
+        :param AlarmInfo: 集群错误状态告警信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AlarmInfo: str
         """
+        self.Id = None
         self.ClusterId = None
-        self.StatusDesc = None
+        self.Ftitle = None
         self.ClusterName = None
+        self.RegionId = None
         self.ZoneId = None
         self.AppId = None
-        self.Addtime = None
-        self.Runtime = None
+        self.Uin = None
+        self.ProjectId = None
+        self.VpcId = None
+        self.SubnetId = None
+        self.Status = None
+        self.AddTime = None
+        self.RunTime = None
         self.Config = None
         self.MasterIp = None
         self.EmrVersion = None
         self.ChargeType = None
+        self.TradeVersion = None
+        self.ResourceOrderId = None
+        self.IsTradeCluster = None
+        self.AlarmInfo = None
 
 
     def _deserialize(self, params):
+        self.Id = params.get("Id")
         self.ClusterId = params.get("ClusterId")
-        self.StatusDesc = params.get("StatusDesc")
+        self.Ftitle = params.get("Ftitle")
         self.ClusterName = params.get("ClusterName")
+        self.RegionId = params.get("RegionId")
         self.ZoneId = params.get("ZoneId")
         self.AppId = params.get("AppId")
-        self.Addtime = params.get("Addtime")
-        self.Runtime = params.get("Runtime")
+        self.Uin = params.get("Uin")
+        self.ProjectId = params.get("ProjectId")
+        self.VpcId = params.get("VpcId")
+        self.SubnetId = params.get("SubnetId")
+        self.Status = params.get("Status")
+        self.AddTime = params.get("AddTime")
+        self.RunTime = params.get("RunTime")
         if params.get("Config") is not None:
-            self.Config = EMRProductConfigSettings()
+            self.Config = EmrProductConfigOutter()
             self.Config._deserialize(params.get("Config"))
         self.MasterIp = params.get("MasterIp")
         self.EmrVersion = params.get("EmrVersion")
         self.ChargeType = params.get("ChargeType")
+        self.TradeVersion = params.get("TradeVersion")
+        self.ResourceOrderId = params.get("ResourceOrderId")
+        self.IsTradeCluster = params.get("IsTradeCluster")
+        self.AlarmInfo = params.get("AlarmInfo")
 
 
 class CreateInstanceRequest(AbstractModel):
@@ -147,7 +180,7 @@ class CreateInstanceRequest(AbstractModel):
         :param Software: 软件列表
         :type Software: list of str
         :param ResourceSpec: 资源描述
-        :type ResourceSpec: :class:`tencentcloud.emr.v20190103.models.ResourceSpec`
+        :type ResourceSpec: :class:`tencentcloud.emr.v20190103.models.NewResourceSpec`
         :param SupportHA: 支持HA
         :type SupportHA: int
         :param InstanceName: 实例名称
@@ -162,8 +195,6 @@ class CreateInstanceRequest(AbstractModel):
         :type TimeUnit: str
         :param LoginSettings: 登录配置
         :type LoginSettings: :class:`tencentcloud.emr.v20190103.models.LoginSettings`
-        :param ClientToken: 客户端Token
-        :type ClientToken: str
         :param COSSettings: COS设置参数
         :type COSSettings: :class:`tencentcloud.emr.v20190103.models.COSSettings`
         :param SgId: 安全组ID
@@ -172,10 +203,16 @@ class CreateInstanceRequest(AbstractModel):
         :type PreExecutedFileSettings: list of PreExecuteFileSettings
         :param AutoRenew: 自动续费
         :type AutoRenew: int
+        :param ClientToken: 客户端Token
+        :type ClientToken: str
         :param NeedMasterWan: 是否需要外网Ip。支持填NEED_MASTER_WAN，不支持使用NOT_NEED_MASTER_WAN，默认使用NEED_MASTER_WAN
         :type NeedMasterWan: str
         :param RemoteLoginAtCreate: 是否需要开启外网远程登录，即22号端口，在SgId不为空时，该选项无效
         :type RemoteLoginAtCreate: int
+        :param CheckSecurity: 是否开启安全集群，0表示不开启，非0表示开启
+        :type CheckSecurity: int
+        :param ExtendFsField: 访问外部文件系统
+        :type ExtendFsField: str
         """
         self.ProductId = None
         self.VPCSettings = None
@@ -188,13 +225,15 @@ class CreateInstanceRequest(AbstractModel):
         self.TimeSpan = None
         self.TimeUnit = None
         self.LoginSettings = None
-        self.ClientToken = None
         self.COSSettings = None
         self.SgId = None
         self.PreExecutedFileSettings = None
         self.AutoRenew = None
+        self.ClientToken = None
         self.NeedMasterWan = None
         self.RemoteLoginAtCreate = None
+        self.CheckSecurity = None
+        self.ExtendFsField = None
 
 
     def _deserialize(self, params):
@@ -204,7 +243,7 @@ class CreateInstanceRequest(AbstractModel):
             self.VPCSettings._deserialize(params.get("VPCSettings"))
         self.Software = params.get("Software")
         if params.get("ResourceSpec") is not None:
-            self.ResourceSpec = ResourceSpec()
+            self.ResourceSpec = NewResourceSpec()
             self.ResourceSpec._deserialize(params.get("ResourceSpec"))
         self.SupportHA = params.get("SupportHA")
         self.InstanceName = params.get("InstanceName")
@@ -217,7 +256,6 @@ class CreateInstanceRequest(AbstractModel):
         if params.get("LoginSettings") is not None:
             self.LoginSettings = LoginSettings()
             self.LoginSettings._deserialize(params.get("LoginSettings"))
-        self.ClientToken = params.get("ClientToken")
         if params.get("COSSettings") is not None:
             self.COSSettings = COSSettings()
             self.COSSettings._deserialize(params.get("COSSettings"))
@@ -229,8 +267,11 @@ class CreateInstanceRequest(AbstractModel):
                 obj._deserialize(item)
                 self.PreExecutedFileSettings.append(obj)
         self.AutoRenew = params.get("AutoRenew")
+        self.ClientToken = params.get("ClientToken")
         self.NeedMasterWan = params.get("NeedMasterWan")
         self.RemoteLoginAtCreate = params.get("RemoteLoginAtCreate")
+        self.CheckSecurity = params.get("CheckSecurity")
+        self.ExtendFsField = params.get("ExtendFsField")
 
 
 class CreateInstanceResponse(AbstractModel):
@@ -240,45 +281,14 @@ class CreateInstanceResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param Result: 创建实例结果信息
-        :type Result: :class:`tencentcloud.emr.v20190103.models.CreateInstanceResult`
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.Result = None
         self.RequestId = None
 
 
     def _deserialize(self, params):
-        if params.get("Result") is not None:
-            self.Result = CreateInstanceResult()
-            self.Result._deserialize(params.get("Result"))
         self.RequestId = params.get("RequestId")
-
-
-class CreateInstanceResult(AbstractModel):
-    """创建接口返回值
-
-    """
-
-    def __init__(self):
-        """
-        :param ClientToken: 客户端TOKEN
-        :type ClientToken: str
-        :param InstanceName: 集群名称
-        :type InstanceName: str
-        :param DealNames: 订单列表
-        :type DealNames: list of str
-        """
-        self.ClientToken = None
-        self.InstanceName = None
-        self.DealNames = None
-
-
-    def _deserialize(self, params):
-        self.ClientToken = params.get("ClientToken")
-        self.InstanceName = params.get("InstanceName")
-        self.DealNames = params.get("DealNames")
 
 
 class DescribeInstancesRequest(AbstractModel):
@@ -288,22 +298,38 @@ class DescribeInstancesRequest(AbstractModel):
 
     def __init__(self):
         """
+        :param DisplayStrategy: 集群展示策略，该字段取值根据所选页面不同输入不同，集群列表页：clusterList，集群监控：monitorManage，云硬件管理：cloudHardwareManage，组件管理页：componentManage
+        :type DisplayStrategy: str
         :param InstanceIds: 查询列表,  如果不填写，返回该AppId下所有实例列表
         :type InstanceIds: list of str
         :param Offset: 查询偏移量，默认0
         :type Offset: int
         :param Limit: 查询结果限制，默认值10
         :type Limit: int
+        :param ProjectId: 项目列表，默认值-1
+        :type ProjectId: int
+        :param OrderField: 排序字段，当前支持以下排序字段：clusterId、addTime、status
+        :type OrderField: str
+        :param Asc: 排序方法，0降序，1升序
+        :type Asc: int
         """
+        self.DisplayStrategy = None
         self.InstanceIds = None
         self.Offset = None
         self.Limit = None
+        self.ProjectId = None
+        self.OrderField = None
+        self.Asc = None
 
 
     def _deserialize(self, params):
+        self.DisplayStrategy = params.get("DisplayStrategy")
         self.InstanceIds = params.get("InstanceIds")
         self.Offset = params.get("Offset")
         self.Limit = params.get("Limit")
+        self.ProjectId = params.get("ProjectId")
+        self.OrderField = params.get("OrderField")
+        self.Asc = params.get("Asc")
 
 
 class DescribeInstancesResponse(AbstractModel):
@@ -313,74 +339,82 @@ class DescribeInstancesResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param Result: 实例数量
-        :type Result: :class:`tencentcloud.emr.v20190103.models.ClusterInfoResult`
+        :param TotalCnt: 实例数量
+        :type TotalCnt: int
+        :param ClusterList: 集群实例信息列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ClusterList: list of ClusterInstancesInfo
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.Result = None
+        self.TotalCnt = None
+        self.ClusterList = None
         self.RequestId = None
 
 
     def _deserialize(self, params):
-        if params.get("Result") is not None:
-            self.Result = ClusterInfoResult()
-            self.Result._deserialize(params.get("Result"))
+        self.TotalCnt = params.get("TotalCnt")
+        if params.get("ClusterList") is not None:
+            self.ClusterList = []
+            for item in params.get("ClusterList"):
+                obj = ClusterInstancesInfo()
+                obj._deserialize(item)
+                self.ClusterList.append(obj)
         self.RequestId = params.get("RequestId")
 
 
-class EMRProductConfigSettings(AbstractModel):
-    """集群的config信息
+class EmrProductConfigOutter(AbstractModel):
+    """EMR产品配置
 
     """
 
     def __init__(self):
         """
-        :param SoftInfo: 集群软件信息
+        :param SoftInfo: 软件信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type SoftInfo: list of str
-        :param MasterNodeSize: master节点数量
+        :param MasterNodeSize: Master节点个数
 注意：此字段可能返回 null，表示取不到有效值。
         :type MasterNodeSize: int
-        :param CoreNodeSize: core节点数量
+        :param CoreNodeSize: Core节点个数
 注意：此字段可能返回 null，表示取不到有效值。
         :type CoreNodeSize: int
-        :param TaskNodeSize: task节点数量
+        :param TaskNodeSize: Task节点个数
 注意：此字段可能返回 null，表示取不到有效值。
         :type TaskNodeSize: int
-        :param ComNodeSize: common节点数量
+        :param ComNodeSize: Common节点个数
 注意：此字段可能返回 null，表示取不到有效值。
         :type ComNodeSize: int
-        :param MasterResourceSpec: master规格
+        :param MasterResource: Master节点资源
 注意：此字段可能返回 null，表示取不到有效值。
-        :type MasterResourceSpec: :class:`tencentcloud.emr.v20190103.models.NodeSpec`
-        :param CoreResourceSpec: core规格
+        :type MasterResource: :class:`tencentcloud.emr.v20190103.models.OutterResource`
+        :param CoreResource: Core节点资源
 注意：此字段可能返回 null，表示取不到有效值。
-        :type CoreResourceSpec: :class:`tencentcloud.emr.v20190103.models.NodeSpec`
-        :param TaskResourceSpec: task规格
+        :type CoreResource: :class:`tencentcloud.emr.v20190103.models.OutterResource`
+        :param TaskResource: Task节点资源
 注意：此字段可能返回 null，表示取不到有效值。
-        :type TaskResourceSpec: :class:`tencentcloud.emr.v20190103.models.NodeSpec`
-        :param CommonResourceSpec: common规格
+        :type TaskResource: :class:`tencentcloud.emr.v20190103.models.OutterResource`
+        :param ComResource: Common节点资源
 注意：此字段可能返回 null，表示取不到有效值。
-        :type CommonResourceSpec: :class:`tencentcloud.emr.v20190103.models.NodeSpec`
-        :param Oncos: 是否使用COS
+        :type ComResource: :class:`tencentcloud.emr.v20190103.models.OutterResource`
+        :param OnCos: 是否使用COS
 注意：此字段可能返回 null，表示取不到有效值。
-        :type Oncos: bool
-        :param COSSettings: COS配置
+        :type OnCos: bool
+        :param ChargeType: 收费类型
 注意：此字段可能返回 null，表示取不到有效值。
-        :type COSSettings: :class:`tencentcloud.emr.v20190103.models.COSSettings`
+        :type ChargeType: int
         """
         self.SoftInfo = None
         self.MasterNodeSize = None
         self.CoreNodeSize = None
         self.TaskNodeSize = None
         self.ComNodeSize = None
-        self.MasterResourceSpec = None
-        self.CoreResourceSpec = None
-        self.TaskResourceSpec = None
-        self.CommonResourceSpec = None
-        self.Oncos = None
-        self.COSSettings = None
+        self.MasterResource = None
+        self.CoreResource = None
+        self.TaskResource = None
+        self.ComResource = None
+        self.OnCos = None
+        self.ChargeType = None
 
 
     def _deserialize(self, params):
@@ -389,22 +423,20 @@ class EMRProductConfigSettings(AbstractModel):
         self.CoreNodeSize = params.get("CoreNodeSize")
         self.TaskNodeSize = params.get("TaskNodeSize")
         self.ComNodeSize = params.get("ComNodeSize")
-        if params.get("MasterResourceSpec") is not None:
-            self.MasterResourceSpec = NodeSpec()
-            self.MasterResourceSpec._deserialize(params.get("MasterResourceSpec"))
-        if params.get("CoreResourceSpec") is not None:
-            self.CoreResourceSpec = NodeSpec()
-            self.CoreResourceSpec._deserialize(params.get("CoreResourceSpec"))
-        if params.get("TaskResourceSpec") is not None:
-            self.TaskResourceSpec = NodeSpec()
-            self.TaskResourceSpec._deserialize(params.get("TaskResourceSpec"))
-        if params.get("CommonResourceSpec") is not None:
-            self.CommonResourceSpec = NodeSpec()
-            self.CommonResourceSpec._deserialize(params.get("CommonResourceSpec"))
-        self.Oncos = params.get("Oncos")
-        if params.get("COSSettings") is not None:
-            self.COSSettings = COSSettings()
-            self.COSSettings._deserialize(params.get("COSSettings"))
+        if params.get("MasterResource") is not None:
+            self.MasterResource = OutterResource()
+            self.MasterResource._deserialize(params.get("MasterResource"))
+        if params.get("CoreResource") is not None:
+            self.CoreResource = OutterResource()
+            self.CoreResource._deserialize(params.get("CoreResource"))
+        if params.get("TaskResource") is not None:
+            self.TaskResource = OutterResource()
+            self.TaskResource._deserialize(params.get("TaskResource"))
+        if params.get("ComResource") is not None:
+            self.ComResource = OutterResource()
+            self.ComResource._deserialize(params.get("ComResource"))
+        self.OnCos = params.get("OnCos")
+        self.ChargeType = params.get("ChargeType")
 
 
 class InquiryPriceCreateInstanceRequest(AbstractModel):
@@ -419,7 +451,7 @@ class InquiryPriceCreateInstanceRequest(AbstractModel):
         :param TimeSpan: 时间长度
         :type TimeSpan: int
         :param ResourceSpec: 询价资源描述
-        :type ResourceSpec: :class:`tencentcloud.emr.v20190103.models.ResourceSpec`
+        :type ResourceSpec: :class:`tencentcloud.emr.v20190103.models.NewResourceSpec`
         :param Currency: 货币种类
         :type Currency: str
         :param PayMode: 计费类型
@@ -448,7 +480,7 @@ class InquiryPriceCreateInstanceRequest(AbstractModel):
         self.TimeUnit = params.get("TimeUnit")
         self.TimeSpan = params.get("TimeSpan")
         if params.get("ResourceSpec") is not None:
-            self.ResourceSpec = ResourceSpec()
+            self.ResourceSpec = NewResourceSpec()
             self.ResourceSpec._deserialize(params.get("ResourceSpec"))
         self.Currency = params.get("Currency")
         self.PayMode = params.get("PayMode")
@@ -469,42 +501,26 @@ class InquiryPriceCreateInstanceResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param Result: 询价结果
-        :type Result: :class:`tencentcloud.emr.v20190103.models.InquiryPriceResult`
+        :param OriginalCost: 刊例价
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OriginalCost: float
+        :param DiscountCost: 折扣价格
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DiscountCost: float
+        :param TimeUnit: 时间单位，"s","m"
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TimeUnit: str
+        :param TimeSpan: 时间数量
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TimeSpan: int
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
-        """
-        self.Result = None
-        self.RequestId = None
-
-
-    def _deserialize(self, params):
-        if params.get("Result") is not None:
-            self.Result = InquiryPriceResult()
-            self.Result._deserialize(params.get("Result"))
-        self.RequestId = params.get("RequestId")
-
-
-class InquiryPriceResult(AbstractModel):
-    """用于询价输出
-
-    """
-
-    def __init__(self):
-        """
-        :param OriginalCost: 原始价格
-        :type OriginalCost: float
-        :param DiscountCost: 折扣后价格
-        :type DiscountCost: float
-        :param TimeUnit: 时间单位
-        :type TimeUnit: str
-        :param TimeSpan: 时间长度
-        :type TimeSpan: int
         """
         self.OriginalCost = None
         self.DiscountCost = None
         self.TimeUnit = None
         self.TimeSpan = None
+        self.RequestId = None
 
 
     def _deserialize(self, params):
@@ -512,6 +528,83 @@ class InquiryPriceResult(AbstractModel):
         self.DiscountCost = params.get("DiscountCost")
         self.TimeUnit = params.get("TimeUnit")
         self.TimeSpan = params.get("TimeSpan")
+        self.RequestId = params.get("RequestId")
+
+
+class InquiryPriceRenewInstanceRequest(AbstractModel):
+    """InquiryPriceRenewInstance请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param TimeSpan: 时间长度
+        :type TimeSpan: int
+        :param ResourceIds: 资源ID列表
+        :type ResourceIds: list of str
+        :param Placement: 位置信息
+        :type Placement: :class:`tencentcloud.emr.v20190103.models.Placement`
+        :param PayMode: 计费模式，0表示按量，1表示包年报月，此处只能为包年包月
+        :type PayMode: int
+        :param TimeUnit: 时间单位，默认为m
+        :type TimeUnit: str
+        :param Currency: 货币种类
+        :type Currency: str
+        """
+        self.TimeSpan = None
+        self.ResourceIds = None
+        self.Placement = None
+        self.PayMode = None
+        self.TimeUnit = None
+        self.Currency = None
+
+
+    def _deserialize(self, params):
+        self.TimeSpan = params.get("TimeSpan")
+        self.ResourceIds = params.get("ResourceIds")
+        if params.get("Placement") is not None:
+            self.Placement = Placement()
+            self.Placement._deserialize(params.get("Placement"))
+        self.PayMode = params.get("PayMode")
+        self.TimeUnit = params.get("TimeUnit")
+        self.Currency = params.get("Currency")
+
+
+class InquiryPriceRenewInstanceResponse(AbstractModel):
+    """InquiryPriceRenewInstance返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param OriginalCost: 刊例价
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OriginalCost: float
+        :param DiscountCost: 折扣价格
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DiscountCost: float
+        :param TimeUnit: 时间单位，"s","m"
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TimeUnit: str
+        :param TimeSpan: 时间数量
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TimeSpan: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.OriginalCost = None
+        self.DiscountCost = None
+        self.TimeUnit = None
+        self.TimeSpan = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.OriginalCost = params.get("OriginalCost")
+        self.DiscountCost = params.get("DiscountCost")
+        self.TimeUnit = params.get("TimeUnit")
+        self.TimeSpan = params.get("TimeSpan")
+        self.RequestId = params.get("RequestId")
 
 
 class InquiryPriceScaleOutInstanceRequest(AbstractModel):
@@ -566,19 +659,113 @@ class InquiryPriceScaleOutInstanceResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param Result: 扩容价格
-        :type Result: :class:`tencentcloud.emr.v20190103.models.InquiryPriceResult`
+        :param OriginalCost: 刊例价
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OriginalCost: str
+        :param DiscountCost: 折扣价格
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DiscountCost: str
+        :param Unit: 单位
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Unit: str
+        :param PriceSpec: 询价配置
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PriceSpec: :class:`tencentcloud.emr.v20190103.models.PriceResource`
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.Result = None
+        self.OriginalCost = None
+        self.DiscountCost = None
+        self.Unit = None
+        self.PriceSpec = None
         self.RequestId = None
 
 
     def _deserialize(self, params):
-        if params.get("Result") is not None:
-            self.Result = InquiryPriceResult()
-            self.Result._deserialize(params.get("Result"))
+        self.OriginalCost = params.get("OriginalCost")
+        self.DiscountCost = params.get("DiscountCost")
+        self.Unit = params.get("Unit")
+        if params.get("PriceSpec") is not None:
+            self.PriceSpec = PriceResource()
+            self.PriceSpec._deserialize(params.get("PriceSpec"))
+        self.RequestId = params.get("RequestId")
+
+
+class InquiryPriceUpdateInstanceRequest(AbstractModel):
+    """InquiryPriceUpdateInstance请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param TimeUnit: 时间单位。s:按量用例单位。m:包年包月用例单位
+        :type TimeUnit: str
+        :param TimeSpan: 时间长度。按量用例长度为3600。
+        :type TimeSpan: int
+        :param UpdateSpec: 变配参数
+        :type UpdateSpec: :class:`tencentcloud.emr.v20190103.models.UpdateInstanceSettings`
+        :param PayMode: 计费类型
+        :type PayMode: int
+        :param Placement: 位置信息
+        :type Placement: :class:`tencentcloud.emr.v20190103.models.Placement`
+        :param Currency: 货币种类
+        :type Currency: str
+        """
+        self.TimeUnit = None
+        self.TimeSpan = None
+        self.UpdateSpec = None
+        self.PayMode = None
+        self.Placement = None
+        self.Currency = None
+
+
+    def _deserialize(self, params):
+        self.TimeUnit = params.get("TimeUnit")
+        self.TimeSpan = params.get("TimeSpan")
+        if params.get("UpdateSpec") is not None:
+            self.UpdateSpec = UpdateInstanceSettings()
+            self.UpdateSpec._deserialize(params.get("UpdateSpec"))
+        self.PayMode = params.get("PayMode")
+        if params.get("Placement") is not None:
+            self.Placement = Placement()
+            self.Placement._deserialize(params.get("Placement"))
+        self.Currency = params.get("Currency")
+
+
+class InquiryPriceUpdateInstanceResponse(AbstractModel):
+    """InquiryPriceUpdateInstance返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param OriginalCost: 刊例价
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OriginalCost: float
+        :param DiscountCost: 折扣价格
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DiscountCost: float
+        :param TimeUnit: 时间单位，"s","m"
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TimeUnit: str
+        :param TimeSpan: 时间数量
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TimeSpan: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.OriginalCost = None
+        self.DiscountCost = None
+        self.TimeUnit = None
+        self.TimeSpan = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.OriginalCost = params.get("OriginalCost")
+        self.DiscountCost = params.get("DiscountCost")
+        self.TimeUnit = params.get("TimeUnit")
+        self.TimeSpan = params.get("TimeSpan")
         self.RequestId = params.get("RequestId")
 
 
@@ -628,67 +815,110 @@ class MultiDisk(AbstractModel):
         self.Count = params.get("Count")
 
 
-class NodeSpec(AbstractModel):
-    """节点描述
+class NewResourceSpec(AbstractModel):
+    """资源描述
 
     """
 
     def __init__(self):
         """
-        :param Memory: 内存容量,单位为M
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Memory: int
-        :param CPUCores: CPU核数
-注意：此字段可能返回 null，表示取不到有效值。
-        :type CPUCores: int
-        :param Volume: 数据盘容量
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Volume: int
-        :param DiskType: 磁盘类型
-注意：此字段可能返回 null，表示取不到有效值。
-        :type DiskType: str
-        :param Spec: 节点规格描述
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Spec: str
-        :param RootDiskVolume: 系统盘容量
-注意：此字段可能返回 null，表示取不到有效值。
-        :type RootDiskVolume: int
-        :param StorageType: 存储类型
-注意：此字段可能返回 null，表示取不到有效值。
-        :type StorageType: int
-        :param SpecName: 规格名称
-注意：此字段可能返回 null，表示取不到有效值。
-        :type SpecName: str
-        :param MultiDisks: 多盘数据
-注意：此字段可能返回 null，表示取不到有效值。
-        :type MultiDisks: list of MultiDisk
+        :param MasterResourceSpec: 描述Master节点资源
+        :type MasterResourceSpec: :class:`tencentcloud.emr.v20190103.models.Resource`
+        :param CoreResourceSpec: 描述Core节点资源
+        :type CoreResourceSpec: :class:`tencentcloud.emr.v20190103.models.Resource`
+        :param TaskResourceSpec: 描述Task节点资源
+        :type TaskResourceSpec: :class:`tencentcloud.emr.v20190103.models.Resource`
+        :param MasterCount: Master节点数量
+        :type MasterCount: int
+        :param CoreCount: Core节点数量
+        :type CoreCount: int
+        :param TaskCount: Task节点数量
+        :type TaskCount: int
+        :param CommonResourceSpec: 描述Common节点资源
+        :type CommonResourceSpec: :class:`tencentcloud.emr.v20190103.models.Resource`
+        :param CommonCount: Common节点数量
+        :type CommonCount: int
         """
-        self.Memory = None
-        self.CPUCores = None
-        self.Volume = None
-        self.DiskType = None
-        self.Spec = None
-        self.RootDiskVolume = None
-        self.StorageType = None
-        self.SpecName = None
-        self.MultiDisks = None
+        self.MasterResourceSpec = None
+        self.CoreResourceSpec = None
+        self.TaskResourceSpec = None
+        self.MasterCount = None
+        self.CoreCount = None
+        self.TaskCount = None
+        self.CommonResourceSpec = None
+        self.CommonCount = None
 
 
     def _deserialize(self, params):
-        self.Memory = params.get("Memory")
-        self.CPUCores = params.get("CPUCores")
-        self.Volume = params.get("Volume")
-        self.DiskType = params.get("DiskType")
+        if params.get("MasterResourceSpec") is not None:
+            self.MasterResourceSpec = Resource()
+            self.MasterResourceSpec._deserialize(params.get("MasterResourceSpec"))
+        if params.get("CoreResourceSpec") is not None:
+            self.CoreResourceSpec = Resource()
+            self.CoreResourceSpec._deserialize(params.get("CoreResourceSpec"))
+        if params.get("TaskResourceSpec") is not None:
+            self.TaskResourceSpec = Resource()
+            self.TaskResourceSpec._deserialize(params.get("TaskResourceSpec"))
+        self.MasterCount = params.get("MasterCount")
+        self.CoreCount = params.get("CoreCount")
+        self.TaskCount = params.get("TaskCount")
+        if params.get("CommonResourceSpec") is not None:
+            self.CommonResourceSpec = Resource()
+            self.CommonResourceSpec._deserialize(params.get("CommonResourceSpec"))
+        self.CommonCount = params.get("CommonCount")
+
+
+class OutterResource(AbstractModel):
+    """资源详情
+
+    """
+
+    def __init__(self):
+        """
+        :param Spec: 规格
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Spec: str
+        :param SpecName: 规格名
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SpecName: str
+        :param StorageType: 硬盘类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type StorageType: int
+        :param DiskType: 盘类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DiskType: str
+        :param RootSize: 系统盘大小
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RootSize: int
+        :param MemSize: 内存大小
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MemSize: int
+        :param Cpu: CPU个数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Cpu: int
+        :param DiskSize: 硬盘大小
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DiskSize: int
+        """
+        self.Spec = None
+        self.SpecName = None
+        self.StorageType = None
+        self.DiskType = None
+        self.RootSize = None
+        self.MemSize = None
+        self.Cpu = None
+        self.DiskSize = None
+
+
+    def _deserialize(self, params):
         self.Spec = params.get("Spec")
-        self.RootDiskVolume = params.get("RootDiskVolume")
-        self.StorageType = params.get("StorageType")
         self.SpecName = params.get("SpecName")
-        if params.get("MultiDisks") is not None:
-            self.MultiDisks = []
-            for item in params.get("MultiDisks"):
-                obj = MultiDisk()
-                obj._deserialize(item)
-                self.MultiDisks.append(obj)
+        self.StorageType = params.get("StorageType")
+        self.DiskType = params.get("DiskType")
+        self.RootSize = params.get("RootSize")
+        self.MemSize = params.get("MemSize")
+        self.Cpu = params.get("Cpu")
+        self.DiskSize = params.get("DiskSize")
 
 
 class Placement(AbstractModel):
@@ -700,7 +930,7 @@ class Placement(AbstractModel):
         """
         :param ProjectId: 实例所属项目ID。该参数可以通过调用 DescribeProject 的返回值中的 projectId 字段来获取。不填为默认项目。
         :type ProjectId: int
-        :param Zone: 实例所属的可用区ID。该参数也可以通过调用 DescribeZones 的返回值中的Zone字段来获取。
+        :param Zone: 实例所属的可用区，例如ap-guangzhou-1。该参数也可以通过调用 DescribeZones 的返回值中的Zone字段来获取。
         :type Zone: str
         """
         self.ProjectId = None
@@ -719,21 +949,21 @@ class PreExecuteFileSettings(AbstractModel):
 
     def __init__(self):
         """
-        :param Path: 脚本在COS上路径
+        :param Path: 脚本在COS上路径，已废弃
         :type Path: str
         :param Args: 执行脚本参数
         :type Args: list of str
-        :param Bucket: COS的Bucket名称
+        :param Bucket: COS的Bucket名称，已废弃
         :type Bucket: str
-        :param Region: COS的Region名称
+        :param Region: COS的Region名称，已废弃
         :type Region: str
-        :param Domain: COS的Domain数据
+        :param Domain: COS的Domain数据，已废弃
         :type Domain: str
         :param RunOrder: 执行顺序
         :type RunOrder: int
         :param WhenRun: resourceAfter 或 clusterAfter
         :type WhenRun: str
-        :param CosFileName: 脚本文件名
+        :param CosFileName: 脚本文件名，已废弃
         :type CosFileName: str
         :param CosFileURI: 脚本的cos地址
         :type CosFileURI: str
@@ -741,7 +971,7 @@ class PreExecuteFileSettings(AbstractModel):
         :type CosSecretId: str
         :param CosSecretKey: Cos的SecretKey
         :type CosSecretKey: str
-        :param AppId: cos的appid
+        :param AppId: cos的appid，已废弃
         :type AppId: str
         """
         self.Path = None
@@ -773,57 +1003,125 @@ class PreExecuteFileSettings(AbstractModel):
         self.AppId = params.get("AppId")
 
 
-class ResourceSpec(AbstractModel):
-    """资源描述
+class PriceResource(AbstractModel):
+    """询价资源
 
     """
 
     def __init__(self):
         """
-        :param CommonCount: Common节点数量
-        :type CommonCount: int
-        :param MasterResourceSpec: 描述Master节点资源
-        :type MasterResourceSpec: :class:`tencentcloud.emr.v20190103.models.NodeSpec`
-        :param CoreResourceSpec: 描述Core节点资源
-        :type CoreResourceSpec: :class:`tencentcloud.emr.v20190103.models.NodeSpec`
-        :param TaskResourceSpec: 描述Task节点资源
-        :type TaskResourceSpec: :class:`tencentcloud.emr.v20190103.models.NodeSpec`
-        :param MasterCount: Master节点数量
-        :type MasterCount: int
-        :param CoreCount: Core节点数量
-        :type CoreCount: int
-        :param TaskCount: Task节点数量
-        :type TaskCount: int
-        :param CommonResourceSpec: 描述Common节点资源
-        :type CommonResourceSpec: :class:`tencentcloud.emr.v20190103.models.NodeSpec`
+        :param Spec: 需要的规格
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Spec: str
+        :param StorageType: 硬盘类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type StorageType: int
+        :param DiskType: 硬盘类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DiskType: str
+        :param RootSize: 系统盘大小
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RootSize: int
+        :param MemSize: 内存大小
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MemSize: int
+        :param Cpu: 核心数量
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Cpu: int
+        :param DiskSize: 硬盘大小
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DiskSize: int
+        :param MultiDisks: 云盘列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MultiDisks: list of MultiDisk
+        :param DiskCnt: 磁盘数量
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DiskCnt: int
         """
-        self.CommonCount = None
-        self.MasterResourceSpec = None
-        self.CoreResourceSpec = None
-        self.TaskResourceSpec = None
-        self.MasterCount = None
-        self.CoreCount = None
-        self.TaskCount = None
-        self.CommonResourceSpec = None
+        self.Spec = None
+        self.StorageType = None
+        self.DiskType = None
+        self.RootSize = None
+        self.MemSize = None
+        self.Cpu = None
+        self.DiskSize = None
+        self.MultiDisks = None
+        self.DiskCnt = None
 
 
     def _deserialize(self, params):
-        self.CommonCount = params.get("CommonCount")
-        if params.get("MasterResourceSpec") is not None:
-            self.MasterResourceSpec = NodeSpec()
-            self.MasterResourceSpec._deserialize(params.get("MasterResourceSpec"))
-        if params.get("CoreResourceSpec") is not None:
-            self.CoreResourceSpec = NodeSpec()
-            self.CoreResourceSpec._deserialize(params.get("CoreResourceSpec"))
-        if params.get("TaskResourceSpec") is not None:
-            self.TaskResourceSpec = NodeSpec()
-            self.TaskResourceSpec._deserialize(params.get("TaskResourceSpec"))
-        self.MasterCount = params.get("MasterCount")
-        self.CoreCount = params.get("CoreCount")
-        self.TaskCount = params.get("TaskCount")
-        if params.get("CommonResourceSpec") is not None:
-            self.CommonResourceSpec = NodeSpec()
-            self.CommonResourceSpec._deserialize(params.get("CommonResourceSpec"))
+        self.Spec = params.get("Spec")
+        self.StorageType = params.get("StorageType")
+        self.DiskType = params.get("DiskType")
+        self.RootSize = params.get("RootSize")
+        self.MemSize = params.get("MemSize")
+        self.Cpu = params.get("Cpu")
+        self.DiskSize = params.get("DiskSize")
+        if params.get("MultiDisks") is not None:
+            self.MultiDisks = []
+            for item in params.get("MultiDisks"):
+                obj = MultiDisk()
+                obj._deserialize(item)
+                self.MultiDisks.append(obj)
+        self.DiskCnt = params.get("DiskCnt")
+
+
+class Resource(AbstractModel):
+    """资源详情
+
+    """
+
+    def __init__(self):
+        """
+        :param Spec: 节点规格描述
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Spec: str
+        :param StorageType: 存储类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type StorageType: int
+        :param DiskType: 磁盘类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DiskType: str
+        :param MemSize: 内存容量,单位为M
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MemSize: int
+        :param Cpu: CPU核数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Cpu: int
+        :param DiskSize: 数据盘容量
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DiskSize: int
+        :param RootSize: 系统盘容量
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RootSize: int
+        :param MultiDisks: 云盘列表，当数据盘为一块云盘时，直接使用DiskType和DiskSize参数，超出部分使用MultiDisks
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MultiDisks: list of MultiDisk
+        """
+        self.Spec = None
+        self.StorageType = None
+        self.DiskType = None
+        self.MemSize = None
+        self.Cpu = None
+        self.DiskSize = None
+        self.RootSize = None
+        self.MultiDisks = None
+
+
+    def _deserialize(self, params):
+        self.Spec = params.get("Spec")
+        self.StorageType = params.get("StorageType")
+        self.DiskType = params.get("DiskType")
+        self.MemSize = params.get("MemSize")
+        self.Cpu = params.get("Cpu")
+        self.DiskSize = params.get("DiskSize")
+        self.RootSize = params.get("RootSize")
+        if params.get("MultiDisks") is not None:
+            self.MultiDisks = []
+            for item in params.get("MultiDisks"):
+                obj = MultiDisk()
+                obj._deserialize(item)
+                self.MultiDisks.append(obj)
 
 
 class ScaleOutInstanceRequest(AbstractModel):
@@ -833,8 +1131,6 @@ class ScaleOutInstanceRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param ClientToken: Token
-        :type ClientToken: str
         :param TimeUnit: 时间单位
         :type TimeUnit: str
         :param TimeSpan: 时间长度
@@ -843,29 +1139,34 @@ class ScaleOutInstanceRequest(AbstractModel):
         :type InstanceId: str
         :param PayMode: 付费类型
         :type PayMode: int
+        :param ClientToken: Token
+        :type ClientToken: str
         :param PreExecutedFileSettings: 预执行脚本设置
         :type PreExecutedFileSettings: list of PreExecuteFileSettings
         :param TaskCount: 扩容Task节点数量
         :type TaskCount: int
         :param CoreCount: 扩容Core节点数量
         :type CoreCount: int
+        :param UnNecessaryNodeList: 扩容时不需要安装的进程
+        :type UnNecessaryNodeList: list of int non-negative
         """
-        self.ClientToken = None
         self.TimeUnit = None
         self.TimeSpan = None
         self.InstanceId = None
         self.PayMode = None
+        self.ClientToken = None
         self.PreExecutedFileSettings = None
         self.TaskCount = None
         self.CoreCount = None
+        self.UnNecessaryNodeList = None
 
 
     def _deserialize(self, params):
-        self.ClientToken = params.get("ClientToken")
         self.TimeUnit = params.get("TimeUnit")
         self.TimeSpan = params.get("TimeSpan")
         self.InstanceId = params.get("InstanceId")
         self.PayMode = params.get("PayMode")
+        self.ClientToken = params.get("ClientToken")
         if params.get("PreExecutedFileSettings") is not None:
             self.PreExecutedFileSettings = []
             for item in params.get("PreExecutedFileSettings"):
@@ -874,6 +1175,7 @@ class ScaleOutInstanceRequest(AbstractModel):
                 self.PreExecutedFileSettings.append(obj)
         self.TaskCount = params.get("TaskCount")
         self.CoreCount = params.get("CoreCount")
+        self.UnNecessaryNodeList = params.get("UnNecessaryNodeList")
 
 
 class ScaleOutInstanceResponse(AbstractModel):
@@ -883,45 +1185,28 @@ class ScaleOutInstanceResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param Result: 扩容结果
-        :type Result: :class:`tencentcloud.emr.v20190103.models.ScaleOutInstanceResult`
+        :param InstanceId: 实例ID
+        :type InstanceId: str
+        :param DealNames: 订单号
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DealNames: list of str
+        :param ClientToken: token
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ClientToken: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.Result = None
+        self.InstanceId = None
+        self.DealNames = None
+        self.ClientToken = None
         self.RequestId = None
 
 
     def _deserialize(self, params):
-        if params.get("Result") is not None:
-            self.Result = ScaleOutInstanceResult()
-            self.Result._deserialize(params.get("Result"))
-        self.RequestId = params.get("RequestId")
-
-
-class ScaleOutInstanceResult(AbstractModel):
-    """扩容实例结果描述
-
-    """
-
-    def __init__(self):
-        """
-        :param ClientToken: 客户端调用时传入的TOKEN
-        :type ClientToken: str
-        :param InstanceId: 扩容实例ID
-        :type InstanceId: str
-        :param DealNames: 订单名称
-        :type DealNames: list of str
-        """
-        self.ClientToken = None
-        self.InstanceId = None
-        self.DealNames = None
-
-
-    def _deserialize(self, params):
-        self.ClientToken = params.get("ClientToken")
         self.InstanceId = params.get("InstanceId")
         self.DealNames = params.get("DealNames")
+        self.ClientToken = params.get("ClientToken")
+        self.RequestId = params.get("RequestId")
 
 
 class TerminateInstanceRequest(AbstractModel):
@@ -933,47 +1218,7 @@ class TerminateInstanceRequest(AbstractModel):
         """
         :param InstanceId: 被销毁的实例ID
         :type InstanceId: str
-        """
-        self.InstanceId = None
-
-
-    def _deserialize(self, params):
-        self.InstanceId = params.get("InstanceId")
-
-
-class TerminateInstanceResponse(AbstractModel):
-    """TerminateInstance返回参数结构体
-
-    """
-
-    def __init__(self):
-        """
-        :param Result: 退单描述
-        :type Result: :class:`tencentcloud.emr.v20190103.models.TerminateResult`
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
-        self.Result = None
-        self.RequestId = None
-
-
-    def _deserialize(self, params):
-        if params.get("Result") is not None:
-            self.Result = TerminateResult()
-            self.Result._deserialize(params.get("Result"))
-        self.RequestId = params.get("RequestId")
-
-
-class TerminateResult(AbstractModel):
-    """退单请求描述描述
-
-    """
-
-    def __init__(self):
-        """
-        :param InstanceId: 退单集群ID
-        :type InstanceId: str
-        :param ResourceIds: 资源资源ID
+        :param ResourceIds: 销毁节点ID
         :type ResourceIds: list of str
         """
         self.InstanceId = None
@@ -983,6 +1228,23 @@ class TerminateResult(AbstractModel):
     def _deserialize(self, params):
         self.InstanceId = params.get("InstanceId")
         self.ResourceIds = params.get("ResourceIds")
+
+
+class TerminateInstanceResponse(AbstractModel):
+    """TerminateInstance返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
 
 
 class TerminateTasksRequest(AbstractModel):
@@ -1013,20 +1275,39 @@ class TerminateTasksResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param Result: 退单结果
-        :type Result: :class:`tencentcloud.emr.v20190103.models.TerminateResult`
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.Result = None
         self.RequestId = None
 
 
     def _deserialize(self, params):
-        if params.get("Result") is not None:
-            self.Result = TerminateResult()
-            self.Result._deserialize(params.get("Result"))
         self.RequestId = params.get("RequestId")
+
+
+class UpdateInstanceSettings(AbstractModel):
+    """变配资源规格
+
+    """
+
+    def __init__(self):
+        """
+        :param Memory: 内存容量，单位为G
+        :type Memory: int
+        :param CPUCores: CPU核数
+        :type CPUCores: int
+        :param ResourceId: 机器资源ID（EMR测资源标识）
+        :type ResourceId: str
+        """
+        self.Memory = None
+        self.CPUCores = None
+        self.ResourceId = None
+
+
+    def _deserialize(self, params):
+        self.Memory = params.get("Memory")
+        self.CPUCores = params.get("CPUCores")
+        self.ResourceId = params.get("ResourceId")
 
 
 class VPCSettings(AbstractModel):

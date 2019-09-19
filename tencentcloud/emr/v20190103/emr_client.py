@@ -109,6 +109,34 @@ class EmrClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def InquiryPriceRenewInstance(self, request):
+        """续费询价。
+
+        :param request: 调用InquiryPriceRenewInstance所需参数的结构体。
+        :type request: :class:`tencentcloud.emr.v20190103.models.InquiryPriceRenewInstanceRequest`
+        :rtype: :class:`tencentcloud.emr.v20190103.models.InquiryPriceRenewInstanceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("InquiryPriceRenewInstance", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.InquiryPriceRenewInstanceResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def InquiryPriceScaleOutInstance(self, request):
         """扩容询价. 当扩容时候，请通过该接口查询价格。
 
@@ -123,6 +151,34 @@ class EmrClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.InquiryPriceScaleOutInstanceResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def InquiryPriceUpdateInstance(self, request):
+        """变配询价
+
+        :param request: 调用InquiryPriceUpdateInstance所需参数的结构体。
+        :type request: :class:`tencentcloud.emr.v20190103.models.InquiryPriceUpdateInstanceRequest`
+        :rtype: :class:`tencentcloud.emr.v20190103.models.InquiryPriceUpdateInstanceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("InquiryPriceUpdateInstance", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.InquiryPriceUpdateInstanceResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
