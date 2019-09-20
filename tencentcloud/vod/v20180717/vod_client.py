@@ -963,6 +963,34 @@ class VodClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeAdaptiveDynamicStreamingTemplates(self, request):
+        """查询转自适应码流模板，支持根据条件，分页查询。
+
+        :param request: 调用DescribeAdaptiveDynamicStreamingTemplates所需参数的结构体。
+        :type request: :class:`tencentcloud.vod.v20180717.models.DescribeAdaptiveDynamicStreamingTemplatesRequest`
+        :rtype: :class:`tencentcloud.vod.v20180717.models.DescribeAdaptiveDynamicStreamingTemplatesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeAdaptiveDynamicStreamingTemplates", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeAdaptiveDynamicStreamingTemplatesResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeAllClass(self, request):
         """* 获得用户的所有分类信息。
 
@@ -1005,6 +1033,34 @@ class VodClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeAnimatedGraphicsTemplatesResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeAudioTrackTemplates(self, request):
+        """获取转自适应码流音频轨模板列表，支持根据条件，分页查询。
+
+        :param request: 调用DescribeAudioTrackTemplates所需参数的结构体。
+        :type request: :class:`tencentcloud.vod.v20180717.models.DescribeAudioTrackTemplatesRequest`
+        :rtype: :class:`tencentcloud.vod.v20180717.models.DescribeAudioTrackTemplatesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeAudioTrackTemplates", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeAudioTrackTemplatesResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -1357,6 +1413,34 @@ class VodClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeTranscodeTemplatesResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeVideoTrackTemplates(self, request):
+        """获取转自适应码流视频轨模板列表，支持根据条件，分页查询。
+
+        :param request: 调用DescribeVideoTrackTemplates所需参数的结构体。
+        :type request: :class:`tencentcloud.vod.v20180717.models.DescribeVideoTrackTemplatesRequest`
+        :rtype: :class:`tencentcloud.vod.v20180717.models.DescribeVideoTrackTemplatesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeVideoTrackTemplates", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeVideoTrackTemplatesResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

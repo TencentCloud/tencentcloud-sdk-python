@@ -1178,13 +1178,13 @@ class CreatePullStreamConfigRequest(AbstractModel):
         :type FromUrl: str
         :param ToUrl: 目的Url，目前限制该目标地址为腾讯域名。
         :type ToUrl: str
-        :param AreaId: 区域id：
+        :param AreaId: 选择完成转拉推的服务所在区域:
 1-深圳，
 2-上海，
 3-天津，
 4-中国香港。
         :type AreaId: int
-        :param IspId: 运营商id：
+        :param IspId: 选择完成转拉推服务使用的运营商网络：
 1-电信，
 2-移动，
 3-联通，

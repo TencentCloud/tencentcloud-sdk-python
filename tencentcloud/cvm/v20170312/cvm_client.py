@@ -803,6 +803,62 @@ class CvmClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeReservedInstances(self, request):
+        """本接口(DescribeReservedInstances)可提供列出用户已购买的预留实例
+
+        :param request: 调用DescribeReservedInstances所需参数的结构体。
+        :type request: :class:`tencentcloud.cvm.v20170312.models.DescribeReservedInstancesRequest`
+        :rtype: :class:`tencentcloud.cvm.v20170312.models.DescribeReservedInstancesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeReservedInstances", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeReservedInstancesResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeReservedInstancesOfferings(self, request):
+        """本接口(DescribeReservedInstancesOfferings)供用户列出可购买的预留实例配置
+
+        :param request: 调用DescribeReservedInstancesOfferings所需参数的结构体。
+        :type request: :class:`tencentcloud.cvm.v20170312.models.DescribeReservedInstancesOfferingsRequest`
+        :rtype: :class:`tencentcloud.cvm.v20170312.models.DescribeReservedInstancesOfferingsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeReservedInstancesOfferings", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeReservedInstancesOfferingsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeZoneInstanceConfigInfos(self, request):
         """本接口(DescribeZoneInstanceConfigInfos) 获取可用区的机型信息。
 
@@ -1493,6 +1549,34 @@ class CvmClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyKeyPairAttributeResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def PurchaseReservedInstancesOffering(self, request):
+        """本接口(PurchaseReservedInstancesOffering)用于用户购买一个或者多个指定配置的预留实例
+
+        :param request: 调用PurchaseReservedInstancesOffering所需参数的结构体。
+        :type request: :class:`tencentcloud.cvm.v20170312.models.PurchaseReservedInstancesOfferingRequest`
+        :rtype: :class:`tencentcloud.cvm.v20170312.models.PurchaseReservedInstancesOfferingResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("PurchaseReservedInstancesOffering", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.PurchaseReservedInstancesOfferingResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

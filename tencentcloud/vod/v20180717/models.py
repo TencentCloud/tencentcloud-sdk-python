@@ -232,6 +232,89 @@ class AdaptiveDynamicStreamingTaskInput(AbstractModel):
                 self.WatermarkSet.append(obj)
 
 
+class AdaptiveDynamicStreamingTemplate(AbstractModel):
+    """转自适应码流模板详情
+
+    """
+
+    def __init__(self):
+        """
+        :param Definition: 转自适应码流模板唯一标识。
+        :type Definition: int
+        :param Type: 模板类型，取值范围：
+<li>Preset：系统预置模板；</li>
+<li>Custom：用户自定义模板。</li>
+        :type Type: str
+        :param Name: 转自适应码流模板名称。
+        :type Name: str
+        :param Comment: 转自适应码流模板描述信息。
+        :type Comment: str
+        :param PackageType: 打包类型，取值范围：
+<li>hls；</li>
+<li>dash。</li>
+        :type PackageType: str
+        :param DrmType: DRM 类型，取值范围：
+<li>FairPlay；</li>
+<li>SimpleAES；</li>
+<li>Widevine。</li>
+如果取值为空字符串，代表不对视频做 DRM 保护。
+        :type DrmType: str
+        :param VideoTrackTemplateSet: 视频轨模板列表。
+        :type VideoTrackTemplateSet: list of VideoTrackTemplateInfo
+        :param AudioTrackTemplateSet: 音频轨模板列表。
+        :type AudioTrackTemplateSet: list of AudioTrackTemplateInfo
+        :param DisableHigherVideoBitrate: 是否禁止视频低码率转高码率，取值范围：
+<li>0：否，</li>
+<li>1：是。</li>
+        :type DisableHigherVideoBitrate: int
+        :param DisableHigherVideoResolution: 是否禁止视频分辨率转高分辨率，取值范围：
+<li>0：否，</li>
+<li>1：是。</li>
+        :type DisableHigherVideoResolution: int
+        :param CreateTime: 模板创建时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F)。
+        :type CreateTime: str
+        :param UpdateTime: 模板最后修改时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F)。
+        :type UpdateTime: str
+        """
+        self.Definition = None
+        self.Type = None
+        self.Name = None
+        self.Comment = None
+        self.PackageType = None
+        self.DrmType = None
+        self.VideoTrackTemplateSet = None
+        self.AudioTrackTemplateSet = None
+        self.DisableHigherVideoBitrate = None
+        self.DisableHigherVideoResolution = None
+        self.CreateTime = None
+        self.UpdateTime = None
+
+
+    def _deserialize(self, params):
+        self.Definition = params.get("Definition")
+        self.Type = params.get("Type")
+        self.Name = params.get("Name")
+        self.Comment = params.get("Comment")
+        self.PackageType = params.get("PackageType")
+        self.DrmType = params.get("DrmType")
+        if params.get("VideoTrackTemplateSet") is not None:
+            self.VideoTrackTemplateSet = []
+            for item in params.get("VideoTrackTemplateSet"):
+                obj = VideoTrackTemplateInfo()
+                obj._deserialize(item)
+                self.VideoTrackTemplateSet.append(obj)
+        if params.get("AudioTrackTemplateSet") is not None:
+            self.AudioTrackTemplateSet = []
+            for item in params.get("AudioTrackTemplateSet"):
+                obj = AudioTrackTemplateInfo()
+                obj._deserialize(item)
+                self.AudioTrackTemplateSet.append(obj)
+        self.DisableHigherVideoBitrate = params.get("DisableHigherVideoBitrate")
+        self.DisableHigherVideoResolution = params.get("DisableHigherVideoResolution")
+        self.CreateTime = params.get("CreateTime")
+        self.UpdateTime = params.get("UpdateTime")
+
+
 class AiAnalysisResult(AbstractModel):
     """智能分析结果
 
@@ -1831,6 +1914,8 @@ class AiRecognitionTaskSegmentSegmentItem(AbstractModel):
 
     def __init__(self):
         """
+        :param FileId: 文件 ID。仅当处理的是点播文件并且拆条生成的子片段为点播文件时有效。
+        :type FileId: str
         :param SegmentUrl: 视频拆条片段 Url。
         :type SegmentUrl: str
         :param Confidence: 拆条片段置信度。取值：0~100。
@@ -1844,6 +1929,7 @@ class AiRecognitionTaskSegmentSegmentItem(AbstractModel):
         :param SpecialInfo: 特殊字段，请忽略。
         :type SpecialInfo: str
         """
+        self.FileId = None
         self.SegmentUrl = None
         self.Confidence = None
         self.StartTimeOffset = None
@@ -1853,6 +1939,7 @@ class AiRecognitionTaskSegmentSegmentItem(AbstractModel):
 
 
     def _deserialize(self, params):
+        self.FileId = params.get("FileId")
         self.SegmentUrl = params.get("SegmentUrl")
         self.Confidence = params.get("Confidence")
         self.StartTimeOffset = params.get("StartTimeOffset")
@@ -3159,6 +3246,85 @@ class AudioTrackItem(AbstractModel):
                 obj = AudioTransform()
                 obj._deserialize(item)
                 self.AudioOperations.append(obj)
+
+
+class AudioTrackTemplateInfo(AbstractModel):
+    """转自适应码流音频轨模板信息。
+
+    """
+
+    def __init__(self):
+        """
+        :param Definition: 模板唯一标识。
+        :type Definition: int
+        :param Codec: 音频轨编码格式。
+当 Container 为 mp3 时，可选值为：
+<li>libmp3lame。</li>
+当 Container 为 ogg 或 flac 时，可选值为：
+<li>flac。</li>
+当 Container 为 m4a 时，可选值为：
+<li>libfdk_aac；</li>
+<li>libmp3lame；</li>
+<li>ac3。</li>
+当视频轨 Container 为 mp4 或 flv 时，可选值为：
+<li>libfdk_aac：更适合 mp4；</li>
+<li>libmp3lame：更适合 flv；</li>
+<li>mp2。</li>
+当视频轨 Container 为  hls 时，可选值为：
+<li>libfdk_aac；</li>
+<li>libmp3lame。</li>
+        :type Codec: str
+        :param Bitrate: 音频流的码率，取值范围：0 和 [26, 256]，单位：kbps。
+当取值为 0，表示音频码率和原始音频保持一致。
+        :type Bitrate: int
+        :param SampleRate: 音频流的采样率，可选值：
+<li>32000</li>
+<li>44100</li>
+<li>48000</li>
+单位：Hz。
+        :type SampleRate: int
+        :param Type: 模板类型，可选值：
+<li>Preset：系统预置模板；</li>
+<li>Custom：用户自定义模板。</li>
+        :type Type: str
+        :param Name: 模板名称，长度限制：64 个字符。
+        :type Name: str
+        :param Comment: 模板描述信息，长度限制：256 个字符。
+        :type Comment: str
+        :param AudioChannel: 音频通道方式，可选值：
+<li>1：单通道</li>
+<li>2：双通道</li>
+<li>6：立体声</li>
+默认值：2。
+        :type AudioChannel: int
+        :param CreateTime: 模板创建时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F)。
+        :type CreateTime: str
+        :param UpdateTime: 模板最后修改时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F)。
+        :type UpdateTime: str
+        """
+        self.Definition = None
+        self.Codec = None
+        self.Bitrate = None
+        self.SampleRate = None
+        self.Type = None
+        self.Name = None
+        self.Comment = None
+        self.AudioChannel = None
+        self.CreateTime = None
+        self.UpdateTime = None
+
+
+    def _deserialize(self, params):
+        self.Definition = params.get("Definition")
+        self.Codec = params.get("Codec")
+        self.Bitrate = params.get("Bitrate")
+        self.SampleRate = params.get("SampleRate")
+        self.Type = params.get("Type")
+        self.Name = params.get("Name")
+        self.Comment = params.get("Comment")
+        self.AudioChannel = params.get("AudioChannel")
+        self.CreateTime = params.get("CreateTime")
+        self.UpdateTime = params.get("UpdateTime")
 
 
 class AudioTransform(AbstractModel):
@@ -5551,6 +5717,71 @@ class DescribeAIRecognitionTemplatesResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeAdaptiveDynamicStreamingTemplatesRequest(AbstractModel):
+    """DescribeAdaptiveDynamicStreamingTemplates请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Definitions: 转自适应码流模板唯一标识过滤条件，数组长度限制：100。
+        :type Definitions: list of int non-negative
+        :param Offset: 分页偏移量，默认值：0。
+        :type Offset: int
+        :param Limit: 返回记录条数，默认值：10，最大值：100。
+        :type Limit: int
+        :param Type: 模板类型过滤条件，可选值：
+<li>Preset：系统预置模板；</li>
+<li>Custom：用户自定义模板。</li>
+        :type Type: str
+        :param SubAppId: 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
+        :type SubAppId: int
+        """
+        self.Definitions = None
+        self.Offset = None
+        self.Limit = None
+        self.Type = None
+        self.SubAppId = None
+
+
+    def _deserialize(self, params):
+        self.Definitions = params.get("Definitions")
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+        self.Type = params.get("Type")
+        self.SubAppId = params.get("SubAppId")
+
+
+class DescribeAdaptiveDynamicStreamingTemplatesResponse(AbstractModel):
+    """DescribeAdaptiveDynamicStreamingTemplates返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param TotalCount: 符合过滤条件的记录总数。
+        :type TotalCount: int
+        :param AdaptiveDynamicStreamingTemplateSet: 转自适应码流模板详情列表。
+        :type AdaptiveDynamicStreamingTemplateSet: list of AdaptiveDynamicStreamingTemplate
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.AdaptiveDynamicStreamingTemplateSet = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("AdaptiveDynamicStreamingTemplateSet") is not None:
+            self.AdaptiveDynamicStreamingTemplateSet = []
+            for item in params.get("AdaptiveDynamicStreamingTemplateSet"):
+                obj = AdaptiveDynamicStreamingTemplate()
+                obj._deserialize(item)
+                self.AdaptiveDynamicStreamingTemplateSet.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeAllClassRequest(AbstractModel):
     """DescribeAllClass请求参数结构体
 
@@ -5657,6 +5888,71 @@ class DescribeAnimatedGraphicsTemplatesResponse(AbstractModel):
                 obj = AnimatedGraphicsTemplate()
                 obj._deserialize(item)
                 self.AnimatedGraphicsTemplateSet.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeAudioTrackTemplatesRequest(AbstractModel):
+    """DescribeAudioTrackTemplates请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Definitions: 模板唯一标识过滤条件，数组长度限制：100。
+        :type Definitions: list of int non-negative
+        :param Offset: 分页偏移量，默认值：0。
+        :type Offset: int
+        :param Limit: 返回记录条数，默认值：10，最大值：100。
+        :type Limit: int
+        :param Type: 模板类型过滤条件，可选值：
+<li>Preset：系统预置模板；</li>
+<li>Custom：用户自定义模板。</li>
+        :type Type: str
+        :param SubAppId: 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
+        :type SubAppId: int
+        """
+        self.Definitions = None
+        self.Offset = None
+        self.Limit = None
+        self.Type = None
+        self.SubAppId = None
+
+
+    def _deserialize(self, params):
+        self.Definitions = params.get("Definitions")
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+        self.Type = params.get("Type")
+        self.SubAppId = params.get("SubAppId")
+
+
+class DescribeAudioTrackTemplatesResponse(AbstractModel):
+    """DescribeAudioTrackTemplates返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param TotalCount: 符合过滤条件的记录总数。
+        :type TotalCount: int
+        :param AudioTrackTemplateSet: 音频轨模板详情列表。
+        :type AudioTrackTemplateSet: list of AudioTrackTemplateInfo
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.AudioTrackTemplateSet = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("AudioTrackTemplateSet") is not None:
+            self.AudioTrackTemplateSet = []
+            for item in params.get("AudioTrackTemplateSet"):
+                obj = AudioTrackTemplateInfo()
+                obj._deserialize(item)
+                self.AudioTrackTemplateSet.append(obj)
         self.RequestId = params.get("RequestId")
 
 
@@ -6501,6 +6797,71 @@ class DescribeTranscodeTemplatesResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeVideoTrackTemplatesRequest(AbstractModel):
+    """DescribeVideoTrackTemplates请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Definitions: 模板唯一标识过滤条件，数组长度限制：100。
+        :type Definitions: list of int non-negative
+        :param Offset: 分页偏移量，默认值：0。
+        :type Offset: int
+        :param Limit: 返回记录条数，默认值：10，最大值：100。
+        :type Limit: int
+        :param Type: 模板类型过滤条件，可选值：
+<li>Preset：系统预置模板；</li>
+<li>Custom：用户自定义模板。</li>
+        :type Type: str
+        :param SubAppId: 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
+        :type SubAppId: int
+        """
+        self.Definitions = None
+        self.Offset = None
+        self.Limit = None
+        self.Type = None
+        self.SubAppId = None
+
+
+    def _deserialize(self, params):
+        self.Definitions = params.get("Definitions")
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+        self.Type = params.get("Type")
+        self.SubAppId = params.get("SubAppId")
+
+
+class DescribeVideoTrackTemplatesResponse(AbstractModel):
+    """DescribeVideoTrackTemplates返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param TotalCount: 符合过滤条件的记录总数。
+        :type TotalCount: int
+        :param VideoTrackTemplateSet: 视频轨模板详情列表。
+        :type VideoTrackTemplateSet: list of VideoTrackTemplateInfo
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.VideoTrackTemplateSet = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("VideoTrackTemplateSet") is not None:
+            self.VideoTrackTemplateSet = []
+            for item in params.get("VideoTrackTemplateSet"):
+                obj = VideoTrackTemplateInfo()
+                obj._deserialize(item)
+                self.VideoTrackTemplateSet.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeWatermarkTemplatesRequest(AbstractModel):
     """DescribeWatermarkTemplates请求参数结构体
 
@@ -7233,10 +7594,14 @@ class FileUploadTask(AbstractModel):
         :param ProcedureTaskId: 若视频上传时指定了视频处理流程，则该字段为流程任务 ID。
 注意：此字段可能返回 null，表示取不到有效值。
         :type ProcedureTaskId: str
+        :param MetaData: 元信息。包括大小、时长、视频流信息、音频流信息等。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MetaData: :class:`tencentcloud.vod.v20180717.models.MediaMetaData`
         """
         self.FileId = None
         self.MediaBasicInfo = None
         self.ProcedureTaskId = None
+        self.MetaData = None
 
 
     def _deserialize(self, params):
@@ -7245,6 +7610,9 @@ class FileUploadTask(AbstractModel):
             self.MediaBasicInfo = MediaBasicInfo()
             self.MediaBasicInfo._deserialize(params.get("MediaBasicInfo"))
         self.ProcedureTaskId = params.get("ProcedureTaskId")
+        if params.get("MetaData") is not None:
+            self.MetaData = MediaMetaData()
+            self.MetaData._deserialize(params.get("MetaData"))
 
 
 class FrameTagConfigureInfo(AbstractModel):
@@ -11792,7 +12160,7 @@ class PullUploadRequest(AbstractModel):
     def __init__(self):
         """
         :param MediaUrl: 要拉取的媒体 URL，暂不支持拉取 HLS 和 Dash 格式。
-<li>URL 里文件名需要包括扩展名, 比如 ```https://xxxx.mp4``` ，扩展名为 mp4，支持的扩展名详见[文件类型](https://cloud.tencent.com/document/product/266/9760#.E6.96.87.E4.BB.B6.E7.B1.BB.E5.9E.8B)。</li>
+支持的扩展名详见[文件类型](https://cloud.tencent.com/document/product/266/9760#.E6.96.87.E4.BB.B6.E7.B1.BB.E5.9E.8B)。
         :type MediaUrl: str
         :param MediaName: 媒体名称。
         :type MediaName: str
@@ -12478,6 +12846,8 @@ class StatDataItem(AbstractModel):
     def __init__(self):
         """
         :param Time: 数据所在时间区间的开始时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F)。如：当时间粒度为天，2018-12-01T00:00:00+08:00，表示2018年12月1日（含）到2018年12月2日（不含）区间。
+<li>表示小时级别数据时，2019-08-22T00:00:00+08:00表示2019-08-22日0点到1点的统计数据。</li>
+<li>表示天级别数据时，2019-08-22T00:00:00+08:00表示2019-08-22日的统计数据。</li>
         :type Time: str
         :param Value: 数据大小。
 <li>存储空间的数据，单位是字节。</li>
@@ -13743,6 +14113,94 @@ class VideoTrackItem(AbstractModel):
                 obj = AudioTransform()
                 obj._deserialize(item)
                 self.AudioOperations.append(obj)
+
+
+class VideoTrackTemplateInfo(AbstractModel):
+    """转自适应码流视频轨模板信息。
+
+    """
+
+    def __init__(self):
+        """
+        :param Definition: 视频轨模板唯一标识。
+        :type Definition: int
+        :param Codec: 编码格式，可选值：
+<li>libx264：H.264 编码</li>
+<li>libx265：H.265 编码</li>
+目前 H.265 编码必须指定分辨率，并且需要在 640*480 以内。
+        :type Codec: str
+        :param Fps: 视频帧率，取值范围：[0, 60]，单位：Hz。
+当取值为 0，表示帧率和原始视频保持一致。
+        :type Fps: int
+        :param Bitrate: 视频流的码率，取值范围：0 和 [128, 35000]，单位：kbps。
+当取值为 0，表示视频码率和原始视频保持一致。
+        :type Bitrate: int
+        :param Name: 模板名称，长度限制：64 个字符。
+        :type Name: str
+        :param Comment: 模板描述信息，长度限制：256 个字符。
+        :type Comment: str
+        :param Type: 模板类型，可选值：
+<li>Preset：系统预置模板；</li>
+<li>Custom：用户自定义模板。</li>
+        :type Type: str
+        :param ResolutionAdaptive: 分辨率自适应，可选值：
+<li>open：开启，此时，Width 代表视频的长边，Height 表示视频的短边；</li>
+<li>close：关闭，此时，Width 代表视频的宽度，Height 表示视频的高度。</li>
+默认值：open。
+        :type ResolutionAdaptive: str
+        :param Width: 视频流宽度（或长边）的最大值，取值范围：0 和 [128, 4096]，单位：px。
+<li>当 Width、Height 均为 0，则分辨率同源；</li>
+<li>当 Width 为 0，Height 非 0，则 Width 按比例缩放；</li>
+<li>当 Width 非 0，Height 为 0，则 Height 按比例缩放；</li>
+<li>当 Width、Height 均非 0，则分辨率按用户指定。</li>
+默认值：0。
+        :type Width: int
+        :param Height: 视频流高度（或短边）的最大值，取值范围：0 和 [128, 4096]，单位：px。
+<li>当 Width、Height 均为 0，则分辨率同源；</li>
+<li>当 Width 为 0，Height 非 0，则 Width 按比例缩放；</li>
+<li>当 Width 非 0，Height 为 0，则 Height 按比例缩放；</li>
+<li>当 Width、Height 均非 0，则分辨率按用户指定。</li>
+默认值：0。
+        :type Height: int
+        :param FillType: 填充方式，当视频流配置宽高参数与原始视频的宽高比不一致时，对转码的处理方式，即为“填充”。可选填充方式：
+<li> stretch：拉伸，对每一帧进行拉伸，填满整个画面，可能导致转码后的视频被“压扁“或者“拉长“；</li>
+<li>black：留黑，保持视频宽高比不变，边缘剩余部分使用黑色填充。</li>
+默认值：black 。
+        :type FillType: str
+        :param CreateTime: 模板创建时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F)。
+        :type CreateTime: str
+        :param UpdateTime: 模板最后修改时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F)。
+        :type UpdateTime: str
+        """
+        self.Definition = None
+        self.Codec = None
+        self.Fps = None
+        self.Bitrate = None
+        self.Name = None
+        self.Comment = None
+        self.Type = None
+        self.ResolutionAdaptive = None
+        self.Width = None
+        self.Height = None
+        self.FillType = None
+        self.CreateTime = None
+        self.UpdateTime = None
+
+
+    def _deserialize(self, params):
+        self.Definition = params.get("Definition")
+        self.Codec = params.get("Codec")
+        self.Fps = params.get("Fps")
+        self.Bitrate = params.get("Bitrate")
+        self.Name = params.get("Name")
+        self.Comment = params.get("Comment")
+        self.Type = params.get("Type")
+        self.ResolutionAdaptive = params.get("ResolutionAdaptive")
+        self.Width = params.get("Width")
+        self.Height = params.get("Height")
+        self.FillType = params.get("FillType")
+        self.CreateTime = params.get("CreateTime")
+        self.UpdateTime = params.get("UpdateTime")
 
 
 class WatermarkInput(AbstractModel):

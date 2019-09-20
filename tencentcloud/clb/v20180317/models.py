@@ -523,7 +523,7 @@ OPEN：公网属性， INTERNAL：内网属性。
         :param LoadBalancerName: 负载均衡实例的名称，只在创建一个实例的时候才会生效。规则：1-50 个英文、汉字、数字、连接线“-”或下划线“_”。
 注意：如果名称与系统中已有负载均衡实例的名称相同，则系统将会自动生成此次创建的负载均衡实例的名称。
         :type LoadBalancerName: str
-        :param VpcId: 负载均衡后端目标设备所属的网络 ID，可以通过 DescribeVpcEx 接口获取。 不传此参数则默认为基础网络（"0"）。
+        :param VpcId: 负载均衡后端目标设备所属的网络 ID，如vpc-12345678，可以通过 DescribeVpcEx 接口获取。 不传此参数则默认为基础网络（"0"）。
         :type VpcId: str
         :param SubnetId: 在私有网络内购买内网负载均衡实例的情况下，必须指定子网 ID，内网负载均衡实例的 VIP 将从这个子网中产生。其它情况不支持该参数。
         :type SubnetId: str
@@ -1183,7 +1183,7 @@ class DescribeLoadBalancersRequest(AbstractModel):
         :param LoadBalancerType: 负载均衡实例的网络类型：
 OPEN：公网属性， INTERNAL：内网属性。
         :type LoadBalancerType: str
-        :param Forward: 负载均衡实例的类型。1：通用的负载均衡实例，0：传统型负载均衡实例
+        :param Forward: 负载均衡实例的类型。1：通用的负载均衡实例，0：传统型负载均衡实例。如果不传此参数，则查询所有类型的负载均衡实例。
         :type Forward: int
         :param LoadBalancerName: 负载均衡实例的名称。
         :type LoadBalancerName: str
@@ -1209,8 +1209,8 @@ OPEN：公网属性， INTERNAL：内网属性。
         :type ProjectId: int
         :param WithRs: 负载均衡是否绑定后端服务，0：没有绑定后端服务，1：绑定后端服务，-1：查询全部。
         :type WithRs: int
-        :param VpcId: 负载均衡实例所属私有网络，如 vpc-bhqkbhdx，
-基础网络不支持通过VpcId查询。
+        :param VpcId: 负载均衡实例所属私有网络唯一ID，如 vpc-bhqkbhdx，
+基础网络可传入'0'。
         :type VpcId: str
         :param SecurityGroup: 安全组ID，如 sg-m1cc9123
         :type SecurityGroup: str
@@ -1599,7 +1599,7 @@ class InternetAccessible(AbstractModel):
         :param InternetChargeType: TRAFFIC_POSTPAID_BY_HOUR 按流量按小时后计费 ; BANDWIDTH_POSTPAID_BY_HOUR 按带宽按小时后计费;
 BANDWIDTH_PACKAGE 按带宽包计费（当前，只有指定运营商时才支持此种计费模式）
         :type InternetChargeType: str
-        :param InternetMaxBandwidthOut: 最大出带宽，单位Mbps，范围支持0到65535，仅对公网属性的LB生效，默认值 10
+        :param InternetMaxBandwidthOut: 最大出带宽，单位Mbps，范围支持0到2048，仅对公网属性的LB生效，默认值 10
         :type InternetMaxBandwidthOut: int
         """
         self.InternetChargeType = None
@@ -1668,6 +1668,9 @@ class Listener(AbstractModel):
         :param ListenerName: 监听器的名称
 注意：此字段可能返回 null，表示取不到有效值。
         :type ListenerName: str
+        :param CreateTime: 监听器的创建时间。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CreateTime: str
         """
         self.ListenerId = None
         self.Protocol = None
@@ -1679,6 +1682,7 @@ class Listener(AbstractModel):
         self.SniSwitch = None
         self.Rules = None
         self.ListenerName = None
+        self.CreateTime = None
 
 
     def _deserialize(self, params):
@@ -1701,6 +1705,7 @@ class Listener(AbstractModel):
                 obj._deserialize(item)
                 self.Rules.append(obj)
         self.ListenerName = params.get("ListenerName")
+        self.CreateTime = params.get("CreateTime")
 
 
 class ListenerBackend(AbstractModel):
@@ -1894,6 +1899,9 @@ OPEN：公网属性， INTERNAL：内网属性。
         :param ExtraInfo: 暂做保留，一般用户无需关注。
 注意：此字段可能返回 null，表示取不到有效值。
         :type ExtraInfo: :class:`tencentcloud.clb.v20180317.models.ExtraInfo`
+        :param LoadBalancerPassToTarget: 是否默认放通来自CLB的流量。开启默认放通（true）：只验证CLB上的安全组；不开启默认放通（false）：需同时验证CLB和后端实例上的安全组。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LoadBalancerPassToTarget: bool
         """
         self.LoadBalancerId = None
         self.LoadBalancerName = None
@@ -1929,6 +1937,7 @@ OPEN：公网属性， INTERNAL：内网属性。
         self.LogTopicId = None
         self.AddressIPv6 = None
         self.ExtraInfo = None
+        self.LoadBalancerPassToTarget = None
 
 
     def _deserialize(self, params):
@@ -1986,6 +1995,7 @@ OPEN：公网属性， INTERNAL：内网属性。
         if params.get("ExtraInfo") is not None:
             self.ExtraInfo = ExtraInfo()
             self.ExtraInfo._deserialize(params.get("ExtraInfo"))
+        self.LoadBalancerPassToTarget = params.get("LoadBalancerPassToTarget")
 
 
 class LoadBalancerHealth(AbstractModel):
@@ -2056,6 +2066,66 @@ class ManualRewriteRequest(AbstractModel):
 
 class ManualRewriteResponse(AbstractModel):
     """ManualRewrite返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class ModifyDomainAttributesRequest(AbstractModel):
+    """ModifyDomainAttributes请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param LoadBalancerId: 负载均衡实例 ID
+        :type LoadBalancerId: str
+        :param ListenerId: 应用型负载均衡监听器 ID
+        :type ListenerId: str
+        :param Domain: 域名（必须是已经创建的转发规则下的域名）
+        :type Domain: str
+        :param NewDomain: 要修改的新域名
+        :type NewDomain: str
+        :param Certificate: 域名相关的证书信息，注意，仅对启用SNI的监听器适用。
+        :type Certificate: :class:`tencentcloud.clb.v20180317.models.CertificateInput`
+        :param Http2: 是否开启Http2，注意，只用HTTPS域名才能开启Http2。
+        :type Http2: bool
+        :param DefaultServer: 是否设为默认域名，注意，一个监听器下只能设置一个默认域名。
+        :type DefaultServer: bool
+        """
+        self.LoadBalancerId = None
+        self.ListenerId = None
+        self.Domain = None
+        self.NewDomain = None
+        self.Certificate = None
+        self.Http2 = None
+        self.DefaultServer = None
+
+
+    def _deserialize(self, params):
+        self.LoadBalancerId = params.get("LoadBalancerId")
+        self.ListenerId = params.get("ListenerId")
+        self.Domain = params.get("Domain")
+        self.NewDomain = params.get("NewDomain")
+        if params.get("Certificate") is not None:
+            self.Certificate = CertificateInput()
+            self.Certificate._deserialize(params.get("Certificate"))
+        self.Http2 = params.get("Http2")
+        self.DefaultServer = params.get("DefaultServer")
+
+
+class ModifyDomainAttributesResponse(AbstractModel):
+    """ModifyDomainAttributes返回参数结构体
 
     """
 
@@ -2193,10 +2263,13 @@ class ModifyLoadBalancerAttributesRequest(AbstractModel):
         :type LoadBalancerName: str
         :param TargetRegionInfo: 负载均衡绑定的后端服务的地域信息
         :type TargetRegionInfo: :class:`tencentcloud.clb.v20180317.models.TargetRegionInfo`
+        :param InternetChargeInfo: 网络计费相关参数，注意，目前只支持修改最大出带宽，不支持修改网络计费方式。
+        :type InternetChargeInfo: :class:`tencentcloud.clb.v20180317.models.InternetAccessible`
         """
         self.LoadBalancerId = None
         self.LoadBalancerName = None
         self.TargetRegionInfo = None
+        self.InternetChargeInfo = None
 
 
     def _deserialize(self, params):
@@ -2205,6 +2278,9 @@ class ModifyLoadBalancerAttributesRequest(AbstractModel):
         if params.get("TargetRegionInfo") is not None:
             self.TargetRegionInfo = TargetRegionInfo()
             self.TargetRegionInfo._deserialize(params.get("TargetRegionInfo"))
+        if params.get("InternetChargeInfo") is not None:
+            self.InternetChargeInfo = InternetAccessible()
+            self.InternetChargeInfo._deserialize(params.get("InternetChargeInfo"))
 
 
 class ModifyLoadBalancerAttributesResponse(AbstractModel):
@@ -2371,7 +2447,7 @@ class ModifyTargetWeightRequest(AbstractModel):
         :type Url: str
         :param Targets: 要修改权重的后端服务列表
         :type Targets: list of Target
-        :param Weight: 后端服务服务新的转发权重，取值范围：0~100，默认值10。如果设置了 Targets.Weight 参数，则此参数不生效。
+        :param Weight: 后端服务新的转发权重，取值范围：0~100，默认值10。如果设置了 Targets.Weight 参数，则此参数不生效。
         :type Weight: int
         """
         self.LoadBalancerId = None
@@ -2776,6 +2852,8 @@ class RuleOutput(AbstractModel):
         :type Http2: bool
         :param ForwardType: 负载均衡与后端服务之间的转发协议
         :type ForwardType: str
+        :param CreateTime: 转发规则的创建时间
+        :type CreateTime: str
         """
         self.LocationId = None
         self.Domain = None
@@ -2791,6 +2869,7 @@ class RuleOutput(AbstractModel):
         self.DefaultServer = None
         self.Http2 = None
         self.ForwardType = None
+        self.CreateTime = None
 
 
     def _deserialize(self, params):
@@ -2814,6 +2893,7 @@ class RuleOutput(AbstractModel):
         self.DefaultServer = params.get("DefaultServer")
         self.Http2 = params.get("Http2")
         self.ForwardType = params.get("ForwardType")
+        self.CreateTime = params.get("CreateTime")
 
 
 class RuleTargets(AbstractModel):

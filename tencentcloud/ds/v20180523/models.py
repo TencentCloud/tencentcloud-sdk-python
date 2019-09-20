@@ -87,7 +87,7 @@ class CreateContractByUploadRequest(AbstractModel):
         :type Initiator: str
         :param Remarks: 备注
         :type Remarks: str
-        :param ExpireTime: 过期时间
+        :param ExpireTime: 合同长时间未签署的过期时间
         :type ExpireTime: str
         """
         self.Module = None
@@ -150,7 +150,7 @@ class CreateEnterpriseAccountRequest(AbstractModel):
         :type Operation: str
         :param Name: 企业用户名称
         :type Name: str
-        :param IdentType: 企业用户证件类型，8代表营业执照
+        :param IdentType: 企业用户证件类型，8代表营业执照，详情请见常见问题
         :type IdentType: int
         :param IdentNo: 企业用户营业执照号码
         :type IdentNo: str
@@ -224,7 +224,7 @@ class CreatePersonalAccountRequest(AbstractModel):
         :type Operation: str
         :param Name: 个人用户姓名
         :type Name: str
-        :param IdentType: 个人用户证件类型。0代表身份证
+        :param IdentType: 个人用户证件类型，0代表身份证，详情请见常见问题
         :type IdentType: int
         :param IdentNo: 个人用户证件号码
         :type IdentNo: str
@@ -586,7 +586,7 @@ class SignContractByCoordinateRequest(AbstractModel):
         :type Position: str
         :param SignLocations: 签署坐标，坐标原点在文件左下角，坐标单位为磅，坐标不得超过合同文件边界
         :type SignLocations: list of SignLocation
-        :param SealResId: 印章ID
+        :param SealResId: 签章ID
         :type SealResId: str
         :param CertType: 选用证书类型：1  表示RSA证书， 2 表示国密证书， 参数不传时默认为1
         :type CertType: int

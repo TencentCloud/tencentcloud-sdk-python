@@ -3128,6 +3128,8 @@ class Task(AbstractModel):
         :type MaxConcurrentNum: int
         :param RestartComputeNode: 任务完成后，重启计算节点。适用于指定计算环境执行任务。
         :type RestartComputeNode: bool
+        :param ResourceMaxRetryCount: 启动任务过程中，创建计算资源如CVM失败后的最大重试次数，默认为0。
+        :type ResourceMaxRetryCount: int
         """
         self.Application = None
         self.TaskName = None
@@ -3146,6 +3148,7 @@ class Task(AbstractModel):
         self.Timeout = None
         self.MaxConcurrentNum = None
         self.RestartComputeNode = None
+        self.ResourceMaxRetryCount = None
 
 
     def _deserialize(self, params):
@@ -3199,6 +3202,7 @@ class Task(AbstractModel):
         self.Timeout = params.get("Timeout")
         self.MaxConcurrentNum = params.get("MaxConcurrentNum")
         self.RestartComputeNode = params.get("RestartComputeNode")
+        self.ResourceMaxRetryCount = params.get("ResourceMaxRetryCount")
 
 
 class TaskInstanceLog(AbstractModel):

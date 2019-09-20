@@ -1361,6 +1361,172 @@ class DescribeRegionsResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeReservedInstancesOfferingsRequest(AbstractModel):
+    """DescribeReservedInstancesOfferings请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param DryRun: 试运行, 默认为 false。
+        :type DryRun: bool
+        :param Offset: 偏移量，默认为0。关于`Offset`的更进一步介绍请参考 API [简介](https://cloud.tencent.com/document/api/213/15688)中的相关小节。
+        :type Offset: int
+        :param Limit: 返回数量，默认为20，最大值为100。关于`Limit`的更进一步介绍请参考 API [简介](https://cloud.tencent.com/document/api/213/15688)中的相关小节。
+        :type Limit: int
+        :param MaxDuration: 以最大有效期作为过滤参数。
+计量单位: 秒
+默认为 94608000。
+        :type MaxDuration: int
+        :param MinDuration: 以最小有效期作为过滤参数。
+计量单位: 秒
+默认为 2592000。
+        :type MinDuration: int
+        :param Filters: <li><strong>zone</strong></li>
+<p style="padding-left: 30px;">按照预留实例计费可购买的【<strong>可用区</strong>】进行过滤。形如：ap-guangzhou-1。</p><p style="padding-left: 30px;">类型：String</p><p style="padding-left: 30px;">必选：否</p><p style="padding-left: 30px;">可选项：<a href="https://cloud.tencent.com/document/product/213/6091">可用区列表</a></p>
+<li><strong>duration</strong></li>
+<p style="padding-left: 30px;">按照预留实例计费【<strong>有效期</strong>】即预留实例计费购买时长进行过滤。形如：31536000。</p><p style="padding-left: 30px;">类型：Integer</p><p style="padding-left: 30px;">计量单位：秒</p><p style="padding-left: 30px;">必选：否</p><p style="padding-left: 30px;">可选项：31536000 (1年) | 94608000（3年）</p>
+<li><strong>instance-type</strong></li>
+<p style="padding-left: 30px;">按照【<strong>预留实例计费类型</strong>】进行过滤。形如：S3.MEDIUM4。</p><p style="padding-left: 30px;">类型：String</p><p style="padding-left: 30px;">必选：否</p><p style="padding-left: 30px;">可选项：<a href="https://cloud.tencent.com/document/product/213/11518">预留实例计费类型列表</a></p>
+<li><strong>offering-type</strong></li>
+<p style="padding-left: 30px;">按照【<strong>付款类型</strong>】进行过滤。形如：All Upfront (预付全部费用)。</p><p style="padding-left: 30px;">类型：String</p><p style="padding-left: 30px;">必选：否</p><p style="padding-left: 30px;">可选项：All Upfront (预付全部费用)</p>
+<li><strong>product-description</strong></li>
+<p style="padding-left: 30px;">按照预留实例计费的【<strong>平台描述</strong>】（即操作系统）进行过滤。形如：linux。</p><p style="padding-left: 30px;">类型：String</p><p style="padding-left: 30px;">必选：否</p><p style="padding-left: 30px;">可选项：linux</p>
+<li><strong>reserved-instances-offering-id</strong></li>
+<p style="padding-left: 30px;">按照【<strong>预留实例计费配置ID</strong>】进行过滤。形如：650c138f-ae7e-4750-952a-96841d6e9fc1。</p><p style="padding-left: 30px;">类型：String</p><p style="padding-left: 30px;">必选：否</p>
+每次请求的`Filters`的上限为10，`Filter.Values`的上限为5。
+        :type Filters: list of Filter
+        """
+        self.DryRun = None
+        self.Offset = None
+        self.Limit = None
+        self.MaxDuration = None
+        self.MinDuration = None
+        self.Filters = None
+
+
+    def _deserialize(self, params):
+        self.DryRun = params.get("DryRun")
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+        self.MaxDuration = params.get("MaxDuration")
+        self.MinDuration = params.get("MinDuration")
+        if params.get("Filters") is not None:
+            self.Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self.Filters.append(obj)
+
+
+class DescribeReservedInstancesOfferingsResponse(AbstractModel):
+    """DescribeReservedInstancesOfferings返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param TotalCount: 符合条件的预留实例计费数量。
+        :type TotalCount: int
+        :param ReservedInstancesOfferingsSet: 符合条件的预留实例计费列表。
+        :type ReservedInstancesOfferingsSet: list of ReservedInstancesOffering
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.ReservedInstancesOfferingsSet = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("ReservedInstancesOfferingsSet") is not None:
+            self.ReservedInstancesOfferingsSet = []
+            for item in params.get("ReservedInstancesOfferingsSet"):
+                obj = ReservedInstancesOffering()
+                obj._deserialize(item)
+                self.ReservedInstancesOfferingsSet.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeReservedInstancesRequest(AbstractModel):
+    """DescribeReservedInstances请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param DryRun: 试运行。默认为 false。
+        :type DryRun: bool
+        :param Offset: 偏移量，默认为0。关于`Offset`的更进一步介绍请参考 API [简介](https://cloud.tencent.com/document/api/213/15688)中的相关小节。
+        :type Offset: int
+        :param Limit: 返回数量，默认为20，最大值为100。关于`Limit`的更进一步介绍请参考 API [简介](https://cloud.tencent.com/document/api/213/15688)中的相关小节。
+        :type Limit: int
+        :param Filters: <li><strong>zone</strong></li>
+<p style="padding-left: 30px;">按照预留实例计费可购买的【<strong>可用区</strong>】进行过滤。形如：ap-guangzhou-1。</p><p style="padding-left: 30px;">类型：String</p><p style="padding-left: 30px;">必选：否</p><p style="padding-left: 30px;">可选项：<a href="https://cloud.tencent.com/document/product/213/6091">可用区列表</a></p>
+<li><strong>duration</strong></li>
+<p style="padding-left: 30px;">按照预留实例计费【<strong>有效期</strong>】即预留实例计费购买时长进行过滤。形如：31536000。</p><p style="padding-left: 30px;">类型：Integer</p><p style="padding-left: 30px;">计量单位：秒</p><p style="padding-left: 30px;">必选：否</p><p style="padding-left: 30px;">可选项：31536000 (1年) | 94608000（3年）</p>
+<li><strong>instance-type</strong></li>
+<p style="padding-left: 30px;">按照【<strong>预留实例计费类型</strong>】进行过滤。形如：S3.MEDIUM4。</p><p style="padding-left: 30px;">类型：String</p><p style="padding-left: 30px;">必选：否</p><p style="padding-left: 30px;">可选项：<a href="https://cloud.tencent.com/document/product/213/11518">预留实例计费类型列表</a></p>
+<li><strong>offering-type</strong></li>
+<p style="padding-left: 30px;">按照【<strong>付款类型</strong>】进行过滤。形如：All Upfront (预付全部费用)。</p><p style="padding-left: 30px;">类型：String</p><p style="padding-left: 30px;">必选：否</p><p style="padding-left: 30px;">可选项：All Upfront (预付全部费用)</p>
+<li><strong>product-description</strong></li>
+<p style="padding-left: 30px;">按照预留实例计费的【<strong>平台描述</strong>】（即操作系统）进行过滤。形如：linux。</p><p style="padding-left: 30px;">类型：String</p><p style="padding-left: 30px;">必选：否</p><p style="padding-left: 30px;">可选项：linux</p>
+<li><strong>reserved-instances-id</strong></li>
+<p style="padding-left: 30px;">按照已购买【<strong>预留实例计费ID</strong>】进行过滤。形如：650c138f-ae7e-4750-952a-96841d6e9fc1。</p><p style="padding-left: 30px;">类型：String</p><p style="padding-left: 30px;">必选：否</p>
+<li><strong>state</strong></li>
+<p style="padding-left: 30px;">按照已购买【<strong>预留实例计费状态</strong>】进行过滤。形如：active。</p><p style="padding-left: 30px;">类型：String</p><p style="padding-left: 30px;">必选：否</p><p style="padding-left: 30px;">可选项：active (以创建) | pending (等待被创建) | retired (过期)</p>
+每次请求的`Filters`的上限为10，`Filter.Values`的上限为5。
+        :type Filters: list of Filter
+        """
+        self.DryRun = None
+        self.Offset = None
+        self.Limit = None
+        self.Filters = None
+
+
+    def _deserialize(self, params):
+        self.DryRun = params.get("DryRun")
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+        if params.get("Filters") is not None:
+            self.Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self.Filters.append(obj)
+
+
+class DescribeReservedInstancesResponse(AbstractModel):
+    """DescribeReservedInstances返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param TotalCount: 符合条件的预留实例计费数量。
+        :type TotalCount: int
+        :param ReservedInstancesSet: 符合条件的预留实例计费列表。
+        :type ReservedInstancesSet: list of ReservedInstances
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.ReservedInstancesSet = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("ReservedInstancesSet") is not None:
+            self.ReservedInstancesSet = []
+            for item in params.get("ReservedInstancesSet"):
+                obj = ReservedInstances()
+                obj._deserialize(item)
+                self.ReservedInstancesSet.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeZoneInstanceConfigInfosRequest(AbstractModel):
     """DescribeZoneInstanceConfigInfos请求参数结构体
 
@@ -2494,6 +2660,18 @@ class Instance(AbstractModel):
         :type StopChargingMode: str
         :param Uuid: 实例全局唯一ID
         :type Uuid: str
+        :param LatestOperation: 实例的最新操作。例：StopInstances、ResetInstance。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LatestOperation: str
+        :param LatestOperationState: 实例的最新操作状态。取值范围：<br>
+<li>SUCCESS：表示操作成功<br>
+<li>OPERATING：表示操作执行中<br>
+<li>FAILED：表示操作失败
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LatestOperationState: str
+        :param LatestOperationRequestId: 实例最新操作的唯一请求 ID。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LatestOperationRequestId: str
         """
         self.Placement = None
         self.InstanceId = None
@@ -2520,6 +2698,9 @@ class Instance(AbstractModel):
         self.Tags = None
         self.StopChargingMode = None
         self.Uuid = None
+        self.LatestOperation = None
+        self.LatestOperationState = None
+        self.LatestOperationRequestId = None
 
 
     def _deserialize(self, params):
@@ -2568,6 +2749,9 @@ class Instance(AbstractModel):
                 self.Tags.append(obj)
         self.StopChargingMode = params.get("StopChargingMode")
         self.Uuid = params.get("Uuid")
+        self.LatestOperation = params.get("LatestOperation")
+        self.LatestOperationState = params.get("LatestOperationState")
+        self.LatestOperationRequestId = params.get("LatestOperationRequestId")
 
 
 class InstanceChargePrepaid(AbstractModel):
@@ -3501,6 +3685,56 @@ class Price(AbstractModel):
             self.BandwidthPrice._deserialize(params.get("BandwidthPrice"))
 
 
+class PurchaseReservedInstancesOfferingRequest(AbstractModel):
+    """PurchaseReservedInstancesOffering请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param InstanceCount: 购买预留实例计费数量
+        :type InstanceCount: int
+        :param ReservedInstancesOfferingId: 预留实例计费配置ID
+        :type ReservedInstancesOfferingId: str
+        :param DryRun: 试运行
+        :type DryRun: bool
+        :param ClientToken: 用于保证请求幂等性的字符串。该字符串由客户生成，需保证不同请求之间唯一，最大值不超过64个ASCII字符。若不指定该参数，则无法保证请求的幂等性。<br>更多详细信息请参阅：如何保证幂等性
+        :type ClientToken: str
+        """
+        self.InstanceCount = None
+        self.ReservedInstancesOfferingId = None
+        self.DryRun = None
+        self.ClientToken = None
+
+
+    def _deserialize(self, params):
+        self.InstanceCount = params.get("InstanceCount")
+        self.ReservedInstancesOfferingId = params.get("ReservedInstancesOfferingId")
+        self.DryRun = params.get("DryRun")
+        self.ClientToken = params.get("ClientToken")
+
+
+class PurchaseReservedInstancesOfferingResponse(AbstractModel):
+    """PurchaseReservedInstancesOffering返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ReservedInstanceId: 已购买预留实例计费ID
+        :type ReservedInstanceId: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.ReservedInstanceId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.ReservedInstanceId = params.get("ReservedInstanceId")
+        self.RequestId = params.get("RequestId")
+
+
 class RebootInstancesRequest(AbstractModel):
     """RebootInstances请求参数结构体
 
@@ -3650,6 +3884,128 @@ class RenewInstancesResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
+
+
+class ReservedInstances(AbstractModel):
+    """描述用户已购买预留实例计费信息
+
+    """
+
+    def __init__(self):
+        """
+        :param ReservedInstancesId: 已购买的预留实例计费ID。形如：650c138f-ae7e-4750-952a-96841d6e9fc1。
+        :type ReservedInstancesId: str
+        :param InstanceType: 预留实例计费的类型。形如：S3.MEDIUM4。
+返回项：<a href="https://cloud.tencent.com/document/product/213/11518">预留实例计费类型列表</a>
+        :type InstanceType: str
+        :param Zone: 预留实例计费可购买的可用区。形如：ap-guangzhou-1。
+返回项：<a href="https://cloud.tencent.com/document/product/213/6091">可用区列表</a>
+        :type Zone: str
+        :param StartTime: 预留实例计费开始时间。形如：1949-10-01 00:00:00
+        :type StartTime: str
+        :param EndTime: 预留实例计费到期时间。形如：1949-10-01 00:00:00
+        :type EndTime: str
+        :param Duration: 预留实例计费【有效期】即预留实例计费购买时长。形如：31536000。
+计量单位：秒。
+        :type Duration: int
+        :param InstanceCount: 已购买的预留实例计费个数。形如：10。
+        :type InstanceCount: int
+        :param ProductDescription: 描述预留实例计费的平台描述（即操作系统）。形如：linux。
+返回项： linux 。
+        :type ProductDescription: str
+        :param State: 预留实例计费购买的状态。形如：active
+返回项： active (以创建) | pending (等待被创建) | retired (过期)。
+        :type State: str
+        :param CurrencyCode: 可购买的预留实例计费类型的结算货币，使用ISO 4217标准货币代码。形如：USD。
+返回项：USD（美元）。
+        :type CurrencyCode: str
+        :param OfferingType: 预留实例计费的付款类型。形如：All Upfront。
+返回项： All Upfront (预付全部费用)。
+        :type OfferingType: str
+        """
+        self.ReservedInstancesId = None
+        self.InstanceType = None
+        self.Zone = None
+        self.StartTime = None
+        self.EndTime = None
+        self.Duration = None
+        self.InstanceCount = None
+        self.ProductDescription = None
+        self.State = None
+        self.CurrencyCode = None
+        self.OfferingType = None
+
+
+    def _deserialize(self, params):
+        self.ReservedInstancesId = params.get("ReservedInstancesId")
+        self.InstanceType = params.get("InstanceType")
+        self.Zone = params.get("Zone")
+        self.StartTime = params.get("StartTime")
+        self.EndTime = params.get("EndTime")
+        self.Duration = params.get("Duration")
+        self.InstanceCount = params.get("InstanceCount")
+        self.ProductDescription = params.get("ProductDescription")
+        self.State = params.get("State")
+        self.CurrencyCode = params.get("CurrencyCode")
+        self.OfferingType = params.get("OfferingType")
+
+
+class ReservedInstancesOffering(AbstractModel):
+    """描述可购买预留实例计费信息
+
+    """
+
+    def __init__(self):
+        """
+        :param Zone: 预留实例计费可购买的可用区。形如：ap-guangzhou-1。
+返回项：<a href="https://cloud.tencent.com/document/product/213/6091">可用区列表</a>
+        :type Zone: str
+        :param CurrencyCode: 可购买的预留实例计费类型的结算货币，使用ISO 4217标准货币代码。
+返回项：USD（美元）。
+        :type CurrencyCode: str
+        :param Duration: 预留实例计费【有效期】即预留实例计费购买时长。形如：31536000。
+计量单位：秒
+        :type Duration: int
+        :param FixedPrice: 预留实例计费的购买价格。形如：4000.0。
+计量单位：与 currencyCode 一致，目前支持 USD（美元）
+        :type FixedPrice: float
+        :param InstanceType: 预留实例计费的实例类型。形如：S3.MEDIUM4。
+返回项：<a href="https://cloud.tencent.com/product/cvm/instances">预留实例计费类型列表</a>
+        :type InstanceType: str
+        :param OfferingType: 预留实例计费的付款类型。形如：All Upfront。
+返回项： All Upfront (预付全部费用)。
+        :type OfferingType: str
+        :param ReservedInstancesOfferingId: 可购买的预留实例计费配置ID。形如：650c138f-ae7e-4750-952a-96841d6e9fc1。
+        :type ReservedInstancesOfferingId: str
+        :param ProductDescription: 预留实例计费的平台描述（即操作系统）。形如：linux。
+返回项： linux 。
+        :type ProductDescription: str
+        :param UsagePrice: 扣除预付费之后的使用价格 (按小时计费)。形如：0.0。
+目前，因为只支持 All Upfront 付款类型，所以默认为 0元/小时。
+计量单位：元/小时，货币单位与 currencyCode 一致，目前支持 USD（美元）
+        :type UsagePrice: float
+        """
+        self.Zone = None
+        self.CurrencyCode = None
+        self.Duration = None
+        self.FixedPrice = None
+        self.InstanceType = None
+        self.OfferingType = None
+        self.ReservedInstancesOfferingId = None
+        self.ProductDescription = None
+        self.UsagePrice = None
+
+
+    def _deserialize(self, params):
+        self.Zone = params.get("Zone")
+        self.CurrencyCode = params.get("CurrencyCode")
+        self.Duration = params.get("Duration")
+        self.FixedPrice = params.get("FixedPrice")
+        self.InstanceType = params.get("InstanceType")
+        self.OfferingType = params.get("OfferingType")
+        self.ReservedInstancesOfferingId = params.get("ReservedInstancesOfferingId")
+        self.ProductDescription = params.get("ProductDescription")
+        self.UsagePrice = params.get("UsagePrice")
 
 
 class ResetInstanceRequest(AbstractModel):

@@ -680,6 +680,35 @@ class ClbClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def ModifyDomainAttributes(self, request):
+        """ModifyDomainAttributes接口用于修改负载均衡7层监听器转发规则的域名级别属性，如修改域名、修改DefaultServer、开启/关闭Http2、修改证书。
+        本接口为异步接口，本接口返回成功后，需以返回的RequestId为入参，调用DescribeTaskStatus接口查询本次任务是否成功。
+
+        :param request: 调用ModifyDomainAttributes所需参数的结构体。
+        :type request: :class:`tencentcloud.clb.v20180317.models.ModifyDomainAttributesRequest`
+        :rtype: :class:`tencentcloud.clb.v20180317.models.ModifyDomainAttributesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ModifyDomainAttributes", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ModifyDomainAttributesResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def ModifyListener(self, request):
         """ModifyListener接口用来修改负载均衡监听器的属性，包括监听器名称、健康检查参数、证书信息、转发策略等。本接口不支持传统型负载均衡。
         本接口为异步接口，本接口返回成功后需以返回的RequestID为入参，调用DescribeTaskStatus接口查询本次任务是否成功。
