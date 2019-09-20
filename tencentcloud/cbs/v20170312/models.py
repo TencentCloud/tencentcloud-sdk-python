@@ -892,6 +892,49 @@ class DescribeSnapshotOperationLogsResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeSnapshotSharePermissionRequest(AbstractModel):
+    """DescribeSnapshotSharePermission请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param SnapshotId: 要查询快照的ID。可通过[DescribeSnapshots](https://cloud.tencent.com/document/api/362/15647)查询获取。
+        :type SnapshotId: str
+        """
+        self.SnapshotId = None
+
+
+    def _deserialize(self, params):
+        self.SnapshotId = params.get("SnapshotId")
+
+
+class DescribeSnapshotSharePermissionResponse(AbstractModel):
+    """DescribeSnapshotSharePermission返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param SharePermissionSet: 快照的分享信息的集合
+        :type SharePermissionSet: list of SharePermission
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.SharePermissionSet = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("SharePermissionSet") is not None:
+            self.SharePermissionSet = []
+            for item in params.get("SharePermissionSet"):
+                obj = SharePermission()
+                obj._deserialize(item)
+                self.SharePermissionSet.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeSnapshotsRequest(AbstractModel):
     """DescribeSnapshots请求参数结构体
 
@@ -1080,12 +1123,10 @@ class Disk(AbstractModel):
         :type Shareable: bool
         :param InstanceIdList: 对于非共享型云盘，该参数为空数组。对于共享型云盘，则表示该云盘当前被挂载到的CVM实例InstanceId
         :type InstanceIdList: list of str
-        :param AttachDeviceId: 云硬盘挂载目标设备的ID
-注意：此字段可能返回 null，表示取不到有效值。
-        :type AttachDeviceId: str
-        :param AttachDeviceType: 云硬盘挂载目标设备的类型，目前包括CVM和POD
-注意：此字段可能返回 null，表示取不到有效值。
-        :type AttachDeviceType: str
+        :param SnapshotCount: 云盘拥有的快照总数。
+        :type SnapshotCount: int
+        :param SnapshotSize: 云盘拥有的快照总容量，单位为MB。
+        :type SnapshotSize: int
         """
         self.DiskId = None
         self.DiskUsage = None
@@ -1117,8 +1158,8 @@ class Disk(AbstractModel):
         self.MigratePercent = None
         self.Shareable = None
         self.InstanceIdList = None
-        self.AttachDeviceId = None
-        self.AttachDeviceType = None
+        self.SnapshotCount = None
+        self.SnapshotSize = None
 
 
     def _deserialize(self, params):
@@ -1159,8 +1200,8 @@ class Disk(AbstractModel):
         self.MigratePercent = params.get("MigratePercent")
         self.Shareable = params.get("Shareable")
         self.InstanceIdList = params.get("InstanceIdList")
-        self.AttachDeviceId = params.get("AttachDeviceId")
-        self.AttachDeviceType = params.get("AttachDeviceType")
+        self.SnapshotCount = params.get("SnapshotCount")
+        self.SnapshotSize = params.get("SnapshotSize")
 
 
 class DiskChargePrepaid(AbstractModel):
@@ -1610,6 +1651,46 @@ class ModifyDiskAttributesResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class ModifyDisksChargeTypeRequest(AbstractModel):
+    """ModifyDisksChargeType请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param DiskIds: 一个或多个待操作的云硬盘ID。每次请求批量云盘上限为100。
+        :type DiskIds: list of str
+        :param DiskChargePrepaid: 预付费模式，即包年包月相关参数设置。通过该参数可以指定包年包月实例的购买时长、是否设置自动续费等属性。
+        :type DiskChargePrepaid: :class:`tencentcloud.cbs.v20170312.models.DiskChargePrepaid`
+        """
+        self.DiskIds = None
+        self.DiskChargePrepaid = None
+
+
+    def _deserialize(self, params):
+        self.DiskIds = params.get("DiskIds")
+        if params.get("DiskChargePrepaid") is not None:
+            self.DiskChargePrepaid = DiskChargePrepaid()
+            self.DiskChargePrepaid._deserialize(params.get("DiskChargePrepaid"))
+
+
+class ModifyDisksChargeTypeResponse(AbstractModel):
+    """ModifyDisksChargeType返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class ModifyDisksRenewFlagRequest(AbstractModel):
     """ModifyDisksRenewFlag请求参数结构体
 
@@ -1675,6 +1756,48 @@ class ModifySnapshotAttributeRequest(AbstractModel):
 
 class ModifySnapshotAttributeResponse(AbstractModel):
     """ModifySnapshotAttribute返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class ModifySnapshotsSharePermissionRequest(AbstractModel):
+    """ModifySnapshotsSharePermission请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param AccountIds: 接收分享快照的账号Id列表，array型参数的格式可以参考[API简介](https://cloud.tencent.com/document/api/213/568)。帐号ID不同于QQ号，查询用户帐号ID请查看[帐号信息](https://console.cloud.tencent.com/developer)中的帐号ID栏。
+        :type AccountIds: list of str
+        :param Permission: 操作，包括 SHARE，CANCEL。其中SHARE代表分享操作，CANCEL代表取消分享操作。
+        :type Permission: str
+        :param SnapshotIds: 快照ID, 可通过[DescribeSnapshots](https://cloud.tencent.com/document/api/362/15647)查询获取。
+        :type SnapshotIds: list of str
+        """
+        self.AccountIds = None
+        self.Permission = None
+        self.SnapshotIds = None
+
+
+    def _deserialize(self, params):
+        self.AccountIds = params.get("AccountIds")
+        self.Permission = params.get("Permission")
+        self.SnapshotIds = params.get("SnapshotIds")
+
+
+class ModifySnapshotsSharePermissionResponse(AbstractModel):
+    """ModifySnapshotsSharePermission返回参数结构体
 
     """
 
@@ -1884,6 +2007,27 @@ class ResizeDiskResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class SharePermission(AbstractModel):
+    """快照分享信息集合
+
+    """
+
+    def __init__(self):
+        """
+        :param CreatedTime: 快照分享的时间
+        :type CreatedTime: str
+        :param AccountId: 分享的账号Id
+        :type AccountId: str
+        """
+        self.CreatedTime = None
+        self.AccountId = None
+
+
+    def _deserialize(self, params):
+        self.CreatedTime = params.get("CreatedTime")
+        self.AccountId = params.get("AccountId")
+
+
 class Snapshot(AbstractModel):
     """描述了快照的详细信息
 
@@ -1925,6 +2069,8 @@ class Snapshot(AbstractModel):
         :type ImageCount: int
         :param SnapshotType: 快照类型，目前该项取值可以为PRIVATE_SNAPSHOT或者SHARED_SNAPSHOT
         :type SnapshotType: str
+        :param ShareReference: 快照当前被共享数
+        :type ShareReference: int
         """
         self.SnapshotId = None
         self.Placement = None
@@ -1943,6 +2089,7 @@ class Snapshot(AbstractModel):
         self.Images = None
         self.ImageCount = None
         self.SnapshotType = None
+        self.ShareReference = None
 
 
     def _deserialize(self, params):
@@ -1970,6 +2117,7 @@ class Snapshot(AbstractModel):
                 self.Images.append(obj)
         self.ImageCount = params.get("ImageCount")
         self.SnapshotType = params.get("SnapshotType")
+        self.ShareReference = params.get("ShareReference")
 
 
 class SnapshotOperationLog(AbstractModel):

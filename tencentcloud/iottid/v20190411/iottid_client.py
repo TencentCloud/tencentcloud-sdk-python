@@ -138,7 +138,7 @@ class IottidClient(AbstractClient):
 
 
     def DescribeAvailableLibCount(self, request):
-        """查询指定订单的可空发的白盒秘钥数量
+        """查询指定订单的可空发的白盒密钥数量
 
         :param request: 调用DescribeAvailableLibCount所需参数的结构体。
         :type request: :class:`tencentcloud.iottid.v20190411.models.DescribeAvailableLibCountRequest`

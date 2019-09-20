@@ -222,7 +222,7 @@ class DescribeAvailableLibCountResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param Quantity: 可空发的白盒秘钥数量
+        :param Quantity: 可空发的白盒密钥数量
         :type Quantity: int
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -334,7 +334,7 @@ class TidKeysInfo(AbstractModel):
         :type PrivateKey: str
         :param Psk: 共享密钥
         :type Psk: str
-        :param DownloadUrl: 软加固白盒秘钥下载地址
+        :param DownloadUrl: 软加固白盒密钥下载地址
         :type DownloadUrl: str
         :param DeviceCode: 软加固设备标识码
         :type DeviceCode: str

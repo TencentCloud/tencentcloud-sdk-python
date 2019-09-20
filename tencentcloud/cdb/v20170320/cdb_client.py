@@ -520,7 +520,9 @@ class CdbClient(AbstractClient):
 
 
     def DescribeBackupDatabases(self, request):
-        """本接口(DescribeBackupDatabases)用于查询备份数据库列表 (将废弃)。
+        """本接口(DescribeBackupDatabases)用于查询备份文件包含的库 (已废弃)。
+        旧版本支持全量备份后，用户如果分库表下载逻辑备份文件，需要用到此接口。
+        新版本支持(CreateBackup)创建逻辑备份的时候，直接发起指定库表备份，用户直接下载该备份文件即可。
 
         :param request: 调用DescribeBackupDatabases所需参数的结构体。
         :type request: :class:`tencentcloud.cdb.v20170320.models.DescribeBackupDatabasesRequest`
@@ -548,7 +550,9 @@ class CdbClient(AbstractClient):
 
 
     def DescribeBackupTables(self, request):
-        """本接口(DescribeBackupTables)用于查询指定的数据库的备份数据表名 (将废弃)。
+        """本接口(DescribeBackupTables)用于查询指定的数据库的备份数据表名 (已废弃)。
+        旧版本支持全量备份后，用户如果分库表下载逻辑备份文件，需要用到此接口。
+        新版本支持(CreateBackup)创建逻辑备份的时候，直接发起指定库表备份，用户直接下载该备份文件即可。
 
         :param request: 调用DescribeBackupTables所需参数的结构体。
         :type request: :class:`tencentcloud.cdb.v20170320.models.DescribeBackupTablesRequest`
@@ -2072,7 +2076,7 @@ class CdbClient(AbstractClient):
 
 
     def UpgradeDBInstance(self, request):
-        """本接口(UpgradeDBInstance)用于升级云数据库实例，实例类型支持主实例、灾备实例和只读实例。
+        """本接口(UpgradeDBInstance)用于升级或降级云数据库实例的配置，实例类型支持主实例、灾备实例和只读实例。
 
         :param request: 调用UpgradeDBInstance所需参数的结构体。
         :type request: :class:`tencentcloud.cdb.v20170320.models.UpgradeDBInstanceRequest`

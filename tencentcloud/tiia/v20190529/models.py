@@ -554,13 +554,14 @@ class ImageModerationRequest(AbstractModel):
 1. PORN，即色情识别
 2. TERRORISM，即暴恐识别
 3. POLITICS，即政治敏感识别
+4. TEXT, 即图像文本识别
 
 支持多场景（Scenes）一起检测。例如，使用 Scenes=["PORN", "TERRORISM"]，即对一张图片同时进行色情识别和暴恐识别。
         :type Scenes: list of str
         :param ImageUrl: 图片URL地址。 
 图片限制： 
  • 图片格式：PNG、JPG、JPEG。 
- • 图片大小：所下载图片经Base64编码后不超过4M。图片下载时间不超过3秒。 
+ • 图片大小：所下载图片经Base64编码后不超过4M。图片下载时间不超过3秒。 TEXT场景要求图片经Base64编码后不超过3M。
  • 图片像素：大于50*50像素，否则影响识别效果； 
  • 长宽比：长边：短边<5； 
 接口响应时间会受到图片下载时间的影响，建议使用更可靠的存储服务，推荐将图片存储在腾讯云COS。
@@ -613,6 +614,9 @@ BLOCK：违规
         :param DisgustResult: 恶心内容识别结果。
 注意：此字段可能返回 null，表示取不到有效值。
         :type DisgustResult: :class:`tencentcloud.tiia.v20190529.models.DisgustResult`
+        :param TextResult: 文字识别结果。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TextResult: :class:`tencentcloud.tiia.v20190529.models.TextResult`
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -622,6 +626,7 @@ BLOCK：违规
         self.PoliticsResult = None
         self.Extra = None
         self.DisgustResult = None
+        self.TextResult = None
         self.RequestId = None
 
 
@@ -640,6 +645,9 @@ BLOCK：违规
         if params.get("DisgustResult") is not None:
             self.DisgustResult = DisgustResult()
             self.DisgustResult._deserialize(params.get("DisgustResult"))
+        if params.get("TextResult") is not None:
+            self.TextResult = TextResult()
+            self.TextResult._deserialize(params.get("TextResult"))
         self.RequestId = params.get("RequestId")
 
 
@@ -937,3 +945,63 @@ Type为FACE时：
                 self.FaceResults.append(obj)
         self.AdvancedInfo = params.get("AdvancedInfo")
         self.Type = params.get("Type")
+
+
+class TextResult(AbstractModel):
+    """色情识别结果。
+
+    """
+
+    def __init__(self):
+        """
+        :param Code: 该识别场景的错误码：
+0表示成功，
+-1表示系统错误，
+-2表示引擎错误，
+-1400表示图片解码失败，
+-1401表示图片不符合规范。
+-1402表示图片文件太大。
+        :type Code: int
+        :param Msg: 错误码描述信息。
+        :type Msg: str
+        :param Suggestion: 识别场景的审核结论：
+PASS：正常
+REVIEW：疑似
+BLOCK：违规
+        :type Suggestion: str
+        :param Confidence: 算法对于识别结果的置信度，0-100之间，值越高，表示对于结论越确定。
+        :type Confidence: int
+        :param Keywords: 识别到的关键词数组
+        :type Keywords: list of str
+        :param Type: 图片中是否包含敏感文本内容。
+包含：
+NOTEXT：无文本
+NORMAL：内容正常
+ADS：广告推广
+POLITICS：政治
+PORN：色情
+DRUGS：涉毒
+CURSE：谩骂
+TERRORISM：暴恐
+OTHERS：其他
+        :type Type: str
+        :param AdvancedInfo: 预留字段，后期用于展示更多识别信息。
+        :type AdvancedInfo: str
+        """
+        self.Code = None
+        self.Msg = None
+        self.Suggestion = None
+        self.Confidence = None
+        self.Keywords = None
+        self.Type = None
+        self.AdvancedInfo = None
+
+
+    def _deserialize(self, params):
+        self.Code = params.get("Code")
+        self.Msg = params.get("Msg")
+        self.Suggestion = params.get("Suggestion")
+        self.Confidence = params.get("Confidence")
+        self.Keywords = params.get("Keywords")
+        self.Type = params.get("Type")
+        self.AdvancedInfo = params.get("AdvancedInfo")

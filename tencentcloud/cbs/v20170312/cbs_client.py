@@ -482,6 +482,34 @@ class CbsClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeSnapshotSharePermission(self, request):
+        """本接口（DescribeSnapshotSharePermission）用于查询快照的分享信息。
+
+        :param request: 调用DescribeSnapshotSharePermission所需参数的结构体。
+        :type request: :class:`tencentcloud.cbs.v20170312.models.DescribeSnapshotSharePermissionRequest`
+        :rtype: :class:`tencentcloud.cbs.v20170312.models.DescribeSnapshotSharePermissionResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeSnapshotSharePermission", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeSnapshotSharePermissionResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeSnapshots(self, request):
         """本接口（DescribeSnapshots）用于查询快照的详细信息。
 
@@ -697,6 +725,40 @@ class CbsClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def ModifyDisksChargeType(self, request):
+        """接口请求域名： cbs.tencentcloudapi.com 。
+
+        本接口 (ModifyDisksChargeType) 用于切换云盘的计费模式。
+
+        只支持从 POSTPAID_BY_HOUR 计费模式切换为PREPAID计费模式。
+        非弹性云盘不支持此接口，请通过修改实例计费模式接口将实例连同非弹性云盘一起转换。
+        默认接口请求频率限制：10次/秒。
+
+        :param request: 调用ModifyDisksChargeType所需参数的结构体。
+        :type request: :class:`tencentcloud.cbs.v20170312.models.ModifyDisksChargeTypeRequest`
+        :rtype: :class:`tencentcloud.cbs.v20170312.models.ModifyDisksChargeTypeResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ModifyDisksChargeType", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ModifyDisksChargeTypeResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def ModifyDisksRenewFlag(self, request):
         """本接口（ModifyDisksRenewFlag）用于修改云硬盘续费标识，支持批量修改。
 
@@ -742,6 +804,40 @@ class CbsClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifySnapshotAttributeResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ModifySnapshotsSharePermission(self, request):
+        """本接口（ModifySnapshotsSharePermission）用于修改快照分享信息。
+
+        分享快照后，被分享账户可以通过该快照创建云硬盘。
+        * 每个快照最多可分享给50个账户。
+        * 分享快照无法更改名称，描述，仅可用于创建云硬盘。
+        * 只支持分享到对方账户相同地域。
+        * 仅支持分享数据盘快照。
+
+        :param request: 调用ModifySnapshotsSharePermission所需参数的结构体。
+        :type request: :class:`tencentcloud.cbs.v20170312.models.ModifySnapshotsSharePermissionRequest`
+        :rtype: :class:`tencentcloud.cbs.v20170312.models.ModifySnapshotsSharePermissionResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ModifySnapshotsSharePermission", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ModifySnapshotsSharePermissionResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

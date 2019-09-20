@@ -169,11 +169,15 @@ B 图片的 Url、Image必须提供一个，如果都提供，只使用 Url。
 若图片中包含多张人脸，只选取其中人脸面积最大的人脸。
 支持PNG、JPG、JPEG、BMP，不支持 GIF 图片。
         :type UrlB: str
+        :param FaceModelVersion: 人脸识别服务所用的算法模型版本。目前入参支持 “2.0”和“3.0“ 两个输入。
+不同算法模型版本对应的人脸识别算法不同，新版本的整体效果会优于旧版本，建议使用“3.0”版本。
+        :type FaceModelVersion: str
         """
         self.ImageA = None
         self.ImageB = None
         self.UrlA = None
         self.UrlB = None
+        self.FaceModelVersion = None
 
 
     def _deserialize(self, params):
@@ -181,6 +185,7 @@ B 图片的 Url、Image必须提供一个，如果都提供，只使用 Url。
         self.ImageB = params.get("ImageB")
         self.UrlA = params.get("UrlA")
         self.UrlB = params.get("UrlB")
+        self.FaceModelVersion = params.get("FaceModelVersion")
 
 
 class CompareFaceResponse(AbstractModel):
@@ -190,20 +195,25 @@ class CompareFaceResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param Score: 两张图片中人脸的相似度分数。 
-若需要验证两张图片中人脸是否为同一人，则误识率千分之一对应分数为70分，误识率万分之一对应分数为80分，误识率十万分之一对应分数为90分。  
-一般超过80分则可认定为同一人。 
+        :param Score: 两张图片中人脸的相似度分数。
+不同算法版本返回的相似度分数不同。 
+若需要验证两张图片中人脸是否为同一人，3.0版本误识率千分之一对应分数为40分，误识率万分之一对应分数为50分，误识率十万分之一对应分数为60分。  一般超过50分则可认定为同一人。 
+2.0版本误识率千分之一对应分数为70分，误识率万分之一对应分数为80分，误识率十万分之一对应分数为90分。 一般超过80分则可认定为同一人。 
 若需要验证两张图片中的人脸是否为同一人，建议使用人脸验证接口。
         :type Score: float
+        :param FaceModelVersion: 人脸识别所用的算法模型版本。
+        :type FaceModelVersion: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.Score = None
+        self.FaceModelVersion = None
         self.RequestId = None
 
 
     def _deserialize(self, params):
         self.Score = params.get("Score")
+        self.FaceModelVersion = params.get("FaceModelVersion")
         self.RequestId = params.get("RequestId")
 
 
@@ -625,7 +635,7 @@ Url、Image必须提供一个，如果都提供，只使用 Url。
         :type NeedQualityDetection: int
         :param FaceModelVersion: 人脸识别服务所用的算法模型版本。目前入参支持 “2.0”和“3.0“ 两个输入。  
 默认为"2.0"。 
-不同算法模型版本对应的人脸识别算法不同，新版本的整体效果会优于旧版本，建议使用最新版本。
+不同算法模型版本对应的人脸识别算法不同，新版本的整体效果会优于旧版本，建议使用“3.0”版本。
         :type FaceModelVersion: str
         """
         self.MaxFaceNum = None
