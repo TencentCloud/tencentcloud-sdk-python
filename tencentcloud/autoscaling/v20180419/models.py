@@ -2345,10 +2345,12 @@ class LaunchConfiguration(AbstractModel):
         :type InstanceTags: list of InstanceTag
         :param VersionNumber: 版本号。
         :type VersionNumber: int
-        :param UpdatedTime: 更新时间
+        :param UpdatedTime: 更新时间。
         :type UpdatedTime: str
         :param CamRoleName: CAM角色名称。可通过DescribeRoleList接口返回值中的roleName获取。
         :type CamRoleName: str
+        :param LastOperationInstanceTypesCheckPolicy: 上次操作时，InstanceTypesCheckPolicy 取值。
+        :type LastOperationInstanceTypesCheckPolicy: str
         """
         self.ProjectId = None
         self.LaunchConfigurationId = None
@@ -2372,6 +2374,7 @@ class LaunchConfiguration(AbstractModel):
         self.VersionNumber = None
         self.UpdatedTime = None
         self.CamRoleName = None
+        self.LastOperationInstanceTypesCheckPolicy = None
 
 
     def _deserialize(self, params):
@@ -2422,6 +2425,7 @@ class LaunchConfiguration(AbstractModel):
         self.VersionNumber = params.get("VersionNumber")
         self.UpdatedTime = params.get("UpdatedTime")
         self.CamRoleName = params.get("CamRoleName")
+        self.LastOperationInstanceTypesCheckPolicy = params.get("LastOperationInstanceTypesCheckPolicy")
 
 
 class LifecycleHook(AbstractModel):
@@ -2769,10 +2773,15 @@ class ModifyLoadBalancersRequest(AbstractModel):
         :type LoadBalancerIds: list of str
         :param ForwardLoadBalancers: 应用型负载均衡器列表，目前长度上限为5，LoadBalancerIds 和 ForwardLoadBalancers 二者同时最多只能指定一个
         :type ForwardLoadBalancers: list of ForwardLoadBalancer
+        :param LoadBalancersCheckPolicy: 负载均衡器校验策略，取值包括 ALL 和 DIFF，默认取值为 ALL。
+<br><li> ALL，所有负载均衡器都合法则通过校验，否则校验报错。
+<br><li> DIFF，仅校验负载均衡器参数中实际变化的部分，如果合法则通过校验，否则校验报错。
+        :type LoadBalancersCheckPolicy: str
         """
         self.AutoScalingGroupId = None
         self.LoadBalancerIds = None
         self.ForwardLoadBalancers = None
+        self.LoadBalancersCheckPolicy = None
 
 
     def _deserialize(self, params):
@@ -2784,6 +2793,7 @@ class ModifyLoadBalancersRequest(AbstractModel):
                 obj = ForwardLoadBalancer()
                 obj._deserialize(item)
                 self.ForwardLoadBalancers.append(obj)
+        self.LoadBalancersCheckPolicy = params.get("LoadBalancersCheckPolicy")
 
 
 class ModifyLoadBalancersResponse(AbstractModel):

@@ -203,16 +203,16 @@ class BindRealServer(AbstractModel):
         :type RealServerIP: str
         :param RealServerWeight: 该源站所占权重
         :type RealServerWeight: int
-        :param RealServerStatus: 源站状态，异常状态包括IP连接不上和域名解析失败（源站为域名）。其中：
-0，源站正常；
-1，IP异常；
-2，域名解析异常。
+        :param RealServerStatus: 源站健康检查状态，其中：
+0，正常；
+1，异常。
+未开启健康检查状态时，该状态始终为正常。
 注意：此字段可能返回 null，表示取不到有效值。
         :type RealServerStatus: int
         :param RealServerPort: 源站的端口号
 注意：此字段可能返回 null，表示取不到有效值。
         :type RealServerPort: int
-        :param DownIPList: 当源站为域名时，域名被解析成一个或者多个IP，该字段表示其中异常的IP列表。
+        :param DownIPList: 当源站为域名时，域名被解析成一个或者多个IP，该字段表示其中异常的IP列表。状态异常，但该字段为空时，表示域名解析异常。
         :type DownIPList: list of str
         """
         self.RealServerId = None
@@ -941,6 +941,9 @@ class CreateProxyRequest(AbstractModel):
         :type GroupId: str
         :param TagSet: 通道需要添加的标签列表。
         :type TagSet: list of TagPair
+        :param ClonedProxyId: 被复制的通道ID。只有处于运行中状态的通道可以被复制。
+当设置该参数时，表示复制该通道。
+        :type ClonedProxyId: str
         """
         self.ProjectId = None
         self.ProxyName = None
@@ -951,6 +954,7 @@ class CreateProxyRequest(AbstractModel):
         self.ClientToken = None
         self.GroupId = None
         self.TagSet = None
+        self.ClonedProxyId = None
 
 
     def _deserialize(self, params):
@@ -968,6 +972,7 @@ class CreateProxyRequest(AbstractModel):
                 obj = TagPair()
                 obj._deserialize(item)
                 self.TagSet.append(obj)
+        self.ClonedProxyId = params.get("ClonedProxyId")
 
 
 class CreateProxyResponse(AbstractModel):
@@ -1015,6 +1020,8 @@ class CreateRuleRequest(AbstractModel):
         :param ForwardProtocol: 加速通道转发到源站的协议类型：支持HTTP或HTTPS。
 不传递该字段时表示使用对应监听器的ForwardProtocol。
         :type ForwardProtocol: str
+        :param ForwardHost: 加速通道转发到远照的host，不设置该参数时，使用默认的host设置，即客户端发起的http请求的host。
+        :type ForwardHost: str
         """
         self.ListenerId = None
         self.Domain = None
@@ -1024,6 +1031,7 @@ class CreateRuleRequest(AbstractModel):
         self.HealthCheck = None
         self.CheckParams = None
         self.ForwardProtocol = None
+        self.ForwardHost = None
 
 
     def _deserialize(self, params):
@@ -1037,6 +1045,7 @@ class CreateRuleRequest(AbstractModel):
             self.CheckParams = RuleCheckParams()
             self.CheckParams._deserialize(params.get("CheckParams"))
         self.ForwardProtocol = params.get("ForwardProtocol")
+        self.ForwardHost = params.get("ForwardHost")
 
 
 class CreateRuleResponse(AbstractModel):
@@ -2138,12 +2147,12 @@ class DescribeListenerStatisticsRequest(AbstractModel):
         :type StartTime: str
         :param EndTime: 结束时间
         :type EndTime: str
-        :param MetricNames: 统计指标名称列表，支持["InBandwidth", "OutBandwidth", "Concurrent", "InPackets", "OutPackets"]
+        :param MetricNames: 统计指标名称列表，支持: 入带宽:InBandwidth, 出带宽:OutBandwidth, 并发:Concurrent, 入包量:InPackets, 出包量:OutPackets。
         :type MetricNames: list of str
         :param Granularity: 监控粒度，目前支持300，3600，86400，单位：秒。
-当时间范围<=1d，支持最小粒度300s；
-当时间范围<=7d，支持最小粒度3600s；
-当时间范围>7d，支持最小粒度86400s。
+查询时间范围不超过1天，支持最小粒度300秒；
+查询间范围不超过7天，支持最小粒度3600秒；
+查询间范围超过7天，支持最小粒度86400秒。
         :type Granularity: int
         """
         self.ListenerId = None
@@ -2617,9 +2626,9 @@ class DescribeProxyStatisticsRequest(AbstractModel):
         :param MetricNames: 统计指标名称列表，支持: 入带宽:InBandwidth, 出带宽:OutBandwidth, 并发:Concurrent, 入包量:InPackets, 出包量:OutPackets, 丢包率:PacketLoss, 延迟:Latency
         :type MetricNames: list of str
         :param Granularity: 监控粒度，目前支持60，300，3600，86400，单位：秒。
-当时间范围不超过1天，支持最小粒度60秒；
-当时间范围不超过7天，支持最小粒度3600秒；
-当时间范围不超过30天，支持最小粒度86400秒。
+当时间范围不超过3天，支持最小粒度60秒；
+当时间范围不超过7天，支持最小粒度300秒；
+当时间范围不超过30天，支持最小粒度3600秒。
         :type Granularity: int
         """
         self.ProxyId = None
@@ -4824,6 +4833,7 @@ CLOSED，已关闭；
 ADJUSTING，配置变更中；
 ISOLATING，隔离中（欠费触发）；
 ISOLATED，已隔离（欠费触发）；
+CLONING，复制中；
 UNKNOWN，未知状态。
         :type Status: str
         :param Domain: 接入域名。
@@ -5172,13 +5182,15 @@ class RuleInfo(AbstractModel):
         :type Scheduler: str
         :param HealthCheck: 是否开启健康检查标志，1开启，0关闭
         :type HealthCheck: int
-        :param RuleStatus: 源站状态，0运行中，1创建中，2销毁中，3绑定解绑源站中，4配置更新中
+        :param RuleStatus: 规则状态，0运行中，1创建中，2销毁中，3绑定解绑源站中，4配置更新中
         :type RuleStatus: int
         :param CheckParams: 健康检查相关参数
         :type CheckParams: :class:`tencentcloud.gaap.v20180529.models.RuleCheckParams`
         :param RealServerSet: 已绑定的源站相关信息
         :type RealServerSet: list of BindRealServer
-        :param BindStatus: 绑定源站状态，0正常，1源站IP异常，2源站域名解析异常
+        :param BindStatus: 源站的服务状态，0：异常，1：正常。
+未开启健康检查时，该状态始终未正常。
+只要有一个源站健康状态为异常时，该状态为异常，具体源站的状态请查看RealServerSet。
         :type BindStatus: int
         :param ForwardHost: 通道转发到源站的请求所携带的host，其中default表示直接转发接收到的host。
 注意：此字段可能返回 null，表示取不到有效值。

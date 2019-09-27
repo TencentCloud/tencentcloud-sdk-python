@@ -31,11 +31,23 @@ class ActionSummaryOverviewItem(AbstractModel):
         :type RealTotalCost: str
         :param RealTotalCostRatio: 费用所占百分比，两位小数
         :type RealTotalCostRatio: str
+        :param CashPayAmount: 现金金额
+        :type CashPayAmount: str
+        :param IncentivePayAmount: 赠送金金额
+        :type IncentivePayAmount: str
+        :param VoucherPayAmount: 代金券金额
+        :type VoucherPayAmount: str
+        :param BillMonth: 账单月份，格式2019-08
+        :type BillMonth: str
         """
         self.ActionType = None
         self.ActionTypeName = None
         self.RealTotalCost = None
         self.RealTotalCostRatio = None
+        self.CashPayAmount = None
+        self.IncentivePayAmount = None
+        self.VoucherPayAmount = None
+        self.BillMonth = None
 
 
     def _deserialize(self, params):
@@ -43,6 +55,10 @@ class ActionSummaryOverviewItem(AbstractModel):
         self.ActionTypeName = params.get("ActionTypeName")
         self.RealTotalCost = params.get("RealTotalCost")
         self.RealTotalCostRatio = params.get("RealTotalCostRatio")
+        self.CashPayAmount = params.get("CashPayAmount")
+        self.IncentivePayAmount = params.get("IncentivePayAmount")
+        self.VoucherPayAmount = params.get("VoucherPayAmount")
+        self.BillMonth = params.get("BillMonth")
 
 
 class BillDetail(AbstractModel):
@@ -88,6 +104,9 @@ class BillDetail(AbstractModel):
         :type OwnerUin: str
         :param OperateUin: 操作者UIN
         :type OperateUin: str
+        :param Tags: Tag 信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Tags: list of BillTagInfo
         """
         self.BusinessCodeName = None
         self.ProductCodeName = None
@@ -107,6 +126,7 @@ class BillDetail(AbstractModel):
         self.PayerUin = None
         self.OwnerUin = None
         self.OperateUin = None
+        self.Tags = None
 
 
     def _deserialize(self, params):
@@ -133,6 +153,12 @@ class BillDetail(AbstractModel):
         self.PayerUin = params.get("PayerUin")
         self.OwnerUin = params.get("OwnerUin")
         self.OperateUin = params.get("OperateUin")
+        if params.get("Tags") is not None:
+            self.Tags = []
+            for item in params.get("Tags"):
+                obj = BillTagInfo()
+                obj._deserialize(item)
+                self.Tags.append(obj)
 
 
 class BillDetailComponent(AbstractModel):
@@ -221,7 +247,7 @@ class BillResourceSummary(AbstractModel):
         """
         :param BusinessCodeName: 产品名称：云产品大类，如云服务器CVM、云数据库MySQL
         :type BusinessCodeName: str
-        :param ProductCodeName: 子产品：云产品子类，如云服务器CVM-标准型S1
+        :param ProductCodeName: 子产品：云产品子类，如云服务器CVM-标准型S1， 当没有获取到子产品名称时，返回"-"
         :type ProductCodeName: str
         :param PayModeName: 计费模式：包年包月和按量计费
         :type PayModeName: str
@@ -271,6 +297,15 @@ class BillResourceSummary(AbstractModel):
         :type ExtendField4: str
         :param ExtendField5: 扩展字段5
         :type ExtendField5: str
+        :param Tags: Tag 信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Tags: list of BillTagInfo
+        :param PayerUin: 付款方uin
+        :type PayerUin: str
+        :param OwnerUin: 资源所有者uin,无值则返回"-"
+        :type OwnerUin: str
+        :param OperateUin: 操作者uin,无值则返回"-"
+        :type OperateUin: str
         """
         self.BusinessCodeName = None
         self.ProductCodeName = None
@@ -298,6 +333,10 @@ class BillResourceSummary(AbstractModel):
         self.ExtendField3 = None
         self.ExtendField4 = None
         self.ExtendField5 = None
+        self.Tags = None
+        self.PayerUin = None
+        self.OwnerUin = None
+        self.OperateUin = None
 
 
     def _deserialize(self, params):
@@ -327,6 +366,36 @@ class BillResourceSummary(AbstractModel):
         self.ExtendField3 = params.get("ExtendField3")
         self.ExtendField4 = params.get("ExtendField4")
         self.ExtendField5 = params.get("ExtendField5")
+        if params.get("Tags") is not None:
+            self.Tags = []
+            for item in params.get("Tags"):
+                obj = BillTagInfo()
+                obj._deserialize(item)
+                self.Tags.append(obj)
+        self.PayerUin = params.get("PayerUin")
+        self.OwnerUin = params.get("OwnerUin")
+        self.OperateUin = params.get("OperateUin")
+
+
+class BillTagInfo(AbstractModel):
+    """账单 Tag 信息
+
+    """
+
+    def __init__(self):
+        """
+        :param TagKey: 分账标签键
+        :type TagKey: str
+        :param TagValue: 标签值
+        :type TagValue: str
+        """
+        self.TagKey = None
+        self.TagValue = None
+
+
+    def _deserialize(self, params):
+        self.TagKey = params.get("TagKey")
+        self.TagValue = params.get("TagValue")
 
 
 class BusinessSummaryOverviewItem(AbstractModel):
@@ -345,11 +414,23 @@ class BusinessSummaryOverviewItem(AbstractModel):
         :type RealTotalCost: str
         :param RealTotalCostRatio: 费用所占百分比，两位小数
         :type RealTotalCostRatio: str
+        :param CashPayAmount: 现金金额
+        :type CashPayAmount: str
+        :param IncentivePayAmount: 赠送金金额
+        :type IncentivePayAmount: str
+        :param VoucherPayAmount: 代金券金额
+        :type VoucherPayAmount: str
+        :param BillMonth: 账单月份，格式2019-08
+        :type BillMonth: str
         """
         self.BusinessCode = None
         self.BusinessCodeName = None
         self.RealTotalCost = None
         self.RealTotalCostRatio = None
+        self.CashPayAmount = None
+        self.IncentivePayAmount = None
+        self.VoucherPayAmount = None
+        self.BillMonth = None
 
 
     def _deserialize(self, params):
@@ -357,6 +438,10 @@ class BusinessSummaryOverviewItem(AbstractModel):
         self.BusinessCodeName = params.get("BusinessCodeName")
         self.RealTotalCost = params.get("RealTotalCost")
         self.RealTotalCostRatio = params.get("RealTotalCostRatio")
+        self.CashPayAmount = params.get("CashPayAmount")
+        self.IncentivePayAmount = params.get("IncentivePayAmount")
+        self.VoucherPayAmount = params.get("VoucherPayAmount")
+        self.BillMonth = params.get("BillMonth")
 
 
 class BusinessSummaryTotal(AbstractModel):
@@ -368,12 +453,24 @@ class BusinessSummaryTotal(AbstractModel):
         """
         :param RealTotalCost: 总花费
         :type RealTotalCost: str
+        :param VoucherPayAmount: 代金券金额
+        :type VoucherPayAmount: str
+        :param IncentivePayAmount: 赠送金金额
+        :type IncentivePayAmount: str
+        :param CashPayAmount: 现金金额
+        :type CashPayAmount: str
         """
         self.RealTotalCost = None
+        self.VoucherPayAmount = None
+        self.IncentivePayAmount = None
+        self.CashPayAmount = None
 
 
     def _deserialize(self, params):
         self.RealTotalCost = params.get("RealTotalCost")
+        self.VoucherPayAmount = params.get("VoucherPayAmount")
+        self.IncentivePayAmount = params.get("IncentivePayAmount")
+        self.CashPayAmount = params.get("CashPayAmount")
 
 
 class Deal(AbstractModel):
@@ -507,6 +604,12 @@ class DescribeBillDetailRequest(AbstractModel):
         :param NeedRecordNum: 是否需要访问列表的总记录数，用于前端分页
 1-表示需要， 0-表示不需要
         :type NeedRecordNum: int
+        :param ProductCode: 查询指定产品信息
+        :type ProductCode: str
+        :param PayMode: 付费模式 prePay/postPay
+        :type PayMode: str
+        :param ResourceId: 查询指定资源信息
+        :type ResourceId: str
         """
         self.Offset = None
         self.Limit = None
@@ -515,6 +618,9 @@ class DescribeBillDetailRequest(AbstractModel):
         self.BeginTime = None
         self.EndTime = None
         self.NeedRecordNum = None
+        self.ProductCode = None
+        self.PayMode = None
+        self.ResourceId = None
 
 
     def _deserialize(self, params):
@@ -525,6 +631,9 @@ class DescribeBillDetailRequest(AbstractModel):
         self.BeginTime = params.get("BeginTime")
         self.EndTime = params.get("EndTime")
         self.NeedRecordNum = params.get("NeedRecordNum")
+        self.ProductCode = params.get("ProductCode")
+        self.PayMode = params.get("PayMode")
+        self.ResourceId = params.get("ResourceId")
 
 
 class DescribeBillDetailResponse(AbstractModel):
@@ -854,6 +963,63 @@ class DescribeBillSummaryByRegionResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeBillSummaryByTagRequest(AbstractModel):
+    """DescribeBillSummaryByTag请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param PayerUin: 查询账单数据的用户UIN
+        :type PayerUin: str
+        :param BeginTime: 目前只支持传当月开始，且必须和EndTime为相同月份，例 2018-09-01 00:00:00
+        :type BeginTime: str
+        :param EndTime: 目前只支持传当月结束，且必须和BeginTime为相同月份，例 2018-09-30 23:59:59
+        :type EndTime: str
+        :param TagKey: 分账标签键
+        :type TagKey: str
+        """
+        self.PayerUin = None
+        self.BeginTime = None
+        self.EndTime = None
+        self.TagKey = None
+
+
+    def _deserialize(self, params):
+        self.PayerUin = params.get("PayerUin")
+        self.BeginTime = params.get("BeginTime")
+        self.EndTime = params.get("EndTime")
+        self.TagKey = params.get("TagKey")
+
+
+class DescribeBillSummaryByTagResponse(AbstractModel):
+    """DescribeBillSummaryByTag返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Ready: 数据是否准备好，0未准备好，1准备好
+        :type Ready: int
+        :param SummaryOverview: 各标签值花费分布详情
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SummaryOverview: :class:`tencentcloud.billing.v20180709.models.TagSummaryOverviewItem`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Ready = None
+        self.SummaryOverview = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Ready = params.get("Ready")
+        if params.get("SummaryOverview") is not None:
+            self.SummaryOverview = TagSummaryOverviewItem()
+            self.SummaryOverview._deserialize(params.get("SummaryOverview"))
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeDealsByCondRequest(AbstractModel):
     """DescribeDealsByCond请求参数结构体
 
@@ -1148,12 +1314,21 @@ class PayModeSummaryOverviewItem(AbstractModel):
         :type RealTotalCostRatio: str
         :param Detail: 按交易类型：包年包月新购/续费/升降配/退款、按量计费扣费、调账补偿/扣费等类型汇总消费详情
         :type Detail: list of ActionSummaryOverviewItem
+        :param CashPayAmount: 现金金额
+        :type CashPayAmount: str
+        :param IncentivePayAmount: 赠送金金额
+        :type IncentivePayAmount: str
+        :param VoucherPayAmount: 代金券金额
+        :type VoucherPayAmount: str
         """
         self.PayMode = None
         self.PayModeName = None
         self.RealTotalCost = None
         self.RealTotalCostRatio = None
         self.Detail = None
+        self.CashPayAmount = None
+        self.IncentivePayAmount = None
+        self.VoucherPayAmount = None
 
 
     def _deserialize(self, params):
@@ -1167,6 +1342,9 @@ class PayModeSummaryOverviewItem(AbstractModel):
                 obj = ActionSummaryOverviewItem()
                 obj._deserialize(item)
                 self.Detail.append(obj)
+        self.CashPayAmount = params.get("CashPayAmount")
+        self.IncentivePayAmount = params.get("IncentivePayAmount")
+        self.VoucherPayAmount = params.get("VoucherPayAmount")
 
 
 class ProductInfo(AbstractModel):
@@ -1205,11 +1383,23 @@ class ProjectSummaryOverviewItem(AbstractModel):
         :type RealTotalCost: str
         :param RealTotalCostRatio: 费用所占百分比，两位小数
         :type RealTotalCostRatio: str
+        :param CashPayAmount: 现金金额
+        :type CashPayAmount: str
+        :param IncentivePayAmount: 赠送金金额
+        :type IncentivePayAmount: str
+        :param VoucherPayAmount: 代金券金额
+        :type VoucherPayAmount: str
+        :param BillMonth: 账单月份，格式2019-08
+        :type BillMonth: str
         """
         self.ProjectId = None
         self.ProjectName = None
         self.RealTotalCost = None
         self.RealTotalCostRatio = None
+        self.CashPayAmount = None
+        self.IncentivePayAmount = None
+        self.VoucherPayAmount = None
+        self.BillMonth = None
 
 
     def _deserialize(self, params):
@@ -1217,6 +1407,10 @@ class ProjectSummaryOverviewItem(AbstractModel):
         self.ProjectName = params.get("ProjectName")
         self.RealTotalCost = params.get("RealTotalCost")
         self.RealTotalCostRatio = params.get("RealTotalCostRatio")
+        self.CashPayAmount = params.get("CashPayAmount")
+        self.IncentivePayAmount = params.get("IncentivePayAmount")
+        self.VoucherPayAmount = params.get("VoucherPayAmount")
+        self.BillMonth = params.get("BillMonth")
 
 
 class RegionSummaryOverviewItem(AbstractModel):
@@ -1235,15 +1429,59 @@ class RegionSummaryOverviewItem(AbstractModel):
         :type RealTotalCost: str
         :param RealTotalCostRatio: 费用所占百分比，两位小数
         :type RealTotalCostRatio: str
+        :param CashPayAmount: 现金金额
+        :type CashPayAmount: str
+        :param IncentivePayAmount: 赠送金金额
+        :type IncentivePayAmount: str
+        :param VoucherPayAmount: 代金券金额
+        :type VoucherPayAmount: str
+        :param BillMonth: 账单月份，格式2019-08
+        :type BillMonth: str
         """
         self.RegionId = None
         self.RegionName = None
         self.RealTotalCost = None
         self.RealTotalCostRatio = None
+        self.CashPayAmount = None
+        self.IncentivePayAmount = None
+        self.VoucherPayAmount = None
+        self.BillMonth = None
 
 
     def _deserialize(self, params):
         self.RegionId = params.get("RegionId")
         self.RegionName = params.get("RegionName")
+        self.RealTotalCost = params.get("RealTotalCost")
+        self.RealTotalCostRatio = params.get("RealTotalCostRatio")
+        self.CashPayAmount = params.get("CashPayAmount")
+        self.IncentivePayAmount = params.get("IncentivePayAmount")
+        self.VoucherPayAmount = params.get("VoucherPayAmount")
+        self.BillMonth = params.get("BillMonth")
+
+
+class TagSummaryOverviewItem(AbstractModel):
+    """按标签汇总消费详情
+
+    """
+
+    def __init__(self):
+        """
+        :param TagValue: 标签值
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TagValue: str
+        :param RealTotalCost: 实际花费
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RealTotalCost: str
+        :param RealTotalCostRatio: 费用所占百分比，两位小数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RealTotalCostRatio: str
+        """
+        self.TagValue = None
+        self.RealTotalCost = None
+        self.RealTotalCostRatio = None
+
+
+    def _deserialize(self, params):
+        self.TagValue = params.get("TagValue")
         self.RealTotalCost = params.get("RealTotalCost")
         self.RealTotalCostRatio = params.get("RealTotalCostRatio")

@@ -953,6 +953,8 @@ class GetFunctionResponse(AbstractModel):
         :type AccessInfo: :class:`tencentcloud.scf.v20180416.models.AccessInfo`
         :param Type: 函数类型，取值为HTTP或者Event
         :type Type: str
+        :param L5Enable: 是否启用L5
+        :type L5Enable: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -985,6 +987,7 @@ class GetFunctionResponse(AbstractModel):
         self.EipConfig = None
         self.AccessInfo = None
         self.Type = None
+        self.L5Enable = None
         self.RequestId = None
 
 
@@ -1036,6 +1039,7 @@ class GetFunctionResponse(AbstractModel):
             self.AccessInfo = AccessInfo()
             self.AccessInfo._deserialize(params.get("AccessInfo"))
         self.Type = params.get("Type")
+        self.L5Enable = params.get("L5Enable")
         self.RequestId = params.get("RequestId")
 
 
@@ -1584,6 +1588,10 @@ class UpdateFunctionCodeRequest(AbstractModel):
         :type EnvId: str
         :param Publish: 在更新时是否同步发布新版本，默认为：FALSE，不发布
         :type Publish: str
+        :param Code: 函数代码
+        :type Code: :class:`tencentcloud.scf.v20180416.models.Code`
+        :param CodeSource: 代码来源方式，支持以下'ZipFile', 'Cos', 'Inline', 'TempCos', 'Git' 之一，使用Git来源必须指定此字段
+        :type CodeSource: str
         """
         self.Handler = None
         self.FunctionName = None
@@ -1594,6 +1602,8 @@ class UpdateFunctionCodeRequest(AbstractModel):
         self.CosBucketRegion = None
         self.EnvId = None
         self.Publish = None
+        self.Code = None
+        self.CodeSource = None
 
 
     def _deserialize(self, params):
@@ -1606,6 +1616,10 @@ class UpdateFunctionCodeRequest(AbstractModel):
         self.CosBucketRegion = params.get("CosBucketRegion")
         self.EnvId = params.get("EnvId")
         self.Publish = params.get("Publish")
+        if params.get("Code") is not None:
+            self.Code = Code()
+            self.Code._deserialize(params.get("Code"))
+        self.CodeSource = params.get("CodeSource")
 
 
 class UpdateFunctionCodeResponse(AbstractModel):
@@ -1656,6 +1670,8 @@ class UpdateFunctionConfigurationRequest(AbstractModel):
         :type ClsTopicId: str
         :param Publish: 在更新时是否同步发布新版本，默认为：FALSE，不发布
         :type Publish: str
+        :param L5Enable: 是否开启L5访问能力，TRUE 为开启，FALSE为关闭
+        :type L5Enable: str
         """
         self.FunctionName = None
         self.Description = None
@@ -1669,6 +1685,7 @@ class UpdateFunctionConfigurationRequest(AbstractModel):
         self.ClsLogsetId = None
         self.ClsTopicId = None
         self.Publish = None
+        self.L5Enable = None
 
 
     def _deserialize(self, params):
@@ -1688,6 +1705,7 @@ class UpdateFunctionConfigurationRequest(AbstractModel):
         self.ClsLogsetId = params.get("ClsLogsetId")
         self.ClsTopicId = params.get("ClsTopicId")
         self.Publish = params.get("Publish")
+        self.L5Enable = params.get("L5Enable")
 
 
 class UpdateFunctionConfigurationResponse(AbstractModel):

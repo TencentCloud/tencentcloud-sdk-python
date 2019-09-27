@@ -16,6 +16,59 @@
 from tencentcloud.common.abstract_model import AbstractModel
 
 
+class AdaptiveDynamicStreamingTaskInput(AbstractModel):
+    """对视频转自适应码流的输入参数类型
+
+    """
+
+    def __init__(self):
+        """
+        :param Definition: 转自适应码流模板 ID。
+        :type Definition: int
+        :param WatermarkSet: 水印列表，支持多张图片或文字水印，最大可支持 10 张。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type WatermarkSet: list of WatermarkInput
+        :param OutputStorage: 转自适应码流后文件的目标存储，不填则继承上层的 OutputStorage 值。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OutputStorage: :class:`tencentcloud.mps.v20190612.models.TaskOutputStorage`
+        :param OutputObjectPath: 转自适应码流后，manifest 文件的输出路径，可以为相对路径或者绝对路径。如果不填，则默认为相对路径：`{inputName}_adaptiveDynamicStreaming_{definition}.{format}`。
+        :type OutputObjectPath: str
+        :param SubStreamManifestObjectName: 转自适应码流（HLS）后，二级 index 文件的输出路径，只能为相对路径。如果不填，则默认为相对路径：`{inputName}_adaptiveDynamicStreaming_{definition}_{trackType}_{trackDefinition}.{format}`。
+        :type SubStreamManifestObjectName: str
+        :param SegmentObjectName: 转自适应码流后，分片文件的输出路径，只能为相对路径。如果不填，则默认为相对路径：`{inputName}_adaptiveDynamicStreaming_{definition}_{trackType}_{trackDefinition}_{number}.{format}`。
+        :type SegmentObjectName: str
+        :param ObjectNumberFormat: 转自适应码流后输出路径中的`{number}`变量的规则。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ObjectNumberFormat: :class:`tencentcloud.mps.v20190612.models.NumberFormat`
+        """
+        self.Definition = None
+        self.WatermarkSet = None
+        self.OutputStorage = None
+        self.OutputObjectPath = None
+        self.SubStreamManifestObjectName = None
+        self.SegmentObjectName = None
+        self.ObjectNumberFormat = None
+
+
+    def _deserialize(self, params):
+        self.Definition = params.get("Definition")
+        if params.get("WatermarkSet") is not None:
+            self.WatermarkSet = []
+            for item in params.get("WatermarkSet"):
+                obj = WatermarkInput()
+                obj._deserialize(item)
+                self.WatermarkSet.append(obj)
+        if params.get("OutputStorage") is not None:
+            self.OutputStorage = TaskOutputStorage()
+            self.OutputStorage._deserialize(params.get("OutputStorage"))
+        self.OutputObjectPath = params.get("OutputObjectPath")
+        self.SubStreamManifestObjectName = params.get("SubStreamManifestObjectName")
+        self.SegmentObjectName = params.get("SegmentObjectName")
+        if params.get("ObjectNumberFormat") is not None:
+            self.ObjectNumberFormat = NumberFormat()
+            self.ObjectNumberFormat._deserialize(params.get("ObjectNumberFormat"))
+
+
 class AiAnalysisTaskInput(AbstractModel):
     """AI 视频智能分析输入参数类型
 
@@ -789,7 +842,7 @@ class CreateWorkflowRequest(AbstractModel):
         :type MediaProcessTask: :class:`tencentcloud.mps.v20190612.models.MediaProcessTaskInput`
         :param TaskNotifyConfig: 任务的事件通知配置，不填代表不获取事件通知。
         :type TaskNotifyConfig: :class:`tencentcloud.mps.v20190612.models.TaskNotifyConfig`
-        :param TaskPriority: 任务流的优先级，数值越大优先级越高，取值范围是 -10 到 10，不填代表 0。
+        :param TaskPriority: 工作流的优先级，数值越大优先级越高，取值范围是 -10 到 10，不填代表 0。
         :type TaskPriority: int
         """
         self.WorkflowName = None
@@ -1554,19 +1607,24 @@ class DescribeUserInfoResponse(AbstractModel):
         :param PaymentType: 用户付费类型，取值：
 <li>DailyPayment：日结付费 ；</li>
 <li>MonthlyPayment：月结付费。</li>
-注意：此字段可能返回 null，表示取不到有效值。
         :type PaymentType: str
+        :param OldMpsUser: 是否是旧版视频处理用户，取值：
+<li>0：否 ；</li>
+<li>1：是。</li>
+        :type OldMpsUser: int
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.Status = None
         self.PaymentType = None
+        self.OldMpsUser = None
         self.RequestId = None
 
 
     def _deserialize(self, params):
         self.Status = params.get("Status")
         self.PaymentType = params.get("PaymentType")
+        self.OldMpsUser = params.get("OldMpsUser")
         self.RequestId = params.get("RequestId")
 
 
@@ -2276,12 +2334,15 @@ class MediaProcessTaskInput(AbstractModel):
         :type SampleSnapshotTaskSet: list of SampleSnapshotTaskInput
         :param ImageSpriteTaskSet: 对视频截雪碧图任务列表。
         :type ImageSpriteTaskSet: list of ImageSpriteTaskInput
+        :param AdaptiveDynamicStreamingTaskSet: 对视频转自适应码流任务列表。
+        :type AdaptiveDynamicStreamingTaskSet: list of AdaptiveDynamicStreamingTaskInput
         """
         self.TranscodeTaskSet = None
         self.AnimatedGraphicTaskSet = None
         self.SnapshotByTimeOffsetTaskSet = None
         self.SampleSnapshotTaskSet = None
         self.ImageSpriteTaskSet = None
+        self.AdaptiveDynamicStreamingTaskSet = None
 
 
     def _deserialize(self, params):
@@ -2315,6 +2376,12 @@ class MediaProcessTaskInput(AbstractModel):
                 obj = ImageSpriteTaskInput()
                 obj._deserialize(item)
                 self.ImageSpriteTaskSet.append(obj)
+        if params.get("AdaptiveDynamicStreamingTaskSet") is not None:
+            self.AdaptiveDynamicStreamingTaskSet = []
+            for item in params.get("AdaptiveDynamicStreamingTaskSet"):
+                obj = AdaptiveDynamicStreamingTaskInput()
+                obj._deserialize(item)
+                self.AdaptiveDynamicStreamingTaskSet.append(obj)
 
 
 class MediaProcessTaskResult(AbstractModel):
@@ -3324,7 +3391,7 @@ class ResetWorkflowRequest(AbstractModel):
         :type OutputDir: str
         :param MediaProcessTask: 视频处理类型任务参数。
         :type MediaProcessTask: :class:`tencentcloud.mps.v20190612.models.MediaProcessTaskInput`
-        :param TaskPriority: 任务流的优先级，数值越大优先级越高，取值范围是 -10 到 10，不填代表 0。
+        :param TaskPriority: 工作流的优先级，数值越大优先级越高，取值范围是 -10 到 10，不填代表 0。
         :type TaskPriority: int
         :param TaskNotifyConfig: 任务的事件通知信息，不填代表不获取事件通知。
         :type TaskNotifyConfig: :class:`tencentcloud.mps.v20190612.models.TaskNotifyConfig`

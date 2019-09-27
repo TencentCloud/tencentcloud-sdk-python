@@ -122,7 +122,7 @@ class BuyDevicesRequest(AbstractModel):
         :param Aliases: 设备名称列表
         :type Aliases: list of str
         :param CpuId: CPU型号ID，自定义机型需要传入，取值：
-<br/><li>1: E5-2620v3 (6核) &#42; 2</li><li>2: E5-2680v4 (14核) &#42; 2</li><li>3: E5-2670v3 (12核) &#42; 2</li><li>4: E5-2620v4 (8核) &#42; 2</li><li>5: 4110 (8核) &#42; 2</li><li>6: 6133 (20核) &#42; 2</li><br/>
+<br/><li>1: E5-2620v3 (6核) * 2</li><li>2: E5-2680v4 (14核) * 2</li><li>3: E5-2670v3 (12核) * 2</li><li>4: E5-2620v4 (8核) * 2</li><li>5: 4110 (8核) * 2</li><li>6: 6133 (20核) * 2</li><br/>
         :type CpuId: int
         :param ContainRaidCard: 是否有RAID卡，取值：1(有) 0(无)，自定义机型需要传入
         :type ContainRaidCard: int
@@ -140,6 +140,8 @@ class BuyDevicesRequest(AbstractModel):
         :type Tags: list of Tag
         :param FileSystem: 指定数据盘的文件系统格式，当前支持 EXT4和XFS选项， 默认为EXT4。 参数适用于数据盘和Linux， 且在IsZoning为1时生效
         :type FileSystem: str
+        :param BuySession: 此参数是为了防止重复发货。如果两次调用传入相同的BuySession，只会发货一次。 不要以设备别名做为BuySession，这样只会第一次购买成功。参数长度为128位，合法字符为大小字母，数字，下划线，横线。
+        :type BuySession: str
         """
         self.Zone = None
         self.OsTypeId = None
@@ -178,6 +180,7 @@ class BuyDevicesRequest(AbstractModel):
         self.DataDiskCount = None
         self.Tags = None
         self.FileSystem = None
+        self.BuySession = None
 
 
     def _deserialize(self, params):
@@ -223,6 +226,7 @@ class BuyDevicesRequest(AbstractModel):
                 obj._deserialize(item)
                 self.Tags.append(obj)
         self.FileSystem = params.get("FileSystem")
+        self.BuySession = params.get("BuySession")
 
 
 class BuyDevicesResponse(AbstractModel):
@@ -815,9 +819,9 @@ class DescribeDeviceClassPartitionRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param DeviceClassCode: 设备类型代号。代号通过接口[查询设备型号(DescribeDeviceClass)](https://cloud.tencent.com/document/api/386/32911)查询。标准机型需要传入此参数
+        :param DeviceClassCode: 设备类型代号。代号通过接口[查询设备型号(DescribeDeviceClass)](https://cloud.tencent.com/document/api/386/32911)查询。标准机型需要传入此参数。虽是可选参数，但DeviceClassCode和InstanceId参数，必须要填写一个。
         :type DeviceClassCode: str
-        :param InstanceId: 需要查询自定义机型RAID信息时，传入自定义机型实例ID。InstanceId存在时DeviceClassCode失效
+        :param InstanceId: 需要查询自定义机型RAID信息时，传入自定义机型实例ID。InstanceId存在时DeviceClassCode失效。 虽是可选参数，但DeviceClassCode和InstanceId参数，必须要填写一个。
         :type InstanceId: str
         """
         self.DeviceClassCode = None

@@ -351,7 +351,7 @@ class AllocateAddressesRequest(AbstractModel):
 <ul style="margin:0"><li>已开通Anycast公网加速白名单的用户，可选值：<ul><li>AnycastEIP：加速IP，可参见 [Anycast 公网加速](https://cloud.tencent.com/document/product/644)</li></ul>注意：仅部分地域支持加速IP。</li></ul>
         :type AddressType: str
         :param AnycastZone: Anycast发布域。
-<ul style="margin:0"><li>已开通Anycast公网加速白名单的用户，可选值：<ul><li>ANYCAST_ZONE_GLOBAL：全球发布域（需要额外开通Anycast全球加速白名单）</li><li>ANYCAST_ZONE_OVERSEAS：海外发布域</li></ul>默认值：ANYCAST_ZONE_OVERSEAS。</li></ul>
+<ul style="margin:0"><li>已开通Anycast公网加速白名单的用户，可选值：<ul><li>ANYCAST_ZONE_GLOBAL：全球发布域（需要额外开通Anycast全球加速白名单）</li><li>ANYCAST_ZONE_OVERSEAS：境外发布域</li></ul>默认值：ANYCAST_ZONE_OVERSEAS。</li></ul>
         :type AnycastZone: str
         :param ApplicableForCLB: AnycastEIP是否用于绑定负载均衡。
 <ul style="margin:0"><li>已开通Anycast公网加速白名单的用户，可选值：<ul><li>TRUE：AnycastEIP可绑定对象为负载均衡</li>
@@ -1307,16 +1307,24 @@ class CreateCcnRequest(AbstractModel):
         :type CcnDescription: str
         :param QosLevel: CCN服务质量，'PT'：白金，'AU'：金，'AG'：银，默认为‘AU’。
         :type QosLevel: str
+        :param InstanceChargeType: 计费模式，PREPAID：表示预付费，即包年包月，POSTPAID：表示后付费，即按量计费。默认：POSTPAID。
+        :type InstanceChargeType: str
+        :param BandwidthLimitType: 限速类型，OUTER_REGION_LIMIT表示地域出口限速，INTER_REGION_LIMIT为地域间限速，默认为OUTER_REGION_LIMIT
+        :type BandwidthLimitType: str
         """
         self.CcnName = None
         self.CcnDescription = None
         self.QosLevel = None
+        self.InstanceChargeType = None
+        self.BandwidthLimitType = None
 
 
     def _deserialize(self, params):
         self.CcnName = params.get("CcnName")
         self.CcnDescription = params.get("CcnDescription")
         self.QosLevel = params.get("QosLevel")
+        self.InstanceChargeType = params.get("InstanceChargeType")
+        self.BandwidthLimitType = params.get("BandwidthLimitType")
 
 
 class CreateCcnResponse(AbstractModel):
@@ -5903,6 +5911,8 @@ NAT类型支持网络地址转换配置，类型确定后不能修改；一个�
         :type CcnRouteType: str
         :param EnableBGP: 是否启用BGP。
         :type EnableBGP: bool
+        :param EnableBGPCommunity: 开启和关闭BGP的community属性。
+        :type EnableBGPCommunity: bool
         """
         self.DirectConnectGatewayId = None
         self.DirectConnectGatewayName = None
@@ -5915,6 +5925,7 @@ NAT类型支持网络地址转换配置，类型确定后不能修改；一个�
         self.CcnId = None
         self.CcnRouteType = None
         self.EnableBGP = None
+        self.EnableBGPCommunity = None
 
 
     def _deserialize(self, params):
@@ -5929,6 +5940,7 @@ NAT类型支持网络地址转换配置，类型确定后不能修改；一个�
         self.CcnId = params.get("CcnId")
         self.CcnRouteType = params.get("CcnRouteType")
         self.EnableBGP = params.get("EnableBGP")
+        self.EnableBGPCommunity = params.get("EnableBGPCommunity")
 
 
 class DirectConnectGatewayCcnRoute(AbstractModel):

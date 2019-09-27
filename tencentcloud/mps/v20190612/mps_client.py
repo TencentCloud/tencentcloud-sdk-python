@@ -624,7 +624,7 @@ class MpsClient(AbstractClient):
 
 
     def DescribeUserInfo(self, request):
-        """用户信息查询，返回用户状态和计费类型，若未注册则返回未注册用户错误提示。
+        """用户服务信息查询，返回用户状态和计费类型；若未注册则返回相应错误提示。
 
         :param request: 调用DescribeUserInfo所需参数的结构体。
         :type request: :class:`tencentcloud.mps.v20190612.models.DescribeUserInfoRequest`

@@ -221,6 +221,34 @@ class BillingClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeBillSummaryByTag(self, request):
+        """获取按标签汇总费用分布
+
+        :param request: 调用DescribeBillSummaryByTag所需参数的结构体。
+        :type request: :class:`tencentcloud.billing.v20180709.models.DescribeBillSummaryByTagRequest`
+        :rtype: :class:`tencentcloud.billing.v20180709.models.DescribeBillSummaryByTagResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeBillSummaryByTag", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeBillSummaryByTagResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeDealsByCond(self, request):
         """查询订单
 
