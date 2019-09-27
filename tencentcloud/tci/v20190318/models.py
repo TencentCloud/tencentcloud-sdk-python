@@ -31,7 +31,7 @@ class AIAssistantRequest(AbstractModel):
         :type Lang: int
         :param LibrarySet: 查询人员库列表
         :type LibrarySet: list of str
-        :param MaxVideoDuration: 视频评估时间，单位毫秒，点播场景默认值为2小时（无法探测长度时）或完整视频，直播场景默认值为10分钟或直播提前结束
+        :param MaxVideoDuration: 视频评估时间，单位秒，点播场景默认值为2小时（无法探测长度时）或完整视频，直播场景默认值为10分钟或直播提前结束
         :type MaxVideoDuration: int
         :param Template: 标准化模板选择：0：AI助教基础版本，1：AI评教基础版本，2：AI评教标准版本。AI 助教基础版本功能包括：人脸检索、人脸检测、人脸表情识别、学生动作选项，音频信息分析，微笑识别。AI 评教基础版本功能包括：人脸检索、人脸检测、人脸表情识别、音频信息分析。AI 评教标准版功能包括人脸检索、人脸检测、人脸表情识别、手势识别、音频信息分析、音频关键词分析、视频精彩集锦分析。
         :type Template: int
@@ -3083,6 +3083,82 @@ class SubmitAudioTaskResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class SubmitCheckAttendanceTaskPlusRequest(AbstractModel):
+    """SubmitCheckAttendanceTaskPlus请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param FileContent: 输入数据
+        :type FileContent: list of str
+        :param FileType: 视频流类型，vod_url表示点播URL，live_url表示直播URL，默认vod_url
+        :type FileType: str
+        :param LibraryIds: 人员库 ID列表
+        :type LibraryIds: list of str
+        :param AttendanceThreshold: 确定出勤阈值；默认为0.92
+        :type AttendanceThreshold: float
+        :param EnableStranger: 是否开启陌生人模式，陌生人模式是指在任务中发现的非注册人脸库中的人脸也返回相关统计信息，默认不开启
+        :type EnableStranger: bool
+        :param EndTime: 考勤结束时间（到视频的第几秒结束考勤），单位秒；默认为900 
+对于直播场景，使用绝对时间戳，单位秒，默认当前时间往后12小时
+        :type EndTime: int
+        :param NoticeUrl: 通知回调地址，要求方法为post，application/json格式
+        :type NoticeUrl: str
+        :param StartTime: 考勤开始时间（从视频的第几秒开始考勤），单位秒；默认为0 
+对于直播场景，使用绝对时间戳，单位秒，默认当前时间
+        :type StartTime: int
+        :param Threshold: 识别阈值；默认为0.8
+        :type Threshold: float
+        """
+        self.FileContent = None
+        self.FileType = None
+        self.LibraryIds = None
+        self.AttendanceThreshold = None
+        self.EnableStranger = None
+        self.EndTime = None
+        self.NoticeUrl = None
+        self.StartTime = None
+        self.Threshold = None
+
+
+    def _deserialize(self, params):
+        self.FileContent = params.get("FileContent")
+        self.FileType = params.get("FileType")
+        self.LibraryIds = params.get("LibraryIds")
+        self.AttendanceThreshold = params.get("AttendanceThreshold")
+        self.EnableStranger = params.get("EnableStranger")
+        self.EndTime = params.get("EndTime")
+        self.NoticeUrl = params.get("NoticeUrl")
+        self.StartTime = params.get("StartTime")
+        self.Threshold = params.get("Threshold")
+
+
+class SubmitCheckAttendanceTaskPlusResponse(AbstractModel):
+    """SubmitCheckAttendanceTaskPlus返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param JobId: 任务标识符
+        :type JobId: int
+        :param NotRegisteredSet: 没有注册的人的ID列表
+        :type NotRegisteredSet: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.JobId = None
+        self.NotRegisteredSet = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.JobId = params.get("JobId")
+        self.NotRegisteredSet = params.get("NotRegisteredSet")
+        self.RequestId = params.get("RequestId")
+
+
 class SubmitCheckAttendanceTaskRequest(AbstractModel):
     """SubmitCheckAttendanceTask请求参数结构体
 
@@ -3315,7 +3391,7 @@ class SubmitFullBodyClassTaskRequest(AbstractModel):
         :type Lang: int
         :param LibrarySet: 查询人员库列表，可填写老师的注册照所在人员库
         :type LibrarySet: list of str
-        :param MaxVideoDuration: 视频评估时间，单位毫秒，点播场景默认值为2小时（无法探测长度时）或完整视频，直播场景默认值为10分钟或直播提前结束
+        :param MaxVideoDuration: 视频评估时间，单位秒，点播场景默认值为2小时（无法探测长度时）或完整视频，直播场景默认值为10分钟或直播提前结束
         :type MaxVideoDuration: int
         :param VocabLibNameList: 识别词库名列表，这些词汇库用来维护关键词，评估老师授课过程中，对这些关键词的使用情况
         :type VocabLibNameList: list of str
@@ -3447,6 +3523,96 @@ class SubmitHighlightsResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class SubmitImageTaskPlusRequest(AbstractModel):
+    """SubmitImageTaskPlus请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param FileContent: 输入分析对象内容，输入数据格式参考FileType参数释义
+        :type FileContent: list of str
+        :param FileType: 输入分析对象类型，picture：二进制图片的 base64 编码字符串，picture_url:图片地址，vod_url：视频地址，live_url：直播地址
+        :type FileType: str
+        :param Functions: 任务控制选项
+        :type Functions: :class:`tencentcloud.tci.v20190318.models.ImageTaskFunction`
+        :param LightStandardSet: 光照标准列表
+        :type LightStandardSet: list of LightStandard
+        :param FrameInterval: 抽帧的时间间隔，单位毫秒，默认值1000，保留字段，当前不支持填写。
+        :type FrameInterval: int
+        :param LibrarySet: 查询人员库列表
+        :type LibrarySet: list of str
+        :param MaxVideoDuration: 视频评估时间，单位秒，点播场景默认值为2小时（无法探测长度时）或完整视频，直播场景默认值为10分钟或直播提前结束
+        :type MaxVideoDuration: int
+        :param SimThreshold: 人脸识别中的相似度阈值，默认值为0.89，保留字段，当前不支持填写。
+        :type SimThreshold: float
+        """
+        self.FileContent = None
+        self.FileType = None
+        self.Functions = None
+        self.LightStandardSet = None
+        self.FrameInterval = None
+        self.LibrarySet = None
+        self.MaxVideoDuration = None
+        self.SimThreshold = None
+
+
+    def _deserialize(self, params):
+        self.FileContent = params.get("FileContent")
+        self.FileType = params.get("FileType")
+        if params.get("Functions") is not None:
+            self.Functions = ImageTaskFunction()
+            self.Functions._deserialize(params.get("Functions"))
+        if params.get("LightStandardSet") is not None:
+            self.LightStandardSet = []
+            for item in params.get("LightStandardSet"):
+                obj = LightStandard()
+                obj._deserialize(item)
+                self.LightStandardSet.append(obj)
+        self.FrameInterval = params.get("FrameInterval")
+        self.LibrarySet = params.get("LibrarySet")
+        self.MaxVideoDuration = params.get("MaxVideoDuration")
+        self.SimThreshold = params.get("SimThreshold")
+
+
+class SubmitImageTaskPlusResponse(AbstractModel):
+    """SubmitImageTaskPlus返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ResultSet: 识别结果
+        :type ResultSet: list of ImageTaskResult
+        :param JobId: 任务标识符
+        :type JobId: int
+        :param Progress: 任务进度
+        :type Progress: int
+        :param TotalCount: 结果总数目
+        :type TotalCount: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.ResultSet = None
+        self.JobId = None
+        self.Progress = None
+        self.TotalCount = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("ResultSet") is not None:
+            self.ResultSet = []
+            for item in params.get("ResultSet"):
+                obj = ImageTaskResult()
+                obj._deserialize(item)
+                self.ResultSet.append(obj)
+        self.JobId = params.get("JobId")
+        self.Progress = params.get("Progress")
+        self.TotalCount = params.get("TotalCount")
+        self.RequestId = params.get("RequestId")
+
+
 class SubmitImageTaskRequest(AbstractModel):
     """SubmitImageTask请求参数结构体
 
@@ -3466,7 +3632,7 @@ class SubmitImageTaskRequest(AbstractModel):
         :type FrameInterval: int
         :param LibrarySet: 查询人员库列表
         :type LibrarySet: list of str
-        :param MaxVideoDuration: 视频评估时间，单位毫秒，点播场景默认值为2小时（无法探测长度时）或完整视频，直播场景默认值为10分钟或直播提前结束
+        :param MaxVideoDuration: 视频评估时间，单位秒，点播场景默认值为2小时（无法探测长度时）或完整视频，直播场景默认值为10分钟或直播提前结束
         :type MaxVideoDuration: int
         :param SimThreshold: 人脸识别中的相似度阈值，默认值为0.89，保留字段，当前不支持填写。
         :type SimThreshold: float
@@ -3552,7 +3718,7 @@ class SubmitOneByOneClassTaskRequest(AbstractModel):
         :type Lang: int
         :param LibrarySet: 查询人员库列表，可填写学生的注册照所在人员库
         :type LibrarySet: list of str
-        :param MaxVideoDuration: 视频评估时间，单位毫秒，点播场景默认值为2小时（无法探测长度时）或完整视频，直播场景默认值为10分钟或直播提前结束
+        :param MaxVideoDuration: 视频评估时间，单位秒，点播场景默认值为2小时（无法探测长度时）或完整视频，直播场景默认值为10分钟或直播提前结束
         :type MaxVideoDuration: int
         :param VocabLibNameList: 识别词库名列表，这些词汇库用来维护关键词，评估学生对这些关键词的使用情况
         :type VocabLibNameList: list of str
@@ -3625,7 +3791,7 @@ class SubmitOpenClassTaskRequest(AbstractModel):
         :type FileType: str
         :param LibrarySet: 查询人员库列表，可填写学生们的注册照所在人员库
         :type LibrarySet: list of str
-        :param MaxVideoDuration: 视频评估时间，单位毫秒，点播场景默认值为2小时（无法探测长度时）或完整视频，直播场景默认值为10分钟或直播提前结束
+        :param MaxVideoDuration: 视频评估时间，单位秒，点播场景默认值为2小时（无法探测长度时）或完整视频，直播场景默认值为10分钟或直播提前结束
         :type MaxVideoDuration: int
         """
         self.FileContent = None
@@ -3686,7 +3852,7 @@ class SubmitPartialBodyClassTaskRequest(AbstractModel):
         :type Lang: int
         :param LibrarySet: 查询人员库列表，可填写老师的注册照所在人员库
         :type LibrarySet: list of str
-        :param MaxVideoDuration: 视频评估时间，单位毫秒，点播场景默认值为2小时（无法探测长度时）或完整视频，直播场景默认值为10分钟或直播提前结束
+        :param MaxVideoDuration: 视频评估时间，单位秒，点播场景默认值为2小时（无法探测长度时）或完整视频，直播场景默认值为10分钟或直播提前结束
         :type MaxVideoDuration: int
         :param VocabLibNameList: 识别词库名列表，这些词汇库用来维护关键词，评估老师授课过程中，对这些关键词的使用情况
         :type VocabLibNameList: list of str
@@ -3759,7 +3925,7 @@ class SubmitTraditionalClassTaskRequest(AbstractModel):
         :type FileType: str
         :param LibrarySet: 查询人员库列表，可填写学生们的注册照所在人员库
         :type LibrarySet: list of str
-        :param MaxVideoDuration: 视频评估时间，单位毫秒，点播场景默认值为2小时（无法探测长度时）或完整视频，直播场景默认值为10分钟或直播提前结束
+        :param MaxVideoDuration: 视频评估时间，单位秒，点播场景默认值为2小时（无法探测长度时）或完整视频，直播场景默认值为10分钟或直播提前结束
         :type MaxVideoDuration: int
         """
         self.FileContent = None

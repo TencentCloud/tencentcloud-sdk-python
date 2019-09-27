@@ -850,6 +850,34 @@ class TciClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def SubmitCheckAttendanceTaskPlus(self, request):
+        """支持多路视频流，提交高级人员考勤任务
+
+        :param request: 调用SubmitCheckAttendanceTaskPlus所需参数的结构体。
+        :type request: :class:`tencentcloud.tci.v20190318.models.SubmitCheckAttendanceTaskPlusRequest`
+        :rtype: :class:`tencentcloud.tci.v20190318.models.SubmitCheckAttendanceTaskPlusResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("SubmitCheckAttendanceTaskPlus", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.SubmitCheckAttendanceTaskPlusResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def SubmitConversationTask(self, request):
         """对话任务分析接口
 
@@ -983,6 +1011,34 @@ class TciClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.SubmitImageTaskResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def SubmitImageTaskPlus(self, request):
+        """高级图像分析任务，开放了图像任务里的所有开关，可以根据场景深度定制图像分析任务。支持的图像类别有，图片链接、图片二进制数据、点播链接和直播链接。
+
+        :param request: 调用SubmitImageTaskPlus所需参数的结构体。
+        :type request: :class:`tencentcloud.tci.v20190318.models.SubmitImageTaskPlusRequest`
+        :rtype: :class:`tencentcloud.tci.v20190318.models.SubmitImageTaskPlusResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("SubmitImageTaskPlus", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.SubmitImageTaskPlusResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
