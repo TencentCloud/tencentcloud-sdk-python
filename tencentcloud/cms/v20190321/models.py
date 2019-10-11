@@ -23,7 +23,7 @@ class AudioModerationRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param CallbackUrl: 回调url
+        :param CallbackUrl: 回调URL，音频识别结果将以POST请求方式发送到此地址
         :type CallbackUrl: str
         :param FileContent: 音频内容的base64
         :type FileContent: str
@@ -69,6 +69,87 @@ class AudioModerationResponse(AbstractModel):
         self.BusinessCode = params.get("BusinessCode")
         self.Data = params.get("Data")
         self.RequestId = params.get("RequestId")
+
+
+class CodeDetail(AbstractModel):
+    """从图片中检测到的二维码，可能为多个
+
+    """
+
+    def __init__(self):
+        """
+        :param CodePosition: 二维码在图片中的位置，由4个点的坐标表示
+        :type CodePosition: list of CodePosition
+        :param CodeCharset: 二维码文本的编码格式
+        :type CodeCharset: str
+        :param CodeText: 二维码的文本内容
+        :type CodeText: str
+        :param CodeType: 二维码的类型：1：ONED_BARCODE，2：QRCOD，3:WXCODE，4：PDF417，5:DATAMATRIX
+        :type CodeType: int
+        """
+        self.CodePosition = None
+        self.CodeCharset = None
+        self.CodeText = None
+        self.CodeType = None
+
+
+    def _deserialize(self, params):
+        if params.get("CodePosition") is not None:
+            self.CodePosition = []
+            for item in params.get("CodePosition"):
+                obj = CodePosition()
+                obj._deserialize(item)
+                self.CodePosition.append(obj)
+        self.CodeCharset = params.get("CodeCharset")
+        self.CodeText = params.get("CodeText")
+        self.CodeType = params.get("CodeType")
+
+
+class CodeDetect(AbstractModel):
+    """图片二维码详情
+
+    """
+
+    def __init__(self):
+        """
+        :param ModerationDetail: 从图片中检测到的二维码，可能为多个
+        :type ModerationDetail: list of CodeDetail
+        :param ModerationCode: 检测是否成功，0：成功，-1：出错
+        :type ModerationCode: int
+        """
+        self.ModerationDetail = None
+        self.ModerationCode = None
+
+
+    def _deserialize(self, params):
+        if params.get("ModerationDetail") is not None:
+            self.ModerationDetail = []
+            for item in params.get("ModerationDetail"):
+                obj = CodeDetail()
+                obj._deserialize(item)
+                self.ModerationDetail.append(obj)
+        self.ModerationCode = params.get("ModerationCode")
+
+
+class CodePosition(AbstractModel):
+    """二维码在图片中的位置，由4个点的坐标表示
+
+    """
+
+    def __init__(self):
+        """
+        :param FloatX: 二维码边界点X轴坐标
+        :type FloatX: float
+        :param FloatY: 二维码边界点Y轴坐标
+        :type FloatY: float
+        """
+        self.FloatX = None
+        self.FloatY = None
+
+
+    def _deserialize(self, params):
+        self.FloatX = params.get("FloatX")
+        self.FloatY = params.get("FloatY")
 
 
 class CreateFileSampleRequest(AbstractModel):
@@ -595,6 +676,8 @@ class ImageData(AbstractModel):
 24001：暴恐
 21000：综合
         :type EvilType: int
+        :param CodeDetect: 图片二维码详情
+        :type CodeDetect: :class:`tencentcloud.cms.v20190321.models.CodeDetect`
         :param HotDetect: 图片性感详情
         :type HotDetect: :class:`tencentcloud.cms.v20190321.models.ImageHotDetect`
         :param IllegalDetect: 图片违法详情
@@ -612,6 +695,7 @@ class ImageData(AbstractModel):
         """
         self.EvilFlag = None
         self.EvilType = None
+        self.CodeDetect = None
         self.HotDetect = None
         self.IllegalDetect = None
         self.OCRDetect = None
@@ -624,6 +708,9 @@ class ImageData(AbstractModel):
     def _deserialize(self, params):
         self.EvilFlag = params.get("EvilFlag")
         self.EvilType = params.get("EvilType")
+        if params.get("CodeDetect") is not None:
+            self.CodeDetect = CodeDetect()
+            self.CodeDetect._deserialize(params.get("CodeDetect"))
         if params.get("HotDetect") is not None:
             self.HotDetect = ImageHotDetect()
             self.HotDetect._deserialize(params.get("HotDetect"))
@@ -1052,8 +1139,9 @@ class TextSample(AbstractModel):
 20002：色情 
 20006：涉毒违法
 20007：谩骂 
+20105：广告引流 
 24001：暴恐
-21000：综合
+20004/21000：综合
         :type EvilType: int
         :param Id: 唯一标识
         :type Id: str
@@ -1092,7 +1180,7 @@ class VideoModerationRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param CallbackUrl: 回调Url
+        :param CallbackUrl: 回调URL，音频识别结果将以POST请求方式发送到此地址
         :type CallbackUrl: str
         :param FileMD5: 视频文件MD5
         :type FileMD5: str

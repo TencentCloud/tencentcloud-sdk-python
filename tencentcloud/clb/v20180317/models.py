@@ -112,6 +112,53 @@ class Backend(AbstractModel):
         self.EniId = params.get("EniId")
 
 
+class BatchDeregisterTargetsRequest(AbstractModel):
+    """BatchDeregisterTargets请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param LoadBalancerId: 负载均衡ID
+        :type LoadBalancerId: str
+        :param Targets: 解绑目标
+        :type Targets: list of BatchTarget
+        """
+        self.LoadBalancerId = None
+        self.Targets = None
+
+
+    def _deserialize(self, params):
+        self.LoadBalancerId = params.get("LoadBalancerId")
+        if params.get("Targets") is not None:
+            self.Targets = []
+            for item in params.get("Targets"):
+                obj = BatchTarget()
+                obj._deserialize(item)
+                self.Targets.append(obj)
+
+
+class BatchDeregisterTargetsResponse(AbstractModel):
+    """BatchDeregisterTargets返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param FailListenerIdSet: 解绑失败的监听器ID
+        :type FailListenerIdSet: list of str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.FailListenerIdSet = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.FailListenerIdSet = params.get("FailListenerIdSet")
+        self.RequestId = params.get("RequestId")
+
+
 class BatchModifyTargetWeightRequest(AbstractModel):
     """BatchModifyTargetWeight请求参数结构体
 
@@ -153,6 +200,91 @@ class BatchModifyTargetWeightResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
+
+
+class BatchRegisterTargetsRequest(AbstractModel):
+    """BatchRegisterTargets请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param LoadBalancerId: 负载均衡ID
+        :type LoadBalancerId: str
+        :param Targets: 绑定目标
+        :type Targets: list of BatchTarget
+        """
+        self.LoadBalancerId = None
+        self.Targets = None
+
+
+    def _deserialize(self, params):
+        self.LoadBalancerId = params.get("LoadBalancerId")
+        if params.get("Targets") is not None:
+            self.Targets = []
+            for item in params.get("Targets"):
+                obj = BatchTarget()
+                obj._deserialize(item)
+                self.Targets.append(obj)
+
+
+class BatchRegisterTargetsResponse(AbstractModel):
+    """BatchRegisterTargets返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param FailListenerIdSet: 绑定失败的监听器ID，如为空表示全部绑定成功。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FailListenerIdSet: list of str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.FailListenerIdSet = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.FailListenerIdSet = params.get("FailListenerIdSet")
+        self.RequestId = params.get("RequestId")
+
+
+class BatchTarget(AbstractModel):
+    """批量绑定类型
+
+    """
+
+    def __init__(self):
+        """
+        :param ListenerId: 监听器ID
+        :type ListenerId: str
+        :param Port: 绑定端口
+        :type Port: int
+        :param InstanceId: 子机ID
+        :type InstanceId: str
+        :param EniIp: 弹性网卡ip
+        :type EniIp: str
+        :param Weight: 子机权重，范围[0, 100]。绑定时如果不存在，则默认为10。
+        :type Weight: int
+        :param LocationId: 七层规则ID
+        :type LocationId: str
+        """
+        self.ListenerId = None
+        self.Port = None
+        self.InstanceId = None
+        self.EniIp = None
+        self.Weight = None
+        self.LocationId = None
+
+
+    def _deserialize(self, params):
+        self.ListenerId = params.get("ListenerId")
+        self.Port = params.get("Port")
+        self.InstanceId = params.get("InstanceId")
+        self.EniIp = params.get("EniIp")
+        self.Weight = params.get("Weight")
+        self.LocationId = params.get("LocationId")
 
 
 class CertificateInput(AbstractModel):
@@ -1899,9 +2031,6 @@ OPEN：公网属性， INTERNAL：内网属性。
         :param ExtraInfo: 暂做保留，一般用户无需关注。
 注意：此字段可能返回 null，表示取不到有效值。
         :type ExtraInfo: :class:`tencentcloud.clb.v20180317.models.ExtraInfo`
-        :param LoadBalancerPassToTarget: 是否默认放通来自CLB的流量。开启默认放通（true）：只验证CLB上的安全组；不开启默认放通（false）：需同时验证CLB和后端实例上的安全组。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type LoadBalancerPassToTarget: bool
         """
         self.LoadBalancerId = None
         self.LoadBalancerName = None
@@ -1937,7 +2066,6 @@ OPEN：公网属性， INTERNAL：内网属性。
         self.LogTopicId = None
         self.AddressIPv6 = None
         self.ExtraInfo = None
-        self.LoadBalancerPassToTarget = None
 
 
     def _deserialize(self, params):
@@ -1995,7 +2123,6 @@ OPEN：公网属性， INTERNAL：内网属性。
         if params.get("ExtraInfo") is not None:
             self.ExtraInfo = ExtraInfo()
             self.ExtraInfo._deserialize(params.get("ExtraInfo"))
-        self.LoadBalancerPassToTarget = params.get("LoadBalancerPassToTarget")
 
 
 class LoadBalancerHealth(AbstractModel):
@@ -2090,7 +2217,7 @@ class ModifyDomainAttributesRequest(AbstractModel):
         """
         :param LoadBalancerId: 负载均衡实例 ID
         :type LoadBalancerId: str
-        :param ListenerId: 应用型负载均衡监听器 ID
+        :param ListenerId: 负载均衡监听器 ID
         :type ListenerId: str
         :param Domain: 域名（必须是已经创建的转发规则下的域名）
         :type Domain: str

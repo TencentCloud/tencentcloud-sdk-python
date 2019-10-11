@@ -386,15 +386,19 @@ class AllocateAddressesResponse(AbstractModel):
         """
         :param AddressSet: 申请到的 EIP 的唯一 ID 列表。
         :type AddressSet: list of str
+        :param TaskId: 异步任务TaskId。可以使用[DescribeTaskResult](https://cloud.tencent.com/document/api/215/36271)接口查询任务状态。
+        :type TaskId: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.AddressSet = None
+        self.TaskId = None
         self.RequestId = None
 
 
     def _deserialize(self, params):
         self.AddressSet = params.get("AddressSet")
+        self.TaskId = params.get("TaskId")
         self.RequestId = params.get("RequestId")
 
 
@@ -671,13 +675,17 @@ class AssociateAddressResponse(AbstractModel):
 
     def __init__(self):
         """
+        :param TaskId: 异步任务TaskId。可以使用[DescribeTaskResult](https://cloud.tencent.com/document/api/215/36271)接口查询任务状态。
+        :type TaskId: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
+        self.TaskId = None
         self.RequestId = None
 
 
     def _deserialize(self, params):
+        self.TaskId = params.get("TaskId")
         self.RequestId = params.get("RequestId")
 
 
@@ -6072,13 +6080,17 @@ class DisassociateAddressResponse(AbstractModel):
 
     def __init__(self):
         """
+        :param TaskId: 异步任务TaskId。可以使用[DescribeTaskResult](https://cloud.tencent.com/document/api/215/36271)接口查询任务状态。
+        :type TaskId: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
+        self.TaskId = None
         self.RequestId = None
 
 
     def _deserialize(self, params):
+        self.TaskId = params.get("TaskId")
         self.RequestId = params.get("RequestId")
 
 
@@ -7244,13 +7256,17 @@ class ModifyAddressesBandwidthResponse(AbstractModel):
 
     def __init__(self):
         """
+        :param TaskId: 异步任务TaskId。可以使用[DescribeTaskResult](https://cloud.tencent.com/document/api/215/36271)接口查询任务状态。
+        :type TaskId: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
+        self.TaskId = None
         self.RequestId = None
 
 
     def _deserialize(self, params):
+        self.TaskId = params.get("TaskId")
         self.RequestId = params.get("RequestId")
 
 
@@ -8640,13 +8656,17 @@ class ReleaseAddressesResponse(AbstractModel):
 
     def __init__(self):
         """
+        :param TaskId: 异步任务TaskId。可以使用[DescribeTaskResult](https://cloud.tencent.com/document/api/215/36271)接口查询任务状态。
+        :type TaskId: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
+        self.TaskId = None
         self.RequestId = None
 
 
     def _deserialize(self, params):
+        self.TaskId = params.get("TaskId")
         self.RequestId = params.get("RequestId")
 
 
@@ -9432,6 +9452,8 @@ class SecurityGroupPolicy(AbstractModel):
         :type Action: str
         :param PolicyDescription: 安全组规则描述。
         :type PolicyDescription: str
+        :param ModifyTime: 安全组最近修改时间。
+        :type ModifyTime: str
         """
         self.PolicyIndex = None
         self.Protocol = None
@@ -9442,6 +9464,7 @@ class SecurityGroupPolicy(AbstractModel):
         self.AddressTemplate = None
         self.Action = None
         self.PolicyDescription = None
+        self.ModifyTime = None
 
 
     def _deserialize(self, params):
@@ -9458,6 +9481,7 @@ class SecurityGroupPolicy(AbstractModel):
             self.AddressTemplate._deserialize(params.get("AddressTemplate"))
         self.Action = params.get("Action")
         self.PolicyDescription = params.get("PolicyDescription")
+        self.ModifyTime = params.get("ModifyTime")
 
 
 class SecurityGroupPolicySet(AbstractModel):

@@ -5956,6 +5956,64 @@ class DescribeAudioTrackTemplatesResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeCDNUsageDataRequest(AbstractModel):
+    """DescribeCDNUsageData请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param StartTime: 起始日期，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F)。
+        :type StartTime: str
+        :param EndTime: 结束日期，需大于开始日期，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F)。
+        :type EndTime: str
+        :param DataType: CDN 统计数据类型，有效值：
+<li>Flux：流量，单位为byte。</li>
+<li>Bandwidth：带宽，单位为bps。</li>
+        :type DataType: str
+        :param SubAppId: 点播 [子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
+当该字段为1时，表示以管理员身份查询所有子应用（含主应用）的用量合计。
+        :type SubAppId: int
+        """
+        self.StartTime = None
+        self.EndTime = None
+        self.DataType = None
+        self.SubAppId = None
+
+
+    def _deserialize(self, params):
+        self.StartTime = params.get("StartTime")
+        self.EndTime = params.get("EndTime")
+        self.DataType = params.get("DataType")
+        self.SubAppId = params.get("SubAppId")
+
+
+class DescribeCDNUsageDataResponse(AbstractModel):
+    """DescribeCDNUsageData返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Data: CDN 统计数据，每天一条数据。
+        :type Data: list of StatDataItem
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Data = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self.Data = []
+            for item in params.get("Data"):
+                obj = StatDataItem()
+                obj._deserialize(item)
+                self.Data.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeContentReviewTemplatesRequest(AbstractModel):
     """DescribeContentReviewTemplates请求参数结构体
 
@@ -7172,9 +7230,10 @@ class EditMediaTask(AbstractModel):
 <li>FINISH：已完成。</li>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Status: str
-        :param ErrCode: 错误码
-<li>0：成功；</li>
-<li>其他值：失败。</li>
+        :param ErrCode: 错误码，0 表示成功，其他值表示失败：
+<li>40000：输入参数不合法，请检查输入参数；</li>
+<li>60000：源文件错误（如视频数据损坏），请确认源文件是否正常；</li>
+<li>70000：内部服务错误，建议重试。</li>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ErrCode: int
         :param Message: 错误信息。
@@ -9115,7 +9174,10 @@ class MediaProcessTaskAdaptiveDynamicStreamingResult(AbstractModel):
         """
         :param Status: 任务状态，有 PROCESSING，SUCCESS 和 FAIL 三种。
         :type Status: str
-        :param ErrCode: 错误码，0：成功，其他值：失败。
+        :param ErrCode: 错误码，0 表示成功，其他值表示失败：
+<li>40000：输入参数不合法，请检查输入参数；</li>
+<li>60000：源文件错误（如视频数据损坏），请确认源文件是否正常；</li>
+<li>70000：内部服务错误，建议重试。</li>
         :type ErrCode: int
         :param Message: 错误信息。
         :type Message: str
@@ -9152,7 +9214,10 @@ class MediaProcessTaskAnimatedGraphicResult(AbstractModel):
         """
         :param Status: 任务状态，有 PROCESSING，SUCCESS 和 FAIL 三种。
         :type Status: str
-        :param ErrCode: 错误码，0：成功，其他值：失败。
+        :param ErrCode: 错误码，0 表示成功，其他值表示失败：
+<li>40000：输入参数不合法，请检查输入参数；</li>
+<li>60000：源文件错误（如视频数据损坏），请确认源文件是否正常；</li>
+<li>70000：内部服务错误，建议重试。</li>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ErrCode: int
         :param Message: 错误信息。
@@ -9192,7 +9257,10 @@ class MediaProcessTaskCoverBySnapshotResult(AbstractModel):
         """
         :param Status: 任务状态，有 PROCESSING，SUCCESS 和 FAIL 三种。
         :type Status: str
-        :param ErrCode: 错误码，0：成功，其他值：失败。
+        :param ErrCode: 错误码，0 表示成功，其他值表示失败：
+<li>40000：输入参数不合法，请检查输入参数；</li>
+<li>60000：源文件错误（如视频数据损坏），请确认源文件是否正常；</li>
+<li>70000：内部服务错误，建议重试。</li>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ErrCode: int
         :param Message: 错误信息。
@@ -9231,7 +9299,10 @@ class MediaProcessTaskImageSpriteResult(AbstractModel):
         """
         :param Status: 任务状态，有 PROCESSING，SUCCESS 和 FAIL 三种。
         :type Status: str
-        :param ErrCode: 错误码，0：成功，其他值：失败。
+        :param ErrCode: 错误码，0 表示成功，其他值表示失败：
+<li>40000：输入参数不合法，请检查输入参数；</li>
+<li>60000：源文件错误（如视频数据损坏），请确认源文件是否正常；</li>
+<li>70000：内部服务错误，建议重试。</li>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ErrCode: int
         :param Message: 错误信息。
@@ -9427,7 +9498,10 @@ class MediaProcessTaskSampleSnapshotResult(AbstractModel):
         """
         :param Status: 任务状态，有 PROCESSING，SUCCESS 和 FAIL 三种。
         :type Status: str
-        :param ErrCode: 错误码，0：成功，其他值：失败。
+        :param ErrCode: 错误码，0 表示成功，其他值表示失败：
+<li>40000：输入参数不合法，请检查输入参数；</li>
+<li>60000：源文件错误（如视频数据损坏），请确认源文件是否正常；</li>
+<li>70000：内部服务错误，建议重试。</li>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ErrCode: int
         :param Message: 错误信息。
@@ -9467,7 +9541,10 @@ class MediaProcessTaskSnapshotByTimeOffsetResult(AbstractModel):
         """
         :param Status: 任务状态，有 PROCESSING，SUCCESS 和 FAIL 三种。
         :type Status: str
-        :param ErrCode: 错误码，0：成功，其他值：失败。
+        :param ErrCode: 错误码，0 表示成功，其他值表示失败：
+<li>40000：输入参数不合法，请检查输入参数；</li>
+<li>60000：源文件错误（如视频数据损坏），请确认源文件是否正常；</li>
+<li>70000：内部服务错误，建议重试。</li>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ErrCode: int
         :param Message: 错误信息。
@@ -9507,7 +9584,10 @@ class MediaProcessTaskTranscodeResult(AbstractModel):
         """
         :param Status: 任务状态，有 PROCESSING，SUCCESS 和 FAIL 三种。
         :type Status: str
-        :param ErrCode: 错误码，0：成功，其他值：失败。
+        :param ErrCode: 错误码，0 表示成功，其他值表示失败：
+<li>40000：输入参数不合法，请检查输入参数；</li>
+<li>60000：源文件错误（如视频数据损坏），请确认源文件是否正常；</li>
+<li>70000：内部服务错误，建议重试。</li>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ErrCode: int
         :param Message: 错误信息。
@@ -11716,12 +11796,10 @@ class ProcedureTask(AbstractModel):
 <li>PROCESSING：处理中；</li>
 <li>FINISH：已完成。</li>
         :type Status: str
-        :param ErrCode: 错误码
-<li>0：成功；</li>
-<li>其他值：失败。</li>
+        :param ErrCode: 已弃用，请使用各个具体任务的 ErrCode。
 注意：此字段可能返回 null，表示取不到有效值。
         :type ErrCode: int
-        :param Message: 错误信息。
+        :param Message: 已弃用，请使用各个具体任务的 Message。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Message: str
         :param FileId: 媒体文件 ID
@@ -12239,12 +12317,11 @@ class PullUploadTask(AbstractModel):
         :param Status: 任务流状态，取值：
 <li>PROCESSING：处理中；</li>
 <li>FINISH：已完成。</li>
-
-注意：此字段可能返回 null，表示取不到有效值。
         :type Status: str
-        :param ErrCode: 错误码
-<li>0：成功；</li>
-<li>其他值：失败。</li>
+        :param ErrCode: 错误码，0 表示成功，其他值表示失败：
+<li>40000：输入参数不合法，请检查输入参数；</li>
+<li>60000：源文件错误（如视频数据损坏），请确认源文件是否正常；</li>
+<li>70000：内部服务错误，建议重试。</li>
         :type ErrCode: int
         :param Message: 错误信息。
         :type Message: str

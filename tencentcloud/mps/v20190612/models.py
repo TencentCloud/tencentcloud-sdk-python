@@ -2250,7 +2250,10 @@ class MediaProcessTaskAnimatedGraphicResult(AbstractModel):
         """
         :param Status: 任务状态，有 PROCESSING，SUCCESS 和 FAIL 三种。
         :type Status: str
-        :param ErrCode: 错误码，0：成功，其他值：失败。
+        :param ErrCode: 错误码，0 表示成功，其他值表示失败：
+<li>40000：输入参数不合法，请检查输入参数；</li>
+<li>60000：源文件错误（如视频数据损坏），请确认源文件是否正常；</li>
+<li>70000：内部服务错误，建议重试。</li>
         :type ErrCode: int
         :param Message: 错误信息。
         :type Message: str
@@ -2288,7 +2291,10 @@ class MediaProcessTaskImageSpriteResult(AbstractModel):
         """
         :param Status: 任务状态，有 PROCESSING，SUCCESS 和 FAIL 三种。
         :type Status: str
-        :param ErrCode: 错误码，0：成功，其他值：失败。
+        :param ErrCode: 错误码，0 表示成功，其他值表示失败：
+<li>40000：输入参数不合法，请检查输入参数；</li>
+<li>60000：源文件错误（如视频数据损坏），请确认源文件是否正常；</li>
+<li>70000：内部服务错误，建议重试。</li>
         :type ErrCode: int
         :param Message: 错误信息。
         :type Message: str
@@ -2452,7 +2458,10 @@ class MediaProcessTaskSampleSnapshotResult(AbstractModel):
         """
         :param Status: 任务状态，有 PROCESSING，SUCCESS 和 FAIL 三种。
         :type Status: str
-        :param ErrCode: 错误码，0：成功，其他值：失败。
+        :param ErrCode: 错误码，0 表示成功，其他值表示失败：
+<li>40000：输入参数不合法，请检查输入参数；</li>
+<li>60000：源文件错误（如视频数据损坏），请确认源文件是否正常；</li>
+<li>70000：内部服务错误，建议重试。</li>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ErrCode: int
         :param Message: 错误信息。
@@ -2492,7 +2501,10 @@ class MediaProcessTaskSnapshotByTimeOffsetResult(AbstractModel):
         """
         :param Status: 任务状态，有 PROCESSING，SUCCESS 和 FAIL 三种。
         :type Status: str
-        :param ErrCode: 错误码，0：成功，其他值：失败。
+        :param ErrCode: 错误码，0 表示成功，其他值表示失败：
+<li>40000：输入参数不合法，请检查输入参数；</li>
+<li>60000：源文件错误（如视频数据损坏），请确认源文件是否正常；</li>
+<li>70000：内部服务错误，建议重试。</li>
         :type ErrCode: int
         :param Message: 错误信息。
         :type Message: str
@@ -2530,7 +2542,10 @@ class MediaProcessTaskTranscodeResult(AbstractModel):
         """
         :param Status: 任务状态，有 PROCESSING，SUCCESS 和 FAIL 三种。
         :type Status: str
-        :param ErrCode: 错误码，0：成功，其他值：失败。
+        :param ErrCode: 错误码，0 表示成功，其他值表示失败：
+<li>40000：输入参数不合法，请检查输入参数；</li>
+<li>60000：源文件错误（如视频数据损坏），请确认源文件是否正常；</li>
+<li>70000：内部服务错误，建议重试。</li>
         :type ErrCode: int
         :param Message: 错误信息。
         :type Message: str
@@ -4383,11 +4398,9 @@ class WorkflowTask(AbstractModel):
 <li>PROCESSING：处理中；</li>
 <li>FINISH：已完成。</li>
         :type Status: str
-        :param ErrCode: 错误码
-<li>0：成功；</li>
-<li>其他值：失败。</li>
+        :param ErrCode: 已弃用，请使用各个具体任务的 ErrCode。
         :type ErrCode: int
-        :param Message: 错误信息。
+        :param Message: 已弃用，请使用各个具体任务的 Message。
         :type Message: str
         :param InputInfo: 视频处理的目标文件信息。
 注意：此字段可能返回 null，表示取不到有效值。

@@ -651,6 +651,64 @@ class DutyPaidProofOCRResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class EduPaperOCRRequest(AbstractModel):
+    """EduPaperOCR请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ImageBase64: 图片的 Base64 值。
+支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。
+支持的图片大小：所下载图片经Base64编码后不超过 3M。图片下载时间不超过 3 秒。
+图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
+        :type ImageBase64: str
+        :param ImageUrl: 图片的 Url 地址。
+支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。
+支持的图片大小：所下载图片经 Base64 编码后不超过 3M。图片下载时间不超过 3 秒。
+图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。
+非腾讯云存储的 Url 速度和稳定性可能受一定影响。
+        :type ImageUrl: str
+        """
+        self.ImageBase64 = None
+        self.ImageUrl = None
+
+
+    def _deserialize(self, params):
+        self.ImageBase64 = params.get("ImageBase64")
+        self.ImageUrl = params.get("ImageUrl")
+
+
+class EduPaperOCRResponse(AbstractModel):
+    """EduPaperOCR返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param EduPaperInfos: 检测到的文本信息，具体内容请点击左侧链接。
+        :type EduPaperInfos: list of TextEduPaper
+        :param Angle: 图片旋转角度（角度制），文本的水平方向为0°；顺时针为正，逆时针为负
+        :type Angle: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.EduPaperInfos = None
+        self.Angle = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("EduPaperInfos") is not None:
+            self.EduPaperInfos = []
+            for item in params.get("EduPaperInfos"):
+                obj = TextEduPaper()
+                obj._deserialize(item)
+                self.EduPaperInfos.append(obj)
+        self.Angle = params.get("Angle")
+        self.RequestId = params.get("RequestId")
+
+
 class EnglishOCRRequest(AbstractModel):
     """EnglishOCR请求参数结构体
 
@@ -702,6 +760,245 @@ class EnglishOCRResponse(AbstractModel):
                 obj = TextDetectionEn()
                 obj._deserialize(item)
                 self.TextDetections.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class EstateCertOCRRequest(AbstractModel):
+    """EstateCertOCR请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ImageBase64: 图片的 Base64 值。
+支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。
+支持的图片大小：所下载图片经Base64编码后不超过 3M。图片下载时间不超过 3 秒。
+图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
+        :type ImageBase64: str
+        :param ImageUrl: 图片的 Url 地址。
+支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。
+支持的图片大小：所下载图片经 Base64 编码后不超过 3M。图片下载时间不超过 3 秒。
+图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。
+非腾讯云存储的 Url 速度和稳定性可能受一定影响。
+        :type ImageUrl: str
+        """
+        self.ImageBase64 = None
+        self.ImageUrl = None
+
+
+    def _deserialize(self, params):
+        self.ImageBase64 = params.get("ImageBase64")
+        self.ImageUrl = params.get("ImageUrl")
+
+
+class EstateCertOCRResponse(AbstractModel):
+    """EstateCertOCR返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Obligee: 权利人
+        :type Obligee: str
+        :param Ownership: 共有情况
+        :type Ownership: str
+        :param Location: 坐落
+        :type Location: str
+        :param Unit: 不动产单元号
+        :type Unit: str
+        :param Type: 权利类型
+        :type Type: str
+        :param Property: 权利性质
+        :type Property: str
+        :param Usage: 用途
+        :type Usage: str
+        :param Area: 面积
+        :type Area: str
+        :param Term: 使用期限
+        :type Term: str
+        :param Other: 权利其他状况，多行会用换行符\n连接。
+        :type Other: str
+        :param Angle: 图片旋转角度
+        :type Angle: float
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Obligee = None
+        self.Ownership = None
+        self.Location = None
+        self.Unit = None
+        self.Type = None
+        self.Property = None
+        self.Usage = None
+        self.Area = None
+        self.Term = None
+        self.Other = None
+        self.Angle = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Obligee = params.get("Obligee")
+        self.Ownership = params.get("Ownership")
+        self.Location = params.get("Location")
+        self.Unit = params.get("Unit")
+        self.Type = params.get("Type")
+        self.Property = params.get("Property")
+        self.Usage = params.get("Usage")
+        self.Area = params.get("Area")
+        self.Term = params.get("Term")
+        self.Other = params.get("Other")
+        self.Angle = params.get("Angle")
+        self.RequestId = params.get("RequestId")
+
+
+class FinanBillInfo(AbstractModel):
+    """金融票据整单识别单个字段的内容
+
+    """
+
+    def __init__(self):
+        """
+        :param Name: 识别出的字段名称。
+        :type Name: str
+        :param Value: 识别出的字段名称对应的值，也就是字段Name对应的字符串结果。
+        :type Value: str
+        """
+        self.Name = None
+        self.Value = None
+
+
+    def _deserialize(self, params):
+        self.Name = params.get("Name")
+        self.Value = params.get("Value")
+
+
+class FinanBillOCRRequest(AbstractModel):
+    """FinanBillOCR请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ImageBase64: 图片的 Base64 值。
+支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。
+支持的图片大小：所下载图片经Base64编码后不超过 3M。图片下载时间不超过 3 秒。
+图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
+        :type ImageBase64: str
+        :param ImageUrl: 图片的 Url 地址。
+支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。
+支持的图片大小：所下载图片经 Base64 编码后不超过 3M。图片下载时间不超过 3 秒。
+图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。
+非腾讯云存储的 Url 速度和稳定性可能受一定影响。
+        :type ImageUrl: str
+        """
+        self.ImageBase64 = None
+        self.ImageUrl = None
+
+
+    def _deserialize(self, params):
+        self.ImageBase64 = params.get("ImageBase64")
+        self.ImageUrl = params.get("ImageUrl")
+
+
+class FinanBillOCRResponse(AbstractModel):
+    """FinanBillOCR返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param FinanBillInfos: 金融票据整单识别结果，具体内容请点击左侧链接。
+        :type FinanBillInfos: list of FinanBillInfo
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.FinanBillInfos = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("FinanBillInfos") is not None:
+            self.FinanBillInfos = []
+            for item in params.get("FinanBillInfos"):
+                obj = FinanBillInfo()
+                obj._deserialize(item)
+                self.FinanBillInfos.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class FinanBillSliceInfo(AbstractModel):
+    """金融票据切片识别单个字段的内容
+
+    """
+
+    def __init__(self):
+        """
+        :param Name: 识别出的字段名称。
+        :type Name: str
+        :param Value: 识别出的字段名称对应的值，也就是字段Name对应的字符串结果。
+        :type Value: str
+        """
+        self.Name = None
+        self.Value = None
+
+
+    def _deserialize(self, params):
+        self.Name = params.get("Name")
+        self.Value = params.get("Value")
+
+
+class FinanBillSliceOCRRequest(AbstractModel):
+    """FinanBillSliceOCR请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ImageBase64: 图片的 Base64 值。
+支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。
+支持的图片大小：所下载图片经Base64编码后不超过 3M。图片下载时间不超过 3 秒。
+图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
+        :type ImageBase64: str
+        :param ImageUrl: 图片的 Url 地址。
+支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。
+支持的图片大小：所下载图片经 Base64 编码后不超过 3M。图片下载时间不超过 3 秒。
+图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。
+非腾讯云存储的 Url 速度和稳定性可能受一定影响。
+        :type ImageUrl: str
+        """
+        self.ImageBase64 = None
+        self.ImageUrl = None
+
+
+    def _deserialize(self, params):
+        self.ImageBase64 = params.get("ImageBase64")
+        self.ImageUrl = params.get("ImageUrl")
+
+
+class FinanBillSliceOCRResponse(AbstractModel):
+    """FinanBillSliceOCR返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param FinanBillSliceInfos: 金融票据切片识别结果，具体内容请点击左侧链接。
+        :type FinanBillSliceInfos: list of FinanBillSliceInfo
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.FinanBillSliceInfos = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("FinanBillSliceInfos") is not None:
+            self.FinanBillSliceInfos = []
+            for item in params.get("FinanBillSliceInfos"):
+                obj = FinanBillSliceInfo()
+                obj._deserialize(item)
+                self.FinanBillSliceInfos.append(obj)
         self.RequestId = params.get("RequestId")
 
 
@@ -777,6 +1074,64 @@ class FlightInvoiceOCRResponse(AbstractModel):
                 obj = FlightInvoiceInfo()
                 obj._deserialize(item)
                 self.FlightInvoiceInfos.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class FormulaOCRRequest(AbstractModel):
+    """FormulaOCR请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ImageBase64: 图片的 Base64 值。
+支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。
+支持的图片大小：所下载图片经Base64编码后不超过 3M。图片下载时间不超过 3 秒。
+图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
+        :type ImageBase64: str
+        :param ImageUrl: 图片的 Url 地址。
+支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。
+支持的图片大小：所下载图片经 Base64 编码后不超过 3M。图片下载时间不超过 3 秒。
+图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。
+非腾讯云存储的 Url 速度和稳定性可能受一定影响。
+        :type ImageUrl: str
+        """
+        self.ImageBase64 = None
+        self.ImageUrl = None
+
+
+    def _deserialize(self, params):
+        self.ImageBase64 = params.get("ImageBase64")
+        self.ImageUrl = params.get("ImageUrl")
+
+
+class FormulaOCRResponse(AbstractModel):
+    """FormulaOCR返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Angle: 图片旋转角度（角度制），文本的水平方向为0°；顺时针为正，逆时针为负
+        :type Angle: int
+        :param FormulaInfos: 检测到的文本信息，具体内容请点击左侧链接。
+        :type FormulaInfos: list of TextFormula
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Angle = None
+        self.FormulaInfos = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Angle = params.get("Angle")
+        if params.get("FormulaInfos") is not None:
+            self.FormulaInfos = []
+            for item in params.get("FormulaInfos"):
+                obj = TextFormula()
+                obj._deserialize(item)
+                self.FormulaInfos.append(obj)
         self.RequestId = params.get("RequestId")
 
 
@@ -1195,6 +1550,71 @@ Code 告警码列表和释义：
         self.Authority = params.get("Authority")
         self.ValidDate = params.get("ValidDate")
         self.AdvancedInfo = params.get("AdvancedInfo")
+        self.RequestId = params.get("RequestId")
+
+
+class InstitutionOCRRequest(AbstractModel):
+    """InstitutionOCR请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ImageBase64: 图片的 Base64 值。
+支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。
+支持的图片大小：所下载图片经Base64编码后不超过 3M。图片下载时间不超过 3 秒。
+图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
+        :type ImageBase64: str
+        :param ImageUrl: 图片的 Url 地址。
+支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。
+支持的图片大小：所下载图片经 Base64 编码后不超过 3M。图片下载时间不超过 3 秒。
+图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。
+非腾讯云存储的 Url 速度和稳定性可能受一定影响。
+        :type ImageUrl: str
+        """
+        self.ImageBase64 = None
+        self.ImageUrl = None
+
+
+    def _deserialize(self, params):
+        self.ImageBase64 = params.get("ImageBase64")
+        self.ImageUrl = params.get("ImageUrl")
+
+
+class InstitutionOCRResponse(AbstractModel):
+    """InstitutionOCR返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RegId: 注册号
+        :type RegId: str
+        :param ValidDate: 有效期
+        :type ValidDate: str
+        :param Location: 住所
+        :type Location: str
+        :param Name: 名称
+        :type Name: str
+        :param LegalPerson: 法定代表人
+        :type LegalPerson: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RegId = None
+        self.ValidDate = None
+        self.Location = None
+        self.Name = None
+        self.LegalPerson = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RegId = params.get("RegId")
+        self.ValidDate = params.get("ValidDate")
+        self.Location = params.get("Location")
+        self.Name = params.get("Name")
+        self.LegalPerson = params.get("LegalPerson")
         self.RequestId = params.get("RequestId")
 
 
@@ -1707,6 +2127,67 @@ class MixedInvoiceOCRResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class OrgCodeCertOCRRequest(AbstractModel):
+    """OrgCodeCertOCR请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ImageBase64: 图片的 Base64 值。
+支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。
+支持的图片大小：所下载图片经Base64编码后不超过 3M。图片下载时间不超过 3 秒。
+图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
+        :type ImageBase64: str
+        :param ImageUrl: 图片的 Url 地址。
+支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。
+支持的图片大小：所下载图片经 Base64 编码后不超过 3M。图片下载时间不超过 3 秒。
+图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。
+非腾讯云存储的 Url 速度和稳定性可能受一定影响。
+        :type ImageUrl: str
+        """
+        self.ImageBase64 = None
+        self.ImageUrl = None
+
+
+    def _deserialize(self, params):
+        self.ImageBase64 = params.get("ImageBase64")
+        self.ImageUrl = params.get("ImageUrl")
+
+
+class OrgCodeCertOCRResponse(AbstractModel):
+    """OrgCodeCertOCR返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param OrgCode: 代码
+        :type OrgCode: str
+        :param Name: 机构名称
+        :type Name: str
+        :param Address: 地址
+        :type Address: str
+        :param ValidDate: 有效期
+        :type ValidDate: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.OrgCode = None
+        self.Name = None
+        self.Address = None
+        self.ValidDate = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.OrgCode = params.get("OrgCode")
+        self.Name = params.get("Name")
+        self.Address = params.get("Address")
+        self.ValidDate = params.get("ValidDate")
+        self.RequestId = params.get("RequestId")
+
+
 class PassportOCRRequest(AbstractModel):
     """PassportOCR请求参数结构体
 
@@ -1895,6 +2376,151 @@ class PermitOCRResponse(AbstractModel):
         self.IssueAddress = params.get("IssueAddress")
         self.Birthday = params.get("Birthday")
         self.RequestId = params.get("RequestId")
+
+
+class QrcodeImgSize(AbstractModel):
+    """图片大小
+
+    """
+
+    def __init__(self):
+        """
+        :param Wide: 宽
+        :type Wide: int
+        :param High: 高
+        :type High: int
+        """
+        self.Wide = None
+        self.High = None
+
+
+    def _deserialize(self, params):
+        self.Wide = params.get("Wide")
+        self.High = params.get("High")
+
+
+class QrcodeOCRRequest(AbstractModel):
+    """QrcodeOCR请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ImageBase64: 图片的 Base64 值。
+支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。
+支持的图片大小：所下载图片经Base64编码后不超过 3M。图片下载时间不超过 3 秒。
+图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
+        :type ImageBase64: str
+        :param ImageUrl: 图片的 Url 地址。
+支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。
+支持的图片大小：所下载图片经 Base64 编码后不超过 3M。图片下载时间不超过 3 秒。
+图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。
+非腾讯云存储的 Url 速度和稳定性可能受一定影响。
+        :type ImageUrl: str
+        """
+        self.ImageBase64 = None
+        self.ImageUrl = None
+
+
+    def _deserialize(self, params):
+        self.ImageBase64 = params.get("ImageBase64")
+        self.ImageUrl = params.get("ImageUrl")
+
+
+class QrcodeOCRResponse(AbstractModel):
+    """QrcodeOCR返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param CodeResults: 二维码/条形码识别结果信息，具体内容请点击左侧链接。
+        :type CodeResults: list of QrcodeResultsInfo
+        :param ImgSize: 图片大小，具体内容请点击左侧链接。
+        :type ImgSize: :class:`tencentcloud.ocr.v20181119.models.QrcodeImgSize`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.CodeResults = None
+        self.ImgSize = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("CodeResults") is not None:
+            self.CodeResults = []
+            for item in params.get("CodeResults"):
+                obj = QrcodeResultsInfo()
+                obj._deserialize(item)
+                self.CodeResults.append(obj)
+        if params.get("ImgSize") is not None:
+            self.ImgSize = QrcodeImgSize()
+            self.ImgSize._deserialize(params.get("ImgSize"))
+        self.RequestId = params.get("RequestId")
+
+
+class QrcodePositionObj(AbstractModel):
+    """二维码/条形码坐标信息
+
+    """
+
+    def __init__(self):
+        """
+        :param LeftTop: 左上顶点坐标（如果是条形码，X和Y都为-1）
+        :type LeftTop: :class:`tencentcloud.ocr.v20181119.models.Coord`
+        :param RightTop: 右上顶点坐标（如果是条形码，X和Y都为-1）
+        :type RightTop: :class:`tencentcloud.ocr.v20181119.models.Coord`
+        :param RightBottom: 右下顶点坐标（如果是条形码，X和Y都为-1）
+        :type RightBottom: :class:`tencentcloud.ocr.v20181119.models.Coord`
+        :param LeftBottom: 左下顶点坐标（如果是条形码，X和Y都为-1）
+        :type LeftBottom: :class:`tencentcloud.ocr.v20181119.models.Coord`
+        """
+        self.LeftTop = None
+        self.RightTop = None
+        self.RightBottom = None
+        self.LeftBottom = None
+
+
+    def _deserialize(self, params):
+        if params.get("LeftTop") is not None:
+            self.LeftTop = Coord()
+            self.LeftTop._deserialize(params.get("LeftTop"))
+        if params.get("RightTop") is not None:
+            self.RightTop = Coord()
+            self.RightTop._deserialize(params.get("RightTop"))
+        if params.get("RightBottom") is not None:
+            self.RightBottom = Coord()
+            self.RightBottom._deserialize(params.get("RightBottom"))
+        if params.get("LeftBottom") is not None:
+            self.LeftBottom = Coord()
+            self.LeftBottom._deserialize(params.get("LeftBottom"))
+
+
+class QrcodeResultsInfo(AbstractModel):
+    """二维码/条形码识别结果信息
+
+    """
+
+    def __init__(self):
+        """
+        :param TypeName: 类型（二维码、条形码）
+        :type TypeName: str
+        :param Url: 二维码/条形码包含的地址
+        :type Url: str
+        :param Position: 二维码/条形码坐标（二维码会返回位置坐标，条形码暂不返回位置坐标，因此默认X和Y返回值均为-1）
+        :type Position: :class:`tencentcloud.ocr.v20181119.models.QrcodePositionObj`
+        """
+        self.TypeName = None
+        self.Url = None
+        self.Position = None
+
+
+    def _deserialize(self, params):
+        self.TypeName = params.get("TypeName")
+        self.Url = params.get("Url")
+        if params.get("Position") is not None:
+            self.Position = QrcodePositionObj()
+            self.Position._deserialize(params.get("Position"))
 
 
 class QuotaInvoiceOCRRequest(AbstractModel):
@@ -2377,6 +3003,40 @@ class TextDetectionEn(AbstractModel):
                 obj._deserialize(item)
                 self.Polygon.append(obj)
         self.AdvancedInfo = params.get("AdvancedInfo")
+
+
+class TextEduPaper(AbstractModel):
+    """数学试题识别结果
+
+    """
+
+    def __init__(self):
+        """
+        :param DetectedText: 识别出的文本行内容
+        :type DetectedText: str
+        """
+        self.DetectedText = None
+
+
+    def _deserialize(self, params):
+        self.DetectedText = params.get("DetectedText")
+
+
+class TextFormula(AbstractModel):
+    """数学公式识别结果
+
+    """
+
+    def __init__(self):
+        """
+        :param DetectedText: 识别出的文本行内容
+        :type DetectedText: str
+        """
+        self.DetectedText = None
+
+
+    def _deserialize(self, params):
+        self.DetectedText = params.get("DetectedText")
 
 
 class TextGeneralHandwriting(AbstractModel):
@@ -3040,6 +3700,81 @@ class VehicleLicenseOCRResponse(AbstractModel):
         if params.get("BackInfo") is not None:
             self.BackInfo = TextVehicleBack()
             self.BackInfo._deserialize(params.get("BackInfo"))
+        self.RequestId = params.get("RequestId")
+
+
+class VehicleRegCertInfo(AbstractModel):
+    """机动车登记证书识别结果
+
+    """
+
+    def __init__(self):
+        """
+        :param Name: 识别出的字段名称
+        :type Name: str
+        :param Value: 识别出的字段名称对应的值，也就是字段name对应的字符串结果。
+        :type Value: str
+        """
+        self.Name = None
+        self.Value = None
+
+
+    def _deserialize(self, params):
+        self.Name = params.get("Name")
+        self.Value = params.get("Value")
+
+
+class VehicleRegCertOCRRequest(AbstractModel):
+    """VehicleRegCertOCR请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ImageBase64: 图片的 Base64 值。
+支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。
+支持的图片大小：所下载图片经Base64编码后不超过 3M。图片下载时间不超过 3 秒。
+图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
+        :type ImageBase64: str
+        :param ImageUrl: 图片的 Url 地址。
+支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。
+支持的图片大小：所下载图片经 Base64 编码后不超过 3M。图片下载时间不超过 3 秒。
+图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。
+非腾讯云存储的 Url 速度和稳定性可能受一定影响。
+        :type ImageUrl: str
+        """
+        self.ImageBase64 = None
+        self.ImageUrl = None
+
+
+    def _deserialize(self, params):
+        self.ImageBase64 = params.get("ImageBase64")
+        self.ImageUrl = params.get("ImageUrl")
+
+
+class VehicleRegCertOCRResponse(AbstractModel):
+    """VehicleRegCertOCR返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param VehicleRegCertInfos: 机动车登记证书识别结果，具体内容请点击左侧链接。
+        :type VehicleRegCertInfos: list of VehicleRegCertInfo
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.VehicleRegCertInfos = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("VehicleRegCertInfos") is not None:
+            self.VehicleRegCertInfos = []
+            for item in params.get("VehicleRegCertInfos"):
+                obj = VehicleRegCertInfo()
+                obj._deserialize(item)
+                self.VehicleRegCertInfos.append(obj)
         self.RequestId = params.get("RequestId")
 
 
