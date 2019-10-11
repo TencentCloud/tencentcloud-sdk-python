@@ -109,6 +109,34 @@ class TsfClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def CreateConfig(self, request):
+        """创建配置项
+
+        :param request: 调用CreateConfig所需参数的结构体。
+        :type request: :class:`tencentcloud.tsf.v20180326.models.CreateConfigRequest`
+        :rtype: :class:`tencentcloud.tsf.v20180326.models.CreateConfigResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("CreateConfig", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateConfigResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def CreateContainGroup(self, request):
         """创建容器部署组
 
@@ -221,6 +249,34 @@ class TsfClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def CreatePublicConfig(self, request):
+        """创建公共配置项
+
+        :param request: 调用CreatePublicConfig所需参数的结构体。
+        :type request: :class:`tencentcloud.tsf.v20180326.models.CreatePublicConfigRequest`
+        :rtype: :class:`tencentcloud.tsf.v20180326.models.CreatePublicConfigResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("CreatePublicConfig", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreatePublicConfigResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DeleteApplication(self, request):
         """删除应用
 
@@ -235,6 +291,34 @@ class TsfClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteApplicationResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DeleteConfig(self, request):
+        """删除配置项
+
+        :param request: 调用DeleteConfig所需参数的结构体。
+        :type request: :class:`tencentcloud.tsf.v20180326.models.DeleteConfigRequest`
+        :rtype: :class:`tencentcloud.tsf.v20180326.models.DeleteConfigResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DeleteConfig", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DeleteConfigResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -418,6 +502,34 @@ class TsfClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DeletePublicConfig(self, request):
+        """删除公共配置项
+
+        :param request: 调用DeletePublicConfig所需参数的结构体。
+        :type request: :class:`tencentcloud.tsf.v20180326.models.DeletePublicConfigRequest`
+        :rtype: :class:`tencentcloud.tsf.v20180326.models.DeletePublicConfigResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DeletePublicConfig", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DeletePublicConfigResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DeployContainerGroup(self, request):
         """部署容器应用
 
@@ -572,6 +684,146 @@ class TsfClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeClusterInstancesResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeConfig(self, request):
+        """查询配置
+
+        :param request: 调用DescribeConfig所需参数的结构体。
+        :type request: :class:`tencentcloud.tsf.v20180326.models.DescribeConfigRequest`
+        :rtype: :class:`tencentcloud.tsf.v20180326.models.DescribeConfigResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeConfig", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeConfigResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeConfigReleaseLogs(self, request):
+        """查询配置发布历史
+
+        :param request: 调用DescribeConfigReleaseLogs所需参数的结构体。
+        :type request: :class:`tencentcloud.tsf.v20180326.models.DescribeConfigReleaseLogsRequest`
+        :rtype: :class:`tencentcloud.tsf.v20180326.models.DescribeConfigReleaseLogsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeConfigReleaseLogs", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeConfigReleaseLogsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeConfigReleases(self, request):
+        """查询配置发布信息
+
+        :param request: 调用DescribeConfigReleases所需参数的结构体。
+        :type request: :class:`tencentcloud.tsf.v20180326.models.DescribeConfigReleasesRequest`
+        :rtype: :class:`tencentcloud.tsf.v20180326.models.DescribeConfigReleasesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeConfigReleases", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeConfigReleasesResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeConfigSummary(self, request):
+        """查询配置汇总列表
+
+        :param request: 调用DescribeConfigSummary所需参数的结构体。
+        :type request: :class:`tencentcloud.tsf.v20180326.models.DescribeConfigSummaryRequest`
+        :rtype: :class:`tencentcloud.tsf.v20180326.models.DescribeConfigSummaryResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeConfigSummary", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeConfigSummaryResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeConfigs(self, request):
+        """查询配置项列表
+
+        :param request: 调用DescribeConfigs所需参数的结构体。
+        :type request: :class:`tencentcloud.tsf.v20180326.models.DescribeConfigsRequest`
+        :rtype: :class:`tencentcloud.tsf.v20180326.models.DescribeConfigsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeConfigs", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeConfigsResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -853,6 +1105,174 @@ class TsfClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribePkgsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribePublicConfig(self, request):
+        """查询公共配置（单条）
+
+        :param request: 调用DescribePublicConfig所需参数的结构体。
+        :type request: :class:`tencentcloud.tsf.v20180326.models.DescribePublicConfigRequest`
+        :rtype: :class:`tencentcloud.tsf.v20180326.models.DescribePublicConfigResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribePublicConfig", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribePublicConfigResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribePublicConfigReleaseLogs(self, request):
+        """查询公共配置发布历史
+
+        :param request: 调用DescribePublicConfigReleaseLogs所需参数的结构体。
+        :type request: :class:`tencentcloud.tsf.v20180326.models.DescribePublicConfigReleaseLogsRequest`
+        :rtype: :class:`tencentcloud.tsf.v20180326.models.DescribePublicConfigReleaseLogsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribePublicConfigReleaseLogs", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribePublicConfigReleaseLogsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribePublicConfigReleases(self, request):
+        """查询公共配置发布信息
+
+        :param request: 调用DescribePublicConfigReleases所需参数的结构体。
+        :type request: :class:`tencentcloud.tsf.v20180326.models.DescribePublicConfigReleasesRequest`
+        :rtype: :class:`tencentcloud.tsf.v20180326.models.DescribePublicConfigReleasesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribePublicConfigReleases", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribePublicConfigReleasesResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribePublicConfigSummary(self, request):
+        """查询公共配置汇总列表
+
+        :param request: 调用DescribePublicConfigSummary所需参数的结构体。
+        :type request: :class:`tencentcloud.tsf.v20180326.models.DescribePublicConfigSummaryRequest`
+        :rtype: :class:`tencentcloud.tsf.v20180326.models.DescribePublicConfigSummaryResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribePublicConfigSummary", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribePublicConfigSummaryResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribePublicConfigs(self, request):
+        """查询公共配置项列表
+
+        :param request: 调用DescribePublicConfigs所需参数的结构体。
+        :type request: :class:`tencentcloud.tsf.v20180326.models.DescribePublicConfigsRequest`
+        :rtype: :class:`tencentcloud.tsf.v20180326.models.DescribePublicConfigsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribePublicConfigs", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribePublicConfigsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeReleasedConfig(self, request):
+        """查询group发布的配置
+
+        :param request: 调用DescribeReleasedConfig所需参数的结构体。
+        :type request: :class:`tencentcloud.tsf.v20180326.models.DescribeReleasedConfigRequest`
+        :rtype: :class:`tencentcloud.tsf.v20180326.models.DescribeReleasedConfigResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeReleasedConfig", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeReleasedConfigResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -1149,6 +1569,62 @@ class TsfClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def ReleaseConfig(self, request):
+        """发布配置
+
+        :param request: 调用ReleaseConfig所需参数的结构体。
+        :type request: :class:`tencentcloud.tsf.v20180326.models.ReleaseConfigRequest`
+        :rtype: :class:`tencentcloud.tsf.v20180326.models.ReleaseConfigResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ReleaseConfig", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ReleaseConfigResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ReleasePublicConfig(self, request):
+        """发布公共配置
+
+        :param request: 调用ReleasePublicConfig所需参数的结构体。
+        :type request: :class:`tencentcloud.tsf.v20180326.models.ReleasePublicConfigRequest`
+        :rtype: :class:`tencentcloud.tsf.v20180326.models.ReleasePublicConfigResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ReleasePublicConfig", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ReleasePublicConfigResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def RemoveInstances(self, request):
         """从 TSF 集群中批量移除云主机节点
 
@@ -1163,6 +1639,90 @@ class TsfClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.RemoveInstancesResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def RevocationConfig(self, request):
+        """撤回已发布的配置
+
+        :param request: 调用RevocationConfig所需参数的结构体。
+        :type request: :class:`tencentcloud.tsf.v20180326.models.RevocationConfigRequest`
+        :rtype: :class:`tencentcloud.tsf.v20180326.models.RevocationConfigResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("RevocationConfig", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.RevocationConfigResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def RevocationPublicConfig(self, request):
+        """撤回已发布的公共配置
+
+        :param request: 调用RevocationPublicConfig所需参数的结构体。
+        :type request: :class:`tencentcloud.tsf.v20180326.models.RevocationPublicConfigRequest`
+        :rtype: :class:`tencentcloud.tsf.v20180326.models.RevocationPublicConfigResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("RevocationPublicConfig", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.RevocationPublicConfigResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def RollbackConfig(self, request):
+        """回滚配置
+
+        :param request: 调用RollbackConfig所需参数的结构体。
+        :type request: :class:`tencentcloud.tsf.v20180326.models.RollbackConfigRequest`
+        :rtype: :class:`tencentcloud.tsf.v20180326.models.RollbackConfigResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("RollbackConfig", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.RollbackConfigResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

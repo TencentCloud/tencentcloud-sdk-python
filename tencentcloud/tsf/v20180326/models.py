@@ -307,6 +307,250 @@ class Cluster(AbstractModel):
         self.RunServiceInstanceCount = params.get("RunServiceInstanceCount")
 
 
+class Config(AbstractModel):
+    """配置项
+
+    """
+
+    def __init__(self):
+        """
+        :param ConfigId: 配置项ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ConfigId: str
+        :param ConfigName: 配置项名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ConfigName: str
+        :param ConfigVersion: 配置项版本
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ConfigVersion: str
+        :param ConfigVersionDesc: 配置项版本描述
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ConfigVersionDesc: str
+        :param ConfigValue: 配置项值
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ConfigValue: str
+        :param ConfigType: 配置项类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ConfigType: str
+        :param CreationTime: 创建时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CreationTime: str
+        :param ApplicationId: 应用ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ApplicationId: str
+        :param ApplicationName: 应用名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ApplicationName: str
+        :param DeleteFlag: 删除标识，true：可以删除；false：不可删除
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DeleteFlag: bool
+        :param LastUpdateTime: 最后更新时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LastUpdateTime: str
+        :param ConfigVersionCount: 配置项版本数量
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ConfigVersionCount: int
+        """
+        self.ConfigId = None
+        self.ConfigName = None
+        self.ConfigVersion = None
+        self.ConfigVersionDesc = None
+        self.ConfigValue = None
+        self.ConfigType = None
+        self.CreationTime = None
+        self.ApplicationId = None
+        self.ApplicationName = None
+        self.DeleteFlag = None
+        self.LastUpdateTime = None
+        self.ConfigVersionCount = None
+
+
+    def _deserialize(self, params):
+        self.ConfigId = params.get("ConfigId")
+        self.ConfigName = params.get("ConfigName")
+        self.ConfigVersion = params.get("ConfigVersion")
+        self.ConfigVersionDesc = params.get("ConfigVersionDesc")
+        self.ConfigValue = params.get("ConfigValue")
+        self.ConfigType = params.get("ConfigType")
+        self.CreationTime = params.get("CreationTime")
+        self.ApplicationId = params.get("ApplicationId")
+        self.ApplicationName = params.get("ApplicationName")
+        self.DeleteFlag = params.get("DeleteFlag")
+        self.LastUpdateTime = params.get("LastUpdateTime")
+        self.ConfigVersionCount = params.get("ConfigVersionCount")
+
+
+class ConfigRelease(AbstractModel):
+    """配置项发布信息
+
+    """
+
+    def __init__(self):
+        """
+        :param ConfigReleaseId: 配置项发布ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ConfigReleaseId: str
+        :param ConfigId: 配置项ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ConfigId: str
+        :param ConfigName: 配置项名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ConfigName: str
+        :param ConfigVersion: 配置项版本
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ConfigVersion: str
+        :param ReleaseTime: 发布时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ReleaseTime: str
+        :param GroupId: 部署组ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type GroupId: str
+        :param GroupName: 部署组名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type GroupName: str
+        :param NamespaceId: 命名空间ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type NamespaceId: str
+        :param NamespaceName: 命名空间名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type NamespaceName: str
+        :param ClusterId: 集群ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ClusterId: str
+        :param ClusterName: 集群名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ClusterName: str
+        :param ReleaseDesc: 发布描述
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ReleaseDesc: str
+        """
+        self.ConfigReleaseId = None
+        self.ConfigId = None
+        self.ConfigName = None
+        self.ConfigVersion = None
+        self.ReleaseTime = None
+        self.GroupId = None
+        self.GroupName = None
+        self.NamespaceId = None
+        self.NamespaceName = None
+        self.ClusterId = None
+        self.ClusterName = None
+        self.ReleaseDesc = None
+
+
+    def _deserialize(self, params):
+        self.ConfigReleaseId = params.get("ConfigReleaseId")
+        self.ConfigId = params.get("ConfigId")
+        self.ConfigName = params.get("ConfigName")
+        self.ConfigVersion = params.get("ConfigVersion")
+        self.ReleaseTime = params.get("ReleaseTime")
+        self.GroupId = params.get("GroupId")
+        self.GroupName = params.get("GroupName")
+        self.NamespaceId = params.get("NamespaceId")
+        self.NamespaceName = params.get("NamespaceName")
+        self.ClusterId = params.get("ClusterId")
+        self.ClusterName = params.get("ClusterName")
+        self.ReleaseDesc = params.get("ReleaseDesc")
+
+
+class ConfigReleaseLog(AbstractModel):
+    """配置项发布日志
+
+    """
+
+    def __init__(self):
+        """
+        :param ConfigReleaseLogId: 配置项发布日志ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ConfigReleaseLogId: str
+        :param ConfigId: 配置项ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ConfigId: str
+        :param ConfigName: 配置项名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ConfigName: str
+        :param ConfigVersion: 配置项版本
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ConfigVersion: str
+        :param GroupId: 部署组ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type GroupId: str
+        :param GroupName: 部署组名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type GroupName: str
+        :param NamespaceId: 命名空间ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type NamespaceId: str
+        :param NamespaceName: 命名空间名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type NamespaceName: str
+        :param ClusterId: 集群ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ClusterId: str
+        :param ClusterName: 集群名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ClusterName: str
+        :param ReleaseTime: 发布时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ReleaseTime: str
+        :param ReleaseDesc: 发布描述
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ReleaseDesc: str
+        :param ReleaseStatus: 发布状态
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ReleaseStatus: str
+        :param LastConfigId: 上次发布的配置项ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LastConfigId: str
+        :param LastConfigName: 上次发布的配置项名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LastConfigName: str
+        :param LastConfigVersion: 上次发布的配置项版本
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LastConfigVersion: str
+        :param RollbackFlag: 回滚标识
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RollbackFlag: bool
+        """
+        self.ConfigReleaseLogId = None
+        self.ConfigId = None
+        self.ConfigName = None
+        self.ConfigVersion = None
+        self.GroupId = None
+        self.GroupName = None
+        self.NamespaceId = None
+        self.NamespaceName = None
+        self.ClusterId = None
+        self.ClusterName = None
+        self.ReleaseTime = None
+        self.ReleaseDesc = None
+        self.ReleaseStatus = None
+        self.LastConfigId = None
+        self.LastConfigName = None
+        self.LastConfigVersion = None
+        self.RollbackFlag = None
+
+
+    def _deserialize(self, params):
+        self.ConfigReleaseLogId = params.get("ConfigReleaseLogId")
+        self.ConfigId = params.get("ConfigId")
+        self.ConfigName = params.get("ConfigName")
+        self.ConfigVersion = params.get("ConfigVersion")
+        self.GroupId = params.get("GroupId")
+        self.GroupName = params.get("GroupName")
+        self.NamespaceId = params.get("NamespaceId")
+        self.NamespaceName = params.get("NamespaceName")
+        self.ClusterId = params.get("ClusterId")
+        self.ClusterName = params.get("ClusterName")
+        self.ReleaseTime = params.get("ReleaseTime")
+        self.ReleaseDesc = params.get("ReleaseDesc")
+        self.ReleaseStatus = params.get("ReleaseStatus")
+        self.LastConfigId = params.get("LastConfigId")
+        self.LastConfigName = params.get("LastConfigName")
+        self.LastConfigVersion = params.get("LastConfigVersion")
+        self.RollbackFlag = params.get("RollbackFlag")
+
+
 class ContainGroup(AbstractModel):
     """部署组列表（应用下钻界面的）
 
@@ -830,6 +1074,64 @@ false：操作失败。
         self.RequestId = params.get("RequestId")
 
 
+class CreateConfigRequest(AbstractModel):
+    """CreateConfig请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ConfigName: 配置项名称
+        :type ConfigName: str
+        :param ConfigVersion: 配置项版本
+        :type ConfigVersion: str
+        :param ConfigValue: 配置项值
+        :type ConfigValue: str
+        :param ApplicationId: 应用ID
+        :type ApplicationId: str
+        :param ConfigVersionDesc: 配置项版本描述
+        :type ConfigVersionDesc: str
+        :param ConfigType: 配置项值类型
+        :type ConfigType: str
+        """
+        self.ConfigName = None
+        self.ConfigVersion = None
+        self.ConfigValue = None
+        self.ApplicationId = None
+        self.ConfigVersionDesc = None
+        self.ConfigType = None
+
+
+    def _deserialize(self, params):
+        self.ConfigName = params.get("ConfigName")
+        self.ConfigVersion = params.get("ConfigVersion")
+        self.ConfigValue = params.get("ConfigValue")
+        self.ApplicationId = params.get("ApplicationId")
+        self.ConfigVersionDesc = params.get("ConfigVersionDesc")
+        self.ConfigType = params.get("ConfigType")
+
+
+class CreateConfigResponse(AbstractModel):
+    """CreateConfig返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Result: true：创建成功；false：创建失败
+        :type Result: bool
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Result = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Result = params.get("Result")
+        self.RequestId = params.get("RequestId")
+
+
 class CreateContainGroupRequest(AbstractModel):
     """CreateContainGroup请求参数结构体
 
@@ -1079,6 +1381,61 @@ class CreateNamespaceResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class CreatePublicConfigRequest(AbstractModel):
+    """CreatePublicConfig请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ConfigName: 配置项名称
+        :type ConfigName: str
+        :param ConfigVersion: 配置项版本
+        :type ConfigVersion: str
+        :param ConfigValue: 配置项值，总是接收yaml格式的内容
+        :type ConfigValue: str
+        :param ConfigVersionDesc: 配置项版本描述
+        :type ConfigVersionDesc: str
+        :param ConfigType: 配置项类型
+        :type ConfigType: str
+        """
+        self.ConfigName = None
+        self.ConfigVersion = None
+        self.ConfigValue = None
+        self.ConfigVersionDesc = None
+        self.ConfigType = None
+
+
+    def _deserialize(self, params):
+        self.ConfigName = params.get("ConfigName")
+        self.ConfigVersion = params.get("ConfigVersion")
+        self.ConfigValue = params.get("ConfigValue")
+        self.ConfigVersionDesc = params.get("ConfigVersionDesc")
+        self.ConfigType = params.get("ConfigType")
+
+
+class CreatePublicConfigResponse(AbstractModel):
+    """CreatePublicConfig返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Result: true：创建成功；false：创建失败
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Result: bool
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Result = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Result = params.get("Result")
+        self.RequestId = params.get("RequestId")
+
+
 class DeleteApplicationRequest(AbstractModel):
     """DeleteApplication请求参数结构体
 
@@ -1107,6 +1464,44 @@ class DeleteApplicationResponse(AbstractModel):
 true：操作成功。
 false：操作失败。
 注意：此字段可能返回 null，表示取不到有效值。
+        :type Result: bool
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Result = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Result = params.get("Result")
+        self.RequestId = params.get("RequestId")
+
+
+class DeleteConfigRequest(AbstractModel):
+    """DeleteConfig请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ConfigId: 配置项ID
+        :type ConfigId: str
+        """
+        self.ConfigId = None
+
+
+    def _deserialize(self, params):
+        self.ConfigId = params.get("ConfigId")
+
+
+class DeleteConfigResponse(AbstractModel):
+    """DeleteConfig返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Result: true：删除成功；false：删除失败
         :type Result: bool
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -1386,6 +1781,45 @@ class DeletePkgsResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class DeletePublicConfigRequest(AbstractModel):
+    """DeletePublicConfig请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ConfigId: 配置项ID
+        :type ConfigId: str
+        """
+        self.ConfigId = None
+
+
+    def _deserialize(self, params):
+        self.ConfigId = params.get("ConfigId")
+
+
+class DeletePublicConfigResponse(AbstractModel):
+    """DeletePublicConfig返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Result: true：删除成功；false：删除失败
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Result: bool
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Result = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Result = params.get("Result")
         self.RequestId = params.get("RequestId")
 
 
@@ -1737,6 +2171,290 @@ class DescribeClusterInstancesResponse(AbstractModel):
     def _deserialize(self, params):
         if params.get("Result") is not None:
             self.Result = TsfPageInstance()
+            self.Result._deserialize(params.get("Result"))
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeConfigReleaseLogsRequest(AbstractModel):
+    """DescribeConfigReleaseLogs请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param GroupId: 部署组ID，不传入时查询全量
+        :type GroupId: str
+        :param Offset: 偏移量，默认为0
+        :type Offset: int
+        :param Limit: 每页条数，默认为20
+        :type Limit: int
+        :param NamespaceId: 命名空间ID，不传入时查询全量
+        :type NamespaceId: str
+        :param ClusterId: 集群ID，不传入时查询全量
+        :type ClusterId: str
+        :param ApplicationId: 应用ID，不传入时查询全量
+        :type ApplicationId: str
+        """
+        self.GroupId = None
+        self.Offset = None
+        self.Limit = None
+        self.NamespaceId = None
+        self.ClusterId = None
+        self.ApplicationId = None
+
+
+    def _deserialize(self, params):
+        self.GroupId = params.get("GroupId")
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+        self.NamespaceId = params.get("NamespaceId")
+        self.ClusterId = params.get("ClusterId")
+        self.ApplicationId = params.get("ApplicationId")
+
+
+class DescribeConfigReleaseLogsResponse(AbstractModel):
+    """DescribeConfigReleaseLogs返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Result: 分页的配置项发布历史列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Result: :class:`tencentcloud.tsf.v20180326.models.TsfPageConfigReleaseLog`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Result = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Result") is not None:
+            self.Result = TsfPageConfigReleaseLog()
+            self.Result._deserialize(params.get("Result"))
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeConfigReleasesRequest(AbstractModel):
+    """DescribeConfigReleases请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ConfigName: 配置项名称，不传入时查询全量
+        :type ConfigName: str
+        :param GroupId: 部署组ID，不传入时查询全量
+        :type GroupId: str
+        :param NamespaceId: 命名空间ID，不传入时查询全量
+        :type NamespaceId: str
+        :param ClusterId: 集群ID，不传入时查询全量
+        :type ClusterId: str
+        :param Limit: 每页条数
+        :type Limit: int
+        :param Offset: 偏移量
+        :type Offset: int
+        :param ConfigId: 配置ID，不传入时查询全量
+        :type ConfigId: str
+        :param ApplicationId: 应用ID，不传入时查询全量
+        :type ApplicationId: str
+        """
+        self.ConfigName = None
+        self.GroupId = None
+        self.NamespaceId = None
+        self.ClusterId = None
+        self.Limit = None
+        self.Offset = None
+        self.ConfigId = None
+        self.ApplicationId = None
+
+
+    def _deserialize(self, params):
+        self.ConfigName = params.get("ConfigName")
+        self.GroupId = params.get("GroupId")
+        self.NamespaceId = params.get("NamespaceId")
+        self.ClusterId = params.get("ClusterId")
+        self.Limit = params.get("Limit")
+        self.Offset = params.get("Offset")
+        self.ConfigId = params.get("ConfigId")
+        self.ApplicationId = params.get("ApplicationId")
+
+
+class DescribeConfigReleasesResponse(AbstractModel):
+    """DescribeConfigReleases返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Result: 分页的配置发布信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Result: :class:`tencentcloud.tsf.v20180326.models.TsfPageConfigRelease`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Result = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Result") is not None:
+            self.Result = TsfPageConfigRelease()
+            self.Result._deserialize(params.get("Result"))
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeConfigRequest(AbstractModel):
+    """DescribeConfig请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ConfigId: 配置项ID
+        :type ConfigId: str
+        """
+        self.ConfigId = None
+
+
+    def _deserialize(self, params):
+        self.ConfigId = params.get("ConfigId")
+
+
+class DescribeConfigResponse(AbstractModel):
+    """DescribeConfig返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Result: 配置项
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Result: :class:`tencentcloud.tsf.v20180326.models.Config`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Result = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Result") is not None:
+            self.Result = Config()
+            self.Result._deserialize(params.get("Result"))
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeConfigSummaryRequest(AbstractModel):
+    """DescribeConfigSummary请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ApplicationId: 应用ID，不传入时查询全量
+        :type ApplicationId: str
+        :param SearchWord: 查询关键字，模糊查询：应用名称，配置项名称，不传入时查询全量
+        :type SearchWord: str
+        :param Offset: 偏移量，默认为0
+        :type Offset: int
+        :param Limit: 每页条数，默认为20
+        :type Limit: int
+        """
+        self.ApplicationId = None
+        self.SearchWord = None
+        self.Offset = None
+        self.Limit = None
+
+
+    def _deserialize(self, params):
+        self.ApplicationId = params.get("ApplicationId")
+        self.SearchWord = params.get("SearchWord")
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+
+
+class DescribeConfigSummaryResponse(AbstractModel):
+    """DescribeConfigSummary返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Result: 配置项分页对象
+        :type Result: :class:`tencentcloud.tsf.v20180326.models.TsfPageConfig`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Result = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Result") is not None:
+            self.Result = TsfPageConfig()
+            self.Result._deserialize(params.get("Result"))
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeConfigsRequest(AbstractModel):
+    """DescribeConfigs请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ApplicationId: 应用ID，不传入时查询全量
+        :type ApplicationId: str
+        :param ConfigId: 配置项ID，不传入时查询全量，高优先级
+        :type ConfigId: str
+        :param Offset: 偏移量
+        :type Offset: int
+        :param Limit: 每页条数
+        :type Limit: int
+        :param ConfigIdList: 配置项ID列表，不传入时查询全量，低优先级
+        :type ConfigIdList: list of str
+        :param ConfigName: 配置项名称，精确查询，不传入时查询全量
+        :type ConfigName: str
+        """
+        self.ApplicationId = None
+        self.ConfigId = None
+        self.Offset = None
+        self.Limit = None
+        self.ConfigIdList = None
+        self.ConfigName = None
+
+
+    def _deserialize(self, params):
+        self.ApplicationId = params.get("ApplicationId")
+        self.ConfigId = params.get("ConfigId")
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+        self.ConfigIdList = params.get("ConfigIdList")
+        self.ConfigName = params.get("ConfigName")
+
+
+class DescribeConfigsResponse(AbstractModel):
+    """DescribeConfigs返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Result: 分页后的配置项列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Result: :class:`tencentcloud.tsf.v20180326.models.TsfPageConfig`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Result = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Result") is not None:
+            self.Result = TsfPageConfig()
             self.Result._deserialize(params.get("Result"))
         self.RequestId = params.get("RequestId")
 
@@ -2290,6 +3008,298 @@ class DescribePkgsResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribePublicConfigReleaseLogsRequest(AbstractModel):
+    """DescribePublicConfigReleaseLogs请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param NamespaceId: 命名空间ID，不传入时查询全量
+        :type NamespaceId: str
+        :param Offset: 偏移量，默认为0
+        :type Offset: int
+        :param Limit: 每页条数，默认为20
+        :type Limit: int
+        """
+        self.NamespaceId = None
+        self.Offset = None
+        self.Limit = None
+
+
+    def _deserialize(self, params):
+        self.NamespaceId = params.get("NamespaceId")
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+
+
+class DescribePublicConfigReleaseLogsResponse(AbstractModel):
+    """DescribePublicConfigReleaseLogs返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Result: 分页后的公共配置项发布历史列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Result: :class:`tencentcloud.tsf.v20180326.models.TsfPageConfigReleaseLog`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Result = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Result") is not None:
+            self.Result = TsfPageConfigReleaseLog()
+            self.Result._deserialize(params.get("Result"))
+        self.RequestId = params.get("RequestId")
+
+
+class DescribePublicConfigReleasesRequest(AbstractModel):
+    """DescribePublicConfigReleases请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ConfigName: 配置项名称，不传入时查询全量
+        :type ConfigName: str
+        :param NamespaceId: 命名空间ID，不传入时查询全量
+        :type NamespaceId: str
+        :param Limit: 每页条数
+        :type Limit: int
+        :param Offset: 偏移量
+        :type Offset: int
+        :param ConfigId: 配置项ID，不传入时查询全量
+        :type ConfigId: str
+        """
+        self.ConfigName = None
+        self.NamespaceId = None
+        self.Limit = None
+        self.Offset = None
+        self.ConfigId = None
+
+
+    def _deserialize(self, params):
+        self.ConfigName = params.get("ConfigName")
+        self.NamespaceId = params.get("NamespaceId")
+        self.Limit = params.get("Limit")
+        self.Offset = params.get("Offset")
+        self.ConfigId = params.get("ConfigId")
+
+
+class DescribePublicConfigReleasesResponse(AbstractModel):
+    """DescribePublicConfigReleases返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Result: 公共配置发布信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Result: :class:`tencentcloud.tsf.v20180326.models.TsfPageConfigRelease`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Result = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Result") is not None:
+            self.Result = TsfPageConfigRelease()
+            self.Result._deserialize(params.get("Result"))
+        self.RequestId = params.get("RequestId")
+
+
+class DescribePublicConfigRequest(AbstractModel):
+    """DescribePublicConfig请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ConfigId: 需要查询的配置项ID
+        :type ConfigId: str
+        """
+        self.ConfigId = None
+
+
+    def _deserialize(self, params):
+        self.ConfigId = params.get("ConfigId")
+
+
+class DescribePublicConfigResponse(AbstractModel):
+    """DescribePublicConfig返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Result: 全局配置
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Result: :class:`tencentcloud.tsf.v20180326.models.Config`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Result = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Result") is not None:
+            self.Result = Config()
+            self.Result._deserialize(params.get("Result"))
+        self.RequestId = params.get("RequestId")
+
+
+class DescribePublicConfigSummaryRequest(AbstractModel):
+    """DescribePublicConfigSummary请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param SearchWord: 查询关键字，模糊查询：配置项名称，不传入时查询全量
+        :type SearchWord: str
+        :param Offset: 偏移量，默认为0
+        :type Offset: int
+        :param Limit: 每页条数，默认为20
+        :type Limit: int
+        """
+        self.SearchWord = None
+        self.Offset = None
+        self.Limit = None
+
+
+    def _deserialize(self, params):
+        self.SearchWord = params.get("SearchWord")
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+
+
+class DescribePublicConfigSummaryResponse(AbstractModel):
+    """DescribePublicConfigSummary返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Result: 分页的全局配置统计信息列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Result: :class:`tencentcloud.tsf.v20180326.models.TsfPageConfig`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Result = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Result") is not None:
+            self.Result = TsfPageConfig()
+            self.Result._deserialize(params.get("Result"))
+        self.RequestId = params.get("RequestId")
+
+
+class DescribePublicConfigsRequest(AbstractModel):
+    """DescribePublicConfigs请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ConfigId: 配置项ID，不传入时查询全量，高优先级
+        :type ConfigId: str
+        :param Offset: 偏移量，默认为0
+        :type Offset: int
+        :param Limit: 每页条数，默认为20
+        :type Limit: int
+        :param ConfigIdList: 配置项ID列表，不传入时查询全量，低优先级
+        :type ConfigIdList: list of str
+        :param ConfigName: 配置项名称，精确查询，不传入时查询全量
+        :type ConfigName: str
+        """
+        self.ConfigId = None
+        self.Offset = None
+        self.Limit = None
+        self.ConfigIdList = None
+        self.ConfigName = None
+
+
+    def _deserialize(self, params):
+        self.ConfigId = params.get("ConfigId")
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+        self.ConfigIdList = params.get("ConfigIdList")
+        self.ConfigName = params.get("ConfigName")
+
+
+class DescribePublicConfigsResponse(AbstractModel):
+    """DescribePublicConfigs返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Result: 分页后的全局配置项列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Result: :class:`tencentcloud.tsf.v20180326.models.TsfPageConfig`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Result = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Result") is not None:
+            self.Result = TsfPageConfig()
+            self.Result._deserialize(params.get("Result"))
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeReleasedConfigRequest(AbstractModel):
+    """DescribeReleasedConfig请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param GroupId: 部署组ID
+        :type GroupId: str
+        """
+        self.GroupId = None
+
+
+    def _deserialize(self, params):
+        self.GroupId = params.get("GroupId")
+
+
+class DescribeReleasedConfigResponse(AbstractModel):
+    """DescribeReleasedConfig返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Result: 已发布的配置内容
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Result: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Result = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Result = params.get("Result")
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeSimpleApplicationsRequest(AbstractModel):
     """DescribeSimpleApplications请求参数结构体
 
@@ -2309,6 +3319,8 @@ class DescribeSimpleApplicationsRequest(AbstractModel):
         :type MicroserviceType: str
         :param ApplicationResourceTypeList: 资源类型数组
         :type ApplicationResourceTypeList: list of str
+        :param SearchWord: 通过id和name进行关键词过滤
+        :type SearchWord: str
         """
         self.ApplicationIdList = None
         self.ApplicationType = None
@@ -2316,6 +3328,7 @@ class DescribeSimpleApplicationsRequest(AbstractModel):
         self.Offset = None
         self.MicroserviceType = None
         self.ApplicationResourceTypeList = None
+        self.SearchWord = None
 
 
     def _deserialize(self, params):
@@ -2325,6 +3338,7 @@ class DescribeSimpleApplicationsRequest(AbstractModel):
         self.Offset = params.get("Offset")
         self.MicroserviceType = params.get("MicroserviceType")
         self.ApplicationResourceTypeList = params.get("ApplicationResourceTypeList")
+        self.SearchWord = params.get("SearchWord")
 
 
 class DescribeSimpleApplicationsResponse(AbstractModel):
@@ -2366,11 +3380,14 @@ class DescribeSimpleClustersRequest(AbstractModel):
         :type Offset: int
         :param Limit: 分页个数，默认为20， 取值应为1~50
         :type Limit: int
+        :param SearchWord: 对id和name进行关键词过滤
+        :type SearchWord: str
         """
         self.ClusterIdList = None
         self.ClusterType = None
         self.Offset = None
         self.Limit = None
+        self.SearchWord = None
 
 
     def _deserialize(self, params):
@@ -2378,6 +3395,7 @@ class DescribeSimpleClustersRequest(AbstractModel):
         self.ClusterType = params.get("ClusterType")
         self.Offset = params.get("Offset")
         self.Limit = params.get("Limit")
+        self.SearchWord = params.get("SearchWord")
 
 
 class DescribeSimpleClustersResponse(AbstractModel):
@@ -2492,6 +3510,10 @@ class DescribeSimpleNamespacesRequest(AbstractModel):
         :type NamespaceId: str
         :param NamespaceResourceTypeList: 查询资源类型列表
         :type NamespaceResourceTypeList: list of str
+        :param SearchWord: 通过id和name进行过滤
+        :type SearchWord: str
+        :param NamespaceTypeList: 查询的命名空间类型列表
+        :type NamespaceTypeList: list of str
         """
         self.NamespaceIdList = None
         self.ClusterId = None
@@ -2499,6 +3521,8 @@ class DescribeSimpleNamespacesRequest(AbstractModel):
         self.Offset = None
         self.NamespaceId = None
         self.NamespaceResourceTypeList = None
+        self.SearchWord = None
+        self.NamespaceTypeList = None
 
 
     def _deserialize(self, params):
@@ -2508,6 +3532,8 @@ class DescribeSimpleNamespacesRequest(AbstractModel):
         self.Offset = params.get("Offset")
         self.NamespaceId = params.get("NamespaceId")
         self.NamespaceResourceTypeList = params.get("NamespaceResourceTypeList")
+        self.SearchWord = params.get("SearchWord")
+        self.NamespaceTypeList = params.get("NamespaceTypeList")
 
 
 class DescribeSimpleNamespacesResponse(AbstractModel):
@@ -3445,6 +4471,99 @@ class ProtocolPort(AbstractModel):
         self.TargetPort = params.get("TargetPort")
 
 
+class ReleaseConfigRequest(AbstractModel):
+    """ReleaseConfig请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ConfigId: 配置ID
+        :type ConfigId: str
+        :param GroupId: 部署组ID
+        :type GroupId: str
+        :param ReleaseDesc: 发布描述
+        :type ReleaseDesc: str
+        """
+        self.ConfigId = None
+        self.GroupId = None
+        self.ReleaseDesc = None
+
+
+    def _deserialize(self, params):
+        self.ConfigId = params.get("ConfigId")
+        self.GroupId = params.get("GroupId")
+        self.ReleaseDesc = params.get("ReleaseDesc")
+
+
+class ReleaseConfigResponse(AbstractModel):
+    """ReleaseConfig返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Result: true：发布成功；false：发布失败
+        :type Result: bool
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Result = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Result = params.get("Result")
+        self.RequestId = params.get("RequestId")
+
+
+class ReleasePublicConfigRequest(AbstractModel):
+    """ReleasePublicConfig请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ConfigId: 配置ID
+        :type ConfigId: str
+        :param NamespaceId: 命名空间ID
+        :type NamespaceId: str
+        :param ReleaseDesc: 发布描述
+        :type ReleaseDesc: str
+        """
+        self.ConfigId = None
+        self.NamespaceId = None
+        self.ReleaseDesc = None
+
+
+    def _deserialize(self, params):
+        self.ConfigId = params.get("ConfigId")
+        self.NamespaceId = params.get("NamespaceId")
+        self.ReleaseDesc = params.get("ReleaseDesc")
+
+
+class ReleasePublicConfigResponse(AbstractModel):
+    """ReleasePublicConfig返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Result: true：发布成功；false：发布失败
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Result: bool
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Result = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Result = params.get("Result")
+        self.RequestId = params.get("RequestId")
+
+
 class RemoveInstancesRequest(AbstractModel):
     """RemoveInstances请求参数结构体
 
@@ -3475,6 +4594,125 @@ class RemoveInstancesResponse(AbstractModel):
         """
         :param Result: 集群移除机器是否成功
 注意：此字段可能返回 null，表示取不到有效值。
+        :type Result: bool
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Result = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Result = params.get("Result")
+        self.RequestId = params.get("RequestId")
+
+
+class RevocationConfigRequest(AbstractModel):
+    """RevocationConfig请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ConfigReleaseId: 配置项发布ID
+        :type ConfigReleaseId: str
+        """
+        self.ConfigReleaseId = None
+
+
+    def _deserialize(self, params):
+        self.ConfigReleaseId = params.get("ConfigReleaseId")
+
+
+class RevocationConfigResponse(AbstractModel):
+    """RevocationConfig返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Result: true：回滚成功；false：回滚失败
+        :type Result: bool
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Result = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Result = params.get("Result")
+        self.RequestId = params.get("RequestId")
+
+
+class RevocationPublicConfigRequest(AbstractModel):
+    """RevocationPublicConfig请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ConfigReleaseId: 配置项发布ID
+        :type ConfigReleaseId: str
+        """
+        self.ConfigReleaseId = None
+
+
+    def _deserialize(self, params):
+        self.ConfigReleaseId = params.get("ConfigReleaseId")
+
+
+class RevocationPublicConfigResponse(AbstractModel):
+    """RevocationPublicConfig返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Result: true：撤销成功；false：撤销失败
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Result: bool
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Result = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Result = params.get("Result")
+        self.RequestId = params.get("RequestId")
+
+
+class RollbackConfigRequest(AbstractModel):
+    """RollbackConfig请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ConfigReleaseLogId: 配置项发布历史ID
+        :type ConfigReleaseLogId: str
+        :param ReleaseDesc: 回滚描述
+        :type ReleaseDesc: str
+        """
+        self.ConfigReleaseLogId = None
+        self.ReleaseDesc = None
+
+
+    def _deserialize(self, params):
+        self.ConfigReleaseLogId = params.get("ConfigReleaseLogId")
+        self.ReleaseDesc = params.get("ReleaseDesc")
+
+
+class RollbackConfigResponse(AbstractModel):
+    """RollbackConfig返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Result: true：回滚成功；false：回滚失败
         :type Result: bool
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -3926,6 +5164,88 @@ class TsfPageCluster(AbstractModel):
             self.Content = []
             for item in params.get("Content"):
                 obj = Cluster()
+                obj._deserialize(item)
+                self.Content.append(obj)
+
+
+class TsfPageConfig(AbstractModel):
+    """TsfPage<Config>
+
+    """
+
+    def __init__(self):
+        """
+        :param TotalCount: TsfPageConfig
+        :type TotalCount: int
+        :param Content: 配置项列表
+        :type Content: list of Config
+        """
+        self.TotalCount = None
+        self.Content = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("Content") is not None:
+            self.Content = []
+            for item in params.get("Content"):
+                obj = Config()
+                obj._deserialize(item)
+                self.Content.append(obj)
+
+
+class TsfPageConfigRelease(AbstractModel):
+    """TSF配置项发布信息分页对象
+
+    """
+
+    def __init__(self):
+        """
+        :param TotalCount: 总条数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TotalCount: int
+        :param Content: 配置项发布信息数组
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Content: list of ConfigRelease
+        """
+        self.TotalCount = None
+        self.Content = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("Content") is not None:
+            self.Content = []
+            for item in params.get("Content"):
+                obj = ConfigRelease()
+                obj._deserialize(item)
+                self.Content.append(obj)
+
+
+class TsfPageConfigReleaseLog(AbstractModel):
+    """TSF配置项发布日志分页对象
+
+    """
+
+    def __init__(self):
+        """
+        :param TotalCount: 总条数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TotalCount: int
+        :param Content: 配置项发布日志数组
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Content: list of ConfigReleaseLog
+        """
+        self.TotalCount = None
+        self.Content = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("Content") is not None:
+            self.Content = []
+            for item in params.get("Content"):
+                obj = ConfigReleaseLog()
                 obj._deserialize(item)
                 self.Content.append(obj)
 

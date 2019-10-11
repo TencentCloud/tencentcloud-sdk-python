@@ -255,7 +255,7 @@ class DescribeResourcesByTagsRequest(AbstractModel):
     def __init__(self):
         """
         :param TagFilters: 标签过滤数组
-        :type TagFilters: list of TagFilters
+        :type TagFilters: list of TagFilter
         :param CreateUin: 创建标签者uin
         :type CreateUin: int
         :param Offset: 数据偏移量，默认为 0, 必须为Limit参数的整数倍
@@ -285,7 +285,7 @@ class DescribeResourcesByTagsRequest(AbstractModel):
         if params.get("TagFilters") is not None:
             self.TagFilters = []
             for item in params.get("TagFilters"):
-                obj = TagFilters()
+                obj = TagFilter()
                 obj._deserialize(item)
                 self.TagFilters.append(obj)
         self.CreateUin = params.get("CreateUin")
@@ -312,7 +312,7 @@ class DescribeResourcesByTagsResponse(AbstractModel):
 注意：此字段可能返回 null，表示取不到有效值。
         :type Limit: int
         :param Rows: 资源标签
-        :type Rows: list of ResourcesTag
+        :type Rows: list of ResourceTag
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -330,7 +330,7 @@ class DescribeResourcesByTagsResponse(AbstractModel):
         if params.get("Rows") is not None:
             self.Rows = []
             for item in params.get("Rows"):
-                obj = ResourcesTag()
+                obj = ResourceTag()
                 obj._deserialize(item)
                 self.Rows.append(obj)
         self.RequestId = params.get("RequestId")
@@ -584,7 +584,7 @@ class ModifyResourceTagsResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
-class ResourcesTag(AbstractModel):
+class ResourceTag(AbstractModel):
     """资源标签
 
     """
@@ -648,7 +648,7 @@ class Tag(AbstractModel):
         self.TagValue = params.get("TagValue")
 
 
-class TagFilters(AbstractModel):
+class TagFilter(AbstractModel):
     """tag过滤数组多个是与的关系
 
     """

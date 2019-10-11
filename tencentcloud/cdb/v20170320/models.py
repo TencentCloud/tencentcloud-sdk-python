@@ -595,6 +595,8 @@ class CreateDBInstanceHourRequest(AbstractModel):
         :type InstanceName: str
         :param ResourceTags: 实例标签信息。
         :type ResourceTags: list of TagInfo
+        :param DeployGroupId: 置放群组 ID。
+        :type DeployGroupId: str
         """
         self.GoodsNum = None
         self.Memory = None
@@ -619,6 +621,7 @@ class CreateDBInstanceHourRequest(AbstractModel):
         self.AutoRenewFlag = None
         self.InstanceName = None
         self.ResourceTags = None
+        self.DeployGroupId = None
 
 
     def _deserialize(self, params):
@@ -657,6 +660,7 @@ class CreateDBInstanceHourRequest(AbstractModel):
                 obj = TagInfo()
                 obj._deserialize(item)
                 self.ResourceTags.append(obj)
+        self.DeployGroupId = params.get("DeployGroupId")
 
 
 class CreateDBInstanceHourResponse(AbstractModel):
@@ -739,6 +743,8 @@ class CreateDBInstanceRequest(AbstractModel):
         :type InstanceName: str
         :param ResourceTags: 实例标签信息。
         :type ResourceTags: list of TagInfo
+        :param DeployGroupId: 置放群组 ID。
+        :type DeployGroupId: str
         """
         self.Memory = None
         self.Volume = None
@@ -764,6 +770,7 @@ class CreateDBInstanceRequest(AbstractModel):
         self.RoGroup = None
         self.InstanceName = None
         self.ResourceTags = None
+        self.DeployGroupId = None
 
 
     def _deserialize(self, params):
@@ -803,6 +810,7 @@ class CreateDBInstanceRequest(AbstractModel):
                 obj = TagInfo()
                 obj._deserialize(item)
                 self.ResourceTags.append(obj)
+        self.DeployGroupId = params.get("DeployGroupId")
 
 
 class CreateDBInstanceResponse(AbstractModel):
@@ -3449,6 +3457,7 @@ class InstanceInfo(AbstractModel):
         :param InitFlag: 初始化标志，可能的返回值为：0-未初始化；1-已初始化
         :type InitFlag: int
         :param RoVipInfo: 只读vip信息。单独开通只读实例访问的只读实例才有该字段
+注意：此字段可能返回 null，表示取不到有效值。
         :type RoVipInfo: :class:`tencentcloud.cdb.v20170320.models.RoVipInfo`
         :param Memory: 内存容量，单位为MB
         :type Memory: int
@@ -3457,6 +3466,7 @@ class InstanceInfo(AbstractModel):
         :param VpcId: 私有网络ID，例如：51102
         :type VpcId: int
         :param SlaveInfo: 备机信息
+注意：此字段可能返回 null，表示取不到有效值。
         :type SlaveInfo: :class:`tencentcloud.cdb.v20170320.models.SlaveInfo`
         :param InstanceId: 实例ID
         :type InstanceId: str
@@ -3467,6 +3477,7 @@ class InstanceInfo(AbstractModel):
         :param ProtectMode: 数据复制方式
         :type ProtectMode: int
         :param RoGroups: 只读组详细信息
+注意：此字段可能返回 null，表示取不到有效值。
         :type RoGroups: list of RoGroup
         :param SubnetId: 子网ID，例如：2333
         :type SubnetId: int
@@ -3483,6 +3494,7 @@ class InstanceInfo(AbstractModel):
         :param TaskStatus: 实例任务状态
         :type TaskStatus: int
         :param MasterInfo: 主实例详细信息
+注意：此字段可能返回 null，表示取不到有效值。
         :type MasterInfo: :class:`tencentcloud.cdb.v20170320.models.MasterInfo`
         :param DeviceType: 实例类型，可能的返回值：“HA”-高可用版；“BASIC”-基础版
         :type DeviceType: str
@@ -3491,6 +3503,7 @@ class InstanceInfo(AbstractModel):
         :param InstanceName: 实例名称
         :type InstanceName: str
         :param DrInfo: 灾备实例详细信息
+注意：此字段可能返回 null，表示取不到有效值。
         :type DrInfo: list of DrInfo
         :param WanDomain: 外网域名
         :type WanDomain: str
@@ -5354,6 +5367,7 @@ class SlaveInfo(AbstractModel):
         :param First: 第一备机信息
         :type First: :class:`tencentcloud.cdb.v20170320.models.SlaveInstanceInfo`
         :param Second: 第二备机信息
+注意：此字段可能返回 null，表示取不到有效值。
         :type Second: :class:`tencentcloud.cdb.v20170320.models.SlaveInstanceInfo`
         """
         self.First = None
