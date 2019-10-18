@@ -25,6 +25,90 @@ class TbaasClient(AbstractClient):
     _endpoint = 'tbaas.tencentcloudapi.com'
 
 
+    def ApplyUserCert(self, request):
+        """申请用户证书
+
+        :param request: 调用ApplyUserCert所需参数的结构体。
+        :type request: :class:`tencentcloud.tbaas.v20180416.models.ApplyUserCertRequest`
+        :rtype: :class:`tencentcloud.tbaas.v20180416.models.ApplyUserCertResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ApplyUserCert", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ApplyUserCertResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def BlockByNumberHandler(self, request):
+        """Bcos根据块高查询区块信息
+
+        :param request: 调用BlockByNumberHandler所需参数的结构体。
+        :type request: :class:`tencentcloud.tbaas.v20180416.models.BlockByNumberHandlerRequest`
+        :rtype: :class:`tencentcloud.tbaas.v20180416.models.BlockByNumberHandlerResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("BlockByNumberHandler", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.BlockByNumberHandlerResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DownloadUserCert(self, request):
+        """下载用户证书
+
+        :param request: 调用DownloadUserCert所需参数的结构体。
+        :type request: :class:`tencentcloud.tbaas.v20180416.models.DownloadUserCertRequest`
+        :rtype: :class:`tencentcloud.tbaas.v20180416.models.DownloadUserCertResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DownloadUserCert", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DownloadUserCertResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def GetBlockList(self, request):
         """查看当前网络下的所有区块列表，分页展示
 
@@ -39,6 +123,34 @@ class TbaasClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.GetBlockListResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def GetBlockListHandler(self, request):
+        """bcos分页查询当前群组下的区块列表
+
+        :param request: 调用GetBlockListHandler所需参数的结构体。
+        :type request: :class:`tencentcloud.tbaas.v20180416.models.GetBlockListHandlerRequest`
+        :rtype: :class:`tencentcloud.tbaas.v20180416.models.GetBlockListHandlerResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("GetBlockListHandler", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.GetBlockListHandlerResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -137,6 +249,62 @@ class TbaasClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def GetTransByHashHandler(self, request):
+        """Bcos根据交易哈希查看交易详细信息
+
+        :param request: 调用GetTransByHashHandler所需参数的结构体。
+        :type request: :class:`tencentcloud.tbaas.v20180416.models.GetTransByHashHandlerRequest`
+        :rtype: :class:`tencentcloud.tbaas.v20180416.models.GetTransByHashHandlerResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("GetTransByHashHandler", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.GetTransByHashHandlerResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def GetTransListHandler(self, request):
+        """Bcos分页查询当前群组的交易信息列表
+
+        :param request: 调用GetTransListHandler所需参数的结构体。
+        :type request: :class:`tencentcloud.tbaas.v20180416.models.GetTransListHandlerRequest`
+        :rtype: :class:`tencentcloud.tbaas.v20180416.models.GetTransListHandlerResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("GetTransListHandler", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.GetTransListHandlerResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def Invoke(self, request):
         """新增交易
 
@@ -179,6 +347,62 @@ class TbaasClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.QueryResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def SendTransactionHandler(self, request):
+        """Bcos发送交易
+
+        :param request: 调用SendTransactionHandler所需参数的结构体。
+        :type request: :class:`tencentcloud.tbaas.v20180416.models.SendTransactionHandlerRequest`
+        :rtype: :class:`tencentcloud.tbaas.v20180416.models.SendTransactionHandlerResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("SendTransactionHandler", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.SendTransactionHandlerResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def SrvInvoke(self, request):
+        """trustsql服务统一接口
+
+        :param request: 调用SrvInvoke所需参数的结构体。
+        :type request: :class:`tencentcloud.tbaas.v20180416.models.SrvInvokeRequest`
+        :rtype: :class:`tencentcloud.tbaas.v20180416.models.SrvInvokeResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("SrvInvoke", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.SrvInvokeResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

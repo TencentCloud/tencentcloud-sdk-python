@@ -1013,7 +1013,7 @@ class SrcInfo(AbstractModel):
         :type User: str
         :param Password: 实例的密码
         :type Password: str
-        :param RdsInstanceId: 阿里云RDS实例ID。源库是阿里云RDS5.6适用
+        :param RdsInstanceId: 阿里云RDS实例ID。源库是阿里云RDS5.6/5.6适用
         :type RdsInstanceId: str
         :param CvmInstanceId: CVM实例短ID，格式如：ins-olgl39y8，与云主机控制台页面显示的实例ID相同。如果是CVM自建实例，需要传递此字段
         :type CvmInstanceId: str
@@ -1034,6 +1034,8 @@ class SrcInfo(AbstractModel):
         :param CcnId: 云联网ID，如：ccn-afp6kltc
 注意：此字段可能返回 null，表示取不到有效值。
         :type CcnId: str
+        :param EngineVersion: 数据库版本，当实例为RDS实例时才有效，格式如：5.6或者5.7，默认为5.6
+        :type EngineVersion: str
         """
         self.AccessKey = None
         self.Ip = None
@@ -1050,6 +1052,7 @@ class SrcInfo(AbstractModel):
         self.Region = None
         self.Supplier = None
         self.CcnId = None
+        self.EngineVersion = None
 
 
     def _deserialize(self, params):
@@ -1068,6 +1071,7 @@ class SrcInfo(AbstractModel):
         self.Region = params.get("Region")
         self.Supplier = params.get("Supplier")
         self.CcnId = params.get("CcnId")
+        self.EngineVersion = params.get("EngineVersion")
 
 
 class StartMigrateJobRequest(AbstractModel):

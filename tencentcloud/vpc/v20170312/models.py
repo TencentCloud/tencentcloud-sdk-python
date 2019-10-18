@@ -3931,6 +3931,8 @@ class DescribeCcnsRequest(AbstractModel):
 <li>ccn-name - String - （过滤条件）CCN名称。</li>
 <li>ccn-description - String - （过滤条件）CCN描述。</li>
 <li>state - String - （过滤条件）实例状态， 'ISOLATED': 隔离中（欠费停服），'AVAILABLE'：运行中。</li>
+<li>tag-key - String -是否必填：否- （过滤条件）按照标签键进行过滤。</li>
+<li>tag:tag-key - String - 是否必填：否 - （过滤条件）按照标签键值对进行过滤。 tag-key使用具体的标签键进行替换。使用请参考示例：查询绑定了标签的CCN列表。</li>
         :type Filters: list of Filter
         :param Offset: 偏移量
         :type Offset: int
@@ -4820,6 +4822,48 @@ class DescribeNatGatewaysResponse(AbstractModel):
                 obj._deserialize(item)
                 self.NatGatewaySet.append(obj)
         self.TotalCount = params.get("TotalCount")
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeNetworkInterfaceLimitRequest(AbstractModel):
+    """DescribeNetworkInterfaceLimit请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param InstanceId: 要查询的CVM实例ID
+        :type InstanceId: str
+        """
+        self.InstanceId = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+
+
+class DescribeNetworkInterfaceLimitResponse(AbstractModel):
+    """DescribeNetworkInterfaceLimit返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param EniQuantity: 弹性网卡配额
+        :type EniQuantity: int
+        :param EniPrivateIpAddressQuantity: 每个弹性网卡可以分配的ip配额
+        :type EniPrivateIpAddressQuantity: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.EniQuantity = None
+        self.EniPrivateIpAddressQuantity = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.EniQuantity = params.get("EniQuantity")
+        self.EniPrivateIpAddressQuantity = params.get("EniPrivateIpAddressQuantity")
         self.RequestId = params.get("RequestId")
 
 
@@ -9444,6 +9488,8 @@ class SecurityGroupPolicy(AbstractModel):
         :type ServiceTemplate: :class:`tencentcloud.vpc.v20170312.models.ServiceTemplateSpecification`
         :param CidrBlock: 网段或IP(互斥)。
         :type CidrBlock: str
+        :param Ipv6CidrBlock: 网段或IPv6(互斥)。
+        :type Ipv6CidrBlock: str
         :param SecurityGroupId: 安全组实例ID，例如：sg-ohuuioma。
         :type SecurityGroupId: str
         :param AddressTemplate: IP地址ID或者ID地址组ID。
@@ -9460,6 +9506,7 @@ class SecurityGroupPolicy(AbstractModel):
         self.Port = None
         self.ServiceTemplate = None
         self.CidrBlock = None
+        self.Ipv6CidrBlock = None
         self.SecurityGroupId = None
         self.AddressTemplate = None
         self.Action = None
@@ -9475,6 +9522,7 @@ class SecurityGroupPolicy(AbstractModel):
             self.ServiceTemplate = ServiceTemplateSpecification()
             self.ServiceTemplate._deserialize(params.get("ServiceTemplate"))
         self.CidrBlock = params.get("CidrBlock")
+        self.Ipv6CidrBlock = params.get("Ipv6CidrBlock")
         self.SecurityGroupId = params.get("SecurityGroupId")
         if params.get("AddressTemplate") is not None:
             self.AddressTemplate = AddressTemplateSpecification()

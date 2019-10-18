@@ -8583,6 +8583,11 @@ class MediaContentReviewOcrTextSegmentItem(AbstractModel):
         :param AreaCoordSet: 嫌疑文字出现的区域坐标 (像素级)，[x1, y1, x2, y2]，即左上角坐标、右下角坐标。
 注意：此字段可能返回 null，表示取不到有效值。
         :type AreaCoordSet: list of int
+        :param Url: 嫌疑图片 URL （图片不会永久存储，到达
+PicUrlExpireTime 时间点后图片将被删除）。
+        :type Url: str
+        :param PicUrlExpireTime: 嫌疑图片 URL 失效时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F)。
+        :type PicUrlExpireTime: int
         """
         self.StartTimeOffset = None
         self.EndTimeOffset = None
@@ -8590,6 +8595,8 @@ class MediaContentReviewOcrTextSegmentItem(AbstractModel):
         self.Suggestion = None
         self.KeywordSet = None
         self.AreaCoordSet = None
+        self.Url = None
+        self.PicUrlExpireTime = None
 
 
     def _deserialize(self, params):
@@ -8599,6 +8606,8 @@ class MediaContentReviewOcrTextSegmentItem(AbstractModel):
         self.Suggestion = params.get("Suggestion")
         self.KeywordSet = params.get("KeywordSet")
         self.AreaCoordSet = params.get("AreaCoordSet")
+        self.Url = params.get("Url")
+        self.PicUrlExpireTime = params.get("PicUrlExpireTime")
 
 
 class MediaContentReviewPoliticalSegmentItem(AbstractModel):
@@ -8609,36 +8618,29 @@ class MediaContentReviewPoliticalSegmentItem(AbstractModel):
     def __init__(self):
         """
         :param StartTimeOffset: 嫌疑片段起始的偏移时间，单位：秒。
-注意：此字段可能返回 null，表示取不到有效值。
         :type StartTimeOffset: float
         :param EndTimeOffset: 嫌疑片段结束的偏移时间，单位：秒。
-注意：此字段可能返回 null，表示取不到有效值。
         :type EndTimeOffset: float
         :param Confidence: 嫌疑片段涉政分数。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Confidence: float
         :param Suggestion: 嫌疑片段鉴政结果建议，取值范围：
 <li>pass。</li>
 <li>review。</li>
 <li>block。</li>
-注意：此字段可能返回 null，表示取不到有效值。
         :type Suggestion: str
         :param Name: 涉政人物、违规图标名字。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Name: str
         :param Label: 嫌疑片段鉴政结果标签。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Label: str
         :param Url: 嫌疑图片 URL （图片不会永久存储，到达
  PicUrlExpireTime 时间点后图片将被删除）。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Url: str
         :param AreaCoordSet: 涉政人物、违规图标出现的区域坐标 (像素级)，[x1, y1, x2, y2]，即左上角坐标、右下角坐标。
-注意：此字段可能返回 null，表示取不到有效值。
         :type AreaCoordSet: list of int
-        :param PicUrlExpireTimeStamp: 嫌疑图片 URL 失效时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F)。
-注意：此字段可能返回 null，表示取不到有效值。
+        :param PicUrlExpireTimeStamp: 该字段已废弃，请使用 PicUrlExpireTime。
         :type PicUrlExpireTimeStamp: int
+        :param PicUrlExpireTime: 嫌疑图片 URL 失效时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F)。
+        :type PicUrlExpireTime: str
         """
         self.StartTimeOffset = None
         self.EndTimeOffset = None
@@ -8649,6 +8651,7 @@ class MediaContentReviewPoliticalSegmentItem(AbstractModel):
         self.Url = None
         self.AreaCoordSet = None
         self.PicUrlExpireTimeStamp = None
+        self.PicUrlExpireTime = None
 
 
     def _deserialize(self, params):
@@ -8661,6 +8664,7 @@ class MediaContentReviewPoliticalSegmentItem(AbstractModel):
         self.Url = params.get("Url")
         self.AreaCoordSet = params.get("AreaCoordSet")
         self.PicUrlExpireTimeStamp = params.get("PicUrlExpireTimeStamp")
+        self.PicUrlExpireTime = params.get("PicUrlExpireTime")
 
 
 class MediaContentReviewSegmentItem(AbstractModel):
@@ -8671,30 +8675,25 @@ class MediaContentReviewSegmentItem(AbstractModel):
     def __init__(self):
         """
         :param StartTimeOffset: 嫌疑片段起始的偏移时间，单位：秒。
-注意：此字段可能返回 null，表示取不到有效值。
         :type StartTimeOffset: float
         :param EndTimeOffset: 嫌疑片段结束的偏移时间，单位：秒。
-注意：此字段可能返回 null，表示取不到有效值。
         :type EndTimeOffset: float
         :param Confidence: 嫌疑片段涉黄分数。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Confidence: float
         :param Label: 嫌疑片段鉴黄结果标签。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Label: str
         :param Suggestion: 嫌疑片段鉴黄结果建议，取值范围：
 <li>pass。</li>
 <li>review。</li>
 <li>block。</li>
-注意：此字段可能返回 null，表示取不到有效值。
         :type Suggestion: str
         :param Url: 嫌疑图片 URL （图片不会永久存储，到达
  PicUrlExpireTime 时间点后图片将被删除）。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Url: str
-        :param PicUrlExpireTimeStamp: 嫌疑图片 URL 失效时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F)。
-注意：此字段可能返回 null，表示取不到有效值。
+        :param PicUrlExpireTimeStamp: 该字段已废弃，请使用 PicUrlExpireTime。
         :type PicUrlExpireTimeStamp: int
+        :param PicUrlExpireTime: 嫌疑图片 URL 失效时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F)。
+        :type PicUrlExpireTime: str
         """
         self.StartTimeOffset = None
         self.EndTimeOffset = None
@@ -8703,6 +8702,7 @@ class MediaContentReviewSegmentItem(AbstractModel):
         self.Suggestion = None
         self.Url = None
         self.PicUrlExpireTimeStamp = None
+        self.PicUrlExpireTime = None
 
 
     def _deserialize(self, params):
@@ -8713,6 +8713,7 @@ class MediaContentReviewSegmentItem(AbstractModel):
         self.Suggestion = params.get("Suggestion")
         self.Url = params.get("Url")
         self.PicUrlExpireTimeStamp = params.get("PicUrlExpireTimeStamp")
+        self.PicUrlExpireTime = params.get("PicUrlExpireTime")
 
 
 class MediaDeleteItem(AbstractModel):
@@ -11914,6 +11915,10 @@ class ProcedureTemplate(AbstractModel):
         """
         :param Name: 任务流名字。
         :type Name: str
+        :param Type: 任务流模板类型，取值范围：
+<li>Preset：系统预置任务流模板；</li>
+<li>Custom：用户自定义任务流模板。</li>
+        :type Type: str
         :param MediaProcessTask: 视频处理类型任务参数。
 注意：此字段可能返回 null，表示取不到有效值。
         :type MediaProcessTask: :class:`tencentcloud.vod.v20180717.models.MediaProcessTaskInput`
@@ -11932,6 +11937,7 @@ class ProcedureTemplate(AbstractModel):
         :type UpdateTime: str
         """
         self.Name = None
+        self.Type = None
         self.MediaProcessTask = None
         self.AiContentReviewTask = None
         self.AiAnalysisTask = None
@@ -11942,6 +11948,7 @@ class ProcedureTemplate(AbstractModel):
 
     def _deserialize(self, params):
         self.Name = params.get("Name")
+        self.Type = params.get("Type")
         if params.get("MediaProcessTask") is not None:
             self.MediaProcessTask = MediaProcessTaskInput()
             self.MediaProcessTask._deserialize(params.get("MediaProcessTask"))

@@ -356,6 +356,62 @@ class TidKeysInfo(AbstractModel):
         self.DeviceCode = params.get("DeviceCode")
 
 
+class UploadDeviceUniqueCodeRequest(AbstractModel):
+    """UploadDeviceUniqueCode请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param CodeSet: 硬件唯一标识码
+        :type CodeSet: list of str
+        :param OrderId: 硬件标识码绑定的申请编号
+        :type OrderId: str
+        """
+        self.CodeSet = None
+        self.OrderId = None
+
+
+    def _deserialize(self, params):
+        self.CodeSet = params.get("CodeSet")
+        self.OrderId = params.get("OrderId")
+
+
+class UploadDeviceUniqueCodeResponse(AbstractModel):
+    """UploadDeviceUniqueCode返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Count: 本次已上传数量
+        :type Count: int
+        :param ExistedCodeSet: 重复的硬件唯一标识码
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ExistedCodeSet: list of str
+        :param LeftQuantity: 剩余可上传数量
+        :type LeftQuantity: int
+        :param IllegalCodeSet: 错误的硬件唯一标识码
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IllegalCodeSet: list of str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Count = None
+        self.ExistedCodeSet = None
+        self.LeftQuantity = None
+        self.IllegalCodeSet = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Count = params.get("Count")
+        self.ExistedCodeSet = params.get("ExistedCodeSet")
+        self.LeftQuantity = params.get("LeftQuantity")
+        self.IllegalCodeSet = params.get("IllegalCodeSet")
+        self.RequestId = params.get("RequestId")
+
+
 class VerifyChipBurnInfoRequest(AbstractModel):
     """VerifyChipBurnInfo请求参数结构体
 

@@ -55,6 +55,9 @@ class AgentAuditedClient(AbstractModel):
         :param SalesName: 业务员姓名
 注意：此字段可能返回 null，表示取不到有效值。
         :type SalesName: str
+        :param Mail: 代客邮箱
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Mail: str
         """
         self.Uin = None
         self.ClientUin = None
@@ -71,6 +74,7 @@ class AgentAuditedClient(AbstractModel):
         self.ProjectType = None
         self.SalesUin = None
         self.SalesName = None
+        self.Mail = None
 
 
     def _deserialize(self, params):
@@ -89,6 +93,7 @@ class AgentAuditedClient(AbstractModel):
         self.ProjectType = params.get("ProjectType")
         self.SalesUin = params.get("SalesUin")
         self.SalesName = params.get("SalesName")
+        self.Mail = params.get("Mail")
 
 
 class AgentBillElem(AbstractModel):
@@ -124,6 +129,9 @@ class AgentBillElem(AbstractModel):
         :param ProjectType: 项目类型：可以为self(自拓项目)/platform(合作项目)/repeat(复算项目  )/空
 注意：此字段可能返回 null，表示取不到有效值。
         :type ProjectType: str
+        :param ActivityId: 活动ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ActivityId: str
         """
         self.Uin = None
         self.OrderId = None
@@ -137,6 +145,7 @@ class AgentBillElem(AbstractModel):
         self.PayerMode = None
         self.ClientType = None
         self.ProjectType = None
+        self.ActivityId = None
 
 
     def _deserialize(self, params):
@@ -152,6 +161,7 @@ class AgentBillElem(AbstractModel):
         self.PayerMode = params.get("PayerMode")
         self.ClientType = params.get("ClientType")
         self.ProjectType = params.get("ProjectType")
+        self.ActivityId = params.get("ActivityId")
 
 
 class AgentClientElem(AbstractModel):
@@ -271,6 +281,9 @@ class AgentDealElem(AbstractModel):
         :param PayerMode: 支付方式，0：自付；1：代付
 注意：此字段可能返回 null，表示取不到有效值。
         :type PayerMode: str
+        :param ActivityId: 活动ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ActivityId: str
         """
         self.DealId = None
         self.DealName = None
@@ -295,6 +308,7 @@ class AgentDealElem(AbstractModel):
         self.ProjectType = None
         self.SalesUin = None
         self.PayerMode = None
+        self.ActivityId = None
 
 
     def _deserialize(self, params):
@@ -323,6 +337,7 @@ class AgentDealElem(AbstractModel):
         self.ProjectType = params.get("ProjectType")
         self.SalesUin = params.get("SalesUin")
         self.PayerMode = params.get("PayerMode")
+        self.ActivityId = params.get("ActivityId")
 
 
 class AgentPayDealsRequest(AbstractModel):
@@ -489,6 +504,40 @@ class AuditApplyClientResponse(AbstractModel):
         self.ClientUin = params.get("ClientUin")
         self.AuditResult = params.get("AuditResult")
         self.AgentTime = params.get("AgentTime")
+        self.RequestId = params.get("RequestId")
+
+
+class CreatePayRelationForClientRequest(AbstractModel):
+    """CreatePayRelationForClient请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ClientUin: 客户账号ID
+        :type ClientUin: str
+        """
+        self.ClientUin = None
+
+
+    def _deserialize(self, params):
+        self.ClientUin = params.get("ClientUin")
+
+
+class CreatePayRelationForClientResponse(AbstractModel):
+    """CreatePayRelationForClient返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
 
 
@@ -1125,3 +1174,37 @@ class RebateInfoElem(AbstractModel):
         self.MonthSales = params.get("MonthSales")
         self.QuarterSales = params.get("QuarterSales")
         self.ExceptionFlag = params.get("ExceptionFlag")
+
+
+class RemovePayRelationForClientRequest(AbstractModel):
+    """RemovePayRelationForClient请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ClientUin: 客户账号ID
+        :type ClientUin: str
+        """
+        self.ClientUin = None
+
+
+    def _deserialize(self, params):
+        self.ClientUin = params.get("ClientUin")
+
+
+class RemovePayRelationForClientResponse(AbstractModel):
+    """RemovePayRelationForClient返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")

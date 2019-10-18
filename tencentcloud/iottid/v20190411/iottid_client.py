@@ -221,6 +221,34 @@ class IottidClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def UploadDeviceUniqueCode(self, request):
+        """上传硬件唯一标识码，是软加固设备身份参数。本接口如遇到错误数据，则所有当次上传数据失效。
+
+        :param request: 调用UploadDeviceUniqueCode所需参数的结构体。
+        :type request: :class:`tencentcloud.iottid.v20190411.models.UploadDeviceUniqueCodeRequest`
+        :rtype: :class:`tencentcloud.iottid.v20190411.models.UploadDeviceUniqueCodeResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("UploadDeviceUniqueCode", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.UploadDeviceUniqueCodeResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def VerifyChipBurnInfo(self, request):
         """下载控制台验证芯片烧录信息，保证TID与中心信息一致
 

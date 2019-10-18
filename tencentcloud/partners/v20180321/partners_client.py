@@ -109,6 +109,34 @@ class PartnersClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def CreatePayRelationForClient(self, request):
+        """合作伙伴为客户创建强代付关系
+
+        :param request: 调用CreatePayRelationForClient所需参数的结构体。
+        :type request: :class:`tencentcloud.partners.v20180321.models.CreatePayRelationForClientRequest`
+        :rtype: :class:`tencentcloud.partners.v20180321.models.CreatePayRelationForClientResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("CreatePayRelationForClient", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreatePayRelationForClientResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeAgentAuditedClients(self, request):
         """查询已审核客户列表
 
@@ -347,6 +375,34 @@ class PartnersClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyClientRemarkResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def RemovePayRelationForClient(self, request):
+        """合作伙伴为客户消除强代付关系
+
+        :param request: 调用RemovePayRelationForClient所需参数的结构体。
+        :type request: :class:`tencentcloud.partners.v20180321.models.RemovePayRelationForClientRequest`
+        :rtype: :class:`tencentcloud.partners.v20180321.models.RemovePayRelationForClientResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("RemovePayRelationForClient", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.RemovePayRelationForClientResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

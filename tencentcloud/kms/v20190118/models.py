@@ -67,7 +67,7 @@ class CreateKeyRequest(AbstractModel):
         :type Description: str
         :param KeyUsage: 指定key的用途。目前，仅支持"ENCRYPT_DECRYPT"，默认为  "ENCRYPT_DECRYPT"，即key用于加密和解密
         :type KeyUsage: str
-        :param Type: 指定key类型，1为当前地域默认类型，默认为1，且当前只支持该类型
+        :param Type: 指定key类型，默认为1，1表示默认类型，由KMS创建CMK密钥，2 表示EXTERNAL 类型，该类型需要用户导入密钥材料，参考 GetParametersForImport 和 ImportKeyMaterial 接口
         :type Type: int
         """
         self.Alias = None
@@ -132,7 +132,7 @@ class DecryptRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param CiphertextBlob: 被加密的密文数据
+        :param CiphertextBlob: 待解密的密文数据
         :type CiphertextBlob: str
         :param EncryptionContext: key/value对的json字符串，如果Encrypt指定了该参数，则在调用Decrypt API时需要提供同样的参数，最大支持1024字符
         :type EncryptionContext: str
@@ -168,6 +168,40 @@ class DecryptResponse(AbstractModel):
     def _deserialize(self, params):
         self.KeyId = params.get("KeyId")
         self.Plaintext = params.get("Plaintext")
+        self.RequestId = params.get("RequestId")
+
+
+class DeleteImportedKeyMaterialRequest(AbstractModel):
+    """DeleteImportedKeyMaterial请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param KeyId: 指定需要删除密钥材料的EXTERNAL CMK。
+        :type KeyId: str
+        """
+        self.KeyId = None
+
+
+    def _deserialize(self, params):
+        self.KeyId = params.get("KeyId")
+
+
+class DeleteImportedKeyMaterialResponse(AbstractModel):
+    """DeleteImportedKeyMaterial返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
 
 
@@ -492,7 +526,7 @@ class EncryptResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param CiphertextBlob: 加密后的密文
+        :param CiphertextBlob: 加密后经过base64编码的密文
         :type CiphertextBlob: str
         :param KeyId: 加密使用的CMK的全局唯一标识
         :type KeyId: str
@@ -519,9 +553,9 @@ class GenerateDataKeyRequest(AbstractModel):
         """
         :param KeyId: CMK全局唯一标识符
         :type KeyId: str
-        :param KeySpec: 指定生成Datakey的加密算法以及Datakey大小，AES_128或者AES_256。
+        :param KeySpec: 指定生成Datakey的加密算法以及Datakey大小，AES_128或者AES_256。KeySpec 和 NumberOfBytes 必须指定一个
         :type KeySpec: str
-        :param NumberOfBytes: 生成的DataKey的长度，同时指定NumberOfBytes和KeySpec时，以NumberOfBytes为准。最小值为1， 最大值为1024
+        :param NumberOfBytes: 生成的DataKey的长度，同时指定NumberOfBytes和KeySpec时，以NumberOfBytes为准。最小值为1， 最大值为1024。KeySpec 和 NumberOfBytes 必须指定一个
         :type NumberOfBytes: int
         :param EncryptionContext: key/value对的json字符串，如果使用该字段，则返回的DataKey在解密时需要填入相同的字符串
         :type EncryptionContext: str
@@ -550,7 +584,7 @@ class GenerateDataKeyResponse(AbstractModel):
         :type KeyId: str
         :param Plaintext: 生成的DataKey的明文，该明文使用base64编码，用户需要使用base64解码得到明文
         :type Plaintext: str
-        :param CiphertextBlob: DataKey加密后的密文，用户需要自行保存密文
+        :param CiphertextBlob: DataKey加密后经过base64编码的密文，用户需要自行保存密文
         :type CiphertextBlob: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -606,6 +640,64 @@ class GetKeyRotationStatusResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class GetParametersForImportRequest(AbstractModel):
+    """GetParametersForImport请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param KeyId: CMK的唯一标识，获取密钥参数的CMK必须是EXTERNAL类型，即在CreateKey时指定Type=2 类型的CMK。
+        :type KeyId: str
+        :param WrappingAlgorithm: 指定加密密钥材料的算法，目前支持RSAES_PKCS1_V1_5、RSAES_OAEP_SHA_1、RSAES_OAEP_SHA_256
+        :type WrappingAlgorithm: str
+        :param WrappingKeySpec: 指定加密密钥材料的类型，目前只支持RSA_2048
+        :type WrappingKeySpec: str
+        """
+        self.KeyId = None
+        self.WrappingAlgorithm = None
+        self.WrappingKeySpec = None
+
+
+    def _deserialize(self, params):
+        self.KeyId = params.get("KeyId")
+        self.WrappingAlgorithm = params.get("WrappingAlgorithm")
+        self.WrappingKeySpec = params.get("WrappingKeySpec")
+
+
+class GetParametersForImportResponse(AbstractModel):
+    """GetParametersForImport返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param KeyId: CMK的唯一标识，用于指定目标导入密钥材料的CMK。
+        :type KeyId: str
+        :param ImportToken: 导入密钥材料需要的token，用于作为 ImportKeyMaterial 的参数。
+        :type ImportToken: str
+        :param PublicKey: 用于加密密钥材料的RSA公钥，base64编码。使用PublicKey base64解码后的公钥将导入密钥进行加密后作为 ImportKeyMaterial 的参数。
+        :type PublicKey: str
+        :param ParametersValidTo: 该导出token和公钥的有效期，超过该时间后无法导入，需要重新调用GetParametersForImport获取。
+        :type ParametersValidTo: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.KeyId = None
+        self.ImportToken = None
+        self.PublicKey = None
+        self.ParametersValidTo = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.KeyId = params.get("KeyId")
+        self.ImportToken = params.get("ImportToken")
+        self.PublicKey = params.get("PublicKey")
+        self.ParametersValidTo = params.get("ParametersValidTo")
+        self.RequestId = params.get("RequestId")
+
+
 class GetServiceStatusRequest(AbstractModel):
     """GetServiceStatus请求参数结构体
 
@@ -635,6 +727,52 @@ class GetServiceStatusResponse(AbstractModel):
     def _deserialize(self, params):
         self.ServiceEnabled = params.get("ServiceEnabled")
         self.InvalidType = params.get("InvalidType")
+        self.RequestId = params.get("RequestId")
+
+
+class ImportKeyMaterialRequest(AbstractModel):
+    """ImportKeyMaterial请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param EncryptedKeyMaterial: 使用GetParametersForImport 返回的PublicKey加密后的密钥材料base64编码。对于国密版本region的KMS，导入的密钥材料长度要求为 128 bit，FIPS版本region的KMS， 导入的密钥材料长度要求为 256 bit。
+        :type EncryptedKeyMaterial: str
+        :param ImportToken: 通过调用GetParametersForImport获得的导入令牌。
+        :type ImportToken: str
+        :param KeyId: 指定导入密钥材料的CMK，需要和GetParametersForImport 指定的CMK相同。
+        :type KeyId: str
+        :param ValidTo: 密钥材料过期时间 unix 时间戳，不指定或者 0 表示密钥材料不会过期，若指定过期时间，需要大于当前时间点。
+        :type ValidTo: int
+        """
+        self.EncryptedKeyMaterial = None
+        self.ImportToken = None
+        self.KeyId = None
+        self.ValidTo = None
+
+
+    def _deserialize(self, params):
+        self.EncryptedKeyMaterial = params.get("EncryptedKeyMaterial")
+        self.ImportToken = params.get("ImportToken")
+        self.KeyId = params.get("KeyId")
+        self.ValidTo = params.get("ValidTo")
+
+
+class ImportKeyMaterialResponse(AbstractModel):
+    """ImportKeyMaterial返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
 
 
@@ -670,11 +808,11 @@ class KeyMetadata(AbstractModel):
         :type CreateTime: int
         :param Description: CMK的描述
         :type Description: str
-        :param KeyState: CMK的状态， Enabled 或者 Disabled 或者PendingDelete状态
+        :param KeyState: CMK的状态， 取值为：Enabled | Disabled | PendingDelete | PendingImport
         :type KeyState: str
         :param KeyUsage: CMK用途，当前是 ENCRYPT_DECRYPT
         :type KeyUsage: str
-        :param Type: CMK类型，当前为 1 普通类型
+        :param Type: CMK类型，2 表示符合FIPS标准，4表示符合国密标准
         :type Type: int
         :param CreatorUin: 创建者
         :type CreatorUin: int
@@ -687,6 +825,12 @@ class KeyMetadata(AbstractModel):
         :param DeletionDate: 计划删除的时间
 注意：此字段可能返回 null，表示取不到有效值。
         :type DeletionDate: int
+        :param Origin: CMK 密钥材料类型，由KMS创建的为： TENCENT_KMS， 由用户导入的类型为：EXTERNAL
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Origin: str
+        :param ValidTo: 在Origin为  EXTERNAL 时有效，表示密钥材料的有效日期， 0 表示不过期
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ValidTo: int
         """
         self.KeyId = None
         self.Alias = None
@@ -700,6 +844,8 @@ class KeyMetadata(AbstractModel):
         self.Owner = None
         self.NextRotateTime = None
         self.DeletionDate = None
+        self.Origin = None
+        self.ValidTo = None
 
 
     def _deserialize(self, params):
@@ -715,6 +861,8 @@ class KeyMetadata(AbstractModel):
         self.Owner = params.get("Owner")
         self.NextRotateTime = params.get("NextRotateTime")
         self.DeletionDate = params.get("DeletionDate")
+        self.Origin = params.get("Origin")
+        self.ValidTo = params.get("ValidTo")
 
 
 class ListKeyDetailRequest(AbstractModel):
@@ -732,10 +880,12 @@ class ListKeyDetailRequest(AbstractModel):
         :type Role: int
         :param OrderType: 根据CMK创建时间排序， 0 表示按照降序排序，1表示按照升序排序
         :type OrderType: int
-        :param KeyState: 根据CMK状态筛选， 0表示全部CMK， 1 表示仅查询Enabled CMK， 2 表示仅查询Disabled CMK，3表示查询PendingDelete CMK(处于计划删除状态的Key)
+        :param KeyState: 根据CMK状态筛选， 0表示全部CMK， 1 表示仅查询Enabled CMK， 2 表示仅查询Disabled CMK，3 表示查询PendingDelete 状态的CMK(处于计划删除状态的Key)，4 表示查询 PendingImport 状态的CMK
         :type KeyState: int
         :param SearchKeyAlias: 根据KeyId或者Alias进行模糊匹配查询
         :type SearchKeyAlias: str
+        :param Origin: 根据CMK类型筛选， "TENCENT_KMS" 表示筛选密钥材料由KMS创建的CMK， "EXTERNAL" 表示筛选密钥材料需要用户导入的 EXTERNAL类型CMK，"ALL" 或者不设置表示两种类型都查询，大小写敏感。
+        :type Origin: str
         """
         self.Offset = None
         self.Limit = None
@@ -743,6 +893,7 @@ class ListKeyDetailRequest(AbstractModel):
         self.OrderType = None
         self.KeyState = None
         self.SearchKeyAlias = None
+        self.Origin = None
 
 
     def _deserialize(self, params):
@@ -752,6 +903,7 @@ class ListKeyDetailRequest(AbstractModel):
         self.OrderType = params.get("OrderType")
         self.KeyState = params.get("KeyState")
         self.SearchKeyAlias = params.get("SearchKeyAlias")
+        self.Origin = params.get("Origin")
 
 
 class ListKeyDetailResponse(AbstractModel):

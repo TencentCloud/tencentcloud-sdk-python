@@ -116,6 +116,8 @@ class Cluster(AbstractModel):
         :param TagSpecification: 标签描述列表。
 注意：此字段可能返回 null，表示取不到有效值。
         :type TagSpecification: list of TagSpecification
+        :param ClusterStatus: 集群状态 (Running 运行中  Creating 创建中 Abnormal 异常  )
+        :type ClusterStatus: str
         """
         self.ClusterId = None
         self.ClusterName = None
@@ -127,6 +129,7 @@ class Cluster(AbstractModel):
         self.ClusterNodeNum = None
         self.ProjectId = None
         self.TagSpecification = None
+        self.ClusterStatus = None
 
 
     def _deserialize(self, params):
@@ -147,6 +150,7 @@ class Cluster(AbstractModel):
                 obj = TagSpecification()
                 obj._deserialize(item)
                 self.TagSpecification.append(obj)
+        self.ClusterStatus = params.get("ClusterStatus")
 
 
 class ClusterAdvancedSettings(AbstractModel):
@@ -197,6 +201,8 @@ class ClusterBasicSettings(AbstractModel):
         :type TagSpecification: list of TagSpecification
         :param OsCustomizeType: 容器的镜像版本，"DOCKER_CUSTOMIZE"(容器定制版),"GENERAL"(普通版本，默认值)
         :type OsCustomizeType: str
+        :param NeedWorkSecurityGroup: 是否开启节点的默认安全组(默认: 否，Aphla特性)
+        :type NeedWorkSecurityGroup: bool
         """
         self.ClusterOs = None
         self.ClusterVersion = None
@@ -206,6 +212,7 @@ class ClusterBasicSettings(AbstractModel):
         self.ProjectId = None
         self.TagSpecification = None
         self.OsCustomizeType = None
+        self.NeedWorkSecurityGroup = None
 
 
     def _deserialize(self, params):
@@ -222,6 +229,7 @@ class ClusterBasicSettings(AbstractModel):
                 obj._deserialize(item)
                 self.TagSpecification.append(obj)
         self.OsCustomizeType = params.get("OsCustomizeType")
+        self.NeedWorkSecurityGroup = params.get("NeedWorkSecurityGroup")
 
 
 class ClusterCIDRSettings(AbstractModel):
@@ -630,16 +638,20 @@ class DeleteClusterInstancesRequest(AbstractModel):
         :type InstanceIds: list of str
         :param InstanceDeleteMode: 集群实例删除时的策略：terminate（销毁实例，仅支持按量计费云主机实例） retain （仅移除，保留实例）
         :type InstanceDeleteMode: str
+        :param ForceDelete: 是否强制删除(当节点在初始化时，可以指定参数为TRUE)
+        :type ForceDelete: bool
         """
         self.ClusterId = None
         self.InstanceIds = None
         self.InstanceDeleteMode = None
+        self.ForceDelete = None
 
 
     def _deserialize(self, params):
         self.ClusterId = params.get("ClusterId")
         self.InstanceIds = params.get("InstanceIds")
         self.InstanceDeleteMode = params.get("InstanceDeleteMode")
+        self.ForceDelete = params.get("ForceDelete")
 
 
 class DeleteClusterInstancesResponse(AbstractModel):
@@ -1053,7 +1065,7 @@ class DescribeExistedInstancesRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param ClusterId: 集群 ID，请填写查询集群列表 接口中返回的 ClusterId 字段（仅通过ClusterId获取需要过滤条件中的VPCID，比较状态时会使用该地域下所有集群中的节点进行比较。参数不支持同时指定InstanceIds和ClusterId。
+        :param ClusterId: 集群 ID，请填写查询集群列表 接口中返回的 ClusterId 字段（仅通过ClusterId获取需要过滤条件中的VPCID。节点状态比较时会使用该地域下所有集群中的节点进行比较。参数不支持同时指定InstanceIds和ClusterId。
         :type ClusterId: str
         :param InstanceIds: 按照一个或者多个实例ID查询。实例ID形如：ins-xxxxxxxx。（此参数的具体格式可参考API简介的id.N一节）。每次请求的实例的上限为100。参数不支持同时指定InstanceIds和Filters。
         :type InstanceIds: list of str
@@ -1407,11 +1419,14 @@ class InstanceAdvancedSettings(AbstractModel):
         :type UserScript: str
         :param Unschedulable: 设置加入的节点是否参与调度，默认值为0，表示参与调度；非0表示不参与调度, 待节点初始化完成之后, 可执行kubectl uncordon nodename使node加入调度.
         :type Unschedulable: int
+        :param Labels: 节点Label数组
+        :type Labels: list of Label
         """
         self.MountTarget = None
         self.DockerGraphPath = None
         self.UserScript = None
         self.Unschedulable = None
+        self.Labels = None
 
 
     def _deserialize(self, params):
@@ -1419,6 +1434,12 @@ class InstanceAdvancedSettings(AbstractModel):
         self.DockerGraphPath = params.get("DockerGraphPath")
         self.UserScript = params.get("UserScript")
         self.Unschedulable = params.get("Unschedulable")
+        if params.get("Labels") is not None:
+            self.Labels = []
+            for item in params.get("Labels"):
+                obj = Label()
+                obj._deserialize(item)
+                self.Labels.append(obj)
 
 
 class Label(AbstractModel):

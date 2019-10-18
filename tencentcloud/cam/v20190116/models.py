@@ -235,12 +235,28 @@ class AttachPolicyInfo(AbstractModel):
         :param PolicyType: 取值为user和QCS
 注意：此字段可能返回 null，表示取不到有效值。
         :type PolicyType: str
+        :param Remark: 策略备注
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Remark: str
+        :param OperateOwnerUin: 策略关联操作者主张号
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OperateOwnerUin: int
+        :param OperateUin: 策略关联操作者ID，如果UinType为0表示子帐号Uin，如果UinType为1表示角色ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OperateUin: int
+        :param OperateUinType: UinType为0表示OperateUin字段是子帐号Uin，如果UinType为1表示OperateUin字段是角色ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OperateUinType: int
         """
         self.PolicyId = None
         self.PolicyName = None
         self.AddTime = None
         self.CreateMode = None
         self.PolicyType = None
+        self.Remark = None
+        self.OperateOwnerUin = None
+        self.OperateUin = None
+        self.OperateUinType = None
 
 
     def _deserialize(self, params):
@@ -249,6 +265,10 @@ class AttachPolicyInfo(AbstractModel):
         self.AddTime = params.get("AddTime")
         self.CreateMode = params.get("CreateMode")
         self.PolicyType = params.get("PolicyType")
+        self.Remark = params.get("Remark")
+        self.OperateOwnerUin = params.get("OperateOwnerUin")
+        self.OperateUin = params.get("OperateUin")
+        self.OperateUinType = params.get("OperateUinType")
 
 
 class AttachRolePolicyRequest(AbstractModel):
@@ -496,7 +516,7 @@ class CreateRoleRequest(AbstractModel):
         """
         :param RoleName: 角色名称
         :type RoleName: str
-        :param PolicyDocument: 策略文档
+        :param PolicyDocument: 策略文档，示例：{"version":"2.0","statement":[{"action":"name/sts:AssumeRole","effect":"allow","principal":{"service":["cloudaudit.cloud.tencent.com","cls.cloud.tencent.com"]}}]}，principal用于指定角色的授权对象。获取该参数可参阅 获取角色详情（https://cloud.tencent.com/document/product/598/36221） 输出参数RoleInfo
         :type PolicyDocument: str
         :param Description: 角色描述
         :type Description: str
@@ -2228,7 +2248,7 @@ class UpdateAssumeRolePolicyRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param PolicyDocument: 策略文档
+        :param PolicyDocument: 策略文档，示例：{"version":"2.0","statement":[{"action":"name/sts:AssumeRole","effect":"allow","principal":{"service":["cloudaudit.cloud.tencent.com","cls.cloud.tencent.com"]}}]}，principal用于指定角色的授权对象。获取该参数可参阅 获取角色详情（https://cloud.tencent.com/document/product/598/36221） 输出参数RoleInfo
         :type PolicyDocument: str
         :param RoleId: 角色ID，用于指定角色，入参 RoleId 与 RoleName 二选一
         :type RoleId: str

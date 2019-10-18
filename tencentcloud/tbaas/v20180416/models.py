@@ -16,6 +16,158 @@
 from tencentcloud.common.abstract_model import AbstractModel
 
 
+class ApplyUserCertRequest(AbstractModel):
+    """ApplyUserCert请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Module: 模块名，固定字段：cert_mng
+        :type Module: str
+        :param Operation: 操作名，固定字段：cert_apply_for_user
+        :type Operation: str
+        :param ClusterId: 区块链网络ID，可在区块链网络详情或列表中获取
+        :type ClusterId: str
+        :param GroupName: 申请证书的组织名称，可以在组织管理列表中获取当前组织的名称
+        :type GroupName: str
+        :param UserIdentity: 用户证书标识，用于标识用户证书，要求由纯小写字母组成，长度小于10
+        :type UserIdentity: str
+        :param Applicant: 证书申请实体，使用腾讯云账号实名认证的名称
+        :type Applicant: str
+        :param IdentityNum: 证件号码。如果腾讯云账号对应的实名认证类型为企业认证，填入企业营业执照；如果腾讯云账号对应的实名认证类型为个人认证，填入个人身份证号码
+        :type IdentityNum: str
+        :param CsrData: csr p10证书文件。需要用户根据文档生成证书的CSR文件
+        :type CsrData: str
+        :param Notes: 证书备注信息
+        :type Notes: str
+        """
+        self.Module = None
+        self.Operation = None
+        self.ClusterId = None
+        self.GroupName = None
+        self.UserIdentity = None
+        self.Applicant = None
+        self.IdentityNum = None
+        self.CsrData = None
+        self.Notes = None
+
+
+    def _deserialize(self, params):
+        self.Module = params.get("Module")
+        self.Operation = params.get("Operation")
+        self.ClusterId = params.get("ClusterId")
+        self.GroupName = params.get("GroupName")
+        self.UserIdentity = params.get("UserIdentity")
+        self.Applicant = params.get("Applicant")
+        self.IdentityNum = params.get("IdentityNum")
+        self.CsrData = params.get("CsrData")
+        self.Notes = params.get("Notes")
+
+
+class ApplyUserCertResponse(AbstractModel):
+    """ApplyUserCert返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class BcosBlockObj(AbstractModel):
+    """bcos区块对象
+
+    """
+
+    def __init__(self):
+        """
+        :param BlockHash: 区块哈希
+        :type BlockHash: str
+        :param BlockNumber: 区块高度
+        :type BlockNumber: int
+        :param BlockTimestamp: 区块时间戳
+        :type BlockTimestamp: str
+        :param Sealer: 打包节点id
+        :type Sealer: str
+        :param SealerIndex: 打包节点索引
+        :type SealerIndex: int
+        :param CreateTime: 记录保存时间
+        :type CreateTime: str
+        :param TransCount: 交易数量
+        :type TransCount: int
+        :param ModifyTime: 记录修改时间
+        :type ModifyTime: str
+        """
+        self.BlockHash = None
+        self.BlockNumber = None
+        self.BlockTimestamp = None
+        self.Sealer = None
+        self.SealerIndex = None
+        self.CreateTime = None
+        self.TransCount = None
+        self.ModifyTime = None
+
+
+    def _deserialize(self, params):
+        self.BlockHash = params.get("BlockHash")
+        self.BlockNumber = params.get("BlockNumber")
+        self.BlockTimestamp = params.get("BlockTimestamp")
+        self.Sealer = params.get("Sealer")
+        self.SealerIndex = params.get("SealerIndex")
+        self.CreateTime = params.get("CreateTime")
+        self.TransCount = params.get("TransCount")
+        self.ModifyTime = params.get("ModifyTime")
+
+
+class BcosTransInfo(AbstractModel):
+    """bcos交易信息对象
+
+    """
+
+    def __init__(self):
+        """
+        :param BlockNumber: 所属区块高度
+        :type BlockNumber: int
+        :param BlockTimestamp: 区块时间戳
+        :type BlockTimestamp: str
+        :param TransHash: 交易哈希
+        :type TransHash: str
+        :param TransFrom: 交易发起者
+        :type TransFrom: str
+        :param TransTo: 交易接收者
+        :type TransTo: str
+        :param CreateTime: 落库时间
+        :type CreateTime: str
+        :param ModifyTime: 修改时间
+        :type ModifyTime: str
+        """
+        self.BlockNumber = None
+        self.BlockTimestamp = None
+        self.TransHash = None
+        self.TransFrom = None
+        self.TransTo = None
+        self.CreateTime = None
+        self.ModifyTime = None
+
+
+    def _deserialize(self, params):
+        self.BlockNumber = params.get("BlockNumber")
+        self.BlockTimestamp = params.get("BlockTimestamp")
+        self.TransHash = params.get("TransHash")
+        self.TransFrom = params.get("TransFrom")
+        self.TransTo = params.get("TransTo")
+        self.CreateTime = params.get("CreateTime")
+        self.ModifyTime = params.get("ModifyTime")
+
+
 class Block(AbstractModel):
     """区块对象
 
@@ -47,6 +199,189 @@ class Block(AbstractModel):
         self.BlockId = params.get("BlockId")
         self.PreHash = params.get("PreHash")
         self.TxCount = params.get("TxCount")
+
+
+class BlockByNumberHandlerRequest(AbstractModel):
+    """BlockByNumberHandler请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Module: 模块名，固定字段：block
+        :type Module: str
+        :param Operation: 操作名，固定字段：block_by_number
+        :type Operation: str
+        :param GroupPk: 当前群组编号
+        :type GroupPk: str
+        :param BlockNumber: 区块高度
+        :type BlockNumber: int
+        """
+        self.Module = None
+        self.Operation = None
+        self.GroupPk = None
+        self.BlockNumber = None
+
+
+    def _deserialize(self, params):
+        self.Module = params.get("Module")
+        self.Operation = params.get("Operation")
+        self.GroupPk = params.get("GroupPk")
+        self.BlockNumber = params.get("BlockNumber")
+
+
+class BlockByNumberHandlerResponse(AbstractModel):
+    """BlockByNumberHandler返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param BlockJson: 返回区块json字符串
+        :type BlockJson: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.BlockJson = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.BlockJson = params.get("BlockJson")
+        self.RequestId = params.get("RequestId")
+
+
+class DownloadUserCertRequest(AbstractModel):
+    """DownloadUserCert请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Module: 模块名，固定字段：cert_mng
+        :type Module: str
+        :param Operation: 操作名，固定字段：cert_download_for_user
+        :type Operation: str
+        :param CertId: 证书ID，可以在证书详情页面获取
+        :type CertId: int
+        :param CertDn: 证书DN，可以在证书详情页面获取
+        :type CertDn: str
+        :param ClusterId: 区块链网络ID，可在区块链网络详情或列表中获取
+        :type ClusterId: str
+        :param GroupName: 下载证书的组织名称，可以在组织管理列表中获取当前组织的名称
+        :type GroupName: str
+        """
+        self.Module = None
+        self.Operation = None
+        self.CertId = None
+        self.CertDn = None
+        self.ClusterId = None
+        self.GroupName = None
+
+
+    def _deserialize(self, params):
+        self.Module = params.get("Module")
+        self.Operation = params.get("Operation")
+        self.CertId = params.get("CertId")
+        self.CertDn = params.get("CertDn")
+        self.ClusterId = params.get("ClusterId")
+        self.GroupName = params.get("GroupName")
+
+
+class DownloadUserCertResponse(AbstractModel):
+    """DownloadUserCert返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param CertName: 证书名称
+        :type CertName: str
+        :param CertCtx: 证书内容
+        :type CertCtx: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.CertName = None
+        self.CertCtx = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.CertName = params.get("CertName")
+        self.CertCtx = params.get("CertCtx")
+        self.RequestId = params.get("RequestId")
+
+
+class GetBlockListHandlerRequest(AbstractModel):
+    """GetBlockListHandler请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Module: 模块名，固定字段：block
+        :type Module: str
+        :param Operation: 操作名，固定字段：get_block_list
+        :type Operation: str
+        :param Offset: 记录偏移数
+        :type Offset: int
+        :param Limit: 每页记录数
+        :type Limit: int
+        :param GroupPk: 当前群组编号
+        :type GroupPk: str
+        :param BlockHash: 区块哈希
+        :type BlockHash: str
+        """
+        self.Module = None
+        self.Operation = None
+        self.Offset = None
+        self.Limit = None
+        self.GroupPk = None
+        self.BlockHash = None
+
+
+    def _deserialize(self, params):
+        self.Module = params.get("Module")
+        self.Operation = params.get("Operation")
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+        self.GroupPk = params.get("GroupPk")
+        self.BlockHash = params.get("BlockHash")
+
+
+class GetBlockListHandlerResponse(AbstractModel):
+    """GetBlockListHandler返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param TotalCount: 总记录数
+        :type TotalCount: int
+        :param GroupPk: 当前群组编号
+        :type GroupPk: str
+        :param List: 返回数据列表
+        :type List: list of BcosBlockObj
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.GroupPk = None
+        self.List = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        self.GroupPk = params.get("GroupPk")
+        if params.get("List") is not None:
+            self.List = []
+            for item in params.get("List"):
+                obj = BcosBlockObj()
+                obj._deserialize(item)
+                self.List.append(obj)
+        self.RequestId = params.get("RequestId")
 
 
 class GetBlockListRequest(AbstractModel):
@@ -172,40 +507,30 @@ class GetClusterSummaryResponse(AbstractModel):
         :type TotalChannelCount: int
         :param MyChannelCount: 当前组织创建的通道数量
         :type MyChannelCount: int
-        :param OtherChannelCount: 其组织创建的通道数量
-        :type OtherChannelCount: int
         :param JoinChannelCount: 当前组织加入的通道数量
         :type JoinChannelCount: int
-        :param NoneChannelCount: 与当前组织无关的通道数量
-        :type NoneChannelCount: int
         :param TotalPeerCount: 网络节点总数量
         :type TotalPeerCount: int
         :param MyPeerCount: 当前组织创建的节点数量
         :type MyPeerCount: int
-        :param OtherPeerCount: 其他组织创建的节点数量
-        :type OtherPeerCount: int
+        :param OrderCount: 其他组织创建的节点数量
+        :type OrderCount: int
         :param TotalGroupCount: 网络组织总数量
         :type TotalGroupCount: int
         :param MyGroupCount: 当前组织创建的组织数量
         :type MyGroupCount: int
-        :param OtherGroupCount: 其他组织创建的组织数量
-        :type OtherGroupCount: int
         :param TotalChaincodeCount: 网络智能合约总数量
         :type TotalChaincodeCount: int
         :param RecentChaincodeCount: 最近7天发起的智能合约数量
         :type RecentChaincodeCount: int
         :param MyChaincodeCount: 当前组织发起的智能合约数量
         :type MyChaincodeCount: int
-        :param OtherChaincodeCount: 其组织发起的智能合约数量
-        :type OtherChaincodeCount: int
         :param TotalCertCount: 当前组织的证书总数量
         :type TotalCertCount: int
         :param TlsCertCount: 颁发给当前组织的证书数量
         :type TlsCertCount: int
         :param PeerCertCount: 网络背书节点证书数量
         :type PeerCertCount: int
-        :param OrderCertCount: 网络排序节点证书数量
-        :type OrderCertCount: int
         :param ClientCertCount: 当前组织业务证书数量
         :type ClientCertCount: int
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -213,23 +538,18 @@ class GetClusterSummaryResponse(AbstractModel):
         """
         self.TotalChannelCount = None
         self.MyChannelCount = None
-        self.OtherChannelCount = None
         self.JoinChannelCount = None
-        self.NoneChannelCount = None
         self.TotalPeerCount = None
         self.MyPeerCount = None
-        self.OtherPeerCount = None
+        self.OrderCount = None
         self.TotalGroupCount = None
         self.MyGroupCount = None
-        self.OtherGroupCount = None
         self.TotalChaincodeCount = None
         self.RecentChaincodeCount = None
         self.MyChaincodeCount = None
-        self.OtherChaincodeCount = None
         self.TotalCertCount = None
         self.TlsCertCount = None
         self.PeerCertCount = None
-        self.OrderCertCount = None
         self.ClientCertCount = None
         self.RequestId = None
 
@@ -237,23 +557,18 @@ class GetClusterSummaryResponse(AbstractModel):
     def _deserialize(self, params):
         self.TotalChannelCount = params.get("TotalChannelCount")
         self.MyChannelCount = params.get("MyChannelCount")
-        self.OtherChannelCount = params.get("OtherChannelCount")
         self.JoinChannelCount = params.get("JoinChannelCount")
-        self.NoneChannelCount = params.get("NoneChannelCount")
         self.TotalPeerCount = params.get("TotalPeerCount")
         self.MyPeerCount = params.get("MyPeerCount")
-        self.OtherPeerCount = params.get("OtherPeerCount")
+        self.OrderCount = params.get("OrderCount")
         self.TotalGroupCount = params.get("TotalGroupCount")
         self.MyGroupCount = params.get("MyGroupCount")
-        self.OtherGroupCount = params.get("OtherGroupCount")
         self.TotalChaincodeCount = params.get("TotalChaincodeCount")
         self.RecentChaincodeCount = params.get("RecentChaincodeCount")
         self.MyChaincodeCount = params.get("MyChaincodeCount")
-        self.OtherChaincodeCount = params.get("OtherChaincodeCount")
         self.TotalCertCount = params.get("TotalCertCount")
         self.TlsCertCount = params.get("TlsCertCount")
         self.PeerCertCount = params.get("PeerCertCount")
-        self.OrderCertCount = params.get("OrderCertCount")
         self.ClientCertCount = params.get("ClientCertCount")
         self.RequestId = params.get("RequestId")
 
@@ -412,6 +727,127 @@ class GetLatesdTransactionListResponse(AbstractModel):
                 obj = TransactionItem()
                 obj._deserialize(item)
                 self.TransactionList.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class GetTransByHashHandlerRequest(AbstractModel):
+    """GetTransByHashHandler请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Module: 模块名，固定字段：transaction
+        :type Module: str
+        :param Operation: 操作名，固定字段：get_trans_by_hash
+        :type Operation: str
+        :param GroupPk: 群组编号
+        :type GroupPk: str
+        :param TransHash: 交易哈希
+        :type TransHash: str
+        """
+        self.Module = None
+        self.Operation = None
+        self.GroupPk = None
+        self.TransHash = None
+
+
+    def _deserialize(self, params):
+        self.Module = params.get("Module")
+        self.Operation = params.get("Operation")
+        self.GroupPk = params.get("GroupPk")
+        self.TransHash = params.get("TransHash")
+
+
+class GetTransByHashHandlerResponse(AbstractModel):
+    """GetTransByHashHandler返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param TransactionJson: 交易信息json字符串
+        :type TransactionJson: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TransactionJson = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TransactionJson = params.get("TransactionJson")
+        self.RequestId = params.get("RequestId")
+
+
+class GetTransListHandlerRequest(AbstractModel):
+    """GetTransListHandler请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Module: 模块名，固定字段：transaction
+        :type Module: str
+        :param Operation: 操作名，固定字段：get_trans_list
+        :type Operation: str
+        :param Offset: 记录偏移量
+        :type Offset: int
+        :param Limit: 每页记录数
+        :type Limit: int
+        :param GroupPk: 群组编号
+        :type GroupPk: str
+        :param TransHash: 交易哈希
+        :type TransHash: str
+        """
+        self.Module = None
+        self.Operation = None
+        self.Offset = None
+        self.Limit = None
+        self.GroupPk = None
+        self.TransHash = None
+
+
+    def _deserialize(self, params):
+        self.Module = params.get("Module")
+        self.Operation = params.get("Operation")
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+        self.GroupPk = params.get("GroupPk")
+        self.TransHash = params.get("TransHash")
+
+
+class GetTransListHandlerResponse(AbstractModel):
+    """GetTransListHandler返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param TotalCount: 总记录数
+        :type TotalCount: int
+        :param GroupPk: 当前群组编号
+        :type GroupPk: str
+        :param List: 返回数据列表
+        :type List: list of BcosTransInfo
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.GroupPk = None
+        self.List = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        self.GroupPk = params.get("GroupPk")
+        if params.get("List") is not None:
+            self.List = []
+            for item in params.get("List"):
+                obj = BcosTransInfo()
+                obj._deserialize(item)
+                self.List.append(obj)
         self.RequestId = params.get("RequestId")
 
 
@@ -590,6 +1026,122 @@ class QueryResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        self.Data = params.get("Data")
+        self.RequestId = params.get("RequestId")
+
+
+class SendTransactionHandlerRequest(AbstractModel):
+    """SendTransactionHandler请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Module: 模块名，固定字段：transaction
+        :type Module: str
+        :param Operation: 操作名，固定字段：send_transaction
+        :type Operation: str
+        :param GroupPk: 群组编号
+        :type GroupPk: str
+        :param KeyUser: 私钥用户编号
+        :type KeyUser: str
+        :param ContractId: 合约编号
+        :type ContractId: int
+        :param FuncName: 合约方法名
+        :type FuncName: str
+        :param FuncParam: 合约方法入参
+        :type FuncParam: list of str
+        """
+        self.Module = None
+        self.Operation = None
+        self.GroupPk = None
+        self.KeyUser = None
+        self.ContractId = None
+        self.FuncName = None
+        self.FuncParam = None
+
+
+    def _deserialize(self, params):
+        self.Module = params.get("Module")
+        self.Operation = params.get("Operation")
+        self.GroupPk = params.get("GroupPk")
+        self.KeyUser = params.get("KeyUser")
+        self.ContractId = params.get("ContractId")
+        self.FuncName = params.get("FuncName")
+        self.FuncParam = params.get("FuncParam")
+
+
+class SendTransactionHandlerResponse(AbstractModel):
+    """SendTransactionHandler返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param TransactionRsp: 交易结果json字符串
+        :type TransactionRsp: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TransactionRsp = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TransactionRsp = params.get("TransactionRsp")
+        self.RequestId = params.get("RequestId")
+
+
+class SrvInvokeRequest(AbstractModel):
+    """SrvInvoke请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Service: 服务类型，ss或者dam
+        :type Service: str
+        :param Method: 服务接口，要调用的方法函数名
+        :type Method: str
+        :param Param: 用户自定义json字符串
+        :type Param: str
+        """
+        self.Service = None
+        self.Method = None
+        self.Param = None
+
+
+    def _deserialize(self, params):
+        self.Service = params.get("Service")
+        self.Method = params.get("Method")
+        self.Param = params.get("Param")
+
+
+class SrvInvokeResponse(AbstractModel):
+    """SrvInvoke返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RetCode: 返回码
+        :type RetCode: int
+        :param RetMsg: 返回消息
+        :type RetMsg: str
+        :param Data: 返回数据
+        :type Data: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RetCode = None
+        self.RetMsg = None
+        self.Data = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RetCode = params.get("RetCode")
+        self.RetMsg = params.get("RetMsg")
         self.Data = params.get("Data")
         self.RequestId = params.get("RequestId")
 

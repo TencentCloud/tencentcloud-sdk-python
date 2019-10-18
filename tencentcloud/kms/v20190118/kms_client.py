@@ -109,6 +109,34 @@ class KmsClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DeleteImportedKeyMaterial(self, request):
+        """用于删除导入的密钥材料，仅对EXTERNAL类型的CMK有效，该接口将CMK设置为PendingImport 状态，并不会删除CMK，在重新进行密钥导入后可继续使用。彻底删除CMK请使用 ScheduleKeyDeletion 接口。
+
+        :param request: 调用DeleteImportedKeyMaterial所需参数的结构体。
+        :type request: :class:`tencentcloud.kms.v20190118.models.DeleteImportedKeyMaterialRequest`
+        :rtype: :class:`tencentcloud.kms.v20190118.models.DeleteImportedKeyMaterialResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DeleteImportedKeyMaterial", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DeleteImportedKeyMaterialResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeKey(self, request):
         """用于获取指定KeyId的主密钥属性详情信息。
 
@@ -417,6 +445,34 @@ class KmsClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def GetParametersForImport(self, request):
+        """获取导入主密钥（CMK）材料的参数，返回的Token作为执行ImportKeyMaterial的参数之一，返回的PublicKey用于对自主导入密钥材料进行加密。返回的Token和PublicKey 24小时后失效，失效后如需重新导入，需要再次调用该接口获取新的Token和PublicKey。
+
+        :param request: 调用GetParametersForImport所需参数的结构体。
+        :type request: :class:`tencentcloud.kms.v20190118.models.GetParametersForImportRequest`
+        :rtype: :class:`tencentcloud.kms.v20190118.models.GetParametersForImportResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("GetParametersForImport", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.GetParametersForImportResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def GetServiceStatus(self, request):
         """用于查询该用户是否已开通KMS服务
 
@@ -431,6 +487,35 @@ class KmsClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.GetServiceStatusResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ImportKeyMaterial(self, request):
+        """用于导入密钥材料。只有类型为EXTERNAL 的CMK 才可以导入，导入的密钥材料使用 GetParametersForImport 获取的密钥进行加密。可以为指定的 CMK 重新导入密钥材料，并重新指定过期时间，但必须导入相同的密钥材料。CMK 密钥材料导入后不可以更换密钥材料。导入的密钥材料过期或者被删除后，指定的CMK将无法使用，需要再次导入相同的密钥材料才能正常使用。CMK是独立的，同样的密钥材料可导入不同的 CMK 中，但使用其中一个 CMK 加密的数据无法使用另一个 CMK解密。
+        只有Enabled 和 PendingImport状态的CMK可以导入密钥材料。
+
+        :param request: 调用ImportKeyMaterial所需参数的结构体。
+        :type request: :class:`tencentcloud.kms.v20190118.models.ImportKeyMaterialRequest`
+        :rtype: :class:`tencentcloud.kms.v20190118.models.ImportKeyMaterialResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ImportKeyMaterial", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ImportKeyMaterialResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -474,7 +559,7 @@ class KmsClient(AbstractClient):
 
 
     def ListKeys(self, request):
-        """列出账号下面的密钥列表（KeyId信息）。
+        """列出账号下面状态为Enabled， Disabled 和 PendingImport 的CMK KeyId 列表
 
         :param request: 调用ListKeys所需参数的结构体。
         :type request: :class:`tencentcloud.kms.v20190118.models.ListKeysRequest`
@@ -558,7 +643,7 @@ class KmsClient(AbstractClient):
 
 
     def UpdateAlias(self, request):
-        """用于修改CMK的别名。
+        """用于修改CMK的别名。对于处于PendingDelete状态的CMK禁止修改。
 
         :param request: 调用UpdateAlias所需参数的结构体。
         :type request: :class:`tencentcloud.kms.v20190118.models.UpdateAliasRequest`
@@ -586,7 +671,7 @@ class KmsClient(AbstractClient):
 
 
     def UpdateKeyDescription(self, request):
-        """该接口用于对指定的cmk修改描述信息。
+        """该接口用于对指定的cmk修改描述信息。对于处于PendingDelete状态的CMK禁止修改。
 
         :param request: 调用UpdateKeyDescription所需参数的结构体。
         :type request: :class:`tencentcloud.kms.v20190118.models.UpdateKeyDescriptionRequest`
