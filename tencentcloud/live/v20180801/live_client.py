@@ -613,7 +613,7 @@ class LiveClient(AbstractClient):
 
 
     def DeleteLiveRecord(self, request):
-        """用于删除录制任务。
+        """注：DeleteLiveRecord 接口仅用于删除录制任务记录，不具备停止录制的功能，也不能删除正在进行中的录制。如果需要停止录制任务，请使用终止录制[StopLiveRecord](/document/product/267/30146) 接口。
 
         :param request: 调用DeleteLiveRecord所需参数的结构体。
         :type request: :class:`tencentcloud.live.v20180801.models.DeleteLiveRecordRequest`
@@ -1681,8 +1681,7 @@ class LiveClient(AbstractClient):
 
 
     def DescribeLiveTranscodeDetailInfo(self, request):
-        """支持查询某天的转码详细信息。
-        注意：当前只支持查询近30天内某天的详细数据。
+        """支持查询某天或某段时间的转码详细信息。
 
         :param request: 调用DescribeLiveTranscodeDetailInfo所需参数的结构体。
         :type request: :class:`tencentcloud.live.v20180801.models.DescribeLiveTranscodeDetailInfoRequest`

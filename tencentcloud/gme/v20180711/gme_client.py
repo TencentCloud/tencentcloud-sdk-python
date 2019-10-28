@@ -25,6 +25,62 @@ class GmeClient(AbstractClient):
     _endpoint = 'gme.tencentcloudapi.com'
 
 
+    def CreateApp(self, request):
+        """本接口(CreateApp)用于创建一个GME应用
+
+        :param request: 调用CreateApp所需参数的结构体。
+        :type request: :class:`tencentcloud.gme.v20180711.models.CreateAppRequest`
+        :rtype: :class:`tencentcloud.gme.v20180711.models.CreateAppResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("CreateApp", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateAppResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeAppStatistics(self, request):
+        """本接口(DescribeAppStatistics)用户获取某个GME应用的用量数据。包括实时语音，离线语音，语音过滤等。最长查询周期为最近30天。
+
+        :param request: 调用DescribeAppStatistics所需参数的结构体。
+        :type request: :class:`tencentcloud.gme.v20180711.models.DescribeAppStatisticsRequest`
+        :rtype: :class:`tencentcloud.gme.v20180711.models.DescribeAppStatisticsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeAppStatistics", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeAppStatisticsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeFilterResult(self, request):
         """根据应用ID和文件ID查询识别结果
 
@@ -110,9 +166,42 @@ class GmeClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def ModifyAppStatus(self, request):
+        """本接口(ModifyAppStatus)用于修改应用总开关状态。
+
+        :param request: 调用ModifyAppStatus所需参数的结构体。
+        :type request: :class:`tencentcloud.gme.v20180711.models.ModifyAppStatusRequest`
+        :rtype: :class:`tencentcloud.gme.v20180711.models.ModifyAppStatusResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ModifyAppStatus", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ModifyAppStatusResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def ScanVoice(self, request):
-        """本接口(ScanVoice)用于提交语音检测任务，检测任务列表最多支持100个。
+        """本接口(ScanVoice)用于提交语音检测任务，检测任务列表最多支持100个。使用前请您登录[控制台 - 服务配置](https://console.cloud.tencent.com/gamegme/conf)开启语音分析服务。
         </br></br>
+
+        <h4><b>功能试用说明：</b></h4>
+        <li>打开前往<a href="https://console.cloud.tencent.com/gamegme/tryout">控制台 - 产品试用</a>免费试用语音分析服务。</li>
+        </br>
+
         <h4><b>接口功能说明：</b></h4>
         <li>支持对语音流或语音文件进行检测，判断其中是否包含违规内容。</li>
         <li>支持设置回调地址 Callback 获取检测结果，同时支持通过接口(查询语音检测结果)主动轮询获取检测结果。</li>
@@ -152,7 +241,7 @@ class GmeClient(AbstractClient):
         <p>ad :广告</p>
         <p>terrorism:暴恐</p>
         <p>contraband :违禁</p>
-        <p>customized:自定义词库</p>
+        <p>customized:自定义词库。目前白名单开放，如有需要请<a href="https://cloud.tencent.com/apply/p/8809fjcik56">联系我们</a>。</p>
         </td>
         </tr>
         </tbody>
@@ -189,14 +278,8 @@ class GmeClient(AbstractClient):
         	</ul>
         </ul>
 
-        <ul>
-        <li>
-        回调请求 Body 的字段说明见结构：
-        <a href="https://cloud.tencent.com/document/api/607/35375#DescribeScanResult" target="_blank">DescribeScanResult</a>
-        </li>
-        </ul>
-
-        <li>回调示例如下<font color="red">（详细字段说明见上述表格中 Data 字段说明）</font>：</li>
+        <li>回调示例如下<font color="red">（详细字段说明见结构：
+        <a href="https://cloud.tencent.com/document/api/607/35375#DescribeScanResult" target="_blank">DescribeScanResult</a>）</font>：</li>
         <pre><code>{
         	"Code": 0,
         	"DataId": "1400000000_test_data_id",
@@ -210,6 +293,7 @@ class GmeClient(AbstractClient):
         		"MainType": "abuse",
         		"RoomId": "123",
         		"OpenId": "xxx",
+        		"Info":"",
         		"ScanDetail": [{
         			"EndTime": 1110,
         			"KeyWord": "xxx",

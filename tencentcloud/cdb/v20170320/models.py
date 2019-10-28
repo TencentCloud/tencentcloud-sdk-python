@@ -381,6 +381,47 @@ class ColumnPrivilege(AbstractModel):
         self.Privileges = params.get("Privileges")
 
 
+class CommonTimeWindow(AbstractModel):
+    """通用时间窗
+
+    """
+
+    def __init__(self):
+        """
+        :param Monday: 周一的时间窗，格式如： 02:00-06:00
+        :type Monday: str
+        :param Tuesday: 周二的时间窗，格式如： 02:00-06:00
+        :type Tuesday: str
+        :param Wednesday: 周三的时间窗，格式如： 02:00-06:00
+        :type Wednesday: str
+        :param Thursday: 周四的时间窗，格式如： 02:00-06:00
+        :type Thursday: str
+        :param Friday: 周五的时间窗，格式如： 02:00-06:00
+        :type Friday: str
+        :param Saturday: 周六的时间窗，格式如： 02:00-06:00
+        :type Saturday: str
+        :param Sunday: 周日的时间窗，格式如： 02:00-06:00
+        :type Sunday: str
+        """
+        self.Monday = None
+        self.Tuesday = None
+        self.Wednesday = None
+        self.Thursday = None
+        self.Friday = None
+        self.Saturday = None
+        self.Sunday = None
+
+
+    def _deserialize(self, params):
+        self.Monday = params.get("Monday")
+        self.Tuesday = params.get("Tuesday")
+        self.Wednesday = params.get("Wednesday")
+        self.Thursday = params.get("Thursday")
+        self.Friday = params.get("Friday")
+        self.Saturday = params.get("Saturday")
+        self.Sunday = params.get("Sunday")
+
+
 class CreateAccountsRequest(AbstractModel):
     """CreateAccounts请求参数结构体
 
@@ -838,6 +879,48 @@ class CreateDBInstanceResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class CreateDeployGroupRequest(AbstractModel):
+    """CreateDeployGroup请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param DeployGroupName: 置放群组名称，最长不能超过60个字符。
+        :type DeployGroupName: str
+        :param Description: 置放群组描述，最长不能超过200个字符。
+        :type Description: str
+        """
+        self.DeployGroupName = None
+        self.Description = None
+
+
+    def _deserialize(self, params):
+        self.DeployGroupName = params.get("DeployGroupName")
+        self.Description = params.get("Description")
+
+
+class CreateDeployGroupResponse(AbstractModel):
+    """CreateDeployGroup返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param DeployGroupId: 置放群组ID
+        :type DeployGroupId: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.DeployGroupId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.DeployGroupId = params.get("DeployGroupId")
+        self.RequestId = params.get("RequestId")
+
+
 class CreateParamTemplateRequest(AbstractModel):
     """CreateParamTemplate请求参数结构体
 
@@ -1041,6 +1124,40 @@ class DeleteBackupResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DeleteDeployGroupsRequest(AbstractModel):
+    """DeleteDeployGroups请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param DeployGroupIds: 要删除的置放群组 ID 列表。
+        :type DeployGroupIds: list of str
+        """
+        self.DeployGroupIds = None
+
+
+    def _deserialize(self, params):
+        self.DeployGroupIds = params.get("DeployGroupIds")
+
+
+class DeleteDeployGroupsResponse(AbstractModel):
+    """DeleteDeployGroups返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class DeleteParamTemplateRequest(AbstractModel):
     """DeleteParamTemplate请求参数结构体
 
@@ -1107,6 +1224,39 @@ class DeleteTimeWindowResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
+
+
+class DeployGroupInfo(AbstractModel):
+    """置放群组信息
+
+    """
+
+    def __init__(self):
+        """
+        :param DeployGroupId: 置放群组 ID。
+        :type DeployGroupId: str
+        :param DeployGroupName: 置放群组名称。
+        :type DeployGroupName: str
+        :param CreateTime: 创建时间。
+        :type CreateTime: str
+        :param Description: 置放群组描述。
+        :type Description: str
+        :param Quota: 置放群组实例配额。
+        :type Quota: int
+        """
+        self.DeployGroupId = None
+        self.DeployGroupName = None
+        self.CreateTime = None
+        self.Description = None
+        self.Quota = None
+
+
+    def _deserialize(self, params):
+        self.DeployGroupId = params.get("DeployGroupId")
+        self.DeployGroupName = params.get("DeployGroupName")
+        self.CreateTime = params.get("CreateTime")
+        self.Description = params.get("Description")
+        self.Quota = params.get("Quota")
 
 
 class DescribeAccountPrivilegesRequest(AbstractModel):
@@ -1262,8 +1412,10 @@ class DescribeAsyncRequestInfoResponse(AbstractModel):
     def __init__(self):
         """
         :param Status: 任务执行结果。可能的取值：INITIAL - 初始化，RUNNING - 运行中，SUCCESS - 执行成功，FAILED - 执行失败，KILLED - 已终止，REMOVED - 已删除，PAUSED - 终止中。
+注意：此字段可能返回 null，表示取不到有效值。
         :type Status: str
         :param Info: 任务执行信息描述。
+注意：此字段可能返回 null，表示取不到有效值。
         :type Info: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -1868,11 +2020,11 @@ class DescribeDBInstancesRequest(AbstractModel):
         :type InstanceIds: list of str
         :param InitFlag: 初始化标记，可取值：0 - 未初始化，1 - 初始化。
         :type InitFlag: int
-        :param WithDr: 是否包含灾备实例，可取值：0 - 不包含，1 - 包含。
+        :param WithDr: 是否包含灾备关系对应的实例，可取值：0 - 不包含，1 - 包含。默认取值为1。如果拉取主实例，则灾备关系的数据在DrInfo字段中， 如果拉取灾备实例， 则灾备关系的数据在MasterInfo字段中。灾备关系中只包含部分基本的数据，详细的数据需要自行调接口拉取。
         :type WithDr: int
-        :param WithRo: 是否包含只读实例，可取值：0 - 不包含，1 - 包含。
+        :param WithRo: 是否包含只读实例，可取值：0 - 不包含，1 - 包含。默认取值为1。
         :type WithRo: int
-        :param WithMaster: 是否包含主实例，可取值：0 - 不包含，1 - 包含。
+        :param WithMaster: 是否包含主实例，可取值：0 - 不包含，1 - 包含。默认取值为1。
         :type WithMaster: int
         """
         self.ProjectId = None
@@ -2262,6 +2414,66 @@ class DescribeDefaultParamsResponse(AbstractModel):
                 obj = ParameterDetail()
                 obj._deserialize(item)
                 self.Items.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeDeployGroupListRequest(AbstractModel):
+    """DescribeDeployGroupList请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param DeployGroupId: 置放群组 ID。
+        :type DeployGroupId: str
+        :param DeployGroupName: 置放群组名称。
+        :type DeployGroupName: str
+        :param Limit: 返回数量，默认为20，最大值为100。
+        :type Limit: int
+        :param Offset: 偏移量，默认为0。
+        :type Offset: int
+        """
+        self.DeployGroupId = None
+        self.DeployGroupName = None
+        self.Limit = None
+        self.Offset = None
+
+
+    def _deserialize(self, params):
+        self.DeployGroupId = params.get("DeployGroupId")
+        self.DeployGroupName = params.get("DeployGroupName")
+        self.Limit = params.get("Limit")
+        self.Offset = params.get("Offset")
+
+
+class DescribeDeployGroupListResponse(AbstractModel):
+    """DescribeDeployGroupList返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Items: 返回列表。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Items: list of DeployGroupInfo
+        :param Total: 符合条件的记录总数
+        :type Total: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Items = None
+        self.Total = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Items") is not None:
+            self.Items = []
+            for item in params.get("Items"):
+                obj = DeployGroupInfo()
+                obj._deserialize(item)
+                self.Items.append(obj)
+        self.Total = params.get("Total")
         self.RequestId = params.get("RequestId")
 
 
@@ -3714,6 +3926,7 @@ class IsolateDBInstanceResponse(AbstractModel):
     def __init__(self):
         """
         :param AsyncRequestId: 异步任务的请求 ID，可使用此 ID 查询异步任务的执行结果。
+注意：此字段可能返回 null，表示取不到有效值。
         :type AsyncRequestId: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -4041,18 +4254,21 @@ class ModifyBackupConfigRequest(AbstractModel):
         :type InstanceId: str
         :param ExpireDays: 备份文件的保留时间，单位为天。最小值为7天，最大值为732天。
         :type ExpireDays: int
-        :param StartTime: 备份时间范围，格式为：02:00-06:00，起点和终点时间目前限制为整点，目前可以选择的范围为： 00:00-12:00，02:00-06:00，06：00-10：00，10:00-14:00，14:00-18:00，18:00-22:00，22:00-02:00。
+        :param StartTime: (将废弃，建议使用 BackupTimeWindow 参数) 备份时间范围，格式为：02:00-06:00，起点和终点时间目前限制为整点，目前可以选择的范围为： 00:00-12:00，02:00-06:00，06：00-10：00，10:00-14:00，14:00-18:00，18:00-22:00，22:00-02:00。
         :type StartTime: str
         :param BackupMethod: 自动备份方式，仅支持：physical - 物理冷备
         :type BackupMethod: str
         :param BinlogExpireDays: binlog的保留时间，单位为天。最小值为7天，最大值为732天。该值的设置不能大于备份文件的保留时间。
         :type BinlogExpireDays: int
+        :param BackupTimeWindow: 备份时间窗，比如要设置每周二和周日 10:00-14:00之间备份，该参数如下：{"Monday": "", "Tuesday": "10:00-14:00", "Wednesday": "", "Thursday": "", "Friday": "", "Saturday": "", "Sunday": "10:00-14:00"}    （注：可以设置一周的某几天备份，但是每天的备份时间需要设置为相同的时间段。 如果设置了该字段，将忽略StartTime字段的设置）
+        :type BackupTimeWindow: :class:`tencentcloud.cdb.v20170320.models.CommonTimeWindow`
         """
         self.InstanceId = None
         self.ExpireDays = None
         self.StartTime = None
         self.BackupMethod = None
         self.BinlogExpireDays = None
+        self.BackupTimeWindow = None
 
 
     def _deserialize(self, params):
@@ -4061,6 +4277,9 @@ class ModifyBackupConfigRequest(AbstractModel):
         self.StartTime = params.get("StartTime")
         self.BackupMethod = params.get("BackupMethod")
         self.BinlogExpireDays = params.get("BinlogExpireDays")
+        if params.get("BackupTimeWindow") is not None:
+            self.BackupTimeWindow = CommonTimeWindow()
+            self.BackupTimeWindow._deserialize(params.get("BackupTimeWindow"))
 
 
 class ModifyBackupConfigResponse(AbstractModel):
@@ -4332,6 +4551,48 @@ class ModifyInstanceTagRequest(AbstractModel):
 
 class ModifyInstanceTagResponse(AbstractModel):
     """ModifyInstanceTag返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class ModifyNameOrDescByDpIdRequest(AbstractModel):
+    """ModifyNameOrDescByDpId请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param DeployGroupId: 置放群组 ID。
+        :type DeployGroupId: str
+        :param DeployGroupName: 置放群组名称，最长不能超过60个字符。置放群组名和置放群组描述不能都为空。
+        :type DeployGroupName: str
+        :param Description: 置放群组描述，最长不能超过200个字符。置放群组名和置放群组描述不能都为空。
+        :type Description: str
+        """
+        self.DeployGroupId = None
+        self.DeployGroupName = None
+        self.Description = None
+
+
+    def _deserialize(self, params):
+        self.DeployGroupId = params.get("DeployGroupId")
+        self.DeployGroupName = params.get("DeployGroupName")
+        self.Description = params.get("Description")
+
+
+class ModifyNameOrDescByDpIdResponse(AbstractModel):
+    """ModifyNameOrDescByDpId返回参数结构体
 
     """
 

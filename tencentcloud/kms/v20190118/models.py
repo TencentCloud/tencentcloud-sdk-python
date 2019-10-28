@@ -602,6 +602,44 @@ class GenerateDataKeyResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class GenerateRandomRequest(AbstractModel):
+    """GenerateRandom请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param NumberOfBytes: 生成的随机数的长度。最小值为1， 最大值为1024。
+        :type NumberOfBytes: int
+        """
+        self.NumberOfBytes = None
+
+
+    def _deserialize(self, params):
+        self.NumberOfBytes = params.get("NumberOfBytes")
+
+
+class GenerateRandomResponse(AbstractModel):
+    """GenerateRandom返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Plaintext: 生成的随机数的明文，该明文使用base64编码，用户需要使用base64解码得到明文。
+        :type Plaintext: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Plaintext = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Plaintext = params.get("Plaintext")
+        self.RequestId = params.get("RequestId")
+
+
 class GetKeyRotationStatusRequest(AbstractModel):
     """GetKeyRotationStatus请求参数结构体
 
@@ -743,7 +781,7 @@ class ImportKeyMaterialRequest(AbstractModel):
         :type ImportToken: str
         :param KeyId: 指定导入密钥材料的CMK，需要和GetParametersForImport 指定的CMK相同。
         :type KeyId: str
-        :param ValidTo: 密钥材料过期时间 unix 时间戳，不指定或者 0 表示密钥材料不会过期，若指定过期时间，需要大于当前时间点。
+        :param ValidTo: 密钥材料过期时间 unix 时间戳，不指定或者 0 表示密钥材料不会过期，若指定过期时间，需要大于当前时间点，最大支持 2147443200。
         :type ValidTo: int
         """
         self.EncryptedKeyMaterial = None

@@ -419,6 +419,34 @@ class VpcClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def CheckNetDetectState(self, request):
+        """本接口(CheckNetDetectState)用于验证网络探测。
+
+        :param request: 调用CheckNetDetectState所需参数的结构体。
+        :type request: :class:`tencentcloud.vpc.v20170312.models.CheckNetDetectStateRequest`
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.CheckNetDetectStateResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("CheckNetDetectState", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CheckNetDetectStateResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def CreateAddressTemplate(self, request):
         """本接口（CreateAddressTemplate）用于创建IP地址模版
 
@@ -779,6 +807,34 @@ class VpcClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateNatGatewayDestinationIpPortTranslationNatRuleResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def CreateNetDetect(self, request):
+        """本接口(CreateNetDetect)用于创建网络探测。
+
+        :param request: 调用CreateNetDetect所需参数的结构体。
+        :type request: :class:`tencentcloud.vpc.v20170312.models.CreateNetDetectRequest`
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.CreateNetDetectResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("CreateNetDetect", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateNetDetectResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -1488,6 +1544,34 @@ class VpcClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteNatGatewayDestinationIpPortTranslationNatRuleResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DeleteNetDetect(self, request):
+        """本接口(DeleteNetDetect)用于删除网络探测实例。
+
+        :param request: 调用DeleteNetDetect所需参数的结构体。
+        :type request: :class:`tencentcloud.vpc.v20170312.models.DeleteNetDetectRequest`
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.DeleteNetDetectResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DeleteNetDetect", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DeleteNetDetectResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -2481,6 +2565,62 @@ class VpcClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeNatGatewaysResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeNetDetectStates(self, request):
+        """本接口(DescribeNetDetectStates)用于查询网络探测验证结果列表。
+
+        :param request: 调用DescribeNetDetectStates所需参数的结构体。
+        :type request: :class:`tencentcloud.vpc.v20170312.models.DescribeNetDetectStatesRequest`
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.DescribeNetDetectStatesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeNetDetectStates", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeNetDetectStatesResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeNetDetects(self, request):
+        """本接口（DescribeNetDetects）用于查询网络探测列表。
+
+        :param request: 调用DescribeNetDetects所需参数的结构体。
+        :type request: :class:`tencentcloud.vpc.v20170312.models.DescribeNetDetectsRequest`
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.DescribeNetDetectsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeNetDetects", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeNetDetectsResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -3839,6 +3979,34 @@ class VpcClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyNatGatewayDestinationIpPortTranslationNatRuleResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ModifyNetDetect(self, request):
+        """本接口(ModifyNetDetect)用于修改网络探测参数。
+
+        :param request: 调用ModifyNetDetect所需参数的结构体。
+        :type request: :class:`tencentcloud.vpc.v20170312.models.ModifyNetDetectRequest`
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.ModifyNetDetectResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ModifyNetDetect", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ModifyNetDetectResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

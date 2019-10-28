@@ -144,6 +144,27 @@ class ASRStat(AbstractModel):
         self.WordNum = params.get("WordNum")
 
 
+class AbsenceInfo(AbstractModel):
+    """缺勤人员信息
+
+    """
+
+    def __init__(self):
+        """
+        :param LibraryIds: 识别到的人员所在的库id
+        :type LibraryIds: str
+        :param PersonId: 识别到的人员id
+        :type PersonId: str
+        """
+        self.LibraryIds = None
+        self.PersonId = None
+
+
+    def _deserialize(self, params):
+        self.LibraryIds = params.get("LibraryIds")
+        self.PersonId = params.get("PersonId")
+
+
 class ActionCountStatistic(AbstractModel):
     """数量统计结果
 
@@ -319,6 +340,36 @@ class ActionType(AbstractModel):
     def _deserialize(self, params):
         self.Confidence = params.get("Confidence")
         self.Type = params.get("Type")
+
+
+class AllMuteSlice(AbstractModel):
+    """如果请求中开启了静音检测开关，则会返回所有的静音片段（静音时长超过阈值的片段）。
+
+    """
+
+    def __init__(self):
+        """
+        :param MuteSlice: 所有静音片段。
+        :type MuteSlice: list of MuteSlice
+        :param MuteRatio: 静音时长占比。
+        :type MuteRatio: float
+        :param TotalMuteDuration: 静音总时长。
+        :type TotalMuteDuration: int
+        """
+        self.MuteSlice = None
+        self.MuteRatio = None
+        self.TotalMuteDuration = None
+
+
+    def _deserialize(self, params):
+        if params.get("MuteSlice") is not None:
+            self.MuteSlice = []
+            for item in params.get("MuteSlice"):
+                obj = MuteSlice()
+                obj._deserialize(item)
+                self.MuteSlice.append(obj)
+        self.MuteRatio = params.get("MuteRatio")
+        self.TotalMuteDuration = params.get("TotalMuteDuration")
 
 
 class AttendanceInfo(AbstractModel):
@@ -1045,17 +1096,20 @@ class DescribeAttendanceResultResponse(AbstractModel):
 
     def __init__(self):
         """
+        :param AbsenceSetInLibs: 缺失人员的ID列表(只针对请求中的libids字段)
+        :type AbsenceSetInLibs: list of AbsenceInfo
         :param AttendanceSet: 确定出勤人员列表
         :type AttendanceSet: list of AttendanceInfo
         :param SuspectedSet: 疑似出勤人员列表
         :type SuspectedSet: list of SuspectedInfo
-        :param AbsenceSet: 缺失人员的ID列表
+        :param AbsenceSet: 缺失人员的ID列表(只针对请求中的personids字段)
         :type AbsenceSet: list of str
         :param Progress: 请求处理进度
         :type Progress: int
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
+        self.AbsenceSetInLibs = None
         self.AttendanceSet = None
         self.SuspectedSet = None
         self.AbsenceSet = None
@@ -1064,6 +1118,12 @@ class DescribeAttendanceResultResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        if params.get("AbsenceSetInLibs") is not None:
+            self.AbsenceSetInLibs = []
+            for item in params.get("AbsenceSetInLibs"):
+                obj = AbsenceInfo()
+                obj._deserialize(item)
+                self.AbsenceSetInLibs.append(obj)
         if params.get("AttendanceSet") is not None:
             self.AttendanceSet = []
             for item in params.get("AttendanceSet"):
@@ -1113,6 +1173,8 @@ class DescribeAudioTaskResponse(AbstractModel):
 
     def __init__(self):
         """
+        :param AllMuteSlice: 如果请求中开启了静音检测开关，则会返回所有的静音片段（静音时长超过阈值的片段）。
+        :type AllMuteSlice: :class:`tencentcloud.tci.v20190318.models.AllMuteSlice`
         :param AsrStat: 返回的当前音频的统计信息。当进度为100时返回。
         :type AsrStat: :class:`tencentcloud.tci.v20190318.models.ASRStat`
         :param Texts: 返回当前音频流的详细信息，如果是流模式，返回的是对应流的详细信息，如果是 URL模式，返回的是查询的那一段seq对应的音频的详细信息。
@@ -1132,6 +1194,7 @@ class DescribeAudioTaskResponse(AbstractModel):
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
+        self.AllMuteSlice = None
         self.AsrStat = None
         self.Texts = None
         self.VocabAnalysisDetailInfo = None
@@ -1144,6 +1207,9 @@ class DescribeAudioTaskResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        if params.get("AllMuteSlice") is not None:
+            self.AllMuteSlice = AllMuteSlice()
+            self.AllMuteSlice._deserialize(params.get("AllMuteSlice"))
         if params.get("AsrStat") is not None:
             self.AsrStat = ASRStat()
             self.AsrStat._deserialize(params.get("AsrStat"))
@@ -2079,6 +2145,8 @@ class Function(AbstractModel):
         :type EnableAllText: bool
         :param EnableKeyword: 输出关键词信息标识，当该值设置为true时，会输出当前音频的关键词信息。
         :type EnableKeyword: bool
+        :param EnableMuteDetect: 静音检测标识，当设置为 true 时，需要设置静音时间阈值字段mute_threshold，统计结果中会返回静音片段。
+        :type EnableMuteDetect: bool
         :param EnableVadInfo: 输出音频统计信息标识，当设置为 true 时，任务查询结果会输出音频的统计信息（AsrStat）
         :type EnableVadInfo: bool
         :param EnableVolume: 输出音频音量信息标识，当设置为 true 时，会输出当前音频音量信息。
@@ -2086,6 +2154,7 @@ class Function(AbstractModel):
         """
         self.EnableAllText = None
         self.EnableKeyword = None
+        self.EnableMuteDetect = None
         self.EnableVadInfo = None
         self.EnableVolume = None
 
@@ -2093,6 +2162,7 @@ class Function(AbstractModel):
     def _deserialize(self, params):
         self.EnableAllText = params.get("EnableAllText")
         self.EnableKeyword = params.get("EnableKeyword")
+        self.EnableMuteDetect = params.get("EnableMuteDetect")
         self.EnableVadInfo = params.get("EnableVadInfo")
         self.EnableVolume = params.get("EnableVolume")
 
@@ -2739,6 +2809,27 @@ class ModifyPersonResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class MuteSlice(AbstractModel):
+    """所有静音片段。
+
+    """
+
+    def __init__(self):
+        """
+        :param MuteBtm: 起始时间。
+        :type MuteBtm: int
+        :param MuteEtm: 终止时间。
+        :type MuteEtm: int
+        """
+        self.MuteBtm = None
+        self.MuteEtm = None
+
+
+    def _deserialize(self, params):
+        self.MuteBtm = params.get("MuteBtm")
+        self.MuteEtm = params.get("MuteEtm")
+
+
 class Person(AbstractModel):
     """人员描述
 
@@ -3038,6 +3129,8 @@ class SubmitAudioTaskRequest(AbstractModel):
         :type Functions: :class:`tencentcloud.tci.v20190318.models.Function`
         :param FileType: 视频文件类型，默认点播，直播填 live_url
         :type FileType: str
+        :param MuteThreshold: 静音阈值设置，如果静音检测开关开启，则静音时间超过这个阈值认为是静音片段，在结果中会返回, 没给的话默认值为3s
+        :type MuteThreshold: int
         :param VocabLibNameList: 识别词库名列表，评估过程使用这些词汇库中的词汇进行词汇使用行为分析
         :type VocabLibNameList: list of str
         """
@@ -3047,6 +3140,7 @@ class SubmitAudioTaskRequest(AbstractModel):
         self.VoiceFileType = None
         self.Functions = None
         self.FileType = None
+        self.MuteThreshold = None
         self.VocabLibNameList = None
 
 
@@ -3059,6 +3153,7 @@ class SubmitAudioTaskRequest(AbstractModel):
             self.Functions = Function()
             self.Functions._deserialize(params.get("Functions"))
         self.FileType = params.get("FileType")
+        self.MuteThreshold = params.get("MuteThreshold")
         self.VocabLibNameList = params.get("VocabLibNameList")
 
 

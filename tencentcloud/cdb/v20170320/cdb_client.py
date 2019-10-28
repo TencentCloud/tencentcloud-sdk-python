@@ -267,6 +267,34 @@ class CdbClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def CreateDeployGroup(self, request):
+        """创建放置实例的置放群组
+
+        :param request: 调用CreateDeployGroup所需参数的结构体。
+        :type request: :class:`tencentcloud.cdb.v20170320.models.CreateDeployGroupRequest`
+        :rtype: :class:`tencentcloud.cdb.v20170320.models.CreateDeployGroupResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("CreateDeployGroup", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateDeployGroupResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def CreateParamTemplate(self, request):
         """该接口（CreateParamTemplate）用于创建参数模板。
 
@@ -337,6 +365,34 @@ class CdbClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteBackupResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DeleteDeployGroups(self, request):
+        """根据置放群组ID删除置放群组（置放群组中有资源存在时不能删除该置放群组）
+
+        :param request: 调用DeleteDeployGroups所需参数的结构体。
+        :type request: :class:`tencentcloud.cdb.v20170320.models.DeleteDeployGroupsRequest`
+        :rtype: :class:`tencentcloud.cdb.v20170320.models.DeleteDeployGroupsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DeleteDeployGroups", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DeleteDeployGroupsResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -959,6 +1015,34 @@ class CdbClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeDefaultParamsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeDeployGroupList(self, request):
+        """根据置放群组 ID 或置放群组名称查询置放群组列表
+
+        :param request: 调用DescribeDeployGroupList所需参数的结构体。
+        :type request: :class:`tencentcloud.cdb.v20170320.models.DescribeDeployGroupListRequest`
+        :rtype: :class:`tencentcloud.cdb.v20170320.models.DescribeDeployGroupListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeDeployGroupList", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeDeployGroupListResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -1771,6 +1855,34 @@ class CdbClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyInstanceTagResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ModifyNameOrDescByDpId(self, request):
+        """修改置放群组的名称或者描述
+
+        :param request: 调用ModifyNameOrDescByDpId所需参数的结构体。
+        :type request: :class:`tencentcloud.cdb.v20170320.models.ModifyNameOrDescByDpIdRequest`
+        :rtype: :class:`tencentcloud.cdb.v20170320.models.ModifyNameOrDescByDpIdResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ModifyNameOrDescByDpId", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ModifyNameOrDescByDpIdResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

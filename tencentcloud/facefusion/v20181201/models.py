@@ -62,7 +62,7 @@ class FaceFusionResponse(AbstractModel):
         """
         :param Image: RspImgType 为 url 时，返回结果的 url， RspImgType 为 base64 时返回 base64 数据。当前仅支持 url 方式，base64 方式后期开放。
         :type Image: str
-        :param ReviewResultSet: 鉴黄鉴政结果
+        :param ReviewResultSet: 鉴政结果
         :type ReviewResultSet: list of FuseFaceReviewResult
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -125,7 +125,7 @@ class FuseFaceRequest(AbstractModel):
         :type ModelId: str
         :param RspImgType: 返回图像方式（url 或 base64) ，二选一。url有效期为30天。
         :type RspImgType: str
-        :param MergeInfos: 人脸图片和待被融合的素材模板图的人脸位置信息。
+        :param MergeInfos: 用户人脸图片、素材模板图的人脸位置信息。
         :type MergeInfos: list of MergeInfo
         :param FuseProfileDegree: 脸型融合比例，数值越高，融合后的脸型越像素材人物。取值范围[0,100] 
 若此参数不填写，则使用人脸融合控制台中脸型参数数值。

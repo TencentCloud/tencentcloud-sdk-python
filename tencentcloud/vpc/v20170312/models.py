@@ -1135,6 +1135,83 @@ class CcnRoute(AbstractModel):
         self.InstanceUin = params.get("InstanceUin")
 
 
+class CheckNetDetectStateRequest(AbstractModel):
+    """CheckNetDetectState请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param DetectDestinationIp: 探测目的IPv4地址数组，最多两个。
+        :type DetectDestinationIp: list of str
+        :param NextHopType: 下一跳类型，目前我们支持的类型有：
+VPN：VPN网关；
+DIRECTCONNECT：专线网关；
+PEERCONNECTION：对等连接；
+NAT：NAT网关；
+NORMAL_CVM：普通云主机；
+        :type NextHopType: str
+        :param NextHopDestination: 下一跳目的网关，取值与“下一跳类型”相关：
+下一跳类型为VPN，取值VPN网关ID，形如：vpngw-12345678；
+下一跳类型为DIRECTCONNECT，取值专线网关ID，形如：dcg-12345678；
+下一跳类型为PEERCONNECTION，取值对等连接ID，形如：pcx-12345678；
+下一跳类型为NAT，取值Nat网关，形如：nat-12345678；
+下一跳类型为NORMAL_CVM，取值云主机IPv4地址，形如：10.0.0.12；
+        :type NextHopDestination: str
+        :param NetDetectId: 网络探测实例ID。形如：netd-12345678。
+        :type NetDetectId: str
+        :param VpcId: `VPC`实例`ID`。形如：`vpc-12345678`
+        :type VpcId: str
+        :param SubnetId: 子网实例ID。形如：subnet-12345678。
+        :type SubnetId: str
+        :param NetDetectName: 网络探测名称，最大长度不能超过60个字节。
+        :type NetDetectName: str
+        """
+        self.DetectDestinationIp = None
+        self.NextHopType = None
+        self.NextHopDestination = None
+        self.NetDetectId = None
+        self.VpcId = None
+        self.SubnetId = None
+        self.NetDetectName = None
+
+
+    def _deserialize(self, params):
+        self.DetectDestinationIp = params.get("DetectDestinationIp")
+        self.NextHopType = params.get("NextHopType")
+        self.NextHopDestination = params.get("NextHopDestination")
+        self.NetDetectId = params.get("NetDetectId")
+        self.VpcId = params.get("VpcId")
+        self.SubnetId = params.get("SubnetId")
+        self.NetDetectName = params.get("NetDetectName")
+
+
+class CheckNetDetectStateResponse(AbstractModel):
+    """CheckNetDetectState返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param NetDetectIpStateSet: 网络探测验证结果对象数组。
+        :type NetDetectIpStateSet: list of NetDetectIpState
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.NetDetectIpStateSet = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("NetDetectIpStateSet") is not None:
+            self.NetDetectIpStateSet = []
+            for item in params.get("NetDetectIpStateSet"):
+                obj = NetDetectIpState()
+                obj._deserialize(item)
+                self.NetDetectIpStateSet.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class ClassicLinkInstance(AbstractModel):
     """私有网络和基础网络互通设备
 
@@ -1822,6 +1899,80 @@ class CreateNatGatewayResponse(AbstractModel):
                 obj._deserialize(item)
                 self.NatGatewaySet.append(obj)
         self.TotalCount = params.get("TotalCount")
+        self.RequestId = params.get("RequestId")
+
+
+class CreateNetDetectRequest(AbstractModel):
+    """CreateNetDetect请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param VpcId: `VPC`实例`ID`。形如：`vpc-12345678`
+        :type VpcId: str
+        :param SubnetId: 子网实例ID。形如：subnet-12345678。
+        :type SubnetId: str
+        :param NetDetectName: 网络探测名称，最大长度不能超过60个字节。
+        :type NetDetectName: str
+        :param DetectDestinationIp: 探测目的IPv4地址数组。最多两个。
+        :type DetectDestinationIp: list of str
+        :param NextHopType: 下一跳类型，目前我们支持的类型有：
+VPN：VPN网关；
+DIRECTCONNECT：专线网关；
+PEERCONNECTION：对等连接；
+NAT：NAT网关；
+NORMAL_CVM：普通云主机；
+        :type NextHopType: str
+        :param NextHopDestination: 下一跳目的网关，取值与“下一跳类型”相关：
+下一跳类型为VPN，取值VPN网关ID，形如：vpngw-12345678；
+下一跳类型为DIRECTCONNECT，取值专线网关ID，形如：dcg-12345678；
+下一跳类型为PEERCONNECTION，取值对等连接ID，形如：pcx-12345678；
+下一跳类型为NAT，取值Nat网关，形如：nat-12345678；
+下一跳类型为NORMAL_CVM，取值云主机IPv4地址，形如：10.0.0.12；
+        :type NextHopDestination: str
+        :param NetDetectDescription: 网络探测描述。
+        :type NetDetectDescription: str
+        """
+        self.VpcId = None
+        self.SubnetId = None
+        self.NetDetectName = None
+        self.DetectDestinationIp = None
+        self.NextHopType = None
+        self.NextHopDestination = None
+        self.NetDetectDescription = None
+
+
+    def _deserialize(self, params):
+        self.VpcId = params.get("VpcId")
+        self.SubnetId = params.get("SubnetId")
+        self.NetDetectName = params.get("NetDetectName")
+        self.DetectDestinationIp = params.get("DetectDestinationIp")
+        self.NextHopType = params.get("NextHopType")
+        self.NextHopDestination = params.get("NextHopDestination")
+        self.NetDetectDescription = params.get("NetDetectDescription")
+
+
+class CreateNetDetectResponse(AbstractModel):
+    """CreateNetDetect返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param NetDetect: 网络探测（NetDetect）对象。
+        :type NetDetect: :class:`tencentcloud.vpc.v20170312.models.NetDetect`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.NetDetect = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("NetDetect") is not None:
+            self.NetDetect = NetDetect()
+            self.NetDetect._deserialize(params.get("NetDetect"))
         self.RequestId = params.get("RequestId")
 
 
@@ -2954,6 +3105,40 @@ class DeleteNatGatewayRequest(AbstractModel):
 
 class DeleteNatGatewayResponse(AbstractModel):
     """DeleteNatGateway返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class DeleteNetDetectRequest(AbstractModel):
+    """DeleteNetDetect请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param NetDetectId: 网络探测实例`ID`。形如：`netd-12345678`
+        :type NetDetectId: str
+        """
+        self.NetDetectId = None
+
+
+    def _deserialize(self, params):
+        self.NetDetectId = params.get("NetDetectId")
+
+
+class DeleteNetDetectResponse(AbstractModel):
+    """DeleteNetDetect返回参数结构体
 
     """
 
@@ -4821,6 +5006,143 @@ class DescribeNatGatewaysResponse(AbstractModel):
                 obj = NatGateway()
                 obj._deserialize(item)
                 self.NatGatewaySet.append(obj)
+        self.TotalCount = params.get("TotalCount")
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeNetDetectStatesRequest(AbstractModel):
+    """DescribeNetDetectStates请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param NetDetectIds: 网络探测实例`ID`数组。形如：[`netd-12345678`]
+        :type NetDetectIds: list of str
+        :param Filters: 过滤条件，参数不支持同时指定NetDetectIds和Filters。
+<li>net-detect-id - String - （过滤条件）网络探测实例ID，形如：netd-12345678</li>
+        :type Filters: list of Filter
+        :param Offset: 偏移量，默认为0。
+        :type Offset: int
+        :param Limit: 返回数量，默认为20，最大值为100。
+        :type Limit: int
+        """
+        self.NetDetectIds = None
+        self.Filters = None
+        self.Offset = None
+        self.Limit = None
+
+
+    def _deserialize(self, params):
+        self.NetDetectIds = params.get("NetDetectIds")
+        if params.get("Filters") is not None:
+            self.Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self.Filters.append(obj)
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+
+
+class DescribeNetDetectStatesResponse(AbstractModel):
+    """DescribeNetDetectStates返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param NetDetectStateSet: 符合条件的网络探测验证结果对象数组。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type NetDetectStateSet: list of NetDetectState
+        :param TotalCount: 符合条件的网络探测验证结果对象数量。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TotalCount: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.NetDetectStateSet = None
+        self.TotalCount = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("NetDetectStateSet") is not None:
+            self.NetDetectStateSet = []
+            for item in params.get("NetDetectStateSet"):
+                obj = NetDetectState()
+                obj._deserialize(item)
+                self.NetDetectStateSet.append(obj)
+        self.TotalCount = params.get("TotalCount")
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeNetDetectsRequest(AbstractModel):
+    """DescribeNetDetects请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param NetDetectIds: 网络探测实例`ID`数组。形如：[`netd-12345678`]
+        :type NetDetectIds: list of str
+        :param Filters: 过滤条件，参数不支持同时指定NetDetectIds和Filters。
+<li>vpc-id - String - （过滤条件）VPC实例ID，形如：vpc-12345678</li>
+<li>net-detect-id - String - （过滤条件）网络探测实例ID，形如：netd-12345678</li>
+<li>subnet-id - String - （过滤条件）子网实例ID，形如：subnet-12345678</li>
+<li>net-detect-name - String - （过滤条件）网络探测名称</li>
+        :type Filters: list of Filter
+        :param Offset: 偏移量，默认为0。
+        :type Offset: int
+        :param Limit: 返回数量，默认为20，最大值为100。
+        :type Limit: int
+        """
+        self.NetDetectIds = None
+        self.Filters = None
+        self.Offset = None
+        self.Limit = None
+
+
+    def _deserialize(self, params):
+        self.NetDetectIds = params.get("NetDetectIds")
+        if params.get("Filters") is not None:
+            self.Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self.Filters.append(obj)
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+
+
+class DescribeNetDetectsResponse(AbstractModel):
+    """DescribeNetDetects返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param NetDetectSet: 符合条件的网络探测对象数组。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type NetDetectSet: list of NetDetect
+        :param TotalCount: 符合条件的网络探测对象数量。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TotalCount: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.NetDetectSet = None
+        self.TotalCount = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("NetDetectSet") is not None:
+            self.NetDetectSet = []
+            for item in params.get("NetDetectSet"):
+                obj = NetDetect()
+                obj._deserialize(item)
+                self.NetDetectSet.append(obj)
         self.TotalCount = params.get("TotalCount")
         self.RequestId = params.get("RequestId")
 
@@ -7777,6 +8099,70 @@ class ModifyNatGatewayDestinationIpPortTranslationNatRuleResponse(AbstractModel)
         self.RequestId = params.get("RequestId")
 
 
+class ModifyNetDetectRequest(AbstractModel):
+    """ModifyNetDetect请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param NetDetectId: 网络探测实例`ID`。形如：`netd-12345678`
+        :type NetDetectId: str
+        :param NetDetectName: 网络探测名称，最大长度不能超过60个字节。
+        :type NetDetectName: str
+        :param DetectDestinationIp: 探测目的IPv4地址数组，最多两个。
+        :type DetectDestinationIp: list of str
+        :param NextHopType: 下一跳类型，目前我们支持的类型有：
+VPN：VPN网关；
+DIRECTCONNECT：专线网关；
+PEERCONNECTION：对等连接；
+NAT：NAT网关；
+NORMAL_CVM：普通云主机；
+        :type NextHopType: str
+        :param NextHopDestination: 下一跳目的网关，取值与“下一跳类型”相关：
+下一跳类型为VPN，取值VPN网关ID，形如：vpngw-12345678；
+下一跳类型为DIRECTCONNECT，取值专线网关ID，形如：dcg-12345678；
+下一跳类型为PEERCONNECTION，取值对等连接ID，形如：pcx-12345678；
+下一跳类型为NAT，取值Nat网关，形如：nat-12345678；
+下一跳类型为NORMAL_CVM，取值云主机IPv4地址，形如：10.0.0.12；
+        :type NextHopDestination: str
+        :param NetDetectDescription: 网络探测描述。
+        :type NetDetectDescription: str
+        """
+        self.NetDetectId = None
+        self.NetDetectName = None
+        self.DetectDestinationIp = None
+        self.NextHopType = None
+        self.NextHopDestination = None
+        self.NetDetectDescription = None
+
+
+    def _deserialize(self, params):
+        self.NetDetectId = params.get("NetDetectId")
+        self.NetDetectName = params.get("NetDetectName")
+        self.DetectDestinationIp = params.get("DetectDestinationIp")
+        self.NextHopType = params.get("NextHopType")
+        self.NextHopDestination = params.get("NextHopDestination")
+        self.NetDetectDescription = params.get("NetDetectDescription")
+
+
+class ModifyNetDetectResponse(AbstractModel):
+    """ModifyNetDetect返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class ModifyNetworkInterfaceAttributeRequest(AbstractModel):
     """ModifyNetworkInterfaceAttribute请求参数结构体
 
@@ -8411,6 +8797,144 @@ class NatGatewayDestinationIpPortTranslationNatRule(AbstractModel):
         self.NatGatewayId = params.get("NatGatewayId")
         self.VpcId = params.get("VpcId")
         self.CreatedTime = params.get("CreatedTime")
+
+
+class NetDetect(AbstractModel):
+    """网络探测对象。
+
+    """
+
+    def __init__(self):
+        """
+        :param VpcId: `VPC`实例`ID`。形如：`vpc-12345678`
+        :type VpcId: str
+        :param VpcName: `VPC`实例名称。
+        :type VpcName: str
+        :param SubnetId: 子网实例ID。形如：subnet-12345678。
+        :type SubnetId: str
+        :param SubnetName: 子网实例名称。
+        :type SubnetName: str
+        :param NetDetectId: 网络探测实例ID。形如：netd-12345678。
+        :type NetDetectId: str
+        :param NetDetectName: 网络探测名称，最大长度不能超过60个字节。
+        :type NetDetectName: str
+        :param DetectDestinationIp: 探测目的IPv4地址数组，最多两个。
+        :type DetectDestinationIp: list of str
+        :param DetectSourceIp: 系统自动分配的探测源IPv4数组。长度为2。
+        :type DetectSourceIp: list of str
+        :param NextHopType: 下一跳类型，目前我们支持的类型有：
+VPN：VPN网关；
+DIRECTCONNECT：专线网关；
+PEERCONNECTION：对等连接；
+NAT：NAT网关；
+NORMAL_CVM：普通云主机；
+        :type NextHopType: str
+        :param NextHopDestination: 下一跳目的网关，取值与“下一跳类型”相关：
+下一跳类型为VPN，取值VPN网关ID，形如：vpngw-12345678；
+下一跳类型为DIRECTCONNECT，取值专线网关ID，形如：dcg-12345678；
+下一跳类型为PEERCONNECTION，取值对等连接ID，形如：pcx-12345678；
+下一跳类型为NAT，取值Nat网关，形如：nat-12345678；
+下一跳类型为NORMAL_CVM，取值云主机IPv4地址，形如：10.0.0.12；
+        :type NextHopDestination: str
+        :param NextHopName: 下一跳网关名称。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type NextHopName: str
+        :param NetDetectDescription: 网络探测描述。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type NetDetectDescription: str
+        :param CreateTime: 创建时间。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CreateTime: str
+        """
+        self.VpcId = None
+        self.VpcName = None
+        self.SubnetId = None
+        self.SubnetName = None
+        self.NetDetectId = None
+        self.NetDetectName = None
+        self.DetectDestinationIp = None
+        self.DetectSourceIp = None
+        self.NextHopType = None
+        self.NextHopDestination = None
+        self.NextHopName = None
+        self.NetDetectDescription = None
+        self.CreateTime = None
+
+
+    def _deserialize(self, params):
+        self.VpcId = params.get("VpcId")
+        self.VpcName = params.get("VpcName")
+        self.SubnetId = params.get("SubnetId")
+        self.SubnetName = params.get("SubnetName")
+        self.NetDetectId = params.get("NetDetectId")
+        self.NetDetectName = params.get("NetDetectName")
+        self.DetectDestinationIp = params.get("DetectDestinationIp")
+        self.DetectSourceIp = params.get("DetectSourceIp")
+        self.NextHopType = params.get("NextHopType")
+        self.NextHopDestination = params.get("NextHopDestination")
+        self.NextHopName = params.get("NextHopName")
+        self.NetDetectDescription = params.get("NetDetectDescription")
+        self.CreateTime = params.get("CreateTime")
+
+
+class NetDetectIpState(AbstractModel):
+    """网络探测目的IP的验证结果。
+
+    """
+
+    def __init__(self):
+        """
+        :param DetectDestinationIp: 探测目的IPv4地址。
+        :type DetectDestinationIp: str
+        :param State: 探测结果。
+0：成功；
+-1：查询不到路由丢包；
+-2：外出ACL丢包；
+-3：IN ACL丢包；
+-4：其他错误；
+        :type State: int
+        :param Delay: 时延，单位毫秒
+        :type Delay: int
+        :param PacketLossRate: 丢包率
+        :type PacketLossRate: int
+        """
+        self.DetectDestinationIp = None
+        self.State = None
+        self.Delay = None
+        self.PacketLossRate = None
+
+
+    def _deserialize(self, params):
+        self.DetectDestinationIp = params.get("DetectDestinationIp")
+        self.State = params.get("State")
+        self.Delay = params.get("Delay")
+        self.PacketLossRate = params.get("PacketLossRate")
+
+
+class NetDetectState(AbstractModel):
+    """网络探测验证结果。
+
+    """
+
+    def __init__(self):
+        """
+        :param NetDetectId: 网络探测实例ID。形如：netd-12345678。
+        :type NetDetectId: str
+        :param NetDetectIpStateSet: 网络探测目的IP验证结果对象数组。
+        :type NetDetectIpStateSet: list of NetDetectIpState
+        """
+        self.NetDetectId = None
+        self.NetDetectIpStateSet = None
+
+
+    def _deserialize(self, params):
+        self.NetDetectId = params.get("NetDetectId")
+        if params.get("NetDetectIpStateSet") is not None:
+            self.NetDetectIpStateSet = []
+            for item in params.get("NetDetectIpStateSet"):
+                obj = NetDetectIpState()
+                obj._deserialize(item)
+                self.NetDetectIpStateSet.append(obj)
 
 
 class NetworkInterface(AbstractModel):

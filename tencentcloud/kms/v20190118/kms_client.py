@@ -417,6 +417,34 @@ class KmsClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def GenerateRandom(self, request):
+        """随机数生成接口。
+
+        :param request: 调用GenerateRandom所需参数的结构体。
+        :type request: :class:`tencentcloud.kms.v20190118.models.GenerateRandomRequest`
+        :rtype: :class:`tencentcloud.kms.v20190118.models.GenerateRandomResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("GenerateRandom", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.GenerateRandomResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def GetKeyRotationStatus(self, request):
         """查询指定的CMK是否开启了密钥轮换功能。
 

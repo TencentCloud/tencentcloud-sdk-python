@@ -8587,7 +8587,7 @@ class MediaContentReviewOcrTextSegmentItem(AbstractModel):
 PicUrlExpireTime 时间点后图片将被删除）。
         :type Url: str
         :param PicUrlExpireTime: 嫌疑图片 URL 失效时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F)。
-        :type PicUrlExpireTime: int
+        :type PicUrlExpireTime: str
         """
         self.StartTimeOffset = None
         self.EndTimeOffset = None
@@ -11931,6 +11931,9 @@ class ProcedureTemplate(AbstractModel):
         :param AiRecognitionTask: AI 内容识别类型任务参数。
 注意：此字段可能返回 null，表示取不到有效值。
         :type AiRecognitionTask: :class:`tencentcloud.vod.v20180717.models.AiRecognitionTaskInput`
+        :param MiniProgramPublishTask: 微信小程序发布任务参数。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MiniProgramPublishTask: :class:`tencentcloud.vod.v20180717.models.WechatMiniProgramPublishTaskInput`
         :param CreateTime: 模板创建时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F)。
         :type CreateTime: str
         :param UpdateTime: 模板最后修改时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F)。
@@ -11942,6 +11945,7 @@ class ProcedureTemplate(AbstractModel):
         self.AiContentReviewTask = None
         self.AiAnalysisTask = None
         self.AiRecognitionTask = None
+        self.MiniProgramPublishTask = None
         self.CreateTime = None
         self.UpdateTime = None
 
@@ -11961,6 +11965,9 @@ class ProcedureTemplate(AbstractModel):
         if params.get("AiRecognitionTask") is not None:
             self.AiRecognitionTask = AiRecognitionTaskInput()
             self.AiRecognitionTask._deserialize(params.get("AiRecognitionTask"))
+        if params.get("MiniProgramPublishTask") is not None:
+            self.MiniProgramPublishTask = WechatMiniProgramPublishTaskInput()
+            self.MiniProgramPublishTask._deserialize(params.get("MiniProgramPublishTask"))
         self.CreateTime = params.get("CreateTime")
         self.UpdateTime = params.get("UpdateTime")
 
@@ -12118,7 +12125,7 @@ class ProcessMediaRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param FileId: 媒体文件 ID。
+        :param FileId: 媒体文件 ID，即该文件在云点播上的全局唯一标识符，在上传成功后由云点播后台分配。可以在 [视频上传完成事件通知](/document/product/266/7830) 或 [云点播控制台](https://console.cloud.tencent.com/vod/media) 获取该字段。
         :type FileId: str
         :param MediaProcessTask: 视频处理类型任务参数。
         :type MediaProcessTask: :class:`tencentcloud.vod.v20180717.models.MediaProcessTaskInput`
@@ -13120,14 +13127,25 @@ class SvgWatermarkInputForUpdate(AbstractModel):
 <li>当字符串以 % 结尾时，含义同 H%。
 默认值为 0px。
         :type Height: str
+        :param CycleConfig: 水印周期配置，用于配置水印周期性地显示与隐藏。
+主要使用场景是：为了视频防遮标，在视频多个地方设置水印，这些水印按固定顺序周期性地显示与隐藏。
+比如，设置 A、B、C、D 4 个水印分别位于视频的左上角、右上角、右下角、左下角处，视频开始时，{ A 显示 5 秒 -> B 显示 5 秒 -> C 显示 5 秒 -> D 显示 5 秒 } -> A 显示 5 秒 -> B 显示 5 秒 -> ...，任何时刻只显示一处水印。
+花括号 {} 表示由 A、B、C、D 4 个水印组成的大周期，可以看出每个大周期持续 20 秒。
+可以看出，A、B、C、D 都是周期性地显示 5 秒、隐藏 15 秒，且四者有固定的显示顺序。
+此配置项即用来描述单个水印的周期配置。
+        :type CycleConfig: :class:`tencentcloud.vod.v20180717.models.WatermarkCycleConfigForUpdate`
         """
         self.Width = None
         self.Height = None
+        self.CycleConfig = None
 
 
     def _deserialize(self, params):
         self.Width = params.get("Width")
         self.Height = params.get("Height")
+        if params.get("CycleConfig") is not None:
+            self.CycleConfig = WatermarkCycleConfigForUpdate()
+            self.CycleConfig._deserialize(params.get("CycleConfig"))
 
 
 class TEHDConfig(AbstractModel):
@@ -14287,6 +14305,32 @@ class VideoTrackTemplateInfo(AbstractModel):
         self.UpdateTime = params.get("UpdateTime")
 
 
+class WatermarkCycleConfigForUpdate(AbstractModel):
+    """水印周期配置。
+
+    """
+
+    def __init__(self):
+        """
+        :param StartTime: 水印在视频里第一次出现的播放时间点，单位：秒。
+        :type StartTime: float
+        :param DisplayDuration: 在一个水印周期内，水印显示的持续时间，单位：秒。
+        :type DisplayDuration: float
+        :param CycleDuration: 一个水印周期的持续时间，单位：秒。
+填 0 表示水印只持续一个水印周期（即在整个视频里只显示 DisplayDuration 秒）。
+        :type CycleDuration: float
+        """
+        self.StartTime = None
+        self.DisplayDuration = None
+        self.CycleDuration = None
+
+
+    def _deserialize(self, params):
+        self.StartTime = params.get("StartTime")
+        self.DisplayDuration = params.get("DisplayDuration")
+        self.CycleDuration = params.get("CycleDuration")
+
+
 class WatermarkInput(AbstractModel):
     """视频处理任务中的水印参数类型
 
@@ -14488,6 +14532,23 @@ FINISH：已完成。
         self.FileId = params.get("FileId")
         self.SourceDefinition = params.get("SourceDefinition")
         self.PublishResult = params.get("PublishResult")
+
+
+class WechatMiniProgramPublishTaskInput(AbstractModel):
+    """微信小程序发布任务类型
+
+    """
+
+    def __init__(self):
+        """
+        :param SourceDefinition: 发布视频所对应的转码模板 ID，为 0 代表原始视频。
+        :type SourceDefinition: int
+        """
+        self.SourceDefinition = None
+
+
+    def _deserialize(self, params):
+        self.SourceDefinition = params.get("SourceDefinition")
 
 
 class WechatPublishTask(AbstractModel):
