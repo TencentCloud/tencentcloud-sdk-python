@@ -102,11 +102,12 @@ class Candidate(AbstractModel):
         :param FaceId: 人脸ID
         :type FaceId: str
         :param Score: 候选者的匹配得分。 
-10万大小人脸库，若人脸均为类似抓拍照（人脸质量较差）， 
-误识率百分之一对应分数为70分，误识率千分之一对应分数为80分，误识率万分之一对应分数为90分； 
-若人脸均为类似自拍照（人脸质量较好）， 
-误识率百分之一对应分数为60分，误识率千分之一对应分数为70分，误识率万分之一对应分数为80分。 
-建议分数不要超过90分。您可以根据实际情况选择合适的分数。
+
+1万大小人脸底库下，误识率百分之一对应分数为70分，误识率千分之一对应分数为80分，误识率万分之一对应分数为90分；
+10万大小人脸底库下，误识率百分之一对应分数为80分，误识率千分之一对应分数为90分，误识率万分之一对应分数为100分；
+30万大小人脸底库下，误识率百分之一对应分数为85分，误识率千分之一对应分数为95分。
+
+一般80分左右可适用大部分场景，建议分数不要超过90分。您可以根据实际情况选择合适的分数。
         :type Score: float
         :param PersonName: 人员名称
 注意：此字段可能返回 null，表示取不到有效值。
@@ -173,12 +174,22 @@ B 图片的 Url、Image必须提供一个，如果都提供，只使用 Url。
 默认为"2.0"。 
 不同算法模型版本对应的人脸识别算法不同，新版本的整体效果会优于旧版本，建议使用“3.0”版本。
         :type FaceModelVersion: str
+        :param QualityControl: 图片质量控制。 
+0: 不进行控制； 
+1:较低的质量要求，图像存在非常模糊，眼睛鼻子嘴巴遮挡至少其中一种或多种的情况； 
+2: 一般的质量要求，图像存在偏亮，偏暗，模糊或一般模糊，眉毛遮挡，脸颊遮挡，下巴遮挡，至少其中三种的情况； 
+3: 较高的质量要求，图像存在偏亮，偏暗，一般模糊，眉毛遮挡，脸颊遮挡，下巴遮挡，其中一到两种的情况； 
+4: 很高的质量要求，各个维度均为最好或最多在某一维度上存在轻微问题； 
+默认 0。 
+若图片质量不满足要求，则返回结果中会提示图片质量检测不符要求。
+        :type QualityControl: int
         """
         self.ImageA = None
         self.ImageB = None
         self.UrlA = None
         self.UrlB = None
         self.FaceModelVersion = None
+        self.QualityControl = None
 
 
     def _deserialize(self, params):
@@ -187,6 +198,7 @@ B 图片的 Url、Image必须提供一个，如果都提供，只使用 Url。
         self.UrlA = params.get("UrlA")
         self.UrlB = params.get("UrlB")
         self.FaceModelVersion = params.get("FaceModelVersion")
+        self.QualityControl = params.get("QualityControl")
 
 
 class CompareFaceResponse(AbstractModel):
@@ -286,16 +298,32 @@ Url、Image必须提供一个，如果都提供，只使用 Url。
 人员人脸总数量不可超过5张。
 若图片中包含多张人脸，只选取其中人脸面积最大的人脸。
         :type Urls: list of str
+        :param FaceMatchThreshold: 只有和该人员已有的人脸相似度超过FaceMatchThreshold值的人脸，才能增加人脸成功。 
+默认值60分。取值范围[0,100] 。
+        :type FaceMatchThreshold: float
+        :param QualityControl: 图片质量控制。 
+0: 不进行控制； 
+1:较低的质量要求，图像存在非常模糊，眼睛鼻子嘴巴遮挡至少其中一种或多种的情况； 
+2: 一般的质量要求，图像存在偏亮，偏暗，模糊或一般模糊，眉毛遮挡，脸颊遮挡，下巴遮挡，至少其中三种的情况； 
+3: 较高的质量要求，图像存在偏亮，偏暗，一般模糊，眉毛遮挡，脸颊遮挡，下巴遮挡，其中一到两种的情况； 
+4: 很高的质量要求，各个维度均为最好或最多在某一维度上存在轻微问题； 
+默认 0。 
+若图片质量不满足要求，则返回结果中会提示图片质量检测不符要求。
+        :type QualityControl: int
         """
         self.PersonId = None
         self.Images = None
         self.Urls = None
+        self.FaceMatchThreshold = None
+        self.QualityControl = None
 
 
     def _deserialize(self, params):
         self.PersonId = params.get("PersonId")
         self.Images = params.get("Images")
         self.Urls = params.get("Urls")
+        self.FaceMatchThreshold = params.get("FaceMatchThreshold")
+        self.QualityControl = params.get("QualityControl")
 
 
 class CreateFaceResponse(AbstractModel):
@@ -309,14 +337,28 @@ class CreateFaceResponse(AbstractModel):
         :type SucFaceNum: int
         :param SucFaceIds: 加入成功的人脸ID列表
         :type SucFaceIds: list of str
-        :param RetCode: 每张人脸图片添加结果，-1101 代表未检测到人脸，-1102 代表图片解码失败，其他非 0 值代表算法服务异常。
+        :param RetCode: 每张人脸图片添加结果，-1101 代表未检测到人脸，-1102 代表图片解码失败， 
+-1601代表不符合图片质量控制要求, 
+-1603 代表已有相似度超过99%的人脸存在，-1604 代表人脸相似度没有超过FaceMatchThreshold。 
+其他非 0 值代表算法服务异常。 
+RetCode的顺序和入参中 Images 或 Urls 的顺序一致。
         :type RetCode: list of int
+        :param SucIndexes: 加入成功的人脸索引。索引顺序和入参中 Images 或 Urls 的顺序一致。 
+例， Urls 中 有 3 个 url，第二个 url 失败，则 SucIndexes 值为 [0,2] 。
+        :type SucIndexes: list of int non-negative
+        :param SucFaceRects: 加入成功的人脸框位置。顺序和入参中 Images 或 Urls 的顺序一致。
+        :type SucFaceRects: list of FaceRect
+        :param FaceModelVersion: 人脸识别所用的算法模型版本。
+        :type FaceModelVersion: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.SucFaceNum = None
         self.SucFaceIds = None
         self.RetCode = None
+        self.SucIndexes = None
+        self.SucFaceRects = None
+        self.FaceModelVersion = None
         self.RequestId = None
 
 
@@ -324,6 +366,14 @@ class CreateFaceResponse(AbstractModel):
         self.SucFaceNum = params.get("SucFaceNum")
         self.SucFaceIds = params.get("SucFaceIds")
         self.RetCode = params.get("RetCode")
+        self.SucIndexes = params.get("SucIndexes")
+        if params.get("SucFaceRects") is not None:
+            self.SucFaceRects = []
+            for item in params.get("SucFaceRects"):
+                obj = FaceRect()
+                obj._deserialize(item)
+                self.SucFaceRects.append(obj)
+        self.FaceModelVersion = params.get("FaceModelVersion")
         self.RequestId = params.get("RequestId")
 
 
@@ -348,11 +398,16 @@ class CreateGroupRequest(AbstractModel):
         :type GroupExDescriptions: list of str
         :param Tag: 人员库信息备注，[0，40]个字符。
         :type Tag: str
+        :param FaceModelVersion: 人脸识别服务所用的算法模型版本。目前入参支持 “2.0”和“3.0“ 两个输入。
+默认为"2.0"。
+不同算法模型版本对应的人脸识别算法不同，新版本的整体效果会优于旧版本，建议使用“3.0”版本。
+        :type FaceModelVersion: str
         """
         self.GroupName = None
         self.GroupId = None
         self.GroupExDescriptions = None
         self.Tag = None
+        self.FaceModelVersion = None
 
 
     def _deserialize(self, params):
@@ -360,6 +415,7 @@ class CreateGroupRequest(AbstractModel):
         self.GroupId = params.get("GroupId")
         self.GroupExDescriptions = params.get("GroupExDescriptions")
         self.Tag = params.get("Tag")
+        self.FaceModelVersion = params.get("FaceModelVersion")
 
 
 class CreateGroupResponse(AbstractModel):
@@ -369,13 +425,17 @@ class CreateGroupResponse(AbstractModel):
 
     def __init__(self):
         """
+        :param FaceModelVersion: 人脸识别所用的算法模型版本。
+        :type FaceModelVersion: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
+        self.FaceModelVersion = None
         self.RequestId = None
 
 
     def _deserialize(self, params):
+        self.FaceModelVersion = params.get("FaceModelVersion")
         self.RequestId = params.get("RequestId")
 
 
@@ -405,6 +465,26 @@ Url、Image必须提供一个，如果都提供，只使用 Url。
 非腾讯云存储的Url速度和稳定性可能受一定影响。
 支持PNG、JPG、JPEG、BMP，不支持 GIF 图片。
         :type Url: str
+        :param UniquePersonControl: 此参数用于控制判断 Image 或 Url 中图片包含的人脸，是否在人员库中已有疑似的同一人。 
+如果判断为已有相同人在人员库中，则不会创建新的人员，返回疑似同一人的人员信息。 
+如果判断没有，则完成创建人员。 
+0: 不进行判断，无论是否有疑似同一人在库中均完成入库； 
+1:较低的同一人判断要求（百一误识别率）； 
+2: 一般的同一人判断要求（千一误识别率）； 
+3: 较高的同一人判断要求（万一误识别率）； 
+4: 很高的同一人判断要求（十万一误识别率）。 
+默认 0。  
+注： 要求越高，则疑似同一人的概率越小。不同要求对应的误识别率仅为参考值，您可以根据实际情况调整。
+        :type UniquePersonControl: int
+        :param QualityControl: 图片质量控制。 
+0: 不进行控制； 
+1:较低的质量要求，图像存在非常模糊，眼睛鼻子嘴巴遮挡至少其中一种或多种的情况； 
+2: 一般的质量要求，图像存在偏亮，偏暗，模糊或一般模糊，眉毛遮挡，脸颊遮挡，下巴遮挡，至少其中三种的情况； 
+3: 较高的质量要求，图像存在偏亮，偏暗，一般模糊，眉毛遮挡，脸颊遮挡，下巴遮挡，其中一到两种的情况； 
+4: 很高的质量要求，各个维度均为最好或最多在某一维度上存在轻微问题； 
+默认 0。 
+若图片质量不满足要求，则返回结果中会提示图片质量检测不符要求。
+        :type QualityControl: int
         """
         self.GroupId = None
         self.PersonName = None
@@ -413,6 +493,8 @@ Url、Image必须提供一个，如果都提供，只使用 Url。
         self.PersonExDescriptionInfos = None
         self.Image = None
         self.Url = None
+        self.UniquePersonControl = None
+        self.QualityControl = None
 
 
     def _deserialize(self, params):
@@ -428,6 +510,8 @@ Url、Image必须提供一个，如果都提供，只使用 Url。
                 self.PersonExDescriptionInfos.append(obj)
         self.Image = params.get("Image")
         self.Url = params.get("Url")
+        self.UniquePersonControl = params.get("UniquePersonControl")
+        self.QualityControl = params.get("QualityControl")
 
 
 class CreatePersonResponse(AbstractModel):
@@ -439,15 +523,31 @@ class CreatePersonResponse(AbstractModel):
         """
         :param FaceId: 人脸图片唯一标识。
         :type FaceId: str
+        :param FaceRect: 检测出的人脸框的位置。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FaceRect: :class:`tencentcloud.iai.v20180301.models.FaceRect`
+        :param SimilarPersonId: 疑似同一人的PersonId。 
+当 UniquePersonControl 参数不为0且人员库中有疑似的同一人，此参数才有意义。
+        :type SimilarPersonId: str
+        :param FaceModelVersion: 人脸识别所用的算法模型版本。
+        :type FaceModelVersion: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.FaceId = None
+        self.FaceRect = None
+        self.SimilarPersonId = None
+        self.FaceModelVersion = None
         self.RequestId = None
 
 
     def _deserialize(self, params):
         self.FaceId = params.get("FaceId")
+        if params.get("FaceRect") is not None:
+            self.FaceRect = FaceRect()
+            self.FaceRect._deserialize(params.get("FaceRect"))
+        self.SimilarPersonId = params.get("SimilarPersonId")
+        self.FaceModelVersion = params.get("FaceModelVersion")
         self.RequestId = params.get("RequestId")
 
 
@@ -613,7 +713,9 @@ class DetectFaceRequest(AbstractModel):
         :param MaxFaceNum: 最多处理的人脸数目。默认值为1（仅检测图片中面积最大的那张人脸），最大值为120。 
 此参数用于控制处理待检测图片中的人脸个数，值越小，处理速度越快。
         :type MaxFaceNum: int
-        :param MinFaceSize: 人脸长和宽的最小尺寸，单位为像素。默认为40。低于此尺寸的人脸不会被检测。
+        :param MinFaceSize: 人脸长和宽的最小尺寸，单位为像素。
+默认为40。建议不低于34。
+低于MinFaceSize值的人脸不会被检测。
         :type MinFaceSize: int
         :param Image: 图片 base64 数据，base64 编码后大小不可超过5M。
 支持PNG、JPG、JPEG、BMP，不支持 GIF 图片。
@@ -1243,11 +1345,15 @@ class GetPersonGroupInfoResponse(AbstractModel):
         :param GroupNum: 人员库总数量
 注意：此字段可能返回 null，表示取不到有效值。
         :type GroupNum: int
+        :param FaceModelVersion: 人脸识别服务所用的算法模型版本。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FaceModelVersion: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.PersonGroupInfos = None
         self.GroupNum = None
+        self.FaceModelVersion = None
         self.RequestId = None
 
 
@@ -1259,6 +1365,7 @@ class GetPersonGroupInfoResponse(AbstractModel):
                 obj._deserialize(item)
                 self.PersonGroupInfos.append(obj)
         self.GroupNum = params.get("GroupNum")
+        self.FaceModelVersion = params.get("FaceModelVersion")
         self.RequestId = params.get("RequestId")
 
 
@@ -1344,12 +1451,16 @@ class GetPersonListResponse(AbstractModel):
         :param FaceNum: 该人员库的人脸数量
 注意：此字段可能返回 null，表示取不到有效值。
         :type FaceNum: int
+        :param FaceModelVersion: 人脸识别所用的算法模型版本。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FaceModelVersion: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.PersonInfos = None
         self.PersonNum = None
         self.FaceNum = None
+        self.FaceModelVersion = None
         self.RequestId = None
 
 
@@ -1362,7 +1473,34 @@ class GetPersonListResponse(AbstractModel):
                 self.PersonInfos.append(obj)
         self.PersonNum = params.get("PersonNum")
         self.FaceNum = params.get("FaceNum")
+        self.FaceModelVersion = params.get("FaceModelVersion")
         self.RequestId = params.get("RequestId")
+
+
+class GroupCandidate(AbstractModel):
+    """分组识别结果Item
+
+    """
+
+    def __init__(self):
+        """
+        :param GroupId: 人员库ID 。
+        :type GroupId: str
+        :param Candidates: 识别出的最相似候选人。
+        :type Candidates: list of Candidate
+        """
+        self.GroupId = None
+        self.Candidates = None
+
+
+    def _deserialize(self, params):
+        self.GroupId = params.get("GroupId")
+        if params.get("Candidates") is not None:
+            self.Candidates = []
+            for item in params.get("Candidates"):
+                obj = Candidate()
+                obj._deserialize(item)
+                self.Candidates.append(obj)
 
 
 class GroupExDescriptionInfo(AbstractModel):
@@ -1627,12 +1765,16 @@ class PersonInfo(AbstractModel):
         :type PersonExDescriptions: list of str
         :param FaceIds: 包含的人脸照片列表
         :type FaceIds: list of str
+        :param CreationTimestamp: Group的创建时间和日期 CreationTimestamp。CreationTimestamp 的值是自 Unix 纪元时间到Group创建时间的毫秒数。 
+Unix 纪元时间是 1970 年 1 月 1 日星期四，协调世界时 (UTC) 00:00:00。有关更多信息，请参阅 Unix 时间。
+        :type CreationTimestamp: int
         """
         self.PersonName = None
         self.PersonId = None
         self.Gender = None
         self.PersonExDescriptions = None
         self.FaceIds = None
+        self.CreationTimestamp = None
 
 
     def _deserialize(self, params):
@@ -1641,6 +1783,7 @@ class PersonInfo(AbstractModel):
         self.Gender = params.get("Gender")
         self.PersonExDescriptions = params.get("PersonExDescriptions")
         self.FaceIds = params.get("FaceIds")
+        self.CreationTimestamp = params.get("CreationTimestamp")
 
 
 class Point(AbstractModel):
@@ -1675,9 +1818,13 @@ class Result(AbstractModel):
         :type Candidates: list of Candidate
         :param FaceRect: 检测出的人脸框位置
         :type FaceRect: :class:`tencentcloud.iai.v20180301.models.FaceRect`
+        :param RetCode: 检测出的人脸图片状态返回码。0 表示正常。 
+-1601代表不符合图片质量控制要求，此时Candidate内容为空。
+        :type RetCode: int
         """
         self.Candidates = None
         self.FaceRect = None
+        self.RetCode = None
 
 
     def _deserialize(self, params):
@@ -1690,6 +1837,40 @@ class Result(AbstractModel):
         if params.get("FaceRect") is not None:
             self.FaceRect = FaceRect()
             self.FaceRect._deserialize(params.get("FaceRect"))
+        self.RetCode = params.get("RetCode")
+
+
+class ResultsReturnsByGroup(AbstractModel):
+    """识别结果。
+
+    """
+
+    def __init__(self):
+        """
+        :param FaceRect: 检测出的人脸框位置。
+        :type FaceRect: :class:`tencentcloud.iai.v20180301.models.FaceRect`
+        :param GroupCandidates: 识别结果。
+        :type GroupCandidates: list of GroupCandidate
+        :param RetCode: 检测出的人脸图片状态返回码。0 表示正常。 
+-1601代表不符合图片质量控制要求，此时Candidate内容为空。
+        :type RetCode: int
+        """
+        self.FaceRect = None
+        self.GroupCandidates = None
+        self.RetCode = None
+
+
+    def _deserialize(self, params):
+        if params.get("FaceRect") is not None:
+            self.FaceRect = FaceRect()
+            self.FaceRect._deserialize(params.get("FaceRect"))
+        if params.get("GroupCandidates") is not None:
+            self.GroupCandidates = []
+            for item in params.get("GroupCandidates"):
+                obj = GroupCandidate()
+                obj._deserialize(item)
+                self.GroupCandidates.append(obj)
+        self.RetCode = params.get("RetCode")
 
 
 class SearchFacesRequest(AbstractModel):
@@ -1722,6 +1903,17 @@ MaxFaceNum用于，当输入的待识别图片包含多张人脸时，设定要�
         :type MaxPersonNum: int
         :param NeedPersonInfo: 是否返回人员具体信息。0 为关闭，1 为开启。默认为 0。其他非0非1值默认为0
         :type NeedPersonInfo: int
+        :param QualityControl: 图片质量控制，若图片中包含多张人脸，会对要求处理的人脸进行质量控制判断。  
+0: 不进行控制， 
+1:较低的质量要求， 
+2: 一般的质量要求， 
+3: 较高的质量要求。 
+4: 很高的质量要求。 
+默认 0。 
+若图片质量不满足要求，则返回结果中会提示图片质量检测不符要求。
+        :type QualityControl: int
+        :param FaceMatchThreshold: 出参Score中，只有超过FaceMatchThreshold值的结果才会返回。默认为0。
+        :type FaceMatchThreshold: float
         """
         self.GroupIds = None
         self.Image = None
@@ -1730,6 +1922,8 @@ MaxFaceNum用于，当输入的待识别图片包含多张人脸时，设定要�
         self.MinFaceSize = None
         self.MaxPersonNum = None
         self.NeedPersonInfo = None
+        self.QualityControl = None
+        self.FaceMatchThreshold = None
 
 
     def _deserialize(self, params):
@@ -1740,6 +1934,8 @@ MaxFaceNum用于，当输入的待识别图片包含多张人脸时，设定要�
         self.MinFaceSize = params.get("MinFaceSize")
         self.MaxPersonNum = params.get("MaxPersonNum")
         self.NeedPersonInfo = params.get("NeedPersonInfo")
+        self.QualityControl = params.get("QualityControl")
+        self.FaceMatchThreshold = params.get("FaceMatchThreshold")
 
 
 class SearchFacesResponse(AbstractModel):
@@ -1753,11 +1949,14 @@ class SearchFacesResponse(AbstractModel):
         :type Results: list of Result
         :param FaceNum: 搜索的人员库中包含的人脸数。
         :type FaceNum: int
+        :param FaceModelVersion: 人脸识别所用的算法模型版本。
+        :type FaceModelVersion: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.Results = None
         self.FaceNum = None
+        self.FaceModelVersion = None
         self.RequestId = None
 
 
@@ -1769,6 +1968,300 @@ class SearchFacesResponse(AbstractModel):
                 obj._deserialize(item)
                 self.Results.append(obj)
         self.FaceNum = params.get("FaceNum")
+        self.FaceModelVersion = params.get("FaceModelVersion")
+        self.RequestId = params.get("RequestId")
+
+
+class SearchFacesReturnsByGroupRequest(AbstractModel):
+    """SearchFacesReturnsByGroup请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param GroupIds: 希望搜索的人员库列表，上限10个。
+        :type GroupIds: list of str
+        :param Image: 图片 base64 数据，base64 编码后大小不可超过5M。
+支持PNG、JPG、JPEG、BMP，不支持 GIF 图片。
+        :type Image: str
+        :param Url: 图片的 Url 。对应图片 base64 编码后大小不可超过5M。
+Url、Image必须提供一个，如果都提供，只使用 Url。
+图片存储于腾讯云的Url可保障更高下载速度和稳定性，建议图片存储于腾讯云。
+非腾讯云存储的Url速度和稳定性可能受一定影响。
+支持PNG、JPG、JPEG、BMP，不支持 GIF 图片。
+        :type Url: str
+        :param MaxFaceNum: 最多识别的人脸数目。默认值为1（仅检测图片中面积最大的那张人脸），最大值为10。
+MaxFaceNum用于，当输入的待识别图片包含多张人脸时，设定要搜索的人脸的数量。
+例：输入的Image或Url中的图片包含多张人脸，设MaxFaceNum=5，则会识别图片中面积最大的5张人脸。
+        :type MaxFaceNum: int
+        :param MinFaceSize: 人脸长和宽的最小尺寸，单位为像素。默认为80。低于40将影响搜索精度。建议设置为80。
+        :type MinFaceSize: int
+        :param MaxPersonNumPerGroup: 被检测到的人脸，对应最多返回的最相似人员数目。默认值为5，最大值为10。  
+例，设MaxFaceNum为3，MaxPersonNum为5，则最多可能返回3*5=15个人员。
+        :type MaxPersonNumPerGroup: int
+        :param NeedPersonInfo: 是否返回人员具体信息。0 为关闭，1 为开启。默认为 0。其他非0非1值默认为0
+        :type NeedPersonInfo: int
+        :param QualityControl: 图片质量控制。 
+0: 不进行控制； 
+1:较低的质量要求，图像存在非常模糊，眼睛鼻子嘴巴遮挡至少其中一种或多种的情况； 
+2: 一般的质量要求，图像存在偏亮，偏暗，模糊或一般模糊，眉毛遮挡，脸颊遮挡，下巴遮挡，至少其中三种的情况； 
+3: 较高的质量要求，图像存在偏亮，偏暗，一般模糊，眉毛遮挡，脸颊遮挡，下巴遮挡，其中一到两种的情况； 
+4: 很高的质量要求，各个维度均为最好或最多在某一维度上存在轻微问题； 
+默认 0。 
+若图片质量不满足要求，则返回结果中会提示图片质量检测不符要求。
+        :type QualityControl: int
+        :param FaceMatchThreshold: 出参Score中，只有大于等于FaceMatchThreshold值的结果才会返回。
+默认为0。
+取值范围[0.0,100.0) 。
+        :type FaceMatchThreshold: float
+        """
+        self.GroupIds = None
+        self.Image = None
+        self.Url = None
+        self.MaxFaceNum = None
+        self.MinFaceSize = None
+        self.MaxPersonNumPerGroup = None
+        self.NeedPersonInfo = None
+        self.QualityControl = None
+        self.FaceMatchThreshold = None
+
+
+    def _deserialize(self, params):
+        self.GroupIds = params.get("GroupIds")
+        self.Image = params.get("Image")
+        self.Url = params.get("Url")
+        self.MaxFaceNum = params.get("MaxFaceNum")
+        self.MinFaceSize = params.get("MinFaceSize")
+        self.MaxPersonNumPerGroup = params.get("MaxPersonNumPerGroup")
+        self.NeedPersonInfo = params.get("NeedPersonInfo")
+        self.QualityControl = params.get("QualityControl")
+        self.FaceMatchThreshold = params.get("FaceMatchThreshold")
+
+
+class SearchFacesReturnsByGroupResponse(AbstractModel):
+    """SearchFacesReturnsByGroup返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param FaceNum: 搜索的人员库中包含的人脸数。
+        :type FaceNum: int
+        :param ResultsReturnsByGroup: 识别结果。
+        :type ResultsReturnsByGroup: list of ResultsReturnsByGroup
+        :param FaceModelVersion: 人脸识别所用的算法模型版本。
+        :type FaceModelVersion: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.FaceNum = None
+        self.ResultsReturnsByGroup = None
+        self.FaceModelVersion = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.FaceNum = params.get("FaceNum")
+        if params.get("ResultsReturnsByGroup") is not None:
+            self.ResultsReturnsByGroup = []
+            for item in params.get("ResultsReturnsByGroup"):
+                obj = ResultsReturnsByGroup()
+                obj._deserialize(item)
+                self.ResultsReturnsByGroup.append(obj)
+        self.FaceModelVersion = params.get("FaceModelVersion")
+        self.RequestId = params.get("RequestId")
+
+
+class SearchPersonsRequest(AbstractModel):
+    """SearchPersons请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param GroupIds: 希望搜索的人员库列表，上限100个。
+        :type GroupIds: list of str
+        :param Image: 图片 base64 数据，base64 编码后大小不可超过5M。
+若图片中包含多张人脸，只选取其中人脸面积最大的人脸。
+支持PNG、JPG、JPEG、BMP，不支持 GIF 图片。
+        :type Image: str
+        :param Url: 图片的 Url 。对应图片 base64 编码后大小不可超过5M。
+Url、Image必须提供一个，如果都提供，只使用 Url。
+图片存储于腾讯云的Url可保障更高下载速度和稳定性，建议图片存储于腾讯云。
+非腾讯云存储的Url速度和稳定性可能受一定影响。
+支持PNG、JPG、JPEG、BMP，不支持 GIF 图片。
+        :type Url: str
+        :param MaxFaceNum: 最多识别的人脸数目。默认值为1（仅检测图片中面积最大的那张人脸），最大值为10。
+MaxFaceNum用于，当输入的待识别图片包含多张人脸时，设定要搜索的人脸的数量。
+例：输入的Image或Url中的图片包含多张人脸，设MaxFaceNum=5，则会识别图片中面积最大的5张人脸。
+        :type MaxFaceNum: int
+        :param MinFaceSize: 人脸长和宽的最小尺寸，单位为像素。默认为80。低于40将影响搜索精度。建议设置为80。
+        :type MinFaceSize: int
+        :param MaxPersonNum: 单张被识别的人脸返回的最相似人员数量。默认值为5，最大值为100。
+例，设MaxFaceNum为1，MaxPersonNum为8，则返回Top8相似的人员信息。
+值越大，需要处理的时间越长。建议不要超过10。
+        :type MaxPersonNum: int
+        :param QualityControl: 此参数用于控制判断 Image 或 Url 中图片包含的人脸，是否在人员库中已有疑似的同一人。 
+如果判断为已有相同人在人员库中，则不会创建新的人员，返回疑似同一人的人员信息。 
+如果判断没有，则完成创建人员。 
+0: 不进行判断，无论是否有疑似同一人在库中均完成入库； 
+1:较低的同一人判断要求（百一误识别率）； 
+2: 一般的同一人判断要求（千一误识别率）； 
+3: 较高的同一人判断要求（万一误识别率）； 
+4: 很高的同一人判断要求（十万一误识别率）。 
+默认 0。  
+注： 要求越高，则疑似同一人的概率越小。不同要求对应的误识别率仅为参考值，您可以根据实际情况调整。
+        :type QualityControl: int
+        :param FaceMatchThreshold: 出参Score中，只有大于等于FaceMatchThreshold值的结果才会返回。默认为0。取值范围[0.0,100.0) 。
+        :type FaceMatchThreshold: float
+        """
+        self.GroupIds = None
+        self.Image = None
+        self.Url = None
+        self.MaxFaceNum = None
+        self.MinFaceSize = None
+        self.MaxPersonNum = None
+        self.QualityControl = None
+        self.FaceMatchThreshold = None
+
+
+    def _deserialize(self, params):
+        self.GroupIds = params.get("GroupIds")
+        self.Image = params.get("Image")
+        self.Url = params.get("Url")
+        self.MaxFaceNum = params.get("MaxFaceNum")
+        self.MinFaceSize = params.get("MinFaceSize")
+        self.MaxPersonNum = params.get("MaxPersonNum")
+        self.QualityControl = params.get("QualityControl")
+        self.FaceMatchThreshold = params.get("FaceMatchThreshold")
+
+
+class SearchPersonsResponse(AbstractModel):
+    """SearchPersons返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Results: 识别结果。
+        :type Results: list of Result
+        :param PersonNum: 搜索的人员库中包含的人员数。若输入图片中所有人脸均不符合质量要求，则返回0。
+        :type PersonNum: int
+        :param FaceModelVersion: 人脸识别所用的算法模型版本。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FaceModelVersion: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Results = None
+        self.PersonNum = None
+        self.FaceModelVersion = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Results") is not None:
+            self.Results = []
+            for item in params.get("Results"):
+                obj = Result()
+                obj._deserialize(item)
+                self.Results.append(obj)
+        self.PersonNum = params.get("PersonNum")
+        self.FaceModelVersion = params.get("FaceModelVersion")
+        self.RequestId = params.get("RequestId")
+
+
+class SearchPersonsReturnsByGroupRequest(AbstractModel):
+    """SearchPersonsReturnsByGroup请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param GroupIds: 希望搜索的人员库列表，上限10个。
+        :type GroupIds: list of str
+        :param Image: 图片 base64 数据，base64 编码后大小不可超过5M。
+支持PNG、JPG、JPEG、BMP，不支持 GIF 图片。
+        :type Image: str
+        :param Url: 图片的 Url 。对应图片 base64 编码后大小不可超过5M。
+Url、Image必须提供一个，如果都提供，只使用 Url。
+图片存储于腾讯云的Url可保障更高下载速度和稳定性，建议图片存储于腾讯云。
+非腾讯云存储的Url速度和稳定性可能受一定影响。
+支持PNG、JPG、JPEG、BMP，不支持 GIF 图片。
+        :type Url: str
+        :param MaxFaceNum: 最多识别的人脸数目。默认值为1（仅检测图片中面积最大的那张人脸），最大值为10。
+MaxFaceNum用于，当输入的待识别图片包含多张人脸时，设定要搜索的人脸的数量。
+例：输入的Image或Url中的图片包含多张人脸，设MaxFaceNum=5，则会识别图片中面积最大的5张人脸。
+        :type MaxFaceNum: int
+        :param MinFaceSize: 人脸长和宽的最小尺寸，单位为像素。默认为80。低于40将影响搜索精度。建议设置为80。
+        :type MinFaceSize: int
+        :param MaxPersonNumPerGroup: 被检测到的人脸，对应最多返回的最相似人员数目。默认值为5，最大值为10。  
+例，设MaxFaceNum为3，MaxPersonNumPerGroup为5，GroupIds长度为3，则最多可能返回3*5*3=45个人员。
+        :type MaxPersonNumPerGroup: int
+        :param QualityControl: 图片质量控制。 
+0: 不进行控制； 
+1:较低的质量要求，图像存在非常模糊，眼睛鼻子嘴巴遮挡至少其中一种或多种的情况； 
+2: 一般的质量要求，图像存在偏亮，偏暗，模糊或一般模糊，眉毛遮挡，脸颊遮挡，下巴遮挡，至少其中三种的情况； 
+3: 较高的质量要求，图像存在偏亮，偏暗，一般模糊，眉毛遮挡，脸颊遮挡，下巴遮挡，其中一到两种的情况； 
+4: 很高的质量要求，各个维度均为最好或最多在某一维度上存在轻微问题； 
+默认 0。 
+若图片质量不满足要求，则返回结果中会提示图片质量检测不符要求。
+        :type QualityControl: int
+        :param FaceMatchThreshold: 出参Score中，只有超过FaceMatchThreshold值的结果才会返回。默认为0。
+        :type FaceMatchThreshold: float
+        """
+        self.GroupIds = None
+        self.Image = None
+        self.Url = None
+        self.MaxFaceNum = None
+        self.MinFaceSize = None
+        self.MaxPersonNumPerGroup = None
+        self.QualityControl = None
+        self.FaceMatchThreshold = None
+
+
+    def _deserialize(self, params):
+        self.GroupIds = params.get("GroupIds")
+        self.Image = params.get("Image")
+        self.Url = params.get("Url")
+        self.MaxFaceNum = params.get("MaxFaceNum")
+        self.MinFaceSize = params.get("MinFaceSize")
+        self.MaxPersonNumPerGroup = params.get("MaxPersonNumPerGroup")
+        self.QualityControl = params.get("QualityControl")
+        self.FaceMatchThreshold = params.get("FaceMatchThreshold")
+
+
+class SearchPersonsReturnsByGroupResponse(AbstractModel):
+    """SearchPersonsReturnsByGroup返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param PersonNum: 搜索的人员库中包含的人员数。若输入图片中所有人脸均不符合质量要求，则返回0。
+        :type PersonNum: int
+        :param ResultsReturnsByGroup: 识别结果。
+        :type ResultsReturnsByGroup: list of ResultsReturnsByGroup
+        :param FaceModelVersion: 人脸识别所用的算法模型版本。
+        :type FaceModelVersion: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.PersonNum = None
+        self.ResultsReturnsByGroup = None
+        self.FaceModelVersion = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.PersonNum = params.get("PersonNum")
+        if params.get("ResultsReturnsByGroup") is not None:
+            self.ResultsReturnsByGroup = []
+            for item in params.get("ResultsReturnsByGroup"):
+                obj = ResultsReturnsByGroup()
+                obj._deserialize(item)
+                self.ResultsReturnsByGroup.append(obj)
+        self.FaceModelVersion = params.get("FaceModelVersion")
         self.RequestId = params.get("RequestId")
 
 
@@ -1792,16 +2285,27 @@ Url、Image必须提供一个，如果都提供，只使用 Url。
 若图片中包含多张人脸，只选取其中人脸面积最大的人脸。
 支持PNG、JPG、JPEG、BMP，不支持 GIF 图片。
         :type Url: str
+        :param QualityControl: 图片质量控制。 
+0: 不进行控制； 
+1:较低的质量要求，图像存在非常模糊，眼睛鼻子嘴巴遮挡至少其中一种或多种的情况； 
+2: 一般的质量要求，图像存在偏亮，偏暗，模糊或一般模糊，眉毛遮挡，脸颊遮挡，下巴遮挡，至少其中三种的情况； 
+3: 较高的质量要求，图像存在偏亮，偏暗，一般模糊，眉毛遮挡，脸颊遮挡，下巴遮挡，其中一到两种的情况； 
+4: 很高的质量要求，各个维度均为最好或最多在某一维度上存在轻微问题； 
+默认 0。 
+若图片质量不满足要求，则返回结果中会提示图片质量检测不符要求。
+        :type QualityControl: int
         """
         self.PersonId = None
         self.Image = None
         self.Url = None
+        self.QualityControl = None
 
 
     def _deserialize(self, params):
         self.PersonId = params.get("PersonId")
         self.Image = params.get("Image")
         self.Url = params.get("Url")
+        self.QualityControl = params.get("QualityControl")
 
 
 class VerifyFaceResponse(AbstractModel):
@@ -1812,18 +2316,97 @@ class VerifyFaceResponse(AbstractModel):
     def __init__(self):
         """
         :param Score: 给定的人脸图片与 PersonId 对应人脸的相似度。若 PersonId 下有多张人脸（Face），返回相似度最大的分数。
+
+不同算法版本返回的相似度分数不同。
+若需要验证两张图片中人脸是否为同一人，3.0版本误识率千分之一对应分数为40分，误识率万分之一对应分数为50分，误识率十万分之一对应分数为60分。 一般超过50分则可认定为同一人。
+2.0版本误识率千分之一对应分数为70分，误识率万分之一对应分数为80分，误识率十万分之一对应分数为90分。 一般超过80分则可认定为同一人。
         :type Score: float
         :param IsMatch: 是否为同一人的判断。
         :type IsMatch: bool
+        :param FaceModelVersion: 人脸识别所用的算法模型版本。
+        :type FaceModelVersion: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.Score = None
         self.IsMatch = None
+        self.FaceModelVersion = None
         self.RequestId = None
 
 
     def _deserialize(self, params):
         self.Score = params.get("Score")
         self.IsMatch = params.get("IsMatch")
+        self.FaceModelVersion = params.get("FaceModelVersion")
+        self.RequestId = params.get("RequestId")
+
+
+class VerifyPersonRequest(AbstractModel):
+    """VerifyPerson请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Image: 图片 base64 数据。
+若图片中包含多张人脸，只选取其中人脸面积最大的人脸。
+支持PNG、JPG、JPEG、BMP，不支持 GIF 图片。
+        :type Image: str
+        :param Url: 图片的 Url 。 图片的 Url、Image必须提供一个，如果都提供，只使用 Url。 
+图片存储于腾讯云的Url可保障更高下载速度和稳定性，建议图片存储于腾讯云。 
+非腾讯云存储的Url速度和稳定性可能受一定影响。
+若图片中包含多张人脸，只选取其中人脸面积最大的人脸。
+支持PNG、JPG、JPEG、BMP，不支持 GIF 图片。
+        :type Url: str
+        :param PersonId: 待验证的人员ID。人员ID具体信息请参考人员库管理相关接口。
+        :type PersonId: str
+        :param QualityControl: 图片质量控制。 
+0: 不进行控制； 
+1:较低的质量要求，图像存在非常模糊，眼睛鼻子嘴巴遮挡至少其中一种或多种的情况； 
+2: 一般的质量要求，图像存在偏亮，偏暗，模糊或一般模糊，眉毛遮挡，脸颊遮挡，下巴遮挡，至少其中三种的情况； 
+3: 较高的质量要求，图像存在偏亮，偏暗，一般模糊，眉毛遮挡，脸颊遮挡，下巴遮挡，其中一到两种的情况； 
+4: 很高的质量要求，各个维度均为最好或最多在某一维度上存在轻微问题； 
+默认 0。 
+若图片质量不满足要求，则返回结果中会提示图片质量检测不符要求。
+        :type QualityControl: int
+        """
+        self.Image = None
+        self.Url = None
+        self.PersonId = None
+        self.QualityControl = None
+
+
+    def _deserialize(self, params):
+        self.Image = params.get("Image")
+        self.Url = params.get("Url")
+        self.PersonId = params.get("PersonId")
+        self.QualityControl = params.get("QualityControl")
+
+
+class VerifyPersonResponse(AbstractModel):
+    """VerifyPerson返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Score: 给定的人脸照片与 PersonId 对应的相似度。若 PersonId 下有多张人脸（Face），会融合多张人脸信息进行验证。
+        :type Score: float
+        :param IsMatch: 是否为同一人的判断。
+        :type IsMatch: bool
+        :param FaceModelVersion: 人脸识别所用的算法模型版本。
+        :type FaceModelVersion: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Score = None
+        self.IsMatch = None
+        self.FaceModelVersion = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Score = params.get("Score")
+        self.IsMatch = params.get("IsMatch")
+        self.FaceModelVersion = params.get("FaceModelVersion")
         self.RequestId = params.get("RequestId")

@@ -25,6 +25,62 @@ class IotexplorerClient(AbstractClient):
     _endpoint = 'iotexplorer.tencentcloudapi.com'
 
 
+    def CallDeviceActionAsync(self, request):
+        """提供给用户异步调用设备动作的能力
+
+        :param request: 调用CallDeviceActionAsync所需参数的结构体。
+        :type request: :class:`tencentcloud.iotexplorer.v20190423.models.CallDeviceActionAsyncRequest`
+        :rtype: :class:`tencentcloud.iotexplorer.v20190423.models.CallDeviceActionAsyncResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("CallDeviceActionAsync", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CallDeviceActionAsyncResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def CallDeviceActionSync(self, request):
+        """为用户提供同步调用设备动作的能力。
+
+        :param request: 调用CallDeviceActionSync所需参数的结构体。
+        :type request: :class:`tencentcloud.iotexplorer.v20190423.models.CallDeviceActionSyncRequest`
+        :rtype: :class:`tencentcloud.iotexplorer.v20190423.models.CallDeviceActionSyncResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("CallDeviceActionSync", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CallDeviceActionSyncResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def ControlDeviceData(self, request):
         """根据设备产品ID、设备名称，设置控制设备的属性数据。
 

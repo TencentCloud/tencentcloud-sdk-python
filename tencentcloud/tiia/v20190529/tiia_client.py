@@ -53,6 +53,36 @@ class TiiaClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def CropImage(self, request):
+        """根据输入的裁剪比例，智能判断一张图片的最佳裁剪区域，确保原图的主体区域不受影响。
+
+        可以自动裁剪图片，适应不同平台、设备的展示要求，避免简单拉伸带来的变形。
+
+        :param request: 调用CropImage所需参数的结构体。
+        :type request: :class:`tencentcloud.tiia.v20190529.models.CropImageRequest`
+        :rtype: :class:`tencentcloud.tiia.v20190529.models.CropImageResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("CropImage", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CropImageResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DetectCelebrity(self, request):
         """传入一张图片，可以识别图片中包含的人物是否为公众人物，如果是，输出人物的姓名、基本信息、脸部坐标。
 
@@ -83,6 +113,36 @@ class TiiaClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DetectDisgust(self, request):
+        """输入一张图片，返回AI针对一张图片是否是恶心的一系列判断值。
+
+        通过恶心图片识别, 可以判断一张图片是否令人恶心, 同时给出它属于的潜在类别, 让您能够过滤掉使人不愉快的图片.
+
+        :param request: 调用DetectDisgust所需参数的结构体。
+        :type request: :class:`tencentcloud.tiia.v20190529.models.DetectDisgustRequest`
+        :rtype: :class:`tencentcloud.tiia.v20190529.models.DetectDisgustResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DetectDisgust", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DetectDisgustResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DetectLabel(self, request):
         """传入一张图片，识别出图片中存在的物体，并返回物体的名称（分类）、置信度，一张图片会给出多个可能的标签。
 
@@ -97,6 +157,34 @@ class TiiaClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DetectLabelResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DetectMisbehavior(self, request):
+        """可以识别输入的图片中是否包含不良行为，例如打架斗殴、赌博、抽烟等，可以应用于广告图、直播截图、短视频截图等审核，减少不良行为对平台内容质量的影响，维护健康向上的互联网环境。
+
+        :param request: 调用DetectMisbehavior所需参数的结构体。
+        :type request: :class:`tencentcloud.tiia.v20190529.models.DetectMisbehaviorRequest`
+        :rtype: :class:`tencentcloud.tiia.v20190529.models.DetectMisbehaviorResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DetectMisbehavior", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DetectMisbehaviorResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

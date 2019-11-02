@@ -81,6 +81,34 @@ class RedisClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def CreateInstanceAccount(self, request):
+        """创建实例子账号
+
+        :param request: 调用CreateInstanceAccount所需参数的结构体。
+        :type request: :class:`tencentcloud.redis.v20180412.models.CreateInstanceAccountRequest`
+        :rtype: :class:`tencentcloud.redis.v20180412.models.CreateInstanceAccountResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("CreateInstanceAccount", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateInstanceAccountResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def CreateInstances(self, request):
         """创建redis实例
 
@@ -95,6 +123,34 @@ class RedisClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateInstancesResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DeleteInstanceAccount(self, request):
+        """删除实例子账号
+
+        :param request: 调用DeleteInstanceAccount所需参数的结构体。
+        :type request: :class:`tencentcloud.redis.v20180412.models.DeleteInstanceAccountRequest`
+        :rtype: :class:`tencentcloud.redis.v20180412.models.DeleteInstanceAccountResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DeleteInstanceAccount", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DeleteInstanceAccountResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -165,6 +221,34 @@ class RedisClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeInstanceAccount(self, request):
+        """查看实例子账号信息
+
+        :param request: 调用DescribeInstanceAccount所需参数的结构体。
+        :type request: :class:`tencentcloud.redis.v20180412.models.DescribeInstanceAccountRequest`
+        :rtype: :class:`tencentcloud.redis.v20180412.models.DescribeInstanceAccountResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeInstanceAccount", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeInstanceAccountResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeInstanceBackups(self, request):
         """查询 CRS 实例备份列表
 
@@ -207,6 +291,230 @@ class RedisClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeInstanceDealDetailResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeInstanceMonitorBigKey(self, request):
+        """查询实例大Key
+
+        :param request: 调用DescribeInstanceMonitorBigKey所需参数的结构体。
+        :type request: :class:`tencentcloud.redis.v20180412.models.DescribeInstanceMonitorBigKeyRequest`
+        :rtype: :class:`tencentcloud.redis.v20180412.models.DescribeInstanceMonitorBigKeyResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeInstanceMonitorBigKey", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeInstanceMonitorBigKeyResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeInstanceMonitorBigKeySizeDist(self, request):
+        """查询实例大Key大小分布
+
+        :param request: 调用DescribeInstanceMonitorBigKeySizeDist所需参数的结构体。
+        :type request: :class:`tencentcloud.redis.v20180412.models.DescribeInstanceMonitorBigKeySizeDistRequest`
+        :rtype: :class:`tencentcloud.redis.v20180412.models.DescribeInstanceMonitorBigKeySizeDistResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeInstanceMonitorBigKeySizeDist", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeInstanceMonitorBigKeySizeDistResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeInstanceMonitorBigKeyTypeDist(self, request):
+        """查询实例大Key类型分布
+
+        :param request: 调用DescribeInstanceMonitorBigKeyTypeDist所需参数的结构体。
+        :type request: :class:`tencentcloud.redis.v20180412.models.DescribeInstanceMonitorBigKeyTypeDistRequest`
+        :rtype: :class:`tencentcloud.redis.v20180412.models.DescribeInstanceMonitorBigKeyTypeDistResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeInstanceMonitorBigKeyTypeDist", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeInstanceMonitorBigKeyTypeDistResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeInstanceMonitorHotKey(self, request):
+        """查询实例热Key
+
+        :param request: 调用DescribeInstanceMonitorHotKey所需参数的结构体。
+        :type request: :class:`tencentcloud.redis.v20180412.models.DescribeInstanceMonitorHotKeyRequest`
+        :rtype: :class:`tencentcloud.redis.v20180412.models.DescribeInstanceMonitorHotKeyResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeInstanceMonitorHotKey", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeInstanceMonitorHotKeyResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeInstanceMonitorSIP(self, request):
+        """查询实例访问来源信息
+
+        :param request: 调用DescribeInstanceMonitorSIP所需参数的结构体。
+        :type request: :class:`tencentcloud.redis.v20180412.models.DescribeInstanceMonitorSIPRequest`
+        :rtype: :class:`tencentcloud.redis.v20180412.models.DescribeInstanceMonitorSIPResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeInstanceMonitorSIP", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeInstanceMonitorSIPResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeInstanceMonitorTookDist(self, request):
+        """查询实例大Key大小分布
+
+        :param request: 调用DescribeInstanceMonitorTookDist所需参数的结构体。
+        :type request: :class:`tencentcloud.redis.v20180412.models.DescribeInstanceMonitorTookDistRequest`
+        :rtype: :class:`tencentcloud.redis.v20180412.models.DescribeInstanceMonitorTookDistResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeInstanceMonitorTookDist", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeInstanceMonitorTookDistResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeInstanceMonitorTopNCmd(self, request):
+        """查询实例访问命令
+
+        :param request: 调用DescribeInstanceMonitorTopNCmd所需参数的结构体。
+        :type request: :class:`tencentcloud.redis.v20180412.models.DescribeInstanceMonitorTopNCmdRequest`
+        :rtype: :class:`tencentcloud.redis.v20180412.models.DescribeInstanceMonitorTopNCmdResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeInstanceMonitorTopNCmd", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeInstanceMonitorTopNCmdResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeInstanceMonitorTopNCmdTook(self, request):
+        """查询实例CPU耗时
+
+        :param request: 调用DescribeInstanceMonitorTopNCmdTook所需参数的结构体。
+        :type request: :class:`tencentcloud.redis.v20180412.models.DescribeInstanceMonitorTopNCmdTookRequest`
+        :rtype: :class:`tencentcloud.redis.v20180412.models.DescribeInstanceMonitorTopNCmdTookResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeInstanceMonitorTopNCmdTook", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeInstanceMonitorTopNCmdTookResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -683,6 +991,34 @@ class RedisClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyInstanceResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ModifyInstanceAccount(self, request):
+        """修改实例子账号
+
+        :param request: 调用ModifyInstanceAccount所需参数的结构体。
+        :type request: :class:`tencentcloud.redis.v20180412.models.ModifyInstanceAccountRequest`
+        :rtype: :class:`tencentcloud.redis.v20180412.models.ModifyInstanceAccountResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ModifyInstanceAccount", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ModifyInstanceAccountResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

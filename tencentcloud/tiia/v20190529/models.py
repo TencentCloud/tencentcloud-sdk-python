@@ -168,6 +168,98 @@ class Coord(AbstractModel):
         self.Y = params.get("Y")
 
 
+class CropImageRequest(AbstractModel):
+    """CropImage请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Width: 需要裁剪区域的宽度，与Height共同组成所需裁剪的图片宽高比例；
+输入数字请大于0、小于图片宽度的像素值；
+        :type Width: int
+        :param Height: 需要裁剪区域的高度，与Width共同组成所需裁剪的图片宽高比例；
+输入数字请请大于0、小于图片高度的像素值；
+宽高比例（Width : Height）会简化为最简分数，即如果Width输入10、Height输入20，会简化为1：2。
+Width : Height建议取值在[1, 2.5]之间，超过这个范围可能会影响效果；
+        :type Height: int
+        :param ImageUrl: 图片URL地址。 
+图片限制： 
+• 图片格式：PNG、JPG、JPEG。 
+• 图片大小：所下载图片经Base64编码后不超过4M。图片下载时间不超过3秒。 
+建议：
+• 图片像素：大于50*50像素，否则影响识别效果； 
+• 长宽比：长边：短边<5； 
+接口响应时间会受到图片下载时间的影响，建议使用更可靠的存储服务，推荐将图片存储在腾讯云COS。
+        :type ImageUrl: str
+        :param ImageBase64: 图片经过base64编码的内容。最大不超过4M。与ImageUrl同时存在时优先使用ImageUrl字段。
+        :type ImageBase64: str
+        """
+        self.Width = None
+        self.Height = None
+        self.ImageUrl = None
+        self.ImageBase64 = None
+
+
+    def _deserialize(self, params):
+        self.Width = params.get("Width")
+        self.Height = params.get("Height")
+        self.ImageUrl = params.get("ImageUrl")
+        self.ImageBase64 = params.get("ImageBase64")
+
+
+class CropImageResponse(AbstractModel):
+    """CropImage返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param X: 裁剪区域左上角X坐标值
+        :type X: int
+        :param Y: 裁剪区域左上角Y坐标值
+        :type Y: int
+        :param Width: 裁剪区域的宽度，单位为像素
+        :type Width: int
+        :param Height: 裁剪区域的高度，单位为像素
+        :type Height: int
+        :param OriginalWidth: 原图宽度，单位为像素
+        :type OriginalWidth: int
+        :param OriginalHeight: 原图高度，单位为像素
+        :type OriginalHeight: int
+        :param CropResult: 0：抠图正常, 1：原图过长, 2：原图过宽, 3：抠图区域过长, 4：抠图区域过宽, 5：纯色图 6：宽高比异常
+原图过长是指原图的高度是宽度的1.8倍以上；
+原图过宽是指原图的宽度是高度的1.8倍以上；
+抠图区域过长是指抠图的高度是主体备选框高度的1.6倍以上；
+抠图过宽是指当没有检测到人脸时，抠图区域宽度是检测出的原图主体区域宽度的1.6倍以上；
+纯色图是指裁剪区域视觉较为单一、缺乏主体部分；
+Width : Height取值超出[1, 2.5]的范围；
+以上是辅助决策的参考建议，可以根据业务需求选择采纳或忽视。
+        :type CropResult: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.X = None
+        self.Y = None
+        self.Width = None
+        self.Height = None
+        self.OriginalWidth = None
+        self.OriginalHeight = None
+        self.CropResult = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.X = params.get("X")
+        self.Y = params.get("Y")
+        self.Width = params.get("Width")
+        self.Height = params.get("Height")
+        self.OriginalWidth = params.get("OriginalWidth")
+        self.OriginalHeight = params.get("OriginalHeight")
+        self.CropResult = params.get("CropResult")
+        self.RequestId = params.get("RequestId")
+
+
 class DetectCelebrityRequest(AbstractModel):
     """DetectCelebrity请求参数结构体
 
@@ -219,6 +311,59 @@ class DetectCelebrityResponse(AbstractModel):
                 obj = Face()
                 obj._deserialize(item)
                 self.Faces.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DetectDisgustRequest(AbstractModel):
+    """DetectDisgust请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ImageUrl: 图片URL地址。 
+图片限制： 
+• 图片格式：PNG、JPG、JPEG。 
+• 图片大小：所下载图片经Base64编码后不超过4M。图片下载时间不超过3秒。 
+建议：
+• 图片像素：大于50*50像素，否则影响识别效果； 
+• 长宽比：长边：短边<5； 
+接口响应时间会受到图片下载时间的影响，建议使用更可靠的存储服务，推荐将图片存储在腾讯云COS。
+        :type ImageUrl: str
+        :param ImageBase64: 图片经过base64编码的内容。最大不超过4M。与ImageUrl同时存在时优先使用ImageUrl字段。
+        :type ImageBase64: str
+        """
+        self.ImageUrl = None
+        self.ImageBase64 = None
+
+
+    def _deserialize(self, params):
+        self.ImageUrl = params.get("ImageUrl")
+        self.ImageBase64 = params.get("ImageBase64")
+
+
+class DetectDisgustResponse(AbstractModel):
+    """DetectDisgust返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Confidence: 对于图片中包含恶心内容的置信度，取值[0,1]，一般超过0.5则表明可能是恶心图片。
+        :type Confidence: float
+        :param Type: 与图像内容最相似的恶心内容的类别，包含腐烂、密集、畸形、血腥、蛇、虫子、牙齿等。
+        :type Type: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Confidence = None
+        self.Type = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Confidence = params.get("Confidence")
+        self.Type = params.get("Type")
         self.RequestId = params.get("RequestId")
 
 
@@ -294,6 +439,59 @@ class DetectLabelResponse(AbstractModel):
                 obj = DetectLabelItem()
                 obj._deserialize(item)
                 self.Labels.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DetectMisbehaviorRequest(AbstractModel):
+    """DetectMisbehavior请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ImageUrl: 图片URL地址。 
+图片限制： 
+• 图片格式：PNG、JPG、JPEG。 
+• 图片大小：所下载图片经Base64编码后不超过4M。图片下载时间不超过3秒。 
+建议：
+• 图片像素：大于50*50像素，否则影响识别效果； 
+• 长宽比：长边：短边<5； 
+接口响应时间会受到图片下载时间的影响，建议使用更可靠的存储服务，推荐将图片存储在腾讯云COS。
+        :type ImageUrl: str
+        :param ImageBase64: 图片经过base64编码的内容。最大不超过4M。与ImageUrl同时存在时优先使用ImageUrl字段。
+        :type ImageBase64: str
+        """
+        self.ImageUrl = None
+        self.ImageBase64 = None
+
+
+    def _deserialize(self, params):
+        self.ImageUrl = params.get("ImageUrl")
+        self.ImageBase64 = params.get("ImageBase64")
+
+
+class DetectMisbehaviorResponse(AbstractModel):
+    """DetectMisbehavior返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Confidence: 对于图片中包含不良行为的置信度，取值[0,1]，一般超过0.5则表明可能包含不良行为内容；
+        :type Confidence: float
+        :param Type: 图像中最可能包含的不良行为类别，包括赌博、打架斗殴、吸毒等。
+        :type Type: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Confidence = None
+        self.Type = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Confidence = params.get("Confidence")
+        self.Type = params.get("Type")
         self.RequestId = params.get("RequestId")
 
 
@@ -968,6 +1166,11 @@ class TextResult(AbstractModel):
 PASS：正常
 REVIEW：疑似
 BLOCK：违规
+
+Suggestion由Type决定：
+Type为 NOTEXT/NORMAL 时，Suggestion为PASS；
+Type为 POLITICS/PORN/TERRORISM/ADS 时，Suggestion为BLOCK；
+其他情况下Suggestion为REVIEW。
         :type Suggestion: str
         :param Confidence: 算法对于识别结果的置信度，0-100之间，值越高，表示对于结论越确定。
         :type Confidence: int

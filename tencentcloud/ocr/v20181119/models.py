@@ -688,13 +688,16 @@ class EduPaperOCRResponse(AbstractModel):
         """
         :param EduPaperInfos: 检测到的文本信息，具体内容请点击左侧链接。
         :type EduPaperInfos: list of TextEduPaper
-        :param Angle: 图片旋转角度（角度制），文本的水平方向为0°；顺时针为正，逆时针为负
+        :param Angle: 图片旋转角度（角度制），文本的水平方向为0°；顺时针为正，逆时针为负。
         :type Angle: int
+        :param QuestionBlockInfos: 结构化方式输出，具体内容请点击左侧链接。
+        :type QuestionBlockInfos: list of QuestionBlockObj
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.EduPaperInfos = None
         self.Angle = None
+        self.QuestionBlockInfos = None
         self.RequestId = None
 
 
@@ -706,6 +709,12 @@ class EduPaperOCRResponse(AbstractModel):
                 obj._deserialize(item)
                 self.EduPaperInfos.append(obj)
         self.Angle = params.get("Angle")
+        if params.get("QuestionBlockInfos") is not None:
+            self.QuestionBlockInfos = []
+            for item in params.get("QuestionBlockInfos"):
+                obj = QuestionBlockObj()
+                obj._deserialize(item)
+                self.QuestionBlockInfos.append(obj)
         self.RequestId = params.get("RequestId")
 
 
@@ -760,6 +769,85 @@ class EnglishOCRResponse(AbstractModel):
                 obj = TextDetectionEn()
                 obj._deserialize(item)
                 self.TextDetections.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class EnterpriseLicenseInfo(AbstractModel):
+    """企业证照单个字段的内容
+
+    """
+
+    def __init__(self):
+        """
+        :param Name: 识别出的字段名称。
+        :type Name: str
+        :param Value: 识别出的字段名称对应的值，也就是字段Name对应的字符串结果。
+        :type Value: str
+        """
+        self.Name = None
+        self.Value = None
+
+
+    def _deserialize(self, params):
+        self.Name = params.get("Name")
+        self.Value = params.get("Value")
+
+
+class EnterpriseLicenseOCRRequest(AbstractModel):
+    """EnterpriseLicenseOCR请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ImageBase64: 图片的 Base64 值。
+支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。
+支持的图片大小：所下载图片经Base64编码后不超过 3M。图片下载时间不超过 3 秒。
+图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
+        :type ImageBase64: str
+        :param ImageUrl: 图片的 Url 地址。
+支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。
+支持的图片大小：所下载图片经 Base64 编码后不超过 3M。图片下载时间不超过 3 秒。
+图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。
+非腾讯云存储的 Url 速度和稳定性可能受一定影响。
+        :type ImageUrl: str
+        """
+        self.ImageBase64 = None
+        self.ImageUrl = None
+
+
+    def _deserialize(self, params):
+        self.ImageBase64 = params.get("ImageBase64")
+        self.ImageUrl = params.get("ImageUrl")
+
+
+class EnterpriseLicenseOCRResponse(AbstractModel):
+    """EnterpriseLicenseOCR返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param EnterpriseLicenseInfos: 企业证照识别结果，具体内容请点击左侧链接。
+        :type EnterpriseLicenseInfos: list of EnterpriseLicenseInfo
+        :param Angle: 图片旋转角度（角度制），文本的水平方向为0°，顺时针为正，逆时针为负。
+        :type Angle: float
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.EnterpriseLicenseInfos = None
+        self.Angle = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("EnterpriseLicenseInfos") is not None:
+            self.EnterpriseLicenseInfos = []
+            for item in params.get("EnterpriseLicenseInfos"):
+                obj = EnterpriseLicenseInfo()
+                obj._deserialize(item)
+                self.EnterpriseLicenseInfos.append(obj)
+        self.Angle = params.get("Angle")
         self.RequestId = params.get("RequestId")
 
 
@@ -1615,6 +1703,81 @@ class InstitutionOCRResponse(AbstractModel):
         self.Location = params.get("Location")
         self.Name = params.get("Name")
         self.LegalPerson = params.get("LegalPerson")
+        self.RequestId = params.get("RequestId")
+
+
+class InsuranceBillInfo(AbstractModel):
+    """保险单据信息
+
+    """
+
+    def __init__(self):
+        """
+        :param Name: 识别出的字段名称（关键字）。
+        :type Name: str
+        :param Value: 识别出的字段名称对应的值，也就是字段Name对应的字符串结果。
+        :type Value: str
+        """
+        self.Name = None
+        self.Value = None
+
+
+    def _deserialize(self, params):
+        self.Name = params.get("Name")
+        self.Value = params.get("Value")
+
+
+class InsuranceBillOCRRequest(AbstractModel):
+    """InsuranceBillOCR请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ImageBase64: 图片的 Base64 值。
+支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。
+支持的图片大小：所下载图片经Base64编码后不超过 3M。图片下载时间不超过 3 秒。
+图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
+        :type ImageBase64: str
+        :param ImageUrl: 图片的 Url 地址。
+支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。
+支持的图片大小：所下载图片经 Base64 编码后不超过 3M。图片下载时间不超过 3 秒。
+图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。
+非腾讯云存储的 Url 速度和稳定性可能受一定影响。
+        :type ImageUrl: str
+        """
+        self.ImageBase64 = None
+        self.ImageUrl = None
+
+
+    def _deserialize(self, params):
+        self.ImageBase64 = params.get("ImageBase64")
+        self.ImageUrl = params.get("ImageUrl")
+
+
+class InsuranceBillOCRResponse(AbstractModel):
+    """InsuranceBillOCR返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param InsuranceBillInfos: 保险单据识别结果，具体内容请点击左侧链接。
+        :type InsuranceBillInfos: list of InsuranceBillInfo
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.InsuranceBillInfos = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("InsuranceBillInfos") is not None:
+            self.InsuranceBillInfos = []
+            for item in params.get("InsuranceBillInfos"):
+                obj = InsuranceBillInfo()
+                obj._deserialize(item)
+                self.InsuranceBillInfos.append(obj)
         self.RequestId = params.get("RequestId")
 
 
@@ -2521,6 +2684,64 @@ class QrcodeResultsInfo(AbstractModel):
         if params.get("Position") is not None:
             self.Position = QrcodePositionObj()
             self.Position._deserialize(params.get("Position"))
+
+
+class QuestionBlockObj(AbstractModel):
+    """数学试题识别结构化对象
+
+    """
+
+    def __init__(self):
+        """
+        :param QuestionArr: 数学试题识别结构化信息数组
+        :type QuestionArr: list of QuestionObj
+        """
+        self.QuestionArr = None
+
+
+    def _deserialize(self, params):
+        if params.get("QuestionArr") is not None:
+            self.QuestionArr = []
+            for item in params.get("QuestionArr"):
+                obj = QuestionObj()
+                obj._deserialize(item)
+                self.QuestionArr.append(obj)
+
+
+class QuestionObj(AbstractModel):
+    """试题识别结构化信息
+
+    """
+
+    def __init__(self):
+        """
+        :param QuestionTextNo: 题号
+        :type QuestionTextNo: str
+        :param QuestionTextType: 题型：
+1: "选择题"
+2: "填空题"
+3: "解答题"
+        :type QuestionTextType: int
+        :param QuestionText: 题干
+        :type QuestionText: str
+        :param QuestionOptions: 选择题选项，包含1个或多个option
+        :type QuestionOptions: str
+        :param QuestionSubquestion: 所有子题的question属性
+        :type QuestionSubquestion: str
+        """
+        self.QuestionTextNo = None
+        self.QuestionTextType = None
+        self.QuestionText = None
+        self.QuestionOptions = None
+        self.QuestionSubquestion = None
+
+
+    def _deserialize(self, params):
+        self.QuestionTextNo = params.get("QuestionTextNo")
+        self.QuestionTextType = params.get("QuestionTextType")
+        self.QuestionText = params.get("QuestionText")
+        self.QuestionOptions = params.get("QuestionOptions")
+        self.QuestionSubquestion = params.get("QuestionSubquestion")
 
 
 class QuotaInvoiceOCRRequest(AbstractModel):
@@ -3472,6 +3693,8 @@ class TrainTicketOCRResponse(AbstractModel):
         :type Price: str
         :param SeatCategory: 席别
         :type SeatCategory: str
+        :param ID: 身份证号
+        :type ID: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -3484,6 +3707,7 @@ class TrainTicketOCRResponse(AbstractModel):
         self.Name = None
         self.Price = None
         self.SeatCategory = None
+        self.ID = None
         self.RequestId = None
 
 
@@ -3497,6 +3721,7 @@ class TrainTicketOCRResponse(AbstractModel):
         self.Name = params.get("Name")
         self.Price = params.get("Price")
         self.SeatCategory = params.get("SeatCategory")
+        self.ID = params.get("ID")
         self.RequestId = params.get("RequestId")
 
 

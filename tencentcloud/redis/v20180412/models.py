@@ -16,6 +16,111 @@
 from tencentcloud.common.abstract_model import AbstractModel
 
 
+class Account(AbstractModel):
+    """子账号信息
+
+    """
+
+    def __init__(self):
+        """
+        :param InstanceId: 实例ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InstanceId: str
+        :param AccountName: 账号名称（如果是主账号，名称为root）
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AccountName: str
+        :param Remark: 账号描述信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Remark: str
+        :param Privilege: 读写策略：r-只读，w-只写，rw-读写
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Privilege: str
+        :param ReadonlyPolicy: 路由策略：master-主节点，replication-从节点
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ReadonlyPolicy: list of str
+        :param Status: 子账号状态：1-账号变更中，2-账号有效，-4-账号已删除
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Status: int
+        """
+        self.InstanceId = None
+        self.AccountName = None
+        self.Remark = None
+        self.Privilege = None
+        self.ReadonlyPolicy = None
+        self.Status = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.AccountName = params.get("AccountName")
+        self.Remark = params.get("Remark")
+        self.Privilege = params.get("Privilege")
+        self.ReadonlyPolicy = params.get("ReadonlyPolicy")
+        self.Status = params.get("Status")
+
+
+class BigKeyInfo(AbstractModel):
+    """大Key详情
+
+    """
+
+    def __init__(self):
+        """
+        :param DB: 所属的database
+        :type DB: int
+        :param Key: 大Key
+        :type Key: str
+        :param Type: 类型
+        :type Type: str
+        :param Size: 大小
+        :type Size: int
+        :param Updatetime: 数据时间戳
+        :type Updatetime: int
+        """
+        self.DB = None
+        self.Key = None
+        self.Type = None
+        self.Size = None
+        self.Updatetime = None
+
+
+    def _deserialize(self, params):
+        self.DB = params.get("DB")
+        self.Key = params.get("Key")
+        self.Type = params.get("Type")
+        self.Size = params.get("Size")
+        self.Updatetime = params.get("Updatetime")
+
+
+class BigKeyTypeInfo(AbstractModel):
+    """大Key类型分布详情
+
+    """
+
+    def __init__(self):
+        """
+        :param Type: 类型
+        :type Type: str
+        :param Count: 数量
+        :type Count: int
+        :param Size: 大小
+        :type Size: int
+        :param Updatetime: 时间戳
+        :type Updatetime: int
+        """
+        self.Type = None
+        self.Count = None
+        self.Size = None
+        self.Updatetime = None
+
+
+    def _deserialize(self, params):
+        self.Type = params.get("Type")
+        self.Count = params.get("Count")
+        self.Size = params.get("Size")
+        self.Updatetime = params.get("Updatetime")
+
+
 class CleanUpInstanceRequest(AbstractModel):
     """CleanUpInstance请求参数结构体
 
@@ -83,6 +188,85 @@ class ClearInstanceResponse(AbstractModel):
     def __init__(self):
         """
         :param TaskId: 任务Id
+        :type TaskId: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TaskId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TaskId = params.get("TaskId")
+        self.RequestId = params.get("RequestId")
+
+
+class CommandTake(AbstractModel):
+    """命令耗时
+
+    """
+
+    def __init__(self):
+        """
+        :param Cmd: 命令
+        :type Cmd: str
+        :param Took: 耗时
+        :type Took: int
+        """
+        self.Cmd = None
+        self.Took = None
+
+
+    def _deserialize(self, params):
+        self.Cmd = params.get("Cmd")
+        self.Took = params.get("Took")
+
+
+class CreateInstanceAccountRequest(AbstractModel):
+    """CreateInstanceAccount请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param InstanceId: 实例ID
+        :type InstanceId: str
+        :param AccountName: 子账号名称
+        :type AccountName: str
+        :param AccountPassword: 子账号密码
+        :type AccountPassword: str
+        :param ReadonlyPolicy: 路由策略：填写master或者replication，表示主节点或者从节点
+        :type ReadonlyPolicy: list of str
+        :param Privilege: 读写策略：填写r、w、rw，表示只读、只写、读写
+        :type Privilege: str
+        :param Remark: 子账号描述信息
+        :type Remark: str
+        """
+        self.InstanceId = None
+        self.AccountName = None
+        self.AccountPassword = None
+        self.ReadonlyPolicy = None
+        self.Privilege = None
+        self.Remark = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.AccountName = params.get("AccountName")
+        self.AccountPassword = params.get("AccountPassword")
+        self.ReadonlyPolicy = params.get("ReadonlyPolicy")
+        self.Privilege = params.get("Privilege")
+        self.Remark = params.get("Remark")
+
+
+class CreateInstanceAccountResponse(AbstractModel):
+    """CreateInstanceAccount返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param TaskId: 任务ID
         :type TaskId: int
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -206,6 +390,69 @@ class CreateInstancesResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DelayDistribution(AbstractModel):
+    """延时分布详情
+
+    """
+
+    def __init__(self):
+        """
+        :param Ladder: 分布阶梯
+        :type Ladder: int
+        :param Size: 大小
+        :type Size: int
+        """
+        self.Ladder = None
+        self.Size = None
+
+
+    def _deserialize(self, params):
+        self.Ladder = params.get("Ladder")
+        self.Size = params.get("Size")
+
+
+class DeleteInstanceAccountRequest(AbstractModel):
+    """DeleteInstanceAccount请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param InstanceId: 实例ID
+        :type InstanceId: str
+        :param AccountName: 子账号名称
+        :type AccountName: str
+        """
+        self.InstanceId = None
+        self.AccountName = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.AccountName = params.get("AccountName")
+
+
+class DeleteInstanceAccountResponse(AbstractModel):
+    """DeleteInstanceAccount返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param TaskId: 任务ID
+        :type TaskId: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TaskId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TaskId = params.get("TaskId")
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeAutoBackupConfigRequest(AbstractModel):
     """DescribeAutoBackupConfig请求参数结构体
 
@@ -295,6 +542,63 @@ class DescribeBackupUrlResponse(AbstractModel):
     def _deserialize(self, params):
         self.DownloadUrl = params.get("DownloadUrl")
         self.InnerDownloadUrl = params.get("InnerDownloadUrl")
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeInstanceAccountRequest(AbstractModel):
+    """DescribeInstanceAccount请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param InstanceId: 实例ID
+        :type InstanceId: str
+        :param Limit: 分页大小
+        :type Limit: int
+        :param Offset: 分页偏移量
+        :type Offset: int
+        """
+        self.InstanceId = None
+        self.Limit = None
+        self.Offset = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.Limit = params.get("Limit")
+        self.Offset = params.get("Offset")
+
+
+class DescribeInstanceAccountResponse(AbstractModel):
+    """DescribeInstanceAccount返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Accounts: 账号详细信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Accounts: list of Account
+        :param TotalCount: 账号个数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TotalCount: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Accounts = None
+        self.TotalCount = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Accounts") is not None:
+            self.Accounts = []
+            for item in params.get("Accounts"):
+                obj = Account()
+                obj._deserialize(item)
+                self.Accounts.append(obj)
+        self.TotalCount = params.get("TotalCount")
         self.RequestId = params.get("RequestId")
 
 
@@ -405,6 +709,386 @@ class DescribeInstanceDealDetailResponse(AbstractModel):
                 obj = TradeDealDetail()
                 obj._deserialize(item)
                 self.DealDetails.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeInstanceMonitorBigKeyRequest(AbstractModel):
+    """DescribeInstanceMonitorBigKey请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param InstanceId: 实例Id
+        :type InstanceId: str
+        :param ReqType: 请求类型：1——string类型，2——所有类型
+        :type ReqType: int
+        :param Date: 时间；例如："20190219"
+        :type Date: str
+        """
+        self.InstanceId = None
+        self.ReqType = None
+        self.Date = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.ReqType = params.get("ReqType")
+        self.Date = params.get("Date")
+
+
+class DescribeInstanceMonitorBigKeyResponse(AbstractModel):
+    """DescribeInstanceMonitorBigKey返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Data: 大Key详细信息
+        :type Data: list of BigKeyInfo
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Data = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self.Data = []
+            for item in params.get("Data"):
+                obj = BigKeyInfo()
+                obj._deserialize(item)
+                self.Data.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeInstanceMonitorBigKeySizeDistRequest(AbstractModel):
+    """DescribeInstanceMonitorBigKeySizeDist请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param InstanceId: 实例Id
+        :type InstanceId: str
+        :param Date: 时间；例如："20190219"
+        :type Date: str
+        """
+        self.InstanceId = None
+        self.Date = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.Date = params.get("Date")
+
+
+class DescribeInstanceMonitorBigKeySizeDistResponse(AbstractModel):
+    """DescribeInstanceMonitorBigKeySizeDist返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Data: 大Key大小分布详情
+        :type Data: list of DelayDistribution
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Data = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self.Data = []
+            for item in params.get("Data"):
+                obj = DelayDistribution()
+                obj._deserialize(item)
+                self.Data.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeInstanceMonitorBigKeyTypeDistRequest(AbstractModel):
+    """DescribeInstanceMonitorBigKeyTypeDist请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param InstanceId: 实例Id
+        :type InstanceId: str
+        :param Date: 时间；例如："20190219"
+        :type Date: str
+        """
+        self.InstanceId = None
+        self.Date = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.Date = params.get("Date")
+
+
+class DescribeInstanceMonitorBigKeyTypeDistResponse(AbstractModel):
+    """DescribeInstanceMonitorBigKeyTypeDist返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Data: 大Key类型分布详细信息
+        :type Data: list of BigKeyTypeInfo
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Data = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self.Data = []
+            for item in params.get("Data"):
+                obj = BigKeyTypeInfo()
+                obj._deserialize(item)
+                self.Data.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeInstanceMonitorHotKeyRequest(AbstractModel):
+    """DescribeInstanceMonitorHotKey请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param InstanceId: 实例Id
+        :type InstanceId: str
+        :param SpanType: 时间范围：1——实时，2——近30分钟，3——近6小时，4——近24小时
+        :type SpanType: int
+        """
+        self.InstanceId = None
+        self.SpanType = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.SpanType = params.get("SpanType")
+
+
+class DescribeInstanceMonitorHotKeyResponse(AbstractModel):
+    """DescribeInstanceMonitorHotKey返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Data: 热Key详细信息
+        :type Data: list of HotKeyInfo
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Data = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self.Data = []
+            for item in params.get("Data"):
+                obj = HotKeyInfo()
+                obj._deserialize(item)
+                self.Data.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeInstanceMonitorSIPRequest(AbstractModel):
+    """DescribeInstanceMonitorSIP请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param InstanceId: 实例Id
+        :type InstanceId: str
+        """
+        self.InstanceId = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+
+
+class DescribeInstanceMonitorSIPResponse(AbstractModel):
+    """DescribeInstanceMonitorSIP返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Data: 访问来源信息
+        :type Data: list of SourceInfo
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Data = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self.Data = []
+            for item in params.get("Data"):
+                obj = SourceInfo()
+                obj._deserialize(item)
+                self.Data.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeInstanceMonitorTookDistRequest(AbstractModel):
+    """DescribeInstanceMonitorTookDist请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param InstanceId: 实例Id
+        :type InstanceId: str
+        :param Date: 时间；例如："20190219"
+        :type Date: str
+        :param SpanType: 请求类型：1——string类型，2——所有类型
+        :type SpanType: int
+        """
+        self.InstanceId = None
+        self.Date = None
+        self.SpanType = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.Date = params.get("Date")
+        self.SpanType = params.get("SpanType")
+
+
+class DescribeInstanceMonitorTookDistResponse(AbstractModel):
+    """DescribeInstanceMonitorTookDist返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Data: 时延分布信息
+        :type Data: list of DelayDistribution
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Data = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self.Data = []
+            for item in params.get("Data"):
+                obj = DelayDistribution()
+                obj._deserialize(item)
+                self.Data.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeInstanceMonitorTopNCmdRequest(AbstractModel):
+    """DescribeInstanceMonitorTopNCmd请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param InstanceId: 实例Id
+        :type InstanceId: str
+        :param SpanType: 时间范围：1——实时，2——近30分钟，3——近6小时，4——近24小时
+        :type SpanType: int
+        """
+        self.InstanceId = None
+        self.SpanType = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.SpanType = params.get("SpanType")
+
+
+class DescribeInstanceMonitorTopNCmdResponse(AbstractModel):
+    """DescribeInstanceMonitorTopNCmd返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Data: 访问命令信息
+        :type Data: list of SourceCommand
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Data = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self.Data = []
+            for item in params.get("Data"):
+                obj = SourceCommand()
+                obj._deserialize(item)
+                self.Data.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeInstanceMonitorTopNCmdTookRequest(AbstractModel):
+    """DescribeInstanceMonitorTopNCmdTook请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param InstanceId: 实例Id
+        :type InstanceId: str
+        :param SpanType: 时间范围：1——实时，2——近30分钟，3——近6小时，4——近24小时
+        :type SpanType: int
+        """
+        self.InstanceId = None
+        self.SpanType = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.SpanType = params.get("SpanType")
+
+
+class DescribeInstanceMonitorTopNCmdTookResponse(AbstractModel):
+    """DescribeInstanceMonitorTopNCmdTook返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Data: 耗时详细信息
+        :type Data: list of CommandTake
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Data = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self.Data = []
+            for item in params.get("Data"):
+                obj = CommandTake()
+                obj._deserialize(item)
+                self.Data.append(obj)
         self.RequestId = params.get("RequestId")
 
 
@@ -1077,12 +1761,16 @@ class EnableReplicaReadonlyRequest(AbstractModel):
         """
         :param InstanceId: 实例序号ID
         :type InstanceId: str
+        :param ReadonlyPolicy: 账号路由策略：填写master或者replication，表示路由主节点，从节点；不填路由策略默认为写主节点，读从节点
+        :type ReadonlyPolicy: list of str
         """
         self.InstanceId = None
+        self.ReadonlyPolicy = None
 
 
     def _deserialize(self, params):
         self.InstanceId = params.get("InstanceId")
+        self.ReadonlyPolicy = params.get("ReadonlyPolicy")
 
 
 class EnableReplicaReadonlyResponse(AbstractModel):
@@ -1104,6 +1792,31 @@ class EnableReplicaReadonlyResponse(AbstractModel):
     def _deserialize(self, params):
         self.Status = params.get("Status")
         self.RequestId = params.get("RequestId")
+
+
+class HotKeyInfo(AbstractModel):
+    """热Key详细信息
+
+    """
+
+    def __init__(self):
+        """
+        :param Key: 热Key
+        :type Key: str
+        :param Type: 类型
+        :type Type: str
+        :param Count: 数量
+        :type Count: int
+        """
+        self.Key = None
+        self.Type = None
+        self.Count = None
+
+
+    def _deserialize(self, params):
+        self.Key = params.get("Key")
+        self.Type = params.get("Type")
+        self.Count = params.get("Count")
 
 
 class InstanceClusterNode(AbstractModel):
@@ -1880,6 +2593,68 @@ class ModifyAutoBackupConfigResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class ModifyInstanceAccountRequest(AbstractModel):
+    """ModifyInstanceAccount请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param InstanceId: 实例ID
+        :type InstanceId: str
+        :param AccountName: 子账号名称，如果要修改主账号，填root
+        :type AccountName: str
+        :param AccountPassword: 子账号密码
+        :type AccountPassword: str
+        :param Remark: 子账号描述信息
+        :type Remark: str
+        :param ReadonlyPolicy: 子账号路由策略：填写master或者slave，表示路由主节点，从节点
+        :type ReadonlyPolicy: list of str
+        :param Privilege: 子账号读写策略：填写r、w、rw，表示只读，只写，读写策略
+        :type Privilege: str
+        :param NoAuth: true表示将主账号切换为免密账号，这里只适用于主账号，子账号不可免密
+        :type NoAuth: bool
+        """
+        self.InstanceId = None
+        self.AccountName = None
+        self.AccountPassword = None
+        self.Remark = None
+        self.ReadonlyPolicy = None
+        self.Privilege = None
+        self.NoAuth = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.AccountName = params.get("AccountName")
+        self.AccountPassword = params.get("AccountPassword")
+        self.Remark = params.get("Remark")
+        self.ReadonlyPolicy = params.get("ReadonlyPolicy")
+        self.Privilege = params.get("Privilege")
+        self.NoAuth = params.get("NoAuth")
+
+
+class ModifyInstanceAccountResponse(AbstractModel):
+    """ModifyInstanceAccount返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param TaskId: 任务ID
+        :type TaskId: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TaskId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TaskId = params.get("TaskId")
+        self.RequestId = params.get("RequestId")
+
+
 class ModifyInstanceParamsRequest(AbstractModel):
     """ModifyInstanceParams请求参数结构体
 
@@ -2399,6 +3174,52 @@ class SecurityGroupsInboundAndOutbound(AbstractModel):
         self.Ip = params.get("Ip")
         self.Port = params.get("Port")
         self.Proto = params.get("Proto")
+
+
+class SourceCommand(AbstractModel):
+    """访问命令
+
+    """
+
+    def __init__(self):
+        """
+        :param Cmd: 命令
+        :type Cmd: str
+        :param Count: 执行次数
+        :type Count: int
+        """
+        self.Cmd = None
+        self.Count = None
+
+
+    def _deserialize(self, params):
+        self.Cmd = params.get("Cmd")
+        self.Count = params.get("Count")
+
+
+class SourceInfo(AbstractModel):
+    """访问来源信息
+
+    """
+
+    def __init__(self):
+        """
+        :param Ip: 来源IP
+        :type Ip: str
+        :param Conn: 连接数
+        :type Conn: int
+        :param Cmd: 命令
+        :type Cmd: int
+        """
+        self.Ip = None
+        self.Conn = None
+        self.Cmd = None
+
+
+    def _deserialize(self, params):
+        self.Ip = params.get("Ip")
+        self.Conn = params.get("Conn")
+        self.Cmd = params.get("Cmd")
 
 
 class SwitchInstanceVipRequest(AbstractModel):

@@ -323,7 +323,7 @@ class KeywordsExtractionRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Text: 待处理的文本（仅支持UTF-8格式，不超过2000字）
+        :param Text: 待处理的文本（仅支持UTF-8格式，不超过10000字）
         :type Text: str
         :param Num: 指定关键词个数上限（默认值为5）
         :type Num: int

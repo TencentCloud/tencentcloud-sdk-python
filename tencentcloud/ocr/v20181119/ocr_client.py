@@ -305,6 +305,34 @@ class OcrClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def EnterpriseLicenseOCR(self, request):
+        """本接口支持智能化识别各类企业登记证书、许可证书、企业执照、三证合一类证书，结构化输出统一社会信用代码、公司名称、法定代表人、公司地址、注册资金、企业类型、经营范围等关键字段。
+
+        :param request: 调用EnterpriseLicenseOCR所需参数的结构体。
+        :type request: :class:`tencentcloud.ocr.v20181119.models.EnterpriseLicenseOCRRequest`
+        :rtype: :class:`tencentcloud.ocr.v20181119.models.EnterpriseLicenseOCRResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("EnterpriseLicenseOCR", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.EnterpriseLicenseOCRResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def EstateCertOCR(self, request):
         """本接口支持不动产权证关键字段的识别，包括使用期限、面积、用途、权利性质、权利类型、坐落、共有情况、权利人、权利其他状况等。
 
@@ -629,6 +657,34 @@ class OcrClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.InstitutionOCRResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def InsuranceBillOCR(self, request):
+        """本接口支持病案首页、费用清单、结算单、医疗发票四种保险理赔单据的文本识别和结构化输出。
+
+        :param request: 调用InsuranceBillOCR所需参数的结构体。
+        :type request: :class:`tencentcloud.ocr.v20181119.models.InsuranceBillOCRRequest`
+        :rtype: :class:`tencentcloud.ocr.v20181119.models.InsuranceBillOCRResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("InsuranceBillOCR", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.InsuranceBillOCRResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

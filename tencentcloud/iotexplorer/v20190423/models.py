@@ -16,6 +16,119 @@
 from tencentcloud.common.abstract_model import AbstractModel
 
 
+class CallDeviceActionAsyncRequest(AbstractModel):
+    """CallDeviceActionAsync请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ProductId: 产品Id
+        :type ProductId: str
+        :param DeviceName: 设备名称
+        :type DeviceName: str
+        :param ActionId: 动作Id
+        :type ActionId: str
+        :param InputParams: 输入参数
+        :type InputParams: str
+        """
+        self.ProductId = None
+        self.DeviceName = None
+        self.ActionId = None
+        self.InputParams = None
+
+
+    def _deserialize(self, params):
+        self.ProductId = params.get("ProductId")
+        self.DeviceName = params.get("DeviceName")
+        self.ActionId = params.get("ActionId")
+        self.InputParams = params.get("InputParams")
+
+
+class CallDeviceActionAsyncResponse(AbstractModel):
+    """CallDeviceActionAsync返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ClientToken: 调用Id
+        :type ClientToken: str
+        :param Status: 异步调用状态
+        :type Status: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.ClientToken = None
+        self.Status = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.ClientToken = params.get("ClientToken")
+        self.Status = params.get("Status")
+        self.RequestId = params.get("RequestId")
+
+
+class CallDeviceActionSyncRequest(AbstractModel):
+    """CallDeviceActionSync请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ProductId: 产品Id
+        :type ProductId: str
+        :param DeviceName: 设备名称
+        :type DeviceName: str
+        :param ActionId: 动作Id
+        :type ActionId: str
+        :param InputParams: 输入参数
+        :type InputParams: str
+        """
+        self.ProductId = None
+        self.DeviceName = None
+        self.ActionId = None
+        self.InputParams = None
+
+
+    def _deserialize(self, params):
+        self.ProductId = params.get("ProductId")
+        self.DeviceName = params.get("DeviceName")
+        self.ActionId = params.get("ActionId")
+        self.InputParams = params.get("InputParams")
+
+
+class CallDeviceActionSyncResponse(AbstractModel):
+    """CallDeviceActionSync返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ClientToken: 调用Id
+        :type ClientToken: str
+        :param OutputParams: 输出参数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OutputParams: str
+        :param Status: 返回状态
+        :type Status: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.ClientToken = None
+        self.OutputParams = None
+        self.Status = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.ClientToken = params.get("ClientToken")
+        self.OutputParams = params.get("OutputParams")
+        self.Status = params.get("Status")
+        self.RequestId = params.get("RequestId")
+
+
 class ControlDeviceDataRequest(AbstractModel):
     """ControlDeviceData请求参数结构体
 
@@ -474,14 +587,18 @@ class DescribeDeviceRequest(AbstractModel):
         :type ProductId: str
         :param DeviceName: 设备名
         :type DeviceName: str
+        :param DeviceId: 设备ID，该字段有值将代替 ProductId/DeviceName
+        :type DeviceId: str
         """
         self.ProductId = None
         self.DeviceName = None
+        self.DeviceId = None
 
 
     def _deserialize(self, params):
         self.ProductId = params.get("ProductId")
         self.DeviceName = params.get("DeviceName")
+        self.DeviceId = params.get("DeviceId")
 
 
 class DescribeDeviceResponse(AbstractModel):

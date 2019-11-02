@@ -91,6 +91,8 @@ class IaiClient(AbstractClient):
 
     def CopyPerson(self, request):
         """将已存在于某人员库的人员复制到其他人员库，该人员的描述信息不会被复制。单个人员最多只能同时存在100个人员库中。
+        >
+        - 注：若该人员创建时算法模型版本为2.0，复制到非2.0算法模型版本的Group中时，复制操作将会失败。
 
         :param request: 调用CopyPerson所需参数的结构体。
         :type request: :class:`tencentcloud.iai.v20180301.models.CopyPersonRequest`
@@ -657,6 +659,101 @@ class IaiClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def SearchFacesReturnsByGroup(self, request):
+        """用于对一张待识别的人脸图片，在一个或多个人员库中识别出最相似的 TopN 人员，按照人员库的维度以人员相似度从大到小顺序排列。
+        此接口需与[人员库管理相关接口](https://cloud.tencent.com/document/product/867/32794)结合使用。
+
+        :param request: 调用SearchFacesReturnsByGroup所需参数的结构体。
+        :type request: :class:`tencentcloud.iai.v20180301.models.SearchFacesReturnsByGroupRequest`
+        :rtype: :class:`tencentcloud.iai.v20180301.models.SearchFacesReturnsByGroupResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("SearchFacesReturnsByGroup", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.SearchFacesReturnsByGroupResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def SearchPersons(self, request):
+        """用于对一张待识别的人脸图片，在一个或多个人员库中识别出最相似的 TopN 人员，按照相似度从大到小排列。
+
+        本接口会将该人员（Person）下的所有人脸（Face）进行融合特征处理，即若某个 Person 下有4张 Face ，本接口会将4张 Face 的特征进行融合处理，生成对应这个 Person 的特征，使人员搜索（确定待识别的人脸图片是某人）更加准确。
+
+        人员搜索接口和人脸搜索接口的区别是：人脸搜索会比对该 Person 下所有 Face ，而人员搜索比对的是该 Person 的 Person 特征。
+        >
+        - 公共参数中的签名方式请使用V3版本，即配置SignatureMethod参数为TC3-HMAC-SHA256。
+
+        :param request: 调用SearchPersons所需参数的结构体。
+        :type request: :class:`tencentcloud.iai.v20180301.models.SearchPersonsRequest`
+        :rtype: :class:`tencentcloud.iai.v20180301.models.SearchPersonsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("SearchPersons", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.SearchPersonsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def SearchPersonsReturnsByGroup(self, request):
+        """用于对一张待识别的人脸图片，在一个或多个人员库中识别出最相似的 TopN 人员，按照人员库的维度以人员相似度从大到小顺序排列。
+
+        本接口会将该人员（Person）下的所有人脸（Face）进行融合特征处理，即若某个Person下有4张 Face，本接口会将4张 Face 的特征进行融合处理，生成对应这个 Person 的特征，使人员搜索（确定待识别的人脸图片是某人员）更加准确。
+
+        人员搜索和人脸搜索的区别是：人脸搜索比对该 Person 下所有 Face ，而人员搜索比对的是该 Person 的 Person 特征。
+
+        :param request: 调用SearchPersonsReturnsByGroup所需参数的结构体。
+        :type request: :class:`tencentcloud.iai.v20180301.models.SearchPersonsReturnsByGroupRequest`
+        :rtype: :class:`tencentcloud.iai.v20180301.models.SearchPersonsReturnsByGroupResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("SearchPersonsReturnsByGroup", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.SearchPersonsReturnsByGroupResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def VerifyFace(self, request):
         """给定一张人脸图片和一个 PersonId，判断图片中的人和 PersonId 对应的人是否为同一人。PersonId 请参考[人员库管理相关接口](https://cloud.tencent.com/document/product/867/32794)。 和[人脸比对](https://cloud.tencent.com/document/product/867/32802)接口不同的是，[人脸验证](https://cloud.tencent.com/document/product/867/32806)用于判断 “此人是否是此人”，“此人”的信息已存于人员库中，“此人”可能存在多张人脸图片；而[人脸比对](https://cloud.tencent.com/document/product/867/32802)用于判断两张人脸的相似度。
 
@@ -674,6 +771,41 @@ class IaiClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.VerifyFaceResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def VerifyPerson(self, request):
+        """给定一张人脸图片和一个 PersonId，判断图片中的人和 PersonId 对应的人是否为同一人。PersonId 请参考[人员库管理相关接口](https://cloud.tencent.com/document/product/867/32794)。
+        本接口会将该人员（Person）下的所有人脸（Face）进行融合特征处理，即若某个Person下有4张 Face，本接口会将4张 Face 的特征进行融合处理，生成对应这个 Person 的特征，使人员验证（确定待识别的人脸图片是某人员）更加准确。
+
+         和人脸比对相关接口不同的是，人脸验证相关接口用于判断 “此人是否是此人”，“此人”的信息已存于人员库中，“此人”可能存在多张人脸图片；而人脸比对相关接口用于判断两张人脸的相似度。
+
+
+        >
+        - 公共参数中的签名方式请使用V3版本，即配置SignatureMethod参数为TC3-HMAC-SHA256。
+
+        :param request: 调用VerifyPerson所需参数的结构体。
+        :type request: :class:`tencentcloud.iai.v20180301.models.VerifyPersonRequest`
+        :rtype: :class:`tencentcloud.iai.v20180301.models.VerifyPersonResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("VerifyPerson", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.VerifyPersonResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

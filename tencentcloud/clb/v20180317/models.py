@@ -1803,6 +1803,9 @@ class Listener(AbstractModel):
         :param CreateTime: 监听器的创建时间。
 注意：此字段可能返回 null，表示取不到有效值。
         :type CreateTime: str
+        :param EndPort: 端口段结束端口
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EndPort: int
         """
         self.ListenerId = None
         self.Protocol = None
@@ -1815,6 +1818,7 @@ class Listener(AbstractModel):
         self.Rules = None
         self.ListenerName = None
         self.CreateTime = None
+        self.EndPort = None
 
 
     def _deserialize(self, params):
@@ -1838,6 +1842,7 @@ class Listener(AbstractModel):
                 self.Rules.append(obj)
         self.ListenerName = params.get("ListenerName")
         self.CreateTime = params.get("CreateTime")
+        self.EndPort = params.get("EndPort")
 
 
 class ListenerBackend(AbstractModel):
@@ -2031,6 +2036,12 @@ OPEN：公网属性， INTERNAL：内网属性。
         :param ExtraInfo: 暂做保留，一般用户无需关注。
 注意：此字段可能返回 null，表示取不到有效值。
         :type ExtraInfo: :class:`tencentcloud.clb.v20180317.models.ExtraInfo`
+        :param IsDDos: 是否可绑定高防包
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IsDDos: bool
+        :param ConfigId: 负载均衡维度的个性化配置ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ConfigId: str
         """
         self.LoadBalancerId = None
         self.LoadBalancerName = None
@@ -2066,6 +2077,8 @@ OPEN：公网属性， INTERNAL：内网属性。
         self.LogTopicId = None
         self.AddressIPv6 = None
         self.ExtraInfo = None
+        self.IsDDos = None
+        self.ConfigId = None
 
 
     def _deserialize(self, params):
@@ -2123,6 +2136,8 @@ OPEN：公网属性， INTERNAL：内网属性。
         if params.get("ExtraInfo") is not None:
             self.ExtraInfo = ExtraInfo()
             self.ExtraInfo._deserialize(params.get("ExtraInfo"))
+        self.IsDDos = params.get("IsDDos")
+        self.ConfigId = params.get("ConfigId")
 
 
 class LoadBalancerHealth(AbstractModel):
@@ -2225,7 +2240,7 @@ class ModifyDomainAttributesRequest(AbstractModel):
         :type NewDomain: str
         :param Certificate: 域名相关的证书信息，注意，仅对启用SNI的监听器适用。
         :type Certificate: :class:`tencentcloud.clb.v20180317.models.CertificateInput`
-        :param Http2: 是否开启Http2，注意，只用HTTPS域名才能开启Http2。
+        :param Http2: 是否开启Http2，注意，只有HTTPS域名才能开启Http2。
         :type Http2: bool
         :param DefaultServer: 是否设为默认域名，注意，一个监听器下只能设置一个默认域名。
         :type DefaultServer: bool
@@ -2336,6 +2351,8 @@ class ModifyListenerRequest(AbstractModel):
         :param Scheduler: 监听器转发的方式。可选值：WRR、LEAST_CONN
 分别表示按权重轮询、最小连接数， 默认为 WRR。
         :type Scheduler: str
+        :param SniSwitch: 是否开启SNI特性，此参数仅适用于HTTPS监听器。注意：未开启SNI的监听器可以开启SNI；已开启SNI的监听器不能关闭SNI
+        :type SniSwitch: int
         """
         self.LoadBalancerId = None
         self.ListenerId = None
@@ -2344,6 +2361,7 @@ class ModifyListenerRequest(AbstractModel):
         self.HealthCheck = None
         self.Certificate = None
         self.Scheduler = None
+        self.SniSwitch = None
 
 
     def _deserialize(self, params):
@@ -2358,6 +2376,7 @@ class ModifyListenerRequest(AbstractModel):
             self.Certificate = CertificateInput()
             self.Certificate._deserialize(params.get("Certificate"))
         self.Scheduler = params.get("Scheduler")
+        self.SniSwitch = params.get("SniSwitch")
 
 
 class ModifyListenerResponse(AbstractModel):
@@ -2815,10 +2834,10 @@ class RsWeightRule(AbstractModel):
         """
         :param ListenerId: 负载均衡监听器 ID
         :type ListenerId: str
-        :param LocationId: 转发规则的ID
-        :type LocationId: str
         :param Targets: 要修改权重的后端机器列表
         :type Targets: list of Target
+        :param LocationId: 转发规则的ID，七层规则时需要此参数，4层规则不需要
+        :type LocationId: str
         :param Domain: 目标规则的域名，提供LocationId参数时本参数不生效
         :type Domain: str
         :param Url: 目标规则的URL，提供LocationId参数时本参数不生效
@@ -2827,8 +2846,8 @@ class RsWeightRule(AbstractModel):
         :type Weight: int
         """
         self.ListenerId = None
-        self.LocationId = None
         self.Targets = None
+        self.LocationId = None
         self.Domain = None
         self.Url = None
         self.Weight = None
@@ -2836,13 +2855,13 @@ class RsWeightRule(AbstractModel):
 
     def _deserialize(self, params):
         self.ListenerId = params.get("ListenerId")
-        self.LocationId = params.get("LocationId")
         if params.get("Targets") is not None:
             self.Targets = []
             for item in params.get("Targets"):
                 obj = Target()
                 obj._deserialize(item)
                 self.Targets.append(obj)
+        self.LocationId = params.get("LocationId")
         self.Domain = params.get("Domain")
         self.Url = params.get("Url")
         self.Weight = params.get("Weight")
@@ -2911,6 +2930,8 @@ class RuleInput(AbstractModel):
         :type DefaultServer: bool
         :param Http2: 是否开启Http2，注意，只用HTTPS域名才能开启Http2。
         :type Http2: bool
+        :param TargetType: 后端目标类型，NODE表示绑定普通节点，TARGETGROUP表示绑定目标组
+        :type TargetType: str
         """
         self.Domain = None
         self.Url = None
@@ -2921,6 +2942,7 @@ class RuleInput(AbstractModel):
         self.ForwardType = None
         self.DefaultServer = None
         self.Http2 = None
+        self.TargetType = None
 
 
     def _deserialize(self, params):
@@ -2937,6 +2959,7 @@ class RuleInput(AbstractModel):
         self.ForwardType = params.get("ForwardType")
         self.DefaultServer = params.get("DefaultServer")
         self.Http2 = params.get("Http2")
+        self.TargetType = params.get("TargetType")
 
 
 class RuleOutput(AbstractModel):

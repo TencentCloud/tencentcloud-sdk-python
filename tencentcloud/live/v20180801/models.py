@@ -1020,10 +1020,8 @@ class CreateLiveTranscodeTemplateRequest(AbstractModel):
         :param VideoBitrate: 视频码率。范围：100-8000。
         :type VideoBitrate: int
         :param Vcodec: 视频编码：h264/h265，默认h264。
-注意：当前该参数未生效，待后续支持！
         :type Vcodec: str
         :param Acodec: 音频编码：aac，默认原始音频格式。
-注意：当前该参数未生效，待后续支持！
         :type Acodec: str
         :param AudioBitrate: 音频码率：默认0。0-500。
         :type AudioBitrate: int
