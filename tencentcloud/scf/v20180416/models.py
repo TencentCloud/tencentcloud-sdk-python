@@ -328,6 +328,8 @@ class CreateTriggerRequest(AbstractModel):
         :type Qualifier: str
         :param Enable: 触发器的初始是能状态 OPEN表示开启 CLOSE表示关闭
         :type Enable: str
+        :param CustomArgument: timer触发器参数
+        :type CustomArgument: str
         """
         self.FunctionName = None
         self.TriggerName = None
@@ -336,6 +338,7 @@ class CreateTriggerRequest(AbstractModel):
         self.Namespace = None
         self.Qualifier = None
         self.Enable = None
+        self.CustomArgument = None
 
 
     def _deserialize(self, params):
@@ -346,6 +349,7 @@ class CreateTriggerRequest(AbstractModel):
         self.Namespace = params.get("Namespace")
         self.Qualifier = params.get("Qualifier")
         self.Enable = params.get("Enable")
+        self.CustomArgument = params.get("CustomArgument")
 
 
 class CreateTriggerResponse(AbstractModel):
