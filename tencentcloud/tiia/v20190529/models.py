@@ -378,14 +378,22 @@ class DetectLabelItem(AbstractModel):
         :type Name: str
         :param Confidence: 算法对于Name的置信度，0-100之间，值越高，表示对于Name越确定。
         :type Confidence: int
+        :param FirstCategory: 标签的一级分类
+        :type FirstCategory: str
+        :param SecondCategory: 标签的二级分类
+        :type SecondCategory: str
         """
         self.Name = None
         self.Confidence = None
+        self.FirstCategory = None
+        self.SecondCategory = None
 
 
     def _deserialize(self, params):
         self.Name = params.get("Name")
         self.Confidence = params.get("Confidence")
+        self.FirstCategory = params.get("FirstCategory")
+        self.SecondCategory = params.get("SecondCategory")
 
 
 class DetectLabelRequest(AbstractModel):
@@ -406,14 +414,24 @@ class DetectLabelRequest(AbstractModel):
         :type ImageUrl: str
         :param ImageBase64: 图片经过base64编码的内容。最大不超过4M。与ImageUrl同时存在时优先使用ImageUrl字段。
         :type ImageBase64: str
+        :param Scenes: 本次调用支持的识别场景，可选值如下：
+WEB，针对网络图片优化;
+CAMERA，针对手机摄像头拍摄图片优化;
+ALBUM，针对手机相册、网盘产品优化;
+如果不传此参数，则默认为WEB。
+
+支持多场景（Scenes）一起检测。例如，使用 Scenes=["WEB", "CAMERA"]，即对一张图片使用两个模型同时检测，输出两套识别结果。
+        :type Scenes: list of str
         """
         self.ImageUrl = None
         self.ImageBase64 = None
+        self.Scenes = None
 
 
     def _deserialize(self, params):
         self.ImageUrl = params.get("ImageUrl")
         self.ImageBase64 = params.get("ImageBase64")
+        self.Scenes = params.get("Scenes")
 
 
 class DetectLabelResponse(AbstractModel):
@@ -423,12 +441,21 @@ class DetectLabelResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param Labels: 标签结果数组。
+        :param Labels: Web网络版标签结果数组。如未选择WEB场景，则为空。
+注意：此字段可能返回 null，表示取不到有效值。
         :type Labels: list of DetectLabelItem
+        :param CameraLabels: Camera摄像头版标签结果数组。如未选择CAMERA场景，则为空。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CameraLabels: list of DetectLabelItem
+        :param AlbumLabels: Album相册版标签结果数组。如未选择ALBUM场景，则为空。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AlbumLabels: list of DetectLabelItem
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.Labels = None
+        self.CameraLabels = None
+        self.AlbumLabels = None
         self.RequestId = None
 
 
@@ -439,6 +466,18 @@ class DetectLabelResponse(AbstractModel):
                 obj = DetectLabelItem()
                 obj._deserialize(item)
                 self.Labels.append(obj)
+        if params.get("CameraLabels") is not None:
+            self.CameraLabels = []
+            for item in params.get("CameraLabels"):
+                obj = DetectLabelItem()
+                obj._deserialize(item)
+                self.CameraLabels.append(obj)
+        if params.get("AlbumLabels") is not None:
+            self.AlbumLabels = []
+            for item in params.get("AlbumLabels"):
+                obj = DetectLabelItem()
+                obj._deserialize(item)
+                self.AlbumLabels.append(obj)
         self.RequestId = params.get("RequestId")
 
 

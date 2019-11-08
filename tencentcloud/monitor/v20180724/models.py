@@ -148,7 +148,7 @@ class GetMonitorDataRequest(AbstractModel):
         :type Period: int
         :param StartTime: 起始时间，如2018-09-22T19:51:23+08:00
         :type StartTime: str
-        :param EndTime: 结束时间，默认为当前时间。 EndTime不能小于EtartTime
+        :param EndTime: 结束时间，默认为当前时间。 EndTime不能小于StartTime
         :type EndTime: str
         """
         self.Namespace = None

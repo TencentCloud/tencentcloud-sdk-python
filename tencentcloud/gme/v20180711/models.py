@@ -65,15 +65,15 @@ class CreateAppRequest(AbstractModel):
         :type AppName: str
         :param ProjectId: 腾讯云项目id，默认为0，表示默认项目
         :type ProjectId: int
-        :param EngineList: 需要支持的引擎列表，取值android, ios, uinty, cocos, unreal, windows。默认全选。
+        :param EngineList: 需要支持的引擎列表，取值android, ios, unity, cocos, unreal, windows。默认全选。
         :type EngineList: list of str
-        :param RegionList: 服务区域列表, 默认为空数组. 取值: mainland(美), sa(南美), eu(欧洲), oc(澳洲), me(中东)。默认全选
+        :param RegionList: 服务区域列表，取值: mainland(大陆地区), sa(南美), eu(欧洲), oc(澳洲), me(中东)。默认全选。
         :type RegionList: list of str
         :param RealtimeSpeechConf: 实时语音服务配置数据
         :type RealtimeSpeechConf: :class:`tencentcloud.gme.v20180711.models.RealtimeSpeechConf`
-        :param VoiceMessageConf: 离线语音服务配置数据
+        :param VoiceMessageConf: 语音消息及转文本服务配置数据
         :type VoiceMessageConf: :class:`tencentcloud.gme.v20180711.models.VoiceMessageConf`
-        :param VoiceFilterConf: 语音过滤服务配置数据
+        :param VoiceFilterConf: 语音分析服务配置数据
         :type VoiceFilterConf: :class:`tencentcloud.gme.v20180711.models.VoiceFilterConf`
         :param Tags: 需要添加的标签列表
         :type Tags: list of Tag
@@ -129,9 +129,9 @@ class CreateAppResponse(AbstractModel):
         :type CreateTime: int
         :param RealtimeSpeechConf: 实时语音服务配置数据
         :type RealtimeSpeechConf: :class:`tencentcloud.gme.v20180711.models.RealtimeSpeechConf`
-        :param VoiceMessageConf: 语音消息服务配置数据
+        :param VoiceMessageConf: 语音消息及转文本服务配置数据
         :type VoiceMessageConf: :class:`tencentcloud.gme.v20180711.models.VoiceMessageConf`
-        :param VoiceFilterConf: 语音过滤服务配置数据
+        :param VoiceFilterConf: 语音分析服务配置数据
         :type VoiceFilterConf: :class:`tencentcloud.gme.v20180711.models.VoiceFilterConf`
         """
         self.BizId = None
@@ -548,7 +548,7 @@ class ScanDetail(AbstractModel):
 
     def __init__(self):
         """
-        :param Label: 违规场景，参照Label定义
+        :param Label: 违规场景，参照<a href="https://cloud.tencent.com/document/product/607/37622#Label_Value">Label</a>定义
         :type Label: str
         :param Rate: 该场景下概率[0.00,100.00],分值越大违规概率越高
         :type Rate: str

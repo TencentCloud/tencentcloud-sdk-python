@@ -390,7 +390,7 @@ class CdnClient(AbstractClient):
 
 
     def PurgePathCache(self, request):
-        """PurgeUrlsCache 用于批量刷新目录缓存，一次提交将返回一个刷新任务id。
+        """PurgePathCache 用于批量刷新目录缓存，一次提交将返回一个刷新任务id。
 
         :param request: 调用PurgePathCache所需参数的结构体。
         :type request: :class:`tencentcloud.cdn.v20180606.models.PurgePathCacheRequest`

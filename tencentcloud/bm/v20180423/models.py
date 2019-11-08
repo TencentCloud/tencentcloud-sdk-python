@@ -16,6 +16,44 @@
 from tencentcloud.common.abstract_model import AbstractModel
 
 
+class AttachCamRoleRequest(AbstractModel):
+    """AttachCamRole请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param InstanceId: 服务器ID
+        :type InstanceId: str
+        :param RoleName: 角色名称。
+        :type RoleName: str
+        """
+        self.InstanceId = None
+        self.RoleName = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.RoleName = params.get("RoleName")
+
+
+class AttachCamRoleResponse(AbstractModel):
+    """AttachCamRole返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class BindPsaTagRequest(AbstractModel):
     """BindPsaTag请求参数结构体
 
@@ -67,7 +105,7 @@ class BuyDevicesRequest(AbstractModel):
         """
         :param Zone: 可用区ID。通过接口[查询地域以及可用区(DescribeRegions)](https://cloud.tencent.com/document/api/386/33564)获取可用区信息
         :type Zone: str
-        :param OsTypeId: 部署服务器的操作系统ID。通过接口[查询操作系统信息(DescribeOsInfo)](https://cloud.tencent.com/document/api/386/31964)获取操作系统信息
+        :param OsTypeId: 部署服务器的操作系统ID。通过接口[查询操作系统信息(DescribeOsInfo)](https://cloud.tencent.com/document/product/386/32902)获取操作系统信息
         :type OsTypeId: int
         :param RaidId: RAID类型ID。通过接口[查询机型RAID方式以及系统盘大小(DescribeDeviceClassPartition)](https://cloud.tencent.com/document/api/386/32910)获取RAID信息
         :type RaidId: int
@@ -140,7 +178,7 @@ class BuyDevicesRequest(AbstractModel):
         :type Tags: list of Tag
         :param FileSystem: 指定数据盘的文件系统格式，当前支持 EXT4和XFS选项， 默认为EXT4。 参数适用于数据盘和Linux， 且在IsZoning为1时生效
         :type FileSystem: str
-        :param BuySession: 此参数是为了防止重复发货。如果两次调用传入相同的BuySession，只会发货一次。 不要以设备别名做为BuySession，这样只会第一次购买成功。参数长度为128位，合法字符为大小字母，数字，下划线，横线。
+        :param BuySession: 此参数是为了防止重复发货。如果两次调用传入相同的BuySession，只会发货一次。 不要以设备别名作为BuySession，这样只会第一次购买成功。参数长度为128位，合法字符为大小字母，数字，下划线，横线。
         :type BuySession: str
         """
         self.Zone = None
@@ -1240,7 +1278,7 @@ class DescribeDevicesRequest(AbstractModel):
         :type Offset: int
         :param Limit: 返回数量
         :type Limit: int
-        :param DeviceClassCode: 机型ID，通过接口[查询设备型号(DescribeDeviceClass)](https://cloud.tencent.com/document/api/386/31968)查询
+        :param DeviceClassCode: 机型ID，通过接口[查询设备型号(DescribeDeviceClass)](https://cloud.tencent.com/document/api/386/32911)查询
         :type DeviceClassCode: str
         :param InstanceIds: 设备ID数组
         :type InstanceIds: list of str
@@ -2021,6 +2059,40 @@ class DescribeUserCmdsResponse(AbstractModel):
                 obj = UserCmd()
                 obj._deserialize(item)
                 self.UserCmds.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DetachCamRoleRequest(AbstractModel):
+    """DetachCamRole请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param InstanceId: 服务器ID
+        :type InstanceId: str
+        """
+        self.InstanceId = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+
+
+class DetachCamRoleResponse(AbstractModel):
+    """DetachCamRole返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
 
 

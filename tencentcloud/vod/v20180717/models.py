@@ -3359,25 +3359,25 @@ class AudioVolumeParam(AbstractModel):
 
     def __init__(self):
         """
-        :param Gain: 音频增益，取值范围0~10。仅在Mute=0时生效。
-<li>大于1表示增加音量。</li>
-<li>小于1表示降低音量。</li>
-<li>1：表示不改变。</li>
-默认是1。
-        :type Gain: float
         :param Mute: 是否静音，取值范围0或1。
 <li>0表示不静音。</li>
 <li>1表示静音。</li>
 默认是0。
         :type Mute: int
+        :param Gain: 音频增益，取值范围0~10。
+<li>大于1表示增加音量。</li>
+<li>小于1表示降低音量。</li>
+<li>0和1：表示不改变。</li>
+默认是0。
+        :type Gain: float
         """
-        self.Gain = None
         self.Mute = None
+        self.Gain = None
 
 
     def _deserialize(self, params):
-        self.Gain = params.get("Gain")
         self.Mute = params.get("Mute")
+        self.Gain = params.get("Gain")
 
 
 class Canvas(AbstractModel):
@@ -6290,6 +6290,10 @@ class DescribeProcedureTemplatesRequest(AbstractModel):
         """
         :param Names: 任务流模板名字过滤条件，数组长度限制：100。
         :type Names: list of str
+        :param Type: 任务流模板类型过滤条件，可选值：
+<li>Preset：系统预置任务流模板；</li>
+<li>Custom：用户自定义任务流模板。</li>
+        :type Type: str
         :param Offset: 分页偏移量，默认值：0。
         :type Offset: int
         :param Limit: 返回记录条数，默认值：10，最大值：100。
@@ -6298,6 +6302,7 @@ class DescribeProcedureTemplatesRequest(AbstractModel):
         :type SubAppId: int
         """
         self.Names = None
+        self.Type = None
         self.Offset = None
         self.Limit = None
         self.SubAppId = None
@@ -6305,6 +6310,7 @@ class DescribeProcedureTemplatesRequest(AbstractModel):
 
     def _deserialize(self, params):
         self.Names = params.get("Names")
+        self.Type = params.get("Type")
         self.Offset = params.get("Offset")
         self.Limit = params.get("Limit")
         self.SubAppId = params.get("SubAppId")
@@ -7134,6 +7140,10 @@ class EditMediaRequest(AbstractModel):
         :type ProcedureName: str
         :param OutputConfig: 编辑后生成的文件配置。
         :type OutputConfig: :class:`tencentcloud.vod.v20180717.models.EditMediaOutputConfig`
+        :param SessionContext: 标识来源上下文，用于透传用户请求信息，在EditMediaComplete回调和任务流状态变更回调将返回该字段值，最长 1000个字符。
+        :type SessionContext: str
+        :param SessionId: 用于任务去重的识别码，如果一天内曾有过相同的识别码的请求，则本次的请求会返回错误。最长 50 个字符，不带或者带空字符串表示不做去重。
+        :type SessionId: str
         :param SubAppId: 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
         :type SubAppId: int
         """
@@ -7143,6 +7153,8 @@ class EditMediaRequest(AbstractModel):
         self.Definition = None
         self.ProcedureName = None
         self.OutputConfig = None
+        self.SessionContext = None
+        self.SessionId = None
         self.SubAppId = None
 
 
@@ -7165,6 +7177,8 @@ class EditMediaRequest(AbstractModel):
         if params.get("OutputConfig") is not None:
             self.OutputConfig = EditMediaOutputConfig()
             self.OutputConfig._deserialize(params.get("OutputConfig"))
+        self.SessionContext = params.get("SessionContext")
+        self.SessionId = params.get("SessionId")
         self.SubAppId = params.get("SubAppId")
 
 

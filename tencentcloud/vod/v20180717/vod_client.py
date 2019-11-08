@@ -740,7 +740,7 @@ class VodClient(AbstractClient):
 
 
     def DeleteProcedureTemplate(self, request):
-        """删除指定名字的任务流模板
+        """删除用户自定义的任务流模板。
 
         :param request: 调用DeleteProcedureTemplate所需参数的结构体。
         :type request: :class:`tencentcloud.vod.v20180717.models.DeleteProcedureTemplateRequest`
@@ -2272,7 +2272,7 @@ class VodClient(AbstractClient):
 
 
     def ResetProcedureTemplate(self, request):
-        """重新设置已存在的任务流模板的任务内容
+        """重新设置用户自定义任务流模板的内容。
 
         :param request: 调用ResetProcedureTemplate所需参数的结构体。
         :type request: :class:`tencentcloud.vod.v20180717.models.ResetProcedureTemplateRequest`

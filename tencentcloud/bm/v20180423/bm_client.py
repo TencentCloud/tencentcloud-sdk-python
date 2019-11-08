@@ -25,6 +25,34 @@ class BmClient(AbstractClient):
     _endpoint = 'bm.tencentcloudapi.com'
 
 
+    def AttachCamRole(self, request):
+        """服务器绑定CAM角色，该角色授权访问黑石物理服务器服务，为黑石物理服务器提供了访问资源的权限，如请求服务器的临时证书
+
+        :param request: 调用AttachCamRole所需参数的结构体。
+        :type request: :class:`tencentcloud.bm.v20180423.models.AttachCamRoleRequest`
+        :rtype: :class:`tencentcloud.bm.v20180423.models.AttachCamRoleResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("AttachCamRole", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.AttachCamRoleResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def BindPsaTag(self, request):
         """为预授权规则绑定标签
 
@@ -917,6 +945,34 @@ class BmClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeUserCmdsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DetachCamRole(self, request):
+        """服务器绑定CAM角色
+
+        :param request: 调用DetachCamRole所需参数的结构体。
+        :type request: :class:`tencentcloud.bm.v20180423.models.DetachCamRoleRequest`
+        :rtype: :class:`tencentcloud.bm.v20180423.models.DetachCamRoleResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DetachCamRole", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DetachCamRoleResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
