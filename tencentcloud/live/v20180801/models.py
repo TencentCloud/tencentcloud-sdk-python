@@ -436,12 +436,15 @@ class ClientIpPlaySumInfo(AbstractModel):
         :type TotalRequest: int
         :param TotalFailedRequest: 总失败请求数。
         :type TotalFailedRequest: int
+        :param CountryArea: 客户端所在国家。
+        :type CountryArea: str
         """
         self.ClientIp = None
         self.Province = None
         self.TotalFlux = None
         self.TotalRequest = None
         self.TotalFailedRequest = None
+        self.CountryArea = None
 
 
     def _deserialize(self, params):
@@ -450,6 +453,7 @@ class ClientIpPlaySumInfo(AbstractModel):
         self.TotalFlux = params.get("TotalFlux")
         self.TotalRequest = params.get("TotalRequest")
         self.TotalFailedRequest = params.get("TotalFailedRequest")
+        self.CountryArea = params.get("CountryArea")
 
 
 class CreateLiveCallbackRuleRequest(AbstractModel):
@@ -973,7 +977,7 @@ class CreateLiveTranscodeRuleRequest(AbstractModel):
         :type DomainName: str
         :param AppName: 推流路径，与推流和播放地址中的AppName保持一致，默认为 live。
         :type AppName: str
-        :param StreamName: 流名称。
+        :param StreamName: 流名称。如果只绑定域名或路径，则此处填空。
         :type StreamName: str
         :param TemplateId: 指定已有的模板Id。
         :type TemplateId: int
@@ -1022,6 +1026,7 @@ class CreateLiveTranscodeTemplateRequest(AbstractModel):
         :param Vcodec: 视频编码：h264/h265，默认h264。
         :type Vcodec: str
         :param Acodec: 音频编码：aac，默认原始音频格式。
+注意：当前该参数未生效，待后续支持！
         :type Acodec: str
         :param AudioBitrate: 音频码率：默认0。0-500。
         :type AudioBitrate: int
@@ -3702,12 +3707,15 @@ class DescribePlayErrorCodeDetailInfoListRequest(AbstractModel):
         :type StatType: str
         :param PlayDomains: 播放域名列表。
         :type PlayDomains: list of str
+        :param MainlandOrOversea: 地域，可选值：Mainland，Oversea，China，Foreign，Global（默认值）；如果为空，查询总的数据；如果为“Mainland”，查询中国大陆的数据；如果为“Oversea”，则查询中国大陆以外的数据；如果为China，查询中国的数据（包括港澳台）；如果为Foreign，查询国外的数据（不包括港澳台）。
+        :type MainlandOrOversea: str
         """
         self.StartTime = None
         self.EndTime = None
         self.Granularity = None
         self.StatType = None
         self.PlayDomains = None
+        self.MainlandOrOversea = None
 
 
     def _deserialize(self, params):
@@ -3716,6 +3724,7 @@ class DescribePlayErrorCodeDetailInfoListRequest(AbstractModel):
         self.Granularity = params.get("Granularity")
         self.StatType = params.get("StatType")
         self.PlayDomains = params.get("PlayDomains")
+        self.MainlandOrOversea = params.get("MainlandOrOversea")
 
 
 class DescribePlayErrorCodeDetailInfoListResponse(AbstractModel):
@@ -3764,20 +3773,25 @@ class DescribePlayErrorCodeSumInfoListRequest(AbstractModel):
         :type EndTime: str
         :param PlayDomains: 播放域名列表，不填表示总体数据。
         :type PlayDomains: list of str
-        :param PageNum: 页数，
-范围[1,1000]，
-默认值：1。
+        :param PageNum: 页数，范围[1,1000]，默认值是1。
         :type PageNum: int
-        :param PageSize: 每页个数，
-范围：[1,1000]，
-默认值： 20。
+        :param PageSize: 每页个数，范围：[1,1000]，默认值是20。
         :type PageSize: int
+        :param MainlandOrOversea: 地域，可选值：Mainland，Oversea，China，Foreign，Global（默认值）；如果为空，查询总的数据；如果为“Mainland”，查询中国大陆的数据；如果为“Oversea”，则查询中国大陆以外的数据；如果为China，查询中国的数据（包括港澳台）；如果为Foreign，查询国外的数据（不包括港澳台）。
+        :type MainlandOrOversea: str
+        :param GroupType: 分组参数，可选值：CountryProIsp（默认值），Country（国家），默认是按照国家+省份+运营商来进行分组；目前国外的省份和运营商暂时无法识别。
+        :type GroupType: str
+        :param OutLanguage: 输出字段使用的语言，可选值：Chinese（默认值），English，目前国家，省份和运营商支持多语言。
+        :type OutLanguage: str
         """
         self.StartTime = None
         self.EndTime = None
         self.PlayDomains = None
         self.PageNum = None
         self.PageSize = None
+        self.MainlandOrOversea = None
+        self.GroupType = None
+        self.OutLanguage = None
 
 
     def _deserialize(self, params):
@@ -3786,6 +3800,9 @@ class DescribePlayErrorCodeSumInfoListRequest(AbstractModel):
         self.PlayDomains = params.get("PlayDomains")
         self.PageNum = params.get("PageNum")
         self.PageSize = params.get("PageSize")
+        self.MainlandOrOversea = params.get("MainlandOrOversea")
+        self.GroupType = params.get("GroupType")
+        self.OutLanguage = params.get("OutLanguage")
 
 
 class DescribePlayErrorCodeSumInfoListResponse(AbstractModel):
@@ -3803,7 +3820,7 @@ class DescribePlayErrorCodeSumInfoListResponse(AbstractModel):
         :type TotalCode4xx: int
         :param TotalCode5xx: 状态码为5开头的总次数。
         :type TotalCode5xx: int
-        :param TotalCodeList: 各状态码的总次数，暂时支持400,403,404,500,502,503,504。
+        :param TotalCodeList: 各状态码的总次数。
         :type TotalCodeList: list of PlayCodeTotalInfo
         :param PageNum: 页号。
         :type PageNum: int
@@ -3813,6 +3830,10 @@ class DescribePlayErrorCodeSumInfoListResponse(AbstractModel):
         :type TotalPage: int
         :param TotalNum: 总记录数。
         :type TotalNum: int
+        :param TotalCode2xx: 状态码为2开头的总次数。
+        :type TotalCode2xx: int
+        :param TotalCode3xx: 状态码为3开头的总次数。
+        :type TotalCode3xx: int
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -3825,6 +3846,8 @@ class DescribePlayErrorCodeSumInfoListResponse(AbstractModel):
         self.PageSize = None
         self.TotalPage = None
         self.TotalNum = None
+        self.TotalCode2xx = None
+        self.TotalCode3xx = None
         self.RequestId = None
 
 
@@ -3848,6 +3871,8 @@ class DescribePlayErrorCodeSumInfoListResponse(AbstractModel):
         self.PageSize = params.get("PageSize")
         self.TotalPage = params.get("TotalPage")
         self.TotalNum = params.get("TotalNum")
+        self.TotalCode2xx = params.get("TotalCode2xx")
+        self.TotalCode3xx = params.get("TotalCode3xx")
         self.RequestId = params.get("RequestId")
 
 
@@ -3865,17 +3890,18 @@ class DescribeProIspPlaySumInfoListRequest(AbstractModel):
 格式：yyyy-mm-dd HH:MM:SS。
 注：EndTime 和 StartTime 只支持最近1天的数据查询。
         :type EndTime: str
-        :param StatType: 统计的类型，可选值包括”Province”，”Isp”。
+        :param StatType: 统计的类型，可选值：”Province”，”Isp”，“CountryOrArea”。
         :type StatType: str
         :param PlayDomains: 不填则为总体数据。
         :type PlayDomains: list of str
-        :param PageNum: 页号，
-范围是[1,1000]，
-默认值是1。
+        :param PageNum: 页号，范围是[1,1000]，默认值是1。
         :type PageNum: int
-        :param PageSize: 每页个数，范围是[1,1000]，
-默认值是20。
+        :param PageSize: 每页个数，范围是[1,1000]，默认值是20。
         :type PageSize: int
+        :param MainlandOrOversea: 地域，可选值：Mainland，Oversea，China，Foreign，Global（默认值）；如果为空，查询总的数据；如果为“Mainland”，查询中国大陆的数据；如果为“Oversea”，则查询中国大陆以外的数据；如果为China，查询中国的数据（包括港澳台）；如果为Foreign，查询国外的数据（不包括港澳台）。
+        :type MainlandOrOversea: str
+        :param OutLanguage: 输出字段使用的语言，可选值：Chinese（默认值），English；目前国家，省份和运营商支持多语言。
+        :type OutLanguage: str
         """
         self.StartTime = None
         self.EndTime = None
@@ -3883,6 +3909,8 @@ class DescribeProIspPlaySumInfoListRequest(AbstractModel):
         self.PlayDomains = None
         self.PageNum = None
         self.PageSize = None
+        self.MainlandOrOversea = None
+        self.OutLanguage = None
 
 
     def _deserialize(self, params):
@@ -3892,6 +3920,8 @@ class DescribeProIspPlaySumInfoListRequest(AbstractModel):
         self.PlayDomains = params.get("PlayDomains")
         self.PageNum = params.get("PageNum")
         self.PageSize = params.get("PageSize")
+        self.MainlandOrOversea = params.get("MainlandOrOversea")
+        self.OutLanguage = params.get("OutLanguage")
 
 
 class DescribeProIspPlaySumInfoListResponse(AbstractModel):
@@ -3915,7 +3945,7 @@ class DescribeProIspPlaySumInfoListResponse(AbstractModel):
         :type TotalNum: int
         :param TotalPage: 总页数。
         :type TotalPage: int
-        :param DataInfoList: 省份或运营商汇总数据列表。
+        :param DataInfoList: 省份，运营商，国家或地区汇总数据列表。
         :type DataInfoList: list of ProIspPlaySumInfo
         :param AvgFluxPerSecond: 平均带宽。
         :type AvgFluxPerSecond: float
@@ -3978,10 +4008,12 @@ class DescribeProvinceIspPlayInfoListRequest(AbstractModel):
         :type StatType: str
         :param PlayDomains: 播放域名列表。
         :type PlayDomains: list of str
-        :param ProvinceNames: 非必传参数，要查询的省份（地区）英文名称列表，如 Beijing
+        :param ProvinceNames: 要查询的省份（地区）英文名称列表，如 Beijing。
         :type ProvinceNames: list of str
-        :param IspNames: 非必传参数，要查询的运营商英文名称列表，如 China Mobile ，如果为空，查询所有运营商的数据
+        :param IspNames: 要查询的运营商英文名称列表，如 China Mobile ，如果为空，查询所有运营商的数据。
         :type IspNames: list of str
+        :param MainlandOrOversea: 地域，可选值：Mainland，Oversea，China，Foreign，Global（默认值）；如果为空，查询总的数据；如果为“Mainland”，查询中国大陆的数据；如果为“Oversea”，则查询中国大陆以外的数据；如果为China，查询中国的数据（包括港澳台）；如果为Foreign，查询国外的数据（不包括港澳台）。
+        :type MainlandOrOversea: str
         """
         self.StartTime = None
         self.EndTime = None
@@ -3990,6 +4022,7 @@ class DescribeProvinceIspPlayInfoListRequest(AbstractModel):
         self.PlayDomains = None
         self.ProvinceNames = None
         self.IspNames = None
+        self.MainlandOrOversea = None
 
 
     def _deserialize(self, params):
@@ -4000,6 +4033,7 @@ class DescribeProvinceIspPlayInfoListRequest(AbstractModel):
         self.PlayDomains = params.get("PlayDomains")
         self.ProvinceNames = params.get("ProvinceNames")
         self.IspNames = params.get("IspNames")
+        self.MainlandOrOversea = params.get("MainlandOrOversea")
 
 
 class DescribeProvinceIspPlayInfoListResponse(AbstractModel):
@@ -4285,15 +4319,16 @@ class DescribeTopClientIpSumInfoListRequest(AbstractModel):
         :type EndTime: str
         :param PlayDomains: 播放域名，默认为不填，表示求总体数据。
         :type PlayDomains: list of str
-        :param PageNum: 页号，
-范围是[1,1000]，
-默认值是1。
+        :param PageNum: 页号，范围是[1,1000]，默认值是1。
         :type PageNum: int
-        :param PageSize: 每页个数，范围是[1,1000]，
-默认值是20。
+        :param PageSize: 每页个数，范围是[1,1000]，默认值是20。
         :type PageSize: int
-        :param OrderParam: 排序指标，可选值包括”TotalRequest”，”FailedRequest”,“TotalFlux”。
+        :param OrderParam: 排序指标，可选值包括TotalRequest（默认值），FailedRequest,TotalFlux。
         :type OrderParam: str
+        :param MainlandOrOversea: 地域，可选值：Mainland，Oversea，China，Foreign，Global（默认值）；如果为空，查询总的数据；如果为“Mainland”，查询中国大陆的数据；如果为“Oversea”，则查询中国大陆以外的数据；如果为China，查询中国的数据（包括港澳台）；如果为Foreign，查询国外的数据（不包括港澳台）。
+        :type MainlandOrOversea: str
+        :param OutLanguage: 输出字段使用的语言，可选值：Chinese（默认值），English；目前国家，省份和运营商支持多语言。
+        :type OutLanguage: str
         """
         self.StartTime = None
         self.EndTime = None
@@ -4301,6 +4336,8 @@ class DescribeTopClientIpSumInfoListRequest(AbstractModel):
         self.PageNum = None
         self.PageSize = None
         self.OrderParam = None
+        self.MainlandOrOversea = None
+        self.OutLanguage = None
 
 
     def _deserialize(self, params):
@@ -4310,6 +4347,8 @@ class DescribeTopClientIpSumInfoListRequest(AbstractModel):
         self.PageNum = params.get("PageNum")
         self.PageSize = params.get("PageSize")
         self.OrderParam = params.get("OrderParam")
+        self.MainlandOrOversea = params.get("MainlandOrOversea")
+        self.OutLanguage = params.get("OutLanguage")
 
 
 class DescribeTopClientIpSumInfoListResponse(AbstractModel):
@@ -4319,12 +4358,9 @@ class DescribeTopClientIpSumInfoListResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param PageNum: 页号，
-范围是[1,1000]，
-默认值是1。
+        :param PageNum: 页号，范围是[1,1000]，默认值是1。
         :type PageNum: int
-        :param PageSize: 每页个数，范围是[1,1000]，
-默认值是20。
+        :param PageSize: 每页个数，范围是[1,1000]，默认值是20。
         :type PageSize: int
         :param OrderParam: 排序指标，可选值包括”TotalRequest”，”FailedRequest”,“TotalFlux”。
         :type OrderParam: str
@@ -5782,6 +5818,8 @@ class ProIspPlayCodeDataInfo(AbstractModel):
 
     def __init__(self):
         """
+        :param CountryAreaName: 国家或地区。
+        :type CountryAreaName: str
         :param ProvinceName: 省份。
         :type ProvinceName: str
         :param IspName: 运营商。
@@ -5795,6 +5833,7 @@ class ProIspPlayCodeDataInfo(AbstractModel):
         :param Code5xx: 错误码为5开头的次数。
         :type Code5xx: int
         """
+        self.CountryAreaName = None
         self.ProvinceName = None
         self.IspName = None
         self.Code2xx = None
@@ -5804,6 +5843,7 @@ class ProIspPlayCodeDataInfo(AbstractModel):
 
 
     def _deserialize(self, params):
+        self.CountryAreaName = params.get("CountryAreaName")
         self.ProvinceName = params.get("ProvinceName")
         self.IspName = params.get("IspName")
         self.Code2xx = params.get("Code2xx")
