@@ -756,8 +756,8 @@ class DescribeServicesResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
-class Expose(AbstractModel):
-    """服务暴露方式
+class ExposeInfo(AbstractModel):
+    """暴露信息
 
     """
 
@@ -767,24 +767,76 @@ class Expose(AbstractModel):
         :type ExposeType: str
         :param Ip: 暴露Ip。暴露方式为 EXTERNAL 为外网 Ip，暴露方式为 VPC 时为指定 Vpc 下的Vip
         :type Ip: str
-        :param UnVpcId: 暴露方式为 VPC 时，打通的私有网络Id
+        :param VpcId: 暴露方式为 VPC 时，打通的私有网络Id
 注意：此字段可能返回 null，表示取不到有效值。
-        :type UnVpcId: str
-        :param UnSubnetId: 暴露方式为 VPC 时，打通的子网Id
+        :type VpcId: str
+        :param SubnetId: 暴露方式为 VPC 时，打通的子网Id
 注意：此字段可能返回 null，表示取不到有效值。
-        :type UnSubnetId: str
+        :type SubnetId: str
         """
         self.ExposeType = None
         self.Ip = None
-        self.UnVpcId = None
-        self.UnSubnetId = None
+        self.VpcId = None
+        self.SubnetId = None
 
 
     def _deserialize(self, params):
         self.ExposeType = params.get("ExposeType")
         self.Ip = params.get("Ip")
-        self.UnVpcId = params.get("UnVpcId")
-        self.UnSubnetId = params.get("UnSubnetId")
+        self.VpcId = params.get("VpcId")
+        self.SubnetId = params.get("SubnetId")
+
+
+class ExposeServiceRequest(AbstractModel):
+    """ExposeService请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ServiceId: 服务Id
+        :type ServiceId: str
+        :param ExposeType: 暴露方式，支持 EXTERNAL（外网暴露），VPC （VPC内网打通）
+        :type ExposeType: str
+        :param VpcId: 暴露方式为 VPC 时，填写需要打通的私有网络Id
+        :type VpcId: str
+        :param SubnetId: 暴露方式为 VPC 时，填写需要打通的子网Id
+        :type SubnetId: str
+        """
+        self.ServiceId = None
+        self.ExposeType = None
+        self.VpcId = None
+        self.SubnetId = None
+
+
+    def _deserialize(self, params):
+        self.ServiceId = params.get("ServiceId")
+        self.ExposeType = params.get("ExposeType")
+        self.VpcId = params.get("VpcId")
+        self.SubnetId = params.get("SubnetId")
+
+
+class ExposeServiceResponse(AbstractModel):
+    """ExposeService返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Expose: 暴露方式
+        :type Expose: :class:`tencentcloud.tiems.v20190416.models.ExposeInfo`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Expose = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Expose") is not None:
+            self.Expose = ExposeInfo()
+            self.Expose._deserialize(params.get("Expose"))
+        self.RequestId = params.get("RequestId")
 
 
 class Filter(AbstractModel):
@@ -1101,7 +1153,7 @@ class ModelService(AbstractModel):
         :type ResourceGroupId: str
         :param Exposes: 暴露方式
 注意：此字段可能返回 null，表示取不到有效值。
-        :type Exposes: list of Expose
+        :type Exposes: list of ExposeInfo
         :param Region: Region 名
 注意：此字段可能返回 null，表示取不到有效值。
         :type Region: str
@@ -1170,7 +1222,7 @@ class ModelService(AbstractModel):
         if params.get("Exposes") is not None:
             self.Exposes = []
             for item in params.get("Exposes"):
-                obj = Expose()
+                obj = ExposeInfo()
                 obj._deserialize(item)
                 self.Exposes.append(obj)
         self.Region = params.get("Region")

@@ -240,10 +240,10 @@ class AttachPolicyInfo(AbstractModel):
         :type Remark: str
         :param OperateOwnerUin: 策略关联操作者主张号
 注意：此字段可能返回 null，表示取不到有效值。
-        :type OperateOwnerUin: int
+        :type OperateOwnerUin: str
         :param OperateUin: 策略关联操作者ID，如果UinType为0表示子帐号Uin，如果UinType为1表示角色ID
 注意：此字段可能返回 null，表示取不到有效值。
-        :type OperateUin: int
+        :type OperateUin: str
         :param OperateUinType: UinType为0表示OperateUin字段是子帐号Uin，如果UinType为1表示OperateUin字段是角色ID
 注意：此字段可能返回 null，表示取不到有效值。
         :type OperateUinType: int
@@ -2174,6 +2174,9 @@ class StrategyInfo(AbstractModel):
         :param ServiceType: 策略关联的产品
 注意：此字段可能返回 null，表示取不到有效值。
         :type ServiceType: str
+        :param IsAttached: 当需要查询标记实体是否已经关联策略时不为null。0表示未关联策略，1表示已关联策略
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IsAttached: int
         """
         self.PolicyId = None
         self.PolicyName = None
@@ -2183,6 +2186,7 @@ class StrategyInfo(AbstractModel):
         self.CreateMode = None
         self.Attachments = None
         self.ServiceType = None
+        self.IsAttached = None
 
 
     def _deserialize(self, params):
@@ -2194,6 +2198,7 @@ class StrategyInfo(AbstractModel):
         self.CreateMode = params.get("CreateMode")
         self.Attachments = params.get("Attachments")
         self.ServiceType = params.get("ServiceType")
+        self.IsAttached = params.get("IsAttached")
 
 
 class SubAccountInfo(AbstractModel):

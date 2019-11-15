@@ -361,6 +361,34 @@ class TiemsClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def ExposeService(self, request):
+        """暴露服务
+
+        :param request: 调用ExposeService所需参数的结构体。
+        :type request: :class:`tencentcloud.tiems.v20190416.models.ExposeServiceRequest`
+        :rtype: :class:`tencentcloud.tiems.v20190416.models.ExposeServiceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ExposeService", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ExposeServiceResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def UpdateJob(self, request):
         """更新任务
 
