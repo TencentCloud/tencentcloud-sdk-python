@@ -25,6 +25,62 @@ class TiemsClient(AbstractClient):
     _endpoint = 'tiems.tencentcloudapi.com'
 
 
+    def CreateJob(self, request):
+        """创建任务
+
+        :param request: 调用CreateJob所需参数的结构体。
+        :type request: :class:`tencentcloud.tiems.v20190416.models.CreateJobRequest`
+        :rtype: :class:`tencentcloud.tiems.v20190416.models.CreateJobResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("CreateJob", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateJobResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def CreateRuntime(self, request):
+        """创建运行环境
+
+        :param request: 调用CreateRuntime所需参数的结构体。
+        :type request: :class:`tencentcloud.tiems.v20190416.models.CreateRuntimeRequest`
+        :rtype: :class:`tencentcloud.tiems.v20190416.models.CreateRuntimeResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("CreateRuntime", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateRuntimeResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def CreateService(self, request):
         """创建服务
 
@@ -81,6 +137,62 @@ class TiemsClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DeleteJob(self, request):
+        """删除任务
+
+        :param request: 调用DeleteJob所需参数的结构体。
+        :type request: :class:`tencentcloud.tiems.v20190416.models.DeleteJobRequest`
+        :rtype: :class:`tencentcloud.tiems.v20190416.models.DeleteJobResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DeleteJob", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DeleteJobResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DeleteRuntime(self, request):
+        """删除运行环境
+
+        :param request: 调用DeleteRuntime所需参数的结构体。
+        :type request: :class:`tencentcloud.tiems.v20190416.models.DeleteRuntimeRequest`
+        :rtype: :class:`tencentcloud.tiems.v20190416.models.DeleteRuntimeResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DeleteRuntime", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DeleteRuntimeResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DeleteService(self, request):
         """删除服务
 
@@ -123,6 +235,34 @@ class TiemsClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteServiceConfigResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeInstances(self, request):
+        """获取节点列表
+
+        :param request: 调用DescribeInstances所需参数的结构体。
+        :type request: :class:`tencentcloud.tiems.v20190416.models.DescribeInstancesRequest`
+        :rtype: :class:`tencentcloud.tiems.v20190416.models.DescribeInstancesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeInstances", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeInstancesResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -207,6 +347,34 @@ class TiemsClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeServicesResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def UpdateJob(self, request):
+        """更新任务
+
+        :param request: 调用UpdateJob所需参数的结构体。
+        :type request: :class:`tencentcloud.tiems.v20190416.models.UpdateJobRequest`
+        :rtype: :class:`tencentcloud.tiems.v20190416.models.UpdateJobResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("UpdateJob", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.UpdateJobResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

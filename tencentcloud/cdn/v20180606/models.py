@@ -281,6 +281,77 @@ day：天粒度
         self.RequestId = params.get("RequestId")
 
 
+class DescribeCdnDomainLogsRequest(AbstractModel):
+    """DescribeCdnDomainLogs请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Domain: 指定域名查询
+        :type Domain: str
+        :param StartTime: 开始时间，如 2019-09-04 00:00:00
+        :type StartTime: str
+        :param EndTime: 结束时间，如 2019-09-04 12:00:00
+        :type EndTime: str
+        :param Offset: 分页查询偏移量，默认为 0 （第一页）
+        :type Offset: int
+        :param Limit: 分页查询限制数目，默认为 100，最大为 1000
+        :type Limit: int
+        :param Area: 指定区域下载日志
+mainland：获取境内加速日志包下载链接
+overseas：获取境外加速日志包下载链接
+global：同时获取境内、境外加速日志包下载链接（分开打包）
+不指定时默认为 mainland
+        :type Area: str
+        """
+        self.Domain = None
+        self.StartTime = None
+        self.EndTime = None
+        self.Offset = None
+        self.Limit = None
+        self.Area = None
+
+
+    def _deserialize(self, params):
+        self.Domain = params.get("Domain")
+        self.StartTime = params.get("StartTime")
+        self.EndTime = params.get("EndTime")
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+        self.Area = params.get("Area")
+
+
+class DescribeCdnDomainLogsResponse(AbstractModel):
+    """DescribeCdnDomainLogs返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param DomainLogs: 日志包下载链接
+        :type DomainLogs: list of DomainLog
+        :param TotalCount: 查询到的总条数
+        :type TotalCount: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.DomainLogs = None
+        self.TotalCount = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("DomainLogs") is not None:
+            self.DomainLogs = []
+            for item in params.get("DomainLogs"):
+                obj = DomainLog()
+                obj._deserialize(item)
+                self.DomainLogs.append(obj)
+        self.TotalCount = params.get("TotalCount")
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeCdnIpRequest(AbstractModel):
     """DescribeCdnIp请求参数结构体
 
@@ -562,9 +633,10 @@ class DescribePayTypeRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Area: 指定服务地域查询，不填充表示查询中国境内 CDN 计费方式
-mainland：指定查询中国境内 CDN 计费方式
-overseas：指定查询中国境外 CDN 计费方式
+        :param Area: 指定服务地域查询
+mainland：境内计费方式查询
+overseas：境外计费方式查询
+未填充时默认为 mainland
         :type Area: str
         """
         self.Area = None
@@ -584,7 +656,7 @@ class DescribePayTypeResponse(AbstractModel):
         :param PayType: 计费类型：
 flux：流量计费
 bandwidth：带宽计费
-如果修改过计费方式，表示下次生效的计费类型，否则表示当前计费类型。
+日结计费方式切换时，若当日产生消耗，则此字段表示第二天即将生效的计费方式，若未产生消耗，则表示已经生效的计费方式。
         :type PayType: str
         :param BillingCycle: 计费周期：
 day：日结计费
@@ -597,11 +669,11 @@ month95：月95带宽计费，月结模式
 sum：总流量计费，日结与月结均有流量计费模式
 max：峰值带宽计费，日结模式
         :type StatType: str
-        :param RegionType: 地区计费方式，仅在查询中国境外 CDN 计费方式时可用
-all：表示全地区统一计费
-multiple：表示分地区计费。
+        :param RegionType: 境外计费类型：
+all：全地区统一计费
+multiple：分地区计费
         :type RegionType: str
-        :param CurrentPayType: 当前计费类型：
+        :param CurrentPayType: 当前生效计费类型：
 flux：流量计费
 bandwidth：带宽计费
         :type CurrentPayType: str
@@ -632,22 +704,33 @@ class DescribePurgeTasksRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param PurgeType: 查询刷新类型。url：查询 url 刷新记录；path：查询目录刷新记录。
+        :param PurgeType: 指定刷新类型查询
+url：url 刷新记录
+path：目录刷新记录
         :type PurgeType: str
-        :param StartTime: 开始时间，如2018-08-08 00:00:00。
+        :param StartTime: 根据时间区间查询时，填充开始时间，如 2018-08-08 00:00:00
         :type StartTime: str
-        :param EndTime: 结束时间，如2018-08-08 23:59:59。
+        :param EndTime: 根据时间区间查询时，填充结束时间，如 2018-08-08 23:59:59
         :type EndTime: str
-        :param TaskId: 提交时返回的任务 Id，查询时 TaskId 和起始时间必须指定一项。
+        :param TaskId: 根据任务 ID 查询时，填充任务 ID
+查询时任务 ID 与起始时间必须填充一项
         :type TaskId: str
-        :param Offset: 分页查询偏移量，默认为 0 （第一页）。
+        :param Offset: 分页查询偏移量，默认为 0 （第一页）
         :type Offset: int
-        :param Limit: 分页查询限制数目，默认为20。
+        :param Limit: 分页查询限制数目，默认为 20
         :type Limit: int
-        :param Keyword: 查询关键字，请输入域名或 http(s):// 开头完整 URL。
+        :param Keyword: 支持域名过滤，或 http(s):// 开头完整 URL 过滤
         :type Keyword: str
-        :param Status: 查询指定任务状态，fail表示失败，done表示成功，process表示刷新中。
+        :param Status: 指定任务状态查询
+fail：刷新失败
+done：刷新成功
+process：刷新中
         :type Status: str
+        :param Area: 指定刷新地域查询
+mainland：境内
+overseas：境外
+global：全球
+        :type Area: str
         """
         self.PurgeType = None
         self.StartTime = None
@@ -657,6 +740,7 @@ class DescribePurgeTasksRequest(AbstractModel):
         self.Limit = None
         self.Keyword = None
         self.Status = None
+        self.Area = None
 
 
     def _deserialize(self, params):
@@ -668,6 +752,7 @@ class DescribePurgeTasksRequest(AbstractModel):
         self.Limit = params.get("Limit")
         self.Keyword = params.get("Keyword")
         self.Status = params.get("Status")
+        self.Area = params.get("Area")
 
 
 class DescribePurgeTasksResponse(AbstractModel):
@@ -677,7 +762,7 @@ class DescribePurgeTasksResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param PurgeLogs: 刷新历史记录
+        :param PurgeLogs: 详细刷新记录
 注意：此字段可能返回 null，表示取不到有效值。
         :type PurgeLogs: list of PurgeTask
         :param TotalCount: 任务总数，用于分页
@@ -713,17 +798,24 @@ class DescribePushTasksRequest(AbstractModel):
         :type StartTime: str
         :param EndTime: 结束时间，如2018-08-08 23:59:59。
         :type EndTime: str
-        :param TaskId: 提交时返回的任务 Id，查询时 TaskId 和起始时间必须指定一项。
+        :param TaskId: 指定任务 ID 查询
+TaskId 和起始时间必须指定一项
         :type TaskId: str
-        :param Keyword: 查询关键字，请输入域名或 http(s):// 开头完整 URL。
+        :param Keyword: 查询关键字，请输入域名或 http(s):// 开头完整 URL
         :type Keyword: str
-        :param Offset: 分页查询偏移量，默认为 0 （第一页）。
+        :param Offset: 分页查询偏移量，默认为 0 （第一页）
         :type Offset: int
-        :param Limit: 分页查询限制数目，默认为20。
+        :param Limit: 分页查询限制数目，默认为 20
         :type Limit: int
-        :param Area: 查询刷新记录指定地区。mainland：中国大陆。
+        :param Area: 指定地区查询预热纪录
+mainland：境内
+overseas：境外
+global：全球
         :type Area: str
-        :param Status: 查询指定任务状态，fail表示失败，done表示成功，process表示刷新中。
+        :param Status: 指定任务状态查询
+fail：预热失败
+done：预热成功
+process：预热中
         :type Status: str
         """
         self.StartTime = None
@@ -779,6 +871,65 @@ class DescribePushTasksResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeTrafficPackagesRequest(AbstractModel):
+    """DescribeTrafficPackages请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Offset: 分页查询起始地址，默认 0（第一页）
+        :type Offset: int
+        :param Limit: 分页查询记录个数，默认100，最大1000
+        :type Limit: int
+        """
+        self.Offset = None
+        self.Limit = None
+
+
+    def _deserialize(self, params):
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+
+
+class DescribeTrafficPackagesResponse(AbstractModel):
+    """DescribeTrafficPackages返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param TotalCount: 流量包总个数
+        :type TotalCount: int
+        :param TrafficPackages: 流量包详情
+        :type TrafficPackages: list of TrafficPackage
+        :param ExpiringCount: 即将过期的流量包个数（7天内）
+        :type ExpiringCount: int
+        :param EnabledCount: 有效流量包个数
+        :type EnabledCount: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.TrafficPackages = None
+        self.ExpiringCount = None
+        self.EnabledCount = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("TrafficPackages") is not None:
+            self.TrafficPackages = []
+            for item in params.get("TrafficPackages"):
+                obj = TrafficPackage()
+                obj._deserialize(item)
+                self.TrafficPackages.append(obj)
+        self.ExpiringCount = params.get("ExpiringCount")
+        self.EnabledCount = params.get("EnabledCount")
+        self.RequestId = params.get("RequestId")
+
+
 class DisableCachesRequest(AbstractModel):
     """DisableCaches请求参数结构体
 
@@ -819,6 +970,41 @@ class DisableCachesResponse(AbstractModel):
             self.CacheOptResult = CacheOptResult()
             self.CacheOptResult._deserialize(params.get("CacheOptResult"))
         self.RequestId = params.get("RequestId")
+
+
+class DomainLog(AbstractModel):
+    """日志包下载链接详情
+
+    """
+
+    def __init__(self):
+        """
+        :param StartTime: 日志包起始时间
+        :type StartTime: str
+        :param EndTime: 日志包结束时间
+        :type EndTime: str
+        :param LogPath: 日志包下载链接
+        :type LogPath: str
+        :param Area: 日志包对应加速区域
+mainland：境内
+overseas：境外
+        :type Area: str
+        :param LogName: 日志包文件名
+        :type LogName: str
+        """
+        self.StartTime = None
+        self.EndTime = None
+        self.LogPath = None
+        self.Area = None
+        self.LogName = None
+
+
+    def _deserialize(self, params):
+        self.StartTime = params.get("StartTime")
+        self.EndTime = params.get("EndTime")
+        self.LogPath = params.get("LogPath")
+        self.Area = params.get("Area")
+        self.LogName = params.get("LogName")
 
 
 class EnableCachesRequest(AbstractModel):
@@ -1066,9 +1252,11 @@ class PurgePathCacheRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Paths: 要刷新的目录列表，必须包含协议头部。
+        :param Paths: 目录列表，需要包含协议头部 http:// 或 https://
         :type Paths: list of str
-        :param FlushType: 刷新类型，flush 代表刷新有更新的资源，delete 表示刷新全部资源。
+        :param FlushType: 刷新类型
+flush：刷新产生更新的资源
+delete：刷新全部资源
         :type FlushType: str
         """
         self.Paths = None
@@ -1087,7 +1275,7 @@ class PurgePathCacheResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param TaskId: 刷新任务Id，前十位为提交任务时的UTC时间。
+        :param TaskId: 刷新任务 ID，同一批次提交的目录共用一个任务 ID
         :type TaskId: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -1102,21 +1290,28 @@ class PurgePathCacheResponse(AbstractModel):
 
 
 class PurgeTask(AbstractModel):
-    """刷新任务日志详情
+    """刷新任务详情
 
     """
 
     def __init__(self):
         """
-        :param TaskId: 刷新任务ID。
+        :param TaskId: 刷新任务 ID
         :type TaskId: str
-        :param Url: 刷新Url。
+        :param Url: 刷新 URL
         :type Url: str
-        :param Status: 刷新任务状态，fail表示失败，done表示成功，process表示刷新中。
+        :param Status: 刷新任务状态
+fail：刷新失败
+done：刷新成功
+process：刷新中
         :type Status: str
-        :param PurgeType: 刷新类型，url表示url刷新，path表示目录刷新。
+        :param PurgeType: 刷新类型
+url：URL 刷新
+path：目录刷新
         :type PurgeType: str
-        :param FlushType: 刷新资源方式，flush代表刷新更新资源，delete代表刷新全部资源。
+        :param FlushType: 刷新方式
+flush：刷新更新资源（仅目录刷新时有此类型）
+delete：刷新全部资源
         :type FlushType: str
         :param CreateTime: 刷新任务提交时间
         :type CreateTime: str
@@ -1145,7 +1340,7 @@ class PurgeUrlsCacheRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Urls: 要刷新的Url列表，必须包含协议头部。
+        :param Urls: URL 列表，需要包含协议头部 http:// 或 https://
         :type Urls: list of str
         """
         self.Urls = None
@@ -1162,7 +1357,7 @@ class PurgeUrlsCacheResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param TaskId: 刷新任务Id，前十位为提交任务时的UTC时间。
+        :param TaskId: 刷新任务 ID，同一批次提交的 URL 共用一个任务 ID
         :type TaskId: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -1177,23 +1372,29 @@ class PurgeUrlsCacheResponse(AbstractModel):
 
 
 class PushTask(AbstractModel):
-    """预热任务日志详情。
+    """预热任务详情
 
     """
 
     def __init__(self):
         """
-        :param TaskId: 预热任务Id，前十位为时间戳。
+        :param TaskId: 预热任务 ID
         :type TaskId: str
-        :param Url: 预热Url。
+        :param Url: 预热 URL
         :type Url: str
-        :param Status: 预热任务状态，fail表示失败，done表示成功，process表示预热中。
+        :param Status: 预热任务状态
+fail：预热失败
+done：预热成功
+process：预热中
         :type Status: str
-        :param Percent: 预热百分比。
+        :param Percent: 预热进度百分比
         :type Percent: int
-        :param CreateTime: 预热任务提交时间。
+        :param CreateTime: 预热任务提交时间
         :type CreateTime: str
-        :param Area: 预热区域，mainland，overseas或global。
+        :param Area: 预热区域
+mainland：境内
+overseas：境外
+global：全球
         :type Area: str
         """
         self.TaskId = None
@@ -1220,18 +1421,27 @@ class PushUrlsCacheRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Urls: URL 列表，提交时需要包含协议头部（http:// 或 https://）
+        :param Urls: URL 列表，需要包含协议头部 http:// 或 https://
         :type Urls: list of str
-        :param UserAgent: 预热请求回源时 HTTP 请求的 User-Agent 头部，默认为 TencentCdn
+        :param UserAgent: 指定预热请求回源时 HTTP 请求的 User-Agent 头部
+默认为 TencentCdn
         :type UserAgent: str
+        :param Area: 预热生效区域
+mainland：预热至境内节点
+overseas：预热至境外节点
+global：预热全球节点
+不填充情况下，默认为 mainland， URL 中域名必须在对应区域启用了加速服务才能提交对应区域的预热任务
+        :type Area: str
         """
         self.Urls = None
         self.UserAgent = None
+        self.Area = None
 
 
     def _deserialize(self, params):
         self.Urls = params.get("Urls")
         self.UserAgent = params.get("UserAgent")
+        self.Area = params.get("Area")
 
 
 class PushUrlsCacheResponse(AbstractModel):
@@ -1241,7 +1451,7 @@ class PushUrlsCacheResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param TaskId: 此批次提交任务对应的 Id，值唯一
+        :param TaskId: 此批提交的任务 ID
         :type TaskId: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -1431,6 +1641,66 @@ class TopDetailData(AbstractModel):
     def _deserialize(self, params):
         self.Name = params.get("Name")
         self.Value = params.get("Value")
+
+
+class TrafficPackage(AbstractModel):
+    """CDN加速流量包。
+
+    """
+
+    def __init__(self):
+        """
+        :param Id: 流量包 Id
+        :type Id: int
+        :param Type: 流量包类型
+        :type Type: str
+        :param Bytes: 流量包大小（单位为 Byte）
+        :type Bytes: int
+        :param BytesUsed: 已消耗流量（单位为 Byte）
+        :type BytesUsed: int
+        :param Status: 流量包状态
+enabled：已启用
+expired：已过期
+disabled：未启用
+        :type Status: str
+        :param CreateTime: 流量包发放时间
+        :type CreateTime: str
+        :param EnableTime: 流量包生效时间
+        :type EnableTime: str
+        :param ExpireTime: 流量包过期时间
+        :type ExpireTime: str
+        :param ContractExtension: 流量包是否续订
+        :type ContractExtension: bool
+        :param AutoExtension: 流量包是否自动续订
+        :type AutoExtension: bool
+        :param Channel: 流量包来源
+        :type Channel: str
+        """
+        self.Id = None
+        self.Type = None
+        self.Bytes = None
+        self.BytesUsed = None
+        self.Status = None
+        self.CreateTime = None
+        self.EnableTime = None
+        self.ExpireTime = None
+        self.ContractExtension = None
+        self.AutoExtension = None
+        self.Channel = None
+
+
+    def _deserialize(self, params):
+        self.Id = params.get("Id")
+        self.Type = params.get("Type")
+        self.Bytes = params.get("Bytes")
+        self.BytesUsed = params.get("BytesUsed")
+        self.Status = params.get("Status")
+        self.CreateTime = params.get("CreateTime")
+        self.EnableTime = params.get("EnableTime")
+        self.ExpireTime = params.get("ExpireTime")
+        self.ContractExtension = params.get("ContractExtension")
+        self.AutoExtension = params.get("AutoExtension")
+        self.Channel = params.get("Channel")
 
 
 class UrlRecord(AbstractModel):

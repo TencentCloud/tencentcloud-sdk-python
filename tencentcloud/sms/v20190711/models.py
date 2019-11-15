@@ -23,18 +23,18 @@ class PullSmsReplyStatus(AbstractModel):
 
     def __init__(self):
         """
-        :param ExtendCode: 通道扩展码，默认没有开通（需要填空）
-        :type ExtendCode: str
+        :param ExtendCode: 短信码号扩展号，默认未开通，如需开通请联系 [sms helper](https://cloud.tencent.com/document/product/382/3773)
+        :type ExtendCode: int
         :param NationCode: 国家（或地区）码
         :type NationCode: str
-        :param PhoneNumber: 手机号码（ e.164 标准）
+        :param PhoneNumber: 手机号码,e.164标准，+[国家或地区码][手机号] ，示例如：+8613711112222， 其中前面有一个+号 ，86为国家码，13711112222为手机号
         :type PhoneNumber: str
         :param Sign: 短信签名
         :type Sign: str
         :param ReplyContent: 用户回复的内容
         :type ReplyContent: str
-        :param ReplyTime: 回复时间，UNIX 时间戳（单位：秒）
-        :type ReplyTime: int
+        :param ReplyTime: 回复时间(例如：2019-10-08 17:18:37)
+        :type ReplyTime: str
         """
         self.ExtendCode = None
         self.NationCode = None
@@ -171,9 +171,9 @@ class PullSmsSendStatus(AbstractModel):
         :type UserReceiveTime: str
         :param NationCode: 国家（或地区）码
         :type NationCode: str
-        :param PurePhoneNumber: 手机号码（ e.164 标准）
+        :param PurePhoneNumber: 手机号码,e.164标准，+[国家或地区码][手机号] ，示例如：+8613711112222， 其中前面有一个+号 ，86为国家码，13711112222为手机号
         :type PurePhoneNumber: str
-        :param PhoneNumber: 手机号码
+        :param PhoneNumber: 手机号码，普通格式，示例如：13711112222
         :type PhoneNumber: str
         :param SerialNo: 本次发送标识 ID
         :type SerialNo: str

@@ -176,7 +176,7 @@ class GetFederationTokenRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Name: 联合身份用户昵称
+        :param Name: 调用方英文名称，由字母组成。
         :type Name: str
         :param Policy: 策略描述
 注意：
@@ -184,7 +184,7 @@ class GetFederationTokenRequest(AbstractModel):
 2、策略语法参照 CAM 策略语法。
 3、策略中不能包含 principal 元素。
         :type Policy: str
-        :param DurationSeconds: 指定临时证书的有效期，单位：秒，默认1800秒，最长可设定有效期为7200秒
+        :param DurationSeconds: 指定临时证书的有效期，单位：秒，默认1800秒，最长可设定有效期为7200秒。
         :type DurationSeconds: int
         """
         self.Name = None

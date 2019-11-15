@@ -62,6 +62,34 @@ class CdnClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeCdnDomainLogs(self, request):
+        """DescribeCdnDomainLogs 用于查询访问日志下载地址，仅支持 30 天以内的境内、境外访问日志下载链接查询。
+
+        :param request: 调用DescribeCdnDomainLogs所需参数的结构体。
+        :type request: :class:`tencentcloud.cdn.v20180606.models.DescribeCdnDomainLogsRequest`
+        :rtype: :class:`tencentcloud.cdn.v20180606.models.DescribeCdnDomainLogsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeCdnDomainLogs", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeCdnDomainLogsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeCdnIp(self, request):
         """DescribeCdnIp 用于查询 CDN IP 归属。
 
@@ -216,7 +244,7 @@ class CdnClient(AbstractClient):
 
 
     def DescribePurgeTasks(self, request):
-        """DescribePurgeTasks 用于查询刷新任务提交历史记录及执行进度。
+        """DescribePurgeTasks 用于查询提交的 URL 刷新、目录刷新记录及执行进度，通过 PurgePathCache 与 PurgeUrlsCache 接口提交的任务均可通过此接口进行查询。
 
         :param request: 调用DescribePurgeTasks所需参数的结构体。
         :type request: :class:`tencentcloud.cdn.v20180606.models.DescribePurgeTasksRequest`
@@ -244,7 +272,8 @@ class CdnClient(AbstractClient):
 
 
     def DescribePushTasks(self, request):
-        """DescribePushTasks 用于查询预热任务提交历史记录及执行进度。（接口尚在批量公测中，暂未全量开放使用）
+        """DescribePushTasks  用于查询预热任务提交历史记录及执行进度。
+        接口灰度中，暂未全量开放，敬请期待。
 
         :param request: 调用DescribePushTasks所需参数的结构体。
         :type request: :class:`tencentcloud.cdn.v20180606.models.DescribePushTasksRequest`
@@ -257,6 +286,34 @@ class CdnClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribePushTasksResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeTrafficPackages(self, request):
+        """DescribeTrafficPackages 用于查询境内 CDN 流量包详情。
+
+        :param request: 调用DescribeTrafficPackages所需参数的结构体。
+        :type request: :class:`tencentcloud.cdn.v20180606.models.DescribeTrafficPackagesRequest`
+        :rtype: :class:`tencentcloud.cdn.v20180606.models.DescribeTrafficPackagesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeTrafficPackages", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeTrafficPackagesResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -390,7 +447,8 @@ class CdnClient(AbstractClient):
 
 
     def PurgePathCache(self, request):
-        """PurgePathCache 用于批量刷新目录缓存，一次提交将返回一个刷新任务id。
+        """PurgePathCache 用于批量提交目录刷新，根据域名的加速区域进行对应区域的刷新。
+        默认情况下境内、境外加速区域每日目录刷新额度为各 100 条，每次最多可提交 20 条。
 
         :param request: 调用PurgePathCache所需参数的结构体。
         :type request: :class:`tencentcloud.cdn.v20180606.models.PurgePathCacheRequest`
@@ -418,7 +476,8 @@ class CdnClient(AbstractClient):
 
 
     def PurgeUrlsCache(self, request):
-        """PurgeUrlsCache 用于批量刷新Url，一次提交将返回一个刷新任务id。
+        """PurgeUrlsCache 用于批量提交 URL 进行刷新，根据 URL 中域名的当前加速区域进行对应区域的刷新。
+        默认情况下境内、境外加速区域每日 URL 刷新额度各为 10000 条，每次最多可提交 1000 条。
 
         :param request: 调用PurgeUrlsCache所需参数的结构体。
         :type request: :class:`tencentcloud.cdn.v20180606.models.PurgeUrlsCacheRequest`
@@ -446,7 +505,9 @@ class CdnClient(AbstractClient):
 
 
     def PushUrlsCache(self, request):
-        """PushUrlsCache 用于将指定 URL 资源列表加载至 CDN 节点，默认情况下每次调用可提交 20 条 URL，每日一共可提交 1000 条。
+        """PushUrlsCache 用于将指定 URL 资源列表加载至 CDN 节点，支持指定加速区域预热。
+        默认情况下境内、境外每日预热 URL 限额为各 1000 条，每次最多可提交 20 条。
+        接口灰度中，暂未全量开放，敬请期待。
 
         :param request: 调用PushUrlsCache所需参数的结构体。
         :type request: :class:`tencentcloud.cdn.v20180606.models.PushUrlsCacheRequest`

@@ -623,34 +623,6 @@ class MpsClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def DescribeUserInfo(self, request):
-        """用户服务信息查询，返回用户状态和计费类型；若未注册则返回相应错误提示。
-
-        :param request: 调用DescribeUserInfo所需参数的结构体。
-        :type request: :class:`tencentcloud.mps.v20190612.models.DescribeUserInfoRequest`
-        :rtype: :class:`tencentcloud.mps.v20190612.models.DescribeUserInfoResponse`
-
-        """
-        try:
-            params = request._serialize()
-            body = self.call("DescribeUserInfo", params)
-            response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.DescribeUserInfoResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(e.message, e.message)
-
-
     def DescribeWatermarkTemplates(self, request):
         """查询用户自定义水印模板，支持根据条件，分页查询。
 
@@ -931,6 +903,64 @@ class MpsClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def ParseLiveStreamProcessNotification(self, request):
+        """从 CMQ 获取到消息后，从消息的 msgBody 字段中解析出 MPS 直播流处理事件通知的内容。
+        该接口不用于发起网络调用，而是用来帮助生成各个语言平台的 SDK，您可以参考 SDK 的中解析函数的实现事件通知的解析。
+
+        :param request: 调用ParseLiveStreamProcessNotification所需参数的结构体。
+        :type request: :class:`tencentcloud.mps.v20190612.models.ParseLiveStreamProcessNotificationRequest`
+        :rtype: :class:`tencentcloud.mps.v20190612.models.ParseLiveStreamProcessNotificationResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ParseLiveStreamProcessNotification", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ParseLiveStreamProcessNotificationResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ParseNotification(self, request):
+        """从 CMQ 获取到消息后，从消息的 msgBody 字段中解析出 MPS 事件通知的内容。
+        该接口不用于发起网络调用，而是用来帮助生成各个语言平台的 SDK，您可以参考 SDK 的中解析函数的实现事件通知的解析。
+
+        :param request: 调用ParseNotification所需参数的结构体。
+        :type request: :class:`tencentcloud.mps.v20190612.models.ParseNotificationRequest`
+        :rtype: :class:`tencentcloud.mps.v20190612.models.ParseNotificationResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ParseNotification", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ParseNotificationResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def ProcessLiveMedia(self, request):
         """对直播流媒体发起处理任务，功能包括：
 
@@ -950,6 +980,38 @@ class MpsClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ProcessLiveMediaResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ProcessLiveStream(self, request):
+        """对直播流媒体发起处理任务，功能包括：
+
+        * 智能内容审核（画面鉴黄、鉴政、鉴暴、声音鉴黄）。
+
+        直播流处理事件通知实时写入用户指定的消息队列 CMQ 中，用户需要从消息队列 CMQ 中获取事件通知结果，同时处理过程中存在输出文件的，会写入用户指定的输出文件的目标存储中。
+
+        :param request: 调用ProcessLiveStream所需参数的结构体。
+        :type request: :class:`tencentcloud.mps.v20190612.models.ProcessLiveStreamRequest`
+        :rtype: :class:`tencentcloud.mps.v20190612.models.ProcessLiveStreamResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ProcessLiveStream", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ProcessLiveStreamResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

@@ -16,59 +16,6 @@
 from tencentcloud.common.abstract_model import AbstractModel
 
 
-class AdaptiveDynamicStreamingTaskInput(AbstractModel):
-    """对视频转自适应码流的输入参数类型
-
-    """
-
-    def __init__(self):
-        """
-        :param Definition: 转自适应码流模板 ID。
-        :type Definition: int
-        :param WatermarkSet: 水印列表，支持多张图片或文字水印，最大可支持 10 张。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type WatermarkSet: list of WatermarkInput
-        :param OutputStorage: 转自适应码流后文件的目标存储，不填则继承上层的 OutputStorage 值。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type OutputStorage: :class:`tencentcloud.mps.v20190612.models.TaskOutputStorage`
-        :param OutputObjectPath: 转自适应码流后，manifest 文件的输出路径，可以为相对路径或者绝对路径。如果不填，则默认为相对路径：`{inputName}_adaptiveDynamicStreaming_{definition}.{format}`。
-        :type OutputObjectPath: str
-        :param SubStreamManifestObjectName: 转自适应码流（HLS）后，二级 index 文件的输出路径，只能为相对路径。如果不填，则默认为相对路径：`{inputName}_adaptiveDynamicStreaming_{definition}_{trackType}_{trackDefinition}.{format}`。
-        :type SubStreamManifestObjectName: str
-        :param SegmentObjectName: 转自适应码流后，分片文件的输出路径，只能为相对路径。如果不填，则默认为相对路径：`{inputName}_adaptiveDynamicStreaming_{definition}_{trackType}_{trackDefinition}_{number}.{format}`。
-        :type SegmentObjectName: str
-        :param ObjectNumberFormat: 转自适应码流后输出路径中的`{number}`变量的规则。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type ObjectNumberFormat: :class:`tencentcloud.mps.v20190612.models.NumberFormat`
-        """
-        self.Definition = None
-        self.WatermarkSet = None
-        self.OutputStorage = None
-        self.OutputObjectPath = None
-        self.SubStreamManifestObjectName = None
-        self.SegmentObjectName = None
-        self.ObjectNumberFormat = None
-
-
-    def _deserialize(self, params):
-        self.Definition = params.get("Definition")
-        if params.get("WatermarkSet") is not None:
-            self.WatermarkSet = []
-            for item in params.get("WatermarkSet"):
-                obj = WatermarkInput()
-                obj._deserialize(item)
-                self.WatermarkSet.append(obj)
-        if params.get("OutputStorage") is not None:
-            self.OutputStorage = TaskOutputStorage()
-            self.OutputStorage._deserialize(params.get("OutputStorage"))
-        self.OutputObjectPath = params.get("OutputObjectPath")
-        self.SubStreamManifestObjectName = params.get("SubStreamManifestObjectName")
-        self.SegmentObjectName = params.get("SegmentObjectName")
-        if params.get("ObjectNumberFormat") is not None:
-            self.ObjectNumberFormat = NumberFormat()
-            self.ObjectNumberFormat._deserialize(params.get("ObjectNumberFormat"))
-
-
 class AiAnalysisTaskInput(AbstractModel):
     """AI 视频智能分析输入参数类型
 
@@ -84,6 +31,80 @@ class AiAnalysisTaskInput(AbstractModel):
 
     def _deserialize(self, params):
         self.Definition = params.get("Definition")
+
+
+class AiContentReviewResult(AbstractModel):
+    """内容审核结果
+
+    """
+
+    def __init__(self):
+        """
+        :param Type: 任务的类型，可以取的值有：
+<li>Porn：图片鉴黄</li>
+<li>Terrorism：图片鉴恐</li>
+<li>Political：图片鉴政</li>
+<li>Porn.Asr：Asr 文字鉴黄</li>
+<li>Porn.Ocr：Ocr 文字鉴黄</li>
+<li>Porn.Voice：声音鉴黄</li>
+<li>Political.Asr：Asr 文字鉴政</li>
+<li>Political.Ocr：Ocr 文字鉴政</li>
+        :type Type: str
+        :param PornTask: 视频内容审核智能画面鉴黄任务的查询结果，当任务类型为 Porn 时有效。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PornTask: :class:`tencentcloud.mps.v20190612.models.AiReviewTaskPornResult`
+        :param TerrorismTask: 视频内容审核智能画面鉴恐任务的查询结果，当任务类型为 Terrorism 时有效。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TerrorismTask: :class:`tencentcloud.mps.v20190612.models.AiReviewTaskTerrorismResult`
+        :param PoliticalTask: 视频内容审核智能画面鉴政任务的查询结果，当任务类型为 Political 时有效。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PoliticalTask: :class:`tencentcloud.mps.v20190612.models.AiReviewTaskPoliticalResult`
+        :param PornAsrTask: 视频内容审核 Asr 文字鉴黄任务的查询结果，当任务类型为 Porn.Asr 时有效。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PornAsrTask: :class:`tencentcloud.mps.v20190612.models.AiReviewTaskPornAsrResult`
+        :param PornOcrTask: 视频内容审核 Ocr 文字鉴黄任务的查询结果，当任务类型为 Porn.Ocr 时有效。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PornOcrTask: :class:`tencentcloud.mps.v20190612.models.AiReviewTaskPornOcrResult`
+        :param PoliticalAsrTask: 视频内容审核 Asr 文字鉴政任务的查询结果，当任务类型为 Political.Asr 时有效。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PoliticalAsrTask: :class:`tencentcloud.mps.v20190612.models.AiReviewTaskPoliticalAsrResult`
+        :param PoliticalOcrTask: 视频内容审核 Ocr 文字鉴政任务的查询结果，当任务类型为 Political.Ocr 时有效。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PoliticalOcrTask: :class:`tencentcloud.mps.v20190612.models.AiReviewTaskPoliticalOcrResult`
+        """
+        self.Type = None
+        self.PornTask = None
+        self.TerrorismTask = None
+        self.PoliticalTask = None
+        self.PornAsrTask = None
+        self.PornOcrTask = None
+        self.PoliticalAsrTask = None
+        self.PoliticalOcrTask = None
+
+
+    def _deserialize(self, params):
+        self.Type = params.get("Type")
+        if params.get("PornTask") is not None:
+            self.PornTask = AiReviewTaskPornResult()
+            self.PornTask._deserialize(params.get("PornTask"))
+        if params.get("TerrorismTask") is not None:
+            self.TerrorismTask = AiReviewTaskTerrorismResult()
+            self.TerrorismTask._deserialize(params.get("TerrorismTask"))
+        if params.get("PoliticalTask") is not None:
+            self.PoliticalTask = AiReviewTaskPoliticalResult()
+            self.PoliticalTask._deserialize(params.get("PoliticalTask"))
+        if params.get("PornAsrTask") is not None:
+            self.PornAsrTask = AiReviewTaskPornAsrResult()
+            self.PornAsrTask._deserialize(params.get("PornAsrTask"))
+        if params.get("PornOcrTask") is not None:
+            self.PornOcrTask = AiReviewTaskPornOcrResult()
+            self.PornOcrTask._deserialize(params.get("PornOcrTask"))
+        if params.get("PoliticalAsrTask") is not None:
+            self.PoliticalAsrTask = AiReviewTaskPoliticalAsrResult()
+            self.PoliticalAsrTask._deserialize(params.get("PoliticalAsrTask"))
+        if params.get("PoliticalOcrTask") is not None:
+            self.PoliticalOcrTask = AiReviewTaskPoliticalOcrResult()
+            self.PoliticalOcrTask._deserialize(params.get("PoliticalOcrTask"))
 
 
 class AiContentReviewTaskInput(AbstractModel):
@@ -103,6 +124,456 @@ class AiContentReviewTaskInput(AbstractModel):
         self.Definition = params.get("Definition")
 
 
+class AiRecognitionResult(AbstractModel):
+    """智能识别结果。
+
+    """
+
+    def __init__(self):
+        """
+        :param Type: 任务的类型，取值范围：
+<li>FaceRecognition：人脸识别，</li>
+<li>AsrWordsRecognition：语音关键词识别，</li>
+<li>OcrWordsRecognition：文本关键词识别，</li>
+<li>AsrFullTextRecognition：语音全文识别，</li>
+<li>OcrFullTextRecognition：文本全文识别，</li>
+<li>HeadTailRecognition：视频片头片尾识别，</li>
+<li>ObjectRecognition：物体识别。</li>
+        :type Type: str
+        :param FaceTask: 人脸识别结果，当 Type 为 
+ FaceRecognition 时有效。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FaceTask: :class:`tencentcloud.mps.v20190612.models.AiRecognitionTaskFaceResult`
+        :param AsrWordsTask: 语音关键词识别结果，当 Type 为
+ AsrWordsRecognition 时有效。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AsrWordsTask: :class:`tencentcloud.mps.v20190612.models.AiRecognitionTaskAsrWordsResult`
+        :param AsrFullTextTask: 语音全文识别结果，当 Type 为
+ AsrFullTextRecognition 时有效。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AsrFullTextTask: :class:`tencentcloud.mps.v20190612.models.AiRecognitionTaskAsrFullTextResult`
+        :param OcrWordsTask: 文本关键词识别结果，当 Type 为
+ OcrWordsRecognition 时有效。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OcrWordsTask: :class:`tencentcloud.mps.v20190612.models.AiRecognitionTaskOcrWordsResult`
+        :param OcrFullTextTask: 文本全文识别结果，当 Type 为
+ OcrFullTextRecognition 时有效。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OcrFullTextTask: :class:`tencentcloud.mps.v20190612.models.AiRecognitionTaskOcrFullTextResult`
+        """
+        self.Type = None
+        self.FaceTask = None
+        self.AsrWordsTask = None
+        self.AsrFullTextTask = None
+        self.OcrWordsTask = None
+        self.OcrFullTextTask = None
+
+
+    def _deserialize(self, params):
+        self.Type = params.get("Type")
+        if params.get("FaceTask") is not None:
+            self.FaceTask = AiRecognitionTaskFaceResult()
+            self.FaceTask._deserialize(params.get("FaceTask"))
+        if params.get("AsrWordsTask") is not None:
+            self.AsrWordsTask = AiRecognitionTaskAsrWordsResult()
+            self.AsrWordsTask._deserialize(params.get("AsrWordsTask"))
+        if params.get("AsrFullTextTask") is not None:
+            self.AsrFullTextTask = AiRecognitionTaskAsrFullTextResult()
+            self.AsrFullTextTask._deserialize(params.get("AsrFullTextTask"))
+        if params.get("OcrWordsTask") is not None:
+            self.OcrWordsTask = AiRecognitionTaskOcrWordsResult()
+            self.OcrWordsTask._deserialize(params.get("OcrWordsTask"))
+        if params.get("OcrFullTextTask") is not None:
+            self.OcrFullTextTask = AiRecognitionTaskOcrFullTextResult()
+            self.OcrFullTextTask._deserialize(params.get("OcrFullTextTask"))
+
+
+class AiRecognitionTaskAsrFullTextResult(AbstractModel):
+    """语音全文识别结果。
+
+    """
+
+    def __init__(self):
+        """
+        :param Status: 任务状态，有 PROCESSING，SUCCESS 和 FAIL 三种。
+        :type Status: str
+        :param ErrCode: 错误码，0：成功，其他值：失败。
+        :type ErrCode: int
+        :param Message: 错误信息。
+        :type Message: str
+        :param Input: 语音全文识别任务输入信息。
+        :type Input: :class:`tencentcloud.mps.v20190612.models.AiRecognitionTaskAsrFullTextResultInput`
+        :param Output: 语音全文识别任务输出信息。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Output: :class:`tencentcloud.mps.v20190612.models.AiRecognitionTaskAsrFullTextResultOutput`
+        """
+        self.Status = None
+        self.ErrCode = None
+        self.Message = None
+        self.Input = None
+        self.Output = None
+
+
+    def _deserialize(self, params):
+        self.Status = params.get("Status")
+        self.ErrCode = params.get("ErrCode")
+        self.Message = params.get("Message")
+        if params.get("Input") is not None:
+            self.Input = AiRecognitionTaskAsrFullTextResultInput()
+            self.Input._deserialize(params.get("Input"))
+        if params.get("Output") is not None:
+            self.Output = AiRecognitionTaskAsrFullTextResultOutput()
+            self.Output._deserialize(params.get("Output"))
+
+
+class AiRecognitionTaskAsrFullTextResultInput(AbstractModel):
+    """语音全文识别的输入。
+
+    """
+
+    def __init__(self):
+        """
+        :param Definition: 语音全文识别模板 ID。
+        :type Definition: int
+        """
+        self.Definition = None
+
+
+    def _deserialize(self, params):
+        self.Definition = params.get("Definition")
+
+
+class AiRecognitionTaskAsrFullTextResultOutput(AbstractModel):
+    """语音全文识别结果。
+
+    """
+
+    def __init__(self):
+        """
+        :param SegmentSet: 语音全文识别片段列表。
+        :type SegmentSet: list of AiRecognitionTaskAsrFullTextSegmentItem
+        :param SubtitlePath: 字幕文件地址。
+        :type SubtitlePath: str
+        :param OutputStorage: 字幕文件存储位置。
+        :type OutputStorage: :class:`tencentcloud.mps.v20190612.models.TaskOutputStorage`
+        """
+        self.SegmentSet = None
+        self.SubtitlePath = None
+        self.OutputStorage = None
+
+
+    def _deserialize(self, params):
+        if params.get("SegmentSet") is not None:
+            self.SegmentSet = []
+            for item in params.get("SegmentSet"):
+                obj = AiRecognitionTaskAsrFullTextSegmentItem()
+                obj._deserialize(item)
+                self.SegmentSet.append(obj)
+        self.SubtitlePath = params.get("SubtitlePath")
+        if params.get("OutputStorage") is not None:
+            self.OutputStorage = TaskOutputStorage()
+            self.OutputStorage._deserialize(params.get("OutputStorage"))
+
+
+class AiRecognitionTaskAsrFullTextSegmentItem(AbstractModel):
+    """语音全文识别片段。
+
+    """
+
+    def __init__(self):
+        """
+        :param Confidence: 识别片段置信度。取值：0~100。
+        :type Confidence: float
+        :param StartTimeOffset: 识别片段起始的偏移时间，单位：秒。
+        :type StartTimeOffset: float
+        :param EndTimeOffset: 识别片段终止的偏移时间，单位：秒。
+        :type EndTimeOffset: float
+        :param Text: 识别文本。
+        :type Text: str
+        """
+        self.Confidence = None
+        self.StartTimeOffset = None
+        self.EndTimeOffset = None
+        self.Text = None
+
+
+    def _deserialize(self, params):
+        self.Confidence = params.get("Confidence")
+        self.StartTimeOffset = params.get("StartTimeOffset")
+        self.EndTimeOffset = params.get("EndTimeOffset")
+        self.Text = params.get("Text")
+
+
+class AiRecognitionTaskAsrWordsResult(AbstractModel):
+    """语音关键词识别结果。
+
+    """
+
+    def __init__(self):
+        """
+        :param Status: 任务状态，有 PROCESSING，SUCCESS 和 FAIL 三种。
+        :type Status: str
+        :param ErrCode: 错误码，0：成功，其他值：失败。
+        :type ErrCode: int
+        :param Message: 错误信息。
+        :type Message: str
+        :param Input: 语音关键词识别任务输入信息。
+        :type Input: :class:`tencentcloud.mps.v20190612.models.AiRecognitionTaskAsrWordsResultInput`
+        :param Output: 语音关键词识别任务输出信息。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Output: :class:`tencentcloud.mps.v20190612.models.AiRecognitionTaskAsrWordsResultOutput`
+        """
+        self.Status = None
+        self.ErrCode = None
+        self.Message = None
+        self.Input = None
+        self.Output = None
+
+
+    def _deserialize(self, params):
+        self.Status = params.get("Status")
+        self.ErrCode = params.get("ErrCode")
+        self.Message = params.get("Message")
+        if params.get("Input") is not None:
+            self.Input = AiRecognitionTaskAsrWordsResultInput()
+            self.Input._deserialize(params.get("Input"))
+        if params.get("Output") is not None:
+            self.Output = AiRecognitionTaskAsrWordsResultOutput()
+            self.Output._deserialize(params.get("Output"))
+
+
+class AiRecognitionTaskAsrWordsResultInput(AbstractModel):
+    """语音关键词识别输入。
+
+    """
+
+    def __init__(self):
+        """
+        :param Definition: 语音关键词识别模板 ID。
+        :type Definition: int
+        """
+        self.Definition = None
+
+
+    def _deserialize(self, params):
+        self.Definition = params.get("Definition")
+
+
+class AiRecognitionTaskAsrWordsResultItem(AbstractModel):
+    """语音关键词识别结果。
+
+    """
+
+    def __init__(self):
+        """
+        :param Word: 语音关键词。
+        :type Word: str
+        :param SegmentSet: 语音关键词出现的时间片段列表。
+        :type SegmentSet: list of AiRecognitionTaskAsrWordsSegmentItem
+        """
+        self.Word = None
+        self.SegmentSet = None
+
+
+    def _deserialize(self, params):
+        self.Word = params.get("Word")
+        if params.get("SegmentSet") is not None:
+            self.SegmentSet = []
+            for item in params.get("SegmentSet"):
+                obj = AiRecognitionTaskAsrWordsSegmentItem()
+                obj._deserialize(item)
+                self.SegmentSet.append(obj)
+
+
+class AiRecognitionTaskAsrWordsResultOutput(AbstractModel):
+    """语音关键词识别输出。
+
+    """
+
+    def __init__(self):
+        """
+        :param ResultSet: 语音关键词识别结果集。
+        :type ResultSet: list of AiRecognitionTaskAsrWordsResultItem
+        """
+        self.ResultSet = None
+
+
+    def _deserialize(self, params):
+        if params.get("ResultSet") is not None:
+            self.ResultSet = []
+            for item in params.get("ResultSet"):
+                obj = AiRecognitionTaskAsrWordsResultItem()
+                obj._deserialize(item)
+                self.ResultSet.append(obj)
+
+
+class AiRecognitionTaskAsrWordsSegmentItem(AbstractModel):
+    """语音识别片段。
+
+    """
+
+    def __init__(self):
+        """
+        :param StartTimeOffset: 识别片段起始的偏移时间，单位：秒。
+        :type StartTimeOffset: float
+        :param EndTimeOffset: 识别片段终止的偏移时间，单位：秒。
+        :type EndTimeOffset: float
+        :param Confidence: 识别片段置信度。取值：0~100。
+        :type Confidence: float
+        """
+        self.StartTimeOffset = None
+        self.EndTimeOffset = None
+        self.Confidence = None
+
+
+    def _deserialize(self, params):
+        self.StartTimeOffset = params.get("StartTimeOffset")
+        self.EndTimeOffset = params.get("EndTimeOffset")
+        self.Confidence = params.get("Confidence")
+
+
+class AiRecognitionTaskFaceResult(AbstractModel):
+    """人脸识别结果。
+
+    """
+
+    def __init__(self):
+        """
+        :param Status: 任务状态，有 PROCESSING，SUCCESS 和 FAIL 三种。
+        :type Status: str
+        :param ErrCode: 错误码，0：成功，其他值：失败。
+        :type ErrCode: int
+        :param Message: 错误信息。
+        :type Message: str
+        :param Input: 人脸识别任务输入信息。
+        :type Input: :class:`tencentcloud.mps.v20190612.models.AiRecognitionTaskFaceResultInput`
+        :param Output: 人脸识别任务输出信息。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Output: :class:`tencentcloud.mps.v20190612.models.AiRecognitionTaskFaceResultOutput`
+        """
+        self.Status = None
+        self.ErrCode = None
+        self.Message = None
+        self.Input = None
+        self.Output = None
+
+
+    def _deserialize(self, params):
+        self.Status = params.get("Status")
+        self.ErrCode = params.get("ErrCode")
+        self.Message = params.get("Message")
+        if params.get("Input") is not None:
+            self.Input = AiRecognitionTaskFaceResultInput()
+            self.Input._deserialize(params.get("Input"))
+        if params.get("Output") is not None:
+            self.Output = AiRecognitionTaskFaceResultOutput()
+            self.Output._deserialize(params.get("Output"))
+
+
+class AiRecognitionTaskFaceResultInput(AbstractModel):
+    """人脸识别输入。
+
+    """
+
+    def __init__(self):
+        """
+        :param Definition: 人脸识别模板 ID。
+        :type Definition: int
+        """
+        self.Definition = None
+
+
+    def _deserialize(self, params):
+        self.Definition = params.get("Definition")
+
+
+class AiRecognitionTaskFaceResultItem(AbstractModel):
+    """人脸识别结果
+
+    """
+
+    def __init__(self):
+        """
+        :param Id: 人物唯一标识 ID。
+        :type Id: str
+        :param Type: 人物库类型，表示识别出的人物来自哪个人物库：
+<li>Default：默认人物库；</li>
+<li>UserDefine：用户自定义人物库。</li>
+        :type Type: str
+        :param Name: 人物名称。
+        :type Name: str
+        :param SegmentSet: 人物出现的片段结果集。
+        :type SegmentSet: list of AiRecognitionTaskFaceSegmentItem
+        """
+        self.Id = None
+        self.Type = None
+        self.Name = None
+        self.SegmentSet = None
+
+
+    def _deserialize(self, params):
+        self.Id = params.get("Id")
+        self.Type = params.get("Type")
+        self.Name = params.get("Name")
+        if params.get("SegmentSet") is not None:
+            self.SegmentSet = []
+            for item in params.get("SegmentSet"):
+                obj = AiRecognitionTaskFaceSegmentItem()
+                obj._deserialize(item)
+                self.SegmentSet.append(obj)
+
+
+class AiRecognitionTaskFaceResultOutput(AbstractModel):
+    """智能人脸识别输出。
+
+    """
+
+    def __init__(self):
+        """
+        :param ResultSet: 智能人脸识别结果集。
+        :type ResultSet: list of AiRecognitionTaskFaceResultItem
+        """
+        self.ResultSet = None
+
+
+    def _deserialize(self, params):
+        if params.get("ResultSet") is not None:
+            self.ResultSet = []
+            for item in params.get("ResultSet"):
+                obj = AiRecognitionTaskFaceResultItem()
+                obj._deserialize(item)
+                self.ResultSet.append(obj)
+
+
+class AiRecognitionTaskFaceSegmentItem(AbstractModel):
+    """人脸识别结果片段
+
+    """
+
+    def __init__(self):
+        """
+        :param StartTimeOffset: 识别片段起始的偏移时间，单位：秒。
+        :type StartTimeOffset: float
+        :param EndTimeOffset: 识别片段终止的偏移时间，单位：秒。
+        :type EndTimeOffset: float
+        :param Confidence: 识别片段置信度。取值：0~100。
+        :type Confidence: float
+        :param AreaCoordSet: 识别结果的区域坐标。数组包含 4 个元素 [x1,y1,x2,y2]，依次表示区域左上点、右下点的横纵坐标。
+        :type AreaCoordSet: list of int
+        """
+        self.StartTimeOffset = None
+        self.EndTimeOffset = None
+        self.Confidence = None
+        self.AreaCoordSet = None
+
+
+    def _deserialize(self, params):
+        self.StartTimeOffset = params.get("StartTimeOffset")
+        self.EndTimeOffset = params.get("EndTimeOffset")
+        self.Confidence = params.get("Confidence")
+        self.AreaCoordSet = params.get("AreaCoordSet")
+
+
 class AiRecognitionTaskInput(AbstractModel):
     """视频内容识别输入参数类型
 
@@ -118,6 +589,916 @@ class AiRecognitionTaskInput(AbstractModel):
 
     def _deserialize(self, params):
         self.Definition = params.get("Definition")
+
+
+class AiRecognitionTaskOcrFullTextResult(AbstractModel):
+    """文本全文识别结果。
+
+    """
+
+    def __init__(self):
+        """
+        :param Status: 任务状态，有 PROCESSING，SUCCESS 和 FAIL 三种。
+        :type Status: str
+        :param ErrCode: 错误码，0：成功，其他值：失败。
+        :type ErrCode: int
+        :param Message: 错误信息。
+        :type Message: str
+        :param Input: 文本全文识别任务输入信息。
+        :type Input: :class:`tencentcloud.mps.v20190612.models.AiRecognitionTaskOcrFullTextResultInput`
+        :param Output: 文本全文识别任务输出信息。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Output: :class:`tencentcloud.mps.v20190612.models.AiRecognitionTaskOcrFullTextResultOutput`
+        """
+        self.Status = None
+        self.ErrCode = None
+        self.Message = None
+        self.Input = None
+        self.Output = None
+
+
+    def _deserialize(self, params):
+        self.Status = params.get("Status")
+        self.ErrCode = params.get("ErrCode")
+        self.Message = params.get("Message")
+        if params.get("Input") is not None:
+            self.Input = AiRecognitionTaskOcrFullTextResultInput()
+            self.Input._deserialize(params.get("Input"))
+        if params.get("Output") is not None:
+            self.Output = AiRecognitionTaskOcrFullTextResultOutput()
+            self.Output._deserialize(params.get("Output"))
+
+
+class AiRecognitionTaskOcrFullTextResultInput(AbstractModel):
+    """文本全文识别输入。
+
+    """
+
+    def __init__(self):
+        """
+        :param Definition: 文本全文识别模板 ID。
+        :type Definition: int
+        """
+        self.Definition = None
+
+
+    def _deserialize(self, params):
+        self.Definition = params.get("Definition")
+
+
+class AiRecognitionTaskOcrFullTextResultOutput(AbstractModel):
+    """文本全文识别输出。
+
+    """
+
+    def __init__(self):
+        """
+        :param SegmentSet: 文本全文识别结果集。
+        :type SegmentSet: list of AiRecognitionTaskOcrFullTextSegmentItem
+        """
+        self.SegmentSet = None
+
+
+    def _deserialize(self, params):
+        if params.get("SegmentSet") is not None:
+            self.SegmentSet = []
+            for item in params.get("SegmentSet"):
+                obj = AiRecognitionTaskOcrFullTextSegmentItem()
+                obj._deserialize(item)
+                self.SegmentSet.append(obj)
+
+
+class AiRecognitionTaskOcrFullTextSegmentItem(AbstractModel):
+    """文本全文识别片段。
+
+    """
+
+    def __init__(self):
+        """
+        :param StartTimeOffset: 识别片段起始的偏移时间，单位：秒。
+        :type StartTimeOffset: float
+        :param EndTimeOffset: 识别片段终止的偏移时间，单位：秒。
+        :type EndTimeOffset: float
+        :param TextSet: 识别片段结果集。
+        :type TextSet: list of AiRecognitionTaskOcrFullTextSegmentTextItem
+        """
+        self.StartTimeOffset = None
+        self.EndTimeOffset = None
+        self.TextSet = None
+
+
+    def _deserialize(self, params):
+        self.StartTimeOffset = params.get("StartTimeOffset")
+        self.EndTimeOffset = params.get("EndTimeOffset")
+        if params.get("TextSet") is not None:
+            self.TextSet = []
+            for item in params.get("TextSet"):
+                obj = AiRecognitionTaskOcrFullTextSegmentTextItem()
+                obj._deserialize(item)
+                self.TextSet.append(obj)
+
+
+class AiRecognitionTaskOcrFullTextSegmentTextItem(AbstractModel):
+    """文本全文识别片段。
+
+    """
+
+    def __init__(self):
+        """
+        :param Confidence: 识别片段置信度。取值：0~100。
+        :type Confidence: float
+        :param AreaCoordSet: 识别结果的区域坐标。数组包含 4 个元素 [x1,y1,x2,y2]，依次表示区域左上点、右下点的横纵坐标。
+        :type AreaCoordSet: list of int
+        :param Text: 识别文本。
+        :type Text: str
+        """
+        self.Confidence = None
+        self.AreaCoordSet = None
+        self.Text = None
+
+
+    def _deserialize(self, params):
+        self.Confidence = params.get("Confidence")
+        self.AreaCoordSet = params.get("AreaCoordSet")
+        self.Text = params.get("Text")
+
+
+class AiRecognitionTaskOcrWordsResult(AbstractModel):
+    """文本关键识别结果。
+
+    """
+
+    def __init__(self):
+        """
+        :param Status: 任务状态，有 PROCESSING，SUCCESS 和 FAIL 三种。
+        :type Status: str
+        :param ErrCode: 错误码，0：成功，其他值：失败。
+        :type ErrCode: int
+        :param Message: 错误信息。
+        :type Message: str
+        :param Input: 文本关键词识别任务输入信息。
+        :type Input: :class:`tencentcloud.mps.v20190612.models.AiRecognitionTaskOcrWordsResultInput`
+        :param Output: 文本关键词识别任务输出信息。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Output: :class:`tencentcloud.mps.v20190612.models.AiRecognitionTaskOcrWordsResultOutput`
+        """
+        self.Status = None
+        self.ErrCode = None
+        self.Message = None
+        self.Input = None
+        self.Output = None
+
+
+    def _deserialize(self, params):
+        self.Status = params.get("Status")
+        self.ErrCode = params.get("ErrCode")
+        self.Message = params.get("Message")
+        if params.get("Input") is not None:
+            self.Input = AiRecognitionTaskOcrWordsResultInput()
+            self.Input._deserialize(params.get("Input"))
+        if params.get("Output") is not None:
+            self.Output = AiRecognitionTaskOcrWordsResultOutput()
+            self.Output._deserialize(params.get("Output"))
+
+
+class AiRecognitionTaskOcrWordsResultInput(AbstractModel):
+    """文本关键词识别输入。
+
+    """
+
+    def __init__(self):
+        """
+        :param Definition: 文本关键词识别模板 ID。
+        :type Definition: int
+        """
+        self.Definition = None
+
+
+    def _deserialize(self, params):
+        self.Definition = params.get("Definition")
+
+
+class AiRecognitionTaskOcrWordsResultItem(AbstractModel):
+    """文本关键词识别结果。
+
+    """
+
+    def __init__(self):
+        """
+        :param Word: 文本关键词。
+        :type Word: str
+        :param SegmentSet: 文本关键出现的片段列表。
+        :type SegmentSet: list of AiRecognitionTaskOcrWordsSegmentItem
+        """
+        self.Word = None
+        self.SegmentSet = None
+
+
+    def _deserialize(self, params):
+        self.Word = params.get("Word")
+        if params.get("SegmentSet") is not None:
+            self.SegmentSet = []
+            for item in params.get("SegmentSet"):
+                obj = AiRecognitionTaskOcrWordsSegmentItem()
+                obj._deserialize(item)
+                self.SegmentSet.append(obj)
+
+
+class AiRecognitionTaskOcrWordsResultOutput(AbstractModel):
+    """文本关键词识别输出。
+
+    """
+
+    def __init__(self):
+        """
+        :param ResultSet: 文本关键词识别结果集。
+        :type ResultSet: list of AiRecognitionTaskOcrWordsResultItem
+        """
+        self.ResultSet = None
+
+
+    def _deserialize(self, params):
+        if params.get("ResultSet") is not None:
+            self.ResultSet = []
+            for item in params.get("ResultSet"):
+                obj = AiRecognitionTaskOcrWordsResultItem()
+                obj._deserialize(item)
+                self.ResultSet.append(obj)
+
+
+class AiRecognitionTaskOcrWordsSegmentItem(AbstractModel):
+    """文本识别片段。
+
+    """
+
+    def __init__(self):
+        """
+        :param StartTimeOffset: 识别片段起始的偏移时间，单位：秒。
+        :type StartTimeOffset: float
+        :param EndTimeOffset: 识别片段终止的偏移时间，单位：秒。
+        :type EndTimeOffset: float
+        :param Confidence: 识别片段置信度。取值：0~100。
+        :type Confidence: float
+        :param AreaCoordSet: 识别结果的区域坐标。数组包含 4 个元素 [x1,y1,x2,y2]，依次表示区域左上点、右下点的横纵坐标。
+        :type AreaCoordSet: list of int
+        """
+        self.StartTimeOffset = None
+        self.EndTimeOffset = None
+        self.Confidence = None
+        self.AreaCoordSet = None
+
+
+    def _deserialize(self, params):
+        self.StartTimeOffset = params.get("StartTimeOffset")
+        self.EndTimeOffset = params.get("EndTimeOffset")
+        self.Confidence = params.get("Confidence")
+        self.AreaCoordSet = params.get("AreaCoordSet")
+
+
+class AiReviewPoliticalAsrTaskInput(AbstractModel):
+    """内容审核 Asr 文字鉴政、敏感任务输入参数类型
+
+    """
+
+    def __init__(self):
+        """
+        :param Definition: 鉴政模板 ID。
+        :type Definition: int
+        """
+        self.Definition = None
+
+
+    def _deserialize(self, params):
+        self.Definition = params.get("Definition")
+
+
+class AiReviewPoliticalAsrTaskOutput(AbstractModel):
+    """Asr 文字涉政信息
+
+    """
+
+    def __init__(self):
+        """
+        :param Confidence: Asr 文字涉政、敏感评分，分值为0到100。
+        :type Confidence: float
+        :param Suggestion: Asr 文字涉政、敏感结果建议，取值范围：
+<li>pass。</li>
+<li>review。</li>
+<li>block。</li>
+        :type Suggestion: str
+        :param SegmentSet: Asr 文字有涉政、敏感嫌疑的视频片段列表。
+        :type SegmentSet: list of MediaContentReviewAsrTextSegmentItem
+        """
+        self.Confidence = None
+        self.Suggestion = None
+        self.SegmentSet = None
+
+
+    def _deserialize(self, params):
+        self.Confidence = params.get("Confidence")
+        self.Suggestion = params.get("Suggestion")
+        if params.get("SegmentSet") is not None:
+            self.SegmentSet = []
+            for item in params.get("SegmentSet"):
+                obj = MediaContentReviewAsrTextSegmentItem()
+                obj._deserialize(item)
+                self.SegmentSet.append(obj)
+
+
+class AiReviewPoliticalOcrTaskInput(AbstractModel):
+    """内容审核 Ocr 文字鉴政任务输入参数类型
+
+    """
+
+    def __init__(self):
+        """
+        :param Definition: 鉴政模板 ID。
+        :type Definition: int
+        """
+        self.Definition = None
+
+
+    def _deserialize(self, params):
+        self.Definition = params.get("Definition")
+
+
+class AiReviewPoliticalOcrTaskOutput(AbstractModel):
+    """Ocr 文字涉政信息
+
+    """
+
+    def __init__(self):
+        """
+        :param Confidence: Ocr 文字涉政、敏感评分，分值为0到100。
+        :type Confidence: float
+        :param Suggestion: Ocr 文字涉政、敏感结果建议，取值范围：
+<li>pass。</li>
+<li>review。</li>
+<li>block。</li>
+        :type Suggestion: str
+        :param SegmentSet: Ocr 文字有涉政、敏感嫌疑的视频片段列表。
+        :type SegmentSet: list of MediaContentReviewOcrTextSegmentItem
+        """
+        self.Confidence = None
+        self.Suggestion = None
+        self.SegmentSet = None
+
+
+    def _deserialize(self, params):
+        self.Confidence = params.get("Confidence")
+        self.Suggestion = params.get("Suggestion")
+        if params.get("SegmentSet") is not None:
+            self.SegmentSet = []
+            for item in params.get("SegmentSet"):
+                obj = MediaContentReviewOcrTextSegmentItem()
+                obj._deserialize(item)
+                self.SegmentSet.append(obj)
+
+
+class AiReviewPoliticalTaskInput(AbstractModel):
+    """内容审核鉴政任务输入参数类型
+
+    """
+
+    def __init__(self):
+        """
+        :param Definition: 鉴政模板 ID。
+        :type Definition: int
+        """
+        self.Definition = None
+
+
+    def _deserialize(self, params):
+        self.Definition = params.get("Definition")
+
+
+class AiReviewPoliticalTaskOutput(AbstractModel):
+    """涉政信息
+
+    """
+
+    def __init__(self):
+        """
+        :param Confidence: 视频涉政评分，分值为0到100。
+        :type Confidence: float
+        :param Suggestion: 涉政结果建议，取值范围：
+<li>pass。</li>
+<li>review。</li>
+<li>block。</li>
+        :type Suggestion: str
+        :param Label: 视频鉴政结果标签，取值范围：
+<li>politician：政治人物。</li>
+<li>violation_photo：违规图标。</li>
+        :type Label: str
+        :param SegmentSet: 有涉政嫌疑的视频片段列表。
+        :type SegmentSet: list of MediaContentReviewPoliticalSegmentItem
+        """
+        self.Confidence = None
+        self.Suggestion = None
+        self.Label = None
+        self.SegmentSet = None
+
+
+    def _deserialize(self, params):
+        self.Confidence = params.get("Confidence")
+        self.Suggestion = params.get("Suggestion")
+        self.Label = params.get("Label")
+        if params.get("SegmentSet") is not None:
+            self.SegmentSet = []
+            for item in params.get("SegmentSet"):
+                obj = MediaContentReviewPoliticalSegmentItem()
+                obj._deserialize(item)
+                self.SegmentSet.append(obj)
+
+
+class AiReviewPornAsrTaskInput(AbstractModel):
+    """内容审核 Asr 文字鉴黄任务输入参数类型
+
+    """
+
+    def __init__(self):
+        """
+        :param Definition: 鉴黄模板 ID。
+        :type Definition: int
+        """
+        self.Definition = None
+
+
+    def _deserialize(self, params):
+        self.Definition = params.get("Definition")
+
+
+class AiReviewPornAsrTaskOutput(AbstractModel):
+    """Asr 文字涉黄信息
+
+    """
+
+    def __init__(self):
+        """
+        :param Confidence: Asr 文字涉黄评分，分值为0到100。
+        :type Confidence: float
+        :param Suggestion: Asr 文字涉黄结果建议，取值范围：
+<li>pass。</li>
+<li>review。</li>
+<li>block。</li>
+        :type Suggestion: str
+        :param SegmentSet: Asr 文字有涉黄嫌疑的视频片段列表。
+        :type SegmentSet: list of MediaContentReviewAsrTextSegmentItem
+        """
+        self.Confidence = None
+        self.Suggestion = None
+        self.SegmentSet = None
+
+
+    def _deserialize(self, params):
+        self.Confidence = params.get("Confidence")
+        self.Suggestion = params.get("Suggestion")
+        if params.get("SegmentSet") is not None:
+            self.SegmentSet = []
+            for item in params.get("SegmentSet"):
+                obj = MediaContentReviewAsrTextSegmentItem()
+                obj._deserialize(item)
+                self.SegmentSet.append(obj)
+
+
+class AiReviewPornOcrTaskInput(AbstractModel):
+    """内容审核 Ocr 文字鉴黄任务输入参数类型
+
+    """
+
+    def __init__(self):
+        """
+        :param Definition: 鉴黄模板 ID。
+        :type Definition: int
+        """
+        self.Definition = None
+
+
+    def _deserialize(self, params):
+        self.Definition = params.get("Definition")
+
+
+class AiReviewPornOcrTaskOutput(AbstractModel):
+    """Ocr 文字涉黄信息
+
+    """
+
+    def __init__(self):
+        """
+        :param Confidence: Ocr 文字涉黄评分，分值为0到100。
+        :type Confidence: float
+        :param Suggestion: Ocr 文字涉黄结果建议，取值范围：
+<li>pass。</li>
+<li>review。</li>
+<li>block。</li>
+        :type Suggestion: str
+        :param SegmentSet: Ocr 文字有涉黄嫌疑的视频片段列表。
+        :type SegmentSet: list of MediaContentReviewOcrTextSegmentItem
+        """
+        self.Confidence = None
+        self.Suggestion = None
+        self.SegmentSet = None
+
+
+    def _deserialize(self, params):
+        self.Confidence = params.get("Confidence")
+        self.Suggestion = params.get("Suggestion")
+        if params.get("SegmentSet") is not None:
+            self.SegmentSet = []
+            for item in params.get("SegmentSet"):
+                obj = MediaContentReviewOcrTextSegmentItem()
+                obj._deserialize(item)
+                self.SegmentSet.append(obj)
+
+
+class AiReviewPornTaskInput(AbstractModel):
+    """内容审核鉴黄任务输入参数类型
+
+    """
+
+    def __init__(self):
+        """
+        :param Definition: 鉴黄模板 ID。
+        :type Definition: int
+        """
+        self.Definition = None
+
+
+    def _deserialize(self, params):
+        self.Definition = params.get("Definition")
+
+
+class AiReviewPornTaskOutput(AbstractModel):
+    """鉴黄结果信息
+
+    """
+
+    def __init__(self):
+        """
+        :param Confidence: 视频鉴黄评分，分值为0到100。
+        :type Confidence: float
+        :param Suggestion: 鉴黄结果建议，取值范围：
+<li>pass。</li>
+<li>review。</li>
+<li>block。</li>
+        :type Suggestion: str
+        :param Label: 视频鉴黄结果标签，取值范围：
+<li>porn：色情。</li>
+<li>sexy：性感。</li>
+<li>vulgar：低俗。</li>
+<li>intimacy：亲密行为。</li>
+        :type Label: str
+        :param SegmentSet: 有涉黄嫌疑的视频片段列表。
+        :type SegmentSet: list of MediaContentReviewSegmentItem
+        """
+        self.Confidence = None
+        self.Suggestion = None
+        self.Label = None
+        self.SegmentSet = None
+
+
+    def _deserialize(self, params):
+        self.Confidence = params.get("Confidence")
+        self.Suggestion = params.get("Suggestion")
+        self.Label = params.get("Label")
+        if params.get("SegmentSet") is not None:
+            self.SegmentSet = []
+            for item in params.get("SegmentSet"):
+                obj = MediaContentReviewSegmentItem()
+                obj._deserialize(item)
+                self.SegmentSet.append(obj)
+
+
+class AiReviewTaskPoliticalAsrResult(AbstractModel):
+    """内容审核 Asr 文字鉴政、敏感任务结果类型
+
+    """
+
+    def __init__(self):
+        """
+        :param Status: 任务状态，有 PROCESSING，SUCCESS 和 FAIL 三种。
+        :type Status: str
+        :param ErrCode: 错误码，0：成功，其他值：失败。
+        :type ErrCode: int
+        :param Message: 错误信息。
+        :type Message: str
+        :param Input: 内容审核 Asr 文字鉴政任务输入。
+        :type Input: :class:`tencentcloud.mps.v20190612.models.AiReviewPoliticalAsrTaskInput`
+        :param Output: 内容审核 Asr 文字鉴政任务输出。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Output: :class:`tencentcloud.mps.v20190612.models.AiReviewPoliticalAsrTaskOutput`
+        """
+        self.Status = None
+        self.ErrCode = None
+        self.Message = None
+        self.Input = None
+        self.Output = None
+
+
+    def _deserialize(self, params):
+        self.Status = params.get("Status")
+        self.ErrCode = params.get("ErrCode")
+        self.Message = params.get("Message")
+        if params.get("Input") is not None:
+            self.Input = AiReviewPoliticalAsrTaskInput()
+            self.Input._deserialize(params.get("Input"))
+        if params.get("Output") is not None:
+            self.Output = AiReviewPoliticalAsrTaskOutput()
+            self.Output._deserialize(params.get("Output"))
+
+
+class AiReviewTaskPoliticalOcrResult(AbstractModel):
+    """内容审核 Ocr 文字鉴政、敏感任务结果类型
+
+    """
+
+    def __init__(self):
+        """
+        :param Status: 任务状态，有 PROCESSING，SUCCESS �� FAIL 三种。
+        :type Status: str
+        :param ErrCode: 错误码，0：成功，其他值：失败。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ErrCode: int
+        :param Message: 错误信息。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Message: str
+        :param Input: 内容审核 Ocr 文字鉴政任务输入。
+        :type Input: :class:`tencentcloud.mps.v20190612.models.AiReviewPoliticalOcrTaskInput`
+        :param Output: 内容审核 Ocr 文字鉴政任务输出。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Output: :class:`tencentcloud.mps.v20190612.models.AiReviewPoliticalOcrTaskOutput`
+        """
+        self.Status = None
+        self.ErrCode = None
+        self.Message = None
+        self.Input = None
+        self.Output = None
+
+
+    def _deserialize(self, params):
+        self.Status = params.get("Status")
+        self.ErrCode = params.get("ErrCode")
+        self.Message = params.get("Message")
+        if params.get("Input") is not None:
+            self.Input = AiReviewPoliticalOcrTaskInput()
+            self.Input._deserialize(params.get("Input"))
+        if params.get("Output") is not None:
+            self.Output = AiReviewPoliticalOcrTaskOutput()
+            self.Output._deserialize(params.get("Output"))
+
+
+class AiReviewTaskPoliticalResult(AbstractModel):
+    """内容审核鉴政任务结果类型
+
+    """
+
+    def __init__(self):
+        """
+        :param Status: 任务状态，有 PROCESSING，SUCCESS 和 FAIL 三种。
+        :type Status: str
+        :param ErrCode: 错误码，0：成功，其他值：失败。
+        :type ErrCode: int
+        :param Message: 错误信息。
+        :type Message: str
+        :param Input: 内容审核鉴政任务输入。
+        :type Input: :class:`tencentcloud.mps.v20190612.models.AiReviewPoliticalTaskInput`
+        :param Output: 内容审核鉴政任务输出。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Output: :class:`tencentcloud.mps.v20190612.models.AiReviewPoliticalTaskOutput`
+        """
+        self.Status = None
+        self.ErrCode = None
+        self.Message = None
+        self.Input = None
+        self.Output = None
+
+
+    def _deserialize(self, params):
+        self.Status = params.get("Status")
+        self.ErrCode = params.get("ErrCode")
+        self.Message = params.get("Message")
+        if params.get("Input") is not None:
+            self.Input = AiReviewPoliticalTaskInput()
+            self.Input._deserialize(params.get("Input"))
+        if params.get("Output") is not None:
+            self.Output = AiReviewPoliticalTaskOutput()
+            self.Output._deserialize(params.get("Output"))
+
+
+class AiReviewTaskPornAsrResult(AbstractModel):
+    """内容审核 Asr 文字鉴黄任务结果类型
+
+    """
+
+    def __init__(self):
+        """
+        :param Status: 任务状态，有 PROCESSING，SUCCESS 和 FAIL 三种。
+        :type Status: str
+        :param ErrCode: 错误码，0：成功，其他值：失败。
+        :type ErrCode: int
+        :param Message: 错误信息。
+        :type Message: str
+        :param Input: 内容审核 Asr 文字鉴黄任务输入。
+        :type Input: :class:`tencentcloud.mps.v20190612.models.AiReviewPornAsrTaskInput`
+        :param Output: 内容审核 Asr 文字鉴黄任务输出。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Output: :class:`tencentcloud.mps.v20190612.models.AiReviewPornAsrTaskOutput`
+        """
+        self.Status = None
+        self.ErrCode = None
+        self.Message = None
+        self.Input = None
+        self.Output = None
+
+
+    def _deserialize(self, params):
+        self.Status = params.get("Status")
+        self.ErrCode = params.get("ErrCode")
+        self.Message = params.get("Message")
+        if params.get("Input") is not None:
+            self.Input = AiReviewPornAsrTaskInput()
+            self.Input._deserialize(params.get("Input"))
+        if params.get("Output") is not None:
+            self.Output = AiReviewPornAsrTaskOutput()
+            self.Output._deserialize(params.get("Output"))
+
+
+class AiReviewTaskPornOcrResult(AbstractModel):
+    """内容审核 Ocr 文字鉴黄任务结果类型
+
+    """
+
+    def __init__(self):
+        """
+        :param Status: 任务状态，有 PROCESSING，SUCCESS 和 FAIL 三种。
+        :type Status: str
+        :param ErrCode: 错误码，0：成功，其他值：失败。
+        :type ErrCode: int
+        :param Message: 错误信息。
+        :type Message: str
+        :param Input: 内容审核 Ocr 文字鉴黄任务输入。
+        :type Input: :class:`tencentcloud.mps.v20190612.models.AiReviewPornOcrTaskInput`
+        :param Output: 内容审核 Ocr 文字鉴黄任务输出。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Output: :class:`tencentcloud.mps.v20190612.models.AiReviewPornOcrTaskOutput`
+        """
+        self.Status = None
+        self.ErrCode = None
+        self.Message = None
+        self.Input = None
+        self.Output = None
+
+
+    def _deserialize(self, params):
+        self.Status = params.get("Status")
+        self.ErrCode = params.get("ErrCode")
+        self.Message = params.get("Message")
+        if params.get("Input") is not None:
+            self.Input = AiReviewPornOcrTaskInput()
+            self.Input._deserialize(params.get("Input"))
+        if params.get("Output") is not None:
+            self.Output = AiReviewPornOcrTaskOutput()
+            self.Output._deserialize(params.get("Output"))
+
+
+class AiReviewTaskPornResult(AbstractModel):
+    """内容审核鉴黄任务结果类型
+
+    """
+
+    def __init__(self):
+        """
+        :param Status: 任务状态，有 PROCESSING，SUCCESS 和 FAIL 三种。
+        :type Status: str
+        :param ErrCode: 错误码，0：成功，其他值：失败。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ErrCode: int
+        :param Message: 错误信息。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Message: str
+        :param Input: 内容审核鉴黄任务输入。
+        :type Input: :class:`tencentcloud.mps.v20190612.models.AiReviewPornTaskInput`
+        :param Output: 内容审核鉴黄任务输出。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Output: :class:`tencentcloud.mps.v20190612.models.AiReviewPornTaskOutput`
+        """
+        self.Status = None
+        self.ErrCode = None
+        self.Message = None
+        self.Input = None
+        self.Output = None
+
+
+    def _deserialize(self, params):
+        self.Status = params.get("Status")
+        self.ErrCode = params.get("ErrCode")
+        self.Message = params.get("Message")
+        if params.get("Input") is not None:
+            self.Input = AiReviewPornTaskInput()
+            self.Input._deserialize(params.get("Input"))
+        if params.get("Output") is not None:
+            self.Output = AiReviewPornTaskOutput()
+            self.Output._deserialize(params.get("Output"))
+
+
+class AiReviewTaskTerrorismResult(AbstractModel):
+    """内容审核鉴恐任务结果类型
+
+    """
+
+    def __init__(self):
+        """
+        :param Status: 任务状态，有 PROCESSING，SUCCESS 和 FAIL 三种。
+        :type Status: str
+        :param ErrCode: 错误码，0：成功，其他值：失败。
+        :type ErrCode: int
+        :param Message: 错误信息。
+        :type Message: str
+        :param Input: 内容审核鉴恐任务输入。
+        :type Input: :class:`tencentcloud.mps.v20190612.models.AiReviewTerrorismTaskInput`
+        :param Output: 内容审核鉴恐任务输出。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Output: :class:`tencentcloud.mps.v20190612.models.AiReviewTerrorismTaskOutput`
+        """
+        self.Status = None
+        self.ErrCode = None
+        self.Message = None
+        self.Input = None
+        self.Output = None
+
+
+    def _deserialize(self, params):
+        self.Status = params.get("Status")
+        self.ErrCode = params.get("ErrCode")
+        self.Message = params.get("Message")
+        if params.get("Input") is not None:
+            self.Input = AiReviewTerrorismTaskInput()
+            self.Input._deserialize(params.get("Input"))
+        if params.get("Output") is not None:
+            self.Output = AiReviewTerrorismTaskOutput()
+            self.Output._deserialize(params.get("Output"))
+
+
+class AiReviewTerrorismTaskInput(AbstractModel):
+    """内容审核鉴恐任务输入参数类型
+
+    """
+
+    def __init__(self):
+        """
+        :param Definition: 鉴恐模板 ID。
+        :type Definition: int
+        """
+        self.Definition = None
+
+
+    def _deserialize(self, params):
+        self.Definition = params.get("Definition")
+
+
+class AiReviewTerrorismTaskOutput(AbstractModel):
+    """暴恐信息
+
+    """
+
+    def __init__(self):
+        """
+        :param Confidence: 视频暴恐评分，分值为0到100。
+        :type Confidence: float
+        :param Suggestion: 暴恐结果建议，取值范围：
+<li>pass。</li>
+<li>review。</li>
+<li>block。</li>
+        :type Suggestion: str
+        :param Label: 视频暴恐结果标签，取值范围：
+<li>guns：武器枪支。</li>
+<li>crowd：人群聚集。</li>
+<li>police：警察部队。</li>
+<li>bloody：血腥画面。</li>
+<li>banners：暴恐旗帜。</li>
+<li>militant：武装分子。</li>
+<li>explosion：爆炸火灾。</li>
+<li>terrorists：暴恐人物。</li>
+        :type Label: str
+        :param SegmentSet: 有暴恐嫌疑的视频片段列表。
+        :type SegmentSet: list of MediaContentReviewSegmentItem
+        """
+        self.Confidence = None
+        self.Suggestion = None
+        self.Label = None
+        self.SegmentSet = None
+
+
+    def _deserialize(self, params):
+        self.Confidence = params.get("Confidence")
+        self.Suggestion = params.get("Suggestion")
+        self.Label = params.get("Label")
+        if params.get("SegmentSet") is not None:
+            self.SegmentSet = []
+            for item in params.get("SegmentSet"):
+                obj = MediaContentReviewSegmentItem()
+                obj._deserialize(item)
+                self.SegmentSet.append(obj)
 
 
 class AnimatedGraphicTaskInput(AbstractModel):
@@ -173,10 +1554,25 @@ class AnimatedGraphicsTemplate(AbstractModel):
         :type Name: str
         :param Comment: 转动图模板描述。
         :type Comment: str
-        :param Width: 动图宽度（或长边）的最大值。
+        :param Width: 动图宽度（或长边）的最大值，取值范围：0 和 [128, 4096]，单位：px。
+<li>当 Width、Height 均为 0，则分辨率同源；</li>
+<li>当 Width 为 0，Height 非 0，则 Width 按比例缩放；</li>
+<li>当 Width 非 0，Height 为 0，则 Height 按比例缩放；</li>
+<li>当 Width、Height 均非 0，则分辨率按用户指定。</li>
+默认值：0。
         :type Width: int
-        :param Height: 动图高度（或短边）的最大值。
+        :param Height: 动图高度（或短边）的最大值，取值范围：0 和 [128, 4096]，单位：px。
+<li>当 Width、Height 均为 0，则分辨率同源；</li>
+<li>当 Width 为 0，Height 非 0，则 Width 按比例缩放；</li>
+<li>当 Width 非 0，Height 为 0，则 Height 按比例缩放；</li>
+<li>当 Width、Height 均非 0，则分辨率按用户指定。</li>
+默认值：0。
         :type Height: int
+        :param ResolutionAdaptive: 分辨率自适应，可选值：
+<li>open：开启，此时，Width 代表视频的长边，Height 表示视频的短边；</li>
+<li>close：关闭，此时，Width 代表视频的宽度，Height 表示视频的高度。</li>
+默认值：open。
+        :type ResolutionAdaptive: str
         :param Format: 动图格式。
         :type Format: str
         :param Fps: 帧率。
@@ -194,6 +1590,7 @@ class AnimatedGraphicsTemplate(AbstractModel):
         self.Comment = None
         self.Width = None
         self.Height = None
+        self.ResolutionAdaptive = None
         self.Format = None
         self.Fps = None
         self.Quality = None
@@ -208,6 +1605,7 @@ class AnimatedGraphicsTemplate(AbstractModel):
         self.Comment = params.get("Comment")
         self.Width = params.get("Width")
         self.Height = params.get("Height")
+        self.ResolutionAdaptive = params.get("ResolutionAdaptive")
         self.Format = params.get("Format")
         self.Fps = params.get("Fps")
         self.Quality = params.get("Quality")
@@ -1399,7 +2797,9 @@ class DescribeTaskDetailResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param TaskType: 任务类型，目前仅有取值 WorkflowTask。
+        :param TaskType: 任务类型，目前取值有：
+<li>WorkflowTask：视频工作流处理任务。</li>
+<li>LiveStreamProcessTask：直播流处理任务。</li>
         :type TaskType: str
         :param Status: 任务状态，取值：
 <li>WAITING：等待中；</li>
@@ -1415,6 +2815,9 @@ class DescribeTaskDetailResponse(AbstractModel):
         :param WorkflowTask: 视频处理任务信息，仅当 TaskType 为 WorkflowTask，该字段有值。
 注意：此字段可能返回 null，表示取不到有效值。
         :type WorkflowTask: :class:`tencentcloud.mps.v20190612.models.WorkflowTask`
+        :param LiveStreamProcessTask: 直播流处理任务信息，仅当 TaskType 为 LiveStreamProcessTask，该字段有值。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LiveStreamProcessTask: :class:`tencentcloud.mps.v20190612.models.LiveStreamProcessTask`
         :param TaskNotifyConfig: 任务的事件通知信息。
 注意：此字段可能返回 null，表示取不到有效值。
         :type TaskNotifyConfig: :class:`tencentcloud.mps.v20190612.models.TaskNotifyConfig`
@@ -1433,6 +2836,7 @@ class DescribeTaskDetailResponse(AbstractModel):
         self.BeginProcessTime = None
         self.FinishTime = None
         self.WorkflowTask = None
+        self.LiveStreamProcessTask = None
         self.TaskNotifyConfig = None
         self.TasksPriority = None
         self.SessionId = None
@@ -1449,6 +2853,9 @@ class DescribeTaskDetailResponse(AbstractModel):
         if params.get("WorkflowTask") is not None:
             self.WorkflowTask = WorkflowTask()
             self.WorkflowTask._deserialize(params.get("WorkflowTask"))
+        if params.get("LiveStreamProcessTask") is not None:
+            self.LiveStreamProcessTask = LiveStreamProcessTask()
+            self.LiveStreamProcessTask._deserialize(params.get("LiveStreamProcessTask"))
         if params.get("TaskNotifyConfig") is not None:
             self.TaskNotifyConfig = TaskNotifyConfig()
             self.TaskNotifyConfig._deserialize(params.get("TaskNotifyConfig"))
@@ -1583,48 +2990,6 @@ class DescribeTranscodeTemplatesResponse(AbstractModel):
                 obj = TranscodeTemplate()
                 obj._deserialize(item)
                 self.TranscodeTemplateSet.append(obj)
-        self.RequestId = params.get("RequestId")
-
-
-class DescribeUserInfoRequest(AbstractModel):
-    """DescribeUserInfo请求参数结构体
-
-    """
-
-
-class DescribeUserInfoResponse(AbstractModel):
-    """DescribeUserInfo返回参数结构体
-
-    """
-
-    def __init__(self):
-        """
-        :param Status: 用户状态，取值：
-<li>Normal：正常 ；</li>
-<li> Closed：下线；</li>
-<li> Arrearage：欠费停服。</li>
-        :type Status: str
-        :param PaymentType: 用户付费类型，取值：
-<li>DailyPayment：日结付费 ；</li>
-<li>MonthlyPayment：月结付费。</li>
-        :type PaymentType: str
-        :param OldMpsUser: 是否是旧版视频处理用户，取值：
-<li>0：否 ；</li>
-<li>1：是。</li>
-        :type OldMpsUser: int
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
-        self.Status = None
-        self.PaymentType = None
-        self.OldMpsUser = None
-        self.RequestId = None
-
-
-    def _deserialize(self, params):
-        self.Status = params.get("Status")
-        self.PaymentType = params.get("PaymentType")
-        self.OldMpsUser = params.get("OldMpsUser")
         self.RequestId = params.get("RequestId")
 
 
@@ -2010,6 +3375,366 @@ class ImageWatermarkTemplate(AbstractModel):
         self.Height = params.get("Height")
 
 
+class LiveStreamAiReviewImagePoliticalResult(AbstractModel):
+    """直播 AI 内容审核图片鉴政结果
+
+    """
+
+    def __init__(self):
+        """
+        :param StartPtsTime: 嫌疑片段起始的 PTS 时间，单位：秒。
+        :type StartPtsTime: float
+        :param EndPtsTime: 嫌疑片段结束的 PTS 时间，单位：秒。
+        :type EndPtsTime: float
+        :param Confidence: 嫌疑片段涉政分数。
+        :type Confidence: float
+        :param Suggestion: 嫌疑片段鉴黄结果建议，取值范围：
+<li>pass</li>
+<li>review</li>
+<li>block</li>
+        :type Suggestion: str
+        :param Label: 视频鉴政结果标签，取值范围：
+<li>politician：政治人物。</li>
+<li>violation_photo：违规图标。</li>
+        :type Label: str
+        :param Name: 涉政人物、违规图标名字。
+        :type Name: str
+        :param AreaCoordSet: 涉政人物、违规图标出现的区域坐标 (像素级)，[x1, y1, x2, y2]，即左上角坐标、右下角坐标。
+        :type AreaCoordSet: list of int
+        :param Url: 嫌疑图片 URL （图片不会永久存储，到达
+PicUrlExpireTime 时间点后图片将被删除）。
+        :type Url: str
+        :param PicUrlExpireTime: 嫌疑图片 URL 失效时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F)。
+        :type PicUrlExpireTime: str
+        """
+        self.StartPtsTime = None
+        self.EndPtsTime = None
+        self.Confidence = None
+        self.Suggestion = None
+        self.Label = None
+        self.Name = None
+        self.AreaCoordSet = None
+        self.Url = None
+        self.PicUrlExpireTime = None
+
+
+    def _deserialize(self, params):
+        self.StartPtsTime = params.get("StartPtsTime")
+        self.EndPtsTime = params.get("EndPtsTime")
+        self.Confidence = params.get("Confidence")
+        self.Suggestion = params.get("Suggestion")
+        self.Label = params.get("Label")
+        self.Name = params.get("Name")
+        self.AreaCoordSet = params.get("AreaCoordSet")
+        self.Url = params.get("Url")
+        self.PicUrlExpireTime = params.get("PicUrlExpireTime")
+
+
+class LiveStreamAiReviewImagePornResult(AbstractModel):
+    """直播 AI 内容审核图片鉴黄结果
+
+    """
+
+    def __init__(self):
+        """
+        :param StartPtsTime: 嫌疑片段起始的 PTS 时间，单位：秒。
+        :type StartPtsTime: float
+        :param EndPtsTime: 嫌疑片段结束的 PTS 时间，单位：秒。
+        :type EndPtsTime: float
+        :param Confidence: 嫌疑片段涉黄分数。
+        :type Confidence: float
+        :param Suggestion: 嫌疑片段鉴黄结果建议，取值范围：
+<li>pass</li>
+<li>review</li>
+<li>block</li>
+        :type Suggestion: str
+        :param Label: 视频鉴黄结果标签，取值范围：
+<li>porn：色情。</li>
+<li>sexy：性感。</li>
+<li>vulgar：低俗。</li>
+<li>intimacy：亲密行为。</li>
+        :type Label: str
+        :param Url: 嫌疑图片 URL （图片不会永久存储，到达
+PicUrlExpireTime 时间点后图片将被删除）。
+        :type Url: str
+        :param PicUrlExpireTime: 嫌疑图片 URL 失效时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F)。
+        :type PicUrlExpireTime: str
+        """
+        self.StartPtsTime = None
+        self.EndPtsTime = None
+        self.Confidence = None
+        self.Suggestion = None
+        self.Label = None
+        self.Url = None
+        self.PicUrlExpireTime = None
+
+
+    def _deserialize(self, params):
+        self.StartPtsTime = params.get("StartPtsTime")
+        self.EndPtsTime = params.get("EndPtsTime")
+        self.Confidence = params.get("Confidence")
+        self.Suggestion = params.get("Suggestion")
+        self.Label = params.get("Label")
+        self.Url = params.get("Url")
+        self.PicUrlExpireTime = params.get("PicUrlExpireTime")
+
+
+class LiveStreamAiReviewImageTerrorismResult(AbstractModel):
+    """直播 AI 内容审核图片鉴恐结果
+
+    """
+
+    def __init__(self):
+        """
+        :param StartPtsTime: 嫌疑片段起始的 PTS 时间，单位：秒。
+        :type StartPtsTime: float
+        :param EndPtsTime: 嫌疑片段结束的 PTS 时间，单位：秒。
+        :type EndPtsTime: float
+        :param Confidence: 嫌疑片段涉恐分数。
+        :type Confidence: float
+        :param Suggestion: 嫌疑片段鉴恐结果建议，取值范围：
+<li>pass</li>
+<li>review</li>
+<li>block</li>
+        :type Suggestion: str
+        :param Label: 视频暴恐结果标签，取值范围：
+<li>guns：武器枪支。</li>
+<li>crowd：人群聚集。</li>
+<li>police：警察部队。</li>
+<li>bloody：血腥画面。</li>
+<li>banners：暴恐旗帜。</li>
+<li>militant：武装分子。</li>
+<li>explosion：爆炸火灾。</li>
+<li>terrorists：暴恐人物。</li>
+        :type Label: str
+        :param Url: 嫌疑图片 URL （图片不会永久存储，到达
+PicUrlExpireTime 时间点后图片将被删除）。
+        :type Url: str
+        :param PicUrlExpireTime: 嫌疑图片 URL 失效时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F)。
+        :type PicUrlExpireTime: str
+        """
+        self.StartPtsTime = None
+        self.EndPtsTime = None
+        self.Confidence = None
+        self.Suggestion = None
+        self.Label = None
+        self.Url = None
+        self.PicUrlExpireTime = None
+
+
+    def _deserialize(self, params):
+        self.StartPtsTime = params.get("StartPtsTime")
+        self.EndPtsTime = params.get("EndPtsTime")
+        self.Confidence = params.get("Confidence")
+        self.Suggestion = params.get("Suggestion")
+        self.Label = params.get("Label")
+        self.Url = params.get("Url")
+        self.PicUrlExpireTime = params.get("PicUrlExpireTime")
+
+
+class LiveStreamAiReviewResultInfo(AbstractModel):
+    """直播流 AI 审核结果
+
+    """
+
+    def __init__(self):
+        """
+        :param ResultSet: 内容审核结果列表。
+        :type ResultSet: list of LiveStreamAiReviewResultItem
+        """
+        self.ResultSet = None
+
+
+    def _deserialize(self, params):
+        if params.get("ResultSet") is not None:
+            self.ResultSet = []
+            for item in params.get("ResultSet"):
+                obj = LiveStreamAiReviewResultItem()
+                obj._deserialize(item)
+                self.ResultSet.append(obj)
+
+
+class LiveStreamAiReviewResultItem(AbstractModel):
+    """直播流 AI 审核结果
+
+    """
+
+    def __init__(self):
+        """
+        :param Type: 审核结果的类型，可以取的值有：
+<li>ImagePorn：图片鉴黄</li>
+<li>ImageTerrorism：图片鉴恐</li>
+<li>ImagePolitical：图片鉴政</li>
+<li>PornVoice：声音鉴黄</li>
+        :type Type: str
+        :param ImagePornResultSet: 图片鉴黄的结果，当 Type 为 ImagePorn 时有效。
+        :type ImagePornResultSet: list of LiveStreamAiReviewImagePornResult
+        :param ImageTerrorismResultSet: 图片鉴恐的结果，当 Type 为 ImageTerrorism 时有效。
+        :type ImageTerrorismResultSet: list of LiveStreamAiReviewImageTerrorismResult
+        :param ImagePoliticalResultSet: 图片鉴政的结果，当 Type 为 ImagePolitical 时有效。
+        :type ImagePoliticalResultSet: list of LiveStreamAiReviewImagePoliticalResult
+        :param VoicePornResultSet: 声音鉴黄的结果，当 Type 为 PornVoice 时有效。
+        :type VoicePornResultSet: list of LiveStreamAiReviewVoicePornResult
+        """
+        self.Type = None
+        self.ImagePornResultSet = None
+        self.ImageTerrorismResultSet = None
+        self.ImagePoliticalResultSet = None
+        self.VoicePornResultSet = None
+
+
+    def _deserialize(self, params):
+        self.Type = params.get("Type")
+        if params.get("ImagePornResultSet") is not None:
+            self.ImagePornResultSet = []
+            for item in params.get("ImagePornResultSet"):
+                obj = LiveStreamAiReviewImagePornResult()
+                obj._deserialize(item)
+                self.ImagePornResultSet.append(obj)
+        if params.get("ImageTerrorismResultSet") is not None:
+            self.ImageTerrorismResultSet = []
+            for item in params.get("ImageTerrorismResultSet"):
+                obj = LiveStreamAiReviewImageTerrorismResult()
+                obj._deserialize(item)
+                self.ImageTerrorismResultSet.append(obj)
+        if params.get("ImagePoliticalResultSet") is not None:
+            self.ImagePoliticalResultSet = []
+            for item in params.get("ImagePoliticalResultSet"):
+                obj = LiveStreamAiReviewImagePoliticalResult()
+                obj._deserialize(item)
+                self.ImagePoliticalResultSet.append(obj)
+        if params.get("VoicePornResultSet") is not None:
+            self.VoicePornResultSet = []
+            for item in params.get("VoicePornResultSet"):
+                obj = LiveStreamAiReviewVoicePornResult()
+                obj._deserialize(item)
+                self.VoicePornResultSet.append(obj)
+
+
+class LiveStreamAiReviewVoicePornResult(AbstractModel):
+    """直播 AI 内容审核声音鉴黄结果
+
+    """
+
+    def __init__(self):
+        """
+        :param StartPtsTime: 嫌疑片段起始的 PTS 时间，单位：秒。
+        :type StartPtsTime: float
+        :param EndPtsTime: 嫌疑片段结束的 PTS 时间，单位：秒。
+        :type EndPtsTime: float
+        :param Confidence: 嫌疑片段涉黄分数。
+        :type Confidence: float
+        :param Suggestion: 嫌疑片段鉴黄结果建议，取值范围：
+<li>pass</li>
+<li>review</li>
+<li>block</li>
+        :type Suggestion: str
+        :param Label: 视频鉴黄结果标签，取值范围：
+<li>sexual_moan：呻吟。</li>
+        :type Label: str
+        """
+        self.StartPtsTime = None
+        self.EndPtsTime = None
+        self.Confidence = None
+        self.Suggestion = None
+        self.Label = None
+
+
+    def _deserialize(self, params):
+        self.StartPtsTime = params.get("StartPtsTime")
+        self.EndPtsTime = params.get("EndPtsTime")
+        self.Confidence = params.get("Confidence")
+        self.Suggestion = params.get("Suggestion")
+        self.Label = params.get("Label")
+
+
+class LiveStreamProcessErrorInfo(AbstractModel):
+    """直播流处理错误信息
+
+    """
+
+    def __init__(self):
+        """
+        :param ErrCode: 错误码：
+<li>0表示没有错误；</li>
+<li>非0表示错误，请参考 Message 错误信息。</li>
+        :type ErrCode: int
+        :param Message: 错误信息。
+        :type Message: str
+        """
+        self.ErrCode = None
+        self.Message = None
+
+
+    def _deserialize(self, params):
+        self.ErrCode = params.get("ErrCode")
+        self.Message = params.get("Message")
+
+
+class LiveStreamProcessTask(AbstractModel):
+    """直播处理任务信息
+
+    """
+
+    def __init__(self):
+        """
+        :param TaskId: 视频处理任务 ID。
+        :type TaskId: str
+        :param Status: 任务流状态，取值：
+<li>PROCESSING：处理中；</li>
+<li>FINISH：已完成。</li>
+        :type Status: str
+        :param ErrCode: 错误码，0 表示成功，其他值表示失败。
+        :type ErrCode: int
+        :param Message: 错误信息。
+        :type Message: str
+        :param Url: 直播流 URL。
+        :type Url: str
+        """
+        self.TaskId = None
+        self.Status = None
+        self.ErrCode = None
+        self.Message = None
+        self.Url = None
+
+
+    def _deserialize(self, params):
+        self.TaskId = params.get("TaskId")
+        self.Status = params.get("Status")
+        self.ErrCode = params.get("ErrCode")
+        self.Message = params.get("Message")
+        self.Url = params.get("Url")
+
+
+class LiveStreamTaskNotifyConfig(AbstractModel):
+    """任务处理的事件通知配置。
+
+    """
+
+    def __init__(self):
+        """
+        :param CmqModel: CMQ 的模型，有 Queue 和 Topic 两种，目前仅支持 Queue。
+        :type CmqModel: str
+        :param CmqRegion: CMQ 的园区，如 sh，bj 等。
+        :type CmqRegion: str
+        :param QueueName: 当模型为 Queue 时有效，表示接收事件通知的 CMQ 的队列名。
+        :type QueueName: str
+        :param TopicName: 当模型为 Topic 时有效，表示接收事件通知的 CMQ 的主题名。
+        :type TopicName: str
+        """
+        self.CmqModel = None
+        self.CmqRegion = None
+        self.QueueName = None
+        self.TopicName = None
+
+
+    def _deserialize(self, params):
+        self.CmqModel = params.get("CmqModel")
+        self.CmqRegion = params.get("CmqRegion")
+        self.QueueName = params.get("QueueName")
+        self.TopicName = params.get("TopicName")
+
+
 class MediaAnimatedGraphicsItem(AbstractModel):
     """视频转动图结果信息
 
@@ -2095,6 +3820,189 @@ class MediaAudioStreamItem(AbstractModel):
         self.Bitrate = params.get("Bitrate")
         self.SamplingRate = params.get("SamplingRate")
         self.Codec = params.get("Codec")
+
+
+class MediaContentReviewAsrTextSegmentItem(AbstractModel):
+    """内容审核 Asr 文字审核嫌疑片段
+
+    """
+
+    def __init__(self):
+        """
+        :param StartTimeOffset: 嫌疑片段起始的偏移时间，单位：秒。
+        :type StartTimeOffset: float
+        :param EndTimeOffset: 嫌疑片段结束的偏移时间，单位：秒。
+        :type EndTimeOffset: float
+        :param Confidence: 嫌疑片段置信度。
+        :type Confidence: float
+        :param Suggestion: 嫌疑片段审核结果建议，取值范围：
+<li>pass。</li>
+<li>review。</li>
+<li>block。</li>
+        :type Suggestion: str
+        :param KeywordSet: 嫌疑关键词列表。
+        :type KeywordSet: list of str
+        """
+        self.StartTimeOffset = None
+        self.EndTimeOffset = None
+        self.Confidence = None
+        self.Suggestion = None
+        self.KeywordSet = None
+
+
+    def _deserialize(self, params):
+        self.StartTimeOffset = params.get("StartTimeOffset")
+        self.EndTimeOffset = params.get("EndTimeOffset")
+        self.Confidence = params.get("Confidence")
+        self.Suggestion = params.get("Suggestion")
+        self.KeywordSet = params.get("KeywordSet")
+
+
+class MediaContentReviewOcrTextSegmentItem(AbstractModel):
+    """内容审核 Ocr 文字审核嫌疑片段
+
+    """
+
+    def __init__(self):
+        """
+        :param StartTimeOffset: 嫌疑片段起始的偏移时间，单位：秒。
+        :type StartTimeOffset: float
+        :param EndTimeOffset: 嫌疑片段结束的偏移时间，单位：秒。
+        :type EndTimeOffset: float
+        :param Confidence: 嫌疑片段置信度。
+        :type Confidence: float
+        :param Suggestion: 嫌疑片段审核结果建议，取值范围：
+<li>pass。</li>
+<li>review。</li>
+<li>block。</li>
+        :type Suggestion: str
+        :param KeywordSet: 嫌疑关键词列表。
+        :type KeywordSet: list of str
+        :param AreaCoordSet: 嫌疑文字出现的区域坐标 (像素级)，[x1, y1, x2, y2]，即左上角坐标、右下角坐标。
+        :type AreaCoordSet: list of int
+        :param Url: 嫌疑图片 URL （图片不会永久存储，到达
+PicUrlExpireTime 时间点后图片将被删除）。
+        :type Url: str
+        :param PicUrlExpireTime: 嫌疑图片 URL 失效时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F)。
+        :type PicUrlExpireTime: str
+        """
+        self.StartTimeOffset = None
+        self.EndTimeOffset = None
+        self.Confidence = None
+        self.Suggestion = None
+        self.KeywordSet = None
+        self.AreaCoordSet = None
+        self.Url = None
+        self.PicUrlExpireTime = None
+
+
+    def _deserialize(self, params):
+        self.StartTimeOffset = params.get("StartTimeOffset")
+        self.EndTimeOffset = params.get("EndTimeOffset")
+        self.Confidence = params.get("Confidence")
+        self.Suggestion = params.get("Suggestion")
+        self.KeywordSet = params.get("KeywordSet")
+        self.AreaCoordSet = params.get("AreaCoordSet")
+        self.Url = params.get("Url")
+        self.PicUrlExpireTime = params.get("PicUrlExpireTime")
+
+
+class MediaContentReviewPoliticalSegmentItem(AbstractModel):
+    """内容审核涉政嫌疑片段
+
+    """
+
+    def __init__(self):
+        """
+        :param StartTimeOffset: 嫌疑片段起始的偏移时间，单位：秒。
+        :type StartTimeOffset: float
+        :param EndTimeOffset: 嫌疑片段结束的偏移时间，单位：秒。
+        :type EndTimeOffset: float
+        :param Confidence: 嫌疑片段涉政分数。
+        :type Confidence: float
+        :param Suggestion: 嫌疑片段鉴政结果建议，取值范围：
+<li>pass。</li>
+<li>review。</li>
+<li>block。</li>
+        :type Suggestion: str
+        :param Name: 涉政人物、违规图标名字。
+        :type Name: str
+        :param Label: 嫌疑片段鉴政结果标签。
+        :type Label: str
+        :param Url: 嫌疑图片 URL （图片不会永久存储，到达
+ PicUrlExpireTime 时间点后图片将被删除）。
+        :type Url: str
+        :param AreaCoordSet: 涉政人物、违规图标出现的区域坐标 (像素级)，[x1, y1, x2, y2]，即左上角坐标、右下角坐标。
+        :type AreaCoordSet: list of int
+        :param PicUrlExpireTime: 嫌疑图片 URL 失效时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F)。
+        :type PicUrlExpireTime: str
+        """
+        self.StartTimeOffset = None
+        self.EndTimeOffset = None
+        self.Confidence = None
+        self.Suggestion = None
+        self.Name = None
+        self.Label = None
+        self.Url = None
+        self.AreaCoordSet = None
+        self.PicUrlExpireTime = None
+
+
+    def _deserialize(self, params):
+        self.StartTimeOffset = params.get("StartTimeOffset")
+        self.EndTimeOffset = params.get("EndTimeOffset")
+        self.Confidence = params.get("Confidence")
+        self.Suggestion = params.get("Suggestion")
+        self.Name = params.get("Name")
+        self.Label = params.get("Label")
+        self.Url = params.get("Url")
+        self.AreaCoordSet = params.get("AreaCoordSet")
+        self.PicUrlExpireTime = params.get("PicUrlExpireTime")
+
+
+class MediaContentReviewSegmentItem(AbstractModel):
+    """内容审核涉黄/暴恐嫌疑片段
+
+    """
+
+    def __init__(self):
+        """
+        :param StartTimeOffset: 嫌疑片段起始的偏移时间，单位：秒。
+        :type StartTimeOffset: float
+        :param EndTimeOffset: 嫌疑片段结束的偏移时间，单位：秒。
+        :type EndTimeOffset: float
+        :param Confidence: 嫌疑片段涉黄分数。
+        :type Confidence: float
+        :param Label: 嫌疑片段鉴黄结果标签。
+        :type Label: str
+        :param Suggestion: 嫌疑片段鉴黄结果建议，取值范围：
+<li>pass。</li>
+<li>review。</li>
+<li>block。</li>
+        :type Suggestion: str
+        :param Url: 嫌疑图片 URL （图片不会永久存储，到达
+ PicUrlExpireTime 时间点后图片将被删除）。
+        :type Url: str
+        :param PicUrlExpireTime: 嫌疑图片 URL 失效时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F)。
+        :type PicUrlExpireTime: str
+        """
+        self.StartTimeOffset = None
+        self.EndTimeOffset = None
+        self.Confidence = None
+        self.Label = None
+        self.Suggestion = None
+        self.Url = None
+        self.PicUrlExpireTime = None
+
+
+    def _deserialize(self, params):
+        self.StartTimeOffset = params.get("StartTimeOffset")
+        self.EndTimeOffset = params.get("EndTimeOffset")
+        self.Confidence = params.get("Confidence")
+        self.Label = params.get("Label")
+        self.Suggestion = params.get("Suggestion")
+        self.Url = params.get("Url")
+        self.PicUrlExpireTime = params.get("PicUrlExpireTime")
 
 
 class MediaImageSpriteItem(AbstractModel):
@@ -2340,15 +4248,12 @@ class MediaProcessTaskInput(AbstractModel):
         :type SampleSnapshotTaskSet: list of SampleSnapshotTaskInput
         :param ImageSpriteTaskSet: 对视频截雪碧图任务列表。
         :type ImageSpriteTaskSet: list of ImageSpriteTaskInput
-        :param AdaptiveDynamicStreamingTaskSet: 对视频转自适应码流任务列表。
-        :type AdaptiveDynamicStreamingTaskSet: list of AdaptiveDynamicStreamingTaskInput
         """
         self.TranscodeTaskSet = None
         self.AnimatedGraphicTaskSet = None
         self.SnapshotByTimeOffsetTaskSet = None
         self.SampleSnapshotTaskSet = None
         self.ImageSpriteTaskSet = None
-        self.AdaptiveDynamicStreamingTaskSet = None
 
 
     def _deserialize(self, params):
@@ -2382,12 +4287,6 @@ class MediaProcessTaskInput(AbstractModel):
                 obj = ImageSpriteTaskInput()
                 obj._deserialize(item)
                 self.ImageSpriteTaskSet.append(obj)
-        if params.get("AdaptiveDynamicStreamingTaskSet") is not None:
-            self.AdaptiveDynamicStreamingTaskSet = []
-            for item in params.get("AdaptiveDynamicStreamingTaskSet"):
-                obj = AdaptiveDynamicStreamingTaskInput()
-                obj._deserialize(item)
-                self.AdaptiveDynamicStreamingTaskSet.append(obj)
 
 
 class MediaProcessTaskResult(AbstractModel):
@@ -3235,6 +5134,126 @@ class NumberFormat(AbstractModel):
         self.PlaceHolder = params.get("PlaceHolder")
 
 
+class ParseLiveStreamProcessNotificationRequest(AbstractModel):
+    """ParseLiveStreamProcessNotification请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Content: 从 CMQ 获取到的直播流事件通知内容。
+        :type Content: str
+        """
+        self.Content = None
+
+
+    def _deserialize(self, params):
+        self.Content = params.get("Content")
+
+
+class ParseLiveStreamProcessNotificationResponse(AbstractModel):
+    """ParseLiveStreamProcessNotification返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param NotificationType: 直播流处理结果类型，包含：
+<li>AiReviewResult：内容审核结果；</li>
+<li>ProcessEof：直播流处理结束。</li>
+        :type NotificationType: str
+        :param TaskId: 视频处理任务 ID。
+        :type TaskId: str
+        :param ProcessEofInfo: 直播流处理错误信息，当 NotificationType 为 ProcessEof 时有效。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ProcessEofInfo: :class:`tencentcloud.mps.v20190612.models.LiveStreamProcessErrorInfo`
+        :param AiReviewResultInfo: 内容审核结果，当 NotificationType 为 AiReviewResult 时有效。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AiReviewResultInfo: :class:`tencentcloud.mps.v20190612.models.LiveStreamAiReviewResultInfo`
+        :param SessionId: 用于去重的识别码，如果七天内曾有过相同的识别码的请求，则本次的请求会返回错误。最长50个字符，不带或者带空字符串表示不做去重。
+        :type SessionId: str
+        :param SessionContext: 来源上下文，用于透传用户请求信息，任务流状态变更回调将返回该字段值，最长1000个字符。
+        :type SessionContext: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.NotificationType = None
+        self.TaskId = None
+        self.ProcessEofInfo = None
+        self.AiReviewResultInfo = None
+        self.SessionId = None
+        self.SessionContext = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.NotificationType = params.get("NotificationType")
+        self.TaskId = params.get("TaskId")
+        if params.get("ProcessEofInfo") is not None:
+            self.ProcessEofInfo = LiveStreamProcessErrorInfo()
+            self.ProcessEofInfo._deserialize(params.get("ProcessEofInfo"))
+        if params.get("AiReviewResultInfo") is not None:
+            self.AiReviewResultInfo = LiveStreamAiReviewResultInfo()
+            self.AiReviewResultInfo._deserialize(params.get("AiReviewResultInfo"))
+        self.SessionId = params.get("SessionId")
+        self.SessionContext = params.get("SessionContext")
+        self.RequestId = params.get("RequestId")
+
+
+class ParseNotificationRequest(AbstractModel):
+    """ParseNotification请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Content: 从 CMQ 获取到的事件通知内容。
+        :type Content: str
+        """
+        self.Content = None
+
+
+    def _deserialize(self, params):
+        self.Content = params.get("Content")
+
+
+class ParseNotificationResponse(AbstractModel):
+    """ParseNotification返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param EventType: 支持事件类型，目前取值有：
+<li>WorkflowTask：视频工作流处理任务。</li>
+        :type EventType: str
+        :param WorkflowTaskEvent: 视频处理任务信息，仅当 TaskType 为 WorkflowTask，该字段有值。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type WorkflowTaskEvent: :class:`tencentcloud.mps.v20190612.models.WorkflowTask`
+        :param SessionId: 用于去重的识别码，如果七天内曾有过相同的识别码的请求，则本次的请求会返回错误。最长50个字符，不带或者带空字符串表示不做去重。
+        :type SessionId: str
+        :param SessionContext: 来源上下文，用于透传用户请求信息，任务流状态变更回调将返回该字段值，最长1000个字符。
+        :type SessionContext: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.EventType = None
+        self.WorkflowTaskEvent = None
+        self.SessionId = None
+        self.SessionContext = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.EventType = params.get("EventType")
+        if params.get("WorkflowTaskEvent") is not None:
+            self.WorkflowTaskEvent = WorkflowTask()
+            self.WorkflowTaskEvent._deserialize(params.get("WorkflowTaskEvent"))
+        self.SessionId = params.get("SessionId")
+        self.SessionContext = params.get("SessionContext")
+        self.RequestId = params.get("RequestId")
+
+
 class ProcessLiveMediaRequest(AbstractModel):
     """ProcessLiveMedia请求参数结构体
 
@@ -3294,6 +5313,74 @@ class ProcessLiveMediaRequest(AbstractModel):
 
 class ProcessLiveMediaResponse(AbstractModel):
     """ProcessLiveMedia返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param TaskId: 任务 ID
+        :type TaskId: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TaskId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TaskId = params.get("TaskId")
+        self.RequestId = params.get("RequestId")
+
+
+class ProcessLiveStreamRequest(AbstractModel):
+    """ProcessLiveStream请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Url: 直播流 URL（必须是直播文件地址，支持 rtmp，hls 和 flv 等）。
+        :type Url: str
+        :param TaskNotifyConfig: 任务的事件通知信息，用于指定直播流处理的结果。
+        :type TaskNotifyConfig: :class:`tencentcloud.mps.v20190612.models.LiveStreamTaskNotifyConfig`
+        :param OutputStorage: 直播流处理输出文件的目标存储。如处理有文件输出，该参数为必填项。
+        :type OutputStorage: :class:`tencentcloud.mps.v20190612.models.TaskOutputStorage`
+        :param OutputDir: 直播流处理生成的文件输出的目标目录，如`/movie/201909/`，如果不填为 `/` 目录。
+        :type OutputDir: str
+        :param AiContentReviewTask: 视频内容审核类型任务参数。
+        :type AiContentReviewTask: :class:`tencentcloud.mps.v20190612.models.AiContentReviewTaskInput`
+        :param SessionContext: 来源上下文，用于透传用户请求信息，任务流状态变更回调将返回该字段值，最长 1000 个字符。
+        :type SessionContext: str
+        :param SessionId: 用于去重的识别码，如果七天内曾有过相同的识别码的请求，则本次的请求会返回错误。最长 50 个字符，不带或者带空字符串表示不做去重。
+        :type SessionId: str
+        """
+        self.Url = None
+        self.TaskNotifyConfig = None
+        self.OutputStorage = None
+        self.OutputDir = None
+        self.AiContentReviewTask = None
+        self.SessionContext = None
+        self.SessionId = None
+
+
+    def _deserialize(self, params):
+        self.Url = params.get("Url")
+        if params.get("TaskNotifyConfig") is not None:
+            self.TaskNotifyConfig = LiveStreamTaskNotifyConfig()
+            self.TaskNotifyConfig._deserialize(params.get("TaskNotifyConfig"))
+        if params.get("OutputStorage") is not None:
+            self.OutputStorage = TaskOutputStorage()
+            self.OutputStorage._deserialize(params.get("OutputStorage"))
+        self.OutputDir = params.get("OutputDir")
+        if params.get("AiContentReviewTask") is not None:
+            self.AiContentReviewTask = AiContentReviewTaskInput()
+            self.AiContentReviewTask._deserialize(params.get("AiContentReviewTask"))
+        self.SessionContext = params.get("SessionContext")
+        self.SessionId = params.get("SessionId")
+
+
+class ProcessLiveStreamResponse(AbstractModel):
+    """ProcessLiveStream返回参数结构体
 
     """
 
@@ -3519,10 +5606,25 @@ class SampleSnapshotTemplate(AbstractModel):
         :type Name: str
         :param Comment: 模板描述信息。
         :type Comment: str
-        :param Width: 图片宽度。
+        :param Width: 截图宽度（或长边）的最大值，取值范围：0 和 [128, 4096]，单位：px。
+<li>当 Width、Height 均为 0，则分辨率同源；</li>
+<li>当 Width 为 0，Height 非 0，则 Width 按比例缩放；</li>
+<li>当 Width 非 0，Height 为 0，则 Height 按比例缩放；</li>
+<li>当 Width、Height 均非 0，则分辨率按用户指定。</li>
+默认值：0。
         :type Width: int
-        :param Height: 图片高度。
+        :param Height: 截图高度（或短边）的最大值，取值范围：0 和 [128, 4096]，单位：px。
+<li>当 Width、Height 均为 0，则分辨率同源；</li>
+<li>当 Width 为 0，Height 非 0，则 Width 按比例缩放；</li>
+<li>当 Width 非 0，Height 为 0，则 Height 按比例缩放；</li>
+<li>当 Width、Height 均非 0，则分辨率按用户指定。</li>
+默认值：0。
         :type Height: int
+        :param ResolutionAdaptive: 分辨率自适应，可选值：
+<li>open：开启，此时，Width 代表视频的长边，Height 表示视频的短边；</li>
+<li>close：关闭，此时，Width 代表视频的宽度，Height 表示视频的高度。</li>
+默认值：open。
+        :type ResolutionAdaptive: str
         :param Format: 图片格式。
         :type Format: str
         :param SampleType: 采样截图类型。
@@ -3540,6 +5642,7 @@ class SampleSnapshotTemplate(AbstractModel):
         self.Comment = None
         self.Width = None
         self.Height = None
+        self.ResolutionAdaptive = None
         self.Format = None
         self.SampleType = None
         self.SampleInterval = None
@@ -3554,6 +5657,7 @@ class SampleSnapshotTemplate(AbstractModel):
         self.Comment = params.get("Comment")
         self.Width = params.get("Width")
         self.Height = params.get("Height")
+        self.ResolutionAdaptive = params.get("ResolutionAdaptive")
         self.Format = params.get("Format")
         self.SampleType = params.get("SampleType")
         self.SampleInterval = params.get("SampleInterval")
@@ -3627,10 +5731,25 @@ class SnapshotByTimeOffsetTemplate(AbstractModel):
         :type Name: str
         :param Comment: 模板描述信息。
         :type Comment: str
-        :param Width: 图片宽度。
+        :param Width: 截图宽度（或长边）的最大值，取值范围：0 和 [128, 4096]，单位：px。
+<li>当 Width、Height 均为 0，则分辨率同源；</li>
+<li>当 Width 为 0，Height 非 0，则 Width 按比例缩放；</li>
+<li>当 Width 非 0，Height 为 0，则 Height 按比例缩放；</li>
+<li>当 Width、Height 均非 0，则分辨率按用户指定。</li>
+默认值：0。
         :type Width: int
-        :param Height: 图片高度。
+        :param Height: 截图高度（或短边）的最大值，取值范围：0 和 [128, 4096]，单位：px。
+<li>当 Width、Height 均为 0，则分辨率同源；</li>
+<li>当 Width 为 0，Height 非 0，则 Width 按比例缩放；</li>
+<li>当 Width 非 0，Height 为 0，则 Height 按比例缩放；</li>
+<li>当 Width、Height 均非 0，则分辨率按用户指定。</li>
+默认值：0。
         :type Height: int
+        :param ResolutionAdaptive: 分辨率自适应，可选值：
+<li>open：开启，此时，Width 代表视频的长边，Height 表示视频的短边；</li>
+<li>close：关闭，此时，Width 代表视频的宽度，Height 表示视频的高度。</li>
+默认值：open。
+        :type ResolutionAdaptive: str
         :param Format: 图片格式。
         :type Format: str
         :param CreateTime: 模板创建时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F)。
@@ -3644,6 +5763,7 @@ class SnapshotByTimeOffsetTemplate(AbstractModel):
         self.Comment = None
         self.Width = None
         self.Height = None
+        self.ResolutionAdaptive = None
         self.Format = None
         self.CreateTime = None
         self.UpdateTime = None
@@ -3656,6 +5776,7 @@ class SnapshotByTimeOffsetTemplate(AbstractModel):
         self.Comment = params.get("Comment")
         self.Width = params.get("Width")
         self.Height = params.get("Height")
+        self.ResolutionAdaptive = params.get("ResolutionAdaptive")
         self.Format = params.get("Format")
         self.CreateTime = params.get("CreateTime")
         self.UpdateTime = params.get("UpdateTime")
@@ -3848,7 +5969,9 @@ class TaskSimpleInfo(AbstractModel):
         """
         :param TaskId: 任务 ID。
         :type TaskId: str
-        :param TaskType: 任务类型，目前仅支持 WorkflowTask。
+        :param TaskType: 任务类型，包含：
+<li> WorkflowTask：工作流处理任务；</li>
+<li> LiveProcessTask：直播处理任务。</li>
         :type TaskType: str
         :param CreateTime: 任务创建时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F)。
         :type CreateTime: str
@@ -4410,6 +6533,10 @@ class WorkflowTask(AbstractModel):
         :type MetaData: :class:`tencentcloud.mps.v20190612.models.MediaMetaData`
         :param MediaProcessResultSet: 视频处理任务的执行状态与结果。
         :type MediaProcessResultSet: list of MediaProcessTaskResult
+        :param AiContentReviewResultSet: 视频内容审核任务的执行状态与结果。
+        :type AiContentReviewResultSet: list of AiContentReviewResult
+        :param AiRecognitionResultSet: 视频内容识别任务的执行状态与结果。
+        :type AiRecognitionResultSet: list of AiRecognitionResult
         """
         self.TaskId = None
         self.Status = None
@@ -4418,6 +6545,8 @@ class WorkflowTask(AbstractModel):
         self.InputInfo = None
         self.MetaData = None
         self.MediaProcessResultSet = None
+        self.AiContentReviewResultSet = None
+        self.AiRecognitionResultSet = None
 
 
     def _deserialize(self, params):
@@ -4437,6 +6566,18 @@ class WorkflowTask(AbstractModel):
                 obj = MediaProcessTaskResult()
                 obj._deserialize(item)
                 self.MediaProcessResultSet.append(obj)
+        if params.get("AiContentReviewResultSet") is not None:
+            self.AiContentReviewResultSet = []
+            for item in params.get("AiContentReviewResultSet"):
+                obj = AiContentReviewResult()
+                obj._deserialize(item)
+                self.AiContentReviewResultSet.append(obj)
+        if params.get("AiRecognitionResultSet") is not None:
+            self.AiRecognitionResultSet = []
+            for item in params.get("AiRecognitionResultSet"):
+                obj = AiRecognitionResult()
+                obj._deserialize(item)
+                self.AiRecognitionResultSet.append(obj)
 
 
 class WorkflowTrigger(AbstractModel):

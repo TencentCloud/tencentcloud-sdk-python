@@ -44,12 +44,11 @@ class BankCard2EVerificationResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param Result: 认证结果码。
+        :param Result: 认证结果码
+计费结果码：
   '0': '认证通过'
   '-1': '认证未通过'
-  '-2': '姓名校验不通过'
-  '-3': '银行卡号码有误'
-  '-4': '持卡人信息有误'
+ '-4': '持卡人信息有误'
   '-5': '未开通无卡支付'
   '-6': '此卡被没收'
   '-7': '无效卡号'
@@ -61,6 +60,9 @@ class BankCard2EVerificationResponse(AbstractModel):
   '-13': '受限制的卡'
   '-14': '密码错误次数超限'
   '-15': '发卡行不支持此交易'
+不计费结果码：
+  '-2': '姓名校验不通过'
+  '-3': '银行卡号码有误'
   '-16': '服务繁忙'
         :type Result: str
         :param Description: 认证结果信息。
@@ -94,15 +96,8 @@ class BankCard4EVerificationRequest(AbstractModel):
         :type Phone: str
         :param IdCard: 开户证件号，与CertType参数的证件类型一致，如：身份证，则传入身份证号。
         :type IdCard: str
-        :param CertType: 证件类型，请确认该证件为开户时使用的证件类型，未用于开户的证件信息不支持验证。（不填默认0）
-0 身份证
-1 军官证
-2 护照
-3 港澳证
-4 台胞证
-5 警官证
-6 士兵证
-7 其它证件
+        :param CertType: 证件类型，请确认该证件为开户时使用的证件类型，未用于开户的证件信息不支持验证。
+目前默认：0 身份证，其他证件类型需求可以联系小助手faceid001确认。
         :type CertType: int
         """
         self.Name = None
@@ -127,26 +122,28 @@ class BankCard4EVerificationResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param Result: 认证结果码。
-  '0': '认证通过'
-  '-1': '认证未通过'
-  '-2': '姓名校验不通过'
-  '-3': '身份证号码有误'
-  '-4': '银行卡号码有误'
-  '-5': '手机号码不合法'
-  '-6': '持卡人信息有误'
-  '-7': '未开通无卡支付'
-  '-8': '此卡被没收'
-  '-9': '无效卡号'
-  '-10': '此卡无对应发卡行'
-  '-11': '该卡未初始化或睡眠卡'
-  '-12': '作弊卡、吞卡'
-  '-13': '此卡已挂失'
-  '-14': '该卡已过期'
-  '-15': '受限制的卡'
-  '-16': '密码错误次数超限'
-  '-17': '发卡行不支持此交易'
-  '-18': '服务繁忙'
+        :param Result: 认证结果码
+收费结果码：
+'0': '认证通过'
+'-1': '认证未通过'
+'-6': '持卡人信息有误'
+'-7': '未开通无卡支付'
+'-8': '此卡被没收'
+'-9': '无效卡号'
+'-10': '此卡无对应发卡行'
+'-11': '该卡未初始化或睡眠卡'
+'-12': '作弊卡、吞卡'
+'-13': '此卡已挂失'
+'-14': '该卡已过期'
+'-15': '受限制的卡'
+'-16': '密码错误次数超限'
+'-17': '发卡行不支持此交易'
+不收费结果码：
+'-2': '姓名校验不通过'
+'-3': '身份证号码有误'
+'-4': '银行卡号码有误'
+'-5': '手机号码不合法'
+'-18': '服务繁忙'
         :type Result: str
         :param Description: 认证结果信息。
         :type Description: str
@@ -177,15 +174,8 @@ class BankCardVerificationRequest(AbstractModel):
         :type Name: str
         :param BankCard: 银行卡
         :type BankCard: str
-        :param CertType: 证件类型，请确认该证件为开户时使用的证件类型，未用于开户的证件信息不支持验证。（不填默认0）
-0 身份证
-1 军官证
-2 护照
-3 港澳证
-4 台胞证
-5 警官证
-6 士兵证
-7 其它证件
+        :param CertType: 证件类型，请确认该证件为开户时使用的证件类型，未用于开户的证件信息不支持验证。
+目前默认：0 身份证，其他证件类型需求可以联系小助手faceid001确认。
         :type CertType: int
         """
         self.IdCard = None
@@ -208,12 +198,10 @@ class BankCardVerificationResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param Result: 认证结果码。
+        :param Result: 认证结果码
+收费结果码：
 '0': '认证通过'
 '-1': '认证未通过'
-'-2': '姓名校验不通过'
-'-3': '身份证号码有误'
-'-4': '银行卡号码有误'
 '-5': '持卡人信息有误'
 '-6': '未开通无卡支付'
 '-7': '此卡被没收'
@@ -226,6 +214,10 @@ class BankCardVerificationResponse(AbstractModel):
 '-14': '受限制的卡'
 '-15': '密码错误次数超限'
 '-16': '发卡行不支持此交易'
+不收费结果码：
+'-2': '姓名校验不通过'
+'-3': '身份证号码有误'
+'-4': '银行卡号码有误'
 '-17': '服务繁忙'
         :type Result: str
         :param Description: 认证结果信息。
@@ -353,6 +345,7 @@ class GetDetectInfoRequest(AbstractModel):
         :type RuleId: str
         :param InfoType: 指定拉取的结果信息，取值（0：全部；1：文本类；2：身份证正反面；3：视频最佳截图照片；4：视频）。
 如 134表示拉取文本类、视频最佳截图照片、视频。
+默认值：0
         :type InfoType: str
         """
         self.BizToken = None

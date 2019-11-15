@@ -908,6 +908,8 @@ class EstateCertOCRResponse(AbstractModel):
         :type Other: str
         :param Angle: 图片旋转角度
         :type Angle: float
+        :param Number: 不动产权号
+        :type Number: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -922,6 +924,7 @@ class EstateCertOCRResponse(AbstractModel):
         self.Term = None
         self.Other = None
         self.Angle = None
+        self.Number = None
         self.RequestId = None
 
 
@@ -937,6 +940,7 @@ class EstateCertOCRResponse(AbstractModel):
         self.Term = params.get("Term")
         self.Other = params.get("Other")
         self.Angle = params.get("Angle")
+        self.Number = params.get("Number")
         self.RequestId = params.get("RequestId")
 
 
@@ -1912,6 +1916,35 @@ class InvoiceGeneralOCRResponse(AbstractModel):
                 self.InvoiceGeneralInfos.append(obj)
         self.Angle = params.get("Angle")
         self.RequestId = params.get("RequestId")
+
+
+class ItemCoord(AbstractModel):
+    """文本行在旋转纠正之后的图像中的像素坐标，表示为（左上角x, 左上角y，宽width，高height）
+
+    """
+
+    def __init__(self):
+        """
+        :param X: 左上角x
+        :type X: int
+        :param Y: 左上角y
+        :type Y: int
+        :param Width: 宽width
+        :type Width: int
+        :param Height: 高height
+        :type Height: int
+        """
+        self.X = None
+        self.Y = None
+        self.Width = None
+        self.Height = None
+
+
+    def _deserialize(self, params):
+        self.X = params.get("X")
+        self.Y = params.get("Y")
+        self.Width = params.get("Width")
+        self.Height = params.get("Height")
 
 
 class LicensePlateOCRRequest(AbstractModel):
@@ -3080,17 +3113,34 @@ class TextArithmetic(AbstractModel):
         :type Result: bool
         :param Confidence: 保留字段，暂不支持
         :type Confidence: int
-        :param Polygon: 文本行坐标，以四个顶点坐标表示（保留字段，暂不支持）
+        :param Polygon: 原图文本行坐标，以四个顶点坐标表示（保留字段，暂不支持）
 注意：此字段可能返回 null，表示取不到有效值。
         :type Polygon: list of Coord
         :param AdvancedInfo: 保留字段，暂不支持
         :type AdvancedInfo: str
+        :param ItemCoord: 文本行在旋转纠正之后的图像中的像素坐标，表示为（左上角x, 左上角y，宽width，高height）
+        :type ItemCoord: :class:`tencentcloud.ocr.v20181119.models.ItemCoord`
+        :param ExpressionType: 算式题型编号：
+‘1’: 加减乘除四则
+‘2’: 加减乘除已知结果求运算因子
+‘3’: 判断大小
+‘4’: 约等于估算
+‘5’: 带余数除法
+‘6’: 分数四则运算
+‘7’: 单位换算
+‘8’: 竖式加减法
+‘9’: 竖式乘除法
+‘10’: 脱式计算
+‘11’: 解方程
+        :type ExpressionType: str
         """
         self.DetectedText = None
         self.Result = None
         self.Confidence = None
         self.Polygon = None
         self.AdvancedInfo = None
+        self.ItemCoord = None
+        self.ExpressionType = None
 
 
     def _deserialize(self, params):
@@ -3104,6 +3154,10 @@ class TextArithmetic(AbstractModel):
                 obj._deserialize(item)
                 self.Polygon.append(obj)
         self.AdvancedInfo = params.get("AdvancedInfo")
+        if params.get("ItemCoord") is not None:
+            self.ItemCoord = ItemCoord()
+            self.ItemCoord._deserialize(params.get("ItemCoord"))
+        self.ExpressionType = params.get("ExpressionType")
 
 
 class TextDetectRequest(AbstractModel):

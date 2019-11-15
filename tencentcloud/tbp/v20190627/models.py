@@ -108,6 +108,8 @@ class TextProcessRequest(AbstractModel):
         :type SessionAttributes: str
         :param PlatformType: 平台类型，{小程序：MiniProgram；小微：XiaoWei；公众号：OfficialAccount；企业微信: WXWork}。
         :type PlatformType: str
+        :param PlatformId: 当PlatformType为微信公众号或企业微信时，传递对应微信公众号或企业微信的唯一标识
+        :type PlatformId: str
         """
         self.BotId = None
         self.BotEnv = None
@@ -115,6 +117,7 @@ class TextProcessRequest(AbstractModel):
         self.InputText = None
         self.SessionAttributes = None
         self.PlatformType = None
+        self.PlatformId = None
 
 
     def _deserialize(self, params):
@@ -124,6 +127,7 @@ class TextProcessRequest(AbstractModel):
         self.InputText = params.get("InputText")
         self.SessionAttributes = params.get("SessionAttributes")
         self.PlatformType = params.get("PlatformType")
+        self.PlatformId = params.get("PlatformId")
 
 
 class TextProcessResponse(AbstractModel):
@@ -205,11 +209,14 @@ class TextResetRequest(AbstractModel):
         :type TerminalId: str
         :param PlatformType: 平台类型，{小程序：MiniProgram；小微：XiaoWei；公众号：OfficialAccount；企业微信: WXWork}。
         :type PlatformType: str
+        :param PlatformId: 当PlatformType为微信公众号或企业微信时，传递对应微信公众号或企业微信的唯一标识
+        :type PlatformId: str
         """
         self.BotId = None
         self.BotEnv = None
         self.TerminalId = None
         self.PlatformType = None
+        self.PlatformId = None
 
 
     def _deserialize(self, params):
@@ -217,6 +224,7 @@ class TextResetRequest(AbstractModel):
         self.BotEnv = params.get("BotEnv")
         self.TerminalId = params.get("TerminalId")
         self.PlatformType = params.get("PlatformType")
+        self.PlatformId = params.get("PlatformId")
 
 
 class TextResetResponse(AbstractModel):

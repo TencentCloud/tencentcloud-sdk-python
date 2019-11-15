@@ -1003,7 +1003,7 @@ class DescribeBillSummaryByTagResponse(AbstractModel):
         :type Ready: int
         :param SummaryOverview: 各标签值花费分布详情
 注意：此字段可能返回 null，表示取不到有效值。
-        :type SummaryOverview: :class:`tencentcloud.billing.v20180709.models.TagSummaryOverviewItem`
+        :type SummaryOverview: list of TagSummaryOverviewItem
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -1015,8 +1015,11 @@ class DescribeBillSummaryByTagResponse(AbstractModel):
     def _deserialize(self, params):
         self.Ready = params.get("Ready")
         if params.get("SummaryOverview") is not None:
-            self.SummaryOverview = TagSummaryOverviewItem()
-            self.SummaryOverview._deserialize(params.get("SummaryOverview"))
+            self.SummaryOverview = []
+            for item in params.get("SummaryOverview"):
+                obj = TagSummaryOverviewItem()
+                obj._deserialize(item)
+                self.SummaryOverview.append(obj)
         self.RequestId = params.get("RequestId")
 
 

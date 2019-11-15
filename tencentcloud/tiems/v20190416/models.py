@@ -37,6 +37,194 @@ class Conditions(AbstractModel):
         self.Count = params.get("Count")
 
 
+class Config(AbstractModel):
+    """配置
+
+    """
+
+    def __init__(self):
+        """
+        :param Id: Id
+        :type Id: str
+        :param Name: 配置名
+        :type Name: str
+        :param ModelUri: 模型地址
+        :type ModelUri: str
+        :param CreateTime: 创建时间
+        :type CreateTime: str
+        :param Runtime: 运行环境
+        :type Runtime: str
+        :param Version: 配置版本
+        :type Version: str
+        :param UpdateTime: 更新时间
+        :type UpdateTime: str
+        :param Description: 配置描述
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Description: str
+        """
+        self.Id = None
+        self.Name = None
+        self.ModelUri = None
+        self.CreateTime = None
+        self.Runtime = None
+        self.Version = None
+        self.UpdateTime = None
+        self.Description = None
+
+
+    def _deserialize(self, params):
+        self.Id = params.get("Id")
+        self.Name = params.get("Name")
+        self.ModelUri = params.get("ModelUri")
+        self.CreateTime = params.get("CreateTime")
+        self.Runtime = params.get("Runtime")
+        self.Version = params.get("Version")
+        self.UpdateTime = params.get("UpdateTime")
+        self.Description = params.get("Description")
+
+
+class CreateJobRequest(AbstractModel):
+    """CreateJob请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Name: 任务名称
+        :type Name: str
+        :param WorkerCount: 同时处理任务的 Worker 个数
+        :type WorkerCount: int
+        :param ConfigId: 使用的配置 Id
+        :type ConfigId: str
+        :param Cpu: 处理器配置, 单位为1/1000核；范围[100, 256000]
+        :type Cpu: int
+        :param Memory: 内存配置, 单位为1M；范围[100, 256000]
+        :type Memory: int
+        :param Cluster: 运行集群
+        :type Cluster: str
+        :param PredictInput: 预测输入
+        :type PredictInput: :class:`tencentcloud.tiems.v20190416.models.PredictInput`
+        :param Description: 任务描述
+        :type Description: str
+        :param ResourceGroupId: 使用的资源组 Id，默认使用共享资源组
+        :type ResourceGroupId: str
+        :param Gpu: GPU算力配置，单位为1/1000 卡，范围 [0, 256000]
+        :type Gpu: int
+        :param GpuMemory: 显存配置, 单位为1M，范围 [0, 256000]
+        :type GpuMemory: int
+        :param GpuType: GPU类型
+        :type GpuType: str
+        """
+        self.Name = None
+        self.WorkerCount = None
+        self.ConfigId = None
+        self.Cpu = None
+        self.Memory = None
+        self.Cluster = None
+        self.PredictInput = None
+        self.Description = None
+        self.ResourceGroupId = None
+        self.Gpu = None
+        self.GpuMemory = None
+        self.GpuType = None
+
+
+    def _deserialize(self, params):
+        self.Name = params.get("Name")
+        self.WorkerCount = params.get("WorkerCount")
+        self.ConfigId = params.get("ConfigId")
+        self.Cpu = params.get("Cpu")
+        self.Memory = params.get("Memory")
+        self.Cluster = params.get("Cluster")
+        if params.get("PredictInput") is not None:
+            self.PredictInput = PredictInput()
+            self.PredictInput._deserialize(params.get("PredictInput"))
+        self.Description = params.get("Description")
+        self.ResourceGroupId = params.get("ResourceGroupId")
+        self.Gpu = params.get("Gpu")
+        self.GpuMemory = params.get("GpuMemory")
+        self.GpuType = params.get("GpuType")
+
+
+class CreateJobResponse(AbstractModel):
+    """CreateJob返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Job: 任务
+        :type Job: :class:`tencentcloud.tiems.v20190416.models.Job`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Job = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Job") is not None:
+            self.Job = Job()
+            self.Job._deserialize(params.get("Job"))
+        self.RequestId = params.get("RequestId")
+
+
+class CreateRuntimeRequest(AbstractModel):
+    """CreateRuntime请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Name: 全局唯一的运行环境名称
+        :type Name: str
+        :param Image: 运行环境镜像地址
+        :type Image: str
+        :param Framework: 运行环境框架
+        :type Framework: str
+        :param Description: 运行环境描述
+        :type Description: str
+        :param HealthCheckOn: 是否支持健康检查，默认为False
+        :type HealthCheckOn: bool
+        """
+        self.Name = None
+        self.Image = None
+        self.Framework = None
+        self.Description = None
+        self.HealthCheckOn = None
+
+
+    def _deserialize(self, params):
+        self.Name = params.get("Name")
+        self.Image = params.get("Image")
+        self.Framework = params.get("Framework")
+        self.Description = params.get("Description")
+        self.HealthCheckOn = params.get("HealthCheckOn")
+
+
+class CreateRuntimeResponse(AbstractModel):
+    """CreateRuntime返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Runtime: 运行环境
+        :type Runtime: :class:`tencentcloud.tiems.v20190416.models.Runtime`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Runtime = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Runtime") is not None:
+            self.Runtime = Runtime()
+            self.Runtime._deserialize(params.get("Runtime"))
+        self.RequestId = params.get("RequestId")
+
+
 class CreateServiceConfigRequest(AbstractModel):
     """CreateServiceConfig请求参数结构体
 
@@ -50,32 +238,20 @@ class CreateServiceConfigRequest(AbstractModel):
         :type Runtime: str
         :param ModelUri: 模型地址，支持cos路径，格式为 cos://bucket名-appid.cos.region名.myqcloud.com/模型文件夹路径。为模型文件的上一层文件夹地址。
         :type ModelUri: str
-        :param Cpu: 处理器配置, 单位为1/1000核；范围[100, 256000]
-        :type Cpu: int
-        :param Memory: 内存配置, 单位为1M；范围[100, 256000]
-        :type Memory: int
-        :param TflopUnits: GPU算力配置，单位为1/100 tflops，范围 [0, 256000]
-        :type TflopUnits: int
-        :param GpuMemory: 显存配置, 单位为1M，范围 [0, 256000]
-        :type GpuMemory: int
+        :param Description: 配置描述
+        :type Description: str
         """
         self.Name = None
         self.Runtime = None
         self.ModelUri = None
-        self.Cpu = None
-        self.Memory = None
-        self.TflopUnits = None
-        self.GpuMemory = None
+        self.Description = None
 
 
     def _deserialize(self, params):
         self.Name = params.get("Name")
         self.Runtime = params.get("Runtime")
         self.ModelUri = params.get("ModelUri")
-        self.Cpu = params.get("Cpu")
-        self.Memory = params.get("Memory")
-        self.TflopUnits = params.get("TflopUnits")
-        self.GpuMemory = params.get("GpuMemory")
+        self.Description = params.get("Description")
 
 
 class CreateServiceConfigResponse(AbstractModel):
@@ -86,7 +262,7 @@ class CreateServiceConfigResponse(AbstractModel):
     def __init__(self):
         """
         :param ServiceConfig: 服务配置
-        :type ServiceConfig: :class:`tencentcloud.tiems.v20190416.models.ServiceConfig`
+        :type ServiceConfig: :class:`tencentcloud.tiems.v20190416.models.Config`
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -96,7 +272,7 @@ class CreateServiceConfigResponse(AbstractModel):
 
     def _deserialize(self, params):
         if params.get("ServiceConfig") is not None:
-            self.ServiceConfig = ServiceConfig()
+            self.ServiceConfig = Config()
             self.ServiceConfig._deserialize(params.get("ServiceConfig"))
         self.RequestId = params.get("RequestId")
 
@@ -111,19 +287,43 @@ class CreateServiceRequest(AbstractModel):
         :param Scaler: 扩缩容配置
         :type Scaler: :class:`tencentcloud.tiems.v20190416.models.Scaler`
         :param ServiceConfigId: 服务配置Id
-        :type ServiceConfigId: int
+        :type ServiceConfigId: str
         :param Name: 服务名称
         :type Name: str
         :param ScaleMode: 扩缩容方式，支持AUTO, MANUAL，分别表示自动扩缩容和手动扩缩容
         :type ScaleMode: str
-        :param Cluster: 集群，不填则使用默认集群。
+        :param Cpu: 处理器配置, 单位为1/1000核；范围[100, 256000]
+        :type Cpu: int
+        :param Memory: 内存配置, 单位为1M；范围[100, 256000]
+        :type Memory: int
+        :param Cluster: 集群，不填则使用默认集群
         :type Cluster: str
+        :param ResourceGroupId: 部署要使用的资源组Id，默认为共享资源组
+        :type ResourceGroupId: str
+        :param Authentication: 默认为空，表示不需要鉴权，TOKEN 表示选择 Token 鉴权方式
+        :type Authentication: str
+        :param Gpu: GPU算力配置，单位为1/1000 卡，范围 [0, 256000]
+        :type Gpu: int
+        :param GpuMemory: 显存配置, 单位为1M，范围 [0, 256000]
+        :type GpuMemory: int
+        :param Description: 备注
+        :type Description: str
+        :param GpuType: GPU类型
+        :type GpuType: str
         """
         self.Scaler = None
         self.ServiceConfigId = None
         self.Name = None
         self.ScaleMode = None
+        self.Cpu = None
+        self.Memory = None
         self.Cluster = None
+        self.ResourceGroupId = None
+        self.Authentication = None
+        self.Gpu = None
+        self.GpuMemory = None
+        self.Description = None
+        self.GpuType = None
 
 
     def _deserialize(self, params):
@@ -133,7 +333,15 @@ class CreateServiceRequest(AbstractModel):
         self.ServiceConfigId = params.get("ServiceConfigId")
         self.Name = params.get("Name")
         self.ScaleMode = params.get("ScaleMode")
+        self.Cpu = params.get("Cpu")
+        self.Memory = params.get("Memory")
         self.Cluster = params.get("Cluster")
+        self.ResourceGroupId = params.get("ResourceGroupId")
+        self.Authentication = params.get("Authentication")
+        self.Gpu = params.get("Gpu")
+        self.GpuMemory = params.get("GpuMemory")
+        self.Description = params.get("Description")
+        self.GpuType = params.get("GpuType")
 
 
 class CreateServiceResponse(AbstractModel):
@@ -144,7 +352,7 @@ class CreateServiceResponse(AbstractModel):
     def __init__(self):
         """
         :param Service: 服务
-        :type Service: :class:`tencentcloud.tiems.v20190416.models.Service`
+        :type Service: :class:`tencentcloud.tiems.v20190416.models.ModelService`
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -154,8 +362,76 @@ class CreateServiceResponse(AbstractModel):
 
     def _deserialize(self, params):
         if params.get("Service") is not None:
-            self.Service = Service()
+            self.Service = ModelService()
             self.Service._deserialize(params.get("Service"))
+        self.RequestId = params.get("RequestId")
+
+
+class DeleteJobRequest(AbstractModel):
+    """DeleteJob请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param JobId: 任务 Id
+        :type JobId: str
+        """
+        self.JobId = None
+
+
+    def _deserialize(self, params):
+        self.JobId = params.get("JobId")
+
+
+class DeleteJobResponse(AbstractModel):
+    """DeleteJob返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class DeleteRuntimeRequest(AbstractModel):
+    """DeleteRuntime请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Runtime: 要删除的Runtime名
+        :type Runtime: str
+        """
+        self.Runtime = None
+
+
+    def _deserialize(self, params):
+        self.Runtime = params.get("Runtime")
+
+
+class DeleteRuntimeResponse(AbstractModel):
+    """DeleteRuntime返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
 
 
@@ -166,8 +442,8 @@ class DeleteServiceConfigRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param ServiceConfigId: 服务配置Id (deprecated)
-        :type ServiceConfigId: int
+        :param ServiceConfigId: 服务配置Id
+        :type ServiceConfigId: str
         :param ServiceConfigName: 服务配置名称
         :type ServiceConfigName: str
         """
@@ -205,7 +481,7 @@ class DeleteServiceRequest(AbstractModel):
     def __init__(self):
         """
         :param ServiceId: 服务Id
-        :type ServiceId: int
+        :type ServiceId: str
         """
         self.ServiceId = None
 
@@ -228,6 +504,78 @@ class DeleteServiceResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeInstancesRequest(AbstractModel):
+    """DescribeInstances请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Filters: 筛选选项
+        :type Filters: list of Filter
+        :param Offset: 偏移量，默认为0
+        :type Offset: int
+        :param Limit: 返回数量，默认为20，最大值为200
+        :type Limit: int
+        :param Order: 输出列表的排列顺序。取值范围：ASC：升序排列 DESC：降序排列
+        :type Order: str
+        :param OrderField: 排序的依据字段， 取值范围 "CREATE_TIME", "UPDATE_TIME", "NAME"
+        :type OrderField: str
+        :param ResourceGroupId: 要查询的资源组 ID
+        :type ResourceGroupId: str
+        """
+        self.Filters = None
+        self.Offset = None
+        self.Limit = None
+        self.Order = None
+        self.OrderField = None
+        self.ResourceGroupId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Filters") is not None:
+            self.Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self.Filters.append(obj)
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+        self.Order = params.get("Order")
+        self.OrderField = params.get("OrderField")
+        self.ResourceGroupId = params.get("ResourceGroupId")
+
+
+class DescribeInstancesResponse(AbstractModel):
+    """DescribeInstances返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param TotalCount: 资源组下节点总数
+        :type TotalCount: int
+        :param Instances: 资源组下节点列表
+        :type Instances: list of Instance
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.Instances = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("Instances") is not None:
+            self.Instances = []
+            for item in params.get("Instances"):
+                obj = Instance()
+                obj._deserialize(item)
+                self.Instances.append(obj)
         self.RequestId = params.get("RequestId")
 
 
@@ -285,12 +633,15 @@ class DescribeServiceConfigsRequest(AbstractModel):
         :type Order: str
         :param OrderField: 排序的依据字段， 取值范围 "CREATE_TIME", "UPDATE_TIME", "NAME"
         :type OrderField: str
+        :param PageByName: 是否按照配置名分页
+        :type PageByName: bool
         """
         self.Filters = None
         self.Offset = None
         self.Limit = None
         self.Order = None
         self.OrderField = None
+        self.PageByName = None
 
 
     def _deserialize(self, params):
@@ -304,6 +655,7 @@ class DescribeServiceConfigsRequest(AbstractModel):
         self.Limit = params.get("Limit")
         self.Order = params.get("Order")
         self.OrderField = params.get("OrderField")
+        self.PageByName = params.get("PageByName")
 
 
 class DescribeServiceConfigsResponse(AbstractModel):
@@ -314,7 +666,7 @@ class DescribeServiceConfigsResponse(AbstractModel):
     def __init__(self):
         """
         :param ServiceConfigs: 服务配置
-        :type ServiceConfigs: list of ServiceConfig
+        :type ServiceConfigs: list of Config
         :param TotalCount: 服务配置总数
         :type TotalCount: int
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -329,7 +681,7 @@ class DescribeServiceConfigsResponse(AbstractModel):
         if params.get("ServiceConfigs") is not None:
             self.ServiceConfigs = []
             for item in params.get("ServiceConfigs"):
-                obj = ServiceConfig()
+                obj = Config()
                 obj._deserialize(item)
                 self.ServiceConfigs.append(obj)
         self.TotalCount = params.get("TotalCount")
@@ -382,7 +734,7 @@ class DescribeServicesResponse(AbstractModel):
     def __init__(self):
         """
         :param Services: 服务列表
-        :type Services: list of Service
+        :type Services: list of ModelService
         :param TotalCount: 服务总数
         :type TotalCount: int
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -397,11 +749,42 @@ class DescribeServicesResponse(AbstractModel):
         if params.get("Services") is not None:
             self.Services = []
             for item in params.get("Services"):
-                obj = Service()
+                obj = ModelService()
                 obj._deserialize(item)
                 self.Services.append(obj)
         self.TotalCount = params.get("TotalCount")
         self.RequestId = params.get("RequestId")
+
+
+class Expose(AbstractModel):
+    """服务暴露方式
+
+    """
+
+    def __init__(self):
+        """
+        :param ExposeType: 暴露方式，支持 EXTERNAL（外网暴露），VPC （VPC内网打通）
+        :type ExposeType: str
+        :param Ip: 暴露Ip。暴露方式为 EXTERNAL 为外网 Ip，暴露方式为 VPC 时为指定 Vpc 下的Vip
+        :type Ip: str
+        :param UnVpcId: 暴露方式为 VPC 时，打通的私有网络Id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UnVpcId: str
+        :param UnSubnetId: 暴露方式为 VPC 时，打通的子网Id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UnSubnetId: str
+        """
+        self.ExposeType = None
+        self.Ip = None
+        self.UnVpcId = None
+        self.UnSubnetId = None
+
+
+    def _deserialize(self, params):
+        self.ExposeType = params.get("ExposeType")
+        self.Ip = params.get("Ip")
+        self.UnVpcId = params.get("UnVpcId")
+        self.UnSubnetId = params.get("UnSubnetId")
 
 
 class Filter(AbstractModel):
@@ -425,6 +808,377 @@ class Filter(AbstractModel):
         self.Values = params.get("Values")
 
 
+class Instance(AbstractModel):
+    """节点
+
+    """
+
+    def __init__(self):
+        """
+        :param Id: 节点 ID
+        :type Id: str
+        :param Zone: 节点所在地区
+        :type Zone: str
+        :param InstanceType: 节点类型
+        :type InstanceType: str
+        :param InstanceChargeType: 节点充值类型
+        :type InstanceChargeType: str
+        :param Cpu: Cpu 核数
+        :type Cpu: int
+        :param Memory: 内存
+        :type Memory: int
+        :param Gpu: Gpu 核数
+        :type Gpu: int
+        :param State: 节点状态
+        :type State: str
+        :param AbnormalReason: 节点故障信息
+        :type AbnormalReason: str
+        :param Created: 创建时间
+        :type Created: str
+        :param Updated: 更新时间
+        :type Updated: str
+        :param DeadlineTime: 到期时间
+        :type DeadlineTime: str
+        :param ResourceGroupId: 所属资源组 ID
+        :type ResourceGroupId: str
+        :param RenewFlag: 自动续费标签
+        :type RenewFlag: str
+        :param Region: 节点所在地域
+        :type Region: str
+        :param CpuRequested: 当前 Cpu 申请使用量
+        :type CpuRequested: int
+        :param MemoryRequested: 当前 Memory 申请使用量
+        :type MemoryRequested: int
+        :param GpuRequested: 当前 Gpu 申请使用量
+        :type GpuRequested: int
+        """
+        self.Id = None
+        self.Zone = None
+        self.InstanceType = None
+        self.InstanceChargeType = None
+        self.Cpu = None
+        self.Memory = None
+        self.Gpu = None
+        self.State = None
+        self.AbnormalReason = None
+        self.Created = None
+        self.Updated = None
+        self.DeadlineTime = None
+        self.ResourceGroupId = None
+        self.RenewFlag = None
+        self.Region = None
+        self.CpuRequested = None
+        self.MemoryRequested = None
+        self.GpuRequested = None
+
+
+    def _deserialize(self, params):
+        self.Id = params.get("Id")
+        self.Zone = params.get("Zone")
+        self.InstanceType = params.get("InstanceType")
+        self.InstanceChargeType = params.get("InstanceChargeType")
+        self.Cpu = params.get("Cpu")
+        self.Memory = params.get("Memory")
+        self.Gpu = params.get("Gpu")
+        self.State = params.get("State")
+        self.AbnormalReason = params.get("AbnormalReason")
+        self.Created = params.get("Created")
+        self.Updated = params.get("Updated")
+        self.DeadlineTime = params.get("DeadlineTime")
+        self.ResourceGroupId = params.get("ResourceGroupId")
+        self.RenewFlag = params.get("RenewFlag")
+        self.Region = params.get("Region")
+        self.CpuRequested = params.get("CpuRequested")
+        self.MemoryRequested = params.get("MemoryRequested")
+        self.GpuRequested = params.get("GpuRequested")
+
+
+class Job(AbstractModel):
+    """任务
+
+    """
+
+    def __init__(self):
+        """
+        :param Id: 任务 Id
+        :type Id: str
+        :param Cluster: 集群名
+        :type Cluster: str
+        :param Region: Region 名
+        :type Region: str
+        :param Name: 任务名称
+        :type Name: str
+        :param Runtime: Worker 使用的运行环境
+        :type Runtime: str
+        :param Description: 任务描述
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Description: str
+        :param ConfigId: 配置 Id
+        :type ConfigId: str
+        :param PredictInput: 预测输入
+        :type PredictInput: :class:`tencentcloud.tiems.v20190416.models.PredictInput`
+        :param Status: 任务状态
+        :type Status: :class:`tencentcloud.tiems.v20190416.models.JobStatus`
+        :param CreateTime: 任务创建时间
+        :type CreateTime: str
+        :param StartTime: 任务开始时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type StartTime: str
+        :param EndTime: 任务结束时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EndTime: str
+        :param CancelTime: 任务取消时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CancelTime: str
+        :param ResourceGroupId: 任务使用资源组 Id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ResourceGroupId: str
+        :param Cpu: 处理器配置, 单位为1/1000核；范围[100, 256000]
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Cpu: int
+        :param Memory: 内存配置, 单位为1M；范围[100, 256000]
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Memory: int
+        :param Gpu: GPU算力配置，单位为1/1000 卡，范围 [0, 256000]
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Gpu: int
+        :param GpuMemory: 显存配置, 单位为1M，范围 [0, 256000]
+注意：此字段可能返回 null，表示取不到有效值。
+        :type GpuMemory: int
+        :param ResourceGroupName: 任务使用资源组名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ResourceGroupName: str
+        :param GpuType: GPU类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type GpuType: str
+        :param ConfigName: 配置名
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ConfigName: str
+        :param ConfigVersion: 配置版本
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ConfigVersion: str
+        """
+        self.Id = None
+        self.Cluster = None
+        self.Region = None
+        self.Name = None
+        self.Runtime = None
+        self.Description = None
+        self.ConfigId = None
+        self.PredictInput = None
+        self.Status = None
+        self.CreateTime = None
+        self.StartTime = None
+        self.EndTime = None
+        self.CancelTime = None
+        self.ResourceGroupId = None
+        self.Cpu = None
+        self.Memory = None
+        self.Gpu = None
+        self.GpuMemory = None
+        self.ResourceGroupName = None
+        self.GpuType = None
+        self.ConfigName = None
+        self.ConfigVersion = None
+
+
+    def _deserialize(self, params):
+        self.Id = params.get("Id")
+        self.Cluster = params.get("Cluster")
+        self.Region = params.get("Region")
+        self.Name = params.get("Name")
+        self.Runtime = params.get("Runtime")
+        self.Description = params.get("Description")
+        self.ConfigId = params.get("ConfigId")
+        if params.get("PredictInput") is not None:
+            self.PredictInput = PredictInput()
+            self.PredictInput._deserialize(params.get("PredictInput"))
+        if params.get("Status") is not None:
+            self.Status = JobStatus()
+            self.Status._deserialize(params.get("Status"))
+        self.CreateTime = params.get("CreateTime")
+        self.StartTime = params.get("StartTime")
+        self.EndTime = params.get("EndTime")
+        self.CancelTime = params.get("CancelTime")
+        self.ResourceGroupId = params.get("ResourceGroupId")
+        self.Cpu = params.get("Cpu")
+        self.Memory = params.get("Memory")
+        self.Gpu = params.get("Gpu")
+        self.GpuMemory = params.get("GpuMemory")
+        self.ResourceGroupName = params.get("ResourceGroupName")
+        self.GpuType = params.get("GpuType")
+        self.ConfigName = params.get("ConfigName")
+        self.ConfigVersion = params.get("ConfigVersion")
+
+
+class JobStatus(AbstractModel):
+    """任务状态
+
+    """
+
+    def __init__(self):
+        """
+        :param Status: 任务状态
+        :type Status: str
+        :param Message: 错误时为错误描述
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Message: str
+        :param DesiredWorkers: 预期Worker数量
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DesiredWorkers: int
+        :param CurrentWorkers: 当前Worker数量
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CurrentWorkers: int
+        :param Replicas: 副本名
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Replicas: list of str
+        """
+        self.Status = None
+        self.Message = None
+        self.DesiredWorkers = None
+        self.CurrentWorkers = None
+        self.Replicas = None
+
+
+    def _deserialize(self, params):
+        self.Status = params.get("Status")
+        self.Message = params.get("Message")
+        self.DesiredWorkers = params.get("DesiredWorkers")
+        self.CurrentWorkers = params.get("CurrentWorkers")
+        self.Replicas = params.get("Replicas")
+
+
+class ModelService(AbstractModel):
+    """模型服务
+
+    """
+
+    def __init__(self):
+        """
+        :param Id: 服务ID
+        :type Id: str
+        :param Cluster: 运行集群
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Cluster: str
+        :param Name: 服务名称
+        :type Name: str
+        :param Runtime: 运行环境
+        :type Runtime: str
+        :param ModelUri: 模型地址
+        :type ModelUri: str
+        :param Cpu: 处理器配置, 单位为1/1000核
+        :type Cpu: int
+        :param Memory: 内存配置, 单位为1M
+        :type Memory: int
+        :param Gpu: GPU 配置, 单位为1/1000 卡
+        :type Gpu: int
+        :param GpuMemory: 显存配置, 单位为1M
+        :type GpuMemory: int
+        :param CreateTime: 创建时间
+        :type CreateTime: str
+        :param UpdateTime: 更新时间
+        :type UpdateTime: str
+        :param ScaleMode: 支持AUTO, MANUAL
+        :type ScaleMode: str
+        :param Scaler: 弹性伸缩配置
+        :type Scaler: :class:`tencentcloud.tiems.v20190416.models.Scaler`
+        :param Status: 服务状态
+        :type Status: :class:`tencentcloud.tiems.v20190416.models.ServiceStatus`
+        :param AccessToken: 访问密钥
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AccessToken: str
+        :param ConfigId: 服务配置Id
+        :type ConfigId: str
+        :param ConfigName: 服务配置名
+        :type ConfigName: str
+        :param ServeSeconds: 服务运行时长
+        :type ServeSeconds: int
+        :param ConfigVersion: 配置版本
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ConfigVersion: str
+        :param ResourceGroupId: 服务使用资源组 Id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ResourceGroupId: str
+        :param Exposes: 暴露方式
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Exposes: list of Expose
+        :param Region: Region 名
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Region: str
+        :param ResourceGroupName: 服务使用资源组名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ResourceGroupName: str
+        :param Description: 备注
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Description: str
+        :param GpuType: GPU类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type GpuType: str
+        """
+        self.Id = None
+        self.Cluster = None
+        self.Name = None
+        self.Runtime = None
+        self.ModelUri = None
+        self.Cpu = None
+        self.Memory = None
+        self.Gpu = None
+        self.GpuMemory = None
+        self.CreateTime = None
+        self.UpdateTime = None
+        self.ScaleMode = None
+        self.Scaler = None
+        self.Status = None
+        self.AccessToken = None
+        self.ConfigId = None
+        self.ConfigName = None
+        self.ServeSeconds = None
+        self.ConfigVersion = None
+        self.ResourceGroupId = None
+        self.Exposes = None
+        self.Region = None
+        self.ResourceGroupName = None
+        self.Description = None
+        self.GpuType = None
+
+
+    def _deserialize(self, params):
+        self.Id = params.get("Id")
+        self.Cluster = params.get("Cluster")
+        self.Name = params.get("Name")
+        self.Runtime = params.get("Runtime")
+        self.ModelUri = params.get("ModelUri")
+        self.Cpu = params.get("Cpu")
+        self.Memory = params.get("Memory")
+        self.Gpu = params.get("Gpu")
+        self.GpuMemory = params.get("GpuMemory")
+        self.CreateTime = params.get("CreateTime")
+        self.UpdateTime = params.get("UpdateTime")
+        self.ScaleMode = params.get("ScaleMode")
+        if params.get("Scaler") is not None:
+            self.Scaler = Scaler()
+            self.Scaler._deserialize(params.get("Scaler"))
+        if params.get("Status") is not None:
+            self.Status = ServiceStatus()
+            self.Status._deserialize(params.get("Status"))
+        self.AccessToken = params.get("AccessToken")
+        self.ConfigId = params.get("ConfigId")
+        self.ConfigName = params.get("ConfigName")
+        self.ServeSeconds = params.get("ServeSeconds")
+        self.ConfigVersion = params.get("ConfigVersion")
+        self.ResourceGroupId = params.get("ResourceGroupId")
+        if params.get("Exposes") is not None:
+            self.Exposes = []
+            for item in params.get("Exposes"):
+                obj = Expose()
+                obj._deserialize(item)
+                self.Exposes.append(obj)
+        self.Region = params.get("Region")
+        self.ResourceGroupName = params.get("ResourceGroupName")
+        self.Description = params.get("Description")
+        self.GpuType = params.get("GpuType")
+
+
 class Option(AbstractModel):
     """配置项
 
@@ -444,6 +1198,44 @@ class Option(AbstractModel):
     def _deserialize(self, params):
         self.Name = params.get("Name")
         self.Value = params.get("Value")
+
+
+class PredictInput(AbstractModel):
+    """预测输入
+
+    """
+
+    def __init__(self):
+        """
+        :param InputPath: 输入路径，支持 cos 格式路径文件夹或文件
+        :type InputPath: str
+        :param OutputPath: 输出路径，支持 cos 格式路径
+        :type OutputPath: str
+        :param InputDataFormat: 输入数据格式，目前支持：JSON
+        :type InputDataFormat: str
+        :param OutputDataFormat: 输出数据格式，目前支持：JSON
+        :type OutputDataFormat: str
+        :param BatchSize: 预测批大小，默认为 64
+        :type BatchSize: int
+        :param SignatureName: 模型签名
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SignatureName: str
+        """
+        self.InputPath = None
+        self.OutputPath = None
+        self.InputDataFormat = None
+        self.OutputDataFormat = None
+        self.BatchSize = None
+        self.SignatureName = None
+
+
+    def _deserialize(self, params):
+        self.InputPath = params.get("InputPath")
+        self.OutputPath = params.get("OutputPath")
+        self.InputDataFormat = params.get("InputDataFormat")
+        self.OutputDataFormat = params.get("OutputDataFormat")
+        self.BatchSize = params.get("BatchSize")
+        self.SignatureName = params.get("SignatureName")
 
 
 class Runtime(AbstractModel):
@@ -525,162 +1317,6 @@ class Scaler(AbstractModel):
                 self.HpaMetrics.append(obj)
 
 
-class Service(AbstractModel):
-    """模型服务
-
-    """
-
-    def __init__(self):
-        """
-        :param Id: 服务ID
-        :type Id: int
-        :param Cluster: 运行集群
-        :type Cluster: str
-        :param Name: 服务名称
-        :type Name: str
-        :param Runtime: 运行环境
-        :type Runtime: str
-        :param ModelUri: 模型地址
-        :type ModelUri: str
-        :param Cpu: 处理器配置, 单位为1/1000核
-        :type Cpu: int
-        :param Memory: 内存配置, 单位为1M
-        :type Memory: int
-        :param TflopUnits: 处理器配置, 单位为1/100 tflops
-        :type TflopUnits: int
-        :param GpuMemory: 显存配置, 单位为1M
-        :type GpuMemory: int
-        :param CreateTime: 创建时间
-        :type CreateTime: str
-        :param UpdateTime: 更新时间
-        :type UpdateTime: str
-        :param ScaleMode: 支持AUTO, MANUAL
-        :type ScaleMode: str
-        :param Scaler: 弹性伸缩配置
-        :type Scaler: :class:`tencentcloud.tiems.v20190416.models.Scaler`
-        :param Status: 服务状态
-        :type Status: :class:`tencentcloud.tiems.v20190416.models.ServiceStatus`
-        :param ServingIp: 服务地址
-        :type ServingIp: str
-        :param AccessToken: 访问密钥
-        :type AccessToken: str
-        :param ServiceConfigId: 服务配置Id
-        :type ServiceConfigId: int
-        :param ServiceConfigName: 服务配置名
-        :type ServiceConfigName: str
-        :param ServeSeconds: 服务运行时长
-        :type ServeSeconds: int
-        :param ServiceConfigVersion: 配置版本
-        :type ServiceConfigVersion: str
-        """
-        self.Id = None
-        self.Cluster = None
-        self.Name = None
-        self.Runtime = None
-        self.ModelUri = None
-        self.Cpu = None
-        self.Memory = None
-        self.TflopUnits = None
-        self.GpuMemory = None
-        self.CreateTime = None
-        self.UpdateTime = None
-        self.ScaleMode = None
-        self.Scaler = None
-        self.Status = None
-        self.ServingIp = None
-        self.AccessToken = None
-        self.ServiceConfigId = None
-        self.ServiceConfigName = None
-        self.ServeSeconds = None
-        self.ServiceConfigVersion = None
-
-
-    def _deserialize(self, params):
-        self.Id = params.get("Id")
-        self.Cluster = params.get("Cluster")
-        self.Name = params.get("Name")
-        self.Runtime = params.get("Runtime")
-        self.ModelUri = params.get("ModelUri")
-        self.Cpu = params.get("Cpu")
-        self.Memory = params.get("Memory")
-        self.TflopUnits = params.get("TflopUnits")
-        self.GpuMemory = params.get("GpuMemory")
-        self.CreateTime = params.get("CreateTime")
-        self.UpdateTime = params.get("UpdateTime")
-        self.ScaleMode = params.get("ScaleMode")
-        if params.get("Scaler") is not None:
-            self.Scaler = Scaler()
-            self.Scaler._deserialize(params.get("Scaler"))
-        if params.get("Status") is not None:
-            self.Status = ServiceStatus()
-            self.Status._deserialize(params.get("Status"))
-        self.ServingIp = params.get("ServingIp")
-        self.AccessToken = params.get("AccessToken")
-        self.ServiceConfigId = params.get("ServiceConfigId")
-        self.ServiceConfigName = params.get("ServiceConfigName")
-        self.ServeSeconds = params.get("ServeSeconds")
-        self.ServiceConfigVersion = params.get("ServiceConfigVersion")
-
-
-class ServiceConfig(AbstractModel):
-    """服务配置
-
-    """
-
-    def __init__(self):
-        """
-        :param Id: Id
-        :type Id: int
-        :param Name: 配置名
-        :type Name: str
-        :param ModelUri: 模型地址
-        :type ModelUri: str
-        :param Cpu: 处理器配置, 单位为1/1000核
-        :type Cpu: int
-        :param Memory: 内存配置, 单位为1M
-        :type Memory: int
-        :param TflopUnits: GPU算力，单位为1/100 tflops
-注意：此字段可能返回 null，表示取不到有效值。
-        :type TflopUnits: int
-        :param GpuMemory: 显存配置, 单位为1M
-注意：此字段可能返回 null，表示取不到有效值。
-        :type GpuMemory: int
-        :param CreateTime: 创建时间
-        :type CreateTime: str
-        :param UpdateTime: 更新时间
-        :type UpdateTime: str
-        :param Runtime: 运行环境
-        :type Runtime: str
-        :param Version: 配置版本
-        :type Version: str
-        """
-        self.Id = None
-        self.Name = None
-        self.ModelUri = None
-        self.Cpu = None
-        self.Memory = None
-        self.TflopUnits = None
-        self.GpuMemory = None
-        self.CreateTime = None
-        self.UpdateTime = None
-        self.Runtime = None
-        self.Version = None
-
-
-    def _deserialize(self, params):
-        self.Id = params.get("Id")
-        self.Name = params.get("Name")
-        self.ModelUri = params.get("ModelUri")
-        self.Cpu = params.get("Cpu")
-        self.Memory = params.get("Memory")
-        self.TflopUnits = params.get("TflopUnits")
-        self.GpuMemory = params.get("GpuMemory")
-        self.CreateTime = params.get("CreateTime")
-        self.UpdateTime = params.get("UpdateTime")
-        self.Runtime = params.get("Runtime")
-        self.Version = params.get("Version")
-
-
 class ServiceStatus(AbstractModel):
     """服务状态
 
@@ -700,12 +1336,16 @@ class ServiceStatus(AbstractModel):
         :param Replicas: 副本名称
 注意：此字段可能返回 null，表示取不到有效值。
         :type Replicas: list of str
+        :param Message: 运行状态对额外信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Message: str
         """
         self.DesiredReplicas = None
         self.CurrentReplicas = None
         self.Status = None
         self.Conditions = None
         self.Replicas = None
+        self.Message = None
 
 
     def _deserialize(self, params):
@@ -719,6 +1359,56 @@ class ServiceStatus(AbstractModel):
                 obj._deserialize(item)
                 self.Conditions.append(obj)
         self.Replicas = params.get("Replicas")
+        self.Message = params.get("Message")
+
+
+class UpdateJobRequest(AbstractModel):
+    """UpdateJob请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param JobId: 任务 Id
+        :type JobId: str
+        :param JobAction: 任务更新动作，支持：Cancel
+        :type JobAction: str
+        :param Description: 备注
+        :type Description: str
+        """
+        self.JobId = None
+        self.JobAction = None
+        self.Description = None
+
+
+    def _deserialize(self, params):
+        self.JobId = params.get("JobId")
+        self.JobAction = params.get("JobAction")
+        self.Description = params.get("Description")
+
+
+class UpdateJobResponse(AbstractModel):
+    """UpdateJob返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Job: 任务
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Job: :class:`tencentcloud.tiems.v20190416.models.Job`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Job = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Job") is not None:
+            self.Job = Job()
+            self.Job._deserialize(params.get("Job"))
+        self.RequestId = params.get("RequestId")
 
 
 class UpdateServiceRequest(AbstractModel):
@@ -729,21 +1419,27 @@ class UpdateServiceRequest(AbstractModel):
     def __init__(self):
         """
         :param ServiceId: 服务Id
-        :type ServiceId: int
+        :type ServiceId: str
         :param Scaler: 扩缩容配置
         :type Scaler: :class:`tencentcloud.tiems.v20190416.models.Scaler`
         :param ServiceConfigId: 服务配置Id
-        :type ServiceConfigId: int
+        :type ServiceConfigId: str
         :param ScaleMode: 支持AUTO, MANUAL，分别表示自动扩缩容，手动扩缩容
         :type ScaleMode: str
         :param ServiceAction: 支持STOP(停止) RESUME(重启)
         :type ServiceAction: str
+        :param Description: 备注
+        :type Description: str
+        :param GpuType: GPU卡类型
+        :type GpuType: str
         """
         self.ServiceId = None
         self.Scaler = None
         self.ServiceConfigId = None
         self.ScaleMode = None
         self.ServiceAction = None
+        self.Description = None
+        self.GpuType = None
 
 
     def _deserialize(self, params):
@@ -754,6 +1450,8 @@ class UpdateServiceRequest(AbstractModel):
         self.ServiceConfigId = params.get("ServiceConfigId")
         self.ScaleMode = params.get("ScaleMode")
         self.ServiceAction = params.get("ServiceAction")
+        self.Description = params.get("Description")
+        self.GpuType = params.get("GpuType")
 
 
 class UpdateServiceResponse(AbstractModel):
@@ -764,7 +1462,7 @@ class UpdateServiceResponse(AbstractModel):
     def __init__(self):
         """
         :param Service: 服务
-        :type Service: :class:`tencentcloud.tiems.v20190416.models.Service`
+        :type Service: :class:`tencentcloud.tiems.v20190416.models.ModelService`
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -774,6 +1472,6 @@ class UpdateServiceResponse(AbstractModel):
 
     def _deserialize(self, params):
         if params.get("Service") is not None:
-            self.Service = Service()
+            self.Service = ModelService()
             self.Service._deserialize(params.get("Service"))
         self.RequestId = params.get("RequestId")
