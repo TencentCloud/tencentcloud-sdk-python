@@ -277,6 +277,34 @@ class RedisClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeInstanceDTSInfo(self, request):
+        """查询实例DTS信息
+
+        :param request: 调用DescribeInstanceDTSInfo所需参数的结构体。
+        :type request: :class:`tencentcloud.redis.v20180412.models.DescribeInstanceDTSInfoRequest`
+        :rtype: :class:`tencentcloud.redis.v20180412.models.DescribeInstanceDTSInfoResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeInstanceDTSInfo", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeInstanceDTSInfoResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeInstanceDealDetail(self, request):
         """查询订单信息
 
@@ -767,6 +795,34 @@ class RedisClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeTaskInfoResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeTaskList(self, request):
+        """查询任务列表信息
+
+        :param request: 调用DescribeTaskList所需参数的结构体。
+        :type request: :class:`tencentcloud.redis.v20180412.models.DescribeTaskListRequest`
+        :rtype: :class:`tencentcloud.redis.v20180412.models.DescribeTaskListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeTaskList", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeTaskListResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

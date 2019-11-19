@@ -669,6 +669,137 @@ class DescribeInstanceBackupsResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeInstanceDTSInfoRequest(AbstractModel):
+    """DescribeInstanceDTSInfo请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param InstanceId: 实例ID
+        :type InstanceId: str
+        """
+        self.InstanceId = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+
+
+class DescribeInstanceDTSInfoResponse(AbstractModel):
+    """DescribeInstanceDTSInfo返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param JobId: DTS任务ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type JobId: str
+        :param JobName: DTS任务名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type JobName: str
+        :param Status: 状态
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Status: int
+        :param StatusDesc: 状态描述
+注意：此字段可能返回 null，表示取不到有效值。
+        :type StatusDesc: str
+        :param Offset: 同步时延，单位：字节
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Offset: int
+        :param CutDownTime: 断开时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CutDownTime: str
+        :param SrcInfo: 源实例信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SrcInfo: :class:`tencentcloud.redis.v20180412.models.DescribeInstanceDTSInstanceInfo`
+        :param DstInfo: 目标实例信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DstInfo: :class:`tencentcloud.redis.v20180412.models.DescribeInstanceDTSInstanceInfo`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.JobId = None
+        self.JobName = None
+        self.Status = None
+        self.StatusDesc = None
+        self.Offset = None
+        self.CutDownTime = None
+        self.SrcInfo = None
+        self.DstInfo = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.JobId = params.get("JobId")
+        self.JobName = params.get("JobName")
+        self.Status = params.get("Status")
+        self.StatusDesc = params.get("StatusDesc")
+        self.Offset = params.get("Offset")
+        self.CutDownTime = params.get("CutDownTime")
+        if params.get("SrcInfo") is not None:
+            self.SrcInfo = DescribeInstanceDTSInstanceInfo()
+            self.SrcInfo._deserialize(params.get("SrcInfo"))
+        if params.get("DstInfo") is not None:
+            self.DstInfo = DescribeInstanceDTSInstanceInfo()
+            self.DstInfo._deserialize(params.get("DstInfo"))
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeInstanceDTSInstanceInfo(AbstractModel):
+    """详细DTS实例信息
+
+    """
+
+    def __init__(self):
+        """
+        :param RegionId: 地域ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RegionId: int
+        :param InstanceId: 实例ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InstanceId: str
+        :param SetId: 仓库ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SetId: int
+        :param ZoneId: 可用区ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ZoneId: int
+        :param Type: 实例类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Type: int
+        :param InstanceName: 实例名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InstanceName: str
+        :param Vip: 实例访问地址
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Vip: str
+        :param Status: 状态
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Status: int
+        """
+        self.RegionId = None
+        self.InstanceId = None
+        self.SetId = None
+        self.ZoneId = None
+        self.Type = None
+        self.InstanceName = None
+        self.Vip = None
+        self.Status = None
+
+
+    def _deserialize(self, params):
+        self.RegionId = params.get("RegionId")
+        self.InstanceId = params.get("InstanceId")
+        self.SetId = params.get("SetId")
+        self.ZoneId = params.get("ZoneId")
+        self.Type = params.get("Type")
+        self.InstanceName = params.get("InstanceName")
+        self.Vip = params.get("Vip")
+        self.Status = params.get("Status")
+
+
 class DescribeInstanceDealDetailRequest(AbstractModel):
     """DescribeInstanceDealDetail请求参数结构体
 
@@ -1635,6 +1766,85 @@ class DescribeTaskInfoResponse(AbstractModel):
         self.TaskType = params.get("TaskType")
         self.InstanceId = params.get("InstanceId")
         self.TaskMessage = params.get("TaskMessage")
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeTaskListRequest(AbstractModel):
+    """DescribeTaskList请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param InstanceId: 实例Id
+        :type InstanceId: str
+        :param InstanceName: 实例名称
+        :type InstanceName: str
+        :param Limit: 分页大小
+        :type Limit: int
+        :param Offset: 偏移量，取Limit整数倍（自动向下取整）
+        :type Offset: int
+        :param ProjectIds: 项目Id
+        :type ProjectIds: list of int
+        :param TaskTypes: 任务类型
+        :type TaskTypes: list of str
+        :param BeginTime: 起始时间
+        :type BeginTime: str
+        :param EndTime: 终止时间
+        :type EndTime: str
+        :param TaskStatus: 任务状态
+        :type TaskStatus: list of int
+        """
+        self.InstanceId = None
+        self.InstanceName = None
+        self.Limit = None
+        self.Offset = None
+        self.ProjectIds = None
+        self.TaskTypes = None
+        self.BeginTime = None
+        self.EndTime = None
+        self.TaskStatus = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.InstanceName = params.get("InstanceName")
+        self.Limit = params.get("Limit")
+        self.Offset = params.get("Offset")
+        self.ProjectIds = params.get("ProjectIds")
+        self.TaskTypes = params.get("TaskTypes")
+        self.BeginTime = params.get("BeginTime")
+        self.EndTime = params.get("EndTime")
+        self.TaskStatus = params.get("TaskStatus")
+
+
+class DescribeTaskListResponse(AbstractModel):
+    """DescribeTaskList返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param TotalCount: 任务总数
+        :type TotalCount: int
+        :param Tasks: 任务详细信息
+        :type Tasks: list of TaskInfoDetail
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.Tasks = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("Tasks") is not None:
+            self.Tasks = []
+            for item in params.get("Tasks"):
+                obj = TaskInfoDetail()
+                obj._deserialize(item)
+                self.Tasks.append(obj)
         self.RequestId = params.get("RequestId")
 
 
@@ -3274,6 +3484,64 @@ class SwitchInstanceVipResponse(AbstractModel):
     def _deserialize(self, params):
         self.TaskId = params.get("TaskId")
         self.RequestId = params.get("RequestId")
+
+
+class TaskInfoDetail(AbstractModel):
+    """任务信息详情
+
+    """
+
+    def __init__(self):
+        """
+        :param TaskId: 任务Id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TaskId: int
+        :param StartTime: 开始时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type StartTime: str
+        :param TaskType: 任务类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TaskType: str
+        :param InstanceName: 实例名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InstanceName: str
+        :param InstanceId: 实例Id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InstanceId: str
+        :param ProjectId: 项目Id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ProjectId: int
+        :param Progress: 任务进度
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Progress: float
+        :param EndTime: 结束时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EndTime: str
+        :param Result: 任务状态
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Result: int
+        """
+        self.TaskId = None
+        self.StartTime = None
+        self.TaskType = None
+        self.InstanceName = None
+        self.InstanceId = None
+        self.ProjectId = None
+        self.Progress = None
+        self.EndTime = None
+        self.Result = None
+
+
+    def _deserialize(self, params):
+        self.TaskId = params.get("TaskId")
+        self.StartTime = params.get("StartTime")
+        self.TaskType = params.get("TaskType")
+        self.InstanceName = params.get("InstanceName")
+        self.InstanceId = params.get("InstanceId")
+        self.ProjectId = params.get("ProjectId")
+        self.Progress = params.get("Progress")
+        self.EndTime = params.get("EndTime")
+        self.Result = params.get("Result")
 
 
 class TradeDealDetail(AbstractModel):
