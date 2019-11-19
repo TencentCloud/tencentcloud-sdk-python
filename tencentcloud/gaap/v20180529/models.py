@@ -371,6 +371,27 @@ class Certificate(AbstractModel):
         self.SubjectCN = params.get("SubjectCN")
 
 
+class CertificateAliasInfo(AbstractModel):
+    """证书别名信息
+
+    """
+
+    def __init__(self):
+        """
+        :param CertificateId: 证书ID
+        :type CertificateId: str
+        :param CertificateAlias: 证书别名
+        :type CertificateAlias: str
+        """
+        self.CertificateId = None
+        self.CertificateAlias = None
+
+
+    def _deserialize(self, params):
+        self.CertificateId = params.get("CertificateId")
+        self.CertificateAlias = params.get("CertificateAlias")
+
+
 class CertificateDetail(AbstractModel):
     """证书详情，包括证书ID， 证书名字，证书类型，证书内容以及密钥内容。
 
@@ -664,6 +685,73 @@ class CreateCertificateResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class CreateDomainErrorPageInfoRequest(AbstractModel):
+    """CreateDomainErrorPageInfo请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ListenerId: 监听器ID
+        :type ListenerId: str
+        :param Domain: 域名
+        :type Domain: str
+        :param ErrorNos: 原始错误码
+        :type ErrorNos: list of int
+        :param Body: 新的响应包体
+        :type Body: str
+        :param NewErrorNo: 新错误码
+        :type NewErrorNo: int
+        :param ClearHeaders: 需要删除的响应头
+        :type ClearHeaders: list of str
+        :param SetHeaders: 需要设置的响应头
+        :type SetHeaders: list of HttpHeaderParam
+        """
+        self.ListenerId = None
+        self.Domain = None
+        self.ErrorNos = None
+        self.Body = None
+        self.NewErrorNo = None
+        self.ClearHeaders = None
+        self.SetHeaders = None
+
+
+    def _deserialize(self, params):
+        self.ListenerId = params.get("ListenerId")
+        self.Domain = params.get("Domain")
+        self.ErrorNos = params.get("ErrorNos")
+        self.Body = params.get("Body")
+        self.NewErrorNo = params.get("NewErrorNo")
+        self.ClearHeaders = params.get("ClearHeaders")
+        if params.get("SetHeaders") is not None:
+            self.SetHeaders = []
+            for item in params.get("SetHeaders"):
+                obj = HttpHeaderParam()
+                obj._deserialize(item)
+                self.SetHeaders.append(obj)
+
+
+class CreateDomainErrorPageInfoResponse(AbstractModel):
+    """CreateDomainErrorPageInfo返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ErrorPageId: 错误定制响应的配置ID
+        :type ErrorPageId: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.ErrorPageId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.ErrorPageId = params.get("ErrorPageId")
+        self.RequestId = params.get("RequestId")
+
+
 class CreateDomainRequest(AbstractModel):
     """CreateDomain请求参数结构体
 
@@ -678,13 +766,17 @@ class CreateDomainRequest(AbstractModel):
         :param CertificateId: 服务器证书，用于客户端与GAAP的HTTPS的交互。
         :type CertificateId: str
         :param ClientCertificateId: 客户端CA证书，用于客户端与GAAP的HTTPS的交互。
-仅当采用双向认证的方式时，需要设置该字段。
+仅当采用双向认证的方式时，需要设置该字段或PolyClientCertificateIds字段。
         :type ClientCertificateId: str
+        :param PolyClientCertificateIds: 客户端CA证书，用于客户端与GAAP的HTTPS的交互。
+仅当采用双向认证的方式时，需要设置该字段或ClientCertificateId字段。
+        :type PolyClientCertificateIds: list of str
         """
         self.ListenerId = None
         self.Domain = None
         self.CertificateId = None
         self.ClientCertificateId = None
+        self.PolyClientCertificateIds = None
 
 
     def _deserialize(self, params):
@@ -692,6 +784,7 @@ class CreateDomainRequest(AbstractModel):
         self.Domain = params.get("Domain")
         self.CertificateId = params.get("CertificateId")
         self.ClientCertificateId = params.get("ClientCertificateId")
+        self.PolyClientCertificateIds = params.get("PolyClientCertificateIds")
 
 
 class CreateDomainResponse(AbstractModel):
@@ -779,8 +872,10 @@ class CreateHTTPSListenerRequest(AbstractModel):
 1，双向认证。
 默认使用单向认证。
         :type AuthType: int
-        :param ClientCertificateId: 客户端CA证书ID，仅当双向认证时设置该参数。
+        :param ClientCertificateId: 客户端CA单证书ID，仅当双向认证时设置该参数或PolyClientCertificateIds参数
         :type ClientCertificateId: str
+        :param PolyClientCertificateIds: 新的客户端多CA证书ID，仅当双向认证时设置该参数或设置ClientCertificateId参数
+        :type PolyClientCertificateIds: list of str
         """
         self.ListenerName = None
         self.Port = None
@@ -789,6 +884,7 @@ class CreateHTTPSListenerRequest(AbstractModel):
         self.ProxyId = None
         self.AuthType = None
         self.ClientCertificateId = None
+        self.PolyClientCertificateIds = None
 
 
     def _deserialize(self, params):
@@ -799,6 +895,7 @@ class CreateHTTPSListenerRequest(AbstractModel):
         self.ProxyId = params.get("ProxyId")
         self.AuthType = params.get("AuthType")
         self.ClientCertificateId = params.get("ClientCertificateId")
+        self.PolyClientCertificateIds = params.get("PolyClientCertificateIds")
 
 
 class CreateHTTPSListenerResponse(AbstractModel):
@@ -1328,6 +1425,40 @@ class DeleteCertificateResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DeleteDomainErrorPageInfoRequest(AbstractModel):
+    """DeleteDomainErrorPageInfo请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ErrorPageId: 定制错误响应页的唯一ID，请参考CreateDomainErrorPageInfo的响应
+        :type ErrorPageId: str
+        """
+        self.ErrorPageId = None
+
+
+    def _deserialize(self, params):
+        self.ErrorPageId = params.get("ErrorPageId")
+
+
+class DeleteDomainErrorPageInfoResponse(AbstractModel):
+    """DeleteDomainErrorPageInfo返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class DeleteDomainRequest(AbstractModel):
     """DeleteDomain请求参数结构体
 
@@ -1827,6 +1958,54 @@ class DescribeDestRegionsResponse(AbstractModel):
                 obj = RegionDetail()
                 obj._deserialize(item)
                 self.DestRegionSet.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeDomainErrorPageInfoRequest(AbstractModel):
+    """DescribeDomainErrorPageInfo请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ListenerId: 监听器ID
+        :type ListenerId: str
+        :param Domain: 域名
+        :type Domain: str
+        """
+        self.ListenerId = None
+        self.Domain = None
+
+
+    def _deserialize(self, params):
+        self.ListenerId = params.get("ListenerId")
+        self.Domain = params.get("Domain")
+
+
+class DescribeDomainErrorPageInfoResponse(AbstractModel):
+    """DescribeDomainErrorPageInfo返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ErrorPageSet: 订制错误响应配置集
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ErrorPageSet: list of DomainErrorPageInfo
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.ErrorPageSet = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("ErrorPageSet") is not None:
+            self.ErrorPageSet = []
+            for item in params.get("ErrorPageSet"):
+                obj = DomainErrorPageInfo()
+                obj._deserialize(item)
+                self.ErrorPageSet.append(obj)
         self.RequestId = params.get("RequestId")
 
 
@@ -3387,6 +3566,60 @@ class DomainAccessRegionDict(AbstractModel):
         self.RegionName = params.get("RegionName")
 
 
+class DomainErrorPageInfo(AbstractModel):
+    """域名的定制错误响应配置
+
+    """
+
+    def __init__(self):
+        """
+        :param ErrorPageId: 错误定制响应的配置ID
+        :type ErrorPageId: str
+        :param ListenerId: 监听器ID
+        :type ListenerId: str
+        :param Domain: 域名
+        :type Domain: str
+        :param ErrorNos: 原始错误码
+        :type ErrorNos: list of int
+        :param NewErrorNo: 新的错误码
+注意：此字段可能返回 null，表示取不到有效值。
+        :type NewErrorNo: int
+        :param ClearHeaders: 需要清理的响应头
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ClearHeaders: list of str
+        :param SetHeaders: 需要设置的响应头
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SetHeaders: list of HttpHeaderParam
+        :param Body: 设置的响应体(不包括 http头)
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Body: str
+        """
+        self.ErrorPageId = None
+        self.ListenerId = None
+        self.Domain = None
+        self.ErrorNos = None
+        self.NewErrorNo = None
+        self.ClearHeaders = None
+        self.SetHeaders = None
+        self.Body = None
+
+
+    def _deserialize(self, params):
+        self.ErrorPageId = params.get("ErrorPageId")
+        self.ListenerId = params.get("ListenerId")
+        self.Domain = params.get("Domain")
+        self.ErrorNos = params.get("ErrorNos")
+        self.NewErrorNo = params.get("NewErrorNo")
+        self.ClearHeaders = params.get("ClearHeaders")
+        if params.get("SetHeaders") is not None:
+            self.SetHeaders = []
+            for item in params.get("SetHeaders"):
+                obj = HttpHeaderParam()
+                obj._deserialize(item)
+                self.SetHeaders.append(obj)
+        self.Body = params.get("Body")
+
+
 class DomainRuleSet(AbstractModel):
     """按照域名分类的7层监听器转发规则信息
 
@@ -3446,6 +3679,9 @@ class DomainRuleSet(AbstractModel):
         :param RealServerCertificateDomain: 源站认证域名。
 注意：此字段可能返回 null，表示取不到有效值。
         :type RealServerCertificateDomain: str
+        :param PolyClientCertificateAliasInfo: 多客户端证书时，返回多个证书的id和列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PolyClientCertificateAliasInfo: list of CertificateAliasInfo
         """
         self.Domain = None
         self.RuleSet = None
@@ -3463,6 +3699,7 @@ class DomainRuleSet(AbstractModel):
         self.GaapAuth = None
         self.GaapCertificateAlias = None
         self.RealServerCertificateDomain = None
+        self.PolyClientCertificateAliasInfo = None
 
 
     def _deserialize(self, params):
@@ -3487,6 +3724,12 @@ class DomainRuleSet(AbstractModel):
         self.GaapAuth = params.get("GaapAuth")
         self.GaapCertificateAlias = params.get("GaapCertificateAlias")
         self.RealServerCertificateDomain = params.get("RealServerCertificateDomain")
+        if params.get("PolyClientCertificateAliasInfo") is not None:
+            self.PolyClientCertificateAliasInfo = []
+            for item in params.get("PolyClientCertificateAliasInfo"):
+                obj = CertificateAliasInfo()
+                obj._deserialize(item)
+                self.PolyClientCertificateAliasInfo.append(obj)
 
 
 class Filter(AbstractModel):
@@ -3624,6 +3867,9 @@ class HTTPSListener(AbstractModel):
         :param ClientCertificateAlias: 客户端CA证书别名
 注意：此字段可能返回 null，表示取不到有效值。
         :type ClientCertificateAlias: str
+        :param PolyClientCertificateAliasInfo: 多客户端CA证书别名信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PolyClientCertificateAliasInfo: list of CertificateAliasInfo
         """
         self.ListenerId = None
         self.ListenerName = None
@@ -3637,6 +3883,7 @@ class HTTPSListener(AbstractModel):
         self.ClientCertificateId = None
         self.AuthType = None
         self.ClientCertificateAlias = None
+        self.PolyClientCertificateAliasInfo = None
 
 
     def _deserialize(self, params):
@@ -3652,6 +3899,33 @@ class HTTPSListener(AbstractModel):
         self.ClientCertificateId = params.get("ClientCertificateId")
         self.AuthType = params.get("AuthType")
         self.ClientCertificateAlias = params.get("ClientCertificateAlias")
+        if params.get("PolyClientCertificateAliasInfo") is not None:
+            self.PolyClientCertificateAliasInfo = []
+            for item in params.get("PolyClientCertificateAliasInfo"):
+                obj = CertificateAliasInfo()
+                obj._deserialize(item)
+                self.PolyClientCertificateAliasInfo.append(obj)
+
+
+class HttpHeaderParam(AbstractModel):
+    """描述HTTP的包头参数
+
+    """
+
+    def __init__(self):
+        """
+        :param HeaderName: HTTP头名
+        :type HeaderName: str
+        :param HeaderValue: HTTP头值
+        :type HeaderValue: str
+        """
+        self.HeaderName = None
+        self.HeaderValue = None
+
+
+    def _deserialize(self, params):
+        self.HeaderName = params.get("HeaderName")
+        self.HeaderValue = params.get("HeaderValue")
 
 
 class InquiryPriceCreateProxyRequest(AbstractModel):
@@ -3838,13 +4112,17 @@ class ModifyCertificateRequest(AbstractModel):
         :type CertificateId: str
         :param ClientCertificateId: 新的客户端证书ID。其中：
 当ClientCertificateId=default时，表示使用监听器的证书。
-仅当采用双向认证方式时，需要设置该参数。
+仅当采用双向认证方式时，需要设置该参数或者PolyClientCertificateIds。
         :type ClientCertificateId: str
+        :param PolyClientCertificateIds: 新的多客户端证书ID列表。其中：
+仅当采用双向认证方式时，需要设置该参数或ClientCertificateId参数。
+        :type PolyClientCertificateIds: list of str
         """
         self.ListenerId = None
         self.Domain = None
         self.CertificateId = None
         self.ClientCertificateId = None
+        self.PolyClientCertificateIds = None
 
 
     def _deserialize(self, params):
@@ -3852,6 +4130,7 @@ class ModifyCertificateRequest(AbstractModel):
         self.Domain = params.get("Domain")
         self.CertificateId = params.get("CertificateId")
         self.ClientCertificateId = params.get("ClientCertificateId")
+        self.PolyClientCertificateIds = params.get("PolyClientCertificateIds")
 
 
 class ModifyCertificateResponse(AbstractModel):
@@ -3889,17 +4168,23 @@ class ModifyDomainRequest(AbstractModel):
 携带该字段时并且CertificateId=default，表示使用监听器证书；
 其他情况，使用该CertificateId指定的证书。
         :type CertificateId: str
-        :param ClientCertificateId: 客户端CA证书ID，，仅适用于version3.0的通道。其中：
-不带该字段时，表示使用原证书；
+        :param ClientCertificateId: 客户端CA证书ID，仅适用于version3.0的通道。其中：
+不带该字段和PolyClientCertificateIds时，表示使用原证书；
 携带该字段时并且ClientCertificateId=default，表示使用监听器证书；
-其他情况，使用该ClientCertificateId指定的证书。
+其他情况，使用该ClientCertificateId或PolyClientCertificateIds指定的证书。
         :type ClientCertificateId: str
+        :param PolyClientCertificateIds: 客户端CA证书ID，仅适用于version3.0的通道。其中：
+不带该字段和ClientCertificateId时，表示使用原证书；
+携带该字段时并且ClientCertificateId=default，表示使用监听器证书；
+其他情况，使用该ClientCertificateId或PolyClientCertificateIds指定的证书。
+        :type PolyClientCertificateIds: list of str
         """
         self.ListenerId = None
         self.OldDomain = None
         self.NewDomain = None
         self.CertificateId = None
         self.ClientCertificateId = None
+        self.PolyClientCertificateIds = None
 
 
     def _deserialize(self, params):
@@ -3908,6 +4193,7 @@ class ModifyDomainRequest(AbstractModel):
         self.NewDomain = params.get("NewDomain")
         self.CertificateId = params.get("CertificateId")
         self.ClientCertificateId = params.get("ClientCertificateId")
+        self.PolyClientCertificateIds = params.get("PolyClientCertificateIds")
 
 
 class ModifyDomainResponse(AbstractModel):
@@ -4029,12 +4315,14 @@ class ModifyHTTPSListenerAttributeRequest(AbstractModel):
         :type ProxyId: str
         :param ListenerName: 修改后的监听器名称
         :type ListenerName: str
-        :param ForwardProtocol: 监听器后端转发源站协议类型
+        :param ForwardProtocol: 监听器后端转发与源站之间的协议类型
         :type ForwardProtocol: str
         :param CertificateId: 修改后的监听器服务器证书ID
         :type CertificateId: str
-        :param ClientCertificateId: 修改后的监听器客户端证书ID
+        :param ClientCertificateId: 修改后的监听器客户端证书ID，不支持多客户端证书，多客户端证书新采用PolyClientCertificateIds字段
         :type ClientCertificateId: str
+        :param PolyClientCertificateIds: 新字段,修改后的监听器客户端证书ID
+        :type PolyClientCertificateIds: list of str
         """
         self.ListenerId = None
         self.ProxyId = None
@@ -4042,6 +4330,7 @@ class ModifyHTTPSListenerAttributeRequest(AbstractModel):
         self.ForwardProtocol = None
         self.CertificateId = None
         self.ClientCertificateId = None
+        self.PolyClientCertificateIds = None
 
 
     def _deserialize(self, params):
@@ -4051,6 +4340,7 @@ class ModifyHTTPSListenerAttributeRequest(AbstractModel):
         self.ForwardProtocol = params.get("ForwardProtocol")
         self.CertificateId = params.get("CertificateId")
         self.ClientCertificateId = params.get("ClientCertificateId")
+        self.PolyClientCertificateIds = params.get("PolyClientCertificateIds")
 
 
 class ModifyHTTPSListenerAttributeResponse(AbstractModel):
@@ -4866,6 +5156,9 @@ UNKNOWN，未知状态。
         :param TagSet: 标签列表，不存在标签时，该字段为空列表。
 注意：此字段可能返回 null，表示取不到有效值。
         :type TagSet: list of TagPair
+        :param SupportSecurity: 是否支持安全组配置
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SupportSecurity: int
         """
         self.InstanceId = None
         self.CreateTime = None
@@ -4888,6 +5181,7 @@ UNKNOWN，未知状态。
         self.RealServerRegionInfo = None
         self.ForwardIP = None
         self.TagSet = None
+        self.SupportSecurity = None
 
 
     def _deserialize(self, params):
@@ -4921,6 +5215,7 @@ UNKNOWN，未知状态。
                 obj = TagPair()
                 obj._deserialize(item)
                 self.TagSet.append(obj)
+        self.SupportSecurity = params.get("SupportSecurity")
 
 
 class ProxySimpleInfo(AbstractModel):

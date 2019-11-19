@@ -251,6 +251,34 @@ class GaapClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def CreateDomainErrorPageInfo(self, request):
+        """定制域名指定错误码的错误响应
+
+        :param request: 调用CreateDomainErrorPageInfo所需参数的结构体。
+        :type request: :class:`tencentcloud.gaap.v20180529.models.CreateDomainErrorPageInfoRequest`
+        :rtype: :class:`tencentcloud.gaap.v20180529.models.CreateDomainErrorPageInfoResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("CreateDomainErrorPageInfo", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateDomainErrorPageInfoResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def CreateHTTPListener(self, request):
         """该接口（CreateHTTPListener）用于在通道实例下创建HTTP协议类型的监听器。
 
@@ -587,6 +615,34 @@ class GaapClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DeleteDomainErrorPageInfo(self, request):
+        """删除域名的定制错误
+
+        :param request: 调用DeleteDomainErrorPageInfo所需参数的结构体。
+        :type request: :class:`tencentcloud.gaap.v20180529.models.DeleteDomainErrorPageInfoRequest`
+        :rtype: :class:`tencentcloud.gaap.v20180529.models.DeleteDomainErrorPageInfoResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DeleteDomainErrorPageInfo", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DeleteDomainErrorPageInfoResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DeleteListeners(self, request):
         """该接口（DeleteListeners）用于批量删除通道或通道组的监听器，包括4/7层监听器。
 
@@ -881,6 +937,34 @@ class GaapClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeDestRegionsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeDomainErrorPageInfo(self, request):
+        """查询目前订制域名的错误响应
+
+        :param request: 调用DescribeDomainErrorPageInfo所需参数的结构体。
+        :type request: :class:`tencentcloud.gaap.v20180529.models.DescribeDomainErrorPageInfoRequest`
+        :rtype: :class:`tencentcloud.gaap.v20180529.models.DescribeDomainErrorPageInfoResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeDomainErrorPageInfo", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeDomainErrorPageInfoResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
