@@ -3432,6 +3432,44 @@ class SourceInfo(AbstractModel):
         self.Cmd = params.get("Cmd")
 
 
+class StartupInstanceRequest(AbstractModel):
+    """StartupInstance请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param InstanceId: 实例id
+        :type InstanceId: str
+        """
+        self.InstanceId = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+
+
+class StartupInstanceResponse(AbstractModel):
+    """StartupInstance返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param TaskId: 任务id
+        :type TaskId: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TaskId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TaskId = params.get("TaskId")
+        self.RequestId = params.get("RequestId")
+
+
 class SwitchInstanceVipRequest(AbstractModel):
     """SwitchInstanceVip请求参数结构体
 

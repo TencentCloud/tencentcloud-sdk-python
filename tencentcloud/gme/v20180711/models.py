@@ -600,6 +600,12 @@ class ScanPiece(AbstractModel):
         :param Info: 备注
 注意：此字段可能返回 null，表示取不到有效值。
         :type Info: str
+        :param Offset: 流检测时分片在流中的偏移时间，单位毫秒
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Offset: int
+        :param Duration: 流检测时分片时长
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Duration: int
         """
         self.DumpUrl = None
         self.HitFlag = None
@@ -608,6 +614,8 @@ class ScanPiece(AbstractModel):
         self.RoomId = None
         self.OpenId = None
         self.Info = None
+        self.Offset = None
+        self.Duration = None
 
 
     def _deserialize(self, params):
@@ -623,6 +631,8 @@ class ScanPiece(AbstractModel):
         self.RoomId = params.get("RoomId")
         self.OpenId = params.get("OpenId")
         self.Info = params.get("Info")
+        self.Offset = params.get("Offset")
+        self.Duration = params.get("Duration")
 
 
 class ScanVoiceRequest(AbstractModel):

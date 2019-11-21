@@ -71,7 +71,7 @@ class CreateRecTaskResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param Data: 录音文件识别的请求返回结果。
+        :param Data: 录音文件识别的请求返回结果，包含结果查询需要的TaskId
         :type Data: :class:`tencentcloud.asr.v20190614.models.Task`
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str

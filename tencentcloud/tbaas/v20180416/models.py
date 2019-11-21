@@ -35,7 +35,7 @@ class ApplyUserCertRequest(AbstractModel):
         :type UserIdentity: str
         :param Applicant: 证书申请实体，使用腾讯云账号实名认证的名称
         :type Applicant: str
-        :param IdentityNum: 证件号码。如果腾讯云账号对应的实名认证类型为企业认证，填入企业营业执照；如果腾讯云账号对应的实名认证类型为个人认证，填入个人身份证号码
+        :param IdentityNum: 证件号码。如果腾讯云账号对应的实名认证类型为企业认证，填入“0”；如果腾讯云账号对应的实名认证类型为个人认证，填入个人身份证号码
         :type IdentityNum: str
         :param CsrData: csr p10证书文件。需要用户根据文档生成证书的CSR文件
         :type CsrData: str
@@ -311,6 +311,27 @@ class DownloadUserCertResponse(AbstractModel):
         self.CertName = params.get("CertName")
         self.CertCtx = params.get("CertCtx")
         self.RequestId = params.get("RequestId")
+
+
+class EndorserGroup(AbstractModel):
+    """背书组织及其节点列表
+
+    """
+
+    def __init__(self):
+        """
+        :param EndorserGroupName: 背书组织名称
+        :type EndorserGroupName: str
+        :param EndorserPeerList: 背书节点列表
+        :type EndorserPeerList: list of str
+        """
+        self.EndorserGroupName = None
+        self.EndorserPeerList = None
+
+
+    def _deserialize(self, params):
+        self.EndorserGroupName = params.get("EndorserGroupName")
+        self.EndorserPeerList = params.get("EndorserPeerList")
 
 
 class GetBlockListHandlerRequest(AbstractModel):
@@ -851,6 +872,121 @@ class GetTransListHandlerResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class GetTransactionDetailForUserRequest(AbstractModel):
+    """GetTransactionDetailForUser请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Module: 模块名，固定字段：transaction
+        :type Module: str
+        :param Operation: 操作名，固定字段：transaction_detail_for_user
+        :type Operation: str
+        :param ClusterId: 区块链网络ID，可在区块链网络详情或列表中获取
+        :type ClusterId: str
+        :param GroupName: 参与交易的组织名称，可以在组织管理列表中获取当前组织的名称
+        :type GroupName: str
+        :param ChannelName: 业务所属通道名称，可在通道详情或列表中获取
+        :type ChannelName: str
+        :param BlockId: 区块ID，通过GetInvokeTx接口可以获取交易所在的区块ID
+        :type BlockId: int
+        :param TransactionId: 交易ID，需要查询的详情的交易ID
+        :type TransactionId: str
+        """
+        self.Module = None
+        self.Operation = None
+        self.ClusterId = None
+        self.GroupName = None
+        self.ChannelName = None
+        self.BlockId = None
+        self.TransactionId = None
+
+
+    def _deserialize(self, params):
+        self.Module = params.get("Module")
+        self.Operation = params.get("Operation")
+        self.ClusterId = params.get("ClusterId")
+        self.GroupName = params.get("GroupName")
+        self.ChannelName = params.get("ChannelName")
+        self.BlockId = params.get("BlockId")
+        self.TransactionId = params.get("TransactionId")
+
+
+class GetTransactionDetailForUserResponse(AbstractModel):
+    """GetTransactionDetailForUser返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param TransactionId: 交易ID
+        :type TransactionId: str
+        :param TransactionHash: 交易hash
+        :type TransactionHash: str
+        :param CreateOrgName: 创建交易的组织名
+        :type CreateOrgName: str
+        :param TransactionType: 交易类型（普通交易和配置交易）
+        :type TransactionType: str
+        :param TransactionStatus: 交易状态
+        :type TransactionStatus: str
+        :param CreateTime: 交易创建时间
+        :type CreateTime: str
+        :param TransactionData: 交易数据
+        :type TransactionData: str
+        :param BlockId: 交易所在区块号
+        :type BlockId: int
+        :param BlockHash: 交易所在区块哈希
+        :type BlockHash: str
+        :param BlockHeight: 交易所在区块高度
+        :type BlockHeight: int
+        :param ChannelName: 通道名称
+        :type ChannelName: str
+        :param ContractName: 交易所在合约名称
+        :type ContractName: str
+        :param EndorserOrgList: 背书组织列表
+        :type EndorserOrgList: list of EndorserGroup
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TransactionId = None
+        self.TransactionHash = None
+        self.CreateOrgName = None
+        self.TransactionType = None
+        self.TransactionStatus = None
+        self.CreateTime = None
+        self.TransactionData = None
+        self.BlockId = None
+        self.BlockHash = None
+        self.BlockHeight = None
+        self.ChannelName = None
+        self.ContractName = None
+        self.EndorserOrgList = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TransactionId = params.get("TransactionId")
+        self.TransactionHash = params.get("TransactionHash")
+        self.CreateOrgName = params.get("CreateOrgName")
+        self.TransactionType = params.get("TransactionType")
+        self.TransactionStatus = params.get("TransactionStatus")
+        self.CreateTime = params.get("CreateTime")
+        self.TransactionData = params.get("TransactionData")
+        self.BlockId = params.get("BlockId")
+        self.BlockHash = params.get("BlockHash")
+        self.BlockHeight = params.get("BlockHeight")
+        self.ChannelName = params.get("ChannelName")
+        self.ContractName = params.get("ContractName")
+        if params.get("EndorserOrgList") is not None:
+            self.EndorserOrgList = []
+            for item in params.get("EndorserOrgList"):
+                obj = EndorserGroup()
+                obj._deserialize(item)
+                self.EndorserOrgList.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class InvokeRequest(AbstractModel):
     """Invoke请求参数结构体
 
@@ -1099,7 +1235,7 @@ class SrvInvokeRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Service: 服务类型，ss或者dam
+        :param Service: 服务类型，iss或者dam
         :type Service: str
         :param Method: 服务接口，要调用的方法函数名
         :type Method: str

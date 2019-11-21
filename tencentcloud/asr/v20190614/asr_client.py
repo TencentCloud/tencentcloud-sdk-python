@@ -27,11 +27,12 @@ class AsrClient(AbstractClient):
 
     def CreateRecTask(self, request):
         """本接口服务对录音时长1小时以内的录音文件进行识别，异步返回识别全部结果。
-        <br>• 支持回调或轮询的方式获取结果，结果获取请参考[ 录音文件识别结果查询](https://cloud.tencent.com/document/product/1093/37822)。
-        <br>• 接口支持wav、mp3、silk、amr、m4a等主流音频格式
-        <br>• 支持语音 URL 和本地语音文件两种请求方式。
         <br>• 接口是 HTTP RESTful 形式
+        <br>• 接口支持wav、mp3、silk、amr、m4a等主流音频格式
+        <br>• 支持语音 URL 和本地语音文件两种请求方式
+        <br>• 本地语音文件上传的文件不能大于5MB，语音 URL的音频时长不能长于1小时
         <br>• 目前仅支持中文普通话
+        <br>• 支持回调或轮询的方式获取结果，结果获取请参考[ 录音文件识别结果查询](https://cloud.tencent.com/document/product/1093/37822)。
 
         :param request: 调用CreateRecTask所需参数的结构体。
         :type request: :class:`tencentcloud.asr.v20190614.models.CreateRecTaskRequest`

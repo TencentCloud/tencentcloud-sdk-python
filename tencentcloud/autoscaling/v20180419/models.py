@@ -394,11 +394,11 @@ class CreateAutoScalingGroupRequest(AbstractModel):
         :type DefaultCooldown: int
         :param DesiredCapacity: 期望实例数，大小介于最小实例数和最大实例数之间
         :type DesiredCapacity: int
-        :param LoadBalancerIds: 传统负载均衡器ID列表，目前长度上限为5，LoadBalancerIds 和 ForwardLoadBalancers 二者同时最多只能指定一个
+        :param LoadBalancerIds: 传统负载均衡器ID列表，目前长度上限为20，LoadBalancerIds 和 ForwardLoadBalancers 二者同时最多只能指定一个
         :type LoadBalancerIds: list of str
         :param ProjectId: 项目ID
         :type ProjectId: int
-        :param ForwardLoadBalancers: 应用型负载均衡器列表，目前长度上限为5，LoadBalancerIds 和 ForwardLoadBalancers 二者同时最多只能指定一个
+        :param ForwardLoadBalancers: 应用型负载均衡器列表，目前长度上限为20，LoadBalancerIds 和 ForwardLoadBalancers 二者同时最多只能指定一个
         :type ForwardLoadBalancers: list of ForwardLoadBalancer
         :param SubnetIds: 子网ID列表，VPC场景下必须指定子网。多个子网以填写顺序为优先级，依次进行尝试，直至可以成功创建实例。
         :type SubnetIds: list of str
@@ -547,6 +547,8 @@ class CreateLaunchConfigurationRequest(AbstractModel):
         :type InstanceTags: list of InstanceTag
         :param CamRoleName: CAM角色名称。可通过DescribeRoleList接口返回值中的roleName获取。
         :type CamRoleName: str
+        :param HostNameSettings: 云服务器主机名（HostName）的相关设置。
+        :type HostNameSettings: :class:`tencentcloud.autoscaling.v20180419.models.HostNameSettings`
         """
         self.LaunchConfigurationName = None
         self.ImageId = None
@@ -565,6 +567,7 @@ class CreateLaunchConfigurationRequest(AbstractModel):
         self.InstanceTypesCheckPolicy = None
         self.InstanceTags = None
         self.CamRoleName = None
+        self.HostNameSettings = None
 
 
     def _deserialize(self, params):
@@ -605,6 +608,9 @@ class CreateLaunchConfigurationRequest(AbstractModel):
                 obj._deserialize(item)
                 self.InstanceTags.append(obj)
         self.CamRoleName = params.get("CamRoleName")
+        if params.get("HostNameSettings") is not None:
+            self.HostNameSettings = HostNameSettings()
+            self.HostNameSettings._deserialize(params.get("HostNameSettings"))
 
 
 class CreateLaunchConfigurationResponse(AbstractModel):
@@ -637,15 +643,15 @@ class CreateLifecycleHookRequest(AbstractModel):
         """
         :param AutoScalingGroupId: 伸缩组ID
         :type AutoScalingGroupId: str
-        :param LifecycleHookName: 生命周期挂钩名称。名称仅支持中文、英文、数字、下划线、分隔符"-"、小数点，最大长度不能超128个字节。
+        :param LifecycleHookName: 生命周期挂钩名称。名称仅支持中文、英文、数字、下划线（_）、短横线（-）、小数点（.），最大长度不能超128个字节。
         :type LifecycleHookName: str
-        :param LifecycleTransition: 进行生命周期挂钩的场景，取值范围包括“INSTANCE_LAUNCHING”和“INSTANCE_TERMINATING”
+        :param LifecycleTransition: 进行生命周期挂钩的场景，取值范围包括 INSTANCE_LAUNCHING 和 INSTANCE_TERMINATING
         :type LifecycleTransition: str
-        :param DefaultResult: 定义伸缩组在生命周期挂钩超时的情况下应采取的操作，取值范围是“CONTINUE”或“ABANDON”，默认值为“CONTINUE”
+        :param DefaultResult: 定义伸缩组在生命周期挂钩超时的情况下应采取的操作，取值范围是 CONTINUE 或 ABANDON，默认值为 CONTINUE
         :type DefaultResult: str
         :param HeartbeatTimeout: 生命周期挂钩超时之前可以经过的最长时间（以秒为单位），范围从30到3600秒，默认值为300秒
         :type HeartbeatTimeout: int
-        :param NotificationMetadata: 弹性伸缩向通知目标发送的附加信息，默认值为''。最大长度不能超过1024个字节。
+        :param NotificationMetadata: 弹性伸缩向通知目标发送的附加信息，默认值为空字符串“”。最大长度不能超过1024个字节。
         :type NotificationMetadata: str
         :param NotificationTarget: 通知目标
         :type NotificationTarget: :class:`tencentcloud.autoscaling.v20180419.models.NotificationTarget`
@@ -1361,6 +1367,7 @@ class DescribeAutoScalingGroupsRequest(AbstractModel):
         :param Filters: 过滤条件。
 <li> auto-scaling-group-id - String - 是否必填：否 -（过滤条件）按照伸缩组ID过滤。</li>
 <li> auto-scaling-group-name - String - 是否必填：否 -（过滤条件）按照伸缩组名称过滤。</li>
+<li> vague-auto-scaling-group-name - String - 是否必填：否 -（过滤条件）按照伸缩组名称模糊搜索。</li>
 <li> launch-configuration-id - String - 是否必填：否 -（过滤条件）按照启动配置ID过滤。</li>
 <li> tag-key - String - 是否必填：否 -（过滤条件）按照标签键进行过滤。</li>
 <li> tag-value - String - 是否必填：否 -（过滤条件）按照标签值进行过滤。</li>
@@ -1499,6 +1506,7 @@ class DescribeLaunchConfigurationsRequest(AbstractModel):
         :param Filters: 过滤条件。
 <li> launch-configuration-id - String - 是否必填：否 -（过滤条件）按照启动配置ID过滤。</li>
 <li> launch-configuration-name - String - 是否必填：否 -（过滤条件）按照启动配置名称过滤。</li>
+<li> vague-launch-configuration-name - String - 是否必填：否 -（过滤条件）按照启动配置名称模糊搜索。</li>
 每次请求的`Filters`的上限为10，`Filter.Values`的上限为5。参数不支持同时指定`LaunchConfigurationIds`和`Filters`。
         :type Filters: list of Filter
         :param Limit: 返回数量，默认为20，最大值为100。关于`Limit`的更进一步介绍请参考 API [简介](https://cloud.tencent.com/document/api/213/15688)中的相关小节。
@@ -2135,6 +2143,34 @@ class ForwardLoadBalancer(AbstractModel):
         self.LocationId = params.get("LocationId")
 
 
+class HostNameSettings(AbstractModel):
+    """云服务器主机名（HostName）的相关设置
+
+    """
+
+    def __init__(self):
+        """
+        :param HostName: 云服务器的主机名。
+<br><li> 点号（.）和短横线（-）不能作为 HostName 的首尾字符，不能连续使用。
+<br><li> 不支持 Windows 实例。
+<br><li> 其他类型（Linux 等）实例：字符长度为[2, 40]，允许支持多个点号，点之间为一段，每段允许字母（不限制大小写）、数字和短横线（-）组成。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type HostName: str
+        :param HostNameStyle: 云服务器主机名的风格，取值范围包括 ORIGINAL 和  UNIQUE，默认为 ORIGINAL。
+<br><li> ORIGINAL，AS 直接将入参中所填的 HostName 传递给 CVM，CVM 可能会对 HostName 追加序列号，伸缩组中实例的 HostName 会出现冲突的情况。
+<br><li> UNIQUE，入参所填的 HostName 相当于主机名前缀，AS 和 CVM 会对其进行拓展，伸缩组中实例的 HostName 可以保证唯一。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type HostNameStyle: str
+        """
+        self.HostName = None
+        self.HostNameStyle = None
+
+
+    def _deserialize(self, params):
+        self.HostName = params.get("HostName")
+        self.HostNameStyle = params.get("HostNameStyle")
+
+
 class Instance(AbstractModel):
     """实例信息
 
@@ -2351,6 +2387,8 @@ class LaunchConfiguration(AbstractModel):
         :type CamRoleName: str
         :param LastOperationInstanceTypesCheckPolicy: 上次操作时，InstanceTypesCheckPolicy 取值。
         :type LastOperationInstanceTypesCheckPolicy: str
+        :param HostNameSettings: 云服务器主机名（HostName）的相关设置。
+        :type HostNameSettings: :class:`tencentcloud.autoscaling.v20180419.models.HostNameSettings`
         """
         self.ProjectId = None
         self.LaunchConfigurationId = None
@@ -2375,6 +2413,7 @@ class LaunchConfiguration(AbstractModel):
         self.UpdatedTime = None
         self.CamRoleName = None
         self.LastOperationInstanceTypesCheckPolicy = None
+        self.HostNameSettings = None
 
 
     def _deserialize(self, params):
@@ -2426,6 +2465,9 @@ class LaunchConfiguration(AbstractModel):
         self.UpdatedTime = params.get("UpdatedTime")
         self.CamRoleName = params.get("CamRoleName")
         self.LastOperationInstanceTypesCheckPolicy = params.get("LastOperationInstanceTypesCheckPolicy")
+        if params.get("HostNameSettings") is not None:
+            self.HostNameSettings = HostNameSettings()
+            self.HostNameSettings._deserialize(params.get("HostNameSettings"))
 
 
 class LifecycleHook(AbstractModel):
@@ -2769,9 +2811,9 @@ class ModifyLoadBalancersRequest(AbstractModel):
         """
         :param AutoScalingGroupId: 伸缩组ID
         :type AutoScalingGroupId: str
-        :param LoadBalancerIds: 传统负载均衡器ID列表，目前长度上限为5，LoadBalancerIds 和 ForwardLoadBalancers 二者同时最多只能指定一个
+        :param LoadBalancerIds: 传统负载均衡器ID列表，目前长度上限为20，LoadBalancerIds 和 ForwardLoadBalancers 二者同时最多只能指定一个
         :type LoadBalancerIds: list of str
-        :param ForwardLoadBalancers: 应用型负载均衡器列表，目前长度上限为5，LoadBalancerIds 和 ForwardLoadBalancers 二者同时最多只能指定一个
+        :param ForwardLoadBalancers: 应用型负载均衡器列表，目前长度上限为20，LoadBalancerIds 和 ForwardLoadBalancers 二者同时最多只能指定一个
         :type ForwardLoadBalancers: list of ForwardLoadBalancer
         :param LoadBalancersCheckPolicy: 负载均衡器校验策略，取值包括 ALL 和 DIFF，默认取值为 ALL。
 <br><li> ALL，所有负载均衡器都合法则通过校验，否则校验报错。
@@ -3451,6 +3493,8 @@ class UpgradeLaunchConfigurationRequest(AbstractModel):
         :type InstanceTags: list of InstanceTag
         :param CamRoleName: CAM角色名称。可通过DescribeRoleList接口返回值中的roleName获取。
         :type CamRoleName: str
+        :param HostNameSettings: 云服务器主机名（HostName）的相关设置。
+        :type HostNameSettings: :class:`tencentcloud.autoscaling.v20180419.models.HostNameSettings`
         """
         self.LaunchConfigurationId = None
         self.ImageId = None
@@ -3469,6 +3513,7 @@ class UpgradeLaunchConfigurationRequest(AbstractModel):
         self.UserData = None
         self.InstanceTags = None
         self.CamRoleName = None
+        self.HostNameSettings = None
 
 
     def _deserialize(self, params):
@@ -3509,6 +3554,9 @@ class UpgradeLaunchConfigurationRequest(AbstractModel):
                 obj._deserialize(item)
                 self.InstanceTags.append(obj)
         self.CamRoleName = params.get("CamRoleName")
+        if params.get("HostNameSettings") is not None:
+            self.HostNameSettings = HostNameSettings()
+            self.HostNameSettings._deserialize(params.get("HostNameSettings"))
 
 
 class UpgradeLaunchConfigurationResponse(AbstractModel):

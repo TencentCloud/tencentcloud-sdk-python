@@ -638,6 +638,8 @@ class CreateDBInstanceHourRequest(AbstractModel):
         :type ResourceTags: list of TagInfo
         :param DeployGroupId: 置放群组 ID。
         :type DeployGroupId: str
+        :param ClientToken: 用于保证请求幂等性的字符串。该字符串由客户生成，需保证不同请求之间在当天内唯一，最大值不超过64个ASCII字符。若不指定该参数，则无法保证请求的幂等性。
+        :type ClientToken: str
         """
         self.GoodsNum = None
         self.Memory = None
@@ -663,6 +665,7 @@ class CreateDBInstanceHourRequest(AbstractModel):
         self.InstanceName = None
         self.ResourceTags = None
         self.DeployGroupId = None
+        self.ClientToken = None
 
 
     def _deserialize(self, params):
@@ -702,6 +705,7 @@ class CreateDBInstanceHourRequest(AbstractModel):
                 obj._deserialize(item)
                 self.ResourceTags.append(obj)
         self.DeployGroupId = params.get("DeployGroupId")
+        self.ClientToken = params.get("ClientToken")
 
 
 class CreateDBInstanceHourResponse(AbstractModel):
@@ -786,6 +790,8 @@ class CreateDBInstanceRequest(AbstractModel):
         :type ResourceTags: list of TagInfo
         :param DeployGroupId: 置放群组 ID。
         :type DeployGroupId: str
+        :param ClientToken: 用于保证请求幂等性的字符串。该字符串由客户生成，需保证不同请求之间在当天内唯一，最大值不超过64个ASCII字符。若不指定该参数，则无法保证请求的幂等性。
+        :type ClientToken: str
         """
         self.Memory = None
         self.Volume = None
@@ -812,6 +818,7 @@ class CreateDBInstanceRequest(AbstractModel):
         self.InstanceName = None
         self.ResourceTags = None
         self.DeployGroupId = None
+        self.ClientToken = None
 
 
     def _deserialize(self, params):
@@ -852,6 +859,7 @@ class CreateDBInstanceRequest(AbstractModel):
                 obj._deserialize(item)
                 self.ResourceTags.append(obj)
         self.DeployGroupId = params.get("DeployGroupId")
+        self.ClientToken = params.get("ClientToken")
 
 
 class CreateDBInstanceResponse(AbstractModel):
@@ -3057,11 +3065,31 @@ class DescribeTasksRequest(AbstractModel):
         """
         :param InstanceId: 实例 ID，格式如：cdb-c1nl9rpv，与云数据库控制台页面中显示的实例 ID 相同，可使用 [查询实例列表](https://cloud.tencent.com/document/api/236/15872) 接口获取，其值为输出参数中字段 InstanceId 的值。
         :type InstanceId: str
-        :param AsyncRequestId: 异步任务请求 ID，执行 CDB 相关操作返回的 AsyncRequestId。
+        :param AsyncRequestId: 异步任务请求 ID，执行云数据库相关操作返回的 AsyncRequestId。
         :type AsyncRequestId: str
-        :param TaskTypes: 任务类型，不传值则查询所有任务类型，可能的值：1-数据库回档；2-SQL操作；3-数据导入；5-参数设置；6-初始化；7-重启；8-开启GTID；9-只读实例升级；10-数据库批量回档；11-主实例升级；12-删除库表；13-切换为主实例。
+        :param TaskTypes: 任务类型，不传值则查询所有任务类型，支持的值包括：
+1 - 数据库回档；
+2 - SQL操作；
+3 - 数据导入；
+5 - 参数设置；
+6 - 初始化云数据库实例；
+7 - 重启云数据库实例；
+8 - 开启云数据库实例GTID；
+9 - 只读实例升级；
+10 - 数据库批量回档；
+11 - 主实例升级；
+12 - 删除云数据库库表；
+13 - 灾备实例提升为主。
         :type TaskTypes: list of int
-        :param TaskStatus: 任务状态，不传值则查询所有任务状态，可能的值：-1-未定义；0-初始化; 1-运行中；2-执行成功；3-执行失败；4-已终止；5-已删除；6-已暂停。
+        :param TaskStatus: 任务状态，不传值则查询所有任务状态，支持的值包括：
+-1 - 未定义；
+0 - 初始化；
+1 - 运行中；
+2 - 执行成功；
+3 - 执行失败；
+4 - 已终止；
+5 - 已删除；
+6 - 已暂停。
         :type TaskStatus: list of int
         :param StartTimeBegin: 第一个任务的开始时间，用于范围查询，时间格式如：2017-12-31 10:40:01。
         :type StartTimeBegin: str
@@ -3103,7 +3131,7 @@ class DescribeTasksResponse(AbstractModel):
         :param TotalCount: 符合查询条件的实例总数。
         :type TotalCount: int
         :param Items: 返回的实例任务信息。
-        :type Items: list of str
+        :type Items: list of TaskDetail
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -3114,7 +3142,12 @@ class DescribeTasksResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.TotalCount = params.get("TotalCount")
-        self.Items = params.get("Items")
+        if params.get("Items") is not None:
+            self.Items = []
+            for item in params.get("Items"):
+                obj = TaskDetail()
+                obj._deserialize(item)
+                self.Items.append(obj)
         self.RequestId = params.get("RequestId")
 
 
@@ -3703,7 +3736,7 @@ class InstanceInfo(AbstractModel):
         :type DeadlineTime: str
         :param DeployMode: 可用区部署方式
         :type DeployMode: int
-        :param TaskStatus: 实例任务状态
+        :param TaskStatus: 实例任务状态。0 - 没有任务 ,1 - 升级中,2 - 数据导入中,3 - 开放Slave中,4 - 外网访问开通中,5 - 批量操作执行中,6 - 回档中,7 - 外网访问关闭中,8 - 密码修改中,9 - 实例名修改中,10 - 重启中,12 - 自建迁移中,13 - 删除库表中,14 - 灾备实例创建同步中,15 - 升级待切换,16 - 升级切换中,17 - 升级切换完成
         :type TaskStatus: int
         :param MasterInfo: 主实例详细信息
 注意：此字段可能返回 null，表示取不到有效值。
@@ -5968,6 +6001,80 @@ class TagsInfoOfInstance(AbstractModel):
                 obj = TagInfoUnit()
                 obj._deserialize(item)
                 self.Tags.append(obj)
+
+
+class TaskDetail(AbstractModel):
+    """实例任务详情
+
+    """
+
+    def __init__(self):
+        """
+        :param Code: 错误码。
+        :type Code: int
+        :param Message: 错误信息。
+        :type Message: str
+        :param JobId: 实例任务 ID。
+        :type JobId: int
+        :param Progress: 实例任务进度。
+        :type Progress: int
+        :param TaskStatus: 实例任务状态，可能的值包括：
+"UNDEFINED" - 未定义；
+"INITIAL" - 初始化；
+"RUNNING" - 运行中；
+"SUCCEED" - 执行成功；
+"FAILED" - 执行失败；
+"KILLED" - 已终止；
+"REMOVED" - 已删除；
+"PAUSED" - 已暂停。
+        :type TaskStatus: str
+        :param TaskType: 实例任务类型，可能的值包括：
+"ROLLBACK" - 数据库回档；
+"SQL OPERATION" - SQL操作；
+"IMPORT DATA" - 数据导入；
+"MODIFY PARAM" - 参数设置；
+"INITIAL" - 初始化云数据库实例；
+"REBOOT" - 重启云数据库实例；
+"OPEN GTID" - 开启云数据库实例GTID；
+"UPGRADE RO" - 只读实例升级；
+"BATCH ROLLBACK" - 数据库批量回档；
+"UPGRADE MASTER" - 主实例升级；
+"DROP TABLES" - 删除云数据库库表；
+"SWITCH DR TO MASTER" - 灾备实例提升为主。
+        :type TaskType: str
+        :param StartTime: 实例任务开始时间。
+        :type StartTime: str
+        :param EndTime: 实例任务结束时间。
+        :type EndTime: str
+        :param InstanceIds: 任务关联的实例 ID。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InstanceIds: list of str
+        :param AsyncRequestId: 异步任务的请求 ID。
+        :type AsyncRequestId: str
+        """
+        self.Code = None
+        self.Message = None
+        self.JobId = None
+        self.Progress = None
+        self.TaskStatus = None
+        self.TaskType = None
+        self.StartTime = None
+        self.EndTime = None
+        self.InstanceIds = None
+        self.AsyncRequestId = None
+
+
+    def _deserialize(self, params):
+        self.Code = params.get("Code")
+        self.Message = params.get("Message")
+        self.JobId = params.get("JobId")
+        self.Progress = params.get("Progress")
+        self.TaskStatus = params.get("TaskStatus")
+        self.TaskType = params.get("TaskType")
+        self.StartTime = params.get("StartTime")
+        self.EndTime = params.get("EndTime")
+        self.InstanceIds = params.get("InstanceIds")
+        self.AsyncRequestId = params.get("AsyncRequestId")
 
 
 class UpgradeDBInstanceEngineVersionRequest(AbstractModel):

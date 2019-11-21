@@ -230,12 +230,15 @@ class CreateMountPointRequest(AbstractModel):
         :type VpcId: str
         :param MountPointStatus: 挂载点状态（1：打开；2：关闭）
         :type MountPointStatus: int
+        :param VpcType: VPC网络类型（1：CVM；2：黑石1.0；3：黑石2.0）
+        :type VpcType: int
         """
         self.MountPointName = None
         self.FileSystemId = None
         self.AccessGroupId = None
         self.VpcId = None
         self.MountPointStatus = None
+        self.VpcType = None
 
 
     def _deserialize(self, params):
@@ -244,6 +247,7 @@ class CreateMountPointRequest(AbstractModel):
         self.AccessGroupId = params.get("AccessGroupId")
         self.VpcId = params.get("VpcId")
         self.MountPointStatus = params.get("MountPointStatus")
+        self.VpcType = params.get("VpcType")
 
 
 class CreateMountPointResponse(AbstractModel):
@@ -865,6 +869,7 @@ class ModifyFileSystemRequest(AbstractModel):
         :param Description: 文件系统描述
         :type Description: str
         :param CapacityQuota: 文件系统容量（byte），下限为1M，上限为1P，且必须是1M的整数倍
+注意：修改的文件系统容量不能小于当前使用量
         :type CapacityQuota: int
         """
         self.FileSystemId = None
@@ -964,6 +969,8 @@ class MountPoint(AbstractModel):
         :type Status: int
         :param CreateTime: 创建时间
         :type CreateTime: str
+        :param VpcType: VPC网络类型
+        :type VpcType: int
         """
         self.MountPointId = None
         self.MountPointName = None
@@ -972,6 +979,7 @@ class MountPoint(AbstractModel):
         self.VpcId = None
         self.Status = None
         self.CreateTime = None
+        self.VpcType = None
 
 
     def _deserialize(self, params):
@@ -982,3 +990,4 @@ class MountPoint(AbstractModel):
         self.VpcId = params.get("VpcId")
         self.Status = params.get("Status")
         self.CreateTime = params.get("CreateTime")
+        self.VpcType = params.get("VpcType")

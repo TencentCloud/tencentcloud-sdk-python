@@ -1436,6 +1436,59 @@ class CreatePublicConfigResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class CreateServerlessGroupRequest(AbstractModel):
+    """CreateServerlessGroup请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ApplicationId: 分组所属应用ID
+        :type ApplicationId: str
+        :param GroupName: 分组名称字段，长度1~60，字母或下划线开头，可包含字母数字下划线
+        :type GroupName: str
+        :param PkgId: 程序包Id
+        :type PkgId: str
+        :param VpcConfig: VpcConfig对象
+        :type VpcConfig: :class:`tencentcloud.tsf.v20180326.models.VpcConfig`
+        """
+        self.ApplicationId = None
+        self.GroupName = None
+        self.PkgId = None
+        self.VpcConfig = None
+
+
+    def _deserialize(self, params):
+        self.ApplicationId = params.get("ApplicationId")
+        self.GroupName = params.get("GroupName")
+        self.PkgId = params.get("PkgId")
+        if params.get("VpcConfig") is not None:
+            self.VpcConfig = VpcConfig()
+            self.VpcConfig._deserialize(params.get("VpcConfig"))
+
+
+class CreateServerlessGroupResponse(AbstractModel):
+    """CreateServerlessGroup返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Result: 创建成功的部署组ID，返回null表示失败
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Result: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Result = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Result = params.get("Result")
+        self.RequestId = params.get("RequestId")
+
+
 class DeleteApplicationRequest(AbstractModel):
     """DeleteApplication请求参数结构体
 
@@ -1810,6 +1863,44 @@ class DeletePublicConfigResponse(AbstractModel):
         """
         :param Result: true：删除成功；false：删除失败
 注意：此字段可能返回 null，表示取不到有效值。
+        :type Result: bool
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Result = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Result = params.get("Result")
+        self.RequestId = params.get("RequestId")
+
+
+class DeleteServerlessGroupRequest(AbstractModel):
+    """DeleteServerlessGroup请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param GroupId: groupId，分组唯一标识
+        :type GroupId: str
+        """
+        self.GroupId = None
+
+
+    def _deserialize(self, params):
+        self.GroupId = params.get("GroupId")
+
+
+class DeleteServerlessGroupResponse(AbstractModel):
+    """DeleteServerlessGroup返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Result: 结果true：成功；false：失败。
         :type Result: bool
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -3300,6 +3391,108 @@ class DescribeReleasedConfigResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeServerlessGroupRequest(AbstractModel):
+    """DescribeServerlessGroup请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param GroupId: 部署组ID
+        :type GroupId: str
+        """
+        self.GroupId = None
+
+
+    def _deserialize(self, params):
+        self.GroupId = params.get("GroupId")
+
+
+class DescribeServerlessGroupResponse(AbstractModel):
+    """DescribeServerlessGroup返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Result: 结果
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Result: :class:`tencentcloud.tsf.v20180326.models.ServerlessGroup`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Result = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Result") is not None:
+            self.Result = ServerlessGroup()
+            self.Result._deserialize(params.get("Result"))
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeServerlessGroupsRequest(AbstractModel):
+    """DescribeServerlessGroups请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ApplicationId: 分组所属应用ID
+        :type ApplicationId: str
+        :param SearchWord: 搜索字段，模糊搜索groupName字段
+        :type SearchWord: str
+        :param OrderBy: 排序字段，默认为 createTime字段，支持id， name， createTime
+        :type OrderBy: str
+        :param OrderType: 排序方式，默认为1：倒序排序，0：正序，1：倒序
+        :type OrderType: str
+        :param Offset: 偏移量，取值从0开始
+        :type Offset: int
+        :param Limit: 分页个数，默认为20， 取值应为1~50
+        :type Limit: int
+        """
+        self.ApplicationId = None
+        self.SearchWord = None
+        self.OrderBy = None
+        self.OrderType = None
+        self.Offset = None
+        self.Limit = None
+
+
+    def _deserialize(self, params):
+        self.ApplicationId = params.get("ApplicationId")
+        self.SearchWord = params.get("SearchWord")
+        self.OrderBy = params.get("OrderBy")
+        self.OrderType = params.get("OrderType")
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+
+
+class DescribeServerlessGroupsResponse(AbstractModel):
+    """DescribeServerlessGroups返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Result: 数据列表对象
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Result: :class:`tencentcloud.tsf.v20180326.models.ServerlessGroupPage`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Result = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Result") is not None:
+            self.Result = ServerlessGroupPage()
+            self.Result._deserialize(params.get("Result"))
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeSimpleApplicationsRequest(AbstractModel):
     """DescribeSimpleApplications请求参数结构体
 
@@ -4726,6 +4919,112 @@ class RollbackConfigResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class ServerlessGroup(AbstractModel):
+    """Serverless部署组信息
+
+    """
+
+    def __init__(self):
+        """
+        :param GroupId: 部署组ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type GroupId: str
+        :param GroupName: 分组名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type GroupName: str
+        :param CreateTime: 创建时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CreateTime: str
+        :param Status: 服务状态
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Status: str
+        :param PkgId: 程序包ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PkgId: str
+        :param PkgName: 程序包名
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PkgName: str
+        :param ClusterId: 集群id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ClusterId: str
+        :param ClusterName: 集群名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ClusterName: str
+        :param NamespaceId: 命名空间id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type NamespaceId: str
+        :param NamespaceName: 命名空间名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type NamespaceName: str
+        :param VpcId: vpc ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type VpcId: str
+        :param SubnetId: vpc 子网ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SubnetId: str
+        :param PkgVersion: 程序包版本
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PkgVersion: str
+        """
+        self.GroupId = None
+        self.GroupName = None
+        self.CreateTime = None
+        self.Status = None
+        self.PkgId = None
+        self.PkgName = None
+        self.ClusterId = None
+        self.ClusterName = None
+        self.NamespaceId = None
+        self.NamespaceName = None
+        self.VpcId = None
+        self.SubnetId = None
+        self.PkgVersion = None
+
+
+    def _deserialize(self, params):
+        self.GroupId = params.get("GroupId")
+        self.GroupName = params.get("GroupName")
+        self.CreateTime = params.get("CreateTime")
+        self.Status = params.get("Status")
+        self.PkgId = params.get("PkgId")
+        self.PkgName = params.get("PkgName")
+        self.ClusterId = params.get("ClusterId")
+        self.ClusterName = params.get("ClusterName")
+        self.NamespaceId = params.get("NamespaceId")
+        self.NamespaceName = params.get("NamespaceName")
+        self.VpcId = params.get("VpcId")
+        self.SubnetId = params.get("SubnetId")
+        self.PkgVersion = params.get("PkgVersion")
+
+
+class ServerlessGroupPage(AbstractModel):
+    """ServerlessGroup 翻页对象
+
+    """
+
+    def __init__(self):
+        """
+        :param TotalCount: 总记录数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TotalCount: int
+        :param Content: 列表信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Content: list of ServerlessGroup
+        """
+        self.TotalCount = None
+        self.Content = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("Content") is not None:
+            self.Content = []
+            for item in params.get("Content"):
+                obj = ServerlessGroup()
+                obj._deserialize(item)
+                self.Content.append(obj)
+
+
 class ShrinkGroupRequest(AbstractModel):
     """ShrinkGroup请求参数结构体
 
@@ -5640,3 +5939,24 @@ class VmGroupSimple(AbstractModel):
         self.ApplicationName = params.get("ApplicationName")
         self.NamespaceName = params.get("NamespaceName")
         self.MicroserviceType = params.get("MicroserviceType")
+
+
+class VpcConfig(AbstractModel):
+    """vpc 配置信息
+
+    """
+
+    def __init__(self):
+        """
+        :param VpcId: VpcId
+        :type VpcId: str
+        :param SubnetId: SubnetId 子网ID
+        :type SubnetId: str
+        """
+        self.VpcId = None
+        self.SubnetId = None
+
+
+    def _deserialize(self, params):
+        self.VpcId = params.get("VpcId")
+        self.SubnetId = params.get("SubnetId")

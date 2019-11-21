@@ -305,6 +305,34 @@ class TbaasClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def GetTransactionDetailForUser(self, request):
+        """获取交易详情
+
+        :param request: 调用GetTransactionDetailForUser所需参数的结构体。
+        :type request: :class:`tencentcloud.tbaas.v20180416.models.GetTransactionDetailForUserRequest`
+        :rtype: :class:`tencentcloud.tbaas.v20180416.models.GetTransactionDetailForUserResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("GetTransactionDetailForUser", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.GetTransactionDetailForUserResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def Invoke(self, request):
         """新增交易
 

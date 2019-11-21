@@ -2289,7 +2289,10 @@ class AiReviewTaskPoliticalAsrResult(AbstractModel):
         """
         :param Status: 任务状态，有 PROCESSING，SUCCESS 和 FAIL 三种。
         :type Status: str
-        :param ErrCode: 错误码，0：成功，其他值：失败。
+        :param ErrCode: 错误码，0 表示成功，其他值表示失败：
+<li>40000：输入参数不合法，请检查输入参数；</li>
+<li>60000：源文件错误（如视频数据损坏），请确认源文件是否正常；</li>
+<li>70000：内部服务错误，建议重试。</li>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ErrCode: int
         :param Message: 错误信息。
@@ -2328,7 +2331,10 @@ class AiReviewTaskPoliticalOcrResult(AbstractModel):
         """
         :param Status: 任务状态，有 PROCESSING，SUCCESS 和 FAIL 三种。
         :type Status: str
-        :param ErrCode: 错误码，0：成功，其他值：失败。
+        :param ErrCode: 错误码，0 表示成功，其他值表示失败：
+<li>40000：输入参数不合法，请检查输入参数；</li>
+<li>60000：源文件错误（如视频数据损坏），请确认源文件是否正常；</li>
+<li>70000：内部服务错误，建议重试。</li>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ErrCode: int
         :param Message: 错误信息。
@@ -2368,7 +2374,10 @@ class AiReviewTaskPoliticalResult(AbstractModel):
         """
         :param Status: 任务状态，有 PROCESSING，SUCCESS 和 FAIL 三种。
         :type Status: str
-        :param ErrCode: 错误码，0：成功，其他值：失败。
+        :param ErrCode: 错误码，0 表示成功，其他值表示失败：
+<li>40000：输入参数不合法，请检查输入参数；</li>
+<li>60000：源文件错误（如视频数据损坏），请确认源文件是否正常；</li>
+<li>70000：内部服务错误，建议重试。</li>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ErrCode: int
         :param Message: 错误信息。
@@ -2408,7 +2417,10 @@ class AiReviewTaskPornAsrResult(AbstractModel):
         """
         :param Status: 任务状态，有 PROCESSING，SUCCESS 和 FAIL 三种。
         :type Status: str
-        :param ErrCode: 错误码，0：成功，其他值：失败。
+        :param ErrCode: 错误码，0 表示成功，其他值表示失败：
+<li>40000：输入参数不合法，请检查输入参数；</li>
+<li>60000：源文件错误（如视频数据损坏），请确认源文件是否正常；</li>
+<li>70000：内部服务错误，建议重试。</li>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ErrCode: int
         :param Message: 错误信息。
@@ -2448,7 +2460,10 @@ class AiReviewTaskPornOcrResult(AbstractModel):
         """
         :param Status: 任务状态，有 PROCESSING，SUCCESS 和 FAIL 三种。
         :type Status: str
-        :param ErrCode: 错误码，0：成功，其他值：失败。
+        :param ErrCode: 错误码，0 表示成功，其他值表示失败：
+<li>40000：输入参数不合法，请检查输入参数；</li>
+<li>60000：源文件错误（如视频数据损坏），请确认源文件是否正常；</li>
+<li>70000：内部服务错误，建议重试。</li>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ErrCode: int
         :param Message: 错误信息。
@@ -2488,7 +2503,10 @@ class AiReviewTaskPornResult(AbstractModel):
         """
         :param Status: 任务状态，有 PROCESSING，SUCCESS 和 FAIL 三种。
         :type Status: str
-        :param ErrCode: 错误码，0：成功，其他值：失败。
+        :param ErrCode: 错误码，0 表示成功，其他值表示失败：
+<li>40000：输入参数不合法，请检查输入参数；</li>
+<li>60000：源文件错误（如视频数据损坏），请确认源文件是否正常；</li>
+<li>70000：内部服务错误，建议重试。</li>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ErrCode: int
         :param Message: 错误信息。
@@ -2528,7 +2546,10 @@ class AiReviewTaskTerrorismResult(AbstractModel):
         """
         :param Status: 任务状态，有 PROCESSING，SUCCESS 和 FAIL 三种。
         :type Status: str
-        :param ErrCode: 错误码，0：成功，其他值：失败。
+        :param ErrCode: 错误码，0 表示成功，其他值表示失败：
+<li>40000：输入参数不合法，请检查输入参数；</li>
+<li>60000：源文件错误（如视频数据损坏），请确认源文件是否正常；</li>
+<li>70000：内部服务错误，建议重试。</li>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ErrCode: int
         :param Message: 错误信息。
@@ -2872,10 +2893,25 @@ class AnimatedGraphicsTemplate(AbstractModel):
         :type Name: str
         :param Comment: 转动图模板描述信息。
         :type Comment: str
-        :param Width: 动图宽度（或长边）的最大值。
+        :param Width: 动图宽度（或长边）的最大值，取值范围：0 和 [128, 4096]，单位：px。
+<li>当 Width、Height 均为 0，则分辨率同源；</li>
+<li>当 Width 为 0，Height 非 0，则 Width 按比例缩放；</li>
+<li>当 Width 非 0，Height 为 0，则 Height 按比例缩放；</li>
+<li>当 Width、Height 均非 0，则分辨率按用户指定。</li>
+默认值：0。
         :type Width: int
-        :param Height: 动图高度（或短边）的最大值。
+        :param Height: 动图高度（或短边）的最大值，取值范围：0 和 [128, 4096]，单位：px。
+<li>当 Width、Height 均为 0，则分辨率同源；</li>
+<li>当 Width 为 0，Height 非 0，则 Width 按比例缩放；</li>
+<li>当 Width 非 0，Height 为 0，则 Height 按比例缩放；</li>
+<li>当 Width、Height 均非 0，则分辨率按用户指定。</li>
+默认值：0。
         :type Height: int
+        :param ResolutionAdaptive: 分辨率自适应，可选值：
+<li>open：开启，此时，Width 代表视频的长边，Height 表示视频的短边；</li>
+<li>close：关闭，此时，Width 代表视频的宽度，Height 表示视频的高度。</li>
+默认值：open。
+        :type ResolutionAdaptive: str
         :param Format: 动图格式。
         :type Format: str
         :param Fps: 帧率。
@@ -2893,6 +2929,7 @@ class AnimatedGraphicsTemplate(AbstractModel):
         self.Comment = None
         self.Width = None
         self.Height = None
+        self.ResolutionAdaptive = None
         self.Format = None
         self.Fps = None
         self.Quality = None
@@ -2907,6 +2944,7 @@ class AnimatedGraphicsTemplate(AbstractModel):
         self.Comment = params.get("Comment")
         self.Width = params.get("Width")
         self.Height = params.get("Height")
+        self.ResolutionAdaptive = params.get("ResolutionAdaptive")
         self.Format = params.get("Format")
         self.Fps = params.get("Fps")
         self.Quality = params.get("Quality")
@@ -3578,6 +3616,11 @@ class ComposeMediaOutput(AbstractModel):
         :type FileName: str
         :param Description: 描述信息，最长 128 个字符。
         :type Description: str
+        :param ClassId: 分类ID，用于对媒体进行分类管理，可通过 [创建分类](/document/product/266/7812) 接口，创建分类，获得分类 ID。
+<li>默认值：0，表示其他分类。</li>
+        :type ClassId: int
+        :param ExpireTime: 输出文件的过期时间，超过该时间文件将被删除，默认为永久不过期，格式按照 ISO 8601标准表示，详见 [ISO 日期格式说明](https://cloud.tencent.com/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F)。
+        :type ExpireTime: str
         :param Container: 封装格式，可选值：mp4、mp3。其中，mp3 为纯音频文件。
         :type Container: str
         :param VideoStream: 输出的视频信息。
@@ -3599,6 +3642,8 @@ class ComposeMediaOutput(AbstractModel):
         """
         self.FileName = None
         self.Description = None
+        self.ClassId = None
+        self.ExpireTime = None
         self.Container = None
         self.VideoStream = None
         self.AudioStream = None
@@ -3609,6 +3654,8 @@ class ComposeMediaOutput(AbstractModel):
     def _deserialize(self, params):
         self.FileName = params.get("FileName")
         self.Description = params.get("Description")
+        self.ClassId = params.get("ClassId")
+        self.ExpireTime = params.get("ExpireTime")
         self.Container = params.get("Container")
         if params.get("VideoStream") is not None:
             self.VideoStream = OutputVideoStream()
@@ -3777,16 +3824,29 @@ class ComposeMediaTaskOutput(AbstractModel):
         :type FileId: str
         :param FileUrl: 媒体文件播放地址。
         :type FileUrl: str
+        :param MediaName: 文件名称，最长 64 个字符。
+        :type MediaName: str
+        :param ClassId: 分类ID，用于对媒体进行分类管理，可通过 [创建分类](/document/product/266/7812) 接口，创建分类，获得分类 ID。
+<li>默认值：0，表示其他分类。</li>
+        :type ClassId: int
+        :param ExpireTime: 输出文件的过期时间，超过该时间文件将被删除，默认为永久不过期，格式按照 ISO 8601标准表示，详见 [ISO 日期格式说明](https://cloud.tencent.com/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F)。
+        :type ExpireTime: str
         """
         self.FileType = None
         self.FileId = None
         self.FileUrl = None
+        self.MediaName = None
+        self.ClassId = None
+        self.ExpireTime = None
 
 
     def _deserialize(self, params):
         self.FileType = params.get("FileType")
         self.FileId = params.get("FileId")
         self.FileUrl = params.get("FileUrl")
+        self.MediaName = params.get("MediaName")
+        self.ClassId = params.get("ClassId")
+        self.ExpireTime = params.get("ExpireTime")
 
 
 class ConcatFileInfo2017(AbstractModel):
@@ -5968,16 +6028,27 @@ class DescribeCDNUsageDataRequest(AbstractModel):
         :param EndTime: 结束日期，需大于开始日期，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F)。
         :type EndTime: str
         :param DataType: CDN 统计数据类型，有效值：
-<li>Flux：流量，单位为byte。</li>
-<li>Bandwidth：带宽，单位为bps。</li>
+<li>Flux：流量，单位为 byte。</li>
+<li>Bandwidth：带宽，单位为 bps。</li>
         :type DataType: str
-        :param SubAppId: 点播 [子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
+        :param DataInterval: 用量数据的时间粒度，单位：分钟，取值有：
+<li>5：5 分钟粒度，返回指定查询时间内5分钟粒度的明细数据。</li>
+<li>60：小时粒度，返回指定查询时间内1小时粒度的数据。</li>
+<li>1440：天粒度，返回指定查询时间内1天粒度的数据。</li>
+默认值为1440，返回天粒度的数据。
 当该字段为1时，表示以管理员身份查询所有子应用（含主应用）的用量合计。
+        :type DataInterval: int
+        :param DomainNames: 域名列表。一次最多查询20个域名的用量数据。可以指定多个域名，查询这些域名叠加的用量数据。默认返回所有域名叠加的用量数据。
+        :type DomainNames: list of str
+        :param SubAppId: 点播 [子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
+当该字段为1时，表示以管理员身份查询所有子应用（含主应用）的用量合计，此时时间粒度只支持天粒度。
         :type SubAppId: int
         """
         self.StartTime = None
         self.EndTime = None
         self.DataType = None
+        self.DataInterval = None
+        self.DomainNames = None
         self.SubAppId = None
 
 
@@ -5985,6 +6056,8 @@ class DescribeCDNUsageDataRequest(AbstractModel):
         self.StartTime = params.get("StartTime")
         self.EndTime = params.get("EndTime")
         self.DataType = params.get("DataType")
+        self.DataInterval = params.get("DataInterval")
+        self.DomainNames = params.get("DomainNames")
         self.SubAppId = params.get("SubAppId")
 
 
@@ -5995,16 +6068,20 @@ class DescribeCDNUsageDataResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param Data: CDN 统计数据，每天一条数据。
+        :param DataInterval: 时间粒度，单位：分钟。
+        :type DataInterval: int
+        :param Data: CDN 统计数据。
         :type Data: list of StatDataItem
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
+        self.DataInterval = None
         self.Data = None
         self.RequestId = None
 
 
     def _deserialize(self, params):
+        self.DataInterval = params.get("DataInterval")
         if params.get("Data") is not None:
             self.Data = []
             for item in params.get("Data"):
@@ -7105,17 +7182,26 @@ class EditMediaOutputConfig(AbstractModel):
 
     def __init__(self):
         """
+        :param MediaName: 输出文件名，最长 64 个字符。缺省由系统指定生成文件名。
+        :type MediaName: str
         :param Type: 输出文件格式，可选值：mp4、hls。默认是 mp4。
         :type Type: str
+        :param ClassId: 分类ID，用于对媒体进行分类管理，可通过 [创建分类](/document/product/266/7812) 接口，创建分类，获得分类 ID。
+<li>默认值：0，表示其他分类。</li>
+        :type ClassId: int
         :param ExpireTime: 输出文件的过期时间，超过该时间文件将被删除，默认为永久不过期，格式按照 ISO 8601标准表示，详见 [ISO 日期格式说明](https://cloud.tencent.com/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F)。
         :type ExpireTime: str
         """
+        self.MediaName = None
         self.Type = None
+        self.ClassId = None
         self.ExpireTime = None
 
 
     def _deserialize(self, params):
+        self.MediaName = params.get("MediaName")
         self.Type = params.get("Type")
+        self.ClassId = params.get("ClassId")
         self.ExpireTime = params.get("ExpireTime")
 
 
@@ -7343,22 +7429,38 @@ class EditMediaTaskOutput(AbstractModel):
         :param FileType: 文件类型，例如 mp4、flv 等。
 注意：此字段可能返回 null，表示取不到有效值。
         :type FileType: str
-        :param FileId: 媒体文件 ID。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type FileId: str
         :param FileUrl: 媒体文件播放地址。
 注意：此字段可能返回 null，表示取不到有效值。
         :type FileUrl: str
+        :param FileId: 媒体文件 ID。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FileId: str
+        :param MediaName: 输出文件名，最长 64 个字符。缺省由系统指定生成文件名。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MediaName: str
+        :param ClassId: 分类ID，用于对媒体进行分类管理，可通过 [创建分类](/document/product/266/7812) 接口，创建分类，获得分类 ID。
+<li>默认值：0，表示其他分类。</li>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ClassId: int
+        :param ExpireTime: 输出文件的过期时间，超过该时间文件将被删除，默认为永久不过期，格式按照 ISO 8601标准表示，详见 [ISO 日期格式说明](https://cloud.tencent.com/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F)。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ExpireTime: str
         """
         self.FileType = None
-        self.FileId = None
         self.FileUrl = None
+        self.FileId = None
+        self.MediaName = None
+        self.ClassId = None
+        self.ExpireTime = None
 
 
     def _deserialize(self, params):
         self.FileType = params.get("FileType")
-        self.FileId = params.get("FileId")
         self.FileUrl = params.get("FileUrl")
+        self.FileId = params.get("FileId")
+        self.MediaName = params.get("MediaName")
+        self.ClassId = params.get("ClassId")
+        self.ExpireTime = params.get("ExpireTime")
 
 
 class EmptyTrackItem(AbstractModel):
@@ -7883,6 +7985,11 @@ class ImageSpriteTemplate(AbstractModel):
         :type CreateTime: str
         :param UpdateTime: 模板最后修改时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F)。
         :type UpdateTime: str
+        :param FillType: 填充方式，当视频流配置宽高参数与原始视频的宽高比不一致时，对转码的处理方式，即为“填充”。可选填充方式：
+<li> stretch：拉伸，对每一帧进行拉伸，填满整个画面，可能导致转码后的视频被“压扁“或者“拉长“；</li>
+<li>black：留黑，保持视频宽高比不变，边缘剩余部分使用黑色填充。</li>
+默认值：black 。
+        :type FillType: str
         """
         self.Definition = None
         self.Type = None
@@ -7895,6 +8002,7 @@ class ImageSpriteTemplate(AbstractModel):
         self.ColumnCount = None
         self.CreateTime = None
         self.UpdateTime = None
+        self.FillType = None
 
 
     def _deserialize(self, params):
@@ -7909,6 +8017,7 @@ class ImageSpriteTemplate(AbstractModel):
         self.ColumnCount = params.get("ColumnCount")
         self.CreateTime = params.get("CreateTime")
         self.UpdateTime = params.get("UpdateTime")
+        self.FillType = params.get("FillType")
 
 
 class ImageTransform(AbstractModel):
@@ -12157,6 +12266,8 @@ class ProcessMediaRequest(AbstractModel):
         :type SessionContext: str
         :param SessionId: 用于去重的识别码，如果七天内曾有过相同的识别码的请求，则本次的请求会返回错误。最长 50 个字符，不带或者带空字符串表示不做去重。
         :type SessionId: str
+        :param ExtInfo: 保留字段，特殊用途时使用。
+        :type ExtInfo: str
         :param SubAppId: 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
         :type SubAppId: int
         """
@@ -12169,6 +12280,7 @@ class ProcessMediaRequest(AbstractModel):
         self.TasksNotifyMode = None
         self.SessionContext = None
         self.SessionId = None
+        self.ExtInfo = None
         self.SubAppId = None
 
 
@@ -12190,6 +12302,7 @@ class ProcessMediaRequest(AbstractModel):
         self.TasksNotifyMode = params.get("TasksNotifyMode")
         self.SessionContext = params.get("SessionContext")
         self.SessionId = params.get("SessionId")
+        self.ExtInfo = params.get("ExtInfo")
         self.SubAppId = params.get("SubAppId")
 
 
@@ -12284,6 +12397,8 @@ class PullUploadRequest(AbstractModel):
         :type SessionContext: str
         :param SessionId: 用于去重的识别码，如果七天内曾有过相同的识别码的请求，则本次的请求会返回错误。最长 50 个字符，不带或者带空字符串表示不做去重。
         :type SessionId: str
+        :param ExtInfo: 保留字段，特殊用途时使用。
+        :type ExtInfo: str
         :param SubAppId: 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
         :type SubAppId: int
         """
@@ -12296,6 +12411,7 @@ class PullUploadRequest(AbstractModel):
         self.ClassId = None
         self.SessionContext = None
         self.SessionId = None
+        self.ExtInfo = None
         self.SubAppId = None
 
 
@@ -12309,6 +12425,7 @@ class PullUploadRequest(AbstractModel):
         self.ClassId = params.get("ClassId")
         self.SessionContext = params.get("SessionContext")
         self.SessionId = params.get("SessionId")
+        self.ExtInfo = params.get("ExtInfo")
         self.SubAppId = params.get("SubAppId")
 
 
@@ -12538,10 +12655,25 @@ class SampleSnapshotTemplate(AbstractModel):
         :type Name: str
         :param Comment: 模板描述信息。
         :type Comment: str
-        :param Width: 图片宽度。
+        :param Width: 截图宽度（或长边）的最大值，取值范围：0 和 [128, 4096]，单位：px。
+<li>当 Width、Height 均为 0，则分辨率同源；</li>
+<li>当 Width 为 0，Height 非 0，则 Width 按比例缩放；</li>
+<li>当 Width 非 0，Height 为 0，则 Height 按比例缩放；</li>
+<li>当 Width、Height 均非 0，则分辨率按用户指定。</li>
+默认值：0。
         :type Width: int
-        :param Height: 图片高度。
+        :param Height: 截图高度（或短边）的最大值，取值范围：0 和 [128, 4096]，单位：px。
+<li>当 Width、Height 均为 0，则分辨率同源；</li>
+<li>当 Width 为 0，Height 非 0，则 Width 按比例缩放；</li>
+<li>当 Width 非 0，Height 为 0，则 Height 按比例缩放；</li>
+<li>当 Width、Height 均非 0，则分辨率按用户指定。</li>
+默认值：0。
         :type Height: int
+        :param ResolutionAdaptive: 分辨率自适应，可选值：
+<li>open：开启，此时，Width 代表视频的长边，Height 表示视频的短边；</li>
+<li>close：关闭，此时，Width 代表视频的宽度，Height 表示视频的高度。</li>
+默认值：open。
+        :type ResolutionAdaptive: str
         :param Format: 图片格式。
         :type Format: str
         :param SampleType: 采样截图类型。
@@ -12552,6 +12684,13 @@ class SampleSnapshotTemplate(AbstractModel):
         :type CreateTime: str
         :param UpdateTime: 模板最后修改时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F)。
         :type UpdateTime: str
+        :param FillType: 填充方式，当视频流配置宽高参数与原始视频的宽高比不一致时，对转码的处理方式，即为“填充”。可选填充方式：
+<li> stretch：拉伸，对每一帧进行拉伸，填满整个画面，可能导致转码后的视频被“压扁“或者“拉长“；</li>
+<li>black：留黑，保持视频宽高比不变，边缘剩余部分使用黑色填充。</li>
+<li>black：留白，保持视频宽高比不变，边缘剩余部分使用白色填充。</li>
+<li>black：高斯模糊，保持视频宽高比不变，边缘剩余部分使用高斯模糊。</li>
+默认值：black 。
+        :type FillType: str
         """
         self.Definition = None
         self.Type = None
@@ -12559,11 +12698,13 @@ class SampleSnapshotTemplate(AbstractModel):
         self.Comment = None
         self.Width = None
         self.Height = None
+        self.ResolutionAdaptive = None
         self.Format = None
         self.SampleType = None
         self.SampleInterval = None
         self.CreateTime = None
         self.UpdateTime = None
+        self.FillType = None
 
 
     def _deserialize(self, params):
@@ -12573,11 +12714,13 @@ class SampleSnapshotTemplate(AbstractModel):
         self.Comment = params.get("Comment")
         self.Width = params.get("Width")
         self.Height = params.get("Height")
+        self.ResolutionAdaptive = params.get("ResolutionAdaptive")
         self.Format = params.get("Format")
         self.SampleType = params.get("SampleType")
         self.SampleInterval = params.get("SampleInterval")
         self.CreateTime = params.get("CreateTime")
         self.UpdateTime = params.get("UpdateTime")
+        self.FillType = params.get("FillType")
 
 
 class SearchMediaRequest(AbstractModel):
@@ -12587,25 +12730,25 @@ class SearchMediaRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Text: 搜索文本，模糊匹配媒体文件名称或描述信息，匹配项越多，匹配度越高，排序越优先。长度限制：64 个字符。
+        :param Text: 搜索文本，模糊匹配媒体文件名称或描述信息，匹配项越多，匹配度越高，排序越优先。长度限制：64个字符。
         :type Text: str
         :param Tags: 标签集合，匹配集合中任意元素。
-<li>单个标签长度限制：8 个字符。</li>
+<li>单个标签长度限制：8个字符。</li>
 <li>数组长度限制：10。</li>
         :type Tags: list of str
         :param ClassIds: 分类 ID 集合，匹配集合指定 ID 的分类及其所有子类。数组长度限制：10。
         :type ClassIds: list of int
         :param StartTime: 创建时间的开始时间。
 <li>大于等于开始时间。</li>
-<li>格式按照 ISO 8601 标准表示，详见 [ISO 日期格式说明](https://cloud.tencent.com/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F)。</li>
+<li>格式按照 ISO 8601标准表示，详见 [ISO 日期格式说明](https://cloud.tencent.com/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F)。</li>
         :type StartTime: str
         :param EndTime: 创建时间的结束时间。
 <li>小于结束时间。</li>
-<li>格式按照 ISO 8601 标准表示，详见 [ISO 日期格式说明](https://cloud.tencent.com/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F)。</li>
+<li>格式按照 ISO 8601标准表示，详见 [ISO 日期格式说明](https://cloud.tencent.com/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F)。</li>
         :type EndTime: str
         :param SourceType: 媒体文件来源，来源取值参见 [SourceType](https://cloud.tencent.com/document/product/266/31773#MediaSourceData)。
         :type SourceType: str
-        :param StreamId: 推流[直播码](https://cloud.tencent.com/document/product/267/5959)。
+        :param StreamId: 推流 [直播码](https://cloud.tencent.com/document/product/267/5959)。
         :type StreamId: str
         :param Vid: 直播录制文件的唯一标识。
         :type Vid: str
@@ -12613,11 +12756,11 @@ class SearchMediaRequest(AbstractModel):
 <li>Sort.Field 可选值：CreateTime</li>
 <li>指定 Text 搜索时，将根据匹配度排序，该字段无效</li>
         :type Sort: :class:`tencentcloud.vod.v20180717.models.SortBy`
-        :param Offset: 偏移量。
-<li>默认值：0。</li>
-<li>取值范围：Offset + Limit 不超过 5000。</li>
+        :param Offset: 分页返回的起始偏移量，默认值：0。将返回第 Offset 到第 Offset+Limit-1 条。
+<li>取值范围：Offset + Limit 不超过5000。</li>
         :type Offset: int
-        :param Limit: 返回记录条数，默认值：10。
+        :param Limit: 分页返回的记录条数，默认值：10。将返回第 Offset 到第 Offset+Limit-1 条。
+<li>取值范围：Offset + Limit 不超过5000。</li>
         :type Limit: int
         :param SubAppId: 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
         :type SubAppId: int
@@ -12660,10 +12803,10 @@ class SearchMediaResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param TotalCount: 符合搜索条件的记录总数
-<li>最大值：5000，即，当命中记录数超过 5000，该字段将返回 5000，而非实际命中总数。</li>
+        :param TotalCount: 符合搜索条件的记录总数。
+<li>最大值：5000。当命中记录数超过5000时，该字段将返回 5000，而非实际命中总数。</li>
         :type TotalCount: int
-        :param MediaInfoSet: 媒体文件信息列表，只包含基础信息（BasicInfo）
+        :param MediaInfoSet: 媒体文件信息列表，只包含基础信息（BasicInfo）。
 注意：此字段可能返回 null，表示取不到有效值。
         :type MediaInfoSet: list of MediaInfo
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -12888,16 +13031,38 @@ class SnapshotByTimeOffsetTemplate(AbstractModel):
         :type Name: str
         :param Comment: 模板描述信息。
         :type Comment: str
-        :param Width: 图片宽度。
+        :param Width: 截图宽度（或长边）的最大值，取值范围：0 和 [128, 4096]，单位：px。
+<li>当 Width、Height 均为 0，则分辨率同源；</li>
+<li>当 Width 为 0，Height 非 0，则 Width 按比例缩放；</li>
+<li>当 Width 非 0，Height 为 0，则 Height 按比例缩放；</li>
+<li>当 Width、Height 均非 0，则分辨率按用户指定。</li>
+默认值：0。
         :type Width: int
-        :param Height: 图片高度。
+        :param Height: 截图高度（或短边）的最大值，取值范围：0 和 [128, 4096]，单位：px。
+<li>当 Width、Height 均为 0，则分辨率同源；</li>
+<li>当 Width 为 0，Height 非 0，则 Width 按比例缩放；</li>
+<li>当 Width 非 0，Height 为 0，则 Height 按比例缩放；</li>
+<li>当 Width、Height 均非 0，则分辨率按用户指定。</li>
+默认值：0。
         :type Height: int
+        :param ResolutionAdaptive: 分辨率自适应，可选值：
+<li>open：开启，此时，Width 代表视频的长边，Height 表示视频的短边；</li>
+<li>close：关闭，此时，Width 代表视频的宽度，Height 表示视频的高度。</li>
+默认值：open。
+        :type ResolutionAdaptive: str
         :param Format: 图片格式。
         :type Format: str
         :param CreateTime: 模板创建时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F)。
         :type CreateTime: str
         :param UpdateTime: 模板最后修改时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F)。
         :type UpdateTime: str
+        :param FillType: 填充方式，当视频流配置宽高参数与原始视频的宽高比不一致时，对转码的处理方式，即为“填充”。可选填充方式：
+<li> stretch：拉伸，对每一帧进行拉伸，填满整个画面，可能导致转码后的视频被“压扁“或者“拉长“；</li>
+<li>black：留黑，保持视频宽高比不变，边缘剩余部分使用黑色填充。</li>
+<li>black：留白，保持视频宽高比不变，边缘剩余部分使用白色填充。</li>
+<li>black：高斯模糊，保持视频宽高比不变，边缘剩余部分使用高斯模糊。</li>
+默认值：black 。
+        :type FillType: str
         """
         self.Definition = None
         self.Type = None
@@ -12905,9 +13070,11 @@ class SnapshotByTimeOffsetTemplate(AbstractModel):
         self.Comment = None
         self.Width = None
         self.Height = None
+        self.ResolutionAdaptive = None
         self.Format = None
         self.CreateTime = None
         self.UpdateTime = None
+        self.FillType = None
 
 
     def _deserialize(self, params):
@@ -12917,9 +13084,11 @@ class SnapshotByTimeOffsetTemplate(AbstractModel):
         self.Comment = params.get("Comment")
         self.Width = params.get("Width")
         self.Height = params.get("Height")
+        self.ResolutionAdaptive = params.get("ResolutionAdaptive")
         self.Format = params.get("Format")
         self.CreateTime = params.get("CreateTime")
         self.UpdateTime = params.get("UpdateTime")
+        self.FillType = params.get("FillType")
 
 
 class SortBy(AbstractModel):
@@ -13267,8 +13436,8 @@ class TaskSimpleInfo(AbstractModel):
 <li>Clip：视频剪辑任务；</li>
 <li>ImageSprites：截取雪碧图任务。</li>
         :type TaskType: str
-        :param CreatTime: 任务创建时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F)。
-        :type CreatTime: str
+        :param CreateTime: 任务创建时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F)。
+        :type CreateTime: str
         :param BeginProcessTime: 任务开始执行时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F)。若任务尚未开始，该字段为空。
 注意：此字段可能返回 null，表示取不到有效值。
         :type BeginProcessTime: str
@@ -13278,7 +13447,7 @@ class TaskSimpleInfo(AbstractModel):
         """
         self.TaskId = None
         self.TaskType = None
-        self.CreatTime = None
+        self.CreateTime = None
         self.BeginProcessTime = None
         self.FinishTime = None
 
@@ -13286,7 +13455,7 @@ class TaskSimpleInfo(AbstractModel):
     def _deserialize(self, params):
         self.TaskId = params.get("TaskId")
         self.TaskType = params.get("TaskType")
-        self.CreatTime = params.get("CreatTime")
+        self.CreateTime = params.get("CreateTime")
         self.BeginProcessTime = params.get("BeginProcessTime")
         self.FinishTime = params.get("FinishTime")
 
@@ -14360,16 +14529,30 @@ class WatermarkInput(AbstractModel):
         :param SvgContent: SVG 内容。长度不超过 2000000 个字符。仅当水印类型为 SVG 水印时填写。
 注意：此字段可能返回 null，表示取不到有效值。
         :type SvgContent: str
+        :param StartTimeOffset: 水印的起始时间偏移，单位：秒。不填或填0，表示水印从画面出现时开始显现。
+<li>不填或填0，表示水印从画面开始就出现；</li>
+<li>当数值大于0时（假设为 n），表示水印从画面开始的第 n 秒出现；</li>
+<li>当数值小于0时（假设为 -n），表示水印从离画面结束 n 秒前开始出现。</li>
+        :type StartTimeOffset: float
+        :param EndTimeOffset: 水印的结束时间偏移，单位：秒。
+<li>不填或填0，表示水印持续到画面结束；</li>
+<li>当数值大于0时（假设为 n），表示水印持续到第 n 秒时消失；</li>
+<li>当数值小于0时（假设为 -n），表示水印持续到离画面结束 n 秒前消失。</li>
+        :type EndTimeOffset: float
         """
         self.Definition = None
         self.TextContent = None
         self.SvgContent = None
+        self.StartTimeOffset = None
+        self.EndTimeOffset = None
 
 
     def _deserialize(self, params):
         self.Definition = params.get("Definition")
         self.TextContent = params.get("TextContent")
         self.SvgContent = params.get("SvgContent")
+        self.StartTimeOffset = params.get("StartTimeOffset")
+        self.EndTimeOffset = params.get("EndTimeOffset")
 
 
 class WatermarkTemplate(AbstractModel):

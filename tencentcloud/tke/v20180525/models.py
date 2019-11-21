@@ -166,16 +166,20 @@ class ClusterAdvancedSettings(AbstractModel):
         :type AsEnabled: bool
         :param ContainerRuntime: 集群使用的runtime类型，包括"docker"和"containerd"两种类型，默认为"docker"
         :type ContainerRuntime: str
+        :param NodeNameType: 集群中节点NodeName类型（包括 hostname,lan-ip两种形式，默认为lan-ip）
+        :type NodeNameType: str
         """
         self.IPVS = None
         self.AsEnabled = None
         self.ContainerRuntime = None
+        self.NodeNameType = None
 
 
     def _deserialize(self, params):
         self.IPVS = params.get("IPVS")
         self.AsEnabled = params.get("AsEnabled")
         self.ContainerRuntime = params.get("ContainerRuntime")
+        self.NodeNameType = params.get("NodeNameType")
 
 
 class ClusterBasicSettings(AbstractModel):
@@ -364,6 +368,90 @@ class CreateClusterAsGroupResponse(AbstractModel):
     def _deserialize(self, params):
         self.LaunchConfigurationId = params.get("LaunchConfigurationId")
         self.AutoScalingGroupId = params.get("AutoScalingGroupId")
+        self.RequestId = params.get("RequestId")
+
+
+class CreateClusterEndpointRequest(AbstractModel):
+    """CreateClusterEndpoint请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ClusterId: 集群ID
+        :type ClusterId: str
+        :param SubnetId: 集群端口所在的子网ID  (仅在开启非外网访问时需要填，必须为集群所在VPC内的子网)
+        :type SubnetId: str
+        :param IsExtranet: 是否为外网访问（TRUE 外网访问 FALSE 内网访问，默认值： FALSE）
+        :type IsExtranet: bool
+        """
+        self.ClusterId = None
+        self.SubnetId = None
+        self.IsExtranet = None
+
+
+    def _deserialize(self, params):
+        self.ClusterId = params.get("ClusterId")
+        self.SubnetId = params.get("SubnetId")
+        self.IsExtranet = params.get("IsExtranet")
+
+
+class CreateClusterEndpointResponse(AbstractModel):
+    """CreateClusterEndpoint返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class CreateClusterEndpointVipRequest(AbstractModel):
+    """CreateClusterEndpointVip请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ClusterId: 集群ID
+        :type ClusterId: str
+        :param SecurityPolicies: 安全策略放通单个IP或CIDR(例如: "192.168.1.0/24",默认为拒绝所有)
+        :type SecurityPolicies: list of str
+        """
+        self.ClusterId = None
+        self.SecurityPolicies = None
+
+
+    def _deserialize(self, params):
+        self.ClusterId = params.get("ClusterId")
+        self.SecurityPolicies = params.get("SecurityPolicies")
+
+
+class CreateClusterEndpointVipResponse(AbstractModel):
+    """CreateClusterEndpointVip返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestFlowId: 请求任务的FlowId
+        :type RequestFlowId: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestFlowId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestFlowId = params.get("RequestFlowId")
         self.RequestId = params.get("RequestId")
 
 
@@ -625,6 +713,78 @@ class DeleteClusterAsGroupsResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DeleteClusterEndpointRequest(AbstractModel):
+    """DeleteClusterEndpoint请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ClusterId: 集群ID
+        :type ClusterId: str
+        :param IsExtranet: 是否为外网访问（TRUE 外网访问 FALSE 内网访问，默认值： FALSE）
+        :type IsExtranet: bool
+        """
+        self.ClusterId = None
+        self.IsExtranet = None
+
+
+    def _deserialize(self, params):
+        self.ClusterId = params.get("ClusterId")
+        self.IsExtranet = params.get("IsExtranet")
+
+
+class DeleteClusterEndpointResponse(AbstractModel):
+    """DeleteClusterEndpoint返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class DeleteClusterEndpointVipRequest(AbstractModel):
+    """DeleteClusterEndpointVip请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ClusterId: 集群ID
+        :type ClusterId: str
+        """
+        self.ClusterId = None
+
+
+    def _deserialize(self, params):
+        self.ClusterId = params.get("ClusterId")
+
+
+class DeleteClusterEndpointVipResponse(AbstractModel):
+    """DeleteClusterEndpointVip返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class DeleteClusterInstancesRequest(AbstractModel):
     """DeleteClusterInstances请求参数结构体
 
@@ -782,6 +942,92 @@ class DeleteClusterRouteTableResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeClusterEndpointStatusRequest(AbstractModel):
+    """DescribeClusterEndpointStatus请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ClusterId: 集群ID
+        :type ClusterId: str
+        :param IsExtranet: 是否为外网访问（TRUE 外网访问 FALSE 内网访问，默认值： FALSE）
+        :type IsExtranet: bool
+        """
+        self.ClusterId = None
+        self.IsExtranet = None
+
+
+    def _deserialize(self, params):
+        self.ClusterId = params.get("ClusterId")
+        self.IsExtranet = params.get("IsExtranet")
+
+
+class DescribeClusterEndpointStatusResponse(AbstractModel):
+    """DescribeClusterEndpointStatus返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Status: 查询集群访问端口状态（Created 开启成功，Creating 开启中中，NotFound 未开启）
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Status: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Status = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Status = params.get("Status")
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeClusterEndpointVipStatusRequest(AbstractModel):
+    """DescribeClusterEndpointVipStatus请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ClusterId: 集群ID
+        :type ClusterId: str
+        """
+        self.ClusterId = None
+
+
+    def _deserialize(self, params):
+        self.ClusterId = params.get("ClusterId")
+
+
+class DescribeClusterEndpointVipStatusResponse(AbstractModel):
+    """DescribeClusterEndpointVipStatus返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Status: 端口操作状态 (Creating 创建中  CreateFailed 创建失败 Created 创建完成 Deleting 删除中 DeletedFailed 删除失败 Deleted 已删除 NotFound 未发现操作 )
+        :type Status: str
+        :param ErrorMsg: 操作失败的原因
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ErrorMsg: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Status = None
+        self.ErrorMsg = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Status = params.get("Status")
+        self.ErrorMsg = params.get("ErrorMsg")
         self.RequestId = params.get("RequestId")
 
 
@@ -1238,6 +1484,7 @@ class ExistedInstance(AbstractModel):
         :type PrivateIpAddresses: list of str
         :param PublicIpAddresses: 实例主网卡的公网IP列表。
 注意：此字段可能返回 null，表示取不到有效值。
+注意：此字段可能返回 null，表示取不到有效值。
         :type PublicIpAddresses: list of str
         :param CreatedTime: 创建时间。按照ISO8601标准表示，并且使用UTC时间。格式为：YYYY-MM-DDThh:mm:ssZ。
 注意：此字段可能返回 null，表示取不到有效值。
@@ -1330,14 +1577,17 @@ class ExistedInstancesPara(AbstractModel):
         :type EnhancedService: :class:`tencentcloud.tke.v20180525.models.EnhancedService`
         :param LoginSettings: 节点登录信息（目前仅支持使用Password或者单个KeyIds）
         :type LoginSettings: :class:`tencentcloud.tke.v20180525.models.LoginSettings`
-        :param SecurityGroupIds: 实例所属安全组。该参数可以通过调用 DescribeSecurityGroups 的返回值中的sgId字段来获取。若不指定该参数，则绑定默认安全组。（目前仅支持设置单个sgId）
+        :param SecurityGroupIds: 实例所属安全组。该参数可以通过调用 DescribeSecurityGroups 的返回值中的sgId字段来获取。若不指定该参数，则绑定默认安全组。
         :type SecurityGroupIds: list of str
+        :param HostName: 重装系统时，可以指定修改实例的HostName。
+        :type HostName: str
         """
         self.InstanceIds = None
         self.InstanceAdvancedSettings = None
         self.EnhancedService = None
         self.LoginSettings = None
         self.SecurityGroupIds = None
+        self.HostName = None
 
 
     def _deserialize(self, params):
@@ -1352,6 +1602,7 @@ class ExistedInstancesPara(AbstractModel):
             self.LoginSettings = LoginSettings()
             self.LoginSettings._deserialize(params.get("LoginSettings"))
         self.SecurityGroupIds = params.get("SecurityGroupIds")
+        self.HostName = params.get("HostName")
 
 
 class Filter(AbstractModel):
@@ -1489,6 +1740,44 @@ class LoginSettings(AbstractModel):
         self.Password = params.get("Password")
         self.KeyIds = params.get("KeyIds")
         self.KeepImageLogin = params.get("KeepImageLogin")
+
+
+class ModifyClusterEndpointSPRequest(AbstractModel):
+    """ModifyClusterEndpointSP请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ClusterId: 集群ID
+        :type ClusterId: str
+        :param SecurityPolicies: 安全策略放通单个IP或CIDR(例如: "192.168.1.0/24",默认为拒绝所有)
+        :type SecurityPolicies: list of str
+        """
+        self.ClusterId = None
+        self.SecurityPolicies = None
+
+
+    def _deserialize(self, params):
+        self.ClusterId = params.get("ClusterId")
+        self.SecurityPolicies = params.get("SecurityPolicies")
+
+
+class ModifyClusterEndpointSPResponse(AbstractModel):
+    """ModifyClusterEndpointSP返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
 
 
 class RouteInfo(AbstractModel):

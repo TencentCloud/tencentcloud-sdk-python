@@ -25,6 +25,34 @@ class MpsClient(AbstractClient):
     _endpoint = 'mps.tencentcloudapi.com'
 
 
+    def CreateAIRecognitionTemplate(self, request):
+        """创建用户自定义内容识别模板，数量上限：50。
+
+        :param request: 调用CreateAIRecognitionTemplate所需参数的结构体。
+        :type request: :class:`tencentcloud.mps.v20190612.models.CreateAIRecognitionTemplateRequest`
+        :rtype: :class:`tencentcloud.mps.v20190612.models.CreateAIRecognitionTemplateResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("CreateAIRecognitionTemplate", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateAIRecognitionTemplateResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def CreateAnimatedGraphicsTemplate(self, request):
         """创建用户自定义转动图模板，数量上限：16。
 
@@ -53,6 +81,34 @@ class MpsClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def CreateContentReviewTemplate(self, request):
+        """创建用户自定义内容审核模板，数量上限：50。
+
+        :param request: 调用CreateContentReviewTemplate所需参数的结构体。
+        :type request: :class:`tencentcloud.mps.v20190612.models.CreateContentReviewTemplateRequest`
+        :rtype: :class:`tencentcloud.mps.v20190612.models.CreateContentReviewTemplateResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("CreateContentReviewTemplate", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateContentReviewTemplateResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def CreateImageSpriteTemplate(self, request):
         """创建用户自定义雪碧图模板，数量上限：16。
 
@@ -67,6 +123,34 @@ class MpsClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateImageSpriteTemplateResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def CreatePersonSample(self, request):
+        """该接口用于创建人物样本，用于通过人脸识别等技术，进行内容识别、内容审核等视频处理。
+
+        :param request: 调用CreatePersonSample所需参数的结构体。
+        :type request: :class:`tencentcloud.mps.v20190612.models.CreatePersonSampleRequest`
+        :rtype: :class:`tencentcloud.mps.v20190612.models.CreatePersonSampleResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("CreatePersonSample", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreatePersonSampleResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -193,6 +277,34 @@ class MpsClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def CreateWordSamples(self, request):
+        """该接口用于批量创建关键词样本，样本用于通过OCR、ASR技术，进行内容审核、内容识别等视频处理。
+
+        :param request: 调用CreateWordSamples所需参数的结构体。
+        :type request: :class:`tencentcloud.mps.v20190612.models.CreateWordSamplesRequest`
+        :rtype: :class:`tencentcloud.mps.v20190612.models.CreateWordSamplesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("CreateWordSamples", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateWordSamplesResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def CreateWorkflow(self, request):
         """对 COS 中指定 Bucket 的目录下上传的媒体文件，设置处理规则，包括：
         1. 视频转码（带水印）；
@@ -200,7 +312,9 @@ class MpsClient(AbstractClient):
         3. 对视频按指定时间点截图；
         4. 对视频采样截图；
         5. 对视频截图雪碧图；
-        6. 对视频转自适应码流。
+        6. 对视频转自适应码流；
+        7. 智能内容审核（鉴黄、鉴恐、鉴政）；
+        8. 智能内容识别（人脸、文本全文、文本关键词、语音全文、语音关键词）。
 
         注意：创建工作流成功后是禁用状态，需要手动启用。
 
@@ -215,6 +329,34 @@ class MpsClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateWorkflowResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DeleteAIRecognitionTemplate(self, request):
+        """删除用户自定义内容识别模板。
+
+        :param request: 调用DeleteAIRecognitionTemplate所需参数的结构体。
+        :type request: :class:`tencentcloud.mps.v20190612.models.DeleteAIRecognitionTemplateRequest`
+        :rtype: :class:`tencentcloud.mps.v20190612.models.DeleteAIRecognitionTemplateResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DeleteAIRecognitionTemplate", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DeleteAIRecognitionTemplateResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -257,6 +399,34 @@ class MpsClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DeleteContentReviewTemplate(self, request):
+        """删除用户自定义内容审核模板。
+
+        :param request: 调用DeleteContentReviewTemplate所需参数的结构体。
+        :type request: :class:`tencentcloud.mps.v20190612.models.DeleteContentReviewTemplateRequest`
+        :rtype: :class:`tencentcloud.mps.v20190612.models.DeleteContentReviewTemplateResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DeleteContentReviewTemplate", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DeleteContentReviewTemplateResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DeleteImageSpriteTemplate(self, request):
         """删除雪碧图模板。
 
@@ -271,6 +441,34 @@ class MpsClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteImageSpriteTemplateResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DeletePersonSample(self, request):
+        """该接口用于根据人物 ID，删除人物样本。
+
+        :param request: 调用DeletePersonSample所需参数的结构体。
+        :type request: :class:`tencentcloud.mps.v20190612.models.DeletePersonSampleRequest`
+        :rtype: :class:`tencentcloud.mps.v20190612.models.DeletePersonSampleResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DeletePersonSample", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DeletePersonSampleResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -397,6 +595,34 @@ class MpsClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DeleteWordSamples(self, request):
+        """该接口用于批量删除关键词样本。
+
+        :param request: 调用DeleteWordSamples所需参数的结构体。
+        :type request: :class:`tencentcloud.mps.v20190612.models.DeleteWordSamplesRequest`
+        :rtype: :class:`tencentcloud.mps.v20190612.models.DeleteWordSamplesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DeleteWordSamples", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DeleteWordSamplesResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DeleteWorkflow(self, request):
         """删除工作流。对于已启用的工作流，需要禁用后才能删除。
 
@@ -411,6 +637,34 @@ class MpsClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteWorkflowResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeAIRecognitionTemplates(self, request):
+        """根据内容识别模板唯一标识，获取内容识别模板详情列表。返回结果包含符合条件的所有用户自定义内容识别模板及系统预置视频内容识别模板
+
+        :param request: 调用DescribeAIRecognitionTemplates所需参数的结构体。
+        :type request: :class:`tencentcloud.mps.v20190612.models.DescribeAIRecognitionTemplatesRequest`
+        :rtype: :class:`tencentcloud.mps.v20190612.models.DescribeAIRecognitionTemplatesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeAIRecognitionTemplates", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeAIRecognitionTemplatesResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -453,6 +707,34 @@ class MpsClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeContentReviewTemplates(self, request):
+        """根据内容审核模板唯一标识，获取内容审核模板详情列表。返回结果包含符合条件的所有用户自定义模板及系统预置内容审核模板。
+
+        :param request: 调用DescribeContentReviewTemplates所需参数的结构体。
+        :type request: :class:`tencentcloud.mps.v20190612.models.DescribeContentReviewTemplatesRequest`
+        :rtype: :class:`tencentcloud.mps.v20190612.models.DescribeContentReviewTemplatesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeContentReviewTemplates", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeContentReviewTemplatesResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeImageSpriteTemplates(self, request):
         """查询雪碧图模板，支持根据条件，分页查询。
 
@@ -467,6 +749,34 @@ class MpsClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeImageSpriteTemplatesResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribePersonSamples(self, request):
+        """该接口用于查询人物样本信息，支持根据人物 ID、名称、标签，分页查询。
+
+        :param request: 调用DescribePersonSamples所需参数的结构体。
+        :type request: :class:`tencentcloud.mps.v20190612.models.DescribePersonSamplesRequest`
+        :rtype: :class:`tencentcloud.mps.v20190612.models.DescribePersonSamplesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribePersonSamples", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribePersonSamplesResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -651,6 +961,34 @@ class MpsClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeWordSamples(self, request):
+        """该接口用于根据应用场景、关键词、标签，分页查询关键词样本信息。
+
+        :param request: 调用DescribeWordSamples所需参数的结构体。
+        :type request: :class:`tencentcloud.mps.v20190612.models.DescribeWordSamplesRequest`
+        :rtype: :class:`tencentcloud.mps.v20190612.models.DescribeWordSamplesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeWordSamples", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeWordSamplesResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeWorkflows(self, request):
         """根据工作流 ID，获取工作流详情列表。
 
@@ -735,6 +1073,34 @@ class MpsClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def ModifyAIRecognitionTemplate(self, request):
+        """修改用户自定义内容识别模板。
+
+        :param request: 调用ModifyAIRecognitionTemplate所需参数的结构体。
+        :type request: :class:`tencentcloud.mps.v20190612.models.ModifyAIRecognitionTemplateRequest`
+        :rtype: :class:`tencentcloud.mps.v20190612.models.ModifyAIRecognitionTemplateResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ModifyAIRecognitionTemplate", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ModifyAIRecognitionTemplateResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def ModifyAnimatedGraphicsTemplate(self, request):
         """修改用户自定义转动图模板。
 
@@ -763,6 +1129,34 @@ class MpsClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def ModifyContentReviewTemplate(self, request):
+        """修改用户自定义内容审核模板。
+
+        :param request: 调用ModifyContentReviewTemplate所需参数的结构体。
+        :type request: :class:`tencentcloud.mps.v20190612.models.ModifyContentReviewTemplateRequest`
+        :rtype: :class:`tencentcloud.mps.v20190612.models.ModifyContentReviewTemplateResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ModifyContentReviewTemplate", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ModifyContentReviewTemplateResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def ModifyImageSpriteTemplate(self, request):
         """修改用户自定义雪碧图模板。
 
@@ -777,6 +1171,34 @@ class MpsClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyImageSpriteTemplateResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ModifyPersonSample(self, request):
+        """该接口用于根据人物 ID，修改人物样本信息，包括名称、描述的修改，以及人脸、标签的添加、删除、重置操作。人脸删除操作需保证至少剩余 1 张图片，否则，请使用重置操作。
+
+        :param request: 调用ModifyPersonSample所需参数的结构体。
+        :type request: :class:`tencentcloud.mps.v20190612.models.ModifyPersonSampleRequest`
+        :rtype: :class:`tencentcloud.mps.v20190612.models.ModifyPersonSampleResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ModifyPersonSample", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ModifyPersonSampleResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -903,6 +1325,34 @@ class MpsClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def ModifyWordSample(self, request):
+        """该接口用于修改关键词的应用场景、标签，关键词本身不可修改，如需修改，可删除重建。
+
+        :param request: 调用ModifyWordSample所需参数的结构体。
+        :type request: :class:`tencentcloud.mps.v20190612.models.ModifyWordSampleRequest`
+        :rtype: :class:`tencentcloud.mps.v20190612.models.ModifyWordSampleResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ModifyWordSample", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ModifyWordSampleResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def ParseLiveStreamProcessNotification(self, request):
         """从 CMQ 获取到消息后，从消息的 msgBody 字段中解析出 MPS 直播流处理事件通知的内容。
         该接口不用于发起网络调用，而是用来帮助生成各个语言平台的 SDK，您可以参考 SDK 的中解析函数的实现事件通知的解析。
@@ -961,39 +1411,6 @@ class MpsClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def ProcessLiveMedia(self, request):
-        """对直播流媒体发起处理任务，功能包括：
-
-        1. 智能内容识别（人脸、文本全文、文本关键词、语音全文、语音关键词、物体）。
-        2. 智能内容分析（精彩集锦）。
-
-        直播流处理事件通知实时写入用户指定的消息队列 CMQ 中，用户需要从消息队列 CMQ 中获取事件通知结果，同时处理过程中存在输出文件的，会写入用户指定的输出文件的目标存储中。
-
-        :param request: 调用ProcessLiveMedia所需参数的结构体。
-        :type request: :class:`tencentcloud.mps.v20190612.models.ProcessLiveMediaRequest`
-        :rtype: :class:`tencentcloud.mps.v20190612.models.ProcessLiveMediaResponse`
-
-        """
-        try:
-            params = request._serialize()
-            body = self.call("ProcessLiveMedia", params)
-            response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.ProcessLiveMediaResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(e.message, e.message)
-
-
     def ProcessLiveStream(self, request):
         """对直播流媒体发起处理任务，功能包括：
 
@@ -1033,7 +1450,9 @@ class MpsClient(AbstractClient):
         3. 对视频按指定时间点截图；
         4. 对视频采样截图；
         5. 对视频截图雪碧图；
-        6. 对视频转自适应码流。
+        6. 对视频转自适应码流；
+        7. 智能内容审核（鉴黄、鉴恐、鉴政）；
+        8. 智能内容识别（人脸、文本全文、文本关键词、语音全文、语音关键词）。
 
         :param request: 调用ProcessMedia所需参数的结构体。
         :type request: :class:`tencentcloud.mps.v20190612.models.ProcessMediaRequest`

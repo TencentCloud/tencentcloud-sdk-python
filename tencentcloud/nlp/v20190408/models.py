@@ -84,6 +84,56 @@ class CCIToken(AbstractModel):
         self.Word = params.get("Word")
 
 
+class ChatBotRequest(AbstractModel):
+    """ChatBot请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Query: 用户请求的query
+        :type Query: str
+        :param Flag: 0: 通用闲聊, 1:儿童闲聊, 默认是通用闲聊
+        :type Flag: int
+        :param OpenId: 服务的id,  主要用于儿童闲聊接口，比如手Q的openid
+        :type OpenId: str
+        """
+        self.Query = None
+        self.Flag = None
+        self.OpenId = None
+
+
+    def _deserialize(self, params):
+        self.Query = params.get("Query")
+        self.Flag = params.get("Flag")
+        self.OpenId = params.get("OpenId")
+
+
+class ChatBotResponse(AbstractModel):
+    """ChatBot返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Confidence: 对于当前输出回复的自信度
+        :type Confidence: float
+        :param Reply: 闲聊回复
+        :type Reply: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Confidence = None
+        self.Reply = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Confidence = params.get("Confidence")
+        self.Reply = params.get("Reply")
+        self.RequestId = params.get("RequestId")
+
+
 class ClassificationResult(AbstractModel):
     """文本分类结果
 
@@ -229,6 +279,134 @@ class DependencyParsingResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeEntityRequest(AbstractModel):
+    """DescribeEntity请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param EntityName: 实体名称
+        :type EntityName: str
+        """
+        self.EntityName = None
+
+
+    def _deserialize(self, params):
+        self.EntityName = params.get("EntityName")
+
+
+class DescribeEntityResponse(AbstractModel):
+    """DescribeEntity返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Content: 返回查询实体相关信息
+        :type Content: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Content = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Content = params.get("Content")
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeRelationRequest(AbstractModel):
+    """DescribeRelation请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param LeftEntityName: 输入第一个实体
+        :type LeftEntityName: str
+        :param RightEntityName: 输入第二个实体
+        :type RightEntityName: str
+        """
+        self.LeftEntityName = None
+        self.RightEntityName = None
+
+
+    def _deserialize(self, params):
+        self.LeftEntityName = params.get("LeftEntityName")
+        self.RightEntityName = params.get("RightEntityName")
+
+
+class DescribeRelationResponse(AbstractModel):
+    """DescribeRelation返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Content: 返回查询实体间的关系
+        :type Content: list of EntityRelationContent
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Content = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Content") is not None:
+            self.Content = []
+            for item in params.get("Content"):
+                obj = EntityRelationContent()
+                obj._deserialize(item)
+                self.Content.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeTripleRequest(AbstractModel):
+    """DescribeTriple请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param TripleCondition: 三元组查询条件
+        :type TripleCondition: str
+        """
+        self.TripleCondition = None
+
+
+    def _deserialize(self, params):
+        self.TripleCondition = params.get("TripleCondition")
+
+
+class DescribeTripleResponse(AbstractModel):
+    """DescribeTriple返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Content: 返回三元组信息
+        :type Content: list of TripleContent
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Content = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Content") is not None:
+            self.Content = []
+            for item in params.get("Content"):
+                obj = TripleContent()
+                obj._deserialize(item)
+                self.Content.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class DpToken(AbstractModel):
     """句法依存分析结果，包括基础词，基础词的序号，当前词父节点的序号，句法依存关系的类型
 
@@ -258,6 +436,91 @@ class DpToken(AbstractModel):
         self.Word = params.get("Word")
 
 
+class EntityRelationContent(AbstractModel):
+    """返回的实体关系查询结果详细内容
+
+    """
+
+    def __init__(self):
+        """
+        :param Object: 实体关系查询返回关系的object
+        :type Object: list of EntityRelationObject
+        :param Subject: 实体关系查询返回关系的subject
+        :type Subject: list of EntityRelationSubject
+        :param Relation: 实体关系查询返回的关系名称
+        :type Relation: str
+        """
+        self.Object = None
+        self.Subject = None
+        self.Relation = None
+
+
+    def _deserialize(self, params):
+        if params.get("Object") is not None:
+            self.Object = []
+            for item in params.get("Object"):
+                obj = EntityRelationObject()
+                obj._deserialize(item)
+                self.Object.append(obj)
+        if params.get("Subject") is not None:
+            self.Subject = []
+            for item in params.get("Subject"):
+                obj = EntityRelationSubject()
+                obj._deserialize(item)
+                self.Subject.append(obj)
+        self.Relation = params.get("Relation")
+
+
+class EntityRelationObject(AbstractModel):
+    """实体关系查询返回的Object类型
+
+    """
+
+    def __init__(self):
+        """
+        :param Id: object对应id
+        :type Id: list of str
+        :param Name: object对应name
+        :type Name: list of str
+        :param Popular: object对应popular值
+        :type Popular: list of int
+        """
+        self.Id = None
+        self.Name = None
+        self.Popular = None
+
+
+    def _deserialize(self, params):
+        self.Id = params.get("Id")
+        self.Name = params.get("Name")
+        self.Popular = params.get("Popular")
+
+
+class EntityRelationSubject(AbstractModel):
+    """实体关系查询返回Subject
+
+    """
+
+    def __init__(self):
+        """
+        :param Id: Subject对应id
+        :type Id: list of str
+        :param Name: Subject对应name
+        :type Name: list of str
+        :param Popular: Subject对应popular
+        :type Popular: list of int
+        """
+        self.Id = None
+        self.Name = None
+        self.Popular = None
+
+
+    def _deserialize(self, params):
+        self.Id = params.get("Id")
+        self.Name = params.get("Name")
+        self.Popular = params.get("Popular")
+
+
 class EvilToken(AbstractModel):
     """文本审核结果
 
@@ -281,7 +544,8 @@ class EvilToken(AbstractModel):
 5、广告/灌水；
 6、迷信/邪教；
 7、其他违法（如跨站追杀/恶意竞争等）；
-8、综合
+8、综合；
+9、联系方式/链接
         :type EvilType: int
         """
         self.EvilFlag = None
@@ -372,9 +636,9 @@ class LexicalAnalysisRequest(AbstractModel):
         """
         :param Text: 待分析的文本（仅支持UTF-8格式，不超过500字）
         :type Text: str
-        :param Flag: 词法分析模式（默认取1值）：
-1、高精度（具备混合粒度分词能力）；
-2、高性能；
+        :param Flag: 词法分析模式（默认取2值）：
+1、高精度（混合粒度分词能力）；
+2、高性能（单粒度分词能力）；
         :type Flag: int
         """
         self.Text = None
@@ -614,10 +878,10 @@ class SentimentAnalysisRequest(AbstractModel):
         :param Text: 待分析的文本（仅支持UTF-8格式，不超过200字）
         :type Text: str
         :param Flag: 文本所属类型（默认取4值）：
-1、电商
-2、APP
-3、美食
-4、酒店和其他
+1、商品评论类
+2、社交类
+3、美食酒店类
+4、通用领域类
         :type Flag: int
         """
         self.Text = None
@@ -729,7 +993,26 @@ class TextApprovalResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param EvilTokens: 文本审核输出结果
+        :param EvilTokens: 文本审核输出结果列表，列表每个元素包含以下信息：
+
+EvilFlag（文本恶意等级）：
+0、正常；
+1、恶意；
+2、可疑送审
+
+EvilType（文本恶意类型）：
+0、正常；
+1、政治；
+2、色情；
+3、辱骂/低俗；
+4、暴恐/毒品；
+5、广告/灌水；
+6、迷信/邪教；
+7、其他违法（如跨站追杀/恶意竞争等）；
+8、综合；
+9、联系方式/链接
+
+EvilKeywords（恶意关键词组）
         :type EvilTokens: list of EvilToken
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -755,7 +1038,7 @@ class TextClassificationRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Text: 待分类的文本（仅支持UTF-8格式，不超过2000字）
+        :param Text: 待分类的文本（仅支持UTF-8格式，不超过10000字）
         :type Text: str
         :param Flag: 领域分类体系（默认取1值）：
 1、通用领域
@@ -842,6 +1125,35 @@ class TextCorrectionResponse(AbstractModel):
                 self.CCITokens.append(obj)
         self.ResultText = params.get("ResultText")
         self.RequestId = params.get("RequestId")
+
+
+class TripleContent(AbstractModel):
+    """三元组查询返回的元记录
+
+    """
+
+    def __init__(self):
+        """
+        :param Id: 实体id
+        :type Id: str
+        :param Name: 实体名称
+        :type Name: str
+        :param Order: 实体order
+        :type Order: int
+        :param Popular: 实体流行度
+        :type Popular: int
+        """
+        self.Id = None
+        self.Name = None
+        self.Order = None
+        self.Popular = None
+
+
+    def _deserialize(self, params):
+        self.Id = params.get("Id")
+        self.Name = params.get("Name")
+        self.Order = params.get("Order")
+        self.Popular = params.get("Popular")
 
 
 class WordEmbeddingRequest(AbstractModel):

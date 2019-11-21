@@ -3123,11 +3123,14 @@ class LocalDiskType(AbstractModel):
         :type MinSize: int
         :param MaxSize: 本地磁盘最大值。
         :type MaxSize: int
+        :param Required: 购买时本地盘是否为必选。取值范围：<br><li>REQUIRED：表示必选<br><li>OPTIONAL：表示可选。
+        :type Required: str
         """
         self.Type = None
         self.PartitionType = None
         self.MinSize = None
         self.MaxSize = None
+        self.Required = None
 
 
     def _deserialize(self, params):
@@ -3135,6 +3138,7 @@ class LocalDiskType(AbstractModel):
         self.PartitionType = params.get("PartitionType")
         self.MinSize = params.get("MinSize")
         self.MaxSize = params.get("MaxSize")
+        self.Required = params.get("Required")
 
 
 class LoginSettings(AbstractModel):

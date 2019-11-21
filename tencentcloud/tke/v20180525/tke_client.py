@@ -109,6 +109,62 @@ class TkeClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def CreateClusterEndpoint(self, request):
+        """创建集群访问端口(独立集群开启内网/外网访问，托管集群支持开启内网访问)
+
+        :param request: 调用CreateClusterEndpoint所需参数的结构体。
+        :type request: :class:`tencentcloud.tke.v20180525.models.CreateClusterEndpointRequest`
+        :rtype: :class:`tencentcloud.tke.v20180525.models.CreateClusterEndpointResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("CreateClusterEndpoint", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateClusterEndpointResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def CreateClusterEndpointVip(self, request):
+        """创建托管集群外网访问端口（老的方式，仅支持托管集群外网端口）
+
+        :param request: 调用CreateClusterEndpointVip所需参数的结构体。
+        :type request: :class:`tencentcloud.tke.v20180525.models.CreateClusterEndpointVipRequest`
+        :rtype: :class:`tencentcloud.tke.v20180525.models.CreateClusterEndpointVipResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("CreateClusterEndpointVip", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateClusterEndpointVipResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def CreateClusterInstances(self, request):
         """扩展(新建)集群节点
 
@@ -249,6 +305,62 @@ class TkeClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DeleteClusterEndpoint(self, request):
+        """删除集群访问端口(独立集群开启内网/外网访问，托管集群支持开启内网访问)
+
+        :param request: 调用DeleteClusterEndpoint所需参数的结构体。
+        :type request: :class:`tencentcloud.tke.v20180525.models.DeleteClusterEndpointRequest`
+        :rtype: :class:`tencentcloud.tke.v20180525.models.DeleteClusterEndpointResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DeleteClusterEndpoint", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DeleteClusterEndpointResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DeleteClusterEndpointVip(self, request):
+        """删除托管集群外网访问端口（老的方式，仅支持托管集群外网端口）
+
+        :param request: 调用DeleteClusterEndpointVip所需参数的结构体。
+        :type request: :class:`tencentcloud.tke.v20180525.models.DeleteClusterEndpointVipRequest`
+        :rtype: :class:`tencentcloud.tke.v20180525.models.DeleteClusterEndpointVipResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DeleteClusterEndpointVip", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DeleteClusterEndpointVipResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DeleteClusterInstances(self, request):
         """删除集群中的实例
 
@@ -319,6 +431,62 @@ class TkeClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteClusterRouteTableResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeClusterEndpointStatus(self, request):
+        """查询集群访问端口状态(独立集群开启内网/外网访问，托管集群支持开启内网访问)
+
+        :param request: 调用DescribeClusterEndpointStatus所需参数的结构体。
+        :type request: :class:`tencentcloud.tke.v20180525.models.DescribeClusterEndpointStatusRequest`
+        :rtype: :class:`tencentcloud.tke.v20180525.models.DescribeClusterEndpointStatusResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeClusterEndpointStatus", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeClusterEndpointStatusResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeClusterEndpointVipStatus(self, request):
+        """查询集群开启端口流程状态(仅支持托管集群外网端口)
+
+        :param request: 调用DescribeClusterEndpointVipStatus所需参数的结构体。
+        :type request: :class:`tencentcloud.tke.v20180525.models.DescribeClusterEndpointVipStatusRequest`
+        :rtype: :class:`tencentcloud.tke.v20180525.models.DescribeClusterEndpointVipStatusResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeClusterEndpointVipStatus", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeClusterEndpointVipStatusResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -515,6 +683,34 @@ class TkeClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeRouteTableConflictsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ModifyClusterEndpointSP(self, request):
+        """修改托管集群外网端口的安全策略（老的方式，仅支持托管集群外网端口）
+
+        :param request: 调用ModifyClusterEndpointSP所需参数的结构体。
+        :type request: :class:`tencentcloud.tke.v20180525.models.ModifyClusterEndpointSPRequest`
+        :rtype: :class:`tencentcloud.tke.v20180525.models.ModifyClusterEndpointSPResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ModifyClusterEndpointSP", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ModifyClusterEndpointSPResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
