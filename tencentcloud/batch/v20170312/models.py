@@ -1877,33 +1877,78 @@ class EnvDataCpm(AbstractModel):
 
     def __init__(self):
         """
-        :param Zones: 黑石可用区列表。可通过黑石[DescribeRegions](https://cloud.tencent.com/document/api/386/33564)接口查询。目前仅支持一个可用区。
+        :param Zones: 黑石可用区名称列表。如ap-guangzhou-bls-1, 可通过黑石接口[DescribeRegions]( https://cloud.tencent.com/document/api/386/33564)接口获取。不是Batch可用区名称。目前仅支持一个可用区名称。
         :type Zones: list of str
-        :param ComputeTypes: 黑石计算单元类型列表。如v3.c2.medium，更详细的ComputeType参考[黑石竞价实例产品文档](https://cloud.tencent.com/document/product/386/30256)。目前仅支持一个计算单元类型。
-        :type ComputeTypes: list of str
-        :param OsTypeId: 黑石操作系统类型ID。
+        :param InstanceTypes: 购买的机型ID。通过黑石接口[DescribeDeviceClass]( https://cloud.tencent.com/document/api/386/32911)查询设备型号，获取机型信息。
+        :type InstanceTypes: list of str
+        :param TimeUnit: 购买时长单位，取值：m(月)。
+        :type TimeUnit: str
+        :param TimeSpan: 购买时长。
+        :type TimeSpan: int
+        :param RaidId: RAID类型ID。通过黑石接口[DescribeDeviceClassPartition]( https://cloud.tencent.com/document/api/386/32910)查询机型RAID方式以及系统盘大小，获取RAID信息。
+        :type RaidId: int
+        :param OsTypeId: 部署服务器的操作系统ID。通过黑石接口[DescribeOsInfo]( https://cloud.tencent.com/document/product/386/32902)查询操作系统信息。
         :type OsTypeId: int
         :param VirtualPrivateClouds: 黑石VPC列表，目前仅支持一个VPC。
         :type VirtualPrivateClouds: list of CpmVirtualPrivateCloud
-        :param DeployType: DeployType参数值为fast时，将选取黑石预部署机器发货，发货快。如果无此参数，则选取黑石常规机器发货。
-        :type DeployType: str
-        :param SpotStrategy: 出价策略。默认取值为SpotAsPriceGo，表示出价方式为随市场价的策略。目前只可取值SpotAsPriceGo。
-        :type SpotStrategy: str
-        :param Passwd: 设置黑石竞价实例密码。若不指定会生成随机密码，可到站内信中查看。
-        :type Passwd: str
+        :param NeedSecurityAgent: 是否安装安全Agent，取值：1(安装) 0(不安装)，默认取值0。
+        :type NeedSecurityAgent: int
+        :param NeedMonitorAgent: 是否安装监控Agent，取值：1(安装) 0(不安装)，默认取值0。
+        :type NeedMonitorAgent: int
+        :param AutoRenewFlag: 自动续费标志位，取值：1(自动续费) 0(不自动续费)，默认取值0。
+        :type AutoRenewFlag: int
+        :param IsZoning: 数据盘是否格式化，取值：1(格式化) 0(不格式化)，默认取值为1。
+        :type IsZoning: int
+        :param FileSystem: 指定数据盘的文件系统格式，当前支持 ext4和xfs选项， 默认为ext4。 参数适用于数据盘和Linux， 且在IsZoning为1时生效。
+        :type FileSystem: str
+        :param Password: 设置Linux root或Windows Administrator的密码。若不设置此参数，默认情况下会随机生成密码，并以站内信方式通知到用户。
+        :type Password: str
+        :param ApplyEip: 是否分配弹性公网IP，取值：1(分配) 0(不分配)，默认取值0。
+        :type ApplyEip: int
+        :param EipPayMode: 弹性公网IP计费模式，取值：flow(按流量计费) bandwidth(按带宽计费)，默认取值flow。
+        :type EipPayMode: str
+        :param EipBandwidth: 弹性公网IP带宽限制，单位Mb。
+        :type EipBandwidth: int
+        :param ImageId: 自定义镜像ID，取值生效时用自定义镜像部署物理机。
+        :type ImageId: str
+        :param SysRootSpace: 系统盘根分区大小，单位为G，默认取值10G。通过黑石接口[DescribeDeviceClassPartition]( https://cloud.tencent.com/document/api/386/32910)查询机型RAID方式以及系统盘大小，获取根分区信息。
+        :type SysRootSpace: int
+        :param SysDataSpace: /data分区大小，单位为G。如果系统盘还有剩余大小，会分配给/data分区。（特殊情况：如果剩余空间不足10G，并且没有指定/data分区，则剩余空间会分配给Root分区）。
+        :type SysDataSpace: int
+        :param HyperThreading: 是否开启超线程，取值：1(开启) 0(关闭)，默认取值1。
+        :type HyperThreading: int
+        :param LanIps: 指定的内网IP列表，不指定时自动分配。
+        :type LanIps: list of str
         """
         self.Zones = None
-        self.ComputeTypes = None
+        self.InstanceTypes = None
+        self.TimeUnit = None
+        self.TimeSpan = None
+        self.RaidId = None
         self.OsTypeId = None
         self.VirtualPrivateClouds = None
-        self.DeployType = None
-        self.SpotStrategy = None
-        self.Passwd = None
+        self.NeedSecurityAgent = None
+        self.NeedMonitorAgent = None
+        self.AutoRenewFlag = None
+        self.IsZoning = None
+        self.FileSystem = None
+        self.Password = None
+        self.ApplyEip = None
+        self.EipPayMode = None
+        self.EipBandwidth = None
+        self.ImageId = None
+        self.SysRootSpace = None
+        self.SysDataSpace = None
+        self.HyperThreading = None
+        self.LanIps = None
 
 
     def _deserialize(self, params):
         self.Zones = params.get("Zones")
-        self.ComputeTypes = params.get("ComputeTypes")
+        self.InstanceTypes = params.get("InstanceTypes")
+        self.TimeUnit = params.get("TimeUnit")
+        self.TimeSpan = params.get("TimeSpan")
+        self.RaidId = params.get("RaidId")
         self.OsTypeId = params.get("OsTypeId")
         if params.get("VirtualPrivateClouds") is not None:
             self.VirtualPrivateClouds = []
@@ -1911,9 +1956,20 @@ class EnvDataCpm(AbstractModel):
                 obj = CpmVirtualPrivateCloud()
                 obj._deserialize(item)
                 self.VirtualPrivateClouds.append(obj)
-        self.DeployType = params.get("DeployType")
-        self.SpotStrategy = params.get("SpotStrategy")
-        self.Passwd = params.get("Passwd")
+        self.NeedSecurityAgent = params.get("NeedSecurityAgent")
+        self.NeedMonitorAgent = params.get("NeedMonitorAgent")
+        self.AutoRenewFlag = params.get("AutoRenewFlag")
+        self.IsZoning = params.get("IsZoning")
+        self.FileSystem = params.get("FileSystem")
+        self.Password = params.get("Password")
+        self.ApplyEip = params.get("ApplyEip")
+        self.EipPayMode = params.get("EipPayMode")
+        self.EipBandwidth = params.get("EipBandwidth")
+        self.ImageId = params.get("ImageId")
+        self.SysRootSpace = params.get("SysRootSpace")
+        self.SysDataSpace = params.get("SysDataSpace")
+        self.HyperThreading = params.get("HyperThreading")
+        self.LanIps = params.get("LanIps")
 
 
 class EnvVar(AbstractModel):
@@ -2432,11 +2488,14 @@ class LocalDiskType(AbstractModel):
         :type MinSize: int
         :param MaxSize: 本地磁盘最大值。
         :type MaxSize: int
+        :param Required: 购买时本地盘是否为必选。取值范围：<br><li>REQUIRED：表示必选<br><li>OPTIONAL：表示可选。
+        :type Required: str
         """
         self.Type = None
         self.PartitionType = None
         self.MinSize = None
         self.MaxSize = None
+        self.Required = None
 
 
     def _deserialize(self, params):
@@ -2444,6 +2503,7 @@ class LocalDiskType(AbstractModel):
         self.PartitionType = params.get("PartitionType")
         self.MinSize = params.get("MinSize")
         self.MaxSize = params.get("MaxSize")
+        self.Required = params.get("Required")
 
 
 class LoginSettings(AbstractModel):
@@ -2688,7 +2748,7 @@ class NamedCpmComputeEnv(AbstractModel):
         :type DesiredComputeNodeCount: int
         :param EnvDescription: 计算环境描述
         :type EnvDescription: str
-        :param EnvType: 计算环境管理类型
+        :param EnvType: 计算环境管理类型， 取值MANAGED。
         :type EnvType: str
         :param Authentications: 授权信息
         :type Authentications: list of Authentication

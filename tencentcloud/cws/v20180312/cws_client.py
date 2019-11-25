@@ -110,7 +110,7 @@ class CwsClient(AbstractClient):
 
 
     def CreateVulsMisinformation(self, request):
-        """本接口（CreateVulsMisinformation）用于新增一个或多个漏洞误报信息。
+        """本接口（CreateVulsMisinformation）可以用于新增一个或多个漏洞误报信息。
 
         :param request: 调用CreateVulsMisinformation所需参数的结构体。
         :type request: :class:`tencentcloud.cws.v20180312.models.CreateVulsMisinformationRequest`
@@ -166,7 +166,7 @@ class CwsClient(AbstractClient):
 
 
     def DeleteMonitors(self, request):
-        """本接口 (DeleteMonitors) 用于删除监控任务。
+        """本接口 (DeleteMonitors) 用于删除用户监控任务。
 
         :param request: 调用DeleteMonitors所需参数的结构体。
         :type request: :class:`tencentcloud.cws.v20180312.models.DeleteMonitorsRequest`

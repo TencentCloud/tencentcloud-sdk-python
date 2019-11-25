@@ -60,7 +60,7 @@ class CreateMonitorsResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.RequestId = None
@@ -100,15 +100,24 @@ class CreateSitesResponse(AbstractModel):
         """
         :param Number: 新增站点数。
         :type Number: int
-        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :param Sites: 站点数组
+        :type Sites: list of MiniSite
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.Number = None
+        self.Sites = None
         self.RequestId = None
 
 
     def _deserialize(self, params):
         self.Number = params.get("Number")
+        if params.get("Sites") is not None:
+            self.Sites = []
+            for item in params.get("Sites"):
+                obj = MiniSite()
+                obj._deserialize(item)
+                self.Sites.append(obj)
         self.RequestId = params.get("RequestId")
 
 
@@ -144,7 +153,7 @@ class CreateSitesScansResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.RequestId = None
@@ -178,7 +187,7 @@ class CreateVulsMisinformationResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.RequestId = None
@@ -218,7 +227,7 @@ class CreateVulsReportResponse(AbstractModel):
         """
         :param ReportFileUrl: 报告下载地址
         :type ReportFileUrl: str
-        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.ReportFileUrl = None
@@ -254,7 +263,7 @@ class DeleteMonitorsResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.RequestId = None
@@ -288,7 +297,7 @@ class DeleteSitesResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.RequestId = None
@@ -321,7 +330,9 @@ class DescribeConfigResponse(AbstractModel):
         :type UpdatedAt: str
         :param Appid: 云用户appid。
         :type Appid: int
-        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :param ContentLevel: 内容检测通知等级-1:通知,0-不通知
+        :type ContentLevel: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.NoticeLevel = None
@@ -329,6 +340,7 @@ class DescribeConfigResponse(AbstractModel):
         self.CreatedAt = None
         self.UpdatedAt = None
         self.Appid = None
+        self.ContentLevel = None
         self.RequestId = None
 
 
@@ -338,6 +350,7 @@ class DescribeConfigResponse(AbstractModel):
         self.CreatedAt = params.get("CreatedAt")
         self.UpdatedAt = params.get("UpdatedAt")
         self.Appid = params.get("Appid")
+        self.ContentLevel = params.get("ContentLevel")
         self.RequestId = params.get("RequestId")
 
 
@@ -386,7 +399,7 @@ class DescribeMonitorsResponse(AbstractModel):
         :type Monitors: list of MonitorsDetail
         :param TotalCount: 监控任务数量。
         :type TotalCount: int
-        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.Monitors = None
@@ -424,7 +437,7 @@ class DescribeSiteQuotaResponse(AbstractModel):
         :type Used: int
         :param Available: 剩余可用的扫描次数。
         :type Available: int
-        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.Total = None
@@ -485,7 +498,7 @@ class DescribeSitesResponse(AbstractModel):
         :type TotalCount: int
         :param Sites: 站点信息列表。
         :type Sites: list of Site
-        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.TotalCount = None
@@ -532,7 +545,7 @@ class DescribeSitesVerificationResponse(AbstractModel):
         :type TotalCount: int
         :param SitesVerification: 验证信息列表。
         :type SitesVerification: list of SitesVerification
-        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.TotalCount = None
@@ -582,7 +595,7 @@ class DescribeVulsNumberResponse(AbstractModel):
         :type Sites: list of MonitorMiniSite
         :param ImpactSites: 受影响的网站列表。
         :type ImpactSites: list of MonitorMiniSite
-        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.ImpactSiteNumber = None
@@ -637,7 +650,7 @@ class DescribeVulsNumberTimelineResponse(AbstractModel):
         :type TotalCount: int
         :param VulsTimeline: 用户漏洞数随时间变化统计数据。
         :type VulsTimeline: list of VulsTimeline
-        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.TotalCount = None
@@ -705,7 +718,7 @@ class DescribeVulsResponse(AbstractModel):
         :type TotalCount: int
         :param Vuls: 漏洞信息列表。
         :type Vuls: list of Vul
-        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.TotalCount = None
@@ -748,6 +761,27 @@ class Filter(AbstractModel):
         self.Values = params.get("Values")
 
 
+class MiniSite(AbstractModel):
+    """站点信息。
+
+    """
+
+    def __init__(self):
+        """
+        :param SiteId: 站点ID。
+        :type SiteId: int
+        :param Url: 站点Url。
+        :type Url: str
+        """
+        self.SiteId = None
+        self.Url = None
+
+
+    def _deserialize(self, params):
+        self.SiteId = params.get("SiteId")
+        self.Url = params.get("Url")
+
+
 class ModifyConfigAttributeRequest(AbstractModel):
     """ModifyConfigAttribute请求参数结构体
 
@@ -772,7 +806,7 @@ class ModifyConfigAttributeResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.RequestId = None
@@ -834,7 +868,7 @@ class ModifyMonitorAttributeResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.RequestId = None
@@ -892,7 +926,7 @@ class ModifySiteAttributeResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.RequestId = None
@@ -909,8 +943,6 @@ class Monitor(AbstractModel):
 
     def __init__(self):
         """
-        :param Appid: 云用户appid。
-        :type Appid: int
         :param Id: 监控任务ID。
         :type Id: int
         :param Name: 监控名称。
@@ -937,8 +969,11 @@ class Monitor(AbstractModel):
         :type CreatedAt: str
         :param UpdatedAt: UpdatedAt。
         :type UpdatedAt: str
+        :param Appid: 云用户appid。
+        :type Appid: int
+        :param ContentScanStatus: 扫描状态：0-待检测；1-检测完成
+        :type ContentScanStatus: int
         """
-        self.Appid = None
         self.Id = None
         self.Name = None
         self.MonitorStatus = None
@@ -952,10 +987,11 @@ class Monitor(AbstractModel):
         self.CurrentScanStartTime = None
         self.CreatedAt = None
         self.UpdatedAt = None
+        self.Appid = None
+        self.ContentScanStatus = None
 
 
     def _deserialize(self, params):
-        self.Appid = params.get("Appid")
         self.Id = params.get("Id")
         self.Name = params.get("Name")
         self.MonitorStatus = params.get("MonitorStatus")
@@ -969,6 +1005,8 @@ class Monitor(AbstractModel):
         self.CurrentScanStartTime = params.get("CurrentScanStartTime")
         self.CreatedAt = params.get("CreatedAt")
         self.UpdatedAt = params.get("UpdatedAt")
+        self.Appid = params.get("Appid")
+        self.ContentScanStatus = params.get("ContentScanStatus")
 
 
 class MonitorMiniSite(AbstractModel):
@@ -999,10 +1037,6 @@ class MonitorsDetail(AbstractModel):
 
     def __init__(self):
         """
-        :param Progress: 监控任务包含的站点列表的平均扫描进度。
-        :type Progress: int
-        :param PageCount: 扫描页面总数。
-        :type PageCount: int
         :param Basic: 监控任务基础信息。
         :type Basic: :class:`tencentcloud.cws.v20180312.models.Monitor`
         :param Sites: 监控任务包含的站点列表。
@@ -1021,9 +1055,13 @@ class MonitorsDetail(AbstractModel):
         :type VulsLowNumber: int
         :param VulsNoticeNumber: 提示数量。
         :type VulsNoticeNumber: int
+        :param Progress: 监控任务包含的站点列表的平均扫描进度。
+        :type Progress: int
+        :param PageCount: 扫描页面总数。
+        :type PageCount: int
+        :param ContentNumber: 内容检测数量。
+        :type ContentNumber: int
         """
-        self.Progress = None
-        self.PageCount = None
         self.Basic = None
         self.Sites = None
         self.SiteNumber = None
@@ -1033,11 +1071,12 @@ class MonitorsDetail(AbstractModel):
         self.VulsMiddleNumber = None
         self.VulsLowNumber = None
         self.VulsNoticeNumber = None
+        self.Progress = None
+        self.PageCount = None
+        self.ContentNumber = None
 
 
     def _deserialize(self, params):
-        self.Progress = params.get("Progress")
-        self.PageCount = params.get("PageCount")
         if params.get("Basic") is not None:
             self.Basic = Monitor()
             self.Basic._deserialize(params.get("Basic"))
@@ -1059,6 +1098,9 @@ class MonitorsDetail(AbstractModel):
         self.VulsMiddleNumber = params.get("VulsMiddleNumber")
         self.VulsLowNumber = params.get("VulsLowNumber")
         self.VulsNoticeNumber = params.get("VulsNoticeNumber")
+        self.Progress = params.get("Progress")
+        self.PageCount = params.get("PageCount")
+        self.ContentNumber = params.get("ContentNumber")
 
 
 class Site(AbstractModel):
@@ -1068,26 +1110,6 @@ class Site(AbstractModel):
 
     def __init__(self):
         """
-        :param Progress: 扫描进度，百分比整数
-        :type Progress: int
-        :param Appid: 云用户appid。
-        :type Appid: int
-        :param Uin: 云用户标识。
-        :type Uin: str
-        :param NeedLogin: 网站是否需要登录扫描：0-未知；-1-不需要；1-需要。
-        :type NeedLogin: int
-        :param LoginCookie: 登录后的cookie。
-        :type LoginCookie: str
-        :param LoginCookieValid: 登录后的cookie是否有效：0-无效；1-有效。
-        :type LoginCookieValid: int
-        :param LoginCheckUrl: 用于测试cookie是否有效的URL。
-        :type LoginCheckUrl: str
-        :param LoginCheckKw: 用于测试cookie是否有效的关键字。
-        :type LoginCheckKw: str
-        :param ScanDisallow: 禁止扫描器扫描的目录关键字。
-        :type ScanDisallow: str
-        :param UserAgent: 访问网站的客户端标识。
-        :type UserAgent: str
         :param Id: 站点ID。
         :type Id: int
         :param MonitorId: 监控任务ID，为0时表示未加入监控任务。
@@ -1132,17 +1154,31 @@ class Site(AbstractModel):
         :type LastScanVulsNum: int
         :param LastScanNoticeNum: 最近一次扫描提示总数量
         :type LastScanNoticeNum: int
+        :param Progress: 扫描进度，百分比整数
+        :type Progress: int
+        :param Appid: 云用户appid。
+        :type Appid: int
+        :param Uin: 云用户标识。
+        :type Uin: str
+        :param NeedLogin: 网站是否需要登录扫描：0-未知；-1-不需要；1-需要。
+        :type NeedLogin: int
+        :param LoginCookie: 登录后的cookie。
+        :type LoginCookie: str
+        :param LoginCookieValid: 登录后的cookie是否有效：0-无效；1-有效。
+        :type LoginCookieValid: int
+        :param LoginCheckUrl: 用于测试cookie是否有效的URL。
+        :type LoginCheckUrl: str
+        :param LoginCheckKw: 用于测试cookie是否有效的关键字。
+        :type LoginCheckKw: str
+        :param ScanDisallow: 禁止扫描器扫描的目录关键字。
+        :type ScanDisallow: str
+        :param UserAgent: 访问网站的客户端标识。
+        :type UserAgent: str
+        :param ContentStatus: 内容检测状态：0-未检测；1-已检测；
+        :type ContentStatus: int
+        :param LastScanContentNum: 最近一次扫描内容检测数量
+        :type LastScanContentNum: int
         """
-        self.Progress = None
-        self.Appid = None
-        self.Uin = None
-        self.NeedLogin = None
-        self.LoginCookie = None
-        self.LoginCookieValid = None
-        self.LoginCheckUrl = None
-        self.LoginCheckKw = None
-        self.ScanDisallow = None
-        self.UserAgent = None
         self.Id = None
         self.MonitorId = None
         self.Url = None
@@ -1165,19 +1201,21 @@ class Site(AbstractModel):
         self.LastScanRateLimit = None
         self.LastScanVulsNum = None
         self.LastScanNoticeNum = None
+        self.Progress = None
+        self.Appid = None
+        self.Uin = None
+        self.NeedLogin = None
+        self.LoginCookie = None
+        self.LoginCookieValid = None
+        self.LoginCheckUrl = None
+        self.LoginCheckKw = None
+        self.ScanDisallow = None
+        self.UserAgent = None
+        self.ContentStatus = None
+        self.LastScanContentNum = None
 
 
     def _deserialize(self, params):
-        self.Progress = params.get("Progress")
-        self.Appid = params.get("Appid")
-        self.Uin = params.get("Uin")
-        self.NeedLogin = params.get("NeedLogin")
-        self.LoginCookie = params.get("LoginCookie")
-        self.LoginCookieValid = params.get("LoginCookieValid")
-        self.LoginCheckUrl = params.get("LoginCheckUrl")
-        self.LoginCheckKw = params.get("LoginCheckKw")
-        self.ScanDisallow = params.get("ScanDisallow")
-        self.UserAgent = params.get("UserAgent")
         self.Id = params.get("Id")
         self.MonitorId = params.get("MonitorId")
         self.Url = params.get("Url")
@@ -1200,6 +1238,18 @@ class Site(AbstractModel):
         self.LastScanRateLimit = params.get("LastScanRateLimit")
         self.LastScanVulsNum = params.get("LastScanVulsNum")
         self.LastScanNoticeNum = params.get("LastScanNoticeNum")
+        self.Progress = params.get("Progress")
+        self.Appid = params.get("Appid")
+        self.Uin = params.get("Uin")
+        self.NeedLogin = params.get("NeedLogin")
+        self.LoginCookie = params.get("LoginCookie")
+        self.LoginCookieValid = params.get("LoginCookieValid")
+        self.LoginCheckUrl = params.get("LoginCheckUrl")
+        self.LoginCheckKw = params.get("LoginCheckKw")
+        self.ScanDisallow = params.get("ScanDisallow")
+        self.UserAgent = params.get("UserAgent")
+        self.ContentStatus = params.get("ContentStatus")
+        self.LastScanContentNum = params.get("LastScanContentNum")
 
 
 class SitesVerification(AbstractModel):
@@ -1209,14 +1259,6 @@ class SitesVerification(AbstractModel):
 
     def __init__(self):
         """
-        :param Id: ID。
-        :type Id: int
-        :param Appid: 云用户appid
-        :type Appid: int
-        :param VerifyUrl: 用于验证站点的url，即访问该url获取验证数据。
-        :type VerifyUrl: str
-        :param VerifyFileUrl: 获取验证验证文件的url。
-        :type VerifyFileUrl: str
         :param Domain: 根域名。
         :type Domain: str
         :param TxtName: txt解析域名验证的name。
@@ -1231,11 +1273,15 @@ class SitesVerification(AbstractModel):
         :type CreatedAt: str
         :param UpdatedAt: UpdatedAt。
         :type UpdatedAt: str
+        :param Id: ID。
+        :type Id: int
+        :param Appid: 云用户appid
+        :type Appid: int
+        :param VerifyUrl: 用于验证站点的url，即访问该url获取验证数据。
+        :type VerifyUrl: str
+        :param VerifyFileUrl: 获取验证验证文件的url。
+        :type VerifyFileUrl: str
         """
-        self.Id = None
-        self.Appid = None
-        self.VerifyUrl = None
-        self.VerifyFileUrl = None
         self.Domain = None
         self.TxtName = None
         self.TxtText = None
@@ -1243,13 +1289,13 @@ class SitesVerification(AbstractModel):
         self.VerifyStatus = None
         self.CreatedAt = None
         self.UpdatedAt = None
+        self.Id = None
+        self.Appid = None
+        self.VerifyUrl = None
+        self.VerifyFileUrl = None
 
 
     def _deserialize(self, params):
-        self.Id = params.get("Id")
-        self.Appid = params.get("Appid")
-        self.VerifyUrl = params.get("VerifyUrl")
-        self.VerifyFileUrl = params.get("VerifyFileUrl")
         self.Domain = params.get("Domain")
         self.TxtName = params.get("TxtName")
         self.TxtText = params.get("TxtText")
@@ -1257,6 +1303,10 @@ class SitesVerification(AbstractModel):
         self.VerifyStatus = params.get("VerifyStatus")
         self.CreatedAt = params.get("CreatedAt")
         self.UpdatedAt = params.get("UpdatedAt")
+        self.Id = params.get("Id")
+        self.Appid = params.get("Appid")
+        self.VerifyUrl = params.get("VerifyUrl")
+        self.VerifyFileUrl = params.get("VerifyFileUrl")
 
 
 class VerifySitesRequest(AbstractModel):
@@ -1287,7 +1337,7 @@ class VerifySitesResponse(AbstractModel):
         :type SuccessNumber: int
         :param FailNumber: 验证失败的根域名数量。
         :type FailNumber: int
-        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.SuccessNumber = None
@@ -1308,12 +1358,6 @@ class Vul(AbstractModel):
 
     def __init__(self):
         """
-        :param IsReported: 是否已经添加误报，0-否，1-是。
-        :type IsReported: int
-        :param Appid: 云用户appid。
-        :type Appid: int
-        :param Uin: 云用户标识。
-        :type Uin: str
         :param Id: 漏洞ID。
         :type Id: int
         :param SiteId: 站点ID。
@@ -1344,10 +1388,13 @@ class Vul(AbstractModel):
         :type CreatedAt: str
         :param UpdatedAt: UpdatedAt。
         :type UpdatedAt: str
+        :param IsReported: 是否已经添加误报，0-否，1-是。
+        :type IsReported: int
+        :param Appid: 云用户appid。
+        :type Appid: int
+        :param Uin: 云用户标识。
+        :type Uin: str
         """
-        self.IsReported = None
-        self.Appid = None
-        self.Uin = None
         self.Id = None
         self.SiteId = None
         self.TaskId = None
@@ -1363,12 +1410,12 @@ class Vul(AbstractModel):
         self.Parameter = None
         self.CreatedAt = None
         self.UpdatedAt = None
+        self.IsReported = None
+        self.Appid = None
+        self.Uin = None
 
 
     def _deserialize(self, params):
-        self.IsReported = params.get("IsReported")
-        self.Appid = params.get("Appid")
-        self.Uin = params.get("Uin")
         self.Id = params.get("Id")
         self.SiteId = params.get("SiteId")
         self.TaskId = params.get("TaskId")
@@ -1384,6 +1431,9 @@ class Vul(AbstractModel):
         self.Parameter = params.get("Parameter")
         self.CreatedAt = params.get("CreatedAt")
         self.UpdatedAt = params.get("UpdatedAt")
+        self.IsReported = params.get("IsReported")
+        self.Appid = params.get("Appid")
+        self.Uin = params.get("Uin")
 
 
 class VulsTimeline(AbstractModel):

@@ -16,6 +16,114 @@
 from tencentcloud.common.abstract_model import AbstractModel
 
 
+class CallbackStatusStatistics(AbstractModel):
+    """回执数据统计响应包体
+
+    """
+
+    def __init__(self):
+        """
+        :param CallbackCount: 短信回执量统计
+        :type CallbackCount: int
+        :param RequestSuccessCount: 短信提交成功量统计
+        :type RequestSuccessCount: int
+        :param CallbackFailCount: 短信回执失败量统计
+        :type CallbackFailCount: int
+        :param CallbackSuccessCount: 短信回执成功量统计
+        :type CallbackSuccessCount: int
+        :param InternalErrorCount: 运营商内部错误统计
+        :type InternalErrorCount: int
+        :param InvalidNumberCount: 号码无效或空号统计
+        :type InvalidNumberCount: int
+        :param ShutdownErrorCount: 停机、关机等错误统计
+        :type ShutdownErrorCount: int
+        :param BlackListCount: 号码拉入黑名单统计
+        :type BlackListCount: int
+        :param FrequencyLimitCount: 运营商频率限制统计
+        :type FrequencyLimitCount: int
+        """
+        self.CallbackCount = None
+        self.RequestSuccessCount = None
+        self.CallbackFailCount = None
+        self.CallbackSuccessCount = None
+        self.InternalErrorCount = None
+        self.InvalidNumberCount = None
+        self.ShutdownErrorCount = None
+        self.BlackListCount = None
+        self.FrequencyLimitCount = None
+
+
+    def _deserialize(self, params):
+        self.CallbackCount = params.get("CallbackCount")
+        self.RequestSuccessCount = params.get("RequestSuccessCount")
+        self.CallbackFailCount = params.get("CallbackFailCount")
+        self.CallbackSuccessCount = params.get("CallbackSuccessCount")
+        self.InternalErrorCount = params.get("InternalErrorCount")
+        self.InvalidNumberCount = params.get("InvalidNumberCount")
+        self.ShutdownErrorCount = params.get("ShutdownErrorCount")
+        self.BlackListCount = params.get("BlackListCount")
+        self.FrequencyLimitCount = params.get("FrequencyLimitCount")
+
+
+class CallbackStatusStatisticsRequest(AbstractModel):
+    """CallbackStatusStatistics请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Limit: 最大上限
+注：目前固定设置为0
+        :type Limit: int
+        :param Offset: 偏移量
+注：目前固定设置为0
+        :type Offset: int
+        :param StartDateTime: 开始时间，yyyymmddhh 需要拉取的起始时间，精确到小时
+        :type StartDateTime: int
+        :param EndDataTime: 结束时间，yyyymmddhh 需要拉取的截止时间，精确到小时
+注：EndDataTime 必须大于StartDateTime
+        :type EndDataTime: int
+        :param SmsSdkAppid: 短信SdkAppid在[短信控制台](https://console.cloud.tencent.com/sms/smslist) 添加应用后生成的实际SdkAppid,示例如1400006666。
+        :type SmsSdkAppid: str
+        """
+        self.Limit = None
+        self.Offset = None
+        self.StartDateTime = None
+        self.EndDataTime = None
+        self.SmsSdkAppid = None
+
+
+    def _deserialize(self, params):
+        self.Limit = params.get("Limit")
+        self.Offset = params.get("Offset")
+        self.StartDateTime = params.get("StartDateTime")
+        self.EndDataTime = params.get("EndDataTime")
+        self.SmsSdkAppid = params.get("SmsSdkAppid")
+
+
+class CallbackStatusStatisticsResponse(AbstractModel):
+    """CallbackStatusStatistics返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param CallbackStatusStatistics: 回执数据统计响应包体
+        :type CallbackStatusStatistics: :class:`tencentcloud.sms.v20190711.models.CallbackStatusStatistics`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.CallbackStatusStatistics = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("CallbackStatusStatistics") is not None:
+            self.CallbackStatusStatistics = CallbackStatusStatistics()
+            self.CallbackStatusStatistics._deserialize(params.get("CallbackStatusStatistics"))
+        self.RequestId = params.get("RequestId")
+
+
 class PullSmsReplyStatus(AbstractModel):
     """短信回复状态
 
@@ -416,3 +524,185 @@ class SendStatus(AbstractModel):
         self.SessionContext = params.get("SessionContext")
         self.Code = params.get("Code")
         self.Message = params.get("Message")
+
+
+class SendStatusStatistics(AbstractModel):
+    """发送数据统计响应包体
+
+    """
+
+    def __init__(self):
+        """
+        :param BillingStatistics: 短信计费条数统计，例如提交成功量为100条，其中有20条是长短信（长度为80字）被拆分成2条，则计费条数为： ```80 * 1 + 20 * 2 = 120``` 条
+        :type BillingStatistics: int
+        :param RequestStatistics: 短信提交量统计
+        :type RequestStatistics: int
+        :param RequestSuccessStatistics: 短信提交成功量统计
+        :type RequestSuccessStatistics: int
+        """
+        self.BillingStatistics = None
+        self.RequestStatistics = None
+        self.RequestSuccessStatistics = None
+
+
+    def _deserialize(self, params):
+        self.BillingStatistics = params.get("BillingStatistics")
+        self.RequestStatistics = params.get("RequestStatistics")
+        self.RequestSuccessStatistics = params.get("RequestSuccessStatistics")
+
+
+class SendStatusStatisticsRequest(AbstractModel):
+    """SendStatusStatistics请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Limit: 最大上限
+注：目前固定设置为0
+        :type Limit: int
+        :param Offset: 偏移量
+注：目前固定设置为0
+        :type Offset: int
+        :param StartDateTime: 拉取起始时间，yyyymmddhh 需要拉取的起始时间，精确到小时
+        :type StartDateTime: int
+        :param EndDataTime: 结束时间，yyyymmddhh 需要拉取的截止时间，精确到小时
+注：EndDataTime 必须大于StartDateTime
+        :type EndDataTime: int
+        :param SmsSdkAppid: 短信SdkAppid在[短信控制台](https://console.cloud.tencent.com/sms/smslist) 添加应用后生成的实际SdkAppid,示例如1400006666。
+        :type SmsSdkAppid: str
+        """
+        self.Limit = None
+        self.Offset = None
+        self.StartDateTime = None
+        self.EndDataTime = None
+        self.SmsSdkAppid = None
+
+
+    def _deserialize(self, params):
+        self.Limit = params.get("Limit")
+        self.Offset = params.get("Offset")
+        self.StartDateTime = params.get("StartDateTime")
+        self.EndDataTime = params.get("EndDataTime")
+        self.SmsSdkAppid = params.get("SmsSdkAppid")
+
+
+class SendStatusStatisticsResponse(AbstractModel):
+    """SendStatusStatistics返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param SendStatusStatistics: 发送数据统计响应包体
+        :type SendStatusStatistics: :class:`tencentcloud.sms.v20190711.models.SendStatusStatistics`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.SendStatusStatistics = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("SendStatusStatistics") is not None:
+            self.SendStatusStatistics = SendStatusStatistics()
+            self.SendStatusStatistics._deserialize(params.get("SendStatusStatistics"))
+        self.RequestId = params.get("RequestId")
+
+
+class SmsPackagesStatistics(AbstractModel):
+    """套餐包信息统计响应包体
+
+    """
+
+    def __init__(self):
+        """
+        :param PackageCreateTime: 套餐包创建时间
+        :type PackageCreateTime: str
+        :param PackageEffectiveTime: 套餐包生效时间
+        :type PackageEffectiveTime: str
+        :param PackageExpiredTime: 套餐包过期时间
+        :type PackageExpiredTime: str
+        :param AmountOfPackage: 套餐包条数
+        :type AmountOfPackage: int
+        :param TypeOfPackage: 0表示赠送套餐包，1表示购买套餐包
+        :type TypeOfPackage: int
+        :param PackageId: 套餐包 ID
+        :type PackageId: int
+        :param CurrentUsage: 当前使用量
+        :type CurrentUsage: int
+        """
+        self.PackageCreateTime = None
+        self.PackageEffectiveTime = None
+        self.PackageExpiredTime = None
+        self.AmountOfPackage = None
+        self.TypeOfPackage = None
+        self.PackageId = None
+        self.CurrentUsage = None
+
+
+    def _deserialize(self, params):
+        self.PackageCreateTime = params.get("PackageCreateTime")
+        self.PackageEffectiveTime = params.get("PackageEffectiveTime")
+        self.PackageExpiredTime = params.get("PackageExpiredTime")
+        self.AmountOfPackage = params.get("AmountOfPackage")
+        self.TypeOfPackage = params.get("TypeOfPackage")
+        self.PackageId = params.get("PackageId")
+        self.CurrentUsage = params.get("CurrentUsage")
+
+
+class SmsPackagesStatisticsRequest(AbstractModel):
+    """SmsPackagesStatistics请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Limit: 最大上限
+注：目前固定设置为0
+        :type Limit: int
+        :param Offset: 偏移量
+注：目前固定设置为0
+        :type Offset: int
+        :param NumberOfPullPackages: 需要拉取的套餐包个数
+        :type NumberOfPullPackages: int
+        :param SmsSdkAppid: 短信SdkAppid在[短信控制台](https://console.cloud.tencent.com/sms/smslist) 添加应用后生成的实际SdkAppid,示例如1400006666。
+        :type SmsSdkAppid: str
+        """
+        self.Limit = None
+        self.Offset = None
+        self.NumberOfPullPackages = None
+        self.SmsSdkAppid = None
+
+
+    def _deserialize(self, params):
+        self.Limit = params.get("Limit")
+        self.Offset = params.get("Offset")
+        self.NumberOfPullPackages = params.get("NumberOfPullPackages")
+        self.SmsSdkAppid = params.get("SmsSdkAppid")
+
+
+class SmsPackagesStatisticsResponse(AbstractModel):
+    """SmsPackagesStatistics返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param SmsPackagesStatisticsSet: 发送数据统计响应包体
+        :type SmsPackagesStatisticsSet: list of SmsPackagesStatistics
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.SmsPackagesStatisticsSet = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("SmsPackagesStatisticsSet") is not None:
+            self.SmsPackagesStatisticsSet = []
+            for item in params.get("SmsPackagesStatisticsSet"):
+                obj = SmsPackagesStatistics()
+                obj._deserialize(item)
+                self.SmsPackagesStatisticsSet.append(obj)
+        self.RequestId = params.get("RequestId")

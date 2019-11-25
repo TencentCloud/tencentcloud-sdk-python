@@ -25,6 +25,62 @@ class YunjingClient(AbstractClient):
     _endpoint = 'yunjing.tencentcloudapi.com'
 
 
+    def AddLoginWhiteList(self, request):
+        """本接口（AddLoginWhiteList）用于添加白名单规则
+
+        :param request: 调用AddLoginWhiteList所需参数的结构体。
+        :type request: :class:`tencentcloud.yunjing.v20180228.models.AddLoginWhiteListRequest`
+        :rtype: :class:`tencentcloud.yunjing.v20180228.models.AddLoginWhiteListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("AddLoginWhiteList", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.AddLoginWhiteListResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def AddMachineTag(self, request):
+        """增加机器关联标签
+
+        :param request: 调用AddMachineTag所需参数的结构体。
+        :type request: :class:`tencentcloud.yunjing.v20180228.models.AddMachineTagRequest`
+        :rtype: :class:`tencentcloud.yunjing.v20180228.models.AddMachineTagResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("AddMachineTag", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.AddMachineTagResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def CloseProVersion(self, request):
         """本接口 (CloseProVersion) 用于关闭专业版。
 
@@ -39,6 +95,34 @@ class YunjingClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CloseProVersionResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def CreateOpenPortTask(self, request):
+        """本接口 (CreateOpenPortTask) 用于创建实时获取端口任务。
+
+        :param request: 调用CreateOpenPortTask所需参数的结构体。
+        :type request: :class:`tencentcloud.yunjing.v20180228.models.CreateOpenPortTaskRequest`
+        :rtype: :class:`tencentcloud.yunjing.v20180228.models.CreateOpenPortTaskResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("CreateOpenPortTask", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateOpenPortTaskResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -109,6 +193,90 @@ class YunjingClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DeleteAttackLogs(self, request):
+        """删除网络攻击日志
+
+        :param request: 调用DeleteAttackLogs所需参数的结构体。
+        :type request: :class:`tencentcloud.yunjing.v20180228.models.DeleteAttackLogsRequest`
+        :rtype: :class:`tencentcloud.yunjing.v20180228.models.DeleteAttackLogsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DeleteAttackLogs", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DeleteAttackLogsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DeleteBashEvents(self, request):
+        """根据Ids删除高危命令事件
+
+        :param request: 调用DeleteBashEvents所需参数的结构体。
+        :type request: :class:`tencentcloud.yunjing.v20180228.models.DeleteBashEventsRequest`
+        :rtype: :class:`tencentcloud.yunjing.v20180228.models.DeleteBashEventsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DeleteBashEvents", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DeleteBashEventsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DeleteBashRules(self, request):
+        """删除高危命令规则
+
+        :param request: 调用DeleteBashRules所需参数的结构体。
+        :type request: :class:`tencentcloud.yunjing.v20180228.models.DeleteBashRulesRequest`
+        :rtype: :class:`tencentcloud.yunjing.v20180228.models.DeleteBashRulesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DeleteBashRules", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DeleteBashRulesResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DeleteBruteAttacks(self, request):
         """本接口 (DeleteBruteAttacks) 用于删除暴力破解记录。
 
@@ -137,6 +305,34 @@ class YunjingClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DeleteLoginWhiteList(self, request):
+        """删除白名单规则
+
+        :param request: 调用DeleteLoginWhiteList所需参数的结构体。
+        :type request: :class:`tencentcloud.yunjing.v20180228.models.DeleteLoginWhiteListRequest`
+        :rtype: :class:`tencentcloud.yunjing.v20180228.models.DeleteLoginWhiteListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DeleteLoginWhiteList", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DeleteLoginWhiteListResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DeleteMachine(self, request):
         """本接口（DeleteMachine）用于卸载云镜客户端。
 
@@ -151,6 +347,34 @@ class YunjingClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteMachineResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DeleteMachineTag(self, request):
+        """删除服务器关联的标签
+
+        :param request: 调用DeleteMachineTag所需参数的结构体。
+        :type request: :class:`tencentcloud.yunjing.v20180228.models.DeleteMachineTagRequest`
+        :rtype: :class:`tencentcloud.yunjing.v20180228.models.DeleteMachineTagResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DeleteMachineTag", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DeleteMachineTagResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -235,6 +459,146 @@ class YunjingClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteNonlocalLoginPlacesResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DeletePrivilegeEvents(self, request):
+        """根据Ids删除本地提权
+
+        :param request: 调用DeletePrivilegeEvents所需参数的结构体。
+        :type request: :class:`tencentcloud.yunjing.v20180228.models.DeletePrivilegeEventsRequest`
+        :rtype: :class:`tencentcloud.yunjing.v20180228.models.DeletePrivilegeEventsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DeletePrivilegeEvents", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DeletePrivilegeEventsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DeletePrivilegeRules(self, request):
+        """删除本地提权规则
+
+        :param request: 调用DeletePrivilegeRules所需参数的结构体。
+        :type request: :class:`tencentcloud.yunjing.v20180228.models.DeletePrivilegeRulesRequest`
+        :rtype: :class:`tencentcloud.yunjing.v20180228.models.DeletePrivilegeRulesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DeletePrivilegeRules", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DeletePrivilegeRulesResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DeleteReverseShellEvents(self, request):
+        """根据Ids删除反弹Shell事件
+
+        :param request: 调用DeleteReverseShellEvents所需参数的结构体。
+        :type request: :class:`tencentcloud.yunjing.v20180228.models.DeleteReverseShellEventsRequest`
+        :rtype: :class:`tencentcloud.yunjing.v20180228.models.DeleteReverseShellEventsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DeleteReverseShellEvents", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DeleteReverseShellEventsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DeleteReverseShellRules(self, request):
+        """删除反弹Shell规则
+
+        :param request: 调用DeleteReverseShellRules所需参数的结构体。
+        :type request: :class:`tencentcloud.yunjing.v20180228.models.DeleteReverseShellRulesRequest`
+        :rtype: :class:`tencentcloud.yunjing.v20180228.models.DeleteReverseShellRulesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DeleteReverseShellRules", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DeleteReverseShellRulesResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DeleteTags(self, request):
+        """删除标签
+
+        :param request: 调用DeleteTags所需参数的结构体。
+        :type request: :class:`tencentcloud.yunjing.v20180228.models.DeleteTagsRequest`
+        :rtype: :class:`tencentcloud.yunjing.v20180228.models.DeleteTagsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DeleteTags", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DeleteTagsResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -334,7 +698,7 @@ class YunjingClient(AbstractClient):
 
 
     def DescribeAgentVuls(self, request):
-        """本接口 (DescribeAgentVuls) 用于获取主机的漏洞列表。
+        """本接口 (DescribeAgentVuls) 用于获取单台主机的漏洞列表。
 
         :param request: 调用DescribeAgentVuls所需参数的结构体。
         :type request: :class:`tencentcloud.yunjing.v20180228.models.DescribeAgentVulsRequest`
@@ -375,6 +739,118 @@ class YunjingClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeAlarmAttributeResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeAttackLogInfo(self, request):
+        """网络攻击日志详情
+
+        :param request: 调用DescribeAttackLogInfo所需参数的结构体。
+        :type request: :class:`tencentcloud.yunjing.v20180228.models.DescribeAttackLogInfoRequest`
+        :rtype: :class:`tencentcloud.yunjing.v20180228.models.DescribeAttackLogInfoResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeAttackLogInfo", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeAttackLogInfoResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeAttackLogs(self, request):
+        """按分页形式展示网络攻击日志列表
+
+        :param request: 调用DescribeAttackLogs所需参数的结构体。
+        :type request: :class:`tencentcloud.yunjing.v20180228.models.DescribeAttackLogsRequest`
+        :rtype: :class:`tencentcloud.yunjing.v20180228.models.DescribeAttackLogsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeAttackLogs", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeAttackLogsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeBashEvents(self, request):
+        """获取高危命令列表
+
+        :param request: 调用DescribeBashEvents所需参数的结构体。
+        :type request: :class:`tencentcloud.yunjing.v20180228.models.DescribeBashEventsRequest`
+        :rtype: :class:`tencentcloud.yunjing.v20180228.models.DescribeBashEventsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeBashEvents", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeBashEventsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeBashRules(self, request):
+        """获取高危命令规则列表
+
+        :param request: 调用DescribeBashRules所需参数的结构体。
+        :type request: :class:`tencentcloud.yunjing.v20180228.models.DescribeBashRulesRequest`
+        :rtype: :class:`tencentcloud.yunjing.v20180228.models.DescribeBashRulesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeBashRules", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeBashRulesResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -557,6 +1033,34 @@ class YunjingClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeLoginWhiteList(self, request):
+        """获取异地登录白名单列表
+
+        :param request: 调用DescribeLoginWhiteList所需参数的结构体。
+        :type request: :class:`tencentcloud.yunjing.v20180228.models.DescribeLoginWhiteListRequest`
+        :rtype: :class:`tencentcloud.yunjing.v20180228.models.DescribeLoginWhiteListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeLoginWhiteList", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeLoginWhiteListResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeMachineInfo(self, request):
         """本接口（DescribeMachineInfo）用于获取机器详细信息。
 
@@ -725,6 +1229,34 @@ class YunjingClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeOpenPortTaskStatus(self, request):
+        """本接口 (DescribeOpenPortTaskStatus) 用于获取实时拉取端口任务状态。
+
+        :param request: 调用DescribeOpenPortTaskStatus所需参数的结构体。
+        :type request: :class:`tencentcloud.yunjing.v20180228.models.DescribeOpenPortTaskStatusRequest`
+        :rtype: :class:`tencentcloud.yunjing.v20180228.models.DescribeOpenPortTaskStatusResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeOpenPortTaskStatus", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeOpenPortTaskStatusResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeOpenPorts(self, request):
         """本接口 (DescribeOpenPorts) 用于获取端口列表数据。
 
@@ -767,6 +1299,62 @@ class YunjingClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeOverviewStatisticsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribePrivilegeEvents(self, request):
+        """获取本地提权事件列表
+
+        :param request: 调用DescribePrivilegeEvents所需参数的结构体。
+        :type request: :class:`tencentcloud.yunjing.v20180228.models.DescribePrivilegeEventsRequest`
+        :rtype: :class:`tencentcloud.yunjing.v20180228.models.DescribePrivilegeEventsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribePrivilegeEvents", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribePrivilegeEventsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribePrivilegeRules(self, request):
+        """获取本地提权规则列表
+
+        :param request: 调用DescribePrivilegeRules所需参数的结构体。
+        :type request: :class:`tencentcloud.yunjing.v20180228.models.DescribePrivilegeRulesRequest`
+        :rtype: :class:`tencentcloud.yunjing.v20180228.models.DescribePrivilegeRulesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribePrivilegeRules", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribePrivilegeRulesResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -893,6 +1481,62 @@ class YunjingClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeReverseShellEvents(self, request):
+        """获取反弹Shell列表
+
+        :param request: 调用DescribeReverseShellEvents所需参数的结构体。
+        :type request: :class:`tencentcloud.yunjing.v20180228.models.DescribeReverseShellEventsRequest`
+        :rtype: :class:`tencentcloud.yunjing.v20180228.models.DescribeReverseShellEventsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeReverseShellEvents", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeReverseShellEventsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeReverseShellRules(self, request):
+        """获取反弹Shell规则列表
+
+        :param request: 调用DescribeReverseShellRules所需参数的结构体。
+        :type request: :class:`tencentcloud.yunjing.v20180228.models.DescribeReverseShellRulesRequest`
+        :rtype: :class:`tencentcloud.yunjing.v20180228.models.DescribeReverseShellRulesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeReverseShellRules", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeReverseShellRulesResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeSecurityDynamics(self, request):
         """本接口 (DescribeSecurityDynamics) 用于获取安全事件消息数据。
 
@@ -935,6 +1579,62 @@ class YunjingClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeSecurityTrendsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeTagMachines(self, request):
+        """获取指定标签关联的服务器信息
+
+        :param request: 调用DescribeTagMachines所需参数的结构体。
+        :type request: :class:`tencentcloud.yunjing.v20180228.models.DescribeTagMachinesRequest`
+        :rtype: :class:`tencentcloud.yunjing.v20180228.models.DescribeTagMachinesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeTagMachines", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeTagMachinesResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeTags(self, request):
+        """获取所有主机标签
+
+        :param request: 调用DescribeTags所需参数的结构体。
+        :type request: :class:`tencentcloud.yunjing.v20180228.models.DescribeTagsRequest`
+        :rtype: :class:`tencentcloud.yunjing.v20180228.models.DescribeTagsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeTags", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeTagsResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -1229,6 +1929,202 @@ class YunjingClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def EditBashRule(self, request):
+        """新增或修改高危命令规则
+
+        :param request: 调用EditBashRule所需参数的结构体。
+        :type request: :class:`tencentcloud.yunjing.v20180228.models.EditBashRuleRequest`
+        :rtype: :class:`tencentcloud.yunjing.v20180228.models.EditBashRuleResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("EditBashRule", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.EditBashRuleResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def EditPrivilegeRule(self, request):
+        """新增或修改本地提权规则
+
+        :param request: 调用EditPrivilegeRule所需参数的结构体。
+        :type request: :class:`tencentcloud.yunjing.v20180228.models.EditPrivilegeRuleRequest`
+        :rtype: :class:`tencentcloud.yunjing.v20180228.models.EditPrivilegeRuleResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("EditPrivilegeRule", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.EditPrivilegeRuleResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def EditReverseShellRule(self, request):
+        """编辑反弹Shell规则
+
+        :param request: 调用EditReverseShellRule所需参数的结构体。
+        :type request: :class:`tencentcloud.yunjing.v20180228.models.EditReverseShellRuleRequest`
+        :rtype: :class:`tencentcloud.yunjing.v20180228.models.EditReverseShellRuleResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("EditReverseShellRule", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.EditReverseShellRuleResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def EditTags(self, request):
+        """新增或编辑标签
+
+        :param request: 调用EditTags所需参数的结构体。
+        :type request: :class:`tencentcloud.yunjing.v20180228.models.EditTagsRequest`
+        :rtype: :class:`tencentcloud.yunjing.v20180228.models.EditTagsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("EditTags", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.EditTagsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ExportAttackLogs(self, request):
+        """导出网络攻击日志
+
+        :param request: 调用ExportAttackLogs所需参数的结构体。
+        :type request: :class:`tencentcloud.yunjing.v20180228.models.ExportAttackLogsRequest`
+        :rtype: :class:`tencentcloud.yunjing.v20180228.models.ExportAttackLogsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ExportAttackLogs", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ExportAttackLogsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ExportBashEvents(self, request):
+        """导出高危命令事件
+
+        :param request: 调用ExportBashEvents所需参数的结构体。
+        :type request: :class:`tencentcloud.yunjing.v20180228.models.ExportBashEventsRequest`
+        :rtype: :class:`tencentcloud.yunjing.v20180228.models.ExportBashEventsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ExportBashEvents", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ExportBashEventsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ExportBruteAttacks(self, request):
+        """本接口 (ExportBruteAttacks) 用于导出密码破解记录成CSV文件。
+
+        :param request: 调用ExportBruteAttacks所需参数的结构体。
+        :type request: :class:`tencentcloud.yunjing.v20180228.models.ExportBruteAttacksRequest`
+        :rtype: :class:`tencentcloud.yunjing.v20180228.models.ExportBruteAttacksResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ExportBruteAttacks", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ExportBruteAttacksResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def ExportMaliciousRequests(self, request):
         """本接口 (ExportMaliciousRequests) 用于导出下载恶意请求文件。
 
@@ -1257,8 +2153,120 @@ class YunjingClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def ExportMalwares(self, request):
+        """本接口 (ExportMalwares) 用于导出木马记录CSV文件。
+
+        :param request: 调用ExportMalwares所需参数的结构体。
+        :type request: :class:`tencentcloud.yunjing.v20180228.models.ExportMalwaresRequest`
+        :rtype: :class:`tencentcloud.yunjing.v20180228.models.ExportMalwaresResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ExportMalwares", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ExportMalwaresResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ExportNonlocalLoginPlaces(self, request):
+        """本接口 (ExportNonlocalLoginPlaces) 用于导出异地登录事件记录CSV文件。
+
+        :param request: 调用ExportNonlocalLoginPlaces所需参数的结构体。
+        :type request: :class:`tencentcloud.yunjing.v20180228.models.ExportNonlocalLoginPlacesRequest`
+        :rtype: :class:`tencentcloud.yunjing.v20180228.models.ExportNonlocalLoginPlacesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ExportNonlocalLoginPlaces", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ExportNonlocalLoginPlacesResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ExportPrivilegeEvents(self, request):
+        """导出本地提权事件
+
+        :param request: 调用ExportPrivilegeEvents所需参数的结构体。
+        :type request: :class:`tencentcloud.yunjing.v20180228.models.ExportPrivilegeEventsRequest`
+        :rtype: :class:`tencentcloud.yunjing.v20180228.models.ExportPrivilegeEventsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ExportPrivilegeEvents", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ExportPrivilegeEventsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ExportReverseShellEvents(self, request):
+        """导出反弹Shell事件
+
+        :param request: 调用ExportReverseShellEvents所需参数的结构体。
+        :type request: :class:`tencentcloud.yunjing.v20180228.models.ExportReverseShellEventsRequest`
+        :rtype: :class:`tencentcloud.yunjing.v20180228.models.ExportReverseShellEventsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ExportReverseShellEvents", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ExportReverseShellEventsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def IgnoreImpactedHosts(self, request):
-        """本接口 (IngoreImpactedHosts) 用于忽略漏洞。
+        """本接口 (IgnoreImpactedHosts) 用于忽略漏洞。
 
         :param request: 调用IgnoreImpactedHosts所需参数的结构体。
         :type request: :class:`tencentcloud.yunjing.v20180228.models.IgnoreImpactedHostsRequest`
@@ -1397,6 +2405,34 @@ class YunjingClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def ModifyLoginWhiteList(self, request):
+        """编辑白名单规则
+
+        :param request: 调用ModifyLoginWhiteList所需参数的结构体。
+        :type request: :class:`tencentcloud.yunjing.v20180228.models.ModifyLoginWhiteListRequest`
+        :rtype: :class:`tencentcloud.yunjing.v20180228.models.ModifyLoginWhiteListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ModifyLoginWhiteList", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ModifyLoginWhiteListResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def ModifyProVersionRenewFlag(self, request):
         """本接口 (ModifyProVersionRenewFlag) 用于修改专业版包年包月续费标识。
 
@@ -1510,7 +2546,7 @@ class YunjingClient(AbstractClient):
 
 
     def RescanImpactedHost(self, request):
-        """本接口 (RescanImpactedHosts) 用于漏洞重新检测。
+        """本接口 (RescanImpactedHost) 用于漏洞重新检测。
 
         :param request: 调用RescanImpactedHost所需参数的结构体。
         :type request: :class:`tencentcloud.yunjing.v20180228.models.RescanImpactedHostRequest`
@@ -1551,6 +2587,62 @@ class YunjingClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.SeparateMalwaresResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def SetBashEventsStatus(self, request):
+        """设置高危命令事件状态
+
+        :param request: 调用SetBashEventsStatus所需参数的结构体。
+        :type request: :class:`tencentcloud.yunjing.v20180228.models.SetBashEventsStatusRequest`
+        :rtype: :class:`tencentcloud.yunjing.v20180228.models.SetBashEventsStatusResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("SetBashEventsStatus", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.SetBashEventsStatusResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def SwitchBashRules(self, request):
+        """切换高危命令规则状态
+
+        :param request: 调用SwitchBashRules所需参数的结构体。
+        :type request: :class:`tencentcloud.yunjing.v20180228.models.SwitchBashRulesRequest`
+        :rtype: :class:`tencentcloud.yunjing.v20180228.models.SwitchBashRulesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("SwitchBashRules", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.SwitchBashRulesResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

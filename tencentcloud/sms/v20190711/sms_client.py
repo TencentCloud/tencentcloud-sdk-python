@@ -25,6 +25,34 @@ class SmsClient(AbstractClient):
     _endpoint = 'sms.tencentcloudapi.com'
 
 
+    def CallbackStatusStatistics(self, request):
+        """统计用户回执的数据
+
+        :param request: 调用CallbackStatusStatistics所需参数的结构体。
+        :type request: :class:`tencentcloud.sms.v20190711.models.CallbackStatusStatisticsRequest`
+        :rtype: :class:`tencentcloud.sms.v20190711.models.CallbackStatusStatisticsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("CallbackStatusStatistics", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CallbackStatusStatisticsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def PullSmsReplyStatus(self, request):
         """拉取短信回复状态
 
@@ -152,6 +180,62 @@ class SmsClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.SendSmsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def SendStatusStatistics(self, request):
+        """统计用户发送短信的数据
+
+        :param request: 调用SendStatusStatistics所需参数的结构体。
+        :type request: :class:`tencentcloud.sms.v20190711.models.SendStatusStatisticsRequest`
+        :rtype: :class:`tencentcloud.sms.v20190711.models.SendStatusStatisticsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("SendStatusStatistics", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.SendStatusStatisticsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def SmsPackagesStatistics(self, request):
+        """用户套餐包信息统计
+
+        :param request: 调用SmsPackagesStatistics所需参数的结构体。
+        :type request: :class:`tencentcloud.sms.v20190711.models.SmsPackagesStatisticsRequest`
+        :rtype: :class:`tencentcloud.sms.v20190711.models.SmsPackagesStatisticsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("SmsPackagesStatistics", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.SmsPackagesStatisticsResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
