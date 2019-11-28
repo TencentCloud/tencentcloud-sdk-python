@@ -1089,6 +1089,34 @@ class DayuClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeIpUnBlockList(self, request):
+        """获取IP解封记录
+
+        :param request: 调用DescribeIpUnBlockList所需参数的结构体。
+        :type request: :class:`tencentcloud.dayu.v20180709.models.DescribeIpUnBlockListRequest`
+        :rtype: :class:`tencentcloud.dayu.v20180709.models.DescribeIpUnBlockListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeIpUnBlockList", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeIpUnBlockListResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeL4HealthConfig(self, request):
         """导出四层健康检查配置
 

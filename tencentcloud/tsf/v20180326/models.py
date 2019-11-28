@@ -145,6 +145,9 @@ class ApplicationForPage(AbstractModel):
         :param ApplicationResourceType: 应用资源类型
 注意：此字段可能返回 null，表示取不到有效值。
         :type ApplicationResourceType: str
+        :param ApplicationRuntimeType: 应用runtime类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ApplicationRuntimeType: str
         """
         self.ApplicationId = None
         self.ApplicationName = None
@@ -155,6 +158,7 @@ class ApplicationForPage(AbstractModel):
         self.CreateTime = None
         self.UpdateTime = None
         self.ApplicationResourceType = None
+        self.ApplicationRuntimeType = None
 
 
     def _deserialize(self, params):
@@ -167,6 +171,7 @@ class ApplicationForPage(AbstractModel):
         self.CreateTime = params.get("CreateTime")
         self.UpdateTime = params.get("UpdateTime")
         self.ApplicationResourceType = params.get("ApplicationResourceType")
+        self.ApplicationRuntimeType = params.get("ApplicationRuntimeType")
 
 
 class Cluster(AbstractModel):
@@ -2052,6 +2057,54 @@ class DeployGroupResponse(AbstractModel):
         if params.get("Result") is not None:
             self.Result = TaskId()
             self.Result._deserialize(params.get("Result"))
+        self.RequestId = params.get("RequestId")
+
+
+class DeployServerlessGroupRequest(AbstractModel):
+    """DeployServerlessGroup请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param GroupId: 部署组ID
+        :type GroupId: str
+        :param PkgId: 程序包ID
+        :type PkgId: str
+        :param VpcConfig: VpcConfig对象，和创建接口中对象一致
+        :type VpcConfig: :class:`tencentcloud.tsf.v20180326.models.VpcConfig`
+        """
+        self.GroupId = None
+        self.PkgId = None
+        self.VpcConfig = None
+
+
+    def _deserialize(self, params):
+        self.GroupId = params.get("GroupId")
+        self.PkgId = params.get("PkgId")
+        if params.get("VpcConfig") is not None:
+            self.VpcConfig = VpcConfig()
+            self.VpcConfig._deserialize(params.get("VpcConfig"))
+
+
+class DeployServerlessGroupResponse(AbstractModel):
+    """DeployServerlessGroup返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Result: 结果true：成功；false：失败；
+        :type Result: bool
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Result = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Result = params.get("Result")
         self.RequestId = params.get("RequestId")
 
 

@@ -65,7 +65,7 @@ class BankCard2EVerificationResponse(AbstractModel):
   '-3': '银行卡号码有误'
   '-16': '服务繁忙'
         :type Result: str
-        :param Description: 认证结果信息。
+        :param Description: 业务结果描述。
         :type Description: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -145,7 +145,7 @@ class BankCard4EVerificationResponse(AbstractModel):
 '-5': '手机号码不合法'
 '-18': '服务繁忙'
         :type Result: str
-        :param Description: 认证结果信息。
+        :param Description: 业务结果描述。
         :type Description: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -220,7 +220,7 @@ class BankCardVerificationResponse(AbstractModel):
 '-4': '银行卡号码有误'
 '-17': '服务繁忙'
         :type Result: str
-        :param Description: 认证结果信息。
+        :param Description: 业务结果描述。
         :type Description: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -499,7 +499,7 @@ class IdCardOCRVerificationResponse(AbstractModel):
 -4: 证件库服务异常
 -5: 证件库中无此身份证记录
         :type Result: str
-        :param Description: 认证结果信息。
+        :param Description: 业务结果描述。
         :type Description: str
         :param Name: 用于验证的姓名
         :type Name: str
@@ -581,7 +581,7 @@ class IdCardVerificationResponse(AbstractModel):
 -4: 证件库服务异常
 -5: 证件库中无此身份证记录
         :type Result: str
-        :param Description: 认证结果信息。
+        :param Description: 业务结果描述。
         :type Description: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -638,7 +638,7 @@ class ImageRecognitionResponse(AbstractModel):
         :type Sim: float
         :param Result: 业务错误码，成功情况返回Success, 错误情况请参考下方错误码 列表中FailedOperation部分
         :type Result: str
-        :param Description: 业务错误描述
+        :param Description: 业务结果描述。
         :type Description: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -707,7 +707,7 @@ class LivenessCompareResponse(AbstractModel):
         :type Sim: float
         :param Result: 业务错误码，成功情况返回Success, 错误情况请参考下方错误码 列表中FailedOperation部分
         :type Result: str
-        :param Description: 业务错误描述
+        :param Description: 业务结果描述。
         :type Description: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -781,7 +781,7 @@ class LivenessRecognitionResponse(AbstractModel):
         :type Sim: float
         :param Result: 业务错误码，成功情况返回Success, 错误情况请参考下方错误码 列表中FailedOperation部分
         :type Result: str
-        :param Description: 业务错误描述
+        :param Description: 业务结果描述。
         :type Description: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -845,7 +845,7 @@ class LivenessResponse(AbstractModel):
         :type BestFrameBase64: str
         :param Result: 业务错误码，成功情况返回Success, 错误情况请参考下方错误码 列表中FailedOperation部分
         :type Result: str
-        :param Description: 业务错误描述
+        :param Description: 业务结果描述。
         :type Description: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -858,6 +858,141 @@ class LivenessResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.BestFrameBase64 = params.get("BestFrameBase64")
+        self.Result = params.get("Result")
+        self.Description = params.get("Description")
+        self.RequestId = params.get("RequestId")
+
+
+class MinorsVerificationRequest(AbstractModel):
+    """MinorsVerification请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Type: 参与校验的参数类型。
+0：使用手机号进行校验；
+1：使用姓名与身份证号进行校验。
+        :type Type: str
+        :param Mobile: 手机号。11位数字。
+        :type Mobile: str
+        :param IdCard: 身份证号码。
+        :type IdCard: str
+        :param Name: 姓名。
+        :type Name: str
+        """
+        self.Type = None
+        self.Mobile = None
+        self.IdCard = None
+        self.Name = None
+
+
+    def _deserialize(self, params):
+        self.Type = params.get("Type")
+        self.Mobile = params.get("Mobile")
+        self.IdCard = params.get("IdCard")
+        self.Name = params.get("Name")
+
+
+class MinorsVerificationResponse(AbstractModel):
+    """MinorsVerification返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Result: 结果码，收费情况如下。
+收费结果码：
+0: 成年
+-1: 未成年
+-2: 手机号未实名
+-3: 姓名和身份证号不一致
+
+不收费结果码：
+-4: 非法身份证号（长度、校验位等不正确）
+-5: 非法姓名（长度、格式等不正确）
+-6: 数据源服务异常
+-7: 数据源中无此身份证记录
+-8: 公安比对系统升级中，请稍后再试
+        :type Result: str
+        :param Description: 业务结果描述。
+        :type Description: str
+        :param AgeRange: 当结果码为0或者-1时，该字段的值为年龄区间。
+格式为[a,b)，表示年龄在a岁以上（包括a岁），b岁以下（不包括b岁）。若b为+时表示没有上限。
+        :type AgeRange: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Result = None
+        self.Description = None
+        self.AgeRange = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Result = params.get("Result")
+        self.Description = params.get("Description")
+        self.AgeRange = params.get("AgeRange")
+        self.RequestId = params.get("RequestId")
+
+
+class PhoneVerificationRequest(AbstractModel):
+    """PhoneVerification请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param IdCard: 身份证号
+        :type IdCard: str
+        :param Name: 姓名
+        :type Name: str
+        :param Phone: 手机号
+        :type Phone: str
+        """
+        self.IdCard = None
+        self.Name = None
+        self.Phone = None
+
+
+    def _deserialize(self, params):
+        self.IdCard = params.get("IdCard")
+        self.Name = params.get("Name")
+        self.Phone = params.get("Phone")
+
+
+class PhoneVerificationResponse(AbstractModel):
+    """PhoneVerification返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Result: 认证结果码:
+  '0': '认证通过',
+  '-1': '手机号已实名，但是身份证和姓名均与实名信息不一致 ',
+  '-2': '手机号已实名，手机号和证件号一致，姓名不一致',
+  '-3': '手机号已实名，手机号和姓名一致，身份证不一致',
+  '-4': '信息不一致',
+  '-5': '手机号未实名',
+  '-6': '手机号码不合法',
+  '-7': '身份证号码有误',
+  '-8': '姓名校验不通过',
+  '-9': '没有记录',
+  '-10': '认证未通过',
+  '-11': '服务繁忙'
+        :type Result: str
+        :param Description: 业务结果描述。
+        :type Description: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Result = None
+        self.Description = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
         self.Result = params.get("Result")
         self.Description = params.get("Description")
         self.RequestId = params.get("RequestId")

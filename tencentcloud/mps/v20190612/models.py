@@ -2774,7 +2774,8 @@ class CreateWatermarkTemplateRequest(AbstractModel):
         """
         :param Type: 水印类型，可选值：
 <li>image：图片水印；</li>
-<li>text：文字水印。</li>
+<li>text：文字水印；</li>
+<li>svg：SVG 水印。</li>
         :type Type: str
         :param Name: 水印模板名称，长度限制：64 个字符。
         :type Name: str
@@ -2785,7 +2786,7 @@ class CreateWatermarkTemplateRequest(AbstractModel):
 <li>TopRight：表示坐标原点位于视频图像的右上角，水印原点为图片或文字的右上角；</li>
 <li>BottomLeft：表示坐标原点位于视频图像的左下角，水印原点为图片或文字的左下角；</li>
 <li>BottomRight：表示坐标原点位于视频图像的右下角，水印原点为图片或文字的右下角。</li>
-默认值：TopLeft。目前，当 Type 为 image，该字段仅支持 TopLeft。
+默认值：TopLeft。
         :type CoordinateOrigin: str
         :param XPos: 水印原点距离视频图像坐标原点的水平位置。支持 %、px 两种格式：
 <li>当字符串以 % 结尾，表示水印 XPos 为视频宽度指定百分比，如 10% 表示 XPos 为视频宽度的 10%；</li>
@@ -4558,6 +4559,100 @@ class ImageWatermarkTemplate(AbstractModel):
         self.Height = params.get("Height")
 
 
+class LiveStreamAiRecognitionResultInfo(AbstractModel):
+    """直播流 AI 识别结果
+
+    """
+
+    def __init__(self):
+        """
+        :param ResultSet: 内容识别结果列表。
+        :type ResultSet: list of LiveStreamAiRecognitionResultItem
+        """
+        self.ResultSet = None
+
+
+    def _deserialize(self, params):
+        if params.get("ResultSet") is not None:
+            self.ResultSet = []
+            for item in params.get("ResultSet"):
+                obj = LiveStreamAiRecognitionResultItem()
+                obj._deserialize(item)
+                self.ResultSet.append(obj)
+
+
+class LiveStreamAiRecognitionResultItem(AbstractModel):
+    """直播流 AI 识别结果
+
+    """
+
+    def __init__(self):
+        """
+        :param Type: 结果的类型，取值范围：
+<li>FaceRecognition：人脸识别，</li>
+<li>AsrWordsRecognition：语音关键词识别，</li>
+<li>OcrWordsRecognition：文本关键词识别，</li>
+<li>AsrFullTextRecognition：语音全文识别，</li>
+<li>OcrFullTextRecognition：文本全文识别。</li>
+        :type Type: str
+        :param FaceRecognitionResultSet: 人脸识别结果，当 Type 为
+FaceRecognition 时有效。
+        :type FaceRecognitionResultSet: list of LiveStreamFaceRecognitionResult
+        :param AsrWordsRecognitionResultSet: 语音关键词识别结果，当 Type 为
+AsrWordsRecognition 时有效。
+        :type AsrWordsRecognitionResultSet: list of LiveStreamAsrWordsRecognitionResult
+        :param OcrWordsRecognitionResultSet: 文本关键词识别结果，当 Type 为
+OcrWordsRecognition 时有效。
+        :type OcrWordsRecognitionResultSet: list of LiveStreamOcrWordsRecognitionResult
+        :param AsrFullTextRecognitionResultSet: 语音全文识别结果，当 Type 为
+AsrFullTextRecognition 时有效。
+        :type AsrFullTextRecognitionResultSet: list of LiveStreamAsrFullTextRecognitionResult
+        :param OcrFullTextRecognitionResultSet: 文本全文识别结果，当 Type 为
+OcrFullTextRecognition 时有效。
+        :type OcrFullTextRecognitionResultSet: list of LiveStreamOcrFullTextRecognitionResult
+        """
+        self.Type = None
+        self.FaceRecognitionResultSet = None
+        self.AsrWordsRecognitionResultSet = None
+        self.OcrWordsRecognitionResultSet = None
+        self.AsrFullTextRecognitionResultSet = None
+        self.OcrFullTextRecognitionResultSet = None
+
+
+    def _deserialize(self, params):
+        self.Type = params.get("Type")
+        if params.get("FaceRecognitionResultSet") is not None:
+            self.FaceRecognitionResultSet = []
+            for item in params.get("FaceRecognitionResultSet"):
+                obj = LiveStreamFaceRecognitionResult()
+                obj._deserialize(item)
+                self.FaceRecognitionResultSet.append(obj)
+        if params.get("AsrWordsRecognitionResultSet") is not None:
+            self.AsrWordsRecognitionResultSet = []
+            for item in params.get("AsrWordsRecognitionResultSet"):
+                obj = LiveStreamAsrWordsRecognitionResult()
+                obj._deserialize(item)
+                self.AsrWordsRecognitionResultSet.append(obj)
+        if params.get("OcrWordsRecognitionResultSet") is not None:
+            self.OcrWordsRecognitionResultSet = []
+            for item in params.get("OcrWordsRecognitionResultSet"):
+                obj = LiveStreamOcrWordsRecognitionResult()
+                obj._deserialize(item)
+                self.OcrWordsRecognitionResultSet.append(obj)
+        if params.get("AsrFullTextRecognitionResultSet") is not None:
+            self.AsrFullTextRecognitionResultSet = []
+            for item in params.get("AsrFullTextRecognitionResultSet"):
+                obj = LiveStreamAsrFullTextRecognitionResult()
+                obj._deserialize(item)
+                self.AsrFullTextRecognitionResultSet.append(obj)
+        if params.get("OcrFullTextRecognitionResultSet") is not None:
+            self.OcrFullTextRecognitionResultSet = []
+            for item in params.get("OcrFullTextRecognitionResultSet"):
+                obj = LiveStreamOcrFullTextRecognitionResult()
+                obj._deserialize(item)
+                self.OcrFullTextRecognitionResultSet.append(obj)
+
+
 class LiveStreamAiReviewImagePoliticalResult(AbstractModel):
     """直播 AI 内容审核图片鉴政结果
 
@@ -4829,6 +4924,172 @@ class LiveStreamAiReviewVoicePornResult(AbstractModel):
         self.Confidence = params.get("Confidence")
         self.Suggestion = params.get("Suggestion")
         self.Label = params.get("Label")
+
+
+class LiveStreamAsrFullTextRecognitionResult(AbstractModel):
+    """直播识别 Asr 全文识别
+
+    """
+
+    def __init__(self):
+        """
+        :param Text: 识别文本。
+        :type Text: str
+        :param StartPtsTime: 识别片段起始的 PTS 时间，单位：秒。
+        :type StartPtsTime: float
+        :param EndPtsTime: 识别片段终止的 PTS 时间，单位：秒。
+        :type EndPtsTime: float
+        :param Confidence: 识别片段置信度。取值：0~100。
+        :type Confidence: float
+        """
+        self.Text = None
+        self.StartPtsTime = None
+        self.EndPtsTime = None
+        self.Confidence = None
+
+
+    def _deserialize(self, params):
+        self.Text = params.get("Text")
+        self.StartPtsTime = params.get("StartPtsTime")
+        self.EndPtsTime = params.get("EndPtsTime")
+        self.Confidence = params.get("Confidence")
+
+
+class LiveStreamAsrWordsRecognitionResult(AbstractModel):
+    """直播 AI Asr 单词识别结果
+
+    """
+
+    def __init__(self):
+        """
+        :param Word: 语音关键词。
+        :type Word: str
+        :param StartPtsTime: 识别片段起始的 PTS 时间，单位：秒。
+        :type StartPtsTime: float
+        :param EndPtsTime: 识别片段终止的 PTS 时间，单位：秒。
+        :type EndPtsTime: float
+        :param Confidence: 识别片段置信度。取值：0~100。
+        :type Confidence: float
+        """
+        self.Word = None
+        self.StartPtsTime = None
+        self.EndPtsTime = None
+        self.Confidence = None
+
+
+    def _deserialize(self, params):
+        self.Word = params.get("Word")
+        self.StartPtsTime = params.get("StartPtsTime")
+        self.EndPtsTime = params.get("EndPtsTime")
+        self.Confidence = params.get("Confidence")
+
+
+class LiveStreamFaceRecognitionResult(AbstractModel):
+    """直播 AI 人脸识别结果
+
+    """
+
+    def __init__(self):
+        """
+        :param Id: 人物唯一标识 ID。
+        :type Id: str
+        :param Name: 人物名称。
+        :type Name: str
+        :param Type: 人物库类型，表示识别出的人物来自哪个人物库：
+<li>Default：默认人物库；</li><li>UserDefine：用户自定义人物库。</li>
+        :type Type: str
+        :param StartPtsTime: 识别片段起始的 PTS 时间，单位：秒。
+        :type StartPtsTime: float
+        :param EndPtsTime: 识别片段终止的 PTS 时间，单位：秒。
+        :type EndPtsTime: float
+        :param Confidence: 识别片段置信度。取值：0~100。
+        :type Confidence: float
+        :param AreaCoordSet: 识别结果的区域坐标。数组包含 4 个元素 [x1,y1,x2,y2]，依次表示区域左上点、右下点的横纵坐标。
+        :type AreaCoordSet: list of int
+        """
+        self.Id = None
+        self.Name = None
+        self.Type = None
+        self.StartPtsTime = None
+        self.EndPtsTime = None
+        self.Confidence = None
+        self.AreaCoordSet = None
+
+
+    def _deserialize(self, params):
+        self.Id = params.get("Id")
+        self.Name = params.get("Name")
+        self.Type = params.get("Type")
+        self.StartPtsTime = params.get("StartPtsTime")
+        self.EndPtsTime = params.get("EndPtsTime")
+        self.Confidence = params.get("Confidence")
+        self.AreaCoordSet = params.get("AreaCoordSet")
+
+
+class LiveStreamOcrFullTextRecognitionResult(AbstractModel):
+    """直播识别 Ocr 全文识别
+
+    """
+
+    def __init__(self):
+        """
+        :param Text: 语音文本。
+        :type Text: str
+        :param StartPtsTime: 识别片段起始的 PTS 时间，单位：秒。
+        :type StartPtsTime: float
+        :param EndPtsTime: 识别片段终止的 PTS 时间，单位：秒。
+        :type EndPtsTime: float
+        :param Confidence: 识别片段置信度。取值：0~100。
+        :type Confidence: float
+        :param AreaCoordSet: 识别结果的区域坐标。数组包含 4 个元素 [x1,y1,x2,y2]，依次表示区域左上点、右下点的横纵坐标。
+        :type AreaCoordSet: list of int
+        """
+        self.Text = None
+        self.StartPtsTime = None
+        self.EndPtsTime = None
+        self.Confidence = None
+        self.AreaCoordSet = None
+
+
+    def _deserialize(self, params):
+        self.Text = params.get("Text")
+        self.StartPtsTime = params.get("StartPtsTime")
+        self.EndPtsTime = params.get("EndPtsTime")
+        self.Confidence = params.get("Confidence")
+        self.AreaCoordSet = params.get("AreaCoordSet")
+
+
+class LiveStreamOcrWordsRecognitionResult(AbstractModel):
+    """直播 AI Ocr 单词识别结果
+
+    """
+
+    def __init__(self):
+        """
+        :param Word: 文本关键词。
+        :type Word: str
+        :param StartPtsTime: 识别片段起始的 PTS 时间，单位：秒。
+        :type StartPtsTime: float
+        :param EndPtsTime: 识别片段终止的 PTS 时间，单位：秒。
+        :type EndPtsTime: float
+        :param Confidence: 识别片段置信度。取值：0~100。
+        :type Confidence: float
+        :param AreaCoords: 识别结果的区域坐标。数组包含 4 个元素 [x1,y1,x2,y2]，依次表示区域左上点、右下点的横纵坐标。
+        :type AreaCoords: list of int
+        """
+        self.Word = None
+        self.StartPtsTime = None
+        self.EndPtsTime = None
+        self.Confidence = None
+        self.AreaCoords = None
+
+
+    def _deserialize(self, params):
+        self.Word = params.get("Word")
+        self.StartPtsTime = params.get("StartPtsTime")
+        self.EndPtsTime = params.get("EndPtsTime")
+        self.Confidence = params.get("Confidence")
+        self.AreaCoords = params.get("AreaCoords")
 
 
 class LiveStreamProcessErrorInfo(AbstractModel):
@@ -6436,7 +6697,6 @@ class ModifyWatermarkTemplateRequest(AbstractModel):
 <li>TopRight：表示坐标原点位于视频图像的右上角，水印原点为图片或文字的右上角；</li>
 <li>BottomLeft：表示坐标原点位于视频图像的左下角，水印原点为图片或文字的左下角；</li>
 <li>BottomRight：表示坐标原点位于视频图像的右下角，水印原点为图片或文字的右下角。</li>
-目前，当 Type 为 image，该字段仅支持 TopLeft。
         :type CoordinateOrigin: str
         :param XPos: 水印原点距离视频图像坐标原点的水平位置。支持 %、px 两种格式：
 <li>当字符串以 % 结尾，表示水印 XPos 为视频宽度指定百分比，如 10% 表示 XPos 为视频宽度的 10%；</li>
@@ -6696,6 +6956,7 @@ class ParseLiveStreamProcessNotificationResponse(AbstractModel):
         """
         :param NotificationType: 直播流处理结果类型，包含：
 <li>AiReviewResult：内容审核结果；</li>
+<li>AiRecognitionResult：内容识别结果；</li>
 <li>ProcessEof：直播流处理结束。</li>
         :type NotificationType: str
         :param TaskId: 视频处理任务 ID。
@@ -6706,6 +6967,9 @@ class ParseLiveStreamProcessNotificationResponse(AbstractModel):
         :param AiReviewResultInfo: 内容审核结果，当 NotificationType 为 AiReviewResult 时有效。
 注意：此字段可能返回 null，表示取不到有效值。
         :type AiReviewResultInfo: :class:`tencentcloud.mps.v20190612.models.LiveStreamAiReviewResultInfo`
+        :param AiRecognitionResultInfo: 内容识别结果，当 NotificationType 为 AiRecognitionResult 时有效。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AiRecognitionResultInfo: :class:`tencentcloud.mps.v20190612.models.LiveStreamAiRecognitionResultInfo`
         :param SessionId: 用于去重的识别码，如果七天内曾有过相同的识别码的请求，则本次的请求会返回错误。最长50个字符，不带或者带空字符串表示不做去重。
         :type SessionId: str
         :param SessionContext: 来源上下文，用于透传用户请求信息，任务流状态变更回调将返回该字段值，最长1000个字符。
@@ -6717,6 +6981,7 @@ class ParseLiveStreamProcessNotificationResponse(AbstractModel):
         self.TaskId = None
         self.ProcessEofInfo = None
         self.AiReviewResultInfo = None
+        self.AiRecognitionResultInfo = None
         self.SessionId = None
         self.SessionContext = None
         self.RequestId = None
@@ -6731,6 +6996,9 @@ class ParseLiveStreamProcessNotificationResponse(AbstractModel):
         if params.get("AiReviewResultInfo") is not None:
             self.AiReviewResultInfo = LiveStreamAiReviewResultInfo()
             self.AiReviewResultInfo._deserialize(params.get("AiReviewResultInfo"))
+        if params.get("AiRecognitionResultInfo") is not None:
+            self.AiRecognitionResultInfo = LiveStreamAiRecognitionResultInfo()
+            self.AiRecognitionResultInfo._deserialize(params.get("AiRecognitionResultInfo"))
         self.SessionId = params.get("SessionId")
         self.SessionContext = params.get("SessionContext")
         self.RequestId = params.get("RequestId")
@@ -7293,18 +7561,21 @@ class ProcessLiveStreamRequest(AbstractModel):
         :type OutputDir: str
         :param AiContentReviewTask: 视频内容审核类型任务参数。
         :type AiContentReviewTask: :class:`tencentcloud.mps.v20190612.models.AiContentReviewTaskInput`
-        :param SessionContext: 来源上下文，用于透传用户请求信息，任务流状态变更回调将返回该字段值，最长 1000 个字符。
-        :type SessionContext: str
+        :param AiRecognitionTask: 视频内容识别类型任务参数。
+        :type AiRecognitionTask: :class:`tencentcloud.mps.v20190612.models.AiRecognitionTaskInput`
         :param SessionId: 用于去重的识别码，如果七天内曾有过相同的识别码的请求，则本次的请求会返回错误。最长 50 个字符，不带或者带空字符串表示不做去重。
         :type SessionId: str
+        :param SessionContext: 来源上下文，用于透传用户请求信息，任务流状态变更回调将返回该字段值，最长 1000 个字符。
+        :type SessionContext: str
         """
         self.Url = None
         self.TaskNotifyConfig = None
         self.OutputStorage = None
         self.OutputDir = None
         self.AiContentReviewTask = None
-        self.SessionContext = None
+        self.AiRecognitionTask = None
         self.SessionId = None
+        self.SessionContext = None
 
 
     def _deserialize(self, params):
@@ -7319,8 +7590,11 @@ class ProcessLiveStreamRequest(AbstractModel):
         if params.get("AiContentReviewTask") is not None:
             self.AiContentReviewTask = AiContentReviewTaskInput()
             self.AiContentReviewTask._deserialize(params.get("AiContentReviewTask"))
-        self.SessionContext = params.get("SessionContext")
+        if params.get("AiRecognitionTask") is not None:
+            self.AiRecognitionTask = AiRecognitionTaskInput()
+            self.AiRecognitionTask._deserialize(params.get("AiRecognitionTask"))
         self.SessionId = params.get("SessionId")
+        self.SessionContext = params.get("SessionContext")
 
 
 class ProcessLiveStreamResponse(AbstractModel):

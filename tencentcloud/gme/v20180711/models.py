@@ -404,14 +404,18 @@ class DescribeScanResultListRequest(AbstractModel):
         :type BizId: int
         :param TaskIdList: 查询的任务 ID 列表，任务 ID 列表最多支持 100 个。
         :type TaskIdList: list of str
+        :param Limit: 任务返回结果数量，默认10，上限500。大文件任务忽略此参数，返回全量结果
+        :type Limit: int
         """
         self.BizId = None
         self.TaskIdList = None
+        self.Limit = None
 
 
     def _deserialize(self, params):
         self.BizId = params.get("BizId")
         self.TaskIdList = params.get("TaskIdList")
+        self.Limit = params.get("Limit")
 
 
 class DescribeScanResultListResponse(AbstractModel):
@@ -606,6 +610,9 @@ class ScanPiece(AbstractModel):
         :param Duration: 流检测时分片时长
 注意：此字段可能返回 null，表示取不到有效值。
         :type Duration: int
+        :param PieceStartTime: 分片开始检测时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PieceStartTime: int
         """
         self.DumpUrl = None
         self.HitFlag = None
@@ -616,6 +623,7 @@ class ScanPiece(AbstractModel):
         self.Info = None
         self.Offset = None
         self.Duration = None
+        self.PieceStartTime = None
 
 
     def _deserialize(self, params):
@@ -633,6 +641,7 @@ class ScanPiece(AbstractModel):
         self.Info = params.get("Info")
         self.Offset = params.get("Offset")
         self.Duration = params.get("Duration")
+        self.PieceStartTime = params.get("PieceStartTime")
 
 
 class ScanVoiceRequest(AbstractModel):

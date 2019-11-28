@@ -26,7 +26,7 @@ class FaceidClient(AbstractClient):
 
 
     def BankCard2EVerification(self, request):
-        """输入银行卡号、姓名，校验信息的真实性和一致性。
+        """本接口用于校验姓名和银行卡号的真实性和一致性。
 
         :param request: 调用BankCard2EVerification所需参数的结构体。
         :type request: :class:`tencentcloud.faceid.v20180301.models.BankCard2EVerificationRequest`
@@ -54,7 +54,7 @@ class FaceidClient(AbstractClient):
 
 
     def BankCard4EVerification(self, request):
-        """输入银行卡号、姓名、开户证件号、开户手机号，校验信息的真实性和一致性。
+        """本接口用于输入银行卡号、姓名、开户证件号、开户手机号，校验信息的真实性和一致性。
 
         :param request: 调用BankCard4EVerification所需参数的结构体。
         :type request: :class:`tencentcloud.faceid.v20180301.models.BankCard4EVerificationRequest`
@@ -82,7 +82,7 @@ class FaceidClient(AbstractClient):
 
 
     def BankCardVerification(self, request):
-        """银行卡三要素核验，输入银行卡号、姓名、开户证件号，校验信息的真实性和一致性。
+        """本接口用于银行卡号、姓名、开户证件号信息的真实性和一致性。
 
         :param request: 调用BankCardVerification所需参数的结构体。
         :type request: :class:`tencentcloud.faceid.v20180301.models.BankCardVerificationRequest`
@@ -375,6 +375,62 @@ class FaceidClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.LivenessRecognitionResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def MinorsVerification(self, request):
+        """传入手机号或者姓名和身份证号，判断该信息是否已实名认证且年满18周岁。
+
+        :param request: 调用MinorsVerification所需参数的结构体。
+        :type request: :class:`tencentcloud.faceid.v20180301.models.MinorsVerificationRequest`
+        :rtype: :class:`tencentcloud.faceid.v20180301.models.MinorsVerificationResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("MinorsVerification", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.MinorsVerificationResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def PhoneVerification(self, request):
+        """本接口用于校验手机号、姓名和身份证号的真实性和一致性。
+
+        :param request: 调用PhoneVerification所需参数的结构体。
+        :type request: :class:`tencentcloud.faceid.v20180301.models.PhoneVerificationRequest`
+        :rtype: :class:`tencentcloud.faceid.v20180301.models.PhoneVerificationResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("PhoneVerification", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.PhoneVerificationResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

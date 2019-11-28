@@ -2219,7 +2219,7 @@ class MixedInvoiceItem(AbstractModel):
         """
         :param Code: 识别结果。
 OK：表示识别成功；FailedOperation.UnsupportedInvioce：表示不支持识别；
-FailedOperation.UnKnowError： 表示识别失败；
+FailedOperation.UnKnowError：表示识别失败；
 其它错误码见各个票据接口的定义。
         :type Code: str
         :param Type: 识别出的图片所属的票据类型。
@@ -2228,17 +2228,13 @@ FailedOperation.UnKnowError： 表示识别失败；
 1：定额发票
 2：火车票
 3：增值税发票
-4：客运限额发票（仅支持类型检测，不支持识别）
 5：机票行程单
-6：酒店账单（仅支持类型检测，不支持识别）
-7：完税证明
 8：通用机打发票
 9：汽车票
 10：轮船票
 11：增值税发票（卷票 ）
 12：购车发票
 13：过路过桥费发票
-14：购物小票（仅支持类型检测，不支持识别）
         :type Type: int
         :param Rect: 识别出的图片在混贴票据图片中的位置信息。
         :type Rect: :class:`tencentcloud.ocr.v20181119.models.Rect`
@@ -2287,14 +2283,29 @@ class MixedInvoiceOCRRequest(AbstractModel):
 图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。
 非腾讯云存储的 Url 速度和稳定性可能受一定影响。
         :type ImageUrl: str
+        :param Types: 需要识别的票据类型列表，为空或不填表示识别全部类型。
+0：出租车发票
+1：定额发票
+2：火车票
+3：增值税发票
+5：机票行程单
+8：通用机打发票
+9：汽车票
+10：轮船票
+11：增值税发票（卷票 ）
+12：购车发票
+13：过路过桥费发票
+        :type Types: list of int
         """
         self.ImageBase64 = None
         self.ImageUrl = None
+        self.Types = None
 
 
     def _deserialize(self, params):
         self.ImageBase64 = params.get("ImageBase64")
         self.ImageUrl = params.get("ImageUrl")
+        self.Types = params.get("Types")
 
 
 class MixedInvoiceOCRResponse(AbstractModel):
@@ -3118,7 +3129,7 @@ class TextArithmetic(AbstractModel):
         :type Polygon: list of Coord
         :param AdvancedInfo: 保留字段，暂不支持
         :type AdvancedInfo: str
-        :param ItemCoord: 文本行在旋转纠正之后的图像中的像素坐标，表示为（左上角x, 左上角y，宽width，高height）
+        :param ItemCoord: 文本行旋转纠正之后在图像中的像素坐标，表示为（左上角x, 左上角y，宽width，高height）
         :type ItemCoord: :class:`tencentcloud.ocr.v20181119.models.ItemCoord`
         :param ExpressionType: 算式题型编号：
 ‘1’: 加减乘除四则

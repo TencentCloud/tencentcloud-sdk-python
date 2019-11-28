@@ -373,6 +373,64 @@ class CompleteLifecycleActionResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class CreateAutoScalingGroupFromInstanceRequest(AbstractModel):
+    """CreateAutoScalingGroupFromInstance请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param AutoScalingGroupName: 伸缩组名称，在您账号中必须唯一。名称仅支持中文、英文、数字、下划线、分隔符"-"、小数点，最大长度不能超55个字节。
+        :type AutoScalingGroupName: str
+        :param InstanceId: 实例ID
+        :type InstanceId: str
+        :param MinSize: 最大实例数，取值范围为0-2000。
+        :type MinSize: int
+        :param MaxSize: 最小实例数，取值范围为0-2000。
+        :type MaxSize: int
+        :param DesiredCapacity: 期望实例数，大小介于最小实例数和最大实例数之间。
+        :type DesiredCapacity: int
+        :param InheritInstanceTag: 是否继承实例标签，默认值为False
+        :type InheritInstanceTag: bool
+        """
+        self.AutoScalingGroupName = None
+        self.InstanceId = None
+        self.MinSize = None
+        self.MaxSize = None
+        self.DesiredCapacity = None
+        self.InheritInstanceTag = None
+
+
+    def _deserialize(self, params):
+        self.AutoScalingGroupName = params.get("AutoScalingGroupName")
+        self.InstanceId = params.get("InstanceId")
+        self.MinSize = params.get("MinSize")
+        self.MaxSize = params.get("MaxSize")
+        self.DesiredCapacity = params.get("DesiredCapacity")
+        self.InheritInstanceTag = params.get("InheritInstanceTag")
+
+
+class CreateAutoScalingGroupFromInstanceResponse(AbstractModel):
+    """CreateAutoScalingGroupFromInstance返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param AutoScalingGroupId: 伸缩组ID
+        :type AutoScalingGroupId: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.AutoScalingGroupId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.AutoScalingGroupId = params.get("AutoScalingGroupId")
+        self.RequestId = params.get("RequestId")
+
+
 class CreateAutoScalingGroupRequest(AbstractModel):
     """CreateAutoScalingGroup请求参数结构体
 
@@ -3068,14 +3126,18 @@ class PaiInstance(AbstractModel):
         :type InstanceId: str
         :param DomainName: 实例域名
         :type DomainName: str
+        :param PaiMateUrl: PAI管理页面URL
+        :type PaiMateUrl: str
         """
         self.InstanceId = None
         self.DomainName = None
+        self.PaiMateUrl = None
 
 
     def _deserialize(self, params):
         self.InstanceId = params.get("InstanceId")
         self.DomainName = params.get("DomainName")
+        self.PaiMateUrl = params.get("PaiMateUrl")
 
 
 class PreviewPaiDomainNameRequest(AbstractModel):

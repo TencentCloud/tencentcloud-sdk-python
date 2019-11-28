@@ -3201,6 +3201,53 @@ class DescribeRuleRealServersResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeRulesByRuleIdsRequest(AbstractModel):
+    """DescribeRulesByRuleIds请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RuleIds: 规则ID列表。最多支持10个规则。
+        :type RuleIds: list of str
+        """
+        self.RuleIds = None
+
+
+    def _deserialize(self, params):
+        self.RuleIds = params.get("RuleIds")
+
+
+class DescribeRulesByRuleIdsResponse(AbstractModel):
+    """DescribeRulesByRuleIds返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param TotalCount: 返回的规则总个数。
+        :type TotalCount: int
+        :param RuleSet: 返回的规则列表。
+        :type RuleSet: list of RuleInfo
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.RuleSet = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("RuleSet") is not None:
+            self.RuleSet = []
+            for item in params.get("RuleSet"):
+                obj = RuleInfo()
+                obj._deserialize(item)
+                self.RuleSet.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeRulesRequest(AbstractModel):
     """DescribeRules请求参数结构体
 
@@ -3311,6 +3358,53 @@ UNBINDING，安全策略关闭中。
         self.RequestId = params.get("RequestId")
 
 
+class DescribeSecurityRulesRequest(AbstractModel):
+    """DescribeSecurityRules请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param SecurityRuleIds: 安全规则ID列表。总数不能超过20个。
+        :type SecurityRuleIds: list of str
+        """
+        self.SecurityRuleIds = None
+
+
+    def _deserialize(self, params):
+        self.SecurityRuleIds = params.get("SecurityRuleIds")
+
+
+class DescribeSecurityRulesResponse(AbstractModel):
+    """DescribeSecurityRules返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param TotalCount: 返回的安全规则详情总数。
+        :type TotalCount: int
+        :param SecurityRuleSet: 返回的安全规则详情列表。
+        :type SecurityRuleSet: list of SecurityPolicyRuleOut
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.SecurityRuleSet = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("SecurityRuleSet") is not None:
+            self.SecurityRuleSet = []
+            for item in params.get("SecurityRuleSet"):
+                obj = SecurityPolicyRuleOut()
+                obj._deserialize(item)
+                self.SecurityRuleSet.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeTCPListenersRequest(AbstractModel):
     """DescribeTCPListeners请求参数结构体
 
@@ -3318,9 +3412,11 @@ class DescribeTCPListenersRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param ProxyId: 通道ID，ProxyId和GroupId必须设置一个，但不能同时设置。
+        :param ProxyId: 过滤条件，根据通道ID进行拉取，ProxyId/GroupId/ListenerId必须设置一个，但ProxyId和GroupId不能同时设置。
         :type ProxyId: str
-        :param ListenerId: 过滤条件，根据监听器ID精确查询
+        :param ListenerId: 过滤条件，根据监听器ID精确查询。
+当设置了ProxyId时，会检查该监听器是否归属于该通道。
+当设置了GroupId时，会检查该监听器是否归属于该通道组。
         :type ListenerId: str
         :param ListenerName: 过滤条件，根据监听器名称精确查询
         :type ListenerName: str
@@ -3330,7 +3426,7 @@ class DescribeTCPListenersRequest(AbstractModel):
         :type Offset: int
         :param Limit: 限制数量，默认为20
         :type Limit: int
-        :param GroupId: 通道组ID，ProxyId和GroupId必须设置一个，但不能同时设置。
+        :param GroupId: 过滤条件，根据通道组ID进行拉取，ProxyId/GroupId/ListenerId必须设置一个，但ProxyId和GroupId不能同时设置。
         :type GroupId: str
         :param SearchValue: 过滤条件，支持按照端口或监听器名称进行模糊查询，该参数不能与ListenerName和Port同时使用
         :type SearchValue: str
@@ -3393,9 +3489,11 @@ class DescribeUDPListenersRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param ProxyId: 通道ID，ProxyId和GroupId必须设置一个，但不能同时设置。
+        :param ProxyId: 过滤条件，根据通道ID进行拉取，ProxyId/GroupId/ListenerId必须设置一个，但ProxyId和GroupId不能同时设置。
         :type ProxyId: str
-        :param ListenerId: 过滤条件，根据监听器ID精确查询
+        :param ListenerId: 过滤条件，根据监听器ID精确查询。
+当设置了ProxyId时，会检查该监听器是否归属于该通道。
+当设置了GroupId时，会检查该监听器是否归属于该通道组。
         :type ListenerId: str
         :param ListenerName: 过滤条件，根据监听器名称精确查询
         :type ListenerName: str
@@ -3405,7 +3503,7 @@ class DescribeUDPListenersRequest(AbstractModel):
         :type Offset: int
         :param Limit: 限制数量，默认为20
         :type Limit: int
-        :param GroupId: 通道组ID，ProxyId和GroupId必须设置一个，但不能同时设置。
+        :param GroupId: 过滤条件，根据通道组ID进行拉取，ProxyId/GroupId/ListenerId必须设置一个，但ProxyId和GroupId不能同时设置。
         :type GroupId: str
         :param SearchValue: 过滤条件，支持按照端口或监听器名称进行模糊查询，该参数不能与ListenerName和Port同时使用
         :type SearchValue: str
@@ -5585,6 +5683,9 @@ class SecurityPolicyRuleOut(AbstractModel):
         :param Protocol: 要匹配的协议类型（TCP/UDP）
 注意：此字段可能返回 null，表示取不到有效值。
         :type Protocol: str
+        :param PolicyId: 安全策略ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PolicyId: str
         """
         self.Action = None
         self.SourceCidr = None
@@ -5592,6 +5693,7 @@ class SecurityPolicyRuleOut(AbstractModel):
         self.DestPortRange = None
         self.RuleId = None
         self.Protocol = None
+        self.PolicyId = None
 
 
     def _deserialize(self, params):
@@ -5601,6 +5703,7 @@ class SecurityPolicyRuleOut(AbstractModel):
         self.DestPortRange = params.get("DestPortRange")
         self.RuleId = params.get("RuleId")
         self.Protocol = params.get("Protocol")
+        self.PolicyId = params.get("PolicyId")
 
 
 class SetAuthenticationRequest(AbstractModel):

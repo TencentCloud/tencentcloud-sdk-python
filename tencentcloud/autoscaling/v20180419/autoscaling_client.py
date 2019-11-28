@@ -111,6 +111,36 @@ class AutoscalingClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def CreateAutoScalingGroupFromInstance(self, request):
+        """本接口（CreateAutoScalingGroupFromInstance）用于根据实例创建启动配置及伸缩组。
+
+        说明：根据按包年包月计费的实例所创建的伸缩组，其扩容的实例为按量计费实例。
+
+        :param request: 调用CreateAutoScalingGroupFromInstance所需参数的结构体。
+        :type request: :class:`tencentcloud.autoscaling.v20180419.models.CreateAutoScalingGroupFromInstanceRequest`
+        :rtype: :class:`tencentcloud.autoscaling.v20180419.models.CreateAutoScalingGroupFromInstanceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("CreateAutoScalingGroupFromInstance", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateAutoScalingGroupFromInstanceResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def CreateLaunchConfiguration(self, request):
         """本接口（CreateLaunchConfiguration）用于创建新的启动配置。
 

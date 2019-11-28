@@ -48,7 +48,7 @@ class CCEventRecord(AbstractModel):
 
     def __init__(self):
         """
-        :param Business: 大禹子产品代号（shield表示棋牌；bgpip表示高防IP；bgp表示高防包；bgp-multip表示多ip高防包；net表示高防IP专业版；basic表示DDos基础防护）
+        :param Business: 大禹子产品代号（shield表示棋牌；bgpip表示高防IP；bgp表示独享包；bgp-multip表示共享包；net表示高防IP专业版；basic表示DDoS基础防护）
         :type Business: str
         :param Id: 资源ID
         :type Id: str
@@ -129,7 +129,7 @@ class CCPolicy(AbstractModel):
         :type CreateTime: str
         :param RuleList: 规则列表
         :type RuleList: list of CCRule
-        :param IpList: Ip列表
+        :param IpList: IP列表
         :type IpList: list of str
         :param Protocol: cc防护类型，取值[http，https]
         :type Protocol: str
@@ -769,13 +769,13 @@ class CreateL7RuleCertRequest(AbstractModel):
         :type Id: str
         :param RuleId: 规则ID
         :type RuleId: str
-        :param CertType: 证书类型，当为协议为https协议时必须填，取值[2(腾讯云托管证书)]
+        :param CertType: 证书类型，当为协议为HTTPS协议时必须填，取值[2(腾讯云托管证书)]
         :type CertType: int
         :param SSLId: 当证书来源为腾讯云托管证书时，此字段必须填写托管证书ID
         :type SSLId: str
         :param Cert: 当证书来源为自有证书时，此字段必须填写证书内容；(因已不再支持自有证书，此字段已弃用，请不用填写此字段)
         :type Cert: str
-        :param PrivateKey: 当证书来源为自有证书时，此字段必须填写证书秘钥；(因已不再支持自有证书，此字段已弃用，请不用填写此字段)
+        :param PrivateKey: 当证书来源为自有证书时，此字段必须填写证书密钥；(因已不再支持自有证书，此字段已弃用，请不用填写此字段)
         :type PrivateKey: str
         """
         self.Business = None
@@ -983,7 +983,7 @@ class DDoSEventRecord(AbstractModel):
 
     def __init__(self):
         """
-        :param Business: 大禹子产品代号（shield表示棋牌；bgpip表示高防IP；bgp表示高防包；bgp-multip表示多ip高防包；net表示高防IP专业版；basic表示DDos基础防护）
+        :param Business: 大禹子产品代号（shield表示棋牌；bgpip表示高防IP；bgp表示独享包；bgp-multip表示共享包；net表示高防IP专业版；basic表示DDoS基础防护）
         :type Business: str
         :param Id: 资源ID
         :type Id: str
@@ -3272,6 +3272,83 @@ class DescribeIpBlockListResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeIpUnBlockListRequest(AbstractModel):
+    """DescribeIpUnBlockList请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param BeginTime: 开始时间
+        :type BeginTime: str
+        :param EndTime: 结束时间
+        :type EndTime: str
+        :param Ip: IP（不为空时，进行IP过滤）
+        :type Ip: str
+        :param Paging: 分页参数（不为空时，进行分页查询），此字段后面会弃用，请用Limit和Offset字段代替；
+        :type Paging: :class:`tencentcloud.dayu.v20180709.models.Paging`
+        :param Limit: 一页条数，填0表示不分页
+        :type Limit: int
+        :param Offset: 页起始偏移，取值为(页码-1)*一页条数
+        :type Offset: int
+        """
+        self.BeginTime = None
+        self.EndTime = None
+        self.Ip = None
+        self.Paging = None
+        self.Limit = None
+        self.Offset = None
+
+
+    def _deserialize(self, params):
+        self.BeginTime = params.get("BeginTime")
+        self.EndTime = params.get("EndTime")
+        self.Ip = params.get("Ip")
+        if params.get("Paging") is not None:
+            self.Paging = Paging()
+            self.Paging._deserialize(params.get("Paging"))
+        self.Limit = params.get("Limit")
+        self.Offset = params.get("Offset")
+
+
+class DescribeIpUnBlockListResponse(AbstractModel):
+    """DescribeIpUnBlockList返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param BeginTime: 开始时间
+        :type BeginTime: str
+        :param EndTime: 结束时间
+        :type EndTime: str
+        :param List: IP解封记录
+        :type List: list of IpUnBlockData
+        :param Total: 总记录数
+        :type Total: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.BeginTime = None
+        self.EndTime = None
+        self.List = None
+        self.Total = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.BeginTime = params.get("BeginTime")
+        self.EndTime = params.get("EndTime")
+        if params.get("List") is not None:
+            self.List = []
+            for item in params.get("List"):
+                obj = IpUnBlockData()
+                obj._deserialize(item)
+                self.List.append(obj)
+        self.Total = params.get("Total")
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeL4HealthConfigRequest(AbstractModel):
     """DescribeL4HealthConfig请求参数结构体
 
@@ -3899,7 +3976,7 @@ class DescribeTransmitStatisRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Business: 大禹子产品代号（bgpip表示高防IP；net表示高防IP专业版；shield表示棋牌盾）
+        :param Business: 大禹子产品代号（bgpip表示高防IP；net表示高防IP专业版；shield表示棋牌盾；bgp表示独享包；bgp-multip表示共享包）
         :type Business: str
         :param Id: 资源实例ID
         :type Id: str
@@ -3913,7 +3990,7 @@ pkg表示包速率；
         :type StartTime: str
         :param EndTime: 统计结束时间，秒部分保持为0，分钟部分为5的倍数
         :type EndTime: str
-        :param IpList: 资源的IP；当不填写时，默认统计资源实例的所有IP；资源实例有多个IP（比如高防IP专业版）时，统计方式是求和；
+        :param IpList: 资源的IP（当Business为bgp-multip时必填，且仅支持一个IP）；当不填写时，默认统计资源实例的所有IP；资源实例有多个IP（比如高防IP专业版）时，统计方式是求和；
         :type IpList: list of str
         """
         self.Business = None
@@ -4264,6 +4341,35 @@ class IpBlockData(AbstractModel):
         self.ActionType = params.get("ActionType")
 
 
+class IpUnBlockData(AbstractModel):
+    """IP解封记录
+
+    """
+
+    def __init__(self):
+        """
+        :param Ip: IP
+        :type Ip: str
+        :param BlockTime: 封堵时间
+        :type BlockTime: str
+        :param UnBlockTime: 解封时间（实际解封时间）
+        :type UnBlockTime: str
+        :param ActionType: 解封类型（user：自助解封；auto：自动解封； update：升级解封；bind：绑定高防包解封）
+        :type ActionType: str
+        """
+        self.Ip = None
+        self.BlockTime = None
+        self.UnBlockTime = None
+        self.ActionType = None
+
+
+    def _deserialize(self, params):
+        self.Ip = params.get("Ip")
+        self.BlockTime = params.get("BlockTime")
+        self.UnBlockTime = params.get("UnBlockTime")
+        self.ActionType = params.get("ActionType")
+
+
 class KeyValue(AbstractModel):
     """字段值，K-V形式
 
@@ -4550,7 +4656,7 @@ class L7RuleEntry(AbstractModel):
         :type SSLId: str
         :param Cert: 当证书来源为自有证书时，此字段必须填写证书内容；(因已不再支持自有证书，此字段已弃用，请不用填写此字段)
         :type Cert: str
-        :param PrivateKey: 当证书来源为自有证书时，此字段必须填写证书秘钥；(因已不再支持自有证书，此字段已弃用，请不用填写此字段)
+        :param PrivateKey: 当证书来源为自有证书时，此字段必须填写证书密钥；(因已不再支持自有证书，此字段已弃用，请不用填写此字段)
         :type PrivateKey: str
         :param RuleName: 规则描述
         :type RuleName: str
@@ -4729,11 +4835,11 @@ class ModifyCCIpAllowDenyRequest(AbstractModel):
         :type Type: str
         :param IpList: 黑/白名单的IP数组
         :type IpList: list of str
-        :param Protocol: 可选字段，代表CC防护类型，取值[http（http协议的CC防护），https（https协议的CC防护）]；当不填时，默认为http协议的CC防护；当填写https时还需要填写Domain和RuleId字段；
+        :param Protocol: 可选字段，代表CC防护类型，取值[http（HTTP协议的CC防护），https（HTTPS协议的CC防护）]；当不填时，默认为HTTP协议的CC防护；当填写https时还需要填写Domain和RuleId字段；
         :type Protocol: str
-        :param Domain: 可选字段，表示https协议的7层转发规则域名（通过获取7层转发规则接口可以获取域名），只有当Protocol字段为https时才必须填写此字段；
+        :param Domain: 可选字段，表示HTTPS协议的7层转发规则域名（通过获取7层转发规则接口可以获取域名），只有当Protocol字段为https时才必须填写此字段；
         :type Domain: str
-        :param RuleId: 可选字段，表示https协议的7层转发规则ID（通过获取7层转发规则接口可以获取规则ID），
+        :param RuleId: 可选字段，表示HTTPS协议的7层转发规则ID（通过获取7层转发规则接口可以获取规则ID），
 当Method为delete时，不用填写此字段；
         :type RuleId: str
         """
@@ -4788,16 +4894,15 @@ class ModifyCCLevelRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Business: 大禹子产品代号（bgpip表示高防IP；bgp表示独享包；bgp-multip表示共享包；net表示高防IP专业版）
+        :param Business: 大禹子产品代号（bgpip表示高防IP；net表示高防IP专业版）
         :type Business: str
         :param Id: 资源ID
         :type Id: str
         :param Level: CC防护等级，取值[default(正常), loose(宽松), strict(严格)];
         :type Level: str
-        :param Protocol: 可选字段，代表CC防护类型，取值[http（http协议的CC防护），https（https协议的CC防护）]；当不填时，默认为http协议的CC防护；当填写https时还需要填写RuleId字段；
+        :param Protocol: 可选字段，代表CC防护类型，取值[http（HTTP协议的CC防护），https（HTTPS协议的CC防护）]；当不填时，默认为HTTP协议的CC防护；当填写https时还需要填写RuleId字段；
         :type Protocol: str
-        :param RuleId: 可选字段，表示https协议的7层转发规则ID（通过获取7层转发规则接口可以获取规则ID）；
-当Protocol=https时必须填写；
+        :param RuleId: 表示7层转发规则ID（通过获取7层转发规则接口可以获取规则ID）；
         :type RuleId: str
         """
         self.Business = None
@@ -4967,9 +5072,9 @@ class ModifyCCThresholdRequest(AbstractModel):
   80:  250000,
   100: 300000,
         :type Threshold: int
-        :param Protocol: 可选字段，代表CC防护类型，取值[http（http协议的CC防护），https（https协议的CC防护）]；当不填时，默认为http协议的CC防护；当填写https时还需要填写RuleId字段；
+        :param Protocol: 可选字段，代表CC防护类型，取值[http（HTTP协议的CC防护），https（HTTPS协议的CC防护）]；当不填时，默认为HTTP协议的CC防护；当填写https时还需要填写RuleId字段；
         :type Protocol: str
-        :param RuleId: 可选字段，表示https协议的7层转发规则ID（通过获取7层转发规则接口可以获取规则ID）；
+        :param RuleId: 可选字段，表示HTTPS协议的7层转发规则ID（通过获取7层转发规则接口可以获取规则ID）；
 当Protocol=https时必须填写；
         :type RuleId: str
         """
@@ -5030,11 +5135,11 @@ class ModifyCCUrlAllowRequest(AbstractModel):
 http://域名/cgi
 https://域名/cgi
         :type UrlList: list of str
-        :param Protocol: 可选字段，代表CC防护类型，取值[http（http协议的CC防护），https（https协议的CC防护）]；当不填时，默认为http协议的CC防护；当填写https时还需要填写Domain和RuleId字段；
+        :param Protocol: 可选字段，代表CC防护类型，取值[http（HTTP协议的CC防护），https（HTTPS协议的CC防护）]；当不填时，默认为HTTP协议的CC防护；当填写https时还需要填写Domain和RuleId字段；
         :type Protocol: str
-        :param Domain: 可选字段，表示https协议的7层转发规则域名（通过获取7层转发规则接口可以获取域名），只有当Protocol字段为https时才必须填写此字段；
+        :param Domain: 可选字段，表示HTTPS协议的7层转发规则域名（通过获取7层转发规则接口可以获取域名），只有当Protocol字段为https时才必须填写此字段；
         :type Domain: str
-        :param RuleId: 可选字段，表示https协议的7层转发规则ID（通过获取7层转发规则接口可以获取规则ID），当添加并且Protocol=https时必须填写；
+        :param RuleId: 可选字段，表示HTTPS协议的7层转发规则ID（通过获取7层转发规则接口可以获取规则ID），当添加并且Protocol=https时必须填写；
 当Method为delete时，可以不用填写此字段；
         :type RuleId: str
         """
@@ -6069,6 +6174,27 @@ overloadCount（超峰值次数）
         self.Order = params.get("Order")
 
 
+class Paging(AbstractModel):
+    """分页索引
+
+    """
+
+    def __init__(self):
+        """
+        :param Offset: 起始位置
+        :type Offset: int
+        :param Limit: 数量
+        :type Limit: int
+        """
+        self.Offset = None
+        self.Limit = None
+
+
+    def _deserialize(self, params):
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+
+
 class ProtocolPort(AbstractModel):
     """Protocol、Port参数
 
@@ -6172,7 +6298,7 @@ class WaterPrintKey(AbstractModel):
         :type KeyVersion: str
         :param OpenStatus: 是否开启，取值[0（没有开启），1（已开启）]
         :type OpenStatus: int
-        :param CreateTime: 秘钥生成时间
+        :param CreateTime: 密钥生成时间
         :type CreateTime: str
         """
         self.KeyId = None

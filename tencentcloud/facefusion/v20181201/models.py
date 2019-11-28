@@ -34,7 +34,6 @@ class FaceFusionRequest(AbstractModel):
         :param PornDetect: 历史遗留字段，无需填写。因为融合只需提取人脸特征，不需要鉴黄。
         :type PornDetect: int
         :param CelebrityIdentify: 0表示不需要鉴政，1表示需要鉴政。默认值为0。
-鉴政接口同时会对名人明星进行识别，您可以根据实际需要过滤。
         :type CelebrityIdentify: int
         """
         self.ProjectId = None
@@ -134,6 +133,8 @@ class FuseFaceRequest(AbstractModel):
         :param FuseFaceDegree: 五官融合比例，数值越高，融合后的五官越像素材人物。取值范围[0,100] 
 若此参数不填写，则使用人脸融合控制台中五官参数数值。
         :type FuseFaceDegree: int
+        :param CelebrityIdentify: 0表示不需要鉴政，1表示需要鉴政。默认值为0。
+        :type CelebrityIdentify: int
         """
         self.ProjectId = None
         self.ModelId = None
@@ -141,6 +142,7 @@ class FuseFaceRequest(AbstractModel):
         self.MergeInfos = None
         self.FuseProfileDegree = None
         self.FuseFaceDegree = None
+        self.CelebrityIdentify = None
 
 
     def _deserialize(self, params):
@@ -155,6 +157,7 @@ class FuseFaceRequest(AbstractModel):
                 self.MergeInfos.append(obj)
         self.FuseProfileDegree = params.get("FuseProfileDegree")
         self.FuseFaceDegree = params.get("FuseFaceDegree")
+        self.CelebrityIdentify = params.get("CelebrityIdentify")
 
 
 class FuseFaceResponse(AbstractModel):
@@ -166,15 +169,25 @@ class FuseFaceResponse(AbstractModel):
         """
         :param FusedImage: RspImgType 为 url 时，返回结果的 url， RspImgType 为 base64 时返回 base64 数据。
         :type FusedImage: str
+        :param ReviewResultSet: 鉴政结果。该数组的顺序和请求中mergeinfo的顺序一致，一一对应
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ReviewResultSet: list of FuseFaceReviewResult
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.FusedImage = None
+        self.ReviewResultSet = None
         self.RequestId = None
 
 
     def _deserialize(self, params):
         self.FusedImage = params.get("FusedImage")
+        if params.get("ReviewResultSet") is not None:
+            self.ReviewResultSet = []
+            for item in params.get("ReviewResultSet"):
+                obj = FuseFaceReviewResult()
+                obj._deserialize(item)
+                self.ReviewResultSet.append(obj)
         self.RequestId = params.get("RequestId")
 
 
@@ -185,13 +198,19 @@ class FuseFaceReviewDetail(AbstractModel):
 
     def __init__(self):
         """
-        :param Field: 鉴政使用字段, 为职业属性,其他审核结果对应上一级category
+        :param Field: 保留字段
         :type Field: str
         :param Label: 人员名称
         :type Label: str
-        :param Confidence: 对应识别label的置信度
+        :param Confidence: 对应识别label的置信度，分数越高意味涉政可能性越大。 
+0到70，Suggestion建议为PASS； 
+70到80，Suggestion建议为REVIEW； 
+80到100，Suggestion建议为BLOCK。
         :type Confidence: float
-        :param Suggestion: 此字段为保留字段，目前统一返回pass。
+        :param Suggestion: 识别场景的审核结论：  
+PASS：正常 
+REVIEW：疑似  
+BLOCK：违规
         :type Suggestion: str
         """
         self.Field = None
@@ -214,15 +233,15 @@ class FuseFaceReviewResult(AbstractModel):
 
     def __init__(self):
         """
-        :param Category: 对应的类别名称 porn, politics, terror
+        :param Category: 保留字段
         :type Category: str
-        :param Code: 对应子类别状态码
+        :param Code: 状态码， 0为处理成功，其他值为处理失败
         :type Code: str
-        :param CodeDescription: 对应子类别状态码信息描述
+        :param CodeDescription: 对应状态码信息描述
         :type CodeDescription: str
-        :param Confidence: 对应识别种类的置信度
+        :param Confidence: 保留字段
         :type Confidence: float
-        :param Suggestion: 此字段为保留字段，目前统一返回pass。
+        :param Suggestion: 保留字段
         :type Suggestion: str
         :param DetailSet: 审核详细内容
         :type DetailSet: list of FuseFaceReviewDetail

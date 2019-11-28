@@ -35,6 +35,8 @@ class AddExistedInstancesRequest(AbstractModel):
         :type LoginSettings: :class:`tencentcloud.tke.v20180525.models.LoginSettings`
         :param SecurityGroupIds: 实例所属安全组。该参数可以通过调用 DescribeSecurityGroups 的返回值中的sgId字段来获取。若不指定该参数，则绑定默认安全组。（目前仅支持设置单个sgId）
         :type SecurityGroupIds: list of str
+        :param HostName: 重装系统时，可以指定修改实例的HostName(集群为HostName模式时，此参数必传，规则名称除不支持大写字符外与[CVM创建实例](https://cloud.tencent.com/document/product/213/15730)接口HostName一致)
+        :type HostName: str
         """
         self.ClusterId = None
         self.InstanceIds = None
@@ -42,6 +44,7 @@ class AddExistedInstancesRequest(AbstractModel):
         self.EnhancedService = None
         self.LoginSettings = None
         self.SecurityGroupIds = None
+        self.HostName = None
 
 
     def _deserialize(self, params):
@@ -57,6 +60,7 @@ class AddExistedInstancesRequest(AbstractModel):
             self.LoginSettings = LoginSettings()
             self.LoginSettings._deserialize(params.get("LoginSettings"))
         self.SecurityGroupIds = params.get("SecurityGroupIds")
+        self.HostName = params.get("HostName")
 
 
 class AddExistedInstancesResponse(AbstractModel):
@@ -118,6 +122,9 @@ class Cluster(AbstractModel):
         :type TagSpecification: list of TagSpecification
         :param ClusterStatus: 集群状态 (Running 运行中  Creating 创建中 Abnormal 异常  )
         :type ClusterStatus: str
+        :param Property: 集群属性(包括集群不同属性的MAP，属性字段包括NodeNameType (lan-ip模式和hostname 模式，默认无lan-ip模式))
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Property: str
         """
         self.ClusterId = None
         self.ClusterName = None
@@ -130,6 +137,7 @@ class Cluster(AbstractModel):
         self.ProjectId = None
         self.TagSpecification = None
         self.ClusterStatus = None
+        self.Property = None
 
 
     def _deserialize(self, params):
@@ -151,6 +159,7 @@ class Cluster(AbstractModel):
                 obj._deserialize(item)
                 self.TagSpecification.append(obj)
         self.ClusterStatus = params.get("ClusterStatus")
+        self.Property = params.get("Property")
 
 
 class ClusterAdvancedSettings(AbstractModel):
@@ -166,7 +175,7 @@ class ClusterAdvancedSettings(AbstractModel):
         :type AsEnabled: bool
         :param ContainerRuntime: 集群使用的runtime类型，包括"docker"和"containerd"两种类型，默认为"docker"
         :type ContainerRuntime: str
-        :param NodeNameType: 集群中节点NodeName类型（包括 hostname,lan-ip两种形式，默认为lan-ip）
+        :param NodeNameType: 集群中节点NodeName类型（包括 hostname,lan-ip两种形式，默认为lan-ip。如果开启了hostname模式，创建节点时需要设置HostName参数，并且InstanceName需要和HostName一致）
         :type NodeNameType: str
         """
         self.IPVS = None
@@ -669,6 +678,43 @@ class CreateClusterRouteTableResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
+
+
+class DataDisk(AbstractModel):
+    """描述了k8s节点数据盘相关配置与信息。
+
+    """
+
+    def __init__(self):
+        """
+        :param DiskType: 云盘类型
+        :type DiskType: str
+        :param FileSystem: 文件系统
+        :type FileSystem: str
+        :param DiskSize: 云盘大小(G）
+        :type DiskSize: int
+        :param AutuFormatAndMount: 是否自动化格式盘并挂载
+        :type AutuFormatAndMount: bool
+        :param MountTarget: 挂载目录
+        :type MountTarget: list of str
+        :param DiskId: 云盘ID
+        :type DiskId: list of str
+        """
+        self.DiskType = None
+        self.FileSystem = None
+        self.DiskSize = None
+        self.AutuFormatAndMount = None
+        self.MountTarget = None
+        self.DiskId = None
+
+
+    def _deserialize(self, params):
+        self.DiskType = params.get("DiskType")
+        self.FileSystem = params.get("FileSystem")
+        self.DiskSize = params.get("DiskSize")
+        self.AutuFormatAndMount = params.get("AutuFormatAndMount")
+        self.MountTarget = params.get("MountTarget")
+        self.DiskId = params.get("DiskId")
 
 
 class DeleteClusterAsGroupsRequest(AbstractModel):
@@ -1579,7 +1625,7 @@ class ExistedInstancesPara(AbstractModel):
         :type LoginSettings: :class:`tencentcloud.tke.v20180525.models.LoginSettings`
         :param SecurityGroupIds: 实例所属安全组。该参数可以通过调用 DescribeSecurityGroups 的返回值中的sgId字段来获取。若不指定该参数，则绑定默认安全组。
         :type SecurityGroupIds: list of str
-        :param HostName: 重装系统时，可以指定修改实例的HostName。
+        :param HostName: 重装系统时，可以指定修改实例的HostName(集群为HostName模式时，此参数必传，规则名称除不支持大写字符外与[CVM创建实例](https://cloud.tencent.com/document/product/213/15730)接口HostName一致)
         :type HostName: str
         """
         self.InstanceIds = None
@@ -1672,12 +1718,15 @@ class InstanceAdvancedSettings(AbstractModel):
         :type Unschedulable: int
         :param Labels: 节点Label数组
         :type Labels: list of Label
+        :param DataDisks: 数据盘相关信息
+        :type DataDisks: list of DataDisk
         """
         self.MountTarget = None
         self.DockerGraphPath = None
         self.UserScript = None
         self.Unschedulable = None
         self.Labels = None
+        self.DataDisks = None
 
 
     def _deserialize(self, params):
@@ -1691,6 +1740,12 @@ class InstanceAdvancedSettings(AbstractModel):
                 obj = Label()
                 obj._deserialize(item)
                 self.Labels.append(obj)
+        if params.get("DataDisks") is not None:
+            self.DataDisks = []
+            for item in params.get("DataDisks"):
+                obj = DataDisk()
+                obj._deserialize(item)
+                self.DataDisks.append(obj)
 
 
 class Label(AbstractModel):

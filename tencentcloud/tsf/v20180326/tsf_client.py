@@ -642,6 +642,34 @@ class TsfClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DeployServerlessGroup(self, request):
+        """部署Serverless应用
+
+        :param request: 调用DeployServerlessGroup所需参数的结构体。
+        :type request: :class:`tencentcloud.tsf.v20180326.models.DeployServerlessGroupRequest`
+        :rtype: :class:`tencentcloud.tsf.v20180326.models.DeployServerlessGroupResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DeployServerlessGroup", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DeployServerlessGroupResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeApplication(self, request):
         """获取应用详情
 
