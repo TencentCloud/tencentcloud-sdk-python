@@ -87,19 +87,22 @@ class AddBandwidthPackageResourcesRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param ResourceIds: 资源Id，形如'eip-xxxx', 'lb-xxxx'
+        :param ResourceIds: 资源唯一ID，当前支持EIP资源和LB资源，形如'eip-xxxx', 'lb-xxxx'
         :type ResourceIds: list of str
         :param BandwidthPackageId: 带宽包唯一标识ID，形如'bwp-xxxx'
         :type BandwidthPackageId: str
-        :param NetworkType: 带宽包类型，包括'BGP', 'SINGLEISP', 'ANYCAST'
+        :param NetworkType: 带宽包类型，当前支持'BGP'类型，表示内部资源是BGP IP。
         :type NetworkType: str
         :param ResourceType: 资源类型，包括'Address', 'LoadBalance'
         :type ResourceType: str
+        :param Protocol: 带宽包协议类型。当前支持'ipv4'和'ipv6'协议类型。
+        :type Protocol: str
         """
         self.ResourceIds = None
         self.BandwidthPackageId = None
         self.NetworkType = None
         self.ResourceType = None
+        self.Protocol = None
 
 
     def _deserialize(self, params):
@@ -107,6 +110,7 @@ class AddBandwidthPackageResourcesRequest(AbstractModel):
         self.BandwidthPackageId = params.get("BandwidthPackageId")
         self.NetworkType = params.get("NetworkType")
         self.ResourceType = params.get("ResourceType")
+        self.Protocol = params.get("Protocol")
 
 
 class AddBandwidthPackageResourcesResponse(AbstractModel):
@@ -385,6 +389,56 @@ class AllocateAddressesResponse(AbstractModel):
     def __init__(self):
         """
         :param AddressSet: 申请到的 EIP 的唯一 ID 列表。
+        :type AddressSet: list of str
+        :param TaskId: 异步任务TaskId。可以使用[DescribeTaskResult](https://cloud.tencent.com/document/api/215/36271)接口查询任务状态。
+        :type TaskId: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.AddressSet = None
+        self.TaskId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.AddressSet = params.get("AddressSet")
+        self.TaskId = params.get("TaskId")
+        self.RequestId = params.get("RequestId")
+
+
+class AllocateIp6AddressesBandwidthRequest(AbstractModel):
+    """AllocateIp6AddressesBandwidth请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Ip6Addresses: 需要开通公网访问能力的IPV6地址
+        :type Ip6Addresses: list of str
+        :param InternetMaxBandwidthOut: 带宽，单位Mbps。默认是1Mbps
+        :type InternetMaxBandwidthOut: int
+        :param InternetChargeType: 网络计费模式。IPV6当前支持"TRAFFIC_POSTPAID_BY_HOUR"，默认是"TRAFFIC_POSTPAID_BY_HOUR"。
+        :type InternetChargeType: str
+        """
+        self.Ip6Addresses = None
+        self.InternetMaxBandwidthOut = None
+        self.InternetChargeType = None
+
+
+    def _deserialize(self, params):
+        self.Ip6Addresses = params.get("Ip6Addresses")
+        self.InternetMaxBandwidthOut = params.get("InternetMaxBandwidthOut")
+        self.InternetChargeType = params.get("InternetChargeType")
+
+
+class AllocateIp6AddressesBandwidthResponse(AbstractModel):
+    """AllocateIp6AddressesBandwidth返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param AddressSet: 弹性公网 IPV6 的唯一 ID 列表。
         :type AddressSet: list of str
         :param TaskId: 异步任务TaskId。可以使用[DescribeTaskResult](https://cloud.tencent.com/document/api/215/36271)接口查询任务状态。
         :type TaskId: str
@@ -1149,14 +1203,14 @@ VPN：VPN网关；
 DIRECTCONNECT：专线网关；
 PEERCONNECTION：对等连接；
 NAT：NAT网关；
-NORMAL_CVM：普通云主机；
+NORMAL_CVM：普通云服务器；
         :type NextHopType: str
         :param NextHopDestination: 下一跳目的网关，取值与“下一跳类型”相关：
 下一跳类型为VPN，取值VPN网关ID，形如：vpngw-12345678；
 下一跳类型为DIRECTCONNECT，取值专线网关ID，形如：dcg-12345678；
 下一跳类型为PEERCONNECTION，取值对等连接ID，形如：pcx-12345678；
 下一跳类型为NAT，取值Nat网关，形如：nat-12345678；
-下一跳类型为NORMAL_CVM，取值云主机IPv4地址，形如：10.0.0.12；
+下一跳类型为NORMAL_CVM，取值云服务器IPv4地址，形如：10.0.0.12；
         :type NextHopDestination: str
         :param NetDetectId: 网络探测实例ID。形如：netd-12345678。
         :type NetDetectId: str
@@ -1338,12 +1392,18 @@ class CreateBandwidthPackageRequest(AbstractModel):
         :type BandwidthPackageCount: int
         :param InternetMaxBandwidth: 带宽包限速大小。单位：Mbps，-1表示不限速。
         :type InternetMaxBandwidth: int
+        :param Tags: 需要关联的标签列表。
+        :type Tags: list of Tag
+        :param Protocol: 带宽包协议类型。当前支持'ipv4'和'ipv6'协议带宽包，默认值是'ipv4'。
+        :type Protocol: str
         """
         self.NetworkType = None
         self.ChargeType = None
         self.BandwidthPackageName = None
         self.BandwidthPackageCount = None
         self.InternetMaxBandwidth = None
+        self.Tags = None
+        self.Protocol = None
 
 
     def _deserialize(self, params):
@@ -1352,6 +1412,13 @@ class CreateBandwidthPackageRequest(AbstractModel):
         self.BandwidthPackageName = params.get("BandwidthPackageName")
         self.BandwidthPackageCount = params.get("BandwidthPackageCount")
         self.InternetMaxBandwidth = params.get("InternetMaxBandwidth")
+        if params.get("Tags") is not None:
+            self.Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self.Tags.append(obj)
+        self.Protocol = params.get("Protocol")
 
 
 class CreateBandwidthPackageResponse(AbstractModel):
@@ -1361,9 +1428,9 @@ class CreateBandwidthPackageResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param BandwidthPackageId: 带宽包Id
+        :param BandwidthPackageId: 带宽包唯一ID
         :type BandwidthPackageId: str
-        :param BandwidthPackageIds: 带宽包Ids(申请数量大于1时有效)
+        :param BandwidthPackageIds: 带宽包唯一ID列表(申请数量大于1时有效)
         :type BandwidthPackageIds: list of str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -1922,14 +1989,14 @@ VPN：VPN网关；
 DIRECTCONNECT：专线网关；
 PEERCONNECTION：对等连接；
 NAT：NAT网关；
-NORMAL_CVM：普通云主机；
+NORMAL_CVM：普通云服务器；
         :type NextHopType: str
         :param NextHopDestination: 下一跳目的网关，取值与“下一跳类型”相关：
 下一跳类型为VPN，取值VPN网关ID，形如：vpngw-12345678；
 下一跳类型为DIRECTCONNECT，取值专线网关ID，形如：dcg-12345678；
 下一跳类型为PEERCONNECTION，取值对等连接ID，形如：pcx-12345678；
 下一跳类型为NAT，取值Nat网关，形如：nat-12345678；
-下一跳类型为NORMAL_CVM，取值云主机IPv4地址，形如：10.0.0.12；
+下一跳类型为NORMAL_CVM，取值云服务器IPv4地址，形如：10.0.0.12；
         :type NextHopDestination: str
         :param NetDetectDescription: 网络探测描述。
         :type NetDetectDescription: str
@@ -1997,6 +2064,8 @@ class CreateNetworkInterfaceRequest(AbstractModel):
         :type SecurityGroupIds: list of str
         :param PrivateIpAddresses: 指定的内网IP信息，单次最多指定10个。
         :type PrivateIpAddresses: list of PrivateIpAddressSpecification
+        :param Tags: 指定绑定的标签列表，例如：[{"Key": "city", "Value": "shanghai"}]
+        :type Tags: list of Tag
         """
         self.VpcId = None
         self.NetworkInterfaceName = None
@@ -2005,6 +2074,7 @@ class CreateNetworkInterfaceRequest(AbstractModel):
         self.SecondaryPrivateIpAddressCount = None
         self.SecurityGroupIds = None
         self.PrivateIpAddresses = None
+        self.Tags = None
 
 
     def _deserialize(self, params):
@@ -2020,6 +2090,12 @@ class CreateNetworkInterfaceRequest(AbstractModel):
                 obj = PrivateIpAddressSpecification()
                 obj._deserialize(item)
                 self.PrivateIpAddresses.append(obj)
+        if params.get("Tags") is not None:
+            self.Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self.Tags.append(obj)
 
 
 class CreateNetworkInterfaceResponse(AbstractModel):
@@ -2770,7 +2846,7 @@ class DeleteBandwidthPackageRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param BandwidthPackageId: 待删除带宽包bwpId
+        :param BandwidthPackageId: 待删除带宽包唯一ID
         :type BandwidthPackageId: str
         """
         self.BandwidthPackageId = None
@@ -3820,7 +3896,7 @@ class DescribeBandwidthPackageQuotaResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param QuotaSet: 带宽包配额数据结构
+        :param QuotaSet: 带宽包配额详细信息
         :type QuotaSet: list of Quota
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -3846,7 +3922,7 @@ class DescribeBandwidthPackagesRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param BandwidthPackageIds: 带宽包Id，支持批量
+        :param BandwidthPackageIds: 带宽包唯一ID列表
         :type BandwidthPackageIds: list of str
         :param Filters: 每次请求的`Filters`的上限为10。参数不支持同时指定`BandwidthPackageIds`和`Filters`。详细的过滤条件如下：
 <li> bandwidth-package_id - String - 是否必填：否 - （过滤条件）按照带宽包的唯一标识ID过滤。</li>
@@ -4189,7 +4265,7 @@ class DescribeClassicLinkInstancesRequest(AbstractModel):
         """
         :param Filters: 过滤条件。
 <li>vpc-id - String - （过滤条件）VPC实例ID。</li>
-<li>vm-ip - String - （过滤条件）基础网络云主机IP。</li>
+<li>vm-ip - String - （过滤条件）基础网络云服务器IP。</li>
         :type Filters: list of FilterObject
         :param Offset: 偏移量
         :type Offset: str
@@ -4759,6 +4835,72 @@ class DescribeHaVipsResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeIp6AddressesRequest(AbstractModel):
+    """DescribeIp6Addresses请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Ip6AddressIds: 标识 IPV6 的唯一 ID 列表。IPV6 唯一 ID 形如：`eip-11112222`。参数不支持同时指定`Ip6AddressIds`和`Filters`。
+        :type Ip6AddressIds: list of str
+        :param Filters: 每次请求的`Filters`的上限为10，`Filter.Values`的上限为5。参数不支持同时指定`AddressIds`和`Filters`。详细的过滤条件如下：
+<li> address-ip - String - 是否必填：否 - （过滤条件）按照 EIP 的 IP 地址过滤。</li>
+<li> network-interface-id - String - 是否必填：否 - （过滤条件）按照弹性网卡的唯一ID过滤。</li>
+        :type Filters: list of Filter
+        :param Offset: 偏移量，默认为0。关于`Offset`的更进一步介绍请参考 API [简介](https://cloud.tencent.com/document/api/213/11646)中的相关小节。
+        :type Offset: int
+        :param Limit: 返回数量，默认为20，最大值为100。关于`Limit`的更进一步介绍请参考 API [简介](https://cloud.tencent.com/document/api/213/11646)中的相关小节。
+        :type Limit: int
+        """
+        self.Ip6AddressIds = None
+        self.Filters = None
+        self.Offset = None
+        self.Limit = None
+
+
+    def _deserialize(self, params):
+        self.Ip6AddressIds = params.get("Ip6AddressIds")
+        if params.get("Filters") is not None:
+            self.Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self.Filters.append(obj)
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+
+
+class DescribeIp6AddressesResponse(AbstractModel):
+    """DescribeIp6Addresses返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param TotalCount: 符合条件的 IPV6 数量。
+        :type TotalCount: int
+        :param AddressSet: IPV6 详细信息列表。
+        :type AddressSet: list of Address
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.AddressSet = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("AddressSet") is not None:
+            self.AddressSet = []
+            for item in params.get("AddressSet"):
+                obj = Address()
+                obj._deserialize(item)
+                self.AddressSet.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeIp6TranslatorQuotaRequest(AbstractModel):
     """DescribeIp6TranslatorQuota请求参数结构体
 
@@ -4784,7 +4926,7 @@ class DescribeIp6TranslatorQuotaResponse(AbstractModel):
     def __init__(self):
         """
         :param QuotaSet: 账户在指定地域的IPV6转换实例及规则配额信息
-QUOTAID属性是TOTAL_TRANSLATOR_QUOTA，表示账户在指定地域的IPV6转换实例配额信息；QUOTAID属性是IPV6转转换实例唯一ID（形如ip6-xxxxxxxx），表示账户在该转换实例允许创建的转换规则配额
+QUOTAID属性是TOTAL_TRANSLATOR_QUOTA，表示账户在指定地域的IPV6转换实例配额信息；QUOTAID属性是IPV6转换实例唯一ID（形如ip6-xxxxxxxx），表示账户在该转换实例允许创建的转换规则配额
         :type QuotaSet: list of Quota
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -5474,7 +5616,7 @@ class DescribeSecurityGroupsRequest(AbstractModel):
         :type SecurityGroupIds: list of str
         :param Filters: 过滤条件，参数不支持同时指定SecurityGroupIds和Filters。
 <li>security-group-id - String - （过滤条件）安全组ID。</li>
-<li>project-id - Integer - （过滤条件）项目id。</li>
+<li>project-id - Integer - （过滤条件）项目ID。</li>
 <li>security-group-name - String - （过滤条件）安全组名称。</li>
 <li>tag-key - String -是否必填：否- （过滤条件）按照标签键进行过滤。使用请参考示例2。</li>
 <li>tag:tag-key - String - 是否必填：否 - （过滤条件）按照标签键值对进行过滤。 tag-key使用具体的标签键进行替换。使用请参考示例3。</li>
@@ -7593,7 +7735,7 @@ class ModifyAddressesBandwidthRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param AddressIds: EIP唯一标识id，形如'eip-xxxx'
+        :param AddressIds: EIP唯一标识ID，形如'eip-xxxx'
         :type AddressIds: list of str
         :param InternetMaxBandwidthOut: 调整带宽目标值
         :type InternetMaxBandwidthOut: int
@@ -7880,6 +8022,48 @@ class ModifyHaVipAttributeResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class ModifyIp6AddressesBandwidthRequest(AbstractModel):
+    """ModifyIp6AddressesBandwidth请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param InternetMaxBandwidthOut: 修改的目标带宽，单位Mbps
+        :type InternetMaxBandwidthOut: int
+        :param Ip6Addresses: IPV6地址。Ip6Addresses和Ip6AddressId必须且只能传一个
+        :type Ip6Addresses: list of str
+        :param Ip6AddressIds: IPV6地址对应的唯一ID，形如eip-xxxxxxxx。Ip6Addresses和Ip6AddressId必须且只能传一个
+        :type Ip6AddressIds: list of str
+        """
+        self.InternetMaxBandwidthOut = None
+        self.Ip6Addresses = None
+        self.Ip6AddressIds = None
+
+
+    def _deserialize(self, params):
+        self.InternetMaxBandwidthOut = params.get("InternetMaxBandwidthOut")
+        self.Ip6Addresses = params.get("Ip6Addresses")
+        self.Ip6AddressIds = params.get("Ip6AddressIds")
+
+
+class ModifyIp6AddressesBandwidthResponse(AbstractModel):
+    """ModifyIp6AddressesBandwidth返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class ModifyIp6RuleRequest(AbstractModel):
     """ModifyIp6Rule请求参数结构体
 
@@ -8117,14 +8301,14 @@ VPN：VPN网关；
 DIRECTCONNECT：专线网关；
 PEERCONNECTION：对等连接；
 NAT：NAT网关；
-NORMAL_CVM：普通云主机；
+NORMAL_CVM：普通云服务器；
         :type NextHopType: str
         :param NextHopDestination: 下一跳目的网关，取值与“下一跳类型”相关：
 下一跳类型为VPN，取值VPN网关ID，形如：vpngw-12345678；
 下一跳类型为DIRECTCONNECT，取值专线网关ID，形如：dcg-12345678；
 下一跳类型为PEERCONNECTION，取值对等连接ID，形如：pcx-12345678；
 下一跳类型为NAT，取值Nat网关，形如：nat-12345678；
-下一跳类型为NORMAL_CVM，取值云主机IPv4地址，形如：10.0.0.12；
+下一跳类型为NORMAL_CVM，取值云服务器IPv4地址，形如：10.0.0.12；
         :type NextHopDestination: str
         :param NetDetectDescription: 网络探测描述。
         :type NetDetectDescription: str
@@ -8343,9 +8527,12 @@ class ModifySecurityGroupPoliciesRequest(AbstractModel):
         :type SecurityGroupId: str
         :param SecurityGroupPolicySet: 安全组规则集合。 SecurityGroupPolicySet对象必须同时指定新的出（Egress）入（Ingress）站规则。 SecurityGroupPolicy对象不支持自定义索引（PolicyIndex）。
         :type SecurityGroupPolicySet: :class:`tencentcloud.vpc.v20170312.models.SecurityGroupPolicySet`
+        :param SortPolicys: 排序安全组标识。值为True时，支持安全组排序；SortPolicys不存在或SortPolicys为False时，为修改安全组规则。
+        :type SortPolicys: bool
         """
         self.SecurityGroupId = None
         self.SecurityGroupPolicySet = None
+        self.SortPolicys = None
 
 
     def _deserialize(self, params):
@@ -8353,6 +8540,7 @@ class ModifySecurityGroupPoliciesRequest(AbstractModel):
         if params.get("SecurityGroupPolicySet") is not None:
             self.SecurityGroupPolicySet = SecurityGroupPolicySet()
             self.SecurityGroupPolicySet._deserialize(params.get("SecurityGroupPolicySet"))
+        self.SortPolicys = params.get("SortPolicys")
 
 
 class ModifySecurityGroupPoliciesResponse(AbstractModel):
@@ -8980,6 +9168,8 @@ class NetworkInterface(AbstractModel):
         :type Ipv6AddressSet: list of Ipv6Address
         :param TagSet: 标签键值对。
         :type TagSet: list of Tag
+        :param EniType: 网卡类型。0 - 弹性网卡；1 - evm弹性网卡。
+        :type EniType: int
         """
         self.NetworkInterfaceId = None
         self.NetworkInterfaceName = None
@@ -8996,6 +9186,7 @@ class NetworkInterface(AbstractModel):
         self.CreatedTime = None
         self.Ipv6AddressSet = None
         self.TagSet = None
+        self.EniType = None
 
 
     def _deserialize(self, params):
@@ -9031,6 +9222,7 @@ class NetworkInterface(AbstractModel):
                 obj = Tag()
                 obj._deserialize(item)
                 self.TagSet.append(obj)
+        self.EniType = params.get("EniType")
 
 
 class NetworkInterfaceAttachment(AbstractModel):
@@ -9238,6 +9430,48 @@ class ReleaseAddressesResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class ReleaseIp6AddressesBandwidthRequest(AbstractModel):
+    """ReleaseIp6AddressesBandwidth请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Ip6Addresses: IPV6地址。Ip6Addresses和Ip6AddressIds必须且只能传一个
+        :type Ip6Addresses: list of str
+        :param Ip6AddressIds: IPV6地址对应的唯一ID，形如eip-xxxxxxxx。Ip6Addresses和Ip6AddressIds必须且只能传一个。
+        :type Ip6AddressIds: list of str
+        """
+        self.Ip6Addresses = None
+        self.Ip6AddressIds = None
+
+
+    def _deserialize(self, params):
+        self.Ip6Addresses = params.get("Ip6Addresses")
+        self.Ip6AddressIds = params.get("Ip6AddressIds")
+
+
+class ReleaseIp6AddressesBandwidthResponse(AbstractModel):
+    """ReleaseIp6AddressesBandwidth返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param TaskId: 异步任务TaskId。可以使用[DescribeTaskResult](https://cloud.tencent.com/document/api/215/36271)接口查询任务状态。
+        :type TaskId: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TaskId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TaskId = params.get("TaskId")
+        self.RequestId = params.get("RequestId")
+
+
 class RemoveBandwidthPackageResourcesRequest(AbstractModel):
     """RemoveBandwidthPackageResources请求参数结构体
 
@@ -9249,7 +9483,7 @@ class RemoveBandwidthPackageResourcesRequest(AbstractModel):
         :type BandwidthPackageId: str
         :param ResourceType: 资源类型，包括‘Address’, ‘LoadBalance’
         :type ResourceType: str
-        :param ResourceIds: 资源Id，形如'eip-xxxx', 'lb-xxxx'
+        :param ResourceIds: 资源ID，可支持资源形如'eip-xxxx', 'lb-xxxx'
         :type ResourceIds: list of str
         """
         self.BandwidthPackageId = None
@@ -10805,6 +11039,8 @@ class VpnGateway(AbstractModel):
         :type RestrictState: str
         :param Zone: 可用区，如：ap-guangzhou-2
         :type Zone: str
+        :param VpnGatewayQuotaSet: 网关带宽配额信息
+        :type VpnGatewayQuotaSet: list of VpnGatewayQuota
         """
         self.VpnGatewayId = None
         self.VpcId = None
@@ -10821,6 +11057,7 @@ class VpnGateway(AbstractModel):
         self.NewPurchasePlan = None
         self.RestrictState = None
         self.Zone = None
+        self.VpnGatewayQuotaSet = None
 
 
     def _deserialize(self, params):
@@ -10839,3 +11076,34 @@ class VpnGateway(AbstractModel):
         self.NewPurchasePlan = params.get("NewPurchasePlan")
         self.RestrictState = params.get("RestrictState")
         self.Zone = params.get("Zone")
+        if params.get("VpnGatewayQuotaSet") is not None:
+            self.VpnGatewayQuotaSet = []
+            for item in params.get("VpnGatewayQuotaSet"):
+                obj = VpnGatewayQuota()
+                obj._deserialize(item)
+                self.VpnGatewayQuotaSet.append(obj)
+
+
+class VpnGatewayQuota(AbstractModel):
+    """VPN网关配额对象
+
+    """
+
+    def __init__(self):
+        """
+        :param Bandwidth: 带宽配额
+        :type Bandwidth: int
+        :param Cname: 配额中文名称
+        :type Cname: str
+        :param Name: 配额英文名称
+        :type Name: str
+        """
+        self.Bandwidth = None
+        self.Cname = None
+        self.Name = None
+
+
+    def _deserialize(self, params):
+        self.Bandwidth = params.get("Bandwidth")
+        self.Cname = params.get("Cname")
+        self.Name = params.get("Name")

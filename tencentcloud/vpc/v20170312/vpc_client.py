@@ -142,6 +142,34 @@ class VpcClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def AllocateIp6AddressesBandwidth(self, request):
+        """该接口用于给IPv6地址初次分配公网带宽
+
+        :param request: 调用AllocateIp6AddressesBandwidth所需参数的结构体。
+        :type request: :class:`tencentcloud.vpc.v20170312.models.AllocateIp6AddressesBandwidthRequest`
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.AllocateIp6AddressesBandwidthResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("AllocateIp6AddressesBandwidth", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.AllocateIp6AddressesBandwidthResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def AssignIpv6Addresses(self, request):
         """本接口（AssignIpv6Addresses）用于弹性网卡申请`IPv6`地址。<br />
         本接口是异步完成，如需查询异步任务执行结果，请使用本接口返回的`RequestId`轮询`QueryTask`接口。
@@ -177,7 +205,7 @@ class VpcClient(AbstractClient):
 
     def AssignIpv6CidrBlock(self, request):
         """本接口（AssignIpv6CidrBlock）用于分配IPv6网段。
-        * 使用本接口前，你需要已有VPC实例，如果没有可通过接口<a href="https://cloud.tencent.com/document/api/215/15774" title="CreateVpc" target="_blank">CreateVpc</a>创建。
+        * 使用本接口前，您需要已有VPC实例，如果没有可通过接口<a href="https://cloud.tencent.com/document/api/215/15774" title="CreateVpc" target="_blank">CreateVpc</a>创建。
         * 每个VPC只能申请一个IPv6网段
 
         :param request: 调用AssignIpv6CidrBlock所需参数的结构体。
@@ -591,13 +619,13 @@ class VpcClient(AbstractClient):
     def CreateDefaultVpc(self, request):
         """本接口（CreateDefaultVpc）用于创建默认私有网络(VPC）。
 
-        默认VPC适用于快速入门和启动公共实例，您可以像使用任何其他VPC一样使用默认VPC。如果你想创建标准VPC，即指定VPC名称、VPC网段、子网网段、子网可用区，请使用常规创建VPC接口（CreateVpc）
+        默认VPC适用于快速入门和启动公共实例，您可以像使用任何其他VPC一样使用默认VPC。如果您想创建标准VPC，即指定VPC名称、VPC网段、子网网段、子网可用区，请使用常规创建VPC接口（CreateVpc）
 
         正常情况，本接口并不一定生产默认VPC，而是根据用户账号的网络属性（DescribeAccountAttributes）来决定的
         * 支持基础网络、VPC，返回VpcId为0
         * 只支持VPC，返回默认VPC信息
 
-        你也可以通过 Force 参数，强制返回默认VPC
+        您也可以通过 Force 参数，强制返回默认VPC
 
         :param request: 调用CreateDefaultVpc所需参数的结构体。
         :type request: :class:`tencentcloud.vpc.v20170312.models.CreateDefaultVpcRequest`
@@ -738,7 +766,7 @@ class VpcClient(AbstractClient):
 
     def CreateIp6Translators(self, request):
         """1. 该接口用于创建IPV6转换IPV4实例，支持批量
-        2. 同一个账户在在一个地域最多允许创建10个转换实例
+        2. 同一个账户在一个地域最多允许创建10个转换实例
 
         :param request: 调用CreateIp6Translators所需参数的结构体。
         :type request: :class:`tencentcloud.vpc.v20170312.models.CreateIp6TranslatorsRequest`
@@ -855,6 +883,7 @@ class VpcClient(AbstractClient):
         * 创建弹性网卡时可以指定需要申请的内网IP数量，系统会随机生成内网IP地址。
         * 一个弹性网卡支持绑定的IP地址是有限制的，更多资源限制信息详见<a href="/document/product/576/18527">弹性网卡使用限制</a>。
         * 创建弹性网卡同时可以绑定已有安全组。
+        * 创建弹性网卡同时可以绑定标签, 应答里的标签列表代表添加成功的标签。
 
         :param request: 调用CreateNetworkInterface所需参数的结构体。
         :type request: :class:`tencentcloud.vpc.v20170312.models.CreateNetworkInterfaceRequest`
@@ -972,13 +1001,14 @@ class VpcClient(AbstractClient):
     def CreateSecurityGroupPolicies(self, request):
         """本接口（CreateSecurityGroupPolicies）用于创建安全组规则（SecurityGroupPolicy）。
 
-        * Version安全组规则版本号，用户每次更新安全规则版本会自动加1，防止你更新的路由规则已过期，不填不考虑冲突。
-        * Protocol字段支持输入TCP, UDP, ICMP, GRE, ALL。
+        * Version安全组规则版本号，用户每次更新安全规则版本会自动加1，防止您更新的路由规则已过期，不填不考虑冲突。
+        * Protocol字段支持输入TCP, UDP, ICMP, ICMPV6, GRE, ALL。
         * CidrBlock字段允许输入符合cidr格式标准的任意字符串。(展开)在基础网络中，如果CidrBlock包含您的账户内的云服务器之外的设备在腾讯云的内网IP，并不代表此规则允许您访问这些设备，租户之间网络隔离规则优先于安全组中的内网规则。
+        * Ipv6CidrBlock字段允许输入符合IPv6 cidr格式标准的任意字符串。(展开)在基础网络中，如果Ipv6CidrBlock包含您的账户内的云服务器之外的设备在腾讯云的内网IPv6，并不代表此规则允许您访问这些设备，租户之间网络隔离规则优先于安全组中的内网规则。
         * SecurityGroupId字段允许输入与待修改的安全组位于相同项目中的安全组ID，包括这个安全组ID本身，代表安全组下所有云服务器的内网IP。使用这个字段时，这条规则用来匹配网络报文的过程中会随着被使用的这个ID所关联的云服务器变化而变化，不需要重新修改。
         * Port字段允许输入一个单独端口号，或者用减号分隔的两个端口号代表端口范围，例如80或8000-8010。只有当Protocol字段是TCP或UDP时，Port字段才被接受，即Protocol字段不是TCP或UDP时，Protocol和Port排他关系，不允许同时输入，否则会接口报错。
         * Action字段只允许输入ACCEPT或DROP。
-        * CidrBlock, SecurityGroupId, AddressTemplate三者是排他关系，不允许同时输入，Protocol + Port和ServiceTemplate二者是排他关系，不允许同时输入。
+        * CidrBlock, Ipv6CidrBlock, SecurityGroupId, AddressTemplate四者是排他关系，不允许同时输入，Protocol + Port和ServiceTemplate二者是排他关系，不允许同时输入。
         * 一次请求中只能创建单个方向的规则, 如果需要指定索引（PolicyIndex）参数, 多条规则的索引必须一致。
 
         :param request: 调用CreateSecurityGroupPolicies所需参数的结构体。
@@ -1066,7 +1096,7 @@ class VpcClient(AbstractClient):
         """本接口(CreateSubnet)用于创建子网。
         * 创建子网前必须创建好 VPC。
         * 子网创建成功后，子网网段不能修改。子网网段必须在VPC网段内，可以和VPC网段相同（VPC有且只有一个子网时），建议子网网段在VPC网段内，预留网段给其他子网使用。
-        * 你可以创建的最小网段子网掩码为28（有16个IP地址），最大网段子网掩码为16（65,536个IP地址）。
+        * 您可以创建的最小网段子网掩码为28（有16个IP地址），最大网段子网掩码为16（65,536个IP地址）。
         * 同一个VPC内，多个子网的网段不能重叠。
         * 子网创建后会自动关联到默认路由表。
 
@@ -1099,7 +1129,7 @@ class VpcClient(AbstractClient):
         """本接口(CreateSubnets)用于批量创建子网。
         * 创建子网前必须创建好 VPC。
         * 子网创建成功后，子网网段不能修改。子网网段必须在VPC网段内，可以和VPC网段相同（VPC有且只有一个子网时），建议子网网段在VPC网段内，预留网段给其他子网使用。
-        * 你可以创建的最小网段子网掩码为28（有16个IP地址），最大网段子网掩码为16（65,536个IP地址）。
+        * 您可以创建的最小网段子网掩码为28（有16个IP地址），最大网段子网掩码为16（65,536个IP地址）。
         * 同一个VPC内，多个子网的网段不能重叠。
         * 子网创建后会自动关联到默认路由表。
 
@@ -1588,7 +1618,7 @@ class VpcClient(AbstractClient):
 
     def DeleteNetworkInterface(self, request):
         """本接口（DeleteNetworkInterface）用于删除弹性网卡。
-        * 弹性网卡上绑定了云主机时，不能被删除。
+        * 弹性网卡上绑定了云服务器时，不能被删除。
         * 删除指定弹性网卡，弹性网卡必须先和子机解绑才能删除。删除之后弹性网卡上所有内网IP都将被退还。
 
         :param request: 调用DeleteNetworkInterface所需参数的结构体。
@@ -1790,7 +1820,7 @@ class VpcClient(AbstractClient):
 
     def DeleteSubnet(self, request):
         """本接口（DeleteSubnet）用于用于删除子网(Subnet)。
-        * 删除子网前，请清理该子网下所有资源，包括云主机、负载均衡、云数据、noSql、弹性网卡等资源。
+        * 删除子网前，请清理该子网下所有资源，包括云服务器、负载均衡、云数据、noSql、弹性网卡等资源。
 
         :param request: 调用DeleteSubnet所需参数的结构体。
         :type request: :class:`tencentcloud.vpc.v20170312.models.DeleteSubnetRequest`
@@ -1819,7 +1849,7 @@ class VpcClient(AbstractClient):
 
     def DeleteVpc(self, request):
         """本接口（DeleteVpc）用于删除私有网络。
-        * 删除前请确保 VPC 内已经没有相关资源，例如云主机、云数据库、NoSQL、VPN网关、专线网关、负载均衡、对等连接、与之互通的基础网络设备等。
+        * 删除前请确保 VPC 内已经没有相关资源，例如云服务器、云数据库、NoSQL、VPN网关、专线网关、负载均衡、对等连接、与之互通的基础网络设备等。
         * 删除私有网络是不可逆的操作，请谨慎处理。
 
         :param request: 调用DeleteVpc所需参数的结构体。
@@ -2452,6 +2482,34 @@ class VpcClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeHaVipsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeIp6Addresses(self, request):
+        """该接口用于查询IPV6地址信息
+
+        :param request: 调用DescribeIp6Addresses所需参数的结构体。
+        :type request: :class:`tencentcloud.vpc.v20170312.models.DescribeIp6AddressesRequest`
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.DescribeIp6AddressesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeIp6Addresses", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeIp6AddressesResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -3853,6 +3911,34 @@ class VpcClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def ModifyIp6AddressesBandwidth(self, request):
+        """该接口用于修改IPV6地址访问internet的带宽
+
+        :param request: 调用ModifyIp6AddressesBandwidth所需参数的结构体。
+        :type request: :class:`tencentcloud.vpc.v20170312.models.ModifyIp6AddressesBandwidthRequest`
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.ModifyIp6AddressesBandwidthResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ModifyIp6AddressesBandwidth", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ModifyIp6AddressesBandwidthResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def ModifyIp6Rule(self, request):
         """该接口用于修改IPV6转换规则，当前仅支持修改转换规则名称，IPV4地址和IPV4端口号
 
@@ -4138,12 +4224,13 @@ class VpcClient(AbstractClient):
 
         * 接口是先删除当前所有的出入站规则，然后再添加 Egress 和 Ingress 规则，不支持自定义索引 PolicyIndex 。
         * 如果指定 SecurityGroupPolicySet.Version 为0, 表示清空所有规则，并忽略Egress和Ingress。
-        * Protocol字段支持输入TCP, UDP, ICMP, GRE, ALL。
+        * Protocol字段支持输入TCP, UDP, ICMP, ICMPV6, GRE, ALL。
         * CidrBlock字段允许输入符合cidr格式标准的任意字符串。(展开)在基础网络中，如果CidrBlock包含您的账户内的云服务器之外的设备在腾讯云的内网IP，并不代表此规则允许您访问这些设备，租户之间网络隔离规则优先于安全组中的内网规则。
+        * Ipv6CidrBlock字段允许输入符合IPv6 cidr格式标准的任意字符串。(展开)在基础网络中，如果Ipv6CidrBlock包含您的账户内的云服务器之外的设备在腾讯云的内网IPv6，并不代表此规则允许您访问这些设备，租户之间网络隔离规则优先于安全组中的内网规则。
         * SecurityGroupId字段允许输入与待修改的安全组位于相同项目中的安全组ID，包括这个安全组ID本身，代表安全组下所有云服务器的内网IP。使用这个字段时，这条规则用来匹配网络报文的过程中会随着被使用的这个ID所关联的云服务器变化而变化，不需要重新修改。
         * Port字段允许输入一个单独端口号，或者用减号分隔的两个端口号代表端口范围，例如80或8000-8010。只有当Protocol字段是TCP或UDP时，Port字段才被接受。
         * Action字段只允许输入ACCEPT或DROP。
-        * CidrBlock, SecurityGroupId, AddressTemplate三者是排他关系，不允许同时输入，Protocol + Port和ServiceTemplate二者是排他关系，不允许同时输入。
+        * CidrBlock, Ipv6CidrBlock, SecurityGroupId, AddressTemplate四者是排他关系，不允许同时输入，Protocol + Port和ServiceTemplate二者是排他关系，不允许同时输入。
 
         :param request: 调用ModifySecurityGroupPolicies所需参数的结构体。
         :type request: :class:`tencentcloud.vpc.v20170312.models.ModifySecurityGroupPoliciesRequest`
@@ -4382,6 +4469,34 @@ class VpcClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ReleaseAddressesResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ReleaseIp6AddressesBandwidth(self, request):
+        """该接口用于给弹性公网IPv6地址释放带宽。
+
+        :param request: 调用ReleaseIp6AddressesBandwidth所需参数的结构体。
+        :type request: :class:`tencentcloud.vpc.v20170312.models.ReleaseIp6AddressesBandwidthRequest`
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.ReleaseIp6AddressesBandwidthResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ReleaseIp6AddressesBandwidth", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ReleaseIp6AddressesBandwidthResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

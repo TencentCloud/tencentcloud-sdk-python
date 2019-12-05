@@ -532,6 +532,34 @@ class MariadbClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeDatabases(self, request):
+        """本接口（DescribeDatabases）用于查询云数据库实例的数据库列表。
+
+        :param request: 调用DescribeDatabases所需参数的结构体。
+        :type request: :class:`tencentcloud.mariadb.v20170312.models.DescribeDatabasesRequest`
+        :rtype: :class:`tencentcloud.mariadb.v20170312.models.DescribeDatabasesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeDatabases", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeDatabasesResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeFlow(self, request):
         """本接口（DescribeFlow）用于查询流程状态。
 
@@ -1053,6 +1081,34 @@ class MariadbClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ResetAccountPasswordResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def RestartDBInstances(self, request):
+        """本接口（RestartDBInstances）用于重启数据库实例
+
+        :param request: 调用RestartDBInstances所需参数的结构体。
+        :type request: :class:`tencentcloud.mariadb.v20170312.models.RestartDBInstancesRequest`
+        :rtype: :class:`tencentcloud.mariadb.v20170312.models.RestartDBInstancesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("RestartDBInstances", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.RestartDBInstancesResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

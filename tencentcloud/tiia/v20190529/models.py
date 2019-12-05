@@ -33,6 +33,7 @@ class AssessQualityRequest(AbstractModel):
 接口响应时间会受到图片下载时间的影响，建议使用更可靠的存储服务，推荐将图片存储在腾讯云COS。
         :type ImageUrl: str
         :param ImageBase64: 图片经过base64编码的内容。最大不超过4M。与ImageUrl同时存在时优先使用ImageUrl字段。
+**注意：图片需要base64编码，并且要去掉编码头部。**
         :type ImageBase64: str
         """
         self.ImageUrl = None
@@ -193,6 +194,7 @@ Width : Height建议取值在[1, 2.5]之间，超过这个范围可能会影响�
 接口响应时间会受到图片下载时间的影响，建议使用更可靠的存储服务，推荐将图片存储在腾讯云COS。
         :type ImageUrl: str
         :param ImageBase64: 图片经过base64编码的内容。最大不超过4M。与ImageUrl同时存在时优先使用ImageUrl字段。
+**注意：图片需要base64编码，并且要去掉编码头部。**
         :type ImageBase64: str
         """
         self.Width = None
@@ -277,6 +279,7 @@ class DetectCelebrityRequest(AbstractModel):
 接口响应时间会受到图片下载时间的影响，建议使用更可靠的存储服务，推荐将图片存储在腾讯云COS。
         :type ImageUrl: str
         :param ImageBase64: 图片经过base64编码的内容。最大不超过4M。与ImageUrl同时存在时优先使用ImageUrl字段。
+**注意：图片需要base64编码，并且要去掉编码头部。**
         :type ImageBase64: str
         """
         self.ImageUrl = None
@@ -331,6 +334,7 @@ class DetectDisgustRequest(AbstractModel):
 接口响应时间会受到图片下载时间的影响，建议使用更可靠的存储服务，推荐将图片存储在腾讯云COS。
         :type ImageUrl: str
         :param ImageBase64: 图片经过base64编码的内容。最大不超过4M。与ImageUrl同时存在时优先使用ImageUrl字段。
+**注意：图片需要base64编码，并且要去掉编码头部。**
         :type ImageBase64: str
         """
         self.ImageUrl = None
@@ -413,6 +417,7 @@ class DetectLabelRequest(AbstractModel):
 接口响应时间会受到图片下载时间的影响，建议使用更可靠的存储服务，推荐将图片存储在腾讯云COS。
         :type ImageUrl: str
         :param ImageBase64: 图片经过base64编码的内容。最大不超过4M。与ImageUrl同时存在时优先使用ImageUrl字段。
+**注意：图片需要base64编码，并且要去掉编码头部。**
         :type ImageBase64: str
         :param Scenes: 本次调用支持的识别场景，可选值如下：
 WEB，针对网络图片优化;
@@ -498,6 +503,7 @@ class DetectMisbehaviorRequest(AbstractModel):
 接口响应时间会受到图片下载时间的影响，建议使用更可靠的存储服务，推荐将图片存储在腾讯云COS。
         :type ImageUrl: str
         :param ImageBase64: 图片经过base64编码的内容。最大不超过4M。与ImageUrl同时存在时优先使用ImageUrl字段。
+**注意：图片需要base64编码，并且要去掉编码头部。**
         :type ImageBase64: str
         """
         self.ImageUrl = None
@@ -551,6 +557,7 @@ class DetectProductRequest(AbstractModel):
 接口响应时间会受到图片下载时间的影响，建议使用更可靠的存储服务，推荐将图片存储在腾讯云COS。
         :type ImageUrl: str
         :param ImageBase64: 图片经过base64编码的内容。最大不超过4M。与ImageUrl同时存在时优先使用ImageUrl字段。
+**注意：图片需要base64编码，并且要去掉编码头部。**
         :type ImageBase64: str
         """
         self.ImageUrl = None
@@ -639,7 +646,8 @@ class EnhanceImageRequest(AbstractModel):
 • 长宽比：长边：短边<5； 
 接口响应时间会受到图片下载时间的影响，建议使用更可靠的存储服务，推荐将图片存储在腾讯云COS。
         :type ImageUrl: str
-        :param ImageBase64: 支持PNG、JPG、JPEG、BMP，不支持 GIF 图片。图片经过base64编码的内容。最大不超过4M。与ImageUrl同时存在时优先使用ImageUrl字段
+        :param ImageBase64: 支持PNG、JPG、JPEG、BMP，不支持 GIF 图片。图片经过base64编码的内容。最大不超过4M。与ImageUrl同时存在时优先使用ImageUrl字段。
+**注意：图片需要base64编码，并且要去掉编码头部。**
         :type ImageBase64: str
         """
         self.ImageUrl = None
@@ -808,6 +816,7 @@ class ImageModerationRequest(AbstractModel):
         :param Extra: 透传字段，透传简单信息。
         :type Extra: str
         :param ImageBase64: 图片经过base64编码的内容。最大不超过4M。与ImageUrl同时存在时优先使用ImageUrl字段。
+**注意：图片需要base64编码，并且要去掉编码头部。**
         :type ImageBase64: str
         """
         self.Scenes = None
@@ -1075,8 +1084,8 @@ class RecognizeCarRequest(AbstractModel):
 接口响应时间会受到图片下载时间的影响，建议使用更可靠的存储服务，推荐将图片存储在腾讯云COS。
         :type ImageUrl: str
         :param ImageBase64: 图片经过base64编码的内容。最大不超过4M。与ImageUrl同时存在时优先使用ImageUrl字段。
-
-图片URL地址。支持的图片格式：PNG、JPG、JPEG、BMP，暂不支持GIF格式。支持的图片大小：所下载图片经Base64编码后不超过4M。图片下载时间不超过3秒。
+**注意：图片需要base64编码，并且要去掉编码头部。**
+支持的图片格式：PNG、JPG、JPEG、BMP，暂不支持GIF格式。支持的图片大小：所下载图片经Base64编码后不超过4M。图片下载时间不超过3秒。
         :type ImageBase64: str
         """
         self.ImageUrl = None
@@ -1185,7 +1194,7 @@ Type为FACE时：
 
 
 class TextResult(AbstractModel):
-    """色情识别结果。
+    """图像文本内容审核结果。
 
     """
 
@@ -1226,6 +1235,8 @@ DRUGS：涉毒
 CURSE：谩骂
 TERRORISM：暴恐
 OTHERS：其他
+
+本服务利用微信团队提供的算法，可以准确识别图片中是否包含二维码。当图片中存在二维码时，分类为ADS，关键词输出为“二维码”。
         :type Type: str
         :param AdvancedInfo: 预留字段，后期用于展示更多识别信息。
         :type AdvancedInfo: str

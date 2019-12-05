@@ -198,7 +198,7 @@ class CreateDeviceRequest(AbstractModel):
         """
         :param ProductId: 产品ID。
         :type ProductId: str
-        :param DeviceName: 设备名称。
+        :param DeviceName: 设备名称。命名规则：[a-zA-Z0-9:_-]{1,48}。
         :type DeviceName: str
         """
         self.ProductId = None
@@ -284,17 +284,17 @@ class CreateStudioProductRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param ProductName: 产品名称
+        :param ProductName: 产品名称，名称不能和已经存在的产品名称重复。命名规则：[a-zA-Z0-9:_-]{1,32}
         :type ProductName: str
-        :param CategoryId: 产品分组模板ID
+        :param CategoryId: 产品分组模板ID , ( 自定义模板填写1 , 控制台调用会使用预置的其他ID)
         :type CategoryId: int
-        :param ProductType: 产品类型
+        :param ProductType: 产品类型 填写 ( 0 普通产品 )
         :type ProductType: int
-        :param EncryptionType: 加密类型
+        :param EncryptionType: 加密类型 加密类型，1表示证书认证，2表示签名认证。
         :type EncryptionType: str
-        :param NetType: 连接类型
+        :param NetType: 连接类型 可以填写 wifi cellular else
         :type NetType: str
-        :param DataProtocol: 数据协议
+        :param DataProtocol: 数据协议 (1 使用物模型)
         :type DataProtocol: int
         :param ProductDesc: 产品描述
         :type ProductDesc: str
@@ -545,14 +545,18 @@ class DescribeDeviceDataRequest(AbstractModel):
         :type ProductId: str
         :param DeviceName: 设备名称
         :type DeviceName: str
+        :param DeviceId: 设备ID，该字段有值将代替 ProductId/DeviceName
+        :type DeviceId: str
         """
         self.ProductId = None
         self.DeviceName = None
+        self.DeviceId = None
 
 
     def _deserialize(self, params):
         self.ProductId = params.get("ProductId")
         self.DeviceName = params.get("DeviceName")
+        self.DeviceId = params.get("DeviceId")
 
 
 class DescribeDeviceDataResponse(AbstractModel):
@@ -827,6 +831,9 @@ class DeviceInfo(AbstractModel):
         :param DeviceCert: 设备证书
 注意：此字段可能返回 null，表示取不到有效值。
         :type DeviceCert: str
+        :param LogLevel: 日志级别
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LogLevel: int
         """
         self.DeviceName = None
         self.Status = None
@@ -836,6 +843,7 @@ class DeviceInfo(AbstractModel):
         self.CreateTime = None
         self.Version = None
         self.DeviceCert = None
+        self.LogLevel = None
 
 
     def _deserialize(self, params):
@@ -847,6 +855,7 @@ class DeviceInfo(AbstractModel):
         self.CreateTime = params.get("CreateTime")
         self.Version = params.get("Version")
         self.DeviceCert = params.get("DeviceCert")
+        self.LogLevel = params.get("LogLevel")
 
 
 class EventHistoryItem(AbstractModel):

@@ -476,7 +476,7 @@ class OcrClient(AbstractClient):
 
 
     def GeneralAccurateOCR(self, request):
-        """本接口支持图像整体文字的检测和识别，返回文字框位置与文字内容。相比通用印刷体识别接口，准确率和召回率更高。
+        """本接口支持图像整体文字的检测和识别，返回文字框位置与文字内容。相比通用印刷体识别接口，高精度版在英文、数字、小字、模糊字、倾斜文本行等困难场景下，准确率和召回率更高。
 
         :param request: 调用GeneralAccurateOCR所需参数的结构体。
         :type request: :class:`tencentcloud.ocr.v20181119.models.GeneralAccurateOCRRequest`
@@ -953,6 +953,34 @@ class OcrClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def PropOwnerCertOCR(self, request):
+        """本接口支持房产证关键字段的识别，包括房地产权利人、共有情况、登记时间、规划用途、房屋性质、房屋坐落等。
+
+        :param request: 调用PropOwnerCertOCR所需参数的结构体。
+        :type request: :class:`tencentcloud.ocr.v20181119.models.PropOwnerCertOCRRequest`
+        :rtype: :class:`tencentcloud.ocr.v20181119.models.PropOwnerCertOCRResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("PropOwnerCertOCR", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.PropOwnerCertOCRResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def QrcodeOCR(self, request):
         """本接口支持条形码和二维码的识别（包括 DataMatrix 和 PDF417）。
         本接口暂未完全对外开放，如需咨询，请[联系商务](https://cloud.tencent.com/about/connect)
@@ -996,6 +1024,34 @@ class OcrClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.QuotaInvoiceOCRResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ResidenceBookletOCR(self, request):
+        """本接口支持居民户口簿户主页及成员页关键字段的识别，包括姓名、户别、地址、籍贯、身份证号码等。
+
+        :param request: 调用ResidenceBookletOCR所需参数的结构体。
+        :type request: :class:`tencentcloud.ocr.v20181119.models.ResidenceBookletOCRRequest`
+        :rtype: :class:`tencentcloud.ocr.v20181119.models.ResidenceBookletOCRResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ResidenceBookletOCR", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ResidenceBookletOCRResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

@@ -72,12 +72,6 @@ class CallbackStatusStatisticsRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Limit: 最大上限
-注：目前固定设置为0
-        :type Limit: int
-        :param Offset: 偏移量
-注：目前固定设置为0
-        :type Offset: int
         :param StartDateTime: 开始时间，yyyymmddhh 需要拉取的起始时间，精确到小时
         :type StartDateTime: int
         :param EndDataTime: 结束时间，yyyymmddhh 需要拉取的截止时间，精确到小时
@@ -85,20 +79,26 @@ class CallbackStatusStatisticsRequest(AbstractModel):
         :type EndDataTime: int
         :param SmsSdkAppid: 短信SdkAppid在[短信控制台](https://console.cloud.tencent.com/sms/smslist) 添加应用后生成的实际SdkAppid,示例如1400006666。
         :type SmsSdkAppid: str
+        :param Limit: 最大上限
+注：目前固定设置为0
+        :type Limit: int
+        :param Offset: 偏移量
+注：目前固定设置为0
+        :type Offset: int
         """
-        self.Limit = None
-        self.Offset = None
         self.StartDateTime = None
         self.EndDataTime = None
         self.SmsSdkAppid = None
+        self.Limit = None
+        self.Offset = None
 
 
     def _deserialize(self, params):
-        self.Limit = params.get("Limit")
-        self.Offset = params.get("Offset")
         self.StartDateTime = params.get("StartDateTime")
         self.EndDataTime = params.get("EndDataTime")
         self.SmsSdkAppid = params.get("SmsSdkAppid")
+        self.Limit = params.get("Limit")
+        self.Offset = params.get("Offset")
 
 
 class CallbackStatusStatisticsResponse(AbstractModel):
@@ -132,7 +132,7 @@ class PullSmsReplyStatus(AbstractModel):
     def __init__(self):
         """
         :param ExtendCode: 短信码号扩展号，默认未开通，如需开通请联系 [sms helper](https://cloud.tencent.com/document/product/382/3773)
-        :type ExtendCode: int
+        :type ExtendCode: str
         :param NationCode: 国家（或地区）码
         :type NationCode: str
         :param PhoneNumber: 手机号码,e.164标准，+[国家或地区码][手机号] ，示例如：+8613711112222， 其中前面有一个+号 ，86为国家码，13711112222为手机号
@@ -169,7 +169,7 @@ class PullSmsReplyStatusByPhoneNumberRequest(AbstractModel):
     def __init__(self):
         """
         :param SendDateTime: 拉取起始时间，UNIX 时间戳（时间：秒）
-        :type SendDateTime: str
+        :type SendDateTime: int
         :param Offset: 偏移量
 注：目前固定设置为0
         :type Offset: int
@@ -317,7 +317,7 @@ class PullSmsSendStatusByPhoneNumberRequest(AbstractModel):
     def __init__(self):
         """
         :param SendDateTime: 拉取起始时间，UNIX 时间戳（时间：秒）
-        :type SendDateTime: str
+        :type SendDateTime: int
         :param Offset: 偏移量
 注：目前固定设置为0
         :type Offset: int
@@ -435,7 +435,7 @@ class SendSmsRequest(AbstractModel):
         :param TemplateParamSet: 模板参数，若无模板参数，则设置为空。
         :type TemplateParamSet: list of str
         :param ExtendCode: 短信码号扩展号，默认未开通，如需开通请联系 [sms helper](https://cloud.tencent.com/document/product/382/3773)
-        :type ExtendCode: int
+        :type ExtendCode: str
         :param SessionContext: 用户的 session 内容，可以携带用户侧ID等上下文信息,server 会原样返回
         :type SessionContext: str
         :param SenderId: 国际/港澳台短信senderid，国内短信填空。
@@ -533,22 +533,22 @@ class SendStatusStatistics(AbstractModel):
 
     def __init__(self):
         """
-        :param BillingStatistics: 短信计费条数统计，例如提交成功量为100条，其中有20条是长短信（长度为80字）被拆分成2条，则计费条数为： ```80 * 1 + 20 * 2 = 120``` 条
-        :type BillingStatistics: int
-        :param RequestStatistics: 短信提交量统计
-        :type RequestStatistics: int
-        :param RequestSuccessStatistics: 短信提交成功量统计
-        :type RequestSuccessStatistics: int
+        :param FeeCount: 短信计费条数统计，例如提交成功量为100条，其中有20条是长短信（长度为80字）被拆分成2条，则计费条数为： ```80 * 1 + 20 * 2 = 120``` 条
+        :type FeeCount: int
+        :param RequestCount: 短信提交量统计
+        :type RequestCount: int
+        :param RequestSuccessCount: 短信提交成功量统计
+        :type RequestSuccessCount: int
         """
-        self.BillingStatistics = None
-        self.RequestStatistics = None
-        self.RequestSuccessStatistics = None
+        self.FeeCount = None
+        self.RequestCount = None
+        self.RequestSuccessCount = None
 
 
     def _deserialize(self, params):
-        self.BillingStatistics = params.get("BillingStatistics")
-        self.RequestStatistics = params.get("RequestStatistics")
-        self.RequestSuccessStatistics = params.get("RequestSuccessStatistics")
+        self.FeeCount = params.get("FeeCount")
+        self.RequestCount = params.get("RequestCount")
+        self.RequestSuccessCount = params.get("RequestSuccessCount")
 
 
 class SendStatusStatisticsRequest(AbstractModel):
@@ -558,12 +558,6 @@ class SendStatusStatisticsRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Limit: 最大上限
-注：目前固定设置为0
-        :type Limit: int
-        :param Offset: 偏移量
-注：目前固定设置为0
-        :type Offset: int
         :param StartDateTime: 拉取起始时间，yyyymmddhh 需要拉取的起始时间，精确到小时
         :type StartDateTime: int
         :param EndDataTime: 结束时间，yyyymmddhh 需要拉取的截止时间，精确到小时
@@ -571,20 +565,26 @@ class SendStatusStatisticsRequest(AbstractModel):
         :type EndDataTime: int
         :param SmsSdkAppid: 短信SdkAppid在[短信控制台](https://console.cloud.tencent.com/sms/smslist) 添加应用后生成的实际SdkAppid,示例如1400006666。
         :type SmsSdkAppid: str
+        :param Limit: 最大上限
+注：目前固定设置为0
+        :type Limit: int
+        :param Offset: 偏移量
+注：目前固定设置为0
+        :type Offset: int
         """
-        self.Limit = None
-        self.Offset = None
         self.StartDateTime = None
         self.EndDataTime = None
         self.SmsSdkAppid = None
+        self.Limit = None
+        self.Offset = None
 
 
     def _deserialize(self, params):
-        self.Limit = params.get("Limit")
-        self.Offset = params.get("Offset")
         self.StartDateTime = params.get("StartDateTime")
         self.EndDataTime = params.get("EndDataTime")
         self.SmsSdkAppid = params.get("SmsSdkAppid")
+        self.Limit = params.get("Limit")
+        self.Offset = params.get("Offset")
 
 
 class SendStatusStatisticsResponse(AbstractModel):
@@ -658,28 +658,23 @@ class SmsPackagesStatisticsRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Limit: 最大上限
-注：目前固定设置为0
+        :param SmsSdkAppid: 短信SdkAppid在[短信控制台](https://console.cloud.tencent.com/sms/smslist) 添加应用后生成的实际SdkAppid,示例如1400006666。
+        :type SmsSdkAppid: str
+        :param Limit: 最大上限(需要拉取的套餐包个数)
         :type Limit: int
         :param Offset: 偏移量
 注：目前固定设置为0
         :type Offset: int
-        :param NumberOfPullPackages: 需要拉取的套餐包个数
-        :type NumberOfPullPackages: int
-        :param SmsSdkAppid: 短信SdkAppid在[短信控制台](https://console.cloud.tencent.com/sms/smslist) 添加应用后生成的实际SdkAppid,示例如1400006666。
-        :type SmsSdkAppid: str
         """
+        self.SmsSdkAppid = None
         self.Limit = None
         self.Offset = None
-        self.NumberOfPullPackages = None
-        self.SmsSdkAppid = None
 
 
     def _deserialize(self, params):
+        self.SmsSdkAppid = params.get("SmsSdkAppid")
         self.Limit = params.get("Limit")
         self.Offset = params.get("Offset")
-        self.NumberOfPullPackages = params.get("NumberOfPullPackages")
-        self.SmsSdkAppid = params.get("SmsSdkAppid")
 
 
 class SmsPackagesStatisticsResponse(AbstractModel):

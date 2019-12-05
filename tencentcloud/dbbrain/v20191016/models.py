@@ -25,7 +25,7 @@ class DescribeDBDiagEventRequest(AbstractModel):
         """
         :param InstanceId: 实例 ID 。
         :type InstanceId: str
-        :param EventId: 事件 ID 。
+        :param EventId: 事件 ID 。通过“获取实例诊断历史DescribeDBDiagHistory”获取。
         :type EventId: int
         """
         self.InstanceId = None
@@ -108,9 +108,9 @@ class DescribeDBDiagHistoryRequest(AbstractModel):
         """
         :param InstanceId: 实例 ID 。
         :type InstanceId: str
-        :param StartTime: 开始时间。
+        :param StartTime: 开始时间。如“2019-09-10 12:13:14”。
         :type StartTime: str
-        :param EndTime: 结束时间。
+        :param EndTime: 结束时间。如“2019-09-11 12:13:14”。
         :type EndTime: str
         """
         self.InstanceId = None
@@ -297,7 +297,7 @@ class DiagHistoryEventItem(AbstractModel):
         :type StartTime: str
         :param EventId: 事件 ID 。
         :type EventId: int
-        :param Severity: 严重程度。
+        :param Severity: 严重程度。从1-4，严重程度递减，意义与DBBrain生成的实例健康报告中对应概念一致。
         :type Severity: int
         :param Outline: 概要。
         :type Outline: str

@@ -34,7 +34,7 @@ class AddDelayLiveStreamRequest(AbstractModel):
         :param ExpireTime: 延播设置的过期时间。UTC 格式，例如：2018-11-29T19:00:00Z。
 注意：
 1. 默认7天后过期，且最长支持7天内生效。
-2. 北京时间值为 UTC 时间值 + 8 小时，格式按照 ISO 8601 标准表示，详见 [ISO 日期格式说明](https://cloud.tencent.com/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F)。
+2. 北京时间值为 UTC 时间值 + 8 小时，格式按照 ISO 8601 标准表示，详见 [ISO 日期格式说明](https://cloud.tencent.com/document/product/266/11732#I)。
         :type ExpireTime: str
         """
         self.AppName = None
@@ -1197,7 +1197,7 @@ class CreatePullStreamConfigRequest(AbstractModel):
         :param StartTime: 开始时间。
 使用UTC格式时间，
 例如：2019-01-08T10:00:00Z。
-注意：北京时间值为 UTC 时间值 + 8 小时，格式按照 ISO 8601 标准表示，详见 [ISO 日期格式说明](https://cloud.tencent.com/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F)。
+注意：北京时间值为 UTC 时间值 + 8 小时，格式按照 ISO 8601 标准表示，详见 [ISO 日期格式说明](https://cloud.tencent.com/document/product/266/11732#I)。
         :type StartTime: str
         :param EndTime: 结束时间，注意：
 1. 结束时间必须大于开始时间；
@@ -1205,7 +1205,7 @@ class CreatePullStreamConfigRequest(AbstractModel):
 3. 结束时间 和 开始时间 间隔必须小于七天。
 使用UTC格式时间，
 例如：2019-01-08T10:00:00Z。
-注意：北京时间值为 UTC 时间值 + 8 小时，格式按照 ISO 8601 标准表示，详见 [ISO 日期格式说明](https://cloud.tencent.com/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F)。
+注意：北京时间值为 UTC 时间值 + 8 小时，格式按照 ISO 8601 标准表示，详见 [ISO 日期格式说明](https://cloud.tencent.com/document/product/266/11732#I)。
         :type EndTime: str
         """
         self.FromUrl = None
@@ -4606,6 +4606,10 @@ class DomainInfo(AbstractModel):
         :type IsDelayLive: int
         :param CurrentCName: 当前客户使用的cname信息
         :type CurrentCName: str
+        :param RentTag: 是否租用域名
+        :type RentTag: int
+        :param RentExpireTime: 租用域名过期时间
+        :type RentExpireTime: str
         """
         self.Name = None
         self.Type = None
@@ -4616,6 +4620,8 @@ class DomainInfo(AbstractModel):
         self.PlayType = None
         self.IsDelayLive = None
         self.CurrentCName = None
+        self.RentTag = None
+        self.RentExpireTime = None
 
 
     def _deserialize(self, params):
@@ -4628,6 +4634,8 @@ class DomainInfo(AbstractModel):
         self.PlayType = params.get("PlayType")
         self.IsDelayLive = params.get("IsDelayLive")
         self.CurrentCName = params.get("CurrentCName")
+        self.RentTag = params.get("RentTag")
+        self.RentExpireTime = params.get("RentExpireTime")
 
 
 class DomainInfoList(AbstractModel):
@@ -4782,7 +4790,7 @@ class ForbidLiveStreamRequest(AbstractModel):
         :param ResumeTime: 恢复流的时间。UTC 格式，例如：2018-11-29T19:00:00Z。
 注意：
 1. 默认禁播7天，且最长支持禁播90天。
-2. 北京时间值为 UTC 时间值 + 8 小时，格式按照 ISO 8601 标准表示，详见 [ISO 日期格式说明](https://cloud.tencent.com/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F)。
+2. 北京时间值为 UTC 时间值 + 8 小时，格式按照 ISO 8601 标准表示，详见 [ISO 日期格式说明](https://cloud.tencent.com/document/product/266/11732#I)。
         :type ResumeTime: str
         :param Reason: 禁推原因。
 注明：请务必填写禁推原因，防止误操作。
@@ -5006,16 +5014,20 @@ class LogInfo(AbstractModel):
         :type LogUrl: str
         :param LogTime: 日志生成时间
         :type LogTime: str
+        :param FileSize: 文件大小
+        :type FileSize: int
         """
         self.LogName = None
         self.LogUrl = None
         self.LogTime = None
+        self.FileSize = None
 
 
     def _deserialize(self, params):
         self.LogName = params.get("LogName")
         self.LogUrl = params.get("LogUrl")
         self.LogTime = params.get("LogTime")
+        self.FileSize = params.get("FileSize")
 
 
 class ModifyLiveCallbackTemplateRequest(AbstractModel):
@@ -5599,7 +5611,7 @@ class ModifyPullStreamConfigRequest(AbstractModel):
         :param StartTime: 开始时间。
 使用UTC格式时间，
 例如：2019-01-08T10:00:00Z。
-注意：北京时间值为 UTC 时间值 + 8 小时，格式按照 ISO 8601 标准表示，详见 [ISO 日期格式说明](https://cloud.tencent.com/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F)。
+注意：北京时间值为 UTC 时间值 + 8 小时，格式按照 ISO 8601 标准表示，详见 [ISO 日期格式说明](https://cloud.tencent.com/document/product/266/11732#I)。
         :type StartTime: str
         :param EndTime: 结束时间，注意：
 1. 结束时间必须大于开始时间；
@@ -5608,7 +5620,7 @@ class ModifyPullStreamConfigRequest(AbstractModel):
 
 使用UTC格式时间，
 例如：2019-01-08T10:00:00Z。
-注意：北京时间值为 UTC 时间值 + 8 小时，格式按照 ISO 8601 标准表示，详见 [ISO 日期格式说明](https://cloud.tencent.com/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F)。
+注意：北京时间值为 UTC 时间值 + 8 小时，格式按照 ISO 8601 标准表示，详见 [ISO 日期格式说明](https://cloud.tencent.com/document/product/266/11732#I)。
         :type EndTime: str
         """
         self.ConfigId = None
@@ -5919,13 +5931,13 @@ class PullStreamConfig(AbstractModel):
         :param StartTime: 开始时间。
 UTC格式时间，
 例如：2019-01-08T10:00:00Z。
-注意：北京时间值为 UTC 时间值 + 8 小时，格式按照 ISO 8601 标准表示，详见 [ISO 日期格式说明](https://cloud.tencent.com/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F)。
+注意：北京时间值为 UTC 时间值 + 8 小时，格式按照 ISO 8601 标准表示，详见 [ISO 日期格式说明](https://cloud.tencent.com/document/product/266/11732#I)。
         :type StartTime: str
         :param EndTime: 结束时间。
 
 UTC格式时间，
 例如：2019-01-08T10:00:00Z。
-注意：北京时间值为 UTC 时间值 + 8 小时，格式按照 ISO 8601 标准表示，详见 [ISO 日期格式说明](https://cloud.tencent.com/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F)。
+注意：北京时间值为 UTC 时间值 + 8 小时，格式按照 ISO 8601 标准表示，详见 [ISO 日期格式说明](https://cloud.tencent.com/document/product/266/11732#I)。
         :type EndTime: str
         :param Status: 0无效，1初始状态，2正在运行，3拉起失败，4暂停。
         :type Status: str
@@ -6019,6 +6031,8 @@ class PushDataInfo(AbstractModel):
         :type Vcodec: str
         :param Resolution: 分辨率。
         :type Resolution: str
+        :param AsampleRate: 采样率。
+        :type AsampleRate: int
         """
         self.StreamName = None
         self.AppName = None
@@ -6033,6 +6047,7 @@ class PushDataInfo(AbstractModel):
         self.Acodec = None
         self.Vcodec = None
         self.Resolution = None
+        self.AsampleRate = None
 
 
     def _deserialize(self, params):
@@ -6049,6 +6064,7 @@ class PushDataInfo(AbstractModel):
         self.Acodec = params.get("Acodec")
         self.Vcodec = params.get("Vcodec")
         self.Resolution = params.get("Resolution")
+        self.AsampleRate = params.get("AsampleRate")
 
 
 class PushQualityData(AbstractModel):

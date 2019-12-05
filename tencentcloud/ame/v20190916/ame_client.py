@@ -17,28 +17,28 @@ import json
 
 from tencentcloud.common.exception.tencent_cloud_sdk_exception import TencentCloudSDKException
 from tencentcloud.common.abstract_client import AbstractClient
-from tencentcloud.dbbrain.v20191016 import models
+from tencentcloud.ame.v20190916 import models
 
 
-class DbbrainClient(AbstractClient):
-    _apiVersion = '2019-10-16'
-    _endpoint = 'dbbrain.tencentcloudapi.com'
+class AmeClient(AbstractClient):
+    _apiVersion = '2019-09-16'
+    _endpoint = 'ame.tencentcloudapi.com'
 
 
-    def DescribeDBDiagEvent(self, request):
-        """获取实例异常诊断事件的详情信息。
+    def DescribeItems(self, request):
+        """分类内容下歌曲列表获取，根据CategoryID或CategoryCode
 
-        :param request: 调用DescribeDBDiagEvent所需参数的结构体。
-        :type request: :class:`tencentcloud.dbbrain.v20191016.models.DescribeDBDiagEventRequest`
-        :rtype: :class:`tencentcloud.dbbrain.v20191016.models.DescribeDBDiagEventResponse`
+        :param request: 调用DescribeItems所需参数的结构体。
+        :type request: :class:`tencentcloud.ame.v20190916.models.DescribeItemsRequest`
+        :rtype: :class:`tencentcloud.ame.v20190916.models.DescribeItemsResponse`
 
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeDBDiagEvent", params)
+            body = self.call("DescribeItems", params)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.DescribeDBDiagEventResponse()
+                model = models.DescribeItemsResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -53,20 +53,20 @@ class DbbrainClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def DescribeDBDiagHistory(self, request):
-        """获取实例诊断事件的列表。
+    def DescribeLyric(self, request):
+        """根据接口的模式及歌曲ID来取得歌词信息。
 
-        :param request: 调用DescribeDBDiagHistory所需参数的结构体。
-        :type request: :class:`tencentcloud.dbbrain.v20191016.models.DescribeDBDiagHistoryRequest`
-        :rtype: :class:`tencentcloud.dbbrain.v20191016.models.DescribeDBDiagHistoryResponse`
+        :param request: 调用DescribeLyric所需参数的结构体。
+        :type request: :class:`tencentcloud.ame.v20190916.models.DescribeLyricRequest`
+        :rtype: :class:`tencentcloud.ame.v20190916.models.DescribeLyricResponse`
 
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeDBDiagHistory", params)
+            body = self.call("DescribeLyric", params)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.DescribeDBDiagHistoryResponse()
+                model = models.DescribeLyricResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -81,20 +81,20 @@ class DbbrainClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def DescribeSlowLogTimeSeriesStats(self, request):
-        """获取慢日志统计柱状图
+    def DescribeMusic(self, request):
+        """根据接口的模式及歌曲ID来取得对应权限的歌曲播放地址等信息。
 
-        :param request: 调用DescribeSlowLogTimeSeriesStats所需参数的结构体。
-        :type request: :class:`tencentcloud.dbbrain.v20191016.models.DescribeSlowLogTimeSeriesStatsRequest`
-        :rtype: :class:`tencentcloud.dbbrain.v20191016.models.DescribeSlowLogTimeSeriesStatsResponse`
+        :param request: 调用DescribeMusic所需参数的结构体。
+        :type request: :class:`tencentcloud.ame.v20190916.models.DescribeMusicRequest`
+        :rtype: :class:`tencentcloud.ame.v20190916.models.DescribeMusicResponse`
 
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeSlowLogTimeSeriesStats", params)
+            body = self.call("DescribeMusic", params)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.DescribeSlowLogTimeSeriesStatsResponse()
+                model = models.DescribeMusicResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -109,20 +109,20 @@ class DbbrainClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def DescribeSlowLogTopSqls(self, request):
-        """按照Sql模板+schema的聚合方式，统计排序指定时间段内的top慢sql。
+    def DescribeStations(self, request):
+        """获取素材库列表时使用
 
-        :param request: 调用DescribeSlowLogTopSqls所需参数的结构体。
-        :type request: :class:`tencentcloud.dbbrain.v20191016.models.DescribeSlowLogTopSqlsRequest`
-        :rtype: :class:`tencentcloud.dbbrain.v20191016.models.DescribeSlowLogTopSqlsResponse`
+        :param request: 调用DescribeStations所需参数的结构体。
+        :type request: :class:`tencentcloud.ame.v20190916.models.DescribeStationsRequest`
+        :rtype: :class:`tencentcloud.ame.v20190916.models.DescribeStationsResponse`
 
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeSlowLogTopSqls", params)
+            body = self.call("DescribeStations", params)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.DescribeSlowLogTopSqlsResponse()
+                model = models.DescribeStationsResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

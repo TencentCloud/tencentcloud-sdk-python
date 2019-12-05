@@ -25,6 +25,34 @@ class DayuClient(AbstractClient):
     _endpoint = 'dayu.tencentcloudapi.com'
 
 
+    def CreateBasicDDoSAlarmThreshold(self, request):
+        """设置基础防护的DDoS告警阈值，只支持基础防护产品
+
+        :param request: 调用CreateBasicDDoSAlarmThreshold所需参数的结构体。
+        :type request: :class:`tencentcloud.dayu.v20180709.models.CreateBasicDDoSAlarmThresholdRequest`
+        :rtype: :class:`tencentcloud.dayu.v20180709.models.CreateBasicDDoSAlarmThresholdResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("CreateBasicDDoSAlarmThreshold", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateBasicDDoSAlarmThresholdResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def CreateCCSelfDefinePolicy(self, request):
         """创建CC自定义策略
 
@@ -557,6 +585,34 @@ class DayuClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeBasicDeviceThreshold(self, request):
+        """获取基础防护黑洞阈值
+
+        :param request: 调用DescribeBasicDeviceThreshold所需参数的结构体。
+        :type request: :class:`tencentcloud.dayu.v20180709.models.DescribeBasicDeviceThresholdRequest`
+        :rtype: :class:`tencentcloud.dayu.v20180709.models.DescribeBasicDeviceThresholdResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeBasicDeviceThreshold", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeBasicDeviceThresholdResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeCCEvList(self, request):
         """获取CC攻击事件列表
 
@@ -698,7 +754,7 @@ class DayuClient(AbstractClient):
 
 
     def DescribeDDoSDefendStatus(self, request):
-        """获取DDoS防护状态，支持产品：基础防护，独享包，共享包，高防IP，高防IP专业版；
+        """获取DDoS防护状态（临时关闭状态），支持产品：基础防护，独享包，共享包，高防IP，高防IP专业版；调用此接口是获取当前是否有设置临时关闭DDoS防护状态，如果有设置会返回临时关闭的时长等参数。
 
         :param request: 调用DescribeDDoSDefendStatus所需参数的结构体。
         :type request: :class:`tencentcloud.dayu.v20180709.models.DescribeDDoSDefendStatusRequest`
@@ -1019,6 +1075,34 @@ class DayuClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeDDoSUsedStatisResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeIPProductInfo(self, request):
+        """获取独享包或共享包IP对应的云资产信息，只支持独享包和共享包的IP
+
+        :param request: 调用DescribeIPProductInfo所需参数的结构体。
+        :type request: :class:`tencentcloud.dayu.v20180709.models.DescribeIPProductInfoRequest`
+        :rtype: :class:`tencentcloud.dayu.v20180709.models.DescribeIPProductInfoResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeIPProductInfo", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeIPProductInfoResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -1790,7 +1874,7 @@ class DayuClient(AbstractClient):
 
 
     def ModifyDDoSDefendStatus(self, request):
-        """开启或关闭DDoS防护状态
+        """开启或关闭DDoS防护状态，调用此接口允许临时关闭DDoS防护一段时间，等时间到了会自动开启DDoS防护；
 
         :param request: 调用ModifyDDoSDefendStatus所需参数的结构体。
         :type request: :class:`tencentcloud.dayu.v20180709.models.ModifyDDoSDefendStatusRequest`
@@ -2167,6 +2251,34 @@ class DayuClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyResBindDDoSPolicyResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ModifyResourceRenewFlag(self, request):
+        """修改资源自动续费标记
+
+        :param request: 调用ModifyResourceRenewFlag所需参数的结构体。
+        :type request: :class:`tencentcloud.dayu.v20180709.models.ModifyResourceRenewFlagRequest`
+        :rtype: :class:`tencentcloud.dayu.v20180709.models.ModifyResourceRenewFlagResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ModifyResourceRenewFlag", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ModifyResourceRenewFlagResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

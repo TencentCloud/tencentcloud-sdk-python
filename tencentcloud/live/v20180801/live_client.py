@@ -2018,7 +2018,7 @@ class LiveClient(AbstractClient):
 
 
     def DescribePullStreamConfigs(self, request):
-        """查询拉流配置
+        """查询直播拉流配置。
 
         :param request: 调用DescribePullStreamConfigs所需参数的结构体。
         :type request: :class:`tencentcloud.live.v20180801.models.DescribePullStreamConfigsRequest`
@@ -2551,7 +2551,7 @@ class LiveClient(AbstractClient):
 
 
     def ModifyPullStreamConfig(self, request):
-        """更新拉流配置
+        """更新拉流配置。
 
         :param request: 调用ModifyPullStreamConfig所需参数的结构体。
         :type request: :class:`tencentcloud.live.v20180801.models.ModifyPullStreamConfigRequest`
@@ -2579,7 +2579,7 @@ class LiveClient(AbstractClient):
 
 
     def ModifyPullStreamStatus(self, request):
-        """修改直播拉流配置状态
+        """修改直播拉流配置的状态。
 
         :param request: 调用ModifyPullStreamStatus所需参数的结构体。
         :type request: :class:`tencentcloud.live.v20180801.models.ModifyPullStreamStatusRequest`
@@ -2635,7 +2635,7 @@ class LiveClient(AbstractClient):
 
 
     def ResumeLiveStream(self, request):
-        """恢复某条流的推送。
+        """恢复某条流的推流。
 
         :param request: 调用ResumeLiveStream所需参数的结构体。
         :type request: :class:`tencentcloud.live.v20180801.models.ResumeLiveStreamRequest`

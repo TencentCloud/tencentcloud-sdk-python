@@ -141,6 +141,52 @@ class Candidate(AbstractModel):
                 self.PersonGroupInfos.append(obj)
 
 
+class CheckSimilarPersonRequest(AbstractModel):
+    """CheckSimilarPerson请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param GroupIds: 待整理的人员库列表。 
+人员库总人数不可超过200万，人员库个数不可超过10个。
+        :type GroupIds: list of str
+        :param UniquePersonControl: 疑似同一人判断控制。  
+1：宽松的同一人要求； 
+2：严格的同一人要求。  
+注： 要求越高，则疑似同一人的概率越小。
+        :type UniquePersonControl: int
+        """
+        self.GroupIds = None
+        self.UniquePersonControl = None
+
+
+    def _deserialize(self, params):
+        self.GroupIds = params.get("GroupIds")
+        self.UniquePersonControl = params.get("UniquePersonControl")
+
+
+class CheckSimilarPersonResponse(AbstractModel):
+    """CheckSimilarPerson返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param JobId: 查重任务ID，用于查询、获取查重的进度和结果。
+        :type JobId: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.JobId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.JobId = params.get("JobId")
+        self.RequestId = params.get("RequestId")
+
+
 class CompareFaceRequest(AbstractModel):
     """CompareFace请求参数结构体
 
@@ -771,7 +817,7 @@ class DetectFaceResponse(AbstractModel):
         :type ImageWidth: int
         :param ImageHeight: 请求的图片高度。
         :type ImageHeight: int
-        :param FaceInfos: 人脸信息列表。
+        :param FaceInfos: 人脸信息列表。包含人脸坐标信息、属性信息（若需要）、质量分信息（若需要）。
         :type FaceInfos: list of FaceInfo
         :param FaceModelVersion: 人脸识别所用的算法模型版本。
         :type FaceModelVersion: str
@@ -862,9 +908,48 @@ class DetectLiveFaceResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class EstimateCheckSimilarPersonCostTimeRequest(AbstractModel):
+    """EstimateCheckSimilarPersonCostTime请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param GroupIds: 待整理的人员库列表。 
+人员库总人数不可超过200万，人员库个数不可超过10个。
+        :type GroupIds: list of str
+        """
+        self.GroupIds = None
+
+
+    def _deserialize(self, params):
+        self.GroupIds = params.get("GroupIds")
+
+
+class EstimateCheckSimilarPersonCostTimeResponse(AbstractModel):
+    """EstimateCheckSimilarPersonCostTime返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param EstimatedTimeCost: 人员查重任务预估需要耗费时间。 单位为分钟。
+        :type EstimatedTimeCost: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.EstimatedTimeCost = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.EstimatedTimeCost = params.get("EstimatedTimeCost")
+        self.RequestId = params.get("RequestId")
+
+
 class FaceAttributesInfo(AbstractModel):
     """人脸属性信息，包含性别( gender )、年龄( age )、表情( expression )、
-    魅力( beauty )、眼镜( glass )、口罩（mask）、头发（hair）和姿态 (pitch，roll，yaw )。只有当 NeedFaceAttributes 设为 1 时才返回有效信息。
+    魅力( beauty )、眼镜( glass )、口罩（mask）、头发（hair）和姿态 (pitch，roll，yaw )。只有当 NeedFaceAttributes 设为 1 时才返回有效信息，最多返回面积最大的 5 张人脸属性信息，超过 5 张人脸（第 6 张及以后的人脸）的 FaceAttributesInfo 不具备参考意义。
 
     """
 
@@ -878,13 +963,13 @@ class FaceAttributesInfo(AbstractModel):
         :type Expression: int
         :param Glass: 是否有眼镜 [true,false]。NeedFaceAttributes 不为1 或检测超过 5 张人脸时，此参数仍返回，但不具备参考意义。
         :type Glass: bool
-        :param Pitch: 上下偏移[-30,30]。NeedFaceAttributes 不为1 或检测超过 5 张人脸时，此参数仍返回，但不具备参考意义。 
+        :param Pitch: 上下偏移[-30,30]，单位角度。NeedFaceAttributes 不为1 或检测超过 5 张人脸时，此参数仍返回，但不具备参考意义。 
 建议：人脸入库选择[-10,10]的图片。
         :type Pitch: int
-        :param Yaw: 左右偏移[-30,30]。 NeedFaceAttributes 不为1 或检测超过 5 张人脸时，此参数仍返回，但不具备参考意义。 
+        :param Yaw: 左右偏移[-30,30]，单位角度。 NeedFaceAttributes 不为1 或检测超过 5 张人脸时，此参数仍返回，但不具备参考意义。 
 建议：人脸入库选择[-10,10]的图片。
         :type Yaw: int
-        :param Roll: 平面旋转[-180,180]。 NeedFaceAttributes 不为1 或检测超过 5 张人脸时，此参数仍返回，但不具备参考意义。  
+        :param Roll: 平面旋转[-180,180]，单位角度。 NeedFaceAttributes 不为1 或检测超过 5 张人脸时，此参数仍返回，但不具备参考意义。  
 建议：人脸入库选择[-20,20]的图片。
         :type Roll: int
         :param Beauty: 魅力[0~100]。NeedFaceAttributes 不为1 或检测超过 5 张人脸时，此参数仍返回，但不具备参考意义。
@@ -1490,6 +1575,49 @@ class GetPersonListResponse(AbstractModel):
         self.PersonNum = params.get("PersonNum")
         self.FaceNum = params.get("FaceNum")
         self.FaceModelVersion = params.get("FaceModelVersion")
+        self.RequestId = params.get("RequestId")
+
+
+class GetSimilarPersonResultRequest(AbstractModel):
+    """GetSimilarPersonResult请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param JobId: 查重任务ID，用于查询、获取查重的进度和结果。
+        :type JobId: str
+        """
+        self.JobId = None
+
+
+    def _deserialize(self, params):
+        self.JobId = params.get("JobId")
+
+
+class GetSimilarPersonResultResponse(AbstractModel):
+    """GetSimilarPersonResult返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Progress: 查重任务完成进度。取值[0.0，100.0]。当且仅当值为100时，SimilarPersons才有意义。
+        :type Progress: float
+        :param SimilarPersonsUrl: 疑似同一人的人员信息文件临时下载链接， 有效时间为5分钟，结果文件实际保存90天。
+文件内容由 SimilarPerson 的数组组成。
+        :type SimilarPersonsUrl: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Progress = None
+        self.SimilarPersonsUrl = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Progress = params.get("Progress")
+        self.SimilarPersonsUrl = params.get("SimilarPersonsUrl")
         self.RequestId = params.get("RequestId")
 
 
@@ -2128,6 +2256,8 @@ MaxFaceNum用于，当输入的待识别图片包含多张人脸时，设定要�
         :type QualityControl: int
         :param FaceMatchThreshold: 出参Score中，只有大于等于FaceMatchThreshold值的结果才会返回。默认为0。取值范围[0.0,100.0) 。
         :type FaceMatchThreshold: float
+        :param NeedPersonInfo: 是否返回人员具体信息。0 为关闭，1 为开启。默认为 0。其他非0非1值默认为0
+        :type NeedPersonInfo: int
         """
         self.GroupIds = None
         self.Image = None
@@ -2137,6 +2267,7 @@ MaxFaceNum用于，当输入的待识别图片包含多张人脸时，设定要�
         self.MaxPersonNum = None
         self.QualityControl = None
         self.FaceMatchThreshold = None
+        self.NeedPersonInfo = None
 
 
     def _deserialize(self, params):
@@ -2148,6 +2279,7 @@ MaxFaceNum用于，当输入的待识别图片包含多张人脸时，设定要�
         self.MaxPersonNum = params.get("MaxPersonNum")
         self.QualityControl = params.get("QualityControl")
         self.FaceMatchThreshold = params.get("FaceMatchThreshold")
+        self.NeedPersonInfo = params.get("NeedPersonInfo")
 
 
 class SearchPersonsResponse(AbstractModel):
@@ -2223,6 +2355,8 @@ MaxFaceNum用于，当输入的待识别图片包含多张人脸时，设定要�
         :type QualityControl: int
         :param FaceMatchThreshold: 出参Score中，只有超过FaceMatchThreshold值的结果才会返回。默认为0。
         :type FaceMatchThreshold: float
+        :param NeedPersonInfo: 是否返回人员具体信息。0 为关闭，1 为开启。默认为 0。其他非0非1值默认为0
+        :type NeedPersonInfo: int
         """
         self.GroupIds = None
         self.Image = None
@@ -2232,6 +2366,7 @@ MaxFaceNum用于，当输入的待识别图片包含多张人脸时，设定要�
         self.MaxPersonNumPerGroup = None
         self.QualityControl = None
         self.FaceMatchThreshold = None
+        self.NeedPersonInfo = None
 
 
     def _deserialize(self, params):
@@ -2243,6 +2378,7 @@ MaxFaceNum用于，当输入的待识别图片包含多张人脸时，设定要�
         self.MaxPersonNumPerGroup = params.get("MaxPersonNumPerGroup")
         self.QualityControl = params.get("QualityControl")
         self.FaceMatchThreshold = params.get("FaceMatchThreshold")
+        self.NeedPersonInfo = params.get("NeedPersonInfo")
 
 
 class SearchPersonsReturnsByGroupResponse(AbstractModel):

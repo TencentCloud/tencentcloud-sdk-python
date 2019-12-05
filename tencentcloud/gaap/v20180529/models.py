@@ -3777,9 +3777,12 @@ class DomainRuleSet(AbstractModel):
         :param RealServerCertificateDomain: 源站认证域名。
 注意：此字段可能返回 null，表示取不到有效值。
         :type RealServerCertificateDomain: str
-        :param PolyClientCertificateAliasInfo: 多客户端证书时，返回多个证书的id和列表
+        :param PolyClientCertificateAliasInfo: 多客户端证书时，返回多个证书的id和别名
 注意：此字段可能返回 null，表示取不到有效值。
         :type PolyClientCertificateAliasInfo: list of CertificateAliasInfo
+        :param PolyRealServerCertificateAliasInfo: 多源站证书时，返回多个证书的id和别名
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PolyRealServerCertificateAliasInfo: list of CertificateAliasInfo
         """
         self.Domain = None
         self.RuleSet = None
@@ -3798,6 +3801,7 @@ class DomainRuleSet(AbstractModel):
         self.GaapCertificateAlias = None
         self.RealServerCertificateDomain = None
         self.PolyClientCertificateAliasInfo = None
+        self.PolyRealServerCertificateAliasInfo = None
 
 
     def _deserialize(self, params):
@@ -3828,6 +3832,12 @@ class DomainRuleSet(AbstractModel):
                 obj = CertificateAliasInfo()
                 obj._deserialize(item)
                 self.PolyClientCertificateAliasInfo.append(obj)
+        if params.get("PolyRealServerCertificateAliasInfo") is not None:
+            self.PolyRealServerCertificateAliasInfo = []
+            for item in params.get("PolyRealServerCertificateAliasInfo"):
+                obj = CertificateAliasInfo()
+                obj._deserialize(item)
+                self.PolyRealServerCertificateAliasInfo.append(obj)
 
 
 class Filter(AbstractModel):

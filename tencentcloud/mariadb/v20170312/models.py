@@ -200,7 +200,7 @@ class CreateAccountRequest(AbstractModel):
         """
         :param InstanceId: 实例 ID，形如：tdsql-ow728lmc，可以通过 DescribeDBInstances 查询实例详情获得。
         :type InstanceId: str
-        :param UserName: 登录用户名，由字幕、数字、下划线和连字符组成，长度为1~32位。
+        :param UserName: 登录用户名，由字母、数字、下划线和连字符组成，长度为1~32位。
         :type UserName: str
         :param Host: 可以登录的主机，与mysql 账号的 host 格式一致，可以支持通配符，例如 %，10.%，10.20.%。
         :type Host: str
@@ -610,6 +610,23 @@ class DBParamValue(AbstractModel):
     def _deserialize(self, params):
         self.Param = params.get("Param")
         self.Value = params.get("Value")
+
+
+class Database(AbstractModel):
+    """数据库信息
+
+    """
+
+    def __init__(self):
+        """
+        :param DbName: 数据库名称
+        :type DbName: str
+        """
+        self.DbName = None
+
+
+    def _deserialize(self, params):
+        self.DbName = params.get("DbName")
 
 
 class Deal(AbstractModel):
@@ -1506,6 +1523,53 @@ class DescribeDBSlowLogsResponse(AbstractModel):
         self.QueryCount = params.get("QueryCount")
         self.Total = params.get("Total")
         self.QueryTimeSum = params.get("QueryTimeSum")
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeDatabasesRequest(AbstractModel):
+    """DescribeDatabases请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param InstanceId: 实例 ID，形如：dcdbt-ow7t8lmc。
+        :type InstanceId: str
+        """
+        self.InstanceId = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+
+
+class DescribeDatabasesResponse(AbstractModel):
+    """DescribeDatabases返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Databases: 该实例上的数据库列表。
+        :type Databases: list of Database
+        :param InstanceId: 透传入参。
+        :type InstanceId: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Databases = None
+        self.InstanceId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Databases") is not None:
+            self.Databases = []
+            for item in params.get("Databases"):
+                obj = Database()
+                obj._deserialize(item)
+                self.Databases.append(obj)
+        self.InstanceId = params.get("InstanceId")
         self.RequestId = params.get("RequestId")
 
 
@@ -2746,6 +2810,44 @@ class ResourceUsageMonitorSet(AbstractModel):
             self.DataDiskAvailable._deserialize(params.get("DataDiskAvailable"))
 
 
+class RestartDBInstancesRequest(AbstractModel):
+    """RestartDBInstances请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param InstanceIds: 实例ID的数组
+        :type InstanceIds: list of str
+        """
+        self.InstanceIds = None
+
+
+    def _deserialize(self, params):
+        self.InstanceIds = params.get("InstanceIds")
+
+
+class RestartDBInstancesResponse(AbstractModel):
+    """RestartDBInstances返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param FlowId: 异步任务ID
+        :type FlowId: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.FlowId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.FlowId = params.get("FlowId")
+        self.RequestId = params.get("RequestId")
+
+
 class SlowLogData(AbstractModel):
     """慢查询条目信息
 
@@ -2787,6 +2889,9 @@ class SlowLogData(AbstractModel):
         :type TsMin: str
         :param User: 帐号
         :type User: str
+        :param ExampleSql: 样例Sql
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ExampleSql: str
         """
         self.CheckSum = None
         self.Db = None
@@ -2805,6 +2910,7 @@ class SlowLogData(AbstractModel):
         self.TsMax = None
         self.TsMin = None
         self.User = None
+        self.ExampleSql = None
 
 
     def _deserialize(self, params):
@@ -2825,6 +2931,7 @@ class SlowLogData(AbstractModel):
         self.TsMax = params.get("TsMax")
         self.TsMin = params.get("TsMin")
         self.User = params.get("User")
+        self.ExampleSql = params.get("ExampleSql")
 
 
 class SpecConfigInfo(AbstractModel):

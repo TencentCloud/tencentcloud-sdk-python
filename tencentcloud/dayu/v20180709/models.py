@@ -23,7 +23,14 @@ class BaradData(AbstractModel):
 
     def __init__(self):
         """
-        :param MetricName: 指标名（connum表示TCP连接数；new_conn表示新增TCP连接数；intraffic表示入流量；outtraffic表示出流量）
+        :param MetricName: 指标名（connum表示TCP活跃连接数；
+new_conn表示新建TCP连接数；
+inactive_conn表示非活跃连接数;
+intraffic表示入流量；
+outtraffic表示出流量；
+alltraffic表示出流量和入流量之和；
+inpkg表示入包速率；
+outpkg表示出包速率；）
         :type MetricName: str
         :param Data: 值数组
         :type Data: list of float
@@ -224,6 +231,60 @@ class CCRuleConfig(AbstractModel):
         self.ReqNumber = params.get("ReqNumber")
         self.Action = params.get("Action")
         self.ExeDuration = params.get("ExeDuration")
+
+
+class CreateBasicDDoSAlarmThresholdRequest(AbstractModel):
+    """CreateBasicDDoSAlarmThreshold请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Business: 大禹子产品代号（basic表示DDoS基础防护）
+        :type Business: str
+        :param Method: =get表示读取告警阈值；=set表示设置告警阈值；
+        :type Method: str
+        :param AlarmType: 可选，告警阈值类型，1-入流量，2-清洗流量；当Method为set时必须填写；
+        :type AlarmType: int
+        :param AlarmThreshold: 可选，告警阈值，当Method为set时必须填写；当设置阈值为0时表示清除告警阈值配置；
+        :type AlarmThreshold: int
+        """
+        self.Business = None
+        self.Method = None
+        self.AlarmType = None
+        self.AlarmThreshold = None
+
+
+    def _deserialize(self, params):
+        self.Business = params.get("Business")
+        self.Method = params.get("Method")
+        self.AlarmType = params.get("AlarmType")
+        self.AlarmThreshold = params.get("AlarmThreshold")
+
+
+class CreateBasicDDoSAlarmThresholdResponse(AbstractModel):
+    """CreateBasicDDoSAlarmThreshold返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param AlarmThreshold: 当存在告警阈值配置时，返回告警阈值大于0，当不存在告警配置时，返回告警阈值为0；
+        :type AlarmThreshold: int
+        :param AlarmType: 告警阈值类型，1-入流量，2-清洗流量；当AlarmThreshold大于0时有效；
+        :type AlarmType: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.AlarmThreshold = None
+        self.AlarmType = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.AlarmThreshold = params.get("AlarmThreshold")
+        self.AlarmType = params.get("AlarmType")
+        self.RequestId = params.get("RequestId")
 
 
 class CreateCCSelfDefinePolicyRequest(AbstractModel):
@@ -1647,8 +1708,9 @@ class DescribeBaradDataRequest(AbstractModel):
         :param Id: 资源实例ID
         :type Id: str
         :param MetricName: 指标名，取值：
-connum表示总TCP连接数（新建TCP连接数与活跃TCP连接数的和）；
+connum表示TCP活跃连接数；
 new_conn表示新建TCP连接数；
+inactive_conn表示非活跃连接数;
 intraffic表示入流量；
 outtraffic表示出流量；
 alltraffic表示出流量和入流量之和；
@@ -1722,6 +1784,68 @@ class DescribeBaradDataResponse(AbstractModel):
                 obj = BaradData()
                 obj._deserialize(item)
                 self.DataList.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeBasicDeviceThresholdRequest(AbstractModel):
+    """DescribeBasicDeviceThreshold请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param BasicIp: 查询的IP地址，取值如：1.1.1.1
+        :type BasicIp: str
+        :param BasicRegion: 查询IP所属地域，取值如：gz、bj、sh、hk等地域缩写
+        :type BasicRegion: str
+        :param BasicBizType: 专区类型，取值如：公有云专区：public，黑石专区：bm, NAT服务器专区：nat，互联网通道：channel。
+        :type BasicBizType: str
+        :param BasicDeviceType: 设备类型，取值如：服务器：cvm，公有云负载均衡：clb，黑石负载均衡：lb，NAT服务器：nat，互联网通道：channel.
+        :type BasicDeviceType: str
+        :param BasicCheckFlag: 有效性检查，取值为1
+        :type BasicCheckFlag: int
+        :param BasicIpInstance: 可选，IPInstance Nat 网关（如果查询的设备类型是NAT服务器，需要传此参数，通过nat资源查询接口获取）
+        :type BasicIpInstance: str
+        :param BasicIspCode: 可选，运营商线路（如果查询的设备类型是NAT服务器，需要传此参数为5）
+        :type BasicIspCode: int
+        """
+        self.BasicIp = None
+        self.BasicRegion = None
+        self.BasicBizType = None
+        self.BasicDeviceType = None
+        self.BasicCheckFlag = None
+        self.BasicIpInstance = None
+        self.BasicIspCode = None
+
+
+    def _deserialize(self, params):
+        self.BasicIp = params.get("BasicIp")
+        self.BasicRegion = params.get("BasicRegion")
+        self.BasicBizType = params.get("BasicBizType")
+        self.BasicDeviceType = params.get("BasicDeviceType")
+        self.BasicCheckFlag = params.get("BasicCheckFlag")
+        self.BasicIpInstance = params.get("BasicIpInstance")
+        self.BasicIspCode = params.get("BasicIspCode")
+
+
+class DescribeBasicDeviceThresholdResponse(AbstractModel):
+    """DescribeBasicDeviceThreshold返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Threshold: 返回黑洞封堵值
+        :type Threshold: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Threshold = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Threshold = params.get("Threshold")
         self.RequestId = params.get("RequestId")
 
 
@@ -3197,6 +3321,57 @@ Attacks：DDoS防护次数
         self.RequestId = params.get("RequestId")
 
 
+class DescribeIPProductInfoRequest(AbstractModel):
+    """DescribeIPProductInfo请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Business: 大禹子产品代号（bgp表示独享包；bgp-multip表示共享包）
+        :type Business: str
+        :param IpList: IP列表
+        :type IpList: list of str
+        """
+        self.Business = None
+        self.IpList = None
+
+
+    def _deserialize(self, params):
+        self.Business = params.get("Business")
+        self.IpList = params.get("IpList")
+
+
+class DescribeIPProductInfoResponse(AbstractModel):
+    """DescribeIPProductInfo返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Data: 云产品信息列表，如果没有查询到则返回空数组，值说明如下：
+Key为ProductName时，value表示云产品实例的名称；
+Key为ProductInstanceId时，value表示云产品实例的ID；
+Key为ProductType时，value表示的是云产品的类型（cvm表示云主机、clb表示负载均衡）;
+Key为IP时，value表示云产品实例的IP；
+        :type Data: list of KeyValueRecord
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Data = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self.Data = []
+            for item in params.get("Data"):
+                obj = KeyValueRecord()
+                obj._deserialize(item)
+                self.Data.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeInsurePacksRequest(AbstractModel):
     """DescribeInsurePacks请求参数结构体
 
@@ -4533,7 +4708,7 @@ class L4RuleHealth(AbstractModel):
         :type Enable: int
         :param TimeOut: 响应超时时间，单位秒
         :type TimeOut: int
-        :param Interval: 检测间隔时间，单位秒
+        :param Interval: 检测间隔时间，单位秒，必须要大于响应超时时间
         :type Interval: int
         :param KickNum: 不健康阈值，单位次
         :type KickNum: int
@@ -5750,6 +5925,7 @@ class ModifyDDoSThresholdRequest(AbstractModel):
         :param Id: 资源ID
         :type Id: str
         :param Threshold: DDoS清洗阈值，取值[0, 60, 80, 100, 150, 200, 250, 300, 400, 500, 700, 1000];
+当设置值为0时，表示采用默认值；
         :type Threshold: int
         """
         self.Business = None
@@ -6129,6 +6305,54 @@ class ModifyResBindDDoSPolicyRequest(AbstractModel):
 
 class ModifyResBindDDoSPolicyResponse(AbstractModel):
     """ModifyResBindDDoSPolicy返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Success: 成功码
+        :type Success: :class:`tencentcloud.dayu.v20180709.models.SuccessCode`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Success = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Success") is not None:
+            self.Success = SuccessCode()
+            self.Success._deserialize(params.get("Success"))
+        self.RequestId = params.get("RequestId")
+
+
+class ModifyResourceRenewFlagRequest(AbstractModel):
+    """ModifyResourceRenewFlag请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Business: 大禹子产品代号（bgpip表示高防IP；net表示高防IP专业版；shield表示棋牌盾；bgp表示独享包；bgp-multip表示共享包；insurance表示保险包；staticpack表示三网套餐包）
+        :type Business: str
+        :param Id: 资源Id
+        :type Id: str
+        :param RenewFlag: 自动续费标记（0手动续费；1自动续费；2到期不续费）
+        :type RenewFlag: int
+        """
+        self.Business = None
+        self.Id = None
+        self.RenewFlag = None
+
+
+    def _deserialize(self, params):
+        self.Business = params.get("Business")
+        self.Id = params.get("Id")
+        self.RenewFlag = params.get("RenewFlag")
+
+
+class ModifyResourceRenewFlagResponse(AbstractModel):
+    """ModifyResourceRenewFlag返回参数结构体
 
     """
 

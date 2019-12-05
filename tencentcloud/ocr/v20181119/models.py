@@ -2585,6 +2585,75 @@ class PermitOCRResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class PropOwnerCertOCRRequest(AbstractModel):
+    """PropOwnerCertOCR请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ImageBase64: 图片的 Base64 值。
+支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。
+支持的图片大小：所下载图片经Base64编码后不超过 3M。图片下载时间不超过 3 秒。
+图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
+        :type ImageBase64: str
+        :param ImageUrl: 图片的 Url 地址。
+支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。
+支持的图片大小：所下载图片经 Base64 编码后不超过 3M。图片下载时间不超过 3 秒。
+图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。
+非腾讯云存储的 Url 速度和稳定性可能受一定影响。
+        :type ImageUrl: str
+        """
+        self.ImageBase64 = None
+        self.ImageUrl = None
+
+
+    def _deserialize(self, params):
+        self.ImageBase64 = params.get("ImageBase64")
+        self.ImageUrl = params.get("ImageUrl")
+
+
+class PropOwnerCertOCRResponse(AbstractModel):
+    """PropOwnerCertOCR返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Owner: 房地产权利人
+        :type Owner: str
+        :param Possession: 共有情况
+        :type Possession: str
+        :param RegisterTime: 登记时间
+        :type RegisterTime: str
+        :param Purpose: 规划用途
+        :type Purpose: str
+        :param Nature: 房屋性质
+        :type Nature: str
+        :param Location: 房地坐落
+        :type Location: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Owner = None
+        self.Possession = None
+        self.RegisterTime = None
+        self.Purpose = None
+        self.Nature = None
+        self.Location = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Owner = params.get("Owner")
+        self.Possession = params.get("Possession")
+        self.RegisterTime = params.get("RegisterTime")
+        self.Purpose = params.get("Purpose")
+        self.Nature = params.get("Nature")
+        self.Location = params.get("Location")
+        self.RequestId = params.get("RequestId")
+
+
 class QrcodeImgSize(AbstractModel):
     """图片大小
 
@@ -2872,6 +2941,99 @@ class Rect(AbstractModel):
         self.Y = params.get("Y")
         self.Width = params.get("Width")
         self.Height = params.get("Height")
+
+
+class ResidenceBookletOCRRequest(AbstractModel):
+    """ResidenceBookletOCR请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ImageBase64: 图片的 Base64 值。
+支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。
+支持的图片大小：所下载图片经Base64编码后不超过 3M。图片下载时间不超过 3 秒。
+图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
+        :type ImageBase64: str
+        :param ImageUrl: 图片的 Url 地址。
+支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。
+支持的图片大小：所下载图片经 Base64 编码后不超过 3M。图片下载时间不超过 3 秒。
+图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。
+非腾讯云存储的 Url 速度和稳定性可能受一定影响。
+        :type ImageUrl: str
+        """
+        self.ImageBase64 = None
+        self.ImageUrl = None
+
+
+    def _deserialize(self, params):
+        self.ImageBase64 = params.get("ImageBase64")
+        self.ImageUrl = params.get("ImageUrl")
+
+
+class ResidenceBookletOCRResponse(AbstractModel):
+    """ResidenceBookletOCR返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param HouseholdNumber: 户号
+        :type HouseholdNumber: str
+        :param Name: 姓名
+        :type Name: str
+        :param Sex: 性别
+        :type Sex: str
+        :param BirthPlace: 出生地
+        :type BirthPlace: str
+        :param Nation: 民族
+        :type Nation: str
+        :param NativePlace: 籍贯
+        :type NativePlace: str
+        :param BirthDate: 出生日期
+        :type BirthDate: str
+        :param IdCardNumber: 公民身份证件编号
+        :type IdCardNumber: str
+        :param EducationDegree: 文化程度
+        :type EducationDegree: str
+        :param ServicePlace: 服务处所
+        :type ServicePlace: str
+        :param Household: 户别
+        :type Household: str
+        :param Address: 住址
+        :type Address: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.HouseholdNumber = None
+        self.Name = None
+        self.Sex = None
+        self.BirthPlace = None
+        self.Nation = None
+        self.NativePlace = None
+        self.BirthDate = None
+        self.IdCardNumber = None
+        self.EducationDegree = None
+        self.ServicePlace = None
+        self.Household = None
+        self.Address = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.HouseholdNumber = params.get("HouseholdNumber")
+        self.Name = params.get("Name")
+        self.Sex = params.get("Sex")
+        self.BirthPlace = params.get("BirthPlace")
+        self.Nation = params.get("Nation")
+        self.NativePlace = params.get("NativePlace")
+        self.BirthDate = params.get("BirthDate")
+        self.IdCardNumber = params.get("IdCardNumber")
+        self.EducationDegree = params.get("EducationDegree")
+        self.ServicePlace = params.get("ServicePlace")
+        self.Household = params.get("Household")
+        self.Address = params.get("Address")
+        self.RequestId = params.get("RequestId")
 
 
 class ShipInvoiceInfo(AbstractModel):
