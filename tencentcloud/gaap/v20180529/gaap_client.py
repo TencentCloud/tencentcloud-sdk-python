@@ -952,7 +952,7 @@ class GaapClient(AbstractClient):
 
 
     def DescribeDomainErrorPageInfo(self, request):
-        """查询目前订制域名的错误响应
+        """查询目前定制域名的错误响应
 
         :param request: 调用DescribeDomainErrorPageInfo所需参数的结构体。
         :type request: :class:`tencentcloud.gaap.v20180529.models.DescribeDomainErrorPageInfoRequest`

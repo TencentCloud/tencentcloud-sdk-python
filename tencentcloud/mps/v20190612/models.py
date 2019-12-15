@@ -16,6 +16,67 @@
 from tencentcloud.common.abstract_model import AbstractModel
 
 
+class AIAnalysisTemplateItem(AbstractModel):
+    """AI 智能分析模板详情
+
+    """
+
+    def __init__(self):
+        """
+        :param Definition: 智能分析模板唯一标识。
+        :type Definition: int
+        :param Name: 智能分析模板名称。
+        :type Name: str
+        :param Comment: 智能分析模板描述信息。
+        :type Comment: str
+        :param ClassificationConfigure: 智能分类任务控制参数。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ClassificationConfigure: :class:`tencentcloud.mps.v20190612.models.ClassificationConfigureInfo`
+        :param TagConfigure: 智能标签任务控制参数。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TagConfigure: :class:`tencentcloud.mps.v20190612.models.TagConfigureInfo`
+        :param CoverConfigure: 智能封面任务控制参数。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CoverConfigure: :class:`tencentcloud.mps.v20190612.models.CoverConfigureInfo`
+        :param FrameTagConfigure: 智能按帧标签任务控制参数。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FrameTagConfigure: :class:`tencentcloud.mps.v20190612.models.FrameTagConfigureInfo`
+        :param CreateTime: 模板创建时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F)。
+        :type CreateTime: str
+        :param UpdateTime: 模板最后修改时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F)。
+        :type UpdateTime: str
+        """
+        self.Definition = None
+        self.Name = None
+        self.Comment = None
+        self.ClassificationConfigure = None
+        self.TagConfigure = None
+        self.CoverConfigure = None
+        self.FrameTagConfigure = None
+        self.CreateTime = None
+        self.UpdateTime = None
+
+
+    def _deserialize(self, params):
+        self.Definition = params.get("Definition")
+        self.Name = params.get("Name")
+        self.Comment = params.get("Comment")
+        if params.get("ClassificationConfigure") is not None:
+            self.ClassificationConfigure = ClassificationConfigureInfo()
+            self.ClassificationConfigure._deserialize(params.get("ClassificationConfigure"))
+        if params.get("TagConfigure") is not None:
+            self.TagConfigure = TagConfigureInfo()
+            self.TagConfigure._deserialize(params.get("TagConfigure"))
+        if params.get("CoverConfigure") is not None:
+            self.CoverConfigure = CoverConfigureInfo()
+            self.CoverConfigure._deserialize(params.get("CoverConfigure"))
+        if params.get("FrameTagConfigure") is not None:
+            self.FrameTagConfigure = FrameTagConfigureInfo()
+            self.FrameTagConfigure._deserialize(params.get("FrameTagConfigure"))
+        self.CreateTime = params.get("CreateTime")
+        self.UpdateTime = params.get("UpdateTime")
+
+
 class AIRecognitionTemplateItem(AbstractModel):
     """视频内容识别模板详情
 
@@ -30,19 +91,14 @@ class AIRecognitionTemplateItem(AbstractModel):
         :param Comment: 视频内容识别模板描述信息。
         :type Comment: str
         :param FaceConfigure: 人脸识别控制参数。
-注意：此字段可能返回 null，表示取不到有效值。
         :type FaceConfigure: :class:`tencentcloud.mps.v20190612.models.FaceConfigureInfo`
         :param OcrFullTextConfigure: 文本全文识别控制参数。
-注意：此字段可能返回 null，表示取不到有效值。
         :type OcrFullTextConfigure: :class:`tencentcloud.mps.v20190612.models.OcrFullTextConfigureInfo`
         :param OcrWordsConfigure: 文本关键词识别控制参数。
-注意：此字段可能返回 null，表示取不到有效值。
         :type OcrWordsConfigure: :class:`tencentcloud.mps.v20190612.models.OcrWordsConfigureInfo`
         :param AsrFullTextConfigure: 语音全文识别控制参数。
-注意：此字段可能返回 null，表示取不到有效值。
         :type AsrFullTextConfigure: :class:`tencentcloud.mps.v20190612.models.AsrFullTextConfigureInfo`
         :param AsrWordsConfigure: 语音关键词识别控制参数。
-注意：此字段可能返回 null，表示取不到有效值。
         :type AsrWordsConfigure: :class:`tencentcloud.mps.v20190612.models.AsrWordsConfigureInfo`
         :param CreateTime: 模板创建时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F)。
         :type CreateTime: str
@@ -84,14 +140,64 @@ class AIRecognitionTemplateItem(AbstractModel):
         self.UpdateTime = params.get("UpdateTime")
 
 
-class AiClassificationTaskInput(AbstractModel):
-    """智能分类任务输入参数类型
+class AiAnalysisResult(AbstractModel):
+    """智能分析结果
 
     """
 
     def __init__(self):
         """
-        :param Definition: 智能分类模板 ID。
+        :param Type: 任务的类型，可以取的值有：
+<li>Classification：智能分类</li>
+<li>Cover：智能封面</li>
+<li>Tag：智能标签</li>
+<li>FrameTag：智能按帧标签</li>
+<li>Highlight：智能精彩集锦</li>
+        :type Type: str
+        :param ClassificationTask: 视频内容分析智能分类任务的查询结果，当任务类型为 Classification 时有效。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ClassificationTask: :class:`tencentcloud.mps.v20190612.models.AiAnalysisTaskClassificationResult`
+        :param CoverTask: 视频内容分析智能封面任务的查询结果，当任务类型为 Cover 时有效。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CoverTask: :class:`tencentcloud.mps.v20190612.models.AiAnalysisTaskCoverResult`
+        :param TagTask: 视频内容分析智能标签任务的查询结果，当任务类型为 Tag 时有效。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TagTask: :class:`tencentcloud.mps.v20190612.models.AiAnalysisTaskTagResult`
+        :param FrameTagTask: 视频内容分析智能按帧标签任务的查询结果，当任务类型为 FrameTag 时有效。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FrameTagTask: :class:`tencentcloud.mps.v20190612.models.AiAnalysisTaskFrameTagResult`
+        """
+        self.Type = None
+        self.ClassificationTask = None
+        self.CoverTask = None
+        self.TagTask = None
+        self.FrameTagTask = None
+
+
+    def _deserialize(self, params):
+        self.Type = params.get("Type")
+        if params.get("ClassificationTask") is not None:
+            self.ClassificationTask = AiAnalysisTaskClassificationResult()
+            self.ClassificationTask._deserialize(params.get("ClassificationTask"))
+        if params.get("CoverTask") is not None:
+            self.CoverTask = AiAnalysisTaskCoverResult()
+            self.CoverTask._deserialize(params.get("CoverTask"))
+        if params.get("TagTask") is not None:
+            self.TagTask = AiAnalysisTaskTagResult()
+            self.TagTask._deserialize(params.get("TagTask"))
+        if params.get("FrameTagTask") is not None:
+            self.FrameTagTask = AiAnalysisTaskFrameTagResult()
+            self.FrameTagTask._deserialize(params.get("FrameTagTask"))
+
+
+class AiAnalysisTaskClassificationInput(AbstractModel):
+    """智能分类任务输入类型
+
+    """
+
+    def __init__(self):
+        """
+        :param Definition: 视频智能分类模板 ID。
         :type Definition: int
         """
         self.Definition = None
@@ -99,6 +205,320 @@ class AiClassificationTaskInput(AbstractModel):
 
     def _deserialize(self, params):
         self.Definition = params.get("Definition")
+
+
+class AiAnalysisTaskClassificationOutput(AbstractModel):
+    """智能分类结果信息
+
+    """
+
+    def __init__(self):
+        """
+        :param ClassificationSet: 视频智能分类列表。
+        :type ClassificationSet: list of MediaAiAnalysisClassificationItem
+        """
+        self.ClassificationSet = None
+
+
+    def _deserialize(self, params):
+        if params.get("ClassificationSet") is not None:
+            self.ClassificationSet = []
+            for item in params.get("ClassificationSet"):
+                obj = MediaAiAnalysisClassificationItem()
+                obj._deserialize(item)
+                self.ClassificationSet.append(obj)
+
+
+class AiAnalysisTaskClassificationResult(AbstractModel):
+    """智能分类任务结果类型
+
+    """
+
+    def __init__(self):
+        """
+        :param Status: 任务状态，有 PROCESSING，SUCCESS 和 FAIL 三种。
+        :type Status: str
+        :param ErrCode: 错误码，0：成功，其他值：失败。
+        :type ErrCode: int
+        :param Message: 错误信息。
+        :type Message: str
+        :param Input: 智能分类任务输入。
+        :type Input: :class:`tencentcloud.mps.v20190612.models.AiAnalysisTaskClassificationInput`
+        :param Output: 智能分类任务输出。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Output: :class:`tencentcloud.mps.v20190612.models.AiAnalysisTaskClassificationOutput`
+        """
+        self.Status = None
+        self.ErrCode = None
+        self.Message = None
+        self.Input = None
+        self.Output = None
+
+
+    def _deserialize(self, params):
+        self.Status = params.get("Status")
+        self.ErrCode = params.get("ErrCode")
+        self.Message = params.get("Message")
+        if params.get("Input") is not None:
+            self.Input = AiAnalysisTaskClassificationInput()
+            self.Input._deserialize(params.get("Input"))
+        if params.get("Output") is not None:
+            self.Output = AiAnalysisTaskClassificationOutput()
+            self.Output._deserialize(params.get("Output"))
+
+
+class AiAnalysisTaskCoverInput(AbstractModel):
+    """智能分类任务输入类型
+
+    """
+
+    def __init__(self):
+        """
+        :param Definition: 视频智能封面模板 ID。
+        :type Definition: int
+        """
+        self.Definition = None
+
+
+    def _deserialize(self, params):
+        self.Definition = params.get("Definition")
+
+
+class AiAnalysisTaskCoverOutput(AbstractModel):
+    """智能封面结果信息
+
+    """
+
+    def __init__(self):
+        """
+        :param CoverSet: 智能封面列表。
+        :type CoverSet: list of MediaAiAnalysisCoverItem
+        :param OutputStorage: 智能封面的存储位置。
+        :type OutputStorage: :class:`tencentcloud.mps.v20190612.models.TaskOutputStorage`
+        """
+        self.CoverSet = None
+        self.OutputStorage = None
+
+
+    def _deserialize(self, params):
+        if params.get("CoverSet") is not None:
+            self.CoverSet = []
+            for item in params.get("CoverSet"):
+                obj = MediaAiAnalysisCoverItem()
+                obj._deserialize(item)
+                self.CoverSet.append(obj)
+        if params.get("OutputStorage") is not None:
+            self.OutputStorage = TaskOutputStorage()
+            self.OutputStorage._deserialize(params.get("OutputStorage"))
+
+
+class AiAnalysisTaskCoverResult(AbstractModel):
+    """智能封面结果类型
+
+    """
+
+    def __init__(self):
+        """
+        :param Status: 任务状态，有 PROCESSING，SUCCESS 和 FAIL 三种。
+        :type Status: str
+        :param ErrCode: 错误码，0：成功，其他值：失败。
+        :type ErrCode: int
+        :param Message: 错误信息。
+        :type Message: str
+        :param Input: 智能封面任务输入。
+        :type Input: :class:`tencentcloud.mps.v20190612.models.AiAnalysisTaskCoverInput`
+        :param Output: 智能封面任务输出。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Output: :class:`tencentcloud.mps.v20190612.models.AiAnalysisTaskCoverOutput`
+        """
+        self.Status = None
+        self.ErrCode = None
+        self.Message = None
+        self.Input = None
+        self.Output = None
+
+
+    def _deserialize(self, params):
+        self.Status = params.get("Status")
+        self.ErrCode = params.get("ErrCode")
+        self.Message = params.get("Message")
+        if params.get("Input") is not None:
+            self.Input = AiAnalysisTaskCoverInput()
+            self.Input._deserialize(params.get("Input"))
+        if params.get("Output") is not None:
+            self.Output = AiAnalysisTaskCoverOutput()
+            self.Output._deserialize(params.get("Output"))
+
+
+class AiAnalysisTaskFrameTagInput(AbstractModel):
+    """智能按帧标签任务输入类型
+
+    """
+
+    def __init__(self):
+        """
+        :param Definition: 视频智能按帧标签模板 ID。
+        :type Definition: int
+        """
+        self.Definition = None
+
+
+    def _deserialize(self, params):
+        self.Definition = params.get("Definition")
+
+
+class AiAnalysisTaskFrameTagOutput(AbstractModel):
+    """智能按帧标签结果信息
+
+    """
+
+    def __init__(self):
+        """
+        :param SegmentSet: 视频按帧标签列表。
+        :type SegmentSet: list of MediaAiAnalysisFrameTagSegmentItem
+        """
+        self.SegmentSet = None
+
+
+    def _deserialize(self, params):
+        if params.get("SegmentSet") is not None:
+            self.SegmentSet = []
+            for item in params.get("SegmentSet"):
+                obj = MediaAiAnalysisFrameTagSegmentItem()
+                obj._deserialize(item)
+                self.SegmentSet.append(obj)
+
+
+class AiAnalysisTaskFrameTagResult(AbstractModel):
+    """智能按帧标签结果类型
+
+    """
+
+    def __init__(self):
+        """
+        :param Status: 任务状态，有 PROCESSING，SUCCESS 和 FAIL 三种。
+        :type Status: str
+        :param ErrCode: 错误码，0：成功，其他值：失败。
+        :type ErrCode: int
+        :param Message: 错误信息。
+        :type Message: str
+        :param Input: 智能按帧标签任务输入。
+        :type Input: :class:`tencentcloud.mps.v20190612.models.AiAnalysisTaskFrameTagInput`
+        :param Output: 智能按帧标签任务输出。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Output: :class:`tencentcloud.mps.v20190612.models.AiAnalysisTaskFrameTagOutput`
+        """
+        self.Status = None
+        self.ErrCode = None
+        self.Message = None
+        self.Input = None
+        self.Output = None
+
+
+    def _deserialize(self, params):
+        self.Status = params.get("Status")
+        self.ErrCode = params.get("ErrCode")
+        self.Message = params.get("Message")
+        if params.get("Input") is not None:
+            self.Input = AiAnalysisTaskFrameTagInput()
+            self.Input._deserialize(params.get("Input"))
+        if params.get("Output") is not None:
+            self.Output = AiAnalysisTaskFrameTagOutput()
+            self.Output._deserialize(params.get("Output"))
+
+
+class AiAnalysisTaskInput(AbstractModel):
+    """AI 视频智能分析输入参数类型
+
+    """
+
+    def __init__(self):
+        """
+        :param Definition: 视频内容分析模板 ID。
+        :type Definition: int
+        """
+        self.Definition = None
+
+
+    def _deserialize(self, params):
+        self.Definition = params.get("Definition")
+
+
+class AiAnalysisTaskTagInput(AbstractModel):
+    """智能标签任务输入类型
+
+    """
+
+    def __init__(self):
+        """
+        :param Definition: 视频智能标签模板 ID。
+        :type Definition: int
+        """
+        self.Definition = None
+
+
+    def _deserialize(self, params):
+        self.Definition = params.get("Definition")
+
+
+class AiAnalysisTaskTagOutput(AbstractModel):
+    """智能标签结果信息
+
+    """
+
+    def __init__(self):
+        """
+        :param TagSet: 视频智能标签列表。
+        :type TagSet: list of MediaAiAnalysisTagItem
+        """
+        self.TagSet = None
+
+
+    def _deserialize(self, params):
+        if params.get("TagSet") is not None:
+            self.TagSet = []
+            for item in params.get("TagSet"):
+                obj = MediaAiAnalysisTagItem()
+                obj._deserialize(item)
+                self.TagSet.append(obj)
+
+
+class AiAnalysisTaskTagResult(AbstractModel):
+    """智能标签结果类型
+
+    """
+
+    def __init__(self):
+        """
+        :param Status: 任务状态，有 PROCESSING，SUCCESS 和 FAIL 三种。
+        :type Status: str
+        :param ErrCode: 错误码，0：成功，其他值：失败。
+        :type ErrCode: int
+        :param Message: 错误信息。
+        :type Message: str
+        :param Input: 智能标签任务输入。
+        :type Input: :class:`tencentcloud.mps.v20190612.models.AiAnalysisTaskTagInput`
+        :param Output: 智能标签任务输出。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Output: :class:`tencentcloud.mps.v20190612.models.AiAnalysisTaskTagOutput`
+        """
+        self.Status = None
+        self.ErrCode = None
+        self.Message = None
+        self.Input = None
+        self.Output = None
+
+
+    def _deserialize(self, params):
+        self.Status = params.get("Status")
+        self.ErrCode = params.get("ErrCode")
+        self.Message = params.get("Message")
+        if params.get("Input") is not None:
+            self.Input = AiAnalysisTaskTagInput()
+            self.Input._deserialize(params.get("Input"))
+        if params.get("Output") is not None:
+            self.Output = AiAnalysisTaskTagOutput()
+            self.Output._deserialize(params.get("Output"))
 
 
 class AiContentReviewResult(AbstractModel):
@@ -1285,10 +1705,8 @@ class AiReviewTaskPoliticalOcrResult(AbstractModel):
         :param Status: 任务状态，有 PROCESSING，SUCCESS �� FAIL 三种。
         :type Status: str
         :param ErrCode: 错误码，0：成功，其他值：失败。
-注意：此字段可能返回 null，表示取不到有效值。
         :type ErrCode: int
         :param Message: 错误信息。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Message: str
         :param Input: 内容审核 Ocr 文字鉴政任务输入。
         :type Input: :class:`tencentcloud.mps.v20190612.models.AiReviewPoliticalOcrTaskInput`
@@ -1439,10 +1857,8 @@ class AiReviewTaskPornResult(AbstractModel):
         :param Status: 任务状态，有 PROCESSING，SUCCESS 和 FAIL 三种。
         :type Status: str
         :param ErrCode: 错误码，0：成功，其他值：失败。
-注意：此字段可能返回 null，表示取不到有效值。
         :type ErrCode: int
         :param Message: 错误信息。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Message: str
         :param Input: 内容审核鉴黄任务输入。
         :type Input: :class:`tencentcloud.mps.v20190612.models.AiReviewPornTaskInput`
@@ -2084,6 +2500,44 @@ class AudioTemplateInfoForUpdate(AbstractModel):
         self.AudioChannel = params.get("AudioChannel")
 
 
+class ClassificationConfigureInfo(AbstractModel):
+    """智能分类任务控制参数
+
+    """
+
+    def __init__(self):
+        """
+        :param Switch: 智能分类任务开关，可选值：
+<li>ON：开启智能分类任务；</li>
+<li>OFF：关闭智能分类任务。</li>
+        :type Switch: str
+        """
+        self.Switch = None
+
+
+    def _deserialize(self, params):
+        self.Switch = params.get("Switch")
+
+
+class ClassificationConfigureInfoForUpdate(AbstractModel):
+    """智能分类任务控制参数
+
+    """
+
+    def __init__(self):
+        """
+        :param Switch: 智能分类任务开关，可选值：
+<li>ON：开启智能分类任务；</li>
+<li>OFF：关闭智能分类任务。</li>
+        :type Switch: str
+        """
+        self.Switch = None
+
+
+    def _deserialize(self, params):
+        self.Switch = params.get("Switch")
+
+
 class ContentReviewTemplateItem(AbstractModel):
     """内容审核模板详情
 
@@ -2098,16 +2552,12 @@ class ContentReviewTemplateItem(AbstractModel):
         :param Comment: 内容审核模板描述信息，长度限制：256 个字符。
         :type Comment: str
         :param PornConfigure: 鉴黄控制参数。
-注意：此字段可能返回 null，表示取不到有效值。
         :type PornConfigure: :class:`tencentcloud.mps.v20190612.models.PornConfigureInfo`
         :param TerrorismConfigure: 鉴恐控制参数。
-注意：此字段可能返回 null，表示取不到有效值。
         :type TerrorismConfigure: :class:`tencentcloud.mps.v20190612.models.TerrorismConfigureInfo`
         :param PoliticalConfigure: 鉴政控制参数。
-注意：此字段可能返回 null，表示取不到有效值。
         :type PoliticalConfigure: :class:`tencentcloud.mps.v20190612.models.PoliticalConfigureInfo`
         :param UserDefineConfigure: 用户自定义内容审核控制参数。
-注意：此字段可能返回 null，表示取不到有效值。
         :type UserDefineConfigure: :class:`tencentcloud.mps.v20190612.models.UserDefineConfigureInfo`
         :param CreateTime: 模板创建时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F)。
         :type CreateTime: str
@@ -2218,6 +2668,110 @@ class CosOutputStorage(AbstractModel):
     def _deserialize(self, params):
         self.Bucket = params.get("Bucket")
         self.Region = params.get("Region")
+
+
+class CoverConfigureInfo(AbstractModel):
+    """智能封面任务控制参数
+
+    """
+
+    def __init__(self):
+        """
+        :param Switch: 智能封面任务开关，可选值：
+<li>ON：开启智能封面任务；</li>
+<li>OFF：关闭智能封面任务。</li>
+        :type Switch: str
+        """
+        self.Switch = None
+
+
+    def _deserialize(self, params):
+        self.Switch = params.get("Switch")
+
+
+class CoverConfigureInfoForUpdate(AbstractModel):
+    """智能封面任务控制参数
+
+    """
+
+    def __init__(self):
+        """
+        :param Switch: 智能封面任务开关，可选值：
+<li>ON：开启智能封面任务；</li>
+<li>OFF：关闭智能封面任务。</li>
+        :type Switch: str
+        """
+        self.Switch = None
+
+
+    def _deserialize(self, params):
+        self.Switch = params.get("Switch")
+
+
+class CreateAIAnalysisTemplateRequest(AbstractModel):
+    """CreateAIAnalysisTemplate请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Name: 视频内容分析模板名称，长度限制：64 个字符。
+        :type Name: str
+        :param Comment: 视频内容分析模板描述信息，长度限制：256 个字符。
+        :type Comment: str
+        :param ClassificationConfigure: 智能分类任务控制参数。
+        :type ClassificationConfigure: :class:`tencentcloud.mps.v20190612.models.ClassificationConfigureInfo`
+        :param TagConfigure: 智能标签任务控制参数。
+        :type TagConfigure: :class:`tencentcloud.mps.v20190612.models.TagConfigureInfo`
+        :param CoverConfigure: 智能封面任务控制参数。
+        :type CoverConfigure: :class:`tencentcloud.mps.v20190612.models.CoverConfigureInfo`
+        :param FrameTagConfigure: 智能按帧标签任务控制参数。
+        :type FrameTagConfigure: :class:`tencentcloud.mps.v20190612.models.FrameTagConfigureInfo`
+        """
+        self.Name = None
+        self.Comment = None
+        self.ClassificationConfigure = None
+        self.TagConfigure = None
+        self.CoverConfigure = None
+        self.FrameTagConfigure = None
+
+
+    def _deserialize(self, params):
+        self.Name = params.get("Name")
+        self.Comment = params.get("Comment")
+        if params.get("ClassificationConfigure") is not None:
+            self.ClassificationConfigure = ClassificationConfigureInfo()
+            self.ClassificationConfigure._deserialize(params.get("ClassificationConfigure"))
+        if params.get("TagConfigure") is not None:
+            self.TagConfigure = TagConfigureInfo()
+            self.TagConfigure._deserialize(params.get("TagConfigure"))
+        if params.get("CoverConfigure") is not None:
+            self.CoverConfigure = CoverConfigureInfo()
+            self.CoverConfigure._deserialize(params.get("CoverConfigure"))
+        if params.get("FrameTagConfigure") is not None:
+            self.FrameTagConfigure = FrameTagConfigureInfo()
+            self.FrameTagConfigure._deserialize(params.get("FrameTagConfigure"))
+
+
+class CreateAIAnalysisTemplateResponse(AbstractModel):
+    """CreateAIAnalysisTemplate返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Definition: 视频内容分析模板唯一标识。
+        :type Definition: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Definition = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Definition = params.get("Definition")
+        self.RequestId = params.get("RequestId")
 
 
 class CreateAIRecognitionTemplateRequest(AbstractModel):
@@ -2929,6 +3483,8 @@ class CreateWorkflowRequest(AbstractModel):
         :type MediaProcessTask: :class:`tencentcloud.mps.v20190612.models.MediaProcessTaskInput`
         :param AiContentReviewTask: 视频内容审核类型任务参数。
         :type AiContentReviewTask: :class:`tencentcloud.mps.v20190612.models.AiContentReviewTaskInput`
+        :param AiAnalysisTask: 视频内容分析类型任务参数。
+        :type AiAnalysisTask: :class:`tencentcloud.mps.v20190612.models.AiAnalysisTaskInput`
         :param AiRecognitionTask: 视频内容识别类型任务参数。
         :type AiRecognitionTask: :class:`tencentcloud.mps.v20190612.models.AiRecognitionTaskInput`
         :param TaskNotifyConfig: 任务的事件通知配置，不填代表不获取事件通知。
@@ -2942,6 +3498,7 @@ class CreateWorkflowRequest(AbstractModel):
         self.OutputDir = None
         self.MediaProcessTask = None
         self.AiContentReviewTask = None
+        self.AiAnalysisTask = None
         self.AiRecognitionTask = None
         self.TaskNotifyConfig = None
         self.TaskPriority = None
@@ -2962,6 +3519,9 @@ class CreateWorkflowRequest(AbstractModel):
         if params.get("AiContentReviewTask") is not None:
             self.AiContentReviewTask = AiContentReviewTaskInput()
             self.AiContentReviewTask._deserialize(params.get("AiContentReviewTask"))
+        if params.get("AiAnalysisTask") is not None:
+            self.AiAnalysisTask = AiAnalysisTaskInput()
+            self.AiAnalysisTask._deserialize(params.get("AiAnalysisTask"))
         if params.get("AiRecognitionTask") is not None:
             self.AiRecognitionTask = AiRecognitionTaskInput()
             self.AiRecognitionTask._deserialize(params.get("AiRecognitionTask"))
@@ -2989,6 +3549,40 @@ class CreateWorkflowResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.WorkflowId = params.get("WorkflowId")
+        self.RequestId = params.get("RequestId")
+
+
+class DeleteAIAnalysisTemplateRequest(AbstractModel):
+    """DeleteAIAnalysisTemplate请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Definition: 视频内容分析模板唯一标识。
+        :type Definition: int
+        """
+        self.Definition = None
+
+
+    def _deserialize(self, params):
+        self.Definition = params.get("Definition")
+
+
+class DeleteAIAnalysisTemplateResponse(AbstractModel):
+    """DeleteAIAnalysisTemplate返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
 
 
@@ -3363,6 +3957,61 @@ class DeleteWorkflowResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeAIAnalysisTemplatesRequest(AbstractModel):
+    """DescribeAIAnalysisTemplates请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Definitions: 视频内容分析模板唯一标识过滤条件，数组长度限制：10。
+        :type Definitions: list of int
+        :param Offset: 分页偏移量，默认值：0。
+        :type Offset: int
+        :param Limit: 返回记录条数，默认值：10，最大值：100。
+        :type Limit: int
+        """
+        self.Definitions = None
+        self.Offset = None
+        self.Limit = None
+
+
+    def _deserialize(self, params):
+        self.Definitions = params.get("Definitions")
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+
+
+class DescribeAIAnalysisTemplatesResponse(AbstractModel):
+    """DescribeAIAnalysisTemplates返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param TotalCount: 符合过滤条件的记录总数。
+        :type TotalCount: int
+        :param AIAnalysisTemplateSet: 视频内容分析模板详情列表。
+        :type AIAnalysisTemplateSet: list of AIAnalysisTemplateItem
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.AIAnalysisTemplateSet = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("AIAnalysisTemplateSet") is not None:
+            self.AIAnalysisTemplateSet = []
+            for item in params.get("AIAnalysisTemplateSet"):
+                obj = AIAnalysisTemplateItem()
+                obj._deserialize(item)
+                self.AIAnalysisTemplateSet.append(obj)
         self.RequestId = params.get("RequestId")
 
 
@@ -4363,6 +5012,44 @@ class FaceConfigureInfoForUpdate(AbstractModel):
         self.FaceLibrary = params.get("FaceLibrary")
 
 
+class FrameTagConfigureInfo(AbstractModel):
+    """智能按帧标签任务控制参数
+
+    """
+
+    def __init__(self):
+        """
+        :param Switch: 智能按帧标签任务开关，可选值：
+<li>ON：开启智能按帧标签任务；</li>
+<li>OFF：关闭智能按帧标签任务。</li>
+        :type Switch: str
+        """
+        self.Switch = None
+
+
+    def _deserialize(self, params):
+        self.Switch = params.get("Switch")
+
+
+class FrameTagConfigureInfoForUpdate(AbstractModel):
+    """智能按帧标签任务控制参数
+
+    """
+
+    def __init__(self):
+        """
+        :param Switch: 智能按帧标签任务开关，可选值：
+<li>ON：开启智能按帧标签任务；</li>
+<li>OFF：关闭智能按帧标签任务。</li>
+        :type Switch: str
+        """
+        self.Switch = None
+
+
+    def _deserialize(self, params):
+        self.Switch = params.get("Switch")
+
+
 class ImageSpriteTaskInput(AbstractModel):
     """对视频截雪碧图任务输入参数类型
 
@@ -4417,10 +5104,25 @@ class ImageSpriteTemplate(AbstractModel):
         :type Type: str
         :param Name: 雪碧图模板名称。
         :type Name: str
-        :param Width: 雪碧图中小图的宽度。
+        :param Width: 雪碧图中小图的宽度（或长边）的最大值，取值范围：0 和 [128, 4096]，单位：px。
+<li>当 Width、Height 均为 0，则分辨率同源；</li>
+<li>当 Width 为 0，Height 非 0，则 Width 按比例缩放；</li>
+<li>当 Width 非 0，Height 为 0，则 Height 按比例缩放；</li>
+<li>当 Width、Height 均非 0，则分辨率按用户指定。</li>
+默认值：0。
         :type Width: int
-        :param Height: 雪碧图中小图的高度。
+        :param Height: 雪碧图中小图的高度（或短边）的最大值，取值范围：0 和 [128, 4096]，单位：px。
+<li>当 Width、Height 均为 0，则分辨率同源；</li>
+<li>当 Width 为 0，Height 非 0，则 Width 按比例缩放；</li>
+<li>当 Width 非 0，Height 为 0，则 Height 按比例缩放；</li>
+<li>当 Width、Height 均非 0，则分辨率按用户指定。</li>
+默认值：0。
         :type Height: int
+        :param ResolutionAdaptive: 分辨率自适应，可选值：
+<li>open：开启，此时，Width 代表视频的长边，Height 表示视频的短边；</li>
+<li>close：关闭，此时，Width 代表视频的宽度，Height 表示视频的高度。</li>
+默认值：open。
+        :type ResolutionAdaptive: str
         :param SampleType: 采样类型。
         :type SampleType: str
         :param SampleInterval: 采样间隔。
@@ -4444,6 +5146,7 @@ class ImageSpriteTemplate(AbstractModel):
         self.Name = None
         self.Width = None
         self.Height = None
+        self.ResolutionAdaptive = None
         self.SampleType = None
         self.SampleInterval = None
         self.RowCount = None
@@ -4459,6 +5162,7 @@ class ImageSpriteTemplate(AbstractModel):
         self.Name = params.get("Name")
         self.Width = params.get("Width")
         self.Height = params.get("Height")
+        self.ResolutionAdaptive = params.get("ResolutionAdaptive")
         self.SampleType = params.get("SampleType")
         self.SampleInterval = params.get("SampleInterval")
         self.RowCount = params.get("RowCount")
@@ -5179,6 +5883,120 @@ class LiveStreamTaskNotifyConfig(AbstractModel):
         self.TopicName = params.get("TopicName")
 
 
+class MediaAiAnalysisClassificationItem(AbstractModel):
+    """智能分类结果
+
+    """
+
+    def __init__(self):
+        """
+        :param Classification: 智能分类的类别名称。
+        :type Classification: str
+        :param Confidence: 智能分类的可信度，取值范围是 0 到 100。
+        :type Confidence: float
+        """
+        self.Classification = None
+        self.Confidence = None
+
+
+    def _deserialize(self, params):
+        self.Classification = params.get("Classification")
+        self.Confidence = params.get("Confidence")
+
+
+class MediaAiAnalysisCoverItem(AbstractModel):
+    """智能封面信息
+
+    """
+
+    def __init__(self):
+        """
+        :param CoverPath: 智能封面存储路径。
+        :type CoverPath: str
+        :param Confidence: 智能封面的可信度，取值范围是 0 到 100。
+        :type Confidence: float
+        """
+        self.CoverPath = None
+        self.Confidence = None
+
+
+    def _deserialize(self, params):
+        self.CoverPath = params.get("CoverPath")
+        self.Confidence = params.get("Confidence")
+
+
+class MediaAiAnalysisFrameTagItem(AbstractModel):
+    """智能按帧标签结果信息
+
+    """
+
+    def __init__(self):
+        """
+        :param Tag: 按帧标签名称。
+        :type Tag: str
+        :param Confidence: 按帧标签的可信度，取值范围是 0 到 100。
+        :type Confidence: float
+        """
+        self.Tag = None
+        self.Confidence = None
+
+
+    def _deserialize(self, params):
+        self.Tag = params.get("Tag")
+        self.Confidence = params.get("Confidence")
+
+
+class MediaAiAnalysisFrameTagSegmentItem(AbstractModel):
+    """按帧标签片段列表
+
+    """
+
+    def __init__(self):
+        """
+        :param StartTimeOffset: 按帧标签起始的偏移时间。
+        :type StartTimeOffset: float
+        :param EndTimeOffset: 按帧标签结束的偏移时间。
+        :type EndTimeOffset: float
+        :param TagSet: 时间片段内的标签列表。
+        :type TagSet: list of MediaAiAnalysisFrameTagItem
+        """
+        self.StartTimeOffset = None
+        self.EndTimeOffset = None
+        self.TagSet = None
+
+
+    def _deserialize(self, params):
+        self.StartTimeOffset = params.get("StartTimeOffset")
+        self.EndTimeOffset = params.get("EndTimeOffset")
+        if params.get("TagSet") is not None:
+            self.TagSet = []
+            for item in params.get("TagSet"):
+                obj = MediaAiAnalysisFrameTagItem()
+                obj._deserialize(item)
+                self.TagSet.append(obj)
+
+
+class MediaAiAnalysisTagItem(AbstractModel):
+    """智能标签结果信息
+
+    """
+
+    def __init__(self):
+        """
+        :param Tag: 标签名称。
+        :type Tag: str
+        :param Confidence: 标签的可信度，取值范围是 0 到 100。
+        :type Confidence: float
+        """
+        self.Tag = None
+        self.Confidence = None
+
+
+    def _deserialize(self, params):
+        self.Tag = params.get("Tag")
+        self.Confidence = params.get("Confidence")
+
+
 class MediaAnimatedGraphicsItem(AbstractModel):
     """视频转动图结果信息
 
@@ -5246,13 +6064,10 @@ class MediaAudioStreamItem(AbstractModel):
     def __init__(self):
         """
         :param Bitrate: 音频流的码率，单位：bps。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Bitrate: int
         :param SamplingRate: 音频流的采样率，单位：hz。
-注意：此字段可能返回 null，表示取不到有效值。
         :type SamplingRate: int
         :param Codec: 音频流的编码格式，例如 aac。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Codec: str
         """
         self.Bitrate = None
@@ -5523,37 +6338,26 @@ class MediaMetaData(AbstractModel):
     def __init__(self):
         """
         :param Size: 上传的媒体文件大小（视频为 HLS 时，大小是 m3u8 和 ts 文件大小的总和），单位：字节。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Size: int
         :param Container: 容器类型，例如 m4a，mp4 等。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Container: str
         :param Bitrate: 视频流码率平均值与音频流码率平均值之和，单位：bps。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Bitrate: int
         :param Height: 视频流高度的最大值，单位：px。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Height: int
         :param Width: 视频流宽度的最大值，单位：px。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Width: int
         :param Duration: 视频时长，单位：秒。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Duration: float
         :param Rotate: 视频拍摄时的选择角度，单位：度。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Rotate: int
         :param VideoStreamSet: 视频流信息。
-注意：此字段可能返回 null，表示取不到有效值。
         :type VideoStreamSet: list of MediaVideoStreamItem
         :param AudioStreamSet: 音频流信息。
-注意：此字段可能返回 null，表示取不到有效值。
         :type AudioStreamSet: list of MediaAudioStreamItem
         :param VideoDuration: 视频时长，单位：秒。
-注意：此字段可能返回 null，表示取不到有效值。
         :type VideoDuration: float
         :param AudioDuration: 音频时长，单位：秒。
-注意：此字段可能返回 null，表示取不到有效值。
         :type AudioDuration: float
         """
         self.Size = None
@@ -5805,10 +6609,8 @@ class MediaProcessTaskSampleSnapshotResult(AbstractModel):
 <li>40000：输入参数不合法，请检查输入参数；</li>
 <li>60000：源文件错误（如视频数据损坏），请确认源文件是否正常；</li>
 <li>70000：内部服务错误，建议重试。</li>
-注意：此字段可能返回 null，表示取不到有效值。
         :type ErrCode: int
         :param Message: 错误信息。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Message: str
         :param Input: 对视频做采样截图任务输入。
         :type Input: :class:`tencentcloud.mps.v20190612.models.SampleSnapshotTaskInput`
@@ -6045,10 +6847,8 @@ class MediaTranscodeItem(AbstractModel):
         :param Md5: 视频的 md5 值。
         :type Md5: str
         :param AudioStreamSet: 音频流信息。
-注意：此字段可能返回 null，表示取不到有效值。
         :type AudioStreamSet: list of MediaAudioStreamItem
         :param VideoStreamSet: 视频流信息。
-注意：此字段可能返回 null，表示取不到有效值。
         :type VideoStreamSet: list of MediaVideoStreamItem
         """
         self.OutputStorage = None
@@ -6100,19 +6900,14 @@ class MediaVideoStreamItem(AbstractModel):
     def __init__(self):
         """
         :param Bitrate: 视频流的码率，单位：bps。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Bitrate: int
         :param Height: 视频流的高度，单位：px。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Height: int
         :param Width: 视频流的宽度，单位：px。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Width: int
         :param Codec: 视频流的编码格式，例如 h264。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Codec: str
         :param Fps: 帧率，单位：hz。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Fps: int
         """
         self.Bitrate = None
@@ -6128,6 +6923,72 @@ class MediaVideoStreamItem(AbstractModel):
         self.Width = params.get("Width")
         self.Codec = params.get("Codec")
         self.Fps = params.get("Fps")
+
+
+class ModifyAIAnalysisTemplateRequest(AbstractModel):
+    """ModifyAIAnalysisTemplate请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Definition: 视频内容分析模板唯一标识。
+        :type Definition: int
+        :param Name: 视频内容分析模板名称，长度限制：64 个字符。
+        :type Name: str
+        :param Comment: 视频内容分析模板描述信息，长度限制：256 个字符。
+        :type Comment: str
+        :param ClassificationConfigure: 智能分类任务控制参数。
+        :type ClassificationConfigure: :class:`tencentcloud.mps.v20190612.models.ClassificationConfigureInfoForUpdate`
+        :param TagConfigure: 智能标签任务控制参数。
+        :type TagConfigure: :class:`tencentcloud.mps.v20190612.models.TagConfigureInfoForUpdate`
+        :param CoverConfigure: 智能封面任务控制参数。
+        :type CoverConfigure: :class:`tencentcloud.mps.v20190612.models.CoverConfigureInfoForUpdate`
+        :param FrameTagConfigure: 智能按帧标签任务控制参数。
+        :type FrameTagConfigure: :class:`tencentcloud.mps.v20190612.models.FrameTagConfigureInfoForUpdate`
+        """
+        self.Definition = None
+        self.Name = None
+        self.Comment = None
+        self.ClassificationConfigure = None
+        self.TagConfigure = None
+        self.CoverConfigure = None
+        self.FrameTagConfigure = None
+
+
+    def _deserialize(self, params):
+        self.Definition = params.get("Definition")
+        self.Name = params.get("Name")
+        self.Comment = params.get("Comment")
+        if params.get("ClassificationConfigure") is not None:
+            self.ClassificationConfigure = ClassificationConfigureInfoForUpdate()
+            self.ClassificationConfigure._deserialize(params.get("ClassificationConfigure"))
+        if params.get("TagConfigure") is not None:
+            self.TagConfigure = TagConfigureInfoForUpdate()
+            self.TagConfigure._deserialize(params.get("TagConfigure"))
+        if params.get("CoverConfigure") is not None:
+            self.CoverConfigure = CoverConfigureInfoForUpdate()
+            self.CoverConfigure._deserialize(params.get("CoverConfigure"))
+        if params.get("FrameTagConfigure") is not None:
+            self.FrameTagConfigure = FrameTagConfigureInfoForUpdate()
+            self.FrameTagConfigure._deserialize(params.get("FrameTagConfigure"))
+
+
+class ModifyAIAnalysisTemplateResponse(AbstractModel):
+    """ModifyAIAnalysisTemplate返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
 
 
 class ModifyAIRecognitionTemplateRequest(AbstractModel):
@@ -7120,13 +7981,10 @@ class PoliticalConfigureInfo(AbstractModel):
     def __init__(self):
         """
         :param ImgReviewInfo: 画面鉴政控制参数。
-注意：此字段可能返回 null，表示取不到有效值。
         :type ImgReviewInfo: :class:`tencentcloud.mps.v20190612.models.PoliticalImgReviewTemplateInfo`
         :param AsrReviewInfo: 语音鉴政控制参数。
-注意：此字段可能返回 null，表示取不到有效值。
         :type AsrReviewInfo: :class:`tencentcloud.mps.v20190612.models.PoliticalAsrReviewTemplateInfo`
         :param OcrReviewInfo: 文本鉴政控制参数。
-注意：此字段可能返回 null，表示取不到有效值。
         :type OcrReviewInfo: :class:`tencentcloud.mps.v20190612.models.PoliticalOcrReviewTemplateInfo`
         """
         self.ImgReviewInfo = None
@@ -7363,13 +8221,10 @@ class PornConfigureInfo(AbstractModel):
     def __init__(self):
         """
         :param ImgReviewInfo: 画面鉴黄控制参数。
-注意：此字段可能返回 null，表示取不到有效值。
         :type ImgReviewInfo: :class:`tencentcloud.mps.v20190612.models.PornImgReviewTemplateInfo`
         :param AsrReviewInfo: 语音鉴黄控制参数。
-注意：此字段可能返回 null，表示取不到有效值。
         :type AsrReviewInfo: :class:`tencentcloud.mps.v20190612.models.PornAsrReviewTemplateInfo`
         :param OcrReviewInfo: 文本鉴黄控制参数。
-注意：此字段可能返回 null，表示取不到有效值。
         :type OcrReviewInfo: :class:`tencentcloud.mps.v20190612.models.PornOcrReviewTemplateInfo`
         """
         self.ImgReviewInfo = None
@@ -7635,6 +8490,8 @@ class ProcessMediaRequest(AbstractModel):
         :type MediaProcessTask: :class:`tencentcloud.mps.v20190612.models.MediaProcessTaskInput`
         :param AiContentReviewTask: 视频内容审核类型任务参数。
         :type AiContentReviewTask: :class:`tencentcloud.mps.v20190612.models.AiContentReviewTaskInput`
+        :param AiAnalysisTask: 视频内容分析类型任务参数。
+        :type AiAnalysisTask: :class:`tencentcloud.mps.v20190612.models.AiAnalysisTaskInput`
         :param AiRecognitionTask: 视频内容识别类型任务参数。
         :type AiRecognitionTask: :class:`tencentcloud.mps.v20190612.models.AiRecognitionTaskInput`
         :param TaskNotifyConfig: 任务的事件通知信息，不填代表不获取事件通知。
@@ -7651,6 +8508,7 @@ class ProcessMediaRequest(AbstractModel):
         self.OutputDir = None
         self.MediaProcessTask = None
         self.AiContentReviewTask = None
+        self.AiAnalysisTask = None
         self.AiRecognitionTask = None
         self.TaskNotifyConfig = None
         self.TasksPriority = None
@@ -7672,6 +8530,9 @@ class ProcessMediaRequest(AbstractModel):
         if params.get("AiContentReviewTask") is not None:
             self.AiContentReviewTask = AiContentReviewTaskInput()
             self.AiContentReviewTask._deserialize(params.get("AiContentReviewTask"))
+        if params.get("AiAnalysisTask") is not None:
+            self.AiAnalysisTask = AiAnalysisTaskInput()
+            self.AiAnalysisTask._deserialize(params.get("AiAnalysisTask"))
         if params.get("AiRecognitionTask") is not None:
             self.AiRecognitionTask = AiRecognitionTaskInput()
             self.AiRecognitionTask._deserialize(params.get("AiRecognitionTask"))
@@ -7724,7 +8585,9 @@ class ResetWorkflowRequest(AbstractModel):
         :param MediaProcessTask: 视频处理类型任务参数。
         :type MediaProcessTask: :class:`tencentcloud.mps.v20190612.models.MediaProcessTaskInput`
         :param AiContentReviewTask: 视频内容审核类型任务参数。
-        :type AiContentReviewTask: :class:`tencentcloud.mps.v20190612.models.AiClassificationTaskInput`
+        :type AiContentReviewTask: :class:`tencentcloud.mps.v20190612.models.AiContentReviewTaskInput`
+        :param AiAnalysisTask: 视频内容分析类型任务参数。
+        :type AiAnalysisTask: :class:`tencentcloud.mps.v20190612.models.AiAnalysisTaskInput`
         :param AiRecognitionTask: 视频内容识别类型任务参数。
         :type AiRecognitionTask: :class:`tencentcloud.mps.v20190612.models.AiRecognitionTaskInput`
         :param TaskPriority: 工作流的优先级，数值越大优先级越高，取值范围是 -10 到 10，不填代表 0。
@@ -7739,6 +8602,7 @@ class ResetWorkflowRequest(AbstractModel):
         self.OutputDir = None
         self.MediaProcessTask = None
         self.AiContentReviewTask = None
+        self.AiAnalysisTask = None
         self.AiRecognitionTask = None
         self.TaskPriority = None
         self.TaskNotifyConfig = None
@@ -7758,8 +8622,11 @@ class ResetWorkflowRequest(AbstractModel):
             self.MediaProcessTask = MediaProcessTaskInput()
             self.MediaProcessTask._deserialize(params.get("MediaProcessTask"))
         if params.get("AiContentReviewTask") is not None:
-            self.AiContentReviewTask = AiClassificationTaskInput()
+            self.AiContentReviewTask = AiContentReviewTaskInput()
             self.AiContentReviewTask._deserialize(params.get("AiContentReviewTask"))
+        if params.get("AiAnalysisTask") is not None:
+            self.AiAnalysisTask = AiAnalysisTaskInput()
+            self.AiAnalysisTask._deserialize(params.get("AiAnalysisTask"))
         if params.get("AiRecognitionTask") is not None:
             self.AiRecognitionTask = AiRecognitionTaskInput()
             self.AiRecognitionTask._deserialize(params.get("AiRecognitionTask"))
@@ -7796,7 +8663,6 @@ class SampleSnapshotTaskInput(AbstractModel):
         :param Definition: 采样截图模板 ID。
         :type Definition: int
         :param WatermarkSet: 水印列表，支持多张图片或文字水印，最大可支持 10 张。
-注意：此字段可能返回 null，表示取不到有效值。
         :type WatermarkSet: list of WatermarkInput
         :param OutputStorage: 采样截图后文件的目标存储，不填则继承上层的 OutputStorage 值。
 注意：此字段可能返回 null，表示取不到有效值。
@@ -7880,8 +8746,8 @@ class SampleSnapshotTemplate(AbstractModel):
         :param FillType: 填充方式，当视频流配置宽高参数与原始视频的宽高比不一致时，对转码的处理方式，即为“填充”。可选填充方式：
 <li> stretch：拉伸，对每一帧进行拉伸，填满整个画面，可能导致转码后的视频被“压扁“或者“拉长“；</li>
 <li>black：留黑，保持视频宽高比不变，边缘剩余部分使用黑色填充。</li>
-<li>black：留白，保持视频宽高比不变，边缘剩余部分使用白色填充。</li>
-<li>black：高斯模糊，保持视频宽高比不变，边缘剩余部分使用高斯模糊。</li>
+<li>white：留白，保持视频宽高比不变，边缘剩余部分使用白色填充。</li>
+<li>gauss：高斯模糊，保持视频宽高比不变，边缘剩余部分使用高斯模糊。</li>
 默认值：black 。
         :type FillType: str
         """
@@ -7928,7 +8794,6 @@ class SnapshotByTimeOffsetTaskInput(AbstractModel):
         :param TimeOffsetSet: 截图时间点列表，单位为<font color=red>秒</font>。
         :type TimeOffsetSet: list of float
         :param WatermarkSet: 水印列表，支持多张图片或文字水印，最大可支持 10 张。
-注意：此字段可能返回 null，表示取不到有效值。
         :type WatermarkSet: list of WatermarkInput
         :param OutputStorage: 时间点截图后文件的目标存储，不填则继承上层的 OutputStorage 值。
 注意：此字段可能返回 null，表示取不到有效值。
@@ -8163,6 +9028,44 @@ class TEHDConfigForUpdate(AbstractModel):
         self.MaxVideoBitrate = params.get("MaxVideoBitrate")
 
 
+class TagConfigureInfo(AbstractModel):
+    """智能标签任务控制参数
+
+    """
+
+    def __init__(self):
+        """
+        :param Switch: 智能标签任务开关，可选值：
+<li>ON：开启智能标签任务；</li>
+<li>OFF：关闭智能标签任务。</li>
+        :type Switch: str
+        """
+        self.Switch = None
+
+
+    def _deserialize(self, params):
+        self.Switch = params.get("Switch")
+
+
+class TagConfigureInfoForUpdate(AbstractModel):
+    """智能标签任务控制参数
+
+    """
+
+    def __init__(self):
+        """
+        :param Switch: 智能标签任务开关，可选值：
+<li>ON：开启智能标签任务；</li>
+<li>OFF：关闭智能标签任务。</li>
+        :type Switch: str
+        """
+        self.Switch = None
+
+
+    def _deserialize(self, params):
+        self.Switch = params.get("Switch")
+
+
 class TaskNotifyConfig(AbstractModel):
     """任务的事件通知配置。
 
@@ -8263,7 +9166,6 @@ class TerrorismConfigureInfo(AbstractModel):
     def __init__(self):
         """
         :param ImgReviewInfo: 画面鉴恐任务控制参数。
-注意：此字段可能返回 null，表示取不到有效值。
         :type ImgReviewInfo: :class:`tencentcloud.mps.v20190612.models.TerrorismImgReviewTemplateInfo`
         """
         self.ImgReviewInfo = None
@@ -8500,10 +9402,8 @@ class TranscodeTemplate(AbstractModel):
         :param Container: 封装格式，取值：mp4、flv、hls、mp3、flac、ogg。
         :type Container: str
         :param Name: 转码模板名称。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Name: str
         :param Comment: 模板描述信息。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Comment: str
         :param Type: 模板类型，取值：
 <li>Preset：系统预置模板；</li>
@@ -8518,10 +9418,8 @@ class TranscodeTemplate(AbstractModel):
 <li>1：去除。</li>
         :type RemoveAudio: int
         :param VideoTemplate: 视频流配置参数，仅当 RemoveVideo 为 0，该字段有效。
-注意：此字段可能返回 null，表示取不到有效值。
         :type VideoTemplate: :class:`tencentcloud.mps.v20190612.models.VideoTemplateInfo`
         :param AudioTemplate: 音频流配置参数，仅当 RemoveAudio 为 0，该字段有效 。
-注意：此字段可能返回 null，表示取不到有效值。
         :type AudioTemplate: :class:`tencentcloud.mps.v20190612.models.AudioTemplateInfo`
         :param TEHDConfig: 极速高清转码参数，需联系商务架构师开通后才能使用。
 注意：此字段可能返回 null，表示取不到有效值。
@@ -8644,13 +9542,10 @@ class UserDefineConfigureInfo(AbstractModel):
     def __init__(self):
         """
         :param FaceReviewInfo: 用户自定义人物审核控制参数。
-注意：此字段可能返回 null，表示取不到有效值。
         :type FaceReviewInfo: :class:`tencentcloud.mps.v20190612.models.UserDefineFaceReviewTemplateInfo`
         :param AsrReviewInfo: 用户自定义语音审核控制参数。
-注意：此字段可能返回 null，表示取不到有效值。
         :type AsrReviewInfo: :class:`tencentcloud.mps.v20190612.models.UserDefineAsrTextReviewTemplateInfo`
         :param OcrReviewInfo: 用户自定义文本审核控制参数。
-注意：此字段可能返回 null，表示取不到有效值。
         :type OcrReviewInfo: :class:`tencentcloud.mps.v20190612.models.UserDefineOcrTextReviewTemplateInfo`
         """
         self.FaceReviewInfo = None
@@ -9091,6 +9986,9 @@ class WorkflowInfo(AbstractModel):
         :param AiContentReviewTask: 视频内容审核类型任务参数。
 注意：此字段可能返回 null，表示取不到有效值。
         :type AiContentReviewTask: :class:`tencentcloud.mps.v20190612.models.AiContentReviewTaskInput`
+        :param AiAnalysisTask: 视频内容分析类型任务参数。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AiAnalysisTask: :class:`tencentcloud.mps.v20190612.models.AiAnalysisTaskInput`
         :param AiRecognitionTask: 视频内容识别类型任务参数。
 注意：此字段可能返回 null，表示取不到有效值。
         :type AiRecognitionTask: :class:`tencentcloud.mps.v20190612.models.AiRecognitionTaskInput`
@@ -9113,6 +10011,7 @@ class WorkflowInfo(AbstractModel):
         self.OutputStorage = None
         self.MediaProcessTask = None
         self.AiContentReviewTask = None
+        self.AiAnalysisTask = None
         self.AiRecognitionTask = None
         self.TaskNotifyConfig = None
         self.TaskPriority = None
@@ -9137,6 +10036,9 @@ class WorkflowInfo(AbstractModel):
         if params.get("AiContentReviewTask") is not None:
             self.AiContentReviewTask = AiContentReviewTaskInput()
             self.AiContentReviewTask._deserialize(params.get("AiContentReviewTask"))
+        if params.get("AiAnalysisTask") is not None:
+            self.AiAnalysisTask = AiAnalysisTaskInput()
+            self.AiAnalysisTask._deserialize(params.get("AiAnalysisTask"))
         if params.get("AiRecognitionTask") is not None:
             self.AiRecognitionTask = AiRecognitionTaskInput()
             self.AiRecognitionTask._deserialize(params.get("AiRecognitionTask"))
@@ -9176,6 +10078,8 @@ class WorkflowTask(AbstractModel):
         :type MediaProcessResultSet: list of MediaProcessTaskResult
         :param AiContentReviewResultSet: 视频内容审核任务的执行状态与结果。
         :type AiContentReviewResultSet: list of AiContentReviewResult
+        :param AiAnalysisResultSet: 视频内容分析任务的执行状态与结果。
+        :type AiAnalysisResultSet: list of AiAnalysisResult
         :param AiRecognitionResultSet: 视频内容识别任务的执行状态与结果。
         :type AiRecognitionResultSet: list of AiRecognitionResult
         """
@@ -9187,6 +10091,7 @@ class WorkflowTask(AbstractModel):
         self.MetaData = None
         self.MediaProcessResultSet = None
         self.AiContentReviewResultSet = None
+        self.AiAnalysisResultSet = None
         self.AiRecognitionResultSet = None
 
 
@@ -9213,6 +10118,12 @@ class WorkflowTask(AbstractModel):
                 obj = AiContentReviewResult()
                 obj._deserialize(item)
                 self.AiContentReviewResultSet.append(obj)
+        if params.get("AiAnalysisResultSet") is not None:
+            self.AiAnalysisResultSet = []
+            for item in params.get("AiAnalysisResultSet"):
+                obj = AiAnalysisResult()
+                obj._deserialize(item)
+                self.AiAnalysisResultSet.append(obj)
         if params.get("AiRecognitionResultSet") is not None:
             self.AiRecognitionResultSet = []
             for item in params.get("AiRecognitionResultSet"):

@@ -685,8 +685,14 @@ class DescribeDiskOperationLogsRequest(AbstractModel):
         :param Filters: 过滤条件。支持以下条件：
 <li>disk-id - Array of String - 是否必填：是 - 按云盘ID过滤，每个请求最多可指定10个云盘ID。
         :type Filters: list of Filter
+        :param BeginTime: 要查询的操作日志的起始时间，例如：“2019-11-22 00:00:00"
+        :type BeginTime: str
+        :param EndTime: 要查询的操作日志的截止时间，例如：“2019-11-22 23:59:59"
+        :type EndTime: str
         """
         self.Filters = None
+        self.BeginTime = None
+        self.EndTime = None
 
 
     def _deserialize(self, params):
@@ -696,6 +702,8 @@ class DescribeDiskOperationLogsRequest(AbstractModel):
                 obj = Filter()
                 obj._deserialize(item)
                 self.Filters.append(obj)
+        self.BeginTime = params.get("BeginTime")
+        self.EndTime = params.get("EndTime")
 
 
 class DescribeDiskOperationLogsResponse(AbstractModel):
@@ -853,8 +861,14 @@ class DescribeSnapshotOperationLogsRequest(AbstractModel):
         :param Filters: 过滤条件。支持以下条件：
 <li>snapshot-id - Array of String - 是否必填：是 - 按快照ID过滤，每个请求最多可指定10个快照ID。
         :type Filters: list of Filter
+        :param BeginTime: 要查询的操作日志的起始时间，例如：“2019-11-22 00:00:00"
+        :type BeginTime: str
+        :param EndTime: 要查询的操作日志的截止时间，例如：“2019-11-22 23:59:59"
+        :type EndTime: str
         """
         self.Filters = None
+        self.BeginTime = None
+        self.EndTime = None
 
 
     def _deserialize(self, params):
@@ -864,6 +878,8 @@ class DescribeSnapshotOperationLogsRequest(AbstractModel):
                 obj = Filter()
                 obj._deserialize(item)
                 self.Filters.append(obj)
+        self.BeginTime = params.get("BeginTime")
+        self.EndTime = params.get("EndTime")
 
 
 class DescribeSnapshotOperationLogsResponse(AbstractModel):

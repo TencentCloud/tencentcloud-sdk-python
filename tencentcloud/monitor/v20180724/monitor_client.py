@@ -81,3 +81,37 @@ class MonitorClient(AbstractClient):
                 raise
             else:
                 raise TencentCloudSDKException(e.message, e.message)
+
+
+    def PutMonitorData(self, request):
+        """默认接口请求频率限制：50次/秒。
+        默认单租户指标上限：100个。
+        单次上报最多 30 个指标/值对，请求返回错误时，请求中所有的指标/值均不会被保存。
+
+        上报的时间戳为期望保存的时间戳，建议构造整数分钟时刻的时间戳。
+        时间戳时间范围必须为当前时间到 300 秒前之间。
+        同一 IP 指标对的数据需按分钟先后顺序上报。
+
+        :param request: 调用PutMonitorData所需参数的结构体。
+        :type request: :class:`tencentcloud.monitor.v20180724.models.PutMonitorDataRequest`
+        :rtype: :class:`tencentcloud.monitor.v20180724.models.PutMonitorDataResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("PutMonitorData", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.PutMonitorDataResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)

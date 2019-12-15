@@ -63,11 +63,11 @@ class CreateAppRequest(AbstractModel):
         """
         :param AppName: 应用名称
         :type AppName: str
-        :param ProjectId: 腾讯云项目id，默认为0，表示默认项目
+        :param ProjectId: 腾讯云项目ID，默认为0，表示默认项目
         :type ProjectId: int
-        :param EngineList: 需要支持的引擎列表，取值android, ios, unity, cocos, unreal, windows。默认全选。
+        :param EngineList: 需要支持的引擎列表，默认全选。
         :type EngineList: list of str
-        :param RegionList: 服务区域列表，取值: mainland(大陆地区), sa(南美), eu(欧洲), oc(澳洲), me(中东)。默认全选。
+        :param RegionList: 服务区域列表，默认全选。
         :type RegionList: list of str
         :param RealtimeSpeechConf: 实时语音服务配置数据
         :type RealtimeSpeechConf: :class:`tencentcloud.gme.v20180711.models.RealtimeSpeechConf`
@@ -117,11 +117,11 @@ class CreateAppResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param BizId: 应用id，由后台自动生成。
+        :param BizId: 应用ID，由后台自动生成。
         :type BizId: int
         :param AppName: 应用名称，透传输入参数的AppName
         :type AppName: str
-        :param ProjectId: 项目id，透传输入的ProjectId
+        :param ProjectId: 项目ID，透传输入的ProjectId
         :type ProjectId: int
         :param SecretKey: 应用密钥，GME SDK初始化时使用
         :type SecretKey: str
@@ -168,7 +168,7 @@ class DescribeAppStatisticsRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param BizId: GME应用id
+        :param BizId: GME应用ID
         :type BizId: int
         :param StartDate: 数据开始时间，东八区时间，格式: 年-月-日，如: 2018-07-13
         :type StartDate: str
@@ -452,7 +452,7 @@ class ModifyAppStatusRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param BizId: 应用id，创建应用后由后台生成并返回。
+        :param BizId: 应用ID，创建应用后由后台生成并返回。
         :type BizId: int
         :param Status: 应用状态，取值：open/close
         :type Status: str
@@ -473,7 +473,7 @@ class ModifyAppStatusResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param BizId: GME应用id
+        :param BizId: GME应用ID
         :type BizId: int
         :param Status: 应用状态，取值：open/close
         :type Status: str

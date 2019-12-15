@@ -2340,7 +2340,7 @@ class DescribeLiveDomainPlayInfoListResponse(AbstractModel):
         :type TotalBandwidth: float
         :param TotalFlux: 实时总流量。
         :type TotalFlux: float
-        :param TotalRequest: TotalRequest。
+        :param TotalRequest: 总请求数。
         :type TotalRequest: int
         :param TotalOnline: 实时总连接数。
         :type TotalOnline: int
@@ -4407,7 +4407,7 @@ class DescribeVisitTopSumInfoListRequest(AbstractModel):
         :param StartTime: 起始时间点，格式为yyyy-mm-dd HH:MM:SS。
         :type StartTime: str
         :param EndTime: 结束时间点，格式为yyyy-mm-dd HH:MM:SS
-时间跨度在（0,4小时]，支持最近1天数据查询。
+时间跨度在[0,4小时]，支持最近1天数据查询。
         :type EndTime: str
         :param TopIndex: 峰值指标，可选值包括”Domain”，”StreamId”。
         :type TopIndex: str

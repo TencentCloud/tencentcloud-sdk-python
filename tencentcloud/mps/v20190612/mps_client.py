@@ -25,6 +25,34 @@ class MpsClient(AbstractClient):
     _endpoint = 'mps.tencentcloudapi.com'
 
 
+    def CreateAIAnalysisTemplate(self, request):
+        """创建用户自定义内容分析模板，数量上限：50。
+
+        :param request: 调用CreateAIAnalysisTemplate所需参数的结构体。
+        :type request: :class:`tencentcloud.mps.v20190612.models.CreateAIAnalysisTemplateRequest`
+        :rtype: :class:`tencentcloud.mps.v20190612.models.CreateAIAnalysisTemplateResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("CreateAIAnalysisTemplate", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateAIAnalysisTemplateResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def CreateAIRecognitionTemplate(self, request):
         """创建用户自定义内容识别模板，数量上限：50。
 
@@ -314,7 +342,8 @@ class MpsClient(AbstractClient):
         5. 对视频截图雪碧图；
         6. 对视频转自适应码流；
         7. 智能内容审核（鉴黄、鉴恐、鉴政）；
-        8. 智能内容识别（人脸、文本全文、文本关键词、语音全文、语音关键词）。
+        8. 智能内容分析（标签、分类、封面、按帧标签）；
+        9. 智能内容识别（人脸、文本全文、文本关键词、语音全文、语音关键词）。
 
         注意：创建工作流成功后是禁用状态，需要手动启用。
 
@@ -329,6 +358,36 @@ class MpsClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateWorkflowResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DeleteAIAnalysisTemplate(self, request):
+        """删除用户自定义内容分析模板。
+
+        注意：模板 ID 为 10000 以下的为系统预置模板，不允许删除。
+
+        :param request: 调用DeleteAIAnalysisTemplate所需参数的结构体。
+        :type request: :class:`tencentcloud.mps.v20190612.models.DeleteAIAnalysisTemplateRequest`
+        :rtype: :class:`tencentcloud.mps.v20190612.models.DeleteAIAnalysisTemplateResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DeleteAIAnalysisTemplate", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DeleteAIAnalysisTemplateResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -637,6 +696,34 @@ class MpsClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteWorkflowResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeAIAnalysisTemplates(self, request):
+        """根据内容分析模板唯一标识，获取内容分析模板详情列表。返回结果包含符合条件的所有用户自定义内容分析模板及系统预置视频内容分析模板
+
+        :param request: 调用DescribeAIAnalysisTemplates所需参数的结构体。
+        :type request: :class:`tencentcloud.mps.v20190612.models.DescribeAIAnalysisTemplatesRequest`
+        :rtype: :class:`tencentcloud.mps.v20190612.models.DescribeAIAnalysisTemplatesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeAIAnalysisTemplates", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeAIAnalysisTemplatesResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -1073,6 +1160,36 @@ class MpsClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def ModifyAIAnalysisTemplate(self, request):
+        """修改用户自定义内容分析模板。
+
+        注意：模板 ID 10000 以下的为系统预置模板，不允许修改。
+
+        :param request: 调用ModifyAIAnalysisTemplate所需参数的结构体。
+        :type request: :class:`tencentcloud.mps.v20190612.models.ModifyAIAnalysisTemplateRequest`
+        :rtype: :class:`tencentcloud.mps.v20190612.models.ModifyAIAnalysisTemplateResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ModifyAIAnalysisTemplate", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ModifyAIAnalysisTemplateResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def ModifyAIRecognitionTemplate(self, request):
         """修改用户自定义内容识别模板。
 
@@ -1452,7 +1569,8 @@ class MpsClient(AbstractClient):
         5. 对视频截图雪碧图；
         6. 对视频转自适应码流；
         7. 智能内容审核（鉴黄、鉴恐、鉴政）；
-        8. 智能内容识别（人脸、文本全文、文本关键词、语音全文、语音关键词）。
+        8. 智能内容分析（标签、分类、封面、按帧标签）；
+        9. 智能内容识别（人脸、文本全文、文本关键词、语音全文、语音关键词）。
 
         :param request: 调用ProcessMedia所需参数的结构体。
         :type request: :class:`tencentcloud.mps.v20190612.models.ProcessMediaRequest`

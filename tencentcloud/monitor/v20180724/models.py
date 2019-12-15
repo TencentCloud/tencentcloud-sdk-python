@@ -237,6 +237,27 @@ class Instance(AbstractModel):
                 self.Dimensions.append(obj)
 
 
+class MetricDatum(AbstractModel):
+    """指标名称和值的封装
+
+    """
+
+    def __init__(self):
+        """
+        :param MetricName: 指标名称
+        :type MetricName: str
+        :param Value: 指标的值
+        :type Value: int
+        """
+        self.MetricName = None
+        self.Value = None
+
+
+    def _deserialize(self, params):
+        self.MetricName = params.get("MetricName")
+        self.Value = params.get("Value")
+
+
 class MetricObjectMeaning(AbstractModel):
     """指标数据的解释
 
@@ -334,3 +355,54 @@ class PeriodsSt(AbstractModel):
     def _deserialize(self, params):
         self.Period = params.get("Period")
         self.StatType = params.get("StatType")
+
+
+class PutMonitorDataRequest(AbstractModel):
+    """PutMonitorData请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Metrics: 一组指标和数据
+        :type Metrics: list of MetricDatum
+        :param AnnounceIp: 上报时自行指定的 IP
+        :type AnnounceIp: str
+        :param AnnounceTimestamp: 上报时自行指定的时间戳
+        :type AnnounceTimestamp: int
+        :param AnnounceInstance: 上报时自行指定的 IP 或 产品实例ID
+        :type AnnounceInstance: str
+        """
+        self.Metrics = None
+        self.AnnounceIp = None
+        self.AnnounceTimestamp = None
+        self.AnnounceInstance = None
+
+
+    def _deserialize(self, params):
+        if params.get("Metrics") is not None:
+            self.Metrics = []
+            for item in params.get("Metrics"):
+                obj = MetricDatum()
+                obj._deserialize(item)
+                self.Metrics.append(obj)
+        self.AnnounceIp = params.get("AnnounceIp")
+        self.AnnounceTimestamp = params.get("AnnounceTimestamp")
+        self.AnnounceInstance = params.get("AnnounceInstance")
+
+
+class PutMonitorDataResponse(AbstractModel):
+    """PutMonitorData返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")

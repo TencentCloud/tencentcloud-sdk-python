@@ -29,7 +29,7 @@ class FaceFusionRequest(AbstractModel):
         :type ModelId: str
         :param Image: 图片 base64 数据。请确保人脸为正脸，无旋转。若某些手机拍摄后人脸被旋转，请使用图片的 EXIF 信息对图片进行旋转处理；请勿在 base64 数据中包含头部，如“data:image/jpeg;base64,”。
         :type Image: str
-        :param RspImgType: 返回图像方式（url 或 base64) ，二选一。当前仅支持 url 方式，base64 方式后期开放。
+        :param RspImgType: 返回图像方式（url 或 base64) ，二选一。url有效期为30天。
         :type RspImgType: str
         :param PornDetect: 历史遗留字段，无需填写。因为融合只需提取人脸特征，不需要鉴黄。
         :type PornDetect: int
@@ -60,7 +60,7 @@ class FaceFusionResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param Image: RspImgType 为 url 时，返回结果的 url， RspImgType 为 base64 时返回 base64 数据。当前仅支持 url 方式，base64 方式后期开放。
+        :param Image: RspImgType 为 url 时，返回结果的 url， RspImgType 为 base64 时返回 base64 数据。
         :type Image: str
         :param ReviewResultSet: 鉴政结果
         :type ReviewResultSet: list of FuseFaceReviewResult

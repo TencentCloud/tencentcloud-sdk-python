@@ -328,17 +328,17 @@ class Certificate(AbstractModel):
         :type CertificateId: str
         :param CertificateName: 证书名称（旧参数，请使用CertificateAlias）。
         :type CertificateName: str
-        :param CertificateType: 证书类型
+        :param CertificateType: 证书类型。
         :type CertificateType: int
         :param CertificateAlias: 证书名称。
 注意：此字段可能返回 null，表示取不到有效值。
         :type CertificateAlias: str
-        :param CreateTime: 证书创建时间，采用unix时间戳的方式，表示从1970年1月1日（UTC/GMT的午夜）开始所经过的秒数。
+        :param CreateTime: 证书创建时间，采用Unix时间戳的方式，表示从1970年1月1日（UTC/GMT的午夜）开始所经过的秒数。
         :type CreateTime: int
-        :param BeginTime: 证书生效起始时间，采用unix时间戳的方式，表示从1970年1月1日（UTC/GMT的午夜）开始所经过的秒数。
+        :param BeginTime: 证书生效起始时间，采用Unix时间戳的方式，表示从1970年1月1日（UTC/GMT的午夜）开始所经过的秒数。
 注意：此字段可能返回 null，表示取不到有效值。
         :type BeginTime: int
-        :param EndTime: 证书过期时间，采用unix时间戳的方式，表示从1970年1月1日（UTC/GMT的午夜）开始所经过的秒数。
+        :param EndTime: 证书过期时间，采用Unix时间戳的方式，表示从1970年1月1日（UTC/GMT的午夜）开始所经过的秒数。
 注意：此字段可能返回 null，表示取不到有效值。
         :type EndTime: int
         :param IssuerCN: 证书签发者通用名称。
@@ -411,13 +411,13 @@ class CertificateDetail(AbstractModel):
         :param CertificateKey: 密钥内容。仅当证书类型为SSL证书时，返回该字段。
 注意：此字段可能返回 null，表示取不到有效值。
         :type CertificateKey: str
-        :param CreateTime: 创建时间，采用unix时间戳的方式，表示从1970年1月1日（UTC/GMT的午夜）开始所经过的秒数。
+        :param CreateTime: 创建时间，采用Unix时间戳的方式，表示从1970年1月1日（UTC/GMT的午夜）开始所经过的秒数。
 注意：此字段可能返回 null，表示取不到有效值。
         :type CreateTime: int
-        :param BeginTime: 证书生效起始时间，采用unix时间戳的方式，表示从1970年1月1日（UTC/GMT的午夜）开始所经过的秒数。
+        :param BeginTime: 证书生效起始时间，采用Unix时间戳的方式，表示从1970年1月1日（UTC/GMT的午夜）开始所经过的秒数。
 注意：此字段可能返回 null，表示取不到有效值。
         :type BeginTime: int
-        :param EndTime: 证书过期时间，采用unix时间戳的方式，表示从1970年1月1日（UTC/GMT的午夜）开始所经过的秒数。
+        :param EndTime: 证书过期时间，采用Unix时间戳的方式，表示从1970年1月1日（UTC/GMT的午夜）开始所经过的秒数。
 注意：此字段可能返回 null，表示取不到有效值。
         :type EndTime: int
         :param IssuerCN: 证书签发者通用名称。
@@ -1989,7 +1989,7 @@ class DescribeDomainErrorPageInfoResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param ErrorPageSet: 订制错误响应配置集
+        :param ErrorPageSet: 定制错误响应配置集
 注意：此字段可能返回 null，表示取不到有效值。
         :type ErrorPageSet: list of DomainErrorPageInfo
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -3688,7 +3688,7 @@ class DomainErrorPageInfo(AbstractModel):
         :param SetHeaders: 需要设置的响应头
 注意：此字段可能返回 null，表示取不到有效值。
         :type SetHeaders: list of HttpHeaderParam
-        :param Body: 设置的响应体(不包括 http头)
+        :param Body: 设置的响应体(不包括 HTTP头)
 注意：此字段可能返回 null，表示取不到有效值。
         :type Body: str
         """
@@ -5207,7 +5207,7 @@ class ProxyInfo(AbstractModel):
         :param InstanceId: （旧参数，请使用ProxyId）通道实例ID。
 注意：此字段可能返回 null，表示取不到有效值。
         :type InstanceId: str
-        :param CreateTime: 创建时间，采用unix时间戳的方式，表示从1970年1月1日（UTC/GMT的午夜）开始所经过的秒数。
+        :param CreateTime: 创建时间，采用Unix时间戳的方式，表示从1970年1月1日（UTC/GMT的午夜）开始所经过的秒数。
         :type CreateTime: int
         :param ProjectId: 项目ID。
         :type ProjectId: int
@@ -5746,10 +5746,12 @@ class SetAuthenticationRequest(AbstractModel):
         :type BasicAuthConfId: str
         :param GaapCertificateId: 通道SSL证书ID，从证书管理页获取。
         :type GaapCertificateId: str
-        :param RealServerCertificateId: 源站CA证书ID，从证书管理页获取。
+        :param RealServerCertificateId: 源站CA证书ID，从证书管理页获取。源站认证时，填写该参数或RealServerCertificateId参数
         :type RealServerCertificateId: str
         :param RealServerCertificateDomain: 源站证书域名。
         :type RealServerCertificateDomain: str
+        :param PolyRealServerCertificateIds: 多源站CA证书ID，从证书管理页获取。源站认证时，填写该参数或RealServerCertificateId参数
+        :type PolyRealServerCertificateIds: list of str
         """
         self.ListenerId = None
         self.Domain = None
@@ -5760,6 +5762,7 @@ class SetAuthenticationRequest(AbstractModel):
         self.GaapCertificateId = None
         self.RealServerCertificateId = None
         self.RealServerCertificateDomain = None
+        self.PolyRealServerCertificateIds = None
 
 
     def _deserialize(self, params):
@@ -5772,6 +5775,7 @@ class SetAuthenticationRequest(AbstractModel):
         self.GaapCertificateId = params.get("GaapCertificateId")
         self.RealServerCertificateId = params.get("RealServerCertificateId")
         self.RealServerCertificateDomain = params.get("RealServerCertificateDomain")
+        self.PolyRealServerCertificateIds = params.get("PolyRealServerCertificateIds")
 
 
 class SetAuthenticationResponse(AbstractModel):
