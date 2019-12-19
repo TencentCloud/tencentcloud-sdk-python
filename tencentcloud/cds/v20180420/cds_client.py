@@ -28,7 +28,7 @@ class CdsClient(AbstractClient):
     def DescribeDbauditInstanceType(self, request):
         """本接口 (DescribeDbauditInstanceType) 用于查询可售卖的产品规格列表。
 
-        :param request: 调用DescribeDbauditInstanceType所需参数的结构体。
+        :param request: Request instance for DescribeDbauditInstanceType.
         :type request: :class:`tencentcloud.cds.v20180420.models.DescribeDbauditInstanceTypeRequest`
         :rtype: :class:`tencentcloud.cds.v20180420.models.DescribeDbauditInstanceTypeResponse`
 
@@ -56,7 +56,7 @@ class CdsClient(AbstractClient):
     def DescribeDbauditInstances(self, request):
         """本接口 (DescribeDbauditInstances) 用于查询数据安全审计实例列表
 
-        :param request: 调用DescribeDbauditInstances所需参数的结构体。
+        :param request: Request instance for DescribeDbauditInstances.
         :type request: :class:`tencentcloud.cds.v20180420.models.DescribeDbauditInstancesRequest`
         :rtype: :class:`tencentcloud.cds.v20180420.models.DescribeDbauditInstancesResponse`
 
@@ -84,7 +84,7 @@ class CdsClient(AbstractClient):
     def DescribeDbauditUsedRegions(self, request):
         """本接口 (DescribeDbauditUsedRegions) 用于查询可售卖地域列表。
 
-        :param request: 调用DescribeDbauditUsedRegions所需参数的结构体。
+        :param request: Request instance for DescribeDbauditUsedRegions.
         :type request: :class:`tencentcloud.cds.v20180420.models.DescribeDbauditUsedRegionsRequest`
         :rtype: :class:`tencentcloud.cds.v20180420.models.DescribeDbauditUsedRegionsResponse`
 
@@ -112,7 +112,7 @@ class CdsClient(AbstractClient):
     def InquiryPriceDbauditInstance(self, request):
         """用于查询数据安全审计产品实例价格
 
-        :param request: 调用InquiryPriceDbauditInstance所需参数的结构体。
+        :param request: Request instance for InquiryPriceDbauditInstance.
         :type request: :class:`tencentcloud.cds.v20180420.models.InquiryPriceDbauditInstanceRequest`
         :rtype: :class:`tencentcloud.cds.v20180420.models.InquiryPriceDbauditInstanceResponse`
 
@@ -140,7 +140,7 @@ class CdsClient(AbstractClient):
     def ModifyDbauditInstancesRenewFlag(self, request):
         """本接口 (ModifyDbauditInstancesRenewFlag) 用于修改数据安全审计产品实例续费标识
 
-        :param request: 调用ModifyDbauditInstancesRenewFlag所需参数的结构体。
+        :param request: Request instance for ModifyDbauditInstancesRenewFlag.
         :type request: :class:`tencentcloud.cds.v20180420.models.ModifyDbauditInstancesRenewFlagRequest`
         :rtype: :class:`tencentcloud.cds.v20180420.models.ModifyDbauditInstancesRenewFlagResponse`
 

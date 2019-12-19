@@ -31,7 +31,7 @@ class IaiClient(AbstractClient):
         >
         - 公共参数中的签名方式请使用V3版本，即配置SignatureMethod参数为TC3-HMAC-SHA256。
 
-        :param request: 调用AnalyzeFace所需参数的结构体。
+        :param request: Request instance for AnalyzeFace.
         :type request: :class:`tencentcloud.iai.v20180301.models.AnalyzeFaceRequest`
         :rtype: :class:`tencentcloud.iai.v20180301.models.AnalyzeFaceResponse`
 
@@ -65,7 +65,7 @@ class IaiClient(AbstractClient):
         - 若对完全相同的指定人员库进行查重操作，需等待上次操作完成才可。即，若两次请求输入的 GroupIds 相同，第一次请求若未完成，第二次请求将返回失败。<br>
         查重的人员库状态为腾讯云开始进行查重任务的那一刻，即您可以理解为当您发起查重请求后，若您的查重任务需要排队，在排队期间您对人员库的增删操作均会会影响查重的结果。腾讯云将以开始进行查重任务的那一刻人员库的状态进行查重。查重任务开始后，您对人员库的任何操作均不影响查重任务的进行。但建议查重任务开始后，请不要对人员库中人员和人脸进行增删操作。
 
-        :param request: 调用CheckSimilarPerson所需参数的结构体。
+        :param request: Request instance for CheckSimilarPerson.
         :type request: :class:`tencentcloud.iai.v20180301.models.CheckSimilarPersonRequest`
         :rtype: :class:`tencentcloud.iai.v20180301.models.CheckSimilarPersonResponse`
 
@@ -98,7 +98,7 @@ class IaiClient(AbstractClient):
         >
         - 公共参数中的签名方式请使用V3版本，即配置SignatureMethod参数为TC3-HMAC-SHA256。
 
-        :param request: 调用CompareFace所需参数的结构体。
+        :param request: Request instance for CompareFace.
         :type request: :class:`tencentcloud.iai.v20180301.models.CompareFaceRequest`
         :rtype: :class:`tencentcloud.iai.v20180301.models.CompareFaceResponse`
 
@@ -128,7 +128,7 @@ class IaiClient(AbstractClient):
         >
         - 注：若该人员创建时算法模型版本为2.0，复制到非2.0算法模型版本的Group中时，复制操作将会失败。
 
-        :param request: 调用CopyPerson所需参数的结构体。
+        :param request: Request instance for CopyPerson.
         :type request: :class:`tencentcloud.iai.v20180301.models.CopyPersonRequest`
         :rtype: :class:`tencentcloud.iai.v20180301.models.CopyPersonResponse`
 
@@ -159,7 +159,7 @@ class IaiClient(AbstractClient):
         >
         - 公共参数中的签名方式请使用V3版本，即配置SignatureMethod参数为TC3-HMAC-SHA256。
 
-        :param request: 调用CreateFace所需参数的结构体。
+        :param request: Request instance for CreateFace.
         :type request: :class:`tencentcloud.iai.v20180301.models.CreateFaceRequest`
         :rtype: :class:`tencentcloud.iai.v20180301.models.CreateFaceResponse`
 
@@ -187,7 +187,7 @@ class IaiClient(AbstractClient):
     def CreateGroup(self, request):
         """用于创建一个空的人员库，如果人员库已存在返回错误。可根据需要创建自定义描述字段，用于辅助描述该人员库下的人员信息。1个APPID下最多创建2万个人员库（Group）、最多包含1000万张人脸（Face），单个人员库（Group）最多包含100万张人脸（Face）。
 
-        :param request: 调用CreateGroup所需参数的结构体。
+        :param request: Request instance for CreateGroup.
         :type request: :class:`tencentcloud.iai.v20180301.models.CreateGroupRequest`
         :rtype: :class:`tencentcloud.iai.v20180301.models.CreateGroupResponse`
 
@@ -218,7 +218,7 @@ class IaiClient(AbstractClient):
         >
         - 公共参数中的签名方式请使用V3版本，即配置SignatureMethod参数为TC3-HMAC-SHA256。
 
-        :param request: 调用CreatePerson所需参数的结构体。
+        :param request: Request instance for CreatePerson.
         :type request: :class:`tencentcloud.iai.v20180301.models.CreatePersonRequest`
         :rtype: :class:`tencentcloud.iai.v20180301.models.CreatePersonResponse`
 
@@ -246,7 +246,7 @@ class IaiClient(AbstractClient):
     def DeleteFace(self, request):
         """删除一个人员下的人脸图片。如果该人员只有一张人脸图片，则返回错误。
 
-        :param request: 调用DeleteFace所需参数的结构体。
+        :param request: Request instance for DeleteFace.
         :type request: :class:`tencentcloud.iai.v20180301.models.DeleteFaceRequest`
         :rtype: :class:`tencentcloud.iai.v20180301.models.DeleteFaceResponse`
 
@@ -277,7 +277,7 @@ class IaiClient(AbstractClient):
         >
         - 删除人员库的操作为异步执行，删除单张人脸时间约为10ms，即一小时内可以删除36万张。删除期间，无法向该人员库添加人员。
 
-        :param request: 调用DeleteGroup所需参数的结构体。
+        :param request: Request instance for DeleteGroup.
         :type request: :class:`tencentcloud.iai.v20180301.models.DeleteGroupRequest`
         :rtype: :class:`tencentcloud.iai.v20180301.models.DeleteGroupResponse`
 
@@ -305,7 +305,7 @@ class IaiClient(AbstractClient):
     def DeletePerson(self, request):
         """删除该人员信息，此操作会导致所有人员库均删除此人员。同时，该人员的所有人脸信息将被删除。
 
-        :param request: 调用DeletePerson所需参数的结构体。
+        :param request: Request instance for DeletePerson.
         :type request: :class:`tencentcloud.iai.v20180301.models.DeletePersonRequest`
         :rtype: :class:`tencentcloud.iai.v20180301.models.DeletePersonResponse`
 
@@ -333,7 +333,7 @@ class IaiClient(AbstractClient):
     def DeletePersonFromGroup(self, request):
         """从某人员库中删除人员，此操作仅影响该人员库。若该人员仅存在于指定的人员库中，该人员将被删除，其所有的人脸信息也将被删除。
 
-        :param request: 调用DeletePersonFromGroup所需参数的结构体。
+        :param request: Request instance for DeletePersonFromGroup.
         :type request: :class:`tencentcloud.iai.v20180301.models.DeletePersonFromGroupRequest`
         :rtype: :class:`tencentcloud.iai.v20180301.models.DeletePersonFromGroupResponse`
 
@@ -376,7 +376,7 @@ class IaiClient(AbstractClient):
         - 公共参数中的签名方式请使用V3版本，即配置SignatureMethod参数为TC3-HMAC-SHA256。
 
 
-        :param request: 调用DetectFace所需参数的结构体。
+        :param request: Request instance for DetectFace.
         :type request: :class:`tencentcloud.iai.v20180301.models.DetectFaceRequest`
         :rtype: :class:`tencentcloud.iai.v20180301.models.DetectFaceResponse`
 
@@ -412,7 +412,7 @@ class IaiClient(AbstractClient):
         >
         - 公共参数中的签名方式请使用V3版本，即配置SignatureMethod参数为TC3-HMAC-SHA256。
 
-        :param request: 调用DetectLiveFace所需参数的结构体。
+        :param request: Request instance for DetectLiveFace.
         :type request: :class:`tencentcloud.iai.v20180301.models.DetectLiveFaceRequest`
         :rtype: :class:`tencentcloud.iai.v20180301.models.DetectLiveFaceResponse`
 
@@ -444,7 +444,7 @@ class IaiClient(AbstractClient):
 
         若预估时间超过5小时，则无法使用人员查重功能。
 
-        :param request: 调用EstimateCheckSimilarPersonCostTime所需参数的结构体。
+        :param request: Request instance for EstimateCheckSimilarPersonCostTime.
         :type request: :class:`tencentcloud.iai.v20180301.models.EstimateCheckSimilarPersonCostTimeRequest`
         :rtype: :class:`tencentcloud.iai.v20180301.models.EstimateCheckSimilarPersonCostTimeResponse`
 
@@ -472,7 +472,7 @@ class IaiClient(AbstractClient):
     def GetGroupList(self, request):
         """获取人员库列表。
 
-        :param request: 调用GetGroupList所需参数的结构体。
+        :param request: Request instance for GetGroupList.
         :type request: :class:`tencentcloud.iai.v20180301.models.GetGroupListRequest`
         :rtype: :class:`tencentcloud.iai.v20180301.models.GetGroupListResponse`
 
@@ -500,7 +500,7 @@ class IaiClient(AbstractClient):
     def GetPersonBaseInfo(self, request):
         """获取指定人员的信息，包括姓名、性别、人脸等。
 
-        :param request: 调用GetPersonBaseInfo所需参数的结构体。
+        :param request: Request instance for GetPersonBaseInfo.
         :type request: :class:`tencentcloud.iai.v20180301.models.GetPersonBaseInfoRequest`
         :rtype: :class:`tencentcloud.iai.v20180301.models.GetPersonBaseInfoResponse`
 
@@ -528,7 +528,7 @@ class IaiClient(AbstractClient):
     def GetPersonGroupInfo(self, request):
         """获取指定人员的信息，包括加入的人员库、描述内容等。
 
-        :param request: 调用GetPersonGroupInfo所需参数的结构体。
+        :param request: Request instance for GetPersonGroupInfo.
         :type request: :class:`tencentcloud.iai.v20180301.models.GetPersonGroupInfoRequest`
         :rtype: :class:`tencentcloud.iai.v20180301.models.GetPersonGroupInfoResponse`
 
@@ -556,7 +556,7 @@ class IaiClient(AbstractClient):
     def GetPersonList(self, request):
         """获取指定人员库中的人员列表。
 
-        :param request: 调用GetPersonList所需参数的结构体。
+        :param request: Request instance for GetPersonList.
         :type request: :class:`tencentcloud.iai.v20180301.models.GetPersonListRequest`
         :rtype: :class:`tencentcloud.iai.v20180301.models.GetPersonListResponse`
 
@@ -584,7 +584,7 @@ class IaiClient(AbstractClient):
     def GetPersonListNum(self, request):
         """获取指定人员库中人员数量。
 
-        :param request: 调用GetPersonListNum所需参数的结构体。
+        :param request: Request instance for GetPersonListNum.
         :type request: :class:`tencentcloud.iai.v20180301.models.GetPersonListNumRequest`
         :rtype: :class:`tencentcloud.iai.v20180301.models.GetPersonListNumResponse`
 
@@ -612,7 +612,7 @@ class IaiClient(AbstractClient):
     def GetSimilarPersonResult(self, request):
         """获取人员查重接口（CheckSimilarPerson）结果。
 
-        :param request: 调用GetSimilarPersonResult所需参数的结构体。
+        :param request: Request instance for GetSimilarPersonResult.
         :type request: :class:`tencentcloud.iai.v20180301.models.GetSimilarPersonResultRequest`
         :rtype: :class:`tencentcloud.iai.v20180301.models.GetSimilarPersonResultResponse`
 
@@ -640,7 +640,7 @@ class IaiClient(AbstractClient):
     def ModifyGroup(self, request):
         """修改人员库名称、备注、自定义描述字段名称。
 
-        :param request: 调用ModifyGroup所需参数的结构体。
+        :param request: Request instance for ModifyGroup.
         :type request: :class:`tencentcloud.iai.v20180301.models.ModifyGroupRequest`
         :rtype: :class:`tencentcloud.iai.v20180301.models.ModifyGroupResponse`
 
@@ -668,7 +668,7 @@ class IaiClient(AbstractClient):
     def ModifyPersonBaseInfo(self, request):
         """修改人员信息，包括名称、性别等。人员名称和性别修改会同步到包含该人员的所有人员库。
 
-        :param request: 调用ModifyPersonBaseInfo所需参数的结构体。
+        :param request: Request instance for ModifyPersonBaseInfo.
         :type request: :class:`tencentcloud.iai.v20180301.models.ModifyPersonBaseInfoRequest`
         :rtype: :class:`tencentcloud.iai.v20180301.models.ModifyPersonBaseInfoResponse`
 
@@ -696,7 +696,7 @@ class IaiClient(AbstractClient):
     def ModifyPersonGroupInfo(self, request):
         """修改指定人员库人员描述内容。
 
-        :param request: 调用ModifyPersonGroupInfo所需参数的结构体。
+        :param request: Request instance for ModifyPersonGroupInfo.
         :type request: :class:`tencentcloud.iai.v20180301.models.ModifyPersonGroupInfoRequest`
         :rtype: :class:`tencentcloud.iai.v20180301.models.ModifyPersonGroupInfoResponse`
 
@@ -728,7 +728,7 @@ class IaiClient(AbstractClient):
         >
         - 公共参数中的签名方式请使用V3版本，即配置SignatureMethod参数为TC3-HMAC-SHA256。
 
-        :param request: 调用SearchFaces所需参数的结构体。
+        :param request: Request instance for SearchFaces.
         :type request: :class:`tencentcloud.iai.v20180301.models.SearchFacesRequest`
         :rtype: :class:`tencentcloud.iai.v20180301.models.SearchFacesResponse`
 
@@ -757,7 +757,7 @@ class IaiClient(AbstractClient):
         """用于对一张待识别的人脸图片，在一个或多个人员库中识别出最相似的 TopN 人员，按照人员库的维度以人员相似度从大到小顺序排列。
         此接口需与[人员库管理相关接口](https://cloud.tencent.com/document/product/867/32794)结合使用。
 
-        :param request: 调用SearchFacesReturnsByGroup所需参数的结构体。
+        :param request: Request instance for SearchFacesReturnsByGroup.
         :type request: :class:`tencentcloud.iai.v20180301.models.SearchFacesReturnsByGroupRequest`
         :rtype: :class:`tencentcloud.iai.v20180301.models.SearchFacesReturnsByGroupResponse`
 
@@ -792,7 +792,7 @@ class IaiClient(AbstractClient):
         - 公共参数中的签名方式请使用V3版本，即配置SignatureMethod参数为TC3-HMAC-SHA256。
         - 仅支持算法模型版本（FaceModelVersion）为3.0的人员库。
 
-        :param request: 调用SearchPersons所需参数的结构体。
+        :param request: Request instance for SearchPersons.
         :type request: :class:`tencentcloud.iai.v20180301.models.SearchPersonsRequest`
         :rtype: :class:`tencentcloud.iai.v20180301.models.SearchPersonsResponse`
 
@@ -827,7 +827,7 @@ class IaiClient(AbstractClient):
         - 公共参数中的签名方式请使用V3版本，即配置SignatureMethod参数为TC3-HMAC-SHA256。
         - 仅支持算法模型版本（FaceModelVersion）为3.0的人员库。
 
-        :param request: 调用SearchPersonsReturnsByGroup所需参数的结构体。
+        :param request: Request instance for SearchPersonsReturnsByGroup.
         :type request: :class:`tencentcloud.iai.v20180301.models.SearchPersonsReturnsByGroupRequest`
         :rtype: :class:`tencentcloud.iai.v20180301.models.SearchPersonsReturnsByGroupResponse`
 
@@ -858,7 +858,7 @@ class IaiClient(AbstractClient):
         >
         - 公共参数中的签名方式请使用V3版本，即配置SignatureMethod参数为TC3-HMAC-SHA256。
 
-        :param request: 调用VerifyFace所需参数的结构体。
+        :param request: Request instance for VerifyFace.
         :type request: :class:`tencentcloud.iai.v20180301.models.VerifyFaceRequest`
         :rtype: :class:`tencentcloud.iai.v20180301.models.VerifyFaceResponse`
 
@@ -894,7 +894,7 @@ class IaiClient(AbstractClient):
         - 公共参数中的签名方式请使用V3版本，即配置SignatureMethod参数为TC3-HMAC-SHA256。
         - 仅支持算法模型版本（FaceModelVersion）为3.0的人员库。
 
-        :param request: 调用VerifyPerson所需参数的结构体。
+        :param request: Request instance for VerifyPerson.
         :type request: :class:`tencentcloud.iai.v20180301.models.VerifyPersonRequest`
         :rtype: :class:`tencentcloud.iai.v20180301.models.VerifyPersonResponse`
 

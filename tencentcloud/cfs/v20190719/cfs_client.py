@@ -28,7 +28,7 @@ class CfsClient(AbstractClient):
     def CreateCfsFileSystem(self, request):
         """用于添加新文件系统
 
-        :param request: 调用CreateCfsFileSystem所需参数的结构体。
+        :param request: Request instance for CreateCfsFileSystem.
         :type request: :class:`tencentcloud.cfs.v20190719.models.CreateCfsFileSystemRequest`
         :rtype: :class:`tencentcloud.cfs.v20190719.models.CreateCfsFileSystemResponse`
 
@@ -56,7 +56,7 @@ class CfsClient(AbstractClient):
     def CreateCfsPGroup(self, request):
         """本接口（CreateCfsPGroup）用于创建权限组
 
-        :param request: 调用CreateCfsPGroup所需参数的结构体。
+        :param request: Request instance for CreateCfsPGroup.
         :type request: :class:`tencentcloud.cfs.v20190719.models.CreateCfsPGroupRequest`
         :rtype: :class:`tencentcloud.cfs.v20190719.models.CreateCfsPGroupResponse`
 
@@ -84,7 +84,7 @@ class CfsClient(AbstractClient):
     def CreateCfsRule(self, request):
         """本接口（CreateCfsRule）用于创建权限组规则。
 
-        :param request: 调用CreateCfsRule所需参数的结构体。
+        :param request: Request instance for CreateCfsRule.
         :type request: :class:`tencentcloud.cfs.v20190719.models.CreateCfsRuleRequest`
         :rtype: :class:`tencentcloud.cfs.v20190719.models.CreateCfsRuleResponse`
 
@@ -112,7 +112,7 @@ class CfsClient(AbstractClient):
     def DeleteCfsFileSystem(self, request):
         """用于删除文件系统
 
-        :param request: 调用DeleteCfsFileSystem所需参数的结构体。
+        :param request: Request instance for DeleteCfsFileSystem.
         :type request: :class:`tencentcloud.cfs.v20190719.models.DeleteCfsFileSystemRequest`
         :rtype: :class:`tencentcloud.cfs.v20190719.models.DeleteCfsFileSystemResponse`
 
@@ -140,7 +140,7 @@ class CfsClient(AbstractClient):
     def DeleteCfsPGroup(self, request):
         """本接口（DeleteCfsPGroup）用于删除权限组。
 
-        :param request: 调用DeleteCfsPGroup所需参数的结构体。
+        :param request: Request instance for DeleteCfsPGroup.
         :type request: :class:`tencentcloud.cfs.v20190719.models.DeleteCfsPGroupRequest`
         :rtype: :class:`tencentcloud.cfs.v20190719.models.DeleteCfsPGroupResponse`
 
@@ -168,7 +168,7 @@ class CfsClient(AbstractClient):
     def DeleteCfsRule(self, request):
         """本接口（DeleteCfsRule）用于删除权限组规则。
 
-        :param request: 调用DeleteCfsRule所需参数的结构体。
+        :param request: Request instance for DeleteCfsRule.
         :type request: :class:`tencentcloud.cfs.v20190719.models.DeleteCfsRuleRequest`
         :rtype: :class:`tencentcloud.cfs.v20190719.models.DeleteCfsRuleResponse`
 
@@ -196,7 +196,7 @@ class CfsClient(AbstractClient):
     def DeleteMountTarget(self, request):
         """本接口（DeleteMountTarget）用于删除挂载点
 
-        :param request: 调用DeleteMountTarget所需参数的结构体。
+        :param request: Request instance for DeleteMountTarget.
         :type request: :class:`tencentcloud.cfs.v20190719.models.DeleteMountTargetRequest`
         :rtype: :class:`tencentcloud.cfs.v20190719.models.DeleteMountTargetResponse`
 
@@ -224,7 +224,7 @@ class CfsClient(AbstractClient):
     def DescribeAvailableZoneInfo(self, request):
         """本接口（DescribeAvailableZoneInfo）用于查询区域的可用情况。
 
-        :param request: 调用DescribeAvailableZoneInfo所需参数的结构体。
+        :param request: Request instance for DescribeAvailableZoneInfo.
         :type request: :class:`tencentcloud.cfs.v20190719.models.DescribeAvailableZoneInfoRequest`
         :rtype: :class:`tencentcloud.cfs.v20190719.models.DescribeAvailableZoneInfoResponse`
 
@@ -252,7 +252,7 @@ class CfsClient(AbstractClient):
     def DescribeCfsFileSystems(self, request):
         """本接口（DescribeCfsFileSystems）用于查询文件系统
 
-        :param request: 调用DescribeCfsFileSystems所需参数的结构体。
+        :param request: Request instance for DescribeCfsFileSystems.
         :type request: :class:`tencentcloud.cfs.v20190719.models.DescribeCfsFileSystemsRequest`
         :rtype: :class:`tencentcloud.cfs.v20190719.models.DescribeCfsFileSystemsResponse`
 
@@ -280,7 +280,7 @@ class CfsClient(AbstractClient):
     def DescribeCfsPGroups(self, request):
         """本接口（DescribeCfsPGroups）用于查询权限组列表。
 
-        :param request: 调用DescribeCfsPGroups所需参数的结构体。
+        :param request: Request instance for DescribeCfsPGroups.
         :type request: :class:`tencentcloud.cfs.v20190719.models.DescribeCfsPGroupsRequest`
         :rtype: :class:`tencentcloud.cfs.v20190719.models.DescribeCfsPGroupsResponse`
 
@@ -308,7 +308,7 @@ class CfsClient(AbstractClient):
     def DescribeCfsRules(self, request):
         """本接口（DescribeCfsRules）用于查询权限组规则列表。
 
-        :param request: 调用DescribeCfsRules所需参数的结构体。
+        :param request: Request instance for DescribeCfsRules.
         :type request: :class:`tencentcloud.cfs.v20190719.models.DescribeCfsRulesRequest`
         :rtype: :class:`tencentcloud.cfs.v20190719.models.DescribeCfsRulesResponse`
 
@@ -336,7 +336,7 @@ class CfsClient(AbstractClient):
     def DescribeCfsServiceStatus(self, request):
         """本接口（DescribeCfsServiceStatus）用于查询用户使用CFS的服务状态。
 
-        :param request: 调用DescribeCfsServiceStatus所需参数的结构体。
+        :param request: Request instance for DescribeCfsServiceStatus.
         :type request: :class:`tencentcloud.cfs.v20190719.models.DescribeCfsServiceStatusRequest`
         :rtype: :class:`tencentcloud.cfs.v20190719.models.DescribeCfsServiceStatusResponse`
 
@@ -364,7 +364,7 @@ class CfsClient(AbstractClient):
     def DescribeMountTargets(self, request):
         """本接口（DescribeMountTargets）用于查询文件系统挂载点信息
 
-        :param request: 调用DescribeMountTargets所需参数的结构体。
+        :param request: Request instance for DescribeMountTargets.
         :type request: :class:`tencentcloud.cfs.v20190719.models.DescribeMountTargetsRequest`
         :rtype: :class:`tencentcloud.cfs.v20190719.models.DescribeMountTargetsResponse`
 
@@ -392,7 +392,7 @@ class CfsClient(AbstractClient):
     def SignUpCfsService(self, request):
         """本接口（SignUpCfsService）用于开通CFS服务。
 
-        :param request: 调用SignUpCfsService所需参数的结构体。
+        :param request: Request instance for SignUpCfsService.
         :type request: :class:`tencentcloud.cfs.v20190719.models.SignUpCfsServiceRequest`
         :rtype: :class:`tencentcloud.cfs.v20190719.models.SignUpCfsServiceResponse`
 
@@ -420,7 +420,7 @@ class CfsClient(AbstractClient):
     def UpdateCfsFileSystemName(self, request):
         """本接口（UpdateCfsFileSystemName）用于更新文件系统名
 
-        :param request: 调用UpdateCfsFileSystemName所需参数的结构体。
+        :param request: Request instance for UpdateCfsFileSystemName.
         :type request: :class:`tencentcloud.cfs.v20190719.models.UpdateCfsFileSystemNameRequest`
         :rtype: :class:`tencentcloud.cfs.v20190719.models.UpdateCfsFileSystemNameResponse`
 
@@ -448,7 +448,7 @@ class CfsClient(AbstractClient):
     def UpdateCfsFileSystemPGroup(self, request):
         """本接口（UpdateCfsFileSystemPGroup）用于更新文件系统所使用的权限组
 
-        :param request: 调用UpdateCfsFileSystemPGroup所需参数的结构体。
+        :param request: Request instance for UpdateCfsFileSystemPGroup.
         :type request: :class:`tencentcloud.cfs.v20190719.models.UpdateCfsFileSystemPGroupRequest`
         :rtype: :class:`tencentcloud.cfs.v20190719.models.UpdateCfsFileSystemPGroupResponse`
 
@@ -476,7 +476,7 @@ class CfsClient(AbstractClient):
     def UpdateCfsFileSystemSizeLimit(self, request):
         """本接口（UpdateCfsFileSystemSizeLimit）用于更新文件系统存储容量限制。
 
-        :param request: 调用UpdateCfsFileSystemSizeLimit所需参数的结构体。
+        :param request: Request instance for UpdateCfsFileSystemSizeLimit.
         :type request: :class:`tencentcloud.cfs.v20190719.models.UpdateCfsFileSystemSizeLimitRequest`
         :rtype: :class:`tencentcloud.cfs.v20190719.models.UpdateCfsFileSystemSizeLimitResponse`
 
@@ -504,7 +504,7 @@ class CfsClient(AbstractClient):
     def UpdateCfsPGroup(self, request):
         """本接口（UpdateCfsPGroup）更新权限组信息。
 
-        :param request: 调用UpdateCfsPGroup所需参数的结构体。
+        :param request: Request instance for UpdateCfsPGroup.
         :type request: :class:`tencentcloud.cfs.v20190719.models.UpdateCfsPGroupRequest`
         :rtype: :class:`tencentcloud.cfs.v20190719.models.UpdateCfsPGroupResponse`
 
@@ -532,7 +532,7 @@ class CfsClient(AbstractClient):
     def UpdateCfsRule(self, request):
         """本接口（UpdateCfsRule）用于更新权限规则。
 
-        :param request: 调用UpdateCfsRule所需参数的结构体。
+        :param request: Request instance for UpdateCfsRule.
         :type request: :class:`tencentcloud.cfs.v20190719.models.UpdateCfsRuleRequest`
         :rtype: :class:`tencentcloud.cfs.v20190719.models.UpdateCfsRuleResponse`
 

@@ -28,7 +28,7 @@ class EccClient(AbstractClient):
     def DescribeTask(self, request):
         """异步任务结果查询接口
 
-        :param request: 调用DescribeTask所需参数的结构体。
+        :param request: Request instance for DescribeTask.
         :type request: :class:`tencentcloud.ecc.v20181213.models.DescribeTaskRequest`
         :rtype: :class:`tencentcloud.ecc.v20181213.models.DescribeTaskResponse`
 
@@ -57,7 +57,7 @@ class EccClient(AbstractClient):
         """接口请求域名： ecc.tencentcloudapi.com
         纯文本英语作文批改
 
-        :param request: 调用ECC所需参数的结构体。
+        :param request: Request instance for ECC.
         :type request: :class:`tencentcloud.ecc.v20181213.models.ECCRequest`
         :rtype: :class:`tencentcloud.ecc.v20181213.models.ECCResponse`
 
@@ -86,7 +86,7 @@ class EccClient(AbstractClient):
         """https://ecc.tencentcloudapi.com/?Action=EHOCR
         图像识别批改接口
 
-        :param request: 调用EHOCR所需参数的结构体。
+        :param request: Request instance for EHOCR.
         :type request: :class:`tencentcloud.ecc.v20181213.models.EHOCRRequest`
         :rtype: :class:`tencentcloud.ecc.v20181213.models.EHOCRResponse`
 

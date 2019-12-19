@@ -28,7 +28,7 @@ class TbpClient(AbstractClient):
     def TextProcess(self, request):
         """接收调用侧的文本输入，返回应答文本。
 
-        :param request: 调用TextProcess所需参数的结构体。
+        :param request: Request instance for TextProcess.
         :type request: :class:`tencentcloud.tbp.v20190627.models.TextProcessRequest`
         :rtype: :class:`tencentcloud.tbp.v20190627.models.TextProcessResponse`
 
@@ -56,7 +56,7 @@ class TbpClient(AbstractClient):
     def TextReset(self, request):
         """会话重置接口。
 
-        :param request: 调用TextReset所需参数的结构体。
+        :param request: Request instance for TextReset.
         :type request: :class:`tencentcloud.tbp.v20190627.models.TextResetRequest`
         :rtype: :class:`tencentcloud.tbp.v20190627.models.TextResetResponse`
 

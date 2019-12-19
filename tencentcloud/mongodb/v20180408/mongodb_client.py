@@ -29,7 +29,7 @@ class MongodbClient(AbstractClient):
         """本接口(AssignProject)用于指定云数据库实例的所属项目。
 
 
-        :param request: 调用AssignProject所需参数的结构体。
+        :param request: Request instance for AssignProject.
         :type request: :class:`tencentcloud.mongodb.v20180408.models.AssignProjectRequest`
         :rtype: :class:`tencentcloud.mongodb.v20180408.models.AssignProjectResponse`
 
@@ -57,7 +57,7 @@ class MongodbClient(AbstractClient):
     def CreateDBInstance(self, request):
         """本接口(CreateDBInstance)用于创建包年包月的MongoDB云数据库实例。
 
-        :param request: 调用CreateDBInstance所需参数的结构体。
+        :param request: Request instance for CreateDBInstance.
         :type request: :class:`tencentcloud.mongodb.v20180408.models.CreateDBInstanceRequest`
         :rtype: :class:`tencentcloud.mongodb.v20180408.models.CreateDBInstanceResponse`
 
@@ -85,7 +85,7 @@ class MongodbClient(AbstractClient):
     def CreateDBInstanceHour(self, request):
         """本接口(CreateDBInstanceHour)用于创建按量计费的MongoDB云数据库实例（包括主实例、灾备实例和只读实例），可通过传入实例规格、实例类型、MongoDB版本、购买时长和数量等信息创建云数据库实例。
 
-        :param request: 调用CreateDBInstanceHour所需参数的结构体。
+        :param request: Request instance for CreateDBInstanceHour.
         :type request: :class:`tencentcloud.mongodb.v20180408.models.CreateDBInstanceHourRequest`
         :rtype: :class:`tencentcloud.mongodb.v20180408.models.CreateDBInstanceHourResponse`
 
@@ -113,7 +113,7 @@ class MongodbClient(AbstractClient):
     def DescribeClientConnections(self, request):
         """本接口(DescribeClientConnections)用于查询实例客户端连接信息，包括连接IP和连接数量。目前只支持3.2版本的MongoDB实例。
 
-        :param request: 调用DescribeClientConnections所需参数的结构体。
+        :param request: Request instance for DescribeClientConnections.
         :type request: :class:`tencentcloud.mongodb.v20180408.models.DescribeClientConnectionsRequest`
         :rtype: :class:`tencentcloud.mongodb.v20180408.models.DescribeClientConnectionsResponse`
 
@@ -141,7 +141,7 @@ class MongodbClient(AbstractClient):
     def DescribeDBInstances(self, request):
         """本接口(DescribeDBInstances)用于查询云数据库实例列表，支持通过项目ID、实例ID、实例状态等过滤条件来筛选实例。支持查询主实例、灾备实例和只读实例信息列表。
 
-        :param request: 调用DescribeDBInstances所需参数的结构体。
+        :param request: Request instance for DescribeDBInstances.
         :type request: :class:`tencentcloud.mongodb.v20180408.models.DescribeDBInstancesRequest`
         :rtype: :class:`tencentcloud.mongodb.v20180408.models.DescribeDBInstancesResponse`
 
@@ -169,7 +169,7 @@ class MongodbClient(AbstractClient):
     def DescribeSlowLog(self, request):
         """本接口(DescribeSlowLogs)用于获取云数据库实例的慢查询日志。
 
-        :param request: 调用DescribeSlowLog所需参数的结构体。
+        :param request: Request instance for DescribeSlowLog.
         :type request: :class:`tencentcloud.mongodb.v20180408.models.DescribeSlowLogRequest`
         :rtype: :class:`tencentcloud.mongodb.v20180408.models.DescribeSlowLogResponse`
 
@@ -197,7 +197,7 @@ class MongodbClient(AbstractClient):
     def DescribeSpecInfo(self, request):
         """本接口(DescribeSpecInfo)用于查询实例的售卖规格。
 
-        :param request: 调用DescribeSpecInfo所需参数的结构体。
+        :param request: Request instance for DescribeSpecInfo.
         :type request: :class:`tencentcloud.mongodb.v20180408.models.DescribeSpecInfoRequest`
         :rtype: :class:`tencentcloud.mongodb.v20180408.models.DescribeSpecInfoResponse`
 
@@ -225,7 +225,7 @@ class MongodbClient(AbstractClient):
     def RenameInstance(self, request):
         """本接口(RenameInstance)用于修改云数据库实例的名称。
 
-        :param request: 调用RenameInstance所需参数的结构体。
+        :param request: Request instance for RenameInstance.
         :type request: :class:`tencentcloud.mongodb.v20180408.models.RenameInstanceRequest`
         :rtype: :class:`tencentcloud.mongodb.v20180408.models.RenameInstanceResponse`
 
@@ -253,7 +253,7 @@ class MongodbClient(AbstractClient):
     def SetAutoRenew(self, request):
         """本接口(SetAutoRenew)用于设置包年包月云数据库实例的续费选项。
 
-        :param request: 调用SetAutoRenew所需参数的结构体。
+        :param request: Request instance for SetAutoRenew.
         :type request: :class:`tencentcloud.mongodb.v20180408.models.SetAutoRenewRequest`
         :rtype: :class:`tencentcloud.mongodb.v20180408.models.SetAutoRenewResponse`
 
@@ -282,7 +282,7 @@ class MongodbClient(AbstractClient):
         """本接口(SetPassword)用于设置云数据库账户的密码。
 
 
-        :param request: 调用SetPassword所需参数的结构体。
+        :param request: Request instance for SetPassword.
         :type request: :class:`tencentcloud.mongodb.v20180408.models.SetPasswordRequest`
         :rtype: :class:`tencentcloud.mongodb.v20180408.models.SetPasswordResponse`
 
@@ -310,7 +310,7 @@ class MongodbClient(AbstractClient):
     def TerminateDBInstance(self, request):
         """本接口(TerminateDBInstance)用于销毁按量计费的MongoDB云数据库实例
 
-        :param request: 调用TerminateDBInstance所需参数的结构体。
+        :param request: Request instance for TerminateDBInstance.
         :type request: :class:`tencentcloud.mongodb.v20180408.models.TerminateDBInstanceRequest`
         :rtype: :class:`tencentcloud.mongodb.v20180408.models.TerminateDBInstanceResponse`
 
@@ -338,7 +338,7 @@ class MongodbClient(AbstractClient):
     def UpgradeDBInstance(self, request):
         """本接口(UpgradeDBInstance)用于升级包年包月的MongoDB云数据库实例，可以扩容内存、存储以及Oplog
 
-        :param request: 调用UpgradeDBInstance所需参数的结构体。
+        :param request: Request instance for UpgradeDBInstance.
         :type request: :class:`tencentcloud.mongodb.v20180408.models.UpgradeDBInstanceRequest`
         :rtype: :class:`tencentcloud.mongodb.v20180408.models.UpgradeDBInstanceResponse`
 
@@ -366,7 +366,7 @@ class MongodbClient(AbstractClient):
     def UpgradeDBInstanceHour(self, request):
         """本接口(UpgradeDBInstanceHour)用于升级按量计费的MongoDB云数据库实例，可以扩容内存、存储以及oplog
 
-        :param request: 调用UpgradeDBInstanceHour所需参数的结构体。
+        :param request: Request instance for UpgradeDBInstanceHour.
         :type request: :class:`tencentcloud.mongodb.v20180408.models.UpgradeDBInstanceHourRequest`
         :rtype: :class:`tencentcloud.mongodb.v20180408.models.UpgradeDBInstanceHourResponse`
 

@@ -28,7 +28,7 @@ class CamClient(AbstractClient):
     def AddUser(self, request):
         """添加子用户
 
-        :param request: 调用AddUser所需参数的结构体。
+        :param request: Request instance for AddUser.
         :type request: :class:`tencentcloud.cam.v20190116.models.AddUserRequest`
         :rtype: :class:`tencentcloud.cam.v20190116.models.AddUserResponse`
 
@@ -56,7 +56,7 @@ class CamClient(AbstractClient):
     def AddUserToGroup(self, request):
         """用户加入到用户组
 
-        :param request: 调用AddUserToGroup所需参数的结构体。
+        :param request: Request instance for AddUserToGroup.
         :type request: :class:`tencentcloud.cam.v20190116.models.AddUserToGroupRequest`
         :rtype: :class:`tencentcloud.cam.v20190116.models.AddUserToGroupResponse`
 
@@ -84,7 +84,7 @@ class CamClient(AbstractClient):
     def AttachGroupPolicy(self, request):
         """本接口（AttachGroupPolicy）可用于绑定策略到用户组。
 
-        :param request: 调用AttachGroupPolicy所需参数的结构体。
+        :param request: Request instance for AttachGroupPolicy.
         :type request: :class:`tencentcloud.cam.v20190116.models.AttachGroupPolicyRequest`
         :rtype: :class:`tencentcloud.cam.v20190116.models.AttachGroupPolicyResponse`
 
@@ -112,7 +112,7 @@ class CamClient(AbstractClient):
     def AttachRolePolicy(self, request):
         """本接口（AttachRolePolicy）用于绑定策略到角色。
 
-        :param request: 调用AttachRolePolicy所需参数的结构体。
+        :param request: Request instance for AttachRolePolicy.
         :type request: :class:`tencentcloud.cam.v20190116.models.AttachRolePolicyRequest`
         :rtype: :class:`tencentcloud.cam.v20190116.models.AttachRolePolicyResponse`
 
@@ -140,7 +140,7 @@ class CamClient(AbstractClient):
     def AttachUserPolicy(self, request):
         """本接口（AttachUserPolicy）可用于绑定到用户的策略。
 
-        :param request: 调用AttachUserPolicy所需参数的结构体。
+        :param request: Request instance for AttachUserPolicy.
         :type request: :class:`tencentcloud.cam.v20190116.models.AttachUserPolicyRequest`
         :rtype: :class:`tencentcloud.cam.v20190116.models.AttachUserPolicyResponse`
 
@@ -168,7 +168,7 @@ class CamClient(AbstractClient):
     def ConsumeCustomMFAToken(self, request):
         """验证自定义多因子Token
 
-        :param request: 调用ConsumeCustomMFAToken所需参数的结构体。
+        :param request: Request instance for ConsumeCustomMFAToken.
         :type request: :class:`tencentcloud.cam.v20190116.models.ConsumeCustomMFATokenRequest`
         :rtype: :class:`tencentcloud.cam.v20190116.models.ConsumeCustomMFATokenResponse`
 
@@ -196,7 +196,7 @@ class CamClient(AbstractClient):
     def CreateGroup(self, request):
         """创建用户组
 
-        :param request: 调用CreateGroup所需参数的结构体。
+        :param request: Request instance for CreateGroup.
         :type request: :class:`tencentcloud.cam.v20190116.models.CreateGroupRequest`
         :rtype: :class:`tencentcloud.cam.v20190116.models.CreateGroupResponse`
 
@@ -224,7 +224,7 @@ class CamClient(AbstractClient):
     def CreatePolicy(self, request):
         """本接口（CreatePolicy）可用于创建策略。
 
-        :param request: 调用CreatePolicy所需参数的结构体。
+        :param request: Request instance for CreatePolicy.
         :type request: :class:`tencentcloud.cam.v20190116.models.CreatePolicyRequest`
         :rtype: :class:`tencentcloud.cam.v20190116.models.CreatePolicyResponse`
 
@@ -252,7 +252,7 @@ class CamClient(AbstractClient):
     def CreateRole(self, request):
         """本接口（CreateRole）用于创建角色。
 
-        :param request: 调用CreateRole所需参数的结构体。
+        :param request: Request instance for CreateRole.
         :type request: :class:`tencentcloud.cam.v20190116.models.CreateRoleRequest`
         :rtype: :class:`tencentcloud.cam.v20190116.models.CreateRoleResponse`
 
@@ -280,7 +280,7 @@ class CamClient(AbstractClient):
     def CreateSAMLProvider(self, request):
         """创建SAML身份提供商
 
-        :param request: 调用CreateSAMLProvider所需参数的结构体。
+        :param request: Request instance for CreateSAMLProvider.
         :type request: :class:`tencentcloud.cam.v20190116.models.CreateSAMLProviderRequest`
         :rtype: :class:`tencentcloud.cam.v20190116.models.CreateSAMLProviderResponse`
 
@@ -308,7 +308,7 @@ class CamClient(AbstractClient):
     def DeleteGroup(self, request):
         """删除用户组
 
-        :param request: 调用DeleteGroup所需参数的结构体。
+        :param request: Request instance for DeleteGroup.
         :type request: :class:`tencentcloud.cam.v20190116.models.DeleteGroupRequest`
         :rtype: :class:`tencentcloud.cam.v20190116.models.DeleteGroupResponse`
 
@@ -336,7 +336,7 @@ class CamClient(AbstractClient):
     def DeletePolicy(self, request):
         """本接口（DeletePolicy）可用于删除策略。
 
-        :param request: 调用DeletePolicy所需参数的结构体。
+        :param request: Request instance for DeletePolicy.
         :type request: :class:`tencentcloud.cam.v20190116.models.DeletePolicyRequest`
         :rtype: :class:`tencentcloud.cam.v20190116.models.DeletePolicyResponse`
 
@@ -364,7 +364,7 @@ class CamClient(AbstractClient):
     def DeleteRole(self, request):
         """本接口（DeleteRole）用于删除指定角色。
 
-        :param request: 调用DeleteRole所需参数的结构体。
+        :param request: Request instance for DeleteRole.
         :type request: :class:`tencentcloud.cam.v20190116.models.DeleteRoleRequest`
         :rtype: :class:`tencentcloud.cam.v20190116.models.DeleteRoleResponse`
 
@@ -392,7 +392,7 @@ class CamClient(AbstractClient):
     def DeleteSAMLProvider(self, request):
         """删除SAML身份提供商
 
-        :param request: 调用DeleteSAMLProvider所需参数的结构体。
+        :param request: Request instance for DeleteSAMLProvider.
         :type request: :class:`tencentcloud.cam.v20190116.models.DeleteSAMLProviderRequest`
         :rtype: :class:`tencentcloud.cam.v20190116.models.DeleteSAMLProviderResponse`
 
@@ -420,7 +420,7 @@ class CamClient(AbstractClient):
     def DeleteUser(self, request):
         """删除子用户
 
-        :param request: 调用DeleteUser所需参数的结构体。
+        :param request: Request instance for DeleteUser.
         :type request: :class:`tencentcloud.cam.v20190116.models.DeleteUserRequest`
         :rtype: :class:`tencentcloud.cam.v20190116.models.DeleteUserResponse`
 
@@ -448,7 +448,7 @@ class CamClient(AbstractClient):
     def DescribeRoleList(self, request):
         """本接口（DescribeRoleList）用于获取账号下的角色列表。
 
-        :param request: 调用DescribeRoleList所需参数的结构体。
+        :param request: Request instance for DescribeRoleList.
         :type request: :class:`tencentcloud.cam.v20190116.models.DescribeRoleListRequest`
         :rtype: :class:`tencentcloud.cam.v20190116.models.DescribeRoleListResponse`
 
@@ -476,7 +476,7 @@ class CamClient(AbstractClient):
     def DetachGroupPolicy(self, request):
         """本接口（DetachGroupPolicy）可用于解除绑定到用户组的策略。
 
-        :param request: 调用DetachGroupPolicy所需参数的结构体。
+        :param request: Request instance for DetachGroupPolicy.
         :type request: :class:`tencentcloud.cam.v20190116.models.DetachGroupPolicyRequest`
         :rtype: :class:`tencentcloud.cam.v20190116.models.DetachGroupPolicyResponse`
 
@@ -504,7 +504,7 @@ class CamClient(AbstractClient):
     def DetachRolePolicy(self, request):
         """本接口（DetachRolePolicy）用于解除绑定角色的策略。
 
-        :param request: 调用DetachRolePolicy所需参数的结构体。
+        :param request: Request instance for DetachRolePolicy.
         :type request: :class:`tencentcloud.cam.v20190116.models.DetachRolePolicyRequest`
         :rtype: :class:`tencentcloud.cam.v20190116.models.DetachRolePolicyResponse`
 
@@ -532,7 +532,7 @@ class CamClient(AbstractClient):
     def DetachUserPolicy(self, request):
         """本接口（DetachUserPolicy）可用于解除绑定到用户的策略。
 
-        :param request: 调用DetachUserPolicy所需参数的结构体。
+        :param request: Request instance for DetachUserPolicy.
         :type request: :class:`tencentcloud.cam.v20190116.models.DetachUserPolicyRequest`
         :rtype: :class:`tencentcloud.cam.v20190116.models.DetachUserPolicyResponse`
 
@@ -560,7 +560,7 @@ class CamClient(AbstractClient):
     def GetCustomMFATokenInfo(self, request):
         """获取自定义多因子Token关联信息
 
-        :param request: 调用GetCustomMFATokenInfo所需参数的结构体。
+        :param request: Request instance for GetCustomMFATokenInfo.
         :type request: :class:`tencentcloud.cam.v20190116.models.GetCustomMFATokenInfoRequest`
         :rtype: :class:`tencentcloud.cam.v20190116.models.GetCustomMFATokenInfoResponse`
 
@@ -588,7 +588,7 @@ class CamClient(AbstractClient):
     def GetGroup(self, request):
         """查询用户组详情
 
-        :param request: 调用GetGroup所需参数的结构体。
+        :param request: Request instance for GetGroup.
         :type request: :class:`tencentcloud.cam.v20190116.models.GetGroupRequest`
         :rtype: :class:`tencentcloud.cam.v20190116.models.GetGroupResponse`
 
@@ -616,7 +616,7 @@ class CamClient(AbstractClient):
     def GetPolicy(self, request):
         """本接口（GetPolicy）可用于查询查看策略详情。
 
-        :param request: 调用GetPolicy所需参数的结构体。
+        :param request: Request instance for GetPolicy.
         :type request: :class:`tencentcloud.cam.v20190116.models.GetPolicyRequest`
         :rtype: :class:`tencentcloud.cam.v20190116.models.GetPolicyResponse`
 
@@ -644,7 +644,7 @@ class CamClient(AbstractClient):
     def GetRole(self, request):
         """本接口（GetRole）用于获取指定角色的详细信息。
 
-        :param request: 调用GetRole所需参数的结构体。
+        :param request: Request instance for GetRole.
         :type request: :class:`tencentcloud.cam.v20190116.models.GetRoleRequest`
         :rtype: :class:`tencentcloud.cam.v20190116.models.GetRoleResponse`
 
@@ -672,7 +672,7 @@ class CamClient(AbstractClient):
     def GetSAMLProvider(self, request):
         """查询SAML身份提供商详情
 
-        :param request: 调用GetSAMLProvider所需参数的结构体。
+        :param request: Request instance for GetSAMLProvider.
         :type request: :class:`tencentcloud.cam.v20190116.models.GetSAMLProviderRequest`
         :rtype: :class:`tencentcloud.cam.v20190116.models.GetSAMLProviderResponse`
 
@@ -700,7 +700,7 @@ class CamClient(AbstractClient):
     def GetUser(self, request):
         """查询子用户
 
-        :param request: 调用GetUser所需参数的结构体。
+        :param request: Request instance for GetUser.
         :type request: :class:`tencentcloud.cam.v20190116.models.GetUserRequest`
         :rtype: :class:`tencentcloud.cam.v20190116.models.GetUserResponse`
 
@@ -728,7 +728,7 @@ class CamClient(AbstractClient):
     def ListAttachedGroupPolicies(self, request):
         """本接口（ListAttachedGroupPolicies）可用于查询用户组关联的策略列表。
 
-        :param request: 调用ListAttachedGroupPolicies所需参数的结构体。
+        :param request: Request instance for ListAttachedGroupPolicies.
         :type request: :class:`tencentcloud.cam.v20190116.models.ListAttachedGroupPoliciesRequest`
         :rtype: :class:`tencentcloud.cam.v20190116.models.ListAttachedGroupPoliciesResponse`
 
@@ -756,7 +756,7 @@ class CamClient(AbstractClient):
     def ListAttachedRolePolicies(self, request):
         """本接口（ListAttachedRolePolicies）用于获取角色绑定的策略列表。
 
-        :param request: 调用ListAttachedRolePolicies所需参数的结构体。
+        :param request: Request instance for ListAttachedRolePolicies.
         :type request: :class:`tencentcloud.cam.v20190116.models.ListAttachedRolePoliciesRequest`
         :rtype: :class:`tencentcloud.cam.v20190116.models.ListAttachedRolePoliciesResponse`
 
@@ -784,7 +784,7 @@ class CamClient(AbstractClient):
     def ListAttachedUserPolicies(self, request):
         """本接口（ListAttachedUserPolicies）可用于查询子账号关联的策略列表。
 
-        :param request: 调用ListAttachedUserPolicies所需参数的结构体。
+        :param request: Request instance for ListAttachedUserPolicies.
         :type request: :class:`tencentcloud.cam.v20190116.models.ListAttachedUserPoliciesRequest`
         :rtype: :class:`tencentcloud.cam.v20190116.models.ListAttachedUserPoliciesResponse`
 
@@ -812,7 +812,7 @@ class CamClient(AbstractClient):
     def ListEntitiesForPolicy(self, request):
         """本接口（ListEntitiesForPolicy）可用于查询策略关联的实体列表。
 
-        :param request: 调用ListEntitiesForPolicy所需参数的结构体。
+        :param request: Request instance for ListEntitiesForPolicy.
         :type request: :class:`tencentcloud.cam.v20190116.models.ListEntitiesForPolicyRequest`
         :rtype: :class:`tencentcloud.cam.v20190116.models.ListEntitiesForPolicyResponse`
 
@@ -840,7 +840,7 @@ class CamClient(AbstractClient):
     def ListGroups(self, request):
         """查询用户组列表
 
-        :param request: 调用ListGroups所需参数的结构体。
+        :param request: Request instance for ListGroups.
         :type request: :class:`tencentcloud.cam.v20190116.models.ListGroupsRequest`
         :rtype: :class:`tencentcloud.cam.v20190116.models.ListGroupsResponse`
 
@@ -868,7 +868,7 @@ class CamClient(AbstractClient):
     def ListGroupsForUser(self, request):
         """列出用户关联的用户组
 
-        :param request: 调用ListGroupsForUser所需参数的结构体。
+        :param request: Request instance for ListGroupsForUser.
         :type request: :class:`tencentcloud.cam.v20190116.models.ListGroupsForUserRequest`
         :rtype: :class:`tencentcloud.cam.v20190116.models.ListGroupsForUserResponse`
 
@@ -896,7 +896,7 @@ class CamClient(AbstractClient):
     def ListPolicies(self, request):
         """本接口（ListPolicies）可用于查询策略列表
 
-        :param request: 调用ListPolicies所需参数的结构体。
+        :param request: Request instance for ListPolicies.
         :type request: :class:`tencentcloud.cam.v20190116.models.ListPoliciesRequest`
         :rtype: :class:`tencentcloud.cam.v20190116.models.ListPoliciesResponse`
 
@@ -924,7 +924,7 @@ class CamClient(AbstractClient):
     def ListSAMLProviders(self, request):
         """查询SAML身份提供商列表
 
-        :param request: 调用ListSAMLProviders所需参数的结构体。
+        :param request: Request instance for ListSAMLProviders.
         :type request: :class:`tencentcloud.cam.v20190116.models.ListSAMLProvidersRequest`
         :rtype: :class:`tencentcloud.cam.v20190116.models.ListSAMLProvidersResponse`
 
@@ -952,7 +952,7 @@ class CamClient(AbstractClient):
     def ListUsers(self, request):
         """拉取子用户
 
-        :param request: 调用ListUsers所需参数的结构体。
+        :param request: Request instance for ListUsers.
         :type request: :class:`tencentcloud.cam.v20190116.models.ListUsersRequest`
         :rtype: :class:`tencentcloud.cam.v20190116.models.ListUsersResponse`
 
@@ -980,7 +980,7 @@ class CamClient(AbstractClient):
     def ListUsersForGroup(self, request):
         """查询用户组关联的用户列表
 
-        :param request: 调用ListUsersForGroup所需参数的结构体。
+        :param request: Request instance for ListUsersForGroup.
         :type request: :class:`tencentcloud.cam.v20190116.models.ListUsersForGroupRequest`
         :rtype: :class:`tencentcloud.cam.v20190116.models.ListUsersForGroupResponse`
 
@@ -1008,7 +1008,7 @@ class CamClient(AbstractClient):
     def RemoveUserFromGroup(self, request):
         """从用户组删除用户
 
-        :param request: 调用RemoveUserFromGroup所需参数的结构体。
+        :param request: Request instance for RemoveUserFromGroup.
         :type request: :class:`tencentcloud.cam.v20190116.models.RemoveUserFromGroupRequest`
         :rtype: :class:`tencentcloud.cam.v20190116.models.RemoveUserFromGroupResponse`
 
@@ -1036,7 +1036,7 @@ class CamClient(AbstractClient):
     def SetFlag(self, request):
         """设置用户的登录，敏感操作，异步登录设置
 
-        :param request: 调用SetFlag所需参数的结构体。
+        :param request: Request instance for SetFlag.
         :type request: :class:`tencentcloud.cam.v20190116.models.SetFlagRequest`
         :rtype: :class:`tencentcloud.cam.v20190116.models.SetFlagResponse`
 
@@ -1064,7 +1064,7 @@ class CamClient(AbstractClient):
     def UpdateAssumeRolePolicy(self, request):
         """本接口（UpdateAssumeRolePolicy）用于修改角色信任策略的策略文档。
 
-        :param request: 调用UpdateAssumeRolePolicy所需参数的结构体。
+        :param request: Request instance for UpdateAssumeRolePolicy.
         :type request: :class:`tencentcloud.cam.v20190116.models.UpdateAssumeRolePolicyRequest`
         :rtype: :class:`tencentcloud.cam.v20190116.models.UpdateAssumeRolePolicyResponse`
 
@@ -1092,7 +1092,7 @@ class CamClient(AbstractClient):
     def UpdateGroup(self, request):
         """更新用户组
 
-        :param request: 调用UpdateGroup所需参数的结构体。
+        :param request: Request instance for UpdateGroup.
         :type request: :class:`tencentcloud.cam.v20190116.models.UpdateGroupRequest`
         :rtype: :class:`tencentcloud.cam.v20190116.models.UpdateGroupResponse`
 
@@ -1120,7 +1120,7 @@ class CamClient(AbstractClient):
     def UpdatePolicy(self, request):
         """本接口（UpdatePolicy ）可用于更新策略。
 
-        :param request: 调用UpdatePolicy所需参数的结构体。
+        :param request: Request instance for UpdatePolicy.
         :type request: :class:`tencentcloud.cam.v20190116.models.UpdatePolicyRequest`
         :rtype: :class:`tencentcloud.cam.v20190116.models.UpdatePolicyResponse`
 
@@ -1148,7 +1148,7 @@ class CamClient(AbstractClient):
     def UpdateRoleDescription(self, request):
         """本接口（UpdateRoleDescription）用于修改角色的描述信息。
 
-        :param request: 调用UpdateRoleDescription所需参数的结构体。
+        :param request: Request instance for UpdateRoleDescription.
         :type request: :class:`tencentcloud.cam.v20190116.models.UpdateRoleDescriptionRequest`
         :rtype: :class:`tencentcloud.cam.v20190116.models.UpdateRoleDescriptionResponse`
 
@@ -1176,7 +1176,7 @@ class CamClient(AbstractClient):
     def UpdateSAMLProvider(self, request):
         """更新SAML身份提供商信息
 
-        :param request: 调用UpdateSAMLProvider所需参数的结构体。
+        :param request: Request instance for UpdateSAMLProvider.
         :type request: :class:`tencentcloud.cam.v20190116.models.UpdateSAMLProviderRequest`
         :rtype: :class:`tencentcloud.cam.v20190116.models.UpdateSAMLProviderResponse`
 
@@ -1204,7 +1204,7 @@ class CamClient(AbstractClient):
     def UpdateUser(self, request):
         """更新子用户
 
-        :param request: 调用UpdateUser所需参数的结构体。
+        :param request: Request instance for UpdateUser.
         :type request: :class:`tencentcloud.cam.v20190116.models.UpdateUserRequest`
         :rtype: :class:`tencentcloud.cam.v20190116.models.UpdateUserResponse`
 

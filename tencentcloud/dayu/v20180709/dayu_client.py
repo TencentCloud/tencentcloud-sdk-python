@@ -28,7 +28,7 @@ class DayuClient(AbstractClient):
     def CreateBasicDDoSAlarmThreshold(self, request):
         """设置基础防护的DDoS告警阈值，只支持基础防护产品
 
-        :param request: 调用CreateBasicDDoSAlarmThreshold所需参数的结构体。
+        :param request: Request instance for CreateBasicDDoSAlarmThreshold.
         :type request: :class:`tencentcloud.dayu.v20180709.models.CreateBasicDDoSAlarmThresholdRequest`
         :rtype: :class:`tencentcloud.dayu.v20180709.models.CreateBasicDDoSAlarmThresholdResponse`
 
@@ -56,7 +56,7 @@ class DayuClient(AbstractClient):
     def CreateCCSelfDefinePolicy(self, request):
         """创建CC自定义策略
 
-        :param request: 调用CreateCCSelfDefinePolicy所需参数的结构体。
+        :param request: Request instance for CreateCCSelfDefinePolicy.
         :type request: :class:`tencentcloud.dayu.v20180709.models.CreateCCSelfDefinePolicyRequest`
         :rtype: :class:`tencentcloud.dayu.v20180709.models.CreateCCSelfDefinePolicyResponse`
 
@@ -84,7 +84,7 @@ class DayuClient(AbstractClient):
     def CreateDDoSPolicy(self, request):
         """添加DDoS高级策略
 
-        :param request: 调用CreateDDoSPolicy所需参数的结构体。
+        :param request: Request instance for CreateDDoSPolicy.
         :type request: :class:`tencentcloud.dayu.v20180709.models.CreateDDoSPolicyRequest`
         :rtype: :class:`tencentcloud.dayu.v20180709.models.CreateDDoSPolicyResponse`
 
@@ -112,7 +112,7 @@ class DayuClient(AbstractClient):
     def CreateDDoSPolicyCase(self, request):
         """添加策略场景
 
-        :param request: 调用CreateDDoSPolicyCase所需参数的结构体。
+        :param request: Request instance for CreateDDoSPolicyCase.
         :type request: :class:`tencentcloud.dayu.v20180709.models.CreateDDoSPolicyCaseRequest`
         :rtype: :class:`tencentcloud.dayu.v20180709.models.CreateDDoSPolicyCaseResponse`
 
@@ -140,7 +140,7 @@ class DayuClient(AbstractClient):
     def CreateInstanceName(self, request):
         """资源实例重命名，支持独享包、共享包、高防IP、高防IP专业版、棋牌盾；
 
-        :param request: 调用CreateInstanceName所需参数的结构体。
+        :param request: Request instance for CreateInstanceName.
         :type request: :class:`tencentcloud.dayu.v20180709.models.CreateInstanceNameRequest`
         :rtype: :class:`tencentcloud.dayu.v20180709.models.CreateInstanceNameResponse`
 
@@ -168,7 +168,7 @@ class DayuClient(AbstractClient):
     def CreateL4HealthConfig(self, request):
         """上传四层健康检查配置
 
-        :param request: 调用CreateL4HealthConfig所需参数的结构体。
+        :param request: Request instance for CreateL4HealthConfig.
         :type request: :class:`tencentcloud.dayu.v20180709.models.CreateL4HealthConfigRequest`
         :rtype: :class:`tencentcloud.dayu.v20180709.models.CreateL4HealthConfigResponse`
 
@@ -196,7 +196,7 @@ class DayuClient(AbstractClient):
     def CreateL4Rules(self, request):
         """添加L4转发规则
 
-        :param request: 调用CreateL4Rules所需参数的结构体。
+        :param request: Request instance for CreateL4Rules.
         :type request: :class:`tencentcloud.dayu.v20180709.models.CreateL4RulesRequest`
         :rtype: :class:`tencentcloud.dayu.v20180709.models.CreateL4RulesResponse`
 
@@ -224,7 +224,7 @@ class DayuClient(AbstractClient):
     def CreateL7CCRule(self, request):
         """支持读取，添加，删除7层CC自定义规则
 
-        :param request: 调用CreateL7CCRule所需参数的结构体。
+        :param request: Request instance for CreateL7CCRule.
         :type request: :class:`tencentcloud.dayu.v20180709.models.CreateL7CCRuleRequest`
         :rtype: :class:`tencentcloud.dayu.v20180709.models.CreateL7CCRuleResponse`
 
@@ -252,7 +252,7 @@ class DayuClient(AbstractClient):
     def CreateL7HealthConfig(self, request):
         """上传七层健康检查配置
 
-        :param request: 调用CreateL7HealthConfig所需参数的结构体。
+        :param request: Request instance for CreateL7HealthConfig.
         :type request: :class:`tencentcloud.dayu.v20180709.models.CreateL7HealthConfigRequest`
         :rtype: :class:`tencentcloud.dayu.v20180709.models.CreateL7HealthConfigResponse`
 
@@ -280,7 +280,7 @@ class DayuClient(AbstractClient):
     def CreateL7RuleCert(self, request):
         """配置7层转发规则的证书
 
-        :param request: 调用CreateL7RuleCert所需参数的结构体。
+        :param request: Request instance for CreateL7RuleCert.
         :type request: :class:`tencentcloud.dayu.v20180709.models.CreateL7RuleCertRequest`
         :rtype: :class:`tencentcloud.dayu.v20180709.models.CreateL7RuleCertResponse`
 
@@ -308,7 +308,7 @@ class DayuClient(AbstractClient):
     def CreateL7Rules(self, request):
         """添加7层(网站)转发规则
 
-        :param request: 调用CreateL7Rules所需参数的结构体。
+        :param request: Request instance for CreateL7Rules.
         :type request: :class:`tencentcloud.dayu.v20180709.models.CreateL7RulesRequest`
         :rtype: :class:`tencentcloud.dayu.v20180709.models.CreateL7RulesResponse`
 
@@ -336,7 +336,7 @@ class DayuClient(AbstractClient):
     def CreateL7RulesUpload(self, request):
         """批量上传7层转发规则
 
-        :param request: 调用CreateL7RulesUpload所需参数的结构体。
+        :param request: Request instance for CreateL7RulesUpload.
         :type request: :class:`tencentcloud.dayu.v20180709.models.CreateL7RulesUploadRequest`
         :rtype: :class:`tencentcloud.dayu.v20180709.models.CreateL7RulesUploadResponse`
 
@@ -364,7 +364,7 @@ class DayuClient(AbstractClient):
     def CreateUnblockIp(self, request):
         """IP解封操作
 
-        :param request: 调用CreateUnblockIp所需参数的结构体。
+        :param request: Request instance for CreateUnblockIp.
         :type request: :class:`tencentcloud.dayu.v20180709.models.CreateUnblockIpRequest`
         :rtype: :class:`tencentcloud.dayu.v20180709.models.CreateUnblockIpResponse`
 
@@ -392,7 +392,7 @@ class DayuClient(AbstractClient):
     def DeleteCCSelfDefinePolicy(self, request):
         """删除CC自定义策略
 
-        :param request: 调用DeleteCCSelfDefinePolicy所需参数的结构体。
+        :param request: Request instance for DeleteCCSelfDefinePolicy.
         :type request: :class:`tencentcloud.dayu.v20180709.models.DeleteCCSelfDefinePolicyRequest`
         :rtype: :class:`tencentcloud.dayu.v20180709.models.DeleteCCSelfDefinePolicyResponse`
 
@@ -420,7 +420,7 @@ class DayuClient(AbstractClient):
     def DeleteDDoSPolicy(self, request):
         """删除DDoS高级策略
 
-        :param request: 调用DeleteDDoSPolicy所需参数的结构体。
+        :param request: Request instance for DeleteDDoSPolicy.
         :type request: :class:`tencentcloud.dayu.v20180709.models.DeleteDDoSPolicyRequest`
         :rtype: :class:`tencentcloud.dayu.v20180709.models.DeleteDDoSPolicyResponse`
 
@@ -448,7 +448,7 @@ class DayuClient(AbstractClient):
     def DeleteDDoSPolicyCase(self, request):
         """删除策略场景
 
-        :param request: 调用DeleteDDoSPolicyCase所需参数的结构体。
+        :param request: Request instance for DeleteDDoSPolicyCase.
         :type request: :class:`tencentcloud.dayu.v20180709.models.DeleteDDoSPolicyCaseRequest`
         :rtype: :class:`tencentcloud.dayu.v20180709.models.DeleteDDoSPolicyCaseResponse`
 
@@ -476,7 +476,7 @@ class DayuClient(AbstractClient):
     def DeleteL4Rules(self, request):
         """删除四层转发规则
 
-        :param request: 调用DeleteL4Rules所需参数的结构体。
+        :param request: Request instance for DeleteL4Rules.
         :type request: :class:`tencentcloud.dayu.v20180709.models.DeleteL4RulesRequest`
         :rtype: :class:`tencentcloud.dayu.v20180709.models.DeleteL4RulesResponse`
 
@@ -504,7 +504,7 @@ class DayuClient(AbstractClient):
     def DeleteL7Rules(self, request):
         """删除七层转发规则
 
-        :param request: 调用DeleteL7Rules所需参数的结构体。
+        :param request: Request instance for DeleteL7Rules.
         :type request: :class:`tencentcloud.dayu.v20180709.models.DeleteL7RulesRequest`
         :rtype: :class:`tencentcloud.dayu.v20180709.models.DeleteL7RulesResponse`
 
@@ -532,7 +532,7 @@ class DayuClient(AbstractClient):
     def DescribeActionLog(self, request):
         """获取操作日志
 
-        :param request: 调用DescribeActionLog所需参数的结构体。
+        :param request: Request instance for DescribeActionLog.
         :type request: :class:`tencentcloud.dayu.v20180709.models.DescribeActionLogRequest`
         :rtype: :class:`tencentcloud.dayu.v20180709.models.DescribeActionLogResponse`
 
@@ -560,7 +560,7 @@ class DayuClient(AbstractClient):
     def DescribeBaradData(self, request):
         """为大禹子产品提供从巴拉多获取指标统计数据的接口
 
-        :param request: 调用DescribeBaradData所需参数的结构体。
+        :param request: Request instance for DescribeBaradData.
         :type request: :class:`tencentcloud.dayu.v20180709.models.DescribeBaradDataRequest`
         :rtype: :class:`tencentcloud.dayu.v20180709.models.DescribeBaradDataResponse`
 
@@ -588,7 +588,7 @@ class DayuClient(AbstractClient):
     def DescribeBasicDeviceThreshold(self, request):
         """获取基础防护黑洞阈值
 
-        :param request: 调用DescribeBasicDeviceThreshold所需参数的结构体。
+        :param request: Request instance for DescribeBasicDeviceThreshold.
         :type request: :class:`tencentcloud.dayu.v20180709.models.DescribeBasicDeviceThresholdRequest`
         :rtype: :class:`tencentcloud.dayu.v20180709.models.DescribeBasicDeviceThresholdResponse`
 
@@ -616,7 +616,7 @@ class DayuClient(AbstractClient):
     def DescribeCCEvList(self, request):
         """获取CC攻击事件列表
 
-        :param request: 调用DescribeCCEvList所需参数的结构体。
+        :param request: Request instance for DescribeCCEvList.
         :type request: :class:`tencentcloud.dayu.v20180709.models.DescribeCCEvListRequest`
         :rtype: :class:`tencentcloud.dayu.v20180709.models.DescribeCCEvListResponse`
 
@@ -644,7 +644,7 @@ class DayuClient(AbstractClient):
     def DescribeCCIpAllowDeny(self, request):
         """获取CC的IP黑白名单
 
-        :param request: 调用DescribeCCIpAllowDeny所需参数的结构体。
+        :param request: Request instance for DescribeCCIpAllowDeny.
         :type request: :class:`tencentcloud.dayu.v20180709.models.DescribeCCIpAllowDenyRequest`
         :rtype: :class:`tencentcloud.dayu.v20180709.models.DescribeCCIpAllowDenyResponse`
 
@@ -672,7 +672,7 @@ class DayuClient(AbstractClient):
     def DescribeCCTrend(self, request):
         """获取CC攻击指标数据，包括总请求峰值(QPS)和攻击请求(QPS)
 
-        :param request: 调用DescribeCCTrend所需参数的结构体。
+        :param request: Request instance for DescribeCCTrend.
         :type request: :class:`tencentcloud.dayu.v20180709.models.DescribeCCTrendRequest`
         :rtype: :class:`tencentcloud.dayu.v20180709.models.DescribeCCTrendResponse`
 
@@ -700,7 +700,7 @@ class DayuClient(AbstractClient):
     def DescribeCCUrlAllow(self, request):
         """获取CC的Url白名单
 
-        :param request: 调用DescribeCCUrlAllow所需参数的结构体。
+        :param request: Request instance for DescribeCCUrlAllow.
         :type request: :class:`tencentcloud.dayu.v20180709.models.DescribeCCUrlAllowRequest`
         :rtype: :class:`tencentcloud.dayu.v20180709.models.DescribeCCUrlAllowResponse`
 
@@ -728,7 +728,7 @@ class DayuClient(AbstractClient):
     def DescribeDDoSCount(self, request):
         """获取DDoS攻击占比分析
 
-        :param request: 调用DescribeDDoSCount所需参数的结构体。
+        :param request: Request instance for DescribeDDoSCount.
         :type request: :class:`tencentcloud.dayu.v20180709.models.DescribeDDoSCountRequest`
         :rtype: :class:`tencentcloud.dayu.v20180709.models.DescribeDDoSCountResponse`
 
@@ -756,7 +756,7 @@ class DayuClient(AbstractClient):
     def DescribeDDoSDefendStatus(self, request):
         """获取DDoS防护状态（临时关闭状态），支持产品：基础防护，独享包，共享包，高防IP，高防IP专业版；调用此接口是获取当前是否有设置临时关闭DDoS防护状态，如果有设置会返回临时关闭的时长等参数。
 
-        :param request: 调用DescribeDDoSDefendStatus所需参数的结构体。
+        :param request: Request instance for DescribeDDoSDefendStatus.
         :type request: :class:`tencentcloud.dayu.v20180709.models.DescribeDDoSDefendStatusRequest`
         :rtype: :class:`tencentcloud.dayu.v20180709.models.DescribeDDoSDefendStatusResponse`
 
@@ -784,7 +784,7 @@ class DayuClient(AbstractClient):
     def DescribeDDoSEvInfo(self, request):
         """获取DDoS攻击事件详情
 
-        :param request: 调用DescribeDDoSEvInfo所需参数的结构体。
+        :param request: Request instance for DescribeDDoSEvInfo.
         :type request: :class:`tencentcloud.dayu.v20180709.models.DescribeDDoSEvInfoRequest`
         :rtype: :class:`tencentcloud.dayu.v20180709.models.DescribeDDoSEvInfoResponse`
 
@@ -812,7 +812,7 @@ class DayuClient(AbstractClient):
     def DescribeDDoSEvList(self, request):
         """获取DDoS攻击事件列表
 
-        :param request: 调用DescribeDDoSEvList所需参数的结构体。
+        :param request: Request instance for DescribeDDoSEvList.
         :type request: :class:`tencentcloud.dayu.v20180709.models.DescribeDDoSEvListRequest`
         :rtype: :class:`tencentcloud.dayu.v20180709.models.DescribeDDoSEvListResponse`
 
@@ -840,7 +840,7 @@ class DayuClient(AbstractClient):
     def DescribeDDoSIpLog(self, request):
         """获取DDoSIP攻击日志
 
-        :param request: 调用DescribeDDoSIpLog所需参数的结构体。
+        :param request: Request instance for DescribeDDoSIpLog.
         :type request: :class:`tencentcloud.dayu.v20180709.models.DescribeDDoSIpLogRequest`
         :rtype: :class:`tencentcloud.dayu.v20180709.models.DescribeDDoSIpLogResponse`
 
@@ -868,7 +868,7 @@ class DayuClient(AbstractClient):
     def DescribeDDoSNetCount(self, request):
         """获取高防IP专业版资源的DDoS攻击占比分析
 
-        :param request: 调用DescribeDDoSNetCount所需参数的结构体。
+        :param request: Request instance for DescribeDDoSNetCount.
         :type request: :class:`tencentcloud.dayu.v20180709.models.DescribeDDoSNetCountRequest`
         :rtype: :class:`tencentcloud.dayu.v20180709.models.DescribeDDoSNetCountResponse`
 
@@ -896,7 +896,7 @@ class DayuClient(AbstractClient):
     def DescribeDDoSNetEvInfo(self, request):
         """获取高防IP专业版资源的DDoS攻击事件详情
 
-        :param request: 调用DescribeDDoSNetEvInfo所需参数的结构体。
+        :param request: Request instance for DescribeDDoSNetEvInfo.
         :type request: :class:`tencentcloud.dayu.v20180709.models.DescribeDDoSNetEvInfoRequest`
         :rtype: :class:`tencentcloud.dayu.v20180709.models.DescribeDDoSNetEvInfoResponse`
 
@@ -924,7 +924,7 @@ class DayuClient(AbstractClient):
     def DescribeDDoSNetEvList(self, request):
         """获取高防IP专业版资源的DDoS攻击事件列表
 
-        :param request: 调用DescribeDDoSNetEvList所需参数的结构体。
+        :param request: Request instance for DescribeDDoSNetEvList.
         :type request: :class:`tencentcloud.dayu.v20180709.models.DescribeDDoSNetEvListRequest`
         :rtype: :class:`tencentcloud.dayu.v20180709.models.DescribeDDoSNetEvListResponse`
 
@@ -952,7 +952,7 @@ class DayuClient(AbstractClient):
     def DescribeDDoSNetIpLog(self, request):
         """获取高防IP专业版资源的DDoSIP攻击日志
 
-        :param request: 调用DescribeDDoSNetIpLog所需参数的结构体。
+        :param request: Request instance for DescribeDDoSNetIpLog.
         :type request: :class:`tencentcloud.dayu.v20180709.models.DescribeDDoSNetIpLogRequest`
         :rtype: :class:`tencentcloud.dayu.v20180709.models.DescribeDDoSNetIpLogResponse`
 
@@ -980,7 +980,7 @@ class DayuClient(AbstractClient):
     def DescribeDDoSNetTrend(self, request):
         """获取高防IP专业版资源的DDoS攻击指标数据
 
-        :param request: 调用DescribeDDoSNetTrend所需参数的结构体。
+        :param request: Request instance for DescribeDDoSNetTrend.
         :type request: :class:`tencentcloud.dayu.v20180709.models.DescribeDDoSNetTrendRequest`
         :rtype: :class:`tencentcloud.dayu.v20180709.models.DescribeDDoSNetTrendResponse`
 
@@ -1008,7 +1008,7 @@ class DayuClient(AbstractClient):
     def DescribeDDoSPolicy(self, request):
         """获取DDoS高级策略
 
-        :param request: 调用DescribeDDoSPolicy所需参数的结构体。
+        :param request: Request instance for DescribeDDoSPolicy.
         :type request: :class:`tencentcloud.dayu.v20180709.models.DescribeDDoSPolicyRequest`
         :rtype: :class:`tencentcloud.dayu.v20180709.models.DescribeDDoSPolicyResponse`
 
@@ -1036,7 +1036,7 @@ class DayuClient(AbstractClient):
     def DescribeDDoSTrend(self, request):
         """获取DDoS攻击流量带宽和攻击包速率数据
 
-        :param request: 调用DescribeDDoSTrend所需参数的结构体。
+        :param request: Request instance for DescribeDDoSTrend.
         :type request: :class:`tencentcloud.dayu.v20180709.models.DescribeDDoSTrendRequest`
         :rtype: :class:`tencentcloud.dayu.v20180709.models.DescribeDDoSTrendResponse`
 
@@ -1064,7 +1064,7 @@ class DayuClient(AbstractClient):
     def DescribeDDoSUsedStatis(self, request):
         """统计用户的高防资源的使用天数和DDoS攻击防护次数
 
-        :param request: 调用DescribeDDoSUsedStatis所需参数的结构体。
+        :param request: Request instance for DescribeDDoSUsedStatis.
         :type request: :class:`tencentcloud.dayu.v20180709.models.DescribeDDoSUsedStatisRequest`
         :rtype: :class:`tencentcloud.dayu.v20180709.models.DescribeDDoSUsedStatisResponse`
 
@@ -1092,7 +1092,7 @@ class DayuClient(AbstractClient):
     def DescribeIPProductInfo(self, request):
         """获取独享包或共享包IP对应的云资产信息，只支持独享包和共享包的IP
 
-        :param request: 调用DescribeIPProductInfo所需参数的结构体。
+        :param request: Request instance for DescribeIPProductInfo.
         :type request: :class:`tencentcloud.dayu.v20180709.models.DescribeIPProductInfoRequest`
         :rtype: :class:`tencentcloud.dayu.v20180709.models.DescribeIPProductInfoResponse`
 
@@ -1120,7 +1120,7 @@ class DayuClient(AbstractClient):
     def DescribeInsurePacks(self, request):
         """获取保险包套餐列表
 
-        :param request: 调用DescribeInsurePacks所需参数的结构体。
+        :param request: Request instance for DescribeInsurePacks.
         :type request: :class:`tencentcloud.dayu.v20180709.models.DescribeInsurePacksRequest`
         :rtype: :class:`tencentcloud.dayu.v20180709.models.DescribeInsurePacksResponse`
 
@@ -1148,7 +1148,7 @@ class DayuClient(AbstractClient):
     def DescribeIpBlockList(self, request):
         """获取IP封堵列表
 
-        :param request: 调用DescribeIpBlockList所需参数的结构体。
+        :param request: Request instance for DescribeIpBlockList.
         :type request: :class:`tencentcloud.dayu.v20180709.models.DescribeIpBlockListRequest`
         :rtype: :class:`tencentcloud.dayu.v20180709.models.DescribeIpBlockListResponse`
 
@@ -1176,7 +1176,7 @@ class DayuClient(AbstractClient):
     def DescribeIpUnBlockList(self, request):
         """获取IP解封记录
 
-        :param request: 调用DescribeIpUnBlockList所需参数的结构体。
+        :param request: Request instance for DescribeIpUnBlockList.
         :type request: :class:`tencentcloud.dayu.v20180709.models.DescribeIpUnBlockListRequest`
         :rtype: :class:`tencentcloud.dayu.v20180709.models.DescribeIpUnBlockListResponse`
 
@@ -1204,7 +1204,7 @@ class DayuClient(AbstractClient):
     def DescribeL4HealthConfig(self, request):
         """导出四层健康检查配置
 
-        :param request: 调用DescribeL4HealthConfig所需参数的结构体。
+        :param request: Request instance for DescribeL4HealthConfig.
         :type request: :class:`tencentcloud.dayu.v20180709.models.DescribeL4HealthConfigRequest`
         :rtype: :class:`tencentcloud.dayu.v20180709.models.DescribeL4HealthConfigResponse`
 
@@ -1232,7 +1232,7 @@ class DayuClient(AbstractClient):
     def DescribeL4RulesErrHealth(self, request):
         """获取L4转发规则健康检查异常结果
 
-        :param request: 调用DescribeL4RulesErrHealth所需参数的结构体。
+        :param request: Request instance for DescribeL4RulesErrHealth.
         :type request: :class:`tencentcloud.dayu.v20180709.models.DescribeL4RulesErrHealthRequest`
         :rtype: :class:`tencentcloud.dayu.v20180709.models.DescribeL4RulesErrHealthResponse`
 
@@ -1260,7 +1260,7 @@ class DayuClient(AbstractClient):
     def DescribeL7HealthConfig(self, request):
         """导出七层健康检查配置
 
-        :param request: 调用DescribeL7HealthConfig所需参数的结构体。
+        :param request: Request instance for DescribeL7HealthConfig.
         :type request: :class:`tencentcloud.dayu.v20180709.models.DescribeL7HealthConfigRequest`
         :rtype: :class:`tencentcloud.dayu.v20180709.models.DescribeL7HealthConfigResponse`
 
@@ -1288,7 +1288,7 @@ class DayuClient(AbstractClient):
     def DescribePackIndex(self, request):
         """获取产品总览统计，支持高防包、高防IP、高防IP专业版、棋牌盾
 
-        :param request: 调用DescribePackIndex所需参数的结构体。
+        :param request: Request instance for DescribePackIndex.
         :type request: :class:`tencentcloud.dayu.v20180709.models.DescribePackIndexRequest`
         :rtype: :class:`tencentcloud.dayu.v20180709.models.DescribePackIndexResponse`
 
@@ -1316,7 +1316,7 @@ class DayuClient(AbstractClient):
     def DescribePcap(self, request):
         """下载攻击事件的pcap包
 
-        :param request: 调用DescribePcap所需参数的结构体。
+        :param request: Request instance for DescribePcap.
         :type request: :class:`tencentcloud.dayu.v20180709.models.DescribePcapRequest`
         :rtype: :class:`tencentcloud.dayu.v20180709.models.DescribePcapResponse`
 
@@ -1344,7 +1344,7 @@ class DayuClient(AbstractClient):
     def DescribePolicyCase(self, request):
         """获取策略场景
 
-        :param request: 调用DescribePolicyCase所需参数的结构体。
+        :param request: Request instance for DescribePolicyCase.
         :type request: :class:`tencentcloud.dayu.v20180709.models.DescribePolicyCaseRequest`
         :rtype: :class:`tencentcloud.dayu.v20180709.models.DescribePolicyCaseResponse`
 
@@ -1372,7 +1372,7 @@ class DayuClient(AbstractClient):
     def DescribeResIpList(self, request):
         """获取资源的IP列表
 
-        :param request: 调用DescribeResIpList所需参数的结构体。
+        :param request: Request instance for DescribeResIpList.
         :type request: :class:`tencentcloud.dayu.v20180709.models.DescribeResIpListRequest`
         :rtype: :class:`tencentcloud.dayu.v20180709.models.DescribeResIpListResponse`
 
@@ -1400,7 +1400,7 @@ class DayuClient(AbstractClient):
     def DescribeResourceList(self, request):
         """获取资源列表
 
-        :param request: 调用DescribeResourceList所需参数的结构体。
+        :param request: Request instance for DescribeResourceList.
         :type request: :class:`tencentcloud.dayu.v20180709.models.DescribeResourceListRequest`
         :rtype: :class:`tencentcloud.dayu.v20180709.models.DescribeResourceListResponse`
 
@@ -1428,7 +1428,7 @@ class DayuClient(AbstractClient):
     def DescribeRuleSets(self, request):
         """获取资源的规则数
 
-        :param request: 调用DescribeRuleSets所需参数的结构体。
+        :param request: Request instance for DescribeRuleSets.
         :type request: :class:`tencentcloud.dayu.v20180709.models.DescribeRuleSetsRequest`
         :rtype: :class:`tencentcloud.dayu.v20180709.models.DescribeRuleSetsResponse`
 
@@ -1456,7 +1456,7 @@ class DayuClient(AbstractClient):
     def DescribeSecIndex(self, request):
         """获取本月安全统计
 
-        :param request: 调用DescribeSecIndex所需参数的结构体。
+        :param request: Request instance for DescribeSecIndex.
         :type request: :class:`tencentcloud.dayu.v20180709.models.DescribeSecIndexRequest`
         :rtype: :class:`tencentcloud.dayu.v20180709.models.DescribeSecIndexResponse`
 
@@ -1484,7 +1484,7 @@ class DayuClient(AbstractClient):
     def DescribeSourceIpSegment(self, request):
         """获取回源IP段，支持的产品：高防IP，高防IP专业版，棋牌盾；
 
-        :param request: 调用DescribeSourceIpSegment所需参数的结构体。
+        :param request: Request instance for DescribeSourceIpSegment.
         :type request: :class:`tencentcloud.dayu.v20180709.models.DescribeSourceIpSegmentRequest`
         :rtype: :class:`tencentcloud.dayu.v20180709.models.DescribeSourceIpSegmentResponse`
 
@@ -1512,7 +1512,7 @@ class DayuClient(AbstractClient):
     def DescribeTransmitStatis(self, request):
         """获取业务转发统计数据，支持转发流量和转发包速率
 
-        :param request: 调用DescribeTransmitStatis所需参数的结构体。
+        :param request: Request instance for DescribeTransmitStatis.
         :type request: :class:`tencentcloud.dayu.v20180709.models.DescribeTransmitStatisRequest`
         :rtype: :class:`tencentcloud.dayu.v20180709.models.DescribeTransmitStatisResponse`
 
@@ -1540,7 +1540,7 @@ class DayuClient(AbstractClient):
     def DescribeUnBlockStatis(self, request):
         """获取黑洞解封次数
 
-        :param request: 调用DescribeUnBlockStatis所需参数的结构体。
+        :param request: Request instance for DescribeUnBlockStatis.
         :type request: :class:`tencentcloud.dayu.v20180709.models.DescribeUnBlockStatisRequest`
         :rtype: :class:`tencentcloud.dayu.v20180709.models.DescribeUnBlockStatisResponse`
 
@@ -1568,7 +1568,7 @@ class DayuClient(AbstractClient):
     def DescribleL4Rules(self, request):
         """获取四层转发规则
 
-        :param request: 调用DescribleL4Rules所需参数的结构体。
+        :param request: Request instance for DescribleL4Rules.
         :type request: :class:`tencentcloud.dayu.v20180709.models.DescribleL4RulesRequest`
         :rtype: :class:`tencentcloud.dayu.v20180709.models.DescribleL4RulesResponse`
 
@@ -1596,7 +1596,7 @@ class DayuClient(AbstractClient):
     def DescribleL7Rules(self, request):
         """获取七层转发规则
 
-        :param request: 调用DescribleL7Rules所需参数的结构体。
+        :param request: Request instance for DescribleL7Rules.
         :type request: :class:`tencentcloud.dayu.v20180709.models.DescribleL7RulesRequest`
         :rtype: :class:`tencentcloud.dayu.v20180709.models.DescribleL7RulesResponse`
 
@@ -1624,7 +1624,7 @@ class DayuClient(AbstractClient):
     def DescribleRegionCount(self, request):
         """获取地域的资源实例数
 
-        :param request: 调用DescribleRegionCount所需参数的结构体。
+        :param request: Request instance for DescribleRegionCount.
         :type request: :class:`tencentcloud.dayu.v20180709.models.DescribleRegionCountRequest`
         :rtype: :class:`tencentcloud.dayu.v20180709.models.DescribleRegionCountResponse`
 
@@ -1652,7 +1652,7 @@ class DayuClient(AbstractClient):
     def ModifyCCHostProtection(self, request):
         """开启或关闭CC域名防护
 
-        :param request: 调用ModifyCCHostProtection所需参数的结构体。
+        :param request: Request instance for ModifyCCHostProtection.
         :type request: :class:`tencentcloud.dayu.v20180709.models.ModifyCCHostProtectionRequest`
         :rtype: :class:`tencentcloud.dayu.v20180709.models.ModifyCCHostProtectionResponse`
 
@@ -1680,7 +1680,7 @@ class DayuClient(AbstractClient):
     def ModifyCCIpAllowDeny(self, request):
         """添加或删除CC的IP黑白名单
 
-        :param request: 调用ModifyCCIpAllowDeny所需参数的结构体。
+        :param request: Request instance for ModifyCCIpAllowDeny.
         :type request: :class:`tencentcloud.dayu.v20180709.models.ModifyCCIpAllowDenyRequest`
         :rtype: :class:`tencentcloud.dayu.v20180709.models.ModifyCCIpAllowDenyResponse`
 
@@ -1708,7 +1708,7 @@ class DayuClient(AbstractClient):
     def ModifyCCLevel(self, request):
         """修改CC防护等级
 
-        :param request: 调用ModifyCCLevel所需参数的结构体。
+        :param request: Request instance for ModifyCCLevel.
         :type request: :class:`tencentcloud.dayu.v20180709.models.ModifyCCLevelRequest`
         :rtype: :class:`tencentcloud.dayu.v20180709.models.ModifyCCLevelResponse`
 
@@ -1736,7 +1736,7 @@ class DayuClient(AbstractClient):
     def ModifyCCPolicySwitch(self, request):
         """修改CC自定义策略开关
 
-        :param request: 调用ModifyCCPolicySwitch所需参数的结构体。
+        :param request: Request instance for ModifyCCPolicySwitch.
         :type request: :class:`tencentcloud.dayu.v20180709.models.ModifyCCPolicySwitchRequest`
         :rtype: :class:`tencentcloud.dayu.v20180709.models.ModifyCCPolicySwitchResponse`
 
@@ -1764,7 +1764,7 @@ class DayuClient(AbstractClient):
     def ModifyCCSelfDefinePolicy(self, request):
         """修改CC自定义策略
 
-        :param request: 调用ModifyCCSelfDefinePolicy所需参数的结构体。
+        :param request: Request instance for ModifyCCSelfDefinePolicy.
         :type request: :class:`tencentcloud.dayu.v20180709.models.ModifyCCSelfDefinePolicyRequest`
         :rtype: :class:`tencentcloud.dayu.v20180709.models.ModifyCCSelfDefinePolicyResponse`
 
@@ -1792,7 +1792,7 @@ class DayuClient(AbstractClient):
     def ModifyCCThreshold(self, request):
         """修改CC的防护阈值
 
-        :param request: 调用ModifyCCThreshold所需参数的结构体。
+        :param request: Request instance for ModifyCCThreshold.
         :type request: :class:`tencentcloud.dayu.v20180709.models.ModifyCCThresholdRequest`
         :rtype: :class:`tencentcloud.dayu.v20180709.models.ModifyCCThresholdResponse`
 
@@ -1820,7 +1820,7 @@ class DayuClient(AbstractClient):
     def ModifyCCUrlAllow(self, request):
         """添加或删除CC的URL白名单
 
-        :param request: 调用ModifyCCUrlAllow所需参数的结构体。
+        :param request: Request instance for ModifyCCUrlAllow.
         :type request: :class:`tencentcloud.dayu.v20180709.models.ModifyCCUrlAllowRequest`
         :rtype: :class:`tencentcloud.dayu.v20180709.models.ModifyCCUrlAllowResponse`
 
@@ -1848,7 +1848,7 @@ class DayuClient(AbstractClient):
     def ModifyDDoSAIStatus(self, request):
         """读取或修改DDoS的AI防护状态
 
-        :param request: 调用ModifyDDoSAIStatus所需参数的结构体。
+        :param request: Request instance for ModifyDDoSAIStatus.
         :type request: :class:`tencentcloud.dayu.v20180709.models.ModifyDDoSAIStatusRequest`
         :rtype: :class:`tencentcloud.dayu.v20180709.models.ModifyDDoSAIStatusResponse`
 
@@ -1876,7 +1876,7 @@ class DayuClient(AbstractClient):
     def ModifyDDoSDefendStatus(self, request):
         """开启或关闭DDoS防护状态，调用此接口允许临时关闭DDoS防护一段时间，等时间到了会自动开启DDoS防护；
 
-        :param request: 调用ModifyDDoSDefendStatus所需参数的结构体。
+        :param request: Request instance for ModifyDDoSDefendStatus.
         :type request: :class:`tencentcloud.dayu.v20180709.models.ModifyDDoSDefendStatusRequest`
         :rtype: :class:`tencentcloud.dayu.v20180709.models.ModifyDDoSDefendStatusResponse`
 
@@ -1904,7 +1904,7 @@ class DayuClient(AbstractClient):
     def ModifyDDoSLevel(self, request):
         """读取或修改DDoS的防护等级
 
-        :param request: 调用ModifyDDoSLevel所需参数的结构体。
+        :param request: Request instance for ModifyDDoSLevel.
         :type request: :class:`tencentcloud.dayu.v20180709.models.ModifyDDoSLevelRequest`
         :rtype: :class:`tencentcloud.dayu.v20180709.models.ModifyDDoSLevelResponse`
 
@@ -1932,7 +1932,7 @@ class DayuClient(AbstractClient):
     def ModifyDDoSPolicy(self, request):
         """修改DDoS高级策略
 
-        :param request: 调用ModifyDDoSPolicy所需参数的结构体。
+        :param request: Request instance for ModifyDDoSPolicy.
         :type request: :class:`tencentcloud.dayu.v20180709.models.ModifyDDoSPolicyRequest`
         :rtype: :class:`tencentcloud.dayu.v20180709.models.ModifyDDoSPolicyResponse`
 
@@ -1960,7 +1960,7 @@ class DayuClient(AbstractClient):
     def ModifyDDoSPolicyCase(self, request):
         """修改策略场景
 
-        :param request: 调用ModifyDDoSPolicyCase所需参数的结构体。
+        :param request: Request instance for ModifyDDoSPolicyCase.
         :type request: :class:`tencentcloud.dayu.v20180709.models.ModifyDDoSPolicyCaseRequest`
         :rtype: :class:`tencentcloud.dayu.v20180709.models.ModifyDDoSPolicyCaseResponse`
 
@@ -1988,7 +1988,7 @@ class DayuClient(AbstractClient):
     def ModifyDDoSPolicyName(self, request):
         """修改DDoS高级策略名称
 
-        :param request: 调用ModifyDDoSPolicyName所需参数的结构体。
+        :param request: Request instance for ModifyDDoSPolicyName.
         :type request: :class:`tencentcloud.dayu.v20180709.models.ModifyDDoSPolicyNameRequest`
         :rtype: :class:`tencentcloud.dayu.v20180709.models.ModifyDDoSPolicyNameResponse`
 
@@ -2016,7 +2016,7 @@ class DayuClient(AbstractClient):
     def ModifyDDoSSwitch(self, request):
         """开启或关闭DDoS防护，只支持基础防护产品；
 
-        :param request: 调用ModifyDDoSSwitch所需参数的结构体。
+        :param request: Request instance for ModifyDDoSSwitch.
         :type request: :class:`tencentcloud.dayu.v20180709.models.ModifyDDoSSwitchRequest`
         :rtype: :class:`tencentcloud.dayu.v20180709.models.ModifyDDoSSwitchResponse`
 
@@ -2044,7 +2044,7 @@ class DayuClient(AbstractClient):
     def ModifyDDoSThreshold(self, request):
         """修改DDoS清洗阈值
 
-        :param request: 调用ModifyDDoSThreshold所需参数的结构体。
+        :param request: Request instance for ModifyDDoSThreshold.
         :type request: :class:`tencentcloud.dayu.v20180709.models.ModifyDDoSThresholdRequest`
         :rtype: :class:`tencentcloud.dayu.v20180709.models.ModifyDDoSThresholdResponse`
 
@@ -2072,7 +2072,7 @@ class DayuClient(AbstractClient):
     def ModifyDDoSWaterKey(self, request):
         """支持水印密钥的添加，删除，开启，关闭
 
-        :param request: 调用ModifyDDoSWaterKey所需参数的结构体。
+        :param request: Request instance for ModifyDDoSWaterKey.
         :type request: :class:`tencentcloud.dayu.v20180709.models.ModifyDDoSWaterKeyRequest`
         :rtype: :class:`tencentcloud.dayu.v20180709.models.ModifyDDoSWaterKeyResponse`
 
@@ -2100,7 +2100,7 @@ class DayuClient(AbstractClient):
     def ModifyElasticLimit(self, request):
         """修改弹性防护阈值
 
-        :param request: 调用ModifyElasticLimit所需参数的结构体。
+        :param request: Request instance for ModifyElasticLimit.
         :type request: :class:`tencentcloud.dayu.v20180709.models.ModifyElasticLimitRequest`
         :rtype: :class:`tencentcloud.dayu.v20180709.models.ModifyElasticLimitResponse`
 
@@ -2128,7 +2128,7 @@ class DayuClient(AbstractClient):
     def ModifyL4Health(self, request):
         """修改L4转发规则健康检查参数，支持的子产品：高防IP、高防IP专业版
 
-        :param request: 调用ModifyL4Health所需参数的结构体。
+        :param request: Request instance for ModifyL4Health.
         :type request: :class:`tencentcloud.dayu.v20180709.models.ModifyL4HealthRequest`
         :rtype: :class:`tencentcloud.dayu.v20180709.models.ModifyL4HealthResponse`
 
@@ -2156,7 +2156,7 @@ class DayuClient(AbstractClient):
     def ModifyL4KeepTime(self, request):
         """修改L4转发规则的会话保持，支持的子产品：高防IP、高防IP专业版
 
-        :param request: 调用ModifyL4KeepTime所需参数的结构体。
+        :param request: Request instance for ModifyL4KeepTime.
         :type request: :class:`tencentcloud.dayu.v20180709.models.ModifyL4KeepTimeRequest`
         :rtype: :class:`tencentcloud.dayu.v20180709.models.ModifyL4KeepTimeResponse`
 
@@ -2184,7 +2184,7 @@ class DayuClient(AbstractClient):
     def ModifyL4Rules(self, request):
         """修改L4转发规则
 
-        :param request: 调用ModifyL4Rules所需参数的结构体。
+        :param request: Request instance for ModifyL4Rules.
         :type request: :class:`tencentcloud.dayu.v20180709.models.ModifyL4RulesRequest`
         :rtype: :class:`tencentcloud.dayu.v20180709.models.ModifyL4RulesResponse`
 
@@ -2212,7 +2212,7 @@ class DayuClient(AbstractClient):
     def ModifyL7Rules(self, request):
         """修改L7转发规则
 
-        :param request: 调用ModifyL7Rules所需参数的结构体。
+        :param request: Request instance for ModifyL7Rules.
         :type request: :class:`tencentcloud.dayu.v20180709.models.ModifyL7RulesRequest`
         :rtype: :class:`tencentcloud.dayu.v20180709.models.ModifyL7RulesResponse`
 
@@ -2240,7 +2240,7 @@ class DayuClient(AbstractClient):
     def ModifyResBindDDoSPolicy(self, request):
         """资源实例绑定DDoS高级策略
 
-        :param request: 调用ModifyResBindDDoSPolicy所需参数的结构体。
+        :param request: Request instance for ModifyResBindDDoSPolicy.
         :type request: :class:`tencentcloud.dayu.v20180709.models.ModifyResBindDDoSPolicyRequest`
         :rtype: :class:`tencentcloud.dayu.v20180709.models.ModifyResBindDDoSPolicyResponse`
 
@@ -2268,7 +2268,7 @@ class DayuClient(AbstractClient):
     def ModifyResourceRenewFlag(self, request):
         """修改资源自动续费标记
 
-        :param request: 调用ModifyResourceRenewFlag所需参数的结构体。
+        :param request: Request instance for ModifyResourceRenewFlag.
         :type request: :class:`tencentcloud.dayu.v20180709.models.ModifyResourceRenewFlagRequest`
         :rtype: :class:`tencentcloud.dayu.v20180709.models.ModifyResourceRenewFlagResponse`
 

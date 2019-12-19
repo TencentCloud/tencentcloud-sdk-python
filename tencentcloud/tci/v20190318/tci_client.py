@@ -28,7 +28,7 @@ class TciClient(AbstractClient):
     def AIAssistant(self, request):
         """提供 AI 助教基础版本功能接口
 
-        :param request: 调用AIAssistant所需参数的结构体。
+        :param request: Request instance for AIAssistant.
         :type request: :class:`tencentcloud.tci.v20190318.models.AIAssistantRequest`
         :rtype: :class:`tencentcloud.tci.v20190318.models.AIAssistantResponse`
 
@@ -56,7 +56,7 @@ class TciClient(AbstractClient):
     def CancelTask(self, request):
         """用于取消已经提交的任务，目前只支持图像任务。
 
-        :param request: 调用CancelTask所需参数的结构体。
+        :param request: Request instance for CancelTask.
         :type request: :class:`tencentcloud.tci.v20190318.models.CancelTaskRequest`
         :rtype: :class:`tencentcloud.tci.v20190318.models.CancelTaskResponse`
 
@@ -84,7 +84,7 @@ class TciClient(AbstractClient):
     def CheckFacePhoto(self, request):
         """检查人脸图片是否合法
 
-        :param request: 调用CheckFacePhoto所需参数的结构体。
+        :param request: Request instance for CheckFacePhoto.
         :type request: :class:`tencentcloud.tci.v20190318.models.CheckFacePhotoRequest`
         :rtype: :class:`tencentcloud.tci.v20190318.models.CheckFacePhotoResponse`
 
@@ -112,7 +112,7 @@ class TciClient(AbstractClient):
     def CreateFace(self, request):
         """创建人脸
 
-        :param request: 调用CreateFace所需参数的结构体。
+        :param request: Request instance for CreateFace.
         :type request: :class:`tencentcloud.tci.v20190318.models.CreateFaceRequest`
         :rtype: :class:`tencentcloud.tci.v20190318.models.CreateFaceResponse`
 
@@ -140,7 +140,7 @@ class TciClient(AbstractClient):
     def CreateLibrary(self, request):
         """创建人员库
 
-        :param request: 调用CreateLibrary所需参数的结构体。
+        :param request: Request instance for CreateLibrary.
         :type request: :class:`tencentcloud.tci.v20190318.models.CreateLibraryRequest`
         :rtype: :class:`tencentcloud.tci.v20190318.models.CreateLibraryResponse`
 
@@ -168,7 +168,7 @@ class TciClient(AbstractClient):
     def CreatePerson(self, request):
         """创建人员
 
-        :param request: 调用CreatePerson所需参数的结构体。
+        :param request: Request instance for CreatePerson.
         :type request: :class:`tencentcloud.tci.v20190318.models.CreatePersonRequest`
         :rtype: :class:`tencentcloud.tci.v20190318.models.CreatePersonResponse`
 
@@ -196,7 +196,7 @@ class TciClient(AbstractClient):
     def CreateVocab(self, request):
         """创建词汇
 
-        :param request: 调用CreateVocab所需参数的结构体。
+        :param request: Request instance for CreateVocab.
         :type request: :class:`tencentcloud.tci.v20190318.models.CreateVocabRequest`
         :rtype: :class:`tencentcloud.tci.v20190318.models.CreateVocabResponse`
 
@@ -224,7 +224,7 @@ class TciClient(AbstractClient):
     def CreateVocabLib(self, request):
         """建立词汇库
 
-        :param request: 调用CreateVocabLib所需参数的结构体。
+        :param request: Request instance for CreateVocabLib.
         :type request: :class:`tencentcloud.tci.v20190318.models.CreateVocabLibRequest`
         :rtype: :class:`tencentcloud.tci.v20190318.models.CreateVocabLibResponse`
 
@@ -252,7 +252,7 @@ class TciClient(AbstractClient):
     def DeleteFace(self, request):
         """删除人脸
 
-        :param request: 调用DeleteFace所需参数的结构体。
+        :param request: Request instance for DeleteFace.
         :type request: :class:`tencentcloud.tci.v20190318.models.DeleteFaceRequest`
         :rtype: :class:`tencentcloud.tci.v20190318.models.DeleteFaceResponse`
 
@@ -280,7 +280,7 @@ class TciClient(AbstractClient):
     def DeleteLibrary(self, request):
         """删除人员库
 
-        :param request: 调用DeleteLibrary所需参数的结构体。
+        :param request: Request instance for DeleteLibrary.
         :type request: :class:`tencentcloud.tci.v20190318.models.DeleteLibraryRequest`
         :rtype: :class:`tencentcloud.tci.v20190318.models.DeleteLibraryResponse`
 
@@ -308,7 +308,7 @@ class TciClient(AbstractClient):
     def DeletePerson(self, request):
         """删除人员
 
-        :param request: 调用DeletePerson所需参数的结构体。
+        :param request: Request instance for DeletePerson.
         :type request: :class:`tencentcloud.tci.v20190318.models.DeletePersonRequest`
         :rtype: :class:`tencentcloud.tci.v20190318.models.DeletePersonResponse`
 
@@ -336,7 +336,7 @@ class TciClient(AbstractClient):
     def DeleteVocab(self, request):
         """删除词汇
 
-        :param request: 调用DeleteVocab所需参数的结构体。
+        :param request: Request instance for DeleteVocab.
         :type request: :class:`tencentcloud.tci.v20190318.models.DeleteVocabRequest`
         :rtype: :class:`tencentcloud.tci.v20190318.models.DeleteVocabResponse`
 
@@ -364,7 +364,7 @@ class TciClient(AbstractClient):
     def DeleteVocabLib(self, request):
         """删除词汇库
 
-        :param request: 调用DeleteVocabLib所需参数的结构体。
+        :param request: Request instance for DeleteVocabLib.
         :type request: :class:`tencentcloud.tci.v20190318.models.DeleteVocabLibRequest`
         :rtype: :class:`tencentcloud.tci.v20190318.models.DeleteVocabLibResponse`
 
@@ -392,7 +392,7 @@ class TciClient(AbstractClient):
     def DescribeAITaskResult(self, request):
         """获取标准化接口任务结果
 
-        :param request: 调用DescribeAITaskResult所需参数的结构体。
+        :param request: Request instance for DescribeAITaskResult.
         :type request: :class:`tencentcloud.tci.v20190318.models.DescribeAITaskResultRequest`
         :rtype: :class:`tencentcloud.tci.v20190318.models.DescribeAITaskResultResponse`
 
@@ -420,7 +420,7 @@ class TciClient(AbstractClient):
     def DescribeAttendanceResult(self, request):
         """人脸考勤查询结果
 
-        :param request: 调用DescribeAttendanceResult所需参数的结构体。
+        :param request: Request instance for DescribeAttendanceResult.
         :type request: :class:`tencentcloud.tci.v20190318.models.DescribeAttendanceResultRequest`
         :rtype: :class:`tencentcloud.tci.v20190318.models.DescribeAttendanceResultResponse`
 
@@ -448,7 +448,7 @@ class TciClient(AbstractClient):
     def DescribeAudioTask(self, request):
         """音频评估任务信息查询接口，异步查询客户提交的请求的结果。
 
-        :param request: 调用DescribeAudioTask所需参数的结构体。
+        :param request: Request instance for DescribeAudioTask.
         :type request: :class:`tencentcloud.tci.v20190318.models.DescribeAudioTaskRequest`
         :rtype: :class:`tencentcloud.tci.v20190318.models.DescribeAudioTaskResponse`
 
@@ -476,7 +476,7 @@ class TciClient(AbstractClient):
     def DescribeConversationTask(self, request):
         """音频对话任务评估任务信息查询接口，异步查询客户提交的请求的结果。
 
-        :param request: 调用DescribeConversationTask所需参数的结构体。
+        :param request: Request instance for DescribeConversationTask.
         :type request: :class:`tencentcloud.tci.v20190318.models.DescribeConversationTaskRequest`
         :rtype: :class:`tencentcloud.tci.v20190318.models.DescribeConversationTaskResponse`
 
@@ -504,7 +504,7 @@ class TciClient(AbstractClient):
     def DescribeHighlightResult(self, request):
         """视频精彩集锦结果查询接口，异步查询客户提交的请求的结果。
 
-        :param request: 调用DescribeHighlightResult所需参数的结构体。
+        :param request: Request instance for DescribeHighlightResult.
         :type request: :class:`tencentcloud.tci.v20190318.models.DescribeHighlightResultRequest`
         :rtype: :class:`tencentcloud.tci.v20190318.models.DescribeHighlightResultResponse`
 
@@ -532,7 +532,7 @@ class TciClient(AbstractClient):
     def DescribeImageTask(self, request):
         """拉取任务详情
 
-        :param request: 调用DescribeImageTask所需参数的结构体。
+        :param request: Request instance for DescribeImageTask.
         :type request: :class:`tencentcloud.tci.v20190318.models.DescribeImageTaskRequest`
         :rtype: :class:`tencentcloud.tci.v20190318.models.DescribeImageTaskResponse`
 
@@ -560,7 +560,7 @@ class TciClient(AbstractClient):
     def DescribeImageTaskStatistic(self, request):
         """获取图像任务统计信息
 
-        :param request: 调用DescribeImageTaskStatistic所需参数的结构体。
+        :param request: Request instance for DescribeImageTaskStatistic.
         :type request: :class:`tencentcloud.tci.v20190318.models.DescribeImageTaskStatisticRequest`
         :rtype: :class:`tencentcloud.tci.v20190318.models.DescribeImageTaskStatisticResponse`
 
@@ -588,7 +588,7 @@ class TciClient(AbstractClient):
     def DescribeLibraries(self, request):
         """获取人员库列表
 
-        :param request: 调用DescribeLibraries所需参数的结构体。
+        :param request: Request instance for DescribeLibraries.
         :type request: :class:`tencentcloud.tci.v20190318.models.DescribeLibrariesRequest`
         :rtype: :class:`tencentcloud.tci.v20190318.models.DescribeLibrariesResponse`
 
@@ -616,7 +616,7 @@ class TciClient(AbstractClient):
     def DescribePerson(self, request):
         """获取人员详情
 
-        :param request: 调用DescribePerson所需参数的结构体。
+        :param request: Request instance for DescribePerson.
         :type request: :class:`tencentcloud.tci.v20190318.models.DescribePersonRequest`
         :rtype: :class:`tencentcloud.tci.v20190318.models.DescribePersonResponse`
 
@@ -644,7 +644,7 @@ class TciClient(AbstractClient):
     def DescribePersons(self, request):
         """拉取人员列表
 
-        :param request: 调用DescribePersons所需参数的结构体。
+        :param request: Request instance for DescribePersons.
         :type request: :class:`tencentcloud.tci.v20190318.models.DescribePersonsRequest`
         :rtype: :class:`tencentcloud.tci.v20190318.models.DescribePersonsResponse`
 
@@ -672,7 +672,7 @@ class TciClient(AbstractClient):
     def DescribeVocab(self, request):
         """查询词汇
 
-        :param request: 调用DescribeVocab所需参数的结构体。
+        :param request: Request instance for DescribeVocab.
         :type request: :class:`tencentcloud.tci.v20190318.models.DescribeVocabRequest`
         :rtype: :class:`tencentcloud.tci.v20190318.models.DescribeVocabResponse`
 
@@ -700,7 +700,7 @@ class TciClient(AbstractClient):
     def DescribeVocabLib(self, request):
         """查询词汇库
 
-        :param request: 调用DescribeVocabLib所需参数的结构体。
+        :param request: Request instance for DescribeVocabLib.
         :type request: :class:`tencentcloud.tci.v20190318.models.DescribeVocabLibRequest`
         :rtype: :class:`tencentcloud.tci.v20190318.models.DescribeVocabLibResponse`
 
@@ -728,7 +728,7 @@ class TciClient(AbstractClient):
     def ModifyLibrary(self, request):
         """修改人员库信息
 
-        :param request: 调用ModifyLibrary所需参数的结构体。
+        :param request: Request instance for ModifyLibrary.
         :type request: :class:`tencentcloud.tci.v20190318.models.ModifyLibraryRequest`
         :rtype: :class:`tencentcloud.tci.v20190318.models.ModifyLibraryResponse`
 
@@ -756,7 +756,7 @@ class TciClient(AbstractClient):
     def ModifyPerson(self, request):
         """修改人员信息
 
-        :param request: 调用ModifyPerson所需参数的结构体。
+        :param request: Request instance for ModifyPerson.
         :type request: :class:`tencentcloud.tci.v20190318.models.ModifyPersonRequest`
         :rtype: :class:`tencentcloud.tci.v20190318.models.ModifyPersonResponse`
 
@@ -784,7 +784,7 @@ class TciClient(AbstractClient):
     def SubmitAudioTask(self, request):
         """音频任务提交接口
 
-        :param request: 调用SubmitAudioTask所需参数的结构体。
+        :param request: Request instance for SubmitAudioTask.
         :type request: :class:`tencentcloud.tci.v20190318.models.SubmitAudioTaskRequest`
         :rtype: :class:`tencentcloud.tci.v20190318.models.SubmitAudioTaskResponse`
 
@@ -825,7 +825,7 @@ class TciClient(AbstractClient):
          | timestamp | uint64 | 识别到人脸的绝对时间戳，单位ms |
          | image_url | string | 识别到人脸的事件抓图的下载地址，不长期保存，需要请及时下载 |
 
-        :param request: 调用SubmitCheckAttendanceTask所需参数的结构体。
+        :param request: Request instance for SubmitCheckAttendanceTask.
         :type request: :class:`tencentcloud.tci.v20190318.models.SubmitCheckAttendanceTaskRequest`
         :rtype: :class:`tencentcloud.tci.v20190318.models.SubmitCheckAttendanceTaskResponse`
 
@@ -853,7 +853,7 @@ class TciClient(AbstractClient):
     def SubmitCheckAttendanceTaskPlus(self, request):
         """支持多路视频流，提交高级人员考勤任务
 
-        :param request: 调用SubmitCheckAttendanceTaskPlus所需参数的结构体。
+        :param request: Request instance for SubmitCheckAttendanceTaskPlus.
         :type request: :class:`tencentcloud.tci.v20190318.models.SubmitCheckAttendanceTaskPlusRequest`
         :rtype: :class:`tencentcloud.tci.v20190318.models.SubmitCheckAttendanceTaskPlusResponse`
 
@@ -881,7 +881,7 @@ class TciClient(AbstractClient):
     def SubmitConversationTask(self, request):
         """对话任务分析接口
 
-        :param request: 调用SubmitConversationTask所需参数的结构体。
+        :param request: Request instance for SubmitConversationTask.
         :type request: :class:`tencentcloud.tci.v20190318.models.SubmitConversationTaskRequest`
         :rtype: :class:`tencentcloud.tci.v20190318.models.SubmitConversationTaskResponse`
 
@@ -910,7 +910,7 @@ class TciClient(AbstractClient):
         """发起双路视频生成精彩集锦接口。该接口可以通过客户传入的学生音视频及老师视频两路Url，自动生成一堂课程的精彩集锦。需要通过DescribeHighlightResult
         接口获取生成结果。
 
-        :param request: 调用SubmitDoubleVideoHighlights所需参数的结构体。
+        :param request: Request instance for SubmitDoubleVideoHighlights.
         :type request: :class:`tencentcloud.tci.v20190318.models.SubmitDoubleVideoHighlightsRequest`
         :rtype: :class:`tencentcloud.tci.v20190318.models.SubmitDoubleVideoHighlightsResponse`
 
@@ -944,7 +944,7 @@ class TciClient(AbstractClient):
 
         **结果查询方式：**图像任务直接返回结果，点播及直播任务通过DescribeAITaskResult查询结果。
 
-        :param request: 调用SubmitFullBodyClassTask所需参数的结构体。
+        :param request: Request instance for SubmitFullBodyClassTask.
         :type request: :class:`tencentcloud.tci.v20190318.models.SubmitFullBodyClassTaskRequest`
         :rtype: :class:`tencentcloud.tci.v20190318.models.SubmitFullBodyClassTaskResponse`
 
@@ -972,7 +972,7 @@ class TciClient(AbstractClient):
     def SubmitHighlights(self, request):
         """发起视频生成精彩集锦接口。该接口可以通过客户传入的课程音频数据及相关策略（如微笑抽取，专注抽取等），自动生成一堂课程的精彩集锦。需要通过QueryHighlightResult接口获取生成结果。
 
-        :param request: 调用SubmitHighlights所需参数的结构体。
+        :param request: Request instance for SubmitHighlights.
         :type request: :class:`tencentcloud.tci.v20190318.models.SubmitHighlightsRequest`
         :rtype: :class:`tencentcloud.tci.v20190318.models.SubmitHighlightsResponse`
 
@@ -1000,7 +1000,7 @@ class TciClient(AbstractClient):
     def SubmitImageTask(self, request):
         """提交图像分析任务
 
-        :param request: 调用SubmitImageTask所需参数的结构体。
+        :param request: Request instance for SubmitImageTask.
         :type request: :class:`tencentcloud.tci.v20190318.models.SubmitImageTaskRequest`
         :rtype: :class:`tencentcloud.tci.v20190318.models.SubmitImageTaskResponse`
 
@@ -1028,7 +1028,7 @@ class TciClient(AbstractClient):
     def SubmitImageTaskPlus(self, request):
         """高级图像分析任务，开放了图像任务里的所有开关，可以根据场景深度定制图像分析任务。支持的图像类别有，图片链接、图片二进制数据、点播链接和直播链接。
 
-        :param request: 调用SubmitImageTaskPlus所需参数的结构体。
+        :param request: Request instance for SubmitImageTaskPlus.
         :type request: :class:`tencentcloud.tci.v20190318.models.SubmitImageTaskPlusRequest`
         :rtype: :class:`tencentcloud.tci.v20190318.models.SubmitImageTaskPlusResponse`
 
@@ -1063,7 +1063,7 @@ class TciClient(AbstractClient):
 
         **结果查询方式：**图像任务直接返回结果，点播及直播任务通过DescribeAITaskResult查询结果。
 
-        :param request: 调用SubmitOneByOneClassTask所需参数的结构体。
+        :param request: Request instance for SubmitOneByOneClassTask.
         :type request: :class:`tencentcloud.tci.v20190318.models.SubmitOneByOneClassTaskRequest`
         :rtype: :class:`tencentcloud.tci.v20190318.models.SubmitOneByOneClassTaskResponse`
 
@@ -1098,7 +1098,7 @@ class TciClient(AbstractClient):
 
         **结果查询方式：**图像任务直接返回结果，点播及直播任务通过DescribeAITaskResult查询结果。
 
-        :param request: 调用SubmitOpenClassTask所需参数的结构体。
+        :param request: Request instance for SubmitOpenClassTask.
         :type request: :class:`tencentcloud.tci.v20190318.models.SubmitOpenClassTaskRequest`
         :rtype: :class:`tencentcloud.tci.v20190318.models.SubmitOpenClassTaskResponse`
 
@@ -1132,7 +1132,7 @@ class TciClient(AbstractClient):
 
         **结果查询方式：**图像任务直接返回结果，点播及直播任务通过DescribeAITaskResult查询结果。
 
-        :param request: 调用SubmitPartialBodyClassTask所需参数的结构体。
+        :param request: Request instance for SubmitPartialBodyClassTask.
         :type request: :class:`tencentcloud.tci.v20190318.models.SubmitPartialBodyClassTaskRequest`
         :rtype: :class:`tencentcloud.tci.v20190318.models.SubmitPartialBodyClassTaskResponse`
 
@@ -1168,7 +1168,7 @@ class TciClient(AbstractClient):
         **结果查询方式：**图像任务直接返回结果，点播及直播任务通过DescribeAITaskResult查询结果。
 
 
-        :param request: 调用SubmitTraditionalClassTask所需参数的结构体。
+        :param request: Request instance for SubmitTraditionalClassTask.
         :type request: :class:`tencentcloud.tci.v20190318.models.SubmitTraditionalClassTaskRequest`
         :rtype: :class:`tencentcloud.tci.v20190318.models.SubmitTraditionalClassTaskResponse`
 
@@ -1196,7 +1196,7 @@ class TciClient(AbstractClient):
     def TransmitAudioStream(self, request):
         """分析音频信息
 
-        :param request: 调用TransmitAudioStream所需参数的结构体。
+        :param request: Request instance for TransmitAudioStream.
         :type request: :class:`tencentcloud.tci.v20190318.models.TransmitAudioStreamRequest`
         :rtype: :class:`tencentcloud.tci.v20190318.models.TransmitAudioStreamResponse`
 

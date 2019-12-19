@@ -28,7 +28,7 @@ class WssClient(AbstractClient):
     def DeleteCert(self, request):
         """本接口（DeleteCert）用于删除证书。
 
-        :param request: 调用DeleteCert所需参数的结构体。
+        :param request: Request instance for DeleteCert.
         :type request: :class:`tencentcloud.wss.v20180426.models.DeleteCertRequest`
         :rtype: :class:`tencentcloud.wss.v20180426.models.DeleteCertResponse`
 
@@ -56,7 +56,7 @@ class WssClient(AbstractClient):
     def DescribeCertList(self, request):
         """本接口(DescribeCertList)用于获取证书列表。
 
-        :param request: 调用DescribeCertList所需参数的结构体。
+        :param request: Request instance for DescribeCertList.
         :type request: :class:`tencentcloud.wss.v20180426.models.DescribeCertListRequest`
         :rtype: :class:`tencentcloud.wss.v20180426.models.DescribeCertListResponse`
 
@@ -84,7 +84,7 @@ class WssClient(AbstractClient):
     def UploadCert(self, request):
         """本接口（UploadCert）用于上传证书。
 
-        :param request: 调用UploadCert所需参数的结构体。
+        :param request: Request instance for UploadCert.
         :type request: :class:`tencentcloud.wss.v20180426.models.UploadCertRequest`
         :rtype: :class:`tencentcloud.wss.v20180426.models.UploadCertResponse`
 

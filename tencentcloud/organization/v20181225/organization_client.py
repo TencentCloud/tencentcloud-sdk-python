@@ -28,7 +28,7 @@ class OrganizationClient(AbstractClient):
     def AcceptOrganizationInvitation(self, request):
         """接受加入企业组织邀请
 
-        :param request: 调用AcceptOrganizationInvitation所需参数的结构体。
+        :param request: Request instance for AcceptOrganizationInvitation.
         :type request: :class:`tencentcloud.organization.v20181225.models.AcceptOrganizationInvitationRequest`
         :rtype: :class:`tencentcloud.organization.v20181225.models.AcceptOrganizationInvitationResponse`
 
@@ -56,7 +56,7 @@ class OrganizationClient(AbstractClient):
     def AddOrganizationNode(self, request):
         """添加企业组织单元
 
-        :param request: 调用AddOrganizationNode所需参数的结构体。
+        :param request: Request instance for AddOrganizationNode.
         :type request: :class:`tencentcloud.organization.v20181225.models.AddOrganizationNodeRequest`
         :rtype: :class:`tencentcloud.organization.v20181225.models.AddOrganizationNodeResponse`
 
@@ -84,7 +84,7 @@ class OrganizationClient(AbstractClient):
     def CancelOrganizationInvitation(self, request):
         """取消企业组织邀请
 
-        :param request: 调用CancelOrganizationInvitation所需参数的结构体。
+        :param request: Request instance for CancelOrganizationInvitation.
         :type request: :class:`tencentcloud.organization.v20181225.models.CancelOrganizationInvitationRequest`
         :rtype: :class:`tencentcloud.organization.v20181225.models.CancelOrganizationInvitationResponse`
 
@@ -112,7 +112,7 @@ class OrganizationClient(AbstractClient):
     def CreateOrganization(self, request):
         """创建企业组织
 
-        :param request: 调用CreateOrganization所需参数的结构体。
+        :param request: Request instance for CreateOrganization.
         :type request: :class:`tencentcloud.organization.v20181225.models.CreateOrganizationRequest`
         :rtype: :class:`tencentcloud.organization.v20181225.models.CreateOrganizationResponse`
 
@@ -140,7 +140,7 @@ class OrganizationClient(AbstractClient):
     def DeleteOrganization(self, request):
         """删除企业组织
 
-        :param request: 调用DeleteOrganization所需参数的结构体。
+        :param request: Request instance for DeleteOrganization.
         :type request: :class:`tencentcloud.organization.v20181225.models.DeleteOrganizationRequest`
         :rtype: :class:`tencentcloud.organization.v20181225.models.DeleteOrganizationResponse`
 
@@ -168,7 +168,7 @@ class OrganizationClient(AbstractClient):
     def DeleteOrganizationMemberFromNode(self, request):
         """删除企业组织成员
 
-        :param request: 调用DeleteOrganizationMemberFromNode所需参数的结构体。
+        :param request: Request instance for DeleteOrganizationMemberFromNode.
         :type request: :class:`tencentcloud.organization.v20181225.models.DeleteOrganizationMemberFromNodeRequest`
         :rtype: :class:`tencentcloud.organization.v20181225.models.DeleteOrganizationMemberFromNodeResponse`
 
@@ -196,7 +196,7 @@ class OrganizationClient(AbstractClient):
     def DeleteOrganizationMembers(self, request):
         """批量删除企业组织成员
 
-        :param request: 调用DeleteOrganizationMembers所需参数的结构体。
+        :param request: Request instance for DeleteOrganizationMembers.
         :type request: :class:`tencentcloud.organization.v20181225.models.DeleteOrganizationMembersRequest`
         :rtype: :class:`tencentcloud.organization.v20181225.models.DeleteOrganizationMembersResponse`
 
@@ -224,7 +224,7 @@ class OrganizationClient(AbstractClient):
     def DeleteOrganizationNodes(self, request):
         """批量删除企业组织单元
 
-        :param request: 调用DeleteOrganizationNodes所需参数的结构体。
+        :param request: Request instance for DeleteOrganizationNodes.
         :type request: :class:`tencentcloud.organization.v20181225.models.DeleteOrganizationNodesRequest`
         :rtype: :class:`tencentcloud.organization.v20181225.models.DeleteOrganizationNodesResponse`
 
@@ -252,7 +252,7 @@ class OrganizationClient(AbstractClient):
     def DenyOrganizationInvitation(self, request):
         """拒绝企业组织邀请
 
-        :param request: 调用DenyOrganizationInvitation所需参数的结构体。
+        :param request: Request instance for DenyOrganizationInvitation.
         :type request: :class:`tencentcloud.organization.v20181225.models.DenyOrganizationInvitationRequest`
         :rtype: :class:`tencentcloud.organization.v20181225.models.DenyOrganizationInvitationResponse`
 
@@ -280,7 +280,7 @@ class OrganizationClient(AbstractClient):
     def GetOrganization(self, request):
         """获取企业组织信息
 
-        :param request: 调用GetOrganization所需参数的结构体。
+        :param request: Request instance for GetOrganization.
         :type request: :class:`tencentcloud.organization.v20181225.models.GetOrganizationRequest`
         :rtype: :class:`tencentcloud.organization.v20181225.models.GetOrganizationResponse`
 
@@ -308,7 +308,7 @@ class OrganizationClient(AbstractClient):
     def GetOrganizationMember(self, request):
         """获取企业组织成员
 
-        :param request: 调用GetOrganizationMember所需参数的结构体。
+        :param request: Request instance for GetOrganizationMember.
         :type request: :class:`tencentcloud.organization.v20181225.models.GetOrganizationMemberRequest`
         :rtype: :class:`tencentcloud.organization.v20181225.models.GetOrganizationMemberResponse`
 
@@ -336,7 +336,7 @@ class OrganizationClient(AbstractClient):
     def ListOrganizationInvitations(self, request):
         """获取邀请信息列表
 
-        :param request: 调用ListOrganizationInvitations所需参数的结构体。
+        :param request: Request instance for ListOrganizationInvitations.
         :type request: :class:`tencentcloud.organization.v20181225.models.ListOrganizationInvitationsRequest`
         :rtype: :class:`tencentcloud.organization.v20181225.models.ListOrganizationInvitationsResponse`
 
@@ -364,7 +364,7 @@ class OrganizationClient(AbstractClient):
     def ListOrganizationMembers(self, request):
         """获取企业组织成员列表
 
-        :param request: 调用ListOrganizationMembers所需参数的结构体。
+        :param request: Request instance for ListOrganizationMembers.
         :type request: :class:`tencentcloud.organization.v20181225.models.ListOrganizationMembersRequest`
         :rtype: :class:`tencentcloud.organization.v20181225.models.ListOrganizationMembersResponse`
 
@@ -392,7 +392,7 @@ class OrganizationClient(AbstractClient):
     def ListOrganizationNodeMembers(self, request):
         """获取企业组织单元成员列表
 
-        :param request: 调用ListOrganizationNodeMembers所需参数的结构体。
+        :param request: Request instance for ListOrganizationNodeMembers.
         :type request: :class:`tencentcloud.organization.v20181225.models.ListOrganizationNodeMembersRequest`
         :rtype: :class:`tencentcloud.organization.v20181225.models.ListOrganizationNodeMembersResponse`
 
@@ -420,7 +420,7 @@ class OrganizationClient(AbstractClient):
     def ListOrganizationNodes(self, request):
         """获取企业组织单元列表
 
-        :param request: 调用ListOrganizationNodes所需参数的结构体。
+        :param request: Request instance for ListOrganizationNodes.
         :type request: :class:`tencentcloud.organization.v20181225.models.ListOrganizationNodesRequest`
         :rtype: :class:`tencentcloud.organization.v20181225.models.ListOrganizationNodesResponse`
 
@@ -448,7 +448,7 @@ class OrganizationClient(AbstractClient):
     def MoveOrganizationMembersToNode(self, request):
         """移动成员到指定企业组织单元
 
-        :param request: 调用MoveOrganizationMembersToNode所需参数的结构体。
+        :param request: Request instance for MoveOrganizationMembersToNode.
         :type request: :class:`tencentcloud.organization.v20181225.models.MoveOrganizationMembersToNodeRequest`
         :rtype: :class:`tencentcloud.organization.v20181225.models.MoveOrganizationMembersToNodeResponse`
 
@@ -476,7 +476,7 @@ class OrganizationClient(AbstractClient):
     def QuitOrganization(self, request):
         """退出企业组织
 
-        :param request: 调用QuitOrganization所需参数的结构体。
+        :param request: Request instance for QuitOrganization.
         :type request: :class:`tencentcloud.organization.v20181225.models.QuitOrganizationRequest`
         :rtype: :class:`tencentcloud.organization.v20181225.models.QuitOrganizationResponse`
 
@@ -504,7 +504,7 @@ class OrganizationClient(AbstractClient):
     def SendOrganizationInvitation(self, request):
         """发送企业组织邀请
 
-        :param request: 调用SendOrganizationInvitation所需参数的结构体。
+        :param request: Request instance for SendOrganizationInvitation.
         :type request: :class:`tencentcloud.organization.v20181225.models.SendOrganizationInvitationRequest`
         :rtype: :class:`tencentcloud.organization.v20181225.models.SendOrganizationInvitationResponse`
 
@@ -532,7 +532,7 @@ class OrganizationClient(AbstractClient):
     def UpdateOrganizationMember(self, request):
         """更新企业成员信息
 
-        :param request: 调用UpdateOrganizationMember所需参数的结构体。
+        :param request: Request instance for UpdateOrganizationMember.
         :type request: :class:`tencentcloud.organization.v20181225.models.UpdateOrganizationMemberRequest`
         :rtype: :class:`tencentcloud.organization.v20181225.models.UpdateOrganizationMemberResponse`
 
@@ -560,7 +560,7 @@ class OrganizationClient(AbstractClient):
     def UpdateOrganizationNode(self, request):
         """更新企业组织单元
 
-        :param request: 调用UpdateOrganizationNode所需参数的结构体。
+        :param request: Request instance for UpdateOrganizationNode.
         :type request: :class:`tencentcloud.organization.v20181225.models.UpdateOrganizationNodeRequest`
         :rtype: :class:`tencentcloud.organization.v20181225.models.UpdateOrganizationNodeResponse`
 

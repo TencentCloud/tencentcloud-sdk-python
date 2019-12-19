@@ -28,7 +28,7 @@ class MonitorClient(AbstractClient):
     def DescribeBaseMetrics(self, request):
         """获取基础指标详情
 
-        :param request: 调用DescribeBaseMetrics所需参数的结构体。
+        :param request: Request instance for DescribeBaseMetrics.
         :type request: :class:`tencentcloud.monitor.v20180724.models.DescribeBaseMetricsRequest`
         :rtype: :class:`tencentcloud.monitor.v20180724.models.DescribeBaseMetricsResponse`
 
@@ -58,7 +58,7 @@ class MonitorClient(AbstractClient):
         接口调用频率限制为：20次/秒，1200次/分钟。
         若您需要调用的指标、对象较多，可能存在因限频出现拉取失败的情况，建议尽量将请求按时间维度均摊。
 
-        :param request: 调用GetMonitorData所需参数的结构体。
+        :param request: Request instance for GetMonitorData.
         :type request: :class:`tencentcloud.monitor.v20180724.models.GetMonitorDataRequest`
         :rtype: :class:`tencentcloud.monitor.v20180724.models.GetMonitorDataResponse`
 
@@ -92,7 +92,7 @@ class MonitorClient(AbstractClient):
         时间戳时间范围必须为当前时间到 300 秒前之间。
         同一 IP 指标对的数据需按分钟先后顺序上报。
 
-        :param request: 调用PutMonitorData所需参数的结构体。
+        :param request: Request instance for PutMonitorData.
         :type request: :class:`tencentcloud.monitor.v20180724.models.PutMonitorDataRequest`
         :rtype: :class:`tencentcloud.monitor.v20180724.models.PutMonitorDataResponse`
 

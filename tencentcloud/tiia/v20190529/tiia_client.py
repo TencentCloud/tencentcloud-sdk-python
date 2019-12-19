@@ -30,7 +30,7 @@ class TiiaClient(AbstractClient):
         >
         - 公共参数中的签名方式必须指定为V3版本，即配置SignatureMethod参数为TC3-HMAC-SHA256。
 
-        :param request: 调用AssessQuality所需参数的结构体。
+        :param request: Request instance for AssessQuality.
         :type request: :class:`tencentcloud.tiia.v20190529.models.AssessQualityRequest`
         :rtype: :class:`tencentcloud.tiia.v20190529.models.AssessQualityResponse`
 
@@ -62,7 +62,7 @@ class TiiaClient(AbstractClient):
         >
         - 公共参数中的签名方式必须指定为V3版本，即配置SignatureMethod参数为TC3-HMAC-SHA256。
 
-        :param request: 调用CropImage所需参数的结构体。
+        :param request: Request instance for CropImage.
         :type request: :class:`tencentcloud.tiia.v20190529.models.CropImageRequest`
         :rtype: :class:`tencentcloud.tiia.v20190529.models.CropImageResponse`
 
@@ -94,7 +94,7 @@ class TiiaClient(AbstractClient):
         >
         - 公共参数中的签名方式必须指定为V3版本，即配置SignatureMethod参数为TC3-HMAC-SHA256。
 
-        :param request: 调用DetectCelebrity所需参数的结构体。
+        :param request: Request instance for DetectCelebrity.
         :type request: :class:`tencentcloud.tiia.v20190529.models.DetectCelebrityRequest`
         :rtype: :class:`tencentcloud.tiia.v20190529.models.DetectCelebrityResponse`
 
@@ -126,7 +126,7 @@ class TiiaClient(AbstractClient):
         >
         - 公共参数中的签名方式必须指定为V3版本，即配置SignatureMethod参数为TC3-HMAC-SHA256。
 
-        :param request: 调用DetectDisgust所需参数的结构体。
+        :param request: Request instance for DetectDisgust.
         :type request: :class:`tencentcloud.tiia.v20190529.models.DetectDisgustRequest`
         :rtype: :class:`tencentcloud.tiia.v20190529.models.DetectDisgustResponse`
 
@@ -172,7 +172,7 @@ class TiiaClient(AbstractClient):
         >
         - 公共参数中的签名方式必须指定为V3版本，即配置SignatureMethod参数为TC3-HMAC-SHA256。
 
-        :param request: 调用DetectLabel所需参数的结构体。
+        :param request: Request instance for DetectLabel.
         :type request: :class:`tencentcloud.tiia.v20190529.models.DetectLabelRequest`
         :rtype: :class:`tencentcloud.tiia.v20190529.models.DetectLabelResponse`
 
@@ -202,7 +202,7 @@ class TiiaClient(AbstractClient):
         >
         - 公共参数中的签名方式必须指定为V3版本，即配置SignatureMethod参数为TC3-HMAC-SHA256。
 
-        :param request: 调用DetectMisbehavior所需参数的结构体。
+        :param request: Request instance for DetectMisbehavior.
         :type request: :class:`tencentcloud.tiia.v20190529.models.DetectMisbehaviorRequest`
         :rtype: :class:`tencentcloud.tiia.v20190529.models.DetectMisbehaviorResponse`
 
@@ -232,7 +232,7 @@ class TiiaClient(AbstractClient):
         >
         - 公共参数中的签名方式必须指定为V3版本，即配置SignatureMethod参数为TC3-HMAC-SHA256。
 
-        :param request: 调用DetectProduct所需参数的结构体。
+        :param request: Request instance for DetectProduct.
         :type request: :class:`tencentcloud.tiia.v20190529.models.DetectProductRequest`
         :rtype: :class:`tencentcloud.tiia.v20190529.models.DetectProductResponse`
 
@@ -264,7 +264,7 @@ class TiiaClient(AbstractClient):
         >
         - 公共参数中的签名方式必须指定为V3版本，即配置SignatureMethod参数为TC3-HMAC-SHA256。
 
-        :param request: 调用EnhanceImage所需参数的结构体。
+        :param request: Request instance for EnhanceImage.
         :type request: :class:`tencentcloud.tiia.v20190529.models.EnhanceImageRequest`
         :rtype: :class:`tencentcloud.tiia.v20190529.models.EnhanceImageResponse`
 
@@ -306,7 +306,7 @@ class TiiaClient(AbstractClient):
         >
         - 公共参数中的签名方式必须指定为V3版本，即配置SignatureMethod参数为TC3-HMAC-SHA256。
 
-        :param request: 调用ImageModeration所需参数的结构体。
+        :param request: Request instance for ImageModeration.
         :type request: :class:`tencentcloud.tiia.v20190529.models.ImageModerationRequest`
         :rtype: :class:`tencentcloud.tiia.v20190529.models.ImageModerationResponse`
 
@@ -336,7 +336,7 @@ class TiiaClient(AbstractClient):
         >
         - 公共参数中的签名方式必须指定为V3版本，即配置SignatureMethod参数为TC3-HMAC-SHA256。
 
-        :param request: 调用RecognizeCar所需参数的结构体。
+        :param request: Request instance for RecognizeCar.
         :type request: :class:`tencentcloud.tiia.v20190529.models.RecognizeCarRequest`
         :rtype: :class:`tencentcloud.tiia.v20190529.models.RecognizeCarResponse`
 

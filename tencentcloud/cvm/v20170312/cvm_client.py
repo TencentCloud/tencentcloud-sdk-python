@@ -29,7 +29,7 @@ class CvmClient(AbstractClient):
         """本接口 (AllocateHosts) 用于创建一个或多个指定配置的CDH实例。
         * 当HostChargeType为PREPAID时，必须指定HostChargePrepaid参数。
 
-        :param request: 调用AllocateHosts所需参数的结构体。
+        :param request: Request instance for AllocateHosts.
         :type request: :class:`tencentcloud.cvm.v20170312.models.AllocateHostsRequest`
         :rtype: :class:`tencentcloud.cvm.v20170312.models.AllocateHostsResponse`
 
@@ -62,7 +62,7 @@ class CvmClient(AbstractClient):
         * 如果实例原来是通过密码登录，绑定密钥后无法使用密码登录。
         * 支持批量操作。每次请求批量实例的上限为100。如果批量实例存在不允许操作的实例，操作会以特定错误码返回。
 
-        :param request: 调用AssociateInstancesKeyPairs所需参数的结构体。
+        :param request: Request instance for AssociateInstancesKeyPairs.
         :type request: :class:`tencentcloud.cvm.v20170312.models.AssociateInstancesKeyPairsRequest`
         :rtype: :class:`tencentcloud.cvm.v20170312.models.AssociateInstancesKeyPairsResponse`
 
@@ -90,7 +90,7 @@ class CvmClient(AbstractClient):
     def AssociateSecurityGroups(self, request):
         """本接口 (AssociateSecurityGroups) 用于绑定安全组到指定实例。
 
-        :param request: 调用AssociateSecurityGroups所需参数的结构体。
+        :param request: Request instance for AssociateSecurityGroups.
         :type request: :class:`tencentcloud.cvm.v20170312.models.AssociateSecurityGroupsRequest`
         :rtype: :class:`tencentcloud.cvm.v20170312.models.AssociateSecurityGroupsResponse`
 
@@ -118,7 +118,7 @@ class CvmClient(AbstractClient):
     def CreateDisasterRecoverGroup(self, request):
         """本接口 (CreateDisasterRecoverGroup)用于创建[分散置放群组](https://cloud.tencent.com/document/product/213/15486)。创建好的置放群组，可在[创建实例](https://cloud.tencent.com/document/api/213/15730)时指定。
 
-        :param request: 调用CreateDisasterRecoverGroup所需参数的结构体。
+        :param request: Request instance for CreateDisasterRecoverGroup.
         :type request: :class:`tencentcloud.cvm.v20170312.models.CreateDisasterRecoverGroupRequest`
         :rtype: :class:`tencentcloud.cvm.v20170312.models.CreateDisasterRecoverGroupResponse`
 
@@ -146,7 +146,7 @@ class CvmClient(AbstractClient):
     def CreateImage(self, request):
         """本接口(CreateImage)用于将实例的系统盘制作为新镜像，创建后的镜像可以用于创建实例。
 
-        :param request: 调用CreateImage所需参数的结构体。
+        :param request: Request instance for CreateImage.
         :type request: :class:`tencentcloud.cvm.v20170312.models.CreateImageRequest`
         :rtype: :class:`tencentcloud.cvm.v20170312.models.CreateImageResponse`
 
@@ -179,7 +179,7 @@ class CvmClient(AbstractClient):
         * 私钥的内容可以保存到文件中作为 `SSH` 的一种认证方式。
         * 腾讯云不会保存用户的私钥，请妥善保管。
 
-        :param request: 调用CreateKeyPair所需参数的结构体。
+        :param request: Request instance for CreateKeyPair.
         :type request: :class:`tencentcloud.cvm.v20170312.models.CreateKeyPairRequest`
         :rtype: :class:`tencentcloud.cvm.v20170312.models.CreateKeyPairResponse`
 
@@ -207,7 +207,7 @@ class CvmClient(AbstractClient):
     def DeleteDisasterRecoverGroups(self, request):
         """本接口 (DeleteDisasterRecoverGroups)用于删除[分散置放群组](https://cloud.tencent.com/document/product/213/15486)。只有空的置放群组才能被删除，非空的群组需要先销毁组内所有云服务器，才能执行删除操作，不然会产生删除置放群组失败的错误。
 
-        :param request: 调用DeleteDisasterRecoverGroups所需参数的结构体。
+        :param request: Request instance for DeleteDisasterRecoverGroups.
         :type request: :class:`tencentcloud.cvm.v20170312.models.DeleteDisasterRecoverGroupsRequest`
         :rtype: :class:`tencentcloud.cvm.v20170312.models.DeleteDisasterRecoverGroupsResponse`
 
@@ -239,7 +239,7 @@ class CvmClient(AbstractClient):
         * 每个地域最多只支持创建10个自定义镜像，删除镜像可以释放账户的配额。
         * 当镜像正在被其它账户分享时，不允许删除。
 
-        :param request: 调用DeleteImages所需参数的结构体。
+        :param request: Request instance for DeleteImages.
         :type request: :class:`tencentcloud.cvm.v20170312.models.DeleteImagesRequest`
         :rtype: :class:`tencentcloud.cvm.v20170312.models.DeleteImagesResponse`
 
@@ -270,7 +270,7 @@ class CvmClient(AbstractClient):
         * 可以同时删除多个密钥对。
         * 不能删除已被实例或镜像引用的密钥对，所以需要独立判断是否所有密钥对都被成功删除。
 
-        :param request: 调用DeleteKeyPairs所需参数的结构体。
+        :param request: Request instance for DeleteKeyPairs.
         :type request: :class:`tencentcloud.cvm.v20170312.models.DeleteKeyPairsRequest`
         :rtype: :class:`tencentcloud.cvm.v20170312.models.DeleteKeyPairsResponse`
 
@@ -298,7 +298,7 @@ class CvmClient(AbstractClient):
     def DescribeDisasterRecoverGroupQuota(self, request):
         """本接口 (DescribeDisasterRecoverGroupQuota)用于查询[分散置放群组](https://cloud.tencent.com/document/product/213/15486)配额。
 
-        :param request: 调用DescribeDisasterRecoverGroupQuota所需参数的结构体。
+        :param request: Request instance for DescribeDisasterRecoverGroupQuota.
         :type request: :class:`tencentcloud.cvm.v20170312.models.DescribeDisasterRecoverGroupQuotaRequest`
         :rtype: :class:`tencentcloud.cvm.v20170312.models.DescribeDisasterRecoverGroupQuotaResponse`
 
@@ -326,7 +326,7 @@ class CvmClient(AbstractClient):
     def DescribeDisasterRecoverGroups(self, request):
         """本接口 (DescribeDisasterRecoverGroups)用于查询[分散置放群组](https://cloud.tencent.com/document/product/213/15486)信息。
 
-        :param request: 调用DescribeDisasterRecoverGroups所需参数的结构体。
+        :param request: Request instance for DescribeDisasterRecoverGroups.
         :type request: :class:`tencentcloud.cvm.v20170312.models.DescribeDisasterRecoverGroupsRequest`
         :rtype: :class:`tencentcloud.cvm.v20170312.models.DescribeDisasterRecoverGroupsResponse`
 
@@ -354,7 +354,7 @@ class CvmClient(AbstractClient):
     def DescribeHosts(self, request):
         """本接口 (DescribeHosts) 用于获取一个或多个CDH实例的详细信息。
 
-        :param request: 调用DescribeHosts所需参数的结构体。
+        :param request: Request instance for DescribeHosts.
         :type request: :class:`tencentcloud.cvm.v20170312.models.DescribeHostsRequest`
         :rtype: :class:`tencentcloud.cvm.v20170312.models.DescribeHostsResponse`
 
@@ -382,7 +382,7 @@ class CvmClient(AbstractClient):
     def DescribeImageQuota(self, request):
         """本接口(DescribeImageQuota)用于查询用户帐号的镜像配额。
 
-        :param request: 调用DescribeImageQuota所需参数的结构体。
+        :param request: Request instance for DescribeImageQuota.
         :type request: :class:`tencentcloud.cvm.v20170312.models.DescribeImageQuotaRequest`
         :rtype: :class:`tencentcloud.cvm.v20170312.models.DescribeImageQuotaResponse`
 
@@ -410,7 +410,7 @@ class CvmClient(AbstractClient):
     def DescribeImageSharePermission(self, request):
         """本接口（DescribeImageSharePermission）用于查询镜像分享信息。
 
-        :param request: 调用DescribeImageSharePermission所需参数的结构体。
+        :param request: Request instance for DescribeImageSharePermission.
         :type request: :class:`tencentcloud.cvm.v20170312.models.DescribeImageSharePermissionRequest`
         :rtype: :class:`tencentcloud.cvm.v20170312.models.DescribeImageSharePermissionResponse`
 
@@ -441,7 +441,7 @@ class CvmClient(AbstractClient):
         * 可以通过指定镜像ID来查询指定镜像的详细信息，或通过设定过滤器来查询满足过滤条件的镜像的详细信息。
         * 指定偏移(Offset)和限制(Limit)来选择结果中的一部分，默认返回满足条件的前20个镜像信息。
 
-        :param request: 调用DescribeImages所需参数的结构体。
+        :param request: Request instance for DescribeImages.
         :type request: :class:`tencentcloud.cvm.v20170312.models.DescribeImagesRequest`
         :rtype: :class:`tencentcloud.cvm.v20170312.models.DescribeImagesResponse`
 
@@ -469,7 +469,7 @@ class CvmClient(AbstractClient):
     def DescribeImportImageOs(self, request):
         """查看可以导入的镜像操作系统信息。
 
-        :param request: 调用DescribeImportImageOs所需参数的结构体。
+        :param request: Request instance for DescribeImportImageOs.
         :type request: :class:`tencentcloud.cvm.v20170312.models.DescribeImportImageOsRequest`
         :rtype: :class:`tencentcloud.cvm.v20170312.models.DescribeImportImageOsResponse`
 
@@ -497,7 +497,7 @@ class CvmClient(AbstractClient):
     def DescribeInstanceFamilyConfigs(self, request):
         """本接口（DescribeInstanceFamilyConfigs）查询当前用户和地域所支持的机型族列表信息。
 
-        :param request: 调用DescribeInstanceFamilyConfigs所需参数的结构体。
+        :param request: Request instance for DescribeInstanceFamilyConfigs.
         :type request: :class:`tencentcloud.cvm.v20170312.models.DescribeInstanceFamilyConfigsRequest`
         :rtype: :class:`tencentcloud.cvm.v20170312.models.DescribeInstanceFamilyConfigsResponse`
 
@@ -528,7 +528,7 @@ class CvmClient(AbstractClient):
         * 只支持查询`BANDWIDTH_PREPAID`计费模式的带宽配置。
         * 接口返回实例的所有带宽配置信息（包含历史的带宽配置信息）。
 
-        :param request: 调用DescribeInstanceInternetBandwidthConfigs所需参数的结构体。
+        :param request: Request instance for DescribeInstanceInternetBandwidthConfigs.
         :type request: :class:`tencentcloud.cvm.v20170312.models.DescribeInstanceInternetBandwidthConfigsRequest`
         :rtype: :class:`tencentcloud.cvm.v20170312.models.DescribeInstanceInternetBandwidthConfigsResponse`
 
@@ -559,7 +559,7 @@ class CvmClient(AbstractClient):
         * 可以根据`zone`、`instance-family`来查询实例机型配置。过滤条件详见过滤器`Filter`。
         * 如果参数为空，返回指定地域的所有实例机型配置。
 
-        :param request: 调用DescribeInstanceTypeConfigs所需参数的结构体。
+        :param request: Request instance for DescribeInstanceTypeConfigs.
         :type request: :class:`tencentcloud.cvm.v20170312.models.DescribeInstanceTypeConfigsRequest`
         :rtype: :class:`tencentcloud.cvm.v20170312.models.DescribeInstanceTypeConfigsResponse`
 
@@ -600,7 +600,7 @@ class CvmClient(AbstractClient):
         https://img.qcloud.com/qcloud/app/active_vnc/index.html?InstanceVncUrl=wss%3A%2F%2Fbjvnc.qcloud.com%3A26789%2Fvnc%3Fs%3DaHpjWnRVMFNhYmxKdDM5MjRHNlVTSVQwajNUSW0wb2tBbmFtREFCTmFrcy8vUUNPMG0wSHZNOUUxRm5PMmUzWmFDcWlOdDJIbUJxSTZDL0RXcHZxYnZZMmRkWWZWcEZia2lyb09XMzdKNmM9
         ```
 
-        :param request: 调用DescribeInstanceVncUrl所需参数的结构体。
+        :param request: Request instance for DescribeInstanceVncUrl.
         :type request: :class:`tencentcloud.cvm.v20170312.models.DescribeInstanceVncUrlRequest`
         :rtype: :class:`tencentcloud.cvm.v20170312.models.DescribeInstanceVncUrlResponse`
 
@@ -632,7 +632,7 @@ class CvmClient(AbstractClient):
         * 如果参数为空，返回当前用户一定数量（`Limit`所指定的数量，默认为20）的实例。
         * 支持查询实例的最新操作（LatestOperation）以及最新操作状态(LatestOperationState)。
 
-        :param request: 调用DescribeInstances所需参数的结构体。
+        :param request: Request instance for DescribeInstances.
         :type request: :class:`tencentcloud.cvm.v20170312.models.DescribeInstancesRequest`
         :rtype: :class:`tencentcloud.cvm.v20170312.models.DescribeInstancesResponse`
 
@@ -662,7 +662,7 @@ class CvmClient(AbstractClient):
 
         * 目前支持调整配置操作限制次数查询。
 
-        :param request: 调用DescribeInstancesOperationLimit所需参数的结构体。
+        :param request: Request instance for DescribeInstancesOperationLimit.
         :type request: :class:`tencentcloud.cvm.v20170312.models.DescribeInstancesOperationLimitRequest`
         :rtype: :class:`tencentcloud.cvm.v20170312.models.DescribeInstancesOperationLimitResponse`
 
@@ -693,7 +693,7 @@ class CvmClient(AbstractClient):
         * 可以根据实例`ID`来查询实例的状态。
         * 如果参数为空，返回当前用户一定数量（Limit所指定的数量，默认为20）的实例状态。
 
-        :param request: 调用DescribeInstancesStatus所需参数的结构体。
+        :param request: Request instance for DescribeInstancesStatus.
         :type request: :class:`tencentcloud.cvm.v20170312.models.DescribeInstancesStatusRequest`
         :rtype: :class:`tencentcloud.cvm.v20170312.models.DescribeInstancesStatusResponse`
 
@@ -721,7 +721,7 @@ class CvmClient(AbstractClient):
     def DescribeInternetChargeTypeConfigs(self, request):
         """本接口（DescribeInternetChargeTypeConfigs）用于查询网络的计费类型。
 
-        :param request: 调用DescribeInternetChargeTypeConfigs所需参数的结构体。
+        :param request: Request instance for DescribeInternetChargeTypeConfigs.
         :type request: :class:`tencentcloud.cvm.v20170312.models.DescribeInternetChargeTypeConfigsRequest`
         :rtype: :class:`tencentcloud.cvm.v20170312.models.DescribeInternetChargeTypeConfigsResponse`
 
@@ -751,7 +751,7 @@ class CvmClient(AbstractClient):
 
         * 密钥对是通过一种算法生成的一对密钥，在生成的密钥对中，一个向外界公开，称为公钥；另一个用户自己保留，称为私钥。密钥对的公钥内容可以通过这个接口查询，但私钥内容系统不保留。
 
-        :param request: 调用DescribeKeyPairs所需参数的结构体。
+        :param request: Request instance for DescribeKeyPairs.
         :type request: :class:`tencentcloud.cvm.v20170312.models.DescribeKeyPairsRequest`
         :rtype: :class:`tencentcloud.cvm.v20170312.models.DescribeKeyPairsResponse`
 
@@ -779,7 +779,7 @@ class CvmClient(AbstractClient):
     def DescribeRegions(self, request):
         """本接口(DescribeRegions)用于查询地域信息。
 
-        :param request: 调用DescribeRegions所需参数的结构体。
+        :param request: Request instance for DescribeRegions.
         :type request: :class:`tencentcloud.cvm.v20170312.models.DescribeRegionsRequest`
         :rtype: :class:`tencentcloud.cvm.v20170312.models.DescribeRegionsResponse`
 
@@ -807,7 +807,7 @@ class CvmClient(AbstractClient):
     def DescribeReservedInstances(self, request):
         """本接口(DescribeReservedInstances)可提供列出用户已购买的预留实例
 
-        :param request: 调用DescribeReservedInstances所需参数的结构体。
+        :param request: Request instance for DescribeReservedInstances.
         :type request: :class:`tencentcloud.cvm.v20170312.models.DescribeReservedInstancesRequest`
         :rtype: :class:`tencentcloud.cvm.v20170312.models.DescribeReservedInstancesResponse`
 
@@ -835,7 +835,7 @@ class CvmClient(AbstractClient):
     def DescribeReservedInstancesOfferings(self, request):
         """本接口(DescribeReservedInstancesOfferings)供用户列出可购买的预留实例配置
 
-        :param request: 调用DescribeReservedInstancesOfferings所需参数的结构体。
+        :param request: Request instance for DescribeReservedInstancesOfferings.
         :type request: :class:`tencentcloud.cvm.v20170312.models.DescribeReservedInstancesOfferingsRequest`
         :rtype: :class:`tencentcloud.cvm.v20170312.models.DescribeReservedInstancesOfferingsResponse`
 
@@ -863,7 +863,7 @@ class CvmClient(AbstractClient):
     def DescribeZoneInstanceConfigInfos(self, request):
         """本接口(DescribeZoneInstanceConfigInfos) 获取可用区的机型信息。
 
-        :param request: 调用DescribeZoneInstanceConfigInfos所需参数的结构体。
+        :param request: Request instance for DescribeZoneInstanceConfigInfos.
         :type request: :class:`tencentcloud.cvm.v20170312.models.DescribeZoneInstanceConfigInfosRequest`
         :rtype: :class:`tencentcloud.cvm.v20170312.models.DescribeZoneInstanceConfigInfosResponse`
 
@@ -891,7 +891,7 @@ class CvmClient(AbstractClient):
     def DescribeZones(self, request):
         """本接口(DescribeZones)用于查询可用区信息。
 
-        :param request: 调用DescribeZones所需参数的结构体。
+        :param request: Request instance for DescribeZones.
         :type request: :class:`tencentcloud.cvm.v20170312.models.DescribeZonesRequest`
         :rtype: :class:`tencentcloud.cvm.v20170312.models.DescribeZonesResponse`
 
@@ -924,7 +924,7 @@ class CvmClient(AbstractClient):
         * 如果原来没有设置密码，解绑后将无法使用 `SSH` 登录。可以调用 [ResetInstancesPassword](https://cloud.tencent.com/document/api/213/15736) 接口来设置登录密码。
         * 支持批量操作。每次请求批量实例的上限为100。如果批量实例存在不允许操作的实例，操作会以特定错误码返回。
 
-        :param request: 调用DisassociateInstancesKeyPairs所需参数的结构体。
+        :param request: Request instance for DisassociateInstancesKeyPairs.
         :type request: :class:`tencentcloud.cvm.v20170312.models.DisassociateInstancesKeyPairsRequest`
         :rtype: :class:`tencentcloud.cvm.v20170312.models.DisassociateInstancesKeyPairsResponse`
 
@@ -952,7 +952,7 @@ class CvmClient(AbstractClient):
     def DisassociateSecurityGroups(self, request):
         """本接口 (DisassociateSecurityGroups) 用于解绑实例的指定安全组。
 
-        :param request: 调用DisassociateSecurityGroups所需参数的结构体。
+        :param request: Request instance for DisassociateSecurityGroups.
         :type request: :class:`tencentcloud.cvm.v20170312.models.DisassociateSecurityGroupsRequest`
         :rtype: :class:`tencentcloud.cvm.v20170312.models.DisassociateSecurityGroupsResponse`
 
@@ -980,7 +980,7 @@ class CvmClient(AbstractClient):
     def ImportImage(self, request):
         """本接口(ImportImage)用于导入镜像，导入后的镜像可用于创建实例。
 
-        :param request: 调用ImportImage所需参数的结构体。
+        :param request: Request instance for ImportImage.
         :type request: :class:`tencentcloud.cvm.v20170312.models.ImportImageRequest`
         :rtype: :class:`tencentcloud.cvm.v20170312.models.ImportImageResponse`
 
@@ -1012,7 +1012,7 @@ class CvmClient(AbstractClient):
         * 需指定密钥对名称以及该密钥对的公钥文本。
         * 如果用户只有私钥，可以通过 `SSL` 工具将私钥转换成公钥后再导入。
 
-        :param request: 调用ImportKeyPair所需参数的结构体。
+        :param request: Request instance for ImportKeyPair.
         :type request: :class:`tencentcloud.cvm.v20170312.models.ImportKeyPairRequest`
         :rtype: :class:`tencentcloud.cvm.v20170312.models.ImportKeyPairResponse`
 
@@ -1043,7 +1043,7 @@ class CvmClient(AbstractClient):
         * 只支持从 `POSTPAID_BY_HOUR` 计费模式切换为`PREPAID`计费模式。
         * 关机不收费的实例、`BC1`和`BS1`机型族的实例、设置定时销毁的实例不支持该操作。
 
-        :param request: 调用InquiryPriceModifyInstancesChargeType所需参数的结构体。
+        :param request: Request instance for InquiryPriceModifyInstancesChargeType.
         :type request: :class:`tencentcloud.cvm.v20170312.models.InquiryPriceModifyInstancesChargeTypeRequest`
         :rtype: :class:`tencentcloud.cvm.v20170312.models.InquiryPriceModifyInstancesChargeTypeResponse`
 
@@ -1073,7 +1073,7 @@ class CvmClient(AbstractClient):
 
         * 只支持查询包年包月实例的续费价格。
 
-        :param request: 调用InquiryPriceRenewInstances所需参数的结构体。
+        :param request: Request instance for InquiryPriceRenewInstances.
         :type request: :class:`tencentcloud.cvm.v20170312.models.InquiryPriceRenewInstancesRequest`
         :rtype: :class:`tencentcloud.cvm.v20170312.models.InquiryPriceRenewInstancesResponse`
 
@@ -1105,7 +1105,7 @@ class CvmClient(AbstractClient):
         * 目前只支持[系统盘类型](https://cloud.tencent.com/document/api/213/15753#SystemDisk)是`CLOUD_BASIC`、`CLOUD_PREMIUM`、`CLOUD_SSD`类型的实例使用该接口实现`Linux`和`Windows`操作系统切换的重装询价。
         * 目前不支持境外地域的实例使用该接口实现`Linux`和`Windows`操作系统切换的重装询价。
 
-        :param request: 调用InquiryPriceResetInstance所需参数的结构体。
+        :param request: Request instance for InquiryPriceResetInstance.
         :type request: :class:`tencentcloud.cvm.v20170312.models.InquiryPriceResetInstanceRequest`
         :rtype: :class:`tencentcloud.cvm.v20170312.models.InquiryPriceResetInstanceResponse`
 
@@ -1140,7 +1140,7 @@ class CvmClient(AbstractClient):
         * 接口不支持批量调整 `BANDWIDTH_PREPAID` 和 `BANDWIDTH_POSTPAID_BY_HOUR` 计费方式的带宽。
         * 接口不支持批量调整混合计费方式的带宽。例如不支持同时调整`TRAFFIC_POSTPAID_BY_HOUR`和`BANDWIDTH_PACKAGE`计费方式的带宽。
 
-        :param request: 调用InquiryPriceResetInstancesInternetMaxBandwidth所需参数的结构体。
+        :param request: Request instance for InquiryPriceResetInstancesInternetMaxBandwidth.
         :type request: :class:`tencentcloud.cvm.v20170312.models.InquiryPriceResetInstancesInternetMaxBandwidthRequest`
         :rtype: :class:`tencentcloud.cvm.v20170312.models.InquiryPriceResetInstancesInternetMaxBandwidthResponse`
 
@@ -1172,7 +1172,7 @@ class CvmClient(AbstractClient):
         * 目前不支持[CDH](https://cloud.tencent.com/document/product/416)实例使用该接口调整机型询价。
         * 对于包年包月实例，使用该接口会涉及扣费，请确保账户余额充足。可通过[`DescribeAccountBalance`](https://cloud.tencent.com/document/product/555/20253)接口查询账户余额。
 
-        :param request: 调用InquiryPriceResetInstancesType所需参数的结构体。
+        :param request: Request instance for InquiryPriceResetInstancesType.
         :type request: :class:`tencentcloud.cvm.v20170312.models.InquiryPriceResetInstancesTypeRequest`
         :rtype: :class:`tencentcloud.cvm.v20170312.models.InquiryPriceResetInstancesTypeResponse`
 
@@ -1203,7 +1203,7 @@ class CvmClient(AbstractClient):
         * 目前只支持扩容非弹性数据盘（[`DescribeDisks`](https://cloud.tencent.com/document/api/362/16315)接口返回值中的`Portable`为`false`表示非弹性）询价，且[数据盘类型](https://cloud.tencent.com/document/product/213/15753#DataDisk)为：`CLOUD_BASIC`、`CLOUD_PREMIUM`、`CLOUD_SSD`。
         * 目前不支持[CDH](https://cloud.tencent.com/document/product/416)实例使用该接口扩容数据盘询价。* 仅支持包年包月实例随机器购买的数据盘。* 目前只支持扩容一块数据盘询价。
 
-        :param request: 调用InquiryPriceResizeInstanceDisks所需参数的结构体。
+        :param request: Request instance for InquiryPriceResizeInstanceDisks.
         :type request: :class:`tencentcloud.cvm.v20170312.models.InquiryPriceResizeInstanceDisksRequest`
         :rtype: :class:`tencentcloud.cvm.v20170312.models.InquiryPriceResizeInstanceDisksResponse`
 
@@ -1231,7 +1231,7 @@ class CvmClient(AbstractClient):
     def InquiryPriceRunInstances(self, request):
         """本接口(InquiryPriceRunInstances)用于创建实例询价。本接口仅允许针对购买限制范围内的实例配置进行询价, 详见：[创建实例](https://cloud.tencent.com/document/api/213/15730)。
 
-        :param request: 调用InquiryPriceRunInstances所需参数的结构体。
+        :param request: Request instance for InquiryPriceRunInstances.
         :type request: :class:`tencentcloud.cvm.v20170312.models.InquiryPriceRunInstancesRequest`
         :rtype: :class:`tencentcloud.cvm.v20170312.models.InquiryPriceRunInstancesResponse`
 
@@ -1259,7 +1259,7 @@ class CvmClient(AbstractClient):
     def ModifyDisasterRecoverGroupAttribute(self, request):
         """本接口 (ModifyDisasterRecoverGroupAttribute)用于修改[分散置放群组](https://cloud.tencent.com/document/product/213/15486)属性。
 
-        :param request: 调用ModifyDisasterRecoverGroupAttribute所需参数的结构体。
+        :param request: Request instance for ModifyDisasterRecoverGroupAttribute.
         :type request: :class:`tencentcloud.cvm.v20170312.models.ModifyDisasterRecoverGroupAttributeRequest`
         :rtype: :class:`tencentcloud.cvm.v20170312.models.ModifyDisasterRecoverGroupAttributeResponse`
 
@@ -1287,7 +1287,7 @@ class CvmClient(AbstractClient):
     def ModifyHostsAttribute(self, request):
         """本接口（ModifyHostsAttribute）用于修改CDH实例的属性，如实例名称和续费标记等。参数HostName和RenewFlag必须设置其中一个，但不能同时设置。
 
-        :param request: 调用ModifyHostsAttribute所需参数的结构体。
+        :param request: Request instance for ModifyHostsAttribute.
         :type request: :class:`tencentcloud.cvm.v20170312.models.ModifyHostsAttributeRequest`
         :rtype: :class:`tencentcloud.cvm.v20170312.models.ModifyHostsAttributeResponse`
 
@@ -1317,7 +1317,7 @@ class CvmClient(AbstractClient):
 
         * 已分享的镜像无法修改属性。
 
-        :param request: 调用ModifyImageAttribute所需参数的结构体。
+        :param request: Request instance for ModifyImageAttribute.
         :type request: :class:`tencentcloud.cvm.v20170312.models.ModifyImageAttributeRequest`
         :rtype: :class:`tencentcloud.cvm.v20170312.models.ModifyImageAttributeResponse`
 
@@ -1350,7 +1350,7 @@ class CvmClient(AbstractClient):
         * 分享镜像无法更改名称，描述，仅可用于创建实例。
         * 只支持分享到对方账户相同地域。
 
-        :param request: 调用ModifyImageSharePermission所需参数的结构体。
+        :param request: Request instance for ModifyImageSharePermission.
         :type request: :class:`tencentcloud.cvm.v20170312.models.ModifyImageSharePermissionRequest`
         :rtype: :class:`tencentcloud.cvm.v20170312.models.ModifyImageSharePermissionResponse`
 
@@ -1382,7 +1382,7 @@ class CvmClient(AbstractClient):
         * 支持批量操作。每次请求批量实例的上限为100。
         * 修改关联安全组时，子机原来关联的安全组会被解绑。
 
-        :param request: 调用ModifyInstancesAttribute所需参数的结构体。
+        :param request: Request instance for ModifyInstancesAttribute.
         :type request: :class:`tencentcloud.cvm.v20170312.models.ModifyInstancesAttributeRequest`
         :rtype: :class:`tencentcloud.cvm.v20170312.models.ModifyInstancesAttributeResponse`
 
@@ -1413,7 +1413,7 @@ class CvmClient(AbstractClient):
         * 只支持从 `POSTPAID_BY_HOUR` 计费模式切换为`PREPAID`计费模式。
         * 关机不收费的实例、`BC1`和`BS1`机型族的实例、设置定时销毁的实例不支持该操作。
 
-        :param request: 调用ModifyInstancesChargeType所需参数的结构体。
+        :param request: Request instance for ModifyInstancesChargeType.
         :type request: :class:`tencentcloud.cvm.v20170312.models.ModifyInstancesChargeTypeRequest`
         :rtype: :class:`tencentcloud.cvm.v20170312.models.ModifyInstancesChargeTypeResponse`
 
@@ -1446,7 +1446,7 @@ class CvmClient(AbstractClient):
         * 修改实例所属项目会自动解关联实例原来关联的安全组，修改完成后可能使用[`ModifySecurityGroupsOfInstance`](https://cloud.tencent.com/document/api/213/1367)接口关联安全组。
         * 支持批量操作。每次请求批量实例的上限为100。
 
-        :param request: 调用ModifyInstancesProject所需参数的结构体。
+        :param request: Request instance for ModifyInstancesProject.
         :type request: :class:`tencentcloud.cvm.v20170312.models.ModifyInstancesProjectRequest`
         :rtype: :class:`tencentcloud.cvm.v20170312.models.ModifyInstancesProjectResponse`
 
@@ -1477,7 +1477,7 @@ class CvmClient(AbstractClient):
         * 实例被标识为自动续费后，每次在实例到期时，会自动续费一个月。
         * 支持批量操作。每次请求批量实例的上限为100。
 
-        :param request: 调用ModifyInstancesRenewFlag所需参数的结构体。
+        :param request: Request instance for ModifyInstancesRenewFlag.
         :type request: :class:`tencentcloud.cvm.v20170312.models.ModifyInstancesRenewFlagRequest`
         :rtype: :class:`tencentcloud.cvm.v20170312.models.ModifyInstancesRenewFlagResponse`
 
@@ -1507,7 +1507,7 @@ class CvmClient(AbstractClient):
         * 此操作默认会关闭实例，完成后再启动。
         * 当指定私有网络ID和子网ID（子网必须在实例所在的可用区）与指定实例所在私有网络不一致时，会将实例迁移至指定的私有网络的子网下。执行此操作前请确保指定的实例上没有绑定[弹性网卡](https://cloud.tencent.com/document/product/576)和[负载均衡](https://cloud.tencent.com/document/product/214)。
 
-        :param request: 调用ModifyInstancesVpcAttribute所需参数的结构体。
+        :param request: Request instance for ModifyInstancesVpcAttribute.
         :type request: :class:`tencentcloud.cvm.v20170312.models.ModifyInstancesVpcAttributeRequest`
         :rtype: :class:`tencentcloud.cvm.v20170312.models.ModifyInstancesVpcAttributeResponse`
 
@@ -1539,7 +1539,7 @@ class CvmClient(AbstractClient):
         * 密钥对名称不能和已经存在的密钥对的名称重复。
         * 密钥对ID是密钥对的唯一标识，不可修改。
 
-        :param request: 调用ModifyKeyPairAttribute所需参数的结构体。
+        :param request: Request instance for ModifyKeyPairAttribute.
         :type request: :class:`tencentcloud.cvm.v20170312.models.ModifyKeyPairAttributeRequest`
         :rtype: :class:`tencentcloud.cvm.v20170312.models.ModifyKeyPairAttributeResponse`
 
@@ -1567,7 +1567,7 @@ class CvmClient(AbstractClient):
     def PurchaseReservedInstancesOffering(self, request):
         """本接口(PurchaseReservedInstancesOffering)用于用户购买一个或者多个指定配置的预留实例
 
-        :param request: 调用PurchaseReservedInstancesOffering所需参数的结构体。
+        :param request: Request instance for PurchaseReservedInstancesOffering.
         :type request: :class:`tencentcloud.cvm.v20170312.models.PurchaseReservedInstancesOfferingRequest`
         :rtype: :class:`tencentcloud.cvm.v20170312.models.PurchaseReservedInstancesOfferingResponse`
 
@@ -1600,7 +1600,7 @@ class CvmClient(AbstractClient):
         * 支持强制重启。强制重启的效果等同于关闭物理计算机的电源开关再重新启动。强制重启可能会导致数据丢失或文件系统损坏，请仅在服务器不能正常重启时使用。
         * 支持批量操作，每次请求批量实例的上限为100。
 
-        :param request: 调用RebootInstances所需参数的结构体。
+        :param request: Request instance for RebootInstances.
         :type request: :class:`tencentcloud.cvm.v20170312.models.RebootInstancesRequest`
         :rtype: :class:`tencentcloud.cvm.v20170312.models.RebootInstancesResponse`
 
@@ -1631,7 +1631,7 @@ class CvmClient(AbstractClient):
         * 只支持操作包年包月实例，否则操作会以特定[错误码](#4.-.E9.94.99.E8.AF.AF.E7.A0.81)返回。
         * 续费时请确保账户余额充足。可通过[`DescribeAccountBalance`](https://cloud.tencent.com/document/product/555/20253)接口查询账户余额。
 
-        :param request: 调用RenewHosts所需参数的结构体。
+        :param request: Request instance for RenewHosts.
         :type request: :class:`tencentcloud.cvm.v20170312.models.RenewHostsRequest`
         :rtype: :class:`tencentcloud.cvm.v20170312.models.RenewHostsResponse`
 
@@ -1662,7 +1662,7 @@ class CvmClient(AbstractClient):
         * 只支持操作包年包月实例。
         * 续费时请确保账户余额充足。可通过[`DescribeAccountBalance`](https://cloud.tencent.com/document/product/555/20253)接口查询账户余额。
 
-        :param request: 调用RenewInstances所需参数的结构体。
+        :param request: Request instance for RenewInstances.
         :type request: :class:`tencentcloud.cvm.v20170312.models.RenewInstancesRequest`
         :rtype: :class:`tencentcloud.cvm.v20170312.models.RenewInstancesResponse`
 
@@ -1697,7 +1697,7 @@ class CvmClient(AbstractClient):
         * 目前只支持[系统盘类型](https://cloud.tencent.com/document/api/213/9452#SystemDisk)是`CLOUD_BASIC`、`CLOUD_PREMIUM`、`CLOUD_SSD`类型的实例使用该接口实现`Linux`和`Windows`操作系统切换。
         * 目前不支持境外地域的实例使用该接口实现`Linux`和`Windows`操作系统切换。
 
-        :param request: 调用ResetInstance所需参数的结构体。
+        :param request: Request instance for ResetInstance.
         :type request: :class:`tencentcloud.cvm.v20170312.models.ResetInstanceRequest`
         :rtype: :class:`tencentcloud.cvm.v20170312.models.ResetInstanceResponse`
 
@@ -1732,7 +1732,7 @@ class CvmClient(AbstractClient):
         * 接口不支持批量调整 `BANDWIDTH_PREPAID` 和 `BANDWIDTH_POSTPAID_BY_HOUR` 计费方式的带宽。
         * 接口不支持批量调整混合计费方式的带宽。例如不支持同时调整 `TRAFFIC_POSTPAID_BY_HOUR` 和 `BANDWIDTH_PACKAGE` 计费方式的带宽。
 
-        :param request: 调用ResetInstancesInternetMaxBandwidth所需参数的结构体。
+        :param request: Request instance for ResetInstancesInternetMaxBandwidth.
         :type request: :class:`tencentcloud.cvm.v20170312.models.ResetInstancesInternetMaxBandwidthRequest`
         :rtype: :class:`tencentcloud.cvm.v20170312.models.ResetInstancesInternetMaxBandwidthResponse`
 
@@ -1764,7 +1764,7 @@ class CvmClient(AbstractClient):
         * 重置处于运行中状态的实例，需要显式指定强制关机参数`ForceStop`。如果没有显式指定强制关机参数，则只有处于关机状态的实例才允许执行重置密码操作。
         * 支持批量操作。将多个实例操作系统的密码重置为相同的密码。每次请求批量实例的上限为100。
 
-        :param request: 调用ResetInstancesPassword所需参数的结构体。
+        :param request: Request instance for ResetInstancesPassword.
         :type request: :class:`tencentcloud.cvm.v20170312.models.ResetInstancesPasswordRequest`
         :rtype: :class:`tencentcloud.cvm.v20170312.models.ResetInstancesPasswordResponse`
 
@@ -1794,7 +1794,7 @@ class CvmClient(AbstractClient):
         * 目前只支持[系统盘类型](/document/api/213/9452#block_device)是`CLOUD_BASIC`、`CLOUD_PREMIUM`、`CLOUD_SSD`类型的实例使用该接口进行机型调整。
         * 目前不支持[CDH](https://cloud.tencent.com/document/product/416)实例使用该接口调整机型。对于包年包月实例，使用该接口会涉及扣费，请确保账户余额充足。可通过[`DescribeAccountBalance`](https://cloud.tencent.com/document/product/555/20253)接口查询账户余额。
 
-        :param request: 调用ResetInstancesType所需参数的结构体。
+        :param request: Request instance for ResetInstancesType.
         :type request: :class:`tencentcloud.cvm.v20170312.models.ResetInstancesTypeRequest`
         :rtype: :class:`tencentcloud.cvm.v20170312.models.ResetInstancesTypeResponse`
 
@@ -1827,7 +1827,7 @@ class CvmClient(AbstractClient):
         * 对于包年包月实例，使用该接口会涉及扣费，请确保账户余额充足。可通过[`DescribeAccountBalance`](https://cloud.tencent.com/document/product/555/20253)接口查询账户余额。
         * 目前只支持扩容一块数据盘。
 
-        :param request: 调用ResizeInstanceDisks所需参数的结构体。
+        :param request: Request instance for ResizeInstanceDisks.
         :type request: :class:`tencentcloud.cvm.v20170312.models.ResizeInstanceDisksRequest`
         :rtype: :class:`tencentcloud.cvm.v20170312.models.ResizeInstanceDisksResponse`
 
@@ -1860,7 +1860,7 @@ class CvmClient(AbstractClient):
         * 本接口允许购买的实例数量遵循[CVM实例购买限制](https://cloud.tencent.com/document/product/213/2664)，所创建的实例和官网入口创建的实例共用配额。
         * 本接口为异步接口，当创建请求下发成功后会返回一个实例`ID`列表，此时实例的创建并立即未完成。在此期间实例的状态将会处于“准备中”，可以通过调用 [DescribeInstances](https://cloud.tencent.com/document/api/213/15728) 接口查询对应实例的状态，来判断创建有没有最终成功。如果实例的状态由“准备中”变为“运行中”，则为创建成功。
 
-        :param request: 调用RunInstances所需参数的结构体。
+        :param request: Request instance for RunInstances.
         :type request: :class:`tencentcloud.cvm.v20170312.models.RunInstancesRequest`
         :rtype: :class:`tencentcloud.cvm.v20170312.models.RunInstancesResponse`
 
@@ -1892,7 +1892,7 @@ class CvmClient(AbstractClient):
         * 接口调用成功时，实例会进入`STARTING`状态；启动实例成功时，实例会进入`RUNNING`状态。
         * 支持批量操作。每次请求批量实例的上限为100。
 
-        :param request: 调用StartInstances所需参数的结构体。
+        :param request: Request instance for StartInstances.
         :type request: :class:`tencentcloud.cvm.v20170312.models.StartInstancesRequest`
         :rtype: :class:`tencentcloud.cvm.v20170312.models.StartInstancesResponse`
 
@@ -1925,7 +1925,7 @@ class CvmClient(AbstractClient):
         * 支持强制关闭。强制关机的效果等同于关闭物理计算机的电源开关。强制关机可能会导致数据丢失或文件系统损坏，请仅在服务器不能正常关机时使用。
         * 支持批量操作。每次请求批量实例的上限为100。
 
-        :param request: 调用StopInstances所需参数的结构体。
+        :param request: Request instance for StopInstances.
         :type request: :class:`tencentcloud.cvm.v20170312.models.StopInstancesRequest`
         :rtype: :class:`tencentcloud.cvm.v20170312.models.StopInstancesResponse`
 
@@ -1957,7 +1957,7 @@ class CvmClient(AbstractClient):
         * 该接口支持多个同步地域。
         * 单个帐号在每个地域最多支持存在10个自定义镜像。
 
-        :param request: 调用SyncImages所需参数的结构体。
+        :param request: Request instance for SyncImages.
         :type request: :class:`tencentcloud.cvm.v20170312.models.SyncImagesRequest`
         :rtype: :class:`tencentcloud.cvm.v20170312.models.SyncImagesResponse`
 
@@ -1990,7 +1990,7 @@ class CvmClient(AbstractClient):
         * 首次调用本接口，实例将被移至回收站，再次调用本接口，实例将被销毁，且不可恢复。
         * 支持批量操作，每次请求批量实例的上限为100。
 
-        :param request: 调用TerminateInstances所需参数的结构体。
+        :param request: Request instance for TerminateInstances.
         :type request: :class:`tencentcloud.cvm.v20170312.models.TerminateInstancesRequest`
         :rtype: :class:`tencentcloud.cvm.v20170312.models.TerminateInstancesResponse`
 

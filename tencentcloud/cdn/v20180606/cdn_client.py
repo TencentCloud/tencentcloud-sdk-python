@@ -37,7 +37,7 @@ class CdnClient(AbstractClient):
         + 状态码 4xx 汇总及各 4 开头状态码明细（单位为 个）
         + 状态码 5xx 汇总及各 5 开头状态码明细（单位为 个）
 
-        :param request: 调用DescribeCdnData所需参数的结构体。
+        :param request: Request instance for DescribeCdnData.
         :type request: :class:`tencentcloud.cdn.v20180606.models.DescribeCdnDataRequest`
         :rtype: :class:`tencentcloud.cdn.v20180606.models.DescribeCdnDataResponse`
 
@@ -65,7 +65,7 @@ class CdnClient(AbstractClient):
     def DescribeCdnDomainLogs(self, request):
         """DescribeCdnDomainLogs 用于查询访问日志下载地址，仅支持 30 天以内的境内、境外访问日志下载链接查询。
 
-        :param request: 调用DescribeCdnDomainLogs所需参数的结构体。
+        :param request: Request instance for DescribeCdnDomainLogs.
         :type request: :class:`tencentcloud.cdn.v20180606.models.DescribeCdnDomainLogsRequest`
         :rtype: :class:`tencentcloud.cdn.v20180606.models.DescribeCdnDomainLogsResponse`
 
@@ -93,7 +93,7 @@ class CdnClient(AbstractClient):
     def DescribeCdnIp(self, request):
         """DescribeCdnIp 用于查询 CDN IP 归属。
 
-        :param request: 调用DescribeCdnIp所需参数的结构体。
+        :param request: Request instance for DescribeCdnIp.
         :type request: :class:`tencentcloud.cdn.v20180606.models.DescribeCdnIpRequest`
         :rtype: :class:`tencentcloud.cdn.v20180606.models.DescribeCdnIpResponse`
 
@@ -124,7 +124,7 @@ class CdnClient(AbstractClient):
         + 5 分钟活跃用户数：根据日志中客户端 IP，5 分钟粒度去重统计
         + 日活跃用户数：根据日志中客户端 IP，按天粒度去重统计
 
-        :param request: 调用DescribeIpVisit所需参数的结构体。
+        :param request: Request instance for DescribeIpVisit.
         :type request: :class:`tencentcloud.cdn.v20180606.models.DescribeIpVisitRequest`
         :rtype: :class:`tencentcloud.cdn.v20180606.models.DescribeIpVisitResponse`
 
@@ -152,7 +152,7 @@ class CdnClient(AbstractClient):
     def DescribeMapInfo(self, request):
         """DescribeMapInfo 用于查询省份对应的 ID，运营商对应的 ID 信息。
 
-        :param request: 调用DescribeMapInfo所需参数的结构体。
+        :param request: Request instance for DescribeMapInfo.
         :type request: :class:`tencentcloud.cdn.v20180606.models.DescribeMapInfoRequest`
         :rtype: :class:`tencentcloud.cdn.v20180606.models.DescribeMapInfoResponse`
 
@@ -190,7 +190,7 @@ class CdnClient(AbstractClient):
         + 回源状态码 4xx 汇总及各 4 开头回源状态码明细（单位为 个）
         + 回源状态码 5xx 汇总及各 5 开头回源状态码明细（单位为 个）
 
-        :param request: 调用DescribeOriginData所需参数的结构体。
+        :param request: Request instance for DescribeOriginData.
         :type request: :class:`tencentcloud.cdn.v20180606.models.DescribeOriginDataRequest`
         :rtype: :class:`tencentcloud.cdn.v20180606.models.DescribeOriginDataResponse`
 
@@ -218,7 +218,7 @@ class CdnClient(AbstractClient):
     def DescribePayType(self, request):
         """DescribePayType 用于查询用户的计费类型，计费周期等信息。
 
-        :param request: 调用DescribePayType所需参数的结构体。
+        :param request: Request instance for DescribePayType.
         :type request: :class:`tencentcloud.cdn.v20180606.models.DescribePayTypeRequest`
         :rtype: :class:`tencentcloud.cdn.v20180606.models.DescribePayTypeResponse`
 
@@ -246,7 +246,7 @@ class CdnClient(AbstractClient):
     def DescribePurgeTasks(self, request):
         """DescribePurgeTasks 用于查询提交的 URL 刷新、目录刷新记录及执行进度，通过 PurgePathCache 与 PurgeUrlsCache 接口提交的任务均可通过此接口进行查询。
 
-        :param request: 调用DescribePurgeTasks所需参数的结构体。
+        :param request: Request instance for DescribePurgeTasks.
         :type request: :class:`tencentcloud.cdn.v20180606.models.DescribePurgeTasksRequest`
         :rtype: :class:`tencentcloud.cdn.v20180606.models.DescribePurgeTasksResponse`
 
@@ -275,7 +275,7 @@ class CdnClient(AbstractClient):
         """DescribePushTasks  用于查询预热任务提交历史记录及执行进度。
         接口灰度中，暂未全量开放，敬请期待。
 
-        :param request: 调用DescribePushTasks所需参数的结构体。
+        :param request: Request instance for DescribePushTasks.
         :type request: :class:`tencentcloud.cdn.v20180606.models.DescribePushTasksRequest`
         :rtype: :class:`tencentcloud.cdn.v20180606.models.DescribePushTasksResponse`
 
@@ -303,7 +303,7 @@ class CdnClient(AbstractClient):
     def DescribeTrafficPackages(self, request):
         """DescribeTrafficPackages 用于查询境内 CDN 流量包详情。
 
-        :param request: 调用DescribeTrafficPackages所需参数的结构体。
+        :param request: Request instance for DescribeTrafficPackages.
         :type request: :class:`tencentcloud.cdn.v20180606.models.DescribeTrafficPackagesRequest`
         :rtype: :class:`tencentcloud.cdn.v20180606.models.DescribeTrafficPackagesResponse`
 
@@ -331,7 +331,7 @@ class CdnClient(AbstractClient):
     def DisableCaches(self, request):
         """DisableCaches 用于禁用 CDN 上指定 URL 的访问，禁用完成后，全网访问会直接返回 403。（接口尚在内测中，暂未全量开放使用）
 
-        :param request: 调用DisableCaches所需参数的结构体。
+        :param request: Request instance for DisableCaches.
         :type request: :class:`tencentcloud.cdn.v20180606.models.DisableCachesRequest`
         :rtype: :class:`tencentcloud.cdn.v20180606.models.DisableCachesResponse`
 
@@ -359,7 +359,7 @@ class CdnClient(AbstractClient):
     def EnableCaches(self, request):
         """EnableCaches 用于解禁手工封禁的 URL，解禁成功后，全网生效时间约 5~10 分钟。（接口尚在内测中，暂未全量开放使用）
 
-        :param request: 调用EnableCaches所需参数的结构体。
+        :param request: Request instance for EnableCaches.
         :type request: :class:`tencentcloud.cdn.v20180606.models.EnableCachesRequest`
         :rtype: :class:`tencentcloud.cdn.v20180606.models.EnableCachesResponse`
 
@@ -387,7 +387,7 @@ class CdnClient(AbstractClient):
     def GetDisableRecords(self, request):
         """GetDisableRecords 用户查询资源禁用历史，及 URL 当前状态。（接口尚在内测中，暂未全量开放使用）
 
-        :param request: 调用GetDisableRecords所需参数的结构体。
+        :param request: Request instance for GetDisableRecords.
         :type request: :class:`tencentcloud.cdn.v20180606.models.GetDisableRecordsRequest`
         :rtype: :class:`tencentcloud.cdn.v20180606.models.GetDisableRecordsResponse`
 
@@ -421,7 +421,7 @@ class CdnClient(AbstractClient):
         + 依据总流量、峰值带宽、总请求数、平均命中率、2XX/3XX/4XX/5XX 状态码对域名排序，从大至小返回域名列表
         + 依据总回源流量、回源峰值带宽、总回源请求数、平均回源失败率、2XX/3XX/4XX/5XX 回源状态码对域名排序，从大至小返回域名列表
 
-        :param request: 调用ListTopData所需参数的结构体。
+        :param request: Request instance for ListTopData.
         :type request: :class:`tencentcloud.cdn.v20180606.models.ListTopDataRequest`
         :rtype: :class:`tencentcloud.cdn.v20180606.models.ListTopDataResponse`
 
@@ -450,7 +450,7 @@ class CdnClient(AbstractClient):
         """PurgePathCache 用于批量提交目录刷新，根据域名的加速区域进行对应区域的刷新。
         默认情况下境内、境外加速区域每日目录刷新额度为各 100 条，每次最多可提交 20 条。
 
-        :param request: 调用PurgePathCache所需参数的结构体。
+        :param request: Request instance for PurgePathCache.
         :type request: :class:`tencentcloud.cdn.v20180606.models.PurgePathCacheRequest`
         :rtype: :class:`tencentcloud.cdn.v20180606.models.PurgePathCacheResponse`
 
@@ -479,7 +479,7 @@ class CdnClient(AbstractClient):
         """PurgeUrlsCache 用于批量提交 URL 进行刷新，根据 URL 中域名的当前加速区域进行对应区域的刷新。
         默认情况下境内、境外加速区域每日 URL 刷新额度各为 10000 条，每次最多可提交 1000 条。
 
-        :param request: 调用PurgeUrlsCache所需参数的结构体。
+        :param request: Request instance for PurgeUrlsCache.
         :type request: :class:`tencentcloud.cdn.v20180606.models.PurgeUrlsCacheRequest`
         :rtype: :class:`tencentcloud.cdn.v20180606.models.PurgeUrlsCacheResponse`
 
@@ -509,7 +509,7 @@ class CdnClient(AbstractClient):
         默认情况下境内、境外每日预热 URL 限额为各 1000 条，每次最多可提交 20 条。
         接口灰度中，暂未全量开放，敬请期待。
 
-        :param request: 调用PushUrlsCache所需参数的结构体。
+        :param request: Request instance for PushUrlsCache.
         :type request: :class:`tencentcloud.cdn.v20180606.models.PushUrlsCacheRequest`
         :rtype: :class:`tencentcloud.cdn.v20180606.models.PushUrlsCacheResponse`
 

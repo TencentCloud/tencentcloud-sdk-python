@@ -28,7 +28,7 @@ class DcClient(AbstractClient):
     def AcceptDirectConnectTunnel(self, request):
         """接受专用通道申请
 
-        :param request: 调用AcceptDirectConnectTunnel所需参数的结构体。
+        :param request: Request instance for AcceptDirectConnectTunnel.
         :type request: :class:`tencentcloud.dc.v20180410.models.AcceptDirectConnectTunnelRequest`
         :rtype: :class:`tencentcloud.dc.v20180410.models.AcceptDirectConnectTunnelResponse`
 
@@ -59,7 +59,7 @@ class DcClient(AbstractClient):
         账号要进行实名认证，否则不允许申请物理专线；
         若账户下存在欠费状态的物理专线，则不能申请更多的物理专线。
 
-        :param request: 调用CreateDirectConnect所需参数的结构体。
+        :param request: Request instance for CreateDirectConnect.
         :type request: :class:`tencentcloud.dc.v20180410.models.CreateDirectConnectRequest`
         :rtype: :class:`tencentcloud.dc.v20180410.models.CreateDirectConnectResponse`
 
@@ -87,7 +87,7 @@ class DcClient(AbstractClient):
     def CreateDirectConnectTunnel(self, request):
         """用于创建专用通道的接口
 
-        :param request: 调用CreateDirectConnectTunnel所需参数的结构体。
+        :param request: Request instance for CreateDirectConnectTunnel.
         :type request: :class:`tencentcloud.dc.v20180410.models.CreateDirectConnectTunnelRequest`
         :rtype: :class:`tencentcloud.dc.v20180410.models.CreateDirectConnectTunnelResponse`
 
@@ -116,7 +116,7 @@ class DcClient(AbstractClient):
         """删除物理专线。
         只能删除处于状态的物理专线。
 
-        :param request: 调用DeleteDirectConnect所需参数的结构体。
+        :param request: Request instance for DeleteDirectConnect.
         :type request: :class:`tencentcloud.dc.v20180410.models.DeleteDirectConnectRequest`
         :rtype: :class:`tencentcloud.dc.v20180410.models.DeleteDirectConnectResponse`
 
@@ -144,7 +144,7 @@ class DcClient(AbstractClient):
     def DeleteDirectConnectTunnel(self, request):
         """删除专用通道
 
-        :param request: 调用DeleteDirectConnectTunnel所需参数的结构体。
+        :param request: Request instance for DeleteDirectConnectTunnel.
         :type request: :class:`tencentcloud.dc.v20180410.models.DeleteDirectConnectTunnelRequest`
         :rtype: :class:`tencentcloud.dc.v20180410.models.DeleteDirectConnectTunnelResponse`
 
@@ -172,7 +172,7 @@ class DcClient(AbstractClient):
     def DescribeAccessPoints(self, request):
         """查询物理专线接入点
 
-        :param request: 调用DescribeAccessPoints所需参数的结构体。
+        :param request: Request instance for DescribeAccessPoints.
         :type request: :class:`tencentcloud.dc.v20180410.models.DescribeAccessPointsRequest`
         :rtype: :class:`tencentcloud.dc.v20180410.models.DescribeAccessPointsResponse`
 
@@ -200,7 +200,7 @@ class DcClient(AbstractClient):
     def DescribeDirectConnectTunnels(self, request):
         """用于查询专用通道列表。
 
-        :param request: 调用DescribeDirectConnectTunnels所需参数的结构体。
+        :param request: Request instance for DescribeDirectConnectTunnels.
         :type request: :class:`tencentcloud.dc.v20180410.models.DescribeDirectConnectTunnelsRequest`
         :rtype: :class:`tencentcloud.dc.v20180410.models.DescribeDirectConnectTunnelsResponse`
 
@@ -228,7 +228,7 @@ class DcClient(AbstractClient):
     def DescribeDirectConnects(self, request):
         """查询物理专线列表。
 
-        :param request: 调用DescribeDirectConnects所需参数的结构体。
+        :param request: Request instance for DescribeDirectConnects.
         :type request: :class:`tencentcloud.dc.v20180410.models.DescribeDirectConnectsRequest`
         :rtype: :class:`tencentcloud.dc.v20180410.models.DescribeDirectConnectsResponse`
 
@@ -256,7 +256,7 @@ class DcClient(AbstractClient):
     def ModifyDirectConnectAttribute(self, request):
         """修改物理专线的属性。
 
-        :param request: 调用ModifyDirectConnectAttribute所需参数的结构体。
+        :param request: Request instance for ModifyDirectConnectAttribute.
         :type request: :class:`tencentcloud.dc.v20180410.models.ModifyDirectConnectAttributeRequest`
         :rtype: :class:`tencentcloud.dc.v20180410.models.ModifyDirectConnectAttributeResponse`
 
@@ -284,7 +284,7 @@ class DcClient(AbstractClient):
     def ModifyDirectConnectTunnelAttribute(self, request):
         """修改专用通道属性
 
-        :param request: 调用ModifyDirectConnectTunnelAttribute所需参数的结构体。
+        :param request: Request instance for ModifyDirectConnectTunnelAttribute.
         :type request: :class:`tencentcloud.dc.v20180410.models.ModifyDirectConnectTunnelAttributeRequest`
         :rtype: :class:`tencentcloud.dc.v20180410.models.ModifyDirectConnectTunnelAttributeResponse`
 
@@ -312,7 +312,7 @@ class DcClient(AbstractClient):
     def RejectDirectConnectTunnel(self, request):
         """拒绝专用通道申请
 
-        :param request: 调用RejectDirectConnectTunnel所需参数的结构体。
+        :param request: Request instance for RejectDirectConnectTunnel.
         :type request: :class:`tencentcloud.dc.v20180410.models.RejectDirectConnectTunnelRequest`
         :rtype: :class:`tencentcloud.dc.v20180410.models.RejectDirectConnectTunnelResponse`
 

@@ -28,7 +28,7 @@ class VpcClient(AbstractClient):
     def AcceptAttachCcnInstances(self, request):
         """本接口（AcceptAttachCcnInstances）用于跨账号关联实例时，云联网所有者接受并同意关联操作。
 
-        :param request: 调用AcceptAttachCcnInstances所需参数的结构体。
+        :param request: Request instance for AcceptAttachCcnInstances.
         :type request: :class:`tencentcloud.vpc.v20170312.models.AcceptAttachCcnInstancesRequest`
         :rtype: :class:`tencentcloud.vpc.v20170312.models.AcceptAttachCcnInstancesResponse`
 
@@ -56,7 +56,7 @@ class VpcClient(AbstractClient):
     def AddBandwidthPackageResources(self, request):
         """接口用于添加带宽包资源，包括[弹性公网IP](https://cloud.tencent.com/document/product/213/1941)和[负载均衡](https://cloud.tencent.com/document/product/214/517)等
 
-        :param request: 调用AddBandwidthPackageResources所需参数的结构体。
+        :param request: Request instance for AddBandwidthPackageResources.
         :type request: :class:`tencentcloud.vpc.v20170312.models.AddBandwidthPackageResourcesRequest`
         :rtype: :class:`tencentcloud.vpc.v20170312.models.AddBandwidthPackageResourcesResponse`
 
@@ -86,7 +86,7 @@ class VpcClient(AbstractClient):
         2. 支持在同一个转换实例下批量添加转换规则，一个账户在一个地域最多50个。
         3. 一个完整的转换规则包括vip6:vport6:protocol:vip:vport，其中vip6:vport6:protocol必须是唯一。
 
-        :param request: 调用AddIp6Rules所需参数的结构体。
+        :param request: Request instance for AddIp6Rules.
         :type request: :class:`tencentcloud.vpc.v20170312.models.AddIp6RulesRequest`
         :rtype: :class:`tencentcloud.vpc.v20170312.models.AddIp6RulesResponse`
 
@@ -117,7 +117,7 @@ class VpcClient(AbstractClient):
         * 您的 EIP 与腾讯云账户相关联，而不是与某个实例相关联。在您选择显式释放该地址，或欠费超过24小时之前，它会一直与您的腾讯云账户保持关联。
         * 一个腾讯云账户在每个地域能申请的 EIP 最大配额有所限制，可参见 [EIP 产品简介](https://cloud.tencent.com/document/product/213/5733)，上述配额可通过 DescribeAddressQuota 接口获取。
 
-        :param request: 调用AllocateAddresses所需参数的结构体。
+        :param request: Request instance for AllocateAddresses.
         :type request: :class:`tencentcloud.vpc.v20170312.models.AllocateAddressesRequest`
         :rtype: :class:`tencentcloud.vpc.v20170312.models.AllocateAddressesResponse`
 
@@ -145,7 +145,7 @@ class VpcClient(AbstractClient):
     def AllocateIp6AddressesBandwidth(self, request):
         """该接口用于给IPv6地址初次分配公网带宽
 
-        :param request: 调用AllocateIp6AddressesBandwidth所需参数的结构体。
+        :param request: Request instance for AllocateIp6AddressesBandwidth.
         :type request: :class:`tencentcloud.vpc.v20170312.models.AllocateIp6AddressesBandwidthRequest`
         :rtype: :class:`tencentcloud.vpc.v20170312.models.AllocateIp6AddressesBandwidthResponse`
 
@@ -178,7 +178,7 @@ class VpcClient(AbstractClient):
         * 地址必须要在弹性网卡所在子网内，而且不能被占用。
         * 在弹性网卡上申请一个到多个辅助`IPv6`地址，接口会在弹性网卡所在子网段内返回指定数量的辅助`IPv6`地址。
 
-        :param request: 调用AssignIpv6Addresses所需参数的结构体。
+        :param request: Request instance for AssignIpv6Addresses.
         :type request: :class:`tencentcloud.vpc.v20170312.models.AssignIpv6AddressesRequest`
         :rtype: :class:`tencentcloud.vpc.v20170312.models.AssignIpv6AddressesResponse`
 
@@ -208,7 +208,7 @@ class VpcClient(AbstractClient):
         * 使用本接口前，您需要已有VPC实例，如果没有可通过接口<a href="https://cloud.tencent.com/document/api/215/15774" title="CreateVpc" target="_blank">CreateVpc</a>创建。
         * 每个VPC只能申请一个IPv6网段
 
-        :param request: 调用AssignIpv6CidrBlock所需参数的结构体。
+        :param request: Request instance for AssignIpv6CidrBlock.
         :type request: :class:`tencentcloud.vpc.v20170312.models.AssignIpv6CidrBlockRequest`
         :rtype: :class:`tencentcloud.vpc.v20170312.models.AssignIpv6CidrBlockResponse`
 
@@ -238,7 +238,7 @@ class VpcClient(AbstractClient):
         * 给子网分配 `IPv6` 网段，要求子网所属 `VPC` 已获得 `IPv6` 网段。如果尚未分配，请先通过接口 `AssignIpv6CidrBlock` 给子网所属 `VPC` 分配一个 `IPv6` 网段。否则无法分配 `IPv6` 子网段。
         * 每个子网只能分配一个IPv6网段。
 
-        :param request: 调用AssignIpv6SubnetCidrBlock所需参数的结构体。
+        :param request: Request instance for AssignIpv6SubnetCidrBlock.
         :type request: :class:`tencentcloud.vpc.v20170312.models.AssignIpv6SubnetCidrBlockRequest`
         :rtype: :class:`tencentcloud.vpc.v20170312.models.AssignIpv6SubnetCidrBlockResponse`
 
@@ -269,7 +269,7 @@ class VpcClient(AbstractClient):
         * 可以指定内网IP地址申请，内网IP地址类型不能为主IP，主IP已存在，不能修改，内网IP必须要弹性网卡所在子网内，而且不能被占用。
         * 在弹性网卡上申请一个到多个辅助内网IP，接口会在弹性网卡所在子网网段内返回指定数量的辅助内网IP。
 
-        :param request: 调用AssignPrivateIpAddresses所需参数的结构体。
+        :param request: Request instance for AssignPrivateIpAddresses.
         :type request: :class:`tencentcloud.vpc.v20170312.models.AssignPrivateIpAddressesRequest`
         :rtype: :class:`tencentcloud.vpc.v20170312.models.AssignPrivateIpAddressesResponse`
 
@@ -303,7 +303,7 @@ class VpcClient(AbstractClient):
         * EIP 如果欠费或被封堵，则不能被绑定。
         * 只有状态为 UNBIND 的 EIP 才能够被绑定。
 
-        :param request: 调用AssociateAddress所需参数的结构体。
+        :param request: Request instance for AssociateAddress.
         :type request: :class:`tencentcloud.vpc.v20170312.models.AssociateAddressRequest`
         :rtype: :class:`tencentcloud.vpc.v20170312.models.AssociateAddressResponse`
 
@@ -331,7 +331,7 @@ class VpcClient(AbstractClient):
     def AssociateNatGatewayAddress(self, request):
         """本接口(AssociateNatGatewayAddress)用于NAT网关绑定弹性IP（EIP）。
 
-        :param request: 调用AssociateNatGatewayAddress所需参数的结构体。
+        :param request: Request instance for AssociateNatGatewayAddress.
         :type request: :class:`tencentcloud.vpc.v20170312.models.AssociateNatGatewayAddressRequest`
         :rtype: :class:`tencentcloud.vpc.v20170312.models.AssociateNatGatewayAddressResponse`
 
@@ -360,7 +360,7 @@ class VpcClient(AbstractClient):
         """本接口（AttachCcnInstances）用于将网络实例加载到云联网实例中，网络实例包括VPC和专线网关。<br />
         每个云联网能够关联的网络实例个数是有限的，详请参考产品文档。如果需要扩充请联系在线客服。
 
-        :param request: 调用AttachCcnInstances所需参数的结构体。
+        :param request: Request instance for AttachCcnInstances.
         :type request: :class:`tencentcloud.vpc.v20170312.models.AttachCcnInstancesRequest`
         :rtype: :class:`tencentcloud.vpc.v20170312.models.AttachCcnInstancesResponse`
 
@@ -390,7 +390,7 @@ class VpcClient(AbstractClient):
         * 私有网络和基础网络设备必须在同一个地域。
         * 私有网络和基础网络的区别详见vpc产品文档-<a href="https://cloud.tencent.com/document/product/215/535#2.-.E7.A7.81.E6.9C.89.E7.BD.91.E7.BB.9C.E4.B8.8E.E5.9F.BA.E7.A1.80.E7.BD.91.E7.BB.9C">私有网络与基础网络</a>。
 
-        :param request: 调用AttachClassicLinkVpc所需参数的结构体。
+        :param request: Request instance for AttachClassicLinkVpc.
         :type request: :class:`tencentcloud.vpc.v20170312.models.AttachClassicLinkVpcRequest`
         :rtype: :class:`tencentcloud.vpc.v20170312.models.AttachClassicLinkVpcResponse`
 
@@ -422,7 +422,7 @@ class VpcClient(AbstractClient):
         * 只有运行中或者已关机状态的云主机才能绑定弹性网卡，查看云主机状态详见<a href="https://cloud.tencent.com/document/api/213/9452#instance_state">腾讯云主机信息</a>。
         * 弹性网卡绑定的云主机必须是私有网络的，而且云主机所在可用区必须和弹性网卡子网的可用区相同。
 
-        :param request: 调用AttachNetworkInterface所需参数的结构体。
+        :param request: Request instance for AttachNetworkInterface.
         :type request: :class:`tencentcloud.vpc.v20170312.models.AttachNetworkInterfaceRequest`
         :rtype: :class:`tencentcloud.vpc.v20170312.models.AttachNetworkInterfaceResponse`
 
@@ -450,7 +450,7 @@ class VpcClient(AbstractClient):
     def CheckNetDetectState(self, request):
         """本接口(CheckNetDetectState)用于验证网络探测。
 
-        :param request: 调用CheckNetDetectState所需参数的结构体。
+        :param request: Request instance for CheckNetDetectState.
         :type request: :class:`tencentcloud.vpc.v20170312.models.CheckNetDetectStateRequest`
         :rtype: :class:`tencentcloud.vpc.v20170312.models.CheckNetDetectStateResponse`
 
@@ -478,7 +478,7 @@ class VpcClient(AbstractClient):
     def CreateAddressTemplate(self, request):
         """本接口（CreateAddressTemplate）用于创建IP地址模版
 
-        :param request: 调用CreateAddressTemplate所需参数的结构体。
+        :param request: Request instance for CreateAddressTemplate.
         :type request: :class:`tencentcloud.vpc.v20170312.models.CreateAddressTemplateRequest`
         :rtype: :class:`tencentcloud.vpc.v20170312.models.CreateAddressTemplateResponse`
 
@@ -506,7 +506,7 @@ class VpcClient(AbstractClient):
     def CreateAddressTemplateGroup(self, request):
         """本接口（CreateAddressTemplateGroup）用于创建IP地址模版集合
 
-        :param request: 调用CreateAddressTemplateGroup所需参数的结构体。
+        :param request: Request instance for CreateAddressTemplateGroup.
         :type request: :class:`tencentcloud.vpc.v20170312.models.CreateAddressTemplateGroupRequest`
         :rtype: :class:`tencentcloud.vpc.v20170312.models.CreateAddressTemplateGroupResponse`
 
@@ -534,7 +534,7 @@ class VpcClient(AbstractClient):
     def CreateBandwidthPackage(self, request):
         """接口支持创建[设备带宽包](https://cloud.tencent.com/document/product/684/15246#.E8.AE.BE.E5.A4.87.E5.B8.A6.E5.AE.BD.E5.8C.85)和[ip带宽包](https://cloud.tencent.com/document/product/684/15246#ip-.E5.B8.A6.E5.AE.BD.E5.8C.85)
 
-        :param request: 调用CreateBandwidthPackage所需参数的结构体。
+        :param request: Request instance for CreateBandwidthPackage.
         :type request: :class:`tencentcloud.vpc.v20170312.models.CreateBandwidthPackageRequest`
         :rtype: :class:`tencentcloud.vpc.v20170312.models.CreateBandwidthPackageResponse`
 
@@ -563,7 +563,7 @@ class VpcClient(AbstractClient):
         """本接口（CreateCcn）用于创建云联网（CCN）。<br />
         每个账号能创建的云联网实例个数是有限的，详请参考产品文档。如果需要扩充请联系在线客服。
 
-        :param request: 调用CreateCcn所需参数的结构体。
+        :param request: Request instance for CreateCcn.
         :type request: :class:`tencentcloud.vpc.v20170312.models.CreateCcnRequest`
         :rtype: :class:`tencentcloud.vpc.v20170312.models.CreateCcnResponse`
 
@@ -591,7 +591,7 @@ class VpcClient(AbstractClient):
     def CreateCustomerGateway(self, request):
         """本接口（CreateCustomerGateway）用于创建对端网关。
 
-        :param request: 调用CreateCustomerGateway所需参数的结构体。
+        :param request: Request instance for CreateCustomerGateway.
         :type request: :class:`tencentcloud.vpc.v20170312.models.CreateCustomerGatewayRequest`
         :rtype: :class:`tencentcloud.vpc.v20170312.models.CreateCustomerGatewayResponse`
 
@@ -627,7 +627,7 @@ class VpcClient(AbstractClient):
 
         您也可以通过 Force 参数，强制返回默认VPC
 
-        :param request: 调用CreateDefaultVpc所需参数的结构体。
+        :param request: Request instance for CreateDefaultVpc.
         :type request: :class:`tencentcloud.vpc.v20170312.models.CreateDefaultVpcRequest`
         :rtype: :class:`tencentcloud.vpc.v20170312.models.CreateDefaultVpcResponse`
 
@@ -655,7 +655,7 @@ class VpcClient(AbstractClient):
     def CreateDirectConnectGateway(self, request):
         """本接口（CreateDirectConnectGateway）用于创建专线网关。
 
-        :param request: 调用CreateDirectConnectGateway所需参数的结构体。
+        :param request: Request instance for CreateDirectConnectGateway.
         :type request: :class:`tencentcloud.vpc.v20170312.models.CreateDirectConnectGatewayRequest`
         :rtype: :class:`tencentcloud.vpc.v20170312.models.CreateDirectConnectGatewayResponse`
 
@@ -683,7 +683,7 @@ class VpcClient(AbstractClient):
     def CreateDirectConnectGatewayCcnRoutes(self, request):
         """本接口（CreateDirectConnectGatewayCcnRoutes）用于创建专线网关的云联网路由（IDC网段）
 
-        :param request: 调用CreateDirectConnectGatewayCcnRoutes所需参数的结构体。
+        :param request: Request instance for CreateDirectConnectGatewayCcnRoutes.
         :type request: :class:`tencentcloud.vpc.v20170312.models.CreateDirectConnectGatewayCcnRoutesRequest`
         :rtype: :class:`tencentcloud.vpc.v20170312.models.CreateDirectConnectGatewayCcnRoutesResponse`
 
@@ -711,7 +711,7 @@ class VpcClient(AbstractClient):
     def CreateFlowLog(self, request):
         """本接口（CreateFlowLog）用于创建流日志
 
-        :param request: 调用CreateFlowLog所需参数的结构体。
+        :param request: Request instance for CreateFlowLog.
         :type request: :class:`tencentcloud.vpc.v20170312.models.CreateFlowLogRequest`
         :rtype: :class:`tencentcloud.vpc.v20170312.models.CreateFlowLogResponse`
 
@@ -739,7 +739,7 @@ class VpcClient(AbstractClient):
     def CreateHaVip(self, request):
         """本接口（CreateHaVip）用于创建高可用虚拟IP（HAVIP）
 
-        :param request: 调用CreateHaVip所需参数的结构体。
+        :param request: Request instance for CreateHaVip.
         :type request: :class:`tencentcloud.vpc.v20170312.models.CreateHaVipRequest`
         :rtype: :class:`tencentcloud.vpc.v20170312.models.CreateHaVipResponse`
 
@@ -768,7 +768,7 @@ class VpcClient(AbstractClient):
         """1. 该接口用于创建IPV6转换IPV4实例，支持批量
         2. 同一个账户在一个地域最多允许创建10个转换实例
 
-        :param request: 调用CreateIp6Translators所需参数的结构体。
+        :param request: Request instance for CreateIp6Translators.
         :type request: :class:`tencentcloud.vpc.v20170312.models.CreateIp6TranslatorsRequest`
         :rtype: :class:`tencentcloud.vpc.v20170312.models.CreateIp6TranslatorsResponse`
 
@@ -796,7 +796,7 @@ class VpcClient(AbstractClient):
     def CreateNatGateway(self, request):
         """本接口(CreateNatGateway)用于创建NAT网关。
 
-        :param request: 调用CreateNatGateway所需参数的结构体。
+        :param request: Request instance for CreateNatGateway.
         :type request: :class:`tencentcloud.vpc.v20170312.models.CreateNatGatewayRequest`
         :rtype: :class:`tencentcloud.vpc.v20170312.models.CreateNatGatewayResponse`
 
@@ -824,7 +824,7 @@ class VpcClient(AbstractClient):
     def CreateNatGatewayDestinationIpPortTranslationNatRule(self, request):
         """本接口(CreateNatGatewayDestinationIpPortTranslationNatRule)用于创建NAT网关端口转发规则。
 
-        :param request: 调用CreateNatGatewayDestinationIpPortTranslationNatRule所需参数的结构体。
+        :param request: Request instance for CreateNatGatewayDestinationIpPortTranslationNatRule.
         :type request: :class:`tencentcloud.vpc.v20170312.models.CreateNatGatewayDestinationIpPortTranslationNatRuleRequest`
         :rtype: :class:`tencentcloud.vpc.v20170312.models.CreateNatGatewayDestinationIpPortTranslationNatRuleResponse`
 
@@ -852,7 +852,7 @@ class VpcClient(AbstractClient):
     def CreateNetDetect(self, request):
         """本接口(CreateNetDetect)用于创建网络探测。
 
-        :param request: 调用CreateNetDetect所需参数的结构体。
+        :param request: Request instance for CreateNetDetect.
         :type request: :class:`tencentcloud.vpc.v20170312.models.CreateNetDetectRequest`
         :rtype: :class:`tencentcloud.vpc.v20170312.models.CreateNetDetectResponse`
 
@@ -885,7 +885,7 @@ class VpcClient(AbstractClient):
         * 创建弹性网卡同时可以绑定已有安全组。
         * 创建弹性网卡同时可以绑定标签, 应答里的标签列表代表添加成功的标签。
 
-        :param request: 调用CreateNetworkInterface所需参数的结构体。
+        :param request: Request instance for CreateNetworkInterface.
         :type request: :class:`tencentcloud.vpc.v20170312.models.CreateNetworkInterfaceRequest`
         :rtype: :class:`tencentcloud.vpc.v20170312.models.CreateNetworkInterfaceResponse`
 
@@ -914,7 +914,7 @@ class VpcClient(AbstractClient):
         """本接口(CreateRouteTable)用于创建路由表。
         * 创建了VPC后，系统会创建一个默认路由表，所有新建的子网都会关联到默认路由表。默认情况下您可以直接使用默认路由表来管理您的路由策略。当您的路由策略较多时，您可以调用创建路由表接口创建更多路由表管理您的路由策略。
 
-        :param request: 调用CreateRouteTable所需参数的结构体。
+        :param request: Request instance for CreateRouteTable.
         :type request: :class:`tencentcloud.vpc.v20170312.models.CreateRouteTableRequest`
         :rtype: :class:`tencentcloud.vpc.v20170312.models.CreateRouteTableResponse`
 
@@ -943,7 +943,7 @@ class VpcClient(AbstractClient):
         """本接口(CreateRoutes)用于创建路由策略。
         * 向指定路由表批量新增路由策略。
 
-        :param request: 调用CreateRoutes所需参数的结构体。
+        :param request: Request instance for CreateRoutes.
         :type request: :class:`tencentcloud.vpc.v20170312.models.CreateRoutesRequest`
         :rtype: :class:`tencentcloud.vpc.v20170312.models.CreateRoutesResponse`
 
@@ -973,7 +973,7 @@ class VpcClient(AbstractClient):
         * 每个账户下每个地域的每个项目的<a href="https://cloud.tencent.com/document/product/213/500#2.-.E5.AE.89.E5.85.A8.E7.BB.84.E7.9A.84.E9.99.90.E5.88.B6">安全组数量限制</a>。
         * 新建的安全组的入站和出站规则默认都是全部拒绝，在创建后通常您需要再调用CreateSecurityGroupPolicies将安全组的规则设置为需要的规则。
 
-        :param request: 调用CreateSecurityGroup所需参数的结构体。
+        :param request: Request instance for CreateSecurityGroup.
         :type request: :class:`tencentcloud.vpc.v20170312.models.CreateSecurityGroupRequest`
         :rtype: :class:`tencentcloud.vpc.v20170312.models.CreateSecurityGroupResponse`
 
@@ -1011,7 +1011,7 @@ class VpcClient(AbstractClient):
         * CidrBlock, Ipv6CidrBlock, SecurityGroupId, AddressTemplate四者是排他关系，不允许同时输入，Protocol + Port和ServiceTemplate二者是排他关系，不允许同时输入。
         * 一次请求中只能创建单个方向的规则, 如果需要指定索引（PolicyIndex）参数, 多条规则的索引必须一致。
 
-        :param request: 调用CreateSecurityGroupPolicies所需参数的结构体。
+        :param request: Request instance for CreateSecurityGroupPolicies.
         :type request: :class:`tencentcloud.vpc.v20170312.models.CreateSecurityGroupPoliciesRequest`
         :rtype: :class:`tencentcloud.vpc.v20170312.models.CreateSecurityGroupPoliciesResponse`
 
@@ -1039,7 +1039,7 @@ class VpcClient(AbstractClient):
     def CreateServiceTemplate(self, request):
         """本接口（CreateServiceTemplate）用于创建协议端口模板
 
-        :param request: 调用CreateServiceTemplate所需参数的结构体。
+        :param request: Request instance for CreateServiceTemplate.
         :type request: :class:`tencentcloud.vpc.v20170312.models.CreateServiceTemplateRequest`
         :rtype: :class:`tencentcloud.vpc.v20170312.models.CreateServiceTemplateResponse`
 
@@ -1067,7 +1067,7 @@ class VpcClient(AbstractClient):
     def CreateServiceTemplateGroup(self, request):
         """本接口（CreateServiceTemplateGroup）用于创建协议端口模板集合
 
-        :param request: 调用CreateServiceTemplateGroup所需参数的结构体。
+        :param request: Request instance for CreateServiceTemplateGroup.
         :type request: :class:`tencentcloud.vpc.v20170312.models.CreateServiceTemplateGroupRequest`
         :rtype: :class:`tencentcloud.vpc.v20170312.models.CreateServiceTemplateGroupResponse`
 
@@ -1100,7 +1100,7 @@ class VpcClient(AbstractClient):
         * 同一个VPC内，多个子网的网段不能重叠。
         * 子网创建后会自动关联到默认路由表。
 
-        :param request: 调用CreateSubnet所需参数的结构体。
+        :param request: Request instance for CreateSubnet.
         :type request: :class:`tencentcloud.vpc.v20170312.models.CreateSubnetRequest`
         :rtype: :class:`tencentcloud.vpc.v20170312.models.CreateSubnetResponse`
 
@@ -1133,7 +1133,7 @@ class VpcClient(AbstractClient):
         * 同一个VPC内，多个子网的网段不能重叠。
         * 子网创建后会自动关联到默认路由表。
 
-        :param request: 调用CreateSubnets所需参数的结构体。
+        :param request: Request instance for CreateSubnets.
         :type request: :class:`tencentcloud.vpc.v20170312.models.CreateSubnetsRequest`
         :rtype: :class:`tencentcloud.vpc.v20170312.models.CreateSubnetsResponse`
 
@@ -1163,7 +1163,7 @@ class VpcClient(AbstractClient):
         * 用户可以创建的最小网段子网掩码为28（有16个IP地址），最大网段子网掩码为16（65,536个IP地址）,如果规划VPC网段请参见VPC网段规划说明。
         * 同一个地域能创建的VPC资源个数也是有限制的，详见 <a href="https://cloud.tencent.com/doc/product/215/537" title="VPC使用限制">VPC使用限制</a>,如果需要扩充请联系在线客服。
 
-        :param request: 调用CreateVpc所需参数的结构体。
+        :param request: Request instance for CreateVpc.
         :type request: :class:`tencentcloud.vpc.v20170312.models.CreateVpcRequest`
         :rtype: :class:`tencentcloud.vpc.v20170312.models.CreateVpcResponse`
 
@@ -1191,7 +1191,7 @@ class VpcClient(AbstractClient):
     def CreateVpnConnection(self, request):
         """本接口（CreateVpnConnection）用于创建VPN通道。
 
-        :param request: 调用CreateVpnConnection所需参数的结构体。
+        :param request: Request instance for CreateVpnConnection.
         :type request: :class:`tencentcloud.vpc.v20170312.models.CreateVpnConnectionRequest`
         :rtype: :class:`tencentcloud.vpc.v20170312.models.CreateVpnConnectionResponse`
 
@@ -1219,7 +1219,7 @@ class VpcClient(AbstractClient):
     def CreateVpnGateway(self, request):
         """本接口（CreateVpnGateway）用于创建VPN网关。
 
-        :param request: 调用CreateVpnGateway所需参数的结构体。
+        :param request: Request instance for CreateVpnGateway.
         :type request: :class:`tencentcloud.vpc.v20170312.models.CreateVpnGatewayRequest`
         :rtype: :class:`tencentcloud.vpc.v20170312.models.CreateVpnGatewayResponse`
 
@@ -1247,7 +1247,7 @@ class VpcClient(AbstractClient):
     def DeleteAddressTemplate(self, request):
         """本接口（DeleteAddressTemplate）用于删除IP地址模板
 
-        :param request: 调用DeleteAddressTemplate所需参数的结构体。
+        :param request: Request instance for DeleteAddressTemplate.
         :type request: :class:`tencentcloud.vpc.v20170312.models.DeleteAddressTemplateRequest`
         :rtype: :class:`tencentcloud.vpc.v20170312.models.DeleteAddressTemplateResponse`
 
@@ -1275,7 +1275,7 @@ class VpcClient(AbstractClient):
     def DeleteAddressTemplateGroup(self, request):
         """本接口（DeleteAddressTemplateGroup）用于删除IP地址模板集合
 
-        :param request: 调用DeleteAddressTemplateGroup所需参数的结构体。
+        :param request: Request instance for DeleteAddressTemplateGroup.
         :type request: :class:`tencentcloud.vpc.v20170312.models.DeleteAddressTemplateGroupRequest`
         :rtype: :class:`tencentcloud.vpc.v20170312.models.DeleteAddressTemplateGroupResponse`
 
@@ -1303,7 +1303,7 @@ class VpcClient(AbstractClient):
     def DeleteBandwidthPackage(self, request):
         """接口支持删除共享带宽包，包括[设备带宽包](https://cloud.tencent.com/document/product/684/15246#.E8.AE.BE.E5.A4.87.E5.B8.A6.E5.AE.BD.E5.8C.85)和[ip带宽包](https://cloud.tencent.com/document/product/684/15246#ip-.E5.B8.A6.E5.AE.BD.E5.8C.85)
 
-        :param request: 调用DeleteBandwidthPackage所需参数的结构体。
+        :param request: Request instance for DeleteBandwidthPackage.
         :type request: :class:`tencentcloud.vpc.v20170312.models.DeleteBandwidthPackageRequest`
         :rtype: :class:`tencentcloud.vpc.v20170312.models.DeleteBandwidthPackageResponse`
 
@@ -1333,7 +1333,7 @@ class VpcClient(AbstractClient):
         * 删除后，云联网关联的所有实例间路由将被删除，网络将会中断，请务必确认
         * 删除云联网是不可逆的操作，请谨慎处理。
 
-        :param request: 调用DeleteCcn所需参数的结构体。
+        :param request: Request instance for DeleteCcn.
         :type request: :class:`tencentcloud.vpc.v20170312.models.DeleteCcnRequest`
         :rtype: :class:`tencentcloud.vpc.v20170312.models.DeleteCcnResponse`
 
@@ -1361,7 +1361,7 @@ class VpcClient(AbstractClient):
     def DeleteCustomerGateway(self, request):
         """本接口（DeleteCustomerGateway）用于删除对端网关。
 
-        :param request: 调用DeleteCustomerGateway所需参数的结构体。
+        :param request: Request instance for DeleteCustomerGateway.
         :type request: :class:`tencentcloud.vpc.v20170312.models.DeleteCustomerGatewayRequest`
         :rtype: :class:`tencentcloud.vpc.v20170312.models.DeleteCustomerGatewayResponse`
 
@@ -1392,7 +1392,7 @@ class VpcClient(AbstractClient):
         <li>删除专线网关后，系统会删除路由表中跟该专线网关相关的路由策略。</li>
         本接口是异步完成，如需查询异步任务执行结果，请使用本接口返回的`RequestId`轮询`QueryTask`接口
 
-        :param request: 调用DeleteDirectConnectGateway所需参数的结构体。
+        :param request: Request instance for DeleteDirectConnectGateway.
         :type request: :class:`tencentcloud.vpc.v20170312.models.DeleteDirectConnectGatewayRequest`
         :rtype: :class:`tencentcloud.vpc.v20170312.models.DeleteDirectConnectGatewayResponse`
 
@@ -1420,7 +1420,7 @@ class VpcClient(AbstractClient):
     def DeleteDirectConnectGatewayCcnRoutes(self, request):
         """本接口（DeleteDirectConnectGatewayCcnRoutes）用于删除专线网关的云联网路由（IDC网段）
 
-        :param request: 调用DeleteDirectConnectGatewayCcnRoutes所需参数的结构体。
+        :param request: Request instance for DeleteDirectConnectGatewayCcnRoutes.
         :type request: :class:`tencentcloud.vpc.v20170312.models.DeleteDirectConnectGatewayCcnRoutesRequest`
         :rtype: :class:`tencentcloud.vpc.v20170312.models.DeleteDirectConnectGatewayCcnRoutesResponse`
 
@@ -1448,7 +1448,7 @@ class VpcClient(AbstractClient):
     def DeleteFlowLog(self, request):
         """本接口（DeleteFlowLog）用于删除流日志
 
-        :param request: 调用DeleteFlowLog所需参数的结构体。
+        :param request: Request instance for DeleteFlowLog.
         :type request: :class:`tencentcloud.vpc.v20170312.models.DeleteFlowLogRequest`
         :rtype: :class:`tencentcloud.vpc.v20170312.models.DeleteFlowLogResponse`
 
@@ -1477,7 +1477,7 @@ class VpcClient(AbstractClient):
         """本接口（DeleteHaVip）用于删除高可用虚拟IP（HAVIP）<br />
         本接口是异步完成，如需查询异步任务执行结果，请使用本接口返回的`RequestId`轮询`QueryTask`接口
 
-        :param request: 调用DeleteHaVip所需参数的结构体。
+        :param request: Request instance for DeleteHaVip.
         :type request: :class:`tencentcloud.vpc.v20170312.models.DeleteHaVipRequest`
         :rtype: :class:`tencentcloud.vpc.v20170312.models.DeleteHaVipResponse`
 
@@ -1506,7 +1506,7 @@ class VpcClient(AbstractClient):
         """1. 该接口用于释放IPV6转换实例，支持批量。
         2.  如果IPV6转换实例建立有转换规则，会一并删除。
 
-        :param request: 调用DeleteIp6Translators所需参数的结构体。
+        :param request: Request instance for DeleteIp6Translators.
         :type request: :class:`tencentcloud.vpc.v20170312.models.DeleteIp6TranslatorsRequest`
         :rtype: :class:`tencentcloud.vpc.v20170312.models.DeleteIp6TranslatorsResponse`
 
@@ -1535,7 +1535,7 @@ class VpcClient(AbstractClient):
         """本接口（DeleteNatGateway）用于删除NAT网关。
         删除 NAT 网关后，系统会自动删除路由表中包含此 NAT 网关的路由项，同时也会解绑弹性公网IP（EIP）。
 
-        :param request: 调用DeleteNatGateway所需参数的结构体。
+        :param request: Request instance for DeleteNatGateway.
         :type request: :class:`tencentcloud.vpc.v20170312.models.DeleteNatGatewayRequest`
         :rtype: :class:`tencentcloud.vpc.v20170312.models.DeleteNatGatewayResponse`
 
@@ -1563,7 +1563,7 @@ class VpcClient(AbstractClient):
     def DeleteNatGatewayDestinationIpPortTranslationNatRule(self, request):
         """本接口（DeleteNatGatewayDestinationIpPortTranslationNatRule）用于删除NAT网关端口转发规则。
 
-        :param request: 调用DeleteNatGatewayDestinationIpPortTranslationNatRule所需参数的结构体。
+        :param request: Request instance for DeleteNatGatewayDestinationIpPortTranslationNatRule.
         :type request: :class:`tencentcloud.vpc.v20170312.models.DeleteNatGatewayDestinationIpPortTranslationNatRuleRequest`
         :rtype: :class:`tencentcloud.vpc.v20170312.models.DeleteNatGatewayDestinationIpPortTranslationNatRuleResponse`
 
@@ -1591,7 +1591,7 @@ class VpcClient(AbstractClient):
     def DeleteNetDetect(self, request):
         """本接口(DeleteNetDetect)用于删除网络探测实例。
 
-        :param request: 调用DeleteNetDetect所需参数的结构体。
+        :param request: Request instance for DeleteNetDetect.
         :type request: :class:`tencentcloud.vpc.v20170312.models.DeleteNetDetectRequest`
         :rtype: :class:`tencentcloud.vpc.v20170312.models.DeleteNetDetectResponse`
 
@@ -1621,7 +1621,7 @@ class VpcClient(AbstractClient):
         * 弹性网卡上绑定了云服务器时，不能被删除。
         * 删除指定弹性网卡，弹性网卡必须先和子机解绑才能删除。删除之后弹性网卡上所有内网IP都将被退还。
 
-        :param request: 调用DeleteNetworkInterface所需参数的结构体。
+        :param request: Request instance for DeleteNetworkInterface.
         :type request: :class:`tencentcloud.vpc.v20170312.models.DeleteNetworkInterfaceRequest`
         :rtype: :class:`tencentcloud.vpc.v20170312.models.DeleteNetworkInterfaceResponse`
 
@@ -1649,7 +1649,7 @@ class VpcClient(AbstractClient):
     def DeleteRouteTable(self, request):
         """删除路由表
 
-        :param request: 调用DeleteRouteTable所需参数的结构体。
+        :param request: Request instance for DeleteRouteTable.
         :type request: :class:`tencentcloud.vpc.v20170312.models.DeleteRouteTableRequest`
         :rtype: :class:`tencentcloud.vpc.v20170312.models.DeleteRouteTableResponse`
 
@@ -1677,7 +1677,7 @@ class VpcClient(AbstractClient):
     def DeleteRoutes(self, request):
         """本接口(DeleteRoutes)用于对某个路由表批量删除路由策略（Route）。
 
-        :param request: 调用DeleteRoutes所需参数的结构体。
+        :param request: Request instance for DeleteRoutes.
         :type request: :class:`tencentcloud.vpc.v20170312.models.DeleteRoutesRequest`
         :rtype: :class:`tencentcloud.vpc.v20170312.models.DeleteRoutesResponse`
 
@@ -1708,7 +1708,7 @@ class VpcClient(AbstractClient):
         * 安全组实例ID如果在其他安全组的规则中被引用，则无法直接删除。这种情况下，需要先进行规则修改，再删除安全组。
         * 删除的安全组无法再找回，请谨慎调用。
 
-        :param request: 调用DeleteSecurityGroup所需参数的结构体。
+        :param request: Request instance for DeleteSecurityGroup.
         :type request: :class:`tencentcloud.vpc.v20170312.models.DeleteSecurityGroupRequest`
         :rtype: :class:`tencentcloud.vpc.v20170312.models.DeleteSecurityGroupResponse`
 
@@ -1737,7 +1737,7 @@ class VpcClient(AbstractClient):
         """本接口（DeleteSecurityGroupPolicies）用于用于删除安全组规则（SecurityGroupPolicy）。
         * SecurityGroupPolicySet.Version 用于指定要操作的安全组的版本。传入 Version 版本号若不等于当前安全组的最新版本，将返回失败；若不传 Version 则直接删除指定PolicyIndex的规则。
 
-        :param request: 调用DeleteSecurityGroupPolicies所需参数的结构体。
+        :param request: Request instance for DeleteSecurityGroupPolicies.
         :type request: :class:`tencentcloud.vpc.v20170312.models.DeleteSecurityGroupPoliciesRequest`
         :rtype: :class:`tencentcloud.vpc.v20170312.models.DeleteSecurityGroupPoliciesResponse`
 
@@ -1765,7 +1765,7 @@ class VpcClient(AbstractClient):
     def DeleteServiceTemplate(self, request):
         """本接口（DeleteServiceTemplate）用于删除协议端口模板
 
-        :param request: 调用DeleteServiceTemplate所需参数的结构体。
+        :param request: Request instance for DeleteServiceTemplate.
         :type request: :class:`tencentcloud.vpc.v20170312.models.DeleteServiceTemplateRequest`
         :rtype: :class:`tencentcloud.vpc.v20170312.models.DeleteServiceTemplateResponse`
 
@@ -1793,7 +1793,7 @@ class VpcClient(AbstractClient):
     def DeleteServiceTemplateGroup(self, request):
         """本接口（DeleteServiceTemplateGroup）用于删除协议端口模板集合
 
-        :param request: 调用DeleteServiceTemplateGroup所需参数的结构体。
+        :param request: Request instance for DeleteServiceTemplateGroup.
         :type request: :class:`tencentcloud.vpc.v20170312.models.DeleteServiceTemplateGroupRequest`
         :rtype: :class:`tencentcloud.vpc.v20170312.models.DeleteServiceTemplateGroupResponse`
 
@@ -1822,7 +1822,7 @@ class VpcClient(AbstractClient):
         """本接口（DeleteSubnet）用于用于删除子网(Subnet)。
         * 删除子网前，请清理该子网下所有资源，包括云服务器、负载均衡、云数据、noSql、弹性网卡等资源。
 
-        :param request: 调用DeleteSubnet所需参数的结构体。
+        :param request: Request instance for DeleteSubnet.
         :type request: :class:`tencentcloud.vpc.v20170312.models.DeleteSubnetRequest`
         :rtype: :class:`tencentcloud.vpc.v20170312.models.DeleteSubnetResponse`
 
@@ -1852,7 +1852,7 @@ class VpcClient(AbstractClient):
         * 删除前请确保 VPC 内已经没有相关资源，例如云服务器、云数据库、NoSQL、VPN网关、专线网关、负载均衡、对等连接、与之互通的基础网络设备等。
         * 删除私有网络是不可逆的操作，请谨慎处理。
 
-        :param request: 调用DeleteVpc所需参数的结构体。
+        :param request: Request instance for DeleteVpc.
         :type request: :class:`tencentcloud.vpc.v20170312.models.DeleteVpcRequest`
         :rtype: :class:`tencentcloud.vpc.v20170312.models.DeleteVpcResponse`
 
@@ -1880,7 +1880,7 @@ class VpcClient(AbstractClient):
     def DeleteVpnConnection(self, request):
         """本接口(DeleteVpnConnection)用于删除VPN通道。
 
-        :param request: 调用DeleteVpnConnection所需参数的结构体。
+        :param request: Request instance for DeleteVpnConnection.
         :type request: :class:`tencentcloud.vpc.v20170312.models.DeleteVpnConnectionRequest`
         :rtype: :class:`tencentcloud.vpc.v20170312.models.DeleteVpnConnectionResponse`
 
@@ -1908,7 +1908,7 @@ class VpcClient(AbstractClient):
     def DeleteVpnGateway(self, request):
         """本接口（DeleteVpnGateway）用于删除VPN网关。目前只支持删除运行中的按量计费的IPSEC网关实例。
 
-        :param request: 调用DeleteVpnGateway所需参数的结构体。
+        :param request: Request instance for DeleteVpnGateway.
         :type request: :class:`tencentcloud.vpc.v20170312.models.DeleteVpnGatewayRequest`
         :rtype: :class:`tencentcloud.vpc.v20170312.models.DeleteVpnGatewayResponse`
 
@@ -1936,7 +1936,7 @@ class VpcClient(AbstractClient):
     def DescribeAccountAttributes(self, request):
         """本接口（DescribeAccountAttributes）用于查询用户账号私有属性。
 
-        :param request: 调用DescribeAccountAttributes所需参数的结构体。
+        :param request: Request instance for DescribeAccountAttributes.
         :type request: :class:`tencentcloud.vpc.v20170312.models.DescribeAccountAttributesRequest`
         :rtype: :class:`tencentcloud.vpc.v20170312.models.DescribeAccountAttributesResponse`
 
@@ -1964,7 +1964,7 @@ class VpcClient(AbstractClient):
     def DescribeAddressQuota(self, request):
         """本接口 (DescribeAddressQuota) 用于查询您账户的[弹性公网IP](https://cloud.tencent.com/document/product/213/1941)（简称 EIP）在当前地域的配额信息。配额详情可参见 [EIP 产品简介](https://cloud.tencent.com/document/product/213/5733)。
 
-        :param request: 调用DescribeAddressQuota所需参数的结构体。
+        :param request: Request instance for DescribeAddressQuota.
         :type request: :class:`tencentcloud.vpc.v20170312.models.DescribeAddressQuotaRequest`
         :rtype: :class:`tencentcloud.vpc.v20170312.models.DescribeAddressQuotaResponse`
 
@@ -1992,7 +1992,7 @@ class VpcClient(AbstractClient):
     def DescribeAddressTemplateGroups(self, request):
         """本接口（DescribeAddressTemplateGroups）用于查询IP地址模板集合
 
-        :param request: 调用DescribeAddressTemplateGroups所需参数的结构体。
+        :param request: Request instance for DescribeAddressTemplateGroups.
         :type request: :class:`tencentcloud.vpc.v20170312.models.DescribeAddressTemplateGroupsRequest`
         :rtype: :class:`tencentcloud.vpc.v20170312.models.DescribeAddressTemplateGroupsResponse`
 
@@ -2020,7 +2020,7 @@ class VpcClient(AbstractClient):
     def DescribeAddressTemplates(self, request):
         """本接口（DescribeAddressTemplates）用于查询IP地址模板
 
-        :param request: 调用DescribeAddressTemplates所需参数的结构体。
+        :param request: Request instance for DescribeAddressTemplates.
         :type request: :class:`tencentcloud.vpc.v20170312.models.DescribeAddressTemplatesRequest`
         :rtype: :class:`tencentcloud.vpc.v20170312.models.DescribeAddressTemplatesResponse`
 
@@ -2049,7 +2049,7 @@ class VpcClient(AbstractClient):
         """本接口 (DescribeAddresses) 用于查询一个或多个[弹性公网IP](https://cloud.tencent.com/document/product/213/1941)（简称 EIP）的详细信息。
         * 如果参数为空，返回当前用户一定数量（Limit所指定的数量，默认为20）的 EIP。
 
-        :param request: 调用DescribeAddresses所需参数的结构体。
+        :param request: Request instance for DescribeAddresses.
         :type request: :class:`tencentcloud.vpc.v20170312.models.DescribeAddressesRequest`
         :rtype: :class:`tencentcloud.vpc.v20170312.models.DescribeAddressesResponse`
 
@@ -2077,7 +2077,7 @@ class VpcClient(AbstractClient):
     def DescribeBandwidthPackageQuota(self, request):
         """接口用于查询账户在当前地域的带宽包上限数量以及使用数量
 
-        :param request: 调用DescribeBandwidthPackageQuota所需参数的结构体。
+        :param request: Request instance for DescribeBandwidthPackageQuota.
         :type request: :class:`tencentcloud.vpc.v20170312.models.DescribeBandwidthPackageQuotaRequest`
         :rtype: :class:`tencentcloud.vpc.v20170312.models.DescribeBandwidthPackageQuotaResponse`
 
@@ -2105,7 +2105,7 @@ class VpcClient(AbstractClient):
     def DescribeBandwidthPackages(self, request):
         """接口用于查询带宽包详细信息，包括带宽包唯一标识ID，类型，计费模式，名称，资源信息等
 
-        :param request: 调用DescribeBandwidthPackages所需参数的结构体。
+        :param request: Request instance for DescribeBandwidthPackages.
         :type request: :class:`tencentcloud.vpc.v20170312.models.DescribeBandwidthPackagesRequest`
         :rtype: :class:`tencentcloud.vpc.v20170312.models.DescribeBandwidthPackagesResponse`
 
@@ -2133,7 +2133,7 @@ class VpcClient(AbstractClient):
     def DescribeCcnAttachedInstances(self, request):
         """本接口（DescribeCcnAttachedInstances）用于查询云联网实例下已关联的网络实例。
 
-        :param request: 调用DescribeCcnAttachedInstances所需参数的结构体。
+        :param request: Request instance for DescribeCcnAttachedInstances.
         :type request: :class:`tencentcloud.vpc.v20170312.models.DescribeCcnAttachedInstancesRequest`
         :rtype: :class:`tencentcloud.vpc.v20170312.models.DescribeCcnAttachedInstancesResponse`
 
@@ -2161,7 +2161,7 @@ class VpcClient(AbstractClient):
     def DescribeCcnRegionBandwidthLimits(self, request):
         """本接口（DescribeCcnRegionBandwidthLimits）用于查询云联网各地域出带宽上限，该接口只返回已关联网络实例包含的地域
 
-        :param request: 调用DescribeCcnRegionBandwidthLimits所需参数的结构体。
+        :param request: Request instance for DescribeCcnRegionBandwidthLimits.
         :type request: :class:`tencentcloud.vpc.v20170312.models.DescribeCcnRegionBandwidthLimitsRequest`
         :rtype: :class:`tencentcloud.vpc.v20170312.models.DescribeCcnRegionBandwidthLimitsResponse`
 
@@ -2189,7 +2189,7 @@ class VpcClient(AbstractClient):
     def DescribeCcnRoutes(self, request):
         """本接口（DescribeCcnRoutes）用于查询已加入云联网（CCN）的路由
 
-        :param request: 调用DescribeCcnRoutes所需参数的结构体。
+        :param request: Request instance for DescribeCcnRoutes.
         :type request: :class:`tencentcloud.vpc.v20170312.models.DescribeCcnRoutesRequest`
         :rtype: :class:`tencentcloud.vpc.v20170312.models.DescribeCcnRoutesResponse`
 
@@ -2217,7 +2217,7 @@ class VpcClient(AbstractClient):
     def DescribeCcns(self, request):
         """本接口（DescribeCcns）用于查询云联网（CCN）列表。
 
-        :param request: 调用DescribeCcns所需参数的结构体。
+        :param request: Request instance for DescribeCcns.
         :type request: :class:`tencentcloud.vpc.v20170312.models.DescribeCcnsRequest`
         :rtype: :class:`tencentcloud.vpc.v20170312.models.DescribeCcnsResponse`
 
@@ -2245,7 +2245,7 @@ class VpcClient(AbstractClient):
     def DescribeClassicLinkInstances(self, request):
         """本接口(DescribeClassicLinkInstances)用于查询私有网络和基础网络设备互通列表。
 
-        :param request: 调用DescribeClassicLinkInstances所需参数的结构体。
+        :param request: Request instance for DescribeClassicLinkInstances.
         :type request: :class:`tencentcloud.vpc.v20170312.models.DescribeClassicLinkInstancesRequest`
         :rtype: :class:`tencentcloud.vpc.v20170312.models.DescribeClassicLinkInstancesResponse`
 
@@ -2273,7 +2273,7 @@ class VpcClient(AbstractClient):
     def DescribeCustomerGatewayVendors(self, request):
         """本接口（DescribeCustomerGatewayVendors）用于查询可支持的对端网关厂商信息。
 
-        :param request: 调用DescribeCustomerGatewayVendors所需参数的结构体。
+        :param request: Request instance for DescribeCustomerGatewayVendors.
         :type request: :class:`tencentcloud.vpc.v20170312.models.DescribeCustomerGatewayVendorsRequest`
         :rtype: :class:`tencentcloud.vpc.v20170312.models.DescribeCustomerGatewayVendorsResponse`
 
@@ -2301,7 +2301,7 @@ class VpcClient(AbstractClient):
     def DescribeCustomerGateways(self, request):
         """本接口（DescribeCustomerGateways）用于查询对端网关列表。
 
-        :param request: 调用DescribeCustomerGateways所需参数的结构体。
+        :param request: Request instance for DescribeCustomerGateways.
         :type request: :class:`tencentcloud.vpc.v20170312.models.DescribeCustomerGatewaysRequest`
         :rtype: :class:`tencentcloud.vpc.v20170312.models.DescribeCustomerGatewaysResponse`
 
@@ -2329,7 +2329,7 @@ class VpcClient(AbstractClient):
     def DescribeDirectConnectGatewayCcnRoutes(self, request):
         """本接口（DescribeDirectConnectGatewayCcnRoutes）用于查询专线网关的云联网路由（IDC网段）
 
-        :param request: 调用DescribeDirectConnectGatewayCcnRoutes所需参数的结构体。
+        :param request: Request instance for DescribeDirectConnectGatewayCcnRoutes.
         :type request: :class:`tencentcloud.vpc.v20170312.models.DescribeDirectConnectGatewayCcnRoutesRequest`
         :rtype: :class:`tencentcloud.vpc.v20170312.models.DescribeDirectConnectGatewayCcnRoutesResponse`
 
@@ -2357,7 +2357,7 @@ class VpcClient(AbstractClient):
     def DescribeDirectConnectGateways(self, request):
         """本接口（DescribeDirectConnectGateways）用于查询专线网关。
 
-        :param request: 调用DescribeDirectConnectGateways所需参数的结构体。
+        :param request: Request instance for DescribeDirectConnectGateways.
         :type request: :class:`tencentcloud.vpc.v20170312.models.DescribeDirectConnectGatewaysRequest`
         :rtype: :class:`tencentcloud.vpc.v20170312.models.DescribeDirectConnectGatewaysResponse`
 
@@ -2385,7 +2385,7 @@ class VpcClient(AbstractClient):
     def DescribeFlowLog(self, request):
         """本接口（DescribeFlowLog）用于查询流日志实例信息
 
-        :param request: 调用DescribeFlowLog所需参数的结构体。
+        :param request: Request instance for DescribeFlowLog.
         :type request: :class:`tencentcloud.vpc.v20170312.models.DescribeFlowLogRequest`
         :rtype: :class:`tencentcloud.vpc.v20170312.models.DescribeFlowLogResponse`
 
@@ -2413,7 +2413,7 @@ class VpcClient(AbstractClient):
     def DescribeFlowLogs(self, request):
         """本接口（DescribeFlowLogs）用于查询获取流日志集合
 
-        :param request: 调用DescribeFlowLogs所需参数的结构体。
+        :param request: Request instance for DescribeFlowLogs.
         :type request: :class:`tencentcloud.vpc.v20170312.models.DescribeFlowLogsRequest`
         :rtype: :class:`tencentcloud.vpc.v20170312.models.DescribeFlowLogsResponse`
 
@@ -2443,7 +2443,7 @@ class VpcClient(AbstractClient):
         * 只支持单个网关实例查询。即入参 `VpnId` `DirectConnectGatewayId` `PeeringConnectionId` `NatId` 最多只支持传一个，且必须传一个。
         * 如果网关有流量，但调用本接口没有返回数据，请在控制台对应网关详情页确认是否开启网关流量监控。
 
-        :param request: 调用DescribeGatewayFlowMonitorDetail所需参数的结构体。
+        :param request: Request instance for DescribeGatewayFlowMonitorDetail.
         :type request: :class:`tencentcloud.vpc.v20170312.models.DescribeGatewayFlowMonitorDetailRequest`
         :rtype: :class:`tencentcloud.vpc.v20170312.models.DescribeGatewayFlowMonitorDetailResponse`
 
@@ -2471,7 +2471,7 @@ class VpcClient(AbstractClient):
     def DescribeHaVips(self, request):
         """本接口（DescribeHaVips）用于查询高可用虚拟IP（HAVIP）列表。
 
-        :param request: 调用DescribeHaVips所需参数的结构体。
+        :param request: Request instance for DescribeHaVips.
         :type request: :class:`tencentcloud.vpc.v20170312.models.DescribeHaVipsRequest`
         :rtype: :class:`tencentcloud.vpc.v20170312.models.DescribeHaVipsResponse`
 
@@ -2499,7 +2499,7 @@ class VpcClient(AbstractClient):
     def DescribeIp6Addresses(self, request):
         """该接口用于查询IPV6地址信息
 
-        :param request: 调用DescribeIp6Addresses所需参数的结构体。
+        :param request: Request instance for DescribeIp6Addresses.
         :type request: :class:`tencentcloud.vpc.v20170312.models.DescribeIp6AddressesRequest`
         :rtype: :class:`tencentcloud.vpc.v20170312.models.DescribeIp6AddressesResponse`
 
@@ -2527,7 +2527,7 @@ class VpcClient(AbstractClient):
     def DescribeIp6TranslatorQuota(self, request):
         """查询账户在指定地域IPV6转换实例和规则的配额
 
-        :param request: 调用DescribeIp6TranslatorQuota所需参数的结构体。
+        :param request: Request instance for DescribeIp6TranslatorQuota.
         :type request: :class:`tencentcloud.vpc.v20170312.models.DescribeIp6TranslatorQuotaRequest`
         :rtype: :class:`tencentcloud.vpc.v20170312.models.DescribeIp6TranslatorQuotaResponse`
 
@@ -2556,7 +2556,7 @@ class VpcClient(AbstractClient):
         """1. 该接口用于查询账户下的IPV6转换实例及其绑定的转换规则信息
         2. 支持过滤查询
 
-        :param request: 调用DescribeIp6Translators所需参数的结构体。
+        :param request: Request instance for DescribeIp6Translators.
         :type request: :class:`tencentcloud.vpc.v20170312.models.DescribeIp6TranslatorsRequest`
         :rtype: :class:`tencentcloud.vpc.v20170312.models.DescribeIp6TranslatorsResponse`
 
@@ -2584,7 +2584,7 @@ class VpcClient(AbstractClient):
     def DescribeNatGatewayDestinationIpPortTranslationNatRules(self, request):
         """本接口（DescribeNatGatewayDestinationIpPortTranslationNatRules）用于查询NAT网关端口转发规则对象数组。
 
-        :param request: 调用DescribeNatGatewayDestinationIpPortTranslationNatRules所需参数的结构体。
+        :param request: Request instance for DescribeNatGatewayDestinationIpPortTranslationNatRules.
         :type request: :class:`tencentcloud.vpc.v20170312.models.DescribeNatGatewayDestinationIpPortTranslationNatRulesRequest`
         :rtype: :class:`tencentcloud.vpc.v20170312.models.DescribeNatGatewayDestinationIpPortTranslationNatRulesResponse`
 
@@ -2612,7 +2612,7 @@ class VpcClient(AbstractClient):
     def DescribeNatGateways(self, request):
         """本接口（DescribeNatGateways）用于查询 NAT 网关。
 
-        :param request: 调用DescribeNatGateways所需参数的结构体。
+        :param request: Request instance for DescribeNatGateways.
         :type request: :class:`tencentcloud.vpc.v20170312.models.DescribeNatGatewaysRequest`
         :rtype: :class:`tencentcloud.vpc.v20170312.models.DescribeNatGatewaysResponse`
 
@@ -2640,7 +2640,7 @@ class VpcClient(AbstractClient):
     def DescribeNetDetectStates(self, request):
         """本接口(DescribeNetDetectStates)用于查询网络探测验证结果列表。
 
-        :param request: 调用DescribeNetDetectStates所需参数的结构体。
+        :param request: Request instance for DescribeNetDetectStates.
         :type request: :class:`tencentcloud.vpc.v20170312.models.DescribeNetDetectStatesRequest`
         :rtype: :class:`tencentcloud.vpc.v20170312.models.DescribeNetDetectStatesResponse`
 
@@ -2668,7 +2668,7 @@ class VpcClient(AbstractClient):
     def DescribeNetDetects(self, request):
         """本接口（DescribeNetDetects）用于查询网络探测列表。
 
-        :param request: 调用DescribeNetDetects所需参数的结构体。
+        :param request: Request instance for DescribeNetDetects.
         :type request: :class:`tencentcloud.vpc.v20170312.models.DescribeNetDetectsRequest`
         :rtype: :class:`tencentcloud.vpc.v20170312.models.DescribeNetDetectsResponse`
 
@@ -2696,7 +2696,7 @@ class VpcClient(AbstractClient):
     def DescribeNetworkInterfaceLimit(self, request):
         """本接口（DescribeNetworkInterfaceLimit）根据CVM实例ID查询弹性网卡配额，返回该CVM实例能绑定的弹性网卡配额，以及每个弹性网卡可以分配的ip配额
 
-        :param request: 调用DescribeNetworkInterfaceLimit所需参数的结构体。
+        :param request: Request instance for DescribeNetworkInterfaceLimit.
         :type request: :class:`tencentcloud.vpc.v20170312.models.DescribeNetworkInterfaceLimitRequest`
         :rtype: :class:`tencentcloud.vpc.v20170312.models.DescribeNetworkInterfaceLimitResponse`
 
@@ -2724,7 +2724,7 @@ class VpcClient(AbstractClient):
     def DescribeNetworkInterfaces(self, request):
         """本接口（DescribeNetworkInterfaces）用于查询弹性网卡列表。
 
-        :param request: 调用DescribeNetworkInterfaces所需参数的结构体。
+        :param request: Request instance for DescribeNetworkInterfaces.
         :type request: :class:`tencentcloud.vpc.v20170312.models.DescribeNetworkInterfacesRequest`
         :rtype: :class:`tencentcloud.vpc.v20170312.models.DescribeNetworkInterfacesResponse`
 
@@ -2752,7 +2752,7 @@ class VpcClient(AbstractClient):
     def DescribeRouteConflicts(self, request):
         """本接口（DescribeRouteConflicts）用于查询自定义路由策略与云联网路由策略冲突列表
 
-        :param request: 调用DescribeRouteConflicts所需参数的结构体。
+        :param request: Request instance for DescribeRouteConflicts.
         :type request: :class:`tencentcloud.vpc.v20170312.models.DescribeRouteConflictsRequest`
         :rtype: :class:`tencentcloud.vpc.v20170312.models.DescribeRouteConflictsResponse`
 
@@ -2780,7 +2780,7 @@ class VpcClient(AbstractClient):
     def DescribeRouteTables(self, request):
         """本接口（DescribeRouteTables）用于查询路由表。
 
-        :param request: 调用DescribeRouteTables所需参数的结构体。
+        :param request: Request instance for DescribeRouteTables.
         :type request: :class:`tencentcloud.vpc.v20170312.models.DescribeRouteTablesRequest`
         :rtype: :class:`tencentcloud.vpc.v20170312.models.DescribeRouteTablesResponse`
 
@@ -2808,7 +2808,7 @@ class VpcClient(AbstractClient):
     def DescribeSecurityGroupAssociationStatistics(self, request):
         """本接口（DescribeSecurityGroupAssociationStatistics）用于查询安全组关联的实例统计。
 
-        :param request: 调用DescribeSecurityGroupAssociationStatistics所需参数的结构体。
+        :param request: Request instance for DescribeSecurityGroupAssociationStatistics.
         :type request: :class:`tencentcloud.vpc.v20170312.models.DescribeSecurityGroupAssociationStatisticsRequest`
         :rtype: :class:`tencentcloud.vpc.v20170312.models.DescribeSecurityGroupAssociationStatisticsResponse`
 
@@ -2836,7 +2836,7 @@ class VpcClient(AbstractClient):
     def DescribeSecurityGroupPolicies(self, request):
         """本接口（DescribeSecurityGroupPolicies）用于查询安全组规则。
 
-        :param request: 调用DescribeSecurityGroupPolicies所需参数的结构体。
+        :param request: Request instance for DescribeSecurityGroupPolicies.
         :type request: :class:`tencentcloud.vpc.v20170312.models.DescribeSecurityGroupPoliciesRequest`
         :rtype: :class:`tencentcloud.vpc.v20170312.models.DescribeSecurityGroupPoliciesResponse`
 
@@ -2864,7 +2864,7 @@ class VpcClient(AbstractClient):
     def DescribeSecurityGroups(self, request):
         """本接口（DescribeSecurityGroups）用于查询安全组。
 
-        :param request: 调用DescribeSecurityGroups所需参数的结构体。
+        :param request: Request instance for DescribeSecurityGroups.
         :type request: :class:`tencentcloud.vpc.v20170312.models.DescribeSecurityGroupsRequest`
         :rtype: :class:`tencentcloud.vpc.v20170312.models.DescribeSecurityGroupsResponse`
 
@@ -2892,7 +2892,7 @@ class VpcClient(AbstractClient):
     def DescribeServiceTemplateGroups(self, request):
         """本接口（DescribeServiceTemplateGroups）用于查询协议端口模板集合
 
-        :param request: 调用DescribeServiceTemplateGroups所需参数的结构体。
+        :param request: Request instance for DescribeServiceTemplateGroups.
         :type request: :class:`tencentcloud.vpc.v20170312.models.DescribeServiceTemplateGroupsRequest`
         :rtype: :class:`tencentcloud.vpc.v20170312.models.DescribeServiceTemplateGroupsResponse`
 
@@ -2920,7 +2920,7 @@ class VpcClient(AbstractClient):
     def DescribeServiceTemplates(self, request):
         """本接口（DescribeServiceTemplates）用于查询协议端口模板
 
-        :param request: 调用DescribeServiceTemplates所需参数的结构体。
+        :param request: Request instance for DescribeServiceTemplates.
         :type request: :class:`tencentcloud.vpc.v20170312.models.DescribeServiceTemplatesRequest`
         :rtype: :class:`tencentcloud.vpc.v20170312.models.DescribeServiceTemplatesResponse`
 
@@ -2948,7 +2948,7 @@ class VpcClient(AbstractClient):
     def DescribeSubnets(self, request):
         """本接口（DescribeSubnets）用于查询子网列表。
 
-        :param request: 调用DescribeSubnets所需参数的结构体。
+        :param request: Request instance for DescribeSubnets.
         :type request: :class:`tencentcloud.vpc.v20170312.models.DescribeSubnetsRequest`
         :rtype: :class:`tencentcloud.vpc.v20170312.models.DescribeSubnetsResponse`
 
@@ -2976,7 +2976,7 @@ class VpcClient(AbstractClient):
     def DescribeTaskResult(self, request):
         """查询EIP异步任务执行结果
 
-        :param request: 调用DescribeTaskResult所需参数的结构体。
+        :param request: Request instance for DescribeTaskResult.
         :type request: :class:`tencentcloud.vpc.v20170312.models.DescribeTaskResultRequest`
         :rtype: :class:`tencentcloud.vpc.v20170312.models.DescribeTaskResultResponse`
 
@@ -3005,7 +3005,7 @@ class VpcClient(AbstractClient):
         """本接口（DescribeVpcIpv6Addresses）用于查询 `VPC` `IPv6` 信息。
         只能查询已使用的`IPv6`信息，当查询未使用的IP时，本接口不会报错，但不会出现在返回结果里。
 
-        :param request: 调用DescribeVpcIpv6Addresses所需参数的结构体。
+        :param request: Request instance for DescribeVpcIpv6Addresses.
         :type request: :class:`tencentcloud.vpc.v20170312.models.DescribeVpcIpv6AddressesRequest`
         :rtype: :class:`tencentcloud.vpc.v20170312.models.DescribeVpcIpv6AddressesResponse`
 
@@ -3034,7 +3034,7 @@ class VpcClient(AbstractClient):
         """本接口（DescribeVpcPrivateIpAddresses）用于查询VPC内网IP信息。<br />
         只能查询已使用的IP信息，当查询未使用的IP时，本接口不会报错，但不会出现在返回结果里。
 
-        :param request: 调用DescribeVpcPrivateIpAddresses所需参数的结构体。
+        :param request: Request instance for DescribeVpcPrivateIpAddresses.
         :type request: :class:`tencentcloud.vpc.v20170312.models.DescribeVpcPrivateIpAddressesRequest`
         :rtype: :class:`tencentcloud.vpc.v20170312.models.DescribeVpcPrivateIpAddressesResponse`
 
@@ -3062,7 +3062,7 @@ class VpcClient(AbstractClient):
     def DescribeVpcs(self, request):
         """本接口（DescribeVpcs）用于查询私有网络列表。
 
-        :param request: 调用DescribeVpcs所需参数的结构体。
+        :param request: Request instance for DescribeVpcs.
         :type request: :class:`tencentcloud.vpc.v20170312.models.DescribeVpcsRequest`
         :rtype: :class:`tencentcloud.vpc.v20170312.models.DescribeVpcsResponse`
 
@@ -3090,7 +3090,7 @@ class VpcClient(AbstractClient):
     def DescribeVpnConnections(self, request):
         """本接口（DescribeVpnConnections）查询VPN通道列表。
 
-        :param request: 调用DescribeVpnConnections所需参数的结构体。
+        :param request: Request instance for DescribeVpnConnections.
         :type request: :class:`tencentcloud.vpc.v20170312.models.DescribeVpnConnectionsRequest`
         :rtype: :class:`tencentcloud.vpc.v20170312.models.DescribeVpnConnectionsResponse`
 
@@ -3118,7 +3118,7 @@ class VpcClient(AbstractClient):
     def DescribeVpnGateways(self, request):
         """本接口（DescribeVpnGateways）用于查询VPN网关列表。
 
-        :param request: 调用DescribeVpnGateways所需参数的结构体。
+        :param request: Request instance for DescribeVpnGateways.
         :type request: :class:`tencentcloud.vpc.v20170312.models.DescribeVpnGatewaysRequest`
         :rtype: :class:`tencentcloud.vpc.v20170312.models.DescribeVpnGatewaysResponse`
 
@@ -3147,7 +3147,7 @@ class VpcClient(AbstractClient):
         """本接口（DetachCcnInstances）用于从云联网实例中解关联指定的网络实例。<br />
         解关联网络实例后，相应的路由策略会一并删除。
 
-        :param request: 调用DetachCcnInstances所需参数的结构体。
+        :param request: Request instance for DetachCcnInstances.
         :type request: :class:`tencentcloud.vpc.v20170312.models.DetachCcnInstancesRequest`
         :rtype: :class:`tencentcloud.vpc.v20170312.models.DetachCcnInstancesResponse`
 
@@ -3175,7 +3175,7 @@ class VpcClient(AbstractClient):
     def DetachClassicLinkVpc(self, request):
         """本接口(DetachClassicLinkVpc)用于删除私有网络和基础网络设备互通。
 
-        :param request: 调用DetachClassicLinkVpc所需参数的结构体。
+        :param request: Request instance for DetachClassicLinkVpc.
         :type request: :class:`tencentcloud.vpc.v20170312.models.DetachClassicLinkVpcRequest`
         :rtype: :class:`tencentcloud.vpc.v20170312.models.DetachClassicLinkVpcResponse`
 
@@ -3203,7 +3203,7 @@ class VpcClient(AbstractClient):
     def DetachNetworkInterface(self, request):
         """本接口（DetachNetworkInterface）用于弹性网卡解绑云主机。
 
-        :param request: 调用DetachNetworkInterface所需参数的结构体。
+        :param request: Request instance for DetachNetworkInterface.
         :type request: :class:`tencentcloud.vpc.v20170312.models.DetachNetworkInterfaceRequest`
         :rtype: :class:`tencentcloud.vpc.v20170312.models.DetachNetworkInterfaceResponse`
 
@@ -3231,7 +3231,7 @@ class VpcClient(AbstractClient):
     def DisableCcnRoutes(self, request):
         """本接口（DisableCcnRoutes）用于禁用已经启用的云联网（CCN）路由
 
-        :param request: 调用DisableCcnRoutes所需参数的结构体。
+        :param request: Request instance for DisableCcnRoutes.
         :type request: :class:`tencentcloud.vpc.v20170312.models.DisableCcnRoutesRequest`
         :rtype: :class:`tencentcloud.vpc.v20170312.models.DisableCcnRoutesResponse`
 
@@ -3259,7 +3259,7 @@ class VpcClient(AbstractClient):
     def DisableRoutes(self, request):
         """本接口（DisableRoutes）用于禁用已启用的子网路由
 
-        :param request: 调用DisableRoutes所需参数的结构体。
+        :param request: Request instance for DisableRoutes.
         :type request: :class:`tencentcloud.vpc.v20170312.models.DisableRoutesRequest`
         :rtype: :class:`tencentcloud.vpc.v20170312.models.DisableRoutesResponse`
 
@@ -3291,7 +3291,7 @@ class VpcClient(AbstractClient):
         * 只有状态为 BIND 和 BIND_ENI 的 EIP 才能进行解绑定操作。
         * EIP 如果被封堵，则不能进行解绑定操作。
 
-        :param request: 调用DisassociateAddress所需参数的结构体。
+        :param request: Request instance for DisassociateAddress.
         :type request: :class:`tencentcloud.vpc.v20170312.models.DisassociateAddressRequest`
         :rtype: :class:`tencentcloud.vpc.v20170312.models.DisassociateAddressResponse`
 
@@ -3319,7 +3319,7 @@ class VpcClient(AbstractClient):
     def DisassociateNatGatewayAddress(self, request):
         """本接口（DisassociateNatGatewayAddress）用于NAT网关解绑弹性IP。
 
-        :param request: 调用DisassociateNatGatewayAddress所需参数的结构体。
+        :param request: Request instance for DisassociateNatGatewayAddress.
         :type request: :class:`tencentcloud.vpc.v20170312.models.DisassociateNatGatewayAddressRequest`
         :rtype: :class:`tencentcloud.vpc.v20170312.models.DisassociateNatGatewayAddressResponse`
 
@@ -3347,7 +3347,7 @@ class VpcClient(AbstractClient):
     def DownloadCustomerGatewayConfiguration(self, request):
         """本接口(DownloadCustomerGatewayConfiguration)用于下载VPN通道配置。
 
-        :param request: 调用DownloadCustomerGatewayConfiguration所需参数的结构体。
+        :param request: Request instance for DownloadCustomerGatewayConfiguration.
         :type request: :class:`tencentcloud.vpc.v20170312.models.DownloadCustomerGatewayConfigurationRequest`
         :rtype: :class:`tencentcloud.vpc.v20170312.models.DownloadCustomerGatewayConfigurationResponse`
 
@@ -3376,7 +3376,7 @@ class VpcClient(AbstractClient):
         """本接口（EnableCcnRoutes）用于启用已经加入云联网（CCN）的路由。<br />
         本接口会校验启用后，是否与已有路由冲突，如果冲突，则无法启用，失败处理。路由冲突时，需要先禁用与之冲突的路由，才能启用该路由。
 
-        :param request: 调用EnableCcnRoutes所需参数的结构体。
+        :param request: Request instance for EnableCcnRoutes.
         :type request: :class:`tencentcloud.vpc.v20170312.models.EnableCcnRoutesRequest`
         :rtype: :class:`tencentcloud.vpc.v20170312.models.EnableCcnRoutesResponse`
 
@@ -3405,7 +3405,7 @@ class VpcClient(AbstractClient):
         """本接口（EnableRoutes）用于启用已禁用的子网路由。<br />
         本接口会校验启用后，是否与已有路由冲突，如果冲突，则无法启用，失败处理。路由冲突时，需要先禁用与之冲突的路由，才能启用该路由。
 
-        :param request: 调用EnableRoutes所需参数的结构体。
+        :param request: Request instance for EnableRoutes.
         :type request: :class:`tencentcloud.vpc.v20170312.models.EnableRoutesRequest`
         :rtype: :class:`tencentcloud.vpc.v20170312.models.EnableRoutesResponse`
 
@@ -3434,7 +3434,7 @@ class VpcClient(AbstractClient):
         """本接口（HaVipAssociateAddressIp）用于高可用虚拟IP（HAVIP）绑定弹性公网IP（EIP）<br />
         本接口是异步完成，如需查询异步任务执行结果，请使用本接口返回的`RequestId`轮询`QueryTask`接口
 
-        :param request: 调用HaVipAssociateAddressIp所需参数的结构体。
+        :param request: Request instance for HaVipAssociateAddressIp.
         :type request: :class:`tencentcloud.vpc.v20170312.models.HaVipAssociateAddressIpRequest`
         :rtype: :class:`tencentcloud.vpc.v20170312.models.HaVipAssociateAddressIpResponse`
 
@@ -3463,7 +3463,7 @@ class VpcClient(AbstractClient):
         """本接口（HaVipDisassociateAddressIp）用于将高可用虚拟IP（HAVIP）已绑定的弹性公网IP（EIP）解除绑定<br />
         本接口是异步完成，如需查询异步任务执行结果，请使用本接口返回的`RequestId`轮询`QueryTask`接口
 
-        :param request: 调用HaVipDisassociateAddressIp所需参数的结构体。
+        :param request: Request instance for HaVipDisassociateAddressIp.
         :type request: :class:`tencentcloud.vpc.v20170312.models.HaVipDisassociateAddressIpRequest`
         :rtype: :class:`tencentcloud.vpc.v20170312.models.HaVipDisassociateAddressIpResponse`
 
@@ -3491,7 +3491,7 @@ class VpcClient(AbstractClient):
     def InquiryPriceCreateVpnGateway(self, request):
         """本接口（InquiryPriceCreateVpnGateway）用于创建VPN网关询价。
 
-        :param request: 调用InquiryPriceCreateVpnGateway所需参数的结构体。
+        :param request: Request instance for InquiryPriceCreateVpnGateway.
         :type request: :class:`tencentcloud.vpc.v20170312.models.InquiryPriceCreateVpnGatewayRequest`
         :rtype: :class:`tencentcloud.vpc.v20170312.models.InquiryPriceCreateVpnGatewayResponse`
 
@@ -3519,7 +3519,7 @@ class VpcClient(AbstractClient):
     def InquiryPriceRenewVpnGateway(self, request):
         """本接口（InquiryPriceRenewVpnGateway）用于续费VPN网关询价。目前仅支持IPSEC类型网关的询价。
 
-        :param request: 调用InquiryPriceRenewVpnGateway所需参数的结构体。
+        :param request: Request instance for InquiryPriceRenewVpnGateway.
         :type request: :class:`tencentcloud.vpc.v20170312.models.InquiryPriceRenewVpnGatewayRequest`
         :rtype: :class:`tencentcloud.vpc.v20170312.models.InquiryPriceRenewVpnGatewayResponse`
 
@@ -3547,7 +3547,7 @@ class VpcClient(AbstractClient):
     def InquiryPriceResetVpnGatewayInternetMaxBandwidth(self, request):
         """本接口（InquiryPriceResetVpnGatewayInternetMaxBandwidth）调整VPN网关带宽上限询价。
 
-        :param request: 调用InquiryPriceResetVpnGatewayInternetMaxBandwidth所需参数的结构体。
+        :param request: Request instance for InquiryPriceResetVpnGatewayInternetMaxBandwidth.
         :type request: :class:`tencentcloud.vpc.v20170312.models.InquiryPriceResetVpnGatewayInternetMaxBandwidthRequest`
         :rtype: :class:`tencentcloud.vpc.v20170312.models.InquiryPriceResetVpnGatewayInternetMaxBandwidthResponse`
 
@@ -3575,7 +3575,7 @@ class VpcClient(AbstractClient):
     def MigrateNetworkInterface(self, request):
         """本接口（MigrateNetworkInterface）用于弹性网卡迁移。
 
-        :param request: 调用MigrateNetworkInterface所需参数的结构体。
+        :param request: Request instance for MigrateNetworkInterface.
         :type request: :class:`tencentcloud.vpc.v20170312.models.MigrateNetworkInterfaceRequest`
         :rtype: :class:`tencentcloud.vpc.v20170312.models.MigrateNetworkInterfaceResponse`
 
@@ -3606,7 +3606,7 @@ class VpcClient(AbstractClient):
         * 该接口用于将一个内网IP从一个弹性网卡上迁移到另外一个弹性网卡，主IP地址不支持迁移。
         * 迁移前后的弹性网卡必须在同一个子网内。
 
-        :param request: 调用MigratePrivateIpAddress所需参数的结构体。
+        :param request: Request instance for MigratePrivateIpAddress.
         :type request: :class:`tencentcloud.vpc.v20170312.models.MigratePrivateIpAddressRequest`
         :rtype: :class:`tencentcloud.vpc.v20170312.models.MigratePrivateIpAddressResponse`
 
@@ -3634,7 +3634,7 @@ class VpcClient(AbstractClient):
     def ModifyAddressAttribute(self, request):
         """本接口 (ModifyAddressAttribute) 用于修改[弹性公网IP](https://cloud.tencent.com/document/product/213/1941)（简称 EIP）的名称。
 
-        :param request: 调用ModifyAddressAttribute所需参数的结构体。
+        :param request: Request instance for ModifyAddressAttribute.
         :type request: :class:`tencentcloud.vpc.v20170312.models.ModifyAddressAttributeRequest`
         :rtype: :class:`tencentcloud.vpc.v20170312.models.ModifyAddressAttributeResponse`
 
@@ -3662,7 +3662,7 @@ class VpcClient(AbstractClient):
     def ModifyAddressTemplateAttribute(self, request):
         """本接口（ModifyAddressTemplateAttribute）用于修改IP地址模板
 
-        :param request: 调用ModifyAddressTemplateAttribute所需参数的结构体。
+        :param request: Request instance for ModifyAddressTemplateAttribute.
         :type request: :class:`tencentcloud.vpc.v20170312.models.ModifyAddressTemplateAttributeRequest`
         :rtype: :class:`tencentcloud.vpc.v20170312.models.ModifyAddressTemplateAttributeResponse`
 
@@ -3690,7 +3690,7 @@ class VpcClient(AbstractClient):
     def ModifyAddressTemplateGroupAttribute(self, request):
         """本接口（ModifyAddressTemplateGroupAttribute）用于修改IP地址模板集合
 
-        :param request: 调用ModifyAddressTemplateGroupAttribute所需参数的结构体。
+        :param request: Request instance for ModifyAddressTemplateGroupAttribute.
         :type request: :class:`tencentcloud.vpc.v20170312.models.ModifyAddressTemplateGroupAttributeRequest`
         :rtype: :class:`tencentcloud.vpc.v20170312.models.ModifyAddressTemplateGroupAttributeResponse`
 
@@ -3718,7 +3718,7 @@ class VpcClient(AbstractClient):
     def ModifyAddressesBandwidth(self, request):
         """本接口（ModifyAddressesBandwidth）用于调整[弹性公网IP](https://cloud.tencent.com/document/product/213/1941)(简称EIP)带宽，包括后付费EIP, 预付费EIP和带宽包EIP
 
-        :param request: 调用ModifyAddressesBandwidth所需参数的结构体。
+        :param request: Request instance for ModifyAddressesBandwidth.
         :type request: :class:`tencentcloud.vpc.v20170312.models.ModifyAddressesBandwidthRequest`
         :rtype: :class:`tencentcloud.vpc.v20170312.models.ModifyAddressesBandwidthResponse`
 
@@ -3746,7 +3746,7 @@ class VpcClient(AbstractClient):
     def ModifyBandwidthPackageAttribute(self, request):
         """接口用于修改带宽包属性，包括带宽包名字等
 
-        :param request: 调用ModifyBandwidthPackageAttribute所需参数的结构体。
+        :param request: Request instance for ModifyBandwidthPackageAttribute.
         :type request: :class:`tencentcloud.vpc.v20170312.models.ModifyBandwidthPackageAttributeRequest`
         :rtype: :class:`tencentcloud.vpc.v20170312.models.ModifyBandwidthPackageAttributeResponse`
 
@@ -3774,7 +3774,7 @@ class VpcClient(AbstractClient):
     def ModifyCcnAttribute(self, request):
         """本接口（ModifyCcnAttribute）用于修改云联网（CCN）的相关属性。
 
-        :param request: 调用ModifyCcnAttribute所需参数的结构体。
+        :param request: Request instance for ModifyCcnAttribute.
         :type request: :class:`tencentcloud.vpc.v20170312.models.ModifyCcnAttributeRequest`
         :rtype: :class:`tencentcloud.vpc.v20170312.models.ModifyCcnAttributeResponse`
 
@@ -3802,7 +3802,7 @@ class VpcClient(AbstractClient):
     def ModifyCustomerGatewayAttribute(self, request):
         """本接口（ModifyCustomerGatewayAttribute）用于修改对端网关信息。
 
-        :param request: 调用ModifyCustomerGatewayAttribute所需参数的结构体。
+        :param request: Request instance for ModifyCustomerGatewayAttribute.
         :type request: :class:`tencentcloud.vpc.v20170312.models.ModifyCustomerGatewayAttributeRequest`
         :rtype: :class:`tencentcloud.vpc.v20170312.models.ModifyCustomerGatewayAttributeResponse`
 
@@ -3830,7 +3830,7 @@ class VpcClient(AbstractClient):
     def ModifyDirectConnectGatewayAttribute(self, request):
         """本接口（ModifyDirectConnectGatewayAttribute）用于修改专线网关属性
 
-        :param request: 调用ModifyDirectConnectGatewayAttribute所需参数的结构体。
+        :param request: Request instance for ModifyDirectConnectGatewayAttribute.
         :type request: :class:`tencentcloud.vpc.v20170312.models.ModifyDirectConnectGatewayAttributeRequest`
         :rtype: :class:`tencentcloud.vpc.v20170312.models.ModifyDirectConnectGatewayAttributeResponse`
 
@@ -3858,7 +3858,7 @@ class VpcClient(AbstractClient):
     def ModifyFlowLogAttribute(self, request):
         """本接口（ModifyFlowLogAttribute）用于修改流日志属性
 
-        :param request: 调用ModifyFlowLogAttribute所需参数的结构体。
+        :param request: Request instance for ModifyFlowLogAttribute.
         :type request: :class:`tencentcloud.vpc.v20170312.models.ModifyFlowLogAttributeRequest`
         :rtype: :class:`tencentcloud.vpc.v20170312.models.ModifyFlowLogAttributeResponse`
 
@@ -3886,7 +3886,7 @@ class VpcClient(AbstractClient):
     def ModifyHaVipAttribute(self, request):
         """本接口（ModifyHaVipAttribute）用于修改高可用虚拟IP（HAVIP）属性
 
-        :param request: 调用ModifyHaVipAttribute所需参数的结构体。
+        :param request: Request instance for ModifyHaVipAttribute.
         :type request: :class:`tencentcloud.vpc.v20170312.models.ModifyHaVipAttributeRequest`
         :rtype: :class:`tencentcloud.vpc.v20170312.models.ModifyHaVipAttributeResponse`
 
@@ -3914,7 +3914,7 @@ class VpcClient(AbstractClient):
     def ModifyIp6AddressesBandwidth(self, request):
         """该接口用于修改IPV6地址访问internet的带宽
 
-        :param request: 调用ModifyIp6AddressesBandwidth所需参数的结构体。
+        :param request: Request instance for ModifyIp6AddressesBandwidth.
         :type request: :class:`tencentcloud.vpc.v20170312.models.ModifyIp6AddressesBandwidthRequest`
         :rtype: :class:`tencentcloud.vpc.v20170312.models.ModifyIp6AddressesBandwidthResponse`
 
@@ -3942,7 +3942,7 @@ class VpcClient(AbstractClient):
     def ModifyIp6Rule(self, request):
         """该接口用于修改IPV6转换规则，当前仅支持修改转换规则名称，IPV4地址和IPV4端口号
 
-        :param request: 调用ModifyIp6Rule所需参数的结构体。
+        :param request: Request instance for ModifyIp6Rule.
         :type request: :class:`tencentcloud.vpc.v20170312.models.ModifyIp6RuleRequest`
         :rtype: :class:`tencentcloud.vpc.v20170312.models.ModifyIp6RuleResponse`
 
@@ -3970,7 +3970,7 @@ class VpcClient(AbstractClient):
     def ModifyIp6Translator(self, request):
         """该接口用于修改IP6转换实例属性，当前仅支持修改实例名称。
 
-        :param request: 调用ModifyIp6Translator所需参数的结构体。
+        :param request: Request instance for ModifyIp6Translator.
         :type request: :class:`tencentcloud.vpc.v20170312.models.ModifyIp6TranslatorRequest`
         :rtype: :class:`tencentcloud.vpc.v20170312.models.ModifyIp6TranslatorResponse`
 
@@ -3998,7 +3998,7 @@ class VpcClient(AbstractClient):
     def ModifyIpv6AddressesAttribute(self, request):
         """本接口（ModifyIpv6AddressesAttribute）用于修改弹性网卡内网IPv6地址属性。
 
-        :param request: 调用ModifyIpv6AddressesAttribute所需参数的结构体。
+        :param request: Request instance for ModifyIpv6AddressesAttribute.
         :type request: :class:`tencentcloud.vpc.v20170312.models.ModifyIpv6AddressesAttributeRequest`
         :rtype: :class:`tencentcloud.vpc.v20170312.models.ModifyIpv6AddressesAttributeResponse`
 
@@ -4026,7 +4026,7 @@ class VpcClient(AbstractClient):
     def ModifyNatGatewayAttribute(self, request):
         """本接口（ModifyNatGatewayAttribute）用于修改NAT网关的属性。
 
-        :param request: 调用ModifyNatGatewayAttribute所需参数的结构体。
+        :param request: Request instance for ModifyNatGatewayAttribute.
         :type request: :class:`tencentcloud.vpc.v20170312.models.ModifyNatGatewayAttributeRequest`
         :rtype: :class:`tencentcloud.vpc.v20170312.models.ModifyNatGatewayAttributeResponse`
 
@@ -4054,7 +4054,7 @@ class VpcClient(AbstractClient):
     def ModifyNatGatewayDestinationIpPortTranslationNatRule(self, request):
         """本接口（ModifyNatGatewayDestinationIpPortTranslationNatRule）用于修改NAT网关端口转发规则。
 
-        :param request: 调用ModifyNatGatewayDestinationIpPortTranslationNatRule所需参数的结构体。
+        :param request: Request instance for ModifyNatGatewayDestinationIpPortTranslationNatRule.
         :type request: :class:`tencentcloud.vpc.v20170312.models.ModifyNatGatewayDestinationIpPortTranslationNatRuleRequest`
         :rtype: :class:`tencentcloud.vpc.v20170312.models.ModifyNatGatewayDestinationIpPortTranslationNatRuleResponse`
 
@@ -4082,7 +4082,7 @@ class VpcClient(AbstractClient):
     def ModifyNetDetect(self, request):
         """本接口(ModifyNetDetect)用于修改网络探测参数。
 
-        :param request: 调用ModifyNetDetect所需参数的结构体。
+        :param request: Request instance for ModifyNetDetect.
         :type request: :class:`tencentcloud.vpc.v20170312.models.ModifyNetDetectRequest`
         :rtype: :class:`tencentcloud.vpc.v20170312.models.ModifyNetDetectResponse`
 
@@ -4110,7 +4110,7 @@ class VpcClient(AbstractClient):
     def ModifyNetworkInterfaceAttribute(self, request):
         """本接口（ModifyNetworkInterfaceAttribute）用于修改弹性网卡属性。
 
-        :param request: 调用ModifyNetworkInterfaceAttribute所需参数的结构体。
+        :param request: Request instance for ModifyNetworkInterfaceAttribute.
         :type request: :class:`tencentcloud.vpc.v20170312.models.ModifyNetworkInterfaceAttributeRequest`
         :rtype: :class:`tencentcloud.vpc.v20170312.models.ModifyNetworkInterfaceAttributeResponse`
 
@@ -4138,7 +4138,7 @@ class VpcClient(AbstractClient):
     def ModifyPrivateIpAddressesAttribute(self, request):
         """本接口（ModifyPrivateIpAddressesAttribute）用于修改弹性网卡内网IP属性。
 
-        :param request: 调用ModifyPrivateIpAddressesAttribute所需参数的结构体。
+        :param request: Request instance for ModifyPrivateIpAddressesAttribute.
         :type request: :class:`tencentcloud.vpc.v20170312.models.ModifyPrivateIpAddressesAttributeRequest`
         :rtype: :class:`tencentcloud.vpc.v20170312.models.ModifyPrivateIpAddressesAttributeResponse`
 
@@ -4166,7 +4166,7 @@ class VpcClient(AbstractClient):
     def ModifyRouteTableAttribute(self, request):
         """本接口（ModifyRouteTableAttribute）用于修改路由表（RouteTable）属性。
 
-        :param request: 调用ModifyRouteTableAttribute所需参数的结构体。
+        :param request: Request instance for ModifyRouteTableAttribute.
         :type request: :class:`tencentcloud.vpc.v20170312.models.ModifyRouteTableAttributeRequest`
         :rtype: :class:`tencentcloud.vpc.v20170312.models.ModifyRouteTableAttributeResponse`
 
@@ -4194,7 +4194,7 @@ class VpcClient(AbstractClient):
     def ModifySecurityGroupAttribute(self, request):
         """本接口（ModifySecurityGroupAttribute）用于修改安全组（SecurityGroupPolicy）属性。
 
-        :param request: 调用ModifySecurityGroupAttribute所需参数的结构体。
+        :param request: Request instance for ModifySecurityGroupAttribute.
         :type request: :class:`tencentcloud.vpc.v20170312.models.ModifySecurityGroupAttributeRequest`
         :rtype: :class:`tencentcloud.vpc.v20170312.models.ModifySecurityGroupAttributeResponse`
 
@@ -4232,7 +4232,7 @@ class VpcClient(AbstractClient):
         * Action字段只允许输入ACCEPT或DROP。
         * CidrBlock, Ipv6CidrBlock, SecurityGroupId, AddressTemplate四者是排他关系，不允许同时输入，Protocol + Port和ServiceTemplate二者是排他关系，不允许同时输入。
 
-        :param request: 调用ModifySecurityGroupPolicies所需参数的结构体。
+        :param request: Request instance for ModifySecurityGroupPolicies.
         :type request: :class:`tencentcloud.vpc.v20170312.models.ModifySecurityGroupPoliciesRequest`
         :rtype: :class:`tencentcloud.vpc.v20170312.models.ModifySecurityGroupPoliciesResponse`
 
@@ -4260,7 +4260,7 @@ class VpcClient(AbstractClient):
     def ModifyServiceTemplateAttribute(self, request):
         """本接口（ModifyServiceTemplateAttribute）用于修改协议端口模板
 
-        :param request: 调用ModifyServiceTemplateAttribute所需参数的结构体。
+        :param request: Request instance for ModifyServiceTemplateAttribute.
         :type request: :class:`tencentcloud.vpc.v20170312.models.ModifyServiceTemplateAttributeRequest`
         :rtype: :class:`tencentcloud.vpc.v20170312.models.ModifyServiceTemplateAttributeResponse`
 
@@ -4288,7 +4288,7 @@ class VpcClient(AbstractClient):
     def ModifyServiceTemplateGroupAttribute(self, request):
         """本接口（ModifyServiceTemplateGroupAttribute）用于修改协议端口模板集合。
 
-        :param request: 调用ModifyServiceTemplateGroupAttribute所需参数的结构体。
+        :param request: Request instance for ModifyServiceTemplateGroupAttribute.
         :type request: :class:`tencentcloud.vpc.v20170312.models.ModifyServiceTemplateGroupAttributeRequest`
         :rtype: :class:`tencentcloud.vpc.v20170312.models.ModifyServiceTemplateGroupAttributeResponse`
 
@@ -4316,7 +4316,7 @@ class VpcClient(AbstractClient):
     def ModifySubnetAttribute(self, request):
         """本接口（ModifySubnetAttribute）用于修改子网属性。
 
-        :param request: 调用ModifySubnetAttribute所需参数的结构体。
+        :param request: Request instance for ModifySubnetAttribute.
         :type request: :class:`tencentcloud.vpc.v20170312.models.ModifySubnetAttributeRequest`
         :rtype: :class:`tencentcloud.vpc.v20170312.models.ModifySubnetAttributeResponse`
 
@@ -4344,7 +4344,7 @@ class VpcClient(AbstractClient):
     def ModifyVpcAttribute(self, request):
         """本接口（ModifyVpcAttribute）用于修改私有网络（VPC）的相关属性。
 
-        :param request: 调用ModifyVpcAttribute所需参数的结构体。
+        :param request: Request instance for ModifyVpcAttribute.
         :type request: :class:`tencentcloud.vpc.v20170312.models.ModifyVpcAttributeRequest`
         :rtype: :class:`tencentcloud.vpc.v20170312.models.ModifyVpcAttributeResponse`
 
@@ -4372,7 +4372,7 @@ class VpcClient(AbstractClient):
     def ModifyVpnConnectionAttribute(self, request):
         """本接口（ModifyVpnConnectionAttribute）用于修改VPN通道。
 
-        :param request: 调用ModifyVpnConnectionAttribute所需参数的结构体。
+        :param request: Request instance for ModifyVpnConnectionAttribute.
         :type request: :class:`tencentcloud.vpc.v20170312.models.ModifyVpnConnectionAttributeRequest`
         :rtype: :class:`tencentcloud.vpc.v20170312.models.ModifyVpnConnectionAttributeResponse`
 
@@ -4400,7 +4400,7 @@ class VpcClient(AbstractClient):
     def ModifyVpnGatewayAttribute(self, request):
         """本接口（ModifyVpnGatewayAttribute）用于修改VPN网关属性。
 
-        :param request: 调用ModifyVpnGatewayAttribute所需参数的结构体。
+        :param request: Request instance for ModifyVpnGatewayAttribute.
         :type request: :class:`tencentcloud.vpc.v20170312.models.ModifyVpnGatewayAttributeRequest`
         :rtype: :class:`tencentcloud.vpc.v20170312.models.ModifyVpnGatewayAttributeResponse`
 
@@ -4428,7 +4428,7 @@ class VpcClient(AbstractClient):
     def RejectAttachCcnInstances(self, request):
         """本接口（RejectAttachCcnInstances）用于跨账号关联实例时，云联网所有者拒绝关联操作。
 
-        :param request: 调用RejectAttachCcnInstances所需参数的结构体。
+        :param request: Request instance for RejectAttachCcnInstances.
         :type request: :class:`tencentcloud.vpc.v20170312.models.RejectAttachCcnInstancesRequest`
         :rtype: :class:`tencentcloud.vpc.v20170312.models.RejectAttachCcnInstancesResponse`
 
@@ -4458,7 +4458,7 @@ class VpcClient(AbstractClient):
         * 该操作不可逆，释放后 EIP 关联的 IP 地址将不再属于您的名下。
         * 只有状态为 UNBIND 的 EIP 才能进行释放操作。
 
-        :param request: 调用ReleaseAddresses所需参数的结构体。
+        :param request: Request instance for ReleaseAddresses.
         :type request: :class:`tencentcloud.vpc.v20170312.models.ReleaseAddressesRequest`
         :rtype: :class:`tencentcloud.vpc.v20170312.models.ReleaseAddressesResponse`
 
@@ -4486,7 +4486,7 @@ class VpcClient(AbstractClient):
     def ReleaseIp6AddressesBandwidth(self, request):
         """该接口用于给弹性公网IPv6地址释放带宽。
 
-        :param request: 调用ReleaseIp6AddressesBandwidth所需参数的结构体。
+        :param request: Request instance for ReleaseIp6AddressesBandwidth.
         :type request: :class:`tencentcloud.vpc.v20170312.models.ReleaseIp6AddressesBandwidthRequest`
         :rtype: :class:`tencentcloud.vpc.v20170312.models.ReleaseIp6AddressesBandwidthResponse`
 
@@ -4514,7 +4514,7 @@ class VpcClient(AbstractClient):
     def RemoveBandwidthPackageResources(self, request):
         """接口用于删除带宽包资源，包括[弹性公网IP](https://cloud.tencent.com/document/product/213/1941)和[负载均衡](https://cloud.tencent.com/document/product/214/517)等
 
-        :param request: 调用RemoveBandwidthPackageResources所需参数的结构体。
+        :param request: Request instance for RemoveBandwidthPackageResources.
         :type request: :class:`tencentcloud.vpc.v20170312.models.RemoveBandwidthPackageResourcesRequest`
         :rtype: :class:`tencentcloud.vpc.v20170312.models.RemoveBandwidthPackageResourcesResponse`
 
@@ -4543,7 +4543,7 @@ class VpcClient(AbstractClient):
         """1. 该接口用于删除IPV6转换规则
         2. 支持批量删除同一个转换实例下的多个转换规则
 
-        :param request: 调用RemoveIp6Rules所需参数的结构体。
+        :param request: Request instance for RemoveIp6Rules.
         :type request: :class:`tencentcloud.vpc.v20170312.models.RemoveIp6RulesRequest`
         :rtype: :class:`tencentcloud.vpc.v20170312.models.RemoveIp6RulesResponse`
 
@@ -4571,7 +4571,7 @@ class VpcClient(AbstractClient):
     def RenewVpnGateway(self, request):
         """本接口（RenewVpnGateway）用于预付费（包年包月）VPN网关续费。目前只支持IPSEC网关。
 
-        :param request: 调用RenewVpnGateway所需参数的结构体。
+        :param request: Request instance for RenewVpnGateway.
         :type request: :class:`tencentcloud.vpc.v20170312.models.RenewVpnGatewayRequest`
         :rtype: :class:`tencentcloud.vpc.v20170312.models.RenewVpnGatewayResponse`
 
@@ -4599,7 +4599,7 @@ class VpcClient(AbstractClient):
     def ReplaceDirectConnectGatewayCcnRoutes(self, request):
         """本接口（ReplaceDirectConnectGatewayCcnRoutes）根据路由ID（RouteId）修改指定的路由（Route），支持批量修改。
 
-        :param request: 调用ReplaceDirectConnectGatewayCcnRoutes所需参数的结构体。
+        :param request: Request instance for ReplaceDirectConnectGatewayCcnRoutes.
         :type request: :class:`tencentcloud.vpc.v20170312.models.ReplaceDirectConnectGatewayCcnRoutesRequest`
         :rtype: :class:`tencentcloud.vpc.v20170312.models.ReplaceDirectConnectGatewayCcnRoutesResponse`
 
@@ -4628,7 +4628,7 @@ class VpcClient(AbstractClient):
         """本接口（ReplaceRouteTableAssociation)用于修改子网（Subnet）关联的路由表（RouteTable）。
         * 一个子网只能关联一个路由表。
 
-        :param request: 调用ReplaceRouteTableAssociation所需参数的结构体。
+        :param request: Request instance for ReplaceRouteTableAssociation.
         :type request: :class:`tencentcloud.vpc.v20170312.models.ReplaceRouteTableAssociationRequest`
         :rtype: :class:`tencentcloud.vpc.v20170312.models.ReplaceRouteTableAssociationResponse`
 
@@ -4656,7 +4656,7 @@ class VpcClient(AbstractClient):
     def ReplaceRoutes(self, request):
         """本接口（ReplaceRoutes）根据路由策略ID（RouteId）修改指定的路由策略（Route），支持批量修改。
 
-        :param request: 调用ReplaceRoutes所需参数的结构体。
+        :param request: Request instance for ReplaceRoutes.
         :type request: :class:`tencentcloud.vpc.v20170312.models.ReplaceRoutesRequest`
         :rtype: :class:`tencentcloud.vpc.v20170312.models.ReplaceRoutesResponse`
 
@@ -4685,7 +4685,7 @@ class VpcClient(AbstractClient):
         """本接口（ReplaceSecurityGroupPolicy）用于替换单条安全组规则（SecurityGroupPolicy）。
         单个请求中只能替换单个方向的一条规则, 必须要指定索引（PolicyIndex）。
 
-        :param request: 调用ReplaceSecurityGroupPolicy所需参数的结构体。
+        :param request: Request instance for ReplaceSecurityGroupPolicy.
         :type request: :class:`tencentcloud.vpc.v20170312.models.ReplaceSecurityGroupPolicyRequest`
         :rtype: :class:`tencentcloud.vpc.v20170312.models.ReplaceSecurityGroupPolicyResponse`
 
@@ -4713,7 +4713,7 @@ class VpcClient(AbstractClient):
     def ResetAttachCcnInstances(self, request):
         """本接口（ResetAttachCcnInstances）用于跨账号关联实例申请过期时，重新申请关联操作。
 
-        :param request: 调用ResetAttachCcnInstances所需参数的结构体。
+        :param request: Request instance for ResetAttachCcnInstances.
         :type request: :class:`tencentcloud.vpc.v20170312.models.ResetAttachCcnInstancesRequest`
         :rtype: :class:`tencentcloud.vpc.v20170312.models.ResetAttachCcnInstancesResponse`
 
@@ -4741,7 +4741,7 @@ class VpcClient(AbstractClient):
     def ResetNatGatewayConnection(self, request):
         """本接口（ResetNatGatewayConnection）用来NAT网关并发连接上限。
 
-        :param request: 调用ResetNatGatewayConnection所需参数的结构体。
+        :param request: Request instance for ResetNatGatewayConnection.
         :type request: :class:`tencentcloud.vpc.v20170312.models.ResetNatGatewayConnectionRequest`
         :rtype: :class:`tencentcloud.vpc.v20170312.models.ResetNatGatewayConnectionResponse`
 
@@ -4770,7 +4770,7 @@ class VpcClient(AbstractClient):
         """本接口（ResetRoutes）用于对某个路由表名称和所有路由策略（Route）进行重新设置。<br />
         注意: 调用本接口是先删除当前路由表中所有路由策略, 再保存新提交的路由策略内容, 会引起网络中断。
 
-        :param request: 调用ResetRoutes所需参数的结构体。
+        :param request: Request instance for ResetRoutes.
         :type request: :class:`tencentcloud.vpc.v20170312.models.ResetRoutesRequest`
         :rtype: :class:`tencentcloud.vpc.v20170312.models.ResetRoutesResponse`
 
@@ -4798,7 +4798,7 @@ class VpcClient(AbstractClient):
     def ResetVpnConnection(self, request):
         """本接口(ResetVpnConnection)用于重置VPN通道。
 
-        :param request: 调用ResetVpnConnection所需参数的结构体。
+        :param request: Request instance for ResetVpnConnection.
         :type request: :class:`tencentcloud.vpc.v20170312.models.ResetVpnConnectionRequest`
         :rtype: :class:`tencentcloud.vpc.v20170312.models.ResetVpnConnectionResponse`
 
@@ -4826,7 +4826,7 @@ class VpcClient(AbstractClient):
     def ResetVpnGatewayInternetMaxBandwidth(self, request):
         """本接口（ResetVpnGatewayInternetMaxBandwidth）调整VPN网关带宽上限。目前支持升级配置，如果是包年包月VPN网关需要在有效期内。
 
-        :param request: 调用ResetVpnGatewayInternetMaxBandwidth所需参数的结构体。
+        :param request: Request instance for ResetVpnGatewayInternetMaxBandwidth.
         :type request: :class:`tencentcloud.vpc.v20170312.models.ResetVpnGatewayInternetMaxBandwidthRequest`
         :rtype: :class:`tencentcloud.vpc.v20170312.models.ResetVpnGatewayInternetMaxBandwidthResponse`
 
@@ -4854,7 +4854,7 @@ class VpcClient(AbstractClient):
     def SetCcnRegionBandwidthLimits(self, request):
         """本接口（SetCcnRegionBandwidthLimits）用于设置云联网（CCN）各地域出带宽上限，该接口只能设置已关联网络实例包含的地域的出带宽上限
 
-        :param request: 调用SetCcnRegionBandwidthLimits所需参数的结构体。
+        :param request: Request instance for SetCcnRegionBandwidthLimits.
         :type request: :class:`tencentcloud.vpc.v20170312.models.SetCcnRegionBandwidthLimitsRequest`
         :rtype: :class:`tencentcloud.vpc.v20170312.models.SetCcnRegionBandwidthLimitsResponse`
 
@@ -4883,7 +4883,7 @@ class VpcClient(AbstractClient):
         """本接口 (TransformAddress) 用于将实例的普通公网 IP 转换为[弹性公网IP](https://cloud.tencent.com/document/product/213/1941)（简称 EIP）。
         * 平台对用户每地域每日解绑 EIP 重新分配普通公网 IP 次数有所限制（可参见 [EIP 产品简介](/document/product/213/1941)）。上述配额可通过 [DescribeAddressQuota](https://cloud.tencent.com/document/api/213/1378) 接口获取。
 
-        :param request: 调用TransformAddress所需参数的结构体。
+        :param request: Request instance for TransformAddress.
         :type request: :class:`tencentcloud.vpc.v20170312.models.TransformAddressRequest`
         :rtype: :class:`tencentcloud.vpc.v20170312.models.TransformAddressResponse`
 
@@ -4912,7 +4912,7 @@ class VpcClient(AbstractClient):
         """本接口（UnassignIpv6Addresses）用于释放弹性网卡`IPv6`地址。<br />
         本接口是异步完成，如需查询异步任务执行结果，请使用本接口返回的`RequestId`轮询`QueryTask`接口。
 
-        :param request: 调用UnassignIpv6Addresses所需参数的结构体。
+        :param request: Request instance for UnassignIpv6Addresses.
         :type request: :class:`tencentcloud.vpc.v20170312.models.UnassignIpv6AddressesRequest`
         :rtype: :class:`tencentcloud.vpc.v20170312.models.UnassignIpv6AddressesResponse`
 
@@ -4941,7 +4941,7 @@ class VpcClient(AbstractClient):
         """本接口（UnassignIpv6CidrBlock）用于释放IPv6网段。<br />
         网段如果还有IP占用且未回收，则网段无法释放。
 
-        :param request: 调用UnassignIpv6CidrBlock所需参数的结构体。
+        :param request: Request instance for UnassignIpv6CidrBlock.
         :type request: :class:`tencentcloud.vpc.v20170312.models.UnassignIpv6CidrBlockRequest`
         :rtype: :class:`tencentcloud.vpc.v20170312.models.UnassignIpv6CidrBlockResponse`
 
@@ -4970,7 +4970,7 @@ class VpcClient(AbstractClient):
         """本接口（UnassignIpv6SubnetCidrBlock）用于释放IPv6子网段。<br />
         子网段如果还有IP占用且未回收，则子网段无法释放。
 
-        :param request: 调用UnassignIpv6SubnetCidrBlock所需参数的结构体。
+        :param request: Request instance for UnassignIpv6SubnetCidrBlock.
         :type request: :class:`tencentcloud.vpc.v20170312.models.UnassignIpv6SubnetCidrBlockRequest`
         :rtype: :class:`tencentcloud.vpc.v20170312.models.UnassignIpv6SubnetCidrBlockResponse`
 
@@ -4999,7 +4999,7 @@ class VpcClient(AbstractClient):
         """本接口（UnassignPrivateIpAddresses）用于弹性网卡退还内网 IP。
         * 退还弹性网卡上的辅助内网IP，接口自动解关联弹性公网 IP。不能退还弹性网卡的主内网IP。
 
-        :param request: 调用UnassignPrivateIpAddresses所需参数的结构体。
+        :param request: Request instance for UnassignPrivateIpAddresses.
         :type request: :class:`tencentcloud.vpc.v20170312.models.UnassignPrivateIpAddressesRequest`
         :rtype: :class:`tencentcloud.vpc.v20170312.models.UnassignPrivateIpAddressesResponse`
 

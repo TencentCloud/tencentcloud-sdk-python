@@ -30,7 +30,7 @@ class FacefusionClient(AbstractClient):
         >
         - 公共参数中的签名方式必须指定为V3版本，即配置SignatureMethod参数为TC3-HMAC-SHA256。
 
-        :param request: 调用FaceFusion所需参数的结构体。
+        :param request: Request instance for FaceFusion.
         :type request: :class:`tencentcloud.facefusion.v20181201.models.FaceFusionRequest`
         :rtype: :class:`tencentcloud.facefusion.v20181201.models.FaceFusionResponse`
 
@@ -62,7 +62,7 @@ class FacefusionClient(AbstractClient):
         >
         - 公共参数中的签名方式必须指定为V3版本，即配置SignatureMethod参数为TC3-HMAC-SHA256。
 
-        :param request: 调用FuseFace所需参数的结构体。
+        :param request: Request instance for FuseFace.
         :type request: :class:`tencentcloud.facefusion.v20181201.models.FuseFaceRequest`
         :rtype: :class:`tencentcloud.facefusion.v20181201.models.FuseFaceResponse`
 

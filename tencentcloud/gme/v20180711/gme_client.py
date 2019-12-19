@@ -28,7 +28,7 @@ class GmeClient(AbstractClient):
     def CreateApp(self, request):
         """本接口(CreateApp)用于创建一个GME应用。
 
-        :param request: 调用CreateApp所需参数的结构体。
+        :param request: Request instance for CreateApp.
         :type request: :class:`tencentcloud.gme.v20180711.models.CreateAppRequest`
         :rtype: :class:`tencentcloud.gme.v20180711.models.CreateAppResponse`
 
@@ -56,7 +56,7 @@ class GmeClient(AbstractClient):
     def DescribeAppStatistics(self, request):
         """本接口(DescribeAppStatistics)用于获取某个GME应用的用量数据。包括实时语音，语音消息及转文本，语音分析等。最长查询周期为最近30天。
 
-        :param request: 调用DescribeAppStatistics所需参数的结构体。
+        :param request: Request instance for DescribeAppStatistics.
         :type request: :class:`tencentcloud.gme.v20180711.models.DescribeAppStatisticsRequest`
         :rtype: :class:`tencentcloud.gme.v20180711.models.DescribeAppStatisticsResponse`
 
@@ -84,7 +84,7 @@ class GmeClient(AbstractClient):
     def DescribeFilterResult(self, request):
         """根据应用ID和文件ID查询识别结果
 
-        :param request: 调用DescribeFilterResult所需参数的结构体。
+        :param request: Request instance for DescribeFilterResult.
         :type request: :class:`tencentcloud.gme.v20180711.models.DescribeFilterResultRequest`
         :rtype: :class:`tencentcloud.gme.v20180711.models.DescribeFilterResultResponse`
 
@@ -112,7 +112,7 @@ class GmeClient(AbstractClient):
     def DescribeFilterResultList(self, request):
         """根据日期查询识别结果列表
 
-        :param request: 调用DescribeFilterResultList所需参数的结构体。
+        :param request: Request instance for DescribeFilterResultList.
         :type request: :class:`tencentcloud.gme.v20180711.models.DescribeFilterResultListRequest`
         :rtype: :class:`tencentcloud.gme.v20180711.models.DescribeFilterResultListResponse`
 
@@ -141,7 +141,7 @@ class GmeClient(AbstractClient):
         """本接口(DescribeScanResultList)用于查询语音检测结果，查询任务列表最多支持100个。
         <p style="color:red">如果在提交语音检测任务时未设置 Callback 字段，则需要通过本接口获取检测结果</p>
 
-        :param request: 调用DescribeScanResultList所需参数的结构体。
+        :param request: Request instance for DescribeScanResultList.
         :type request: :class:`tencentcloud.gme.v20180711.models.DescribeScanResultListRequest`
         :rtype: :class:`tencentcloud.gme.v20180711.models.DescribeScanResultListResponse`
 
@@ -169,7 +169,7 @@ class GmeClient(AbstractClient):
     def ModifyAppStatus(self, request):
         """本接口(ModifyAppStatus)用于修改应用总开关状态。
 
-        :param request: 调用ModifyAppStatus所需参数的结构体。
+        :param request: Request instance for ModifyAppStatus.
         :type request: :class:`tencentcloud.gme.v20180711.models.ModifyAppStatusRequest`
         :rtype: :class:`tencentcloud.gme.v20180711.models.ModifyAppStatusResponse`
 
@@ -333,7 +333,7 @@ class GmeClient(AbstractClient):
         }
         </code></pre>
 
-        :param request: 调用ScanVoice所需参数的结构体。
+        :param request: Request instance for ScanVoice.
         :type request: :class:`tencentcloud.gme.v20180711.models.ScanVoiceRequest`
         :rtype: :class:`tencentcloud.gme.v20180711.models.ScanVoiceResponse`
 
@@ -363,7 +363,7 @@ class GmeClient(AbstractClient):
         {"BizId":0,"FileId":"test_file_id","FileName":"test_file_name","FileUrl":"test_file_url","OpenId":"test_open_id","TimeStamp":"0000-00-00 00:00:00","Data":[{"Type":1,"Word":"xx"}]}
         Type表示过滤类型，1：政治，2：色情，3：谩骂
 
-        :param request: 调用VoiceFilter所需参数的结构体。
+        :param request: Request instance for VoiceFilter.
         :type request: :class:`tencentcloud.gme.v20180711.models.VoiceFilterRequest`
         :rtype: :class:`tencentcloud.gme.v20180711.models.VoiceFilterResponse`
 

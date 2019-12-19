@@ -28,7 +28,9 @@ class Activity(AbstractModel):
         :param ActivityId: 伸缩活动ID。
         :type ActivityId: str
         :param ActivityType: 伸缩活动类型。取值如下：<br>
-<li>SCALE_OUT：扩容活动<li>SCALE_IN：缩容活动<li>ATTACH_INSTANCES：添加实例<li>REMOVE_INSTANCES：销毁实例<li>DETACH_INSTANCES：移出实例<li>TERMINATE_INSTANCES_UNEXPECTEDLY：实例在CVM控制台被销毁<li>REPLACE_UNHEALTHY_INSTANCE：替换不健康实例）
+<li>SCALE_OUT：扩容活动<li>SCALE_IN：缩容活动<li>ATTACH_INSTANCES：添加实例<li>REMOVE_INSTANCES：销毁实例<li>DETACH_INSTANCES：移出实例<li>TERMINATE_INSTANCES_UNEXPECTEDLY：实例在CVM控制台被销毁<li>REPLACE_UNHEALTHY_INSTANCE：替换不健康实例
+<li>START_INSTANCES：开启实例
+<li>STOP_INSTANCES：关闭实例
         :type ActivityType: str
         :param StatusCode: 伸缩活动状态。取值如下：<br>
 <li>INIT：初始化中
@@ -211,6 +213,8 @@ class AutoScalingGroup(AbstractModel):
         :type Tags: list of Tag
         :param ServiceSettings: 服务设置
         :type ServiceSettings: :class:`tencentcloud.autoscaling.v20180419.models.ServiceSettings`
+        :param Ipv6AddressCount: 实例具有IPv6地址数量的配置
+        :type Ipv6AddressCount: int
         """
         self.AutoScalingGroupId = None
         self.AutoScalingGroupName = None
@@ -236,6 +240,7 @@ class AutoScalingGroup(AbstractModel):
         self.InActivityStatus = None
         self.Tags = None
         self.ServiceSettings = None
+        self.Ipv6AddressCount = None
 
 
     def _deserialize(self, params):
@@ -275,6 +280,7 @@ class AutoScalingGroup(AbstractModel):
         if params.get("ServiceSettings") is not None:
             self.ServiceSettings = ServiceSettings()
             self.ServiceSettings._deserialize(params.get("ServiceSettings"))
+        self.Ipv6AddressCount = params.get("Ipv6AddressCount")
 
 
 class AutoScalingGroupAbstract(AbstractModel):
@@ -482,6 +488,8 @@ class CreateAutoScalingGroupRequest(AbstractModel):
         :type Tags: list of Tag
         :param ServiceSettings: 服务设置，包括云监控不健康替换等服务设置。
         :type ServiceSettings: :class:`tencentcloud.autoscaling.v20180419.models.ServiceSettings`
+        :param Ipv6AddressCount: 实例具有IPv6地址数量的配置，取值包括 0、1，默认值为0。
+        :type Ipv6AddressCount: int
         """
         self.AutoScalingGroupName = None
         self.LaunchConfigurationId = None
@@ -500,6 +508,7 @@ class CreateAutoScalingGroupRequest(AbstractModel):
         self.ZonesCheckPolicy = None
         self.Tags = None
         self.ServiceSettings = None
+        self.Ipv6AddressCount = None
 
 
     def _deserialize(self, params):
@@ -532,6 +541,7 @@ class CreateAutoScalingGroupRequest(AbstractModel):
         if params.get("ServiceSettings") is not None:
             self.ServiceSettings = ServiceSettings()
             self.ServiceSettings._deserialize(params.get("ServiceSettings"))
+        self.Ipv6AddressCount = params.get("Ipv6AddressCount")
 
 
 class CreateAutoScalingGroupResponse(AbstractModel):
@@ -823,7 +833,7 @@ class CreatePaiInstanceRequest(AbstractModel):
         :type InitScript: str
         :param Zones: 可用区列表。
         :type Zones: list of str
-        :param VpcId: VpcId。
+        :param VpcId: VPC ID。
         :type VpcId: str
         :param SubnetIds: 子网列表。
         :type SubnetIds: list of str
@@ -2140,13 +2150,13 @@ class Filter(AbstractModel):
     > * 若存在多个`Filter`时，`Filter`间的关系为逻辑与（`AND`）关系。
     > * 若同一个`Filter`存在多个`Values`，同一`Filter`下`Values`间的关系为逻辑或（`OR`）关系。
     >
-    > 以[DescribeInstances](https://cloud.tencent.com/document/api/213/9388)接口的`Filter`为例。若我们需要查询可用区（`zone`）为广州一区 ***并且*** 实例计费模式（`instance-charge-type`）为包年包月 ***或者*** 按量计费的实例时，可如下实现：
+    > 以[DescribeInstances](https://cloud.tencent.com/document/api/213/15728)接口的`Filter`为例。若我们需要查询可用区（`zone`）为广州一区 ***并且*** 实例计费模式（`instance-charge-type`）为包年包月 ***或者*** 按量计费的实例时，可如下实现：
     ```
     Filters.0.Name=zone
-    &Filters.0.Values.1=ap-guangzhou-1
+    &Filters.0.Values.0=ap-guangzhou-1
     &Filters.1.Name=instance-charge-type
-    &Filters.1.Values.1=PREPAID
-    &Filters.1.Values.2=POSTPAID_BY_HOUR
+    &Filters.1.Values.0=PREPAID
+    &Filters.1.Values.1=POSTPAID_BY_HOUR
     ```
 
     """
@@ -2244,7 +2254,20 @@ class Instance(AbstractModel):
         :type LaunchConfigurationId: str
         :param LaunchConfigurationName: 启动配置名称
         :type LaunchConfigurationName: str
-        :param LifeCycleState: 生命周期状态，取值包括IN_SERVICE, CREATING, TERMINATING, ATTACHING, DETACHING, ATTACHING_LB, DETACHING_LB等
+        :param LifeCycleState: 生命周期状态，取值如下：<br>
+<li>IN_SERVICE：运行中
+<li>CREATING：创建中
+<li>CREATION_FAILED：创建失败
+<li>TERMINATING：中止中
+<li>TERMINATION_FAILED：中止失败
+<li>ATTACHING：绑定中
+<li>DETACHING：解绑中
+<li>ATTACHING_LB：绑定LB中<li>DETACHING_LB：解绑LB中
+<li>STARTING：开机中
+<li>START_FAILED：开机失败
+<li>STOPPING：关机中
+<li>STOP_FAILED：关机失败
+<li>STOPPED：已关机
         :type LifeCycleState: str
         :param HealthStatus: 健康状态，取值包括HEALTHY和UNHEALTHY
         :type HealthStatus: str
@@ -2295,7 +2318,7 @@ class Instance(AbstractModel):
 
 
 class InstanceChargePrepaid(AbstractModel):
-    """描述了了实例的计费模式
+    """描述了实例的计费模式
 
     """
 
@@ -2707,6 +2730,8 @@ class ModifyAutoScalingGroupRequest(AbstractModel):
         :type ZonesCheckPolicy: str
         :param ServiceSettings: 服务设置，包括云监控不健康替换等服务设置。
         :type ServiceSettings: :class:`tencentcloud.autoscaling.v20180419.models.ServiceSettings`
+        :param Ipv6AddressCount: 实例具有IPv6地址数量的配置，取值包括0、1。
+        :type Ipv6AddressCount: int
         """
         self.AutoScalingGroupId = None
         self.AutoScalingGroupName = None
@@ -2723,6 +2748,7 @@ class ModifyAutoScalingGroupRequest(AbstractModel):
         self.RetryPolicy = None
         self.ZonesCheckPolicy = None
         self.ServiceSettings = None
+        self.Ipv6AddressCount = None
 
 
     def _deserialize(self, params):
@@ -2743,6 +2769,7 @@ class ModifyAutoScalingGroupRequest(AbstractModel):
         if params.get("ServiceSettings") is not None:
             self.ServiceSettings = ServiceSettings()
             self.ServiceSettings._deserialize(params.get("ServiceSettings"))
+        self.Ipv6AddressCount = params.get("Ipv6AddressCount")
 
 
 class ModifyAutoScalingGroupResponse(AbstractModel):
@@ -3365,12 +3392,19 @@ class ServiceSettings(AbstractModel):
         """
         :param ReplaceMonitorUnhealthy: 开启监控不健康替换服务。若开启则对于云监控标记为不健康的实例，弹性伸缩服务会进行替换。若不指定该参数，则默认为 False。
         :type ReplaceMonitorUnhealthy: bool
+        :param ScalingMode: 取值范围： 
+CLASSIC_SCALING：经典方式，使用创建、销毁实例来实现扩缩容； 
+WAKE_UP_STOPPED_SCALING：扩容优先开机。扩容时优先对已关机的实例执行开机操作，若开机后实例数仍低于期望实例数，则创建实例，缩容仍采用销毁实例的方式。用户可以使用StopAutoScalingInstances接口来关闭伸缩组内的实例。监控告警触发的扩容仍将创建实例
+默认取值：CLASSIC_SCALING
+        :type ScalingMode: str
         """
         self.ReplaceMonitorUnhealthy = None
+        self.ScalingMode = None
 
 
     def _deserialize(self, params):
         self.ReplaceMonitorUnhealthy = params.get("ReplaceMonitorUnhealthy")
+        self.ScalingMode = params.get("ScalingMode")
 
 
 class SetInstancesProtectionRequest(AbstractModel):
@@ -3435,6 +3469,97 @@ class SpotMarketOptions(AbstractModel):
     def _deserialize(self, params):
         self.MaxPrice = params.get("MaxPrice")
         self.SpotInstanceType = params.get("SpotInstanceType")
+
+
+class StartAutoScalingInstancesRequest(AbstractModel):
+    """StartAutoScalingInstances请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param AutoScalingGroupId: 伸缩组ID
+        :type AutoScalingGroupId: str
+        :param InstanceIds: 待开启的CVM实例ID列表
+        :type InstanceIds: list of str
+        """
+        self.AutoScalingGroupId = None
+        self.InstanceIds = None
+
+
+    def _deserialize(self, params):
+        self.AutoScalingGroupId = params.get("AutoScalingGroupId")
+        self.InstanceIds = params.get("InstanceIds")
+
+
+class StartAutoScalingInstancesResponse(AbstractModel):
+    """StartAutoScalingInstances返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ActivityId: 伸缩活动ID
+        :type ActivityId: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.ActivityId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.ActivityId = params.get("ActivityId")
+        self.RequestId = params.get("RequestId")
+
+
+class StopAutoScalingInstancesRequest(AbstractModel):
+    """StopAutoScalingInstances请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param AutoScalingGroupId: 伸缩组ID
+        :type AutoScalingGroupId: str
+        :param InstanceIds: 待关闭的CVM实例ID列表
+        :type InstanceIds: list of str
+        :param StoppedMode: 关闭的实例是否收费，取值为：  
+KEEP_CHARGING：关机继续收费  
+STOP_CHARGING：关机停止收费
+默认为 KEEP_CHARGING
+        :type StoppedMode: str
+        """
+        self.AutoScalingGroupId = None
+        self.InstanceIds = None
+        self.StoppedMode = None
+
+
+    def _deserialize(self, params):
+        self.AutoScalingGroupId = params.get("AutoScalingGroupId")
+        self.InstanceIds = params.get("InstanceIds")
+        self.StoppedMode = params.get("StoppedMode")
+
+
+class StopAutoScalingInstancesResponse(AbstractModel):
+    """StopAutoScalingInstances返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ActivityId: 伸缩活动ID
+        :type ActivityId: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.ActivityId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.ActivityId = params.get("ActivityId")
+        self.RequestId = params.get("RequestId")
 
 
 class SystemDisk(AbstractModel):

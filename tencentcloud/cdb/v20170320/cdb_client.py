@@ -28,7 +28,7 @@ class CdbClient(AbstractClient):
     def AddTimeWindow(self, request):
         """本接口(AddTimeWindow)用于添加云数据库实例的维护时间窗口，以指定实例在哪些时间段可以自动执行切换访问操作。
 
-        :param request: 调用AddTimeWindow所需参数的结构体。
+        :param request: Request instance for AddTimeWindow.
         :type request: :class:`tencentcloud.cdb.v20170320.models.AddTimeWindowRequest`
         :rtype: :class:`tencentcloud.cdb.v20170320.models.AddTimeWindowResponse`
 
@@ -56,7 +56,7 @@ class CdbClient(AbstractClient):
     def AssociateSecurityGroups(self, request):
         """本接口(AssociateSecurityGroups)用于安全组批量绑定实例。
 
-        :param request: 调用AssociateSecurityGroups所需参数的结构体。
+        :param request: Request instance for AssociateSecurityGroups.
         :type request: :class:`tencentcloud.cdb.v20170320.models.AssociateSecurityGroupsRequest`
         :rtype: :class:`tencentcloud.cdb.v20170320.models.AssociateSecurityGroupsResponse`
 
@@ -84,7 +84,7 @@ class CdbClient(AbstractClient):
     def CloseWanService(self, request):
         """本接口(CloseWanService)用于关闭云数据库实例的外网访问。关闭外网访问后，外网地址将不可访问。
 
-        :param request: 调用CloseWanService所需参数的结构体。
+        :param request: Request instance for CloseWanService.
         :type request: :class:`tencentcloud.cdb.v20170320.models.CloseWanServiceRequest`
         :rtype: :class:`tencentcloud.cdb.v20170320.models.CloseWanServiceResponse`
 
@@ -112,7 +112,7 @@ class CdbClient(AbstractClient):
     def CreateAccounts(self, request):
         """本接口(CreateAccounts)用于创建云数据库的账户，需要指定新的账户名和域名，以及所对应的密码，同时可以设置账号的备注信息。
 
-        :param request: 调用CreateAccounts所需参数的结构体。
+        :param request: Request instance for CreateAccounts.
         :type request: :class:`tencentcloud.cdb.v20170320.models.CreateAccountsRequest`
         :rtype: :class:`tencentcloud.cdb.v20170320.models.CreateAccountsResponse`
 
@@ -140,7 +140,7 @@ class CdbClient(AbstractClient):
     def CreateBackup(self, request):
         """本接口(CreateBackup)用于创建数据库备份。
 
-        :param request: 调用CreateBackup所需参数的结构体。
+        :param request: Request instance for CreateBackup.
         :type request: :class:`tencentcloud.cdb.v20170320.models.CreateBackupRequest`
         :rtype: :class:`tencentcloud.cdb.v20170320.models.CreateBackupResponse`
 
@@ -170,7 +170,7 @@ class CdbClient(AbstractClient):
 
         注意，用户进行数据导入任务的文件，必须提前上传到腾讯云。用户须在控制台进行文件导入。
 
-        :param request: 调用CreateDBImportJob所需参数的结构体。
+        :param request: Request instance for CreateDBImportJob.
         :type request: :class:`tencentcloud.cdb.v20170320.models.CreateDBImportJobRequest`
         :rtype: :class:`tencentcloud.cdb.v20170320.models.CreateDBImportJobResponse`
 
@@ -206,7 +206,7 @@ class CdbClient(AbstractClient):
         4. 支持创建主实例、只读实例、灾备实例；
         5. 当入参指定 Port，ParamList 或 Password 时，该实例会进行初始化操作；
 
-        :param request: 调用CreateDBInstance所需参数的结构体。
+        :param request: Request instance for CreateDBInstance.
         :type request: :class:`tencentcloud.cdb.v20170320.models.CreateDBInstanceRequest`
         :rtype: :class:`tencentcloud.cdb.v20170320.models.CreateDBInstanceResponse`
 
@@ -242,7 +242,7 @@ class CdbClient(AbstractClient):
         4. 支持创建主实例、灾备实例和只读实例；
         5. 当入参指定 Port，ParamList 或 Password 时，该实例会进行初始化操作；
 
-        :param request: 调用CreateDBInstanceHour所需参数的结构体。
+        :param request: Request instance for CreateDBInstanceHour.
         :type request: :class:`tencentcloud.cdb.v20170320.models.CreateDBInstanceHourRequest`
         :rtype: :class:`tencentcloud.cdb.v20170320.models.CreateDBInstanceHourResponse`
 
@@ -270,7 +270,7 @@ class CdbClient(AbstractClient):
     def CreateDeployGroup(self, request):
         """创建放置实例的置放群组
 
-        :param request: 调用CreateDeployGroup所需参数的结构体。
+        :param request: Request instance for CreateDeployGroup.
         :type request: :class:`tencentcloud.cdb.v20170320.models.CreateDeployGroupRequest`
         :rtype: :class:`tencentcloud.cdb.v20170320.models.CreateDeployGroupResponse`
 
@@ -298,7 +298,7 @@ class CdbClient(AbstractClient):
     def CreateParamTemplate(self, request):
         """该接口（CreateParamTemplate）用于创建参数模板。
 
-        :param request: 调用CreateParamTemplate所需参数的结构体。
+        :param request: Request instance for CreateParamTemplate.
         :type request: :class:`tencentcloud.cdb.v20170320.models.CreateParamTemplateRequest`
         :rtype: :class:`tencentcloud.cdb.v20170320.models.CreateParamTemplateResponse`
 
@@ -326,7 +326,7 @@ class CdbClient(AbstractClient):
     def DeleteAccounts(self, request):
         """本接口(DeleteAccounts)用于删除云数据库的账户。
 
-        :param request: 调用DeleteAccounts所需参数的结构体。
+        :param request: Request instance for DeleteAccounts.
         :type request: :class:`tencentcloud.cdb.v20170320.models.DeleteAccountsRequest`
         :rtype: :class:`tencentcloud.cdb.v20170320.models.DeleteAccountsResponse`
 
@@ -354,7 +354,7 @@ class CdbClient(AbstractClient):
     def DeleteBackup(self, request):
         """本接口(DeleteBackup)用于删除数据库备份。
 
-        :param request: 调用DeleteBackup所需参数的结构体。
+        :param request: Request instance for DeleteBackup.
         :type request: :class:`tencentcloud.cdb.v20170320.models.DeleteBackupRequest`
         :rtype: :class:`tencentcloud.cdb.v20170320.models.DeleteBackupResponse`
 
@@ -382,7 +382,7 @@ class CdbClient(AbstractClient):
     def DeleteDeployGroups(self, request):
         """根据置放群组ID删除置放群组（置放群组中有资源存在时不能删除该置放群组）
 
-        :param request: 调用DeleteDeployGroups所需参数的结构体。
+        :param request: Request instance for DeleteDeployGroups.
         :type request: :class:`tencentcloud.cdb.v20170320.models.DeleteDeployGroupsRequest`
         :rtype: :class:`tencentcloud.cdb.v20170320.models.DeleteDeployGroupsResponse`
 
@@ -410,7 +410,7 @@ class CdbClient(AbstractClient):
     def DeleteParamTemplate(self, request):
         """该接口（DeleteParamTemplate）用于删除参数模板。
 
-        :param request: 调用DeleteParamTemplate所需参数的结构体。
+        :param request: Request instance for DeleteParamTemplate.
         :type request: :class:`tencentcloud.cdb.v20170320.models.DeleteParamTemplateRequest`
         :rtype: :class:`tencentcloud.cdb.v20170320.models.DeleteParamTemplateResponse`
 
@@ -438,7 +438,7 @@ class CdbClient(AbstractClient):
     def DeleteTimeWindow(self, request):
         """本接口(DeleteTimeWindow)用于删除云数据库实例的维护时间窗口。删除实例维护时间窗口之后，默认的维护时间窗为 03:00-04:00，即当选择在维护时间窗口内切换访问新实例时，默认会在 03:00-04:00 点进行切换访问新实例。
 
-        :param request: 调用DeleteTimeWindow所需参数的结构体。
+        :param request: Request instance for DeleteTimeWindow.
         :type request: :class:`tencentcloud.cdb.v20170320.models.DeleteTimeWindowRequest`
         :rtype: :class:`tencentcloud.cdb.v20170320.models.DeleteTimeWindowResponse`
 
@@ -466,7 +466,7 @@ class CdbClient(AbstractClient):
     def DescribeAccountPrivileges(self, request):
         """本接口(DescribeAccountPrivileges)用于查询云数据库账户支持的权限信息。
 
-        :param request: 调用DescribeAccountPrivileges所需参数的结构体。
+        :param request: Request instance for DescribeAccountPrivileges.
         :type request: :class:`tencentcloud.cdb.v20170320.models.DescribeAccountPrivilegesRequest`
         :rtype: :class:`tencentcloud.cdb.v20170320.models.DescribeAccountPrivilegesResponse`
 
@@ -494,7 +494,7 @@ class CdbClient(AbstractClient):
     def DescribeAccounts(self, request):
         """本接口(DescribeAccounts)用于查询云数据库的所有账户信息。
 
-        :param request: 调用DescribeAccounts所需参数的结构体。
+        :param request: Request instance for DescribeAccounts.
         :type request: :class:`tencentcloud.cdb.v20170320.models.DescribeAccountsRequest`
         :rtype: :class:`tencentcloud.cdb.v20170320.models.DescribeAccountsResponse`
 
@@ -522,7 +522,7 @@ class CdbClient(AbstractClient):
     def DescribeAsyncRequestInfo(self, request):
         """本接口(DescribeAsyncRequestInfo)用于查询云数据库实例异步任务的执行结果。
 
-        :param request: 调用DescribeAsyncRequestInfo所需参数的结构体。
+        :param request: Request instance for DescribeAsyncRequestInfo.
         :type request: :class:`tencentcloud.cdb.v20170320.models.DescribeAsyncRequestInfoRequest`
         :rtype: :class:`tencentcloud.cdb.v20170320.models.DescribeAsyncRequestInfoResponse`
 
@@ -550,7 +550,7 @@ class CdbClient(AbstractClient):
     def DescribeBackupConfig(self, request):
         """本接口(DescribeBackupConfig)用于查询数据库备份配置信息。
 
-        :param request: 调用DescribeBackupConfig所需参数的结构体。
+        :param request: Request instance for DescribeBackupConfig.
         :type request: :class:`tencentcloud.cdb.v20170320.models.DescribeBackupConfigRequest`
         :rtype: :class:`tencentcloud.cdb.v20170320.models.DescribeBackupConfigResponse`
 
@@ -580,7 +580,7 @@ class CdbClient(AbstractClient):
         旧版本支持全量备份后，用户如果分库表下载逻辑备份文件，需要用到此接口。
         新版本支持(CreateBackup)创建逻辑备份的时候，直接发起指定库表备份，用户直接下载该备份文件即可。
 
-        :param request: 调用DescribeBackupDatabases所需参数的结构体。
+        :param request: Request instance for DescribeBackupDatabases.
         :type request: :class:`tencentcloud.cdb.v20170320.models.DescribeBackupDatabasesRequest`
         :rtype: :class:`tencentcloud.cdb.v20170320.models.DescribeBackupDatabasesResponse`
 
@@ -610,7 +610,7 @@ class CdbClient(AbstractClient):
         旧版本支持全量备份后，用户如果分库表下载逻辑备份文件，需要用到此接口。
         新版本支持(CreateBackup)创建逻辑备份的时候，直接发起指定库表备份，用户直接下载该备份文件即可。
 
-        :param request: 调用DescribeBackupTables所需参数的结构体。
+        :param request: Request instance for DescribeBackupTables.
         :type request: :class:`tencentcloud.cdb.v20170320.models.DescribeBackupTablesRequest`
         :rtype: :class:`tencentcloud.cdb.v20170320.models.DescribeBackupTablesResponse`
 
@@ -638,7 +638,7 @@ class CdbClient(AbstractClient):
     def DescribeBackups(self, request):
         """本接口(DescribeBackups)用于查询云数据库实例的备份数据。
 
-        :param request: 调用DescribeBackups所需参数的结构体。
+        :param request: Request instance for DescribeBackups.
         :type request: :class:`tencentcloud.cdb.v20170320.models.DescribeBackupsRequest`
         :rtype: :class:`tencentcloud.cdb.v20170320.models.DescribeBackupsResponse`
 
@@ -666,7 +666,7 @@ class CdbClient(AbstractClient):
     def DescribeBinlogs(self, request):
         """本接口(DescribeBinlogs)用于查询云数据库实例的二进制数据。
 
-        :param request: 调用DescribeBinlogs所需参数的结构体。
+        :param request: Request instance for DescribeBinlogs.
         :type request: :class:`tencentcloud.cdb.v20170320.models.DescribeBinlogsRequest`
         :rtype: :class:`tencentcloud.cdb.v20170320.models.DescribeBinlogsResponse`
 
@@ -694,7 +694,7 @@ class CdbClient(AbstractClient):
     def DescribeDBImportRecords(self, request):
         """本接口(DescribeDBImportRecords)用于查询云数据库导入任务操作日志。
 
-        :param request: 调用DescribeDBImportRecords所需参数的结构体。
+        :param request: Request instance for DescribeDBImportRecords.
         :type request: :class:`tencentcloud.cdb.v20170320.models.DescribeDBImportRecordsRequest`
         :rtype: :class:`tencentcloud.cdb.v20170320.models.DescribeDBImportRecordsResponse`
 
@@ -722,7 +722,7 @@ class CdbClient(AbstractClient):
     def DescribeDBInstanceCharset(self, request):
         """本接口(DescribeDBInstanceCharset)用于查询云数据库实例的字符集，获取字符集的名称。
 
-        :param request: 调用DescribeDBInstanceCharset所需参数的结构体。
+        :param request: Request instance for DescribeDBInstanceCharset.
         :type request: :class:`tencentcloud.cdb.v20170320.models.DescribeDBInstanceCharsetRequest`
         :rtype: :class:`tencentcloud.cdb.v20170320.models.DescribeDBInstanceCharsetResponse`
 
@@ -750,7 +750,7 @@ class CdbClient(AbstractClient):
     def DescribeDBInstanceConfig(self, request):
         """本接口(DescribeDBInstanceConfig)用于云数据库实例的配置信息，包括同步模式，部署模式等。
 
-        :param request: 调用DescribeDBInstanceConfig所需参数的结构体。
+        :param request: Request instance for DescribeDBInstanceConfig.
         :type request: :class:`tencentcloud.cdb.v20170320.models.DescribeDBInstanceConfigRequest`
         :rtype: :class:`tencentcloud.cdb.v20170320.models.DescribeDBInstanceConfigResponse`
 
@@ -778,7 +778,7 @@ class CdbClient(AbstractClient):
     def DescribeDBInstanceGTID(self, request):
         """本接口(DescribeDBInstanceGTID)用于查询云数据库实例是否开通了 GTID，不支持版本为 5.5 以及以下的实例。
 
-        :param request: 调用DescribeDBInstanceGTID所需参数的结构体。
+        :param request: Request instance for DescribeDBInstanceGTID.
         :type request: :class:`tencentcloud.cdb.v20170320.models.DescribeDBInstanceGTIDRequest`
         :rtype: :class:`tencentcloud.cdb.v20170320.models.DescribeDBInstanceGTIDResponse`
 
@@ -806,7 +806,7 @@ class CdbClient(AbstractClient):
     def DescribeDBInstanceRebootTime(self, request):
         """本接口(DescribeDBInstanceRebootTime)用于查询云数据库实例重启预计所需的时间。
 
-        :param request: 调用DescribeDBInstanceRebootTime所需参数的结构体。
+        :param request: Request instance for DescribeDBInstanceRebootTime.
         :type request: :class:`tencentcloud.cdb.v20170320.models.DescribeDBInstanceRebootTimeRequest`
         :rtype: :class:`tencentcloud.cdb.v20170320.models.DescribeDBInstanceRebootTimeResponse`
 
@@ -834,7 +834,7 @@ class CdbClient(AbstractClient):
     def DescribeDBInstances(self, request):
         """本接口(DescribeDBInstances)用于查询云数据库实例列表，支持通过项目 ID、实例 ID、访问地址、实例状态等过滤条件来筛选实例。支持查询主实例、灾备实例和只读实例信息列表。
 
-        :param request: 调用DescribeDBInstances所需参数的结构体。
+        :param request: Request instance for DescribeDBInstances.
         :type request: :class:`tencentcloud.cdb.v20170320.models.DescribeDBInstancesRequest`
         :rtype: :class:`tencentcloud.cdb.v20170320.models.DescribeDBInstancesResponse`
 
@@ -864,7 +864,7 @@ class CdbClient(AbstractClient):
 
         注意：对某个地域进行询价，请使用对应地域的接入点，接入点信息请参照 <a href="https://cloud.tencent.com/document/api/236/15832">服务地址</a> 文档。例如：对广州地域进行询价，请把请求发到：cdb.ap-guangzhou.tencentcloudapi.com。同理对上海地域询价，把请求发到：cdb.ap-shanghai.tencentcloudapi.com。
 
-        :param request: 调用DescribeDBPrice所需参数的结构体。
+        :param request: Request instance for DescribeDBPrice.
         :type request: :class:`tencentcloud.cdb.v20170320.models.DescribeDBPriceRequest`
         :rtype: :class:`tencentcloud.cdb.v20170320.models.DescribeDBPriceResponse`
 
@@ -892,7 +892,7 @@ class CdbClient(AbstractClient):
     def DescribeDBSecurityGroups(self, request):
         """本接口(DescribeDBSecurityGroups)用于查询实例的安全组详情。
 
-        :param request: 调用DescribeDBSecurityGroups所需参数的结构体。
+        :param request: Request instance for DescribeDBSecurityGroups.
         :type request: :class:`tencentcloud.cdb.v20170320.models.DescribeDBSecurityGroupsRequest`
         :rtype: :class:`tencentcloud.cdb.v20170320.models.DescribeDBSecurityGroupsResponse`
 
@@ -920,7 +920,7 @@ class CdbClient(AbstractClient):
     def DescribeDBSwitchRecords(self, request):
         """本接口(DescribeDBSwitchRecords)用于查询云数据库实例切换记录。
 
-        :param request: 调用DescribeDBSwitchRecords所需参数的结构体。
+        :param request: Request instance for DescribeDBSwitchRecords.
         :type request: :class:`tencentcloud.cdb.v20170320.models.DescribeDBSwitchRecordsRequest`
         :rtype: :class:`tencentcloud.cdb.v20170320.models.DescribeDBSwitchRecordsResponse`
 
@@ -948,7 +948,7 @@ class CdbClient(AbstractClient):
     def DescribeDBZoneConfig(self, request):
         """本接口(DescribeDBZoneConfig)用于查询可创建的云数据库各地域可售卖的规格配置。
 
-        :param request: 调用DescribeDBZoneConfig所需参数的结构体。
+        :param request: Request instance for DescribeDBZoneConfig.
         :type request: :class:`tencentcloud.cdb.v20170320.models.DescribeDBZoneConfigRequest`
         :rtype: :class:`tencentcloud.cdb.v20170320.models.DescribeDBZoneConfigResponse`
 
@@ -976,7 +976,7 @@ class CdbClient(AbstractClient):
     def DescribeDatabases(self, request):
         """本接口(DescribeDatabases)用于查询云数据库实例的数据库信息。
 
-        :param request: 调用DescribeDatabases所需参数的结构体。
+        :param request: Request instance for DescribeDatabases.
         :type request: :class:`tencentcloud.cdb.v20170320.models.DescribeDatabasesRequest`
         :rtype: :class:`tencentcloud.cdb.v20170320.models.DescribeDatabasesResponse`
 
@@ -1004,7 +1004,7 @@ class CdbClient(AbstractClient):
     def DescribeDefaultParams(self, request):
         """该接口（DescribeDefaultParams）用于查询默认的可设置参数列表。
 
-        :param request: 调用DescribeDefaultParams所需参数的结构体。
+        :param request: Request instance for DescribeDefaultParams.
         :type request: :class:`tencentcloud.cdb.v20170320.models.DescribeDefaultParamsRequest`
         :rtype: :class:`tencentcloud.cdb.v20170320.models.DescribeDefaultParamsResponse`
 
@@ -1032,7 +1032,7 @@ class CdbClient(AbstractClient):
     def DescribeDeployGroupList(self, request):
         """根据置放群组 ID 或置放群组名称查询置放群组列表
 
-        :param request: 调用DescribeDeployGroupList所需参数的结构体。
+        :param request: Request instance for DescribeDeployGroupList.
         :type request: :class:`tencentcloud.cdb.v20170320.models.DescribeDeployGroupListRequest`
         :rtype: :class:`tencentcloud.cdb.v20170320.models.DescribeDeployGroupListResponse`
 
@@ -1060,7 +1060,7 @@ class CdbClient(AbstractClient):
     def DescribeDeviceMonitorInfo(self, request):
         """本接口（DescribeDeviceMonitorInfo）用于查询云数据库物理机当天的监控信息，暂只支持内存488G、硬盘6T的实例查询。
 
-        :param request: 调用DescribeDeviceMonitorInfo所需参数的结构体。
+        :param request: Request instance for DescribeDeviceMonitorInfo.
         :type request: :class:`tencentcloud.cdb.v20170320.models.DescribeDeviceMonitorInfoRequest`
         :rtype: :class:`tencentcloud.cdb.v20170320.models.DescribeDeviceMonitorInfoResponse`
 
@@ -1088,7 +1088,7 @@ class CdbClient(AbstractClient):
     def DescribeInstanceParamRecords(self, request):
         """该接口（DescribeInstanceParamRecords）用于查询实例参数修改历史。
 
-        :param request: 调用DescribeInstanceParamRecords所需参数的结构体。
+        :param request: Request instance for DescribeInstanceParamRecords.
         :type request: :class:`tencentcloud.cdb.v20170320.models.DescribeInstanceParamRecordsRequest`
         :rtype: :class:`tencentcloud.cdb.v20170320.models.DescribeInstanceParamRecordsResponse`
 
@@ -1116,7 +1116,7 @@ class CdbClient(AbstractClient):
     def DescribeInstanceParams(self, request):
         """该接口（DescribeInstanceParams）用于查询实例的参数列表。
 
-        :param request: 调用DescribeInstanceParams所需参数的结构体。
+        :param request: Request instance for DescribeInstanceParams.
         :type request: :class:`tencentcloud.cdb.v20170320.models.DescribeInstanceParamsRequest`
         :rtype: :class:`tencentcloud.cdb.v20170320.models.DescribeInstanceParamsResponse`
 
@@ -1144,7 +1144,7 @@ class CdbClient(AbstractClient):
     def DescribeParamTemplateInfo(self, request):
         """该接口（DescribeParamTemplateInfo）用于查询参数模板详情。
 
-        :param request: 调用DescribeParamTemplateInfo所需参数的结构体。
+        :param request: Request instance for DescribeParamTemplateInfo.
         :type request: :class:`tencentcloud.cdb.v20170320.models.DescribeParamTemplateInfoRequest`
         :rtype: :class:`tencentcloud.cdb.v20170320.models.DescribeParamTemplateInfoResponse`
 
@@ -1172,7 +1172,7 @@ class CdbClient(AbstractClient):
     def DescribeParamTemplates(self, request):
         """该接口（DescribeParamTemplates）查询参数模板列表。
 
-        :param request: 调用DescribeParamTemplates所需参数的结构体。
+        :param request: Request instance for DescribeParamTemplates.
         :type request: :class:`tencentcloud.cdb.v20170320.models.DescribeParamTemplatesRequest`
         :rtype: :class:`tencentcloud.cdb.v20170320.models.DescribeParamTemplatesResponse`
 
@@ -1200,7 +1200,7 @@ class CdbClient(AbstractClient):
     def DescribeProjectSecurityGroups(self, request):
         """本接口(DescribeProjectSecurityGroups)用于查询项目的安全组详情。
 
-        :param request: 调用DescribeProjectSecurityGroups所需参数的结构体。
+        :param request: Request instance for DescribeProjectSecurityGroups.
         :type request: :class:`tencentcloud.cdb.v20170320.models.DescribeProjectSecurityGroupsRequest`
         :rtype: :class:`tencentcloud.cdb.v20170320.models.DescribeProjectSecurityGroupsResponse`
 
@@ -1228,7 +1228,7 @@ class CdbClient(AbstractClient):
     def DescribeRollbackRangeTime(self, request):
         """本接口(DescribeRollbackRangeTime)用于查询云数据库实例可回档的时间范围。
 
-        :param request: 调用DescribeRollbackRangeTime所需参数的结构体。
+        :param request: Request instance for DescribeRollbackRangeTime.
         :type request: :class:`tencentcloud.cdb.v20170320.models.DescribeRollbackRangeTimeRequest`
         :rtype: :class:`tencentcloud.cdb.v20170320.models.DescribeRollbackRangeTimeResponse`
 
@@ -1256,7 +1256,7 @@ class CdbClient(AbstractClient):
     def DescribeSlowLogs(self, request):
         """本接口(DescribeSlowLogs)用于获取云数据库实例的慢查询日志。
 
-        :param request: 调用DescribeSlowLogs所需参数的结构体。
+        :param request: Request instance for DescribeSlowLogs.
         :type request: :class:`tencentcloud.cdb.v20170320.models.DescribeSlowLogsRequest`
         :rtype: :class:`tencentcloud.cdb.v20170320.models.DescribeSlowLogsResponse`
 
@@ -1284,7 +1284,7 @@ class CdbClient(AbstractClient):
     def DescribeSupportedPrivileges(self, request):
         """本接口(DescribeSupportedPrivileges)用于查询云数据库的支持的权限信息，包括全局权限，数据库权限，表权限以及列权限。
 
-        :param request: 调用DescribeSupportedPrivileges所需参数的结构体。
+        :param request: Request instance for DescribeSupportedPrivileges.
         :type request: :class:`tencentcloud.cdb.v20170320.models.DescribeSupportedPrivilegesRequest`
         :rtype: :class:`tencentcloud.cdb.v20170320.models.DescribeSupportedPrivilegesResponse`
 
@@ -1312,7 +1312,7 @@ class CdbClient(AbstractClient):
     def DescribeTables(self, request):
         """本接口(DescribeTables)用于查询云数据库实例的数据库表信息。
 
-        :param request: 调用DescribeTables所需参数的结构体。
+        :param request: Request instance for DescribeTables.
         :type request: :class:`tencentcloud.cdb.v20170320.models.DescribeTablesRequest`
         :rtype: :class:`tencentcloud.cdb.v20170320.models.DescribeTablesResponse`
 
@@ -1340,7 +1340,7 @@ class CdbClient(AbstractClient):
     def DescribeTagsOfInstanceIds(self, request):
         """本接口(DescribeTagsOfInstanceIds)用于获取云数据库实例的标签信息。
 
-        :param request: 调用DescribeTagsOfInstanceIds所需参数的结构体。
+        :param request: Request instance for DescribeTagsOfInstanceIds.
         :type request: :class:`tencentcloud.cdb.v20170320.models.DescribeTagsOfInstanceIdsRequest`
         :rtype: :class:`tencentcloud.cdb.v20170320.models.DescribeTagsOfInstanceIdsResponse`
 
@@ -1368,7 +1368,7 @@ class CdbClient(AbstractClient):
     def DescribeTasks(self, request):
         """本接口(DescribeTasks)用于查询云数据库实例任务列表。
 
-        :param request: 调用DescribeTasks所需参数的结构体。
+        :param request: Request instance for DescribeTasks.
         :type request: :class:`tencentcloud.cdb.v20170320.models.DescribeTasksRequest`
         :rtype: :class:`tencentcloud.cdb.v20170320.models.DescribeTasksResponse`
 
@@ -1396,7 +1396,7 @@ class CdbClient(AbstractClient):
     def DescribeTimeWindow(self, request):
         """本接口(DescribeTimeWindow)用于查询云数据库实例的维护时间窗口。
 
-        :param request: 调用DescribeTimeWindow所需参数的结构体。
+        :param request: Request instance for DescribeTimeWindow.
         :type request: :class:`tencentcloud.cdb.v20170320.models.DescribeTimeWindowRequest`
         :rtype: :class:`tencentcloud.cdb.v20170320.models.DescribeTimeWindowResponse`
 
@@ -1424,7 +1424,7 @@ class CdbClient(AbstractClient):
     def DescribeUploadedFiles(self, request):
         """本接口(DescribeUploadedFiles)用于查询用户导入的SQL文件列表。
 
-        :param request: 调用DescribeUploadedFiles所需参数的结构体。
+        :param request: Request instance for DescribeUploadedFiles.
         :type request: :class:`tencentcloud.cdb.v20170320.models.DescribeUploadedFilesRequest`
         :rtype: :class:`tencentcloud.cdb.v20170320.models.DescribeUploadedFilesResponse`
 
@@ -1452,7 +1452,7 @@ class CdbClient(AbstractClient):
     def DisassociateSecurityGroups(self, request):
         """本接口(DisassociateSecurityGroups)用于安全组批量解绑实例。
 
-        :param request: 调用DisassociateSecurityGroups所需参数的结构体。
+        :param request: Request instance for DisassociateSecurityGroups.
         :type request: :class:`tencentcloud.cdb.v20170320.models.DisassociateSecurityGroupsRequest`
         :rtype: :class:`tencentcloud.cdb.v20170320.models.DisassociateSecurityGroupsResponse`
 
@@ -1480,7 +1480,7 @@ class CdbClient(AbstractClient):
     def InitDBInstances(self, request):
         """本接口(InitDBInstances)用于初始化云数据库实例，包括初始化密码、默认字符集、实例端口号等
 
-        :param request: 调用InitDBInstances所需参数的结构体。
+        :param request: Request instance for InitDBInstances.
         :type request: :class:`tencentcloud.cdb.v20170320.models.InitDBInstancesRequest`
         :rtype: :class:`tencentcloud.cdb.v20170320.models.InitDBInstancesResponse`
 
@@ -1508,7 +1508,7 @@ class CdbClient(AbstractClient):
     def InquiryPriceUpgradeInstances(self, request):
         """本接口(InquiryPriceUpgradeInstances)用于查询云数据库实例升级的价格，支持查询按量计费或者包年包月实例的升级价格，实例类型支持主实例、灾备实例和只读实例。
 
-        :param request: 调用InquiryPriceUpgradeInstances所需参数的结构体。
+        :param request: Request instance for InquiryPriceUpgradeInstances.
         :type request: :class:`tencentcloud.cdb.v20170320.models.InquiryPriceUpgradeInstancesRequest`
         :rtype: :class:`tencentcloud.cdb.v20170320.models.InquiryPriceUpgradeInstancesResponse`
 
@@ -1536,7 +1536,7 @@ class CdbClient(AbstractClient):
     def IsolateDBInstance(self, request):
         """本接口(IsolateDBInstance)用于隔离云数据库实例，隔离后不能通过IP和端口访问数据库。隔离的实例可在回收站中进行开机。若为欠费隔离，请尽快进行冲正。
 
-        :param request: 调用IsolateDBInstance所需参数的结构体。
+        :param request: Request instance for IsolateDBInstance.
         :type request: :class:`tencentcloud.cdb.v20170320.models.IsolateDBInstanceRequest`
         :rtype: :class:`tencentcloud.cdb.v20170320.models.IsolateDBInstanceResponse`
 
@@ -1564,7 +1564,7 @@ class CdbClient(AbstractClient):
     def ModifyAccountDescription(self, request):
         """本接口(ModifyAccountDescription)用于修改云数据库账户的备注信息。
 
-        :param request: 调用ModifyAccountDescription所需参数的结构体。
+        :param request: Request instance for ModifyAccountDescription.
         :type request: :class:`tencentcloud.cdb.v20170320.models.ModifyAccountDescriptionRequest`
         :rtype: :class:`tencentcloud.cdb.v20170320.models.ModifyAccountDescriptionResponse`
 
@@ -1592,7 +1592,7 @@ class CdbClient(AbstractClient):
     def ModifyAccountPassword(self, request):
         """本接口(ModifyAccountPassword)用于修改云数据库账户的密码。
 
-        :param request: 调用ModifyAccountPassword所需参数的结构体。
+        :param request: Request instance for ModifyAccountPassword.
         :type request: :class:`tencentcloud.cdb.v20170320.models.ModifyAccountPasswordRequest`
         :rtype: :class:`tencentcloud.cdb.v20170320.models.ModifyAccountPasswordResponse`
 
@@ -1620,7 +1620,7 @@ class CdbClient(AbstractClient):
     def ModifyAccountPrivileges(self, request):
         """本接口(ModifyAccountPrivileges)用于修改云数据库的账户的权限信息。
 
-        :param request: 调用ModifyAccountPrivileges所需参数的结构体。
+        :param request: Request instance for ModifyAccountPrivileges.
         :type request: :class:`tencentcloud.cdb.v20170320.models.ModifyAccountPrivilegesRequest`
         :rtype: :class:`tencentcloud.cdb.v20170320.models.ModifyAccountPrivilegesResponse`
 
@@ -1648,7 +1648,7 @@ class CdbClient(AbstractClient):
     def ModifyAutoRenewFlag(self, request):
         """本接口(ModifyAutoRenewFlag)用于修改云数据库实例的自动续费标记。仅支持包年包月的实例设置自动续费标记。
 
-        :param request: 调用ModifyAutoRenewFlag所需参数的结构体。
+        :param request: Request instance for ModifyAutoRenewFlag.
         :type request: :class:`tencentcloud.cdb.v20170320.models.ModifyAutoRenewFlagRequest`
         :rtype: :class:`tencentcloud.cdb.v20170320.models.ModifyAutoRenewFlagResponse`
 
@@ -1676,7 +1676,7 @@ class CdbClient(AbstractClient):
     def ModifyBackupConfig(self, request):
         """本接口(ModifyBackupConfig)用于修改数据库备份配置信息。
 
-        :param request: 调用ModifyBackupConfig所需参数的结构体。
+        :param request: Request instance for ModifyBackupConfig.
         :type request: :class:`tencentcloud.cdb.v20170320.models.ModifyBackupConfigRequest`
         :rtype: :class:`tencentcloud.cdb.v20170320.models.ModifyBackupConfigResponse`
 
@@ -1704,7 +1704,7 @@ class CdbClient(AbstractClient):
     def ModifyDBInstanceName(self, request):
         """本接口(ModifyDBInstanceName)用于修改云数据库实例的名称。
 
-        :param request: 调用ModifyDBInstanceName所需参数的结构体。
+        :param request: Request instance for ModifyDBInstanceName.
         :type request: :class:`tencentcloud.cdb.v20170320.models.ModifyDBInstanceNameRequest`
         :rtype: :class:`tencentcloud.cdb.v20170320.models.ModifyDBInstanceNameResponse`
 
@@ -1732,7 +1732,7 @@ class CdbClient(AbstractClient):
     def ModifyDBInstanceProject(self, request):
         """本接口(ModifyDBInstanceProject)用于修改云数据库实例的所属项目。
 
-        :param request: 调用ModifyDBInstanceProject所需参数的结构体。
+        :param request: Request instance for ModifyDBInstanceProject.
         :type request: :class:`tencentcloud.cdb.v20170320.models.ModifyDBInstanceProjectRequest`
         :rtype: :class:`tencentcloud.cdb.v20170320.models.ModifyDBInstanceProjectResponse`
 
@@ -1760,7 +1760,7 @@ class CdbClient(AbstractClient):
     def ModifyDBInstanceSecurityGroups(self, request):
         """本接口(ModifyDBInstanceSecurityGroups)用于修改实例绑定的安全组。
 
-        :param request: 调用ModifyDBInstanceSecurityGroups所需参数的结构体。
+        :param request: Request instance for ModifyDBInstanceSecurityGroups.
         :type request: :class:`tencentcloud.cdb.v20170320.models.ModifyDBInstanceSecurityGroupsRequest`
         :rtype: :class:`tencentcloud.cdb.v20170320.models.ModifyDBInstanceSecurityGroupsResponse`
 
@@ -1788,7 +1788,7 @@ class CdbClient(AbstractClient):
     def ModifyDBInstanceVipVport(self, request):
         """本接口(ModifyDBInstanceVipVport)用于修改云数据库实例的IP和端口号，也可进行基础网络转 VPC 网络和 VPC 网络下的子网变更。
 
-        :param request: 调用ModifyDBInstanceVipVport所需参数的结构体。
+        :param request: Request instance for ModifyDBInstanceVipVport.
         :type request: :class:`tencentcloud.cdb.v20170320.models.ModifyDBInstanceVipVportRequest`
         :rtype: :class:`tencentcloud.cdb.v20170320.models.ModifyDBInstanceVipVportResponse`
 
@@ -1816,7 +1816,7 @@ class CdbClient(AbstractClient):
     def ModifyInstanceParam(self, request):
         """本接口(ModifyInstanceParam)用于修改云数据库实例的参数。
 
-        :param request: 调用ModifyInstanceParam所需参数的结构体。
+        :param request: Request instance for ModifyInstanceParam.
         :type request: :class:`tencentcloud.cdb.v20170320.models.ModifyInstanceParamRequest`
         :rtype: :class:`tencentcloud.cdb.v20170320.models.ModifyInstanceParamResponse`
 
@@ -1844,7 +1844,7 @@ class CdbClient(AbstractClient):
     def ModifyInstanceTag(self, request):
         """本接口(ModifyInstanceTag)用于对实例标签进行添加、修改或者删除。
 
-        :param request: 调用ModifyInstanceTag所需参数的结构体。
+        :param request: Request instance for ModifyInstanceTag.
         :type request: :class:`tencentcloud.cdb.v20170320.models.ModifyInstanceTagRequest`
         :rtype: :class:`tencentcloud.cdb.v20170320.models.ModifyInstanceTagResponse`
 
@@ -1872,7 +1872,7 @@ class CdbClient(AbstractClient):
     def ModifyNameOrDescByDpId(self, request):
         """修改置放群组的名称或者描述
 
-        :param request: 调用ModifyNameOrDescByDpId所需参数的结构体。
+        :param request: Request instance for ModifyNameOrDescByDpId.
         :type request: :class:`tencentcloud.cdb.v20170320.models.ModifyNameOrDescByDpIdRequest`
         :rtype: :class:`tencentcloud.cdb.v20170320.models.ModifyNameOrDescByDpIdResponse`
 
@@ -1900,7 +1900,7 @@ class CdbClient(AbstractClient):
     def ModifyParamTemplate(self, request):
         """该接口（ModifyParamTemplate）用于修改参数模板。
 
-        :param request: 调用ModifyParamTemplate所需参数的结构体。
+        :param request: Request instance for ModifyParamTemplate.
         :type request: :class:`tencentcloud.cdb.v20170320.models.ModifyParamTemplateRequest`
         :rtype: :class:`tencentcloud.cdb.v20170320.models.ModifyParamTemplateResponse`
 
@@ -1928,7 +1928,7 @@ class CdbClient(AbstractClient):
     def ModifyTimeWindow(self, request):
         """本接口(ModifyTimeWindow)用于更新云数据库实例的维护时间窗口。
 
-        :param request: 调用ModifyTimeWindow所需参数的结构体。
+        :param request: Request instance for ModifyTimeWindow.
         :type request: :class:`tencentcloud.cdb.v20170320.models.ModifyTimeWindowRequest`
         :rtype: :class:`tencentcloud.cdb.v20170320.models.ModifyTimeWindowResponse`
 
@@ -1960,7 +1960,7 @@ class CdbClient(AbstractClient):
 
         注意，实例下线后，相关资源和数据将无法找回，请谨慎操作。
 
-        :param request: 调用OfflineIsolatedInstances所需参数的结构体。
+        :param request: Request instance for OfflineIsolatedInstances.
         :type request: :class:`tencentcloud.cdb.v20170320.models.OfflineIsolatedInstancesRequest`
         :rtype: :class:`tencentcloud.cdb.v20170320.models.OfflineIsolatedInstancesResponse`
 
@@ -1988,7 +1988,7 @@ class CdbClient(AbstractClient):
     def OpenDBInstanceGTID(self, request):
         """本接口(OpenDBInstanceGTID)用于开启云数据库实例的 GTID，只支持版本为 5.6 以及以上的实例。
 
-        :param request: 调用OpenDBInstanceGTID所需参数的结构体。
+        :param request: Request instance for OpenDBInstanceGTID.
         :type request: :class:`tencentcloud.cdb.v20170320.models.OpenDBInstanceGTIDRequest`
         :rtype: :class:`tencentcloud.cdb.v20170320.models.OpenDBInstanceGTIDResponse`
 
@@ -2018,7 +2018,7 @@ class CdbClient(AbstractClient):
 
         注意，实例开通外网访问之前，需要先将实例进行 [实例初始化](https://cloud.tencent.com/document/api/236/15873) 操作。
 
-        :param request: 调用OpenWanService所需参数的结构体。
+        :param request: Request instance for OpenWanService.
         :type request: :class:`tencentcloud.cdb.v20170320.models.OpenWanServiceRequest`
         :rtype: :class:`tencentcloud.cdb.v20170320.models.OpenWanServiceResponse`
 
@@ -2046,7 +2046,7 @@ class CdbClient(AbstractClient):
     def RenewDBInstance(self, request):
         """本接口(RenewDBInstance)用于续费云数据库实例，仅支持付费模式为包年包月的实例。按量计费实例不需要续费。
 
-        :param request: 调用RenewDBInstance所需参数的结构体。
+        :param request: Request instance for RenewDBInstance.
         :type request: :class:`tencentcloud.cdb.v20170320.models.RenewDBInstanceRequest`
         :rtype: :class:`tencentcloud.cdb.v20170320.models.RenewDBInstanceResponse`
 
@@ -2078,7 +2078,7 @@ class CdbClient(AbstractClient):
         1、本接口只支持主实例进行重启操作；
         2、实例状态必须为正常，并且没有其他异步任务在执行中。
 
-        :param request: 调用RestartDBInstances所需参数的结构体。
+        :param request: Request instance for RestartDBInstances.
         :type request: :class:`tencentcloud.cdb.v20170320.models.RestartDBInstancesRequest`
         :rtype: :class:`tencentcloud.cdb.v20170320.models.RestartDBInstancesResponse`
 
@@ -2106,7 +2106,7 @@ class CdbClient(AbstractClient):
     def StartBatchRollback(self, request):
         """该接口（StartBatchRollback）用于批量回档云数据库实例的库表。
 
-        :param request: 调用StartBatchRollback所需参数的结构体。
+        :param request: Request instance for StartBatchRollback.
         :type request: :class:`tencentcloud.cdb.v20170320.models.StartBatchRollbackRequest`
         :rtype: :class:`tencentcloud.cdb.v20170320.models.StartBatchRollbackResponse`
 
@@ -2134,7 +2134,7 @@ class CdbClient(AbstractClient):
     def StopDBImportJob(self, request):
         """本接口(StopDBImportJob)用于终止数据导入任务。
 
-        :param request: 调用StopDBImportJob所需参数的结构体。
+        :param request: Request instance for StopDBImportJob.
         :type request: :class:`tencentcloud.cdb.v20170320.models.StopDBImportJobRequest`
         :rtype: :class:`tencentcloud.cdb.v20170320.models.StopDBImportJobResponse`
 
@@ -2162,7 +2162,7 @@ class CdbClient(AbstractClient):
     def SwitchForUpgrade(self, request):
         """本接口(SwitchForUpgrade)用于切换访问新实例，针对主升级中的实例处于待切换状态时，用户可主动发起该流程。
 
-        :param request: 调用SwitchForUpgrade所需参数的结构体。
+        :param request: Request instance for SwitchForUpgrade.
         :type request: :class:`tencentcloud.cdb.v20170320.models.SwitchForUpgradeRequest`
         :rtype: :class:`tencentcloud.cdb.v20170320.models.SwitchForUpgradeResponse`
 
@@ -2190,7 +2190,7 @@ class CdbClient(AbstractClient):
     def UpgradeDBInstance(self, request):
         """本接口(UpgradeDBInstance)用于升级或降级云数据库实例的配置，实例类型支持主实例、灾备实例和只读实例。
 
-        :param request: 调用UpgradeDBInstance所需参数的结构体。
+        :param request: Request instance for UpgradeDBInstance.
         :type request: :class:`tencentcloud.cdb.v20170320.models.UpgradeDBInstanceRequest`
         :rtype: :class:`tencentcloud.cdb.v20170320.models.UpgradeDBInstanceResponse`
 
@@ -2218,7 +2218,7 @@ class CdbClient(AbstractClient):
     def UpgradeDBInstanceEngineVersion(self, request):
         """本接口(UpgradeDBInstanceEngineVersion)用于升级云数据库实例版本，实例类型支持主实例、灾备实例和只读实例。
 
-        :param request: 调用UpgradeDBInstanceEngineVersion所需参数的结构体。
+        :param request: Request instance for UpgradeDBInstanceEngineVersion.
         :type request: :class:`tencentcloud.cdb.v20170320.models.UpgradeDBInstanceEngineVersionRequest`
         :rtype: :class:`tencentcloud.cdb.v20170320.models.UpgradeDBInstanceEngineVersionResponse`
 
@@ -2246,7 +2246,7 @@ class CdbClient(AbstractClient):
     def VerifyRootAccount(self, request):
         """本接口(VerifyRootAccount)用于校验云数据库实例的 ROOT 账号是否有足够的权限进行授权操作。
 
-        :param request: 调用VerifyRootAccount所需参数的结构体。
+        :param request: Request instance for VerifyRootAccount.
         :type request: :class:`tencentcloud.cdb.v20170320.models.VerifyRootAccountRequest`
         :rtype: :class:`tencentcloud.cdb.v20170320.models.VerifyRootAccountResponse`
 

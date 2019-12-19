@@ -28,7 +28,7 @@ class TbaasClient(AbstractClient):
     def ApplyUserCert(self, request):
         """申请用户证书
 
-        :param request: 调用ApplyUserCert所需参数的结构体。
+        :param request: Request instance for ApplyUserCert.
         :type request: :class:`tencentcloud.tbaas.v20180416.models.ApplyUserCertRequest`
         :rtype: :class:`tencentcloud.tbaas.v20180416.models.ApplyUserCertResponse`
 
@@ -56,7 +56,7 @@ class TbaasClient(AbstractClient):
     def BlockByNumberHandler(self, request):
         """Bcos根据块高查询区块信息
 
-        :param request: 调用BlockByNumberHandler所需参数的结构体。
+        :param request: Request instance for BlockByNumberHandler.
         :type request: :class:`tencentcloud.tbaas.v20180416.models.BlockByNumberHandlerRequest`
         :rtype: :class:`tencentcloud.tbaas.v20180416.models.BlockByNumberHandlerResponse`
 
@@ -84,7 +84,7 @@ class TbaasClient(AbstractClient):
     def DownloadUserCert(self, request):
         """下载用户证书
 
-        :param request: 调用DownloadUserCert所需参数的结构体。
+        :param request: Request instance for DownloadUserCert.
         :type request: :class:`tencentcloud.tbaas.v20180416.models.DownloadUserCertRequest`
         :rtype: :class:`tencentcloud.tbaas.v20180416.models.DownloadUserCertResponse`
 
@@ -112,7 +112,7 @@ class TbaasClient(AbstractClient):
     def GetBlockList(self, request):
         """查看当前网络下的所有区块列表，分页展示
 
-        :param request: 调用GetBlockList所需参数的结构体。
+        :param request: Request instance for GetBlockList.
         :type request: :class:`tencentcloud.tbaas.v20180416.models.GetBlockListRequest`
         :rtype: :class:`tencentcloud.tbaas.v20180416.models.GetBlockListResponse`
 
@@ -140,7 +140,7 @@ class TbaasClient(AbstractClient):
     def GetBlockListHandler(self, request):
         """bcos分页查询当前群组下的区块列表
 
-        :param request: 调用GetBlockListHandler所需参数的结构体。
+        :param request: Request instance for GetBlockListHandler.
         :type request: :class:`tencentcloud.tbaas.v20180416.models.GetBlockListHandlerRequest`
         :rtype: :class:`tencentcloud.tbaas.v20180416.models.GetBlockListHandlerResponse`
 
@@ -168,7 +168,7 @@ class TbaasClient(AbstractClient):
     def GetClusterSummary(self, request):
         """获取区块链网络概要
 
-        :param request: 调用GetClusterSummary所需参数的结构体。
+        :param request: Request instance for GetClusterSummary.
         :type request: :class:`tencentcloud.tbaas.v20180416.models.GetClusterSummaryRequest`
         :rtype: :class:`tencentcloud.tbaas.v20180416.models.GetClusterSummaryResponse`
 
@@ -196,7 +196,7 @@ class TbaasClient(AbstractClient):
     def GetInvokeTx(self, request):
         """Invoke异步调用结果查询
 
-        :param request: 调用GetInvokeTx所需参数的结构体。
+        :param request: Request instance for GetInvokeTx.
         :type request: :class:`tencentcloud.tbaas.v20180416.models.GetInvokeTxRequest`
         :rtype: :class:`tencentcloud.tbaas.v20180416.models.GetInvokeTxResponse`
 
@@ -224,7 +224,7 @@ class TbaasClient(AbstractClient):
     def GetLatesdTransactionList(self, request):
         """获取最新交易列表
 
-        :param request: 调用GetLatesdTransactionList所需参数的结构体。
+        :param request: Request instance for GetLatesdTransactionList.
         :type request: :class:`tencentcloud.tbaas.v20180416.models.GetLatesdTransactionListRequest`
         :rtype: :class:`tencentcloud.tbaas.v20180416.models.GetLatesdTransactionListResponse`
 
@@ -252,7 +252,7 @@ class TbaasClient(AbstractClient):
     def GetTransByHashHandler(self, request):
         """Bcos根据交易哈希查看交易详细信息
 
-        :param request: 调用GetTransByHashHandler所需参数的结构体。
+        :param request: Request instance for GetTransByHashHandler.
         :type request: :class:`tencentcloud.tbaas.v20180416.models.GetTransByHashHandlerRequest`
         :rtype: :class:`tencentcloud.tbaas.v20180416.models.GetTransByHashHandlerResponse`
 
@@ -280,7 +280,7 @@ class TbaasClient(AbstractClient):
     def GetTransListHandler(self, request):
         """Bcos分页查询当前群组的交易信息列表
 
-        :param request: 调用GetTransListHandler所需参数的结构体。
+        :param request: Request instance for GetTransListHandler.
         :type request: :class:`tencentcloud.tbaas.v20180416.models.GetTransListHandlerRequest`
         :rtype: :class:`tencentcloud.tbaas.v20180416.models.GetTransListHandlerResponse`
 
@@ -308,7 +308,7 @@ class TbaasClient(AbstractClient):
     def GetTransactionDetailForUser(self, request):
         """获取交易详情
 
-        :param request: 调用GetTransactionDetailForUser所需参数的结构体。
+        :param request: Request instance for GetTransactionDetailForUser.
         :type request: :class:`tencentcloud.tbaas.v20180416.models.GetTransactionDetailForUserRequest`
         :rtype: :class:`tencentcloud.tbaas.v20180416.models.GetTransactionDetailForUserResponse`
 
@@ -336,7 +336,7 @@ class TbaasClient(AbstractClient):
     def Invoke(self, request):
         """新增交易
 
-        :param request: 调用Invoke所需参数的结构体。
+        :param request: Request instance for Invoke.
         :type request: :class:`tencentcloud.tbaas.v20180416.models.InvokeRequest`
         :rtype: :class:`tencentcloud.tbaas.v20180416.models.InvokeResponse`
 
@@ -364,7 +364,7 @@ class TbaasClient(AbstractClient):
     def Query(self, request):
         """查询交易
 
-        :param request: 调用Query所需参数的结构体。
+        :param request: Request instance for Query.
         :type request: :class:`tencentcloud.tbaas.v20180416.models.QueryRequest`
         :rtype: :class:`tencentcloud.tbaas.v20180416.models.QueryResponse`
 
@@ -392,7 +392,7 @@ class TbaasClient(AbstractClient):
     def SendTransactionHandler(self, request):
         """Bcos发送交易
 
-        :param request: 调用SendTransactionHandler所需参数的结构体。
+        :param request: Request instance for SendTransactionHandler.
         :type request: :class:`tencentcloud.tbaas.v20180416.models.SendTransactionHandlerRequest`
         :rtype: :class:`tencentcloud.tbaas.v20180416.models.SendTransactionHandlerResponse`
 
@@ -420,7 +420,7 @@ class TbaasClient(AbstractClient):
     def SrvInvoke(self, request):
         """trustsql服务统一接口
 
-        :param request: 调用SrvInvoke所需参数的结构体。
+        :param request: Request instance for SrvInvoke.
         :type request: :class:`tencentcloud.tbaas.v20180416.models.SrvInvokeRequest`
         :rtype: :class:`tencentcloud.tbaas.v20180416.models.SrvInvokeResponse`
 

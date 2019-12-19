@@ -34,7 +34,7 @@ class AsrClient(AbstractClient):
         <br>• 目前仅支持中文普通话
         <br>• 支持回调或轮询的方式获取结果，结果获取请参考[ 录音文件识别结果查询](https://cloud.tencent.com/document/product/1093/37822)。
 
-        :param request: 调用CreateRecTask所需参数的结构体。
+        :param request: Request instance for CreateRecTask.
         :type request: :class:`tencentcloud.asr.v20190614.models.CreateRecTaskRequest`
         :rtype: :class:`tencentcloud.asr.v20190614.models.CreateRecTaskResponse`
 
@@ -64,7 +64,7 @@ class AsrClient(AbstractClient):
         <br>• 当采用回调方式时，识别完成后会将结果通过 POST 请求的形式通知到用户在请求时填写的回调 URL，具体请参见[ 录音识别结果回调 ](https://cloud.tencent.com/document/product/1093/37139#callback)。
         <br>• 当采用轮询方式时，需要主动提交任务ID来轮询识别结果，共有任务成功、等待、执行中和失败四种结果，具体信息请参见下文说明。
 
-        :param request: 调用DescribeTaskStatus所需参数的结构体。
+        :param request: Request instance for DescribeTaskStatus.
         :type request: :class:`tencentcloud.asr.v20190614.models.DescribeTaskStatusRequest`
         :rtype: :class:`tencentcloud.asr.v20190614.models.DescribeTaskStatusResponse`
 
@@ -97,7 +97,7 @@ class AsrClient(AbstractClient):
         <br>•   当音频文件通过请求中body内容上传时，请求大小不能超过600KB；当音频以URL方式传输时，音频时长不可超过60s。
         <br>•   所有请求参数放在POST请求的body中，编码类型采用x-www-form-urlencoded，参数进行urlencode编码后传输。
 
-        :param request: 调用SentenceRecognition所需参数的结构体。
+        :param request: Request instance for SentenceRecognition.
         :type request: :class:`tencentcloud.asr.v20190614.models.SentenceRecognitionRequest`
         :rtype: :class:`tencentcloud.asr.v20190614.models.SentenceRecognitionResponse`
 

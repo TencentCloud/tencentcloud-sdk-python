@@ -28,7 +28,7 @@ class HaboClient(AbstractClient):
     def DescribeStatus(self, request):
         """查询指定md5样本是否分析完成，并获取分析日志下载地址。
 
-        :param request: 调用DescribeStatus所需参数的结构体。
+        :param request: Request instance for DescribeStatus.
         :type request: :class:`tencentcloud.habo.v20181203.models.DescribeStatusRequest`
         :rtype: :class:`tencentcloud.habo.v20181203.models.DescribeStatusResponse`
 
@@ -56,7 +56,7 @@ class HaboClient(AbstractClient):
     def StartAnalyse(self, request):
         """上传样本到哈勃进行分析，异步生成分析日志。
 
-        :param request: 调用StartAnalyse所需参数的结构体。
+        :param request: Request instance for StartAnalyse.
         :type request: :class:`tencentcloud.habo.v20181203.models.StartAnalyseRequest`
         :rtype: :class:`tencentcloud.habo.v20181203.models.StartAnalyseResponse`
 

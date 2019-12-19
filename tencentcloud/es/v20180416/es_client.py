@@ -28,7 +28,7 @@ class EsClient(AbstractClient):
     def CreateInstance(self, request):
         """创建指定规格的ES集群实例
 
-        :param request: 调用CreateInstance所需参数的结构体。
+        :param request: Request instance for CreateInstance.
         :type request: :class:`tencentcloud.es.v20180416.models.CreateInstanceRequest`
         :rtype: :class:`tencentcloud.es.v20180416.models.CreateInstanceResponse`
 
@@ -56,7 +56,7 @@ class EsClient(AbstractClient):
     def DeleteInstance(self, request):
         """销毁集群实例
 
-        :param request: 调用DeleteInstance所需参数的结构体。
+        :param request: Request instance for DeleteInstance.
         :type request: :class:`tencentcloud.es.v20180416.models.DeleteInstanceRequest`
         :rtype: :class:`tencentcloud.es.v20180416.models.DeleteInstanceResponse`
 
@@ -84,7 +84,7 @@ class EsClient(AbstractClient):
     def DescribeInstanceLogs(self, request):
         """查询用户该地域下符合条件的ES集群的日志
 
-        :param request: 调用DescribeInstanceLogs所需参数的结构体。
+        :param request: Request instance for DescribeInstanceLogs.
         :type request: :class:`tencentcloud.es.v20180416.models.DescribeInstanceLogsRequest`
         :rtype: :class:`tencentcloud.es.v20180416.models.DescribeInstanceLogsResponse`
 
@@ -112,7 +112,7 @@ class EsClient(AbstractClient):
     def DescribeInstanceOperations(self, request):
         """查询实例指定条件下的操作记录
 
-        :param request: 调用DescribeInstanceOperations所需参数的结构体。
+        :param request: Request instance for DescribeInstanceOperations.
         :type request: :class:`tencentcloud.es.v20180416.models.DescribeInstanceOperationsRequest`
         :rtype: :class:`tencentcloud.es.v20180416.models.DescribeInstanceOperationsResponse`
 
@@ -140,7 +140,7 @@ class EsClient(AbstractClient):
     def DescribeInstances(self, request):
         """查询用户该地域下符合条件的所有实例
 
-        :param request: 调用DescribeInstances所需参数的结构体。
+        :param request: Request instance for DescribeInstances.
         :type request: :class:`tencentcloud.es.v20180416.models.DescribeInstancesRequest`
         :rtype: :class:`tencentcloud.es.v20180416.models.DescribeInstancesResponse`
 
@@ -168,7 +168,7 @@ class EsClient(AbstractClient):
     def RestartInstance(self, request):
         """重启ES集群实例(用于系统版本更新等操作)
 
-        :param request: 调用RestartInstance所需参数的结构体。
+        :param request: Request instance for RestartInstance.
         :type request: :class:`tencentcloud.es.v20180416.models.RestartInstanceRequest`
         :rtype: :class:`tencentcloud.es.v20180416.models.RestartInstanceResponse`
 
@@ -206,7 +206,7 @@ class EsClient(AbstractClient):
         - CosBackUp: 设置集群COS自动备份信息
         以上参数组合只能传递一种，多传或少传均会导致请求失败
 
-        :param request: 调用UpdateInstance所需参数的结构体。
+        :param request: Request instance for UpdateInstance.
         :type request: :class:`tencentcloud.es.v20180416.models.UpdateInstanceRequest`
         :rtype: :class:`tencentcloud.es.v20180416.models.UpdateInstanceResponse`
 
@@ -234,7 +234,7 @@ class EsClient(AbstractClient):
     def UpgradeInstance(self, request):
         """升级ES集群版本
 
-        :param request: 调用UpgradeInstance所需参数的结构体。
+        :param request: Request instance for UpgradeInstance.
         :type request: :class:`tencentcloud.es.v20180416.models.UpgradeInstanceRequest`
         :rtype: :class:`tencentcloud.es.v20180416.models.UpgradeInstanceResponse`
 
@@ -262,7 +262,7 @@ class EsClient(AbstractClient):
     def UpgradeLicense(self, request):
         """升级ES商业特性
 
-        :param request: 调用UpgradeLicense所需参数的结构体。
+        :param request: Request instance for UpgradeLicense.
         :type request: :class:`tencentcloud.es.v20180416.models.UpgradeLicenseRequest`
         :rtype: :class:`tencentcloud.es.v20180416.models.UpgradeLicenseResponse`
 

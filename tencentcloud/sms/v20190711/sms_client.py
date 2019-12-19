@@ -28,7 +28,7 @@ class SmsClient(AbstractClient):
     def CallbackStatusStatistics(self, request):
         """统计用户回执的数据
 
-        :param request: 调用CallbackStatusStatistics所需参数的结构体。
+        :param request: Request instance for CallbackStatusStatistics.
         :type request: :class:`tencentcloud.sms.v20190711.models.CallbackStatusStatisticsRequest`
         :rtype: :class:`tencentcloud.sms.v20190711.models.CallbackStatusStatisticsResponse`
 
@@ -56,7 +56,7 @@ class SmsClient(AbstractClient):
     def PullSmsReplyStatus(self, request):
         """拉取短信回复状态
 
-        :param request: 调用PullSmsReplyStatus所需参数的结构体。
+        :param request: Request instance for PullSmsReplyStatus.
         :type request: :class:`tencentcloud.sms.v20190711.models.PullSmsReplyStatusRequest`
         :rtype: :class:`tencentcloud.sms.v20190711.models.PullSmsReplyStatusResponse`
 
@@ -84,7 +84,7 @@ class SmsClient(AbstractClient):
     def PullSmsReplyStatusByPhoneNumber(self, request):
         """拉取单个号码短信回复状态
 
-        :param request: 调用PullSmsReplyStatusByPhoneNumber所需参数的结构体。
+        :param request: Request instance for PullSmsReplyStatusByPhoneNumber.
         :type request: :class:`tencentcloud.sms.v20190711.models.PullSmsReplyStatusByPhoneNumberRequest`
         :rtype: :class:`tencentcloud.sms.v20190711.models.PullSmsReplyStatusByPhoneNumberResponse`
 
@@ -112,7 +112,7 @@ class SmsClient(AbstractClient):
     def PullSmsSendStatus(self, request):
         """拉取短信下发状态
 
-        :param request: 调用PullSmsSendStatus所需参数的结构体。
+        :param request: Request instance for PullSmsSendStatus.
         :type request: :class:`tencentcloud.sms.v20190711.models.PullSmsSendStatusRequest`
         :rtype: :class:`tencentcloud.sms.v20190711.models.PullSmsSendStatusResponse`
 
@@ -140,7 +140,7 @@ class SmsClient(AbstractClient):
     def PullSmsSendStatusByPhoneNumber(self, request):
         """拉取单个号码短信下发状态
 
-        :param request: 调用PullSmsSendStatusByPhoneNumber所需参数的结构体。
+        :param request: Request instance for PullSmsSendStatusByPhoneNumber.
         :type request: :class:`tencentcloud.sms.v20190711.models.PullSmsSendStatusByPhoneNumberRequest`
         :rtype: :class:`tencentcloud.sms.v20190711.models.PullSmsSendStatusByPhoneNumberResponse`
 
@@ -169,7 +169,7 @@ class SmsClient(AbstractClient):
         """短信发送接口，用户给用户发短信验证码、通知类短信或营销短信。
 
 
-        :param request: 调用SendSms所需参数的结构体。
+        :param request: Request instance for SendSms.
         :type request: :class:`tencentcloud.sms.v20190711.models.SendSmsRequest`
         :rtype: :class:`tencentcloud.sms.v20190711.models.SendSmsResponse`
 
@@ -197,7 +197,7 @@ class SmsClient(AbstractClient):
     def SendStatusStatistics(self, request):
         """统计用户发送短信的数据
 
-        :param request: 调用SendStatusStatistics所需参数的结构体。
+        :param request: Request instance for SendStatusStatistics.
         :type request: :class:`tencentcloud.sms.v20190711.models.SendStatusStatisticsRequest`
         :rtype: :class:`tencentcloud.sms.v20190711.models.SendStatusStatisticsResponse`
 
@@ -225,7 +225,7 @@ class SmsClient(AbstractClient):
     def SmsPackagesStatistics(self, request):
         """用户套餐包信息统计
 
-        :param request: 调用SmsPackagesStatistics所需参数的结构体。
+        :param request: Request instance for SmsPackagesStatistics.
         :type request: :class:`tencentcloud.sms.v20190711.models.SmsPackagesStatisticsRequest`
         :rtype: :class:`tencentcloud.sms.v20190711.models.SmsPackagesStatisticsResponse`
 

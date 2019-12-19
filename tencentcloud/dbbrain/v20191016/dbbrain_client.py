@@ -28,7 +28,7 @@ class DbbrainClient(AbstractClient):
     def DescribeDBDiagEvent(self, request):
         """获取实例异常诊断事件的详情信息。
 
-        :param request: 调用DescribeDBDiagEvent所需参数的结构体。
+        :param request: Request instance for DescribeDBDiagEvent.
         :type request: :class:`tencentcloud.dbbrain.v20191016.models.DescribeDBDiagEventRequest`
         :rtype: :class:`tencentcloud.dbbrain.v20191016.models.DescribeDBDiagEventResponse`
 
@@ -56,7 +56,7 @@ class DbbrainClient(AbstractClient):
     def DescribeDBDiagHistory(self, request):
         """获取实例诊断事件的列表。
 
-        :param request: 调用DescribeDBDiagHistory所需参数的结构体。
+        :param request: Request instance for DescribeDBDiagHistory.
         :type request: :class:`tencentcloud.dbbrain.v20191016.models.DescribeDBDiagHistoryRequest`
         :rtype: :class:`tencentcloud.dbbrain.v20191016.models.DescribeDBDiagHistoryResponse`
 
@@ -84,7 +84,7 @@ class DbbrainClient(AbstractClient):
     def DescribeSlowLogTimeSeriesStats(self, request):
         """获取慢日志统计柱状图
 
-        :param request: 调用DescribeSlowLogTimeSeriesStats所需参数的结构体。
+        :param request: Request instance for DescribeSlowLogTimeSeriesStats.
         :type request: :class:`tencentcloud.dbbrain.v20191016.models.DescribeSlowLogTimeSeriesStatsRequest`
         :rtype: :class:`tencentcloud.dbbrain.v20191016.models.DescribeSlowLogTimeSeriesStatsResponse`
 
@@ -112,7 +112,7 @@ class DbbrainClient(AbstractClient):
     def DescribeSlowLogTopSqls(self, request):
         """按照Sql模板+schema的聚合方式，统计排序指定时间段内的top慢sql。
 
-        :param request: 调用DescribeSlowLogTopSqls所需参数的结构体。
+        :param request: Request instance for DescribeSlowLogTopSqls.
         :type request: :class:`tencentcloud.dbbrain.v20191016.models.DescribeSlowLogTopSqlsRequest`
         :rtype: :class:`tencentcloud.dbbrain.v20191016.models.DescribeSlowLogTopSqlsResponse`
 

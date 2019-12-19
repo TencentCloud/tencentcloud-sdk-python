@@ -28,7 +28,7 @@ class TiemsClient(AbstractClient):
     def CreateJob(self, request):
         """创建任务
 
-        :param request: 调用CreateJob所需参数的结构体。
+        :param request: Request instance for CreateJob.
         :type request: :class:`tencentcloud.tiems.v20190416.models.CreateJobRequest`
         :rtype: :class:`tencentcloud.tiems.v20190416.models.CreateJobResponse`
 
@@ -56,7 +56,7 @@ class TiemsClient(AbstractClient):
     def CreateRuntime(self, request):
         """创建运行环境
 
-        :param request: 调用CreateRuntime所需参数的结构体。
+        :param request: Request instance for CreateRuntime.
         :type request: :class:`tencentcloud.tiems.v20190416.models.CreateRuntimeRequest`
         :rtype: :class:`tencentcloud.tiems.v20190416.models.CreateRuntimeResponse`
 
@@ -84,7 +84,7 @@ class TiemsClient(AbstractClient):
     def CreateService(self, request):
         """创建服务
 
-        :param request: 调用CreateService所需参数的结构体。
+        :param request: Request instance for CreateService.
         :type request: :class:`tencentcloud.tiems.v20190416.models.CreateServiceRequest`
         :rtype: :class:`tencentcloud.tiems.v20190416.models.CreateServiceResponse`
 
@@ -112,7 +112,7 @@ class TiemsClient(AbstractClient):
     def CreateServiceConfig(self, request):
         """创建服务配置
 
-        :param request: 调用CreateServiceConfig所需参数的结构体。
+        :param request: Request instance for CreateServiceConfig.
         :type request: :class:`tencentcloud.tiems.v20190416.models.CreateServiceConfigRequest`
         :rtype: :class:`tencentcloud.tiems.v20190416.models.CreateServiceConfigResponse`
 
@@ -140,7 +140,7 @@ class TiemsClient(AbstractClient):
     def DeleteJob(self, request):
         """删除任务
 
-        :param request: 调用DeleteJob所需参数的结构体。
+        :param request: Request instance for DeleteJob.
         :type request: :class:`tencentcloud.tiems.v20190416.models.DeleteJobRequest`
         :rtype: :class:`tencentcloud.tiems.v20190416.models.DeleteJobResponse`
 
@@ -168,7 +168,7 @@ class TiemsClient(AbstractClient):
     def DeleteRuntime(self, request):
         """删除运行环境
 
-        :param request: 调用DeleteRuntime所需参数的结构体。
+        :param request: Request instance for DeleteRuntime.
         :type request: :class:`tencentcloud.tiems.v20190416.models.DeleteRuntimeRequest`
         :rtype: :class:`tencentcloud.tiems.v20190416.models.DeleteRuntimeResponse`
 
@@ -196,7 +196,7 @@ class TiemsClient(AbstractClient):
     def DeleteService(self, request):
         """删除服务
 
-        :param request: 调用DeleteService所需参数的结构体。
+        :param request: Request instance for DeleteService.
         :type request: :class:`tencentcloud.tiems.v20190416.models.DeleteServiceRequest`
         :rtype: :class:`tencentcloud.tiems.v20190416.models.DeleteServiceResponse`
 
@@ -224,7 +224,7 @@ class TiemsClient(AbstractClient):
     def DeleteServiceConfig(self, request):
         """删除服务配置
 
-        :param request: 调用DeleteServiceConfig所需参数的结构体。
+        :param request: Request instance for DeleteServiceConfig.
         :type request: :class:`tencentcloud.tiems.v20190416.models.DeleteServiceConfigRequest`
         :rtype: :class:`tencentcloud.tiems.v20190416.models.DeleteServiceConfigResponse`
 
@@ -252,7 +252,7 @@ class TiemsClient(AbstractClient):
     def DescribeInstances(self, request):
         """获取节点列表
 
-        :param request: 调用DescribeInstances所需参数的结构体。
+        :param request: Request instance for DescribeInstances.
         :type request: :class:`tencentcloud.tiems.v20190416.models.DescribeInstancesRequest`
         :rtype: :class:`tencentcloud.tiems.v20190416.models.DescribeInstancesResponse`
 
@@ -280,7 +280,7 @@ class TiemsClient(AbstractClient):
     def DescribeRuntimes(self, request):
         """描述服务运行环境
 
-        :param request: 调用DescribeRuntimes所需参数的结构体。
+        :param request: Request instance for DescribeRuntimes.
         :type request: :class:`tencentcloud.tiems.v20190416.models.DescribeRuntimesRequest`
         :rtype: :class:`tencentcloud.tiems.v20190416.models.DescribeRuntimesResponse`
 
@@ -308,7 +308,7 @@ class TiemsClient(AbstractClient):
     def DescribeServiceConfigs(self, request):
         """描述服务配置
 
-        :param request: 调用DescribeServiceConfigs所需参数的结构体。
+        :param request: Request instance for DescribeServiceConfigs.
         :type request: :class:`tencentcloud.tiems.v20190416.models.DescribeServiceConfigsRequest`
         :rtype: :class:`tencentcloud.tiems.v20190416.models.DescribeServiceConfigsResponse`
 
@@ -336,7 +336,7 @@ class TiemsClient(AbstractClient):
     def DescribeServices(self, request):
         """描述服务
 
-        :param request: 调用DescribeServices所需参数的结构体。
+        :param request: Request instance for DescribeServices.
         :type request: :class:`tencentcloud.tiems.v20190416.models.DescribeServicesRequest`
         :rtype: :class:`tencentcloud.tiems.v20190416.models.DescribeServicesResponse`
 
@@ -364,7 +364,7 @@ class TiemsClient(AbstractClient):
     def ExposeService(self, request):
         """暴露服务
 
-        :param request: 调用ExposeService所需参数的结构体。
+        :param request: Request instance for ExposeService.
         :type request: :class:`tencentcloud.tiems.v20190416.models.ExposeServiceRequest`
         :rtype: :class:`tencentcloud.tiems.v20190416.models.ExposeServiceResponse`
 
@@ -392,7 +392,7 @@ class TiemsClient(AbstractClient):
     def UpdateJob(self, request):
         """更新任务
 
-        :param request: 调用UpdateJob所需参数的结构体。
+        :param request: Request instance for UpdateJob.
         :type request: :class:`tencentcloud.tiems.v20190416.models.UpdateJobRequest`
         :rtype: :class:`tencentcloud.tiems.v20190416.models.UpdateJobResponse`
 
@@ -420,7 +420,7 @@ class TiemsClient(AbstractClient):
     def UpdateService(self, request):
         """更新服务
 
-        :param request: 调用UpdateService所需参数的结构体。
+        :param request: Request instance for UpdateService.
         :type request: :class:`tencentcloud.tiems.v20190416.models.UpdateServiceRequest`
         :rtype: :class:`tencentcloud.tiems.v20190416.models.UpdateServiceResponse`
 

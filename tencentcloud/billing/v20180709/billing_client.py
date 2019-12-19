@@ -28,7 +28,7 @@ class BillingClient(AbstractClient):
     def DescribeAccountBalance(self, request):
         """获取云账户余额信息。
 
-        :param request: 调用DescribeAccountBalance所需参数的结构体。
+        :param request: Request instance for DescribeAccountBalance.
         :type request: :class:`tencentcloud.billing.v20180709.models.DescribeAccountBalanceRequest`
         :rtype: :class:`tencentcloud.billing.v20180709.models.DescribeAccountBalanceResponse`
 
@@ -56,7 +56,7 @@ class BillingClient(AbstractClient):
     def DescribeBillDetail(self, request):
         """查询账单明细数据
 
-        :param request: 调用DescribeBillDetail所需参数的结构体。
+        :param request: Request instance for DescribeBillDetail.
         :type request: :class:`tencentcloud.billing.v20180709.models.DescribeBillDetailRequest`
         :rtype: :class:`tencentcloud.billing.v20180709.models.DescribeBillDetailResponse`
 
@@ -84,7 +84,7 @@ class BillingClient(AbstractClient):
     def DescribeBillResourceSummary(self, request):
         """查询账单资源汇总数据
 
-        :param request: 调用DescribeBillResourceSummary所需参数的结构体。
+        :param request: Request instance for DescribeBillResourceSummary.
         :type request: :class:`tencentcloud.billing.v20180709.models.DescribeBillResourceSummaryRequest`
         :rtype: :class:`tencentcloud.billing.v20180709.models.DescribeBillResourceSummaryResponse`
 
@@ -112,7 +112,7 @@ class BillingClient(AbstractClient):
     def DescribeBillSummaryByPayMode(self, request):
         """获取按付费模式汇总费用分布
 
-        :param request: 调用DescribeBillSummaryByPayMode所需参数的结构体。
+        :param request: Request instance for DescribeBillSummaryByPayMode.
         :type request: :class:`tencentcloud.billing.v20180709.models.DescribeBillSummaryByPayModeRequest`
         :rtype: :class:`tencentcloud.billing.v20180709.models.DescribeBillSummaryByPayModeResponse`
 
@@ -140,7 +140,7 @@ class BillingClient(AbstractClient):
     def DescribeBillSummaryByProduct(self, request):
         """获取产品汇总费用分布
 
-        :param request: 调用DescribeBillSummaryByProduct所需参数的结构体。
+        :param request: Request instance for DescribeBillSummaryByProduct.
         :type request: :class:`tencentcloud.billing.v20180709.models.DescribeBillSummaryByProductRequest`
         :rtype: :class:`tencentcloud.billing.v20180709.models.DescribeBillSummaryByProductResponse`
 
@@ -168,7 +168,7 @@ class BillingClient(AbstractClient):
     def DescribeBillSummaryByProject(self, request):
         """获取按项目汇总费用分布
 
-        :param request: 调用DescribeBillSummaryByProject所需参数的结构体。
+        :param request: Request instance for DescribeBillSummaryByProject.
         :type request: :class:`tencentcloud.billing.v20180709.models.DescribeBillSummaryByProjectRequest`
         :rtype: :class:`tencentcloud.billing.v20180709.models.DescribeBillSummaryByProjectResponse`
 
@@ -196,7 +196,7 @@ class BillingClient(AbstractClient):
     def DescribeBillSummaryByRegion(self, request):
         """获取按地域汇总费用分布
 
-        :param request: 调用DescribeBillSummaryByRegion所需参数的结构体。
+        :param request: Request instance for DescribeBillSummaryByRegion.
         :type request: :class:`tencentcloud.billing.v20180709.models.DescribeBillSummaryByRegionRequest`
         :rtype: :class:`tencentcloud.billing.v20180709.models.DescribeBillSummaryByRegionResponse`
 
@@ -224,7 +224,7 @@ class BillingClient(AbstractClient):
     def DescribeBillSummaryByTag(self, request):
         """获取按标签汇总费用分布
 
-        :param request: 调用DescribeBillSummaryByTag所需参数的结构体。
+        :param request: Request instance for DescribeBillSummaryByTag.
         :type request: :class:`tencentcloud.billing.v20180709.models.DescribeBillSummaryByTagRequest`
         :rtype: :class:`tencentcloud.billing.v20180709.models.DescribeBillSummaryByTagResponse`
 
@@ -252,7 +252,7 @@ class BillingClient(AbstractClient):
     def DescribeDealsByCond(self, request):
         """查询订单
 
-        :param request: 调用DescribeDealsByCond所需参数的结构体。
+        :param request: Request instance for DescribeDealsByCond.
         :type request: :class:`tencentcloud.billing.v20180709.models.DescribeDealsByCondRequest`
         :rtype: :class:`tencentcloud.billing.v20180709.models.DescribeDealsByCondResponse`
 
@@ -280,7 +280,7 @@ class BillingClient(AbstractClient):
     def DescribeDosageDetailByDate(self, request):
         """按日期获取产品用量明细
 
-        :param request: 调用DescribeDosageDetailByDate所需参数的结构体。
+        :param request: Request instance for DescribeDosageDetailByDate.
         :type request: :class:`tencentcloud.billing.v20180709.models.DescribeDosageDetailByDateRequest`
         :rtype: :class:`tencentcloud.billing.v20180709.models.DescribeDosageDetailByDateResponse`
 
@@ -308,7 +308,7 @@ class BillingClient(AbstractClient):
     def PayDeals(self, request):
         """支付订单
 
-        :param request: 调用PayDeals所需参数的结构体。
+        :param request: Request instance for PayDeals.
         :type request: :class:`tencentcloud.billing.v20180709.models.PayDealsRequest`
         :rtype: :class:`tencentcloud.billing.v20180709.models.PayDealsResponse`
 

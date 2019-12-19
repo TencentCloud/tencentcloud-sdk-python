@@ -28,7 +28,7 @@ class BmClient(AbstractClient):
     def AttachCamRole(self, request):
         """服务器绑定CAM角色，该角色授权访问黑石物理服务器服务，为黑石物理服务器提供了访问资源的权限，如请求服务器的临时证书
 
-        :param request: 调用AttachCamRole所需参数的结构体。
+        :param request: Request instance for AttachCamRole.
         :type request: :class:`tencentcloud.bm.v20180423.models.AttachCamRoleRequest`
         :rtype: :class:`tencentcloud.bm.v20180423.models.AttachCamRoleResponse`
 
@@ -56,7 +56,7 @@ class BmClient(AbstractClient):
     def BindPsaTag(self, request):
         """为预授权规则绑定标签
 
-        :param request: 调用BindPsaTag所需参数的结构体。
+        :param request: Request instance for BindPsaTag.
         :type request: :class:`tencentcloud.bm.v20180423.models.BindPsaTagRequest`
         :rtype: :class:`tencentcloud.bm.v20180423.models.BindPsaTagResponse`
 
@@ -84,7 +84,7 @@ class BmClient(AbstractClient):
     def BuyDevices(self, request):
         """购买黑石物理机
 
-        :param request: 调用BuyDevices所需参数的结构体。
+        :param request: Request instance for BuyDevices.
         :type request: :class:`tencentcloud.bm.v20180423.models.BuyDevicesRequest`
         :rtype: :class:`tencentcloud.bm.v20180423.models.BuyDevicesResponse`
 
@@ -113,7 +113,7 @@ class BmClient(AbstractClient):
         """创建自定义镜像<br>
         每个AppId在每个可用区最多保留20个自定义镜像
 
-        :param request: 调用CreateCustomImage所需参数的结构体。
+        :param request: Request instance for CreateCustomImage.
         :type request: :class:`tencentcloud.bm.v20180423.models.CreateCustomImageRequest`
         :rtype: :class:`tencentcloud.bm.v20180423.models.CreateCustomImageResponse`
 
@@ -141,7 +141,7 @@ class BmClient(AbstractClient):
     def CreatePsaRegulation(self, request):
         """创建预授权规则
 
-        :param request: 调用CreatePsaRegulation所需参数的结构体。
+        :param request: Request instance for CreatePsaRegulation.
         :type request: :class:`tencentcloud.bm.v20180423.models.CreatePsaRegulationRequest`
         :rtype: :class:`tencentcloud.bm.v20180423.models.CreatePsaRegulationResponse`
 
@@ -169,7 +169,7 @@ class BmClient(AbstractClient):
     def CreateSpotDevice(self, request):
         """创建黑石竞价实例
 
-        :param request: 调用CreateSpotDevice所需参数的结构体。
+        :param request: Request instance for CreateSpotDevice.
         :type request: :class:`tencentcloud.bm.v20180423.models.CreateSpotDeviceRequest`
         :rtype: :class:`tencentcloud.bm.v20180423.models.CreateSpotDeviceResponse`
 
@@ -197,7 +197,7 @@ class BmClient(AbstractClient):
     def CreateUserCmd(self, request):
         """创建自定义脚本
 
-        :param request: 调用CreateUserCmd所需参数的结构体。
+        :param request: Request instance for CreateUserCmd.
         :type request: :class:`tencentcloud.bm.v20180423.models.CreateUserCmdRequest`
         :rtype: :class:`tencentcloud.bm.v20180423.models.CreateUserCmdResponse`
 
@@ -226,7 +226,7 @@ class BmClient(AbstractClient):
         """删除自定义镜像<br>
         正用于部署或重装中的镜像被删除后，镜像文件将保留一段时间，直到部署或重装结束
 
-        :param request: 调用DeleteCustomImages所需参数的结构体。
+        :param request: Request instance for DeleteCustomImages.
         :type request: :class:`tencentcloud.bm.v20180423.models.DeleteCustomImagesRequest`
         :rtype: :class:`tencentcloud.bm.v20180423.models.DeleteCustomImagesResponse`
 
@@ -254,7 +254,7 @@ class BmClient(AbstractClient):
     def DeletePsaRegulation(self, request):
         """删除预授权规则
 
-        :param request: 调用DeletePsaRegulation所需参数的结构体。
+        :param request: Request instance for DeletePsaRegulation.
         :type request: :class:`tencentcloud.bm.v20180423.models.DeletePsaRegulationRequest`
         :rtype: :class:`tencentcloud.bm.v20180423.models.DeletePsaRegulationResponse`
 
@@ -282,7 +282,7 @@ class BmClient(AbstractClient):
     def DeleteUserCmds(self, request):
         """删除自定义脚本
 
-        :param request: 调用DeleteUserCmds所需参数的结构体。
+        :param request: Request instance for DeleteUserCmds.
         :type request: :class:`tencentcloud.bm.v20180423.models.DeleteUserCmdsRequest`
         :rtype: :class:`tencentcloud.bm.v20180423.models.DeleteUserCmdsResponse`
 
@@ -310,7 +310,7 @@ class BmClient(AbstractClient):
     def DescribeCustomImageProcess(self, request):
         """查询自定义镜像制作进度
 
-        :param request: 调用DescribeCustomImageProcess所需参数的结构体。
+        :param request: Request instance for DescribeCustomImageProcess.
         :type request: :class:`tencentcloud.bm.v20180423.models.DescribeCustomImageProcessRequest`
         :rtype: :class:`tencentcloud.bm.v20180423.models.DescribeCustomImageProcessResponse`
 
@@ -338,7 +338,7 @@ class BmClient(AbstractClient):
     def DescribeCustomImages(self, request):
         """查看自定义镜像列表
 
-        :param request: 调用DescribeCustomImages所需参数的结构体。
+        :param request: Request instance for DescribeCustomImages.
         :type request: :class:`tencentcloud.bm.v20180423.models.DescribeCustomImagesRequest`
         :rtype: :class:`tencentcloud.bm.v20180423.models.DescribeCustomImagesResponse`
 
@@ -366,7 +366,7 @@ class BmClient(AbstractClient):
     def DescribeDeviceClass(self, request):
         """获取获取设备类型
 
-        :param request: 调用DescribeDeviceClass所需参数的结构体。
+        :param request: Request instance for DescribeDeviceClass.
         :type request: :class:`tencentcloud.bm.v20180423.models.DescribeDeviceClassRequest`
         :rtype: :class:`tencentcloud.bm.v20180423.models.DescribeDeviceClassResponse`
 
@@ -394,7 +394,7 @@ class BmClient(AbstractClient):
     def DescribeDeviceClassPartition(self, request):
         """查询机型支持的RAID方式， 并返回系统盘的分区和逻辑盘的列表
 
-        :param request: 调用DescribeDeviceClassPartition所需参数的结构体。
+        :param request: Request instance for DescribeDeviceClassPartition.
         :type request: :class:`tencentcloud.bm.v20180423.models.DescribeDeviceClassPartitionRequest`
         :rtype: :class:`tencentcloud.bm.v20180423.models.DescribeDeviceClassPartitionResponse`
 
@@ -422,7 +422,7 @@ class BmClient(AbstractClient):
     def DescribeDeviceHardwareInfo(self, request):
         """查询设备硬件配置信息，如 CPU 型号，内存大小，磁盘大小和数量
 
-        :param request: 调用DescribeDeviceHardwareInfo所需参数的结构体。
+        :param request: Request instance for DescribeDeviceHardwareInfo.
         :type request: :class:`tencentcloud.bm.v20180423.models.DescribeDeviceHardwareInfoRequest`
         :rtype: :class:`tencentcloud.bm.v20180423.models.DescribeDeviceHardwareInfoResponse`
 
@@ -450,7 +450,7 @@ class BmClient(AbstractClient):
     def DescribeDeviceInventory(self, request):
         """查询设备库存
 
-        :param request: 调用DescribeDeviceInventory所需参数的结构体。
+        :param request: Request instance for DescribeDeviceInventory.
         :type request: :class:`tencentcloud.bm.v20180423.models.DescribeDeviceInventoryRequest`
         :rtype: :class:`tencentcloud.bm.v20180423.models.DescribeDeviceInventoryResponse`
 
@@ -478,7 +478,7 @@ class BmClient(AbstractClient):
     def DescribeDeviceOperationLog(self, request):
         """查询设备操作日志， 如设备重启，重装，设置密码等操作
 
-        :param request: 调用DescribeDeviceOperationLog所需参数的结构体。
+        :param request: Request instance for DescribeDeviceOperationLog.
         :type request: :class:`tencentcloud.bm.v20180423.models.DescribeDeviceOperationLogRequest`
         :rtype: :class:`tencentcloud.bm.v20180423.models.DescribeDeviceOperationLogResponse`
 
@@ -506,7 +506,7 @@ class BmClient(AbstractClient):
     def DescribeDevicePartition(self, request):
         """获取物理机的分区格式
 
-        :param request: 调用DescribeDevicePartition所需参数的结构体。
+        :param request: Request instance for DescribeDevicePartition.
         :type request: :class:`tencentcloud.bm.v20180423.models.DescribeDevicePartitionRequest`
         :rtype: :class:`tencentcloud.bm.v20180423.models.DescribeDevicePartitionResponse`
 
@@ -534,7 +534,7 @@ class BmClient(AbstractClient):
     def DescribeDevicePosition(self, request):
         """查询服务器所在的位置，如机架，上联交换机等信息
 
-        :param request: 调用DescribeDevicePosition所需参数的结构体。
+        :param request: Request instance for DescribeDevicePosition.
         :type request: :class:`tencentcloud.bm.v20180423.models.DescribeDevicePositionRequest`
         :rtype: :class:`tencentcloud.bm.v20180423.models.DescribeDevicePositionResponse`
 
@@ -562,7 +562,7 @@ class BmClient(AbstractClient):
     def DescribeDevicePriceInfo(self, request):
         """查询服务器价格信息，支持设备的批量查找，支持标准机型和弹性机型的混合查找
 
-        :param request: 调用DescribeDevicePriceInfo所需参数的结构体。
+        :param request: Request instance for DescribeDevicePriceInfo.
         :type request: :class:`tencentcloud.bm.v20180423.models.DescribeDevicePriceInfoRequest`
         :rtype: :class:`tencentcloud.bm.v20180423.models.DescribeDevicePriceInfoResponse`
 
@@ -590,7 +590,7 @@ class BmClient(AbstractClient):
     def DescribeDevices(self, request):
         """查询物理服务器，可以按照实例，业务IP等过滤
 
-        :param request: 调用DescribeDevices所需参数的结构体。
+        :param request: Request instance for DescribeDevices.
         :type request: :class:`tencentcloud.bm.v20180423.models.DescribeDevicesRequest`
         :rtype: :class:`tencentcloud.bm.v20180423.models.DescribeDevicesResponse`
 
@@ -618,7 +618,7 @@ class BmClient(AbstractClient):
     def DescribeHardwareSpecification(self, request):
         """查询自定义机型部件信息，包括CpuId对应的型号，DiskTypeId对应的磁盘类型
 
-        :param request: 调用DescribeHardwareSpecification所需参数的结构体。
+        :param request: Request instance for DescribeHardwareSpecification.
         :type request: :class:`tencentcloud.bm.v20180423.models.DescribeHardwareSpecificationRequest`
         :rtype: :class:`tencentcloud.bm.v20180423.models.DescribeHardwareSpecificationResponse`
 
@@ -646,7 +646,7 @@ class BmClient(AbstractClient):
     def DescribeHostedDeviceOutBandInfo(self, request):
         """查询托管设备带外信息
 
-        :param request: 调用DescribeHostedDeviceOutBandInfo所需参数的结构体。
+        :param request: Request instance for DescribeHostedDeviceOutBandInfo.
         :type request: :class:`tencentcloud.bm.v20180423.models.DescribeHostedDeviceOutBandInfoRequest`
         :rtype: :class:`tencentcloud.bm.v20180423.models.DescribeHostedDeviceOutBandInfoResponse`
 
@@ -674,7 +674,7 @@ class BmClient(AbstractClient):
     def DescribeOperationResult(self, request):
         """获取异步操作状态的完成状态
 
-        :param request: 调用DescribeOperationResult所需参数的结构体。
+        :param request: Request instance for DescribeOperationResult.
         :type request: :class:`tencentcloud.bm.v20180423.models.DescribeOperationResultRequest`
         :rtype: :class:`tencentcloud.bm.v20180423.models.DescribeOperationResultResponse`
 
@@ -702,7 +702,7 @@ class BmClient(AbstractClient):
     def DescribeOsInfo(self, request):
         """查询指定机型所支持的操作系统
 
-        :param request: 调用DescribeOsInfo所需参数的结构体。
+        :param request: Request instance for DescribeOsInfo.
         :type request: :class:`tencentcloud.bm.v20180423.models.DescribeOsInfoRequest`
         :rtype: :class:`tencentcloud.bm.v20180423.models.DescribeOsInfoResponse`
 
@@ -730,7 +730,7 @@ class BmClient(AbstractClient):
     def DescribePsaRegulations(self, request):
         """获取预授权规则列表
 
-        :param request: 调用DescribePsaRegulations所需参数的结构体。
+        :param request: Request instance for DescribePsaRegulations.
         :type request: :class:`tencentcloud.bm.v20180423.models.DescribePsaRegulationsRequest`
         :rtype: :class:`tencentcloud.bm.v20180423.models.DescribePsaRegulationsResponse`
 
@@ -758,7 +758,7 @@ class BmClient(AbstractClient):
     def DescribeRegions(self, request):
         """查询地域以及可用区
 
-        :param request: 调用DescribeRegions所需参数的结构体。
+        :param request: Request instance for DescribeRegions.
         :type request: :class:`tencentcloud.bm.v20180423.models.DescribeRegionsRequest`
         :rtype: :class:`tencentcloud.bm.v20180423.models.DescribeRegionsResponse`
 
@@ -786,7 +786,7 @@ class BmClient(AbstractClient):
     def DescribeRepairTaskConstant(self, request):
         """维修任务配置获取
 
-        :param request: 调用DescribeRepairTaskConstant所需参数的结构体。
+        :param request: Request instance for DescribeRepairTaskConstant.
         :type request: :class:`tencentcloud.bm.v20180423.models.DescribeRepairTaskConstantRequest`
         :rtype: :class:`tencentcloud.bm.v20180423.models.DescribeRepairTaskConstantResponse`
 
@@ -822,7 +822,7 @@ class BmClient(AbstractClient):
         5：已恢复<br>
         6：待确认-未恢复<br>
 
-        :param request: 调用DescribeTaskInfo所需参数的结构体。
+        :param request: Request instance for DescribeTaskInfo.
         :type request: :class:`tencentcloud.bm.v20180423.models.DescribeTaskInfoRequest`
         :rtype: :class:`tencentcloud.bm.v20180423.models.DescribeTaskInfoResponse`
 
@@ -850,7 +850,7 @@ class BmClient(AbstractClient):
     def DescribeTaskOperationLog(self, request):
         """获取维修任务操作日志
 
-        :param request: 调用DescribeTaskOperationLog所需参数的结构体。
+        :param request: Request instance for DescribeTaskOperationLog.
         :type request: :class:`tencentcloud.bm.v20180423.models.DescribeTaskOperationLogRequest`
         :rtype: :class:`tencentcloud.bm.v20180423.models.DescribeTaskOperationLogResponse`
 
@@ -878,7 +878,7 @@ class BmClient(AbstractClient):
     def DescribeUserCmdTaskInfo(self, request):
         """获取自定义脚本任务详细信息
 
-        :param request: 调用DescribeUserCmdTaskInfo所需参数的结构体。
+        :param request: Request instance for DescribeUserCmdTaskInfo.
         :type request: :class:`tencentcloud.bm.v20180423.models.DescribeUserCmdTaskInfoRequest`
         :rtype: :class:`tencentcloud.bm.v20180423.models.DescribeUserCmdTaskInfoResponse`
 
@@ -906,7 +906,7 @@ class BmClient(AbstractClient):
     def DescribeUserCmdTasks(self, request):
         """获取自定义脚本任务列表
 
-        :param request: 调用DescribeUserCmdTasks所需参数的结构体。
+        :param request: Request instance for DescribeUserCmdTasks.
         :type request: :class:`tencentcloud.bm.v20180423.models.DescribeUserCmdTasksRequest`
         :rtype: :class:`tencentcloud.bm.v20180423.models.DescribeUserCmdTasksResponse`
 
@@ -934,7 +934,7 @@ class BmClient(AbstractClient):
     def DescribeUserCmds(self, request):
         """获取自定义脚本信息列表
 
-        :param request: 调用DescribeUserCmds所需参数的结构体。
+        :param request: Request instance for DescribeUserCmds.
         :type request: :class:`tencentcloud.bm.v20180423.models.DescribeUserCmdsRequest`
         :rtype: :class:`tencentcloud.bm.v20180423.models.DescribeUserCmdsResponse`
 
@@ -962,7 +962,7 @@ class BmClient(AbstractClient):
     def DetachCamRole(self, request):
         """服务器绑定CAM角色
 
-        :param request: 调用DetachCamRole所需参数的结构体。
+        :param request: Request instance for DetachCamRole.
         :type request: :class:`tencentcloud.bm.v20180423.models.DetachCamRoleRequest`
         :rtype: :class:`tencentcloud.bm.v20180423.models.DetachCamRoleResponse`
 
@@ -990,7 +990,7 @@ class BmClient(AbstractClient):
     def ModifyCustomImageAttribute(self, request):
         """用于修改自定义镜像名或描述
 
-        :param request: 调用ModifyCustomImageAttribute所需参数的结构体。
+        :param request: Request instance for ModifyCustomImageAttribute.
         :type request: :class:`tencentcloud.bm.v20180423.models.ModifyCustomImageAttributeRequest`
         :rtype: :class:`tencentcloud.bm.v20180423.models.ModifyCustomImageAttributeResponse`
 
@@ -1018,7 +1018,7 @@ class BmClient(AbstractClient):
     def ModifyDeviceAliases(self, request):
         """修改服务器名称
 
-        :param request: 调用ModifyDeviceAliases所需参数的结构体。
+        :param request: Request instance for ModifyDeviceAliases.
         :type request: :class:`tencentcloud.bm.v20180423.models.ModifyDeviceAliasesRequest`
         :rtype: :class:`tencentcloud.bm.v20180423.models.ModifyDeviceAliasesResponse`
 
@@ -1046,7 +1046,7 @@ class BmClient(AbstractClient):
     def ModifyDeviceAutoRenewFlag(self, request):
         """修改物理机服务器自动续费标志
 
-        :param request: 调用ModifyDeviceAutoRenewFlag所需参数的结构体。
+        :param request: Request instance for ModifyDeviceAutoRenewFlag.
         :type request: :class:`tencentcloud.bm.v20180423.models.ModifyDeviceAutoRenewFlagRequest`
         :rtype: :class:`tencentcloud.bm.v20180423.models.ModifyDeviceAutoRenewFlagResponse`
 
@@ -1074,7 +1074,7 @@ class BmClient(AbstractClient):
     def ModifyLanIp(self, request):
         """修改物理机内网IP（不重装系统）
 
-        :param request: 调用ModifyLanIp所需参数的结构体。
+        :param request: Request instance for ModifyLanIp.
         :type request: :class:`tencentcloud.bm.v20180423.models.ModifyLanIpRequest`
         :rtype: :class:`tencentcloud.bm.v20180423.models.ModifyLanIpResponse`
 
@@ -1102,7 +1102,7 @@ class BmClient(AbstractClient):
     def ModifyPayModePre2Post(self, request):
         """将设备的预付费模式修改为后付费计费模式，支持批量转换。（前提是客户要加入黑石物理机后付费计费的白名单，申请黑石物理机后付费可以联系腾讯云客服）
 
-        :param request: 调用ModifyPayModePre2Post所需参数的结构体。
+        :param request: Request instance for ModifyPayModePre2Post.
         :type request: :class:`tencentcloud.bm.v20180423.models.ModifyPayModePre2PostRequest`
         :rtype: :class:`tencentcloud.bm.v20180423.models.ModifyPayModePre2PostResponse`
 
@@ -1130,7 +1130,7 @@ class BmClient(AbstractClient):
     def ModifyPsaRegulation(self, request):
         """允许修改规则信息及关联故障类型
 
-        :param request: 调用ModifyPsaRegulation所需参数的结构体。
+        :param request: Request instance for ModifyPsaRegulation.
         :type request: :class:`tencentcloud.bm.v20180423.models.ModifyPsaRegulationRequest`
         :rtype: :class:`tencentcloud.bm.v20180423.models.ModifyPsaRegulationResponse`
 
@@ -1158,7 +1158,7 @@ class BmClient(AbstractClient):
     def ModifyUserCmd(self, request):
         """修改自定义脚本
 
-        :param request: 调用ModifyUserCmd所需参数的结构体。
+        :param request: Request instance for ModifyUserCmd.
         :type request: :class:`tencentcloud.bm.v20180423.models.ModifyUserCmdRequest`
         :rtype: :class:`tencentcloud.bm.v20180423.models.ModifyUserCmdResponse`
 
@@ -1186,7 +1186,7 @@ class BmClient(AbstractClient):
     def OfflineDevices(self, request):
         """销毁黑石物理机实例：可以销毁物理机列表中的竞价实例，或回收站列表中所有计费模式的实例
 
-        :param request: 调用OfflineDevices所需参数的结构体。
+        :param request: Request instance for OfflineDevices.
         :type request: :class:`tencentcloud.bm.v20180423.models.OfflineDevicesRequest`
         :rtype: :class:`tencentcloud.bm.v20180423.models.OfflineDevicesResponse`
 
@@ -1214,7 +1214,7 @@ class BmClient(AbstractClient):
     def RebootDevices(self, request):
         """重启机器
 
-        :param request: 调用RebootDevices所需参数的结构体。
+        :param request: Request instance for RebootDevices.
         :type request: :class:`tencentcloud.bm.v20180423.models.RebootDevicesRequest`
         :rtype: :class:`tencentcloud.bm.v20180423.models.RebootDevicesResponse`
 
@@ -1242,7 +1242,7 @@ class BmClient(AbstractClient):
     def RecoverDevices(self, request):
         """恢复回收站中的物理机（仅限后付费的物理机）
 
-        :param request: 调用RecoverDevices所需参数的结构体。
+        :param request: Request instance for RecoverDevices.
         :type request: :class:`tencentcloud.bm.v20180423.models.RecoverDevicesRequest`
         :rtype: :class:`tencentcloud.bm.v20180423.models.RecoverDevicesResponse`
 
@@ -1290,7 +1290,7 @@ class BmClient(AbstractClient):
         <br>
         详细信息请访问：https://cloud.tencent.com/document/product/386/18190
 
-        :param request: 调用RepairTaskControl所需参数的结构体。
+        :param request: Request instance for RepairTaskControl.
         :type request: :class:`tencentcloud.bm.v20180423.models.RepairTaskControlRequest`
         :rtype: :class:`tencentcloud.bm.v20180423.models.RepairTaskControlResponse`
 
@@ -1318,7 +1318,7 @@ class BmClient(AbstractClient):
     def ResetDevicePassword(self, request):
         """重置服务器密码
 
-        :param request: 调用ResetDevicePassword所需参数的结构体。
+        :param request: Request instance for ResetDevicePassword.
         :type request: :class:`tencentcloud.bm.v20180423.models.ResetDevicePasswordRequest`
         :rtype: :class:`tencentcloud.bm.v20180423.models.ResetDevicePasswordResponse`
 
@@ -1346,7 +1346,7 @@ class BmClient(AbstractClient):
     def ReturnDevices(self, request):
         """退回物理机至回收站，支持批量退还不同计费模式的物理机（包括预付费、后付费、预付费转后付费）
 
-        :param request: 调用ReturnDevices所需参数的结构体。
+        :param request: Request instance for ReturnDevices.
         :type request: :class:`tencentcloud.bm.v20180423.models.ReturnDevicesRequest`
         :rtype: :class:`tencentcloud.bm.v20180423.models.ReturnDevicesResponse`
 
@@ -1374,7 +1374,7 @@ class BmClient(AbstractClient):
     def RunUserCmd(self, request):
         """运行自定义脚本
 
-        :param request: 调用RunUserCmd所需参数的结构体。
+        :param request: Request instance for RunUserCmd.
         :type request: :class:`tencentcloud.bm.v20180423.models.RunUserCmdRequest`
         :rtype: :class:`tencentcloud.bm.v20180423.models.RunUserCmdResponse`
 
@@ -1402,7 +1402,7 @@ class BmClient(AbstractClient):
     def SetOutBandVpnAuthPassword(self, request):
         """设置带外VPN认证用户密码
 
-        :param request: 调用SetOutBandVpnAuthPassword所需参数的结构体。
+        :param request: Request instance for SetOutBandVpnAuthPassword.
         :type request: :class:`tencentcloud.bm.v20180423.models.SetOutBandVpnAuthPasswordRequest`
         :rtype: :class:`tencentcloud.bm.v20180423.models.SetOutBandVpnAuthPasswordResponse`
 
@@ -1430,7 +1430,7 @@ class BmClient(AbstractClient):
     def ShutdownDevices(self, request):
         """关闭服务器
 
-        :param request: 调用ShutdownDevices所需参数的结构体。
+        :param request: Request instance for ShutdownDevices.
         :type request: :class:`tencentcloud.bm.v20180423.models.ShutdownDevicesRequest`
         :rtype: :class:`tencentcloud.bm.v20180423.models.ShutdownDevicesResponse`
 
@@ -1458,7 +1458,7 @@ class BmClient(AbstractClient):
     def StartDevices(self, request):
         """开启服务器
 
-        :param request: 调用StartDevices所需参数的结构体。
+        :param request: Request instance for StartDevices.
         :type request: :class:`tencentcloud.bm.v20180423.models.StartDevicesRequest`
         :rtype: :class:`tencentcloud.bm.v20180423.models.StartDevicesResponse`
 
@@ -1486,7 +1486,7 @@ class BmClient(AbstractClient):
     def UnbindPsaTag(self, request):
         """解除标签与预授权规则的绑定
 
-        :param request: 调用UnbindPsaTag所需参数的结构体。
+        :param request: Request instance for UnbindPsaTag.
         :type request: :class:`tencentcloud.bm.v20180423.models.UnbindPsaTagRequest`
         :rtype: :class:`tencentcloud.bm.v20180423.models.UnbindPsaTagResponse`
 

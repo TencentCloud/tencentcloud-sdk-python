@@ -28,7 +28,7 @@ class NlpClient(AbstractClient):
     def AutoSummarization(self, request):
         """利用人工智能算法，自动抽取文本中的关键信息并生成指定长度的文本摘要。可用于新闻标题生成、科技文献摘要生成和商品评论摘要等。
 
-        :param request: 调用AutoSummarization所需参数的结构体。
+        :param request: Request instance for AutoSummarization.
         :type request: :class:`tencentcloud.nlp.v20190408.models.AutoSummarizationRequest`
         :rtype: :class:`tencentcloud.nlp.v20190408.models.AutoSummarizationResponse`
 
@@ -57,7 +57,7 @@ class NlpClient(AbstractClient):
         """闲聊服务基于腾讯领先的NLP引擎能力、数据运算能力和千亿级互联网语料数据的支持，同时集成了广泛的知识问答能力，可实现上百种自定义属性配置，以及儿童语言风格及说话方式，从而让聊天变得更睿智、简单和有趣。
 
 
-        :param request: 调用ChatBot所需参数的结构体。
+        :param request: Request instance for ChatBot.
         :type request: :class:`tencentcloud.nlp.v20190408.models.ChatBotRequest`
         :rtype: :class:`tencentcloud.nlp.v20190408.models.ChatBotResponse`
 
@@ -97,7 +97,7 @@ class NlpClient(AbstractClient):
 
         3、恶意关键词：文本中所有涉嫌恶意的关键词。
 
-        :param request: 调用ContentApproval所需参数的结构体。
+        :param request: Request instance for ContentApproval.
         :type request: :class:`tencentcloud.nlp.v20190408.models.ContentApprovalRequest`
         :rtype: :class:`tencentcloud.nlp.v20190408.models.ContentApprovalResponse`
 
@@ -125,7 +125,7 @@ class NlpClient(AbstractClient):
     def DependencyParsing(self, request):
         """句法依存分析接口能够分析出句子中词与词之间的相互依存关系，并揭示其句法结构，包括主谓关系、动宾关系、核心关系等等，可用于提取句子主干、提取句子核心词等，在机器翻译、自动问答、知识抽取等领域都有很好的应用。
 
-        :param request: 调用DependencyParsing所需参数的结构体。
+        :param request: Request instance for DependencyParsing.
         :type request: :class:`tencentcloud.nlp.v20190408.models.DependencyParsingRequest`
         :rtype: :class:`tencentcloud.nlp.v20190408.models.DependencyParsingResponse`
 
@@ -153,7 +153,7 @@ class NlpClient(AbstractClient):
     def DescribeEntity(self, request):
         """输入实体名称，返回实体相关的信息如实体别名、实体英文名、实体详细信息、相关实体等。
 
-        :param request: 调用DescribeEntity所需参数的结构体。
+        :param request: Request instance for DescribeEntity.
         :type request: :class:`tencentcloud.nlp.v20190408.models.DescribeEntityRequest`
         :rtype: :class:`tencentcloud.nlp.v20190408.models.DescribeEntityResponse`
 
@@ -181,7 +181,7 @@ class NlpClient(AbstractClient):
     def DescribeRelation(self, request):
         """输入两个实体，返回两个实体间的关系，例如马化腾与腾讯公司不仅是相关实体，二者还存在隶属关系（马化腾属于腾讯公司）。
 
-        :param request: 调用DescribeRelation所需参数的结构体。
+        :param request: Request instance for DescribeRelation.
         :type request: :class:`tencentcloud.nlp.v20190408.models.DescribeRelationRequest`
         :rtype: :class:`tencentcloud.nlp.v20190408.models.DescribeRelationResponse`
 
@@ -209,7 +209,7 @@ class NlpClient(AbstractClient):
     def DescribeTriple(self, request):
         """三元组查询，主要分为两类，SP查询和PO查询。SP查询表示已知主语和谓语查询宾语，PO查询表示已知宾语和谓语查询主语。每一个SP或PO查询都是一个可独立执行的查询，TQL支持SP查询的嵌套查询，即主语可以是一个嵌套的子查询。其他复杂的三元组查询方法，请参考官网API文档示例。
 
-        :param request: 调用DescribeTriple所需参数的结构体。
+        :param request: Request instance for DescribeTriple.
         :type request: :class:`tencentcloud.nlp.v20190408.models.DescribeTripleRequest`
         :rtype: :class:`tencentcloud.nlp.v20190408.models.DescribeTripleResponse`
 
@@ -237,7 +237,7 @@ class NlpClient(AbstractClient):
     def KeywordsExtraction(self, request):
         """基于关键词提取平台，通过对文本内容进行深度分析，提取出文本内容中的关键信息，为用户实现诸如新闻内容关键词自动提取、评论关键词提取等提供基础服务。
 
-        :param request: 调用KeywordsExtraction所需参数的结构体。
+        :param request: Request instance for KeywordsExtraction.
         :type request: :class:`tencentcloud.nlp.v20190408.models.KeywordsExtractionRequest`
         :rtype: :class:`tencentcloud.nlp.v20190408.models.KeywordsExtractionResponse`
 
@@ -273,7 +273,7 @@ class NlpClient(AbstractClient):
 
         所有的功能均基于千亿级大规模互联网语料进行持续迭代更新，以保证效果不断提升，用户无需担心新词发现、歧义消除、调用性能等问题。目前词法分析已经在泛互联网、金融、政务等不同垂直领域提供业务支持，并取得良好的效果。
 
-        :param request: 调用LexicalAnalysis所需参数的结构体。
+        :param request: Request instance for LexicalAnalysis.
         :type request: :class:`tencentcloud.nlp.v20190408.models.LexicalAnalysisRequest`
         :rtype: :class:`tencentcloud.nlp.v20190408.models.LexicalAnalysisResponse`
 
@@ -305,7 +305,7 @@ class NlpClient(AbstractClient):
 
         目前能够支持对政治、色情、辱骂/低俗、暴恐/毒品、广告/灌水、迷信/邪教、其他违法、综合等8大类敏感信息的识别。
 
-        :param request: 调用SensitiveWordsRecognition所需参数的结构体。
+        :param request: Request instance for SensitiveWordsRecognition.
         :type request: :class:`tencentcloud.nlp.v20190408.models.SensitiveWordsRecognitionRequest`
         :rtype: :class:`tencentcloud.nlp.v20190408.models.SensitiveWordsRecognitionResponse`
 
@@ -335,7 +335,7 @@ class NlpClient(AbstractClient):
 
         该句向量服务由腾讯知文自然语言处理团队联合腾讯AI Lab共同打造，基于千亿级大规模互联网语料并采用AI Lab自研的DSG算法训练而成，在腾讯内部诸多业务的NLP任务上实测效果显著。
 
-        :param request: 调用SentenceEmbedding所需参数的结构体。
+        :param request: Request instance for SentenceEmbedding.
         :type request: :class:`tencentcloud.nlp.v20190408.models.SentenceEmbeddingRequest`
         :rtype: :class:`tencentcloud.nlp.v20190408.models.SentenceEmbeddingResponse`
 
@@ -365,7 +365,7 @@ class NlpClient(AbstractClient):
 
         鉴于文本相似度是一个应用非常广泛的功能，腾讯知文自然语言处理团队在深度神经网络模型的基础上，专门针对文本相似任务进行了优化，并持续迭代更新。基于文本相似度，可以轻松实现诸如文本去重、相似推荐等功能。
 
-        :param request: 调用SentenceSimilarity所需参数的结构体。
+        :param request: Request instance for SentenceSimilarity.
         :type request: :class:`tencentcloud.nlp.v20190408.models.SentenceSimilarityRequest`
         :rtype: :class:`tencentcloud.nlp.v20190408.models.SentenceSimilarityResponse`
 
@@ -395,7 +395,7 @@ class NlpClient(AbstractClient):
 
         该功能基于基于千亿级大规模互联网语料和LSTM、BERT等深度神经网络模型进行训练，并持续迭代更新，以保证效果不断提升。
 
-        :param request: 调用SentimentAnalysis所需参数的结构体。
+        :param request: Request instance for SentimentAnalysis.
         :type request: :class:`tencentcloud.nlp.v20190408.models.SentimentAnalysisRequest`
         :rtype: :class:`tencentcloud.nlp.v20190408.models.SentimentAnalysisResponse`
 
@@ -423,7 +423,7 @@ class NlpClient(AbstractClient):
     def SimilarWords(self, request):
         """相似词接口能够基于同义词库及词向量技术，检索出与输入词语在语义上最相似的若干个词语，可广泛用于检索系统、问答系统、文档归档等场景。
 
-        :param request: 调用SimilarWords所需参数的结构体。
+        :param request: Request instance for SimilarWords.
         :type request: :class:`tencentcloud.nlp.v20190408.models.SimilarWordsRequest`
         :rtype: :class:`tencentcloud.nlp.v20190408.models.SimilarWordsResponse`
 
@@ -461,7 +461,7 @@ class NlpClient(AbstractClient):
 
         3、恶意关键词：文本中所有涉嫌恶意的关键词。
 
-        :param request: 调用TextApproval所需参数的结构体。
+        :param request: Request instance for TextApproval.
         :type request: :class:`tencentcloud.nlp.v20190408.models.TextApprovalRequest`
         :rtype: :class:`tencentcloud.nlp.v20190408.models.TextApprovalResponse`
 
@@ -499,7 +499,7 @@ class NlpClient(AbstractClient):
 
         更多垂直领域的分类体系即将推出，敬请期待。
 
-        :param request: 调用TextClassification所需参数的结构体。
+        :param request: Request instance for TextClassification.
         :type request: :class:`tencentcloud.nlp.v20190408.models.TextClassificationRequest`
         :rtype: :class:`tencentcloud.nlp.v20190408.models.TextClassificationResponse`
 
@@ -529,7 +529,7 @@ class NlpClient(AbstractClient):
 
         此功能是基于千亿级大规模互联网语料和LSTM、BERT等深度神经网络模型进行训练，并持续迭代更新，以保证效果不断提升，是搜索引擎、语音识别、内容审核等功能更好运行的基础之一。
 
-        :param request: 调用TextCorrection所需参数的结构体。
+        :param request: Request instance for TextCorrection.
         :type request: :class:`tencentcloud.nlp.v20190408.models.TextCorrectionRequest`
         :rtype: :class:`tencentcloud.nlp.v20190408.models.TextCorrectionResponse`
 
@@ -565,7 +565,7 @@ class NlpClient(AbstractClient):
 
         https://ai.tencent.com/ailab/nlp/embedding.html
 
-        :param request: 调用WordEmbedding所需参数的结构体。
+        :param request: Request instance for WordEmbedding.
         :type request: :class:`tencentcloud.nlp.v20190408.models.WordEmbeddingRequest`
         :rtype: :class:`tencentcloud.nlp.v20190408.models.WordEmbeddingResponse`
 
@@ -593,7 +593,7 @@ class NlpClient(AbstractClient):
     def WordSimilarity(self, request):
         """词相似度接口能够基于词向量技术来计算两个输入词语的余弦相似度，相似度数值越大的两个词语在语义上越相似。
 
-        :param request: 调用WordSimilarity所需参数的结构体。
+        :param request: Request instance for WordSimilarity.
         :type request: :class:`tencentcloud.nlp.v20190408.models.WordSimilarityRequest`
         :rtype: :class:`tencentcloud.nlp.v20190408.models.WordSimilarityResponse`
 

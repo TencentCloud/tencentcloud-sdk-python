@@ -28,7 +28,7 @@ class TkeClient(AbstractClient):
     def AddExistedInstances(self, request):
         """添加已经存在的实例到集群
 
-        :param request: 调用AddExistedInstances所需参数的结构体。
+        :param request: Request instance for AddExistedInstances.
         :type request: :class:`tencentcloud.tke.v20180525.models.AddExistedInstancesRequest`
         :rtype: :class:`tencentcloud.tke.v20180525.models.AddExistedInstancesResponse`
 
@@ -56,7 +56,7 @@ class TkeClient(AbstractClient):
     def CreateCluster(self, request):
         """创建集群
 
-        :param request: 调用CreateCluster所需参数的结构体。
+        :param request: Request instance for CreateCluster.
         :type request: :class:`tencentcloud.tke.v20180525.models.CreateClusterRequest`
         :rtype: :class:`tencentcloud.tke.v20180525.models.CreateClusterResponse`
 
@@ -84,7 +84,7 @@ class TkeClient(AbstractClient):
     def CreateClusterAsGroup(self, request):
         """为已经存在的集群创建伸缩组
 
-        :param request: 调用CreateClusterAsGroup所需参数的结构体。
+        :param request: Request instance for CreateClusterAsGroup.
         :type request: :class:`tencentcloud.tke.v20180525.models.CreateClusterAsGroupRequest`
         :rtype: :class:`tencentcloud.tke.v20180525.models.CreateClusterAsGroupResponse`
 
@@ -112,7 +112,7 @@ class TkeClient(AbstractClient):
     def CreateClusterEndpoint(self, request):
         """创建集群访问端口(独立集群开启内网/外网访问，托管集群支持开启内网访问)
 
-        :param request: 调用CreateClusterEndpoint所需参数的结构体。
+        :param request: Request instance for CreateClusterEndpoint.
         :type request: :class:`tencentcloud.tke.v20180525.models.CreateClusterEndpointRequest`
         :rtype: :class:`tencentcloud.tke.v20180525.models.CreateClusterEndpointResponse`
 
@@ -140,7 +140,7 @@ class TkeClient(AbstractClient):
     def CreateClusterEndpointVip(self, request):
         """创建托管集群外网访问端口（老的方式，仅支持托管集群外网端口）
 
-        :param request: 调用CreateClusterEndpointVip所需参数的结构体。
+        :param request: Request instance for CreateClusterEndpointVip.
         :type request: :class:`tencentcloud.tke.v20180525.models.CreateClusterEndpointVipRequest`
         :rtype: :class:`tencentcloud.tke.v20180525.models.CreateClusterEndpointVipResponse`
 
@@ -168,7 +168,7 @@ class TkeClient(AbstractClient):
     def CreateClusterInstances(self, request):
         """扩展(新建)集群节点
 
-        :param request: 调用CreateClusterInstances所需参数的结构体。
+        :param request: Request instance for CreateClusterInstances.
         :type request: :class:`tencentcloud.tke.v20180525.models.CreateClusterInstancesRequest`
         :rtype: :class:`tencentcloud.tke.v20180525.models.CreateClusterInstancesResponse`
 
@@ -196,7 +196,7 @@ class TkeClient(AbstractClient):
     def CreateClusterRoute(self, request):
         """创建集群路由
 
-        :param request: 调用CreateClusterRoute所需参数的结构体。
+        :param request: Request instance for CreateClusterRoute.
         :type request: :class:`tencentcloud.tke.v20180525.models.CreateClusterRouteRequest`
         :rtype: :class:`tencentcloud.tke.v20180525.models.CreateClusterRouteResponse`
 
@@ -224,7 +224,7 @@ class TkeClient(AbstractClient):
     def CreateClusterRouteTable(self, request):
         """创建集群路由表
 
-        :param request: 调用CreateClusterRouteTable所需参数的结构体。
+        :param request: Request instance for CreateClusterRouteTable.
         :type request: :class:`tencentcloud.tke.v20180525.models.CreateClusterRouteTableRequest`
         :rtype: :class:`tencentcloud.tke.v20180525.models.CreateClusterRouteTableResponse`
 
@@ -252,7 +252,7 @@ class TkeClient(AbstractClient):
     def DeleteCluster(self, request):
         """删除集群(YUNAPI V3版本)
 
-        :param request: 调用DeleteCluster所需参数的结构体。
+        :param request: Request instance for DeleteCluster.
         :type request: :class:`tencentcloud.tke.v20180525.models.DeleteClusterRequest`
         :rtype: :class:`tencentcloud.tke.v20180525.models.DeleteClusterResponse`
 
@@ -280,7 +280,7 @@ class TkeClient(AbstractClient):
     def DeleteClusterAsGroups(self, request):
         """删除集群伸缩组
 
-        :param request: 调用DeleteClusterAsGroups所需参数的结构体。
+        :param request: Request instance for DeleteClusterAsGroups.
         :type request: :class:`tencentcloud.tke.v20180525.models.DeleteClusterAsGroupsRequest`
         :rtype: :class:`tencentcloud.tke.v20180525.models.DeleteClusterAsGroupsResponse`
 
@@ -308,7 +308,7 @@ class TkeClient(AbstractClient):
     def DeleteClusterEndpoint(self, request):
         """删除集群访问端口(独立集群开启内网/外网访问，托管集群支持开启内网访问)
 
-        :param request: 调用DeleteClusterEndpoint所需参数的结构体。
+        :param request: Request instance for DeleteClusterEndpoint.
         :type request: :class:`tencentcloud.tke.v20180525.models.DeleteClusterEndpointRequest`
         :rtype: :class:`tencentcloud.tke.v20180525.models.DeleteClusterEndpointResponse`
 
@@ -336,7 +336,7 @@ class TkeClient(AbstractClient):
     def DeleteClusterEndpointVip(self, request):
         """删除托管集群外网访问端口（老的方式，仅支持托管集群外网端口）
 
-        :param request: 调用DeleteClusterEndpointVip所需参数的结构体。
+        :param request: Request instance for DeleteClusterEndpointVip.
         :type request: :class:`tencentcloud.tke.v20180525.models.DeleteClusterEndpointVipRequest`
         :rtype: :class:`tencentcloud.tke.v20180525.models.DeleteClusterEndpointVipResponse`
 
@@ -364,7 +364,7 @@ class TkeClient(AbstractClient):
     def DeleteClusterInstances(self, request):
         """删除集群中的实例
 
-        :param request: 调用DeleteClusterInstances所需参数的结构体。
+        :param request: Request instance for DeleteClusterInstances.
         :type request: :class:`tencentcloud.tke.v20180525.models.DeleteClusterInstancesRequest`
         :rtype: :class:`tencentcloud.tke.v20180525.models.DeleteClusterInstancesResponse`
 
@@ -392,7 +392,7 @@ class TkeClient(AbstractClient):
     def DeleteClusterRoute(self, request):
         """删除集群路由
 
-        :param request: 调用DeleteClusterRoute所需参数的结构体。
+        :param request: Request instance for DeleteClusterRoute.
         :type request: :class:`tencentcloud.tke.v20180525.models.DeleteClusterRouteRequest`
         :rtype: :class:`tencentcloud.tke.v20180525.models.DeleteClusterRouteResponse`
 
@@ -420,7 +420,7 @@ class TkeClient(AbstractClient):
     def DeleteClusterRouteTable(self, request):
         """删除集群路由表
 
-        :param request: 调用DeleteClusterRouteTable所需参数的结构体。
+        :param request: Request instance for DeleteClusterRouteTable.
         :type request: :class:`tencentcloud.tke.v20180525.models.DeleteClusterRouteTableRequest`
         :rtype: :class:`tencentcloud.tke.v20180525.models.DeleteClusterRouteTableResponse`
 
@@ -448,7 +448,7 @@ class TkeClient(AbstractClient):
     def DescribeClusterEndpointStatus(self, request):
         """查询集群访问端口状态(独立集群开启内网/外网访问，托管集群支持开启内网访问)
 
-        :param request: 调用DescribeClusterEndpointStatus所需参数的结构体。
+        :param request: Request instance for DescribeClusterEndpointStatus.
         :type request: :class:`tencentcloud.tke.v20180525.models.DescribeClusterEndpointStatusRequest`
         :rtype: :class:`tencentcloud.tke.v20180525.models.DescribeClusterEndpointStatusResponse`
 
@@ -476,7 +476,7 @@ class TkeClient(AbstractClient):
     def DescribeClusterEndpointVipStatus(self, request):
         """查询集群开启端口流程状态(仅支持托管集群外网端口)
 
-        :param request: 调用DescribeClusterEndpointVipStatus所需参数的结构体。
+        :param request: Request instance for DescribeClusterEndpointVipStatus.
         :type request: :class:`tencentcloud.tke.v20180525.models.DescribeClusterEndpointVipStatusRequest`
         :rtype: :class:`tencentcloud.tke.v20180525.models.DescribeClusterEndpointVipStatusResponse`
 
@@ -504,7 +504,7 @@ class TkeClient(AbstractClient):
     def DescribeClusterInstances(self, request):
         """查询集群下节点实例信息
 
-        :param request: 调用DescribeClusterInstances所需参数的结构体。
+        :param request: Request instance for DescribeClusterInstances.
         :type request: :class:`tencentcloud.tke.v20180525.models.DescribeClusterInstancesRequest`
         :rtype: :class:`tencentcloud.tke.v20180525.models.DescribeClusterInstancesResponse`
 
@@ -532,7 +532,7 @@ class TkeClient(AbstractClient):
     def DescribeClusterRouteTables(self, request):
         """查询集群路由表
 
-        :param request: 调用DescribeClusterRouteTables所需参数的结构体。
+        :param request: Request instance for DescribeClusterRouteTables.
         :type request: :class:`tencentcloud.tke.v20180525.models.DescribeClusterRouteTablesRequest`
         :rtype: :class:`tencentcloud.tke.v20180525.models.DescribeClusterRouteTablesResponse`
 
@@ -560,7 +560,7 @@ class TkeClient(AbstractClient):
     def DescribeClusterRoutes(self, request):
         """查询集群路由
 
-        :param request: 调用DescribeClusterRoutes所需参数的结构体。
+        :param request: Request instance for DescribeClusterRoutes.
         :type request: :class:`tencentcloud.tke.v20180525.models.DescribeClusterRoutesRequest`
         :rtype: :class:`tencentcloud.tke.v20180525.models.DescribeClusterRoutesResponse`
 
@@ -588,7 +588,7 @@ class TkeClient(AbstractClient):
     def DescribeClusterSecurity(self, request):
         """集群的密钥信息
 
-        :param request: 调用DescribeClusterSecurity所需参数的结构体。
+        :param request: Request instance for DescribeClusterSecurity.
         :type request: :class:`tencentcloud.tke.v20180525.models.DescribeClusterSecurityRequest`
         :rtype: :class:`tencentcloud.tke.v20180525.models.DescribeClusterSecurityResponse`
 
@@ -616,7 +616,7 @@ class TkeClient(AbstractClient):
     def DescribeClusters(self, request):
         """查询集群列表
 
-        :param request: 调用DescribeClusters所需参数的结构体。
+        :param request: Request instance for DescribeClusters.
         :type request: :class:`tencentcloud.tke.v20180525.models.DescribeClustersRequest`
         :rtype: :class:`tencentcloud.tke.v20180525.models.DescribeClustersResponse`
 
@@ -644,7 +644,7 @@ class TkeClient(AbstractClient):
     def DescribeExistedInstances(self, request):
         """查询已经存在的节点，判断是否可以加入集群
 
-        :param request: 调用DescribeExistedInstances所需参数的结构体。
+        :param request: Request instance for DescribeExistedInstances.
         :type request: :class:`tencentcloud.tke.v20180525.models.DescribeExistedInstancesRequest`
         :rtype: :class:`tencentcloud.tke.v20180525.models.DescribeExistedInstancesResponse`
 
@@ -672,7 +672,7 @@ class TkeClient(AbstractClient):
     def DescribeRouteTableConflicts(self, request):
         """查询路由表冲突列表
 
-        :param request: 调用DescribeRouteTableConflicts所需参数的结构体。
+        :param request: Request instance for DescribeRouteTableConflicts.
         :type request: :class:`tencentcloud.tke.v20180525.models.DescribeRouteTableConflictsRequest`
         :rtype: :class:`tencentcloud.tke.v20180525.models.DescribeRouteTableConflictsResponse`
 
@@ -700,7 +700,7 @@ class TkeClient(AbstractClient):
     def ModifyClusterEndpointSP(self, request):
         """修改托管集群外网端口的安全策略（老的方式，仅支持托管集群外网端口）
 
-        :param request: 调用ModifyClusterEndpointSP所需参数的结构体。
+        :param request: Request instance for ModifyClusterEndpointSP.
         :type request: :class:`tencentcloud.tke.v20180525.models.ModifyClusterEndpointSPRequest`
         :rtype: :class:`tencentcloud.tke.v20180525.models.ModifyClusterEndpointSPResponse`
 

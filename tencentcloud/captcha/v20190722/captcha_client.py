@@ -28,7 +28,7 @@ class CaptchaClient(AbstractClient):
     def DescribeCaptchaResult(self, request):
         """核查验证码票据结果
 
-        :param request: 调用DescribeCaptchaResult所需参数的结构体。
+        :param request: Request instance for DescribeCaptchaResult.
         :type request: :class:`tencentcloud.captcha.v20190722.models.DescribeCaptchaResultRequest`
         :rtype: :class:`tencentcloud.captcha.v20190722.models.DescribeCaptchaResultResponse`
 

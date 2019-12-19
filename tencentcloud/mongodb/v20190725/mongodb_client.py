@@ -28,7 +28,7 @@ class MongodbClient(AbstractClient):
     def AssignProject(self, request):
         """本接口(AssignProject)用于指定云数据库实例的所属项目。
 
-        :param request: 调用AssignProject所需参数的结构体。
+        :param request: Request instance for AssignProject.
         :type request: :class:`tencentcloud.mongodb.v20190725.models.AssignProjectRequest`
         :rtype: :class:`tencentcloud.mongodb.v20190725.models.AssignProjectResponse`
 
@@ -56,7 +56,7 @@ class MongodbClient(AbstractClient):
     def CreateDBInstance(self, request):
         """本接口(CreateDBInstance)用于创建包年包月的MongoDB云数据库实例。接口支持的售卖规格，可从查询云数据库的售卖规格（DescribeSpecInfo）获取。
 
-        :param request: 调用CreateDBInstance所需参数的结构体。
+        :param request: Request instance for CreateDBInstance.
         :type request: :class:`tencentcloud.mongodb.v20190725.models.CreateDBInstanceRequest`
         :rtype: :class:`tencentcloud.mongodb.v20190725.models.CreateDBInstanceResponse`
 
@@ -84,7 +84,7 @@ class MongodbClient(AbstractClient):
     def CreateDBInstanceHour(self, request):
         """本接口(CreateDBInstanceHour)用于创建按量计费的MongoDB云数据库实例。
 
-        :param request: 调用CreateDBInstanceHour所需参数的结构体。
+        :param request: Request instance for CreateDBInstanceHour.
         :type request: :class:`tencentcloud.mongodb.v20190725.models.CreateDBInstanceHourRequest`
         :rtype: :class:`tencentcloud.mongodb.v20190725.models.CreateDBInstanceHourResponse`
 
@@ -112,7 +112,7 @@ class MongodbClient(AbstractClient):
     def DescribeBackupAccess(self, request):
         """本接口（DescribeBackupAccess）用于获取备份文件的下载授权，具体的备份文件信息可通过查询实例备份列表（DescribeDBBackups）接口获取
 
-        :param request: 调用DescribeBackupAccess所需参数的结构体。
+        :param request: Request instance for DescribeBackupAccess.
         :type request: :class:`tencentcloud.mongodb.v20190725.models.DescribeBackupAccessRequest`
         :rtype: :class:`tencentcloud.mongodb.v20190725.models.DescribeBackupAccessResponse`
 
@@ -140,7 +140,7 @@ class MongodbClient(AbstractClient):
     def DescribeClientConnections(self, request):
         """本接口(DescribeClientConnections)用于查询实例客户端连接信息，包括连接IP和连接数量。目前只支持3.2版本的MongoDB实例。
 
-        :param request: 调用DescribeClientConnections所需参数的结构体。
+        :param request: Request instance for DescribeClientConnections.
         :type request: :class:`tencentcloud.mongodb.v20190725.models.DescribeClientConnectionsRequest`
         :rtype: :class:`tencentcloud.mongodb.v20190725.models.DescribeClientConnectionsResponse`
 
@@ -168,7 +168,7 @@ class MongodbClient(AbstractClient):
     def DescribeDBBackups(self, request):
         """本接口（DescribeDBBackups）用于查询实例备份列表，目前只支持7天内的备份查询。
 
-        :param request: 调用DescribeDBBackups所需参数的结构体。
+        :param request: Request instance for DescribeDBBackups.
         :type request: :class:`tencentcloud.mongodb.v20190725.models.DescribeDBBackupsRequest`
         :rtype: :class:`tencentcloud.mongodb.v20190725.models.DescribeDBBackupsResponse`
 
@@ -196,7 +196,7 @@ class MongodbClient(AbstractClient):
     def DescribeDBInstances(self, request):
         """本接口(DescribeDBInstances)用于查询云数据库实例列表，支持通过项目ID、实例ID、实例状态等过滤条件来筛选实例。支持查询主实例、灾备实例和只读实例信息列表。
 
-        :param request: 调用DescribeDBInstances所需参数的结构体。
+        :param request: Request instance for DescribeDBInstances.
         :type request: :class:`tencentcloud.mongodb.v20190725.models.DescribeDBInstancesRequest`
         :rtype: :class:`tencentcloud.mongodb.v20190725.models.DescribeDBInstancesResponse`
 
@@ -224,7 +224,7 @@ class MongodbClient(AbstractClient):
     def DescribeSpecInfo(self, request):
         """本接口(DescribeSpecInfo)用于查询实例的售卖规格。
 
-        :param request: 调用DescribeSpecInfo所需参数的结构体。
+        :param request: Request instance for DescribeSpecInfo.
         :type request: :class:`tencentcloud.mongodb.v20190725.models.DescribeSpecInfoRequest`
         :rtype: :class:`tencentcloud.mongodb.v20190725.models.DescribeSpecInfoResponse`
 
@@ -252,7 +252,7 @@ class MongodbClient(AbstractClient):
     def IsolateDBInstance(self, request):
         """本接口(IsolateDBInstance)用于隔离MongoDB云数据库按量计费实例。隔离后实例保留在回收站中，不能再写入数据。隔离一定时间后，实例会彻底删除，回收站保存时间请参考按量计费的服务条款。在隔离中的按量计费实例无法恢复，请谨慎操作。
 
-        :param request: 调用IsolateDBInstance所需参数的结构体。
+        :param request: Request instance for IsolateDBInstance.
         :type request: :class:`tencentcloud.mongodb.v20190725.models.IsolateDBInstanceRequest`
         :rtype: :class:`tencentcloud.mongodb.v20190725.models.IsolateDBInstanceResponse`
 
@@ -280,7 +280,7 @@ class MongodbClient(AbstractClient):
     def ModifyDBInstanceSpec(self, request):
         """本接口(ModifyDBInstanceSpec)用于调整MongoDB云数据库实例配置。接口支持的售卖规格，可从查询云数据库的售卖规格（DescribeSpecInfo）获取。
 
-        :param request: 调用ModifyDBInstanceSpec所需参数的结构体。
+        :param request: Request instance for ModifyDBInstanceSpec.
         :type request: :class:`tencentcloud.mongodb.v20190725.models.ModifyDBInstanceSpecRequest`
         :rtype: :class:`tencentcloud.mongodb.v20190725.models.ModifyDBInstanceSpecResponse`
 
@@ -308,7 +308,7 @@ class MongodbClient(AbstractClient):
     def OfflineIsolatedDBInstance(self, request):
         """本接口(OfflineIsolatedInstances)用于立即下线隔离状态的云数据库实例。进行操作的实例状态必须为隔离状态。
 
-        :param request: 调用OfflineIsolatedDBInstance所需参数的结构体。
+        :param request: Request instance for OfflineIsolatedDBInstance.
         :type request: :class:`tencentcloud.mongodb.v20190725.models.OfflineIsolatedDBInstanceRequest`
         :rtype: :class:`tencentcloud.mongodb.v20190725.models.OfflineIsolatedDBInstanceResponse`
 
@@ -336,7 +336,7 @@ class MongodbClient(AbstractClient):
     def RenameInstance(self, request):
         """本接口(RenameInstance)用于修改云数据库实例的名称。
 
-        :param request: 调用RenameInstance所需参数的结构体。
+        :param request: Request instance for RenameInstance.
         :type request: :class:`tencentcloud.mongodb.v20190725.models.RenameInstanceRequest`
         :rtype: :class:`tencentcloud.mongodb.v20190725.models.RenameInstanceResponse`
 

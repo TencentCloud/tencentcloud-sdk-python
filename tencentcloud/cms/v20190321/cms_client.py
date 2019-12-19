@@ -58,7 +58,7 @@ class CmsClient(AbstractClient):
         EndTime | Array of String | 恶意结束时间（Homology、CustomizedDetect无此字段）
         SeedUrl | String | 命中的种子URL
 
-        :param request: 调用AudioModeration所需参数的结构体。
+        :param request: Request instance for AudioModeration.
         :type request: :class:`tencentcloud.cms.v20190321.models.AudioModerationRequest`
         :rtype: :class:`tencentcloud.cms.v20190321.models.AudioModerationResponse`
 
@@ -86,7 +86,7 @@ class CmsClient(AbstractClient):
     def CreateFileSample(self, request):
         """通过该接口可以将文件新增到样本库
 
-        :param request: 调用CreateFileSample所需参数的结构体。
+        :param request: Request instance for CreateFileSample.
         :type request: :class:`tencentcloud.cms.v20190321.models.CreateFileSampleRequest`
         :rtype: :class:`tencentcloud.cms.v20190321.models.CreateFileSampleResponse`
 
@@ -114,7 +114,7 @@ class CmsClient(AbstractClient):
     def CreateTextSample(self, request):
         """新增文本类型样本库
 
-        :param request: 调用CreateTextSample所需参数的结构体。
+        :param request: Request instance for CreateTextSample.
         :type request: :class:`tencentcloud.cms.v20190321.models.CreateTextSampleRequest`
         :rtype: :class:`tencentcloud.cms.v20190321.models.CreateTextSampleResponse`
 
@@ -142,7 +142,7 @@ class CmsClient(AbstractClient):
     def DeleteFileSample(self, request):
         """删除文件样本库，支持批量删除，一次提交不超过20个
 
-        :param request: 调用DeleteFileSample所需参数的结构体。
+        :param request: Request instance for DeleteFileSample.
         :type request: :class:`tencentcloud.cms.v20190321.models.DeleteFileSampleRequest`
         :rtype: :class:`tencentcloud.cms.v20190321.models.DeleteFileSampleResponse`
 
@@ -170,7 +170,7 @@ class CmsClient(AbstractClient):
     def DeleteTextSample(self, request):
         """删除文字样本库，暂时只支持单个删除
 
-        :param request: 调用DeleteTextSample所需参数的结构体。
+        :param request: Request instance for DeleteTextSample.
         :type request: :class:`tencentcloud.cms.v20190321.models.DeleteTextSampleRequest`
         :rtype: :class:`tencentcloud.cms.v20190321.models.DeleteTextSampleResponse`
 
@@ -198,7 +198,7 @@ class CmsClient(AbstractClient):
     def DescribeFileSample(self, request):
         """查询文件样本库，支持批量查询
 
-        :param request: 调用DescribeFileSample所需参数的结构体。
+        :param request: Request instance for DescribeFileSample.
         :type request: :class:`tencentcloud.cms.v20190321.models.DescribeFileSampleRequest`
         :rtype: :class:`tencentcloud.cms.v20190321.models.DescribeFileSampleResponse`
 
@@ -226,7 +226,7 @@ class CmsClient(AbstractClient):
     def DescribeModerationOverview(self, request):
         """根据日期，渠道和服务类型查询识别结果概览数据
 
-        :param request: 调用DescribeModerationOverview所需参数的结构体。
+        :param request: Request instance for DescribeModerationOverview.
         :type request: :class:`tencentcloud.cms.v20190321.models.DescribeModerationOverviewRequest`
         :rtype: :class:`tencentcloud.cms.v20190321.models.DescribeModerationOverviewResponse`
 
@@ -254,7 +254,7 @@ class CmsClient(AbstractClient):
     def DescribeTextSample(self, request):
         """支持批量查询文字样本库
 
-        :param request: 调用DescribeTextSample所需参数的结构体。
+        :param request: Request instance for DescribeTextSample.
         :type request: :class:`tencentcloud.cms.v20190321.models.DescribeTextSampleRequest`
         :rtype: :class:`tencentcloud.cms.v20190321.models.DescribeTextSampleResponse`
 
@@ -282,7 +282,7 @@ class CmsClient(AbstractClient):
     def ImageModeration(self, request):
         """图片内容检测服务（Image Moderation, IM）能自动扫描图片，识别涉黄、涉恐、涉政、涉毒等有害内容，同时支持用户配置图片黑名单，打击自定义的违规图片。
 
-        :param request: 调用ImageModeration所需参数的结构体。
+        :param request: Request instance for ImageModeration.
         :type request: :class:`tencentcloud.cms.v20190321.models.ImageModerationRequest`
         :rtype: :class:`tencentcloud.cms.v20190321.models.ImageModerationResponse`
 
@@ -310,7 +310,7 @@ class CmsClient(AbstractClient):
     def TextModeration(self, request):
         """文本内容检测（Text Moderation）服务使用了深度学习技术，识别涉黄、涉政、涉恐等有害内容，同时支持用户配置词库，打击自定义的违规文本。
 
-        :param request: 调用TextModeration所需参数的结构体。
+        :param request: Request instance for TextModeration.
         :type request: :class:`tencentcloud.cms.v20190321.models.TextModerationRequest`
         :rtype: :class:`tencentcloud.cms.v20190321.models.TextModerationResponse`
 
@@ -364,7 +364,7 @@ class CmsClient(AbstractClient):
         Keywords | Array of String | 关键词明细
         SeedUrl | String | 命中的种子URL
 
-        :param request: 调用VideoModeration所需参数的结构体。
+        :param request: Request instance for VideoModeration.
         :type request: :class:`tencentcloud.cms.v20190321.models.VideoModerationRequest`
         :rtype: :class:`tencentcloud.cms.v20190321.models.VideoModerationResponse`
 

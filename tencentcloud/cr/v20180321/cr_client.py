@@ -28,7 +28,7 @@ class CrClient(AbstractClient):
     def ApplyBlackList(self, request):
         """提交黑名单后，黑名单中有效期内的号码将停止拨打，适用于到期/逾期提醒、回访场景。
 
-        :param request: 调用ApplyBlackList所需参数的结构体。
+        :param request: Request instance for ApplyBlackList.
         :type request: :class:`tencentcloud.cr.v20180321.models.ApplyBlackListRequest`
         :rtype: :class:`tencentcloud.cr.v20180321.models.ApplyBlackListResponse`
 
@@ -56,7 +56,7 @@ class CrClient(AbstractClient):
     def ApplyCreditAudit(self, request):
         """提交信审外呼申请，返回当次请求日期。
 
-        :param request: 调用ApplyCreditAudit所需参数的结构体。
+        :param request: Request instance for ApplyCreditAudit.
         :type request: :class:`tencentcloud.cr.v20180321.models.ApplyCreditAuditRequest`
         :rtype: :class:`tencentcloud.cr.v20180321.models.ApplyCreditAuditResponse`
 
@@ -84,7 +84,7 @@ class CrClient(AbstractClient):
     def DescribeCreditResult(self, request):
         """根据信审任务ID和请求日期，获取相关信审结果。
 
-        :param request: 调用DescribeCreditResult所需参数的结构体。
+        :param request: Request instance for DescribeCreditResult.
         :type request: :class:`tencentcloud.cr.v20180321.models.DescribeCreditResultRequest`
         :rtype: :class:`tencentcloud.cr.v20180321.models.DescribeCreditResultResponse`
 
@@ -112,7 +112,7 @@ class CrClient(AbstractClient):
     def DescribeRecords(self, request):
         """用于获取指定案件的录音地址，次日早上8:00后可查询前日录音。
 
-        :param request: 调用DescribeRecords所需参数的结构体。
+        :param request: Request instance for DescribeRecords.
         :type request: :class:`tencentcloud.cr.v20180321.models.DescribeRecordsRequest`
         :rtype: :class:`tencentcloud.cr.v20180321.models.DescribeRecordsResponse`
 
@@ -140,7 +140,7 @@ class CrClient(AbstractClient):
     def DescribeTaskStatus(self, request):
         """根据上传文件接口的输出参数DataResId，获取相关上传结果。
 
-        :param request: 调用DescribeTaskStatus所需参数的结构体。
+        :param request: Request instance for DescribeTaskStatus.
         :type request: :class:`tencentcloud.cr.v20180321.models.DescribeTaskStatusRequest`
         :rtype: :class:`tencentcloud.cr.v20180321.models.DescribeTaskStatusResponse`
 
@@ -168,7 +168,7 @@ class CrClient(AbstractClient):
     def DownloadDialogueText(self, request):
         """用于获取指定案件的对话文本内容，次日早上8:00后可查询前日对话文本内容。
 
-        :param request: 调用DownloadDialogueText所需参数的结构体。
+        :param request: Request instance for DownloadDialogueText.
         :type request: :class:`tencentcloud.cr.v20180321.models.DownloadDialogueTextRequest`
         :rtype: :class:`tencentcloud.cr.v20180321.models.DownloadDialogueTextResponse`
 
@@ -197,7 +197,7 @@ class CrClient(AbstractClient):
         """<p>用于获取录音下载链接清单，次日早上8:00后可查询前日录音清单。</p>
         <p>注意：录音清单中的录音下载链接仅次日20:00之前有效，请及时下载。</p>
 
-        :param request: 调用DownloadRecordList所需参数的结构体。
+        :param request: Request instance for DownloadRecordList.
         :type request: :class:`tencentcloud.cr.v20180321.models.DownloadRecordListRequest`
         :rtype: :class:`tencentcloud.cr.v20180321.models.DownloadRecordListResponse`
 
@@ -225,7 +225,7 @@ class CrClient(AbstractClient):
     def DownloadReport(self, request):
         """用于下载当日催收和回访结果报表。当日23:00后，可获取当日催收结果，次日00:30后，可获取昨日回访结果。
 
-        :param request: 调用DownloadReport所需参数的结构体。
+        :param request: Request instance for DownloadReport.
         :type request: :class:`tencentcloud.cr.v20180321.models.DownloadReportRequest`
         :rtype: :class:`tencentcloud.cr.v20180321.models.DownloadReportResponse`
 
@@ -260,7 +260,7 @@ class CrClient(AbstractClient):
         </ol>
         接口返回数据任务ID，支持xlsx、xls、csv、zip格式，文档大小不超过50MB。
 
-        :param request: 调用UploadDataFile所需参数的结构体。
+        :param request: Request instance for UploadDataFile.
         :type request: :class:`tencentcloud.cr.v20180321.models.UploadDataFileRequest`
         :rtype: :class:`tencentcloud.cr.v20180321.models.UploadDataFileResponse`
 
@@ -289,7 +289,7 @@ class CrClient(AbstractClient):
     def UploadFile(self, request):
         """客户通过调用该接口上传需催收文档，格式需为excel格式。接口返回任务ID。
 
-        :param request: 调用UploadFile所需参数的结构体。
+        :param request: Request instance for UploadFile.
         :type request: :class:`tencentcloud.cr.v20180321.models.UploadFileRequest`
         :rtype: :class:`tencentcloud.cr.v20180321.models.UploadFileResponse`
 

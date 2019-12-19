@@ -29,7 +29,7 @@ class TmtClient(AbstractClient):
         """提供中文到英文、英文到中文两种语言的图片翻译服务，可自动识别图片中的文本内容并翻译成目标语言，识别后的文本按行翻译，后续会提供可按段落翻译的版本。<br />
         提示：对于一般开发者，我们建议优先使用SDK接入简化开发。SDK使用介绍请直接查看 5. 开发者资源 部分。
 
-        :param request: 调用ImageTranslate所需参数的结构体。
+        :param request: Request instance for ImageTranslate.
         :type request: :class:`tencentcloud.tmt.v20180321.models.ImageTranslateRequest`
         :rtype: :class:`tencentcloud.tmt.v20180321.models.ImageTranslateResponse`
 
@@ -58,7 +58,7 @@ class TmtClient(AbstractClient):
         """可自动识别文本内容的语言种类，轻量高效，无需额外实现判断方式，使面向客户的服务体验更佳。 <br />
         提示：对于一般开发者，我们建议优先使用SDK接入简化开发。SDK使用介绍请直接查看 5. 开发者资源 部分。
 
-        :param request: 调用LanguageDetect所需参数的结构体。
+        :param request: Request instance for LanguageDetect.
         :type request: :class:`tencentcloud.tmt.v20180321.models.LanguageDetectRequest`
         :rtype: :class:`tencentcloud.tmt.v20180321.models.LanguageDetectResponse`
 
@@ -88,7 +88,7 @@ class TmtClient(AbstractClient):
         待识别和翻译的音频文件可以是 pcm、mp3、amr和speex 格式，音频内语音清晰，采用流式传输和翻译的方式。<br />
         提示：对于一般开发者，我们建议优先使用SDK接入简化开发。SDK使用介绍请直接查看 5. 开发者资源 部分。
 
-        :param request: 调用SpeechTranslate所需参数的结构体。
+        :param request: Request instance for SpeechTranslate.
         :type request: :class:`tencentcloud.tmt.v20180321.models.SpeechTranslateRequest`
         :rtype: :class:`tencentcloud.tmt.v20180321.models.SpeechTranslateResponse`
 
@@ -117,7 +117,7 @@ class TmtClient(AbstractClient):
         """提供中文到英文、英文到中文的等多种语言的文本内容翻译服务， 经过大数据语料库、多种解码算法、翻译引擎深度优化，在新闻文章、生活口语等不同语言场景中都有深厚积累，翻译结果专业评价处于行业领先水平。<br />
         提示：对于一般开发者，我们建议优先使用SDK接入简化开发。SDK使用介绍请直接查看 5. 开发者资源 部分。
 
-        :param request: 调用TextTranslate所需参数的结构体。
+        :param request: Request instance for TextTranslate.
         :type request: :class:`tencentcloud.tmt.v20180321.models.TextTranslateRequest`
         :rtype: :class:`tencentcloud.tmt.v20180321.models.TextTranslateResponse`
 

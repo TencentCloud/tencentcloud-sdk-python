@@ -28,7 +28,7 @@ class FaceidClient(AbstractClient):
     def BankCard2EVerification(self, request):
         """本接口用于校验姓名和银行卡号的真实性和一致性。
 
-        :param request: 调用BankCard2EVerification所需参数的结构体。
+        :param request: Request instance for BankCard2EVerification.
         :type request: :class:`tencentcloud.faceid.v20180301.models.BankCard2EVerificationRequest`
         :rtype: :class:`tencentcloud.faceid.v20180301.models.BankCard2EVerificationResponse`
 
@@ -56,7 +56,7 @@ class FaceidClient(AbstractClient):
     def BankCard4EVerification(self, request):
         """本接口用于输入银行卡号、姓名、开户证件号、开户手机号，校验信息的真实性和一致性。
 
-        :param request: 调用BankCard4EVerification所需参数的结构体。
+        :param request: Request instance for BankCard4EVerification.
         :type request: :class:`tencentcloud.faceid.v20180301.models.BankCard4EVerificationRequest`
         :rtype: :class:`tencentcloud.faceid.v20180301.models.BankCard4EVerificationResponse`
 
@@ -84,7 +84,7 @@ class FaceidClient(AbstractClient):
     def BankCardVerification(self, request):
         """本接口用于银行卡号、姓名、开户证件号信息的真实性和一致性。
 
-        :param request: 调用BankCardVerification所需参数的结构体。
+        :param request: Request instance for BankCardVerification.
         :type request: :class:`tencentcloud.faceid.v20180301.models.BankCardVerificationRequest`
         :rtype: :class:`tencentcloud.faceid.v20180301.models.BankCardVerificationResponse`
 
@@ -112,7 +112,7 @@ class FaceidClient(AbstractClient):
     def DetectAuth(self, request):
         """每次调用人脸核身SaaS化服务前，需先调用本接口获取BizToken，用来串联核身流程，在验证完成后，用于获取验证结果信息。
 
-        :param request: 调用DetectAuth所需参数的结构体。
+        :param request: Request instance for DetectAuth.
         :type request: :class:`tencentcloud.faceid.v20180301.models.DetectAuthRequest`
         :rtype: :class:`tencentcloud.faceid.v20180301.models.DetectAuthResponse`
 
@@ -140,7 +140,7 @@ class FaceidClient(AbstractClient):
     def GetActionSequence(self, request):
         """使用动作活体检测模式前，需调用本接口获取动作顺序。
 
-        :param request: 调用GetActionSequence所需参数的结构体。
+        :param request: Request instance for GetActionSequence.
         :type request: :class:`tencentcloud.faceid.v20180301.models.GetActionSequenceRequest`
         :rtype: :class:`tencentcloud.faceid.v20180301.models.GetActionSequenceResponse`
 
@@ -168,7 +168,7 @@ class FaceidClient(AbstractClient):
     def GetDetectInfo(self, request):
         """完成验证后，用BizToken调用本接口获取结果信息，BizToken生成后三天内（3\*24\*3,600秒）可多次拉取。
 
-        :param request: 调用GetDetectInfo所需参数的结构体。
+        :param request: Request instance for GetDetectInfo.
         :type request: :class:`tencentcloud.faceid.v20180301.models.GetDetectInfoRequest`
         :rtype: :class:`tencentcloud.faceid.v20180301.models.GetDetectInfoResponse`
 
@@ -196,7 +196,7 @@ class FaceidClient(AbstractClient):
     def GetLiveCode(self, request):
         """使用数字活体检测模式前，需调用本接口获取数字验证码。
 
-        :param request: 调用GetLiveCode所需参数的结构体。
+        :param request: Request instance for GetLiveCode.
         :type request: :class:`tencentcloud.faceid.v20180301.models.GetLiveCodeRequest`
         :rtype: :class:`tencentcloud.faceid.v20180301.models.GetLiveCodeResponse`
 
@@ -224,7 +224,7 @@ class FaceidClient(AbstractClient):
     def IdCardOCRVerification(self, request):
         """本接口用于校验姓名和身份证号的真实性和一致性，您可以通过输入姓名和身份证号或传入身份证人像面照片提供所需验证信息。
 
-        :param request: 调用IdCardOCRVerification所需参数的结构体。
+        :param request: Request instance for IdCardOCRVerification.
         :type request: :class:`tencentcloud.faceid.v20180301.models.IdCardOCRVerificationRequest`
         :rtype: :class:`tencentcloud.faceid.v20180301.models.IdCardOCRVerificationResponse`
 
@@ -252,7 +252,7 @@ class FaceidClient(AbstractClient):
     def IdCardVerification(self, request):
         """传入姓名和身份证号，校验两者的真实性和一致性。
 
-        :param request: 调用IdCardVerification所需参数的结构体。
+        :param request: Request instance for IdCardVerification.
         :type request: :class:`tencentcloud.faceid.v20180301.models.IdCardVerificationRequest`
         :rtype: :class:`tencentcloud.faceid.v20180301.models.IdCardVerificationResponse`
 
@@ -280,7 +280,7 @@ class FaceidClient(AbstractClient):
     def ImageRecognition(self, request):
         """传入照片和身份信息，判断该照片与公安权威库的证件照是否属于同一个人。
 
-        :param request: 调用ImageRecognition所需参数的结构体。
+        :param request: Request instance for ImageRecognition.
         :type request: :class:`tencentcloud.faceid.v20180301.models.ImageRecognitionRequest`
         :rtype: :class:`tencentcloud.faceid.v20180301.models.ImageRecognitionResponse`
 
@@ -308,7 +308,7 @@ class FaceidClient(AbstractClient):
     def Liveness(self, request):
         """活体检测
 
-        :param request: 调用Liveness所需参数的结构体。
+        :param request: Request instance for Liveness.
         :type request: :class:`tencentcloud.faceid.v20180301.models.LivenessRequest`
         :rtype: :class:`tencentcloud.faceid.v20180301.models.LivenessResponse`
 
@@ -336,7 +336,7 @@ class FaceidClient(AbstractClient):
     def LivenessCompare(self, request):
         """传入视频和照片，先判断视频中是否为真人，判断为真人后，再判断该视频中的人与上传照片是否属于同一个人。
 
-        :param request: 调用LivenessCompare所需参数的结构体。
+        :param request: Request instance for LivenessCompare.
         :type request: :class:`tencentcloud.faceid.v20180301.models.LivenessCompareRequest`
         :rtype: :class:`tencentcloud.faceid.v20180301.models.LivenessCompareResponse`
 
@@ -364,7 +364,7 @@ class FaceidClient(AbstractClient):
     def LivenessRecognition(self, request):
         """传入视频和身份信息，先判断视频中是否为真人，判断为真人后，再判断该视频中的人与公安权威库的证件照是否属于同一个人。
 
-        :param request: 调用LivenessRecognition所需参数的结构体。
+        :param request: Request instance for LivenessRecognition.
         :type request: :class:`tencentcloud.faceid.v20180301.models.LivenessRecognitionRequest`
         :rtype: :class:`tencentcloud.faceid.v20180301.models.LivenessRecognitionResponse`
 
@@ -392,7 +392,7 @@ class FaceidClient(AbstractClient):
     def MinorsVerification(self, request):
         """传入手机号或者姓名和身份证号，判断该信息是否已实名认证且年满18周岁。
 
-        :param request: 调用MinorsVerification所需参数的结构体。
+        :param request: Request instance for MinorsVerification.
         :type request: :class:`tencentcloud.faceid.v20180301.models.MinorsVerificationRequest`
         :rtype: :class:`tencentcloud.faceid.v20180301.models.MinorsVerificationResponse`
 
@@ -420,7 +420,7 @@ class FaceidClient(AbstractClient):
     def PhoneVerification(self, request):
         """本接口用于校验手机号、姓名和身份证号的真实性和一致性。
 
-        :param request: 调用PhoneVerification所需参数的结构体。
+        :param request: Request instance for PhoneVerification.
         :type request: :class:`tencentcloud.faceid.v20180301.models.PhoneVerificationRequest`
         :rtype: :class:`tencentcloud.faceid.v20180301.models.PhoneVerificationResponse`
 
