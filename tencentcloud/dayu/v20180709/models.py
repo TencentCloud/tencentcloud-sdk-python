@@ -48,6 +48,23 @@ outpkg表示出包速率；）
         self.Count = params.get("Count")
 
 
+class CCAlarmThreshold(AbstractModel):
+    """CC告警阈值
+
+    """
+
+    def __init__(self):
+        """
+        :param AlarmThreshold: CC告警阈值
+        :type AlarmThreshold: int
+        """
+        self.AlarmThreshold = None
+
+
+    def _deserialize(self, params):
+        self.AlarmThreshold = params.get("AlarmThreshold")
+
+
 class CCEventRecord(AbstractModel):
     """CC攻击事件记录
 
@@ -122,13 +139,13 @@ class CCPolicy(AbstractModel):
         """
         :param Name: 策略名称
         :type Name: str
-        :param Smode: 匹配模式
+        :param Smode: 匹配模式，取值[matching(匹配模式), speedlimit(限速模式)]
         :type Smode: str
         :param SetId: 策略id
         :type SetId: str
         :param Frequency: 每分钟限制的次数
         :type Frequency: int
-        :param ExeMode: 执行策略模式，拦截或者验证码
+        :param ExeMode: 执行策略模式，拦截或者验证码，取值[alg（验证码）, drop（拦截）]
         :type ExeMode: str
         :param Switch: 生效开关
         :type Switch: int
@@ -140,9 +157,9 @@ class CCPolicy(AbstractModel):
         :type IpList: list of str
         :param Protocol: cc防护类型，取值[http，https]
         :type Protocol: str
-        :param RuleId: 可选字段，表示https的CC防护域名对应的转发规则ID;
+        :param RuleId: 可选字段，表示HTTPS的CC防护域名对应的转发规则ID;
         :type RuleId: str
-        :param Domain: https的CC防护域名
+        :param Domain: HTTPS的CC防护域名
         :type Domain: str
         """
         self.Name = None
@@ -1037,6 +1054,60 @@ class CreateUnblockIpResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DDoSAlarmThreshold(AbstractModel):
+    """DDoS告警阈值
+
+    """
+
+    def __init__(self):
+        """
+        :param AlarmType: 告警阈值类型，1-入流量，2-清洗流量
+        :type AlarmType: int
+        :param AlarmThreshold: 告警阈值，大于0（目前排定的值）
+        :type AlarmThreshold: int
+        """
+        self.AlarmType = None
+        self.AlarmThreshold = None
+
+
+    def _deserialize(self, params):
+        self.AlarmType = params.get("AlarmType")
+        self.AlarmThreshold = params.get("AlarmThreshold")
+
+
+class DDoSAttackSourceRecord(AbstractModel):
+    """攻击源信息
+
+    """
+
+    def __init__(self):
+        """
+        :param SrcIp: 攻击源ip
+        :type SrcIp: str
+        :param Province: 省份（国内有效，不包含港澳台）
+        :type Province: str
+        :param Nation: 国家
+        :type Nation: str
+        :param PacketSum: 累计攻击包量
+        :type PacketSum: int
+        :param PacketLen: 累计攻击流量
+        :type PacketLen: int
+        """
+        self.SrcIp = None
+        self.Province = None
+        self.Nation = None
+        self.PacketSum = None
+        self.PacketLen = None
+
+
+    def _deserialize(self, params):
+        self.SrcIp = params.get("SrcIp")
+        self.Province = params.get("Province")
+        self.Nation = params.get("Nation")
+        self.PacketSum = params.get("PacketSum")
+        self.PacketLen = params.get("PacketLen")
+
+
 class DDoSEventRecord(AbstractModel):
     """DDoS攻击事件记录
 
@@ -1849,6 +1920,50 @@ class DescribeBasicDeviceThresholdResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeCCAlarmThresholdRequest(AbstractModel):
+    """DescribeCCAlarmThreshold请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Business: 大禹子产品代号（shield表示棋牌；bgpip表示高防IP；bgp表示高防包；bgp-multip表示多ip高防包；net表示高防IP专业版）
+        :type Business: str
+        :param RsId: 资源ID,字符串类型
+        :type RsId: str
+        """
+        self.Business = None
+        self.RsId = None
+
+
+    def _deserialize(self, params):
+        self.Business = params.get("Business")
+        self.RsId = params.get("RsId")
+
+
+class DescribeCCAlarmThresholdResponse(AbstractModel):
+    """DescribeCCAlarmThreshold返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param CCAlarmThreshold: CC告警阈值
+        :type CCAlarmThreshold: :class:`tencentcloud.dayu.v20180709.models.CCAlarmThreshold`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.CCAlarmThreshold = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("CCAlarmThreshold") is not None:
+            self.CCAlarmThreshold = CCAlarmThreshold()
+            self.CCAlarmThreshold._deserialize(params.get("CCAlarmThreshold"))
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeCCEvListRequest(AbstractModel):
     """DescribeCCEvList请求参数结构体
 
@@ -2022,6 +2137,65 @@ class DescribeCCIpAllowDenyResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeCCSelfDefinePolicyRequest(AbstractModel):
+    """DescribeCCSelfDefinePolicy请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Business: 大禹子产品代号（bgp高防包；bgp-multip共享包）
+        :type Business: str
+        :param Id: 资源ID
+        :type Id: str
+        :param Limit: 拉取的条数
+        :type Limit: int
+        :param Offset: 偏移量
+        :type Offset: int
+        """
+        self.Business = None
+        self.Id = None
+        self.Limit = None
+        self.Offset = None
+
+
+    def _deserialize(self, params):
+        self.Business = params.get("Business")
+        self.Id = params.get("Id")
+        self.Limit = params.get("Limit")
+        self.Offset = params.get("Offset")
+
+
+class DescribeCCSelfDefinePolicyResponse(AbstractModel):
+    """DescribeCCSelfDefinePolicy返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Total: 自定义规则总数
+        :type Total: int
+        :param Policys: 策略列表
+        :type Policys: list of CCPolicy
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Total = None
+        self.Policys = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Total = params.get("Total")
+        if params.get("Policys") is not None:
+            self.Policys = []
+            for item in params.get("Policys"):
+                obj = CCPolicy()
+                obj._deserialize(item)
+                self.Policys.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeCCTrendRequest(AbstractModel):
     """DescribeCCTrend请求参数结构体
 
@@ -2170,7 +2344,7 @@ class DescribeCCUrlAllowResponse(AbstractModel):
 "Key":"url"时，"Value":值表示URL;
 "Key":"domain"时， "Value":值表示域名;
 "Key":"type"时，"Value":值表示黑白名单类型(white为白名单，block为黑名单);
-"Key":"protocol"时，"Value":值表示CC的防护类型(http防护或https域名防护);
+"Key":"protocol"时，"Value":值表示CC的防护类型(HTTP防护或HTTPS域名防护);
         :type RecordList: list of KeyValueRecord
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -2195,6 +2369,121 @@ class DescribeCCUrlAllowResponse(AbstractModel):
                 obj = KeyValueRecord()
                 obj._deserialize(item)
                 self.RecordList.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeDDoSAlarmThresholdRequest(AbstractModel):
+    """DescribeDDoSAlarmThreshold请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Business: 大禹子产品代号（shield表示棋牌；bgpip表示高防IP；bgp表示高防包；bgp-multip表示多ip高防包；net表示高防IP专业版）
+        :type Business: str
+        :param RsId: 资源ID,字符串类型
+        :type RsId: str
+        """
+        self.Business = None
+        self.RsId = None
+
+
+    def _deserialize(self, params):
+        self.Business = params.get("Business")
+        self.RsId = params.get("RsId")
+
+
+class DescribeDDoSAlarmThresholdResponse(AbstractModel):
+    """DescribeDDoSAlarmThreshold返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param DDoSAlarmThreshold: DDoS告警阈值
+        :type DDoSAlarmThreshold: :class:`tencentcloud.dayu.v20180709.models.DDoSAlarmThreshold`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.DDoSAlarmThreshold = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("DDoSAlarmThreshold") is not None:
+            self.DDoSAlarmThreshold = DDoSAlarmThreshold()
+            self.DDoSAlarmThreshold._deserialize(params.get("DDoSAlarmThreshold"))
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeDDoSAttackSourceRequest(AbstractModel):
+    """DescribeDDoSAttackSource请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Business: 大禹子产品代号（bgpip表示高防IP；bgp表示独享包；bgp-multip表示共享包；net表示高防IP专业版）
+        :type Business: str
+        :param Id: 资源ID
+        :type Id: str
+        :param StartTime: 起始时间
+        :type StartTime: str
+        :param EndTime: 结束时间
+        :type EndTime: str
+        :param Limit: 一页条数，填0表示不分页
+        :type Limit: int
+        :param Offset: 页起始偏移，取值为(页码-1)*一页条数
+        :type Offset: int
+        :param IpList: 获取指定资源的特定ip的攻击源，可选
+        :type IpList: list of str
+        """
+        self.Business = None
+        self.Id = None
+        self.StartTime = None
+        self.EndTime = None
+        self.Limit = None
+        self.Offset = None
+        self.IpList = None
+
+
+    def _deserialize(self, params):
+        self.Business = params.get("Business")
+        self.Id = params.get("Id")
+        self.StartTime = params.get("StartTime")
+        self.EndTime = params.get("EndTime")
+        self.Limit = params.get("Limit")
+        self.Offset = params.get("Offset")
+        self.IpList = params.get("IpList")
+
+
+class DescribeDDoSAttackSourceResponse(AbstractModel):
+    """DescribeDDoSAttackSource返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Total: 总攻击源条数
+        :type Total: int
+        :param AttackSourceList: 攻击源列表
+        :type AttackSourceList: list of DDoSAttackSourceRecord
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Total = None
+        self.AttackSourceList = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Total = params.get("Total")
+        if params.get("AttackSourceList") is not None:
+            self.AttackSourceList = []
+            for item in params.get("AttackSourceList"):
+                obj = DDoSAttackSourceRecord()
+                obj._deserialize(item)
+                self.AttackSourceList.append(obj)
         self.RequestId = params.get("RequestId")
 
 
@@ -4654,7 +4943,7 @@ class L4RuleEntry(AbstractModel):
         :type SourceList: list of L4RuleSource
         :param LbType: 负载均衡方式，取值[1(加权轮询)，2(源IP hash)]
         :type LbType: int
-        :param KeepEnable: 会话保持开关，取值[0(会话保持关闭)，1(会话保持开启)]
+        :param KeepEnable: 会话保持开关，取值[0(会话保持关闭)，1(会话保持开启)]；
         :type KeepEnable: int
         :param RuleId: 规则ID
         :type RuleId: str
@@ -4825,7 +5114,7 @@ class L7RuleEntry(AbstractModel):
         :type KeepEnable: int
         :param RuleId: 规则ID
         :type RuleId: str
-        :param CertType: 证书来源，当为协议为https协议时必须填，取值[2(腾讯云托管证书)]，当协议为http时也可以填0
+        :param CertType: 证书来源，当转发协议为https时必须填，取值[2(腾讯云托管证书)]，当转发协议为http时也可以填0
         :type CertType: int
         :param SSLId: 当证书来源为腾讯云托管证书时，此字段必须填写托管证书ID
         :type SSLId: str
@@ -4839,11 +5128,11 @@ class L7RuleEntry(AbstractModel):
         :type Status: int
         :param CCStatus: cc防护状态，取值[0(关闭), 1(开启)]
         :type CCStatus: int
-        :param CCEnable: https的CC防护状态，取值[0(关闭), 1(开启)]
+        :param CCEnable: HTTPS协议的CC防护状态，取值[0(关闭), 1(开启)]
         :type CCEnable: int
-        :param CCThreshold: https的CC防护阈值
+        :param CCThreshold: HTTPS协议的CC防护阈值
         :type CCThreshold: int
-        :param CCLevel: https的CC防护等级
+        :param CCLevel: HTTPS协议的CC防护等级
         :type CCLevel: str
         """
         self.Protocol = None
@@ -4939,6 +5228,58 @@ class L7RuleHealth(AbstractModel):
         self.StatusCode = params.get("StatusCode")
         self.Url = params.get("Url")
         self.Status = params.get("Status")
+
+
+class ModifyCCAlarmThresholdRequest(AbstractModel):
+    """ModifyCCAlarmThreshold请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Business: 大禹子产品代号（shield表示棋牌；bgpip表示高防IP；bgp表示高防包；bgp-multip表示多ip高防包；net表示高防IP专业版）
+        :type Business: str
+        :param RsId: 资源ID,字符串类型
+        :type RsId: str
+        :param AlarmThreshold: 告警阈值，大于0（目前排定的值），后台设置默认值为1000
+        :type AlarmThreshold: int
+        :param IpList: 资源关联的IP列表，高防包未绑定时，传空数组，高防IP专业版传多个IP的数据
+        :type IpList: list of str
+        """
+        self.Business = None
+        self.RsId = None
+        self.AlarmThreshold = None
+        self.IpList = None
+
+
+    def _deserialize(self, params):
+        self.Business = params.get("Business")
+        self.RsId = params.get("RsId")
+        self.AlarmThreshold = params.get("AlarmThreshold")
+        self.IpList = params.get("IpList")
+
+
+class ModifyCCAlarmThresholdResponse(AbstractModel):
+    """ModifyCCAlarmThreshold返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Success: 成功码
+        :type Success: :class:`tencentcloud.dayu.v20180709.models.SuccessCode`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Success = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Success") is not None:
+            self.Success = SuccessCode()
+            self.Success._deserialize(params.get("Success"))
+        self.RequestId = params.get("RequestId")
 
 
 class ModifyCCHostProtectionRequest(AbstractModel):
@@ -5413,6 +5754,62 @@ class ModifyDDoSAIStatusResponse(AbstractModel):
     def _deserialize(self, params):
         self.DDoSAI = params.get("DDoSAI")
         self.Id = params.get("Id")
+        self.RequestId = params.get("RequestId")
+
+
+class ModifyDDoSAlarmThresholdRequest(AbstractModel):
+    """ModifyDDoSAlarmThreshold请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Business: 大禹子产品代号（shield表示棋牌；bgpip表示高防IP；bgp表示高防包；bgp-multip表示多ip高防包；net表示高防IP专业版）
+        :type Business: str
+        :param RsId: 资源ID,字符串类型
+        :type RsId: str
+        :param AlarmType: 告警阈值类型，0-未设置，1-入流量，2-清洗流量
+        :type AlarmType: int
+        :param AlarmThreshold: 告警阈值，大于0（目前暂定的值）
+        :type AlarmThreshold: int
+        :param IpList: 资源关联的IP列表，高防包未绑定时，传空数组，高防IP专业版传多个IP的数据
+        :type IpList: list of str
+        """
+        self.Business = None
+        self.RsId = None
+        self.AlarmType = None
+        self.AlarmThreshold = None
+        self.IpList = None
+
+
+    def _deserialize(self, params):
+        self.Business = params.get("Business")
+        self.RsId = params.get("RsId")
+        self.AlarmType = params.get("AlarmType")
+        self.AlarmThreshold = params.get("AlarmThreshold")
+        self.IpList = params.get("IpList")
+
+
+class ModifyDDoSAlarmThresholdResponse(AbstractModel):
+    """ModifyDDoSAlarmThreshold返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Success: 成功码
+        :type Success: :class:`tencentcloud.dayu.v20180709.models.SuccessCode`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Success = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Success") is not None:
+            self.Success = SuccessCode()
+            self.Success._deserialize(params.get("Success"))
         self.RequestId = params.get("RequestId")
 
 

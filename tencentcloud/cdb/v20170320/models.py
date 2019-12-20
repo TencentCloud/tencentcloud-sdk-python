@@ -1446,7 +1446,7 @@ class DescribeBackupConfigRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param InstanceId: 实例短实例 ID，格式如：cdb-c1nl9rpv。与云数据库控制台页面中显示的实例 ID 相同。
+        :param InstanceId: 实例 ID，格式如：cdb-c1nl9rpv。与云数据库控制台页面中显示的实例 ID 相同。
         :type InstanceId: str
         """
         self.InstanceId = None
@@ -3006,9 +3006,9 @@ class DescribeTagsOfInstanceIdsRequest(AbstractModel):
         """
         :param InstanceIds: 实例列表。
         :type InstanceIds: list of str
-        :param Offset: 偏移量。
+        :param Offset: 分页偏移量。
         :type Offset: int
-        :param Limit: 每页返回多少个标签。
+        :param Limit: 分页大小。
         :type Limit: int
         """
         self.InstanceIds = None
@@ -3029,9 +3029,9 @@ class DescribeTagsOfInstanceIdsResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param Offset: 偏移量。
+        :param Offset: 分页偏移量。
         :type Offset: int
-        :param Limit: 每页返回多少个标签。
+        :param Limit: 分页大小。
         :type Limit: int
         :param Rows: 实例标签信息。
         :type Rows: list of TagsInfoOfInstance
@@ -3374,13 +3374,13 @@ class DeviceNetInfo(AbstractModel):
         """
         :param Conn: tcp连接数
         :type Conn: list of int
-        :param PackageIn: 网卡入包量
+        :param PackageIn: 网卡入包量，单位：个/秒
         :type PackageIn: list of int
-        :param PackageOut: 网卡出包量
+        :param PackageOut: 网卡出包量，单位：个/秒
         :type PackageOut: list of int
-        :param FlowIn: 入流量，单位：KB
+        :param FlowIn: 入流量，单位：kbps
         :type FlowIn: list of int
-        :param FlowOut: 出流量，单位：KB
+        :param FlowOut: 出流量，单位：kbps
         :type FlowOut: list of int
         """
         self.Conn = None
@@ -4172,12 +4172,16 @@ class ModifyAccountPrivilegesRequest(AbstractModel):
         :param Accounts: 数据库的账号，包括用户名和域名。
         :type Accounts: list of Account
         :param GlobalPrivileges: 全局权限。其中，GlobalPrivileges 中权限的可选值为："SELECT","INSERT","UPDATE","DELETE","CREATE", "PROCESS", "DROP","REFERENCES","INDEX","ALTER","SHOW DATABASES","CREATE TEMPORARY TABLES","LOCK TABLES","EXECUTE","CREATE VIEW","SHOW VIEW","CREATE ROUTINE","ALTER ROUTINE","EVENT","TRIGGER"。
+注意，不传该参数表示清除该权限。
         :type GlobalPrivileges: list of str
         :param DatabasePrivileges: 数据库的权限。Privileges 权限的可选值为："SELECT","INSERT","UPDATE","DELETE","CREATE",	"DROP","REFERENCES","INDEX","ALTER","CREATE TEMPORARY TABLES","LOCK TABLES","EXECUTE","CREATE VIEW","SHOW VIEW","CREATE ROUTINE","ALTER ROUTINE","EVENT","TRIGGER"。
+注意，不传该参数表示清除该权限。
         :type DatabasePrivileges: list of DatabasePrivilege
         :param TablePrivileges: 数据库中表的权限。Privileges 权限的可选值为：权限的可选值为："SELECT","INSERT","UPDATE","DELETE","CREATE",	"DROP","REFERENCES","INDEX","ALTER","CREATE VIEW","SHOW VIEW", "TRIGGER"。
+注意，不传该参数表示清除该权限。
         :type TablePrivileges: list of TablePrivilege
         :param ColumnPrivileges: 数据库表中列的权限。Privileges 权限的可选值为："SELECT","INSERT","UPDATE","REFERENCES"。
+注意，不传该参数表示清除该权限。
         :type ColumnPrivileges: list of ColumnPrivilege
         """
         self.InstanceId = None

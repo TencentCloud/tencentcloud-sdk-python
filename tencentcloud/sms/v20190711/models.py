@@ -23,23 +23,23 @@ class CallbackStatusStatistics(AbstractModel):
 
     def __init__(self):
         """
-        :param CallbackCount: 短信回执量统计
+        :param CallbackCount: 短信回执量统计。
         :type CallbackCount: int
-        :param RequestSuccessCount: 短信提交成功量统计
+        :param RequestSuccessCount: 短信提交成功量统计。
         :type RequestSuccessCount: int
-        :param CallbackFailCount: 短信回执失败量统计
+        :param CallbackFailCount: 短信回执失败量统计。
         :type CallbackFailCount: int
-        :param CallbackSuccessCount: 短信回执成功量统计
+        :param CallbackSuccessCount: 短信回执成功量统计。
         :type CallbackSuccessCount: int
-        :param InternalErrorCount: 运营商内部错误统计
+        :param InternalErrorCount: 运营商内部错误统计。
         :type InternalErrorCount: int
-        :param InvalidNumberCount: 号码无效或空号统计
+        :param InvalidNumberCount: 号码无效或空号统计。
         :type InvalidNumberCount: int
-        :param ShutdownErrorCount: 停机、关机等错误统计
+        :param ShutdownErrorCount: 停机、关机等错误统计。
         :type ShutdownErrorCount: int
-        :param BlackListCount: 号码拉入黑名单统计
+        :param BlackListCount: 号码拉入黑名单统计。
         :type BlackListCount: int
-        :param FrequencyLimitCount: 运营商频率限制统计
+        :param FrequencyLimitCount: 运营商频率限制统计。
         :type FrequencyLimitCount: int
         """
         self.CallbackCount = None
@@ -72,18 +72,18 @@ class CallbackStatusStatisticsRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param StartDateTime: 开始时间，yyyymmddhh 需要拉取的起始时间，精确到小时
+        :param StartDateTime: 开始时间，yyyymmddhh 需要拉取的起始时间，精确到小时。
         :type StartDateTime: int
-        :param EndDataTime: 结束时间，yyyymmddhh 需要拉取的截止时间，精确到小时
-注：EndDataTime 必须大于StartDateTime
+        :param EndDataTime: 结束时间，yyyymmddhh 需要拉取的截止时间，精确到小时。
+注：EndDataTime 必须大于 StartDateTime。
         :type EndDataTime: int
-        :param SmsSdkAppid: 短信SdkAppid在[短信控制台](https://console.cloud.tencent.com/sms/smslist) 添加应用后生成的实际SdkAppid,示例如1400006666。
+        :param SmsSdkAppid: 短信SdkAppid在 [短信控制台](https://console.cloud.tencent.com/sms/smslist) 添加应用后生成的实际SdkAppid，示例如1400006666。
         :type SmsSdkAppid: str
-        :param Limit: 最大上限
-注：目前固定设置为0
+        :param Limit: 最大上限。
+注：目前固定设置为0。
         :type Limit: int
-        :param Offset: 偏移量
-注：目前固定设置为0
+        :param Offset: 偏移量。
+注：目前固定设置为0。
         :type Offset: int
         """
         self.StartDateTime = None
@@ -108,7 +108,7 @@ class CallbackStatusStatisticsResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param CallbackStatusStatistics: 回执数据统计响应包体
+        :param CallbackStatusStatistics: 回执数据统计响应包体。
         :type CallbackStatusStatistics: :class:`tencentcloud.sms.v20190711.models.CallbackStatusStatistics`
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -131,18 +131,20 @@ class PullSmsReplyStatus(AbstractModel):
 
     def __init__(self):
         """
-        :param ExtendCode: 短信码号扩展号，默认未开通，如需开通请联系 [sms helper](https://cloud.tencent.com/document/product/382/3773)
+        :param ExtendCode: 短信码号扩展号，默认未开通，如需开通请联系 [sms helper](https://cloud.tencent.com/document/product/382/3773)。
         :type ExtendCode: str
-        :param NationCode: 国家（或地区）码
+        :param NationCode: 国家（或地区）码。
         :type NationCode: str
-        :param PhoneNumber: 手机号码,e.164标准，+[国家或地区码][手机号] ，示例如：+8613711112222， 其中前面有一个+号 ，86为国家码，13711112222为手机号
+        :param PhoneNumber: 手机号码,e.164标准，+[国家或地区码][手机号] ，示例如：+8613711112222， 其中前面有一个+号 ，86为国家码，13711112222为手机号。
         :type PhoneNumber: str
-        :param Sign: 短信签名
+        :param Sign: 短信签名。
         :type Sign: str
-        :param ReplyContent: 用户回复的内容
+        :param ReplyContent: 用户回复的内容。
         :type ReplyContent: str
-        :param ReplyTime: 回复时间(例如：2019-10-08 17:18:37)
+        :param ReplyTime: 回复时间（例如：2019-10-08 17:18:37）。
         :type ReplyTime: str
+        :param ReplyUnixTime: 回复时间，UNIX 时间戳（单位：秒）。
+        :type ReplyUnixTime: int
         """
         self.ExtendCode = None
         self.NationCode = None
@@ -150,6 +152,7 @@ class PullSmsReplyStatus(AbstractModel):
         self.Sign = None
         self.ReplyContent = None
         self.ReplyTime = None
+        self.ReplyUnixTime = None
 
 
     def _deserialize(self, params):
@@ -159,6 +162,7 @@ class PullSmsReplyStatus(AbstractModel):
         self.Sign = params.get("Sign")
         self.ReplyContent = params.get("ReplyContent")
         self.ReplyTime = params.get("ReplyTime")
+        self.ReplyUnixTime = params.get("ReplyUnixTime")
 
 
 class PullSmsReplyStatusByPhoneNumberRequest(AbstractModel):
@@ -168,16 +172,16 @@ class PullSmsReplyStatusByPhoneNumberRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param SendDateTime: 拉取起始时间，UNIX 时间戳（时间：秒）
+        :param SendDateTime: 拉取起始时间，UNIX 时间戳（时间：秒）。
         :type SendDateTime: int
-        :param Offset: 偏移量
-注：目前固定设置为0
+        :param Offset: 偏移量。
+注：目前固定设置为0。
         :type Offset: int
-        :param Limit: 拉取最大条数，最多 100
+        :param Limit: 拉取最大条数，最多 100。
         :type Limit: int
         :param PhoneNumber: 下发目的手机号码，依据 e.164 标准为：+[国家（或地区）码][手机号] ，示例如：+8613711112222， 其中前面有一个+号 ，86为国家码，13711112222为手机号。
         :type PhoneNumber: str
-        :param SmsSdkAppid: 短信SdkAppid在[短信控制台](https://console.cloud.tencent.com/sms/smslist) 添加应用后生成的实际SdkAppid,示例如1400006666。
+        :param SmsSdkAppid: 短信SdkAppid在 [短信控制台](https://console.cloud.tencent.com/sms/smslist) 添加应用后生成的实际SdkAppid，示例如1400006666。
         :type SmsSdkAppid: str
         """
         self.SendDateTime = None
@@ -202,7 +206,7 @@ class PullSmsReplyStatusByPhoneNumberResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param PullSmsReplyStatusSet: 回复状态响应集合
+        :param PullSmsReplyStatusSet: 回复状态响应集合。
         :type PullSmsReplyStatusSet: list of PullSmsReplyStatus
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -228,9 +232,9 @@ class PullSmsReplyStatusRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Limit: 拉取最大条数，最多100条
+        :param Limit: 拉取最大条数，最多100条。
         :type Limit: int
-        :param SmsSdkAppid: 短信SdkAppid在[短信控制台](https://console.cloud.tencent.com/sms/smslist) 添加应用后生成的实际SdkAppid,示例如1400006666。
+        :param SmsSdkAppid: 短信SdkAppid在 [短信控制台](https://console.cloud.tencent.com/sms/smslist) 添加应用后生成的实际SdkAppid,示例如1400006666。
         :type SmsSdkAppid: str
         """
         self.Limit = None
@@ -249,7 +253,7 @@ class PullSmsReplyStatusResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param PullSmsReplyStatusSet: 回复状态响应集合
+        :param PullSmsReplyStatusSet: 回复状态响应集合。
         :type PullSmsReplyStatusSet: list of PullSmsReplyStatus
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -275,22 +279,25 @@ class PullSmsSendStatus(AbstractModel):
 
     def __init__(self):
         """
-        :param UserReceiveTime: 用户实际接收到短信的时间
+        :param UserReceiveTime: 用户实际接收到短信的时间。
         :type UserReceiveTime: str
-        :param NationCode: 国家（或地区）码
+        :param UserReceiveUnixTime: 用户实际接收到短信的时间，UNIX 时间戳（单位：秒）。
+        :type UserReceiveUnixTime: int
+        :param NationCode: 国家（或地区）码。
         :type NationCode: str
-        :param PurePhoneNumber: 手机号码,e.164标准，+[国家或地区码][手机号] ，示例如：+8613711112222， 其中前面有一个+号 ，86为国家码，13711112222为手机号
+        :param PurePhoneNumber: 手机号码,e.164标准，+[国家或地区码][手机号] ，示例如：+8613711112222， 其中前面有一个+号 ，86为国家码，13711112222为手机号。
         :type PurePhoneNumber: str
-        :param PhoneNumber: 手机号码，普通格式，示例如：13711112222
+        :param PhoneNumber: 手机号码，普通格式，示例如：13711112222。
         :type PhoneNumber: str
-        :param SerialNo: 本次发送标识 ID
+        :param SerialNo: 本次发送标识 ID。
         :type SerialNo: str
-        :param ReportStatus: 实际是否收到短信接收状态，SUCCESS（成功）、FAIL（失败）
+        :param ReportStatus: 实际是否收到短信接收状态，SUCCESS（成功）、FAIL（失败）。
         :type ReportStatus: str
-        :param Description: 用户接收短信状态描述
+        :param Description: 用户接收短信状态描述。
         :type Description: str
         """
         self.UserReceiveTime = None
+        self.UserReceiveUnixTime = None
         self.NationCode = None
         self.PurePhoneNumber = None
         self.PhoneNumber = None
@@ -301,6 +308,7 @@ class PullSmsSendStatus(AbstractModel):
 
     def _deserialize(self, params):
         self.UserReceiveTime = params.get("UserReceiveTime")
+        self.UserReceiveUnixTime = params.get("UserReceiveUnixTime")
         self.NationCode = params.get("NationCode")
         self.PurePhoneNumber = params.get("PurePhoneNumber")
         self.PhoneNumber = params.get("PhoneNumber")
@@ -316,16 +324,16 @@ class PullSmsSendStatusByPhoneNumberRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param SendDateTime: 拉取起始时间，UNIX 时间戳（时间：秒）
+        :param SendDateTime: 拉取起始时间，UNIX 时间戳（时间：秒）。
         :type SendDateTime: int
-        :param Offset: 偏移量
-注：目前固定设置为0
+        :param Offset: 偏移量。
+注：目前固定设置为0。
         :type Offset: int
-        :param Limit: 拉取最大条数，最多 100
+        :param Limit: 拉取最大条数，最多 100。
         :type Limit: int
         :param PhoneNumber: 下发目的手机号码，依据 e.164 标准为：+[国家（或地区）码][手机号] ，示例如：+8613711112222， 其中前面有一个+号 ，86为国家码，13711112222为手机号。
         :type PhoneNumber: str
-        :param SmsSdkAppid: 短信SdkAppid在[短信控制台](https://console.cloud.tencent.com/sms/smslist) 添加应用后生成的实际SdkAppid,示例如1400006666。
+        :param SmsSdkAppid: 短信SdkAppid在 [短信控制台](https://console.cloud.tencent.com/sms/smslist) 添加应用后生成的实际SdkAppid，示例如1400006666。
         :type SmsSdkAppid: str
         """
         self.SendDateTime = None
@@ -350,7 +358,7 @@ class PullSmsSendStatusByPhoneNumberResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param PullSmsSendStatusSet: 下发状态响应集合
+        :param PullSmsSendStatusSet: 下发状态响应集合。
         :type PullSmsSendStatusSet: list of PullSmsSendStatus
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -376,9 +384,9 @@ class PullSmsSendStatusRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Limit: 拉取最大条数，最多100条
+        :param Limit: 拉取最大条数，最多100条。
         :type Limit: int
-        :param SmsSdkAppid: 短信SdkAppid在[短信控制台](https://console.cloud.tencent.com/sms/smslist) 添加应用后生成的实际SdkAppid,示例如1400006666。
+        :param SmsSdkAppid: 短信SdkAppid在 [短信控制台](https://console.cloud.tencent.com/sms/smslist) 添加应用后生成的实际SdkAppid，示例如1400006666。
         :type SmsSdkAppid: str
         """
         self.Limit = None
@@ -397,7 +405,7 @@ class PullSmsSendStatusResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param PullSmsSendStatusSet: 下发状态响应集合
+        :param PullSmsSendStatusSet: 下发状态响应集合。
         :type PullSmsSendStatusSet: list of PullSmsSendStatus
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -423,23 +431,21 @@ class SendSmsRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param PhoneNumberSet: 下发手机号码，采用 e.164 标准，+[国家或地区码][手机号] ，示例如：+8613711112222， 其中前面有一个+号 ，86为国家码，13711112222为手机号。最多不要超过200个手机号。
+        :param PhoneNumberSet: 下发手机号码，采用 e.164 标准，+[国家或地区码][手机号] ，示例如：+8613711112222， 其中前面有一个+号 ，86为国家码，13711112222为手机号，最多不要超过200个手机号。
         :type PhoneNumberSet: list of str
-        :param TemplateID: 模板 ID，必须填写已审核通过的模板 ID。模板ID可登录[短信控制台](https://console.cloud.tencent.com/sms/smslist)查看。
+        :param TemplateID: 模板 ID，必须填写已审核通过的模板 ID。模板ID可登录 [短信控制台](https://console.cloud.tencent.com/sms/smslist) 查看。
         :type TemplateID: str
-        :param SmsSdkAppid: 短信SdkAppid在[短信控制台](https://console.cloud.tencent.com/sms/smslist) 添加应用后生成的实际SdkAppid,示例如1400006666。
+        :param SmsSdkAppid: 短信SdkAppid在 [短信控制台](https://console.cloud.tencent.com/sms/smslist)  添加应用后生成的实际SdkAppid，示例如1400006666。
         :type SmsSdkAppid: str
-        :param Sign: 短信签名内容，使用 UTF-8 编码，必须填写已审核通过的签名
-签名信息可登录[短信控制台](https://console.cloud.tencent.com/sms/smslist) 查看。
+        :param Sign: 短信签名内容，使用 UTF-8 编码，必须填写已审核通过的签名，签名信息可登录 [短信控制台](https://console.cloud.tencent.com/sms/smslist)  查看。
         :type Sign: str
         :param TemplateParamSet: 模板参数，若无模板参数，则设置为空。
         :type TemplateParamSet: list of str
-        :param ExtendCode: 短信码号扩展号，默认未开通，如需开通请联系 [sms helper](https://cloud.tencent.com/document/product/382/3773)
+        :param ExtendCode: 短信码号扩展号，默认未开通，如需开通请联系 [sms helper](https://cloud.tencent.com/document/product/382/3773)。
         :type ExtendCode: str
-        :param SessionContext: 用户的 session 内容，可以携带用户侧ID等上下文信息,server 会原样返回
+        :param SessionContext: 用户的 session 内容，可以携带用户侧 ID 等上下文信息，server 会原样返回。
         :type SessionContext: str
-        :param SenderId: 国际/港澳台短信senderid，国内短信填空。
-默认未开通，如需开通请联系 [sms helper](https://cloud.tencent.com/document/product/382/3773)
+        :param SenderId: 国际/港澳台短信 senderid，国内短信填空，默认未开通，如需开通请联系 [sms helper](https://cloud.tencent.com/document/product/382/3773)。
         :type SenderId: str
         """
         self.PhoneNumberSet = None
@@ -470,7 +476,7 @@ class SendSmsResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param SendStatusSet: 短信发送状态
+        :param SendStatusSet: 短信发送状态。
         :type SendStatusSet: list of SendStatus
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -496,17 +502,17 @@ class SendStatus(AbstractModel):
 
     def __init__(self):
         """
-        :param SerialNo: 发送流水号
+        :param SerialNo: 发送流水号。
         :type SerialNo: str
-        :param PhoneNumber: 手机号码,e.164标准，+[国家或地区码][手机号] ，示例如：+8613711112222， 其中前面有一个+号 ，86为国家码，13711112222为手机号
+        :param PhoneNumber: 手机号码,e.164标准，+[国家或地区码][手机号] ，示例如：+8613711112222， 其中前面有一个+号 ，86为国家码，13711112222为手机号。
         :type PhoneNumber: str
-        :param Fee: 计费条数，计费规则请查询[计费策略](https://cloud.tencent.com/document/product/382/36135)
+        :param Fee: 计费条数，计费规则请查询 [计费策略](https://cloud.tencent.com/document/product/382/36135)。
         :type Fee: int
-        :param SessionContext: 用户Session内容
+        :param SessionContext: 用户Session内容。
         :type SessionContext: str
-        :param Code: 短信请求错误码，具体含义请参考错误码
+        :param Code: 短信请求错误码，具体含义请参考错误码。
         :type Code: str
-        :param Message: 短信请求错误码描述
+        :param Message: 短信请求错误码描述。
         :type Message: str
         """
         self.SerialNo = None
@@ -533,11 +539,11 @@ class SendStatusStatistics(AbstractModel):
 
     def __init__(self):
         """
-        :param FeeCount: 短信计费条数统计，例如提交成功量为100条，其中有20条是长短信（长度为80字）被拆分成2条，则计费条数为： ```80 * 1 + 20 * 2 = 120``` 条
+        :param FeeCount: 短信计费条数统计，例如提交成功量为100条，其中有20条是长短信（长度为80字）被拆分成2条，则计费条数为： ```80 * 1 + 20 * 2 = 120``` 条。
         :type FeeCount: int
-        :param RequestCount: 短信提交量统计
+        :param RequestCount: 短信提交量统计。
         :type RequestCount: int
-        :param RequestSuccessCount: 短信提交成功量统计
+        :param RequestSuccessCount: 短信提交成功量统计。
         :type RequestSuccessCount: int
         """
         self.FeeCount = None
@@ -558,18 +564,18 @@ class SendStatusStatisticsRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param StartDateTime: 拉取起始时间，yyyymmddhh 需要拉取的起始时间，精确到小时
+        :param StartDateTime: 拉取起始时间，yyyymmddhh 需要拉取的起始时间，精确到小时。
         :type StartDateTime: int
         :param EndDataTime: 结束时间，yyyymmddhh 需要拉取的截止时间，精确到小时
-注：EndDataTime 必须大于StartDateTime
+注：EndDataTime 必须大于 StartDateTime。
         :type EndDataTime: int
-        :param SmsSdkAppid: 短信SdkAppid在[短信控制台](https://console.cloud.tencent.com/sms/smslist) 添加应用后生成的实际SdkAppid,示例如1400006666。
+        :param SmsSdkAppid: 短信SdkAppid在 [短信控制台](https://console.cloud.tencent.com/sms/smslist) 添加应用后生成的实际SdkAppid，示例如1400006666。
         :type SmsSdkAppid: str
-        :param Limit: 最大上限
-注：目前固定设置为0
+        :param Limit: 最大上限。
+注：目前固定设置为0。
         :type Limit: int
-        :param Offset: 偏移量
-注：目前固定设置为0
+        :param Offset: 偏移量。
+注：目前固定设置为0。
         :type Offset: int
         """
         self.StartDateTime = None
@@ -594,7 +600,7 @@ class SendStatusStatisticsResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param SendStatusStatistics: 发送数据统计响应包体
+        :param SendStatusStatistics: 发送数据统计响应包体。
         :type SendStatusStatistics: :class:`tencentcloud.sms.v20190711.models.SendStatusStatistics`
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -617,24 +623,33 @@ class SmsPackagesStatistics(AbstractModel):
 
     def __init__(self):
         """
-        :param PackageCreateTime: 套餐包创建时间
+        :param PackageCreateTime: 套餐包创建时间，标准时间，例如：2019-10-08 17:18:37。
         :type PackageCreateTime: str
-        :param PackageEffectiveTime: 套餐包生效时间
+        :param PackageCreateUnixTime: 套餐包创建时间，UNIX 时间戳（单位：秒）。
+        :type PackageCreateUnixTime: int
+        :param PackageEffectiveTime: 套餐包生效时间，标准时间，例如：2019-10-08 17:18:37。
         :type PackageEffectiveTime: str
-        :param PackageExpiredTime: 套餐包过期时间
+        :param PackageEffectiveUnixTime: 套餐包生效时间，UNIX 时间戳（单位：秒）。
+        :type PackageEffectiveUnixTime: int
+        :param PackageExpiredTime: 套餐包过期时间，标准时间，例如：2019-10-08 17:18:37。
         :type PackageExpiredTime: str
-        :param AmountOfPackage: 套餐包条数
+        :param PackageExpiredUnixTime: 套餐包过期时间，UNIX 时间戳（单位：秒）。
+        :type PackageExpiredUnixTime: int
+        :param AmountOfPackage: 套餐包条数。
         :type AmountOfPackage: int
-        :param TypeOfPackage: 0表示赠送套餐包，1表示购买套餐包
+        :param TypeOfPackage: 0表示赠送套餐包，1表示购买套餐包。
         :type TypeOfPackage: int
-        :param PackageId: 套餐包 ID
+        :param PackageId: 套餐包 ID。
         :type PackageId: int
-        :param CurrentUsage: 当前使用量
+        :param CurrentUsage: 当前使用量。
         :type CurrentUsage: int
         """
         self.PackageCreateTime = None
+        self.PackageCreateUnixTime = None
         self.PackageEffectiveTime = None
+        self.PackageEffectiveUnixTime = None
         self.PackageExpiredTime = None
+        self.PackageExpiredUnixTime = None
         self.AmountOfPackage = None
         self.TypeOfPackage = None
         self.PackageId = None
@@ -643,8 +658,11 @@ class SmsPackagesStatistics(AbstractModel):
 
     def _deserialize(self, params):
         self.PackageCreateTime = params.get("PackageCreateTime")
+        self.PackageCreateUnixTime = params.get("PackageCreateUnixTime")
         self.PackageEffectiveTime = params.get("PackageEffectiveTime")
+        self.PackageEffectiveUnixTime = params.get("PackageEffectiveUnixTime")
         self.PackageExpiredTime = params.get("PackageExpiredTime")
+        self.PackageExpiredUnixTime = params.get("PackageExpiredUnixTime")
         self.AmountOfPackage = params.get("AmountOfPackage")
         self.TypeOfPackage = params.get("TypeOfPackage")
         self.PackageId = params.get("PackageId")
@@ -658,12 +676,12 @@ class SmsPackagesStatisticsRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param SmsSdkAppid: 短信SdkAppid在[短信控制台](https://console.cloud.tencent.com/sms/smslist) 添加应用后生成的实际SdkAppid,示例如1400006666。
+        :param SmsSdkAppid: 短信SdkAppid在 [短信控制台](https://console.cloud.tencent.com/sms/smslist) 添加应用后生成的实际SdkAppid，示例如1400006666。
         :type SmsSdkAppid: str
-        :param Limit: 最大上限(需要拉取的套餐包个数)
+        :param Limit: 最大上限(需要拉取的套餐包个数)。
         :type Limit: int
-        :param Offset: 偏移量
-注：目前固定设置为0
+        :param Offset: 偏移量。
+注：目前固定设置为0。
         :type Offset: int
         """
         self.SmsSdkAppid = None
@@ -684,7 +702,7 @@ class SmsPackagesStatisticsResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param SmsPackagesStatisticsSet: 发送数据统计响应包体
+        :param SmsPackagesStatisticsSet: 发送数据统计响应包体。
         :type SmsPackagesStatisticsSet: list of SmsPackagesStatistics
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str

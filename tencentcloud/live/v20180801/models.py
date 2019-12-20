@@ -218,7 +218,7 @@ class BindLiveDomainCertRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param CertId: 证书Id。
+        :param CertId: 证书Id。使用添加证书接口获取证书Id。
         :type CertId: int
         :param DomainName: 播放域名。
         :type DomainName: str
@@ -1022,6 +1022,7 @@ class CreateLiveTranscodeTemplateRequest(AbstractModel):
         :param TemplateName: 模板名称，例：900 900p 仅支持字母和数字的组合。
         :type TemplateName: str
         :param VideoBitrate: 视频码率。范围：100-8000。
+注意：码率必须是100的倍数。
         :type VideoBitrate: int
         :param Vcodec: 视频编码：h264/h265，默认h264。
         :type Vcodec: str

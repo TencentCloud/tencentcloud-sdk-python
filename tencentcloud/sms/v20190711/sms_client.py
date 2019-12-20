@@ -26,7 +26,7 @@ class SmsClient(AbstractClient):
 
 
     def CallbackStatusStatistics(self, request):
-        """统计用户回执的数据
+        """统计用户回执的数据。
 
         :param request: Request instance for CallbackStatusStatistics.
         :type request: :class:`tencentcloud.sms.v20190711.models.CallbackStatusStatisticsRequest`
@@ -54,7 +54,7 @@ class SmsClient(AbstractClient):
 
 
     def PullSmsReplyStatus(self, request):
-        """拉取短信回复状态
+        """拉取短信回复状态。
 
         :param request: Request instance for PullSmsReplyStatus.
         :type request: :class:`tencentcloud.sms.v20190711.models.PullSmsReplyStatusRequest`
@@ -82,7 +82,7 @@ class SmsClient(AbstractClient):
 
 
     def PullSmsReplyStatusByPhoneNumber(self, request):
-        """拉取单个号码短信回复状态
+        """拉取单个号码短信回复状态。
 
         :param request: Request instance for PullSmsReplyStatusByPhoneNumber.
         :type request: :class:`tencentcloud.sms.v20190711.models.PullSmsReplyStatusByPhoneNumberRequest`
@@ -110,7 +110,7 @@ class SmsClient(AbstractClient):
 
 
     def PullSmsSendStatus(self, request):
-        """拉取短信下发状态
+        """拉取短信下发状态。
 
         :param request: Request instance for PullSmsSendStatus.
         :type request: :class:`tencentcloud.sms.v20190711.models.PullSmsSendStatusRequest`
@@ -138,7 +138,7 @@ class SmsClient(AbstractClient):
 
 
     def PullSmsSendStatusByPhoneNumber(self, request):
-        """拉取单个号码短信下发状态
+        """拉取单个号码短信下发状态。
 
         :param request: Request instance for PullSmsSendStatusByPhoneNumber.
         :type request: :class:`tencentcloud.sms.v20190711.models.PullSmsSendStatusByPhoneNumberRequest`
@@ -195,7 +195,7 @@ class SmsClient(AbstractClient):
 
 
     def SendStatusStatistics(self, request):
-        """统计用户发送短信的数据
+        """统计用户发送短信的数据。
 
         :param request: Request instance for SendStatusStatistics.
         :type request: :class:`tencentcloud.sms.v20190711.models.SendStatusStatisticsRequest`
@@ -223,7 +223,7 @@ class SmsClient(AbstractClient):
 
 
     def SmsPackagesStatistics(self, request):
-        """用户套餐包信息统计
+        """用户套餐包信息统计。
 
         :param request: Request instance for SmsPackagesStatistics.
         :type request: :class:`tencentcloud.sms.v20190711.models.SmsPackagesStatisticsRequest`

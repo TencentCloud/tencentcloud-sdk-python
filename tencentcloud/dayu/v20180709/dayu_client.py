@@ -613,6 +613,34 @@ class DayuClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeCCAlarmThreshold(self, request):
+        """获取高防包、高防IP、高防IP专业版、棋牌盾产品设置CC攻击的告警通知阈值
+
+        :param request: Request instance for DescribeCCAlarmThreshold.
+        :type request: :class:`tencentcloud.dayu.v20180709.models.DescribeCCAlarmThresholdRequest`
+        :rtype: :class:`tencentcloud.dayu.v20180709.models.DescribeCCAlarmThresholdResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeCCAlarmThreshold", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeCCAlarmThresholdResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeCCEvList(self, request):
         """获取CC攻击事件列表
 
@@ -669,6 +697,34 @@ class DayuClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeCCSelfDefinePolicy(self, request):
+        """获取CC自定义策略
+
+        :param request: Request instance for DescribeCCSelfDefinePolicy.
+        :type request: :class:`tencentcloud.dayu.v20180709.models.DescribeCCSelfDefinePolicyRequest`
+        :rtype: :class:`tencentcloud.dayu.v20180709.models.DescribeCCSelfDefinePolicyResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeCCSelfDefinePolicy", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeCCSelfDefinePolicyResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeCCTrend(self, request):
         """获取CC攻击指标数据，包括总请求峰值(QPS)和攻击请求(QPS)
 
@@ -711,6 +767,62 @@ class DayuClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeCCUrlAllowResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeDDoSAlarmThreshold(self, request):
+        """获取高防包、高防IP、高防IP专业版、棋牌盾产品设置DDoS攻击的告警通知阈值
+
+        :param request: Request instance for DescribeDDoSAlarmThreshold.
+        :type request: :class:`tencentcloud.dayu.v20180709.models.DescribeDDoSAlarmThresholdRequest`
+        :rtype: :class:`tencentcloud.dayu.v20180709.models.DescribeDDoSAlarmThresholdResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeDDoSAlarmThreshold", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeDDoSAlarmThresholdResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeDDoSAttackSource(self, request):
+        """获取DDoS攻击源列表
+
+        :param request: Request instance for DescribeDDoSAttackSource.
+        :type request: :class:`tencentcloud.dayu.v20180709.models.DescribeDDoSAttackSourceRequest`
+        :rtype: :class:`tencentcloud.dayu.v20180709.models.DescribeDDoSAttackSourceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeDDoSAttackSource", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeDDoSAttackSourceResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -1649,6 +1761,34 @@ class DayuClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def ModifyCCAlarmThreshold(self, request):
+        """为高防包、高防IP、高防IP专业版、棋牌盾产品设置CC攻击的告警通知阈值
+
+        :param request: Request instance for ModifyCCAlarmThreshold.
+        :type request: :class:`tencentcloud.dayu.v20180709.models.ModifyCCAlarmThresholdRequest`
+        :rtype: :class:`tencentcloud.dayu.v20180709.models.ModifyCCAlarmThresholdResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ModifyCCAlarmThreshold", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ModifyCCAlarmThresholdResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def ModifyCCHostProtection(self, request):
         """开启或关闭CC域名防护
 
@@ -1859,6 +1999,34 @@ class DayuClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyDDoSAIStatusResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ModifyDDoSAlarmThreshold(self, request):
+        """为高防包、高防IP、高防IP专业版、棋牌盾等产品设置DDoS攻击的告警通知阈值
+
+        :param request: Request instance for ModifyDDoSAlarmThreshold.
+        :type request: :class:`tencentcloud.dayu.v20180709.models.ModifyDDoSAlarmThresholdRequest`
+        :rtype: :class:`tencentcloud.dayu.v20180709.models.ModifyDDoSAlarmThresholdResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ModifyDDoSAlarmThreshold", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ModifyDDoSAlarmThresholdResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
