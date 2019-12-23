@@ -363,6 +363,34 @@ class BatchClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeCpmOsInfo(self, request):
+        """创建黑石计算环境时，查询批量计算环境支持的黑石操作系统信息
+
+        :param request: Request instance for DescribeCpmOsInfo.
+        :type request: :class:`tencentcloud.batch.v20170312.models.DescribeCpmOsInfoRequest`
+        :rtype: :class:`tencentcloud.batch.v20170312.models.DescribeCpmOsInfoResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeCpmOsInfo", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeCpmOsInfoResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeCvmZoneInstanceConfigInfos(self, request):
         """获取批量计算可用区机型配置信息
 

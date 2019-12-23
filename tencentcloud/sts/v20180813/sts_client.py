@@ -107,3 +107,31 @@ class StsClient(AbstractClient):
                 raise
             else:
                 raise TencentCloudSDKException(e.message, e.message)
+
+
+    def QueryApiKey(self, request):
+        """拉取API密钥列表
+
+        :param request: Request instance for QueryApiKey.
+        :type request: :class:`tencentcloud.sts.v20180813.models.QueryApiKeyRequest`
+        :rtype: :class:`tencentcloud.sts.v20180813.models.QueryApiKeyResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("QueryApiKey", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.QueryApiKeyResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)

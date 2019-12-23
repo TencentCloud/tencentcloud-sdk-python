@@ -384,8 +384,7 @@ class CreateFaceResponse(AbstractModel):
         :param SucFaceIds: 加入成功的人脸ID列表
         :type SucFaceIds: list of str
         :param RetCode: 每张人脸图片添加结果，-1101 代表未检测到人脸，-1102 代表图片解码失败， 
--1601代表不符合图片质量控制要求, 
--1603 代表已有相似度超过99%的人脸存在，-1604 代表人脸相似度没有超过FaceMatchThreshold。 
+-1601代表不符合图片质量控制要求, -1604 代表人脸相似度没有超过FaceMatchThreshold。 
 其他非 0 值代表算法服务异常。 
 RetCode的顺序和入参中 Images 或 Urls 的顺序一致。
         :type RetCode: list of int

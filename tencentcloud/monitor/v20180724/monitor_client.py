@@ -25,6 +25,90 @@ class MonitorClient(AbstractClient):
     _endpoint = 'monitor.tencentcloudapi.com'
 
 
+    def BindingPolicyObject(self, request):
+        """将告警策略绑定到特定对象
+
+        :param request: Request instance for BindingPolicyObject.
+        :type request: :class:`tencentcloud.monitor.v20180724.models.BindingPolicyObjectRequest`
+        :rtype: :class:`tencentcloud.monitor.v20180724.models.BindingPolicyObjectResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("BindingPolicyObject", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.BindingPolicyObjectResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def CreatePolicyGroup(self, request):
+        """增加策略组
+
+        :param request: Request instance for CreatePolicyGroup.
+        :type request: :class:`tencentcloud.monitor.v20180724.models.CreatePolicyGroupRequest`
+        :rtype: :class:`tencentcloud.monitor.v20180724.models.CreatePolicyGroupResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("CreatePolicyGroup", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreatePolicyGroupResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeAccidentEventList(self, request):
+        """获取平台事件列表
+
+        :param request: Request instance for DescribeAccidentEventList.
+        :type request: :class:`tencentcloud.monitor.v20180724.models.DescribeAccidentEventListRequest`
+        :rtype: :class:`tencentcloud.monitor.v20180724.models.DescribeAccidentEventListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeAccidentEventList", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeAccidentEventListResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeBaseMetrics(self, request):
         """获取基础指标详情
 
@@ -39,6 +123,34 @@ class MonitorClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeBaseMetricsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeProductEventList(self, request):
+        """分页获取产品事件的列表
+
+        :param request: Request instance for DescribeProductEventList.
+        :type request: :class:`tencentcloud.monitor.v20180724.models.DescribeProductEventListRequest`
+        :rtype: :class:`tencentcloud.monitor.v20180724.models.DescribeProductEventListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeProductEventList", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeProductEventListResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -69,6 +181,34 @@ class MonitorClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.GetMonitorDataResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ModifyAlarmReceivers(self, request):
+        """修改告警接收人
+
+        :param request: Request instance for ModifyAlarmReceivers.
+        :type request: :class:`tencentcloud.monitor.v20180724.models.ModifyAlarmReceiversRequest`
+        :rtype: :class:`tencentcloud.monitor.v20180724.models.ModifyAlarmReceiversResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ModifyAlarmReceivers", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ModifyAlarmReceiversResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

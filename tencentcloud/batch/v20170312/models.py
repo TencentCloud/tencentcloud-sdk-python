@@ -309,6 +309,8 @@ class ComputeEnvView(AbstractModel):
         :type EnvType: str
         :param DesiredComputeNodeCount: 计算节点期望个数
         :type DesiredComputeNodeCount: int
+        :param ResourceType: 计算环境资源类型，当前为CVM和CPM（黑石）
+        :type ResourceType: str
         """
         self.EnvId = None
         self.EnvName = None
@@ -317,6 +319,7 @@ class ComputeEnvView(AbstractModel):
         self.ComputeNodeMetrics = None
         self.EnvType = None
         self.DesiredComputeNodeCount = None
+        self.ResourceType = None
 
 
     def _deserialize(self, params):
@@ -331,6 +334,7 @@ class ComputeEnvView(AbstractModel):
             self.ComputeNodeMetrics._deserialize(params.get("ComputeNodeMetrics"))
         self.EnvType = params.get("EnvType")
         self.DesiredComputeNodeCount = params.get("DesiredComputeNodeCount")
+        self.ResourceType = params.get("ResourceType")
 
 
 class ComputeNode(AbstractModel):
@@ -360,6 +364,8 @@ class ComputeNode(AbstractModel):
         :type PrivateIpAddresses: list of str
         :param PublicIpAddresses: 实例公网IP
         :type PublicIpAddresses: list of str
+        :param ResourceType: 计算环境资源类型，当前为CVM和CPM（黑石）
+        :type ResourceType: str
         """
         self.ComputeNodeId = None
         self.ComputeNodeInstanceId = None
@@ -371,6 +377,7 @@ class ComputeNode(AbstractModel):
         self.AgentVersion = None
         self.PrivateIpAddresses = None
         self.PublicIpAddresses = None
+        self.ResourceType = None
 
 
     def _deserialize(self, params):
@@ -384,6 +391,7 @@ class ComputeNode(AbstractModel):
         self.AgentVersion = params.get("AgentVersion")
         self.PrivateIpAddresses = params.get("PrivateIpAddresses")
         self.PublicIpAddresses = params.get("PublicIpAddresses")
+        self.ResourceType = params.get("ResourceType")
 
 
 class ComputeNodeMetrics(AbstractModel):
@@ -974,12 +982,13 @@ class DescribeComputeEnvCreateInfosRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param EnvIds: 计算环境ID
+        :param EnvIds: 计算环境ID列表，与Filters参数不能同时指定。
         :type EnvIds: list of str
         :param Filters: 过滤条件
 <li> zone - String - 是否必填：否 -（过滤条件）按照可用区过滤。</li>
 <li> env-id - String - 是否必填：否 -（过滤条件）按照计算环境ID过滤。</li>
 <li> env-name - String - 是否必填：否 -（过滤条件）按照计算环境名称过滤。</li>
+与EnvIds参数不能同时指定。
         :type Filters: list of Filter
         :param Offset: 偏移量
         :type Offset: int
@@ -1074,6 +1083,8 @@ class DescribeComputeEnvResponse(AbstractModel):
         :type DesiredComputeNodeCount: int
         :param EnvType: 计算环境类型
         :type EnvType: str
+        :param ResourceType: 计算环境资源类型，当前为CVM和CPM（黑石）
+        :type ResourceType: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -1085,6 +1096,7 @@ class DescribeComputeEnvResponse(AbstractModel):
         self.ComputeNodeMetrics = None
         self.DesiredComputeNodeCount = None
         self.EnvType = None
+        self.ResourceType = None
         self.RequestId = None
 
 
@@ -1106,6 +1118,7 @@ class DescribeComputeEnvResponse(AbstractModel):
             self.ComputeNodeMetrics._deserialize(params.get("ComputeNodeMetrics"))
         self.DesiredComputeNodeCount = params.get("DesiredComputeNodeCount")
         self.EnvType = params.get("EnvType")
+        self.ResourceType = params.get("ResourceType")
         self.RequestId = params.get("RequestId")
 
 
@@ -1116,12 +1129,14 @@ class DescribeComputeEnvsRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param EnvIds: 计算环境ID
+        :param EnvIds: 计算环境ID列表，与Filters参数不能同时指定。
         :type EnvIds: list of str
         :param Filters: 过滤条件
 <li> zone - String - 是否必填：否 -（过滤条件）按照可用区过滤。</li>
 <li> env-id - String - 是否必填：否 -（过滤条件）按照计算环境ID过滤。</li>
 <li> env-name - String - 是否必填：否 -（过滤条件）按照计算环境名称过滤。</li>
+<li> resource-type - String - 是否必填：否 -（过滤条件）按照计算资源类型过滤，取值CVM或者CPM(黑石)。</li>
+与EnvIds参数不能同时指定。
         :type Filters: list of Filter
         :param Offset: 偏移量
         :type Offset: int
@@ -1173,6 +1188,49 @@ class DescribeComputeEnvsResponse(AbstractModel):
                 obj._deserialize(item)
                 self.ComputeEnvSet.append(obj)
         self.TotalCount = params.get("TotalCount")
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeCpmOsInfoRequest(AbstractModel):
+    """DescribeCpmOsInfo请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param DeviceClassCode: 黑石设备类型代号。 可以从[DescribeDeviceClass](https://cloud.tencent.com/document/api/386/32911)查询设备类型列表。
+        :type DeviceClassCode: str
+        """
+        self.DeviceClassCode = None
+
+
+    def _deserialize(self, params):
+        self.DeviceClassCode = params.get("DeviceClassCode")
+
+
+class DescribeCpmOsInfoResponse(AbstractModel):
+    """DescribeCpmOsInfo返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param OsInfoSet: 操作系统信息列表。
+        :type OsInfoSet: list of OsInfo
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.OsInfoSet = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("OsInfoSet") is not None:
+            self.OsInfoSet = []
+            for item in params.get("OsInfoSet"):
+                obj = OsInfo()
+                obj._deserialize(item)
+                self.OsInfoSet.append(obj)
         self.RequestId = params.get("RequestId")
 
 
@@ -1431,13 +1489,14 @@ class DescribeJobsRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param JobIds: 作业ID
+        :param JobIds: 作业ID列表，与Filters参数不能同时指定。
         :type JobIds: list of str
         :param Filters: 过滤条件
 <li> job-id - String - 是否必填：否 -（过滤条件）按照作业ID过滤。</li>
 <li> job-name - String - 是否必填：否 -（过滤条件）按照作业名称过滤。</li>
 <li> job-state - String - 是否必填：否 -（过滤条件）按照作业状态过滤。</li>
 <li> zone - String - 是否必填：否 -（过滤条件）按照可用区过滤。</li>
+与JobIds参数不能同时指定。
         :type Filters: list of Filter
         :param Offset: 偏移量
         :type Offset: int
@@ -1657,10 +1716,11 @@ class DescribeTaskTemplatesRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param TaskTemplateIds: 任务模板ID
+        :param TaskTemplateIds: 任务模板ID列表，与Filters参数不能同时指定。
         :type TaskTemplateIds: list of str
         :param Filters: 过滤条件
 <li> task-template-name - String - 是否必填：否 -（过滤条件）按照任务模板名称过滤。</li>
+与TaskTemplateIds参数不能同时指定。
         :type Filters: list of Filter
         :param Offset: 偏移量
         :type Offset: int
@@ -1887,7 +1947,7 @@ class EnvDataCpm(AbstractModel):
         :type TimeSpan: int
         :param RaidId: RAID类型ID。通过黑石接口[DescribeDeviceClassPartition]( https://cloud.tencent.com/document/api/386/32910)查询机型RAID方式以及系统盘大小，获取RAID信息。
         :type RaidId: int
-        :param OsTypeId: 部署服务器的操作系统ID。通过黑石接口[DescribeOsInfo]( https://cloud.tencent.com/document/product/386/32902)查询操作系统信息。
+        :param OsTypeId: 部署服务器的操作系统ID。通过批量计算接口DescribeCpmOsInfo查询操作系统信息。
         :type OsTypeId: int
         :param VirtualPrivateClouds: 黑石VPC列表，目前仅支持一个VPC。
         :type VirtualPrivateClouds: list of CpmVirtualPrivateCloud
@@ -2822,6 +2882,47 @@ class Notification(AbstractModel):
                 self.EventConfigs.append(obj)
 
 
+class OsInfo(AbstractModel):
+    """操作系统类型
+
+    """
+
+    def __init__(self):
+        """
+        :param OsTypeId: 操作系统ID。
+        :type OsTypeId: int
+        :param OsName: 操作系统名称。
+        :type OsName: str
+        :param OsDescription: 操作系统名称描述。
+        :type OsDescription: str
+        :param OsEnglishDescription: 操作系统英文名称。
+        :type OsEnglishDescription: str
+        :param OsClass: 操作系统的分类，如CentOs Debian。
+        :type OsClass: str
+        :param ImageTag: 标识镜像分类。public:公共镜像; private: 专属镜像。
+        :type ImageTag: str
+        :param MaxPartitionSize: 操作系统，ext4文件下所支持的最大的磁盘大小。单位为T。
+        :type MaxPartitionSize: int
+        """
+        self.OsTypeId = None
+        self.OsName = None
+        self.OsDescription = None
+        self.OsEnglishDescription = None
+        self.OsClass = None
+        self.ImageTag = None
+        self.MaxPartitionSize = None
+
+
+    def _deserialize(self, params):
+        self.OsTypeId = params.get("OsTypeId")
+        self.OsName = params.get("OsName")
+        self.OsDescription = params.get("OsDescription")
+        self.OsEnglishDescription = params.get("OsEnglishDescription")
+        self.OsClass = params.get("OsClass")
+        self.ImageTag = params.get("ImageTag")
+        self.MaxPartitionSize = params.get("MaxPartitionSize")
+
+
 class OutputMapping(AbstractModel):
     """输出映射
 
@@ -3698,11 +3799,14 @@ class VirtualPrivateCloud(AbstractModel):
         :type AsVpcGateway: bool
         :param PrivateIpAddresses: 私有网络子网 IP 数组，在创建实例、修改实例vpc属性操作中可使用此参数。当前仅批量创建多台实例时支持传入相同子网的多个 IP。
         :type PrivateIpAddresses: list of str
+        :param Ipv6AddressCount: 为弹性网卡指定随机生成的 IPv6 地址数量。
+        :type Ipv6AddressCount: int
         """
         self.VpcId = None
         self.SubnetId = None
         self.AsVpcGateway = None
         self.PrivateIpAddresses = None
+        self.Ipv6AddressCount = None
 
 
     def _deserialize(self, params):
@@ -3710,3 +3814,4 @@ class VirtualPrivateCloud(AbstractModel):
         self.SubnetId = params.get("SubnetId")
         self.AsVpcGateway = params.get("AsVpcGateway")
         self.PrivateIpAddresses = params.get("PrivateIpAddresses")
+        self.Ipv6AddressCount = params.get("Ipv6AddressCount")
