@@ -979,6 +979,34 @@ class GaapClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeDomainErrorPageInfoByIds(self, request):
+        """根据定制错误ID查询错误响应
+
+        :param request: Request instance for DescribeDomainErrorPageInfoByIds.
+        :type request: :class:`tencentcloud.gaap.v20180529.models.DescribeDomainErrorPageInfoByIdsRequest`
+        :rtype: :class:`tencentcloud.gaap.v20180529.models.DescribeDomainErrorPageInfoByIdsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeDomainErrorPageInfoByIds", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeDomainErrorPageInfoByIdsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeGroupAndStatisticsProxy(self, request):
         """该接口为内部接口，用于查询可以获取统计数据的通道组和通道信息
 

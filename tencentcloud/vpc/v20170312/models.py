@@ -355,9 +355,10 @@ class AllocateAddressesRequest(AbstractModel):
 <ul style="margin:0"><li>已开通Anycast公网加速白名单的用户，可选值：<ul><li>AnycastEIP：加速IP，可参见 [Anycast 公网加速](https://cloud.tencent.com/document/product/644)</li></ul>注意：仅部分地域支持加速IP。</li></ul>
         :type AddressType: str
         :param AnycastZone: Anycast发布域。
-<ul style="margin:0"><li>已开通Anycast公网加速白名单的用户，可选值：<ul><li>ANYCAST_ZONE_GLOBAL：全球发布域（需要额外开通Anycast全球加速白名单）</li><li>ANYCAST_ZONE_OVERSEAS：境外发布域</li></ul>默认值：ANYCAST_ZONE_OVERSEAS。</li></ul>
+<ul style="margin:0"><li>已开通Anycast公网加速白名单的用户，可选值：<ul><li>ANYCAST_ZONE_GLOBAL：全球发布域（需要额外开通Anycast全球加速白名单）</li><li>ANYCAST_ZONE_OVERSEAS：境外发布域</li><li><b>[已废弃]</b> ANYCAST_ZONE_A：发布域A（已更新为全球发布域）</li><li><b>[已废弃]</b> ANYCAST_ZONE_B：发布域B（已更新为全球发布域）</li></ul>默认值：ANYCAST_ZONE_OVERSEAS。</li></ul>
         :type AnycastZone: str
-        :param ApplicableForCLB: AnycastEIP是否用于绑定负载均衡。
+        :param ApplicableForCLB: <b>[已废弃]</b> AnycastEIP不再区分是否负载均衡。原参数说明如下：
+AnycastEIP是否用于绑定负载均衡。
 <ul style="margin:0"><li>已开通Anycast公网加速白名单的用户，可选值：<ul><li>TRUE：AnycastEIP可绑定对象为负载均衡</li>
 <li>FALSE：AnycastEIP可绑定对象为云服务器、NAT网关、高可用虚拟IP等</li></ul>默认值：FALSE。</li></ul>
         :type ApplicableForCLB: bool
@@ -2272,7 +2273,7 @@ class CreateSecurityGroupRequest(AbstractModel):
         :type GroupName: str
         :param GroupDescription: 安全组备注，最多100个字符。
         :type GroupDescription: str
-        :param ProjectId: 项目id，默认0。可在qcloud控制台项目管理页面查询到。
+        :param ProjectId: 项目ID，默认0。可在qcloud控制台项目管理页面查询到。
         :type ProjectId: str
         """
         self.GroupName = None
@@ -5315,7 +5316,7 @@ class DescribeNetworkInterfaceLimitResponse(AbstractModel):
         """
         :param EniQuantity: 弹性网卡配额
         :type EniQuantity: int
-        :param EniPrivateIpAddressQuantity: 每个弹性网卡可以分配的ip配额
+        :param EniPrivateIpAddressQuantity: 每个弹性网卡可以分配的IP配额
         :type EniPrivateIpAddressQuantity: int
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -5351,6 +5352,7 @@ class DescribeNetworkInterfacesRequest(AbstractModel):
 <li>address-ip - String - （过滤条件）内网IPv4地址。</li>
 <li>tag-key - String -是否必填：否- （过滤条件）按照标签键进行过滤。使用请参考示例2</li>
 <li>tag:tag-key - String - 是否必填：否 - （过滤条件）按照标签键值对进行过滤。 tag-key使用具体的标签键进行替换。使用请参考示例3。</li>
+<li>is-primary - Boolean - 是否必填：否 - （过滤条件）按照是否主网卡进行过滤。值为true时，仅过滤主网卡；值为false时，仅过滤辅助网卡；次过滤参数为提供时，同时过滤主网卡和辅助网卡。</li>
         :type Filters: list of Filter
         :param Offset: 偏移量，默认为0。
         :type Offset: int
@@ -6925,6 +6927,8 @@ class HaVip(AbstractModel):
         :type State: str
         :param CreatedTime: 创建时间。
         :type CreatedTime: str
+        :param Business: 使用havip的业务标识。
+        :type Business: str
         """
         self.HaVipId = None
         self.HaVipName = None
@@ -6936,6 +6940,7 @@ class HaVip(AbstractModel):
         self.AddressIp = None
         self.State = None
         self.CreatedTime = None
+        self.Business = None
 
 
     def _deserialize(self, params):
@@ -6949,6 +6954,7 @@ class HaVip(AbstractModel):
         self.AddressIp = params.get("AddressIp")
         self.State = params.get("State")
         self.CreatedTime = params.get("CreatedTime")
+        self.Business = params.get("Business")
 
 
 class HaVipAssociateAddressIpRequest(AbstractModel):
@@ -7843,6 +7849,44 @@ class ModifyCcnAttributeRequest(AbstractModel):
 
 class ModifyCcnAttributeResponse(AbstractModel):
     """ModifyCcnAttribute返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class ModifyCcnRegionBandwidthLimitsTypeRequest(AbstractModel):
+    """ModifyCcnRegionBandwidthLimitsType请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param CcnId: 云联网实例ID。
+        :type CcnId: str
+        :param BandwidthLimitType: 云联网限速类型，INTER_REGION_LIMIT：地域间限速，OUTER_REGION_LIMIT：地域出口限速。
+        :type BandwidthLimitType: str
+        """
+        self.CcnId = None
+        self.BandwidthLimitType = None
+
+
+    def _deserialize(self, params):
+        self.CcnId = params.get("CcnId")
+        self.BandwidthLimitType = params.get("BandwidthLimitType")
+
+
+class ModifyCcnRegionBandwidthLimitsTypeResponse(AbstractModel):
+    """ModifyCcnRegionBandwidthLimitsType返回参数结构体
 
     """
 
@@ -9015,14 +9059,14 @@ VPN：VPN网关；
 DIRECTCONNECT：专线网关；
 PEERCONNECTION：对等连接；
 NAT：NAT网关；
-NORMAL_CVM：普通云主机；
+NORMAL_CVM：普通云服务器；
         :type NextHopType: str
         :param NextHopDestination: 下一跳目的网关，取值与“下一跳类型”相关：
 下一跳类型为VPN，取值VPN网关ID，形如：vpngw-12345678；
 下一跳类型为DIRECTCONNECT，取值专线网关ID，形如：dcg-12345678；
 下一跳类型为PEERCONNECTION，取值对等连接ID，形如：pcx-12345678；
 下一跳类型为NAT，取值Nat网关，形如：nat-12345678；
-下一跳类型为NORMAL_CVM，取值云主机IPv4地址，形如：10.0.0.12；
+下一跳类型为NORMAL_CVM，取值云服务器IPv4地址，形如：10.0.0.12；
         :type NextHopDestination: str
         :param NextHopName: 下一跳网关名称。
 注意：此字段可能返回 null，表示取不到有效值。
@@ -9999,14 +10043,14 @@ class Route(AbstractModel):
         :param DestinationCidrBlock: 目的网段，取值不能在私有网络网段内，例如：112.20.51.0/24。
         :type DestinationCidrBlock: str
         :param GatewayType: 下一跳类型，目前我们支持的类型有：
-CVM：公网网关类型的云主机；
+CVM：公网网关类型的云服务器；
 VPN：VPN网关；
 DIRECTCONNECT：专线网关；
 PEERCONNECTION：对等连接；
 SSLVPN：sslvpn网关；
 NAT：NAT网关; 
-NORMAL_CVM：普通云主机；
-EIP：云主机的公网IP；
+NORMAL_CVM：普通云服务器；
+EIP：云服务器的公网IP；
 CCN：云联网。
         :type GatewayType: str
         :param GatewayId: 下一跳地址，这里只需要指定不同下一跳类型的网关ID，系统会自动匹配到下一跳地址。
@@ -10165,6 +10209,8 @@ class SecurityGroup(AbstractModel):
         :type IsDefault: bool
         :param CreatedTime: 安全组创建时间。
         :type CreatedTime: str
+        :param TagSet: 标签键值对。
+        :type TagSet: list of Tag
         """
         self.SecurityGroupId = None
         self.SecurityGroupName = None
@@ -10172,6 +10218,7 @@ class SecurityGroup(AbstractModel):
         self.ProjectId = None
         self.IsDefault = None
         self.CreatedTime = None
+        self.TagSet = None
 
 
     def _deserialize(self, params):
@@ -10181,6 +10228,12 @@ class SecurityGroup(AbstractModel):
         self.ProjectId = params.get("ProjectId")
         self.IsDefault = params.get("IsDefault")
         self.CreatedTime = params.get("CreatedTime")
+        if params.get("TagSet") is not None:
+            self.TagSet = []
+            for item in params.get("TagSet"):
+                obj = Tag()
+                obj._deserialize(item)
+                self.TagSet.append(obj)
 
 
 class SecurityGroupAssociationStatistics(AbstractModel):
@@ -10192,7 +10245,7 @@ class SecurityGroupAssociationStatistics(AbstractModel):
         """
         :param SecurityGroupId: 安全组实例ID。
         :type SecurityGroupId: str
-        :param CVM: 云主机实例数。
+        :param CVM: 云服务器实例数。
         :type CVM: int
         :param CDB: 数据库实例数。
         :type CDB: int
@@ -11041,6 +11094,8 @@ class VpnGateway(AbstractModel):
         :type Zone: str
         :param VpnGatewayQuotaSet: 网关带宽配额信息
         :type VpnGatewayQuotaSet: list of VpnGatewayQuota
+        :param Version: 网关实例版本信息
+        :type Version: str
         """
         self.VpnGatewayId = None
         self.VpcId = None
@@ -11058,6 +11113,7 @@ class VpnGateway(AbstractModel):
         self.RestrictState = None
         self.Zone = None
         self.VpnGatewayQuotaSet = None
+        self.Version = None
 
 
     def _deserialize(self, params):
@@ -11082,6 +11138,7 @@ class VpnGateway(AbstractModel):
                 obj = VpnGatewayQuota()
                 obj._deserialize(item)
                 self.VpnGatewayQuotaSet.append(obj)
+        self.Version = params.get("Version")
 
 
 class VpnGatewayQuota(AbstractModel):

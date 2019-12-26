@@ -1961,6 +1961,50 @@ class DescribeDestRegionsResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeDomainErrorPageInfoByIdsRequest(AbstractModel):
+    """DescribeDomainErrorPageInfoByIds请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ErrorPageIds: 定制错误ID列表,最多支持10个
+        :type ErrorPageIds: list of str
+        """
+        self.ErrorPageIds = None
+
+
+    def _deserialize(self, params):
+        self.ErrorPageIds = params.get("ErrorPageIds")
+
+
+class DescribeDomainErrorPageInfoByIdsResponse(AbstractModel):
+    """DescribeDomainErrorPageInfoByIds返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ErrorPageSet: 定制错误响应配置集
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ErrorPageSet: list of DomainErrorPageInfo
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.ErrorPageSet = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("ErrorPageSet") is not None:
+            self.ErrorPageSet = []
+            for item in params.get("ErrorPageSet"):
+                obj = DomainErrorPageInfo()
+                obj._deserialize(item)
+                self.ErrorPageSet.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeDomainErrorPageInfoRequest(AbstractModel):
     """DescribeDomainErrorPageInfo请求参数结构体
 
