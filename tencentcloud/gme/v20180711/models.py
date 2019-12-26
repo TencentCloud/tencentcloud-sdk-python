@@ -533,7 +533,7 @@ class RealtimeSpeechConf(AbstractModel):
         """
         :param Status: 实时语音服务开关，取值：open/close
         :type Status: str
-        :param Quality: 实时语音音质类型，取值：high-高音质，ordinary-普通音质。 默认为普通音质。
+        :param Quality: 实时语音音质类型，取值：high-高音质，ordinary-普通音质。默认高音质。普通音质仅白名单开放，如需要普通音质，请联系腾讯云商务。
         :type Quality: str
         """
         self.Status = None
@@ -595,10 +595,10 @@ class ScanPiece(AbstractModel):
         :type MainType: str
         :param ScanDetail: 语音检测详情
         :type ScanDetail: list of ScanDetail
-        :param RoomId: gme实时语音房间id，透传任务传入时的RoomId
+        :param RoomId: gme实时语音房间ID，透传任务传入时的RoomId
 注意：此字段可能返回 null，表示取不到有效值。
         :type RoomId: str
-        :param OpenId: gme实时语音用户id，透传任务传入时的OpenId
+        :param OpenId: gme实时语音用户ID，透传任务传入时的OpenId
 注意：此字段可能返回 null，表示取不到有效值。
         :type OpenId: str
         :param Info: 备注
@@ -766,9 +766,9 @@ class Task(AbstractModel):
         :type DataId: str
         :param Url: 数据文件的url，为 urlencode 编码，流式则为拉流地址
         :type Url: str
-        :param RoomId: gme实时语音房间id，通过gme实时语音进行语音分析时输入
+        :param RoomId: gme实时语音房间ID，通过gme实时语音进行语音分析时输入
         :type RoomId: str
-        :param OpenId: gme实时语音用户id，通过gme实时语音进行语音分析时输入
+        :param OpenId: gme实时语音用户ID，通过gme实时语音进行语音分析时输入
         :type OpenId: str
         """
         self.DataId = None
@@ -831,16 +831,16 @@ class VoiceFilterInfo(AbstractModel):
 
     def __init__(self):
         """
-        :param BizId: 应用id
+        :param BizId: 应用ID
 注意：此字段可能返回 null，表示取不到有效值。
         :type BizId: int
-        :param FileId: 文件id，表示文件唯一id
+        :param FileId: 文件ID，表示文件唯一ID
 注意：此字段可能返回 null，表示取不到有效值。
         :type FileId: str
         :param FileName: 文件名
 注意：此字段可能返回 null，表示取不到有效值。
         :type FileName: str
-        :param OpenId: 用户id
+        :param OpenId: 用户ID
 注意：此字段可能返回 null，表示取不到有效值。
         :type OpenId: str
         :param Timestamp: 数据创建时间

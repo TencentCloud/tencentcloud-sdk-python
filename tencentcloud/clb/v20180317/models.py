@@ -112,6 +112,27 @@ class Backend(AbstractModel):
         self.EniId = params.get("EniId")
 
 
+class BasicTargetGroupInfo(AbstractModel):
+    """监听器或者转发规则绑定的目标组基本信息
+
+    """
+
+    def __init__(self):
+        """
+        :param TargetGroupId: 目标组ID
+        :type TargetGroupId: str
+        :param TargetGroupName: 目标组名称
+        :type TargetGroupName: str
+        """
+        self.TargetGroupId = None
+        self.TargetGroupName = None
+
+
+    def _deserialize(self, params):
+        self.TargetGroupId = params.get("TargetGroupId")
+        self.TargetGroupName = params.get("TargetGroupName")
+
+
 class BatchDeregisterTargetsRequest(AbstractModel):
     """BatchDeregisterTargets请求参数结构体
 
@@ -287,6 +308,31 @@ class BatchTarget(AbstractModel):
         self.LocationId = params.get("LocationId")
 
 
+class BlockedIP(AbstractModel):
+    """加入了12306黑名单的IP
+
+    """
+
+    def __init__(self):
+        """
+        :param IP: 黑名单IP
+        :type IP: str
+        :param CreateTime: 加入黑名单的时间
+        :type CreateTime: str
+        :param ExpireTime: 过期时间
+        :type ExpireTime: str
+        """
+        self.IP = None
+        self.CreateTime = None
+        self.ExpireTime = None
+
+
+    def _deserialize(self, params):
+        self.IP = params.get("IP")
+        self.CreateTime = params.get("CreateTime")
+        self.ExpireTime = params.get("ExpireTime")
+
+
 class CertificateInput(AbstractModel):
     """证书信息
 
@@ -298,7 +344,7 @@ class CertificateInput(AbstractModel):
         :type SSLMode: str
         :param CertId: 服务端证书的 ID，如果不填写此项则必须上传证书，包括 CertContent，CertKey，CertName。
         :type CertId: str
-        :param CertCaId: 客户端证书的 ID，当监听器采用双向认证，即 SSLMode=mutual 时，如果不填写此项则必须上传客户端证书，包括 CertCaContent，CertCaName。
+        :param CertCaId: 客户端证书的 ID，当监听器采用双向认证，即 SSLMode=MUTUAL 时，如果不填写此项则必须上传客户端证书，包括 CertCaContent，CertCaName。
         :type CertCaId: str
         :param CertName: 上传服务端证书的名称，如果没有 CertId，则此项必传。
         :type CertName: str
@@ -565,6 +611,33 @@ class ClassicalTargetInfo(AbstractModel):
         self.Weight = params.get("Weight")
 
 
+class ClusterItem(AbstractModel):
+    """独占集群信息
+
+    """
+
+    def __init__(self):
+        """
+        :param ClusterId: 集群唯一ID
+        :type ClusterId: str
+        :param ClusterName: 集群名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ClusterName: str
+        :param Zone: 集群所在可用区，如ap-guangzhou-1
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Zone: str
+        """
+        self.ClusterId = None
+        self.ClusterName = None
+        self.Zone = None
+
+
+    def _deserialize(self, params):
+        self.ClusterId = params.get("ClusterId")
+        self.ClusterName = params.get("ClusterName")
+        self.Zone = params.get("Zone")
+
+
 class CreateListenerRequest(AbstractModel):
     """CreateListener请求参数结构体
 
@@ -657,11 +730,11 @@ OPEN：公网属性， INTERNAL：内网属性。
         :type LoadBalancerName: str
         :param VpcId: 负载均衡后端目标设备所属的网络 ID，如vpc-12345678，可以通过 DescribeVpcEx 接口获取。 不传此参数则默认为基础网络（"0"）。
         :type VpcId: str
-        :param SubnetId: 在私有网络内购买内网负载均衡实例的情况下，必须指定子网 ID，内网负载均衡实例的 VIP 将从这个子网中产生。其它情况不支持该参数。
+        :param SubnetId: 在私有网络内购买内网负载均衡实例的情况下，必须指定子网 ID，内网负载均衡实例的 VIP 将从这个子网中产生。
         :type SubnetId: str
         :param ProjectId: 负载均衡实例所属的项目 ID，可以通过 DescribeProject 接口获取。不传此参数则视为默认项目。
         :type ProjectId: int
-        :param AddressIPVersion: 仅适用于公网负载均衡。IP版本，IPV4 | IPV6，默认值 IPV4。
+        :param AddressIPVersion: 仅适用于公网负载均衡。IP版本，可取值：IPV4、IPV6、IPv6FullChain，默认值 IPV4。
         :type AddressIPVersion: str
         :param Number: 创建负载均衡的个数，默认值 1。
         :type Number: int
@@ -670,8 +743,6 @@ OPEN：公网属性， INTERNAL：内网属性。
         :type MasterZoneId: str
         :param ZoneId: 仅适用于公网负载均衡。可用区ID，指定可用区以创建负载均衡实例。如：ap-guangzhou-1
         :type ZoneId: str
-        :param AnycastZone: 仅适用于公网负载均衡。Anycast的发布域，可取 ZONE_A 或 ZONE_B。仅带宽非上移用户支持此参数。
-        :type AnycastZone: str
         :param InternetAccessible: 仅适用于公网负载均衡。负载均衡的网络计费方式，此参数仅对带宽上移用户生效。
         :type InternetAccessible: :class:`tencentcloud.clb.v20180317.models.InternetAccessible`
         :param Tags: 购买负载均衡同时，给负载均衡打上标签
@@ -687,7 +758,6 @@ OPEN：公网属性， INTERNAL：内网属性。
         self.Number = None
         self.MasterZoneId = None
         self.ZoneId = None
-        self.AnycastZone = None
         self.InternetAccessible = None
         self.Tags = None
 
@@ -703,7 +773,6 @@ OPEN：公网属性， INTERNAL：内网属性。
         self.Number = params.get("Number")
         self.MasterZoneId = params.get("MasterZoneId")
         self.ZoneId = params.get("ZoneId")
-        self.AnycastZone = params.get("AnycastZone")
         if params.get("InternetAccessible") is not None:
             self.InternetAccessible = InternetAccessible()
             self.InternetAccessible._deserialize(params.get("InternetAccessible"))
@@ -773,13 +842,17 @@ class CreateRuleResponse(AbstractModel):
 
     def __init__(self):
         """
+        :param LocationIds: 创建的转发规则的唯一标识数组
+        :type LocationIds: list of str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
+        self.LocationIds = None
         self.RequestId = None
 
 
     def _deserialize(self, params):
+        self.LocationIds = params.get("LocationIds")
         self.RequestId = params.get("RequestId")
 
 
@@ -1050,6 +1123,103 @@ class DeregisterTargetsResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeBlockIPListRequest(AbstractModel):
+    """DescribeBlockIPList请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param LoadBalancerId: 负载均衡实例 ID。
+        :type LoadBalancerId: str
+        :param Offset: 数据偏移量，默认为 0。
+        :type Offset: int
+        :param Limit: 返回IP的最大个数，默认为 100000。
+        :type Limit: int
+        """
+        self.LoadBalancerId = None
+        self.Offset = None
+        self.Limit = None
+
+
+    def _deserialize(self, params):
+        self.LoadBalancerId = params.get("LoadBalancerId")
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+
+
+class DescribeBlockIPListResponse(AbstractModel):
+    """DescribeBlockIPList返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param BlockedIPCount: 返回的IP的数量
+        :type BlockedIPCount: int
+        :param ClientIPField: 获取用户真实IP的字段
+        :type ClientIPField: str
+        :param BlockedIPList: 加入了12360黑名单的IP列表
+        :type BlockedIPList: list of BlockedIP
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.BlockedIPCount = None
+        self.ClientIPField = None
+        self.BlockedIPList = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.BlockedIPCount = params.get("BlockedIPCount")
+        self.ClientIPField = params.get("ClientIPField")
+        if params.get("BlockedIPList") is not None:
+            self.BlockedIPList = []
+            for item in params.get("BlockedIPList"):
+                obj = BlockedIP()
+                obj._deserialize(item)
+                self.BlockedIPList.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeBlockIPTaskRequest(AbstractModel):
+    """DescribeBlockIPTask请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param TaskId: ModifyBlockIPList 接口返回的异步任务的ID。
+        :type TaskId: str
+        """
+        self.TaskId = None
+
+
+    def _deserialize(self, params):
+        self.TaskId = params.get("TaskId")
+
+
+class DescribeBlockIPTaskResponse(AbstractModel):
+    """DescribeBlockIPTask返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Status: 1 running，2 fail，6 succ
+        :type Status: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Status = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Status = params.get("Status")
         self.RequestId = params.get("RequestId")
 
 
@@ -1329,7 +1499,7 @@ OPEN：公网属性， INTERNAL：内网属性。
         :type BackendPrivateIps: list of str
         :param Offset: 数据偏移量，默认为 0。
         :type Offset: int
-        :param Limit: 返回负载均衡实例的个数，默认为 20。
+        :param Limit: 返回负载均衡实例的数量，默认为20，最大值为100。
         :type Limit: int
         :param OrderBy: 排序参数，支持以下字段：LoadBalancerName，CreateTime，Domain，LoadBalancerType。
         :type OrderBy: str
@@ -1609,6 +1779,46 @@ class DescribeTaskStatusResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class ExclusiveCluster(AbstractModel):
+    """独占集群
+
+    """
+
+    def __init__(self):
+        """
+        :param L4Clusters: 4层独占集群列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type L4Clusters: list of ClusterItem
+        :param L7Clusters: 7层独占集群列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type L7Clusters: list of ClusterItem
+        :param ClassicalCluster: vpcgw集群
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ClassicalCluster: :class:`tencentcloud.clb.v20180317.models.ClusterItem`
+        """
+        self.L4Clusters = None
+        self.L7Clusters = None
+        self.ClassicalCluster = None
+
+
+    def _deserialize(self, params):
+        if params.get("L4Clusters") is not None:
+            self.L4Clusters = []
+            for item in params.get("L4Clusters"):
+                obj = ClusterItem()
+                obj._deserialize(item)
+                self.L4Clusters.append(obj)
+        if params.get("L7Clusters") is not None:
+            self.L7Clusters = []
+            for item in params.get("L7Clusters"):
+                obj = ClusterItem()
+                obj._deserialize(item)
+                self.L7Clusters.append(obj)
+        if params.get("ClassicalCluster") is not None:
+            self.ClassicalCluster = ClusterItem()
+            self.ClassicalCluster._deserialize(params.get("ClassicalCluster"))
+
+
 class ExtraInfo(AbstractModel):
     """暂做保留，一般用户无需关注。
 
@@ -1730,17 +1940,24 @@ class InternetAccessible(AbstractModel):
         """
         :param InternetChargeType: TRAFFIC_POSTPAID_BY_HOUR 按流量按小时后计费 ; BANDWIDTH_POSTPAID_BY_HOUR 按带宽按小时后计费;
 BANDWIDTH_PACKAGE 按带宽包计费（当前，只有指定运营商时才支持此种计费模式）
+注意：此字段可能返回 null，表示取不到有效值。
         :type InternetChargeType: str
         :param InternetMaxBandwidthOut: 最大出带宽，单位Mbps，范围支持0到2048，仅对公网属性的LB生效，默认值 10
+注意：此字段可能返回 null，表示取不到有效值。
         :type InternetMaxBandwidthOut: int
+        :param BandwidthpkgSubType: 带宽包的类型，如SINGLEISP
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BandwidthpkgSubType: str
         """
         self.InternetChargeType = None
         self.InternetMaxBandwidthOut = None
+        self.BandwidthpkgSubType = None
 
 
     def _deserialize(self, params):
         self.InternetChargeType = params.get("InternetChargeType")
         self.InternetMaxBandwidthOut = params.get("InternetMaxBandwidthOut")
+        self.BandwidthpkgSubType = params.get("BandwidthpkgSubType")
 
 
 class LBChargePrepaid(AbstractModel):
@@ -1753,7 +1970,7 @@ class LBChargePrepaid(AbstractModel):
         :param RenewFlag: 续费类型：AUTO_RENEW 自动续费，  MANUAL_RENEW 手动续费
 注意：此字段可能返回 null，表示取不到有效值。
         :type RenewFlag: str
-        :param Period: 周期，表示多少个月（保留字段）
+        :param Period: 购买时长，单位：月
 注意：此字段可能返回 null，表示取不到有效值。
         :type Period: int
         """
@@ -1806,6 +2023,12 @@ class Listener(AbstractModel):
         :param EndPort: 端口段结束端口
 注意：此字段可能返回 null，表示取不到有效值。
         :type EndPort: int
+        :param TargetType: 后端服务器类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TargetType: str
+        :param TargetGroup: 绑定的目标组基本信息；当监听器绑定目标组时，会返回该字段
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TargetGroup: :class:`tencentcloud.clb.v20180317.models.BasicTargetGroupInfo`
         """
         self.ListenerId = None
         self.Protocol = None
@@ -1819,6 +2042,8 @@ class Listener(AbstractModel):
         self.ListenerName = None
         self.CreateTime = None
         self.EndPort = None
+        self.TargetType = None
+        self.TargetGroup = None
 
 
     def _deserialize(self, params):
@@ -1843,6 +2068,10 @@ class Listener(AbstractModel):
         self.ListenerName = params.get("ListenerName")
         self.CreateTime = params.get("CreateTime")
         self.EndPort = params.get("EndPort")
+        self.TargetType = params.get("TargetType")
+        if params.get("TargetGroup") is not None:
+            self.TargetGroup = BasicTargetGroupInfo()
+            self.TargetGroup._deserialize(params.get("TargetGroup"))
 
 
 class ListenerBackend(AbstractModel):
@@ -2042,6 +2271,21 @@ OPEN：公网属性， INTERNAL：内网属性。
         :param ConfigId: 负载均衡维度的个性化配置ID
 注意：此字段可能返回 null，表示取不到有效值。
         :type ConfigId: str
+        :param LoadBalancerPassToTarget: 后端服务是否放通来自LB的流量
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LoadBalancerPassToTarget: bool
+        :param ExclusiveCluster: 内网独占集群
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ExclusiveCluster: :class:`tencentcloud.clb.v20180317.models.ExclusiveCluster`
+        :param IPv6Mode: IP地址版本为ipv6时此字段有意义， IPv6Nat64 | IPv6FullChain
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IPv6Mode: str
+        :param SnatPro: 是否开启SnatPro
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SnatPro: bool
+        :param SnatIps: 开启SnatPro负载均衡后，SnatIp列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SnatIps: list of SnatIp
         """
         self.LoadBalancerId = None
         self.LoadBalancerName = None
@@ -2079,6 +2323,11 @@ OPEN：公网属性， INTERNAL：内网属性。
         self.ExtraInfo = None
         self.IsDDos = None
         self.ConfigId = None
+        self.LoadBalancerPassToTarget = None
+        self.ExclusiveCluster = None
+        self.IPv6Mode = None
+        self.SnatPro = None
+        self.SnatIps = None
 
 
     def _deserialize(self, params):
@@ -2138,6 +2387,18 @@ OPEN：公网属性， INTERNAL：内网属性。
             self.ExtraInfo._deserialize(params.get("ExtraInfo"))
         self.IsDDos = params.get("IsDDos")
         self.ConfigId = params.get("ConfigId")
+        self.LoadBalancerPassToTarget = params.get("LoadBalancerPassToTarget")
+        if params.get("ExclusiveCluster") is not None:
+            self.ExclusiveCluster = ExclusiveCluster()
+            self.ExclusiveCluster._deserialize(params.get("ExclusiveCluster"))
+        self.IPv6Mode = params.get("IPv6Mode")
+        self.SnatPro = params.get("SnatPro")
+        if params.get("SnatIps") is not None:
+            self.SnatIps = []
+            for item in params.get("SnatIps"):
+                obj = SnatIp()
+                obj._deserialize(item)
+                self.SnatIps.append(obj)
 
 
 class LoadBalancerHealth(AbstractModel):
@@ -2220,6 +2481,70 @@ class ManualRewriteResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class ModifyBlockIPListRequest(AbstractModel):
+    """ModifyBlockIPList请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param LoadBalancerIds: 负载均衡实例ID
+        :type LoadBalancerIds: list of str
+        :param Type: 操作类型，可取：
+<li> add_customized_field（首次设置header，开启黑名单功能）</li>
+<li> set_customized_field（修改header）</li>
+<li> del_customized_field（删除header）</li>
+<li> add_blocked（添加黑名单）</li>
+<li> del_blocked（删除黑名单）</li>
+<li> flush_blocked（清空黑名单）</li>
+        :type Type: str
+        :param ClientIPField: 客户端真实IP存放的header字段名
+        :type ClientIPField: str
+        :param BlockIPList: 封禁IP列表，单次操作数组最大长度支持200000
+        :type BlockIPList: list of str
+        :param ExpireTime: 过期时间，单位秒，默认值3600
+        :type ExpireTime: int
+        :param AddStrategy: 添加IP的策略，可取：fifo（如果黑名单容量已满，新加入黑名单的IP采用先进先出策略）
+        :type AddStrategy: str
+        """
+        self.LoadBalancerIds = None
+        self.Type = None
+        self.ClientIPField = None
+        self.BlockIPList = None
+        self.ExpireTime = None
+        self.AddStrategy = None
+
+
+    def _deserialize(self, params):
+        self.LoadBalancerIds = params.get("LoadBalancerIds")
+        self.Type = params.get("Type")
+        self.ClientIPField = params.get("ClientIPField")
+        self.BlockIPList = params.get("BlockIPList")
+        self.ExpireTime = params.get("ExpireTime")
+        self.AddStrategy = params.get("AddStrategy")
+
+
+class ModifyBlockIPListResponse(AbstractModel):
+    """ModifyBlockIPList返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param JodId: 异步任务的ID
+        :type JodId: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.JodId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.JodId = params.get("JodId")
         self.RequestId = params.get("RequestId")
 
 
@@ -2409,7 +2734,7 @@ class ModifyLoadBalancerAttributesRequest(AbstractModel):
         :type LoadBalancerName: str
         :param TargetRegionInfo: 负载均衡绑定的后端服务的地域信息
         :type TargetRegionInfo: :class:`tencentcloud.clb.v20180317.models.TargetRegionInfo`
-        :param InternetChargeInfo: 网络计费相关参数，注意，目前只支持修改最大出带宽，不支持修改网络计费方式。
+        :param InternetChargeInfo: 网络计费相关参数
         :type InternetChargeInfo: :class:`tencentcloud.clb.v20180317.models.InternetAccessible`
         """
         self.LoadBalancerId = None
@@ -2436,13 +2761,18 @@ class ModifyLoadBalancerAttributesResponse(AbstractModel):
 
     def __init__(self):
         """
+        :param DealName: 切换负载均衡计费方式时，可用此参数查询切换任务是否成功。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DealName: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
+        self.DealName = None
         self.RequestId = None
 
 
     def _deserialize(self, params):
+        self.DealName = params.get("DealName")
         self.RequestId = params.get("RequestId")
 
 
@@ -2924,14 +3254,18 @@ class RuleInput(AbstractModel):
         :param Scheduler: 规则的请求转发方式，可选值：WRR、LEAST_CONN、IP_HASH
 分别表示按权重轮询、最小连接数、按IP哈希， 默认为 WRR。
         :type Scheduler: str
-        :param ForwardType: 负载均衡与后端服务之间的转发协议，目前支持 HTTP
+        :param ForwardType: 负载均衡与后端服务之间的转发协议，目前支持 HTTP/HTTPS/TRPC
         :type ForwardType: str
         :param DefaultServer: 是否将该域名设为默认域名，注意，一个监听器下只能设置一个默认域名。
         :type DefaultServer: bool
-        :param Http2: 是否开启Http2，注意，只用HTTPS域名才能开启Http2。
+        :param Http2: 是否开启Http2，注意，只有HTTPS域名才能开启Http2。
         :type Http2: bool
         :param TargetType: 后端目标类型，NODE表示绑定普通节点，TARGETGROUP表示绑定目标组
         :type TargetType: str
+        :param TrpcCallee: TRPC被调服务器路由，ForwardType为TRPC时必填
+        :type TrpcCallee: str
+        :param TrpcFunc: TRPC调用服务接口，ForwardType为TRPC时必填
+        :type TrpcFunc: str
         """
         self.Domain = None
         self.Url = None
@@ -2943,6 +3277,8 @@ class RuleInput(AbstractModel):
         self.DefaultServer = None
         self.Http2 = None
         self.TargetType = None
+        self.TrpcCallee = None
+        self.TrpcFunc = None
 
 
     def _deserialize(self, params):
@@ -2960,6 +3296,8 @@ class RuleInput(AbstractModel):
         self.DefaultServer = params.get("DefaultServer")
         self.Http2 = params.get("Http2")
         self.TargetType = params.get("TargetType")
+        self.TrpcCallee = params.get("TrpcCallee")
+        self.TrpcFunc = params.get("TrpcFunc")
 
 
 class RuleOutput(AbstractModel):
@@ -3004,6 +3342,20 @@ class RuleOutput(AbstractModel):
         :type ForwardType: str
         :param CreateTime: 转发规则的创建时间
         :type CreateTime: str
+        :param TargetType: 后端服务器类型
+        :type TargetType: str
+        :param TargetGroup: 绑定的目标组基本信息；当规则绑定目标组时，会返回该字段
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TargetGroup: :class:`tencentcloud.clb.v20180317.models.BasicTargetGroupInfo`
+        :param WafDomainId: WAF实例ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type WafDomainId: str
+        :param TrpcCallee: TRPC被调服务器路由，ForwardType为TRPC时有效
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TrpcCallee: str
+        :param TrpcFunc: TRPC调用服务接口，ForwardType为TRPC时有效
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TrpcFunc: str
         """
         self.LocationId = None
         self.Domain = None
@@ -3020,6 +3372,11 @@ class RuleOutput(AbstractModel):
         self.Http2 = None
         self.ForwardType = None
         self.CreateTime = None
+        self.TargetType = None
+        self.TargetGroup = None
+        self.WafDomainId = None
+        self.TrpcCallee = None
+        self.TrpcFunc = None
 
 
     def _deserialize(self, params):
@@ -3044,6 +3401,13 @@ class RuleOutput(AbstractModel):
         self.Http2 = params.get("Http2")
         self.ForwardType = params.get("ForwardType")
         self.CreateTime = params.get("CreateTime")
+        self.TargetType = params.get("TargetType")
+        if params.get("TargetGroup") is not None:
+            self.TargetGroup = BasicTargetGroupInfo()
+            self.TargetGroup._deserialize(params.get("TargetGroup"))
+        self.WafDomainId = params.get("WafDomainId")
+        self.TrpcCallee = params.get("TrpcCallee")
+        self.TrpcFunc = params.get("TrpcFunc")
 
 
 class RuleTargets(AbstractModel):
@@ -3160,6 +3524,27 @@ class SetSecurityGroupForLoadbalancersResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
+
+
+class SnatIp(AbstractModel):
+    """SnatIp的信息结构
+
+    """
+
+    def __init__(self):
+        """
+        :param SubnetId: 私有网络子网的唯一性id，如subnet-12345678
+        :type SubnetId: str
+        :param Ip: IP地址，如192.168.0.1
+        :type Ip: str
+        """
+        self.SubnetId = None
+        self.Ip = None
+
+
+    def _deserialize(self, params):
+        self.SubnetId = params.get("SubnetId")
+        self.Ip = params.get("Ip")
 
 
 class TagInfo(AbstractModel):

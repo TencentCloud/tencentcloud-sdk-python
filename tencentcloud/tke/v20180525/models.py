@@ -92,6 +92,27 @@ class AddExistedInstancesResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class AutoScalingGroupRange(AbstractModel):
+    """集群关联的伸缩组最大实例数最小值实例数
+
+    """
+
+    def __init__(self):
+        """
+        :param MinSize: 伸缩组最小实例数
+        :type MinSize: int
+        :param MaxSize: 伸缩组最大实例数
+        :type MaxSize: int
+        """
+        self.MinSize = None
+        self.MaxSize = None
+
+
+    def _deserialize(self, params):
+        self.MinSize = params.get("MinSize")
+        self.MaxSize = params.get("MaxSize")
+
+
 class Cluster(AbstractModel):
     """集群信息结构体
 
@@ -189,6 +210,127 @@ class ClusterAdvancedSettings(AbstractModel):
         self.AsEnabled = params.get("AsEnabled")
         self.ContainerRuntime = params.get("ContainerRuntime")
         self.NodeNameType = params.get("NodeNameType")
+
+
+class ClusterAsGroup(AbstractModel):
+    """集群关联的伸缩组信息
+
+    """
+
+    def __init__(self):
+        """
+        :param AutoScalingGroupId: 伸缩组ID
+        :type AutoScalingGroupId: str
+        :param Status: 伸缩组状态(开启 enabled 开启中 enabling 关闭 disabled 关闭中 disabling 更新中 updating 删除中 deleting 开启缩容中 scaleDownEnabling 关闭缩容中 scaleDownDisabling)
+        :type Status: str
+        :param IsUnschedulable: 节点是否设置成不可调度
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IsUnschedulable: bool
+        :param Labels: 伸缩组的label列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Labels: list of Label
+        """
+        self.AutoScalingGroupId = None
+        self.Status = None
+        self.IsUnschedulable = None
+        self.Labels = None
+
+
+    def _deserialize(self, params):
+        self.AutoScalingGroupId = params.get("AutoScalingGroupId")
+        self.Status = params.get("Status")
+        self.IsUnschedulable = params.get("IsUnschedulable")
+        if params.get("Labels") is not None:
+            self.Labels = []
+            for item in params.get("Labels"):
+                obj = Label()
+                obj._deserialize(item)
+                self.Labels.append(obj)
+
+
+class ClusterAsGroupAttribute(AbstractModel):
+    """集群伸缩组属性
+
+    """
+
+    def __init__(self):
+        """
+        :param AutoScalingGroupId: 伸缩组ID
+        :type AutoScalingGroupId: str
+        :param AutoScalingGroupEnabled: 是否开启
+        :type AutoScalingGroupEnabled: bool
+        :param AutoScalingGroupRange: 伸缩组最大最小实例数
+        :type AutoScalingGroupRange: :class:`tencentcloud.tke.v20180525.models.AutoScalingGroupRange`
+        """
+        self.AutoScalingGroupId = None
+        self.AutoScalingGroupEnabled = None
+        self.AutoScalingGroupRange = None
+
+
+    def _deserialize(self, params):
+        self.AutoScalingGroupId = params.get("AutoScalingGroupId")
+        self.AutoScalingGroupEnabled = params.get("AutoScalingGroupEnabled")
+        if params.get("AutoScalingGroupRange") is not None:
+            self.AutoScalingGroupRange = AutoScalingGroupRange()
+            self.AutoScalingGroupRange._deserialize(params.get("AutoScalingGroupRange"))
+
+
+class ClusterAsGroupOption(AbstractModel):
+    """集群弹性伸缩配置
+
+    """
+
+    def __init__(self):
+        """
+        :param IsScaleDownEnabled: 是否开启缩容
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IsScaleDownEnabled: bool
+        :param Expander: 多伸缩组情况下扩容选择算法(random 随机选择，most-pods 最多类型的Pod least-waste 最少的资源浪费，默认为random)
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Expander: str
+        :param MaxEmptyBulkDelete: 最大并发缩容数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MaxEmptyBulkDelete: int
+        :param ScaleDownDelay: 集群扩容后多少分钟开始判断缩容（默认为10分钟）
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ScaleDownDelay: int
+        :param ScaleDownUnneededTime: 节点连续空闲多少分钟后被缩容（默认为 10分钟）
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ScaleDownUnneededTime: int
+        :param ScaleDownUtilizationThreshold: 节点资源使用量低于多少(百分比)时认为空闲(默认: 50(百分比))
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ScaleDownUtilizationThreshold: int
+        :param SkipNodesWithLocalStorage: 含有本地存储Pod的节点是否不缩容(默认： FALSE)
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SkipNodesWithLocalStorage: bool
+        :param SkipNodesWithSystemPods: 含有kube-system namespace下非DaemonSet管理的Pod的节点是否不缩容 (默认： FALSE)
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SkipNodesWithSystemPods: bool
+        :param IgnoreDaemonSetsUtilization: 计算资源使用量时是否默认忽略DaemonSet的实例(默认值: False，不忽略)
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IgnoreDaemonSetsUtilization: bool
+        """
+        self.IsScaleDownEnabled = None
+        self.Expander = None
+        self.MaxEmptyBulkDelete = None
+        self.ScaleDownDelay = None
+        self.ScaleDownUnneededTime = None
+        self.ScaleDownUtilizationThreshold = None
+        self.SkipNodesWithLocalStorage = None
+        self.SkipNodesWithSystemPods = None
+        self.IgnoreDaemonSetsUtilization = None
+
+
+    def _deserialize(self, params):
+        self.IsScaleDownEnabled = params.get("IsScaleDownEnabled")
+        self.Expander = params.get("Expander")
+        self.MaxEmptyBulkDelete = params.get("MaxEmptyBulkDelete")
+        self.ScaleDownDelay = params.get("ScaleDownDelay")
+        self.ScaleDownUnneededTime = params.get("ScaleDownUnneededTime")
+        self.ScaleDownUtilizationThreshold = params.get("ScaleDownUtilizationThreshold")
+        self.SkipNodesWithLocalStorage = params.get("SkipNodesWithLocalStorage")
+        self.SkipNodesWithSystemPods = params.get("SkipNodesWithSystemPods")
+        self.IgnoreDaemonSetsUtilization = params.get("IgnoreDaemonSetsUtilization")
 
 
 class ClusterBasicSettings(AbstractModel):
@@ -533,6 +675,8 @@ class CreateClusterRequest(AbstractModel):
         :type InstanceAdvancedSettings: :class:`tencentcloud.tke.v20180525.models.InstanceAdvancedSettings`
         :param ExistedInstancesForNode: 已存在实例的配置信息。所有实例必须在同一个VPC中，最大数量不超过100。
         :type ExistedInstancesForNode: list of ExistedInstancesForNode
+        :param InstanceDataDiskMountSettings: CVM类型和其对应的数据盘挂载配置信息
+        :type InstanceDataDiskMountSettings: list of InstanceDataDiskMountSetting
         """
         self.ClusterCIDRSettings = None
         self.ClusterType = None
@@ -541,6 +685,7 @@ class CreateClusterRequest(AbstractModel):
         self.ClusterAdvancedSettings = None
         self.InstanceAdvancedSettings = None
         self.ExistedInstancesForNode = None
+        self.InstanceDataDiskMountSettings = None
 
 
     def _deserialize(self, params):
@@ -569,6 +714,12 @@ class CreateClusterRequest(AbstractModel):
                 obj = ExistedInstancesForNode()
                 obj._deserialize(item)
                 self.ExistedInstancesForNode.append(obj)
+        if params.get("InstanceDataDiskMountSettings") is not None:
+            self.InstanceDataDiskMountSettings = []
+            for item in params.get("InstanceDataDiskMountSettings"):
+                obj = InstanceDataDiskMountSetting()
+                obj._deserialize(item)
+                self.InstanceDataDiskMountSettings.append(obj)
 
 
 class CreateClusterResponse(AbstractModel):
@@ -693,28 +844,24 @@ class DataDisk(AbstractModel):
         :type FileSystem: str
         :param DiskSize: 云盘大小(G）
         :type DiskSize: int
-        :param AutuFormatAndMount: 是否自动化格式盘并挂载
-        :type AutuFormatAndMount: bool
+        :param AutoFormatAndMount: 是否自动化格式盘并挂载
+        :type AutoFormatAndMount: bool
         :param MountTarget: 挂载目录
-        :type MountTarget: list of str
-        :param DiskId: 云盘ID
-        :type DiskId: list of str
+        :type MountTarget: str
         """
         self.DiskType = None
         self.FileSystem = None
         self.DiskSize = None
-        self.AutuFormatAndMount = None
+        self.AutoFormatAndMount = None
         self.MountTarget = None
-        self.DiskId = None
 
 
     def _deserialize(self, params):
         self.DiskType = params.get("DiskType")
         self.FileSystem = params.get("FileSystem")
         self.DiskSize = params.get("DiskSize")
-        self.AutuFormatAndMount = params.get("AutuFormatAndMount")
+        self.AutoFormatAndMount = params.get("AutoFormatAndMount")
         self.MountTarget = params.get("MountTarget")
-        self.DiskId = params.get("DiskId")
 
 
 class DeleteClusterAsGroupsRequest(AbstractModel):
@@ -988,6 +1135,103 @@ class DeleteClusterRouteTableResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeClusterAsGroupOptionRequest(AbstractModel):
+    """DescribeClusterAsGroupOption请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ClusterId: 集群ID
+        :type ClusterId: str
+        """
+        self.ClusterId = None
+
+
+    def _deserialize(self, params):
+        self.ClusterId = params.get("ClusterId")
+
+
+class DescribeClusterAsGroupOptionResponse(AbstractModel):
+    """DescribeClusterAsGroupOption返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ClusterAsGroupOption: 集群弹性伸缩属性
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ClusterAsGroupOption: :class:`tencentcloud.tke.v20180525.models.ClusterAsGroupOption`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.ClusterAsGroupOption = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("ClusterAsGroupOption") is not None:
+            self.ClusterAsGroupOption = ClusterAsGroupOption()
+            self.ClusterAsGroupOption._deserialize(params.get("ClusterAsGroupOption"))
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeClusterAsGroupsRequest(AbstractModel):
+    """DescribeClusterAsGroups请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ClusterId: 集群ID
+        :type ClusterId: str
+        :param AutoScalingGroupIds: 伸缩组ID列表，如果为空，表示拉取集群关联的所有伸缩组。
+        :type AutoScalingGroupIds: list of str
+        :param Offset: 偏移量，默认为0。关于Offset的更进一步介绍请参考 API [简介](https://cloud.tencent.com/document/api/213/15688)中的相关小节。
+        :type Offset: int
+        :param Limit: 返回数量，默认为20，最大值为100。关于Limit的更进一步介绍请参考 API [简介](https://cloud.tencent.com/document/api/213/15688)中的相关小节。
+        :type Limit: int
+        """
+        self.ClusterId = None
+        self.AutoScalingGroupIds = None
+        self.Offset = None
+        self.Limit = None
+
+
+    def _deserialize(self, params):
+        self.ClusterId = params.get("ClusterId")
+        self.AutoScalingGroupIds = params.get("AutoScalingGroupIds")
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+
+
+class DescribeClusterAsGroupsResponse(AbstractModel):
+    """DescribeClusterAsGroups返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param TotalCount: 集群关联的伸缩组总数
+        :type TotalCount: int
+        :param ClusterAsGroupSet: 集群关联的伸缩组列表
+        :type ClusterAsGroupSet: :class:`tencentcloud.tke.v20180525.models.ClusterAsGroup`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.ClusterAsGroupSet = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("ClusterAsGroupSet") is not None:
+            self.ClusterAsGroupSet = ClusterAsGroup()
+            self.ClusterAsGroupSet._deserialize(params.get("ClusterAsGroupSet"))
         self.RequestId = params.get("RequestId")
 
 
@@ -1652,15 +1896,26 @@ class ExistedInstancesPara(AbstractModel):
 
 
 class Filter(AbstractModel):
-    """过滤器
+    """>描述键值对过滤器，用于条件过滤查询。例如过滤ID、名称、状态等
+    > * 若存在多个`Filter`时，`Filter`间的关系为逻辑与（`AND`）关系。
+    > * 若同一个`Filter`存在多个`Values`，同一`Filter`下`Values`间的关系为逻辑或（`OR`）关系。
+    >
+    > 以[DescribeInstances](https://cloud.tencent.com/document/api/213/15728)接口的`Filter`为例。若我们需要查询可用区（`zone`）为广州一区 ***并且*** 实例计费模式（`instance-charge-type`）为包年包月 ***或者*** 按量计费的实例时，可如下实现：
+    ```
+    Filters.0.Name=zone
+    &Filters.0.Values.0=ap-guangzhou-1
+    &Filters.1.Name=instance-charge-type
+    &Filters.1.Values.0=PREPAID
+    &Filters.1.Values.1=POSTPAID_BY_HOUR
+    ```
 
     """
 
     def __init__(self):
         """
-        :param Name: 属性名称, 若存在多个Filter时，Filter间的关系为逻辑与（AND）关系。
+        :param Name: 需要过滤的字段。
         :type Name: str
-        :param Values: 属性值, 若同一个Filter存在多个Values，同一Filter下Values间的关系为逻辑或（OR）关系。
+        :param Values: 字段的过滤值。
         :type Values: list of str
         """
         self.Name = None
@@ -1748,6 +2003,36 @@ class InstanceAdvancedSettings(AbstractModel):
                 self.DataDisks.append(obj)
 
 
+class InstanceDataDiskMountSetting(AbstractModel):
+    """CVM实例数据盘挂载配置
+
+    """
+
+    def __init__(self):
+        """
+        :param InstanceType: CVM实例类型
+        :type InstanceType: str
+        :param DataDisks: 数据盘挂载信息
+        :type DataDisks: list of DataDisk
+        :param Zone: CVM实例所属可用区
+        :type Zone: str
+        """
+        self.InstanceType = None
+        self.DataDisks = None
+        self.Zone = None
+
+
+    def _deserialize(self, params):
+        self.InstanceType = params.get("InstanceType")
+        if params.get("DataDisks") is not None:
+            self.DataDisks = []
+            for item in params.get("DataDisks"):
+                obj = DataDisk()
+                obj._deserialize(item)
+                self.DataDisks.append(obj)
+        self.Zone = params.get("Zone")
+
+
 class Label(AbstractModel):
     """k8s中标签，一般以数组的方式存在
 
@@ -1795,6 +2080,46 @@ class LoginSettings(AbstractModel):
         self.Password = params.get("Password")
         self.KeyIds = params.get("KeyIds")
         self.KeepImageLogin = params.get("KeepImageLogin")
+
+
+class ModifyClusterAsGroupAttributeRequest(AbstractModel):
+    """ModifyClusterAsGroupAttribute请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ClusterId: 集群ID
+        :type ClusterId: str
+        :param ClusterAsGroupAttribute: 集群关联的伸缩组属性
+        :type ClusterAsGroupAttribute: :class:`tencentcloud.tke.v20180525.models.ClusterAsGroupAttribute`
+        """
+        self.ClusterId = None
+        self.ClusterAsGroupAttribute = None
+
+
+    def _deserialize(self, params):
+        self.ClusterId = params.get("ClusterId")
+        if params.get("ClusterAsGroupAttribute") is not None:
+            self.ClusterAsGroupAttribute = ClusterAsGroupAttribute()
+            self.ClusterAsGroupAttribute._deserialize(params.get("ClusterAsGroupAttribute"))
+
+
+class ModifyClusterAsGroupAttributeResponse(AbstractModel):
+    """ModifyClusterAsGroupAttribute返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
 
 
 class ModifyClusterEndpointSPRequest(AbstractModel):

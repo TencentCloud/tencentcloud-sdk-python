@@ -1540,34 +1540,6 @@ class LiveClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def DescribeLiveStreamOnlineInfo(self, request):
-        """查询在线推流信息列表
-
-        :param request: Request instance for DescribeLiveStreamOnlineInfo.
-        :type request: :class:`tencentcloud.live.v20180801.models.DescribeLiveStreamOnlineInfoRequest`
-        :rtype: :class:`tencentcloud.live.v20180801.models.DescribeLiveStreamOnlineInfoResponse`
-
-        """
-        try:
-            params = request._serialize()
-            body = self.call("DescribeLiveStreamOnlineInfo", params)
-            response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.DescribeLiveStreamOnlineInfoResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(e.message, e.message)
-
-
     def DescribeLiveStreamOnlineList(self, request):
         """返回正在直播中的流列表
 
@@ -2300,7 +2272,7 @@ class LiveClient(AbstractClient):
 
 
     def ModifyLiveCallbackTemplate(self, request):
-        """修改回调模板
+        """修改回调模板。
 
         :param request: Request instance for ModifyLiveCallbackTemplate.
         :type request: :class:`tencentcloud.live.v20180801.models.ModifyLiveCallbackTemplateRequest`

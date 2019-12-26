@@ -445,6 +445,62 @@ class TkeClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeClusterAsGroupOption(self, request):
+        """集群弹性伸缩配置
+
+        :param request: Request instance for DescribeClusterAsGroupOption.
+        :type request: :class:`tencentcloud.tke.v20180525.models.DescribeClusterAsGroupOptionRequest`
+        :rtype: :class:`tencentcloud.tke.v20180525.models.DescribeClusterAsGroupOptionResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeClusterAsGroupOption", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeClusterAsGroupOptionResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeClusterAsGroups(self, request):
+        """集群关联的伸缩组列表
+
+        :param request: Request instance for DescribeClusterAsGroups.
+        :type request: :class:`tencentcloud.tke.v20180525.models.DescribeClusterAsGroupsRequest`
+        :rtype: :class:`tencentcloud.tke.v20180525.models.DescribeClusterAsGroupsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeClusterAsGroups", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeClusterAsGroupsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeClusterEndpointStatus(self, request):
         """查询集群访问端口状态(独立集群开启内网/外网访问，托管集群支持开启内网访问)
 
@@ -683,6 +739,34 @@ class TkeClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeRouteTableConflictsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ModifyClusterAsGroupAttribute(self, request):
+        """修改集群伸缩组属性
+
+        :param request: Request instance for ModifyClusterAsGroupAttribute.
+        :type request: :class:`tencentcloud.tke.v20180525.models.ModifyClusterAsGroupAttributeRequest`
+        :rtype: :class:`tencentcloud.tke.v20180525.models.ModifyClusterAsGroupAttributeResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ModifyClusterAsGroupAttribute", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ModifyClusterAsGroupAttributeResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

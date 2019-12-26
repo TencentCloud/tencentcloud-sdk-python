@@ -334,7 +334,7 @@ class IotcloudClient(AbstractClient):
 
 
     def DeleteProduct(self, request):
-        """本接口（DeleteProduct）用于删除一个物联网通信产品。
+        """本接口（DeleteProduct）用于删除一个物联网通信产品
 
         :param request: Request instance for DeleteProduct.
         :type request: :class:`tencentcloud.iotcloud.v20180614.models.DeleteProductRequest`

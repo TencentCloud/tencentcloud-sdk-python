@@ -3922,17 +3922,22 @@ class ConfirmEventsRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param EventHandles: 事件句柄，数组长度限制：16。
+        :param EventHandles: 事件句柄，即 [拉取事件通知](/document/product/266/33433) 接口输出参数中的 EventSet. EventHandle 字段。
+数组长度限制：16。
         :type EventHandles: list of str
+        :param ExtInfo: 保留字段，特殊用途时使用。
+        :type ExtInfo: str
         :param SubAppId: 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
         :type SubAppId: int
         """
         self.EventHandles = None
+        self.ExtInfo = None
         self.SubAppId = None
 
 
     def _deserialize(self, params):
         self.EventHandles = params.get("EventHandles")
+        self.ExtInfo = params.get("ExtInfo")
         self.SubAppId = params.get("SubAppId")
 
 
@@ -4975,7 +4980,8 @@ class CreateWatermarkTemplateRequest(AbstractModel):
         """
         :param Type: 水印类型，可选值：
 <li>image：图片水印；</li>
-<li>text：文字水印。</li>
+<li>text：文字水印；</li>
+<li>svg：SVG 水印。</li>
         :type Type: str
         :param Name: 水印模板名称，长度限制：64 个字符。
         :type Name: str
@@ -4986,7 +4992,7 @@ class CreateWatermarkTemplateRequest(AbstractModel):
 <li>TopRight：表示坐标原点位于视频图像的右上角，水印原点为图片或文字的右上角；</li>
 <li>BottomLeft：表示坐标原点位于视频图像的左下角，水印原点为图片或文字的左下角；</li>
 <li>BottomRight：表示坐标原点位于视频图像的右下角，水印原点为图片或文字的右下角。</li>
-默认值：TopLeft。目前，当 Type 为 image，该字段仅支持 TopLeft。
+默认值：TopLeft。
         :type CoordinateOrigin: str
         :param XPos: 水印原点距离视频图像坐标原点的水平位置。支持 %、px 两种格式：
 <li>当字符串以 % 结尾，表示水印 XPos 为视频宽度指定百分比，如 10% 表示 XPos 为视频宽度的 10%；</li>
@@ -7617,17 +7623,29 @@ class ExecuteFunctionRequest(AbstractModel):
         :type FunctionName: str
         :param FunctionArg: 接口参数，具体参数格式调用时与后端协调。
         :type FunctionArg: str
+        :param SessionContext: 来源上下文，用于透传用户请求信息，任务流状态变更回调将返回该字段值，最长 1000 个字符。
+        :type SessionContext: str
+        :param SessionId: 用于去重的识别码，如果七天内曾有过相同的识别码的请求，则本次的请求会返回错误。最长 50 个字符，不带或者带空字符串表示不做去重。
+        :type SessionId: str
+        :param ExtInfo: 保留字段，特殊用途时使用。
+        :type ExtInfo: str
         :param SubAppId: 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
         :type SubAppId: int
         """
         self.FunctionName = None
         self.FunctionArg = None
+        self.SessionContext = None
+        self.SessionId = None
+        self.ExtInfo = None
         self.SubAppId = None
 
 
     def _deserialize(self, params):
         self.FunctionName = params.get("FunctionName")
         self.FunctionArg = params.get("FunctionArg")
+        self.SessionContext = params.get("SessionContext")
+        self.SessionId = params.get("SessionId")
+        self.ExtInfo = params.get("ExtInfo")
         self.SubAppId = params.get("SubAppId")
 
 
@@ -7969,10 +7987,25 @@ class ImageSpriteTemplate(AbstractModel):
         :type Type: str
         :param Name: 雪碧图模板名称。
         :type Name: str
-        :param Width: 雪碧图中小图的宽度。
+        :param Width: 雪碧图中小图的宽度（或长边）的最大值，取值范围：0 和 [128, 4096]，单位：px。
+<li>当 Width、Height 均为 0，则分辨率同源；</li>
+<li>当 Width 为 0，Height 非 0，则 Width 按比例缩放；</li>
+<li>当 Width 非 0，Height 为 0，则 Height 按比例缩放；</li>
+<li>当 Width、Height 均非 0，则分辨率按用户指定。</li>
+默认值：0。
         :type Width: int
-        :param Height: 雪碧图中小图的高度。
+        :param Height: 雪碧图中小图的高度（或短边）的最大值，取值范围：0 和 [128, 4096]，单位：px。
+<li>当 Width、Height 均为 0，则分辨率同源；</li>
+<li>当 Width 为 0，Height 非 0，则 Width 按比例缩放；</li>
+<li>当 Width 非 0，Height 为 0，则 Height 按比例缩放；</li>
+<li>当 Width、Height 均非 0，则分辨率按用户指定。</li>
+默认值：0。
         :type Height: int
+        :param ResolutionAdaptive: 分辨率自适应，可选值：
+<li>open：开启，此时，Width 代表视频的长边，Height 表示视频的短边；</li>
+<li>close：关闭，此时，Width 代表视频的宽度，Height 表示视频的高度。</li>
+默认值：open。
+        :type ResolutionAdaptive: str
         :param SampleType: 采样类型。
         :type SampleType: str
         :param SampleInterval: 采样间隔。
@@ -7996,6 +8029,7 @@ class ImageSpriteTemplate(AbstractModel):
         self.Name = None
         self.Width = None
         self.Height = None
+        self.ResolutionAdaptive = None
         self.SampleType = None
         self.SampleInterval = None
         self.RowCount = None
@@ -8011,6 +8045,7 @@ class ImageSpriteTemplate(AbstractModel):
         self.Name = params.get("Name")
         self.Width = params.get("Width")
         self.Height = params.get("Height")
+        self.ResolutionAdaptive = params.get("ResolutionAdaptive")
         self.SampleType = params.get("SampleType")
         self.SampleInterval = params.get("SampleInterval")
         self.RowCount = params.get("RowCount")
@@ -9720,6 +9755,7 @@ class MediaProcessTaskTranscodeResult(AbstractModel):
         :param Input: 转码任务的输入。
         :type Input: :class:`tencentcloud.vod.v20180717.models.TranscodeTaskInput`
         :param Output: 转码任务的输出。
+注意：此字段可能返回 null，表示取不到有效值。
         :type Output: :class:`tencentcloud.vod.v20180717.models.MediaTranscodeItem`
         """
         self.Status = None
@@ -11094,7 +11130,6 @@ class ModifyWatermarkTemplateRequest(AbstractModel):
 <li>TopRight：表示坐标原点位于视频图像的右上角，水印原点为图片或文字的右上角；</li>
 <li>BottomLeft：表示坐标原点位于视频图像的左下角，水印原点为图片或文字的左下角；</li>
 <li>BottomRight：表示坐标原点位于视频图像的右下角，水印原点为图片或文字的右下角。</li>
-目前，当 Type 为 image，该字段仅支持 TopLeft。
         :type CoordinateOrigin: str
         :param XPos: 水印原点距离视频图像坐标原点的水平位置。支持 %、px 两种格式：
 <li>当字符串以 % 结尾，表示水印 XPos 为视频宽度指定百分比，如 10% 表示 XPos 为视频宽度的 10%；</li>
@@ -12114,6 +12149,8 @@ class ProcessMediaByProcedureRequest(AbstractModel):
         :type SessionContext: str
         :param SessionId: 用于去重的识别码，如果一天内曾有过相同的识别码的请求，则本次的请求会返回错误。最长 50 个字符，不带或者带空字符串表示不做去重。
         :type SessionId: str
+        :param ExtInfo: 保留字段，特殊用途时使用。
+        :type ExtInfo: str
         :param SubAppId: 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
         :type SubAppId: int
         """
@@ -12123,6 +12160,7 @@ class ProcessMediaByProcedureRequest(AbstractModel):
         self.TasksNotifyMode = None
         self.SessionContext = None
         self.SessionId = None
+        self.ExtInfo = None
         self.SubAppId = None
 
 
@@ -12133,6 +12171,7 @@ class ProcessMediaByProcedureRequest(AbstractModel):
         self.TasksNotifyMode = params.get("TasksNotifyMode")
         self.SessionContext = params.get("SessionContext")
         self.SessionId = params.get("SessionId")
+        self.ExtInfo = params.get("ExtInfo")
         self.SubAppId = params.get("SubAppId")
 
 
@@ -12334,13 +12373,17 @@ class PullEventsRequest(AbstractModel):
 
     def __init__(self):
         """
+        :param ExtInfo: 保留字段，特殊用途时使用。
+        :type ExtInfo: str
         :param SubAppId: 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
         :type SubAppId: int
         """
+        self.ExtInfo = None
         self.SubAppId = None
 
 
     def _deserialize(self, params):
+        self.ExtInfo = params.get("ExtInfo")
         self.SubAppId = params.get("SubAppId")
 
 
@@ -12687,8 +12730,8 @@ class SampleSnapshotTemplate(AbstractModel):
         :param FillType: 填充方式，当视频流配置宽高参数与原始视频的宽高比不一致时，对转码的处理方式，即为“填充”。可选填充方式：
 <li> stretch：拉伸，对每一帧进行拉伸，填满整个画面，可能导致转码后的视频被“压扁“或者“拉长“；</li>
 <li>black：留黑，保持视频宽高比不变，边缘剩余部分使用黑色填充。</li>
-<li>black：留白，保持视频宽高比不变，边缘剩余部分使用白色填充。</li>
-<li>black：高斯模糊，保持视频宽高比不变，边缘剩余部分使用高斯模糊。</li>
+<li>white：留白，保持视频宽高比不变，边缘剩余部分使用白色填充。</li>
+<li>gauss：高斯模糊，保持视频宽高比不变，边缘剩余部分使用高斯模糊。</li>
 默认值：black 。
         :type FillType: str
         """
@@ -12756,11 +12799,11 @@ class SearchMediaRequest(AbstractModel):
 <li>Sort.Field 可选值：CreateTime</li>
 <li>指定 Text 搜索时，将根据匹配度排序，该字段无效</li>
         :type Sort: :class:`tencentcloud.vod.v20180717.models.SortBy`
-        :param Offset: 分页返回的起始偏移量，默认值：0。将返回第 Offset 到第 Offset+Limit-1 条。
-<li>取值范围：Offset + Limit 不超过5000。</li>
+        :param Offset: <div id="p_offset">分页返回的起始偏移量，默认值：0。将返回第 Offset 到第 Offset+Limit-1 条。
+<li>取值范围：Offset + Limit 不超过5000。（参见：<a href="#maxResultsDesc">接口返回结果数限制</a>）</li></div>
         :type Offset: int
-        :param Limit: 分页返回的记录条数，默认值：10。将返回第 Offset 到第 Offset+Limit-1 条。
-<li>取值范围：Offset + Limit 不超过5000。</li>
+        :param Limit: <div id="p_limit">分页返回的记录条数，默认值：10。将返回第 Offset 到第 Offset+Limit-1 条。
+<li>取值范围：Offset + Limit 不超过5000。（参见：<a href="#maxResultsDesc">接口返回结果数限制</a>）</li></div>
         :type Limit: int
         :param SubAppId: 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
         :type SubAppId: int
@@ -13444,12 +13487,18 @@ class TaskSimpleInfo(AbstractModel):
         :param FinishTime: 任务结束时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F)。若任务尚未完成，该字段为空。
 注意：此字段可能返回 null，表示取不到有效值。
         :type FinishTime: str
+        :param SessionId: 用于去重的识别码，如果七天内曾有过相同的识别码的请求。
+        :type SessionId: str
+        :param SessionContext: 来源上下文，用于透传用户请求信息。
+        :type SessionContext: str
         """
         self.TaskId = None
         self.TaskType = None
         self.CreateTime = None
         self.BeginProcessTime = None
         self.FinishTime = None
+        self.SessionId = None
+        self.SessionContext = None
 
 
     def _deserialize(self, params):
@@ -13458,6 +13507,8 @@ class TaskSimpleInfo(AbstractModel):
         self.CreateTime = params.get("CreateTime")
         self.BeginProcessTime = params.get("BeginProcessTime")
         self.FinishTime = params.get("FinishTime")
+        self.SessionId = params.get("SessionId")
+        self.SessionContext = params.get("SessionContext")
 
 
 class TempCertificate(AbstractModel):

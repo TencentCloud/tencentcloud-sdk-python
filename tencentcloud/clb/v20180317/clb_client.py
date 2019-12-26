@@ -83,8 +83,8 @@ class ClbClient(AbstractClient):
 
 
     def BatchModifyTargetWeight(self, request):
-        """BatchModifyTargetWeight接口用于批量修改负载均衡监听器绑定的后端机器的转发权重，支持负载均衡的4层和7层监听器；不支持传统型负载均衡。
-        本接口为异步接口，本接口返回成功后需以返回的RequestID为入参，调用DescribeTaskStatus接口查询本次任务是否成功。
+        """本接口(BatchModifyTargetWeight)用于批量修改负载均衡监听器绑定的后端机器的转发权重，支持负载均衡的4层和7层监听器；不支持传统型负载均衡。
+        本接口为异步接口，本接口返回成功后需以返回的 RequestID 为入参，调用 DescribeTaskStatus 接口查询本次任务是否成功。
 
         :param request: Request instance for BatchModifyTargetWeight.
         :type request: :class:`tencentcloud.clb.v20180317.models.BatchModifyTargetWeightRequest`
@@ -112,7 +112,7 @@ class ClbClient(AbstractClient):
 
 
     def BatchRegisterTargets(self, request):
-        """批量绑定虚拟主机或弹性网卡，支持跨域绑定，只支持四层（TCP、UDP）协议绑定。
+        """批量绑定虚拟主机或弹性网卡，支持跨域绑定，支持四层、七层（TCP、UDP、HTTP、HTTPS）协议绑定。
 
         :param request: Request instance for BatchRegisterTargets.
         :type request: :class:`tencentcloud.clb.v20180317.models.BatchRegisterTargetsRequest`
@@ -169,8 +169,8 @@ class ClbClient(AbstractClient):
 
 
     def CreateLoadBalancer(self, request):
-        """CreateLoadBalancer 接口用来创建负载均衡实例（本接口只支持购买按量计费的负载均衡，包年包月的负载均衡请通过控制台购买）。为了使用负载均衡服务，您必须购买一个或多个负载均衡实例。成功调用该接口后，会返回负载均衡实例的唯一 ID。负载均衡实例的类型分为：公网、内网。详情可参考产品说明中的产品类型。
-        注意：(1)指定可用区申请负载均衡、跨zone容灾【如需使用，请提交工单（ https://console.cloud.tencent.com/workorder/category ）申请】；(2)目前只有北京、上海、广州支持IPv6；
+        """本接口(CreateLoadBalancer)用来创建负载均衡实例（本接口只支持购买按量计费的负载均衡，包年包月的负载均衡请通过控制台购买）。为了使用负载均衡服务，您必须购买一个或多个负载均衡实例。成功调用该接口后，会返回负载均衡实例的唯一 ID。负载均衡实例的类型分为：公网、内网。详情可参考产品说明中的产品类型。
+        注意：(1)指定可用区申请负载均衡、跨zone容灾(仅香港支持)【如果您需要体验该功能，请通过 [工单申请](https://console.cloud.tencent.com/workorder/category)】；(2)目前只有北京、上海、广州支持IPv6；(3)一个账号在每个地域的默认购买配额为：公网100个，内网100个。
         本接口为异步接口，接口成功返回后，可使用 DescribeLoadBalancers 接口查询负载均衡实例的状态（如创建中、正常），以确定是否创建成功。
 
         :param request: Request instance for CreateLoadBalancer.
@@ -387,6 +387,62 @@ class ClbClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeregisterTargetsFromClassicalLBResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeBlockIPList(self, request):
+        """查询一个负载均衡所封禁的IP列表（黑名单）。（接口灰度中，如需使用请提工单）
+
+        :param request: Request instance for DescribeBlockIPList.
+        :type request: :class:`tencentcloud.clb.v20180317.models.DescribeBlockIPListRequest`
+        :rtype: :class:`tencentcloud.clb.v20180317.models.DescribeBlockIPListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeBlockIPList", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeBlockIPListResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeBlockIPTask(self, request):
+        """根据 ModifyBlockIPList 接口返回的异步任务的ID，查询封禁IP（黑名单）异步任务的执行状态。（接口灰度中，如需使用请提工单）
+
+        :param request: Request instance for DescribeBlockIPTask.
+        :type request: :class:`tencentcloud.clb.v20180317.models.DescribeBlockIPTaskRequest`
+        :rtype: :class:`tencentcloud.clb.v20180317.models.DescribeBlockIPTaskResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeBlockIPTask", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeBlockIPTaskResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -710,6 +766,35 @@ class ClbClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def ModifyBlockIPList(self, request):
+        """修改负载均衡的IP（client IP）封禁黑名单列表，一个转发规则最多支持封禁 2000000 个IP，及黑名单容量为 2000000。
+        （接口灰度中，如需使用请提工单）
+
+        :param request: Request instance for ModifyBlockIPList.
+        :type request: :class:`tencentcloud.clb.v20180317.models.ModifyBlockIPListRequest`
+        :rtype: :class:`tencentcloud.clb.v20180317.models.ModifyBlockIPListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ModifyBlockIPList", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ModifyBlockIPListResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def ModifyDomain(self, request):
         """ModifyDomain接口用来修改负载均衡七层监听器下的域名。
         本接口为异步接口，本接口返回成功后需以返回的RequestID为入参，调用DescribeTaskStatus接口查询本次任务是否成功。
@@ -974,7 +1059,7 @@ class ClbClient(AbstractClient):
         """ReplaceCertForLoadBalancers 接口用以替换负载均衡实例所关联的证书，对于各个地域的负载均衡，如果指定的老的证书ID与其有关联关系，则会先解除关联，再建立新证书与该负载均衡的关联关系。
         此接口支持替换服务端证书或客户端证书。
         需要使用的新证书，可以通过传入证书ID来指定，如果不指定证书ID，则必须传入证书内容等相关信息，用以新建证书并绑定至负载均衡。
-        注：本接口仅可从广州地域调用，其他地域存在域名解析问题，会报错。
+        注：本接口仅可从广州地域调用。
 
         :param request: Request instance for ReplaceCertForLoadBalancers.
         :type request: :class:`tencentcloud.clb.v20180317.models.ReplaceCertForLoadBalancersRequest`

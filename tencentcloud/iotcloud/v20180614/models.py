@@ -530,13 +530,13 @@ class CreateTopicPolicyRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param ProductID: 产品自身id
+        :param ProductID: 产品自身ID
         :type ProductID: str
         :param TopicName: Topic名称
         :type TopicName: str
         :param Privilege: Topic权限，1发布，2订阅，3订阅和发布
         :type Privilege: int
-        :param BrokerSubscribe: 代理订阅信息，网关产品为绑定的子产品创建topic时需要填写，内容为子产品的id和设备信息。
+        :param BrokerSubscribe: 代理订阅信息，网关产品为绑定的子产品创建topic时需要填写，内容为子产品的ID和设备信息。
         :type BrokerSubscribe: :class:`tencentcloud.iotcloud.v20180614.models.BrokerSubscribe`
         """
         self.ProductID = None
@@ -660,7 +660,7 @@ class DeleteLoraDeviceRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param ProductId: 设备所属产品id
+        :param ProductId: 设备所属产品ID
         :type ProductId: str
         :param DeviceName: 设备名称
         :type DeviceName: str
@@ -881,6 +881,9 @@ class DescribeDeviceResponse(AbstractModel):
         :param EnableState: 设备启用状态
 注意：此字段可能返回 null，表示取不到有效值。
         :type EnableState: int
+        :param Labels: 设备标签
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Labels: list of DeviceLabel
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -905,6 +908,7 @@ class DescribeDeviceResponse(AbstractModel):
         self.CreateTime = None
         self.CertState = None
         self.EnableState = None
+        self.Labels = None
         self.RequestId = None
 
 
@@ -935,6 +939,12 @@ class DescribeDeviceResponse(AbstractModel):
         self.CreateTime = params.get("CreateTime")
         self.CertState = params.get("CertState")
         self.EnableState = params.get("EnableState")
+        if params.get("Labels") is not None:
+            self.Labels = []
+            for item in params.get("Labels"):
+                obj = DeviceLabel()
+                obj._deserialize(item)
+                self.Labels.append(obj)
         self.RequestId = params.get("RequestId")
 
 
@@ -1046,7 +1056,7 @@ class DescribeLoraDeviceRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param ProductId: 产品Id
+        :param ProductId: 产品id
         :type ProductId: str
         :param DeviceName: 设备名称
         :type DeviceName: str
@@ -1221,23 +1231,14 @@ class DescribeProductsRequest(AbstractModel):
         :type Offset: int
         :param Limit: 分页大小，当前页面中显示的最大数量，值范围 10-250。
         :type Limit: int
-        :param Filters: 过滤条件
-        :type Filters: list of Filter
         """
         self.Offset = None
         self.Limit = None
-        self.Filters = None
 
 
     def _deserialize(self, params):
         self.Offset = params.get("Offset")
         self.Limit = params.get("Limit")
-        if params.get("Filters") is not None:
-            self.Filters = []
-            for item in params.get("Filters"):
-                obj = Filter()
-                obj._deserialize(item)
-                self.Filters.append(obj)
 
 
 class DescribeProductsResponse(AbstractModel):
@@ -1462,6 +1463,9 @@ class DeviceInfo(AbstractModel):
         :param EnableState: 设备可用状态，0禁用，1启用
 注意：此字段可能返回 null，表示取不到有效值。
         :type EnableState: int
+        :param Labels: 设备标签
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Labels: list of DeviceLabel
         """
         self.DeviceName = None
         self.Online = None
@@ -1484,6 +1488,7 @@ class DeviceInfo(AbstractModel):
         self.LogLevel = None
         self.CertState = None
         self.EnableState = None
+        self.Labels = None
 
 
     def _deserialize(self, params):
@@ -1513,6 +1518,33 @@ class DeviceInfo(AbstractModel):
         self.LogLevel = params.get("LogLevel")
         self.CertState = params.get("CertState")
         self.EnableState = params.get("EnableState")
+        if params.get("Labels") is not None:
+            self.Labels = []
+            for item in params.get("Labels"):
+                obj = DeviceLabel()
+                obj._deserialize(item)
+                self.Labels.append(obj)
+
+
+class DeviceLabel(AbstractModel):
+    """设备标签
+
+    """
+
+    def __init__(self):
+        """
+        :param Key: 标签标识
+        :type Key: str
+        :param Value: 标签值
+        :type Value: str
+        """
+        self.Key = None
+        self.Value = None
+
+
+    def _deserialize(self, params):
+        self.Key = params.get("Key")
+        self.Value = params.get("Value")
 
 
 class DeviceTag(AbstractModel):
@@ -1606,27 +1638,6 @@ class EnableTopicRuleResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
-
-
-class Filter(AbstractModel):
-    """描述键值对过滤器，用于条件过滤查询。例如过滤ID、名称、状态等
-
-    """
-
-    def __init__(self):
-        """
-        :param Name: 过滤键的名称
-        :type Name: str
-        :param Values: 一个或者多个过滤值
-        :type Values: list of str
-        """
-        self.Name = None
-        self.Values = None
-
-
-    def _deserialize(self, params):
-        self.Name = params.get("Name")
-        self.Values = params.get("Values")
 
 
 class MultiDevicesInfo(AbstractModel):
@@ -1789,7 +1800,7 @@ class PublishAsDeviceRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param ProductId: 产品id
+        :param ProductId: 产品ID
         :type ProductId: str
         :param DeviceName: 设备名称
         :type DeviceName: str
@@ -1979,7 +1990,7 @@ class ResetDeviceStateRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param ProductId: 产品Id
+        :param ProductId: 产品ID
         :type ProductId: str
         :param DeviceNames: 设备名称
         :type DeviceNames: list of str
@@ -2217,11 +2228,14 @@ class UpdateDeviceShadowRequest(AbstractModel):
         :type State: str
         :param ShadowVersion: 当前版本号，需要和后台的version保持一致，才能更新成功
         :type ShadowVersion: int
+        :param Prefix: 下发delta消息的topic前缀，可选类型: "$shadow","$template"。不填写默认"$shadow"。
+        :type Prefix: str
         """
         self.ProductId = None
         self.DeviceName = None
         self.State = None
         self.ShadowVersion = None
+        self.Prefix = None
 
 
     def _deserialize(self, params):
@@ -2229,6 +2243,7 @@ class UpdateDeviceShadowRequest(AbstractModel):
         self.DeviceName = params.get("DeviceName")
         self.State = params.get("State")
         self.ShadowVersion = params.get("ShadowVersion")
+        self.Prefix = params.get("Prefix")
 
 
 class UpdateDeviceShadowResponse(AbstractModel):

@@ -2958,81 +2958,6 @@ class DescribeLiveStreamEventListResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
-class DescribeLiveStreamOnlineInfoRequest(AbstractModel):
-    """DescribeLiveStreamOnlineInfo请求参数结构体
-
-    """
-
-    def __init__(self):
-        """
-        :param PageNum: 取得第几页。
-默认值：1。
-        :type PageNum: int
-        :param PageSize: 分页大小。
-最大值：100。
-取值范围：1~100 之前的任意整数。
-默认值：10。
-        :type PageSize: int
-        :param Status: 0:未开始推流 1:正在推流
-        :type Status: int
-        :param StreamName: 流名称。
-        :type StreamName: str
-        """
-        self.PageNum = None
-        self.PageSize = None
-        self.Status = None
-        self.StreamName = None
-
-
-    def _deserialize(self, params):
-        self.PageNum = params.get("PageNum")
-        self.PageSize = params.get("PageSize")
-        self.Status = params.get("Status")
-        self.StreamName = params.get("StreamName")
-
-
-class DescribeLiveStreamOnlineInfoResponse(AbstractModel):
-    """DescribeLiveStreamOnlineInfo返回参数结构体
-
-    """
-
-    def __init__(self):
-        """
-        :param PageNum: 分页的页码。
-        :type PageNum: int
-        :param PageSize: 每页大小。
-        :type PageSize: int
-        :param TotalNum: 符合条件的总个数。
-        :type TotalNum: int
-        :param TotalPage: 总页数。
-        :type TotalPage: int
-        :param StreamInfoList: 流信息列表。
-        :type StreamInfoList: list of StreamInfo
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
-        self.PageNum = None
-        self.PageSize = None
-        self.TotalNum = None
-        self.TotalPage = None
-        self.StreamInfoList = None
-        self.RequestId = None
-
-
-    def _deserialize(self, params):
-        self.PageNum = params.get("PageNum")
-        self.PageSize = params.get("PageSize")
-        self.TotalNum = params.get("TotalNum")
-        self.TotalPage = params.get("TotalPage")
-        if params.get("StreamInfoList") is not None:
-            self.StreamInfoList = []
-            for item in params.get("StreamInfoList"):
-                obj = StreamInfo()
-                obj._deserialize(item)
-                self.StreamInfoList.append(obj)
-        self.RequestId = params.get("RequestId")
-
-
 class DescribeLiveStreamOnlineListRequest(AbstractModel):
     """DescribeLiveStreamOnlineList请求参数结构体
 
@@ -4316,7 +4241,7 @@ class DescribeTopClientIpSumInfoListRequest(AbstractModel):
         :param StartTime: 起始时间点，格式为yyyy-mm-dd HH:MM:SS。
         :type StartTime: str
         :param EndTime: 结束时间点，格式为yyyy-mm-dd HH:MM:SS
-时间跨度在（0,4小时]，支持最近1天数据查询。
+时间跨度在[0,4小时]，支持最近1天数据查询。
         :type EndTime: str
         :param PlayDomains: 播放域名，默认为不填，表示求总体数据。
         :type PlayDomains: list of str
@@ -4408,7 +4333,7 @@ class DescribeVisitTopSumInfoListRequest(AbstractModel):
         :param StartTime: 起始时间点，格式为yyyy-mm-dd HH:MM:SS。
         :type StartTime: str
         :param EndTime: 结束时间点，格式为yyyy-mm-dd HH:MM:SS
-时间跨度在[0,4小时]，支持最近1天数据查询。
+时间跨度在(0,4小时]，支持最近1天数据查询。
         :type EndTime: str
         :param TopIndex: 峰值指标，可选值包括”Domain”，”StreamId”。
         :type TopIndex: str
@@ -5054,7 +4979,7 @@ class ModifyLiveCallbackTemplateRequest(AbstractModel):
         :type SnapshotNotifyUrl: str
         :param PornCensorshipNotifyUrl: 鉴黄回调URL。
         :type PornCensorshipNotifyUrl: str
-        :param CallbackKey: 回调key，回调URL公用，鉴权回调说明详见回调格式文档
+        :param CallbackKey: 回调key，回调URL公用，鉴权回调说明详见回调格式文档。
         :type CallbackKey: str
         """
         self.TemplateId = None
@@ -6504,47 +6429,6 @@ UTC格式时间，
         self.Duration = params.get("Duration")
         self.ClientIp = params.get("ClientIp")
         self.Resolution = params.get("Resolution")
-
-
-class StreamInfo(AbstractModel):
-    """推流信息
-
-    """
-
-    def __init__(self):
-        """
-        :param AppName: 直播流所属应用名称
-        :type AppName: str
-        :param CreateMode: 创建模式
-        :type CreateMode: str
-        :param CreateTime: 创建时间，如: 2018-07-13 14:48:23
-        :type CreateTime: str
-        :param Status: 流状态
-        :type Status: int
-        :param StreamId: 流id
-        :type StreamId: str
-        :param StreamName: 流名称
-        :type StreamName: str
-        :param WaterMarkId: 水印id
-        :type WaterMarkId: str
-        """
-        self.AppName = None
-        self.CreateMode = None
-        self.CreateTime = None
-        self.Status = None
-        self.StreamId = None
-        self.StreamName = None
-        self.WaterMarkId = None
-
-
-    def _deserialize(self, params):
-        self.AppName = params.get("AppName")
-        self.CreateMode = params.get("CreateMode")
-        self.CreateTime = params.get("CreateTime")
-        self.Status = params.get("Status")
-        self.StreamId = params.get("StreamId")
-        self.StreamName = params.get("StreamName")
-        self.WaterMarkId = params.get("WaterMarkId")
 
 
 class StreamName(AbstractModel):
