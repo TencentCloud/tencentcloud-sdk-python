@@ -81,6 +81,34 @@ class MonitorClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DeletePolicyGroup(self, request):
+        """删除告警策略组
+
+        :param request: Request instance for DeletePolicyGroup.
+        :type request: :class:`tencentcloud.monitor.v20180724.models.DeletePolicyGroupRequest`
+        :rtype: :class:`tencentcloud.monitor.v20180724.models.DeletePolicyGroupResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DeletePolicyGroup", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DeletePolicyGroupResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeAccidentEventList(self, request):
         """获取平台事件列表
 
@@ -123,6 +151,62 @@ class MonitorClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeBaseMetricsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeBindingPolicyObjectList(self, request):
+        """获取已绑定对象列表
+
+        :param request: Request instance for DescribeBindingPolicyObjectList.
+        :type request: :class:`tencentcloud.monitor.v20180724.models.DescribeBindingPolicyObjectListRequest`
+        :rtype: :class:`tencentcloud.monitor.v20180724.models.DescribeBindingPolicyObjectListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeBindingPolicyObjectList", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeBindingPolicyObjectListResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribePolicyGroupInfo(self, request):
+        """获取基础策略组详情
+
+        :param request: Request instance for DescribePolicyGroupInfo.
+        :type request: :class:`tencentcloud.monitor.v20180724.models.DescribePolicyGroupInfoRequest`
+        :rtype: :class:`tencentcloud.monitor.v20180724.models.DescribePolicyGroupInfoResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribePolicyGroupInfo", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribePolicyGroupInfoResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -243,6 +327,62 @@ class MonitorClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.PutMonitorDataResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def UnBindingAllPolicyObject(self, request):
+        """删除全部的关联对象
+
+        :param request: Request instance for UnBindingAllPolicyObject.
+        :type request: :class:`tencentcloud.monitor.v20180724.models.UnBindingAllPolicyObjectRequest`
+        :rtype: :class:`tencentcloud.monitor.v20180724.models.UnBindingAllPolicyObjectResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("UnBindingAllPolicyObject", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.UnBindingAllPolicyObjectResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def UnBindingPolicyObject(self, request):
+        """删除策略的关联对象
+
+        :param request: Request instance for UnBindingPolicyObject.
+        :type request: :class:`tencentcloud.monitor.v20180724.models.UnBindingPolicyObjectRequest`
+        :rtype: :class:`tencentcloud.monitor.v20180724.models.UnBindingPolicyObjectResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("UnBindingPolicyObject", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.UnBindingPolicyObjectResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

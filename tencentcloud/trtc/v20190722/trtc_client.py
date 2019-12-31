@@ -25,20 +25,20 @@ class TrtcClient(AbstractClient):
     _endpoint = 'trtc.tencentcloudapi.com'
 
 
-    def DissolveRoom(self, request):
-        """接口说明：把房间所有用户从房间踢出，解散房间。支持所有平台，Android、iOS、Windows 和 macOS 需升级到 TRTC SDK 6.6及以上版本。
+    def DismissRoom(self, request):
+        """接口说明：把房间所有用户从房间移出，解散房间。支持所有平台，Android、iOS、Windows 和 macOS 需升级到 TRTC SDK 6.6及以上版本。
 
-        :param request: Request instance for DissolveRoom.
-        :type request: :class:`tencentcloud.trtc.v20190722.models.DissolveRoomRequest`
-        :rtype: :class:`tencentcloud.trtc.v20190722.models.DissolveRoomResponse`
+        :param request: Request instance for DismissRoom.
+        :type request: :class:`tencentcloud.trtc.v20190722.models.DismissRoomRequest`
+        :rtype: :class:`tencentcloud.trtc.v20190722.models.DismissRoomResponse`
 
         """
         try:
             params = request._serialize()
-            body = self.call("DissolveRoom", params)
+            body = self.call("DismissRoom", params)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.DissolveRoomResponse()
+                model = models.DismissRoomResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -53,20 +53,20 @@ class TrtcClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def KickOutUser(self, request):
-        """接口说明：将用户从房间踢出。支持所有平台，Android、iOS、Windows 和 macOS 需升级到 TRTC SDK 6.6及以上版本。
+    def RemoveUser(self, request):
+        """接口说明：将用户从房间移出，适用于主播/房主/管理员踢人等场景。支持所有平台，Android、iOS、Windows 和 macOS 需升级到 TRTC SDK 6.6及以上版本。
 
-        :param request: Request instance for KickOutUser.
-        :type request: :class:`tencentcloud.trtc.v20190722.models.KickOutUserRequest`
-        :rtype: :class:`tencentcloud.trtc.v20190722.models.KickOutUserResponse`
+        :param request: Request instance for RemoveUser.
+        :type request: :class:`tencentcloud.trtc.v20190722.models.RemoveUserRequest`
+        :rtype: :class:`tencentcloud.trtc.v20190722.models.RemoveUserResponse`
 
         """
         try:
             params = request._serialize()
-            body = self.call("KickOutUser", params)
+            body = self.call("RemoveUser", params)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.KickOutUserResponse()
+                model = models.RemoveUserResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

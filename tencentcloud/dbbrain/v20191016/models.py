@@ -56,7 +56,7 @@ class DescribeDBDiagEventResponse(AbstractModel):
         :type Outline: str
         :param Problem: 诊断出的问题。
         :type Problem: str
-        :param Severity: 严重程度。
+        :param Severity: 严重程度。严重程度分为5级，按影响程度从高至低分别为：1：致命，2：严重，3：告警，4：提示，5：健康。
         :type Severity: int
         :param StartTime: 开始时间
         :type StartTime: str
@@ -297,7 +297,7 @@ class DiagHistoryEventItem(AbstractModel):
         :type StartTime: str
         :param EventId: 事件 ID 。
         :type EventId: int
-        :param Severity: 严重程度。从1-4，严重程度递减，意义与DBBrain生成的实例健康报告中对应概念一致。
+        :param Severity: 严重程度。严重程度分为5级，按影响程度从高至低分别为：1：致命，2：严重，3：告警，4：提示，5：健康。
         :type Severity: int
         :param Outline: 概要。
         :type Outline: str

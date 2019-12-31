@@ -356,6 +356,48 @@ class CreateDBInstanceResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class CreateTmpInstancesRequest(AbstractModel):
+    """CreateTmpInstances请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param InstanceIds: 回档实例的ID列表，形如：tdsql-ow728lmc。
+        :type InstanceIds: list of str
+        :param RollbackTime: 回档时间点
+        :type RollbackTime: str
+        """
+        self.InstanceIds = None
+        self.RollbackTime = None
+
+
+    def _deserialize(self, params):
+        self.InstanceIds = params.get("InstanceIds")
+        self.RollbackTime = params.get("RollbackTime")
+
+
+class CreateTmpInstancesResponse(AbstractModel):
+    """CreateTmpInstances返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param FlowId: 异步任务流程ID。
+        :type FlowId: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.FlowId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.FlowId = params.get("FlowId")
+        self.RequestId = params.get("RequestId")
+
+
 class DBAccount(AbstractModel):
     """云数据库账号信息
 

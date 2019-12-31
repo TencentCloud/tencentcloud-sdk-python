@@ -166,6 +166,34 @@ class MariadbClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def CreateTmpInstances(self, request):
+        """本接口（CreateTmpInstances）用于创建临时实例。
+
+        :param request: Request instance for CreateTmpInstances.
+        :type request: :class:`tencentcloud.mariadb.v20170312.models.CreateTmpInstancesRequest`
+        :rtype: :class:`tencentcloud.mariadb.v20170312.models.CreateTmpInstancesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("CreateTmpInstances", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateTmpInstancesResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DeleteAccount(self, request):
         """本接口（DeleteAccount）用于删除云数据库账号。用户名+host唯一确定一个账号。
 

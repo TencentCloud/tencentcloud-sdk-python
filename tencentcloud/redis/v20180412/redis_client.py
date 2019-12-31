@@ -1034,7 +1034,7 @@ class RedisClient(AbstractClient):
 
 
     def ModifyInstance(self, request):
-        """修改实例相关信息（目前支持：实例重命名）
+        """修改实例相关信息
 
         :param request: Request instance for ModifyInstance.
         :type request: :class:`tencentcloud.redis.v20180412.models.ModifyInstanceRequest`

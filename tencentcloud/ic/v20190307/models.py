@@ -23,7 +23,7 @@ class AppInfo(AbstractModel):
 
     def __init__(self):
         """
-        :param Sdkappid: 应用id
+        :param Sdkappid: 应用ID
         :type Sdkappid: str
         :param Appkey: 应用key
         :type Appkey: str
@@ -69,7 +69,7 @@ class CardInfo(AbstractModel):
 
     def __init__(self):
         """
-        :param Iccid: 卡片id
+        :param Iccid: 卡片ID
         :type Iccid: str
         :param Msisdn: 卡电话号码
 注意：此字段可能返回 null，表示取不到有效值。
@@ -80,7 +80,7 @@ class CardInfo(AbstractModel):
         :param Imei: 卡imei
 注意：此字段可能返回 null，表示取不到有效值。
         :type Imei: str
-        :param Sdkappid: 应用id
+        :param Sdkappid: 应用ID
         :type Sdkappid: str
         :param Teleoperator: 运营商编号
         :type Teleoperator: int
@@ -97,7 +97,7 @@ class CardInfo(AbstractModel):
         :param ProductId: 套餐类型
 注意：此字段可能返回 null，表示取不到有效值。
         :type ProductId: str
-        :param PoolId: 流量池id
+        :param PoolId: 流量池ID
 注意：此字段可能返回 null，表示取不到有效值。
         :type PoolId: str
         :param DataUsedInPeriod: 周期套餐流量使用
@@ -122,7 +122,7 @@ class CardInfo(AbstractModel):
         :param IsActivated: 激活被回调标志
 注意：此字段可能返回 null，表示取不到有效值。
         :type IsActivated: int
-        :param OrderId: 订单id
+        :param OrderId: 订单ID
 注意：此字段可能返回 null，表示取不到有效值。
         :type OrderId: str
         :param AutoRenew: 是否自动续费
@@ -271,9 +271,9 @@ class DescribeCardRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Sdkappid: 应用id
+        :param Sdkappid: 应用ID
         :type Sdkappid: int
-        :param Iccid: 卡片id
+        :param Iccid: 卡片ID
         :type Iccid: str
         """
         self.Sdkappid = None
@@ -316,7 +316,7 @@ class DescribeCardsRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Sdkappid: 应用id
+        :param Sdkappid: 应用ID
         :type Sdkappid: str
         :param Offset: 偏移值
         :type Offset: int
@@ -364,11 +364,11 @@ class SendMultiSmsRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Sdkappid: 应用id
+        :param Sdkappid: 应用ID
         :type Sdkappid: str
         :param Iccids: 卡片列表
         :type Iccids: list of str
-        :param Content: 短信内容
+        :param Content: 短信内容 长度限制 70
         :type Content: str
         """
         self.Sdkappid = None
@@ -415,11 +415,11 @@ class SendSmsRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Sdkappid: 应用id
+        :param Sdkappid: 应用ID
         :type Sdkappid: int
-        :param Iccid: 卡片id
+        :param Iccid: 卡片ID
         :type Iccid: str
-        :param Content: 短信内容
+        :param Content: 短信内容长度70限制
         :type Content: str
         """
         self.Sdkappid = None
@@ -467,9 +467,9 @@ class SmsRet(AbstractModel):
         :type Code: str
         :param Msg: 短信发送返回信息
         :type Msg: str
-        :param Iccid: 卡片id
+        :param Iccid: 卡片ID
         :type Iccid: str
-        :param Sid: 流水id
+        :param Sid: 流水ID
         :type Sid: str
         """
         self.Code = None
@@ -492,10 +492,10 @@ class SmsSid(AbstractModel):
 
     def __init__(self):
         """
-        :param Iccid: 卡片id
+        :param Iccid: 卡片ID
 注意：此字段可能返回 null，表示取不到有效值。
         :type Iccid: str
-        :param Sid: 信息流水id
+        :param Sid: 信息流水ID
         :type Sid: str
         """
         self.Iccid = None

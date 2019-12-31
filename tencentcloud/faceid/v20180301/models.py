@@ -63,7 +63,7 @@ class BankCard2EVerificationResponse(AbstractModel):
 不计费结果码：
   '-2': '姓名校验不通过'
   '-3': '银行卡号码有误'
-  '-16': '服务繁忙'
+  '-16': '验证中心服务繁忙'
         :type Result: str
         :param Description: 业务结果描述。
         :type Description: str
@@ -143,7 +143,7 @@ class BankCard4EVerificationResponse(AbstractModel):
 '-3': '身份证号码有误'
 '-4': '银行卡号码有误'
 '-5': '手机号码不合法'
-'-18': '服务繁忙'
+'-18': '验证中心服务繁忙'
         :type Result: str
         :param Description: 业务结果描述。
         :type Description: str
@@ -218,7 +218,7 @@ class BankCardVerificationResponse(AbstractModel):
 '-2': '姓名校验不通过'
 '-3': '身份证号码有误'
 '-4': '银行卡号码有误'
-'-17': '服务繁忙'
+'-17': '验证中心服务繁忙'
         :type Result: str
         :param Description: 业务结果描述。
         :type Description: str
@@ -936,6 +936,118 @@ class MinorsVerificationResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class MobileNetworkTimeVerificationRequest(AbstractModel):
+    """MobileNetworkTimeVerification请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Mobile: 手机号码。不支持电信手机号。
+        :type Mobile: str
+        """
+        self.Mobile = None
+
+
+    def _deserialize(self, params):
+        self.Mobile = params.get("Mobile")
+
+
+class MobileNetworkTimeVerificationResponse(AbstractModel):
+    """MobileNetworkTimeVerification返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Result: 认证结果码，收费情况如下。
+收费结果码：
+0: 成功
+-2: 手机号不存在
+-3: 手机号存在，但无法查询到在网时长
+不收费结果码：
+-1: 手机号格式不正确
+-4: 验证中心服务繁忙
+        :type Result: str
+        :param Description: 业务结果描述。
+        :type Description: str
+        :param Range: 在网时长区间。
+格式为(a,b]，表示在网时长在a个月以上，b个月以下。若b为+时表示没有上限。
+        :type Range: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Result = None
+        self.Description = None
+        self.Range = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Result = params.get("Result")
+        self.Description = params.get("Description")
+        self.Range = params.get("Range")
+        self.RequestId = params.get("RequestId")
+
+
+class MobileStatusRequest(AbstractModel):
+    """MobileStatus请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Mobile: 手机号码
+        :type Mobile: str
+        """
+        self.Mobile = None
+
+
+    def _deserialize(self, params):
+        self.Mobile = params.get("Mobile")
+
+
+class MobileStatusResponse(AbstractModel):
+    """MobileStatus返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Result: 认证结果码，收费情况如下。
+收费结果码：
+0：成功
+不收费结果码：
+-1：未查询到结果
+-2：手机号格式不正确
+-3：验证中心服务繁忙
+        :type Result: str
+        :param Description: 业务结果描述。
+        :type Description: str
+        :param StatusCode: 状态码：
+0：正常
+1：停机
+2：销号
+3：空号
+4：不在网
+99：未知状态
+        :type StatusCode: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Result = None
+        self.Description = None
+        self.StatusCode = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Result = params.get("Result")
+        self.Description = params.get("Description")
+        self.StatusCode = params.get("StatusCode")
+        self.RequestId = params.get("RequestId")
+
+
 class PhoneVerificationRequest(AbstractModel):
     """PhoneVerification请求参数结构体
 
@@ -969,18 +1081,18 @@ class PhoneVerificationResponse(AbstractModel):
     def __init__(self):
         """
         :param Result: 认证结果码:
-  '0': '认证通过',
-  '-1': '手机号已实名，但是身份证和姓名均与实名信息不一致 ',
-  '-2': '手机号已实名，手机号和证件号一致，姓名不一致',
-  '-3': '手机号已实名，手机号和姓名一致，身份证不一致',
-  '-4': '信息不一致',
-  '-5': '手机号未实名',
-  '-6': '手机号码不合法',
-  '-7': '身份证号码有误',
-  '-8': '姓名校验不通过',
-  '-9': '没有记录',
-  '-10': '认证未通过',
-  '-11': '服务繁忙'
+0: 认证通过
+-1: 手机号已实名，但是身份证和姓名均与实名信息不一致 
+-2: 手机号已实名，手机号和证件号一致，姓名不一致
+-3: 手机号已实名，手机号和姓名一致，身份证不一致
+-4: 信息不一致
+-5: 手机号未实名
+-6: 手机号码不合法
+-7: 身份证号码有误
+-8: 姓名校验不通过
+-9: 没有记录
+-10: 认证未通过
+-11: 验证中心服务繁忙
         :type Result: str
         :param Description: 业务结果描述。
         :type Description: str

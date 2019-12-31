@@ -898,14 +898,22 @@ class CreateDeployGroupRequest(AbstractModel):
         :type DeployGroupName: str
         :param Description: 置放群组描述，最长不能超过200个字符。
         :type Description: str
+        :param Affinity: 置放群组的亲和性策略。
+        :type Affinity: list of int
+        :param LimitNum: 置放群组亲和性策略1的实例限制个数。
+        :type LimitNum: int
         """
         self.DeployGroupName = None
         self.Description = None
+        self.Affinity = None
+        self.LimitNum = None
 
 
     def _deserialize(self, params):
         self.DeployGroupName = params.get("DeployGroupName")
         self.Description = params.get("Description")
+        self.Affinity = params.get("Affinity")
+        self.LimitNum = params.get("LimitNum")
 
 
 class CreateDeployGroupResponse(AbstractModel):
@@ -915,7 +923,7 @@ class CreateDeployGroupResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param DeployGroupId: 置放群组ID
+        :param DeployGroupId: 置放群组ID。
         :type DeployGroupId: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -1247,24 +1255,34 @@ class DeployGroupInfo(AbstractModel):
         :type DeployGroupName: str
         :param CreateTime: 创建时间。
         :type CreateTime: str
-        :param Description: 置放群组描述。
-        :type Description: str
         :param Quota: 置放群组实例配额。
         :type Quota: int
+        :param Affinity: 置放群组亲和性策略。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Affinity: str
+        :param LimitNum: 置放群组亲和性策略1的限制实例个数。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LimitNum: int
+        :param Description: 置放群组详细信息。
+        :type Description: str
         """
         self.DeployGroupId = None
         self.DeployGroupName = None
         self.CreateTime = None
-        self.Description = None
         self.Quota = None
+        self.Affinity = None
+        self.LimitNum = None
+        self.Description = None
 
 
     def _deserialize(self, params):
         self.DeployGroupId = params.get("DeployGroupId")
         self.DeployGroupName = params.get("DeployGroupName")
         self.CreateTime = params.get("CreateTime")
-        self.Description = params.get("Description")
         self.Quota = params.get("Quota")
+        self.Affinity = params.get("Affinity")
+        self.LimitNum = params.get("LimitNum")
+        self.Description = params.get("Description")
 
 
 class DescribeAccountPrivilegesRequest(AbstractModel):
@@ -2034,6 +2052,8 @@ class DescribeDBInstancesRequest(AbstractModel):
         :type WithRo: int
         :param WithMaster: 是否包含主实例，可取值：0 - 不包含，1 - 包含。默认取值为1。
         :type WithMaster: int
+        :param DeployGroupIds: 置放群组ID列表。
+        :type DeployGroupIds: list of str
         """
         self.ProjectId = None
         self.InstanceTypes = None
@@ -2060,6 +2080,7 @@ class DescribeDBInstancesRequest(AbstractModel):
         self.WithDr = None
         self.WithRo = None
         self.WithMaster = None
+        self.DeployGroupIds = None
 
 
     def _deserialize(self, params):
@@ -2088,6 +2109,7 @@ class DescribeDBInstancesRequest(AbstractModel):
         self.WithDr = params.get("WithDr")
         self.WithRo = params.get("WithRo")
         self.WithMaster = params.get("WithMaster")
+        self.DeployGroupIds = params.get("DeployGroupIds")
 
 
 class DescribeDBInstancesResponse(AbstractModel):
@@ -2461,27 +2483,27 @@ class DescribeDeployGroupListResponse(AbstractModel):
 
     def __init__(self):
         """
+        :param Total: 符合条件的记录总数。
+        :type Total: int
         :param Items: 返回列表。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Items: list of DeployGroupInfo
-        :param Total: 符合条件的记录总数
-        :type Total: int
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.Items = None
         self.Total = None
+        self.Items = None
         self.RequestId = None
 
 
     def _deserialize(self, params):
+        self.Total = params.get("Total")
         if params.get("Items") is not None:
             self.Items = []
             for item in params.get("Items"):
                 obj = DeployGroupInfo()
                 obj._deserialize(item)
                 self.Items.append(obj)
-        self.Total = params.get("Total")
         self.RequestId = params.get("RequestId")
 
 
@@ -3779,6 +3801,9 @@ class InstanceInfo(AbstractModel):
         :param DeviceClass: 物理机型
 注意：此字段可能返回 null，表示取不到有效值。
         :type DeviceClass: str
+        :param DeployGroupId: 置放群组ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DeployGroupId: str
         """
         self.WanStatus = None
         self.Zone = None
@@ -3819,6 +3844,7 @@ class InstanceInfo(AbstractModel):
         self.Qps = None
         self.ZoneName = None
         self.DeviceClass = None
+        self.DeployGroupId = None
 
 
     def _deserialize(self, params):
@@ -3877,6 +3903,7 @@ class InstanceInfo(AbstractModel):
         self.Qps = params.get("Qps")
         self.ZoneName = params.get("ZoneName")
         self.DeviceClass = params.get("DeviceClass")
+        self.DeployGroupId = params.get("DeployGroupId")
 
 
 class InstanceRebootTime(AbstractModel):

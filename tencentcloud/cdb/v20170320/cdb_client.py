@@ -268,7 +268,7 @@ class CdbClient(AbstractClient):
 
 
     def CreateDeployGroup(self, request):
-        """创建放置实例的置放群组
+        """本接口(CreateDeployGroup)用于创建放置实例的置放群组
 
         :param request: Request instance for CreateDeployGroup.
         :type request: :class:`tencentcloud.cdb.v20170320.models.CreateDeployGroupRequest`
@@ -1030,7 +1030,7 @@ class CdbClient(AbstractClient):
 
 
     def DescribeDeployGroupList(self, request):
-        """根据置放群组 ID 或置放群组名称查询置放群组列表
+        """本接口(DescribeDeployGroupList)用于查询用户的置放群组列表，可以指定置放群组 ID 或置放群组名称。
 
         :param request: Request instance for DescribeDeployGroupList.
         :type request: :class:`tencentcloud.cdb.v20170320.models.DescribeDeployGroupListRequest`

@@ -84,9 +84,10 @@ class TmtClient(AbstractClient):
 
 
     def SpeechTranslate(self, request):
-        """本接口提供音频内文字识别 + 翻译功能，目前开放中到英的语音翻译服务。
-        待识别和翻译的音频文件可以是 pcm、mp3、amr和speex 格式，音频内语音清晰，采用流式传输和翻译的方式。<br />
-        提示：对于一般开发者，我们建议优先使用SDK接入简化开发。SDK使用介绍请直接查看 5. 开发者资源 部分。
+        """本接口提供音频内文字识别 + 翻译功能，目前开放中英互译的语音翻译服务。
+        待识别和翻译的音频文件可以是 pcm、mp3、amr和speex 格式，采样率要求16kHz、位深16bit、单声道，音频内语音清晰。<br/>
+        如果采用流式传输的方式，要求每个分片时长200ms~500ms；如果采用非流式的传输方式，要求音频时长不超过8s。注意最后一个分片的IsEnd参数设置为1。<br />
+        提示：对于一般开发者，我们建议优先使用SDK接入简化开发。SDK使用介绍请直接查看 5. 开发者资源部分。
 
         :param request: Request instance for SpeechTranslate.
         :type request: :class:`tencentcloud.tmt.v20180321.models.SpeechTranslateRequest`
@@ -128,6 +129,34 @@ class TmtClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.TextTranslateResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def TextTranslateBatch(self, request):
+        """文本翻译的批量接口
+
+        :param request: Request instance for TextTranslateBatch.
+        :type request: :class:`tencentcloud.tmt.v20180321.models.TextTranslateBatchRequest`
+        :rtype: :class:`tencentcloud.tmt.v20180321.models.TextTranslateBatchResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("TextTranslateBatch", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.TextTranslateBatchResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

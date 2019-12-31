@@ -3735,6 +3735,9 @@ class DomainErrorPageInfo(AbstractModel):
         :param Body: 设置的响应体(不包括 HTTP头)
 注意：此字段可能返回 null，表示取不到有效值。
         :type Body: str
+        :param Status: 规则状态,0为成功
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Status: int
         """
         self.ErrorPageId = None
         self.ListenerId = None
@@ -3744,6 +3747,7 @@ class DomainErrorPageInfo(AbstractModel):
         self.ClearHeaders = None
         self.SetHeaders = None
         self.Body = None
+        self.Status = None
 
 
     def _deserialize(self, params):
@@ -3760,6 +3764,7 @@ class DomainErrorPageInfo(AbstractModel):
                 obj._deserialize(item)
                 self.SetHeaders.append(obj)
         self.Body = params.get("Body")
+        self.Status = params.get("Status")
 
 
 class DomainRuleSet(AbstractModel):

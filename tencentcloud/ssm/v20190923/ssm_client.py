@@ -17,28 +17,28 @@ import json
 
 from tencentcloud.common.exception.tencent_cloud_sdk_exception import TencentCloudSDKException
 from tencentcloud.common.abstract_client import AbstractClient
-from tencentcloud.faceid.v20180301 import models
+from tencentcloud.ssm.v20190923 import models
 
 
-class FaceidClient(AbstractClient):
-    _apiVersion = '2018-03-01'
-    _endpoint = 'faceid.tencentcloudapi.com'
+class SsmClient(AbstractClient):
+    _apiVersion = '2019-09-23'
+    _endpoint = 'ssm.tencentcloudapi.com'
 
 
-    def BankCard2EVerification(self, request):
-        """本接口用于校验姓名和银行卡号的真实性和一致性。
+    def CreateSecret(self, request):
+        """创建新的凭据信息，通过KMS进行加密保护。每个Region最多可创建存储1000个凭据信息。
 
-        :param request: Request instance for BankCard2EVerification.
-        :type request: :class:`tencentcloud.faceid.v20180301.models.BankCard2EVerificationRequest`
-        :rtype: :class:`tencentcloud.faceid.v20180301.models.BankCard2EVerificationResponse`
+        :param request: Request instance for CreateSecret.
+        :type request: :class:`tencentcloud.ssm.v20190923.models.CreateSecretRequest`
+        :rtype: :class:`tencentcloud.ssm.v20190923.models.CreateSecretResponse`
 
         """
         try:
             params = request._serialize()
-            body = self.call("BankCard2EVerification", params)
+            body = self.call("CreateSecret", params)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.BankCard2EVerificationResponse()
+                model = models.CreateSecretResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -53,20 +53,20 @@ class FaceidClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def BankCard4EVerification(self, request):
-        """本接口用于输入银行卡号、姓名、开户证件号、开户手机号，校验信息的真实性和一致性。
+    def DeleteSecret(self, request):
+        """删除指定的凭据信息，可以通过RecoveryWindowInDays参数设置立即删除或者计划删除。对于计划删除的凭据，在删除日期到达之前状态为 PendingDelete，并可以通过RestoreSecret 进行恢复，超出指定删除日期之后会被彻底删除。您必须先通过 DisableSecret 停用凭据后才可以进行（计划）删除操作。
 
-        :param request: Request instance for BankCard4EVerification.
-        :type request: :class:`tencentcloud.faceid.v20180301.models.BankCard4EVerificationRequest`
-        :rtype: :class:`tencentcloud.faceid.v20180301.models.BankCard4EVerificationResponse`
+        :param request: Request instance for DeleteSecret.
+        :type request: :class:`tencentcloud.ssm.v20190923.models.DeleteSecretRequest`
+        :rtype: :class:`tencentcloud.ssm.v20190923.models.DeleteSecretResponse`
 
         """
         try:
             params = request._serialize()
-            body = self.call("BankCard4EVerification", params)
+            body = self.call("DeleteSecret", params)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.BankCard4EVerificationResponse()
+                model = models.DeleteSecretResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -81,20 +81,20 @@ class FaceidClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def BankCardVerification(self, request):
-        """本接口用于银行卡号、姓名、开户证件号信息的真实性和一致性。
+    def DeleteSecretVersion(self, request):
+        """该接口用于直接删除指定凭据下的单个版本凭据，删除操作立即生效，对所有状态下的凭据版本都可以删除。
 
-        :param request: Request instance for BankCardVerification.
-        :type request: :class:`tencentcloud.faceid.v20180301.models.BankCardVerificationRequest`
-        :rtype: :class:`tencentcloud.faceid.v20180301.models.BankCardVerificationResponse`
+        :param request: Request instance for DeleteSecretVersion.
+        :type request: :class:`tencentcloud.ssm.v20190923.models.DeleteSecretVersionRequest`
+        :rtype: :class:`tencentcloud.ssm.v20190923.models.DeleteSecretVersionResponse`
 
         """
         try:
             params = request._serialize()
-            body = self.call("BankCardVerification", params)
+            body = self.call("DeleteSecretVersion", params)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.BankCardVerificationResponse()
+                model = models.DeleteSecretVersionResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -109,20 +109,20 @@ class FaceidClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def DetectAuth(self, request):
-        """每次调用人脸核身SaaS化服务前，需先调用本接口获取BizToken，用来串联核身流程，在验证完成后，用于获取验证结果信息。
+    def DescribeSecret(self, request):
+        """获取凭据的详细属性信息。
 
-        :param request: Request instance for DetectAuth.
-        :type request: :class:`tencentcloud.faceid.v20180301.models.DetectAuthRequest`
-        :rtype: :class:`tencentcloud.faceid.v20180301.models.DetectAuthResponse`
+        :param request: Request instance for DescribeSecret.
+        :type request: :class:`tencentcloud.ssm.v20190923.models.DescribeSecretRequest`
+        :rtype: :class:`tencentcloud.ssm.v20190923.models.DescribeSecretResponse`
 
         """
         try:
             params = request._serialize()
-            body = self.call("DetectAuth", params)
+            body = self.call("DescribeSecret", params)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.DetectAuthResponse()
+                model = models.DescribeSecretResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -137,20 +137,20 @@ class FaceidClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def GetActionSequence(self, request):
-        """使用动作活体检测模式前，需调用本接口获取动作顺序。
+    def DisableSecret(self, request):
+        """停用指定的凭据，停用后状态为 Disabled，无法通过接口获取该凭据的明文。
 
-        :param request: Request instance for GetActionSequence.
-        :type request: :class:`tencentcloud.faceid.v20180301.models.GetActionSequenceRequest`
-        :rtype: :class:`tencentcloud.faceid.v20180301.models.GetActionSequenceResponse`
+        :param request: Request instance for DisableSecret.
+        :type request: :class:`tencentcloud.ssm.v20190923.models.DisableSecretRequest`
+        :rtype: :class:`tencentcloud.ssm.v20190923.models.DisableSecretResponse`
 
         """
         try:
             params = request._serialize()
-            body = self.call("GetActionSequence", params)
+            body = self.call("DisableSecret", params)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.GetActionSequenceResponse()
+                model = models.DisableSecretResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -165,20 +165,20 @@ class FaceidClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def GetDetectInfo(self, request):
-        """完成验证后，用BizToken调用本接口获取结果信息，BizToken生成后三天内（3\*24\*3,600秒）可多次拉取。
+    def EnableSecret(self, request):
+        """该接口用于开启凭据，状态为Enabled。可以通过 GetSecretValue 接口获取凭据明文。处于PendingDelete状态的凭据不能直接开启，需要通过RestoreSecret 恢复后再开启使用。
 
-        :param request: Request instance for GetDetectInfo.
-        :type request: :class:`tencentcloud.faceid.v20180301.models.GetDetectInfoRequest`
-        :rtype: :class:`tencentcloud.faceid.v20180301.models.GetDetectInfoResponse`
+        :param request: Request instance for EnableSecret.
+        :type request: :class:`tencentcloud.ssm.v20190923.models.EnableSecretRequest`
+        :rtype: :class:`tencentcloud.ssm.v20190923.models.EnableSecretResponse`
 
         """
         try:
             params = request._serialize()
-            body = self.call("GetDetectInfo", params)
+            body = self.call("EnableSecret", params)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.GetDetectInfoResponse()
+                model = models.EnableSecretResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -193,20 +193,20 @@ class FaceidClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def GetLiveCode(self, request):
-        """使用数字活体检测模式前，需调用本接口获取数字验证码。
+    def GetRegions(self, request):
+        """获取控制台展示region列表
 
-        :param request: Request instance for GetLiveCode.
-        :type request: :class:`tencentcloud.faceid.v20180301.models.GetLiveCodeRequest`
-        :rtype: :class:`tencentcloud.faceid.v20180301.models.GetLiveCodeResponse`
+        :param request: Request instance for GetRegions.
+        :type request: :class:`tencentcloud.ssm.v20190923.models.GetRegionsRequest`
+        :rtype: :class:`tencentcloud.ssm.v20190923.models.GetRegionsResponse`
 
         """
         try:
             params = request._serialize()
-            body = self.call("GetLiveCode", params)
+            body = self.call("GetRegions", params)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.GetLiveCodeResponse()
+                model = models.GetRegionsResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -221,20 +221,20 @@ class FaceidClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def IdCardOCRVerification(self, request):
-        """本接口用于校验姓名和身份证号的真实性和一致性，您可以通过输入姓名和身份证号或传入身份证人像面照片提供所需验证信息。
+    def GetSecretValue(self, request):
+        """获取指定凭据名称和版本的凭据明文信息，只能获取启用状态的凭据明文。
 
-        :param request: Request instance for IdCardOCRVerification.
-        :type request: :class:`tencentcloud.faceid.v20180301.models.IdCardOCRVerificationRequest`
-        :rtype: :class:`tencentcloud.faceid.v20180301.models.IdCardOCRVerificationResponse`
+        :param request: Request instance for GetSecretValue.
+        :type request: :class:`tencentcloud.ssm.v20190923.models.GetSecretValueRequest`
+        :rtype: :class:`tencentcloud.ssm.v20190923.models.GetSecretValueResponse`
 
         """
         try:
             params = request._serialize()
-            body = self.call("IdCardOCRVerification", params)
+            body = self.call("GetSecretValue", params)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.IdCardOCRVerificationResponse()
+                model = models.GetSecretValueResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -249,20 +249,20 @@ class FaceidClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def IdCardVerification(self, request):
-        """传入姓名和身份证号，校验两者的真实性和一致性。
+    def GetServiceStatus(self, request):
+        """该接口用户获取用户SecretsManager服务开通状态。
 
-        :param request: Request instance for IdCardVerification.
-        :type request: :class:`tencentcloud.faceid.v20180301.models.IdCardVerificationRequest`
-        :rtype: :class:`tencentcloud.faceid.v20180301.models.IdCardVerificationResponse`
+        :param request: Request instance for GetServiceStatus.
+        :type request: :class:`tencentcloud.ssm.v20190923.models.GetServiceStatusRequest`
+        :rtype: :class:`tencentcloud.ssm.v20190923.models.GetServiceStatusResponse`
 
         """
         try:
             params = request._serialize()
-            body = self.call("IdCardVerification", params)
+            body = self.call("GetServiceStatus", params)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.IdCardVerificationResponse()
+                model = models.GetServiceStatusResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -277,20 +277,20 @@ class FaceidClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def ImageRecognition(self, request):
-        """传入照片和身份信息，判断该照片与公安权威库的证件照是否属于同一个人。
+    def ListSecretVersionIds(self, request):
+        """该接口用于获取指定凭据下的版本列表信息
 
-        :param request: Request instance for ImageRecognition.
-        :type request: :class:`tencentcloud.faceid.v20180301.models.ImageRecognitionRequest`
-        :rtype: :class:`tencentcloud.faceid.v20180301.models.ImageRecognitionResponse`
+        :param request: Request instance for ListSecretVersionIds.
+        :type request: :class:`tencentcloud.ssm.v20190923.models.ListSecretVersionIdsRequest`
+        :rtype: :class:`tencentcloud.ssm.v20190923.models.ListSecretVersionIdsResponse`
 
         """
         try:
             params = request._serialize()
-            body = self.call("ImageRecognition", params)
+            body = self.call("ListSecretVersionIds", params)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.ImageRecognitionResponse()
+                model = models.ListSecretVersionIdsResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -305,20 +305,20 @@ class FaceidClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def Liveness(self, request):
-        """活体检测
+    def ListSecrets(self, request):
+        """该接口用于获取所有凭据的详细列表，可以指定过滤字段、排序方式等。
 
-        :param request: Request instance for Liveness.
-        :type request: :class:`tencentcloud.faceid.v20180301.models.LivenessRequest`
-        :rtype: :class:`tencentcloud.faceid.v20180301.models.LivenessResponse`
+        :param request: Request instance for ListSecrets.
+        :type request: :class:`tencentcloud.ssm.v20190923.models.ListSecretsRequest`
+        :rtype: :class:`tencentcloud.ssm.v20190923.models.ListSecretsResponse`
 
         """
         try:
             params = request._serialize()
-            body = self.call("Liveness", params)
+            body = self.call("ListSecrets", params)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.LivenessResponse()
+                model = models.ListSecretsResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -333,20 +333,20 @@ class FaceidClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def LivenessCompare(self, request):
-        """传入视频和照片，先判断视频中是否为真人，判断为真人后，再判断该视频中的人与上传照片是否属于同一个人。
+    def PutSecretValue(self, request):
+        """该接口在指定名称的凭据下增加新版本的凭据内容，一个凭据下最多可以支持10个版本。只能对处于Enabled 和 Disabled 状态的凭据添加新的版本。
 
-        :param request: Request instance for LivenessCompare.
-        :type request: :class:`tencentcloud.faceid.v20180301.models.LivenessCompareRequest`
-        :rtype: :class:`tencentcloud.faceid.v20180301.models.LivenessCompareResponse`
+        :param request: Request instance for PutSecretValue.
+        :type request: :class:`tencentcloud.ssm.v20190923.models.PutSecretValueRequest`
+        :rtype: :class:`tencentcloud.ssm.v20190923.models.PutSecretValueResponse`
 
         """
         try:
             params = request._serialize()
-            body = self.call("LivenessCompare", params)
+            body = self.call("PutSecretValue", params)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.LivenessCompareResponse()
+                model = models.PutSecretValueResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -361,20 +361,20 @@ class FaceidClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def LivenessRecognition(self, request):
-        """传入视频和身份信息，先判断视频中是否为真人，判断为真人后，再判断该视频中的人与公安权威库的证件照是否属于同一个人。
+    def RestoreSecret(self, request):
+        """该接口用于恢复计划删除（PendingDelete状态）中的凭据，取消计划删除。取消计划删除的凭据将处于Disabled 状态，如需恢复使用，通过EnableSecret 接口开启凭据。
 
-        :param request: Request instance for LivenessRecognition.
-        :type request: :class:`tencentcloud.faceid.v20180301.models.LivenessRecognitionRequest`
-        :rtype: :class:`tencentcloud.faceid.v20180301.models.LivenessRecognitionResponse`
+        :param request: Request instance for RestoreSecret.
+        :type request: :class:`tencentcloud.ssm.v20190923.models.RestoreSecretRequest`
+        :rtype: :class:`tencentcloud.ssm.v20190923.models.RestoreSecretResponse`
 
         """
         try:
             params = request._serialize()
-            body = self.call("LivenessRecognition", params)
+            body = self.call("RestoreSecret", params)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.LivenessRecognitionResponse()
+                model = models.RestoreSecretResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -389,20 +389,20 @@ class FaceidClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def MinorsVerification(self, request):
-        """传入手机号或者姓名和身份证号，判断该信息是否已实名认证且年满18周岁。
+    def UpdateDescription(self, request):
+        """该接口用于修改指定凭据的描述信息，仅能修改Enabled 和 Disabled 状态的凭据。
 
-        :param request: Request instance for MinorsVerification.
-        :type request: :class:`tencentcloud.faceid.v20180301.models.MinorsVerificationRequest`
-        :rtype: :class:`tencentcloud.faceid.v20180301.models.MinorsVerificationResponse`
+        :param request: Request instance for UpdateDescription.
+        :type request: :class:`tencentcloud.ssm.v20190923.models.UpdateDescriptionRequest`
+        :rtype: :class:`tencentcloud.ssm.v20190923.models.UpdateDescriptionResponse`
 
         """
         try:
             params = request._serialize()
-            body = self.call("MinorsVerification", params)
+            body = self.call("UpdateDescription", params)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.MinorsVerificationResponse()
+                model = models.UpdateDescriptionResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -417,76 +417,20 @@ class FaceidClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def MobileNetworkTimeVerification(self, request):
-        """本接口用于查询手机号在网时长，输入手机号进行查询。
+    def UpdateSecret(self, request):
+        """该接口用于更新指定凭据名称和版本号的内容，调用该接口会对新的凭据内容加密后覆盖旧的内容。仅允许更新Enabled 和 Disabled 状态的凭据。
 
-        :param request: Request instance for MobileNetworkTimeVerification.
-        :type request: :class:`tencentcloud.faceid.v20180301.models.MobileNetworkTimeVerificationRequest`
-        :rtype: :class:`tencentcloud.faceid.v20180301.models.MobileNetworkTimeVerificationResponse`
-
-        """
-        try:
-            params = request._serialize()
-            body = self.call("MobileNetworkTimeVerification", params)
-            response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.MobileNetworkTimeVerificationResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(e.message, e.message)
-
-
-    def MobileStatus(self, request):
-        """本接口用于验证手机号的状态，您可以输入手机号进行查询。
-
-        :param request: Request instance for MobileStatus.
-        :type request: :class:`tencentcloud.faceid.v20180301.models.MobileStatusRequest`
-        :rtype: :class:`tencentcloud.faceid.v20180301.models.MobileStatusResponse`
+        :param request: Request instance for UpdateSecret.
+        :type request: :class:`tencentcloud.ssm.v20190923.models.UpdateSecretRequest`
+        :rtype: :class:`tencentcloud.ssm.v20190923.models.UpdateSecretResponse`
 
         """
         try:
             params = request._serialize()
-            body = self.call("MobileStatus", params)
+            body = self.call("UpdateSecret", params)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.MobileStatusResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(e.message, e.message)
-
-
-    def PhoneVerification(self, request):
-        """本接口用于校验手机号、姓名和身份证号的真实性和一致性。
-
-        :param request: Request instance for PhoneVerification.
-        :type request: :class:`tencentcloud.faceid.v20180301.models.PhoneVerificationRequest`
-        :rtype: :class:`tencentcloud.faceid.v20180301.models.PhoneVerificationResponse`
-
-        """
-        try:
-            params = request._serialize()
-            body = self.call("PhoneVerification", params)
-            response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.PhoneVerificationResponse()
+                model = models.UpdateSecretResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

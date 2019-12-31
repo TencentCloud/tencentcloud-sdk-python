@@ -16,6 +16,97 @@
 from tencentcloud.common.abstract_model import AbstractModel
 
 
+class AssociateTargetGroupsRequest(AbstractModel):
+    """AssociateTargetGroups请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Associations: 绑定的关系数组
+        :type Associations: list of TargetGroupAssociation
+        """
+        self.Associations = None
+
+
+    def _deserialize(self, params):
+        if params.get("Associations") is not None:
+            self.Associations = []
+            for item in params.get("Associations"):
+                obj = TargetGroupAssociation()
+                obj._deserialize(item)
+                self.Associations.append(obj)
+
+
+class AssociateTargetGroupsResponse(AbstractModel):
+    """AssociateTargetGroups返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class AssociationItem(AbstractModel):
+    """目标组关联到的规则
+
+    """
+
+    def __init__(self):
+        """
+        :param LoadBalancerId: 关联到的负载均衡ID
+        :type LoadBalancerId: str
+        :param ListenerId: 关联到的监听器ID
+        :type ListenerId: str
+        :param LocationId: 关联到的转发规则ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LocationId: str
+        :param Protocol: 关联到的监听器协议类型，如HTTP,TCP,
+        :type Protocol: str
+        :param Port: 关联到的监听器端口
+        :type Port: int
+        :param Domain: 关联到的转发规则域名
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Domain: str
+        :param Url: 关联到的转发规则URL
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Url: str
+        :param LoadBalancerName: 负载均衡名称
+        :type LoadBalancerName: str
+        :param ListenerName: 监听器名称
+        :type ListenerName: str
+        """
+        self.LoadBalancerId = None
+        self.ListenerId = None
+        self.LocationId = None
+        self.Protocol = None
+        self.Port = None
+        self.Domain = None
+        self.Url = None
+        self.LoadBalancerName = None
+        self.ListenerName = None
+
+
+    def _deserialize(self, params):
+        self.LoadBalancerId = params.get("LoadBalancerId")
+        self.ListenerId = params.get("ListenerId")
+        self.LocationId = params.get("LocationId")
+        self.Protocol = params.get("Protocol")
+        self.Port = params.get("Port")
+        self.Domain = params.get("Domain")
+        self.Url = params.get("Url")
+        self.LoadBalancerName = params.get("LoadBalancerName")
+        self.ListenerName = params.get("ListenerName")
+
+
 class AutoRewriteRequest(AbstractModel):
     """AutoRewrite请求参数结构体
 
@@ -856,6 +947,61 @@ class CreateRuleResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class CreateTargetGroupRequest(AbstractModel):
+    """CreateTargetGroup请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param TargetGroupName: 目标组名称，限定50个字符
+        :type TargetGroupName: str
+        :param VpcId: 目标组的vpcid属性，不填则使用默认vpc
+        :type VpcId: str
+        :param Port: 目标组的默认端口， 后续添加服务器时可使用该默认端口
+        :type Port: int
+        :param TargetGroupInstances: 目标组绑定的后端服务器
+        :type TargetGroupInstances: list of TargetGroupInstance
+        """
+        self.TargetGroupName = None
+        self.VpcId = None
+        self.Port = None
+        self.TargetGroupInstances = None
+
+
+    def _deserialize(self, params):
+        self.TargetGroupName = params.get("TargetGroupName")
+        self.VpcId = params.get("VpcId")
+        self.Port = params.get("Port")
+        if params.get("TargetGroupInstances") is not None:
+            self.TargetGroupInstances = []
+            for item in params.get("TargetGroupInstances"):
+                obj = TargetGroupInstance()
+                obj._deserialize(item)
+                self.TargetGroupInstances.append(obj)
+
+
+class CreateTargetGroupResponse(AbstractModel):
+    """CreateTargetGroup返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param TargetGroupId: 创建目标组后生成的id
+        :type TargetGroupId: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TargetGroupId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TargetGroupId = params.get("TargetGroupId")
+        self.RequestId = params.get("RequestId")
+
+
 class DeleteListenerRequest(AbstractModel):
     """DeleteListener请求参数结构体
 
@@ -1014,6 +1160,83 @@ class DeleteRuleRequest(AbstractModel):
 
 class DeleteRuleResponse(AbstractModel):
     """DeleteRule返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class DeleteTargetGroupsRequest(AbstractModel):
+    """DeleteTargetGroups请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param TargetGroupIds: 目标组的ID数组
+        :type TargetGroupIds: list of str
+        """
+        self.TargetGroupIds = None
+
+
+    def _deserialize(self, params):
+        self.TargetGroupIds = params.get("TargetGroupIds")
+
+
+class DeleteTargetGroupsResponse(AbstractModel):
+    """DeleteTargetGroups返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class DeregisterTargetGroupInstancesRequest(AbstractModel):
+    """DeregisterTargetGroupInstances请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param TargetGroupId: 目标组ID
+        :type TargetGroupId: str
+        :param TargetGroupInstances: 待解绑的服务器信息
+        :type TargetGroupInstances: list of TargetGroupInstance
+        """
+        self.TargetGroupId = None
+        self.TargetGroupInstances = None
+
+
+    def _deserialize(self, params):
+        self.TargetGroupId = params.get("TargetGroupId")
+        if params.get("TargetGroupInstances") is not None:
+            self.TargetGroupInstances = []
+            for item in params.get("TargetGroupInstances"):
+                obj = TargetGroupInstance()
+                obj._deserialize(item)
+                self.TargetGroupInstances.append(obj)
+
+
+class DeregisterTargetGroupInstancesResponse(AbstractModel):
+    """DeregisterTargetGroupInstances返回参数结构体
 
     """
 
@@ -1641,6 +1864,198 @@ class DescribeRewriteResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeTargetGroupInstancesRequest(AbstractModel):
+    """DescribeTargetGroupInstances请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Filters: 过滤条件，当前仅支持TargetGroupId，BindIP，InstanceId过滤
+        :type Filters: list of Filter
+        :param Limit: 显示数量限制，默认20
+        :type Limit: int
+        :param Offset: 显示的偏移量，默认为0
+        :type Offset: int
+        """
+        self.Filters = None
+        self.Limit = None
+        self.Offset = None
+
+
+    def _deserialize(self, params):
+        if params.get("Filters") is not None:
+            self.Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self.Filters.append(obj)
+        self.Limit = params.get("Limit")
+        self.Offset = params.get("Offset")
+
+
+class DescribeTargetGroupInstancesResponse(AbstractModel):
+    """DescribeTargetGroupInstances返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param TotalCount: 本次查询的结果数量
+        :type TotalCount: int
+        :param TargetGroupInstanceSet: 绑定的服务器信息
+        :type TargetGroupInstanceSet: list of TargetGroupBackend
+        :param RealCount: 实际统计数量，不受Limit，Offset，CAM的影响
+        :type RealCount: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.TargetGroupInstanceSet = None
+        self.RealCount = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("TargetGroupInstanceSet") is not None:
+            self.TargetGroupInstanceSet = []
+            for item in params.get("TargetGroupInstanceSet"):
+                obj = TargetGroupBackend()
+                obj._deserialize(item)
+                self.TargetGroupInstanceSet.append(obj)
+        self.RealCount = params.get("RealCount")
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeTargetGroupListRequest(AbstractModel):
+    """DescribeTargetGroupList请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param TargetGroupIds: 目标组ID数组
+        :type TargetGroupIds: list of str
+        :param Filters: 过滤条件数组，支持TargetGroupVpcId和TargetGroupName。与TargetGroupIds互斥，优先使用目标组ID，
+        :type Filters: list of Filter
+        :param Offset: 显示的偏移起始量
+        :type Offset: int
+        :param Limit: 显示条数限制，默认为20
+        :type Limit: int
+        """
+        self.TargetGroupIds = None
+        self.Filters = None
+        self.Offset = None
+        self.Limit = None
+
+
+    def _deserialize(self, params):
+        self.TargetGroupIds = params.get("TargetGroupIds")
+        if params.get("Filters") is not None:
+            self.Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self.Filters.append(obj)
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+
+
+class DescribeTargetGroupListResponse(AbstractModel):
+    """DescribeTargetGroupList返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param TotalCount: 显示的结果数量
+        :type TotalCount: int
+        :param TargetGroupSet: 显示的目标组信息集合
+        :type TargetGroupSet: list of TargetGroupInfo
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.TargetGroupSet = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("TargetGroupSet") is not None:
+            self.TargetGroupSet = []
+            for item in params.get("TargetGroupSet"):
+                obj = TargetGroupInfo()
+                obj._deserialize(item)
+                self.TargetGroupSet.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeTargetGroupsRequest(AbstractModel):
+    """DescribeTargetGroups请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param TargetGroupIds: 目标组ID，与Filters互斥
+        :type TargetGroupIds: list of str
+        :param Limit: 显示条数限制，默认为20
+        :type Limit: int
+        :param Offset: 显示的偏移起始量
+        :type Offset: int
+        :param Filters: 过滤条件数组，与TargetGroupIds互斥，支持TargetGroupVpcId和TargetGroupName
+        :type Filters: list of Filter
+        """
+        self.TargetGroupIds = None
+        self.Limit = None
+        self.Offset = None
+        self.Filters = None
+
+
+    def _deserialize(self, params):
+        self.TargetGroupIds = params.get("TargetGroupIds")
+        self.Limit = params.get("Limit")
+        self.Offset = params.get("Offset")
+        if params.get("Filters") is not None:
+            self.Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self.Filters.append(obj)
+
+
+class DescribeTargetGroupsResponse(AbstractModel):
+    """DescribeTargetGroups返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param TotalCount: 显示的结果数量
+        :type TotalCount: int
+        :param TargetGroupSet: 显示的目标组信息集合
+        :type TargetGroupSet: list of TargetGroupInfo
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.TargetGroupSet = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("TargetGroupSet") is not None:
+            self.TargetGroupSet = []
+            for item in params.get("TargetGroupSet"):
+                obj = TargetGroupInfo()
+                obj._deserialize(item)
+                self.TargetGroupSet.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeTargetHealthRequest(AbstractModel):
     """DescribeTargetHealth请求参数结构体
 
@@ -1779,6 +2194,45 @@ class DescribeTaskStatusResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DisassociateTargetGroupsRequest(AbstractModel):
+    """DisassociateTargetGroups请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Associations: 待解绑的规则关系数组
+        :type Associations: list of TargetGroupAssociation
+        """
+        self.Associations = None
+
+
+    def _deserialize(self, params):
+        if params.get("Associations") is not None:
+            self.Associations = []
+            for item in params.get("Associations"):
+                obj = TargetGroupAssociation()
+                obj._deserialize(item)
+                self.Associations.append(obj)
+
+
+class DisassociateTargetGroupsResponse(AbstractModel):
+    """DisassociateTargetGroups返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class ExclusiveCluster(AbstractModel):
     """独占集群
 
@@ -1840,6 +2294,27 @@ class ExtraInfo(AbstractModel):
     def _deserialize(self, params):
         self.ZhiTong = params.get("ZhiTong")
         self.TgwGroupName = params.get("TgwGroupName")
+
+
+class Filter(AbstractModel):
+    """过滤器条件
+
+    """
+
+    def __init__(self):
+        """
+        :param Name: 过滤器的名称
+        :type Name: str
+        :param Values: 过滤器的值数组
+        :type Values: list of str
+        """
+        self.Name = None
+        self.Values = None
+
+
+    def _deserialize(self, params):
+        self.Name = params.get("Name")
+        self.Values = params.get("Values")
 
 
 class HealthCheck(AbstractModel):
@@ -2841,6 +3316,134 @@ class ModifyRuleResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class ModifyTargetGroupAttributeRequest(AbstractModel):
+    """ModifyTargetGroupAttribute请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param TargetGroupId: 目标组的ID
+        :type TargetGroupId: str
+        :param TargetGroupName: 目标组的新名称
+        :type TargetGroupName: str
+        :param Port: 目标组的新默认端口
+        :type Port: int
+        """
+        self.TargetGroupId = None
+        self.TargetGroupName = None
+        self.Port = None
+
+
+    def _deserialize(self, params):
+        self.TargetGroupId = params.get("TargetGroupId")
+        self.TargetGroupName = params.get("TargetGroupName")
+        self.Port = params.get("Port")
+
+
+class ModifyTargetGroupAttributeResponse(AbstractModel):
+    """ModifyTargetGroupAttribute返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class ModifyTargetGroupInstancesPortRequest(AbstractModel):
+    """ModifyTargetGroupInstancesPort请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param TargetGroupId: 目标组ID
+        :type TargetGroupId: str
+        :param TargetGroupInstances: 待修改端口的服务器数组
+        :type TargetGroupInstances: list of TargetGroupInstance
+        """
+        self.TargetGroupId = None
+        self.TargetGroupInstances = None
+
+
+    def _deserialize(self, params):
+        self.TargetGroupId = params.get("TargetGroupId")
+        if params.get("TargetGroupInstances") is not None:
+            self.TargetGroupInstances = []
+            for item in params.get("TargetGroupInstances"):
+                obj = TargetGroupInstance()
+                obj._deserialize(item)
+                self.TargetGroupInstances.append(obj)
+
+
+class ModifyTargetGroupInstancesPortResponse(AbstractModel):
+    """ModifyTargetGroupInstancesPort返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class ModifyTargetGroupInstancesWeightRequest(AbstractModel):
+    """ModifyTargetGroupInstancesWeight请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param TargetGroupId: 目标组ID
+        :type TargetGroupId: str
+        :param TargetGroupInstances: 待修改权重的服务器数组
+        :type TargetGroupInstances: list of TargetGroupInstance
+        """
+        self.TargetGroupId = None
+        self.TargetGroupInstances = None
+
+
+    def _deserialize(self, params):
+        self.TargetGroupId = params.get("TargetGroupId")
+        if params.get("TargetGroupInstances") is not None:
+            self.TargetGroupInstances = []
+            for item in params.get("TargetGroupInstances"):
+                obj = TargetGroupInstance()
+                obj._deserialize(item)
+                self.TargetGroupInstances.append(obj)
+
+
+class ModifyTargetGroupInstancesWeightResponse(AbstractModel):
+    """ModifyTargetGroupInstancesWeight返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class ModifyTargetPortRequest(AbstractModel):
     """ModifyTargetPort请求参数结构体
 
@@ -2952,6 +3555,49 @@ class ModifyTargetWeightRequest(AbstractModel):
 
 class ModifyTargetWeightResponse(AbstractModel):
     """ModifyTargetWeight返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class RegisterTargetGroupInstancesRequest(AbstractModel):
+    """RegisterTargetGroupInstances请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param TargetGroupId: 目标组ID
+        :type TargetGroupId: str
+        :param TargetGroupInstances: 服务器实例数组
+        :type TargetGroupInstances: list of TargetGroupInstance
+        """
+        self.TargetGroupId = None
+        self.TargetGroupInstances = None
+
+
+    def _deserialize(self, params):
+        self.TargetGroupId = params.get("TargetGroupId")
+        if params.get("TargetGroupInstances") is not None:
+            self.TargetGroupInstances = []
+            for item in params.get("TargetGroupInstances"):
+                obj = TargetGroupInstance()
+                obj._deserialize(item)
+                self.TargetGroupInstances.append(obj)
+
+
+class RegisterTargetGroupInstancesResponse(AbstractModel):
+    """RegisterTargetGroupInstances返回参数结构体
 
     """
 
@@ -3604,6 +4250,170 @@ class Target(AbstractModel):
         self.InstanceId = params.get("InstanceId")
         self.Weight = params.get("Weight")
         self.EniIp = params.get("EniIp")
+
+
+class TargetGroupAssociation(AbstractModel):
+    """规则与目标组的关联关系
+
+    """
+
+    def __init__(self):
+        """
+        :param LoadBalancerId: 负载均衡ID
+        :type LoadBalancerId: str
+        :param ListenerId: 监听器ID
+        :type ListenerId: str
+        :param TargetGroupId: 目标组ID
+        :type TargetGroupId: str
+        :param LocationId: 转发规则ID
+        :type LocationId: str
+        """
+        self.LoadBalancerId = None
+        self.ListenerId = None
+        self.TargetGroupId = None
+        self.LocationId = None
+
+
+    def _deserialize(self, params):
+        self.LoadBalancerId = params.get("LoadBalancerId")
+        self.ListenerId = params.get("ListenerId")
+        self.TargetGroupId = params.get("TargetGroupId")
+        self.LocationId = params.get("LocationId")
+
+
+class TargetGroupBackend(AbstractModel):
+    """目标组绑定的后端服务器
+
+    """
+
+    def __init__(self):
+        """
+        :param TargetGroupId: 目标组ID
+        :type TargetGroupId: str
+        :param Type: 后端服务的类型，可取：CVM、ENI（即将支持）
+        :type Type: str
+        :param InstanceId: 后端服务的唯一 ID
+        :type InstanceId: str
+        :param Port: 后端服务的监听端口
+        :type Port: int
+        :param Weight: 后端服务的转发权重，取值范围：[0, 100]，默认为 10。
+        :type Weight: int
+        :param PublicIpAddresses: 后端服务的外网 IP
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PublicIpAddresses: list of str
+        :param PrivateIpAddresses: 后端服务的内网 IP
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PrivateIpAddresses: list of str
+        :param InstanceName: 后端服务的实例名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InstanceName: str
+        :param RegisteredTime: 后端服务被绑定的时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RegisteredTime: str
+        :param EniId: 弹性网卡唯一ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EniId: str
+        """
+        self.TargetGroupId = None
+        self.Type = None
+        self.InstanceId = None
+        self.Port = None
+        self.Weight = None
+        self.PublicIpAddresses = None
+        self.PrivateIpAddresses = None
+        self.InstanceName = None
+        self.RegisteredTime = None
+        self.EniId = None
+
+
+    def _deserialize(self, params):
+        self.TargetGroupId = params.get("TargetGroupId")
+        self.Type = params.get("Type")
+        self.InstanceId = params.get("InstanceId")
+        self.Port = params.get("Port")
+        self.Weight = params.get("Weight")
+        self.PublicIpAddresses = params.get("PublicIpAddresses")
+        self.PrivateIpAddresses = params.get("PrivateIpAddresses")
+        self.InstanceName = params.get("InstanceName")
+        self.RegisteredTime = params.get("RegisteredTime")
+        self.EniId = params.get("EniId")
+
+
+class TargetGroupInfo(AbstractModel):
+    """目标组信息
+
+    """
+
+    def __init__(self):
+        """
+        :param TargetGroupId: 目标组ID
+        :type TargetGroupId: str
+        :param VpcId: 目标组的vpcid
+        :type VpcId: str
+        :param TargetGroupName: 目标组的名字
+        :type TargetGroupName: str
+        :param Port: 目标组的默认端口
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Port: int
+        :param CreatedTime: 目标组的创建时间
+        :type CreatedTime: str
+        :param UpdatedTime: 目标组的修改时间
+        :type UpdatedTime: str
+        :param AssociatedRule: 关联到的规则数组
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AssociatedRule: list of AssociationItem
+        """
+        self.TargetGroupId = None
+        self.VpcId = None
+        self.TargetGroupName = None
+        self.Port = None
+        self.CreatedTime = None
+        self.UpdatedTime = None
+        self.AssociatedRule = None
+
+
+    def _deserialize(self, params):
+        self.TargetGroupId = params.get("TargetGroupId")
+        self.VpcId = params.get("VpcId")
+        self.TargetGroupName = params.get("TargetGroupName")
+        self.Port = params.get("Port")
+        self.CreatedTime = params.get("CreatedTime")
+        self.UpdatedTime = params.get("UpdatedTime")
+        if params.get("AssociatedRule") is not None:
+            self.AssociatedRule = []
+            for item in params.get("AssociatedRule"):
+                obj = AssociationItem()
+                obj._deserialize(item)
+                self.AssociatedRule.append(obj)
+
+
+class TargetGroupInstance(AbstractModel):
+    """目标组实例
+
+    """
+
+    def __init__(self):
+        """
+        :param BindIP: 目标组实例的内网IP
+        :type BindIP: str
+        :param Port: 目标组实例的端口
+        :type Port: int
+        :param Weight: 目标组实例的权重
+        :type Weight: int
+        :param NewPort: 目标组实例的新端口
+        :type NewPort: int
+        """
+        self.BindIP = None
+        self.Port = None
+        self.Weight = None
+        self.NewPort = None
+
+
+    def _deserialize(self, params):
+        self.BindIP = params.get("BindIP")
+        self.Port = params.get("Port")
+        self.Weight = params.get("Weight")
+        self.NewPort = params.get("NewPort")
 
 
 class TargetHealth(AbstractModel):

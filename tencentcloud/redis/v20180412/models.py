@@ -311,7 +311,7 @@ class CreateInstancesRequest(AbstractModel):
         :type AutoRenew: int
         :param SecurityGroupIdList: 安全组id数组
         :type SecurityGroupIdList: list of str
-        :param VPort: 用户自定义的端口 不填则默认为6379
+        :param VPort: 用户自定义的端口 不填则默认为6379，范围[1024,65535]
         :type VPort: int
         :param RedisShardNum: 实例分片数量，Redis2.8主从版、CKV主从版和Redis2.8单机版、Redis4.0主从版不需要填写
         :type RedisShardNum: int
@@ -699,7 +699,7 @@ class DescribeInstanceDTSInfoResponse(AbstractModel):
         :param JobName: DTS任务名称
 注意：此字段可能返回 null，表示取不到有效值。
         :type JobName: str
-        :param Status: 状态
+        :param Status: 任务状态,取值为：1-创建中(Creating),3-校验中(Checking)4-校验通过(CheckPass),5-校验不通过（CheckNotPass）,7-任务运行(Running),8-准备完成（ReadyComplete）,9-任务成功（Success）,10-任务失败（Failed）,11-撤销中（Stopping）,12-完成中（Completing）
 注意：此字段可能返回 null，表示取不到有效值。
         :type Status: int
         :param StatusDesc: 状态描述
@@ -2257,7 +2257,7 @@ class InstanceMultiParam(AbstractModel):
         :param Tips: 参数说明
         :type Tips: str
         :param EnumValue: 参数说明
-        :type EnumValue: str
+        :type EnumValue: list of str
         :param Status: 参数状态, 1: 修改中， 2：修改完成
         :type Status: int
         """
@@ -2925,27 +2925,39 @@ class ModifyInstanceRequest(AbstractModel):
         """
         :param Operation: 修改实例操作，如填写：rename-表示实例重命名；modifyProject-修改实例所属项目；modifyAutoRenew-修改实例续费标记
         :type Operation: str
-        :param InstanceId: 实例Id
-        :type InstanceId: str
-        :param InstanceName: 实例的新名称
-        :type InstanceName: str
+        :param InstanceIds: 实例Id
+        :type InstanceIds: list of str
+        :param InstanceNames: 实例的新名称
+        :type InstanceNames: list of str
         :param ProjectId: 项目Id
         :type ProjectId: int
-        :param AutoRenew: 自动续费标识。0 - 默认状态（手动续费）；1 - 自动续费；2 - 明确不自动续费
+        :param AutoRenews: 自动续费标识。0 - 默认状态（手动续费）；1 - 自动续费；2 - 明确不自动续费
+        :type AutoRenews: list of int
+        :param InstanceId: 已经废弃
+        :type InstanceId: str
+        :param InstanceName: 已经废弃
+        :type InstanceName: str
+        :param AutoRenew: 已经废弃
         :type AutoRenew: int
         """
         self.Operation = None
+        self.InstanceIds = None
+        self.InstanceNames = None
+        self.ProjectId = None
+        self.AutoRenews = None
         self.InstanceId = None
         self.InstanceName = None
-        self.ProjectId = None
         self.AutoRenew = None
 
 
     def _deserialize(self, params):
         self.Operation = params.get("Operation")
+        self.InstanceIds = params.get("InstanceIds")
+        self.InstanceNames = params.get("InstanceNames")
+        self.ProjectId = params.get("ProjectId")
+        self.AutoRenews = params.get("AutoRenews")
         self.InstanceId = params.get("InstanceId")
         self.InstanceName = params.get("InstanceName")
-        self.ProjectId = params.get("ProjectId")
         self.AutoRenew = params.get("AutoRenew")
 
 

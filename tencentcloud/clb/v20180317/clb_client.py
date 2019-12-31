@@ -25,6 +25,35 @@ class ClbClient(AbstractClient):
     _endpoint = 'clb.tencentcloudapi.com'
 
 
+    def AssociateTargetGroups(self, request):
+        """监听器或转发规则绑定目标组。
+        本接口为异步接口，本接口返回成功后需以返回的 RequestID 为入参，调用 DescribeTaskStatus 接口查询本次任务是否成功。
+
+        :param request: Request instance for AssociateTargetGroups.
+        :type request: :class:`tencentcloud.clb.v20180317.models.AssociateTargetGroupsRequest`
+        :rtype: :class:`tencentcloud.clb.v20180317.models.AssociateTargetGroupsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("AssociateTargetGroups", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.AssociateTargetGroupsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def AutoRewrite(self, request):
         """用户需要先创建出一个HTTPS:443监听器，并在其下创建转发规则。通过调用本接口，系统会自动创建出一个HTTP:80监听器（如果之前不存在），并在其下创建转发规则，与HTTPS:443监听器下的Domains（在入参中指定）对应。创建成功后可以通过HTTP:80地址自动跳转为HTTPS:443地址进行访问。
         本接口为异步接口，本接口返回成功后需以返回的RequestID为入参，调用DescribeTaskStatus接口查询本次任务是否成功。
@@ -227,6 +256,34 @@ class ClbClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def CreateTargetGroup(self, request):
+        """创建目标组。（目标组功能正在灰度中，需要开通白名单支持）
+
+        :param request: Request instance for CreateTargetGroup.
+        :type request: :class:`tencentcloud.clb.v20180317.models.CreateTargetGroupRequest`
+        :rtype: :class:`tencentcloud.clb.v20180317.models.CreateTargetGroupResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("CreateTargetGroup", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateTargetGroupResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DeleteListener(self, request):
         """本接口用来删除负载均衡实例下的监听器（四层和七层）。
         本接口为异步接口，接口返回成功后，需以得到的 RequestID 为入参，调用 DescribeTaskStatus 接口查询本次任务是否成功。
@@ -329,6 +386,63 @@ class ClbClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteRuleResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DeleteTargetGroups(self, request):
+        """删除目标组
+
+        :param request: Request instance for DeleteTargetGroups.
+        :type request: :class:`tencentcloud.clb.v20180317.models.DeleteTargetGroupsRequest`
+        :rtype: :class:`tencentcloud.clb.v20180317.models.DeleteTargetGroupsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DeleteTargetGroups", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DeleteTargetGroupsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DeregisterTargetGroupInstances(self, request):
+        """将服务器从目标组中解绑。
+        本接口为异步接口，本接口返回成功后需以返回的 RequestID 为入参，调用 DescribeTaskStatus 接口查询本次任务是否成功。
+
+        :param request: Request instance for DeregisterTargetGroupInstances.
+        :type request: :class:`tencentcloud.clb.v20180317.models.DeregisterTargetGroupInstancesRequest`
+        :rtype: :class:`tencentcloud.clb.v20180317.models.DeregisterTargetGroupInstancesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DeregisterTargetGroupInstances", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DeregisterTargetGroupInstancesResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -653,6 +767,90 @@ class ClbClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeTargetGroupInstances(self, request):
+        """获取目标组绑定的服务器信息
+
+        :param request: Request instance for DescribeTargetGroupInstances.
+        :type request: :class:`tencentcloud.clb.v20180317.models.DescribeTargetGroupInstancesRequest`
+        :rtype: :class:`tencentcloud.clb.v20180317.models.DescribeTargetGroupInstancesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeTargetGroupInstances", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeTargetGroupInstancesResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeTargetGroupList(self, request):
+        """获取目标组列表
+
+        :param request: Request instance for DescribeTargetGroupList.
+        :type request: :class:`tencentcloud.clb.v20180317.models.DescribeTargetGroupListRequest`
+        :rtype: :class:`tencentcloud.clb.v20180317.models.DescribeTargetGroupListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeTargetGroupList", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeTargetGroupListResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeTargetGroups(self, request):
+        """查询目标组信息
+
+        :param request: Request instance for DescribeTargetGroups.
+        :type request: :class:`tencentcloud.clb.v20180317.models.DescribeTargetGroupsRequest`
+        :rtype: :class:`tencentcloud.clb.v20180317.models.DescribeTargetGroupsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeTargetGroups", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeTargetGroupsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeTargetHealth(self, request):
         """DescribeTargetHealth 接口用来获取负载均衡后端服务的健康检查结果，不支持传统型负载均衡。
 
@@ -723,6 +921,35 @@ class ClbClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeTaskStatusResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DisassociateTargetGroups(self, request):
+        """解除规则的目标组关联关系。
+        本接口为异步接口，本接口返回成功后需以返回的 RequestID 为入参，调用 DescribeTaskStatus 接口查询本次任务是否成功。
+
+        :param request: Request instance for DisassociateTargetGroups.
+        :type request: :class:`tencentcloud.clb.v20180317.models.DisassociateTargetGroupsRequest`
+        :rtype: :class:`tencentcloud.clb.v20180317.models.DisassociateTargetGroupsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DisassociateTargetGroups", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DisassociateTargetGroupsResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -939,6 +1166,92 @@ class ClbClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def ModifyTargetGroupAttribute(self, request):
+        """修改目标组的名称或者默认端口属性
+
+        :param request: Request instance for ModifyTargetGroupAttribute.
+        :type request: :class:`tencentcloud.clb.v20180317.models.ModifyTargetGroupAttributeRequest`
+        :rtype: :class:`tencentcloud.clb.v20180317.models.ModifyTargetGroupAttributeResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ModifyTargetGroupAttribute", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ModifyTargetGroupAttributeResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ModifyTargetGroupInstancesPort(self, request):
+        """批量修改目标组服务器端口。
+        本接口为异步接口，本接口返回成功后需以返回的 RequestID 为入参，调用 DescribeTaskStatus 接口查询本次任务是否成功。
+
+        :param request: Request instance for ModifyTargetGroupInstancesPort.
+        :type request: :class:`tencentcloud.clb.v20180317.models.ModifyTargetGroupInstancesPortRequest`
+        :rtype: :class:`tencentcloud.clb.v20180317.models.ModifyTargetGroupInstancesPortResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ModifyTargetGroupInstancesPort", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ModifyTargetGroupInstancesPortResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ModifyTargetGroupInstancesWeight(self, request):
+        """批量修改目标组的服务器权重。
+        本接口为异步接口，本接口返回成功后需以返回的 RequestID 为入参，调用 DescribeTaskStatus 接口查询本次任务是否成功。
+
+        :param request: Request instance for ModifyTargetGroupInstancesWeight.
+        :type request: :class:`tencentcloud.clb.v20180317.models.ModifyTargetGroupInstancesWeightRequest`
+        :rtype: :class:`tencentcloud.clb.v20180317.models.ModifyTargetGroupInstancesWeightResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ModifyTargetGroupInstancesWeight", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ModifyTargetGroupInstancesWeightResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def ModifyTargetPort(self, request):
         """ModifyTargetPort接口用于修改监听器绑定的后端服务的端口。
         本接口为异步接口，本接口返回成功后需以返回的RequestID为入参，调用DescribeTaskStatus接口查询本次任务是否成功。
@@ -983,6 +1296,35 @@ class ClbClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyTargetWeightResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def RegisterTargetGroupInstances(self, request):
+        """注册服务器到目标组。
+        本接口为异步接口，本接口返回成功后需以返回的 RequestID 为入参，调用 DescribeTaskStatus 接口查询本次任务是否成功。
+
+        :param request: Request instance for RegisterTargetGroupInstances.
+        :type request: :class:`tencentcloud.clb.v20180317.models.RegisterTargetGroupInstancesRequest`
+        :rtype: :class:`tencentcloud.clb.v20180317.models.RegisterTargetGroupInstancesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("RegisterTargetGroupInstances", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.RegisterTargetGroupInstancesResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

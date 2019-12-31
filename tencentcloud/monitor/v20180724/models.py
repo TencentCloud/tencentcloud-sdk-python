@@ -109,11 +109,11 @@ class CreatePolicyGroupCondition(AbstractModel):
         :type AlarmNotifyType: int
         :param AlarmNotifyPeriod: 告警发送周期单位秒。<0 不触发, 0 只触发一次, >0 每隔triggerTime秒触发一次
         :type AlarmNotifyPeriod: int
-        :param CalcType: 比较类型，范围0-6，分别对应[>,<,>=,<=,==,!=,!]。如果指标有配置默认比较类型值可以不填。
+        :param CalcType: 比较类型，1表示大于，2表示大于等于，3表示小于，4表示小于等于，5表示相等，6表示不相等。如果指标有配置默认比较类型值可以不填。
         :type CalcType: int
         :param CalcValue: 比较的值，如果指标不必须CalcValue可不填
         :type CalcValue: float
-        :param CalcPeriod: Storm检测周期单位秒，若指标有默认值可不填
+        :param CalcPeriod: 数据聚合周期(单位秒)，若指标有默认值可不填
         :type CalcPeriod: int
         :param ContinuePeriod: 持续几个检测周期触发规则会告警
         :type ContinuePeriod: int
@@ -288,6 +288,44 @@ class DataPoint(AbstractModel):
         self.Values = params.get("Values")
 
 
+class DeletePolicyGroupRequest(AbstractModel):
+    """DeletePolicyGroup请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Module: 固定值，为"monitor"
+        :type Module: str
+        :param GroupId: 策略组id
+        :type GroupId: list of int
+        """
+        self.Module = None
+        self.GroupId = None
+
+
+    def _deserialize(self, params):
+        self.Module = params.get("Module")
+        self.GroupId = params.get("GroupId")
+
+
+class DeletePolicyGroupResponse(AbstractModel):
+    """DeletePolicyGroup返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeAccidentEventListAlarms(AbstractModel):
     """DescribeAccidentEventList接口的出参类型
 
@@ -348,7 +386,7 @@ class DescribeAccidentEventListRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Module: 接口模块名，当前接口取值policy
+        :param Module: 接口模块名，当前接口取值monitor
         :type Module: str
         :param StartTime: 起始时间，默认一天前的时间戳
         :type StartTime: int
@@ -478,6 +516,427 @@ class DescribeBaseMetricsResponse(AbstractModel):
                 obj = MetricSet()
                 obj._deserialize(item)
                 self.MetricSet.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeBindingPolicyObjectListInstance(AbstractModel):
+    """查询策略绑定对象列表接口返回的对象实例信息
+
+    """
+
+    def __init__(self):
+        """
+        :param UniqueId: 对象唯一id
+        :type UniqueId: str
+        :param Dimensions: 表示对象实例的维度集合，jsonObj字符串
+        :type Dimensions: str
+        :param IsShielded: 对象是否被屏蔽，0表示未屏蔽，1表示被屏蔽
+        :type IsShielded: int
+        :param Region: 对象所在的地域
+        :type Region: str
+        """
+        self.UniqueId = None
+        self.Dimensions = None
+        self.IsShielded = None
+        self.Region = None
+
+
+    def _deserialize(self, params):
+        self.UniqueId = params.get("UniqueId")
+        self.Dimensions = params.get("Dimensions")
+        self.IsShielded = params.get("IsShielded")
+        self.Region = params.get("Region")
+
+
+class DescribeBindingPolicyObjectListRequest(AbstractModel):
+    """DescribeBindingPolicyObjectList请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Module: 固定值，为"monitor"
+        :type Module: str
+        :param GroupId: 策略组id
+        :type GroupId: int
+        """
+        self.Module = None
+        self.GroupId = None
+
+
+    def _deserialize(self, params):
+        self.Module = params.get("Module")
+        self.GroupId = params.get("GroupId")
+
+
+class DescribeBindingPolicyObjectListResponse(AbstractModel):
+    """DescribeBindingPolicyObjectList返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param List: 绑定的对象实例列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type List: list of DescribeBindingPolicyObjectListInstance
+        :param Total: 绑定的对象实例总数
+        :type Total: int
+        :param NoShieldedSum: 未屏蔽的对象实例数
+        :type NoShieldedSum: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.List = None
+        self.Total = None
+        self.NoShieldedSum = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("List") is not None:
+            self.List = []
+            for item in params.get("List"):
+                obj = DescribeBindingPolicyObjectListInstance()
+                obj._deserialize(item)
+                self.List.append(obj)
+        self.Total = params.get("Total")
+        self.NoShieldedSum = params.get("NoShieldedSum")
+        self.RequestId = params.get("RequestId")
+
+
+class DescribePolicyGroupInfoCallback(AbstractModel):
+    """查询策略输出的用户回调信息
+
+    """
+
+    def __init__(self):
+        """
+        :param CallbackUrl: 用户回调接口地址
+        :type CallbackUrl: str
+        :param ValidFlag: 用户回调接口状态，0表示未验证，1表示已验证，2表示存在url但没有通过验证
+        :type ValidFlag: int
+        :param VerifyCode: 用户回调接口验证码
+        :type VerifyCode: str
+        """
+        self.CallbackUrl = None
+        self.ValidFlag = None
+        self.VerifyCode = None
+
+
+    def _deserialize(self, params):
+        self.CallbackUrl = params.get("CallbackUrl")
+        self.ValidFlag = params.get("ValidFlag")
+        self.VerifyCode = params.get("VerifyCode")
+
+
+class DescribePolicyGroupInfoCondition(AbstractModel):
+    """查询策略输出的阈值告警条件
+
+    """
+
+    def __init__(self):
+        """
+        :param MetricShowName: 指标名称
+        :type MetricShowName: str
+        :param Period: 数据聚合周期(单位秒)
+        :type Period: int
+        :param MetricId: 指标id
+        :type MetricId: int
+        :param RuleId: 阈值规则id
+        :type RuleId: int
+        :param Unit: 指标单位
+        :type Unit: str
+        :param AlarmNotifyType: 告警发送收敛类型。0连续告警，1指数告警
+        :type AlarmNotifyType: int
+        :param AlarmNotifyPeriod: 告警发送周期单位秒。<0 不触发, 0 只触发一次, >0 每隔triggerTime秒触发一次
+        :type AlarmNotifyPeriod: int
+        :param CalcType: 比较类型，1表示大于，2表示大于等于，3表示小于，4表示小于等于，5表示相等，6表示不相等，7表示日同比上涨，8表示日同比下降，9表示周同比上涨，10表示周同比下降，11表示周期环比上涨，12表示周期环比下降
+        :type CalcType: int
+        :param CalcValue: 检测阈值
+        :type CalcValue: str
+        :param ContinueTime: 持续多长时间触发规则会告警(单位秒)
+        :type ContinueTime: int
+        """
+        self.MetricShowName = None
+        self.Period = None
+        self.MetricId = None
+        self.RuleId = None
+        self.Unit = None
+        self.AlarmNotifyType = None
+        self.AlarmNotifyPeriod = None
+        self.CalcType = None
+        self.CalcValue = None
+        self.ContinueTime = None
+
+
+    def _deserialize(self, params):
+        self.MetricShowName = params.get("MetricShowName")
+        self.Period = params.get("Period")
+        self.MetricId = params.get("MetricId")
+        self.RuleId = params.get("RuleId")
+        self.Unit = params.get("Unit")
+        self.AlarmNotifyType = params.get("AlarmNotifyType")
+        self.AlarmNotifyPeriod = params.get("AlarmNotifyPeriod")
+        self.CalcType = params.get("CalcType")
+        self.CalcValue = params.get("CalcValue")
+        self.ContinueTime = params.get("ContinueTime")
+
+
+class DescribePolicyGroupInfoConditionTpl(AbstractModel):
+    """查询策略输出的模板策略组信息
+
+    """
+
+    def __init__(self):
+        """
+        :param GroupId: 策略组id
+        :type GroupId: int
+        :param GroupName: 策略组名称
+        :type GroupName: str
+        :param ViewName: 策略类型
+        :type ViewName: str
+        :param Remark: 策略组说明
+        :type Remark: str
+        :param LastEditUin: 最后编辑的用户uin
+        :type LastEditUin: str
+        """
+        self.GroupId = None
+        self.GroupName = None
+        self.ViewName = None
+        self.Remark = None
+        self.LastEditUin = None
+
+
+    def _deserialize(self, params):
+        self.GroupId = params.get("GroupId")
+        self.GroupName = params.get("GroupName")
+        self.ViewName = params.get("ViewName")
+        self.Remark = params.get("Remark")
+        self.LastEditUin = params.get("LastEditUin")
+
+
+class DescribePolicyGroupInfoEventCondition(AbstractModel):
+    """查询策略输出的事件告警条件
+
+    """
+
+    def __init__(self):
+        """
+        :param EventId: 事件id
+        :type EventId: int
+        :param RuleId: 事件告警规则id
+        :type RuleId: int
+        :param EventShowName: 事件名称
+        :type EventShowName: str
+        :param AlarmNotifyPeriod: 告警发送周期单位秒。<0 不触发, 0 只触发一次, >0 每隔triggerTime秒触发一次
+        :type AlarmNotifyPeriod: int
+        :param AlarmNotifyType: 告警发送收敛类型。0连续告警，1指数告警
+        :type AlarmNotifyType: int
+        """
+        self.EventId = None
+        self.RuleId = None
+        self.EventShowName = None
+        self.AlarmNotifyPeriod = None
+        self.AlarmNotifyType = None
+
+
+    def _deserialize(self, params):
+        self.EventId = params.get("EventId")
+        self.RuleId = params.get("RuleId")
+        self.EventShowName = params.get("EventShowName")
+        self.AlarmNotifyPeriod = params.get("AlarmNotifyPeriod")
+        self.AlarmNotifyType = params.get("AlarmNotifyType")
+
+
+class DescribePolicyGroupInfoReceiverInfo(AbstractModel):
+    """查询策略输出的告警接收人信息
+
+    """
+
+    def __init__(self):
+        """
+        :param ReceiverGroupList: 告警接收组id列表
+        :type ReceiverGroupList: list of int
+        :param ReceiverUserList: 告警接收人id列表
+        :type ReceiverUserList: list of int
+        :param StartTime: 告警时间段开始时间。范围[0,86400)，作为unix时间戳转成北京时间后去掉日期，例如7200表示"10:0:0"
+        :type StartTime: int
+        :param EndTime: 告警时间段结束时间。含义同StartTime
+        :type EndTime: int
+        :param ReceiverType: 接收类型。“group”(接收组)或“user”(接收人)
+        :type ReceiverType: str
+        :param NotifyWay: 告警通知方式。可选 "SMS","SITE","EMAIL","CALL","WECHAT"
+        :type NotifyWay: list of str
+        :param UidList: 电话告警接收者uid
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UidList: list of int
+        :param RoundNumber: 电话告警轮数
+        :type RoundNumber: int
+        :param RoundInterval: 电话告警每轮间隔（秒）
+        :type RoundInterval: int
+        :param PersonInterval: 电话告警对个人间隔（秒）
+        :type PersonInterval: int
+        :param NeedSendNotice: 是否需要电话告警触达提示。0不需要，1需要
+        :type NeedSendNotice: int
+        :param SendFor: 电话告警通知时机。可选"OCCUR"(告警时通知),"RECOVER"(恢复时通知)
+        :type SendFor: list of str
+        :param RecoverNotify: 恢复通知方式。可选"SMS"
+        :type RecoverNotify: list of str
+        """
+        self.ReceiverGroupList = None
+        self.ReceiverUserList = None
+        self.StartTime = None
+        self.EndTime = None
+        self.ReceiverType = None
+        self.NotifyWay = None
+        self.UidList = None
+        self.RoundNumber = None
+        self.RoundInterval = None
+        self.PersonInterval = None
+        self.NeedSendNotice = None
+        self.SendFor = None
+        self.RecoverNotify = None
+
+
+    def _deserialize(self, params):
+        self.ReceiverGroupList = params.get("ReceiverGroupList")
+        self.ReceiverUserList = params.get("ReceiverUserList")
+        self.StartTime = params.get("StartTime")
+        self.EndTime = params.get("EndTime")
+        self.ReceiverType = params.get("ReceiverType")
+        self.NotifyWay = params.get("NotifyWay")
+        self.UidList = params.get("UidList")
+        self.RoundNumber = params.get("RoundNumber")
+        self.RoundInterval = params.get("RoundInterval")
+        self.PersonInterval = params.get("PersonInterval")
+        self.NeedSendNotice = params.get("NeedSendNotice")
+        self.SendFor = params.get("SendFor")
+        self.RecoverNotify = params.get("RecoverNotify")
+
+
+class DescribePolicyGroupInfoRequest(AbstractModel):
+    """DescribePolicyGroupInfo请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Module: 固定值，为"monitor"
+        :type Module: str
+        :param GroupId: 策略组id
+        :type GroupId: int
+        """
+        self.Module = None
+        self.GroupId = None
+
+
+    def _deserialize(self, params):
+        self.Module = params.get("Module")
+        self.GroupId = params.get("GroupId")
+
+
+class DescribePolicyGroupInfoResponse(AbstractModel):
+    """DescribePolicyGroupInfo返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param GroupName: 策略组名称
+        :type GroupName: str
+        :param ProjectId: 策略组所属的项目id
+        :type ProjectId: int
+        :param IsDefault: 是否为默认策略，0表示非默认策略，1表示默认策略
+        :type IsDefault: int
+        :param ViewName: 策略类型
+        :type ViewName: str
+        :param Remark: 策略说明
+        :type Remark: str
+        :param ShowName: 策略类型名称
+        :type ShowName: str
+        :param LastEditUin: 最近编辑的用户uin
+        :type LastEditUin: str
+        :param UpdateTime: 最近编辑时间
+        :type UpdateTime: str
+        :param Region: 该策略支持的地域
+        :type Region: list of str
+        :param DimensionGroup: 策略类型的维度列表
+        :type DimensionGroup: list of str
+        :param ConditionsConfig: 阈值规则列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ConditionsConfig: list of DescribePolicyGroupInfoCondition
+        :param EventConfig: 产品事件规则列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EventConfig: list of DescribePolicyGroupInfoEventCondition
+        :param ReceiverInfos: 用户接收人列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ReceiverInfos: list of DescribePolicyGroupInfoReceiverInfo
+        :param Callback: 用户回调信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Callback: :class:`tencentcloud.monitor.v20180724.models.DescribePolicyGroupInfoCallback`
+        :param ConditionsTemp: 模板策略组
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ConditionsTemp: :class:`tencentcloud.monitor.v20180724.models.DescribePolicyGroupInfoConditionTpl`
+        :param CanSetDefault: 是否可以设置成默认策略
+        :type CanSetDefault: bool
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.GroupName = None
+        self.ProjectId = None
+        self.IsDefault = None
+        self.ViewName = None
+        self.Remark = None
+        self.ShowName = None
+        self.LastEditUin = None
+        self.UpdateTime = None
+        self.Region = None
+        self.DimensionGroup = None
+        self.ConditionsConfig = None
+        self.EventConfig = None
+        self.ReceiverInfos = None
+        self.Callback = None
+        self.ConditionsTemp = None
+        self.CanSetDefault = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.GroupName = params.get("GroupName")
+        self.ProjectId = params.get("ProjectId")
+        self.IsDefault = params.get("IsDefault")
+        self.ViewName = params.get("ViewName")
+        self.Remark = params.get("Remark")
+        self.ShowName = params.get("ShowName")
+        self.LastEditUin = params.get("LastEditUin")
+        self.UpdateTime = params.get("UpdateTime")
+        self.Region = params.get("Region")
+        self.DimensionGroup = params.get("DimensionGroup")
+        if params.get("ConditionsConfig") is not None:
+            self.ConditionsConfig = []
+            for item in params.get("ConditionsConfig"):
+                obj = DescribePolicyGroupInfoCondition()
+                obj._deserialize(item)
+                self.ConditionsConfig.append(obj)
+        if params.get("EventConfig") is not None:
+            self.EventConfig = []
+            for item in params.get("EventConfig"):
+                obj = DescribePolicyGroupInfoEventCondition()
+                obj._deserialize(item)
+                self.EventConfig.append(obj)
+        if params.get("ReceiverInfos") is not None:
+            self.ReceiverInfos = []
+            for item in params.get("ReceiverInfos"):
+                obj = DescribePolicyGroupInfoReceiverInfo()
+                obj._deserialize(item)
+                self.ReceiverInfos.append(obj)
+        if params.get("Callback") is not None:
+            self.Callback = DescribePolicyGroupInfoCallback()
+            self.Callback._deserialize(params.get("Callback"))
+        if params.get("ConditionsTemp") is not None:
+            self.ConditionsTemp = DescribePolicyGroupInfoConditionTpl()
+            self.ConditionsTemp._deserialize(params.get("ConditionsTemp"))
+        self.CanSetDefault = params.get("CanSetDefault")
         self.RequestId = params.get("RequestId")
 
 
@@ -1259,3 +1718,83 @@ class ReceiverInfo(AbstractModel):
         self.NeedSendNotice = params.get("NeedSendNotice")
         self.ReceiverGroupList = params.get("ReceiverGroupList")
         self.ReceiverUserList = params.get("ReceiverUserList")
+
+
+class UnBindingAllPolicyObjectRequest(AbstractModel):
+    """UnBindingAllPolicyObject请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Module: 固定值，为"monitor"
+        :type Module: str
+        :param GroupId: 策略组id
+        :type GroupId: int
+        """
+        self.Module = None
+        self.GroupId = None
+
+
+    def _deserialize(self, params):
+        self.Module = params.get("Module")
+        self.GroupId = params.get("GroupId")
+
+
+class UnBindingAllPolicyObjectResponse(AbstractModel):
+    """UnBindingAllPolicyObject返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class UnBindingPolicyObjectRequest(AbstractModel):
+    """UnBindingPolicyObject请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Module: 固定值，为"monitor"
+        :type Module: str
+        :param GroupId: 策略组id
+        :type GroupId: int
+        :param UniqueId: 待删除对象实例的唯一id列表
+        :type UniqueId: list of str
+        """
+        self.Module = None
+        self.GroupId = None
+        self.UniqueId = None
+
+
+    def _deserialize(self, params):
+        self.Module = params.get("Module")
+        self.GroupId = params.get("GroupId")
+        self.UniqueId = params.get("UniqueId")
+
+
+class UnBindingPolicyObjectResponse(AbstractModel):
+    """UnBindingPolicyObject返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")

@@ -16,8 +16,8 @@
 from tencentcloud.common.abstract_model import AbstractModel
 
 
-class DissolveRoomRequest(AbstractModel):
-    """DissolveRoom请求参数结构体
+class DismissRoomRequest(AbstractModel):
+    """DismissRoom请求参数结构体
 
     """
 
@@ -37,8 +37,8 @@ class DissolveRoomRequest(AbstractModel):
         self.RoomId = params.get("RoomId")
 
 
-class DissolveRoomResponse(AbstractModel):
-    """DissolveRoom返回参数结构体
+class DismissRoomResponse(AbstractModel):
+    """DismissRoom返回参数结构体
 
     """
 
@@ -54,8 +54,8 @@ class DissolveRoomResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
-class KickOutUserRequest(AbstractModel):
-    """KickOutUser请求参数结构体
+class RemoveUserRequest(AbstractModel):
+    """RemoveUser请求参数结构体
 
     """
 
@@ -65,7 +65,7 @@ class KickOutUserRequest(AbstractModel):
         :type SdkAppId: int
         :param RoomId: 房间号。
         :type RoomId: int
-        :param UserIds: 要踢的用户列表，最多10个。
+        :param UserIds: 要移出的用户列表，最多10个。
         :type UserIds: list of str
         """
         self.SdkAppId = None
@@ -79,8 +79,8 @@ class KickOutUserRequest(AbstractModel):
         self.UserIds = params.get("UserIds")
 
 
-class KickOutUserResponse(AbstractModel):
-    """KickOutUser返回参数结构体
+class RemoveUserResponse(AbstractModel):
+    """RemoveUser返回参数结构体
 
     """
 
