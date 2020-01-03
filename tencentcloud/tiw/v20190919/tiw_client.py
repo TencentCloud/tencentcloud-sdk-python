@@ -81,6 +81,34 @@ class TiwClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeOnlineRecordCallback(self, request):
+        """查询实时录制回调地址
+
+        :param request: Request instance for DescribeOnlineRecordCallback.
+        :type request: :class:`tencentcloud.tiw.v20190919.models.DescribeOnlineRecordCallbackRequest`
+        :rtype: :class:`tencentcloud.tiw.v20190919.models.DescribeOnlineRecordCallbackResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeOnlineRecordCallback", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeOnlineRecordCallbackResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeTranscode(self, request):
         """查询文档转码任务的执行进度与转码结果
 
@@ -95,6 +123,34 @@ class TiwClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeTranscodeResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeTranscodeCallback(self, request):
+        """查询文档转码回调地址
+
+        :param request: Request instance for DescribeTranscodeCallback.
+        :type request: :class:`tencentcloud.tiw.v20190919.models.DescribeTranscodeCallbackRequest`
+        :rtype: :class:`tencentcloud.tiw.v20190919.models.DescribeTranscodeCallbackResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeTranscodeCallback", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeTranscodeCallbackResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

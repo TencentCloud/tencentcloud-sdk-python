@@ -53,6 +53,34 @@ class TiemsClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def CreateRsgAsGroup(self, request):
+        """创建资源组的伸缩组。当前一个资源组仅允许创建一个伸缩组。
+
+        :param request: Request instance for CreateRsgAsGroup.
+        :type request: :class:`tencentcloud.tiems.v20190416.models.CreateRsgAsGroupRequest`
+        :rtype: :class:`tencentcloud.tiems.v20190416.models.CreateRsgAsGroupResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("CreateRsgAsGroup", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateRsgAsGroupResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def CreateRuntime(self, request):
         """创建运行环境
 
@@ -137,6 +165,34 @@ class TiemsClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DeleteInstance(self, request):
+        """删除资源组中的节点。目前仅支持删除已经到期的预付费节点，和按量付费节点。
+
+        :param request: Request instance for DeleteInstance.
+        :type request: :class:`tencentcloud.tiems.v20190416.models.DeleteInstanceRequest`
+        :rtype: :class:`tencentcloud.tiems.v20190416.models.DeleteInstanceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DeleteInstance", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DeleteInstanceResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DeleteJob(self, request):
         """删除任务
 
@@ -151,6 +207,62 @@ class TiemsClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteJobResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DeleteResourceGroup(self, request):
+        """删除资源组
+
+        :param request: Request instance for DeleteResourceGroup.
+        :type request: :class:`tencentcloud.tiems.v20190416.models.DeleteResourceGroupRequest`
+        :rtype: :class:`tencentcloud.tiems.v20190416.models.DeleteResourceGroupResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DeleteResourceGroup", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DeleteResourceGroupResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DeleteRsgAsGroup(self, request):
+        """伸缩
+
+        :param request: Request instance for DeleteRsgAsGroup.
+        :type request: :class:`tencentcloud.tiems.v20190416.models.DeleteRsgAsGroupRequest`
+        :rtype: :class:`tencentcloud.tiems.v20190416.models.DeleteRsgAsGroupResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DeleteRsgAsGroup", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DeleteRsgAsGroupResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -277,6 +389,90 @@ class TiemsClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeResourceGroups(self, request):
+        """获取资源组列表
+
+        :param request: Request instance for DescribeResourceGroups.
+        :type request: :class:`tencentcloud.tiems.v20190416.models.DescribeResourceGroupsRequest`
+        :rtype: :class:`tencentcloud.tiems.v20190416.models.DescribeResourceGroupsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeResourceGroups", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeResourceGroupsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeRsgAsGroupActivities(self, request):
+        """查询伸缩组活动
+
+        :param request: Request instance for DescribeRsgAsGroupActivities.
+        :type request: :class:`tencentcloud.tiems.v20190416.models.DescribeRsgAsGroupActivitiesRequest`
+        :rtype: :class:`tencentcloud.tiems.v20190416.models.DescribeRsgAsGroupActivitiesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeRsgAsGroupActivities", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeRsgAsGroupActivitiesResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeRsgAsGroups(self, request):
+        """查询资源组的伸缩组信息
+
+        :param request: Request instance for DescribeRsgAsGroups.
+        :type request: :class:`tencentcloud.tiems.v20190416.models.DescribeRsgAsGroupsRequest`
+        :rtype: :class:`tencentcloud.tiems.v20190416.models.DescribeRsgAsGroupsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeRsgAsGroups", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeRsgAsGroupsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeRuntimes(self, request):
         """描述服务运行环境
 
@@ -361,6 +557,62 @@ class TiemsClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DisableRsgAsGroup(self, request):
+        """停用资源组的伸缩组
+
+        :param request: Request instance for DisableRsgAsGroup.
+        :type request: :class:`tencentcloud.tiems.v20190416.models.DisableRsgAsGroupRequest`
+        :rtype: :class:`tencentcloud.tiems.v20190416.models.DisableRsgAsGroupResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DisableRsgAsGroup", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DisableRsgAsGroupResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def EnableRsgAsGroup(self, request):
+        """启用资源组的伸缩组
+
+        :param request: Request instance for EnableRsgAsGroup.
+        :type request: :class:`tencentcloud.tiems.v20190416.models.EnableRsgAsGroupRequest`
+        :rtype: :class:`tencentcloud.tiems.v20190416.models.EnableRsgAsGroupResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("EnableRsgAsGroup", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.EnableRsgAsGroupResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def ExposeService(self, request):
         """暴露服务
 
@@ -403,6 +655,34 @@ class TiemsClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.UpdateJobResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def UpdateRsgAsGroup(self, request):
+        """更新资源组的伸缩组
+
+        :param request: Request instance for UpdateRsgAsGroup.
+        :type request: :class:`tencentcloud.tiems.v20190416.models.UpdateRsgAsGroupRequest`
+        :rtype: :class:`tencentcloud.tiems.v20190416.models.UpdateRsgAsGroupResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("UpdateRsgAsGroup", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.UpdateRsgAsGroupResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

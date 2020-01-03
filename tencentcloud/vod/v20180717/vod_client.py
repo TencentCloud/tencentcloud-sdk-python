@@ -428,7 +428,7 @@ class VodClient(AbstractClient):
 
 
     def CreateTranscodeTemplate(self, request):
-        """创建用户自定义转码模板，数量上限：1000。
+        """创建用户自定义转码模板，数量上限：100。
 
         :param request: Request instance for CreateTranscodeTemplate.
         :type request: :class:`tencentcloud.vod.v20180717.models.CreateTranscodeTemplateRequest`
@@ -1595,6 +1595,35 @@ class VodClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ExecuteFunctionResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ForbidMediaDistribution(self, request):
+        """* 对媒体禁播后，除了点播控制台预览，其他场景访问视频各种资源的 URL（原始文件、转码输出文件、截图等）均会返回 403。
+          禁播/解禁操作全网生效时间约 5~10 分钟。
+
+        :param request: Request instance for ForbidMediaDistribution.
+        :type request: :class:`tencentcloud.vod.v20180717.models.ForbidMediaDistributionRequest`
+        :rtype: :class:`tencentcloud.vod.v20180717.models.ForbidMediaDistributionResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ForbidMediaDistribution", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ForbidMediaDistributionResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

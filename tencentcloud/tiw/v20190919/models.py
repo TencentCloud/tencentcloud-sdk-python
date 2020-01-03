@@ -137,7 +137,7 @@ class CustomLayout(AbstractModel):
         :param Canvas: 混流画布参数
         :type Canvas: :class:`tencentcloud.tiw.v20190919.models.Canvas`
         :param InputStreamList: 流布局参数
-        :type InputStreamList: :class:`tencentcloud.tiw.v20190919.models.StreamLayout`
+        :type InputStreamList: list of StreamLayout
         """
         self.Canvas = None
         self.InputStreamList = None
@@ -148,8 +148,49 @@ class CustomLayout(AbstractModel):
             self.Canvas = Canvas()
             self.Canvas._deserialize(params.get("Canvas"))
         if params.get("InputStreamList") is not None:
-            self.InputStreamList = StreamLayout()
-            self.InputStreamList._deserialize(params.get("InputStreamList"))
+            self.InputStreamList = []
+            for item in params.get("InputStreamList"):
+                obj = StreamLayout()
+                obj._deserialize(item)
+                self.InputStreamList.append(obj)
+
+
+class DescribeOnlineRecordCallbackRequest(AbstractModel):
+    """DescribeOnlineRecordCallback请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param SdkAppId: 应用的SdkAppId
+        :type SdkAppId: int
+        """
+        self.SdkAppId = None
+
+
+    def _deserialize(self, params):
+        self.SdkAppId = params.get("SdkAppId")
+
+
+class DescribeOnlineRecordCallbackResponse(AbstractModel):
+    """DescribeOnlineRecordCallback返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Callback: 实时录制事件回调地址，如果未设置回调地址，该字段为空字符串
+        :type Callback: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Callback = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Callback = params.get("Callback")
+        self.RequestId = params.get("RequestId")
 
 
 class DescribeOnlineRecordRequest(AbstractModel):
@@ -190,7 +231,9 @@ class DescribeOnlineRecordResponse(AbstractModel):
         :param Status: 录制任务状态
 - PREPARED: 表示录制正在准备中（进房/启动录制服务等操作）
 - RECORDING: 表示录制已开始
-- FINISHED: 表示录制完成
+- PAUSED: 表示录制已暂停
+- STOPPED: 表示录制已停止，正在处理并上传视频
+- FINISHED: 表示视频处理并上传完成，成功生成录制结果
         :type Status: str
         :param RoomId: 房间号
         :type RoomId: int
@@ -251,6 +294,44 @@ class DescribeOnlineRecordResponse(AbstractModel):
                 obj = VideoInfo()
                 obj._deserialize(item)
                 self.VideoInfos.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeTranscodeCallbackRequest(AbstractModel):
+    """DescribeTranscodeCallback请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param SdkAppId: 应用的SdkAppId
+        :type SdkAppId: int
+        """
+        self.SdkAppId = None
+
+
+    def _deserialize(self, params):
+        self.SdkAppId = params.get("SdkAppId")
+
+
+class DescribeTranscodeCallbackResponse(AbstractModel):
+    """DescribeTranscodeCallback返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Callback: 文档转码回调地址
+        :type Callback: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Callback = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Callback = params.get("Callback")
         self.RequestId = params.get("RequestId")
 
 
@@ -348,9 +429,9 @@ class LayoutParams(AbstractModel):
 
     def __init__(self):
         """
-        :param Width: 流画面宽，取值范围[1,3000]
+        :param Width: 流画面宽，取值范围[2,3000]
         :type Width: int
-        :param Height: 流画面高，取值范围[1,3000]
+        :param Height: 流画面高，取值范围[2,3000]
         :type Height: int
         :param X: 当前画面左上角顶点相对于Canvas左上角顶点的x轴偏移量，默认为0，取值范围[0,3000]
         :type X: int
@@ -524,7 +605,7 @@ class SetOnlineRecordCallbackRequest(AbstractModel):
         """
         :param SdkAppId: 客户的SdkAppId
         :type SdkAppId: int
-        :param Callback: 在线录制任务结果回调地址，如果传空字符串会删除原来的回调地址配置，回调地址仅支持 http或https协议，即回调地址以http://或https://开头
+        :param Callback: 实时录制任务结果回调地址，如果传空字符串会删除原来的回调地址配置，回调地址仅支持 http或https协议，即回调地址以http://或https://开头
         :type Callback: str
         """
         self.SdkAppId = None
@@ -602,7 +683,7 @@ class StartOnlineRecordRequest(AbstractModel):
         :type SdkAppId: int
         :param RoomId: 需要录制的房间号
         :type RoomId: int
-        :param RecordUserId: 用于实时录制服务进房的用户Id，格式为"tic_record_user_${RoomId}_${Random}"，其中 ${RoomId} 与录制房间号对应，${Random}为一个随机字符串。
+        :param RecordUserId: 用于实时录制服务进房的用户Id，格式为`tic_record_user_${RoomId}_${Random}`，其中 `${RoomId}` 与录制房间号对应，`${Random}`为一个随机字符串。
 实时录制服务会使用这个用户Id进房进行录制房间内的音视频与白板，为了防止进房冲突，请保证此 用户Id不重复
         :type RecordUserId: str
         :param RecordUserSig: 与RecordUserId对应的签名

@@ -536,6 +536,15 @@ class DriverLicenseOCRResponse(AbstractModel):
         :type EndDate: str
         :param CardCode: 证号
         :type CardCode: str
+        :param RecognizeWarnCode: 告警码	告警码消息	                                                告警码说明
+-9102	WARN_DRIVER_LICENSE_COPY_CARD	        复印件告警
+-9103	WARN_DRIVER_LICENSE_SCREENED_CARD	翻拍件告警
+-9106	WARN_DRIVER_LICENSE_PS_CARD	                ps告警
+注：告警码可以同时存在多个
+        :type RecognizeWarnCode: list of int
+        :param RecognizeWarnMsg: 告警码说明
+注：告警信息可以同时存在多个
+        :type RecognizeWarnMsg: list of str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -549,6 +558,8 @@ class DriverLicenseOCRResponse(AbstractModel):
         self.StartDate = None
         self.EndDate = None
         self.CardCode = None
+        self.RecognizeWarnCode = None
+        self.RecognizeWarnMsg = None
         self.RequestId = None
 
 
@@ -563,6 +574,8 @@ class DriverLicenseOCRResponse(AbstractModel):
         self.StartDate = params.get("StartDate")
         self.EndDate = params.get("EndDate")
         self.CardCode = params.get("CardCode")
+        self.RecognizeWarnCode = params.get("RecognizeWarnCode")
+        self.RecognizeWarnMsg = params.get("RecognizeWarnMsg")
         self.RequestId = params.get("RequestId")
 
 
@@ -2052,6 +2065,16 @@ class MLIDCardOCRResponse(AbstractModel):
         :type Warn: list of int
         :param Image: 证件图片
         :type Image: str
+        :param AdvancedInfo: 扩展字段:
+{
+    ID:{
+        Confidence:0.9999
+    },
+    Name:{
+        Confidence:0.9996
+    }
+}
+        :type AdvancedInfo: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -2061,6 +2084,7 @@ class MLIDCardOCRResponse(AbstractModel):
         self.Sex = None
         self.Warn = None
         self.Image = None
+        self.AdvancedInfo = None
         self.RequestId = None
 
 
@@ -2071,6 +2095,7 @@ class MLIDCardOCRResponse(AbstractModel):
         self.Sex = params.get("Sex")
         self.Warn = params.get("Warn")
         self.Image = params.get("Image")
+        self.AdvancedInfo = params.get("AdvancedInfo")
         self.RequestId = params.get("RequestId")
 
 
@@ -2124,6 +2149,16 @@ class MLIDPassportOCRResponse(AbstractModel):
         :type Warn: list of int
         :param Image: 证件图片
         :type Image: str
+        :param AdvancedInfo: 扩展字段:
+{
+    ID:{
+        Confidence:0.9999
+    },
+    Name:{
+        Confidence:0.9996
+    }
+}
+        :type AdvancedInfo: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -2136,6 +2171,7 @@ class MLIDPassportOCRResponse(AbstractModel):
         self.Nationality = None
         self.Warn = None
         self.Image = None
+        self.AdvancedInfo = None
         self.RequestId = None
 
 
@@ -2149,6 +2185,7 @@ class MLIDPassportOCRResponse(AbstractModel):
         self.Nationality = params.get("Nationality")
         self.Warn = params.get("Warn")
         self.Image = params.get("Image")
+        self.AdvancedInfo = params.get("AdvancedInfo")
         self.RequestId = params.get("RequestId")
 
 
@@ -2898,12 +2935,30 @@ class QuotaInvoiceOCRResponse(AbstractModel):
         :type InvoiceCode: str
         :param Rate: 大写金额
         :type Rate: str
+        :param RateNum: 小写金额
+        :type RateNum: str
+        :param InvoiceType: 发票消费类型
+        :type InvoiceType: str
+        :param Province: 省
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Province: str
+        :param City: 市
+注意：此字段可能返回 null，表示取不到有效值。
+        :type City: str
+        :param HasStamp: 是否有公司印章（1有 0无 空为识别不出）
+注意：此字段可能返回 null，表示取不到有效值。
+        :type HasStamp: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.InvoiceNum = None
         self.InvoiceCode = None
         self.Rate = None
+        self.RateNum = None
+        self.InvoiceType = None
+        self.Province = None
+        self.City = None
+        self.HasStamp = None
         self.RequestId = None
 
 
@@ -2911,6 +2966,11 @@ class QuotaInvoiceOCRResponse(AbstractModel):
         self.InvoiceNum = params.get("InvoiceNum")
         self.InvoiceCode = params.get("InvoiceCode")
         self.Rate = params.get("Rate")
+        self.RateNum = params.get("RateNum")
+        self.InvoiceType = params.get("InvoiceType")
+        self.Province = params.get("Province")
+        self.City = params.get("City")
+        self.HasStamp = params.get("HasStamp")
         self.RequestId = params.get("RequestId")
 
 
@@ -3249,6 +3309,18 @@ class TaxiInvoiceOCRResponse(AbstractModel):
         :type GetOffTime: str
         :param Distance: 里程
         :type Distance: str
+        :param Location: 发票所在地
+        :type Location: str
+        :param PlateNumber: 车牌号
+        :type PlateNumber: str
+        :param InvoiceType: 发票消费类型
+        :type InvoiceType: str
+        :param Province: 省
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Province: str
+        :param City: 市
+注意：此字段可能返回 null，表示取不到有效值。
+        :type City: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -3259,6 +3331,11 @@ class TaxiInvoiceOCRResponse(AbstractModel):
         self.GetOnTime = None
         self.GetOffTime = None
         self.Distance = None
+        self.Location = None
+        self.PlateNumber = None
+        self.InvoiceType = None
+        self.Province = None
+        self.City = None
         self.RequestId = None
 
 
@@ -3270,6 +3347,11 @@ class TaxiInvoiceOCRResponse(AbstractModel):
         self.GetOnTime = params.get("GetOnTime")
         self.GetOffTime = params.get("GetOffTime")
         self.Distance = params.get("Distance")
+        self.Location = params.get("Location")
+        self.PlateNumber = params.get("PlateNumber")
+        self.InvoiceType = params.get("InvoiceType")
+        self.Province = params.get("Province")
+        self.City = params.get("City")
         self.RequestId = params.get("RequestId")
 
 
@@ -3922,6 +4004,10 @@ class TrainTicketOCRResponse(AbstractModel):
         :type SeatCategory: str
         :param ID: 身份证号
         :type ID: str
+        :param InvoiceType: 发票消费类型
+        :type InvoiceType: str
+        :param SerialNumber: 序列号
+        :type SerialNumber: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -3935,6 +4021,8 @@ class TrainTicketOCRResponse(AbstractModel):
         self.Price = None
         self.SeatCategory = None
         self.ID = None
+        self.InvoiceType = None
+        self.SerialNumber = None
         self.RequestId = None
 
 
@@ -3949,6 +4037,8 @@ class TrainTicketOCRResponse(AbstractModel):
         self.Price = params.get("Price")
         self.SeatCategory = params.get("SeatCategory")
         self.ID = params.get("ID")
+        self.InvoiceType = params.get("InvoiceType")
+        self.SerialNumber = params.get("SerialNumber")
         self.RequestId = params.get("RequestId")
 
 
@@ -4137,11 +4227,22 @@ class VehicleLicenseOCRResponse(AbstractModel):
         :param BackInfo: 行驶证副页正面的识别结果，CardSide 为 BACK。
 注意：此字段可能返回 null，表示取不到有效值。
         :type BackInfo: :class:`tencentcloud.ocr.v20181119.models.TextVehicleBack`
+        :param RecognizeWarnCode: 告警码	告警码消息	                                                告警码说明
+-9102	WARN_DRIVER_LICENSE_COPY_CARD	        复印件告警
+-9103	WARN_DRIVER_LICENSE_SCREENED_CARD	翻拍件告警
+-9106	WARN_DRIVER_LICENSE_PS_CARD	                ps告警
+注：告警码可以同时存在多个
+        :type RecognizeWarnCode: list of int
+        :param RecognizeWarnMsg: 告警码说明
+注：告警信息可以同时存在多个
+        :type RecognizeWarnMsg: list of str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.FrontInfo = None
         self.BackInfo = None
+        self.RecognizeWarnCode = None
+        self.RecognizeWarnMsg = None
         self.RequestId = None
 
 
@@ -4152,6 +4253,8 @@ class VehicleLicenseOCRResponse(AbstractModel):
         if params.get("BackInfo") is not None:
             self.BackInfo = TextVehicleBack()
             self.BackInfo._deserialize(params.get("BackInfo"))
+        self.RecognizeWarnCode = params.get("RecognizeWarnCode")
+        self.RecognizeWarnMsg = params.get("RecognizeWarnMsg")
         self.RequestId = params.get("RequestId")
 
 

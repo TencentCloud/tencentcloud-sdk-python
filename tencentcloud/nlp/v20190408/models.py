@@ -163,64 +163,6 @@ class ClassificationResult(AbstractModel):
         self.SecondClassProbability = params.get("SecondClassProbability")
 
 
-class ContentApprovalRequest(AbstractModel):
-    """ContentApproval请求参数结构体
-
-    """
-
-    def __init__(self):
-        """
-        :param Text: 待审核的文本（仅支持UTF-8格式，不超过2000字）
-        :type Text: str
-        """
-        self.Text = None
-
-
-    def _deserialize(self, params):
-        self.Text = params.get("Text")
-
-
-class ContentApprovalResponse(AbstractModel):
-    """ContentApproval返回参数结构体
-
-    """
-
-    def __init__(self):
-        """
-        :param EvilFlag: 文本是否恶意：
-0、正常；
-1、恶意；
-2、可疑送审
-        :type EvilFlag: int
-        :param EvilKeywords: 恶意关键词组
-        :type EvilKeywords: list of str
-        :param EvilType: 文本恶意类型：
-0、正常；
-1、政治；
-2、色情；
-3、辱骂/低俗；
-4、暴恐/毒品；
-5、广告/灌水；
-6、迷信/邪教；
-7、其他违法（如跨站追杀/恶意竞争等）；
-8、综合
-        :type EvilType: int
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
-        self.EvilFlag = None
-        self.EvilKeywords = None
-        self.EvilType = None
-        self.RequestId = None
-
-
-    def _deserialize(self, params):
-        self.EvilFlag = params.get("EvilFlag")
-        self.EvilKeywords = params.get("EvilKeywords")
-        self.EvilType = params.get("EvilType")
-        self.RequestId = params.get("RequestId")
-
-
 class DependencyParsingRequest(AbstractModel):
     """DependencyParsing请求参数结构体
 
@@ -1008,7 +950,7 @@ EvilType（文本恶意类型）：
 4、暴恐/毒品；
 5、广告/灌水；
 6、迷信/邪教；
-7、其他违法（如跨站追杀/恶意竞争等）；
+7、其他违法(如赌博/造假/违法交易等)；
 8、综合；
 9、联系方式/链接
 

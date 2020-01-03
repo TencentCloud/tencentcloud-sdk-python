@@ -1922,6 +1922,8 @@ class HostResource(AbstractModel):
         :type DiskTotal: int
         :param DiskAvailable: cdh实例可用磁盘大小（单位为:GiB）
         :type DiskAvailable: int
+        :param DiskType: cdh实例磁盘类型
+        :type DiskType: str
         """
         self.CpuTotal = None
         self.CpuAvailable = None
@@ -1929,6 +1931,7 @@ class HostResource(AbstractModel):
         self.MemAvailable = None
         self.DiskTotal = None
         self.DiskAvailable = None
+        self.DiskType = None
 
 
     def _deserialize(self, params):
@@ -1938,6 +1941,7 @@ class HostResource(AbstractModel):
         self.MemAvailable = params.get("MemAvailable")
         self.DiskTotal = params.get("DiskTotal")
         self.DiskAvailable = params.get("DiskAvailable")
+        self.DiskType = params.get("DiskType")
 
 
 class Image(AbstractModel):
@@ -4641,7 +4645,7 @@ class SyncImagesRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param ImageIds: 镜像ID列表 ，镜像ID可以通过如下方式获取：<br><li>通过[DescribeImages](https://cloud.tencent.com/document/api/213/15715)接口返回的`ImageId`获取。<br><li>通过[镜像控制台](https://console.cloud.tencent.com/cvm/image)获取。<br>镜像ID必须满足限制：<br><li>镜像ID对应的镜像状态必须为`NORMAL`。<br><li>镜像大小小于50GB。<br>镜像状态请参考[镜像数据表](/document/api/213/9452#image_state)。
+        :param ImageIds: 镜像ID列表 ，镜像ID可以通过如下方式获取：<br><li>通过[DescribeImages](https://cloud.tencent.com/document/api/213/15715)接口返回的`ImageId`获取。<br><li>通过[镜像控制台](https://console.cloud.tencent.com/cvm/image)获取。<br>镜像ID必须满足限制：<br><li>镜像ID对应的镜像状态必须为`NORMAL`。<br><li>镜像大小小于50GB。<br>镜像状态请参考[镜像数据表](https://cloud.tencent.com/document/product/213/15753#Image)。
         :type ImageIds: list of str
         :param DestinationRegions: 目的同步地域列表；必须满足限制：<br><li>不能为源地域，<br><li>必须是一个合法的Region。<br><li>暂不支持部分地域同步。<br>具体地域参数请参考[Region](https://cloud.tencent.com/document/product/213/6091)。
         :type DestinationRegions: list of str

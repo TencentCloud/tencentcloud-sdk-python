@@ -122,6 +122,8 @@ class CreateDBInstancesRequest(AbstractModel):
         :type VpcId: str
         :param SubnetId: 私有网络子网ID。
         :type SubnetId: str
+        :param AutoRenewFlag: 续费标记：0-正常续费（默认）；1-自动续费；
+        :type AutoRenewFlag: int
         """
         self.SpecCode = None
         self.DBVersion = None
@@ -135,6 +137,7 @@ class CreateDBInstancesRequest(AbstractModel):
         self.VoucherIds = None
         self.VpcId = None
         self.SubnetId = None
+        self.AutoRenewFlag = None
 
 
     def _deserialize(self, params):
@@ -150,6 +153,7 @@ class CreateDBInstancesRequest(AbstractModel):
         self.VoucherIds = params.get("VoucherIds")
         self.VpcId = params.get("VpcId")
         self.SubnetId = params.get("SubnetId")
+        self.AutoRenewFlag = params.get("AutoRenewFlag")
 
 
 class CreateDBInstancesResponse(AbstractModel):
@@ -283,6 +287,8 @@ class DBInstance(AbstractModel):
         :type AutoRenew: int
         :param DBInstanceNetInfo: 实例网络连接信息
         :type DBInstanceNetInfo: list of DBInstanceNetInfo
+        :param Type: 机器类型
+        :type Type: str
         """
         self.Region = None
         self.Zone = None
@@ -307,6 +313,7 @@ class DBInstance(AbstractModel):
         self.PayType = None
         self.AutoRenew = None
         self.DBInstanceNetInfo = None
+        self.Type = None
 
 
     def _deserialize(self, params):
@@ -338,6 +345,7 @@ class DBInstance(AbstractModel):
                 obj = DBInstanceNetInfo()
                 obj._deserialize(item)
                 self.DBInstanceNetInfo.append(obj)
+        self.Type = params.get("Type")
 
 
 class DBInstanceNetInfo(AbstractModel):
@@ -1795,6 +1803,8 @@ class SpecItemInfo(AbstractModel):
         :type Qps: int
         :param Pid: 该规格对应的计费ID
         :type Pid: int
+        :param Type: 机器类型
+        :type Type: str
         """
         self.SpecCode = None
         self.Version = None
@@ -1805,6 +1815,7 @@ class SpecItemInfo(AbstractModel):
         self.MinStorage = None
         self.Qps = None
         self.Pid = None
+        self.Type = None
 
 
     def _deserialize(self, params):
@@ -1817,6 +1828,7 @@ class SpecItemInfo(AbstractModel):
         self.MinStorage = params.get("MinStorage")
         self.Qps = params.get("Qps")
         self.Pid = params.get("Pid")
+        self.Type = params.get("Type")
 
 
 class UpgradeDBInstanceRequest(AbstractModel):

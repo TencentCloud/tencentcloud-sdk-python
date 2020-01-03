@@ -46,14 +46,8 @@ class CreateInstanceRequest(AbstractModel):
         """
         :param Zone: 可用区
         :type Zone: str
-        :param NodeNum: 节点数量（2-50个）
-        :type NodeNum: int
         :param EsVersion: 实例版本（支持"5.6.4"、"6.4.3"）
         :type EsVersion: str
-        :param NodeType: 节点规格<li>ES.S1.SMALL2：1核2G</li><li>ES.S1.MEDIUM4：2核4G</li><li>ES.S1.MEDIUM8：2核8G</li><li>ES.S1.LARGE16：4核16G</li><li>ES.S1.2XLARGE32：8核32G</li><li>ES.S1.4XLARGE32：16核32G</li><li>ES.S1.4XLARGE64：16核64G</li>
-        :type NodeType: str
-        :param DiskSize: 节点磁盘容量（单位GB）
-        :type DiskSize: int
         :param VpcId: 私有网络ID
         :type VpcId: str
         :param SubnetId: 子网ID
@@ -62,50 +56,70 @@ class CreateInstanceRequest(AbstractModel):
         :type Password: str
         :param InstanceName: 实例名称（1-50 个英文、汉字、数字、连接线-或下划线_）
         :type InstanceName: str
+        :param NodeNum: 已废弃请使用NodeInfoList
+节点数量（2-50个）
+        :type NodeNum: int
         :param ChargeType: 计费类型<li>PREPAID：预付费，即包年包月</li><li>POSTPAID_BY_HOUR：按小时后付费</li>默认值POSTPAID_BY_HOUR
         :type ChargeType: str
         :param ChargePeriod: 包年包月购买时长（单位由参数TimeUnit决定）
         :type ChargePeriod: int
         :param RenewFlag: 自动续费标识<li>RENEW_FLAG_AUTO：自动续费</li><li>RENEW_FLAG_MANUAL：不自动续费，用户手动续费</li>ChargeType为PREPAID时需要设置，如不传递该参数，普通用户默认不自动续费，SVIP用户自动续费
         :type RenewFlag: str
-        :param DiskType: 节点磁盘类型<li>CLOUD_SSD：SSD云硬盘</li><li>CLOUD_PREMIUM：高硬能云硬盘</li>默认值CLOUD_SSD
+        :param NodeType: 已废弃请使用NodeInfoList
+节点规格<li>ES.S1.SMALL2：1核2G</li><li>ES.S1.MEDIUM4：2核4G</li><li>ES.S1.MEDIUM8：2核8G</li><li>ES.S1.LARGE16：4核16G</li><li>ES.S1.2XLARGE32：8核32G</li><li>ES.S1.4XLARGE32：16核32G</li><li>ES.S1.4XLARGE64：16核64G</li>
+        :type NodeType: str
+        :param DiskType: 已废弃请使用NodeInfoList
+节点磁盘类型<li>CLOUD_SSD：SSD云硬盘</li><li>CLOUD_PREMIUM：高硬能云硬盘</li>默认值CLOUD_SSD
         :type DiskType: str
+        :param DiskSize: 已废弃请使用NodeInfoList
+节点磁盘容量（单位GB）
+        :type DiskSize: int
         :param TimeUnit: 计费时长单位（ChargeType为PREPAID时需要设置，默认值为“m”，表示月，当前只支持“m”）
         :type TimeUnit: str
         :param AutoVoucher: 是否自动使用代金券<li>0：不自动使用</li><li>1：自动使用</li>默认值0
         :type AutoVoucher: int
         :param VoucherIds: 代金券ID列表（目前仅支持指定一张代金券）
         :type VoucherIds: list of str
-        :param EnableDedicatedMaster: 是否创建专用主节点<li>true：开启专用主节点</li><li>false：不开启专用主节点</li>默认值false
+        :param EnableDedicatedMaster: 已废弃请使用NodeInfoList
+是否创建专用主节点<li>true：开启专用主节点</li><li>false：不开启专用主节点</li>默认值false
         :type EnableDedicatedMaster: bool
-        :param MasterNodeNum: 专用主节点个数（只支持3个和5个，EnableDedicatedMaster为true时该值必传）
+        :param MasterNodeNum: 已废弃请使用NodeInfoList
+专用主节点个数（只支持3个和5个，EnableDedicatedMaster为true时该值必传）
         :type MasterNodeNum: int
-        :param MasterNodeType: 专用主节点类型（EnableDedicatedMaster为true时必传）<li>ES.S1.SMALL2：1核2G</li><li>ES.S1.MEDIUM4：2核4G</li><li>ES.S1.MEDIUM8：2核8G</li><li>ES.S1.LARGE16：4核16G</li><li>ES.S1.2XLARGE32：8核32G</li><li>ES.S1.4XLARGE32：16核32G</li><li>ES.S1.4XLARGE64：16核64G</li>
+        :param MasterNodeType: 已废弃请使用NodeInfoList
+专用主节点类型（EnableDedicatedMaster为true时必传）<li>ES.S1.SMALL2：1核2G</li><li>ES.S1.MEDIUM4：2核4G</li><li>ES.S1.MEDIUM8：2核8G</li><li>ES.S1.LARGE16：4核16G</li><li>ES.S1.2XLARGE32：8核32G</li><li>ES.S1.4XLARGE32：16核32G</li><li>ES.S1.4XLARGE64：16核64G</li>
         :type MasterNodeType: str
-        :param MasterNodeDiskSize: 专用主节点磁盘大小（单位GB，非必传，若传递则必须为50，暂不支持自定义）
+        :param MasterNodeDiskSize: 已废弃请使用NodeInfoList
+专用主节点磁盘大小（单位GB，非必传，若传递则必须为50，暂不支持自定义）
         :type MasterNodeDiskSize: int
         :param ClusterNameInConf: 集群配置文件中的ClusterName（系统默认配置为实例ID，暂不支持自定义）
         :type ClusterNameInConf: str
         :param DeployMode: 集群部署方式<li>0：单可用区部署</li><li>1：多可用区部署</li>默认为0
         :type DeployMode: int
         :param MultiZoneInfo: 多可用区部署时可用区的详细信息(DeployMode为1时必传)
-        :type MultiZoneInfo: list of MultiZoneInfo
+        :type MultiZoneInfo: list of ZoneDetail
         :param LicenseType: License类型<li>oss：开源版</li><li>basic：基础版</li><li>platinum：白金版</li>默认值platinum
         :type LicenseType: str
+        :param NodeInfoList: 节点信息列表， 用于描述集群各类节点的规格信息如节点类型，节点个数，节点规格，磁盘类型，磁盘大小等
+        :type NodeInfoList: list of NodeInfo
+        :param TagList: 节点标签信息列表
+        :type TagList: list of TagInfo
+        :param BasicSecurityType: 6.8（及以上版本）基础版是否开启xpack security认证<li>1：不开启</li><li>2：开启</li>
+        :type BasicSecurityType: int
         """
         self.Zone = None
-        self.NodeNum = None
         self.EsVersion = None
-        self.NodeType = None
-        self.DiskSize = None
         self.VpcId = None
         self.SubnetId = None
         self.Password = None
         self.InstanceName = None
+        self.NodeNum = None
         self.ChargeType = None
         self.ChargePeriod = None
         self.RenewFlag = None
+        self.NodeType = None
         self.DiskType = None
+        self.DiskSize = None
         self.TimeUnit = None
         self.AutoVoucher = None
         self.VoucherIds = None
@@ -117,22 +131,25 @@ class CreateInstanceRequest(AbstractModel):
         self.DeployMode = None
         self.MultiZoneInfo = None
         self.LicenseType = None
+        self.NodeInfoList = None
+        self.TagList = None
+        self.BasicSecurityType = None
 
 
     def _deserialize(self, params):
         self.Zone = params.get("Zone")
-        self.NodeNum = params.get("NodeNum")
         self.EsVersion = params.get("EsVersion")
-        self.NodeType = params.get("NodeType")
-        self.DiskSize = params.get("DiskSize")
         self.VpcId = params.get("VpcId")
         self.SubnetId = params.get("SubnetId")
         self.Password = params.get("Password")
         self.InstanceName = params.get("InstanceName")
+        self.NodeNum = params.get("NodeNum")
         self.ChargeType = params.get("ChargeType")
         self.ChargePeriod = params.get("ChargePeriod")
         self.RenewFlag = params.get("RenewFlag")
+        self.NodeType = params.get("NodeType")
         self.DiskType = params.get("DiskType")
+        self.DiskSize = params.get("DiskSize")
         self.TimeUnit = params.get("TimeUnit")
         self.AutoVoucher = params.get("AutoVoucher")
         self.VoucherIds = params.get("VoucherIds")
@@ -145,10 +162,23 @@ class CreateInstanceRequest(AbstractModel):
         if params.get("MultiZoneInfo") is not None:
             self.MultiZoneInfo = []
             for item in params.get("MultiZoneInfo"):
-                obj = MultiZoneInfo()
+                obj = ZoneDetail()
                 obj._deserialize(item)
                 self.MultiZoneInfo.append(obj)
         self.LicenseType = params.get("LicenseType")
+        if params.get("NodeInfoList") is not None:
+            self.NodeInfoList = []
+            for item in params.get("NodeInfoList"):
+                obj = NodeInfo()
+                obj._deserialize(item)
+                self.NodeInfoList.append(obj)
+        if params.get("TagList") is not None:
+            self.TagList = []
+            for item in params.get("TagList"):
+                obj = TagInfo()
+                obj._deserialize(item)
+                self.TagList.append(obj)
+        self.BasicSecurityType = params.get("BasicSecurityType")
 
 
 class CreateInstanceResponse(AbstractModel):
@@ -371,6 +401,10 @@ class DescribeInstancesRequest(AbstractModel):
         :type OrderByKey: int
         :param OrderByType: 排序方式<li>0：升序</li><li>1：降序</li>若传递了orderByKey未传递orderByType, 则默认升序
         :type OrderByType: int
+        :param TagList: 节点标签信息列表
+        :type TagList: list of TagInfo
+        :param IpList: 私有网络vip列表
+        :type IpList: list of str
         """
         self.Zone = None
         self.InstanceIds = None
@@ -379,6 +413,8 @@ class DescribeInstancesRequest(AbstractModel):
         self.Limit = None
         self.OrderByKey = None
         self.OrderByType = None
+        self.TagList = None
+        self.IpList = None
 
 
     def _deserialize(self, params):
@@ -389,6 +425,13 @@ class DescribeInstancesRequest(AbstractModel):
         self.Limit = params.get("Limit")
         self.OrderByKey = params.get("OrderByKey")
         self.OrderByType = params.get("OrderByType")
+        if params.get("TagList") is not None:
+            self.TagList = []
+            for item in params.get("TagList"):
+                obj = TagInfo()
+                obj._deserialize(item)
+                self.TagList.append(obj)
+        self.IpList = params.get("IpList")
 
 
 class DescribeInstancesResponse(AbstractModel):
@@ -498,6 +541,27 @@ class EsDictionaryInfo(AbstractModel):
                 self.Stopwords.append(obj)
 
 
+class EsPublicAcl(AbstractModel):
+    """ES公网访问访问控制信息
+
+    """
+
+    def __init__(self):
+        """
+        :param BlackIpList: 访问黑名单
+        :type BlackIpList: list of str
+        :param WhiteIpList: 访问白名单
+        :type WhiteIpList: list of str
+        """
+        self.BlackIpList = None
+        self.WhiteIpList = None
+
+
+    def _deserialize(self, params):
+        self.BlackIpList = params.get("BlackIpList")
+        self.WhiteIpList = params.get("WhiteIpList")
+
+
 class InstanceInfo(AbstractModel):
     """实例详细信息
 
@@ -553,7 +617,7 @@ class InstanceInfo(AbstractModel):
         :type EsVersion: str
         :param EsConfig: ES配置项
         :type EsConfig: str
-        :param EsAcl: ES访问控制配置
+        :param EsAcl: Kibana访问控制配置
         :type EsAcl: :class:`tencentcloud.es.v20180416.models.EsAcl`
         :param CreateTime: 实例创建时间
         :type CreateTime: str
@@ -575,6 +639,56 @@ class InstanceInfo(AbstractModel):
         :type TagList: list of TagInfo
         :param LicenseType: License类型<li>oss：开源版</li><li>basic：基础版</li><li>platinum：白金版</li>默认值platinum
         :type LicenseType: str
+        :param EnableHotWarmMode: 是否为冷热集群<li>true: 冷热集群</li><li>false: 非冷热集群</li>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EnableHotWarmMode: bool
+        :param WarmNodeType: 冷节点规格<li>ES.S1.SMALL2：1核2G</li><li>ES.S1.MEDIUM4：2核4G</li><li>ES.S1.MEDIUM8：2核8G</li><li>ES.S1.LARGE16：4核16G</li><li>ES.S1.2XLARGE32：8核32G</li><li>ES.S1.4XLARGE32：16核32G</li><li>ES.S1.4XLARGE64：16核64G</li>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type WarmNodeType: str
+        :param WarmNodeNum: 冷节点个数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type WarmNodeNum: int
+        :param WarmCpuNum: 冷节点CPU核数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type WarmCpuNum: int
+        :param WarmMemSize: 冷节点内存内存大小，单位GB
+注意：此字段可能返回 null，表示取不到有效值。
+        :type WarmMemSize: int
+        :param WarmDiskType: 冷节点磁盘类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type WarmDiskType: str
+        :param WarmDiskSize: 冷节点磁盘大小，单位GB
+注意：此字段可能返回 null，表示取不到有效值。
+        :type WarmDiskSize: int
+        :param NodeInfoList: 集群节点信息列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type NodeInfoList: list of NodeInfo
+        :param EsPublicUrl: Es公网地址
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EsPublicUrl: str
+        :param MultiZoneInfo: 多可用区网络信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MultiZoneInfo: list of ZoneDetail
+        :param DeployMode: 部署模式<li>0：单可用区</li><li>1：多可用区</li>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DeployMode: int
+        :param PublicAccess: ES公网访问状态<li>OPEN：开启</li><li>CLOSE：关闭
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PublicAccess: str
+        :param EsPublicAcl: ES公网访问控制配置
+        :type EsPublicAcl: :class:`tencentcloud.es.v20180416.models.EsAcl`
+        :param KibanaPrivateUrl: Kibana内网地址
+注意：此字段可能返回 null，表示取不到有效值。
+        :type KibanaPrivateUrl: str
+        :param KibanaPublicAccess: Kibana公网访问状态<li>OPEN：开启</li><li>CLOSE：关闭
+注意：此字段可能返回 null，表示取不到有效值。
+        :type KibanaPublicAccess: str
+        :param KibanaPrivateAccess: Kibana内网访问状态<li>OPEN：开启</li><li>CLOSE：关闭
+注意：此字段可能返回 null，表示取不到有效值。
+        :type KibanaPrivateAccess: str
+        :param SecurityType: 6.8（及以上版本）基础版是否开启xpack security认证<li>1：不开启</li><li>2：开启</li>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SecurityType: int
         """
         self.InstanceId = None
         self.InstanceName = None
@@ -611,6 +725,23 @@ class InstanceInfo(AbstractModel):
         self.AllowCosBackup = None
         self.TagList = None
         self.LicenseType = None
+        self.EnableHotWarmMode = None
+        self.WarmNodeType = None
+        self.WarmNodeNum = None
+        self.WarmCpuNum = None
+        self.WarmMemSize = None
+        self.WarmDiskType = None
+        self.WarmDiskSize = None
+        self.NodeInfoList = None
+        self.EsPublicUrl = None
+        self.MultiZoneInfo = None
+        self.DeployMode = None
+        self.PublicAccess = None
+        self.EsPublicAcl = None
+        self.KibanaPrivateUrl = None
+        self.KibanaPublicAccess = None
+        self.KibanaPrivateAccess = None
+        self.SecurityType = None
 
 
     def _deserialize(self, params):
@@ -662,6 +793,35 @@ class InstanceInfo(AbstractModel):
                 obj._deserialize(item)
                 self.TagList.append(obj)
         self.LicenseType = params.get("LicenseType")
+        self.EnableHotWarmMode = params.get("EnableHotWarmMode")
+        self.WarmNodeType = params.get("WarmNodeType")
+        self.WarmNodeNum = params.get("WarmNodeNum")
+        self.WarmCpuNum = params.get("WarmCpuNum")
+        self.WarmMemSize = params.get("WarmMemSize")
+        self.WarmDiskType = params.get("WarmDiskType")
+        self.WarmDiskSize = params.get("WarmDiskSize")
+        if params.get("NodeInfoList") is not None:
+            self.NodeInfoList = []
+            for item in params.get("NodeInfoList"):
+                obj = NodeInfo()
+                obj._deserialize(item)
+                self.NodeInfoList.append(obj)
+        self.EsPublicUrl = params.get("EsPublicUrl")
+        if params.get("MultiZoneInfo") is not None:
+            self.MultiZoneInfo = []
+            for item in params.get("MultiZoneInfo"):
+                obj = ZoneDetail()
+                obj._deserialize(item)
+                self.MultiZoneInfo.append(obj)
+        self.DeployMode = params.get("DeployMode")
+        self.PublicAccess = params.get("PublicAccess")
+        if params.get("EsPublicAcl") is not None:
+            self.EsPublicAcl = EsAcl()
+            self.EsPublicAcl._deserialize(params.get("EsPublicAcl"))
+        self.KibanaPrivateUrl = params.get("KibanaPrivateUrl")
+        self.KibanaPublicAccess = params.get("KibanaPublicAccess")
+        self.KibanaPrivateAccess = params.get("KibanaPrivateAccess")
+        self.SecurityType = params.get("SecurityType")
 
 
 class InstanceLog(AbstractModel):
@@ -755,25 +915,40 @@ class MasterNodeInfo(AbstractModel):
         self.MasterNodeDiskType = params.get("MasterNodeDiskType")
 
 
-class MultiZoneInfo(AbstractModel):
-    """多可用区部署时可用区的详细信息
+class NodeInfo(AbstractModel):
+    """集群中一种节点类型（如热数据节点，冷数据节点，专用主节点等）的规格描述信息，包括节点类型，节点个数，节点规格，磁盘类型，磁盘大小等, Type不指定时默认为热数据节点；如果节点为master节点，则DiskType和DiskSize参数会被忽略（主节点无数据盘）
 
     """
 
     def __init__(self):
         """
-        :param Zone: 可用区
-        :type Zone: str
-        :param SubnetId: 子网ID
-        :type SubnetId: str
+        :param NodeNum: 节点数量
+        :type NodeNum: int
+        :param NodeType: 节点规格<li>ES.S1.SMALL2：1核2G</li><li>ES.S1.MEDIUM4：2核4G</li><li>ES.S1.MEDIUM8：2核8G</li><li>ES.S1.LARGE16：4核16G</li><li>ES.S1.2XLARGE32：8核32G</li><li>ES.S1.4XLARGE32：16核32G</li><li>ES.S1.4XLARGE64：16核64G</li>
+        :type NodeType: str
+        :param Type: 节点类型<li>hotData: 热数据节点</li>
+<li>warmData: 冷数据节点</li>
+<li>dedicatedMaster: 专用主节点</li>
+默认值为hotData
+        :type Type: str
+        :param DiskType: 节点磁盘类型<li>CLOUD_SSD：SSD云硬盘</li><li>CLOUD_PREMIUM：高硬能云硬盘</li>默认值CLOUD_SSD
+        :type DiskType: str
+        :param DiskSize: 节点磁盘容量（单位GB）
+        :type DiskSize: int
         """
-        self.Zone = None
-        self.SubnetId = None
+        self.NodeNum = None
+        self.NodeType = None
+        self.Type = None
+        self.DiskType = None
+        self.DiskSize = None
 
 
     def _deserialize(self, params):
-        self.Zone = params.get("Zone")
-        self.SubnetId = params.get("SubnetId")
+        self.NodeNum = params.get("NodeNum")
+        self.NodeType = params.get("NodeType")
+        self.Type = params.get("Type")
+        self.DiskType = params.get("DiskType")
+        self.DiskSize = params.get("DiskSize")
 
 
 class Operation(AbstractModel):
@@ -1004,7 +1179,8 @@ class UpdateInstanceRequest(AbstractModel):
         :type InstanceId: str
         :param InstanceName: 实例名称（1-50 个英文、汉字、数字、连接线-或下划线_）
         :type InstanceName: str
-        :param NodeNum: 节点个数（2-50个）
+        :param NodeNum: 已废弃请使用NodeInfoList
+节点个数（2-50个）
         :type NodeNum: int
         :param EsConfig: 配置项（JSON格式字符串）。当前仅支持以下配置项：<li>action.destructive_requires_name</li><li>indices.fielddata.cache.size</li><li>indices.query.bool.max_clause_count</li>
         :type EsConfig: str
@@ -1012,20 +1188,35 @@ class UpdateInstanceRequest(AbstractModel):
         :type Password: str
         :param EsAcl: 访问控制列表
         :type EsAcl: :class:`tencentcloud.es.v20180416.models.EsAcl`
-        :param DiskSize: 磁盘大小（单位GB）
+        :param DiskSize: 已废弃请使用NodeInfoList
+磁盘大小（单位GB）
         :type DiskSize: int
-        :param NodeType: 节点规格<li>ES.S1.SMALL2：1核2G</li><li>ES.S1.MEDIUM4：2核4G</li><li>ES.S1.MEDIUM8：2核8G</li><li>ES.S1.LARGE16：4核16G</li><li>ES.S1.2XLARGE32：8核32G</li><li>ES.S1.4XLARGE32：16核32G</li><li>ES.S1.4XLARGE64：16核64G</li>
+        :param NodeType: 已废弃请使用NodeInfoList
+节点规格<li>ES.S1.SMALL2：1核2G</li><li>ES.S1.MEDIUM4：2核4G</li><li>ES.S1.MEDIUM8：2核8G</li><li>ES.S1.LARGE16：4核16G</li><li>ES.S1.2XLARGE32：8核32G</li><li>ES.S1.4XLARGE32：16核32G</li><li>ES.S1.4XLARGE64：16核64G</li>
         :type NodeType: str
-        :param MasterNodeNum: 专用主节点个数（只支持3个或5个）
+        :param MasterNodeNum: 已废弃请使用NodeInfoList
+专用主节点个数（只支持3个或5个）
         :type MasterNodeNum: int
-        :param MasterNodeType: 专用主节点规格<li>ES.S1.SMALL2：1核2G</li><li>ES.S1.MEDIUM4：2核4G</li><li>ES.S1.MEDIUM8：2核8G</li><li>ES.S1.LARGE16：4核16G</li><li>ES.S1.2XLARGE32：8核32G</li><li>ES.S1.4XLARGE32：16核32G</li><li>ES.S1.4XLARGE64：16核64G</li>
+        :param MasterNodeType: 已废弃请使用NodeInfoList
+专用主节点规格<li>ES.S1.SMALL2：1核2G</li><li>ES.S1.MEDIUM4：2核4G</li><li>ES.S1.MEDIUM8：2核8G</li><li>ES.S1.LARGE16：4核16G</li><li>ES.S1.2XLARGE32：8核32G</li><li>ES.S1.4XLARGE32：16核32G</li><li>ES.S1.4XLARGE64：16核64G</li>
         :type MasterNodeType: str
-        :param MasterNodeDiskSize: 专用主节点磁盘大小（单位GB系统默认配置为50GB,暂不支持自定义）
+        :param MasterNodeDiskSize: 已废弃请使用NodeInfoList
+专用主节点磁盘大小（单位GB系统默认配置为50GB,暂不支持自定义）
         :type MasterNodeDiskSize: int
         :param ForceRestart: 更新配置时是否强制重启<li>true强制重启</li><li>false不强制重启</li>当前仅更新EsConfig时需要设置，默认值为false
         :type ForceRestart: bool
         :param CosBackup: COS自动备份信息
         :type CosBackup: :class:`tencentcloud.es.v20180416.models.CosBackup`
+        :param NodeInfoList: 节点信息列表，可以只传递要更新的节点及其对应的规格信息。支持的操作包括<li>修改一种节点的个数</li><li>修改一种节点的节点规格及磁盘大小</li><li>增加一种节点类型（需要同时指定该节点的类型，个数，规格，磁盘等信息）</li>上述操作一次只能进行一种，且磁盘类型不支持修改
+        :type NodeInfoList: list of NodeInfo
+        :param PublicAccess: 公网访问状态
+        :type PublicAccess: str
+        :param EsPublicAcl: 公网访问控制列表
+        :type EsPublicAcl: :class:`tencentcloud.es.v20180416.models.EsPublicAcl`
+        :param KibanaPublicAccess: Kibana公网访问状态
+        :type KibanaPublicAccess: str
+        :param KibanaPrivateAccess: Kibana内网访问状态
+        :type KibanaPrivateAccess: str
         """
         self.InstanceId = None
         self.InstanceName = None
@@ -1040,6 +1231,11 @@ class UpdateInstanceRequest(AbstractModel):
         self.MasterNodeDiskSize = None
         self.ForceRestart = None
         self.CosBackup = None
+        self.NodeInfoList = None
+        self.PublicAccess = None
+        self.EsPublicAcl = None
+        self.KibanaPublicAccess = None
+        self.KibanaPrivateAccess = None
 
 
     def _deserialize(self, params):
@@ -1060,6 +1256,18 @@ class UpdateInstanceRequest(AbstractModel):
         if params.get("CosBackup") is not None:
             self.CosBackup = CosBackup()
             self.CosBackup._deserialize(params.get("CosBackup"))
+        if params.get("NodeInfoList") is not None:
+            self.NodeInfoList = []
+            for item in params.get("NodeInfoList"):
+                obj = NodeInfo()
+                obj._deserialize(item)
+                self.NodeInfoList.append(obj)
+        self.PublicAccess = params.get("PublicAccess")
+        if params.get("EsPublicAcl") is not None:
+            self.EsPublicAcl = EsPublicAcl()
+            self.EsPublicAcl._deserialize(params.get("EsPublicAcl"))
+        self.KibanaPublicAccess = params.get("KibanaPublicAccess")
+        self.KibanaPrivateAccess = params.get("KibanaPrivateAccess")
 
 
 class UpdateInstanceResponse(AbstractModel):
@@ -1094,11 +1302,14 @@ class UpgradeInstanceRequest(AbstractModel):
         :type CheckOnly: bool
         :param LicenseType: 目标商业特性版本：<li>oss 开源版</li><li>basic 基础版</li>当前仅在5.6.4升级6.x版本时使用，默认值为basic
         :type LicenseType: str
+        :param BasicSecurityType: 6.8（及以上版本）基础版是否开启xpack security认证<li>1：不开启</li><li>2：开启</li>
+        :type BasicSecurityType: int
         """
         self.InstanceId = None
         self.EsVersion = None
         self.CheckOnly = None
         self.LicenseType = None
+        self.BasicSecurityType = None
 
 
     def _deserialize(self, params):
@@ -1106,6 +1317,7 @@ class UpgradeInstanceRequest(AbstractModel):
         self.EsVersion = params.get("EsVersion")
         self.CheckOnly = params.get("CheckOnly")
         self.LicenseType = params.get("LicenseType")
+        self.BasicSecurityType = params.get("BasicSecurityType")
 
 
 class UpgradeInstanceResponse(AbstractModel):
@@ -1140,11 +1352,17 @@ class UpgradeLicenseRequest(AbstractModel):
         :type AutoVoucher: int
         :param VoucherIds: 代金券ID列表（目前仅支持指定一张代金券）
         :type VoucherIds: list of str
+        :param BasicSecurityType: 6.8（及以上版本）基础版是否开启xpack security认证<li>1：不开启</li><li>2：开启</li>
+        :type BasicSecurityType: int
+        :param ForceRestart: 是否强制重启<li>true强制重启</li><li>false不强制重启</li> 默认值false
+        :type ForceRestart: bool
         """
         self.InstanceId = None
         self.LicenseType = None
         self.AutoVoucher = None
         self.VoucherIds = None
+        self.BasicSecurityType = None
+        self.ForceRestart = None
 
 
     def _deserialize(self, params):
@@ -1152,6 +1370,8 @@ class UpgradeLicenseRequest(AbstractModel):
         self.LicenseType = params.get("LicenseType")
         self.AutoVoucher = params.get("AutoVoucher")
         self.VoucherIds = params.get("VoucherIds")
+        self.BasicSecurityType = params.get("BasicSecurityType")
+        self.ForceRestart = params.get("ForceRestart")
 
 
 class UpgradeLicenseResponse(AbstractModel):
@@ -1169,3 +1389,24 @@ class UpgradeLicenseResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
+
+
+class ZoneDetail(AbstractModel):
+    """多可用区部署时可用区的详细信息
+
+    """
+
+    def __init__(self):
+        """
+        :param Zone: 可用区
+        :type Zone: str
+        :param SubnetId: 子网ID
+        :type SubnetId: str
+        """
+        self.Zone = None
+        self.SubnetId = None
+
+
+    def _deserialize(self, params):
+        self.Zone = params.get("Zone")
+        self.SubnetId = params.get("SubnetId")

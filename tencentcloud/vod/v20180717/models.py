@@ -4304,6 +4304,8 @@ class CreateAnimatedGraphicsTemplateRequest(AbstractModel):
 
     def __init__(self):
         """
+        :param Fps: 帧率，取值范围：[1, 30]，单位：Hz。
+        :type Fps: int
         :param Width: 动图宽度（或长边）的最大值，取值范围：0 和 [128, 4096]，单位：px。
 <li>当 Width、Height 均为 0，则分辨率同源；</li>
 <li>当 Width 为 0，Height 非 0，则 Width 按比例缩放；</li>
@@ -4311,15 +4313,18 @@ class CreateAnimatedGraphicsTemplateRequest(AbstractModel):
 <li>当 Width、Height 均非 0，则分辨率按用户指定。</li>
 默认值：0。
         :type Width: int
-        :param Height: 视频流高度（或短边）的最大值，取值范围：0 和 [128, 4096]，单位：px。
+        :param Height: 动图高度（或短边）的最大值，取值范围：0 和 [128, 4096]，单位：px。
 <li>当 Width、Height 均为 0，则分辨率同源；</li>
 <li>当 Width 为 0，Height 非 0，则 Width 按比例缩放；</li>
 <li>当 Width 非 0，Height 为 0，则 Height 按比例缩放；</li>
 <li>当 Width、Height 均非 0，则分辨率按用户指定。</li>
 默认值：0。
         :type Height: int
-        :param Fps: 帧率，取值范围：[1, 30]，单位：Hz。
-        :type Fps: int
+        :param ResolutionAdaptive: 分辨率自适应，可选值：
+<li>open：开启，此时，Width 代表视频的长边，Height 表示视频的短边；</li>
+<li>close：关闭，此时，Width 代表视频的宽度，Height 表示视频的高度。</li>
+默认值：open。
+        :type ResolutionAdaptive: str
         :param Format: 动图格式，取值为 gif 和 webp。默认为 gif。
         :type Format: str
         :param Quality: 图片质量，取值范围：[1, 100]，默认值为 75。
@@ -4331,9 +4336,10 @@ class CreateAnimatedGraphicsTemplateRequest(AbstractModel):
         :param SubAppId: 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
         :type SubAppId: int
         """
+        self.Fps = None
         self.Width = None
         self.Height = None
-        self.Fps = None
+        self.ResolutionAdaptive = None
         self.Format = None
         self.Quality = None
         self.Name = None
@@ -4342,9 +4348,10 @@ class CreateAnimatedGraphicsTemplateRequest(AbstractModel):
 
 
     def _deserialize(self, params):
+        self.Fps = params.get("Fps")
         self.Width = params.get("Width")
         self.Height = params.get("Height")
-        self.Fps = params.get("Fps")
+        self.ResolutionAdaptive = params.get("ResolutionAdaptive")
         self.Format = params.get("Format")
         self.Quality = params.get("Quality")
         self.Name = params.get("Name")
@@ -4560,10 +4567,6 @@ class CreateImageSpriteTemplateRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Width: 雪碧图中小图的宽度，取值范围： [128, 4096]，单位：px。
-        :type Width: int
-        :param Height: 雪碧图中小图的高度，取值范围： [128, 4096]，单位：px。
-        :type Height: int
         :param SampleType: 采样类型，取值：
 <li>Percent：按百分比。</li>
 <li>Time：按时间间隔。</li>
@@ -4578,28 +4581,56 @@ class CreateImageSpriteTemplateRequest(AbstractModel):
         :type ColumnCount: int
         :param Name: 雪碧图模板名称，长度限制：64 个字符。
         :type Name: str
+        :param Width: 雪碧图中小图的宽度（或长边）的最大值，取值范围：0 和 [128, 4096]，单位：px。
+<li>当 Width、Height 均为 0，则分辨率同源；</li>
+<li>当 Width 为 0，Height 非 0，则 Width 按比例缩放；</li>
+<li>当 Width 非 0，Height 为 0，则 Height 按比例缩放；</li>
+<li>当 Width、Height 均非 0，则分辨率按用户指定。</li>
+默认值：0。
+        :type Width: int
+        :param Height: 雪碧图中小图的高度（或短边）的最大值，取值范围：0 和 [128, 4096]，单位：px。
+<li>当 Width、Height 均为 0，则分辨率同源；</li>
+<li>当 Width 为 0，Height 非 0，则 Width 按比例缩放；</li>
+<li>当 Width 非 0，Height 为 0，则 Height 按比例缩放；</li>
+<li>当 Width、Height 均非 0，则分辨率按用户指定。</li>
+默认值：0。
+        :type Height: int
+        :param ResolutionAdaptive: 分辨率自适应，可选值：
+<li>open：开启，此时，Width 代表视频的长边，Height 表示视频的短边；</li>
+<li>close：关闭，此时，Width 代表视频的宽度，Height 表示视频的高度。</li>
+默认值：open。
+        :type ResolutionAdaptive: str
         :param SubAppId: 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
         :type SubAppId: int
+        :param FillType: 填充方式，当视频流配置宽高参数与原始视频的宽高比不一致时，对转码的处理方式，即为“填充”。可选填充方式：
+<li> stretch：拉伸，对每一帧进行拉伸，填满整个画面，可能导致转码后的视频被“压扁“或者“拉长“；</li>
+<li>black：留黑，保持视频宽高比不变，边缘剩余部分使用黑色填充。</li>
+默认值：black 。
+        :type FillType: str
         """
-        self.Width = None
-        self.Height = None
         self.SampleType = None
         self.SampleInterval = None
         self.RowCount = None
         self.ColumnCount = None
         self.Name = None
+        self.Width = None
+        self.Height = None
+        self.ResolutionAdaptive = None
         self.SubAppId = None
+        self.FillType = None
 
 
     def _deserialize(self, params):
-        self.Width = params.get("Width")
-        self.Height = params.get("Height")
         self.SampleType = params.get("SampleType")
         self.SampleInterval = params.get("SampleInterval")
         self.RowCount = params.get("RowCount")
         self.ColumnCount = params.get("ColumnCount")
         self.Name = params.get("Name")
+        self.Width = params.get("Width")
+        self.Height = params.get("Height")
+        self.ResolutionAdaptive = params.get("ResolutionAdaptive")
         self.SubAppId = params.get("SubAppId")
+        self.FillType = params.get("FillType")
 
 
 class CreateImageSpriteTemplateResponse(AbstractModel):
@@ -4768,10 +4799,6 @@ class CreateSampleSnapshotTemplateRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Width: 图片宽度，取值范围： [128, 4096]，单位：px。
-        :type Width: int
-        :param Height: 图片高度，取值范围： [128, 4096]，单位：px。
-        :type Height: int
         :param SampleType: 采样截图类型，取值：
 <li>Percent：按百分比。</li>
 <li>Time：按时间间隔。</li>
@@ -4782,32 +4809,62 @@ class CreateSampleSnapshotTemplateRequest(AbstractModel):
         :type SampleInterval: int
         :param Name: 采样截图模板名称，长度限制：64 个字符。
         :type Name: str
+        :param Width: 截图宽度（或长边）的最大值，取值范围：0 和 [128, 4096]，单位：px。
+<li>当 Width、Height 均为 0，则分辨率同源；</li>
+<li>当 Width 为 0，Height 非 0，则 Width 按比例缩放；</li>
+<li>当 Width 非 0，Height 为 0，则 Height 按比例缩放；</li>
+<li>当 Width、Height 均非 0，则分辨率按用户指定。</li>
+默认值：0。
+        :type Width: int
+        :param Height: 截图高度（或短边）的最大值，取值范围：0 和 [128, 4096]，单位：px。
+<li>当 Width、Height 均为 0，则分辨率同源；</li>
+<li>当 Width 为 0，Height 非 0，则 Width 按比例缩放；</li>
+<li>当 Width 非 0，Height 为 0，则 Height 按比例缩放；</li>
+<li>当 Width、Height 均非 0，则分辨率按用户指定。</li>
+默认值：0。
+        :type Height: int
+        :param ResolutionAdaptive: 分辨率自适应，可选值：
+<li>open：开启，此时，Width 代表视频的长边，Height 表示视频的短边；</li>
+<li>close：关闭，此时，Width 代表视频的宽度，Height 表示视频的高度。</li>
+默认值：open。
+        :type ResolutionAdaptive: str
         :param Format: 图片格式，取值为 jpg 和 png。默认为 jpg。
         :type Format: str
         :param Comment: 模板描述信息，长度限制：256 个字符。
         :type Comment: str
         :param SubAppId: 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
         :type SubAppId: int
+        :param FillType: 填充方式，当视频流配置宽高参数与原始视频的宽高比不一致时，对转码的处理方式，即为“填充”。可选填充方式：
+<li> stretch：拉伸，对每一帧进行拉伸，填满整个画面，可能导致转码后的视频被“压扁“或者“拉长“；</li>
+<li>black：留黑，保持视频宽高比不变，边缘剩余部分使用黑色填充。</li>
+<li>white：留白，保持视频宽高比不变，边缘剩余部分使用白色填充。</li>
+<li>gauss：高斯模糊，保持视频宽高比不变，边缘剩余部分使用高斯模糊。</li>
+默认值：black 。
+        :type FillType: str
         """
-        self.Width = None
-        self.Height = None
         self.SampleType = None
         self.SampleInterval = None
         self.Name = None
+        self.Width = None
+        self.Height = None
+        self.ResolutionAdaptive = None
         self.Format = None
         self.Comment = None
         self.SubAppId = None
+        self.FillType = None
 
 
     def _deserialize(self, params):
-        self.Width = params.get("Width")
-        self.Height = params.get("Height")
         self.SampleType = params.get("SampleType")
         self.SampleInterval = params.get("SampleInterval")
         self.Name = params.get("Name")
+        self.Width = params.get("Width")
+        self.Height = params.get("Height")
+        self.ResolutionAdaptive = params.get("ResolutionAdaptive")
         self.Format = params.get("Format")
         self.Comment = params.get("Comment")
         self.SubAppId = params.get("SubAppId")
+        self.FillType = params.get("FillType")
 
 
 class CreateSampleSnapshotTemplateResponse(AbstractModel):
@@ -4838,34 +4895,60 @@ class CreateSnapshotByTimeOffsetTemplateRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Width: 图片宽度，取值范围： [128, 4096]，单位：px。
-        :type Width: int
-        :param Height: 图片高度，取值范围： [128, 4096]，单位：px。
-        :type Height: int
         :param Name: 指定时间点截图模板名称，长度限制：64 个字符。
         :type Name: str
+        :param Width: 截图宽度（或长边）的最大值，取值范围：0 和 [128, 4096]，单位：px。
+<li>当 Width、Height 均为 0，则分辨率同源；</li>
+<li>当 Width 为 0，Height 非 0，则 Width 按比例缩放；</li>
+<li>当 Width 非 0，Height 为 0，则 Height 按比例缩放；</li>
+<li>当 Width、Height 均非 0，则分辨率按用户指定。</li>
+默认值：0。
+        :type Width: int
+        :param Height: 截图高度（或短边）的最大值，取值范围：0 和 [128, 4096]，单位：px。
+<li>当 Width、Height 均为 0，则分辨率同源；</li>
+<li>当 Width 为 0，Height 非 0，则 Width 按比例缩放；</li>
+<li>当 Width 非 0，Height 为 0，则 Height 按比例缩放；</li>
+<li>当 Width、Height 均非 0，则分辨率按用户指定。</li>
+默认值：0。
+        :type Height: int
+        :param ResolutionAdaptive: 分辨率自适应，可选值：
+<li>open：开启，此时，Width 代表视频的长边，Height 表示视频的短边；</li>
+<li>close：关闭，此时，Width 代表视频的宽度，Height 表示视频的高度。</li>
+默认值：open。
+        :type ResolutionAdaptive: str
         :param Format: 图片格式，取值可以为 jpg 和 png。默认为 jpg。
         :type Format: str
         :param Comment: 模板描述信息，长度限制：256 个字符。
         :type Comment: str
         :param SubAppId: 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
         :type SubAppId: int
+        :param FillType: 填充方式，当视频流配置宽高参数与原始视频的宽高比不一致时，对转码的处理方式，即为“填充”。可选填充方式：
+<li> stretch：拉伸，对每一帧进行拉伸，填满整个画面，可能导致转码后的视频被“压扁“或者“拉长“；</li>
+<li>black：留黑，保持视频宽高比不变，边缘剩余部分使用黑色填充。</li>
+<li>white：留白，保持视频宽高比不变，边缘剩余部分使用白色填充。</li>
+<li>gauss：高斯模糊，保持视频宽高比不变，边缘剩余部分使用高斯模糊。</li>
+默认值：black 。
+        :type FillType: str
         """
+        self.Name = None
         self.Width = None
         self.Height = None
-        self.Name = None
+        self.ResolutionAdaptive = None
         self.Format = None
         self.Comment = None
         self.SubAppId = None
+        self.FillType = None
 
 
     def _deserialize(self, params):
+        self.Name = params.get("Name")
         self.Width = params.get("Width")
         self.Height = params.get("Height")
-        self.Name = params.get("Name")
+        self.ResolutionAdaptive = params.get("ResolutionAdaptive")
         self.Format = params.get("Format")
         self.Comment = params.get("Comment")
         self.SubAppId = params.get("SubAppId")
+        self.FillType = params.get("FillType")
 
 
 class CreateSnapshotByTimeOffsetTemplateResponse(AbstractModel):
@@ -4916,7 +4999,7 @@ class CreateTranscodeTemplateRequest(AbstractModel):
         :type VideoTemplate: :class:`tencentcloud.vod.v20180717.models.VideoTemplateInfo`
         :param AudioTemplate: 音频流配置参数，当 RemoveAudio 为 0，该字段必填。
         :type AudioTemplate: :class:`tencentcloud.vod.v20180717.models.AudioTemplateInfo`
-        :param TEHDConfig: 极速高清转码参数，需联系商务架构师开通后才能使用。
+        :param TEHDConfig: 极速高清转码参数。
         :type TEHDConfig: :class:`tencentcloud.vod.v20180717.models.TEHDConfig`
         :param SubAppId: 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
         :type SubAppId: int
@@ -7808,6 +7891,52 @@ class FileUploadTask(AbstractModel):
             self.MetaData._deserialize(params.get("MetaData"))
 
 
+class ForbidMediaDistributionRequest(AbstractModel):
+    """ForbidMediaDistribution请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param FileIds: 媒体文件列表，每次最多可提交 20 条。
+        :type FileIds: list of str
+        :param Operation: forbid：禁播，recover：解禁。
+        :type Operation: str
+        :param SubAppId: 点播[子应用](/document/product/266/14574) ID 。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
+        :type SubAppId: int
+        """
+        self.FileIds = None
+        self.Operation = None
+        self.SubAppId = None
+
+
+    def _deserialize(self, params):
+        self.FileIds = params.get("FileIds")
+        self.Operation = params.get("Operation")
+        self.SubAppId = params.get("SubAppId")
+
+
+class ForbidMediaDistributionResponse(AbstractModel):
+    """ForbidMediaDistribution返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param NotExistFileIdSet: 不存在的文件 ID 列表。
+        :type NotExistFileIdSet: list of str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.NotExistFileIdSet = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.NotExistFileIdSet = params.get("NotExistFileIdSet")
+        self.RequestId = params.get("RequestId")
+
+
 class FrameTagConfigureInfo(AbstractModel):
     """智能按帧标签任务控制参数
 
@@ -10396,13 +10525,18 @@ class ModifyAnimatedGraphicsTemplateRequest(AbstractModel):
 <li>当 Width、Height 均非 0，则分辨率按用户指定。</li>
 默认值：0。
         :type Width: int
-        :param Height: 视频流高度（或短边）的最大值，取值范围：0 和 [128, 4096]，单位：px。
+        :param Height: 动图高度（或短边）的最大值，取值范围：0 和 [128, 4096]，单位：px。
 <li>当 Width、Height 均为 0，则分辨率同源；</li>
 <li>当 Width 为 0，Height 非 0，则 Width 按比例缩放；</li>
 <li>当 Width 非 0，Height 为 0，则 Height 按比例缩放；</li>
 <li>当 Width、Height 均非 0，则分辨率按用户指定。</li>
 默认值：0。
         :type Height: int
+        :param ResolutionAdaptive: 分辨率自适应，可选值：
+<li>open：开启，此时，Width 代表视频的长边，Height 表示视频的短边；</li>
+<li>close：关闭，此时，Width 代表视频的宽度，Height 表示视频的高度。</li>
+默认值：open。
+        :type ResolutionAdaptive: str
         :param Format: 动图格式，取值为 gif 和 webp。
         :type Format: str
         :param Fps: 帧率，取值范围：[1, 30]，单位：Hz。
@@ -10418,6 +10552,7 @@ class ModifyAnimatedGraphicsTemplateRequest(AbstractModel):
         self.Name = None
         self.Width = None
         self.Height = None
+        self.ResolutionAdaptive = None
         self.Format = None
         self.Fps = None
         self.Quality = None
@@ -10430,6 +10565,7 @@ class ModifyAnimatedGraphicsTemplateRequest(AbstractModel):
         self.Name = params.get("Name")
         self.Width = params.get("Width")
         self.Height = params.get("Height")
+        self.ResolutionAdaptive = params.get("ResolutionAdaptive")
         self.Format = params.get("Format")
         self.Fps = params.get("Fps")
         self.Quality = params.get("Quality")
@@ -10591,6 +10727,11 @@ class ModifyImageSpriteTemplateRequest(AbstractModel):
         :type Width: int
         :param Height: 雪碧图中小图的高度，取值范围： [128, 4096]，单位：px。
         :type Height: int
+        :param ResolutionAdaptive: 分辨率自适应，可选值：
+<li>open：开启，此时，Width 代表视频的长边，Height 表示视频的短边；</li>
+<li>close：关闭，此时，Width 代表视频的宽度，Height 表示视频的高度。</li>
+默认值：open。
+        :type ResolutionAdaptive: str
         :param SampleType: 采样类型，取值：
 <li>Percent：按百分比。</li>
 <li>Time：按时间间隔。</li>
@@ -10605,16 +10746,23 @@ class ModifyImageSpriteTemplateRequest(AbstractModel):
         :type ColumnCount: int
         :param SubAppId: 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
         :type SubAppId: int
+        :param FillType: 填充方式，当视频流配置宽高参数与原始视频的宽高比不一致时，对转码的处理方式，即为“填充”。可选填充方式：
+<li> stretch：拉伸，对每一帧进行拉伸，填满整个画面，可能导致转码后的视频被“压扁“或者“拉长“；</li>
+<li>black：留黑，保持视频宽高比不变，边缘剩余部分使用黑色填充。</li>
+默认值：black 。
+        :type FillType: str
         """
         self.Definition = None
         self.Name = None
         self.Width = None
         self.Height = None
+        self.ResolutionAdaptive = None
         self.SampleType = None
         self.SampleInterval = None
         self.RowCount = None
         self.ColumnCount = None
         self.SubAppId = None
+        self.FillType = None
 
 
     def _deserialize(self, params):
@@ -10622,11 +10770,13 @@ class ModifyImageSpriteTemplateRequest(AbstractModel):
         self.Name = params.get("Name")
         self.Width = params.get("Width")
         self.Height = params.get("Height")
+        self.ResolutionAdaptive = params.get("ResolutionAdaptive")
         self.SampleType = params.get("SampleType")
         self.SampleInterval = params.get("SampleInterval")
         self.RowCount = params.get("RowCount")
         self.ColumnCount = params.get("ColumnCount")
         self.SubAppId = params.get("SubAppId")
+        self.FillType = params.get("FillType")
 
 
 class ModifyImageSpriteTemplateResponse(AbstractModel):
@@ -10833,10 +10983,25 @@ class ModifySampleSnapshotTemplateRequest(AbstractModel):
         :type Definition: int
         :param Name: 采样截图模板名称，长度限制：64 个字符。
         :type Name: str
-        :param Width: 图片宽度，取值范围： [128, 4096]，单位：px。
+        :param Width: 截图宽度（或长边）的最大值，取值范围：0 和 [128, 4096]，单位：px。
+<li>当 Width、Height 均为 0，则分辨率同源；</li>
+<li>当 Width 为 0，Height 非 0，则 Width 按比例缩放；</li>
+<li>当 Width 非 0，Height 为 0，则 Height 按比例缩放；</li>
+<li>当 Width、Height 均非 0，则分辨率按用户指定。</li>
+默认值：0。
         :type Width: int
-        :param Height: 图片高度，取值范围： [128, 4096]，单位：px。
+        :param Height: 截图高度（或短边）的最大值，取值范围：0 和 [128, 4096]，单位：px。
+<li>当 Width、Height 均为 0，则分辨率同源；</li>
+<li>当 Width 为 0，Height 非 0，则 Width 按比例缩放；</li>
+<li>当 Width 非 0，Height 为 0，则 Height 按比例缩放；</li>
+<li>当 Width、Height 均非 0，则分辨率按用户指定。</li>
+默认值：0。
         :type Height: int
+        :param ResolutionAdaptive: 分辨率自适应，可选值：
+<li>open：开启，此时，Width 代表视频的长边，Height 表示视频的短边；</li>
+<li>close：关闭，此时，Width 代表视频的宽度，Height 表示视频的高度。</li>
+默认值：open。
+        :type ResolutionAdaptive: str
         :param SampleType: 采样截图类型，取值：
 <li>Percent：按百分比。</li>
 <li>Time：按时间间隔。</li>
@@ -10851,16 +11016,25 @@ class ModifySampleSnapshotTemplateRequest(AbstractModel):
         :type Comment: str
         :param SubAppId: 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
         :type SubAppId: int
+        :param FillType: 填充方式，当视频流配置宽高参数与原始视频的宽高比不一致时，对转码的处理方式，即为“填充”。可选填充方式：
+<li> stretch：拉伸，对每一帧进行拉伸，填满整个画面，可能导致转码后的视频被“压扁“或者“拉长“；</li>
+<li>black：留黑，保持视频宽高比不变，边缘剩余部分使用黑色填充。</li>
+<li>white：留白，保持视频宽高比不变，边缘剩余部分使用白色填充。</li>
+<li>gauss：高斯模糊，保持视频宽高比不变，边缘剩余部分使用高斯模糊。</li>
+默认值：black 。
+        :type FillType: str
         """
         self.Definition = None
         self.Name = None
         self.Width = None
         self.Height = None
+        self.ResolutionAdaptive = None
         self.SampleType = None
         self.SampleInterval = None
         self.Format = None
         self.Comment = None
         self.SubAppId = None
+        self.FillType = None
 
 
     def _deserialize(self, params):
@@ -10868,11 +11042,13 @@ class ModifySampleSnapshotTemplateRequest(AbstractModel):
         self.Name = params.get("Name")
         self.Width = params.get("Width")
         self.Height = params.get("Height")
+        self.ResolutionAdaptive = params.get("ResolutionAdaptive")
         self.SampleType = params.get("SampleType")
         self.SampleInterval = params.get("SampleInterval")
         self.Format = params.get("Format")
         self.Comment = params.get("Comment")
         self.SubAppId = params.get("SubAppId")
+        self.FillType = params.get("FillType")
 
 
 class ModifySampleSnapshotTemplateResponse(AbstractModel):
@@ -10903,24 +11079,48 @@ class ModifySnapshotByTimeOffsetTemplateRequest(AbstractModel):
         :type Definition: int
         :param Name: 指定时间点截图模板名称，长度限制：64 个字符。
         :type Name: str
-        :param Width: 图片宽度，取值范围： [128, 4096]，单位：px。
+        :param Width: 截图宽度（或长边）的最大值，取值范围：0 和 [128, 4096]，单位：px。
+<li>当 Width、Height 均为 0，则分辨率同源；</li>
+<li>当 Width 为 0，Height 非 0，则 Width 按比例缩放；</li>
+<li>当 Width 非 0，Height 为 0，则 Height 按比例缩放；</li>
+<li>当 Width、Height 均非 0，则分辨率按用户指定。</li>
+默认值：0。
         :type Width: int
-        :param Height: 图片高度，取值范围： [128, 4096]，单位：px。
+        :param Height: 截图高度（或短边）的最大值，取值范围：0 和 [128, 4096]，单位：px。
+<li>当 Width、Height 均为 0，则分辨率同源；</li>
+<li>当 Width 为 0，Height 非 0，则 Width 按比例缩放；</li>
+<li>当 Width 非 0，Height 为 0，则 Height 按比例缩放；</li>
+<li>当 Width、Height 均非 0，则分辨率按用户指定。</li>
+默认值：0。
         :type Height: int
+        :param ResolutionAdaptive: 分辨率自适应，可选值：
+<li>open：开启，此时，Width 代表视频的长边，Height 表示视频的短边；</li>
+<li>close：关闭，此时，Width 代表视频的宽度，Height 表示视频的高度。</li>
+默认值：open。
+        :type ResolutionAdaptive: str
         :param Format: 图片格式，取值可以为 jpg 和 png。
         :type Format: str
         :param Comment: 模板描述信息，长度限制：256 个字符。
         :type Comment: str
         :param SubAppId: 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
         :type SubAppId: int
+        :param FillType: 填充方式，当视频流配置宽高参数与原始视频的宽高比不一致时，对转码的处理方式，即为“填充”。可选填充方式：
+<li> stretch：拉伸，对每一帧进行拉伸，填满整个画面，可能导致转码后的视频被“压扁“或者“拉长“；</li>
+<li>black：留黑，保持视频宽高比不变，边缘剩余部分使用黑色填充。</li>
+<li>white：留白，保持视频宽高比不变，边缘剩余部分使用白色填充。</li>
+<li>gauss：高斯模糊，保持视频宽高比不变，边缘剩余部分使用高斯模糊。</li>
+默认值：black 。
+        :type FillType: str
         """
         self.Definition = None
         self.Name = None
         self.Width = None
         self.Height = None
+        self.ResolutionAdaptive = None
         self.Format = None
         self.Comment = None
         self.SubAppId = None
+        self.FillType = None
 
 
     def _deserialize(self, params):
@@ -10928,9 +11128,11 @@ class ModifySnapshotByTimeOffsetTemplateRequest(AbstractModel):
         self.Name = params.get("Name")
         self.Width = params.get("Width")
         self.Height = params.get("Height")
+        self.ResolutionAdaptive = params.get("ResolutionAdaptive")
         self.Format = params.get("Format")
         self.Comment = params.get("Comment")
         self.SubAppId = params.get("SubAppId")
+        self.FillType = params.get("FillType")
 
 
 class ModifySnapshotByTimeOffsetTemplateResponse(AbstractModel):
@@ -11059,7 +11261,7 @@ class ModifyTranscodeTemplateRequest(AbstractModel):
         :type VideoTemplate: :class:`tencentcloud.vod.v20180717.models.VideoTemplateInfoForUpdate`
         :param AudioTemplate: 音频流配置参数。
         :type AudioTemplate: :class:`tencentcloud.vod.v20180717.models.AudioTemplateInfoForUpdate`
-        :param TEHDConfig: 极速高清转码参数，需联系商务架构师开通后才能使用。
+        :param TEHDConfig: 极速高清转码参数。
         :type TEHDConfig: :class:`tencentcloud.vod.v20180717.models.TEHDConfigForUpdate`
         :param SubAppId: 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
         :type SubAppId: int
@@ -13878,7 +14080,7 @@ class TranscodeTemplate(AbstractModel):
         :param AudioTemplate: 音频流配置参数，仅当 RemoveAudio 为 0，该字段有效 。
 注意：此字段可能返回 null，表示取不到有效值。
         :type AudioTemplate: :class:`tencentcloud.vod.v20180717.models.AudioTemplateInfo`
-        :param TEHDConfig: 极速高清转码参数，需联系商务架构师开通后才能使用。
+        :param TEHDConfig: 极速高清转码参数。
 注意：此字段可能返回 null，表示取不到有效值。
         :type TEHDConfig: :class:`tencentcloud.vod.v20180717.models.TEHDConfig`
         :param ContainerType: 封装格式过滤条件，可选值：

@@ -579,29 +579,35 @@ class CreateLiveCertRequest(AbstractModel):
     def __init__(self):
         """
         :param CertType: 证书类型。0-用户添加证书；1-腾讯云托管证书。
+注意：当证书类型为0时，HttpsCrt和HttpsKey必选；
+当证书类型为1时，优先使用CloudCertId对应证书，若CloudCertId为空则使用HttpsCrt和HttpsKey。
         :type CertType: int
+        :param CertName: 证书名称。
+        :type CertName: str
         :param HttpsCrt: 证书内容，即公钥。
         :type HttpsCrt: str
         :param HttpsKey: 私钥。
         :type HttpsKey: str
-        :param CertName: 证书名称。
-        :type CertName: str
         :param Description: 描述。
         :type Description: str
+        :param CloudCertId: 腾讯云证书托管ID。
+        :type CloudCertId: str
         """
         self.CertType = None
+        self.CertName = None
         self.HttpsCrt = None
         self.HttpsKey = None
-        self.CertName = None
         self.Description = None
+        self.CloudCertId = None
 
 
     def _deserialize(self, params):
         self.CertType = params.get("CertType")
+        self.CertName = params.get("CertName")
         self.HttpsCrt = params.get("HttpsCrt")
         self.HttpsKey = params.get("HttpsKey")
-        self.CertName = params.get("CertName")
         self.Description = params.get("Description")
+        self.CloudCertId = params.get("CloudCertId")
 
 
 class CreateLiveCertResponse(AbstractModel):
@@ -1056,9 +1062,9 @@ baseline/main/high。默认baseline
         :type HeightToOrig: int
         :param FpsToOrig: 是否不超过原始帧率，0：否，1：是。默认0。
         :type FpsToOrig: int
-        :param AiTransCode: 是否是急速高清模板，0：否，1：是。默认0。
+        :param AiTransCode: 是否是极速高清模板，0：否，1：是。默认0。
         :type AiTransCode: int
-        :param AdaptBitratePercent: 急速高清相比VideoBitrate少多少码率，0.1到0.5
+        :param AdaptBitratePercent: 极速高清相比VideoBitrate少多少码率，0.1到0.5
         :type AdaptBitratePercent: float
         """
         self.TemplateName = None
@@ -4439,8 +4445,8 @@ class DomainCertInfo(AbstractModel):
         :param HttpsCrt: 证书内容。
         :type HttpsCrt: str
         :param CertType: 证书类型。
-0：腾讯云托管证书
-1：用户添加证书。
+0：用户添加证书，
+1：腾讯云托管证书。
         :type CertType: int
         :param CertExpireTime: 证书过期时间，UTC格式。
         :type CertExpireTime: str

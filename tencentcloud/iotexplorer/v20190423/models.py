@@ -200,14 +200,34 @@ class CreateDeviceRequest(AbstractModel):
         :type ProductId: str
         :param DeviceName: 设备名称。命名规则：[a-zA-Z0-9:_-]{1,48}。
         :type DeviceName: str
+        :param DevAddr: LoRaWAN 设备地址
+        :type DevAddr: str
+        :param AppKey: LoRaWAN 应用密钥
+        :type AppKey: str
+        :param DevEUI: LoRaWAN 设备唯一标识
+        :type DevEUI: str
+        :param AppSKey: LoRaWAN 应用会话密钥
+        :type AppSKey: str
+        :param NwkSKey: LoRaWAN 网络会话密钥
+        :type NwkSKey: str
         """
         self.ProductId = None
         self.DeviceName = None
+        self.DevAddr = None
+        self.AppKey = None
+        self.DevEUI = None
+        self.AppSKey = None
+        self.NwkSKey = None
 
 
     def _deserialize(self, params):
         self.ProductId = params.get("ProductId")
         self.DeviceName = params.get("DeviceName")
+        self.DevAddr = params.get("DevAddr")
+        self.AppKey = params.get("AppKey")
+        self.DevEUI = params.get("DevEUI")
+        self.AppSKey = params.get("AppSKey")
+        self.NwkSKey = params.get("NwkSKey")
 
 
 class CreateDeviceResponse(AbstractModel):
@@ -834,6 +854,21 @@ class DeviceInfo(AbstractModel):
         :param LogLevel: 日志级别
 注意：此字段可能返回 null，表示取不到有效值。
         :type LogLevel: int
+        :param DevAddr: LoRaWAN 设备地址
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DevAddr: str
+        :param AppKey: LoRaWAN 应用密钥
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AppKey: str
+        :param DevEUI: LoRaWAN 设备唯一标识
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DevEUI: str
+        :param AppSKey: LoRaWAN 应用会话密钥
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AppSKey: str
+        :param NwkSKey: LoRaWAN 网络会话密钥
+注意：此字段可能返回 null，表示取不到有效值。
+        :type NwkSKey: str
         """
         self.DeviceName = None
         self.Status = None
@@ -844,6 +879,11 @@ class DeviceInfo(AbstractModel):
         self.Version = None
         self.DeviceCert = None
         self.LogLevel = None
+        self.DevAddr = None
+        self.AppKey = None
+        self.DevEUI = None
+        self.AppSKey = None
+        self.NwkSKey = None
 
 
     def _deserialize(self, params):
@@ -856,6 +896,11 @@ class DeviceInfo(AbstractModel):
         self.Version = params.get("Version")
         self.DeviceCert = params.get("DeviceCert")
         self.LogLevel = params.get("LogLevel")
+        self.DevAddr = params.get("DevAddr")
+        self.AppKey = params.get("AppKey")
+        self.DevEUI = params.get("DevEUI")
+        self.AppSKey = params.get("AppSKey")
+        self.NwkSKey = params.get("NwkSKey")
 
 
 class EventHistoryItem(AbstractModel):

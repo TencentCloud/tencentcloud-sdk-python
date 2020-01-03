@@ -850,6 +850,34 @@ class MpsClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeMediaMetaData(self, request):
+        """获取媒体的元信息，包括视频画面宽、高、编码格式、时长、帧率等。
+
+        :param request: Request instance for DescribeMediaMetaData.
+        :type request: :class:`tencentcloud.mps.v20190612.models.DescribeMediaMetaDataRequest`
+        :rtype: :class:`tencentcloud.mps.v20190612.models.DescribeMediaMetaDataResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeMediaMetaData", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeMediaMetaDataResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribePersonSamples(self, request):
         """该接口用于查询人物样本信息，支持根据人物 ID、名称、标签，分页查询。
 
