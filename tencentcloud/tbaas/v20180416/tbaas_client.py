@@ -138,7 +138,7 @@ class TbaasClient(AbstractClient):
 
 
     def GetBlockListHandler(self, request):
-        """bcos分页查询当前群组下的区块列表
+        """Bcos分页查询当前群组下的区块列表
 
         :param request: Request instance for GetBlockListHandler.
         :type request: :class:`tencentcloud.tbaas.v20180416.models.GetBlockListHandlerRequest`

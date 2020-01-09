@@ -234,7 +234,7 @@ class GetModelListResponse(AbstractModel):
 
 
 class LipColorInfo(AbstractModel):
-    """唇色信息。
+    """唇色信息
 
     """
 

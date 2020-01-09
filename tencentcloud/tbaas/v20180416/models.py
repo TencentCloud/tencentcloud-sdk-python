@@ -83,7 +83,7 @@ class ApplyUserCertResponse(AbstractModel):
 
 
 class BcosBlockObj(AbstractModel):
-    """bcos区块对象
+    """Bcos区块对象
 
     """
 
@@ -95,7 +95,7 @@ class BcosBlockObj(AbstractModel):
         :type BlockNumber: int
         :param BlockTimestamp: 区块时间戳
         :type BlockTimestamp: str
-        :param Sealer: 打包节点id
+        :param Sealer: 打包节点ID
         :type Sealer: str
         :param SealerIndex: 打包节点索引
         :type SealerIndex: int
@@ -1179,8 +1179,6 @@ class SendTransactionHandlerRequest(AbstractModel):
         :type Operation: str
         :param GroupPk: 群组编号
         :type GroupPk: str
-        :param KeyUser: 私钥用户编号
-        :type KeyUser: str
         :param ContractId: 合约编号
         :type ContractId: int
         :param FuncName: 合约方法名
@@ -1191,7 +1189,6 @@ class SendTransactionHandlerRequest(AbstractModel):
         self.Module = None
         self.Operation = None
         self.GroupPk = None
-        self.KeyUser = None
         self.ContractId = None
         self.FuncName = None
         self.FuncParam = None
@@ -1201,7 +1198,6 @@ class SendTransactionHandlerRequest(AbstractModel):
         self.Module = params.get("Module")
         self.Operation = params.get("Operation")
         self.GroupPk = params.get("GroupPk")
-        self.KeyUser = params.get("KeyUser")
         self.ContractId = params.get("ContractId")
         self.FuncName = params.get("FuncName")
         self.FuncParam = params.get("FuncParam")

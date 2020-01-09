@@ -8781,6 +8781,55 @@ class ProcessMediaResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class RawTranscodeParameter(AbstractModel):
+    """自定义转码的的规格参数。
+
+    """
+
+    def __init__(self):
+        """
+        :param Container: 封装格式，可选值：mp4、flv、hls、mp3、flac、ogg、m4a。其中，mp3、flac、ogg、m4a 为纯音频文件。
+        :type Container: str
+        :param RemoveVideo: 是否去除视频数据，取值：
+<li>0：保留；</li>
+<li>1：去除。</li>
+默认值：0。
+        :type RemoveVideo: int
+        :param RemoveAudio: 是否去除音频数据，取值：
+<li>0：保留；</li>
+<li>1：去除。</li>
+默认值：0。
+        :type RemoveAudio: int
+        :param VideoTemplate: 视频流配置参数，当 RemoveVideo 为 0，该字段必填。
+        :type VideoTemplate: :class:`tencentcloud.mps.v20190612.models.VideoTemplateInfo`
+        :param AudioTemplate: 音频流配置参数，当 RemoveAudio 为 0，该字段必填。
+        :type AudioTemplate: :class:`tencentcloud.mps.v20190612.models.AudioTemplateInfo`
+        :param TEHDConfig: 极速高清转码参数。
+        :type TEHDConfig: :class:`tencentcloud.mps.v20190612.models.TEHDConfig`
+        """
+        self.Container = None
+        self.RemoveVideo = None
+        self.RemoveAudio = None
+        self.VideoTemplate = None
+        self.AudioTemplate = None
+        self.TEHDConfig = None
+
+
+    def _deserialize(self, params):
+        self.Container = params.get("Container")
+        self.RemoveVideo = params.get("RemoveVideo")
+        self.RemoveAudio = params.get("RemoveAudio")
+        if params.get("VideoTemplate") is not None:
+            self.VideoTemplate = VideoTemplateInfo()
+            self.VideoTemplate._deserialize(params.get("VideoTemplate"))
+        if params.get("AudioTemplate") is not None:
+            self.AudioTemplate = AudioTemplateInfo()
+            self.AudioTemplate._deserialize(params.get("AudioTemplate"))
+        if params.get("TEHDConfig") is not None:
+            self.TEHDConfig = TEHDConfig()
+            self.TEHDConfig._deserialize(params.get("TEHDConfig"))
+
+
 class ResetWorkflowRequest(AbstractModel):
     """ResetWorkflow请求参数结构体
 
@@ -9579,6 +9628,10 @@ class TranscodeTaskInput(AbstractModel):
         :param ObjectNumberFormat: 转码后输出路径中的`{number}`变量的规则。
 注意：此字段可能返回 null，表示取不到有效值。
         :type ObjectNumberFormat: :class:`tencentcloud.mps.v20190612.models.NumberFormat`
+        :param RawParameter: 视频转码自定义参数，当 Definition 填 0 时有效。
+该参数用于高度定制场景，建议您优先使用 Definition 指定转码参数。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RawParameter: :class:`tencentcloud.mps.v20190612.models.RawTranscodeParameter`
         """
         self.Definition = None
         self.WatermarkSet = None
@@ -9586,6 +9639,7 @@ class TranscodeTaskInput(AbstractModel):
         self.OutputObjectPath = None
         self.SegmentObjectName = None
         self.ObjectNumberFormat = None
+        self.RawParameter = None
 
 
     def _deserialize(self, params):
@@ -9604,6 +9658,9 @@ class TranscodeTaskInput(AbstractModel):
         if params.get("ObjectNumberFormat") is not None:
             self.ObjectNumberFormat = NumberFormat()
             self.ObjectNumberFormat._deserialize(params.get("ObjectNumberFormat"))
+        if params.get("RawParameter") is not None:
+            self.RawParameter = RawTranscodeParameter()
+            self.RawParameter._deserialize(params.get("RawParameter"))
 
 
 class TranscodeTemplate(AbstractModel):
@@ -9950,7 +10007,8 @@ class VideoTemplateInfo(AbstractModel):
         :param Codec: 视频流的编码格式，可选值：
 <li>libx264：H.264 编码</li>
 <li>libx265：H.265 编码</li>
-目前 H.265 编码必须指定分辨率，并且需要在 640*480 以内。
+<li>av1：AOMedia Video 1 编码</li>
+目前 H.265 编码必须指定分辨率，并且需要在 640*480 以内。av1 编码容器目前只支持 mp4 。
         :type Codec: str
         :param Fps: 视频帧率，取值范围：[0, 60]，单位：Hz。
 当取值为 0，表示帧率和原始视频保持一致。
@@ -10012,7 +10070,8 @@ class VideoTemplateInfoForUpdate(AbstractModel):
         :param Codec: 视频流的编码格式，可选值：
 <li>libx264：H.264 编码</li>
 <li>libx265：H.265 编码</li>
-目前 H.265 编码必须指定分辨率，并且需要在 640*480 以内。
+<li>av1：AOMedia Video 1 编码</li>
+目前 H.265 编码必须指定分辨率，并且需要在 640*480 以内。av1 编码容器目前只支持 mp4 。
         :type Codec: str
         :param Fps: 视频帧率，取值范围：[0, 60]，单位：Hz。
 当取值为 0，表示帧率和原始视频保持一致。

@@ -81,6 +81,34 @@ class CdbClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def BalanceRoGroupLoad(self, request):
+        """本接口(BalanceRoGroupLoad)用于重新均衡 RO 组内实例的负载。注意，RO 组内 RO 实例会有一次数据库连接瞬断，请确保应用程序能重连数据库，谨慎操作。
+
+        :param request: Request instance for BalanceRoGroupLoad.
+        :type request: :class:`tencentcloud.cdb.v20170320.models.BalanceRoGroupLoadRequest`
+        :rtype: :class:`tencentcloud.cdb.v20170320.models.BalanceRoGroupLoadResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("BalanceRoGroupLoad", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.BalanceRoGroupLoadResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def CloseWanService(self, request):
         """本接口(CloseWanService)用于关闭云数据库实例的外网访问。关闭外网访问后，外网地址将不可访问。
 
@@ -1225,6 +1253,34 @@ class CdbClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeRoGroups(self, request):
+        """本接口(DescribeRoGroups)用于查询云数据库实例的所有的RO组的信息。
+
+        :param request: Request instance for DescribeRoGroups.
+        :type request: :class:`tencentcloud.cdb.v20170320.models.DescribeRoGroupsRequest`
+        :rtype: :class:`tencentcloud.cdb.v20170320.models.DescribeRoGroupsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeRoGroups", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeRoGroupsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeRollbackRangeTime(self, request):
         """本接口(DescribeRollbackRangeTime)用于查询云数据库实例可回档的时间范围。
 
@@ -1928,6 +1984,34 @@ class CdbClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def ModifyRoGroupInfo(self, request):
+        """本接口（ModifyRoGroupInfo）用于更新云数据库只读组的信息。包括设置实例延迟超限剔除策略，设置只读实例读权重等。
+
+        :param request: Request instance for ModifyRoGroupInfo.
+        :type request: :class:`tencentcloud.cdb.v20170320.models.ModifyRoGroupInfoRequest`
+        :rtype: :class:`tencentcloud.cdb.v20170320.models.ModifyRoGroupInfoResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ModifyRoGroupInfo", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ModifyRoGroupInfoResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def ModifyTimeWindow(self, request):
         """本接口(ModifyTimeWindow)用于更新云数据库实例的维护时间窗口。
 
@@ -2032,6 +2116,34 @@ class CdbClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.OpenWanServiceResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ReleaseIsolatedDBInstances(self, request):
+        """本接口（ReleaseIsolatedDBInstances）用于恢复已隔离云数据库实例。
+
+        :param request: Request instance for ReleaseIsolatedDBInstances.
+        :type request: :class:`tencentcloud.cdb.v20170320.models.ReleaseIsolatedDBInstancesRequest`
+        :rtype: :class:`tencentcloud.cdb.v20170320.models.ReleaseIsolatedDBInstancesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ReleaseIsolatedDBInstances", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ReleaseIsolatedDBInstancesResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

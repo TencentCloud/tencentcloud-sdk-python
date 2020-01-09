@@ -277,6 +277,40 @@ class BackupItem(AbstractModel):
         self.Table = params.get("Table")
 
 
+class BalanceRoGroupLoadRequest(AbstractModel):
+    """BalanceRoGroupLoad请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RoGroupId: RO 组的 ID，格式如：cdbrg-c1nl9rpv。
+        :type RoGroupId: str
+        """
+        self.RoGroupId = None
+
+
+    def _deserialize(self, params):
+        self.RoGroupId = params.get("RoGroupId")
+
+
+class BalanceRoGroupLoadResponse(AbstractModel):
+    """BalanceRoGroupLoad返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class BinlogInfo(AbstractModel):
     """二进制日志信息
 
@@ -898,9 +932,9 @@ class CreateDeployGroupRequest(AbstractModel):
         :type DeployGroupName: str
         :param Description: 置放群组描述，最长不能超过200个字符。
         :type Description: str
-        :param Affinity: 置放群组的亲和性策略。
+        :param Affinity: 置放群组的亲和性策略，目前仅支持取值为1，策略1表示同台物理机上限制实例的个数。
         :type Affinity: list of int
-        :param LimitNum: 置放群组亲和性策略1的实例限制个数。
+        :param LimitNum: 置放群组亲和性策略1中同台物理机上实例的限制个数。
         :type LimitNum: int
         """
         self.DeployGroupName = None
@@ -1255,12 +1289,12 @@ class DeployGroupInfo(AbstractModel):
         :type DeployGroupName: str
         :param CreateTime: 创建时间。
         :type CreateTime: str
-        :param Quota: 置放群组实例配额。
+        :param Quota: 置放群组实例配额，表示一个置放群组中可容纳的最大实例数目。
         :type Quota: int
-        :param Affinity: 置放群组亲和性策略。
+        :param Affinity: 置放群组亲和性策略，目前仅支持策略1，即在物理机纬度打散实例的分布。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Affinity: str
-        :param LimitNum: 置放群组亲和性策略1的限制实例个数。
+        :param LimitNum: 置放群组亲和性策略1中，同台物理机上同个置放群组实例的限制个数。
 注意：此字段可能返回 null，表示取不到有效值。
         :type LimitNum: int
         :param Description: 置放群组详细信息。
@@ -1481,16 +1515,18 @@ class DescribeBackupConfigResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param StartTimeMin: 备份开始的最早时间点，单位为时刻。例如，2 - 凌晨 2:00。
+        :param StartTimeMin: 自动备份开始的最早时间点，单位为时刻。例如，2 - 凌晨 2:00。（该字段已废弃，建议使用 BackupTimeWindow 字段）
         :type StartTimeMin: int
-        :param StartTimeMax: 备份开始的最晚时间点，单位为时刻。例如，6 - 凌晨 6:00。
+        :param StartTimeMax: 自动备份开始的最晚时间点，单位为时刻。例如，6 - 凌晨 6:00。（该字段已废弃，建议使用 BackupTimeWindow 字段）
         :type StartTimeMax: int
-        :param BackupExpireDays: 备份过期时间，单位为天。
+        :param BackupExpireDays: 备份文件保留时间，单位为天。
         :type BackupExpireDays: int
         :param BackupMethod: 备份方式，可能的值为：physical - 物理备份，logical - 逻辑备份。
         :type BackupMethod: str
-        :param BinlogExpireDays: Binlog 过期时间，单位为天。
+        :param BinlogExpireDays: Binlog 文件保留时间，单位为天。
         :type BinlogExpireDays: int
+        :param BackupTimeWindow: 实例自动备份的时间窗。
+        :type BackupTimeWindow: :class:`tencentcloud.cdb.v20170320.models.CommonTimeWindow`
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -1499,6 +1535,7 @@ class DescribeBackupConfigResponse(AbstractModel):
         self.BackupExpireDays = None
         self.BackupMethod = None
         self.BinlogExpireDays = None
+        self.BackupTimeWindow = None
         self.RequestId = None
 
 
@@ -1508,6 +1545,9 @@ class DescribeBackupConfigResponse(AbstractModel):
         self.BackupExpireDays = params.get("BackupExpireDays")
         self.BackupMethod = params.get("BackupMethod")
         self.BinlogExpireDays = params.get("BinlogExpireDays")
+        if params.get("BackupTimeWindow") is not None:
+            self.BackupTimeWindow = CommonTimeWindow()
+            self.BackupTimeWindow._deserialize(params.get("BackupTimeWindow"))
         self.RequestId = params.get("RequestId")
 
 
@@ -2809,6 +2849,49 @@ class DescribeProjectSecurityGroupsResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeRoGroupsRequest(AbstractModel):
+    """DescribeRoGroups请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param InstanceId: 实例ID，格式如：cdb-c1nl9rpv或者cdb-c1nl9rpv，与云数据库控制台页面中显示的实例ID相同。
+        :type InstanceId: str
+        """
+        self.InstanceId = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+
+
+class DescribeRoGroupsResponse(AbstractModel):
+    """DescribeRoGroups返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RoGroups: RO组信息数组，一个实例可关联多个RO组。
+        :type RoGroups: list of RoGroup
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RoGroups = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("RoGroups") is not None:
+            self.RoGroups = []
+            for item in params.get("RoGroups"):
+                obj = RoGroup()
+                obj._deserialize(item)
+                self.RoGroups.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeRollbackRangeTimeRequest(AbstractModel):
     """DescribeRollbackRangeTime请求参数结构体
 
@@ -3985,7 +4068,7 @@ class IsolateDBInstanceResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param AsyncRequestId: 异步任务的请求 ID，可使用此 ID 查询异步任务的执行结果。
+        :param AsyncRequestId: 异步任务的请求 ID，可使用此 ID 查询异步任务的执行结果。(该返回字段目前已废弃，可以通过 DescribeDBInstances 接口查询实例的隔离状态)
 注意：此字段可能返回 null，表示取不到有效值。
         :type AsyncRequestId: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -4723,6 +4806,59 @@ class ModifyParamTemplateResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class ModifyRoGroupInfoRequest(AbstractModel):
+    """ModifyRoGroupInfo请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RoGroupId: RO 组的实例 ID。
+        :type RoGroupId: str
+        :param RoGroupInfo: RO 组的详细信息。
+        :type RoGroupInfo: :class:`tencentcloud.cdb.v20170320.models.RoGroupAttr`
+        :param RoWeightValues: RO 组内实例的权重。若修改 RO 组的权重模式为用户自定义模式（custom），则必须设置该参数，且需要设置每个 RO 实例的权重值。
+        :type RoWeightValues: list of RoWeightValue
+        :param IsBalanceRoLoad: 是否重新均衡 RO 组内的 RO 实例的负载。支持值包括：1 - 重新均衡负载；0 - 不重新均衡负载。默认值为 0。注意，设置为重新均衡负载是，RO 组内 RO 实例会有一次数据库连接瞬断，请确保应用程序能重连数据库。
+        :type IsBalanceRoLoad: int
+        """
+        self.RoGroupId = None
+        self.RoGroupInfo = None
+        self.RoWeightValues = None
+        self.IsBalanceRoLoad = None
+
+
+    def _deserialize(self, params):
+        self.RoGroupId = params.get("RoGroupId")
+        if params.get("RoGroupInfo") is not None:
+            self.RoGroupInfo = RoGroupAttr()
+            self.RoGroupInfo._deserialize(params.get("RoGroupInfo"))
+        if params.get("RoWeightValues") is not None:
+            self.RoWeightValues = []
+            for item in params.get("RoWeightValues"):
+                obj = RoWeightValue()
+                obj._deserialize(item)
+                self.RoWeightValues.append(obj)
+        self.IsBalanceRoLoad = params.get("IsBalanceRoLoad")
+
+
+class ModifyRoGroupInfoResponse(AbstractModel):
+    """ModifyRoGroupInfo返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class ModifyTimeWindowRequest(AbstractModel):
     """ModifyTimeWindow请求参数结构体
 
@@ -5103,6 +5239,74 @@ class RegionSellConf(AbstractModel):
                 self.ZonesConf.append(obj)
 
 
+class ReleaseIsolatedDBInstancesRequest(AbstractModel):
+    """ReleaseIsolatedDBInstances请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param InstanceIds: 实例 ID 数组，单个实例 ID 格式如：cdb-c1nl9rpv，与云数据库控制台页面中显示的实例 ID 相同，可使用 [查询实例列表](https://cloud.tencent.com/document/api/236/15872) 接口获取，其值为输出参数中字段 InstanceId 的值。
+        :type InstanceIds: list of str
+        """
+        self.InstanceIds = None
+
+
+    def _deserialize(self, params):
+        self.InstanceIds = params.get("InstanceIds")
+
+
+class ReleaseIsolatedDBInstancesResponse(AbstractModel):
+    """ReleaseIsolatedDBInstances返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Items: 解隔离操作的结果集。
+        :type Items: list of ReleaseResult
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Items = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Items") is not None:
+            self.Items = []
+            for item in params.get("Items"):
+                obj = ReleaseResult()
+                obj._deserialize(item)
+                self.Items.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class ReleaseResult(AbstractModel):
+    """解隔离任务结果
+
+    """
+
+    def __init__(self):
+        """
+        :param InstanceId: 实例 ID。
+        :type InstanceId: str
+        :param Code: 实例解隔离操作的结果值。返回值为0表示成功。
+        :type Code: int
+        :param Message: 实例解隔离操作的错误信息。
+        :type Message: str
+        """
+        self.InstanceId = None
+        self.Code = None
+        self.Message = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.Code = params.get("Code")
+        self.Message = params.get("Message")
+
+
 class RenewDBInstanceRequest(AbstractModel):
     """RenewDBInstance请求参数结构体
 
@@ -5190,28 +5394,40 @@ class RoGroup(AbstractModel):
 
     def __init__(self):
         """
-        :param RoGroupMode: 只读组模式，可选值为：alone-系统自动分配只读组；allinone-新建只读组；join-使用现有只读组
+        :param RoGroupMode: 只读组模式，可选值为：alone-系统自动分配只读组；allinone-新建只读组；join-使用现有只读组。
         :type RoGroupMode: str
-        :param RoGroupId: 只读组ID
+        :param RoGroupId: 只读组 ID。
         :type RoGroupId: str
-        :param RoGroupName: 只读组名称
+        :param RoGroupName: 只读组名称。
         :type RoGroupName: str
-        :param RoOfflineDelay: 是否启用延迟超限剔除功能，启用该功能后，只读实例与主实例的延迟超过延迟阈值，只读实例将被隔离。可选值：1-启用；0-不启用
+        :param RoOfflineDelay: 是否启用延迟超限剔除功能，启用该功能后，只读实例与主实例的延迟超过延迟阈值，只读实例将被隔离。可选值：1-启用；0-不启用。
         :type RoOfflineDelay: int
-        :param RoMaxDelayTime: 延迟阈值
+        :param RoMaxDelayTime: 延迟阈值。
         :type RoMaxDelayTime: int
-        :param MinRoInGroup: 最少实例保留个数，若购买只读实例数量小于设置数量将不做剔除
+        :param MinRoInGroup: 最少实例保留个数，若购买只读实例数量小于设置数量将不做剔除。
         :type MinRoInGroup: int
-        :param WeightMode: 读写权重分配模式，可选值：system-系统自动分配；custom-自定义
+        :param WeightMode: 读写权重分配模式，可选值：system-系统自动分配；custom-自定义。
         :type WeightMode: str
-        :param Weight: 权重值
+        :param Weight: 权重值。
         :type Weight: int
-        :param RoInstances: 只读组中的只读实例详情
+        :param RoInstances: 只读组中的只读实例详情。
         :type RoInstances: list of RoInstanceInfo
-        :param Vip: 只读组的内网IP
+        :param Vip: 只读组的内网 IP。
         :type Vip: str
-        :param Vport: 只读组的内网端口号
+        :param Vport: 只读组的内网端口号。
         :type Vport: int
+        :param UniqVpcId: 私有网络 ID。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UniqVpcId: str
+        :param UniqSubnetId: 子网 ID。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UniqSubnetId: str
+        :param RoGroupRegion: 只读组所在的地域。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RoGroupRegion: str
+        :param RoGroupZone: 只读组所在的可用区。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RoGroupZone: str
         """
         self.RoGroupMode = None
         self.RoGroupId = None
@@ -5224,6 +5440,10 @@ class RoGroup(AbstractModel):
         self.RoInstances = None
         self.Vip = None
         self.Vport = None
+        self.UniqVpcId = None
+        self.UniqSubnetId = None
+        self.RoGroupRegion = None
+        self.RoGroupZone = None
 
 
     def _deserialize(self, params):
@@ -5243,6 +5463,43 @@ class RoGroup(AbstractModel):
                 self.RoInstances.append(obj)
         self.Vip = params.get("Vip")
         self.Vport = params.get("Vport")
+        self.UniqVpcId = params.get("UniqVpcId")
+        self.UniqSubnetId = params.get("UniqSubnetId")
+        self.RoGroupRegion = params.get("RoGroupRegion")
+        self.RoGroupZone = params.get("RoGroupZone")
+
+
+class RoGroupAttr(AbstractModel):
+    """RO 组的配置信息
+
+    """
+
+    def __init__(self):
+        """
+        :param RoGroupName: RO 组名称。
+        :type RoGroupName: str
+        :param RoMaxDelayTime: RO 实例最大延迟阀值。单位为秒，最小值为 1。注意，RO 组必须设置了开启实例延迟剔除策略，该值才有效。
+        :type RoMaxDelayTime: int
+        :param RoOfflineDelay: 是否开启实例延迟剔除。支持的值包括：1 - 开启；0 - 不开启。注意，若设置开启实例延迟剔除，则必须设置延迟阈值（RoMaxDelayTime）参数。
+        :type RoOfflineDelay: int
+        :param MinRoInGroup: 最少保留实例数。可设置为小于或等于该 RO 组下 RO 实例个数的任意值。注意，若设置值大于 RO 实例数量将不做剔除；若设置为 0，所有实例延迟超限都会被剔除。
+        :type MinRoInGroup: int
+        :param WeightMode: 权重模式。支持值包括："system" - 系统自动分配； "custom" - 用户自定义设置。注意，若设置 "custom" 模式，则必须设置 RO 实例权重配置（RoWeightValues）参数。
+        :type WeightMode: str
+        """
+        self.RoGroupName = None
+        self.RoMaxDelayTime = None
+        self.RoOfflineDelay = None
+        self.MinRoInGroup = None
+        self.WeightMode = None
+
+
+    def _deserialize(self, params):
+        self.RoGroupName = params.get("RoGroupName")
+        self.RoMaxDelayTime = params.get("RoMaxDelayTime")
+        self.RoOfflineDelay = params.get("RoOfflineDelay")
+        self.MinRoInGroup = params.get("MinRoInGroup")
+        self.WeightMode = params.get("WeightMode")
 
 
 class RoInstanceInfo(AbstractModel):
@@ -5381,6 +5638,27 @@ class RoVipInfo(AbstractModel):
         self.RoVpcId = params.get("RoVpcId")
         self.RoVport = params.get("RoVport")
         self.RoVip = params.get("RoVip")
+
+
+class RoWeightValue(AbstractModel):
+    """RO 实例的权重值
+
+    """
+
+    def __init__(self):
+        """
+        :param InstanceId: RO 实例 ID。
+        :type InstanceId: str
+        :param Weight: 权重值。取值范围为 [0, 100]。
+        :type Weight: int
+        """
+        self.InstanceId = None
+        self.Weight = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.Weight = params.get("Weight")
 
 
 class RollbackDBName(AbstractModel):
