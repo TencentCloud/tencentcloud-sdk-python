@@ -6016,6 +6016,45 @@ class LiveStreamTaskNotifyConfig(AbstractModel):
         self.TopicName = params.get("TopicName")
 
 
+class ManageTaskRequest(AbstractModel):
+    """ManageTask请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param OperationType: 操作类型，取值范围：
+<li>Abort：终止任务。</li>
+        :type OperationType: str
+        :param TaskId: 视频处理的任务 ID。
+        :type TaskId: str
+        """
+        self.OperationType = None
+        self.TaskId = None
+
+
+    def _deserialize(self, params):
+        self.OperationType = params.get("OperationType")
+        self.TaskId = params.get("TaskId")
+
+
+class ManageTaskResponse(AbstractModel):
+    """ManageTask返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class MediaAiAnalysisClassificationItem(AbstractModel):
     """智能分类结果
 
@@ -9615,6 +9654,10 @@ class TranscodeTaskInput(AbstractModel):
         """
         :param Definition: 视频转码模板 ID。
         :type Definition: int
+        :param RawParameter: 视频转码自定义参数，当 Definition 填 0 时有效。
+该参数用于高度定制场景，建议您优先使用 Definition 指定转码参数。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RawParameter: :class:`tencentcloud.mps.v20190612.models.RawTranscodeParameter`
         :param WatermarkSet: 水印列表，支持多张图片或文字水印，最大可支持 10 张。
 注意：此字段可能返回 null，表示取不到有效值。
         :type WatermarkSet: list of WatermarkInput
@@ -9628,22 +9671,21 @@ class TranscodeTaskInput(AbstractModel):
         :param ObjectNumberFormat: 转码后输出路径中的`{number}`变量的规则。
 注意：此字段可能返回 null，表示取不到有效值。
         :type ObjectNumberFormat: :class:`tencentcloud.mps.v20190612.models.NumberFormat`
-        :param RawParameter: 视频转码自定义参数，当 Definition 填 0 时有效。
-该参数用于高度定制场景，建议您优先使用 Definition 指定转码参数。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type RawParameter: :class:`tencentcloud.mps.v20190612.models.RawTranscodeParameter`
         """
         self.Definition = None
+        self.RawParameter = None
         self.WatermarkSet = None
         self.OutputStorage = None
         self.OutputObjectPath = None
         self.SegmentObjectName = None
         self.ObjectNumberFormat = None
-        self.RawParameter = None
 
 
     def _deserialize(self, params):
         self.Definition = params.get("Definition")
+        if params.get("RawParameter") is not None:
+            self.RawParameter = RawTranscodeParameter()
+            self.RawParameter._deserialize(params.get("RawParameter"))
         if params.get("WatermarkSet") is not None:
             self.WatermarkSet = []
             for item in params.get("WatermarkSet"):
@@ -9658,9 +9700,6 @@ class TranscodeTaskInput(AbstractModel):
         if params.get("ObjectNumberFormat") is not None:
             self.ObjectNumberFormat = NumberFormat()
             self.ObjectNumberFormat._deserialize(params.get("ObjectNumberFormat"))
-        if params.get("RawParameter") is not None:
-            self.RawParameter = RawTranscodeParameter()
-            self.RawParameter._deserialize(params.get("RawParameter"))
 
 
 class TranscodeTemplate(AbstractModel):
@@ -10035,6 +10074,9 @@ class VideoTemplateInfo(AbstractModel):
 <li>当 Width、Height 均非 0，则分辨率按用户指定。</li>
 默认值：0。
         :type Height: int
+        :param Gop: 关键帧 I 帧之间的间隔，取值范围：0 和 [1, 100000]，单位：帧数。
+当填 0 或不填时，系统将自动设置 gop 长度。
+        :type Gop: int
         :param FillType: 填充方式，当视频流配置宽高参数与原始视频的宽高比不一致时，对转码的处理方式，即为“填充”。可选填充方式：
 <li> stretch：拉伸，对每一帧进行拉伸，填满整个画面，可能导致转码后的视频被“压扁“或者“拉长“；</li>
 <li>black：留黑，保持视频宽高比不变，边缘剩余部分使用黑色填充。</li>
@@ -10047,6 +10089,7 @@ class VideoTemplateInfo(AbstractModel):
         self.ResolutionAdaptive = None
         self.Width = None
         self.Height = None
+        self.Gop = None
         self.FillType = None
 
 
@@ -10057,6 +10100,7 @@ class VideoTemplateInfo(AbstractModel):
         self.ResolutionAdaptive = params.get("ResolutionAdaptive")
         self.Width = params.get("Width")
         self.Height = params.get("Height")
+        self.Gop = params.get("Gop")
         self.FillType = params.get("FillType")
 
 
@@ -10091,10 +10135,11 @@ class VideoTemplateInfoForUpdate(AbstractModel):
         :type Width: int
         :param Height: 视频流高度（或短边）的最大值，取值范围：0 和 [128, 4096]，单位：px。
         :type Height: int
+        :param Gop: 关键帧 I 帧之间的间隔，取值范围：0 和 [1, 100000]，单位：帧数。当填 0 时，系统将自动设置 gop 长度。
+        :type Gop: str
         :param FillType: 填充方式，当视频流配置宽高参数与原始视频的宽高比不一致时，对转码的处理方式，即为“填充”。可选填充方式：
 <li> stretch：拉伸，对每一帧进行拉伸，填满整个画面，可能导致转码后的视频被“压扁“或者“拉长“；</li>
 <li>black：留黑，保持视频宽高比不变，边缘剩余部分使用黑色填充。</li>
-默认值：black 。
         :type FillType: str
         """
         self.Codec = None
@@ -10103,6 +10148,7 @@ class VideoTemplateInfoForUpdate(AbstractModel):
         self.ResolutionAdaptive = None
         self.Width = None
         self.Height = None
+        self.Gop = None
         self.FillType = None
 
 
@@ -10113,6 +10159,7 @@ class VideoTemplateInfoForUpdate(AbstractModel):
         self.ResolutionAdaptive = params.get("ResolutionAdaptive")
         self.Width = params.get("Width")
         self.Height = params.get("Height")
+        self.Gop = params.get("Gop")
         self.FillType = params.get("FillType")
 
 

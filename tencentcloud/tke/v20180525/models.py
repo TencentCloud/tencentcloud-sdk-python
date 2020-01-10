@@ -198,11 +198,14 @@ class ClusterAdvancedSettings(AbstractModel):
         :type ContainerRuntime: str
         :param NodeNameType: 集群中节点NodeName类型（包括 hostname,lan-ip两种形式，默认为lan-ip。如果开启了hostname模式，创建节点时需要设置HostName参数，并且InstanceName需要和HostName一致）
         :type NodeNameType: str
+        :param ExtraArgs: 集群自定义参数
+        :type ExtraArgs: :class:`tencentcloud.tke.v20180525.models.ClusterExtraArgs`
         """
         self.IPVS = None
         self.AsEnabled = None
         self.ContainerRuntime = None
         self.NodeNameType = None
+        self.ExtraArgs = None
 
 
     def _deserialize(self, params):
@@ -210,6 +213,9 @@ class ClusterAdvancedSettings(AbstractModel):
         self.AsEnabled = params.get("AsEnabled")
         self.ContainerRuntime = params.get("ContainerRuntime")
         self.NodeNameType = params.get("NodeNameType")
+        if params.get("ExtraArgs") is not None:
+            self.ExtraArgs = ClusterExtraArgs()
+            self.ExtraArgs._deserialize(params.get("ExtraArgs"))
 
 
 class ClusterAsGroup(AbstractModel):
@@ -414,6 +420,34 @@ class ClusterCIDRSettings(AbstractModel):
         self.IgnoreClusterCIDRConflict = params.get("IgnoreClusterCIDRConflict")
         self.MaxNodePodNum = params.get("MaxNodePodNum")
         self.MaxClusterServiceNum = params.get("MaxClusterServiceNum")
+
+
+class ClusterExtraArgs(AbstractModel):
+    """集群master自定义参数
+
+    """
+
+    def __init__(self):
+        """
+        :param KubeAPIServer: kube-apiserver自定义参数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type KubeAPIServer: list of str
+        :param KubeControllerManager: kube-controller-manager自定义参数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type KubeControllerManager: list of str
+        :param KubeScheduler: kube-scheduler自定义参数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type KubeScheduler: list of str
+        """
+        self.KubeAPIServer = None
+        self.KubeControllerManager = None
+        self.KubeScheduler = None
+
+
+    def _deserialize(self, params):
+        self.KubeAPIServer = params.get("KubeAPIServer")
+        self.KubeControllerManager = params.get("KubeControllerManager")
+        self.KubeScheduler = params.get("KubeScheduler")
 
 
 class ClusterNetworkSettings(AbstractModel):
@@ -1840,9 +1874,12 @@ class ExistedInstancesForNode(AbstractModel):
         :type NodeRole: str
         :param ExistedInstancesPara: 已存在实例的重装参数
         :type ExistedInstancesPara: :class:`tencentcloud.tke.v20180525.models.ExistedInstancesPara`
+        :param InstanceAdvancedSettingsOverride: 节点高级设置，会覆盖集群级别设置的InstanceAdvancedSettings（当前只对节点自定义参数ExtraArgs生效）
+        :type InstanceAdvancedSettingsOverride: :class:`tencentcloud.tke.v20180525.models.InstanceAdvancedSettings`
         """
         self.NodeRole = None
         self.ExistedInstancesPara = None
+        self.InstanceAdvancedSettingsOverride = None
 
 
     def _deserialize(self, params):
@@ -1850,6 +1887,9 @@ class ExistedInstancesForNode(AbstractModel):
         if params.get("ExistedInstancesPara") is not None:
             self.ExistedInstancesPara = ExistedInstancesPara()
             self.ExistedInstancesPara._deserialize(params.get("ExistedInstancesPara"))
+        if params.get("InstanceAdvancedSettingsOverride") is not None:
+            self.InstanceAdvancedSettingsOverride = InstanceAdvancedSettings()
+            self.InstanceAdvancedSettingsOverride._deserialize(params.get("InstanceAdvancedSettingsOverride"))
 
 
 class ExistedInstancesPara(AbstractModel):
@@ -1975,6 +2015,8 @@ class InstanceAdvancedSettings(AbstractModel):
         :type Labels: list of Label
         :param DataDisks: 数据盘相关信息
         :type DataDisks: list of DataDisk
+        :param ExtraArgs: 节点相关的自定义参数信息
+        :type ExtraArgs: :class:`tencentcloud.tke.v20180525.models.InstanceExtraArgs`
         """
         self.MountTarget = None
         self.DockerGraphPath = None
@@ -1982,6 +2024,7 @@ class InstanceAdvancedSettings(AbstractModel):
         self.Unschedulable = None
         self.Labels = None
         self.DataDisks = None
+        self.ExtraArgs = None
 
 
     def _deserialize(self, params):
@@ -2001,6 +2044,9 @@ class InstanceAdvancedSettings(AbstractModel):
                 obj = DataDisk()
                 obj._deserialize(item)
                 self.DataDisks.append(obj)
+        if params.get("ExtraArgs") is not None:
+            self.ExtraArgs = InstanceExtraArgs()
+            self.ExtraArgs._deserialize(params.get("ExtraArgs"))
 
 
 class InstanceDataDiskMountSetting(AbstractModel):
@@ -2031,6 +2077,24 @@ class InstanceDataDiskMountSetting(AbstractModel):
                 obj._deserialize(item)
                 self.DataDisks.append(obj)
         self.Zone = params.get("Zone")
+
+
+class InstanceExtraArgs(AbstractModel):
+    """节点自定义参数
+
+    """
+
+    def __init__(self):
+        """
+        :param Kubelet: kubelet自定义参数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Kubelet: list of str
+        """
+        self.Kubelet = None
+
+
+    def _deserialize(self, params):
+        self.Kubelet = params.get("Kubelet")
 
 
 class Label(AbstractModel):
@@ -2253,14 +2317,23 @@ class RunInstancesForNode(AbstractModel):
         :type NodeRole: str
         :param RunInstancesPara: CVM创建透传参数，json化字符串格式，详见[CVM创建实例](https://cloud.tencent.com/document/product/213/15730)接口，传入公共参数外的其他参数即可，其中ImageId会替换为TKE集群OS对应的镜像。
         :type RunInstancesPara: list of str
+        :param InstanceAdvancedSettingsOverrides: 节点高级设置，该参数会覆盖集群级别设置的InstanceAdvancedSettings，和上边的RunInstancesPara按照顺序一一对应（当前只对节点自定义参数ExtraArgs生效）。
+        :type InstanceAdvancedSettingsOverrides: list of InstanceAdvancedSettings
         """
         self.NodeRole = None
         self.RunInstancesPara = None
+        self.InstanceAdvancedSettingsOverrides = None
 
 
     def _deserialize(self, params):
         self.NodeRole = params.get("NodeRole")
         self.RunInstancesPara = params.get("RunInstancesPara")
+        if params.get("InstanceAdvancedSettingsOverrides") is not None:
+            self.InstanceAdvancedSettingsOverrides = []
+            for item in params.get("InstanceAdvancedSettingsOverrides"):
+                obj = InstanceAdvancedSettings()
+                obj._deserialize(item)
+                self.InstanceAdvancedSettingsOverrides.append(obj)
 
 
 class RunMonitorServiceEnabled(AbstractModel):

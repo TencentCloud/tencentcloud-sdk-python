@@ -81,6 +81,57 @@ class AddFairPlayPemResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class CreateEncryptKeysRequest(AbstractModel):
+    """CreateEncryptKeys请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param DrmType: 使用的DRM方案类型，接口取值WIDEVINE、FAIRPLAY、NORMALAES。
+        :type DrmType: str
+        :param Keys: 设置的加密密钥列表。
+        :type Keys: list of KeyParam
+        :param ContentId: 一个加密内容的唯一标识。
+        :type ContentId: str
+        :param ContentType: 内容类型。接口取值VodVideo,LiveVideo。
+        :type ContentType: str
+        """
+        self.DrmType = None
+        self.Keys = None
+        self.ContentId = None
+        self.ContentType = None
+
+
+    def _deserialize(self, params):
+        self.DrmType = params.get("DrmType")
+        if params.get("Keys") is not None:
+            self.Keys = []
+            for item in params.get("Keys"):
+                obj = KeyParam()
+                obj._deserialize(item)
+                self.Keys.append(obj)
+        self.ContentId = params.get("ContentId")
+        self.ContentType = params.get("ContentType")
+
+
+class CreateEncryptKeysResponse(AbstractModel):
+    """CreateEncryptKeys返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class CreateLicenseRequest(AbstractModel):
     """CreateLicense请求参数结构体
 
@@ -178,6 +229,75 @@ class DeleteFairPlayPemResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeAllKeysRequest(AbstractModel):
+    """DescribeAllKeys请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param DrmType: 使用的DRM方案类型，接口取值WIDEVINE、FAIRPLAY、NORMALAES。
+        :type DrmType: str
+        :param RsaPublicKey: Base64编码的Rsa公钥，用来加密出参中的SessionKey。
+如果该参数为空，则出参中SessionKey为明文。
+        :type RsaPublicKey: str
+        :param ContentId: 一个加密内容的唯一标识。
+        :type ContentId: str
+        :param ContentType: 内容类型。接口取值VodVideo,LiveVideo。
+        :type ContentType: str
+        """
+        self.DrmType = None
+        self.RsaPublicKey = None
+        self.ContentId = None
+        self.ContentType = None
+
+
+    def _deserialize(self, params):
+        self.DrmType = params.get("DrmType")
+        self.RsaPublicKey = params.get("RsaPublicKey")
+        self.ContentId = params.get("ContentId")
+        self.ContentType = params.get("ContentType")
+
+
+class DescribeAllKeysResponse(AbstractModel):
+    """DescribeAllKeys返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Keys: 加密密钥列表。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Keys: list of Key
+        :param SessionKey: 用来加密密钥。
+如果入参中带有RsaPublicKey，则SessionKey为使用Rsa公钥加密后的二进制数据，Base64编码字符串。
+如果入参中没有RsaPublicKey，则SessionKey为原始数据的字符串形式。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SessionKey: str
+        :param ContentId: 内容ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ContentId: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Keys = None
+        self.SessionKey = None
+        self.ContentId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Keys") is not None:
+            self.Keys = []
+            for item in params.get("Keys"):
+                obj = Key()
+                obj._deserialize(item)
+                self.Keys.append(obj)
+        self.SessionKey = params.get("SessionKey")
+        self.ContentId = params.get("ContentId")
         self.RequestId = params.get("RequestId")
 
 
@@ -420,7 +540,7 @@ class Key(AbstractModel):
 
     def __init__(self):
         """
-        :param Track: 加密track类型。
+        :param Track: 加密track类型。Widevine支持SD、HD、UHD1、UHD2、AUDIO。Fairplay只支持HD。
         :type Track: str
         :param KeyId: 密钥ID。
         :type KeyId: str
@@ -428,17 +548,52 @@ class Key(AbstractModel):
         :type Key: str
         :param Iv: 原始IV使用AES-128 ECB模式和SessionKey加密的后的二进制数据，Base64编码的字符串。
         :type Iv: str
+        :param InsertTimestamp: 该key生成时的时间戳
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InsertTimestamp: int
         """
         self.Track = None
         self.KeyId = None
         self.Key = None
         self.Iv = None
+        self.InsertTimestamp = None
 
 
     def _deserialize(self, params):
         self.Track = params.get("Track")
         self.KeyId = params.get("KeyId")
         self.Key = params.get("Key")
+        self.Iv = params.get("Iv")
+        self.InsertTimestamp = params.get("InsertTimestamp")
+
+
+class KeyParam(AbstractModel):
+    """设置加密秘钥所需的参数
+
+    """
+
+    def __init__(self):
+        """
+        :param Track: 加密track类型。取值范围：
+SD、HD、UHD1、UHD2、AUDIO
+        :type Track: str
+        :param Key: 请使用腾讯云DRM 提供的公钥，使用rsa加密算法，PKCS1填充方式对解密密钥进行加密，并对加密结果进行base64编码。
+        :type Key: str
+        :param KeyId: 密钥ID。
+        :type KeyId: str
+        :param Iv: 请使用腾讯云DRM 提供的公钥，使用rsa加密算法，PKCS1填充方式对解密密钥进行加密，并对加密结果进行base64编码。
+        :type Iv: str
+        """
+        self.Track = None
+        self.Key = None
+        self.KeyId = None
+        self.Iv = None
+
+
+    def _deserialize(self, params):
+        self.Track = params.get("Track")
+        self.Key = params.get("Key")
+        self.KeyId = params.get("KeyId")
         self.Iv = params.get("Iv")
 
 

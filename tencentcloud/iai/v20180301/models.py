@@ -1310,6 +1310,115 @@ class FaceShape(AbstractModel):
                 self.RightPupil.append(obj)
 
 
+class GetCheckSimilarPersonJobIdListRequest(AbstractModel):
+    """GetCheckSimilarPersonJobIdList请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Offset: 起始序号，默认值为0。
+        :type Offset: int
+        :param Limit: 返回数量，默认值为10，最大值为1000。
+        :type Limit: int
+        """
+        self.Offset = None
+        self.Limit = None
+
+
+    def _deserialize(self, params):
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+
+
+class GetCheckSimilarPersonJobIdListResponse(AbstractModel):
+    """GetCheckSimilarPersonJobIdList返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param JobIdInfos: 人员查重任务信息列表。
+        :type JobIdInfos: list of JobIdInfo
+        :param JobIdNum: 查重任务总数量。
+        :type JobIdNum: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.JobIdInfos = None
+        self.JobIdNum = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("JobIdInfos") is not None:
+            self.JobIdInfos = []
+            for item in params.get("JobIdInfos"):
+                obj = JobIdInfo()
+                obj._deserialize(item)
+                self.JobIdInfos.append(obj)
+        self.JobIdNum = params.get("JobIdNum")
+        self.RequestId = params.get("RequestId")
+
+
+class GetGroupInfoRequest(AbstractModel):
+    """GetGroupInfo请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param GroupId: 人员库 ID。
+        :type GroupId: str
+        """
+        self.GroupId = None
+
+
+    def _deserialize(self, params):
+        self.GroupId = params.get("GroupId")
+
+
+class GetGroupInfoResponse(AbstractModel):
+    """GetGroupInfo返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param GroupName: 人员库名称
+        :type GroupName: str
+        :param GroupId: 人员库ID
+        :type GroupId: str
+        :param GroupExDescriptions: 人员库自定义描述字段
+        :type GroupExDescriptions: list of str
+        :param Tag: 人员库信息备注
+        :type Tag: str
+        :param FaceModelVersion: 人脸识别所用的算法模型版本。
+        :type FaceModelVersion: str
+        :param CreationTimestamp: Group的创建时间和日期 CreationTimestamp。CreationTimestamp 的值是自 Unix 纪元时间到Group创建时间的毫秒数。
+        :type CreationTimestamp: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.GroupName = None
+        self.GroupId = None
+        self.GroupExDescriptions = None
+        self.Tag = None
+        self.FaceModelVersion = None
+        self.CreationTimestamp = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.GroupName = params.get("GroupName")
+        self.GroupId = params.get("GroupId")
+        self.GroupExDescriptions = params.get("GroupExDescriptions")
+        self.Tag = params.get("Tag")
+        self.FaceModelVersion = params.get("FaceModelVersion")
+        self.CreationTimestamp = params.get("CreationTimestamp")
+        self.RequestId = params.get("RequestId")
+
+
 class GetGroupListRequest(AbstractModel):
     """GetGroupList请求参数结构体
 
@@ -1709,6 +1818,34 @@ Unix 纪元时间是 1970 年 1 月 1 日星期四，协调世界时 (UTC) 00:00
         self.CreationTimestamp = params.get("CreationTimestamp")
 
 
+class JobIdInfo(AbstractModel):
+    """查重任务信息
+
+    """
+
+    def __init__(self):
+        """
+        :param JobId: 查重任务ID，用于查询、获取查重的进度和结果。
+        :type JobId: str
+        :param StartTime: 查重起始时间。 
+StartTime的值是自 Unix 纪元时间到Group创建时间的毫秒数。 
+Unix 纪元时间是 1970 年 1 月 1 日星期四，协调世界时 (UTC) 00:00:00。 
+有关更多信息，请参阅 Unix 时间。
+        :type StartTime: int
+        :param JobStatus: 查重任务是否已完成。0: 成功 1: 未完成 2: 失败
+        :type JobStatus: int
+        """
+        self.JobId = None
+        self.StartTime = None
+        self.JobStatus = None
+
+
+    def _deserialize(self, params):
+        self.JobId = params.get("JobId")
+        self.StartTime = params.get("StartTime")
+        self.JobStatus = params.get("JobStatus")
+
+
 class ModifyGroupRequest(AbstractModel):
     """ModifyGroup请求参数结构体
 
@@ -1908,7 +2045,7 @@ class PersonInfo(AbstractModel):
         :type PersonExDescriptions: list of str
         :param FaceIds: 包含的人脸照片列表
         :type FaceIds: list of str
-        :param CreationTimestamp: Group的创建时间和日期 CreationTimestamp。CreationTimestamp 的值是自 Unix 纪元时间到Group创建时间的毫秒数。 
+        :param CreationTimestamp: 人员的创建时间和日期 CreationTimestamp。CreationTimestamp 的值是自 Unix 纪元时间到Group创建时间的毫秒数。 
 Unix 纪元时间是 1970 年 1 月 1 日星期四，协调世界时 (UTC) 00:00:00。有关更多信息，请参阅 Unix 时间。
         :type CreationTimestamp: int
         """
@@ -2122,7 +2259,7 @@ class SearchFacesReturnsByGroupRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param GroupIds: 希望搜索的人员库列表，上限10个。
+        :param GroupIds: 希望搜索的人员库列表，上限60个。
         :type GroupIds: list of str
         :param Image: 图片 base64 数据，base64 编码后大小不可超过5M。
 支持PNG、JPG、JPEG、BMP，不支持 GIF 图片。
@@ -2323,7 +2460,7 @@ class SearchPersonsReturnsByGroupRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param GroupIds: 希望搜索的人员库列表，上限10个。
+        :param GroupIds: 希望搜索的人员库列表，上限60个。
         :type GroupIds: list of str
         :param Image: 图片 base64 数据，base64 编码后大小不可超过5M。
 支持PNG、JPG、JPEG、BMP，不支持 GIF 图片。

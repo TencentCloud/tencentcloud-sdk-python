@@ -424,6 +424,33 @@ class BlockedIP(AbstractModel):
         self.ExpireTime = params.get("ExpireTime")
 
 
+class CertIdRelatedWithLoadBalancers(AbstractModel):
+    """证书ID，以及与该证书ID关联的负载均衡实例列表
+
+    """
+
+    def __init__(self):
+        """
+        :param CertId: 证书ID
+        :type CertId: str
+        :param LoadBalancers: 与证书关联的负载均衡实例列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LoadBalancers: list of LoadBalancer
+        """
+        self.CertId = None
+        self.LoadBalancers = None
+
+
+    def _deserialize(self, params):
+        self.CertId = params.get("CertId")
+        if params.get("LoadBalancers") is not None:
+            self.LoadBalancers = []
+            for item in params.get("LoadBalancers"):
+                obj = LoadBalancer()
+                obj._deserialize(item)
+                self.LoadBalancers.append(obj)
+
+
 class CertificateInput(AbstractModel):
     """证书信息
 
@@ -746,7 +773,7 @@ class CreateListenerRequest(AbstractModel):
         :type ListenerNames: list of str
         :param HealthCheck: 健康检查相关参数，此参数仅适用于TCP/UDP/TCP_SSL监听器
         :type HealthCheck: :class:`tencentcloud.clb.v20180317.models.HealthCheck`
-        :param Certificate: 证书相关信息，此参数仅适用于HTTPS/TCP_SSL监听器
+        :param Certificate: 证书相关信息，此参数仅适用于TCP_SSL监听器和未开启SNI特性的HTTPS监听器。
         :type Certificate: :class:`tencentcloud.clb.v20180317.models.CertificateInput`
         :param SessionExpireTime: 会话保持时间，单位：秒。可选值：30~3600，默认 0，表示不开启。此参数仅适用于TCP/UDP监听器。
         :type SessionExpireTime: int
@@ -834,8 +861,10 @@ OPEN：公网属性， INTERNAL：内网属性。
         :type MasterZoneId: str
         :param ZoneId: 仅适用于公网负载均衡。可用区ID，指定可用区以创建负载均衡实例。如：ap-guangzhou-1
         :type ZoneId: str
-        :param InternetAccessible: 仅适用于公网负载均衡。负载均衡的网络计费方式，此参数仅对带宽上移用户生效。
+        :param InternetAccessible: 仅适用于公网负载均衡。负载均衡的网络计费模式。
         :type InternetAccessible: :class:`tencentcloud.clb.v20180317.models.InternetAccessible`
+        :param VipIsp: 仅适用于公网负载均衡。CMCC | CTCC | CUCC，分别对应 移动 | 电信 | 联通，如果不指定本参数，则默认使用BGP。可通过 DescribeSingleIsp 接口查询一个地域所支持的Isp。如果指定运营商，则网络计费式只能使用按带宽包计费(BANDWIDTH_PACKAGE)。
+        :type VipIsp: str
         :param Tags: 购买负载均衡同时，给负载均衡打上标签
         :type Tags: list of TagInfo
         """
@@ -850,6 +879,7 @@ OPEN：公网属性， INTERNAL：内网属性。
         self.MasterZoneId = None
         self.ZoneId = None
         self.InternetAccessible = None
+        self.VipIsp = None
         self.Tags = None
 
 
@@ -867,6 +897,7 @@ OPEN：公网属性， INTERNAL：内网属性。
         if params.get("InternetAccessible") is not None:
             self.InternetAccessible = InternetAccessible()
             self.InternetAccessible._deserialize(params.get("InternetAccessible"))
+        self.VipIsp = params.get("VipIsp")
         if params.get("Tags") is not None:
             self.Tags = []
             for item in params.get("Tags"):
@@ -1679,10 +1710,14 @@ class DescribeListenersResponse(AbstractModel):
         """
         :param Listeners: 监听器列表
         :type Listeners: list of Listener
+        :param TotalCount: 总的监听器个数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TotalCount: int
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.Listeners = None
+        self.TotalCount = None
         self.RequestId = None
 
 
@@ -1693,6 +1728,50 @@ class DescribeListenersResponse(AbstractModel):
                 obj = Listener()
                 obj._deserialize(item)
                 self.Listeners.append(obj)
+        self.TotalCount = params.get("TotalCount")
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeLoadBalancerListByCertIdRequest(AbstractModel):
+    """DescribeLoadBalancerListByCertId请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param CertIds: 服务端证书的ID，或客户端证书的ID
+        :type CertIds: list of str
+        """
+        self.CertIds = None
+
+
+    def _deserialize(self, params):
+        self.CertIds = params.get("CertIds")
+
+
+class DescribeLoadBalancerListByCertIdResponse(AbstractModel):
+    """DescribeLoadBalancerListByCertId返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param CertSet: 证书ID，以及与该证书ID关联的负载均衡实例列表
+        :type CertSet: list of CertIdRelatedWithLoadBalancers
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.CertSet = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("CertSet") is not None:
+            self.CertSet = []
+            for item in params.get("CertSet"):
+                obj = CertIdRelatedWithLoadBalancers()
+                obj._deserialize(item)
+                self.CertSet.append(obj)
         self.RequestId = params.get("RequestId")
 
 
@@ -2407,7 +2486,7 @@ class HealthCheck(AbstractModel):
 
 
 class InternetAccessible(AbstractModel):
-    """网络计费方式，最大出带宽
+    """网络计费模式，最大出带宽
 
     """
 
@@ -3211,11 +3290,14 @@ class ModifyLoadBalancerAttributesRequest(AbstractModel):
         :type TargetRegionInfo: :class:`tencentcloud.clb.v20180317.models.TargetRegionInfo`
         :param InternetChargeInfo: 网络计费相关参数
         :type InternetChargeInfo: :class:`tencentcloud.clb.v20180317.models.InternetAccessible`
+        :param LoadBalancerPassToTarget: Target是否放通来自CLB的流量。开启放通（true）：只验证CLB上的安全组；不开启放通（false）：需同时验证CLB和后端实例上的安全组。
+        :type LoadBalancerPassToTarget: bool
         """
         self.LoadBalancerId = None
         self.LoadBalancerName = None
         self.TargetRegionInfo = None
         self.InternetChargeInfo = None
+        self.LoadBalancerPassToTarget = None
 
 
     def _deserialize(self, params):
@@ -3227,6 +3309,7 @@ class ModifyLoadBalancerAttributesRequest(AbstractModel):
         if params.get("InternetChargeInfo") is not None:
             self.InternetChargeInfo = InternetAccessible()
             self.InternetChargeInfo._deserialize(params.get("InternetChargeInfo"))
+        self.LoadBalancerPassToTarget = params.get("LoadBalancerPassToTarget")
 
 
 class ModifyLoadBalancerAttributesResponse(AbstractModel):

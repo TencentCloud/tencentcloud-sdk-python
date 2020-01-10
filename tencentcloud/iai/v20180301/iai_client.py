@@ -469,6 +469,64 @@ class IaiClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def GetCheckSimilarPersonJobIdList(self, request):
+        """获取人员查重任务列表，按任务创建时间逆序（最新的在前面）。
+
+        只保留最近1年的数据。
+
+        :param request: Request instance for GetCheckSimilarPersonJobIdList.
+        :type request: :class:`tencentcloud.iai.v20180301.models.GetCheckSimilarPersonJobIdListRequest`
+        :rtype: :class:`tencentcloud.iai.v20180301.models.GetCheckSimilarPersonJobIdListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("GetCheckSimilarPersonJobIdList", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.GetCheckSimilarPersonJobIdListResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def GetGroupInfo(self, request):
+        """获取人员库信息。
+
+        :param request: Request instance for GetGroupInfo.
+        :type request: :class:`tencentcloud.iai.v20180301.models.GetGroupInfoRequest`
+        :rtype: :class:`tencentcloud.iai.v20180301.models.GetGroupInfoResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("GetGroupInfo", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.GetGroupInfoResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def GetGroupList(self, request):
         """获取人员库列表。
 

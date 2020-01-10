@@ -193,6 +193,34 @@ class MonitorClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribePolicyConditionList(self, request):
+        """获取基础告警策略条件
+
+        :param request: Request instance for DescribePolicyConditionList.
+        :type request: :class:`tencentcloud.monitor.v20180724.models.DescribePolicyConditionListRequest`
+        :rtype: :class:`tencentcloud.monitor.v20180724.models.DescribePolicyConditionListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribePolicyConditionList", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribePolicyConditionListResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribePolicyGroupInfo(self, request):
         """获取基础策略组详情
 
@@ -207,6 +235,34 @@ class MonitorClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribePolicyGroupInfoResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribePolicyGroupList(self, request):
+        """获取基础策略告警组列表
+
+        :param request: Request instance for DescribePolicyGroupList.
+        :type request: :class:`tencentcloud.monitor.v20180724.models.DescribePolicyGroupListRequest`
+        :rtype: :class:`tencentcloud.monitor.v20180724.models.DescribePolicyGroupListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribePolicyGroupList", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribePolicyGroupListResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

@@ -1286,6 +1286,34 @@ class LiveClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeLivePackageInfo(self, request):
+        """查询用户套餐包总量、使用量、剩余量、包状态、购买时间和过期时间等。
+
+        :param request: Request instance for DescribeLivePackageInfo.
+        :type request: :class:`tencentcloud.live.v20180801.models.DescribeLivePackageInfoRequest`
+        :rtype: :class:`tencentcloud.live.v20180801.models.DescribeLivePackageInfoResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeLivePackageInfo", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeLivePackageInfoResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeLivePlayAuthKey(self, request):
         """查询播放鉴权key。
 

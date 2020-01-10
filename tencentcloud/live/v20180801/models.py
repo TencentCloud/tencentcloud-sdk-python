@@ -2552,6 +2552,52 @@ class DescribeLiveForbidStreamListResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeLivePackageInfoRequest(AbstractModel):
+    """DescribeLivePackageInfo请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param PackageType: 包类型，可选值：
+0：流量包；
+1：转码包。
+        :type PackageType: int
+        """
+        self.PackageType = None
+
+
+    def _deserialize(self, params):
+        self.PackageType = params.get("PackageType")
+
+
+class DescribeLivePackageInfoResponse(AbstractModel):
+    """DescribeLivePackageInfo返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param LivePackageInfoList: 套餐包信息。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LivePackageInfoList: list of LivePackageInfo
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.LivePackageInfoList = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("LivePackageInfoList") is not None:
+            self.LivePackageInfoList = []
+            for item in params.get("LivePackageInfoList"):
+                obj = LivePackageInfo()
+                obj._deserialize(item)
+                self.LivePackageInfoList.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeLivePlayAuthKeyRequest(AbstractModel):
     """DescribeLivePlayAuthKey请求参数结构体
 
@@ -4931,6 +4977,63 @@ class HttpStatusInfo(AbstractModel):
     def _deserialize(self, params):
         self.HttpStatus = params.get("HttpStatus")
         self.Num = params.get("Num")
+
+
+class LivePackageInfo(AbstractModel):
+    """直播包信息
+
+    """
+
+    def __init__(self):
+        """
+        :param Id: 包ID。
+        :type Id: str
+        :param Total: 总量。
+注意：当为流量包时单位为字节；
+当为转码包时单位为分钟。
+        :type Total: int
+        :param Used: 使用量。
+注意：当为流量包时单位为字节；
+当为转码包时单位为分钟。
+        :type Used: int
+        :param Left: 剩余量。
+注意：当为流量包时单位为字节；
+当为转码包时单位为分钟。
+        :type Left: int
+        :param BuyTime: 购买时间。
+        :type BuyTime: str
+        :param ExpireTime: 过期时间。
+        :type ExpireTime: str
+        :param Type: 包类型，可选值：
+0：流量包；
+1：普通转码包；
+2：极速高清包。
+        :type Type: int
+        :param Status: 包状态，可选值：
+0：未使用；
+1：使用中；
+2：已过期。
+        :type Status: int
+        """
+        self.Id = None
+        self.Total = None
+        self.Used = None
+        self.Left = None
+        self.BuyTime = None
+        self.ExpireTime = None
+        self.Type = None
+        self.Status = None
+
+
+    def _deserialize(self, params):
+        self.Id = params.get("Id")
+        self.Total = params.get("Total")
+        self.Used = params.get("Used")
+        self.Left = params.get("Left")
+        self.BuyTime = params.get("BuyTime")
+        self.ExpireTime = params.get("ExpireTime")
+        self.Type = params.get("Type")
+        self.Status = params.get("Status")
 
 
 class LogInfo(AbstractModel):

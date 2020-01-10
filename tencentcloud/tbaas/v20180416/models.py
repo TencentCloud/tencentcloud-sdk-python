@@ -72,13 +72,21 @@ class ApplyUserCertResponse(AbstractModel):
 
     def __init__(self):
         """
+        :param CertId: 证书ID
+        :type CertId: int
+        :param CertDn: 证书DN
+        :type CertDn: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
+        self.CertId = None
+        self.CertDn = None
         self.RequestId = None
 
 
     def _deserialize(self, params):
+        self.CertId = params.get("CertId")
+        self.CertDn = params.get("CertDn")
         self.RequestId = params.get("RequestId")
 
 
@@ -128,7 +136,7 @@ class BcosBlockObj(AbstractModel):
 
 
 class BcosTransInfo(AbstractModel):
-    """bcos交易信息对象
+    """Bcos交易信息对象
 
     """
 
@@ -481,6 +489,81 @@ class GetBlockListResponse(AbstractModel):
                 obj = Block()
                 obj._deserialize(item)
                 self.BlockList.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class GetBlockTransactionListForUserRequest(AbstractModel):
+    """GetBlockTransactionListForUser请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Module: 模块名，固定字段：transaction
+        :type Module: str
+        :param Operation: 操作名，固定字段：block_transaction_list_for_user
+        :type Operation: str
+        :param ClusterId: 区块链网络ID，可在区块链网络详情或列表中获取
+        :type ClusterId: str
+        :param GroupName: 参与交易的组织名称，可以在组织管理列表中获取当前组织的名称
+        :type GroupName: str
+        :param ChannelName: 业务所属通道名称，可在通道详情或列表中获取
+        :type ChannelName: str
+        :param BlockId: 区块ID，通过GetInvokeTx接口可以获取交易所在的区块ID
+        :type BlockId: int
+        :param Offset: 查询的交易列表起始偏移地址
+        :type Offset: int
+        :param Limit: 查询的交易列表数量
+        :type Limit: int
+        """
+        self.Module = None
+        self.Operation = None
+        self.ClusterId = None
+        self.GroupName = None
+        self.ChannelName = None
+        self.BlockId = None
+        self.Offset = None
+        self.Limit = None
+
+
+    def _deserialize(self, params):
+        self.Module = params.get("Module")
+        self.Operation = params.get("Operation")
+        self.ClusterId = params.get("ClusterId")
+        self.GroupName = params.get("GroupName")
+        self.ChannelName = params.get("ChannelName")
+        self.BlockId = params.get("BlockId")
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+
+
+class GetBlockTransactionListForUserResponse(AbstractModel):
+    """GetBlockTransactionListForUser返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param TotalCount: 交易总数量
+        :type TotalCount: int
+        :param TransactionList: 交易列表
+        :type TransactionList: list of TransactionItem
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.TransactionList = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("TransactionList") is not None:
+            self.TransactionList = []
+            for item in params.get("TransactionList"):
+                obj = TransactionItem()
+                obj._deserialize(item)
+                self.TransactionList.append(obj)
         self.RequestId = params.get("RequestId")
 
 

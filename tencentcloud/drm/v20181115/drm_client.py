@@ -54,6 +54,34 @@ class DrmClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def CreateEncryptKeys(self, request):
+        """该接口用来设置加密的秘钥。注意，同一个content id，只能设置一次！
+
+        :param request: Request instance for CreateEncryptKeys.
+        :type request: :class:`tencentcloud.drm.v20181115.models.CreateEncryptKeysRequest`
+        :rtype: :class:`tencentcloud.drm.v20181115.models.CreateEncryptKeysResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("CreateEncryptKeys", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateEncryptKeysResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def CreateLicense(self, request):
         """本接口用来生成DRM方案对应的播放许可证，开发者需提供DRM方案类型、内容类型参数，后台将生成许可证后返回许可证数据
         开发者需要转发终端设备发出的许可证请求信息。
@@ -99,6 +127,34 @@ class DrmClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteFairPlayPemResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeAllKeys(self, request):
+        """本接口用来查询指定DRM类型、ContentType的所有加密秘钥
+
+        :param request: Request instance for DescribeAllKeys.
+        :type request: :class:`tencentcloud.drm.v20181115.models.DescribeAllKeysRequest`
+        :rtype: :class:`tencentcloud.drm.v20181115.models.DescribeAllKeysResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeAllKeys", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeAllKeysResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

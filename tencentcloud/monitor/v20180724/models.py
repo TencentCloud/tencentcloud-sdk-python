@@ -604,6 +604,410 @@ class DescribeBindingPolicyObjectListResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribePolicyConditionListCondition(AbstractModel):
+    """DescribePolicyConditionList策略条件
+
+    """
+
+    def __init__(self):
+        """
+        :param PolicyViewName: 策略视图名称
+        :type PolicyViewName: str
+        :param EventMetrics: 事件告警条件
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EventMetrics: list of DescribePolicyConditionListEventMetric
+        :param IsSupportMultiRegion: 是否支持多地域
+        :type IsSupportMultiRegion: bool
+        :param Metrics: 指标告警条件
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Metrics: list of DescribePolicyConditionListMetric
+        :param Name: 策略类型名称
+        :type Name: str
+        :param SortId: 排序id
+        :type SortId: int
+        :param SupportDefault: 是否支持默认策略
+        :type SupportDefault: bool
+        :param SupportRegions: 支持该策略类型的地域列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SupportRegions: list of str
+        """
+        self.PolicyViewName = None
+        self.EventMetrics = None
+        self.IsSupportMultiRegion = None
+        self.Metrics = None
+        self.Name = None
+        self.SortId = None
+        self.SupportDefault = None
+        self.SupportRegions = None
+
+
+    def _deserialize(self, params):
+        self.PolicyViewName = params.get("PolicyViewName")
+        if params.get("EventMetrics") is not None:
+            self.EventMetrics = []
+            for item in params.get("EventMetrics"):
+                obj = DescribePolicyConditionListEventMetric()
+                obj._deserialize(item)
+                self.EventMetrics.append(obj)
+        self.IsSupportMultiRegion = params.get("IsSupportMultiRegion")
+        if params.get("Metrics") is not None:
+            self.Metrics = []
+            for item in params.get("Metrics"):
+                obj = DescribePolicyConditionListMetric()
+                obj._deserialize(item)
+                self.Metrics.append(obj)
+        self.Name = params.get("Name")
+        self.SortId = params.get("SortId")
+        self.SupportDefault = params.get("SupportDefault")
+        self.SupportRegions = params.get("SupportRegions")
+
+
+class DescribePolicyConditionListConfigManual(AbstractModel):
+    """DescribePolicyConditionList.ConfigManual
+
+    """
+
+    def __init__(self):
+        """
+        :param CalcType: 检测方式
+        :type CalcType: :class:`tencentcloud.monitor.v20180724.models.DescribePolicyConditionListConfigManualCalcType`
+        :param CalcValue: 检测阈值
+        :type CalcValue: :class:`tencentcloud.monitor.v20180724.models.DescribePolicyConditionListConfigManualCalcValue`
+        :param ContinueTime: 持续时间
+        :type ContinueTime: :class:`tencentcloud.monitor.v20180724.models.DescribePolicyConditionListConfigManualContinueTime`
+        :param Period: 数据周期
+        :type Period: :class:`tencentcloud.monitor.v20180724.models.DescribePolicyConditionListConfigManualPeriod`
+        :param PeriodNum: 持续周期个数
+        :type PeriodNum: :class:`tencentcloud.monitor.v20180724.models.DescribePolicyConditionListConfigManualPeriodNum`
+        :param StatType: 聚合方式
+注意：此字段可能返回 null，表示取不到有效值。
+        :type StatType: :class:`tencentcloud.monitor.v20180724.models.DescribePolicyConditionListConfigManualStatType`
+        """
+        self.CalcType = None
+        self.CalcValue = None
+        self.ContinueTime = None
+        self.Period = None
+        self.PeriodNum = None
+        self.StatType = None
+
+
+    def _deserialize(self, params):
+        if params.get("CalcType") is not None:
+            self.CalcType = DescribePolicyConditionListConfigManualCalcType()
+            self.CalcType._deserialize(params.get("CalcType"))
+        if params.get("CalcValue") is not None:
+            self.CalcValue = DescribePolicyConditionListConfigManualCalcValue()
+            self.CalcValue._deserialize(params.get("CalcValue"))
+        if params.get("ContinueTime") is not None:
+            self.ContinueTime = DescribePolicyConditionListConfigManualContinueTime()
+            self.ContinueTime._deserialize(params.get("ContinueTime"))
+        if params.get("Period") is not None:
+            self.Period = DescribePolicyConditionListConfigManualPeriod()
+            self.Period._deserialize(params.get("Period"))
+        if params.get("PeriodNum") is not None:
+            self.PeriodNum = DescribePolicyConditionListConfigManualPeriodNum()
+            self.PeriodNum._deserialize(params.get("PeriodNum"))
+        if params.get("StatType") is not None:
+            self.StatType = DescribePolicyConditionListConfigManualStatType()
+            self.StatType._deserialize(params.get("StatType"))
+
+
+class DescribePolicyConditionListConfigManualCalcType(AbstractModel):
+    """DescribePolicyConditionList.ConfigManual.CalcType
+
+    """
+
+    def __init__(self):
+        """
+        :param Keys: CalcType 取值
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Keys: list of int
+        :param Need: 是否必须
+        :type Need: bool
+        """
+        self.Keys = None
+        self.Need = None
+
+
+    def _deserialize(self, params):
+        self.Keys = params.get("Keys")
+        self.Need = params.get("Need")
+
+
+class DescribePolicyConditionListConfigManualCalcValue(AbstractModel):
+    """DescribePolicyConditionList.ConfigManual.CalcValue
+
+    """
+
+    def __init__(self):
+        """
+        :param Default: 默认值
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Default: str
+        :param Fixed: 固定值
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Fixed: str
+        :param Max: 最大值
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Max: str
+        :param Min: 最小值
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Min: str
+        :param Need: 是否必须
+        :type Need: bool
+        """
+        self.Default = None
+        self.Fixed = None
+        self.Max = None
+        self.Min = None
+        self.Need = None
+
+
+    def _deserialize(self, params):
+        self.Default = params.get("Default")
+        self.Fixed = params.get("Fixed")
+        self.Max = params.get("Max")
+        self.Min = params.get("Min")
+        self.Need = params.get("Need")
+
+
+class DescribePolicyConditionListConfigManualContinueTime(AbstractModel):
+    """DescribePolicyConditionList.ConfigManual.ContinueTime
+
+    """
+
+    def __init__(self):
+        """
+        :param Default: 默认持续时间，单位：秒
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Default: int
+        :param Keys: 可选持续时间，单位：秒
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Keys: list of int
+        :param Need: 是否必须
+        :type Need: bool
+        """
+        self.Default = None
+        self.Keys = None
+        self.Need = None
+
+
+    def _deserialize(self, params):
+        self.Default = params.get("Default")
+        self.Keys = params.get("Keys")
+        self.Need = params.get("Need")
+
+
+class DescribePolicyConditionListConfigManualPeriod(AbstractModel):
+    """DescribePolicyConditionList.ConfigManual.Period
+
+    """
+
+    def __init__(self):
+        """
+        :param Default: 默认周期，单位：秒
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Default: int
+        :param Keys: 可选周期，单位：秒
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Keys: list of int
+        :param Need: 是否必须
+        :type Need: bool
+        """
+        self.Default = None
+        self.Keys = None
+        self.Need = None
+
+
+    def _deserialize(self, params):
+        self.Default = params.get("Default")
+        self.Keys = params.get("Keys")
+        self.Need = params.get("Need")
+
+
+class DescribePolicyConditionListConfigManualPeriodNum(AbstractModel):
+    """DescribePolicyConditionList.ConfigManual.PeriodNum
+
+    """
+
+    def __init__(self):
+        """
+        :param Default: 默认周期数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Default: int
+        :param Keys: 可选周期数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Keys: list of int
+        :param Need: 是否必须
+        :type Need: bool
+        """
+        self.Default = None
+        self.Keys = None
+        self.Need = None
+
+
+    def _deserialize(self, params):
+        self.Default = params.get("Default")
+        self.Keys = params.get("Keys")
+        self.Need = params.get("Need")
+
+
+class DescribePolicyConditionListConfigManualStatType(AbstractModel):
+    """DescribePolicyConditionList.ConfigManual.StatType
+
+    """
+
+    def __init__(self):
+        """
+        :param P5: 数据聚合方式，周期5秒
+注意：此字段可能返回 null，表示取不到有效值。
+        :type P5: str
+        :param P10: 数据聚合方式，周期10秒
+注意：此字段可能返回 null，表示取不到有效值。
+        :type P10: str
+        :param P60: 数据聚合方式，周期1分钟
+注意：此字段可能返回 null，表示取不到有效值。
+        :type P60: str
+        :param P300: 数据聚合方式，周期5分钟
+注意：此字段可能返回 null，表示取不到有效值。
+        :type P300: str
+        :param P600: 数据聚合方式，周期10分钟
+注意：此字段可能返回 null，表示取不到有效值。
+        :type P600: str
+        :param P1800: 数据聚合方式，周期30分钟
+注意：此字段可能返回 null，表示取不到有效值。
+        :type P1800: str
+        :param P3600: 数据聚合方式，周期1小时
+注意：此字段可能返回 null，表示取不到有效值。
+        :type P3600: str
+        :param P86400: 数据聚合方式，周期1天
+注意：此字段可能返回 null，表示取不到有效值。
+        :type P86400: str
+        """
+        self.P5 = None
+        self.P10 = None
+        self.P60 = None
+        self.P300 = None
+        self.P600 = None
+        self.P1800 = None
+        self.P3600 = None
+        self.P86400 = None
+
+
+    def _deserialize(self, params):
+        self.P5 = params.get("P5")
+        self.P10 = params.get("P10")
+        self.P60 = params.get("P60")
+        self.P300 = params.get("P300")
+        self.P600 = params.get("P600")
+        self.P1800 = params.get("P1800")
+        self.P3600 = params.get("P3600")
+        self.P86400 = params.get("P86400")
+
+
+class DescribePolicyConditionListEventMetric(AbstractModel):
+    """DescribePolicyConditionList.EventMetric
+
+    """
+
+    def __init__(self):
+        """
+        :param EventId: 事件id
+        :type EventId: int
+        :param EventShowName: 事件名称
+        :type EventShowName: str
+        :param NeedRecovered: 是否需要恢复
+        :type NeedRecovered: bool
+        :param Type: 事件类型，预留字段，当前固定取值为2
+        :type Type: int
+        """
+        self.EventId = None
+        self.EventShowName = None
+        self.NeedRecovered = None
+        self.Type = None
+
+
+    def _deserialize(self, params):
+        self.EventId = params.get("EventId")
+        self.EventShowName = params.get("EventShowName")
+        self.NeedRecovered = params.get("NeedRecovered")
+        self.Type = params.get("Type")
+
+
+class DescribePolicyConditionListMetric(AbstractModel):
+    """指标告警配置
+
+    """
+
+    def __init__(self):
+        """
+        :param ConfigManual: 指标配置
+        :type ConfigManual: :class:`tencentcloud.monitor.v20180724.models.DescribePolicyConditionListConfigManual`
+        :param MetricId: 指标id
+        :type MetricId: int
+        :param MetricShowName: 指标名称
+        :type MetricShowName: str
+        :param MetricUnit: 指标单位
+        :type MetricUnit: str
+        """
+        self.ConfigManual = None
+        self.MetricId = None
+        self.MetricShowName = None
+        self.MetricUnit = None
+
+
+    def _deserialize(self, params):
+        if params.get("ConfigManual") is not None:
+            self.ConfigManual = DescribePolicyConditionListConfigManual()
+            self.ConfigManual._deserialize(params.get("ConfigManual"))
+        self.MetricId = params.get("MetricId")
+        self.MetricShowName = params.get("MetricShowName")
+        self.MetricUnit = params.get("MetricUnit")
+
+
+class DescribePolicyConditionListRequest(AbstractModel):
+    """DescribePolicyConditionList请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Module: 固定值，为"monitor"
+        :type Module: str
+        """
+        self.Module = None
+
+
+    def _deserialize(self, params):
+        self.Module = params.get("Module")
+
+
+class DescribePolicyConditionListResponse(AbstractModel):
+    """DescribePolicyConditionList返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Conditions: 告警策略条件列表
+        :type Conditions: list of DescribePolicyConditionListCondition
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Conditions = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Conditions") is not None:
+            self.Conditions = []
+            for item in params.get("Conditions"):
+                obj = DescribePolicyConditionListCondition()
+                obj._deserialize(item)
+                self.Conditions.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class DescribePolicyGroupInfoCallback(AbstractModel):
     """查询策略输出的用户回调信息
 
@@ -937,6 +1341,216 @@ class DescribePolicyGroupInfoResponse(AbstractModel):
             self.ConditionsTemp = DescribePolicyGroupInfoConditionTpl()
             self.ConditionsTemp._deserialize(params.get("ConditionsTemp"))
         self.CanSetDefault = params.get("CanSetDefault")
+        self.RequestId = params.get("RequestId")
+
+
+class DescribePolicyGroupListGroup(AbstractModel):
+    """DescribePolicyGroupList.Group
+
+    """
+
+    def __init__(self):
+        """
+        :param GroupId: 策略组id
+        :type GroupId: int
+        :param GroupName: 策略组名称
+        :type GroupName: str
+        :param IsOpen: 是否开启
+        :type IsOpen: bool
+        :param ViewName: 策略视图名称
+        :type ViewName: str
+        :param LastEditUin: 最近编辑的用户uin
+        :type LastEditUin: str
+        :param UpdateTime: 最后修改时间
+        :type UpdateTime: int
+        :param InsertTime: 创建时间
+        :type InsertTime: int
+        :param UseSum: 策略组绑定的实例数
+        :type UseSum: int
+        :param NoShieldedSum: 策略组绑定的未屏蔽实例数
+        :type NoShieldedSum: int
+        :param IsDefault: 是否为默认策略，0表示非默认策略，1表示默认策略
+        :type IsDefault: int
+        :param CanSetDefault: 是否可以设置成默认策略
+        :type CanSetDefault: bool
+        :param ParentGroupId: 父策略组id
+        :type ParentGroupId: int
+        :param Remark: 策略组备注
+        :type Remark: str
+        :param ProjectId: 策略组所属项目id
+        :type ProjectId: int
+        :param Conditions: 阈值规则列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Conditions: list of DescribePolicyGroupInfoCondition
+        :param EventConditions: 产品事件规则列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EventConditions: list of DescribePolicyGroupInfoEventCondition
+        :param ReceiverInfos: 用户接收人列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ReceiverInfos: list of DescribePolicyGroupInfoReceiverInfo
+        :param ConditionsTemp: 模板策略组
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ConditionsTemp: :class:`tencentcloud.monitor.v20180724.models.DescribePolicyGroupInfoConditionTpl`
+        :param InstanceGroup: 策略组绑定的实例组信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InstanceGroup: :class:`tencentcloud.monitor.v20180724.models.DescribePolicyGroupListGroupInstanceGroup`
+        """
+        self.GroupId = None
+        self.GroupName = None
+        self.IsOpen = None
+        self.ViewName = None
+        self.LastEditUin = None
+        self.UpdateTime = None
+        self.InsertTime = None
+        self.UseSum = None
+        self.NoShieldedSum = None
+        self.IsDefault = None
+        self.CanSetDefault = None
+        self.ParentGroupId = None
+        self.Remark = None
+        self.ProjectId = None
+        self.Conditions = None
+        self.EventConditions = None
+        self.ReceiverInfos = None
+        self.ConditionsTemp = None
+        self.InstanceGroup = None
+
+
+    def _deserialize(self, params):
+        self.GroupId = params.get("GroupId")
+        self.GroupName = params.get("GroupName")
+        self.IsOpen = params.get("IsOpen")
+        self.ViewName = params.get("ViewName")
+        self.LastEditUin = params.get("LastEditUin")
+        self.UpdateTime = params.get("UpdateTime")
+        self.InsertTime = params.get("InsertTime")
+        self.UseSum = params.get("UseSum")
+        self.NoShieldedSum = params.get("NoShieldedSum")
+        self.IsDefault = params.get("IsDefault")
+        self.CanSetDefault = params.get("CanSetDefault")
+        self.ParentGroupId = params.get("ParentGroupId")
+        self.Remark = params.get("Remark")
+        self.ProjectId = params.get("ProjectId")
+        if params.get("Conditions") is not None:
+            self.Conditions = []
+            for item in params.get("Conditions"):
+                obj = DescribePolicyGroupInfoCondition()
+                obj._deserialize(item)
+                self.Conditions.append(obj)
+        if params.get("EventConditions") is not None:
+            self.EventConditions = []
+            for item in params.get("EventConditions"):
+                obj = DescribePolicyGroupInfoEventCondition()
+                obj._deserialize(item)
+                self.EventConditions.append(obj)
+        if params.get("ReceiverInfos") is not None:
+            self.ReceiverInfos = []
+            for item in params.get("ReceiverInfos"):
+                obj = DescribePolicyGroupInfoReceiverInfo()
+                obj._deserialize(item)
+                self.ReceiverInfos.append(obj)
+        if params.get("ConditionsTemp") is not None:
+            self.ConditionsTemp = DescribePolicyGroupInfoConditionTpl()
+            self.ConditionsTemp._deserialize(params.get("ConditionsTemp"))
+        if params.get("InstanceGroup") is not None:
+            self.InstanceGroup = DescribePolicyGroupListGroupInstanceGroup()
+            self.InstanceGroup._deserialize(params.get("InstanceGroup"))
+
+
+class DescribePolicyGroupListGroupInstanceGroup(AbstractModel):
+    """DescribePolicyGroupList接口策略组绑定的实例分组信息
+
+    """
+
+    def __init__(self):
+        """
+        :param InstanceGroupId: 实例分组名称id
+        :type InstanceGroupId: int
+        :param ViewName: 策略类型视图名称
+        :type ViewName: str
+        :param LastEditUin: 最近编辑的用户uin
+        :type LastEditUin: str
+        :param GroupName: 实例分组名称
+        :type GroupName: str
+        :param InstanceSum: 实例数量
+        :type InstanceSum: int
+        :param UpdateTime: 更新时间
+        :type UpdateTime: int
+        :param InsertTime: 创建时间
+        :type InsertTime: int
+        """
+        self.InstanceGroupId = None
+        self.ViewName = None
+        self.LastEditUin = None
+        self.GroupName = None
+        self.InstanceSum = None
+        self.UpdateTime = None
+        self.InsertTime = None
+
+
+    def _deserialize(self, params):
+        self.InstanceGroupId = params.get("InstanceGroupId")
+        self.ViewName = params.get("ViewName")
+        self.LastEditUin = params.get("LastEditUin")
+        self.GroupName = params.get("GroupName")
+        self.InstanceSum = params.get("InstanceSum")
+        self.UpdateTime = params.get("UpdateTime")
+        self.InsertTime = params.get("InsertTime")
+
+
+class DescribePolicyGroupListRequest(AbstractModel):
+    """DescribePolicyGroupList请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Module: 固定值，为"monitor"
+        :type Module: str
+        :param Limit: 分页参数，最大返回个数
+        :type Limit: int
+        :param Offset: 分页参数，起始位置
+        :type Offset: int
+        """
+        self.Module = None
+        self.Limit = None
+        self.Offset = None
+
+
+    def _deserialize(self, params):
+        self.Module = params.get("Module")
+        self.Limit = params.get("Limit")
+        self.Offset = params.get("Offset")
+
+
+class DescribePolicyGroupListResponse(AbstractModel):
+    """DescribePolicyGroupList返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param GroupList: 策略组列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type GroupList: list of DescribePolicyGroupListGroup
+        :param Total: 策略组总数
+        :type Total: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.GroupList = None
+        self.Total = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("GroupList") is not None:
+            self.GroupList = []
+            for item in params.get("GroupList"):
+                obj = DescribePolicyGroupListGroup()
+                obj._deserialize(item)
+                self.GroupList.append(obj)
+        self.Total = params.get("Total")
         self.RequestId = params.get("RequestId")
 
 
