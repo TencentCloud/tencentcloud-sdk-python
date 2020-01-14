@@ -23,9 +23,9 @@ class DeleteCertRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Id: 证书 ID，即通过 GetList 拿到的证书列表的 ID 字段
+        :param Id: 证书 ID，即通过 GetList 拿到的证书列表的 ID 字段。
         :type Id: str
-        :param ModuleType: 模块名称，应填ssl
+        :param ModuleType: 模块名称，应填 ssl。
         :type ModuleType: str
         """
         self.Id = None
@@ -61,21 +61,21 @@ class DescribeCertListRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param ModuleType: 模块名称，应填ssl
+        :param ModuleType: 模块名称，应填 ssl。
         :type ModuleType: str
-        :param Offset: 页数，默认第一页
+        :param Offset: 页数，默认第一页。
         :type Offset: int
-        :param Limit: 每页条数，默认每页20条
+        :param Limit: 每页条数，默认每页20条。
         :type Limit: int
-        :param SearchKey: 搜索关键字
+        :param SearchKey: 搜索关键字。
         :type SearchKey: str
-        :param CertType: 证书类型（目前支持:CA=客户端证书,SVR=服务器证书）
+        :param CertType: 证书类型（目前支持:CA=客户端证书,SVR=服务器证书）。
         :type CertType: str
-        :param Id: 证书id
+        :param Id: 证书ID。
         :type Id: str
-        :param WithCert: 是否同时获取证书内容
+        :param WithCert: 是否同时获取证书内容。
         :type WithCert: str
-        :param AltDomain: 如传，则只返回可以给该域名使用的证书
+        :param AltDomain: 如传，则只返回可以给该域名使用的证书。
         :type AltDomain: str
         """
         self.ModuleType = None
@@ -106,9 +106,9 @@ class DescribeCertListResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param TotalCount: 总数量
+        :param TotalCount: 总数量。
         :type TotalCount: int
-        :param CertificateSet: 列表
+        :param CertificateSet: 列表。
         :type CertificateSet: list of SSLCertificate
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -130,7 +130,7 @@ class DescribeCertListResponse(AbstractModel):
 
 
 class SSLCertificate(AbstractModel):
-    """获取证书列表（SSLCertificate）返回参数键为CertificateSet的内容
+    """获取证书列表（SSLCertificate）返回参数键为 CertificateSet 的内容。
 
     """
 
@@ -187,7 +187,7 @@ class SSLCertificate(AbstractModel):
         :param ProjectInfo: 项目信息，ProjectId：项目ID，OwnerUin：项目所属的 uin（默认项目为0），Name：项目名称，CreatorUin：创建项目的 uin，CreateTime：项目创建时间，Info：项目说明
 注意：此字段可能返回 null，表示取不到有效值。
         :type ProjectInfo: :class:`tencentcloud.wss.v20180426.models.SSLProjectInfo`
-        :param Id: 证书Id
+        :param Id: 证书ID
 注意：此字段可能返回 null，表示取不到有效值。
         :type Id: str
         :param SubjectAltName: 证书包含的多个域名（包含主域名）
@@ -324,17 +324,17 @@ class UploadCertRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Cert: 证书内容
+        :param Cert: 证书内容。
         :type Cert: str
-        :param CertType: 证书类型（目前支持：CA 为客户端证书，SVR 为服务器证书）
+        :param CertType: 证书类型（目前支持：CA 为客户端证书，SVR 为服务器证书）。
         :type CertType: str
-        :param ProjectId: 项目ID
+        :param ProjectId: 项目ID，详见用户指南的 [项目与标签](https://cloud.tencent.com/document/product/598/32738)。
         :type ProjectId: str
-        :param ModuleType: 模块名称，应填ssl
+        :param ModuleType: 模块名称，应填 ssl。
         :type ModuleType: str
-        :param Key: 证书私钥，certType=SVR 时必填
+        :param Key: 证书私钥，certType=SVR 时必填。
         :type Key: str
-        :param Alias: 证书备注
+        :param Alias: 证书备注。
         :type Alias: str
         """
         self.Cert = None
@@ -361,7 +361,7 @@ class UploadCertResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param Id: 证书ID
+        :param Id: 证书ID。
         :type Id: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str

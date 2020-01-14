@@ -259,6 +259,68 @@ class BlockByNumberHandlerResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DeployDynamicContractHandlerRequest(AbstractModel):
+    """DeployDynamicContractHandler请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Module: 模块名，固定字段：contract
+        :type Module: str
+        :param Operation: 操作名，固定字段：deploy_by_dynamic_contract
+        :type Operation: str
+        :param GroupPk: 群组编号
+        :type GroupPk: str
+        :param ContractName: 合约名称
+        :type ContractName: str
+        :param AbiInfo: 合约编译后的abi
+        :type AbiInfo: str
+        :param ByteCodeBin: 合约编译后的binary
+        :type ByteCodeBin: str
+        :param ConstructorParams: 构造函数入参
+        :type ConstructorParams: list of str
+        """
+        self.Module = None
+        self.Operation = None
+        self.GroupPk = None
+        self.ContractName = None
+        self.AbiInfo = None
+        self.ByteCodeBin = None
+        self.ConstructorParams = None
+
+
+    def _deserialize(self, params):
+        self.Module = params.get("Module")
+        self.Operation = params.get("Operation")
+        self.GroupPk = params.get("GroupPk")
+        self.ContractName = params.get("ContractName")
+        self.AbiInfo = params.get("AbiInfo")
+        self.ByteCodeBin = params.get("ByteCodeBin")
+        self.ConstructorParams = params.get("ConstructorParams")
+
+
+class DeployDynamicContractHandlerResponse(AbstractModel):
+    """DeployDynamicContractHandler返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ContractAddress: 部署成功返回的合约地址
+        :type ContractAddress: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.ContractAddress = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.ContractAddress = params.get("ContractAddress")
+        self.RequestId = params.get("RequestId")
+
+
 class DownloadUserCertRequest(AbstractModel):
     """DownloadUserCert请求参数结构体
 
@@ -1358,6 +1420,72 @@ class SrvInvokeResponse(AbstractModel):
         self.RetCode = params.get("RetCode")
         self.RetMsg = params.get("RetMsg")
         self.Data = params.get("Data")
+        self.RequestId = params.get("RequestId")
+
+
+class TransByDynamicContractHandlerRequest(AbstractModel):
+    """TransByDynamicContractHandler请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Module: 模块名，固定字段：transaction
+        :type Module: str
+        :param Operation: 操作名，固定字段：trans_by_dynamic_contract
+        :type Operation: str
+        :param GroupPk: 群组编号
+        :type GroupPk: str
+        :param ContractAddress: 合约地址（合约部署成功，可得到合约地址）
+        :type ContractAddress: str
+        :param ContractName: 合约名
+        :type ContractName: str
+        :param AbiInfo: 合约编译后的abi
+        :type AbiInfo: str
+        :param FuncName: 合约被调用方法名
+        :type FuncName: str
+        :param FuncParam: 合约被调用方法的入参
+        :type FuncParam: list of str
+        """
+        self.Module = None
+        self.Operation = None
+        self.GroupPk = None
+        self.ContractAddress = None
+        self.ContractName = None
+        self.AbiInfo = None
+        self.FuncName = None
+        self.FuncParam = None
+
+
+    def _deserialize(self, params):
+        self.Module = params.get("Module")
+        self.Operation = params.get("Operation")
+        self.GroupPk = params.get("GroupPk")
+        self.ContractAddress = params.get("ContractAddress")
+        self.ContractName = params.get("ContractName")
+        self.AbiInfo = params.get("AbiInfo")
+        self.FuncName = params.get("FuncName")
+        self.FuncParam = params.get("FuncParam")
+
+
+class TransByDynamicContractHandlerResponse(AbstractModel):
+    """TransByDynamicContractHandler返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param TransactionRsp: 交易结果json字符串
+        :type TransactionRsp: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TransactionRsp = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TransactionRsp = params.get("TransactionRsp")
         self.RequestId = params.get("RequestId")
 
 

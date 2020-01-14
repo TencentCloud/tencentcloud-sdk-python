@@ -4628,6 +4628,10 @@ class DescribeFlowLogsRequest(AbstractModel):
         :type Offset: int
         :param Limit: 每页行数，默认为10
         :type Limit: int
+        :param Filters: 过滤条件，参数不支持同时指定FlowLogIds和Filters。
+<li>tag-key - String -是否必填：否- （过滤条件）按照标签键进行过滤。</li>
+<li>tag:tag-key - String - 是否必填：否 - （过滤条件）按照标签键值对进行过滤。 tag-key使用具体的标签键进行替换。</li>
+        :type Filters: :class:`tencentcloud.vpc.v20170312.models.Filter`
         """
         self.VpcId = None
         self.FlowLogId = None
@@ -4641,6 +4645,7 @@ class DescribeFlowLogsRequest(AbstractModel):
         self.OrderDirection = None
         self.Offset = None
         self.Limit = None
+        self.Filters = None
 
 
     def _deserialize(self, params):
@@ -4656,6 +4661,9 @@ class DescribeFlowLogsRequest(AbstractModel):
         self.OrderDirection = params.get("OrderDirection")
         self.Offset = params.get("Offset")
         self.Limit = params.get("Limit")
+        if params.get("Filters") is not None:
+            self.Filters = Filter()
+            self.Filters._deserialize(params.get("Filters"))
 
 
 class DescribeFlowLogsResponse(AbstractModel):
@@ -7795,14 +7803,18 @@ class ModifyBandwidthPackageAttributeRequest(AbstractModel):
         :type BandwidthPackageId: str
         :param BandwidthPackageName: 带宽包名称
         :type BandwidthPackageName: str
+        :param ChargeType: 带宽包计费模式
+        :type ChargeType: str
         """
         self.BandwidthPackageId = None
         self.BandwidthPackageName = None
+        self.ChargeType = None
 
 
     def _deserialize(self, params):
         self.BandwidthPackageId = params.get("BandwidthPackageId")
         self.BandwidthPackageName = params.get("BandwidthPackageName")
+        self.ChargeType = params.get("ChargeType")
 
 
 class ModifyBandwidthPackageAttributeResponse(AbstractModel):

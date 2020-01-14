@@ -249,6 +249,146 @@ class BillingClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeCostDetail(self, request):
+        """查询消耗明细
+
+        :param request: Request instance for DescribeCostDetail.
+        :type request: :class:`tencentcloud.billing.v20180709.models.DescribeCostDetailRequest`
+        :rtype: :class:`tencentcloud.billing.v20180709.models.DescribeCostDetailResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeCostDetail", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeCostDetailResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeCostSummaryByProduct(self, request):
+        """获取按产品汇总消耗详情
+
+        :param request: Request instance for DescribeCostSummaryByProduct.
+        :type request: :class:`tencentcloud.billing.v20180709.models.DescribeCostSummaryByProductRequest`
+        :rtype: :class:`tencentcloud.billing.v20180709.models.DescribeCostSummaryByProductResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeCostSummaryByProduct", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeCostSummaryByProductResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeCostSummaryByProject(self, request):
+        """获取按项目汇总消耗详情
+
+        :param request: Request instance for DescribeCostSummaryByProject.
+        :type request: :class:`tencentcloud.billing.v20180709.models.DescribeCostSummaryByProjectRequest`
+        :rtype: :class:`tencentcloud.billing.v20180709.models.DescribeCostSummaryByProjectResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeCostSummaryByProject", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeCostSummaryByProjectResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeCostSummaryByRegion(self, request):
+        """获取按地域汇总消耗详情
+
+        :param request: Request instance for DescribeCostSummaryByRegion.
+        :type request: :class:`tencentcloud.billing.v20180709.models.DescribeCostSummaryByRegionRequest`
+        :rtype: :class:`tencentcloud.billing.v20180709.models.DescribeCostSummaryByRegionResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeCostSummaryByRegion", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeCostSummaryByRegionResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeCostSummaryByResource(self, request):
+        """获取按资源汇总消耗详情
+
+        :param request: Request instance for DescribeCostSummaryByResource.
+        :type request: :class:`tencentcloud.billing.v20180709.models.DescribeCostSummaryByResourceRequest`
+        :rtype: :class:`tencentcloud.billing.v20180709.models.DescribeCostSummaryByResourceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeCostSummaryByResource", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeCostSummaryByResourceResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeDealsByCond(self, request):
         """查询订单
 

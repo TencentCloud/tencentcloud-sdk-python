@@ -81,65 +81,6 @@ class CatClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def CreateAlarmPloicy(self, request):
-        """为拨测任务创建告警策略
-
-        :param request: Request instance for CreateAlarmPloicy.
-        :type request: :class:`tencentcloud.cat.v20180409.models.CreateAlarmPloicyRequest`
-        :rtype: :class:`tencentcloud.cat.v20180409.models.CreateAlarmPloicyResponse`
-
-        """
-        try:
-            params = request._serialize()
-            body = self.call("CreateAlarmPloicy", params)
-            response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.CreateAlarmPloicyResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(e.message, e.message)
-
-
-    def CreateTask(self, request):
-        """创建拨测任务（创建任务并发起验证）
-
-        操作提示：
-        下一步，请通过VerifyCatResult 接口，验证一下拨测验证是否成功。如果成功，则可通过RunTask 接口运行该任务。
-
-        :param request: Request instance for CreateTask.
-        :type request: :class:`tencentcloud.cat.v20180409.models.CreateTaskRequest`
-        :rtype: :class:`tencentcloud.cat.v20180409.models.CreateTaskResponse`
-
-        """
-        try:
-            params = request._serialize()
-            body = self.call("CreateTask", params)
-            response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.CreateTaskResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(e.message, e.message)
-
-
     def CreateTaskEx(self, request):
         """创建拨测任务(扩充)
 
@@ -224,34 +165,6 @@ class CatClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def DescribeAgentGroup(self, request):
-        """查询拨测分组详情
-
-        :param request: Request instance for DescribeAgentGroup.
-        :type request: :class:`tencentcloud.cat.v20180409.models.DescribeAgentGroupRequest`
-        :rtype: :class:`tencentcloud.cat.v20180409.models.DescribeAgentGroupResponse`
-
-        """
-        try:
-            params = request._serialize()
-            body = self.call("DescribeAgentGroup", params)
-            response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.DescribeAgentGroupResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(e.message, e.message)
-
-
     def DescribeAgentGroups(self, request):
         """查询拨测分组列表
 
@@ -294,34 +207,6 @@ class CatClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeAgentsResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(e.message, e.message)
-
-
-    def DescribeAlarmGroups(self, request):
-        """查询用户的告警接收组列表
-
-        :param request: Request instance for DescribeAlarmGroups.
-        :type request: :class:`tencentcloud.cat.v20180409.models.DescribeAlarmGroupsRequest`
-        :rtype: :class:`tencentcloud.cat.v20180409.models.DescribeAlarmGroupsResponse`
-
-        """
-        try:
-            params = request._serialize()
-            body = self.call("DescribeAlarmGroups", params)
-            response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.DescribeAlarmGroupsResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -448,34 +333,6 @@ class CatClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def DescribeTask(self, request):
-        """查询拨测任务详情
-
-        :param request: Request instance for DescribeTask.
-        :type request: :class:`tencentcloud.cat.v20180409.models.DescribeTaskRequest`
-        :rtype: :class:`tencentcloud.cat.v20180409.models.DescribeTaskResponse`
-
-        """
-        try:
-            params = request._serialize()
-            body = self.call("DescribeTask", params)
-            response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.DescribeTaskResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(e.message, e.message)
-
-
     def DescribeTaskDetail(self, request):
         """查询拨测任务信息
 
@@ -490,34 +347,6 @@ class CatClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeTaskDetailResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(e.message, e.message)
-
-
-    def DescribeTasks(self, request):
-        """查询拨测任务列表
-
-        :param request: Request instance for DescribeTasks.
-        :type request: :class:`tencentcloud.cat.v20180409.models.DescribeTasksRequest`
-        :rtype: :class:`tencentcloud.cat.v20180409.models.DescribeTasksResponse`
-
-        """
-        try:
-            params = request._serialize()
-            body = self.call("DescribeTasks", params)
-            response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.DescribeTasksResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -658,34 +487,6 @@ class CatClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.GetRealAvailRatioResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(e.message, e.message)
-
-
-    def GetRespTimeTrend(self, request):
-        """查询拨测任务的统计数据
-
-        :param request: Request instance for GetRespTimeTrend.
-        :type request: :class:`tencentcloud.cat.v20180409.models.GetRespTimeTrendRequest`
-        :rtype: :class:`tencentcloud.cat.v20180409.models.GetRespTimeTrendResponse`
-
-        """
-        try:
-            params = request._serialize()
-            body = self.call("GetRespTimeTrend", params)
-            response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.GetRespTimeTrendResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -854,63 +655,6 @@ class CatClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyAgentGroupResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(e.message, e.message)
-
-
-    def ModifyAlarmPloicy(self, request):
-        """为拨测任务修改告警策略
-
-        :param request: Request instance for ModifyAlarmPloicy.
-        :type request: :class:`tencentcloud.cat.v20180409.models.ModifyAlarmPloicyRequest`
-        :rtype: :class:`tencentcloud.cat.v20180409.models.ModifyAlarmPloicyResponse`
-
-        """
-        try:
-            params = request._serialize()
-            body = self.call("ModifyAlarmPloicy", params)
-            response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.ModifyAlarmPloicyResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(e.message, e.message)
-
-
-    def ModifyTask(self, request):
-        """修改 拨测任务。
-        如果验证未成功，请先验证成功。避免修改为失败率100%的拨测任务。
-
-        :param request: Request instance for ModifyTask.
-        :type request: :class:`tencentcloud.cat.v20180409.models.ModifyTaskRequest`
-        :rtype: :class:`tencentcloud.cat.v20180409.models.ModifyTaskResponse`
-
-        """
-        try:
-            params = request._serialize()
-            body = self.call("ModifyTask", params)
-            response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.ModifyTaskResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

@@ -107,6 +107,15 @@ class BillDetail(AbstractModel):
         :param Tags: Tag 信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type Tags: list of BillTagInfo
+        :param BusinessCode: 商品名称代码
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BusinessCode: str
+        :param ProductCode: 子商品名称代码
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ProductCode: str
+        :param ActionType: 交易类型代码
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ActionType: str
         """
         self.BusinessCodeName = None
         self.ProductCodeName = None
@@ -127,6 +136,9 @@ class BillDetail(AbstractModel):
         self.OwnerUin = None
         self.OperateUin = None
         self.Tags = None
+        self.BusinessCode = None
+        self.ProductCode = None
+        self.ActionType = None
 
 
     def _deserialize(self, params):
@@ -159,6 +171,9 @@ class BillDetail(AbstractModel):
                 obj = BillTagInfo()
                 obj._deserialize(item)
                 self.Tags.append(obj)
+        self.BusinessCode = params.get("BusinessCode")
+        self.ProductCode = params.get("ProductCode")
+        self.ActionType = params.get("ActionType")
 
 
 class BillDetailComponent(AbstractModel):
@@ -200,6 +215,15 @@ class BillDetailComponent(AbstractModel):
         :type CashPayAmount: str
         :param IncentivePayAmount: 赠送账户支付金额
         :type IncentivePayAmount: str
+        :param ItemCode: 组件类型代码
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ItemCode: str
+        :param ComponentCode: 组件名称代码
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ComponentCode: str
+        :param ContractPrice: 合同价
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ContractPrice: str
         """
         self.ComponentCodeName = None
         self.ItemCodeName = None
@@ -217,6 +241,9 @@ class BillDetailComponent(AbstractModel):
         self.VoucherPayAmount = None
         self.CashPayAmount = None
         self.IncentivePayAmount = None
+        self.ItemCode = None
+        self.ComponentCode = None
+        self.ContractPrice = None
 
 
     def _deserialize(self, params):
@@ -236,6 +263,9 @@ class BillDetailComponent(AbstractModel):
         self.VoucherPayAmount = params.get("VoucherPayAmount")
         self.CashPayAmount = params.get("CashPayAmount")
         self.IncentivePayAmount = params.get("IncentivePayAmount")
+        self.ItemCode = params.get("ItemCode")
+        self.ComponentCode = params.get("ComponentCode")
+        self.ContractPrice = params.get("ContractPrice")
 
 
 class BillResourceSummary(AbstractModel):
@@ -473,6 +503,580 @@ class BusinessSummaryTotal(AbstractModel):
         self.CashPayAmount = params.get("CashPayAmount")
 
 
+class ConditionBusiness(AbstractModel):
+    """产品过滤条件
+
+    """
+
+    def __init__(self):
+        """
+        :param BusinessCode: 产品码
+        :type BusinessCode: str
+        :param BusinessCodeName: 产品名称
+        :type BusinessCodeName: str
+        """
+        self.BusinessCode = None
+        self.BusinessCodeName = None
+
+
+    def _deserialize(self, params):
+        self.BusinessCode = params.get("BusinessCode")
+        self.BusinessCodeName = params.get("BusinessCodeName")
+
+
+class ConditionPayMode(AbstractModel):
+    """付费模式过滤条件
+
+    """
+
+    def __init__(self):
+        """
+        :param PayMode: 付费模式
+        :type PayMode: str
+        :param PayModeName: 付费模式名称
+        :type PayModeName: str
+        """
+        self.PayMode = None
+        self.PayModeName = None
+
+
+    def _deserialize(self, params):
+        self.PayMode = params.get("PayMode")
+        self.PayModeName = params.get("PayModeName")
+
+
+class ConditionProject(AbstractModel):
+    """项目过滤条件
+
+    """
+
+    def __init__(self):
+        """
+        :param ProjectId: 项目ID
+        :type ProjectId: str
+        :param ProjectName: 项目名称
+        :type ProjectName: str
+        """
+        self.ProjectId = None
+        self.ProjectName = None
+
+
+    def _deserialize(self, params):
+        self.ProjectId = params.get("ProjectId")
+        self.ProjectName = params.get("ProjectName")
+
+
+class ConditionRegion(AbstractModel):
+    """地域过滤条件
+
+    """
+
+    def __init__(self):
+        """
+        :param RegionId: 地域ID
+        :type RegionId: str
+        :param RegionName: 地域名称
+        :type RegionName: str
+        """
+        self.RegionId = None
+        self.RegionName = None
+
+
+    def _deserialize(self, params):
+        self.RegionId = params.get("RegionId")
+        self.RegionName = params.get("RegionName")
+
+
+class Conditions(AbstractModel):
+    """账单筛选条件对象
+
+    """
+
+    def __init__(self):
+        """
+        :param TimeRange: 只支持6和12两个值
+        :type TimeRange: int
+        :param BusinessCode: 产品编码
+        :type BusinessCode: str
+        :param ProjectId: 项目ID
+        :type ProjectId: int
+        :param RegionId: 地域ID
+        :type RegionId: int
+        :param PayMode: 付费模式，可选prePay和postPay
+        :type PayMode: str
+        :param ResourceKeyword: 资源关键字
+        :type ResourceKeyword: str
+        :param BusinessCodes: 产品编码
+        :type BusinessCodes: list of str
+        :param ProductCodes: 子产品编码
+        :type ProductCodes: list of str
+        :param RegionIds: 地域ID
+        :type RegionIds: list of int
+        :param ProjectIds: 项目ID
+        :type ProjectIds: list of int
+        :param PayModes: 付费模式，可选prePay和postPay
+        :type PayModes: list of str
+        :param ActionTypes: 交易类型
+        :type ActionTypes: list of str
+        :param HideFreeCost: 是否隐藏0元流水
+        :type HideFreeCost: int
+        :param OrderByCost: 排序规则，可选desc和asc
+        :type OrderByCost: str
+        :param BillIds: 交易ID
+        :type BillIds: list of str
+        :param ComponentCodes: 组件编码
+        :type ComponentCodes: list of str
+        :param FileIds: 文件ID
+        :type FileIds: list of str
+        :param FileTypes: 文件类型
+        :type FileTypes: list of str
+        :param Status: 状态
+        :type Status: list of int non-negative
+        """
+        self.TimeRange = None
+        self.BusinessCode = None
+        self.ProjectId = None
+        self.RegionId = None
+        self.PayMode = None
+        self.ResourceKeyword = None
+        self.BusinessCodes = None
+        self.ProductCodes = None
+        self.RegionIds = None
+        self.ProjectIds = None
+        self.PayModes = None
+        self.ActionTypes = None
+        self.HideFreeCost = None
+        self.OrderByCost = None
+        self.BillIds = None
+        self.ComponentCodes = None
+        self.FileIds = None
+        self.FileTypes = None
+        self.Status = None
+
+
+    def _deserialize(self, params):
+        self.TimeRange = params.get("TimeRange")
+        self.BusinessCode = params.get("BusinessCode")
+        self.ProjectId = params.get("ProjectId")
+        self.RegionId = params.get("RegionId")
+        self.PayMode = params.get("PayMode")
+        self.ResourceKeyword = params.get("ResourceKeyword")
+        self.BusinessCodes = params.get("BusinessCodes")
+        self.ProductCodes = params.get("ProductCodes")
+        self.RegionIds = params.get("RegionIds")
+        self.ProjectIds = params.get("ProjectIds")
+        self.PayModes = params.get("PayModes")
+        self.ActionTypes = params.get("ActionTypes")
+        self.HideFreeCost = params.get("HideFreeCost")
+        self.OrderByCost = params.get("OrderByCost")
+        self.BillIds = params.get("BillIds")
+        self.ComponentCodes = params.get("ComponentCodes")
+        self.FileIds = params.get("FileIds")
+        self.FileTypes = params.get("FileTypes")
+        self.Status = params.get("Status")
+
+
+class ConsumptionBusinessSummaryDataItem(AbstractModel):
+    """消耗按产品汇总详情
+
+    """
+
+    def __init__(self):
+        """
+        :param BusinessCode: 产品码
+        :type BusinessCode: str
+        :param BusinessCodeName: 产品名称
+        :type BusinessCodeName: str
+        :param RealTotalCost: 折后总价
+        :type RealTotalCost: str
+        :param Trend: 费用趋势
+        :type Trend: :class:`tencentcloud.billing.v20180709.models.ConsumptionSummaryTrend`
+        """
+        self.BusinessCode = None
+        self.BusinessCodeName = None
+        self.RealTotalCost = None
+        self.Trend = None
+
+
+    def _deserialize(self, params):
+        self.BusinessCode = params.get("BusinessCode")
+        self.BusinessCodeName = params.get("BusinessCodeName")
+        self.RealTotalCost = params.get("RealTotalCost")
+        if params.get("Trend") is not None:
+            self.Trend = ConsumptionSummaryTrend()
+            self.Trend._deserialize(params.get("Trend"))
+
+
+class ConsumptionProjectSummaryDataItem(AbstractModel):
+    """消耗按项目汇总详情
+
+    """
+
+    def __init__(self):
+        """
+        :param ProjectId: 项目ID
+        :type ProjectId: str
+        :param ProjectName: 项目名称
+        :type ProjectName: str
+        :param RealTotalCost: 折后总价
+        :type RealTotalCost: str
+        :param Trend: 趋势
+        :type Trend: :class:`tencentcloud.billing.v20180709.models.ConsumptionSummaryTrend`
+        :param Business: 产品消耗详情
+        :type Business: list of ConsumptionBusinessSummaryDataItem
+        """
+        self.ProjectId = None
+        self.ProjectName = None
+        self.RealTotalCost = None
+        self.Trend = None
+        self.Business = None
+
+
+    def _deserialize(self, params):
+        self.ProjectId = params.get("ProjectId")
+        self.ProjectName = params.get("ProjectName")
+        self.RealTotalCost = params.get("RealTotalCost")
+        if params.get("Trend") is not None:
+            self.Trend = ConsumptionSummaryTrend()
+            self.Trend._deserialize(params.get("Trend"))
+        if params.get("Business") is not None:
+            self.Business = []
+            for item in params.get("Business"):
+                obj = ConsumptionBusinessSummaryDataItem()
+                obj._deserialize(item)
+                self.Business.append(obj)
+
+
+class ConsumptionRegionSummaryDataItem(AbstractModel):
+    """消耗按地域汇总详情
+
+    """
+
+    def __init__(self):
+        """
+        :param RegionId: 地域ID
+        :type RegionId: str
+        :param RegionName: 地域名称
+        :type RegionName: str
+        :param RealTotalCost: 折后总价
+        :type RealTotalCost: str
+        :param Trend: 趋势
+        :type Trend: :class:`tencentcloud.billing.v20180709.models.ConsumptionSummaryTrend`
+        :param Business: 产品消费详情
+        :type Business: list of ConsumptionBusinessSummaryDataItem
+        """
+        self.RegionId = None
+        self.RegionName = None
+        self.RealTotalCost = None
+        self.Trend = None
+        self.Business = None
+
+
+    def _deserialize(self, params):
+        self.RegionId = params.get("RegionId")
+        self.RegionName = params.get("RegionName")
+        self.RealTotalCost = params.get("RealTotalCost")
+        if params.get("Trend") is not None:
+            self.Trend = ConsumptionSummaryTrend()
+            self.Trend._deserialize(params.get("Trend"))
+        if params.get("Business") is not None:
+            self.Business = []
+            for item in params.get("Business"):
+                obj = ConsumptionBusinessSummaryDataItem()
+                obj._deserialize(item)
+                self.Business.append(obj)
+
+
+class ConsumptionResourceSummaryConditionValue(AbstractModel):
+    """消耗按资源汇总过滤条件
+
+    """
+
+    def __init__(self):
+        """
+        :param Business: 产品列表
+        :type Business: list of ConditionBusiness
+        :param Project: 项目列表
+        :type Project: list of ConditionProject
+        :param Region: 地域列表
+        :type Region: list of ConditionRegion
+        :param PayMode: 付费模式列表
+        :type PayMode: list of ConditionPayMode
+        """
+        self.Business = None
+        self.Project = None
+        self.Region = None
+        self.PayMode = None
+
+
+    def _deserialize(self, params):
+        if params.get("Business") is not None:
+            self.Business = []
+            for item in params.get("Business"):
+                obj = ConditionBusiness()
+                obj._deserialize(item)
+                self.Business.append(obj)
+        if params.get("Project") is not None:
+            self.Project = []
+            for item in params.get("Project"):
+                obj = ConditionProject()
+                obj._deserialize(item)
+                self.Project.append(obj)
+        if params.get("Region") is not None:
+            self.Region = []
+            for item in params.get("Region"):
+                obj = ConditionRegion()
+                obj._deserialize(item)
+                self.Region.append(obj)
+        if params.get("PayMode") is not None:
+            self.PayMode = []
+            for item in params.get("PayMode"):
+                obj = ConditionPayMode()
+                obj._deserialize(item)
+                self.PayMode.append(obj)
+
+
+class ConsumptionResourceSummaryDataItem(AbstractModel):
+    """消耗按资源汇总详情
+
+    """
+
+    def __init__(self):
+        """
+        :param ResourceId: 资源ID
+        :type ResourceId: str
+        :param ResourceName: 资源名称
+        :type ResourceName: str
+        :param RealTotalCost: 折后总价
+        :type RealTotalCost: str
+        :param CashPayAmount: 现金花费
+        :type CashPayAmount: str
+        :param ProjectId: 项目ID
+        :type ProjectId: str
+        :param ProjectName: 项目名称
+        :type ProjectName: str
+        :param RegionId: 地域ID
+        :type RegionId: str
+        :param RegionName: 地域名称
+        :type RegionName: str
+        :param PayMode: 付费模式
+        :type PayMode: str
+        :param PayModeName: 付费模式名称
+        :type PayModeName: str
+        :param BusinessCode: 产品码
+        :type BusinessCode: str
+        :param BusinessCodeName: 产品名称
+        :type BusinessCodeName: str
+        """
+        self.ResourceId = None
+        self.ResourceName = None
+        self.RealTotalCost = None
+        self.CashPayAmount = None
+        self.ProjectId = None
+        self.ProjectName = None
+        self.RegionId = None
+        self.RegionName = None
+        self.PayMode = None
+        self.PayModeName = None
+        self.BusinessCode = None
+        self.BusinessCodeName = None
+
+
+    def _deserialize(self, params):
+        self.ResourceId = params.get("ResourceId")
+        self.ResourceName = params.get("ResourceName")
+        self.RealTotalCost = params.get("RealTotalCost")
+        self.CashPayAmount = params.get("CashPayAmount")
+        self.ProjectId = params.get("ProjectId")
+        self.ProjectName = params.get("ProjectName")
+        self.RegionId = params.get("RegionId")
+        self.RegionName = params.get("RegionName")
+        self.PayMode = params.get("PayMode")
+        self.PayModeName = params.get("PayModeName")
+        self.BusinessCode = params.get("BusinessCode")
+        self.BusinessCodeName = params.get("BusinessCodeName")
+
+
+class ConsumptionSummaryTotal(AbstractModel):
+    """消耗汇总详情
+
+    """
+
+    def __init__(self):
+        """
+        :param RealTotalCost: 折后总价
+        :type RealTotalCost: str
+        """
+        self.RealTotalCost = None
+
+
+    def _deserialize(self, params):
+        self.RealTotalCost = params.get("RealTotalCost")
+
+
+class ConsumptionSummaryTrend(AbstractModel):
+    """消耗费用趋势
+
+    """
+
+    def __init__(self):
+        """
+        :param Type: 趋势类型，upward上升/downward下降/none无
+        :type Type: str
+        :param Value: 趋势值，Type为none是该字段值为null
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Value: str
+        """
+        self.Type = None
+        self.Value = None
+
+
+    def _deserialize(self, params):
+        self.Type = params.get("Type")
+        self.Value = params.get("Value")
+
+
+class CostComponentSet(AbstractModel):
+    """消耗组件明细
+
+    """
+
+    def __init__(self):
+        """
+        :param ComponentCodeName: 组件类型名称
+        :type ComponentCodeName: str
+        :param ItemCodeName: 组件名称
+        :type ItemCodeName: str
+        :param SinglePrice: 刊例价
+        :type SinglePrice: str
+        :param PriceUnit: 刊例价单位
+        :type PriceUnit: str
+        :param UsedAmount: 用量
+        :type UsedAmount: str
+        :param UsedAmountUnit: 用量单位
+        :type UsedAmountUnit: str
+        :param Cost: 原价
+        :type Cost: str
+        :param Discount: 折扣
+        :type Discount: str
+        :param RealCost: 折后价
+        :type RealCost: str
+        :param VoucherPayAmount: 代金券支付金额
+        :type VoucherPayAmount: str
+        :param CashPayAmount: 现金支付金额
+        :type CashPayAmount: str
+        :param IncentivePayAmount: 赠送金支付金额
+        :type IncentivePayAmount: str
+        """
+        self.ComponentCodeName = None
+        self.ItemCodeName = None
+        self.SinglePrice = None
+        self.PriceUnit = None
+        self.UsedAmount = None
+        self.UsedAmountUnit = None
+        self.Cost = None
+        self.Discount = None
+        self.RealCost = None
+        self.VoucherPayAmount = None
+        self.CashPayAmount = None
+        self.IncentivePayAmount = None
+
+
+    def _deserialize(self, params):
+        self.ComponentCodeName = params.get("ComponentCodeName")
+        self.ItemCodeName = params.get("ItemCodeName")
+        self.SinglePrice = params.get("SinglePrice")
+        self.PriceUnit = params.get("PriceUnit")
+        self.UsedAmount = params.get("UsedAmount")
+        self.UsedAmountUnit = params.get("UsedAmountUnit")
+        self.Cost = params.get("Cost")
+        self.Discount = params.get("Discount")
+        self.RealCost = params.get("RealCost")
+        self.VoucherPayAmount = params.get("VoucherPayAmount")
+        self.CashPayAmount = params.get("CashPayAmount")
+        self.IncentivePayAmount = params.get("IncentivePayAmount")
+
+
+class CostDetail(AbstractModel):
+    """消耗明细数据类型
+
+    """
+
+    def __init__(self):
+        """
+        :param PayerUin: 支付者uin
+        :type PayerUin: str
+        :param BusinessCodeName: 业务名称
+        :type BusinessCodeName: str
+        :param ProductCodeName: 产品名称
+        :type ProductCodeName: str
+        :param PayModeName: 计费模式名称
+        :type PayModeName: str
+        :param ProjectName: 项目名称
+        :type ProjectName: str
+        :param RegionName: 区域名称
+        :type RegionName: str
+        :param ZoneName: 地区名称
+        :type ZoneName: str
+        :param ResourceId: 资源id
+        :type ResourceId: str
+        :param ResourceName: 资源名称
+        :type ResourceName: str
+        :param ActionTypeName: 类型名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ActionTypeName: str
+        :param OrderId: 订单id
+        :type OrderId: str
+        :param BillId: 交易id
+        :type BillId: str
+        :param FeeBeginTime: 费用开始时间
+        :type FeeBeginTime: str
+        :param FeeEndTime: 费用结束时间
+        :type FeeEndTime: str
+        :param ComponentSet: 组件明细
+        :type ComponentSet: :class:`tencentcloud.billing.v20180709.models.CostComponentSet`
+        :param ProductCode: 产品代码
+        :type ProductCode: str
+        """
+        self.PayerUin = None
+        self.BusinessCodeName = None
+        self.ProductCodeName = None
+        self.PayModeName = None
+        self.ProjectName = None
+        self.RegionName = None
+        self.ZoneName = None
+        self.ResourceId = None
+        self.ResourceName = None
+        self.ActionTypeName = None
+        self.OrderId = None
+        self.BillId = None
+        self.FeeBeginTime = None
+        self.FeeEndTime = None
+        self.ComponentSet = None
+        self.ProductCode = None
+
+
+    def _deserialize(self, params):
+        self.PayerUin = params.get("PayerUin")
+        self.BusinessCodeName = params.get("BusinessCodeName")
+        self.ProductCodeName = params.get("ProductCodeName")
+        self.PayModeName = params.get("PayModeName")
+        self.ProjectName = params.get("ProjectName")
+        self.RegionName = params.get("RegionName")
+        self.ZoneName = params.get("ZoneName")
+        self.ResourceId = params.get("ResourceId")
+        self.ResourceName = params.get("ResourceName")
+        self.ActionTypeName = params.get("ActionTypeName")
+        self.OrderId = params.get("OrderId")
+        self.BillId = params.get("BillId")
+        self.FeeBeginTime = params.get("FeeBeginTime")
+        self.FeeEndTime = params.get("FeeEndTime")
+        if params.get("ComponentSet") is not None:
+            self.ComponentSet = CostComponentSet()
+            self.ComponentSet._deserialize(params.get("ComponentSet"))
+        self.ProductCode = params.get("ProductCode")
+
+
 class Deal(AbstractModel):
     """订单数据对象
 
@@ -512,6 +1116,11 @@ class Deal(AbstractModel):
         :type Price: float
         :param TotalCost: 原价（分）
         :type TotalCost: float
+        :param ProductCode: 产品编码
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ProductCode: str
+        :param SubProductCode: 子产品编码
+        :type SubProductCode: str
         """
         self.OrderId = None
         self.Status = None
@@ -529,6 +1138,8 @@ class Deal(AbstractModel):
         self.Policy = None
         self.Price = None
         self.TotalCost = None
+        self.ProductCode = None
+        self.SubProductCode = None
 
 
     def _deserialize(self, params):
@@ -553,6 +1164,8 @@ class Deal(AbstractModel):
         self.Policy = params.get("Policy")
         self.Price = params.get("Price")
         self.TotalCost = params.get("TotalCost")
+        self.ProductCode = params.get("ProductCode")
+        self.SubProductCode = params.get("SubProductCode")
 
 
 class DescribeAccountBalanceRequest(AbstractModel):
@@ -1020,6 +1633,419 @@ class DescribeBillSummaryByTagResponse(AbstractModel):
                 obj = TagSummaryOverviewItem()
                 obj._deserialize(item)
                 self.SummaryOverview.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeCostDetailRequest(AbstractModel):
+    """DescribeCostDetail请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Limit: 数量，最大值为100
+        :type Limit: int
+        :param Offset: 偏移量
+        :type Offset: int
+        :param BeginTime: 周期开始时间，格式为Y-m-d H:i:s，Month和BeginTime&EndTime必传一个，如果有该字段则Month字段无效。BeginTime和EndTime必须一起传。不能早于开通成本分析的月份，最多可拉取24个月内的数据。
+        :type BeginTime: str
+        :param EndTime: 周期结束时间，格式为Y-m-d H:i:s，Month和BeginTime&EndTime必传一个，如果有该字段则Month字段无效。BeginTime和EndTime必须一起传。不能早于开通成本分析的月份，最多可拉取24个月内的数据。
+        :type EndTime: str
+        :param NeedRecordNum: 是否需要访问列表的总记录数，用于前端分页
+1-表示需要， 0-表示不需要
+        :type NeedRecordNum: int
+        :param Month: 月份，格式为yyyy-mm，Month和BeginTime&EndTime必传一个，如果有传BeginTime&EndTime则Month字段无效。不能早于开通成本分析的月份，最多可拉取24个月内的数据。
+        :type Month: str
+        :param ProductCode: 查询指定产品信息
+        :type ProductCode: str
+        :param PayMode: 付费模式 prePay/postPay
+        :type PayMode: str
+        :param ResourceId: 查询指定资源信息
+        :type ResourceId: str
+        """
+        self.Limit = None
+        self.Offset = None
+        self.BeginTime = None
+        self.EndTime = None
+        self.NeedRecordNum = None
+        self.Month = None
+        self.ProductCode = None
+        self.PayMode = None
+        self.ResourceId = None
+
+
+    def _deserialize(self, params):
+        self.Limit = params.get("Limit")
+        self.Offset = params.get("Offset")
+        self.BeginTime = params.get("BeginTime")
+        self.EndTime = params.get("EndTime")
+        self.NeedRecordNum = params.get("NeedRecordNum")
+        self.Month = params.get("Month")
+        self.ProductCode = params.get("ProductCode")
+        self.PayMode = params.get("PayMode")
+        self.ResourceId = params.get("ResourceId")
+
+
+class DescribeCostDetailResponse(AbstractModel):
+    """DescribeCostDetail返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param DetailSet: 消耗明细
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DetailSet: list of CostDetail
+        :param Total: 记录数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Total: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.DetailSet = None
+        self.Total = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("DetailSet") is not None:
+            self.DetailSet = []
+            for item in params.get("DetailSet"):
+                obj = CostDetail()
+                obj._deserialize(item)
+                self.DetailSet.append(obj)
+        self.Total = params.get("Total")
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeCostSummaryByProductRequest(AbstractModel):
+    """DescribeCostSummaryByProduct请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param PayerUin: 查询账单数据的用户UIN
+        :type PayerUin: str
+        :param BeginTime: 目前只支持传当月1号 00:00:00，且必须和EndTime为相同月份，不支持跨月查询，例 2018-09-01 00:00:00
+        :type BeginTime: str
+        :param EndTime: 目前只支持传当月最后一天 23:59:59，且必须和BeginTime为相同月份，不支持跨月查询，例 2018-09-30 23:59:59
+        :type EndTime: str
+        :param Limit: 每次获取数据量
+        :type Limit: int
+        :param Offset: 偏移量
+        :type Offset: int
+        :param NeedRecordNum: 是否需要返回记录数量，0不需要，1需要，默认不需要
+        :type NeedRecordNum: int
+        """
+        self.PayerUin = None
+        self.BeginTime = None
+        self.EndTime = None
+        self.Limit = None
+        self.Offset = None
+        self.NeedRecordNum = None
+
+
+    def _deserialize(self, params):
+        self.PayerUin = params.get("PayerUin")
+        self.BeginTime = params.get("BeginTime")
+        self.EndTime = params.get("EndTime")
+        self.Limit = params.get("Limit")
+        self.Offset = params.get("Offset")
+        self.NeedRecordNum = params.get("NeedRecordNum")
+
+
+class DescribeCostSummaryByProductResponse(AbstractModel):
+    """DescribeCostSummaryByProduct返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Ready: 数据是否准备好，0未准备好，1准备好
+        :type Ready: int
+        :param Total: 消耗详情
+        :type Total: :class:`tencentcloud.billing.v20180709.models.ConsumptionSummaryTotal`
+        :param Data: 消耗按产品汇总详情
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Data: list of ConsumptionBusinessSummaryDataItem
+        :param RecordNum: 记录数量，NeedRecordNum为0是返回null
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RecordNum: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Ready = None
+        self.Total = None
+        self.Data = None
+        self.RecordNum = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Ready = params.get("Ready")
+        if params.get("Total") is not None:
+            self.Total = ConsumptionSummaryTotal()
+            self.Total._deserialize(params.get("Total"))
+        if params.get("Data") is not None:
+            self.Data = []
+            for item in params.get("Data"):
+                obj = ConsumptionBusinessSummaryDataItem()
+                obj._deserialize(item)
+                self.Data.append(obj)
+        self.RecordNum = params.get("RecordNum")
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeCostSummaryByProjectRequest(AbstractModel):
+    """DescribeCostSummaryByProject请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param PayerUin: 查询账单数据的用户UIN
+        :type PayerUin: str
+        :param BeginTime: 目前只支持传当月1号 00:00:00，且必须和EndTime为相同月份，不支持跨月查询，例 2018-09-01 00:00:00
+        :type BeginTime: str
+        :param EndTime: 目前只支持传当月最后一天 23:59:59，且必须和BeginTime为相同月份，不支持跨月查询，例 2018-09-30 23:59:59
+        :type EndTime: str
+        :param Limit: 每次获取数据量
+        :type Limit: int
+        :param Offset: 偏移量
+        :type Offset: int
+        :param NeedRecordNum: 是否需要返回记录数量，0不需要，1需要，默认不需要
+        :type NeedRecordNum: int
+        """
+        self.PayerUin = None
+        self.BeginTime = None
+        self.EndTime = None
+        self.Limit = None
+        self.Offset = None
+        self.NeedRecordNum = None
+
+
+    def _deserialize(self, params):
+        self.PayerUin = params.get("PayerUin")
+        self.BeginTime = params.get("BeginTime")
+        self.EndTime = params.get("EndTime")
+        self.Limit = params.get("Limit")
+        self.Offset = params.get("Offset")
+        self.NeedRecordNum = params.get("NeedRecordNum")
+
+
+class DescribeCostSummaryByProjectResponse(AbstractModel):
+    """DescribeCostSummaryByProject返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Ready: 数据是否准备好，0未准备好，1准备好
+        :type Ready: int
+        :param Total: 消耗详情
+        :type Total: :class:`tencentcloud.billing.v20180709.models.ConsumptionSummaryTotal`
+        :param Data: 消耗按业务汇总详情
+        :type Data: list of ConsumptionProjectSummaryDataItem
+        :param RecordNum: 记录数量，NeedRecordNum为0是返回null
+        :type RecordNum: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Ready = None
+        self.Total = None
+        self.Data = None
+        self.RecordNum = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Ready = params.get("Ready")
+        if params.get("Total") is not None:
+            self.Total = ConsumptionSummaryTotal()
+            self.Total._deserialize(params.get("Total"))
+        if params.get("Data") is not None:
+            self.Data = []
+            for item in params.get("Data"):
+                obj = ConsumptionProjectSummaryDataItem()
+                obj._deserialize(item)
+                self.Data.append(obj)
+        self.RecordNum = params.get("RecordNum")
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeCostSummaryByRegionRequest(AbstractModel):
+    """DescribeCostSummaryByRegion请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param PayerUin: 查询账单数据的用户UIN
+        :type PayerUin: str
+        :param BeginTime: 目前只支持传当月1号 00:00:00，且必须和EndTime为相同月份，不支持跨月查询，例 2018-09-01 00:00:00
+        :type BeginTime: str
+        :param EndTime: 目前只支持传当月最后一天 23:59:59，且必须和BeginTime为相同月份，不支持跨月查询，例 2018-09-30 23:59:59
+        :type EndTime: str
+        :param Limit: 每次获取数据量
+        :type Limit: int
+        :param Offset: 偏移量
+        :type Offset: int
+        :param NeedRecordNum: 是否需要返回记录数量，0不需要，1需要，默认不需要
+        :type NeedRecordNum: int
+        """
+        self.PayerUin = None
+        self.BeginTime = None
+        self.EndTime = None
+        self.Limit = None
+        self.Offset = None
+        self.NeedRecordNum = None
+
+
+    def _deserialize(self, params):
+        self.PayerUin = params.get("PayerUin")
+        self.BeginTime = params.get("BeginTime")
+        self.EndTime = params.get("EndTime")
+        self.Limit = params.get("Limit")
+        self.Offset = params.get("Offset")
+        self.NeedRecordNum = params.get("NeedRecordNum")
+
+
+class DescribeCostSummaryByRegionResponse(AbstractModel):
+    """DescribeCostSummaryByRegion返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Ready: 数据是否准备好，0未准备好，1准备好
+        :type Ready: int
+        :param Total: 消耗详情
+        :type Total: :class:`tencentcloud.billing.v20180709.models.ConsumptionSummaryTotal`
+        :param Data: 消耗按地域汇总详情
+        :type Data: list of ConsumptionRegionSummaryDataItem
+        :param RecordNum: 记录数量，NeedRecordNum为0是返回null
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RecordNum: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Ready = None
+        self.Total = None
+        self.Data = None
+        self.RecordNum = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Ready = params.get("Ready")
+        if params.get("Total") is not None:
+            self.Total = ConsumptionSummaryTotal()
+            self.Total._deserialize(params.get("Total"))
+        if params.get("Data") is not None:
+            self.Data = []
+            for item in params.get("Data"):
+                obj = ConsumptionRegionSummaryDataItem()
+                obj._deserialize(item)
+                self.Data.append(obj)
+        self.RecordNum = params.get("RecordNum")
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeCostSummaryByResourceRequest(AbstractModel):
+    """DescribeCostSummaryByResource请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param PayerUin: 查询账单数据的用户UIN
+        :type PayerUin: str
+        :param BeginTime: 目前只支持传当月1号 00:00:00，且必须和EndTime为相同月份，不支持跨月查询，例 2018-09-01 00:00:00
+        :type BeginTime: str
+        :param EndTime: 目前只支持传当月最后一天 23:59:59，且必须和BeginTime为相同月份，不支持跨月查询，例 2018-09-30 23:59:59
+        :type EndTime: str
+        :param Limit: 每次获取数据量
+        :type Limit: int
+        :param Offset: 偏移量
+        :type Offset: int
+        :param NeedRecordNum: 是否需要返回记录数量，0不需要，1需要，默认不需要
+        :type NeedRecordNum: int
+        :param NeedConditionValue: 是否需要返回过滤条件，0不需要，1需要，默认不需要
+        :type NeedConditionValue: int
+        :param Conditions: 过滤条件，只支持ResourceKeyword(资源关键字，支持资源id及资源名称模糊查询)，ProjectIds（项目id），RegionIds(地域id)，PayModes(付费模式，可选prePay和postPay)，HideFreeCost（是否隐藏0元流水，可选0和1），OrderByCost（按费用排序规则，可选desc和asc）
+        :type Conditions: :class:`tencentcloud.billing.v20180709.models.Conditions`
+        """
+        self.PayerUin = None
+        self.BeginTime = None
+        self.EndTime = None
+        self.Limit = None
+        self.Offset = None
+        self.NeedRecordNum = None
+        self.NeedConditionValue = None
+        self.Conditions = None
+
+
+    def _deserialize(self, params):
+        self.PayerUin = params.get("PayerUin")
+        self.BeginTime = params.get("BeginTime")
+        self.EndTime = params.get("EndTime")
+        self.Limit = params.get("Limit")
+        self.Offset = params.get("Offset")
+        self.NeedRecordNum = params.get("NeedRecordNum")
+        self.NeedConditionValue = params.get("NeedConditionValue")
+        if params.get("Conditions") is not None:
+            self.Conditions = Conditions()
+            self.Conditions._deserialize(params.get("Conditions"))
+
+
+class DescribeCostSummaryByResourceResponse(AbstractModel):
+    """DescribeCostSummaryByResource返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Ready: 数据是否准备好，0未准备好，1准备好
+        :type Ready: int
+        :param Total: 消耗详情
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Total: :class:`tencentcloud.billing.v20180709.models.ConsumptionSummaryTotal`
+        :param ConditionValue: 过滤条件
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ConditionValue: :class:`tencentcloud.billing.v20180709.models.ConsumptionResourceSummaryConditionValue`
+        :param RecordNum: 记录数量
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RecordNum: int
+        :param Data: 资源消耗详情
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Data: list of ConsumptionResourceSummaryDataItem
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Ready = None
+        self.Total = None
+        self.ConditionValue = None
+        self.RecordNum = None
+        self.Data = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Ready = params.get("Ready")
+        if params.get("Total") is not None:
+            self.Total = ConsumptionSummaryTotal()
+            self.Total._deserialize(params.get("Total"))
+        if params.get("ConditionValue") is not None:
+            self.ConditionValue = ConsumptionResourceSummaryConditionValue()
+            self.ConditionValue._deserialize(params.get("ConditionValue"))
+        self.RecordNum = params.get("RecordNum")
+        if params.get("Data") is not None:
+            self.Data = []
+            for item in params.get("Data"):
+                obj = ConsumptionResourceSummaryDataItem()
+                obj._deserialize(item)
+                self.Data.append(obj)
         self.RequestId = params.get("RequestId")
 
 

@@ -81,6 +81,34 @@ class TbaasClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DeployDynamicContractHandler(self, request):
+        """动态部署合约
+
+        :param request: Request instance for DeployDynamicContractHandler.
+        :type request: :class:`tencentcloud.tbaas.v20180416.models.DeployDynamicContractHandlerRequest`
+        :rtype: :class:`tencentcloud.tbaas.v20180416.models.DeployDynamicContractHandlerResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DeployDynamicContractHandler", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DeployDynamicContractHandlerResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DownloadUserCert(self, request):
         """下载用户证书
 
@@ -459,6 +487,34 @@ class TbaasClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.SrvInvokeResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def TransByDynamicContractHandler(self, request):
+        """根据动态部署的合约发送交易
+
+        :param request: Request instance for TransByDynamicContractHandler.
+        :type request: :class:`tencentcloud.tbaas.v20180416.models.TransByDynamicContractHandlerRequest`
+        :rtype: :class:`tencentcloud.tbaas.v20180416.models.TransByDynamicContractHandlerResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("TransByDynamicContractHandler", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.TransByDynamicContractHandlerResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

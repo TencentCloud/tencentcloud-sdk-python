@@ -29,16 +29,26 @@ class CreateSessionRequest(AbstractModel):
         :type UserId: str
         :param GameId: 游戏ID
         :type GameId: str
-        :param GameRegion: 游戏区域
+        :param GameRegion: 游戏区域，ap-guangzhou、ap-shanghai、ap-beijing等
         :type GameRegion: str
         :param GameParas: 游戏参数
         :type GameParas: str
-        :param Resolution: 分辨率
+        :param Resolution: 分辨率,，可设置为1080p或720p
         :type Resolution: str
-        :param ImageUrl: 背景图url
+        :param ImageUrl: 背景图url，格式为png或jpeg，宽高1920*1080
         :type ImageUrl: str
-        :param SetNo: 资源池编号
+        :param SetNo: 资源池编号，1表示正式，2表示测试
         :type SetNo: int
+        :param Bitrate: 单位Mbps，固定码率，后端不动态调整(MaxBitrate和MinBitrate将无效)
+        :type Bitrate: int
+        :param MaxBitrate: 单位Mbps，动态调整最大码率
+        :type MaxBitrate: int
+        :param MinBitrate: 单位Mbps，动态调整最小码率
+        :type MinBitrate: int
+        :param Fps: 帧率，可设置为30、45或60
+        :type Fps: int
+        :param UserIp: 游戏用户IP，用于就近调度，例如125.127.178.228
+        :type UserIp: str
         """
         self.ClientSession = None
         self.UserId = None
@@ -48,6 +58,11 @@ class CreateSessionRequest(AbstractModel):
         self.Resolution = None
         self.ImageUrl = None
         self.SetNo = None
+        self.Bitrate = None
+        self.MaxBitrate = None
+        self.MinBitrate = None
+        self.Fps = None
+        self.UserIp = None
 
 
     def _deserialize(self, params):
@@ -59,6 +74,11 @@ class CreateSessionRequest(AbstractModel):
         self.Resolution = params.get("Resolution")
         self.ImageUrl = params.get("ImageUrl")
         self.SetNo = params.get("SetNo")
+        self.Bitrate = params.get("Bitrate")
+        self.MaxBitrate = params.get("MaxBitrate")
+        self.MinBitrate = params.get("MinBitrate")
+        self.Fps = params.get("Fps")
+        self.UserIp = params.get("UserIp")
 
 
 class CreateSessionResponse(AbstractModel):
@@ -89,7 +109,7 @@ class DescribeWorkersRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param SetNo: 资源池编号，值为2的幂，1表示共用，2表示测试
+        :param SetNo: 资源池编号，1表示正式，2表示测试
         :type SetNo: int
         """
         self.SetNo = None
@@ -182,11 +202,14 @@ class TrylockWorkerRequest(AbstractModel):
         :type GameRegion: str
         :param SetNo: 资源池编号，1表示共用，2表示测试
         :type SetNo: int
+        :param UserIp: 游戏用户IP，用于就近调度，例如125.127.178.228
+        :type UserIp: str
         """
         self.UserId = None
         self.GameId = None
         self.GameRegion = None
         self.SetNo = None
+        self.UserIp = None
 
 
     def _deserialize(self, params):
@@ -194,6 +217,7 @@ class TrylockWorkerRequest(AbstractModel):
         self.GameId = params.get("GameId")
         self.GameRegion = params.get("GameRegion")
         self.SetNo = params.get("SetNo")
+        self.UserIp = params.get("UserIp")
 
 
 class TrylockWorkerResponse(AbstractModel):

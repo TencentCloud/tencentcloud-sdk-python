@@ -58,39 +58,6 @@ class AgentGroup(AbstractModel):
         self.MaxGroupNum = params.get("MaxGroupNum")
 
 
-class AlarmGroupInfo(AbstractModel):
-    """告警接受组信息
-
-    """
-
-    def __init__(self):
-        """
-        :param GroupId: 告警接受组Id
-        :type GroupId: int
-        :param GroupName: 告警接受组名称
-        :type GroupName: str
-        :param Channel: 告警接受通道数(一个邮件或短信接收人为一个通道)
-        :type Channel: int
-        :param Remarks: 备注信息
-        :type Remarks: str
-        :param CreateTime: 接受组创建时间
-        :type CreateTime: str
-        """
-        self.GroupId = None
-        self.GroupName = None
-        self.Channel = None
-        self.Remarks = None
-        self.CreateTime = None
-
-
-    def _deserialize(self, params):
-        self.GroupId = params.get("GroupId")
-        self.GroupName = params.get("GroupName")
-        self.Channel = params.get("Channel")
-        self.Remarks = params.get("Remarks")
-        self.CreateTime = params.get("CreateTime")
-
-
 class AlarmInfo(AbstractModel):
     """拨测告警信息
 
@@ -409,70 +376,6 @@ class CatReturnSummary(AbstractModel):
         self.ErrorReason = params.get("ErrorReason")
 
 
-class CatTask(AbstractModel):
-    """拨测任务详情
-
-    """
-
-    def __init__(self):
-        """
-        :param TaskId: 任务Id
-        :type TaskId: int
-        :param TaskName: 任务名称
-        :type TaskName: str
-        :param Period: 任务周期，单位为分钟。目前支持1，5，15，30几种取值
-        :type Period: int
-        :param CatTypeName: 拨测类型。http, https, ping, tcp 之一
-        :type CatTypeName: str
-        :param CgiUrl: 拨测任务的Url
-        :type CgiUrl: str
-        :param AvailRatioThres: 告警的可用率门限(0~100)
-注意：此字段可能返回 null，表示取不到有效值。
-        :type AvailRatioThres: int
-        :param AvailRatioInterval: 告警的可用率持续时间。值为Period的0~4倍
-注意：此字段可能返回 null，表示取不到有效值。
-        :type AvailRatioInterval: int
-        :param ReceiverGroupId: 告警接收组
-注意：此字段可能返回 null，表示取不到有效值。
-        :type ReceiverGroupId: int
-        :param AgentGroupId: 拨测分组id
-        :type AgentGroupId: int
-        :param Status: 任务状态。1表示暂停，2表示运行中，0为初始态
-        :type Status: int
-        :param AddTime: 任务创建时间
-        :type AddTime: str
-        :param UpdateTime: 任务更新时间
-        :type UpdateTime: str
-        """
-        self.TaskId = None
-        self.TaskName = None
-        self.Period = None
-        self.CatTypeName = None
-        self.CgiUrl = None
-        self.AvailRatioThres = None
-        self.AvailRatioInterval = None
-        self.ReceiverGroupId = None
-        self.AgentGroupId = None
-        self.Status = None
-        self.AddTime = None
-        self.UpdateTime = None
-
-
-    def _deserialize(self, params):
-        self.TaskId = params.get("TaskId")
-        self.TaskName = params.get("TaskName")
-        self.Period = params.get("Period")
-        self.CatTypeName = params.get("CatTypeName")
-        self.CgiUrl = params.get("CgiUrl")
-        self.AvailRatioThres = params.get("AvailRatioThres")
-        self.AvailRatioInterval = params.get("AvailRatioInterval")
-        self.ReceiverGroupId = params.get("ReceiverGroupId")
-        self.AgentGroupId = params.get("AgentGroupId")
-        self.Status = params.get("Status")
-        self.AddTime = params.get("AddTime")
-        self.UpdateTime = params.get("UpdateTime")
-
-
 class CatTaskDetail(AbstractModel):
     """任务信息和告警策略组
 
@@ -669,60 +572,6 @@ class CreateAgentGroupResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
-class CreateAlarmPloicyRequest(AbstractModel):
-    """CreateAlarmPloicy请求参数结构体
-
-    """
-
-    def __init__(self):
-        """
-        :param TaskId: 正整数。拨测任务id
-        :type TaskId: int
-        :param Interval: 持续周期。值为任务的Period 乘以0、1、2、3、4。单位：分钟
-        :type Interval: int
-        :param Operate: 目前取值仅支持 lt (小于)。
-        :type Operate: str
-        :param Threshold: 门限百分比。比如：80，表示80%。成功率低于80%时告警。
-        :type Threshold: int
-        :param ReceiverGroupId: 告警接收组的id。参见： DescribeAlarmGroups 接口。从返回结果里的GroupId 中选取一个。
-        :type ReceiverGroupId: int
-        """
-        self.TaskId = None
-        self.Interval = None
-        self.Operate = None
-        self.Threshold = None
-        self.ReceiverGroupId = None
-
-
-    def _deserialize(self, params):
-        self.TaskId = params.get("TaskId")
-        self.Interval = params.get("Interval")
-        self.Operate = params.get("Operate")
-        self.Threshold = params.get("Threshold")
-        self.ReceiverGroupId = params.get("ReceiverGroupId")
-
-
-class CreateAlarmPloicyResponse(AbstractModel):
-    """CreateAlarmPloicy返回参数结构体
-
-    """
-
-    def __init__(self):
-        """
-        :param PolicyId: 告警策略Id
-        :type PolicyId: int
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
-        self.PolicyId = None
-        self.RequestId = None
-
-
-    def _deserialize(self, params):
-        self.PolicyId = params.get("PolicyId")
-        self.RequestId = params.get("RequestId")
-
-
 class CreateTaskExRequest(AbstractModel):
     """CreateTaskEx请求参数结构体
 
@@ -877,104 +726,6 @@ class CreateTaskExResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
-class CreateTaskRequest(AbstractModel):
-    """CreateTask请求参数结构体
-
-    """
-
-    def __init__(self):
-        """
-        :param AgentGroupId: 拨测分组id，体现本拨测任务要采用那些运营商作为拨测源。一般可直接填写本用户的默认拨测分组。参见：DescribeAgentGroupList 接口，本参数使用返回结果里的groupId的值。
-        :type AgentGroupId: int
-        :param CatTypeName: http, https, ping, tcp 之一
-        :type CatTypeName: str
-        :param Url: 拨测的url  例如：www.baidu.com (url域名解析需要能解析出具体的ip)
-        :type Url: str
-        :param TaskName: 拨测任务名称不能超过32个字符。同一个用户创建的任务名不可重复
-        :type TaskName: str
-        :param Host: 需要满足ip 的格式
-        :type Host: str
-        :param Port: 服务端监听或接收数据的端口
-        :type Port: int
-        :param IsHeader: 是否为Header请求（非0 发起Header 请求。为0，且PostData 非空，发起POST请求。为0，PostData 为空，发起GET请求）
-        :type IsHeader: int
-        :param SslVer: url中含有https时有用。缺省为SSLv23。需要为 TLSv1_2, TLSv1_1, TLSv1, SSLv2, SSLv23, SSLv3 之一
-        :type SslVer: str
-        :param PostData: POST 请求数据。空字符串表示非POST请求
-        :type PostData: str
-        :param UserAgent: 用户agent 信息
-        :type UserAgent: str
-        :param CheckStr: 要在结果中进行匹配的字符串
-        :type CheckStr: str
-        :param CheckType: 1 表示通过检查结果是否包含CheckStr 进行校验
-        :type CheckType: int
-        :param Cookie: 需要设置的cookie信息
-        :type Cookie: str
-        :param Period: 拨测周期。取值可为1,5,15,30之一, 单位：分钟。精度不能低于用户等级规定的最小精度
-        :type Period: int
-        :param TaskId: 任务号。用于验证且修改任务时传入原任务号
-        :type TaskId: int
-        """
-        self.AgentGroupId = None
-        self.CatTypeName = None
-        self.Url = None
-        self.TaskName = None
-        self.Host = None
-        self.Port = None
-        self.IsHeader = None
-        self.SslVer = None
-        self.PostData = None
-        self.UserAgent = None
-        self.CheckStr = None
-        self.CheckType = None
-        self.Cookie = None
-        self.Period = None
-        self.TaskId = None
-
-
-    def _deserialize(self, params):
-        self.AgentGroupId = params.get("AgentGroupId")
-        self.CatTypeName = params.get("CatTypeName")
-        self.Url = params.get("Url")
-        self.TaskName = params.get("TaskName")
-        self.Host = params.get("Host")
-        self.Port = params.get("Port")
-        self.IsHeader = params.get("IsHeader")
-        self.SslVer = params.get("SslVer")
-        self.PostData = params.get("PostData")
-        self.UserAgent = params.get("UserAgent")
-        self.CheckStr = params.get("CheckStr")
-        self.CheckType = params.get("CheckType")
-        self.Cookie = params.get("Cookie")
-        self.Period = params.get("Period")
-        self.TaskId = params.get("TaskId")
-
-
-class CreateTaskResponse(AbstractModel):
-    """CreateTask返回参数结构体
-
-    """
-
-    def __init__(self):
-        """
-        :param ResultId: 拨测结果查询id。接下来可以使用查询拨测是否能够成功，验证能否通过。
-        :type ResultId: int
-        :param TaskId: 拨测任务id。验证通过后，创建任务时使用，传递给CreateTask 接口。
-        :type TaskId: int
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
-        self.ResultId = None
-        self.TaskId = None
-        self.RequestId = None
-
-
-    def _deserialize(self, params):
-        self.ResultId = params.get("ResultId")
-        self.TaskId = params.get("TaskId")
-        self.RequestId = params.get("RequestId")
-
-
 class DataPoint(AbstractModel):
     """时延等数据，数据点
 
@@ -1090,65 +841,6 @@ class DeleteTasksResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
-class DescribeAgentGroupRequest(AbstractModel):
-    """DescribeAgentGroup请求参数结构体
-
-    """
-
-    def __init__(self):
-        """
-        :param GroupId: 拨测分组id
-        :type GroupId: int
-        """
-        self.GroupId = None
-
-
-    def _deserialize(self, params):
-        self.GroupId = params.get("GroupId")
-
-
-class DescribeAgentGroupResponse(AbstractModel):
-    """DescribeAgentGroup返回参数结构体
-
-    """
-
-    def __init__(self):
-        """
-        :param GroupId: 拨测分组Id
-        :type GroupId: int
-        :param GroupName: 拨测分组名称
-        :type GroupName: str
-        :param IsDefault: 是否为默认拨测分组
-        :type IsDefault: int
-        :param TaskNum: 使用本拨测分组的任务数
-        :type TaskNum: int
-        :param Agents: 拨测分组运营商列表
-        :type Agents: list of CatAgent
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
-        self.GroupId = None
-        self.GroupName = None
-        self.IsDefault = None
-        self.TaskNum = None
-        self.Agents = None
-        self.RequestId = None
-
-
-    def _deserialize(self, params):
-        self.GroupId = params.get("GroupId")
-        self.GroupName = params.get("GroupName")
-        self.IsDefault = params.get("IsDefault")
-        self.TaskNum = params.get("TaskNum")
-        if params.get("Agents") is not None:
-            self.Agents = []
-            for item in params.get("Agents"):
-                obj = CatAgent()
-                obj._deserialize(item)
-                self.Agents.append(obj)
-        self.RequestId = params.get("RequestId")
-
-
 class DescribeAgentGroupsRequest(AbstractModel):
     """DescribeAgentGroups请求参数结构体
 
@@ -1216,57 +908,6 @@ class DescribeAgentsResponse(AbstractModel):
                 obj = CatAgent()
                 obj._deserialize(item)
                 self.Agents.append(obj)
-        self.RequestId = params.get("RequestId")
-
-
-class DescribeAlarmGroupsRequest(AbstractModel):
-    """DescribeAlarmGroups请求参数结构体
-
-    """
-
-    def __init__(self):
-        """
-        :param Offset: 满足条件的第几条开始
-        :type Offset: int
-        :param Limit: 每批多少条
-        :type Limit: int
-        """
-        self.Offset = None
-        self.Limit = None
-
-
-    def _deserialize(self, params):
-        self.Offset = params.get("Offset")
-        self.Limit = params.get("Limit")
-
-
-class DescribeAlarmGroupsResponse(AbstractModel):
-    """DescribeAlarmGroups返回参数结构体
-
-    """
-
-    def __init__(self):
-        """
-        :param TotalCount: 用户名下总的告警接收组数目
-        :type TotalCount: int
-        :param AlarmGroupInfos: 满足条件的告警接收组列表
-        :type AlarmGroupInfos: list of AlarmGroupInfo
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
-        self.TotalCount = None
-        self.AlarmGroupInfos = None
-        self.RequestId = None
-
-
-    def _deserialize(self, params):
-        self.TotalCount = params.get("TotalCount")
-        if params.get("AlarmGroupInfos") is not None:
-            self.AlarmGroupInfos = []
-            for item in params.get("AlarmGroupInfos"):
-                obj = AlarmGroupInfo()
-                obj._deserialize(item)
-                self.AlarmGroupInfos.append(obj)
         self.RequestId = params.get("RequestId")
 
 
@@ -1585,49 +1226,6 @@ class DescribeTaskDetailResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
-class DescribeTaskRequest(AbstractModel):
-    """DescribeTask请求参数结构体
-
-    """
-
-    def __init__(self):
-        """
-        :param TaskIds: 拨测任务id 数组
-        :type TaskIds: list of int non-negative
-        """
-        self.TaskIds = None
-
-
-    def _deserialize(self, params):
-        self.TaskIds = params.get("TaskIds")
-
-
-class DescribeTaskResponse(AbstractModel):
-    """DescribeTask返回参数结构体
-
-    """
-
-    def __init__(self):
-        """
-        :param Tasks: 拨测任务列表
-        :type Tasks: list of CatTask
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
-        self.Tasks = None
-        self.RequestId = None
-
-
-    def _deserialize(self, params):
-        if params.get("Tasks") is not None:
-            self.Tasks = []
-            for item in params.get("Tasks"):
-                obj = CatTask()
-                obj._deserialize(item)
-                self.Tasks.append(obj)
-        self.RequestId = params.get("RequestId")
-
-
 class DescribeTasksByTypeRequest(AbstractModel):
     """DescribeTasksByType请求参数结构体
 
@@ -1678,61 +1276,6 @@ class DescribeTasksByTypeResponse(AbstractModel):
             self.Tasks = []
             for item in params.get("Tasks"):
                 obj = TaskAlarm()
-                obj._deserialize(item)
-                self.Tasks.append(obj)
-        self.RequestId = params.get("RequestId")
-
-
-class DescribeTasksRequest(AbstractModel):
-    """DescribeTasks请求参数结构体
-
-    """
-
-    def __init__(self):
-        """
-        :param Offset: 从第Offset 条开始查询。缺省值为0
-        :type Offset: int
-        :param Limit: 本批次查询Limit 条记录。缺省值为20
-        :type Limit: int
-        :param GroupId: 任务所使用的拨测分组Id
-        :type GroupId: int
-        """
-        self.Offset = None
-        self.Limit = None
-        self.GroupId = None
-
-
-    def _deserialize(self, params):
-        self.Offset = params.get("Offset")
-        self.Limit = params.get("Limit")
-        self.GroupId = params.get("GroupId")
-
-
-class DescribeTasksResponse(AbstractModel):
-    """DescribeTasks返回参数结构体
-
-    """
-
-    def __init__(self):
-        """
-        :param TotalCount: 用户的拨测任务总条数
-        :type TotalCount: int
-        :param Tasks: 满足条件的拨测任务列表
-        :type Tasks: list of CatTask
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
-        self.TotalCount = None
-        self.Tasks = None
-        self.RequestId = None
-
-
-    def _deserialize(self, params):
-        self.TotalCount = params.get("TotalCount")
-        if params.get("Tasks") is not None:
-            self.Tasks = []
-            for item in params.get("Tasks"):
-                obj = CatTask()
                 obj._deserialize(item)
                 self.Tasks.append(obj)
         self.RequestId = params.get("RequestId")
@@ -2131,65 +1674,6 @@ class GetRespTimeTrendExResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
-class GetRespTimeTrendRequest(AbstractModel):
-    """GetRespTimeTrend请求参数结构体
-
-    """
-
-    def __init__(self):
-        """
-        :param TaskId: 验证成功的拨测任务id
-        :type TaskId: int
-        :param Date: 统计数据的发生日期。格式如：2017-05-09
-        :type Date: str
-        :param Period: 数据的采集周期，单位分钟
-        :type Period: int
-        :param Dimentions: 可为 Isp, Province
-        :type Dimentions: list of str
-        :param MetricName: 可为  totalTime, parseTime, connectTime, sendTime, waitTime, receiveTime
-        :type MetricName: str
-        """
-        self.TaskId = None
-        self.Date = None
-        self.Period = None
-        self.Dimentions = None
-        self.MetricName = None
-
-
-    def _deserialize(self, params):
-        self.TaskId = params.get("TaskId")
-        self.Date = params.get("Date")
-        self.Period = params.get("Period")
-        self.Dimentions = params.get("Dimentions")
-        self.MetricName = params.get("MetricName")
-
-
-class GetRespTimeTrendResponse(AbstractModel):
-    """GetRespTimeTrend返回参数结构体
-
-    """
-
-    def __init__(self):
-        """
-        :param DataPoints: 数据点集合，时延等走势数据
-        :type DataPoints: list of DataPoint
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
-        self.DataPoints = None
-        self.RequestId = None
-
-
-    def _deserialize(self, params):
-        if params.get("DataPoints") is not None:
-            self.DataPoints = []
-            for item in params.get("DataPoints"):
-                obj = DataPoint()
-                obj._deserialize(item)
-                self.DataPoints.append(obj)
-        self.RequestId = params.get("RequestId")
-
-
 class GetResultSummaryRequest(AbstractModel):
     """GetResultSummary请求参数结构体
 
@@ -2490,60 +1974,6 @@ class ModifyAgentGroupResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
-class ModifyAlarmPloicyRequest(AbstractModel):
-    """ModifyAlarmPloicy请求参数结构体
-
-    """
-
-    def __init__(self):
-        """
-        :param TaskId: 验证成功的拨测任务id
-        :type TaskId: int
-        :param Interval: 持续周期。值为任务的Period 乘以0、1、2、3、4。单位：分钟
-        :type Interval: int
-        :param Operate: 目前取值仅支持 lt (小于)
-        :type Operate: str
-        :param Threshold: 门限百分比。比如：80，表示80%。成功率低于80%时告警
-        :type Threshold: int
-        :param PolicyId: 拨测告警策略id
-        :type PolicyId: int
-        :param ReceiverGroupId: 告警接收组的id。参见： DescribeAlarmGroups 接口。从返回结果里的GroupId 中选取一个
-        :type ReceiverGroupId: int
-        """
-        self.TaskId = None
-        self.Interval = None
-        self.Operate = None
-        self.Threshold = None
-        self.PolicyId = None
-        self.ReceiverGroupId = None
-
-
-    def _deserialize(self, params):
-        self.TaskId = params.get("TaskId")
-        self.Interval = params.get("Interval")
-        self.Operate = params.get("Operate")
-        self.Threshold = params.get("Threshold")
-        self.PolicyId = params.get("PolicyId")
-        self.ReceiverGroupId = params.get("ReceiverGroupId")
-
-
-class ModifyAlarmPloicyResponse(AbstractModel):
-    """ModifyAlarmPloicy返回参数结构体
-
-    """
-
-    def __init__(self):
-        """
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
-        self.RequestId = None
-
-
-    def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
-
-
 class ModifyTaskExRequest(AbstractModel):
     """ModifyTaskEx请求参数结构体
 
@@ -2687,96 +2117,6 @@ class ModifyTaskExResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.TaskId = params.get("TaskId")
-        self.RequestId = params.get("RequestId")
-
-
-class ModifyTaskRequest(AbstractModel):
-    """ModifyTask请求参数结构体
-
-    """
-
-    def __init__(self):
-        """
-        :param AgentGroupId: 拨测分组id，体现本拨测任务要采用那些运营商作为拨测源。一般可直接填写本用户的默认拨测分组。参见：DescribeAgentGroupList 接口，本参数使用返回结果里的groupId的值。
-        :type AgentGroupId: int
-        :param CatTypeName: http, https, ping, tcp 之一
-        :type CatTypeName: str
-        :param Url: 拨测的url  例如：www.baidu.com (url域名解析需要能解析出具体的ip)
-        :type Url: str
-        :param Period: 拨测周期。取值可为1,5,15,30之一, 单位：分钟。精度不能低于用户等级规定的最小精度
-        :type Period: int
-        :param TaskName: 拨测任务名称不能超过32个字符。同一个用户创建的任务名不可重复
-        :type TaskName: str
-        :param TaskId: 验证成功的拨测任务id
-        :type TaskId: int
-        :param Host: 需要满足ip 的格式
-        :type Host: str
-        :param Port: 服务端监听或接收数据的端口
-        :type Port: int
-        :param IsHeader: 是否为Header请求（非0 发起Header 请求。为0，且PostData 非空，发起POST请求。为0，PostData 为空，发起GET请求）
-        :type IsHeader: int
-        :param SslVer: url中含有https时有用。缺省为SSLv23。需要为 TLSv1_2, TLSv1_1, TLSv1, SSLv2, SSLv23, SSLv3 之一
-        :type SslVer: str
-        :param PostData: POST 请求数据。空字符串表示非POST请求
-        :type PostData: str
-        :param UserAgent: 用户agent 信息
-        :type UserAgent: str
-        :param CheckStr: 要在结果中进行匹配的字符串
-        :type CheckStr: str
-        :param CheckType: 1 表示通过检查结果是否包含checkStr 进行校验
-        :type CheckType: int
-        :param Cookie: 需要设置的cookie信息
-        :type Cookie: str
-        """
-        self.AgentGroupId = None
-        self.CatTypeName = None
-        self.Url = None
-        self.Period = None
-        self.TaskName = None
-        self.TaskId = None
-        self.Host = None
-        self.Port = None
-        self.IsHeader = None
-        self.SslVer = None
-        self.PostData = None
-        self.UserAgent = None
-        self.CheckStr = None
-        self.CheckType = None
-        self.Cookie = None
-
-
-    def _deserialize(self, params):
-        self.AgentGroupId = params.get("AgentGroupId")
-        self.CatTypeName = params.get("CatTypeName")
-        self.Url = params.get("Url")
-        self.Period = params.get("Period")
-        self.TaskName = params.get("TaskName")
-        self.TaskId = params.get("TaskId")
-        self.Host = params.get("Host")
-        self.Port = params.get("Port")
-        self.IsHeader = params.get("IsHeader")
-        self.SslVer = params.get("SslVer")
-        self.PostData = params.get("PostData")
-        self.UserAgent = params.get("UserAgent")
-        self.CheckStr = params.get("CheckStr")
-        self.CheckType = params.get("CheckType")
-        self.Cookie = params.get("Cookie")
-
-
-class ModifyTaskResponse(AbstractModel):
-    """ModifyTask返回参数结构体
-
-    """
-
-    def __init__(self):
-        """
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
-        self.RequestId = None
-
-
-    def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
 
 

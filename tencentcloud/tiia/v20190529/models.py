@@ -130,6 +130,8 @@ class CarTagItem(AbstractModel):
         :type Confidence: int
         :param Year: 年份，没识别出年份的时候返回0
         :type Year: int
+        :param CarLocation: 车辆在图片中的坐标信息
+        :type CarLocation: list of Coord
         """
         self.Serial = None
         self.Brand = None
@@ -137,6 +139,7 @@ class CarTagItem(AbstractModel):
         self.Color = None
         self.Confidence = None
         self.Year = None
+        self.CarLocation = None
 
 
     def _deserialize(self, params):
@@ -146,6 +149,12 @@ class CarTagItem(AbstractModel):
         self.Color = params.get("Color")
         self.Confidence = params.get("Confidence")
         self.Year = params.get("Year")
+        if params.get("CarLocation") is not None:
+            self.CarLocation = []
+            for item in params.get("CarLocation"):
+                obj = Coord()
+                obj._deserialize(item)
+                self.CarLocation.append(obj)
 
 
 class Coord(AbstractModel):
@@ -1109,9 +1118,9 @@ class RecognizeCarResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param CarCoords: 汽车的四个矩形顶点坐标
+        :param CarCoords: 汽车的四个矩形顶点坐标，如果图片中存在多辆车，则输出最大车辆的坐标。
         :type CarCoords: list of Coord
-        :param CarTags: 车辆属性识别的结果数组
+        :param CarTags: 车辆属性识别的结果数组，如果识别到多辆车，则会输出每辆车的top1结果。
         :type CarTags: list of CarTagItem
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
