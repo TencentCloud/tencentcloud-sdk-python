@@ -104,9 +104,11 @@ class DescribeItemsRequest(AbstractModel):
         :type Offset: int
         :param Limit: 条数，必须大于0，最大值为30
         :type Limit: int
-        :param CategoryId: （电台/歌单）ID，CategoryId和CategoryCode两个必传1个
+        :param CategoryId: （电台/歌单）ID，CategoryId和CategoryCode两个必传1个，可以从【获取分类内容（Station）列表接口】中获取。
+链接地址：https://cloud.tencent.com/document/product/1155/40109
         :type CategoryId: str
-        :param CategoryCode: （电台/歌单）代码，CategoryId和CategoryCode两个必传1个
+        :param CategoryCode: （电台/歌单）ID，CategoryId和CategoryCode两个必传1个，可以从【获取分类内容（Station）列表接口】中获取。
+链接地址：https://cloud.tencent.com/document/product/1155/40109
         :type CategoryCode: str
         """
         self.Offset = None
@@ -451,6 +453,52 @@ Unit :ms
         self.FileExtension = params.get("FileExtension")
         self.AuditionBegin = params.get("AuditionBegin")
         self.AuditionEnd = params.get("AuditionEnd")
+
+
+class ReportDataRequest(AbstractModel):
+    """ReportData请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ReportData: 上报数据
+注:reportData为客户端压缩后的上报数据进行16进制转换的字符串数据
+压缩说明：
+a) 上报的json格式字符串通过流的转换（ByteArrayInputStream, java.util.zip.GZIPOutputStream），获取到压缩后的字节数组。
+b) 将压缩后的字节数组转成16进制字符串。
+
+reportData由两部分数据组成：
+1）report_type（上报类型）
+2）data（歌曲上报数据）
+不同的report_type对应的data数据结构不一样。
+
+详细说明请参考文档reportdata.docx：
+https://github.com/ame-demo/doc
+        :type ReportData: str
+        """
+        self.ReportData = None
+
+
+    def _deserialize(self, params):
+        self.ReportData = params.get("ReportData")
+
+
+class ReportDataResponse(AbstractModel):
+    """ReportData返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
 
 
 class Station(AbstractModel):

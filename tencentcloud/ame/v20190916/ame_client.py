@@ -135,3 +135,31 @@ class AmeClient(AbstractClient):
                 raise
             else:
                 raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ReportData(self, request):
+        """客户上报用户数据功能，为了更好的为用户提供优质服务
+
+        :param request: Request instance for ReportData.
+        :type request: :class:`tencentcloud.ame.v20190916.models.ReportDataRequest`
+        :rtype: :class:`tencentcloud.ame.v20190916.models.ReportDataResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ReportData", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ReportDataResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)

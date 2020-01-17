@@ -2461,6 +2461,34 @@ class YunjingClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def OpenProVersion(self, request):
+        """本接口 (OpenProVersion) 用于开通专业版。
+
+        :param request: Request instance for OpenProVersion.
+        :type request: :class:`tencentcloud.yunjing.v20180228.models.OpenProVersionRequest`
+        :rtype: :class:`tencentcloud.yunjing.v20180228.models.OpenProVersionResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("OpenProVersion", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.OpenProVersionResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def OpenProVersionPrepaid(self, request):
         """本接口 (OpenProVersionPrepaid) 用于开通专业版(包年包月)。
 

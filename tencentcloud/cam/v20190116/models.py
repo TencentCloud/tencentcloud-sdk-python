@@ -31,7 +31,7 @@ class AddUserRequest(AbstractModel):
         :type ConsoleLogin: int
         :param UseApi: 是否生成子用户密钥。传0不生成子用户密钥，传1生成子用户密钥。
         :type UseApi: int
-        :param Password: 子用户控制台登录密码，若未进行密码规则设置则默认密码规则为8位以上同时包含大写小字母、数字和特殊字符。只有可以登录控制台时才有效，如果传空并且上面指定允许登录控制台，则自动生成随机密码，随机密码规则为32位包含大写小字母、数字和特殊字符。
+        :param Password: 子用户控制台登录密码，若未进行密码规则设置则默认密码规则为8位以上同时包含大小写字母、数字和特殊字符。只有可以登录控制台时才有效，如果传空并且上面指定允许登录控制台，则自动生成随机密码，随机密码规则为32位包含大小写字母、数字和特殊字符。
         :type Password: str
         :param NeedResetPassword: 子用户是否要在下次登录时重置密码。传0子用户下次登录控制台不需重置密码，传1子用户下次登录控制台需要重置密码。
         :type NeedResetPassword: int
@@ -247,6 +247,9 @@ class AttachPolicyInfo(AbstractModel):
         :param OperateUinType: UinType为0表示OperateUin字段是子帐号Uin，如果UinType为1表示OperateUin字段是角色ID
 注意：此字段可能返回 null，表示取不到有效值。
         :type OperateUinType: int
+        :param Deactived: 是否已下线
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Deactived: int
         """
         self.PolicyId = None
         self.PolicyName = None
@@ -257,6 +260,7 @@ class AttachPolicyInfo(AbstractModel):
         self.OperateOwnerUin = None
         self.OperateUin = None
         self.OperateUinType = None
+        self.Deactived = None
 
 
     def _deserialize(self, params):
@@ -269,6 +273,7 @@ class AttachPolicyInfo(AbstractModel):
         self.OperateOwnerUin = params.get("OperateOwnerUin")
         self.OperateUin = params.get("OperateUin")
         self.OperateUinType = params.get("OperateUinType")
+        self.Deactived = params.get("Deactived")
 
 
 class AttachRolePolicyRequest(AbstractModel):
@@ -369,12 +374,16 @@ class AttachedPolicyOfRole(AbstractModel):
         :type PolicyType: str
         :param CreateMode: 策略创建方式，1表示按产品功能或项目权限创建，其他表示按策略语法创建
         :type CreateMode: int
+        :param Deactived: 是否已下线
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Deactived: int
         """
         self.PolicyId = None
         self.PolicyName = None
         self.AddTime = None
         self.PolicyType = None
         self.CreateMode = None
+        self.Deactived = None
 
 
     def _deserialize(self, params):
@@ -383,6 +392,7 @@ class AttachedPolicyOfRole(AbstractModel):
         self.AddTime = params.get("AddTime")
         self.PolicyType = params.get("PolicyType")
         self.CreateMode = params.get("CreateMode")
+        self.Deactived = params.get("Deactived")
 
 
 class ConsumeCustomMFATokenRequest(AbstractModel):
@@ -470,7 +480,7 @@ class CreatePolicyRequest(AbstractModel):
         """
         :param PolicyName: 策略名
         :type PolicyName: str
-        :param PolicyDocument: 策略文档
+        :param PolicyDocument: 策略文档，示例：{"version":"2.0","statement":[{"action":"name/sts:AssumeRole","effect":"allow","principal":{"service":["cloudaudit.cloud.tencent.com","cls.cloud.tencent.com"]}}]}，principal用于指定角色的授权对象。获取该参数可参阅 获取角色详情（https://cloud.tencent.com/document/product/598/36221） 输出参数RoleInfo
         :type PolicyDocument: str
         :param Description: 策略描述
         :type Description: str
@@ -493,7 +503,7 @@ class CreatePolicyResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param PolicyId: 新增策略id
+        :param PolicyId: 新增策略ID
         :type PolicyId: int
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -520,7 +530,7 @@ class CreateRoleRequest(AbstractModel):
         :type PolicyDocument: str
         :param Description: 角色描述
         :type Description: str
-        :param ConsoleLogin: 是否允许登录
+        :param ConsoleLogin: 是否允许登录 1 为允许 0 为不允许
         :type ConsoleLogin: int
         """
         self.RoleName = None
@@ -1235,7 +1245,7 @@ class GetUserResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param Uin: 子用户用户 ID
+        :param Uin: 子用户用户 UIN
         :type Uin: int
         :param Name: 子用户用户名
         :type Name: str
@@ -1391,7 +1401,7 @@ class ListAttachedGroupPoliciesRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param TargetGroupId: 用户组 id
+        :param TargetGroupId: 用户组ID
         :type TargetGroupId: int
         :param Page: 页码，默认值是 1，从 1 开始
         :type Page: int
@@ -1773,6 +1783,9 @@ addTime：策略创建时间
 type：1 表示自定义策略，2 表示预设策略 
 description：策略描述 
 createMode：1 表示按业务权限创建的策略，其他值表示可以查看策略语法和通过策略语法更新策略
+Attachments: 关联的用户数
+ServiceType: 策略关联的产品
+IsAttached: 当需要查询标记实体是否已经关联策略时不为null。0表示未关联策略，1表示已关联策略
         :type List: list of StrategyInfo
         :param ServiceTypeList: 保留字段
 注意：此字段可能返回 null，表示取不到有效值。
@@ -1969,11 +1982,14 @@ class OffsiteFlag(AbstractModel):
         :type NotifyEmail: int
         :param NotifyWechat: 微信通知
         :type NotifyWechat: int
+        :param Tips: 提示
+        :type Tips: int
         """
         self.VerifyFlag = None
         self.NotifyPhone = None
         self.NotifyEmail = None
         self.NotifyWechat = None
+        self.Tips = None
 
 
     def _deserialize(self, params):
@@ -1981,6 +1997,7 @@ class OffsiteFlag(AbstractModel):
         self.NotifyPhone = params.get("NotifyPhone")
         self.NotifyEmail = params.get("NotifyEmail")
         self.NotifyWechat = params.get("NotifyWechat")
+        self.Tips = params.get("Tips")
 
 
 class RemoveUserFromGroupRequest(AbstractModel):
@@ -2043,6 +2060,9 @@ class RoleInfo(AbstractModel):
         :type UpdateTime: str
         :param ConsoleLogin: 角色是否允许登录
         :type ConsoleLogin: int
+        :param RoleType: 角色类型，取user或system
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RoleType: str
         """
         self.RoleId = None
         self.RoleName = None
@@ -2051,6 +2071,7 @@ class RoleInfo(AbstractModel):
         self.AddTime = None
         self.UpdateTime = None
         self.ConsoleLogin = None
+        self.RoleType = None
 
 
     def _deserialize(self, params):
@@ -2061,6 +2082,7 @@ class RoleInfo(AbstractModel):
         self.AddTime = params.get("AddTime")
         self.UpdateTime = params.get("UpdateTime")
         self.ConsoleLogin = params.get("ConsoleLogin")
+        self.RoleType = params.get("RoleType")
 
 
 class SAMLProviderInfo(AbstractModel):
@@ -2177,6 +2199,9 @@ class StrategyInfo(AbstractModel):
         :param IsAttached: 当需要查询标记实体是否已经关联策略时不为null。0表示未关联策略，1表示已关联策略
 注意：此字段可能返回 null，表示取不到有效值。
         :type IsAttached: int
+        :param Deactived: 是否已下线
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Deactived: int
         """
         self.PolicyId = None
         self.PolicyName = None
@@ -2187,6 +2212,7 @@ class StrategyInfo(AbstractModel):
         self.Attachments = None
         self.ServiceType = None
         self.IsAttached = None
+        self.Deactived = None
 
 
     def _deserialize(self, params):
@@ -2199,6 +2225,7 @@ class StrategyInfo(AbstractModel):
         self.Attachments = params.get("Attachments")
         self.ServiceType = params.get("ServiceType")
         self.IsAttached = params.get("IsAttached")
+        self.Deactived = params.get("Deactived")
 
 
 class SubAccountInfo(AbstractModel):
@@ -2337,13 +2364,13 @@ class UpdatePolicyRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param PolicyId: 策略 id
+        :param PolicyId: 策略ID
         :type PolicyId: int
         :param PolicyName: 策略名
         :type PolicyName: str
         :param Description: 策略描述
         :type Description: str
-        :param PolicyDocument: 策略文档
+        :param PolicyDocument: 策略文档，示例：{"version":"2.0","statement":[{"action":"name/sts:AssumeRole","effect":"allow","principal":{"service":["cloudaudit.cloud.tencent.com","cls.cloud.tencent.com"]}}]}，principal用于指定角色的授权对象。获取该参数可参阅 获取角色详情（https://cloud.tencent.com/document/product/598/36221） 输出参数RoleInfo
         :type PolicyDocument: str
         """
         self.PolicyId = None
@@ -2473,7 +2500,7 @@ class UpdateUserRequest(AbstractModel):
         :type Remark: str
         :param ConsoleLogin: 子用户是否可以登录控制台。传0子用户无法登录控制台，传1子用户可以登录控制台。
         :type ConsoleLogin: int
-        :param Password: 子用户控制台登录密码，若未进行密码规则设置则默认密码规则为8位以上同时包含大写小字母、数字和特殊字符。只有可以登录控制台时才有效，如果传空并且上面指定允许登录控制台，则自动生成随机密码，随机密码规则为32位包含大写小字母、数字和特殊字符。
+        :param Password: 子用户控制台登录密码，若未进行密码规则设置则默认密码规则为8位以上同时包含大小写字母、数字和特殊字符。只有可以登录控制台时才有效，如果传空并且上面指定允许登录控制台，则自动生成随机密码，随机密码规则为32位包含大小写字母、数字和特殊字符。
         :type Password: str
         :param NeedResetPassword: 子用户是否要在下次登录时重置密码。传0子用户下次登录控制台不需重置密码，传1子用户下次登录控制台需要重置密码。
         :type NeedResetPassword: int

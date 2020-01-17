@@ -16,6 +16,189 @@
 from tencentcloud.common.abstract_model import AbstractModel
 
 
+class AddSignStatus(AbstractModel):
+    """添加签名响应
+
+    """
+
+    def __init__(self):
+        """
+        :param SignId: 签名Id。
+        :type SignId: int
+        :param SignApplyId: 签名申请Id。
+        :type SignApplyId: int
+        """
+        self.SignId = None
+        self.SignApplyId = None
+
+
+    def _deserialize(self, params):
+        self.SignId = params.get("SignId")
+        self.SignApplyId = params.get("SignApplyId")
+
+
+class AddSmsSignRequest(AbstractModel):
+    """AddSmsSign请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param SignName: 签名名称。
+        :type SignName: str
+        :param SignType: 签名类型。其中每种类型后面标注了其可选的 DocumentType（证明类型）：
+0：公司（0，1，2，3）。
+1：APP（0，1，2，3，4） 。
+2：网站（0，1，2，3，5）。
+3：公众号或者小程序（0，1，2，3，6）。
+4：商标（7）。
+5：政府/机关事业单位/其他机构（2，3）。
+注：必须按照对应关系选择证明类型，否则会审核失败。
+        :type SignType: int
+        :param DocumentType: 证明类型。其中：
+0：三证合一。
+1：企业营业执照。
+2：组织机构代码证书。
+3：社会信用代码证书。
+4：应用后台管理截图(个人开发APP)。
+5：网站备案后台截图(个人开发网站)。
+6：小程序设置页面截图(个人认证小程序)。
+7：商标注册书。
+        :type DocumentType: int
+        :param International: 是否国际短信。其中：
+0：表示国内短信。
+1：表示海外短信。
+        :type International: int
+        :param UsedMethod: 签名用途。其中：
+0：自用。
+1：他用。
+        :type UsedMethod: int
+        :param ProofImage: 签名对应的资质证明图片需先进行 base64 编码格式转换，将转换后的字符串去掉前缀`data:image/jpeg;base64,`再赋值给该参数。
+        :type ProofImage: str
+        :param CommissionImage: 委托授权证明。选择 UsedMethod 为他用之后需要提交委托的授权证明。
+图片需先进行 base64 编码格式转换，将转换后的字符串去掉前缀`data:image/jpeg;base64,`再赋值给该参数。
+注：只有 UsedMethod 在选择为 1（他用）时，这个字段才会生效。
+        :type CommissionImage: str
+        :param Remark: 签名的申请备注。
+        :type Remark: str
+        """
+        self.SignName = None
+        self.SignType = None
+        self.DocumentType = None
+        self.International = None
+        self.UsedMethod = None
+        self.ProofImage = None
+        self.CommissionImage = None
+        self.Remark = None
+
+
+    def _deserialize(self, params):
+        self.SignName = params.get("SignName")
+        self.SignType = params.get("SignType")
+        self.DocumentType = params.get("DocumentType")
+        self.International = params.get("International")
+        self.UsedMethod = params.get("UsedMethod")
+        self.ProofImage = params.get("ProofImage")
+        self.CommissionImage = params.get("CommissionImage")
+        self.Remark = params.get("Remark")
+
+
+class AddSmsSignResponse(AbstractModel):
+    """AddSmsSign返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param AddSignStatus: 添加签名响应
+        :type AddSignStatus: :class:`tencentcloud.sms.v20190711.models.AddSignStatus`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.AddSignStatus = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("AddSignStatus") is not None:
+            self.AddSignStatus = AddSignStatus()
+            self.AddSignStatus._deserialize(params.get("AddSignStatus"))
+        self.RequestId = params.get("RequestId")
+
+
+class AddSmsTemplateRequest(AbstractModel):
+    """AddSmsTemplate请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param TemplateName: 模板名称。
+        :type TemplateName: str
+        :param TemplateContent: 模板内容。
+        :type TemplateContent: str
+        :param SmsType: 短信类型，0表示普通短信, 1表示营销短信。
+        :type SmsType: int
+        :param International: 0表示国内短信，1表示国际/港澳台短信，默认为0。
+        :type International: int
+        :param Remark: 模板备注，例如申请原因，使用场景等。
+        :type Remark: str
+        """
+        self.TemplateName = None
+        self.TemplateContent = None
+        self.SmsType = None
+        self.International = None
+        self.Remark = None
+
+
+    def _deserialize(self, params):
+        self.TemplateName = params.get("TemplateName")
+        self.TemplateContent = params.get("TemplateContent")
+        self.SmsType = params.get("SmsType")
+        self.International = params.get("International")
+        self.Remark = params.get("Remark")
+
+
+class AddSmsTemplateResponse(AbstractModel):
+    """AddSmsTemplate返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param AddTemplateStatus: 添加短信模板响应包体
+        :type AddTemplateStatus: :class:`tencentcloud.sms.v20190711.models.AddTemplateStatus`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.AddTemplateStatus = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("AddTemplateStatus") is not None:
+            self.AddTemplateStatus = AddTemplateStatus()
+            self.AddTemplateStatus._deserialize(params.get("AddTemplateStatus"))
+        self.RequestId = params.get("RequestId")
+
+
+class AddTemplateStatus(AbstractModel):
+    """添加模板参数响应
+
+    """
+
+    def __init__(self):
+        """
+        :param TemplateId: 模板参数
+        :type TemplateId: str
+        """
+        self.TemplateId = None
+
+
+    def _deserialize(self, params):
+        self.TemplateId = params.get("TemplateId")
+
+
 class CallbackStatusStatistics(AbstractModel):
     """回执数据统计响应包体
 
@@ -122,6 +305,319 @@ class CallbackStatusStatisticsResponse(AbstractModel):
             self.CallbackStatusStatistics = CallbackStatusStatistics()
             self.CallbackStatusStatistics._deserialize(params.get("CallbackStatusStatistics"))
         self.RequestId = params.get("RequestId")
+
+
+class DeleteSignStatus(AbstractModel):
+    """删除签名响应
+
+    """
+
+    def __init__(self):
+        """
+        :param DeleteStatus: 删除状态信息。
+        :type DeleteStatus: str
+        :param DeleteTime: 删除时间，UNIX 时间戳（单位：秒）。
+        :type DeleteTime: int
+        """
+        self.DeleteStatus = None
+        self.DeleteTime = None
+
+
+    def _deserialize(self, params):
+        self.DeleteStatus = params.get("DeleteStatus")
+        self.DeleteTime = params.get("DeleteTime")
+
+
+class DeleteSmsSignRequest(AbstractModel):
+    """DeleteSmsSign请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param SignId: 待删除的签名 ID。
+        :type SignId: int
+        """
+        self.SignId = None
+
+
+    def _deserialize(self, params):
+        self.SignId = params.get("SignId")
+
+
+class DeleteSmsSignResponse(AbstractModel):
+    """DeleteSmsSign返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param DeleteSignStatus: 删除签名响应
+        :type DeleteSignStatus: :class:`tencentcloud.sms.v20190711.models.DeleteSignStatus`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.DeleteSignStatus = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("DeleteSignStatus") is not None:
+            self.DeleteSignStatus = DeleteSignStatus()
+            self.DeleteSignStatus._deserialize(params.get("DeleteSignStatus"))
+        self.RequestId = params.get("RequestId")
+
+
+class DeleteSmsTemplateRequest(AbstractModel):
+    """DeleteSmsTemplate请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param TemplateId: 待删除的模板 ID。
+        :type TemplateId: int
+        """
+        self.TemplateId = None
+
+
+    def _deserialize(self, params):
+        self.TemplateId = params.get("TemplateId")
+
+
+class DeleteSmsTemplateResponse(AbstractModel):
+    """DeleteSmsTemplate返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param DeleteTemplateStatus: 删除模板响应
+        :type DeleteTemplateStatus: :class:`tencentcloud.sms.v20190711.models.DeleteTemplateStatus`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.DeleteTemplateStatus = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("DeleteTemplateStatus") is not None:
+            self.DeleteTemplateStatus = DeleteTemplateStatus()
+            self.DeleteTemplateStatus._deserialize(params.get("DeleteTemplateStatus"))
+        self.RequestId = params.get("RequestId")
+
+
+class DeleteTemplateStatus(AbstractModel):
+    """删除模板响应
+
+    """
+
+    def __init__(self):
+        """
+        :param DeleteStatus: 删除状态信息。
+        :type DeleteStatus: str
+        :param DeleteTime: 删除时间，UNIX 时间戳（单位：秒）。
+        :type DeleteTime: int
+        """
+        self.DeleteStatus = None
+        self.DeleteTime = None
+
+
+    def _deserialize(self, params):
+        self.DeleteStatus = params.get("DeleteStatus")
+        self.DeleteTime = params.get("DeleteTime")
+
+
+class ModifySignStatus(AbstractModel):
+    """修改签名响应
+
+    """
+
+    def __init__(self):
+        """
+        :param SignId: 签名Id
+        :type SignId: int
+        :param SignApplyId: 签名修改申请Id
+        :type SignApplyId: str
+        """
+        self.SignId = None
+        self.SignApplyId = None
+
+
+    def _deserialize(self, params):
+        self.SignId = params.get("SignId")
+        self.SignApplyId = params.get("SignApplyId")
+
+
+class ModifySmsSignRequest(AbstractModel):
+    """ModifySmsSign请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param SignId: 待修改的签名Id。
+        :type SignId: int
+        :param SignName: 签名名称。
+        :type SignName: str
+        :param SignType: 签名类型。其中每种类型后面标注了其可选的 DocumentType（证明类型）：
+0：公司（0，1，2，3）。
+1：APP（0，1，2，3，4） 。
+2：网站（0，1，2，3，5）。
+3：公众号或者小程序（0，1，2，3，6）。
+4：商标（7）。
+5：政府/机关事业单位/其他机构（2，3）。
+注：必须按照对应关系选择证明类型，否则会审核失败。
+        :type SignType: int
+        :param DocumentType: 证明类型。其中：
+0：三证合一。
+1：企业营业执照。
+2：组织机构代码证书。
+3：社会信用代码证书。
+4：应用后台管理截图(个人开发APP)。
+5：网站备案后台截图(个人开发网站)。
+6：小程序设置页面截图(个人认证小程序)。
+7：商标注册书。
+        :type DocumentType: int
+        :param International: 是否国际短信。其中：
+0：表示国内短信。
+1：表示海外短信。
+        :type International: int
+        :param UsedMethod: 签名用途。其中：
+0：自用。
+1：他用。
+        :type UsedMethod: int
+        :param ProofImage: 签名对应的资质证明图片需先进行 base64 编码格式转换，将转换后的字符串去掉前缀`data:image/jpeg;base64,`再赋值给该参数。
+        :type ProofImage: str
+        :param CommissionImage: 委托授权证明。选择 UsedMethod 为他用之后需要提交委托的授权证明。
+图片需先进行 base64 编码格式转换，将转换后的字符串去掉前缀`data:image/jpeg;base64,`再赋值给该参数。
+注：只有 UsedMethod 在选择为 1（他用）时，这个字段才会生效。
+        :type CommissionImage: str
+        :param Remark: 签名的申请备注。
+        :type Remark: str
+        """
+        self.SignId = None
+        self.SignName = None
+        self.SignType = None
+        self.DocumentType = None
+        self.International = None
+        self.UsedMethod = None
+        self.ProofImage = None
+        self.CommissionImage = None
+        self.Remark = None
+
+
+    def _deserialize(self, params):
+        self.SignId = params.get("SignId")
+        self.SignName = params.get("SignName")
+        self.SignType = params.get("SignType")
+        self.DocumentType = params.get("DocumentType")
+        self.International = params.get("International")
+        self.UsedMethod = params.get("UsedMethod")
+        self.ProofImage = params.get("ProofImage")
+        self.CommissionImage = params.get("CommissionImage")
+        self.Remark = params.get("Remark")
+
+
+class ModifySmsSignResponse(AbstractModel):
+    """ModifySmsSign返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ModifySignStatus: 修改签名响应
+        :type ModifySignStatus: :class:`tencentcloud.sms.v20190711.models.ModifySignStatus`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.ModifySignStatus = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("ModifySignStatus") is not None:
+            self.ModifySignStatus = ModifySignStatus()
+            self.ModifySignStatus._deserialize(params.get("ModifySignStatus"))
+        self.RequestId = params.get("RequestId")
+
+
+class ModifySmsTemplateRequest(AbstractModel):
+    """ModifySmsTemplate请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param TemplateId: 待修改的模板的模板 ID。
+        :type TemplateId: int
+        :param TemplateName: 新的模板名称。
+        :type TemplateName: str
+        :param TemplateContent: 新的模板内容。
+        :type TemplateContent: str
+        :param SmsType: 短信类型，0表示普通短信, 1表示营销短信。
+        :type SmsType: int
+        :param International: 0表示国内短信，1表示国际/港澳台短信，默认为0。
+        :type International: int
+        :param Remark: 模板备注，例如申请原因，使用场景等。
+        :type Remark: str
+        """
+        self.TemplateId = None
+        self.TemplateName = None
+        self.TemplateContent = None
+        self.SmsType = None
+        self.International = None
+        self.Remark = None
+
+
+    def _deserialize(self, params):
+        self.TemplateId = params.get("TemplateId")
+        self.TemplateName = params.get("TemplateName")
+        self.TemplateContent = params.get("TemplateContent")
+        self.SmsType = params.get("SmsType")
+        self.International = params.get("International")
+        self.Remark = params.get("Remark")
+
+
+class ModifySmsTemplateResponse(AbstractModel):
+    """ModifySmsTemplate返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ModifyTemplateStatus: 修改模板参数响应
+        :type ModifyTemplateStatus: :class:`tencentcloud.sms.v20190711.models.ModifyTemplateStatus`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.ModifyTemplateStatus = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("ModifyTemplateStatus") is not None:
+            self.ModifyTemplateStatus = ModifyTemplateStatus()
+            self.ModifyTemplateStatus._deserialize(params.get("ModifyTemplateStatus"))
+        self.RequestId = params.get("RequestId")
+
+
+class ModifyTemplateStatus(AbstractModel):
+    """修改模板参数响应
+
+    """
+
+    def __init__(self):
+        """
+        :param TemplateId: 模板参数
+        :type TemplateId: int
+        """
+        self.TemplateId = None
+
+
+    def _deserialize(self, params):
+        self.TemplateId = params.get("TemplateId")
 
 
 class PullSmsReplyStatus(AbstractModel):
@@ -437,7 +933,7 @@ class SendSmsRequest(AbstractModel):
         :type TemplateID: str
         :param SmsSdkAppid: 短信SdkAppid在 [短信控制台](https://console.cloud.tencent.com/sms/smslist)  添加应用后生成的实际SdkAppid，示例如1400006666。
         :type SmsSdkAppid: str
-        :param Sign: 短信签名内容，使用 UTF-8 编码，必须填写已审核通过的签名，签名信息可登录 [短信控制台](https://console.cloud.tencent.com/sms/smslist)  查看。
+        :param Sign: 短信签名内容，使用 UTF-8 编码，必须填写已审核通过的签名，签名信息可登录 [短信控制台](https://console.cloud.tencent.com/sms/smslist)  查看。注：国内短信为必填参数。
         :type Sign: str
         :param TemplateParamSet: 模板参数，若无模板参数，则设置为空。
         :type TemplateParamSet: list of str

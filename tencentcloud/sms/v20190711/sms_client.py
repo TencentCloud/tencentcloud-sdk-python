@@ -25,6 +25,62 @@ class SmsClient(AbstractClient):
     _endpoint = 'sms.tencentcloudapi.com'
 
 
+    def AddSmsSign(self, request):
+        """添加短信签名
+
+        :param request: Request instance for AddSmsSign.
+        :type request: :class:`tencentcloud.sms.v20190711.models.AddSmsSignRequest`
+        :rtype: :class:`tencentcloud.sms.v20190711.models.AddSmsSignResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("AddSmsSign", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.AddSmsSignResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def AddSmsTemplate(self, request):
+        """添加短信模板
+
+        :param request: Request instance for AddSmsTemplate.
+        :type request: :class:`tencentcloud.sms.v20190711.models.AddSmsTemplateRequest`
+        :rtype: :class:`tencentcloud.sms.v20190711.models.AddSmsTemplateResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("AddSmsTemplate", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.AddSmsTemplateResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def CallbackStatusStatistics(self, request):
         """统计用户回执的数据。
 
@@ -39,6 +95,118 @@ class SmsClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CallbackStatusStatisticsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DeleteSmsSign(self, request):
+        """删除短信签名
+
+        :param request: Request instance for DeleteSmsSign.
+        :type request: :class:`tencentcloud.sms.v20190711.models.DeleteSmsSignRequest`
+        :rtype: :class:`tencentcloud.sms.v20190711.models.DeleteSmsSignResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DeleteSmsSign", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DeleteSmsSignResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DeleteSmsTemplate(self, request):
+        """删除短信模板
+
+        :param request: Request instance for DeleteSmsTemplate.
+        :type request: :class:`tencentcloud.sms.v20190711.models.DeleteSmsTemplateRequest`
+        :rtype: :class:`tencentcloud.sms.v20190711.models.DeleteSmsTemplateResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DeleteSmsTemplate", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DeleteSmsTemplateResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ModifySmsSign(self, request):
+        """修改短信签名
+
+        :param request: Request instance for ModifySmsSign.
+        :type request: :class:`tencentcloud.sms.v20190711.models.ModifySmsSignRequest`
+        :rtype: :class:`tencentcloud.sms.v20190711.models.ModifySmsSignResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ModifySmsSign", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ModifySmsSignResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ModifySmsTemplate(self, request):
+        """修改短信模板
+
+        :param request: Request instance for ModifySmsTemplate.
+        :type request: :class:`tencentcloud.sms.v20190711.models.ModifySmsTemplateRequest`
+        :rtype: :class:`tencentcloud.sms.v20190711.models.ModifySmsTemplateResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ModifySmsTemplate", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ModifySmsTemplateResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

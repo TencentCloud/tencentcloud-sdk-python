@@ -131,13 +131,13 @@ class AddMachineTagRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Quuid: 云主机ID
+        :param Quuid: 云服务器ID
         :type Quuid: str
         :param TagId: 标签ID
         :type TagId: int
-        :param MRegion: 主机地区
+        :param MRegion: 云服务器地区
         :type MRegion: str
-        :param MArea: 主机地区类型(CVM|BM)
+        :param MArea: 云服务器类型(CVM|BM)
         :type MArea: str
         """
         self.Quuid = None
@@ -381,6 +381,12 @@ class BruteAttack(AbstractModel):
         :type MachineName: str
         :param Uuid: 云镜客户端唯一标识UUID。
         :type Uuid: str
+        :param IsProVersion: 是否专业版。
+        :type IsProVersion: bool
+        :param BanStatus: 阻断状态。
+        :type BanStatus: str
+        :param Quuid: 机器UUID
+        :type Quuid: str
         """
         self.Id = None
         self.MachineIp = None
@@ -394,6 +400,9 @@ class BruteAttack(AbstractModel):
         self.CreateTime = None
         self.MachineName = None
         self.Uuid = None
+        self.IsProVersion = None
+        self.BanStatus = None
+        self.Quuid = None
 
 
     def _deserialize(self, params):
@@ -409,6 +418,9 @@ class BruteAttack(AbstractModel):
         self.CreateTime = params.get("CreateTime")
         self.MachineName = params.get("MachineName")
         self.Uuid = params.get("Uuid")
+        self.IsProVersion = params.get("IsProVersion")
+        self.BanStatus = params.get("BanStatus")
+        self.Quuid = params.get("Quuid")
 
 
 class ChargePrepaid(AbstractModel):
@@ -491,7 +503,7 @@ class Component(AbstractModel):
         :type ComponentVersion: str
         :param ComponentType: 组件类型。
 <li>SYSTEM：系统组件</li>
-<li>WEB：WEB组件</li>
+<li>WEB：Web组件</li>
         :type ComponentType: str
         :param ComponentName: 组件名称。
         :type ComponentName: str
@@ -533,7 +545,7 @@ class ComponentStatistics(AbstractModel):
         :param ComponentName: 组件名称。
         :type ComponentName: str
         :param ComponentType: 组件类型。
-<li>WEB：web组件</li>
+<li>WEB：Web组件</li>
 <li>SYSTEM：系统组件</li>
         :type ComponentType: str
         :param Description: 组件描述。
@@ -1047,7 +1059,7 @@ class DeleteNonlocalLoginPlacesRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Ids: 异地登录事件Id数组。
+        :param Ids: 异地登录事件ID数组。
         :type Ids: list of int non-negative
         """
         self.Ids = None
@@ -1645,6 +1657,7 @@ class DescribeAttackLogsRequest(AbstractModel):
         :param Filters: 过滤条件。
 <li>HttpMethod - String - 是否必填：否 - 攻击方法(POST|GET)</li>
 <li>MachineIp - String - 是否必填：否 - 主机内网IP</li>
+<li>DateRange - String - 是否必填：否 - 时间范围(存储最近3个月的数据)，如最近一个月["2019-11-17", "2019-12-17"]</li>
         :type Filters: list of Filter
         """
         self.Limit = None
@@ -4864,6 +4877,7 @@ class Machine(AbstractModel):
         :param MachineStatus: 主机状态。
 <li>OFFLINE: 离线  </li>
 <li>ONLINE: 在线</li>
+<li>MACHINE_STOPPED: 已关机</li>
         :type MachineStatus: str
         :param Uuid: 云镜客户端唯一Uuid，若客户端长时间不在线将返回空字符。
         :type Uuid: str
@@ -5437,6 +5451,56 @@ class OpenProVersionPrepaidResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.DealIds = params.get("DealIds")
+        self.RequestId = params.get("RequestId")
+
+
+class OpenProVersionRequest(AbstractModel):
+    """OpenProVersion请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param MachineType: 云主机类型。
+<li>CVM：表示虚拟主机</li>
+<li>BM:  表示黑石物理机</li>
+        :type MachineType: str
+        :param MachineRegion: 机器所属地域。
+如：ap-guangzhou，ap-shanghai
+        :type MachineRegion: str
+        :param Quuids: 主机唯一标识Uuid数组。
+黑石的InstanceId，CVM的Uuid
+        :type Quuids: list of str
+        :param ActivityId: 活动ID。
+        :type ActivityId: int
+        """
+        self.MachineType = None
+        self.MachineRegion = None
+        self.Quuids = None
+        self.ActivityId = None
+
+
+    def _deserialize(self, params):
+        self.MachineType = params.get("MachineType")
+        self.MachineRegion = params.get("MachineRegion")
+        self.Quuids = params.get("Quuids")
+        self.ActivityId = params.get("ActivityId")
+
+
+class OpenProVersionResponse(AbstractModel):
+    """OpenProVersion返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
 
 
@@ -6038,7 +6102,7 @@ class SeparateMalwaresRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Ids: 木马事件Id数组。
+        :param Ids: 木马事件ID数组。
         :type Ids: list of int non-negative
         """
         self.Ids = None
@@ -6324,7 +6388,7 @@ class UntrustMalwaresRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Ids: 木马Id数组，单次最大处理不能超过200条。
+        :param Ids: 木马ID数组，单次最大处理不能超过200条。
         :type Ids: list of int non-negative
         """
         self.Ids = None
@@ -6572,7 +6636,7 @@ class WeeklyReportVul(AbstractModel):
         :param VulName: 漏洞名称。
         :type VulName: str
         :param VulType: 漏洞类型。
-<li> WEB : WEB漏洞</li>
+<li> WEB : Web漏洞</li>
 <li> SYSTEM :系统组件漏洞</li>
 <li> BASELINE : 安全基线</li>
         :type VulType: str

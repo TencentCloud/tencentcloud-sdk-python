@@ -1299,6 +1299,9 @@ class DeployGroupInfo(AbstractModel):
         :type LimitNum: int
         :param Description: 置放群组详细信息。
         :type Description: str
+        :param DevClass: 置放群组物理机型属性。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DevClass: str
         """
         self.DeployGroupId = None
         self.DeployGroupName = None
@@ -1307,6 +1310,7 @@ class DeployGroupInfo(AbstractModel):
         self.Affinity = None
         self.LimitNum = None
         self.Description = None
+        self.DevClass = None
 
 
     def _deserialize(self, params):
@@ -1317,6 +1321,7 @@ class DeployGroupInfo(AbstractModel):
         self.Affinity = params.get("Affinity")
         self.LimitNum = params.get("LimitNum")
         self.Description = params.get("Description")
+        self.DevClass = params.get("DevClass")
 
 
 class DescribeAccountPrivilegesRequest(AbstractModel):
@@ -2899,7 +2904,7 @@ class DescribeRollbackRangeTimeRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param InstanceIds: 实例 ID 列表，单个实例Id的格式如：cdb-c1nl9rpv。与云数据库控制台页面中显示的实例 ID 相同。
+        :param InstanceIds: 实例 ID 列表，单个实例 ID 的格式如：cdb-c1nl9rpv。与云数据库控制台页面中显示的实例 ID 相同。
         :type InstanceIds: list of str
         """
         self.InstanceIds = None
@@ -3824,7 +3829,7 @@ class InstanceInfo(AbstractModel):
         :type Volume: int
         :param AutoRenew: 自动续费标志，可能的返回值：0-未开通自动续费；1-已开通自动续费；2-已关闭自动续费
         :type AutoRenew: int
-        :param ProtectMode: 数据复制方式
+        :param ProtectMode: 数据复制方式。0 - 异步复制；1 - 半同步复制；2 - 强同步复制
         :type ProtectMode: int
         :param RoGroups: 只读组详细信息
 注意：此字段可能返回 null，表示取不到有效值。
@@ -3839,7 +3844,7 @@ class InstanceInfo(AbstractModel):
         :type Region: str
         :param DeadlineTime: 实例到期时间
         :type DeadlineTime: str
-        :param DeployMode: 可用区部署方式
+        :param DeployMode: 可用区部署方式。可能的值为：0 - 单可用区；1 - 多可用区
         :type DeployMode: int
         :param TaskStatus: 实例任务状态。0 - 没有任务 ,1 - 升级中,2 - 数据导入中,3 - 开放Slave中,4 - 外网访问开通中,5 - 批量操作执行中,6 - 回档中,7 - 外网访问关闭中,8 - 密码修改中,9 - 实例名修改中,10 - 重启中,12 - 自建迁移中,13 - 删除库表中,14 - 灾备实例创建同步中,15 - 升级待切换,16 - 升级切换中,17 - 升级切换完成
         :type TaskStatus: int
@@ -5478,7 +5483,7 @@ class RoGroupAttr(AbstractModel):
         """
         :param RoGroupName: RO 组名称。
         :type RoGroupName: str
-        :param RoMaxDelayTime: RO 实例最大延迟阀值。单位为秒，最小值为 1。注意，RO 组必须设置了开启实例延迟剔除策略，该值才有效。
+        :param RoMaxDelayTime: RO 实例最大延迟阈值。单位为秒，最小值为 1。注意，RO 组必须设置了开启实例延迟剔除策略，该值才有效。
         :type RoMaxDelayTime: int
         :param RoOfflineDelay: 是否开启实例延迟剔除。支持的值包括：1 - 开启；0 - 不开启。注意，若设置开启实例延迟剔除，则必须设置延迟阈值（RoMaxDelayTime）参数。
         :type RoOfflineDelay: int

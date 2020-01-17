@@ -610,7 +610,7 @@ class MongoDBInstanceDetail(AbstractModel):
         :type InstanceType: int
         :param InstanceStatusDesc: 实例状态描述
         :type InstanceStatusDesc: str
-        :param RealInstanceId: 实例对应的物理实例id，回档并替换过的实例有不同的InstanceId和RealInstanceId，从barad获取监控数据等场景下需要用物理id获取
+        :param RealInstanceId: 实例对应的物理实例ID，回档并替换过的实例有不同的InstanceId和RealInstanceId，从barad获取监控数据等场景下需要用物理id获取
         :type RealInstanceId: str
         """
         self.InstanceId = None
@@ -742,7 +742,7 @@ class MongodbShardInfo(AbstractModel):
         :type OplogSize: int
         :param SecondaryNum: 分片从节点数
         :type SecondaryNum: int
-        :param RealReplicaSetId: 分片物理id
+        :param RealReplicaSetId: 分片物理ID
         :type RealReplicaSetId: str
         """
         self.UsedVolume = None
@@ -996,23 +996,23 @@ class SpecificationInfo(AbstractModel):
         :type Region: str
         :param Zone: 可用区信息
         :type Zone: str
-        :param SpecItem: 售卖规格信息
-        :type SpecItem: list of SpecItem
+        :param SpecItems: 售卖规格信息
+        :type SpecItems: list of SpecItem
         """
         self.Region = None
         self.Zone = None
-        self.SpecItem = None
+        self.SpecItems = None
 
 
     def _deserialize(self, params):
         self.Region = params.get("Region")
         self.Zone = params.get("Zone")
-        if params.get("SpecItem") is not None:
-            self.SpecItem = []
-            for item in params.get("SpecItem"):
+        if params.get("SpecItems") is not None:
+            self.SpecItems = []
+            for item in params.get("SpecItems"):
                 obj = SpecItem()
                 obj._deserialize(item)
-                self.SpecItem.append(obj)
+                self.SpecItems.append(obj)
 
 
 class TagInfo(AbstractModel):

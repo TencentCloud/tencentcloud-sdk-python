@@ -25,6 +25,39 @@ class AsrClient(AbstractClient):
     _endpoint = 'asr.tencentcloudapi.com'
 
 
+    def CreateAsrVocab(self, request):
+        """用户通过本接口进行热词表的创建。
+        <br>•   默认最多可创建30个热词表。
+        <br>•   每个热词表最多可添加128个词，每个词最长10个字，不能超出限制。
+        <br>•   热词表可以通过数组或者本地文件形式上传。
+        <br>•   本地文件必须为UTF-8编码格式，每行仅添加一个热词且不能包含标点和特殊字符。
+        <br>•   热词权重取值范围为[1,10]之间的整数，权重越大代表该词被识别出来的概率越大。
+
+        :param request: Request instance for CreateAsrVocab.
+        :type request: :class:`tencentcloud.asr.v20190614.models.CreateAsrVocabRequest`
+        :rtype: :class:`tencentcloud.asr.v20190614.models.CreateAsrVocabResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("CreateAsrVocab", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateAsrVocabResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def CreateRecTask(self, request):
         """本接口服务对录音时长1小时以内的录音文件进行识别，异步返回识别全部结果。
         <br>• 接口是 HTTP RESTful 形式
@@ -45,6 +78,34 @@ class AsrClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateRecTaskResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DeleteAsrVocab(self, request):
+        """用户通过本接口进行热词表的删除。
+
+        :param request: Request instance for DeleteAsrVocab.
+        :type request: :class:`tencentcloud.asr.v20190614.models.DeleteAsrVocabRequest`
+        :rtype: :class:`tencentcloud.asr.v20190614.models.DeleteAsrVocabResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DeleteAsrVocab", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DeleteAsrVocabResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -89,6 +150,34 @@ class AsrClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def GetAsrVocab(self, request):
+        """用户根据词表的ID可以获取对应的热词表信息
+
+        :param request: Request instance for GetAsrVocab.
+        :type request: :class:`tencentcloud.asr.v20190614.models.GetAsrVocabRequest`
+        :rtype: :class:`tencentcloud.asr.v20190614.models.GetAsrVocabResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("GetAsrVocab", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.GetAsrVocabResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def SentenceRecognition(self, request):
         """本接口用于对60秒之内的短音频文件进行识别。
         <br>•   支持中文普通话、英语、粤语。
@@ -108,6 +197,34 @@ class AsrClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.SentenceRecognitionResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def UpdateAsrVocab(self, request):
+        """用户通过本接口进行对应的词表信息更新。
+
+        :param request: Request instance for UpdateAsrVocab.
+        :type request: :class:`tencentcloud.asr.v20190614.models.UpdateAsrVocabRequest`
+        :rtype: :class:`tencentcloud.asr.v20190614.models.UpdateAsrVocabResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("UpdateAsrVocab", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.UpdateAsrVocabResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

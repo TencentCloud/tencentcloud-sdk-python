@@ -1034,7 +1034,7 @@ class CamClient(AbstractClient):
 
 
     def SetFlag(self, request):
-        """设置用户的登录，敏感操作，异步登录设置
+        """设置用户的登录保护和敏感操作校验方式
 
         :param request: Request instance for SetFlag.
         :type request: :class:`tencentcloud.cam.v20190116.models.SetFlagRequest`

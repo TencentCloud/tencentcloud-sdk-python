@@ -16,6 +16,657 @@
 from tencentcloud.common.abstract_model import AbstractModel
 
 
+class AddCdnDomainRequest(AbstractModel):
+    """AddCdnDomain请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Domain: 域名
+        :type Domain: str
+        :param ServiceType: 加速域名业务类型
+web：静态加速
+download：下载加速
+media：流媒体点播加速
+        :type ServiceType: str
+        :param Origin: 源站配置
+        :type Origin: :class:`tencentcloud.cdn.v20180606.models.Origin`
+        :param ProjectId: 项目 ID，默认为 0，代表【默认项目】
+        :type ProjectId: int
+        :param IpFilter: IP 黑白名单配置
+        :type IpFilter: :class:`tencentcloud.cdn.v20180606.models.IpFilter`
+        :param IpFreqLimit: IP 限频配置
+        :type IpFreqLimit: :class:`tencentcloud.cdn.v20180606.models.IpFreqLimit`
+        :param StatusCodeCache: 状态码缓存配置
+        :type StatusCodeCache: :class:`tencentcloud.cdn.v20180606.models.StatusCodeCache`
+        :param Compression: 智能压缩配置
+        :type Compression: :class:`tencentcloud.cdn.v20180606.models.Compression`
+        :param BandwidthAlert: 带宽封顶配置
+        :type BandwidthAlert: :class:`tencentcloud.cdn.v20180606.models.BandwidthAlert`
+        :param RangeOriginPull: Range 回源配置
+        :type RangeOriginPull: :class:`tencentcloud.cdn.v20180606.models.RangeOriginPull`
+        :param FollowRedirect: 301/302 回源跟随配置。
+        :type FollowRedirect: :class:`tencentcloud.cdn.v20180606.models.FollowRedirect`
+        :param ErrorPage: 错误码重定向配置（功能灰度中，尚未全量）
+        :type ErrorPage: :class:`tencentcloud.cdn.v20180606.models.ErrorPage`
+        :param RequestHeader: 请求头部配置
+        :type RequestHeader: :class:`tencentcloud.cdn.v20180606.models.RequestHeader`
+        :param ResponseHeader: 响应头部配置
+        :type ResponseHeader: :class:`tencentcloud.cdn.v20180606.models.ResponseHeader`
+        :param DownstreamCapping: 下载速度配置
+        :type DownstreamCapping: :class:`tencentcloud.cdn.v20180606.models.DownstreamCapping`
+        :param CacheKey: 节点缓存键配置
+        :type CacheKey: :class:`tencentcloud.cdn.v20180606.models.CacheKey`
+        :param ResponseHeaderCache: 头部缓存配置
+        :type ResponseHeaderCache: :class:`tencentcloud.cdn.v20180606.models.ResponseHeaderCache`
+        :param VideoSeek: 视频拖拽配置
+        :type VideoSeek: :class:`tencentcloud.cdn.v20180606.models.VideoSeek`
+        :param Cache: 缓存过期时间配置
+        :type Cache: :class:`tencentcloud.cdn.v20180606.models.Cache`
+        :param OriginPullOptimization: 跨国链路优化配置
+        :type OriginPullOptimization: :class:`tencentcloud.cdn.v20180606.models.OriginPullOptimization`
+        :param Https: Https 加速配置
+        :type Https: :class:`tencentcloud.cdn.v20180606.models.Https`
+        :param Authentication: 时间戳防盗链配置
+        :type Authentication: :class:`tencentcloud.cdn.v20180606.models.Authentication`
+        :param Seo: SEO 优化配置
+        :type Seo: :class:`tencentcloud.cdn.v20180606.models.Seo`
+        :param ForceRedirect: 访问协议强制跳转配置
+        :type ForceRedirect: :class:`tencentcloud.cdn.v20180606.models.ForceRedirect`
+        :param Referer: Referer 防盗链配置
+        :type Referer: :class:`tencentcloud.cdn.v20180606.models.Referer`
+        :param MaxAge: 浏览器缓存配置（功能灰度中，尚未全量）
+        :type MaxAge: :class:`tencentcloud.cdn.v20180606.models.MaxAge`
+        :param Ipv6: Ipv6 配置（功能灰度中，尚未全量）
+        :type Ipv6: :class:`tencentcloud.cdn.v20180606.models.Ipv6`
+        :param SpecificConfig: 地域属性特殊配置
+适用于域名境内加速、境外加速配置不一致场景
+        :type SpecificConfig: :class:`tencentcloud.cdn.v20180606.models.SpecificConfig`
+        :param Area: 域名加速区域
+mainland：中国境内加速
+overseas：中国境外加速
+global：全球加速
+使用中国境外加速、全球加速时，需要先开通中国境外加速服务
+        :type Area: str
+        """
+        self.Domain = None
+        self.ServiceType = None
+        self.Origin = None
+        self.ProjectId = None
+        self.IpFilter = None
+        self.IpFreqLimit = None
+        self.StatusCodeCache = None
+        self.Compression = None
+        self.BandwidthAlert = None
+        self.RangeOriginPull = None
+        self.FollowRedirect = None
+        self.ErrorPage = None
+        self.RequestHeader = None
+        self.ResponseHeader = None
+        self.DownstreamCapping = None
+        self.CacheKey = None
+        self.ResponseHeaderCache = None
+        self.VideoSeek = None
+        self.Cache = None
+        self.OriginPullOptimization = None
+        self.Https = None
+        self.Authentication = None
+        self.Seo = None
+        self.ForceRedirect = None
+        self.Referer = None
+        self.MaxAge = None
+        self.Ipv6 = None
+        self.SpecificConfig = None
+        self.Area = None
+
+
+    def _deserialize(self, params):
+        self.Domain = params.get("Domain")
+        self.ServiceType = params.get("ServiceType")
+        if params.get("Origin") is not None:
+            self.Origin = Origin()
+            self.Origin._deserialize(params.get("Origin"))
+        self.ProjectId = params.get("ProjectId")
+        if params.get("IpFilter") is not None:
+            self.IpFilter = IpFilter()
+            self.IpFilter._deserialize(params.get("IpFilter"))
+        if params.get("IpFreqLimit") is not None:
+            self.IpFreqLimit = IpFreqLimit()
+            self.IpFreqLimit._deserialize(params.get("IpFreqLimit"))
+        if params.get("StatusCodeCache") is not None:
+            self.StatusCodeCache = StatusCodeCache()
+            self.StatusCodeCache._deserialize(params.get("StatusCodeCache"))
+        if params.get("Compression") is not None:
+            self.Compression = Compression()
+            self.Compression._deserialize(params.get("Compression"))
+        if params.get("BandwidthAlert") is not None:
+            self.BandwidthAlert = BandwidthAlert()
+            self.BandwidthAlert._deserialize(params.get("BandwidthAlert"))
+        if params.get("RangeOriginPull") is not None:
+            self.RangeOriginPull = RangeOriginPull()
+            self.RangeOriginPull._deserialize(params.get("RangeOriginPull"))
+        if params.get("FollowRedirect") is not None:
+            self.FollowRedirect = FollowRedirect()
+            self.FollowRedirect._deserialize(params.get("FollowRedirect"))
+        if params.get("ErrorPage") is not None:
+            self.ErrorPage = ErrorPage()
+            self.ErrorPage._deserialize(params.get("ErrorPage"))
+        if params.get("RequestHeader") is not None:
+            self.RequestHeader = RequestHeader()
+            self.RequestHeader._deserialize(params.get("RequestHeader"))
+        if params.get("ResponseHeader") is not None:
+            self.ResponseHeader = ResponseHeader()
+            self.ResponseHeader._deserialize(params.get("ResponseHeader"))
+        if params.get("DownstreamCapping") is not None:
+            self.DownstreamCapping = DownstreamCapping()
+            self.DownstreamCapping._deserialize(params.get("DownstreamCapping"))
+        if params.get("CacheKey") is not None:
+            self.CacheKey = CacheKey()
+            self.CacheKey._deserialize(params.get("CacheKey"))
+        if params.get("ResponseHeaderCache") is not None:
+            self.ResponseHeaderCache = ResponseHeaderCache()
+            self.ResponseHeaderCache._deserialize(params.get("ResponseHeaderCache"))
+        if params.get("VideoSeek") is not None:
+            self.VideoSeek = VideoSeek()
+            self.VideoSeek._deserialize(params.get("VideoSeek"))
+        if params.get("Cache") is not None:
+            self.Cache = Cache()
+            self.Cache._deserialize(params.get("Cache"))
+        if params.get("OriginPullOptimization") is not None:
+            self.OriginPullOptimization = OriginPullOptimization()
+            self.OriginPullOptimization._deserialize(params.get("OriginPullOptimization"))
+        if params.get("Https") is not None:
+            self.Https = Https()
+            self.Https._deserialize(params.get("Https"))
+        if params.get("Authentication") is not None:
+            self.Authentication = Authentication()
+            self.Authentication._deserialize(params.get("Authentication"))
+        if params.get("Seo") is not None:
+            self.Seo = Seo()
+            self.Seo._deserialize(params.get("Seo"))
+        if params.get("ForceRedirect") is not None:
+            self.ForceRedirect = ForceRedirect()
+            self.ForceRedirect._deserialize(params.get("ForceRedirect"))
+        if params.get("Referer") is not None:
+            self.Referer = Referer()
+            self.Referer._deserialize(params.get("Referer"))
+        if params.get("MaxAge") is not None:
+            self.MaxAge = MaxAge()
+            self.MaxAge._deserialize(params.get("MaxAge"))
+        if params.get("Ipv6") is not None:
+            self.Ipv6 = Ipv6()
+            self.Ipv6._deserialize(params.get("Ipv6"))
+        if params.get("SpecificConfig") is not None:
+            self.SpecificConfig = SpecificConfig()
+            self.SpecificConfig._deserialize(params.get("SpecificConfig"))
+        self.Area = params.get("Area")
+
+
+class AddCdnDomainResponse(AbstractModel):
+    """AddCdnDomain返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class AdvanceCacheRule(AbstractModel):
+    """缓存配置高级版本规则
+
+    """
+
+    def __init__(self):
+        """
+        :param CacheType: 规则类型：
+all：所有文件生效
+file：指定文件后缀生效
+directory：指定路径生效
+path：指定绝对路径生效
+default：源站未返回 max-age 情况下的缓存规则
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CacheType: str
+        :param CacheContents: 对应类型下的匹配内容：
+all 时填充 *
+file 时填充后缀名，如 jpg、txt
+directory 时填充路径，如 /xxx/test/
+path 时填充绝对路径，如 /xxx/test.html
+default 时填充 "no max-age"
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CacheContents: list of str
+        :param CacheTime: 缓存过期时间
+单位为秒，最大可设置为 365 天
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CacheTime: int
+        """
+        self.CacheType = None
+        self.CacheContents = None
+        self.CacheTime = None
+
+
+    def _deserialize(self, params):
+        self.CacheType = params.get("CacheType")
+        self.CacheContents = params.get("CacheContents")
+        self.CacheTime = params.get("CacheTime")
+
+
+class AdvancedCache(AbstractModel):
+    """缓存过期配置高级版（功能灰度中，尚未全量）
+    注意：该版本不支持设置首页缓存规则
+
+    """
+
+    def __init__(self):
+        """
+        :param CacheRules: 缓存过期规则
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CacheRules: list of AdvanceCacheRule
+        :param IgnoreCacheControl: 强制缓存配置
+on：开启
+off：关闭
+开启时，源站返回 no-cache、no-store 头部时，仍按照缓存过期规则进行节点缓存
+默认为关闭状态
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IgnoreCacheControl: str
+        :param IgnoreSetCookie: 忽略源站的 Set-Cookie 头部
+on：开启
+off：关闭
+默认为关闭状态
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IgnoreSetCookie: str
+        """
+        self.CacheRules = None
+        self.IgnoreCacheControl = None
+        self.IgnoreSetCookie = None
+
+
+    def _deserialize(self, params):
+        if params.get("CacheRules") is not None:
+            self.CacheRules = []
+            for item in params.get("CacheRules"):
+                obj = AdvanceCacheRule()
+                obj._deserialize(item)
+                self.CacheRules.append(obj)
+        self.IgnoreCacheControl = params.get("IgnoreCacheControl")
+        self.IgnoreSetCookie = params.get("IgnoreSetCookie")
+
+
+class Authentication(AbstractModel):
+    """时间戳防盗链配置
+
+    """
+
+    def __init__(self):
+        """
+        :param Switch: 防盗链配置开关
+on：开启
+off：关闭
+开启时必须且只配置一种模式，其余模式需要设置为 null
+        :type Switch: str
+        :param TypeA: 时间戳防盗链模式 A 配置
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TypeA: :class:`tencentcloud.cdn.v20180606.models.AuthenticationTypeA`
+        :param TypeB: 时间戳防盗链模式 B 配置（模式 B 后台升级中，暂时不支持配置）
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TypeB: :class:`tencentcloud.cdn.v20180606.models.AuthenticationTypeB`
+        :param TypeC: 时间戳防盗链模式 C 配置
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TypeC: :class:`tencentcloud.cdn.v20180606.models.AuthenticationTypeC`
+        :param TypeD: 时间戳防盗链模式 D 配置
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TypeD: :class:`tencentcloud.cdn.v20180606.models.AuthenticationTypeD`
+        """
+        self.Switch = None
+        self.TypeA = None
+        self.TypeB = None
+        self.TypeC = None
+        self.TypeD = None
+
+
+    def _deserialize(self, params):
+        self.Switch = params.get("Switch")
+        if params.get("TypeA") is not None:
+            self.TypeA = AuthenticationTypeA()
+            self.TypeA._deserialize(params.get("TypeA"))
+        if params.get("TypeB") is not None:
+            self.TypeB = AuthenticationTypeB()
+            self.TypeB._deserialize(params.get("TypeB"))
+        if params.get("TypeC") is not None:
+            self.TypeC = AuthenticationTypeC()
+            self.TypeC._deserialize(params.get("TypeC"))
+        if params.get("TypeD") is not None:
+            self.TypeD = AuthenticationTypeD()
+            self.TypeD._deserialize(params.get("TypeD"))
+
+
+class AuthenticationTypeA(AbstractModel):
+    """时间戳防盗链模式 A 配置
+    时间戳防盗链模式 A 的访问 URL 格式为：http://DomainName/Filename?sign=timestamp-rand-uid-md5hash
+    其中 timestamp 为十进制 UNIX 时间戳；
+    rand 为随机字符串，0 ~ 100 位大小写字母与数字组成；
+    uid 为 0；
+    md5hash：MD5（文件路径-timestamp-rand-uid-自定义密钥）
+
+    """
+
+    def __init__(self):
+        """
+        :param SecretKey: 计算签名的密钥
+仅允许大小写字母与数字，长度 6~32 位
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SecretKey: str
+        :param SignParam: 签名参数名设置
+仅允许大小写字母、数字或下划线，长度 1~100 位，不能以数字开头
+        :type SignParam: str
+        :param ExpireTime: 签名过期时间设置
+单位为秒，最大可设置为 31536000
+        :type ExpireTime: int
+        :param FileExtensions: 鉴权/不做鉴权的文件扩展名列表设置
+如果包含字符 *  则表示所有文件
+        :type FileExtensions: list of str
+        :param FilterType: whitelist：白名单，表示对除了 FileExtensions 列表之外的所有类型进行鉴权
+blacklist：黑名单，表示仅对 FileExtensions 中的类型进行鉴权
+        :type FilterType: str
+        """
+        self.SecretKey = None
+        self.SignParam = None
+        self.ExpireTime = None
+        self.FileExtensions = None
+        self.FilterType = None
+
+
+    def _deserialize(self, params):
+        self.SecretKey = params.get("SecretKey")
+        self.SignParam = params.get("SignParam")
+        self.ExpireTime = params.get("ExpireTime")
+        self.FileExtensions = params.get("FileExtensions")
+        self.FilterType = params.get("FilterType")
+
+
+class AuthenticationTypeB(AbstractModel):
+    """时间戳防盗链模式 B 配置（B 模式正在进行平台升级，暂不支持配置）
+
+    """
+
+    def __init__(self):
+        """
+        :param SecretKey: 计算签名的密钥
+仅允许大小写字母与数字，长度 6~32 位
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SecretKey: str
+        :param ExpireTime: 签名过期时间设置
+单位为秒，最大可设置为 31536000
+        :type ExpireTime: int
+        :param FileExtensions: 鉴权/不做鉴权的文件扩展名列表设置
+如果包含字符 *  则表示所有文件
+        :type FileExtensions: list of str
+        :param FilterType: whitelist：白名单，表示对除了 FileExtensions 列表之外的所有类型进行鉴权
+blacklist：黑名单，表示仅对 FileExtensions 中的类型进行鉴权
+        :type FilterType: str
+        """
+        self.SecretKey = None
+        self.ExpireTime = None
+        self.FileExtensions = None
+        self.FilterType = None
+
+
+    def _deserialize(self, params):
+        self.SecretKey = params.get("SecretKey")
+        self.ExpireTime = params.get("ExpireTime")
+        self.FileExtensions = params.get("FileExtensions")
+        self.FilterType = params.get("FilterType")
+
+
+class AuthenticationTypeC(AbstractModel):
+    """时间戳防盗链模式 C 配置
+    时间戳防盗链模式 C 的访问 URL 格式为：http://DomainName/md5hash/timestamp/FileName
+    其中 timestamp 为十六进制 UNIX 时间戳；
+    md5hash：MD5（自定义密钥 + 文件路径 + timestamp）
+
+    """
+
+    def __init__(self):
+        """
+        :param SecretKey: 计算签名的密钥
+仅允许大小写字母与数字，长度 6~32 位
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SecretKey: str
+        :param ExpireTime: 签名过期时间设置
+单位为秒，最大可设置为 31536000
+        :type ExpireTime: int
+        :param FileExtensions: 鉴权/不做鉴权的文件扩展名列表设置
+如果包含字符 *  则表示所有文件
+        :type FileExtensions: list of str
+        :param FilterType: whitelist：白名单，表示对除了 FileExtensions 列表之外的所有类型进行鉴权
+blacklist：黑名单，表示仅对 FileExtensions 中的类型进行鉴权
+        :type FilterType: str
+        """
+        self.SecretKey = None
+        self.ExpireTime = None
+        self.FileExtensions = None
+        self.FilterType = None
+
+
+    def _deserialize(self, params):
+        self.SecretKey = params.get("SecretKey")
+        self.ExpireTime = params.get("ExpireTime")
+        self.FileExtensions = params.get("FileExtensions")
+        self.FilterType = params.get("FilterType")
+
+
+class AuthenticationTypeD(AbstractModel):
+    """时间戳防盗链模式 D 配置
+    时间戳防盗链模式 D 的访问 URL 格式为：http://DomainName/FileName?sign=md5hash&t=timestamp
+    其中 timestamp 为十进制或十六进制 UNIX 时间戳；
+    md5hash：MD5（自定义密钥 + 文件路径 + timestamp）
+
+    """
+
+    def __init__(self):
+        """
+        :param SecretKey: 计算签名的密钥
+仅允许大小写字母与数字，长度 6~32 位
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SecretKey: str
+        :param ExpireTime: 签名过期时间设置
+单位为秒，最大可设置为 31536000
+        :type ExpireTime: int
+        :param FileExtensions: 鉴权/不做鉴权的文件扩展名列表设置
+如果包含字符 *  则表示所有文件
+        :type FileExtensions: list of str
+        :param FilterType: whitelist：白名单，表示对除了 FileExtensions 列表之外的所有类型进行鉴权
+blacklist：黑名单，表示仅对 FileExtensions 中的类型进行鉴权
+        :type FilterType: str
+        :param SignParam: 签名参数名设置
+仅允许大小写字母、数字或下划线，长度 1~100 位，不能以数字开头
+        :type SignParam: str
+        :param TimeParam: 时间戳参数名设置
+仅允许大小写字母、数字或下划线，长度 1~100 位，不能以数字开头
+        :type TimeParam: str
+        :param TimeFormat: 时间戳进制设置
+dec：十进制
+hex：十六进制
+        :type TimeFormat: str
+        """
+        self.SecretKey = None
+        self.ExpireTime = None
+        self.FileExtensions = None
+        self.FilterType = None
+        self.SignParam = None
+        self.TimeParam = None
+        self.TimeFormat = None
+
+
+    def _deserialize(self, params):
+        self.SecretKey = params.get("SecretKey")
+        self.ExpireTime = params.get("ExpireTime")
+        self.FileExtensions = params.get("FileExtensions")
+        self.FilterType = params.get("FilterType")
+        self.SignParam = params.get("SignParam")
+        self.TimeParam = params.get("TimeParam")
+        self.TimeFormat = params.get("TimeFormat")
+
+
+class BandwidthAlert(AbstractModel):
+    """带宽封顶配置，默认为关闭状态
+
+    """
+
+    def __init__(self):
+        """
+        :param Switch: 带宽封顶配置开关
+on：开启
+off：关闭
+        :type Switch: str
+        :param BpsThreshold: 带宽封顶阈值，单位为bps
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BpsThreshold: int
+        :param CounterMeasure: 达到阈值后的操作
+RESOLVE_DNS_TO_ORIGIN：直接回源，仅自有源站域名支持
+RETURN_404：全部请求返回 404
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CounterMeasure: str
+        :param LastTriggerTime: 上次触发带宽封顶阈值的时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LastTriggerTime: str
+        """
+        self.Switch = None
+        self.BpsThreshold = None
+        self.CounterMeasure = None
+        self.LastTriggerTime = None
+
+
+    def _deserialize(self, params):
+        self.Switch = params.get("Switch")
+        self.BpsThreshold = params.get("BpsThreshold")
+        self.CounterMeasure = params.get("CounterMeasure")
+        self.LastTriggerTime = params.get("LastTriggerTime")
+
+
+class BriefDomain(AbstractModel):
+    """CDN域名简要信息。
+
+    """
+
+    def __init__(self):
+        """
+        :param ResourceId: 域名ID。
+        :type ResourceId: str
+        :param AppId: 腾讯云账号ID。
+        :type AppId: int
+        :param Domain: CDN加速域名。
+        :type Domain: str
+        :param Cname: 域名CName。
+        :type Cname: str
+        :param Status: 域名状态，pending，rejected，processing， online，offline，deleted分别表示审核中，审核未通过，审核通过部署中，已开启，已关闭，已删除。
+        :type Status: str
+        :param ProjectId: 项目ID。
+        :type ProjectId: int
+        :param ServiceType: 域名业务类型，web，download，media分别表示静态加速，下载加速和流媒体加速。
+        :type ServiceType: str
+        :param CreateTime: 域名创建时间。
+        :type CreateTime: str
+        :param UpdateTime: 域名更新时间。
+        :type UpdateTime: str
+        :param Origin: 源站配置详情。
+        :type Origin: :class:`tencentcloud.cdn.v20180606.models.Origin`
+        :param Disable: 域名封禁状态，normal，overdue，quota，malicious，ddos，idle，unlicensed，capping，readonly分别表示。
+        :type Disable: str
+        :param Area: 加速区域，mainland，oversea或global。
+        :type Area: str
+        :param Readonly: 域名锁定状态，normal，mainland，overseas或global，分别表示未被锁定，国内锁定，海外锁定或全球锁定。
+        :type Readonly: str
+        """
+        self.ResourceId = None
+        self.AppId = None
+        self.Domain = None
+        self.Cname = None
+        self.Status = None
+        self.ProjectId = None
+        self.ServiceType = None
+        self.CreateTime = None
+        self.UpdateTime = None
+        self.Origin = None
+        self.Disable = None
+        self.Area = None
+        self.Readonly = None
+
+
+    def _deserialize(self, params):
+        self.ResourceId = params.get("ResourceId")
+        self.AppId = params.get("AppId")
+        self.Domain = params.get("Domain")
+        self.Cname = params.get("Cname")
+        self.Status = params.get("Status")
+        self.ProjectId = params.get("ProjectId")
+        self.ServiceType = params.get("ServiceType")
+        self.CreateTime = params.get("CreateTime")
+        self.UpdateTime = params.get("UpdateTime")
+        if params.get("Origin") is not None:
+            self.Origin = Origin()
+            self.Origin._deserialize(params.get("Origin"))
+        self.Disable = params.get("Disable")
+        self.Area = params.get("Area")
+        self.Readonly = params.get("Readonly")
+
+
+class Cache(AbstractModel):
+    """节点缓存过期时间配置，分为以下两种：
+    + 基础版缓存过期规则配置
+    + 高级版缓存过期规则配置
+
+    """
+
+    def __init__(self):
+        """
+        :param SimpleCache: 基础缓存过期时间配置
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SimpleCache: :class:`tencentcloud.cdn.v20180606.models.SimpleCache`
+        :param AdvancedCache: 高级缓存过期时间配置（功能灰度中，尚未全量）
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AdvancedCache: :class:`tencentcloud.cdn.v20180606.models.AdvancedCache`
+        """
+        self.SimpleCache = None
+        self.AdvancedCache = None
+
+
+    def _deserialize(self, params):
+        if params.get("SimpleCache") is not None:
+            self.SimpleCache = SimpleCache()
+            self.SimpleCache._deserialize(params.get("SimpleCache"))
+        if params.get("AdvancedCache") is not None:
+            self.AdvancedCache = AdvancedCache()
+            self.AdvancedCache._deserialize(params.get("AdvancedCache"))
+
+
+class CacheKey(AbstractModel):
+    """缓存键配置（过滤参数配置）
+
+    """
+
+    def __init__(self):
+        """
+        :param FullUrlCache: 是否开启全路径缓存
+on：开启全路径缓存（即关闭参数过滤）
+off：关闭全路径缓存（即开启参数过滤）
+        :type FullUrlCache: str
+        """
+        self.FullUrlCache = None
+
+
+    def _deserialize(self, params):
+        self.FullUrlCache = params.get("FullUrlCache")
+
+
 class CacheOptResult(AbstractModel):
     """违规资源封禁/解封返回类型
 
@@ -37,6 +688,39 @@ class CacheOptResult(AbstractModel):
     def _deserialize(self, params):
         self.SuccessUrls = params.get("SuccessUrls")
         self.FailUrls = params.get("FailUrls")
+
+
+class CappingRule(AbstractModel):
+    """下行限速配置规则，最多可配置 100 条
+
+    """
+
+    def __init__(self):
+        """
+        :param RuleType: 规则类型：
+all：所有文件生效
+file：指定文件后缀生效
+directory：指定路径生效
+path：指定绝对路径生效
+        :type RuleType: str
+        :param RulePaths: RuleType 对应类型下的匹配内容： 
+all 时填充 *
+file 时填充后缀名，如 jpg、txt
+directory 时填充路径，如 /xxx/test/
+path 时填充绝对路径，如 /xxx/test.html
+        :type RulePaths: list of str
+        :param KBpsThreshold: 下行速度值设置，单位为 KB/s
+        :type KBpsThreshold: int
+        """
+        self.RuleType = None
+        self.RulePaths = None
+        self.KBpsThreshold = None
+
+
+    def _deserialize(self, params):
+        self.RuleType = params.get("RuleType")
+        self.RulePaths = params.get("RulePaths")
+        self.KBpsThreshold = params.get("KBpsThreshold")
 
 
 class CdnData(AbstractModel):
@@ -141,6 +825,166 @@ class CdnIpHistory(AbstractModel):
         self.Datetime = params.get("Datetime")
 
 
+class ClientCert(AbstractModel):
+    """https 客户端证书配置
+
+    """
+
+    def __init__(self):
+        """
+        :param Certificate: 客户端证书
+PEM 格式，需要进行 Base 64 编码
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Certificate: str
+        :param CertName: 客户端证书名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CertName: str
+        :param ExpireTime: 证书过期时间
+作为入参时无需填充
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ExpireTime: str
+        :param DeployTime: 证书颁发时间
+作为入参时无需填充
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DeployTime: str
+        """
+        self.Certificate = None
+        self.CertName = None
+        self.ExpireTime = None
+        self.DeployTime = None
+
+
+    def _deserialize(self, params):
+        self.Certificate = params.get("Certificate")
+        self.CertName = params.get("CertName")
+        self.ExpireTime = params.get("ExpireTime")
+        self.DeployTime = params.get("DeployTime")
+
+
+class Compatibility(AbstractModel):
+    """是否兼容旧版配置
+
+    """
+
+    def __init__(self):
+        """
+        :param Code: 兼容标志状态码。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Code: int
+        """
+        self.Code = None
+
+
+    def _deserialize(self, params):
+        self.Code = params.get("Code")
+
+
+class Compression(AbstractModel):
+    """智能压缩配置，默认对 js、html、css、xml、json、shtml、htm 后缀且大小为 256 ~ 2097152 字节的文件进行 GZIP 压缩
+
+    """
+
+    def __init__(self):
+        """
+        :param Switch: 智能压缩配置开关
+on：开启
+off：关闭
+        :type Switch: str
+        :param CompressionRules: 压缩规则数组
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CompressionRules: list of CompressionRule
+        """
+        self.Switch = None
+        self.CompressionRules = None
+
+
+    def _deserialize(self, params):
+        self.Switch = params.get("Switch")
+        if params.get("CompressionRules") is not None:
+            self.CompressionRules = []
+            for item in params.get("CompressionRules"):
+                obj = CompressionRule()
+                obj._deserialize(item)
+                self.CompressionRules.append(obj)
+
+
+class CompressionRule(AbstractModel):
+    """压缩规则配置，最多可设置 100 条
+
+    """
+
+    def __init__(self):
+        """
+        :param Compress: true：需要设置为 ture，启用压缩
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Compress: bool
+        :param FileExtensions: 根据文件后缀类型压缩
+例如 jpg、txt
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FileExtensions: list of str
+        :param MinLength: 触发压缩的文件长度最小值，单位为字节数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MinLength: int
+        :param MaxLength: 触发压缩的文件长度最大值，单位为字节数
+最大可设置为 30MB
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MaxLength: int
+        :param Algorithms: 文件压缩算法
+gzip：指定 GZIP 压缩
+brotli：需要同时指定 GZIP 压缩才可启用
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Algorithms: list of str
+        """
+        self.Compress = None
+        self.FileExtensions = None
+        self.MinLength = None
+        self.MaxLength = None
+        self.Algorithms = None
+
+
+    def _deserialize(self, params):
+        self.Compress = params.get("Compress")
+        self.FileExtensions = params.get("FileExtensions")
+        self.MinLength = params.get("MinLength")
+        self.MaxLength = params.get("MaxLength")
+        self.Algorithms = params.get("Algorithms")
+
+
+class DeleteCdnDomainRequest(AbstractModel):
+    """DeleteCdnDomain请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Domain: 域名
+域名状态需要为【已停用】
+        :type Domain: str
+        """
+        self.Domain = None
+
+
+    def _deserialize(self, params):
+        self.Domain = params.get("Domain")
+
+
+class DeleteCdnDomainResponse(AbstractModel):
+    """DeleteCdnDomain返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeCdnDataRequest(AbstractModel):
     """DescribeCdnData请求参数结构体
 
@@ -184,12 +1028,12 @@ day：天粒度，指定查询区间大于 31 天，可返回天粒度明细数�
 可按需指定为 true，返回每一个 Domain 的明细数据（statusCode 指标暂不支持）
         :type Detail: bool
         :param Isp: 查询中国境内CDN数据时，指定运营商查询，不填充表示查询所有运营商
-运营商编码可以查看 [运营商编码映射](https://cloud.tencent.com/document/product/228/6316#.E8.BF.90.E8.90.A5.E5.95.86.E6.98.A0.E5.B0.84)
+运营商编码可以查看 [运营商编码映射](https://cloud.tencent.com/document/product/228/6316#.E5.8C.BA.E5.9F.9F-.2F-.E8.BF.90.E8.90.A5.E5.95.86.E6.98.A0.E5.B0.84.E8.A1.A8)
 指定运营商查询时，不可同时指定省份、IP协议查询
         :type Isp: int
         :param District: 查询中国境内CDN数据时，指定省份查询，不填充表示查询所有省份
 查询中国境外CDN数据时，指定国家/地区查询，不填充表示查询所有国家/地区
-省份、国家/地区编码可以查看 [省份编码映射](https://cloud.tencent.com/document/product/228/6316#.E7.9C.81.E4.BB.BD.E6.98.A0.E5.B0.84)
+省份、国家/地区编码可以查看 [省份编码映射](https://cloud.tencent.com/document/product/228/6316#.E5.8C.BA.E5.9F.9F-.2F-.E8.BF.90.E8.90.A5.E5.95.86.E6.98.A0.E5.B0.84.E8.A1.A8)
 指定（中国境内）省份查询时，不可同时指定运营商、IP协议查询
         :type District: int
         :param Protocol: 指定协议查询，不填充表示查询所有协议
@@ -392,6 +1236,134 @@ class DescribeCdnIpResponse(AbstractModel):
                 obj = CdnIp()
                 obj._deserialize(item)
                 self.Ips.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeDomainsConfigRequest(AbstractModel):
+    """DescribeDomainsConfig请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Offset: 分页查询偏移量，默认为 0 （第一页）
+        :type Offset: int
+        :param Limit: 分页查询限制数目，默认为 100，最大可设置为 1000
+        :type Limit: int
+        :param Filters: 查询条件过滤器，复杂类型
+        :type Filters: list of DomainFilter
+        :param Sort: 排序规则
+        :type Sort: :class:`tencentcloud.cdn.v20180606.models.Sort`
+        """
+        self.Offset = None
+        self.Limit = None
+        self.Filters = None
+        self.Sort = None
+
+
+    def _deserialize(self, params):
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+        if params.get("Filters") is not None:
+            self.Filters = []
+            for item in params.get("Filters"):
+                obj = DomainFilter()
+                obj._deserialize(item)
+                self.Filters.append(obj)
+        if params.get("Sort") is not None:
+            self.Sort = Sort()
+            self.Sort._deserialize(params.get("Sort"))
+
+
+class DescribeDomainsConfigResponse(AbstractModel):
+    """DescribeDomainsConfig返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Domains: 域名列表
+        :type Domains: list of DetailDomain
+        :param TotalNumber: 符合查询条件的域名总数
+用于分页查询
+        :type TotalNumber: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Domains = None
+        self.TotalNumber = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Domains") is not None:
+            self.Domains = []
+            for item in params.get("Domains"):
+                obj = DetailDomain()
+                obj._deserialize(item)
+                self.Domains.append(obj)
+        self.TotalNumber = params.get("TotalNumber")
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeDomainsRequest(AbstractModel):
+    """DescribeDomains请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Offset: 分页查询偏移量，默认为 0 （第一页）
+        :type Offset: int
+        :param Limit: 分页查询限制数目，默认为 100，最大可设置为 1000
+        :type Limit: int
+        :param Filters: 查询条件过滤器，复杂类型
+        :type Filters: list of DomainFilter
+        """
+        self.Offset = None
+        self.Limit = None
+        self.Filters = None
+
+
+    def _deserialize(self, params):
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+        if params.get("Filters") is not None:
+            self.Filters = []
+            for item in params.get("Filters"):
+                obj = DomainFilter()
+                obj._deserialize(item)
+                self.Filters.append(obj)
+
+
+class DescribeDomainsResponse(AbstractModel):
+    """DescribeDomains返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Domains: 域名列表
+        :type Domains: list of BriefDomain
+        :param TotalNumber: 符合查询条件的域名总数
+用于分页查询
+        :type TotalNumber: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Domains = None
+        self.TotalNumber = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Domains") is not None:
+            self.Domains = []
+            for item in params.get("Domains"):
+                obj = BriefDomain()
+                obj._deserialize(item)
+                self.Domains.append(obj)
+        self.TotalNumber = params.get("TotalNumber")
         self.RequestId = params.get("RequestId")
 
 
@@ -930,6 +1902,315 @@ class DescribeTrafficPackagesResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeUrlViolationsRequest(AbstractModel):
+    """DescribeUrlViolations请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Offset: 分页查询偏移量，默认为 0 （第一页）
+        :type Offset: int
+        :param Limit: 分页查询限制数目，默认为 100
+        :type Limit: int
+        :param Domains: 指定的域名查询
+        :type Domains: list of str
+        """
+        self.Offset = None
+        self.Limit = None
+        self.Domains = None
+
+
+    def _deserialize(self, params):
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+        self.Domains = params.get("Domains")
+
+
+class DescribeUrlViolationsResponse(AbstractModel):
+    """DescribeUrlViolations返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param UrlRecordList: 违规 URL 详情
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UrlRecordList: list of ViolationUrl
+        :param TotalCount: 记录总数，用于分页
+        :type TotalCount: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.UrlRecordList = None
+        self.TotalCount = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("UrlRecordList") is not None:
+            self.UrlRecordList = []
+            for item in params.get("UrlRecordList"):
+                obj = ViolationUrl()
+                obj._deserialize(item)
+                self.UrlRecordList.append(obj)
+        self.TotalCount = params.get("TotalCount")
+        self.RequestId = params.get("RequestId")
+
+
+class DetailDomain(AbstractModel):
+    """CDN域名详细配置信息。
+
+    """
+
+    def __init__(self):
+        """
+        :param ResourceId: 域名ID。
+        :type ResourceId: str
+        :param AppId: 腾讯云账号ID。
+        :type AppId: int
+        :param Domain: 加速域名。
+        :type Domain: str
+        :param Cname: 域名CName。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Cname: str
+        :param Status: 域名状态，pending，rejected，processing， online，offline，deleted分别表示审核中，审核未通过，审核通过部署中，已开启，已关闭，已删除。
+        :type Status: str
+        :param ProjectId: 项目ID。
+        :type ProjectId: int
+        :param ServiceType: 域名业务类型，web，download，media分别表示静态加速，下载加速和流媒体加速。
+        :type ServiceType: str
+        :param CreateTime: 域名创建时间。
+        :type CreateTime: str
+        :param UpdateTime: 域名更新时间。
+        :type UpdateTime: str
+        :param Origin: 源站配置。
+        :type Origin: :class:`tencentcloud.cdn.v20180606.models.Origin`
+        :param IpFilter: IP黑白名单配置。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IpFilter: :class:`tencentcloud.cdn.v20180606.models.IpFilter`
+        :param IpFreqLimit: IP限频配置。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IpFreqLimit: :class:`tencentcloud.cdn.v20180606.models.IpFreqLimit`
+        :param StatusCodeCache: 状态码缓存配置。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type StatusCodeCache: :class:`tencentcloud.cdn.v20180606.models.StatusCodeCache`
+        :param Compression: 智能压缩配置。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Compression: :class:`tencentcloud.cdn.v20180606.models.Compression`
+        :param BandwidthAlert: 带宽封顶配置。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BandwidthAlert: :class:`tencentcloud.cdn.v20180606.models.BandwidthAlert`
+        :param RangeOriginPull: Range回源配置。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RangeOriginPull: :class:`tencentcloud.cdn.v20180606.models.RangeOriginPull`
+        :param FollowRedirect: 301和302自动回源跟随配置。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FollowRedirect: :class:`tencentcloud.cdn.v20180606.models.FollowRedirect`
+        :param ErrorPage: 错误码重定向配置。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ErrorPage: :class:`tencentcloud.cdn.v20180606.models.ErrorPage`
+        :param RequestHeader: 回源请求头部配置。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RequestHeader: :class:`tencentcloud.cdn.v20180606.models.RequestHeader`
+        :param ResponseHeader: 源站响应头部配置。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ResponseHeader: :class:`tencentcloud.cdn.v20180606.models.ResponseHeader`
+        :param DownstreamCapping: 下载速度配置。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DownstreamCapping: :class:`tencentcloud.cdn.v20180606.models.DownstreamCapping`
+        :param CacheKey: 节点缓存配置。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CacheKey: :class:`tencentcloud.cdn.v20180606.models.CacheKey`
+        :param ResponseHeaderCache: 遵循源站缓存头部配置。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ResponseHeaderCache: :class:`tencentcloud.cdn.v20180606.models.ResponseHeaderCache`
+        :param VideoSeek: 视频拖拽配置。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type VideoSeek: :class:`tencentcloud.cdn.v20180606.models.VideoSeek`
+        :param Cache: 缓存规则配置。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Cache: :class:`tencentcloud.cdn.v20180606.models.Cache`
+        :param OriginPullOptimization: 跨国优化配置。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OriginPullOptimization: :class:`tencentcloud.cdn.v20180606.models.OriginPullOptimization`
+        :param Https: Https配置。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Https: :class:`tencentcloud.cdn.v20180606.models.Https`
+        :param Authentication: 时间戳防盗链配置。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Authentication: :class:`tencentcloud.cdn.v20180606.models.Authentication`
+        :param Seo: seo优化配置。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Seo: :class:`tencentcloud.cdn.v20180606.models.Seo`
+        :param Disable: 域名封禁状态，normal，overdue，quota，malicious，ddos，idle，unlicensed，capping分别表示。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Disable: str
+        :param ForceRedirect: 访问协议强制跳转配置。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ForceRedirect: :class:`tencentcloud.cdn.v20180606.models.ForceRedirect`
+        :param Referer: 防盗链配置。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Referer: :class:`tencentcloud.cdn.v20180606.models.Referer`
+        :param MaxAge: 浏览器缓存规则配置。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MaxAge: :class:`tencentcloud.cdn.v20180606.models.MaxAge`
+        :param Ipv6: Ipv6配置。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Ipv6: :class:`tencentcloud.cdn.v20180606.models.Ipv6`
+        :param Compatibility: 是否兼容旧版本配置。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Compatibility: :class:`tencentcloud.cdn.v20180606.models.Compatibility`
+        :param SpecificConfig: 分地区特殊配置。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SpecificConfig: :class:`tencentcloud.cdn.v20180606.models.SpecificConfig`
+        :param Area: 加速区域，mainland，overseas或global。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Area: str
+        :param Readonly: 域名锁定状态，normal，mainland，overseas或global，分别表示未被锁定，国内锁定，海外锁定或全球锁定。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Readonly: str
+        :param OriginPullTimeout: 回源超时配置
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OriginPullTimeout: :class:`tencentcloud.cdn.v20180606.models.OriginPullTimeout`
+        """
+        self.ResourceId = None
+        self.AppId = None
+        self.Domain = None
+        self.Cname = None
+        self.Status = None
+        self.ProjectId = None
+        self.ServiceType = None
+        self.CreateTime = None
+        self.UpdateTime = None
+        self.Origin = None
+        self.IpFilter = None
+        self.IpFreqLimit = None
+        self.StatusCodeCache = None
+        self.Compression = None
+        self.BandwidthAlert = None
+        self.RangeOriginPull = None
+        self.FollowRedirect = None
+        self.ErrorPage = None
+        self.RequestHeader = None
+        self.ResponseHeader = None
+        self.DownstreamCapping = None
+        self.CacheKey = None
+        self.ResponseHeaderCache = None
+        self.VideoSeek = None
+        self.Cache = None
+        self.OriginPullOptimization = None
+        self.Https = None
+        self.Authentication = None
+        self.Seo = None
+        self.Disable = None
+        self.ForceRedirect = None
+        self.Referer = None
+        self.MaxAge = None
+        self.Ipv6 = None
+        self.Compatibility = None
+        self.SpecificConfig = None
+        self.Area = None
+        self.Readonly = None
+        self.OriginPullTimeout = None
+
+
+    def _deserialize(self, params):
+        self.ResourceId = params.get("ResourceId")
+        self.AppId = params.get("AppId")
+        self.Domain = params.get("Domain")
+        self.Cname = params.get("Cname")
+        self.Status = params.get("Status")
+        self.ProjectId = params.get("ProjectId")
+        self.ServiceType = params.get("ServiceType")
+        self.CreateTime = params.get("CreateTime")
+        self.UpdateTime = params.get("UpdateTime")
+        if params.get("Origin") is not None:
+            self.Origin = Origin()
+            self.Origin._deserialize(params.get("Origin"))
+        if params.get("IpFilter") is not None:
+            self.IpFilter = IpFilter()
+            self.IpFilter._deserialize(params.get("IpFilter"))
+        if params.get("IpFreqLimit") is not None:
+            self.IpFreqLimit = IpFreqLimit()
+            self.IpFreqLimit._deserialize(params.get("IpFreqLimit"))
+        if params.get("StatusCodeCache") is not None:
+            self.StatusCodeCache = StatusCodeCache()
+            self.StatusCodeCache._deserialize(params.get("StatusCodeCache"))
+        if params.get("Compression") is not None:
+            self.Compression = Compression()
+            self.Compression._deserialize(params.get("Compression"))
+        if params.get("BandwidthAlert") is not None:
+            self.BandwidthAlert = BandwidthAlert()
+            self.BandwidthAlert._deserialize(params.get("BandwidthAlert"))
+        if params.get("RangeOriginPull") is not None:
+            self.RangeOriginPull = RangeOriginPull()
+            self.RangeOriginPull._deserialize(params.get("RangeOriginPull"))
+        if params.get("FollowRedirect") is not None:
+            self.FollowRedirect = FollowRedirect()
+            self.FollowRedirect._deserialize(params.get("FollowRedirect"))
+        if params.get("ErrorPage") is not None:
+            self.ErrorPage = ErrorPage()
+            self.ErrorPage._deserialize(params.get("ErrorPage"))
+        if params.get("RequestHeader") is not None:
+            self.RequestHeader = RequestHeader()
+            self.RequestHeader._deserialize(params.get("RequestHeader"))
+        if params.get("ResponseHeader") is not None:
+            self.ResponseHeader = ResponseHeader()
+            self.ResponseHeader._deserialize(params.get("ResponseHeader"))
+        if params.get("DownstreamCapping") is not None:
+            self.DownstreamCapping = DownstreamCapping()
+            self.DownstreamCapping._deserialize(params.get("DownstreamCapping"))
+        if params.get("CacheKey") is not None:
+            self.CacheKey = CacheKey()
+            self.CacheKey._deserialize(params.get("CacheKey"))
+        if params.get("ResponseHeaderCache") is not None:
+            self.ResponseHeaderCache = ResponseHeaderCache()
+            self.ResponseHeaderCache._deserialize(params.get("ResponseHeaderCache"))
+        if params.get("VideoSeek") is not None:
+            self.VideoSeek = VideoSeek()
+            self.VideoSeek._deserialize(params.get("VideoSeek"))
+        if params.get("Cache") is not None:
+            self.Cache = Cache()
+            self.Cache._deserialize(params.get("Cache"))
+        if params.get("OriginPullOptimization") is not None:
+            self.OriginPullOptimization = OriginPullOptimization()
+            self.OriginPullOptimization._deserialize(params.get("OriginPullOptimization"))
+        if params.get("Https") is not None:
+            self.Https = Https()
+            self.Https._deserialize(params.get("Https"))
+        if params.get("Authentication") is not None:
+            self.Authentication = Authentication()
+            self.Authentication._deserialize(params.get("Authentication"))
+        if params.get("Seo") is not None:
+            self.Seo = Seo()
+            self.Seo._deserialize(params.get("Seo"))
+        self.Disable = params.get("Disable")
+        if params.get("ForceRedirect") is not None:
+            self.ForceRedirect = ForceRedirect()
+            self.ForceRedirect._deserialize(params.get("ForceRedirect"))
+        if params.get("Referer") is not None:
+            self.Referer = Referer()
+            self.Referer._deserialize(params.get("Referer"))
+        if params.get("MaxAge") is not None:
+            self.MaxAge = MaxAge()
+            self.MaxAge._deserialize(params.get("MaxAge"))
+        if params.get("Ipv6") is not None:
+            self.Ipv6 = Ipv6()
+            self.Ipv6._deserialize(params.get("Ipv6"))
+        if params.get("Compatibility") is not None:
+            self.Compatibility = Compatibility()
+            self.Compatibility._deserialize(params.get("Compatibility"))
+        if params.get("SpecificConfig") is not None:
+            self.SpecificConfig = SpecificConfig()
+            self.SpecificConfig._deserialize(params.get("SpecificConfig"))
+        self.Area = params.get("Area")
+        self.Readonly = params.get("Readonly")
+        if params.get("OriginPullTimeout") is not None:
+            self.OriginPullTimeout = OriginPullTimeout()
+            self.OriginPullTimeout._deserialize(params.get("OriginPullTimeout"))
+
+
 class DisableCachesRequest(AbstractModel):
     """DisableCaches请求参数结构体
 
@@ -972,6 +2253,43 @@ class DisableCachesResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DomainFilter(AbstractModel):
+    """域名查询时过滤条件。
+
+    """
+
+    def __init__(self):
+        """
+        :param Name: 过滤字段名，支持的列表如下：
+- origin：主源站。
+- domain：域名。
+- resourceId：域名id。
+- status：域名状态，online，offline或processing。
+- serviceType：业务类型，web，download或media。
+- projectId：项目ID。
+- domainType：主源站类型，cname表示自有源，cos表示cos接入。
+- fullUrlCache：全路径缓存，on或off。
+- https：是否配置https，on，off或processing。
+- originPullProtocol：回源协议类型，支持http，follow或https。
+- tagKey：标签键。
+        :type Name: str
+        :param Value: 过滤字段值。
+        :type Value: list of str
+        :param Fuzzy: 是否启用模糊查询，仅支持过滤字段名为origin，domain。
+模糊查询时，Value长度最大为1，否则Value长度最大为5。
+        :type Fuzzy: bool
+        """
+        self.Name = None
+        self.Value = None
+        self.Fuzzy = None
+
+
+    def _deserialize(self, params):
+        self.Name = params.get("Name")
+        self.Value = params.get("Value")
+        self.Fuzzy = params.get("Fuzzy")
+
+
 class DomainLog(AbstractModel):
     """日志包下载链接详情
 
@@ -1005,6 +2323,35 @@ overseas：境外
         self.LogPath = params.get("LogPath")
         self.Area = params.get("Area")
         self.LogName = params.get("LogName")
+
+
+class DownstreamCapping(AbstractModel):
+    """单链接下行限速配置，默认为关闭状态
+
+    """
+
+    def __init__(self):
+        """
+        :param Switch: 下行速度配置开关
+on：开启
+off：关闭
+        :type Switch: str
+        :param CappingRules: 下行限速规则
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CappingRules: list of CappingRule
+        """
+        self.Switch = None
+        self.CappingRules = None
+
+
+    def _deserialize(self, params):
+        self.Switch = params.get("Switch")
+        if params.get("CappingRules") is not None:
+            self.CappingRules = []
+            for item in params.get("CappingRules"):
+                obj = CappingRule()
+                obj._deserialize(item)
+                self.CappingRules.append(obj)
 
 
 class EnableCachesRequest(AbstractModel):
@@ -1046,6 +2393,116 @@ class EnableCachesResponse(AbstractModel):
             self.CacheOptResult = CacheOptResult()
             self.CacheOptResult._deserialize(params.get("CacheOptResult"))
         self.RequestId = params.get("RequestId")
+
+
+class ErrorPage(AbstractModel):
+    """状态码重定向配置，默认为关闭状态（功能灰度中，尚未全量）
+
+    """
+
+    def __init__(self):
+        """
+        :param Switch: 状态码重定向配置开关
+on：开启
+off：关闭
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Switch: str
+        :param PageRules: 状态码重定向规则配置
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PageRules: list of ErrorPageRule
+        """
+        self.Switch = None
+        self.PageRules = None
+
+
+    def _deserialize(self, params):
+        self.Switch = params.get("Switch")
+        if params.get("PageRules") is not None:
+            self.PageRules = []
+            for item in params.get("PageRules"):
+                obj = ErrorPageRule()
+                obj._deserialize(item)
+                self.PageRules.append(obj)
+
+
+class ErrorPageRule(AbstractModel):
+    """状态码重定向规则配置
+
+    """
+
+    def __init__(self):
+        """
+        :param StatusCode: 状态码
+支持 400、403、404、500
+        :type StatusCode: int
+        :param RedirectCode: 重定向状态码设置
+支持 301 或 302
+        :type RedirectCode: int
+        :param RedirectUrl: 重定向 URL
+需要为完整跳转路径，如 https://www.test.com/error.html
+        :type RedirectUrl: str
+        """
+        self.StatusCode = None
+        self.RedirectCode = None
+        self.RedirectUrl = None
+
+
+    def _deserialize(self, params):
+        self.StatusCode = params.get("StatusCode")
+        self.RedirectCode = params.get("RedirectCode")
+        self.RedirectUrl = params.get("RedirectUrl")
+
+
+class FollowRedirect(AbstractModel):
+    """回源 301/302 状态码自动跟随配置，默认为关闭状态
+
+    """
+
+    def __init__(self):
+        """
+        :param Switch: 回源跟随开关
+on：开启
+off：关闭
+        :type Switch: str
+        """
+        self.Switch = None
+
+
+    def _deserialize(self, params):
+        self.Switch = params.get("Switch")
+
+
+class ForceRedirect(AbstractModel):
+    """访问协议强制跳转配置，默认为关闭状态
+
+    """
+
+    def __init__(self):
+        """
+        :param Switch: 访问强制跳转配置开关
+on：开启
+off：关闭
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Switch: str
+        :param RedirectType: 访问强制跳转类型
+http：强制 http 跳转
+https：强制 https 跳转
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RedirectType: str
+        :param RedirectStatusCode: 强制跳转时返回状态码 
+支持 301、302
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RedirectStatusCode: int
+        """
+        self.Switch = None
+        self.RedirectType = None
+        self.RedirectStatusCode = None
+
+
+    def _deserialize(self, params):
+        self.Switch = params.get("Switch")
+        self.RedirectType = params.get("RedirectType")
+        self.RedirectStatusCode = params.get("RedirectStatusCode")
 
 
 class GetDisableRecordsRequest(AbstractModel):
@@ -1119,6 +2576,208 @@ class GetDisableRecordsResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class HttpHeaderPathRule(AbstractModel):
+    """Http 头部设置规则，最多可设置 100 条
+
+    """
+
+    def __init__(self):
+        """
+        :param HeaderMode: http 头部设置方式
+add：添加头部，若已存在头部，则会存在重复头部
+set：仅回源头部配置支持，若头部已存在则会覆盖原有头部值，若不存在，则会增加该头部及值
+del：删除头部
+注意：此字段可能返回 null，表示取不到有效值。
+        :type HeaderMode: str
+        :param HeaderName: http 头部名称，最多可设置 100 个字符
+注意：此字段可能返回 null，表示取不到有效值。
+        :type HeaderName: str
+        :param HeaderValue: http 头部值，最多可设置 1000 个字符
+Mode 为 del 时非必填
+Mode 为 add/set 时必填
+注意：此字段可能返回 null，表示取不到有效值。
+        :type HeaderValue: str
+        :param RuleType: 规则类型：
+all：所有文件生效
+file：指定文件后缀生效
+directory：指定路径生效
+path：指定绝对路径生效
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RuleType: str
+        :param RulePaths: RuleType 对应类型下的匹配内容：
+all 时填充 *
+file 时填充后缀名，如 jpg、txt
+directory 时填充路径，如 /xxx/test/
+path 时填充绝对路径，如 /xxx/test.html
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RulePaths: list of str
+        """
+        self.HeaderMode = None
+        self.HeaderName = None
+        self.HeaderValue = None
+        self.RuleType = None
+        self.RulePaths = None
+
+
+    def _deserialize(self, params):
+        self.HeaderMode = params.get("HeaderMode")
+        self.HeaderName = params.get("HeaderName")
+        self.HeaderValue = params.get("HeaderValue")
+        self.RuleType = params.get("RuleType")
+        self.RulePaths = params.get("RulePaths")
+
+
+class Https(AbstractModel):
+    """域名 https 加速配置，默认为关闭状态
+
+    """
+
+    def __init__(self):
+        """
+        :param Switch: https 配置开关
+on：开启
+off：关闭
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Switch: str
+        :param Http2: http2 配置开关
+on：开启
+off：关闭
+初次启用 https 加速会默认开启 http2 配置
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Http2: str
+        :param OcspStapling: OCSP 配置开关
+on：开启
+off：关闭
+默认为关闭状态
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OcspStapling: str
+        :param VerifyClient: 客户端证书校验功能
+on：开启
+off：关闭
+默认为关闭状态，开启时需要上传客户端证书信息，该配置项目前在灰度中，尚未全量
+注意：此字段可能返回 null，表示取不到有效值。
+        :type VerifyClient: str
+        :param CertInfo: 服务端证书配置信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CertInfo: :class:`tencentcloud.cdn.v20180606.models.ServerCert`
+        :param ClientCertInfo: 客户端证书配置信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ClientCertInfo: :class:`tencentcloud.cdn.v20180606.models.ClientCert`
+        :param Spdy: Spdy 配置开关
+on：开启
+off：关闭
+默认为关闭状态
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Spdy: str
+        :param SslStatus: https 证书部署状态
+closed：已关闭
+deploying：部署中
+deployed：部署成功
+failed：部署失败
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SslStatus: str
+        """
+        self.Switch = None
+        self.Http2 = None
+        self.OcspStapling = None
+        self.VerifyClient = None
+        self.CertInfo = None
+        self.ClientCertInfo = None
+        self.Spdy = None
+        self.SslStatus = None
+
+
+    def _deserialize(self, params):
+        self.Switch = params.get("Switch")
+        self.Http2 = params.get("Http2")
+        self.OcspStapling = params.get("OcspStapling")
+        self.VerifyClient = params.get("VerifyClient")
+        if params.get("CertInfo") is not None:
+            self.CertInfo = ServerCert()
+            self.CertInfo._deserialize(params.get("CertInfo"))
+        if params.get("ClientCertInfo") is not None:
+            self.ClientCertInfo = ClientCert()
+            self.ClientCertInfo._deserialize(params.get("ClientCertInfo"))
+        self.Spdy = params.get("Spdy")
+        self.SslStatus = params.get("SslStatus")
+
+
+class IpFilter(AbstractModel):
+    """IP 黑白名单配置，默认为关闭状态
+
+    """
+
+    def __init__(self):
+        """
+        :param Switch: IP 黑白名单配置开关
+on：开启
+off：关闭
+        :type Switch: str
+        :param FilterType: IP 黑白名单类型
+whitelist：白名单
+blacklist：黑名单
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FilterType: str
+        :param Filters: IP 黑白名单列表
+支持 X.X.X.X 形式 IP，或 /8、 /16、/24 形式网段
+最多可填充 50 个白名单或 50 个黑名单
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Filters: list of str
+        """
+        self.Switch = None
+        self.FilterType = None
+        self.Filters = None
+
+
+    def _deserialize(self, params):
+        self.Switch = params.get("Switch")
+        self.FilterType = params.get("FilterType")
+        self.Filters = params.get("Filters")
+
+
+class IpFreqLimit(AbstractModel):
+    """单节点单 IP 访问限频配置，默认为关闭状态
+
+    """
+
+    def __init__(self):
+        """
+        :param Switch: IP 限频配置开关
+on：开启
+off：关闭
+        :type Switch: str
+        :param Qps: 设置每秒请求数限制
+超出限制的请求会直接返回 514
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Qps: int
+        """
+        self.Switch = None
+        self.Qps = None
+
+
+    def _deserialize(self, params):
+        self.Switch = params.get("Switch")
+        self.Qps = params.get("Qps")
+
+
+class Ipv6(AbstractModel):
+    """Ipv6启用配置，不可更改
+
+    """
+
+    def __init__(self):
+        """
+        :param Switch: 域名是否开启ipv6功能，on或off。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Switch: str
+        """
+        self.Switch = None
+
+
+    def _deserialize(self, params):
+        self.Switch = params.get("Switch")
+
+
 class ListTopDataRequest(AbstractModel):
     """ListTopData请求参数结构体
 
@@ -1126,9 +2785,15 @@ class ListTopDataRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param StartTime: 查询起始日期，如：2018-09-09 00:00:00。目前只支持按天粒度的数据查询，只取入参中的天数信息。
+        :param StartTime: 查询起始日期，如：2018-09-09
+仅支持按天粒度的数据查询，取入参中的天信息作为起始日期
+返回大于等于起始日期当天 00:00:00 点产生的数据
+仅支持 90 天内数据查询
         :type StartTime: str
-        :param EndTime: 查询结束日期，如：2018-09-10 00:00:00。目前只支持按天粒度的数据查询，只取入参中的天数信息。例如，要查询2018-09-10的数据，输入StartTime=2018-09-10 00:00:00，EndTime=2018-09-10 00:00:00即可。
+        :param EndTime: 查询结束日期，如：2018-09-10
+仅支持按天粒度的数据查询，取入参中的天信息作为结束日期
+返回小于等于结束日期当天 23:59:59 产生的数据
+EndTime 需要大于等于 StartTime
         :type EndTime: str
         :param Metric: 排序对象，支持以下几种形式：
 url：访问 URL 排序，带参数统计，支持的 Filter 为 flux、request
@@ -1224,6 +2889,191 @@ class ListTopDataResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class MainlandConfig(AbstractModel):
+    """域名国内地区特殊配置。分地区特殊配置。UpdateDomainConfig接口只支持修改部分分地区配置，为了兼容旧版本配置，本类型会列出旧版本所有可能存在差异的配置列表，支持修改的配置列表如下：
+    + Authentication
+    + BandwidthAlert
+    + ErrorPage
+    + IpFilter
+    + Origin
+    + Referer
+
+    """
+
+    def __init__(self):
+        """
+        :param Authentication: 时间戳防盗链配置。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Authentication: :class:`tencentcloud.cdn.v20180606.models.Authentication`
+        :param BandwidthAlert: 带宽封顶配置。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BandwidthAlert: :class:`tencentcloud.cdn.v20180606.models.BandwidthAlert`
+        :param Cache: 缓存规则配置。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Cache: :class:`tencentcloud.cdn.v20180606.models.Cache`
+        :param CacheKey: 缓存相关配置。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CacheKey: :class:`tencentcloud.cdn.v20180606.models.CacheKey`
+        :param Compression: 智能压缩配置。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Compression: :class:`tencentcloud.cdn.v20180606.models.Compression`
+        :param DownstreamCapping: 下载限速配置。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DownstreamCapping: :class:`tencentcloud.cdn.v20180606.models.DownstreamCapping`
+        :param ErrorPage: 错误码重定向配置。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ErrorPage: :class:`tencentcloud.cdn.v20180606.models.ErrorPage`
+        :param FollowRedirect: 301和302自动回源跟随配置。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FollowRedirect: :class:`tencentcloud.cdn.v20180606.models.FollowRedirect`
+        :param ForceRedirect: 访问协议强制跳转配置。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ForceRedirect: :class:`tencentcloud.cdn.v20180606.models.ForceRedirect`
+        :param Https: Https配置。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Https: :class:`tencentcloud.cdn.v20180606.models.Https`
+        :param IpFilter: IP黑白名单配置。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IpFilter: :class:`tencentcloud.cdn.v20180606.models.IpFilter`
+        :param IpFreqLimit: IP限频配置。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IpFreqLimit: :class:`tencentcloud.cdn.v20180606.models.IpFreqLimit`
+        :param MaxAge: 浏览器缓存规则配置。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MaxAge: :class:`tencentcloud.cdn.v20180606.models.MaxAge`
+        :param Origin: 源站配置。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Origin: :class:`tencentcloud.cdn.v20180606.models.Origin`
+        :param OriginPullOptimization: 跨国优化配置。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OriginPullOptimization: :class:`tencentcloud.cdn.v20180606.models.OriginPullOptimization`
+        :param RangeOriginPull: Range回源配置。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RangeOriginPull: :class:`tencentcloud.cdn.v20180606.models.RangeOriginPull`
+        :param Referer: 防盗链配置。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Referer: :class:`tencentcloud.cdn.v20180606.models.Referer`
+        :param RequestHeader: 回源请求头部配置。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RequestHeader: :class:`tencentcloud.cdn.v20180606.models.RequestHeader`
+        :param ResponseHeader: 源站响应头部配置。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ResponseHeader: :class:`tencentcloud.cdn.v20180606.models.ResponseHeader`
+        :param ResponseHeaderCache: 遵循源站缓存头部配置。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ResponseHeaderCache: :class:`tencentcloud.cdn.v20180606.models.ResponseHeaderCache`
+        :param Seo: seo优化配置。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Seo: :class:`tencentcloud.cdn.v20180606.models.Seo`
+        :param ServiceType: 域名业务类型，web，download，media分别表示静态加速，下载加速和流媒体加速。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ServiceType: str
+        :param StatusCodeCache: 状态码缓存配置。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type StatusCodeCache: :class:`tencentcloud.cdn.v20180606.models.StatusCodeCache`
+        :param VideoSeek: 视频拖拽配置。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type VideoSeek: :class:`tencentcloud.cdn.v20180606.models.VideoSeek`
+        """
+        self.Authentication = None
+        self.BandwidthAlert = None
+        self.Cache = None
+        self.CacheKey = None
+        self.Compression = None
+        self.DownstreamCapping = None
+        self.ErrorPage = None
+        self.FollowRedirect = None
+        self.ForceRedirect = None
+        self.Https = None
+        self.IpFilter = None
+        self.IpFreqLimit = None
+        self.MaxAge = None
+        self.Origin = None
+        self.OriginPullOptimization = None
+        self.RangeOriginPull = None
+        self.Referer = None
+        self.RequestHeader = None
+        self.ResponseHeader = None
+        self.ResponseHeaderCache = None
+        self.Seo = None
+        self.ServiceType = None
+        self.StatusCodeCache = None
+        self.VideoSeek = None
+
+
+    def _deserialize(self, params):
+        if params.get("Authentication") is not None:
+            self.Authentication = Authentication()
+            self.Authentication._deserialize(params.get("Authentication"))
+        if params.get("BandwidthAlert") is not None:
+            self.BandwidthAlert = BandwidthAlert()
+            self.BandwidthAlert._deserialize(params.get("BandwidthAlert"))
+        if params.get("Cache") is not None:
+            self.Cache = Cache()
+            self.Cache._deserialize(params.get("Cache"))
+        if params.get("CacheKey") is not None:
+            self.CacheKey = CacheKey()
+            self.CacheKey._deserialize(params.get("CacheKey"))
+        if params.get("Compression") is not None:
+            self.Compression = Compression()
+            self.Compression._deserialize(params.get("Compression"))
+        if params.get("DownstreamCapping") is not None:
+            self.DownstreamCapping = DownstreamCapping()
+            self.DownstreamCapping._deserialize(params.get("DownstreamCapping"))
+        if params.get("ErrorPage") is not None:
+            self.ErrorPage = ErrorPage()
+            self.ErrorPage._deserialize(params.get("ErrorPage"))
+        if params.get("FollowRedirect") is not None:
+            self.FollowRedirect = FollowRedirect()
+            self.FollowRedirect._deserialize(params.get("FollowRedirect"))
+        if params.get("ForceRedirect") is not None:
+            self.ForceRedirect = ForceRedirect()
+            self.ForceRedirect._deserialize(params.get("ForceRedirect"))
+        if params.get("Https") is not None:
+            self.Https = Https()
+            self.Https._deserialize(params.get("Https"))
+        if params.get("IpFilter") is not None:
+            self.IpFilter = IpFilter()
+            self.IpFilter._deserialize(params.get("IpFilter"))
+        if params.get("IpFreqLimit") is not None:
+            self.IpFreqLimit = IpFreqLimit()
+            self.IpFreqLimit._deserialize(params.get("IpFreqLimit"))
+        if params.get("MaxAge") is not None:
+            self.MaxAge = MaxAge()
+            self.MaxAge._deserialize(params.get("MaxAge"))
+        if params.get("Origin") is not None:
+            self.Origin = Origin()
+            self.Origin._deserialize(params.get("Origin"))
+        if params.get("OriginPullOptimization") is not None:
+            self.OriginPullOptimization = OriginPullOptimization()
+            self.OriginPullOptimization._deserialize(params.get("OriginPullOptimization"))
+        if params.get("RangeOriginPull") is not None:
+            self.RangeOriginPull = RangeOriginPull()
+            self.RangeOriginPull._deserialize(params.get("RangeOriginPull"))
+        if params.get("Referer") is not None:
+            self.Referer = Referer()
+            self.Referer._deserialize(params.get("Referer"))
+        if params.get("RequestHeader") is not None:
+            self.RequestHeader = RequestHeader()
+            self.RequestHeader._deserialize(params.get("RequestHeader"))
+        if params.get("ResponseHeader") is not None:
+            self.ResponseHeader = ResponseHeader()
+            self.ResponseHeader._deserialize(params.get("ResponseHeader"))
+        if params.get("ResponseHeaderCache") is not None:
+            self.ResponseHeaderCache = ResponseHeaderCache()
+            self.ResponseHeaderCache._deserialize(params.get("ResponseHeaderCache"))
+        if params.get("Seo") is not None:
+            self.Seo = Seo()
+            self.Seo._deserialize(params.get("Seo"))
+        self.ServiceType = params.get("ServiceType")
+        if params.get("StatusCodeCache") is not None:
+            self.StatusCodeCache = StatusCodeCache()
+            self.StatusCodeCache._deserialize(params.get("StatusCodeCache"))
+        if params.get("VideoSeek") is not None:
+            self.VideoSeek = VideoSeek()
+            self.VideoSeek._deserialize(params.get("VideoSeek"))
+
+
 class MapInfo(AbstractModel):
     """名称与ID映射关系
 
@@ -1243,6 +3093,384 @@ class MapInfo(AbstractModel):
     def _deserialize(self, params):
         self.Id = params.get("Id")
         self.Name = params.get("Name")
+
+
+class MaxAge(AbstractModel):
+    """浏览器缓存规则配置，用于设置 MaxAge 默认值，默认为关闭状态（功能灰度中，尚未全量）
+
+    """
+
+    def __init__(self):
+        """
+        :param Switch: 浏览器缓存配置开关
+on：开启
+off：关闭
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Switch: str
+        :param MaxAgeRules: MaxAge 规则
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MaxAgeRules: list of MaxAgeRule
+        """
+        self.Switch = None
+        self.MaxAgeRules = None
+
+
+    def _deserialize(self, params):
+        self.Switch = params.get("Switch")
+        if params.get("MaxAgeRules") is not None:
+            self.MaxAgeRules = []
+            for item in params.get("MaxAgeRules"):
+                obj = MaxAgeRule()
+                obj._deserialize(item)
+                self.MaxAgeRules.append(obj)
+
+
+class MaxAgeRule(AbstractModel):
+    """MagAge 规则配置
+
+    """
+
+    def __init__(self):
+        """
+        :param MaxAgeType: 规则类型：
+all：所有文件生效
+file：指定文件后缀生效
+directory：指定路径生效
+path：指定绝对路径生效
+        :type MaxAgeType: str
+        :param MaxAgeContents: MaxAgeType 对应类型下的匹配内容：
+all 时填充 *
+file 时填充后缀名，如 jpg、txt
+directory 时填充路径，如 /xxx/test/
+path 时填充绝对路径，如 /xxx/test.html
+        :type MaxAgeContents: list of str
+        :param MaxAgeTime: MaxAge 时间设置，单位秒
+        :type MaxAgeTime: int
+        """
+        self.MaxAgeType = None
+        self.MaxAgeContents = None
+        self.MaxAgeTime = None
+
+
+    def _deserialize(self, params):
+        self.MaxAgeType = params.get("MaxAgeType")
+        self.MaxAgeContents = params.get("MaxAgeContents")
+        self.MaxAgeTime = params.get("MaxAgeTime")
+
+
+class Origin(AbstractModel):
+    """源站配置复杂类型，支持以下配置：
+    + 源站指定为单个域名
+    + 源站指定为多个 IP，可配置端口（1~65535），可配置权重（1~100），格式为 IP:端口:权重
+    + 回源域名配置
+    + 对象存储（COS）作为源站
+    + 热备源站指定为单个域名
+    + 热备源站指定为多个 IP，可配置端口（1~65535），暂不支持权重配置
+    + 热备源站回源域名配置
+
+    """
+
+    def __init__(self):
+        """
+        :param Origins: 主源站列表
+修改源站时，需要同时填充对应的 OriginType
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Origins: list of str
+        :param OriginType: 主源站类型
+入参支持以下几种类型：
+domain：域名类型
+cos：对象存储源站
+ip：IP 列表作为源站
+ipv6：源站列表为一个单独的 IPv6 地址
+ip_ipv6：源站列表为多个 IPv4 地址和一个 IPv6 地址
+出参增加以下几种类型：
+image：数据万象源站
+ftp：历史 FTP 托管源源站，现已不维护
+修改 Origins 时需要同时填充对应的 OriginType
+IPv6 功能目前尚未全量，需要先申请试用
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OriginType: str
+        :param ServerName: 回主源站时 Host 头部，不填充则默认为加速域名
+若接入的是泛域名，则回源 Host 默认为访问时的子域名
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ServerName: str
+        :param CosPrivateAccess: OriginType 为对象存储（COS）时，可以指定是否允许访问私有 bucket
+注意：需要先授权 CDN 访问该私有 Bucket 的权限后，才可开启此配置。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CosPrivateAccess: str
+        :param OriginPullProtocol: 回源协议配置
+http：强制 http 回源
+follow：协议跟随回源
+https：强制 https 回源，https 回源时仅支持源站 443 端口
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OriginPullProtocol: str
+        :param BackupOrigins: 备源站列表
+修改备源站时，需要同时填充对应的 BackupOriginType
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BackupOrigins: list of str
+        :param BackupOriginType: 备源站类型，支持以下类型：
+domain：域名类型
+ip：IP 列表作为源站
+修改 BackupOrigins 时需要同时填充对应的 BackupOriginType
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BackupOriginType: str
+        :param BackupServerName: 回备源站时 Host 头部，不填充则默认为主源站的 ServerName
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BackupServerName: str
+        """
+        self.Origins = None
+        self.OriginType = None
+        self.ServerName = None
+        self.CosPrivateAccess = None
+        self.OriginPullProtocol = None
+        self.BackupOrigins = None
+        self.BackupOriginType = None
+        self.BackupServerName = None
+
+
+    def _deserialize(self, params):
+        self.Origins = params.get("Origins")
+        self.OriginType = params.get("OriginType")
+        self.ServerName = params.get("ServerName")
+        self.CosPrivateAccess = params.get("CosPrivateAccess")
+        self.OriginPullProtocol = params.get("OriginPullProtocol")
+        self.BackupOrigins = params.get("BackupOrigins")
+        self.BackupOriginType = params.get("BackupOriginType")
+        self.BackupServerName = params.get("BackupServerName")
+
+
+class OriginPullOptimization(AbstractModel):
+    """跨国回源优化配置，默认为关闭状态（功能灰度中，尚未全量）
+
+    """
+
+    def __init__(self):
+        """
+        :param Switch: 跨国回源优化配置开关
+on：开启
+off：关闭
+        :type Switch: str
+        :param OptimizationType: 跨国类型
+OVToCN：境外回源境内
+CNToOV：境内回源境外
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OptimizationType: str
+        """
+        self.Switch = None
+        self.OptimizationType = None
+
+
+    def _deserialize(self, params):
+        self.Switch = params.get("Switch")
+        self.OptimizationType = params.get("OptimizationType")
+
+
+class OriginPullTimeout(AbstractModel):
+    """回源超时配置
+
+    """
+
+    def __init__(self):
+        """
+        :param ConnectTimeout: 回源建连超时时间，单位为秒，要求5~60之间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ConnectTimeout: int
+        :param ReceiveTimeout: 回源接收超时时间，单位为秒，要求10 ~ 60之间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ReceiveTimeout: int
+        """
+        self.ConnectTimeout = None
+        self.ReceiveTimeout = None
+
+
+    def _deserialize(self, params):
+        self.ConnectTimeout = params.get("ConnectTimeout")
+        self.ReceiveTimeout = params.get("ReceiveTimeout")
+
+
+class OverseaConfig(AbstractModel):
+    """域名海外地区特殊配置。UpdateDomainConfig接口只支持修改部分分地区配置，为了兼容旧版本配置，本类型会列出旧版本所有可能存在差异的配置列表，支持修改的配置列表如下：
+    + Authentication
+    + BandwidthAlert
+    + ErrorPage
+    + IpFilter
+    + Origin
+    + Referer
+
+    """
+
+    def __init__(self):
+        """
+        :param Authentication: 时间戳防盗链配置。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Authentication: :class:`tencentcloud.cdn.v20180606.models.Authentication`
+        :param BandwidthAlert: 带宽封顶配置。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BandwidthAlert: :class:`tencentcloud.cdn.v20180606.models.BandwidthAlert`
+        :param Cache: 缓存规则配置。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Cache: :class:`tencentcloud.cdn.v20180606.models.Cache`
+        :param CacheKey: 缓存相关配置。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CacheKey: :class:`tencentcloud.cdn.v20180606.models.CacheKey`
+        :param Compression: 智能压缩配置。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Compression: :class:`tencentcloud.cdn.v20180606.models.Compression`
+        :param DownstreamCapping: 下载限速配置。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DownstreamCapping: :class:`tencentcloud.cdn.v20180606.models.DownstreamCapping`
+        :param ErrorPage: 错误码重定向配置。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ErrorPage: :class:`tencentcloud.cdn.v20180606.models.ErrorPage`
+        :param FollowRedirect: 301和302自动回源跟随配置。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FollowRedirect: :class:`tencentcloud.cdn.v20180606.models.FollowRedirect`
+        :param ForceRedirect: 访问协议强制跳转配置。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ForceRedirect: :class:`tencentcloud.cdn.v20180606.models.ForceRedirect`
+        :param Https: Https配置。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Https: :class:`tencentcloud.cdn.v20180606.models.Https`
+        :param IpFilter: IP黑白名单配置。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IpFilter: :class:`tencentcloud.cdn.v20180606.models.IpFilter`
+        :param IpFreqLimit: IP限频配置。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IpFreqLimit: :class:`tencentcloud.cdn.v20180606.models.IpFreqLimit`
+        :param MaxAge: 浏览器缓存规则配置。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MaxAge: :class:`tencentcloud.cdn.v20180606.models.MaxAge`
+        :param Origin: 源站配置。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Origin: :class:`tencentcloud.cdn.v20180606.models.Origin`
+        :param OriginPullOptimization: 跨国优化配置。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OriginPullOptimization: :class:`tencentcloud.cdn.v20180606.models.OriginPullOptimization`
+        :param RangeOriginPull: Range回源配置。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RangeOriginPull: :class:`tencentcloud.cdn.v20180606.models.RangeOriginPull`
+        :param Referer: 防盗链配置。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Referer: :class:`tencentcloud.cdn.v20180606.models.Referer`
+        :param RequestHeader: 回源请求头部配置。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RequestHeader: :class:`tencentcloud.cdn.v20180606.models.RequestHeader`
+        :param ResponseHeader: 源站响应头部配置。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ResponseHeader: :class:`tencentcloud.cdn.v20180606.models.ResponseHeader`
+        :param ResponseHeaderCache: 遵循源站缓存头部配置。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ResponseHeaderCache: :class:`tencentcloud.cdn.v20180606.models.ResponseHeaderCache`
+        :param Seo: seo优化配置。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Seo: :class:`tencentcloud.cdn.v20180606.models.Seo`
+        :param ServiceType: 域名业务类型，web，download，media分别表示静态加速，下载加速和流媒体加速。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ServiceType: str
+        :param StatusCodeCache: 状态码缓存配置。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type StatusCodeCache: :class:`tencentcloud.cdn.v20180606.models.StatusCodeCache`
+        :param VideoSeek: 视频拖拽配置。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type VideoSeek: :class:`tencentcloud.cdn.v20180606.models.VideoSeek`
+        """
+        self.Authentication = None
+        self.BandwidthAlert = None
+        self.Cache = None
+        self.CacheKey = None
+        self.Compression = None
+        self.DownstreamCapping = None
+        self.ErrorPage = None
+        self.FollowRedirect = None
+        self.ForceRedirect = None
+        self.Https = None
+        self.IpFilter = None
+        self.IpFreqLimit = None
+        self.MaxAge = None
+        self.Origin = None
+        self.OriginPullOptimization = None
+        self.RangeOriginPull = None
+        self.Referer = None
+        self.RequestHeader = None
+        self.ResponseHeader = None
+        self.ResponseHeaderCache = None
+        self.Seo = None
+        self.ServiceType = None
+        self.StatusCodeCache = None
+        self.VideoSeek = None
+
+
+    def _deserialize(self, params):
+        if params.get("Authentication") is not None:
+            self.Authentication = Authentication()
+            self.Authentication._deserialize(params.get("Authentication"))
+        if params.get("BandwidthAlert") is not None:
+            self.BandwidthAlert = BandwidthAlert()
+            self.BandwidthAlert._deserialize(params.get("BandwidthAlert"))
+        if params.get("Cache") is not None:
+            self.Cache = Cache()
+            self.Cache._deserialize(params.get("Cache"))
+        if params.get("CacheKey") is not None:
+            self.CacheKey = CacheKey()
+            self.CacheKey._deserialize(params.get("CacheKey"))
+        if params.get("Compression") is not None:
+            self.Compression = Compression()
+            self.Compression._deserialize(params.get("Compression"))
+        if params.get("DownstreamCapping") is not None:
+            self.DownstreamCapping = DownstreamCapping()
+            self.DownstreamCapping._deserialize(params.get("DownstreamCapping"))
+        if params.get("ErrorPage") is not None:
+            self.ErrorPage = ErrorPage()
+            self.ErrorPage._deserialize(params.get("ErrorPage"))
+        if params.get("FollowRedirect") is not None:
+            self.FollowRedirect = FollowRedirect()
+            self.FollowRedirect._deserialize(params.get("FollowRedirect"))
+        if params.get("ForceRedirect") is not None:
+            self.ForceRedirect = ForceRedirect()
+            self.ForceRedirect._deserialize(params.get("ForceRedirect"))
+        if params.get("Https") is not None:
+            self.Https = Https()
+            self.Https._deserialize(params.get("Https"))
+        if params.get("IpFilter") is not None:
+            self.IpFilter = IpFilter()
+            self.IpFilter._deserialize(params.get("IpFilter"))
+        if params.get("IpFreqLimit") is not None:
+            self.IpFreqLimit = IpFreqLimit()
+            self.IpFreqLimit._deserialize(params.get("IpFreqLimit"))
+        if params.get("MaxAge") is not None:
+            self.MaxAge = MaxAge()
+            self.MaxAge._deserialize(params.get("MaxAge"))
+        if params.get("Origin") is not None:
+            self.Origin = Origin()
+            self.Origin._deserialize(params.get("Origin"))
+        if params.get("OriginPullOptimization") is not None:
+            self.OriginPullOptimization = OriginPullOptimization()
+            self.OriginPullOptimization._deserialize(params.get("OriginPullOptimization"))
+        if params.get("RangeOriginPull") is not None:
+            self.RangeOriginPull = RangeOriginPull()
+            self.RangeOriginPull._deserialize(params.get("RangeOriginPull"))
+        if params.get("Referer") is not None:
+            self.Referer = Referer()
+            self.Referer._deserialize(params.get("Referer"))
+        if params.get("RequestHeader") is not None:
+            self.RequestHeader = RequestHeader()
+            self.RequestHeader._deserialize(params.get("RequestHeader"))
+        if params.get("ResponseHeader") is not None:
+            self.ResponseHeader = ResponseHeader()
+            self.ResponseHeader._deserialize(params.get("ResponseHeader"))
+        if params.get("ResponseHeaderCache") is not None:
+            self.ResponseHeaderCache = ResponseHeaderCache()
+            self.ResponseHeaderCache._deserialize(params.get("ResponseHeaderCache"))
+        if params.get("Seo") is not None:
+            self.Seo = Seo()
+            self.Seo._deserialize(params.get("Seo"))
+        self.ServiceType = params.get("ServiceType")
+        if params.get("StatusCodeCache") is not None:
+            self.StatusCodeCache = StatusCodeCache()
+            self.StatusCodeCache._deserialize(params.get("StatusCodeCache"))
+        if params.get("VideoSeek") is not None:
+            self.VideoSeek = VideoSeek()
+            self.VideoSeek._deserialize(params.get("VideoSeek"))
 
 
 class PurgePathCacheRequest(AbstractModel):
@@ -1396,6 +3624,9 @@ mainland：境内
 overseas：境外
 global：全球
         :type Area: str
+        :param UpdateTime: 预热任务更新时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UpdateTime: str
         """
         self.TaskId = None
         self.Url = None
@@ -1403,6 +3634,7 @@ global：全球
         self.Percent = None
         self.CreateTime = None
         self.Area = None
+        self.UpdateTime = None
 
 
     def _deserialize(self, params):
@@ -1412,6 +3644,7 @@ global：全球
         self.Percent = params.get("Percent")
         self.CreateTime = params.get("CreateTime")
         self.Area = params.get("Area")
+        self.UpdateTime = params.get("UpdateTime")
 
 
 class PushUrlsCacheRequest(AbstractModel):
@@ -1465,6 +3698,99 @@ class PushUrlsCacheResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class RangeOriginPull(AbstractModel):
+    """分片回源配置，默认为开启状态
+
+    """
+
+    def __init__(self):
+        """
+        :param Switch: 分片回源配置开关
+on：开启
+off：关闭
+        :type Switch: str
+        """
+        self.Switch = None
+
+
+    def _deserialize(self, params):
+        self.Switch = params.get("Switch")
+
+
+class Referer(AbstractModel):
+    """Referer 黑白名单配置，默认为关闭状态
+
+    """
+
+    def __init__(self):
+        """
+        :param Switch: referer 黑白名单配置开关
+on：开启
+off：关闭
+        :type Switch: str
+        :param RefererRules: referer 黑白名单配置规则
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RefererRules: list of RefererRule
+        """
+        self.Switch = None
+        self.RefererRules = None
+
+
+    def _deserialize(self, params):
+        self.Switch = params.get("Switch")
+        if params.get("RefererRules") is not None:
+            self.RefererRules = []
+            for item in params.get("RefererRules"):
+                obj = RefererRule()
+                obj._deserialize(item)
+                self.RefererRules.append(obj)
+
+
+class RefererRule(AbstractModel):
+    """Referer 黑白名单配置规则，针对特定资源生效
+
+    """
+
+    def __init__(self):
+        """
+        :param RuleType: 规则类型：
+all：所有文件生效
+file：指定文件后缀生效
+directory：指定路径生效
+path：指定绝对路径生效
+        :type RuleType: str
+        :param RulePaths: RuleType 对应类型下的匹配内容：
+all 时填充 *
+file 时填充后缀名，如 jpg、txt
+directory 时填充路径，如 /xxx/test/
+path 时填充绝对路径，如 /xxx/test.html
+        :type RulePaths: list of str
+        :param RefererType: referer 配置类型
+whitelist：白名单
+blacklist：黑名单
+        :type RefererType: str
+        :param Referers: referer 内容列表列表
+        :type Referers: list of str
+        :param AllowEmpty: 是否允许空 referer
+true：允许空 referer
+false：不允许空 referer
+        :type AllowEmpty: bool
+        """
+        self.RuleType = None
+        self.RulePaths = None
+        self.RefererType = None
+        self.Referers = None
+        self.AllowEmpty = None
+
+
+    def _deserialize(self, params):
+        self.RuleType = params.get("RuleType")
+        self.RulePaths = params.get("RulePaths")
+        self.RefererType = params.get("RefererType")
+        self.Referers = params.get("Referers")
+        self.AllowEmpty = params.get("AllowEmpty")
+
+
 class RegionMapRelation(AbstractModel):
     """区域映射id和子区域id的关联信息。
 
@@ -1484,6 +3810,35 @@ class RegionMapRelation(AbstractModel):
     def _deserialize(self, params):
         self.RegionId = params.get("RegionId")
         self.SubRegionIdList = params.get("SubRegionIdList")
+
+
+class RequestHeader(AbstractModel):
+    """自定义请求头配置，默认为关闭状态
+
+    """
+
+    def __init__(self):
+        """
+        :param Switch: 自定义请求头配置开关
+on：开启
+off：关闭
+        :type Switch: str
+        :param HeaderRules: 自定义请求头配置规则
+注意：此字段可能返回 null，表示取不到有效值。
+        :type HeaderRules: list of HttpHeaderPathRule
+        """
+        self.Switch = None
+        self.HeaderRules = None
+
+
+    def _deserialize(self, params):
+        self.Switch = params.get("Switch")
+        if params.get("HeaderRules") is not None:
+            self.HeaderRules = []
+            for item in params.get("HeaderRules"):
+                obj = HttpHeaderPathRule()
+                obj._deserialize(item)
+                self.HeaderRules.append(obj)
 
 
 class ResourceData(AbstractModel):
@@ -1544,6 +3899,398 @@ all：账号维度明细数据
                 obj = CdnData()
                 obj._deserialize(item)
                 self.OriginData.append(obj)
+
+
+class ResponseHeader(AbstractModel):
+    """自定义响应头配置，默认为关闭状态
+
+    """
+
+    def __init__(self):
+        """
+        :param Switch: 自定义响应头开关
+on：开启
+off：关闭
+        :type Switch: str
+        :param HeaderRules: 自定义响应头规则
+注意：此字段可能返回 null，表示取不到有效值。
+        :type HeaderRules: list of HttpHeaderPathRule
+        """
+        self.Switch = None
+        self.HeaderRules = None
+
+
+    def _deserialize(self, params):
+        self.Switch = params.get("Switch")
+        if params.get("HeaderRules") is not None:
+            self.HeaderRules = []
+            for item in params.get("HeaderRules"):
+                obj = HttpHeaderPathRule()
+                obj._deserialize(item)
+                self.HeaderRules.append(obj)
+
+
+class ResponseHeaderCache(AbstractModel):
+    """源站头部缓存配置，默认为开启状态，缓存所有头部信息
+
+    """
+
+    def __init__(self):
+        """
+        :param Switch: 源站头部缓存开关
+on：开启
+off：关闭
+        :type Switch: str
+        """
+        self.Switch = None
+
+
+    def _deserialize(self, params):
+        self.Switch = params.get("Switch")
+
+
+class Seo(AbstractModel):
+    """SEO 搜索引擎优化配置，默认为关闭状态
+
+    """
+
+    def __init__(self):
+        """
+        :param Switch: SEO 配置开关
+on：开启
+off：关闭
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Switch: str
+        """
+        self.Switch = None
+
+
+    def _deserialize(self, params):
+        self.Switch = params.get("Switch")
+
+
+class ServerCert(AbstractModel):
+    """https 加速服务端证书配置：
+    + 支持使用托管至 SSL 证书管理的证书进行部署
+    + 支持上传 PEM 格式的证书进行部署
+    注意：上传 PEM 证书时，需要进行 Base 64 编码
+
+    """
+
+    def __init__(self):
+        """
+        :param CertId: 服务器证书 ID
+在 SSL 证书管理进行证书托管时自动生成
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CertId: str
+        :param CertName: 服务器证书名称
+在 SSL 证书管理进行证书托管时自动生成
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CertName: str
+        :param Certificate: 服务器证书信息
+上传自有证书时必填，需要包含完整的证书链
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Certificate: str
+        :param PrivateKey: 服务器密钥信息
+上传自有证书时必填
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PrivateKey: str
+        :param ExpireTime: 证书过期时间
+作为入参配置时无需填充
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ExpireTime: str
+        :param DeployTime: 证书颁发时间
+作为入参配置时无需填充
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DeployTime: str
+        :param Message: 证书备注信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Message: str
+        """
+        self.CertId = None
+        self.CertName = None
+        self.Certificate = None
+        self.PrivateKey = None
+        self.ExpireTime = None
+        self.DeployTime = None
+        self.Message = None
+
+
+    def _deserialize(self, params):
+        self.CertId = params.get("CertId")
+        self.CertName = params.get("CertName")
+        self.Certificate = params.get("Certificate")
+        self.PrivateKey = params.get("PrivateKey")
+        self.ExpireTime = params.get("ExpireTime")
+        self.DeployTime = params.get("DeployTime")
+        self.Message = params.get("Message")
+
+
+class SimpleCache(AbstractModel):
+    """缓存配置基础版本
+    默认情况下所有文件缓存过期时间为 30 天
+    默认情况下静态加速类型的域名 .php;.jsp;.asp;.aspx 不缓存
+    注意：该版本不支持设置源站未返回 max-age 情况下的缓存过期规则设置
+
+    """
+
+    def __init__(self):
+        """
+        :param CacheRules: 缓存过期时间规则
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CacheRules: list of SimpleCacheRule
+        :param FollowOrigin: 遵循源站 Cache-Control: max-age 配置
+on：开启
+off：关闭
+开启后，未能匹配 CacheRules 规则的资源将根据源站返回的 max-age 值进行节点缓存；匹配了 CacheRules 规则的资源将按照 CacheRules 中设置的缓存过期时间在节点进行缓存
+与 CompareMaxAge 冲突，不能同时开启
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FollowOrigin: str
+        :param IgnoreCacheControl: 强制缓存
+on：开启
+off：关闭
+默认为关闭状态，开启后，源站发挥的 no-store、no-cache 资源，也将按照 CacheRules 规则进行缓存
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IgnoreCacheControl: str
+        :param IgnoreSetCookie: 忽略源站的Set-Cookie头部
+on：开启
+off：关闭
+默认为关闭状态
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IgnoreSetCookie: str
+        :param CompareMaxAge: 高级缓存过期配置，开启时会对比源站返回的 max-age 值与 CacheRules 中设置的缓存过期时间，取最小值在节点进行缓存
+on：开启
+off：关闭
+默认为关闭状态
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CompareMaxAge: str
+        """
+        self.CacheRules = None
+        self.FollowOrigin = None
+        self.IgnoreCacheControl = None
+        self.IgnoreSetCookie = None
+        self.CompareMaxAge = None
+
+
+    def _deserialize(self, params):
+        if params.get("CacheRules") is not None:
+            self.CacheRules = []
+            for item in params.get("CacheRules"):
+                obj = SimpleCacheRule()
+                obj._deserialize(item)
+                self.CacheRules.append(obj)
+        self.FollowOrigin = params.get("FollowOrigin")
+        self.IgnoreCacheControl = params.get("IgnoreCacheControl")
+        self.IgnoreSetCookie = params.get("IgnoreSetCookie")
+        self.CompareMaxAge = params.get("CompareMaxAge")
+
+
+class SimpleCacheRule(AbstractModel):
+    """缓存过期规则配置
+
+    """
+
+    def __init__(self):
+        """
+        :param CacheType: 规则类型：
+all：所有文件生效
+file：指定文件后缀生效
+directory：指定路径生效
+path：指定绝对路径生效
+index：首页
+        :type CacheType: str
+        :param CacheContents: CacheType 对应类型下的匹配内容：
+all 时填充 *
+file 时填充后缀名，如 jpg、txt
+directory 时填充路径，如 /xxx/test/
+path 时填充绝对路径，如 /xxx/test.html
+index 时填充 /
+        :type CacheContents: list of str
+        :param CacheTime: 缓存过期时间设置
+单位为秒，最大可设置为 365 天
+        :type CacheTime: int
+        """
+        self.CacheType = None
+        self.CacheContents = None
+        self.CacheTime = None
+
+
+    def _deserialize(self, params):
+        self.CacheType = params.get("CacheType")
+        self.CacheContents = params.get("CacheContents")
+        self.CacheTime = params.get("CacheTime")
+
+
+class Sort(AbstractModel):
+    """查询结果排序条件
+
+    """
+
+    def __init__(self):
+        """
+        :param Key: 排序字段，当前支持：
+createTime，域名创建时间
+certExpireTime，证书过期时间
+        :type Key: str
+        :param Sequence: asc/desc，默认desc。
+        :type Sequence: str
+        """
+        self.Key = None
+        self.Sequence = None
+
+
+    def _deserialize(self, params):
+        self.Key = params.get("Key")
+        self.Sequence = params.get("Sequence")
+
+
+class SpecificConfig(AbstractModel):
+    """域名国内海外分地区特殊配置。
+
+    """
+
+    def __init__(self):
+        """
+        :param Mainland: 国内特殊配置。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Mainland: :class:`tencentcloud.cdn.v20180606.models.MainlandConfig`
+        :param Overseas: 海外特殊配置。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Overseas: :class:`tencentcloud.cdn.v20180606.models.OverseaConfig`
+        """
+        self.Mainland = None
+        self.Overseas = None
+
+
+    def _deserialize(self, params):
+        if params.get("Mainland") is not None:
+            self.Mainland = MainlandConfig()
+            self.Mainland._deserialize(params.get("Mainland"))
+        if params.get("Overseas") is not None:
+            self.Overseas = OverseaConfig()
+            self.Overseas._deserialize(params.get("Overseas"))
+
+
+class StartCdnDomainRequest(AbstractModel):
+    """StartCdnDomain请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Domain: 域名
+域名状态需要为【已停用】
+        :type Domain: str
+        """
+        self.Domain = None
+
+
+    def _deserialize(self, params):
+        self.Domain = params.get("Domain")
+
+
+class StartCdnDomainResponse(AbstractModel):
+    """StartCdnDomain返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class StatusCodeCache(AbstractModel):
+    """状态码缓存过期配置，默认情况下会对 404 状态码缓存 10 秒
+
+    """
+
+    def __init__(self):
+        """
+        :param Switch: 状态码缓存过期配置开关
+on：开启
+off：关闭
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Switch: str
+        :param CacheRules: 状态码缓存过期规则明细
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CacheRules: list of StatusCodeCacheRule
+        """
+        self.Switch = None
+        self.CacheRules = None
+
+
+    def _deserialize(self, params):
+        self.Switch = params.get("Switch")
+        if params.get("CacheRules") is not None:
+            self.CacheRules = []
+            for item in params.get("CacheRules"):
+                obj = StatusCodeCacheRule()
+                obj._deserialize(item)
+                self.CacheRules.append(obj)
+
+
+class StatusCodeCacheRule(AbstractModel):
+    """状态码缓存过期时间规则配置
+
+    """
+
+    def __init__(self):
+        """
+        :param StatusCode: http 状态码
+支持 403、404 状态码
+        :type StatusCode: str
+        :param CacheTime: 状态码缓存过期时间，单位秒
+        :type CacheTime: int
+        """
+        self.StatusCode = None
+        self.CacheTime = None
+
+
+    def _deserialize(self, params):
+        self.StatusCode = params.get("StatusCode")
+        self.CacheTime = params.get("CacheTime")
+
+
+class StopCdnDomainRequest(AbstractModel):
+    """StopCdnDomain请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Domain: 域名
+域名需要为【已启动】状态
+        :type Domain: str
+        """
+        self.Domain = None
+
+
+    def _deserialize(self, params):
+        self.Domain = params.get("Domain")
+
+
+class StopCdnDomainResponse(AbstractModel):
+    """StopCdnDomain返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
 
 
 class SummarizedData(AbstractModel):
@@ -1703,6 +4450,241 @@ disabled：未启用
         self.Channel = params.get("Channel")
 
 
+class UpdateDomainConfigRequest(AbstractModel):
+    """UpdateDomainConfig请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Domain: 域名
+        :type Domain: str
+        :param ProjectId: 项目 ID
+        :type ProjectId: int
+        :param Origin: 源站配置
+        :type Origin: :class:`tencentcloud.cdn.v20180606.models.Origin`
+        :param IpFilter: IP 黑白名单配置
+        :type IpFilter: :class:`tencentcloud.cdn.v20180606.models.IpFilter`
+        :param IpFreqLimit: IP 限频配置
+        :type IpFreqLimit: :class:`tencentcloud.cdn.v20180606.models.IpFreqLimit`
+        :param StatusCodeCache: 状态码缓存配置
+        :type StatusCodeCache: :class:`tencentcloud.cdn.v20180606.models.StatusCodeCache`
+        :param Compression: 智能压缩配置
+        :type Compression: :class:`tencentcloud.cdn.v20180606.models.Compression`
+        :param BandwidthAlert: 带宽封顶配置
+        :type BandwidthAlert: :class:`tencentcloud.cdn.v20180606.models.BandwidthAlert`
+        :param RangeOriginPull: Range 回源配置
+        :type RangeOriginPull: :class:`tencentcloud.cdn.v20180606.models.RangeOriginPull`
+        :param FollowRedirect: 301/302 回源跟随配置
+        :type FollowRedirect: :class:`tencentcloud.cdn.v20180606.models.FollowRedirect`
+        :param ErrorPage: 错误码重定向配置（功能灰度中，尚未全量）
+        :type ErrorPage: :class:`tencentcloud.cdn.v20180606.models.ErrorPage`
+        :param RequestHeader: 请求头部配置
+        :type RequestHeader: :class:`tencentcloud.cdn.v20180606.models.RequestHeader`
+        :param ResponseHeader: 响应头部配置
+        :type ResponseHeader: :class:`tencentcloud.cdn.v20180606.models.ResponseHeader`
+        :param DownstreamCapping: 下载速度配置
+        :type DownstreamCapping: :class:`tencentcloud.cdn.v20180606.models.DownstreamCapping`
+        :param CacheKey: 节点缓存键配置
+        :type CacheKey: :class:`tencentcloud.cdn.v20180606.models.CacheKey`
+        :param ResponseHeaderCache: 头部缓存配置
+        :type ResponseHeaderCache: :class:`tencentcloud.cdn.v20180606.models.ResponseHeaderCache`
+        :param VideoSeek: 视频拖拽配置
+        :type VideoSeek: :class:`tencentcloud.cdn.v20180606.models.VideoSeek`
+        :param Cache: 缓存过期时间配置
+        :type Cache: :class:`tencentcloud.cdn.v20180606.models.Cache`
+        :param OriginPullOptimization: 跨国链路优化配置
+        :type OriginPullOptimization: :class:`tencentcloud.cdn.v20180606.models.OriginPullOptimization`
+        :param Https: Https 加速配置
+        :type Https: :class:`tencentcloud.cdn.v20180606.models.Https`
+        :param Authentication: 时间戳防盗链配置
+        :type Authentication: :class:`tencentcloud.cdn.v20180606.models.Authentication`
+        :param Seo: SEO 优化配置
+        :type Seo: :class:`tencentcloud.cdn.v20180606.models.Seo`
+        :param ForceRedirect: 访问协议强制跳转配置
+        :type ForceRedirect: :class:`tencentcloud.cdn.v20180606.models.ForceRedirect`
+        :param Referer: Referer 防盗链配置
+        :type Referer: :class:`tencentcloud.cdn.v20180606.models.Referer`
+        :param MaxAge: 浏览器缓存配置（功能灰度中，尚未全量）
+        :type MaxAge: :class:`tencentcloud.cdn.v20180606.models.MaxAge`
+        :param ServiceType: 域名业务类型
+web：静态加速
+download：下载加速
+media：流媒体点播加速
+        :type ServiceType: str
+        :param SpecificConfig: 地域属性特殊配置
+适用于域名境内加速、境外加速配置不一致场景
+        :type SpecificConfig: :class:`tencentcloud.cdn.v20180606.models.SpecificConfig`
+        :param Area: 域名加速区域
+mainland：中国境内加速
+overseas：中国境外加速
+global：全球加速
+        :type Area: str
+        """
+        self.Domain = None
+        self.ProjectId = None
+        self.Origin = None
+        self.IpFilter = None
+        self.IpFreqLimit = None
+        self.StatusCodeCache = None
+        self.Compression = None
+        self.BandwidthAlert = None
+        self.RangeOriginPull = None
+        self.FollowRedirect = None
+        self.ErrorPage = None
+        self.RequestHeader = None
+        self.ResponseHeader = None
+        self.DownstreamCapping = None
+        self.CacheKey = None
+        self.ResponseHeaderCache = None
+        self.VideoSeek = None
+        self.Cache = None
+        self.OriginPullOptimization = None
+        self.Https = None
+        self.Authentication = None
+        self.Seo = None
+        self.ForceRedirect = None
+        self.Referer = None
+        self.MaxAge = None
+        self.ServiceType = None
+        self.SpecificConfig = None
+        self.Area = None
+
+
+    def _deserialize(self, params):
+        self.Domain = params.get("Domain")
+        self.ProjectId = params.get("ProjectId")
+        if params.get("Origin") is not None:
+            self.Origin = Origin()
+            self.Origin._deserialize(params.get("Origin"))
+        if params.get("IpFilter") is not None:
+            self.IpFilter = IpFilter()
+            self.IpFilter._deserialize(params.get("IpFilter"))
+        if params.get("IpFreqLimit") is not None:
+            self.IpFreqLimit = IpFreqLimit()
+            self.IpFreqLimit._deserialize(params.get("IpFreqLimit"))
+        if params.get("StatusCodeCache") is not None:
+            self.StatusCodeCache = StatusCodeCache()
+            self.StatusCodeCache._deserialize(params.get("StatusCodeCache"))
+        if params.get("Compression") is not None:
+            self.Compression = Compression()
+            self.Compression._deserialize(params.get("Compression"))
+        if params.get("BandwidthAlert") is not None:
+            self.BandwidthAlert = BandwidthAlert()
+            self.BandwidthAlert._deserialize(params.get("BandwidthAlert"))
+        if params.get("RangeOriginPull") is not None:
+            self.RangeOriginPull = RangeOriginPull()
+            self.RangeOriginPull._deserialize(params.get("RangeOriginPull"))
+        if params.get("FollowRedirect") is not None:
+            self.FollowRedirect = FollowRedirect()
+            self.FollowRedirect._deserialize(params.get("FollowRedirect"))
+        if params.get("ErrorPage") is not None:
+            self.ErrorPage = ErrorPage()
+            self.ErrorPage._deserialize(params.get("ErrorPage"))
+        if params.get("RequestHeader") is not None:
+            self.RequestHeader = RequestHeader()
+            self.RequestHeader._deserialize(params.get("RequestHeader"))
+        if params.get("ResponseHeader") is not None:
+            self.ResponseHeader = ResponseHeader()
+            self.ResponseHeader._deserialize(params.get("ResponseHeader"))
+        if params.get("DownstreamCapping") is not None:
+            self.DownstreamCapping = DownstreamCapping()
+            self.DownstreamCapping._deserialize(params.get("DownstreamCapping"))
+        if params.get("CacheKey") is not None:
+            self.CacheKey = CacheKey()
+            self.CacheKey._deserialize(params.get("CacheKey"))
+        if params.get("ResponseHeaderCache") is not None:
+            self.ResponseHeaderCache = ResponseHeaderCache()
+            self.ResponseHeaderCache._deserialize(params.get("ResponseHeaderCache"))
+        if params.get("VideoSeek") is not None:
+            self.VideoSeek = VideoSeek()
+            self.VideoSeek._deserialize(params.get("VideoSeek"))
+        if params.get("Cache") is not None:
+            self.Cache = Cache()
+            self.Cache._deserialize(params.get("Cache"))
+        if params.get("OriginPullOptimization") is not None:
+            self.OriginPullOptimization = OriginPullOptimization()
+            self.OriginPullOptimization._deserialize(params.get("OriginPullOptimization"))
+        if params.get("Https") is not None:
+            self.Https = Https()
+            self.Https._deserialize(params.get("Https"))
+        if params.get("Authentication") is not None:
+            self.Authentication = Authentication()
+            self.Authentication._deserialize(params.get("Authentication"))
+        if params.get("Seo") is not None:
+            self.Seo = Seo()
+            self.Seo._deserialize(params.get("Seo"))
+        if params.get("ForceRedirect") is not None:
+            self.ForceRedirect = ForceRedirect()
+            self.ForceRedirect._deserialize(params.get("ForceRedirect"))
+        if params.get("Referer") is not None:
+            self.Referer = Referer()
+            self.Referer._deserialize(params.get("Referer"))
+        if params.get("MaxAge") is not None:
+            self.MaxAge = MaxAge()
+            self.MaxAge._deserialize(params.get("MaxAge"))
+        self.ServiceType = params.get("ServiceType")
+        if params.get("SpecificConfig") is not None:
+            self.SpecificConfig = SpecificConfig()
+            self.SpecificConfig._deserialize(params.get("SpecificConfig"))
+        self.Area = params.get("Area")
+
+
+class UpdateDomainConfigResponse(AbstractModel):
+    """UpdateDomainConfig返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class UpdatePayTypeRequest(AbstractModel):
+    """UpdatePayType请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Area: 计费区域，mainland或overseas。
+        :type Area: str
+        :param PayType: 计费类型，flux或bandwidth。
+        :type PayType: str
+        """
+        self.Area = None
+        self.PayType = None
+
+
+    def _deserialize(self, params):
+        self.Area = params.get("Area")
+        self.PayType = params.get("PayType")
+
+
+class UpdatePayTypeResponse(AbstractModel):
+    """UpdatePayType返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class UrlRecord(AbstractModel):
     """封禁url的详细信息
 
@@ -1732,5 +4714,66 @@ class UrlRecord(AbstractModel):
     def _deserialize(self, params):
         self.Status = params.get("Status")
         self.RealUrl = params.get("RealUrl")
+        self.CreateTime = params.get("CreateTime")
+        self.UpdateTime = params.get("UpdateTime")
+
+
+class VideoSeek(AbstractModel):
+    """视频拖拽配置，默认为关闭状态
+
+    """
+
+    def __init__(self):
+        """
+        :param Switch: 视频拖拽开关
+on：开启
+off：关闭
+        :type Switch: str
+        """
+        self.Switch = None
+
+
+    def _deserialize(self, params):
+        self.Switch = params.get("Switch")
+
+
+class ViolationUrl(AbstractModel):
+    """违规 URL 详情
+
+    """
+
+    def __init__(self):
+        """
+        :param Id: ID
+        :type Id: int
+        :param RealUrl: 违规资源原始访问 URL
+        :type RealUrl: str
+        :param DownloadUrl: 快照路径，用于控制台展示违规内容快照
+        :type DownloadUrl: str
+        :param UrlStatus: 违规资源当前状态
+forbid：已封禁
+release：已解封
+delay ： 延迟处理
+reject ：申诉驳回，状态仍为封禁态
+complain：申诉进行中
+        :type UrlStatus: str
+        :param CreateTime: 创建时间
+        :type CreateTime: str
+        :param UpdateTime: 更新时间
+        :type UpdateTime: str
+        """
+        self.Id = None
+        self.RealUrl = None
+        self.DownloadUrl = None
+        self.UrlStatus = None
+        self.CreateTime = None
+        self.UpdateTime = None
+
+
+    def _deserialize(self, params):
+        self.Id = params.get("Id")
+        self.RealUrl = params.get("RealUrl")
+        self.DownloadUrl = params.get("DownloadUrl")
+        self.UrlStatus = params.get("UrlStatus")
         self.CreateTime = params.get("CreateTime")
         self.UpdateTime = params.get("UpdateTime")

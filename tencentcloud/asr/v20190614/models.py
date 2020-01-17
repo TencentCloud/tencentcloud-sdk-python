@@ -16,6 +16,62 @@
 from tencentcloud.common.abstract_model import AbstractModel
 
 
+class CreateAsrVocabRequest(AbstractModel):
+    """CreateAsrVocab请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Name: 热词表名称，长度在1-255之间
+        :type Name: str
+        :param Description: 热词表描述，长度在0-1000之间
+        :type Description: str
+        :param WordWeights: 词权重数组，包含全部的热词和对应的权重。每个热词的长度不大于10，权重为[1,10]之间整数，数组长度不大于128
+        :type WordWeights: list of HotWord
+        :param WordWeightStr: 词权重文件（纯文本文件）的二进制base64编码，以行分隔，每行的格式为word|weight，即以英文符号|为分割，左边为词，右边为权重，如：你好|5。
+当用户传此参数（参数长度大于0），即以此参数解析词权重，WordWeights会被忽略
+        :type WordWeightStr: str
+        """
+        self.Name = None
+        self.Description = None
+        self.WordWeights = None
+        self.WordWeightStr = None
+
+
+    def _deserialize(self, params):
+        self.Name = params.get("Name")
+        self.Description = params.get("Description")
+        if params.get("WordWeights") is not None:
+            self.WordWeights = []
+            for item in params.get("WordWeights"):
+                obj = HotWord()
+                obj._deserialize(item)
+                self.WordWeights.append(obj)
+        self.WordWeightStr = params.get("WordWeightStr")
+
+
+class CreateAsrVocabResponse(AbstractModel):
+    """CreateAsrVocab返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param VocabId: 词表ID，可用于获取词表信息
+        :type VocabId: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.VocabId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.VocabId = params.get("VocabId")
+        self.RequestId = params.get("RequestId")
+
+
 class CreateRecTaskRequest(AbstractModel):
     """CreateRecTask请求参数结构体
 
@@ -24,9 +80,9 @@ class CreateRecTaskRequest(AbstractModel):
     def __init__(self):
         """
         :param EngineModelType: 引擎模型类型。
-8k_0：电话 8k 中文普通话通用，可用于双声道音频的识别；
-8k_6：电话 8k 中文普通话话者分离，仅用于单声道；
-16k_0：16k 中文普通话通用；
+8k_zh：电话 8k 中文普通话通用，可用于双声道音频的识别；
+8k_zh_s：电话 8k 中文普通话话者分离，仅用于单声道；
+16k_zh：16k 中文普通话通用；
 16k_en：16k 英语；
 16k_ca：16k 粤语。
         :type EngineModelType: str
@@ -44,6 +100,8 @@ class CreateRecTaskRequest(AbstractModel):
         :type Data: str
         :param DataLen: 数据长度，当 SourceType 值为1时必须填写，为0可不写（此数据长度为数据未进行base64编码时的数据长度）。
         :type DataLen: int
+        :param HotwordId: 热词id。用于调用对应的热词表，如果在调用语音识别服务时，不进行单独的热词id设置，自动生效默认热词；如果进行了单独的热词id设置，那么将生效单独设置的热词id。
+        :type HotwordId: str
         """
         self.EngineModelType = None
         self.ChannelNum = None
@@ -53,6 +111,7 @@ class CreateRecTaskRequest(AbstractModel):
         self.Url = None
         self.Data = None
         self.DataLen = None
+        self.HotwordId = None
 
 
     def _deserialize(self, params):
@@ -64,6 +123,7 @@ class CreateRecTaskRequest(AbstractModel):
         self.Url = params.get("Url")
         self.Data = params.get("Data")
         self.DataLen = params.get("DataLen")
+        self.HotwordId = params.get("HotwordId")
 
 
 class CreateRecTaskResponse(AbstractModel):
@@ -86,6 +146,40 @@ class CreateRecTaskResponse(AbstractModel):
         if params.get("Data") is not None:
             self.Data = Task()
             self.Data._deserialize(params.get("Data"))
+        self.RequestId = params.get("RequestId")
+
+
+class DeleteAsrVocabRequest(AbstractModel):
+    """DeleteAsrVocab请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param VocabId: 热词表Id
+        :type VocabId: str
+        """
+        self.VocabId = None
+
+
+    def _deserialize(self, params):
+        self.VocabId = params.get("VocabId")
+
+
+class DeleteAsrVocabResponse(AbstractModel):
+    """DeleteAsrVocab返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
 
 
@@ -129,6 +223,94 @@ class DescribeTaskStatusResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class GetAsrVocabRequest(AbstractModel):
+    """GetAsrVocab请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param VocabId: 热词表ID
+        :type VocabId: str
+        """
+        self.VocabId = None
+
+
+    def _deserialize(self, params):
+        self.VocabId = params.get("VocabId")
+
+
+class GetAsrVocabResponse(AbstractModel):
+    """GetAsrVocab返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Name: 热词表名称
+        :type Name: str
+        :param Description: 热词表描述
+        :type Description: str
+        :param VocabId: 热词表ID
+        :type VocabId: str
+        :param WordWeights: 词权重列表
+        :type WordWeights: list of HotWord
+        :param CreateTime: 词表创建时间
+        :type CreateTime: str
+        :param UpdateTime: 词表更新时间
+        :type UpdateTime: str
+        :param State: 热词表状态，1为默认状态即在识别时默认加载该热词表进行识别，0为初始状态
+        :type State: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Name = None
+        self.Description = None
+        self.VocabId = None
+        self.WordWeights = None
+        self.CreateTime = None
+        self.UpdateTime = None
+        self.State = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Name = params.get("Name")
+        self.Description = params.get("Description")
+        self.VocabId = params.get("VocabId")
+        if params.get("WordWeights") is not None:
+            self.WordWeights = []
+            for item in params.get("WordWeights"):
+                obj = HotWord()
+                obj._deserialize(item)
+                self.WordWeights.append(obj)
+        self.CreateTime = params.get("CreateTime")
+        self.UpdateTime = params.get("UpdateTime")
+        self.State = params.get("State")
+        self.RequestId = params.get("RequestId")
+
+
+class HotWord(AbstractModel):
+    """热词的词和权重
+
+    """
+
+    def __init__(self):
+        """
+        :param Word: 热词
+        :type Word: str
+        :param Weight: 权重
+        :type Weight: int
+        """
+        self.Word = None
+        self.Weight = None
+
+
+    def _deserialize(self, params):
+        self.Word = params.get("Word")
+        self.Weight = params.get("Weight")
+
+
 class SentenceRecognitionRequest(AbstractModel):
     """SentenceRecognition请求参数结构体
 
@@ -140,9 +322,9 @@ class SentenceRecognitionRequest(AbstractModel):
         :type ProjectId: int
         :param SubServiceType: 子服务类型。2： 一句话识别。
         :type SubServiceType: int
-        :param EngSerViceType: 引擎类型。
-8k：电话 8k 中文普通话通用；
-16k：16k 中文普通话通用；
+        :param EngSerViceType: 引擎模型类型。
+8k_zh：电话 8k 中文普通话通用；
+16k_zh：16k 中文普通话通用；
 16k_en：16k 英语；
 16k_ca：16k 粤语。
         :type EngSerViceType: str
@@ -158,6 +340,8 @@ class SentenceRecognitionRequest(AbstractModel):
         :type Data: str
         :param DataLen: 数据长度，单位为字节。当 SourceType 值为1（本地语音数据上传）时必须填写，当 SourceType 值为0（语音 URL上传）可不写（此数据长度为数据未进行base64编码时的数据长度）。
         :type DataLen: int
+        :param HotwordId: 热词id。用于调用对应的热词表，如果在调用语音识别服务时，不进行单独的热词id设置，自动生效默认热词；如果进行了单独的热词id设置，那么将生效单独设置的热词id。
+        :type HotwordId: str
         """
         self.ProjectId = None
         self.SubServiceType = None
@@ -168,6 +352,7 @@ class SentenceRecognitionRequest(AbstractModel):
         self.Url = None
         self.Data = None
         self.DataLen = None
+        self.HotwordId = None
 
 
     def _deserialize(self, params):
@@ -180,6 +365,7 @@ class SentenceRecognitionRequest(AbstractModel):
         self.Url = params.get("Url")
         self.Data = params.get("Data")
         self.DataLen = params.get("DataLen")
+        self.HotwordId = params.get("HotwordId")
 
 
 class SentenceRecognitionResponse(AbstractModel):
@@ -251,3 +437,63 @@ class TaskStatus(AbstractModel):
         self.StatusStr = params.get("StatusStr")
         self.Result = params.get("Result")
         self.ErrorMsg = params.get("ErrorMsg")
+
+
+class UpdateAsrVocabRequest(AbstractModel):
+    """UpdateAsrVocab请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param VocabId: 热词表ID
+        :type VocabId: str
+        :param Name: 热词表名称
+        :type Name: str
+        :param WordWeights: 词权重数组，包含全部的热词和对应的权重。每个热词的长度不大于10，权重为[1,10]之间整数，数组长度不大于128
+        :type WordWeights: list of HotWord
+        :param WordWeightStr: 词权重文件（纯文本文件）的二进制base64编码，以行分隔，每行的格式为word|weight，即以英文符号|为分割，左边为词，右边为权重，如：你好|5。
+当用户传此参数（参数长度大于0），即以此参数解析词权重，WordWeights会被忽略
+        :type WordWeightStr: str
+        :param Description: 热词表描述
+        :type Description: str
+        """
+        self.VocabId = None
+        self.Name = None
+        self.WordWeights = None
+        self.WordWeightStr = None
+        self.Description = None
+
+
+    def _deserialize(self, params):
+        self.VocabId = params.get("VocabId")
+        self.Name = params.get("Name")
+        if params.get("WordWeights") is not None:
+            self.WordWeights = []
+            for item in params.get("WordWeights"):
+                obj = HotWord()
+                obj._deserialize(item)
+                self.WordWeights.append(obj)
+        self.WordWeightStr = params.get("WordWeightStr")
+        self.Description = params.get("Description")
+
+
+class UpdateAsrVocabResponse(AbstractModel):
+    """UpdateAsrVocab返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param VocabId: 热词表ID
+        :type VocabId: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.VocabId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.VocabId = params.get("VocabId")
+        self.RequestId = params.get("RequestId")

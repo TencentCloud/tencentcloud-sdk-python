@@ -25,6 +25,62 @@ class CdnClient(AbstractClient):
     _endpoint = 'cdn.tencentcloudapi.com'
 
 
+    def AddCdnDomain(self, request):
+        """AddCdnDomain 用于新增内容分发网络加速域名。
+
+        :param request: Request instance for AddCdnDomain.
+        :type request: :class:`tencentcloud.cdn.v20180606.models.AddCdnDomainRequest`
+        :rtype: :class:`tencentcloud.cdn.v20180606.models.AddCdnDomainResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("AddCdnDomain", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.AddCdnDomainResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DeleteCdnDomain(self, request):
+        """DeleteCdnDomain 用于删除指定加速域名
+
+        :param request: Request instance for DeleteCdnDomain.
+        :type request: :class:`tencentcloud.cdn.v20180606.models.DeleteCdnDomainRequest`
+        :rtype: :class:`tencentcloud.cdn.v20180606.models.DeleteCdnDomainResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DeleteCdnDomain", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DeleteCdnDomainResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeCdnData(self, request):
         """DescribeCdnData 用于查询 CDN 实时访问监控数据，支持以下指标查询：
 
@@ -104,6 +160,62 @@ class CdnClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeCdnIpResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeDomains(self, request):
+        """DescribeDomains 用于查询内容分发网络加速域名（含境内、境外）基本配置信息，包括项目ID、服务状态，业务类型、创建时间、更新时间等信息。
+
+        :param request: Request instance for DescribeDomains.
+        :type request: :class:`tencentcloud.cdn.v20180606.models.DescribeDomainsRequest`
+        :rtype: :class:`tencentcloud.cdn.v20180606.models.DescribeDomainsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeDomains", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeDomainsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeDomainsConfig(self, request):
+        """DescribeDomainsConfig 用于查询内容分发网络加速域名（含境内、境外）的所有配置信息。
+
+        :param request: Request instance for DescribeDomainsConfig.
+        :type request: :class:`tencentcloud.cdn.v20180606.models.DescribeDomainsConfigRequest`
+        :rtype: :class:`tencentcloud.cdn.v20180606.models.DescribeDomainsConfigResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeDomainsConfig", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeDomainsConfigResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -328,6 +440,35 @@ class CdnClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeUrlViolations(self, request):
+        """DescribeUrlViolations 用于查询被 CDN 系统扫描到的域名违规 URL 列表及当前状态。
+        对应内容分发网络控制台【图片鉴黄】页面。
+
+        :param request: Request instance for DescribeUrlViolations.
+        :type request: :class:`tencentcloud.cdn.v20180606.models.DescribeUrlViolationsRequest`
+        :rtype: :class:`tencentcloud.cdn.v20180606.models.DescribeUrlViolationsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeUrlViolations", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeUrlViolationsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DisableCaches(self, request):
         """DisableCaches 用于禁用 CDN 上指定 URL 的访问，禁用完成后，全网访问会直接返回 403。（接口尚在内测中，暂未全量开放使用）
 
@@ -385,7 +526,7 @@ class CdnClient(AbstractClient):
 
 
     def GetDisableRecords(self, request):
-        """GetDisableRecords 用户查询资源禁用历史，及 URL 当前状态。（接口尚在内测中，暂未全量开放使用）
+        """GetDisableRecords 用于查询资源禁用历史，及 URL 当前状态。（接口尚在内测中，暂未全量开放使用）
 
         :param request: Request instance for GetDisableRecords.
         :type request: :class:`tencentcloud.cdn.v20180606.models.GetDisableRecordsRequest`
@@ -420,6 +561,8 @@ class CdnClient(AbstractClient):
         + 依据总流量、总请求数对客户端运营商排序，从大至小返回运营商列表
         + 依据总流量、峰值带宽、总请求数、平均命中率、2XX/3XX/4XX/5XX 状态码对域名排序，从大至小返回域名列表
         + 依据总回源流量、回源峰值带宽、总回源请求数、平均回源失败率、2XX/3XX/4XX/5XX 回源状态码对域名排序，从大至小返回域名列表
+
+        注意：仅支持 90 天内数据查询
 
         :param request: Request instance for ListTopData.
         :type request: :class:`tencentcloud.cdn.v20180606.models.ListTopDataRequest`
@@ -520,6 +663,120 @@ class CdnClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.PushUrlsCacheResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def StartCdnDomain(self, request):
+        """StartCdnDomain 用于启用已停用域名的加速服务
+
+        :param request: Request instance for StartCdnDomain.
+        :type request: :class:`tencentcloud.cdn.v20180606.models.StartCdnDomainRequest`
+        :rtype: :class:`tencentcloud.cdn.v20180606.models.StartCdnDomainResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("StartCdnDomain", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.StartCdnDomainResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def StopCdnDomain(self, request):
+        """StopCdnDomain 用于停止域名的加速服务。
+        注意：停止加速服务后，访问至加速节点的请求将会直接返回 404。为避免对您的业务造成影响，请在停止加速服务前将解析切走。
+
+        :param request: Request instance for StopCdnDomain.
+        :type request: :class:`tencentcloud.cdn.v20180606.models.StopCdnDomainRequest`
+        :rtype: :class:`tencentcloud.cdn.v20180606.models.StopCdnDomainResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("StopCdnDomain", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.StopCdnDomainResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def UpdateDomainConfig(self, request):
+        """UpdateDomainConfig 用于修改内容分发网络加速域名配置信息
+        注意：如果需要更新复杂类型的配置项，必须传递整个对象的所有属性，未传递的属性将使用默认值，建议通过查询接口获取配置属性后，直接修改后传递给本接口。Https配置由于证书的特殊性，更新时不用传递证书和密钥字段。
+
+        :param request: Request instance for UpdateDomainConfig.
+        :type request: :class:`tencentcloud.cdn.v20180606.models.UpdateDomainConfigRequest`
+        :rtype: :class:`tencentcloud.cdn.v20180606.models.UpdateDomainConfigResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("UpdateDomainConfig", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.UpdateDomainConfigResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def UpdatePayType(self, request):
+        """本接口(UpdatePayType)用于修改账号计费类型，暂不支持月结用户或子账号修改。
+
+        :param request: Request instance for UpdatePayType.
+        :type request: :class:`tencentcloud.cdn.v20180606.models.UpdatePayTypeRequest`
+        :rtype: :class:`tencentcloud.cdn.v20180606.models.UpdatePayTypeResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("UpdatePayType", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.UpdatePayTypeResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

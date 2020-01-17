@@ -2614,7 +2614,7 @@ class CosFileUploadTrigger(AbstractModel):
         :type Bucket: str
         :param Region: 工作流绑定的 COS Bucket 所属园区，如 ap-chongiqng。
         :type Region: str
-        :param Dir: 工作流绑定的输入路径目录，如`/movie/201907/`，不填代表根目录`/`。
+        :param Dir: 工作流绑定的输入路径目录，必须为绝对路径，即以 `/` 开头和结尾。如`/movie/201907/`，不填代表根目录`/`。
         :type Dir: str
         :param Formats: 工作流允许触发的文件格式列表，如 ["mp4", "flv", "mov"]。不填代表所有格式的文件都可以触发工作流。
         :type Formats: list of str
@@ -6180,7 +6180,7 @@ class MediaAnimatedGraphicsItem(AbstractModel):
         :type Storage: :class:`tencentcloud.mps.v20190612.models.TaskOutputStorage`
         :param Path: 转动图的文件路径。
         :type Path: str
-        :param Definition: 转动图模板 ID，参见[转动图参数模板](https://cloud.tencent.com/document/product/266/33481#.E8.BD.AC.E5.8A.A8.E5.9B.BE.E6.A8.A1.E6.9D.BF)。
+        :param Definition: 转动图模板 ID，参见[转动图参数模板](https://cloud.tencent.com/document/product/862/37042#.E9.A2.84.E7.BD.AE.E8.BD.AC.E5.8A.A8.E5.9B.BE.E6.A8.A1.E6.9D.BF)。
         :type Definition: int
         :param Container: 动图格式，如 gif。
         :type Container: str
@@ -6453,7 +6453,7 @@ class MediaImageSpriteItem(AbstractModel):
         :type TotalCount: int
         :param ImagePathSet: 每一张雪碧图大图的路径。
         :type ImagePathSet: list of str
-        :param WebVttPath: 雪碧图子图位置与时间关系的 WebVtt 文件路径。WebVtt 文件表明了各个雪碧图小图对应的时间点，以及在在雪碧大图里的坐标位置，一般被播放器用于实现预览。
+        :param WebVttPath: 雪碧图子图位置与时间关系的 WebVtt 文件路径。WebVtt 文件表明了各个雪碧图小图对应的时间点，以及在雪碧大图里的坐标位置，一般被播放器用于实现预览。
         :type WebVttPath: str
         :param Storage: 雪碧图文件的存储位置。
         :type Storage: :class:`tencentcloud.mps.v20190612.models.TaskOutputStorage`
@@ -7002,7 +7002,7 @@ class MediaTranscodeItem(AbstractModel):
         :type OutputStorage: :class:`tencentcloud.mps.v20190612.models.TaskOutputStorage`
         :param Path: 转码后的视频文件路径。
         :type Path: str
-        :param Definition: 转码规格 ID，参见[转码参数模板](https://cloud.tencent.com/document/product/266/33478#.E8.BD.AC.E7.A0.81.E6.A8.A1.E6.9D.BF)。
+        :param Definition: 转码规格 ID，参见[转码参数模板](https://cloud.tencent.com/document/product/862/37042)。
         :type Definition: int
         :param Bitrate: 视频流码率平均值与音频流码率平均值之和， 单位：bps。
         :type Bitrate: int
@@ -8821,7 +8821,7 @@ class ProcessMediaResponse(AbstractModel):
 
 
 class RawTranscodeParameter(AbstractModel):
-    """自定义转码的的规格参数。
+    """自定义转码的规格参数。
 
     """
 
@@ -10136,7 +10136,7 @@ class VideoTemplateInfoForUpdate(AbstractModel):
         :param Height: 视频流高度（或短边）的最大值，取值范围：0 和 [128, 4096]，单位：px。
         :type Height: int
         :param Gop: 关键帧 I 帧之间的间隔，取值范围：0 和 [1, 100000]，单位：帧数。当填 0 时，系统将自动设置 gop 长度。
-        :type Gop: str
+        :type Gop: int
         :param FillType: 填充方式，当视频流配置宽高参数与原始视频的宽高比不一致时，对转码的处理方式，即为“填充”。可选填充方式：
 <li> stretch：拉伸，对每一帧进行拉伸，填满整个画面，可能导致转码后的视频被“压扁“或者“拉长“；</li>
 <li>black：留黑，保持视频宽高比不变，边缘剩余部分使用黑色填充。</li>

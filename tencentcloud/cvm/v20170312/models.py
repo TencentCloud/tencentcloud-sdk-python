@@ -419,12 +419,20 @@ class DataDisk(AbstractModel):
         :param SnapshotId: 数据盘快照ID。选择的数据盘快照大小需小于数据盘大小。
 注意：此字段可能返回 null，表示取不到有效值。
         :type SnapshotId: str
+        :param Encrypt: 数据盘是否随子机销毁。取值范围：
+<li>TRUE：加密
+<li>FALSE：不加密<br>
+默认取值：FALSE<br>
+该参数目前仅用于 `RunInstances` 接口。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Encrypt: bool
         """
         self.DiskSize = None
         self.DiskType = None
         self.DiskId = None
         self.DeleteWithInstance = None
         self.SnapshotId = None
+        self.Encrypt = None
 
 
     def _deserialize(self, params):
@@ -433,6 +441,7 @@ class DataDisk(AbstractModel):
         self.DiskId = params.get("DiskId")
         self.DeleteWithInstance = params.get("DeleteWithInstance")
         self.SnapshotId = params.get("SnapshotId")
+        self.Encrypt = params.get("Encrypt")
 
 
 class DeleteDisasterRecoverGroupsRequest(AbstractModel):
@@ -3658,15 +3667,18 @@ class Placement(AbstractModel):
         :type Zone: str
         :param ProjectId: 实例所属项目ID。该参数可以通过调用 [DescribeProject](/document/api/378/4400) 的返回值中的 projectId 字段来获取。不填为默认项目。
         :type ProjectId: int
-        :param HostIds: 实例所属的专用宿主机ID列表。如果您有购买专用宿主机并且指定了该参数，则您购买的实例就会随机的部署在这些专用宿主机上。
+        :param HostIds: 实例所属的专用宿主机ID列表，仅用于入参。如果您有购买专用宿主机并且指定了该参数，则您购买的实例就会随机的部署在这些专用宿主机上。
         :type HostIds: list of str
         :param HostIps: 指定母机ip生产子机
         :type HostIps: list of str
+        :param HostId: 实例所属的专用宿主机ID，仅用于出参。
+        :type HostId: str
         """
         self.Zone = None
         self.ProjectId = None
         self.HostIds = None
         self.HostIps = None
+        self.HostId = None
 
 
     def _deserialize(self, params):
@@ -3674,6 +3686,7 @@ class Placement(AbstractModel):
         self.ProjectId = params.get("ProjectId")
         self.HostIds = params.get("HostIds")
         self.HostIps = params.get("HostIps")
+        self.HostId = params.get("HostId")
 
 
 class Price(AbstractModel):
