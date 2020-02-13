@@ -999,9 +999,9 @@ class DescribeDevicesRequest(AbstractModel):
         """
         :param ProductId: 需要查看设备列表的产品 ID
         :type ProductId: str
-        :param Offset: 分页偏移
+        :param Offset: 偏移量，Offset从0开始
         :type Offset: int
-        :param Limit: 分页的大小，数值范围 10-100
+        :param Limit: 分页的大小，数值范围 10-250
         :type Limit: int
         :param FirmwareVersion: 设备固件版本号，若不带此参数会返回所有固件版本的设备
         :type FirmwareVersion: str
@@ -1227,7 +1227,7 @@ class DescribeProductsRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Offset: 分页偏移，Offset从0开始
+        :param Offset: 偏移量，Offset从0开始
         :type Offset: int
         :param Limit: 分页大小，当前页面中显示的最大数量，值范围 10-250。
         :type Limit: int
@@ -1364,7 +1364,7 @@ class DescribeTasksRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Offset: 分页偏移，从0开始
+        :param Offset: 偏移l量，从0开始
         :type Offset: int
         :param Limit: 分页的大小，数值范围 1-250
         :type Limit: int

@@ -633,6 +633,62 @@ class CdbClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeBackupOverview(self, request):
+        """本接口(DescribeBackupOverview)用于查询用户的备份概览。返回用户当前备份总个数、备份总的占用容量、赠送的免费容量、计费容量（容量单位为字节）。
+
+        :param request: Request instance for DescribeBackupOverview.
+        :type request: :class:`tencentcloud.cdb.v20170320.models.DescribeBackupOverviewRequest`
+        :rtype: :class:`tencentcloud.cdb.v20170320.models.DescribeBackupOverviewResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeBackupOverview", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeBackupOverviewResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeBackupSummaries(self, request):
+        """本接口(DescribeBackupSummaries)用于查询备份的统计情况，返回以实例为维度的备份占用容量，以及每个实例的数据备份和日志备份的个数和容量（容量单位为字节）。
+
+        :param request: Request instance for DescribeBackupSummaries.
+        :type request: :class:`tencentcloud.cdb.v20170320.models.DescribeBackupSummariesRequest`
+        :rtype: :class:`tencentcloud.cdb.v20170320.models.DescribeBackupSummariesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeBackupSummaries", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeBackupSummariesResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeBackupTables(self, request):
         """本接口(DescribeBackupTables)用于查询指定的数据库的备份数据表名 (已废弃)。
         旧版本支持全量备份后，用户如果分库表下载逻辑备份文件，需要用到此接口。
@@ -677,6 +733,34 @@ class CdbClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeBackupsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeBinlogBackupOverview(self, request):
+        """本接口(DescribeBinlogBackupOverview)用于查询用户在当前地域总的日志备份概览。
+
+        :param request: Request instance for DescribeBinlogBackupOverview.
+        :type request: :class:`tencentcloud.cdb.v20170320.models.DescribeBinlogBackupOverviewRequest`
+        :rtype: :class:`tencentcloud.cdb.v20170320.models.DescribeBinlogBackupOverviewResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeBinlogBackupOverview", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeBinlogBackupOverviewResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -987,6 +1071,34 @@ class CdbClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeDBZoneConfigResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeDataBackupOverview(self, request):
+        """本接口(DescribeDataBackupOverview)用于查询用户在当前地域总的数据备份概览。
+
+        :param request: Request instance for DescribeDataBackupOverview.
+        :type request: :class:`tencentcloud.cdb.v20170320.models.DescribeDataBackupOverviewRequest`
+        :rtype: :class:`tencentcloud.cdb.v20170320.models.DescribeDataBackupOverviewResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeDataBackupOverview", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeDataBackupOverviewResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

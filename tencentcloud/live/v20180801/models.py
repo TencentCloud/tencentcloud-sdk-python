@@ -981,7 +981,7 @@ class CreateLiveTranscodeRuleRequest(AbstractModel):
         """
         :param DomainName: 播放域名。
         :type DomainName: str
-        :param AppName: 推流路径，与推流和播放地址中的AppName保持一致，默认为 live。
+        :param AppName: 推流路径，与推流和播放地址中的AppName保持一致。如果只绑定域名，则此处填空。
         :type AppName: str
         :param StreamName: 流名称。如果只绑定域名或路径，则此处填空。
         :type StreamName: str
@@ -1966,7 +1966,7 @@ class DescribeGroupProIspPlayInfoListRequest(AbstractModel):
         :type PlayDomains: list of str
         :param ProvinceNames: 省份列表，默认不填，则返回各省份的数据。
         :type ProvinceNames: list of str
-        :param IspNames: 运营商列表，默认不填，则返回个运营商的数据。
+        :param IspNames: 运营商列表，默认不填，则返回整个运营商的数据。
         :type IspNames: list of str
         :param MainlandOrOversea: 国内还是国外，如果为空，查询所有地区数据；如果为“Mainland”，查询国内数据；如果为“Oversea”，则查询国外数据。
         :type MainlandOrOversea: str
@@ -3017,9 +3017,9 @@ class DescribeLiveStreamOnlineListRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param DomainName: 推流域名。
+        :param DomainName: 推流域名。多域名用户需要填写DomainName。
         :type DomainName: str
-        :param AppName: 推流路径，与推流和播放地址中的AppName保持一致，默认为 live。
+        :param AppName: 推流路径，与推流和播放地址中的AppName保持一致，默认为 live。多路径用户需要填写AppName。
         :type AppName: str
         :param PageNum: 取得第几页，默认1。
         :type PageNum: int

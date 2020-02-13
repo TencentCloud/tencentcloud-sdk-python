@@ -53,6 +53,34 @@ class DayuClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def CreateCCFrequencyRules(self, request):
+        """添加CC防护的访问频率控制规则
+
+        :param request: Request instance for CreateCCFrequencyRules.
+        :type request: :class:`tencentcloud.dayu.v20180709.models.CreateCCFrequencyRulesRequest`
+        :rtype: :class:`tencentcloud.dayu.v20180709.models.CreateCCFrequencyRulesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("CreateCCFrequencyRules", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateCCFrequencyRulesResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def CreateCCSelfDefinePolicy(self, request):
         """创建CC自定义策略
 
@@ -138,7 +166,7 @@ class DayuClient(AbstractClient):
 
 
     def CreateInstanceName(self, request):
-        """资源实例重命名，支持独享包、共享包、高防IP、高防IP专业版、棋牌盾；
+        """资源实例重命名，支持独享包、共享包、高防IP、高防IP专业版；
 
         :param request: Request instance for CreateInstanceName.
         :type request: :class:`tencentcloud.dayu.v20180709.models.CreateInstanceNameRequest`
@@ -207,34 +235,6 @@ class DayuClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateL4RulesResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(e.message, e.message)
-
-
-    def CreateL7CCRule(self, request):
-        """支持读取，添加，删除7层CC自定义规则
-
-        :param request: Request instance for CreateL7CCRule.
-        :type request: :class:`tencentcloud.dayu.v20180709.models.CreateL7CCRuleRequest`
-        :rtype: :class:`tencentcloud.dayu.v20180709.models.CreateL7CCRuleResponse`
-
-        """
-        try:
-            params = request._serialize()
-            body = self.call("CreateL7CCRule", params)
-            response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.CreateL7CCRuleResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -375,6 +375,34 @@ class DayuClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateUnblockIpResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DeleteCCFrequencyRules(self, request):
+        """删除CC防护的访问频率控制规则
+
+        :param request: Request instance for DeleteCCFrequencyRules.
+        :type request: :class:`tencentcloud.dayu.v20180709.models.DeleteCCFrequencyRulesRequest`
+        :rtype: :class:`tencentcloud.dayu.v20180709.models.DeleteCCFrequencyRulesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DeleteCCFrequencyRules", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DeleteCCFrequencyRulesResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -558,7 +586,7 @@ class DayuClient(AbstractClient):
 
 
     def DescribeBaradData(self, request):
-        """为大禹子产品提供从巴拉多获取指标统计数据的接口
+        """为大禹子产品提供业务转发指标数据的接口
 
         :param request: Request instance for DescribeBaradData.
         :type request: :class:`tencentcloud.dayu.v20180709.models.DescribeBaradDataRequest`
@@ -571,6 +599,34 @@ class DayuClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeBaradDataResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeBasicCCThreshold(self, request):
+        """获取基础防护CC防护阈值
+
+        :param request: Request instance for DescribeBasicCCThreshold.
+        :type request: :class:`tencentcloud.dayu.v20180709.models.DescribeBasicCCThresholdRequest`
+        :rtype: :class:`tencentcloud.dayu.v20180709.models.DescribeBasicCCThresholdResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeBasicCCThreshold", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeBasicCCThresholdResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -655,6 +711,34 @@ class DayuClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeCCEvListResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeCCFrequencyRules(self, request):
+        """获取CC防护的访问频率控制规则
+
+        :param request: Request instance for DescribeCCFrequencyRules.
+        :type request: :class:`tencentcloud.dayu.v20180709.models.DescribeCCFrequencyRulesRequest`
+        :rtype: :class:`tencentcloud.dayu.v20180709.models.DescribeCCFrequencyRulesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeCCFrequencyRules", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeCCFrequencyRulesResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -795,6 +879,34 @@ class DayuClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeDDoSAlarmThresholdResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeDDoSAttackIPRegionMap(self, request):
+        """获取DDoS攻击源IP地域分布图，支持全球攻击分布和国内省份攻击分布；
+
+        :param request: Request instance for DescribeDDoSAttackIPRegionMap.
+        :type request: :class:`tencentcloud.dayu.v20180709.models.DescribeDDoSAttackIPRegionMapRequest`
+        :rtype: :class:`tencentcloud.dayu.v20180709.models.DescribeDDoSAttackIPRegionMapResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeDDoSAttackIPRegionMap", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeDDoSAttackIPRegionMapResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -1398,7 +1510,7 @@ class DayuClient(AbstractClient):
 
 
     def DescribePackIndex(self, request):
-        """获取产品总览统计，支持高防包、高防IP、高防IP专业版、棋牌盾
+        """获取产品总览统计，支持高防包、高防IP、高防IP专业版；
 
         :param request: Request instance for DescribePackIndex.
         :type request: :class:`tencentcloud.dayu.v20180709.models.DescribePackIndexRequest`
@@ -1594,7 +1706,7 @@ class DayuClient(AbstractClient):
 
 
     def DescribeSourceIpSegment(self, request):
-        """获取回源IP段，支持的产品：高防IP，高防IP专业版，棋牌盾；
+        """获取回源IP段，支持的产品：高防IP，高防IP专业版；
 
         :param request: Request instance for DescribeSourceIpSegment.
         :type request: :class:`tencentcloud.dayu.v20180709.models.DescribeSourceIpSegmentRequest`
@@ -1775,6 +1887,62 @@ class DayuClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyCCAlarmThresholdResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ModifyCCFrequencyRules(self, request):
+        """修改CC防护的访问频率控制规则
+
+        :param request: Request instance for ModifyCCFrequencyRules.
+        :type request: :class:`tencentcloud.dayu.v20180709.models.ModifyCCFrequencyRulesRequest`
+        :rtype: :class:`tencentcloud.dayu.v20180709.models.ModifyCCFrequencyRulesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ModifyCCFrequencyRules", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ModifyCCFrequencyRulesResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ModifyCCFrequencyRulesStatus(self, request):
+        """开启或关闭CC防护的访问频率控制规则
+
+        :param request: Request instance for ModifyCCFrequencyRulesStatus.
+        :type request: :class:`tencentcloud.dayu.v20180709.models.ModifyCCFrequencyRulesStatusRequest`
+        :rtype: :class:`tencentcloud.dayu.v20180709.models.ModifyCCFrequencyRulesStatusResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ModifyCCFrequencyRulesStatus", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ModifyCCFrequencyRulesStatusResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

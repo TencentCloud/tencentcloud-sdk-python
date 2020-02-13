@@ -123,7 +123,7 @@ class CloseDBExtranetAccessResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param FlowId: 异步任务Id，可通过 DescribeFlow 查询任务状态。
+        :param FlowId: 异步任务ID，可通过 DescribeFlow 查询任务状态。
         :type FlowId: int
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -265,7 +265,7 @@ class CreateAccountResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param InstanceId: 实例Id，透传入参。
+        :param InstanceId: 实例ID，透传入参。
         :type InstanceId: str
         :param UserName: 用户名，透传入参。
         :type UserName: str
@@ -313,7 +313,7 @@ class CreateDCDBInstanceRequest(AbstractModel):
         :type ShardNodeCount: int
         :param ShardCount: 实例分片个数，可选范围2-8，可以通过升级实例进行新增分片到最多64个分片。
         :type ShardCount: int
-        :param Count: 欲购买实例的数量，目前只支持购买1个实例
+        :param Count: 欲购买实例的数量
         :type Count: int
         :param ProjectId: 项目 ID，可以通过查看项目列表获取，不传则关联到默认项目
         :type ProjectId: int
@@ -331,6 +331,10 @@ class CreateDCDBInstanceRequest(AbstractModel):
         :type AutoVoucher: bool
         :param VoucherIds: 代金券ID列表，目前仅支持指定一张代金券。
         :type VoucherIds: list of str
+        :param SecurityGroupId: 安全组id
+        :type SecurityGroupId: str
+        :param InstanceName: 实例名称， 可以通过该字段自主的设置实例的名字
+        :type InstanceName: str
         """
         self.Zones = None
         self.Period = None
@@ -345,6 +349,8 @@ class CreateDCDBInstanceRequest(AbstractModel):
         self.DbVersionId = None
         self.AutoVoucher = None
         self.VoucherIds = None
+        self.SecurityGroupId = None
+        self.InstanceName = None
 
 
     def _deserialize(self, params):
@@ -361,6 +367,8 @@ class CreateDCDBInstanceRequest(AbstractModel):
         self.DbVersionId = params.get("DbVersionId")
         self.AutoVoucher = params.get("AutoVoucher")
         self.VoucherIds = params.get("VoucherIds")
+        self.SecurityGroupId = params.get("SecurityGroupId")
+        self.InstanceName = params.get("InstanceName")
 
 
 class CreateDCDBInstanceResponse(AbstractModel):
@@ -464,7 +472,7 @@ class DCDBInstanceInfo(AbstractModel):
         :type InstanceId: str
         :param InstanceName: 实例名称
         :type InstanceName: str
-        :param AppId: APPID
+        :param AppId: AppID
         :type AppId: int
         :param ProjectId: 项目ID
         :type ProjectId: int
@@ -506,13 +514,13 @@ class DCDBInstanceInfo(AbstractModel):
         :type NodeCount: int
         :param IsTmp: 临时实例标记，0 为非临时实例
         :type IsTmp: int
-        :param ExclusterId: 独享集群Id，为空表示非独享集群实例
+        :param ExclusterId: 独享集群ID，为空表示非独享集群实例
         :type ExclusterId: str
-        :param UniqueVpcId: 字符串型的私有网络Id
+        :param UniqueVpcId: 字符串型的私有网络ID
         :type UniqueVpcId: str
-        :param UniqueSubnetId: 字符串型的私有网络子网Id
+        :param UniqueSubnetId: 字符串型的私有网络子网ID
         :type UniqueSubnetId: str
-        :param Id: 数字实例Id（过时字段，请勿依赖该值）
+        :param Id: 数字实例ID（过时字段，请勿依赖该值）
         :type Id: int
         :param WanDomain: 外网访问的域名，公网可解析
         :type WanDomain: str
@@ -520,7 +528,7 @@ class DCDBInstanceInfo(AbstractModel):
         :type WanVip: str
         :param WanPort: 外网端口
         :type WanPort: int
-        :param Pid: 产品类型 Id（过时字段，请勿依赖该值）
+        :param Pid: 产品类型 ID（过时字段，请勿依赖该值）
         :type Pid: int
         :param UpdateTime: 实例最后更新时间，格式为 2006-01-02 15:04:05
         :type UpdateTime: str
@@ -671,6 +679,15 @@ class DCDBShardInfo(AbstractModel):
         :type Pid: int
         :param ProxyVersion: Proxy版本
         :type ProxyVersion: str
+        :param Paymode: 付费模型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Paymode: str
+        :param ShardMasterZone: 分片的主可用区
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ShardMasterZone: str
+        :param ShardSlaveZones: 分片的从可用区列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ShardSlaveZones: list of str
         """
         self.InstanceId = None
         self.ShardSerialId = None
@@ -692,6 +709,9 @@ class DCDBShardInfo(AbstractModel):
         self.ShardId = None
         self.Pid = None
         self.ProxyVersion = None
+        self.Paymode = None
+        self.ShardMasterZone = None
+        self.ShardSlaveZones = None
 
 
     def _deserialize(self, params):
@@ -715,6 +735,9 @@ class DCDBShardInfo(AbstractModel):
         self.ShardId = params.get("ShardId")
         self.Pid = params.get("Pid")
         self.ProxyVersion = params.get("ProxyVersion")
+        self.Paymode = params.get("Paymode")
+        self.ShardMasterZone = params.get("ShardMasterZone")
+        self.ShardSlaveZones = params.get("ShardSlaveZones")
 
 
 class Database(AbstractModel):
@@ -930,7 +953,7 @@ class DescribeAccountPrivilegesResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param InstanceId: 实例Id
+        :param InstanceId: 实例ID
         :type InstanceId: str
         :param Privileges: 权限列表。
         :type Privileges: list of str
@@ -1276,7 +1299,7 @@ class DescribeDCDBPriceRequest(AbstractModel):
         """
         :param Zone: 欲新购实例的可用区ID。
         :type Zone: str
-        :param Count: 欲购买实例的数量，目前只支持购买1个实例
+        :param Count: 欲购买实例的数量，目前支持购买1-10个实例
         :type Count: int
         :param Period: 欲购买的时长，单位：月。
         :type Period: int
@@ -1291,6 +1314,8 @@ class DescribeDCDBPriceRequest(AbstractModel):
         :type ShardStorage: int
         :param ShardCount: 实例分片个数，可选范围2-8，可以通过升级实例进行新增分片到最多64个分片。
         :type ShardCount: int
+        :param Paymode: 付费类型。postpaid：按量付费   prepaid：预付费
+        :type Paymode: str
         """
         self.Zone = None
         self.Count = None
@@ -1299,6 +1324,7 @@ class DescribeDCDBPriceRequest(AbstractModel):
         self.ShardMemory = None
         self.ShardStorage = None
         self.ShardCount = None
+        self.Paymode = None
 
 
     def _deserialize(self, params):
@@ -1309,6 +1335,7 @@ class DescribeDCDBPriceRequest(AbstractModel):
         self.ShardMemory = params.get("ShardMemory")
         self.ShardStorage = params.get("ShardStorage")
         self.ShardCount = params.get("ShardCount")
+        self.Paymode = params.get("Paymode")
 
 
 class DescribeDCDBPriceResponse(AbstractModel):
@@ -1423,7 +1450,7 @@ class DescribeDCDBShardsRequest(AbstractModel):
         """
         :param InstanceId: 实例ID，形如：dcdbt-ow728lmc。
         :type InstanceId: str
-        :param ShardInstanceIds: 分片Id列表。
+        :param ShardInstanceIds: 分片ID列表。
         :type ShardInstanceIds: list of str
         :param Offset: 偏移量，默认为 0
         :type Offset: int
@@ -1988,7 +2015,7 @@ class InitDCDBInstancesRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param InstanceIds: 待初始化的实例Id列表，形如：dcdbt-ow728lmc，可以通过 DescribeDCDBInstances 查询实例详情获得。
+        :param InstanceIds: 待初始化的实例ID列表，形如：dcdbt-ow728lmc，可以通过 DescribeDCDBInstances 查询实例详情获得。
         :type InstanceIds: list of str
         :param Params: 参数列表。本接口的可选值为：character_set_server（字符集，必传），lower_case_table_names（表名大小写敏感，必传，0 - 敏感；1-不敏感），innodb_page_size（innodb数据页，默认16K），sync_mode（同步模式：0 - 异步； 1 - 强同步；2 - 强同步可退化。默认为强同步）。
         :type Params: list of DBParamValue
@@ -2014,7 +2041,7 @@ class InitDCDBInstancesResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param FlowIds: 异步任务Id，可通过 DescribeFlow 查询任务状态。
+        :param FlowIds: 异步任务ID，可通过 DescribeFlow 查询任务状态。
         :type FlowIds: list of int non-negative
         :param InstanceIds: 透传入参。
         :type InstanceIds: list of str
@@ -2267,7 +2294,7 @@ class OpenDBExtranetAccessResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param FlowId: 异步任务Id，可通过 DescribeFlow 查询任务状态。
+        :param FlowId: 异步任务ID，可通过 DescribeFlow 查询任务状态。
         :type FlowId: int
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str

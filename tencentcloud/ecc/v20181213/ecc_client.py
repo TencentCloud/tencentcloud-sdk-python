@@ -25,6 +25,35 @@ class EccClient(AbstractClient):
     _endpoint = 'ecc.tencentcloudapi.com'
 
 
+    def CorrectMultiImage(self, request):
+        """https://ecc.tencentcloudapi.com/?Action=CorrectMultiImage
+        多图像识别批改接口
+
+        :param request: Request instance for CorrectMultiImage.
+        :type request: :class:`tencentcloud.ecc.v20181213.models.CorrectMultiImageRequest`
+        :rtype: :class:`tencentcloud.ecc.v20181213.models.CorrectMultiImageResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("CorrectMultiImage", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CorrectMultiImageResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeTask(self, request):
         """异步任务结果查询接口
 

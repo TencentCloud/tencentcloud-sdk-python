@@ -41,9 +41,9 @@ class AIAnalysisTemplateItem(AbstractModel):
         :param FrameTagConfigure: 智能按帧标签任务控制参数。
 注意：此字段可能返回 null，表示取不到有效值。
         :type FrameTagConfigure: :class:`tencentcloud.mps.v20190612.models.FrameTagConfigureInfo`
-        :param CreateTime: 模板创建时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F)。
+        :param CreateTime: 模板创建时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/862/37710#52)。
         :type CreateTime: str
-        :param UpdateTime: 模板最后修改时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F)。
+        :param UpdateTime: 模板最后修改时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/862/37710#52)。
         :type UpdateTime: str
         """
         self.Definition = None
@@ -100,9 +100,9 @@ class AIRecognitionTemplateItem(AbstractModel):
         :type AsrFullTextConfigure: :class:`tencentcloud.mps.v20190612.models.AsrFullTextConfigureInfo`
         :param AsrWordsConfigure: 语音关键词识别控制参数。
         :type AsrWordsConfigure: :class:`tencentcloud.mps.v20190612.models.AsrWordsConfigureInfo`
-        :param CreateTime: 模板创建时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F)。
+        :param CreateTime: 模板创建时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/862/37710#52)。
         :type CreateTime: str
-        :param UpdateTime: 模板最后修改时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F)。
+        :param UpdateTime: 模板最后修改时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/862/37710#52)。
         :type UpdateTime: str
         """
         self.Definition = None
@@ -537,6 +537,9 @@ class AiContentReviewResult(AbstractModel):
 <li>Porn.Voice：声音鉴黄</li>
 <li>Political.Asr：Asr 文字鉴政</li>
 <li>Political.Ocr：Ocr 文字鉴政</li>
+<li>Terrorism.Ocr：Ocr 文字鉴恐</li>
+<li>Prohibited.Asr：Asr 文字鉴违禁</li>
+<li>Prohibited.Ocr：Ocr 文字鉴违禁</li>
         :type Type: str
         :param SampleRate: 采样频率，即对视频每秒截取进行审核的帧数。
         :type SampleRate: float
@@ -563,6 +566,15 @@ class AiContentReviewResult(AbstractModel):
         :param PoliticalOcrTask: 视频内容审核 Ocr 文字鉴政任务的查询结果，当任务类型为 Political.Ocr 时有效。
 注意：此字段可能返回 null，表示取不到有效值。
         :type PoliticalOcrTask: :class:`tencentcloud.mps.v20190612.models.AiReviewTaskPoliticalOcrResult`
+        :param TerrorismOcrTask: 视频内容审核 Ocr 文字鉴恐任务的查询结果，当任务类型为 Terrorism.Ocr 时有效。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TerrorismOcrTask: :class:`tencentcloud.mps.v20190612.models.AiReviewTaskTerrorismOcrResult`
+        :param ProhibitedAsrTask: 视频内容审核 Asr 文字鉴违禁任务的查询结果，当任务类型为 Prohibited.Asr 时有效。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ProhibitedAsrTask: :class:`tencentcloud.mps.v20190612.models.AiReviewTaskProhibitedAsrResult`
+        :param ProhibitedOcrTask: 视频内容审核 Ocr 文字鉴违禁任务的查询结果，当任务类型为 Prohibited.Ocr 时有效。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ProhibitedOcrTask: :class:`tencentcloud.mps.v20190612.models.AiReviewTaskProhibitedOcrResult`
         """
         self.Type = None
         self.SampleRate = None
@@ -574,6 +586,9 @@ class AiContentReviewResult(AbstractModel):
         self.PornOcrTask = None
         self.PoliticalAsrTask = None
         self.PoliticalOcrTask = None
+        self.TerrorismOcrTask = None
+        self.ProhibitedAsrTask = None
+        self.ProhibitedOcrTask = None
 
 
     def _deserialize(self, params):
@@ -601,6 +616,15 @@ class AiContentReviewResult(AbstractModel):
         if params.get("PoliticalOcrTask") is not None:
             self.PoliticalOcrTask = AiReviewTaskPoliticalOcrResult()
             self.PoliticalOcrTask._deserialize(params.get("PoliticalOcrTask"))
+        if params.get("TerrorismOcrTask") is not None:
+            self.TerrorismOcrTask = AiReviewTaskTerrorismOcrResult()
+            self.TerrorismOcrTask._deserialize(params.get("TerrorismOcrTask"))
+        if params.get("ProhibitedAsrTask") is not None:
+            self.ProhibitedAsrTask = AiReviewTaskProhibitedAsrResult()
+            self.ProhibitedAsrTask._deserialize(params.get("ProhibitedAsrTask"))
+        if params.get("ProhibitedOcrTask") is not None:
+            self.ProhibitedOcrTask = AiReviewTaskProhibitedOcrResult()
+            self.ProhibitedOcrTask._deserialize(params.get("ProhibitedOcrTask"))
 
 
 class AiContentReviewTaskInput(AbstractModel):
@@ -1665,6 +1689,106 @@ class AiReviewPornTaskOutput(AbstractModel):
                 self.SegmentSet.append(obj)
 
 
+class AiReviewProhibitedAsrTaskInput(AbstractModel):
+    """内容审核 Asr 文字鉴违禁任务输入参数类型
+
+    """
+
+    def __init__(self):
+        """
+        :param Definition: 鉴违禁模板 ID。
+        :type Definition: int
+        """
+        self.Definition = None
+
+
+    def _deserialize(self, params):
+        self.Definition = params.get("Definition")
+
+
+class AiReviewProhibitedAsrTaskOutput(AbstractModel):
+    """Asr 文字涉违禁信息
+
+    """
+
+    def __init__(self):
+        """
+        :param Confidence: Asr 文字涉违禁评分，分值为0到100。
+        :type Confidence: float
+        :param Suggestion: Asr 文字涉违禁结果建议，取值范围：
+<li>pass。</li>
+<li>review。</li>
+<li>block。</li>
+        :type Suggestion: str
+        :param SegmentSet: Asr 文字有涉违禁嫌疑的视频片段列表。
+        :type SegmentSet: list of MediaContentReviewAsrTextSegmentItem
+        """
+        self.Confidence = None
+        self.Suggestion = None
+        self.SegmentSet = None
+
+
+    def _deserialize(self, params):
+        self.Confidence = params.get("Confidence")
+        self.Suggestion = params.get("Suggestion")
+        if params.get("SegmentSet") is not None:
+            self.SegmentSet = []
+            for item in params.get("SegmentSet"):
+                obj = MediaContentReviewAsrTextSegmentItem()
+                obj._deserialize(item)
+                self.SegmentSet.append(obj)
+
+
+class AiReviewProhibitedOcrTaskInput(AbstractModel):
+    """内容审核 Ocr 文字鉴违禁任务输入参数类型
+
+    """
+
+    def __init__(self):
+        """
+        :param Definition: 鉴违禁模板 ID。
+        :type Definition: int
+        """
+        self.Definition = None
+
+
+    def _deserialize(self, params):
+        self.Definition = params.get("Definition")
+
+
+class AiReviewProhibitedOcrTaskOutput(AbstractModel):
+    """Ocr 文字涉违禁信息
+
+    """
+
+    def __init__(self):
+        """
+        :param Confidence: Ocr 文字涉违禁评分，分值为0到100。
+        :type Confidence: float
+        :param Suggestion: Ocr 文字涉违禁结果建议，取值范围：
+<li>pass。</li>
+<li>review。</li>
+<li>block。</li>
+        :type Suggestion: str
+        :param SegmentSet: Ocr 文字有涉违禁嫌疑的视频片段列表。
+        :type SegmentSet: list of MediaContentReviewOcrTextSegmentItem
+        """
+        self.Confidence = None
+        self.Suggestion = None
+        self.SegmentSet = None
+
+
+    def _deserialize(self, params):
+        self.Confidence = params.get("Confidence")
+        self.Suggestion = params.get("Suggestion")
+        if params.get("SegmentSet") is not None:
+            self.SegmentSet = []
+            for item in params.get("SegmentSet"):
+                obj = MediaContentReviewOcrTextSegmentItem()
+                obj._deserialize(item)
+                self.SegmentSet.append(obj)
+
+
 class AiReviewTaskPoliticalAsrResult(AbstractModel):
     """内容审核 Asr 文字鉴政、敏感任务结果类型
 
@@ -1893,6 +2017,129 @@ class AiReviewTaskPornResult(AbstractModel):
             self.Output._deserialize(params.get("Output"))
 
 
+class AiReviewTaskProhibitedAsrResult(AbstractModel):
+    """内容审核 Asr 文字鉴任违禁务结果类型
+
+    """
+
+    def __init__(self):
+        """
+        :param Status: 任务状态，有 PROCESSING，SUCCESS 和 FAIL 三种。
+        :type Status: str
+        :param ErrCode: 错误码，0 表示成功，其他值表示失败：
+<li>40000：输入参数不合法，请检查输入参数；</li>
+<li>60000：源文件错误（如视频数据损坏），请确认源文件是否正常；</li>
+<li>70000：内部服务错误，建议重试。</li>
+        :type ErrCode: int
+        :param Message: 错误信息。
+        :type Message: str
+        :param Input: 内容审核 Asr 文字鉴违禁任务输入。
+        :type Input: :class:`tencentcloud.mps.v20190612.models.AiReviewProhibitedAsrTaskInput`
+        :param Output: 内容审核 Asr 文字鉴违禁任务输出。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Output: :class:`tencentcloud.mps.v20190612.models.AiReviewProhibitedAsrTaskOutput`
+        """
+        self.Status = None
+        self.ErrCode = None
+        self.Message = None
+        self.Input = None
+        self.Output = None
+
+
+    def _deserialize(self, params):
+        self.Status = params.get("Status")
+        self.ErrCode = params.get("ErrCode")
+        self.Message = params.get("Message")
+        if params.get("Input") is not None:
+            self.Input = AiReviewProhibitedAsrTaskInput()
+            self.Input._deserialize(params.get("Input"))
+        if params.get("Output") is not None:
+            self.Output = AiReviewProhibitedAsrTaskOutput()
+            self.Output._deserialize(params.get("Output"))
+
+
+class AiReviewTaskProhibitedOcrResult(AbstractModel):
+    """内容审核 Ocr 文字鉴任违禁务结果类型
+
+    """
+
+    def __init__(self):
+        """
+        :param Status: 任务状态，有 PROCESSING，SUCCESS 和 FAIL 三种。
+        :type Status: str
+        :param ErrCode: 错误码，0 表示成功，其他值表示失败：
+<li>40000：输入参数不合法，请检查输入参数；</li>
+<li>60000：源文件错误（如视频数据损坏），请确认源文件是否正常；</li>
+<li>70000：内部服务错误，建议重试。</li>
+        :type ErrCode: int
+        :param Message: 错误信息。
+        :type Message: str
+        :param Input: 内容审核 Ocr 文字鉴违禁任务输入。
+        :type Input: :class:`tencentcloud.mps.v20190612.models.AiReviewProhibitedOcrTaskInput`
+        :param Output: 内容审核 Ocr 文字鉴违禁任务输出。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Output: :class:`tencentcloud.mps.v20190612.models.AiReviewProhibitedOcrTaskOutput`
+        """
+        self.Status = None
+        self.ErrCode = None
+        self.Message = None
+        self.Input = None
+        self.Output = None
+
+
+    def _deserialize(self, params):
+        self.Status = params.get("Status")
+        self.ErrCode = params.get("ErrCode")
+        self.Message = params.get("Message")
+        if params.get("Input") is not None:
+            self.Input = AiReviewProhibitedOcrTaskInput()
+            self.Input._deserialize(params.get("Input"))
+        if params.get("Output") is not None:
+            self.Output = AiReviewProhibitedOcrTaskOutput()
+            self.Output._deserialize(params.get("Output"))
+
+
+class AiReviewTaskTerrorismOcrResult(AbstractModel):
+    """内容审核 Ocr 文字鉴恐任务结果类型
+
+    """
+
+    def __init__(self):
+        """
+        :param Status: 任务状态，有 PROCESSING，SUCCESS 和 FAIL 三种。
+        :type Status: str
+        :param ErrCode: 错误码，0 表示成功，其他值表示失败：
+<li>40000：输入参数不合法，请检查输入参数；</li>
+<li>60000：源文件错误（如视频数据损坏），请确认源文件是否正常；</li>
+<li>70000：内部服务错误，建议重试。</li>
+        :type ErrCode: int
+        :param Message: 错误信息。
+        :type Message: str
+        :param Input: 内容审核 Ocr 文字鉴恐任务输入。
+        :type Input: :class:`tencentcloud.mps.v20190612.models.AiReviewTerrorismOcrTaskInput`
+        :param Output: 内容审核 Ocr 文字鉴恐任务输出。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Output: :class:`tencentcloud.mps.v20190612.models.AiReviewTerrorismOcrTaskOutput`
+        """
+        self.Status = None
+        self.ErrCode = None
+        self.Message = None
+        self.Input = None
+        self.Output = None
+
+
+    def _deserialize(self, params):
+        self.Status = params.get("Status")
+        self.ErrCode = params.get("ErrCode")
+        self.Message = params.get("Message")
+        if params.get("Input") is not None:
+            self.Input = AiReviewTerrorismOcrTaskInput()
+            self.Input._deserialize(params.get("Input"))
+        if params.get("Output") is not None:
+            self.Output = AiReviewTerrorismOcrTaskOutput()
+            self.Output._deserialize(params.get("Output"))
+
+
 class AiReviewTaskTerrorismResult(AbstractModel):
     """内容审核鉴恐任务结果类型
 
@@ -1929,6 +2176,56 @@ class AiReviewTaskTerrorismResult(AbstractModel):
         if params.get("Output") is not None:
             self.Output = AiReviewTerrorismTaskOutput()
             self.Output._deserialize(params.get("Output"))
+
+
+class AiReviewTerrorismOcrTaskInput(AbstractModel):
+    """内容审核 Ocr 文字鉴恐任务输入参数类型
+
+    """
+
+    def __init__(self):
+        """
+        :param Definition: 鉴恐模板 ID。
+        :type Definition: int
+        """
+        self.Definition = None
+
+
+    def _deserialize(self, params):
+        self.Definition = params.get("Definition")
+
+
+class AiReviewTerrorismOcrTaskOutput(AbstractModel):
+    """Ocr 文字涉恐信息
+
+    """
+
+    def __init__(self):
+        """
+        :param Confidence: Ocr 文字涉恐评分，分值为0到100。
+        :type Confidence: float
+        :param Suggestion: Ocr 文字涉恐结果建议，取值范围：
+<li>pass。</li>
+<li>review。</li>
+<li>block。</li>
+        :type Suggestion: str
+        :param SegmentSet: Ocr 文字有涉恐嫌疑的视频片段列表。
+        :type SegmentSet: list of MediaContentReviewOcrTextSegmentItem
+        """
+        self.Confidence = None
+        self.Suggestion = None
+        self.SegmentSet = None
+
+
+    def _deserialize(self, params):
+        self.Confidence = params.get("Confidence")
+        self.Suggestion = params.get("Suggestion")
+        if params.get("SegmentSet") is not None:
+            self.SegmentSet = []
+            for item in params.get("SegmentSet"):
+                obj = MediaContentReviewOcrTextSegmentItem()
+                obj._deserialize(item)
+                self.SegmentSet.append(obj)
 
 
 class AiReviewTerrorismTaskInput(AbstractModel):
@@ -2088,9 +2385,9 @@ class AiSamplePerson(AbstractModel):
         :type TagSet: list of str
         :param UsageSet: 应用场景。
         :type UsageSet: list of str
-        :param CreateTime: 创建时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F)。
+        :param CreateTime: 创建时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/862/37710#52)。
         :type CreateTime: str
-        :param UpdateTime: 最后修改时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F)。
+        :param UpdateTime: 最后修改时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/862/37710#52)。
         :type UpdateTime: str
         """
         self.PersonId = None
@@ -2153,9 +2450,9 @@ class AiSampleWord(AbstractModel):
         :type TagSet: list of str
         :param UsageSet: 关键词应用场景。
         :type UsageSet: list of str
-        :param CreateTime: 创建时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F)。
+        :param CreateTime: 创建时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/862/37710#52)。
         :type CreateTime: str
-        :param UpdateTime: 最后修改时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F)。
+        :param UpdateTime: 最后修改时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/862/37710#52)。
         :type UpdateTime: str
         """
         self.Keyword = None
@@ -2274,9 +2571,9 @@ class AnimatedGraphicsTemplate(AbstractModel):
         :type Fps: int
         :param Quality: 图片质量。
         :type Quality: float
-        :param CreateTime: 模板创建时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F)。
+        :param CreateTime: 模板创建时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/862/37710#52)。
         :type CreateTime: str
-        :param UpdateTime: 模板最后修改时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F)。
+        :param UpdateTime: 模板最后修改时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/862/37710#52)。
         :type UpdateTime: str
         """
         self.Definition = None
@@ -2560,16 +2857,26 @@ class ContentReviewTemplateItem(AbstractModel):
         :param Comment: 内容审核模板描述信息，长度限制：256 个字符。
         :type Comment: str
         :param PornConfigure: 鉴黄控制参数。
+注意：此字段可能返回 null，表示取不到有效值。
         :type PornConfigure: :class:`tencentcloud.mps.v20190612.models.PornConfigureInfo`
         :param TerrorismConfigure: 鉴恐控制参数。
+注意：此字段可能返回 null，表示取不到有效值。
         :type TerrorismConfigure: :class:`tencentcloud.mps.v20190612.models.TerrorismConfigureInfo`
         :param PoliticalConfigure: 鉴政控制参数。
+注意：此字段可能返回 null，表示取不到有效值。
         :type PoliticalConfigure: :class:`tencentcloud.mps.v20190612.models.PoliticalConfigureInfo`
+        :param ProhibitedConfigure: 违禁控制参数。违禁内容包括：
+<li>谩骂；</li>
+<li>涉毒违法。</li>
+注意：此参数尚未支持。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ProhibitedConfigure: :class:`tencentcloud.mps.v20190612.models.ProhibitedConfigureInfo`
         :param UserDefineConfigure: 用户自定义内容审核控制参数。
+注意：此字段可能返回 null，表示取不到有效值。
         :type UserDefineConfigure: :class:`tencentcloud.mps.v20190612.models.UserDefineConfigureInfo`
-        :param CreateTime: 模板创建时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F)。
+        :param CreateTime: 模板创建时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/862/37710#52)。
         :type CreateTime: str
-        :param UpdateTime: 模板最后修改时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F)。
+        :param UpdateTime: 模板最后修改时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/862/37710#52)。
         :type UpdateTime: str
         """
         self.Definition = None
@@ -2578,6 +2885,7 @@ class ContentReviewTemplateItem(AbstractModel):
         self.PornConfigure = None
         self.TerrorismConfigure = None
         self.PoliticalConfigure = None
+        self.ProhibitedConfigure = None
         self.UserDefineConfigure = None
         self.CreateTime = None
         self.UpdateTime = None
@@ -2596,6 +2904,9 @@ class ContentReviewTemplateItem(AbstractModel):
         if params.get("PoliticalConfigure") is not None:
             self.PoliticalConfigure = PoliticalConfigureInfo()
             self.PoliticalConfigure._deserialize(params.get("PoliticalConfigure"))
+        if params.get("ProhibitedConfigure") is not None:
+            self.ProhibitedConfigure = ProhibitedConfigureInfo()
+            self.ProhibitedConfigure._deserialize(params.get("ProhibitedConfigure"))
         if params.get("UserDefineConfigure") is not None:
             self.UserDefineConfigure = UserDefineConfigureInfo()
             self.UserDefineConfigure._deserialize(params.get("UserDefineConfigure"))
@@ -5264,9 +5575,9 @@ class ImageSpriteTemplate(AbstractModel):
         :type RowCount: int
         :param ColumnCount: 雪碧图中小图的列数。
         :type ColumnCount: int
-        :param CreateTime: 模板创建时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F)。
+        :param CreateTime: 模板创建时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/862/37710#52)。
         :type CreateTime: str
-        :param UpdateTime: 模板最后修改时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F)。
+        :param UpdateTime: 模板最后修改时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/862/37710#52)。
         :type UpdateTime: str
         :param FillType: 填充方式，当视频流配置宽高参数与原始视频的宽高比不一致时，对转码的处理方式，即为“填充”。可选填充方式：
 <li> stretch：拉伸，对每一帧进行拉伸，填满整个画面，可能导致转码后的视频被“压扁“或者“拉长“；</li>
@@ -5321,7 +5632,7 @@ class ImageWatermarkInput(AbstractModel):
         :type Width: str
         :param Height: 水印的高度。支持 %、px 两种格式：
 <li>当字符串以 % 结尾，表示水印 Height 为视频高度的百分比大小，如 10% 表示 Height 为视频高度的 10%；</li>
-<li>当字符串以 px 结尾，表示水印 Width 单位为像素，如 100px 表示 Width 为 100 像素。</li>
+<li>当字符串以 px 结尾，表示水印 Height 单位为像素，如 100px 表示 Height 为 100 像素。</li>
 默认值：0px，表示 Height 按照原始水印图片的宽高比缩放。
         :type Height: str
         """
@@ -5519,7 +5830,7 @@ class LiveStreamAiReviewImagePoliticalResult(AbstractModel):
         :param Url: 嫌疑图片 URL （图片不会永久存储，到达
 PicUrlExpireTime 时间点后图片将被删除）。
         :type Url: str
-        :param PicUrlExpireTime: 嫌疑图片 URL 失效时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F)。
+        :param PicUrlExpireTime: 嫌疑图片 URL 失效时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/862/37710#52)。
         :type PicUrlExpireTime: str
         """
         self.StartPtsTime = None
@@ -5572,7 +5883,7 @@ class LiveStreamAiReviewImagePornResult(AbstractModel):
         :param Url: 嫌疑图片 URL （图片不会永久存储，到达
 PicUrlExpireTime 时间点后图片将被删除）。
         :type Url: str
-        :param PicUrlExpireTime: 嫌疑图片 URL 失效时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F)。
+        :param PicUrlExpireTime: 嫌疑图片 URL 失效时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/862/37710#52)。
         :type PicUrlExpireTime: str
         """
         self.StartPtsTime = None
@@ -5625,7 +5936,7 @@ class LiveStreamAiReviewImageTerrorismResult(AbstractModel):
         :param Url: 嫌疑图片 URL （图片不会永久存储，到达
 PicUrlExpireTime 时间点后图片将被删除）。
         :type Url: str
-        :param PicUrlExpireTime: 嫌疑图片 URL 失效时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F)。
+        :param PicUrlExpireTime: 嫌疑图片 URL 失效时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/862/37710#52)。
         :type PicUrlExpireTime: str
         """
         self.StartPtsTime = None
@@ -6314,7 +6625,7 @@ class MediaContentReviewOcrTextSegmentItem(AbstractModel):
         :param Url: 嫌疑图片 URL （图片不会永久存储，到达
 PicUrlExpireTime 时间点后图片将被删除）。
         :type Url: str
-        :param PicUrlExpireTime: 嫌疑图片 URL 失效时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F)。
+        :param PicUrlExpireTime: 嫌疑图片 URL 失效时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/862/37710#52)。
         :type PicUrlExpireTime: str
         """
         self.StartTimeOffset = None
@@ -6365,7 +6676,7 @@ class MediaContentReviewPoliticalSegmentItem(AbstractModel):
         :type Url: str
         :param AreaCoordSet: 涉政人物、违规图标出现的区域坐标 (像素级)，[x1, y1, x2, y2]，即左上角坐标、右下角坐标。
         :type AreaCoordSet: list of int
-        :param PicUrlExpireTime: 嫌疑图片 URL 失效时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F)。
+        :param PicUrlExpireTime: 嫌疑图片 URL 失效时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/862/37710#52)。
         :type PicUrlExpireTime: str
         """
         self.StartTimeOffset = None
@@ -6414,7 +6725,7 @@ class MediaContentReviewSegmentItem(AbstractModel):
         :param Url: 嫌疑图片 URL （图片不会永久存储，到达
  PicUrlExpireTime 时间点后图片将被删除）。
         :type Url: str
-        :param PicUrlExpireTime: 嫌疑图片 URL 失效时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F)。
+        :param PicUrlExpireTime: 嫌疑图片 URL 失效时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/862/37710#52)。
         :type PicUrlExpireTime: str
         """
         self.StartTimeOffset = None
@@ -8820,6 +9131,120 @@ class ProcessMediaResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class ProhibitedAsrReviewTemplateInfo(AbstractModel):
+    """语音违禁任务控制参数
+
+    """
+
+    def __init__(self):
+        """
+        :param Switch: 语音违禁任务开关，可选值：
+<li>ON：开启语音违禁任务；</li>
+<li>OFF：关闭语音违禁任务。</li>
+        :type Switch: str
+        :param BlockConfidence: 判定涉嫌违规的分数阈值，当智能审核达到该分数以上，认为涉嫌违规，不填默认为 100 分。取值范围：0~100。
+        :type BlockConfidence: int
+        :param ReviewConfidence: 判定需人工复核是否违规的分数阈值，当智能审核达到该分数以上，认为需人工复核，不填默认为 75 分。取值范围：0~100。
+        :type ReviewConfidence: int
+        """
+        self.Switch = None
+        self.BlockConfidence = None
+        self.ReviewConfidence = None
+
+
+    def _deserialize(self, params):
+        self.Switch = params.get("Switch")
+        self.BlockConfidence = params.get("BlockConfidence")
+        self.ReviewConfidence = params.get("ReviewConfidence")
+
+
+class ProhibitedConfigureInfo(AbstractModel):
+    """违禁任务控制参数
+
+    """
+
+    def __init__(self):
+        """
+        :param AsrReviewInfo: 语音违禁控制参数。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AsrReviewInfo: :class:`tencentcloud.mps.v20190612.models.ProhibitedAsrReviewTemplateInfo`
+        :param OcrReviewInfo: 文本违禁控制参数。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OcrReviewInfo: :class:`tencentcloud.mps.v20190612.models.ProhibitedOcrReviewTemplateInfo`
+        """
+        self.AsrReviewInfo = None
+        self.OcrReviewInfo = None
+
+
+    def _deserialize(self, params):
+        if params.get("AsrReviewInfo") is not None:
+            self.AsrReviewInfo = ProhibitedAsrReviewTemplateInfo()
+            self.AsrReviewInfo._deserialize(params.get("AsrReviewInfo"))
+        if params.get("OcrReviewInfo") is not None:
+            self.OcrReviewInfo = ProhibitedOcrReviewTemplateInfo()
+            self.OcrReviewInfo._deserialize(params.get("OcrReviewInfo"))
+
+
+class ProhibitedOcrReviewTemplateInfo(AbstractModel):
+    """文本违禁任务控制参数
+
+    """
+
+    def __init__(self):
+        """
+        :param Switch: 文本违禁任务开关，可选值：
+<li>ON：开启文本违禁任务；</li>
+<li>OFF：关闭文本违禁任务。</li>
+        :type Switch: str
+        :param BlockConfidence: 判定涉嫌违规的分数阈值，当智能审核达到该分数以上，认为涉嫌违规，不填默认为 100 分。取值范围：0~100。
+        :type BlockConfidence: int
+        :param ReviewConfidence: 判定需人工复核是否违规的分数阈值，当智能审核达到该分数以上，认为需人工复核，不填默认为 75 分。取值范围：0~100。
+        :type ReviewConfidence: int
+        """
+        self.Switch = None
+        self.BlockConfidence = None
+        self.ReviewConfidence = None
+
+
+    def _deserialize(self, params):
+        self.Switch = params.get("Switch")
+        self.BlockConfidence = params.get("BlockConfidence")
+        self.ReviewConfidence = params.get("ReviewConfidence")
+
+
+class RawImageWatermarkInput(AbstractModel):
+    """图片水印模板输入参数
+
+    """
+
+    def __init__(self):
+        """
+        :param ImageContent: 水印图片的输入内容。支持 jpeg、png 图片格式。
+        :type ImageContent: :class:`tencentcloud.mps.v20190612.models.MediaInputInfo`
+        :param Width: 水印的宽度。支持 %、px 两种格式：
+<li>当字符串以 % 结尾，表示水印 Width 为视频宽度的百分比大小，如 10% 表示 Width 为视频宽度的 10%；</li>
+<li>当字符串以 px 结尾，表示水印 Width 单位为像素，如 100px 表示 Width 为 100 像素。</li>
+默认值：10%。
+        :type Width: str
+        :param Height: 水印的高度。支持 %、px 两种格式：
+<li>当字符串以 % 结尾，表示水印 Height 为视频高度的百分比大小，如 10% 表示 Height 为视频高度的 10%；</li>
+<li>当字符串以 px 结尾，表示水印 Height 单位为像素，如 100px 表示 Height 为 100 像素。</li>
+默认值：0px，表示 Height 按照原始水印图片的宽高比缩放。
+        :type Height: str
+        """
+        self.ImageContent = None
+        self.Width = None
+        self.Height = None
+
+
+    def _deserialize(self, params):
+        if params.get("ImageContent") is not None:
+            self.ImageContent = MediaInputInfo()
+            self.ImageContent._deserialize(params.get("ImageContent"))
+        self.Width = params.get("Width")
+        self.Height = params.get("Height")
+
+
 class RawTranscodeParameter(AbstractModel):
     """自定义转码的规格参数。
 
@@ -8867,6 +9292,50 @@ class RawTranscodeParameter(AbstractModel):
         if params.get("TEHDConfig") is not None:
             self.TEHDConfig = TEHDConfig()
             self.TEHDConfig._deserialize(params.get("TEHDConfig"))
+
+
+class RawWatermarkParameter(AbstractModel):
+    """自定义水印规格参数。
+
+    """
+
+    def __init__(self):
+        """
+        :param Type: 水印类型，可选值：
+<li>image：图片水印。</li>
+        :type Type: str
+        :param CoordinateOrigin: 原点位置，目前仅支持：
+<li>TopLeft：表示坐标原点位于视频图像左上角，水印原点为图片或文字的左上角。</li>
+默认值：TopLeft。
+        :type CoordinateOrigin: str
+        :param XPos: 水印原点距离视频图像坐标原点的水平位置。支持 %、px 两种格式：
+<li>当字符串以 % 结尾，表示水印 XPos 为视频宽度指定百分比，如 10% 表示 XPos 为视频宽度的 10%；</li>
+<li>当字符串以 px 结尾，表示水印 XPos 为指定像素，如 100px 表示 XPos 为 100 像素。</li>
+默认值：0px。
+        :type XPos: str
+        :param YPos: 水印原点距离视频图像坐标原点的垂直位置。支持 %、px 两种格式：
+<li>当字符串以 % 结尾，表示水印 YPos 为视频高度指定百分比，如 10% 表示 YPos 为视频高度的 10%；</li>
+<li>当字符串以 px 结尾，表示水印 YPos 为指定像素，如 100px 表示 YPos 为 100 像素。</li>
+默认值：0px。
+        :type YPos: str
+        :param ImageTemplate: 图片水印模板，当 Type 为 image，该字段必填。当 Type 为 text，该字段无效。
+        :type ImageTemplate: :class:`tencentcloud.mps.v20190612.models.RawImageWatermarkInput`
+        """
+        self.Type = None
+        self.CoordinateOrigin = None
+        self.XPos = None
+        self.YPos = None
+        self.ImageTemplate = None
+
+
+    def _deserialize(self, params):
+        self.Type = params.get("Type")
+        self.CoordinateOrigin = params.get("CoordinateOrigin")
+        self.XPos = params.get("XPos")
+        self.YPos = params.get("YPos")
+        if params.get("ImageTemplate") is not None:
+            self.ImageTemplate = RawImageWatermarkInput()
+            self.ImageTemplate._deserialize(params.get("ImageTemplate"))
 
 
 class ResetWorkflowRequest(AbstractModel):
@@ -9043,9 +9512,9 @@ class SampleSnapshotTemplate(AbstractModel):
         :type SampleType: str
         :param SampleInterval: 采样间隔。
         :type SampleInterval: int
-        :param CreateTime: 模板创建时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F)。
+        :param CreateTime: 模板创建时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/862/37710#52)。
         :type CreateTime: str
-        :param UpdateTime: 模板最后修改时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F)。
+        :param UpdateTime: 模板最后修改时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/862/37710#52)。
         :type UpdateTime: str
         :param FillType: 填充方式，当视频流配置宽高参数与原始视频的宽高比不一致时，对转码的处理方式，即为“填充”。可选填充方式：
 <li> stretch：拉伸，对每一帧进行拉伸，填满整个画面，可能导致转码后的视频被“压扁“或者“拉长“；</li>
@@ -9172,9 +9641,9 @@ class SnapshotByTimeOffsetTemplate(AbstractModel):
         :type ResolutionAdaptive: str
         :param Format: 图片格式。
         :type Format: str
-        :param CreateTime: 模板创建时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F)。
+        :param CreateTime: 模板创建时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/862/37710#52)。
         :type CreateTime: str
-        :param UpdateTime: 模板最后修改时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F)。
+        :param UpdateTime: 模板最后修改时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/862/37710#52)。
         :type UpdateTime: str
         :param FillType: 填充方式，当视频流配置宽高参数与原始视频的宽高比不一致时，对转码的处理方式，即为“填充”。可选填充方式：
 <li> stretch：拉伸，对每一帧进行拉伸，填满整个画面，可能导致转码后的视频被“压扁“或者“拉长“；</li>
@@ -9440,11 +9909,11 @@ class TaskSimpleInfo(AbstractModel):
 <li> WorkflowTask：工作流处理任务；</li>
 <li> LiveProcessTask：直播处理任务。</li>
         :type TaskType: str
-        :param CreateTime: 任务创建时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F)。
+        :param CreateTime: 任务创建时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/862/37710#52)。
         :type CreateTime: str
-        :param BeginProcessTime: 任务开始执行时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F)。若任务尚未开始，该字段为：0000-00-00T00:00:00Z。
+        :param BeginProcessTime: 任务开始执行时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/862/37710#52)。若任务尚未开始，该字段为：0000-00-00T00:00:00Z。
         :type BeginProcessTime: str
-        :param FinishTime: 任务结束时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F)。若任务尚未完成，该字段为：0000-00-00T00:00:00Z。
+        :param FinishTime: 任务结束时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/862/37710#52)。若任务尚未完成，该字段为：0000-00-00T00:00:00Z。
         :type FinishTime: str
         """
         self.TaskId = None
@@ -9471,14 +9940,20 @@ class TerrorismConfigureInfo(AbstractModel):
         """
         :param ImgReviewInfo: 画面鉴恐任务控制参数。
         :type ImgReviewInfo: :class:`tencentcloud.mps.v20190612.models.TerrorismImgReviewTemplateInfo`
+        :param OcrReviewInfo: 文本鉴恐任务控制参数。
+        :type OcrReviewInfo: :class:`tencentcloud.mps.v20190612.models.TerrorismOcrReviewTemplateInfo`
         """
         self.ImgReviewInfo = None
+        self.OcrReviewInfo = None
 
 
     def _deserialize(self, params):
         if params.get("ImgReviewInfo") is not None:
             self.ImgReviewInfo = TerrorismImgReviewTemplateInfo()
             self.ImgReviewInfo._deserialize(params.get("ImgReviewInfo"))
+        if params.get("OcrReviewInfo") is not None:
+            self.OcrReviewInfo = TerrorismOcrReviewTemplateInfo()
+            self.OcrReviewInfo._deserialize(params.get("OcrReviewInfo"))
 
 
 class TerrorismConfigureInfoForUpdate(AbstractModel):
@@ -9490,14 +9965,20 @@ class TerrorismConfigureInfoForUpdate(AbstractModel):
         """
         :param ImgReviewInfo: 画面鉴恐任务控制参数。
         :type ImgReviewInfo: :class:`tencentcloud.mps.v20190612.models.TerrorismImgReviewTemplateInfoForUpdate`
+        :param OcrReviewInfo: 文本鉴恐任务控制参数。
+        :type OcrReviewInfo: :class:`tencentcloud.mps.v20190612.models.TerrorismOcrReviewTemplateInfoForUpdate`
         """
         self.ImgReviewInfo = None
+        self.OcrReviewInfo = None
 
 
     def _deserialize(self, params):
         if params.get("ImgReviewInfo") is not None:
             self.ImgReviewInfo = TerrorismImgReviewTemplateInfoForUpdate()
             self.ImgReviewInfo._deserialize(params.get("ImgReviewInfo"))
+        if params.get("OcrReviewInfo") is not None:
+            self.OcrReviewInfo = TerrorismOcrReviewTemplateInfoForUpdate()
+            self.OcrReviewInfo._deserialize(params.get("OcrReviewInfo"))
 
 
 class TerrorismImgReviewTemplateInfo(AbstractModel):
@@ -9574,6 +10055,60 @@ class TerrorismImgReviewTemplateInfoForUpdate(AbstractModel):
     def _deserialize(self, params):
         self.Switch = params.get("Switch")
         self.LabelSet = params.get("LabelSet")
+        self.BlockConfidence = params.get("BlockConfidence")
+        self.ReviewConfidence = params.get("ReviewConfidence")
+
+
+class TerrorismOcrReviewTemplateInfo(AbstractModel):
+    """文本鉴恐任务控制参数
+
+    """
+
+    def __init__(self):
+        """
+        :param Switch: 文本鉴恐任务开关，可选值：
+<li>ON：开启文本鉴恐任务；</li>
+<li>OFF：关闭文本鉴恐任务。</li>
+        :type Switch: str
+        :param BlockConfidence: 判定涉嫌违规的分数阈值，当智能审核达到该分数以上，认为涉嫌违规，不填默认为 100 分。取值范围：0~100。
+        :type BlockConfidence: int
+        :param ReviewConfidence: 判定需人工复核是否违规的分数阈值，当智能审核达到该分数以上，认为需人工复核，不填默认为 75 分。取值范围：0~100。
+        :type ReviewConfidence: int
+        """
+        self.Switch = None
+        self.BlockConfidence = None
+        self.ReviewConfidence = None
+
+
+    def _deserialize(self, params):
+        self.Switch = params.get("Switch")
+        self.BlockConfidence = params.get("BlockConfidence")
+        self.ReviewConfidence = params.get("ReviewConfidence")
+
+
+class TerrorismOcrReviewTemplateInfoForUpdate(AbstractModel):
+    """文本鉴恐任务控制参数
+
+    """
+
+    def __init__(self):
+        """
+        :param Switch: 文本鉴恐任务开关，可选值：
+<li>ON：开启文本鉴恐任务；</li>
+<li>OFF：关闭文本鉴恐任务。</li>
+        :type Switch: str
+        :param BlockConfidence: 判定涉嫌违规的分数阈值，当智能审核达到该分数以上，认为涉嫌违规，不填默认为 100 分。取值范围：0~100。
+        :type BlockConfidence: int
+        :param ReviewConfidence: 判定需人工复核是否违规的分数阈值，当智能审核达到该分数以上，认为需人工复核，不填默认为 75 分。取值范围：0~100。
+        :type ReviewConfidence: int
+        """
+        self.Switch = None
+        self.BlockConfidence = None
+        self.ReviewConfidence = None
+
+
+    def _deserialize(self, params):
+        self.Switch = params.get("Switch")
         self.BlockConfidence = params.get("BlockConfidence")
         self.ReviewConfidence = params.get("ReviewConfidence")
 
@@ -9740,9 +10275,9 @@ class TranscodeTemplate(AbstractModel):
 <li>Video：视频格式，可以同时包含视频流和音频流的封装格式；</li>
 <li>PureAudio：纯音频格式，只能包含音频流的封装格式板。</li>
         :type ContainerType: str
-        :param CreateTime: 模板创建时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F)。
+        :param CreateTime: 模板创建时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/862/37710#52)。
         :type CreateTime: str
-        :param UpdateTime: 模板最后修改时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F)。
+        :param UpdateTime: 模板最后修改时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/862/37710#52)。
         :type UpdateTime: str
         """
         self.Definition = None
@@ -10172,6 +10707,9 @@ class WatermarkInput(AbstractModel):
         """
         :param Definition: 水印模板 ID。
         :type Definition: int
+        :param RawParameter: 水印自定义参数，当 Definition 填 0 时有效。
+该参数用于高度定制场景，建议您优先使用 Definition 指定水印参数。
+        :type RawParameter: :class:`tencentcloud.mps.v20190612.models.RawWatermarkParameter`
         :param TextContent: 文字内容，长度不超过100个字符。仅当水印类型为文字水印时填写。
         :type TextContent: str
         :param SvgContent: SVG 内容。长度不超过 2000000 个字符。仅当水印类型为 SVG 水印时填写。
@@ -10188,6 +10726,7 @@ class WatermarkInput(AbstractModel):
         :type EndTimeOffset: float
         """
         self.Definition = None
+        self.RawParameter = None
         self.TextContent = None
         self.SvgContent = None
         self.StartTimeOffset = None
@@ -10196,6 +10735,9 @@ class WatermarkInput(AbstractModel):
 
     def _deserialize(self, params):
         self.Definition = params.get("Definition")
+        if params.get("RawParameter") is not None:
+            self.RawParameter = RawWatermarkParameter()
+            self.RawParameter._deserialize(params.get("RawParameter"))
         self.TextContent = params.get("TextContent")
         self.SvgContent = params.get("SvgContent")
         self.StartTimeOffset = params.get("StartTimeOffset")
@@ -10236,9 +10778,9 @@ class WatermarkTemplate(AbstractModel):
         :param SvgTemplate: SVG 水印模板，当 Type 为 svg，该字段有效。
 注意：此字段可能返回 null，表示取不到有效值。
         :type SvgTemplate: :class:`tencentcloud.mps.v20190612.models.SvgWatermarkInput`
-        :param CreateTime: 模板创建时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F)。
+        :param CreateTime: 模板创建时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/862/37710#52)。
         :type CreateTime: str
-        :param UpdateTime: 模板最后修改时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F)。
+        :param UpdateTime: 模板最后修改时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/862/37710#52)。
         :type UpdateTime: str
         :param CoordinateOrigin: 原点位置，可选值：
 <li>topLeft：表示坐标原点位于视频图像左上角，水印原点为图片或文字的左上角；</li>
@@ -10321,9 +10863,9 @@ class WorkflowInfo(AbstractModel):
         :type TaskPriority: int
         :param OutputDir: 视频处理生成的文件输出的目标目录，如`/movie/201907/`。
         :type OutputDir: str
-        :param CreateTime: 工作流创建时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F)。
+        :param CreateTime: 工作流创建时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/862/37710#52)。
         :type CreateTime: str
-        :param UpdateTime: 工作流最后修改时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F)。
+        :param UpdateTime: 工作流最后修改时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/862/37710#52)。
         :type UpdateTime: str
         """
         self.WorkflowId = None

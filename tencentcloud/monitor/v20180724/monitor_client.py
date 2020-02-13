@@ -165,6 +165,34 @@ class MonitorClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeBasicAlarmList(self, request):
+        """获取基础告警列表
+
+        :param request: Request instance for DescribeBasicAlarmList.
+        :type request: :class:`tencentcloud.monitor.v20180724.models.DescribeBasicAlarmListRequest`
+        :rtype: :class:`tencentcloud.monitor.v20180724.models.DescribeBasicAlarmListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeBasicAlarmList", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeBasicAlarmListResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeBindingPolicyObjectList(self, request):
         """获取已绑定对象列表
 

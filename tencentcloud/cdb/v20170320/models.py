@@ -220,16 +220,22 @@ class BackupInfo(AbstractModel):
         :type IntranetUrl: str
         :param InternetUrl: 外网下载地址
         :type InternetUrl: str
-        :param Type: 日志具体类型，可能的值有：logic - 逻辑冷备，physical - 物理冷备
+        :param Type: 日志具体类型。可能的值有 "logical": 逻辑冷备， "physical": 物理冷备。
         :type Type: str
         :param BackupId: 备份子任务的ID，删除备份文件时使用
         :type BackupId: int
-        :param Status: 备份任务状态
+        :param Status: 备份任务状态。可能的值有 "SUCCESS": 备份成功， "FAILED": 备份失败， "RUNNING": 备份进行中。
         :type Status: str
         :param FinishTime: 备份任务的完成时间
         :type FinishTime: str
-        :param Creator: 备份的创建者，可能的值：SYSTEM - 系统创建，Uin - 发起者Uin值
+        :param Creator: （该值将废弃，不建议使用）备份的创建者，可能的值：SYSTEM - 系统创建，Uin - 发起者Uin值。
         :type Creator: str
+        :param StartTime: 备份任务的开始时间
+        :type StartTime: str
+        :param Method: 备份方法。可能的值有 "full": 全量备份， "partial": 部分备份。
+        :type Method: str
+        :param Way: 备份方式。可能的值有 "manual": 手动备份， "automatic": 自动备份。
+        :type Way: str
         """
         self.Name = None
         self.Size = None
@@ -241,6 +247,9 @@ class BackupInfo(AbstractModel):
         self.Status = None
         self.FinishTime = None
         self.Creator = None
+        self.StartTime = None
+        self.Method = None
+        self.Way = None
 
 
     def _deserialize(self, params):
@@ -254,6 +263,9 @@ class BackupInfo(AbstractModel):
         self.Status = params.get("Status")
         self.FinishTime = params.get("FinishTime")
         self.Creator = params.get("Creator")
+        self.StartTime = params.get("StartTime")
+        self.Method = params.get("Method")
+        self.Way = params.get("Way")
 
 
 class BackupItem(AbstractModel):
@@ -275,6 +287,59 @@ class BackupItem(AbstractModel):
     def _deserialize(self, params):
         self.Db = params.get("Db")
         self.Table = params.get("Table")
+
+
+class BackupSummaryItem(AbstractModel):
+    """实例备份统计项
+
+    """
+
+    def __init__(self):
+        """
+        :param InstanceId: 实例ID。
+        :type InstanceId: str
+        :param AutoBackupCount: 该实例自动数据备份的个数。
+        :type AutoBackupCount: int
+        :param AutoBackupVolume: 该实例自动数据备份的容量。
+        :type AutoBackupVolume: int
+        :param ManualBackupCount: 该实例手动数据备份的个数。
+        :type ManualBackupCount: int
+        :param ManualBackupVolume: 该实例手动数据备份的容量。
+        :type ManualBackupVolume: int
+        :param DataBackupCount: 该实例总的数据备份（包含自动备份和手动备份）个数。
+        :type DataBackupCount: int
+        :param DataBackupVolume: 该实例总的数据备份容量。
+        :type DataBackupVolume: int
+        :param BinlogBackupCount: 该实例日志备份的个数。
+        :type BinlogBackupCount: int
+        :param BinlogBackupVolume: 该实例日志备份的容量。
+        :type BinlogBackupVolume: int
+        :param BackupVolume: 该实例的总备份（包含数据备份和日志备份）占用容量。
+        :type BackupVolume: int
+        """
+        self.InstanceId = None
+        self.AutoBackupCount = None
+        self.AutoBackupVolume = None
+        self.ManualBackupCount = None
+        self.ManualBackupVolume = None
+        self.DataBackupCount = None
+        self.DataBackupVolume = None
+        self.BinlogBackupCount = None
+        self.BinlogBackupVolume = None
+        self.BackupVolume = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.AutoBackupCount = params.get("AutoBackupCount")
+        self.AutoBackupVolume = params.get("AutoBackupVolume")
+        self.ManualBackupCount = params.get("ManualBackupCount")
+        self.ManualBackupVolume = params.get("ManualBackupVolume")
+        self.DataBackupCount = params.get("DataBackupCount")
+        self.DataBackupVolume = params.get("DataBackupVolume")
+        self.BinlogBackupCount = params.get("BinlogBackupCount")
+        self.BinlogBackupVolume = params.get("BinlogBackupVolume")
+        self.BackupVolume = params.get("BackupVolume")
 
 
 class BalanceRoGroupLoadRequest(AbstractModel):
@@ -1619,6 +1684,119 @@ class DescribeBackupDatabasesResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeBackupOverviewRequest(AbstractModel):
+    """DescribeBackupOverview请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Product: 需要查询的云数据库产品类型，目前仅支持 "mysql"。
+        :type Product: str
+        """
+        self.Product = None
+
+
+    def _deserialize(self, params):
+        self.Product = params.get("Product")
+
+
+class DescribeBackupOverviewResponse(AbstractModel):
+    """DescribeBackupOverview返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param BackupCount: 用户在当前地域备份的总个数（包含数据备份和日志备份）。
+        :type BackupCount: int
+        :param BackupVolume: 用户在当前地域备份的总容量
+        :type BackupVolume: int
+        :param BillingVolume: 用户在当前地域备份的计费容量，即超出赠送容量的部分。
+        :type BillingVolume: int
+        :param FreeVolume: 用户在当前地域获得的赠送备份容量。
+        :type FreeVolume: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.BackupCount = None
+        self.BackupVolume = None
+        self.BillingVolume = None
+        self.FreeVolume = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.BackupCount = params.get("BackupCount")
+        self.BackupVolume = params.get("BackupVolume")
+        self.BillingVolume = params.get("BillingVolume")
+        self.FreeVolume = params.get("FreeVolume")
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeBackupSummariesRequest(AbstractModel):
+    """DescribeBackupSummaries请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Product: 需要查询的云数据库产品类型，目前仅支持 "mysql"。
+        :type Product: str
+        :param Offset: 分页查询数据的偏移量。
+        :type Offset: int
+        :param Limit: 分页查询数据的条目限制，默认值为20。
+        :type Limit: int
+        :param OrderBy: 指定按某一项排序，可选值包括： BackupVolume: 备份容量， DataBackupVolume: 数据备份容量， BinlogBackupVolume: 日志备份容量， AutoBackupVolume: 自动备份容量， ManualBackupVolume: 手动备份容量。
+        :type OrderBy: str
+        :param OrderDirection: 指定排序方向，可选值包括： ASC: 正序， DESC: 逆序。
+        :type OrderDirection: str
+        """
+        self.Product = None
+        self.Offset = None
+        self.Limit = None
+        self.OrderBy = None
+        self.OrderDirection = None
+
+
+    def _deserialize(self, params):
+        self.Product = params.get("Product")
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+        self.OrderBy = params.get("OrderBy")
+        self.OrderDirection = params.get("OrderDirection")
+
+
+class DescribeBackupSummariesResponse(AbstractModel):
+    """DescribeBackupSummaries返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Items: 实例备份统计条目。
+        :type Items: list of BackupSummaryItem
+        :param TotalCount: 实例备份统计总条目数。
+        :type TotalCount: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Items = None
+        self.TotalCount = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Items") is not None:
+            self.Items = []
+            for item in params.get("Items"):
+                obj = BackupSummaryItem()
+                obj._deserialize(item)
+                self.Items.append(obj)
+        self.TotalCount = params.get("TotalCount")
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeBackupTablesRequest(AbstractModel):
     """DescribeBackupTables请求参数结构体
 
@@ -1738,6 +1916,48 @@ class DescribeBackupsResponse(AbstractModel):
                 obj = BackupInfo()
                 obj._deserialize(item)
                 self.Items.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeBinlogBackupOverviewRequest(AbstractModel):
+    """DescribeBinlogBackupOverview请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Product: 需要查询的云数据库产品类型，目前仅支持 "mysql"。
+        :type Product: str
+        """
+        self.Product = None
+
+
+    def _deserialize(self, params):
+        self.Product = params.get("Product")
+
+
+class DescribeBinlogBackupOverviewResponse(AbstractModel):
+    """DescribeBinlogBackupOverview返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param BinlogBackupVolume: 总的日志备份容量（单位为字节）。
+        :type BinlogBackupVolume: int
+        :param BinlogBackupCount: 总的日志备份个数。
+        :type BinlogBackupCount: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.BinlogBackupVolume = None
+        self.BinlogBackupCount = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.BinlogBackupVolume = params.get("BinlogBackupVolume")
+        self.BinlogBackupCount = params.get("BinlogBackupCount")
         self.RequestId = params.get("RequestId")
 
 
@@ -2388,6 +2608,64 @@ class DescribeDBZoneConfigResponse(AbstractModel):
                 obj = RegionSellConf()
                 obj._deserialize(item)
                 self.Items.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeDataBackupOverviewRequest(AbstractModel):
+    """DescribeDataBackupOverview请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Product: 需要查询的云数据库产品类型，目前仅支持 "mysql"。
+        :type Product: str
+        """
+        self.Product = None
+
+
+    def _deserialize(self, params):
+        self.Product = params.get("Product")
+
+
+class DescribeDataBackupOverviewResponse(AbstractModel):
+    """DescribeDataBackupOverview返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param DataBackupVolume: 当前地域的数据备份总容量（包含自动备份和手动备份，单位为字节）。
+        :type DataBackupVolume: int
+        :param DataBackupCount: 当前地域的数据备份总个数。
+        :type DataBackupCount: int
+        :param AutoBackupVolume: 当前地域的自动备份总容量。
+        :type AutoBackupVolume: int
+        :param AutoBackupCount: 当前地域的自动备份总个数。
+        :type AutoBackupCount: int
+        :param ManualBackupVolume: 当前地域的手动备份总容量。
+        :type ManualBackupVolume: int
+        :param ManualBackupCount: 当前地域的手动备份总个数。
+        :type ManualBackupCount: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.DataBackupVolume = None
+        self.DataBackupCount = None
+        self.AutoBackupVolume = None
+        self.AutoBackupCount = None
+        self.ManualBackupVolume = None
+        self.ManualBackupCount = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.DataBackupVolume = params.get("DataBackupVolume")
+        self.DataBackupCount = params.get("DataBackupCount")
+        self.AutoBackupVolume = params.get("AutoBackupVolume")
+        self.AutoBackupCount = params.get("AutoBackupCount")
+        self.ManualBackupVolume = params.get("ManualBackupVolume")
+        self.ManualBackupCount = params.get("ManualBackupCount")
         self.RequestId = params.get("RequestId")
 
 

@@ -1504,14 +1504,19 @@ class GeneralHandwritingOCRRequest(AbstractModel):
 图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。
 非腾讯云存储的 Url 速度和稳定性可能受一定影响。
         :type ImageUrl: str
+        :param Scene: 场景字段，默认不用填写。
+可选值:only_hw  表示只输出手写体识别结果，过滤印刷体。
+        :type Scene: str
         """
         self.ImageBase64 = None
         self.ImageUrl = None
+        self.Scene = None
 
 
     def _deserialize(self, params):
         self.ImageBase64 = params.get("ImageBase64")
         self.ImageUrl = params.get("ImageUrl")
+        self.Scene = params.get("Scene")
 
 
 class GeneralHandwritingOCRResponse(AbstractModel):
@@ -3542,14 +3547,24 @@ class TextEduPaper(AbstractModel):
 
     def __init__(self):
         """
-        :param DetectedText: 识别出的文本行内容
+        :param Item: 识别出的字段名称（关键字）
+        :type Item: str
+        :param DetectedText: 识别出的字段名称对应的值，也就是字段Item对应的字符串结果
         :type DetectedText: str
+        :param Itemcoord: 文本行在旋转纠正之后的图像中的像素坐标，表示为（左上角x, 左上角y，宽width，高height）
+        :type Itemcoord: :class:`tencentcloud.ocr.v20181119.models.ItemCoord`
         """
+        self.Item = None
         self.DetectedText = None
+        self.Itemcoord = None
 
 
     def _deserialize(self, params):
+        self.Item = params.get("Item")
         self.DetectedText = params.get("DetectedText")
+        if params.get("Itemcoord") is not None:
+            self.Itemcoord = ItemCoord()
+            self.Itemcoord._deserialize(params.get("Itemcoord"))
 
 
 class TextFormula(AbstractModel):
@@ -3582,7 +3597,9 @@ class TextGeneralHandwriting(AbstractModel):
         :type Confidence: int
         :param Polygon: 文本行坐标，以四个顶点坐标表示
         :type Polygon: list of Coord
-        :param AdvancedInfo: 此字段为扩展字段
+        :param AdvancedInfo: 此字段为扩展字段。
+能返回文本行的段落信息，例如：{\"Parag\":{\"ParagNo\":2}}，
+其中ParagNo为段落行，从1开始。
         :type AdvancedInfo: str
         """
         self.DetectedText = None

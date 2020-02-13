@@ -985,6 +985,104 @@ class DeleteCdnDomainResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeBillingDataRequest(AbstractModel):
+    """DescribeBillingData请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param StartTime: 查询起始时间，如：2018-09-04 10:40:00，返回结果大于等于指定时间
+根据指定时间粒度参数不同，会进行向前取整，如指定起始时间为 2018-09-04 10:40:00 按小时粒度查询，返回的第一个数据对应时间点为 2018-09-04 10:00:00
+起始时间与结束时间间隔小于等于 90 天
+        :type StartTime: str
+        :param EndTime: 查询结束时间，如：2018-09-04 10:40:00，返回结果小于等于指定时间
+根据指定时间粒度参数不同，会进行向前取整，如指定结束时间为  2018-09-04 10:40:00 按小时粒度查询时，返回的最后一个数据对应时间点为 2018-09-04 10:00:00
+起始时间与结束时间间隔小于等于 90 天
+        :type EndTime: str
+        :param Interval: 时间粒度，支持模式如下：
+min：1 分钟粒度，查询区间需要小于等于 24 小时
+5min：5 分钟粒度，查询区间需要小于等于 31 天
+hour：1 小时粒度，查询区间需要小于等于 31 天内
+day：天粒度，查询区间需要大于 31 天
+
+Area 字段为 overseas 时暂不支持1分钟粒度数据查询
+        :type Interval: str
+        :param Domain: 指定域名查询计费数据
+        :type Domain: str
+        :param Project: 指定项目 ID 查询，[前往查看项目 ID](https://console.cloud.tencent.com/project)
+若 Domain 参数填充了具体域名信息，则返回该域名的计费数据，而非指定项目计费数据
+        :type Project: int
+        :param Area: 指定加速区域查询计费数据：
+mainland：中国境内
+overseas：中国境外
+不填充时，默认为 mainland
+        :type Area: str
+        :param District: Area 为 overseas 时，指定国家/地区查询
+省份、国家/地区编码可以查看 [省份编码映射](https://cloud.tencent.com/document/product/228/6316#.E7.9C.81.E4.BB.BD.E6.98.A0.E5.B0.84)
+不填充时，查询所有国家/地区
+        :type District: int
+        :param Metric: 计费统计类型
+flux：计费流量
+bandwidth：计费带宽
+默认为 bandwidth
+        :type Metric: str
+        """
+        self.StartTime = None
+        self.EndTime = None
+        self.Interval = None
+        self.Domain = None
+        self.Project = None
+        self.Area = None
+        self.District = None
+        self.Metric = None
+
+
+    def _deserialize(self, params):
+        self.StartTime = params.get("StartTime")
+        self.EndTime = params.get("EndTime")
+        self.Interval = params.get("Interval")
+        self.Domain = params.get("Domain")
+        self.Project = params.get("Project")
+        self.Area = params.get("Area")
+        self.District = params.get("District")
+        self.Metric = params.get("Metric")
+
+
+class DescribeBillingDataResponse(AbstractModel):
+    """DescribeBillingData返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Interval: 时间粒度，根据查询时传递参数指定：
+min：1 分钟粒度
+5min：5 分钟粒度
+hour：1 小时粒度
+day：天粒度
+        :type Interval: str
+        :param Data: 数据明细
+        :type Data: list of ResourceBillingData
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Interval = None
+        self.Data = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Interval = params.get("Interval")
+        if params.get("Data") is not None:
+            self.Data = []
+            for item in params.get("Data"):
+                obj = ResourceBillingData()
+                obj._deserialize(item)
+                self.Data.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeCdnDataRequest(AbstractModel):
     """DescribeCdnData请求参数结构体
 
@@ -3839,6 +3937,36 @@ off：关闭
                 obj = HttpHeaderPathRule()
                 obj._deserialize(item)
                 self.HeaderRules.append(obj)
+
+
+class ResourceBillingData(AbstractModel):
+    """计费数据明细
+
+    """
+
+    def __init__(self):
+        """
+        :param Resource: 资源名称，根据查询条件不同分为以下几类：
+某一个具体域名：表示该域名明细数据
+multiDomains：表示多域名汇总明细数据
+某一个项目 ID：指定项目查询时，显示为项目 ID
+all：账号维度数据明细
+        :type Resource: str
+        :param BillingData: 计费数据详情
+        :type BillingData: list of CdnData
+        """
+        self.Resource = None
+        self.BillingData = None
+
+
+    def _deserialize(self, params):
+        self.Resource = params.get("Resource")
+        if params.get("BillingData") is not None:
+            self.BillingData = []
+            for item in params.get("BillingData"):
+                obj = CdnData()
+                obj._deserialize(item)
+                self.BillingData.append(obj)
 
 
 class ResourceData(AbstractModel):

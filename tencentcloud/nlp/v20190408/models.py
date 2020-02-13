@@ -25,8 +25,8 @@ class AutoSummarizationRequest(AbstractModel):
         """
         :param Text: 待处理的文本（仅支持UTF-8格式，不超过2000字）
         :type Text: str
-        :param Length: 指定摘要的长度（默认值为200）
-注：为保证摘要的可读性，最终生成的摘要长度并不会严格遵循这个值，会有略微的浮动
+        :param Length: 指定摘要的长度上限（默认值为200）
+注：为保证摘要的可读性，最终生成的摘要长度会低于指定的长度上限。
         :type Length: int
         """
         self.Text = None
@@ -463,44 +463,6 @@ class EntityRelationSubject(AbstractModel):
         self.Popular = params.get("Popular")
 
 
-class EvilToken(AbstractModel):
-    """文本审核结果
-
-    """
-
-    def __init__(self):
-        """
-        :param EvilFlag: 文本是否恶意：
-0、正常；
-1、恶意；
-2、可疑送审
-        :type EvilFlag: int
-        :param EvilKeywords: 恶意关键词组
-        :type EvilKeywords: list of str
-        :param EvilType: 文本恶意类型：
-0、正常；
-1、政治；
-2、色情；
-3、辱骂/低俗；
-4、暴恐/毒品；
-5、广告/灌水；
-6、迷信/邪教；
-7、其他违法（如跨站追杀/恶意竞争等）；
-8、综合；
-9、联系方式/链接
-        :type EvilType: int
-        """
-        self.EvilFlag = None
-        self.EvilKeywords = None
-        self.EvilType = None
-
-
-    def _deserialize(self, params):
-        self.EvilFlag = params.get("EvilFlag")
-        self.EvilKeywords = params.get("EvilKeywords")
-        self.EvilType = params.get("EvilType")
-
-
 class Keyword(AbstractModel):
     """关键词提取结果
 
@@ -688,44 +650,6 @@ class PosToken(AbstractModel):
         self.Word = params.get("Word")
 
 
-class SensitiveWordsRecognitionRequest(AbstractModel):
-    """SensitiveWordsRecognition请求参数结构体
-
-    """
-
-    def __init__(self):
-        """
-        :param Text: 待识别的文本（仅支持UTF-8格式，不超过2000字）
-        :type Text: str
-        """
-        self.Text = None
-
-
-    def _deserialize(self, params):
-        self.Text = params.get("Text")
-
-
-class SensitiveWordsRecognitionResponse(AbstractModel):
-    """SensitiveWordsRecognition返回参数结构体
-
-    """
-
-    def __init__(self):
-        """
-        :param SensitiveWords: 敏感词数组
-        :type SensitiveWords: list of str
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
-        self.SensitiveWords = None
-        self.RequestId = None
-
-
-    def _deserialize(self, params):
-        self.SensitiveWords = params.get("SensitiveWords")
-        self.RequestId = params.get("RequestId")
-
-
 class SentenceEmbeddingRequest(AbstractModel):
     """SentenceEmbedding请求参数结构体
 
@@ -903,73 +827,6 @@ class SimilarWordsResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.SimilarWords = params.get("SimilarWords")
-        self.RequestId = params.get("RequestId")
-
-
-class TextApprovalRequest(AbstractModel):
-    """TextApproval请求参数结构体
-
-    """
-
-    def __init__(self):
-        """
-        :param Text: 待审核的文本（仅支持UTF-8格式，不超过2000字）
-        :type Text: str
-        :param Flag: 文本审核模式（默认取1值）：
-1、全领域审核
-        :type Flag: int
-        """
-        self.Text = None
-        self.Flag = None
-
-
-    def _deserialize(self, params):
-        self.Text = params.get("Text")
-        self.Flag = params.get("Flag")
-
-
-class TextApprovalResponse(AbstractModel):
-    """TextApproval返回参数结构体
-
-    """
-
-    def __init__(self):
-        """
-        :param EvilTokens: 文本审核输出结果列表，列表每个元素包含以下信息：
-
-EvilFlag（文本恶意等级）：
-0、正常；
-1、恶意；
-2、可疑送审
-
-EvilType（文本恶意类型）：
-0、正常；
-1、政治；
-2、色情；
-3、辱骂/低俗；
-4、暴恐/毒品；
-5、广告/灌水；
-6、迷信/邪教；
-7、其他违法(如赌博/造假/违法交易等)；
-8、综合；
-9、联系方式/链接
-
-EvilKeywords（恶意关键词组）
-        :type EvilTokens: list of EvilToken
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
-        self.EvilTokens = None
-        self.RequestId = None
-
-
-    def _deserialize(self, params):
-        if params.get("EvilTokens") is not None:
-            self.EvilTokens = []
-            for item in params.get("EvilTokens"):
-                obj = EvilToken()
-                obj._deserialize(item)
-                self.EvilTokens.append(obj)
         self.RequestId = params.get("RequestId")
 
 

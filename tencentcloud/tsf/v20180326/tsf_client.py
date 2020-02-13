@@ -25,6 +25,34 @@ class TsfClient(AbstractClient):
     _endpoint = 'tsf.tencentcloudapi.com'
 
 
+    def AddClusterInstances(self, request):
+        """添加云主机节点至TSF集群
+
+        :param request: Request instance for AddClusterInstances.
+        :type request: :class:`tencentcloud.tsf.v20180326.models.AddClusterInstancesRequest`
+        :rtype: :class:`tencentcloud.tsf.v20180326.models.AddClusterInstancesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("AddClusterInstances", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.AddClusterInstancesResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def AddInstances(self, request):
         """添加云主机节点至TSF集群
 

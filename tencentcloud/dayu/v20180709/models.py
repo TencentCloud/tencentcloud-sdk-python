@@ -72,7 +72,7 @@ class CCEventRecord(AbstractModel):
 
     def __init__(self):
         """
-        :param Business: 大禹子产品代号（shield表示棋牌；bgpip表示高防IP；bgp表示独享包；bgp-multip表示共享包；net表示高防IP专业版；basic表示DDoS基础防护）
+        :param Business: 大禹子产品代号（bgpip表示高防IP；bgp表示独享包；bgp-multip表示共享包；net表示高防IP专业版；basic表示DDoS基础防护）
         :type Business: str
         :param Id: 资源ID
         :type Id: str
@@ -128,6 +128,55 @@ class CCEventRecord(AbstractModel):
         self.DomainList = params.get("DomainList")
         self.UriList = params.get("UriList")
         self.AttackipList = params.get("AttackipList")
+
+
+class CCFrequencyRule(AbstractModel):
+    """CC的访问频率控制规则
+
+    """
+
+    def __init__(self):
+        """
+        :param CCFrequencyRuleId: CC的访问频率控制规则ID
+        :type CCFrequencyRuleId: str
+        :param Uri: URI字符串，必须以/开头，例如/abc/a.php，长度不超过31；当URI=/时，匹配模式只能选择前缀匹配；
+        :type Uri: str
+        :param UserAgent: User-Agent字符串，长度不超过80
+        :type UserAgent: str
+        :param Cookie: Cookie字符串，长度不超过40
+        :type Cookie: str
+        :param Mode: 匹配规则，取值["include"(前缀匹配)，"equal"(完全匹配)]
+        :type Mode: str
+        :param Period: 统计周期，单位秒，取值[10, 30, 60]
+        :type Period: int
+        :param ReqNumber: 访问次数，取值[1-10000]
+        :type ReqNumber: int
+        :param Act: 执行动作，取值["alg"（人机识别）, "drop"（拦截）]
+        :type Act: str
+        :param ExeDuration: 执行时间，单位秒，取值[1-900]
+        :type ExeDuration: int
+        """
+        self.CCFrequencyRuleId = None
+        self.Uri = None
+        self.UserAgent = None
+        self.Cookie = None
+        self.Mode = None
+        self.Period = None
+        self.ReqNumber = None
+        self.Act = None
+        self.ExeDuration = None
+
+
+    def _deserialize(self, params):
+        self.CCFrequencyRuleId = params.get("CCFrequencyRuleId")
+        self.Uri = params.get("Uri")
+        self.UserAgent = params.get("UserAgent")
+        self.Cookie = params.get("Cookie")
+        self.Mode = params.get("Mode")
+        self.Period = params.get("Period")
+        self.ReqNumber = params.get("ReqNumber")
+        self.Act = params.get("Act")
+        self.ExeDuration = params.get("ExeDuration")
 
 
 class CCPolicy(AbstractModel):
@@ -221,35 +270,6 @@ class CCRule(AbstractModel):
         self.Value = params.get("Value")
 
 
-class CCRuleConfig(AbstractModel):
-    """7层CC自定义规则
-
-    """
-
-    def __init__(self):
-        """
-        :param Period: 统计周期，单位秒，取值[10, 30, 60]
-        :type Period: int
-        :param ReqNumber: 访问次数，取值[1-10000]
-        :type ReqNumber: int
-        :param Action: 执行动作，取值["alg"（人机识别）, "drop"（拦截）]
-        :type Action: str
-        :param ExeDuration: 执行时间，单位秒，取值[1-900]
-        :type ExeDuration: int
-        """
-        self.Period = None
-        self.ReqNumber = None
-        self.Action = None
-        self.ExeDuration = None
-
-
-    def _deserialize(self, params):
-        self.Period = params.get("Period")
-        self.ReqNumber = params.get("ReqNumber")
-        self.Action = params.get("Action")
-        self.ExeDuration = params.get("ExeDuration")
-
-
 class CreateBasicDDoSAlarmThresholdRequest(AbstractModel):
     """CreateBasicDDoSAlarmThreshold请求参数结构体
 
@@ -301,6 +321,84 @@ class CreateBasicDDoSAlarmThresholdResponse(AbstractModel):
     def _deserialize(self, params):
         self.AlarmThreshold = params.get("AlarmThreshold")
         self.AlarmType = params.get("AlarmType")
+        self.RequestId = params.get("RequestId")
+
+
+class CreateCCFrequencyRulesRequest(AbstractModel):
+    """CreateCCFrequencyRules请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Business: 大禹子产品代号（bgpip表示高防IP；net表示高防IP专业版）
+        :type Business: str
+        :param Id: 资源ID
+        :type Id: str
+        :param RuleId: 7层转发规则ID（通过获取7层转发规则接口可以获取规则ID）
+        :type RuleId: str
+        :param Mode: 匹配规则，取值["include"(前缀匹配)，"equal"(完全匹配)]
+        :type Mode: str
+        :param Period: 统计周期，单位秒，取值[10, 30, 60]
+        :type Period: int
+        :param ReqNumber: 访问次数，取值[1-10000]
+        :type ReqNumber: int
+        :param Act: 执行动作，取值["alg"（人机识别）, "drop"（拦截）]
+        :type Act: str
+        :param ExeDuration: 执行时间，单位秒，取值[1-900]
+        :type ExeDuration: int
+        :param Uri: URI字符串，必须以/开头，例如/abc/a.php，长度不超过31；当URI=/时，匹配模式只能选择前缀匹配；
+        :type Uri: str
+        :param UserAgent: User-Agent字符串，长度不超过80
+        :type UserAgent: str
+        :param Cookie: Cookie字符串，长度不超过40
+        :type Cookie: str
+        """
+        self.Business = None
+        self.Id = None
+        self.RuleId = None
+        self.Mode = None
+        self.Period = None
+        self.ReqNumber = None
+        self.Act = None
+        self.ExeDuration = None
+        self.Uri = None
+        self.UserAgent = None
+        self.Cookie = None
+
+
+    def _deserialize(self, params):
+        self.Business = params.get("Business")
+        self.Id = params.get("Id")
+        self.RuleId = params.get("RuleId")
+        self.Mode = params.get("Mode")
+        self.Period = params.get("Period")
+        self.ReqNumber = params.get("ReqNumber")
+        self.Act = params.get("Act")
+        self.ExeDuration = params.get("ExeDuration")
+        self.Uri = params.get("Uri")
+        self.UserAgent = params.get("UserAgent")
+        self.Cookie = params.get("Cookie")
+
+
+class CreateCCFrequencyRulesResponse(AbstractModel):
+    """CreateCCFrequencyRules返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param CCFrequencyRuleId: CC防护的访问频率控制规则ID
+        :type CCFrequencyRuleId: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.CCFrequencyRuleId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.CCFrequencyRuleId = params.get("CCFrequencyRuleId")
         self.RequestId = params.get("RequestId")
 
 
@@ -405,6 +503,10 @@ class CreateDDoSPolicyCaseRequest(AbstractModel):
         :type MaxUdpPackageLen: str
         :param HasVPN: 是否有VPN业务，取值[no（没有）, yes（有）]
         :type HasVPN: str
+        :param TcpPortList: TCP业务端口列表，同时支持单个端口和端口段，字符串格式，例如：80,443,700-800,53,1000-3000
+        :type TcpPortList: str
+        :param UdpPortList: UDP业务端口列表，同时支持单个端口和端口段，字符串格式，例如：80,443,700-800,53,1000-3000
+        :type UdpPortList: str
         """
         self.Business = None
         self.CaseName = None
@@ -428,6 +530,8 @@ class CreateDDoSPolicyCaseRequest(AbstractModel):
         self.MinUdpPackageLen = None
         self.MaxUdpPackageLen = None
         self.HasVPN = None
+        self.TcpPortList = None
+        self.UdpPortList = None
 
 
     def _deserialize(self, params):
@@ -453,6 +557,8 @@ class CreateDDoSPolicyCaseRequest(AbstractModel):
         self.MinUdpPackageLen = params.get("MinUdpPackageLen")
         self.MaxUdpPackageLen = params.get("MaxUdpPackageLen")
         self.HasVPN = params.get("HasVPN")
+        self.TcpPortList = params.get("TcpPortList")
+        self.UdpPortList = params.get("UdpPortList")
 
 
 class CreateDDoSPolicyCaseResponse(AbstractModel):
@@ -714,70 +820,6 @@ class CreateL4RulesResponse(AbstractModel):
         if params.get("Success") is not None:
             self.Success = SuccessCode()
             self.Success._deserialize(params.get("Success"))
-        self.RequestId = params.get("RequestId")
-
-
-class CreateL7CCRuleRequest(AbstractModel):
-    """CreateL7CCRule请求参数结构体
-
-    """
-
-    def __init__(self):
-        """
-        :param Business: 大禹子产品代号（bgpip表示高防IP；net表示高防IP专业版）
-        :type Business: str
-        :param Id: 资源ID
-        :type Id: str
-        :param Method: 操作码，取值[query(表示查询)，add(表示添加)，del(表示删除)]
-        :type Method: str
-        :param RuleId: 7层转发规则ID，例如：rule-0000001
-        :type RuleId: str
-        :param RuleConfig: 7层CC自定义规则参数，当操作码为query时，可以不用填写；当操作码为add或del时，必须填写；
-        :type RuleConfig: list of CCRuleConfig
-        """
-        self.Business = None
-        self.Id = None
-        self.Method = None
-        self.RuleId = None
-        self.RuleConfig = None
-
-
-    def _deserialize(self, params):
-        self.Business = params.get("Business")
-        self.Id = params.get("Id")
-        self.Method = params.get("Method")
-        self.RuleId = params.get("RuleId")
-        if params.get("RuleConfig") is not None:
-            self.RuleConfig = []
-            for item in params.get("RuleConfig"):
-                obj = CCRuleConfig()
-                obj._deserialize(item)
-                self.RuleConfig.append(obj)
-
-
-class CreateL7CCRuleResponse(AbstractModel):
-    """CreateL7CCRule返回参数结构体
-
-    """
-
-    def __init__(self):
-        """
-        :param RuleConfig: 7层CC自定义规则参数，当没有开启CC自定义规则时，返回空数组
-        :type RuleConfig: list of CCRuleConfig
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
-        self.RuleConfig = None
-        self.RequestId = None
-
-
-    def _deserialize(self, params):
-        if params.get("RuleConfig") is not None:
-            self.RuleConfig = []
-            for item in params.get("RuleConfig"):
-                obj = CCRuleConfig()
-                obj._deserialize(item)
-                self.RuleConfig.append(obj)
         self.RequestId = params.get("RequestId")
 
 
@@ -1115,7 +1157,7 @@ class DDoSEventRecord(AbstractModel):
 
     def __init__(self):
         """
-        :param Business: 大禹子产品代号（shield表示棋牌；bgpip表示高防IP；bgp表示独享包；bgp-multip表示共享包；net表示高防IP专业版；basic表示DDoS基础防护）
+        :param Business: 大禹子产品代号（bgpip表示高防IP；bgp表示独享包；bgp-multip表示共享包；net表示高防IP专业版；basic表示DDoS基础防护）
         :type Business: str
         :param Id: 资源ID
         :type Id: str
@@ -1335,7 +1377,7 @@ class DDoSPolicyPortLimit(AbstractModel):
 
     def __init__(self):
         """
-        :param Protocol: 协议，取值范围[tcp,udp,icmp,all]
+        :param Protocol: 协议，取值范围[tcp,udp,all]
         :type Protocol: str
         :param DPortStart: 开始目的端口，取值范围[0,65535]
         :type DPortStart: int
@@ -1466,6 +1508,50 @@ class DDosPolicy(AbstractModel):
                 self.WaterKey.append(obj)
         self.BoundResources = params.get("BoundResources")
         self.SceneId = params.get("SceneId")
+
+
+class DeleteCCFrequencyRulesRequest(AbstractModel):
+    """DeleteCCFrequencyRules请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Business: 大禹子产品代号（bgpip表示高防IP；net表示高防IP专业版）
+        :type Business: str
+        :param CCFrequencyRuleId: CC防护的访问频率控制规则ID
+        :type CCFrequencyRuleId: str
+        """
+        self.Business = None
+        self.CCFrequencyRuleId = None
+
+
+    def _deserialize(self, params):
+        self.Business = params.get("Business")
+        self.CCFrequencyRuleId = params.get("CCFrequencyRuleId")
+
+
+class DeleteCCFrequencyRulesResponse(AbstractModel):
+    """DeleteCCFrequencyRules返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Success: 成功码
+        :type Success: :class:`tencentcloud.dayu.v20180709.models.SuccessCode`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Success = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Success") is not None:
+            self.Success = SuccessCode()
+            self.Success._deserialize(params.get("Success"))
+        self.RequestId = params.get("RequestId")
 
 
 class DeleteCCSelfDefinePolicyRequest(AbstractModel):
@@ -1774,7 +1860,7 @@ class DescribeBaradDataRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Business: 大禹子产品代号（bgpip表示高防IP；net表示高防IP专业版；shield表示棋牌盾）
+        :param Business: 大禹子产品代号（bgpip表示高防IP；net表示高防IP专业版）
         :type Business: str
         :param Id: 资源实例ID
         :type Id: str
@@ -1855,6 +1941,68 @@ class DescribeBaradDataResponse(AbstractModel):
                 obj = BaradData()
                 obj._deserialize(item)
                 self.DataList.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeBasicCCThresholdRequest(AbstractModel):
+    """DescribeBasicCCThreshold请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param BasicIp: 查询的IP地址，取值如：1.1.1.1
+        :type BasicIp: str
+        :param BasicRegion: 查询IP所属地域，取值如：gz、bj、sh、hk等地域缩写
+        :type BasicRegion: str
+        :param BasicBizType: 专区类型，取值如：公有云专区：public，黑石专区：bm, NAT服务器专区：nat，互联网通道：channel。
+        :type BasicBizType: str
+        :param BasicDeviceType: 设备类型，取值如：服务器：cvm，公有云负载均衡：clb，黑石负载均衡：lb，NAT服务器：nat，互联网通道：channel.
+        :type BasicDeviceType: str
+        :param BasicIpInstance: 可选，IPInstance Nat 网关（如果查询的设备类型是NAT服务器，需要传此参数，通过nat资源查询接口获取）
+        :type BasicIpInstance: str
+        :param BasicIspCode: 可选，运营商线路（如果查询的设备类型是NAT服务器，需要传此参数为5）
+        :type BasicIspCode: int
+        """
+        self.BasicIp = None
+        self.BasicRegion = None
+        self.BasicBizType = None
+        self.BasicDeviceType = None
+        self.BasicIpInstance = None
+        self.BasicIspCode = None
+
+
+    def _deserialize(self, params):
+        self.BasicIp = params.get("BasicIp")
+        self.BasicRegion = params.get("BasicRegion")
+        self.BasicBizType = params.get("BasicBizType")
+        self.BasicDeviceType = params.get("BasicDeviceType")
+        self.BasicIpInstance = params.get("BasicIpInstance")
+        self.BasicIspCode = params.get("BasicIspCode")
+
+
+class DescribeBasicCCThresholdResponse(AbstractModel):
+    """DescribeBasicCCThreshold返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param CCEnable: CC启动开关（0:关闭；1:开启）
+        :type CCEnable: int
+        :param CCThreshold: CC防护阈值
+        :type CCThreshold: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.CCEnable = None
+        self.CCThreshold = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.CCEnable = params.get("CCEnable")
+        self.CCThreshold = params.get("CCThreshold")
         self.RequestId = params.get("RequestId")
 
 
@@ -1971,7 +2119,7 @@ class DescribeCCEvListRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Business: 大禹子产品代号（shield表示棋牌盾；bgpip表示高防IP；bgp表示独享包；bgp-multip表示共享包；net表示高防IP专业版；basic表示DDoS基础防护）
+        :param Business: 大禹子产品代号（bgpip表示高防IP；bgp表示独享包；bgp-multip表示共享包；net表示高防IP专业版；basic表示DDoS基础防护）
         :type Business: str
         :param StartTime: 开始时间
         :type StartTime: str
@@ -2053,6 +2201,61 @@ class DescribeCCEvListResponse(AbstractModel):
                 obj._deserialize(item)
                 self.Data.append(obj)
         self.Total = params.get("Total")
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeCCFrequencyRulesRequest(AbstractModel):
+    """DescribeCCFrequencyRules请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Business: 大禹子产品代号（bgpip表示高防IP；net表示高防IP专业版）
+        :type Business: str
+        :param Id: 资源ID
+        :type Id: str
+        :param RuleId: 7层转发规则ID（通过获取7层转发规则接口可以获取规则ID）；当填写时表示获取转发规则的访问频率控制规则；
+        :type RuleId: str
+        """
+        self.Business = None
+        self.Id = None
+        self.RuleId = None
+
+
+    def _deserialize(self, params):
+        self.Business = params.get("Business")
+        self.Id = params.get("Id")
+        self.RuleId = params.get("RuleId")
+
+
+class DescribeCCFrequencyRulesResponse(AbstractModel):
+    """DescribeCCFrequencyRules返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param CCFrequencyRuleList: 访问频率控制规则列表
+        :type CCFrequencyRuleList: list of CCFrequencyRule
+        :param CCFrequencyRuleStatus: 访问频率控制规则开关状态，取值[on(开启)，off(关闭)]
+        :type CCFrequencyRuleStatus: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.CCFrequencyRuleList = None
+        self.CCFrequencyRuleStatus = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("CCFrequencyRuleList") is not None:
+            self.CCFrequencyRuleList = []
+            for item in params.get("CCFrequencyRuleList"):
+                obj = CCFrequencyRule()
+                obj._deserialize(item)
+                self.CCFrequencyRuleList.append(obj)
+        self.CCFrequencyRuleStatus = params.get("CCFrequencyRuleStatus")
         self.RequestId = params.get("RequestId")
 
 
@@ -2413,6 +2616,74 @@ class DescribeDDoSAlarmThresholdResponse(AbstractModel):
         if params.get("DDoSAlarmThreshold") is not None:
             self.DDoSAlarmThreshold = DDoSAlarmThreshold()
             self.DDoSAlarmThreshold._deserialize(params.get("DDoSAlarmThreshold"))
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeDDoSAttackIPRegionMapRequest(AbstractModel):
+    """DescribeDDoSAttackIPRegionMap请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Business: 大禹子产品代号（shield表示棋牌；bgpip表示高防IP；bgp表示高防包；bgp-multip表示多ip高防包；net表示高防IP专业版）
+        :type Business: str
+        :param Id: 资源ID
+        :type Id: str
+        :param StartTime: 统计开始时间
+        :type StartTime: str
+        :param EndTime: 统计结束时间，最大可统计的时间范围是半年；
+        :type EndTime: str
+        :param IpList: 指定资源的特定IP的攻击源，可选
+        :type IpList: list of str
+        """
+        self.Business = None
+        self.Id = None
+        self.StartTime = None
+        self.EndTime = None
+        self.IpList = None
+
+
+    def _deserialize(self, params):
+        self.Business = params.get("Business")
+        self.Id = params.get("Id")
+        self.StartTime = params.get("StartTime")
+        self.EndTime = params.get("EndTime")
+        self.IpList = params.get("IpList")
+
+
+class DescribeDDoSAttackIPRegionMapResponse(AbstractModel):
+    """DescribeDDoSAttackIPRegionMap返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param NationCount: 全球地域分布数据
+        :type NationCount: list of KeyValueRecord
+        :param ProvinceCount: 国内省份地域分布数据
+        :type ProvinceCount: list of KeyValueRecord
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.NationCount = None
+        self.ProvinceCount = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("NationCount") is not None:
+            self.NationCount = []
+            for item in params.get("NationCount"):
+                obj = KeyValueRecord()
+                obj._deserialize(item)
+                self.NationCount.append(obj)
+        if params.get("ProvinceCount") is not None:
+            self.ProvinceCount = []
+            for item in params.get("ProvinceCount"):
+                obj = KeyValueRecord()
+                obj._deserialize(item)
+                self.ProvinceCount.append(obj)
         self.RequestId = params.get("RequestId")
 
 
@@ -4037,7 +4308,7 @@ class DescribePcapRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Business: 大禹子产品代号（bgpip表示高防IP；bgp表示独享包；bgp-multip表示共享包；net表示高防IP专业版；shield表示棋牌盾）
+        :param Business: 大禹子产品代号（bgpip表示高防IP；bgp表示独享包；bgp-multip表示共享包；net表示高防IP专业版）
         :type Business: str
         :param Id: 资源实例ID
         :type Id: str
@@ -4185,7 +4456,7 @@ class DescribeResourceListRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Business: 大禹子产品代号（bgp表示独享包；bgp-multip表示共享包；bgpip表示高防IP；net表示高防IP专业版；shield表示棋牌）
+        :param Business: 大禹子产品代号（bgp表示独享包；bgp-multip表示共享包；bgpip表示高防IP；net表示高防IP专业版）
         :type Business: str
         :param RegionList: 地域码搜索，可选，当不指定地域时空数组，当指定地域时，填地域码。例如：["gz", "sh"]
         :type RegionList: list of str
@@ -4257,9 +4528,36 @@ class DescribeResourceListResponse(AbstractModel):
         """
         :param Total: 总记录数
         :type Total: int
-        :param ServicePacks: 资源记录列表
+        :param ServicePacks: 资源记录列表，返回Key值说明：
+"Key": "CreateTime" 表示资源实例购买时间
+"Key": "Region" 表示资源实例的地域
+"Key": "BoundIP" 表示独享包实例绑定的IP
+"Key": "Id" 表示资源实例的ID
+"Key": "CCEnabled" 表示资源实例的CC防护开关状态
+"Key": "DDoSThreshold" 表示资源实例的DDoS的清洗阈值	
+"Key": "BoundStatus" 表示独享包或共享包实例的绑定IP操作状态(绑定中或绑定完成)
+"Key": "Type" 此字段弃用
+"Key": "ElasticLimit" 表示资源实例的弹性防护值
+"Key": "DDoSAI" 表示资源实例的DDoS AI防护开关
+"Key": "Bandwidth" 表示资源实例的保底防护值
+"Key": "OverloadCount" 表示资源实例受到超过弹性防护值的次数
+"Key": "Status" 表示资源实例的状态(idle:运行中, attacking:攻击中, blocking:封堵中, isolate:隔离中)
+"Key": "Lbid" 此字段弃用
+"Key": "ShowFlag" 此字段弃用
+"Key": "Expire" 表示资源实例的过期时间
+"Key": "CCThreshold" 表示资源实例的CC防护触发阈值
+"Key": "AutoRenewFlag" 表示资源实例的自动续费是否开启
+"Key": "IspCode" 表示独享包或共享包的线路(0-电信, 1-联通, 2-移动, 5-BGP)
+"Key": "PackType" 表示套餐包类型
+"Key": "PackId" 表示套餐包ID
+"Key": "Name" 表示资源实例的名称
+"Key": "Locked" 此字段弃用
+"Key": "IpDDoSLevel" 表示资源实例的防护等级(low-宽松, middle-正常, high-严格)
+"Key": "DefendStatus" 表示资源实例的DDoS防护状态(防护开启或临时关闭)
+"Key": "UndefendExpire" 表示资源实例的DDoS防护临时关闭结束时间
+"Key": "Tgw" 表示资源实例是否是新资源
         :type ServicePacks: list of KeyValueRecord
-        :param Business: 大禹子产品代号（bgp表示独享包；bgp-multip表示共享包；bgpip表示高防IP；net表示高防IP专业版；shield表示棋牌）
+        :param Business: 大禹子产品代号（bgp表示独享包；bgp-multip表示共享包；bgpip表示高防IP；net表示高防IP专业版）
         :type Business: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -4440,7 +4738,7 @@ class DescribeTransmitStatisRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Business: 大禹子产品代号（bgpip表示高防IP；net表示高防IP专业版；shield表示棋牌盾；bgp表示独享包；bgp-multip表示共享包）
+        :param Business: 大禹子产品代号（bgpip表示高防IP；net表示高防IP专业版；bgp表示独享包；bgp-multip表示共享包）
         :type Business: str
         :param Id: 资源实例ID
         :type Id: str
@@ -5112,7 +5410,7 @@ class L7RuleEntry(AbstractModel):
         :type LbType: int
         :param KeepEnable: 会话保持开关，取值[0(会话保持关闭)，1(会话保持开启)]
         :type KeepEnable: int
-        :param RuleId: 规则ID
+        :param RuleId: 规则ID，当添加新规则时可以不用填写此字段；当修改或者删除规则时需要填写此字段；
         :type RuleId: str
         :param CertType: 证书来源，当转发协议为https时必须填，取值[2(腾讯云托管证书)]，当转发协议为http时也可以填0
         :type CertType: int
@@ -5261,6 +5559,134 @@ class ModifyCCAlarmThresholdRequest(AbstractModel):
 
 class ModifyCCAlarmThresholdResponse(AbstractModel):
     """ModifyCCAlarmThreshold返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Success: 成功码
+        :type Success: :class:`tencentcloud.dayu.v20180709.models.SuccessCode`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Success = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Success") is not None:
+            self.Success = SuccessCode()
+            self.Success._deserialize(params.get("Success"))
+        self.RequestId = params.get("RequestId")
+
+
+class ModifyCCFrequencyRulesRequest(AbstractModel):
+    """ModifyCCFrequencyRules请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Business: 大禹子产品代号（bgpip表示高防IP；net表示高防IP专业版）
+        :type Business: str
+        :param CCFrequencyRuleId: CC的访问频率控制规则ID
+        :type CCFrequencyRuleId: str
+        :param Mode: 匹配规则，取值["include"(前缀匹配)，"equal"(完全匹配)]
+        :type Mode: str
+        :param Period: 统计周期，单位秒，取值[10, 30, 60]
+        :type Period: int
+        :param ReqNumber: 访问次数，取值[1-10000]
+        :type ReqNumber: int
+        :param Act: 执行动作，取值["alg"（人机识别）, "drop"（拦截）]
+        :type Act: str
+        :param ExeDuration: 执行时间，单位秒，取值[1-900]
+        :type ExeDuration: int
+        :param Uri: URI字符串，必须以/开头，例如/abc/a.php，长度不超过31；当URI=/时，匹配模式只能选择前缀匹配；
+        :type Uri: str
+        :param UserAgent: User-Agent字符串，长度不超过80
+        :type UserAgent: str
+        :param Cookie: Cookie字符串，长度不超过40
+        :type Cookie: str
+        """
+        self.Business = None
+        self.CCFrequencyRuleId = None
+        self.Mode = None
+        self.Period = None
+        self.ReqNumber = None
+        self.Act = None
+        self.ExeDuration = None
+        self.Uri = None
+        self.UserAgent = None
+        self.Cookie = None
+
+
+    def _deserialize(self, params):
+        self.Business = params.get("Business")
+        self.CCFrequencyRuleId = params.get("CCFrequencyRuleId")
+        self.Mode = params.get("Mode")
+        self.Period = params.get("Period")
+        self.ReqNumber = params.get("ReqNumber")
+        self.Act = params.get("Act")
+        self.ExeDuration = params.get("ExeDuration")
+        self.Uri = params.get("Uri")
+        self.UserAgent = params.get("UserAgent")
+        self.Cookie = params.get("Cookie")
+
+
+class ModifyCCFrequencyRulesResponse(AbstractModel):
+    """ModifyCCFrequencyRules返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Success: 成功码
+        :type Success: :class:`tencentcloud.dayu.v20180709.models.SuccessCode`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Success = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Success") is not None:
+            self.Success = SuccessCode()
+            self.Success._deserialize(params.get("Success"))
+        self.RequestId = params.get("RequestId")
+
+
+class ModifyCCFrequencyRulesStatusRequest(AbstractModel):
+    """ModifyCCFrequencyRulesStatus请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Business: 大禹子产品代号（bgpip表示高防IP；net表示高防IP专业版）
+        :type Business: str
+        :param Id: 资源ID
+        :type Id: str
+        :param RuleId: 7层转发规则ID（通过获取7层转发规则接口可以获取规则ID）
+        :type RuleId: str
+        :param Method: 开启或关闭，取值["on"(开启)，"off"(关闭)]
+        :type Method: str
+        """
+        self.Business = None
+        self.Id = None
+        self.RuleId = None
+        self.Method = None
+
+
+    def _deserialize(self, params):
+        self.Business = params.get("Business")
+        self.Id = params.get("Id")
+        self.RuleId = params.get("RuleId")
+        self.Method = params.get("Method")
+
+
+class ModifyCCFrequencyRulesStatusResponse(AbstractModel):
+    """ModifyCCFrequencyRulesStatus返回参数结构体
 
     """
 
@@ -5572,12 +5998,10 @@ class ModifyCCThresholdRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Business: 大禹子产品代号（bgpip表示高防IP；bgp表示独享包；bgp-multip表示共享包；net表示高防IP专业版）
+        :param Business: 大禹子产品代号（bgpip表示高防IP；bgp表示独享包；bgp-multip表示共享包；net表示高防IP专业版；basic表示基础防护）
         :type Business: str
-        :param Id: 资源ID
-        :type Id: str
         :param Threshold: CC防护阈值，取值(0 100 150 240 350 480 550 700 850 1000 1500 2000 3000 5000 10000 20000);
-当Business为高防IP、高防IP专业版、棋牌盾时，其CC防护最大阈值跟资源的保底防护带宽有关，对应关系如下：
+当Business为高防IP、高防IP专业版时，其CC防护最大阈值跟资源的保底防护带宽有关，对应关系如下：
   保底带宽: 最大C防护阈值
   10:  20000,
   20:  40000,
@@ -5588,25 +6012,51 @@ class ModifyCCThresholdRequest(AbstractModel):
   80:  250000,
   100: 300000,
         :type Threshold: int
+        :param Id: 资源ID
+        :type Id: str
         :param Protocol: 可选字段，代表CC防护类型，取值[http（HTTP协议的CC防护），https（HTTPS协议的CC防护）]；当不填时，默认为HTTP协议的CC防护；当填写https时还需要填写RuleId字段；
         :type Protocol: str
         :param RuleId: 可选字段，表示HTTPS协议的7层转发规则ID（通过获取7层转发规则接口可以获取规则ID）；
 当Protocol=https时必须填写；
         :type RuleId: str
+        :param BasicIp: 查询的IP地址（仅基础防护提供），取值如：1.1.1.1
+        :type BasicIp: str
+        :param BasicRegion: 查询IP所属地域（仅基础防护提供），取值如：gz、bj、sh、hk等地域缩写
+        :type BasicRegion: str
+        :param BasicBizType: 专区类型（仅基础防护提供），取值如：公有云专区：public，黑石专区：bm, NAT服务器专区：nat，互联网通道：channel。
+        :type BasicBizType: str
+        :param BasicDeviceType: 设备类型（仅基础防护提供），取值如：服务器：cvm，公有云负载均衡：clb，黑石负载均衡：lb，NAT服务器：nat，互联网通道：channel.
+        :type BasicDeviceType: str
+        :param BasicIpInstance: 仅基础防护提供。可选，IPInstance Nat 网关（如果查询的设备类型是NAT服务器，需要传此参数，通过nat资源查询接口获取）
+        :type BasicIpInstance: str
+        :param BasicIspCode: 仅基础防护提供。可选，运营商线路（如果查询的设备类型是NAT服务器，需要传此参数为5）
+        :type BasicIspCode: int
         """
         self.Business = None
-        self.Id = None
         self.Threshold = None
+        self.Id = None
         self.Protocol = None
         self.RuleId = None
+        self.BasicIp = None
+        self.BasicRegion = None
+        self.BasicBizType = None
+        self.BasicDeviceType = None
+        self.BasicIpInstance = None
+        self.BasicIspCode = None
 
 
     def _deserialize(self, params):
         self.Business = params.get("Business")
-        self.Id = params.get("Id")
         self.Threshold = params.get("Threshold")
+        self.Id = params.get("Id")
         self.Protocol = params.get("Protocol")
         self.RuleId = params.get("RuleId")
+        self.BasicIp = params.get("BasicIp")
+        self.BasicRegion = params.get("BasicRegion")
+        self.BasicBizType = params.get("BasicBizType")
+        self.BasicDeviceType = params.get("BasicDeviceType")
+        self.BasicIpInstance = params.get("BasicIpInstance")
+        self.BasicIspCode = params.get("BasicIspCode")
 
 
 class ModifyCCThresholdResponse(AbstractModel):
@@ -6012,6 +6462,10 @@ class ModifyDDoSPolicyCaseRequest(AbstractModel):
         :type MaxUdpPackageLen: str
         :param HasVPN: 是否有VPN业务，取值[no（没有）, yes（有）]
         :type HasVPN: str
+        :param TcpPortList: TCP业务端口列表，同时支持单个端口和端口段，字符串格式，例如：80,443,700-800,53,1000-3000
+        :type TcpPortList: str
+        :param UdpPortList: UDP业务端口列表，同时支持单个端口和端口段，字符串格式，例如：80,443,700-800,53,1000-3000
+        :type UdpPortList: str
         """
         self.Business = None
         self.SceneId = None
@@ -6035,6 +6489,8 @@ class ModifyDDoSPolicyCaseRequest(AbstractModel):
         self.MinUdpPackageLen = None
         self.MaxUdpPackageLen = None
         self.HasVPN = None
+        self.TcpPortList = None
+        self.UdpPortList = None
 
 
     def _deserialize(self, params):
@@ -6060,6 +6516,8 @@ class ModifyDDoSPolicyCaseRequest(AbstractModel):
         self.MinUdpPackageLen = params.get("MinUdpPackageLen")
         self.MaxUdpPackageLen = params.get("MaxUdpPackageLen")
         self.HasVPN = params.get("HasVPN")
+        self.TcpPortList = params.get("TcpPortList")
+        self.UdpPortList = params.get("UdpPortList")
 
 
 class ModifyDDoSPolicyCaseResponse(AbstractModel):

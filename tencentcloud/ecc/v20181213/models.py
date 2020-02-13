@@ -111,6 +111,86 @@ class CorrectData(AbstractModel):
                 self.SentenceComments.append(obj)
 
 
+class CorrectMultiImageRequest(AbstractModel):
+    """CorrectMultiImage请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Image: 图片的url链接或base64数据。每张图片数据作为数组的一个元素，数组个数与图片个数保持一致。存放类别依据InputType而定，url与base64编码不能混合使用。
+        :type Image: list of str
+        :param InputType: 输出图片类型，0 表示 Image 字段是图片所在的 url，1 表示 Image 字段是 base64 编码后的图像数据。
+        :type InputType: int
+        :param EccAppid: 业务应用ID，与账号应用APPID无关，是用来方便客户管理服务的参数。
+        :type EccAppid: str
+        :param SessionId: 图像识别唯一标识，一次识别一个 SessionId，使用识别功能时 SessionId 可用于使用文本批改接口，此时按图像批改价格收费；如使用文本批改接口时没有传入 SessionId，则需要收取文本批改的费用。
+        :type SessionId: str
+        :param ServerType: 服务类型，0：“多图像识别”，只返回识别结果；1：“多图像批改”，同时返回识别结果与批改结果。默认为 0。
+        :type ServerType: int
+        :param Title: 作文题目，可选参数
+        :type Title: str
+        :param Grade: 年级标准， 默认以 cet4 为标准，取值与意义如下：elementary 小学，grade7 grade8 grade9分别对应初一，初二，初三。 grade10 grade11 grade12 分别对应高一，高二，高三，以及 cet4 和 cet6 分别表示 英语4级和6级。
+        :type Grade: str
+        :param Requirement: 作文提纲，可选参数，作文的写作要求。
+        :type Requirement: str
+        :param ModelTitle: 范文标题，可选参数，本接口可以依据提供的范文对作文进行评分。
+        :type ModelTitle: str
+        :param ModelContent: 范文内容，可选参数，同上，范文的正文部分。
+        :type ModelContent: str
+        :param IsAsync: 异步模式标识，0：同步模式，1：异步模式。默认为同步模式
+        :type IsAsync: int
+        """
+        self.Image = None
+        self.InputType = None
+        self.EccAppid = None
+        self.SessionId = None
+        self.ServerType = None
+        self.Title = None
+        self.Grade = None
+        self.Requirement = None
+        self.ModelTitle = None
+        self.ModelContent = None
+        self.IsAsync = None
+
+
+    def _deserialize(self, params):
+        self.Image = params.get("Image")
+        self.InputType = params.get("InputType")
+        self.EccAppid = params.get("EccAppid")
+        self.SessionId = params.get("SessionId")
+        self.ServerType = params.get("ServerType")
+        self.Title = params.get("Title")
+        self.Grade = params.get("Grade")
+        self.Requirement = params.get("Requirement")
+        self.ModelTitle = params.get("ModelTitle")
+        self.ModelContent = params.get("ModelContent")
+        self.IsAsync = params.get("IsAsync")
+
+
+class CorrectMultiImageResponse(AbstractModel):
+    """CorrectMultiImage返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Data: 接口返回数据
+        :type Data: :class:`tencentcloud.ecc.v20181213.models.CompostionContext`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Data = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self.Data = CompostionContext()
+            self.Data._deserialize(params.get("Data"))
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeTaskRequest(AbstractModel):
     """DescribeTask请求参数结构体
 

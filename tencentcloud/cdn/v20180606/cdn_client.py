@@ -81,6 +81,34 @@ class CdnClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeBillingData(self, request):
+        """DescribeBillingData 用于查询实际计费数据明细。
+
+        :param request: Request instance for DescribeBillingData.
+        :type request: :class:`tencentcloud.cdn.v20180606.models.DescribeBillingDataRequest`
+        :rtype: :class:`tencentcloud.cdn.v20180606.models.DescribeBillingDataResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeBillingData", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeBillingDataResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeCdnData(self, request):
         """DescribeCdnData 用于查询 CDN 实时访问监控数据，支持以下指标查询：
 

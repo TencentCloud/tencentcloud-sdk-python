@@ -16,6 +16,98 @@
 from tencentcloud.common.abstract_model import AbstractModel
 
 
+class CommonServiceAPIRequest(AbstractModel):
+    """CommonServiceAPI请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Service: Service名，需要转发访问的接口名
+        :type Service: str
+        :param JSONData: 需要转发的云API参数，要转成JSON格式
+        :type JSONData: str
+        """
+        self.Service = None
+        self.JSONData = None
+
+
+    def _deserialize(self, params):
+        self.Service = params.get("Service")
+        self.JSONData = params.get("JSONData")
+
+
+class CommonServiceAPIResponse(AbstractModel):
+    """CommonServiceAPI返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param JSONResp: json格式response
+        :type JSONResp: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.JSONResp = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.JSONResp = params.get("JSONResp")
+        self.RequestId = params.get("RequestId")
+
+
+class CreateMysqlInstanceRequest(AbstractModel):
+    """CreateMysqlInstance请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param EnvId: 环境名称
+        :type EnvId: str
+        :param Alias: 实例别名
+        :type Alias: str
+        :param Memory: 实例内存大小，单位：MB
+        :type Memory: int
+        :param Volume: 实例硬盘大小，单位：GB
+        :type Volume: int
+        :param EngineVersion: MySQL 版本，值包括：5.7
+        :type EngineVersion: str
+        """
+        self.EnvId = None
+        self.Alias = None
+        self.Memory = None
+        self.Volume = None
+        self.EngineVersion = None
+
+
+    def _deserialize(self, params):
+        self.EnvId = params.get("EnvId")
+        self.Alias = params.get("Alias")
+        self.Memory = params.get("Memory")
+        self.Volume = params.get("Volume")
+        self.EngineVersion = params.get("EngineVersion")
+
+
+class CreateMysqlInstanceResponse(AbstractModel):
+    """CreateMysqlInstance返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class DatabasesInfo(AbstractModel):
     """数据库资源信息
 
@@ -74,7 +166,7 @@ class DescribeDatabaseACLResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param AclTag: 权限标签。取值范围：
+        :param AclTag: 权限标签。包含以下取值：
 <li> READONLY：所有用户可读，仅创建者和管理员可写</li>
 <li> PRIVATE：仅创建者及管理员可读写</li>
 <li> ADMINWRITE：所有用户可读，仅管理员可写</li>
@@ -156,7 +248,6 @@ class EnvInfo(AbstractModel):
         :type UpdateTime: str
         :param Status: 环境状态。包含以下取值：
 <li>NORMAL：正常可用</li>
-<li>HALTED：停服，用量超限或后台封禁</li>
 <li>UNAVAILABLE：服务不可用，可能是尚未初始化或者初始化过程中</li>
         :type Status: str
         :param Databases: 数据库列表
@@ -171,6 +262,15 @@ class EnvInfo(AbstractModel):
         :param PackageName: 套餐中文名称，参考DescribePackages接口的返回值。
 注意：此字段可能返回 null，表示取不到有效值。
         :type PackageName: str
+        :param LogServices: 云日志服务列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LogServices: list of LogServiceInfo
+        :param StaticStorages: 静态资源信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type StaticStorages: list of StaticStorageInfo
+        :param IsAutoDegrade: 是否到期自动降为免费版
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IsAutoDegrade: bool
         """
         self.EnvId = None
         self.Source = None
@@ -183,6 +283,9 @@ class EnvInfo(AbstractModel):
         self.Functions = None
         self.PackageId = None
         self.PackageName = None
+        self.LogServices = None
+        self.StaticStorages = None
+        self.IsAutoDegrade = None
 
 
     def _deserialize(self, params):
@@ -212,6 +315,19 @@ class EnvInfo(AbstractModel):
                 self.Functions.append(obj)
         self.PackageId = params.get("PackageId")
         self.PackageName = params.get("PackageName")
+        if params.get("LogServices") is not None:
+            self.LogServices = []
+            for item in params.get("LogServices"):
+                obj = LogServiceInfo()
+                obj._deserialize(item)
+                self.LogServices.append(obj)
+        if params.get("StaticStorages") is not None:
+            self.StaticStorages = []
+            for item in params.get("StaticStorages"):
+                obj = StaticStorageInfo()
+                obj._deserialize(item)
+                self.StaticStorages.append(obj)
+        self.IsAutoDegrade = params.get("IsAutoDegrade")
 
 
 class FunctionInfo(AbstractModel):
@@ -236,6 +352,77 @@ class FunctionInfo(AbstractModel):
         self.Region = params.get("Region")
 
 
+class IsolateMysqlInstanceRequest(AbstractModel):
+    """IsolateMysqlInstance请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param EnvId: 环境id
+        :type EnvId: str
+        :param Alias: 实例别名
+        :type Alias: str
+        """
+        self.EnvId = None
+        self.Alias = None
+
+
+    def _deserialize(self, params):
+        self.EnvId = params.get("EnvId")
+        self.Alias = params.get("Alias")
+
+
+class IsolateMysqlInstanceResponse(AbstractModel):
+    """IsolateMysqlInstance返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class LogServiceInfo(AbstractModel):
+    """云日志服务相关信息
+
+    """
+
+    def __init__(self):
+        """
+        :param LogsetName: log名
+        :type LogsetName: str
+        :param LogsetId: log-id
+        :type LogsetId: str
+        :param TopicName: topic名
+        :type TopicName: str
+        :param TopicId: topic-id
+        :type TopicId: str
+        :param Region: cls日志所属地域
+        :type Region: str
+        """
+        self.LogsetName = None
+        self.LogsetId = None
+        self.TopicName = None
+        self.TopicId = None
+        self.Region = None
+
+
+    def _deserialize(self, params):
+        self.LogsetName = params.get("LogsetName")
+        self.LogsetId = params.get("LogsetId")
+        self.TopicName = params.get("TopicName")
+        self.TopicId = params.get("TopicId")
+        self.Region = params.get("Region")
+
+
 class ModifyDatabaseACLRequest(AbstractModel):
     """ModifyDatabaseACL请求参数结构体
 
@@ -247,7 +434,7 @@ class ModifyDatabaseACLRequest(AbstractModel):
         :type EnvId: str
         :param CollectionName: 集合名称
         :type CollectionName: str
-        :param AclTag: 权限标签。取值范围：
+        :param AclTag: 权限标签。包含以下取值：
 <li> READONLY：所有用户可读，仅创建者和管理员可写</li>
 <li> PRIVATE：仅创建者及管理员可读写</li>
 <li> ADMINWRITE：所有用户可读，仅管理员可写</li>
@@ -320,6 +507,82 @@ class ModifyEnvResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class OfflineMysqlInstanceRequest(AbstractModel):
+    """OfflineMysqlInstance请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param EnvId: 环境id
+        :type EnvId: str
+        :param Alias: 实例别名
+        :type Alias: str
+        """
+        self.EnvId = None
+        self.Alias = None
+
+
+    def _deserialize(self, params):
+        self.EnvId = params.get("EnvId")
+        self.Alias = params.get("Alias")
+
+
+class OfflineMysqlInstanceResponse(AbstractModel):
+    """OfflineMysqlInstance返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class StaticStorageInfo(AbstractModel):
+    """静态CDN资源信息
+
+    """
+
+    def __init__(self):
+        """
+        :param StaticDomain: 静态CDN域名
+注意：此字段可能返回 null，表示取不到有效值。
+        :type StaticDomain: str
+        :param DefaultDirName: 静态CDN默认文件夹，当前为根目录
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DefaultDirName: str
+        :param Status: 资源状态(process/online/offline/init)
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Status: str
+        :param Region: cos所属区域
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Region: str
+        :param Bucket: bucket信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Bucket: str
+        """
+        self.StaticDomain = None
+        self.DefaultDirName = None
+        self.Status = None
+        self.Region = None
+        self.Bucket = None
+
+
+    def _deserialize(self, params):
+        self.StaticDomain = params.get("StaticDomain")
+        self.DefaultDirName = params.get("DefaultDirName")
+        self.Status = params.get("Status")
+        self.Region = params.get("Region")
+        self.Bucket = params.get("Bucket")
+
+
 class StorageInfo(AbstractModel):
     """StorageInfo 资源信息
 
@@ -348,3 +611,53 @@ class StorageInfo(AbstractModel):
         self.Bucket = params.get("Bucket")
         self.CdnDomain = params.get("CdnDomain")
         self.AppId = params.get("AppId")
+
+
+class UpgradeMysqlInstanceRequest(AbstractModel):
+    """UpgradeMysqlInstance请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param EnvId: 环境id
+        :type EnvId: str
+        :param Alias: 实例别名
+        :type Alias: str
+        :param Memory: 实例内存大小，单位：MB
+        :type Memory: int
+        :param Volume: 实例硬盘大小，单位：GB
+        :type Volume: int
+        :param EngineVersion: MySQL 版本，值包括: 5.7
+        :type EngineVersion: str
+        """
+        self.EnvId = None
+        self.Alias = None
+        self.Memory = None
+        self.Volume = None
+        self.EngineVersion = None
+
+
+    def _deserialize(self, params):
+        self.EnvId = params.get("EnvId")
+        self.Alias = params.get("Alias")
+        self.Memory = params.get("Memory")
+        self.Volume = params.get("Volume")
+        self.EngineVersion = params.get("EngineVersion")
+
+
+class UpgradeMysqlInstanceResponse(AbstractModel):
+    """UpgradeMysqlInstance返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")

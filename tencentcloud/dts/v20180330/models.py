@@ -122,7 +122,7 @@ class CreateMigrateJobRequest(AbstractModel):
         :type MigrateOption: :class:`tencentcloud.dts.v20180330.models.MigrateOption`
         :param SrcDatabaseType: 源实例数据库类型，目前支持：mysql，redis，mongodb，postgresql，mariadb，percona。不同地域数据库类型的具体支持情况，请参考控制台创建迁移页面。
         :type SrcDatabaseType: str
-        :param SrcAccessType: 源实例接入类型，值包括：extranet(外网),cvm(cvm自建实例),dcg(专线接入的实例),vpncloud(云vpn接入的实例),cdb(腾讯云数据库实例),ccn(云联网实例)
+        :param SrcAccessType: 源实例接入类型，值包括：extranet(外网),cvm(CVM自建实例),dcg(专线接入的实例),vpncloud(云VPN接入的实例),cdb(腾讯云数据库实例),ccn(云联网实例)
         :type SrcAccessType: str
         :param SrcInfo: 源实例信息，具体内容跟迁移任务类型相关
         :type SrcInfo: :class:`tencentcloud.dts.v20180330.models.SrcInfo`
@@ -627,7 +627,7 @@ class DstInfo(AbstractModel):
 
     def __init__(self):
         """
-        :param InstanceId: 目标实例Id，如cdb-jd92ijd8
+        :param InstanceId: 目标实例ID，如cdb-jd92ijd8
         :type InstanceId: str
         :param Region: 目标实例地域，如ap-guangzhou
         :type Region: str
@@ -884,11 +884,11 @@ class ModifyMigrateJobRequest(AbstractModel):
         :type JobName: str
         :param MigrateOption: 迁移任务配置选项
         :type MigrateOption: :class:`tencentcloud.dts.v20180330.models.MigrateOption`
-        :param SrcAccessType: 源实例接入类型，值包括：extranet(外网),cvm(cvm自建实例),dcg(专线接入的实例),vpncloud(云vpn接入的实例),vpnselfbuild(自建vpn接入的实例)，cdb(云上cdb实例)
+        :param SrcAccessType: 源实例接入类型，值包括：extranet(外网),cvm(CVM自建实例),dcg(专线接入的实例),vpncloud(云VPN接入的实例),cdb(云上CDB实例)
         :type SrcAccessType: str
         :param SrcInfo: 源实例信息，具体内容跟迁移任务类型相关
         :type SrcInfo: :class:`tencentcloud.dts.v20180330.models.SrcInfo`
-        :param DstAccessType: 目标实例接入类型，值包括：extranet(外网),cvm(cvm自建实例),dcg(专线接入的实例),vpncloud(云vpn接入的实例),vpnselfbuild(自建vpn接入的实例)，cdb(云上cdb实例). 目前只支持cdb.
+        :param DstAccessType: 目标实例接入类型，值包括：extranet(外网),cvm(CVM自建实例),dcg(专线接入的实例),vpncloud(云VPN接入的实例)，cdb(云上CDB实例). 目前只支持cdb.
         :type DstAccessType: str
         :param DstInfo: 目标实例信息, 其中目标实例地域不允许修改.
         :type DstInfo: :class:`tencentcloud.dts.v20180330.models.DstInfo`
@@ -1015,7 +1015,7 @@ class SrcInfo(AbstractModel):
         :type Password: str
         :param RdsInstanceId: 阿里云RDS实例ID。源库是阿里云RDS5.6/5.6适用
         :type RdsInstanceId: str
-        :param CvmInstanceId: CVM实例短ID，格式如：ins-olgl39y8，与云主机控制台页面显示的实例ID相同。如果是CVM自建实例，需要传递此字段
+        :param CvmInstanceId: CVM实例短ID，格式如：ins-olgl39y8，与云服务器控制台页面显示的实例ID相同。如果是CVM自建实例，需要传递此字段
         :type CvmInstanceId: str
         :param UniqDcgId: 专线网关ID，格式如：dcg-0rxtqqxb
         :type UniqDcgId: str
@@ -1304,7 +1304,7 @@ class SyncInstanceInfo(AbstractModel):
         """
         :param Region: 地域英文名，如：ap-guangzhou
         :type Region: str
-        :param InstanceId: 实例短Id
+        :param InstanceId: 实例短ID
         :type InstanceId: str
         """
         self.Region = None

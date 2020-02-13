@@ -797,7 +797,7 @@ class DBRemark(AbstractModel):
 
     def __init__(self):
         """
-        :param Name: 据库名
+        :param Name: 数据库名称
         :type Name: str
         :param Remark: 备注信息
         :type Remark: str

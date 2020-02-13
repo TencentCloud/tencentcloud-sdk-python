@@ -16,6 +16,103 @@
 from tencentcloud.common.abstract_model import AbstractModel
 
 
+class AddClusterInstancesRequest(AbstractModel):
+    """AddClusterInstances请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ClusterId: 集群ID
+        :type ClusterId: str
+        :param InstanceIdList: 云主机ID列表
+        :type InstanceIdList: list of str
+        :param OsName: 操作系统名称
+        :type OsName: str
+        :param ImageId: 操作系统镜像ID
+        :type ImageId: str
+        :param Password: 重装系统密码设置
+        :type Password: str
+        :param KeyId: 重装系统，关联密钥设置
+        :type KeyId: str
+        :param SgId: 安全组设置
+        :type SgId: str
+        :param InstanceImportMode: 云主机导入方式，虚拟机集群必填，容器集群不填写此字段，R：重装TSF系统镜像，M：手动安装agent
+        :type InstanceImportMode: str
+        """
+        self.ClusterId = None
+        self.InstanceIdList = None
+        self.OsName = None
+        self.ImageId = None
+        self.Password = None
+        self.KeyId = None
+        self.SgId = None
+        self.InstanceImportMode = None
+
+
+    def _deserialize(self, params):
+        self.ClusterId = params.get("ClusterId")
+        self.InstanceIdList = params.get("InstanceIdList")
+        self.OsName = params.get("OsName")
+        self.ImageId = params.get("ImageId")
+        self.Password = params.get("Password")
+        self.KeyId = params.get("KeyId")
+        self.SgId = params.get("SgId")
+        self.InstanceImportMode = params.get("InstanceImportMode")
+
+
+class AddClusterInstancesResponse(AbstractModel):
+    """AddClusterInstances返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Result: 添加云主机的返回列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Result: :class:`tencentcloud.tsf.v20180326.models.AddInstanceResult`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Result = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Result") is not None:
+            self.Result = AddInstanceResult()
+            self.Result._deserialize(params.get("Result"))
+        self.RequestId = params.get("RequestId")
+
+
+class AddInstanceResult(AbstractModel):
+    """添加实例到集群的结果
+
+    """
+
+    def __init__(self):
+        """
+        :param FailedInstanceIds: 添加集群失败的节点列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FailedInstanceIds: list of str
+        :param SuccInstanceIds: 添加集群成功的节点列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SuccInstanceIds: list of str
+        :param TimeoutInstanceIds: 添加集群超时的节点列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TimeoutInstanceIds: list of str
+        """
+        self.FailedInstanceIds = None
+        self.SuccInstanceIds = None
+        self.TimeoutInstanceIds = None
+
+
+    def _deserialize(self, params):
+        self.FailedInstanceIds = params.get("FailedInstanceIds")
+        self.SuccInstanceIds = params.get("SuccInstanceIds")
+        self.TimeoutInstanceIds = params.get("TimeoutInstanceIds")
+
+
 class AddInstancesRequest(AbstractModel):
     """AddInstances请求参数结构体
 
@@ -965,32 +1062,36 @@ class CreateApplicationRequest(AbstractModel):
         """
         :param ApplicationName: 应用名称
         :type ApplicationName: str
-        :param ApplicationType: 应用类型
+        :param ApplicationType: 应用类型，V：虚拟机应用；C：容器应用；S：serverless应用
         :type ApplicationType: str
+        :param MicroserviceType: 应用微服务类型，M：service mesh应用；N：普通应用；G：网关应用
+        :type MicroserviceType: str
         :param ApplicationDesc: 应用描述
         :type ApplicationDesc: str
         :param ApplicationLogConfig: 应用日志配置项，废弃参数
         :type ApplicationLogConfig: str
-        :param MicroserviceType: 应用微服务类型
-        :type MicroserviceType: str
-        :param ApplicationResourceType: 应有资源类型
+        :param ApplicationResourceType: 应用资源类型，废弃参数
         :type ApplicationResourceType: str
+        :param ApplicationRuntimeType: 应用runtime类型
+        :type ApplicationRuntimeType: str
         """
         self.ApplicationName = None
         self.ApplicationType = None
+        self.MicroserviceType = None
         self.ApplicationDesc = None
         self.ApplicationLogConfig = None
-        self.MicroserviceType = None
         self.ApplicationResourceType = None
+        self.ApplicationRuntimeType = None
 
 
     def _deserialize(self, params):
         self.ApplicationName = params.get("ApplicationName")
         self.ApplicationType = params.get("ApplicationType")
+        self.MicroserviceType = params.get("MicroserviceType")
         self.ApplicationDesc = params.get("ApplicationDesc")
         self.ApplicationLogConfig = params.get("ApplicationLogConfig")
-        self.MicroserviceType = params.get("MicroserviceType")
         self.ApplicationResourceType = params.get("ApplicationResourceType")
+        self.ApplicationRuntimeType = params.get("ApplicationRuntimeType")
 
 
 class CreateApplicationResponse(AbstractModel):
@@ -1036,6 +1137,8 @@ class CreateClusterRequest(AbstractModel):
         :type TsfRegionId: str
         :param TsfZoneId: 集群所属TSF可用区
         :type TsfZoneId: str
+        :param SubnetId: 私有网络子网ID
+        :type SubnetId: str
         """
         self.ClusterName = None
         self.ClusterType = None
@@ -1044,6 +1147,7 @@ class CreateClusterRequest(AbstractModel):
         self.ClusterDesc = None
         self.TsfRegionId = None
         self.TsfZoneId = None
+        self.SubnetId = None
 
 
     def _deserialize(self, params):
@@ -1054,6 +1158,7 @@ class CreateClusterRequest(AbstractModel):
         self.ClusterDesc = params.get("ClusterDesc")
         self.TsfRegionId = params.get("TsfRegionId")
         self.TsfZoneId = params.get("TsfZoneId")
+        self.SubnetId = params.get("SubnetId")
 
 
 class CreateClusterResponse(AbstractModel):
@@ -1342,26 +1447,34 @@ class CreateNamespaceRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param ClusterId: 集群ID
-        :type ClusterId: str
         :param NamespaceName: 命名空间名称
         :type NamespaceName: str
+        :param ClusterId: 集群ID
+        :type ClusterId: str
         :param NamespaceDesc: 命名空间描述
         :type NamespaceDesc: str
         :param NamespaceResourceType: 命名空间资源类型(默认值为DEF)
         :type NamespaceResourceType: str
+        :param NamespaceType: 是否是全局命名空间(默认是DEF，表示普通命名空间；GLOBAL表示全局命名空间)
+        :type NamespaceType: str
+        :param NamespaceId: 命名空间ID
+        :type NamespaceId: str
         """
-        self.ClusterId = None
         self.NamespaceName = None
+        self.ClusterId = None
         self.NamespaceDesc = None
         self.NamespaceResourceType = None
+        self.NamespaceType = None
+        self.NamespaceId = None
 
 
     def _deserialize(self, params):
-        self.ClusterId = params.get("ClusterId")
         self.NamespaceName = params.get("NamespaceName")
+        self.ClusterId = params.get("ClusterId")
         self.NamespaceDesc = params.get("NamespaceDesc")
         self.NamespaceResourceType = params.get("NamespaceResourceType")
+        self.NamespaceType = params.get("NamespaceType")
+        self.NamespaceId = params.get("NamespaceId")
 
 
 class CreateNamespaceResponse(AbstractModel):
@@ -1452,24 +1565,22 @@ class CreateServerlessGroupRequest(AbstractModel):
         :type ApplicationId: str
         :param GroupName: 分组名称字段，长度1~60，字母或下划线开头，可包含字母数字下划线
         :type GroupName: str
-        :param PkgId: 程序包Id
-        :type PkgId: str
-        :param VpcConfig: VpcConfig对象
-        :type VpcConfig: :class:`tencentcloud.tsf.v20180326.models.VpcConfig`
+        :param NamespaceId: 分组所属名字空间ID
+        :type NamespaceId: str
+        :param ClusterId: 分组所属集群ID
+        :type ClusterId: str
         """
         self.ApplicationId = None
         self.GroupName = None
-        self.PkgId = None
-        self.VpcConfig = None
+        self.NamespaceId = None
+        self.ClusterId = None
 
 
     def _deserialize(self, params):
         self.ApplicationId = params.get("ApplicationId")
         self.GroupName = params.get("GroupName")
-        self.PkgId = params.get("PkgId")
-        if params.get("VpcConfig") is not None:
-            self.VpcConfig = VpcConfig()
-            self.VpcConfig._deserialize(params.get("VpcConfig"))
+        self.NamespaceId = params.get("NamespaceId")
+        self.ClusterId = params.get("ClusterId")
 
 
 class CreateServerlessGroupResponse(AbstractModel):
@@ -2071,20 +2182,26 @@ class DeployServerlessGroupRequest(AbstractModel):
         :type GroupId: str
         :param PkgId: 程序包ID
         :type PkgId: str
-        :param VpcConfig: VpcConfig对象，和创建接口中对象一致
-        :type VpcConfig: :class:`tencentcloud.tsf.v20180326.models.VpcConfig`
+        :param Memory: 所需实例内存大小，取值为 1Gi 2Gi 4Gi 8Gi 16Gi，缺省为 1Gi，不传表示维持原态
+        :type Memory: str
+        :param InstanceRequest: 要求最小实例数，取值范围 [1, 4]，缺省为 1，不传表示维持原态
+        :type InstanceRequest: int
+        :param StartupParameters: 部署组启动参数，不传表示维持原态
+        :type StartupParameters: str
         """
         self.GroupId = None
         self.PkgId = None
-        self.VpcConfig = None
+        self.Memory = None
+        self.InstanceRequest = None
+        self.StartupParameters = None
 
 
     def _deserialize(self, params):
         self.GroupId = params.get("GroupId")
         self.PkgId = params.get("PkgId")
-        if params.get("VpcConfig") is not None:
-            self.VpcConfig = VpcConfig()
-            self.VpcConfig._deserialize(params.get("VpcConfig"))
+        self.Memory = params.get("Memory")
+        self.InstanceRequest = params.get("InstanceRequest")
+        self.StartupParameters = params.get("StartupParameters")
 
 
 class DeployServerlessGroupResponse(AbstractModel):
@@ -3492,10 +3609,10 @@ class DescribeServerlessGroupsRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param ApplicationId: 分组所属应用ID
-        :type ApplicationId: str
         :param SearchWord: 搜索字段，模糊搜索groupName字段
         :type SearchWord: str
+        :param ApplicationId: 分组所属应用ID
+        :type ApplicationId: str
         :param OrderBy: 排序字段，默认为 createTime字段，支持id， name， createTime
         :type OrderBy: str
         :param OrderType: 排序方式，默认为1：倒序排序，0：正序，1：倒序
@@ -3504,22 +3621,30 @@ class DescribeServerlessGroupsRequest(AbstractModel):
         :type Offset: int
         :param Limit: 分页个数，默认为20， 取值应为1~50
         :type Limit: int
+        :param NamespaceId: 分组所属名字空间ID
+        :type NamespaceId: str
+        :param ClusterId: 分组所属集群ID
+        :type ClusterId: str
         """
-        self.ApplicationId = None
         self.SearchWord = None
+        self.ApplicationId = None
         self.OrderBy = None
         self.OrderType = None
         self.Offset = None
         self.Limit = None
+        self.NamespaceId = None
+        self.ClusterId = None
 
 
     def _deserialize(self, params):
-        self.ApplicationId = params.get("ApplicationId")
         self.SearchWord = params.get("SearchWord")
+        self.ApplicationId = params.get("ApplicationId")
         self.OrderBy = params.get("OrderBy")
         self.OrderType = params.get("OrderType")
         self.Offset = params.get("Offset")
         self.Limit = params.get("Limit")
+        self.NamespaceId = params.get("NamespaceId")
+        self.ClusterId = params.get("ClusterId")
 
 
 class DescribeServerlessGroupsResponse(AbstractModel):
@@ -3691,6 +3816,8 @@ class DescribeSimpleGroupsRequest(AbstractModel):
         :type GroupId: str
         :param SearchWord: 模糊查询，部署组名称，不填写时查询全量
         :type SearchWord: str
+        :param AppMicroServiceType: 部署组类型，精确过滤字段，M：service mesh, P：原生应用， M：网关应用
+        :type AppMicroServiceType: str
         """
         self.GroupIdList = None
         self.ApplicationId = None
@@ -3700,6 +3827,7 @@ class DescribeSimpleGroupsRequest(AbstractModel):
         self.Offset = None
         self.GroupId = None
         self.SearchWord = None
+        self.AppMicroServiceType = None
 
 
     def _deserialize(self, params):
@@ -3711,6 +3839,7 @@ class DescribeSimpleGroupsRequest(AbstractModel):
         self.Offset = params.get("Offset")
         self.GroupId = params.get("GroupId")
         self.SearchWord = params.get("SearchWord")
+        self.AppMicroServiceType = params.get("AppMicroServiceType")
 
 
 class DescribeSimpleGroupsResponse(AbstractModel):
@@ -3760,6 +3889,10 @@ class DescribeSimpleNamespacesRequest(AbstractModel):
         :type SearchWord: str
         :param NamespaceTypeList: 查询的命名空间类型列表
         :type NamespaceTypeList: list of str
+        :param NamespaceName: 通过命名空间名精确过滤
+        :type NamespaceName: str
+        :param IsDefault: 通过是否是默认命名空间过滤，不传表示拉取全部命名空间。0：默认，命名空间。1：非默认命名空间
+        :type IsDefault: str
         """
         self.NamespaceIdList = None
         self.ClusterId = None
@@ -3769,6 +3902,8 @@ class DescribeSimpleNamespacesRequest(AbstractModel):
         self.NamespaceResourceTypeList = None
         self.SearchWord = None
         self.NamespaceTypeList = None
+        self.NamespaceName = None
+        self.IsDefault = None
 
 
     def _deserialize(self, params):
@@ -3780,6 +3915,8 @@ class DescribeSimpleNamespacesRequest(AbstractModel):
         self.NamespaceResourceTypeList = params.get("NamespaceResourceTypeList")
         self.SearchWord = params.get("SearchWord")
         self.NamespaceTypeList = params.get("NamespaceTypeList")
+        self.NamespaceName = params.get("NamespaceName")
+        self.IsDefault = params.get("IsDefault")
 
 
 class DescribeSimpleNamespacesResponse(AbstractModel):
@@ -5018,6 +5155,21 @@ class ServerlessGroup(AbstractModel):
         :param PkgVersion: 程序包版本
 注意：此字段可能返回 null，表示取不到有效值。
         :type PkgVersion: str
+        :param Memory: 所需实例内存大小
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Memory: str
+        :param InstanceRequest: 要求最小实例数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InstanceRequest: int
+        :param StartupParameters: 部署组启动参数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type StartupParameters: str
+        :param ApplicationId: 应用ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ApplicationId: str
+        :param InstanceCount: 部署组实例数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InstanceCount: int
         """
         self.GroupId = None
         self.GroupName = None
@@ -5032,6 +5184,11 @@ class ServerlessGroup(AbstractModel):
         self.VpcId = None
         self.SubnetId = None
         self.PkgVersion = None
+        self.Memory = None
+        self.InstanceRequest = None
+        self.StartupParameters = None
+        self.ApplicationId = None
+        self.InstanceCount = None
 
 
     def _deserialize(self, params):
@@ -5048,6 +5205,11 @@ class ServerlessGroup(AbstractModel):
         self.VpcId = params.get("VpcId")
         self.SubnetId = params.get("SubnetId")
         self.PkgVersion = params.get("PkgVersion")
+        self.Memory = params.get("Memory")
+        self.InstanceRequest = params.get("InstanceRequest")
+        self.StartupParameters = params.get("StartupParameters")
+        self.ApplicationId = params.get("ApplicationId")
+        self.InstanceCount = params.get("InstanceCount")
 
 
 class ServerlessGroupPage(AbstractModel):
@@ -5992,24 +6154,3 @@ class VmGroupSimple(AbstractModel):
         self.ApplicationName = params.get("ApplicationName")
         self.NamespaceName = params.get("NamespaceName")
         self.MicroserviceType = params.get("MicroserviceType")
-
-
-class VpcConfig(AbstractModel):
-    """vpc 配置信息
-
-    """
-
-    def __init__(self):
-        """
-        :param VpcId: VpcId
-        :type VpcId: str
-        :param SubnetId: SubnetId 子网ID
-        :type SubnetId: str
-        """
-        self.VpcId = None
-        self.SubnetId = None
-
-
-    def _deserialize(self, params):
-        self.VpcId = params.get("VpcId")
-        self.SubnetId = params.get("SubnetId")

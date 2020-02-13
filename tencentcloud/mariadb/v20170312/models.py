@@ -98,7 +98,7 @@ class CloseDBExtranetAccessResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param FlowId: 异步任务Id，可通过 DescribeFlow 查询任务状态。
+        :param FlowId: 异步任务ID，可通过 DescribeFlow 查询任务状态。
         :type FlowId: int
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -239,7 +239,7 @@ class CreateAccountResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param InstanceId: 实例Id，透传入参。
+        :param InstanceId: 实例ID，透传入参。
         :type InstanceId: str
         :param UserName: 用户名，透传入参。
         :type UserName: str
@@ -447,7 +447,7 @@ class DBBackupTimeConfig(AbstractModel):
 
     def __init__(self):
         """
-        :param InstanceId: 实例 Id
+        :param InstanceId: 实例 ID
         :type InstanceId: str
         :param StartBackupTime: 每天备份执行的区间的开始时间，格式 mm:ss，形如 22:00
         :type StartBackupTime: str
@@ -472,21 +472,21 @@ class DBInstance(AbstractModel):
 
     def __init__(self):
         """
-        :param InstanceId: 实例 Id，唯一标识一个 TDSQL 实例
+        :param InstanceId: 实例 ID，唯一标识一个 TDSQL 实例
         :type InstanceId: str
         :param InstanceName: 实例名称，用户可修改
         :type InstanceName: str
-        :param AppId: 实例所属应用 Id
+        :param AppId: 实例所属应用 ID
         :type AppId: int
-        :param ProjectId: 实例所属项目 Id
+        :param ProjectId: 实例所属项目 ID
         :type ProjectId: int
         :param Region: 实例所在地域名称，如 ap-shanghai
         :type Region: str
         :param Zone: 实例所在可用区名称，如 ap-shanghai-1
         :type Zone: str
-        :param VpcId: 私有网络 Id，基础网络时为 0
+        :param VpcId: 私有网络 ID，基础网络时为 0
         :type VpcId: int
-        :param SubnetId: 子网 Id，基础网络时为 0
+        :param SubnetId: 子网 ID，基础网络时为 0
         :type SubnetId: int
         :param Status: 实例状态：0 创建中，1 流程处理中， 2 运行中，3 实例未初始化，-1 实例已隔离，-2 实例已删除
         :type Status: int
@@ -516,9 +516,9 @@ class DBInstance(AbstractModel):
         :type Memory: int
         :param Storage: 实例存储大小，单位 GB
         :type Storage: int
-        :param UniqueVpcId: 字符串型的私有网络Id
+        :param UniqueVpcId: 字符串型的私有网络ID
         :type UniqueVpcId: str
-        :param UniqueSubnetId: 字符串型的私有网络子网Id
+        :param UniqueSubnetId: 字符串型的私有网络子网ID
         :type UniqueSubnetId: str
         :param OriginSerialId: 原始实例ID（过时字段，请勿依赖该值）
         :type OriginSerialId: str
@@ -526,11 +526,11 @@ class DBInstance(AbstractModel):
         :type NodeCount: int
         :param IsTmp: 是否临时实例，0为否，非0为是
         :type IsTmp: int
-        :param ExclusterId: 独享集群Id，为空表示为普通实例
+        :param ExclusterId: 独享集群ID，为空表示为普通实例
         :type ExclusterId: str
-        :param Id: 数字实例Id（过时字段，请勿依赖该值）
+        :param Id: 数字实例ID（过时字段，请勿依赖该值）
         :type Id: int
-        :param Pid: 产品类型 Id
+        :param Pid: 产品类型 ID
         :type Pid: int
         :param Qps: 最大 Qps 值
         :type Qps: int
@@ -799,7 +799,7 @@ class DescribeAccountPrivilegesResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param InstanceId: 实例Id
+        :param InstanceId: 实例ID
         :type InstanceId: str
         :param Privileges: 权限列表。
         :type Privileges: list of str
@@ -987,7 +987,7 @@ class DescribeDBInstancesRequest(AbstractModel):
         :type IsFilterExcluster: bool
         :param ExclusterType: 实例所属独享集群类型。取值范围：1-非独享集群，2-独享集群， 0-全部
         :type ExclusterType: int
-        :param ExclusterIds: 按独享集群Id过滤实例，独享集群Id形如dbdc-4ih6uct9
+        :param ExclusterIds: 按独享集群ID过滤实例，独享集群ID形如dbdc-4ih6uct9
         :type ExclusterIds: list of str
         """
         self.InstanceIds = None
@@ -2081,7 +2081,7 @@ class InitDBInstancesRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param InstanceIds: 待初始化的实例Id列表，形如：tdsql-ow728lmc，可以通过 DescribeDBInstances 查询实例详情获得。
+        :param InstanceIds: 待初始化的实例ID列表，形如：tdsql-ow728lmc，可以通过 DescribeDBInstances 查询实例详情获得。
         :type InstanceIds: list of str
         :param Params: 参数列表。本接口的可选值为：character_set_server（字符集，必传），lower_case_table_names（表名大小写敏感，必传，0 - 敏感；1-不敏感），innodb_page_size（innodb数据页，默认16K），sync_mode（同步模式：0 - 异步； 1 - 强同步；2 - 强同步可退化。默认为强同步）。
         :type Params: list of DBParamValue
@@ -2107,7 +2107,7 @@ class InitDBInstancesResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param FlowId: 异步任务Id，可通过 DescribeFlow 查询任务状态。
+        :param FlowId: 异步任务ID，可通过 DescribeFlow 查询任务状态。
         :type FlowId: int
         :param InstanceIds: 透传入参。
         :type InstanceIds: list of str
@@ -2495,7 +2495,7 @@ class OpenDBExtranetAccessResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param FlowId: 异步任务Id，可通过 DescribeFlow 查询任务状态。
+        :param FlowId: 异步任务ID，可通过 DescribeFlow 查询任务状态。
         :type FlowId: int
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str

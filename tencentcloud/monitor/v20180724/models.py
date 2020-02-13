@@ -519,6 +519,222 @@ class DescribeBaseMetricsResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeBasicAlarmListAlarms(AbstractModel):
+    """DescribeBasicAlarmList返回的Alarms
+
+    """
+
+    def __init__(self):
+        """
+        :param Id: 该条告警的ID
+        :type Id: int
+        :param ProjectId: 项目ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ProjectId: int
+        :param ProjectName: 项目名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ProjectName: str
+        :param Status: 告警状态ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Status: int
+        :param AlarmStatus: 告警状态
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AlarmStatus: str
+        :param GroupId: 策略组ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type GroupId: int
+        :param GroupName: 策略组名
+注意：此字段可能返回 null，表示取不到有效值。
+        :type GroupName: str
+        :param FirstOccurTime: 发生时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FirstOccurTime: str
+        :param Duration: 持续时间，单位s
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Duration: int
+        :param LastOccurTime: 结束时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LastOccurTime: str
+        :param Content: 告警内容
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Content: str
+        :param ObjName: 告警对象
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ObjName: str
+        :param ObjId: 告警对象ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ObjId: str
+        :param ViewName: 策略类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ViewName: str
+        :param Vpc: VPC，只有CVM有
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Vpc: str
+        :param MetricId: 指标ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MetricId: int
+        :param MetricName: 指标名
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MetricName: str
+        :param AlarmType: 告警类型，0表示指标告警，2表示产品事件告警，3表示平台事件告警
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AlarmType: int
+        :param Region: 地域
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Region: str
+        :param Dimensions: 告警对象维度信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Dimensions: str
+        :param NotifyWay: 通知方式
+注意：此字段可能返回 null，表示取不到有效值。
+        :type NotifyWay: list of str
+        :param InstanceGroup: 所属实例组信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InstanceGroup: list of InstanceGroup
+        """
+        self.Id = None
+        self.ProjectId = None
+        self.ProjectName = None
+        self.Status = None
+        self.AlarmStatus = None
+        self.GroupId = None
+        self.GroupName = None
+        self.FirstOccurTime = None
+        self.Duration = None
+        self.LastOccurTime = None
+        self.Content = None
+        self.ObjName = None
+        self.ObjId = None
+        self.ViewName = None
+        self.Vpc = None
+        self.MetricId = None
+        self.MetricName = None
+        self.AlarmType = None
+        self.Region = None
+        self.Dimensions = None
+        self.NotifyWay = None
+        self.InstanceGroup = None
+
+
+    def _deserialize(self, params):
+        self.Id = params.get("Id")
+        self.ProjectId = params.get("ProjectId")
+        self.ProjectName = params.get("ProjectName")
+        self.Status = params.get("Status")
+        self.AlarmStatus = params.get("AlarmStatus")
+        self.GroupId = params.get("GroupId")
+        self.GroupName = params.get("GroupName")
+        self.FirstOccurTime = params.get("FirstOccurTime")
+        self.Duration = params.get("Duration")
+        self.LastOccurTime = params.get("LastOccurTime")
+        self.Content = params.get("Content")
+        self.ObjName = params.get("ObjName")
+        self.ObjId = params.get("ObjId")
+        self.ViewName = params.get("ViewName")
+        self.Vpc = params.get("Vpc")
+        self.MetricId = params.get("MetricId")
+        self.MetricName = params.get("MetricName")
+        self.AlarmType = params.get("AlarmType")
+        self.Region = params.get("Region")
+        self.Dimensions = params.get("Dimensions")
+        self.NotifyWay = params.get("NotifyWay")
+        if params.get("InstanceGroup") is not None:
+            self.InstanceGroup = []
+            for item in params.get("InstanceGroup"):
+                obj = InstanceGroup()
+                obj._deserialize(item)
+                self.InstanceGroup.append(obj)
+
+
+class DescribeBasicAlarmListRequest(AbstractModel):
+    """DescribeBasicAlarmList请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Module: 接口模块名，当前取值monitor
+        :type Module: str
+        :param StartTime: 起始时间，默认一天前的时间戳
+        :type StartTime: int
+        :param EndTime: 结束时间，默认当前时间戳
+        :type EndTime: int
+        :param Limit: 每页返回的数量，默认20
+        :type Limit: int
+        :param Offset: 页偏移量，默认0
+        :type Offset: int
+        :param OccurTimeOrder: 根据发生时间排序，取值ASC或DESC
+        :type OccurTimeOrder: str
+        :param ProjectIds: 根据项目ID过滤
+        :type ProjectIds: list of int
+        :param ViewNames: 根据策略类型过滤
+        :type ViewNames: list of str
+        :param AlarmStatus: 根据告警状态过滤
+        :type AlarmStatus: list of int
+        :param ObjLike: 根据告警对象过滤
+        :type ObjLike: str
+        :param InstanceGroupIds: 根据实例组ID过滤
+        :type InstanceGroupIds: list of int
+        """
+        self.Module = None
+        self.StartTime = None
+        self.EndTime = None
+        self.Limit = None
+        self.Offset = None
+        self.OccurTimeOrder = None
+        self.ProjectIds = None
+        self.ViewNames = None
+        self.AlarmStatus = None
+        self.ObjLike = None
+        self.InstanceGroupIds = None
+
+
+    def _deserialize(self, params):
+        self.Module = params.get("Module")
+        self.StartTime = params.get("StartTime")
+        self.EndTime = params.get("EndTime")
+        self.Limit = params.get("Limit")
+        self.Offset = params.get("Offset")
+        self.OccurTimeOrder = params.get("OccurTimeOrder")
+        self.ProjectIds = params.get("ProjectIds")
+        self.ViewNames = params.get("ViewNames")
+        self.AlarmStatus = params.get("AlarmStatus")
+        self.ObjLike = params.get("ObjLike")
+        self.InstanceGroupIds = params.get("InstanceGroupIds")
+
+
+class DescribeBasicAlarmListResponse(AbstractModel):
+    """DescribeBasicAlarmList返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Alarms: 告警列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Alarms: list of DescribeBasicAlarmListAlarms
+        :param Total: 总数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Total: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Alarms = None
+        self.Total = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Alarms") is not None:
+            self.Alarms = []
+            for item in params.get("Alarms"):
+                obj = DescribeBasicAlarmListAlarms()
+                obj._deserialize(item)
+                self.Alarms.append(obj)
+        self.Total = params.get("Total")
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeBindingPolicyObjectListInstance(AbstractModel):
     """查询策略绑定对象列表接口返回的对象实例信息
 
@@ -2045,6 +2261,29 @@ class Instance(AbstractModel):
                 obj = Dimension()
                 obj._deserialize(item)
                 self.Dimensions.append(obj)
+
+
+class InstanceGroup(AbstractModel):
+    """DescribeBasicAlarmList返回的Alarms里的InstanceGroup
+
+    """
+
+    def __init__(self):
+        """
+        :param InstanceGroupId: 实例组ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InstanceGroupId: int
+        :param InstanceGroupName: 实例组名
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InstanceGroupName: str
+        """
+        self.InstanceGroupId = None
+        self.InstanceGroupName = None
+
+
+    def _deserialize(self, params):
+        self.InstanceGroupId = params.get("InstanceGroupId")
+        self.InstanceGroupName = params.get("InstanceGroupName")
 
 
 class MetricDatum(AbstractModel):

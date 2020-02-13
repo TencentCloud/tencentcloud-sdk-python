@@ -59,6 +59,48 @@ class Account(AbstractModel):
         self.Status = params.get("Status")
 
 
+class AssociateSecurityGroupsRequest(AbstractModel):
+    """AssociateSecurityGroups请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Product: 数据库引擎名称：mariadb,cdb,cynosdb,dcdb,redis,mongodb 等。
+        :type Product: str
+        :param SecurityGroupId: 要绑定的安全组ID，类似sg-efil73jd。
+        :type SecurityGroupId: str
+        :param InstanceIds: 被绑定的实例ID，类似ins-lesecurk，支持指定多个实例。
+        :type InstanceIds: list of str
+        """
+        self.Product = None
+        self.SecurityGroupId = None
+        self.InstanceIds = None
+
+
+    def _deserialize(self, params):
+        self.Product = params.get("Product")
+        self.SecurityGroupId = params.get("SecurityGroupId")
+        self.InstanceIds = params.get("InstanceIds")
+
+
+class AssociateSecurityGroupsResponse(AbstractModel):
+    """AssociateSecurityGroups返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class BigKeyInfo(AbstractModel):
     """大Key详情
 
@@ -128,7 +170,7 @@ class CleanUpInstanceRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param InstanceId: 实例Id
+        :param InstanceId: 实例ID
         :type InstanceId: str
         """
         self.InstanceId = None
@@ -145,7 +187,7 @@ class CleanUpInstanceResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param TaskId: 任务Id
+        :param TaskId: 任务ID
         :type TaskId: int
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -166,7 +208,7 @@ class ClearInstanceRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param InstanceId: 实例Id
+        :param InstanceId: 实例ID
         :type InstanceId: str
         :param Password: redis的实例密码（免密实例不需要传密码，非免密实例必传）
         :type Password: str
@@ -187,7 +229,7 @@ class ClearInstanceResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param TaskId: 任务Id
+        :param TaskId: 任务ID
         :type TaskId: int
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -287,7 +329,7 @@ class CreateInstancesRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param ZoneId: 实例所属的可用区id
+        :param ZoneId: 实例所属的可用区ID
         :type ZoneId: int
         :param TypeId: 实例类型：2 – Redis2.8主从版，3 – Redis3.2主从版(CKV主从版)，4 – Redis3.2集群版(CKV集群版)，5-Redis2.8单机版，6 – Redis4.0主从版，7 – Redis4.0集群版，
         :type TypeId: int
@@ -372,7 +414,7 @@ class CreateInstancesResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param DealId: 交易的Id
+        :param DealId: 交易的ID
         :type DealId: str
         :param InstanceIds: 实例ID(该字段灰度中，部分地域不可见)
         :type InstanceIds: list of str
@@ -506,9 +548,9 @@ class DescribeBackupUrlRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param InstanceId: 实例Id
+        :param InstanceId: 实例ID
         :type InstanceId: str
-        :param BackupId: 备份Id，通过DescribeInstanceBackups接口可查
+        :param BackupId: 备份ID，通过DescribeInstanceBackups接口可查
         :type BackupId: str
         """
         self.InstanceId = None
@@ -542,6 +584,53 @@ class DescribeBackupUrlResponse(AbstractModel):
     def _deserialize(self, params):
         self.DownloadUrl = params.get("DownloadUrl")
         self.InnerDownloadUrl = params.get("InnerDownloadUrl")
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeDBSecurityGroupsRequest(AbstractModel):
+    """DescribeDBSecurityGroups请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Product: 数据库引擎名称：mariadb,cdb,cynosdb,dcdb,redis,mongodb 等。
+        :type Product: str
+        :param InstanceId: 实例ID，格式如：cdb-c1nl9rpv或者cdbro-c1nl9rpv，与云数据库控制台页面中显示的实例ID相同。
+        :type InstanceId: str
+        """
+        self.Product = None
+        self.InstanceId = None
+
+
+    def _deserialize(self, params):
+        self.Product = params.get("Product")
+        self.InstanceId = params.get("InstanceId")
+
+
+class DescribeDBSecurityGroupsResponse(AbstractModel):
+    """DescribeDBSecurityGroups返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Groups: 安全组规则
+        :type Groups: list of SecurityGroup
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Groups = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Groups") is not None:
+            self.Groups = []
+            for item in params.get("Groups"):
+                obj = SecurityGroup()
+                obj._deserialize(item)
+                self.Groups.append(obj)
         self.RequestId = params.get("RequestId")
 
 
@@ -1493,6 +1582,8 @@ class DescribeInstancesRequest(AbstractModel):
         :type Type: int
         :param SearchKeys: 搜索关键词：支持实例Id、实例名称、完整IP
         :type SearchKeys: list of str
+        :param TypeList: 内部参数，用户可忽略
+        :type TypeList: list of int
         """
         self.Limit = None
         self.Offset = None
@@ -1514,6 +1605,7 @@ class DescribeInstancesRequest(AbstractModel):
         self.BillingMode = None
         self.Type = None
         self.SearchKeys = None
+        self.TypeList = None
 
 
     def _deserialize(self, params):
@@ -1537,6 +1629,7 @@ class DescribeInstancesRequest(AbstractModel):
         self.BillingMode = params.get("BillingMode")
         self.Type = params.get("Type")
         self.SearchKeys = params.get("SearchKeys")
+        self.TypeList = params.get("TypeList")
 
 
 class DescribeInstancesResponse(AbstractModel):
@@ -1645,6 +1738,69 @@ class DescribeProjectSecurityGroupResponse(AbstractModel):
                 obj = SecurityGroupDetail()
                 obj._deserialize(item)
                 self.SecurityGroupDetails.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeProjectSecurityGroupsRequest(AbstractModel):
+    """DescribeProjectSecurityGroups请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Product: 数据库引擎名称：mariadb,cdb,cynosdb,dcdb,redis,mongodb
+        :type Product: str
+        :param ProjectId: 项目Id。
+        :type ProjectId: int
+        :param Offset: 偏移量。
+        :type Offset: int
+        :param Limit: 拉取数量限制。
+        :type Limit: int
+        :param SearchKey: 搜索条件，支持安全组id或者安全组名称。
+        :type SearchKey: str
+        """
+        self.Product = None
+        self.ProjectId = None
+        self.Offset = None
+        self.Limit = None
+        self.SearchKey = None
+
+
+    def _deserialize(self, params):
+        self.Product = params.get("Product")
+        self.ProjectId = params.get("ProjectId")
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+        self.SearchKey = params.get("SearchKey")
+
+
+class DescribeProjectSecurityGroupsResponse(AbstractModel):
+    """DescribeProjectSecurityGroups返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Groups: 安全组规则。
+        :type Groups: list of SecurityGroup
+        :param Total: 符合条件的安全组总数量。
+        :type Total: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Groups = None
+        self.Total = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Groups") is not None:
+            self.Groups = []
+            for item in params.get("Groups"):
+                obj = SecurityGroup()
+                obj._deserialize(item)
+                self.Groups.append(obj)
+        self.Total = params.get("Total")
         self.RequestId = params.get("RequestId")
 
 
@@ -1855,7 +2011,7 @@ class DestroyPostpaidInstanceRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param InstanceId: 实例Id
+        :param InstanceId: 实例ID
         :type InstanceId: str
         """
         self.InstanceId = None
@@ -1893,7 +2049,7 @@ class DestroyPrepaidInstanceRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param InstanceId: 实例Id
+        :param InstanceId: 实例ID
         :type InstanceId: str
         """
         self.InstanceId = None
@@ -1962,6 +2118,48 @@ class DisableReplicaReadonlyResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DisassociateSecurityGroupsRequest(AbstractModel):
+    """DisassociateSecurityGroups请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Product: 数据库引擎名称：mariadb,cdb,cynosdb,dcdb,redis,mongodb 等。
+        :type Product: str
+        :param SecurityGroupId: 安全组Id。
+        :type SecurityGroupId: str
+        :param InstanceIds: 实例ID列表，一个或者多个实例Id组成的数组。
+        :type InstanceIds: list of str
+        """
+        self.Product = None
+        self.SecurityGroupId = None
+        self.InstanceIds = None
+
+
+    def _deserialize(self, params):
+        self.Product = params.get("Product")
+        self.SecurityGroupId = params.get("SecurityGroupId")
+        self.InstanceIds = params.get("InstanceIds")
+
+
+class DisassociateSecurityGroupsResponse(AbstractModel):
+    """DisassociateSecurityGroups返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class EnableReplicaReadonlyRequest(AbstractModel):
     """EnableReplicaReadonly请求参数结构体
 
@@ -2027,6 +2225,216 @@ class HotKeyInfo(AbstractModel):
         self.Key = params.get("Key")
         self.Type = params.get("Type")
         self.Count = params.get("Count")
+
+
+class Inbound(AbstractModel):
+    """安全组入站规则
+
+    """
+
+    def __init__(self):
+        """
+        :param Action: 策略，ACCEPT或者DROP。
+        :type Action: str
+        :param AddressModule: 地址组id代表的地址集合。
+        :type AddressModule: str
+        :param CidrIp: 来源Ip或Ip段，例如192.168.0.0/16。
+        :type CidrIp: str
+        :param Desc: 描述。
+        :type Desc: str
+        :param IpProtocol: 网络协议，支持udp、tcp等。
+        :type IpProtocol: str
+        :param PortRange: 端口。
+        :type PortRange: str
+        :param ServiceModule: 服务组id代表的协议和端口集合。
+        :type ServiceModule: str
+        :param Id: 安全组id代表的地址集合。
+        :type Id: str
+        """
+        self.Action = None
+        self.AddressModule = None
+        self.CidrIp = None
+        self.Desc = None
+        self.IpProtocol = None
+        self.PortRange = None
+        self.ServiceModule = None
+        self.Id = None
+
+
+    def _deserialize(self, params):
+        self.Action = params.get("Action")
+        self.AddressModule = params.get("AddressModule")
+        self.CidrIp = params.get("CidrIp")
+        self.Desc = params.get("Desc")
+        self.IpProtocol = params.get("IpProtocol")
+        self.PortRange = params.get("PortRange")
+        self.ServiceModule = params.get("ServiceModule")
+        self.Id = params.get("Id")
+
+
+class InquiryPriceCreateInstanceRequest(AbstractModel):
+    """InquiryPriceCreateInstance请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ZoneId: 实例所属的可用区id
+        :type ZoneId: int
+        :param TypeId: 实例类型：2 – Redis2.8主从版，3 – Redis3.2主从版(CKV主从版)，4 – Redis3.2集群版(CKV集群版)，5-Redis2.8单机版，6 – Redis4.0主从版，7 – Redis4.0集群版，
+        :type TypeId: int
+        :param MemSize: 实例容量，单位MB， 取值大小以 查询售卖规格接口返回的规格为准
+        :type MemSize: int
+        :param GoodsNum: 实例数量，单次购买实例数量以 查询售卖规格接口返回的规格为准
+        :type GoodsNum: int
+        :param Period: 购买时长，在创建包年包月实例的时候需要填写，按量计费实例填1即可，单位：月，取值范围 [1,2,3,4,5,6,7,8,9,10,11,12,24,36]
+        :type Period: int
+        :param BillingMode: 付费方式:0-按量计费，1-包年包月。
+        :type BillingMode: int
+        :param RedisShardNum: 实例分片数量，Redis2.8主从版、CKV主从版和Redis2.8单机版、Redis4.0主从版不需要填写
+        :type RedisShardNum: int
+        :param RedisReplicasNum: 实例副本数量，Redis2.8主从版、CKV主从版和Redis2.8单机版不需要填写
+        :type RedisReplicasNum: int
+        :param ReplicasReadonly: 是否支持副本只读，Redis2.8主从版、CKV主从版和Redis2.8单机版不需要填写
+        :type ReplicasReadonly: bool
+        """
+        self.ZoneId = None
+        self.TypeId = None
+        self.MemSize = None
+        self.GoodsNum = None
+        self.Period = None
+        self.BillingMode = None
+        self.RedisShardNum = None
+        self.RedisReplicasNum = None
+        self.ReplicasReadonly = None
+
+
+    def _deserialize(self, params):
+        self.ZoneId = params.get("ZoneId")
+        self.TypeId = params.get("TypeId")
+        self.MemSize = params.get("MemSize")
+        self.GoodsNum = params.get("GoodsNum")
+        self.Period = params.get("Period")
+        self.BillingMode = params.get("BillingMode")
+        self.RedisShardNum = params.get("RedisShardNum")
+        self.RedisReplicasNum = params.get("RedisReplicasNum")
+        self.ReplicasReadonly = params.get("ReplicasReadonly")
+
+
+class InquiryPriceCreateInstanceResponse(AbstractModel):
+    """InquiryPriceCreateInstance返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Price: 价格，单位：分
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Price: float
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Price = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Price = params.get("Price")
+        self.RequestId = params.get("RequestId")
+
+
+class InquiryPriceRenewInstanceRequest(AbstractModel):
+    """InquiryPriceRenewInstance请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Period: 购买时长，单位：月
+        :type Period: int
+        :param InstanceId: 实例ID
+        :type InstanceId: str
+        """
+        self.Period = None
+        self.InstanceId = None
+
+
+    def _deserialize(self, params):
+        self.Period = params.get("Period")
+        self.InstanceId = params.get("InstanceId")
+
+
+class InquiryPriceRenewInstanceResponse(AbstractModel):
+    """InquiryPriceRenewInstance返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Price: 价格，单位：分
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Price: float
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Price = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Price = params.get("Price")
+        self.RequestId = params.get("RequestId")
+
+
+class InquiryPriceUpgradeInstanceRequest(AbstractModel):
+    """InquiryPriceUpgradeInstance请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param InstanceId: 实例Id
+        :type InstanceId: str
+        :param MemSize: 分片大小 单位 MB
+        :type MemSize: int
+        :param RedisShardNum: 分片数量，Redis2.8主从版、CKV主从版和Redis2.8单机版不需要填写
+        :type RedisShardNum: int
+        :param RedisReplicasNum: 副本数量，Redis2.8主从版、CKV主从版和Redis2.8单机版不需要填写
+        :type RedisReplicasNum: int
+        """
+        self.InstanceId = None
+        self.MemSize = None
+        self.RedisShardNum = None
+        self.RedisReplicasNum = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.MemSize = params.get("MemSize")
+        self.RedisShardNum = params.get("RedisShardNum")
+        self.RedisReplicasNum = params.get("RedisReplicasNum")
+
+
+class InquiryPriceUpgradeInstanceResponse(AbstractModel):
+    """InquiryPriceUpgradeInstance返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Price: 价格，单位：分
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Price: float
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Price = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Price = params.get("Price")
+        self.RequestId = params.get("RequestId")
 
 
 class InstanceClusterNode(AbstractModel):
@@ -2803,6 +3211,48 @@ class ModifyAutoBackupConfigResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class ModifyDBInstanceSecurityGroupsRequest(AbstractModel):
+    """ModifyDBInstanceSecurityGroups请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Product: 数据库引擎名称：mariadb,cdb,cynosdb,dcdb,redis,mongodb 等。
+        :type Product: str
+        :param SecurityGroupIds: 要修改的安全组ID列表，一个或者多个安全组Id组成的数组。
+        :type SecurityGroupIds: list of str
+        :param InstanceId: 实例ID，格式如：cdb-c1nl9rpv或者cdbro-c1nl9rpv，与云数据库控制台页面中显示的实例ID相同
+        :type InstanceId: str
+        """
+        self.Product = None
+        self.SecurityGroupIds = None
+        self.InstanceId = None
+
+
+    def _deserialize(self, params):
+        self.Product = params.get("Product")
+        self.SecurityGroupIds = params.get("SecurityGroupIds")
+        self.InstanceId = params.get("InstanceId")
+
+
+class ModifyDBInstanceSecurityGroupsResponse(AbstractModel):
+    """ModifyDBInstanceSecurityGroups返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class ModifyInstanceAccountRequest(AbstractModel):
     """ModifyInstanceAccount请求参数结构体
 
@@ -2872,7 +3322,7 @@ class ModifyInstanceParamsRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param InstanceId: 实例Id
+        :param InstanceId: 实例ID
         :type InstanceId: str
         :param InstanceParams: 实例修改的参数列表
         :type InstanceParams: list of InstanceParam
@@ -3044,6 +3494,51 @@ class ModifyNetworkConfigResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class Outbound(AbstractModel):
+    """安全组出站规则
+
+    """
+
+    def __init__(self):
+        """
+        :param Action: 策略，ACCEPT或者DROP。
+        :type Action: str
+        :param AddressModule: 地址组id代表的地址集合。
+        :type AddressModule: str
+        :param CidrIp: 来源Ip或Ip段，例如192.168.0.0/16。
+        :type CidrIp: str
+        :param Desc: 描述。
+        :type Desc: str
+        :param IpProtocol: 网络协议，支持udp、tcp等。
+        :type IpProtocol: str
+        :param PortRange: 端口。
+        :type PortRange: str
+        :param ServiceModule: 服务组id代表的协议和端口集合。
+        :type ServiceModule: str
+        :param Id: 安全组id代表的地址集合。
+        :type Id: str
+        """
+        self.Action = None
+        self.AddressModule = None
+        self.CidrIp = None
+        self.Desc = None
+        self.IpProtocol = None
+        self.PortRange = None
+        self.ServiceModule = None
+        self.Id = None
+
+
+    def _deserialize(self, params):
+        self.Action = params.get("Action")
+        self.AddressModule = params.get("AddressModule")
+        self.CidrIp = params.get("CidrIp")
+        self.Desc = params.get("Desc")
+        self.IpProtocol = params.get("IpProtocol")
+        self.PortRange = params.get("PortRange")
+        self.ServiceModule = params.get("ServiceModule")
+        self.Id = params.get("Id")
+
+
 class ProductConf(AbstractModel):
     """产品信息
 
@@ -3212,7 +3707,7 @@ class RenewInstanceResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param DealId: 交易Id
+        :param DealId: 交易ID
         :type DealId: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -3316,6 +3811,57 @@ class RestoreInstanceResponse(AbstractModel):
     def _deserialize(self, params):
         self.TaskId = params.get("TaskId")
         self.RequestId = params.get("RequestId")
+
+
+class SecurityGroup(AbstractModel):
+    """安全组规则
+
+    """
+
+    def __init__(self):
+        """
+        :param CreateTime: 创建时间，时间格式：yyyy-mm-dd hh:mm:ss。
+        :type CreateTime: str
+        :param ProjectId: 项目ID。
+        :type ProjectId: int
+        :param SecurityGroupId: 安全组ID。
+        :type SecurityGroupId: str
+        :param SecurityGroupName: 安全组名称。
+        :type SecurityGroupName: str
+        :param SecurityGroupRemark: 安全组备注。
+        :type SecurityGroupRemark: str
+        :param Outbound: 出站规则。
+        :type Outbound: list of Outbound
+        :param Inbound: 入站规则。
+        :type Inbound: list of Inbound
+        """
+        self.CreateTime = None
+        self.ProjectId = None
+        self.SecurityGroupId = None
+        self.SecurityGroupName = None
+        self.SecurityGroupRemark = None
+        self.Outbound = None
+        self.Inbound = None
+
+
+    def _deserialize(self, params):
+        self.CreateTime = params.get("CreateTime")
+        self.ProjectId = params.get("ProjectId")
+        self.SecurityGroupId = params.get("SecurityGroupId")
+        self.SecurityGroupName = params.get("SecurityGroupName")
+        self.SecurityGroupRemark = params.get("SecurityGroupRemark")
+        if params.get("Outbound") is not None:
+            self.Outbound = []
+            for item in params.get("Outbound"):
+                obj = Outbound()
+                obj._deserialize(item)
+                self.Outbound.append(obj)
+        if params.get("Inbound") is not None:
+            self.Inbound = []
+            for item in params.get("Inbound"):
+                obj = Inbound()
+                obj._deserialize(item)
+                self.Inbound.append(obj)
 
 
 class SecurityGroupDetail(AbstractModel):
@@ -3662,7 +4208,7 @@ class UpgradeInstanceRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param InstanceId: 实例Id
+        :param InstanceId: 实例ID
         :type InstanceId: str
         :param MemSize: 分片大小 单位 MB
         :type MemSize: int
