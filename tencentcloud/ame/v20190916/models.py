@@ -104,11 +104,9 @@ class DescribeItemsRequest(AbstractModel):
         :type Offset: int
         :param Limit: 条数，必须大于0，最大值为30
         :type Limit: int
-        :param CategoryId: （电台/歌单）ID，CategoryId和CategoryCode两个必传1个，可以从【获取分类内容（Station）列表接口】中获取。
-链接地址：https://cloud.tencent.com/document/product/1155/40109
+        :param CategoryId: （电台/歌单）ID，CategoryId和CategoryCode两个必传1个，可以从<a href="https://cloud.tencent.com/document/product/1155/40109">获取分类内容（Station）列表接口</a>中获取。
         :type CategoryId: str
-        :param CategoryCode: （电台/歌单）ID，CategoryId和CategoryCode两个必传1个，可以从【获取分类内容（Station）列表接口】中获取。
-链接地址：https://cloud.tencent.com/document/product/1155/40109
+        :param CategoryCode: （电台/歌单）ID，CategoryId和CategoryCode两个必传1个，可以从<a href="https://cloud.tencent.com/document/product/1155/40109">获取分类内容（Station）列表接口</a>中获取。
         :type CategoryCode: str
         """
         self.Offset = None
@@ -421,13 +419,13 @@ class Lyric(AbstractModel):
 
 
 class Music(AbstractModel):
-    """Music
+    """音乐详情
 
     """
 
     def __init__(self):
         """
-        :param Url: 音乐播放链接相对路径，必须通过在音乐版权助手上登记的域名进行拼接。
+        :param Url: 音乐播放链接相对路径，必须通过在正版曲库直通车控制台上登记的域名进行拼接。
         :type Url: str
         :param FileSize: 音频文件大小
         :type FileSize: int
@@ -439,12 +437,16 @@ Unit :ms
         :param AuditionEnd: Song fragment end.试听片段结束时间, 试听时长为auditionEnd-auditionBegin
 Unit :ms
         :type AuditionEnd: int
+        :param FullUrl: 音乐播放链接全路径，前提是在正版曲库直通车控制台添加过域名，否则返回空字符。
+如果添加过多个域名只返回第一个添加域名的播放全路径。
+        :type FullUrl: str
         """
         self.Url = None
         self.FileSize = None
         self.FileExtension = None
         self.AuditionBegin = None
         self.AuditionEnd = None
+        self.FullUrl = None
 
 
     def _deserialize(self, params):
@@ -453,6 +455,7 @@ Unit :ms
         self.FileExtension = params.get("FileExtension")
         self.AuditionBegin = params.get("AuditionBegin")
         self.AuditionEnd = params.get("AuditionEnd")
+        self.FullUrl = params.get("FullUrl")
 
 
 class ReportDataRequest(AbstractModel):

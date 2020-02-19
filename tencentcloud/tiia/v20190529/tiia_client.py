@@ -289,48 +289,6 @@ class TiiaClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def ImageModeration(self, request):
-        """图像审核包含鉴黄、政治敏感识别、暴恐识别、图文审核等服务。
-
-        • 鉴黄：识别图片中是否存在涉黄内容，将图片分为正常、性感、色情三类，并输出分类的置信度。
-
-        • 政治敏感识别：识别图片中是否存在政治人物、政治恶搞、著名政治事件照片等内容。
-
-        • 暴恐识别：识别图片中的暴力恐怖元素，例如武器、管制刀具、血腥、恐怖主义等。
-
-        • 图文审核：结合OCR、NLP和二维码识别算法，分析图片中的文字是否违规，或是否存在二维码等营销内容，并输出违规内容的类别（涉黄、涉政、谩骂、广告营销、暴恐等）。
-
-        为了方便使用、减少图片传输次数，图像审核包装成多合一接口，实际上是多个服务。
-
-        图像审核根据服务的调用次数收费。例如一张图片同时调用鉴黄、图文审核两个服务，那么此次调用按照两次计费。
-        >
-        - 公共参数中的签名方式必须指定为V3版本，即配置SignatureMethod参数为TC3-HMAC-SHA256。
-
-        :param request: Request instance for ImageModeration.
-        :type request: :class:`tencentcloud.tiia.v20190529.models.ImageModerationRequest`
-        :rtype: :class:`tencentcloud.tiia.v20190529.models.ImageModerationResponse`
-
-        """
-        try:
-            params = request._serialize()
-            body = self.call("ImageModeration", params)
-            response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.ImageModerationResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(e.message, e.message)
-
-
     def RecognizeCar(self, request):
         """腾讯云车辆属性识别可对汽车车身及车辆属性进行检测与识别，目前支持11种车身颜色、20多种车型、300多种品牌、4000多种车系+年款的识别，同时支持对车辆的位置进行检测。如果图片中存在多辆车，会分别输出每辆车的车型和坐标。
         >

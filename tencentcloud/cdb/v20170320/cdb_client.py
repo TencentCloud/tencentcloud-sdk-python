@@ -776,7 +776,7 @@ class CdbClient(AbstractClient):
 
 
     def DescribeBinlogs(self, request):
-        """本接口(DescribeBinlogs)用于查询云数据库实例的二进制数据。
+        """本接口(DescribeBinlogs)用于查询云数据库实例的 binlog 文件列表。
 
         :param request: Request instance for DescribeBinlogs.
         :type request: :class:`tencentcloud.cdb.v20170320.models.DescribeBinlogsRequest`

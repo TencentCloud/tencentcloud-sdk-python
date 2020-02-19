@@ -383,11 +383,11 @@ class BinlogInfo(AbstractModel):
 
     def __init__(self):
         """
-        :param Name: 备份文件名
+        :param Name: binlog 日志备份文件名
         :type Name: str
         :param Size: 备份文件大小，单位：Byte
         :type Size: int
-        :param Date: 备份快照时间，时间格式：2016-03-17 02:10:37
+        :param Date: 文件存储时间，时间格式：2016-03-17 02:10:37
         :type Date: str
         :param IntranetUrl: 内网下载地址
         :type IntranetUrl: str
@@ -395,6 +395,10 @@ class BinlogInfo(AbstractModel):
         :type InternetUrl: str
         :param Type: 日志具体类型，可能的值有：binlog - 二进制日志
         :type Type: str
+        :param BinlogStartTime: binlog 文件起始时间
+        :type BinlogStartTime: str
+        :param BinlogFinishTime: binlog 文件截止时间
+        :type BinlogFinishTime: str
         """
         self.Name = None
         self.Size = None
@@ -402,6 +406,8 @@ class BinlogInfo(AbstractModel):
         self.IntranetUrl = None
         self.InternetUrl = None
         self.Type = None
+        self.BinlogStartTime = None
+        self.BinlogFinishTime = None
 
 
     def _deserialize(self, params):
@@ -411,6 +417,8 @@ class BinlogInfo(AbstractModel):
         self.IntranetUrl = params.get("IntranetUrl")
         self.InternetUrl = params.get("InternetUrl")
         self.Type = params.get("Type")
+        self.BinlogStartTime = params.get("BinlogStartTime")
+        self.BinlogFinishTime = params.get("BinlogFinishTime")
 
 
 class CloseWanServiceRequest(AbstractModel):

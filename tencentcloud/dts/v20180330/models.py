@@ -668,9 +668,9 @@ class MigrateDetailInfo(AbstractModel):
         :type Progress: str
         :param CurrentStepProgress: 当前步骤进度,如:
         :type CurrentStepProgress: str
-        :param MasterSlaveDistance: 主从差距，MB
+        :param MasterSlaveDistance: 主从差距，MB；在增量同步阶段有效，目前支持产品为：redis和mysql
         :type MasterSlaveDistance: int
-        :param SecondsBehindMaster: 主从差距，秒
+        :param SecondsBehindMaster: 主从差距，秒；在增量同步阶段有效，目前支持产品为：mysql
         :type SecondsBehindMaster: int
         :param StepInfo: 步骤信息
         :type StepInfo: list of MigrateStepDetailInfo

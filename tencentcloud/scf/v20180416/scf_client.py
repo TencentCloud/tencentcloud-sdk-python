@@ -171,6 +171,34 @@ class ScfClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DeleteLayerVersion(self, request):
+        """删除指定layer的指定版本，被删除的版本无法再关联到函数上，但不会影响正在引用这个layer的函数。
+
+        :param request: Request instance for DeleteLayerVersion.
+        :type request: :class:`tencentcloud.scf.v20180416.models.DeleteLayerVersionRequest`
+        :rtype: :class:`tencentcloud.scf.v20180416.models.DeleteLayerVersionResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DeleteLayerVersion", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DeleteLayerVersionResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DeleteNamespace(self, request):
         """该接口根据传入的参数创建命名空间。
 
@@ -311,6 +339,34 @@ class ScfClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def GetLayerVersion(self, request):
+        """获取layer版本详细信息，包括用于下载layer文件的链接。
+
+        :param request: Request instance for GetLayerVersion.
+        :type request: :class:`tencentcloud.scf.v20180416.models.GetLayerVersionRequest`
+        :rtype: :class:`tencentcloud.scf.v20180416.models.GetLayerVersionResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("GetLayerVersion", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.GetLayerVersionResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def Invoke(self, request):
         """该接口用于运行函数。
 
@@ -367,6 +423,62 @@ class ScfClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def ListLayerVersions(self, request):
+        """返回指定layer的全部版本的信息
+
+        :param request: Request instance for ListLayerVersions.
+        :type request: :class:`tencentcloud.scf.v20180416.models.ListLayerVersionsRequest`
+        :rtype: :class:`tencentcloud.scf.v20180416.models.ListLayerVersionsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ListLayerVersions", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ListLayerVersionsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ListLayers(self, request):
+        """返回全部layer的列表，其中包含了每个layer最新版本的信息，可以通过适配运行时进行过滤。
+
+        :param request: Request instance for ListLayers.
+        :type request: :class:`tencentcloud.scf.v20180416.models.ListLayersRequest`
+        :rtype: :class:`tencentcloud.scf.v20180416.models.ListLayersResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ListLayers", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ListLayersResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def ListNamespaces(self, request):
         """列出命名空间列表
 
@@ -409,6 +521,34 @@ class ScfClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ListVersionByFunctionResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def PublishLayerVersion(self, request):
+        """使用给定的zip文件或cos对象创建一个layer新版本，每次使用相同的LayerName调用本接口，都会生成一个新版本。
+
+        :param request: Request instance for PublishLayerVersion.
+        :type request: :class:`tencentcloud.scf.v20180416.models.PublishLayerVersionRequest`
+        :rtype: :class:`tencentcloud.scf.v20180416.models.PublishLayerVersionResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("PublishLayerVersion", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.PublishLayerVersionResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

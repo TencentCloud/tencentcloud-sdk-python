@@ -210,6 +210,10 @@ class CreateFunctionRequest(AbstractModel):
         :type Type: str
         :param CodeSource: CodeSource 代码来源，支持以下'ZipFile', 'Cos', 'Demo', 'TempCos', 'Git'之一，使用Git来源必须指定此字段
         :type CodeSource: str
+        :param Layers: 函数要关联的Layer版本列表，Layer会按照在列表中顺序依次覆盖。
+        :type Layers: list of LayerVersionSimple
+        :param DeadLetterConfig: 死信队列参数
+        :type DeadLetterConfig: :class:`tencentcloud.scf.v20180416.models.DeadLetterConfig`
         """
         self.FunctionName = None
         self.Code = None
@@ -226,6 +230,8 @@ class CreateFunctionRequest(AbstractModel):
         self.ClsTopicId = None
         self.Type = None
         self.CodeSource = None
+        self.Layers = None
+        self.DeadLetterConfig = None
 
 
     def _deserialize(self, params):
@@ -250,6 +256,15 @@ class CreateFunctionRequest(AbstractModel):
         self.ClsTopicId = params.get("ClsTopicId")
         self.Type = params.get("Type")
         self.CodeSource = params.get("CodeSource")
+        if params.get("Layers") is not None:
+            self.Layers = []
+            for item in params.get("Layers"):
+                obj = LayerVersionSimple()
+                obj._deserialize(item)
+                self.Layers.append(obj)
+        if params.get("DeadLetterConfig") is not None:
+            self.DeadLetterConfig = DeadLetterConfig()
+            self.DeadLetterConfig._deserialize(params.get("DeadLetterConfig"))
 
 
 class CreateFunctionResponse(AbstractModel):
@@ -320,7 +335,7 @@ class CreateTriggerRequest(AbstractModel):
         :type TriggerName: str
         :param Type: 触发器类型，目前支持 cos 、cmq、 timer、 ckafka类型
         :type Type: str
-        :param TriggerDesc: 触发器对应的参数，如果是 timer 类型的触发器其内容是 Linux cron 表达式。如果是cos类型的触发器，其内容是json字符串 {"event":"cos:ObjectCreated:*","filter":{"Prefix":"","Suffix":""}},其中event是触发的cos事件，fitler中Prefix是对应的文件前缀过滤条件，Suffix是后缀过滤条件，如果不需要filter条件可不传。如果是其他触发器，见具体触发器说明
+        :param TriggerDesc: 触发器对应的参数，可见具体[触发器描述说明](https://cloud.tencent.com/document/product/583/39901)
         :type TriggerDesc: str
         :param Namespace: 函数的命名空间
         :type Namespace: str
@@ -371,6 +386,31 @@ class CreateTriggerResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DeadLetterConfig(AbstractModel):
+    """死信队列参数
+
+    """
+
+    def __init__(self):
+        """
+        :param Type: 死信队列模式
+        :type Type: str
+        :param Name: 死信队列名称
+        :type Name: str
+        :param FilterType: 死信队列主题模式的标签形式
+        :type FilterType: str
+        """
+        self.Type = None
+        self.Name = None
+        self.FilterType = None
+
+
+    def _deserialize(self, params):
+        self.Type = params.get("Type")
+        self.Name = params.get("Name")
+        self.FilterType = params.get("FilterType")
+
+
 class DeleteFunctionRequest(AbstractModel):
     """DeleteFunction请求参数结构体
 
@@ -394,6 +434,44 @@ class DeleteFunctionRequest(AbstractModel):
 
 class DeleteFunctionResponse(AbstractModel):
     """DeleteFunction返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class DeleteLayerVersionRequest(AbstractModel):
+    """DeleteLayerVersion请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param LayerName: layer名称
+        :type LayerName: str
+        :param LayerVersion: 版本号
+        :type LayerVersion: int
+        """
+        self.LayerName = None
+        self.LayerVersion = None
+
+
+    def _deserialize(self, params):
+        self.LayerName = params.get("LayerName")
+        self.LayerVersion = params.get("LayerVersion")
+
+
+class DeleteLayerVersionResponse(AbstractModel):
+    """DeleteLayerVersion返回参数结构体
 
     """
 
@@ -495,6 +573,28 @@ class DeleteTriggerResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
+
+
+class EipConfigOut(AbstractModel):
+    """公网访问固定ip配置
+
+    """
+
+    def __init__(self):
+        """
+        :param EipStatus: 是否是固定IP，["ENABLE","DISABLE"]
+        :type EipStatus: str
+        :param EipAddress: IP列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EipAddress: list of str
+        """
+        self.EipStatus = None
+        self.EipAddress = None
+
+
+    def _deserialize(self, params):
+        self.EipStatus = params.get("EipStatus")
+        self.EipAddress = params.get("EipAddress")
 
 
 class EipOutConfig(AbstractModel):
@@ -775,7 +875,7 @@ class GetFunctionLogsRequest(AbstractModel):
         :type Order: str
         :param OrderBy: 根据某个字段排序日志,支持以下字段：function_name, duration, mem_usage, start_time
         :type OrderBy: str
-        :param Filter: 日志过滤条件。可用来区分正确和错误日志，filter.retCode=not0 表示只返回错误日志，filter.retCode=is0 表示只返回正确日志，不传，则返回所有日志
+        :param Filter: 日志过滤条件。可用来区分正确和错误日志，filter.RetCode=not0 表示只返回错误日志，filter.RetCode=is0 表示只返回正确日志，不传，则返回所有日志
         :type Filter: :class:`tencentcloud.scf.v20180416.models.LogFilter`
         :param Namespace: 函数的命名空间
         :type Namespace: str
@@ -955,6 +1055,18 @@ class GetFunctionResponse(AbstractModel):
         :type Type: str
         :param L5Enable: 是否启用L5
         :type L5Enable: str
+        :param Layers: 函数关联的Layer版本信息
+        :type Layers: list of LayerVersionInfo
+        :param DeadLetterConfig: 函数关联的死信队列信息
+        :type DeadLetterConfig: :class:`tencentcloud.scf.v20180416.models.DeadLetterConfig`
+        :param AddTime: 函数创建回见
+        :type AddTime: str
+        :param PublicNetConfig: 公网访问配置
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PublicNetConfig: :class:`tencentcloud.scf.v20180416.models.PublicNetConfigOut`
+        :param OnsEnable: 是否启用Ons
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OnsEnable: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -988,6 +1100,11 @@ class GetFunctionResponse(AbstractModel):
         self.AccessInfo = None
         self.Type = None
         self.L5Enable = None
+        self.Layers = None
+        self.DeadLetterConfig = None
+        self.AddTime = None
+        self.PublicNetConfig = None
+        self.OnsEnable = None
         self.RequestId = None
 
 
@@ -1040,6 +1157,97 @@ class GetFunctionResponse(AbstractModel):
             self.AccessInfo._deserialize(params.get("AccessInfo"))
         self.Type = params.get("Type")
         self.L5Enable = params.get("L5Enable")
+        if params.get("Layers") is not None:
+            self.Layers = []
+            for item in params.get("Layers"):
+                obj = LayerVersionInfo()
+                obj._deserialize(item)
+                self.Layers.append(obj)
+        if params.get("DeadLetterConfig") is not None:
+            self.DeadLetterConfig = DeadLetterConfig()
+            self.DeadLetterConfig._deserialize(params.get("DeadLetterConfig"))
+        self.AddTime = params.get("AddTime")
+        if params.get("PublicNetConfig") is not None:
+            self.PublicNetConfig = PublicNetConfigOut()
+            self.PublicNetConfig._deserialize(params.get("PublicNetConfig"))
+        self.OnsEnable = params.get("OnsEnable")
+        self.RequestId = params.get("RequestId")
+
+
+class GetLayerVersionRequest(AbstractModel):
+    """GetLayerVersion请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param LayerName: layer名称
+        :type LayerName: str
+        :param LayerVersion: 版本号
+        :type LayerVersion: int
+        """
+        self.LayerName = None
+        self.LayerVersion = None
+
+
+    def _deserialize(self, params):
+        self.LayerName = params.get("LayerName")
+        self.LayerVersion = params.get("LayerVersion")
+
+
+class GetLayerVersionResponse(AbstractModel):
+    """GetLayerVersion返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param CompatibleRuntimes: 适配的运行时
+        :type CompatibleRuntimes: list of str
+        :param CodeSha256: layer版本文件的SHA256编码
+        :type CodeSha256: str
+        :param Location: layer版本文件的下载地址
+        :type Location: str
+        :param AddTime: 版本的创建时间
+        :type AddTime: str
+        :param Description: 版本的描述
+        :type Description: str
+        :param LicenseInfo: 许可证信息
+        :type LicenseInfo: str
+        :param LayerVersion: 版本号
+        :type LayerVersion: int
+        :param LayerName: layer名称
+        :type LayerName: str
+        :param Status: Layer的当前状态，可能取值：
+publishing  发布中
+available  可用
+unavailable  不可用
+        :type Status: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.CompatibleRuntimes = None
+        self.CodeSha256 = None
+        self.Location = None
+        self.AddTime = None
+        self.Description = None
+        self.LicenseInfo = None
+        self.LayerVersion = None
+        self.LayerName = None
+        self.Status = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.CompatibleRuntimes = params.get("CompatibleRuntimes")
+        self.CodeSha256 = params.get("CodeSha256")
+        self.Location = params.get("Location")
+        self.AddTime = params.get("AddTime")
+        self.Description = params.get("Description")
+        self.LicenseInfo = params.get("LicenseInfo")
+        self.LayerVersion = params.get("LayerVersion")
+        self.LayerName = params.get("LayerName")
+        self.Status = params.get("Status")
         self.RequestId = params.get("RequestId")
 
 
@@ -1101,6 +1309,74 @@ class InvokeResponse(AbstractModel):
             self.Result = Result()
             self.Result._deserialize(params.get("Result"))
         self.RequestId = params.get("RequestId")
+
+
+class LayerVersionInfo(AbstractModel):
+    """layer版本信息
+
+    """
+
+    def __init__(self):
+        """
+        :param CompatibleRuntimes: 版本适用的运行时
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CompatibleRuntimes: list of str
+        :param AddTime: 创建时间
+        :type AddTime: str
+        :param Description: 版本描述
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Description: str
+        :param LicenseInfo: 许可证信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LicenseInfo: str
+        :param LayerVersion: 版本号
+        :type LayerVersion: int
+        :param LayerName: layer名称
+        :type LayerName: str
+        :param Status: Layer的当前状态，可能取值：
+publishing  发布中
+available  可用
+unavailable  不可用
+        :type Status: str
+        """
+        self.CompatibleRuntimes = None
+        self.AddTime = None
+        self.Description = None
+        self.LicenseInfo = None
+        self.LayerVersion = None
+        self.LayerName = None
+        self.Status = None
+
+
+    def _deserialize(self, params):
+        self.CompatibleRuntimes = params.get("CompatibleRuntimes")
+        self.AddTime = params.get("AddTime")
+        self.Description = params.get("Description")
+        self.LicenseInfo = params.get("LicenseInfo")
+        self.LayerVersion = params.get("LayerVersion")
+        self.LayerName = params.get("LayerName")
+        self.Status = params.get("Status")
+
+
+class LayerVersionSimple(AbstractModel):
+    """指定某个Layer版本
+
+    """
+
+    def __init__(self):
+        """
+        :param LayerName: layer名称
+        :type LayerName: str
+        :param LayerVersion: 版本号
+        :type LayerVersion: int
+        """
+        self.LayerName = None
+        self.LayerVersion = None
+
+
+    def _deserialize(self, params):
+        self.LayerName = params.get("LayerName")
+        self.LayerVersion = params.get("LayerVersion")
 
 
 class ListFunctionsRequest(AbstractModel):
@@ -1182,6 +1458,112 @@ class ListFunctionsResponse(AbstractModel):
                 obj = Function()
                 obj._deserialize(item)
                 self.Functions.append(obj)
+        self.TotalCount = params.get("TotalCount")
+        self.RequestId = params.get("RequestId")
+
+
+class ListLayerVersionsRequest(AbstractModel):
+    """ListLayerVersions请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param LayerName: layer名称
+        :type LayerName: str
+        :param CompatibleRuntime: 适配的运行时
+        :type CompatibleRuntime: list of str
+        """
+        self.LayerName = None
+        self.CompatibleRuntime = None
+
+
+    def _deserialize(self, params):
+        self.LayerName = params.get("LayerName")
+        self.CompatibleRuntime = params.get("CompatibleRuntime")
+
+
+class ListLayerVersionsResponse(AbstractModel):
+    """ListLayerVersions返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param LayerVersions: layer版本列表
+        :type LayerVersions: list of LayerVersionInfo
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.LayerVersions = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("LayerVersions") is not None:
+            self.LayerVersions = []
+            for item in params.get("LayerVersions"):
+                obj = LayerVersionInfo()
+                obj._deserialize(item)
+                self.LayerVersions.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class ListLayersRequest(AbstractModel):
+    """ListLayers请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param CompatibleRuntime: 适配的运行时
+        :type CompatibleRuntime: str
+        :param Offset: Offset
+        :type Offset: int
+        :param Limit: Limit
+        :type Limit: int
+        :param SearchKey: 查询key，模糊匹配名称
+        :type SearchKey: str
+        """
+        self.CompatibleRuntime = None
+        self.Offset = None
+        self.Limit = None
+        self.SearchKey = None
+
+
+    def _deserialize(self, params):
+        self.CompatibleRuntime = params.get("CompatibleRuntime")
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+        self.SearchKey = params.get("SearchKey")
+
+
+class ListLayersResponse(AbstractModel):
+    """ListLayers返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Layers: layer列表
+        :type Layers: list of LayerVersionInfo
+        :param TotalCount: layer总数
+        :type TotalCount: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Layers = None
+        self.TotalCount = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Layers") is not None:
+            self.Layers = []
+            for item in params.get("Layers"):
+                obj = LayerVersionInfo()
+                obj._deserialize(item)
+                self.Layers.append(obj)
         self.TotalCount = params.get("TotalCount")
         self.RequestId = params.get("RequestId")
 
@@ -1380,6 +1762,85 @@ class Namespace(AbstractModel):
         self.Description = params.get("Description")
         self.Name = params.get("Name")
         self.Type = params.get("Type")
+
+
+class PublicNetConfigOut(AbstractModel):
+    """公网访问配置
+
+    """
+
+    def __init__(self):
+        """
+        :param PublicNetStatus: 是否开启公网访问能力取值['DISABLE','ENABLE']
+        :type PublicNetStatus: str
+        :param EipConfig: Eip配置
+        :type EipConfig: :class:`tencentcloud.scf.v20180416.models.EipConfigOut`
+        """
+        self.PublicNetStatus = None
+        self.EipConfig = None
+
+
+    def _deserialize(self, params):
+        self.PublicNetStatus = params.get("PublicNetStatus")
+        if params.get("EipConfig") is not None:
+            self.EipConfig = EipConfigOut()
+            self.EipConfig._deserialize(params.get("EipConfig"))
+
+
+class PublishLayerVersionRequest(AbstractModel):
+    """PublishLayerVersion请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param LayerName: layer名称，支持26个英文字母大小写、数字、连接符和下划线，第一个字符只能以字母开头，最后一个字符不能为连接符或者下划线，名称长度1-64
+        :type LayerName: str
+        :param CompatibleRuntimes: layer适用的运行时，可多选，可选的值有： Python2.7, Python3.6, Nodejs6.10, Java8, Php5, Php7, Nodejs8.9, Go1
+        :type CompatibleRuntimes: list of str
+        :param Content: layer的文件来源
+        :type Content: :class:`tencentcloud.scf.v20180416.models.Code`
+        :param Description: layer版本的描述
+        :type Description: str
+        :param LicenseInfo: layer的软件许可证
+        :type LicenseInfo: str
+        """
+        self.LayerName = None
+        self.CompatibleRuntimes = None
+        self.Content = None
+        self.Description = None
+        self.LicenseInfo = None
+
+
+    def _deserialize(self, params):
+        self.LayerName = params.get("LayerName")
+        self.CompatibleRuntimes = params.get("CompatibleRuntimes")
+        if params.get("Content") is not None:
+            self.Content = Code()
+            self.Content._deserialize(params.get("Content"))
+        self.Description = params.get("Description")
+        self.LicenseInfo = params.get("LicenseInfo")
+
+
+class PublishLayerVersionResponse(AbstractModel):
+    """PublishLayerVersion返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param LayerVersion: 本次创建的layer的版本号
+        :type LayerVersion: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.LayerVersion = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.LayerVersion = params.get("LayerVersion")
+        self.RequestId = params.get("RequestId")
 
 
 class PublishVersionRequest(AbstractModel):
@@ -1672,6 +2133,12 @@ class UpdateFunctionConfigurationRequest(AbstractModel):
         :type Publish: str
         :param L5Enable: 是否开启L5访问能力，TRUE 为开启，FALSE为关闭
         :type L5Enable: str
+        :param Layers: 函数要关联的Layer版本列表，Layer会按照在列表中顺序依次覆盖。
+        :type Layers: list of LayerVersionSimple
+        :param DeadLetterConfig: 函数关联的死信队列信息
+        :type DeadLetterConfig: :class:`tencentcloud.scf.v20180416.models.DeadLetterConfig`
+        :param OnsEnable: 是否开启Ons访问能力，TRUE 为开启，FALSE为关闭
+        :type OnsEnable: str
         """
         self.FunctionName = None
         self.Description = None
@@ -1686,6 +2153,9 @@ class UpdateFunctionConfigurationRequest(AbstractModel):
         self.ClsTopicId = None
         self.Publish = None
         self.L5Enable = None
+        self.Layers = None
+        self.DeadLetterConfig = None
+        self.OnsEnable = None
 
 
     def _deserialize(self, params):
@@ -1706,6 +2176,16 @@ class UpdateFunctionConfigurationRequest(AbstractModel):
         self.ClsTopicId = params.get("ClsTopicId")
         self.Publish = params.get("Publish")
         self.L5Enable = params.get("L5Enable")
+        if params.get("Layers") is not None:
+            self.Layers = []
+            for item in params.get("Layers"):
+                obj = LayerVersionSimple()
+                obj._deserialize(item)
+                self.Layers.append(obj)
+        if params.get("DeadLetterConfig") is not None:
+            self.DeadLetterConfig = DeadLetterConfig()
+            self.DeadLetterConfig._deserialize(params.get("DeadLetterConfig"))
+        self.OnsEnable = params.get("OnsEnable")
 
 
 class UpdateFunctionConfigurationResponse(AbstractModel):
@@ -1791,9 +2271,9 @@ class VpcConfig(AbstractModel):
 
     def __init__(self):
         """
-        :param VpcId: 私有网络 的 id
+        :param VpcId: 私有网络 的 Id
         :type VpcId: str
-        :param SubnetId: 子网的 id
+        :param SubnetId: 子网的 Id
         :type SubnetId: str
         """
         self.VpcId = None

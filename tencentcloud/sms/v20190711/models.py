@@ -55,21 +55,21 @@ class AddSmsSignRequest(AbstractModel):
 5：政府/机关事业单位/其他机构（2，3）。
 注：必须按照对应关系选择证明类型，否则会审核失败。
         :type SignType: int
-        :param DocumentType: 证明类型。其中：
+        :param DocumentType: 证明类型：
 0：三证合一。
 1：企业营业执照。
 2：组织机构代码证书。
 3：社会信用代码证书。
-4：应用后台管理截图(个人开发APP)。
-5：网站备案后台截图(个人开发网站)。
-6：小程序设置页面截图(个人认证小程序)。
+4：应用后台管理截图（个人开发APP）。
+5：网站备案后台截图（个人开发网站）。
+6：小程序设置页面截图（个人认证小程序）。
 7：商标注册书。
         :type DocumentType: int
-        :param International: 是否国际短信。其中：
+        :param International: 是否国际/港澳台短信：
 0：表示国内短信。
-1：表示海外短信。
+1：表示国际/港澳台短信。
         :type International: int
-        :param UsedMethod: 签名用途。其中：
+        :param UsedMethod: 签名用途：
 0：自用。
 1：他用。
         :type UsedMethod: int
@@ -139,7 +139,9 @@ class AddSmsTemplateRequest(AbstractModel):
         :type TemplateContent: str
         :param SmsType: 短信类型，0表示普通短信, 1表示营销短信。
         :type SmsType: int
-        :param International: 0表示国内短信，1表示国际/港澳台短信，默认为0。
+        :param International: 是否国际/港澳台短信：
+0：表示国内短信。
+1：表示国际/港澳台短信。
         :type International: int
         :param Remark: 模板备注，例如申请原因，使用场景等。
         :type Remark: str
@@ -457,7 +459,7 @@ class ModifySmsSignRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param SignId: 待修改的签名Id。
+        :param SignId: 待修改的签名 ID。
         :type SignId: int
         :param SignName: 签名名称。
         :type SignName: str
@@ -470,7 +472,7 @@ class ModifySmsSignRequest(AbstractModel):
 5：政府/机关事业单位/其他机构（2，3）。
 注：必须按照对应关系选择证明类型，否则会审核失败。
         :type SignType: int
-        :param DocumentType: 证明类型。其中：
+        :param DocumentType: 证明类型：
 0：三证合一。
 1：企业营业执照。
 2：组织机构代码证书。
@@ -480,11 +482,11 @@ class ModifySmsSignRequest(AbstractModel):
 6：小程序设置页面截图(个人认证小程序)。
 7：商标注册书。
         :type DocumentType: int
-        :param International: 是否国际短信。其中：
+        :param International: 是否国际/港澳台短信：
 0：表示国内短信。
-1：表示海外短信。
+1：表示国际/港澳台短信。
         :type International: int
-        :param UsedMethod: 签名用途。其中：
+        :param UsedMethod: 签名用途：
 0：自用。
 1：他用。
         :type UsedMethod: int
@@ -558,7 +560,9 @@ class ModifySmsTemplateRequest(AbstractModel):
         :type TemplateContent: str
         :param SmsType: 短信类型，0表示普通短信, 1表示营销短信。
         :type SmsType: int
-        :param International: 0表示国内短信，1表示国际/港澳台短信，默认为0。
+        :param International: 是否国际/港澳台短信：
+0：表示国内短信。
+1：表示国际/港澳台短信。
         :type International: int
         :param Remark: 模板备注，例如申请原因，使用场景等。
         :type Remark: str
