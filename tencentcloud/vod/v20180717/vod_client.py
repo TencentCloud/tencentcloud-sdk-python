@@ -2111,6 +2111,34 @@ class VodClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def ParseStreamingManifest(self, request):
+        """上传 HLS 视频时，解析索引文件内容，返回待上传的分片文件列表。分片文件路径必须是当前目录或子目录的相对路径，不能是 URL，不能是绝对路径。
+
+        :param request: Request instance for ParseStreamingManifest.
+        :type request: :class:`tencentcloud.vod.v20180717.models.ParseStreamingManifestRequest`
+        :rtype: :class:`tencentcloud.vod.v20180717.models.ParseStreamingManifestResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ParseStreamingManifest", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ParseStreamingManifestResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def ProcessMedia(self, request):
         """对点播中的音视频媒体发起处理任务，功能包括：
         1. 视频转码（带水印）；

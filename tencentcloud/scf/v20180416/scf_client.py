@@ -172,7 +172,7 @@ class ScfClient(AbstractClient):
 
 
     def DeleteLayerVersion(self, request):
-        """删除指定layer的指定版本，被删除的版本无法再关联到函数上，但不会影响正在引用这个layer的函数。
+        """删除指定层的指定版本，被删除的版本无法再关联到函数上，但不会影响正在引用这个层的函数。
 
         :param request: Request instance for DeleteLayerVersion.
         :type request: :class:`tencentcloud.scf.v20180416.models.DeleteLayerVersionRequest`
@@ -340,7 +340,7 @@ class ScfClient(AbstractClient):
 
 
     def GetLayerVersion(self, request):
-        """获取layer版本详细信息，包括用于下载layer文件的链接。
+        """获取层版本详细信息，包括用于下载层中文件的链接。
 
         :param request: Request instance for GetLayerVersion.
         :type request: :class:`tencentcloud.scf.v20180416.models.GetLayerVersionRequest`
@@ -424,7 +424,7 @@ class ScfClient(AbstractClient):
 
 
     def ListLayerVersions(self, request):
-        """返回指定layer的全部版本的信息
+        """返回指定层的全部版本的信息
 
         :param request: Request instance for ListLayerVersions.
         :type request: :class:`tencentcloud.scf.v20180416.models.ListLayerVersionsRequest`
@@ -452,7 +452,7 @@ class ScfClient(AbstractClient):
 
 
     def ListLayers(self, request):
-        """返回全部layer的列表，其中包含了每个layer最新版本的信息，可以通过适配运行时进行过滤。
+        """返回全部层的列表，其中包含了每个层最新版本的信息，可以通过适配运行时进行过滤。
 
         :param request: Request instance for ListLayers.
         :type request: :class:`tencentcloud.scf.v20180416.models.ListLayersRequest`
@@ -536,7 +536,7 @@ class ScfClient(AbstractClient):
 
 
     def PublishLayerVersion(self, request):
-        """使用给定的zip文件或cos对象创建一个layer新版本，每次使用相同的LayerName调用本接口，都会生成一个新版本。
+        """使用给定的zip文件或cos对象创建一个层的新版本，每次使用相同的层的名称调用本接口，都会生成一个新版本。
 
         :param request: Request instance for PublishLayerVersion.
         :type request: :class:`tencentcloud.scf.v20180416.models.PublishLayerVersionRequest`

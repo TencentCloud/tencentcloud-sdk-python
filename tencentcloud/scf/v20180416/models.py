@@ -456,7 +456,7 @@ class DeleteLayerVersionRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param LayerName: layer名称
+        :param LayerName: 层名称
         :type LayerName: str
         :param LayerVersion: 版本号
         :type LayerVersion: int
@@ -1181,7 +1181,7 @@ class GetLayerVersionRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param LayerName: layer名称
+        :param LayerName: 层名称
         :type LayerName: str
         :param LayerVersion: 版本号
         :type LayerVersion: int
@@ -1204,9 +1204,9 @@ class GetLayerVersionResponse(AbstractModel):
         """
         :param CompatibleRuntimes: 适配的运行时
         :type CompatibleRuntimes: list of str
-        :param CodeSha256: layer版本文件的SHA256编码
+        :param CodeSha256: 层中版本文件的SHA256编码
         :type CodeSha256: str
-        :param Location: layer版本文件的下载地址
+        :param Location: 层中版本文件的下载地址
         :type Location: str
         :param AddTime: 版本的创建时间
         :type AddTime: str
@@ -1216,12 +1216,13 @@ class GetLayerVersionResponse(AbstractModel):
         :type LicenseInfo: str
         :param LayerVersion: 版本号
         :type LayerVersion: int
-        :param LayerName: layer名称
+        :param LayerName: 层名称
         :type LayerName: str
-        :param Status: Layer的当前状态，可能取值：
-publishing  发布中
-available  可用
-unavailable  不可用
+        :param Status: 层的具体版本当前状态，可能取值：
+Active 正常
+Publishing  发布中
+PublishFailed  发布失败
+Deleted 已删除
         :type Status: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -1312,7 +1313,7 @@ class InvokeResponse(AbstractModel):
 
 
 class LayerVersionInfo(AbstractModel):
-    """layer版本信息
+    """层版本信息
 
     """
 
@@ -1331,12 +1332,13 @@ class LayerVersionInfo(AbstractModel):
         :type LicenseInfo: str
         :param LayerVersion: 版本号
         :type LayerVersion: int
-        :param LayerName: layer名称
+        :param LayerName: 层名称
         :type LayerName: str
-        :param Status: Layer的当前状态，可能取值：
-publishing  发布中
-available  可用
-unavailable  不可用
+        :param Status: 层的具体版本当前状态，可能取值：
+Active 正常
+Publishing  发布中
+PublishFailed  发布失败
+Deleted 已删除
         :type Status: str
         """
         self.CompatibleRuntimes = None
@@ -1469,7 +1471,7 @@ class ListLayerVersionsRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param LayerName: layer名称
+        :param LayerName: 层名称
         :type LayerName: str
         :param CompatibleRuntime: 适配的运行时
         :type CompatibleRuntime: list of str
@@ -1490,7 +1492,7 @@ class ListLayerVersionsResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param LayerVersions: layer版本列表
+        :param LayerVersions: 层版本列表
         :type LayerVersions: list of LayerVersionInfo
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -1545,9 +1547,9 @@ class ListLayersResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param Layers: layer列表
+        :param Layers: 层列表
         :type Layers: list of LayerVersionInfo
-        :param TotalCount: layer总数
+        :param TotalCount: 层总数
         :type TotalCount: int
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -1794,15 +1796,15 @@ class PublishLayerVersionRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param LayerName: layer名称，支持26个英文字母大小写、数字、连接符和下划线，第一个字符只能以字母开头，最后一个字符不能为连接符或者下划线，名称长度1-64
+        :param LayerName: 层名称，支持26个英文字母大小写、数字、连接符和下划线，第一个字符只能以字母开头，最后一个字符不能为连接符或者下划线，名称长度1-64
         :type LayerName: str
-        :param CompatibleRuntimes: layer适用的运行时，可多选，可选的值有： Python2.7, Python3.6, Nodejs6.10, Java8, Php5, Php7, Nodejs8.9, Go1
+        :param CompatibleRuntimes: 层适用的运行时，可多选，可选的值对应函数的 Runtime 可选值。
         :type CompatibleRuntimes: list of str
-        :param Content: layer的文件来源
+        :param Content: 层的文件来源或文件内容
         :type Content: :class:`tencentcloud.scf.v20180416.models.Code`
-        :param Description: layer版本的描述
+        :param Description: 层的版本的描述
         :type Description: str
-        :param LicenseInfo: layer的软件许可证
+        :param LicenseInfo: 层的软件许可证
         :type LicenseInfo: str
         """
         self.LayerName = None
@@ -1829,7 +1831,7 @@ class PublishLayerVersionResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param LayerVersion: 本次创建的layer的版本号
+        :param LayerVersion: 本次创建的层的版本号
         :type LayerVersion: int
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -2133,7 +2135,7 @@ class UpdateFunctionConfigurationRequest(AbstractModel):
         :type Publish: str
         :param L5Enable: 是否开启L5访问能力，TRUE 为开启，FALSE为关闭
         :type L5Enable: str
-        :param Layers: 函数要关联的Layer版本列表，Layer会按照在列表中顺序依次覆盖。
+        :param Layers: 函数要关联的层版本列表，层的版本会按照在列表中顺序依次覆盖。
         :type Layers: list of LayerVersionSimple
         :param DeadLetterConfig: 函数关联的死信队列信息
         :type DeadLetterConfig: :class:`tencentcloud.scf.v20180416.models.DeadLetterConfig`

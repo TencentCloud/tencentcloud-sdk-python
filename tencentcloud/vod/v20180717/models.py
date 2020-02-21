@@ -263,6 +263,11 @@ class AdaptiveDynamicStreamingTemplate(AbstractModel):
         :type VideoTrackTemplateSet: list of VideoTrackTemplateInfo
         :param AudioTrackTemplateSet: 音频轨模板列表。
         :type AudioTrackTemplateSet: list of AudioTrackTemplateInfo
+        :param Format: 自适应转码格式，取值范围：
+<li>HLS。</li>
+        :type Format: str
+        :param StreamInfos: 自适应转码输入流参数信息，最多输入10路流。
+        :type StreamInfos: list of AdaptiveStreamTemplate
         :param DisableHigherVideoBitrate: 是否禁止视频低码率转高码率，取值范围：
 <li>0：否，</li>
 <li>1：是。</li>
@@ -284,6 +289,8 @@ class AdaptiveDynamicStreamingTemplate(AbstractModel):
         self.DrmType = None
         self.VideoTrackTemplateSet = None
         self.AudioTrackTemplateSet = None
+        self.Format = None
+        self.StreamInfos = None
         self.DisableHigherVideoBitrate = None
         self.DisableHigherVideoResolution = None
         self.CreateTime = None
@@ -309,10 +316,48 @@ class AdaptiveDynamicStreamingTemplate(AbstractModel):
                 obj = AudioTrackTemplateInfo()
                 obj._deserialize(item)
                 self.AudioTrackTemplateSet.append(obj)
+        self.Format = params.get("Format")
+        if params.get("StreamInfos") is not None:
+            self.StreamInfos = []
+            for item in params.get("StreamInfos"):
+                obj = AdaptiveStreamTemplate()
+                obj._deserialize(item)
+                self.StreamInfos.append(obj)
         self.DisableHigherVideoBitrate = params.get("DisableHigherVideoBitrate")
         self.DisableHigherVideoResolution = params.get("DisableHigherVideoResolution")
         self.CreateTime = params.get("CreateTime")
         self.UpdateTime = params.get("UpdateTime")
+
+
+class AdaptiveStreamTemplate(AbstractModel):
+    """自适应转码流参数模板
+
+    """
+
+    def __init__(self):
+        """
+        :param Video: 视频参数信息。
+        :type Video: :class:`tencentcloud.vod.v20180717.models.VideoTemplateInfo`
+        :param Audio: 音频参数信息。
+        :type Audio: :class:`tencentcloud.vod.v20180717.models.AudioTemplateInfo`
+        :param RemoveAudio: 是否移除音频流，取值范围：
+<li>0：否，</li>
+<li>1：是。</li>
+        :type RemoveAudio: int
+        """
+        self.Video = None
+        self.Audio = None
+        self.RemoveAudio = None
+
+
+    def _deserialize(self, params):
+        if params.get("Video") is not None:
+            self.Video = VideoTemplateInfo()
+            self.Video._deserialize(params.get("Video"))
+        if params.get("Audio") is not None:
+            self.Audio = AudioTemplateInfo()
+            self.Audio._deserialize(params.get("Audio"))
+        self.RemoveAudio = params.get("RemoveAudio")
 
 
 class AiAnalysisResult(AbstractModel):
@@ -12022,6 +12067,50 @@ class OutputVideoStream(AbstractModel):
     def _deserialize(self, params):
         self.Codec = params.get("Codec")
         self.Fps = params.get("Fps")
+
+
+class ParseStreamingManifestRequest(AbstractModel):
+    """ParseStreamingManifest请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param MediaManifestContent: 待解析的索引文件内容。
+        :type MediaManifestContent: str
+        :param ManifestType: 视频索引文件格式。默认 m3u8 格式。
+<li>m3u8</li>
+<li>mpd</li>
+        :type ManifestType: str
+        """
+        self.MediaManifestContent = None
+        self.ManifestType = None
+
+
+    def _deserialize(self, params):
+        self.MediaManifestContent = params.get("MediaManifestContent")
+        self.ManifestType = params.get("ManifestType")
+
+
+class ParseStreamingManifestResponse(AbstractModel):
+    """ParseStreamingManifest返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param MediaSegmentSet: 分片文件列表。
+        :type MediaSegmentSet: list of str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.MediaSegmentSet = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.MediaSegmentSet = params.get("MediaSegmentSet")
+        self.RequestId = params.get("RequestId")
 
 
 class PoliticalAsrReviewTemplateInfo(AbstractModel):

@@ -2222,11 +2222,14 @@ class ForwardLoadBalancer(AbstractModel):
         :type TargetAttributes: list of TargetAttribute
         :param LocationId: 转发规则ID，注意：针对七层监听器此参数必填
         :type LocationId: str
+        :param Region: 负载均衡实例所属地域，默认取AS服务所在地域
+        :type Region: str
         """
         self.LoadBalancerId = None
         self.ListenerId = None
         self.TargetAttributes = None
         self.LocationId = None
+        self.Region = None
 
 
     def _deserialize(self, params):
@@ -2239,6 +2242,7 @@ class ForwardLoadBalancer(AbstractModel):
                 obj._deserialize(item)
                 self.TargetAttributes.append(obj)
         self.LocationId = params.get("LocationId")
+        self.Region = params.get("Region")
 
 
 class HostNameSettings(AbstractModel):
@@ -2532,7 +2536,7 @@ class LaunchConfiguration(AbstractModel):
         :param HostNameSettings: 云服务器主机名（HostName）的相关设置。
         :type HostNameSettings: :class:`tencentcloud.autoscaling.v20180419.models.HostNameSettings`
         :param InstanceNameSettings: 云服务器实例名（InstanceName）的相关设置。
-        :type InstanceNameSettings: list of InstanceNameSettings
+        :type InstanceNameSettings: :class:`tencentcloud.autoscaling.v20180419.models.InstanceNameSettings`
         :param InstanceChargePrepaid: 预付费模式，即包年包月相关参数设置。通过该参数可以指定包年包月实例的购买时长、是否设置自动续费等属性。若指定实例的付费模式为预付费则该参数必传。
         :type InstanceChargePrepaid: :class:`tencentcloud.autoscaling.v20180419.models.InstanceChargePrepaid`
         """
@@ -2617,11 +2621,8 @@ class LaunchConfiguration(AbstractModel):
             self.HostNameSettings = HostNameSettings()
             self.HostNameSettings._deserialize(params.get("HostNameSettings"))
         if params.get("InstanceNameSettings") is not None:
-            self.InstanceNameSettings = []
-            for item in params.get("InstanceNameSettings"):
-                obj = InstanceNameSettings()
-                obj._deserialize(item)
-                self.InstanceNameSettings.append(obj)
+            self.InstanceNameSettings = InstanceNameSettings()
+            self.InstanceNameSettings._deserialize(params.get("InstanceNameSettings"))
         if params.get("InstanceChargePrepaid") is not None:
             self.InstanceChargePrepaid = InstanceChargePrepaid()
             self.InstanceChargePrepaid._deserialize(params.get("InstanceChargePrepaid"))
@@ -3771,7 +3772,7 @@ class UpgradeLaunchConfigurationRequest(AbstractModel):
         :param HostNameSettings: 云服务器主机名（HostName）的相关设置。
         :type HostNameSettings: :class:`tencentcloud.autoscaling.v20180419.models.HostNameSettings`
         :param InstanceNameSettings: 云服务器实例名（InstanceName）的相关设置。
-        :type InstanceNameSettings: list of InstanceNameSettings
+        :type InstanceNameSettings: :class:`tencentcloud.autoscaling.v20180419.models.InstanceNameSettings`
         :param InstanceChargePrepaid: 预付费模式，即包年包月相关参数设置。通过该参数可以指定包年包月实例的购买时长、是否设置自动续费等属性。若指定实例的付费模式为预付费则该参数必传。
         :type InstanceChargePrepaid: :class:`tencentcloud.autoscaling.v20180419.models.InstanceChargePrepaid`
         """
@@ -3839,11 +3840,8 @@ class UpgradeLaunchConfigurationRequest(AbstractModel):
             self.HostNameSettings = HostNameSettings()
             self.HostNameSettings._deserialize(params.get("HostNameSettings"))
         if params.get("InstanceNameSettings") is not None:
-            self.InstanceNameSettings = []
-            for item in params.get("InstanceNameSettings"):
-                obj = InstanceNameSettings()
-                obj._deserialize(item)
-                self.InstanceNameSettings.append(obj)
+            self.InstanceNameSettings = InstanceNameSettings()
+            self.InstanceNameSettings._deserialize(params.get("InstanceNameSettings"))
         if params.get("InstanceChargePrepaid") is not None:
             self.InstanceChargePrepaid = InstanceChargePrepaid()
             self.InstanceChargePrepaid._deserialize(params.get("InstanceChargePrepaid"))
