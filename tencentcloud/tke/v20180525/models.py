@@ -200,12 +200,18 @@ class ClusterAdvancedSettings(AbstractModel):
         :type NodeNameType: str
         :param ExtraArgs: 集群自定义参数
         :type ExtraArgs: :class:`tencentcloud.tke.v20180525.models.ClusterExtraArgs`
+        :param NetworkType: 集群网络类型（包括GR(全局路由)和VPC-CNI两种模式，默认为GR。
+        :type NetworkType: str
+        :param IsNonStaticIpMode: 集群VPC-CNI模式是否为非固定IP，默认: FALSE 固定IP。
+        :type IsNonStaticIpMode: bool
         """
         self.IPVS = None
         self.AsEnabled = None
         self.ContainerRuntime = None
         self.NodeNameType = None
         self.ExtraArgs = None
+        self.NetworkType = None
+        self.IsNonStaticIpMode = None
 
 
     def _deserialize(self, params):
@@ -216,6 +222,8 @@ class ClusterAdvancedSettings(AbstractModel):
         if params.get("ExtraArgs") is not None:
             self.ExtraArgs = ClusterExtraArgs()
             self.ExtraArgs._deserialize(params.get("ExtraArgs"))
+        self.NetworkType = params.get("NetworkType")
+        self.IsNonStaticIpMode = params.get("IsNonStaticIpMode")
 
 
 class ClusterAsGroup(AbstractModel):
@@ -408,11 +416,20 @@ class ClusterCIDRSettings(AbstractModel):
         :type MaxNodePodNum: int
         :param MaxClusterServiceNum: 集群最大的service数量。取值范围32～32768，不为2的幂值时会向上取最接近的2的幂值。
         :type MaxClusterServiceNum: int
+        :param ServiceCIDR: 用于分配集群服务 IP 的 CIDR，不得与 VPC CIDR 冲突，也不得与同 VPC 内其他集群 CIDR 冲突。且网段范围必须在内网网段内，例如:10.1.0.0/14, 192.168.0.1/18,172.16.0.0/16。
+        :type ServiceCIDR: str
+        :param EniSubnetIds: VPC-CNI网络模式下，弹性网卡的子网Id。
+        :type EniSubnetIds: list of str
+        :param ClaimExpiredSeconds: VPC-CNI网络模式下，弹性网卡IP的回收时间，取值范围[300,15768000)
+        :type ClaimExpiredSeconds: int
         """
         self.ClusterCIDR = None
         self.IgnoreClusterCIDRConflict = None
         self.MaxNodePodNum = None
         self.MaxClusterServiceNum = None
+        self.ServiceCIDR = None
+        self.EniSubnetIds = None
+        self.ClaimExpiredSeconds = None
 
 
     def _deserialize(self, params):
@@ -420,6 +437,9 @@ class ClusterCIDRSettings(AbstractModel):
         self.IgnoreClusterCIDRConflict = params.get("IgnoreClusterCIDRConflict")
         self.MaxNodePodNum = params.get("MaxNodePodNum")
         self.MaxClusterServiceNum = params.get("MaxClusterServiceNum")
+        self.ServiceCIDR = params.get("ServiceCIDR")
+        self.EniSubnetIds = params.get("EniSubnetIds")
+        self.ClaimExpiredSeconds = params.get("ClaimExpiredSeconds")
 
 
 class ClusterExtraArgs(AbstractModel):
@@ -874,7 +894,7 @@ class DataDisk(AbstractModel):
         """
         :param DiskType: 云盘类型
         :type DiskType: str
-        :param FileSystem: 文件系统
+        :param FileSystem: 文件系统(ext3/ext4/xfs)
         :type FileSystem: str
         :param DiskSize: 云盘大小(G）
         :type DiskSize: int
@@ -2125,7 +2145,7 @@ class LoginSettings(AbstractModel):
 
     def __init__(self):
         """
-        :param Password: 实例登录密码。不同操作系统类型密码复杂度限制不一样，具体如下：<br><li>Linux实例密码必须8到16位，至少包括两项[a-z，A-Z]、[0-9] 和 [( ) ` ~ ! @ # $ % ^ & * - + = | { } [ ] : ; ' , . ? / ]中的特殊符号。<br><li>Windows实例密码必须12到16位，至少包括三项[a-z]，[A-Z]，[0-9] 和 [( ) ` ~ ! @ # $ % ^ & * - + = { } [ ] : ; ' , . ? /]中的特殊符号。<br><br>若不指定该参数，则由系统随机生成密码，并通过站内信方式通知到用户。
+        :param Password: 实例登录密码。不同操作系统类型密码复杂度限制不一样，具体如下：<br><li>Linux实例密码必须8到30位，至少包括两项[a-z]，[A-Z]、[0-9] 和 [( ) \` ~ ! @ # $ % ^ & &#42;  - + = | { } [ ] : ; ' , . ? / ]中的特殊符号。<br><li>Windows实例密码必须12到30位，至少包括三项[a-z]，[A-Z]，[0-9] 和 [( ) \` ~ ! @ # $ % ^ & &#42; - + = | { } [ ] : ; ' , . ? /]中的特殊符号。<br><br>若不指定该参数，则由系统随机生成密码，并通过站内信方式通知到用户。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Password: str
         :param KeyIds: 密钥ID列表。关联密钥后，就可以通过对应的私钥来访问实例；KeyId可通过接口DescribeKeyPairs获取，密钥与密码不能同时指定，同时Windows操作系统不支持指定密钥。当前仅支持购买的时候指定一个密钥。

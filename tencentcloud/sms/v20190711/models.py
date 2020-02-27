@@ -431,6 +431,186 @@ class DeleteTemplateStatus(AbstractModel):
         self.DeleteTime = params.get("DeleteTime")
 
 
+class DescribeSignListStatus(AbstractModel):
+    """获取短信签名信息响应
+
+    """
+
+    def __init__(self):
+        """
+        :param SignId: 签名Id
+        :type SignId: int
+        :param International: 是否国际短信。其中：
+0：表示国内短信。
+1：表示海外短信。
+        :type International: int
+        :param StatusCode: 申请签名状态。其中：
+0：表示审核通过。
+-1：表示审核未通过或审核失败。
+        :type StatusCode: int
+        :param ReviewReply: 审核回复，审核人员审核后给出的回复，通常是审核未通过的原因。
+        :type ReviewReply: str
+        :param SignName: 签名名称。
+        :type SignName: str
+        :param CreateTime: 提交审核时间，UNIX 时间戳（单位：秒）。
+        :type CreateTime: int
+        """
+        self.SignId = None
+        self.International = None
+        self.StatusCode = None
+        self.ReviewReply = None
+        self.SignName = None
+        self.CreateTime = None
+
+
+    def _deserialize(self, params):
+        self.SignId = params.get("SignId")
+        self.International = params.get("International")
+        self.StatusCode = params.get("StatusCode")
+        self.ReviewReply = params.get("ReviewReply")
+        self.SignName = params.get("SignName")
+        self.CreateTime = params.get("CreateTime")
+
+
+class DescribeSmsSignListRequest(AbstractModel):
+    """DescribeSmsSignList请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param SignIdSet: 签名 ID 数组。
+        :type SignIdSet: list of int non-negative
+        :param International: 是否国际/港澳台短信：
+0：表示国内短信。
+1：表示国际/港澳台短信。
+        :type International: int
+        """
+        self.SignIdSet = None
+        self.International = None
+
+
+    def _deserialize(self, params):
+        self.SignIdSet = params.get("SignIdSet")
+        self.International = params.get("International")
+
+
+class DescribeSmsSignListResponse(AbstractModel):
+    """DescribeSmsSignList返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param DescribeSignListStatusSet: 获取签名信息响应
+        :type DescribeSignListStatusSet: list of DescribeSignListStatus
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.DescribeSignListStatusSet = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("DescribeSignListStatusSet") is not None:
+            self.DescribeSignListStatusSet = []
+            for item in params.get("DescribeSignListStatusSet"):
+                obj = DescribeSignListStatus()
+                obj._deserialize(item)
+                self.DescribeSignListStatusSet.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeSmsTemplateListRequest(AbstractModel):
+    """DescribeSmsTemplateList请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param TemplateIdSet: 模板 ID 数组。
+        :type TemplateIdSet: list of int non-negative
+        :param International: 是否国际/港澳台短信：
+0：表示国内短信。
+1：表示国际/港澳台短信。
+        :type International: int
+        """
+        self.TemplateIdSet = None
+        self.International = None
+
+
+    def _deserialize(self, params):
+        self.TemplateIdSet = params.get("TemplateIdSet")
+        self.International = params.get("International")
+
+
+class DescribeSmsTemplateListResponse(AbstractModel):
+    """DescribeSmsTemplateList返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param DescribeTemplateStatusSet: 获取短信签名信息响应
+        :type DescribeTemplateStatusSet: list of DescribeTemplateListStatus
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.DescribeTemplateStatusSet = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("DescribeTemplateStatusSet") is not None:
+            self.DescribeTemplateStatusSet = []
+            for item in params.get("DescribeTemplateStatusSet"):
+                obj = DescribeTemplateListStatus()
+                obj._deserialize(item)
+                self.DescribeTemplateStatusSet.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeTemplateListStatus(AbstractModel):
+    """获取短信模板信息响应
+
+    """
+
+    def __init__(self):
+        """
+        :param TemplateId: 模板Id
+        :type TemplateId: int
+        :param International: 是否国际短信。其中：
+0：表示国内短信。
+1：表示海外短信。
+        :type International: int
+        :param StatusCode: 申请签名状态。其中：
+0：表示审核通过。
+-1：表示审核未通过或审核失败。
+        :type StatusCode: int
+        :param ReviewReply: 审核回复，审核人员审核后给出的回复，通常是审核未通过的原因。
+        :type ReviewReply: str
+        :param TemplateName: 模板名称。
+        :type TemplateName: str
+        :param CreateTime: 提交审核时间，UNIX 时间戳（单位：秒）。
+        :type CreateTime: int
+        """
+        self.TemplateId = None
+        self.International = None
+        self.StatusCode = None
+        self.ReviewReply = None
+        self.TemplateName = None
+        self.CreateTime = None
+
+
+    def _deserialize(self, params):
+        self.TemplateId = params.get("TemplateId")
+        self.International = params.get("International")
+        self.StatusCode = params.get("StatusCode")
+        self.ReviewReply = params.get("ReviewReply")
+        self.TemplateName = params.get("TemplateName")
+        self.CreateTime = params.get("CreateTime")
+
+
 class ModifySignStatus(AbstractModel):
     """修改签名响应
 
@@ -931,7 +1111,8 @@ class SendSmsRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param PhoneNumberSet: 下发手机号码，采用 e.164 标准，+[国家或地区码][手机号] ，示例如：+8613711112222， 其中前面有一个+号 ，86为国家码，13711112222为手机号，最多不要超过200个手机号。
+        :param PhoneNumberSet: 下发手机号码，采用 e.164 标准，格式为+[国家或地区码][手机号]，单次请求最多支持200个手机号且要求全为境内手机号或全为境外手机号。
+例如：+8613711112222， 其中前面有一个+号 ，86为国家码，13711112222为手机号。
         :type PhoneNumberSet: list of str
         :param TemplateID: 模板 ID，必须填写已审核通过的模板 ID。模板ID可登录 [短信控制台](https://console.cloud.tencent.com/sms/smslist) 查看。
         :type TemplateID: str

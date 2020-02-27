@@ -927,6 +927,49 @@ class CreateLoadBalancerResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class CreateLoadBalancerSnatIpsRequest(AbstractModel):
+    """CreateLoadBalancerSnatIps请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param LoadBalancerId: 负载均衡唯一性Id，如lb-12345678
+        :type LoadBalancerId: str
+        :param SnatIps: 添加SnatIp信息，可指定Ip申请，或者指定子网自动申请
+        :type SnatIps: list of SnatIp
+        """
+        self.LoadBalancerId = None
+        self.SnatIps = None
+
+
+    def _deserialize(self, params):
+        self.LoadBalancerId = params.get("LoadBalancerId")
+        if params.get("SnatIps") is not None:
+            self.SnatIps = []
+            for item in params.get("SnatIps"):
+                obj = SnatIp()
+                obj._deserialize(item)
+                self.SnatIps.append(obj)
+
+
+class CreateLoadBalancerSnatIpsResponse(AbstractModel):
+    """CreateLoadBalancerSnatIps返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class CreateRuleRequest(AbstractModel):
     """CreateRule请求参数结构体
 
@@ -1071,6 +1114,44 @@ class DeleteListenerResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DeleteLoadBalancerListenersRequest(AbstractModel):
+    """DeleteLoadBalancerListeners请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param LoadBalancerId: 负载均衡实例 ID
+        :type LoadBalancerId: str
+        :param ListenerIds: 指定删除的监听器ID数组，若不填则删除负载均衡的所有监听器
+        :type ListenerIds: list of str
+        """
+        self.LoadBalancerId = None
+        self.ListenerIds = None
+
+
+    def _deserialize(self, params):
+        self.LoadBalancerId = params.get("LoadBalancerId")
+        self.ListenerIds = params.get("ListenerIds")
+
+
+class DeleteLoadBalancerListenersResponse(AbstractModel):
+    """DeleteLoadBalancerListeners返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class DeleteLoadBalancerRequest(AbstractModel):
     """DeleteLoadBalancer请求参数结构体
 
@@ -1090,6 +1171,44 @@ class DeleteLoadBalancerRequest(AbstractModel):
 
 class DeleteLoadBalancerResponse(AbstractModel):
     """DeleteLoadBalancer返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class DeleteLoadBalancerSnatIpsRequest(AbstractModel):
+    """DeleteLoadBalancerSnatIps请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param LoadBalancerId: 负载均衡唯一Id，如lb-12345678
+        :type LoadBalancerId: str
+        :param Ips: 删除SnatIp地址数组
+        :type Ips: list of str
+        """
+        self.LoadBalancerId = None
+        self.Ips = None
+
+
+    def _deserialize(self, params):
+        self.LoadBalancerId = params.get("LoadBalancerId")
+        self.Ips = params.get("Ips")
+
+
+class DeleteLoadBalancerSnatIpsResponse(AbstractModel):
+    """DeleteLoadBalancerSnatIps返回参数结构体
 
     """
 
@@ -2647,12 +2766,16 @@ class ListenerBackend(AbstractModel):
         :param Targets: 监听器上绑定的后端服务列表（仅适用于TCP/UDP/TCP_SSL监听器）
 注意：此字段可能返回 null，表示取不到有效值。
         :type Targets: list of Backend
+        :param EndPort: 若支持端口段，则为端口段结束端口；若不支持端口段，则为0
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EndPort: int
         """
         self.ListenerId = None
         self.Protocol = None
         self.Port = None
         self.Rules = None
         self.Targets = None
+        self.EndPort = None
 
 
     def _deserialize(self, params):
@@ -2671,6 +2794,7 @@ class ListenerBackend(AbstractModel):
                 obj = Backend()
                 obj._deserialize(item)
                 self.Targets.append(obj)
+        self.EndPort = params.get("EndPort")
 
 
 class ListenerHealth(AbstractModel):
@@ -3292,12 +3416,15 @@ class ModifyLoadBalancerAttributesRequest(AbstractModel):
         :type InternetChargeInfo: :class:`tencentcloud.clb.v20180317.models.InternetAccessible`
         :param LoadBalancerPassToTarget: Target是否放通来自CLB的流量。开启放通（true）：只验证CLB上的安全组；不开启放通（false）：需同时验证CLB和后端实例上的安全组。
         :type LoadBalancerPassToTarget: bool
+        :param SnatPro: 是否开启SnatPro
+        :type SnatPro: bool
         """
         self.LoadBalancerId = None
         self.LoadBalancerName = None
         self.TargetRegionInfo = None
         self.InternetChargeInfo = None
         self.LoadBalancerPassToTarget = None
+        self.SnatPro = None
 
 
     def _deserialize(self, params):
@@ -3310,6 +3437,7 @@ class ModifyLoadBalancerAttributesRequest(AbstractModel):
             self.InternetChargeInfo = InternetAccessible()
             self.InternetChargeInfo._deserialize(params.get("InternetChargeInfo"))
         self.LoadBalancerPassToTarget = params.get("LoadBalancerPassToTarget")
+        self.SnatPro = params.get("SnatPro")
 
 
 class ModifyLoadBalancerAttributesResponse(AbstractModel):

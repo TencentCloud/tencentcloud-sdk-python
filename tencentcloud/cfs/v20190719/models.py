@@ -116,11 +116,14 @@ class AvailableZone(AbstractModel):
         :type ZoneCnName: str
         :param Types: Type数组
         :type Types: list of AvailableType
+        :param ZoneName: 可用区中英文名称
+        :type ZoneName: str
         """
         self.Zone = None
         self.ZoneId = None
         self.ZoneCnName = None
         self.Types = None
+        self.ZoneName = None
 
 
     def _deserialize(self, params):
@@ -133,6 +136,7 @@ class AvailableZone(AbstractModel):
                 obj = AvailableType()
                 obj._deserialize(item)
                 self.Types.append(obj)
+        self.ZoneName = params.get("ZoneName")
 
 
 class CreateCfsFileSystemRequest(AbstractModel):
@@ -150,16 +154,18 @@ class CreateCfsFileSystemRequest(AbstractModel):
         :type PGroupId: str
         :param Protocol: 文件系统协议类型， 值为 NFS、CIFS; 若留空则默认为 NFS协议
         :type Protocol: str
-        :param StorageType: 文件系统存储类型，值为 SD ；其中 SD 为标准型存储
+        :param StorageType: 文件系统存储类型，值为 SD ；其中 SD 为标准型存储， HP为性能存储。
         :type StorageType: str
-        :param VpcId: 私有网路（VPC） ID
+        :param VpcId: 私有网络（VPC） ID，若网络类型选择的是VPC，该字段为必填。
         :type VpcId: str
-        :param SubnetId: 子网 ID
+        :param SubnetId: 子网 ID，若网络类型选择的是VPC，该字段为必填。
         :type SubnetId: str
         :param MountIP: 指定IP地址，仅VPC网络支持；若不填写、将在该子网下随机分配 IP
         :type MountIP: str
         :param FsName: 用户自定义文件系统名称
         :type FsName: str
+        :param ResourceTags: 文件系统标签
+        :type ResourceTags: list of TagInfo
         """
         self.Zone = None
         self.NetInterface = None
@@ -170,6 +176,7 @@ class CreateCfsFileSystemRequest(AbstractModel):
         self.SubnetId = None
         self.MountIP = None
         self.FsName = None
+        self.ResourceTags = None
 
 
     def _deserialize(self, params):
@@ -182,6 +189,12 @@ class CreateCfsFileSystemRequest(AbstractModel):
         self.SubnetId = params.get("SubnetId")
         self.MountIP = params.get("MountIP")
         self.FsName = params.get("FsName")
+        if params.get("ResourceTags") is not None:
+            self.ResourceTags = []
+            for item in params.get("ResourceTags"):
+                obj = TagInfo()
+                obj._deserialize(item)
+                self.ResourceTags.append(obj)
 
 
 class CreateCfsFileSystemResponse(AbstractModel):
@@ -591,10 +604,13 @@ class DescribeCfsFileSystemsResponse(AbstractModel):
         """
         :param FileSystems: 文件系统信息
         :type FileSystems: list of FileSystemInfo
+        :param TotalCount: 文件系统总数
+        :type TotalCount: int
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.FileSystems = None
+        self.TotalCount = None
         self.RequestId = None
 
 
@@ -605,6 +621,7 @@ class DescribeCfsFileSystemsResponse(AbstractModel):
                 obj = FileSystemInfo()
                 obj._deserialize(item)
                 self.FileSystems.append(obj)
+        self.TotalCount = params.get("TotalCount")
         self.RequestId = params.get("RequestId")
 
 
@@ -1001,6 +1018,27 @@ class SignUpCfsServiceResponse(AbstractModel):
     def _deserialize(self, params):
         self.CfsServiceStatus = params.get("CfsServiceStatus")
         self.RequestId = params.get("RequestId")
+
+
+class TagInfo(AbstractModel):
+    """Tag信息单元
+
+    """
+
+    def __init__(self):
+        """
+        :param TagKey: 标签键
+        :type TagKey: str
+        :param TagValue: 标签值
+        :type TagValue: str
+        """
+        self.TagKey = None
+        self.TagValue = None
+
+
+    def _deserialize(self, params):
+        self.TagKey = params.get("TagKey")
+        self.TagValue = params.get("TagValue")
 
 
 class UpdateCfsFileSystemNameRequest(AbstractModel):

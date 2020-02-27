@@ -53,34 +53,6 @@ class TcbClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def CreateMysqlInstance(self, request):
-        """创建mysql实例
-
-        :param request: Request instance for CreateMysqlInstance.
-        :type request: :class:`tencentcloud.tcb.v20180608.models.CreateMysqlInstanceRequest`
-        :rtype: :class:`tencentcloud.tcb.v20180608.models.CreateMysqlInstanceResponse`
-
-        """
-        try:
-            params = request._serialize()
-            body = self.call("CreateMysqlInstance", params)
-            response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.CreateMysqlInstanceResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(e.message, e.message)
-
-
     def DescribeDatabaseACL(self, request):
         """获取数据库权限
 
@@ -137,34 +109,6 @@ class TcbClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def IsolateMysqlInstance(self, request):
-        """隔离mysql实例
-
-        :param request: Request instance for IsolateMysqlInstance.
-        :type request: :class:`tencentcloud.tcb.v20180608.models.IsolateMysqlInstanceRequest`
-        :rtype: :class:`tencentcloud.tcb.v20180608.models.IsolateMysqlInstanceResponse`
-
-        """
-        try:
-            params = request._serialize()
-            body = self.call("IsolateMysqlInstance", params)
-            response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.IsolateMysqlInstanceResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(e.message, e.message)
-
-
     def ModifyDatabaseACL(self, request):
         """修改数据库权限
 
@@ -207,62 +151,6 @@ class TcbClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyEnvResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(e.message, e.message)
-
-
-    def OfflineMysqlInstance(self, request):
-        """下线mysql实例
-
-        :param request: Request instance for OfflineMysqlInstance.
-        :type request: :class:`tencentcloud.tcb.v20180608.models.OfflineMysqlInstanceRequest`
-        :rtype: :class:`tencentcloud.tcb.v20180608.models.OfflineMysqlInstanceResponse`
-
-        """
-        try:
-            params = request._serialize()
-            body = self.call("OfflineMysqlInstance", params)
-            response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.OfflineMysqlInstanceResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(e.message, e.message)
-
-
-    def UpgradeMysqlInstance(self, request):
-        """升级mysql实例
-
-        :param request: Request instance for UpgradeMysqlInstance.
-        :type request: :class:`tencentcloud.tcb.v20180608.models.UpgradeMysqlInstanceRequest`
-        :rtype: :class:`tencentcloud.tcb.v20180608.models.UpgradeMysqlInstanceResponse`
-
-        """
-        try:
-            params = request._serialize()
-            body = self.call("UpgradeMysqlInstance", params)
-            response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.UpgradeMysqlInstanceResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

@@ -214,6 +214,8 @@ class Address(AbstractModel):
         :type AddressType: str
         :param CascadeRelease: eip是否在解绑后自动释放。true表示eip将会在解绑后自动释放，false表示eip在解绑后不会自动释放
         :type CascadeRelease: bool
+        :param EipAlgType: EIP ALG开启的协议类型。
+        :type EipAlgType: :class:`tencentcloud.vpc.v20170312.models.AlgType`
         """
         self.AddressId = None
         self.AddressName = None
@@ -228,6 +230,7 @@ class Address(AbstractModel):
         self.IsEipDirectConnection = None
         self.AddressType = None
         self.CascadeRelease = None
+        self.EipAlgType = None
 
 
     def _deserialize(self, params):
@@ -244,6 +247,9 @@ class Address(AbstractModel):
         self.IsEipDirectConnection = params.get("IsEipDirectConnection")
         self.AddressType = params.get("AddressType")
         self.CascadeRelease = params.get("CascadeRelease")
+        if params.get("EipAlgType") is not None:
+            self.EipAlgType = AlgType()
+            self.EipAlgType._deserialize(params.get("EipAlgType"))
 
 
 class AddressTemplate(AbstractModel):
@@ -290,11 +296,14 @@ class AddressTemplateGroup(AbstractModel):
         :type AddressTemplateIdSet: list of str
         :param CreatedTime: 创建时间。
         :type CreatedTime: str
+        :param AddressTemplateSet: IP地址模板实例。
+        :type AddressTemplateSet: list of AddressTemplateItem
         """
         self.AddressTemplateGroupName = None
         self.AddressTemplateGroupId = None
         self.AddressTemplateIdSet = None
         self.CreatedTime = None
+        self.AddressTemplateSet = None
 
 
     def _deserialize(self, params):
@@ -302,6 +311,33 @@ class AddressTemplateGroup(AbstractModel):
         self.AddressTemplateGroupId = params.get("AddressTemplateGroupId")
         self.AddressTemplateIdSet = params.get("AddressTemplateIdSet")
         self.CreatedTime = params.get("CreatedTime")
+        if params.get("AddressTemplateSet") is not None:
+            self.AddressTemplateSet = []
+            for item in params.get("AddressTemplateSet"):
+                obj = AddressTemplateItem()
+                obj._deserialize(item)
+                self.AddressTemplateSet.append(obj)
+
+
+class AddressTemplateItem(AbstractModel):
+    """地址信息
+
+    """
+
+    def __init__(self):
+        """
+        :param From: 起始地址。
+        :type From: str
+        :param To: 结束地址。
+        :type To: str
+        """
+        self.From = None
+        self.To = None
+
+
+    def _deserialize(self, params):
+        self.From = params.get("From")
+        self.To = params.get("To")
 
 
 class AddressTemplateSpecification(AbstractModel):
@@ -323,6 +359,27 @@ class AddressTemplateSpecification(AbstractModel):
     def _deserialize(self, params):
         self.AddressId = params.get("AddressId")
         self.AddressGroupId = params.get("AddressGroupId")
+
+
+class AlgType(AbstractModel):
+    """ALG协议类型
+
+    """
+
+    def __init__(self):
+        """
+        :param Ftp: Ftp协议Alg功能是否开启
+        :type Ftp: bool
+        :param Sip: Sip协议Alg功能是否开启
+        :type Sip: bool
+        """
+        self.Ftp = None
+        self.Sip = None
+
+
+    def _deserialize(self, params):
+        self.Ftp = params.get("Ftp")
+        self.Sip = params.get("Sip")
 
 
 class AllocateAddressesRequest(AbstractModel):
@@ -990,6 +1047,8 @@ class CCN(AbstractModel):
         :param BandwidthLimitType: 限速类型，INTER_REGION_LIMIT为地域间限速；OUTER_REGION_LIMIT为地域出口限速。
 注意：此字段可能返回 null，表示取不到有效值。
         :type BandwidthLimitType: str
+        :param TagSet: 标签键值对。
+        :type TagSet: list of Tag
         """
         self.CcnId = None
         self.CcnName = None
@@ -1000,6 +1059,7 @@ class CCN(AbstractModel):
         self.QosLevel = None
         self.InstanceChargeType = None
         self.BandwidthLimitType = None
+        self.TagSet = None
 
 
     def _deserialize(self, params):
@@ -1012,6 +1072,12 @@ class CCN(AbstractModel):
         self.QosLevel = params.get("QosLevel")
         self.InstanceChargeType = params.get("InstanceChargeType")
         self.BandwidthLimitType = params.get("BandwidthLimitType")
+        if params.get("TagSet") is not None:
+            self.TagSet = []
+            for item in params.get("TagSet"):
+                obj = Tag()
+                obj._deserialize(item)
+                self.TagSet.append(obj)
 
 
 class CcnAttachedInstance(AbstractModel):
@@ -1464,12 +1530,15 @@ class CreateCcnRequest(AbstractModel):
         :type InstanceChargeType: str
         :param BandwidthLimitType: 限速类型，OUTER_REGION_LIMIT表示地域出口限速，INTER_REGION_LIMIT为地域间限速，默认为OUTER_REGION_LIMIT
         :type BandwidthLimitType: str
+        :param Tags: 指定绑定的标签列表，例如：[{"Key": "city", "Value": "shanghai"}]
+        :type Tags: list of Tag
         """
         self.CcnName = None
         self.CcnDescription = None
         self.QosLevel = None
         self.InstanceChargeType = None
         self.BandwidthLimitType = None
+        self.Tags = None
 
 
     def _deserialize(self, params):
@@ -1478,6 +1547,12 @@ class CreateCcnRequest(AbstractModel):
         self.QosLevel = params.get("QosLevel")
         self.InstanceChargeType = params.get("InstanceChargeType")
         self.BandwidthLimitType = params.get("BandwidthLimitType")
+        if params.get("Tags") is not None:
+            self.Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self.Tags.append(obj)
 
 
 class CreateCcnResponse(AbstractModel):
@@ -2133,14 +2208,23 @@ class CreateRouteTableRequest(AbstractModel):
         :type VpcId: str
         :param RouteTableName: 路由表名称，最大长度不能超过60个字节。
         :type RouteTableName: str
+        :param Tags: 指定绑定的标签列表，例如：[{"Key": "city", "Value": "shanghai"}]
+        :type Tags: list of Tag
         """
         self.VpcId = None
         self.RouteTableName = None
+        self.Tags = None
 
 
     def _deserialize(self, params):
         self.VpcId = params.get("VpcId")
         self.RouteTableName = params.get("RouteTableName")
+        if params.get("Tags") is not None:
+            self.Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self.Tags.append(obj)
 
 
 class CreateRouteTableResponse(AbstractModel):
@@ -2275,16 +2359,25 @@ class CreateSecurityGroupRequest(AbstractModel):
         :type GroupDescription: str
         :param ProjectId: 项目ID，默认0。可在qcloud控制台项目管理页面查询到。
         :type ProjectId: str
+        :param Tags: 指定绑定的标签列表，例如：[{"Key": "city", "Value": "shanghai"}]
+        :type Tags: list of Tag
         """
         self.GroupName = None
         self.GroupDescription = None
         self.ProjectId = None
+        self.Tags = None
 
 
     def _deserialize(self, params):
         self.GroupName = params.get("GroupName")
         self.GroupDescription = params.get("GroupDescription")
         self.ProjectId = params.get("ProjectId")
+        if params.get("Tags") is not None:
+            self.Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self.Tags.append(obj)
 
 
 class CreateSecurityGroupResponse(AbstractModel):
@@ -2413,11 +2506,14 @@ class CreateSubnetRequest(AbstractModel):
         :type CidrBlock: str
         :param Zone: 子网所在的可用区ID，不同子网选择不同可用区可以做跨可用区灾备。
         :type Zone: str
+        :param Tags: 指定绑定的标签列表，例如：[{"Key": "city", "Value": "shanghai"}]
+        :type Tags: list of Tag
         """
         self.VpcId = None
         self.SubnetName = None
         self.CidrBlock = None
         self.Zone = None
+        self.Tags = None
 
 
     def _deserialize(self, params):
@@ -2425,6 +2521,12 @@ class CreateSubnetRequest(AbstractModel):
         self.SubnetName = params.get("SubnetName")
         self.CidrBlock = params.get("CidrBlock")
         self.Zone = params.get("Zone")
+        if params.get("Tags") is not None:
+            self.Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self.Tags.append(obj)
 
 
 class CreateSubnetResponse(AbstractModel):
@@ -2461,9 +2563,12 @@ class CreateSubnetsRequest(AbstractModel):
         :type VpcId: str
         :param Subnets: 子网对象列表。
         :type Subnets: list of SubnetInput
+        :param Tags: 指定绑定的标签列表，注意这里的标签集合为列表中所有子网对象所共享，不能为每个子网对象单独指定标签，例如：[{"Key": "city", "Value": "shanghai"}]
+        :type Tags: list of Tag
         """
         self.VpcId = None
         self.Subnets = None
+        self.Tags = None
 
 
     def _deserialize(self, params):
@@ -2474,6 +2579,12 @@ class CreateSubnetsRequest(AbstractModel):
                 obj = SubnetInput()
                 obj._deserialize(item)
                 self.Subnets.append(obj)
+        if params.get("Tags") is not None:
+            self.Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self.Tags.append(obj)
 
 
 class CreateSubnetsResponse(AbstractModel):
@@ -2519,12 +2630,15 @@ class CreateVpcRequest(AbstractModel):
         :type DnsServers: list of str
         :param DomainName: 域名
         :type DomainName: str
+        :param Tags: 指定绑定的标签列表，例如：[{"Key": "city", "Value": "shanghai"}]
+        :type Tags: list of Tag
         """
         self.VpcName = None
         self.CidrBlock = None
         self.EnableMulticast = None
         self.DnsServers = None
         self.DomainName = None
+        self.Tags = None
 
 
     def _deserialize(self, params):
@@ -2533,6 +2647,12 @@ class CreateVpcRequest(AbstractModel):
         self.EnableMulticast = params.get("EnableMulticast")
         self.DnsServers = params.get("DnsServers")
         self.DomainName = params.get("DomainName")
+        if params.get("Tags") is not None:
+            self.Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self.Tags.append(obj)
 
 
 class CreateVpcResponse(AbstractModel):
@@ -5575,6 +5695,35 @@ class DescribeSecurityGroupAssociationStatisticsResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeSecurityGroupLimitsRequest(AbstractModel):
+    """DescribeSecurityGroupLimits请求参数结构体
+
+    """
+
+
+class DescribeSecurityGroupLimitsResponse(AbstractModel):
+    """DescribeSecurityGroupLimits返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param SecurityGroupLimitSet: 用户安全组配额限制。
+        :type SecurityGroupLimitSet: :class:`tencentcloud.vpc.v20170312.models.SecurityGroupLimitSet`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.SecurityGroupLimitSet = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("SecurityGroupLimitSet") is not None:
+            self.SecurityGroupLimitSet = SecurityGroupLimitSet()
+            self.SecurityGroupLimitSet._deserialize(params.get("SecurityGroupLimitSet"))
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeSecurityGroupPoliciesRequest(AbstractModel):
     """DescribeSecurityGroupPolicies请求参数结构体
 
@@ -6112,7 +6261,7 @@ class DescribeVpnConnectionsRequest(AbstractModel):
         """
         :param VpnConnectionIds: VPN通道实例ID。形如：vpnx-f49l6u0z。每次请求的实例的上限为100。参数不支持同时指定VpnConnectionIds和Filters。
         :type VpnConnectionIds: list of str
-        :param Filters: 过滤条件，详见下表：实例过滤条件表。每次请求的Filters的上限为10，Filter.Values的上限为5。参数不支持同时指定VpnConnectionIds和Filters。
+        :param Filters: 过滤条件。每次请求的Filters的上限为10，Filter.Values的上限为5。参数不支持同时指定VpnConnectionIds和Filters。
 <li>vpc-id - String - VPC实例ID，形如：`vpc-0a36uwkr`。</li>
 <li>vpn-gateway-id - String - VPN网关实例ID，形如：`vpngw-p4lmqawn`。</li>
 <li>customer-gateway-id - String - 对端网关实例ID，形如：`cgw-l4rblw63`。</li>
@@ -10151,6 +10300,8 @@ class RouteTable(AbstractModel):
         :type Main: bool
         :param CreatedTime: 创建时间。
         :type CreatedTime: str
+        :param TagSet: 标签键值对。
+        :type TagSet: list of Tag
         """
         self.VpcId = None
         self.RouteTableId = None
@@ -10159,6 +10310,7 @@ class RouteTable(AbstractModel):
         self.RouteSet = None
         self.Main = None
         self.CreatedTime = None
+        self.TagSet = None
 
 
     def _deserialize(self, params):
@@ -10179,6 +10331,12 @@ class RouteTable(AbstractModel):
                 self.RouteSet.append(obj)
         self.Main = params.get("Main")
         self.CreatedTime = params.get("CreatedTime")
+        if params.get("TagSet") is not None:
+            self.TagSet = []
+            for item in params.get("TagSet"):
+                obj = Tag()
+                obj._deserialize(item)
+                self.TagSet.append(obj)
 
 
 class RouteTableAssociation(AbstractModel):
@@ -10292,6 +10450,39 @@ class SecurityGroupAssociationStatistics(AbstractModel):
                 obj = InstanceStatistic()
                 obj._deserialize(item)
                 self.InstanceStatistics.append(obj)
+
+
+class SecurityGroupLimitSet(AbstractModel):
+    """用户安全组配额限制。
+
+    """
+
+    def __init__(self):
+        """
+        :param SecurityGroupLimit: 每个项目每个地域可创建安全组数
+        :type SecurityGroupLimit: int
+        :param SecurityGroupPolicyLimit: 安全组下的最大规则数
+        :type SecurityGroupPolicyLimit: int
+        :param ReferedSecurityGroupLimit: 安全组下嵌套安全组规则数
+        :type ReferedSecurityGroupLimit: int
+        :param SecurityGroupInstanceLimit: 单安全组关联实例数
+        :type SecurityGroupInstanceLimit: int
+        :param InstanceSecurityGroupLimit: 实例关联安全组数
+        :type InstanceSecurityGroupLimit: int
+        """
+        self.SecurityGroupLimit = None
+        self.SecurityGroupPolicyLimit = None
+        self.ReferedSecurityGroupLimit = None
+        self.SecurityGroupInstanceLimit = None
+        self.InstanceSecurityGroupLimit = None
+
+
+    def _deserialize(self, params):
+        self.SecurityGroupLimit = params.get("SecurityGroupLimit")
+        self.SecurityGroupPolicyLimit = params.get("SecurityGroupPolicyLimit")
+        self.ReferedSecurityGroupLimit = params.get("ReferedSecurityGroupLimit")
+        self.SecurityGroupInstanceLimit = params.get("SecurityGroupInstanceLimit")
+        self.InstanceSecurityGroupLimit = params.get("InstanceSecurityGroupLimit")
 
 
 class SecurityGroupPolicy(AbstractModel):
@@ -10455,11 +10646,14 @@ class ServiceTemplateGroup(AbstractModel):
         :type ServiceTemplateIdSet: list of str
         :param CreatedTime: 创建时间。
         :type CreatedTime: str
+        :param ServiceTemplateSet: 协议端口模板实例信息。
+        :type ServiceTemplateSet: list of ServiceTemplate
         """
         self.ServiceTemplateGroupId = None
         self.ServiceTemplateGroupName = None
         self.ServiceTemplateIdSet = None
         self.CreatedTime = None
+        self.ServiceTemplateSet = None
 
 
     def _deserialize(self, params):
@@ -10467,6 +10661,12 @@ class ServiceTemplateGroup(AbstractModel):
         self.ServiceTemplateGroupName = params.get("ServiceTemplateGroupName")
         self.ServiceTemplateIdSet = params.get("ServiceTemplateIdSet")
         self.CreatedTime = params.get("CreatedTime")
+        if params.get("ServiceTemplateSet") is not None:
+            self.ServiceTemplateSet = []
+            for item in params.get("ServiceTemplateSet"):
+                obj = ServiceTemplate()
+                obj._deserialize(item)
+                self.ServiceTemplateSet.append(obj)
 
 
 class ServiceTemplateSpecification(AbstractModel):
@@ -10566,6 +10766,10 @@ class Subnet(AbstractModel):
         :type NetworkAclId: str
         :param IsRemoteVpcSnat: 是否为 `SNAT` 地址池子网。
         :type IsRemoteVpcSnat: bool
+        :param TotalIpAddressCount: 子网`IP`总数。
+        :type TotalIpAddressCount: int
+        :param TagSet: 标签键值对。
+        :type TagSet: list of Tag
         """
         self.VpcId = None
         self.SubnetId = None
@@ -10580,6 +10784,8 @@ class Subnet(AbstractModel):
         self.Ipv6CidrBlock = None
         self.NetworkAclId = None
         self.IsRemoteVpcSnat = None
+        self.TotalIpAddressCount = None
+        self.TagSet = None
 
 
     def _deserialize(self, params):
@@ -10596,6 +10802,13 @@ class Subnet(AbstractModel):
         self.Ipv6CidrBlock = params.get("Ipv6CidrBlock")
         self.NetworkAclId = params.get("NetworkAclId")
         self.IsRemoteVpcSnat = params.get("IsRemoteVpcSnat")
+        self.TotalIpAddressCount = params.get("TotalIpAddressCount")
+        if params.get("TagSet") is not None:
+            self.TagSet = []
+            for item in params.get("TagSet"):
+                obj = Tag()
+                obj._deserialize(item)
+                self.TagSet.append(obj)
 
 
 class SubnetInput(AbstractModel):

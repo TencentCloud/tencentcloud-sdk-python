@@ -1231,7 +1231,7 @@ class LiveClient(AbstractClient):
 
 
     def DescribeLiveDomains(self, request):
-        """根据域名状态、类型等信息查询用户的域名信息
+        """根据域名状态、类型等信息查询用户的域名信息。
 
         :param request: Request instance for DescribeLiveDomains.
         :type request: :class:`tencentcloud.live.v20180801.models.DescribeLiveDomainsRequest`
@@ -2412,7 +2412,7 @@ class LiveClient(AbstractClient):
 
 
     def ModifyLivePlayDomain(self, request):
-        """修改播放域名信息
+        """修改播放域名信息。
 
         :param request: Request instance for ModifyLivePlayDomain.
         :type request: :class:`tencentcloud.live.v20180801.models.ModifyLivePlayDomainRequest`

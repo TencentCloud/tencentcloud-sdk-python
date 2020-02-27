@@ -2432,17 +2432,17 @@ class DescribeLiveDomainsRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param DomainStatus: 域名状态过滤。0-停用，1-启用
+        :param DomainStatus: 域名状态过滤。0-停用，1-启用。
         :type DomainStatus: int
-        :param DomainType: 域名类型过滤。0-推流，1-播放
+        :param DomainType: 域名类型过滤。0-推流，1-播放。
         :type DomainType: int
-        :param PageSize: 分页大小，范围：10~100。默认10
+        :param PageSize: 分页大小，范围：10~100。默认10。
         :type PageSize: int
-        :param PageNum: 取第几页，范围：1~100000。默认1
+        :param PageNum: 取第几页，范围：1~100000。默认1。
         :type PageNum: int
-        :param IsDelayLive: 0 普通直播 1慢直播 默认0
+        :param IsDelayLive: 0 普通直播 1慢直播 默认0。
         :type IsDelayLive: int
-        :param DomainPrefix: 域名前缀
+        :param DomainPrefix: 域名前缀。
         :type DomainPrefix: str
         """
         self.DomainStatus = None
@@ -2469,9 +2469,9 @@ class DescribeLiveDomainsResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param AllCount: 总记录数
+        :param AllCount: 总记录数。
         :type AllCount: int
-        :param DomainList: 域名详细信息列表
+        :param DomainList: 域名详细信息列表。
         :type DomainList: list of DomainInfo
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str

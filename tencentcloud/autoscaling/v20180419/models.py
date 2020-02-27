@@ -2653,6 +2653,8 @@ class LifecycleHook(AbstractModel):
         :type CreatedTime: str
         :param NotificationTarget: 通知目标
         :type NotificationTarget: :class:`tencentcloud.autoscaling.v20180419.models.NotificationTarget`
+        :param LifecycleTransitionType: 生命周期挂钩适用场景
+        :type LifecycleTransitionType: str
         """
         self.LifecycleHookId = None
         self.LifecycleHookName = None
@@ -2663,6 +2665,7 @@ class LifecycleHook(AbstractModel):
         self.NotificationMetadata = None
         self.CreatedTime = None
         self.NotificationTarget = None
+        self.LifecycleTransitionType = None
 
 
     def _deserialize(self, params):
@@ -2677,6 +2680,7 @@ class LifecycleHook(AbstractModel):
         if params.get("NotificationTarget") is not None:
             self.NotificationTarget = NotificationTarget()
             self.NotificationTarget._deserialize(params.get("NotificationTarget"))
+        self.LifecycleTransitionType = params.get("LifecycleTransitionType")
 
 
 class LimitedLoginSettings(AbstractModel):

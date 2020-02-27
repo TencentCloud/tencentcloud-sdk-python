@@ -1201,6 +1201,36 @@ class VodClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeMediaProcessUsageData(self, request):
+        """该接口返回查询时间范围内每天使用的视频处理用量信息。
+           1. 可以查询最近365天内的视频处理统计数据。
+           2. 查询时间跨度不超过90天。
+
+        :param request: Request instance for DescribeMediaProcessUsageData.
+        :type request: :class:`tencentcloud.vod.v20180717.models.DescribeMediaProcessUsageDataRequest`
+        :rtype: :class:`tencentcloud.vod.v20180717.models.DescribeMediaProcessUsageDataResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeMediaProcessUsageData", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeMediaProcessUsageDataResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribePersonSamples(self, request):
         """该接口用于查询人物样本信息，支持根据人物 ID、名称、标签，分页查询。
 
@@ -1330,6 +1360,66 @@ class VodClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeSnapshotByTimeOffsetTemplatesResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeStorageData(self, request):
+        """查询存储空间使用情况和文件数量。
+
+        :param request: Request instance for DescribeStorageData.
+        :type request: :class:`tencentcloud.vod.v20180717.models.DescribeStorageDataRequest`
+        :rtype: :class:`tencentcloud.vod.v20180717.models.DescribeStorageDataResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeStorageData", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeStorageDataResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeStorageDetails(self, request):
+        """该接口返回查询时间范围内使用的点播存储空间，单位：字节。
+           1. 可以查询最近365天内的存储空间数据；
+           2. 查询时间跨度不超过90天；
+           3. 分钟粒度查询跨度不超过5天；
+           4. 小时粒度查询跨度不超过10天。
+
+        :param request: Request instance for DescribeStorageDetails.
+        :type request: :class:`tencentcloud.vod.v20180717.models.DescribeStorageDetailsRequest`
+        :rtype: :class:`tencentcloud.vod.v20180717.models.DescribeStorageDetailsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeStorageDetails", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeStorageDetailsResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

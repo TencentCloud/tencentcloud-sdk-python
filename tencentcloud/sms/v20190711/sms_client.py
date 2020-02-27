@@ -26,7 +26,8 @@ class SmsClient(AbstractClient):
 
 
     def AddSmsSign(self, request):
-        """添加短信签名
+        """添加短信签名，申请之前请先认证参阅 [腾讯云短信签名审核标准](https://cloud.tencent.com/document/product/382/39022)。
+        >⚠️注意：个人认证用户不支持使用 API 申请短信签名，请参阅了解 [实名认证基本介绍](https://cloud.tencent.com/document/product/378/3629)，如果为个人认证请登录控制台申请短信签名，具体操作请参阅 [创建短信签名](https://cloud.tencent.com/document/product/382/36136#Sign)。
 
         :param request: Request instance for AddSmsSign.
         :type request: :class:`tencentcloud.sms.v20190711.models.AddSmsSignRequest`
@@ -54,7 +55,8 @@ class SmsClient(AbstractClient):
 
 
     def AddSmsTemplate(self, request):
-        """添加短信模板
+        """添加短信模版，申请之前请先认证参阅 [腾讯云短信正文模版审核标准](https://cloud.tencent.com/document/product/382/39023)。
+        >⚠️注意：个人认证用户不支持使用 API 申请短信正文模版，请参阅了解 [实名认证基本介绍](https://cloud.tencent.com/document/product/378/3629)，如果为个人认证请登录控制台申请短信正文模版，具体操作请参阅 [创建短信正文模版](https://cloud.tencent.com/document/product/382/36136#Template)。
 
         :param request: Request instance for AddSmsTemplate.
         :type request: :class:`tencentcloud.sms.v20190711.models.AddSmsTemplateRequest`
@@ -110,7 +112,7 @@ class SmsClient(AbstractClient):
 
 
     def DeleteSmsSign(self, request):
-        """删除短信签名
+        """>⚠️注意：个人认证用户不支持使用 API 删除短信签名，请参阅了解 [实名认证基本介绍](https://cloud.tencent.com/document/product/378/3629)，请登录控制台删除短信签名，具体操作请参阅 [短信签名操作](https://cloud.tencent.com/document/product/382/36136#Sign) 中查看删除短信签名须知。
 
         :param request: Request instance for DeleteSmsSign.
         :type request: :class:`tencentcloud.sms.v20190711.models.DeleteSmsSignRequest`
@@ -138,7 +140,7 @@ class SmsClient(AbstractClient):
 
 
     def DeleteSmsTemplate(self, request):
-        """删除短信模板
+        """>⚠️注意：个人认证用户不支持使用 API 删除短信正文模版，请参阅了解 [实名认证基本介绍](https://cloud.tencent.com/document/product/378/3629)，请登录控制台删除短信正文模版，具体操作请参阅 [短信正文模版操作](https://cloud.tencent.com/document/product/382/36136#Template) 中查看删除短信正文模版须知。
 
         :param request: Request instance for DeleteSmsTemplate.
         :type request: :class:`tencentcloud.sms.v20190711.models.DeleteSmsTemplateRequest`
@@ -165,8 +167,66 @@ class SmsClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeSmsSignList(self, request):
+        """>⚠️注意：个人认证用户不支持使用 API 查询短信签名，请参阅了解 [实名认证基本介绍](https://cloud.tencent.com/document/product/378/3629)。
+
+        :param request: Request instance for DescribeSmsSignList.
+        :type request: :class:`tencentcloud.sms.v20190711.models.DescribeSmsSignListRequest`
+        :rtype: :class:`tencentcloud.sms.v20190711.models.DescribeSmsSignListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeSmsSignList", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeSmsSignListResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeSmsTemplateList(self, request):
+        """>⚠️注意：个人认证用户不支持使用 API 查询短信正文模版，请参阅了解 [实名认证基本介绍](https://cloud.tencent.com/document/product/378/3629)。
+
+        :param request: Request instance for DescribeSmsTemplateList.
+        :type request: :class:`tencentcloud.sms.v20190711.models.DescribeSmsTemplateListRequest`
+        :rtype: :class:`tencentcloud.sms.v20190711.models.DescribeSmsTemplateListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeSmsTemplateList", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeSmsTemplateListResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def ModifySmsSign(self, request):
-        """修改短信签名
+        """修改短信签名，修改之前请先认证参阅 [腾讯云短信签名审核标准](https://cloud.tencent.com/document/product/382/39022)。
+        >- ⚠️注意：个人认证用户不支持使用 API 修改短信签名，请参阅了解 [实名认证基本介绍](https://cloud.tencent.com/document/product/378/3629)，如果为个人认证请登录控制台修改短信签名。
+        >- 修改短信签名，仅当签名为待审核或已拒绝状态时，才能进行修改，已审核通过的签名不支持修改。
 
         :param request: Request instance for ModifySmsSign.
         :type request: :class:`tencentcloud.sms.v20190711.models.ModifySmsSignRequest`
@@ -194,7 +254,9 @@ class SmsClient(AbstractClient):
 
 
     def ModifySmsTemplate(self, request):
-        """修改短信模板
+        """修改短信正文模版，修改之前请先认真参阅 [腾讯云短信正文模版审核标准](https://cloud.tencent.com/document/product/382/39023)。
+        >- ⚠️注意：个人认证用户不支持使用 API 修改短信正文模版，请参阅了解 [实名认证基本介绍](https://cloud.tencent.com/document/product/378/3629)，如果为个人认证请登录控制台申请短信正文模版。
+        >- 修改短信签名，仅当正文模版为待审核或已拒绝状态时，才能进行修改，已审核通过的正文模版不支持修改。
 
         :param request: Request instance for ModifySmsTemplate.
         :type request: :class:`tencentcloud.sms.v20190711.models.ModifySmsTemplateRequest`

@@ -31,11 +31,14 @@ class AccountCreateInfo(AbstractModel):
         :type DBPrivileges: list of DBPrivilege
         :param Remark: 账号备注信息
         :type Remark: str
+        :param IsAdmin: 是否为管理员账户，默认为否
+        :type IsAdmin: bool
         """
         self.UserName = None
         self.Password = None
         self.DBPrivileges = None
         self.Remark = None
+        self.IsAdmin = None
 
 
     def _deserialize(self, params):
@@ -48,6 +51,7 @@ class AccountCreateInfo(AbstractModel):
                 obj._deserialize(item)
                 self.DBPrivileges.append(obj)
         self.Remark = params.get("Remark")
+        self.IsAdmin = params.get("IsAdmin")
 
 
 class AccountDetail(AbstractModel):
@@ -279,7 +283,7 @@ class CreateAccountResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param FlowId: 任务流id
+        :param FlowId: 任务流ID
         :type FlowId: int
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -428,7 +432,7 @@ class CreateDBRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param InstanceId: 实例id
+        :param InstanceId: 实例ID
         :type InstanceId: str
         :param DBs: 数据库创建信息
         :type DBs: list of DBCreateInfo
@@ -454,7 +458,7 @@ class CreateDBResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param FlowId: 任务流id
+        :param FlowId: 任务流ID
         :type FlowId: int
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -479,7 +483,7 @@ class CreateMigrationRequest(AbstractModel):
         :type MigrateName: str
         :param MigrateType: 迁移类型（1:结构迁移 2:数据迁移 3:增量同步）
         :type MigrateType: int
-        :param SourceType: 迁移源的类型 1:CDB for SQLServer 2:云服务器自建SQLServer数据库 4:SQLServer备份还原 5:SQLServer备份还原（COS方式）
+        :param SourceType: 迁移源的类型 1:TencentDB for SQLServer 2:云服务器自建SQLServer数据库 4:SQLServer备份还原 5:SQLServer备份还原（COS方式）
         :type SourceType: int
         :param Source: 迁移源
         :type Source: :class:`tencentcloud.sqlserver.v20180328.models.MigrateSource`
@@ -847,7 +851,7 @@ class DealInfo(AbstractModel):
         :type DealName: str
         :param Count: 商品数量
         :type Count: int
-        :param FlowId: 关联的流程 Id，可用于查询流程执行状态
+        :param FlowId: 关联的流程 ID，可用于查询流程执行状态
         :type FlowId: int
         :param InstanceIdSet: 只有创建实例的订单会填充该字段，表示该订单创建的实例的 ID。
         :type InstanceIdSet: list of str
@@ -901,7 +905,7 @@ class DeleteAccountResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param FlowId: 任务流id
+        :param FlowId: 任务流ID
         :type FlowId: int
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -943,7 +947,7 @@ class DeleteDBResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param FlowId: 任务流id
+        :param FlowId: 任务流ID
         :type FlowId: int
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -1002,7 +1006,7 @@ class DescribeAccountsRequest(AbstractModel):
         :type InstanceId: str
         :param Limit: 分页返回，每页返回的数目，取值为1-100，默认值为20
         :type Limit: int
-        :param Offset: 分页返回，从第几页开始返回。从第0页开始，默认第0页
+        :param Offset: 分页返回，页编号，默认值为第0页
         :type Offset: int
         """
         self.InstanceId = None
@@ -1063,9 +1067,9 @@ class DescribeBackupsRequest(AbstractModel):
         :type EndTime: str
         :param InstanceId: 实例ID，形如mssql-njj2mtpl
         :type InstanceId: str
-        :param Limit: 分页返回，每页返回数量，默认为20，最大值为 100
+        :param Limit: 分页返回，每页返回的数目，取值为1-100，默认值为20
         :type Limit: int
-        :param Offset: 偏移量，默认为 0
+        :param Offset: 分页返回，页编号，默认值为第0页
         :type Offset: int
         """
         self.StartTime = None
@@ -1136,9 +1140,9 @@ class DescribeDBInstancesRequest(AbstractModel):
 <li>11：只读</li>
 <li>12：重启中</li>
         :type Status: int
-        :param Offset: 页数，默认为 0
+        :param Offset: 分页返回，页编号，默认值为第0页
         :type Offset: int
-        :param Limit: 页大小，默认为50
+        :param Limit: 分页返回，每页返回的数目，取值为1-100，默认值为100
         :type Limit: int
         :param InstanceIdSet: 一个或者多个实例ID。实例ID，格式如：mssql-si2823jyl
         :type InstanceIdSet: list of str
@@ -1201,9 +1205,9 @@ class DescribeDBsRequest(AbstractModel):
         """
         :param InstanceIdSet: 实例ID
         :type InstanceIdSet: list of str
-        :param Limit: 每页记录数，最大为100，默认20
+        :param Limit: 分页返回，每页返回的数目，取值为1-100，默认值为20
         :type Limit: int
-        :param Offset: 页编号，从第0页开始
+        :param Offset: 分页返回，页编号，默认值为第0页
         :type Offset: int
         """
         self.InstanceIdSet = None
@@ -1317,7 +1321,7 @@ class DescribeMigrationDetailResponse(AbstractModel):
         :type AppId: int
         :param Region: 迁移任务所属的地域
         :type Region: str
-        :param SourceType: 迁移源的类型 1:CDB for SQLServer 2:云服务器自建SQLServer数据库 4:SQLServer备份还原 5:SQLServer备份还原（COS方式）
+        :param SourceType: 迁移源的类型 1:TencentDB for SQLServer 2:云服务器自建SQLServer数据库 4:SQLServer备份还原 5:SQLServer备份还原（COS方式）
         :type SourceType: int
         :param CreateTime: 迁移任务的创建时间
         :type CreateTime: str
@@ -1395,9 +1399,9 @@ class DescribeMigrationsRequest(AbstractModel):
         :type StatusSet: list of int
         :param MigrateName: 迁移任务的名称，模糊匹配
         :type MigrateName: str
-        :param Limit: 每页的记录数
+        :param Limit: 分页返回，每页返回的数目，取值为1-100，默认值为100
         :type Limit: int
-        :param Offset: 查询第几页的记录
+        :param Offset: 分页返回，页编号，默认值为第0页
         :type Offset: int
         :param OrderBy: 查询结果按照关键字排序，可选值为name、createTime、startTime，endTime，status
         :type OrderBy: str
@@ -1641,9 +1645,9 @@ class DescribeSlowlogsRequest(AbstractModel):
         :type StartTime: str
         :param EndTime: 查询结束时间
         :type EndTime: str
-        :param Limit: 分页返回结果，分页大小，默认20，不超过100
+        :param Limit: 分页返回，每页返回的数目，取值为1-100，默认值为20
         :type Limit: int
-        :param Offset: 从第几页开始返回，起始页，从0开始，默认为0
+        :param Offset: 分页返回，页编号，默认值为第0页
         :type Offset: int
         """
         self.InstanceId = None
@@ -1775,9 +1779,9 @@ class InquiryPriceCreateDBInstancesResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param OriginalPrice: 未打折前价格，其值除以100表示多少钱。比如10010表示100.10元
+        :param OriginalPrice: 未打折前价格，其值除以100表示多少钱。例如10010表示100.10元
         :type OriginalPrice: int
-        :param Price: 实际需要支付的价格，其值除以100表示多少钱。比如10010表示100.10元
+        :param Price: 实际需要支付的价格，其值除以100表示多少钱。例如10010表示100.10元
         :type Price: int
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -1825,9 +1829,9 @@ class InquiryPriceRenewDBInstanceResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param OriginalPrice: 未打折的原价，其值除以100表示最终的价格。比如10094表示100.94元
+        :param OriginalPrice: 未打折的原价，其值除以100表示最终的价格。例如10094表示100.94元
         :type OriginalPrice: int
-        :param Price: 实际需要支付价格，其值除以100表示最终的价格。比如10094表示100.94元
+        :param Price: 实际需要支付价格，其值除以100表示最终的价格。例如10094表示100.94元
         :type Price: int
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -1875,9 +1879,9 @@ class InquiryPriceUpgradeDBInstanceResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param OriginalPrice: 未打折的原价，其值除以100表示最终的价格。比如10094表示100.94元
+        :param OriginalPrice: 未打折的原价，其值除以100表示最终的价格。例如10094表示100.94元
         :type OriginalPrice: int
-        :param Price: 实际需要支付价格，其值除以100表示最终的价格。比如10094表示100.94元
+        :param Price: 实际需要支付价格，其值除以100表示最终的价格。例如10094表示100.94元
         :type Price: int
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -1900,7 +1904,7 @@ class InstanceDBDetail(AbstractModel):
 
     def __init__(self):
         """
-        :param InstanceId: 实例id
+        :param InstanceId: 实例ID
         :type InstanceId: str
         :param DBDetails: 数据库信息列表
         :type DBDetails: list of DBDetail
@@ -1985,7 +1989,7 @@ class MigrateSource(AbstractModel):
 
     def __init__(self):
         """
-        :param InstanceId: 迁移源实例的ID，MigrateType=1(CDB for SQLServers)时使用，格式如：mssql-si2823jyl
+        :param InstanceId: 迁移源实例的ID，MigrateType=1(TencentDB for SQLServers)时使用，格式如：mssql-si2823jyl
         :type InstanceId: str
         :param CvmId: 迁移源Cvm的ID，MigrateType=2(云服务器自建SQLServer数据库)时使用
         :type CvmId: str
@@ -2071,7 +2075,7 @@ class MigrateTask(AbstractModel):
         :type AppId: int
         :param Region: 迁移任务所属的地域
         :type Region: str
-        :param SourceType: 迁移源的类型 1:CDB for SQLServer 2:云服务器自建SQLServer数据库 4:SQLServer备份还原 5:SQLServer备份还原（COS方式）
+        :param SourceType: 迁移源的类型 1:TencentDB for SQLServer 2:云服务器自建SQLServer数据库 4:SQLServer备份还原 5:SQLServer备份还原（COS方式）
         :type SourceType: int
         :param CreateTime: 迁移任务的创建时间
         :type CreateTime: str
@@ -2343,7 +2347,7 @@ class ModifyDBNameRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param InstanceId: 实例id
+        :param InstanceId: 实例ID
         :type InstanceId: str
         :param OldDBName: 旧数据库名
         :type OldDBName: str
@@ -2368,7 +2372,7 @@ class ModifyDBNameResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param FlowId: 任务流id
+        :param FlowId: 任务流ID
         :type FlowId: int
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -2438,7 +2442,7 @@ class ModifyMigrationRequest(AbstractModel):
         :type MigrateName: str
         :param MigrateType: 新的迁移类型（1:结构迁移 2:数据迁移 3:增量同步），若不填则不修改
         :type MigrateType: int
-        :param SourceType: 迁移源的类型 1:CDB for SQLServer 2:云服务器自建SQLServer数据库 4:SQLServer备份还原 5:SQLServer备份还原（COS方式），若不填则不修改
+        :param SourceType: 迁移源的类型 1:TencentDB for SQLServer 2:云服务器自建SQLServer数据库 4:SQLServer备份还原 5:SQLServer备份还原（COS方式），若不填则不修改
         :type SourceType: int
         :param Source: 迁移源，若不填则不修改
         :type Source: :class:`tencentcloud.sqlserver.v20180328.models.MigrateSource`

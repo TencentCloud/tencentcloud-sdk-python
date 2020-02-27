@@ -23,7 +23,7 @@ class AgentGroup(AbstractModel):
 
     def __init__(self):
         """
-        :param GroupId: 拨测分组Id
+        :param GroupId: 拨测分组ID
         :type GroupId: int
         :param GroupName: 拨测分组名称
         :type GroupName: str
@@ -114,7 +114,7 @@ class AlarmTopic(AbstractModel):
 
     def __init__(self):
         """
-        :param TopicId: 主题的Id
+        :param TopicId: 主题的ID
         :type TopicId: str
         :param TopicName: 主题的名称
         :type TopicName: str
@@ -216,15 +216,15 @@ class CatLog(AbstractModel):
         :type Time: str
         :param CatTypeName: 拨测类型
         :type CatTypeName: str
-        :param TaskId: 任务Id
+        :param TaskId: 任务ID
         :type TaskId: int
         :param City: 拨测点所在城市
         :type City: str
         :param Isp: 拨测点所在运营商
         :type Isp: str
-        :param ServerIp: 被拨测Server 的Ip
+        :param ServerIp: 被拨测Server的IP
         :type ServerIp: str
-        :param DomainName: 被拨测Server 的域名
+        :param DomainName: 被拨测Server的域名
         :type DomainName: str
         :param TotalTime: 执行耗时，单位毫秒
         :type TotalTime: int
@@ -240,7 +240,7 @@ class CatLog(AbstractModel):
         :type ReqMsg: str
         :param RespMsg: 拨测回应
         :type RespMsg: str
-        :param ClientIp: 客户端ip
+        :param ClientIp: 客户端IP
         :type ClientIp: str
         :param CityName: 拨测点所在城市名称
         :type CityName: str
@@ -321,7 +321,7 @@ class CatReturnDetail(AbstractModel):
         :type ProvinceName: str
         :param MapKey: Map键值
         :type MapKey: str
-        :param ServerIp: 拨测目标的ip
+        :param ServerIp: 拨测目标的IP
         :type ServerIp: str
         :param ResultCount: 拨测失败个数
         :type ResultCount: int
@@ -383,7 +383,7 @@ class CatTaskDetail(AbstractModel):
 
     def __init__(self):
         """
-        :param TaskId: 任务Id
+        :param TaskId: 任务ID
         :type TaskId: int
         :param TaskName: 任务名称
         :type TaskName: str
@@ -391,11 +391,11 @@ class CatTaskDetail(AbstractModel):
         :type Period: int
         :param CatTypeName: 拨测类型。http, https, ping, tcp 之一
         :type CatTypeName: str
-        :param CgiUrl: 拨测任务的Url
+        :param CgiUrl: 拨测任务的URL
         :type CgiUrl: str
-        :param AgentGroupId: 拨测分组id
+        :param AgentGroupId: 拨测分组ID
         :type AgentGroupId: int
-        :param PolicyGroupId: 告警策略组id
+        :param PolicyGroupId: 告警策略组ID
         :type PolicyGroupId: int
         :param Status: 任务状态。1表示暂停，2表示运行中，0为初始态
         :type Status: int
@@ -403,7 +403,7 @@ class CatTaskDetail(AbstractModel):
         :type AddTime: str
         :param Type: 任务类型。0 站点监控，2 可用性监控
         :type Type: int
-        :param TopicId: 绑定的统一告警主题Id
+        :param TopicId: 绑定的统一告警主题ID
         :type TopicId: str
         :param AlarmStatus: 告警状态。0 未启用，1, 启用
         :type AlarmStatus: int
@@ -415,9 +415,9 @@ class CatTaskDetail(AbstractModel):
         :type CheckStr: str
         :param CheckType: 1 表示通过检查结果是否包含CheckStr 进行校验
         :type CheckType: int
-        :param UserAgent: 用户agent 信息
+        :param UserAgent: 用户Agent信息
         :type UserAgent: str
-        :param Cookie: 设置的cookie信息
+        :param Cookie: 设置的Cookie信息
         :type Cookie: str
         :param PostData: POST 请求数据。空字符串表示非POST请求
         :type PostData: str
@@ -425,27 +425,27 @@ class CatTaskDetail(AbstractModel):
         :type SslVer: str
         :param IsHeader: 是否为Header请求。非0 Header 请求
         :type IsHeader: int
-        :param DnsSvr: 目的dns服务器
+        :param DnsSvr: 目的DNS服务器
         :type DnsSvr: str
-        :param DnsCheckIp: 需要检验是否在dns ip列表的ip
+        :param DnsCheckIp: 需要检验是否在DNS IP列表的IP
         :type DnsCheckIp: str
-        :param DnsQueryType: dns查询类型
+        :param DnsQueryType: DNS查询类型
         :type DnsQueryType: str
-        :param UserName: 登陆服务器的账号
+        :param UserName: 登录服务器的账号
         :type UserName: str
-        :param PassWord: 登陆服务器的密码
+        :param PassWord: 登录服务器的密码
         :type PassWord: str
-        :param UseSecConn: 是否使用安全链接ssl  0 不使用，1 使用
+        :param UseSecConn: 是否使用安全链接SSL， 0 不使用，1 使用
         :type UseSecConn: int
-        :param NeedAuth: ftp登陆验证方式  0 不验证  1 匿名登陆  2 需要身份验证
+        :param NeedAuth: FTP登录验证方式  0 不验证  1 匿名登录  2 需要身份验证
         :type NeedAuth: int
         :param ReqDataType: 请求数据类型。0 表示请求为字符串类型。1表示为二进制类型
         :type ReqDataType: int
-        :param ReqData: 发起tcp, udp请求的协议请求数据
+        :param ReqData: 发起TCP, UDP请求的协议请求数据
         :type ReqData: str
         :param RespDataType: 响应数据类型。0 表示响应为字符串类型。1表示为二进制类型
         :type RespDataType: int
-        :param RespData: 预期的udp请求的回应数据
+        :param RespData: 预期的UDP请求的回应数据
         :type RespData: str
         :param RedirectFollowNum: 跟随跳转次数
         :type RedirectFollowNum: int
@@ -581,53 +581,53 @@ class CreateTaskExRequest(AbstractModel):
         """
         :param CatTypeName: http, https, ping, tcp, ftp, smtp, udp, dns 之一
         :type CatTypeName: str
-        :param Url: 拨测的url  例如：www.qq.com (url域名解析需要能解析出具体的ip)
+        :param Url: 拨测的URL， 例如：www.qq.com (URL域名解析需要能解析出具体的IP)
         :type Url: str
         :param Period: 拨测周期。取值可为1,5,15,30之一, 单位：分钟。精度不能低于用户等级规定的最小精度
         :type Period: int
         :param TaskName: 拨测任务名称不能超过32个字符。同一个用户创建的任务名不可重复
         :type TaskName: str
-        :param AgentGroupId: 拨测分组id，体现本拨测任务要采用那些运营商作为拨测源。一般可直接填写本用户的默认拨测分组。参见：DescribeAgentGroups 接口，本参数使用返回结果里的GroupId的值。注意： Type为0时，AgentGroupId为必填
+        :param AgentGroupId: 拨测分组ID，体现本拨测任务要采用那些运营商作为拨测源。一般可直接填写本用户的默认拨测分组。参见：DescribeAgentGroups 接口，本参数使用返回结果里的GroupId的值。注意： Type为0时，AgentGroupId为必填
         :type AgentGroupId: int
         :param Host: 指定域名(如需要)
         :type Host: str
         :param IsHeader: 是否为Header请求（非0 发起Header 请求。为0，且PostData 非空，发起POST请求。为0，PostData 为空，发起GET请求）
         :type IsHeader: int
-        :param SslVer: url中含有https时有用。缺省为SSLv23。需要为 TLSv1_2, TLSv1_1, TLSv1, SSLv2, SSLv23, SSLv3 之一
+        :param SslVer: URL中含有"https"时有用。缺省为SSLv23。需要为 TLSv1_2, TLSv1_1, TLSv1, SSLv2, SSLv23, SSLv3 之一
         :type SslVer: str
-        :param PostData: POST 请求数据。空字符串表示非POST请求
+        :param PostData: POST请求数据。空字符串表示非POST请求
         :type PostData: str
-        :param UserAgent: 用户agent 信息
+        :param UserAgent: 用户Agent信息
         :type UserAgent: str
         :param CheckStr: 要在结果中进行匹配的字符串
         :type CheckStr: str
         :param CheckType: 1 表示通过检查结果是否包含CheckStr 进行校验
         :type CheckType: int
-        :param Cookie: 需要设置的cookie信息
+        :param Cookie: 需要设置的Cookie信息
         :type Cookie: str
-        :param TaskId: 任务号。用于验证且修改任务时传入原任务号
+        :param TaskId: 任务ID，用于验证且修改任务时传入原任务ID
         :type TaskId: int
-        :param UserName: 登陆服务器的账号。如果为空字符串，表示不用校验用户密码。只做简单连接服务器的拨测。
+        :param UserName: 登录服务器的账号。如果为空字符串，表示不用校验用户密码。只做简单连接服务器的拨测
         :type UserName: str
-        :param PassWord: 登陆服务器的密码
+        :param PassWord: 登录服务器的密码
         :type PassWord: str
         :param ReqDataType: 缺省为0。0 表示请求为字符串类型。1表示为二进制类型
         :type ReqDataType: int
-        :param ReqData: 发起tcp, udp请求的协议请求数据
+        :param ReqData: 发起TCP, UDP请求的协议请求数据
         :type ReqData: str
         :param RespDataType: 缺省为0。0 表示响应为字符串类型。1表示为二进制类型
         :type RespDataType: int
-        :param RespData: 预期的udp请求的回应数据。字符串型，只需要返回的结果里包含本字符串算校验通过。二进制型，则需要严格等于才算通过
+        :param RespData: 预期的UDP请求的回应数据。字符串型，只需要返回的结果里包含本字符串算校验通过。二进制型，则需要严格等于才算通过
         :type RespData: str
-        :param DnsSvr: 目的dns服务器  可以为空字符串
+        :param DnsSvr: 目的DNS服务器  可以为空字符串
         :type DnsSvr: str
-        :param DnsCheckIp: 需要检验是否在dns ip列表的ip。可以为空字符串，表示不校验
+        :param DnsCheckIp: 需要检验是否在DNS IP列表的IP。可以为空字符串，表示不校验
         :type DnsCheckIp: str
         :param DnsQueryType: 需要为下列值之一。缺省为A。A, MX, NS, CNAME, TXT, ANY
         :type DnsQueryType: str
-        :param UseSecConn: 是否使用安全链接ssl  0 不使用，1 使用
+        :param UseSecConn: 是否使用安全链接SSL， 0 不使用，1 使用
         :type UseSecConn: int
-        :param NeedAuth: ftp登陆验证方式  0 不验证  1 匿名登陆  2 需要身份验证
+        :param NeedAuth: FTP登录验证方式， 0 不验证 ， 1 匿名登录， 2 需要身份验证
         :type NeedAuth: int
         :param Port: 拨测目标的端口号
         :type Port: int
@@ -708,9 +708,9 @@ class CreateTaskExResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param ResultId: 拨测结果查询id。接下来可以使用查询拨测是否能够成功，验证能否通过。
+        :param ResultId: 拨测结果查询ID。接下来可以使用查询拨测是否能够成功，验证能否通过。
         :type ResultId: int
-        :param TaskId: 拨测任务id。验证通过后，创建任务时使用，传递给CreateTask 接口。
+        :param TaskId: 拨测任务ID。验证通过后，创建任务时使用，传递给CreateTask 接口。
         :type TaskId: int
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -1983,55 +1983,55 @@ class ModifyTaskExRequest(AbstractModel):
         """
         :param CatTypeName: http, https, ping, tcp, ftp, smtp, udp, dns 之一
         :type CatTypeName: str
-        :param Url: 拨测的url  例如：www.qq.com (url域名解析需要能解析出具体的ip)
+        :param Url: 拨测的URL，例如：www.qq.com (URL域名解析需要能解析出具体的IP)
         :type Url: str
         :param Period: 拨测周期。取值可为1,5,15,30之一, 单位：分钟。精度不能低于用户等级规定的最小精度
         :type Period: int
         :param TaskName: 拨测任务名称不能超过32个字符。同一个用户创建的任务名不可重复
         :type TaskName: str
-        :param TaskId: 验证成功的拨测任务id
+        :param TaskId: 验证成功的拨测任务ID
         :type TaskId: int
-        :param AgentGroupId: 拨测分组id，体现本拨测任务要采用那些运营商作为拨测源。一般可直接填写本用户的默认拨测分组。参见：DescribeAgentGroupList 接口，本参数使用返回结果里的groupId的值。注意，Type为0时，AgentGroupId为必填
+        :param AgentGroupId: 拨测分组ID，体现本拨测任务要采用那些运营商作为拨测源。一般可直接填写本用户的默认拨测分组。参见：DescribeAgentGroupList 接口，本参数使用返回结果里的GroupId的值。注意，Type为0时，AgentGroupId为必填
         :type AgentGroupId: int
         :param Host: 指定域名(如需要)
         :type Host: str
         :param Port: 拨测目标的端口号
         :type Port: int
-        :param IsHeader: 是否为Header请求（非0 发起Header 请求。为0，且PostData 非空，发起POST请求。为0，PostData 为空，发起GET请求）
+        :param IsHeader: 是否为Header请求（非0 发起Header 请求。为0，且PostData非空，发起POST请求。为0，PostData为空，发起GET请求）
         :type IsHeader: int
-        :param SslVer: url中含有https时有用。缺省为SSLv23。需要为 TLSv1_2, TLSv1_1, TLSv1, SSLv2, SSLv23, SSLv3 之一
+        :param SslVer: URL中含有"https"时有用。缺省为SSLv23。需要为 TLSv1_2, TLSv1_1, TLSv1, SSLv2, SSLv23, SSLv3 之一
         :type SslVer: str
-        :param PostData: POST 请求数据。空字符串表示非POST请求
+        :param PostData: POST 请求数据，空字符串表示非POST请求
         :type PostData: str
-        :param UserAgent: 用户agent 信息
+        :param UserAgent: 用户Agent信息
         :type UserAgent: str
         :param CheckStr: 要在结果中进行匹配的字符串
         :type CheckStr: str
-        :param CheckType: 1 表示通过检查结果是否包含checkStr 进行校验
+        :param CheckType: 1 表示通过检查结果是否包含CheckStr 进行校验
         :type CheckType: int
-        :param Cookie: 需要设置的cookie信息
+        :param Cookie: 需要设置的Cookie信息
         :type Cookie: str
-        :param UserName: 登陆服务器的账号。如果为空字符串，表示不用校验用户密码。只做简单连接服务器的拨测。
+        :param UserName: 登录服务器的账号。如果为空字符串，表示不用校验用户密码。只做简单连接服务器的拨测
         :type UserName: str
-        :param PassWord: 登陆服务器的密码
+        :param PassWord: 登录服务器的密码
         :type PassWord: str
-        :param ReqDataType: 缺省为0。0 表示请求为字符串类型。1表示为二进制类型
+        :param ReqDataType: 缺省为0，0 表示请求为字符串类型, 1表示为二进制类型
         :type ReqDataType: int
-        :param ReqData: 发起tcp, udp请求的协议请求数据
+        :param ReqData: 发起TCP, UDP请求的协议请求数据
         :type ReqData: str
         :param RespDataType: 缺省为0。0 表示请求为字符串类型。1表示为二进制类型
         :type RespDataType: str
-        :param RespData: 预期的udp请求的回应数据。字符串型，只需要返回的结果里包含本字符串算校验通过。二进制型，则需要严格等于才算通过
+        :param RespData: 预期的UDP请求的回应数据。字符串型，只需要返回的结果里包含本字符串算校验通过。二进制型，则需要严格等于才算通过
         :type RespData: str
-        :param DnsSvr: 目的dns服务器  可以为空字符串
+        :param DnsSvr: 目的DNS服务器，可以为空字符串
         :type DnsSvr: str
-        :param DnsCheckIp: 需要检验是否在dns ip列表的ip。可以为空字符串，表示不校验
+        :param DnsCheckIp: 需要检验是否在DNS IP列表的IP。可以为空字符串，表示不校验
         :type DnsCheckIp: str
         :param DnsQueryType: 需要为下列值之一。缺省为A。A, MX, NS, CNAME, TXT, ANY
         :type DnsQueryType: str
-        :param UseSecConn: 是否使用安全链接ssl  0 不使用，1 使用
+        :param UseSecConn: 是否使用安全链接SSL， 0 不使用，1 使用
         :type UseSecConn: int
-        :param NeedAuth: ftp登陆验证方式  0 不验证  1 匿名登陆  2 需要身份验证
+        :param NeedAuth: FTP登录验证方式，  0 不验证  1 匿名登录  2 需要身份验证
         :type NeedAuth: int
         :param Type: Type=0 默认 （站点监控） Type=2 可用率监控
         :type Type: int
@@ -2106,7 +2106,7 @@ class ModifyTaskExResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param TaskId: 拨测任务id。验证通过后，创建任务时使用，传递给CreateTask 接口。
+        :param TaskId: 拨测任务ID。验证通过后，创建任务时使用，传递给CreateTask 接口。
         :type TaskId: int
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -2209,7 +2209,7 @@ class ResultSummary(AbstractModel):
         """
         :param LogTime: 统计时间
         :type LogTime: str
-        :param TaskId: 任务Id
+        :param TaskId: 任务ID
         :type TaskId: int
         :param AvailRatio: 实时可用率
         :type AvailRatio: float
@@ -2270,7 +2270,7 @@ class TaskAlarm(AbstractModel):
 
     def __init__(self):
         """
-        :param TaskId: 任务Id
+        :param TaskId: 任务ID
         :type TaskId: int
         :param TaskName: 任务名称
         :type TaskName: str
@@ -2280,7 +2280,7 @@ class TaskAlarm(AbstractModel):
         :type CatTypeName: str
         :param Status: 任务状态。1表示暂停，2表示运行中，0为初始态
         :type Status: int
-        :param CgiUrl: 拨测任务的Url
+        :param CgiUrl: 拨测任务的URL
         :type CgiUrl: str
         :param AddTime: 任务创建时间
         :type AddTime: str

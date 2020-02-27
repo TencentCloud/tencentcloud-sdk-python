@@ -4789,6 +4789,11 @@ class CreateContentReviewTemplateRequest(AbstractModel):
         :type TerrorismConfigure: :class:`tencentcloud.vod.v20180717.models.TerrorismConfigureInfo`
         :param PoliticalConfigure: 鉴政控制参数。
         :type PoliticalConfigure: :class:`tencentcloud.vod.v20180717.models.PoliticalConfigureInfo`
+        :param ProhibitedConfigure: 违禁控制参数。违禁内容包括：
+<li>谩骂；</li>
+<li>涉毒违法。</li>
+注意：此参数尚未支持。
+        :type ProhibitedConfigure: :class:`tencentcloud.vod.v20180717.models.ProhibitedConfigureInfo`
         :param UserDefineConfigure: 用户自定义内容审核控制参数。
         :type UserDefineConfigure: :class:`tencentcloud.vod.v20180717.models.UserDefineConfigureInfo`
         :param ScreenshotInterval: 截帧间隔，单位为秒。当不填时，默认截帧间隔为 1 秒，最小值为 0.5 秒。
@@ -4802,6 +4807,7 @@ class CreateContentReviewTemplateRequest(AbstractModel):
         self.PornConfigure = None
         self.TerrorismConfigure = None
         self.PoliticalConfigure = None
+        self.ProhibitedConfigure = None
         self.UserDefineConfigure = None
         self.ScreenshotInterval = None
         self.SubAppId = None
@@ -4820,6 +4826,9 @@ class CreateContentReviewTemplateRequest(AbstractModel):
         if params.get("PoliticalConfigure") is not None:
             self.PoliticalConfigure = PoliticalConfigureInfo()
             self.PoliticalConfigure._deserialize(params.get("PoliticalConfigure"))
+        if params.get("ProhibitedConfigure") is not None:
+            self.ProhibitedConfigure = ProhibitedConfigureInfo()
+            self.ProhibitedConfigure._deserialize(params.get("ProhibitedConfigure"))
         if params.get("UserDefineConfigure") is not None:
             self.UserDefineConfigure = UserDefineConfigureInfo()
             self.UserDefineConfigure._deserialize(params.get("UserDefineConfigure"))
@@ -6713,6 +6722,62 @@ class DescribeMediaInfosResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeMediaProcessUsageDataRequest(AbstractModel):
+    """DescribeMediaProcessUsageData请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param StartTime: 起始日期。使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F)。
+        :type StartTime: str
+        :param EndTime: 结束日期，需大于等于起始日期。使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F)。
+        :type EndTime: str
+        :param Type: 查询视频处理任务类型，默认查询转码。目前只支持转码类型数据查询。
+<li>Transcode: 转码</li>
+        :type Type: str
+        :param SubAppId: 点播 [子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
+        :type SubAppId: int
+        """
+        self.StartTime = None
+        self.EndTime = None
+        self.Type = None
+        self.SubAppId = None
+
+
+    def _deserialize(self, params):
+        self.StartTime = params.get("StartTime")
+        self.EndTime = params.get("EndTime")
+        self.Type = params.get("Type")
+        self.SubAppId = params.get("SubAppId")
+
+
+class DescribeMediaProcessUsageDataResponse(AbstractModel):
+    """DescribeMediaProcessUsageData返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param MediaProcessDataSet: 视频处理统计数据概览，展示所查询任务的概览以及详细数据。
+        :type MediaProcessDataSet: list of TaskStatData
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.MediaProcessDataSet = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("MediaProcessDataSet") is not None:
+            self.MediaProcessDataSet = []
+            for item in params.get("MediaProcessDataSet"):
+                obj = TaskStatData()
+                obj._deserialize(item)
+                self.MediaProcessDataSet.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class DescribePersonSamplesRequest(AbstractModel):
     """DescribePersonSamples请求参数结构体
 
@@ -7043,6 +7108,124 @@ class DescribeSnapshotByTimeOffsetTemplatesResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeStorageDataRequest(AbstractModel):
+    """DescribeStorageData请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param SubAppId: 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
+        :type SubAppId: int
+        """
+        self.SubAppId = None
+
+
+    def _deserialize(self, params):
+        self.SubAppId = params.get("SubAppId")
+
+
+class DescribeStorageDataResponse(AbstractModel):
+    """DescribeStorageData返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param MediaCount: 当前媒体总量。
+        :type MediaCount: int
+        :param TotalStorage: 当前总存储量，单位是字节。
+        :type TotalStorage: int
+        :param InfrequentStorage: 当前低频存储量，单位是字节。
+        :type InfrequentStorage: int
+        :param StandardStorage: 当前标准存储量，单位是字节。
+        :type StandardStorage: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.MediaCount = None
+        self.TotalStorage = None
+        self.InfrequentStorage = None
+        self.StandardStorage = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.MediaCount = params.get("MediaCount")
+        self.TotalStorage = params.get("TotalStorage")
+        self.InfrequentStorage = params.get("InfrequentStorage")
+        self.StandardStorage = params.get("StandardStorage")
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeStorageDetailsRequest(AbstractModel):
+    """DescribeStorageDetails请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param StartTime: 起始时间，格式按照 ISO 8601 标准表示，详见 [ISO 日期格式说明](https://cloud.tencent.com/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F)。
+        :type StartTime: str
+        :param EndTime: 结束时间，需大于开始日期，格式按照 ISO 8601 标准表示，详见 [ISO 日期格式说明](https://cloud.tencent.com/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F)。
+        :type EndTime: str
+        :param Interval: 查询时间间隔，有效值：
+<li>Minute：每分钟一个统计数据。</li>
+<li>Hour：每小时一个统计数据。</li>
+<li>Day：每天一个统计数据。</li>
+默认按时间跨度决定，小于1小时按分钟，小于等于7天按小时，大于7天按天展示。
+        :type Interval: str
+        :param StorageType: 查询的存储类型，有效值：
+<li>TotalStorage：存储总量。</li>
+<li>StandardStorage：标准存储。</li>
+<li>InfrequentStorage：低频存储。</li>
+默认值为 TotalStorage。
+        :type StorageType: str
+        :param SubAppId: 点播 [子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
+当该字段为1时，表示以管理员身份查询所有子应用（含主应用）的用量合计。
+        :type SubAppId: int
+        """
+        self.StartTime = None
+        self.EndTime = None
+        self.Interval = None
+        self.StorageType = None
+        self.SubAppId = None
+
+
+    def _deserialize(self, params):
+        self.StartTime = params.get("StartTime")
+        self.EndTime = params.get("EndTime")
+        self.Interval = params.get("Interval")
+        self.StorageType = params.get("StorageType")
+        self.SubAppId = params.get("SubAppId")
+
+
+class DescribeStorageDetailsResponse(AbstractModel):
+    """DescribeStorageDetails返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Data: 存储统计数据，每分钟/小时/天一条数据。
+        :type Data: list of StatDataItem
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Data = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self.Data = []
+            for item in params.get("Data"):
+                obj = StatDataItem()
+                obj._deserialize(item)
+                self.Data.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeSubAppIdsRequest(AbstractModel):
     """DescribeSubAppIds请求参数结构体
 
@@ -7123,11 +7306,11 @@ class DescribeTaskDetailResponse(AbstractModel):
 <li>PROCESSING：处理中；</li>
 <li>FINISH：已完成。</li>
         :type Status: str
-        :param CreateTime: 任务的创建时间，采用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F)。
+        :param CreateTime: 任务的创建时间，采用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。
         :type CreateTime: str
-        :param BeginProcessTime: 任务开始执行的时间，采用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F)。
+        :param BeginProcessTime: 任务开始执行的时间，采用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。
         :type BeginProcessTime: str
-        :param FinishTime: 任务执行完毕的时间，采用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F)。
+        :param FinishTime: 任务执行完毕的时间，采用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。
         :type FinishTime: str
         :param ProcedureTask: 视频处理任务信息，仅当 TaskType 为 Procedure，该字段有值。
 注意：此字段可能返回 null，表示取不到有效值。
@@ -7659,6 +7842,8 @@ class EditMediaRequest(AbstractModel):
         :type OutputConfig: :class:`tencentcloud.vod.v20180717.models.EditMediaOutputConfig`
         :param SessionContext: 标识来源上下文，用于透传用户请求信息，在EditMediaComplete回调和任务流状态变更回调将返回该字段值，最长 1000个字符。
         :type SessionContext: str
+        :param TasksPriority: 任务的优先级，数值越大优先级越高，取值范围是 -10 到 10，不填代表 0。
+        :type TasksPriority: int
         :param SessionId: 用于任务去重的识别码，如果一天内曾有过相同的识别码的请求，则本次的请求会返回错误。最长 50 个字符，不带或者带空字符串表示不做去重。
         :type SessionId: str
         :param SubAppId: 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
@@ -7671,6 +7856,7 @@ class EditMediaRequest(AbstractModel):
         self.ProcedureName = None
         self.OutputConfig = None
         self.SessionContext = None
+        self.TasksPriority = None
         self.SessionId = None
         self.SubAppId = None
 
@@ -7695,6 +7881,7 @@ class EditMediaRequest(AbstractModel):
             self.OutputConfig = EditMediaOutputConfig()
             self.OutputConfig._deserialize(params.get("OutputConfig"))
         self.SessionContext = params.get("SessionContext")
+        self.TasksPriority = params.get("TasksPriority")
         self.SessionId = params.get("SessionId")
         self.SubAppId = params.get("SubAppId")
 
@@ -11001,6 +11188,11 @@ class ModifyContentReviewTemplateRequest(AbstractModel):
         :type TerrorismConfigure: :class:`tencentcloud.vod.v20180717.models.TerrorismConfigureInfoForUpdate`
         :param PoliticalConfigure: 鉴政控制参数。
         :type PoliticalConfigure: :class:`tencentcloud.vod.v20180717.models.PoliticalConfigureInfoForUpdate`
+        :param ProhibitedConfigure: 违禁控制参数。违禁内容包括：
+<li>谩骂；</li>
+<li>涉毒违法。</li>
+注意：此参数尚未支持。
+        :type ProhibitedConfigure: :class:`tencentcloud.vod.v20180717.models.ProhibitedConfigureInfoForUpdate`
         :param UserDefineConfigure: 用户自定义内容审核控制参数。
         :type UserDefineConfigure: :class:`tencentcloud.vod.v20180717.models.UserDefineConfigureInfoForUpdate`
         :param ScreenshotInterval: 截帧间隔，单位为秒，最小值为 0.5 秒。
@@ -11018,6 +11210,7 @@ class ModifyContentReviewTemplateRequest(AbstractModel):
         self.PornConfigure = None
         self.TerrorismConfigure = None
         self.PoliticalConfigure = None
+        self.ProhibitedConfigure = None
         self.UserDefineConfigure = None
         self.ScreenshotInterval = None
         self.ReviewWallSwitch = None
@@ -11037,6 +11230,9 @@ class ModifyContentReviewTemplateRequest(AbstractModel):
         if params.get("PoliticalConfigure") is not None:
             self.PoliticalConfigure = PoliticalConfigureInfoForUpdate()
             self.PoliticalConfigure._deserialize(params.get("PoliticalConfigure"))
+        if params.get("ProhibitedConfigure") is not None:
+            self.ProhibitedConfigure = ProhibitedConfigureInfoForUpdate()
+            self.ProhibitedConfigure._deserialize(params.get("ProhibitedConfigure"))
         if params.get("UserDefineConfigure") is not None:
             self.UserDefineConfigure = UserDefineConfigureInfoForUpdate()
             self.UserDefineConfigure._deserialize(params.get("UserDefineConfigure"))
@@ -13050,6 +13246,33 @@ class ProhibitedAsrReviewTemplateInfo(AbstractModel):
         self.ReviewConfidence = params.get("ReviewConfidence")
 
 
+class ProhibitedAsrReviewTemplateInfoForUpdate(AbstractModel):
+    """语音违禁任务控制参数
+
+    """
+
+    def __init__(self):
+        """
+        :param Switch: 语音违禁任务开关，可选值：
+<li>ON：开启语音违禁任务；</li>
+<li>OFF：关闭语音违禁任务。</li>
+        :type Switch: str
+        :param BlockConfidence: 判定涉嫌违规的分数阈值，当智能审核达到该分数以上，认为涉嫌违规，不填默认为 100 分。取值范围：0~100。
+        :type BlockConfidence: int
+        :param ReviewConfidence: 判定需人工复核是否违规的分数阈值，当智能审核达到该分数以上，认为需人工复核，不填默认为 75 分。取值范围：0~100。
+        :type ReviewConfidence: int
+        """
+        self.Switch = None
+        self.BlockConfidence = None
+        self.ReviewConfidence = None
+
+
+    def _deserialize(self, params):
+        self.Switch = params.get("Switch")
+        self.BlockConfidence = params.get("BlockConfidence")
+        self.ReviewConfidence = params.get("ReviewConfidence")
+
+
 class ProhibitedConfigureInfo(AbstractModel):
     """违禁任务控制参数
 
@@ -13077,7 +13300,59 @@ class ProhibitedConfigureInfo(AbstractModel):
             self.OcrReviewInfo._deserialize(params.get("OcrReviewInfo"))
 
 
+class ProhibitedConfigureInfoForUpdate(AbstractModel):
+    """违禁任务控制参数
+
+    """
+
+    def __init__(self):
+        """
+        :param AsrReviewInfo: 语音违禁控制参数。
+        :type AsrReviewInfo: :class:`tencentcloud.vod.v20180717.models.ProhibitedAsrReviewTemplateInfoForUpdate`
+        :param OcrReviewInfo: 文本违禁控制参数。
+        :type OcrReviewInfo: :class:`tencentcloud.vod.v20180717.models.ProhibitedOcrReviewTemplateInfoForUpdate`
+        """
+        self.AsrReviewInfo = None
+        self.OcrReviewInfo = None
+
+
+    def _deserialize(self, params):
+        if params.get("AsrReviewInfo") is not None:
+            self.AsrReviewInfo = ProhibitedAsrReviewTemplateInfoForUpdate()
+            self.AsrReviewInfo._deserialize(params.get("AsrReviewInfo"))
+        if params.get("OcrReviewInfo") is not None:
+            self.OcrReviewInfo = ProhibitedOcrReviewTemplateInfoForUpdate()
+            self.OcrReviewInfo._deserialize(params.get("OcrReviewInfo"))
+
+
 class ProhibitedOcrReviewTemplateInfo(AbstractModel):
+    """文本违禁任务控制参数
+
+    """
+
+    def __init__(self):
+        """
+        :param Switch: 文本违禁任务开关，可选值：
+<li>ON：开启文本违禁任务；</li>
+<li>OFF：关闭文本违禁任务。</li>
+        :type Switch: str
+        :param BlockConfidence: 判定涉嫌违规的分数阈值，当智能审核达到该分数以上，认为涉嫌违规，不填默认为 100 分。取值范围：0~100。
+        :type BlockConfidence: int
+        :param ReviewConfidence: 判定需人工复核是否违规的分数阈值，当智能审核达到该分数以上，认为需人工复核，不填默认为 75 分。取值范围：0~100。
+        :type ReviewConfidence: int
+        """
+        self.Switch = None
+        self.BlockConfidence = None
+        self.ReviewConfidence = None
+
+
+    def _deserialize(self, params):
+        self.Switch = params.get("Switch")
+        self.BlockConfidence = params.get("BlockConfidence")
+        self.ReviewConfidence = params.get("ReviewConfidence")
+
+
+class ProhibitedOcrReviewTemplateInfoForUpdate(AbstractModel):
     """文本违禁任务控制参数
 
     """
@@ -13897,6 +14172,32 @@ class SortBy(AbstractModel):
         self.Order = params.get("Order")
 
 
+class SpecificationDataItem(AbstractModel):
+    """指定规格任务统计数据。
+
+    """
+
+    def __init__(self):
+        """
+        :param Specification: 任务规格。
+        :type Specification: str
+        :param Data: 统计数据。
+        :type Data: list of TaskStatDataItem
+        """
+        self.Specification = None
+        self.Data = None
+
+
+    def _deserialize(self, params):
+        self.Specification = params.get("Specification")
+        if params.get("Data") is not None:
+            self.Data = []
+            for item in params.get("Data"):
+                obj = TaskStatDataItem()
+                obj._deserialize(item)
+                self.Data.append(obj)
+
+
 class StatDataItem(AbstractModel):
     """统计数据
 
@@ -14251,6 +14552,103 @@ class TaskSimpleInfo(AbstractModel):
         self.FinishTime = params.get("FinishTime")
         self.SessionId = params.get("SessionId")
         self.SessionContext = params.get("SessionContext")
+
+
+class TaskStatData(AbstractModel):
+    """视频处理任务统计数据。
+
+    """
+
+    def __init__(self):
+        """
+        :param TaskType: 任务类型。
+<li>Transcode: 转码</li>
+<li>Snapshot: 截图</li>
+        :type TaskType: str
+        :param Summary: 任务数统计数据概览。
+<li>Transcode: 用量单位为秒</li>
+        :type Summary: list of TaskStatDataItem
+        :param Details: 不同规格任务统计数据详情。
+转码规格：
+<li>Remuxing: 转封装</li>
+<li>Audio: 音频转码</li>
+<li>Standard.H264.SD: H.264编码方式标清转码</li>
+<li>Standard.H264.HD: H.264编码方式高清转码</li>
+<li>Standard.H264.FHD: H.264编码方式全高清转码</li>
+<li>Standard.H264.2K: H.264编码方式2K转码</li>
+<li>Standard.H264.4K: H.264编码方式4K转码</li>
+<li>Standard.H265.SD: H.265编码方式标清转码</li>
+<li>Standard.H265.HD: H.265编码方式高清转码</li>
+<li>Standard.H265.FHD: H.265编码方式全高清转码</li>
+<li>Standard.H265.2K: H.265编码方式2K转码</li>
+<li>Standard.H265.4K: H.265编码方式4K转码</li>
+<li>TESHD-10.H264.SD: H.264编码方式标清极速高清转码</li>
+<li>TESHD-10.H264.HD: H.264编码方式高清极速高清转码</li>
+<li>TESHD-10.H264.FHD: H.264编码方式全高清极速高清转码</li>
+<li>TESHD-10.H264.2K: H.264编码方式2K极速高清转码</li>
+<li>TESHD-10.H264.4K: H.264编码方式4K极速高清转码</li>
+<li>TESHD-10.H265.SD: H.265编码方式标清极速高清转码</li>
+<li>TESHD-10.H265.HD: H.265编码方式高清极速高清转码</li>
+<li>TESHD-10.H265.FHD: H.265编码方式全高清极速高清转码</li>
+<li>TESHD-10.H265.2K: H.265编码方式2K极速高清转码</li>
+<li>TESHD-10.H265.4K: H.265编码方式4K极速高清转码</li>
+<li>Edit.Audio: 音频编辑</li>
+<li>Edit.H264.SD: H.264编码方式标清视频编辑</li>
+<li>Edit.H264.HD: H.264编码方式高清视频编辑</li>
+<li>Edit.H264.FHD: H.264编码方式全高清视频编辑</li>
+<li>Edit.H264.2K: H.264编码方式2K视频编辑</li>
+<li>Edit.H264.4K: H.264编码方式4K视频编辑</li>
+<li>Edit.H265.SD: H.265编码方式标清视频编辑</li>
+<li>Edit.H265.HD: H.265编码方式高清视频编辑</li>
+<li>Edit.H265.FHD: H.265编码方式全高清视频编辑</li>
+<li>Edit.H265.2K: H.265编码方式2K视频编辑</li>
+<li>Edit.H265.4K: H.265编码方式4K视频编辑</li>
+        :type Details: list of SpecificationDataItem
+        """
+        self.TaskType = None
+        self.Summary = None
+        self.Details = None
+
+
+    def _deserialize(self, params):
+        self.TaskType = params.get("TaskType")
+        if params.get("Summary") is not None:
+            self.Summary = []
+            for item in params.get("Summary"):
+                obj = TaskStatDataItem()
+                obj._deserialize(item)
+                self.Summary.append(obj)
+        if params.get("Details") is not None:
+            self.Details = []
+            for item in params.get("Details"):
+                obj = SpecificationDataItem()
+                obj._deserialize(item)
+                self.Details.append(obj)
+
+
+class TaskStatDataItem(AbstractModel):
+    """任务统计数据，包括任务数和用量。
+
+    """
+
+    def __init__(self):
+        """
+        :param Time: 数据所在时间区间的开始时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F)。如：当时间粒度为天，2018-12-01T00:00:00+08:00，表示2018年12月1日（含）到2018年12月2日（不含）区间。
+        :type Time: str
+        :param Count: 任务数。
+        :type Count: int
+        :param Usage: 任务用量。
+        :type Usage: int
+        """
+        self.Time = None
+        self.Count = None
+        self.Usage = None
+
+
+    def _deserialize(self, params):
+        self.Time = params.get("Time")
+        self.Count = params.get("Count")
+        self.Usage = params.get("Usage")
 
 
 class TempCertificate(AbstractModel):

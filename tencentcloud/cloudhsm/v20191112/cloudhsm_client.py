@@ -17,28 +17,28 @@ import json
 
 from tencentcloud.common.exception.tencent_cloud_sdk_exception import TencentCloudSDKException
 from tencentcloud.common.abstract_client import AbstractClient
-from tencentcloud.emr.v20190103 import models
+from tencentcloud.cloudhsm.v20191112 import models
 
 
-class EmrClient(AbstractClient):
-    _apiVersion = '2019-01-03'
-    _endpoint = 'emr.tencentcloudapi.com'
+class CloudhsmClient(AbstractClient):
+    _apiVersion = '2019-11-12'
+    _endpoint = 'cloudhsm.tencentcloudapi.com'
 
 
-    def CreateInstance(self, request):
-        """创建EMR实例
+    def DescribeSubnet(self, request):
+        """查询子网列表
 
-        :param request: Request instance for CreateInstance.
-        :type request: :class:`tencentcloud.emr.v20190103.models.CreateInstanceRequest`
-        :rtype: :class:`tencentcloud.emr.v20190103.models.CreateInstanceResponse`
+        :param request: Request instance for DescribeSubnet.
+        :type request: :class:`tencentcloud.cloudhsm.v20191112.models.DescribeSubnetRequest`
+        :rtype: :class:`tencentcloud.cloudhsm.v20191112.models.DescribeSubnetResponse`
 
         """
         try:
             params = request._serialize()
-            body = self.call("CreateInstance", params)
+            body = self.call("DescribeSubnet", params)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.CreateInstanceResponse()
+                model = models.DescribeSubnetResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -53,20 +53,20 @@ class EmrClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def DescribeInstances(self, request):
-        """查询EMR实例
+    def DescribeUsg(self, request):
+        """根据用户的AppId获取用户安全组列表
 
-        :param request: Request instance for DescribeInstances.
-        :type request: :class:`tencentcloud.emr.v20190103.models.DescribeInstancesRequest`
-        :rtype: :class:`tencentcloud.emr.v20190103.models.DescribeInstancesResponse`
+        :param request: Request instance for DescribeUsg.
+        :type request: :class:`tencentcloud.cloudhsm.v20191112.models.DescribeUsgRequest`
+        :rtype: :class:`tencentcloud.cloudhsm.v20191112.models.DescribeUsgResponse`
 
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeInstances", params)
+            body = self.call("DescribeUsg", params)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.DescribeInstancesResponse()
+                model = models.DescribeUsgResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -81,20 +81,20 @@ class EmrClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def InquiryPriceCreateInstance(self, request):
-        """创建实例询价
+    def DescribeUsgRule(self, request):
+        """获取安全组详情
 
-        :param request: Request instance for InquiryPriceCreateInstance.
-        :type request: :class:`tencentcloud.emr.v20190103.models.InquiryPriceCreateInstanceRequest`
-        :rtype: :class:`tencentcloud.emr.v20190103.models.InquiryPriceCreateInstanceResponse`
+        :param request: Request instance for DescribeUsgRule.
+        :type request: :class:`tencentcloud.cloudhsm.v20191112.models.DescribeUsgRuleRequest`
+        :rtype: :class:`tencentcloud.cloudhsm.v20191112.models.DescribeUsgRuleResponse`
 
         """
         try:
             params = request._serialize()
-            body = self.call("InquiryPriceCreateInstance", params)
+            body = self.call("DescribeUsgRule", params)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.InquiryPriceCreateInstanceResponse()
+                model = models.DescribeUsgRuleResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -109,20 +109,20 @@ class EmrClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def InquiryPriceRenewInstance(self, request):
-        """续费询价。
+    def DescribeVpc(self, request):
+        """查询用户的私有网络列表
 
-        :param request: Request instance for InquiryPriceRenewInstance.
-        :type request: :class:`tencentcloud.emr.v20190103.models.InquiryPriceRenewInstanceRequest`
-        :rtype: :class:`tencentcloud.emr.v20190103.models.InquiryPriceRenewInstanceResponse`
+        :param request: Request instance for DescribeVpc.
+        :type request: :class:`tencentcloud.cloudhsm.v20191112.models.DescribeVpcRequest`
+        :rtype: :class:`tencentcloud.cloudhsm.v20191112.models.DescribeVpcResponse`
 
         """
         try:
             params = request._serialize()
-            body = self.call("InquiryPriceRenewInstance", params)
+            body = self.call("DescribeVpc", params)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.InquiryPriceRenewInstanceResponse()
+                model = models.DescribeVpcResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -137,20 +137,20 @@ class EmrClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def InquiryPriceScaleOutInstance(self, request):
-        """扩容询价. 当扩容时候，请通过该接口查询价格。
+    def DescribeVsmAttributes(self, request):
+        """获取VSM属性
 
-        :param request: Request instance for InquiryPriceScaleOutInstance.
-        :type request: :class:`tencentcloud.emr.v20190103.models.InquiryPriceScaleOutInstanceRequest`
-        :rtype: :class:`tencentcloud.emr.v20190103.models.InquiryPriceScaleOutInstanceResponse`
+        :param request: Request instance for DescribeVsmAttributes.
+        :type request: :class:`tencentcloud.cloudhsm.v20191112.models.DescribeVsmAttributesRequest`
+        :rtype: :class:`tencentcloud.cloudhsm.v20191112.models.DescribeVsmAttributesResponse`
 
         """
         try:
             params = request._serialize()
-            body = self.call("InquiryPriceScaleOutInstance", params)
+            body = self.call("DescribeVsmAttributes", params)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.InquiryPriceScaleOutInstanceResponse()
+                model = models.DescribeVsmAttributesResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -165,20 +165,20 @@ class EmrClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def InquiryPriceUpdateInstance(self, request):
-        """变配询价
+    def DescribeVsms(self, request):
+        """获取用户VSM列表
 
-        :param request: Request instance for InquiryPriceUpdateInstance.
-        :type request: :class:`tencentcloud.emr.v20190103.models.InquiryPriceUpdateInstanceRequest`
-        :rtype: :class:`tencentcloud.emr.v20190103.models.InquiryPriceUpdateInstanceResponse`
+        :param request: Request instance for DescribeVsms.
+        :type request: :class:`tencentcloud.cloudhsm.v20191112.models.DescribeVsmsRequest`
+        :rtype: :class:`tencentcloud.cloudhsm.v20191112.models.DescribeVsmsResponse`
 
         """
         try:
             params = request._serialize()
-            body = self.call("InquiryPriceUpdateInstance", params)
+            body = self.call("DescribeVsms", params)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.InquiryPriceUpdateInstanceResponse()
+                model = models.DescribeVsmsResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -193,20 +193,20 @@ class EmrClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def ScaleOutInstance(self, request):
-        """实例扩容
+    def InquiryPriceBuyVsm(self, request):
+        """购买询价接口
 
-        :param request: Request instance for ScaleOutInstance.
-        :type request: :class:`tencentcloud.emr.v20190103.models.ScaleOutInstanceRequest`
-        :rtype: :class:`tencentcloud.emr.v20190103.models.ScaleOutInstanceResponse`
+        :param request: Request instance for InquiryPriceBuyVsm.
+        :type request: :class:`tencentcloud.cloudhsm.v20191112.models.InquiryPriceBuyVsmRequest`
+        :rtype: :class:`tencentcloud.cloudhsm.v20191112.models.InquiryPriceBuyVsmResponse`
 
         """
         try:
             params = request._serialize()
-            body = self.call("ScaleOutInstance", params)
+            body = self.call("InquiryPriceBuyVsm", params)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.ScaleOutInstanceResponse()
+                model = models.InquiryPriceBuyVsmResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -221,48 +221,20 @@ class EmrClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def TerminateInstance(self, request):
-        """销毁EMR实例。此接口仅支持弹性MapReduce正式计费版本。
+    def ModifyVsmAttributes(self, request):
+        """修改VSM属性
 
-        :param request: Request instance for TerminateInstance.
-        :type request: :class:`tencentcloud.emr.v20190103.models.TerminateInstanceRequest`
-        :rtype: :class:`tencentcloud.emr.v20190103.models.TerminateInstanceResponse`
-
-        """
-        try:
-            params = request._serialize()
-            body = self.call("TerminateInstance", params)
-            response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.TerminateInstanceResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(e.message, e.message)
-
-
-    def TerminateTasks(self, request):
-        """缩容Task节点
-
-        :param request: Request instance for TerminateTasks.
-        :type request: :class:`tencentcloud.emr.v20190103.models.TerminateTasksRequest`
-        :rtype: :class:`tencentcloud.emr.v20190103.models.TerminateTasksResponse`
+        :param request: Request instance for ModifyVsmAttributes.
+        :type request: :class:`tencentcloud.cloudhsm.v20191112.models.ModifyVsmAttributesRequest`
+        :rtype: :class:`tencentcloud.cloudhsm.v20191112.models.ModifyVsmAttributesResponse`
 
         """
         try:
             params = request._serialize()
-            body = self.call("TerminateTasks", params)
+            body = self.call("ModifyVsmAttributes", params)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.TerminateTasksResponse()
+                model = models.ModifyVsmAttributesResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

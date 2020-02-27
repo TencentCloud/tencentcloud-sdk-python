@@ -58,56 +58,6 @@ class CommonServiceAPIResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
-class CreateMysqlInstanceRequest(AbstractModel):
-    """CreateMysqlInstance请求参数结构体
-
-    """
-
-    def __init__(self):
-        """
-        :param EnvId: 环境名称
-        :type EnvId: str
-        :param Alias: 实例别名
-        :type Alias: str
-        :param Memory: 实例内存大小，单位：MB
-        :type Memory: int
-        :param Volume: 实例硬盘大小，单位：GB
-        :type Volume: int
-        :param EngineVersion: MySQL 版本，值包括：5.7
-        :type EngineVersion: str
-        """
-        self.EnvId = None
-        self.Alias = None
-        self.Memory = None
-        self.Volume = None
-        self.EngineVersion = None
-
-
-    def _deserialize(self, params):
-        self.EnvId = params.get("EnvId")
-        self.Alias = params.get("Alias")
-        self.Memory = params.get("Memory")
-        self.Volume = params.get("Volume")
-        self.EngineVersion = params.get("EngineVersion")
-
-
-class CreateMysqlInstanceResponse(AbstractModel):
-    """CreateMysqlInstance返回参数结构体
-
-    """
-
-    def __init__(self):
-        """
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
-        self.RequestId = None
-
-
-    def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
-
-
 class DatabasesInfo(AbstractModel):
     """数据库资源信息
 
@@ -352,44 +302,6 @@ class FunctionInfo(AbstractModel):
         self.Region = params.get("Region")
 
 
-class IsolateMysqlInstanceRequest(AbstractModel):
-    """IsolateMysqlInstance请求参数结构体
-
-    """
-
-    def __init__(self):
-        """
-        :param EnvId: 环境id
-        :type EnvId: str
-        :param Alias: 实例别名
-        :type Alias: str
-        """
-        self.EnvId = None
-        self.Alias = None
-
-
-    def _deserialize(self, params):
-        self.EnvId = params.get("EnvId")
-        self.Alias = params.get("Alias")
-
-
-class IsolateMysqlInstanceResponse(AbstractModel):
-    """IsolateMysqlInstance返回参数结构体
-
-    """
-
-    def __init__(self):
-        """
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
-        self.RequestId = None
-
-
-    def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
-
-
 class LogServiceInfo(AbstractModel):
     """云日志服务相关信息
 
@@ -507,44 +419,6 @@ class ModifyEnvResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
-class OfflineMysqlInstanceRequest(AbstractModel):
-    """OfflineMysqlInstance请求参数结构体
-
-    """
-
-    def __init__(self):
-        """
-        :param EnvId: 环境id
-        :type EnvId: str
-        :param Alias: 实例别名
-        :type Alias: str
-        """
-        self.EnvId = None
-        self.Alias = None
-
-
-    def _deserialize(self, params):
-        self.EnvId = params.get("EnvId")
-        self.Alias = params.get("Alias")
-
-
-class OfflineMysqlInstanceResponse(AbstractModel):
-    """OfflineMysqlInstance返回参数结构体
-
-    """
-
-    def __init__(self):
-        """
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
-        self.RequestId = None
-
-
-    def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
-
-
 class StaticStorageInfo(AbstractModel):
     """静态CDN资源信息
 
@@ -611,53 +485,3 @@ class StorageInfo(AbstractModel):
         self.Bucket = params.get("Bucket")
         self.CdnDomain = params.get("CdnDomain")
         self.AppId = params.get("AppId")
-
-
-class UpgradeMysqlInstanceRequest(AbstractModel):
-    """UpgradeMysqlInstance请求参数结构体
-
-    """
-
-    def __init__(self):
-        """
-        :param EnvId: 环境id
-        :type EnvId: str
-        :param Alias: 实例别名
-        :type Alias: str
-        :param Memory: 实例内存大小，单位：MB
-        :type Memory: int
-        :param Volume: 实例硬盘大小，单位：GB
-        :type Volume: int
-        :param EngineVersion: MySQL 版本，值包括: 5.7
-        :type EngineVersion: str
-        """
-        self.EnvId = None
-        self.Alias = None
-        self.Memory = None
-        self.Volume = None
-        self.EngineVersion = None
-
-
-    def _deserialize(self, params):
-        self.EnvId = params.get("EnvId")
-        self.Alias = params.get("Alias")
-        self.Memory = params.get("Memory")
-        self.Volume = params.get("Volume")
-        self.EngineVersion = params.get("EngineVersion")
-
-
-class UpgradeMysqlInstanceResponse(AbstractModel):
-    """UpgradeMysqlInstance返回参数结构体
-
-    """
-
-    def __init__(self):
-        """
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
-        self.RequestId = None
-
-
-    def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")

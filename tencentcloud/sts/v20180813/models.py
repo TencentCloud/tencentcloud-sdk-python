@@ -234,11 +234,15 @@ class GetFederationTokenResponse(AbstractModel):
         :type Credentials: :class:`tencentcloud.sts.v20180813.models.Credentials`
         :param ExpiredTime: 临时证书有效的时间，返回 Unix 时间戳，精确到秒
         :type ExpiredTime: int
+        :param Expiration: 证书有效的时间，以 iso8601 格式的 UTC 时间表示
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Expiration: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.Credentials = None
         self.ExpiredTime = None
+        self.Expiration = None
         self.RequestId = None
 
 
@@ -247,6 +251,7 @@ class GetFederationTokenResponse(AbstractModel):
             self.Credentials = Credentials()
             self.Credentials._deserialize(params.get("Credentials"))
         self.ExpiredTime = params.get("ExpiredTime")
+        self.Expiration = params.get("Expiration")
         self.RequestId = params.get("RequestId")
 
 

@@ -88,7 +88,7 @@ class CreateRecTaskRequest(AbstractModel):
         :type EngineModelType: str
         :param ChannelNum: 语音声道数。1：单声道；2：双声道（仅在电话 8k 通用模型下支持）。
         :type ChannelNum: int
-        :param ResTextFormat: 识别结果文本编码方式。0：UTF-8。
+        :param ResTextFormat: 识别结果返回形式。0：标准结果  1：含词时间戳列表结果(一般用于生成字幕场景)
         :type ResTextFormat: int
         :param SourceType: 语音数据来源。0：语音 URL；1：语音数据（post body）。
         :type SourceType: int
@@ -223,6 +223,80 @@ class DescribeTaskStatusResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DownloadAsrVocabRequest(AbstractModel):
+    """DownloadAsrVocab请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param VocabId: 词表ID。
+        :type VocabId: str
+        """
+        self.VocabId = None
+
+
+    def _deserialize(self, params):
+        self.VocabId = params.get("VocabId")
+
+
+class DownloadAsrVocabResponse(AbstractModel):
+    """DownloadAsrVocab返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param VocabId: 词表ID。
+        :type VocabId: str
+        :param WordWeightStr: 词表权重文件形式的base64值。
+        :type WordWeightStr: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.VocabId = None
+        self.WordWeightStr = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.VocabId = params.get("VocabId")
+        self.WordWeightStr = params.get("WordWeightStr")
+        self.RequestId = params.get("RequestId")
+
+
+class GetAsrVocabListRequest(AbstractModel):
+    """GetAsrVocabList请求参数结构体
+
+    """
+
+
+class GetAsrVocabListResponse(AbstractModel):
+    """GetAsrVocabList返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param VocabList: 热词表列表
+        :type VocabList: list of Vocab
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.VocabList = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("VocabList") is not None:
+            self.VocabList = []
+            for item in params.get("VocabList"):
+                obj = Vocab()
+                obj._deserialize(item)
+                self.VocabList.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class GetAsrVocabRequest(AbstractModel):
     """GetAsrVocab请求参数结构体
 
@@ -311,6 +385,54 @@ class HotWord(AbstractModel):
         self.Weight = params.get("Weight")
 
 
+class SentenceDetail(AbstractModel):
+    """单句的详细识别结果，包含单个词的时间偏移，一般用于生成字幕的场景。
+
+    """
+
+    def __init__(self):
+        """
+        :param FinalSentence: 单句最终识别结果
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FinalSentence: str
+        :param SliceSentence: 单句中间识别结果，使用空格拆分为多个词
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SliceSentence: str
+        :param StartMs: 单句开始时间（毫秒）
+注意：此字段可能返回 null，表示取不到有效值。
+        :type StartMs: int
+        :param EndMs: 单句结束时间（毫秒）
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EndMs: int
+        :param WordsNum: 单句中词个数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type WordsNum: int
+        :param Words: 单句中词详情
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Words: list of SentenceWords
+        """
+        self.FinalSentence = None
+        self.SliceSentence = None
+        self.StartMs = None
+        self.EndMs = None
+        self.WordsNum = None
+        self.Words = None
+
+
+    def _deserialize(self, params):
+        self.FinalSentence = params.get("FinalSentence")
+        self.SliceSentence = params.get("SliceSentence")
+        self.StartMs = params.get("StartMs")
+        self.EndMs = params.get("EndMs")
+        self.WordsNum = params.get("WordsNum")
+        if params.get("Words") is not None:
+            self.Words = []
+            for item in params.get("Words"):
+                obj = SentenceWords()
+                obj._deserialize(item)
+                self.Words.append(obj)
+
+
 class SentenceRecognitionRequest(AbstractModel):
     """SentenceRecognition请求参数结构体
 
@@ -389,6 +511,76 @@ class SentenceRecognitionResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class SentenceWords(AbstractModel):
+    """识别结果中词文本，以及对应时间偏移
+
+    """
+
+    def __init__(self):
+        """
+        :param Word: 词文本
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Word: str
+        :param OffsetStartMs: 在句子中的开始时间偏移量
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OffsetStartMs: int
+        :param OffsetEndMs: 在句子中的结束时间偏移量
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OffsetEndMs: int
+        """
+        self.Word = None
+        self.OffsetStartMs = None
+        self.OffsetEndMs = None
+
+
+    def _deserialize(self, params):
+        self.Word = params.get("Word")
+        self.OffsetStartMs = params.get("OffsetStartMs")
+        self.OffsetEndMs = params.get("OffsetEndMs")
+
+
+class SetVocabStateRequest(AbstractModel):
+    """SetVocabState请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param VocabId: 热词表ID。
+        :type VocabId: str
+        :param State: 热词表状态，1：设为默认状态；0：设为非默认状态。
+        :type State: int
+        """
+        self.VocabId = None
+        self.State = None
+
+
+    def _deserialize(self, params):
+        self.VocabId = params.get("VocabId")
+        self.State = params.get("State")
+
+
+class SetVocabStateResponse(AbstractModel):
+    """SetVocabState返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param VocabId: 热词表ID
+        :type VocabId: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.VocabId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.VocabId = params.get("VocabId")
+        self.RequestId = params.get("RequestId")
+
+
 class Task(AbstractModel):
     """录音文件识别请求的返回数据
 
@@ -423,12 +615,16 @@ class TaskStatus(AbstractModel):
         :type Result: str
         :param ErrorMsg: 失败原因说明。
         :type ErrorMsg: str
+        :param ResultDetail: 识别结果详情，包含每个句子中的词时间偏移，一般用于生成字幕的场景。(录音识别请求中ResTextFormat=1时该字段不为空)
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ResultDetail: list of SentenceDetail
         """
         self.TaskId = None
         self.Status = None
         self.StatusStr = None
         self.Result = None
         self.ErrorMsg = None
+        self.ResultDetail = None
 
 
     def _deserialize(self, params):
@@ -437,6 +633,12 @@ class TaskStatus(AbstractModel):
         self.StatusStr = params.get("StatusStr")
         self.Result = params.get("Result")
         self.ErrorMsg = params.get("ErrorMsg")
+        if params.get("ResultDetail") is not None:
+            self.ResultDetail = []
+            for item in params.get("ResultDetail"):
+                obj = SentenceDetail()
+                obj._deserialize(item)
+                self.ResultDetail.append(obj)
 
 
 class UpdateAsrVocabRequest(AbstractModel):
@@ -497,3 +699,49 @@ class UpdateAsrVocabResponse(AbstractModel):
     def _deserialize(self, params):
         self.VocabId = params.get("VocabId")
         self.RequestId = params.get("RequestId")
+
+
+class Vocab(AbstractModel):
+    """词表内容
+
+    """
+
+    def __init__(self):
+        """
+        :param Name: 热词表名称
+        :type Name: str
+        :param Description: 热词表描述
+        :type Description: str
+        :param VocabId: 热词表ID
+        :type VocabId: str
+        :param WordWeights: 词权重列表
+        :type WordWeights: list of HotWord
+        :param CreateTime: 词表创建时间
+        :type CreateTime: str
+        :param UpdateTime: 词表更新时间
+        :type UpdateTime: str
+        :param State: 热词表状态，1为默认状态即在识别时默认加载该热词表进行识别，0为初始状态
+        :type State: int
+        """
+        self.Name = None
+        self.Description = None
+        self.VocabId = None
+        self.WordWeights = None
+        self.CreateTime = None
+        self.UpdateTime = None
+        self.State = None
+
+
+    def _deserialize(self, params):
+        self.Name = params.get("Name")
+        self.Description = params.get("Description")
+        self.VocabId = params.get("VocabId")
+        if params.get("WordWeights") is not None:
+            self.WordWeights = []
+            for item in params.get("WordWeights"):
+                obj = HotWord()
+                obj._deserialize(item)
+                self.WordWeights.append(obj)
+        self.CreateTime = params.get("CreateTime")
+        self.UpdateTime = params.get("UpdateTime")
+        self.State = params.get("State")

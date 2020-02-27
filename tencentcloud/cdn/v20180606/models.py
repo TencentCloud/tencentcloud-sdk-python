@@ -553,37 +553,59 @@ RETURN_404：全部请求返回 404
 
 
 class BriefDomain(AbstractModel):
-    """CDN域名简要信息。
+    """域名基础配置信息，含 CNAME、状态、业务类型、加速区域、创建时间、更新时间、源站配置等。
 
     """
 
     def __init__(self):
         """
-        :param ResourceId: 域名ID。
+        :param ResourceId: 域名 ID
         :type ResourceId: str
-        :param AppId: 腾讯云账号ID。
+        :param AppId: 腾讯云账号 ID
         :type AppId: int
-        :param Domain: CDN加速域名。
+        :param Domain: 加速域名
         :type Domain: str
-        :param Cname: 域名CName。
+        :param Cname: 域名对应的 CNAME 地址
         :type Cname: str
-        :param Status: 域名状态，pending，rejected，processing， online，offline，deleted分别表示审核中，审核未通过，审核通过部署中，已开启，已关闭，已删除。
+        :param Status: 加速服务状态
+rejected：域名审核未通过，域名备案过期/被注销导致
+processing：部署中
+online：已启动
+offline：已关闭
         :type Status: str
-        :param ProjectId: 项目ID。
+        :param ProjectId: 项目 ID，可前往腾讯云项目管理页面查看
         :type ProjectId: int
-        :param ServiceType: 域名业务类型，web，download，media分别表示静态加速，下载加速和流媒体加速。
+        :param ServiceType: 域名业务类型
+web：静态加速
+download：下载加速
+media：流媒体点播加速
         :type ServiceType: str
-        :param CreateTime: 域名创建时间。
+        :param CreateTime: 域名创建时间
         :type CreateTime: str
-        :param UpdateTime: 域名更新时间。
+        :param UpdateTime: 域名更新时间
         :type UpdateTime: str
-        :param Origin: 源站配置详情。
+        :param Origin: 源站配置详情
         :type Origin: :class:`tencentcloud.cdn.v20180606.models.Origin`
-        :param Disable: 域名封禁状态，normal，overdue，quota，malicious，ddos，idle，unlicensed，capping，readonly分别表示。
+        :param Disable: 域名封禁状态
+normal：正常状态
+overdue：账号欠费导致域名关闭，充值完成后可自行启动加速服务
+malicious：域名出现恶意行为，强制关闭加速服务
+ddos：域名被大规模 DDoS 攻击，关闭加速服务
+idle：域名超过 90 天内无任何操作、数据产生，判定为不活跃域名自动关闭加速服务，可自行启动加速服务
+unlicensed：域名未备案/备案注销，自动关闭加速服务，备案完成后可自行启动加速服务
+capping：触发配置的带宽阈值上限
+readonly：域名存在特殊配置，被锁定
         :type Disable: str
-        :param Area: 加速区域，mainland，oversea或global。
+        :param Area: 加速区域
+mainland：中国境内加速
+overseas：中国境外加速
+global：全球加速
         :type Area: str
-        :param Readonly: 域名锁定状态，normal，mainland，overseas或global，分别表示未被锁定，国内锁定，海外锁定或全球锁定。
+        :param Readonly: 域名锁定状态
+normal：未锁定
+mainland：中国境内锁定
+overseas：中国境外锁定
+global：全球锁定
         :type Readonly: str
         """
         self.ResourceId = None
@@ -766,21 +788,27 @@ statusCode：状态码，返回 2XX、3XX、4XX、5XX 汇总数据，单位为 �
 
 
 class CdnIp(AbstractModel):
-    """CdnIp 属性详情。
+    """IP 属性信息
 
     """
 
     def __init__(self):
         """
-        :param Ip: 节点 ip。
+        :param Ip: 指定查询的 IP
         :type Ip: str
-        :param Platform: 是否为腾讯云 CDN 加速节点。yes 表示该节点为腾讯云 CDN 节点，no 表示该节点不是腾讯云 CDN 节点。
+        :param Platform: IP 归属：
+yes：节点归属于腾讯云 CDN
+no：节点不属于腾讯云 CDN
         :type Platform: str
-        :param Location: 表示该节点所处的省份/国家。unknown 表示节点位置未知。
+        :param Location: 节点所处的省份/国家
+unknown 表示节点位置未知
         :type Location: str
-        :param History: 节点上下线历史记录。
+        :param History: 节点上下线历史记录
         :type History: list of CdnIpHistory
-        :param Area: 节点的服务地域。mainland 表示服务地域为中国境内，overseas 表示服务地域为中国境外， unknown 表示服务地域未知。
+        :param Area: 节点的所在区域
+mainland：中国境内加速节点
+overseas：中国境外加速节点
+unknown：服务地域无法获取
         :type Area: str
         """
         self.Ip = None
@@ -804,15 +832,18 @@ class CdnIp(AbstractModel):
 
 
 class CdnIpHistory(AbstractModel):
-    """CdnIp 节点上下线历史
+    """CDN 节点上下线历史记录
 
     """
 
     def __init__(self):
         """
-        :param Status: 上下线状态。online 为上线，offline 为下线。
+        :param Status: 操作类型
+online：节点上线
+offline：节点下线
         :type Status: str
-        :param Datetime: 操作时间。当该值为 null 时表示无历史状态变更记录。
+        :param Datetime: 操作类型对应的操作时间
+当该值为 null 时表示无历史状态变更记录
 注意：此字段可能返回 null，表示取不到有效值。
         :type Datetime: str
         """
@@ -2057,115 +2088,137 @@ class DescribeUrlViolationsResponse(AbstractModel):
 
 
 class DetailDomain(AbstractModel):
-    """CDN域名详细配置信息。
+    """加速域名全量配置信息
 
     """
 
     def __init__(self):
         """
-        :param ResourceId: 域名ID。
+        :param ResourceId: 域名 ID
         :type ResourceId: str
-        :param AppId: 腾讯云账号ID。
+        :param AppId: 腾讯云账号ID
         :type AppId: int
-        :param Domain: 加速域名。
+        :param Domain: 加速域名
         :type Domain: str
-        :param Cname: 域名CName。
+        :param Cname: 域名对应的 CNAME 地址
 注意：此字段可能返回 null，表示取不到有效值。
         :type Cname: str
-        :param Status: 域名状态，pending，rejected，processing， online，offline，deleted分别表示审核中，审核未通过，审核通过部署中，已开启，已关闭，已删除。
+        :param Status: 加速服务状态
+rejected：域名审核未通过，域名备案过期/被注销导致
+processing：部署中
+online：已启动
+offline：已关闭
         :type Status: str
-        :param ProjectId: 项目ID。
+        :param ProjectId: 项目 ID，可前往腾讯云项目管理页面查看
         :type ProjectId: int
-        :param ServiceType: 域名业务类型，web，download，media分别表示静态加速，下载加速和流媒体加速。
+        :param ServiceType: 域名业务类型
+web：静态加速
+download：下载加速
+media：流媒体点播加速
         :type ServiceType: str
-        :param CreateTime: 域名创建时间。
+        :param CreateTime: 域名创建时间
         :type CreateTime: str
-        :param UpdateTime: 域名更新时间。
+        :param UpdateTime: 域名更新时间
         :type UpdateTime: str
-        :param Origin: 源站配置。
+        :param Origin: 源站配置
         :type Origin: :class:`tencentcloud.cdn.v20180606.models.Origin`
-        :param IpFilter: IP黑白名单配置。
+        :param IpFilter: IP 黑白名单配置
 注意：此字段可能返回 null，表示取不到有效值。
         :type IpFilter: :class:`tencentcloud.cdn.v20180606.models.IpFilter`
-        :param IpFreqLimit: IP限频配置。
+        :param IpFreqLimit: IP 访问限频配置
 注意：此字段可能返回 null，表示取不到有效值。
         :type IpFreqLimit: :class:`tencentcloud.cdn.v20180606.models.IpFreqLimit`
-        :param StatusCodeCache: 状态码缓存配置。
+        :param StatusCodeCache: 状态码缓存配置
 注意：此字段可能返回 null，表示取不到有效值。
         :type StatusCodeCache: :class:`tencentcloud.cdn.v20180606.models.StatusCodeCache`
-        :param Compression: 智能压缩配置。
+        :param Compression: 智能压缩配置
 注意：此字段可能返回 null，表示取不到有效值。
         :type Compression: :class:`tencentcloud.cdn.v20180606.models.Compression`
-        :param BandwidthAlert: 带宽封顶配置。
+        :param BandwidthAlert: 带宽封顶配置
 注意：此字段可能返回 null，表示取不到有效值。
         :type BandwidthAlert: :class:`tencentcloud.cdn.v20180606.models.BandwidthAlert`
-        :param RangeOriginPull: Range回源配置。
+        :param RangeOriginPull: Range 回源配置
 注意：此字段可能返回 null，表示取不到有效值。
         :type RangeOriginPull: :class:`tencentcloud.cdn.v20180606.models.RangeOriginPull`
-        :param FollowRedirect: 301和302自动回源跟随配置。
+        :param FollowRedirect: 301/302 回源自动跟随配置
 注意：此字段可能返回 null，表示取不到有效值。
         :type FollowRedirect: :class:`tencentcloud.cdn.v20180606.models.FollowRedirect`
-        :param ErrorPage: 错误码重定向配置。
+        :param ErrorPage: 自定义错误页面配置（功能灰度中，敬请期待）
 注意：此字段可能返回 null，表示取不到有效值。
         :type ErrorPage: :class:`tencentcloud.cdn.v20180606.models.ErrorPage`
-        :param RequestHeader: 回源请求头部配置。
+        :param RequestHeader: 自定义请求头部配置
 注意：此字段可能返回 null，表示取不到有效值。
         :type RequestHeader: :class:`tencentcloud.cdn.v20180606.models.RequestHeader`
-        :param ResponseHeader: 源站响应头部配置。
+        :param ResponseHeader: 自定义响应头部配置
 注意：此字段可能返回 null，表示取不到有效值。
         :type ResponseHeader: :class:`tencentcloud.cdn.v20180606.models.ResponseHeader`
-        :param DownstreamCapping: 下载速度配置。
+        :param DownstreamCapping: 单链接下行限速配置
 注意：此字段可能返回 null，表示取不到有效值。
         :type DownstreamCapping: :class:`tencentcloud.cdn.v20180606.models.DownstreamCapping`
-        :param CacheKey: 节点缓存配置。
+        :param CacheKey: 带参/不带参缓存配置
 注意：此字段可能返回 null，表示取不到有效值。
         :type CacheKey: :class:`tencentcloud.cdn.v20180606.models.CacheKey`
-        :param ResponseHeaderCache: 遵循源站缓存头部配置。
+        :param ResponseHeaderCache: 源站头部缓存配置
 注意：此字段可能返回 null，表示取不到有效值。
         :type ResponseHeaderCache: :class:`tencentcloud.cdn.v20180606.models.ResponseHeaderCache`
-        :param VideoSeek: 视频拖拽配置。
+        :param VideoSeek: 视频拖拽配置
 注意：此字段可能返回 null，表示取不到有效值。
         :type VideoSeek: :class:`tencentcloud.cdn.v20180606.models.VideoSeek`
-        :param Cache: 缓存规则配置。
+        :param Cache: 节点缓存过期规则配置
 注意：此字段可能返回 null，表示取不到有效值。
         :type Cache: :class:`tencentcloud.cdn.v20180606.models.Cache`
-        :param OriginPullOptimization: 跨国优化配置。
+        :param OriginPullOptimization: 跨国链路优化配置（功能灰度中，敬请期待）
 注意：此字段可能返回 null，表示取不到有效值。
         :type OriginPullOptimization: :class:`tencentcloud.cdn.v20180606.models.OriginPullOptimization`
-        :param Https: Https配置。
+        :param Https: Https 加速相关配置
 注意：此字段可能返回 null，表示取不到有效值。
         :type Https: :class:`tencentcloud.cdn.v20180606.models.Https`
-        :param Authentication: 时间戳防盗链配置。
+        :param Authentication: 时间戳防盗链配置
 注意：此字段可能返回 null，表示取不到有效值。
         :type Authentication: :class:`tencentcloud.cdn.v20180606.models.Authentication`
-        :param Seo: seo优化配置。
+        :param Seo: SEO 优化配置
 注意：此字段可能返回 null，表示取不到有效值。
         :type Seo: :class:`tencentcloud.cdn.v20180606.models.Seo`
-        :param Disable: 域名封禁状态，normal，overdue，quota，malicious，ddos，idle，unlicensed，capping分别表示。
+        :param Disable: 域名封禁状态
+normal：正常状态
+overdue：账号欠费导致域名关闭，充值完成后可自行启动加速服务
+malicious：域名出现恶意行为，强制关闭加速服务
+ddos：域名被大规模 DDoS 攻击，关闭加速服务
+idle：域名超过 90 天内无任何操作、数据产生，判定为不活跃域名自动关闭加速服务，可自行启动加速服务
+unlicensed：域名未备案/备案注销，自动关闭加速服务，备案完成后可自行启动加速服务
+capping：触发配置的带宽阈值上限
+readonly：域名存在特殊配置，被锁定
 注意：此字段可能返回 null，表示取不到有效值。
         :type Disable: str
-        :param ForceRedirect: 访问协议强制跳转配置。
+        :param ForceRedirect: 访问协议强制跳转配置
 注意：此字段可能返回 null，表示取不到有效值。
         :type ForceRedirect: :class:`tencentcloud.cdn.v20180606.models.ForceRedirect`
-        :param Referer: 防盗链配置。
+        :param Referer: Referer 防盗链配置
 注意：此字段可能返回 null，表示取不到有效值。
         :type Referer: :class:`tencentcloud.cdn.v20180606.models.Referer`
-        :param MaxAge: 浏览器缓存规则配置。
+        :param MaxAge: 浏览器缓存过期规则配置（功能灰度中，敬请期待）
 注意：此字段可能返回 null，表示取不到有效值。
         :type MaxAge: :class:`tencentcloud.cdn.v20180606.models.MaxAge`
-        :param Ipv6: Ipv6配置。
+        :param Ipv6: Ipv6 配置（功能灰度中，敬请期待）
 注意：此字段可能返回 null，表示取不到有效值。
         :type Ipv6: :class:`tencentcloud.cdn.v20180606.models.Ipv6`
-        :param Compatibility: 是否兼容旧版本配置。
+        :param Compatibility: 是否兼容旧版本配置（内部兼容性字段）
 注意：此字段可能返回 null，表示取不到有效值。
         :type Compatibility: :class:`tencentcloud.cdn.v20180606.models.Compatibility`
-        :param SpecificConfig: 分地区特殊配置。
+        :param SpecificConfig: 区域特殊配置
 注意：此字段可能返回 null，表示取不到有效值。
         :type SpecificConfig: :class:`tencentcloud.cdn.v20180606.models.SpecificConfig`
-        :param Area: 加速区域，mainland，overseas或global。
+        :param Area: 加速区域
+mainland：中国境内加速
+overseas：中国境外加速
+global：全球加速
 注意：此字段可能返回 null，表示取不到有效值。
         :type Area: str
-        :param Readonly: 域名锁定状态，normal，mainland，overseas或global，分别表示未被锁定，国内锁定，海外锁定或全球锁定。
+        :param Readonly: 域名锁定状态
+normal：未锁定
+mainland：中国境内锁定
+overseas：中国境外锁定
+global：全球锁定
 注意：此字段可能返回 null，表示取不到有效值。
         :type Readonly: str
         :param OriginPullTimeout: 回源超时配置

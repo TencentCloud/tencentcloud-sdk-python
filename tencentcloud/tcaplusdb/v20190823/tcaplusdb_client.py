@@ -54,7 +54,7 @@ class TcaplusdbClient(AbstractClient):
 
 
     def CompareIdlFiles(self, request):
-        """选中目标表，上传并校验改表文件，返回是否允许修改表结构
+        """选中目标表格，上传并校验改表文件，返回是否允许修改表格结构的结果。
 
         :param request: Request instance for CompareIdlFiles.
         :type request: :class:`tencentcloud.tcaplusdb.v20190823.models.CompareIdlFilesRequest`
@@ -81,20 +81,76 @@ class TcaplusdbClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def CreateApp(self, request):
-        """本接口用于创建TcaplusDB应用
+    def CreateBackup(self, request):
+        """用户创建备份任务
 
-        :param request: Request instance for CreateApp.
-        :type request: :class:`tencentcloud.tcaplusdb.v20190823.models.CreateAppRequest`
-        :rtype: :class:`tencentcloud.tcaplusdb.v20190823.models.CreateAppResponse`
+        :param request: Request instance for CreateBackup.
+        :type request: :class:`tencentcloud.tcaplusdb.v20190823.models.CreateBackupRequest`
+        :rtype: :class:`tencentcloud.tcaplusdb.v20190823.models.CreateBackupResponse`
 
         """
         try:
             params = request._serialize()
-            body = self.call("CreateApp", params)
+            body = self.call("CreateBackup", params)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.CreateAppResponse()
+                model = models.CreateBackupResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def CreateCluster(self, request):
+        """本接口用于创建TcaplusDB集群
+
+        :param request: Request instance for CreateCluster.
+        :type request: :class:`tencentcloud.tcaplusdb.v20190823.models.CreateClusterRequest`
+        :rtype: :class:`tencentcloud.tcaplusdb.v20190823.models.CreateClusterResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("CreateCluster", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateClusterResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def CreateTableGroup(self, request):
+        """在TcaplusDB集群下创建表格组
+
+        :param request: Request instance for CreateTableGroup.
+        :type request: :class:`tencentcloud.tcaplusdb.v20190823.models.CreateTableGroupRequest`
+        :rtype: :class:`tencentcloud.tcaplusdb.v20190823.models.CreateTableGroupResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("CreateTableGroup", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateTableGroupResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -110,7 +166,7 @@ class TcaplusdbClient(AbstractClient):
 
 
     def CreateTables(self, request):
-        """根据选择的IDL文件列表，批量创建表
+        """根据选择的IDL文件列表，批量创建表格
 
         :param request: Request instance for CreateTables.
         :type request: :class:`tencentcloud.tcaplusdb.v20190823.models.CreateTablesRequest`
@@ -137,48 +193,20 @@ class TcaplusdbClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def CreateZone(self, request):
-        """在TcaplusDB应用下创建大区
+    def DeleteCluster(self, request):
+        """删除TcaplusDB集群，必须在集群所属所有资源（包括表格组，表）都已经释放的情况下才会成功。
 
-        :param request: Request instance for CreateZone.
-        :type request: :class:`tencentcloud.tcaplusdb.v20190823.models.CreateZoneRequest`
-        :rtype: :class:`tencentcloud.tcaplusdb.v20190823.models.CreateZoneResponse`
-
-        """
-        try:
-            params = request._serialize()
-            body = self.call("CreateZone", params)
-            response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.CreateZoneResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(e.message, e.message)
-
-
-    def DeleteApp(self, request):
-        """删除TcaplusDB应用实例，必须在应用实例所属所有资源（包括大区，表）都已经释放的情况下才会成功。
-
-        :param request: Request instance for DeleteApp.
-        :type request: :class:`tencentcloud.tcaplusdb.v20190823.models.DeleteAppRequest`
-        :rtype: :class:`tencentcloud.tcaplusdb.v20190823.models.DeleteAppResponse`
+        :param request: Request instance for DeleteCluster.
+        :type request: :class:`tencentcloud.tcaplusdb.v20190823.models.DeleteClusterRequest`
+        :rtype: :class:`tencentcloud.tcaplusdb.v20190823.models.DeleteClusterResponse`
 
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteApp", params)
+            body = self.call("DeleteCluster", params)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.DeleteAppResponse()
+                model = models.DeleteClusterResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -194,7 +222,7 @@ class TcaplusdbClient(AbstractClient):
 
 
     def DeleteIdlFiles(self, request):
-        """指定应用ID和待删除IDL文件的信息，删除目标文件，如果文件正在被表关联则删除失败。
+        """指定集群ID和待删除IDL文件的信息，删除目标文件，如果文件正在被表关联则删除失败。
 
         :param request: Request instance for DeleteIdlFiles.
         :type request: :class:`tencentcloud.tcaplusdb.v20190823.models.DeleteIdlFilesRequest`
@@ -207,6 +235,34 @@ class TcaplusdbClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteIdlFilesResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DeleteTableGroup(self, request):
+        """删除表格组
+
+        :param request: Request instance for DeleteTableGroup.
+        :type request: :class:`tencentcloud.tcaplusdb.v20190823.models.DeleteTableGroupRequest`
+        :rtype: :class:`tencentcloud.tcaplusdb.v20190823.models.DeleteTableGroupResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DeleteTableGroup", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DeleteTableGroupResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -249,48 +305,20 @@ class TcaplusdbClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def DeleteZone(self, request):
-        """删除大区
+    def DescribeClusters(self, request):
+        """查询TcaplusDB集群列表，包含集群详细信息。
 
-        :param request: Request instance for DeleteZone.
-        :type request: :class:`tencentcloud.tcaplusdb.v20190823.models.DeleteZoneRequest`
-        :rtype: :class:`tencentcloud.tcaplusdb.v20190823.models.DeleteZoneResponse`
-
-        """
-        try:
-            params = request._serialize()
-            body = self.call("DeleteZone", params)
-            response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.DeleteZoneResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(e.message, e.message)
-
-
-    def DescribeApps(self, request):
-        """查询TcaplusDB应用列表，包含应用详细信息。
-
-        :param request: Request instance for DescribeApps.
-        :type request: :class:`tencentcloud.tcaplusdb.v20190823.models.DescribeAppsRequest`
-        :rtype: :class:`tencentcloud.tcaplusdb.v20190823.models.DescribeAppsResponse`
+        :param request: Request instance for DescribeClusters.
+        :type request: :class:`tencentcloud.tcaplusdb.v20190823.models.DescribeClustersRequest`
+        :rtype: :class:`tencentcloud.tcaplusdb.v20190823.models.DescribeClustersResponse`
 
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeApps", params)
+            body = self.call("DescribeClusters", params)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.DescribeAppsResponse()
+                model = models.DescribeClustersResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -347,6 +375,34 @@ class TcaplusdbClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeRegionsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeTableGroups(self, request):
+        """查询表格组列表
+
+        :param request: Request instance for DescribeTableGroups.
+        :type request: :class:`tencentcloud.tcaplusdb.v20190823.models.DescribeTableGroupsRequest`
+        :rtype: :class:`tencentcloud.tcaplusdb.v20190823.models.DescribeTableGroupsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeTableGroups", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeTableGroupsResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -473,34 +529,6 @@ class TcaplusdbClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def DescribeZones(self, request):
-        """查询大区列表
-
-        :param request: Request instance for DescribeZones.
-        :type request: :class:`tencentcloud.tcaplusdb.v20190823.models.DescribeZonesRequest`
-        :rtype: :class:`tencentcloud.tcaplusdb.v20190823.models.DescribeZonesResponse`
-
-        """
-        try:
-            params = request._serialize()
-            body = self.call("DescribeZones", params)
-            response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.DescribeZonesResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(e.message, e.message)
-
-
     def ModifyAppName(self, request):
         """修改指定的应用名称
 
@@ -529,20 +557,76 @@ class TcaplusdbClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def ModifyAppPassword(self, request):
-        """修改指定AppInstanceId的实例密码，后台将在旧密码失效之前同时支持TcaplusDB SDK使用旧密码和新密码访问数据库。在旧密码失效之前不能提交新的密码修改请求，在旧密码失效之后不能提交修改旧密码过期时间的请求。
+    def ModifyClusterName(self, request):
+        """修改指定的集群名称
 
-        :param request: Request instance for ModifyAppPassword.
-        :type request: :class:`tencentcloud.tcaplusdb.v20190823.models.ModifyAppPasswordRequest`
-        :rtype: :class:`tencentcloud.tcaplusdb.v20190823.models.ModifyAppPasswordResponse`
+        :param request: Request instance for ModifyClusterName.
+        :type request: :class:`tencentcloud.tcaplusdb.v20190823.models.ModifyClusterNameRequest`
+        :rtype: :class:`tencentcloud.tcaplusdb.v20190823.models.ModifyClusterNameResponse`
 
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyAppPassword", params)
+            body = self.call("ModifyClusterName", params)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.ModifyAppPasswordResponse()
+                model = models.ModifyClusterNameResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ModifyClusterPassword(self, request):
+        """修改指定集群的密码，后台将在旧密码失效之前同时支持TcaplusDB SDK使用旧密码和新密码访问数据库。在旧密码失效之前不能提交新的密码修改请求，在旧密码失效之后不能提交修改旧密码过期时间的请求。
+
+        :param request: Request instance for ModifyClusterPassword.
+        :type request: :class:`tencentcloud.tcaplusdb.v20190823.models.ModifyClusterPasswordRequest`
+        :rtype: :class:`tencentcloud.tcaplusdb.v20190823.models.ModifyClusterPasswordResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ModifyClusterPassword", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ModifyClusterPasswordResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ModifyTableGroupName(self, request):
+        """修改TcaplusDB表格组名称
+
+        :param request: Request instance for ModifyTableGroupName.
+        :type request: :class:`tencentcloud.tcaplusdb.v20190823.models.ModifyTableGroupNameRequest`
+        :rtype: :class:`tencentcloud.tcaplusdb.v20190823.models.ModifyTableGroupNameResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ModifyTableGroupName", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ModifyTableGroupNameResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -586,7 +670,7 @@ class TcaplusdbClient(AbstractClient):
 
 
     def ModifyTableQuotas(self, request):
-        """表扩缩容
+        """表格扩缩容
 
         :param request: Request instance for ModifyTableQuotas.
         :type request: :class:`tencentcloud.tcaplusdb.v20190823.models.ModifyTableQuotasRequest`
@@ -641,34 +725,6 @@ class TcaplusdbClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def ModifyZoneName(self, request):
-        """修改TcaplusDB大区名称
-
-        :param request: Request instance for ModifyZoneName.
-        :type request: :class:`tencentcloud.tcaplusdb.v20190823.models.ModifyZoneNameRequest`
-        :rtype: :class:`tencentcloud.tcaplusdb.v20190823.models.ModifyZoneNameResponse`
-
-        """
-        try:
-            params = request._serialize()
-            body = self.call("ModifyZoneName", params)
-            response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.ModifyZoneNameResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(e.message, e.message)
-
-
     def RecoverRecycleTables(self, request):
         """恢复回收站中，用户自行删除的表。对欠费待释放的表无效。
 
@@ -698,7 +754,7 @@ class TcaplusdbClient(AbstractClient):
 
 
     def RollbackTables(self, request):
-        """表数据回档
+        """表格数据回档
 
         :param request: Request instance for RollbackTables.
         :type request: :class:`tencentcloud.tcaplusdb.v20190823.models.RollbackTablesRequest`
@@ -726,7 +782,7 @@ class TcaplusdbClient(AbstractClient):
 
 
     def VerifyIdlFiles(self, request):
-        """上传并校验加表文件，返回校验合法的表定义
+        """上传并校验创建表格文件，返回校验合法的表格定义
 
         :param request: Request instance for VerifyIdlFiles.
         :type request: :class:`tencentcloud.tcaplusdb.v20190823.models.VerifyIdlFilesRequest`

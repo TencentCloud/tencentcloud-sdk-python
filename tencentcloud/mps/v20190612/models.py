@@ -3261,6 +3261,11 @@ class CreateContentReviewTemplateRequest(AbstractModel):
         :type TerrorismConfigure: :class:`tencentcloud.mps.v20190612.models.TerrorismConfigureInfo`
         :param PoliticalConfigure: 鉴政控制参数。
         :type PoliticalConfigure: :class:`tencentcloud.mps.v20190612.models.PoliticalConfigureInfo`
+        :param ProhibitedConfigure: 违禁控制参数。违禁内容包括：
+<li>谩骂；</li>
+<li>涉毒违法。</li>
+注意：此参数尚未支持。
+        :type ProhibitedConfigure: :class:`tencentcloud.mps.v20190612.models.ProhibitedConfigureInfo`
         :param UserDefineConfigure: 用户自定义内容审核控制参数。
         :type UserDefineConfigure: :class:`tencentcloud.mps.v20190612.models.UserDefineConfigureInfo`
         """
@@ -3269,6 +3274,7 @@ class CreateContentReviewTemplateRequest(AbstractModel):
         self.PornConfigure = None
         self.TerrorismConfigure = None
         self.PoliticalConfigure = None
+        self.ProhibitedConfigure = None
         self.UserDefineConfigure = None
 
 
@@ -3284,6 +3290,9 @@ class CreateContentReviewTemplateRequest(AbstractModel):
         if params.get("PoliticalConfigure") is not None:
             self.PoliticalConfigure = PoliticalConfigureInfo()
             self.PoliticalConfigure._deserialize(params.get("PoliticalConfigure"))
+        if params.get("ProhibitedConfigure") is not None:
+            self.ProhibitedConfigure = ProhibitedConfigureInfo()
+            self.ProhibitedConfigure._deserialize(params.get("ProhibitedConfigure"))
         if params.get("UserDefineConfigure") is not None:
             self.UserDefineConfigure = UserDefineConfigureInfo()
             self.UserDefineConfigure._deserialize(params.get("UserDefineConfigure"))
@@ -4918,11 +4927,11 @@ class DescribeTaskDetailResponse(AbstractModel):
 <li>PROCESSING：处理中；</li>
 <li>FINISH：已完成。</li>
         :type Status: str
-        :param CreateTime: 任务的创建时间，采用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F)。
+        :param CreateTime: 任务的创建时间，采用 [ISO 日期格式](https://cloud.tencent.com/document/product/862/37710#52)。
         :type CreateTime: str
-        :param BeginProcessTime: 任务开始执行的时间，采用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F)。
+        :param BeginProcessTime: 任务开始执行的时间，采用 [ISO 日期格式](https://cloud.tencent.com/document/product/862/37710#52)。
         :type BeginProcessTime: str
-        :param FinishTime: 任务执行完毕的时间，采用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F)。
+        :param FinishTime: 任务执行完毕的时间，采用 [ISO 日期格式](https://cloud.tencent.com/document/product/862/37710#52)。
         :type FinishTime: str
         :param WorkflowTask: 视频处理任务信息，仅当 TaskType 为 WorkflowTask，该字段有值。
 注意：此字段可能返回 null，表示取不到有效值。
@@ -7644,6 +7653,11 @@ class ModifyContentReviewTemplateRequest(AbstractModel):
         :type TerrorismConfigure: :class:`tencentcloud.mps.v20190612.models.TerrorismConfigureInfoForUpdate`
         :param PoliticalConfigure: 鉴政控制参数。
         :type PoliticalConfigure: :class:`tencentcloud.mps.v20190612.models.PoliticalConfigureInfoForUpdate`
+        :param ProhibitedConfigure: 违禁控制参数。违禁内容包括：
+<li>谩骂；</li>
+<li>涉毒违法。</li>
+注意：此参数尚未支持。
+        :type ProhibitedConfigure: :class:`tencentcloud.mps.v20190612.models.ProhibitedConfigureInfoForUpdate`
         :param UserDefineConfigure: 用户自定义内容审核控制参数。
         :type UserDefineConfigure: :class:`tencentcloud.mps.v20190612.models.UserDefineConfigureInfoForUpdate`
         """
@@ -7653,6 +7667,7 @@ class ModifyContentReviewTemplateRequest(AbstractModel):
         self.PornConfigure = None
         self.TerrorismConfigure = None
         self.PoliticalConfigure = None
+        self.ProhibitedConfigure = None
         self.UserDefineConfigure = None
 
 
@@ -7669,6 +7684,9 @@ class ModifyContentReviewTemplateRequest(AbstractModel):
         if params.get("PoliticalConfigure") is not None:
             self.PoliticalConfigure = PoliticalConfigureInfoForUpdate()
             self.PoliticalConfigure._deserialize(params.get("PoliticalConfigure"))
+        if params.get("ProhibitedConfigure") is not None:
+            self.ProhibitedConfigure = ProhibitedConfigureInfoForUpdate()
+            self.ProhibitedConfigure._deserialize(params.get("ProhibitedConfigure"))
         if params.get("UserDefineConfigure") is not None:
             self.UserDefineConfigure = UserDefineConfigureInfoForUpdate()
             self.UserDefineConfigure._deserialize(params.get("UserDefineConfigure"))
@@ -9158,6 +9176,33 @@ class ProhibitedAsrReviewTemplateInfo(AbstractModel):
         self.ReviewConfidence = params.get("ReviewConfidence")
 
 
+class ProhibitedAsrReviewTemplateInfoForUpdate(AbstractModel):
+    """语音违禁任务控制参数
+
+    """
+
+    def __init__(self):
+        """
+        :param Switch: 语音违禁任务开关，可选值：
+<li>ON：开启语音违禁任务；</li>
+<li>OFF：关闭语音违禁任务。</li>
+        :type Switch: str
+        :param BlockConfidence: 判定涉嫌违规的分数阈值，当智能审核达到该分数以上，认为涉嫌违规，不填默认为 100 分。取值范围：0~100。
+        :type BlockConfidence: int
+        :param ReviewConfidence: 判定需人工复核是否违规的分数阈值，当智能审核达到该分数以上，认为需人工复核，不填默认为 75 分。取值范围：0~100。
+        :type ReviewConfidence: int
+        """
+        self.Switch = None
+        self.BlockConfidence = None
+        self.ReviewConfidence = None
+
+
+    def _deserialize(self, params):
+        self.Switch = params.get("Switch")
+        self.BlockConfidence = params.get("BlockConfidence")
+        self.ReviewConfidence = params.get("ReviewConfidence")
+
+
 class ProhibitedConfigureInfo(AbstractModel):
     """违禁任务控制参数
 
@@ -9185,7 +9230,59 @@ class ProhibitedConfigureInfo(AbstractModel):
             self.OcrReviewInfo._deserialize(params.get("OcrReviewInfo"))
 
 
+class ProhibitedConfigureInfoForUpdate(AbstractModel):
+    """违禁任务控制参数
+
+    """
+
+    def __init__(self):
+        """
+        :param AsrReviewInfo: 语音违禁控制参数。
+        :type AsrReviewInfo: :class:`tencentcloud.mps.v20190612.models.ProhibitedAsrReviewTemplateInfoForUpdate`
+        :param OcrReviewInfo: 文本违禁控制参数。
+        :type OcrReviewInfo: :class:`tencentcloud.mps.v20190612.models.ProhibitedOcrReviewTemplateInfoForUpdate`
+        """
+        self.AsrReviewInfo = None
+        self.OcrReviewInfo = None
+
+
+    def _deserialize(self, params):
+        if params.get("AsrReviewInfo") is not None:
+            self.AsrReviewInfo = ProhibitedAsrReviewTemplateInfoForUpdate()
+            self.AsrReviewInfo._deserialize(params.get("AsrReviewInfo"))
+        if params.get("OcrReviewInfo") is not None:
+            self.OcrReviewInfo = ProhibitedOcrReviewTemplateInfoForUpdate()
+            self.OcrReviewInfo._deserialize(params.get("OcrReviewInfo"))
+
+
 class ProhibitedOcrReviewTemplateInfo(AbstractModel):
+    """文本违禁任务控制参数
+
+    """
+
+    def __init__(self):
+        """
+        :param Switch: 文本违禁任务开关，可选值：
+<li>ON：开启文本违禁任务；</li>
+<li>OFF：关闭文本违禁任务。</li>
+        :type Switch: str
+        :param BlockConfidence: 判定涉嫌违规的分数阈值，当智能审核达到该分数以上，认为涉嫌违规，不填默认为 100 分。取值范围：0~100。
+        :type BlockConfidence: int
+        :param ReviewConfidence: 判定需人工复核是否违规的分数阈值，当智能审核达到该分数以上，认为需人工复核，不填默认为 75 分。取值范围：0~100。
+        :type ReviewConfidence: int
+        """
+        self.Switch = None
+        self.BlockConfidence = None
+        self.ReviewConfidence = None
+
+
+    def _deserialize(self, params):
+        self.Switch = params.get("Switch")
+        self.BlockConfidence = params.get("BlockConfidence")
+        self.ReviewConfidence = params.get("ReviewConfidence")
+
+
+class ProhibitedOcrReviewTemplateInfoForUpdate(AbstractModel):
     """文本违禁任务控制参数
 
     """

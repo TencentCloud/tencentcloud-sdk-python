@@ -150,6 +150,34 @@ class AsrClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DownloadAsrVocab(self, request):
+        """用户通过本接口进行热词表的下载，获得词表权重文件形式的 base64 值，文件形式为通过 “|” 分割的词和权重，即 word|weight 的形式。
+
+        :param request: Request instance for DownloadAsrVocab.
+        :type request: :class:`tencentcloud.asr.v20190614.models.DownloadAsrVocabRequest`
+        :rtype: :class:`tencentcloud.asr.v20190614.models.DownloadAsrVocabResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DownloadAsrVocab", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DownloadAsrVocabResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def GetAsrVocab(self, request):
         """用户根据词表的ID可以获取对应的热词表信息
 
@@ -164,6 +192,34 @@ class AsrClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.GetAsrVocabResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def GetAsrVocabList(self, request):
+        """用户通过该接口，可获得所有的热词表及其信息。
+
+        :param request: Request instance for GetAsrVocabList.
+        :type request: :class:`tencentcloud.asr.v20190614.models.GetAsrVocabListRequest`
+        :rtype: :class:`tencentcloud.asr.v20190614.models.GetAsrVocabListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("GetAsrVocabList", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.GetAsrVocabListResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -197,6 +253,34 @@ class AsrClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.SentenceRecognitionResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def SetVocabState(self, request):
+        """用户通过该接口可以设置热词表的默认状态。初始状态为0，用户可设置状态为1，即为默认状态。默认状态表示用户在请求识别时，如不设置热词表ID，则默认使用状态为1的热词表。
+
+        :param request: Request instance for SetVocabState.
+        :type request: :class:`tencentcloud.asr.v20190614.models.SetVocabStateRequest`
+        :rtype: :class:`tencentcloud.asr.v20190614.models.SetVocabStateResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("SetVocabState", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.SetVocabStateResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
