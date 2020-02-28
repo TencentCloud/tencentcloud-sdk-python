@@ -4092,6 +4092,65 @@ class DescribePullStreamConfigsResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeScreenShotSheetNumListRequest(AbstractModel):
+    """DescribeScreenShotSheetNumList请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param StartTime: utc起始时间，格式为yyyy-mm-ddTHH:MM:SSZ
+        :type StartTime: str
+        :param EndTime: utc结束时间，格式为yyyy-mm-ddTHH:MM:SSZ，支持查询最近1年数据。
+        :type EndTime: str
+        :param Zone: 地域信息，可选值包括Mainland，Oversea，前者是查询中国大陆范围内的数据，后者是除中国大陆范围之外的数据，若不传该参数，则查询所有地区的数据。
+        :type Zone: str
+        :param PushDomains: 推流域名（支持查询2019年11 月1日之后的域名维度数据）。
+        :type PushDomains: list of str
+        :param Granularity: 数据维度，数据延迟1个半小时，可选值包括：1、Minute（5分钟粒度，最大支持查询时间范围是31天），2、Day（天粒度，默认值，最大支持查询时间范围是186天当天）。
+        :type Granularity: str
+        """
+        self.StartTime = None
+        self.EndTime = None
+        self.Zone = None
+        self.PushDomains = None
+        self.Granularity = None
+
+
+    def _deserialize(self, params):
+        self.StartTime = params.get("StartTime")
+        self.EndTime = params.get("EndTime")
+        self.Zone = params.get("Zone")
+        self.PushDomains = params.get("PushDomains")
+        self.Granularity = params.get("Granularity")
+
+
+class DescribeScreenShotSheetNumListResponse(AbstractModel):
+    """DescribeScreenShotSheetNumList返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param DataInfoList: 数据信息列表。
+        :type DataInfoList: list of TimeValue
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.DataInfoList = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("DataInfoList") is not None:
+            self.DataInfoList = []
+            for item in params.get("DataInfoList"):
+                obj = TimeValue()
+                obj._deserialize(item)
+                self.DataInfoList.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeStreamDayPlayInfoListRequest(AbstractModel):
     """DescribeStreamDayPlayInfoList请求参数结构体
 
@@ -6726,6 +6785,27 @@ baseline/main/high。
         self.Description = params.get("Description")
         self.AiTransCode = params.get("AiTransCode")
         self.AdaptBitratePercent = params.get("AdaptBitratePercent")
+
+
+class TimeValue(AbstractModel):
+    """某个时间点的指标的数值是多少。
+
+    """
+
+    def __init__(self):
+        """
+        :param Time: utc时间，时间格式为yyyy-mm-ddTHH:MM:SSZ。
+        :type Time: str
+        :param Num: 数值。
+        :type Num: int
+        """
+        self.Time = None
+        self.Num = None
+
+
+    def _deserialize(self, params):
+        self.Time = params.get("Time")
+        self.Num = params.get("Num")
 
 
 class TranscodeDetailInfo(AbstractModel):

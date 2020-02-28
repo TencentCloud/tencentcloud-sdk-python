@@ -41,6 +41,94 @@ class COSSettings(AbstractModel):
         self.LogOnCosPath = params.get("LogOnCosPath")
 
 
+class CdbInfo(AbstractModel):
+    """出参
+
+    """
+
+    def __init__(self):
+        """
+        :param InstanceName: 数据库实例
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InstanceName: str
+        :param Ip: 数据库IP
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Ip: str
+        :param Port: 数据库端口
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Port: int
+        :param MemSize: 数据库内存规格
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MemSize: int
+        :param Volume: 数据库磁盘规格
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Volume: int
+        :param Service: 服务标识
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Service: str
+        :param ExpireTime: 过期时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ExpireTime: str
+        :param ApplyTime: 申请时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ApplyTime: str
+        :param PayType: 付费类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PayType: int
+        :param ExpireFlag: 过期标识
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ExpireFlag: bool
+        :param Status: 数据库状态
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Status: int
+        :param IsAutoRenew: 续费标识
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IsAutoRenew: int
+        :param SerialNo: 数据库字符串
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SerialNo: str
+        :param ZoneId: ZoneId
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ZoneId: int
+        :param RegionId: RegionId
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RegionId: int
+        """
+        self.InstanceName = None
+        self.Ip = None
+        self.Port = None
+        self.MemSize = None
+        self.Volume = None
+        self.Service = None
+        self.ExpireTime = None
+        self.ApplyTime = None
+        self.PayType = None
+        self.ExpireFlag = None
+        self.Status = None
+        self.IsAutoRenew = None
+        self.SerialNo = None
+        self.ZoneId = None
+        self.RegionId = None
+
+
+    def _deserialize(self, params):
+        self.InstanceName = params.get("InstanceName")
+        self.Ip = params.get("Ip")
+        self.Port = params.get("Port")
+        self.MemSize = params.get("MemSize")
+        self.Volume = params.get("Volume")
+        self.Service = params.get("Service")
+        self.ExpireTime = params.get("ExpireTime")
+        self.ApplyTime = params.get("ApplyTime")
+        self.PayType = params.get("PayType")
+        self.ExpireFlag = params.get("ExpireFlag")
+        self.Status = params.get("Status")
+        self.IsAutoRenew = params.get("IsAutoRenew")
+        self.SerialNo = params.get("SerialNo")
+        self.ZoneId = params.get("ZoneId")
+        self.RegionId = params.get("RegionId")
+
+
 class ClusterInstancesInfo(AbstractModel):
     """集群实例信息
 
@@ -419,6 +507,81 @@ class CustomMetaInfo(AbstractModel):
         self.MetaDataJdbcUrl = params.get("MetaDataJdbcUrl")
         self.MetaDataUser = params.get("MetaDataUser")
         self.MetaDataPass = params.get("MetaDataPass")
+
+
+class DescribeClusterNodesRequest(AbstractModel):
+    """DescribeClusterNodes请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param InstanceId: 集群实例ID,实例ID形如: emr-xxxxxxxx
+        :type InstanceId: str
+        :param NodeFlag: 节点标识，取值为：
+<li>all：表示获取全部类型节点，cdb信息除外。</li>
+<li>master：表示获取master节点信息。</li>
+<li>core：表示获取core节点信息。</li>
+<li>task：表示获取task节点信息。</li>
+<li>common：表示获取common节点信息。</li>
+<li>router：表示获取router节点信息。</li>
+<li>db：表示获取正常状态的cdb信息。</li>
+<li>recyle：表示获取回收站隔离中的节点信息，包括cdb信息。</li>
+<li>renew：表示获取所有待续费的节点信息，包括cdb信息，自动续费节点不会返回。</li>
+注意：现在只支持以上取值，输入其他值会导致错误。
+        :type NodeFlag: str
+        :param Offset: 页编号，默认值为0，表示第一页。
+        :type Offset: int
+        :param Limit: 每页返回数量，默认值为100，最大值为100。
+        :type Limit: int
+        """
+        self.InstanceId = None
+        self.NodeFlag = None
+        self.Offset = None
+        self.Limit = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.NodeFlag = params.get("NodeFlag")
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+
+
+class DescribeClusterNodesResponse(AbstractModel):
+    """DescribeClusterNodes返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param TotalCnt: 查询到的节点总数
+        :type TotalCnt: int
+        :param NodeList: 节点详细信息列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type NodeList: list of NodeHardwareInfo
+        :param TagKeys: 用户所有的标签键列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TagKeys: list of str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TotalCnt = None
+        self.NodeList = None
+        self.TagKeys = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCnt = params.get("TotalCnt")
+        if params.get("NodeList") is not None:
+            self.NodeList = []
+            for item in params.get("NodeList"):
+                obj = NodeHardwareInfo()
+                obj._deserialize(item)
+                self.NodeList.append(obj)
+        self.TagKeys = params.get("TagKeys")
+        self.RequestId = params.get("RequestId")
 
 
 class DescribeInstancesRequest(AbstractModel):
@@ -1039,6 +1202,34 @@ class MultiDisk(AbstractModel):
         self.Count = params.get("Count")
 
 
+class MultiDiskMC(AbstractModel):
+    """多云盘参数
+
+    """
+
+    def __init__(self):
+        """
+        :param Count: 该类型云盘个数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Count: int
+        :param Type: 磁盘类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Type: int
+        :param Volume: 云盘大小
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Volume: int
+        """
+        self.Count = None
+        self.Type = None
+        self.Volume = None
+
+
+    def _deserialize(self, params):
+        self.Count = params.get("Count")
+        self.Type = params.get("Type")
+        self.Volume = params.get("Volume")
+
+
 class NewResourceSpec(AbstractModel):
     """资源描述
 
@@ -1090,6 +1281,206 @@ class NewResourceSpec(AbstractModel):
             self.CommonResourceSpec = Resource()
             self.CommonResourceSpec._deserialize(params.get("CommonResourceSpec"))
         self.CommonCount = params.get("CommonCount")
+
+
+class NodeHardwareInfo(AbstractModel):
+    """节点硬件信息
+
+    """
+
+    def __init__(self):
+        """
+        :param AppId: 用户APPID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AppId: int
+        :param SerialNo: 序列号
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SerialNo: str
+        :param OrderNo: 机器实例ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OrderNo: str
+        :param WanIp: master节点绑定外网IP
+注意：此字段可能返回 null，表示取不到有效值。
+        :type WanIp: str
+        :param Flag: 节点类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Flag: int
+        :param Spec: 节点规格
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Spec: str
+        :param CpuNum: 节点核数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CpuNum: int
+        :param MemSize: 节点内存
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MemSize: int
+        :param MemDesc: 节点内存描述
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MemDesc: str
+        :param RegionId: 节点所在region
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RegionId: int
+        :param ZoneId: 节点所在Zone
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ZoneId: int
+        :param ApplyTime: 申请时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ApplyTime: str
+        :param FreeTime: 释放时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FreeTime: str
+        :param DiskSize: 硬盘大小
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DiskSize: str
+        :param NameTag: 节点描述
+注意：此字段可能返回 null，表示取不到有效值。
+        :type NameTag: str
+        :param Services: 节点部署服务
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Services: str
+        :param StorageType: 磁盘类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type StorageType: int
+        :param RootSize: 系统盘大小
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RootSize: int
+        :param ChargeType: 付费类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ChargeType: int
+        :param CdbIp: 数据库IP
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CdbIp: str
+        :param CdbPort: 数据库端口
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CdbPort: int
+        :param HwDiskSize: 硬盘容量
+注意：此字段可能返回 null，表示取不到有效值。
+        :type HwDiskSize: int
+        :param HwDiskSizeDesc: 硬盘容量描述
+注意：此字段可能返回 null，表示取不到有效值。
+        :type HwDiskSizeDesc: str
+        :param HwMemSize: 内存容量
+注意：此字段可能返回 null，表示取不到有效值。
+        :type HwMemSize: int
+        :param HwMemSizeDesc: 内存容量描述
+注意：此字段可能返回 null，表示取不到有效值。
+        :type HwMemSizeDesc: str
+        :param ExpireTime: 过期时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ExpireTime: str
+        :param EmrResourceId: 节点资源ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EmrResourceId: str
+        :param IsAutoRenew: 续费标志
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IsAutoRenew: int
+        :param DeviceClass: 设备标识
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DeviceClass: str
+        :param Mutable: 支持变配
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Mutable: int
+        :param MCMultiDisk: 多云盘
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MCMultiDisk: list of MultiDiskMC
+        :param CdbNodeInfo: 数据库信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CdbNodeInfo: :class:`tencentcloud.emr.v20190103.models.CdbInfo`
+        :param Ip: 内网IP
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Ip: str
+        :param Destroyable: 此节点是否可销毁，1可销毁，0不可销毁
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Destroyable: int
+        :param Tags: 节点绑定的标签
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Tags: list of Tag
+        """
+        self.AppId = None
+        self.SerialNo = None
+        self.OrderNo = None
+        self.WanIp = None
+        self.Flag = None
+        self.Spec = None
+        self.CpuNum = None
+        self.MemSize = None
+        self.MemDesc = None
+        self.RegionId = None
+        self.ZoneId = None
+        self.ApplyTime = None
+        self.FreeTime = None
+        self.DiskSize = None
+        self.NameTag = None
+        self.Services = None
+        self.StorageType = None
+        self.RootSize = None
+        self.ChargeType = None
+        self.CdbIp = None
+        self.CdbPort = None
+        self.HwDiskSize = None
+        self.HwDiskSizeDesc = None
+        self.HwMemSize = None
+        self.HwMemSizeDesc = None
+        self.ExpireTime = None
+        self.EmrResourceId = None
+        self.IsAutoRenew = None
+        self.DeviceClass = None
+        self.Mutable = None
+        self.MCMultiDisk = None
+        self.CdbNodeInfo = None
+        self.Ip = None
+        self.Destroyable = None
+        self.Tags = None
+
+
+    def _deserialize(self, params):
+        self.AppId = params.get("AppId")
+        self.SerialNo = params.get("SerialNo")
+        self.OrderNo = params.get("OrderNo")
+        self.WanIp = params.get("WanIp")
+        self.Flag = params.get("Flag")
+        self.Spec = params.get("Spec")
+        self.CpuNum = params.get("CpuNum")
+        self.MemSize = params.get("MemSize")
+        self.MemDesc = params.get("MemDesc")
+        self.RegionId = params.get("RegionId")
+        self.ZoneId = params.get("ZoneId")
+        self.ApplyTime = params.get("ApplyTime")
+        self.FreeTime = params.get("FreeTime")
+        self.DiskSize = params.get("DiskSize")
+        self.NameTag = params.get("NameTag")
+        self.Services = params.get("Services")
+        self.StorageType = params.get("StorageType")
+        self.RootSize = params.get("RootSize")
+        self.ChargeType = params.get("ChargeType")
+        self.CdbIp = params.get("CdbIp")
+        self.CdbPort = params.get("CdbPort")
+        self.HwDiskSize = params.get("HwDiskSize")
+        self.HwDiskSizeDesc = params.get("HwDiskSizeDesc")
+        self.HwMemSize = params.get("HwMemSize")
+        self.HwMemSizeDesc = params.get("HwMemSizeDesc")
+        self.ExpireTime = params.get("ExpireTime")
+        self.EmrResourceId = params.get("EmrResourceId")
+        self.IsAutoRenew = params.get("IsAutoRenew")
+        self.DeviceClass = params.get("DeviceClass")
+        self.Mutable = params.get("Mutable")
+        if params.get("MCMultiDisk") is not None:
+            self.MCMultiDisk = []
+            for item in params.get("MCMultiDisk"):
+                obj = MultiDiskMC()
+                obj._deserialize(item)
+                self.MCMultiDisk.append(obj)
+        if params.get("CdbNodeInfo") is not None:
+            self.CdbNodeInfo = CdbInfo()
+            self.CdbNodeInfo._deserialize(params.get("CdbNodeInfo"))
+        self.Ip = params.get("Ip")
+        self.Destroyable = params.get("Destroyable")
+        if params.get("Tags") is not None:
+            self.Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self.Tags.append(obj)
 
 
 class OutterResource(AbstractModel):

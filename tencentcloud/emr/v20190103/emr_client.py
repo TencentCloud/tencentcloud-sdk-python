@@ -53,6 +53,34 @@ class EmrClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeClusterNodes(self, request):
+        """查询硬件节点信息
+
+        :param request: Request instance for DescribeClusterNodes.
+        :type request: :class:`tencentcloud.emr.v20190103.models.DescribeClusterNodesRequest`
+        :rtype: :class:`tencentcloud.emr.v20190103.models.DescribeClusterNodesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeClusterNodes", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeClusterNodesResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeInstances(self, request):
         """查询EMR实例
 

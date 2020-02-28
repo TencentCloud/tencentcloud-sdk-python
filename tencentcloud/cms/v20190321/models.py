@@ -78,13 +78,13 @@ class CodeDetail(AbstractModel):
 
     def __init__(self):
         """
-        :param CodePosition: 二维码在图片中的位置，由4个点的坐标表示
+        :param CodePosition: 二维码在图片中的位置，由边界点的坐标表示
         :type CodePosition: list of CodePosition
         :param CodeCharset: 二维码文本的编码格式
         :type CodeCharset: str
         :param CodeText: 二维码的文本内容
         :type CodeText: str
-        :param CodeType: 二维码的类型：1：ONED_BARCODE，2：QRCOD，3:WXCODE，4：PDF417，5:DATAMATRIX
+        :param CodeType: 二维码的类型：1:ONED_BARCODE，2:QRCOD，3:WXCODE，4:PDF417，5:DATAMATRIX
         :type CodeType: int
         """
         self.CodePosition = None
@@ -132,7 +132,7 @@ class CodeDetect(AbstractModel):
 
 
 class CodePosition(AbstractModel):
-    """二维码在图片中的位置，由4个点的坐标表示
+    """二维码在图片中的位置，由边界点的坐标表示
 
     """
 
@@ -168,13 +168,9 @@ class CreateFileSampleRequest(AbstractModel):
 20006：涉毒违法
 20007：谩骂 
 24001：暴恐
-21000：综合
 20105：广告引流
         :type EvilType: int
-        :param FileType: 文件类型
-image：图片
-audio：音频
-video：视频
+        :param FileType: image：图片
         :type FileType: str
         :param Label: 样本类型
 1：黑库
@@ -238,23 +234,26 @@ class CreateTextSampleRequest(AbstractModel):
 20006：涉毒违法
 20007：谩骂 
 24001：暴恐
-21000：综合
 20105：广告引流
         :type EvilType: int
         :param Label: 样本类型
 1：黑库
 2：白库
         :type Label: int
+        :param Test: 测试修改参数
+        :type Test: str
         """
         self.Contents = None
         self.EvilType = None
         self.Label = None
+        self.Test = None
 
 
     def _deserialize(self, params):
         self.Contents = params.get("Contents")
         self.EvilType = params.get("EvilType")
         self.Label = params.get("Label")
+        self.Test = params.get("Test")
 
 
 class CreateTextSampleResponse(AbstractModel):
@@ -264,6 +263,8 @@ class CreateTextSampleResponse(AbstractModel):
 
     def __init__(self):
         """
+        :param ErrMsg: 操作样本失败时返回的错误信息示例：  "样本1":错误码，"样本2":错误码
+        :type ErrMsg: str
         :param Progress: 任务状态
 1：已完成
 2：处理中
@@ -271,11 +272,13 @@ class CreateTextSampleResponse(AbstractModel):
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
+        self.ErrMsg = None
         self.Progress = None
         self.RequestId = None
 
 
     def _deserialize(self, params):
+        self.ErrMsg = params.get("ErrMsg")
         self.Progress = params.get("Progress")
         self.RequestId = params.get("RequestId")
 
@@ -560,16 +563,20 @@ class FileSample(AbstractModel):
         :type FileName: str
         :param FileUrl: 文件url
         :type FileUrl: str
+        :param CompressFileUrl: 文件压缩后云url
+        :type CompressFileUrl: str
         """
         self.FileMd5 = None
         self.FileName = None
         self.FileUrl = None
+        self.CompressFileUrl = None
 
 
     def _deserialize(self, params):
         self.FileMd5 = params.get("FileMd5")
         self.FileName = params.get("FileName")
         self.FileUrl = params.get("FileUrl")
+        self.CompressFileUrl = params.get("CompressFileUrl")
 
 
 class FileSampleInfo(AbstractModel):
@@ -590,7 +597,6 @@ class FileSampleInfo(AbstractModel):
 20006：涉毒违法
 20007：谩骂 
 24001：暴恐
-21000：综合
         :type EvilType: int
         :param FileMd5: 文件的md5
         :type FileMd5: str
@@ -608,6 +614,8 @@ class FileSampleInfo(AbstractModel):
 1：已完成
 2：处理中
         :type Status: int
+        :param CompressFileUrl: 文件压缩后云url
+        :type CompressFileUrl: str
         :param FileUrl: 文件的url
         :type FileUrl: str
         """
@@ -620,6 +628,7 @@ class FileSampleInfo(AbstractModel):
         self.Id = None
         self.Label = None
         self.Status = None
+        self.CompressFileUrl = None
         self.FileUrl = None
 
 
@@ -633,6 +642,7 @@ class FileSampleInfo(AbstractModel):
         self.Id = params.get("Id")
         self.Label = params.get("Label")
         self.Status = params.get("Status")
+        self.CompressFileUrl = params.get("CompressFileUrl")
         self.FileUrl = params.get("FileUrl")
 
 
@@ -674,7 +684,6 @@ class ImageData(AbstractModel):
 20007：谩骂 
 20103：性感
 24001：暴恐
-21000：综合
         :type EvilType: int
         :param CodeDetect: 图片二维码详情
         :type CodeDetect: :class:`tencentcloud.cms.v20190321.models.CodeDetect`
@@ -682,6 +691,8 @@ class ImageData(AbstractModel):
         :type HotDetect: :class:`tencentcloud.cms.v20190321.models.ImageHotDetect`
         :param IllegalDetect: 图片违法详情
         :type IllegalDetect: :class:`tencentcloud.cms.v20190321.models.ImageIllegalDetect`
+        :param LogoDetect: logo详情
+        :type LogoDetect: :class:`tencentcloud.cms.v20190321.models.LogoDetail`
         :param OCRDetect: 图片OCR详情
         :type OCRDetect: :class:`tencentcloud.cms.v20190321.models.OCRDetect`
         :param PolityDetect: 图片涉政详情
@@ -698,6 +709,7 @@ class ImageData(AbstractModel):
         self.CodeDetect = None
         self.HotDetect = None
         self.IllegalDetect = None
+        self.LogoDetect = None
         self.OCRDetect = None
         self.PolityDetect = None
         self.PornDetect = None
@@ -717,6 +729,9 @@ class ImageData(AbstractModel):
         if params.get("IllegalDetect") is not None:
             self.IllegalDetect = ImageIllegalDetect()
             self.IllegalDetect._deserialize(params.get("IllegalDetect"))
+        if params.get("LogoDetect") is not None:
+            self.LogoDetect = LogoDetail()
+            self.LogoDetect._deserialize(params.get("LogoDetect"))
         if params.get("OCRDetect") is not None:
             self.OCRDetect = OCRDetect()
             self.OCRDetect._deserialize(params.get("OCRDetect"))
@@ -869,6 +884,8 @@ class ImagePolityDetect(AbstractModel):
         :type EvilType: int
         :param HitFlag: 处置判定  0：正常 1：可疑
         :type HitFlag: int
+        :param PolityLogoDetail: 命中的logo标签信息
+        :type PolityLogoDetail: list of Logo
         :param FaceNames: 命中的人脸名称
         :type FaceNames: list of str
         :param Keywords: 关键词明细
@@ -880,6 +897,7 @@ class ImagePolityDetect(AbstractModel):
         """
         self.EvilType = None
         self.HitFlag = None
+        self.PolityLogoDetail = None
         self.FaceNames = None
         self.Keywords = None
         self.PolityItems = None
@@ -889,6 +907,12 @@ class ImagePolityDetect(AbstractModel):
     def _deserialize(self, params):
         self.EvilType = params.get("EvilType")
         self.HitFlag = params.get("HitFlag")
+        if params.get("PolityLogoDetail") is not None:
+            self.PolityLogoDetail = []
+            for item in params.get("PolityLogoDetail"):
+                obj = Logo()
+                obj._deserialize(item)
+                self.PolityLogoDetail.append(obj)
         self.FaceNames = params.get("FaceNames")
         self.Keywords = params.get("Keywords")
         self.PolityItems = params.get("PolityItems")
@@ -965,6 +989,55 @@ class ImageTerrorDetect(AbstractModel):
         self.Score = params.get("Score")
 
 
+class Logo(AbstractModel):
+    """Logo
+
+    """
+
+    def __init__(self):
+        """
+        :param RrectF: logo图标坐标信息
+        :type RrectF: :class:`tencentcloud.cms.v20190321.models.RrectF`
+        :param Confidence: logo图标置信度
+        :type Confidence: float
+        :param Name: logo图标名称
+        :type Name: str
+        """
+        self.RrectF = None
+        self.Confidence = None
+        self.Name = None
+
+
+    def _deserialize(self, params):
+        if params.get("RrectF") is not None:
+            self.RrectF = RrectF()
+            self.RrectF._deserialize(params.get("RrectF"))
+        self.Confidence = params.get("Confidence")
+        self.Name = params.get("Name")
+
+
+class LogoDetail(AbstractModel):
+    """LogoDetail
+
+    """
+
+    def __init__(self):
+        """
+        :param AppLogoDetail: 命中的Applogo详情
+        :type AppLogoDetail: list of Logo
+        """
+        self.AppLogoDetail = None
+
+
+    def _deserialize(self, params):
+        if params.get("AppLogoDetail") is not None:
+            self.AppLogoDetail = []
+            for item in params.get("AppLogoDetail"):
+                obj = Logo()
+                obj._deserialize(item)
+                self.AppLogoDetail.append(obj)
+
+
 class OCRDetect(AbstractModel):
     """OCR识别结果详情
 
@@ -1011,6 +1084,39 @@ class OverviewRecord(AbstractModel):
         self.Yoy = params.get("Yoy")
 
 
+class RrectF(AbstractModel):
+    """logo位置信息
+
+    """
+
+    def __init__(self):
+        """
+        :param Cx: logo横坐标
+        :type Cx: float
+        :param Cy: logo纵坐标
+        :type Cy: float
+        :param Height: logo图标高度
+        :type Height: float
+        :param Rotate: logo图标中心旋转度
+        :type Rotate: float
+        :param Width: logo图标宽度
+        :type Width: float
+        """
+        self.Cx = None
+        self.Cy = None
+        self.Height = None
+        self.Rotate = None
+        self.Width = None
+
+
+    def _deserialize(self, params):
+        self.Cx = params.get("Cx")
+        self.Cy = params.get("Cy")
+        self.Height = params.get("Height")
+        self.Rotate = params.get("Rotate")
+        self.Width = params.get("Width")
+
+
 class Similar(AbstractModel):
     """相似度详情
 
@@ -1025,7 +1131,6 @@ class Similar(AbstractModel):
 20006：涉毒违法
 20007：谩骂 
 24001：暴恐
-21000：综合
         :type EvilType: int
         :param HitFlag: 处置判定 0：未匹配到 1：恶意 2：白样本
         :type HitFlag: int
@@ -1060,7 +1165,6 @@ class TextData(AbstractModel):
 20007：谩骂
 20105：广告引流 
 24001：暴恐
-21000：综合
         :type EvilType: int
         :param Keywords: 命中的关键词
         :type Keywords: list of str
@@ -1083,7 +1187,7 @@ class TextModerationRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Content: 文本内容Base64编码
+        :param Content: 文本内容Base64编码。原文长度需小于15000字节，即5000个汉字以内。
         :type Content: str
         """
         self.Content = None
@@ -1141,7 +1245,6 @@ class TextSample(AbstractModel):
 20007：谩骂 
 20105：广告引流 
 24001：暴恐
-20004/21000：综合
         :type EvilType: int
         :param Id: 唯一标识
         :type Id: str

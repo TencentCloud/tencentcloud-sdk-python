@@ -2046,6 +2046,34 @@ class LiveClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeScreenShotSheetNumList(self, request):
+        """接口用来查询直播增值业务--截图的张数
+
+        :param request: Request instance for DescribeScreenShotSheetNumList.
+        :type request: :class:`tencentcloud.live.v20180801.models.DescribeScreenShotSheetNumListRequest`
+        :rtype: :class:`tencentcloud.live.v20180801.models.DescribeScreenShotSheetNumListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeScreenShotSheetNumList", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeScreenShotSheetNumListResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeStreamDayPlayInfoList(self, request):
         """查询天维度每条流的播放数据，包括总流量等。
 

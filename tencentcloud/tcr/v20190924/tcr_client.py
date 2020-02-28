@@ -166,7 +166,7 @@ class TcrClient(AbstractClient):
 
 
     def CreateInstanceToken(self, request):
-        """获取临时登陆密码
+        """获取临时登录密码
 
         :param request: Request instance for CreateInstanceToken.
         :type request: :class:`tencentcloud.tcr.v20190924.models.CreateInstanceTokenRequest`
@@ -670,7 +670,7 @@ class TcrClient(AbstractClient):
 
 
     def DescribeRepositoryFilterPersonal(self, request):
-        """用于在个人版版镜像仓库中，获取满足输入搜索条件的用户镜像仓库
+        """用于在个人版镜像仓库中，获取满足输入搜索条件的用户镜像仓库
 
         :param request: Request instance for DescribeRepositoryFilterPersonal.
         :type request: :class:`tencentcloud.tcr.v20190924.models.DescribeRepositoryFilterPersonalRequest`
@@ -894,7 +894,7 @@ class TcrClient(AbstractClient):
 
 
     def ModifyUserPasswordPersonal(self, request):
-        """修改个人用户登陆密码
+        """修改个人用户登录密码
 
         :param request: Request instance for ModifyUserPasswordPersonal.
         :type request: :class:`tencentcloud.tcr.v20190924.models.ModifyUserPasswordPersonalRequest`

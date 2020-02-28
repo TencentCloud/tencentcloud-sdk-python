@@ -165,6 +165,49 @@ class Application(AbstractModel):
             self.Docker._deserialize(params.get("Docker"))
 
 
+class AttachInstancesRequest(AbstractModel):
+    """AttachInstances请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param EnvId: 计算环境ID
+        :type EnvId: str
+        :param Instances: 加入计算环境实例列表
+        :type Instances: list of Instance
+        """
+        self.EnvId = None
+        self.Instances = None
+
+
+    def _deserialize(self, params):
+        self.EnvId = params.get("EnvId")
+        if params.get("Instances") is not None:
+            self.Instances = []
+            for item in params.get("Instances"):
+                obj = Instance()
+                obj._deserialize(item)
+                self.Instances.append(obj)
+
+
+class AttachInstancesResponse(AbstractModel):
+    """AttachInstances返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class Authentication(AbstractModel):
     """授权认证信息
 
@@ -313,6 +356,8 @@ class ComputeEnvView(AbstractModel):
         :type ResourceType: str
         :param NextAction: 下一步动作
         :type NextAction: str
+        :param AttachedComputeNodeCount: 用户添加到计算环境中的计算节点个数
+        :type AttachedComputeNodeCount: int
         """
         self.EnvId = None
         self.EnvName = None
@@ -323,6 +368,7 @@ class ComputeEnvView(AbstractModel):
         self.DesiredComputeNodeCount = None
         self.ResourceType = None
         self.NextAction = None
+        self.AttachedComputeNodeCount = None
 
 
     def _deserialize(self, params):
@@ -339,6 +385,7 @@ class ComputeEnvView(AbstractModel):
         self.DesiredComputeNodeCount = params.get("DesiredComputeNodeCount")
         self.ResourceType = params.get("ResourceType")
         self.NextAction = params.get("NextAction")
+        self.AttachedComputeNodeCount = params.get("AttachedComputeNodeCount")
 
 
 class ComputeNode(AbstractModel):
@@ -370,6 +417,9 @@ class ComputeNode(AbstractModel):
         :type PublicIpAddresses: list of str
         :param ResourceType: 计算环境资源类型，当前为CVM和CPM（黑石）
         :type ResourceType: str
+        :param ResourceOrigin: 计算环境资源来源。<br>BATCH_CREATED：由批量计算创建的实例资源。<br>
+USER_ATTACHED：用户添加到计算环境中的实例资源。
+        :type ResourceOrigin: str
         """
         self.ComputeNodeId = None
         self.ComputeNodeInstanceId = None
@@ -382,6 +432,7 @@ class ComputeNode(AbstractModel):
         self.PrivateIpAddresses = None
         self.PublicIpAddresses = None
         self.ResourceType = None
+        self.ResourceOrigin = None
 
 
     def _deserialize(self, params):
@@ -396,6 +447,7 @@ class ComputeNode(AbstractModel):
         self.PrivateIpAddresses = params.get("PrivateIpAddresses")
         self.PublicIpAddresses = params.get("PublicIpAddresses")
         self.ResourceType = params.get("ResourceType")
+        self.ResourceOrigin = params.get("ResourceOrigin")
 
 
 class ComputeNodeMetrics(AbstractModel):
@@ -1100,6 +1152,8 @@ class DescribeComputeEnvResponse(AbstractModel):
         :type ResourceType: str
         :param NextAction: 下一步动作
         :type NextAction: str
+        :param AttachedComputeNodeCount: 用户添加到计算环境中的计算节点个数
+        :type AttachedComputeNodeCount: int
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -1113,6 +1167,7 @@ class DescribeComputeEnvResponse(AbstractModel):
         self.EnvType = None
         self.ResourceType = None
         self.NextAction = None
+        self.AttachedComputeNodeCount = None
         self.RequestId = None
 
 
@@ -1136,6 +1191,7 @@ class DescribeComputeEnvResponse(AbstractModel):
         self.EnvType = params.get("EnvType")
         self.ResourceType = params.get("ResourceType")
         self.NextAction = params.get("NextAction")
+        self.AttachedComputeNodeCount = params.get("AttachedComputeNodeCount")
         self.RequestId = params.get("RequestId")
 
 
@@ -1792,6 +1848,44 @@ class DescribeTaskTemplatesResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DetachInstancesRequest(AbstractModel):
+    """DetachInstances请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param EnvId: 计算环境ID
+        :type EnvId: str
+        :param InstanceIds: 实例ID列表
+        :type InstanceIds: list of str
+        """
+        self.EnvId = None
+        self.InstanceIds = None
+
+
+    def _deserialize(self, params):
+        self.EnvId = params.get("EnvId")
+        self.InstanceIds = params.get("InstanceIds")
+
+
+class DetachInstancesResponse(AbstractModel):
+    """DetachInstances返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class Docker(AbstractModel):
     """Docker容器信息
 
@@ -2204,6 +2298,33 @@ class InputMapping(AbstractModel):
         self.MountOptionParameter = params.get("MountOptionParameter")
 
 
+class Instance(AbstractModel):
+    """描述实例的信息
+
+    """
+
+    def __init__(self):
+        """
+        :param InstanceId: 实例ID
+        :type InstanceId: str
+        :param ImageId: 镜像ID
+        :type ImageId: str
+        :param LoginSettings: 实例登录设置。
+        :type LoginSettings: :class:`tencentcloud.batch.v20170312.models.LoginSettings`
+        """
+        self.InstanceId = None
+        self.ImageId = None
+        self.LoginSettings = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.ImageId = params.get("ImageId")
+        if params.get("LoginSettings") is not None:
+            self.LoginSettings = LoginSettings()
+            self.LoginSettings._deserialize(params.get("LoginSettings"))
+
+
 class InstanceCategoryItem(AbstractModel):
     """实例分类列表
 
@@ -2590,14 +2711,11 @@ class LoginSettings(AbstractModel):
 
     def __init__(self):
         """
-        :param Password: 实例登录密码。不同操作系统类型密码复杂度限制不一样，具体如下：<br><li>Linux实例密码必须8到16位，至少包括两项[a-z，A-Z]、[0-9] 和 [( ) ` ~ ! @ # $ % ^ & * - + = | { } [ ] : ; ' , . ? / ]中的特殊符号。<br><li>Windows实例密码必须12到16位，至少包括三项[a-z]，[A-Z]，[0-9] 和 [( ) ` ~ ! @ # $ % ^ & * - + = { } [ ] : ; ' , . ? /]中的特殊符号。<br><br>若不指定该参数，则由系统随机生成密码，并通过站内信方式通知到用户。
-注意：此字段可能返回 null，表示取不到有效值。
+        :param Password: 实例登录密码。不同操作系统类型密码复杂度限制不一样，具体如下：<br><li>Linux实例密码必须8到16位，至少包括两项[a-z，A-Z]、[0-9] 和 [( ) ` ~ ! @ # $ % ^ & * - + = | { } [ ] : ; ' , . ? \/ ]中的特殊符号。<br><li>Windows实例密码必须12到16位，至少包括三项[a-z]，[A-Z]，[0-9] 和 [( ) ` ~ ! @ # $ % ^ & * - + = { } [ ] : ; ' , . ? \/]中的特殊符号。<br><br>若不指定该参数，则由系统随机生成密码，并通过站内信方式通知到用户。
         :type Password: str
         :param KeyIds: 密钥ID列表。关联密钥后，就可以通过对应的私钥来访问实例；KeyId可通过接口DescribeKeyPairs获取，密钥与密码不能同时指定，同时Windows操作系统不支持指定密钥。当前仅支持购买的时候指定一个密钥。
-注意：此字段可能返回 null，表示取不到有效值。
         :type KeyIds: list of str
         :param KeepImageLogin: 保持镜像的原始设置。该参数与Password或KeyIds.N不能同时指定。只有使用自定义镜像、共享镜像或外部导入镜像创建实例时才能指定该参数为TRUE。取值范围：<br><li>TRUE：表示保持镜像的登录设置<br><li>FALSE：表示不保持镜像的登录设置<br><br>默认取值：FALSE。
-注意：此字段可能返回 null，表示取不到有效值。
         :type KeepImageLogin: str
         """
         self.Password = None
@@ -2761,6 +2879,8 @@ class NamedComputeEnv(AbstractModel):
         :type Notifications: :class:`tencentcloud.batch.v20170312.models.Notification`
         :param ActionIfComputeNodeInactive: 非活跃节点处理策略，默认“RECREATE”，即对于实例创建失败或异常退还的计算节点，定期重新创建实例资源。
         :type ActionIfComputeNodeInactive: str
+        :param ResourceMaxRetryCount: 对于实例创建失败或异常退还的计算节点，定期重新创建实例资源的最大重试次数，最大值11，如果不设置的话，系统会设置一个默认值，当前为7
+        :type ResourceMaxRetryCount: int
         """
         self.EnvName = None
         self.DesiredComputeNodeCount = None
@@ -2773,6 +2893,7 @@ class NamedComputeEnv(AbstractModel):
         self.AgentRunningMode = None
         self.Notifications = None
         self.ActionIfComputeNodeInactive = None
+        self.ResourceMaxRetryCount = None
 
 
     def _deserialize(self, params):
@@ -2808,6 +2929,7 @@ class NamedComputeEnv(AbstractModel):
             self.Notifications = Notification()
             self.Notifications._deserialize(params.get("Notifications"))
         self.ActionIfComputeNodeInactive = params.get("ActionIfComputeNodeInactive")
+        self.ResourceMaxRetryCount = params.get("ResourceMaxRetryCount")
 
 
 class NamedCpmComputeEnv(AbstractModel):
@@ -2835,6 +2957,8 @@ class NamedCpmComputeEnv(AbstractModel):
         :type Notifications: :class:`tencentcloud.batch.v20170312.models.Notification`
         :param ActionIfComputeNodeInactive: 非活跃节点处理策略，默认“RECREATE”，即对于实例创建失败或异常退还的计算节点，定期重新创建实例资源。
         :type ActionIfComputeNodeInactive: str
+        :param ResourceMaxRetryCount: 对于实例创建失败或异常退还的计算节点，定期重新创建实例资源的最大重试次数，最大值11，如果不设置的话，系统会设置一个默认值，当前为7
+        :type ResourceMaxRetryCount: int
         """
         self.EnvName = None
         self.EnvData = None
@@ -2845,6 +2969,7 @@ class NamedCpmComputeEnv(AbstractModel):
         self.InputMappings = None
         self.Notifications = None
         self.ActionIfComputeNodeInactive = None
+        self.ResourceMaxRetryCount = None
 
 
     def _deserialize(self, params):
@@ -2871,6 +2996,7 @@ class NamedCpmComputeEnv(AbstractModel):
             self.Notifications = Notification()
             self.Notifications._deserialize(params.get("Notifications"))
         self.ActionIfComputeNodeInactive = params.get("ActionIfComputeNodeInactive")
+        self.ResourceMaxRetryCount = params.get("ResourceMaxRetryCount")
 
 
 class Notification(AbstractModel):

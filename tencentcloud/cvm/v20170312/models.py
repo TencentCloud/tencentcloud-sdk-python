@@ -2693,6 +2693,9 @@ class Instance(AbstractModel):
         :param LatestOperationRequestId: 实例最新操作的唯一请求 ID。
 注意：此字段可能返回 null，表示取不到有效值。
         :type LatestOperationRequestId: str
+        :param DisasterRecoverGroupId: 分散置放群组ID。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DisasterRecoverGroupId: str
         """
         self.Placement = None
         self.InstanceId = None
@@ -2722,6 +2725,7 @@ class Instance(AbstractModel):
         self.LatestOperation = None
         self.LatestOperationState = None
         self.LatestOperationRequestId = None
+        self.DisasterRecoverGroupId = None
 
 
     def _deserialize(self, params):
@@ -2773,6 +2777,7 @@ class Instance(AbstractModel):
         self.LatestOperation = params.get("LatestOperation")
         self.LatestOperationState = params.get("LatestOperationState")
         self.LatestOperationRequestId = params.get("LatestOperationRequestId")
+        self.DisasterRecoverGroupId = params.get("DisasterRecoverGroupId")
 
 
 class InstanceChargePrepaid(AbstractModel):
@@ -3165,7 +3170,7 @@ class LoginSettings(AbstractModel):
 
     def __init__(self):
         """
-        :param Password: 实例登录密码。不同操作系统类型密码复杂度限制不一样，具体如下：<br><li>Linux实例密码必须8到16位，至少包括两项[a-z，A-Z]、[0-9] 和 [( ) \` ~ ! @ # \$ % ^ & * - + = | { } [ ] : ; ' , . ? / ]中的特殊符号。<br><li>Windows实例密码必须12到16位，至少包括三项[a-z]，[A-Z]，[0-9] 和 [( ) \` ~ ! @ # \$ % ^ & * - + = { } [ ] : ; ' , . ? /]中的特殊符号。<br><br>若不指定该参数，则由系统随机生成密码，并通过站内信方式通知到用户。
+        :param Password: 实例登录密码。不同操作系统类型密码复杂度限制不一样，具体如下：<br><li>Linux实例密码必须8到30位，至少包括两项[a-z]，[A-Z]、[0-9] 和 [( ) \` ~ ! @ # $ % ^ & &#42;  - + = | { } [ ] : ; ' , . ? / ]中的特殊符号。<br><li>Windows实例密码必须12到30位，至少包括三项[a-z]，[A-Z]，[0-9] 和 [( ) \` ~ ! @ # $ % ^ & &#42; - + = | { } [ ] : ; ' , . ? /]中的特殊符号。<br><br>若不指定该参数，则由系统随机生成密码，并通过站内信方式通知到用户。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Password: str
         :param KeyIds: 密钥ID列表。关联密钥后，就可以通过对应的私钥来访问实例；KeyId可通过接口DescribeKeyPairs获取，密钥与密码不能同时指定，同时Windows操作系统不支持指定密钥。当前仅支持购买的时候指定一个密钥。
@@ -4873,6 +4878,8 @@ class ZoneInfo(AbstractModel):
 <li> na-toronto-1 </li>
 <li> na-ashburn-1 </li>
 <li> na-ashburn-2 </li>
+<li> ap-nanjing-1 </li>
+<li> ap-nanjing-2 </li>
         :type Zone: str
         :param ZoneName: 可用区描述，例如，广州三区
         :type ZoneName: str

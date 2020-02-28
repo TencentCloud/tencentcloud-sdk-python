@@ -713,9 +713,9 @@ class CloseOrderRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param MidasAppId: 聚鑫分配的支付主MidasAppid
+        :param MidasAppId: 聚鑫分配的支付主MidasAppId
         :type MidasAppId: str
-        :param UserId: 用户Id，长度不小于5位， 仅支持字母和数字的组合
+        :param UserId: 用户ID，长度不小于5位， 仅支持字母和数字的组合
         :type UserId: str
         :param MidasSecretId: 聚鑫分配的安全ID
         :type MidasSecretId: str
@@ -769,7 +769,7 @@ class CreateAcctRequest(AbstractModel):
         """
         :param MidasAppId: 聚鑫平台分配的支付MidasAppId
         :type MidasAppId: str
-        :param SubMchId: 业务平台的子商户Id，唯一
+        :param SubMchId: 业务平台的子商户ID，唯一
         :type SubMchId: str
         :param SubMchName: 子商户名称
         :type SubMchName: str
@@ -2159,7 +2159,7 @@ class QueryOrderRequest(AbstractModel):
         """
         :param MidasAppId: 聚鑫分配的支付主 MidasAppId
         :type MidasAppId: str
-        :param UserId: 用户Id，长度不小于5位， 仅支持字母和数字的组合
+        :param UserId: 用户ID，长度不小于5位， 仅支持字母和数字的组合
         :type UserId: str
         :param Type: type=by_order根据订单号 查订单；
 type=by_user根据用户id 查订单 。
@@ -2323,11 +2323,11 @@ class QueryRefundRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param UserId: 用户Id，长度不小于5位，仅支持字母和数字的组合。
+        :param UserId: 用户ID，长度不小于5位，仅支持字母和数字的组合。
         :type UserId: str
         :param RefundId: 退款订单号，仅支持数字、字母、下划线（_）、横杠字符（-）、点（.）的组合。
         :type RefundId: str
-        :param MidasAppId: 聚鑫分配的支付主MidasAppid
+        :param MidasAppId: 聚鑫分配的支付主MidasAppId
         :type MidasAppId: str
         :param MidasSecretId: 聚鑫分配的安全ID
         :type MidasSecretId: str
@@ -2712,15 +2712,15 @@ class RefundRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param UserId: 用户Id，长度不小于5位， 仅支持字母和数字的组合
+        :param UserId: 用户ID，长度不小于5位， 仅支持字母和数字的组合
         :type UserId: str
         :param RefundId: 退款订单号，仅支持数字、 字母、下划线（_）、横杠字 符（-）、点（.）的组合
         :type RefundId: str
-        :param MidasAppId: 聚鑫分配的支付主MidasAppid
+        :param MidasAppId: 聚鑫分配的支付主MidasAppId
         :type MidasAppId: str
-        :param TotalRefundAmt: 退款金额，单位：分。备 注：当该字段为空或者为0 时，系统会默认使用订单当 实付金额做为退款金额
+        :param TotalRefundAmt: 退款金额，单位：分。备注：当该字段为空或者为0 时，系统会默认使用订单当 实付金额作为退款金额
         :type TotalRefundAmt: int
-        :param SubOrderRefundList: 支持多个子订单批量退款单 个子订单退款支持传 SubOutTradeNo ，也支持传 SubOutTradeNoList ，都传的时候以 SubOutTradeNoList 为准。  如果传了子单退款细节，外 部不需要再传退款金额，平 台应退，商户应退金额，我 们可以直接根据子单退款算 出来总和。
+        :param SubOrderRefundList: 支持多个子订单批量退款单 个子订单退款支持传 SubOutTradeNo ，也支持传 SubOutTradeNoList ，都传的时候以 SubOutTradeNoList 为准。  如果传了子单退款细节，外 部不需要再传退款金额，平 台应退，商户应退金额，我 们可以直接根据子单退款算出来总和。
         :type SubOrderRefundList: list of RefundOutSubOrderRefundList
         :param MidasSecretId: 聚鑫分配的安全ID
         :type MidasSecretId: str
@@ -3510,23 +3510,23 @@ class UnifiedOrderRequest(AbstractModel):
         """
         :param CurrencyType: ISO 货币代码，CNY
         :type CurrencyType: str
-        :param MidasAppId: 聚鑫分配的支付主MidasAppid
+        :param MidasAppId: 聚鑫分配的支付主MidasAppId
         :type MidasAppId: str
         :param OutTradeNo: 支付订单号，仅支持数字、字母、下划线（_）、横杠字符（-）、点（.）的组合
         :type OutTradeNo: str
         :param ProductDetail: 商品详情，需要URL编码
         :type ProductDetail: str
-        :param ProductId: 商品id，仅支持数字、字母、下划线（_）、横杠字符（-）、点（.）的组合
+        :param ProductId: 商品ID，仅支持数字、字母、下划线（_）、横杠字符（-）、点（.）的组合
         :type ProductId: str
         :param ProductName: 商品名称，需要URL编码
         :type ProductName: str
         :param TotalAmt: 支付金额，单位： 分
         :type TotalAmt: int
-        :param UserId: 用户Id，长度不小于5位，仅支持字母和数字的组合
+        :param UserId: 用户ID，长度不小于5位，仅支持字母和数字的组合
         :type UserId: str
-        :param RealChannel: 银行真实渠道.如:bank_ccb
+        :param RealChannel: 银行真实渠道.如:bank_pingan
         :type RealChannel: str
-        :param SubOrderList: 子订单信息列表，格式：子订单号、子应用Id、金额。 压缩后最长不可超过65535字节(去除空格，换行，制表符等无意义字符)
+        :param SubOrderList: 子订单信息列表，格式：子订单号、子应用ID、金额。 压缩后最长不可超过65535字节(去除空格，换行，制表符等无意义字符)
         :type SubOrderList: list of UnifiedOrderInSubOrderList
         :param OriginalAmt: 原始金额
         :type OriginalAmt: int

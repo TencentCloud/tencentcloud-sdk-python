@@ -187,6 +187,12 @@ class AgentClientElem(AbstractModel):
         :type HasOverdueBill: int
         :param Status: 1:待代理商审核;2:待腾讯云审核
         :type Status: int
+        :param SalesUin: 业务员ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SalesUin: str
+        :param SalesName: 业务员姓名
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SalesName: str
         """
         self.Uin = None
         self.ClientUin = None
@@ -196,6 +202,8 @@ class AgentClientElem(AbstractModel):
         self.Phone = None
         self.HasOverdueBill = None
         self.Status = None
+        self.SalesUin = None
+        self.SalesName = None
 
 
     def _deserialize(self, params):
@@ -207,6 +215,8 @@ class AgentClientElem(AbstractModel):
         self.Phone = params.get("Phone")
         self.HasOverdueBill = params.get("HasOverdueBill")
         self.Status = params.get("Status")
+        self.SalesUin = params.get("SalesUin")
+        self.SalesName = params.get("SalesName")
 
 
 class AgentDealElem(AbstractModel):
@@ -743,6 +753,10 @@ class DescribeAgentClientsRequest(AbstractModel):
         :type Offset: int
         :param Limit: 限制数目
         :type Limit: int
+        :param SalesUin: 业务员ID
+        :type SalesUin: str
+        :param SalesName: 业务员姓名（模糊查询）
+        :type SalesName: str
         """
         self.ClientUin = None
         self.ClientName = None
@@ -750,6 +764,8 @@ class DescribeAgentClientsRequest(AbstractModel):
         self.OrderDirection = None
         self.Offset = None
         self.Limit = None
+        self.SalesUin = None
+        self.SalesName = None
 
 
     def _deserialize(self, params):
@@ -759,6 +775,8 @@ class DescribeAgentClientsRequest(AbstractModel):
         self.OrderDirection = params.get("OrderDirection")
         self.Offset = params.get("Offset")
         self.Limit = params.get("Limit")
+        self.SalesUin = params.get("SalesUin")
+        self.SalesName = params.get("SalesName")
 
 
 class DescribeAgentClientsResponse(AbstractModel):

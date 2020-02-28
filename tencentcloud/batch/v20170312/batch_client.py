@@ -25,6 +25,40 @@ class BatchClient(AbstractClient):
     _endpoint = 'batch.tencentcloudapi.com'
 
 
+    def AttachInstances(self, request):
+        """此接口可将已存在实例添加到计算环境中。
+        实例需要满足如下条件：<br/>
+        1.实例不在批量计算系统中。<br/>
+        2.实例状态要求处于运行中。<br/>
+        3.支持预付费实例，按小时后付费实例，专享子机实例。不支持竞价实例。<br/>
+
+        此接口会将加入到计算环境中的实例重设UserData和重装操作系统。
+
+        :param request: Request instance for AttachInstances.
+        :type request: :class:`tencentcloud.batch.v20170312.models.AttachInstancesRequest`
+        :rtype: :class:`tencentcloud.batch.v20170312.models.AttachInstancesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("AttachInstances", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.AttachInstancesResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def CreateComputeEnv(self, request):
         """用于创建计算环境
 
@@ -601,6 +635,34 @@ class BatchClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeTaskTemplatesResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DetachInstances(self, request):
+        """将添加到计算环境中的实例从计算环境中移出。若是由批量计算自动创建的计算节点实例则不允许移出。
+
+        :param request: Request instance for DetachInstances.
+        :type request: :class:`tencentcloud.batch.v20170312.models.DetachInstancesRequest`
+        :rtype: :class:`tencentcloud.batch.v20170312.models.DetachInstancesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DetachInstances", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DetachInstancesResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
