@@ -419,7 +419,7 @@ class DataDisk(AbstractModel):
         :param SnapshotId: 数据盘快照ID。选择的数据盘快照大小需小于数据盘大小。
 注意：此字段可能返回 null，表示取不到有效值。
         :type SnapshotId: str
-        :param Encrypt: 数据盘是否随子机销毁。取值范围：
+        :param Encrypt: 数据盘是加密。取值范围：
 <li>TRUE：加密
 <li>FALSE：不加密<br>
 默认取值：FALSE<br>
@@ -2936,6 +2936,9 @@ class InstanceTypeQuotaItem(AbstractModel):
         :type Status: str
         :param Price: 实例的售卖价格。
         :type Price: :class:`tencentcloud.cvm.v20170312.models.ItemPrice`
+        :param SoldOutReason: 售罄原因。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SoldOutReason: str
         """
         self.Zone = None
         self.InstanceType = None
@@ -2949,6 +2952,7 @@ class InstanceTypeQuotaItem(AbstractModel):
         self.LocalDiskTypeList = None
         self.Status = None
         self.Price = None
+        self.SoldOutReason = None
 
 
     def _deserialize(self, params):
@@ -2973,6 +2977,7 @@ class InstanceTypeQuotaItem(AbstractModel):
         if params.get("Price") is not None:
             self.Price = ItemPrice()
             self.Price._deserialize(params.get("Price"))
+        self.SoldOutReason = params.get("SoldOutReason")
 
 
 class InternetAccessible(AbstractModel):
@@ -4322,7 +4327,7 @@ class RunInstancesRequest(AbstractModel):
         :type LoginSettings: :class:`tencentcloud.cvm.v20170312.models.LoginSettings`
         :param SecurityGroupIds: 实例所属安全组。该参数可以通过调用 [DescribeSecurityGroups](https://cloud.tencent.com/document/api/215/15808) 的返回值中的sgId字段来获取。若不指定该参数，则绑定默认安全组。
         :type SecurityGroupIds: list of str
-        :param EnhancedService: 增强服务。通过该参数可以指定是否开启云安全、云监控等服务。若不指定该参数，则默认开启云监控、云安全服务。
+        :param EnhancedService: 增强服务。通过该参数可以指定是否开启云安全、云监控等服务。若不指定该参数，则默认公共镜像开启云监控、云安全服务；自定义镜像与镜像市场镜像默认不开启云监控，云安全服务，而使用镜像里保留的服务。
         :type EnhancedService: :class:`tencentcloud.cvm.v20170312.models.EnhancedService`
         :param ClientToken: 用于保证请求幂等性的字符串。该字符串由客户生成，需保证不同请求之间唯一，最大值不超过64个ASCII字符。若不指定该参数，则无法保证请求的幂等性。
         :type ClientToken: str

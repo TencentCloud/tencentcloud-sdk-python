@@ -486,6 +486,8 @@ class CreateL7Listener(AbstractModel):
         :type CertCaContent: str
         :param Bandwidth: 用于计费模式为固定带宽计费，指定监听器最大带宽值，可选值：0-1000，单位：Mbps。
         :type Bandwidth: int
+        :param ForwardProtocol: 转发协议。当Protocol为https时并且SslMode为1或2时，有意义。可选的值为0：https，1：spdy，2：http2，3：spdy+http2。
+        :type ForwardProtocol: int
         """
         self.LoadBalancerPort = None
         self.Protocol = None
@@ -499,6 +501,7 @@ class CreateL7Listener(AbstractModel):
         self.CertCaName = None
         self.CertCaContent = None
         self.Bandwidth = None
+        self.ForwardProtocol = None
 
 
     def _deserialize(self, params):
@@ -514,6 +517,7 @@ class CreateL7Listener(AbstractModel):
         self.CertCaName = params.get("CertCaName")
         self.CertCaContent = params.get("CertCaContent")
         self.Bandwidth = params.get("Bandwidth")
+        self.ForwardProtocol = params.get("ForwardProtocol")
 
 
 class CreateL7ListenersRequest(AbstractModel):
@@ -715,7 +719,7 @@ class CreateLoadBalancersRequest(AbstractModel):
         :type GoodsNum: int
         :param PayMode: 黑石负载均衡的计费模式，取值为flow和bandwidth，其中flow模式表示流量模式，bandwidth表示带宽模式。默认值为flow。
         :type PayMode: str
-        :param TgwSetType: 负载均衡对应的TGW集群类别，取值为tunnel、fullnat或dnat。tunnel表示隧道集群，fullnat表示FULLNAT集群，dnat表示DNAT集群。默认值为fullnat。如需获取client IP，可以选择 tunnel 模式，fullnat 模式（tcp 通过toa 获取），dnat 模式。
+        :param TgwSetType: 负载均衡对应的TGW集群类别，取值为tunnel、fullnat或dnat。tunnel表示隧道集群，fullnat表示FULLNAT集群（普通外网负载均衡），dnat表示DNAT集群（增强型外网负载均衡）。默认值为fullnat。如需获取client IP，可以选择 tunnel 模式，fullnat 模式（tcp 通过toa 获取），dnat 模式。
         :type TgwSetType: str
         :param Exclusive: 负载均衡的独占类别，取值为0表示非独占，1表示四层独占，2表示七层独占，3表示四层和七层独占，4表示共享容灾。
         :type Exclusive: int
@@ -1352,7 +1356,7 @@ class DescribeL7BackendsRequest(AbstractModel):
         :type DomainId: str
         :param LocationId: 转发路径实例ID，可通过接口DescribeL7Rules查询。
         :type LocationId: str
-        :param QueryType: 查询条件，传'all'则查询所有与规则绑定的主机信息。
+        :param QueryType: 查询条件，传'all'则查询所有与规则绑定的主机信息。如果为all时，DomainId和LocationId参数没有意义不必传入，否则DomainId和LocationId参数必须传入。
         :type QueryType: str
         """
         self.LoadBalancerId = None
@@ -2060,12 +2064,21 @@ class DescribeTrafficMirrorsRequest(AbstractModel):
         :type Offset: int
         :param Limit: 单次查询返回的条目数，默认值：500。
         :type Limit: int
+        :param OrderField: 排序字段。trafficMirrorId或者createTime。
+        :type OrderField: str
+        :param Order: 排序方式，取值：0:增序(默认)，1:降序
+        :type Order: int
+        :param SearchKey: 模糊匹配trafficMirrorId或者alias字段。
+        :type SearchKey: str
         """
         self.TrafficMirrorIds = None
         self.Aliases = None
         self.VpcIds = None
         self.Offset = None
         self.Limit = None
+        self.OrderField = None
+        self.Order = None
+        self.SearchKey = None
 
 
     def _deserialize(self, params):
@@ -2074,6 +2087,9 @@ class DescribeTrafficMirrorsRequest(AbstractModel):
         self.VpcIds = params.get("VpcIds")
         self.Offset = params.get("Offset")
         self.Limit = params.get("Limit")
+        self.OrderField = params.get("OrderField")
+        self.Order = params.get("Order")
+        self.SearchKey = params.get("SearchKey")
 
 
 class DescribeTrafficMirrorsResponse(AbstractModel):
@@ -2745,7 +2761,7 @@ class L7Listener(AbstractModel):
         :type Status: int
         :param AddTimestamp: 创建时间戳。
         :type AddTimestamp: str
-        :param ForwardProtocol: https转发类型。0：关闭。1：spdy。2：http2。3：spdy+http2。
+        :param ForwardProtocol: https转发类型。0：https。1：spdy。2：http2。3：spdy+http2。
         :type ForwardProtocol: int
         """
         self.ListenerId = None
@@ -2808,6 +2824,8 @@ class L7ListenerInfo(AbstractModel):
         :type AddTimestamp: str
         :param RuleSet: 返回的转发规则列表。
         :type RuleSet: list of L7ListenerInfoRule
+        :param ForwardProtocol: https转发类型。0：https。1：spdy。2：http2。3：spdy+http2。
+        :type ForwardProtocol: int
         """
         self.ListenerId = None
         self.ListenerName = None
@@ -2821,6 +2839,7 @@ class L7ListenerInfo(AbstractModel):
         self.Status = None
         self.AddTimestamp = None
         self.RuleSet = None
+        self.ForwardProtocol = None
 
 
     def _deserialize(self, params):
@@ -2841,6 +2860,7 @@ class L7ListenerInfo(AbstractModel):
                 obj = L7ListenerInfoRule()
                 obj._deserialize(item)
                 self.RuleSet.append(obj)
+        self.ForwardProtocol = params.get("ForwardProtocol")
 
 
 class L7ListenerInfoBackend(AbstractModel):
@@ -3158,6 +3178,8 @@ class LoadBalancer(AbstractModel):
         :type BzL4Metrics: str
         :param BzL7Metrics: 保障型网关七层计费指标
         :type BzL7Metrics: str
+        :param IntVpcId: 该负载均衡对应的所在的整形类型的VpcId
+        :type IntVpcId: int
         """
         self.LoadBalancerId = None
         self.ProjectId = None
@@ -3185,6 +3207,7 @@ class LoadBalancer(AbstractModel):
         self.BzPayMode = None
         self.BzL4Metrics = None
         self.BzL7Metrics = None
+        self.IntVpcId = None
 
 
     def _deserialize(self, params):
@@ -3214,6 +3237,7 @@ class LoadBalancer(AbstractModel):
         self.BzPayMode = params.get("BzPayMode")
         self.BzL4Metrics = params.get("BzL4Metrics")
         self.BzL7Metrics = params.get("BzL7Metrics")
+        self.IntVpcId = params.get("IntVpcId")
 
 
 class LoadBalancerPortInfoListener(AbstractModel):
@@ -3696,6 +3720,8 @@ class ModifyL7ListenerRequest(AbstractModel):
         :type CertCaContent: str
         :param Bandwidth: 计费模式为按固定带宽方式时监听器的限速值，可选值：0-1000，单位：Mbps。
         :type Bandwidth: int
+        :param ForwardProtocol: 转发协议。当监听器Protocol为https时并且SslMode为1或2时，有意义。可选的值为0：https，1：spdy，2：http2，3：spdy+http2。
+        :type ForwardProtocol: int
         """
         self.LoadBalancerId = None
         self.ListenerId = None
@@ -3709,6 +3735,7 @@ class ModifyL7ListenerRequest(AbstractModel):
         self.CertCaName = None
         self.CertCaContent = None
         self.Bandwidth = None
+        self.ForwardProtocol = None
 
 
     def _deserialize(self, params):
@@ -3724,6 +3751,7 @@ class ModifyL7ListenerRequest(AbstractModel):
         self.CertCaName = params.get("CertCaName")
         self.CertCaContent = params.get("CertCaContent")
         self.Bandwidth = params.get("Bandwidth")
+        self.ForwardProtocol = params.get("ForwardProtocol")
 
 
 class ModifyL7ListenerResponse(AbstractModel):
@@ -4351,6 +4379,8 @@ class TrafficMirrorReceiver(AbstractModel):
         :type VpcCidrBlock: str
         :param HealthStatus: 接收机的健康状态。
         :type HealthStatus: str
+        :param Operates: 接收机的可以执行的操作集合。
+        :type Operates: list of str
         """
         self.InstanceId = None
         self.Port = None
@@ -4365,6 +4395,7 @@ class TrafficMirrorReceiver(AbstractModel):
         self.VpcName = None
         self.VpcCidrBlock = None
         self.HealthStatus = None
+        self.Operates = None
 
 
     def _deserialize(self, params):
@@ -4381,6 +4412,7 @@ class TrafficMirrorReceiver(AbstractModel):
         self.VpcName = params.get("VpcName")
         self.VpcCidrBlock = params.get("VpcCidrBlock")
         self.HealthStatus = params.get("HealthStatus")
+        self.Operates = params.get("Operates")
 
 
 class TrafficMirrorReciversStatus(AbstractModel):

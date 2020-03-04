@@ -529,6 +529,34 @@ class BmeipClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def UnbindRsList(self, request):
+        """批量解绑物理机弹性公网IP接口
+
+        :param request: Request instance for UnbindRsList.
+        :type request: :class:`tencentcloud.bmeip.v20180625.models.UnbindRsListRequest`
+        :rtype: :class:`tencentcloud.bmeip.v20180625.models.UnbindRsListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("UnbindRsList", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.UnbindRsListResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def UnbindVpcIp(self, request):
         """黑石EIP解绑VPCIP
 

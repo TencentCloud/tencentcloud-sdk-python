@@ -107,13 +107,13 @@ class BillDetail(AbstractModel):
         :param Tags: Tag 信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type Tags: list of BillTagInfo
-        :param BusinessCode: 商品名称代码
+        :param BusinessCode: 商品名称代码（未开放的字段）
 注意：此字段可能返回 null，表示取不到有效值。
         :type BusinessCode: str
-        :param ProductCode: 子商品名称代码
+        :param ProductCode: 子商品名称代码 （未开放的字段）
 注意：此字段可能返回 null，表示取不到有效值。
         :type ProductCode: str
-        :param ActionType: 交易类型代码
+        :param ActionType: 交易类型代码（未开放的字段）
 注意：此字段可能返回 null，表示取不到有效值。
         :type ActionType: str
         """
@@ -215,10 +215,10 @@ class BillDetailComponent(AbstractModel):
         :type CashPayAmount: str
         :param IncentivePayAmount: 赠送账户支付金额
         :type IncentivePayAmount: str
-        :param ItemCode: 组件类型代码
+        :param ItemCode: 组件类型代码（未开放的字段）
 注意：此字段可能返回 null，表示取不到有效值。
         :type ItemCode: str
-        :param ComponentCode: 组件名称代码
+        :param ComponentCode: 组件名称代码（未开放的字段）
 注意：此字段可能返回 null，表示取不到有效值。
         :type ComponentCode: str
         :param ContractPrice: 合同价
@@ -426,6 +426,55 @@ class BillTagInfo(AbstractModel):
     def _deserialize(self, params):
         self.TagKey = params.get("TagKey")
         self.TagValue = params.get("TagValue")
+
+
+class BillTransactionInfo(AbstractModel):
+    """收支明细的流水信息
+
+    """
+
+    def __init__(self):
+        """
+        :param ActionType: 收支类型：deduct 扣费, recharge 充值, return 退费， block 冻结, unblock 解冻
+        :type ActionType: str
+        :param Amount: 流水金额，单位（分）；正数表示入账，负数表示出账
+        :type Amount: int
+        :param Balance: 可用余额，单位（分）；正数表示入账，负数表示出账
+        :type Balance: int
+        :param BillId: 流水号，如20190131020000236005203583326401
+        :type BillId: str
+        :param OperationInfo: 描述信息
+        :type OperationInfo: str
+        :param OperationTime: 操作时间"2019-01-31 23:35:10.000"
+        :type OperationTime: str
+        :param Cash: 现金账户余额，单位（分）
+        :type Cash: int
+        :param Incentive: 赠送金余额，单位（分）
+        :type Incentive: int
+        :param Freezing: 冻结余额，单位（分）
+        :type Freezing: int
+        """
+        self.ActionType = None
+        self.Amount = None
+        self.Balance = None
+        self.BillId = None
+        self.OperationInfo = None
+        self.OperationTime = None
+        self.Cash = None
+        self.Incentive = None
+        self.Freezing = None
+
+
+    def _deserialize(self, params):
+        self.ActionType = params.get("ActionType")
+        self.Amount = params.get("Amount")
+        self.Balance = params.get("Balance")
+        self.BillId = params.get("BillId")
+        self.OperationInfo = params.get("OperationInfo")
+        self.OperationTime = params.get("OperationTime")
+        self.Cash = params.get("Cash")
+        self.Incentive = params.get("Incentive")
+        self.Freezing = params.get("Freezing")
 
 
 class BusinessSummaryOverviewItem(AbstractModel):
@@ -867,6 +916,8 @@ class ConsumptionResourceSummaryDataItem(AbstractModel):
         :type BusinessCode: str
         :param BusinessCodeName: 产品名称
         :type BusinessCodeName: str
+        :param ConsumptionTypeName: 消耗类型
+        :type ConsumptionTypeName: str
         """
         self.ResourceId = None
         self.ResourceName = None
@@ -880,6 +931,7 @@ class ConsumptionResourceSummaryDataItem(AbstractModel):
         self.PayModeName = None
         self.BusinessCode = None
         self.BusinessCodeName = None
+        self.ConsumptionTypeName = None
 
 
     def _deserialize(self, params):
@@ -895,6 +947,7 @@ class ConsumptionResourceSummaryDataItem(AbstractModel):
         self.PayModeName = params.get("PayModeName")
         self.BusinessCode = params.get("BusinessCode")
         self.BusinessCodeName = params.get("BusinessCodeName")
+        self.ConsumptionTypeName = params.get("ConsumptionTypeName")
 
 
 class ConsumptionSummaryTotal(AbstractModel):
@@ -1277,6 +1330,97 @@ class DescribeBillDetailResponse(AbstractModel):
                 obj._deserialize(item)
                 self.DetailSet.append(obj)
         self.Total = params.get("Total")
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeBillListRequest(AbstractModel):
+    """DescribeBillList请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param StartTime: 查询范围的起始时间（包含）
+        :type StartTime: str
+        :param EndTime: 查询范围的结束时间（包含）
+        :type EndTime: str
+        :param Offset: 翻页偏移量，初始值为0
+        :type Offset: int
+        :param Limit: 每页的限制数量
+        :type Limit: int
+        :param PayType: 交易类型： all所有交易类型，recharge充值，return退款，unblock解冻，agentin资金转入，advanced垫付，cash提现，deduct扣费，block冻结，agentout资金转出，repay垫付回款，repayment还款(仅国际信用账户)，adj_refund调增(仅国际信用账户)，adj_deduct调减(仅国际信用账户)
+        :type PayType: list of str
+        :param SubPayType: 扣费模式，当所选的交易类型中包含扣费deduct时有意义： all所有扣费类型，trade预付费支付，hour_h按量小时结，hour_d按量日结，hour_m按量月结，decompensate调账扣费，other其他扣费
+        :type SubPayType: list of str
+        :param WithZeroAmount: 是否返回0元交易金额的交易项，取值：0-不返回，1-返回。不传该参数则不返回
+        :type WithZeroAmount: int
+        """
+        self.StartTime = None
+        self.EndTime = None
+        self.Offset = None
+        self.Limit = None
+        self.PayType = None
+        self.SubPayType = None
+        self.WithZeroAmount = None
+
+
+    def _deserialize(self, params):
+        self.StartTime = params.get("StartTime")
+        self.EndTime = params.get("EndTime")
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+        self.PayType = params.get("PayType")
+        self.SubPayType = params.get("SubPayType")
+        self.WithZeroAmount = params.get("WithZeroAmount")
+
+
+class DescribeBillListResponse(AbstractModel):
+    """DescribeBillList返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param TransactionList: 收支明细列表
+        :type TransactionList: list of BillTransactionInfo
+        :param Total: 总条数
+        :type Total: int
+        :param ReturnAmount: 退费总额，单位（分）
+        :type ReturnAmount: float
+        :param RechargeAmount: 充值总额，单位（分）
+        :type RechargeAmount: float
+        :param BlockAmount: 冻结总额，单位（分）
+        :type BlockAmount: float
+        :param UnblockAmount: 解冻总额，单位（分）
+        :type UnblockAmount: float
+        :param DeductAmount: 扣费总额，单位（分）
+        :type DeductAmount: float
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TransactionList = None
+        self.Total = None
+        self.ReturnAmount = None
+        self.RechargeAmount = None
+        self.BlockAmount = None
+        self.UnblockAmount = None
+        self.DeductAmount = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("TransactionList") is not None:
+            self.TransactionList = []
+            for item in params.get("TransactionList"):
+                obj = BillTransactionInfo()
+                obj._deserialize(item)
+                self.TransactionList.append(obj)
+        self.Total = params.get("Total")
+        self.ReturnAmount = params.get("ReturnAmount")
+        self.RechargeAmount = params.get("RechargeAmount")
+        self.BlockAmount = params.get("BlockAmount")
+        self.UnblockAmount = params.get("UnblockAmount")
+        self.DeductAmount = params.get("DeductAmount")
         self.RequestId = params.get("RequestId")
 
 

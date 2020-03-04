@@ -89,6 +89,8 @@ overseas：中国境外加速
 global：全球加速
 使用中国境外加速、全球加速时，需要先开通中国境外加速服务
         :type Area: str
+        :param OriginPullTimeout: 回源超时配置
+        :type OriginPullTimeout: :class:`tencentcloud.cdn.v20180606.models.OriginPullTimeout`
         """
         self.Domain = None
         self.ServiceType = None
@@ -119,6 +121,7 @@ global：全球加速
         self.Ipv6 = None
         self.SpecificConfig = None
         self.Area = None
+        self.OriginPullTimeout = None
 
 
     def _deserialize(self, params):
@@ -201,6 +204,9 @@ global：全球加速
             self.SpecificConfig = SpecificConfig()
             self.SpecificConfig._deserialize(params.get("SpecificConfig"))
         self.Area = params.get("Area")
+        if params.get("OriginPullTimeout") is not None:
+            self.OriginPullTimeout = OriginPullTimeout()
+            self.OriginPullTimeout._deserialize(params.get("OriginPullTimeout"))
 
 
 class AddCdnDomainResponse(AbstractModel):
@@ -4701,6 +4707,8 @@ mainland：中国境内加速
 overseas：中国境外加速
 global：全球加速
         :type Area: str
+        :param OriginPullTimeout: 回源超时配置
+        :type OriginPullTimeout: :class:`tencentcloud.cdn.v20180606.models.OriginPullTimeout`
         """
         self.Domain = None
         self.ProjectId = None
@@ -4730,6 +4738,7 @@ global：全球加速
         self.ServiceType = None
         self.SpecificConfig = None
         self.Area = None
+        self.OriginPullTimeout = None
 
 
     def _deserialize(self, params):
@@ -4809,6 +4818,9 @@ global：全球加速
             self.SpecificConfig = SpecificConfig()
             self.SpecificConfig._deserialize(params.get("SpecificConfig"))
         self.Area = params.get("Area")
+        if params.get("OriginPullTimeout") is not None:
+            self.OriginPullTimeout = OriginPullTimeout()
+            self.OriginPullTimeout._deserialize(params.get("OriginPullTimeout"))
 
 
 class UpdateDomainConfigResponse(AbstractModel):

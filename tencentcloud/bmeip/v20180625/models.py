@@ -392,11 +392,26 @@ class DescribeEipAclsRequest(AbstractModel):
         :type Offset: int
         :param Limit: 分页参数。每一页的 EIPACL 列表数目
         :type Limit: int
+        :param EipIds: EIP实例ID列表
+        :type EipIds: list of str
+        :param EipIps: EIP IP地址列表
+        :type EipIps: list of str
+        :param EipNames: EIP名称列表
+        :type EipNames: list of str
+        :param OrderField: 排序字段
+        :type OrderField: str
+        :param Order: 排序方式，取值：0:增序(默认)，1:降序
+        :type Order: int
         """
         self.AclName = None
         self.AclIds = None
         self.Offset = None
         self.Limit = None
+        self.EipIds = None
+        self.EipIps = None
+        self.EipNames = None
+        self.OrderField = None
+        self.Order = None
 
 
     def _deserialize(self, params):
@@ -404,6 +419,11 @@ class DescribeEipAclsRequest(AbstractModel):
         self.AclIds = params.get("AclIds")
         self.Offset = params.get("Offset")
         self.Limit = params.get("Limit")
+        self.EipIds = params.get("EipIds")
+        self.EipIps = params.get("EipIps")
+        self.EipNames = params.get("EipNames")
+        self.OrderField = params.get("OrderField")
+        self.Order = params.get("Order")
 
 
 class DescribeEipAclsResponse(AbstractModel):
@@ -599,10 +619,13 @@ class DescribeEipsResponse(AbstractModel):
         """
         :param EipSet: 返回EIP信息数组
         :type EipSet: list of EipInfo
+        :param TotalCount: 返回EIP数量
+        :type TotalCount: int
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.EipSet = None
+        self.TotalCount = None
         self.RequestId = None
 
 
@@ -613,6 +636,7 @@ class DescribeEipsResponse(AbstractModel):
                 obj = EipInfo()
                 obj._deserialize(item)
                 self.EipSet.append(obj)
+        self.TotalCount = params.get("TotalCount")
         self.RequestId = params.get("RequestId")
 
 
@@ -846,6 +870,27 @@ class EipInfo(AbstractModel):
         self.HInstanceAlias = params.get("HInstanceAlias")
 
 
+class EipRsMap(AbstractModel):
+    """EipId与InstanceId绑定关系
+
+    """
+
+    def __init__(self):
+        """
+        :param EipId: EIP实例 ID
+        :type EipId: str
+        :param InstanceId: 黑石物理机实例ID
+        :type InstanceId: str
+        """
+        self.EipId = None
+        self.InstanceId = None
+
+
+    def _deserialize(self, params):
+        self.EipId = params.get("EipId")
+        self.InstanceId = params.get("InstanceId")
+
+
 class ModifyEipAclRequest(AbstractModel):
     """ModifyEipAcl请求参数结构体
 
@@ -1057,6 +1102,49 @@ class UnbindHostedResponse(AbstractModel):
     def __init__(self):
         """
         :param TaskId: 异步任务ID，可以通过EipBmQueryTask查询任务状态
+        :type TaskId: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TaskId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TaskId = params.get("TaskId")
+        self.RequestId = params.get("RequestId")
+
+
+class UnbindRsListRequest(AbstractModel):
+    """UnbindRsList请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param EipRsList: 物理机绑定的EIP列表
+        :type EipRsList: list of EipRsMap
+        """
+        self.EipRsList = None
+
+
+    def _deserialize(self, params):
+        if params.get("EipRsList") is not None:
+            self.EipRsList = []
+            for item in params.get("EipRsList"):
+                obj = EipRsMap()
+                obj._deserialize(item)
+                self.EipRsList.append(obj)
+
+
+class UnbindRsListResponse(AbstractModel):
+    """UnbindRsList返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param TaskId: 解绑操作的异步任务ID，可以通过查询EIP任务状态查询任务状态
         :type TaskId: int
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str

@@ -81,6 +81,34 @@ class BillingClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeBillList(self, request):
+        """获取收支明细列表，支持翻页和参数过滤
+
+        :param request: Request instance for DescribeBillList.
+        :type request: :class:`tencentcloud.billing.v20180709.models.DescribeBillListRequest`
+        :rtype: :class:`tencentcloud.billing.v20180709.models.DescribeBillListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeBillList", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeBillListResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeBillResourceSummary(self, request):
         """查询账单资源汇总数据
 

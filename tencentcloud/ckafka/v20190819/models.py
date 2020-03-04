@@ -313,13 +313,13 @@ class CreateAclRequest(AbstractModel):
         """
         :param InstanceId: 实例id信息
         :type InstanceId: str
-        :param ResourceType: Acl资源类型，（0:UNKNOWN，1:ANY，2:TOPIC，3:GROUP，4:CLUSTER，5:TRANSACTIONAL_ID）当前只有TOPIC，其它字段用于后续兼容开源kafka的acl时使用
+        :param ResourceType: Acl资源类型，(0:UNKNOWN，1:ANY，2:TOPIC，3:GROUP，4:CLUSTER，5:TRANSACTIONAL_ID)，当前只有TOPIC，其它字段用于后续兼容开源kafka的acl时使用
         :type ResourceType: int
-        :param ResourceName: 资源名称，和resourceType相关如当resourceType为TOPIC时，则该字段表示topic名称，当resourceType为GROUP时，该字段表示group名称
+        :param ResourceName: 资源名称，和resourceType相关，如当resourceType为TOPIC时，则该字段表示topic名称，当resourceType为GROUP时，该字段表示group名称
         :type ResourceName: str
-        :param Operation: Acl操作方式(0:UNKNOWN，1:ANY，2:ALL，3:READ，4:WRITE，5:CREATE，6:DELETE，7:ALTER，8:DESCRIBE，9:CLUSTER_ACTION，10:DESCRIBE_CONFIGS，11:ALTER_CONFIGS，
+        :param Operation: Acl操作方式，(0:UNKNOWN，1:ANY，2:ALL，3:READ，4:WRITE，5:CREATE，6:DELETE，7:ALTER，8:DESCRIBE，9:CLUSTER_ACTION，10:DESCRIBE_CONFIGS，11:ALTER_CONFIGS)
         :type Operation: int
-        :param PermissionType: 权限类型(0:UNKNOWN，1:ANY，2:DENY，3:ALLOW)，当前ckakfa支持ALLOW(相当于白名单)，其它用于后续兼容开源kafka的acl时使用
+        :param PermissionType: 权限类型，(0:UNKNOWN，1:ANY，2:DENY，3:ALLOW)，当前ckakfa支持ALLOW(相当于白名单)，其它用于后续兼容开源kafka的acl时使用
         :type PermissionType: int
         :param Host: 默认为*，表示任何host都可以访问，当前ckafka不支持host为*，但是后面开源kafka的产品化会直接支持
         :type Host: str
@@ -622,13 +622,13 @@ class DeleteAclRequest(AbstractModel):
         """
         :param InstanceId: 实例id信息
         :type InstanceId: str
-        :param ResourceType: Acl资源类型，（0:UNKNOWN，1:ANY，2:TOPIC，3:GROUP，4:CLUSTER，5:TRANSACTIONAL_ID）当前只有TOPIC，其它字段用于后续兼容开源kafka的acl时使用
+        :param ResourceType: Acl资源类型，(0:UNKNOWN，1:ANY，2:TOPIC，3:GROUP，4:CLUSTER，5:TRANSACTIONAL_ID)，当前只有TOPIC，其它字段用于后续兼容开源kafka的acl时使用
         :type ResourceType: int
-        :param ResourceName: 资源名称，和resourceType相关如当resourceType为TOPIC时，则该字段表示topic名称，当resourceType为GROUP时，该字段表示group名称
+        :param ResourceName: 资源名称，和resourceType相关，如当resourceType为TOPIC时，则该字段表示topic名称，当resourceType为GROUP时，该字段表示group名称
         :type ResourceName: str
-        :param Operation: Acl操作方式(0:UNKNOWN，1:ANY，2:ALL，3:READ，4:WRITE，5:CREATE，6:DELETE，7:ALTER，8:DESCRIBE，9:CLUSTER_ACTION，10:DESCRIBE_CONFIGS，11:ALTER_CONFIGS，12:IDEMPOTEN_WRITE)，当前ckafka只支持READ,WRITE，其它用于后续兼容开源kafka的acl时使用
+        :param Operation: Acl操作方式，(0:UNKNOWN，1:ANY，2:ALL，3:READ，4:WRITE，5:CREATE，6:DELETE，7:ALTER，8:DESCRIBE，9:CLUSTER_ACTION，10:DESCRIBE_CONFIGS，11:ALTER_CONFIGS，12:IDEMPOTEN_WRITE)，当前ckafka只支持READ,WRITE，其它用于后续兼容开源kafka的acl时使用
         :type Operation: int
-        :param PermissionType: 权限类型(0:UNKNOWN，1:ANY，2:DENY，3:ALLOW)，当前ckakfa支持ALLOW(相当于白名单)，其它用于后续兼容开源kafka的acl时使用
+        :param PermissionType: 权限类型，(0:UNKNOWN，1:ANY，2:DENY，3:ALLOW)，当前ckakfa支持ALLOW(相当于白名单)，其它用于后续兼容开源kafka的acl时使用
         :type PermissionType: int
         :param Host: 默认为*，表示任何host都可以访问，当前ckafka不支持host为*，但是后面开源kafka的产品化会直接支持
         :type Host: str
@@ -822,9 +822,9 @@ class DescribeACLRequest(AbstractModel):
         """
         :param InstanceId: 实例Id
         :type InstanceId: str
-        :param ResourceType: Acl资源类型，（0:UNKNOWN，1:ANY，2:TOPIC，3:GROUP，4:CLUSTER，5:TRANSACTIONAL_ID）当前只有TOPIC，其它字段用于后续兼容开源kafka的acl时使用
+        :param ResourceType: Acl资源类型，(0:UNKNOWN，1:ANY，2:TOPIC，3:GROUP，4:CLUSTER，5:TRANSACTIONAL_ID)，当前只有TOPIC，其它字段用于后续兼容开源kafka的acl时使用
         :type ResourceType: int
-        :param ResourceName: 资源名称，和resourceType相关如当resourceType为TOPIC时，则该字段表示topic名称，当resourceType为GROUP时，该字段表示group名称
+        :param ResourceName: 资源名称，和resourceType相关，如当resourceType为TOPIC时，则该字段表示topic名称，当resourceType为GROUP时，该字段表示group名称
         :type ResourceName: str
         :param Offset: 偏移位置
         :type Offset: int
@@ -1139,7 +1139,7 @@ class DescribeGroupResponse(AbstractModel):
     def __init__(self):
         """
         :param Result: 返回结果集列表
-        :type Result: list of DescribeGroup
+        :type Result: :class:`tencentcloud.ckafka.v20190819.models.GroupResponse`
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -1149,11 +1149,8 @@ class DescribeGroupResponse(AbstractModel):
 
     def _deserialize(self, params):
         if params.get("Result") is not None:
-            self.Result = []
-            for item in params.get("Result"):
-                obj = DescribeGroup()
-                obj._deserialize(item)
-                self.Result.append(obj)
+            self.Result = GroupResponse()
+            self.Result._deserialize(params.get("Result"))
         self.RequestId = params.get("RequestId")
 
 
@@ -1761,6 +1758,34 @@ class GroupOffsetTopic(AbstractModel):
                 self.Partitions.append(obj)
 
 
+class GroupResponse(AbstractModel):
+    """DescribeGroup的返回
+
+    """
+
+    def __init__(self):
+        """
+        :param TotalCount: 计数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TotalCount: int
+        :param GroupList: GroupList
+注意：此字段可能返回 null，表示取不到有效值。
+        :type GroupList: list of DescribeGroup
+        """
+        self.TotalCount = None
+        self.GroupList = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("GroupList") is not None:
+            self.GroupList = []
+            for item in params.get("GroupList"):
+                obj = DescribeGroup()
+                obj._deserialize(item)
+                self.GroupList.append(obj)
+
+
 class Instance(AbstractModel):
     """实例对象
 
@@ -1844,6 +1869,18 @@ class InstanceAttributesResponse(AbstractModel):
         :param ExpireTime: 过期时间
 注意：此字段可能返回 null，表示取不到有效值。
         :type ExpireTime: int
+        :param ZoneIds: 跨可用区
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ZoneIds: list of int
+        :param Version: kafka版本信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Version: str
+        :param MaxGroupNum: 最大分组数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MaxGroupNum: int
+        :param Cvm: 售卖类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Cvm: int
         """
         self.InstanceId = None
         self.InstanceName = None
@@ -1867,6 +1904,10 @@ class InstanceAttributesResponse(AbstractModel):
         self.CreatedTopics = None
         self.Tags = None
         self.ExpireTime = None
+        self.ZoneIds = None
+        self.Version = None
+        self.MaxGroupNum = None
+        self.Cvm = None
 
 
     def _deserialize(self, params):
@@ -1904,6 +1945,10 @@ class InstanceAttributesResponse(AbstractModel):
                 obj._deserialize(item)
                 self.Tags.append(obj)
         self.ExpireTime = params.get("ExpireTime")
+        self.ZoneIds = params.get("ZoneIds")
+        self.Version = params.get("Version")
+        self.MaxGroupNum = params.get("MaxGroupNum")
+        self.Cvm = params.get("Cvm")
 
 
 class InstanceConfigDO(AbstractModel):
@@ -1963,7 +2008,7 @@ class InstanceDetail(AbstractModel):
         :param RenewFlag: 实例是否续费，int  枚举值：1表示自动续费，2表示明确不自动续费
         :type RenewFlag: int
         :param Healthy: 实例状态 int：0表示健康，1表示告警，2 表示实例状态异常
-        :type Healthy: str
+        :type Healthy: int
         :param HealthyMessage: 实例状态信息
         :type HealthyMessage: str
         :param CreateTime: 实例创建时间时间
@@ -1976,6 +2021,15 @@ class InstanceDetail(AbstractModel):
         :type TopicNum: int
         :param Tags: 标识tag
         :type Tags: list of Tag
+        :param Version: kafka版本信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Version: str
+        :param ZoneIds: 跨可用区
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ZoneIds: list of int
+        :param Cvm: ckafka售卖类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Cvm: int
         """
         self.InstanceId = None
         self.InstanceName = None
@@ -1996,6 +2050,9 @@ class InstanceDetail(AbstractModel):
         self.IsInternal = None
         self.TopicNum = None
         self.Tags = None
+        self.Version = None
+        self.ZoneIds = None
+        self.Cvm = None
 
 
     def _deserialize(self, params):
@@ -2028,6 +2085,9 @@ class InstanceDetail(AbstractModel):
                 obj = Tag()
                 obj._deserialize(item)
                 self.Tags.append(obj)
+        self.Version = params.get("Version")
+        self.ZoneIds = params.get("ZoneIds")
+        self.Cvm = params.get("Cvm")
 
 
 class InstanceDetailResponse(AbstractModel):
@@ -2095,14 +2155,21 @@ class JgwOperateResponse(AbstractModel):
         :type ReturnCode: str
         :param ReturnMessage: 成功消息
         :type ReturnMessage: str
+        :param Data: 操作型返回的Data数据,可能有flowId等
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Data: :class:`tencentcloud.ckafka.v20190819.models.OperateResponseData`
         """
         self.ReturnCode = None
         self.ReturnMessage = None
+        self.Data = None
 
 
     def _deserialize(self, params):
         self.ReturnCode = params.get("ReturnCode")
         self.ReturnMessage = params.get("ReturnMessage")
+        if params.get("Data") is not None:
+            self.Data = OperateResponseData()
+            self.Data._deserialize(params.get("Data"))
 
 
 class ModifyGroupOffsetsRequest(AbstractModel):
@@ -2376,6 +2443,24 @@ class ModifyTopicAttributesResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class OperateResponseData(AbstractModel):
+    """操作类型返回的Data结构
+
+    """
+
+    def __init__(self):
+        """
+        :param FlowId: FlowId
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FlowId: int
+        """
+        self.FlowId = None
+
+
+    def _deserialize(self, params):
+        self.FlowId = params.get("FlowId")
+
+
 class Partition(AbstractModel):
     """分区实体
 
@@ -2393,6 +2478,29 @@ class Partition(AbstractModel):
         self.PartitionId = params.get("PartitionId")
 
 
+class PartitionOffset(AbstractModel):
+    """分区和位移
+
+    """
+
+    def __init__(self):
+        """
+        :param Partition: Partition,例如"0"或"1"
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Partition: str
+        :param Offset: Offset,例如100
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Offset: int
+        """
+        self.Partition = None
+        self.Offset = None
+
+
+    def _deserialize(self, params):
+        self.Partition = params.get("Partition")
+        self.Offset = params.get("Offset")
+
+
 class SubscribedInfo(AbstractModel):
     """订阅信息实体
 
@@ -2405,14 +2513,24 @@ class SubscribedInfo(AbstractModel):
         :param Partition: 订阅的分区
 注意：此字段可能返回 null，表示取不到有效值。
         :type Partition: list of int
+        :param PartitionOffset: 分区offset信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PartitionOffset: list of PartitionOffset
         """
         self.TopicName = None
         self.Partition = None
+        self.PartitionOffset = None
 
 
     def _deserialize(self, params):
         self.TopicName = params.get("TopicName")
         self.Partition = params.get("Partition")
+        if params.get("PartitionOffset") is not None:
+            self.PartitionOffset = []
+            for item in params.get("PartitionOffset"):
+                obj = PartitionOffset()
+                obj._deserialize(item)
+                self.PartitionOffset.append(obj)
 
 
 class Tag(AbstractModel):

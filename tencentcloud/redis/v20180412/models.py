@@ -331,7 +331,7 @@ class CreateInstancesRequest(AbstractModel):
         """
         :param ZoneId: 实例所属的可用区ID
         :type ZoneId: int
-        :param TypeId: 实例类型：2 – Redis2.8主从版，3 – Redis3.2主从版(CKV主从版)，4 – Redis3.2集群版(CKV集群版)，5-Redis2.8单机版，6 – Redis4.0主从版，7 – Redis4.0集群版，
+        :param TypeId: 实例类型：2 – Redis2.8主从版，3 – Redis3.2主从版(CKV主从版)，4 – Redis3.2集群版(CKV集群版)，5-Redis2.8单机版，6 – Redis4.0主从版，7 – Redis4.0集群版，8 – Redis5.0主从版，9 – Redis5.0集群版，
         :type TypeId: int
         :param MemSize: 实例容量，单位MB， 取值大小以 查询售卖规格接口返回的规格为准
         :type MemSize: int
@@ -1578,7 +1578,7 @@ class DescribeInstancesRequest(AbstractModel):
         :type AutoRenew: list of int
         :param BillingMode: 计费模式：postpaid-按量计费；prepaid-包年包月
         :type BillingMode: str
-        :param Type: 实例类型：1-Redis老集群版；2-Redis 2.8主从版；3-CKV主从版；4-CKV集群版；5-Redis 2.8单机版；6-Redis 4.0主从版；7-Redis 4.0集群版
+        :param Type: 实例类型：1-Redis老集群版；2-Redis 2.8主从版；3-CKV主从版；4-CKV集群版；5-Redis 2.8单机版；6-Redis 4.0主从版；7-Redis 4.0集群版；8 – Redis5.0主从版，9 – Redis5.0集群版，
         :type Type: int
         :param SearchKeys: 搜索关键词：支持实例Id、实例名称、完整IP
         :type SearchKeys: list of str

@@ -683,7 +683,7 @@ class DataDisk(AbstractModel):
         :param SnapshotId: 数据盘快照ID。选择的数据盘快照大小需小于数据盘大小。
 注意：此字段可能返回 null，表示取不到有效值。
         :type SnapshotId: str
-        :param Encrypt: 数据盘是否随子机销毁。取值范围：
+        :param Encrypt: 数据盘是加密。取值范围：
 <li>TRUE：加密
 <li>FALSE：不加密<br>
 默认取值：FALSE<br>
@@ -2459,6 +2459,9 @@ class InstanceTypeQuotaItem(AbstractModel):
         :type Status: str
         :param Price: 实例的售卖价格。
         :type Price: :class:`tencentcloud.batch.v20170312.models.ItemPrice`
+        :param SoldOutReason: 售罄原因。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SoldOutReason: str
         """
         self.Zone = None
         self.InstanceType = None
@@ -2472,6 +2475,7 @@ class InstanceTypeQuotaItem(AbstractModel):
         self.LocalDiskTypeList = None
         self.Status = None
         self.Price = None
+        self.SoldOutReason = None
 
 
     def _deserialize(self, params):
@@ -2496,6 +2500,7 @@ class InstanceTypeQuotaItem(AbstractModel):
         if params.get("Price") is not None:
             self.Price = ItemPrice()
             self.Price._deserialize(params.get("Price"))
+        self.SoldOutReason = params.get("SoldOutReason")
 
 
 class InternetAccessible(AbstractModel):
