@@ -1502,6 +1502,60 @@ class DescribeDomainsResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeIpStatusRequest(AbstractModel):
+    """DescribeIpStatus请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Domain: 加速域名
+        :type Domain: str
+        :param Layer: 节点类型：
+edge：表示边缘节点
+last：表示回源层节点
+不填充情况下，默认返回边缘节点信息
+        :type Layer: str
+        """
+        self.Domain = None
+        self.Layer = None
+
+
+    def _deserialize(self, params):
+        self.Domain = params.get("Domain")
+        self.Layer = params.get("Layer")
+
+
+class DescribeIpStatusResponse(AbstractModel):
+    """DescribeIpStatus返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Ips: 节点列表
+        :type Ips: list of IpStatus
+        :param TotalCount: 节点总个数
+        :type TotalCount: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Ips = None
+        self.TotalCount = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Ips") is not None:
+            self.Ips = []
+            for item in params.get("Ips"):
+                obj = IpStatus()
+                obj._deserialize(item)
+                self.Ips.append(obj)
+        self.TotalCount = params.get("TotalCount")
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeIpVisitRequest(AbstractModel):
     """DescribeIpVisit请求参数结构体
 
@@ -1804,6 +1858,47 @@ bandwidth：带宽计费
         self.RequestId = params.get("RequestId")
 
 
+class DescribePurgeQuotaRequest(AbstractModel):
+    """DescribePurgeQuota请求参数结构体
+
+    """
+
+
+class DescribePurgeQuotaResponse(AbstractModel):
+    """DescribePurgeQuota返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param UrlPurge: Url刷新用量及配额。
+        :type UrlPurge: list of Quota
+        :param PathPurge: 目录刷新用量及配额。
+        :type PathPurge: list of Quota
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.UrlPurge = None
+        self.PathPurge = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("UrlPurge") is not None:
+            self.UrlPurge = []
+            for item in params.get("UrlPurge"):
+                obj = Quota()
+                obj._deserialize(item)
+                self.UrlPurge.append(obj)
+        if params.get("PathPurge") is not None:
+            self.PathPurge = []
+            for item in params.get("PathPurge"):
+                obj = Quota()
+                obj._deserialize(item)
+                self.PathPurge.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class DescribePurgeTasksRequest(AbstractModel):
     """DescribePurgeTasks请求参数结构体
 
@@ -1891,6 +1986,38 @@ class DescribePurgeTasksResponse(AbstractModel):
                 obj._deserialize(item)
                 self.PurgeLogs.append(obj)
         self.TotalCount = params.get("TotalCount")
+        self.RequestId = params.get("RequestId")
+
+
+class DescribePushQuotaRequest(AbstractModel):
+    """DescribePushQuota请求参数结构体
+
+    """
+
+
+class DescribePushQuotaResponse(AbstractModel):
+    """DescribePushQuota返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param UrlPush: Url预热用量及配额。
+        :type UrlPush: list of Quota
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.UrlPush = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("UrlPush") is not None:
+            self.UrlPush = []
+            for item in params.get("UrlPush"):
+                obj = Quota()
+                obj._deserialize(item)
+                self.UrlPush.append(obj)
         self.RequestId = params.get("RequestId")
 
 
@@ -2917,6 +3044,41 @@ off：关闭
         self.Qps = params.get("Qps")
 
 
+class IpStatus(AbstractModel):
+    """节点 IP 信息
+
+    """
+
+    def __init__(self):
+        """
+        :param Ip: 节点 IP
+        :type Ip: str
+        :param District: 节点所属区域
+        :type District: str
+        :param Isp: 节点所属运营商
+        :type Isp: str
+        :param City: 节点所在城市
+        :type City: str
+        :param Status: 节点状态
+online：上线状态，正常调度服务中
+offline：下线状态
+        :type Status: str
+        """
+        self.Ip = None
+        self.District = None
+        self.Isp = None
+        self.City = None
+        self.Status = None
+
+
+    def _deserialize(self, params):
+        self.Ip = params.get("Ip")
+        self.District = params.get("District")
+        self.Isp = params.get("Isp")
+        self.City = params.get("City")
+        self.Status = params.get("Status")
+
+
 class Ipv6(AbstractModel):
     """Ipv6启用配置，不可更改
 
@@ -3853,6 +4015,35 @@ class PushUrlsCacheResponse(AbstractModel):
     def _deserialize(self, params):
         self.TaskId = params.get("TaskId")
         self.RequestId = params.get("RequestId")
+
+
+class Quota(AbstractModel):
+    """刷新/预热 可用量及配额
+
+    """
+
+    def __init__(self):
+        """
+        :param Batch: 单次批量提交配额上限。
+        :type Batch: int
+        :param Total: 每日提交配额上限。
+        :type Total: int
+        :param Available: 每日剩余的可提交配额。
+        :type Available: int
+        :param Area: 配额的区域。
+        :type Area: str
+        """
+        self.Batch = None
+        self.Total = None
+        self.Available = None
+        self.Area = None
+
+
+    def _deserialize(self, params):
+        self.Batch = params.get("Batch")
+        self.Total = params.get("Total")
+        self.Available = params.get("Available")
+        self.Area = params.get("Area")
 
 
 class RangeOriginPull(AbstractModel):

@@ -759,7 +759,7 @@ class DetectFaceRequest(AbstractModel):
 此参数用于控制处理待检测图片中的人脸个数，值越小，处理速度越快。
         :type MaxFaceNum: int
         :param MinFaceSize: 人脸长和宽的最小尺寸，单位为像素。
-默认为40。建议不低于34。
+默认为34。建议不低于34。
 低于MinFaceSize值的人脸不会被检测。
         :type MinFaceSize: int
         :param Image: 图片 base64 数据，base64 编码后大小不可超过5M。
@@ -1763,6 +1763,7 @@ class GroupExDescriptionInfo(AbstractModel):
     def __init__(self):
         """
         :param GroupExDescriptionIndex: 人员库自定义描述字段Index，从0开始
+注意：此字段可能返回 null，表示取不到有效值。
         :type GroupExDescriptionIndex: int
         :param GroupExDescription: 需要更新的人员库自定义描述字段内容
         :type GroupExDescription: str
@@ -1994,6 +1995,7 @@ class PersonExDescriptionInfo(AbstractModel):
     def __init__(self):
         """
         :param PersonExDescriptionIndex: 人员描述字段Index，从0开始
+注意：此字段可能返回 null，表示取不到有效值。
         :type PersonExDescriptionIndex: int
         :param PersonExDescription: 需要更新的人员描述字段内容
         :type PersonExDescription: str
@@ -2175,7 +2177,7 @@ Url、Image必须提供一个，如果都提供，只使用 Url。
 MaxFaceNum用于，当输入的待识别图片包含多张人脸时，设定要搜索的人脸的数量。 
 例：输入的Image或Url中的图片包含多张人脸，设MaxFaceNum=5，则会识别图片中面积最大的5张人脸。
         :type MaxFaceNum: int
-        :param MinFaceSize: 人脸长和宽的最小尺寸，单位为像素。默认为80。低于40的人脸图片无法被识别。建议设置为80。
+        :param MinFaceSize: 人脸长和宽的最小尺寸，单位为像素。默认为34。低于34的人脸图片无法被识别。建议设置为80。
         :type MinFaceSize: int
         :param MaxPersonNum: 单张被识别的人脸返回的最相似人员数量。默认值为5，最大值为100。 
 例，设MaxFaceNum为1，MaxPersonNum为8，则返回Top8相似的人员信息。
@@ -2274,7 +2276,7 @@ Url、Image必须提供一个，如果都提供，只使用 Url。
 MaxFaceNum用于，当输入的待识别图片包含多张人脸时，设定要搜索的人脸的数量。
 例：输入的Image或Url中的图片包含多张人脸，设MaxFaceNum=5，则会识别图片中面积最大的5张人脸。
         :type MaxFaceNum: int
-        :param MinFaceSize: 人脸长和宽的最小尺寸，单位为像素。默认为80。低于40将影响搜索精度。建议设置为80。
+        :param MinFaceSize: 人脸长和宽的最小尺寸，单位为像素。默认为34。低于34将影响搜索精度。建议设置为80。
         :type MinFaceSize: int
         :param MaxPersonNumPerGroup: 被检测到的人脸，对应最多返回的最相似人员数目。默认值为5，最大值为10。  
 例，设MaxFaceNum为3，MaxPersonNum为5，则最多可能返回3*5=15个人员。
@@ -2375,7 +2377,7 @@ Url、Image必须提供一个，如果都提供，只使用 Url。
 MaxFaceNum用于，当输入的待识别图片包含多张人脸时，设定要搜索的人脸的数量。
 例：输入的Image或Url中的图片包含多张人脸，设MaxFaceNum=5，则会识别图片中面积最大的5张人脸。
         :type MaxFaceNum: int
-        :param MinFaceSize: 人脸长和宽的最小尺寸，单位为像素。默认为80。低于40将影响搜索精度。建议设置为80。
+        :param MinFaceSize: 人脸长和宽的最小尺寸，单位为像素。默认为34。低于34将影响搜索精度。建议设置为80。
         :type MinFaceSize: int
         :param MaxPersonNum: 单张被识别的人脸返回的最相似人员数量。默认值为5，最大值为100。
 例，设MaxFaceNum为1，MaxPersonNum为8，则返回Top8相似的人员信息。
@@ -2475,7 +2477,7 @@ Url、Image必须提供一个，如果都提供，只使用 Url。
 MaxFaceNum用于，当输入的待识别图片包含多张人脸时，设定要搜索的人脸的数量。
 例：输入的Image或Url中的图片包含多张人脸，设MaxFaceNum=5，则会识别图片中面积最大的5张人脸。
         :type MaxFaceNum: int
-        :param MinFaceSize: 人脸长和宽的最小尺寸，单位为像素。默认为80。低于40将影响搜索精度。建议设置为80。
+        :param MinFaceSize: 人脸长和宽的最小尺寸，单位为像素。默认为34。低于34将影响搜索精度。建议设置为80。
         :type MinFaceSize: int
         :param MaxPersonNumPerGroup: 被检测到的人脸，对应最多返回的最相似人员数目。默认值为5，最大值为10。  
 例，设MaxFaceNum为3，MaxPersonNumPerGroup为5，GroupIds长度为3，则最多可能返回3*5*3=45个人员。

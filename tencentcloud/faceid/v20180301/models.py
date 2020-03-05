@@ -305,6 +305,281 @@ class DetectAuthResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DetectDetail(AbstractModel):
+    """活体一比一详情
+
+    """
+
+    def __init__(self):
+        """
+        :param ReqTime: 请求时间戳。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ReqTime: str
+        :param Seq: 本次活体一比一请求的唯一标记。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Seq: str
+        :param Idcard: 参与本次活体一比一的身份证号。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Idcard: str
+        :param Name: 参与本次活体一比一的姓名。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Name: str
+        :param Sim: 本次活体一比一的相似度。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Sim: str
+        :param IsNeedCharge: 本次活体一比一是否收费
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IsNeedCharge: bool
+        :param Errcode: 本次活体一比一最终结果。0为成功
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Errcode: int
+        :param Errmsg: 本次活体一比一最终结果描述。（仅描述用，文案更新时不会通知。）
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Errmsg: str
+        :param Livestatus: 本次活体结果。0为成功
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Livestatus: int
+        :param Livemsg: 本次活体结果描述。（仅描述用，文案更新时不会通知。）
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Livemsg: str
+        :param Comparestatus: 本次一比一结果。0为成功
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Comparestatus: int
+        :param Comparemsg: 本次一比一结果描述。（仅描述用，文案更新时不会通知。）
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Comparemsg: str
+        """
+        self.ReqTime = None
+        self.Seq = None
+        self.Idcard = None
+        self.Name = None
+        self.Sim = None
+        self.IsNeedCharge = None
+        self.Errcode = None
+        self.Errmsg = None
+        self.Livestatus = None
+        self.Livemsg = None
+        self.Comparestatus = None
+        self.Comparemsg = None
+
+
+    def _deserialize(self, params):
+        self.ReqTime = params.get("ReqTime")
+        self.Seq = params.get("Seq")
+        self.Idcard = params.get("Idcard")
+        self.Name = params.get("Name")
+        self.Sim = params.get("Sim")
+        self.IsNeedCharge = params.get("IsNeedCharge")
+        self.Errcode = params.get("Errcode")
+        self.Errmsg = params.get("Errmsg")
+        self.Livestatus = params.get("Livestatus")
+        self.Livemsg = params.get("Livemsg")
+        self.Comparestatus = params.get("Comparestatus")
+        self.Comparemsg = params.get("Comparemsg")
+
+
+class DetectInfoBestFrame(AbstractModel):
+    """核身最佳帧信息
+
+    """
+
+    def __init__(self):
+        """
+        :param BestFrame: 活体比对最佳帧。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BestFrame: str
+        :param BestFrames: 自截帧。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BestFrames: list of str
+        """
+        self.BestFrame = None
+        self.BestFrames = None
+
+
+    def _deserialize(self, params):
+        self.BestFrame = params.get("BestFrame")
+        self.BestFrames = params.get("BestFrames")
+
+
+class DetectInfoIdCardData(AbstractModel):
+    """核身身份证图片信息
+
+    """
+
+    def __init__(self):
+        """
+        :param OcrFront: OCR正面照片的base64编码。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OcrFront: str
+        :param OcrBack: OCR反面照片的base64编码
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OcrBack: str
+        :param ProcessedFrontImage: 旋转裁边后的正面照片base64编码。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ProcessedFrontImage: str
+        :param ProcessedBackImage: 旋转裁边后的背面照片base64编码。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ProcessedBackImage: str
+        :param Avatar: 身份证正面人像图base64编码。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Avatar: str
+        """
+        self.OcrFront = None
+        self.OcrBack = None
+        self.ProcessedFrontImage = None
+        self.ProcessedBackImage = None
+        self.Avatar = None
+
+
+    def _deserialize(self, params):
+        self.OcrFront = params.get("OcrFront")
+        self.OcrBack = params.get("OcrBack")
+        self.ProcessedFrontImage = params.get("ProcessedFrontImage")
+        self.ProcessedBackImage = params.get("ProcessedBackImage")
+        self.Avatar = params.get("Avatar")
+
+
+class DetectInfoText(AbstractModel):
+    """核身文本信息
+
+    """
+
+    def __init__(self):
+        """
+        :param ErrCode: 本次流程最终验证结果。0为成功
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ErrCode: int
+        :param ErrMsg: 本次流程最终验证结果描述。（仅描述用，文案更新时不会通知。）
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ErrMsg: str
+        :param IdCard: 本次验证使用的身份证号。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IdCard: str
+        :param Name: 本次验证使用的姓名。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Name: str
+        :param OcrNation: Ocr识别结果。民族。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OcrNation: str
+        :param OcrAddress: Ocr识别结果。家庭住址。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OcrAddress: str
+        :param OcrBirth: Ocr识别结果。生日。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OcrBirth: str
+        :param OcrAuthority: Ocr识别结果。签发机关。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OcrAuthority: str
+        :param OcrValidDate: Ocr识别结果。有效日期。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OcrValidDate: str
+        :param OcrName: Ocr识别结果。姓名。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OcrName: str
+        :param OcrIdCard: Ocr识别结果。身份证号。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OcrIdCard: str
+        :param OcrGender: Ocr识别结果。性别。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OcrGender: str
+        :param LiveStatus: 本次流程最终活体结果。0为成功
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LiveStatus: int
+        :param LiveMsg: 本次流程最终活体结果描述。（仅描述用，文案更新时不会通知。）
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LiveMsg: str
+        :param Comparestatus: 本次流程最终一比一结果。0为成功
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Comparestatus: int
+        :param Comparemsg: 本次流程最终一比一结果描述。（仅描述用，文案更新时不会通知。）
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Comparemsg: str
+        :param Sim: 本次流程活体一比一的分数。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Sim: str
+        :param Location: 地理位置经纬度。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Location: str
+        :param Extra: Auth接口带入额外信息。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Extra: str
+        :param LivenessDetail: 本次流程进行的活体一比一流水。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LivenessDetail: list of DetectDetail
+        :param Mobile: 手机号码。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Mobile: str
+        """
+        self.ErrCode = None
+        self.ErrMsg = None
+        self.IdCard = None
+        self.Name = None
+        self.OcrNation = None
+        self.OcrAddress = None
+        self.OcrBirth = None
+        self.OcrAuthority = None
+        self.OcrValidDate = None
+        self.OcrName = None
+        self.OcrIdCard = None
+        self.OcrGender = None
+        self.LiveStatus = None
+        self.LiveMsg = None
+        self.Comparestatus = None
+        self.Comparemsg = None
+        self.Sim = None
+        self.Location = None
+        self.Extra = None
+        self.LivenessDetail = None
+        self.Mobile = None
+
+
+    def _deserialize(self, params):
+        self.ErrCode = params.get("ErrCode")
+        self.ErrMsg = params.get("ErrMsg")
+        self.IdCard = params.get("IdCard")
+        self.Name = params.get("Name")
+        self.OcrNation = params.get("OcrNation")
+        self.OcrAddress = params.get("OcrAddress")
+        self.OcrBirth = params.get("OcrBirth")
+        self.OcrAuthority = params.get("OcrAuthority")
+        self.OcrValidDate = params.get("OcrValidDate")
+        self.OcrName = params.get("OcrName")
+        self.OcrIdCard = params.get("OcrIdCard")
+        self.OcrGender = params.get("OcrGender")
+        self.LiveStatus = params.get("LiveStatus")
+        self.LiveMsg = params.get("LiveMsg")
+        self.Comparestatus = params.get("Comparestatus")
+        self.Comparemsg = params.get("Comparemsg")
+        self.Sim = params.get("Sim")
+        self.Location = params.get("Location")
+        self.Extra = params.get("Extra")
+        if params.get("LivenessDetail") is not None:
+            self.LivenessDetail = []
+            for item in params.get("LivenessDetail"):
+                obj = DetectDetail()
+                obj._deserialize(item)
+                self.LivenessDetail.append(obj)
+        self.Mobile = params.get("Mobile")
+
+
+class DetectInfoVideoData(AbstractModel):
+    """核身视频信息
+
+    """
+
+    def __init__(self):
+        """
+        :param LivenessVideo: 活体视频的base64编码
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LivenessVideo: str
+        """
+        self.LivenessVideo = None
+
+
+    def _deserialize(self, params):
+        self.LivenessVideo = params.get("LivenessVideo")
+
+
 class GetActionSequenceRequest(AbstractModel):
     """GetActionSequence请求参数结构体
 
@@ -329,6 +604,90 @@ class GetActionSequenceResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.ActionSequence = params.get("ActionSequence")
+        self.RequestId = params.get("RequestId")
+
+
+class GetDetectInfoEnhancedRequest(AbstractModel):
+    """GetDetectInfoEnhanced请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param BizToken: 人脸核身流程的标识，调用DetectAuth接口时生成。
+        :type BizToken: str
+        :param RuleId: 用于细分客户使用场景，由腾讯侧在线下对接时分配。
+        :type RuleId: str
+        :param InfoType: 指定拉取的结果信息，取值（0：全部；1：文本类；2：身份证信息；3：视频最佳截图信息；4：视频信息）。
+如 134表示拉取文本类、视频最佳截图信息、视频信息。
+默认值：0
+        :type InfoType: str
+        :param BestFramesCount: 从活体视频中截取一定张数的最佳帧。默认为0，最大为10，超出10的最多只给10张。（InfoType需要包含3）
+        :type BestFramesCount: int
+        :param IsCutIdCardImage: 是否对身份证照片进行裁边。默认为false。（InfoType需要包含2）
+        :type IsCutIdCardImage: bool
+        :param IsNeedIdCardAvatar: 是否需要从身份证中抠出头像。默认为false。（InfoType需要包含2）
+        :type IsNeedIdCardAvatar: bool
+        """
+        self.BizToken = None
+        self.RuleId = None
+        self.InfoType = None
+        self.BestFramesCount = None
+        self.IsCutIdCardImage = None
+        self.IsNeedIdCardAvatar = None
+
+
+    def _deserialize(self, params):
+        self.BizToken = params.get("BizToken")
+        self.RuleId = params.get("RuleId")
+        self.InfoType = params.get("InfoType")
+        self.BestFramesCount = params.get("BestFramesCount")
+        self.IsCutIdCardImage = params.get("IsCutIdCardImage")
+        self.IsNeedIdCardAvatar = params.get("IsNeedIdCardAvatar")
+
+
+class GetDetectInfoEnhancedResponse(AbstractModel):
+    """GetDetectInfoEnhanced返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Text: 文本类信息。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Text: :class:`tencentcloud.faceid.v20180301.models.DetectInfoText`
+        :param IdCardData: 身份证照片信息。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IdCardData: :class:`tencentcloud.faceid.v20180301.models.DetectInfoIdCardData`
+        :param BestFrame: 最佳帧信息。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BestFrame: :class:`tencentcloud.faceid.v20180301.models.DetectInfoBestFrame`
+        :param VideoData: 视频信息。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type VideoData: :class:`tencentcloud.faceid.v20180301.models.DetectInfoVideoData`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Text = None
+        self.IdCardData = None
+        self.BestFrame = None
+        self.VideoData = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Text") is not None:
+            self.Text = DetectInfoText()
+            self.Text._deserialize(params.get("Text"))
+        if params.get("IdCardData") is not None:
+            self.IdCardData = DetectInfoIdCardData()
+            self.IdCardData._deserialize(params.get("IdCardData"))
+        if params.get("BestFrame") is not None:
+            self.BestFrame = DetectInfoBestFrame()
+            self.BestFrame._deserialize(params.get("BestFrame"))
+        if params.get("VideoData") is not None:
+            self.VideoData = DetectInfoVideoData()
+            self.VideoData._deserialize(params.get("VideoData"))
         self.RequestId = params.get("RequestId")
 
 

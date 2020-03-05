@@ -193,6 +193,34 @@ class FaceidClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def GetDetectInfoEnhanced(self, request):
+        """完成验证后，用BizToken调用本接口获取结果信息，BizToken生成后三天内（3\*24\*3,600秒）可多次拉取。
+
+        :param request: Request instance for GetDetectInfoEnhanced.
+        :type request: :class:`tencentcloud.faceid.v20180301.models.GetDetectInfoEnhancedRequest`
+        :rtype: :class:`tencentcloud.faceid.v20180301.models.GetDetectInfoEnhancedResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("GetDetectInfoEnhanced", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.GetDetectInfoEnhancedResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def GetLiveCode(self, request):
         """使用数字活体检测模式前，需调用本接口获取数字验证码。
 

@@ -1092,7 +1092,7 @@ class DescribeShieldResultResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param TaskStatus: 任务状态: 1-已完成,2-处理中,3-处理出错,4-处理超时
+        :param TaskStatus: 任务状态: 0-请返回,1-已完成,2-处理中,3-处理出错,4-处理超时
         :type TaskStatus: int
         :param AppDetailInfo: app加固前的详细信息
         :type AppDetailInfo: :class:`tencentcloud.ms.v20180408.models.AppDetailInfo`

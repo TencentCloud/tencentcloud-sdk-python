@@ -258,6 +258,35 @@ class CdnClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeIpStatus(self, request):
+        """DescribeIpStatus 用于查询域名所在加速平台的边缘节点、回源节点明细
+        注意事项：接口尚未全量开放，未在内测名单中的账号不支持调用
+
+        :param request: Request instance for DescribeIpStatus.
+        :type request: :class:`tencentcloud.cdn.v20180606.models.DescribeIpStatusRequest`
+        :rtype: :class:`tencentcloud.cdn.v20180606.models.DescribeIpStatusResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeIpStatus", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeIpStatusResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeIpVisit(self, request):
         """DescribeIpVisit 用于查询 5 分钟活跃用户数，及日活跃用户数明细
 
@@ -383,6 +412,34 @@ class CdnClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribePurgeQuota(self, request):
+        """DescribePurgeQuota 用于查询账户刷新配额和每日可用量。
+
+        :param request: Request instance for DescribePurgeQuota.
+        :type request: :class:`tencentcloud.cdn.v20180606.models.DescribePurgeQuotaRequest`
+        :rtype: :class:`tencentcloud.cdn.v20180606.models.DescribePurgeQuotaResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribePurgeQuota", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribePurgeQuotaResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribePurgeTasks(self, request):
         """DescribePurgeTasks 用于查询提交的 URL 刷新、目录刷新记录及执行进度，通过 PurgePathCache 与 PurgeUrlsCache 接口提交的任务均可通过此接口进行查询。
 
@@ -397,6 +454,34 @@ class CdnClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribePurgeTasksResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribePushQuota(self, request):
+        """DescribePushQuota  用于查询预热配额和每日可用量。
+
+        :param request: Request instance for DescribePushQuota.
+        :type request: :class:`tencentcloud.cdn.v20180606.models.DescribePushQuotaRequest`
+        :rtype: :class:`tencentcloud.cdn.v20180606.models.DescribePushQuotaResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribePushQuota", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribePushQuotaResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
