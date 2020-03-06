@@ -522,6 +522,33 @@ hex：十六进制
         self.TimeFormat = params.get("TimeFormat")
 
 
+class AwsPrivateAccess(AbstractModel):
+    """s3源站回源鉴权。
+
+    """
+
+    def __init__(self):
+        """
+        :param Switch: 开关，on/off。
+        :type Switch: str
+        :param AccessKey: 访问ID。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AccessKey: str
+        :param SecretKey: 密钥。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SecretKey: str
+        """
+        self.Switch = None
+        self.AccessKey = None
+        self.SecretKey = None
+
+
+    def _deserialize(self, params):
+        self.Switch = params.get("Switch")
+        self.AccessKey = params.get("AccessKey")
+        self.SecretKey = params.get("SecretKey")
+
+
 class BandwidthAlert(AbstractModel):
     """带宽封顶配置，默认为关闭状态
 
@@ -2357,6 +2384,9 @@ global：全球锁定
         :param OriginPullTimeout: 回源超时配置
 注意：此字段可能返回 null，表示取不到有效值。
         :type OriginPullTimeout: :class:`tencentcloud.cdn.v20180606.models.OriginPullTimeout`
+        :param AwsPrivateAccess: 回源S3鉴权配置
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AwsPrivateAccess: :class:`tencentcloud.cdn.v20180606.models.AwsPrivateAccess`
         """
         self.ResourceId = None
         self.AppId = None
@@ -2397,6 +2427,7 @@ global：全球锁定
         self.Area = None
         self.Readonly = None
         self.OriginPullTimeout = None
+        self.AwsPrivateAccess = None
 
 
     def _deserialize(self, params):
@@ -2493,6 +2524,9 @@ global：全球锁定
         if params.get("OriginPullTimeout") is not None:
             self.OriginPullTimeout = OriginPullTimeout()
             self.OriginPullTimeout._deserialize(params.get("OriginPullTimeout"))
+        if params.get("AwsPrivateAccess") is not None:
+            self.AwsPrivateAccess = AwsPrivateAccess()
+            self.AwsPrivateAccess._deserialize(params.get("AwsPrivateAccess"))
 
 
 class DisableCachesRequest(AbstractModel):
@@ -4900,6 +4934,8 @@ global：全球加速
         :type Area: str
         :param OriginPullTimeout: 回源超时配置
         :type OriginPullTimeout: :class:`tencentcloud.cdn.v20180606.models.OriginPullTimeout`
+        :param AwsPrivateAccess: 回源S3私有鉴权
+        :type AwsPrivateAccess: :class:`tencentcloud.cdn.v20180606.models.AwsPrivateAccess`
         """
         self.Domain = None
         self.ProjectId = None
@@ -4930,6 +4966,7 @@ global：全球加速
         self.SpecificConfig = None
         self.Area = None
         self.OriginPullTimeout = None
+        self.AwsPrivateAccess = None
 
 
     def _deserialize(self, params):
@@ -5012,6 +5049,9 @@ global：全球加速
         if params.get("OriginPullTimeout") is not None:
             self.OriginPullTimeout = OriginPullTimeout()
             self.OriginPullTimeout._deserialize(params.get("OriginPullTimeout"))
+        if params.get("AwsPrivateAccess") is not None:
+            self.AwsPrivateAccess = AwsPrivateAccess()
+            self.AwsPrivateAccess._deserialize(params.get("AwsPrivateAccess"))
 
 
 class UpdateDomainConfigResponse(AbstractModel):

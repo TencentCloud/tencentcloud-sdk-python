@@ -48,6 +48,35 @@ outpkg表示出包速率；）
         self.Count = params.get("Count")
 
 
+class BoundIpInfo(AbstractModel):
+    """高防包绑定IP对象
+
+    """
+
+    def __init__(self):
+        """
+        :param Ip: IP
+        :type Ip: str
+        :param BizType: 绑定的产品分类，取值[public（CVM产品），bm（黑石产品），eni（弹性网卡），vpngw（VPN网关）， natgw（NAT网关），waf（Web应用安全产品），fpc（金融产品），gaap（GAAP产品）, other(托管IP)]
+        :type BizType: str
+        :param DeviceType: 产品分类下的子类型，取值[cvm（CVM），lb（负载均衡器），eni（弹性网卡），vpngw（VPN），natgw（NAT），waf（WAF），fpc（金融），gaap（GAAP），other（托管IP），eip（黑石弹性IP）]
+        :type DeviceType: str
+        :param InstanceId: IP所属的资源实例ID，当绑定新IP时必须填写此字段；例如是弹性网卡的IP，则InstanceId填写弹性网卡的ID(eni-*); 如果绑定的是托管IP没有对应的资源实例ID，请填写"none";
+        :type InstanceId: str
+        """
+        self.Ip = None
+        self.BizType = None
+        self.DeviceType = None
+        self.InstanceId = None
+
+
+    def _deserialize(self, params):
+        self.Ip = params.get("Ip")
+        self.BizType = params.get("BizType")
+        self.DeviceType = params.get("DeviceType")
+        self.InstanceId = params.get("InstanceId")
+
+
 class CCAlarmThreshold(AbstractModel):
     """CC告警阈值
 
@@ -202,7 +231,7 @@ class CCPolicy(AbstractModel):
         :type CreateTime: str
         :param RuleList: 规则列表
         :type RuleList: list of CCRule
-        :param IpList: IP列表
+        :param IpList: IP列表，如果不填时，请传空数组但不能为null；
         :type IpList: list of str
         :param Protocol: cc防护类型，取值[http，https]
         :type Protocol: str
@@ -321,6 +350,72 @@ class CreateBasicDDoSAlarmThresholdResponse(AbstractModel):
     def _deserialize(self, params):
         self.AlarmThreshold = params.get("AlarmThreshold")
         self.AlarmType = params.get("AlarmType")
+        self.RequestId = params.get("RequestId")
+
+
+class CreateBoundIPRequest(AbstractModel):
+    """CreateBoundIP请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Business: 大禹子产品代号（bgp表示独享包；bgp-multip表示共享包）
+        :type Business: str
+        :param Id: 资源实例ID
+        :type Id: str
+        :param BoundDevList: 绑定到资源实例的IP数组，当资源实例为高防包(独享包)时，数组只允许填1个IP；当没有要绑定的IP时可以为空数组；但是BoundDevList和UnBoundDevList至少有一个不为空；
+        :type BoundDevList: list of BoundIpInfo
+        :param UnBoundDevList: 与资源实例解绑的IP数组，当资源实例为高防包(独享包)时，数组只允许填1个IP；当没有要解绑的IP时可以为空数组；但是BoundDevList和UnBoundDevList至少有一个不为空；
+        :type UnBoundDevList: list of BoundIpInfo
+        :param CopyPolicy: 已弃用，不填
+        :type CopyPolicy: str
+        """
+        self.Business = None
+        self.Id = None
+        self.BoundDevList = None
+        self.UnBoundDevList = None
+        self.CopyPolicy = None
+
+
+    def _deserialize(self, params):
+        self.Business = params.get("Business")
+        self.Id = params.get("Id")
+        if params.get("BoundDevList") is not None:
+            self.BoundDevList = []
+            for item in params.get("BoundDevList"):
+                obj = BoundIpInfo()
+                obj._deserialize(item)
+                self.BoundDevList.append(obj)
+        if params.get("UnBoundDevList") is not None:
+            self.UnBoundDevList = []
+            for item in params.get("UnBoundDevList"):
+                obj = BoundIpInfo()
+                obj._deserialize(item)
+                self.UnBoundDevList.append(obj)
+        self.CopyPolicy = params.get("CopyPolicy")
+
+
+class CreateBoundIPResponse(AbstractModel):
+    """CreateBoundIP返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Success: 成功码
+        :type Success: :class:`tencentcloud.dayu.v20180709.models.SuccessCode`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Success = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Success") is not None:
+            self.Success = SuccessCode()
+            self.Success._deserialize(params.get("Success"))
         self.RequestId = params.get("RequestId")
 
 

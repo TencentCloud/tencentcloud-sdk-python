@@ -46,7 +46,7 @@ class CreateInstanceRequest(AbstractModel):
         """
         :param Zone: 可用区
         :type Zone: str
-        :param EsVersion: 实例版本（支持"5.6.4"、"6.4.3"）
+        :param EsVersion: 实例版本（支持"5.6.4"、"6.4.3"、"6.8.2"、"7.5.1"）
         :type EsVersion: str
         :param VpcId: 私有网络ID
         :type VpcId: str
