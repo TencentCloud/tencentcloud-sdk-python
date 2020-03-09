@@ -136,7 +136,7 @@ class CustomLayout(AbstractModel):
         """
         :param Canvas: 混流画布参数
         :type Canvas: :class:`tencentcloud.tiw.v20190919.models.Canvas`
-        :param InputStreamList: 流布局参数
+        :param InputStreamList: 流布局参数，每路流的布局不能超出画布区域
         :type InputStreamList: list of StreamLayout
         """
         self.Canvas = None

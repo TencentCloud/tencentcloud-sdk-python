@@ -532,6 +532,8 @@ class DescribeCaptchaResultRequest(AbstractModel):
         :type MacAddress: str
         :param Imei: 手机设备号
         :type Imei: str
+        :param NeedGetCaptchaTime: 是否返回前端获取验证码时间，取值1：需要返回
+        :type NeedGetCaptchaTime: int
         """
         self.CaptchaType = None
         self.Ticket = None
@@ -543,6 +545,7 @@ class DescribeCaptchaResultRequest(AbstractModel):
         self.SceneId = None
         self.MacAddress = None
         self.Imei = None
+        self.NeedGetCaptchaTime = None
 
 
     def _deserialize(self, params):
@@ -556,6 +559,7 @@ class DescribeCaptchaResultRequest(AbstractModel):
         self.SceneId = params.get("SceneId")
         self.MacAddress = params.get("MacAddress")
         self.Imei = params.get("Imei")
+        self.NeedGetCaptchaTime = params.get("NeedGetCaptchaTime")
 
 
 class DescribeCaptchaResultResponse(AbstractModel):
@@ -594,12 +598,16 @@ class DescribeCaptchaResultResponse(AbstractModel):
         :param EvilLevel: [0,100]，恶意等级
 注意：此字段可能返回 null，表示取不到有效值。
         :type EvilLevel: int
+        :param GetCaptchaTime: 前端获取验证码时间，时间戳格式
+注意：此字段可能返回 null，表示取不到有效值。
+        :type GetCaptchaTime: int
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.CaptchaCode = None
         self.CaptchaMsg = None
         self.EvilLevel = None
+        self.GetCaptchaTime = None
         self.RequestId = None
 
 
@@ -607,6 +615,7 @@ class DescribeCaptchaResultResponse(AbstractModel):
         self.CaptchaCode = params.get("CaptchaCode")
         self.CaptchaMsg = params.get("CaptchaMsg")
         self.EvilLevel = params.get("EvilLevel")
+        self.GetCaptchaTime = params.get("GetCaptchaTime")
         self.RequestId = params.get("RequestId")
 
 

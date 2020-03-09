@@ -26,7 +26,11 @@ class CloudauditClient(AbstractClient):
 
 
     def CreateAudit(self, request):
-        """创建跟踪集
+        """参数要求：
+        1、如果IsCreateNewBucket的值存在的话，cosRegion和cosBucketName都是必填参数。
+        2、如果IsEnableCmqNotify的值是1的话，IsCreateNewQueue、CmqRegion和CmqQueueName都是必填参数。
+        3、如果IsEnableCmqNotify的值是0的话，IsCreateNewQueue、CmqRegion和CmqQueueName都不能传。
+        4、如果IsEnableKmsEncry的值是1的话，KmsRegion和KeyId属于必填项
 
         :param request: Request instance for CreateAudit.
         :type request: :class:`tencentcloud.cloudaudit.v20190319.models.CreateAuditRequest`
@@ -338,6 +342,7 @@ class CloudauditClient(AbstractClient):
         1、如果IsCreateNewBucket的值存在的话，cosRegion和cosBucketName都是必填参数。
         2、如果IsEnableCmqNotify的值是1的话，IsCreateNewQueue、CmqRegion和CmqQueueName都是必填参数。
         3、如果IsEnableCmqNotify的值是0的话，IsCreateNewQueue、CmqRegion和CmqQueueName都不能传。
+        4、如果IsEnableKmsEncry的值是1的话，KmsRegion和KeyId属于必填项
 
         :param request: Request instance for UpdateAudit.
         :type request: :class:`tencentcloud.cloudaudit.v20190319.models.UpdateAuditRequest`

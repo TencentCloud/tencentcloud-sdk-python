@@ -145,6 +145,12 @@ class CreateAuditRequest(AbstractModel):
         :type CmqRegion: str
         :param IsCreateNewQueue: 是否创建新的队列。1：是，0：否。如果IsEnableCmqNotify值是1的话，此值属于必填字段。
         :type IsCreateNewQueue: int
+        :param IsEnableKmsEncry: 是否开启kms加密。1：是，0：否。如果开启KMS加密，数据在投递到cos时，会将数据加密。
+        :type IsEnableKmsEncry: int
+        :param KeyId: CMK的全局唯一标识符，如果不是新创建的kms，该值是必填值。可以通过ListKeyAliasByRegion来获取。云审计不会校验KeyId的合法性，请您谨慎填写，避免给您的数据造成损失。
+        :type KeyId: str
+        :param KmsRegion: kms地域。目前支持的地域可以使用ListKmsEnableRegion来获取。必须要和cos的地域保持一致。
+        :type KmsRegion: str
         :param LogFilePrefix: 日志文件前缀。3-40个字符，只能包含 ASCII 编码字母 a-z，A-Z，数字 0-9。可以不填，默认以账号ID作为日志前缀。
         :type LogFilePrefix: str
         """
@@ -157,6 +163,9 @@ class CreateAuditRequest(AbstractModel):
         self.CmqQueueName = None
         self.CmqRegion = None
         self.IsCreateNewQueue = None
+        self.IsEnableKmsEncry = None
+        self.KeyId = None
+        self.KmsRegion = None
         self.LogFilePrefix = None
 
 
@@ -170,6 +179,9 @@ class CreateAuditRequest(AbstractModel):
         self.CmqQueueName = params.get("CmqQueueName")
         self.CmqRegion = params.get("CmqRegion")
         self.IsCreateNewQueue = params.get("IsCreateNewQueue")
+        self.IsEnableKmsEncry = params.get("IsEnableKmsEncry")
+        self.KeyId = params.get("KeyId")
+        self.KmsRegion = params.get("KmsRegion")
         self.LogFilePrefix = params.get("LogFilePrefix")
 
 
@@ -270,6 +282,14 @@ class DescribeAuditResponse(AbstractModel):
         :type CosRegion: str
         :param IsEnableCmqNotify: 是否开启cmq消息通知。1：是，0：否。
         :type IsEnableCmqNotify: int
+        :param IsEnableKmsEncry: 是否开启kms加密。1：是，0：否。如果开启KMS加密，数据在投递到cos时，会将数据加密。
+        :type IsEnableKmsEncry: int
+        :param KeyId: CMK的全局唯一标识符。
+        :type KeyId: str
+        :param KmsAlias: CMK别名。
+        :type KmsAlias: str
+        :param KmsRegion: kms地域。
+        :type KmsRegion: str
         :param LogFilePrefix: 日志前缀。
         :type LogFilePrefix: str
         :param ReadWriteAttribute: 管理事件读写属性，1：只读，2：只写，3：全部
@@ -284,6 +304,10 @@ class DescribeAuditResponse(AbstractModel):
         self.CosBucketName = None
         self.CosRegion = None
         self.IsEnableCmqNotify = None
+        self.IsEnableKmsEncry = None
+        self.KeyId = None
+        self.KmsAlias = None
+        self.KmsRegion = None
         self.LogFilePrefix = None
         self.ReadWriteAttribute = None
         self.RequestId = None
@@ -297,6 +321,10 @@ class DescribeAuditResponse(AbstractModel):
         self.CosBucketName = params.get("CosBucketName")
         self.CosRegion = params.get("CosRegion")
         self.IsEnableCmqNotify = params.get("IsEnableCmqNotify")
+        self.IsEnableKmsEncry = params.get("IsEnableKmsEncry")
+        self.KeyId = params.get("KeyId")
+        self.KmsAlias = params.get("KmsAlias")
+        self.KmsRegion = params.get("KmsRegion")
         self.LogFilePrefix = params.get("LogFilePrefix")
         self.ReadWriteAttribute = params.get("ReadWriteAttribute")
         self.RequestId = params.get("RequestId")
@@ -321,7 +349,7 @@ class Event(AbstractModel):
         :type EventId: str
         :param EventName: 事件名称
         :type EventName: str
-        :param EventNameCn: 事件名称中文描述
+        :param EventNameCn: 事件名称中文描述（此字段请按需使用，如果您是其他语言使用者，可以忽略该字段描述）
         :type EventNameCn: str
         :param EventRegion: 事件地域
         :type EventRegion: str
@@ -331,7 +359,9 @@ class Event(AbstractModel):
         :type EventTime: str
         :param RequestID: 请求ID
         :type RequestID: str
-        :param ResourceTypeCn: 资源类型中文描述
+        :param ResourceRegion: 资源地域
+        :type ResourceRegion: str
+        :param ResourceTypeCn: 资源类型中文描述（此字段请按需使用，如果您是其他语言使用者，可以忽略该字段描述）
         :type ResourceTypeCn: str
         :param SecretId: 证书ID
         :type SecretId: str
@@ -351,6 +381,7 @@ class Event(AbstractModel):
         self.EventSource = None
         self.EventTime = None
         self.RequestID = None
+        self.ResourceRegion = None
         self.ResourceTypeCn = None
         self.SecretId = None
         self.SourceIPAddress = None
@@ -371,6 +402,7 @@ class Event(AbstractModel):
         self.EventSource = params.get("EventSource")
         self.EventTime = params.get("EventTime")
         self.RequestID = params.get("RequestID")
+        self.ResourceRegion = params.get("ResourceRegion")
         self.ResourceTypeCn = params.get("ResourceTypeCn")
         self.SecretId = params.get("SecretId")
         self.SourceIPAddress = params.get("SourceIPAddress")
@@ -778,6 +810,12 @@ class UpdateAuditRequest(AbstractModel):
         :type IsCreateNewQueue: int
         :param IsEnableCmqNotify: 是否开启cmq消息通知。1：是，0：否。目前仅支持cmq的队列服务。如果开启cmq消息通知服务，云审计会将您的日志内容实时投递到您指定地域的指定队列中。
         :type IsEnableCmqNotify: int
+        :param IsEnableKmsEncry: 是否开启kms加密。1：是，0：否。如果开启KMS加密，数据在投递到cos时，会将数据加密。
+        :type IsEnableKmsEncry: int
+        :param KeyId: CMK的全局唯一标识符，如果不是新创建的kms，该值是必填值。可以通过ListKeyAliasByRegion来获取。云审计不会校验KeyId的合法性，请您谨慎填写，避免给您的数据造成损失。
+        :type KeyId: str
+        :param KmsRegion: kms地域。目前支持的地域可以使用ListKmsEnableRegion来获取。必须要和cos的地域保持一致。
+        :type KmsRegion: str
         :param LogFilePrefix: 日志文件前缀。3-40个字符，只能包含 ASCII 编码字母 a-z，A-Z，数字 0-9。
         :type LogFilePrefix: str
         :param ReadWriteAttribute: 管理事件的读写属性。1：只读，2：只写，3：全部。
@@ -791,6 +829,9 @@ class UpdateAuditRequest(AbstractModel):
         self.IsCreateNewBucket = None
         self.IsCreateNewQueue = None
         self.IsEnableCmqNotify = None
+        self.IsEnableKmsEncry = None
+        self.KeyId = None
+        self.KmsRegion = None
         self.LogFilePrefix = None
         self.ReadWriteAttribute = None
 
@@ -804,6 +845,9 @@ class UpdateAuditRequest(AbstractModel):
         self.IsCreateNewBucket = params.get("IsCreateNewBucket")
         self.IsCreateNewQueue = params.get("IsCreateNewQueue")
         self.IsEnableCmqNotify = params.get("IsEnableCmqNotify")
+        self.IsEnableKmsEncry = params.get("IsEnableKmsEncry")
+        self.KeyId = params.get("KeyId")
+        self.KmsRegion = params.get("KmsRegion")
         self.LogFilePrefix = params.get("LogFilePrefix")
         self.ReadWriteAttribute = params.get("ReadWriteAttribute")
 

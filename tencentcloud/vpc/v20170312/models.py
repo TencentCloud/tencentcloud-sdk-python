@@ -1995,6 +1995,8 @@ class CreateNatGatewayRequest(AbstractModel):
         :type PublicIpAddresses: list of str
         :param Zone: 可用区，形如：`ap-guangzhou-1`。
         :type Zone: str
+        :param Tags: 指定绑定的标签列表，例如：[{"Key": "city", "Value": "shanghai"}]
+        :type Tags: list of Tag
         """
         self.NatGatewayName = None
         self.VpcId = None
@@ -2003,6 +2005,7 @@ class CreateNatGatewayRequest(AbstractModel):
         self.AddressCount = None
         self.PublicIpAddresses = None
         self.Zone = None
+        self.Tags = None
 
 
     def _deserialize(self, params):
@@ -2013,6 +2016,12 @@ class CreateNatGatewayRequest(AbstractModel):
         self.AddressCount = params.get("AddressCount")
         self.PublicIpAddresses = params.get("PublicIpAddresses")
         self.Zone = params.get("Zone")
+        if params.get("Tags") is not None:
+            self.Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self.Tags.append(obj)
 
 
 class CreateNatGatewayResponse(AbstractModel):
@@ -8552,6 +8561,46 @@ class ModifyNetDetectResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class ModifyNetworkAclEntriesRequest(AbstractModel):
+    """ModifyNetworkAclEntries请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param NetworkAclId: 网络ACL实例ID。例如：acl-12345678。
+        :type NetworkAclId: str
+        :param NetworkAclEntrySet: 网络ACL规则集。
+        :type NetworkAclEntrySet: :class:`tencentcloud.vpc.v20170312.models.NetworkAclEntrySet`
+        """
+        self.NetworkAclId = None
+        self.NetworkAclEntrySet = None
+
+
+    def _deserialize(self, params):
+        self.NetworkAclId = params.get("NetworkAclId")
+        if params.get("NetworkAclEntrySet") is not None:
+            self.NetworkAclEntrySet = NetworkAclEntrySet()
+            self.NetworkAclEntrySet._deserialize(params.get("NetworkAclEntrySet"))
+
+
+class ModifyNetworkAclEntriesResponse(AbstractModel):
+    """ModifyNetworkAclEntries返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class ModifyNetworkInterfaceAttributeRequest(AbstractModel):
     """ModifyNetworkInterfaceAttribute请求参数结构体
 
@@ -9328,6 +9377,78 @@ class NetDetectState(AbstractModel):
                 obj = NetDetectIpState()
                 obj._deserialize(item)
                 self.NetDetectIpStateSet.append(obj)
+
+
+class NetworkAclEntry(AbstractModel):
+    """网络ACL规则。
+
+    """
+
+    def __init__(self):
+        """
+        :param ModifyTime: 修改时间。
+        :type ModifyTime: str
+        :param Protocol: 协议, 取值: TCP,UDP, ICMP。
+        :type Protocol: str
+        :param Port: 端口(all, 单个port,  range)。
+        :type Port: str
+        :param CidrBlock: 网段或IP(互斥)。
+        :type CidrBlock: str
+        :param Ipv6CidrBlock: 网段或IPv6(互斥)。
+        :type Ipv6CidrBlock: str
+        :param Action: ACCEPT 或 DROP。
+        :type Action: str
+        :param Description: 规则描述，最大长度100。
+        :type Description: str
+        """
+        self.ModifyTime = None
+        self.Protocol = None
+        self.Port = None
+        self.CidrBlock = None
+        self.Ipv6CidrBlock = None
+        self.Action = None
+        self.Description = None
+
+
+    def _deserialize(self, params):
+        self.ModifyTime = params.get("ModifyTime")
+        self.Protocol = params.get("Protocol")
+        self.Port = params.get("Port")
+        self.CidrBlock = params.get("CidrBlock")
+        self.Ipv6CidrBlock = params.get("Ipv6CidrBlock")
+        self.Action = params.get("Action")
+        self.Description = params.get("Description")
+
+
+class NetworkAclEntrySet(AbstractModel):
+    """网络ACL规则集合
+
+    """
+
+    def __init__(self):
+        """
+        :param Ingress: 入站规则。
+        :type Ingress: list of NetworkAclEntry
+        :param Egress: 出站规则。
+        :type Egress: list of NetworkAclEntry
+        """
+        self.Ingress = None
+        self.Egress = None
+
+
+    def _deserialize(self, params):
+        if params.get("Ingress") is not None:
+            self.Ingress = []
+            for item in params.get("Ingress"):
+                obj = NetworkAclEntry()
+                obj._deserialize(item)
+                self.Ingress.append(obj)
+        if params.get("Egress") is not None:
+            self.Egress = []
+            for item in params.get("Egress"):
+                obj = NetworkAclEntry()
+                obj._deserialize(item)
+                self.Egress.append(obj)
 
 
 class NetworkInterface(AbstractModel):
@@ -10229,6 +10350,8 @@ NETD：网络探测路由，创建网络探测实例时，系统默认下发，�
 CCN：云联网路由，系统默认下发，不可编辑与删除。
 用户只能添加和操作 USER 类型的路由。
         :type RouteType: str
+        :param RouteTableId: 路由表实例ID，例如：rtb-azd4dt1c。
+        :type RouteTableId: str
         """
         self.DestinationCidrBlock = None
         self.GatewayType = None
@@ -10237,6 +10360,7 @@ CCN：云联网路由，系统默认下发，不可编辑与删除。
         self.RouteDescription = None
         self.Enabled = None
         self.RouteType = None
+        self.RouteTableId = None
 
 
     def _deserialize(self, params):
@@ -10247,6 +10371,7 @@ CCN：云联网路由，系统默认下发，不可编辑与删除。
         self.RouteDescription = params.get("RouteDescription")
         self.Enabled = params.get("Enabled")
         self.RouteType = params.get("RouteType")
+        self.RouteTableId = params.get("RouteTableId")
 
 
 class RouteConflict(AbstractModel):
@@ -11293,7 +11418,7 @@ class VpnGateway(AbstractModel):
         :type VpcId: str
         :param VpnGatewayName: 网关实例名称。
         :type VpnGatewayName: str
-        :param Type: 网关实例类型：'IPSEC', 'SSL'。
+        :param Type: 网关实例类型：'IPSEC', 'SSL','CCN'。
         :type Type: str
         :param State: 网关实例状态， 'PENDING'：生产中，'DELETING'：删除中，'AVAILABLE'：运行中。
         :type State: str
@@ -11321,6 +11446,8 @@ class VpnGateway(AbstractModel):
         :type VpnGatewayQuotaSet: list of VpnGatewayQuota
         :param Version: 网关实例版本信息
         :type Version: str
+        :param NetworkInstanceId: Type值为CCN时，该值表示云联网实例ID
+        :type NetworkInstanceId: str
         """
         self.VpnGatewayId = None
         self.VpcId = None
@@ -11339,6 +11466,7 @@ class VpnGateway(AbstractModel):
         self.Zone = None
         self.VpnGatewayQuotaSet = None
         self.Version = None
+        self.NetworkInstanceId = None
 
 
     def _deserialize(self, params):
@@ -11364,6 +11492,7 @@ class VpnGateway(AbstractModel):
                 obj._deserialize(item)
                 self.VpnGatewayQuotaSet.append(obj)
         self.Version = params.get("Version")
+        self.NetworkInstanceId = params.get("NetworkInstanceId")
 
 
 class VpnGatewayQuota(AbstractModel):

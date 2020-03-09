@@ -119,7 +119,7 @@ class DescribeBRIRequest(AbstractModel):
         """
         :param RequestData: 业务风险情报请求体
         :type RequestData: :class:`tencentcloud.bri.v20190328.models.BRIRequest`
-        :param ResourceId: 客户用于计费的资源Id
+        :param ResourceId: 客户用于计费的资源ID
         :type ResourceId: str
         """
         self.RequestData = None

@@ -1166,17 +1166,35 @@ class TextData(AbstractModel):
 20105：广告引流 
 24001：暴恐
         :type EvilType: int
+        :param Common: 消息类公共相关参数
+        :type Common: :class:`tencentcloud.cms.v20190321.models.TextOutputComm`
+        :param ID: 消息类ID信息
+        :type ID: :class:`tencentcloud.cms.v20190321.models.TextOutputID`
+        :param Res: 消息类输出结果
+        :type Res: :class:`tencentcloud.cms.v20190321.models.TextOutputRes`
         :param Keywords: 命中的关键词
         :type Keywords: list of str
         """
         self.EvilFlag = None
         self.EvilType = None
+        self.Common = None
+        self.ID = None
+        self.Res = None
         self.Keywords = None
 
 
     def _deserialize(self, params):
         self.EvilFlag = params.get("EvilFlag")
         self.EvilType = params.get("EvilType")
+        if params.get("Common") is not None:
+            self.Common = TextOutputComm()
+            self.Common._deserialize(params.get("Common"))
+        if params.get("ID") is not None:
+            self.ID = TextOutputID()
+            self.ID._deserialize(params.get("ID"))
+        if params.get("Res") is not None:
+            self.Res = TextOutputRes()
+            self.Res._deserialize(params.get("Res"))
         self.Keywords = params.get("Keywords")
 
 
@@ -1222,6 +1240,86 @@ class TextModerationResponse(AbstractModel):
             self.Data._deserialize(params.get("Data"))
         self.BusinessCode = params.get("BusinessCode")
         self.RequestId = params.get("RequestId")
+
+
+class TextOutputComm(AbstractModel):
+    """消息类输出公共参数
+
+    """
+
+    def __init__(self):
+        """
+        :param AppID: 接入业务的唯一ID
+        :type AppID: int
+        :param BUCtrlID: 接口唯一ID，旁路调用接口返回有该字段，标识唯一接口
+        :type BUCtrlID: int
+        :param SendTime: 消息发送时间
+        :type SendTime: int
+        :param Uin: 请求字段里的Common.Uin
+        :type Uin: int
+        """
+        self.AppID = None
+        self.BUCtrlID = None
+        self.SendTime = None
+        self.Uin = None
+
+
+    def _deserialize(self, params):
+        self.AppID = params.get("AppID")
+        self.BUCtrlID = params.get("BUCtrlID")
+        self.SendTime = params.get("SendTime")
+        self.Uin = params.get("Uin")
+
+
+class TextOutputID(AbstractModel):
+    """消息类输出ID参数
+
+    """
+
+    def __init__(self):
+        """
+        :param MsgID: 接入业务的唯一ID
+        :type MsgID: str
+        :param Uin: 用户账号uin，对应请求协议里的Content.User.Uin。旁路结果有回带，串联结果无该字段
+        :type Uin: str
+        """
+        self.MsgID = None
+        self.Uin = None
+
+
+    def _deserialize(self, params):
+        self.MsgID = params.get("MsgID")
+        self.Uin = params.get("Uin")
+
+
+class TextOutputRes(AbstractModel):
+    """消息类输出结果参数
+
+    """
+
+    def __init__(self):
+        """
+        :param Operator: 操作人,信安处理人企业微信ID
+        :type Operator: str
+        :param ResultCode: 恶意操作码，
+删除（1）， 通过（2）， 先审后发（100012）
+        :type ResultCode: int
+        :param ResultMsg: 操作结果备注说明
+        :type ResultMsg: str
+        :param ResultType: 恶意类型，广告（10001）， 政治（20001）， 色情（20002）， 社会事件（20004）， 暴力（20011）， 低俗（20012）， 违法犯罪（20006）， 欺诈（20008）， 版权（20013）， 谣言（20104）， 其他（21000）
+        :type ResultType: int
+        """
+        self.Operator = None
+        self.ResultCode = None
+        self.ResultMsg = None
+        self.ResultType = None
+
+
+    def _deserialize(self, params):
+        self.Operator = params.get("Operator")
+        self.ResultCode = params.get("ResultCode")
+        self.ResultMsg = params.get("ResultMsg")
+        self.ResultType = params.get("ResultType")
 
 
 class TextSample(AbstractModel):

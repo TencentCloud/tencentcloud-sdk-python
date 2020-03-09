@@ -16,6 +16,68 @@
 from tencentcloud.common.abstract_model import AbstractModel
 
 
+class CreateSessionRequest(AbstractModel):
+    """CreateSession请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ClientSession: 客户端session信息，从JSSDK请求中获得
+        :type ClientSession: str
+        :param GameId: 游戏ID
+        :type GameId: str
+        :param UserId: 游戏用户ID
+        :type UserId: str
+        :param GameParas: 游戏参数
+        :type GameParas: str
+        :param GameRegion: 游戏区域
+        :type GameRegion: str
+        :param ImageUrl: 背景图url
+        :type ImageUrl: str
+        :param Resolution: 分辨率
+        :type Resolution: str
+        """
+        self.ClientSession = None
+        self.GameId = None
+        self.UserId = None
+        self.GameParas = None
+        self.GameRegion = None
+        self.ImageUrl = None
+        self.Resolution = None
+
+
+    def _deserialize(self, params):
+        self.ClientSession = params.get("ClientSession")
+        self.GameId = params.get("GameId")
+        self.UserId = params.get("UserId")
+        self.GameParas = params.get("GameParas")
+        self.GameRegion = params.get("GameRegion")
+        self.ImageUrl = params.get("ImageUrl")
+        self.Resolution = params.get("Resolution")
+
+
+class CreateSessionResponse(AbstractModel):
+    """CreateSession返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ServerSession: 服务端session信息，返回给JSSDK
+        :type ServerSession: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.ServerSession = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.ServerSession = params.get("ServerSession")
+        self.RequestId = params.get("RequestId")
+
+
 class DayStreamPlayInfo(AbstractModel):
     """流播放信息
 
@@ -56,12 +118,12 @@ class DescribeStreamPlayInfoListRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param EndTime: 结束时间，北京时间，
+        :param EndTime: 结束时间，北京时间，格式：2019-04-28 10:36:00
 结束时间 和 开始时间  必须在同一天内。
         :type EndTime: str
         :param PlayDomain: 播放域名。
         :type PlayDomain: str
-        :param StartTime: 开始时间，北京时间，
+        :param StartTime: 开始时间，北京时间，格式：2019-04-28 10:36:00
 当前时间 和 开始时间 间隔不超过30天。
         :type StartTime: str
         :param StreamName: 流名称，精确匹配。
@@ -107,6 +169,46 @@ class DescribeStreamPlayInfoListResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeWorkersRequest(AbstractModel):
+    """DescribeWorkers请求参数结构体
+
+    """
+
+
+class DescribeWorkersResponse(AbstractModel):
+    """DescribeWorkers返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RegionDetail: 各个区域的机器情况
+        :type RegionDetail: list of WorkerRegionInfo
+        :param Idle: 空闲机器总数量
+        :type Idle: int
+        :param RegionNum: 区域个数
+        :type RegionNum: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RegionDetail = None
+        self.Idle = None
+        self.RegionNum = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("RegionDetail") is not None:
+            self.RegionDetail = []
+            for item in params.get("RegionDetail"):
+                obj = WorkerRegionInfo()
+                obj._deserialize(item)
+                self.RegionDetail.append(obj)
+        self.Idle = params.get("Idle")
+        self.RegionNum = params.get("RegionNum")
+        self.RequestId = params.get("RequestId")
+
+
 class ForbidLiveStreamRequest(AbstractModel):
     """ForbidLiveStream请求参数结构体
 
@@ -116,7 +218,7 @@ class ForbidLiveStreamRequest(AbstractModel):
         """
         :param AppName: 应用名称。
         :type AppName: str
-        :param DomainName: 您的加速域名。
+        :param DomainName: 您的推流域名。
         :type DomainName: str
         :param StreamName: 流名称。
         :type StreamName: str
@@ -202,3 +304,58 @@ class RegisterIMResponse(AbstractModel):
     def _deserialize(self, params):
         self.UserKey = params.get("UserKey")
         self.RequestId = params.get("RequestId")
+
+
+class StopGameRequest(AbstractModel):
+    """StopGame请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param UserId: 游戏用户ID
+        :type UserId: str
+        """
+        self.UserId = None
+
+
+    def _deserialize(self, params):
+        self.UserId = params.get("UserId")
+
+
+class StopGameResponse(AbstractModel):
+    """StopGame返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class WorkerRegionInfo(AbstractModel):
+    """worker的区域信息
+
+    """
+
+    def __init__(self):
+        """
+        :param Idle: 该区域空闲机器数量
+        :type Idle: int
+        :param Region: 区域
+        :type Region: str
+        """
+        self.Idle = None
+        self.Region = None
+
+
+    def _deserialize(self, params):
+        self.Idle = params.get("Idle")
+        self.Region = params.get("Region")

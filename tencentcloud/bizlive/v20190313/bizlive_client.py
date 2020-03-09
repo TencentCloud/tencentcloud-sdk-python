@@ -25,6 +25,34 @@ class BizliveClient(AbstractClient):
     _endpoint = 'bizlive.tencentcloudapi.com'
 
 
+    def CreateSession(self, request):
+        """创建会话
+
+        :param request: Request instance for CreateSession.
+        :type request: :class:`tencentcloud.bizlive.v20190313.models.CreateSessionRequest`
+        :rtype: :class:`tencentcloud.bizlive.v20190313.models.CreateSessionResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("CreateSession", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateSessionResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeStreamPlayInfoList(self, request):
         """查询播放数据，支持按流名称查询详细播放数据，也可按播放域名查询详细总数据。
 
@@ -39,6 +67,34 @@ class BizliveClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeStreamPlayInfoListResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeWorkers(self, request):
+        """查询空闲机器数量
+
+        :param request: Request instance for DescribeWorkers.
+        :type request: :class:`tencentcloud.bizlive.v20190313.models.DescribeWorkersRequest`
+        :rtype: :class:`tencentcloud.bizlive.v20190313.models.DescribeWorkersResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeWorkers", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeWorkersResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -95,6 +151,34 @@ class BizliveClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.RegisterIMResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def StopGame(self, request):
+        """强制退出游戏
+
+        :param request: Request instance for StopGame.
+        :type request: :class:`tencentcloud.bizlive.v20190313.models.StopGameRequest`
+        :rtype: :class:`tencentcloud.bizlive.v20190313.models.StopGameResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("StopGame", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.StopGameResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

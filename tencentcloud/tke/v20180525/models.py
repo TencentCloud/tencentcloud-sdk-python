@@ -146,6 +146,20 @@ class Cluster(AbstractModel):
         :param Property: 集群属性(包括集群不同属性的MAP，属性字段包括NodeNameType (lan-ip模式和hostname 模式，默认无lan-ip模式))
 注意：此字段可能返回 null，表示取不到有效值。
         :type Property: str
+        :param ClusterMaterNodeNum: 集群当前master数量
+        :type ClusterMaterNodeNum: int
+        :param ImageId: 集群使用镜像id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ImageId: str
+        :param OsCustomizeType: OsCustomizeType
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OsCustomizeType: str
+        :param ContainerRuntime: 集群运行环境docker或container
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ContainerRuntime: str
+        :param CreatedTime: 创建时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CreatedTime: str
         """
         self.ClusterId = None
         self.ClusterName = None
@@ -159,6 +173,11 @@ class Cluster(AbstractModel):
         self.TagSpecification = None
         self.ClusterStatus = None
         self.Property = None
+        self.ClusterMaterNodeNum = None
+        self.ImageId = None
+        self.OsCustomizeType = None
+        self.ContainerRuntime = None
+        self.CreatedTime = None
 
 
     def _deserialize(self, params):
@@ -181,6 +200,11 @@ class Cluster(AbstractModel):
                 self.TagSpecification.append(obj)
         self.ClusterStatus = params.get("ClusterStatus")
         self.Property = params.get("Property")
+        self.ClusterMaterNodeNum = params.get("ClusterMaterNodeNum")
+        self.ImageId = params.get("ImageId")
+        self.OsCustomizeType = params.get("OsCustomizeType")
+        self.ContainerRuntime = params.get("ContainerRuntime")
+        self.CreatedTime = params.get("CreatedTime")
 
 
 class ClusterAdvancedSettings(AbstractModel):
@@ -2002,11 +2026,22 @@ class Instance(AbstractModel):
         :type FailedReason: str
         :param InstanceState: 实例的状态（running 运行中，initializing 初始化中，failed 异常）
         :type InstanceState: str
+        :param DrainStatus: 实例是否封锁状态
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DrainStatus: str
+        :param InstanceAdvancedSettings: 配置
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InstanceAdvancedSettings: :class:`tencentcloud.tke.v20180525.models.InstanceAdvancedSettings`
+        :param CreatedTime: 添加时间
+        :type CreatedTime: str
         """
         self.InstanceId = None
         self.InstanceRole = None
         self.FailedReason = None
         self.InstanceState = None
+        self.DrainStatus = None
+        self.InstanceAdvancedSettings = None
+        self.CreatedTime = None
 
 
     def _deserialize(self, params):
@@ -2014,6 +2049,11 @@ class Instance(AbstractModel):
         self.InstanceRole = params.get("InstanceRole")
         self.FailedReason = params.get("FailedReason")
         self.InstanceState = params.get("InstanceState")
+        self.DrainStatus = params.get("DrainStatus")
+        if params.get("InstanceAdvancedSettings") is not None:
+            self.InstanceAdvancedSettings = InstanceAdvancedSettings()
+            self.InstanceAdvancedSettings._deserialize(params.get("InstanceAdvancedSettings"))
+        self.CreatedTime = params.get("CreatedTime")
 
 
 class InstanceAdvancedSettings(AbstractModel):
