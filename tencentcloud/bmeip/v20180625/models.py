@@ -402,6 +402,8 @@ class DescribeEipAclsRequest(AbstractModel):
         :type OrderField: str
         :param Order: 排序方式，取值：0:增序(默认)，1:降序
         :type Order: int
+        :param AclNames: ACL名称列表，支持模糊查找
+        :type AclNames: list of str
         """
         self.AclName = None
         self.AclIds = None
@@ -412,6 +414,7 @@ class DescribeEipAclsRequest(AbstractModel):
         self.EipNames = None
         self.OrderField = None
         self.Order = None
+        self.AclNames = None
 
 
     def _deserialize(self, params):
@@ -424,6 +427,7 @@ class DescribeEipAclsRequest(AbstractModel):
         self.EipNames = params.get("EipNames")
         self.OrderField = params.get("OrderField")
         self.Order = params.get("Order")
+        self.AclNames = params.get("AclNames")
 
 
 class DescribeEipAclsResponse(AbstractModel):
