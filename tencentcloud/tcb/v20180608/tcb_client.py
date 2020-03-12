@@ -25,6 +25,34 @@ class TcbClient(AbstractClient):
     _endpoint = 'tcb.tencentcloudapi.com'
 
 
+    def CheckTcbService(self, request):
+        """检查是否开通Tcb服务
+
+        :param request: Request instance for CheckTcbService.
+        :type request: :class:`tencentcloud.tcb.v20180608.models.CheckTcbServiceRequest`
+        :rtype: :class:`tencentcloud.tcb.v20180608.models.CheckTcbServiceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("CheckTcbService", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CheckTcbServiceResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def CommonServiceAPI(self, request):
         """TCB云API统一入口
 
@@ -39,6 +67,118 @@ class TcbClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CommonServiceAPIResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def CreateHostingDomain(self, request):
+        """创建托管域名
+
+        :param request: Request instance for CreateHostingDomain.
+        :type request: :class:`tencentcloud.tcb.v20180608.models.CreateHostingDomainRequest`
+        :rtype: :class:`tencentcloud.tcb.v20180608.models.CreateHostingDomainResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("CreateHostingDomain", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateHostingDomainResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def CreateStaticStore(self, request):
+        """创建静态托管资源，包括COS和CDN，异步任务创建，查看创建结果需要根据DescribeStaticStore接口来查看
+
+        :param request: Request instance for CreateStaticStore.
+        :type request: :class:`tencentcloud.tcb.v20180608.models.CreateStaticStoreRequest`
+        :rtype: :class:`tencentcloud.tcb.v20180608.models.CreateStaticStoreResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("CreateStaticStore", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateStaticStoreResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DeleteEndUser(self, request):
+        """删除终端用户
+
+        :param request: Request instance for DeleteEndUser.
+        :type request: :class:`tencentcloud.tcb.v20180608.models.DeleteEndUserRequest`
+        :rtype: :class:`tencentcloud.tcb.v20180608.models.DeleteEndUserResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DeleteEndUser", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DeleteEndUserResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeAuthDomains(self, request):
+        """获取安全域名列表
+
+        :param request: Request instance for DescribeAuthDomains.
+        :type request: :class:`tencentcloud.tcb.v20180608.models.DescribeAuthDomainsRequest`
+        :rtype: :class:`tencentcloud.tcb.v20180608.models.DescribeAuthDomainsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeAuthDomains", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeAuthDomainsResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -81,6 +221,62 @@ class TcbClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeEndUsers(self, request):
+        """获取终端用户列表
+
+        :param request: Request instance for DescribeEndUsers.
+        :type request: :class:`tencentcloud.tcb.v20180608.models.DescribeEndUsersRequest`
+        :rtype: :class:`tencentcloud.tcb.v20180608.models.DescribeEndUsersResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeEndUsers", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeEndUsersResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeEnvLimit(self, request):
+        """查询环境个数上限
+
+        :param request: Request instance for DescribeEnvLimit.
+        :type request: :class:`tencentcloud.tcb.v20180608.models.DescribeEnvLimitRequest`
+        :rtype: :class:`tencentcloud.tcb.v20180608.models.DescribeEnvLimitResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeEnvLimit", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeEnvLimitResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeEnvs(self, request):
         """获取环境列表，含环境下的各个资源信息。尤其是各资源的唯一标识，是请求各资源的关键参数
 
@@ -95,6 +291,90 @@ class TcbClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeEnvsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeQuotaData(self, request):
+        """查询指定指标的配额使用量
+
+        :param request: Request instance for DescribeQuotaData.
+        :type request: :class:`tencentcloud.tcb.v20180608.models.DescribeQuotaDataRequest`
+        :rtype: :class:`tencentcloud.tcb.v20180608.models.DescribeQuotaDataResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeQuotaData", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeQuotaDataResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DestroyEnv(self, request):
+        """销毁环境
+
+        :param request: Request instance for DestroyEnv.
+        :type request: :class:`tencentcloud.tcb.v20180608.models.DestroyEnvRequest`
+        :rtype: :class:`tencentcloud.tcb.v20180608.models.DestroyEnvResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DestroyEnv", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DestroyEnvResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DestroyStaticStore(self, request):
+        """销毁静态托管资源，该接口创建异步销毁任务，资源最终状态可从DestroyStaticStore接口查看
+
+        :param request: Request instance for DestroyStaticStore.
+        :type request: :class:`tencentcloud.tcb.v20180608.models.DestroyStaticStoreRequest`
+        :rtype: :class:`tencentcloud.tcb.v20180608.models.DestroyStaticStoreResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DestroyStaticStore", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DestroyStaticStoreResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -151,6 +431,34 @@ class TcbClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyEnvResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ReinstateEnv(self, request):
+        """针对已隔离的免费环境，可以通过本接口将其恢复访问。
+
+        :param request: Request instance for ReinstateEnv.
+        :type request: :class:`tencentcloud.tcb.v20180608.models.ReinstateEnvRequest`
+        :rtype: :class:`tencentcloud.tcb.v20180608.models.ReinstateEnvResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ReinstateEnv", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ReinstateEnvResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

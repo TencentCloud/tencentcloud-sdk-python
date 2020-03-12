@@ -305,6 +305,34 @@ class TcrClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DeleteImageLifecycleGlobalPersonal(self, request):
+        """用于删除个人版全局镜像版本自动清理策略
+
+        :param request: Request instance for DeleteImageLifecycleGlobalPersonal.
+        :type request: :class:`tencentcloud.tcr.v20190924.models.DeleteImageLifecycleGlobalPersonalRequest`
+        :rtype: :class:`tencentcloud.tcr.v20190924.models.DeleteImageLifecycleGlobalPersonalResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DeleteImageLifecycleGlobalPersonal", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DeleteImageLifecycleGlobalPersonalResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DeleteImageLifecyclePersonal(self, request):
         """用于在个人版镜像仓库中删除仓库Tag自动清理策略
 
@@ -515,6 +543,34 @@ class TcrClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeImageFilterPersonalResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeImageLifecycleGlobalPersonal(self, request):
+        """用于获取个人版全局镜像版本自动清理策略
+
+        :param request: Request instance for DescribeImageLifecycleGlobalPersonal.
+        :type request: :class:`tencentcloud.tcr.v20190924.models.DescribeImageLifecycleGlobalPersonalRequest`
+        :rtype: :class:`tencentcloud.tcr.v20190924.models.DescribeImageLifecycleGlobalPersonalResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeImageLifecycleGlobalPersonal", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeImageLifecycleGlobalPersonalResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -795,6 +851,34 @@ class TcrClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DuplicateImagePersonalResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ManageImageLifecycleGlobalPersonal(self, request):
+        """用于设置个人版全局镜像版本自动清理策略
+
+        :param request: Request instance for ManageImageLifecycleGlobalPersonal.
+        :type request: :class:`tencentcloud.tcr.v20190924.models.ManageImageLifecycleGlobalPersonalRequest`
+        :rtype: :class:`tencentcloud.tcr.v20190924.models.ManageImageLifecycleGlobalPersonalResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ManageImageLifecycleGlobalPersonal", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ManageImageLifecycleGlobalPersonalResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

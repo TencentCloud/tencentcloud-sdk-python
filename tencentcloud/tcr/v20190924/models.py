@@ -492,6 +492,29 @@ class DeleteApplicationTriggerPersonalResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DeleteImageLifecycleGlobalPersonalRequest(AbstractModel):
+    """DeleteImageLifecycleGlobalPersonal请求参数结构体
+
+    """
+
+
+class DeleteImageLifecycleGlobalPersonalResponse(AbstractModel):
+    """DeleteImageLifecycleGlobalPersonal返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class DeleteImageLifecyclePersonalRequest(AbstractModel):
     """DeleteImageLifecyclePersonal请求参数结构体
 
@@ -881,6 +904,35 @@ class DescribeImageFilterPersonalResponse(AbstractModel):
     def _deserialize(self, params):
         if params.get("Data") is not None:
             self.Data = SameImagesResp()
+            self.Data._deserialize(params.get("Data"))
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeImageLifecycleGlobalPersonalRequest(AbstractModel):
+    """DescribeImageLifecycleGlobalPersonal请求参数结构体
+
+    """
+
+
+class DescribeImageLifecycleGlobalPersonalResponse(AbstractModel):
+    """DescribeImageLifecycleGlobalPersonal返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Data: 全局自动删除策略信息
+        :type Data: :class:`tencentcloud.tcr.v20190924.models.AutoDelStrategyInfoResp`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Data = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self.Data = AutoDelStrategyInfoResp()
             self.Data._deserialize(params.get("Data"))
         self.RequestId = params.get("RequestId")
 
@@ -1503,6 +1555,44 @@ class Limit(AbstractModel):
         self.Username = params.get("Username")
         self.Type = params.get("Type")
         self.Value = params.get("Value")
+
+
+class ManageImageLifecycleGlobalPersonalRequest(AbstractModel):
+    """ManageImageLifecycleGlobalPersonal请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Type: global_keep_last_days:全局保留最近几天的数据;global_keep_last_nums:全局保留最近多少个
+        :type Type: str
+        :param Val: 策略值
+        :type Val: int
+        """
+        self.Type = None
+        self.Val = None
+
+
+    def _deserialize(self, params):
+        self.Type = params.get("Type")
+        self.Val = params.get("Val")
+
+
+class ManageImageLifecycleGlobalPersonalResponse(AbstractModel):
+    """ManageImageLifecycleGlobalPersonal返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
 
 
 class ModifyApplicationTriggerPersonalRequest(AbstractModel):

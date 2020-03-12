@@ -16,6 +16,74 @@
 from tencentcloud.common.abstract_model import AbstractModel
 
 
+class AuthDomain(AbstractModel):
+    """合法域名
+
+    """
+
+    def __init__(self):
+        """
+        :param Id: 域名ID
+        :type Id: str
+        :param Domain: 域名
+        :type Domain: str
+        :param Type: 域名类型。包含以下取值：
+<li>system</li>
+<li>user</li>
+        :type Type: str
+        :param Status: 状态。包含以下取值：
+<li>ENABLE</li>
+<li>DISABLE</li>
+        :type Status: str
+        :param CreateTime: 创建时间
+        :type CreateTime: str
+        :param UpdateTime: 更新时间
+        :type UpdateTime: str
+        """
+        self.Id = None
+        self.Domain = None
+        self.Type = None
+        self.Status = None
+        self.CreateTime = None
+        self.UpdateTime = None
+
+
+    def _deserialize(self, params):
+        self.Id = params.get("Id")
+        self.Domain = params.get("Domain")
+        self.Type = params.get("Type")
+        self.Status = params.get("Status")
+        self.CreateTime = params.get("CreateTime")
+        self.UpdateTime = params.get("UpdateTime")
+
+
+class CheckTcbServiceRequest(AbstractModel):
+    """CheckTcbService请求参数结构体
+
+    """
+
+
+class CheckTcbServiceResponse(AbstractModel):
+    """CheckTcbService返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Initialized: true表示已开通
+        :type Initialized: bool
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Initialized = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Initialized = params.get("Initialized")
+        self.RequestId = params.get("RequestId")
+
+
 class CommonServiceAPIRequest(AbstractModel):
     """CommonServiceAPI请求参数结构体
 
@@ -58,6 +126,87 @@ class CommonServiceAPIResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class CreateHostingDomainRequest(AbstractModel):
+    """CreateHostingDomain请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param EnvId: 环境ID
+        :type EnvId: str
+        :param Domain: 域名
+        :type Domain: str
+        :param CertId: 证书ID
+        :type CertId: str
+        """
+        self.EnvId = None
+        self.Domain = None
+        self.CertId = None
+
+
+    def _deserialize(self, params):
+        self.EnvId = params.get("EnvId")
+        self.Domain = params.get("Domain")
+        self.CertId = params.get("CertId")
+
+
+class CreateHostingDomainResponse(AbstractModel):
+    """CreateHostingDomain返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class CreateStaticStoreRequest(AbstractModel):
+    """CreateStaticStore请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param EnvId: 环境ID
+        :type EnvId: str
+        """
+        self.EnvId = None
+
+
+    def _deserialize(self, params):
+        self.EnvId = params.get("EnvId")
+
+
+class CreateStaticStoreResponse(AbstractModel):
+    """CreateStaticStore返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Result: 创建静态资源结果(succ/fail)
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Result: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Result = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Result = params.get("Result")
+        self.RequestId = params.get("RequestId")
+
+
 class DatabasesInfo(AbstractModel):
     """数据库资源信息
 
@@ -86,6 +235,87 @@ class DatabasesInfo(AbstractModel):
         self.InstanceId = params.get("InstanceId")
         self.Status = params.get("Status")
         self.Region = params.get("Region")
+
+
+class DeleteEndUserRequest(AbstractModel):
+    """DeleteEndUser请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param EnvId: 环境ID
+        :type EnvId: str
+        :param UserList: 用户列表，每一项都是uuid
+        :type UserList: list of str
+        """
+        self.EnvId = None
+        self.UserList = None
+
+
+    def _deserialize(self, params):
+        self.EnvId = params.get("EnvId")
+        self.UserList = params.get("UserList")
+
+
+class DeleteEndUserResponse(AbstractModel):
+    """DeleteEndUser返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeAuthDomainsRequest(AbstractModel):
+    """DescribeAuthDomains请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param EnvId: 环境ID
+        :type EnvId: str
+        """
+        self.EnvId = None
+
+
+    def _deserialize(self, params):
+        self.EnvId = params.get("EnvId")
+
+
+class DescribeAuthDomainsResponse(AbstractModel):
+    """DescribeAuthDomains返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Domains: 安全域名列表列表
+        :type Domains: list of AuthDomain
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Domains = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Domains") is not None:
+            self.Domains = []
+            for item in params.get("Domains"):
+                obj = AuthDomain()
+                obj._deserialize(item)
+                self.Domains.append(obj)
+        self.RequestId = params.get("RequestId")
 
 
 class DescribeDatabaseACLRequest(AbstractModel):
@@ -134,6 +364,112 @@ class DescribeDatabaseACLResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeEndUsersRequest(AbstractModel):
+    """DescribeEndUsers请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param EnvId: 开发者的环境ID
+        :type EnvId: str
+        :param UUIds: 按照 uuid 列表过滤，最大个数为100
+        :type UUIds: list of str
+        """
+        self.EnvId = None
+        self.UUIds = None
+
+
+    def _deserialize(self, params):
+        self.EnvId = params.get("EnvId")
+        self.UUIds = params.get("UUIds")
+
+
+class DescribeEndUsersResponse(AbstractModel):
+    """DescribeEndUsers返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Total: 用户总数
+        :type Total: int
+        :param Users: 用户列表
+        :type Users: list of EndUserInfo
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Total = None
+        self.Users = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Total = params.get("Total")
+        if params.get("Users") is not None:
+            self.Users = []
+            for item in params.get("Users"):
+                obj = EndUserInfo()
+                obj._deserialize(item)
+                self.Users.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeEnvLimitRequest(AbstractModel):
+    """DescribeEnvLimit请求参数结构体
+
+    """
+
+
+class DescribeEnvLimitResponse(AbstractModel):
+    """DescribeEnvLimit返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param MaxEnvNum: 环境总数上限
+        :type MaxEnvNum: int
+        :param CurrentEnvNum: 目前环境总数
+        :type CurrentEnvNum: int
+        :param MaxFreeEnvNum: 免费环境数量上限
+        :type MaxFreeEnvNum: int
+        :param CurrentFreeEnvNum: 目前免费环境数量
+        :type CurrentFreeEnvNum: int
+        :param MaxDeleteTotal: 总计允许销毁环境次数上限
+        :type MaxDeleteTotal: int
+        :param CurrentDeleteTotal: 目前已销毁环境次数
+        :type CurrentDeleteTotal: int
+        :param MaxDeleteMonthly: 每月允许销毁环境次数上限
+        :type MaxDeleteMonthly: int
+        :param CurrentDeleteMonthly: 本月已销毁环境次数
+        :type CurrentDeleteMonthly: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.MaxEnvNum = None
+        self.CurrentEnvNum = None
+        self.MaxFreeEnvNum = None
+        self.CurrentFreeEnvNum = None
+        self.MaxDeleteTotal = None
+        self.CurrentDeleteTotal = None
+        self.MaxDeleteMonthly = None
+        self.CurrentDeleteMonthly = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.MaxEnvNum = params.get("MaxEnvNum")
+        self.CurrentEnvNum = params.get("CurrentEnvNum")
+        self.MaxFreeEnvNum = params.get("MaxFreeEnvNum")
+        self.CurrentFreeEnvNum = params.get("CurrentFreeEnvNum")
+        self.MaxDeleteTotal = params.get("MaxDeleteTotal")
+        self.CurrentDeleteTotal = params.get("CurrentDeleteTotal")
+        self.MaxDeleteMonthly = params.get("MaxDeleteMonthly")
+        self.CurrentDeleteMonthly = params.get("CurrentDeleteMonthly")
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeEnvsRequest(AbstractModel):
     """DescribeEnvs请求参数结构体
 
@@ -175,6 +511,218 @@ class DescribeEnvsResponse(AbstractModel):
                 obj._deserialize(item)
                 self.EnvList.append(obj)
         self.RequestId = params.get("RequestId")
+
+
+class DescribeQuotaDataRequest(AbstractModel):
+    """DescribeQuotaData请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param EnvId: 环境ID
+        :type EnvId: str
+        :param MetricName: <li> 指标名: </li>
+<li> StorageSizepkg: 当月存储空间容量, 单位MB </li>
+<li> StorageReadpkg: 当月存储读请求次数 </li>
+<li> StorageWritepkg: 当月存储写请求次数 </li>
+<li> StorageCdnOriginFluxpkg: 当月CDN回源流量, 单位字节 </li>
+<li> StorageCdnOriginFluxpkgDay: 当日CDN回源流量, 单位字节 </li>
+<li> StorageReadpkgDay: 当日存储读请求次数 </li>
+<li> StorageWritepkgDay: 当日写请求次数 </li>
+<li> CDNFluxpkg: 当月CDN流量, 单位为字节 </li>
+<li> CDNFluxpkgDay: 当日CDN流量, 单位为字节 </li>
+<li> FunctionInvocationpkg: 当月云函数调用次数 </li>
+<li> FunctionGBspkg: 当月云函数资源使用量, 单位Mb*Ms </li>
+<li> FunctionFluxpkg: 当月云函数流量, 单位千字节(KB) </li>
+<li> FunctionInvocationpkgDay: 当日云函数调用次数 </li>
+<li> FunctionGBspkgDay: 当日云函数资源使用量, 单位Mb*Ms </li>
+<li> FunctionFluxpkgDay: 当日云函数流量, 单位千字节(KB) </li>
+<li> DbSizepkg: 当月数据库容量大小, 单位MB </li>
+<li> DbReadpkg: 当日数据库读请求数 </li>
+<li> DbWritepkg: 当日数据库写请求数 </li>
+<li> StaticFsFluxPkgDay: 当日静态托管流量 </li>
+<li> StaticFsFluxPkg: 当月静态托管流量</li>
+<li> StaticFsSizePkg: 当月静态托管容量 </li>
+        :type MetricName: str
+        :param ResourceID: 资源ID, 目前仅对云函数相关的指标(FunctionInvocationpkg, FunctionGBspkg, FunctionFluxpkg)有意义, 如果想查询某个云函数的指标则在ResourceId中传入函数名; 如果只想查询整个namespace的指标, 则留空或不传.
+        :type ResourceID: str
+        """
+        self.EnvId = None
+        self.MetricName = None
+        self.ResourceID = None
+
+
+    def _deserialize(self, params):
+        self.EnvId = params.get("EnvId")
+        self.MetricName = params.get("MetricName")
+        self.ResourceID = params.get("ResourceID")
+
+
+class DescribeQuotaDataResponse(AbstractModel):
+    """DescribeQuotaData返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param MetricName: 指标名
+        :type MetricName: str
+        :param Value: 指标的值
+        :type Value: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.MetricName = None
+        self.Value = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.MetricName = params.get("MetricName")
+        self.Value = params.get("Value")
+        self.RequestId = params.get("RequestId")
+
+
+class DestroyEnvRequest(AbstractModel):
+    """DestroyEnv请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param EnvId: 环境Id
+        :type EnvId: str
+        :param IsForce: 针对预付费 删除隔离中的环境时要传true 正常环境直接跳过隔离期删除
+        :type IsForce: bool
+        """
+        self.EnvId = None
+        self.IsForce = None
+
+
+    def _deserialize(self, params):
+        self.EnvId = params.get("EnvId")
+        self.IsForce = params.get("IsForce")
+
+
+class DestroyEnvResponse(AbstractModel):
+    """DestroyEnv返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class DestroyStaticStoreRequest(AbstractModel):
+    """DestroyStaticStore请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param EnvId: 环境ID
+        :type EnvId: str
+        :param CdnDomain: cdn域名
+        :type CdnDomain: str
+        """
+        self.EnvId = None
+        self.CdnDomain = None
+
+
+    def _deserialize(self, params):
+        self.EnvId = params.get("EnvId")
+        self.CdnDomain = params.get("CdnDomain")
+
+
+class DestroyStaticStoreResponse(AbstractModel):
+    """DestroyStaticStore返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Result: 条件任务结果(succ/fail)
+        :type Result: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Result = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Result = params.get("Result")
+        self.RequestId = params.get("RequestId")
+
+
+class EndUserInfo(AbstractModel):
+    """终端用户信息
+
+    """
+
+    def __init__(self):
+        """
+        :param UUId: 用户唯一ID
+        :type UUId: str
+        :param WXOpenId: 微信ID
+        :type WXOpenId: str
+        :param QQOpenId: qq ID
+        :type QQOpenId: str
+        :param Phone: 手机号
+        :type Phone: str
+        :param Email: 邮箱
+        :type Email: str
+        :param NickName: 昵称
+        :type NickName: str
+        :param Gender: 性别
+        :type Gender: str
+        :param AvatarUrl: 头像地址
+        :type AvatarUrl: str
+        :param UpdateTime: 更新时间
+        :type UpdateTime: str
+        :param CreateTime: 创建时间
+        :type CreateTime: str
+        :param IsAnonymous: 是否为匿名用户
+        :type IsAnonymous: bool
+        :param IsDisabled: 是否禁用账户
+        :type IsDisabled: bool
+        """
+        self.UUId = None
+        self.WXOpenId = None
+        self.QQOpenId = None
+        self.Phone = None
+        self.Email = None
+        self.NickName = None
+        self.Gender = None
+        self.AvatarUrl = None
+        self.UpdateTime = None
+        self.CreateTime = None
+        self.IsAnonymous = None
+        self.IsDisabled = None
+
+
+    def _deserialize(self, params):
+        self.UUId = params.get("UUId")
+        self.WXOpenId = params.get("WXOpenId")
+        self.QQOpenId = params.get("QQOpenId")
+        self.Phone = params.get("Phone")
+        self.Email = params.get("Email")
+        self.NickName = params.get("NickName")
+        self.Gender = params.get("Gender")
+        self.AvatarUrl = params.get("AvatarUrl")
+        self.UpdateTime = params.get("UpdateTime")
+        self.CreateTime = params.get("CreateTime")
+        self.IsAnonymous = params.get("IsAnonymous")
+        self.IsDisabled = params.get("IsDisabled")
 
 
 class EnvInfo(AbstractModel):
@@ -404,6 +952,40 @@ class ModifyEnvRequest(AbstractModel):
 
 class ModifyEnvResponse(AbstractModel):
     """ModifyEnv返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class ReinstateEnvRequest(AbstractModel):
+    """ReinstateEnv请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param EnvId: 环境ID
+        :type EnvId: str
+        """
+        self.EnvId = None
+
+
+    def _deserialize(self, params):
+        self.EnvId = params.get("EnvId")
+
+
+class ReinstateEnvResponse(AbstractModel):
+    """ReinstateEnv返回参数结构体
 
     """
 

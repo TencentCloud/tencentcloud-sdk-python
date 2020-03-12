@@ -16,6 +16,123 @@
 from tencentcloud.common.abstract_model import AbstractModel
 
 
+class AlgorithmInfo(AbstractModel):
+    """算法的名称 和 标识
+
+    """
+
+    def __init__(self):
+        """
+        :param KeyUsage: 算法的标识
+        :type KeyUsage: str
+        :param Algorithm: 算法的名称
+        :type Algorithm: str
+        """
+        self.KeyUsage = None
+        self.Algorithm = None
+
+
+    def _deserialize(self, params):
+        self.KeyUsage = params.get("KeyUsage")
+        self.Algorithm = params.get("Algorithm")
+
+
+class AsymmetricRsaDecryptRequest(AbstractModel):
+    """AsymmetricRsaDecrypt请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param KeyId: CMK的唯一标识
+        :type KeyId: str
+        :param Ciphertext: 使用PublicKey加密的密文，Base64编码
+        :type Ciphertext: str
+        :param Algorithm: 在使用公钥加密时对应的算法：当前支持RSAES_PKCS1_V1_5、RSAES_OAEP_SHA_1、RSAES_OAEP_SHA_256
+        :type Algorithm: str
+        """
+        self.KeyId = None
+        self.Ciphertext = None
+        self.Algorithm = None
+
+
+    def _deserialize(self, params):
+        self.KeyId = params.get("KeyId")
+        self.Ciphertext = params.get("Ciphertext")
+        self.Algorithm = params.get("Algorithm")
+
+
+class AsymmetricRsaDecryptResponse(AbstractModel):
+    """AsymmetricRsaDecrypt返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param KeyId: CMK的唯一标识
+        :type KeyId: str
+        :param Plaintext: 解密后的明文，base64编码
+        :type Plaintext: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.KeyId = None
+        self.Plaintext = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.KeyId = params.get("KeyId")
+        self.Plaintext = params.get("Plaintext")
+        self.RequestId = params.get("RequestId")
+
+
+class AsymmetricSm2DecryptRequest(AbstractModel):
+    """AsymmetricSm2Decrypt请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param KeyId: CMK的唯一标识
+        :type KeyId: str
+        :param Ciphertext: 使用PublicKey加密的密文，Base64编码。密文长度不能超过256字节。
+        :type Ciphertext: str
+        """
+        self.KeyId = None
+        self.Ciphertext = None
+
+
+    def _deserialize(self, params):
+        self.KeyId = params.get("KeyId")
+        self.Ciphertext = params.get("Ciphertext")
+
+
+class AsymmetricSm2DecryptResponse(AbstractModel):
+    """AsymmetricSm2Decrypt返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param KeyId: CMK的唯一标识
+        :type KeyId: str
+        :param Plaintext: 解密后的明文，base64编码
+        :type Plaintext: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.KeyId = None
+        self.Plaintext = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.KeyId = params.get("KeyId")
+        self.Plaintext = params.get("Plaintext")
+        self.RequestId = params.get("RequestId")
+
+
 class CancelKeyDeletionRequest(AbstractModel):
     """CancelKeyDeletion请求参数结构体
 
@@ -61,11 +178,11 @@ class CreateKeyRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Alias: 作为密钥更容易辨识，更容易被人看懂的别名， 不可为空，1-60个字母数字 - _ 的组合。以 kms- 作为前缀的用于云产品使用，Alias 不可重复。
+        :param Alias: 作为密钥更容易辨识，更容易被人看懂的别名， 不可为空，1-60个字母数字 - _ 的组合，首字符必须为字母或者数字。以 kms- 作为前缀的用于云产品使用，Alias 不可重复。
         :type Alias: str
         :param Description: CMK 的描述，最大1024字节
         :type Description: str
-        :param KeyUsage: 指定key的用途。目前，仅支持"ENCRYPT_DECRYPT"，默认为  "ENCRYPT_DECRYPT"，即key用于加密和解密
+        :param KeyUsage: 指定key的用途，默认为  "ENCRYPT_DECRYPT" 表示创建对称加解密密钥，其它支持用途 “ASYMMETRIC_DECRYPT_RSA_2048” 表示创建用于加解密的RSA2048非对称密钥，“ASYMMETRIC_DECRYPT_SM2” 表示创建用于加解密的SM2非对称密钥
         :type KeyUsage: str
         :param Type: 指定key类型，默认为1，1表示默认类型，由KMS创建CMK密钥，2 表示EXTERNAL 类型，该类型需要用户导入密钥材料，参考 GetParametersForImport 和 ImportKeyMaterial 接口
         :type Type: int
@@ -736,6 +853,52 @@ class GetParametersForImportResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class GetPublicKeyRequest(AbstractModel):
+    """GetPublicKey请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param KeyId: CMK的唯一标识。
+        :type KeyId: str
+        """
+        self.KeyId = None
+
+
+    def _deserialize(self, params):
+        self.KeyId = params.get("KeyId")
+
+
+class GetPublicKeyResponse(AbstractModel):
+    """GetPublicKey返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param KeyId: CMK的唯一标识。
+        :type KeyId: str
+        :param PublicKey: 经过base64编码的公钥内容。
+        :type PublicKey: str
+        :param PublicKeyPem: PEM格式的公钥内容。
+        :type PublicKeyPem: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.KeyId = None
+        self.PublicKey = None
+        self.PublicKeyPem = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.KeyId = params.get("KeyId")
+        self.PublicKey = params.get("PublicKey")
+        self.PublicKeyPem = params.get("PublicKeyPem")
+        self.RequestId = params.get("RequestId")
+
+
 class GetServiceStatusRequest(AbstractModel):
     """GetServiceStatus请求参数结构体
 
@@ -848,7 +1011,7 @@ class KeyMetadata(AbstractModel):
         :type Description: str
         :param KeyState: CMK的状态， 取值为：Enabled | Disabled | PendingDelete | PendingImport
         :type KeyState: str
-        :param KeyUsage: CMK用途，当前是 ENCRYPT_DECRYPT
+        :param KeyUsage: CMK用途，取值为: ENCRYPT_DECRYPT | ASYMMETRIC_DECRYPT_RSA_2048 | ASYMMETRIC_DECRYPT_SM2
         :type KeyUsage: str
         :param Type: CMK类型，2 表示符合FIPS标准，4表示符合国密标准
         :type Type: int
@@ -903,6 +1066,47 @@ class KeyMetadata(AbstractModel):
         self.ValidTo = params.get("ValidTo")
 
 
+class ListAlgorithmsRequest(AbstractModel):
+    """ListAlgorithms请求参数结构体
+
+    """
+
+
+class ListAlgorithmsResponse(AbstractModel):
+    """ListAlgorithms返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param SymmetricAlgorithms: 本地区支持的对称加密算法
+        :type SymmetricAlgorithms: list of AlgorithmInfo
+        :param AsymmetricAlgorithms: 本地区支持的非对称加密算法
+        :type AsymmetricAlgorithms: list of AlgorithmInfo
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.SymmetricAlgorithms = None
+        self.AsymmetricAlgorithms = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("SymmetricAlgorithms") is not None:
+            self.SymmetricAlgorithms = []
+            for item in params.get("SymmetricAlgorithms"):
+                obj = AlgorithmInfo()
+                obj._deserialize(item)
+                self.SymmetricAlgorithms.append(obj)
+        if params.get("AsymmetricAlgorithms") is not None:
+            self.AsymmetricAlgorithms = []
+            for item in params.get("AsymmetricAlgorithms"):
+                obj = AlgorithmInfo()
+                obj._deserialize(item)
+                self.AsymmetricAlgorithms.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class ListKeyDetailRequest(AbstractModel):
     """ListKeyDetail请求参数结构体
 
@@ -912,7 +1116,7 @@ class ListKeyDetailRequest(AbstractModel):
         """
         :param Offset: 含义跟 SQL 查询的 Offset 一致，表示本次获取从按一定顺序排列数组的第 Offset 个元素开始，缺省为0
         :type Offset: int
-        :param Limit: 含义跟 SQL 查询的 Limit 一致，表示本次获最多获取 Limit 个元素。缺省值为10，最大值为200
+        :param Limit: 含义跟 SQL 查询的 Limit 一致，表示本次最多获取 Limit 个元素。缺省值为10，最大值为200
         :type Limit: int
         :param Role: 根据创建者角色筛选，默认 0 表示用户自己创建的cmk， 1 表示授权其它云产品自动创建的cmk
         :type Role: int
@@ -924,6 +1128,8 @@ class ListKeyDetailRequest(AbstractModel):
         :type SearchKeyAlias: str
         :param Origin: 根据CMK类型筛选， "TENCENT_KMS" 表示筛选密钥材料由KMS创建的CMK， "EXTERNAL" 表示筛选密钥材料需要用户导入的 EXTERNAL类型CMK，"ALL" 或者不设置表示两种类型都查询，大小写敏感。
         :type Origin: str
+        :param KeyUsage: 根据CMK的KeyUsage筛选，为空表示筛选全部，可使用的参数为：ENCRYPT_DECRYPT 或 ASYMMETRIC_DECRYPT_RSA_2048 或 ASYMMETRIC_DECRYPT_SM2
+        :type KeyUsage: str
         """
         self.Offset = None
         self.Limit = None
@@ -932,6 +1138,7 @@ class ListKeyDetailRequest(AbstractModel):
         self.KeyState = None
         self.SearchKeyAlias = None
         self.Origin = None
+        self.KeyUsage = None
 
 
     def _deserialize(self, params):
@@ -942,6 +1149,7 @@ class ListKeyDetailRequest(AbstractModel):
         self.KeyState = params.get("KeyState")
         self.SearchKeyAlias = params.get("SearchKeyAlias")
         self.Origin = params.get("Origin")
+        self.KeyUsage = params.get("KeyUsage")
 
 
 class ListKeyDetailResponse(AbstractModel):
@@ -953,7 +1161,7 @@ class ListKeyDetailResponse(AbstractModel):
         """
         :param TotalCount: CMK的总数量
         :type TotalCount: int
-        :param KeyMetadatas: 返回的属性信息列表，此字段可能返回 null，表示取不到有效值。
+        :param KeyMetadatas: 返回的属性信息列表。
 注意：此字段可能返回 null，表示取不到有效值。
         :type KeyMetadatas: list of KeyMetadata
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -1186,7 +1394,7 @@ class UpdateKeyDescriptionRequest(AbstractModel):
         """
         :param Description: 新的描述信息，最大支持1024字节
         :type Description: str
-        :param KeyId: 需要修改描述信息的的CMK ID
+        :param KeyId: 需要修改描述信息的CMK ID
         :type KeyId: str
         """
         self.Description = None

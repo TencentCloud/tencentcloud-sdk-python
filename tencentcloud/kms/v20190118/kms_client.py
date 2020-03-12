@@ -25,6 +25,62 @@ class KmsClient(AbstractClient):
     _endpoint = 'kms.tencentcloudapi.com'
 
 
+    def AsymmetricRsaDecrypt(self, request):
+        """使用指定的RSA非对称密钥的私钥进行数据解密，密文必须是使用对应公钥加密的。处于Enabled 状态的非对称密钥才能进行解密操作。
+
+        :param request: Request instance for AsymmetricRsaDecrypt.
+        :type request: :class:`tencentcloud.kms.v20190118.models.AsymmetricRsaDecryptRequest`
+        :rtype: :class:`tencentcloud.kms.v20190118.models.AsymmetricRsaDecryptResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("AsymmetricRsaDecrypt", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.AsymmetricRsaDecryptResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def AsymmetricSm2Decrypt(self, request):
+        """使用指定的SM2非对称密钥的私钥进行数据解密，密文必须是使用对应公钥加密的。处于Enabled 状态的非对称密钥才能进行解密操作。传入的密文的长度不能超过256字节。
+
+        :param request: Request instance for AsymmetricSm2Decrypt.
+        :type request: :class:`tencentcloud.kms.v20190118.models.AsymmetricSm2DecryptRequest`
+        :rtype: :class:`tencentcloud.kms.v20190118.models.AsymmetricSm2DecryptResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("AsymmetricSm2Decrypt", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.AsymmetricSm2DecryptResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def CancelKeyDeletion(self, request):
         """取消CMK的计划删除操作
 
@@ -501,6 +557,34 @@ class KmsClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def GetPublicKey(self, request):
+        """该接口用户获取 KeyUsage为ASYMMETRIC_DECRYPT_RSA_2048 和 ASYMMETRIC_DECRYPT_SM2 的非对称密钥的公钥信息，使用该公钥用户可在本地进行数据加密，使用该公钥加密的数据只能通过KMS使用对应的私钥进行解密。只有处于Enabled状态的非对称密钥才可能获取公钥。
+
+        :param request: Request instance for GetPublicKey.
+        :type request: :class:`tencentcloud.kms.v20190118.models.GetPublicKeyRequest`
+        :rtype: :class:`tencentcloud.kms.v20190118.models.GetPublicKeyResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("GetPublicKey", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.GetPublicKeyResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def GetServiceStatus(self, request):
         """用于查询该用户是否已开通KMS服务
 
@@ -544,6 +628,34 @@ class KmsClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ImportKeyMaterialResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ListAlgorithms(self, request):
+        """列出当前Region支持的加密方式
+
+        :param request: Request instance for ListAlgorithms.
+        :type request: :class:`tencentcloud.kms.v20190118.models.ListAlgorithmsRequest`
+        :rtype: :class:`tencentcloud.kms.v20190118.models.ListAlgorithmsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ListAlgorithms", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ListAlgorithmsResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
