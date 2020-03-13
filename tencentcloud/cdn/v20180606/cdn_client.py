@@ -53,6 +53,34 @@ class CdnClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def CreateClsLogTopic(self, request):
+        """CreatClsLogTopic 用于创建日志主题。注意：一个日志集下至多可创建10个日志主题。
+
+        :param request: Request instance for CreateClsLogTopic.
+        :type request: :class:`tencentcloud.cdn.v20180606.models.CreateClsLogTopicRequest`
+        :rtype: :class:`tencentcloud.cdn.v20180606.models.CreateClsLogTopicResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("CreateClsLogTopic", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateClsLogTopicResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DeleteCdnDomain(self, request):
         """DeleteCdnDomain 用于删除指定加速域名
 
@@ -67,6 +95,34 @@ class CdnClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteCdnDomainResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DeleteClsLogTopic(self, request):
+        """DeleteClsLogTopic 用于删除日志主题。注意：删除后，所有该日志主题下绑定域名的日志将不再继续投递至该主题，已经投递的日志将会被全部清空。生效时间约 5~15 分钟。
+
+        :param request: Request instance for DeleteClsLogTopic.
+        :type request: :class:`tencentcloud.cdn.v20180606.models.DeleteClsLogTopicRequest`
+        :rtype: :class:`tencentcloud.cdn.v20180606.models.DeleteClsLogTopicResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DeleteClsLogTopic", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DeleteClsLogTopicResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -610,6 +666,34 @@ class CdnClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DisableClsLogTopic(self, request):
+        """DisableClsLogTopic 用于停止日志主题投递。注意：停止后，所有绑定该日志主题域名的日志将不再继续投递至该主题，已经投递的日志将会继续保留。生效时间约 5~15 分钟。
+
+        :param request: Request instance for DisableClsLogTopic.
+        :type request: :class:`tencentcloud.cdn.v20180606.models.DisableClsLogTopicRequest`
+        :rtype: :class:`tencentcloud.cdn.v20180606.models.DisableClsLogTopicResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DisableClsLogTopic", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DisableClsLogTopicResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def EnableCaches(self, request):
         """EnableCaches 用于解禁手工封禁的 URL，解禁成功后，全网生效时间约 5~10 分钟。（接口尚在内测中，暂未全量开放使用）
 
@@ -624,6 +708,34 @@ class CdnClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.EnableCachesResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def EnableClsLogTopic(self, request):
+        """EnableClsLogTopic 用于启动日志主题投递。注意：启动后，所有绑定该日志主题域名的日志将继续投递至该主题。生效时间约 5~15 分钟。
+
+        :param request: Request instance for EnableClsLogTopic.
+        :type request: :class:`tencentcloud.cdn.v20180606.models.EnableClsLogTopicRequest`
+        :rtype: :class:`tencentcloud.cdn.v20180606.models.EnableClsLogTopicResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("EnableClsLogTopic", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.EnableClsLogTopicResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -666,6 +778,62 @@ class CdnClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def ListClsLogTopics(self, request):
+        """ListClsLogTopics 用于显示日志主题列表。注意：一个日志集下至多含10个日志主题。
+
+        :param request: Request instance for ListClsLogTopics.
+        :type request: :class:`tencentcloud.cdn.v20180606.models.ListClsLogTopicsRequest`
+        :rtype: :class:`tencentcloud.cdn.v20180606.models.ListClsLogTopicsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ListClsLogTopics", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ListClsLogTopicsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ListClsTopicDomains(self, request):
+        """获取主题下绑定的域名列表
+
+        :param request: Request instance for ListClsTopicDomains.
+        :type request: :class:`tencentcloud.cdn.v20180606.models.ListClsTopicDomainsRequest`
+        :rtype: :class:`tencentcloud.cdn.v20180606.models.ListClsTopicDomainsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ListClsTopicDomains", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ListClsTopicDomainsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def ListTopData(self, request):
         """ListTopData 通过入参 Metric 和 Filter 组合不同，可以查询以下排序数据：
 
@@ -688,6 +856,34 @@ class CdnClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ListTopDataResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ManageClsTopicDomains(self, request):
+        """ManageClsTopicDomains 用于管理某日志主题下绑定的域名列表。
+
+        :param request: Request instance for ManageClsTopicDomains.
+        :type request: :class:`tencentcloud.cdn.v20180606.models.ManageClsTopicDomainsRequest`
+        :rtype: :class:`tencentcloud.cdn.v20180606.models.ManageClsTopicDomainsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ManageClsTopicDomains", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ManageClsTopicDomainsResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -776,6 +972,34 @@ class CdnClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.PushUrlsCacheResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def SearchClsLog(self, request):
+        """SearchClsLog 用于 CLS 日志检索。支持检索今天，24小时（可选近7中的某一天），近7天的日志数据。
+
+        :param request: Request instance for SearchClsLog.
+        :type request: :class:`tencentcloud.cdn.v20180606.models.SearchClsLogRequest`
+        :rtype: :class:`tencentcloud.cdn.v20180606.models.SearchClsLogResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("SearchClsLog", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.SearchClsLogResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

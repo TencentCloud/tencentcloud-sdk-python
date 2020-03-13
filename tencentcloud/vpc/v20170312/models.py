@@ -847,6 +847,44 @@ class AssociateNatGatewayAddressResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class AssociateNetworkAclSubnetsRequest(AbstractModel):
+    """AssociateNetworkAclSubnets请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param NetworkAclId: 网络ACL实例ID。例如：acl-12345678。
+        :type NetworkAclId: str
+        :param SubnetIds: 子网实例ID数组。例如：[subnet-12345678]
+        :type SubnetIds: list of str
+        """
+        self.NetworkAclId = None
+        self.SubnetIds = None
+
+
+    def _deserialize(self, params):
+        self.NetworkAclId = params.get("NetworkAclId")
+        self.SubnetIds = params.get("SubnetIds")
+
+
+class AssociateNetworkAclSubnetsResponse(AbstractModel):
+    """AssociateNetworkAclSubnets返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class AttachCcnInstancesRequest(AbstractModel):
     """AttachCcnInstances请求参数结构体
 
@@ -2128,6 +2166,50 @@ class CreateNetDetectResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class CreateNetworkAclRequest(AbstractModel):
+    """CreateNetworkAcl请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param VpcId: VPC实例ID。可通过DescribeVpcs接口返回值中的VpcId获取。
+        :type VpcId: str
+        :param NetworkAclName: 网络ACL名称，最大长度不能超过60个字节。
+        :type NetworkAclName: str
+        """
+        self.VpcId = None
+        self.NetworkAclName = None
+
+
+    def _deserialize(self, params):
+        self.VpcId = params.get("VpcId")
+        self.NetworkAclName = params.get("NetworkAclName")
+
+
+class CreateNetworkAclResponse(AbstractModel):
+    """CreateNetworkAcl返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param NetworkAcl: 网络ACL实例。
+        :type NetworkAcl: :class:`tencentcloud.vpc.v20170312.models.NetworkAcl`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.NetworkAcl = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("NetworkAcl") is not None:
+            self.NetworkAcl = NetworkAcl()
+            self.NetworkAcl._deserialize(params.get("NetworkAcl"))
+        self.RequestId = params.get("RequestId")
+
+
 class CreateNetworkInterfaceRequest(AbstractModel):
     """CreateNetworkInterface请求参数结构体
 
@@ -3345,6 +3427,40 @@ class DeleteNetDetectRequest(AbstractModel):
 
 class DeleteNetDetectResponse(AbstractModel):
     """DeleteNetDetect返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class DeleteNetworkAclRequest(AbstractModel):
+    """DeleteNetworkAcl请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param NetworkAclId: 网络ACL实例ID。例如：acl-12345678。
+        :type NetworkAclId: str
+        """
+        self.NetworkAclId = None
+
+
+    def _deserialize(self, params):
+        self.NetworkAclId = params.get("NetworkAclId")
+
+
+class DeleteNetworkAclResponse(AbstractModel):
+    """DeleteNetworkAcl返回参数结构体
 
     """
 
@@ -5427,6 +5543,73 @@ class DescribeNetDetectsResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeNetworkAclsRequest(AbstractModel):
+    """DescribeNetworkAcls请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param NetworkAclIds: 网络ACL实例ID数组。形如：[acl-12345678]。每次请求的实例的上限为100。参数不支持同时指定NetworkAclIds和Filters。
+        :type NetworkAclIds: list of str
+        :param Filters: 过滤条件，参数不支持同时指定NetworkAclIds和Filters。
+<li>vpc-id - String - （过滤条件）VPC实例ID，形如：vpc-12345678。</li>
+<li>network-acl-id - String - （过滤条件）网络ACL实例ID，形如：acl-12345678。</li>
+<li>network-acl-name - String - （过滤条件）网络ACL实例名称。</li>
+        :type Filters: list of Filter
+        :param Offset: 偏移量，默认为0。
+        :type Offset: int
+        :param Limit: 返回数量，默认为20，最小值为1，最大值为100。
+        :type Limit: int
+        """
+        self.NetworkAclIds = None
+        self.Filters = None
+        self.Offset = None
+        self.Limit = None
+
+
+    def _deserialize(self, params):
+        self.NetworkAclIds = params.get("NetworkAclIds")
+        if params.get("Filters") is not None:
+            self.Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self.Filters.append(obj)
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+
+
+class DescribeNetworkAclsResponse(AbstractModel):
+    """DescribeNetworkAcls返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param NetworkAclSet: 实例详细信息列表。
+        :type NetworkAclSet: list of NetworkAcl
+        :param TotalCount: 符合条件的实例数量。
+        :type TotalCount: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.NetworkAclSet = None
+        self.TotalCount = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("NetworkAclSet") is not None:
+            self.NetworkAclSet = []
+            for item in params.get("NetworkAclSet"):
+                obj = NetworkAcl()
+                obj._deserialize(item)
+                self.NetworkAclSet.append(obj)
+        self.TotalCount = params.get("TotalCount")
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeNetworkInterfaceLimitRequest(AbstractModel):
     """DescribeNetworkInterfaceLimit请求参数结构体
 
@@ -6793,6 +6976,44 @@ class DisassociateNatGatewayAddressRequest(AbstractModel):
 
 class DisassociateNatGatewayAddressResponse(AbstractModel):
     """DisassociateNatGatewayAddress返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class DisassociateNetworkAclSubnetsRequest(AbstractModel):
+    """DisassociateNetworkAclSubnets请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param NetworkAclId: 网络ACL实例ID。例如：acl-12345678。
+        :type NetworkAclId: str
+        :param SubnetIds: 子网实例ID数组。例如：[subnet-12345678]
+        :type SubnetIds: list of str
+        """
+        self.NetworkAclId = None
+        self.SubnetIds = None
+
+
+    def _deserialize(self, params):
+        self.NetworkAclId = params.get("NetworkAclId")
+        self.SubnetIds = params.get("SubnetIds")
+
+
+class DisassociateNetworkAclSubnetsResponse(AbstractModel):
+    """DisassociateNetworkAclSubnets返回参数结构体
 
     """
 
@@ -8561,6 +8782,44 @@ class ModifyNetDetectResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class ModifyNetworkAclAttributeRequest(AbstractModel):
+    """ModifyNetworkAclAttribute请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param NetworkAclId: 网络ACL实例ID。例如：acl-12345678。
+        :type NetworkAclId: str
+        :param NetworkAclName: 网络ACL名称，最大长度不能超过60个字节。
+        :type NetworkAclName: str
+        """
+        self.NetworkAclId = None
+        self.NetworkAclName = None
+
+
+    def _deserialize(self, params):
+        self.NetworkAclId = params.get("NetworkAclId")
+        self.NetworkAclName = params.get("NetworkAclName")
+
+
+class ModifyNetworkAclAttributeResponse(AbstractModel):
+    """ModifyNetworkAclAttribute返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class ModifyNetworkAclEntriesRequest(AbstractModel):
     """ModifyNetworkAclEntries请求参数结构体
 
@@ -9377,6 +9636,62 @@ class NetDetectState(AbstractModel):
                 obj = NetDetectIpState()
                 obj._deserialize(item)
                 self.NetDetectIpStateSet.append(obj)
+
+
+class NetworkAcl(AbstractModel):
+    """网络ACL
+
+    """
+
+    def __init__(self):
+        """
+        :param VpcId: `VPC`实例`ID`。
+        :type VpcId: str
+        :param NetworkAclId: 网络ACL实例`ID`。
+        :type NetworkAclId: str
+        :param NetworkAclName: 网络ACL名称，最大长度为60。
+        :type NetworkAclName: str
+        :param CreatedTime: 创建时间。
+        :type CreatedTime: str
+        :param SubnetSet: 网络ACL关联的子网数组。
+        :type SubnetSet: list of Subnet
+        :param IngressEntries: 网络ACl入站规则。
+        :type IngressEntries: list of NetworkAclEntry
+        :param EgressEntries: 网络ACL出站规则。
+        :type EgressEntries: list of NetworkAclEntry
+        """
+        self.VpcId = None
+        self.NetworkAclId = None
+        self.NetworkAclName = None
+        self.CreatedTime = None
+        self.SubnetSet = None
+        self.IngressEntries = None
+        self.EgressEntries = None
+
+
+    def _deserialize(self, params):
+        self.VpcId = params.get("VpcId")
+        self.NetworkAclId = params.get("NetworkAclId")
+        self.NetworkAclName = params.get("NetworkAclName")
+        self.CreatedTime = params.get("CreatedTime")
+        if params.get("SubnetSet") is not None:
+            self.SubnetSet = []
+            for item in params.get("SubnetSet"):
+                obj = Subnet()
+                obj._deserialize(item)
+                self.SubnetSet.append(obj)
+        if params.get("IngressEntries") is not None:
+            self.IngressEntries = []
+            for item in params.get("IngressEntries"):
+                obj = NetworkAclEntry()
+                obj._deserialize(item)
+                self.IngressEntries.append(obj)
+        if params.get("EgressEntries") is not None:
+            self.EgressEntries = []
+            for item in params.get("EgressEntries"):
+                obj = NetworkAclEntry()
+                obj._deserialize(item)
+                self.EgressEntries.append(obj)
 
 
 class NetworkAclEntry(AbstractModel):

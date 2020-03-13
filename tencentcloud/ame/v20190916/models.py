@@ -220,7 +220,7 @@ class DescribeMusicRequest(AbstractModel):
         """
         :param ItemId: 歌曲ID
         :type ItemId: str
-        :param IdentityId: User identity ID，用来唯一标识用户
+        :param IdentityId: 在应用前端播放音乐C端用户的唯一标识。无需是账户信息，用户唯一标识即可。
         :type IdentityId: str
         :param SubItemType: 填 MP3-64K-FTD-P 获取歌曲热门片段
         :type SubItemType: str

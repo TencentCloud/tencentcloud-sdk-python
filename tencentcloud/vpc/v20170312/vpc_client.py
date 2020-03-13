@@ -356,6 +356,34 @@ class VpcClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def AssociateNetworkAclSubnets(self, request):
+        """本接口（AssociateNetworkAclSubnets）用于网络ACL关联vpc下的子网。
+
+        :param request: Request instance for AssociateNetworkAclSubnets.
+        :type request: :class:`tencentcloud.vpc.v20170312.models.AssociateNetworkAclSubnetsRequest`
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.AssociateNetworkAclSubnetsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("AssociateNetworkAclSubnets", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.AssociateNetworkAclSubnetsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def AttachCcnInstances(self, request):
         """本接口（AttachCcnInstances）用于将网络实例加载到云联网实例中，网络实例包括VPC和专线网关。<br />
         每个云联网能够关联的网络实例个数是有限的，详请参考产品文档。如果需要扩充请联系在线客服。
@@ -864,6 +892,35 @@ class VpcClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateNetDetectResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def CreateNetworkAcl(self, request):
+        """本接口（CreateNetworkAcl）用于创建新的<a href="https://cloud.tencent.com/document/product/215/20088">网络ACL</a>。
+        * 新建的网络ACL的入站和出站规则默认都是全部拒绝，在创建后通常您需要再调用ModifyNetworkAclEntries将网络ACL的规则设置为需要的规则。
+
+        :param request: Request instance for CreateNetworkAcl.
+        :type request: :class:`tencentcloud.vpc.v20170312.models.CreateNetworkAclRequest`
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.CreateNetworkAclResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("CreateNetworkAcl", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateNetworkAclResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -1608,6 +1665,34 @@ class VpcClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteNetDetectResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DeleteNetworkAcl(self, request):
+        """本接口（DeleteNetworkAcl）用于删除网络ACL。
+
+        :param request: Request instance for DeleteNetworkAcl.
+        :type request: :class:`tencentcloud.vpc.v20170312.models.DeleteNetworkAclRequest`
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.DeleteNetworkAclResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DeleteNetworkAcl", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DeleteNetworkAclResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -2699,6 +2784,34 @@ class VpcClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeNetworkAcls(self, request):
+        """本接口（DescribeNetworkAcls）用于查询网络ACL列表。
+
+        :param request: Request instance for DescribeNetworkAcls.
+        :type request: :class:`tencentcloud.vpc.v20170312.models.DescribeNetworkAclsRequest`
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.DescribeNetworkAclsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeNetworkAcls", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeNetworkAclsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeNetworkInterfaceLimit(self, request):
         """本接口（DescribeNetworkInterfaceLimit）根据CVM实例ID查询弹性网卡配额，返回该CVM实例能绑定的弹性网卡配额，以及每个弹性网卡可以分配的IP配额
 
@@ -3364,6 +3477,34 @@ class VpcClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DisassociateNatGatewayAddressResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DisassociateNetworkAclSubnets(self, request):
+        """本接口（DisassociateNetworkAclSubnets）用于网络ACL解关联vpc下的子网。
+
+        :param request: Request instance for DisassociateNetworkAclSubnets.
+        :type request: :class:`tencentcloud.vpc.v20170312.models.DisassociateNetworkAclSubnetsRequest`
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.DisassociateNetworkAclSubnetsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DisassociateNetworkAclSubnets", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DisassociateNetworkAclSubnetsResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -4155,6 +4296,34 @@ class VpcClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyNetDetectResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ModifyNetworkAclAttribute(self, request):
+        """本接口（ModifyNetworkAclAttribute）用于修改网络ACL属性。
+
+        :param request: Request instance for ModifyNetworkAclAttribute.
+        :type request: :class:`tencentcloud.vpc.v20170312.models.ModifyNetworkAclAttributeRequest`
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.ModifyNetworkAclAttributeResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ModifyNetworkAclAttribute", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ModifyNetworkAclAttributeResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

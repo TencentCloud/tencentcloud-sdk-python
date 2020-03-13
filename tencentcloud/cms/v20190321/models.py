@@ -16,61 +16,6 @@
 from tencentcloud.common.abstract_model import AbstractModel
 
 
-class AudioModerationRequest(AbstractModel):
-    """AudioModeration请求参数结构体
-
-    """
-
-    def __init__(self):
-        """
-        :param CallbackUrl: 回调URL，音频识别结果将以POST请求方式发送到此地址
-        :type CallbackUrl: str
-        :param FileContent: 音频内容的base64
-        :type FileContent: str
-        :param FileMD5: 音频文件的MD5值
-        :type FileMD5: str
-        :param FileUrl: 音频内容Url ，其中FileUrl和FileContent二选一
-        :type FileUrl: str
-        """
-        self.CallbackUrl = None
-        self.FileContent = None
-        self.FileMD5 = None
-        self.FileUrl = None
-
-
-    def _deserialize(self, params):
-        self.CallbackUrl = params.get("CallbackUrl")
-        self.FileContent = params.get("FileContent")
-        self.FileMD5 = params.get("FileMD5")
-        self.FileUrl = params.get("FileUrl")
-
-
-class AudioModerationResponse(AbstractModel):
-    """AudioModeration返回参数结构体
-
-    """
-
-    def __init__(self):
-        """
-        :param BusinessCode: 业务返回码 
-60001：成功请求回调任务
-        :type BusinessCode: int
-        :param Data: 识别返回结果
-        :type Data: list of str
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
-        self.BusinessCode = None
-        self.Data = None
-        self.RequestId = None
-
-
-    def _deserialize(self, params):
-        self.BusinessCode = params.get("BusinessCode")
-        self.Data = params.get("Data")
-        self.RequestId = params.get("RequestId")
-
-
 class CodeDetail(AbstractModel):
     """从图片中检测到的二维码，可能为多个
 
@@ -428,57 +373,6 @@ class DescribeFileSampleResponse(AbstractModel):
                 obj._deserialize(item)
                 self.FileSampleSet.append(obj)
         self.TotalCount = params.get("TotalCount")
-        self.RequestId = params.get("RequestId")
-
-
-class DescribeModerationOverviewRequest(AbstractModel):
-    """DescribeModerationOverview请求参数结构体
-
-    """
-
-    def __init__(self):
-        """
-        :param Date: 日期，如2019-01-01， 查询该日期的概览数据
-        :type Date: str
-        :param ServiceTypes: 服务类型数组，可以动态配置，Text:文本，Image:图片，Audio:音频，Video:视频, 使用"ALL"表示所有类型, 不区分大小写，如 ["Text", "Image"]查询文本和图片服务的数据，["all"]查询所有服务的数据。
-        :type ServiceTypes: list of str
-        :param Channels: 渠道号数组，1:直播 2:点播 3:IM 4:GME，统计指定渠道组合的汇总数据，如[1,2]表示获取直播和点播两个渠道的汇总数据，不填[]为所有渠道汇总数据
-        :type Channels: list of int non-negative
-        """
-        self.Date = None
-        self.ServiceTypes = None
-        self.Channels = None
-
-
-    def _deserialize(self, params):
-        self.Date = params.get("Date")
-        self.ServiceTypes = params.get("ServiceTypes")
-        self.Channels = params.get("Channels")
-
-
-class DescribeModerationOverviewResponse(AbstractModel):
-    """DescribeModerationOverview返回参数结构体
-
-    """
-
-    def __init__(self):
-        """
-        :param Results: 概览数据集合
-        :type Results: list of OverviewRecord
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
-        self.Results = None
-        self.RequestId = None
-
-
-    def _deserialize(self, params):
-        if params.get("Results") is not None:
-            self.Results = []
-            for item in params.get("Results"):
-                obj = OverviewRecord()
-                obj._deserialize(item)
-                self.Results.append(obj)
         self.RequestId = params.get("RequestId")
 
 
@@ -1055,35 +949,6 @@ class OCRDetect(AbstractModel):
         self.TextInfo = params.get("TextInfo")
 
 
-class OverviewRecord(AbstractModel):
-    """概览数据
-
-    """
-
-    def __init__(self):
-        """
-        :param EvilCount: 调用恶意量
-        :type EvilCount: int
-        :param ServiceType: Text表示文本，Image表示图片，Audio表示音频，Video表示视频
-        :type ServiceType: str
-        :param TotalCount: 调用总量
-        :type TotalCount: int
-        :param Yoy: 恶意量同比增长率
-        :type Yoy: str
-        """
-        self.EvilCount = None
-        self.ServiceType = None
-        self.TotalCount = None
-        self.Yoy = None
-
-
-    def _deserialize(self, params):
-        self.EvilCount = params.get("EvilCount")
-        self.ServiceType = params.get("ServiceType")
-        self.TotalCount = params.get("TotalCount")
-        self.Yoy = params.get("Yoy")
-
-
 class RrectF(AbstractModel):
     """logo位置信息
 
@@ -1372,58 +1237,3 @@ class TextSample(AbstractModel):
         self.Id = params.get("Id")
         self.Label = params.get("Label")
         self.Status = params.get("Status")
-
-
-class VideoModerationRequest(AbstractModel):
-    """VideoModeration请求参数结构体
-
-    """
-
-    def __init__(self):
-        """
-        :param CallbackUrl: 回调URL，音频识别结果将以POST请求方式发送到此地址
-        :type CallbackUrl: str
-        :param FileMD5: 视频文件MD5
-        :type FileMD5: str
-        :param FileContent: 视频内容base64
-        :type FileContent: str
-        :param FileUrl: 视频内容Url,其中FileUrl与FileContent二选一
-        :type FileUrl: str
-        """
-        self.CallbackUrl = None
-        self.FileMD5 = None
-        self.FileContent = None
-        self.FileUrl = None
-
-
-    def _deserialize(self, params):
-        self.CallbackUrl = params.get("CallbackUrl")
-        self.FileMD5 = params.get("FileMD5")
-        self.FileContent = params.get("FileContent")
-        self.FileUrl = params.get("FileUrl")
-
-
-class VideoModerationResponse(AbstractModel):
-    """VideoModeration返回参数结构体
-
-    """
-
-    def __init__(self):
-        """
-        :param BusinessCode: 业务返回码
-60001：成功请求回调任务
-        :type BusinessCode: int
-        :param Data: 识别返回结果
-        :type Data: str
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
-        self.BusinessCode = None
-        self.Data = None
-        self.RequestId = None
-
-
-    def _deserialize(self, params):
-        self.BusinessCode = params.get("BusinessCode")
-        self.Data = params.get("Data")
-        self.RequestId = params.get("RequestId")

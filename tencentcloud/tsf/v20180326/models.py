@@ -2678,6 +2678,8 @@ class DescribeConfigsRequest(AbstractModel):
         :type ConfigIdList: list of str
         :param ConfigName: 配置项名称，精确查询，不传入时查询全量
         :type ConfigName: str
+        :param ConfigVersion: 配置项版本，精确查询，不传入时查询全量
+        :type ConfigVersion: str
         """
         self.ApplicationId = None
         self.ConfigId = None
@@ -2685,6 +2687,7 @@ class DescribeConfigsRequest(AbstractModel):
         self.Limit = None
         self.ConfigIdList = None
         self.ConfigName = None
+        self.ConfigVersion = None
 
 
     def _deserialize(self, params):
@@ -2694,6 +2697,7 @@ class DescribeConfigsRequest(AbstractModel):
         self.Limit = params.get("Limit")
         self.ConfigIdList = params.get("ConfigIdList")
         self.ConfigName = params.get("ConfigName")
+        self.ConfigVersion = params.get("ConfigVersion")
 
 
 class DescribeConfigsResponse(AbstractModel):
@@ -3062,11 +3066,14 @@ class DescribeImageTagsRequest(AbstractModel):
         :type Limit: int
         :param QueryImageIdFlag: 不填和0:查询 1:不查询
         :type QueryImageIdFlag: int
+        :param SearchWord: 可用于搜索的 tag 名字
+        :type SearchWord: str
         """
         self.ApplicationId = None
         self.Offset = None
         self.Limit = None
         self.QueryImageIdFlag = None
+        self.SearchWord = None
 
 
     def _deserialize(self, params):
@@ -3074,6 +3081,7 @@ class DescribeImageTagsRequest(AbstractModel):
         self.Offset = params.get("Offset")
         self.Limit = params.get("Limit")
         self.QueryImageIdFlag = params.get("QueryImageIdFlag")
+        self.SearchWord = params.get("SearchWord")
 
 
 class DescribeImageTagsResponse(AbstractModel):
@@ -3482,12 +3490,15 @@ class DescribePublicConfigsRequest(AbstractModel):
         :type ConfigIdList: list of str
         :param ConfigName: 配置项名称，精确查询，不传入时查询全量
         :type ConfigName: str
+        :param ConfigVersion: 配置项版本，精确查询，不传入时查询全量
+        :type ConfigVersion: str
         """
         self.ConfigId = None
         self.Offset = None
         self.Limit = None
         self.ConfigIdList = None
         self.ConfigName = None
+        self.ConfigVersion = None
 
 
     def _deserialize(self, params):
@@ -3496,6 +3507,7 @@ class DescribePublicConfigsRequest(AbstractModel):
         self.Limit = params.get("Limit")
         self.ConfigIdList = params.get("ConfigIdList")
         self.ConfigName = params.get("ConfigName")
+        self.ConfigVersion = params.get("ConfigVersion")
 
 
 class DescribePublicConfigsResponse(AbstractModel):
