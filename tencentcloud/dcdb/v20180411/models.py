@@ -545,6 +545,8 @@ class DCDBInstanceInfo(AbstractModel):
         :type WanStatus: int
         :param IsAuditSupported: 该实例是否支持审计。1-支持；0-不支持
         :type IsAuditSupported: int
+        :param Cpu: Cpu核数
+        :type Cpu: int
         """
         self.InstanceId = None
         self.InstanceName = None
@@ -584,6 +586,7 @@ class DCDBInstanceInfo(AbstractModel):
         self.Locker = None
         self.WanStatus = None
         self.IsAuditSupported = None
+        self.Cpu = None
 
 
     def _deserialize(self, params):
@@ -630,6 +633,7 @@ class DCDBInstanceInfo(AbstractModel):
         self.Locker = params.get("Locker")
         self.WanStatus = params.get("WanStatus")
         self.IsAuditSupported = params.get("IsAuditSupported")
+        self.Cpu = params.get("Cpu")
 
 
 class DCDBShardInfo(AbstractModel):
@@ -2358,12 +2362,15 @@ class ParamDesc(AbstractModel):
         :type Default: str
         :param Constraint: 参数限制
         :type Constraint: :class:`tencentcloud.dcdb.v20180411.models.ParamConstraint`
+        :param HaveSetValue: 是否有设置过值，false:没有设置过值，true:有设置过值。
+        :type HaveSetValue: bool
         """
         self.Param = None
         self.Value = None
         self.SetValue = None
         self.Default = None
         self.Constraint = None
+        self.HaveSetValue = None
 
 
     def _deserialize(self, params):
@@ -2374,6 +2381,7 @@ class ParamDesc(AbstractModel):
         if params.get("Constraint") is not None:
             self.Constraint = ParamConstraint()
             self.Constraint._deserialize(params.get("Constraint"))
+        self.HaveSetValue = params.get("HaveSetValue")
 
 
 class ParamModifyResult(AbstractModel):
@@ -2562,6 +2570,8 @@ class ShardInfo(AbstractModel):
         :type NodeCount: int
         :param Pid: 产品类型 Id（过时字段，请勿依赖该值）
         :type Pid: int
+        :param Cpu: Cpu核数
+        :type Cpu: int
         """
         self.ShardInstanceId = None
         self.ShardSerialId = None
@@ -2572,6 +2582,7 @@ class ShardInfo(AbstractModel):
         self.ShardId = None
         self.NodeCount = None
         self.Pid = None
+        self.Cpu = None
 
 
     def _deserialize(self, params):
@@ -2584,6 +2595,7 @@ class ShardInfo(AbstractModel):
         self.ShardId = params.get("ShardId")
         self.NodeCount = params.get("NodeCount")
         self.Pid = params.get("Pid")
+        self.Cpu = params.get("Cpu")
 
 
 class ShardZoneChooseInfo(AbstractModel):

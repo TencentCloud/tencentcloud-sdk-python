@@ -389,6 +389,34 @@ class DayuClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def CreateNetReturn(self, request):
+        """高防IP专业版一键切回源站
+
+        :param request: Request instance for CreateNetReturn.
+        :type request: :class:`tencentcloud.dayu.v20180709.models.CreateNetReturnRequest`
+        :rtype: :class:`tencentcloud.dayu.v20180709.models.CreateNetReturnResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("CreateNetReturn", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateNetReturnResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def CreateUnblockIp(self, request):
         """IP解封操作
 
@@ -2587,6 +2615,34 @@ class DayuClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyL7RulesResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ModifyNetReturnSwitch(self, request):
+        """在客户收攻击或者被封堵时，切回到源站，并设置回切的时长
+
+        :param request: Request instance for ModifyNetReturnSwitch.
+        :type request: :class:`tencentcloud.dayu.v20180709.models.ModifyNetReturnSwitchRequest`
+        :rtype: :class:`tencentcloud.dayu.v20180709.models.ModifyNetReturnSwitchResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ModifyNetReturnSwitch", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ModifyNetReturnSwitchResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

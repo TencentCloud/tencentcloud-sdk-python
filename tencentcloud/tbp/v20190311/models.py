@@ -16,6 +16,52 @@
 from tencentcloud.common.abstract_model import AbstractModel
 
 
+class CreateBotRequest(AbstractModel):
+    """CreateBot请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param BotName: 机器人名称
+        :type BotName: str
+        :param BotCnName: 机器人中文名称
+        :type BotCnName: str
+        """
+        self.BotName = None
+        self.BotCnName = None
+
+
+    def _deserialize(self, params):
+        self.BotName = params.get("BotName")
+        self.BotCnName = params.get("BotCnName")
+
+
+class CreateBotResponse(AbstractModel):
+    """CreateBot返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param TaskRequestId: 任务ID
+        :type TaskRequestId: str
+        :param Msg: 任务信息
+        :type Msg: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TaskRequestId = None
+        self.Msg = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TaskRequestId = params.get("TaskRequestId")
+        self.Msg = params.get("Msg")
+        self.RequestId = params.get("RequestId")
+
+
 class ResetRequest(AbstractModel):
     """Reset请求参数结构体
 

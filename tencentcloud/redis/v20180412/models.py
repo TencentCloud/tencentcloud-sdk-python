@@ -2878,6 +2878,24 @@ class InstanceSet(AbstractModel):
         :param NoAuth: 是否为免密实例，true-免密实例；false-非免密实例
 注意：此字段可能返回 null，表示取不到有效值。
         :type NoAuth: bool
+        :param ClientLimit: 客户端连接数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ClientLimit: int
+        :param DtsStatus: DTS状态（内部参数，用户可忽略）
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DtsStatus: int
+        :param NetLimit: 分片带宽上限，单位MB
+注意：此字段可能返回 null，表示取不到有效值。
+        :type NetLimit: int
+        :param PasswordFree: 免密实例标识（内部参数，用户可忽略）
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PasswordFree: int
+        :param ReadOnly: 实例只读标识（内部参数，用户可忽略）
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ReadOnly: int
+        :param Vip6: 内部参数，用户可忽略
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Vip6: str
         """
         self.InstanceName = None
         self.InstanceId = None
@@ -2915,6 +2933,12 @@ class InstanceSet(AbstractModel):
         self.InstanceTags = None
         self.ProjectName = None
         self.NoAuth = None
+        self.ClientLimit = None
+        self.DtsStatus = None
+        self.NetLimit = None
+        self.PasswordFree = None
+        self.ReadOnly = None
+        self.Vip6 = None
 
 
     def _deserialize(self, params):
@@ -2964,6 +2988,12 @@ class InstanceSet(AbstractModel):
                 self.InstanceTags.append(obj)
         self.ProjectName = params.get("ProjectName")
         self.NoAuth = params.get("NoAuth")
+        self.ClientLimit = params.get("ClientLimit")
+        self.DtsStatus = params.get("DtsStatus")
+        self.NetLimit = params.get("NetLimit")
+        self.PasswordFree = params.get("PasswordFree")
+        self.ReadOnly = params.get("ReadOnly")
+        self.Vip6 = params.get("Vip6")
 
 
 class InstanceSlowlogDetail(AbstractModel):

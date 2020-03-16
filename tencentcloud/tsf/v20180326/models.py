@@ -4728,6 +4728,12 @@ class Namespace(AbstractModel):
         :param ClusterId: 集群ID
 注意：此字段可能返回 null，表示取不到有效值。
         :type ClusterId: str
+        :param NamespaceResourceType: 集群资源类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type NamespaceResourceType: str
+        :param NamespaceType: 命名空间类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type NamespaceType: str
         """
         self.NamespaceId = None
         self.NamespaceCode = None
@@ -4740,6 +4746,8 @@ class Namespace(AbstractModel):
         self.UpdateTime = None
         self.ClusterList = None
         self.ClusterId = None
+        self.NamespaceResourceType = None
+        self.NamespaceType = None
 
 
     def _deserialize(self, params):
@@ -4759,6 +4767,8 @@ class Namespace(AbstractModel):
                 obj._deserialize(item)
                 self.ClusterList.append(obj)
         self.ClusterId = params.get("ClusterId")
+        self.NamespaceResourceType = params.get("NamespaceResourceType")
+        self.NamespaceType = params.get("NamespaceType")
 
 
 class PkgInfo(AbstractModel):

@@ -456,6 +456,27 @@ class ClientIpPlaySumInfo(AbstractModel):
         self.CountryArea = params.get("CountryArea")
 
 
+class ConcurrentRecordStreamNum(AbstractModel):
+    """并发录制路数
+
+    """
+
+    def __init__(self):
+        """
+        :param Time: 时间点。
+        :type Time: str
+        :param Num: 路数。
+        :type Num: int
+        """
+        self.Time = None
+        self.Num = None
+
+
+    def _deserialize(self, params):
+        self.Time = params.get("Time")
+        self.Num = params.get("Num")
+
+
 class CreateLiveCallbackRuleRequest(AbstractModel):
     """CreateLiveCallbackRule请求参数结构体
 
@@ -1950,6 +1971,68 @@ class DescribeBillBandwidthAndFluxListResponse(AbstractModel):
             self.DataInfoList = []
             for item in params.get("DataInfoList"):
                 obj = BillDataInfo()
+                obj._deserialize(item)
+                self.DataInfoList.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeConcurrentRecordStreamNumRequest(AbstractModel):
+    """DescribeConcurrentRecordStreamNum请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param LiveType: 直播类型，SlowLive：慢直播。
+NormalLive：普通直播。
+        :type LiveType: str
+        :param StartTime: 起始时间，格式：yyyy-mm-dd HH:MM:SS。
+可以查询最近180天的数据。
+        :type StartTime: str
+        :param EndTime: 结束时间，格式：yyyy-mm-dd HH:MM:SS。
+时间跨度最大支持31天。
+        :type EndTime: str
+        :param MainlandOrOversea: 如果为空，查询所有地区数据；如果为“Mainland”，查询国内数据；如果为“Oversea”，则查询国外数据。
+        :type MainlandOrOversea: str
+        :param PushDomains: 推流域名列表，不填表示总体数据。
+        :type PushDomains: list of str
+        """
+        self.LiveType = None
+        self.StartTime = None
+        self.EndTime = None
+        self.MainlandOrOversea = None
+        self.PushDomains = None
+
+
+    def _deserialize(self, params):
+        self.LiveType = params.get("LiveType")
+        self.StartTime = params.get("StartTime")
+        self.EndTime = params.get("EndTime")
+        self.MainlandOrOversea = params.get("MainlandOrOversea")
+        self.PushDomains = params.get("PushDomains")
+
+
+class DescribeConcurrentRecordStreamNumResponse(AbstractModel):
+    """DescribeConcurrentRecordStreamNum返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param DataInfoList: 统计信息列表。
+        :type DataInfoList: list of ConcurrentRecordStreamNum
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.DataInfoList = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("DataInfoList") is not None:
+            self.DataInfoList = []
+            for item in params.get("DataInfoList"):
+                obj = ConcurrentRecordStreamNum()
                 obj._deserialize(item)
                 self.DataInfoList.append(obj)
         self.RequestId = params.get("RequestId")
@@ -4652,6 +4735,10 @@ class DomainInfo(AbstractModel):
         :type RentTag: int
         :param RentExpireTime: 租用域名过期时间
         :type RentExpireTime: str
+        :param IsMiniProgramLive: 0：标准直播，
+1：小程序直播。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IsMiniProgramLive: int
         """
         self.Name = None
         self.Type = None
@@ -4664,6 +4751,7 @@ class DomainInfo(AbstractModel):
         self.CurrentCName = None
         self.RentTag = None
         self.RentExpireTime = None
+        self.IsMiniProgramLive = None
 
 
     def _deserialize(self, params):
@@ -4678,6 +4766,7 @@ class DomainInfo(AbstractModel):
         self.CurrentCName = params.get("CurrentCName")
         self.RentTag = params.get("RentTag")
         self.RentExpireTime = params.get("RentExpireTime")
+        self.IsMiniProgramLive = params.get("IsMiniProgramLive")
 
 
 class DomainInfoList(AbstractModel):
@@ -6132,6 +6221,12 @@ class PushDataInfo(AbstractModel):
         :type Resolution: str
         :param AsampleRate: 采样率。
         :type AsampleRate: int
+        :param MetaAudioSpeed: metadata中的音频码率，单位是Kbps。
+        :type MetaAudioSpeed: int
+        :param MetaVideoSpeed: metadata中的视频码率，单位是Kbps。
+        :type MetaVideoSpeed: int
+        :param MetaFps: metadata中的帧率。
+        :type MetaFps: int
         """
         self.StreamName = None
         self.AppName = None
@@ -6147,6 +6242,9 @@ class PushDataInfo(AbstractModel):
         self.Vcodec = None
         self.Resolution = None
         self.AsampleRate = None
+        self.MetaAudioSpeed = None
+        self.MetaVideoSpeed = None
+        self.MetaFps = None
 
 
     def _deserialize(self, params):
@@ -6164,6 +6262,9 @@ class PushDataInfo(AbstractModel):
         self.Vcodec = params.get("Vcodec")
         self.Resolution = params.get("Resolution")
         self.AsampleRate = params.get("AsampleRate")
+        self.MetaAudioSpeed = params.get("MetaAudioSpeed")
+        self.MetaVideoSpeed = params.get("MetaVideoSpeed")
+        self.MetaFps = params.get("MetaFps")
 
 
 class PushQualityData(AbstractModel):
@@ -6205,6 +6306,12 @@ class PushQualityData(AbstractModel):
         :type VideoTs: int
         :param AudioTs: 音频流逝时间，单位是ms。
         :type AudioTs: int
+        :param MetaVideoRate: metadata中的视频码率，单位是kbps。
+        :type MetaVideoRate: int
+        :param MetaAudioRate: metadata中的音频码率，单位是kbps。
+        :type MetaAudioRate: int
+        :param MateFps: metadata中的帧率。
+        :type MateFps: int
         """
         self.Time = None
         self.PushDomain = None
@@ -6222,6 +6329,9 @@ class PushQualityData(AbstractModel):
         self.LocalTs = None
         self.VideoTs = None
         self.AudioTs = None
+        self.MetaVideoRate = None
+        self.MetaAudioRate = None
+        self.MateFps = None
 
 
     def _deserialize(self, params):
@@ -6241,6 +6351,9 @@ class PushQualityData(AbstractModel):
         self.LocalTs = params.get("LocalTs")
         self.VideoTs = params.get("VideoTs")
         self.AudioTs = params.get("AudioTs")
+        self.MetaVideoRate = params.get("MetaVideoRate")
+        self.MetaAudioRate = params.get("MetaAudioRate")
+        self.MateFps = params.get("MateFps")
 
 
 class RecordParam(AbstractModel):
@@ -6843,6 +6956,8 @@ topspeed_H265 =》极速高清-H265。
         :type Type: str
         :param PushDomain: 推流域名。
         :type PushDomain: str
+        :param Resolution: 分辨率。
+        :type Resolution: str
         """
         self.StreamName = None
         self.StartTime = None
@@ -6852,6 +6967,7 @@ topspeed_H265 =》极速高清-H265。
         self.Bitrate = None
         self.Type = None
         self.PushDomain = None
+        self.Resolution = None
 
 
     def _deserialize(self, params):
@@ -6863,6 +6979,7 @@ topspeed_H265 =》极速高清-H265。
         self.Bitrate = params.get("Bitrate")
         self.Type = params.get("Type")
         self.PushDomain = params.get("PushDomain")
+        self.Resolution = params.get("Resolution")
 
 
 class UnBindLiveDomainCertRequest(AbstractModel):

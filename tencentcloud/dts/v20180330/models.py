@@ -857,11 +857,15 @@ class MigrateStepDetailInfo(AbstractModel):
         :type StepId: str
         :param Status: 步骤状态:0-默认值,1-成功,2-失败,3-执行中,4-未执行
         :type Status: int
+        :param StartTime: 当前步骤开始的时间，格式为"yyyy-mm-dd hh:mm:ss"，该字段不存在或者为空是无意义
+注意：此字段可能返回 null，表示取不到有效值。
+        :type StartTime: str
         """
         self.StepNo = None
         self.StepName = None
         self.StepId = None
         self.Status = None
+        self.StartTime = None
 
 
     def _deserialize(self, params):
@@ -869,6 +873,7 @@ class MigrateStepDetailInfo(AbstractModel):
         self.StepName = params.get("StepName")
         self.StepId = params.get("StepId")
         self.Status = params.get("Status")
+        self.StartTime = params.get("StartTime")
 
 
 class ModifyMigrateJobRequest(AbstractModel):

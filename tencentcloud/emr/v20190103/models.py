@@ -241,6 +241,9 @@ class ClusterInstancesInfo(AbstractModel):
         :param HiveMetaDb: Hive元数据信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type HiveMetaDb: str
+        :param ServiceClass: 集群类型:EMR,CLICKHOUSE,DRUID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ServiceClass: str
         """
         self.Id = None
         self.ClusterId = None
@@ -268,6 +271,7 @@ class ClusterInstancesInfo(AbstractModel):
         self.MetaDb = None
         self.Tags = None
         self.HiveMetaDb = None
+        self.ServiceClass = None
 
 
     def _deserialize(self, params):
@@ -304,6 +308,7 @@ class ClusterInstancesInfo(AbstractModel):
                 obj._deserialize(item)
                 self.Tags.append(obj)
         self.HiveMetaDb = params.get("HiveMetaDb")
+        self.ServiceClass = params.get("ServiceClass")
 
 
 class CreateInstanceRequest(AbstractModel):
@@ -1397,6 +1402,9 @@ class NodeHardwareInfo(AbstractModel):
         :param Tags: 节点绑定的标签
 注意：此字段可能返回 null，表示取不到有效值。
         :type Tags: list of Tag
+        :param AutoFlag: 是否是自动扩缩容节点，0为普通节点，1为自动扩缩容节点。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AutoFlag: int
         """
         self.AppId = None
         self.SerialNo = None
@@ -1433,6 +1441,7 @@ class NodeHardwareInfo(AbstractModel):
         self.Ip = None
         self.Destroyable = None
         self.Tags = None
+        self.AutoFlag = None
 
 
     def _deserialize(self, params):
@@ -1483,6 +1492,7 @@ class NodeHardwareInfo(AbstractModel):
                 obj = Tag()
                 obj._deserialize(item)
                 self.Tags.append(obj)
+        self.AutoFlag = params.get("AutoFlag")
 
 
 class OutterResource(AbstractModel):
@@ -1544,13 +1554,13 @@ class OutterResource(AbstractModel):
 
 
 class Placement(AbstractModel):
-    """描述集实例位置信息
+    """描述集群实例位置信息
 
     """
 
     def __init__(self):
         """
-        :param ProjectId: 实例所属项目ID。该参数可以通过调用 DescribeProject 的返回值中的 projectId 字段来获取。不填为默认项目。
+        :param ProjectId: 实例所属项目ID。该参数可以通过调用 DescribeProject 的返回值中的 projectId 字段来获取。填0为默认项目。
         :type ProjectId: int
         :param Zone: 实例所属的可用区，例如ap-guangzhou-1。该参数也可以通过调用 DescribeZones 的返回值中的Zone字段来获取。
         :type Zone: str
@@ -1665,6 +1675,12 @@ class PriceResource(AbstractModel):
         :param Tags: 标签
 注意：此字段可能返回 null，表示取不到有效值。
         :type Tags: list of Tag
+        :param DiskNum: 磁盘数量
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DiskNum: int
+        :param LocalDiskNum: 本地盘的数量
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LocalDiskNum: int
         """
         self.Spec = None
         self.StorageType = None
@@ -1677,6 +1693,8 @@ class PriceResource(AbstractModel):
         self.DiskCnt = None
         self.InstanceType = None
         self.Tags = None
+        self.DiskNum = None
+        self.LocalDiskNum = None
 
 
     def _deserialize(self, params):
@@ -1701,6 +1719,8 @@ class PriceResource(AbstractModel):
                 obj = Tag()
                 obj._deserialize(item)
                 self.Tags.append(obj)
+        self.DiskNum = params.get("DiskNum")
+        self.LocalDiskNum = params.get("LocalDiskNum")
 
 
 class Resource(AbstractModel):

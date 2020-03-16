@@ -24,10 +24,13 @@ class Action(AbstractModel):
     def __init__(self):
         """
         :param Topic: 转发至topic
+注意：此字段可能返回 null，表示取不到有效值。
         :type Topic: :class:`tencentcloud.iot.v20180123.models.TopicAction`
         :param Service: 转发至第三发
+注意：此字段可能返回 null，表示取不到有效值。
         :type Service: :class:`tencentcloud.iot.v20180123.models.ServiceAction`
         :param Ckafka: 转发至第三发Ckafka
+注意：此字段可能返回 null，表示取不到有效值。
         :type Ckafka: :class:`tencentcloud.iot.v20180123.models.CkafkaAction`
         """
         self.Topic = None
@@ -1146,12 +1149,16 @@ class DataTemplate(AbstractModel):
     def __init__(self):
         """
         :param Number: 数字类型
+注意：此字段可能返回 null，表示取不到有效值。
         :type Number: :class:`tencentcloud.iot.v20180123.models.NumberData`
         :param String: 字符串类型
+注意：此字段可能返回 null，表示取不到有效值。
         :type String: :class:`tencentcloud.iot.v20180123.models.StringData`
         :param Enum: 枚举类型
+注意：此字段可能返回 null，表示取不到有效值。
         :type Enum: :class:`tencentcloud.iot.v20180123.models.EnumData`
         :param Bool: 布尔类型
+注意：此字段可能返回 null，表示取不到有效值。
         :type Bool: :class:`tencentcloud.iot.v20180123.models.BoolData`
         """
         self.Number = None
@@ -1563,8 +1570,10 @@ class DeviceStatus(AbstractModel):
         :param Status: 设备状态（inactive, online, offline）
         :type Status: str
         :param FirstOnline: 首次上线时间
+注意：此字段可能返回 null，表示取不到有效值。
         :type FirstOnline: str
         :param LastOnline: 最后上线时间
+注意：此字段可能返回 null，表示取不到有效值。
         :type LastOnline: str
         :param OnlineTimes: 上线次数
         :type OnlineTimes: int
@@ -1629,7 +1638,7 @@ class GetDataHistoryRequest(AbstractModel):
         :param EndTime: 查询结束时间
         :type EndTime: str
         :param Size: 查询数据量
-        :type Size: list of int non-negative
+        :type Size: int
         :param Order: 时间排序（desc/asc）
         :type Order: str
         :param ScrollId: 查询游标
@@ -2833,8 +2842,10 @@ class RuleQuery(AbstractModel):
         :param Condition: 过滤规则
         :type Condition: str
         :param Topic: Topic
+注意：此字段可能返回 null，表示取不到有效值。
         :type Topic: str
         :param ProductId: 产品Id
+注意：此字段可能返回 null，表示取不到有效值。
         :type ProductId: str
         """
         self.Field = None

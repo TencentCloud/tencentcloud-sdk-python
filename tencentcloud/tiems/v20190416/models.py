@@ -1488,6 +1488,9 @@ class Job(AbstractModel):
         :param QuantizationInput: 量化输入
 注意：此字段可能返回 null，表示取不到有效值。
         :type QuantizationInput: :class:`tencentcloud.tiems.v20190416.models.QuantizationInput`
+        :param LogTopicId: Cls日志主题ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LogTopicId: str
         """
         self.Id = None
         self.Cluster = None
@@ -1513,6 +1516,7 @@ class Job(AbstractModel):
         self.ConfigVersion = None
         self.JobType = None
         self.QuantizationInput = None
+        self.LogTopicId = None
 
 
     def _deserialize(self, params):
@@ -1546,6 +1550,7 @@ class Job(AbstractModel):
         if params.get("QuantizationInput") is not None:
             self.QuantizationInput = QuantizationInput()
             self.QuantizationInput._deserialize(params.get("QuantizationInput"))
+        self.LogTopicId = params.get("LogTopicId")
 
 
 class JobStatus(AbstractModel):
@@ -1569,12 +1574,16 @@ class JobStatus(AbstractModel):
         :param Replicas: 副本名
 注意：此字段可能返回 null，表示取不到有效值。
         :type Replicas: list of str
+        :param ReplicaInfos: 副本实例
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ReplicaInfos: list of ReplicaInfo
         """
         self.Status = None
         self.Message = None
         self.DesiredWorkers = None
         self.CurrentWorkers = None
         self.Replicas = None
+        self.ReplicaInfos = None
 
 
     def _deserialize(self, params):
@@ -1583,6 +1592,12 @@ class JobStatus(AbstractModel):
         self.DesiredWorkers = params.get("DesiredWorkers")
         self.CurrentWorkers = params.get("CurrentWorkers")
         self.Replicas = params.get("Replicas")
+        if params.get("ReplicaInfos") is not None:
+            self.ReplicaInfos = []
+            for item in params.get("ReplicaInfos"):
+                obj = ReplicaInfo()
+                obj._deserialize(item)
+                self.ReplicaInfos.append(obj)
 
 
 class ModelService(AbstractModel):
@@ -1651,6 +1666,9 @@ class ModelService(AbstractModel):
         :param GpuType: GPU类型
 注意：此字段可能返回 null，表示取不到有效值。
         :type GpuType: str
+        :param LogTopicId: Cls日志主题Id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LogTopicId: str
         """
         self.Id = None
         self.Cluster = None
@@ -1677,6 +1695,7 @@ class ModelService(AbstractModel):
         self.ResourceGroupName = None
         self.Description = None
         self.GpuType = None
+        self.LogTopicId = None
 
 
     def _deserialize(self, params):
@@ -1714,6 +1733,7 @@ class ModelService(AbstractModel):
         self.ResourceGroupName = params.get("ResourceGroupName")
         self.Description = params.get("Description")
         self.GpuType = params.get("GpuType")
+        self.LogTopicId = params.get("LogTopicId")
 
 
 class Option(AbstractModel):
@@ -2165,9 +2185,9 @@ class Scaler(AbstractModel):
 
     def __init__(self):
         """
-        :param MaxReplicas: 最大副本数
+        :param MaxReplicas: 最大副本数，ScaleMode 为 MANUAL 时辞会此值会被置为 StartReplicas 取值
         :type MaxReplicas: int
-        :param MinReplicas: 最小副本数
+        :param MinReplicas: 最小副本数，ScaleMode 为 MANUAL 时辞会此值会被置为 StartReplicas 取值
         :type MinReplicas: int
         :param StartReplicas: 起始副本数
         :type StartReplicas: int
@@ -2307,14 +2327,22 @@ class UpdateRsgAsGroupRequest(AbstractModel):
         :type Id: str
         :param Name: 重命名名称
         :type Name: str
+        :param MaxSize: 伸缩组最大节点数
+        :type MaxSize: int
+        :param MinSize: 伸缩组最小节点数
+        :type MinSize: int
         """
         self.Id = None
         self.Name = None
+        self.MaxSize = None
+        self.MinSize = None
 
 
     def _deserialize(self, params):
         self.Id = params.get("Id")
         self.Name = params.get("Name")
+        self.MaxSize = params.get("MaxSize")
+        self.MinSize = params.get("MinSize")
 
 
 class UpdateRsgAsGroupResponse(AbstractModel):

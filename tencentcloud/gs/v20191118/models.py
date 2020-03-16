@@ -102,6 +102,42 @@ class CreateSessionResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeWorkersInfoRequest(AbstractModel):
+    """DescribeWorkersInfo请求参数结构体
+
+    """
+
+
+class DescribeWorkersInfoResponse(AbstractModel):
+    """DescribeWorkersInfo返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param WorkerNum: 机器数量
+        :type WorkerNum: int
+        :param WorkerDetail: 机器详细信息
+        :type WorkerDetail: list of WorkerDetail
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.WorkerNum = None
+        self.WorkerDetail = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.WorkerNum = params.get("WorkerNum")
+        if params.get("WorkerDetail") is not None:
+            self.WorkerDetail = []
+            for item in params.get("WorkerDetail"):
+                obj = WorkerDetail()
+                obj._deserialize(item)
+                self.WorkerDetail.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeWorkersRequest(AbstractModel):
     """DescribeWorkers请求参数结构体
 
@@ -150,6 +186,44 @@ class DescribeWorkersResponse(AbstractModel):
                 obj = WorkerRegionInfo()
                 obj._deserialize(item)
                 self.RegionDetail.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class ModifyWorkersRequest(AbstractModel):
+    """ModifyWorkers请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param InstanceIds: 批量机器ID，最多不超过100个
+        :type InstanceIds: list of str
+        :param SetNo: 资源池编号，修改有效范围为[1,100]，在idle状态下才能修改成功
+        :type SetNo: int
+        """
+        self.InstanceIds = None
+        self.SetNo = None
+
+
+    def _deserialize(self, params):
+        self.InstanceIds = params.get("InstanceIds")
+        self.SetNo = params.get("SetNo")
+
+
+class ModifyWorkersResponse(AbstractModel):
+    """ModifyWorkers返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
 
 
@@ -235,6 +309,57 @@ class TrylockWorkerResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
+
+
+class WorkerDetail(AbstractModel):
+    """机器详细信息
+
+    """
+
+    def __init__(self):
+        """
+        :param AppId: 客户appid
+        :type AppId: int
+        :param SetNo: 资源池编号
+        :type SetNo: int
+        :param Region: 机器所属区域
+        :type Region: str
+        :param InstanceId: 机器ID
+        :type InstanceId: str
+        :param InstanceType: 机器类型：
+LARGE-大型
+MEDIUM-中型
+SMALL-小型
+        :type InstanceType: str
+        :param Ip: 机器IP
+        :type Ip: str
+        :param ServiceState: 服务状态：
+IDLE-空闲
+LOCK-锁定
+ESTABLISHED-游戏中
+RECONNECT-等待重连
+RECOVERY-清理恢复
+FORBID-禁用
+UNAVAILABLE-不可用
+        :type ServiceState: str
+        """
+        self.AppId = None
+        self.SetNo = None
+        self.Region = None
+        self.InstanceId = None
+        self.InstanceType = None
+        self.Ip = None
+        self.ServiceState = None
+
+
+    def _deserialize(self, params):
+        self.AppId = params.get("AppId")
+        self.SetNo = params.get("SetNo")
+        self.Region = params.get("Region")
+        self.InstanceId = params.get("InstanceId")
+        self.InstanceType = params.get("InstanceType")
+        self.Ip = params.get("Ip")
+        self.ServiceState = params.get("ServiceState")
 
 
 class WorkerRegionInfo(AbstractModel):

@@ -53,34 +53,6 @@ class PostgresClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def CreateDBInstances(self, request):
-        """本接口 (CreateDBInstances) 用于创建一个或者多个PostgreSQL实例。
-
-        :param request: Request instance for CreateDBInstances.
-        :type request: :class:`tencentcloud.postgres.v20170312.models.CreateDBInstancesRequest`
-        :rtype: :class:`tencentcloud.postgres.v20170312.models.CreateDBInstancesResponse`
-
-        """
-        try:
-            params = request._serialize()
-            body = self.call("CreateDBInstances", params)
-            response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.CreateDBInstancesResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(e.message, e.message)
-
-
     def DescribeAccounts(self, request):
         """本接口（DescribeAccounts）用于获取实例用户列表。
 
@@ -179,34 +151,6 @@ class PostgresClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeDBInstanceAttributeResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(e.message, e.message)
-
-
-    def DescribeDBInstances(self, request):
-        """本接口 (DescribeDBInstances) 用于查询一个或多个实例的详细信息。
-
-        :param request: Request instance for DescribeDBInstances.
-        :type request: :class:`tencentcloud.postgres.v20170312.models.DescribeDBInstancesRequest`
-        :rtype: :class:`tencentcloud.postgres.v20170312.models.DescribeDBInstancesResponse`
-
-        """
-        try:
-            params = request._serialize()
-            body = self.call("DescribeDBInstances", params)
-            response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.DescribeDBInstancesResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -711,34 +655,6 @@ class PostgresClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.SetAutoRenewFlagResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(e.message, e.message)
-
-
-    def UpgradeDBInstance(self, request):
-        """本接口（UpgradeDBInstance）用于升级实例。
-
-        :param request: Request instance for UpgradeDBInstance.
-        :type request: :class:`tencentcloud.postgres.v20170312.models.UpgradeDBInstanceRequest`
-        :rtype: :class:`tencentcloud.postgres.v20170312.models.UpgradeDBInstanceResponse`
-
-        """
-        try:
-            params = request._serialize()
-            body = self.call("UpgradeDBInstance", params)
-            response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.UpgradeDBInstanceResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

@@ -250,6 +250,9 @@ class AttachPolicyInfo(AbstractModel):
         :param Deactived: 是否已下线
 注意：此字段可能返回 null，表示取不到有效值。
         :type Deactived: int
+        :param DeactivedDetail: 已下线的产品列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DeactivedDetail: list of str
         """
         self.PolicyId = None
         self.PolicyName = None
@@ -261,6 +264,7 @@ class AttachPolicyInfo(AbstractModel):
         self.OperateUin = None
         self.OperateUinType = None
         self.Deactived = None
+        self.DeactivedDetail = None
 
 
     def _deserialize(self, params):
@@ -274,6 +278,7 @@ class AttachPolicyInfo(AbstractModel):
         self.OperateUin = params.get("OperateUin")
         self.OperateUinType = params.get("OperateUinType")
         self.Deactived = params.get("Deactived")
+        self.DeactivedDetail = params.get("DeactivedDetail")
 
 
 class AttachRolePolicyRequest(AbstractModel):
@@ -374,9 +379,12 @@ class AttachedPolicyOfRole(AbstractModel):
         :type PolicyType: str
         :param CreateMode: 策略创建方式，1表示按产品功能或项目权限创建，其他表示按策略语法创建
         :type CreateMode: int
-        :param Deactived: 是否已下线
+        :param Deactived: 是否已下线(0:否 1:是)
 注意：此字段可能返回 null，表示取不到有效值。
         :type Deactived: int
+        :param DeactivedDetail: 已下线的产品列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DeactivedDetail: list of str
         """
         self.PolicyId = None
         self.PolicyName = None
@@ -384,6 +392,7 @@ class AttachedPolicyOfRole(AbstractModel):
         self.PolicyType = None
         self.CreateMode = None
         self.Deactived = None
+        self.DeactivedDetail = None
 
 
     def _deserialize(self, params):
@@ -393,6 +402,7 @@ class AttachedPolicyOfRole(AbstractModel):
         self.PolicyType = params.get("PolicyType")
         self.CreateMode = params.get("CreateMode")
         self.Deactived = params.get("Deactived")
+        self.DeactivedDetail = params.get("DeactivedDetail")
 
 
 class ConsumeCustomMFATokenRequest(AbstractModel):
@@ -532,11 +542,14 @@ class CreateRoleRequest(AbstractModel):
         :type Description: str
         :param ConsoleLogin: 是否允许登录 1 为允许 0 为不允许
         :type ConsoleLogin: int
+        :param SessionDuration: 申请角色临时密钥的最长有效期限制(范围：0~43200)
+        :type SessionDuration: int
         """
         self.RoleName = None
         self.PolicyDocument = None
         self.Description = None
         self.ConsoleLogin = None
+        self.SessionDuration = None
 
 
     def _deserialize(self, params):
@@ -544,6 +557,7 @@ class CreateRoleRequest(AbstractModel):
         self.PolicyDocument = params.get("PolicyDocument")
         self.Description = params.get("Description")
         self.ConsoleLogin = params.get("ConsoleLogin")
+        self.SessionDuration = params.get("SessionDuration")
 
 
 class CreateRoleResponse(AbstractModel):
@@ -763,12 +777,16 @@ class DeleteUserRequest(AbstractModel):
         """
         :param Name: 子用户用户名
         :type Name: str
+        :param Force: 是否强制删除该子用户，默认入参为0。0：若该用户存在未删除API密钥，则不删除用户；1：若该用户存在未删除API密钥，则先删除密钥后删除用户。删除密钥需要您拥有cam:DeleteApiKey权限，您将可以删除该用户下启用或禁用状态的所有密钥，无权限则删除密钥和用户失败
+        :type Force: int
         """
         self.Name = None
+        self.Force = None
 
 
     def _deserialize(self, params):
         self.Name = params.get("Name")
+        self.Force = params.get("Force")
 
 
 class DeleteUserResponse(AbstractModel):
@@ -2063,6 +2081,9 @@ class RoleInfo(AbstractModel):
         :param RoleType: 角色类型，取user或system
 注意：此字段可能返回 null，表示取不到有效值。
         :type RoleType: str
+        :param SessionDuration: 有效时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SessionDuration: int
         """
         self.RoleId = None
         self.RoleName = None
@@ -2072,6 +2093,7 @@ class RoleInfo(AbstractModel):
         self.UpdateTime = None
         self.ConsoleLogin = None
         self.RoleType = None
+        self.SessionDuration = None
 
 
     def _deserialize(self, params):
@@ -2083,6 +2105,7 @@ class RoleInfo(AbstractModel):
         self.UpdateTime = params.get("UpdateTime")
         self.ConsoleLogin = params.get("ConsoleLogin")
         self.RoleType = params.get("RoleType")
+        self.SessionDuration = params.get("SessionDuration")
 
 
 class SAMLProviderInfo(AbstractModel):
@@ -2202,6 +2225,9 @@ class StrategyInfo(AbstractModel):
         :param Deactived: 是否已下线
 注意：此字段可能返回 null，表示取不到有效值。
         :type Deactived: int
+        :param DeactivedDetail: 已下线产品列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DeactivedDetail: list of str
         """
         self.PolicyId = None
         self.PolicyName = None
@@ -2213,6 +2239,7 @@ class StrategyInfo(AbstractModel):
         self.ServiceType = None
         self.IsAttached = None
         self.Deactived = None
+        self.DeactivedDetail = None
 
 
     def _deserialize(self, params):
@@ -2226,6 +2253,7 @@ class StrategyInfo(AbstractModel):
         self.ServiceType = params.get("ServiceType")
         self.IsAttached = params.get("IsAttached")
         self.Deactived = params.get("Deactived")
+        self.DeactivedDetail = params.get("DeactivedDetail")
 
 
 class SubAccountInfo(AbstractModel):

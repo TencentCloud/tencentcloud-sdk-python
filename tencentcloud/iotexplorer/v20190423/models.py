@@ -1299,11 +1299,14 @@ class ModifyStudioProductRequest(AbstractModel):
         :type ProductDesc: str
         :param ModuleId: 模型ID
         :type ModuleId: int
+        :param EnableProductScript: 是否打开二进制转Json功能, 取值为字符串 true/false
+        :type EnableProductScript: str
         """
         self.ProductId = None
         self.ProductName = None
         self.ProductDesc = None
         self.ModuleId = None
+        self.EnableProductScript = None
 
 
     def _deserialize(self, params):
@@ -1311,6 +1314,7 @@ class ModifyStudioProductRequest(AbstractModel):
         self.ProductName = params.get("ProductName")
         self.ProductDesc = params.get("ProductDesc")
         self.ModuleId = params.get("ModuleId")
+        self.EnableProductScript = params.get("EnableProductScript")
 
 
 class ModifyStudioProductResponse(AbstractModel):
@@ -1371,6 +1375,9 @@ class ProductEntry(AbstractModel):
         :type ProjectId: str
         :param ModuleId: 产品ModuleId
         :type ModuleId: int
+        :param EnableProductScript: 是否使用脚本进行二进制转json功能 可以取值 true / false
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EnableProductScript: str
         """
         self.ProductId = None
         self.ProductName = None
@@ -1386,6 +1393,7 @@ class ProductEntry(AbstractModel):
         self.ProductType = None
         self.ProjectId = None
         self.ModuleId = None
+        self.EnableProductScript = None
 
 
     def _deserialize(self, params):
@@ -1403,6 +1411,7 @@ class ProductEntry(AbstractModel):
         self.ProductType = params.get("ProductType")
         self.ProjectId = params.get("ProjectId")
         self.ModuleId = params.get("ModuleId")
+        self.EnableProductScript = params.get("EnableProductScript")
 
 
 class ProductModelDefinition(AbstractModel):

@@ -262,7 +262,7 @@ class Certificates(AbstractModel):
         :param ProjectInfo: 项目信息。
 注意：此字段可能返回 null，表示取不到有效值。
         :type ProjectInfo: :class:`tencentcloud.ssl.v20191205.models.ProjectInfo`
-        :param BoundResource: 需要权限的资源。
+        :param BoundResource: 关联的云资源，暂不可用
 注意：此字段可能返回 null，表示取不到有效值。
         :type BoundResource: list of str
         :param Deployable: 是否可部署。
@@ -882,7 +882,7 @@ class DescribeCertificatesRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Offset: 页数。
+        :param Offset: 分页偏移量，从0开始
         :type Offset: int
         :param Limit: 每页数量。
         :type Limit: int

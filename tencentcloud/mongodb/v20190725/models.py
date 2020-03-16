@@ -65,7 +65,7 @@ class BackupFile(AbstractModel):
 
     def __init__(self):
         """
-        :param ReplicateSetId: 备份文件所属的副本集/分片id
+        :param ReplicateSetId: 备份文件所属的副本集/分片ID
         :type ReplicateSetId: str
         :param File: 备份文件保存路径
         :type File: str

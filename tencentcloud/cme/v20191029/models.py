@@ -820,12 +820,21 @@ class ProjectInfo(AbstractModel):
         :type Category: str
         :param Owner: 归属者。
         :type Owner: :class:`tencentcloud.cme.v20191029.models.Entity`
+        :param CoverUrl: 项目封面图片地址。
+        :type CoverUrl: str
+        :param CreateTime: 项目创建时间，格式按照 ISO 8601 标准表示。
+        :type CreateTime: str
+        :param UpdateTime: 项目更新时间，格式按照 ISO 8601 标准表示。
+        :type UpdateTime: str
         """
         self.ProjectId = None
         self.Name = None
         self.AspectRatio = None
         self.Category = None
         self.Owner = None
+        self.CoverUrl = None
+        self.CreateTime = None
+        self.UpdateTime = None
 
 
     def _deserialize(self, params):
@@ -836,6 +845,9 @@ class ProjectInfo(AbstractModel):
         if params.get("Owner") is not None:
             self.Owner = Entity()
             self.Owner._deserialize(params.get("Owner"))
+        self.CoverUrl = params.get("CoverUrl")
+        self.CreateTime = params.get("CreateTime")
+        self.UpdateTime = params.get("UpdateTime")
 
 
 class TaskBaseInfo(AbstractModel):

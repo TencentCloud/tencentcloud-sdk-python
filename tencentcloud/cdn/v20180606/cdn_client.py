@@ -807,7 +807,7 @@ class CdnClient(AbstractClient):
 
 
     def ListClsTopicDomains(self, request):
-        """获取主题下绑定的域名列表
+        """ListClsTopicDomains 用于获取某日志主题下绑定的域名列表。
 
         :param request: Request instance for ListClsTopicDomains.
         :type request: :class:`tencentcloud.cdn.v20180606.models.ListClsTopicDomainsRequest`

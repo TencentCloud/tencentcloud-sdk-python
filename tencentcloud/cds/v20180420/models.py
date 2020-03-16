@@ -45,6 +45,20 @@ class CdsAuditInstance(AbstractModel):
         :type CreateTime: str
         :param ExpireTime: 实例过期时间，格式：yyyy-mm-dd HH:ii:ss
         :type ExpireTime: str
+        :param InstanceName: 实例名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InstanceName: str
+        :param PublicIp: 实例公网IP
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PublicIp: str
+        :param PrivateIp: 实例私网IP
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PrivateIp: str
+        :param InstanceType: 实例类型（版本）
+        :type InstanceType: str
+        :param Pdomain: 实例域名
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Pdomain: str
         """
         self.InstanceId = None
         self.AppId = None
@@ -57,6 +71,11 @@ class CdsAuditInstance(AbstractModel):
         self.IsolatedTimestamp = None
         self.CreateTime = None
         self.ExpireTime = None
+        self.InstanceName = None
+        self.PublicIp = None
+        self.PrivateIp = None
+        self.InstanceType = None
+        self.Pdomain = None
 
 
     def _deserialize(self, params):
@@ -71,6 +90,11 @@ class CdsAuditInstance(AbstractModel):
         self.IsolatedTimestamp = params.get("IsolatedTimestamp")
         self.CreateTime = params.get("CreateTime")
         self.ExpireTime = params.get("ExpireTime")
+        self.InstanceName = params.get("InstanceName")
+        self.PublicIp = params.get("PublicIp")
+        self.PrivateIp = params.get("PrivateIp")
+        self.InstanceType = params.get("InstanceType")
+        self.Pdomain = params.get("Pdomain")
 
 
 class DbauditTypesInfo(AbstractModel):
@@ -112,6 +136,37 @@ class DbauditTypesInfo(AbstractModel):
         self.InsertSpeed = params.get("InsertSpeed")
         self.OnlineStorageCapacity = params.get("OnlineStorageCapacity")
         self.ArchivingStorageCapacity = params.get("ArchivingStorageCapacity")
+
+
+class DescribeDasbImageIdsRequest(AbstractModel):
+    """DescribeDasbImageIds请求参数结构体
+
+    """
+
+
+class DescribeDasbImageIdsResponse(AbstractModel):
+    """DescribeDasbImageIds返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param BaseImageId: 基础镜像ID
+        :type BaseImageId: str
+        :param AiImageId: AI镜像ID
+        :type AiImageId: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.BaseImageId = None
+        self.AiImageId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.BaseImageId = params.get("BaseImageId")
+        self.AiImageId = params.get("AiImageId")
+        self.RequestId = params.get("RequestId")
 
 
 class DescribeDbauditInstanceTypeRequest(AbstractModel):

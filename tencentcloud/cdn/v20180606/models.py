@@ -3455,9 +3455,9 @@ class ListClsTopicDomainsRequest(AbstractModel):
         """
         :param LogsetId: 日志集ID
         :type LogsetId: str
-        :param TopicId: 主题ID
+        :param TopicId: 日志主题ID
         :type TopicId: str
-        :param Channel: 接入渠道，默认值为cdn，后期可扩充dsa/ecdn等
+        :param Channel: 接入渠道，默认值为cdn
         :type Channel: str
         """
         self.LogsetId = None

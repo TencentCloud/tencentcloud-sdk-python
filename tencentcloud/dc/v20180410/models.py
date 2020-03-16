@@ -640,6 +640,11 @@ class DirectConnect(AbstractModel):
         :param FaultReportContactNumber: 报障联系电话。
 注意：此字段可能返回 null，表示取不到有效值。
         :type FaultReportContactNumber: str
+        :param TagSet: 标签键值对
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TagSet: list of Tag
+        :param AccessPointType: 物理专线的接入点类型。
+        :type AccessPointType: str
         """
         self.DirectConnectId = None
         self.DirectConnectName = None
@@ -663,6 +668,8 @@ class DirectConnect(AbstractModel):
         self.ChargeType = None
         self.FaultReportContactPerson = None
         self.FaultReportContactNumber = None
+        self.TagSet = None
+        self.AccessPointType = None
 
 
     def _deserialize(self, params):
@@ -688,6 +695,13 @@ class DirectConnect(AbstractModel):
         self.ChargeType = params.get("ChargeType")
         self.FaultReportContactPerson = params.get("FaultReportContactPerson")
         self.FaultReportContactNumber = params.get("FaultReportContactNumber")
+        if params.get("TagSet") is not None:
+            self.TagSet = []
+            for item in params.get("TagSet"):
+                obj = Tag()
+                obj._deserialize(item)
+                self.TagSet.append(obj)
+        self.AccessPointType = params.get("AccessPointType")
 
 
 class DirectConnectTunnel(AbstractModel):
@@ -719,7 +733,7 @@ REJECTED:拒绝
         :param NetworkType: 网络类型，分别为VPC、BMVPC、CCN
  VPC：私有网络 ，BMVPC：黑石网络，CCN：云联网
         :type NetworkType: str
-        :param NetworkRegion: VPC地域
+        :param NetworkRegion: VPC地域对应的网络名，如ap-guangzhou
         :type NetworkRegion: str
         :param VpcId: 私有网络统一 ID 或者黑石网络统一 ID
         :type VpcId: str
@@ -743,6 +757,26 @@ REJECTED:拒绝
         :type CreatedTime: str
         :param Bandwidth: 专线通道带宽值
         :type Bandwidth: int
+        :param TagSet: 专线通道标签值
+        :type TagSet: list of Tag
+        :param NetDetectId: 关联的网络自定义探测ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type NetDetectId: str
+        :param EnableBGPCommunity: BGP community开关
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EnableBGPCommunity: bool
+        :param NatType: 是否为Nat通道
+注意：此字段可能返回 null，表示取不到有效值。
+        :type NatType: int
+        :param VpcRegion: VPC地域简码，如gz、cd
+注意：此字段可能返回 null，表示取不到有效值。
+        :type VpcRegion: str
+        :param BfdEnable: 是否开启BFD
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BfdEnable: int
+        :param AccessPointType: 专线通道接入点类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AccessPointType: str
         """
         self.DirectConnectTunnelId = None
         self.DirectConnectId = None
@@ -762,6 +796,13 @@ REJECTED:拒绝
         self.DirectConnectTunnelName = None
         self.CreatedTime = None
         self.Bandwidth = None
+        self.TagSet = None
+        self.NetDetectId = None
+        self.EnableBGPCommunity = None
+        self.NatType = None
+        self.VpcRegion = None
+        self.BfdEnable = None
+        self.AccessPointType = None
 
 
     def _deserialize(self, params):
@@ -790,6 +831,18 @@ REJECTED:拒绝
         self.DirectConnectTunnelName = params.get("DirectConnectTunnelName")
         self.CreatedTime = params.get("CreatedTime")
         self.Bandwidth = params.get("Bandwidth")
+        if params.get("TagSet") is not None:
+            self.TagSet = []
+            for item in params.get("TagSet"):
+                obj = Tag()
+                obj._deserialize(item)
+                self.TagSet.append(obj)
+        self.NetDetectId = params.get("NetDetectId")
+        self.EnableBGPCommunity = params.get("EnableBGPCommunity")
+        self.NatType = params.get("NatType")
+        self.VpcRegion = params.get("VpcRegion")
+        self.BfdEnable = params.get("BfdEnable")
+        self.AccessPointType = params.get("AccessPointType")
 
 
 class Filter(AbstractModel):
@@ -1001,3 +1054,26 @@ class RouteFilterPrefix(AbstractModel):
 
     def _deserialize(self, params):
         self.Cidr = params.get("Cidr")
+
+
+class Tag(AbstractModel):
+    """标签键值对
+
+    """
+
+    def __init__(self):
+        """
+        :param Key: 标签键
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Key: str
+        :param Value: 标签值
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Value: str
+        """
+        self.Key = None
+        self.Value = None
+
+
+    def _deserialize(self, params):
+        self.Key = params.get("Key")
+        self.Value = params.get("Value")

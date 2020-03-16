@@ -1364,7 +1364,7 @@ class DescribeTasksRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Offset: 偏移l量，从0开始
+        :param Offset: 偏移量，从0开始
         :type Offset: int
         :param Limit: 分页的大小，数值范围 1-250
         :type Limit: int

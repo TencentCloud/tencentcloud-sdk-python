@@ -81,6 +81,62 @@ class GsClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeWorkersInfo(self, request):
+        """获取机器信息
+
+        :param request: Request instance for DescribeWorkersInfo.
+        :type request: :class:`tencentcloud.gs.v20191118.models.DescribeWorkersInfoRequest`
+        :rtype: :class:`tencentcloud.gs.v20191118.models.DescribeWorkersInfoResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeWorkersInfo", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeWorkersInfoResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ModifyWorkers(self, request):
+        """修改机器信息
+
+        :param request: Request instance for ModifyWorkers.
+        :type request: :class:`tencentcloud.gs.v20191118.models.ModifyWorkersRequest`
+        :rtype: :class:`tencentcloud.gs.v20191118.models.ModifyWorkersResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ModifyWorkers", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ModifyWorkersResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def StopGame(self, request):
         """强制退出游戏
 

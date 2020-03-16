@@ -1143,6 +1143,8 @@ class Disk(AbstractModel):
         :type SnapshotCount: int
         :param SnapshotSize: 云盘拥有的快照总容量，单位为MB。
         :type SnapshotSize: int
+        :param BackupDisk: 云盘因欠费销毁或者期销毁时， 是否使用快照备份数据的标识。True， 销毁时创建快照进行数据备份。False 表示直接销毁，不进行数据备份。
+        :type BackupDisk: bool
         """
         self.DiskId = None
         self.DiskUsage = None
@@ -1176,6 +1178,7 @@ class Disk(AbstractModel):
         self.InstanceIdList = None
         self.SnapshotCount = None
         self.SnapshotSize = None
+        self.BackupDisk = None
 
 
     def _deserialize(self, params):
@@ -1218,6 +1221,7 @@ class Disk(AbstractModel):
         self.InstanceIdList = params.get("InstanceIdList")
         self.SnapshotCount = params.get("SnapshotCount")
         self.SnapshotSize = params.get("SnapshotSize")
+        self.BackupDisk = params.get("BackupDisk")
 
 
 class DiskChargePrepaid(AbstractModel):

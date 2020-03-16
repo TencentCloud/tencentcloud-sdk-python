@@ -55,7 +55,7 @@ class DrmClient(AbstractClient):
 
 
     def CreateEncryptKeys(self, request):
-        """该接口用来设置加密的秘钥。注意，同一个content id，只能设置一次！
+        """该接口用来设置加密的密钥。注意，同一个content id，只能设置一次！
 
         :param request: Request instance for CreateEncryptKeys.
         :type request: :class:`tencentcloud.drm.v20181115.models.CreateEncryptKeysRequest`
@@ -142,7 +142,7 @@ class DrmClient(AbstractClient):
 
 
     def DescribeAllKeys(self, request):
-        """本接口用来查询指定DRM类型、ContentType的所有加密秘钥
+        """本接口用来查询指定DRM类型、ContentType的所有加密密钥
 
         :param request: Request instance for DescribeAllKeys.
         :type request: :class:`tencentcloud.drm.v20181115.models.DescribeAllKeysRequest`

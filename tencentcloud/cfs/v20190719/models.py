@@ -813,6 +813,8 @@ class FileSystemInfo(AbstractModel):
         :type Encrypted: bool
         :param KmsKeyId: 加密所使用的密钥，可以为密钥的 ID 或者 ARN
         :type KmsKeyId: str
+        :param AppId: 应用ID
+        :type AppId: int
         """
         self.CreationTime = None
         self.CreationToken = None
@@ -830,6 +832,7 @@ class FileSystemInfo(AbstractModel):
         self.FsName = None
         self.Encrypted = None
         self.KmsKeyId = None
+        self.AppId = None
 
 
     def _deserialize(self, params):
@@ -851,6 +854,7 @@ class FileSystemInfo(AbstractModel):
         self.FsName = params.get("FsName")
         self.Encrypted = params.get("Encrypted")
         self.KmsKeyId = params.get("KmsKeyId")
+        self.AppId = params.get("AppId")
 
 
 class MountInfo(AbstractModel):

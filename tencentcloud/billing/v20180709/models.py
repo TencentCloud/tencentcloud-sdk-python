@@ -116,6 +116,9 @@ class BillDetail(AbstractModel):
         :param ActionType: 交易类型代码（未开放的字段）
 注意：此字段可能返回 null，表示取不到有效值。
         :type ActionType: str
+        :param RegionId: 区域ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RegionId: int
         """
         self.BusinessCodeName = None
         self.ProductCodeName = None
@@ -139,6 +142,7 @@ class BillDetail(AbstractModel):
         self.BusinessCode = None
         self.ProductCode = None
         self.ActionType = None
+        self.RegionId = None
 
 
     def _deserialize(self, params):
@@ -174,6 +178,7 @@ class BillDetail(AbstractModel):
         self.BusinessCode = params.get("BusinessCode")
         self.ProductCode = params.get("ProductCode")
         self.ActionType = params.get("ActionType")
+        self.RegionId = params.get("RegionId")
 
 
 class BillDetailComponent(AbstractModel):
@@ -336,6 +341,12 @@ class BillResourceSummary(AbstractModel):
         :type OwnerUin: str
         :param OperateUin: 操作者uin,无值则返回"-"
         :type OperateUin: str
+        :param BusinessCode: 商品名称代码
+        :type BusinessCode: str
+        :param ProductCode: 子商品名称代码
+        :type ProductCode: str
+        :param RegionId: 区域ID
+        :type RegionId: int
         """
         self.BusinessCodeName = None
         self.ProductCodeName = None
@@ -367,6 +378,9 @@ class BillResourceSummary(AbstractModel):
         self.PayerUin = None
         self.OwnerUin = None
         self.OperateUin = None
+        self.BusinessCode = None
+        self.ProductCode = None
+        self.RegionId = None
 
 
     def _deserialize(self, params):
@@ -405,6 +419,9 @@ class BillResourceSummary(AbstractModel):
         self.PayerUin = params.get("PayerUin")
         self.OwnerUin = params.get("OwnerUin")
         self.OperateUin = params.get("OperateUin")
+        self.BusinessCode = params.get("BusinessCode")
+        self.ProductCode = params.get("ProductCode")
+        self.RegionId = params.get("RegionId")
 
 
 class BillTagInfo(AbstractModel):

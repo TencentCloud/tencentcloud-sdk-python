@@ -551,6 +551,8 @@ class DBInstance(AbstractModel):
         :type Machine: str
         :param IsEncryptSupported: 是否支持数据加密。1-支持；0-不支持
         :type IsEncryptSupported: int
+        :param Cpu: 实例CPU核数
+        :type Cpu: int
         """
         self.InstanceId = None
         self.InstanceName = None
@@ -590,6 +592,7 @@ class DBInstance(AbstractModel):
         self.IsAuditSupported = None
         self.Machine = None
         self.IsEncryptSupported = None
+        self.Cpu = None
 
 
     def _deserialize(self, params):
@@ -631,6 +634,7 @@ class DBInstance(AbstractModel):
         self.IsAuditSupported = params.get("IsAuditSupported")
         self.Machine = params.get("Machine")
         self.IsEncryptSupported = params.get("IsEncryptSupported")
+        self.Cpu = params.get("Cpu")
 
 
 class DBParamValue(AbstractModel):
@@ -2999,6 +3003,8 @@ class SpecConfigInfo(AbstractModel):
         :type Pid: int
         :param NodeCount: 节点个数，2 表示一主一从，3 表示一主二从
         :type NodeCount: int
+        :param Cpu: Cpu核数
+        :type Cpu: int
         """
         self.Machine = None
         self.Memory = None
@@ -3008,6 +3014,7 @@ class SpecConfigInfo(AbstractModel):
         self.Qps = None
         self.Pid = None
         self.NodeCount = None
+        self.Cpu = None
 
 
     def _deserialize(self, params):
@@ -3019,6 +3026,7 @@ class SpecConfigInfo(AbstractModel):
         self.Qps = params.get("Qps")
         self.Pid = params.get("Pid")
         self.NodeCount = params.get("NodeCount")
+        self.Cpu = params.get("Cpu")
 
 
 class SqlLogItem(AbstractModel):

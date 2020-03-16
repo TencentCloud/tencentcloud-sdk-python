@@ -1141,6 +1141,44 @@ class CreateL7RulesUploadResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class CreateNetReturnRequest(AbstractModel):
+    """CreateNetReturn请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Business: 大禹子产品代号（net表示高防IP专业版）
+        :type Business: str
+        :param Id: 资源实例ID
+        :type Id: str
+        """
+        self.Business = None
+        self.Id = None
+
+
+    def _deserialize(self, params):
+        self.Business = params.get("Business")
+        self.Id = params.get("Id")
+
+
+class CreateNetReturnResponse(AbstractModel):
+    """CreateNetReturn返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class CreateUnblockIpRequest(AbstractModel):
     """CreateUnblockIp请求参数结构体
 
@@ -1417,7 +1455,12 @@ class DDoSPolicyPacketFilter(AbstractModel):
         :type PktlenMin: int
         :param PktlenMax: 最大包长，取值范围[0,1500]
         :type PktlenMax: int
-        :param MatchBegin: 是否检测载荷，取值范围[begin_l5(表示检测), no_match(表示不检测)]
+        :param MatchBegin: 是否检测载荷，取值范围[
+begin_l3(IP头)
+begin_l4(TCP头)
+begin_l5(载荷)
+no_match(不检测)
+]
         :type MatchBegin: str
         :param MatchType: 是否是正则表达式，取值范围[sunday(表示关键字),pcre(表示正则表达式)]
         :type MatchType: str
@@ -7221,6 +7264,52 @@ class ModifyL7RulesResponse(AbstractModel):
         if params.get("Success") is not None:
             self.Success = SuccessCode()
             self.Success._deserialize(params.get("Success"))
+        self.RequestId = params.get("RequestId")
+
+
+class ModifyNetReturnSwitchRequest(AbstractModel):
+    """ModifyNetReturnSwitch请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Business: 大禹子产品代号（net表示高防IP专业版）
+        :type Business: str
+        :param Id: 资源实例ID
+        :type Id: str
+        :param Status: Status 表示回切开关，0: 关闭， 1:打开
+        :type Status: int
+        :param Hour: 回切时长，单位：小时，取值[0,1,2,3,4,5,6;]当status=1时必选填写Hour>0
+        :type Hour: int
+        """
+        self.Business = None
+        self.Id = None
+        self.Status = None
+        self.Hour = None
+
+
+    def _deserialize(self, params):
+        self.Business = params.get("Business")
+        self.Id = params.get("Id")
+        self.Status = params.get("Status")
+        self.Hour = params.get("Hour")
+
+
+class ModifyNetReturnSwitchResponse(AbstractModel):
+    """ModifyNetReturnSwitch返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
 
 

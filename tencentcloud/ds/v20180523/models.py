@@ -83,10 +83,10 @@ class CreateContractByUploadRequest(AbstractModel):
         :type ContractFile: str
         :param ContractName: 合同名称
         :type ContractName: str
-        :param Initiator: 合同发起方帐号ID
-        :type Initiator: str
         :param Remarks: 备注
         :type Remarks: str
+        :param Initiator: 合同发起方腾讯云帐号ID（由平台自动填写）
+        :type Initiator: str
         :param ExpireTime: 合同长时间未签署的过期时间
         :type ExpireTime: str
         """
@@ -95,8 +95,8 @@ class CreateContractByUploadRequest(AbstractModel):
         self.SignInfos = None
         self.ContractFile = None
         self.ContractName = None
-        self.Initiator = None
         self.Remarks = None
+        self.Initiator = None
         self.ExpireTime = None
 
 
@@ -111,8 +111,8 @@ class CreateContractByUploadRequest(AbstractModel):
                 self.SignInfos.append(obj)
         self.ContractFile = params.get("ContractFile")
         self.ContractName = params.get("ContractName")
-        self.Initiator = params.get("Initiator")
         self.Remarks = params.get("Remarks")
+        self.Initiator = params.get("Initiator")
         self.ExpireTime = params.get("ExpireTime")
 
 
@@ -164,6 +164,8 @@ class CreateEnterpriseAccountRequest(AbstractModel):
         :type TransactorIdentNo: str
         :param TransactorPhone: 经办人手机号
         :type TransactorPhone: str
+        :param Email: 企业联系人邮箱
+        :type Email: str
         """
         self.Module = None
         self.Operation = None
@@ -175,6 +177,7 @@ class CreateEnterpriseAccountRequest(AbstractModel):
         self.TransactorIdentType = None
         self.TransactorIdentNo = None
         self.TransactorPhone = None
+        self.Email = None
 
 
     def _deserialize(self, params):
@@ -188,6 +191,7 @@ class CreateEnterpriseAccountRequest(AbstractModel):
         self.TransactorIdentType = params.get("TransactorIdentType")
         self.TransactorIdentNo = params.get("TransactorIdentNo")
         self.TransactorPhone = params.get("TransactorPhone")
+        self.Email = params.get("Email")
 
 
 class CreateEnterpriseAccountResponse(AbstractModel):
@@ -580,12 +584,12 @@ class SignContractByCoordinateRequest(AbstractModel):
         :type ContractResId: str
         :param AccountResId: 帐户ID
         :type AccountResId: str
-        :param AuthorizationTime: 授权时间，格式为年月日时分秒，例20160801095509
-        :type AuthorizationTime: str
-        :param Position: 授权IP地址
-        :type Position: str
         :param SignLocations: 签署坐标，坐标原点在文件左下角，坐标单位为磅，坐标不得超过合同文件边界
         :type SignLocations: list of SignLocation
+        :param AuthorizationTime: 授权时间（由平台自动填充）
+        :type AuthorizationTime: str
+        :param Position: 授权IP地址（由平台自动填充）
+        :type Position: str
         :param SealResId: 签章ID
         :type SealResId: str
         :param CertType: 选用证书类型：1  表示RSA证书， 2 表示国密证书， 参数不传时默认为1
@@ -597,9 +601,9 @@ class SignContractByCoordinateRequest(AbstractModel):
         self.Operation = None
         self.ContractResId = None
         self.AccountResId = None
+        self.SignLocations = None
         self.AuthorizationTime = None
         self.Position = None
-        self.SignLocations = None
         self.SealResId = None
         self.CertType = None
         self.ImageData = None
@@ -610,14 +614,14 @@ class SignContractByCoordinateRequest(AbstractModel):
         self.Operation = params.get("Operation")
         self.ContractResId = params.get("ContractResId")
         self.AccountResId = params.get("AccountResId")
-        self.AuthorizationTime = params.get("AuthorizationTime")
-        self.Position = params.get("Position")
         if params.get("SignLocations") is not None:
             self.SignLocations = []
             for item in params.get("SignLocations"):
                 obj = SignLocation()
                 obj._deserialize(item)
                 self.SignLocations.append(obj)
+        self.AuthorizationTime = params.get("AuthorizationTime")
+        self.Position = params.get("Position")
         self.SealResId = params.get("SealResId")
         self.CertType = params.get("CertType")
         self.ImageData = params.get("ImageData")
@@ -655,12 +659,12 @@ class SignContractByKeywordRequest(AbstractModel):
         :type ContractResId: str
         :param AccountResId: 账户ID
         :type AccountResId: str
-        :param AuthorizationTime: 授权时间，格式为年月日时分秒，例20160801095509
-        :type AuthorizationTime: str
-        :param Position: 授权IP地址
-        :type Position: str
         :param SignKeyword: 签署关键字，偏移坐标原点为关键字中心
         :type SignKeyword: :class:`tencentcloud.ds.v20180523.models.SignKeyword`
+        :param AuthorizationTime: 授权时间（由平台自动填充）
+        :type AuthorizationTime: str
+        :param Position: 授权IP地址（由平台自动填充）
+        :type Position: str
         :param SealResId: 签章ID
         :type SealResId: str
         :param CertType: 选用证书类型：1  表示RSA证书， 2 表示国密证书， 参数不传时默认为1
@@ -672,9 +676,9 @@ class SignContractByKeywordRequest(AbstractModel):
         self.Operation = None
         self.ContractResId = None
         self.AccountResId = None
+        self.SignKeyword = None
         self.AuthorizationTime = None
         self.Position = None
-        self.SignKeyword = None
         self.SealResId = None
         self.CertType = None
         self.ImageData = None
@@ -685,11 +689,11 @@ class SignContractByKeywordRequest(AbstractModel):
         self.Operation = params.get("Operation")
         self.ContractResId = params.get("ContractResId")
         self.AccountResId = params.get("AccountResId")
-        self.AuthorizationTime = params.get("AuthorizationTime")
-        self.Position = params.get("Position")
         if params.get("SignKeyword") is not None:
             self.SignKeyword = SignKeyword()
             self.SignKeyword._deserialize(params.get("SignKeyword"))
+        self.AuthorizationTime = params.get("AuthorizationTime")
+        self.Position = params.get("Position")
         self.SealResId = params.get("SealResId")
         self.CertType = params.get("CertType")
         self.ImageData = params.get("ImageData")
@@ -721,9 +725,9 @@ class SignInfo(AbstractModel):
         """
         :param AccountResId: 账户ID
         :type AccountResId: str
-        :param AuthorizationTime: 授权时间，格式为年月日时分秒，例20160801095509
+        :param AuthorizationTime: 授权时间（上传合同可不传该参数）
         :type AuthorizationTime: str
-        :param Location: 授权IP地址
+        :param Location: 授权IP地址（上传合同可不传该参数）
         :type Location: str
         :param SealId: 签章ID
         :type SealId: str

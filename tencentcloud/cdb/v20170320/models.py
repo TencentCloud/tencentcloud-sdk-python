@@ -3847,7 +3847,12 @@ class DrInfo(AbstractModel):
         :type InstanceId: str
         :param Region: 地域信息
         :type Region: str
-        :param SyncStatus: 实例同步状态
+        :param SyncStatus: 实例同步状态。可能的返回值为：
+0 - 灾备未同步；
+1 - 灾备同步中；
+2 - 灾备同步成功；
+3 - 灾备同步失败；
+4 - 灾备同步修复中。
         :type SyncStatus: int
         :param InstanceName: 实例名称
         :type InstanceName: str
@@ -4100,18 +4105,18 @@ class InstanceInfo(AbstractModel):
         :param RoVipInfo: 只读vip信息。单独开通只读实例访问的只读实例才有该字段
 注意：此字段可能返回 null，表示取不到有效值。
         :type RoVipInfo: :class:`tencentcloud.cdb.v20170320.models.RoVipInfo`
-        :param Memory: 内存容量，单位为MB
+        :param Memory: 内存容量，单位为 MB
         :type Memory: int
         :param Status: 实例状态，可能的返回值：0-创建中；1-运行中；4-隔离中；5-已隔离
         :type Status: int
-        :param VpcId: 私有网络ID，例如：51102
+        :param VpcId: 私有网络 ID，例如：51102
         :type VpcId: int
         :param SlaveInfo: 备机信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type SlaveInfo: :class:`tencentcloud.cdb.v20170320.models.SlaveInfo`
-        :param InstanceId: 实例ID
+        :param InstanceId: 实例 ID
         :type InstanceId: str
-        :param Volume: 硬盘容量，单位为GB
+        :param Volume: 硬盘容量，单位为 GB
         :type Volume: int
         :param AutoRenew: 自动续费标志，可能的返回值：0-未开通自动续费；1-已开通自动续费；2-已关闭自动续费
         :type AutoRenew: int
@@ -4120,11 +4125,11 @@ class InstanceInfo(AbstractModel):
         :param RoGroups: 只读组详细信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type RoGroups: list of RoGroup
-        :param SubnetId: 子网ID，例如：2333
+        :param SubnetId: 子网 ID，例如：2333
         :type SubnetId: int
         :param InstanceType: 实例类型，可能的返回值：1-主实例；2-灾备实例；3-只读实例
         :type InstanceType: int
-        :param ProjectId: 项目ID
+        :param ProjectId: 项目 ID
         :type ProjectId: int
         :param Region: 地域信息
         :type Region: str
@@ -4154,7 +4159,7 @@ class InstanceInfo(AbstractModel):
         :type PayType: int
         :param CreateTime: 实例创建时间
         :type CreateTime: str
-        :param Vip: 实例IP
+        :param Vip: 实例 IP
         :type Vip: str
         :param Vport: 端口号
         :type Vport: int
@@ -4164,7 +4169,7 @@ class InstanceInfo(AbstractModel):
         :type UniqVpcId: str
         :param UniqSubnetId: 子网描述符，例如：“subnet-1typ0s7d”
         :type UniqSubnetId: str
-        :param PhysicalId: 物理ID
+        :param PhysicalId: 物理 ID
         :type PhysicalId: str
         :param Cpu: 核心数
         :type Cpu: int
@@ -4175,9 +4180,12 @@ class InstanceInfo(AbstractModel):
         :param DeviceClass: 物理机型
 注意：此字段可能返回 null，表示取不到有效值。
         :type DeviceClass: str
-        :param DeployGroupId: 置放群组ID
+        :param DeployGroupId: 置放群组 ID
 注意：此字段可能返回 null，表示取不到有效值。
         :type DeployGroupId: str
+        :param ZoneId: 可用区 ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ZoneId: int
         """
         self.WanStatus = None
         self.Zone = None
@@ -4219,6 +4227,7 @@ class InstanceInfo(AbstractModel):
         self.ZoneName = None
         self.DeviceClass = None
         self.DeployGroupId = None
+        self.ZoneId = None
 
 
     def _deserialize(self, params):
@@ -4278,6 +4287,7 @@ class InstanceInfo(AbstractModel):
         self.ZoneName = params.get("ZoneName")
         self.DeviceClass = params.get("DeviceClass")
         self.DeployGroupId = params.get("DeployGroupId")
+        self.ZoneId = params.get("ZoneId")
 
 
 class InstanceRebootTime(AbstractModel):
@@ -5104,7 +5114,7 @@ class ModifyRoGroupInfoRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param RoGroupId: RO 组的实例 ID。
+        :param RoGroupId: RO 组的 ID。
         :type RoGroupId: str
         :param RoGroupInfo: RO 组的详细信息。
         :type RoGroupInfo: :class:`tencentcloud.cdb.v20170320.models.RoGroupAttr`

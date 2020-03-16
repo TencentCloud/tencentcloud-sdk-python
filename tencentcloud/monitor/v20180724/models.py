@@ -199,6 +199,8 @@ class CreatePolicyGroupRequest(AbstractModel):
         :type EventConditions: list of CreatePolicyGroupEventCondition
         :param BackEndCall: 是否为后端调用。当且仅当值为1时，后台拉取策略模版中的规则填充入Conditions以及EventConditions字段
         :type BackEndCall: int
+        :param IsUnionRule: 指标告警规则的且或关系，0表示或规则(满足任意规则就告警)，1表示且规则(满足所有规则才告警)
+        :type IsUnionRule: int
         """
         self.GroupName = None
         self.Module = None
@@ -211,6 +213,7 @@ class CreatePolicyGroupRequest(AbstractModel):
         self.Conditions = None
         self.EventConditions = None
         self.BackEndCall = None
+        self.IsUnionRule = None
 
 
     def _deserialize(self, params):
@@ -235,6 +238,7 @@ class CreatePolicyGroupRequest(AbstractModel):
                 obj._deserialize(item)
                 self.EventConditions.append(obj)
         self.BackEndCall = params.get("BackEndCall")
+        self.IsUnionRule = params.get("IsUnionRule")
 
 
 class CreatePolicyGroupResponse(AbstractModel):
@@ -735,6 +739,35 @@ class DescribeBasicAlarmListResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeBindingPolicyObjectListDimension(AbstractModel):
+    """DescribeBindingPolicyObjectList接口的Dimension
+
+    """
+
+    def __init__(self):
+        """
+        :param RegionId: 地域id
+        :type RegionId: int
+        :param Region: 地域简称
+        :type Region: str
+        :param Dimensions: 维度组合json字符串
+        :type Dimensions: str
+        :param EventDimensions: 事件维度组合json字符串
+        :type EventDimensions: str
+        """
+        self.RegionId = None
+        self.Region = None
+        self.Dimensions = None
+        self.EventDimensions = None
+
+
+    def _deserialize(self, params):
+        self.RegionId = params.get("RegionId")
+        self.Region = params.get("Region")
+        self.Dimensions = params.get("Dimensions")
+        self.EventDimensions = params.get("EventDimensions")
+
+
 class DescribeBindingPolicyObjectListInstance(AbstractModel):
     """查询策略绑定对象列表接口返回的对象实例信息
 
@@ -764,6 +797,52 @@ class DescribeBindingPolicyObjectListInstance(AbstractModel):
         self.Region = params.get("Region")
 
 
+class DescribeBindingPolicyObjectListInstanceGroup(AbstractModel):
+    """DescribeBindingPolicyObjectList返回的是实例分组信息
+
+    """
+
+    def __init__(self):
+        """
+        :param InstanceGroupId: 实例分组id
+        :type InstanceGroupId: int
+        :param ViewName: 告警策略类型名称
+        :type ViewName: str
+        :param LastEditUin: 最后编辑uin
+        :type LastEditUin: str
+        :param GroupName: 实例分组名称
+        :type GroupName: str
+        :param InstanceSum: 实例数量
+        :type InstanceSum: int
+        :param UpdateTime: 更新时间
+        :type UpdateTime: int
+        :param InsertTime: 创建时间
+        :type InsertTime: int
+        :param Regions: 实例所在的地域集合
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Regions: list of str
+        """
+        self.InstanceGroupId = None
+        self.ViewName = None
+        self.LastEditUin = None
+        self.GroupName = None
+        self.InstanceSum = None
+        self.UpdateTime = None
+        self.InsertTime = None
+        self.Regions = None
+
+
+    def _deserialize(self, params):
+        self.InstanceGroupId = params.get("InstanceGroupId")
+        self.ViewName = params.get("ViewName")
+        self.LastEditUin = params.get("LastEditUin")
+        self.GroupName = params.get("GroupName")
+        self.InstanceSum = params.get("InstanceSum")
+        self.UpdateTime = params.get("UpdateTime")
+        self.InsertTime = params.get("InsertTime")
+        self.Regions = params.get("Regions")
+
+
 class DescribeBindingPolicyObjectListRequest(AbstractModel):
     """DescribeBindingPolicyObjectList请求参数结构体
 
@@ -775,14 +854,31 @@ class DescribeBindingPolicyObjectListRequest(AbstractModel):
         :type Module: str
         :param GroupId: 策略组id
         :type GroupId: int
+        :param Limit: 分页参数，每页返回的数量，取值1~100，默认20
+        :type Limit: int
+        :param Offset: 分页参数，页偏移量，从0开始计数，默认0
+        :type Offset: int
+        :param Dimensions: 筛选对象的维度信息
+        :type Dimensions: list of DescribeBindingPolicyObjectListDimension
         """
         self.Module = None
         self.GroupId = None
+        self.Limit = None
+        self.Offset = None
+        self.Dimensions = None
 
 
     def _deserialize(self, params):
         self.Module = params.get("Module")
         self.GroupId = params.get("GroupId")
+        self.Limit = params.get("Limit")
+        self.Offset = params.get("Offset")
+        if params.get("Dimensions") is not None:
+            self.Dimensions = []
+            for item in params.get("Dimensions"):
+                obj = DescribeBindingPolicyObjectListDimension()
+                obj._deserialize(item)
+                self.Dimensions.append(obj)
 
 
 class DescribeBindingPolicyObjectListResponse(AbstractModel):
@@ -799,12 +895,16 @@ class DescribeBindingPolicyObjectListResponse(AbstractModel):
         :type Total: int
         :param NoShieldedSum: 未屏蔽的对象实例数
         :type NoShieldedSum: int
+        :param InstanceGroup: 绑定的实例分组信息，没有绑定实例分组则为空
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InstanceGroup: :class:`tencentcloud.monitor.v20180724.models.DescribeBindingPolicyObjectListInstanceGroup`
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.List = None
         self.Total = None
         self.NoShieldedSum = None
+        self.InstanceGroup = None
         self.RequestId = None
 
 
@@ -817,6 +917,9 @@ class DescribeBindingPolicyObjectListResponse(AbstractModel):
                 self.List.append(obj)
         self.Total = params.get("Total")
         self.NoShieldedSum = params.get("NoShieldedSum")
+        if params.get("InstanceGroup") is not None:
+            self.InstanceGroup = DescribeBindingPolicyObjectListInstanceGroup()
+            self.InstanceGroup._deserialize(params.get("InstanceGroup"))
         self.RequestId = params.get("RequestId")
 
 
@@ -886,14 +989,19 @@ class DescribePolicyConditionListConfigManual(AbstractModel):
     def __init__(self):
         """
         :param CalcType: 检测方式
+注意：此字段可能返回 null，表示取不到有效值。
         :type CalcType: :class:`tencentcloud.monitor.v20180724.models.DescribePolicyConditionListConfigManualCalcType`
         :param CalcValue: 检测阈值
+注意：此字段可能返回 null，表示取不到有效值。
         :type CalcValue: :class:`tencentcloud.monitor.v20180724.models.DescribePolicyConditionListConfigManualCalcValue`
         :param ContinueTime: 持续时间
+注意：此字段可能返回 null，表示取不到有效值。
         :type ContinueTime: :class:`tencentcloud.monitor.v20180724.models.DescribePolicyConditionListConfigManualContinueTime`
         :param Period: 数据周期
+注意：此字段可能返回 null，表示取不到有效值。
         :type Period: :class:`tencentcloud.monitor.v20180724.models.DescribePolicyConditionListConfigManualPeriod`
         :param PeriodNum: 持续周期个数
+注意：此字段可能返回 null，表示取不到有效值。
         :type PeriodNum: :class:`tencentcloud.monitor.v20180724.models.DescribePolicyConditionListConfigManualPeriodNum`
         :param StatType: 聚合方式
 注意：此字段可能返回 null，表示取不到有效值。
@@ -1158,6 +1266,7 @@ class DescribePolicyConditionListMetric(AbstractModel):
     def __init__(self):
         """
         :param ConfigManual: 指标配置
+注意：此字段可能返回 null，表示取不到有效值。
         :type ConfigManual: :class:`tencentcloud.monitor.v20180724.models.DescribePolicyConditionListConfigManual`
         :param MetricId: 指标id
         :type MetricId: int
@@ -1319,12 +1428,24 @@ class DescribePolicyGroupInfoConditionTpl(AbstractModel):
         :type Remark: str
         :param LastEditUin: 最后编辑的用户uin
         :type LastEditUin: str
+        :param UpdateTime: 更新时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UpdateTime: int
+        :param InsertTime: 创建时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InsertTime: int
+        :param IsUnionRule: 是否且规则
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IsUnionRule: int
         """
         self.GroupId = None
         self.GroupName = None
         self.ViewName = None
         self.Remark = None
         self.LastEditUin = None
+        self.UpdateTime = None
+        self.InsertTime = None
+        self.IsUnionRule = None
 
 
     def _deserialize(self, params):
@@ -1333,6 +1454,9 @@ class DescribePolicyGroupInfoConditionTpl(AbstractModel):
         self.ViewName = params.get("ViewName")
         self.Remark = params.get("Remark")
         self.LastEditUin = params.get("LastEditUin")
+        self.UpdateTime = params.get("UpdateTime")
+        self.InsertTime = params.get("InsertTime")
+        self.IsUnionRule = params.get("IsUnionRule")
 
 
 class DescribePolicyGroupInfoEventCondition(AbstractModel):
@@ -1499,6 +1623,9 @@ class DescribePolicyGroupInfoResponse(AbstractModel):
         :type ConditionsTemp: :class:`tencentcloud.monitor.v20180724.models.DescribePolicyGroupInfoConditionTpl`
         :param CanSetDefault: 是否可以设置成默认策略
         :type CanSetDefault: bool
+        :param IsUnionRule: 是否且规则
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IsUnionRule: int
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -1518,6 +1645,7 @@ class DescribePolicyGroupInfoResponse(AbstractModel):
         self.Callback = None
         self.ConditionsTemp = None
         self.CanSetDefault = None
+        self.IsUnionRule = None
         self.RequestId = None
 
 
@@ -1557,6 +1685,7 @@ class DescribePolicyGroupInfoResponse(AbstractModel):
             self.ConditionsTemp = DescribePolicyGroupInfoConditionTpl()
             self.ConditionsTemp._deserialize(params.get("ConditionsTemp"))
         self.CanSetDefault = params.get("CanSetDefault")
+        self.IsUnionRule = params.get("IsUnionRule")
         self.RequestId = params.get("RequestId")
 
 
@@ -1610,6 +1739,9 @@ class DescribePolicyGroupListGroup(AbstractModel):
         :param InstanceGroup: 策略组绑定的实例组信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type InstanceGroup: :class:`tencentcloud.monitor.v20180724.models.DescribePolicyGroupListGroupInstanceGroup`
+        :param IsUnionRule: 且或规则标识, 0表示或规则(任意一条规则满足阈值条件就告警), 1表示且规则(所有规则都满足阈值条件才告警)
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IsUnionRule: int
         """
         self.GroupId = None
         self.GroupName = None
@@ -1630,6 +1762,7 @@ class DescribePolicyGroupListGroup(AbstractModel):
         self.ReceiverInfos = None
         self.ConditionsTemp = None
         self.InstanceGroup = None
+        self.IsUnionRule = None
 
 
     def _deserialize(self, params):
@@ -1671,6 +1804,7 @@ class DescribePolicyGroupListGroup(AbstractModel):
         if params.get("InstanceGroup") is not None:
             self.InstanceGroup = DescribePolicyGroupListGroupInstanceGroup()
             self.InstanceGroup._deserialize(params.get("InstanceGroup"))
+        self.IsUnionRule = params.get("IsUnionRule")
 
 
 class DescribePolicyGroupListGroupInstanceGroup(AbstractModel):
@@ -1723,20 +1857,64 @@ class DescribePolicyGroupListRequest(AbstractModel):
         """
         :param Module: 固定值，为"monitor"
         :type Module: str
-        :param Limit: 分页参数，最大返回个数
+        :param Limit: 分页参数，每页返回的数量，取值1~100
         :type Limit: int
-        :param Offset: 分页参数，起始位置
+        :param Offset: 分页参数，页偏移量，从0开始计数
         :type Offset: int
+        :param Like: 按策略名搜索
+        :type Like: str
+        :param InstanceGroupId: 实例分组id
+        :type InstanceGroupId: int
+        :param UpdateTimeOrder: 按更新时间排序, asc 或者 desc
+        :type UpdateTimeOrder: str
+        :param ProjectIds: 项目id列表
+        :type ProjectIds: list of int
+        :param ViewNames: 告警策略类型列表
+        :type ViewNames: list of str
+        :param FilterUnuseReceiver: 是否过滤无接收人策略组, 1表示过滤, 0表示不过滤
+        :type FilterUnuseReceiver: int
+        :param Receivers: 过滤条件, 接收组列表
+        :type Receivers: list of str
+        :param ReceiverUserList: 过滤条件, 接收人列表
+        :type ReceiverUserList: list of str
+        :param Dimensions: 维度组合字段(json字符串), 例如[[{"name":"unInstanceId","value":"ins-6e4b2aaa"}]]
+        :type Dimensions: str
+        :param ConditionTempGroupId: 模板策略组id, 多个id用逗号分隔
+        :type ConditionTempGroupId: str
+        :param ReceiverType: 过滤条件, 接收人或者接收组, user表示接收人, group表示接收组
+        :type ReceiverType: str
         """
         self.Module = None
         self.Limit = None
         self.Offset = None
+        self.Like = None
+        self.InstanceGroupId = None
+        self.UpdateTimeOrder = None
+        self.ProjectIds = None
+        self.ViewNames = None
+        self.FilterUnuseReceiver = None
+        self.Receivers = None
+        self.ReceiverUserList = None
+        self.Dimensions = None
+        self.ConditionTempGroupId = None
+        self.ReceiverType = None
 
 
     def _deserialize(self, params):
         self.Module = params.get("Module")
         self.Limit = params.get("Limit")
         self.Offset = params.get("Offset")
+        self.Like = params.get("Like")
+        self.InstanceGroupId = params.get("InstanceGroupId")
+        self.UpdateTimeOrder = params.get("UpdateTimeOrder")
+        self.ProjectIds = params.get("ProjectIds")
+        self.ViewNames = params.get("ViewNames")
+        self.FilterUnuseReceiver = params.get("FilterUnuseReceiver")
+        self.Receivers = params.get("Receivers")
+        self.ReceiverUserList = params.get("ReceiverUserList")
+        self.Dimensions = params.get("Dimensions")
+        self.ConditionTempGroupId = params.get("ConditionTempGroupId")
+        self.ReceiverType = params.get("ReceiverType")
 
 
 class DescribePolicyGroupListResponse(AbstractModel):
@@ -2624,16 +2802,20 @@ class UnBindingPolicyObjectRequest(AbstractModel):
         :type GroupId: int
         :param UniqueId: 待删除对象实例的唯一id列表
         :type UniqueId: list of str
+        :param InstanceGroupId: 实例分组id, 如果按实例分组删除的话UniqueId参数是无效的
+        :type InstanceGroupId: int
         """
         self.Module = None
         self.GroupId = None
         self.UniqueId = None
+        self.InstanceGroupId = None
 
 
     def _deserialize(self, params):
         self.Module = params.get("Module")
         self.GroupId = params.get("GroupId")
         self.UniqueId = params.get("UniqueId")
+        self.InstanceGroupId = params.get("InstanceGroupId")
 
 
 class UnBindingPolicyObjectResponse(AbstractModel):

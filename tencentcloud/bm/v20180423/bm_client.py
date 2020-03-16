@@ -1267,6 +1267,34 @@ class BmClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def ReloadDeviceOs(self, request):
+        """重装操作系统
+
+        :param request: Request instance for ReloadDeviceOs.
+        :type request: :class:`tencentcloud.bm.v20180423.models.ReloadDeviceOsRequest`
+        :rtype: :class:`tencentcloud.bm.v20180423.models.ReloadDeviceOsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ReloadDeviceOs", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ReloadDeviceOsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def RepairTaskControl(self, request):
         """此接口用于操作维修任务<br>
         入参TaskId为维修任务ID<br>

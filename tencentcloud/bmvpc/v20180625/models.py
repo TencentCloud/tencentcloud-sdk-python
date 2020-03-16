@@ -1354,11 +1354,17 @@ class DescribeCustomerGatewaysRequest(AbstractModel):
         :type Offset: int
         :param Limit: 返回数量，默认为20，最大值为100。
         :type Limit: int
+        :param OrderField: 排序字段, 支持"CreateTime"排序
+        :type OrderField: str
+        :param OrderDirection: 排序方向, “asc”、“desc”
+        :type OrderDirection: str
         """
         self.CustomerGatewayIds = None
         self.Filters = None
         self.Offset = None
         self.Limit = None
+        self.OrderField = None
+        self.OrderDirection = None
 
 
     def _deserialize(self, params):
@@ -1371,6 +1377,8 @@ class DescribeCustomerGatewaysRequest(AbstractModel):
                 self.Filters.append(obj)
         self.Offset = params.get("Offset")
         self.Limit = params.get("Limit")
+        self.OrderField = params.get("OrderField")
+        self.OrderDirection = params.get("OrderDirection")
 
 
 class DescribeCustomerGatewaysResponse(AbstractModel):
@@ -1422,6 +1430,12 @@ class DescribeNatGatewaysRequest(AbstractModel):
         :type Offset: int
         :param Limit: 偏移值，默认值为 20
         :type Limit: int
+        :param Zone: NAT所在可用区，形如：ap-guangzhou-2。
+        :type Zone: str
+        :param OrderField: 排序字段, 支持"CreateTime"排序
+        :type OrderField: str
+        :param OrderDirection: 排序方向, “asc”、“desc”
+        :type OrderDirection: str
         """
         self.NatId = None
         self.NatName = None
@@ -1429,6 +1443,9 @@ class DescribeNatGatewaysRequest(AbstractModel):
         self.VpcId = None
         self.Offset = None
         self.Limit = None
+        self.Zone = None
+        self.OrderField = None
+        self.OrderDirection = None
 
 
     def _deserialize(self, params):
@@ -1438,6 +1455,9 @@ class DescribeNatGatewaysRequest(AbstractModel):
         self.VpcId = params.get("VpcId")
         self.Offset = params.get("Offset")
         self.Limit = params.get("Limit")
+        self.Zone = params.get("Zone")
+        self.OrderField = params.get("OrderField")
+        self.OrderDirection = params.get("OrderDirection")
 
 
 class DescribeNatGatewaysResponse(AbstractModel):
@@ -1852,11 +1872,17 @@ zone - String - （过滤条件）可用区。
         :type Offset: int
         :param Limit: 返回数量
         :type Limit: int
+        :param OrderField: 排序字段, 支持按“CreateTime”，“VlanId”
+        :type OrderField: str
+        :param OrderDirection: 排序方向, “asc”、“desc”
+        :type OrderDirection: str
         """
         self.SubnetIds = None
         self.Filters = None
         self.Offset = None
         self.Limit = None
+        self.OrderField = None
+        self.OrderDirection = None
 
 
     def _deserialize(self, params):
@@ -1869,6 +1895,8 @@ zone - String - （过滤条件）可用区。
                 self.Filters.append(obj)
         self.Offset = params.get("Offset")
         self.Limit = params.get("Limit")
+        self.OrderField = params.get("OrderField")
+        self.OrderDirection = params.get("OrderDirection")
 
 
 class DescribeSubnetsResponse(AbstractModel):
@@ -1956,11 +1984,14 @@ class DescribeVpcPeerConnectionsRequest(AbstractModel):
         :type Offset: int
         :param Limit: 返回数量，默认为20，最大值为100。
         :type Limit: int
+        :param VpcId: 私有网络ID
+        :type VpcId: str
         """
         self.VpcPeerConnectionIds = None
         self.Filters = None
         self.Offset = None
         self.Limit = None
+        self.VpcId = None
 
 
     def _deserialize(self, params):
@@ -1973,6 +2004,7 @@ class DescribeVpcPeerConnectionsRequest(AbstractModel):
                 self.Filters.append(obj)
         self.Offset = params.get("Offset")
         self.Limit = params.get("Limit")
+        self.VpcId = params.get("VpcId")
 
 
 class DescribeVpcPeerConnectionsResponse(AbstractModel):
@@ -2061,17 +2093,23 @@ class DescribeVpcResourceRequest(AbstractModel):
 vpc-id - String - （过滤条件）私有网络实例ID，形如：vpc-f49l6u0z。
 vpc-name - String - （过滤条件）私有网络名称。
 zone - String - （过滤条件）可用区。
-state - String - （过滤条件）VPC状态。
+state - String - （过滤条件）VPC状态。available: 运营中; pending: 创建中; failed: 创建失败; deleting: 删除中
         :type Filters: list of Filter
         :param Offset: 偏移量
         :type Offset: int
         :param Limit: 返回数量
         :type Limit: int
+        :param OrderField: 排序字段
+        :type OrderField: str
+        :param OrderDirection: 排序方向, “asc”、“desc”
+        :type OrderDirection: str
         """
         self.VpcIds = None
         self.Filters = None
         self.Offset = None
         self.Limit = None
+        self.OrderField = None
+        self.OrderDirection = None
 
 
     def _deserialize(self, params):
@@ -2084,6 +2122,8 @@ state - String - （过滤条件）VPC状态。
                 self.Filters.append(obj)
         self.Offset = params.get("Offset")
         self.Limit = params.get("Limit")
+        self.OrderField = params.get("OrderField")
+        self.OrderDirection = params.get("OrderDirection")
 
 
 class DescribeVpcResourceResponse(AbstractModel):
@@ -2239,11 +2279,23 @@ class DescribeVpnConnectionsRequest(AbstractModel):
         :type Offset: int
         :param Limit: 返回数量，默认为20，最大值为100。
         :type Limit: int
+        :param VpnGatewayId: VPN网关实例ID
+        :type VpnGatewayId: str
+        :param VpnConnectionName: VPN通道名称
+        :type VpnConnectionName: str
+        :param OrderField: 排序字段, 支持"CreateTime"排序
+        :type OrderField: str
+        :param OrderDirection: 排序方向, “asc”、“desc”
+        :type OrderDirection: str
         """
         self.VpnConnectionIds = None
         self.Filters = None
         self.Offset = None
         self.Limit = None
+        self.VpnGatewayId = None
+        self.VpnConnectionName = None
+        self.OrderField = None
+        self.OrderDirection = None
 
 
     def _deserialize(self, params):
@@ -2256,6 +2308,10 @@ class DescribeVpnConnectionsRequest(AbstractModel):
                 self.Filters.append(obj)
         self.Offset = params.get("Offset")
         self.Limit = params.get("Limit")
+        self.VpnGatewayId = params.get("VpnGatewayId")
+        self.VpnConnectionName = params.get("VpnConnectionName")
+        self.OrderField = params.get("OrderField")
+        self.OrderDirection = params.get("OrderDirection")
 
 
 class DescribeVpnConnectionsResponse(AbstractModel):
@@ -2307,11 +2363,17 @@ class DescribeVpnGatewaysRequest(AbstractModel):
         :type Offset: int
         :param Limit: 请求对象个数
         :type Limit: int
+        :param OrderField: 排序字段, 支持"CreateTime"排序
+        :type OrderField: str
+        :param OrderDirection: 排序方向, “asc”、“desc”
+        :type OrderDirection: str
         """
         self.VpnGatewayIds = None
         self.Filters = None
         self.Offset = None
         self.Limit = None
+        self.OrderField = None
+        self.OrderDirection = None
 
 
     def _deserialize(self, params):
@@ -2324,6 +2386,8 @@ class DescribeVpnGatewaysRequest(AbstractModel):
                 self.Filters.append(obj)
         self.Offset = params.get("Offset")
         self.Limit = params.get("Limit")
+        self.OrderField = params.get("OrderField")
+        self.OrderDirection = params.get("OrderDirection")
 
 
 class DescribeVpnGatewaysResponse(AbstractModel):
@@ -2499,6 +2563,8 @@ class IPSECOptionsSpecification(AbstractModel):
         :type IPSECSaLifetimeSeconds: int
         :param SecurityProto: 安全协议，默认为ESP
         :type SecurityProto: str
+        :param EncapMode: 报文封装模式:默认为Tunnel
+        :type EncapMode: str
         """
         self.PfsDhGroup = None
         self.IPSECSaLifetimeTraffic = None
@@ -2506,6 +2572,7 @@ class IPSECOptionsSpecification(AbstractModel):
         self.IntegrityAlgorith = None
         self.IPSECSaLifetimeSeconds = None
         self.SecurityProto = None
+        self.EncapMode = None
 
 
     def _deserialize(self, params):
@@ -2515,6 +2582,7 @@ class IPSECOptionsSpecification(AbstractModel):
         self.IntegrityAlgorith = params.get("IntegrityAlgorith")
         self.IPSECSaLifetimeSeconds = params.get("IPSECSaLifetimeSeconds")
         self.SecurityProto = params.get("SecurityProto")
+        self.EncapMode = params.get("EncapMode")
 
 
 class IpInfo(AbstractModel):
@@ -2962,7 +3030,7 @@ class NatGatewayInfo(AbstractModel):
         :type VpcId: str
         :param VpcName: 私有网络名称
         :type VpcName: str
-        :param ProductionStatus: 网关状态，其中0表示创建中，1表示运行中，2表示创建失败
+        :param ProductionStatus: 网关创建状态，其中0表示创建中，1表示运行中，2表示创建失败
         :type ProductionStatus: int
         :param Eips: EIP列表
         :type Eips: list of str
@@ -2980,6 +3048,12 @@ class NatGatewayInfo(AbstractModel):
         :type Type: str
         :param CreateTime: 创建时间
         :type CreateTime: str
+        :param State: 网关启用状态，1为禁用，0为启用。
+        :type State: int
+        :param IntVpcId: 私有网络整型ID
+        :type IntVpcId: int
+        :param NatResourceId: NAT资源ID
+        :type NatResourceId: int
         """
         self.NatId = None
         self.NatName = None
@@ -2994,6 +3068,9 @@ class NatGatewayInfo(AbstractModel):
         self.VpcCidrBlock = None
         self.Type = None
         self.CreateTime = None
+        self.State = None
+        self.IntVpcId = None
+        self.NatResourceId = None
 
 
     def _deserialize(self, params):
@@ -3010,6 +3087,9 @@ class NatGatewayInfo(AbstractModel):
         self.VpcCidrBlock = params.get("VpcCidrBlock")
         self.Type = params.get("Type")
         self.CreateTime = params.get("CreateTime")
+        self.State = params.get("State")
+        self.IntVpcId = params.get("IntVpcId")
+        self.NatResourceId = params.get("NatResourceId")
 
 
 class NatSubnetInfo(AbstractModel):
@@ -3301,7 +3381,7 @@ class SubnetInfo(AbstractModel):
         :type CidrBlock: str
         :param Type: 子网类型。0: 黑石物理机子网; 6: ccs子网; 7 Docker子网; 8: 虚拟机子网
         :type Type: int
-        :param ZoneId: 可用区ID。
+        :param ZoneId: 子网可用区ID。
         :type ZoneId: int
         :param CpmNum: 子网物理机的个数
         :type CpmNum: int
@@ -3323,6 +3403,15 @@ class SubnetInfo(AbstractModel):
         :type SubnetCreateTime: str
         :param IsSmartNic: 25G子网标识
         :type IsSmartNic: int
+        :param Zone: 子网可用区。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Zone: str
+        :param VpcZoneId: VPC所在可用区ID
+        :type VpcZoneId: int
+        :param VpcZone: VPC所在可用区
+        :type VpcZone: str
+        :param BroadcastFlag: 是否开启广播，关闭为0，开启为1。
+        :type BroadcastFlag: int
         """
         self.VpcId = None
         self.VpcName = None
@@ -3342,6 +3431,10 @@ class SubnetInfo(AbstractModel):
         self.TotalIpNum = None
         self.SubnetCreateTime = None
         self.IsSmartNic = None
+        self.Zone = None
+        self.VpcZoneId = None
+        self.VpcZone = None
+        self.BroadcastFlag = None
 
 
     def _deserialize(self, params):
@@ -3363,6 +3456,10 @@ class SubnetInfo(AbstractModel):
         self.TotalIpNum = params.get("TotalIpNum")
         self.SubnetCreateTime = params.get("SubnetCreateTime")
         self.IsSmartNic = params.get("IsSmartNic")
+        self.Zone = params.get("Zone")
+        self.VpcZoneId = params.get("VpcZoneId")
+        self.VpcZone = params.get("VpcZone")
+        self.BroadcastFlag = params.get("BroadcastFlag")
 
 
 class UnbindEipsFromNatGatewayRequest(AbstractModel):
@@ -3743,6 +3840,15 @@ class VpcResource(AbstractModel):
         :type CreateTime: str
         :param IsOld: 是否老专区VPC
         :type IsOld: bool
+        :param CcnServiceNum: 云联网服务个数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CcnServiceNum: int
+        :param VpcPeerLimitToAllRegion: VPC允许创建的对等连接个数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type VpcPeerLimitToAllRegion: int
+        :param VpcPeerLimitToSameRegion: VPC允许创建的同地域的对等连接的个数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type VpcPeerLimitToSameRegion: int
         """
         self.VpcId = None
         self.VpcName = None
@@ -3764,6 +3870,9 @@ class VpcResource(AbstractModel):
         self.Zone = None
         self.CreateTime = None
         self.IsOld = None
+        self.CcnServiceNum = None
+        self.VpcPeerLimitToAllRegion = None
+        self.VpcPeerLimitToSameRegion = None
 
 
     def _deserialize(self, params):
@@ -3787,6 +3896,9 @@ class VpcResource(AbstractModel):
         self.Zone = params.get("Zone")
         self.CreateTime = params.get("CreateTime")
         self.IsOld = params.get("IsOld")
+        self.CcnServiceNum = params.get("CcnServiceNum")
+        self.VpcPeerLimitToAllRegion = params.get("VpcPeerLimitToAllRegion")
+        self.VpcPeerLimitToSameRegion = params.get("VpcPeerLimitToSameRegion")
 
 
 class VpcSubnetCreateInfo(AbstractModel):
@@ -3940,6 +4052,13 @@ class VpnConnection(AbstractModel):
         :type VpcCidrBlock: str
         :param VpcName: VPC名称
         :type VpcName: str
+        :param VpnGatewayName: VPN网关名称
+        :type VpnGatewayName: str
+        :param CustomerGatewayName: 对端网关名称
+        :type CustomerGatewayName: str
+        :param DestinationCidr: IPSEC VPN通道路由策略
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DestinationCidr: list of str
         """
         self.VpnConnectionId = None
         self.VpnConnectionName = None
@@ -3957,6 +4076,9 @@ class VpnConnection(AbstractModel):
         self.Zone = None
         self.VpcCidrBlock = None
         self.VpcName = None
+        self.VpnGatewayName = None
+        self.CustomerGatewayName = None
+        self.DestinationCidr = None
 
 
     def _deserialize(self, params):
@@ -3985,6 +4107,9 @@ class VpnConnection(AbstractModel):
         self.Zone = params.get("Zone")
         self.VpcCidrBlock = params.get("VpcCidrBlock")
         self.VpcName = params.get("VpcName")
+        self.VpnGatewayName = params.get("VpnGatewayName")
+        self.CustomerGatewayName = params.get("CustomerGatewayName")
+        self.DestinationCidr = params.get("DestinationCidr")
 
 
 class VpnGateway(AbstractModel):

@@ -25,6 +25,34 @@ class TbpClient(AbstractClient):
     _endpoint = 'tbp.tencentcloudapi.com'
 
 
+    def CreateBot(self, request):
+        """创建机器人
+
+        :param request: Request instance for CreateBot.
+        :type request: :class:`tencentcloud.tbp.v20190311.models.CreateBotRequest`
+        :rtype: :class:`tencentcloud.tbp.v20190311.models.CreateBotResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("CreateBot", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateBotResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def Reset(self, request):
         """对当前机器人的会话状态进行复位
 

@@ -160,7 +160,7 @@ class BuyDevicesRequest(AbstractModel):
         :param Aliases: 设备名称列表
         :type Aliases: list of str
         :param CpuId: CPU型号ID，自定义机型需要传入，取值：
-<br/><li>1: E5-2620v3 (6核) * 2</li><li>2: E5-2680v4 (14核) * 2</li><li>3: E5-2670v3 (12核) * 2</li><li>4: E5-2620v4 (8核) * 2</li><li>5: 4110 (8核) * 2</li><li>6: 6133 (20核) * 2</li><br/>
+<br/><li>1: E5-2620v3 (6核) &#42; 2</li><li>2: E5-2680v4 (14核) &#42; 2</li><li>3: E5-2670v3 (12核) &#42; 2</li><li>4: E5-2620v4 (8核) &#42; 2</li><li>5: 4110 (8核) &#42; 2</li><li>6: 6133 (20核) &#42; 2</li><br/>
         :type CpuId: int
         :param ContainRaidCard: 是否有RAID卡，取值：1(有) 0(无)，自定义机型需要传入
         :type ContainRaidCard: int
@@ -180,6 +180,10 @@ class BuyDevicesRequest(AbstractModel):
         :type FileSystem: str
         :param BuySession: 此参数是为了防止重复发货。如果两次调用传入相同的BuySession，只会发货一次。 不要以设备别名作为BuySession，这样只会第一次购买成功。参数长度为128位，合法字符为大小字母，数字，下划线，横线。
         :type BuySession: str
+        :param SgId: 绑定已有的安全组ID。仅在NeedSecurityAgent为1时生效
+        :type SgId: str
+        :param TemplateId: 安全组模板ID，由模板创建新安全组并绑定。TemplateId和SgId不能同时传入
+        :type TemplateId: str
         """
         self.Zone = None
         self.OsTypeId = None
@@ -219,6 +223,8 @@ class BuyDevicesRequest(AbstractModel):
         self.Tags = None
         self.FileSystem = None
         self.BuySession = None
+        self.SgId = None
+        self.TemplateId = None
 
 
     def _deserialize(self, params):
@@ -265,6 +271,8 @@ class BuyDevicesRequest(AbstractModel):
                 self.Tags.append(obj)
         self.FileSystem = params.get("FileSystem")
         self.BuySession = params.get("BuySession")
+        self.SgId = params.get("SgId")
+        self.TemplateId = params.get("TemplateId")
 
 
 class BuyDevicesResponse(AbstractModel):
@@ -859,16 +867,44 @@ class DescribeDeviceClassPartitionRequest(AbstractModel):
         """
         :param DeviceClassCode: 设备类型代号。代号通过接口[查询设备型号(DescribeDeviceClass)](https://cloud.tencent.com/document/api/386/32911)查询。标准机型需要传入此参数。虽是可选参数，但DeviceClassCode和InstanceId参数，必须要填写一个。
         :type DeviceClassCode: str
-        :param InstanceId: 需要查询自定义机型RAID信息时，传入自定义机型实例ID。InstanceId存在时DeviceClassCode失效。 虽是可选参数，但DeviceClassCode和InstanceId参数，必须要填写一个。
+        :param InstanceId: 需要查询自定义机型RAID信息时，传入自定义机型实例ID。InstanceId存在时其余参数失效。
         :type InstanceId: str
+        :param CpuId: CPU型号ID，查询自定义机型时需要传入
+        :type CpuId: int
+        :param MemSize: 内存大小，单位为G，查询自定义机型时需要传入
+        :type MemSize: int
+        :param ContainRaidCard: 是否有RAID卡，取值：1(有) 0(无)。查询自定义机型时需要传入
+        :type ContainRaidCard: int
+        :param SystemDiskTypeId: 系统盘类型ID，查询自定义机型时需要传入
+        :type SystemDiskTypeId: int
+        :param SystemDiskCount: 系统盘数量，查询自定义机型时需要传入
+        :type SystemDiskCount: int
+        :param DataDiskTypeId: 数据盘类型ID，查询自定义机型时可传入
+        :type DataDiskTypeId: int
+        :param DataDiskCount: 数据盘数量，查询自定义机型时可传入
+        :type DataDiskCount: int
         """
         self.DeviceClassCode = None
         self.InstanceId = None
+        self.CpuId = None
+        self.MemSize = None
+        self.ContainRaidCard = None
+        self.SystemDiskTypeId = None
+        self.SystemDiskCount = None
+        self.DataDiskTypeId = None
+        self.DataDiskCount = None
 
 
     def _deserialize(self, params):
         self.DeviceClassCode = params.get("DeviceClassCode")
         self.InstanceId = params.get("InstanceId")
+        self.CpuId = params.get("CpuId")
+        self.MemSize = params.get("MemSize")
+        self.ContainRaidCard = params.get("ContainRaidCard")
+        self.SystemDiskTypeId = params.get("SystemDiskTypeId")
+        self.SystemDiskCount = params.get("SystemDiskCount")
+        self.DataDiskTypeId = params.get("DataDiskTypeId")
+        self.DataDiskCount = params.get("DataDiskCount")
 
 
 class DescribeDeviceClassPartitionResponse(AbstractModel):
@@ -901,6 +937,21 @@ class DescribeDeviceClassRequest(AbstractModel):
     """DescribeDeviceClass请求参数结构体
 
     """
+
+    def __init__(self):
+        """
+        :param OnSale: 是否仅查询在售标准机型配置信息。取值0：查询所有机型；1：查询在售机型。默认为1
+        :type OnSale: int
+        :param NeedPriceInfo: 是否返回价格信息。取值0：不返回价格信息，接口返回速度更快；1：返回价格信息。默认为1
+        :type NeedPriceInfo: int
+        """
+        self.OnSale = None
+        self.NeedPriceInfo = None
+
+
+    def _deserialize(self, params):
+        self.OnSale = params.get("OnSale")
+        self.NeedPriceInfo = params.get("NeedPriceInfo")
 
 
 class DescribeDeviceClassResponse(AbstractModel):
@@ -987,29 +1038,32 @@ class DescribeDeviceInventoryRequest(AbstractModel):
         :type VpcId: str
         :param SubnetId: 子网ID
         :type SubnetId: str
-        :param CpuId: CpuId，自定义机型时需传入
+        :param CpuId: CPU型号ID，查询自定义机型时必填
         :type CpuId: int
-        :param DiskType: 硬盘类型，自定义机型时需传入
-        :type DiskType: str
-        :param DiskSize: 单块硬盘大小，自定义机型时需传入
-        :type DiskSize: int
-        :param DiskNum: 硬盘数量，自定义机型时需传入
-        :type DiskNum: int
-        :param Mem: 内存总大小，自定义机型时需传入
-        :type Mem: int
-        :param HaveRaidCard: 是否支持raid，自定义机型时需传入
-        :type HaveRaidCard: int
+        :param MemSize: 内存大小，单位为G，查询自定义机型时必填
+        :type MemSize: int
+        :param ContainRaidCard: 是否有RAID卡，取值：1(有) 0(无)，查询自定义机型时必填
+        :type ContainRaidCard: int
+        :param SystemDiskTypeId: 系统盘类型ID，查询自定义机型时必填
+        :type SystemDiskTypeId: int
+        :param SystemDiskCount: 系统盘数量，查询自定义机型时必填
+        :type SystemDiskCount: int
+        :param DataDiskTypeId: 数据盘类型ID，查询自定义机型时可填
+        :type DataDiskTypeId: int
+        :param DataDiskCount: 数据盘数量，查询自定义机型时可填
+        :type DataDiskCount: int
         """
         self.Zone = None
         self.DeviceClassCode = None
         self.VpcId = None
         self.SubnetId = None
         self.CpuId = None
-        self.DiskType = None
-        self.DiskSize = None
-        self.DiskNum = None
-        self.Mem = None
-        self.HaveRaidCard = None
+        self.MemSize = None
+        self.ContainRaidCard = None
+        self.SystemDiskTypeId = None
+        self.SystemDiskCount = None
+        self.DataDiskTypeId = None
+        self.DataDiskCount = None
 
 
     def _deserialize(self, params):
@@ -1018,11 +1072,12 @@ class DescribeDeviceInventoryRequest(AbstractModel):
         self.VpcId = params.get("VpcId")
         self.SubnetId = params.get("SubnetId")
         self.CpuId = params.get("CpuId")
-        self.DiskType = params.get("DiskType")
-        self.DiskSize = params.get("DiskSize")
-        self.DiskNum = params.get("DiskNum")
-        self.Mem = params.get("Mem")
-        self.HaveRaidCard = params.get("HaveRaidCard")
+        self.MemSize = params.get("MemSize")
+        self.ContainRaidCard = params.get("ContainRaidCard")
+        self.SystemDiskTypeId = params.get("SystemDiskTypeId")
+        self.SystemDiskCount = params.get("SystemDiskCount")
+        self.DataDiskTypeId = params.get("DataDiskTypeId")
+        self.DataDiskCount = params.get("DataDiskCount")
 
 
 class DescribeDeviceInventoryResponse(AbstractModel):
@@ -2139,17 +2194,25 @@ class DeviceClass(AbstractModel):
         :param GpuDescription: GPU描述
         :type GpuDescription: str
         :param Discount: 单价折扣
+注意：此字段可能返回 null，表示取不到有效值。
         :type Discount: float
         :param UnitPrice: 用户刊例价格
+注意：此字段可能返回 null，表示取不到有效值。
         :type UnitPrice: int
         :param RealPrice: 实际价格
+注意：此字段可能返回 null，表示取不到有效值。
         :type RealPrice: int
         :param NormalPrice: 官网刊例价格
+注意：此字段可能返回 null，表示取不到有效值。
         :type NormalPrice: int
         :param DeviceType: 设备使用场景类型
         :type DeviceType: str
         :param Series: 机型系列
         :type Series: int
+        :param Cpu: cpu的核心数。仅是物理服务器未开启超线程的核心数， 超线程的核心数为Cpu*2
+        :type Cpu: int
+        :param Mem: 内存容量。单位G
+        :type Mem: int
         """
         self.DeviceClassCode = None
         self.CpuDescription = None
@@ -2164,6 +2227,8 @@ class DeviceClass(AbstractModel):
         self.NormalPrice = None
         self.DeviceType = None
         self.Series = None
+        self.Cpu = None
+        self.Mem = None
 
 
     def _deserialize(self, params):
@@ -2180,6 +2245,8 @@ class DeviceClass(AbstractModel):
         self.NormalPrice = params.get("NormalPrice")
         self.DeviceType = params.get("DeviceType")
         self.Series = params.get("Series")
+        self.Cpu = params.get("Cpu")
+        self.Mem = params.get("Mem")
 
 
 class DeviceClassPartitionInfo(AbstractModel):
@@ -2302,6 +2369,8 @@ class DeviceHardwareInfo(AbstractModel):
         :type NicDescription: str
         :param RaidDescription: 是否支持 RAID 的描述
         :type RaidDescription: str
+        :param Cpu: cpu的核心数。仅是物理服务器未开启超线程的核心数， 超线程的核心数为Cpu*2
+        :type Cpu: int
         """
         self.InstanceId = None
         self.IsElastic = None
@@ -2318,6 +2387,7 @@ class DeviceHardwareInfo(AbstractModel):
         self.DiskDescription = None
         self.NicDescription = None
         self.RaidDescription = None
+        self.Cpu = None
 
 
     def _deserialize(self, params):
@@ -2336,6 +2406,7 @@ class DeviceHardwareInfo(AbstractModel):
         self.DiskDescription = params.get("DiskDescription")
         self.NicDescription = params.get("NicDescription")
         self.RaidDescription = params.get("RaidDescription")
+        self.Cpu = params.get("Cpu")
 
 
 class DeviceInfo(AbstractModel):
@@ -2650,7 +2721,7 @@ class DevicePriceInfo(AbstractModel):
         :type RealTotalCost: int
         :param TimeSpan: 计费时长
         :type TimeSpan: int
-        :param TimeUnit: 计费时长单位, m:按月计费; d:按天计费
+        :param TimeUnit: 计费时长单位, M:按月计费; D:按天计费
         :type TimeUnit: str
         :param GoodsCount: 商品数量
         :type GoodsCount: int
@@ -3340,6 +3411,116 @@ class RegionInfo(AbstractModel):
                 self.ZoneInfoSet.append(obj)
 
 
+class ReloadDeviceOsRequest(AbstractModel):
+    """ReloadDeviceOs请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param InstanceId: 设备的唯一ID
+        :type InstanceId: str
+        :param Password: 密码。 用户设置的linux root或Windows Administrator密码。密码校验规则: <li> Windows机器密码需12到16位，至少包括三项 `[a-z]`,`[A-Z]`,`[0-9]`和`[()`'`~!@#$%^&*-+=_`|`{}[]:;'<>,.?/]`的特殊符号, 密码不能包含Administrator(不区分大小写); <li> Linux机器密码需8到16位，至少包括两项`[a-z,A-Z]`,`[0-9]`和`[()`'`~!@#$%^&*-+=_`|`{}[]:;'<>,.?/]`的特殊符号
+        :type Password: str
+        :param OsTypeId: 操作系统类型ID。通过接口[查询操作系统信息(DescribeOsInfo)](https://cloud.tencent.com/document/api/386/32902)获取操作系统信息
+        :type OsTypeId: int
+        :param RaidId: RAID类型ID。通过接口[查询机型RAID方式以及系统盘大小(DescribeDeviceClassPartition)](https://cloud.tencent.com/document/api/386/32910)获取RAID信息
+        :type RaidId: int
+        :param IsZoning: 是否格式化数据盘。0: 不格式化（默认值）；1：格式化
+        :type IsZoning: int
+        :param SysRootSpace: 系统盘根分区大小，默认是10G。系统盘的大小参考接口[查询机型RAID方式以及系统盘大小(DescribeDeviceClassPartition)](https://cloud.tencent.com/document/api/386/32910)
+        :type SysRootSpace: int
+        :param SysSwaporuefiSpace: 系统盘swap分区或/boot/efi分区的大小。若是uefi启动的机器，分区为/boot/efi ,且此值是默认是2G。普通机器为swap分区，可以不指定此分区。机型是否是uefi启动，参考接口[查询设备型号(DescribeDeviceClass)](https://cloud.tencent.com/document/api/386/32911)
+        :type SysSwaporuefiSpace: int
+        :param SysUsrlocalSpace: /usr/local分区大小
+        :type SysUsrlocalSpace: int
+        :param VpcId: 重装到新的私有网络的ID。如果改变VPC子网，则要求与SubnetId同时传参，否则可不填
+        :type VpcId: str
+        :param SubnetId: 重装到新的子网的ID。如果改变VPC子网，则要求与VpcId同时传参，否则可不填
+        :type SubnetId: str
+        :param LanIp: 重装指定IP地址
+        :type LanIp: str
+        :param HyperThreading: 指定是否开启超线程。 0：关闭超线程；1：开启超线程（默认值）
+        :type HyperThreading: int
+        :param ImageId: 自定义镜像ID。传此字段则用自定义镜像重装
+        :type ImageId: str
+        :param FileSystem: 指定数据盘的文件系统格式，当前支持 EXT4和XFS选项， 默认为EXT4。 参数适用于数据盘和Linux， 且在IsZoning为1时生效
+        :type FileSystem: str
+        :param NeedSecurityAgent: 是否安装安全Agent，取值：1(安装) 0(不安装)，默认取值0
+        :type NeedSecurityAgent: int
+        :param NeedMonitorAgent: 是否安装监控Agent，取值：1(安装) 0(不安装)，默认取值0
+        :type NeedMonitorAgent: int
+        :param NeedEMRAgent: 是否安装EMR Agent，取值：1(安装) 0(不安装)，默认取值0
+        :type NeedEMRAgent: int
+        :param NeedEMRSoftware: 是否安装EMR软件包，取值：1(安装) 0(不安装)，默认取值0
+        :type NeedEMRSoftware: int
+        :param ReserveSgConfig: 是否保留安全组配置，取值：1(保留) 0(不保留)，默认取值0
+        :type ReserveSgConfig: int
+        """
+        self.InstanceId = None
+        self.Password = None
+        self.OsTypeId = None
+        self.RaidId = None
+        self.IsZoning = None
+        self.SysRootSpace = None
+        self.SysSwaporuefiSpace = None
+        self.SysUsrlocalSpace = None
+        self.VpcId = None
+        self.SubnetId = None
+        self.LanIp = None
+        self.HyperThreading = None
+        self.ImageId = None
+        self.FileSystem = None
+        self.NeedSecurityAgent = None
+        self.NeedMonitorAgent = None
+        self.NeedEMRAgent = None
+        self.NeedEMRSoftware = None
+        self.ReserveSgConfig = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.Password = params.get("Password")
+        self.OsTypeId = params.get("OsTypeId")
+        self.RaidId = params.get("RaidId")
+        self.IsZoning = params.get("IsZoning")
+        self.SysRootSpace = params.get("SysRootSpace")
+        self.SysSwaporuefiSpace = params.get("SysSwaporuefiSpace")
+        self.SysUsrlocalSpace = params.get("SysUsrlocalSpace")
+        self.VpcId = params.get("VpcId")
+        self.SubnetId = params.get("SubnetId")
+        self.LanIp = params.get("LanIp")
+        self.HyperThreading = params.get("HyperThreading")
+        self.ImageId = params.get("ImageId")
+        self.FileSystem = params.get("FileSystem")
+        self.NeedSecurityAgent = params.get("NeedSecurityAgent")
+        self.NeedMonitorAgent = params.get("NeedMonitorAgent")
+        self.NeedEMRAgent = params.get("NeedEMRAgent")
+        self.NeedEMRSoftware = params.get("NeedEMRSoftware")
+        self.ReserveSgConfig = params.get("ReserveSgConfig")
+
+
+class ReloadDeviceOsResponse(AbstractModel):
+    """ReloadDeviceOs返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param TaskId: 黑石异步任务ID
+        :type TaskId: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TaskId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TaskId = params.get("TaskId")
+        self.RequestId = params.get("RequestId")
+
+
 class RepairTaskControlRequest(AbstractModel):
     """RepairTaskControl请求参数结构体
 
@@ -3770,6 +3951,12 @@ class TaskInfo(AbstractModel):
         :type LanIp: str
         :param MgtIp: 管理IP
         :type MgtIp: str
+        :param TaskTypeName: 故障类中文名
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TaskTypeName: str
+        :param TaskSubType: 故障类型，取值：unconfirmed (不明确故障)；redundancy (有冗余故障)；nonredundancy (无冗余故障)
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TaskSubType: str
         """
         self.TaskId = None
         self.InstanceId = None
@@ -3793,6 +3980,8 @@ class TaskInfo(AbstractModel):
         self.WanIp = None
         self.LanIp = None
         self.MgtIp = None
+        self.TaskTypeName = None
+        self.TaskSubType = None
 
 
     def _deserialize(self, params):
@@ -3818,6 +4007,8 @@ class TaskInfo(AbstractModel):
         self.WanIp = params.get("WanIp")
         self.LanIp = params.get("LanIp")
         self.MgtIp = params.get("MgtIp")
+        self.TaskTypeName = params.get("TaskTypeName")
+        self.TaskSubType = params.get("TaskSubType")
 
 
 class TaskOperationLog(AbstractModel):

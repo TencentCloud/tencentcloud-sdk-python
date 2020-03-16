@@ -28,8 +28,8 @@ class AuthDomain(AbstractModel):
         :param Domain: 域名
         :type Domain: str
         :param Type: 域名类型。包含以下取值：
-<li>system</li>
-<li>user</li>
+<li>SYSTEM</li>
+<li>USER</li>
         :type Type: str
         :param Status: 状态。包含以下取值：
 <li>ENABLE</li>

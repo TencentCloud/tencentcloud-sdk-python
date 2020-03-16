@@ -2964,6 +2964,12 @@ OPEN：公网属性， INTERNAL：内网属性。
         :param SnatIps: 开启SnatPro负载均衡后，SnatIp列表
 注意：此字段可能返回 null，表示取不到有效值。
         :type SnatIps: list of SnatIp
+        :param SlaType: 性能保障规格
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SlaType: str
+        :param IsBlock: vip是否被封堵
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IsBlock: bool
         """
         self.LoadBalancerId = None
         self.LoadBalancerName = None
@@ -3006,6 +3012,8 @@ OPEN：公网属性， INTERNAL：内网属性。
         self.IPv6Mode = None
         self.SnatPro = None
         self.SnatIps = None
+        self.SlaType = None
+        self.IsBlock = None
 
 
     def _deserialize(self, params):
@@ -3077,6 +3085,8 @@ OPEN：公网属性， INTERNAL：内网属性。
                 obj = SnatIp()
                 obj._deserialize(item)
                 self.SnatIps.append(obj)
+        self.SlaType = params.get("SlaType")
+        self.IsBlock = params.get("IsBlock")
 
 
 class LoadBalancerHealth(AbstractModel):

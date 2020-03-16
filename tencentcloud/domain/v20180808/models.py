@@ -25,12 +25,16 @@ class CheckDomainRequest(AbstractModel):
         """
         :param DomainName: 所查询域名名称
         :type DomainName: str
+        :param Period: 年限
+        :type Period: str
         """
         self.DomainName = None
+        self.Period = None
 
 
     def _deserialize(self, params):
         self.DomainName = params.get("DomainName")
+        self.Period = params.get("Period")
 
 
 class CheckDomainResponse(AbstractModel):
@@ -48,10 +52,26 @@ class CheckDomainResponse(AbstractModel):
         :type Reason: str
         :param Premium: 是否是溢价词
         :type Premium: bool
-        :param Price: 价格
+        :param Price: 域名价格
         :type Price: int
         :param BlackWord: 是否是敏感词
         :type BlackWord: bool
+        :param Describe: 溢价词描述
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Describe: str
+        :param FeeRenew: 溢价词的续费价格
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FeeRenew: int
+        :param RealPrice: 域名真实价格
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RealPrice: int
+        :param FeeTransfer: 溢价词的转入价格
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FeeTransfer: int
+        :param FeeRestore: 溢价词的赎回价格
+        :type FeeRestore: int
+        :param Period: 检测年限
+        :type Period: int
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -61,6 +81,12 @@ class CheckDomainResponse(AbstractModel):
         self.Premium = None
         self.Price = None
         self.BlackWord = None
+        self.Describe = None
+        self.FeeRenew = None
+        self.RealPrice = None
+        self.FeeTransfer = None
+        self.FeeRestore = None
+        self.Period = None
         self.RequestId = None
 
 
@@ -71,6 +97,12 @@ class CheckDomainResponse(AbstractModel):
         self.Premium = params.get("Premium")
         self.Price = params.get("Price")
         self.BlackWord = params.get("BlackWord")
+        self.Describe = params.get("Describe")
+        self.FeeRenew = params.get("FeeRenew")
+        self.RealPrice = params.get("RealPrice")
+        self.FeeTransfer = params.get("FeeTransfer")
+        self.FeeRestore = params.get("FeeRestore")
+        self.Period = params.get("Period")
         self.RequestId = params.get("RequestId")
 
 
@@ -83,12 +115,20 @@ class DescribeDomainPriceListRequest(AbstractModel):
         """
         :param TldList: 查询价格的后缀列表。默认则为全部后缀
         :type TldList: list of str
+        :param Year: 查询购买的年份，默认会列出所有年份的价格
+        :type Year: list of int
+        :param Operation: 域名的购买类型：new  新购，renew 续费，redem 赎回，tran 转入
+        :type Operation: list of str
         """
         self.TldList = None
+        self.Year = None
+        self.Operation = None
 
 
     def _deserialize(self, params):
         self.TldList = params.get("TldList")
+        self.Year = params.get("Year")
+        self.Operation = params.get("Operation")
 
 
 class DescribeDomainPriceListResponse(AbstractModel):

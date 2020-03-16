@@ -667,11 +667,11 @@ class DataDisk(AbstractModel):
 
     def __init__(self):
         """
-        :param DiskSize: 数据盘大小，单位：GB。最小调整步长为10G，不同数据盘类型取值范围不同，具体限制详见：[实例规格](/document/product/213/2177)。默认值为0，表示不购买数据盘。更多限制详见产品文档。
+        :param DiskSize: 数据盘大小，单位：GB。最小调整步长为10G，不同数据盘类型取值范围不同，具体限制详见：[存储概述](https://cloud.tencent.com/document/product/213/4952)。默认值为0，表示不购买数据盘。更多限制详见产品文档。
         :type DiskSize: int
-        :param DiskType: 数据盘类型。数据盘类型限制详见[实例规格](/document/product/213/2177)。取值范围：<br><li>LOCAL_BASIC：本地硬盘<br><li>LOCAL_SSD：本地SSD硬盘<br><li>CLOUD_BASIC：普通云硬盘<br><li>CLOUD_PREMIUM：高性能云硬盘<br><li>CLOUD_SSD：SSD云硬盘<br><br>默认取值：LOCAL_BASIC。<br><br>该参数对`ResizeInstanceDisk`接口无效。
+        :param DiskType: 数据盘类型。数据盘类型限制详见[存储概述](https://cloud.tencent.com/document/product/213/4952)。取值范围：<br><li>LOCAL_BASIC：本地硬盘<br><li>LOCAL_SSD：本地SSD硬盘<br><li>CLOUD_BASIC：普通云硬盘<br><li>CLOUD_PREMIUM：高性能云硬盘<br><li>CLOUD_SSD：SSD云硬盘<br><br>默认取值：LOCAL_BASIC。<br><br>该参数对`ResizeInstanceDisk`接口无效。
         :type DiskType: str
-        :param DiskId: 数据盘ID。LOCAL_BASIC 和 LOCAL_SSD 类型没有ID。暂时不支持该参数。
+        :param DiskId: 数据盘ID。LOCAL_BASIC 和 LOCAL_SSD 类型没有ID，暂时不支持该参数。
         :type DiskId: str
         :param DeleteWithInstance: 数据盘是否随子机销毁。取值范围：
 <li>TRUE：子机销毁时，销毁数据盘，只支持按小时后付费云盘
@@ -2539,23 +2539,47 @@ class ItemPrice(AbstractModel):
 
     def __init__(self):
         """
-        :param UnitPrice: 后续单价，单位：元。
+        :param UnitPrice: 后续合计费用的原价，后付费模式使用，单位：元。<br><li>如返回了其他时间区间项，如UnitPriceSecondStep，则本项代表时间区间在(0, 96)小时；若未返回其他时间区间项，则本项代表全时段，即(0, ∞)小时
 注意：此字段可能返回 null，表示取不到有效值。
         :type UnitPrice: float
-        :param ChargeUnit: 后续计价单元，可取值范围： <br><li>HOUR：表示计价单元是按每小时来计算。当前涉及该计价单元的场景有：实例按小时后付费（POSTPAID_BY_HOUR）、带宽按小时后付费（BANDWIDTH_POSTPAID_BY_HOUR）：<br><li>GB：表示计价单元是按每GB来计算。当前涉及该计价单元的场景有：流量按小时后付费（TRAFFIC_POSTPAID_BY_HOUR）。
+        :param ChargeUnit: 后续计价单元，后付费模式使用，可取值范围： <br><li>HOUR：表示计价单元是按每小时来计算。当前涉及该计价单元的场景有：实例按小时后付费（POSTPAID_BY_HOUR）、带宽按小时后付费（BANDWIDTH_POSTPAID_BY_HOUR）：<br><li>GB：表示计价单元是按每GB来计算。当前涉及该计价单元的场景有：流量按小时后付费（TRAFFIC_POSTPAID_BY_HOUR）。
 注意：此字段可能返回 null，表示取不到有效值。
         :type ChargeUnit: str
-        :param OriginalPrice: 预支费用的原价，单位：元。
+        :param OriginalPrice: 预支合计费用的原价，预付费模式使用，单位：元。
 注意：此字段可能返回 null，表示取不到有效值。
         :type OriginalPrice: float
-        :param DiscountPrice: 预支费用的折扣价，单位：元。
+        :param DiscountPrice: 预支合计费用的折扣价，预付费模式使用，单位：元。
 注意：此字段可能返回 null，表示取不到有效值。
         :type DiscountPrice: float
+        :param Discount: 折扣，如20代表2折
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Discount: int
+        :param UnitPriceDiscount: 后续合计费用的折扣价，后付费模式使用，单位：元<br><li>如返回了其他时间区间项，如UnitPriceDiscountSecondStep，则本项代表时间区间在(0, 96)小时；若未返回其他时间区间项，则本项代表全时段，即(0, ∞)小时
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UnitPriceDiscount: float
+        :param UnitPriceSecondStep: 使用时间区间在(96, 360)小时的后续合计费用的原价，后付费模式使用，单位：元。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UnitPriceSecondStep: float
+        :param UnitPriceDiscountSecondStep: 使用时间区间在(96, 360)小时的后续合计费用的折扣价，后付费模式使用，单位：元
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UnitPriceDiscountSecondStep: float
+        :param UnitPriceThirdStep: 使用时间区间在(360, ∞)小时的后续合计费用的原价，后付费模式使用，单位：元。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UnitPriceThirdStep: float
+        :param UnitPriceDiscountThirdStep: 使用时间区间在(360, ∞)小时的后续合计费用的折扣价，后付费模式使用，单位：元
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UnitPriceDiscountThirdStep: float
         """
         self.UnitPrice = None
         self.ChargeUnit = None
         self.OriginalPrice = None
         self.DiscountPrice = None
+        self.Discount = None
+        self.UnitPriceDiscount = None
+        self.UnitPriceSecondStep = None
+        self.UnitPriceDiscountSecondStep = None
+        self.UnitPriceThirdStep = None
+        self.UnitPriceDiscountThirdStep = None
 
 
     def _deserialize(self, params):
@@ -2563,6 +2587,12 @@ class ItemPrice(AbstractModel):
         self.ChargeUnit = params.get("ChargeUnit")
         self.OriginalPrice = params.get("OriginalPrice")
         self.DiscountPrice = params.get("DiscountPrice")
+        self.Discount = params.get("Discount")
+        self.UnitPriceDiscount = params.get("UnitPriceDiscount")
+        self.UnitPriceSecondStep = params.get("UnitPriceSecondStep")
+        self.UnitPriceDiscountSecondStep = params.get("UnitPriceDiscountSecondStep")
+        self.UnitPriceThirdStep = params.get("UnitPriceThirdStep")
+        self.UnitPriceDiscountThirdStep = params.get("UnitPriceDiscountThirdStep")
 
 
 class Job(AbstractModel):
@@ -3124,7 +3154,7 @@ class Placement(AbstractModel):
 
     def __init__(self):
         """
-        :param Zone: 实例所属的[可用区](/document/product/213/9452#zone)ID。该参数也可以通过调用  [DescribeZones](/document/api/213/9455) 的返回值中的Zone字段来获取。
+        :param Zone: 实例所属的[可用区](/https://cloud.tencent.com/document/product/213/15753#ZoneInfo)ID。该参数也可以通过调用  [DescribeZones](https://cloud.tencent.com/document/api/213/15707) 的返回值中的Zone字段来获取。
         :type Zone: str
         :param ProjectId: 实例所属项目ID。该参数可以通过调用 [DescribeProject](/document/api/378/4400) 的返回值中的 projectId 字段来获取。不填为默认项目。
         :type ProjectId: int
@@ -3382,7 +3412,7 @@ class SystemDisk(AbstractModel):
 
     def __init__(self):
         """
-        :param DiskType: 系统盘类型。系统盘类型限制详见[实例规格](/document/product/213/2177)。取值范围：<br><li>LOCAL_BASIC：本地硬盘<br><li>LOCAL_SSD：本地SSD硬盘<br><li>CLOUD_BASIC：普通云硬盘<br><li>CLOUD_SSD：SSD云硬盘<br><li>CLOUD_PREMIUM：高性能云硬盘<br><br>默认取值：CLOUD_BASIC。
+        :param DiskType: 系统盘类型。系统盘类型限制详见[存储概述](https://cloud.tencent.com/document/product/213/4952)。取值范围：<br><li>LOCAL_BASIC：本地硬盘<br><li>LOCAL_SSD：本地SSD硬盘<br><li>CLOUD_BASIC：普通云硬盘<br><li>CLOUD_SSD：SSD云硬盘<br><li>CLOUD_PREMIUM：高性能云硬盘<br><br>默认取值：CLOUD_BASIC。
         :type DiskType: str
         :param DiskId: 系统盘ID。LOCAL_BASIC 和 LOCAL_SSD 类型没有ID。暂时不支持该参数。
         :type DiskId: str

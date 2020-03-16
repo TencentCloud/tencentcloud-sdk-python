@@ -25,6 +25,34 @@ class CdsClient(AbstractClient):
     _endpoint = 'cds.tencentcloudapi.com'
 
 
+    def DescribeDasbImageIds(self, request):
+        """获取镜像列表
+
+        :param request: Request instance for DescribeDasbImageIds.
+        :type request: :class:`tencentcloud.cds.v20180420.models.DescribeDasbImageIdsRequest`
+        :rtype: :class:`tencentcloud.cds.v20180420.models.DescribeDasbImageIdsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeDasbImageIds", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeDasbImageIdsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeDbauditInstanceType(self, request):
         """本接口 (DescribeDbauditInstanceType) 用于查询可售卖的产品规格列表。
 
