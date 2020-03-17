@@ -321,7 +321,7 @@ class CreateAclRequest(AbstractModel):
         :type Operation: int
         :param PermissionType: 权限类型，(0:UNKNOWN，1:ANY，2:DENY，3:ALLOW)，当前ckakfa支持ALLOW(相当于白名单)，其它用于后续兼容开源kafka的acl时使用
         :type PermissionType: int
-        :param Host: 默认为*，表示任何host都可以访问，当前ckafka不支持host为*，但是后面开源kafka的产品化会直接支持
+        :param Host: 默认为\*，表示任何host都可以访问，当前ckafka不支持host为\*，但是后面开源kafka的产品化会直接支持
         :type Host: str
         :param Principal: 用户列表，默认为*，表示任何user都可以访问，当前用户只能是用户列表中包含的用户
         :type Principal: str
@@ -630,7 +630,7 @@ class DeleteAclRequest(AbstractModel):
         :type Operation: int
         :param PermissionType: 权限类型，(0:UNKNOWN，1:ANY，2:DENY，3:ALLOW)，当前ckakfa支持ALLOW(相当于白名单)，其它用于后续兼容开源kafka的acl时使用
         :type PermissionType: int
-        :param Host: 默认为*，表示任何host都可以访问，当前ckafka不支持host为*，但是后面开源kafka的产品化会直接支持
+        :param Host: 默认为\*，表示任何host都可以访问，当前ckafka不支持host为\*，但是后面开源kafka的产品化会直接支持
         :type Host: str
         :param Principal: 用户列表，默认为*，表示任何user都可以访问，当前用户只能是用户列表中包含的用户
         :type Principal: str
@@ -1432,7 +1432,7 @@ class DescribeTopicRequest(AbstractModel):
         :type SearchWord: str
         :param Offset: 偏移量，不填默认为0
         :type Offset: int
-        :param Limit: 返回数量，不填则默认为10，最大值为20
+        :param Limit: 返回数量，不填则默认为10，最大值为50
         :type Limit: int
         """
         self.InstanceId = None

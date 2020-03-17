@@ -49,6 +49,8 @@ class CreateSessionRequest(AbstractModel):
         :type Fps: int
         :param UserIp: 游戏用户IP，用于就近调度，例如125.127.178.228
         :type UserIp: str
+        :param Optimization: 优化项，便于客户灰度开启新的优化项，默认为0
+        :type Optimization: int
         """
         self.ClientSession = None
         self.UserId = None
@@ -63,6 +65,7 @@ class CreateSessionRequest(AbstractModel):
         self.MinBitrate = None
         self.Fps = None
         self.UserIp = None
+        self.Optimization = None
 
 
     def _deserialize(self, params):
@@ -79,6 +82,7 @@ class CreateSessionRequest(AbstractModel):
         self.MinBitrate = params.get("MinBitrate")
         self.Fps = params.get("Fps")
         self.UserIp = params.get("UserIp")
+        self.Optimization = params.get("Optimization")
 
 
 class CreateSessionResponse(AbstractModel):

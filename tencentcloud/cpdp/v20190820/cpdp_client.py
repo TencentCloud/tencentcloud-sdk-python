@@ -369,6 +369,34 @@ class CpdpClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def QueryAcctBinding(self, request):
+        """聚鑫-查询子账户绑定银行卡
+
+        :param request: Request instance for QueryAcctBinding.
+        :type request: :class:`tencentcloud.cpdp.v20190820.models.QueryAcctBindingRequest`
+        :rtype: :class:`tencentcloud.cpdp.v20190820.models.QueryAcctBindingResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("QueryAcctBinding", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.QueryAcctBindingResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def QueryBalance(self, request):
         """子商户余额查询
 

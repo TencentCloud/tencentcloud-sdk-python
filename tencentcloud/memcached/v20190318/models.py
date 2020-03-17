@@ -39,6 +39,10 @@ class DescribeInstancesRequest(AbstractModel):
         :type ProjectIds: list of int
         :param SearchKeys: 搜索关键词：支持实例ID、实例名称、完整IP
         :type SearchKeys: list of str
+        :param UniqSubnetIds: 子网ID数组，数组下标从0开始，如：subnet-fdj24n34j2
+        :type UniqSubnetIds: list of str
+        :param UniqVpcIds: 私有网络ID数组，数组下标从0开始，如果不传则默认选择基础网络，如：vpc-sad23jfdfk
+        :type UniqVpcIds: list of str
         :param Vips: 实例服务IP组成的数组，数组下标从0开始
         :type Vips: list of str
         """
@@ -50,6 +54,8 @@ class DescribeInstancesRequest(AbstractModel):
         self.OrderType = None
         self.ProjectIds = None
         self.SearchKeys = None
+        self.UniqSubnetIds = None
+        self.UniqVpcIds = None
         self.Vips = None
 
 
@@ -62,6 +68,8 @@ class DescribeInstancesRequest(AbstractModel):
         self.OrderType = params.get("OrderType")
         self.ProjectIds = params.get("ProjectIds")
         self.SearchKeys = params.get("SearchKeys")
+        self.UniqSubnetIds = params.get("UniqSubnetIds")
+        self.UniqVpcIds = params.get("UniqVpcIds")
         self.Vips = params.get("Vips")
 
 

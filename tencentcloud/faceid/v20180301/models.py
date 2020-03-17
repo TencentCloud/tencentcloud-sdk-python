@@ -1233,7 +1233,9 @@ class MinorsVerificationRequest(AbstractModel):
 0：使用手机号进行校验；
 1：使用姓名与身份证号进行校验。
         :type Type: str
-        :param Mobile: 手机号。11位数字。
+        :param Mobile: 手机号，11位数字，
+特别提示：
+手机号验证只限制在腾讯健康守护可信模型覆盖的数据范围内，与手机号本身在运营商是否实名无关联，不在范围会提示“手机号未实名”，建议客户与传入姓名和身份证号信息组合使用。
         :type Mobile: str
         :param IdCard: 身份证号码。
         :type IdCard: str

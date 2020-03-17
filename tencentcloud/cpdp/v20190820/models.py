@@ -145,6 +145,72 @@ class ApplyWithdrawalResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class BankCardItem(AbstractModel):
+    """绑卡列表
+
+    """
+
+    def __init__(self):
+        """
+        :param EiconBankBranchId: 超级网银行号
+        :type EiconBankBranchId: str
+        :param CnapsBranchId: 大小额行号
+        :type CnapsBranchId: str
+        :param SettleAcctType: 结算账户类型
+1 – 本行账户
+2 – 他行账户
+        :type SettleAcctType: int
+        :param SettleAcctName: 结算账户户名
+<敏感信息>
+        :type SettleAcctName: str
+        :param AcctBranchName: 开户行名称
+        :type AcctBranchName: str
+        :param SettleAcctNo: 用于提现
+<敏感信息>
+        :type SettleAcctNo: str
+        :param SubAppId: 聚鑫计费SubAppId，代表子商户
+        :type SubAppId: str
+        :param BindType: 验证类型
+1 – 小额转账验证
+2 – 短信验证
+        :type BindType: int
+        :param Mobile: 用于短信验证
+BindType==2时必填
+<敏感信息>
+        :type Mobile: str
+        :param IdType: 证件类型
+        :type IdType: str
+        :param IdCode: 证件号码
+<敏感信息>
+        :type IdCode: str
+        """
+        self.EiconBankBranchId = None
+        self.CnapsBranchId = None
+        self.SettleAcctType = None
+        self.SettleAcctName = None
+        self.AcctBranchName = None
+        self.SettleAcctNo = None
+        self.SubAppId = None
+        self.BindType = None
+        self.Mobile = None
+        self.IdType = None
+        self.IdCode = None
+
+
+    def _deserialize(self, params):
+        self.EiconBankBranchId = params.get("EiconBankBranchId")
+        self.CnapsBranchId = params.get("CnapsBranchId")
+        self.SettleAcctType = params.get("SettleAcctType")
+        self.SettleAcctName = params.get("SettleAcctName")
+        self.AcctBranchName = params.get("AcctBranchName")
+        self.SettleAcctNo = params.get("SettleAcctNo")
+        self.SubAppId = params.get("SubAppId")
+        self.BindType = params.get("BindType")
+        self.Mobile = params.get("Mobile")
+        self.IdType = params.get("IdType")
+        self.IdCode = params.get("IdCode")
+
+
 class BindAcctRequest(AbstractModel):
     """BindAcct请求参数结构体
 
@@ -795,6 +861,8 @@ class CreateAcctRequest(AbstractModel):
         :type SubMchType: str
         :param ShortName: 不填则默认子商户名称
         :type ShortName: str
+        :param PlatformId: 平台参数，沙箱环境传sandbox，生产环境传release，默认release
+        :type PlatformId: str
         """
         self.MidasAppId = None
         self.SubMchId = None
@@ -807,6 +875,7 @@ class CreateAcctRequest(AbstractModel):
         self.MidasSignature = None
         self.SubMchType = None
         self.ShortName = None
+        self.PlatformId = None
 
 
     def _deserialize(self, params):
@@ -821,6 +890,7 @@ class CreateAcctRequest(AbstractModel):
         self.MidasSignature = params.get("MidasSignature")
         self.SubMchType = params.get("SubMchType")
         self.ShortName = params.get("ShortName")
+        self.PlatformId = params.get("PlatformId")
 
 
 class CreateAcctResponse(AbstractModel):
@@ -1119,6 +1189,69 @@ class ModifyMntMbrBindRelateAcctBankCodeResponse(AbstractModel):
         self.TxnReturnMsg = params.get("TxnReturnMsg")
         self.CnsmrSeqNo = params.get("CnsmrSeqNo")
         self.ReservedMsg = params.get("ReservedMsg")
+        self.RequestId = params.get("RequestId")
+
+
+class QueryAcctBindingRequest(AbstractModel):
+    """QueryAcctBinding请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param MidasAppId: 聚鑫分配的支付主MidasAppId
+        :type MidasAppId: str
+        :param SubAppId: 聚鑫计费SubAppId，代表子商户
+        :type SubAppId: str
+        :param MidasSecretId: 由平台客服提供的计费密钥Id
+        :type MidasSecretId: str
+        :param MidasSignature: 计费签名
+        :type MidasSignature: str
+        :param PlatformId: 平台参数，沙箱环境传sandbox，生产环境传release，默认release
+        :type PlatformId: str
+        """
+        self.MidasAppId = None
+        self.SubAppId = None
+        self.MidasSecretId = None
+        self.MidasSignature = None
+        self.PlatformId = None
+
+
+    def _deserialize(self, params):
+        self.MidasAppId = params.get("MidasAppId")
+        self.SubAppId = params.get("SubAppId")
+        self.MidasSecretId = params.get("MidasSecretId")
+        self.MidasSignature = params.get("MidasSignature")
+        self.PlatformId = params.get("PlatformId")
+
+
+class QueryAcctBindingResponse(AbstractModel):
+    """QueryAcctBinding返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param TotalCount: 总行数
+        :type TotalCount: int
+        :param BankCardItems: 银行卡信息列表
+        :type BankCardItems: list of BankCardItem
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.BankCardItems = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("BankCardItems") is not None:
+            self.BankCardItems = []
+            for item in params.get("BankCardItems"):
+                obj = BankCardItem()
+                obj._deserialize(item)
+                self.BankCardItems.append(obj)
         self.RequestId = params.get("RequestId")
 
 
