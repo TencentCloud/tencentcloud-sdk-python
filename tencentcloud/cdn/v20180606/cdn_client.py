@@ -258,6 +258,34 @@ class CdnClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeCertDomains(self, request):
+        """校验证书并提取SSL证书中包含的域名，返回CDN已接入的域名列表，及已配置证书的域名列表
+
+        :param request: Request instance for DescribeCertDomains.
+        :type request: :class:`tencentcloud.cdn.v20180606.models.DescribeCertDomainsRequest`
+        :rtype: :class:`tencentcloud.cdn.v20180606.models.DescribeCertDomainsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeCertDomains", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeCertDomainsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeDomains(self, request):
         """DescribeDomains 用于查询内容分发网络加速域名（含境内、境外）基本配置信息，包括项目ID、服务状态，业务类型、创建时间、更新时间等信息。
 

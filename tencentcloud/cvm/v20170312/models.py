@@ -2858,7 +2858,7 @@ class InstanceMarketOptionsRequest(AbstractModel):
 
 
 class InstanceStatus(AbstractModel):
-    """描述实例的状态。状态类型详见[实例状态表](/document/api/213/9452#INSTANCE_STATE)
+    """描述实例的状态。状态类型详见[实例状态表](/document/api/213/15753#InstanceStatus)
 
     """
 
@@ -3718,7 +3718,7 @@ class Placement(AbstractModel):
 
     def __init__(self):
         """
-        :param Zone: 实例所属的[可用区](/https://cloud.tencent.com/document/product/213/15753#ZoneInfo)ID。该参数也可以通过调用  [DescribeZones](https://cloud.tencent.com/document/api/213/15707) 的返回值中的Zone字段来获取。
+        :param Zone: 实例所属的[可用区](https://cloud.tencent.com/document/product/213/15753#ZoneInfo)ID。该参数也可以通过调用  [DescribeZones](https://cloud.tencent.com/document/product/213/15707) 的返回值中的Zone字段来获取。
         :type Zone: str
         :param ProjectId: 实例所属项目ID。该参数可以通过调用 [DescribeProject](/document/api/378/4400) 的返回值中的 projectId 字段来获取。不填为默认项目。
         :type ProjectId: int

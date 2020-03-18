@@ -3456,6 +3456,8 @@ class ReloadDeviceOsRequest(AbstractModel):
         :type NeedEMRSoftware: int
         :param ReserveSgConfig: 是否保留安全组配置，取值：1(保留) 0(不保留)，默认取值0
         :type ReserveSgConfig: int
+        :param SysDataSpace: /data分区大小，可不填。除root、swap、usr/local的剩余空间会自动分配到data分区
+        :type SysDataSpace: int
         """
         self.InstanceId = None
         self.Password = None
@@ -3476,6 +3478,7 @@ class ReloadDeviceOsRequest(AbstractModel):
         self.NeedEMRAgent = None
         self.NeedEMRSoftware = None
         self.ReserveSgConfig = None
+        self.SysDataSpace = None
 
 
     def _deserialize(self, params):
@@ -3498,6 +3501,7 @@ class ReloadDeviceOsRequest(AbstractModel):
         self.NeedEMRAgent = params.get("NeedEMRAgent")
         self.NeedEMRSoftware = params.get("NeedEMRSoftware")
         self.ReserveSgConfig = params.get("ReserveSgConfig")
+        self.SysDataSpace = params.get("SysDataSpace")
 
 
 class ReloadDeviceOsResponse(AbstractModel):

@@ -1367,7 +1367,7 @@ class ModifyTableGroupNameRequest(AbstractModel):
         :type ClusterId: str
         :param TableGroupId: 待修改名称的表格组ID
         :type TableGroupId: str
-        :param TableGroupName: 新的大区名称，可以使用中英文字符和符号
+        :param TableGroupName: 新的表格组名称，可以使用中英文字符和符号
         :type TableGroupName: str
         """
         self.ClusterId = None

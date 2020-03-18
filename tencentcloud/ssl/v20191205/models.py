@@ -190,19 +190,19 @@ class Certificates(AbstractModel):
         :param From: 证书来源。
 注意：此字段可能返回 null，表示取不到有效值。
         :type From: str
-        :param PackageType: 证书套餐类型。
+        :param PackageType: 证书套餐类型：1 = GeoTrust DV SSL CA - G3， 2 = TrustAsia TLS RSA CA， 3 = Symantec 增强型企业版(EV Pro)， 4 = Symantec 增强型(EV)， 5 = Symantec 企业型专业版(OV Pro)， 6 = Symantec 企业型(OV)， 7 = Symantec 企业型(OV)通配符， 8 = Geotrust 增强型(EV)， 9 = Geotrust 企业型(OV)， 10 = Geotrust 企业型(OV)通配符， 11 = TrustAsia 域名型多域名 SSL证书， 12 = TrustAsia 域名型(DV)通配符， 13 = TrustAsia 企业型通配符 （OV）SSL证书(D3)， 14 = TrustAsia 企业型 （OV）SSL证书(D3)， 15 = TrustAsia 企业型多域名 （OV）SSL证书(D3)， 16 = TrustAsia 增强型 （EV）SSL证书(D3)， 17 = TrustAsia 增强型多域名（EV）SSL证书(D3)， 18 = GlobalSign 企业型（OV）SSL证， 19 = GlobalSign 企业型通配符 （OV）SSL证书， 20 = GlobalSign 增强型 （EV）SSL证书， 21 = TrustAsia 企业型通配符多域名 （OV）SSL证书(D3)， 22 = GlobalSign 企业型多域名 （OV）SSL证书， 23 = GlobalSign 企业型通配符多域名 （OV）SSL证书， 24 = GlobalSign 增强型多域名（EV） SSL证书。
 注意：此字段可能返回 null，表示取不到有效值。
         :type PackageType: str
         :param CertificateType: 证书类型（目前支持：CA = 客户端证书，SVR = 服务器证书）。
 注意：此字段可能返回 null，表示取不到有效值。
         :type CertificateType: str
-        :param ProductZhName: 证书办法者名称。
+        :param ProductZhName: 颁发者。
 注意：此字段可能返回 null，表示取不到有效值。
         :type ProductZhName: str
         :param Domain: 主域名。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Domain: str
-        :param Alias: 别名。
+        :param Alias: 备注名称。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Alias: str
         :param Status: 状态值 0：审核中，1：已通过，2：审核失败，3：已过期，4：已添加云解析记录，5：OV/EV 证书，待提交资料，6：订单取消中，7：已取消，8：已提交资料， 待上传确认函。
@@ -217,7 +217,7 @@ class Certificates(AbstractModel):
         :param StatusMsg: 状态信息。
 注意：此字段可能返回 null，表示取不到有效值。
         :type StatusMsg: str
-        :param VerifyType: 验证类型。
+        :param VerifyType: 验证类型：DNS_AUTO = 自动DNS验证，DNS = 手动DNS验证，FILE = 文件验证，EMAIL = 邮件验证。
 注意：此字段可能返回 null，表示取不到有效值。
         :type VerifyType: str
         :param CertBeginTime: 证书生效时间。
@@ -226,7 +226,7 @@ class Certificates(AbstractModel):
         :param CertEndTime: 证书过期时间。
 注意：此字段可能返回 null，表示取不到有效值。
         :type CertEndTime: str
-        :param ValidityPeriod: 证书过期时间。
+        :param ValidityPeriod: 证书有效期，单位（月）。
 注意：此字段可能返回 null，表示取不到有效值。
         :type ValidityPeriod: str
         :param InsertTime: 创建时间。
@@ -1467,10 +1467,10 @@ class SubmittedData(AbstractModel):
         :param OrganizationCountry: 国家。
 注意：此字段可能返回 null，表示取不到有效值。
         :type OrganizationCountry: str
-        :param OrganizationCity: 省。
+        :param OrganizationCity: 市。
 注意：此字段可能返回 null，表示取不到有效值。
         :type OrganizationCity: str
-        :param OrganizationRegion: 市。
+        :param OrganizationRegion: 省。
 注意：此字段可能返回 null，表示取不到有效值。
         :type OrganizationRegion: str
         :param PostalCode: 邮政编码。

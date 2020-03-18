@@ -530,9 +530,9 @@ class CreateAgentGroupRequest(AbstractModel):
         """
         :param GroupName: 拨测分组名称，不超过32个字符
         :type GroupName: str
-        :param IsDefault: 是否为默认分组，取值可为 0 或 1
+        :param IsDefault: 是否为默认分组，取值可为 0 或 1。取 1 时表示设置为默认分组
         :type IsDefault: int
-        :param Agents: Province, Isp 需要成对地进行选择。参数对的取值范围。参见：DescribeAgentList 的返回结果。
+        :param Agents: Province, Isp 需要成对地进行选择。参数对的取值范围。参见：DescribeAgents 的返回结果。
         :type Agents: list of CatAgent
         """
         self.GroupName = None
@@ -587,7 +587,7 @@ class CreateTaskExRequest(AbstractModel):
         :type Period: int
         :param TaskName: 拨测任务名称不能超过32个字符。同一个用户创建的任务名不可重复
         :type TaskName: str
-        :param AgentGroupId: 拨测分组ID，体现本拨测任务要采用那些运营商作为拨测源。一般可直接填写本用户的默认拨测分组。参见：DescribeAgentGroups 接口，本参数使用返回结果里的GroupId的值。注意： Type为0时，AgentGroupId为必填
+        :param AgentGroupId: 拨测分组ID，体现本拨测任务要采用哪些运营商作为拨测源。一般可直接填写本用户的默认拨测分组。参见：DescribeAgentGroups 接口，本参数使用返回结果里的GroupId的值。注意： Type为0时，AgentGroupId为必填
         :type AgentGroupId: int
         :param Host: 指定域名(如需要)
         :type Host: str
@@ -1930,11 +1930,11 @@ class ModifyAgentGroupRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param GroupId: 拨测分组id
+        :param GroupId: 拨测分组ID
         :type GroupId: int
         :param GroupName: 拨测分组名称
         :type GroupName: str
-        :param IsDefault: 是否为默认分组。取值可为0，1
+        :param IsDefault: 是否为默认分组。取值可为0，1。取 1 时表示设置为默认分组
         :type IsDefault: int
         :param Agents: Province, Isp 需要成对地进行选择。参数对的取值范围。参见：DescribeAgents 的返回结果。
         :type Agents: list of CatAgent
@@ -1991,7 +1991,7 @@ class ModifyTaskExRequest(AbstractModel):
         :type TaskName: str
         :param TaskId: 验证成功的拨测任务ID
         :type TaskId: int
-        :param AgentGroupId: 拨测分组ID，体现本拨测任务要采用那些运营商作为拨测源。一般可直接填写本用户的默认拨测分组。参见：DescribeAgentGroupList 接口，本参数使用返回结果里的GroupId的值。注意，Type为0时，AgentGroupId为必填
+        :param AgentGroupId: 拨测分组ID，体现本拨测任务要采用哪些运营商作为拨测源。一般可直接填写本用户的默认拨测分组。参见：DescribeAgentGroupList 接口，本参数使用返回结果里的GroupId的值。注意，Type为0时，AgentGroupId为必填
         :type AgentGroupId: int
         :param Host: 指定域名(如需要)
         :type Host: str

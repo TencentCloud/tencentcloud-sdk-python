@@ -82,7 +82,7 @@ class CatClient(AbstractClient):
 
 
     def CreateTaskEx(self, request):
-        """创建拨测任务(扩充)
+        """创建拨测任务(扩展)
 
         :param request: Request instance for CreateTaskEx.
         :type request: :class:`tencentcloud.cat.v20180409.models.CreateTaskExRequest`

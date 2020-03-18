@@ -396,9 +396,9 @@ class DescribeAccidentEventListRequest(AbstractModel):
         :type StartTime: int
         :param EndTime: 结束时间，默认当前时间戳
         :type EndTime: int
-        :param Limit: 每页返回的数量，默认20
+        :param Limit: 分页参数，每页返回的数量，取值1~100，默认20
         :type Limit: int
-        :param Offset: 页偏移量，默认0
+        :param Offset: 分页参数，页偏移量，从0开始计数，默认0
         :type Offset: int
         :param UpdateTimeOrder: 根据UpdateTime排序的规则，取值asc或desc
         :type UpdateTimeOrder: str
@@ -663,9 +663,9 @@ class DescribeBasicAlarmListRequest(AbstractModel):
         :type StartTime: int
         :param EndTime: 结束时间，默认当前时间戳
         :type EndTime: int
-        :param Limit: 每页返回的数量，默认20
+        :param Limit: 分页参数，每页返回的数量，取值1~100，默认20
         :type Limit: int
-        :param Offset: 页偏移量，默认0
+        :param Offset: 分页参数，页偏移量，从0开始计数，默认0
         :type Offset: int
         :param OccurTimeOrder: 根据发生时间排序，取值ASC或DESC
         :type OccurTimeOrder: str

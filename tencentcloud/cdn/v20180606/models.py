@@ -1561,6 +1561,50 @@ class DescribeCdnIpResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeCertDomainsRequest(AbstractModel):
+    """DescribeCertDomains请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Cert: PEM格式证书Base64编码后的字符串
+        :type Cert: str
+        """
+        self.Cert = None
+
+
+    def _deserialize(self, params):
+        self.Cert = params.get("Cert")
+
+
+class DescribeCertDomainsResponse(AbstractModel):
+    """DescribeCertDomains返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Domains: 已接入CDN的域名列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Domains: list of str
+        :param CertifiedDomains: CDN已配置证书的域名列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CertifiedDomains: list of str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Domains = None
+        self.CertifiedDomains = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Domains = params.get("Domains")
+        self.CertifiedDomains = params.get("CertifiedDomains")
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeDomainsConfigRequest(AbstractModel):
     """DescribeDomainsConfig请求参数结构体
 
