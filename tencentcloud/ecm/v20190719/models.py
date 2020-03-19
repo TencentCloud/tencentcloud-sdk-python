@@ -1870,13 +1870,13 @@ class Position(AbstractModel):
         :param ZoneInfo: 实例所在的Zone的信息。
         :type ZoneInfo: :class:`tencentcloud.ecm.v20190719.models.ZoneInfo`
         :param Country: 实例所在的国家的信息。
-        :type Country: :class:`tencentcloud.ecm.v20190719.models.`
+        :type Country: :class:`tencentcloud.ecm.v20190719.models.Country`
         :param Area: 实例所在的Area的信息。
         :type Area: :class:`tencentcloud.ecm.v20190719.models.Area`
         :param Province: 实例所在的省份的信息。
-        :type Province: :class:`tencentcloud.ecm.v20190719.models.`
+        :type Province: :class:`tencentcloud.ecm.v20190719.models.Province`
         :param City: 实例所在的城市的信息。
-        :type City: :class:`tencentcloud.ecm.v20190719.models.`
+        :type City: :class:`tencentcloud.ecm.v20190719.models.City`
         :param RegionInfo: 实例所在的Region的信息。
         :type RegionInfo: :class:`tencentcloud.ecm.v20190719.models.RegionInfo`
         """
@@ -1893,16 +1893,16 @@ class Position(AbstractModel):
             self.ZoneInfo = ZoneInfo()
             self.ZoneInfo._deserialize(params.get("ZoneInfo"))
         if params.get("Country") is not None:
-            self.Country = ()
+            self.Country = Country()
             self.Country._deserialize(params.get("Country"))
         if params.get("Area") is not None:
             self.Area = Area()
             self.Area._deserialize(params.get("Area"))
         if params.get("Province") is not None:
-            self.Province = ()
+            self.Province = Province()
             self.Province._deserialize(params.get("Province"))
         if params.get("City") is not None:
-            self.City = ()
+            self.City = City()
             self.City._deserialize(params.get("City"))
         if params.get("RegionInfo") is not None:
             self.RegionInfo = RegionInfo()
