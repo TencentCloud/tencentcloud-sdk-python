@@ -4056,9 +4056,12 @@ class VpnConnection(AbstractModel):
         :type VpnGatewayName: str
         :param CustomerGatewayName: 对端网关名称
         :type CustomerGatewayName: str
-        :param DestinationCidr: IPSEC VPN通道路由策略
+        :param DestinationCidr: IPSEC VPN通道路由策略目的端地址
 注意：此字段可能返回 null，表示取不到有效值。
         :type DestinationCidr: list of str
+        :param SourceCidr: IPSEC VPN通道路由策略源端地址
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SourceCidr: list of str
         """
         self.VpnConnectionId = None
         self.VpnConnectionName = None
@@ -4079,6 +4082,7 @@ class VpnConnection(AbstractModel):
         self.VpnGatewayName = None
         self.CustomerGatewayName = None
         self.DestinationCidr = None
+        self.SourceCidr = None
 
 
     def _deserialize(self, params):
@@ -4110,6 +4114,7 @@ class VpnConnection(AbstractModel):
         self.VpnGatewayName = params.get("VpnGatewayName")
         self.CustomerGatewayName = params.get("CustomerGatewayName")
         self.DestinationCidr = params.get("DestinationCidr")
+        self.SourceCidr = params.get("SourceCidr")
 
 
 class VpnGateway(AbstractModel):

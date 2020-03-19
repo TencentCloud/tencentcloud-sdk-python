@@ -653,6 +653,27 @@ class DstInfo(AbstractModel):
         self.ReadOnly = params.get("ReadOnly")
 
 
+class ErrorInfo(AbstractModel):
+    """迁移任务错误信息及提示
+
+    """
+
+    def __init__(self):
+        """
+        :param ErrorLog: 具体的报错日志, 包含错误码和错误信息
+        :type ErrorLog: str
+        :param HelpDoc: 报错对应的帮助文档Ur
+        :type HelpDoc: str
+        """
+        self.ErrorLog = None
+        self.HelpDoc = None
+
+
+    def _deserialize(self, params):
+        self.ErrorLog = params.get("ErrorLog")
+        self.HelpDoc = params.get("HelpDoc")
+
+
 class MigrateDetailInfo(AbstractModel):
     """描述详细迁移过程
 
@@ -736,6 +757,8 @@ class MigrateJobInfo(AbstractModel):
         :type Status: int
         :param Detail: 任务详情
         :type Detail: :class:`tencentcloud.dts.v20180330.models.MigrateDetailInfo`
+        :param ErrorInfo: 任务错误信息提示，当任务发生错误时，不为null或者空值
+        :type ErrorInfo: list of ErrorInfo
         """
         self.JobId = None
         self.JobName = None
@@ -752,6 +775,7 @@ class MigrateJobInfo(AbstractModel):
         self.EndTime = None
         self.Status = None
         self.Detail = None
+        self.ErrorInfo = None
 
 
     def _deserialize(self, params):
@@ -778,6 +802,12 @@ class MigrateJobInfo(AbstractModel):
         if params.get("Detail") is not None:
             self.Detail = MigrateDetailInfo()
             self.Detail._deserialize(params.get("Detail"))
+        if params.get("ErrorInfo") is not None:
+            self.ErrorInfo = []
+            for item in params.get("ErrorInfo"):
+                obj = ErrorInfo()
+                obj._deserialize(item)
+                self.ErrorInfo.append(obj)
 
 
 class MigrateOption(AbstractModel):

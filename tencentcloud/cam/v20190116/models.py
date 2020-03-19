@@ -385,6 +385,9 @@ class AttachedPolicyOfRole(AbstractModel):
         :param DeactivedDetail: 已下线的产品列表
 注意：此字段可能返回 null，表示取不到有效值。
         :type DeactivedDetail: list of str
+        :param Description: 策略描述
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Description: str
         """
         self.PolicyId = None
         self.PolicyName = None
@@ -393,6 +396,7 @@ class AttachedPolicyOfRole(AbstractModel):
         self.CreateMode = None
         self.Deactived = None
         self.DeactivedDetail = None
+        self.Description = None
 
 
     def _deserialize(self, params):
@@ -403,6 +407,7 @@ class AttachedPolicyOfRole(AbstractModel):
         self.CreateMode = params.get("CreateMode")
         self.Deactived = params.get("Deactived")
         self.DeactivedDetail = params.get("DeactivedDetail")
+        self.Description = params.get("Description")
 
 
 class ConsumeCustomMFATokenRequest(AbstractModel):

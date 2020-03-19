@@ -692,6 +692,8 @@ class DCDBShardInfo(AbstractModel):
         :param ShardSlaveZones: 分片的从可用区列表
 注意：此字段可能返回 null，表示取不到有效值。
         :type ShardSlaveZones: list of str
+        :param Cpu: CPU核数
+        :type Cpu: int
         """
         self.InstanceId = None
         self.ShardSerialId = None
@@ -716,6 +718,7 @@ class DCDBShardInfo(AbstractModel):
         self.Paymode = None
         self.ShardMasterZone = None
         self.ShardSlaveZones = None
+        self.Cpu = None
 
 
     def _deserialize(self, params):
@@ -742,6 +745,7 @@ class DCDBShardInfo(AbstractModel):
         self.Paymode = params.get("Paymode")
         self.ShardMasterZone = params.get("ShardMasterZone")
         self.ShardSlaveZones = params.get("ShardSlaveZones")
+        self.Cpu = params.get("Cpu")
 
 
 class Database(AbstractModel):
@@ -2673,6 +2677,8 @@ class SpecConfigInfo(AbstractModel):
         :type Pid: int
         :param Qps: 最大 Qps 值
         :type Qps: int
+        :param Cpu: CPU核数
+        :type Cpu: int
         """
         self.NodeCount = None
         self.Memory = None
@@ -2681,6 +2687,7 @@ class SpecConfigInfo(AbstractModel):
         self.SuitInfo = None
         self.Pid = None
         self.Qps = None
+        self.Cpu = None
 
 
     def _deserialize(self, params):
@@ -2691,6 +2698,7 @@ class SpecConfigInfo(AbstractModel):
         self.SuitInfo = params.get("SuitInfo")
         self.Pid = params.get("Pid")
         self.Qps = params.get("Qps")
+        self.Cpu = params.get("Cpu")
 
 
 class SplitShardConfig(AbstractModel):

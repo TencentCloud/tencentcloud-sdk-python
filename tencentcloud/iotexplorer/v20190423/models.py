@@ -140,18 +140,21 @@ class ControlDeviceDataRequest(AbstractModel):
         :type ProductId: str
         :param DeviceName: 设备名称
         :type DeviceName: str
-        :param Data: 属性数据
+        :param Data: 属性数据, JSON格式字符串, 注意字段需要在物模型属性里定义
         :type Data: str
-        :param Method: 请求类型
+        :param Method: 请求类型 , 不填该参数或者 desired 表示下发属性给设备,  reported 表示模拟设备上报属性
         :type Method: str
-        :param DeviceId: 设备ID，该字段有值将代替 ProductId/DeviceName
+        :param DeviceId: 设备ID，该字段有值将代替 ProductId/DeviceName , 通常情况不需要填写
         :type DeviceId: str
+        :param DataTimestamp: 上报数据UNIX时间戳(毫秒), 仅对Method:reported有效
+        :type DataTimestamp: int
         """
         self.ProductId = None
         self.DeviceName = None
         self.Data = None
         self.Method = None
         self.DeviceId = None
+        self.DataTimestamp = None
 
 
     def _deserialize(self, params):
@@ -160,6 +163,7 @@ class ControlDeviceDataRequest(AbstractModel):
         self.Data = params.get("Data")
         self.Method = params.get("Method")
         self.DeviceId = params.get("DeviceId")
+        self.DataTimestamp = params.get("DataTimestamp")
 
 
 class ControlDeviceDataResponse(AbstractModel):

@@ -1128,7 +1128,7 @@ class ListKeyDetailRequest(AbstractModel):
         :type SearchKeyAlias: str
         :param Origin: 根据CMK类型筛选， "TENCENT_KMS" 表示筛选密钥材料由KMS创建的CMK， "EXTERNAL" 表示筛选密钥材料需要用户导入的 EXTERNAL类型CMK，"ALL" 或者不设置表示两种类型都查询，大小写敏感。
         :type Origin: str
-        :param KeyUsage: 根据CMK的KeyUsage筛选，为空表示筛选全部，可使用的参数为：ENCRYPT_DECRYPT 或 ASYMMETRIC_DECRYPT_RSA_2048 或 ASYMMETRIC_DECRYPT_SM2
+        :param KeyUsage: 根据CMK的KeyUsage筛选，ALL表示筛选全部，可使用的参数为：ALL 或 ENCRYPT_DECRYPT 或 ASYMMETRIC_DECRYPT_RSA_2048 或 ASYMMETRIC_DECRYPT_SM2，为空则默认筛选ENCRYPT_DECRYPT类型
         :type KeyUsage: str
         """
         self.Offset = None

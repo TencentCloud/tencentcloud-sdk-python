@@ -17,28 +17,28 @@ import json
 
 from tencentcloud.common.exception.tencent_cloud_sdk_exception import TencentCloudSDKException
 from tencentcloud.common.abstract_client import AbstractClient
-from tencentcloud.gse.v20191112 import models
+from tencentcloud.tione.v20191022 import models
 
 
-class GseClient(AbstractClient):
-    _apiVersion = '2019-11-12'
-    _endpoint = 'gse.tencentcloudapi.com'
+class TioneClient(AbstractClient):
+    _apiVersion = '2019-10-22'
+    _endpoint = 'tione.tencentcloudapi.com'
 
 
-    def CreateGameServerSession(self, request):
-        """本接口（CreateGameServerSession）用于创建游戏服务会话
+    def CreateNotebookInstance(self, request):
+        """创建Notebook实例
 
-        :param request: Request instance for CreateGameServerSession.
-        :type request: :class:`tencentcloud.gse.v20191112.models.CreateGameServerSessionRequest`
-        :rtype: :class:`tencentcloud.gse.v20191112.models.CreateGameServerSessionResponse`
+        :param request: Request instance for CreateNotebookInstance.
+        :type request: :class:`tencentcloud.tione.v20191022.models.CreateNotebookInstanceRequest`
+        :rtype: :class:`tencentcloud.tione.v20191022.models.CreateNotebookInstanceResponse`
 
         """
         try:
             params = request._serialize()
-            body = self.call("CreateGameServerSession", params)
+            body = self.call("CreateNotebookInstance", params)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.CreateGameServerSessionResponse()
+                model = models.CreateNotebookInstanceResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -53,20 +53,20 @@ class GseClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def DescribeGameServerSessionDetails(self, request):
-        """本接口（DescribeGameServerSessionDetails）用于查询游戏服务器会话详情列表
+    def CreatePresignedNotebookInstanceUrl(self, request):
+        """创建Notebook授权Url
 
-        :param request: Request instance for DescribeGameServerSessionDetails.
-        :type request: :class:`tencentcloud.gse.v20191112.models.DescribeGameServerSessionDetailsRequest`
-        :rtype: :class:`tencentcloud.gse.v20191112.models.DescribeGameServerSessionDetailsResponse`
+        :param request: Request instance for CreatePresignedNotebookInstanceUrl.
+        :type request: :class:`tencentcloud.tione.v20191022.models.CreatePresignedNotebookInstanceUrlRequest`
+        :rtype: :class:`tencentcloud.tione.v20191022.models.CreatePresignedNotebookInstanceUrlResponse`
 
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeGameServerSessionDetails", params)
+            body = self.call("CreatePresignedNotebookInstanceUrl", params)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.DescribeGameServerSessionDetailsResponse()
+                model = models.CreatePresignedNotebookInstanceUrlResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -81,20 +81,20 @@ class GseClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def DescribeGameServerSessionPlacement(self, request):
-        """本接口（DescribeGameServerSessionPlacement）用于查询游戏服务器会话的放置
+    def CreateTrainingJob(self, request):
+        """创建训练任务
 
-        :param request: Request instance for DescribeGameServerSessionPlacement.
-        :type request: :class:`tencentcloud.gse.v20191112.models.DescribeGameServerSessionPlacementRequest`
-        :rtype: :class:`tencentcloud.gse.v20191112.models.DescribeGameServerSessionPlacementResponse`
+        :param request: Request instance for CreateTrainingJob.
+        :type request: :class:`tencentcloud.tione.v20191022.models.CreateTrainingJobRequest`
+        :rtype: :class:`tencentcloud.tione.v20191022.models.CreateTrainingJobResponse`
 
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeGameServerSessionPlacement", params)
+            body = self.call("CreateTrainingJob", params)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.DescribeGameServerSessionPlacementResponse()
+                model = models.CreateTrainingJobResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -109,20 +109,20 @@ class GseClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def DescribeGameServerSessions(self, request):
-        """本接口（DescribeGameServerSessions）用于查询游戏服务器会话列表
+    def DeleteNotebookInstance(self, request):
+        """删除notebook实例
 
-        :param request: Request instance for DescribeGameServerSessions.
-        :type request: :class:`tencentcloud.gse.v20191112.models.DescribeGameServerSessionsRequest`
-        :rtype: :class:`tencentcloud.gse.v20191112.models.DescribeGameServerSessionsResponse`
+        :param request: Request instance for DeleteNotebookInstance.
+        :type request: :class:`tencentcloud.tione.v20191022.models.DeleteNotebookInstanceRequest`
+        :rtype: :class:`tencentcloud.tione.v20191022.models.DeleteNotebookInstanceResponse`
 
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeGameServerSessions", params)
+            body = self.call("DeleteNotebookInstance", params)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.DescribeGameServerSessionsResponse()
+                model = models.DeleteNotebookInstanceResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -137,20 +137,20 @@ class GseClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def DescribeInstances(self, request):
-        """用于查询服务器实例列表
+    def DescribeNotebookInstance(self, request):
+        """查询Notebook实例详情
 
-        :param request: Request instance for DescribeInstances.
-        :type request: :class:`tencentcloud.gse.v20191112.models.DescribeInstancesRequest`
-        :rtype: :class:`tencentcloud.gse.v20191112.models.DescribeInstancesResponse`
+        :param request: Request instance for DescribeNotebookInstance.
+        :type request: :class:`tencentcloud.tione.v20191022.models.DescribeNotebookInstanceRequest`
+        :rtype: :class:`tencentcloud.tione.v20191022.models.DescribeNotebookInstanceResponse`
 
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeInstances", params)
+            body = self.call("DescribeNotebookInstance", params)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.DescribeInstancesResponse()
+                model = models.DescribeNotebookInstanceResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -165,20 +165,20 @@ class GseClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def DescribePlayerSessions(self, request):
-        """本接口（DescribePlayerSessions）用于获取玩家会话列表
+    def DescribeNotebookInstances(self, request):
+        """查询Notebook实例列表
 
-        :param request: Request instance for DescribePlayerSessions.
-        :type request: :class:`tencentcloud.gse.v20191112.models.DescribePlayerSessionsRequest`
-        :rtype: :class:`tencentcloud.gse.v20191112.models.DescribePlayerSessionsResponse`
+        :param request: Request instance for DescribeNotebookInstances.
+        :type request: :class:`tencentcloud.tione.v20191022.models.DescribeNotebookInstancesRequest`
+        :rtype: :class:`tencentcloud.tione.v20191022.models.DescribeNotebookInstancesResponse`
 
         """
         try:
             params = request._serialize()
-            body = self.call("DescribePlayerSessions", params)
+            body = self.call("DescribeNotebookInstances", params)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.DescribePlayerSessionsResponse()
+                model = models.DescribeNotebookInstancesResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -193,20 +193,20 @@ class GseClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def GetGameServerSessionLogUrl(self, request):
-        """本接口（GetGameServerSessionLogUrl）用于获取游戏服务器会话的日志URL
+    def DescribeTrainingJob(self, request):
+        """查询训练任务
 
-        :param request: Request instance for GetGameServerSessionLogUrl.
-        :type request: :class:`tencentcloud.gse.v20191112.models.GetGameServerSessionLogUrlRequest`
-        :rtype: :class:`tencentcloud.gse.v20191112.models.GetGameServerSessionLogUrlResponse`
+        :param request: Request instance for DescribeTrainingJob.
+        :type request: :class:`tencentcloud.tione.v20191022.models.DescribeTrainingJobRequest`
+        :rtype: :class:`tencentcloud.tione.v20191022.models.DescribeTrainingJobResponse`
 
         """
         try:
             params = request._serialize()
-            body = self.call("GetGameServerSessionLogUrl", params)
+            body = self.call("DescribeTrainingJob", params)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.GetGameServerSessionLogUrlResponse()
+                model = models.DescribeTrainingJobResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -221,20 +221,20 @@ class GseClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def GetInstanceAccess(self, request):
-        """获取实例登录所需要的凭据
+    def StartNotebookInstance(self, request):
+        """启动Notebook实例
 
-        :param request: Request instance for GetInstanceAccess.
-        :type request: :class:`tencentcloud.gse.v20191112.models.GetInstanceAccessRequest`
-        :rtype: :class:`tencentcloud.gse.v20191112.models.GetInstanceAccessResponse`
+        :param request: Request instance for StartNotebookInstance.
+        :type request: :class:`tencentcloud.tione.v20191022.models.StartNotebookInstanceRequest`
+        :rtype: :class:`tencentcloud.tione.v20191022.models.StartNotebookInstanceResponse`
 
         """
         try:
             params = request._serialize()
-            body = self.call("GetInstanceAccess", params)
+            body = self.call("StartNotebookInstance", params)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.GetInstanceAccessResponse()
+                model = models.StartNotebookInstanceResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -249,20 +249,20 @@ class GseClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def JoinGameServerSession(self, request):
-        """本接口（JoinGameServerSession）用于加入游戏服务器会话
+    def StopNotebookInstance(self, request):
+        """停止Notebook实例
 
-        :param request: Request instance for JoinGameServerSession.
-        :type request: :class:`tencentcloud.gse.v20191112.models.JoinGameServerSessionRequest`
-        :rtype: :class:`tencentcloud.gse.v20191112.models.JoinGameServerSessionResponse`
+        :param request: Request instance for StopNotebookInstance.
+        :type request: :class:`tencentcloud.tione.v20191022.models.StopNotebookInstanceRequest`
+        :rtype: :class:`tencentcloud.tione.v20191022.models.StopNotebookInstanceResponse`
 
         """
         try:
             params = request._serialize()
-            body = self.call("JoinGameServerSession", params)
+            body = self.call("StopNotebookInstance", params)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.JoinGameServerSessionResponse()
+                model = models.StopNotebookInstanceResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -277,20 +277,20 @@ class GseClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def StartGameServerSessionPlacement(self, request):
-        """本接口（StartGameServerSessionPlacement）用于开始放置游戏服务器会话
+    def StopTrainingJob(self, request):
+        """停止训练任务
 
-        :param request: Request instance for StartGameServerSessionPlacement.
-        :type request: :class:`tencentcloud.gse.v20191112.models.StartGameServerSessionPlacementRequest`
-        :rtype: :class:`tencentcloud.gse.v20191112.models.StartGameServerSessionPlacementResponse`
+        :param request: Request instance for StopTrainingJob.
+        :type request: :class:`tencentcloud.tione.v20191022.models.StopTrainingJobRequest`
+        :rtype: :class:`tencentcloud.tione.v20191022.models.StopTrainingJobResponse`
 
         """
         try:
             params = request._serialize()
-            body = self.call("StartGameServerSessionPlacement", params)
+            body = self.call("StopTrainingJob", params)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.StartGameServerSessionPlacementResponse()
+                model = models.StopTrainingJobResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -305,48 +305,20 @@ class GseClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def StopGameServerSessionPlacement(self, request):
-        """本接口（StopGameServerSessionPlacement）用于停止放置游戏服务器会话
+    def UpdateNotebookInstance(self, request):
+        """更新Notebook实例
 
-        :param request: Request instance for StopGameServerSessionPlacement.
-        :type request: :class:`tencentcloud.gse.v20191112.models.StopGameServerSessionPlacementRequest`
-        :rtype: :class:`tencentcloud.gse.v20191112.models.StopGameServerSessionPlacementResponse`
-
-        """
-        try:
-            params = request._serialize()
-            body = self.call("StopGameServerSessionPlacement", params)
-            response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.StopGameServerSessionPlacementResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(e.message, e.message)
-
-
-    def UpdateGameServerSession(self, request):
-        """本接口（UpdateGameServerSession）用于更新游戏服务器会话
-
-        :param request: Request instance for UpdateGameServerSession.
-        :type request: :class:`tencentcloud.gse.v20191112.models.UpdateGameServerSessionRequest`
-        :rtype: :class:`tencentcloud.gse.v20191112.models.UpdateGameServerSessionResponse`
+        :param request: Request instance for UpdateNotebookInstance.
+        :type request: :class:`tencentcloud.tione.v20191022.models.UpdateNotebookInstanceRequest`
+        :rtype: :class:`tencentcloud.tione.v20191022.models.UpdateNotebookInstanceResponse`
 
         """
         try:
             params = request._serialize()
-            body = self.call("UpdateGameServerSession", params)
+            body = self.call("UpdateNotebookInstance", params)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.UpdateGameServerSessionResponse()
+                model = models.UpdateNotebookInstanceResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

@@ -299,6 +299,35 @@ class CCRule(AbstractModel):
         self.Value = params.get("Value")
 
 
+class CCRuleConfig(AbstractModel):
+    """7层CC自定义规则
+
+    """
+
+    def __init__(self):
+        """
+        :param Period: 统计周期，单位秒，取值[10, 30, 60]
+        :type Period: int
+        :param ReqNumber: 访问次数，取值[1-10000]
+        :type ReqNumber: int
+        :param Action: 执行动作，取值["alg"（人机识别）, "drop"（拦截）]
+        :type Action: str
+        :param ExeDuration: 执行时间，单位秒，取值[1-900]
+        :type ExeDuration: int
+        """
+        self.Period = None
+        self.ReqNumber = None
+        self.Action = None
+        self.ExeDuration = None
+
+
+    def _deserialize(self, params):
+        self.Period = params.get("Period")
+        self.ReqNumber = params.get("ReqNumber")
+        self.Action = params.get("Action")
+        self.ExeDuration = params.get("ExeDuration")
+
+
 class CreateBasicDDoSAlarmThresholdRequest(AbstractModel):
     """CreateBasicDDoSAlarmThreshold请求参数结构体
 
@@ -915,6 +944,70 @@ class CreateL4RulesResponse(AbstractModel):
         if params.get("Success") is not None:
             self.Success = SuccessCode()
             self.Success._deserialize(params.get("Success"))
+        self.RequestId = params.get("RequestId")
+
+
+class CreateL7CCRuleRequest(AbstractModel):
+    """CreateL7CCRule请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Business: 大禹子产品代号（bgpip表示高防IP；net表示高防IP专业版）
+        :type Business: str
+        :param Id: 资源ID
+        :type Id: str
+        :param Method: 操作码，取值[query(表示查询)，add(表示添加)，del(表示删除)]
+        :type Method: str
+        :param RuleId: 7层转发规则ID，例如：rule-0000001
+        :type RuleId: str
+        :param RuleConfig: 7层CC自定义规则参数，当操作码为query时，可以不用填写；当操作码为add或del时，必须填写，且数组长度只能为1；
+        :type RuleConfig: list of CCRuleConfig
+        """
+        self.Business = None
+        self.Id = None
+        self.Method = None
+        self.RuleId = None
+        self.RuleConfig = None
+
+
+    def _deserialize(self, params):
+        self.Business = params.get("Business")
+        self.Id = params.get("Id")
+        self.Method = params.get("Method")
+        self.RuleId = params.get("RuleId")
+        if params.get("RuleConfig") is not None:
+            self.RuleConfig = []
+            for item in params.get("RuleConfig"):
+                obj = CCRuleConfig()
+                obj._deserialize(item)
+                self.RuleConfig.append(obj)
+
+
+class CreateL7CCRuleResponse(AbstractModel):
+    """CreateL7CCRule返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RuleConfig: 7层CC自定义规则参数，当没有开启CC自定义规则时，返回空数组
+        :type RuleConfig: list of CCRuleConfig
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RuleConfig = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("RuleConfig") is not None:
+            self.RuleConfig = []
+            for item in params.get("RuleConfig"):
+                obj = CCRuleConfig()
+                obj._deserialize(item)
+                self.RuleConfig.append(obj)
         self.RequestId = params.get("RequestId")
 
 

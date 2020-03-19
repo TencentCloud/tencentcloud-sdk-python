@@ -277,6 +277,34 @@ class DayuClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def CreateL7CCRule(self, request):
+        """此接口是7层CC的访问频控自定义规则（IP+Host维度，不支持具体的URI），此接口已弃用，请调用新接口CreateCCFrequencyRules，新接口同时支持IP+Host维度以及具体的URI；
+
+        :param request: Request instance for CreateL7CCRule.
+        :type request: :class:`tencentcloud.dayu.v20180709.models.CreateL7CCRuleRequest`
+        :rtype: :class:`tencentcloud.dayu.v20180709.models.CreateL7CCRuleResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("CreateL7CCRule", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateL7CCRuleResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def CreateL7HealthConfig(self, request):
         """上传七层健康检查配置
 

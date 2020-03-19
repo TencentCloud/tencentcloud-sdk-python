@@ -861,8 +861,6 @@ class CreateAcctRequest(AbstractModel):
         :type SubMchType: str
         :param ShortName: 不填则默认子商户名称
         :type ShortName: str
-        :param PlatformId: 平台参数，沙箱环境传sandbox，生产环境传release，默认release
-        :type PlatformId: str
         """
         self.MidasAppId = None
         self.SubMchId = None
@@ -875,7 +873,6 @@ class CreateAcctRequest(AbstractModel):
         self.MidasSignature = None
         self.SubMchType = None
         self.ShortName = None
-        self.PlatformId = None
 
 
     def _deserialize(self, params):
@@ -890,7 +887,6 @@ class CreateAcctRequest(AbstractModel):
         self.MidasSignature = params.get("MidasSignature")
         self.SubMchType = params.get("SubMchType")
         self.ShortName = params.get("ShortName")
-        self.PlatformId = params.get("PlatformId")
 
 
 class CreateAcctResponse(AbstractModel):
@@ -1207,14 +1203,11 @@ class QueryAcctBindingRequest(AbstractModel):
         :type MidasSecretId: str
         :param MidasSignature: 计费签名
         :type MidasSignature: str
-        :param PlatformId: 平台参数，沙箱环境传sandbox，生产环境传release，默认release
-        :type PlatformId: str
         """
         self.MidasAppId = None
         self.SubAppId = None
         self.MidasSecretId = None
         self.MidasSignature = None
-        self.PlatformId = None
 
 
     def _deserialize(self, params):
@@ -1222,7 +1215,6 @@ class QueryAcctBindingRequest(AbstractModel):
         self.SubAppId = params.get("SubAppId")
         self.MidasSecretId = params.get("MidasSecretId")
         self.MidasSignature = params.get("MidasSignature")
-        self.PlatformId = params.get("PlatformId")
 
 
 class QueryAcctBindingResponse(AbstractModel):

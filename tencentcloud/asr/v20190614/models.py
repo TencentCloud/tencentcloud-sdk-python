@@ -102,6 +102,10 @@ class CreateRecTaskRequest(AbstractModel):
         :type DataLen: int
         :param HotwordId: 热词id。用于调用对应的热词表，如果在调用语音识别服务时，不进行单独的热词id设置，自动生效默认热词；如果进行了单独的热词id设置，那么将生效单独设置的热词id。
         :type HotwordId: str
+        :param FilterDirty: 是否过滤脏词（目前支持中文普通话引擎）。0：不过滤脏词；1：过滤脏词；2：将脏词替换为 * 。
+        :type FilterDirty: int
+        :param FilterModal: 是否过语气词（目前支持中文普通话引擎）。0：不过滤语气词；1：部分过滤；2：严格过滤 。
+        :type FilterModal: int
         """
         self.EngineModelType = None
         self.ChannelNum = None
@@ -112,6 +116,8 @@ class CreateRecTaskRequest(AbstractModel):
         self.Data = None
         self.DataLen = None
         self.HotwordId = None
+        self.FilterDirty = None
+        self.FilterModal = None
 
 
     def _deserialize(self, params):
@@ -124,6 +130,8 @@ class CreateRecTaskRequest(AbstractModel):
         self.Data = params.get("Data")
         self.DataLen = params.get("DataLen")
         self.HotwordId = params.get("HotwordId")
+        self.FilterDirty = params.get("FilterDirty")
+        self.FilterModal = params.get("FilterModal")
 
 
 class CreateRecTaskResponse(AbstractModel):
@@ -464,6 +472,12 @@ class SentenceRecognitionRequest(AbstractModel):
         :type DataLen: int
         :param HotwordId: 热词id。用于调用对应的热词表，如果在调用语音识别服务时，不进行单独的热词id设置，自动生效默认热词；如果进行了单独的热词id设置，那么将生效单独设置的热词id。
         :type HotwordId: str
+        :param FilterDirty: 是否过滤脏词（目前支持中文普通话引擎）。0：不过滤脏词；1：过滤脏词；2：将脏词替换为 * 。
+        :type FilterDirty: int
+        :param FilterModal: 是否过语气词（目前支持中文普通话引擎）。0：不过滤语气词；1：部分过滤；2：严格过滤 。
+        :type FilterModal: int
+        :param FilterPunc: 是否过滤句末的句号（目前支持中文普通话引擎）。0：不过滤句末的句号；1：过滤句末的句号。
+        :type FilterPunc: int
         """
         self.ProjectId = None
         self.SubServiceType = None
@@ -475,6 +489,9 @@ class SentenceRecognitionRequest(AbstractModel):
         self.Data = None
         self.DataLen = None
         self.HotwordId = None
+        self.FilterDirty = None
+        self.FilterModal = None
+        self.FilterPunc = None
 
 
     def _deserialize(self, params):
@@ -488,6 +505,9 @@ class SentenceRecognitionRequest(AbstractModel):
         self.Data = params.get("Data")
         self.DataLen = params.get("DataLen")
         self.HotwordId = params.get("HotwordId")
+        self.FilterDirty = params.get("FilterDirty")
+        self.FilterModal = params.get("FilterModal")
+        self.FilterPunc = params.get("FilterPunc")
 
 
 class SentenceRecognitionResponse(AbstractModel):

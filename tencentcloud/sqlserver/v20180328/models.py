@@ -686,6 +686,10 @@ class DBInstance(AbstractModel):
         :type Type: str
         :param Pid: 计费ID
         :type Pid: int
+        :param UniqVpcId: 实例所属VPC的唯一字符串ID，格式如：vpc-xxx，基础网络时为空字符串
+        :type UniqVpcId: str
+        :param UniqSubnetId: 实例所属子网的唯一字符串ID，格式如： subnet-xxx，基础网络时为空字符串
+        :type UniqSubnetId: str
         """
         self.InstanceId = None
         self.Name = None
@@ -717,6 +721,8 @@ class DBInstance(AbstractModel):
         self.Version = None
         self.Type = None
         self.Pid = None
+        self.UniqVpcId = None
+        self.UniqSubnetId = None
 
 
     def _deserialize(self, params):
@@ -750,6 +756,8 @@ class DBInstance(AbstractModel):
         self.Version = params.get("Version")
         self.Type = params.get("Type")
         self.Pid = params.get("Pid")
+        self.UniqVpcId = params.get("UniqVpcId")
+        self.UniqSubnetId = params.get("UniqSubnetId")
 
 
 class DBPrivilege(AbstractModel):

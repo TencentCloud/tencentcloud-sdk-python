@@ -440,9 +440,9 @@ class DescribeSignListStatus(AbstractModel):
         """
         :param SignId: 签名Id
         :type SignId: int
-        :param International: 是否国际短信。其中：
+        :param International: 是否国际/港澳台短信：
 0：表示国内短信。
-1：表示海外短信。
+1：表示国际/港澳台短信。
         :type International: int
         :param StatusCode: 申请签名状态。其中：
 0：表示审核通过。
@@ -579,9 +579,9 @@ class DescribeTemplateListStatus(AbstractModel):
         """
         :param TemplateId: 模板Id
         :type TemplateId: int
-        :param International: 是否国际短信。其中：
+        :param International: 是否国际/港澳台短信：
 0：表示国内短信。
-1：表示海外短信。
+1：表示国际/港澳台短信。
         :type International: int
         :param StatusCode: 申请签名状态。其中：
 0：表示审核通过。

@@ -1104,7 +1104,7 @@ class CostDetail(AbstractModel):
         :param FeeEndTime: 费用结束时间
         :type FeeEndTime: str
         :param ComponentSet: 组件明细
-        :type ComponentSet: :class:`tencentcloud.billing.v20180709.models.CostComponentSet`
+        :type ComponentSet: list of CostComponentSet
         :param ProductCode: 产品代码
         :type ProductCode: str
         """
@@ -1142,8 +1142,11 @@ class CostDetail(AbstractModel):
         self.FeeBeginTime = params.get("FeeBeginTime")
         self.FeeEndTime = params.get("FeeEndTime")
         if params.get("ComponentSet") is not None:
-            self.ComponentSet = CostComponentSet()
-            self.ComponentSet._deserialize(params.get("ComponentSet"))
+            self.ComponentSet = []
+            for item in params.get("ComponentSet"):
+                obj = CostComponentSet()
+                obj._deserialize(item)
+                self.ComponentSet.append(obj)
         self.ProductCode = params.get("ProductCode")
 
 

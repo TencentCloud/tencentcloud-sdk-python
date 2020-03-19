@@ -2896,6 +2896,9 @@ class InstanceSet(AbstractModel):
         :param Vip6: 内部参数，用户可忽略
 注意：此字段可能返回 null，表示取不到有效值。
         :type Vip6: str
+        :param RemainBandwidthDuration: 内部参数，用户可忽略
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RemainBandwidthDuration: str
         """
         self.InstanceName = None
         self.InstanceId = None
@@ -2939,6 +2942,7 @@ class InstanceSet(AbstractModel):
         self.PasswordFree = None
         self.ReadOnly = None
         self.Vip6 = None
+        self.RemainBandwidthDuration = None
 
 
     def _deserialize(self, params):
@@ -2994,6 +2998,7 @@ class InstanceSet(AbstractModel):
         self.PasswordFree = params.get("PasswordFree")
         self.ReadOnly = params.get("ReadOnly")
         self.Vip6 = params.get("Vip6")
+        self.RemainBandwidthDuration = params.get("RemainBandwidthDuration")
 
 
 class InstanceSlowlogDetail(AbstractModel):
