@@ -25,6 +25,34 @@ class DtsClient(AbstractClient):
     _endpoint = 'dts.tencentcloudapi.com'
 
 
+    def ActivateSubscribe(self, request):
+        """本接口用于配置数据订阅，只有在未配置状态的订阅实例才能调用此接口。
+
+        :param request: Request instance for ActivateSubscribe.
+        :type request: :class:`tencentcloud.dts.v20180330.models.ActivateSubscribeRequest`
+        :rtype: :class:`tencentcloud.dts.v20180330.models.ActivateSubscribeResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ActivateSubscribe", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ActivateSubscribeResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def CompleteMigrateJob(self, request):
         """本接口（CompleteMigrateJob）用于完成数据迁移任务。
         选择采用增量迁移方式的任务, 需要在迁移进度进入准备完成阶段后, 调用本接口, 停止迁移增量数据。
@@ -101,6 +129,34 @@ class DtsClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateMigrateJobResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def CreateSubscribe(self, request):
+        """本接口(CreateSubscribe)用于创建一个数据订阅实例。
+
+        :param request: Request instance for CreateSubscribe.
+        :type request: :class:`tencentcloud.dts.v20180330.models.CreateSubscribeRequest`
+        :rtype: :class:`tencentcloud.dts.v20180330.models.CreateSubscribeResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("CreateSubscribe", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateSubscribeResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -229,6 +285,34 @@ class DtsClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeAsyncRequestInfo(self, request):
+        """本接口（DescribeAsyncRequestInfo）用于查询任务执行结果
+
+        :param request: Request instance for DescribeAsyncRequestInfo.
+        :type request: :class:`tencentcloud.dts.v20180330.models.DescribeAsyncRequestInfoRequest`
+        :rtype: :class:`tencentcloud.dts.v20180330.models.DescribeAsyncRequestInfoResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeAsyncRequestInfo", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeAsyncRequestInfoResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeMigrateCheckJob(self, request):
         """本接口用于创建校验后,获取校验的结果. 能查询到当前校验的状态和进度.
         若通过校验, 则可调用'StartMigrateJob' 开始迁移.
@@ -274,6 +358,90 @@ class DtsClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeMigrateJobsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeRegionConf(self, request):
+        """本接口（DescribeRegionConf）用于查询可售卖订阅实例的地域
+
+        :param request: Request instance for DescribeRegionConf.
+        :type request: :class:`tencentcloud.dts.v20180330.models.DescribeRegionConfRequest`
+        :rtype: :class:`tencentcloud.dts.v20180330.models.DescribeRegionConfResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeRegionConf", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeRegionConfResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeSubscribeConf(self, request):
+        """本接口（DescribeSubscribeConf）用于查询订阅实例配置
+
+        :param request: Request instance for DescribeSubscribeConf.
+        :type request: :class:`tencentcloud.dts.v20180330.models.DescribeSubscribeConfRequest`
+        :rtype: :class:`tencentcloud.dts.v20180330.models.DescribeSubscribeConfResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeSubscribeConf", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeSubscribeConfResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeSubscribes(self, request):
+        """本接口(DescribeSubscribes)获取数据订阅实例信息列表，默认分页，每次返回20条
+
+        :param request: Request instance for DescribeSubscribes.
+        :type request: :class:`tencentcloud.dts.v20180330.models.DescribeSubscribesRequest`
+        :rtype: :class:`tencentcloud.dts.v20180330.models.DescribeSubscribesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeSubscribes", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeSubscribesResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -349,6 +517,34 @@ class DtsClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def IsolateSubscribe(self, request):
+        """本接口（IsolateSubscribe）用于隔离小时计费的订阅实例。调用后，订阅实例将不能使用，同时停止计费。
+
+        :param request: Request instance for IsolateSubscribe.
+        :type request: :class:`tencentcloud.dts.v20180330.models.IsolateSubscribeRequest`
+        :rtype: :class:`tencentcloud.dts.v20180330.models.IsolateSubscribeResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("IsolateSubscribe", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.IsolateSubscribeResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def ModifyMigrateJob(self, request):
         """本接口（ModifyMigrateJob）用于修改数据迁移任务。
         当迁移任务处于下述状态时，允许调用本接口修改迁移任务：迁移创建中（status=1）、 校验成功(status=4)、校验失败(status=5)、迁移失败(status=10)。但源实例、目标实例类型和目标实例地域不允许修改。
@@ -380,6 +576,118 @@ class DtsClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def ModifySubscribeConsumeTime(self, request):
+        """本接口(ModifySubscribeConsumeTime)用于修改数据订阅通道的消费时间点
+
+        :param request: Request instance for ModifySubscribeConsumeTime.
+        :type request: :class:`tencentcloud.dts.v20180330.models.ModifySubscribeConsumeTimeRequest`
+        :rtype: :class:`tencentcloud.dts.v20180330.models.ModifySubscribeConsumeTimeResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ModifySubscribeConsumeTime", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ModifySubscribeConsumeTimeResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ModifySubscribeName(self, request):
+        """本接口(ModifySubscribeName)用于修改数据订阅实例的名称
+
+        :param request: Request instance for ModifySubscribeName.
+        :type request: :class:`tencentcloud.dts.v20180330.models.ModifySubscribeNameRequest`
+        :rtype: :class:`tencentcloud.dts.v20180330.models.ModifySubscribeNameResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ModifySubscribeName", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ModifySubscribeNameResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ModifySubscribeObjects(self, request):
+        """本接口(ModifySubscribeObjects)用于修改数据订阅通道的订阅规则
+
+        :param request: Request instance for ModifySubscribeObjects.
+        :type request: :class:`tencentcloud.dts.v20180330.models.ModifySubscribeObjectsRequest`
+        :rtype: :class:`tencentcloud.dts.v20180330.models.ModifySubscribeObjectsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ModifySubscribeObjects", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ModifySubscribeObjectsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ModifySubscribeVipVport(self, request):
+        """本接口(ModifySubscribeVipVport)用于修改数据订阅实例的IP和端口号
+
+        :param request: Request instance for ModifySubscribeVipVport.
+        :type request: :class:`tencentcloud.dts.v20180330.models.ModifySubscribeVipVportRequest`
+        :rtype: :class:`tencentcloud.dts.v20180330.models.ModifySubscribeVipVportResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ModifySubscribeVipVport", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ModifySubscribeVipVportResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def ModifySyncJob(self, request):
         """修改灾备同步任务.
         当同步任务处于下述状态时, 允许调用本接口: 同步任务创建中, 创建完成, 校验成功, 校验失败.
@@ -396,6 +704,62 @@ class DtsClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifySyncJobResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def OfflineIsolatedSubscribe(self, request):
+        """本接口（OfflineIsolatedSubscribe）用于下线已隔离的数据订阅实例
+
+        :param request: Request instance for OfflineIsolatedSubscribe.
+        :type request: :class:`tencentcloud.dts.v20180330.models.OfflineIsolatedSubscribeRequest`
+        :rtype: :class:`tencentcloud.dts.v20180330.models.OfflineIsolatedSubscribeResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("OfflineIsolatedSubscribe", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.OfflineIsolatedSubscribeResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ResetSubscribe(self, request):
+        """本接口(ResetSubscribe)用于重置数据订阅实例，已经激活的数据订阅实例，重置后可以使用ActivateSubscribe接口绑定其他的数据库实例
+
+        :param request: Request instance for ResetSubscribe.
+        :type request: :class:`tencentcloud.dts.v20180330.models.ResetSubscribeRequest`
+        :rtype: :class:`tencentcloud.dts.v20180330.models.ResetSubscribeResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ResetSubscribe", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ResetSubscribeResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

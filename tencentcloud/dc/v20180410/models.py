@@ -645,6 +645,12 @@ class DirectConnect(AbstractModel):
         :type TagSet: list of Tag
         :param AccessPointType: 物理专线的接入点类型。
         :type AccessPointType: str
+        :param IdcCity: IDC所在城市
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IdcCity: str
+        :param ChargeState: 计费状态
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ChargeState: str
         """
         self.DirectConnectId = None
         self.DirectConnectName = None
@@ -670,6 +676,8 @@ class DirectConnect(AbstractModel):
         self.FaultReportContactNumber = None
         self.TagSet = None
         self.AccessPointType = None
+        self.IdcCity = None
+        self.ChargeState = None
 
 
     def _deserialize(self, params):
@@ -702,6 +710,8 @@ class DirectConnect(AbstractModel):
                 obj._deserialize(item)
                 self.TagSet.append(obj)
         self.AccessPointType = params.get("AccessPointType")
+        self.IdcCity = params.get("IdcCity")
+        self.ChargeState = params.get("ChargeState")
 
 
 class DirectConnectTunnel(AbstractModel):
@@ -777,6 +787,12 @@ REJECTED:拒绝
         :param AccessPointType: 专线通道接入点类型
 注意：此字段可能返回 null，表示取不到有效值。
         :type AccessPointType: str
+        :param DirectConnectGatewayName: 专线网关名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DirectConnectGatewayName: str
+        :param VpcName: VPC名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type VpcName: str
         """
         self.DirectConnectTunnelId = None
         self.DirectConnectId = None
@@ -803,6 +819,8 @@ REJECTED:拒绝
         self.VpcRegion = None
         self.BfdEnable = None
         self.AccessPointType = None
+        self.DirectConnectGatewayName = None
+        self.VpcName = None
 
 
     def _deserialize(self, params):
@@ -843,6 +861,8 @@ REJECTED:拒绝
         self.VpcRegion = params.get("VpcRegion")
         self.BfdEnable = params.get("BfdEnable")
         self.AccessPointType = params.get("AccessPointType")
+        self.DirectConnectGatewayName = params.get("DirectConnectGatewayName")
+        self.VpcName = params.get("VpcName")
 
 
 class Filter(AbstractModel):

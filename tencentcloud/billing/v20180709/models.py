@@ -118,7 +118,7 @@ class BillDetail(AbstractModel):
         :type ActionType: str
         :param RegionId: 区域ID
 注意：此字段可能返回 null，表示取不到有效值。
-        :type RegionId: int
+        :type RegionId: str
         """
         self.BusinessCodeName = None
         self.ProductCodeName = None

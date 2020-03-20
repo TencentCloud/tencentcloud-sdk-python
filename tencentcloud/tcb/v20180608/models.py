@@ -479,12 +479,21 @@ class DescribeEnvsRequest(AbstractModel):
         """
         :param EnvId: 环境ID，如果传了这个参数则只返回该环境的相关信息
         :type EnvId: str
+        :param IsVisible: 指定Channels字段为可见渠道列表或不可见渠道列表
+如只想获取渠道A的环境 就填写IsVisible= true,Channels = ["A"], 过滤渠道A拉取其他渠道环境时填写IsVisible= false,Channels = ["A"]
+        :type IsVisible: bool
+        :param Channels: 渠道列表，代表可见或不可见渠道由IsVisible参数指定
+        :type Channels: list of str
         """
         self.EnvId = None
+        self.IsVisible = None
+        self.Channels = None
 
 
     def _deserialize(self, params):
         self.EnvId = params.get("EnvId")
+        self.IsVisible = params.get("IsVisible")
+        self.Channels = params.get("Channels")
 
 
 class DescribeEnvsResponse(AbstractModel):

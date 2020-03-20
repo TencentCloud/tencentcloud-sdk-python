@@ -374,6 +374,8 @@ class CreateDBInstancesRequest(AbstractModel):
         :type VoucherIds: list of str
         :param DBVersion: sqlserver版本，目前只支持：2008R2（SQL Server 2008 Enterprise），2012SP3（SQL Server 2012 Enterprise），2016SP1（SQL Server 2016 Enterprise），201602（SQL Server 2016 Standard）2017（SQL Server 2017 Enterprise）版本。每个地域支持售卖的版本不同，可通过DescribeProductConfig接口来拉取每个地域可售卖的版本信息。不填，默认为版本2008R2。
         :type DBVersion: str
+        :param AutoRenewFlag: 自动续费标志：0-正常续费  1-自动续费，默认为1自动续费。只在购买预付费实例时有效。
+        :type AutoRenewFlag: int
         """
         self.Zone = None
         self.Memory = None
@@ -387,6 +389,7 @@ class CreateDBInstancesRequest(AbstractModel):
         self.AutoVoucher = None
         self.VoucherIds = None
         self.DBVersion = None
+        self.AutoRenewFlag = None
 
 
     def _deserialize(self, params):
@@ -402,6 +405,7 @@ class CreateDBInstancesRequest(AbstractModel):
         self.AutoVoucher = params.get("AutoVoucher")
         self.VoucherIds = params.get("VoucherIds")
         self.DBVersion = params.get("DBVersion")
+        self.AutoRenewFlag = params.get("AutoRenewFlag")
 
 
 class CreateDBInstancesResponse(AbstractModel):
@@ -413,15 +417,19 @@ class CreateDBInstancesResponse(AbstractModel):
         """
         :param DealName: 订单名称
         :type DealName: str
+        :param DealNames: 订单名称数组
+        :type DealNames: list of str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.DealName = None
+        self.DealNames = None
         self.RequestId = None
 
 
     def _deserialize(self, params):
         self.DealName = params.get("DealName")
+        self.DealNames = params.get("DealNames")
         self.RequestId = params.get("RequestId")
 
 
@@ -1156,6 +1164,10 @@ class DescribeDBInstancesRequest(AbstractModel):
         :type InstanceIdSet: list of str
         :param PayMode: 付费类型检索 1-包年包月，0-按量计费
         :type PayMode: int
+        :param VpcId: 实例所属VPC的唯一字符串ID，格式如：vpc-xxx，传空字符串(“”)则按照基础网络筛选。
+        :type VpcId: str
+        :param SubnetId: 实例所属子网的唯一字符串ID，格式如： subnet-xxx，传空字符串(“”)则按照基础网络筛选。
+        :type SubnetId: str
         """
         self.ProjectId = None
         self.Status = None
@@ -1163,6 +1175,8 @@ class DescribeDBInstancesRequest(AbstractModel):
         self.Limit = None
         self.InstanceIdSet = None
         self.PayMode = None
+        self.VpcId = None
+        self.SubnetId = None
 
 
     def _deserialize(self, params):
@@ -1172,6 +1186,8 @@ class DescribeDBInstancesRequest(AbstractModel):
         self.Limit = params.get("Limit")
         self.InstanceIdSet = params.get("InstanceIdSet")
         self.PayMode = params.get("PayMode")
+        self.VpcId = params.get("VpcId")
+        self.SubnetId = params.get("SubnetId")
 
 
 class DescribeDBInstancesResponse(AbstractModel):

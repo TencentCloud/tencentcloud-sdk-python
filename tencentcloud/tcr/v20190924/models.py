@@ -382,6 +382,48 @@ class CreateNamespacePersonalResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class CreateNamespaceRequest(AbstractModel):
+    """CreateNamespace请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RegistryId: 实例ID
+        :type RegistryId: str
+        :param NamespaceName: 命名空间的名称
+        :type NamespaceName: str
+        :param IsPublic: 是否公开，true为公开，fale为私有
+        :type IsPublic: bool
+        """
+        self.RegistryId = None
+        self.NamespaceName = None
+        self.IsPublic = None
+
+
+    def _deserialize(self, params):
+        self.RegistryId = params.get("RegistryId")
+        self.NamespaceName = params.get("NamespaceName")
+        self.IsPublic = params.get("IsPublic")
+
+
+class CreateNamespaceResponse(AbstractModel):
+    """CreateNamespace返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class CreateRepositoryPersonalRequest(AbstractModel):
     """CreateRepositoryPersonal请求参数结构体
 
@@ -409,6 +451,56 @@ class CreateRepositoryPersonalRequest(AbstractModel):
 
 class CreateRepositoryPersonalResponse(AbstractModel):
     """CreateRepositoryPersonal返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class CreateRepositoryRequest(AbstractModel):
+    """CreateRepository请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RegistryId: 实例ID
+        :type RegistryId: str
+        :param NamespaceName: 命名空间名称
+        :type NamespaceName: str
+        :param RepositoryName: 仓库名称
+        :type RepositoryName: str
+        :param BriefDescription: 仓库简短描述
+        :type BriefDescription: str
+        :param Description: 仓库详细描述
+        :type Description: str
+        """
+        self.RegistryId = None
+        self.NamespaceName = None
+        self.RepositoryName = None
+        self.BriefDescription = None
+        self.Description = None
+
+
+    def _deserialize(self, params):
+        self.RegistryId = params.get("RegistryId")
+        self.NamespaceName = params.get("NamespaceName")
+        self.RepositoryName = params.get("RepositoryName")
+        self.BriefDescription = params.get("BriefDescription")
+        self.Description = params.get("Description")
+
+
+class CreateRepositoryResponse(AbstractModel):
+    """CreateRepository返回参数结构体
 
     """
 
@@ -621,6 +713,44 @@ class DeleteNamespacePersonalResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DeleteNamespaceRequest(AbstractModel):
+    """DeleteNamespace请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RegistryId: 实例ID
+        :type RegistryId: str
+        :param NamespaceName: 命名空间的名称
+        :type NamespaceName: str
+        """
+        self.RegistryId = None
+        self.NamespaceName = None
+
+
+    def _deserialize(self, params):
+        self.RegistryId = params.get("RegistryId")
+        self.NamespaceName = params.get("NamespaceName")
+
+
+class DeleteNamespaceResponse(AbstractModel):
+    """DeleteNamespace返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class DeleteRepositoryPersonalRequest(AbstractModel):
     """DeleteRepositoryPersonal请求参数结构体
 
@@ -640,6 +770,48 @@ class DeleteRepositoryPersonalRequest(AbstractModel):
 
 class DeleteRepositoryPersonalResponse(AbstractModel):
     """DeleteRepositoryPersonal返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class DeleteRepositoryRequest(AbstractModel):
+    """DeleteRepository请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RegistryId: 实例Id
+        :type RegistryId: str
+        :param NamespaceName: 命名空间的名称
+        :type NamespaceName: str
+        :param RepositoryName: 仓库名称的名称
+        :type RepositoryName: str
+        """
+        self.RegistryId = None
+        self.NamespaceName = None
+        self.RepositoryName = None
+
+
+    def _deserialize(self, params):
+        self.RegistryId = params.get("RegistryId")
+        self.NamespaceName = params.get("NamespaceName")
+        self.RepositoryName = params.get("RepositoryName")
+
+
+class DeleteRepositoryResponse(AbstractModel):
+    """DeleteRepository返回参数结构体
 
     """
 
@@ -1029,6 +1201,73 @@ class DescribeImagePersonalResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeImagesRequest(AbstractModel):
+    """DescribeImages请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RegistryId: 实例ID
+        :type RegistryId: str
+        :param RepositoryName: 镜像仓库名称
+        :type RepositoryName: str
+        :param NamespaceName: 命名空间名称
+        :type NamespaceName: str
+        :param Limit: 每页个数，用于分页，默认20
+        :type Limit: int
+        :param Offset: 页数，默认值为1
+        :type Offset: int
+        :param ImageVersion: 镜像版本(Tag)，置空则返回仓库内全部的容器镜像
+        :type ImageVersion: str
+        """
+        self.RegistryId = None
+        self.RepositoryName = None
+        self.NamespaceName = None
+        self.Limit = None
+        self.Offset = None
+        self.ImageVersion = None
+
+
+    def _deserialize(self, params):
+        self.RegistryId = params.get("RegistryId")
+        self.RepositoryName = params.get("RepositoryName")
+        self.NamespaceName = params.get("NamespaceName")
+        self.Limit = params.get("Limit")
+        self.Offset = params.get("Offset")
+        self.ImageVersion = params.get("ImageVersion")
+
+
+class DescribeImagesResponse(AbstractModel):
+    """DescribeImages返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ImageInfoList: 容器镜像信息列表
+        :type ImageInfoList: list of TcrImageInfo
+        :param TotalCount: 容器镜像总数
+        :type TotalCount: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.ImageInfoList = None
+        self.TotalCount = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("ImageInfoList") is not None:
+            self.ImageInfoList = []
+            for item in params.get("ImageInfoList"):
+                obj = TcrImageInfo()
+                obj._deserialize(item)
+                self.ImageInfoList.append(obj)
+        self.TotalCount = params.get("TotalCount")
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeInstanceStatusRequest(AbstractModel):
     """DescribeInstanceStatus请求参数结构体
 
@@ -1188,6 +1427,73 @@ class DescribeNamespacePersonalResponse(AbstractModel):
         if params.get("Data") is not None:
             self.Data = NamespaceInfoResp()
             self.Data._deserialize(params.get("Data"))
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeRepositoriesRequest(AbstractModel):
+    """DescribeRepositories请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RegistryId: 实例Id
+        :type RegistryId: str
+        :param RepositoryName: 仓库名称，用于查询
+        :type RepositoryName: str
+        :param Offset: 页数，用于分页
+        :type Offset: int
+        :param Limit: 每页个数，用于分页
+        :type Limit: int
+        :param SortBy: 基于字段排序，支持的值有-creation_time,-name, -update_time
+        :type SortBy: str
+        :param NamespaceName: 命名空间名称，用于查询改命名空间下的仓库，如果不填写默认为所有命名空间下
+        :type NamespaceName: str
+        """
+        self.RegistryId = None
+        self.RepositoryName = None
+        self.Offset = None
+        self.Limit = None
+        self.SortBy = None
+        self.NamespaceName = None
+
+
+    def _deserialize(self, params):
+        self.RegistryId = params.get("RegistryId")
+        self.RepositoryName = params.get("RepositoryName")
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+        self.SortBy = params.get("SortBy")
+        self.NamespaceName = params.get("NamespaceName")
+
+
+class DescribeRepositoriesResponse(AbstractModel):
+    """DescribeRepositories返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RepositoryList: 仓库信息列表
+        :type RepositoryList: list of TcrRepositoryInfo
+        :param TotalCount: 总个数
+        :type TotalCount: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RepositoryList = None
+        self.TotalCount = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("RepositoryList") is not None:
+            self.RepositoryList = []
+            for item in params.get("RepositoryList"):
+                obj = TcrRepositoryInfo()
+                obj._deserialize(item)
+                self.RepositoryList.append(obj)
+        self.TotalCount = params.get("TotalCount")
         self.RequestId = params.get("RequestId")
 
 
@@ -1669,6 +1975,48 @@ class ModifyApplicationTriggerPersonalResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class ModifyNamespaceRequest(AbstractModel):
+    """ModifyNamespace请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RegistryId: 实例的Id
+        :type RegistryId: str
+        :param NamespaceName: 命名空间的名称
+        :type NamespaceName: str
+        :param IsPublic: 访问级别，True为公开，False为私有
+        :type IsPublic: bool
+        """
+        self.RegistryId = None
+        self.NamespaceName = None
+        self.IsPublic = None
+
+
+    def _deserialize(self, params):
+        self.RegistryId = params.get("RegistryId")
+        self.NamespaceName = params.get("NamespaceName")
+        self.IsPublic = params.get("IsPublic")
+
+
+class ModifyNamespaceResponse(AbstractModel):
+    """ModifyNamespace返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class ModifyRepositoryAccessPersonalRequest(AbstractModel):
     """ModifyRepositoryAccessPersonal请求参数结构体
 
@@ -1730,6 +2078,56 @@ class ModifyRepositoryInfoPersonalRequest(AbstractModel):
 
 class ModifyRepositoryInfoPersonalResponse(AbstractModel):
     """ModifyRepositoryInfoPersonal返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class ModifyRepositoryRequest(AbstractModel):
+    """ModifyRepository请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RegistryId: 实例ID
+        :type RegistryId: str
+        :param RepositoryName: 镜像仓库名称
+        :type RepositoryName: str
+        :param Description: 仓库描述
+        :type Description: str
+        :param BriefDescription: 仓库的简短描述
+        :type BriefDescription: str
+        :param NamespaceName: 命名空间名称
+        :type NamespaceName: str
+        """
+        self.RegistryId = None
+        self.RepositoryName = None
+        self.Description = None
+        self.BriefDescription = None
+        self.NamespaceName = None
+
+
+    def _deserialize(self, params):
+        self.RegistryId = params.get("RegistryId")
+        self.RepositoryName = params.get("RepositoryName")
+        self.Description = params.get("Description")
+        self.BriefDescription = params.get("BriefDescription")
+        self.NamespaceName = params.get("NamespaceName")
+
+
+class ModifyRepositoryResponse(AbstractModel):
+    """ModifyRepository返回参数结构体
 
     """
 
@@ -2295,6 +2693,74 @@ class TagInfoResp(AbstractModel):
                 self.TagInfo.append(obj)
         self.Server = params.get("Server")
         self.RepoName = params.get("RepoName")
+
+
+class TcrImageInfo(AbstractModel):
+    """镜像信息
+
+    """
+
+    def __init__(self):
+        """
+        :param Digest: 哈希值
+        :type Digest: str
+        :param Size: 镜像大小
+        :type Size: int
+        :param ImageVersion: Tag名称
+        :type ImageVersion: str
+        """
+        self.Digest = None
+        self.Size = None
+        self.ImageVersion = None
+
+
+    def _deserialize(self, params):
+        self.Digest = params.get("Digest")
+        self.Size = params.get("Size")
+        self.ImageVersion = params.get("ImageVersion")
+
+
+class TcrRepositoryInfo(AbstractModel):
+    """Tcr镜像仓库信息
+
+    """
+
+    def __init__(self):
+        """
+        :param Name: 仓库名称
+        :type Name: str
+        :param Namespace: 命名空间名称
+        :type Namespace: str
+        :param CreationTime: 创建时间
+        :type CreationTime: str
+        :param Public: 是否公开
+        :type Public: bool
+        :param Description: 仓库详细描述
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Description: str
+        :param BriefDescription: 简单描述
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BriefDescription: str
+        :param UpdateTime: 更新时间
+        :type UpdateTime: str
+        """
+        self.Name = None
+        self.Namespace = None
+        self.CreationTime = None
+        self.Public = None
+        self.Description = None
+        self.BriefDescription = None
+        self.UpdateTime = None
+
+
+    def _deserialize(self, params):
+        self.Name = params.get("Name")
+        self.Namespace = params.get("Namespace")
+        self.CreationTime = params.get("CreationTime")
+        self.Public = params.get("Public")
+        self.Description = params.get("Description")
+        self.BriefDescription = params.get("BriefDescription")
+        self.UpdateTime = params.get("UpdateTime")
 
 
 class TriggerInvokeCondition(AbstractModel):

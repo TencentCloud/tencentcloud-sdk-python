@@ -1370,6 +1370,45 @@ class Filter(AbstractModel):
         self.Values = params.get("Values")
 
 
+class GetSnapOverviewRequest(AbstractModel):
+    """GetSnapOverview请求参数结构体
+
+    """
+
+
+class GetSnapOverviewResponse(AbstractModel):
+    """GetSnapOverview返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param TotalSize: 用户快照总大小
+        :type TotalSize: float
+        :param RealTradeSize: 用户快照总大小（用于计费）
+        :type RealTradeSize: float
+        :param FreeQuota: 快照免费额度
+        :type FreeQuota: float
+        :param TotalNums: 快照总个数
+        :type TotalNums: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TotalSize = None
+        self.RealTradeSize = None
+        self.FreeQuota = None
+        self.TotalNums = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalSize = params.get("TotalSize")
+        self.RealTradeSize = params.get("RealTradeSize")
+        self.FreeQuota = params.get("FreeQuota")
+        self.TotalNums = params.get("TotalNums")
+        self.RequestId = params.get("RequestId")
+
+
 class Image(AbstractModel):
     """镜像。
 

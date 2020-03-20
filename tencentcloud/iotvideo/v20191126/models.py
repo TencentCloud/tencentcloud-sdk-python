@@ -1833,7 +1833,7 @@ class DevTokenInfo(AbstractModel):
 
 
 class DeviceCertificate(AbstractModel):
-    """设备证书及秘钥
+    """设备证书及密钥
 
     """
 
@@ -2235,6 +2235,56 @@ class ModifyDeviceActionResponse(AbstractModel):
     def _deserialize(self, params):
         self.Data = params.get("Data")
         self.TaskId = params.get("TaskId")
+        self.RequestId = params.get("RequestId")
+
+
+class ModifyDevicePropertyRequest(AbstractModel):
+    """ModifyDeviceProperty请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Tid: 设备TID
+        :type Tid: str
+        :param Wakeup: 如果设备处于休眠状态，是否唤醒设备
+        :type Wakeup: bool
+        :param Branch: 物模型的分支路径
+        :type Branch: str
+        :param Value: 写入的物模型数据，如果是json需要转义成字符串
+        :type Value: str
+        :param IsNum: Value字段是否为数值（float、int）
+        :type IsNum: bool
+        """
+        self.Tid = None
+        self.Wakeup = None
+        self.Branch = None
+        self.Value = None
+        self.IsNum = None
+
+
+    def _deserialize(self, params):
+        self.Tid = params.get("Tid")
+        self.Wakeup = params.get("Wakeup")
+        self.Branch = params.get("Branch")
+        self.Value = params.get("Value")
+        self.IsNum = params.get("IsNum")
+
+
+class ModifyDevicePropertyResponse(AbstractModel):
+    """ModifyDeviceProperty返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
 
 

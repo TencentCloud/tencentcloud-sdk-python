@@ -5617,7 +5617,7 @@ class DescribeNetworkInterfaceLimitRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param InstanceId: 要查询的CVM实例ID
+        :param InstanceId: 要查询的CVM实例ID或弹性网卡ID
         :type InstanceId: str
         """
         self.InstanceId = None

@@ -110,7 +110,7 @@ class CdnClient(AbstractClient):
 
 
     def DeleteClsLogTopic(self, request):
-        """DeleteClsLogTopic 用于删除日志主题。注意：删除后，所有该日志主题下绑定域名的日志将不再继续投递至该主题，已经投递的日志将会被全部清空。生效时间约 5~15 分钟。
+        """DeleteClsLogTopic 用于删除日志主题。注意：删除后，所有该日志主题下绑定域名的日志将不再继续投递至该主题，已经投递的日志将会被全部清空。生效时间约为 5~15 分钟。
 
         :param request: Request instance for DeleteClsLogTopic.
         :type request: :class:`tencentcloud.cdn.v20180606.models.DeleteClsLogTopicRequest`
@@ -695,7 +695,7 @@ class CdnClient(AbstractClient):
 
 
     def DisableClsLogTopic(self, request):
-        """DisableClsLogTopic 用于停止日志主题投递。注意：停止后，所有绑定该日志主题域名的日志将不再继续投递至该主题，已经投递的日志将会继续保留。生效时间约 5~15 分钟。
+        """DisableClsLogTopic 用于停止日志主题投递。注意：停止后，所有绑定该日志主题域名的日志将不再继续投递至该主题，已经投递的日志将会继续保留。生效时间约为 5~15 分钟。
 
         :param request: Request instance for DisableClsLogTopic.
         :type request: :class:`tencentcloud.cdn.v20180606.models.DisableClsLogTopicRequest`
@@ -751,7 +751,7 @@ class CdnClient(AbstractClient):
 
 
     def EnableClsLogTopic(self, request):
-        """EnableClsLogTopic 用于启动日志主题投递。注意：启动后，所有绑定该日志主题域名的日志将继续投递至该主题。生效时间约 5~15 分钟。
+        """EnableClsLogTopic 用于启动日志主题投递。注意：启动后，所有绑定该日志主题域名的日志将继续投递至该主题。生效时间约为 5~15 分钟。
 
         :param request: Request instance for EnableClsLogTopic.
         :type request: :class:`tencentcloud.cdn.v20180606.models.EnableClsLogTopicRequest`

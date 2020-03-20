@@ -16,6 +16,66 @@
 from tencentcloud.common.abstract_model import AbstractModel
 
 
+class ActivateSubscribeRequest(AbstractModel):
+    """ActivateSubscribe请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param SubscribeId: 订阅实例ID。
+        :type SubscribeId: str
+        :param InstanceId: 数据库实例ID
+        :type InstanceId: str
+        :param SubscribeObjectType: 数据订阅类型0-全实例订阅，1数据订阅，2结构订阅，3数据订阅与结构订阅
+        :type SubscribeObjectType: int
+        :param Objects: 订阅对象
+        :type Objects: :class:`tencentcloud.dts.v20180330.models.SubscribeObject`
+        :param UniqSubnetId: 数据订阅服务所在子网。默认为数据库实例所在的子网内。
+        :type UniqSubnetId: str
+        :param Vport: 订阅服务端口；默认为7507
+        :type Vport: int
+        """
+        self.SubscribeId = None
+        self.InstanceId = None
+        self.SubscribeObjectType = None
+        self.Objects = None
+        self.UniqSubnetId = None
+        self.Vport = None
+
+
+    def _deserialize(self, params):
+        self.SubscribeId = params.get("SubscribeId")
+        self.InstanceId = params.get("InstanceId")
+        self.SubscribeObjectType = params.get("SubscribeObjectType")
+        if params.get("Objects") is not None:
+            self.Objects = SubscribeObject()
+            self.Objects._deserialize(params.get("Objects"))
+        self.UniqSubnetId = params.get("UniqSubnetId")
+        self.Vport = params.get("Vport")
+
+
+class ActivateSubscribeResponse(AbstractModel):
+    """ActivateSubscribe返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param AsyncRequestId: 配置数据订阅任务任务ID。
+        :type AsyncRequestId: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.AsyncRequestId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.AsyncRequestId = params.get("AsyncRequestId")
+        self.RequestId = params.get("RequestId")
+
+
 class CompleteMigrateJobRequest(AbstractModel):
     """CompleteMigrateJob请求参数结构体
 
@@ -190,6 +250,61 @@ class CreateMigrateJobResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.JobId = params.get("JobId")
+        self.RequestId = params.get("RequestId")
+
+
+class CreateSubscribeRequest(AbstractModel):
+    """CreateSubscribe请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Product: 订阅的数据库类型，目前支持的有 mysql
+        :type Product: str
+        :param PayType: 实例付费类型，1小时计费，0包年包月
+        :type PayType: int
+        :param Duration: 购买时长。PayType为0时必填。单位为月，最大支持120
+        :type Duration: int
+        :param Count: 购买数量,默认为1，最大为10
+        :type Count: int
+        :param AutoRenew: 是否自动续费，默认为0，1表示自动续费。小时计费实例设置该标识无效。
+        :type AutoRenew: int
+        """
+        self.Product = None
+        self.PayType = None
+        self.Duration = None
+        self.Count = None
+        self.AutoRenew = None
+
+
+    def _deserialize(self, params):
+        self.Product = params.get("Product")
+        self.PayType = params.get("PayType")
+        self.Duration = params.get("Duration")
+        self.Count = params.get("Count")
+        self.AutoRenew = params.get("AutoRenew")
+
+
+class CreateSubscribeResponse(AbstractModel):
+    """CreateSubscribe返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param SubscribeIds: 数据订阅实例的ID数组
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SubscribeIds: list of str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.SubscribeIds = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.SubscribeIds = params.get("SubscribeIds")
         self.RequestId = params.get("RequestId")
 
 
@@ -373,6 +488,48 @@ class DeleteSyncJobResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeAsyncRequestInfoRequest(AbstractModel):
+    """DescribeAsyncRequestInfo请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param AsyncRequestId: 任务 ID
+        :type AsyncRequestId: str
+        """
+        self.AsyncRequestId = None
+
+
+    def _deserialize(self, params):
+        self.AsyncRequestId = params.get("AsyncRequestId")
+
+
+class DescribeAsyncRequestInfoResponse(AbstractModel):
+    """DescribeAsyncRequestInfo返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Info: 任务执行结果信息
+        :type Info: str
+        :param Status: 任务执行状态，可能的值有：success，failed，running
+        :type Status: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Info = None
+        self.Status = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Info = params.get("Info")
+        self.Status = params.get("Status")
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeMigrateCheckJobRequest(AbstractModel):
     """DescribeMigrateCheckJob请求参数结构体
 
@@ -491,6 +648,264 @@ class DescribeMigrateJobsResponse(AbstractModel):
                 obj = MigrateJobInfo()
                 obj._deserialize(item)
                 self.JobList.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeRegionConfRequest(AbstractModel):
+    """DescribeRegionConf请求参数结构体
+
+    """
+
+
+class DescribeRegionConfResponse(AbstractModel):
+    """DescribeRegionConf返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param TotalCount: 可售卖地域的数量
+        :type TotalCount: int
+        :param Items: 可售卖地域详情
+        :type Items: list of SubscribeRegionConf
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.Items = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("Items") is not None:
+            self.Items = []
+            for item in params.get("Items"):
+                obj = SubscribeRegionConf()
+                obj._deserialize(item)
+                self.Items.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeSubscribeConfRequest(AbstractModel):
+    """DescribeSubscribeConf请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param SubscribeId: 订阅实例ID
+        :type SubscribeId: str
+        """
+        self.SubscribeId = None
+
+
+    def _deserialize(self, params):
+        self.SubscribeId = params.get("SubscribeId")
+
+
+class DescribeSubscribeConfResponse(AbstractModel):
+    """DescribeSubscribeConf返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param SubscribeId: 订阅实例ID
+        :type SubscribeId: str
+        :param SubscribeName: 订阅实例名称
+        :type SubscribeName: str
+        :param ChannelId: 订阅通道
+        :type ChannelId: str
+        :param Product: 订阅数据库类型
+        :type Product: str
+        :param InstanceId: 被订阅的实例
+        :type InstanceId: str
+        :param InstanceStatus: 被订阅的实例的状态，可能的值有running,offline,isolate
+        :type InstanceStatus: str
+        :param SubsStatus: 订阅实例状态，可能的值有unconfigure-未配置，configuring-配置中，configured-已配置
+        :type SubsStatus: str
+        :param Status: 订阅实例生命周期状态，可能的值有：normal-正常，isolating-隔离中，isolated-已隔离，offlining-下线中
+        :type Status: str
+        :param CreateTime: 订阅实例创建时间
+        :type CreateTime: str
+        :param IsolateTime: 订阅实例被隔离时间
+        :type IsolateTime: str
+        :param ExpireTime: 订阅实例到期时间
+        :type ExpireTime: str
+        :param OfflineTime: 订阅实例下线时间
+        :type OfflineTime: str
+        :param ConsumeStartTime: 订阅实例消费时间起点。
+        :type ConsumeStartTime: str
+        :param PayType: 订阅实例计费类型，1-小时计费，0-包年包月
+        :type PayType: int
+        :param Vip: 订阅通道Vip
+        :type Vip: str
+        :param Vport: 订阅通道Port
+        :type Vport: int
+        :param UniqVpcId: 订阅通道所在VpcId
+        :type UniqVpcId: str
+        :param UniqSubnetId: 订阅通道所在SubnetId
+        :type UniqSubnetId: str
+        :param SdkConsumedTime: 当前SDK消费时间位点
+        :type SdkConsumedTime: str
+        :param SdkHost: 订阅SDK IP地址
+        :type SdkHost: str
+        :param SubscribeObjectType: 订阅对象类型0-全实例订阅，1-DDL数据订阅，2-DML结构订阅，3-DDL数据订阅+DML结构订阅
+        :type SubscribeObjectType: int
+        :param SubscribeObjects: 订阅对象，当SubscribeObjectType 为0时，此字段为空数组
+        :type SubscribeObjects: list of SubscribeObject
+        :param ModifyTime: 修改时间
+        :type ModifyTime: str
+        :param Region: 地域
+        :type Region: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.SubscribeId = None
+        self.SubscribeName = None
+        self.ChannelId = None
+        self.Product = None
+        self.InstanceId = None
+        self.InstanceStatus = None
+        self.SubsStatus = None
+        self.Status = None
+        self.CreateTime = None
+        self.IsolateTime = None
+        self.ExpireTime = None
+        self.OfflineTime = None
+        self.ConsumeStartTime = None
+        self.PayType = None
+        self.Vip = None
+        self.Vport = None
+        self.UniqVpcId = None
+        self.UniqSubnetId = None
+        self.SdkConsumedTime = None
+        self.SdkHost = None
+        self.SubscribeObjectType = None
+        self.SubscribeObjects = None
+        self.ModifyTime = None
+        self.Region = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.SubscribeId = params.get("SubscribeId")
+        self.SubscribeName = params.get("SubscribeName")
+        self.ChannelId = params.get("ChannelId")
+        self.Product = params.get("Product")
+        self.InstanceId = params.get("InstanceId")
+        self.InstanceStatus = params.get("InstanceStatus")
+        self.SubsStatus = params.get("SubsStatus")
+        self.Status = params.get("Status")
+        self.CreateTime = params.get("CreateTime")
+        self.IsolateTime = params.get("IsolateTime")
+        self.ExpireTime = params.get("ExpireTime")
+        self.OfflineTime = params.get("OfflineTime")
+        self.ConsumeStartTime = params.get("ConsumeStartTime")
+        self.PayType = params.get("PayType")
+        self.Vip = params.get("Vip")
+        self.Vport = params.get("Vport")
+        self.UniqVpcId = params.get("UniqVpcId")
+        self.UniqSubnetId = params.get("UniqSubnetId")
+        self.SdkConsumedTime = params.get("SdkConsumedTime")
+        self.SdkHost = params.get("SdkHost")
+        self.SubscribeObjectType = params.get("SubscribeObjectType")
+        if params.get("SubscribeObjects") is not None:
+            self.SubscribeObjects = []
+            for item in params.get("SubscribeObjects"):
+                obj = SubscribeObject()
+                obj._deserialize(item)
+                self.SubscribeObjects.append(obj)
+        self.ModifyTime = params.get("ModifyTime")
+        self.Region = params.get("Region")
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeSubscribesRequest(AbstractModel):
+    """DescribeSubscribes请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param SubscribeId: 数据订阅的实例ID
+        :type SubscribeId: str
+        :param SubscribeName: 数据订阅的实例名称
+        :type SubscribeName: str
+        :param InstanceId: 绑定数据库实例的ID
+        :type InstanceId: str
+        :param ChannelId: 数据订阅实例的通道ID
+        :type ChannelId: str
+        :param PayType: 计费模式筛选，可能的值：0-包年包月，1-按量计费
+        :type PayType: str
+        :param Product: 订阅的数据库产品，如mysql
+        :type Product: str
+        :param Status: 数据订阅实例的状态，creating - 创建中，normal - 正常运行，isolating - 隔离中，isolated - 已隔离，offlining - 下线中
+        :type Status: list of str
+        :param SubsStatus: 数据订阅实例的配置状态，unconfigure - 未配置， configuring - 配置中，configured - 已配置
+        :type SubsStatus: list of str
+        :param Offset: 返回记录的起始偏移量
+        :type Offset: int
+        :param Limit: 单次返回的记录数量
+        :type Limit: int
+        :param OrderDirection: 排序方向，可选的值为"DESC"和"ASC"，默认为"DESC"，按创建时间逆序排序
+        :type OrderDirection: str
+        """
+        self.SubscribeId = None
+        self.SubscribeName = None
+        self.InstanceId = None
+        self.ChannelId = None
+        self.PayType = None
+        self.Product = None
+        self.Status = None
+        self.SubsStatus = None
+        self.Offset = None
+        self.Limit = None
+        self.OrderDirection = None
+
+
+    def _deserialize(self, params):
+        self.SubscribeId = params.get("SubscribeId")
+        self.SubscribeName = params.get("SubscribeName")
+        self.InstanceId = params.get("InstanceId")
+        self.ChannelId = params.get("ChannelId")
+        self.PayType = params.get("PayType")
+        self.Product = params.get("Product")
+        self.Status = params.get("Status")
+        self.SubsStatus = params.get("SubsStatus")
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+        self.OrderDirection = params.get("OrderDirection")
+
+
+class DescribeSubscribesResponse(AbstractModel):
+    """DescribeSubscribes返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param TotalCount: 符合查询条件的实例总数
+        :type TotalCount: int
+        :param Items: 数据订阅实例的信息列表
+        :type Items: list of SubscribeInfo
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.Items = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("Items") is not None:
+            self.Items = []
+            for item in params.get("Items"):
+                obj = SubscribeInfo()
+                obj._deserialize(item)
+                self.Items.append(obj)
         self.RequestId = params.get("RequestId")
 
 
@@ -672,6 +1087,40 @@ class ErrorInfo(AbstractModel):
     def _deserialize(self, params):
         self.ErrorLog = params.get("ErrorLog")
         self.HelpDoc = params.get("HelpDoc")
+
+
+class IsolateSubscribeRequest(AbstractModel):
+    """IsolateSubscribe请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param SubscribeId: 订阅实例ID
+        :type SubscribeId: str
+        """
+        self.SubscribeId = None
+
+
+    def _deserialize(self, params):
+        self.SubscribeId = params.get("SubscribeId")
+
+
+class IsolateSubscribeResponse(AbstractModel):
+    """IsolateSubscribe返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
 
 
 class MigrateDetailInfo(AbstractModel):
@@ -981,6 +1430,179 @@ class ModifyMigrateJobResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class ModifySubscribeConsumeTimeRequest(AbstractModel):
+    """ModifySubscribeConsumeTime请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param SubscribeId: 数据订阅实例的ID
+        :type SubscribeId: str
+        :param ConsumeStartTime: 消费时间起点，也即是指定订阅数据的时间起点，时间格式如：Y-m-d h:m:s，取值范围为过去24小时之内
+        :type ConsumeStartTime: str
+        """
+        self.SubscribeId = None
+        self.ConsumeStartTime = None
+
+
+    def _deserialize(self, params):
+        self.SubscribeId = params.get("SubscribeId")
+        self.ConsumeStartTime = params.get("ConsumeStartTime")
+
+
+class ModifySubscribeConsumeTimeResponse(AbstractModel):
+    """ModifySubscribeConsumeTime返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class ModifySubscribeNameRequest(AbstractModel):
+    """ModifySubscribeName请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param SubscribeId: 数据订阅实例的ID
+        :type SubscribeId: str
+        :param SubscribeName: 数据订阅实例的名称，长度限制为[1,60]
+        :type SubscribeName: str
+        """
+        self.SubscribeId = None
+        self.SubscribeName = None
+
+
+    def _deserialize(self, params):
+        self.SubscribeId = params.get("SubscribeId")
+        self.SubscribeName = params.get("SubscribeName")
+
+
+class ModifySubscribeNameResponse(AbstractModel):
+    """ModifySubscribeName返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class ModifySubscribeObjectsRequest(AbstractModel):
+    """ModifySubscribeObjects请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param SubscribeId: 数据订阅实例的ID
+        :type SubscribeId: str
+        :param SubscribeObjectType: 数据订阅的类型，可选的值有：0 - 全实例订阅；1 - 数据订阅；2 - 结构订阅；3 - 数据订阅+结构订阅
+        :type SubscribeObjectType: int
+        :param Objects: 订阅的数据库表信息
+        :type Objects: list of SubscribeObject
+        """
+        self.SubscribeId = None
+        self.SubscribeObjectType = None
+        self.Objects = None
+
+
+    def _deserialize(self, params):
+        self.SubscribeId = params.get("SubscribeId")
+        self.SubscribeObjectType = params.get("SubscribeObjectType")
+        if params.get("Objects") is not None:
+            self.Objects = []
+            for item in params.get("Objects"):
+                obj = SubscribeObject()
+                obj._deserialize(item)
+                self.Objects.append(obj)
+
+
+class ModifySubscribeObjectsResponse(AbstractModel):
+    """ModifySubscribeObjects返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param AsyncRequestId: 异步任务的ID
+        :type AsyncRequestId: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.AsyncRequestId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.AsyncRequestId = params.get("AsyncRequestId")
+        self.RequestId = params.get("RequestId")
+
+
+class ModifySubscribeVipVportRequest(AbstractModel):
+    """ModifySubscribeVipVport请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param SubscribeId: 数据订阅实例的ID
+        :type SubscribeId: str
+        :param DstUniqSubnetId: 指定目的子网，如果传此参数，DstIp必须在目的子网内
+        :type DstUniqSubnetId: str
+        :param DstIp: 目标IP，与DstPort至少传一个
+        :type DstIp: str
+        :param DstPort: 目标PORT，支持范围为：[1025-65535]
+        :type DstPort: int
+        """
+        self.SubscribeId = None
+        self.DstUniqSubnetId = None
+        self.DstIp = None
+        self.DstPort = None
+
+
+    def _deserialize(self, params):
+        self.SubscribeId = params.get("SubscribeId")
+        self.DstUniqSubnetId = params.get("DstUniqSubnetId")
+        self.DstIp = params.get("DstIp")
+        self.DstPort = params.get("DstPort")
+
+
+class ModifySubscribeVipVportResponse(AbstractModel):
+    """ModifySubscribeVipVport返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class ModifySyncJobRequest(AbstractModel):
     """ModifySyncJob请求参数结构体
 
@@ -1016,6 +1638,74 @@ class ModifySyncJobRequest(AbstractModel):
 
 class ModifySyncJobResponse(AbstractModel):
     """ModifySyncJob返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class OfflineIsolatedSubscribeRequest(AbstractModel):
+    """OfflineIsolatedSubscribe请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param SubscribeId: 数据订阅实例的ID
+        :type SubscribeId: str
+        """
+        self.SubscribeId = None
+
+
+    def _deserialize(self, params):
+        self.SubscribeId = params.get("SubscribeId")
+
+
+class OfflineIsolatedSubscribeResponse(AbstractModel):
+    """OfflineIsolatedSubscribe返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class ResetSubscribeRequest(AbstractModel):
+    """ResetSubscribe请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param SubscribeId: 数据订阅实例的ID
+        :type SubscribeId: str
+        """
+        self.SubscribeId = None
+
+
+    def _deserialize(self, params):
+        self.SubscribeId = params.get("SubscribeId")
+
+
+class ResetSubscribeResponse(AbstractModel):
+    """ResetSubscribe返回参数结构体
 
     """
 
@@ -1209,6 +1899,169 @@ class StopMigrateJobResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
+
+
+class SubscribeInfo(AbstractModel):
+    """订阅实例信息
+
+    """
+
+    def __init__(self):
+        """
+        :param SubscribeId: 数据订阅的实例ID
+        :type SubscribeId: str
+        :param SubscribeName: 数据订阅实例的名称
+        :type SubscribeName: str
+        :param ChannelId: 数据订阅实例绑定的通道ID
+        :type ChannelId: str
+        :param Product: 数据订阅绑定实例对应的产品名称
+        :type Product: str
+        :param InstanceId: 数据订阅实例绑定的数据库实例ID
+        :type InstanceId: str
+        :param InstanceStatus: 数据订阅实例绑定的数据库实例状态
+        :type InstanceStatus: str
+        :param SubsStatus: 数据订阅实例的配置状态，unconfigure - 未配置， configuring - 配置中，configured - 已配置
+        :type SubsStatus: str
+        :param ModifyTime: 上次修改时间
+        :type ModifyTime: str
+        :param CreateTime: 创建时间
+        :type CreateTime: str
+        :param IsolateTime: 隔离时间
+        :type IsolateTime: str
+        :param ExpireTime: 到期时间
+        :type ExpireTime: str
+        :param OfflineTime: 下线时间
+        :type OfflineTime: str
+        :param ConsumeStartTime: 最近一次修改的消费时间起点，如果从未修改则为零值
+        :type ConsumeStartTime: str
+        :param Region: 数据订阅实例所属地域
+        :type Region: str
+        :param PayType: 计费方式，0 - 包年包月，1 - 按量计费
+        :type PayType: int
+        :param Vip: 数据订阅实例的Vip
+        :type Vip: str
+        :param Vport: 数据订阅实例的Vport
+        :type Vport: int
+        :param UniqVpcId: 数据订阅实例Vip所在VPC的唯一ID
+        :type UniqVpcId: str
+        :param UniqSubnetId: 数据订阅实例Vip所在子网的唯一ID
+        :type UniqSubnetId: str
+        :param Status: 数据订阅实例的状态，creating - 创建中，normal - 正常运行，isolating - 隔离中，isolated - 已隔离，offlining - 下线中，offline - 已下线
+        :type Status: str
+        :param SdkConsumedTime: SDK最后一条确认消息的时间戳，如果SDK一直消费，也可以作为SDK当前消费时间点
+        :type SdkConsumedTime: str
+        """
+        self.SubscribeId = None
+        self.SubscribeName = None
+        self.ChannelId = None
+        self.Product = None
+        self.InstanceId = None
+        self.InstanceStatus = None
+        self.SubsStatus = None
+        self.ModifyTime = None
+        self.CreateTime = None
+        self.IsolateTime = None
+        self.ExpireTime = None
+        self.OfflineTime = None
+        self.ConsumeStartTime = None
+        self.Region = None
+        self.PayType = None
+        self.Vip = None
+        self.Vport = None
+        self.UniqVpcId = None
+        self.UniqSubnetId = None
+        self.Status = None
+        self.SdkConsumedTime = None
+
+
+    def _deserialize(self, params):
+        self.SubscribeId = params.get("SubscribeId")
+        self.SubscribeName = params.get("SubscribeName")
+        self.ChannelId = params.get("ChannelId")
+        self.Product = params.get("Product")
+        self.InstanceId = params.get("InstanceId")
+        self.InstanceStatus = params.get("InstanceStatus")
+        self.SubsStatus = params.get("SubsStatus")
+        self.ModifyTime = params.get("ModifyTime")
+        self.CreateTime = params.get("CreateTime")
+        self.IsolateTime = params.get("IsolateTime")
+        self.ExpireTime = params.get("ExpireTime")
+        self.OfflineTime = params.get("OfflineTime")
+        self.ConsumeStartTime = params.get("ConsumeStartTime")
+        self.Region = params.get("Region")
+        self.PayType = params.get("PayType")
+        self.Vip = params.get("Vip")
+        self.Vport = params.get("Vport")
+        self.UniqVpcId = params.get("UniqVpcId")
+        self.UniqSubnetId = params.get("UniqSubnetId")
+        self.Status = params.get("Status")
+        self.SdkConsumedTime = params.get("SdkConsumedTime")
+
+
+class SubscribeObject(AbstractModel):
+    """数据数据订阅的对象
+
+    """
+
+    def __init__(self):
+        """
+        :param ObjectsType: 数据订阅对象的类型，0-数据库，1-数据库内的表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ObjectsType: int
+        :param DatabaseName: 订阅数据库的名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DatabaseName: str
+        :param TableNames: 订阅数据库中表名称数组
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TableNames: list of str
+        """
+        self.ObjectsType = None
+        self.DatabaseName = None
+        self.TableNames = None
+
+
+    def _deserialize(self, params):
+        self.ObjectsType = params.get("ObjectsType")
+        self.DatabaseName = params.get("DatabaseName")
+        self.TableNames = params.get("TableNames")
+
+
+class SubscribeRegionConf(AbstractModel):
+    """数据订阅地域售卖信息
+
+    """
+
+    def __init__(self):
+        """
+        :param RegionName: 地域名称，如广州
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RegionName: str
+        :param Region: 地区标识，如ap-guangzhou
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Region: str
+        :param Area: 地域名称，如华南地区
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Area: str
+        :param IsDefaultRegion: 是否为默认地域，0 - 不是，1 - 是的
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IsDefaultRegion: int
+        :param Status: 当前地域的售卖情况，1 - 正常， 2-灰度，3 - 停售
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Status: int
+        """
+        self.RegionName = None
+        self.Region = None
+        self.Area = None
+        self.IsDefaultRegion = None
+        self.Status = None
+
+
+    def _deserialize(self, params):
+        self.RegionName = params.get("RegionName")
+        self.Region = params.get("Region")
+        self.Area = params.get("Area")
+        self.IsDefaultRegion = params.get("IsDefaultRegion")
+        self.Status = params.get("Status")
 
 
 class SwitchDrToMasterRequest(AbstractModel):

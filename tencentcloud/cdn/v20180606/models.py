@@ -3466,7 +3466,7 @@ class ListClsLogTopicsResponse(AbstractModel):
         """
         :param Logset: 日志集信息
         :type Logset: :class:`tencentcloud.cdn.v20180606.models.LogSetInfo`
-        :param Topics: 主题信息列表
+        :param Topics: 日志主题信息列表
 注意：此字段可能返回 null，表示取不到有效值。
         :type Topics: list of TopicInfo
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -3528,13 +3528,13 @@ class ListClsTopicDomainsResponse(AbstractModel):
         :type Channel: str
         :param LogsetId: 日志集ID
         :type LogsetId: str
-        :param TopicId: 主题ID
+        :param TopicId: 日志主题ID
         :type TopicId: str
-        :param DomainAreaConfigs: 域名区域配置，其中可能含有已删除的域名，如果要再传回ManageClsTopicDomains接口，需要结合ListCdnDomains接口排除掉已删除的域名。
+        :param DomainAreaConfigs: 域名区域配置，其中可能含有已删除的域名，如果要再传回ManageClsTopicDomains接口，需要结合ListCdnDomains接口排除掉已删除的域名
         :type DomainAreaConfigs: list of DomainAreaConfig
-        :param TopicName: 主题名称
+        :param TopicName: 日志主题名称
         :type TopicName: str
-        :param UpdateTime: 主题最近更新时间
+        :param UpdateTime: 日志主题最近更新时间
 注意：此字段可能返回 null，表示取不到有效值。
         :type UpdateTime: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。

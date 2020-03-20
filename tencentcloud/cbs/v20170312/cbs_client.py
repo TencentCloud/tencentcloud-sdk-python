@@ -572,6 +572,34 @@ class CbsClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def GetSnapOverview(self, request):
+        """获取快照概览信息
+
+        :param request: Request instance for GetSnapOverview.
+        :type request: :class:`tencentcloud.cbs.v20170312.models.GetSnapOverviewRequest`
+        :rtype: :class:`tencentcloud.cbs.v20170312.models.GetSnapOverviewResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("GetSnapOverview", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.GetSnapOverviewResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def InquiryPriceCreateDisks(self, request):
         """本接口（InquiryPriceCreateDisks）用于创建云硬盘询价。
 

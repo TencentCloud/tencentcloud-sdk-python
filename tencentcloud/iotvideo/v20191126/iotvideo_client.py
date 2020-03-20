@@ -1186,6 +1186,40 @@ class IotvideoClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def ModifyDeviceProperty(self, request):
+        """本接口（ModifyDeviceProperty）用于修改设备物模型的属性（ProWritable）。
+        可对setVal数据属性进行写入,如:
+        ProWritable.Pos.setVal
+        对于嵌套类型的可写属性，可以仅对其部分数据内容进行写入，如:
+        ProWritable.Pos.setVal.x;
+        可写属性云端写入成功即返回;云端向设备端发布属性变更参数;若当前设备不在线,在设备下次上线时会自动更新这些属性参数;
+        物模型写入数据时,不需要传入时标信息,平台以当前时标作为数据的时标更新物模型中的时标信息。
+
+        :param request: Request instance for ModifyDeviceProperty.
+        :type request: :class:`tencentcloud.iotvideo.v20191126.models.ModifyDevicePropertyRequest`
+        :rtype: :class:`tencentcloud.iotvideo.v20191126.models.ModifyDevicePropertyResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ModifyDeviceProperty", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ModifyDevicePropertyResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def ModifyProduct(self, request):
         """本接口（ModifyProduct）用于编辑物联网智能视频产品的相关信息。
 

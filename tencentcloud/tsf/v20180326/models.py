@@ -860,6 +860,9 @@ class ContainerGroupDetail(AbstractModel):
         :param MemRequest: 初始分配的内存 MiB 数，对应 K8S request
 注意：此字段可能返回 null，表示取不到有效值。
         :type MemRequest: str
+        :param SubnetId: 子网id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SubnetId: str
         """
         self.GroupId = None
         self.GroupName = None
@@ -891,6 +894,7 @@ class ContainerGroupDetail(AbstractModel):
         self.MicroserviceType = None
         self.CpuRequest = None
         self.MemRequest = None
+        self.SubnetId = None
 
 
     def _deserialize(self, params):
@@ -934,6 +938,7 @@ class ContainerGroupDetail(AbstractModel):
         self.MicroserviceType = params.get("MicroserviceType")
         self.CpuRequest = params.get("CpuRequest")
         self.MemRequest = params.get("MemRequest")
+        self.SubnetId = params.get("SubnetId")
 
 
 class CosCredentials(AbstractModel):
@@ -4864,16 +4869,20 @@ class ProtocolPort(AbstractModel):
         :type Port: int
         :param TargetPort: 容器端口
         :type TargetPort: int
+        :param NodePort: 主机端口
+        :type NodePort: int
         """
         self.Protocol = None
         self.Port = None
         self.TargetPort = None
+        self.NodePort = None
 
 
     def _deserialize(self, params):
         self.Protocol = params.get("Protocol")
         self.Port = params.get("Port")
         self.TargetPort = params.get("TargetPort")
+        self.NodePort = params.get("NodePort")
 
 
 class ReleaseConfigRequest(AbstractModel):
