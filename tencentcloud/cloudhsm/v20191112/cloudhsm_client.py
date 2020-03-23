@@ -25,6 +25,62 @@ class CloudhsmClient(AbstractClient):
     _endpoint = 'cloudhsm.tencentcloudapi.com'
 
 
+    def DescribeHSMBySubnetId(self, request):
+        """通过SubnetId获取Hsm资源数
+
+        :param request: Request instance for DescribeHSMBySubnetId.
+        :type request: :class:`tencentcloud.cloudhsm.v20191112.models.DescribeHSMBySubnetIdRequest`
+        :rtype: :class:`tencentcloud.cloudhsm.v20191112.models.DescribeHSMBySubnetIdResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeHSMBySubnetId", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeHSMBySubnetIdResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeHSMByVpcId(self, request):
+        """通过VpcId获取Hsm资源数
+
+        :param request: Request instance for DescribeHSMByVpcId.
+        :type request: :class:`tencentcloud.cloudhsm.v20191112.models.DescribeHSMByVpcIdRequest`
+        :rtype: :class:`tencentcloud.cloudhsm.v20191112.models.DescribeHSMByVpcIdResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeHSMByVpcId", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeHSMByVpcIdResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeSubnet(self, request):
         """查询子网列表
 

@@ -865,6 +865,34 @@ class TcrClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeNamespaces(self, request):
+        """查询命名空间列表或指定命名空间信息
+
+        :param request: Request instance for DescribeNamespaces.
+        :type request: :class:`tencentcloud.tcr.v20190924.models.DescribeNamespacesRequest`
+        :rtype: :class:`tencentcloud.tcr.v20190924.models.DescribeNamespacesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeNamespaces", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeNamespacesResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeRepositories(self, request):
         """查询镜像仓库信息
 
@@ -1090,7 +1118,7 @@ class TcrClient(AbstractClient):
 
 
     def ModifyNamespace(self, request):
-        """更新命名空间信息
+        """更新命名空间信息，当前仅支持修改命名空间访问级别
 
         :param request: Request instance for ModifyNamespace.
         :type request: :class:`tencentcloud.tcr.v20190924.models.ModifyNamespaceRequest`

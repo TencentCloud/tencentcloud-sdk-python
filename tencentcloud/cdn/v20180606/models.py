@@ -1174,7 +1174,7 @@ class DeleteClsLogTopicRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param TopicId: 主日志题ID
+        :param TopicId: 日志主题ID
         :type TopicId: str
         :param LogsetId: 日志集ID
         :type LogsetId: str

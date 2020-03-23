@@ -53,6 +53,90 @@ class PostgresClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def CloseServerlessDBExtranetAccess(self, request):
+        """关闭serverlessDB实例外网
+
+        :param request: Request instance for CloseServerlessDBExtranetAccess.
+        :type request: :class:`tencentcloud.postgres.v20170312.models.CloseServerlessDBExtranetAccessRequest`
+        :rtype: :class:`tencentcloud.postgres.v20170312.models.CloseServerlessDBExtranetAccessResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("CloseServerlessDBExtranetAccess", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CloseServerlessDBExtranetAccessResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def CreateServerlessDBInstance(self, request):
+        """本接口 (CreateServerlessDBInstance) 用于创建一个ServerlessDB实例，创建成功返回实例ID。
+
+        :param request: Request instance for CreateServerlessDBInstance.
+        :type request: :class:`tencentcloud.postgres.v20170312.models.CreateServerlessDBInstanceRequest`
+        :rtype: :class:`tencentcloud.postgres.v20170312.models.CreateServerlessDBInstanceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("CreateServerlessDBInstance", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateServerlessDBInstanceResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DeleteServerlessDBInstance(self, request):
+        """本接口 (DeleteServerlessDBInstance) 用于删除一个ServerlessDB实例。
+
+        :param request: Request instance for DeleteServerlessDBInstance.
+        :type request: :class:`tencentcloud.postgres.v20170312.models.DeleteServerlessDBInstanceRequest`
+        :rtype: :class:`tencentcloud.postgres.v20170312.models.DeleteServerlessDBInstanceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DeleteServerlessDBInstance", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DeleteServerlessDBInstanceResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeAccounts(self, request):
         """本接口（DescribeAccounts）用于获取实例用户列表。
 
@@ -305,6 +389,34 @@ class PostgresClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeServerlessDBInstances(self, request):
+        """用于查询一个或多个serverlessDB实例的详细信息
+
+        :param request: Request instance for DescribeServerlessDBInstances.
+        :type request: :class:`tencentcloud.postgres.v20170312.models.DescribeServerlessDBInstancesRequest`
+        :rtype: :class:`tencentcloud.postgres.v20170312.models.DescribeServerlessDBInstancesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeServerlessDBInstances", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeServerlessDBInstancesResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeZones(self, request):
         """本接口 (DescribeZones) 用于查询支持的可用区信息。
 
@@ -543,6 +655,34 @@ class PostgresClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.OpenDBExtranetAccessResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def OpenServerlessDBExtranetAccess(self, request):
+        """开通serverlessDB实例外网
+
+        :param request: Request instance for OpenServerlessDBExtranetAccess.
+        :type request: :class:`tencentcloud.postgres.v20170312.models.OpenServerlessDBExtranetAccessRequest`
+        :rtype: :class:`tencentcloud.postgres.v20170312.models.OpenServerlessDBExtranetAccessResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("OpenServerlessDBExtranetAccess", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.OpenServerlessDBExtranetAccessResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

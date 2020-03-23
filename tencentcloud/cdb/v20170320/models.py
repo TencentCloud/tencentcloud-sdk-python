@@ -6178,6 +6178,8 @@ class SellConfig(AbstractModel):
         :type Info: str
         :param Status: 状态值
         :type Status: int
+        :param Tag: 标签值
+        :type Tag: int
         """
         self.Device = None
         self.Type = None
@@ -6192,6 +6194,7 @@ class SellConfig(AbstractModel):
         self.Iops = None
         self.Info = None
         self.Status = None
+        self.Tag = None
 
 
     def _deserialize(self, params):
@@ -6208,6 +6211,7 @@ class SellConfig(AbstractModel):
         self.Iops = params.get("Iops")
         self.Info = params.get("Info")
         self.Status = params.get("Status")
+        self.Tag = params.get("Tag")
 
 
 class SellType(AbstractModel):
@@ -6938,6 +6942,11 @@ class ZoneSellConf(AbstractModel):
         :type ZoneConf: :class:`tencentcloud.cdb.v20170320.models.ZoneConf`
         :param DrZone: 可支持的灾备可用区信息
         :type DrZone: list of str
+        :param IsSupportRemoteRo: 是否支持跨可用区只读
+        :type IsSupportRemoteRo: bool
+        :param RemoteRoZone: 可支持的跨可用区只读区信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RemoteRoZone: list of str
         """
         self.Status = None
         self.ZoneName = None
@@ -6953,6 +6962,8 @@ class ZoneSellConf(AbstractModel):
         self.SellType = None
         self.ZoneConf = None
         self.DrZone = None
+        self.IsSupportRemoteRo = None
+        self.RemoteRoZone = None
 
 
     def _deserialize(self, params):
@@ -6977,3 +6988,5 @@ class ZoneSellConf(AbstractModel):
             self.ZoneConf = ZoneConf()
             self.ZoneConf._deserialize(params.get("ZoneConf"))
         self.DrZone = params.get("DrZone")
+        self.IsSupportRemoteRo = params.get("IsSupportRemoteRo")
+        self.RemoteRoZone = params.get("RemoteRoZone")

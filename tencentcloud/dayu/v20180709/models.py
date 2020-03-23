@@ -5156,7 +5156,7 @@ class DescribleL7RulesRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Business: 大禹子产品代号（bgpip表示高防IP；bgp表示独享包；bgp-multip表示共享包；net表示高防IP专业版）
+        :param Business: 大禹子产品代号（bgpip表示高防IP；net表示高防IP专业版）
         :type Business: str
         :param Id: 资源ID
         :type Id: str

@@ -16,6 +16,90 @@
 from tencentcloud.common.abstract_model import AbstractModel
 
 
+class DescribeHSMBySubnetIdRequest(AbstractModel):
+    """DescribeHSMBySubnetId请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param SubnetId: Subnet标识符
+        :type SubnetId: str
+        """
+        self.SubnetId = None
+
+
+    def _deserialize(self, params):
+        self.SubnetId = params.get("SubnetId")
+
+
+class DescribeHSMBySubnetIdResponse(AbstractModel):
+    """DescribeHSMBySubnetId返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param TotalCount: HSM数量
+        :type TotalCount: int
+        :param SubnetId: 作为查询条件的SubnetId
+        :type SubnetId: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.SubnetId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        self.SubnetId = params.get("SubnetId")
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeHSMByVpcIdRequest(AbstractModel):
+    """DescribeHSMByVpcId请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param VpcId: VPC标识符
+        :type VpcId: str
+        """
+        self.VpcId = None
+
+
+    def _deserialize(self, params):
+        self.VpcId = params.get("VpcId")
+
+
+class DescribeHSMByVpcIdResponse(AbstractModel):
+    """DescribeHSMByVpcId返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param TotalCount: HSM数量
+        :type TotalCount: int
+        :param VpcId: 作为查询条件的VpcId
+        :type VpcId: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.VpcId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        self.VpcId = params.get("VpcId")
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeSubnetRequest(AbstractModel):
     """DescribeSubnet请求参数结构体
 

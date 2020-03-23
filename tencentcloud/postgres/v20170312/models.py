@@ -91,6 +91,106 @@ class CloseDBExtranetAccessResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class CloseServerlessDBExtranetAccessRequest(AbstractModel):
+    """CloseServerlessDBExtranetAccess请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param DBInstanceId: 实例唯一标识符
+        :type DBInstanceId: str
+        :param DBInstanceName: 实例名称
+        :type DBInstanceName: str
+        """
+        self.DBInstanceId = None
+        self.DBInstanceName = None
+
+
+    def _deserialize(self, params):
+        self.DBInstanceId = params.get("DBInstanceId")
+        self.DBInstanceName = params.get("DBInstanceName")
+
+
+class CloseServerlessDBExtranetAccessResponse(AbstractModel):
+    """CloseServerlessDBExtranetAccess返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class CreateServerlessDBInstanceRequest(AbstractModel):
+    """CreateServerlessDBInstance请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Zone: 可用区ID。该参数可以通过调用 DescribeZones 接口的返回值中的Zone字段来获取。
+        :type Zone: str
+        :param DBInstanceName: DB实例名称，同一个账号下该值必须唯一。
+        :type DBInstanceName: str
+        :param DBVersion: PostgreSQL内核版本，目前只支持：9.3.5、9.5.4、10.4三种版本。
+        :type DBVersion: str
+        :param DBCharset: PostgreSQL数据库字符集，目前支持UTF8、LATIN1两种。
+        :type DBCharset: str
+        :param ProjectId: 项目ID。
+        :type ProjectId: int
+        :param VpcId: 私有网络ID。
+        :type VpcId: str
+        :param SubnetId: 私有网络子网ID。
+        :type SubnetId: str
+        """
+        self.Zone = None
+        self.DBInstanceName = None
+        self.DBVersion = None
+        self.DBCharset = None
+        self.ProjectId = None
+        self.VpcId = None
+        self.SubnetId = None
+
+
+    def _deserialize(self, params):
+        self.Zone = params.get("Zone")
+        self.DBInstanceName = params.get("DBInstanceName")
+        self.DBVersion = params.get("DBVersion")
+        self.DBCharset = params.get("DBCharset")
+        self.ProjectId = params.get("ProjectId")
+        self.VpcId = params.get("VpcId")
+        self.SubnetId = params.get("SubnetId")
+
+
+class CreateServerlessDBInstanceResponse(AbstractModel):
+    """CreateServerlessDBInstance返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param DBInstanceId: 实例ID，该ID全局唯一，如：postgres-xxxxx
+        :type DBInstanceId: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.DBInstanceId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.DBInstanceId = params.get("DBInstanceId")
+        self.RequestId = params.get("RequestId")
+
+
 class DBBackup(AbstractModel):
     """数据库备份信息
 
@@ -293,6 +393,44 @@ class DBInstanceNetInfo(AbstractModel):
         self.Port = params.get("Port")
         self.NetType = params.get("NetType")
         self.Status = params.get("Status")
+
+
+class DeleteServerlessDBInstanceRequest(AbstractModel):
+    """DeleteServerlessDBInstance请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param DBInstanceName: DB实例名称，实例名和实例ID必须至少传一个，如果同时存在，将只以实例ID为准。
+        :type DBInstanceName: str
+        :param DBInstanceId: DB实例ID，实例名和实例ID必须至少传一个，如果同时存在，将只以实例ID为准。
+        :type DBInstanceId: str
+        """
+        self.DBInstanceName = None
+        self.DBInstanceId = None
+
+
+    def _deserialize(self, params):
+        self.DBInstanceName = params.get("DBInstanceName")
+        self.DBInstanceId = params.get("DBInstanceId")
+
+
+class DeleteServerlessDBInstanceResponse(AbstractModel):
+    """DeleteServerlessDBInstance返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
 
 
 class DescribeAccountsRequest(AbstractModel):
@@ -797,6 +935,67 @@ class DescribeRegionsResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeServerlessDBInstancesRequest(AbstractModel):
+    """DescribeServerlessDBInstances请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Filter: 查询条件
+        :type Filter: list of Filter
+        :param Limit: 查询个数
+        :type Limit: int
+        :param Offset: 偏移量
+        :type Offset: int
+        """
+        self.Filter = None
+        self.Limit = None
+        self.Offset = None
+
+
+    def _deserialize(self, params):
+        if params.get("Filter") is not None:
+            self.Filter = []
+            for item in params.get("Filter"):
+                obj = Filter()
+                obj._deserialize(item)
+                self.Filter.append(obj)
+        self.Limit = params.get("Limit")
+        self.Offset = params.get("Offset")
+
+
+class DescribeServerlessDBInstancesResponse(AbstractModel):
+    """DescribeServerlessDBInstances返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param TotalCount: 查询结果数
+        :type TotalCount: int
+        :param DBInstanceSet: 查询结果
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DBInstanceSet: list of ServerlessDBInstance
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.DBInstanceSet = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("DBInstanceSet") is not None:
+            self.DBInstanceSet = []
+            for item in params.get("DBInstanceSet"):
+                obj = ServerlessDBInstance()
+                obj._deserialize(item)
+                self.DBInstanceSet.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeZonesRequest(AbstractModel):
     """DescribeZones请求参数结构体
 
@@ -860,6 +1059,29 @@ class ErrLogDetail(AbstractModel):
         self.Database = params.get("Database")
         self.ErrTime = params.get("ErrTime")
         self.ErrMsg = params.get("ErrMsg")
+
+
+class Filter(AbstractModel):
+    """描述键值对过滤器，用于条件过滤查询。例如过滤ID、名称等
+    * 若存在多个Filter时，Filter间的关系为逻辑与（AND）关系。
+    * 若同一个Filter存在多个Values，同一Filter下Values间的关系为逻辑或（OR）关系。
+
+    """
+
+    def __init__(self):
+        """
+        :param Name: 过滤键的名称。
+        :type Name: str
+        :param Values: 一个或者多个过滤值。
+        :type Values: list of str
+        """
+        self.Name = None
+        self.Values = None
+
+
+    def _deserialize(self, params):
+        self.Name = params.get("Name")
+        self.Values = params.get("Values")
 
 
 class InitDBInstancesRequest(AbstractModel):
@@ -1311,6 +1533,44 @@ class OpenDBExtranetAccessResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class OpenServerlessDBExtranetAccessRequest(AbstractModel):
+    """OpenServerlessDBExtranetAccess请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param DBInstanceId: 实例的唯一标识符
+        :type DBInstanceId: str
+        :param DBInstanceName: 实例名称
+        :type DBInstanceName: str
+        """
+        self.DBInstanceId = None
+        self.DBInstanceName = None
+
+
+    def _deserialize(self, params):
+        self.DBInstanceId = params.get("DBInstanceId")
+        self.DBInstanceName = params.get("DBInstanceName")
+
+
+class OpenServerlessDBExtranetAccessResponse(AbstractModel):
+    """OpenServerlessDBExtranetAccess返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class PgDeal(AbstractModel):
     """订单详情
 
@@ -1505,6 +1765,165 @@ class RestartDBInstanceResponse(AbstractModel):
     def _deserialize(self, params):
         self.FlowId = params.get("FlowId")
         self.RequestId = params.get("RequestId")
+
+
+class ServerlessDBAccount(AbstractModel):
+    """serverless账号描述
+
+    """
+
+    def __init__(self):
+        """
+        :param DBUser: 用户名
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DBUser: str
+        :param DBPassword: 密码
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DBPassword: str
+        :param DBConnLimit: 连接数限制
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DBConnLimit: int
+        """
+        self.DBUser = None
+        self.DBPassword = None
+        self.DBConnLimit = None
+
+
+    def _deserialize(self, params):
+        self.DBUser = params.get("DBUser")
+        self.DBPassword = params.get("DBPassword")
+        self.DBConnLimit = params.get("DBConnLimit")
+
+
+class ServerlessDBInstance(AbstractModel):
+    """serverless实例描述
+
+    """
+
+    def __init__(self):
+        """
+        :param DBInstanceId: 实例id，唯一标识符
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DBInstanceId: str
+        :param DBInstanceName: 实例名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DBInstanceName: str
+        :param DBInstanceStatus: 实例状态
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DBInstanceStatus: str
+        :param Region: 地域
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Region: str
+        :param Zone: 可用区
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Zone: str
+        :param ProjectId: projectId
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ProjectId: int
+        :param VpcId: VpcId
+注意：此字段可能返回 null，表示取不到有效值。
+        :type VpcId: str
+        :param SubnetId: 子网id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SubnetId: str
+        :param DBCharset: 字符集
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DBCharset: str
+        :param DBVersion: 数据库版本
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DBVersion: str
+        :param CreateTime: 创建时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CreateTime: str
+        :param DBInstanceNetInfo: 实例网络信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DBInstanceNetInfo: list of ServerlessDBInstanceNetInfo
+        :param DBAccountSet: 实例账户信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DBAccountSet: list of ServerlessDBAccount
+        :param DBDatabaseList: 实例下的db信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DBDatabaseList: list of str
+        """
+        self.DBInstanceId = None
+        self.DBInstanceName = None
+        self.DBInstanceStatus = None
+        self.Region = None
+        self.Zone = None
+        self.ProjectId = None
+        self.VpcId = None
+        self.SubnetId = None
+        self.DBCharset = None
+        self.DBVersion = None
+        self.CreateTime = None
+        self.DBInstanceNetInfo = None
+        self.DBAccountSet = None
+        self.DBDatabaseList = None
+
+
+    def _deserialize(self, params):
+        self.DBInstanceId = params.get("DBInstanceId")
+        self.DBInstanceName = params.get("DBInstanceName")
+        self.DBInstanceStatus = params.get("DBInstanceStatus")
+        self.Region = params.get("Region")
+        self.Zone = params.get("Zone")
+        self.ProjectId = params.get("ProjectId")
+        self.VpcId = params.get("VpcId")
+        self.SubnetId = params.get("SubnetId")
+        self.DBCharset = params.get("DBCharset")
+        self.DBVersion = params.get("DBVersion")
+        self.CreateTime = params.get("CreateTime")
+        if params.get("DBInstanceNetInfo") is not None:
+            self.DBInstanceNetInfo = []
+            for item in params.get("DBInstanceNetInfo"):
+                obj = ServerlessDBInstanceNetInfo()
+                obj._deserialize(item)
+                self.DBInstanceNetInfo.append(obj)
+        if params.get("DBAccountSet") is not None:
+            self.DBAccountSet = []
+            for item in params.get("DBAccountSet"):
+                obj = ServerlessDBAccount()
+                obj._deserialize(item)
+                self.DBAccountSet.append(obj)
+        self.DBDatabaseList = params.get("DBDatabaseList")
+
+
+class ServerlessDBInstanceNetInfo(AbstractModel):
+    """serverless实例网络信息描述
+
+    """
+
+    def __init__(self):
+        """
+        :param Address: 地址
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Address: str
+        :param Ip: ip地址
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Ip: str
+        :param Port: 端口号
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Port: int
+        :param Status: 状态
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Status: str
+        :param NetType: 网络类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type NetType: str
+        """
+        self.Address = None
+        self.Ip = None
+        self.Port = None
+        self.Status = None
+        self.NetType = None
+
+
+    def _deserialize(self, params):
+        self.Address = params.get("Address")
+        self.Ip = params.get("Ip")
+        self.Port = params.get("Port")
+        self.Status = params.get("Status")
+        self.NetType = params.get("NetType")
 
 
 class SetAutoRenewFlagRequest(AbstractModel):

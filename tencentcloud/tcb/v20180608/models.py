@@ -126,6 +126,44 @@ class CommonServiceAPIResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class CreateAuthDomainRequest(AbstractModel):
+    """CreateAuthDomain请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param EnvId: 环境ID
+        :type EnvId: str
+        :param Domains: 安全域名
+        :type Domains: list of str
+        """
+        self.EnvId = None
+        self.Domains = None
+
+
+    def _deserialize(self, params):
+        self.EnvId = params.get("EnvId")
+        self.Domains = params.get("Domains")
+
+
+class CreateAuthDomainResponse(AbstractModel):
+    """CreateAuthDomain返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class CreateHostingDomainRequest(AbstractModel):
     """CreateHostingDomain请求参数结构体
 

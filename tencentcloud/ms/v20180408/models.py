@@ -137,7 +137,7 @@ class AppInfo(AbstractModel):
         :type AppMd5: str
         :param AppSize: app的大小
         :type AppSize: int
-        :param FileName: app的文件名，指定后加固后的文件名是{FileName}_legu.apk
+        :param FileName: app的文件名
         :type FileName: str
         :param AppPkgName: app的包名，需要正确的传递此字段
         :type AppPkgName: str

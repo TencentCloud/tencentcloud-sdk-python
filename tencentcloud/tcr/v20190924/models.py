@@ -1430,6 +1430,65 @@ class DescribeNamespacePersonalResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeNamespacesRequest(AbstractModel):
+    """DescribeNamespaces请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RegistryId: 实例Id
+        :type RegistryId: str
+        :param NamespaceName: 指定命名空间，不填写默认查询所有命名空间
+        :type NamespaceName: str
+        :param Limit: 每页个数
+        :type Limit: int
+        :param Offset: 页偏移
+        :type Offset: int
+        """
+        self.RegistryId = None
+        self.NamespaceName = None
+        self.Limit = None
+        self.Offset = None
+
+
+    def _deserialize(self, params):
+        self.RegistryId = params.get("RegistryId")
+        self.NamespaceName = params.get("NamespaceName")
+        self.Limit = params.get("Limit")
+        self.Offset = params.get("Offset")
+
+
+class DescribeNamespacesResponse(AbstractModel):
+    """DescribeNamespaces返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param NamespaceList: 命名空间列表信息
+        :type NamespaceList: list of TcrNamespaceInfo
+        :param TotalCount: 总个数
+        :type TotalCount: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.NamespaceList = None
+        self.TotalCount = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("NamespaceList") is not None:
+            self.NamespaceList = []
+            for item in params.get("NamespaceList"):
+                obj = TcrNamespaceInfo()
+                obj._deserialize(item)
+                self.NamespaceList.append(obj)
+        self.TotalCount = params.get("TotalCount")
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeRepositoriesRequest(AbstractModel):
     """DescribeRepositories请求参数结构体
 
@@ -1982,9 +2041,9 @@ class ModifyNamespaceRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param RegistryId: 实例的Id
+        :param RegistryId: 实例Id
         :type RegistryId: str
-        :param NamespaceName: 命名空间的名称
+        :param NamespaceName: 命名空间名称
         :type NamespaceName: str
         :param IsPublic: 访问级别，True为公开，False为私有
         :type IsPublic: bool
@@ -2718,6 +2777,31 @@ class TcrImageInfo(AbstractModel):
         self.Digest = params.get("Digest")
         self.Size = params.get("Size")
         self.ImageVersion = params.get("ImageVersion")
+
+
+class TcrNamespaceInfo(AbstractModel):
+    """Tcr 命名空间的描述
+
+    """
+
+    def __init__(self):
+        """
+        :param Name: 命名空间名称
+        :type Name: str
+        :param CreationTime: 创建时间
+        :type CreationTime: str
+        :param Public: 访问级别
+        :type Public: bool
+        """
+        self.Name = None
+        self.CreationTime = None
+        self.Public = None
+
+
+    def _deserialize(self, params):
+        self.Name = params.get("Name")
+        self.CreationTime = params.get("CreationTime")
+        self.Public = params.get("Public")
 
 
 class TcrRepositoryInfo(AbstractModel):

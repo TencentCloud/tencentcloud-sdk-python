@@ -3158,7 +3158,7 @@ class LoadBalancer(AbstractModel):
         :type VpcName: str
         :param VpcCidrBlock: 私有网络Cidr。
         :type VpcCidrBlock: str
-        :param LoadBalancerVips: 负载均衡获得的公网IP地址,支持多个
+        :param LoadBalancerVips: 负载均衡的IPV4的VIP。
         :type LoadBalancerVips: list of str
         :param SupportListenerTypes: 无
         :type SupportListenerTypes: list of str
@@ -3180,6 +3180,9 @@ class LoadBalancer(AbstractModel):
         :type BzL7Metrics: str
         :param IntVpcId: 该负载均衡对应的所在的整形类型的VpcId
         :type IntVpcId: int
+        :param CurVips: 负载均衡的IPV6或者IPV4的VIP。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CurVips: list of str
         """
         self.LoadBalancerId = None
         self.ProjectId = None
@@ -3208,6 +3211,7 @@ class LoadBalancer(AbstractModel):
         self.BzL4Metrics = None
         self.BzL7Metrics = None
         self.IntVpcId = None
+        self.CurVips = None
 
 
     def _deserialize(self, params):
@@ -3238,6 +3242,7 @@ class LoadBalancer(AbstractModel):
         self.BzL4Metrics = params.get("BzL4Metrics")
         self.BzL7Metrics = params.get("BzL7Metrics")
         self.IntVpcId = params.get("IntVpcId")
+        self.CurVips = params.get("CurVips")
 
 
 class LoadBalancerPortInfoListener(AbstractModel):
