@@ -3995,6 +3995,48 @@ class DescribeAddressTemplateGroupsResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeAddressTemplateInstancesRequest(AbstractModel):
+    """DescribeAddressTemplateInstances请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param AddressTemplateId: IP地址实例ID。例如：ipm-12345678。
+        :type AddressTemplateId: str
+        :param Offset: 偏移量，默认为0。
+        :type Offset: int
+        :param Limit: 返回数量，默认为20，最大值为100。
+        :type Limit: int
+        """
+        self.AddressTemplateId = None
+        self.Offset = None
+        self.Limit = None
+
+
+    def _deserialize(self, params):
+        self.AddressTemplateId = params.get("AddressTemplateId")
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+
+
+class DescribeAddressTemplateInstancesResponse(AbstractModel):
+    """DescribeAddressTemplateInstances返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeAddressTemplatesRequest(AbstractModel):
     """DescribeAddressTemplates请求参数结构体
 
@@ -6265,6 +6307,35 @@ class DescribeTaskResultResponse(AbstractModel):
     def _deserialize(self, params):
         self.TaskId = params.get("TaskId")
         self.Result = params.get("Result")
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeTemplateLimitsRequest(AbstractModel):
+    """DescribeTemplateLimits请求参数结构体
+
+    """
+
+
+class DescribeTemplateLimitsResponse(AbstractModel):
+    """DescribeTemplateLimits返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param TemplateLimit: 参数模板配额对象。
+        :type TemplateLimit: :class:`tencentcloud.vpc.v20170312.models.TemplateLimit`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TemplateLimit = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("TemplateLimit") is not None:
+            self.TemplateLimit = TemplateLimit()
+            self.TemplateLimit._deserialize(params.get("TemplateLimit"))
         self.RequestId = params.get("RequestId")
 
 
@@ -11301,6 +11372,35 @@ class Tag(AbstractModel):
     def _deserialize(self, params):
         self.Key = params.get("Key")
         self.Value = params.get("Value")
+
+
+class TemplateLimit(AbstractModel):
+    """参数模板配额
+
+    """
+
+    def __init__(self):
+        """
+        :param AddressTemplateMemberLimit: 参数模板IP地址成员配额。
+        :type AddressTemplateMemberLimit: int
+        :param AddressTemplateGroupMemberLimit: 参数模板IP地址组成员配额。
+        :type AddressTemplateGroupMemberLimit: int
+        :param ServiceTemplateMemberLimit: 参数模板I协议端口成员配额。
+        :type ServiceTemplateMemberLimit: int
+        :param ServiceTemplateGroupMemberLimit: 参数模板协议端口组成员配额。
+        :type ServiceTemplateGroupMemberLimit: int
+        """
+        self.AddressTemplateMemberLimit = None
+        self.AddressTemplateGroupMemberLimit = None
+        self.ServiceTemplateMemberLimit = None
+        self.ServiceTemplateGroupMemberLimit = None
+
+
+    def _deserialize(self, params):
+        self.AddressTemplateMemberLimit = params.get("AddressTemplateMemberLimit")
+        self.AddressTemplateGroupMemberLimit = params.get("AddressTemplateGroupMemberLimit")
+        self.ServiceTemplateMemberLimit = params.get("ServiceTemplateMemberLimit")
+        self.ServiceTemplateGroupMemberLimit = params.get("ServiceTemplateGroupMemberLimit")
 
 
 class TransformAddressRequest(AbstractModel):

@@ -2108,6 +2108,34 @@ class VpcClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeAddressTemplateInstances(self, request):
+        """本接口（DescribeAddressTemplateInstances）用于查询参数模板IP地址关联的实例列表。本接口不会返回查询的结果，需要根据返回的RequestId调用DescribeVpcTaskResult接口获取结果。
+
+        :param request: Request instance for DescribeAddressTemplateInstances.
+        :type request: :class:`tencentcloud.vpc.v20170312.models.DescribeAddressTemplateInstancesRequest`
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.DescribeAddressTemplateInstancesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeAddressTemplateInstances", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeAddressTemplateInstancesResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeAddressTemplates(self, request):
         """本接口（DescribeAddressTemplates）用于查询IP地址模板
 
@@ -3134,6 +3162,34 @@ class VpcClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeTaskResultResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeTemplateLimits(self, request):
+        """本接口（DescribeTemplateLimits）用于查询参数模板配额列表。
+
+        :param request: Request instance for DescribeTemplateLimits.
+        :type request: :class:`tencentcloud.vpc.v20170312.models.DescribeTemplateLimitsRequest`
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.DescribeTemplateLimitsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeTemplateLimits", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeTemplateLimitsResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

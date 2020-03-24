@@ -612,6 +612,8 @@ class LookUpEventsRequest(AbstractModel):
         :type LookupAttributes: list of LookupAttribute
         :param MaxResults: 返回日志的最大条数
         :type MaxResults: int
+        :param Mode: 云审计模式，有效值：standard | quick，其中standard是标准模式，quick是极速模式。默认为标准模式
+        :type Mode: str
         :param NextToken: 查看更多日志的凭证
         :type NextToken: str
         """
@@ -619,6 +621,7 @@ class LookUpEventsRequest(AbstractModel):
         self.StartTime = None
         self.LookupAttributes = None
         self.MaxResults = None
+        self.Mode = None
         self.NextToken = None
 
 
@@ -632,6 +635,7 @@ class LookUpEventsRequest(AbstractModel):
                 obj._deserialize(item)
                 self.LookupAttributes.append(obj)
         self.MaxResults = params.get("MaxResults")
+        self.Mode = params.get("Mode")
         self.NextToken = params.get("NextToken")
 
 

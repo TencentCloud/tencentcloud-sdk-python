@@ -1703,7 +1703,7 @@ class DeleteLiveTranscodeRuleRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param DomainName: 推流域名。
+        :param DomainName: 播放域名。
 域名维度转码，域名+AppName+StreamName唯一标识单个转码规则，如需删除需要强匹配，例如AppName为空也需要传空字符串进行强匹配。
         :type DomainName: str
         :param AppName: 推流路径，与推流和播放地址中的AppName保持一致，默认为 live。
@@ -6507,7 +6507,7 @@ class ResumeLiveStreamRequest(AbstractModel):
         """
         :param AppName: 推流路径，与推流和播放地址中的AppName保持一致，默认为 live。
         :type AppName: str
-        :param DomainName: 您的加速域名。
+        :param DomainName: 您的推流域名。
         :type DomainName: str
         :param StreamName: 流名称。
         :type StreamName: str

@@ -669,6 +669,34 @@ class DayuClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeBGPIPL7RuleMaxCnt(self, request):
+        """获取高防IP可添加的最多7层规则数量
+
+        :param request: Request instance for DescribeBGPIPL7RuleMaxCnt.
+        :type request: :class:`tencentcloud.dayu.v20180709.models.DescribeBGPIPL7RuleMaxCntRequest`
+        :rtype: :class:`tencentcloud.dayu.v20180709.models.DescribeBGPIPL7RuleMaxCntResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeBGPIPL7RuleMaxCnt", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeBGPIPL7RuleMaxCntResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeBaradData(self, request):
         """为大禹子产品提供业务转发指标数据的接口
 

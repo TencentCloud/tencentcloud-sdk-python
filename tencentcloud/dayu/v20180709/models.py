@@ -2084,6 +2084,48 @@ class DescribeActionLogResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeBGPIPL7RuleMaxCntRequest(AbstractModel):
+    """DescribeBGPIPL7RuleMaxCnt请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Business: 大禹子产品代号（bgpip表示高防IP）
+        :type Business: str
+        :param Id: 资源实例ID
+        :type Id: str
+        """
+        self.Business = None
+        self.Id = None
+
+
+    def _deserialize(self, params):
+        self.Business = params.get("Business")
+        self.Id = params.get("Id")
+
+
+class DescribeBGPIPL7RuleMaxCntResponse(AbstractModel):
+    """DescribeBGPIPL7RuleMaxCnt返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Count: 高防IP最多可添加的7层规则数量
+        :type Count: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Count = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Count = params.get("Count")
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeBaradDataRequest(AbstractModel):
     """DescribeBaradData请求参数结构体
 

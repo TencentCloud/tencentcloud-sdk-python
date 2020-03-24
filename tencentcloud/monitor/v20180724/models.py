@@ -1526,6 +1526,9 @@ class DescribePolicyGroupInfoReceiverInfo(AbstractModel):
         :type SendFor: list of str
         :param RecoverNotify: 恢复通知方式。可选"SMS"
         :type RecoverNotify: list of str
+        :param ReceiveLanguage: 告警发送语言
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ReceiveLanguage: str
         """
         self.ReceiverGroupList = None
         self.ReceiverUserList = None
@@ -1540,6 +1543,7 @@ class DescribePolicyGroupInfoReceiverInfo(AbstractModel):
         self.NeedSendNotice = None
         self.SendFor = None
         self.RecoverNotify = None
+        self.ReceiveLanguage = None
 
 
     def _deserialize(self, params):
@@ -1556,6 +1560,7 @@ class DescribePolicyGroupInfoReceiverInfo(AbstractModel):
         self.NeedSendNotice = params.get("NeedSendNotice")
         self.SendFor = params.get("SendFor")
         self.RecoverNotify = params.get("RecoverNotify")
+        self.ReceiveLanguage = params.get("ReceiveLanguage")
 
 
 class DescribePolicyGroupInfoRequest(AbstractModel):
@@ -2717,6 +2722,8 @@ class ReceiverInfo(AbstractModel):
         :type ReceiverGroupList: list of int
         :param ReceiverUserList: 接收人列表。通过平台接口查询到的接收人id列表
         :type ReceiverUserList: list of int
+        :param ReceiveLanguage: 告警接收语言，枚举值（zh-CN，en-US）
+        :type ReceiveLanguage: str
         """
         self.StartTime = None
         self.EndTime = None
@@ -2732,6 +2739,7 @@ class ReceiverInfo(AbstractModel):
         self.NeedSendNotice = None
         self.ReceiverGroupList = None
         self.ReceiverUserList = None
+        self.ReceiveLanguage = None
 
 
     def _deserialize(self, params):
@@ -2749,6 +2757,7 @@ class ReceiverInfo(AbstractModel):
         self.NeedSendNotice = params.get("NeedSendNotice")
         self.ReceiverGroupList = params.get("ReceiverGroupList")
         self.ReceiverUserList = params.get("ReceiverUserList")
+        self.ReceiveLanguage = params.get("ReceiveLanguage")
 
 
 class UnBindingAllPolicyObjectRequest(AbstractModel):
