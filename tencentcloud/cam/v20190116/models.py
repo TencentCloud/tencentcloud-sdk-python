@@ -2233,6 +2233,9 @@ class StrategyInfo(AbstractModel):
         :param DeactivedDetail: 已下线产品列表
 注意：此字段可能返回 null，表示取不到有效值。
         :type DeactivedDetail: list of str
+        :param IsServiceLinkedPolicy: 是否是服务相关角色策略
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IsServiceLinkedPolicy: int
         """
         self.PolicyId = None
         self.PolicyName = None
@@ -2245,6 +2248,7 @@ class StrategyInfo(AbstractModel):
         self.IsAttached = None
         self.Deactived = None
         self.DeactivedDetail = None
+        self.IsServiceLinkedPolicy = None
 
 
     def _deserialize(self, params):
@@ -2259,6 +2263,7 @@ class StrategyInfo(AbstractModel):
         self.IsAttached = params.get("IsAttached")
         self.Deactived = params.get("Deactived")
         self.DeactivedDetail = params.get("DeactivedDetail")
+        self.IsServiceLinkedPolicy = params.get("IsServiceLinkedPolicy")
 
 
 class SubAccountInfo(AbstractModel):

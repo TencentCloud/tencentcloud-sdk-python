@@ -2534,15 +2534,15 @@ class SubscribedInfo(AbstractModel):
 
 
 class Tag(AbstractModel):
-    """实例详情中的标识对象
+    """实例详情中的标签对象
 
     """
 
     def __init__(self):
         """
-        :param TagKey: 标识的key
+        :param TagKey: 标签的key
         :type TagKey: str
-        :param TagValue: 标识的值
+        :param TagValue: 标签的值
         :type TagValue: str
         """
         self.TagKey = None

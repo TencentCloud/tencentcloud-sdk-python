@@ -26,7 +26,7 @@ class IotvideoClient(AbstractClient):
 
 
     def CreateAppUsr(self, request):
-        """本接口（CreateAppUsr）用于接收由厂商云发送过来的注册请求,建立厂商云终端用户与IotVideo终端用户的映射关系。
+        """本接口（CreateAppUsr）用于接收由厂商云发送过来的注册请求,建立厂商云终端用户与IoT Video终端用户的映射关系。
 
         :param request: Request instance for CreateAppUsr.
         :type request: :class:`tencentcloud.iotvideo.v20191126.models.CreateAppUsrRequest`
@@ -297,34 +297,6 @@ class IotvideoClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateUploadPathResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(e.message, e.message)
-
-
-    def CreateUploadTest(self, request):
-        """设备申请cos上传证书
-
-        :param request: Request instance for CreateUploadTest.
-        :type request: :class:`tencentcloud.iotvideo.v20191126.models.CreateUploadTestRequest`
-        :rtype: :class:`tencentcloud.iotvideo.v20191126.models.CreateUploadTestResponse`
-
-        """
-        try:
-            params = request._serialize()
-            body = self.call("CreateUploadTest", params)
-            response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.CreateUploadTestResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -1234,34 +1206,6 @@ class IotvideoClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyProductResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(e.message, e.message)
-
-
-    def RenewUploadTest(self, request):
-        """设备刷新cos上传证书
-
-        :param request: Request instance for RenewUploadTest.
-        :type request: :class:`tencentcloud.iotvideo.v20191126.models.RenewUploadTestRequest`
-        :rtype: :class:`tencentcloud.iotvideo.v20191126.models.RenewUploadTestResponse`
-
-        """
-        try:
-            params = request._serialize()
-            body = self.call("RenewUploadTest", params)
-            response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.RenewUploadTestResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

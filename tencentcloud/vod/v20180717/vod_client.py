@@ -1646,6 +1646,8 @@ class VodClient(AbstractClient):
 
         对于生成的新视频，还可以指定生成后的视频是否要执行任务流。
 
+        >当对直播流做剪辑、拼接等操作时，请确保流结束后再操作。否则生成的视频可能不完整。
+
         :param request: Request instance for EditMedia.
         :type request: :class:`tencentcloud.vod.v20180717.models.EditMediaRequest`
         :rtype: :class:`tencentcloud.vod.v20180717.models.EditMediaResponse`

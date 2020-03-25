@@ -67,79 +67,6 @@ class BindUsrInfo(AbstractModel):
         self.Role = params.get("Role")
 
 
-class CertificateInfo(AbstractModel):
-    """证书信息
-
-    """
-
-    def __init__(self):
-        """
-        :param SecretId: SecretId
-注意：此字段可能返回 null，表示取不到有效值。
-        :type SecretId: str
-        :param SecretKey: SecretKey
-注意：此字段可能返回 null，表示取不到有效值。
-        :type SecretKey: str
-        :param Token: Token
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Token: str
-        :param ExpiredTime: 过期时间，UNIX时间戳，单位秒
-注意：此字段可能返回 null，表示取不到有效值。
-        :type ExpiredTime: int
-        """
-        self.SecretId = None
-        self.SecretKey = None
-        self.Token = None
-        self.ExpiredTime = None
-
-
-    def _deserialize(self, params):
-        self.SecretId = params.get("SecretId")
-        self.SecretKey = params.get("SecretKey")
-        self.Token = params.get("Token")
-        self.ExpiredTime = params.get("ExpiredTime")
-
-
-class CosCertificate(AbstractModel):
-    """申请上传证书回包
-
-    """
-
-    def __init__(self):
-        """
-        :param StorageBucket: cos存储桶
-注意：此字段可能返回 null，表示取不到有效值。
-        :type StorageBucket: str
-        :param StorageRegion: cos存储园区
-注意：此字段可能返回 null，表示取不到有效值。
-        :type StorageRegion: str
-        :param StoragePath: 存储路径，录制场景下该值为存储目录
-注意：此字段可能返回 null，表示取不到有效值。
-        :type StoragePath: str
-        :param TempCertificate: 证书信息
-注意：此字段可能返回 null，表示取不到有效值。
-        :type TempCertificate: :class:`tencentcloud.iotvideo.v20191126.models.CertificateInfo`
-        :param SessionKey: SessionKey
-注意：此字段可能返回 null，表示取不到有效值。
-        :type SessionKey: str
-        """
-        self.StorageBucket = None
-        self.StorageRegion = None
-        self.StoragePath = None
-        self.TempCertificate = None
-        self.SessionKey = None
-
-
-    def _deserialize(self, params):
-        self.StorageBucket = params.get("StorageBucket")
-        self.StorageRegion = params.get("StorageRegion")
-        self.StoragePath = params.get("StoragePath")
-        if params.get("TempCertificate") is not None:
-            self.TempCertificate = CertificateInfo()
-            self.TempCertificate._deserialize(params.get("TempCertificate"))
-        self.SessionKey = params.get("SessionKey")
-
-
 class CreateAppUsrRequest(AbstractModel):
     """CreateAppUsr请求参数结构体
 
@@ -147,7 +74,7 @@ class CreateAppUsrRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param CunionId: 标识用户的唯一id，防止同一个用户多次注册
+        :param CunionId: 标识用户的唯一ID，防止同一个用户多次注册
         :type CunionId: str
         """
         self.CunionId = None
@@ -164,9 +91,9 @@ class CreateAppUsrResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param CunionId: 厂商云标识用户的唯一id
+        :param CunionId: 厂商云标识用户的唯一ID
         :type CunionId: str
-        :param AccessId: 客户的终端用户在IotVideo上的唯一标识id
+        :param AccessId: 客户的终端用户在IoT Video上的唯一标识ID
         :type AccessId: str
         :param NewRegist: 用户是否为新创建
         :type NewRegist: bool
@@ -193,7 +120,7 @@ class CreateBindingRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param AccessId: 终端用户在IotVideo上的唯一标识id
+        :param AccessId: 终端用户在IoT Video上的唯一标识ID
         :type AccessId: str
         :param Tid: 设备TID
         :type Tid: str
@@ -222,7 +149,7 @@ class CreateBindingResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param AccessToken: 访问设备的accessToken
+        :param AccessToken: 访问设备的AccessToken
         :type AccessToken: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -243,7 +170,7 @@ class CreateDevTokenRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param AccessId: 客户的终端用户在IotVideo上的唯一标识id
+        :param AccessId: 客户的终端用户在IoT Video上的唯一标识ID
         :type AccessId: str
         :param Tids: 设备TID列表,0<元素数量<=100
         :type Tids: list of str
@@ -597,51 +524,6 @@ class CreateUploadPathResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
-class CreateUploadTestRequest(AbstractModel):
-    """CreateUploadTest请求参数结构体
-
-    """
-
-    def __init__(self):
-        """
-        :param PkgId: package ID
-        :type PkgId: str
-        :param Tid: 设备TID
-        :type Tid: str
-        """
-        self.PkgId = None
-        self.Tid = None
-
-
-    def _deserialize(self, params):
-        self.PkgId = params.get("PkgId")
-        self.Tid = params.get("Tid")
-
-
-class CreateUploadTestResponse(AbstractModel):
-    """CreateUploadTest返回参数结构体
-
-    """
-
-    def __init__(self):
-        """
-        :param Data: 申请设备证书返回的信息
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Data: :class:`tencentcloud.iotvideo.v20191126.models.CosCertificate`
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
-        self.Data = None
-        self.RequestId = None
-
-
-    def _deserialize(self, params):
-        if params.get("Data") is not None:
-            self.Data = CosCertificate()
-            self.Data._deserialize(params.get("Data"))
-        self.RequestId = params.get("RequestId")
-
-
 class CreateUsrTokenRequest(AbstractModel):
     """CreateUsrToken请求参数结构体
 
@@ -649,9 +531,9 @@ class CreateUsrTokenRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param AccessId: 终端用户在IotVideo上的唯一标识id
+        :param AccessId: 终端用户在IoT Video上的唯一标识ID
         :type AccessId: str
-        :param UniqueId: 终端唯一id,用于区分同一个用户的多个终端
+        :param UniqueId: 终端唯一ID，用于区分同一个用户的多个终端
         :type UniqueId: str
         :param TtlMinutes: Token的TTL(time to alive)分钟数
         :type TtlMinutes: int
@@ -674,13 +556,13 @@ class CreateUsrTokenResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param AccessId: 终端用户在IotVideo上的唯一标识id
+        :param AccessId: 终端用户在IoT Video上的唯一标识ID
         :type AccessId: str
-        :param AccessToken: IotVideo平台的accessToken
+        :param AccessToken: IoT Video平台的AccessToken
         :type AccessToken: str
         :param ExpireTime: Token的过期时间，单位秒(UTC时间)
         :type ExpireTime: int
-        :param TerminalId: 终端id
+        :param TerminalId: 终端ID
         :type TerminalId: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -707,7 +589,7 @@ class DeleteBindingRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param AccessId: 终端用户在IotVideo上的唯一标识id
+        :param AccessId: 终端用户在IoT Video上的唯一标识ID
         :type AccessId: str
         :param Tid: 设备TID
         :type Tid: str
@@ -961,7 +843,7 @@ class DescribeBindDevRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param AccessId: 终端用户在IotVideo上的唯一标识id
+        :param AccessId: 终端用户在IoT Video上的唯一标识ID
         :type AccessId: str
         """
         self.AccessId = None
@@ -1488,7 +1370,7 @@ class DescribeOtaVersionsRequest(AbstractModel):
         """
         :param Offset: 分页偏移量
         :type Offset: int
-        :param Limit: 每页数量,,0<取值范围<=100
+        :param Limit: 每页数量，0<取值范围<=100
         :type Limit: int
         :param ProductId: 产品ID，为空时查询客户所有产品的版本信息
         :type ProductId: str
@@ -2184,7 +2066,7 @@ class ModifyDeviceActionRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Tid: 设备Tid
+        :param Tid: 设备TID
         :type Tid: str
         :param Wakeup: 如果设备处于休眠状态，是否唤醒设备
         :type Wakeup: bool
@@ -2486,75 +2368,6 @@ class ProductData(AbstractModel):
         self.ProductModel = params.get("ProductModel")
         self.ChipManufactureId = params.get("ChipManufactureId")
         self.ChipId = params.get("ChipId")
-
-
-class RenewCertificate(AbstractModel):
-    """刷新证书信息
-
-    """
-
-    def __init__(self):
-        """
-        :param TempCertificate: 刷新证书信息
-注意：此字段可能返回 null，表示取不到有效值。
-        :type TempCertificate: :class:`tencentcloud.iotvideo.v20191126.models.CertificateInfo`
-        """
-        self.TempCertificate = None
-
-
-    def _deserialize(self, params):
-        if params.get("TempCertificate") is not None:
-            self.TempCertificate = CertificateInfo()
-            self.TempCertificate._deserialize(params.get("TempCertificate"))
-
-
-class RenewUploadTestRequest(AbstractModel):
-    """RenewUploadTest请求参数结构体
-
-    """
-
-    def __init__(self):
-        """
-        :param PkgId: package ID
-        :type PkgId: str
-        :param Tid: 设备TID
-        :type Tid: str
-        :param SessionKey: SessionKey
-        :type SessionKey: str
-        """
-        self.PkgId = None
-        self.Tid = None
-        self.SessionKey = None
-
-
-    def _deserialize(self, params):
-        self.PkgId = params.get("PkgId")
-        self.Tid = params.get("Tid")
-        self.SessionKey = params.get("SessionKey")
-
-
-class RenewUploadTestResponse(AbstractModel):
-    """RenewUploadTest返回参数结构体
-
-    """
-
-    def __init__(self):
-        """
-        :param Data: 刷新证书返回的信息
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Data: :class:`tencentcloud.iotvideo.v20191126.models.RenewCertificate`
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
-        self.Data = None
-        self.RequestId = None
-
-
-    def _deserialize(self, params):
-        if params.get("Data") is not None:
-            self.Data = RenewCertificate()
-            self.Data._deserialize(params.get("Data"))
-        self.RequestId = params.get("RequestId")
 
 
 class RunDeviceRequest(AbstractModel):

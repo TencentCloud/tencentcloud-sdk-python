@@ -5014,9 +5014,6 @@ class CreatePersonSampleRequest(AbstractModel):
         """
         :param Name: 人物名称，长度限制：20 个字符。
         :type Name: str
-        :param FaceContents: 人脸图片 [Base64](https://tools.ietf.org/html/rfc4648) 编码后的字符串，仅支持 jpeg、png 图片格式。数组长度限制：5 张图片。
-注意：图片必须是单人像正面人脸较清晰的照片，像素不低于 200*200。
-        :type FaceContents: list of str
         :param Usages: 人物应用场景，可选值：
 1. Recognition：用于内容识别，等价于 Recognition.Face。
 2. Review：用于内容审核，等价于 Review.Face。
@@ -5024,6 +5021,9 @@ class CreatePersonSampleRequest(AbstractModel):
         :type Usages: list of str
         :param Description: 人物描述，长度限制：1024 个字符。
         :type Description: str
+        :param FaceContents: 人脸图片 [Base64](https://tools.ietf.org/html/rfc4648) 编码后的字符串，仅支持 jpeg、png 图片格式。数组长度限制：5 张图片。
+注意：图片必须是单人像正面人脸较清晰的照片，像素不低于 200*200。
+        :type FaceContents: list of str
         :param Tags: 人物标签
 <li>数组长度限制：20 个标签；</li>
 <li>单个标签长度限制：128 个字符。</li>
@@ -5032,18 +5032,18 @@ class CreatePersonSampleRequest(AbstractModel):
         :type SubAppId: int
         """
         self.Name = None
-        self.FaceContents = None
         self.Usages = None
         self.Description = None
+        self.FaceContents = None
         self.Tags = None
         self.SubAppId = None
 
 
     def _deserialize(self, params):
         self.Name = params.get("Name")
-        self.FaceContents = params.get("FaceContents")
         self.Usages = params.get("Usages")
         self.Description = params.get("Description")
+        self.FaceContents = params.get("FaceContents")
         self.Tags = params.get("Tags")
         self.SubAppId = params.get("SubAppId")
 
@@ -5058,7 +5058,6 @@ class CreatePersonSampleResponse(AbstractModel):
         :param Person: 人物信息。
         :type Person: :class:`tencentcloud.vod.v20180717.models.AiSamplePerson`
         :param FailFaceInfoSet: 处理失败的人脸信息。
-注意：此字段可能返回 null，表示取不到有效值。
         :type FailFaceInfoSet: list of AiSampleFailFaceInfo
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -6729,9 +6728,9 @@ class DescribeMediaProcessUsageDataRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param StartTime: 起始日期。使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F)。
+        :param StartTime: 起始日期。使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#52)。
         :type StartTime: str
-        :param EndTime: 结束日期，需大于等于起始日期。使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F)。
+        :param EndTime: 结束日期，需大于等于起始日期。使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#52)。
         :type EndTime: str
         :param Type: 查询视频处理任务类型，默认查询转码。目前只支持转码类型数据查询。
 <li>Transcode: 转码</li>
@@ -7165,9 +7164,9 @@ class DescribeStorageDetailsRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param StartTime: 起始时间，格式按照 ISO 8601 标准表示，详见 [ISO 日期格式说明](https://cloud.tencent.com/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F)。
+        :param StartTime: 起始时间，格式按照 ISO 8601 标准表示，详见 [ISO 日期格式说明](https://cloud.tencent.com/document/product/266/11732#52)。
         :type StartTime: str
-        :param EndTime: 结束时间，需大于开始日期，格式按照 ISO 8601 标准表示，详见 [ISO 日期格式说明](https://cloud.tencent.com/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F)。
+        :param EndTime: 结束时间，需大于开始日期，格式按照 ISO 8601 标准表示，详见 [ISO 日期格式说明](https://cloud.tencent.com/document/product/266/11732#52)。
         :type EndTime: str
         :param Interval: 查询时间间隔，有效值：
 <li>Minute：每分钟一个统计数据。</li>

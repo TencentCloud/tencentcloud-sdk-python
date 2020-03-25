@@ -245,6 +245,9 @@ class ApplicationForPage(AbstractModel):
         :param ApplicationRuntimeType: 应用runtime类型
 注意：此字段可能返回 null，表示取不到有效值。
         :type ApplicationRuntimeType: str
+        :param ApigatewayServiceId: Apigateway的serviceId
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ApigatewayServiceId: str
         """
         self.ApplicationId = None
         self.ApplicationName = None
@@ -256,6 +259,7 @@ class ApplicationForPage(AbstractModel):
         self.UpdateTime = None
         self.ApplicationResourceType = None
         self.ApplicationRuntimeType = None
+        self.ApigatewayServiceId = None
 
 
     def _deserialize(self, params):
@@ -269,6 +273,7 @@ class ApplicationForPage(AbstractModel):
         self.UpdateTime = params.get("UpdateTime")
         self.ApplicationResourceType = params.get("ApplicationResourceType")
         self.ApplicationRuntimeType = params.get("ApplicationRuntimeType")
+        self.ApigatewayServiceId = params.get("ApigatewayServiceId")
 
 
 class Cluster(AbstractModel):
@@ -353,6 +358,12 @@ class Cluster(AbstractModel):
         :param RunServiceInstanceCount: 集群可用的服务实例数量
 注意：此字段可能返回 null，表示取不到有效值。
         :type RunServiceInstanceCount: int
+        :param SubnetId: 集群所属子网ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SubnetId: str
+        :param OperationInfo: 返回给前端的控制信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OperationInfo: :class:`tencentcloud.tsf.v20180326.models.OperationInfo`
         """
         self.ClusterId = None
         self.ClusterName = None
@@ -379,6 +390,8 @@ class Cluster(AbstractModel):
         self.ClusterLimitCpu = None
         self.ClusterLimitMem = None
         self.RunServiceInstanceCount = None
+        self.SubnetId = None
+        self.OperationInfo = None
 
 
     def _deserialize(self, params):
@@ -407,6 +420,10 @@ class Cluster(AbstractModel):
         self.ClusterLimitCpu = params.get("ClusterLimitCpu")
         self.ClusterLimitMem = params.get("ClusterLimitMem")
         self.RunServiceInstanceCount = params.get("RunServiceInstanceCount")
+        self.SubnetId = params.get("SubnetId")
+        if params.get("OperationInfo") is not None:
+            self.OperationInfo = OperationInfo()
+            self.OperationInfo._deserialize(params.get("OperationInfo"))
 
 
 class Config(AbstractModel):
@@ -4272,6 +4289,27 @@ class Instance(AbstractModel):
         :param OperationState: 实例执行状态
 注意：此字段可能返回 null，表示取不到有效值。
         :type OperationState: int
+        :param NamespaceId: NamespaceId
+注意：此字段可能返回 null，表示取不到有效值。
+        :type NamespaceId: str
+        :param InstanceZoneId: InstanceZoneId
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InstanceZoneId: str
+        :param InstanceImportMode: InstanceImportMode
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InstanceImportMode: str
+        :param ApplicationType: ApplicationType
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ApplicationType: str
+        :param ApplicationResourceType: ApplicationResourceType
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ApplicationResourceType: str
+        :param ServiceSidecarStatus: ServiceSidecarStatus
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ServiceSidecarStatus: str
+        :param GroupName: GroupName
+注意：此字段可能返回 null，表示取不到有效值。
+        :type GroupName: str
         """
         self.InstanceId = None
         self.InstanceName = None
@@ -4301,6 +4339,13 @@ class Instance(AbstractModel):
         self.RestrictState = None
         self.UpdateTime = None
         self.OperationState = None
+        self.NamespaceId = None
+        self.InstanceZoneId = None
+        self.InstanceImportMode = None
+        self.ApplicationType = None
+        self.ApplicationResourceType = None
+        self.ServiceSidecarStatus = None
+        self.GroupName = None
 
 
     def _deserialize(self, params):
@@ -4332,6 +4377,13 @@ class Instance(AbstractModel):
         self.RestrictState = params.get("RestrictState")
         self.UpdateTime = params.get("UpdateTime")
         self.OperationState = params.get("OperationState")
+        self.NamespaceId = params.get("NamespaceId")
+        self.InstanceZoneId = params.get("InstanceZoneId")
+        self.InstanceImportMode = params.get("InstanceImportMode")
+        self.ApplicationType = params.get("ApplicationType")
+        self.ApplicationResourceType = params.get("ApplicationResourceType")
+        self.ServiceSidecarStatus = params.get("ServiceSidecarStatus")
+        self.GroupName = params.get("GroupName")
 
 
 class Microservice(AbstractModel):
@@ -4774,6 +4826,68 @@ class Namespace(AbstractModel):
         self.ClusterId = params.get("ClusterId")
         self.NamespaceResourceType = params.get("NamespaceResourceType")
         self.NamespaceType = params.get("NamespaceType")
+
+
+class OperationInfo(AbstractModel):
+    """提供给前端，控制按钮是否显示
+
+    """
+
+    def __init__(self):
+        """
+        :param Init: 初始化按钮的控制信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Init: :class:`tencentcloud.tsf.v20180326.models.OperationInfoDetail`
+        :param AddInstance: 添加实例按钮的控制信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AddInstance: :class:`tencentcloud.tsf.v20180326.models.OperationInfoDetail`
+        :param Destroy: 销毁机器的控制信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Destroy: :class:`tencentcloud.tsf.v20180326.models.OperationInfoDetail`
+        """
+        self.Init = None
+        self.AddInstance = None
+        self.Destroy = None
+
+
+    def _deserialize(self, params):
+        if params.get("Init") is not None:
+            self.Init = OperationInfoDetail()
+            self.Init._deserialize(params.get("Init"))
+        if params.get("AddInstance") is not None:
+            self.AddInstance = OperationInfoDetail()
+            self.AddInstance._deserialize(params.get("AddInstance"))
+        if params.get("Destroy") is not None:
+            self.Destroy = OperationInfoDetail()
+            self.Destroy._deserialize(params.get("Destroy"))
+
+
+class OperationInfoDetail(AbstractModel):
+    """提供给前端控制按钮显示逻辑的字段
+
+    """
+
+    def __init__(self):
+        """
+        :param DisabledReason: 不显示的原因
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DisabledReason: str
+        :param Enabled: 该按钮是否可点击
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Enabled: bool
+        :param Supported: 是否显示该按钮
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Supported: bool
+        """
+        self.DisabledReason = None
+        self.Enabled = None
+        self.Supported = None
+
+
+    def _deserialize(self, params):
+        self.DisabledReason = params.get("DisabledReason")
+        self.Enabled = params.get("Enabled")
+        self.Supported = params.get("Supported")
 
 
 class PkgInfo(AbstractModel):
@@ -5390,6 +5504,12 @@ class SimpleApplication(AbstractModel):
         :param UpdateTime: UpdateTime
 注意：此字段可能返回 null，表示取不到有效值。
         :type UpdateTime: str
+        :param ApigatewayServiceId: ApigatewayServiceId
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ApigatewayServiceId: str
+        :param ApplicationRuntimeType: ApplicationRuntimeType
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ApplicationRuntimeType: str
         """
         self.ApplicationId = None
         self.ApplicationName = None
@@ -5400,6 +5520,8 @@ class SimpleApplication(AbstractModel):
         self.ApplicationResourceType = None
         self.CreateTime = None
         self.UpdateTime = None
+        self.ApigatewayServiceId = None
+        self.ApplicationRuntimeType = None
 
 
     def _deserialize(self, params):
@@ -5412,6 +5534,8 @@ class SimpleApplication(AbstractModel):
         self.ApplicationResourceType = params.get("ApplicationResourceType")
         self.CreateTime = params.get("CreateTime")
         self.UpdateTime = params.get("UpdateTime")
+        self.ApigatewayServiceId = params.get("ApigatewayServiceId")
+        self.ApplicationRuntimeType = params.get("ApplicationRuntimeType")
 
 
 class SimpleGroup(AbstractModel):
@@ -6058,6 +6182,12 @@ class VmGroup(AbstractModel):
         :param MicroserviceType: 微服务类型
 注意：此字段可能返回 null，表示取不到有效值。
         :type MicroserviceType: str
+        :param ApplicationType: ApplicationType
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ApplicationType: str
+        :param GroupResourceType: GroupResourceType
+注意：此字段可能返回 null，表示取不到有效值。
+        :type GroupResourceType: str
         """
         self.GroupId = None
         self.GroupName = None
@@ -6079,6 +6209,8 @@ class VmGroup(AbstractModel):
         self.OffInstanceCount = None
         self.GroupDesc = None
         self.MicroserviceType = None
+        self.ApplicationType = None
+        self.GroupResourceType = None
 
 
     def _deserialize(self, params):
@@ -6102,6 +6234,8 @@ class VmGroup(AbstractModel):
         self.OffInstanceCount = params.get("OffInstanceCount")
         self.GroupDesc = params.get("GroupDesc")
         self.MicroserviceType = params.get("MicroserviceType")
+        self.ApplicationType = params.get("ApplicationType")
+        self.GroupResourceType = params.get("GroupResourceType")
 
 
 class VmGroupSimple(AbstractModel):
@@ -6153,6 +6287,9 @@ class VmGroupSimple(AbstractModel):
         :param MicroserviceType: 应用微服务类型
 注意：此字段可能返回 null，表示取不到有效值。
         :type MicroserviceType: str
+        :param GroupResourceType: GroupResourceType
+注意：此字段可能返回 null，表示取不到有效值。
+        :type GroupResourceType: str
         """
         self.GroupId = None
         self.GroupName = None
@@ -6168,6 +6305,7 @@ class VmGroupSimple(AbstractModel):
         self.ApplicationName = None
         self.NamespaceName = None
         self.MicroserviceType = None
+        self.GroupResourceType = None
 
 
     def _deserialize(self, params):
@@ -6185,3 +6323,4 @@ class VmGroupSimple(AbstractModel):
         self.ApplicationName = params.get("ApplicationName")
         self.NamespaceName = params.get("NamespaceName")
         self.MicroserviceType = params.get("MicroserviceType")
+        self.GroupResourceType = params.get("GroupResourceType")
