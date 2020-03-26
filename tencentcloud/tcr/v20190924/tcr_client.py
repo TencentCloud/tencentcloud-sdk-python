@@ -166,7 +166,7 @@ class TcrClient(AbstractClient):
 
 
     def CreateInstanceToken(self, request):
-        """获取临时登录密码
+        """创建实例的临时或长期访问凭证
 
         :param request: Request instance for CreateInstanceToken.
         :type request: :class:`tencentcloud.tcr.v20190924.models.CreateInstanceTokenRequest`
@@ -431,6 +431,34 @@ class TcrClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteImagePersonalResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DeleteInstanceToken(self, request):
+        """删除长期访问凭证
+
+        :param request: Request instance for DeleteInstanceToken.
+        :type request: :class:`tencentcloud.tcr.v20190924.models.DeleteInstanceTokenRequest`
+        :rtype: :class:`tencentcloud.tcr.v20190924.models.DeleteInstanceTokenResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DeleteInstanceToken", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DeleteInstanceTokenResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -754,7 +782,7 @@ class TcrClient(AbstractClient):
 
 
     def DescribeImages(self, request):
-        """用于在企业版中查询镜像仓库内容器镜像信息，获取镜像版本列表
+        """查询镜像版本列表或指定容器镜像信息
 
         :param request: Request instance for DescribeImages.
         :type request: :class:`tencentcloud.tcr.v20190924.models.DescribeImagesRequest`
@@ -795,6 +823,34 @@ class TcrClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeInstanceStatusResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeInstanceToken(self, request):
+        """查询长期访问凭证信息
+
+        :param request: Request instance for DescribeInstanceToken.
+        :type request: :class:`tencentcloud.tcr.v20190924.models.DescribeInstanceTokenRequest`
+        :rtype: :class:`tencentcloud.tcr.v20190924.models.DescribeInstanceTokenResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeInstanceToken", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeInstanceTokenResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -894,7 +950,7 @@ class TcrClient(AbstractClient):
 
 
     def DescribeRepositories(self, request):
-        """查询镜像仓库信息
+        """查询镜像仓库列表或指定镜像仓库信息
 
         :param request: Request instance for DescribeRepositories.
         :type request: :class:`tencentcloud.tcr.v20190924.models.DescribeRepositoriesRequest`
@@ -1117,6 +1173,34 @@ class TcrClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def ModifyInstanceToken(self, request):
+        """更新实例内指定长期访问凭证的启用状态
+
+        :param request: Request instance for ModifyInstanceToken.
+        :type request: :class:`tencentcloud.tcr.v20190924.models.ModifyInstanceTokenRequest`
+        :rtype: :class:`tencentcloud.tcr.v20190924.models.ModifyInstanceTokenResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ModifyInstanceToken", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ModifyInstanceTokenResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def ModifyNamespace(self, request):
         """更新命名空间信息，当前仅支持修改命名空间访问级别
 
@@ -1146,7 +1230,7 @@ class TcrClient(AbstractClient):
 
 
     def ModifyRepository(self, request):
-        """更新镜像仓库描述
+        """更新镜像仓库信息，可修改仓库描述信息
 
         :param request: Request instance for ModifyRepository.
         :type request: :class:`tencentcloud.tcr.v20190924.models.ModifyRepositoryRequest`

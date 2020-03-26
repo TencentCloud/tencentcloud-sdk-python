@@ -315,12 +315,20 @@ class CreateInstanceTokenRequest(AbstractModel):
         """
         :param RegistryId: 实例Id
         :type RegistryId: str
+        :param TokenType: 访问凭证类型，longterm 为长期访问凭证，temp 为临时访问凭证，默认是临时访问凭证，有效期1小时
+        :type TokenType: str
+        :param Desc: 长期访问凭证描述信息
+        :type Desc: str
         """
         self.RegistryId = None
+        self.TokenType = None
+        self.Desc = None
 
 
     def _deserialize(self, params):
         self.RegistryId = params.get("RegistryId")
+        self.TokenType = params.get("TokenType")
+        self.Desc = params.get("Desc")
 
 
 class CreateInstanceTokenResponse(AbstractModel):
@@ -330,9 +338,9 @@ class CreateInstanceTokenResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param Token: 临时密码
+        :param Token: 访问凭证
         :type Token: str
-        :param ExpTime: 临时密码有效期时间戳
+        :param ExpTime: 访问凭证过期时间戳
         :type ExpTime: int
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -664,6 +672,44 @@ class DeleteImagePersonalRequest(AbstractModel):
 
 class DeleteImagePersonalResponse(AbstractModel):
     """DeleteImagePersonal返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class DeleteInstanceTokenRequest(AbstractModel):
+    """DeleteInstanceToken请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RegistryId: 实例 ID
+        :type RegistryId: str
+        :param TokenId: 访问凭证 ID
+        :type TokenId: str
+        """
+        self.RegistryId = None
+        self.TokenId = None
+
+
+    def _deserialize(self, params):
+        self.RegistryId = params.get("RegistryId")
+        self.TokenId = params.get("TokenId")
+
+
+class DeleteInstanceTokenResponse(AbstractModel):
+    """DeleteInstanceToken返回参数结构体
 
     """
 
@@ -1210,32 +1256,32 @@ class DescribeImagesRequest(AbstractModel):
         """
         :param RegistryId: 实例ID
         :type RegistryId: str
-        :param RepositoryName: 镜像仓库名称
-        :type RepositoryName: str
         :param NamespaceName: 命名空间名称
         :type NamespaceName: str
+        :param RepositoryName: 镜像仓库名称
+        :type RepositoryName: str
+        :param ImageVersion: 指定镜像版本(Tag)，不填默认返回仓库内全部容器镜像
+        :type ImageVersion: str
         :param Limit: 每页个数，用于分页，默认20
         :type Limit: int
         :param Offset: 页数，默认值为1
         :type Offset: int
-        :param ImageVersion: 镜像版本(Tag)，置空则返回仓库内全部的容器镜像
-        :type ImageVersion: str
         """
         self.RegistryId = None
-        self.RepositoryName = None
         self.NamespaceName = None
+        self.RepositoryName = None
+        self.ImageVersion = None
         self.Limit = None
         self.Offset = None
-        self.ImageVersion = None
 
 
     def _deserialize(self, params):
         self.RegistryId = params.get("RegistryId")
-        self.RepositoryName = params.get("RepositoryName")
         self.NamespaceName = params.get("NamespaceName")
+        self.RepositoryName = params.get("RepositoryName")
+        self.ImageVersion = params.get("ImageVersion")
         self.Limit = params.get("Limit")
         self.Offset = params.get("Offset")
-        self.ImageVersion = params.get("ImageVersion")
 
 
 class DescribeImagesResponse(AbstractModel):
@@ -1309,6 +1355,61 @@ class DescribeInstanceStatusResponse(AbstractModel):
                 obj = RegistryStatus()
                 obj._deserialize(item)
                 self.RegistryStatusSet.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeInstanceTokenRequest(AbstractModel):
+    """DescribeInstanceToken请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RegistryId: 实例 ID
+        :type RegistryId: str
+        :param Limit: 分页单页数量
+        :type Limit: int
+        :param Offset: 分页偏移量
+        :type Offset: int
+        """
+        self.RegistryId = None
+        self.Limit = None
+        self.Offset = None
+
+
+    def _deserialize(self, params):
+        self.RegistryId = params.get("RegistryId")
+        self.Limit = params.get("Limit")
+        self.Offset = params.get("Offset")
+
+
+class DescribeInstanceTokenResponse(AbstractModel):
+    """DescribeInstanceToken返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param TotalCount: 长期访问凭证总数
+        :type TotalCount: int
+        :param Tokens: 长期访问凭证列表
+        :type Tokens: list of TcrInstanceToken
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.Tokens = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("Tokens") is not None:
+            self.Tokens = []
+            for item in params.get("Tokens"):
+                obj = TcrInstanceToken()
+                obj._deserialize(item)
+                self.Tokens.append(obj)
         self.RequestId = params.get("RequestId")
 
 
@@ -1498,7 +1599,9 @@ class DescribeRepositoriesRequest(AbstractModel):
         """
         :param RegistryId: 实例Id
         :type RegistryId: str
-        :param RepositoryName: 仓库名称，用于查询
+        :param NamespaceName: 指定命名空间，不填写默认为查询所有命名空间下镜像仓库
+        :type NamespaceName: str
+        :param RepositoryName: 指定镜像仓库，不填写默认查询指定命名空间下所有镜像仓库
         :type RepositoryName: str
         :param Offset: 页数，用于分页
         :type Offset: int
@@ -1506,24 +1609,22 @@ class DescribeRepositoriesRequest(AbstractModel):
         :type Limit: int
         :param SortBy: 基于字段排序，支持的值有-creation_time,-name, -update_time
         :type SortBy: str
-        :param NamespaceName: 命名空间名称，用于查询改命名空间下的仓库，如果不填写默认为所有命名空间下
-        :type NamespaceName: str
         """
         self.RegistryId = None
+        self.NamespaceName = None
         self.RepositoryName = None
         self.Offset = None
         self.Limit = None
         self.SortBy = None
-        self.NamespaceName = None
 
 
     def _deserialize(self, params):
         self.RegistryId = params.get("RegistryId")
+        self.NamespaceName = params.get("NamespaceName")
         self.RepositoryName = params.get("RepositoryName")
         self.Offset = params.get("Offset")
         self.Limit = params.get("Limit")
         self.SortBy = params.get("SortBy")
-        self.NamespaceName = params.get("NamespaceName")
 
 
 class DescribeRepositoriesResponse(AbstractModel):
@@ -2034,6 +2135,48 @@ class ModifyApplicationTriggerPersonalResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class ModifyInstanceTokenRequest(AbstractModel):
+    """ModifyInstanceToken请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param TokenId: 实例长期访问凭证 ID
+        :type TokenId: str
+        :param Enable: 启用或禁用实例长期访问凭证
+        :type Enable: bool
+        :param RegistryId: 实例 ID
+        :type RegistryId: str
+        """
+        self.TokenId = None
+        self.Enable = None
+        self.RegistryId = None
+
+
+    def _deserialize(self, params):
+        self.TokenId = params.get("TokenId")
+        self.Enable = params.get("Enable")
+        self.RegistryId = params.get("RegistryId")
+
+
+class ModifyInstanceTokenResponse(AbstractModel):
+    """ModifyInstanceToken返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class ModifyNamespaceRequest(AbstractModel):
     """ModifyNamespace请求参数结构体
 
@@ -2161,28 +2304,28 @@ class ModifyRepositoryRequest(AbstractModel):
         """
         :param RegistryId: 实例ID
         :type RegistryId: str
-        :param RepositoryName: 镜像仓库名称
-        :type RepositoryName: str
-        :param Description: 仓库描述
-        :type Description: str
-        :param BriefDescription: 仓库的简短描述
-        :type BriefDescription: str
         :param NamespaceName: 命名空间名称
         :type NamespaceName: str
+        :param RepositoryName: 镜像仓库名称
+        :type RepositoryName: str
+        :param BriefDescription: 仓库简短描述
+        :type BriefDescription: str
+        :param Description: 仓库详细描述
+        :type Description: str
         """
         self.RegistryId = None
-        self.RepositoryName = None
-        self.Description = None
-        self.BriefDescription = None
         self.NamespaceName = None
+        self.RepositoryName = None
+        self.BriefDescription = None
+        self.Description = None
 
 
     def _deserialize(self, params):
         self.RegistryId = params.get("RegistryId")
-        self.RepositoryName = params.get("RepositoryName")
-        self.Description = params.get("Description")
-        self.BriefDescription = params.get("BriefDescription")
         self.NamespaceName = params.get("NamespaceName")
+        self.RepositoryName = params.get("RepositoryName")
+        self.BriefDescription = params.get("BriefDescription")
+        self.Description = params.get("Description")
 
 
 class ModifyRepositoryResponse(AbstractModel):
@@ -2777,6 +2920,43 @@ class TcrImageInfo(AbstractModel):
         self.Digest = params.get("Digest")
         self.Size = params.get("Size")
         self.ImageVersion = params.get("ImageVersion")
+
+
+class TcrInstanceToken(AbstractModel):
+    """实例登录令牌
+
+    """
+
+    def __init__(self):
+        """
+        :param Id: 令牌ID
+        :type Id: str
+        :param Desc: 令牌描述
+        :type Desc: str
+        :param RegistryId: 令牌所属实例ID
+        :type RegistryId: str
+        :param Enabled: 令牌启用状态
+        :type Enabled: bool
+        :param CreatedAt: 令牌创建时间
+        :type CreatedAt: str
+        :param ExpiredAt: 令牌过期时间戳
+        :type ExpiredAt: int
+        """
+        self.Id = None
+        self.Desc = None
+        self.RegistryId = None
+        self.Enabled = None
+        self.CreatedAt = None
+        self.ExpiredAt = None
+
+
+    def _deserialize(self, params):
+        self.Id = params.get("Id")
+        self.Desc = params.get("Desc")
+        self.RegistryId = params.get("RegistryId")
+        self.Enabled = params.get("Enabled")
+        self.CreatedAt = params.get("CreatedAt")
+        self.ExpiredAt = params.get("ExpiredAt")
 
 
 class TcrNamespaceInfo(AbstractModel):

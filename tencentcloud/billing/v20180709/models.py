@@ -1283,9 +1283,9 @@ class DescribeBillDetailRequest(AbstractModel):
         :type PeriodType: str
         :param Month: 月份，格式为yyyy-mm，Month和BeginTime&EndTime必传一个，如果有传BeginTime&EndTime则Month字段无效。不能早于开通账单2.0的月份，最多可拉取24个月内的数据。
         :type Month: str
-        :param BeginTime: 周期开始时间，格式为Y-m-d H:i:s，Month和BeginTime&EndTime必传一个，如果有该字段则Month字段无效。BeginTime和EndTime必须一起传。不能早于开通账单2.0的月份，最多可拉取24个月内的数据。
+        :param BeginTime: 周期开始时间，格式为Y-m-d H:i:s，Month和BeginTime&EndTime必传一个，如果有该字段则Month字段无效。BeginTime和EndTime必须一起传。不能早于开通账单2.0的月份，最多可拉取24个月内的数据。(不支持跨月查询)
         :type BeginTime: str
-        :param EndTime: 周期结束时间，格式为Y-m-d H:i:s，Month和BeginTime&EndTime必传一个，如果有该字段则Month字段无效。BeginTime和EndTime必须一起传。不能早于开通账单2.0的月份，最多可拉取24个月内的数据。
+        :param EndTime: 周期结束时间，格式为Y-m-d H:i:s，Month和BeginTime&EndTime必传一个，如果有该字段则Month字段无效。BeginTime和EndTime必须一起传。不能早于开通账单2.0的月份，最多可拉取24个月内的数据。（不支持跨月查询）
         :type EndTime: str
         :param NeedRecordNum: 是否需要访问列表的总记录数，用于前端分页
 1-表示需要， 0-表示不需要
@@ -1296,6 +1296,8 @@ class DescribeBillDetailRequest(AbstractModel):
         :type PayMode: str
         :param ResourceId: 查询指定资源信息
         :type ResourceId: str
+        :param ActionType: 查询交易类型。如 按量计费日结，按量计费小时结 等
+        :type ActionType: str
         """
         self.Offset = None
         self.Limit = None
@@ -1307,6 +1309,7 @@ class DescribeBillDetailRequest(AbstractModel):
         self.ProductCode = None
         self.PayMode = None
         self.ResourceId = None
+        self.ActionType = None
 
 
     def _deserialize(self, params):
@@ -1320,6 +1323,7 @@ class DescribeBillDetailRequest(AbstractModel):
         self.ProductCode = params.get("ProductCode")
         self.PayMode = params.get("PayMode")
         self.ResourceId = params.get("ResourceId")
+        self.ActionType = params.get("ActionType")
 
 
 class DescribeBillDetailResponse(AbstractModel):
@@ -1462,12 +1466,15 @@ class DescribeBillResourceSummaryRequest(AbstractModel):
         :param NeedRecordNum: 是否需要访问列表的总记录数，用于前端分页
 1-表示需要， 0-表示不需要
         :type NeedRecordNum: int
+        :param ActionType: 查询交易类型。如 按量计费日结，按量计费小时结 等
+        :type ActionType: str
         """
         self.Offset = None
         self.Limit = None
         self.PeriodType = None
         self.Month = None
         self.NeedRecordNum = None
+        self.ActionType = None
 
 
     def _deserialize(self, params):
@@ -1476,6 +1483,7 @@ class DescribeBillResourceSummaryRequest(AbstractModel):
         self.PeriodType = params.get("PeriodType")
         self.Month = params.get("Month")
         self.NeedRecordNum = params.get("NeedRecordNum")
+        self.ActionType = params.get("ActionType")
 
 
 class DescribeBillResourceSummaryResponse(AbstractModel):

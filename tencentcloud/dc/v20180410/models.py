@@ -715,17 +715,17 @@ class DirectConnect(AbstractModel):
 
 
 class DirectConnectTunnel(AbstractModel):
-    """专线通道信息列表
+    """专用通道信息列表
 
     """
 
     def __init__(self):
         """
-        :param DirectConnectTunnelId: 专线通道ID
+        :param DirectConnectTunnelId: 专用通道ID
         :type DirectConnectTunnelId: str
         :param DirectConnectId: 物理专线ID
         :type DirectConnectId: str
-        :param State: 专线通道状态
+        :param State: 专用通道状态
 AVAILABLE:就绪或者已连接
 PENDING:申请中
 ALLOCATING:配置中
@@ -738,7 +738,7 @@ REJECTED:拒绝
         :type State: str
         :param DirectConnectOwnerAccount: 物理专线的拥有者，开发商账号 ID
         :type DirectConnectOwnerAccount: str
-        :param OwnerAccount: 专线通道的拥有者，开发商账号 ID
+        :param OwnerAccount: 专用通道的拥有者，开发商账号 ID
         :type OwnerAccount: str
         :param NetworkType: 网络类型，分别为VPC、BMVPC、CCN
  VPC：私有网络 ，BMVPC：黑石网络，CCN：云联网
@@ -755,19 +755,19 @@ REJECTED:拒绝
         :type BgpPeer: :class:`tencentcloud.dc.v20180410.models.BgpPeer`
         :param RouteFilterPrefixes: 用户侧网段地址
         :type RouteFilterPrefixes: list of RouteFilterPrefix
-        :param Vlan: 专线通道的Vlan
+        :param Vlan: 专用通道的Vlan
         :type Vlan: int
         :param TencentAddress: TencentAddress，腾讯侧互联 IP
         :type TencentAddress: str
         :param CustomerAddress: CustomerAddress，用户侧互联 IP
         :type CustomerAddress: str
-        :param DirectConnectTunnelName: 专线通道名称
+        :param DirectConnectTunnelName: 专用通道名称
         :type DirectConnectTunnelName: str
-        :param CreatedTime: 专线通道创建时间
+        :param CreatedTime: 专用通道创建时间
         :type CreatedTime: str
-        :param Bandwidth: 专线通道带宽值
+        :param Bandwidth: 专用通道带宽值
         :type Bandwidth: int
-        :param TagSet: 专线通道标签值
+        :param TagSet: 专用通道标签值
         :type TagSet: list of Tag
         :param NetDetectId: 关联的网络自定义探测ID
 注意：此字段可能返回 null，表示取不到有效值。
@@ -784,7 +784,7 @@ REJECTED:拒绝
         :param BfdEnable: 是否开启BFD
 注意：此字段可能返回 null，表示取不到有效值。
         :type BfdEnable: int
-        :param AccessPointType: 专线通道接入点类型
+        :param AccessPointType: 专用通道接入点类型
 注意：此字段可能返回 null，表示取不到有效值。
         :type AccessPointType: str
         :param DirectConnectGatewayName: 专线网关名称

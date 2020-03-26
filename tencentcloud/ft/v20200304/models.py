@@ -23,7 +23,7 @@ class AgeInfo(AbstractModel):
 
     def __init__(self):
         """
-        :param Age: 选择变化范围，参数为【10，80】，当前默认值为10且不可调整（算法有待调整）。
+        :param Age: 当前只支持设置为10且不可调整（后续放开后再知会）。
         :type Age: int
         :param FaceRect: 人脸框位置。若不输入则选择 Image 或 Url 中面积最大的人脸。  
 您可以通过 [人脸检测与分析](https://cloud.tencent.com/document/api/867/32800)  接口获取人脸框位置信息。

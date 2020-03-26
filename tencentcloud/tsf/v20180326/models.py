@@ -4310,6 +4310,9 @@ class Instance(AbstractModel):
         :param GroupName: GroupName
 注意：此字段可能返回 null，表示取不到有效值。
         :type GroupName: str
+        :param NamespaceName: NamespaceName
+注意：此字段可能返回 null，表示取不到有效值。
+        :type NamespaceName: str
         """
         self.InstanceId = None
         self.InstanceName = None
@@ -4346,6 +4349,7 @@ class Instance(AbstractModel):
         self.ApplicationResourceType = None
         self.ServiceSidecarStatus = None
         self.GroupName = None
+        self.NamespaceName = None
 
 
     def _deserialize(self, params):
@@ -4384,6 +4388,7 @@ class Instance(AbstractModel):
         self.ApplicationResourceType = params.get("ApplicationResourceType")
         self.ServiceSidecarStatus = params.get("ServiceSidecarStatus")
         self.GroupName = params.get("GroupName")
+        self.NamespaceName = params.get("NamespaceName")
 
 
 class Microservice(AbstractModel):

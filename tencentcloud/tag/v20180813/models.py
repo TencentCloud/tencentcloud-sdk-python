@@ -703,12 +703,16 @@ class TagResource(AbstractModel):
         :type TagKeyMd5: str
         :param TagValueMd5: 标签值MD5值
         :type TagValueMd5: str
+        :param ServiceType: 资源类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ServiceType: str
         """
         self.TagKey = None
         self.TagValue = None
         self.ResourceId = None
         self.TagKeyMd5 = None
         self.TagValueMd5 = None
+        self.ServiceType = None
 
 
     def _deserialize(self, params):
@@ -717,6 +721,7 @@ class TagResource(AbstractModel):
         self.ResourceId = params.get("ResourceId")
         self.TagKeyMd5 = params.get("TagKeyMd5")
         self.TagValueMd5 = params.get("TagValueMd5")
+        self.ServiceType = params.get("ServiceType")
 
 
 class TagWithDelete(AbstractModel):

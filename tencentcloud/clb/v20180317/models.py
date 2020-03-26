@@ -2970,6 +2970,9 @@ OPEN：公网属性， INTERNAL：内网属性。
         :param IsBlock: vip是否被封堵
 注意：此字段可能返回 null，表示取不到有效值。
         :type IsBlock: bool
+        :param IsBlockTime: 封堵或解封时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IsBlockTime: str
         """
         self.LoadBalancerId = None
         self.LoadBalancerName = None
@@ -3014,6 +3017,7 @@ OPEN：公网属性， INTERNAL：内网属性。
         self.SnatIps = None
         self.SlaType = None
         self.IsBlock = None
+        self.IsBlockTime = None
 
 
     def _deserialize(self, params):
@@ -3087,6 +3091,7 @@ OPEN：公网属性， INTERNAL：内网属性。
                 self.SnatIps.append(obj)
         self.SlaType = params.get("SlaType")
         self.IsBlock = params.get("IsBlock")
+        self.IsBlockTime = params.get("IsBlockTime")
 
 
 class LoadBalancerHealth(AbstractModel):

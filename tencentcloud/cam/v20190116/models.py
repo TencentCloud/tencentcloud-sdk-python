@@ -2083,12 +2083,15 @@ class RoleInfo(AbstractModel):
         :type UpdateTime: str
         :param ConsoleLogin: 角色是否允许登录
         :type ConsoleLogin: int
-        :param RoleType: 角色类型，取user或system
+        :param RoleType: 角色类型，取user、system或service_linked
 注意：此字段可能返回 null，表示取不到有效值。
         :type RoleType: str
         :param SessionDuration: 有效时间
 注意：此字段可能返回 null，表示取不到有效值。
         :type SessionDuration: int
+        :param DeletionTaskId: 服务相关角色删除TaskId
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DeletionTaskId: str
         """
         self.RoleId = None
         self.RoleName = None
@@ -2099,6 +2102,7 @@ class RoleInfo(AbstractModel):
         self.ConsoleLogin = None
         self.RoleType = None
         self.SessionDuration = None
+        self.DeletionTaskId = None
 
 
     def _deserialize(self, params):
@@ -2111,6 +2115,7 @@ class RoleInfo(AbstractModel):
         self.ConsoleLogin = params.get("ConsoleLogin")
         self.RoleType = params.get("RoleType")
         self.SessionDuration = params.get("SessionDuration")
+        self.DeletionTaskId = params.get("DeletionTaskId")
 
 
 class SAMLProviderInfo(AbstractModel):
