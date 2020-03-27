@@ -2972,16 +2972,20 @@ class TcrNamespaceInfo(AbstractModel):
         :type CreationTime: str
         :param Public: 访问级别
         :type Public: bool
+        :param NamespaceId: 命名空间的Id
+        :type NamespaceId: int
         """
         self.Name = None
         self.CreationTime = None
         self.Public = None
+        self.NamespaceId = None
 
 
     def _deserialize(self, params):
         self.Name = params.get("Name")
         self.CreationTime = params.get("CreationTime")
         self.Public = params.get("Public")
+        self.NamespaceId = params.get("NamespaceId")
 
 
 class TcrRepositoryInfo(AbstractModel):

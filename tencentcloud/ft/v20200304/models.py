@@ -157,8 +157,8 @@ class SwapGenderPicRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param GenderInfos: 人脸变化性别信息。 
-您可以输入最多3个 GenderInfo 来实现给一张图中的最多3张人脸变换性别。
+        :param GenderInfos: 人脸转化性别信息。 
+您可以输入最多3个 GenderInfo 来实现给一张图中的最多3张人脸转换性别。
         :type GenderInfos: list of GenderInfo
         :param Image: 图片 base64 数据，base64 编码后大小不可超过5M。 
 支持PNG、JPG、JPEG、BMP，不支持 GIF 图片。

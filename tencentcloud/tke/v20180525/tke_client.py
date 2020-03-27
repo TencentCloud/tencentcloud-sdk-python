@@ -725,6 +725,62 @@ class TkeClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeImages(self, request):
+        """获取镜像信息
+
+        :param request: Request instance for DescribeImages.
+        :type request: :class:`tencentcloud.tke.v20180525.models.DescribeImagesRequest`
+        :rtype: :class:`tencentcloud.tke.v20180525.models.DescribeImagesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeImages", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeImagesResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeRegions(self, request):
+        """获取容器服务支持的所有地域
+
+        :param request: Request instance for DescribeRegions.
+        :type request: :class:`tencentcloud.tke.v20180525.models.DescribeRegionsRequest`
+        :rtype: :class:`tencentcloud.tke.v20180525.models.DescribeRegionsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeRegions", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeRegionsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeRouteTableConflicts(self, request):
         """查询路由表冲突列表
 
@@ -767,6 +823,34 @@ class TkeClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyClusterAsGroupAttributeResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ModifyClusterAttribute(self, request):
+        """修改集群属性
+
+        :param request: Request instance for ModifyClusterAttribute.
+        :type request: :class:`tencentcloud.tke.v20180525.models.ModifyClusterAttributeRequest`
+        :rtype: :class:`tencentcloud.tke.v20180525.models.ModifyClusterAttributeResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ModifyClusterAttribute", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ModifyClusterAttributeResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

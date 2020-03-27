@@ -719,6 +719,8 @@ class MediaMetaData(AbstractModel):
         :type Width: int
         :param Duration: 时长，单位：秒。
         :type Duration: float
+        :param Rotate: 视频拍摄时的选择角度，单位：度
+        :type Rotate: int
         :param VideoStreamInfoSet: 视频流信息。
         :type VideoStreamInfoSet: list of VideoStreamInfo
         :param AudioStreamInfoSet: 音频流信息。
@@ -730,6 +732,7 @@ class MediaMetaData(AbstractModel):
         self.Height = None
         self.Width = None
         self.Duration = None
+        self.Rotate = None
         self.VideoStreamInfoSet = None
         self.AudioStreamInfoSet = None
 
@@ -741,6 +744,7 @@ class MediaMetaData(AbstractModel):
         self.Height = params.get("Height")
         self.Width = params.get("Width")
         self.Duration = params.get("Duration")
+        self.Rotate = params.get("Rotate")
         if params.get("VideoStreamInfoSet") is not None:
             self.VideoStreamInfoSet = []
             for item in params.get("VideoStreamInfoSet"):

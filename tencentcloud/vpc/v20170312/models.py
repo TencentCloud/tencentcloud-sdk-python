@@ -1298,6 +1298,44 @@ class CcnRoute(AbstractModel):
         self.InstanceUin = params.get("InstanceUin")
 
 
+class CheckDefaultSubnetRequest(AbstractModel):
+    """CheckDefaultSubnet请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Zone: 子网所在的可用区ID，不同子网选择不同可用区可以做跨可用区灾备。
+        :type Zone: str
+        """
+        self.Zone = None
+
+
+    def _deserialize(self, params):
+        self.Zone = params.get("Zone")
+
+
+class CheckDefaultSubnetResponse(AbstractModel):
+    """CheckDefaultSubnet返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Result: 检查结果。true为可以创建默认子网，false为不可以创建默认子网。
+        :type Result: bool
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Result = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Result = params.get("Result")
+        self.RequestId = params.get("RequestId")
+
+
 class CheckNetDetectStateRequest(AbstractModel):
     """CheckNetDetectState请求参数结构体
 
@@ -3999,48 +4037,6 @@ class DescribeAddressTemplateGroupsResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
-class DescribeAddressTemplateInstancesRequest(AbstractModel):
-    """DescribeAddressTemplateInstances请求参数结构体
-
-    """
-
-    def __init__(self):
-        """
-        :param AddressTemplateId: IP地址实例ID。例如：ipm-12345678。
-        :type AddressTemplateId: str
-        :param Offset: 偏移量，默认为0。
-        :type Offset: int
-        :param Limit: 返回数量，默认为20，最大值为100。
-        :type Limit: int
-        """
-        self.AddressTemplateId = None
-        self.Offset = None
-        self.Limit = None
-
-
-    def _deserialize(self, params):
-        self.AddressTemplateId = params.get("AddressTemplateId")
-        self.Offset = params.get("Offset")
-        self.Limit = params.get("Limit")
-
-
-class DescribeAddressTemplateInstancesResponse(AbstractModel):
-    """DescribeAddressTemplateInstances返回参数结构体
-
-    """
-
-    def __init__(self):
-        """
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
-        self.RequestId = None
-
-
-    def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
-
-
 class DescribeAddressTemplatesRequest(AbstractModel):
     """DescribeAddressTemplates请求参数结构体
 
@@ -6399,6 +6395,49 @@ class DescribeVpcIpv6AddressesResponse(AbstractModel):
                 obj._deserialize(item)
                 self.Ipv6AddressSet.append(obj)
         self.TotalCount = params.get("TotalCount")
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeVpcLimitsRequest(AbstractModel):
+    """DescribeVpcLimits请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param LimitTypes: 配额名称。每次最大查询100个配额类型。
+        :type LimitTypes: list of str
+        """
+        self.LimitTypes = None
+
+
+    def _deserialize(self, params):
+        self.LimitTypes = params.get("LimitTypes")
+
+
+class DescribeVpcLimitsResponse(AbstractModel):
+    """DescribeVpcLimits返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param VpcLimitSet: 私有网络配额
+        :type VpcLimitSet: list of VpcLimit
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.VpcLimitSet = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("VpcLimitSet") is not None:
+            self.VpcLimitSet = []
+            for item in params.get("VpcLimitSet"):
+                obj = VpcLimit()
+                obj._deserialize(item)
+                self.VpcLimitSet.append(obj)
         self.RequestId = params.get("RequestId")
 
 
@@ -11711,6 +11750,27 @@ class VpcIpv6Address(AbstractModel):
         self.CidrBlock = params.get("CidrBlock")
         self.Ipv6AddressType = params.get("Ipv6AddressType")
         self.CreatedTime = params.get("CreatedTime")
+
+
+class VpcLimit(AbstractModel):
+    """私有网络配额
+
+    """
+
+    def __init__(self):
+        """
+        :param LimitType: 私有网络配额描述
+        :type LimitType: str
+        :param LimitValue: 私有网络配额值
+        :type LimitValue: int
+        """
+        self.LimitType = None
+        self.LimitValue = None
+
+
+    def _deserialize(self, params):
+        self.LimitType = params.get("LimitType")
+        self.LimitValue = params.get("LimitValue")
 
 
 class VpcPrivateIpAddress(AbstractModel):

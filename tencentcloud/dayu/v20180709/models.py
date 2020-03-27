@@ -1408,6 +1408,9 @@ class DDoSEventRecord(AbstractModel):
         :param ResourceName: 资源名称
 注意：此字段可能返回 null，表示取不到有效值。
         :type ResourceName: str
+        :param EventId: 攻击事件Id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EventId: str
         """
         self.Business = None
         self.Id = None
@@ -1421,6 +1424,7 @@ class DDoSEventRecord(AbstractModel):
         self.OverLoad = None
         self.AttackStatus = None
         self.ResourceName = None
+        self.EventId = None
 
 
     def _deserialize(self, params):
@@ -1436,6 +1440,7 @@ class DDoSEventRecord(AbstractModel):
         self.OverLoad = params.get("OverLoad")
         self.AttackStatus = params.get("AttackStatus")
         self.ResourceName = params.get("ResourceName")
+        self.EventId = params.get("EventId")
 
 
 class DDoSPolicyDropOption(AbstractModel):

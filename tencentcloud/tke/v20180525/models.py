@@ -1749,6 +1749,82 @@ class DescribeExistedInstancesResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeImagesRequest(AbstractModel):
+    """DescribeImages请求参数结构体
+
+    """
+
+
+class DescribeImagesResponse(AbstractModel):
+    """DescribeImages返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param TotalCount: 镜像数量
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TotalCount: int
+        :param ImageInstanceSet: 镜像信息列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ImageInstanceSet: list of ImageInstance
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.ImageInstanceSet = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("ImageInstanceSet") is not None:
+            self.ImageInstanceSet = []
+            for item in params.get("ImageInstanceSet"):
+                obj = ImageInstance()
+                obj._deserialize(item)
+                self.ImageInstanceSet.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeRegionsRequest(AbstractModel):
+    """DescribeRegions请求参数结构体
+
+    """
+
+
+class DescribeRegionsResponse(AbstractModel):
+    """DescribeRegions返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param TotalCount: 地域的数量
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TotalCount: int
+        :param RegionInstanceSet: 地域列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RegionInstanceSet: list of RegionInstance
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.RegionInstanceSet = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("RegionInstanceSet") is not None:
+            self.RegionInstanceSet = []
+            for item in params.get("RegionInstanceSet"):
+                obj = RegionInstance()
+                obj._deserialize(item)
+                self.RegionInstanceSet.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeRouteTableConflictsRequest(AbstractModel):
     """DescribeRouteTableConflicts请求参数结构体
 
@@ -2011,6 +2087,39 @@ class Filter(AbstractModel):
         self.Values = params.get("Values")
 
 
+class ImageInstance(AbstractModel):
+    """镜像信息
+
+    """
+
+    def __init__(self):
+        """
+        :param Alias: 镜像别名
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Alias: str
+        :param OsName: 操作系统名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OsName: str
+        :param ImageId: 镜像ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ImageId: str
+        :param OsCustomizeType: 容器的镜像版本，"DOCKER_CUSTOMIZE"(容器定制版),"GENERAL"(普通版本，默认值)
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OsCustomizeType: str
+        """
+        self.Alias = None
+        self.OsName = None
+        self.ImageId = None
+        self.OsCustomizeType = None
+
+
+    def _deserialize(self, params):
+        self.Alias = params.get("Alias")
+        self.OsName = params.get("OsName")
+        self.ImageId = params.get("ImageId")
+        self.OsCustomizeType = params.get("OsCustomizeType")
+
+
 class Instance(AbstractModel):
     """集群的实例信息
 
@@ -2246,6 +2355,67 @@ class ModifyClusterAsGroupAttributeResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class ModifyClusterAttributeRequest(AbstractModel):
+    """ModifyClusterAttribute请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ClusterId: 集群ID
+        :type ClusterId: str
+        :param ProjectId: 集群所属项目
+        :type ProjectId: int
+        :param ClusterName: 集群名称
+        :type ClusterName: str
+        :param ClusterDesc: 集群描述
+        :type ClusterDesc: str
+        """
+        self.ClusterId = None
+        self.ProjectId = None
+        self.ClusterName = None
+        self.ClusterDesc = None
+
+
+    def _deserialize(self, params):
+        self.ClusterId = params.get("ClusterId")
+        self.ProjectId = params.get("ProjectId")
+        self.ClusterName = params.get("ClusterName")
+        self.ClusterDesc = params.get("ClusterDesc")
+
+
+class ModifyClusterAttributeResponse(AbstractModel):
+    """ModifyClusterAttribute返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ProjectId: 集群所属项目
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ProjectId: int
+        :param ClusterName: 集群名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ClusterName: str
+        :param ClusterDesc: 集群描述
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ClusterDesc: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.ProjectId = None
+        self.ClusterName = None
+        self.ClusterDesc = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.ProjectId = params.get("ProjectId")
+        self.ClusterName = params.get("ClusterName")
+        self.ClusterDesc = params.get("ClusterDesc")
+        self.RequestId = params.get("RequestId")
+
+
 class ModifyClusterEndpointSPRequest(AbstractModel):
     """ModifyClusterEndpointSP请求参数结构体
 
@@ -2282,6 +2452,49 @@ class ModifyClusterEndpointSPResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
+
+
+class RegionInstance(AbstractModel):
+    """地域属性信息
+
+    """
+
+    def __init__(self):
+        """
+        :param RegionName: 地域名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RegionName: str
+        :param RegionId: 地域ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RegionId: int
+        :param Status: 地域状态
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Status: str
+        :param FeatureGates: 地域特性开关(按照JSON的形式返回所有属性)
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FeatureGates: str
+        :param Alias: 地域简称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Alias: str
+        :param Remark: 地域白名单
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Remark: str
+        """
+        self.RegionName = None
+        self.RegionId = None
+        self.Status = None
+        self.FeatureGates = None
+        self.Alias = None
+        self.Remark = None
+
+
+    def _deserialize(self, params):
+        self.RegionName = params.get("RegionName")
+        self.RegionId = params.get("RegionId")
+        self.Status = params.get("Status")
+        self.FeatureGates = params.get("FeatureGates")
+        self.Alias = params.get("Alias")
+        self.Remark = params.get("Remark")
 
 
 class RouteInfo(AbstractModel):

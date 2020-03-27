@@ -180,6 +180,8 @@ class BizLicenseOCRResponse(AbstractModel):
         :type Period: str
         :param ComposingForm: 组成形式
         :type ComposingForm: str
+        :param SetDate: 成立日期
+        :type SetDate: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -192,6 +194,7 @@ class BizLicenseOCRResponse(AbstractModel):
         self.Type = None
         self.Period = None
         self.ComposingForm = None
+        self.SetDate = None
         self.RequestId = None
 
 
@@ -205,6 +208,7 @@ class BizLicenseOCRResponse(AbstractModel):
         self.Type = params.get("Type")
         self.Period = params.get("Period")
         self.ComposingForm = params.get("ComposingForm")
+        self.SetDate = params.get("SetDate")
         self.RequestId = params.get("RequestId")
 
 

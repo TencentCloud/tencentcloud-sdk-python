@@ -5580,6 +5580,15 @@ class SimpleGroup(AbstractModel):
         :param NamespaceName: 命名空间名称
 注意：此字段可能返回 null，表示取不到有效值。
         :type NamespaceName: str
+        :param StartupParameters: 启动参数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type StartupParameters: str
+        :param GroupResourceType: 部署组资源类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type GroupResourceType: str
+        :param AppMicroServiceType: 应用微服务类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AppMicroServiceType: str
         """
         self.GroupId = None
         self.GroupName = None
@@ -5591,6 +5600,9 @@ class SimpleGroup(AbstractModel):
         self.ClusterType = None
         self.NamespaceId = None
         self.NamespaceName = None
+        self.StartupParameters = None
+        self.GroupResourceType = None
+        self.AppMicroServiceType = None
 
 
     def _deserialize(self, params):
@@ -5604,6 +5616,9 @@ class SimpleGroup(AbstractModel):
         self.ClusterType = params.get("ClusterType")
         self.NamespaceId = params.get("NamespaceId")
         self.NamespaceName = params.get("NamespaceName")
+        self.StartupParameters = params.get("StartupParameters")
+        self.GroupResourceType = params.get("GroupResourceType")
+        self.AppMicroServiceType = params.get("AppMicroServiceType")
 
 
 class StartContainerGroupRequest(AbstractModel):

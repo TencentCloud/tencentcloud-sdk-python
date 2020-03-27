@@ -2273,7 +2273,7 @@ class LiveClient(AbstractClient):
 
 
     def EnableLiveDomain(self, request):
-        """启用状态为停用的直播域名
+        """启用状态为停用的直播域名。
 
         :param request: Request instance for EnableLiveDomain.
         :type request: :class:`tencentcloud.live.v20180801.models.EnableLiveDomainRequest`
