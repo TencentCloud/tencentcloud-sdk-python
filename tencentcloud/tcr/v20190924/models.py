@@ -338,6 +338,9 @@ class CreateInstanceTokenResponse(AbstractModel):
 
     def __init__(self):
         """
+        :param Username: 用户名
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Username: str
         :param Token: 访问凭证
         :type Token: str
         :param ExpTime: 访问凭证过期时间戳
@@ -345,12 +348,14 @@ class CreateInstanceTokenResponse(AbstractModel):
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
+        self.Username = None
         self.Token = None
         self.ExpTime = None
         self.RequestId = None
 
 
     def _deserialize(self, params):
+        self.Username = params.get("Username")
         self.Token = params.get("Token")
         self.ExpTime = params.get("ExpTime")
         self.RequestId = params.get("RequestId")

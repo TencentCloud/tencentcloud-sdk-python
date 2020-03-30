@@ -137,7 +137,7 @@ class CancelCertificateOrderResponse(AbstractModel):
 
 
 class CertificateExtra(AbstractModel):
-    """获取证书列表（DescribeCertificates）返回参数键为 Certificates数组下，key为CertificateExtra 的内容。
+    """获取证书列表（DescribeCertificates）返回参数键为 Certificates 数组下，key为CertificateExtra 的内容。
 
     """
 
@@ -146,16 +146,16 @@ class CertificateExtra(AbstractModel):
         :param DomainNumber: 证书可配置域名数量。
 注意：此字段可能返回 null，表示取不到有效值。
         :type DomainNumber: str
-        :param OriginCertificateId: 原始证书ID。
+        :param OriginCertificateId: 原始证书 ID。
 注意：此字段可能返回 null，表示取不到有效值。
         :type OriginCertificateId: str
-        :param ReplacedBy: 重颁发证书原始ID。
+        :param ReplacedBy: 重颁发证书原始 ID。
 注意：此字段可能返回 null，表示取不到有效值。
         :type ReplacedBy: str
-        :param ReplacedFor: 重颁发证书新ID。
+        :param ReplacedFor: 重颁发证书新 ID。
 注意：此字段可能返回 null，表示取不到有效值。
         :type ReplacedFor: str
-        :param RenewOrder: 新订单证书ID。
+        :param RenewOrder: 新订单证书 ID。
 注意：此字段可能返回 null，表示取不到有效值。
         :type RenewOrder: str
         """
@@ -181,19 +181,19 @@ class Certificates(AbstractModel):
 
     def __init__(self):
         """
-        :param OwnerUin: 用户UIN。
+        :param OwnerUin: 用户 UIN。
 注意：此字段可能返回 null，表示取不到有效值。
         :type OwnerUin: str
-        :param ProjectId: 项目ID。
+        :param ProjectId: 项目 ID。
 注意：此字段可能返回 null，表示取不到有效值。
         :type ProjectId: str
         :param From: 证书来源。
 注意：此字段可能返回 null，表示取不到有效值。
         :type From: str
-        :param PackageType: 证书套餐类型：1 = GeoTrust DV SSL CA - G3， 2 = TrustAsia TLS RSA CA， 3 = Symantec 增强型企业版(EV Pro)， 4 = Symantec 增强型(EV)， 5 = Symantec 企业型专业版(OV Pro)， 6 = Symantec 企业型(OV)， 7 = Symantec 企业型(OV)通配符， 8 = Geotrust 增强型(EV)， 9 = Geotrust 企业型(OV)， 10 = Geotrust 企业型(OV)通配符， 11 = TrustAsia 域名型多域名 SSL证书， 12 = TrustAsia 域名型(DV)通配符， 13 = TrustAsia 企业型通配符 （OV）SSL证书(D3)， 14 = TrustAsia 企业型 （OV）SSL证书(D3)， 15 = TrustAsia 企业型多域名 （OV）SSL证书(D3)， 16 = TrustAsia 增强型 （EV）SSL证书(D3)， 17 = TrustAsia 增强型多域名（EV）SSL证书(D3)， 18 = GlobalSign 企业型（OV）SSL证， 19 = GlobalSign 企业型通配符 （OV）SSL证书， 20 = GlobalSign 增强型 （EV）SSL证书， 21 = TrustAsia 企业型通配符多域名 （OV）SSL证书(D3)， 22 = GlobalSign 企业型多域名 （OV）SSL证书， 23 = GlobalSign 企业型通配符多域名 （OV）SSL证书， 24 = GlobalSign 增强型多域名（EV） SSL证书。
+        :param PackageType: 证书套餐类型：1 = GeoTrust DV SSL CA - G3， 2 = TrustAsia TLS RSA CA， 3 = Symantec 增强型企业版（EV Pro）， 4 = Symantec 增强型（EV）， 5 = Symantec 企业型专业版（OV Pro）， 6 = Symantec 企业型（OV）， 7 = Symantec 企业型（OV）通配符， 8 = Geotrust 增强型（EV）， 9 = Geotrust 企业型（OV）， 10 = Geotrust 企业型（OV）通配符， 11 = TrustAsia 域名型多域名 SSL 证书， 12 = TrustAsia 域名型（DV）通配符， 13 = TrustAsia 企业型通配符（OV）SSL 证书（D3）， 14 = TrustAsia 企业型（OV）SSL 证书（D3）， 15 = TrustAsia 企业型多域名 （OV）SSL 证书（D3）， 16 = TrustAsia 增强型 （EV）SSL 证书（D3）， 17 = TrustAsia 增强型多域名（EV）SSL 证书（D3）， 18 = GlobalSign 企业型（OV）SSL 证书， 19 = GlobalSign 企业型通配符 （OV）SSL 证书， 20 = GlobalSign 增强型 （EV）SSL 证书， 21 = TrustAsia 企业型通配符多域名（OV）SSL 证书（D3）， 22 = GlobalSign 企业型多域名（OV）SSL 证书， 23 = GlobalSign 企业型通配符多域名（OV）SSL 证书， 24 = GlobalSign 增强型多域名（EV）SSL 证书。
 注意：此字段可能返回 null，表示取不到有效值。
         :type PackageType: str
-        :param CertificateType: 证书类型（目前支持：CA = 客户端证书，SVR = 服务器证书）。
+        :param CertificateType: 证书类型：CA = 客户端证书，SVR = 服务器证书。
 注意：此字段可能返回 null，表示取不到有效值。
         :type CertificateType: str
         :param ProductZhName: 颁发者。
@@ -232,7 +232,7 @@ class Certificates(AbstractModel):
         :param InsertTime: 创建时间。
 注意：此字段可能返回 null，表示取不到有效值。
         :type InsertTime: str
-        :param CertificateId: 证书ID
+        :param CertificateId: 证书 ID。
 注意：此字段可能返回 null，表示取不到有效值。
         :type CertificateId: str
         :param SubjectAltName: 证书包含的多个域名（包含主域名）。
@@ -1002,28 +1002,28 @@ class DownloadCertificateResponse(AbstractModel):
 
 
 class DvAuthDetail(AbstractModel):
-    """获取证书列表（DescribeCertificate）返回参数键为 DvAuthDetail的内容。
+    """获取证书列表（DescribeCertificate）返回参数键为 DvAuthDetail 的内容。
 
     """
 
     def __init__(self):
         """
-        :param DvAuthKey: DV认证密钥。
+        :param DvAuthKey: DV 认证密钥。
 注意：此字段可能返回 null，表示取不到有效值。
         :type DvAuthKey: str
-        :param DvAuthValue: DV认证值。
+        :param DvAuthValue: DV 认证值。
 注意：此字段可能返回 null，表示取不到有效值。
         :type DvAuthValue: str
-        :param DvAuthDomain: DV认证值域名。
+        :param DvAuthDomain: DV 认证值域名。
 注意：此字段可能返回 null，表示取不到有效值。
         :type DvAuthDomain: str
-        :param DvAuthPath: DV认证值路径。
+        :param DvAuthPath: DV 认证值路径。
 注意：此字段可能返回 null，表示取不到有效值。
         :type DvAuthPath: str
-        :param DvAuthKeySubDomain: DV认证子域名。
+        :param DvAuthKeySubDomain: DV 认证子域名。
 注意：此字段可能返回 null，表示取不到有效值。
         :type DvAuthKeySubDomain: str
-        :param DvAuths: DV认证信息。
+        :param DvAuths: DV 认证信息。
 注意：此字段可能返回 null，表示取不到有效值。
         :type DvAuths: list of DvAuths
         """
@@ -1056,22 +1056,22 @@ class DvAuths(AbstractModel):
 
     def __init__(self):
         """
-        :param DvAuthKey: DV认证密钥。
+        :param DvAuthKey: DV 认证密钥。
 注意：此字段可能返回 null，表示取不到有效值。
         :type DvAuthKey: str
-        :param DvAuthValue: DV认证值。
+        :param DvAuthValue: DV 认证值。
 注意：此字段可能返回 null，表示取不到有效值。
         :type DvAuthValue: str
-        :param DvAuthDomain: DV认证值域名。
+        :param DvAuthDomain: DV 认证值域名。
 注意：此字段可能返回 null，表示取不到有效值。
         :type DvAuthDomain: str
-        :param DvAuthPath: DV认证值路径。
+        :param DvAuthPath: DV 认证值路径。
 注意：此字段可能返回 null，表示取不到有效值。
         :type DvAuthPath: str
-        :param DvAuthSubDomain: DV认证子域名，
+        :param DvAuthSubDomain: DV 认证子域名，
 注意：此字段可能返回 null，表示取不到有效值。
         :type DvAuthSubDomain: str
-        :param DvAuthVerifyType: DV认证类型。
+        :param DvAuthVerifyType: DV 认证类型。
 注意：此字段可能返回 null，表示取不到有效值。
         :type DvAuthVerifyType: str
         """
@@ -1183,15 +1183,15 @@ class ModifyCertificateProjectResponse(AbstractModel):
 
 
 class OperationLog(AbstractModel):
-    """证书操作日志
+    """证书操作日志。
 
     """
 
     def __init__(self):
         """
-        :param Action: 操作证书动作
+        :param Action: 操作证书动作。
         :type Action: str
-        :param CreatedOn: 操作时间
+        :param CreatedOn: 操作时间。
         :type CreatedOn: str
         """
         self.Action = None
@@ -1204,7 +1204,7 @@ class OperationLog(AbstractModel):
 
 
 class ProjectInfo(AbstractModel):
-    """获取证书列表（DescribeCertificates）返回参数键为 Certificates下，key为 ProjectInfo的内容。
+    """获取证书列表（DescribeCertificates）返回参数键为 Certificates 下，key为 ProjectInfo 的内容。
 
     """
 
@@ -1213,7 +1213,7 @@ class ProjectInfo(AbstractModel):
         :param ProjectName: 项目名称。
 注意：此字段可能返回 null，表示取不到有效值。
         :type ProjectName: str
-        :param ProjectCreatorUin: 项目创建用户UIN。
+        :param ProjectCreatorUin: 项目创建用户 UIN。
 注意：此字段可能返回 null，表示取不到有效值。
         :type ProjectCreatorUin: int
         :param ProjectCreateTime: 项目创建时间。
@@ -1222,10 +1222,10 @@ class ProjectInfo(AbstractModel):
         :param ProjectResume: 项目信息简述。
 注意：此字段可能返回 null，表示取不到有效值。
         :type ProjectResume: str
-        :param OwnerUin: 用户UIN。
+        :param OwnerUin: 用户 UIN。
 注意：此字段可能返回 null，表示取不到有效值。
         :type OwnerUin: int
-        :param ProjectId: 项目ID。
+        :param ProjectId: 项目 ID。
 注意：此字段可能返回 null，表示取不到有效值。
         :type ProjectId: str
         """
@@ -1439,22 +1439,22 @@ class SubmitCertificateInformationResponse(AbstractModel):
 
 
 class SubmittedData(AbstractModel):
-    """获取证书列表（DescribeCertificate）返回参数键为 SubmittedData的内容。
+    """获取证书列表（DescribeCertificate）返回参数键为 SubmittedData 的内容。
 
     """
 
     def __init__(self):
         """
-        :param CsrType: CSR类型，（online = 在线生成CSR，parse = 粘贴CSR）。
+        :param CsrType: CSR 类型，（online = 在线生成CSR，parse = 粘贴 CSR）。
 注意：此字段可能返回 null，表示取不到有效值。
         :type CsrType: str
-        :param CsrContent: CSR内容。
+        :param CsrContent: CSR 内容。
 注意：此字段可能返回 null，表示取不到有效值。
         :type CsrContent: str
         :param CertificateDomain: 域名信息。
 注意：此字段可能返回 null，表示取不到有效值。
         :type CertificateDomain: str
-        :param DomainList: DNS信息。
+        :param DomainList: DNS 信息。
 注意：此字段可能返回 null，表示取不到有效值。
         :type DomainList: list of str
         :param KeyPassword: 私钥密码。

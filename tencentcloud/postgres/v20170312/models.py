@@ -303,6 +303,10 @@ class DBInstance(AbstractModel):
         :type DBInstanceNetInfo: list of DBInstanceNetInfo
         :param Type: 机器类型
         :type Type: str
+        :param AppId: 用户的AppId
+        :type AppId: int
+        :param Uid: 实例的Uid
+        :type Uid: int
         """
         self.Region = None
         self.Zone = None
@@ -328,6 +332,8 @@ class DBInstance(AbstractModel):
         self.AutoRenew = None
         self.DBInstanceNetInfo = None
         self.Type = None
+        self.AppId = None
+        self.Uid = None
 
 
     def _deserialize(self, params):
@@ -360,6 +366,8 @@ class DBInstance(AbstractModel):
                 obj._deserialize(item)
                 self.DBInstanceNetInfo.append(obj)
         self.Type = params.get("Type")
+        self.AppId = params.get("AppId")
+        self.Uid = params.get("Uid")
 
 
 class DBInstanceNetInfo(AbstractModel):
@@ -2098,12 +2106,15 @@ class Xlog(AbstractModel):
         :type InternalAddr: str
         :param ExternalAddr: 外网下载地址
         :type ExternalAddr: str
+        :param Size: 备份文件大小
+        :type Size: int
         """
         self.Id = None
         self.StartTime = None
         self.EndTime = None
         self.InternalAddr = None
         self.ExternalAddr = None
+        self.Size = None
 
 
     def _deserialize(self, params):
@@ -2112,6 +2123,7 @@ class Xlog(AbstractModel):
         self.EndTime = params.get("EndTime")
         self.InternalAddr = params.get("InternalAddr")
         self.ExternalAddr = params.get("ExternalAddr")
+        self.Size = params.get("Size")
 
 
 class ZoneInfo(AbstractModel):

@@ -901,7 +901,7 @@ class CreateL4RulesRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Business: 大禹子产品代号（bgpip表示高防IP；bgp表示独享包；bgp-multip表示共享包；net表示高防IP专业版）
+        :param Business: 大禹子产品代号（bgpip表示高防IP；net表示高防IP专业版）
         :type Business: str
         :param Id: 资源ID
         :type Id: str
@@ -1073,7 +1073,7 @@ class CreateL7RuleCertRequest(AbstractModel):
         """
         :param Business: 大禹子产品代号（bgpip表示高防IP；net表示高防IP专业版）
         :type Business: str
-        :param Id: 资源ID
+        :param Id: 资源实例ID，比如高防IP实例的ID，高防IP专业版实例的ID
         :type Id: str
         :param RuleId: 规则ID
         :type RuleId: str
@@ -1135,7 +1135,7 @@ class CreateL7RulesRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Business: 大禹子产品代号（bgpip表示高防IP；bgp表示独享包；bgp-multip表示共享包；net表示高防IP专业版）
+        :param Business: 大禹子产品代号（bgpip表示高防IP；net表示高防IP专业版）
         :type Business: str
         :param Id: 资源ID
         :type Id: str
@@ -1933,7 +1933,7 @@ class DeleteL4RulesRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Business: 大禹子产品代号（bgpip表示高防IP；bgp表示独享包；bgp-multip表示共享包；net表示高防IP专业版）
+        :param Business: 大禹子产品代号（bgpip表示高防IP；net表示高防IP专业版）
         :type Business: str
         :param Id: 资源ID
         :type Id: str
@@ -1981,7 +1981,7 @@ class DeleteL7RulesRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Business: 大禹子产品代号（bgpip表示高防IP；bgp表示独享包；bgp-multip表示共享包；net表示高防IP专业版）
+        :param Business: 大禹子产品代号（bgpip表示高防IP；net表示高防IP专业版）
         :type Business: str
         :param Id: 资源ID
         :type Id: str
@@ -7314,7 +7314,7 @@ class ModifyL4RulesRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Business: 大禹子产品代号（bgpip表示高防IP；bgp表示独享包；bgp-multip表示共享包；net表示高防IP专业版）
+        :param Business: 大禹子产品代号（bgpip表示高防IP；net表示高防IP专业版）
         :type Business: str
         :param Id: 资源ID
         :type Id: str
@@ -7364,7 +7364,7 @@ class ModifyL7RulesRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Business: 大禹子产品代号（bgpip表示高防IP；bgp表示独享包；bgp-multip表示共享包；net表示高防IP专业版）
+        :param Business: 大禹子产品代号（bgpip表示高防IP；net表示高防IP专业版）
         :type Business: str
         :param Id: 资源ID
         :type Id: str

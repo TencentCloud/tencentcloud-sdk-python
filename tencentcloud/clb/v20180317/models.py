@@ -1939,6 +1939,11 @@ OPEN：公网属性， INTERNAL：内网属性。
         :type SecurityGroup: str
         :param MasterZone: 主可用区ID，如 ："100001" （对应的是广州一区）
         :type MasterZone: str
+        :param Filters: 每次请求的`Filters`的上限为10，`Filter.Values`的上限为100。详细的过滤条件如下：
+<li> internet-charge-type - String - 是否必填：否 - （过滤条件）按照 CLB 的网络计费模式过滤，包括"BANDWIDTH_PREPAID","TRAFFIC_POSTPAID_BY_HOUR","BANDWIDTH_POSTPAID_BY_HOUR","BANDWIDTH_PACKAGE"。</li>
+<li> master-zone-id - String - 是否必填：否 - （过滤条件）按照 CLB 的主可用区ID过滤，如 ："100001" （对应的是广州一区）。</li>
+<li> tag-key - String - 是否必填：否 - （过滤条件）按照 CLB 标签的键过滤。</li>
+        :type Filters: list of Filter
         """
         self.LoadBalancerIds = None
         self.LoadBalancerType = None
@@ -1958,6 +1963,7 @@ OPEN：公网属性， INTERNAL：内网属性。
         self.VpcId = None
         self.SecurityGroup = None
         self.MasterZone = None
+        self.Filters = None
 
 
     def _deserialize(self, params):
@@ -1979,6 +1985,12 @@ OPEN：公网属性， INTERNAL：内网属性。
         self.VpcId = params.get("VpcId")
         self.SecurityGroup = params.get("SecurityGroup")
         self.MasterZone = params.get("MasterZone")
+        if params.get("Filters") is not None:
+            self.Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self.Filters.append(obj)
 
 
 class DescribeLoadBalancersResponse(AbstractModel):

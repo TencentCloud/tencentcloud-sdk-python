@@ -2035,6 +2035,8 @@ class RsgAsGroup(AbstractModel):
         :type InstanceType: str
         :param InstanceCount: 伸缩组内节点个数
         :type InstanceCount: int
+        :param DesiredSize: 伸缩组起始节点数
+        :type DesiredSize: int
         """
         self.Id = None
         self.Region = None
@@ -2049,6 +2051,7 @@ class RsgAsGroup(AbstractModel):
         self.Status = None
         self.InstanceType = None
         self.InstanceCount = None
+        self.DesiredSize = None
 
 
     def _deserialize(self, params):
@@ -2065,6 +2068,7 @@ class RsgAsGroup(AbstractModel):
         self.Status = params.get("Status")
         self.InstanceType = params.get("InstanceType")
         self.InstanceCount = params.get("InstanceCount")
+        self.DesiredSize = params.get("DesiredSize")
 
 
 class RsgAsGroupActivity(AbstractModel):

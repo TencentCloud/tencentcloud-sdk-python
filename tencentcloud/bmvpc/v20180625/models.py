@@ -3670,6 +3670,8 @@ class VpcInfo(AbstractModel):
         :type State: str
         :param CreateTime: 创建时间
         :type CreateTime: str
+        :param IntVpcId: 整型私有网络ID。
+        :type IntVpcId: int
         """
         self.VpcId = None
         self.VpcName = None
@@ -3677,6 +3679,7 @@ class VpcInfo(AbstractModel):
         self.Zone = None
         self.State = None
         self.CreateTime = None
+        self.IntVpcId = None
 
 
     def _deserialize(self, params):
@@ -3686,6 +3689,7 @@ class VpcInfo(AbstractModel):
         self.Zone = params.get("Zone")
         self.State = params.get("State")
         self.CreateTime = params.get("CreateTime")
+        self.IntVpcId = params.get("IntVpcId")
 
 
 class VpcPeerConnection(AbstractModel):
@@ -3707,7 +3711,7 @@ class VpcPeerConnection(AbstractModel):
         :type VpcPeerConnectionId: str
         :param VpcPeerConnectionName: 对等连接名称
         :type VpcPeerConnectionName: str
-        :param State: 对等连接状态
+        :param State: 对等连接状态。pending:申请中,available:运行中,expired:已过期,rejected:已拒绝,deleted:已删除
         :type State: str
         :param VpcZone: 本端VPC所属可用区
 注意：此字段可能返回 null，表示取不到有效值。
@@ -3849,6 +3853,8 @@ class VpcResource(AbstractModel):
         :param VpcPeerLimitToSameRegion: VPC允许创建的同地域的对等连接的个数
 注意：此字段可能返回 null，表示取不到有效值。
         :type VpcPeerLimitToSameRegion: int
+        :param IntVpcId: 整型私有网络ID
+        :type IntVpcId: int
         """
         self.VpcId = None
         self.VpcName = None
@@ -3873,6 +3879,7 @@ class VpcResource(AbstractModel):
         self.CcnServiceNum = None
         self.VpcPeerLimitToAllRegion = None
         self.VpcPeerLimitToSameRegion = None
+        self.IntVpcId = None
 
 
     def _deserialize(self, params):
@@ -3899,6 +3906,7 @@ class VpcResource(AbstractModel):
         self.CcnServiceNum = params.get("CcnServiceNum")
         self.VpcPeerLimitToAllRegion = params.get("VpcPeerLimitToAllRegion")
         self.VpcPeerLimitToSameRegion = params.get("VpcPeerLimitToSameRegion")
+        self.IntVpcId = params.get("IntVpcId")
 
 
 class VpcSubnetCreateInfo(AbstractModel):

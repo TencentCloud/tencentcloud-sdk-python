@@ -1380,10 +1380,13 @@ class DescribePolicyGroupInfoCondition(AbstractModel):
         :param AlarmNotifyPeriod: 告警发送周期单位秒。<0 不触发, 0 只触发一次, >0 每隔triggerTime秒触发一次
         :type AlarmNotifyPeriod: int
         :param CalcType: 比较类型，1表示大于，2表示大于等于，3表示小于，4表示小于等于，5表示相等，6表示不相等，7表示日同比上涨，8表示日同比下降，9表示周同比上涨，10表示周同比下降，11表示周期环比上涨，12表示周期环比下降
+注意：此字段可能返回 null，表示取不到有效值。
         :type CalcType: int
         :param CalcValue: 检测阈值
+注意：此字段可能返回 null，表示取不到有效值。
         :type CalcValue: str
         :param ContinueTime: 持续多长时间触发规则会告警(单位秒)
+注意：此字段可能返回 null，表示取不到有效值。
         :type ContinueTime: int
         """
         self.MetricShowName = None
