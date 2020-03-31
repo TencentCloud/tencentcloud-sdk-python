@@ -658,6 +658,9 @@ class Face(AbstractModel):
         :type Width: int
         :param Height: 人脸区域高度。
         :type Height: int
+        :param ID: 公众人物的唯一编号，可以用于区分同名人物、一个人物不同称呼等情况。唯一编号为8个字符构成的字符串。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ID: str
         """
         self.Name = None
         self.Labels = None
@@ -667,6 +670,7 @@ class Face(AbstractModel):
         self.Y = None
         self.Width = None
         self.Height = None
+        self.ID = None
 
 
     def _deserialize(self, params):
@@ -683,6 +687,7 @@ class Face(AbstractModel):
         self.Y = params.get("Y")
         self.Width = params.get("Width")
         self.Height = params.get("Height")
+        self.ID = params.get("ID")
 
 
 class Labels(AbstractModel):

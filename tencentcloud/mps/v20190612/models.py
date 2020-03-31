@@ -4920,6 +4920,7 @@ class DescribeTaskDetailResponse(AbstractModel):
         """
         :param TaskType: 任务类型，目前取值有：
 <li>WorkflowTask：视频工作流处理任务。</li>
+<li>EditMediaTask：视频编辑任务。</li>
 <li>LiveStreamProcessTask：直播流处理任务。</li>
         :type TaskType: str
         :param Status: 任务状态，取值：
@@ -4936,6 +4937,9 @@ class DescribeTaskDetailResponse(AbstractModel):
         :param WorkflowTask: 视频处理任务信息，仅当 TaskType 为 WorkflowTask，该字段有值。
 注意：此字段可能返回 null，表示取不到有效值。
         :type WorkflowTask: :class:`tencentcloud.mps.v20190612.models.WorkflowTask`
+        :param EditMediaTask: 视频编辑任务信息，仅当 TaskType 为 EditMediaTask，该字段有值。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EditMediaTask: :class:`tencentcloud.mps.v20190612.models.EditMediaTask`
         :param LiveStreamProcessTask: 直播流处理任务信息，仅当 TaskType 为 LiveStreamProcessTask，该字段有值。
 注意：此字段可能返回 null，表示取不到有效值。
         :type LiveStreamProcessTask: :class:`tencentcloud.mps.v20190612.models.LiveStreamProcessTask`
@@ -4957,6 +4961,7 @@ class DescribeTaskDetailResponse(AbstractModel):
         self.BeginProcessTime = None
         self.FinishTime = None
         self.WorkflowTask = None
+        self.EditMediaTask = None
         self.LiveStreamProcessTask = None
         self.TaskNotifyConfig = None
         self.TasksPriority = None
@@ -4974,6 +4979,9 @@ class DescribeTaskDetailResponse(AbstractModel):
         if params.get("WorkflowTask") is not None:
             self.WorkflowTask = WorkflowTask()
             self.WorkflowTask._deserialize(params.get("WorkflowTask"))
+        if params.get("EditMediaTask") is not None:
+            self.EditMediaTask = EditMediaTask()
+            self.EditMediaTask._deserialize(params.get("EditMediaTask"))
         if params.get("LiveStreamProcessTask") is not None:
             self.LiveStreamProcessTask = LiveStreamProcessTask()
             self.LiveStreamProcessTask._deserialize(params.get("LiveStreamProcessTask"))
@@ -5344,6 +5352,195 @@ class DisableWorkflowResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
+
+
+class EditMediaFileInfo(AbstractModel):
+    """编辑点播视频文件信息
+
+    """
+
+    def __init__(self):
+        """
+        :param InputInfo: 视频的输入信息。
+        :type InputInfo: :class:`tencentcloud.mps.v20190612.models.MediaInputInfo`
+        :param StartTimeOffset: 视频剪辑的起始时间偏移，单位：秒。
+        :type StartTimeOffset: float
+        :param EndTimeOffset: 视频剪辑的结束时间偏移，单位：秒。
+        :type EndTimeOffset: float
+        """
+        self.InputInfo = None
+        self.StartTimeOffset = None
+        self.EndTimeOffset = None
+
+
+    def _deserialize(self, params):
+        if params.get("InputInfo") is not None:
+            self.InputInfo = MediaInputInfo()
+            self.InputInfo._deserialize(params.get("InputInfo"))
+        self.StartTimeOffset = params.get("StartTimeOffset")
+        self.EndTimeOffset = params.get("EndTimeOffset")
+
+
+class EditMediaRequest(AbstractModel):
+    """EditMedia请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param FileInfos: 输入的视频文件信息。
+        :type FileInfos: list of EditMediaFileInfo
+        :param OutputStorage: 视频处理输出文件的目标存储。
+        :type OutputStorage: :class:`tencentcloud.mps.v20190612.models.TaskOutputStorage`
+        :param OutputObjectPath: 视频处理输出文件的目标路径。
+        :type OutputObjectPath: str
+        :param TaskNotifyConfig: 任务的事件通知信息，不填代表不获取事件通知。
+        :type TaskNotifyConfig: :class:`tencentcloud.mps.v20190612.models.TaskNotifyConfig`
+        :param TasksPriority: 任务优先级，数值越大优先级越高，取值范围是-10到 10，不填代表0。
+        :type TasksPriority: int
+        :param SessionId: 用于去重的识别码，如果七天内曾有过相同的识别码的请求，则本次的请求会返回错误。最长 50 个字符，不带或者带空字符串表示不做去重。
+        :type SessionId: str
+        :param SessionContext: 来源上下文，用于透传用户请求信息，任务流状态变更回调将返回该字段值，最长 1000 个字符。
+        :type SessionContext: str
+        """
+        self.FileInfos = None
+        self.OutputStorage = None
+        self.OutputObjectPath = None
+        self.TaskNotifyConfig = None
+        self.TasksPriority = None
+        self.SessionId = None
+        self.SessionContext = None
+
+
+    def _deserialize(self, params):
+        if params.get("FileInfos") is not None:
+            self.FileInfos = []
+            for item in params.get("FileInfos"):
+                obj = EditMediaFileInfo()
+                obj._deserialize(item)
+                self.FileInfos.append(obj)
+        if params.get("OutputStorage") is not None:
+            self.OutputStorage = TaskOutputStorage()
+            self.OutputStorage._deserialize(params.get("OutputStorage"))
+        self.OutputObjectPath = params.get("OutputObjectPath")
+        if params.get("TaskNotifyConfig") is not None:
+            self.TaskNotifyConfig = TaskNotifyConfig()
+            self.TaskNotifyConfig._deserialize(params.get("TaskNotifyConfig"))
+        self.TasksPriority = params.get("TasksPriority")
+        self.SessionId = params.get("SessionId")
+        self.SessionContext = params.get("SessionContext")
+
+
+class EditMediaResponse(AbstractModel):
+    """EditMedia返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param TaskId: 编辑视频的任务 ID，可以通过该 ID 查询编辑任务的状态。
+        :type TaskId: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TaskId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TaskId = params.get("TaskId")
+        self.RequestId = params.get("RequestId")
+
+
+class EditMediaTask(AbstractModel):
+    """编辑视频任务信息
+
+    """
+
+    def __init__(self):
+        """
+        :param TaskId: 任务 ID。
+        :type TaskId: str
+        :param Status: 任务状态，取值：
+<li>PROCESSING：处理中；</li>
+<li>FINISH：已完成。</li>
+        :type Status: str
+        :param ErrCode: 错误码
+<li>0：成功；</li>
+<li>其他值：失败。</li>
+        :type ErrCode: int
+        :param Message: 错误信息。
+        :type Message: str
+        :param Input: 视频编辑任务的输入。
+        :type Input: :class:`tencentcloud.mps.v20190612.models.EditMediaTaskInput`
+        :param Output: 视频编辑任务的输出。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Output: :class:`tencentcloud.mps.v20190612.models.EditMediaTaskOutput`
+        """
+        self.TaskId = None
+        self.Status = None
+        self.ErrCode = None
+        self.Message = None
+        self.Input = None
+        self.Output = None
+
+
+    def _deserialize(self, params):
+        self.TaskId = params.get("TaskId")
+        self.Status = params.get("Status")
+        self.ErrCode = params.get("ErrCode")
+        self.Message = params.get("Message")
+        if params.get("Input") is not None:
+            self.Input = EditMediaTaskInput()
+            self.Input._deserialize(params.get("Input"))
+        if params.get("Output") is not None:
+            self.Output = EditMediaTaskOutput()
+            self.Output._deserialize(params.get("Output"))
+
+
+class EditMediaTaskInput(AbstractModel):
+    """编辑视频任务的输入。
+
+    """
+
+    def __init__(self):
+        """
+        :param FileInfoSet: 输入的视频文件信息。
+        :type FileInfoSet: list of EditMediaFileInfo
+        """
+        self.FileInfoSet = None
+
+
+    def _deserialize(self, params):
+        if params.get("FileInfoSet") is not None:
+            self.FileInfoSet = []
+            for item in params.get("FileInfoSet"):
+                obj = EditMediaFileInfo()
+                obj._deserialize(item)
+                self.FileInfoSet.append(obj)
+
+
+class EditMediaTaskOutput(AbstractModel):
+    """编辑视频任务的输出
+
+    """
+
+    def __init__(self):
+        """
+        :param OutputStorage: 编辑后文件的目标存储。
+        :type OutputStorage: :class:`tencentcloud.mps.v20190612.models.TaskOutputStorage`
+        :param Path: 编辑后的视频文件路径。
+        :type Path: str
+        """
+        self.OutputStorage = None
+        self.Path = None
+
+
+    def _deserialize(self, params):
+        if params.get("OutputStorage") is not None:
+            self.OutputStorage = TaskOutputStorage()
+            self.OutputStorage._deserialize(params.get("OutputStorage"))
+        self.Path = params.get("Path")
 
 
 class EnableWorkflowRequest(AbstractModel):
@@ -8475,10 +8672,14 @@ class ParseNotificationResponse(AbstractModel):
         """
         :param EventType: 支持事件类型，目前取值有：
 <li>WorkflowTask：视频工作流处理任务。</li>
+<li>EditMediaTask：视频编辑任务。</li>
         :type EventType: str
         :param WorkflowTaskEvent: 视频处理任务信息，仅当 TaskType 为 WorkflowTask，该字段有值。
 注意：此字段可能返回 null，表示取不到有效值。
         :type WorkflowTaskEvent: :class:`tencentcloud.mps.v20190612.models.WorkflowTask`
+        :param EditMediaTaskEvent: 视频编辑任务信息，仅当 TaskType 为 EditMediaTask，该字段有值。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EditMediaTaskEvent: :class:`tencentcloud.mps.v20190612.models.EditMediaTask`
         :param SessionId: 用于去重的识别码，如果七天内曾有过相同的识别码的请求，则本次的请求会返回错误。最长50个字符，不带或者带空字符串表示不做去重。
         :type SessionId: str
         :param SessionContext: 来源上下文，用于透传用户请求信息，任务流状态变更回调将返回该字段值，最长1000个字符。
@@ -8488,6 +8689,7 @@ class ParseNotificationResponse(AbstractModel):
         """
         self.EventType = None
         self.WorkflowTaskEvent = None
+        self.EditMediaTaskEvent = None
         self.SessionId = None
         self.SessionContext = None
         self.RequestId = None
@@ -8498,6 +8700,9 @@ class ParseNotificationResponse(AbstractModel):
         if params.get("WorkflowTaskEvent") is not None:
             self.WorkflowTaskEvent = WorkflowTask()
             self.WorkflowTaskEvent._deserialize(params.get("WorkflowTaskEvent"))
+        if params.get("EditMediaTaskEvent") is not None:
+            self.EditMediaTaskEvent = EditMediaTask()
+            self.EditMediaTaskEvent._deserialize(params.get("EditMediaTaskEvent"))
         self.SessionId = params.get("SessionId")
         self.SessionContext = params.get("SessionContext")
         self.RequestId = params.get("RequestId")
@@ -10004,6 +10209,7 @@ class TaskSimpleInfo(AbstractModel):
         :type TaskId: str
         :param TaskType: 任务类型，包含：
 <li> WorkflowTask：工作流处理任务；</li>
+<li> EditMediaTask：视频编辑任务；</li>
 <li> LiveProcessTask：直播处理任务。</li>
         :type TaskType: str
         :param CreateTime: 任务创建时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/862/37710#52)。

@@ -527,9 +527,9 @@ class AssignIpv6AddressesRequest(AbstractModel):
         """
         :param NetworkInterfaceId: 弹性网卡实例`ID`，形如：`eni-m6dyj72l`。
         :type NetworkInterfaceId: str
-        :param Ipv6Addresses: 指定的`IPv6`地址列表，单次最多指定10个。与入参`Ipv6AddressCount`合并计算配额。
+        :param Ipv6Addresses: 指定的`IPv6`地址列表，单次最多指定10个。与入参`Ipv6AddressCount`合并计算配额。与Ipv6AddressCount必填一个。
         :type Ipv6Addresses: list of Ipv6Address
-        :param Ipv6AddressCount: 自动分配`IPv6`地址个数，内网IP地址个数总和不能超过配数。与入参`Ipv6Addresses`合并计算配额。
+        :param Ipv6AddressCount: 自动分配`IPv6`地址个数，内网IP地址个数总和不能超过配数。与入参`Ipv6Addresses`合并计算配额。与Ipv6Addresses必填一个。
         :type Ipv6AddressCount: int
         """
         self.NetworkInterfaceId = None
@@ -673,9 +673,9 @@ class AssignPrivateIpAddressesRequest(AbstractModel):
         """
         :param NetworkInterfaceId: 弹性网卡实例ID，例如：eni-m6dyj72l。
         :type NetworkInterfaceId: str
-        :param PrivateIpAddresses: 指定的内网IP信息，单次最多指定10个。
+        :param PrivateIpAddresses: 指定的内网IP信息，单次最多指定10个。与SecondaryPrivateIpAddressCount至少提供一个。
         :type PrivateIpAddresses: list of PrivateIpAddressSpecification
-        :param SecondaryPrivateIpAddressCount: 新申请的内网IP地址个数，内网IP地址个数总和不能超过配额数，详见<a href="/document/product/576/18527">弹性网卡使用限制</a>。
+        :param SecondaryPrivateIpAddressCount: 新申请的内网IP地址个数，与PrivateIpAddresses至少提供一个。内网IP地址个数总和不能超过配额数，详见<a href="/document/product/576/18527">弹性网卡使用限制</a>。
         :type SecondaryPrivateIpAddressCount: int
         """
         self.NetworkInterfaceId = None
@@ -6271,9 +6271,9 @@ class DescribeTaskResultRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param TaskId: 异步任务ID
+        :param TaskId: 异步任务ID。TaskId和DealName必填一个参数
         :type TaskId: int
-        :param DealName: 计费订单号
+        :param DealName: 计费订单号。TaskId和DealName必填一个参数
         :type DealName: str
         """
         self.TaskId = None

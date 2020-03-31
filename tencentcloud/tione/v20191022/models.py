@@ -202,8 +202,6 @@ class CreateTrainingJobRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param TrainingJobName: 训练任务名称
-        :type TrainingJobName: str
         :param AlgorithmSpecification: 算法镜像配置
         :type AlgorithmSpecification: :class:`tencentcloud.tione.v20191022.models.AlgorithmSpecification`
         :param InputDataConfig: 输入数据配置
@@ -212,31 +210,32 @@ class CreateTrainingJobRequest(AbstractModel):
         :type OutputDataConfig: :class:`tencentcloud.tione.v20191022.models.OutputDataConfig`
         :param ResourceConfig: 资源实例配置
         :type ResourceConfig: :class:`tencentcloud.tione.v20191022.models.ResourceConfig`
+        :param TrainingJobName: 训练任务名称
+        :type TrainingJobName: str
         :param StoppingCondition: 中止条件
         :type StoppingCondition: :class:`tencentcloud.tione.v20191022.models.StoppingCondition`
         :param VpcConfig: 私有网络配置
         :type VpcConfig: :class:`tencentcloud.tione.v20191022.models.VpcConfig`
         :param HyperParameters: 算法超级参数
         :type HyperParameters: str
-        :param RoleName: 角色名称
-        :type RoleName: str
         :param EnvConfig: 环境变量配置
         :type EnvConfig: list of EnvConfig
+        :param RoleName: 角色名称
+        :type RoleName: str
         """
-        self.TrainingJobName = None
         self.AlgorithmSpecification = None
         self.InputDataConfig = None
         self.OutputDataConfig = None
         self.ResourceConfig = None
+        self.TrainingJobName = None
         self.StoppingCondition = None
         self.VpcConfig = None
         self.HyperParameters = None
-        self.RoleName = None
         self.EnvConfig = None
+        self.RoleName = None
 
 
     def _deserialize(self, params):
-        self.TrainingJobName = params.get("TrainingJobName")
         if params.get("AlgorithmSpecification") is not None:
             self.AlgorithmSpecification = AlgorithmSpecification()
             self.AlgorithmSpecification._deserialize(params.get("AlgorithmSpecification"))
@@ -252,6 +251,7 @@ class CreateTrainingJobRequest(AbstractModel):
         if params.get("ResourceConfig") is not None:
             self.ResourceConfig = ResourceConfig()
             self.ResourceConfig._deserialize(params.get("ResourceConfig"))
+        self.TrainingJobName = params.get("TrainingJobName")
         if params.get("StoppingCondition") is not None:
             self.StoppingCondition = StoppingCondition()
             self.StoppingCondition._deserialize(params.get("StoppingCondition"))
@@ -259,13 +259,13 @@ class CreateTrainingJobRequest(AbstractModel):
             self.VpcConfig = VpcConfig()
             self.VpcConfig._deserialize(params.get("VpcConfig"))
         self.HyperParameters = params.get("HyperParameters")
-        self.RoleName = params.get("RoleName")
         if params.get("EnvConfig") is not None:
             self.EnvConfig = []
             for item in params.get("EnvConfig"):
                 obj = EnvConfig()
                 obj._deserialize(item)
                 self.EnvConfig.append(obj)
+        self.RoleName = params.get("RoleName")
 
 
 class CreateTrainingJobResponse(AbstractModel):
@@ -276,7 +276,6 @@ class CreateTrainingJobResponse(AbstractModel):
     def __init__(self):
         """
         :param TrainingJobName: 训练任务名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type TrainingJobName: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str

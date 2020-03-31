@@ -11206,6 +11206,76 @@ class ModifyContentReviewTemplateResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class ModifyEventNotificationConfigForConsoleRequest(AbstractModel):
+    """ModifyEventNotificationConfigForConsole请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Mode: 接收事件通知的方式。默认 "PUSH" 为[ HTTP 回调通知](https://cloud.tencent.com/document/product/266/7829#http.E5.9B.9E.E8.B0.83)，"PULL" 为[基于消息队列的可靠通知](https://cloud.tencent.com/document/product/266/7829#.E5.9F.BA.E4.BA.8E.E6.B6.88.E6.81.AF.E9.98.9F.E5.88.97.E7.9A.84.E5.8F.AF.E9.9D.A0.E9.80.9A.E7.9F.A5)。
+        :type Mode: str
+        :param NotificationUrlV3: 采用[ HTTP 回调通知](https://cloud.tencent.com/document/product/266/7829#http.E5.9B.9E.E8.B0.83)接收方式时，用于接收 V3 版本事件通知的地址。
+        :type NotificationUrlV3: str
+        :param NotificationUrlV2: 采用[ HTTP 回调通知](https://cloud.tencent.com/document/product/266/7829#http.E5.9B.9E.E8.B0.83)接收方式时，用于接收 V2 版本事件通知的地址。
+        :type NotificationUrlV2: str
+        :param UploadMediaCompleteEventSwitch: 是否接收[视频上传完成](https://cloud.tencent.com/document/product/266/7830)事件通知， 默认 "OFF" 为忽略该事件通知，"ON" 为接收事件通知。
+        :type UploadMediaCompleteEventSwitch: str
+        :param TranscodeCompleteEventSwitch: 是否接收[视频转码完成](https://cloud.tencent.com/document/product/266/7832)事件通知， 默认 "OFF" 为忽略该事件通知，"ON" 为接收事件通知。
+        :type TranscodeCompleteEventSwitch: str
+        :param CreateSnapshotByTimeOffsetCompleteEventSwitch: 是否接收[指定时间点截图完成](https://cloud.tencent.com/document/product/266/8105)事件通知，  默认 "OFF" 为忽略该事件通知，"ON" 为接收事件通知。
+        :type CreateSnapshotByTimeOffsetCompleteEventSwitch: str
+        :param CreateImageSpriteCompleteEventSwitch: 是否接收[视频截取雪碧图完成](https://cloud.tencent.com/document/product/266/8104)事件通知，  默认 "OFF" 为忽略该事件通知，"ON" 为接收事件通知。
+        :type CreateImageSpriteCompleteEventSwitch: str
+        :param ConcatMediaCompleteEventSwitch: 是否接收[视频拼接完成](https://cloud.tencent.com/document/product/266/7834)事件通知，  默认 "OFF" 为忽略该事件通知，"ON" 为接收事件通知。
+        :type ConcatMediaCompleteEventSwitch: str
+        :param DeleteMediaCompleteEventSwitch: 是否接收[视频删除完成](https://cloud.tencent.com/document/product/266/13434)事件通知，  默认 "OFF" 为忽略该事件通知，"ON" 为接收事件通知。
+        :type DeleteMediaCompleteEventSwitch: str
+        :param SubAppId: 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
+        :type SubAppId: int
+        """
+        self.Mode = None
+        self.NotificationUrlV3 = None
+        self.NotificationUrlV2 = None
+        self.UploadMediaCompleteEventSwitch = None
+        self.TranscodeCompleteEventSwitch = None
+        self.CreateSnapshotByTimeOffsetCompleteEventSwitch = None
+        self.CreateImageSpriteCompleteEventSwitch = None
+        self.ConcatMediaCompleteEventSwitch = None
+        self.DeleteMediaCompleteEventSwitch = None
+        self.SubAppId = None
+
+
+    def _deserialize(self, params):
+        self.Mode = params.get("Mode")
+        self.NotificationUrlV3 = params.get("NotificationUrlV3")
+        self.NotificationUrlV2 = params.get("NotificationUrlV2")
+        self.UploadMediaCompleteEventSwitch = params.get("UploadMediaCompleteEventSwitch")
+        self.TranscodeCompleteEventSwitch = params.get("TranscodeCompleteEventSwitch")
+        self.CreateSnapshotByTimeOffsetCompleteEventSwitch = params.get("CreateSnapshotByTimeOffsetCompleteEventSwitch")
+        self.CreateImageSpriteCompleteEventSwitch = params.get("CreateImageSpriteCompleteEventSwitch")
+        self.ConcatMediaCompleteEventSwitch = params.get("ConcatMediaCompleteEventSwitch")
+        self.DeleteMediaCompleteEventSwitch = params.get("DeleteMediaCompleteEventSwitch")
+        self.SubAppId = params.get("SubAppId")
+
+
+class ModifyEventNotificationConfigForConsoleResponse(AbstractModel):
+    """ModifyEventNotificationConfigForConsole返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class ModifyImageSpriteTemplateRequest(AbstractModel):
     """ModifyImageSpriteTemplate请求参数结构体
 

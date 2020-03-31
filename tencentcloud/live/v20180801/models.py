@@ -1905,8 +1905,9 @@ class DescribeBillBandwidthAndFluxListRequest(AbstractModel):
         :type PlayDomains: list of str
         :param MainlandOrOversea: 可选值：
 Mainland：查询国内数据，
-Oversea：则查询国外数据。
+Oversea：则查询国外数据，
 默认：查询国内+国外的数据。
+注：LEB（快直播）只支持国内+国外数据查询。
         :type MainlandOrOversea: str
         :param Granularity: 数据粒度，支持如下粒度：
 5：5分钟粒度，（跨度不支持超过1天），
@@ -1914,12 +1915,15 @@ Oversea：则查询国外数据。
 1440：天粒度（跨度不支持超过一个月）。
 默认值：5。
         :type Granularity: int
+        :param ServiceName: 服务名称，可选值包括LVB(标准直播)，LEB(快直播)，默认值是LVB。
+        :type ServiceName: str
         """
         self.StartTime = None
         self.EndTime = None
         self.PlayDomains = None
         self.MainlandOrOversea = None
         self.Granularity = None
+        self.ServiceName = None
 
 
     def _deserialize(self, params):
@@ -1928,6 +1932,7 @@ Oversea：则查询国外数据。
         self.PlayDomains = params.get("PlayDomains")
         self.MainlandOrOversea = params.get("MainlandOrOversea")
         self.Granularity = params.get("Granularity")
+        self.ServiceName = params.get("ServiceName")
 
 
 class DescribeBillBandwidthAndFluxListResponse(AbstractModel):
@@ -4241,12 +4246,12 @@ class DescribeStreamDayPlayInfoListRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param DayTime: 日期，
-格式：YYYY-mm-dd。
+        :param DayTime: 日期，格式：YYYY-mm-dd。
+第二天凌晨3点出昨天的数据，建议在这个时间点之后查询最新数据。
         :type DayTime: str
         :param PlayDomain: 播放域名。
         :type PlayDomain: str
-        :param PageNum: 页号，范围[1,10]，默认值是1。
+        :param PageNum: 页号，范围[1,1000]，默认值是1。
         :type PageNum: int
         :param PageSize: 每页个数，范围[100,1000]，默认值是1000。
         :type PageSize: int

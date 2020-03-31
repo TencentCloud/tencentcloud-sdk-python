@@ -5316,6 +5316,9 @@ UNKNOWN，未知状态。
         :param SupportSecurity: 是否支持安全组配置
 注意：此字段可能返回 null，表示取不到有效值。
         :type SupportSecurity: int
+        :param BillingType: 计费类型:(0:按带宽计费  1:按流量计费）
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BillingType: int
         """
         self.InstanceId = None
         self.CreateTime = None
@@ -5339,6 +5342,7 @@ UNKNOWN，未知状态。
         self.ForwardIP = None
         self.TagSet = None
         self.SupportSecurity = None
+        self.BillingType = None
 
 
     def _deserialize(self, params):
@@ -5373,6 +5377,7 @@ UNKNOWN，未知状态。
                 obj._deserialize(item)
                 self.TagSet.append(obj)
         self.SupportSecurity = params.get("SupportSecurity")
+        self.BillingType = params.get("BillingType")
 
 
 class ProxySimpleInfo(AbstractModel):

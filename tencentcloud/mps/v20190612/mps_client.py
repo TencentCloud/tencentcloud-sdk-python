@@ -1160,6 +1160,38 @@ class MpsClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def EditMedia(self, request):
+        """对视频进行编辑（剪辑、拼接等），生成一个新的点播视频。编辑的功能包括：
+
+        1. 对一个文件进行剪辑，生成一个新的视频；
+        2. 对多个文件进行拼接，生成一个新的视频；
+        3. 对多个文件进行剪辑，然后再拼接，生成一个新的视频。
+
+        :param request: Request instance for EditMedia.
+        :type request: :class:`tencentcloud.mps.v20190612.models.EditMediaRequest`
+        :rtype: :class:`tencentcloud.mps.v20190612.models.EditMediaResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("EditMedia", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.EditMediaResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def EnableWorkflow(self, request):
         """启用工作流。
 

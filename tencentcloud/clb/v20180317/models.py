@@ -3511,8 +3511,12 @@ class ModifyRuleRequest(AbstractModel):
         :type Scheduler: str
         :param SessionExpireTime: 会话保持时间
         :type SessionExpireTime: int
-        :param ForwardType: 负载均衡实例与后端服务之间的转发协议，默认HTTP，可取值：HTTP、HTTPS
+        :param ForwardType: 负载均衡实例与后端服务之间的转发协议，默认HTTP，可取值：HTTP、HTTPS、TRPC
         :type ForwardType: str
+        :param TrpcCallee: TRPC被调服务器路由，ForwardType为TRPC时必填
+        :type TrpcCallee: str
+        :param TrpcFunc: TRPC调用服务接口，ForwardType为TRPC时必填
+        :type TrpcFunc: str
         """
         self.LoadBalancerId = None
         self.ListenerId = None
@@ -3522,6 +3526,8 @@ class ModifyRuleRequest(AbstractModel):
         self.Scheduler = None
         self.SessionExpireTime = None
         self.ForwardType = None
+        self.TrpcCallee = None
+        self.TrpcFunc = None
 
 
     def _deserialize(self, params):
@@ -3535,6 +3541,8 @@ class ModifyRuleRequest(AbstractModel):
         self.Scheduler = params.get("Scheduler")
         self.SessionExpireTime = params.get("SessionExpireTime")
         self.ForwardType = params.get("ForwardType")
+        self.TrpcCallee = params.get("TrpcCallee")
+        self.TrpcFunc = params.get("TrpcFunc")
 
 
 class ModifyRuleResponse(AbstractModel):

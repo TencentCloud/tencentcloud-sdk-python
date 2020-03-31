@@ -1664,16 +1664,20 @@ class ListGroupsForUserRequest(AbstractModel):
         :type Rp: int
         :param Page: 页码。默认为1。
         :type Page: int
+        :param SubUin: 子账号UIN
+        :type SubUin: int
         """
         self.Uid = None
         self.Rp = None
         self.Page = None
+        self.SubUin = None
 
 
     def _deserialize(self, params):
         self.Uid = params.get("Uid")
         self.Rp = params.get("Rp")
         self.Page = params.get("Page")
+        self.SubUin = params.get("SubUin")
 
 
 class ListGroupsForUserResponse(AbstractModel):
