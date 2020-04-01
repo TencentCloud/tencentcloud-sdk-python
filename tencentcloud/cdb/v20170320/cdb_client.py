@@ -1225,6 +1225,34 @@ class CdbClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeErrorLogData(self, request):
+        """根据检索条件查询实例错误日志详情。只能查询一个月之内的错误日志。
+
+        :param request: Request instance for DescribeErrorLogData.
+        :type request: :class:`tencentcloud.cdb.v20170320.models.DescribeErrorLogDataRequest`
+        :rtype: :class:`tencentcloud.cdb.v20170320.models.DescribeErrorLogDataResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeErrorLogData", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeErrorLogDataResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeInstanceParamRecords(self, request):
         """该接口（DescribeInstanceParamRecords）用于查询实例参数修改历史。
 

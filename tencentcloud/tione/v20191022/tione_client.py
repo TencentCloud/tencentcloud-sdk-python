@@ -25,6 +25,34 @@ class TioneClient(AbstractClient):
     _endpoint = 'tione.tencentcloudapi.com'
 
 
+    def CreateCodeRepository(self, request):
+        """创建存储库
+
+        :param request: Request instance for CreateCodeRepository.
+        :type request: :class:`tencentcloud.tione.v20191022.models.CreateCodeRepositoryRequest`
+        :rtype: :class:`tencentcloud.tione.v20191022.models.CreateCodeRepositoryResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("CreateCodeRepository", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateCodeRepositoryResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def CreateNotebookInstance(self, request):
         """创建Notebook实例
 
@@ -39,6 +67,34 @@ class TioneClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateNotebookInstanceResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def CreateNotebookLifecycleScript(self, request):
+        """创建Notebook生命周期脚本
+
+        :param request: Request instance for CreateNotebookLifecycleScript.
+        :type request: :class:`tencentcloud.tione.v20191022.models.CreateNotebookLifecycleScriptRequest`
+        :rtype: :class:`tencentcloud.tione.v20191022.models.CreateNotebookLifecycleScriptResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("CreateNotebookLifecycleScript", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateNotebookLifecycleScriptResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -109,6 +165,34 @@ class TioneClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DeleteCodeRepository(self, request):
+        """删除存储库
+
+        :param request: Request instance for DeleteCodeRepository.
+        :type request: :class:`tencentcloud.tione.v20191022.models.DeleteCodeRepositoryRequest`
+        :rtype: :class:`tencentcloud.tione.v20191022.models.DeleteCodeRepositoryResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DeleteCodeRepository", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DeleteCodeRepositoryResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DeleteNotebookInstance(self, request):
         """删除notebook实例
 
@@ -123,6 +207,90 @@ class TioneClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteNotebookInstanceResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DeleteNotebookLifecycleScript(self, request):
+        """删除Notebook生命周期脚本
+
+        :param request: Request instance for DeleteNotebookLifecycleScript.
+        :type request: :class:`tencentcloud.tione.v20191022.models.DeleteNotebookLifecycleScriptRequest`
+        :rtype: :class:`tencentcloud.tione.v20191022.models.DeleteNotebookLifecycleScriptResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DeleteNotebookLifecycleScript", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DeleteNotebookLifecycleScriptResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeCodeRepositories(self, request):
+        """查询存储库列表
+
+        :param request: Request instance for DescribeCodeRepositories.
+        :type request: :class:`tencentcloud.tione.v20191022.models.DescribeCodeRepositoriesRequest`
+        :rtype: :class:`tencentcloud.tione.v20191022.models.DescribeCodeRepositoriesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeCodeRepositories", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeCodeRepositoriesResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeCodeRepository(self, request):
+        """查询存储库详情
+
+        :param request: Request instance for DescribeCodeRepository.
+        :type request: :class:`tencentcloud.tione.v20191022.models.DescribeCodeRepositoryRequest`
+        :rtype: :class:`tencentcloud.tione.v20191022.models.DescribeCodeRepositoryResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeCodeRepository", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeCodeRepositoryResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -179,6 +347,62 @@ class TioneClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeNotebookInstancesResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeNotebookLifecycleScript(self, request):
+        """查看notebook生命周期脚本详情
+
+        :param request: Request instance for DescribeNotebookLifecycleScript.
+        :type request: :class:`tencentcloud.tione.v20191022.models.DescribeNotebookLifecycleScriptRequest`
+        :rtype: :class:`tencentcloud.tione.v20191022.models.DescribeNotebookLifecycleScriptResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeNotebookLifecycleScript", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeNotebookLifecycleScriptResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeNotebookLifecycleScripts(self, request):
+        """查看notebook生命周期脚本列表
+
+        :param request: Request instance for DescribeNotebookLifecycleScripts.
+        :type request: :class:`tencentcloud.tione.v20191022.models.DescribeNotebookLifecycleScriptsRequest`
+        :rtype: :class:`tencentcloud.tione.v20191022.models.DescribeNotebookLifecycleScriptsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeNotebookLifecycleScripts", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeNotebookLifecycleScriptsResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -305,6 +529,34 @@ class TioneClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def UpdateCodeRepository(self, request):
+        """更新存储库
+
+        :param request: Request instance for UpdateCodeRepository.
+        :type request: :class:`tencentcloud.tione.v20191022.models.UpdateCodeRepositoryRequest`
+        :rtype: :class:`tencentcloud.tione.v20191022.models.UpdateCodeRepositoryResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("UpdateCodeRepository", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.UpdateCodeRepositoryResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def UpdateNotebookInstance(self, request):
         """更新Notebook实例
 
@@ -319,6 +571,34 @@ class TioneClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.UpdateNotebookInstanceResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def UpdateNotebookLifecycleScript(self, request):
+        """更新notebook生命周期脚本
+
+        :param request: Request instance for UpdateNotebookLifecycleScript.
+        :type request: :class:`tencentcloud.tione.v20191022.models.UpdateNotebookLifecycleScriptRequest`
+        :rtype: :class:`tencentcloud.tione.v20191022.models.UpdateNotebookLifecycleScriptResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("UpdateNotebookLifecycleScript", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.UpdateNotebookLifecycleScriptResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

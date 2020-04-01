@@ -2763,6 +2763,48 @@ class ReceiverInfo(AbstractModel):
         self.ReceiveLanguage = params.get("ReceiveLanguage")
 
 
+class SendCustomAlarmMsgRequest(AbstractModel):
+    """SendCustomAlarmMsg请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Module: 接口模块名，当前取值monitor
+        :type Module: str
+        :param PolicyId: 消息策略ID，在云监控自定义消息页面配置
+        :type PolicyId: str
+        :param Msg: 用户想要发送的自定义消息内容
+        :type Msg: str
+        """
+        self.Module = None
+        self.PolicyId = None
+        self.Msg = None
+
+
+    def _deserialize(self, params):
+        self.Module = params.get("Module")
+        self.PolicyId = params.get("PolicyId")
+        self.Msg = params.get("Msg")
+
+
+class SendCustomAlarmMsgResponse(AbstractModel):
+    """SendCustomAlarmMsg返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class UnBindingAllPolicyObjectRequest(AbstractModel):
     """UnBindingAllPolicyObject请求参数结构体
 

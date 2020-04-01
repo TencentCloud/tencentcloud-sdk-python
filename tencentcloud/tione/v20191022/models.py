@@ -44,6 +44,41 @@ class AlgorithmSpecification(AbstractModel):
         self.AlgorithmName = params.get("AlgorithmName")
 
 
+class CodeRepoSummary(AbstractModel):
+    """存储库列表
+
+    """
+
+    def __init__(self):
+        """
+        :param CreationTime: 创建时间
+        :type CreationTime: str
+        :param LastModifiedTime: 更新时间
+        :type LastModifiedTime: str
+        :param CodeRepositoryName: 存储库名称
+        :type CodeRepositoryName: str
+        :param GitConfig: Git配置
+        :type GitConfig: :class:`tencentcloud.tione.v20191022.models.GitConfig`
+        :param NoSecret: 是否有Git凭证
+        :type NoSecret: bool
+        """
+        self.CreationTime = None
+        self.LastModifiedTime = None
+        self.CodeRepositoryName = None
+        self.GitConfig = None
+        self.NoSecret = None
+
+
+    def _deserialize(self, params):
+        self.CreationTime = params.get("CreationTime")
+        self.LastModifiedTime = params.get("LastModifiedTime")
+        self.CodeRepositoryName = params.get("CodeRepositoryName")
+        if params.get("GitConfig") is not None:
+            self.GitConfig = GitConfig()
+            self.GitConfig._deserialize(params.get("GitConfig"))
+        self.NoSecret = params.get("NoSecret")
+
+
 class CosDataSource(AbstractModel):
     """cos路径
 
@@ -75,6 +110,56 @@ class CosDataSource(AbstractModel):
         self.KeyPrefix = params.get("KeyPrefix")
         self.DataDistributionType = params.get("DataDistributionType")
         self.DataType = params.get("DataType")
+
+
+class CreateCodeRepositoryRequest(AbstractModel):
+    """CreateCodeRepository请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param CodeRepositoryName: 存储库名称
+        :type CodeRepositoryName: str
+        :param GitConfig: Git相关配置
+        :type GitConfig: :class:`tencentcloud.tione.v20191022.models.GitConfig`
+        :param GitSecret: Git凭证
+        :type GitSecret: :class:`tencentcloud.tione.v20191022.models.GitSecret`
+        """
+        self.CodeRepositoryName = None
+        self.GitConfig = None
+        self.GitSecret = None
+
+
+    def _deserialize(self, params):
+        self.CodeRepositoryName = params.get("CodeRepositoryName")
+        if params.get("GitConfig") is not None:
+            self.GitConfig = GitConfig()
+            self.GitConfig._deserialize(params.get("GitConfig"))
+        if params.get("GitSecret") is not None:
+            self.GitSecret = GitSecret()
+            self.GitSecret._deserialize(params.get("GitSecret"))
+
+
+class CreateCodeRepositoryResponse(AbstractModel):
+    """CreateCodeRepository返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param CodeRepositoryName: 存储库名称
+        :type CodeRepositoryName: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.CodeRepositoryName = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.CodeRepositoryName = params.get("CodeRepositoryName")
+        self.RequestId = params.get("RequestId")
 
 
 class CreateNotebookInstanceRequest(AbstractModel):
@@ -150,6 +235,52 @@ class CreateNotebookInstanceResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.NotebookInstanceName = params.get("NotebookInstanceName")
+        self.RequestId = params.get("RequestId")
+
+
+class CreateNotebookLifecycleScriptRequest(AbstractModel):
+    """CreateNotebookLifecycleScript请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param NotebookLifecycleScriptsName: Notebook生命周期脚本名称
+        :type NotebookLifecycleScriptsName: str
+        :param CreateScript: 创建脚本，base64编码格式
+        :type CreateScript: str
+        :param StartScript: 启动脚本，base64编码格式
+        :type StartScript: str
+        """
+        self.NotebookLifecycleScriptsName = None
+        self.CreateScript = None
+        self.StartScript = None
+
+
+    def _deserialize(self, params):
+        self.NotebookLifecycleScriptsName = params.get("NotebookLifecycleScriptsName")
+        self.CreateScript = params.get("CreateScript")
+        self.StartScript = params.get("StartScript")
+
+
+class CreateNotebookLifecycleScriptResponse(AbstractModel):
+    """CreateNotebookLifecycleScript返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param NotebookLifecycleScriptsName: 生命周期脚本名称
+        :type NotebookLifecycleScriptsName: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.NotebookLifecycleScriptsName = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.NotebookLifecycleScriptsName = params.get("NotebookLifecycleScriptsName")
         self.RequestId = params.get("RequestId")
 
 
@@ -316,6 +447,44 @@ class DataSource(AbstractModel):
             self.FileSystemDataSource._deserialize(params.get("FileSystemDataSource"))
 
 
+class DeleteCodeRepositoryRequest(AbstractModel):
+    """DeleteCodeRepository请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param CodeRepositoryName: 存储库名称
+        :type CodeRepositoryName: str
+        """
+        self.CodeRepositoryName = None
+
+
+    def _deserialize(self, params):
+        self.CodeRepositoryName = params.get("CodeRepositoryName")
+
+
+class DeleteCodeRepositoryResponse(AbstractModel):
+    """DeleteCodeRepository返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param CodeRepositoryName: 存储库名称
+        :type CodeRepositoryName: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.CodeRepositoryName = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.CodeRepositoryName = params.get("CodeRepositoryName")
+        self.RequestId = params.get("RequestId")
+
+
 class DeleteNotebookInstanceRequest(AbstractModel):
     """DeleteNotebookInstance请求参数结构体
 
@@ -347,6 +516,169 @@ class DeleteNotebookInstanceResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class DeleteNotebookLifecycleScriptRequest(AbstractModel):
+    """DeleteNotebookLifecycleScript请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param NotebookLifecycleScriptsName: 生命周期脚本名称
+        :type NotebookLifecycleScriptsName: str
+        :param Forcible: 是否忽略已关联的 notebook 实例强行删除生命周期脚本，默认 false
+        :type Forcible: bool
+        """
+        self.NotebookLifecycleScriptsName = None
+        self.Forcible = None
+
+
+    def _deserialize(self, params):
+        self.NotebookLifecycleScriptsName = params.get("NotebookLifecycleScriptsName")
+        self.Forcible = params.get("Forcible")
+
+
+class DeleteNotebookLifecycleScriptResponse(AbstractModel):
+    """DeleteNotebookLifecycleScript返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeCodeRepositoriesRequest(AbstractModel):
+    """DescribeCodeRepositories请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Offset: 偏移量，默认为0
+        :type Offset: int
+        :param Limit: 返回数量，默认为20
+        :type Limit: int
+        :param Filters: 过滤条件。
+instance-name - String - 是否必填：否 -（过滤条件）按照名称过滤。
+search-by-name - String - 是否必填：否 -（过滤条件）按照名称检索，模糊匹配。
+        :type Filters: list of Filter
+        :param SortOrder: 排序规则。默认取Descending
+Descending 按更新时间降序
+Ascending 按更新时间升序
+        :type SortOrder: str
+        """
+        self.Offset = None
+        self.Limit = None
+        self.Filters = None
+        self.SortOrder = None
+
+
+    def _deserialize(self, params):
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+        if params.get("Filters") is not None:
+            self.Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self.Filters.append(obj)
+        self.SortOrder = params.get("SortOrder")
+
+
+class DescribeCodeRepositoriesResponse(AbstractModel):
+    """DescribeCodeRepositories返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param TotalCount: 存储库总数目
+        :type TotalCount: int
+        :param CodeRepoSet: 存储库列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CodeRepoSet: list of CodeRepoSummary
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.CodeRepoSet = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("CodeRepoSet") is not None:
+            self.CodeRepoSet = []
+            for item in params.get("CodeRepoSet"):
+                obj = CodeRepoSummary()
+                obj._deserialize(item)
+                self.CodeRepoSet.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeCodeRepositoryRequest(AbstractModel):
+    """DescribeCodeRepository请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param CodeRepositoryName: 存储库名称
+        :type CodeRepositoryName: str
+        """
+        self.CodeRepositoryName = None
+
+
+    def _deserialize(self, params):
+        self.CodeRepositoryName = params.get("CodeRepositoryName")
+
+
+class DescribeCodeRepositoryResponse(AbstractModel):
+    """DescribeCodeRepository返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param CreationTime: 创建时间
+        :type CreationTime: str
+        :param LastModifiedTime: 更新时间
+        :type LastModifiedTime: str
+        :param CodeRepositoryName: 存储库名称
+        :type CodeRepositoryName: str
+        :param GitConfig: Git存储配置
+        :type GitConfig: :class:`tencentcloud.tione.v20191022.models.GitConfig`
+        :param NoSecret: 是否有Git凭证
+        :type NoSecret: bool
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.CreationTime = None
+        self.LastModifiedTime = None
+        self.CodeRepositoryName = None
+        self.GitConfig = None
+        self.NoSecret = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.CreationTime = params.get("CreationTime")
+        self.LastModifiedTime = params.get("LastModifiedTime")
+        self.CodeRepositoryName = params.get("CodeRepositoryName")
+        if params.get("GitConfig") is not None:
+            self.GitConfig = GitConfig()
+            self.GitConfig._deserialize(params.get("GitConfig"))
+        self.NoSecret = params.get("NoSecret")
         self.RequestId = params.get("RequestId")
 
 
@@ -474,50 +806,38 @@ class DescribeNotebookInstancesRequest(AbstractModel):
         :type Offset: int
         :param Limit: 限制数目
         :type Limit: int
-        :param SortBy: 排序字段
-        :type SortBy: str
-        :param SortOrder: 排序方式
+        :param SortOrder: 排序规则。默认取Descending
+Descending 按更新时间降序
+Ascending 按更新时间升序
         :type SortOrder: str
-        :param CreationTimeAfter: 创建时间晚于
-        :type CreationTimeAfter: str
-        :param CreationTimeBefore: 创建时间早于
-        :type CreationTimeBefore: str
-        :param LastModifiedTimeAfter: 最近修改时间晚于
-        :type LastModifiedTimeAfter: str
-        :param LastModifiedTimeBefore: 最近修改时间早于
-        :type LastModifiedTimeBefore: str
-        :param NameContains: 根据名称过滤
-        :type NameContains: str
-        :param StatusEquals: 根据状态过滤
-        :type StatusEquals: str
-        :param MaxResults: 最大返回个数
-        :type MaxResults: int
+        :param Filters: 过滤条件。
+instance-name - String - 是否必填：否 -（过滤条件）按照名称过滤。
+search-by-name - String - 是否必填：否 -（过滤条件）按照名称检索，模糊匹配。
+lifecycle-name - String - 是否必填：否 -（过滤条件）按照生命周期脚本名称过滤。
+default-code-repo-name - String - 是否必填：否 -（过滤条件）按照默认存储库名称过滤。
+additional-code-repo-name - String - 是否必填：否 -（过滤条件）按照其他存储库名称过滤。
+        :type Filters: list of Filter
+        :param SortBy: 【废弃字段】排序字段
+        :type SortBy: str
         """
         self.Offset = None
         self.Limit = None
-        self.SortBy = None
         self.SortOrder = None
-        self.CreationTimeAfter = None
-        self.CreationTimeBefore = None
-        self.LastModifiedTimeAfter = None
-        self.LastModifiedTimeBefore = None
-        self.NameContains = None
-        self.StatusEquals = None
-        self.MaxResults = None
+        self.Filters = None
+        self.SortBy = None
 
 
     def _deserialize(self, params):
         self.Offset = params.get("Offset")
         self.Limit = params.get("Limit")
-        self.SortBy = params.get("SortBy")
         self.SortOrder = params.get("SortOrder")
-        self.CreationTimeAfter = params.get("CreationTimeAfter")
-        self.CreationTimeBefore = params.get("CreationTimeBefore")
-        self.LastModifiedTimeAfter = params.get("LastModifiedTimeAfter")
-        self.LastModifiedTimeBefore = params.get("LastModifiedTimeBefore")
-        self.NameContains = params.get("NameContains")
-        self.StatusEquals = params.get("StatusEquals")
-        self.MaxResults = params.get("MaxResults")
+        if params.get("Filters") is not None:
+            self.Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self.Filters.append(obj)
+        self.SortBy = params.get("SortBy")
 
 
 class DescribeNotebookInstancesResponse(AbstractModel):
@@ -550,6 +870,130 @@ class DescribeNotebookInstancesResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeNotebookLifecycleScriptRequest(AbstractModel):
+    """DescribeNotebookLifecycleScript请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param NotebookLifecycleScriptsName: 生命周期脚本名称
+        :type NotebookLifecycleScriptsName: str
+        """
+        self.NotebookLifecycleScriptsName = None
+
+
+    def _deserialize(self, params):
+        self.NotebookLifecycleScriptsName = params.get("NotebookLifecycleScriptsName")
+
+
+class DescribeNotebookLifecycleScriptResponse(AbstractModel):
+    """DescribeNotebookLifecycleScript返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param NotebookLifecycleScriptsName: 生命周期脚本名称
+        :type NotebookLifecycleScriptsName: str
+        :param CreateScript: 创建脚本
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CreateScript: str
+        :param StartScript: 启动脚本
+注意：此字段可能返回 null，表示取不到有效值。
+        :type StartScript: str
+        :param CreationTime: 创建时间
+        :type CreationTime: str
+        :param LastModifiedTime: 最后修改时间
+        :type LastModifiedTime: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.NotebookLifecycleScriptsName = None
+        self.CreateScript = None
+        self.StartScript = None
+        self.CreationTime = None
+        self.LastModifiedTime = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.NotebookLifecycleScriptsName = params.get("NotebookLifecycleScriptsName")
+        self.CreateScript = params.get("CreateScript")
+        self.StartScript = params.get("StartScript")
+        self.CreationTime = params.get("CreationTime")
+        self.LastModifiedTime = params.get("LastModifiedTime")
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeNotebookLifecycleScriptsRequest(AbstractModel):
+    """DescribeNotebookLifecycleScripts请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Offset: 偏移量，默认为0
+        :type Offset: int
+        :param Limit: 返回数量，默认为20
+        :type Limit: int
+        :param Filters: 过滤条件。
+instance-name - String - 是否必填：否 -（过滤条件）按照名称过滤。
+search-by-name - String - 是否必填：否 -（过滤条件）按照名称检索，模糊匹配。
+        :type Filters: list of Filter
+        :param SortOrder: 排序规则。默认取Descending
+Descending 按更新时间降序
+Ascending 按更新时间升序
+        :type SortOrder: str
+        """
+        self.Offset = None
+        self.Limit = None
+        self.Filters = None
+        self.SortOrder = None
+
+
+    def _deserialize(self, params):
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+        if params.get("Filters") is not None:
+            self.Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self.Filters.append(obj)
+        self.SortOrder = params.get("SortOrder")
+
+
+class DescribeNotebookLifecycleScriptsResponse(AbstractModel):
+    """DescribeNotebookLifecycleScripts返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param NotebookLifecycleScriptsSet: Notebook生命周期脚本列表
+        :type NotebookLifecycleScriptsSet: list of NotebookLifecycleScriptsSummary
+        :param TotalCount: Notebook生命周期脚本总数量
+        :type TotalCount: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.NotebookLifecycleScriptsSet = None
+        self.TotalCount = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("NotebookLifecycleScriptsSet") is not None:
+            self.NotebookLifecycleScriptsSet = []
+            for item in params.get("NotebookLifecycleScriptsSet"):
+                obj = NotebookLifecycleScriptsSummary()
+                obj._deserialize(item)
+                self.NotebookLifecycleScriptsSet.append(obj)
+        self.TotalCount = params.get("TotalCount")
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeTrainingJobRequest(AbstractModel):
     """DescribeTrainingJob请求参数结构体
 
@@ -575,25 +1019,20 @@ class DescribeTrainingJobResponse(AbstractModel):
     def __init__(self):
         """
         :param AlgorithmSpecification: 算法镜像配置
-注意：此字段可能返回 null，表示取不到有效值。
         :type AlgorithmSpecification: :class:`tencentcloud.tione.v20191022.models.AlgorithmSpecification`
         :param TrainingJobName: 任务名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type TrainingJobName: str
         :param HyperParameters: 算法超级参数
 注意：此字段可能返回 null，表示取不到有效值。
         :type HyperParameters: str
         :param InputDataConfig: 输入数据配置
-注意：此字段可能返回 null，表示取不到有效值。
         :type InputDataConfig: list of InputDataConfig
         :param OutputDataConfig: 输出数据配置
-注意：此字段可能返回 null，表示取不到有效值。
         :type OutputDataConfig: :class:`tencentcloud.tione.v20191022.models.OutputDataConfig`
         :param StoppingCondition: 中止条件
 注意：此字段可能返回 null，表示取不到有效值。
         :type StoppingCondition: :class:`tencentcloud.tione.v20191022.models.StoppingCondition`
         :param ResourceConfig: 计算实例配置
-注意：此字段可能返回 null，表示取不到有效值。
         :type ResourceConfig: :class:`tencentcloud.tione.v20191022.models.ResourceConfig`
         :param VpcConfig: 私有网络配置
 注意：此字段可能返回 null，表示取不到有效值。
@@ -602,7 +1041,6 @@ class DescribeTrainingJobResponse(AbstractModel):
 注意：此字段可能返回 null，表示取不到有效值。
         :type FailureReason: str
         :param LastModifiedTime: 最近修改时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type LastModifiedTime: str
         :param TrainingStartTime: 任务开始时间
 注意：此字段可能返回 null，表示取不到有效值。
@@ -614,7 +1052,6 @@ class DescribeTrainingJobResponse(AbstractModel):
 注意：此字段可能返回 null，表示取不到有效值。
         :type ModelArtifacts: :class:`tencentcloud.tione.v20191022.models.ModelArtifacts`
         :param SecondaryStatus: 详细状态
-注意：此字段可能返回 null，表示取不到有效值。
         :type SecondaryStatus: str
         :param SecondaryStatusTransitions: 详细状态事件记录
 注意：此字段可能返回 null，表示取不到有效值。
@@ -623,7 +1060,6 @@ class DescribeTrainingJobResponse(AbstractModel):
 注意：此字段可能返回 null，表示取不到有效值。
         :type RoleName: str
         :param TrainingJobStatus: 任务状态
-注意：此字段可能返回 null，表示取不到有效值。
         :type TrainingJobStatus: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -745,6 +1181,72 @@ class FileSystemDataSource(AbstractModel):
         self.FileSystemId = params.get("FileSystemId")
 
 
+class Filter(AbstractModel):
+    """过滤器
+
+    """
+
+    def __init__(self):
+        """
+        :param Name: 过滤字段名称
+        :type Name: str
+        :param Values: 过滤字段取值
+        :type Values: list of str
+        """
+        self.Name = None
+        self.Values = None
+
+
+    def _deserialize(self, params):
+        self.Name = params.get("Name")
+        self.Values = params.get("Values")
+
+
+class GitConfig(AbstractModel):
+    """存储库Git相关配置
+
+    """
+
+    def __init__(self):
+        """
+        :param RepositoryUrl: git地址
+        :type RepositoryUrl: str
+        :param Branch: 代码分支
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Branch: str
+        """
+        self.RepositoryUrl = None
+        self.Branch = None
+
+
+    def _deserialize(self, params):
+        self.RepositoryUrl = params.get("RepositoryUrl")
+        self.Branch = params.get("Branch")
+
+
+class GitSecret(AbstractModel):
+    """Git凭证
+
+    """
+
+    def __init__(self):
+        """
+        :param None: 无秘钥，默认选项
+        :type None: bool
+        :param Secret: Git用户名密码base64编码后的字符串
+编码前的内容应为Json字符串，如
+{"UserName": "用户名", "Password":"密码"}
+        :type Secret: str
+        """
+        self.None = None
+        self.Secret = None
+
+
+    def _deserialize(self, params):
+        self.None = params.get("None")
+        self.Secret = params.get("Secret")
+
+
 class InputDataConfig(AbstractModel):
     """输入数据配置
 
@@ -839,6 +1341,31 @@ class NotebookInstanceSummary(AbstractModel):
         self.NotebookInstanceStatus = params.get("NotebookInstanceStatus")
         self.InstanceType = params.get("InstanceType")
         self.InstanceId = params.get("InstanceId")
+
+
+class NotebookLifecycleScriptsSummary(AbstractModel):
+    """notebook生命周期脚本实例概览
+
+    """
+
+    def __init__(self):
+        """
+        :param NotebookLifecycleScriptsName: notebook生命周期脚本名称
+        :type NotebookLifecycleScriptsName: str
+        :param CreationTime: 创建时间
+        :type CreationTime: str
+        :param LastModifiedTime: 修改时间
+        :type LastModifiedTime: str
+        """
+        self.NotebookLifecycleScriptsName = None
+        self.CreationTime = None
+        self.LastModifiedTime = None
+
+
+    def _deserialize(self, params):
+        self.NotebookLifecycleScriptsName = params.get("NotebookLifecycleScriptsName")
+        self.CreationTime = params.get("CreationTime")
+        self.LastModifiedTime = params.get("LastModifiedTime")
 
 
 class OutputDataConfig(AbstractModel):
@@ -1068,6 +1595,50 @@ class Tag(AbstractModel):
         self.Value = params.get("Value")
 
 
+class UpdateCodeRepositoryRequest(AbstractModel):
+    """UpdateCodeRepository请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param CodeRepositoryName: 查询存储库名称
+        :type CodeRepositoryName: str
+        :param GitSecret: Git凭证
+        :type GitSecret: :class:`tencentcloud.tione.v20191022.models.GitSecret`
+        """
+        self.CodeRepositoryName = None
+        self.GitSecret = None
+
+
+    def _deserialize(self, params):
+        self.CodeRepositoryName = params.get("CodeRepositoryName")
+        if params.get("GitSecret") is not None:
+            self.GitSecret = GitSecret()
+            self.GitSecret._deserialize(params.get("GitSecret"))
+
+
+class UpdateCodeRepositoryResponse(AbstractModel):
+    """UpdateCodeRepository返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param CodeRepositoryName: 存储库名称
+        :type CodeRepositoryName: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.CodeRepositoryName = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.CodeRepositoryName = params.get("CodeRepositoryName")
+        self.RequestId = params.get("RequestId")
+
+
 class UpdateNotebookInstanceRequest(AbstractModel):
     """UpdateNotebookInstance请求参数结构体
 
@@ -1103,6 +1674,48 @@ class UpdateNotebookInstanceRequest(AbstractModel):
 
 class UpdateNotebookInstanceResponse(AbstractModel):
     """UpdateNotebookInstance返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class UpdateNotebookLifecycleScriptRequest(AbstractModel):
+    """UpdateNotebookLifecycleScript请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param NotebookLifecycleScriptsName: notebook生命周期脚本名称
+        :type NotebookLifecycleScriptsName: str
+        :param CreateScript: 创建脚本
+        :type CreateScript: str
+        :param StartScript: 启动脚本
+        :type StartScript: str
+        """
+        self.NotebookLifecycleScriptsName = None
+        self.CreateScript = None
+        self.StartScript = None
+
+
+    def _deserialize(self, params):
+        self.NotebookLifecycleScriptsName = params.get("NotebookLifecycleScriptsName")
+        self.CreateScript = params.get("CreateScript")
+        self.StartScript = params.get("StartScript")
+
+
+class UpdateNotebookLifecycleScriptResponse(AbstractModel):
+    """UpdateNotebookLifecycleScript返回参数结构体
 
     """
 

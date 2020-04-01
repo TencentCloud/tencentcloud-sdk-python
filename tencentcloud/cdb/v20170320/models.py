@@ -2900,6 +2900,74 @@ class DescribeDeviceMonitorInfoResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeErrorLogDataRequest(AbstractModel):
+    """DescribeErrorLogData请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param InstanceId: 实例 ID 。
+        :type InstanceId: str
+        :param StartTime: 开始时间戳。
+        :type StartTime: int
+        :param EndTime: 结束时间戳。
+        :type EndTime: int
+        :param KeyWords: 要匹配的关键字列表，最多支持15个关键字。
+        :type KeyWords: list of str
+        :param Limit: 分页的返回数量，最大为400。
+        :type Limit: int
+        :param Offset: 偏移量，默认为0。
+        :type Offset: int
+        """
+        self.InstanceId = None
+        self.StartTime = None
+        self.EndTime = None
+        self.KeyWords = None
+        self.Limit = None
+        self.Offset = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.StartTime = params.get("StartTime")
+        self.EndTime = params.get("EndTime")
+        self.KeyWords = params.get("KeyWords")
+        self.Limit = params.get("Limit")
+        self.Offset = params.get("Offset")
+
+
+class DescribeErrorLogDataResponse(AbstractModel):
+    """DescribeErrorLogData返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param TotalCount: 符合条件的记录总数。
+        :type TotalCount: int
+        :param Items: 返回的记录。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Items: list of ErrlogItem
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.Items = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("Items") is not None:
+            self.Items = []
+            for item in params.get("Items"):
+                obj = ErrlogItem()
+                obj._deserialize(item)
+                self.Items.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeInstanceParamRecordsRequest(AbstractModel):
     """DescribeInstanceParamRecords请求参数结构体
 
@@ -3876,6 +3944,29 @@ class DrInfo(AbstractModel):
         self.SyncStatus = params.get("SyncStatus")
         self.InstanceName = params.get("InstanceName")
         self.InstanceType = params.get("InstanceType")
+
+
+class ErrlogItem(AbstractModel):
+    """结构化的错误日志详情
+
+    """
+
+    def __init__(self):
+        """
+        :param Timestamp: 错误发生时间。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Timestamp: int
+        :param Content: 错误详情
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Content: str
+        """
+        self.Timestamp = None
+        self.Content = None
+
+
+    def _deserialize(self, params):
+        self.Timestamp = params.get("Timestamp")
+        self.Content = params.get("Content")
 
 
 class ImportRecord(AbstractModel):

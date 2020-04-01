@@ -3651,8 +3651,6 @@ class UnifiedOrderRequest(AbstractModel):
         :type UserId: str
         :param RealChannel: 银行真实渠道.如:bank_pingan
         :type RealChannel: str
-        :param SubOrderList: 子订单信息列表，格式：子订单号、子应用ID、金额。 压缩后最长不可超过65535字节(去除空格，换行，制表符等无意义字符)
-        :type SubOrderList: list of UnifiedOrderInSubOrderList
         :param OriginalAmt: 原始金额
         :type OriginalAmt: int
         :param MidasSecretId: 聚鑫分配的安全ID
@@ -3670,6 +3668,9 @@ class UnifiedOrderRequest(AbstractModel):
         :type Quantity: int
         :param SubAppId: 聚鑫计费SubAppId，代表子商户
         :type SubAppId: str
+        :param SubOrderList: 子订单信息列表，格式：子订单号、子应用ID、金额。 压缩后最长不可超过65535字节(去除空格，换行，制表符等无意义字符)
+注：接入银行或其他支付渠道服务商模式下，必传
+        :type SubOrderList: list of UnifiedOrderInSubOrderList
         :param TotalMchIncome: 结算应收金额，单位：分
         :type TotalMchIncome: int
         :param TotalPlatformIncome: 平台应收金额，单位：分
@@ -3688,7 +3689,6 @@ class UnifiedOrderRequest(AbstractModel):
         self.TotalAmt = None
         self.UserId = None
         self.RealChannel = None
-        self.SubOrderList = None
         self.OriginalAmt = None
         self.MidasSecretId = None
         self.MidasSignature = None
@@ -3697,6 +3697,7 @@ class UnifiedOrderRequest(AbstractModel):
         self.Metadata = None
         self.Quantity = None
         self.SubAppId = None
+        self.SubOrderList = None
         self.TotalMchIncome = None
         self.TotalPlatformIncome = None
         self.WxOpenId = None
@@ -3713,12 +3714,6 @@ class UnifiedOrderRequest(AbstractModel):
         self.TotalAmt = params.get("TotalAmt")
         self.UserId = params.get("UserId")
         self.RealChannel = params.get("RealChannel")
-        if params.get("SubOrderList") is not None:
-            self.SubOrderList = []
-            for item in params.get("SubOrderList"):
-                obj = UnifiedOrderInSubOrderList()
-                obj._deserialize(item)
-                self.SubOrderList.append(obj)
         self.OriginalAmt = params.get("OriginalAmt")
         self.MidasSecretId = params.get("MidasSecretId")
         self.MidasSignature = params.get("MidasSignature")
@@ -3727,6 +3722,12 @@ class UnifiedOrderRequest(AbstractModel):
         self.Metadata = params.get("Metadata")
         self.Quantity = params.get("Quantity")
         self.SubAppId = params.get("SubAppId")
+        if params.get("SubOrderList") is not None:
+            self.SubOrderList = []
+            for item in params.get("SubOrderList"):
+                obj = UnifiedOrderInSubOrderList()
+                obj._deserialize(item)
+                self.SubOrderList.append(obj)
         self.TotalMchIncome = params.get("TotalMchIncome")
         self.TotalPlatformIncome = params.get("TotalPlatformIncome")
         self.WxOpenId = params.get("WxOpenId")

@@ -425,6 +425,34 @@ class MonitorClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def SendCustomAlarmMsg(self, request):
+        """发送自定义消息告警
+
+        :param request: Request instance for SendCustomAlarmMsg.
+        :type request: :class:`tencentcloud.monitor.v20180724.models.SendCustomAlarmMsgRequest`
+        :rtype: :class:`tencentcloud.monitor.v20180724.models.SendCustomAlarmMsgResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("SendCustomAlarmMsg", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.SendCustomAlarmMsgResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def UnBindingAllPolicyObject(self, request):
         """删除全部的关联对象
 

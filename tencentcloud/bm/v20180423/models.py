@@ -3202,6 +3202,12 @@ class OsInfo(AbstractModel):
         :type ImageTag: str
         :param MaxPartitionSize: 操作系统，ext4文件下所支持的最大的磁盘大小。单位为T
         :type MaxPartitionSize: int
+        :param OsMinorVersion: 黑石版本号
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OsMinorVersion: str
+        :param OsMinorClass: 黑石版本
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OsMinorClass: str
         """
         self.OsTypeId = None
         self.OsName = None
@@ -3210,6 +3216,8 @@ class OsInfo(AbstractModel):
         self.OsClass = None
         self.ImageTag = None
         self.MaxPartitionSize = None
+        self.OsMinorVersion = None
+        self.OsMinorClass = None
 
 
     def _deserialize(self, params):
@@ -3220,6 +3228,8 @@ class OsInfo(AbstractModel):
         self.OsClass = params.get("OsClass")
         self.ImageTag = params.get("ImageTag")
         self.MaxPartitionSize = params.get("MaxPartitionSize")
+        self.OsMinorVersion = params.get("OsMinorVersion")
+        self.OsMinorClass = params.get("OsMinorClass")
 
 
 class PartitionInfo(AbstractModel):

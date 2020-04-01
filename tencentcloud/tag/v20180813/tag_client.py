@@ -137,6 +137,34 @@ class TagClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeResourceTags(self, request):
+        """查询资源关联标签
+
+        :param request: Request instance for DescribeResourceTags.
+        :type request: :class:`tencentcloud.tag.v20180813.models.DescribeResourceTagsRequest`
+        :rtype: :class:`tencentcloud.tag.v20180813.models.DescribeResourceTagsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeResourceTags", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeResourceTagsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeResourceTagsByResourceIds(self, request):
         """用于查询已有资源标签键值对
 

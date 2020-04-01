@@ -249,23 +249,15 @@ class AdaptiveDynamicStreamingTemplate(AbstractModel):
         :type Name: str
         :param Comment: 转自适应码流模板描述信息。
         :type Comment: str
-        :param PackageType: 打包类型，取值范围：
-<li>hls；</li>
-<li>dash。</li>
-        :type PackageType: str
+        :param Format: 自适应转码格式，取值范围：
+<li>HLS。</li>
+        :type Format: str
         :param DrmType: DRM 类型，取值范围：
 <li>FairPlay；</li>
 <li>SimpleAES；</li>
 <li>Widevine。</li>
 如果取值为空字符串，代表不对视频做 DRM 保护。
         :type DrmType: str
-        :param VideoTrackTemplateSet: 视频轨模板列表。
-        :type VideoTrackTemplateSet: list of VideoTrackTemplateInfo
-        :param AudioTrackTemplateSet: 音频轨模板列表。
-        :type AudioTrackTemplateSet: list of AudioTrackTemplateInfo
-        :param Format: 自适应转码格式，取值范围：
-<li>HLS。</li>
-        :type Format: str
         :param StreamInfos: 自适应转码输入流参数信息，最多输入10路流。
         :type StreamInfos: list of AdaptiveStreamTemplate
         :param DisableHigherVideoBitrate: 是否禁止视频低码率转高码率，取值范围：
@@ -285,11 +277,8 @@ class AdaptiveDynamicStreamingTemplate(AbstractModel):
         self.Type = None
         self.Name = None
         self.Comment = None
-        self.PackageType = None
-        self.DrmType = None
-        self.VideoTrackTemplateSet = None
-        self.AudioTrackTemplateSet = None
         self.Format = None
+        self.DrmType = None
         self.StreamInfos = None
         self.DisableHigherVideoBitrate = None
         self.DisableHigherVideoResolution = None
@@ -302,21 +291,8 @@ class AdaptiveDynamicStreamingTemplate(AbstractModel):
         self.Type = params.get("Type")
         self.Name = params.get("Name")
         self.Comment = params.get("Comment")
-        self.PackageType = params.get("PackageType")
-        self.DrmType = params.get("DrmType")
-        if params.get("VideoTrackTemplateSet") is not None:
-            self.VideoTrackTemplateSet = []
-            for item in params.get("VideoTrackTemplateSet"):
-                obj = VideoTrackTemplateInfo()
-                obj._deserialize(item)
-                self.VideoTrackTemplateSet.append(obj)
-        if params.get("AudioTrackTemplateSet") is not None:
-            self.AudioTrackTemplateSet = []
-            for item in params.get("AudioTrackTemplateSet"):
-                obj = AudioTrackTemplateInfo()
-                obj._deserialize(item)
-                self.AudioTrackTemplateSet.append(obj)
         self.Format = params.get("Format")
+        self.DrmType = params.get("DrmType")
         if params.get("StreamInfos") is not None:
             self.StreamInfos = []
             for item in params.get("StreamInfos"):
@@ -11191,76 +11167,6 @@ class ModifyContentReviewTemplateRequest(AbstractModel):
 
 class ModifyContentReviewTemplateResponse(AbstractModel):
     """ModifyContentReviewTemplate返回参数结构体
-
-    """
-
-    def __init__(self):
-        """
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
-        self.RequestId = None
-
-
-    def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
-
-
-class ModifyEventNotificationConfigForConsoleRequest(AbstractModel):
-    """ModifyEventNotificationConfigForConsole请求参数结构体
-
-    """
-
-    def __init__(self):
-        """
-        :param Mode: 接收事件通知的方式。默认 "PUSH" 为[ HTTP 回调通知](https://cloud.tencent.com/document/product/266/7829#http.E5.9B.9E.E8.B0.83)，"PULL" 为[基于消息队列的可靠通知](https://cloud.tencent.com/document/product/266/7829#.E5.9F.BA.E4.BA.8E.E6.B6.88.E6.81.AF.E9.98.9F.E5.88.97.E7.9A.84.E5.8F.AF.E9.9D.A0.E9.80.9A.E7.9F.A5)。
-        :type Mode: str
-        :param NotificationUrlV3: 采用[ HTTP 回调通知](https://cloud.tencent.com/document/product/266/7829#http.E5.9B.9E.E8.B0.83)接收方式时，用于接收 V3 版本事件通知的地址。
-        :type NotificationUrlV3: str
-        :param NotificationUrlV2: 采用[ HTTP 回调通知](https://cloud.tencent.com/document/product/266/7829#http.E5.9B.9E.E8.B0.83)接收方式时，用于接收 V2 版本事件通知的地址。
-        :type NotificationUrlV2: str
-        :param UploadMediaCompleteEventSwitch: 是否接收[视频上传完成](https://cloud.tencent.com/document/product/266/7830)事件通知， 默认 "OFF" 为忽略该事件通知，"ON" 为接收事件通知。
-        :type UploadMediaCompleteEventSwitch: str
-        :param TranscodeCompleteEventSwitch: 是否接收[视频转码完成](https://cloud.tencent.com/document/product/266/7832)事件通知， 默认 "OFF" 为忽略该事件通知，"ON" 为接收事件通知。
-        :type TranscodeCompleteEventSwitch: str
-        :param CreateSnapshotByTimeOffsetCompleteEventSwitch: 是否接收[指定时间点截图完成](https://cloud.tencent.com/document/product/266/8105)事件通知，  默认 "OFF" 为忽略该事件通知，"ON" 为接收事件通知。
-        :type CreateSnapshotByTimeOffsetCompleteEventSwitch: str
-        :param CreateImageSpriteCompleteEventSwitch: 是否接收[视频截取雪碧图完成](https://cloud.tencent.com/document/product/266/8104)事件通知，  默认 "OFF" 为忽略该事件通知，"ON" 为接收事件通知。
-        :type CreateImageSpriteCompleteEventSwitch: str
-        :param ConcatMediaCompleteEventSwitch: 是否接收[视频拼接完成](https://cloud.tencent.com/document/product/266/7834)事件通知，  默认 "OFF" 为忽略该事件通知，"ON" 为接收事件通知。
-        :type ConcatMediaCompleteEventSwitch: str
-        :param DeleteMediaCompleteEventSwitch: 是否接收[视频删除完成](https://cloud.tencent.com/document/product/266/13434)事件通知，  默认 "OFF" 为忽略该事件通知，"ON" 为接收事件通知。
-        :type DeleteMediaCompleteEventSwitch: str
-        :param SubAppId: 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
-        :type SubAppId: int
-        """
-        self.Mode = None
-        self.NotificationUrlV3 = None
-        self.NotificationUrlV2 = None
-        self.UploadMediaCompleteEventSwitch = None
-        self.TranscodeCompleteEventSwitch = None
-        self.CreateSnapshotByTimeOffsetCompleteEventSwitch = None
-        self.CreateImageSpriteCompleteEventSwitch = None
-        self.ConcatMediaCompleteEventSwitch = None
-        self.DeleteMediaCompleteEventSwitch = None
-        self.SubAppId = None
-
-
-    def _deserialize(self, params):
-        self.Mode = params.get("Mode")
-        self.NotificationUrlV3 = params.get("NotificationUrlV3")
-        self.NotificationUrlV2 = params.get("NotificationUrlV2")
-        self.UploadMediaCompleteEventSwitch = params.get("UploadMediaCompleteEventSwitch")
-        self.TranscodeCompleteEventSwitch = params.get("TranscodeCompleteEventSwitch")
-        self.CreateSnapshotByTimeOffsetCompleteEventSwitch = params.get("CreateSnapshotByTimeOffsetCompleteEventSwitch")
-        self.CreateImageSpriteCompleteEventSwitch = params.get("CreateImageSpriteCompleteEventSwitch")
-        self.ConcatMediaCompleteEventSwitch = params.get("ConcatMediaCompleteEventSwitch")
-        self.DeleteMediaCompleteEventSwitch = params.get("DeleteMediaCompleteEventSwitch")
-        self.SubAppId = params.get("SubAppId")
-
-
-class ModifyEventNotificationConfigForConsoleResponse(AbstractModel):
-    """ModifyEventNotificationConfigForConsole返回参数结构体
 
     """
 

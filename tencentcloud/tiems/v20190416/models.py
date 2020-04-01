@@ -116,6 +116,8 @@ class CreateJobRequest(AbstractModel):
         :type GpuType: str
         :param QuantizationInput: 量化输入
         :type QuantizationInput: :class:`tencentcloud.tiems.v20190416.models.QuantizationInput`
+        :param LogTopicId: Cls日志主题ID
+        :type LogTopicId: str
         """
         self.Name = None
         self.ResourceGroupId = None
@@ -130,6 +132,7 @@ class CreateJobRequest(AbstractModel):
         self.GpuMemory = None
         self.GpuType = None
         self.QuantizationInput = None
+        self.LogTopicId = None
 
 
     def _deserialize(self, params):
@@ -150,6 +153,7 @@ class CreateJobRequest(AbstractModel):
         if params.get("QuantizationInput") is not None:
             self.QuantizationInput = QuantizationInput()
             self.QuantizationInput._deserialize(params.get("QuantizationInput"))
+        self.LogTopicId = params.get("LogTopicId")
 
 
 class CreateJobResponse(AbstractModel):
@@ -188,24 +192,32 @@ class CreateRsgAsGroupRequest(AbstractModel):
         :type MaxSize: int
         :param MinSize: 伸缩组允许的最小节点数
         :type MinSize: int
+        :param InstanceType: 伸缩组的节点规格
+        :type InstanceType: str
         :param Cluster: 资源组所在的集群名
         :type Cluster: str
         :param Name: 伸缩组名称
         :type Name: str
+        :param DesiredSize: 伸缩组期望的节点数
+        :type DesiredSize: int
         """
         self.RsgId = None
         self.MaxSize = None
         self.MinSize = None
+        self.InstanceType = None
         self.Cluster = None
         self.Name = None
+        self.DesiredSize = None
 
 
     def _deserialize(self, params):
         self.RsgId = params.get("RsgId")
         self.MaxSize = params.get("MaxSize")
         self.MinSize = params.get("MinSize")
+        self.InstanceType = params.get("InstanceType")
         self.Cluster = params.get("Cluster")
         self.Name = params.get("Name")
+        self.DesiredSize = params.get("DesiredSize")
 
 
 class CreateRsgAsGroupResponse(AbstractModel):
@@ -372,6 +384,8 @@ class CreateServiceRequest(AbstractModel):
         :type Description: str
         :param GpuType: GPU类型
         :type GpuType: str
+        :param LogTopicId: Cls日志主题ID
+        :type LogTopicId: str
         """
         self.Scaler = None
         self.ServiceConfigId = None
@@ -386,6 +400,7 @@ class CreateServiceRequest(AbstractModel):
         self.GpuMemory = None
         self.Description = None
         self.GpuType = None
+        self.LogTopicId = None
 
 
     def _deserialize(self, params):
@@ -404,6 +419,7 @@ class CreateServiceRequest(AbstractModel):
         self.GpuMemory = params.get("GpuMemory")
         self.Description = params.get("Description")
         self.GpuType = params.get("GpuType")
+        self.LogTopicId = params.get("LogTopicId")
 
 
 class CreateServiceResponse(AbstractModel):
@@ -1077,7 +1093,7 @@ class DescribeServicesRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Filters: 筛选选项，支持按照name等字段进行筛选
+        :param Filters: 筛选选项，支持筛选的字段：id, region, zone, cluster, status, runtime, rsg_id
         :type Filters: list of Filter
         :param Offset: 偏移量，默认为0
         :type Offset: int
@@ -2335,11 +2351,14 @@ class UpdateRsgAsGroupRequest(AbstractModel):
         :type MaxSize: int
         :param MinSize: 伸缩组最小节点数
         :type MinSize: int
+        :param DesiredSize: 伸缩组期望的节点数
+        :type DesiredSize: int
         """
         self.Id = None
         self.Name = None
         self.MaxSize = None
         self.MinSize = None
+        self.DesiredSize = None
 
 
     def _deserialize(self, params):
@@ -2347,6 +2366,7 @@ class UpdateRsgAsGroupRequest(AbstractModel):
         self.Name = params.get("Name")
         self.MaxSize = params.get("MaxSize")
         self.MinSize = params.get("MinSize")
+        self.DesiredSize = params.get("DesiredSize")
 
 
 class UpdateRsgAsGroupResponse(AbstractModel):
@@ -2399,6 +2419,8 @@ class UpdateServiceRequest(AbstractModel):
         :type Memory: int
         :param Gpu: 显卡配置，单位为 1/1000 卡
         :type Gpu: int
+        :param LogTopicId: Cls日志主题ID
+        :type LogTopicId: str
         """
         self.ServiceId = None
         self.Scaler = None
@@ -2410,6 +2432,7 @@ class UpdateServiceRequest(AbstractModel):
         self.Cpu = None
         self.Memory = None
         self.Gpu = None
+        self.LogTopicId = None
 
 
     def _deserialize(self, params):
@@ -2425,6 +2448,7 @@ class UpdateServiceRequest(AbstractModel):
         self.Cpu = params.get("Cpu")
         self.Memory = params.get("Memory")
         self.Gpu = params.get("Gpu")
+        self.LogTopicId = params.get("LogTopicId")
 
 
 class UpdateServiceResponse(AbstractModel):
