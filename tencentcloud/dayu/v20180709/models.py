@@ -5710,6 +5710,9 @@ class L7RuleEntry(AbstractModel):
         :type CCThreshold: int
         :param CCLevel: HTTPS协议的CC防护等级
         :type CCLevel: str
+        :param HttpsToHttpEnable: 是否开启Https协议使用Http回源，取值[0(关闭), 1(开启)]，不填写默认是关闭
+注意：此字段可能返回 null，表示取不到有效值。
+        :type HttpsToHttpEnable: int
         """
         self.Protocol = None
         self.Domain = None
@@ -5729,6 +5732,7 @@ class L7RuleEntry(AbstractModel):
         self.CCEnable = None
         self.CCThreshold = None
         self.CCLevel = None
+        self.HttpsToHttpEnable = None
 
 
     def _deserialize(self, params):
@@ -5755,6 +5759,7 @@ class L7RuleEntry(AbstractModel):
         self.CCEnable = params.get("CCEnable")
         self.CCThreshold = params.get("CCThreshold")
         self.CCLevel = params.get("CCLevel")
+        self.HttpsToHttpEnable = params.get("HttpsToHttpEnable")
 
 
 class L7RuleHealth(AbstractModel):

@@ -482,15 +482,15 @@ class DescribeDeviceDataHistoryRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param MinTime: 区间开始时间
+        :param MinTime: 区间开始时间（Unix 时间戳，毫秒级）
         :type MinTime: int
-        :param MaxTime: 区间结束时间
+        :param MaxTime: 区间结束时间（Unix 时间戳，毫秒级）
         :type MaxTime: int
         :param ProductId: 产品ID
         :type ProductId: str
         :param DeviceName: 设备名称
         :type DeviceName: str
-        :param FieldName: 属性字段名称
+        :param FieldName: 属性字段名称，对应数据模板中功能属性的标识符
         :type FieldName: str
         :param Limit: 返回条数
         :type Limit: int
@@ -523,7 +523,7 @@ class DescribeDeviceDataHistoryResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param FieldName: 属性字段名称
+        :param FieldName: 属性字段名称，对应数据模板中功能属性的标识符
 注意：此字段可能返回 null，表示取不到有效值。
         :type FieldName: str
         :param Listover: 数据是否已全部返回，true 表示数据全部返回，false 表示还有数据待返回，可将 Context 作为入参，继续查询返回结果。
@@ -1130,11 +1130,11 @@ class ListEventHistoryRequest(AbstractModel):
         :type ProductId: str
         :param DeviceName: 设备名称
         :type DeviceName: str
-        :param Type: 搜索的事件类型
+        :param Type: 搜索的事件类型：alert 表示告警，fault 表示故障，info 表示信息，为空则表示查询上述所有类型事件
         :type Type: str
-        :param StartTime: 起始时间, 为0 表示 当前时间 - 24h
+        :param StartTime: 起始时间（Unix 时间戳，秒级）, 为0 表示 当前时间 - 24h
         :type StartTime: int
-        :param EndTime: 结束时间, 为0 表示当前时间
+        :param EndTime: 结束时间（Unix 时间戳，秒级）, 为0 表示当前时间
         :type EndTime: int
         :param Context: 搜索上下文, 用作查询游标
         :type Context: str

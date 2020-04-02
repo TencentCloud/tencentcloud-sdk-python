@@ -4615,6 +4615,85 @@ class CreateAIRecognitionTemplateResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class CreateAdaptiveDynamicStreamingTemplateRequest(AbstractModel):
+    """CreateAdaptiveDynamicStreamingTemplate请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Format: 自适应转码格式，取值范围：
+<li>HLS。</li>
+        :type Format: str
+        :param StreamInfos: 自适应转码输出子流参数信息，最多输出10路子流。
+注意：各个子流的帧率必须保持一致；如果不一致，采用第一个子流的帧率作为输出帧率。
+        :type StreamInfos: list of AdaptiveStreamTemplate
+        :param Name: 模板名称，长度限制：64 个字符。
+        :type Name: str
+        :param DrmType: DRM方案类型，取值范围：
+<li>FairPlay；</li>
+<li>SimpleAES；</li>
+<li>Widevine。</li>
+如果取值为空字符串，代表不对视频做 DRM 保护。
+        :type DrmType: str
+        :param DisableHigherVideoBitrate: 是否禁止视频低码率转高码率，取值范围：
+<li>0：否，</li>
+<li>1：是。</li>
+默认为否。
+        :type DisableHigherVideoBitrate: int
+        :param DisableHigherVideoResolution: 是否禁止视频分辨率转高分辨率，取值范围：
+<li>0：否，</li>
+<li>1：是。</li>
+默认为否。
+        :type DisableHigherVideoResolution: int
+        :param Comment: 模板描述信息，长度限制：256 个字符。
+        :type Comment: str
+        """
+        self.Format = None
+        self.StreamInfos = None
+        self.Name = None
+        self.DrmType = None
+        self.DisableHigherVideoBitrate = None
+        self.DisableHigherVideoResolution = None
+        self.Comment = None
+
+
+    def _deserialize(self, params):
+        self.Format = params.get("Format")
+        if params.get("StreamInfos") is not None:
+            self.StreamInfos = []
+            for item in params.get("StreamInfos"):
+                obj = AdaptiveStreamTemplate()
+                obj._deserialize(item)
+                self.StreamInfos.append(obj)
+        self.Name = params.get("Name")
+        self.DrmType = params.get("DrmType")
+        self.DisableHigherVideoBitrate = params.get("DisableHigherVideoBitrate")
+        self.DisableHigherVideoResolution = params.get("DisableHigherVideoResolution")
+        self.Comment = params.get("Comment")
+
+
+class CreateAdaptiveDynamicStreamingTemplateResponse(AbstractModel):
+    """CreateAdaptiveDynamicStreamingTemplate返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Definition: 自适应转码模板唯一标识。
+        :type Definition: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Definition = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Definition = params.get("Definition")
+        self.RequestId = params.get("RequestId")
+
+
 class CreateAnimatedGraphicsTemplateRequest(AbstractModel):
     """CreateAnimatedGraphicsTemplate请求参数结构体
 
@@ -5298,6 +5377,81 @@ class CreateSnapshotByTimeOffsetTemplateResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class CreateSuperPlayerConfigRequest(AbstractModel):
+    """CreateSuperPlayerConfig请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Name: 播放器配置名称，长度限制：64 个字符。只允许出现 [0-9a-zA-Z] 及 _- 字符（如 test_ABC-123），同一个用户该名称唯一。
+        :type Name: str
+        :param DrmSwitch: 播放 DRM 保护的自适应码流开关：
+<li>ON：开启，表示仅播放 DRM  保护的自适应码流输出；</li>
+<li>OFF：关闭，表示播放未加密的自适应码流输出。</li>
+默认为 OFF。
+        :type DrmSwitch: str
+        :param AdaptiveDynamicStreamingDefinition: 允许输出的未加密的自适应码流模板 ID，当 DrmSwitch 为 OFF 时必填。
+        :type AdaptiveDynamicStreamingDefinition: int
+        :param DrmStreamingsInfo: 允许输出的 DRM 自适应码流模板内容，当 DrmSwitch 为 ON 时必填。
+        :type DrmStreamingsInfo: :class:`tencentcloud.vod.v20180717.models.DrmStreamingsInfo`
+        :param ImageSpriteDefinition: 允许输出的雪碧图模板 ID。
+        :type ImageSpriteDefinition: int
+        :param ResolutionNames: 播放器对不于不同分辨率的子流展示名字，不填或者填空数组则使用默认配置：
+<li>MinEdgeLength：240，Name：流畅；</li>
+<li>MinEdgeLength：480，Name：标清；</li>
+<li>MinEdgeLength：720，Name：高清；</li>
+<li>MinEdgeLength：1080，Name：全高清；</li>
+<li>MinEdgeLength：1440，Name：2K；</li>
+<li>MinEdgeLength：2160，Name：4K；</li>
+<li>MinEdgeLength：4320，Name：8K。</li>
+        :type ResolutionNames: list of ResolutionNameInfo
+        :param SubAppId: 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
+        :type SubAppId: int
+        """
+        self.Name = None
+        self.DrmSwitch = None
+        self.AdaptiveDynamicStreamingDefinition = None
+        self.DrmStreamingsInfo = None
+        self.ImageSpriteDefinition = None
+        self.ResolutionNames = None
+        self.SubAppId = None
+
+
+    def _deserialize(self, params):
+        self.Name = params.get("Name")
+        self.DrmSwitch = params.get("DrmSwitch")
+        self.AdaptiveDynamicStreamingDefinition = params.get("AdaptiveDynamicStreamingDefinition")
+        if params.get("DrmStreamingsInfo") is not None:
+            self.DrmStreamingsInfo = DrmStreamingsInfo()
+            self.DrmStreamingsInfo._deserialize(params.get("DrmStreamingsInfo"))
+        self.ImageSpriteDefinition = params.get("ImageSpriteDefinition")
+        if params.get("ResolutionNames") is not None:
+            self.ResolutionNames = []
+            for item in params.get("ResolutionNames"):
+                obj = ResolutionNameInfo()
+                obj._deserialize(item)
+                self.ResolutionNames.append(obj)
+        self.SubAppId = params.get("SubAppId")
+
+
+class CreateSuperPlayerConfigResponse(AbstractModel):
+    """CreateSuperPlayerConfig返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class CreateTranscodeTemplateRequest(AbstractModel):
     """CreateTranscodeTemplate请求参数结构体
 
@@ -5594,6 +5748,40 @@ class DeleteAIRecognitionTemplateRequest(AbstractModel):
 
 class DeleteAIRecognitionTemplateResponse(AbstractModel):
     """DeleteAIRecognitionTemplate返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class DeleteAdaptiveDynamicStreamingTemplateRequest(AbstractModel):
+    """DeleteAdaptiveDynamicStreamingTemplate请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Definition: 自适应转码模板唯一标识。
+        :type Definition: int
+        """
+        self.Definition = None
+
+
+    def _deserialize(self, params):
+        self.Definition = params.get("Definition")
+
+
+class DeleteAdaptiveDynamicStreamingTemplateResponse(AbstractModel):
+    """DeleteAdaptiveDynamicStreamingTemplate返回参数结构体
 
     """
 
@@ -5945,6 +6133,44 @@ class DeleteSnapshotByTimeOffsetTemplateRequest(AbstractModel):
 
 class DeleteSnapshotByTimeOffsetTemplateResponse(AbstractModel):
     """DeleteSnapshotByTimeOffsetTemplate返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class DeleteSuperPlayerConfigRequest(AbstractModel):
+    """DeleteSuperPlayerConfig请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Name: 播放器配置名称。
+        :type Name: str
+        :param SubAppId: 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
+        :type SubAppId: int
+        """
+        self.Name = None
+        self.SubAppId = None
+
+
+    def _deserialize(self, params):
+        self.Name = params.get("Name")
+        self.SubAppId = params.get("SubAppId")
+
+
+class DeleteSuperPlayerConfigResponse(AbstractModel):
+    """DeleteSuperPlayerConfig返回参数结构体
 
     """
 
@@ -7233,6 +7459,71 @@ class DescribeSubAppIdsResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeSuperPlayerConfigsRequest(AbstractModel):
+    """DescribeSuperPlayerConfigs请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Names: 播放器配置名字过滤条件，数组长度限制：100。
+        :type Names: list of str
+        :param Offset: 分页偏移量，默认值：0。
+        :type Offset: int
+        :param Limit: 返回记录条数，默认值：10，最大值：100。
+        :type Limit: int
+        :param Type: 播放器配置类型过滤条件，可选值：
+<li>Preset：系统预置配置；</li>
+<li>Custom：用户自定义配置。</li>
+        :type Type: str
+        :param SubAppId: 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
+        :type SubAppId: int
+        """
+        self.Names = None
+        self.Offset = None
+        self.Limit = None
+        self.Type = None
+        self.SubAppId = None
+
+
+    def _deserialize(self, params):
+        self.Names = params.get("Names")
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+        self.Type = params.get("Type")
+        self.SubAppId = params.get("SubAppId")
+
+
+class DescribeSuperPlayerConfigsResponse(AbstractModel):
+    """DescribeSuperPlayerConfigs返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param TotalCount: 符合过滤条件的记录总数。
+        :type TotalCount: int
+        :param PlayerConfigSet: 播放器配置数组。
+        :type PlayerConfigSet: list of PlayerConfig
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.PlayerConfigSet = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("PlayerConfigSet") is not None:
+            self.PlayerConfigSet = []
+            for item in params.get("PlayerConfigSet"):
+                obj = PlayerConfig()
+                obj._deserialize(item)
+                self.PlayerConfigSet.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeTaskDetailRequest(AbstractModel):
     """DescribeTaskDetail请求参数结构体
 
@@ -7735,6 +8026,40 @@ class DescribeWordSamplesResponse(AbstractModel):
                 obj._deserialize(item)
                 self.WordSet.append(obj)
         self.RequestId = params.get("RequestId")
+
+
+class DrmStreamingsInfo(AbstractModel):
+    """DRM 自适应码流播放信息
+
+    """
+
+    def __init__(self):
+        """
+        :param SimpleAesDefinition: 保护类型为 SimpleAES 的转自适应码流模板 ID。
+        :type SimpleAesDefinition: int
+        """
+        self.SimpleAesDefinition = None
+
+
+    def _deserialize(self, params):
+        self.SimpleAesDefinition = params.get("SimpleAesDefinition")
+
+
+class DrmStreamingsInfoForUpdate(AbstractModel):
+    """DRM 自适应码流播放信息修改对象
+
+    """
+
+    def __init__(self):
+        """
+        :param SimpleAesDefinition: 保护类型为 SimpleAES 的转自适应码流模板 ID。
+        :type SimpleAesDefinition: int
+        """
+        self.SimpleAesDefinition = None
+
+
+    def _deserialize(self, params):
+        self.SimpleAesDefinition = params.get("SimpleAesDefinition")
 
 
 class EditMediaFileInfo(AbstractModel):
@@ -10968,6 +11293,75 @@ class ModifyAIRecognitionTemplateResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class ModifyAdaptiveDynamicStreamingTemplateRequest(AbstractModel):
+    """ModifyAdaptiveDynamicStreamingTemplate请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Definition: 自适应转码模板唯一标识。
+        :type Definition: int
+        :param Name: 模板名称，长度限制：64 个字符。
+        :type Name: str
+        :param Format: 自适应转码格式，取值范围：
+<li>HLS。</li>
+        :type Format: str
+        :param DisableHigherVideoBitrate: 是否禁止视频低码率转高码率，取值范围：
+<li>0：否，</li>
+<li>1：是。</li>
+        :type DisableHigherVideoBitrate: int
+        :param DisableHigherVideoResolution: 是否禁止视频分辨率转高分辨率，取值范围：
+<li>0：否，</li>
+<li>1：是。</li>
+        :type DisableHigherVideoResolution: int
+        :param StreamInfos: 自适应转码输入流参数信息，最多输入10路流。
+注意：各个流的帧率必须保持一致；如果不一致，采用第一个流的帧率作为输出帧率。
+        :type StreamInfos: list of AdaptiveStreamTemplate
+        :param Comment: 模板描述信息，长度限制：256 个字符。
+        :type Comment: str
+        """
+        self.Definition = None
+        self.Name = None
+        self.Format = None
+        self.DisableHigherVideoBitrate = None
+        self.DisableHigherVideoResolution = None
+        self.StreamInfos = None
+        self.Comment = None
+
+
+    def _deserialize(self, params):
+        self.Definition = params.get("Definition")
+        self.Name = params.get("Name")
+        self.Format = params.get("Format")
+        self.DisableHigherVideoBitrate = params.get("DisableHigherVideoBitrate")
+        self.DisableHigherVideoResolution = params.get("DisableHigherVideoResolution")
+        if params.get("StreamInfos") is not None:
+            self.StreamInfos = []
+            for item in params.get("StreamInfos"):
+                obj = AdaptiveStreamTemplate()
+                obj._deserialize(item)
+                self.StreamInfos.append(obj)
+        self.Comment = params.get("Comment")
+
+
+class ModifyAdaptiveDynamicStreamingTemplateResponse(AbstractModel):
+    """ModifyAdaptiveDynamicStreamingTemplate返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class ModifyAnimatedGraphicsTemplateRequest(AbstractModel):
     """ModifyAnimatedGraphicsTemplate请求参数结构体
 
@@ -11704,6 +12098,73 @@ class ModifySubAppIdStatusResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class ModifySuperPlayerConfigRequest(AbstractModel):
+    """ModifySuperPlayerConfig请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Name: 播放器配置名称。
+        :type Name: str
+        :param DrmSwitch: 播放 DRM 保护的自适应码流开关：
+<li>ON：开启，表示仅播放 DRM  保护的自适应码流输出；</li>
+<li>OFF：关闭，表示播放未加密的自适应码流输出。</li>
+        :type DrmSwitch: str
+        :param AdaptiveDynamicStreamingDefinition: 允许输出的未加密的自适应码流模板 ID。
+        :type AdaptiveDynamicStreamingDefinition: int
+        :param DrmStreamingsInfo: 允许输出的 DRM 自适应码流模板内容。
+        :type DrmStreamingsInfo: :class:`tencentcloud.vod.v20180717.models.DrmStreamingsInfoForUpdate`
+        :param ImageSpriteDefinition: 允许输出的雪碧图模板 ID。
+        :type ImageSpriteDefinition: int
+        :param ResolutionNames: 播放器对不于不同分辨率的子流展示名字。
+        :type ResolutionNames: list of ResolutionNameInfo
+        :param SubAppId: 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
+        :type SubAppId: int
+        """
+        self.Name = None
+        self.DrmSwitch = None
+        self.AdaptiveDynamicStreamingDefinition = None
+        self.DrmStreamingsInfo = None
+        self.ImageSpriteDefinition = None
+        self.ResolutionNames = None
+        self.SubAppId = None
+
+
+    def _deserialize(self, params):
+        self.Name = params.get("Name")
+        self.DrmSwitch = params.get("DrmSwitch")
+        self.AdaptiveDynamicStreamingDefinition = params.get("AdaptiveDynamicStreamingDefinition")
+        if params.get("DrmStreamingsInfo") is not None:
+            self.DrmStreamingsInfo = DrmStreamingsInfoForUpdate()
+            self.DrmStreamingsInfo._deserialize(params.get("DrmStreamingsInfo"))
+        self.ImageSpriteDefinition = params.get("ImageSpriteDefinition")
+        if params.get("ResolutionNames") is not None:
+            self.ResolutionNames = []
+            for item in params.get("ResolutionNames"):
+                obj = ResolutionNameInfo()
+                obj._deserialize(item)
+                self.ResolutionNames.append(obj)
+        self.SubAppId = params.get("SubAppId")
+
+
+class ModifySuperPlayerConfigResponse(AbstractModel):
+    """ModifySuperPlayerConfig返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class ModifyTranscodeTemplateRequest(AbstractModel):
     """ModifyTranscodeTemplate请求参数结构体
 
@@ -12231,6 +12692,67 @@ class ParseStreamingManifestResponse(AbstractModel):
     def _deserialize(self, params):
         self.MediaSegmentSet = params.get("MediaSegmentSet")
         self.RequestId = params.get("RequestId")
+
+
+class PlayerConfig(AbstractModel):
+    """播放器配置详情
+
+    """
+
+    def __init__(self):
+        """
+        :param Name: 播放器配置名字。
+        :type Name: str
+        :param Type: 播放器配置类型，取值范围：
+<li>Preset：系统预置配置；</li>
+<li>Custom：用户自定义配置。</li>
+        :type Type: str
+        :param DrmSwitch: 播放 DRM 保护的自适应码流开关：
+<li>ON：开启，表示仅播放 DRM  保护的自适应码流输出；</li>
+<li>OFF：关闭，表示播放未加密的自适应码流输出。</li>
+        :type DrmSwitch: str
+        :param AdaptiveDynamicStreamingDefinition: 允许输出的未加密的自适应码流模板 ID。
+        :type AdaptiveDynamicStreamingDefinition: int
+        :param DrmStreamingsInfo: 允许输出的 DRM 自适应码流模板内容。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DrmStreamingsInfo: :class:`tencentcloud.vod.v20180717.models.DrmStreamingsInfo`
+        :param ImageSpriteDefinition: 允许输出的雪碧图模板 ID。
+        :type ImageSpriteDefinition: int
+        :param ResolutionNameSet: 播放器对不于不同分辨率的子流展示名字。
+        :type ResolutionNameSet: list of ResolutionNameInfo
+        :param CreateTime: 播放器配置创建时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F)。
+        :type CreateTime: str
+        :param UpdateTime: 播放器配置最后修改时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F)。
+        :type UpdateTime: str
+        """
+        self.Name = None
+        self.Type = None
+        self.DrmSwitch = None
+        self.AdaptiveDynamicStreamingDefinition = None
+        self.DrmStreamingsInfo = None
+        self.ImageSpriteDefinition = None
+        self.ResolutionNameSet = None
+        self.CreateTime = None
+        self.UpdateTime = None
+
+
+    def _deserialize(self, params):
+        self.Name = params.get("Name")
+        self.Type = params.get("Type")
+        self.DrmSwitch = params.get("DrmSwitch")
+        self.AdaptiveDynamicStreamingDefinition = params.get("AdaptiveDynamicStreamingDefinition")
+        if params.get("DrmStreamingsInfo") is not None:
+            self.DrmStreamingsInfo = DrmStreamingsInfo()
+            self.DrmStreamingsInfo._deserialize(params.get("DrmStreamingsInfo"))
+        self.ImageSpriteDefinition = params.get("ImageSpriteDefinition")
+        if params.get("ResolutionNameSet") is not None:
+            self.ResolutionNameSet = []
+            for item in params.get("ResolutionNameSet"):
+                obj = ResolutionNameInfo()
+                obj._deserialize(item)
+                self.ResolutionNameSet.append(obj)
+        self.CreateTime = params.get("CreateTime")
+        self.UpdateTime = params.get("UpdateTime")
 
 
 class PoliticalAsrReviewTemplateInfo(AbstractModel):
@@ -13582,6 +14104,27 @@ class ResetProcedureTemplateResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
+
+
+class ResolutionNameInfo(AbstractModel):
+    """播放器子流名字信息
+
+    """
+
+    def __init__(self):
+        """
+        :param MinEdgeLength: 视频短边长度，单位：像素。
+        :type MinEdgeLength: int
+        :param Name: 展示名字。
+        :type Name: str
+        """
+        self.MinEdgeLength = None
+        self.Name = None
+
+
+    def _deserialize(self, params):
+        self.MinEdgeLength = params.get("MinEdgeLength")
+        self.Name = params.get("Name")
 
 
 class SampleSnapshotTaskInput(AbstractModel):

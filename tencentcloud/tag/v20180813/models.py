@@ -247,6 +247,85 @@ class DescribeResourceTagsByResourceIdsResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeResourceTagsByTagKeysRequest(AbstractModel):
+    """DescribeResourceTagsByTagKeys请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ServiceType: 业务类型
+        :type ServiceType: str
+        :param ResourcePrefix: 资源前缀
+        :type ResourcePrefix: str
+        :param ResourceRegion: 资源地域
+        :type ResourceRegion: str
+        :param ResourceIds: 资源唯一标识
+        :type ResourceIds: list of str
+        :param TagKeys: 资源标签键
+        :type TagKeys: list of str
+        :param Limit: 每页大小，默认为 400
+        :type Limit: int
+        :param Offset: 数据偏移量，默认为 0, 必须为Limit参数的整数倍
+        :type Offset: int
+        """
+        self.ServiceType = None
+        self.ResourcePrefix = None
+        self.ResourceRegion = None
+        self.ResourceIds = None
+        self.TagKeys = None
+        self.Limit = None
+        self.Offset = None
+
+
+    def _deserialize(self, params):
+        self.ServiceType = params.get("ServiceType")
+        self.ResourcePrefix = params.get("ResourcePrefix")
+        self.ResourceRegion = params.get("ResourceRegion")
+        self.ResourceIds = params.get("ResourceIds")
+        self.TagKeys = params.get("TagKeys")
+        self.Limit = params.get("Limit")
+        self.Offset = params.get("Offset")
+
+
+class DescribeResourceTagsByTagKeysResponse(AbstractModel):
+    """DescribeResourceTagsByTagKeys返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param TotalCount: 结果总数
+        :type TotalCount: int
+        :param Offset: 数据位移偏量
+        :type Offset: int
+        :param Limit: 每页大小
+        :type Limit: int
+        :param Rows: 资源标签
+        :type Rows: list of ResourceIdTag
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.Offset = None
+        self.Limit = None
+        self.Rows = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+        if params.get("Rows") is not None:
+            self.Rows = []
+            for item in params.get("Rows"):
+                obj = ResourceIdTag()
+                obj._deserialize(item)
+                self.Rows.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeResourceTagsRequest(AbstractModel):
     """DescribeResourceTags请求参数结构体
 
@@ -433,16 +512,20 @@ class DescribeTagKeysRequest(AbstractModel):
         :type Offset: int
         :param Limit: 每页大小，默认为 15
         :type Limit: int
+        :param ShowProject: 是否展现项目
+        :type ShowProject: int
         """
         self.CreateUin = None
         self.Offset = None
         self.Limit = None
+        self.ShowProject = None
 
 
     def _deserialize(self, params):
         self.CreateUin = params.get("CreateUin")
         self.Offset = params.get("Offset")
         self.Limit = params.get("Limit")
+        self.ShowProject = params.get("ShowProject")
 
 
 class DescribeTagKeysResponse(AbstractModel):
@@ -562,12 +645,15 @@ class DescribeTagsRequest(AbstractModel):
         :type Limit: int
         :param CreateUin: 创建者用户 Uin，不传或为空只将 Uin 作为条件查询
         :type CreateUin: int
+        :param TagKeys: 标签键数组,与标签值同时存在或同时不存在，不存在时表示查询该用户所有标签,当与TagKey同时传递时只会本值
+        :type TagKeys: list of str
         """
         self.TagKey = None
         self.TagValue = None
         self.Offset = None
         self.Limit = None
         self.CreateUin = None
+        self.TagKeys = None
 
 
     def _deserialize(self, params):
@@ -576,6 +662,7 @@ class DescribeTagsRequest(AbstractModel):
         self.Offset = params.get("Offset")
         self.Limit = params.get("Limit")
         self.CreateUin = params.get("CreateUin")
+        self.TagKeys = params.get("TagKeys")
 
 
 class DescribeTagsResponse(AbstractModel):
@@ -666,6 +753,34 @@ class ModifyResourceTagsResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
+
+
+class ResourceIdTag(AbstractModel):
+    """资源标签键值
+
+    """
+
+    def __init__(self):
+        """
+        :param ResourceId: 资源唯一标识
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ResourceId: str
+        :param TagKeyValues: 标签键值对
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TagKeyValues: list of Tag
+        """
+        self.ResourceId = None
+        self.TagKeyValues = None
+
+
+    def _deserialize(self, params):
+        self.ResourceId = params.get("ResourceId")
+        if params.get("TagKeyValues") is not None:
+            self.TagKeyValues = []
+            for item in params.get("TagKeyValues"):
+                obj = Tag()
+                obj._deserialize(item)
+                self.TagKeyValues.append(obj)
 
 
 class ResourceTag(AbstractModel):

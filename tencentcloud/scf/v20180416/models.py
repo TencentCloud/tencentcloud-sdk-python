@@ -798,14 +798,24 @@ class FunctionVersion(AbstractModel):
         :param Description: 版本描述信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type Description: str
+        :param AddTime: 创建时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AddTime: str
+        :param ModTime: 更新时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ModTime: str
         """
         self.Version = None
         self.Description = None
+        self.AddTime = None
+        self.ModTime = None
 
 
     def _deserialize(self, params):
         self.Version = params.get("Version")
         self.Description = params.get("Description")
+        self.AddTime = params.get("AddTime")
+        self.ModTime = params.get("ModTime")
 
 
 class GetFunctionAddressRequest(AbstractModel):

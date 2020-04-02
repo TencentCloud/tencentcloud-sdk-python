@@ -173,47 +173,44 @@ class CreateNotebookInstanceRequest(AbstractModel):
         :type NotebookInstanceName: str
         :param InstanceType: Notebook算力类型
         :type InstanceType: str
-        :param RoleArn: 角色的资源描述
-        :type RoleArn: str
+        :param VolumeSizeInGB: 数据卷大小(GB)
+        :type VolumeSizeInGB: int
         :param DirectInternetAccess: 外网访问权限，可取值Enabled/Disabled
         :type DirectInternetAccess: str
         :param RootAccess: Root用户权限，可取值Enabled/Disabled
         :type RootAccess: str
-        :param SecurityGroupIds: 安全组ID
-        :type SecurityGroupIds: list of str
         :param SubnetId: 子网ID
         :type SubnetId: str
-        :param VolumeSizeInGB: 数据卷大小(GB)
-        :type VolumeSizeInGB: int
-        :param Tags: Notebook标签
-        :type Tags: list of Tag
+        :param LifecycleScriptsName: 生命周期脚本名称
+        :type LifecycleScriptsName: str
+        :param DefaultCodeRepository: 默认存储库名称
+可以是已创建的存储库名称或者已https://开头的公共git库
+        :type DefaultCodeRepository: str
+        :param AdditionalCodeRepositories: 其他存储库列表
+每个元素可以是已创建的存储库名称或者已https://开头的公共git库
+        :type AdditionalCodeRepositories: list of str
         """
         self.NotebookInstanceName = None
         self.InstanceType = None
-        self.RoleArn = None
+        self.VolumeSizeInGB = None
         self.DirectInternetAccess = None
         self.RootAccess = None
-        self.SecurityGroupIds = None
         self.SubnetId = None
-        self.VolumeSizeInGB = None
-        self.Tags = None
+        self.LifecycleScriptsName = None
+        self.DefaultCodeRepository = None
+        self.AdditionalCodeRepositories = None
 
 
     def _deserialize(self, params):
         self.NotebookInstanceName = params.get("NotebookInstanceName")
         self.InstanceType = params.get("InstanceType")
-        self.RoleArn = params.get("RoleArn")
+        self.VolumeSizeInGB = params.get("VolumeSizeInGB")
         self.DirectInternetAccess = params.get("DirectInternetAccess")
         self.RootAccess = params.get("RootAccess")
-        self.SecurityGroupIds = params.get("SecurityGroupIds")
         self.SubnetId = params.get("SubnetId")
-        self.VolumeSizeInGB = params.get("VolumeSizeInGB")
-        if params.get("Tags") is not None:
-            self.Tags = []
-            for item in params.get("Tags"):
-                obj = Tag()
-                obj._deserialize(item)
-                self.Tags.append(obj)
+        self.LifecycleScriptsName = params.get("LifecycleScriptsName")
+        self.DefaultCodeRepository = params.get("DefaultCodeRepository")
+        self.AdditionalCodeRepositories = params.get("AdditionalCodeRepositories")
 
 
 class CreateNotebookInstanceResponse(AbstractModel):
@@ -224,7 +221,6 @@ class CreateNotebookInstanceResponse(AbstractModel):
     def __init__(self):
         """
         :param NotebookInstanceName: Notebook实例名字
-注意：此字段可能返回 null，表示取不到有效值。
         :type NotebookInstanceName: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -720,18 +716,12 @@ class DescribeNotebookInstanceResponse(AbstractModel):
         :param RootAccess: Root用户权限
 注意：此字段可能返回 null，表示取不到有效值。
         :type RootAccess: str
-        :param SecurityGroupIds: 安全组ID
-注意：此字段可能返回 null，表示取不到有效值。
-        :type SecurityGroupIds: list of str
         :param SubnetId: 子网ID
 注意：此字段可能返回 null，表示取不到有效值。
         :type SubnetId: str
         :param VolumeSizeInGB: 数据卷大小(GB)
 注意：此字段可能返回 null，表示取不到有效值。
         :type VolumeSizeInGB: int
-        :param Url: Notebook实例链接
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Url: str
         :param FailureReason: 创建失败原因
 注意：此字段可能返回 null，表示取不到有效值。
         :type FailureReason: str
@@ -741,9 +731,6 @@ class DescribeNotebookInstanceResponse(AbstractModel):
         :param LastModifiedTime: Notebook实例最近修改时间
 注意：此字段可能返回 null，表示取不到有效值。
         :type LastModifiedTime: str
-        :param NetworkInterfaceId: Notebook实例网卡ID
-注意：此字段可能返回 null，表示取不到有效值。
-        :type NetworkInterfaceId: str
         :param LogUrl: Notebook实例日志链接
 注意：此字段可能返回 null，表示取不到有效值。
         :type LogUrl: str
@@ -753,6 +740,17 @@ class DescribeNotebookInstanceResponse(AbstractModel):
         :param InstanceId: Notebook实例ID
 注意：此字段可能返回 null，表示取不到有效值。
         :type InstanceId: str
+        :param LifecycleScriptsName: notebook生命周期脚本名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LifecycleScriptsName: str
+        :param DefaultCodeRepository: 默认存储库名称
+可以是已创建的存储库名称或者已https://开头的公共git库
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DefaultCodeRepository: str
+        :param AdditionalCodeRepositories: 其他存储库列表
+每个元素可以是已创建的存储库名称或者已https://开头的公共git库
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AdditionalCodeRepositories: list of str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -761,17 +759,17 @@ class DescribeNotebookInstanceResponse(AbstractModel):
         self.RoleArn = None
         self.DirectInternetAccess = None
         self.RootAccess = None
-        self.SecurityGroupIds = None
         self.SubnetId = None
         self.VolumeSizeInGB = None
-        self.Url = None
         self.FailureReason = None
         self.CreationTime = None
         self.LastModifiedTime = None
-        self.NetworkInterfaceId = None
         self.LogUrl = None
         self.NotebookInstanceStatus = None
         self.InstanceId = None
+        self.LifecycleScriptsName = None
+        self.DefaultCodeRepository = None
+        self.AdditionalCodeRepositories = None
         self.RequestId = None
 
 
@@ -781,17 +779,17 @@ class DescribeNotebookInstanceResponse(AbstractModel):
         self.RoleArn = params.get("RoleArn")
         self.DirectInternetAccess = params.get("DirectInternetAccess")
         self.RootAccess = params.get("RootAccess")
-        self.SecurityGroupIds = params.get("SecurityGroupIds")
         self.SubnetId = params.get("SubnetId")
         self.VolumeSizeInGB = params.get("VolumeSizeInGB")
-        self.Url = params.get("Url")
         self.FailureReason = params.get("FailureReason")
         self.CreationTime = params.get("CreationTime")
         self.LastModifiedTime = params.get("LastModifiedTime")
-        self.NetworkInterfaceId = params.get("NetworkInterfaceId")
         self.LogUrl = params.get("LogUrl")
         self.NotebookInstanceStatus = params.get("NotebookInstanceStatus")
         self.InstanceId = params.get("InstanceId")
+        self.LifecycleScriptsName = params.get("LifecycleScriptsName")
+        self.DefaultCodeRepository = params.get("DefaultCodeRepository")
+        self.AdditionalCodeRepositories = params.get("AdditionalCodeRepositories")
         self.RequestId = params.get("RequestId")
 
 
@@ -1231,19 +1229,19 @@ class GitSecret(AbstractModel):
 
     def __init__(self):
         """
-        :param None: 无秘钥，默认选项
-        :type None: bool
+        :param NoSecret: 无秘钥，默认选项
+        :type NoSecret: bool
         :param Secret: Git用户名密码base64编码后的字符串
 编码前的内容应为Json字符串，如
 {"UserName": "用户名", "Password":"密码"}
         :type Secret: str
         """
-        self.None = None
+        self.NoSecret = None
         self.Secret = None
 
 
     def _deserialize(self, params):
-        self.None = params.get("None")
+        self.NoSecret = params.get("NoSecret")
         self.Secret = params.get("Secret")
 
 
@@ -1572,29 +1570,6 @@ class StoppingCondition(AbstractModel):
         self.MaxRuntimeInSeconds = params.get("MaxRuntimeInSeconds")
 
 
-class Tag(AbstractModel):
-    """notebook标签
-
-    """
-
-    def __init__(self):
-        """
-        :param Key: key
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Key: str
-        :param Value: value
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Value: str
-        """
-        self.Key = None
-        self.Value = None
-
-
-    def _deserialize(self, params):
-        self.Key = params.get("Key")
-        self.Value = params.get("Value")
-
-
 class UpdateCodeRepositoryRequest(AbstractModel):
     """UpdateCodeRepository请求参数结构体
 
@@ -1656,12 +1631,37 @@ class UpdateNotebookInstanceRequest(AbstractModel):
         :type VolumeSizeInGB: int
         :param InstanceType: 算力资源类型
         :type InstanceType: str
+        :param LifecycleScriptsName: notebook生命周期脚本名称
+        :type LifecycleScriptsName: str
+        :param DisassociateLifecycleScript: 是否解绑生命周期脚本，默认 false。
+如果本来就没有绑定脚本，则忽略此参数；
+如果本来有绑定脚本，此参数为 true 则解绑；
+如果本来有绑定脚本，此参数为 false，则需要额外填入 LifecycleScriptsName
+        :type DisassociateLifecycleScript: bool
+        :param DefaultCodeRepository: 默认存储库名称
+可以是已创建的存储库名称或者已https://开头的公共git库
+        :type DefaultCodeRepository: str
+        :param AdditionalCodeRepositories: 其他存储库列表
+每个元素可以是已创建的存储库名称或者已https://开头的公共git库
+        :type AdditionalCodeRepositories: list of str
+        :param DisassociateDefaultCodeRepository: 是否取消关联默认存储库，默认false
+该值为true时，DefaultCodeRepository将被忽略
+        :type DisassociateDefaultCodeRepository: bool
+        :param DisassociateAdditionalCodeRepositories: 是否取消关联其他存储库，默认false
+该值为true时，AdditionalCodeRepositories将被忽略
+        :type DisassociateAdditionalCodeRepositories: bool
         """
         self.NotebookInstanceName = None
         self.RoleArn = None
         self.RootAccess = None
         self.VolumeSizeInGB = None
         self.InstanceType = None
+        self.LifecycleScriptsName = None
+        self.DisassociateLifecycleScript = None
+        self.DefaultCodeRepository = None
+        self.AdditionalCodeRepositories = None
+        self.DisassociateDefaultCodeRepository = None
+        self.DisassociateAdditionalCodeRepositories = None
 
 
     def _deserialize(self, params):
@@ -1670,6 +1670,12 @@ class UpdateNotebookInstanceRequest(AbstractModel):
         self.RootAccess = params.get("RootAccess")
         self.VolumeSizeInGB = params.get("VolumeSizeInGB")
         self.InstanceType = params.get("InstanceType")
+        self.LifecycleScriptsName = params.get("LifecycleScriptsName")
+        self.DisassociateLifecycleScript = params.get("DisassociateLifecycleScript")
+        self.DefaultCodeRepository = params.get("DefaultCodeRepository")
+        self.AdditionalCodeRepositories = params.get("AdditionalCodeRepositories")
+        self.DisassociateDefaultCodeRepository = params.get("DisassociateDefaultCodeRepository")
+        self.DisassociateAdditionalCodeRepositories = params.get("DisassociateAdditionalCodeRepositories")
 
 
 class UpdateNotebookInstanceResponse(AbstractModel):

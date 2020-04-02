@@ -1359,13 +1359,13 @@ NORMAL_CVM：普通云服务器；
 下一跳类型为NAT，取值Nat网关，形如：nat-12345678；
 下一跳类型为NORMAL_CVM，取值云服务器IPv4地址，形如：10.0.0.12；
         :type NextHopDestination: str
-        :param NetDetectId: 网络探测实例ID。形如：netd-12345678。
+        :param NetDetectId: 网络探测实例ID。形如：netd-12345678。该参数与（VpcId，SubnetId，NetDetectName），至少要有一个。当NetDetectId存在时，使用NetDetectId。
         :type NetDetectId: str
-        :param VpcId: `VPC`实例`ID`。形如：`vpc-12345678`
+        :param VpcId: `VPC`实例`ID`。形如：`vpc-12345678`。该参数与（SubnetId，NetDetectName）配合使用，与NetDetectId至少要有一个。当NetDetectId存在时，使用NetDetectId。
         :type VpcId: str
-        :param SubnetId: 子网实例ID。形如：subnet-12345678。
+        :param SubnetId: 子网实例ID。形如：subnet-12345678。该参数与（VpcId，NetDetectName）配合使用，与NetDetectId至少要有一个。当NetDetectId存在时，使用NetDetectId。
         :type SubnetId: str
-        :param NetDetectName: 网络探测名称，最大长度不能超过60个字节。
+        :param NetDetectName: 网络探测名称，最大长度不能超过60个字节。该参数与（VpcId，SubnetId）配合使用，与NetDetectId至少要有一个。当NetDetectId存在时，使用NetDetectId。
         :type NetDetectName: str
         """
         self.DetectDestinationIp = None

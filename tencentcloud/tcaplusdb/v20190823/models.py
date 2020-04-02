@@ -1230,44 +1230,6 @@ class IdlFileInfoWithoutContent(AbstractModel):
             self.Error._deserialize(params.get("Error"))
 
 
-class ModifyAppNameRequest(AbstractModel):
-    """ModifyAppName请求参数结构体
-
-    """
-
-    def __init__(self):
-        """
-        :param ApplicationId: 需要修改名称的应用实例ID
-        :type ApplicationId: str
-        :param AppName: 需要修改的应用名称，需要URLEncode
-        :type AppName: str
-        """
-        self.ApplicationId = None
-        self.AppName = None
-
-
-    def _deserialize(self, params):
-        self.ApplicationId = params.get("ApplicationId")
-        self.AppName = params.get("AppName")
-
-
-class ModifyAppNameResponse(AbstractModel):
-    """ModifyAppName返回参数结构体
-
-    """
-
-    def __init__(self):
-        """
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
-        self.RequestId = None
-
-
-    def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
-
-
 class ModifyClusterNameRequest(AbstractModel):
     """ModifyClusterName请求参数结构体
 

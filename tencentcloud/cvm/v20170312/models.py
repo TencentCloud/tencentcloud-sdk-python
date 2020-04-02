@@ -2712,7 +2712,7 @@ class Instance(AbstractModel):
         :type DisasterRecoverGroupId: str
         :param IPv6Addresses: 实例的IPv6地址。
 注意：此字段可能返回 null，表示取不到有效值。
-        :type IPv6Addresses: str
+        :type IPv6Addresses: list of str
         :param CamRoleName: CAM角色名。
 注意：此字段可能返回 null，表示取不到有效值。
         :type CamRoleName: str

@@ -380,7 +380,7 @@ class CdbClient(AbstractClient):
 
 
     def DeleteBackup(self, request):
-        """本接口(DeleteBackup)用于删除数据库备份。
+        """本接口(DeleteBackup)用于删除数据库备份。本接口只支持删除手动发起的备份。
 
         :param request: Request instance for DeleteBackup.
         :type request: :class:`tencentcloud.cdb.v20170320.models.DeleteBackupRequest`
@@ -1435,6 +1435,34 @@ class CdbClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeRollbackRangeTimeResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeSLowLogData(self, request):
+        """条件检索实例的慢日志。只允许查看一个月之内的慢日志
+
+        :param request: Request instance for DescribeSLowLogData.
+        :type request: :class:`tencentcloud.cdb.v20170320.models.DescribeSLowLogDataRequest`
+        :rtype: :class:`tencentcloud.cdb.v20170320.models.DescribeSLowLogDataResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeSLowLogData", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeSLowLogDataResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

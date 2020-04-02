@@ -4158,6 +4158,8 @@ class RuleInput(AbstractModel):
         :type TrpcCallee: str
         :param TrpcFunc: TRPC调用服务接口，ForwardType为TRPC时必填
         :type TrpcFunc: str
+        :param Quic: 是否开启QUIC，注意，只有HTTPS域名才能开启QUIC
+        :type Quic: bool
         """
         self.Domain = None
         self.Url = None
@@ -4171,6 +4173,7 @@ class RuleInput(AbstractModel):
         self.TargetType = None
         self.TrpcCallee = None
         self.TrpcFunc = None
+        self.Quic = None
 
 
     def _deserialize(self, params):
@@ -4190,6 +4193,7 @@ class RuleInput(AbstractModel):
         self.TargetType = params.get("TargetType")
         self.TrpcCallee = params.get("TrpcCallee")
         self.TrpcFunc = params.get("TrpcFunc")
+        self.Quic = params.get("Quic")
 
 
 class RuleOutput(AbstractModel):
@@ -4248,6 +4252,9 @@ class RuleOutput(AbstractModel):
         :param TrpcFunc: TRPC调用服务接口，ForwardType为TRPC时有效
 注意：此字段可能返回 null，表示取不到有效值。
         :type TrpcFunc: str
+        :param QuicStatus: QUIC状态
+注意：此字段可能返回 null，表示取不到有效值。
+        :type QuicStatus: str
         """
         self.LocationId = None
         self.Domain = None
@@ -4269,6 +4276,7 @@ class RuleOutput(AbstractModel):
         self.WafDomainId = None
         self.TrpcCallee = None
         self.TrpcFunc = None
+        self.QuicStatus = None
 
 
     def _deserialize(self, params):
@@ -4300,6 +4308,7 @@ class RuleOutput(AbstractModel):
         self.WafDomainId = params.get("WafDomainId")
         self.TrpcCallee = params.get("TrpcCallee")
         self.TrpcFunc = params.get("TrpcFunc")
+        self.QuicStatus = params.get("QuicStatus")
 
 
 class RuleTargets(AbstractModel):

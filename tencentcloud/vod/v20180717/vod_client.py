@@ -200,6 +200,34 @@ class VodClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def CreateAdaptiveDynamicStreamingTemplate(self, request):
+        """创建自适应转码模板，数量上限：100。
+
+        :param request: Request instance for CreateAdaptiveDynamicStreamingTemplate.
+        :type request: :class:`tencentcloud.vod.v20180717.models.CreateAdaptiveDynamicStreamingTemplateRequest`
+        :rtype: :class:`tencentcloud.vod.v20180717.models.CreateAdaptiveDynamicStreamingTemplateResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("CreateAdaptiveDynamicStreamingTemplate", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateAdaptiveDynamicStreamingTemplateResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def CreateAnimatedGraphicsTemplate(self, request):
         """创建用户自定义转动图模板，数量上限：16。
 
@@ -427,6 +455,34 @@ class VodClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def CreateSuperPlayerConfig(self, request):
+        """创建超级播放器配置，数量上限：100。
+
+        :param request: Request instance for CreateSuperPlayerConfig.
+        :type request: :class:`tencentcloud.vod.v20180717.models.CreateSuperPlayerConfigRequest`
+        :rtype: :class:`tencentcloud.vod.v20180717.models.CreateSuperPlayerConfigResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("CreateSuperPlayerConfig", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateSuperPlayerConfigResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def CreateTranscodeTemplate(self, request):
         """创建用户自定义转码模板，数量上限：100。
 
@@ -555,6 +611,34 @@ class VodClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteAIRecognitionTemplateResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DeleteAdaptiveDynamicStreamingTemplate(self, request):
+        """删除自适应转码模板
+
+        :param request: Request instance for DeleteAdaptiveDynamicStreamingTemplate.
+        :type request: :class:`tencentcloud.vod.v20180717.models.DeleteAdaptiveDynamicStreamingTemplateRequest`
+        :rtype: :class:`tencentcloud.vod.v20180717.models.DeleteAdaptiveDynamicStreamingTemplateResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DeleteAdaptiveDynamicStreamingTemplate", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DeleteAdaptiveDynamicStreamingTemplateResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -809,6 +893,35 @@ class VodClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteSnapshotByTimeOffsetTemplateResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DeleteSuperPlayerConfig(self, request):
+        """删除超级播放器配置。
+        *注：系统预置播放器配置不允许删除。*
+
+        :param request: Request instance for DeleteSuperPlayerConfig.
+        :type request: :class:`tencentcloud.vod.v20180717.models.DeleteSuperPlayerConfigRequest`
+        :rtype: :class:`tencentcloud.vod.v20180717.models.DeleteSuperPlayerConfigResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DeleteSuperPlayerConfig", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DeleteSuperPlayerConfigResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -1463,6 +1576,34 @@ class VodClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeSuperPlayerConfigs(self, request):
+        """查询超级播放器配置，支持根据条件，分页查询。
+
+        :param request: Request instance for DescribeSuperPlayerConfigs.
+        :type request: :class:`tencentcloud.vod.v20180717.models.DescribeSuperPlayerConfigsRequest`
+        :rtype: :class:`tencentcloud.vod.v20180717.models.DescribeSuperPlayerConfigsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeSuperPlayerConfigs", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeSuperPlayerConfigsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeTaskDetail(self, request):
         """通过任务 ID 查询任务的执行状态和结果的详细信息（最多可以查询3天之内提交的任务）。
 
@@ -1839,6 +1980,34 @@ class VodClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def ModifyAdaptiveDynamicStreamingTemplate(self, request):
+        """修改自适应转码模板
+
+        :param request: Request instance for ModifyAdaptiveDynamicStreamingTemplate.
+        :type request: :class:`tencentcloud.vod.v20180717.models.ModifyAdaptiveDynamicStreamingTemplateRequest`
+        :rtype: :class:`tencentcloud.vod.v20180717.models.ModifyAdaptiveDynamicStreamingTemplateResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ModifyAdaptiveDynamicStreamingTemplate", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ModifyAdaptiveDynamicStreamingTemplateResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def ModifyAnimatedGraphicsTemplate(self, request):
         """修改用户自定义转动图模板。
 
@@ -2105,6 +2274,34 @@ class VodClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifySubAppIdStatusResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ModifySuperPlayerConfig(self, request):
+        """修改超级播放器配置。
+
+        :param request: Request instance for ModifySuperPlayerConfig.
+        :type request: :class:`tencentcloud.vod.v20180717.models.ModifySuperPlayerConfigRequest`
+        :rtype: :class:`tencentcloud.vod.v20180717.models.ModifySuperPlayerConfigResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ModifySuperPlayerConfig", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ModifySuperPlayerConfigResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

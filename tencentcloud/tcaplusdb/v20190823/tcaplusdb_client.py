@@ -529,34 +529,6 @@ class TcaplusdbClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def ModifyAppName(self, request):
-        """修改指定的应用名称
-
-        :param request: Request instance for ModifyAppName.
-        :type request: :class:`tencentcloud.tcaplusdb.v20190823.models.ModifyAppNameRequest`
-        :rtype: :class:`tencentcloud.tcaplusdb.v20190823.models.ModifyAppNameResponse`
-
-        """
-        try:
-            params = request._serialize()
-            body = self.call("ModifyAppName", params)
-            response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.ModifyAppNameResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(e.message, e.message)
-
-
     def ModifyClusterName(self, request):
         """修改指定的集群名称
 

@@ -1009,11 +1009,14 @@ class CreateDeployGroupRequest(AbstractModel):
         :type Affinity: list of int
         :param LimitNum: 置放群组亲和性策略1中同台物理机上实例的限制个数。
         :type LimitNum: int
+        :param DevClass: 置放群组机型属性，可选参数：SH12+SH02、TS85。
+        :type DevClass: list of str
         """
         self.DeployGroupName = None
         self.Description = None
         self.Affinity = None
         self.LimitNum = None
+        self.DevClass = None
 
 
     def _deserialize(self, params):
@@ -1021,6 +1024,7 @@ class CreateDeployGroupRequest(AbstractModel):
         self.Description = params.get("Description")
         self.Affinity = params.get("Affinity")
         self.LimitNum = params.get("LimitNum")
+        self.DevClass = params.get("DevClass")
 
 
 class CreateDeployGroupResponse(AbstractModel):
@@ -3293,6 +3297,90 @@ class DescribeRollbackRangeTimeResponse(AbstractModel):
             self.Items = []
             for item in params.get("Items"):
                 obj = InstanceRollbackRangeTime()
+                obj._deserialize(item)
+                self.Items.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeSLowLogDataRequest(AbstractModel):
+    """DescribeSLowLogData请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param InstanceId: 实例 ID。
+        :type InstanceId: str
+        :param StartTime: 开始时间戳。
+        :type StartTime: int
+        :param EndTime: 结束时间戳。
+        :type EndTime: int
+        :param UserHosts: 客户端 Host 列表。
+        :type UserHosts: list of str
+        :param UserNames: 客户端 用户名 列表。
+        :type UserNames: list of str
+        :param DataBases: 访问的 数据库 列表。
+        :type DataBases: list of str
+        :param SortBy: 排序字段。当前支持：Timestamp,QueryTime,LockTime,RowsExamined,RowsSent 。
+        :type SortBy: str
+        :param OrderBy: 升序还是降序排列。当前支持：ASC,DESC 。
+        :type OrderBy: str
+        :param Offset: 偏移量，默认为0。
+        :type Offset: int
+        :param Limit: 一次性返回的记录数量，最大为400。
+        :type Limit: int
+        """
+        self.InstanceId = None
+        self.StartTime = None
+        self.EndTime = None
+        self.UserHosts = None
+        self.UserNames = None
+        self.DataBases = None
+        self.SortBy = None
+        self.OrderBy = None
+        self.Offset = None
+        self.Limit = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.StartTime = params.get("StartTime")
+        self.EndTime = params.get("EndTime")
+        self.UserHosts = params.get("UserHosts")
+        self.UserNames = params.get("UserNames")
+        self.DataBases = params.get("DataBases")
+        self.SortBy = params.get("SortBy")
+        self.OrderBy = params.get("OrderBy")
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+
+
+class DescribeSLowLogDataResponse(AbstractModel):
+    """DescribeSLowLogData返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param TotalCount: 符合条件的记录总数。
+        :type TotalCount: int
+        :param Items: 查询到的记录。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Items: list of SlowLogItem
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.Items = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("Items") is not None:
+            self.Items = []
+            for item in params.get("Items"):
+                obj = SlowLogItem()
                 obj._deserialize(item)
                 self.Items.append(obj)
         self.RequestId = params.get("RequestId")
@@ -6446,6 +6534,74 @@ class SlowLogInfo(AbstractModel):
         self.IntranetUrl = params.get("IntranetUrl")
         self.InternetUrl = params.get("InternetUrl")
         self.Type = params.get("Type")
+
+
+class SlowLogItem(AbstractModel):
+    """结构化的慢日志详情
+
+    """
+
+    def __init__(self):
+        """
+        :param Timestamp: Sql的执行时间。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Timestamp: int
+        :param QueryTime: Sql的执行时长。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type QueryTime: float
+        :param SqlText: Sql语句。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SqlText: str
+        :param UserHost: 客户端地址。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UserHost: str
+        :param UserName: 用户名。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UserName: str
+        :param Database: 数据库名。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Database: str
+        :param LockTime: 锁时长。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LockTime: float
+        :param RowsExamined: 扫描行数。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RowsExamined: int
+        :param RowsSent: 结果集行数。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RowsSent: int
+        :param SqlTemplate: Sql模板。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SqlTemplate: str
+        :param Md5: Sql语句的md5。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Md5: str
+        """
+        self.Timestamp = None
+        self.QueryTime = None
+        self.SqlText = None
+        self.UserHost = None
+        self.UserName = None
+        self.Database = None
+        self.LockTime = None
+        self.RowsExamined = None
+        self.RowsSent = None
+        self.SqlTemplate = None
+        self.Md5 = None
+
+
+    def _deserialize(self, params):
+        self.Timestamp = params.get("Timestamp")
+        self.QueryTime = params.get("QueryTime")
+        self.SqlText = params.get("SqlText")
+        self.UserHost = params.get("UserHost")
+        self.UserName = params.get("UserName")
+        self.Database = params.get("Database")
+        self.LockTime = params.get("LockTime")
+        self.RowsExamined = params.get("RowsExamined")
+        self.RowsSent = params.get("RowsSent")
+        self.SqlTemplate = params.get("SqlTemplate")
+        self.Md5 = params.get("Md5")
 
 
 class SqlFileInfo(AbstractModel):

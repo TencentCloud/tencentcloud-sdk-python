@@ -244,6 +244,9 @@ class ClusterInstancesInfo(AbstractModel):
         :param ServiceClass: 集群类型:EMR,CLICKHOUSE,DRUID
 注意：此字段可能返回 null，表示取不到有效值。
         :type ServiceClass: str
+        :param AliasInfo: 集群所有节点的别名序列化
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AliasInfo: str
         """
         self.Id = None
         self.ClusterId = None
@@ -272,6 +275,7 @@ class ClusterInstancesInfo(AbstractModel):
         self.Tags = None
         self.HiveMetaDb = None
         self.ServiceClass = None
+        self.AliasInfo = None
 
 
     def _deserialize(self, params):
@@ -309,6 +313,7 @@ class ClusterInstancesInfo(AbstractModel):
                 self.Tags.append(obj)
         self.HiveMetaDb = params.get("HiveMetaDb")
         self.ServiceClass = params.get("ServiceClass")
+        self.AliasInfo = params.get("AliasInfo")
 
 
 class CreateInstanceRequest(AbstractModel):
