@@ -27,7 +27,7 @@ class ApplyCertificateRequest(AbstractModel):
         :type DvAuthMethod: str
         :param DomainName: 域名。
         :type DomainName: str
-        :param ProjectId: 项目ID。
+        :param ProjectId: 项目 ID。
         :type ProjectId: int
         :param PackageType: 证书类型，目前仅支持类型2。2 = TrustAsia TLS RSA CA。
         :type PackageType: str
@@ -37,15 +37,15 @@ class ApplyCertificateRequest(AbstractModel):
         :type ContactPhone: str
         :param ValidityPeriod: 有效期，默认12个月，目前仅支持12个月。
         :type ValidityPeriod: str
-        :param CsrEncryptAlgo: 加密算法，仅支持RSA。
+        :param CsrEncryptAlgo: 加密算法，仅支持 RSA。
         :type CsrEncryptAlgo: str
         :param CsrKeyParameter: 密钥对参数，仅支持2048。
         :type CsrKeyParameter: str
-        :param CsrKeyPassword: csr的加密密码。
+        :param CsrKeyPassword: CSR 的加密密码。
         :type CsrKeyPassword: str
         :param Alias: 备注名称。
         :type Alias: str
-        :param OldCertificateId: 原证书id，用于重新申请。
+        :param OldCertificateId: 原证书 ID，用于重新申请。
         :type OldCertificateId: str
         """
         self.DvAuthMethod = None
@@ -84,7 +84,7 @@ class ApplyCertificateResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param CertificateId: 证书ID。
+        :param CertificateId: 证书 ID。
         :type CertificateId: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -105,7 +105,7 @@ class CancelCertificateOrderRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param CertificateId: 证书id。
+        :param CertificateId: 证书 ID。
         :type CertificateId: str
         """
         self.CertificateId = None
@@ -122,7 +122,7 @@ class CancelCertificateOrderResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param CertificateId: 取消订单成功的证书id
+        :param CertificateId: 取消订单成功的证书 ID。
         :type CertificateId: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -343,7 +343,7 @@ class CommitCertificateInformationRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param CertificateId: 证书id。
+        :param CertificateId: 证书 ID。
         :type CertificateId: str
         """
         self.CertificateId = None
@@ -385,7 +385,7 @@ class DeleteCertificateRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param CertificateId: 证书ID。
+        :param CertificateId: 证书 ID。
         :type CertificateId: str
         """
         self.CertificateId = None
@@ -423,7 +423,7 @@ class DescribeCertificateDetailRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param CertificateId: 证书id
+        :param CertificateId: 证书 ID。
         :type CertificateId: str
         """
         self.CertificateId = None
@@ -440,19 +440,19 @@ class DescribeCertificateDetailResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param OwnerUin: 用户uin。
+        :param OwnerUin: 用户 UIN。
 注意：此字段可能返回 null，表示取不到有效值。
         :type OwnerUin: str
-        :param ProjectId: 项目ID。
+        :param ProjectId: 项目 ID。
 注意：此字段可能返回 null，表示取不到有效值。
         :type ProjectId: str
-        :param From: 证书来源（trustasia = 亚洲诚信，upload = 用户上传）。
+        :param From: 证书来源：trustasia = 亚洲诚信，upload = 用户上传。
 注意：此字段可能返回 null，表示取不到有效值。
         :type From: str
-        :param CertificateType: 证书类型（目前支持：CA = 客户端证书，SVR = 服务器证书）
+        :param CertificateType: 证书类型：CA = 客户端证书，SVR = 服务器证书。
 注意：此字段可能返回 null，表示取不到有效值。
         :type CertificateType: str
-        :param PackageType: 证书套餐类型：1 = GeoTrust DV SSL CA - G3， 2 = TrustAsia TLS RSA CA， 3 = Symantec 增强型企业版(EV Pro)， 4 = Symantec 增强型(EV)， 5 = Symantec 企业型专业版(OV Pro)， 6 = Symantec 企业型(OV)， 7 = Symantec 企业型(OV)通配符， 8 = Geotrust 增强型(EV)， 9 = Geotrust 企业型(OV)， 10 = Geotrust 企业型(OV)通配符， 11 = TrustAsia 域名型多域名 SSL证书， 12 = TrustAsia 域名型(DV)通配符， 13 = TrustAsia 企业型通配符 （OV）SSL证书(D3)， 14 = TrustAsia 企业型 （OV）SSL证书(D3)， 15 = TrustAsia 企业型多域名 （OV）SSL证书(D3)， 16 = TrustAsia 增强型 （EV）SSL证书(D3)， 17 = TrustAsia 增强型多域名（EV）SSL证书(D3)， 18 = GlobalSign 企业型（OV）SSL证， 19 = GlobalSign 企业型通配符 （OV）SSL证书， 20 = GlobalSign 增强型 （EV）SSL证书， 21 = TrustAsia 企业型通配符多域名 （OV）SSL证书(D3)， 22 = GlobalSign 企业型多域名 （OV）SSL证书， 23 = GlobalSign 企业型通配符多域名 （OV）SSL证书， 24 = GlobalSign 增强型多域名（EV） SSL证书。
+        :param PackageType: 证书套餐类型：1 = GeoTrust DV SSL CA - G3， 2 = TrustAsia TLS RSA CA， 3 = Symantec 增强型企业版（EV Pro）， 4 = Symantec 增强型（EV）， 5 = Symantec 企业型专业版（OV Pro）， 6 = Symantec 企业型（OV）， 7 = Symantec 企业型（OV）通配符， 8 = Geotrust 增强型（EV）， 9 = Geotrust 企业型（OV）， 10 = Geotrust 企业型（OV）通配符， 11 = TrustAsia 域名型多域名 SSL 证书， 12 = TrustAsia 域名型（DV）通配符， 13 = TrustAsia 企业型通配符（OV）SSL 证书（D3）， 14 = TrustAsia 企业型（OV）SSL 证书（D3）， 15 = TrustAsia 企业型多域名 （OV）SSL 证书（D3）， 16 = TrustAsia 增强型 （EV）SSL 证书（D3）， 17 = TrustAsia 增强型多域名（EV）SSL 证书（D3）， 18 = GlobalSign 企业型（OV）SSL 证书， 19 = GlobalSign 企业型通配符 （OV）SSL 证书， 20 = GlobalSign 增强型 （EV）SSL 证书， 21 = TrustAsia 企业型通配符多域名（OV）SSL 证书（D3）， 22 = GlobalSign 企业型多域名（OV）SSL 证书， 23 = GlobalSign 企业型通配符多域名（OV）SSL 证书， 24 = GlobalSign 增强型多域名（EV）SSL 证书。
 注意：此字段可能返回 null，表示取不到有效值。
         :type PackageType: str
         :param ProductZhName: 颁发者。
@@ -482,13 +482,13 @@ class DescribeCertificateDetailResponse(AbstractModel):
         :param CertEndTime: 证书失效时间。
 注意：此字段可能返回 null，表示取不到有效值。
         :type CertEndTime: str
-        :param ValidityPeriod: 证书有效期：单位(月)。
+        :param ValidityPeriod: 证书有效期：单位（月）。
 注意：此字段可能返回 null，表示取不到有效值。
         :type ValidityPeriod: str
         :param InsertTime: 申请时间。
 注意：此字段可能返回 null，表示取不到有效值。
         :type InsertTime: str
-        :param OrderId: 订单ID。
+        :param OrderId: 订单 ID。
 注意：此字段可能返回 null，表示取不到有效值。
         :type OrderId: str
         :param CertificateExtra: 证书扩展信息。
@@ -500,13 +500,13 @@ class DescribeCertificateDetailResponse(AbstractModel):
         :param CertificatePublicKey: 证书公钥
 注意：此字段可能返回 null，表示取不到有效值。
         :type CertificatePublicKey: str
-        :param DvAuthDetail: DV认证信息。
+        :param DvAuthDetail: DV 认证信息。
 注意：此字段可能返回 null，表示取不到有效值。
         :type DvAuthDetail: :class:`tencentcloud.ssl.v20191205.models.DvAuthDetail`
         :param VulnerabilityReport: 漏洞扫描评估报告。
 注意：此字段可能返回 null，表示取不到有效值。
         :type VulnerabilityReport: str
-        :param CertificateId: 证书ID。
+        :param CertificateId: 证书 ID。
 注意：此字段可能返回 null，表示取不到有效值。
         :type CertificateId: str
         :param TypeName: 证书类型名称。
@@ -692,7 +692,7 @@ class DescribeCertificateRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param CertificateId: 证书ID。
+        :param CertificateId: 证书 ID。
         :type CertificateId: str
         """
         self.CertificateId = None
@@ -709,19 +709,19 @@ class DescribeCertificateResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param OwnerUin: 用户uin。
+        :param OwnerUin: 用户 UIN。
 注意：此字段可能返回 null，表示取不到有效值。
         :type OwnerUin: str
-        :param ProjectId: 项目ID。
+        :param ProjectId: 项目 ID。
 注意：此字段可能返回 null，表示取不到有效值。
         :type ProjectId: str
-        :param From: 证书来源（trustasia = 亚洲诚信，upload = 用户上传）。
+        :param From: 证书来源：trustasia = 亚洲诚信，upload = 用户上传。
 注意：此字段可能返回 null，表示取不到有效值。
         :type From: str
-        :param CertificateType: 证书类型（目前支持：CA = 客户端证书，SVR = 服务器证书）
+        :param CertificateType: 证书类型：CA = 客户端证书，SVR = 服务器证书。
 注意：此字段可能返回 null，表示取不到有效值。
         :type CertificateType: str
-        :param PackageType: 证书套餐类型：1 = GeoTrust DV SSL CA - G3， 2 = TrustAsia TLS RSA CA， 3 = Symantec 增强型企业版(EV Pro)， 4 = Symantec 增强型(EV)， 5 = Symantec 企业型专业版(OV Pro)， 6 = Symantec 企业型(OV)， 7 = Symantec 企业型(OV)通配符， 8 = Geotrust 增强型(EV)， 9 = Geotrust 企业型(OV)， 10 = Geotrust 企业型(OV)通配符， 11 = TrustAsia 域名型多域名 SSL证书， 12 = TrustAsia 域名型(DV)通配符， 13 = TrustAsia 企业型通配符 （OV）SSL证书(D3)， 14 = TrustAsia 企业型 （OV）SSL证书(D3)， 15 = TrustAsia 企业型多域名 （OV）SSL证书(D3)， 16 = TrustAsia 增强型 （EV）SSL证书(D3)， 17 = TrustAsia 增强型多域名（EV）SSL证书(D3)， 18 = GlobalSign 企业型（OV）SSL证， 19 = GlobalSign 企业型通配符 （OV）SSL证书， 20 = GlobalSign 增强型 （EV）SSL证书， 21 = TrustAsia 企业型通配符多域名 （OV）SSL证书(D3)， 22 = GlobalSign 企业型多域名 （OV）SSL证书， 23 = GlobalSign 企业型通配符多域名 （OV）SSL证书， 24 = GlobalSign 增强型多域名（EV） SSL证书。
+        :param PackageType: 证书套餐类型：1 = GeoTrust DV SSL CA - G3， 2 = TrustAsia TLS RSA CA， 3 = Symantec 增强型企业版（EV Pro）， 4 = Symantec 增强型（EV）， 5 = Symantec 企业型专业版（OV Pro）， 6 = Symantec 企业型（OV）， 7 = Symantec 企业型（OV）通配符， 8 = Geotrust 增强型（EV）， 9 = Geotrust 企业型（OV）， 10 = Geotrust 企业型（OV）通配符， 11 = TrustAsia 域名型多域名 SSL 证书， 12 = TrustAsia 域名型（DV）通配符， 13 = TrustAsia 企业型通配符（OV）SSL 证书（D3）， 14 = TrustAsia 企业型（OV）SSL 证书（D3）， 15 = TrustAsia 企业型多域名 （OV）SSL 证书（D3）， 16 = TrustAsia 增强型 （EV）SSL 证书（D3）， 17 = TrustAsia 增强型多域名（EV）SSL 证书（D3）， 18 = GlobalSign 企业型（OV）SSL 证书， 19 = GlobalSign 企业型通配符 （OV）SSL 证书， 20 = GlobalSign 增强型 （EV）SSL 证书， 21 = TrustAsia 企业型通配符多域名（OV）SSL 证书（D3）， 22 = GlobalSign 企业型多域名（OV）SSL 证书， 23 = GlobalSign 企业型通配符多域名（OV）SSL 证书， 24 = GlobalSign 增强型多域名（EV）SSL 证书。
 注意：此字段可能返回 null，表示取不到有效值。
         :type PackageType: str
         :param ProductZhName: 证书办法者名称。
@@ -757,19 +757,19 @@ class DescribeCertificateResponse(AbstractModel):
         :param InsertTime: 申请时间。
 注意：此字段可能返回 null，表示取不到有效值。
         :type InsertTime: str
-        :param OrderId: 订单ID。
+        :param OrderId: 订单 ID。
 注意：此字段可能返回 null，表示取不到有效值。
         :type OrderId: str
         :param CertificateExtra: 证书扩展信息。
 注意：此字段可能返回 null，表示取不到有效值。
         :type CertificateExtra: :class:`tencentcloud.ssl.v20191205.models.CertificateExtra`
-        :param DvAuthDetail: DV认证信息。
+        :param DvAuthDetail: DV 认证信息。
 注意：此字段可能返回 null，表示取不到有效值。
         :type DvAuthDetail: :class:`tencentcloud.ssl.v20191205.models.DvAuthDetail`
         :param VulnerabilityReport: 漏洞扫描评估报告。
 注意：此字段可能返回 null，表示取不到有效值。
         :type VulnerabilityReport: str
-        :param CertificateId: 证书ID。
+        :param CertificateId: 证书 ID。
 注意：此字段可能返回 null，表示取不到有效值。
         :type CertificateId: str
         :param PackageTypeName: 证书类型名称。
@@ -887,17 +887,17 @@ class DescribeCertificatesRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Offset: 分页偏移量，从0开始
+        :param Offset: 分页偏移量，从0开始。
         :type Offset: int
         :param Limit: 每页数量。
         :type Limit: int
         :param SearchKey: 搜索关键词。
         :type SearchKey: str
-        :param CertificateType: 证书类型，可选值：CA，SVR。
+        :param CertificateType: 证书类型：CA = 客户端证书，SVR = 服务器证书。
         :type CertificateType: str
-        :param ProjectId: 项目ID。
+        :param ProjectId: 项目 ID。
         :type ProjectId: int
-        :param ExpirationSort: 按到期时间排序：DESC降序， ASC 升序。
+        :param ExpirationSort: 按到期时间排序：DESC = 降序， ASC = 升序。
         :type ExpirationSort: str
         :param CertificateStatus: 证书状态。
         :type CertificateStatus: list of int non-negative
@@ -964,7 +964,7 @@ class DownloadCertificateRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param CertificateId: 证书ID。
+        :param CertificateId: 证书 ID。
         :type CertificateId: str
         """
         self.CertificateId = None
@@ -981,10 +981,10 @@ class DownloadCertificateResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param Content: ZIP base64编码内容，base64解码后可保存为ZIP文件。
+        :param Content: ZIP base64 编码内容，base64 解码后可保存为 ZIP 文件。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Content: str
-        :param ContentType: MIME类型：application/zip = ZIP压缩文件。
+        :param ContentType: MIME 类型：application/zip = ZIP 压缩文件。
 注意：此字段可能返回 null，表示取不到有效值。
         :type ContentType: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -1099,7 +1099,7 @@ class ModifyCertificateAliasRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param CertificateId: 证书id。
+        :param CertificateId: 证书 ID。
         :type CertificateId: str
         :param Alias: 备注名称。
         :type Alias: str
@@ -1120,7 +1120,7 @@ class ModifyCertificateAliasResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param CertificateId: 修改成功的证书id。
+        :param CertificateId: 修改成功的证书 ID。
         :type CertificateId: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -1141,9 +1141,9 @@ class ModifyCertificateProjectRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param CertificateIdList: 需要修改所属项目的证书id集合，最多100个证书
+        :param CertificateIdList: 需要修改所属项目的证书 ID 集合，最多100个证书。
         :type CertificateIdList: list of str
-        :param ProjectId: 项目id。
+        :param ProjectId: 项目 ID。
         :type ProjectId: int
         """
         self.CertificateIdList = None
@@ -1162,10 +1162,10 @@ class ModifyCertificateProjectResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param SuccessCertificates: 修改所属项目成功的证书集合
+        :param SuccessCertificates: 修改所属项目成功的证书集合。
 注意：此字段可能返回 null，表示取不到有效值。
         :type SuccessCertificates: list of str
-        :param FailCertificates: 修改所属项目失败的证书集合
+        :param FailCertificates: 修改所属项目失败的证书集合。
 注意：此字段可能返回 null，表示取不到有效值。
         :type FailCertificates: list of str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -1253,15 +1253,15 @@ class ReplaceCertificateRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param CertificateId: 证书ID。
+        :param CertificateId: 证书 ID。
         :type CertificateId: str
         :param ValidType: 验证类型：DNS_AUTO = 自动DNS验证，DNS = 手动DNS验证，FILE = 文件验证。
         :type ValidType: str
-        :param CsrType: 类型，默认Original。可选项：Original = 原证书csr，Upload = 手动上传，Online = 在线生成。
+        :param CsrType: 类型，默认 Original。可选项：Original = 原证书 CSR，Upload = 手动上传，Online = 在线生成。
         :type CsrType: str
-        :param CsrContent: CSR内容。
+        :param CsrContent: CSR 内容。
         :type CsrContent: str
-        :param CsrkeyPassword: key密码。
+        :param CsrkeyPassword: KEY 密码。
         :type CsrkeyPassword: str
         """
         self.CertificateId = None
@@ -1286,7 +1286,7 @@ class ReplaceCertificateResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param CertificateId: 证书ID。
+        :param CertificateId: 证书 ID。
         :type CertificateId: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -1307,11 +1307,11 @@ class SubmitCertificateInformationRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param CertificateId: 证书id。
+        :param CertificateId: 证书 ID。
         :type CertificateId: str
-        :param CsrType: Csr生成方式: online = 在线生成, parse = 手动上传 。
+        :param CsrType: CSR 生成方式：online = 在线生成, parse = 手动上传 。
         :type CsrType: str
-        :param CsrContent: 上传的Csr内容。
+        :param CsrContent: 上传的 CSR 内容。
         :type CsrContent: str
         :param CertificateDomain: 绑定证书的域名 。
         :type CertificateDomain: str
@@ -1325,7 +1325,7 @@ class SubmitCertificateInformationRequest(AbstractModel):
         :type OrganizationDivision: str
         :param OrganizationAddress: 公司详细地址 。
         :type OrganizationAddress: str
-        :param OrganizationCountry: 国家名称 如中国:CN 。
+        :param OrganizationCountry: 国家名称 如中国：CN 。
         :type OrganizationCountry: str
         :param OrganizationCity: 公司所在城市 。
         :type OrganizationCity: str
@@ -1424,7 +1424,7 @@ class SubmitCertificateInformationResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param CertificateId: 证书id。
+        :param CertificateId: 证书 ID。
         :type CertificateId: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -1585,13 +1585,13 @@ class UploadCertificateRequest(AbstractModel):
         """
         :param CertificatePublicKey: 证书公钥。
         :type CertificatePublicKey: str
-        :param CertificatePrivateKey: 私钥内容，证书类型为SVR时必填，为CA时可不填。
+        :param CertificatePrivateKey: 私钥内容，证书类型为 SVR 时必填，为 CA 时可不填。
         :type CertificatePrivateKey: str
-        :param CertificateType: 证书类型，默认SVR。CA = 客户端证书，SVR = 服务器证书。
+        :param CertificateType: 证书类型，默认 SVR。CA = 客户端证书，SVR = 服务器证书。
         :type CertificateType: str
-        :param Alias: 证书别名。
+        :param Alias: 备注名称。
         :type Alias: str
-        :param ProjectId: 项目id。
+        :param ProjectId: 项目 ID。
         :type ProjectId: int
         """
         self.CertificatePublicKey = None
@@ -1616,7 +1616,7 @@ class UploadCertificateResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param CertificateId: 证书ID。
+        :param CertificateId: 证书 ID。
         :type CertificateId: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str

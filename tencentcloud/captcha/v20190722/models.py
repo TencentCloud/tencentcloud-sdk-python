@@ -512,7 +512,7 @@ class DescribeCaptchaResultRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param CaptchaType: 验证码类型，9：滑块验证码
+        :param CaptchaType: 固定填值：9。可在控制台配置不同验证码类型。
         :type CaptchaType: int
         :param Ticket: 验证码返回给用户的票据
         :type Ticket: str

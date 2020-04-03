@@ -486,8 +486,9 @@ class Entity(AbstractModel):
         """
         :param Type: 类型，取值有：
 <li>PERSON：个人。</li>
+<li>TEAM：团队。</li>
         :type Type: str
-        :param Id: Id，当 Type=PERSON，取值为用户 Id。
+        :param Id: Id，当 Type=PERSON，取值为用户 Id，当 Type=TEAM，取值为团队 Id。
         :type Id: str
         """
         self.Type = None

@@ -194,7 +194,11 @@ class OcrClient(AbstractClient):
 
 
     def DriverLicenseOCR(self, request):
-        """本接口支持对驾驶证主页所有字段的自动定位与识别，包括证号、姓名、性别、国籍、住址、出生日期、初次领证日期、准驾车型、有效期限，重点字段的识别准确度达到99%以上。
+        """本接口支持驾驶证主页和副页所有字段的自动定位与识别，重点字段的识别准确度达到99%以上。
+
+        驾驶证主页：包括证号、姓名、性别、国籍、住址、出生日期、初次领证日期、准驾车型、有效期限。
+
+        驾驶证副页：包括证号、姓名、档案编号、记录。
 
         另外，本接口还支持复印件、翻拍和PS告警功能。
 
@@ -617,6 +621,34 @@ class OcrClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def HmtResidentPermitOCR(self, request):
+        """港澳台居住证OCR支持港澳台居住证正反面全字段内容检测识别功能，包括姓名、性别、出生日期、地址、身份证ID、签发机关、有效期限、签发次数、通行证号码关键字段识别。可以应用于港澳台居住证信息有效性校验场景，例如银行开户、用户注册等场景。
+
+        :param request: Request instance for HmtResidentPermitOCR.
+        :type request: :class:`tencentcloud.ocr.v20181119.models.HmtResidentPermitOCRRequest`
+        :rtype: :class:`tencentcloud.ocr.v20181119.models.HmtResidentPermitOCRResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("HmtResidentPermitOCR", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.HmtResidentPermitOCRResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def IDCardOCR(self, request):
         """本接口支持中国大陆居民二代身份证正反面所有字段的识别，包括姓名、性别、民族、出生日期、住址、公民身份证号、签发机关、有效期限，识别准确度达到99%以上。
 
@@ -846,6 +878,34 @@ class OcrClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.MLIDPassportOCRResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def MainlandPermitOCR(self, request):
+        """智能识别并结构化港澳台居民来往内地通行证正面全部字段，包含中文姓名、英文姓名、性别、出生日期、签发机关、有效期限、证件号、签发地点、签发次数、证件类别。
+
+        :param request: Request instance for MainlandPermitOCR.
+        :type request: :class:`tencentcloud.ocr.v20181119.models.MainlandPermitOCRRequest`
+        :rtype: :class:`tencentcloud.ocr.v20181119.models.MainlandPermitOCRResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("MainlandPermitOCR", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.MainlandPermitOCRResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

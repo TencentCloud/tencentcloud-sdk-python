@@ -26,7 +26,7 @@ class SslClient(AbstractClient):
 
 
     def ApplyCertificate(self, request):
-        """本接口(ApplyCertificate)用于免费证书申请。
+        """本接口（ApplyCertificate）用于免费证书申请。
 
         :param request: Request instance for ApplyCertificate.
         :type request: :class:`tencentcloud.ssl.v20191205.models.ApplyCertificateRequest`
@@ -110,7 +110,7 @@ class SslClient(AbstractClient):
 
 
     def DeleteCertificate(self, request):
-        """本接口(DeleteCertificate)用于删除证书。
+        """本接口（DeleteCertificate）用于删除证书。
 
         :param request: Request instance for DeleteCertificate.
         :type request: :class:`tencentcloud.ssl.v20191205.models.DeleteCertificateRequest`
@@ -138,7 +138,7 @@ class SslClient(AbstractClient):
 
 
     def DescribeCertificate(self, request):
-        """本接口(DescribeCertificate)用于获取证书信息。
+        """本接口（DescribeCertificate）用于获取证书信息。
 
         :param request: Request instance for DescribeCertificate.
         :type request: :class:`tencentcloud.ssl.v20191205.models.DescribeCertificateRequest`
@@ -166,7 +166,7 @@ class SslClient(AbstractClient):
 
 
     def DescribeCertificateDetail(self, request):
-        """获取证书详情
+        """获取证书详情。
 
         :param request: Request instance for DescribeCertificateDetail.
         :type request: :class:`tencentcloud.ssl.v20191205.models.DescribeCertificateDetailRequest`
@@ -194,7 +194,7 @@ class SslClient(AbstractClient):
 
 
     def DescribeCertificateOperateLogs(self, request):
-        """获取用户账号下有关证书的操作日志
+        """获取用户账号下有关证书的操作日志。
 
         :param request: Request instance for DescribeCertificateOperateLogs.
         :type request: :class:`tencentcloud.ssl.v20191205.models.DescribeCertificateOperateLogsRequest`
@@ -222,7 +222,7 @@ class SslClient(AbstractClient):
 
 
     def DescribeCertificates(self, request):
-        """本接口(DescribeCertificates)用于获取证书列表。
+        """本接口（DescribeCertificates）用于获取证书列表。
 
         :param request: Request instance for DescribeCertificates.
         :type request: :class:`tencentcloud.ssl.v20191205.models.DescribeCertificatesRequest`
@@ -250,7 +250,7 @@ class SslClient(AbstractClient):
 
 
     def DownloadCertificate(self, request):
-        """本接口(DownloadCertificate)用于下载证书。
+        """本接口（DownloadCertificate）用于下载证书。
 
         :param request: Request instance for DownloadCertificate.
         :type request: :class:`tencentcloud.ssl.v20191205.models.DownloadCertificateRequest`
@@ -306,7 +306,7 @@ class SslClient(AbstractClient):
 
 
     def ModifyCertificateProject(self, request):
-        """批量修改证书所属项目
+        """批量修改证书所属项目。
 
         :param request: Request instance for ModifyCertificateProject.
         :type request: :class:`tencentcloud.ssl.v20191205.models.ModifyCertificateProjectRequest`
@@ -334,7 +334,7 @@ class SslClient(AbstractClient):
 
 
     def ReplaceCertificate(self, request):
-        """本接口(ReplaceCertificate)用于重颁发证书。已申请的免费证书仅支持RSA算法、密钥对参数为2048的证书重颁发。
+        """本接口（ReplaceCertificate）用于重颁发证书。已申请的免费证书仅支持 RSA 算法、密钥对参数为2048的证书重颁发。
 
         :param request: Request instance for ReplaceCertificate.
         :type request: :class:`tencentcloud.ssl.v20191205.models.ReplaceCertificateRequest`
@@ -390,7 +390,7 @@ class SslClient(AbstractClient):
 
 
     def UploadCertificate(self, request):
-        """本接口(UploadCertificate)用于上传证书。
+        """本接口（UploadCertificate）用于上传证书。
 
         :param request: Request instance for UploadCertificate.
         :type request: :class:`tencentcloud.ssl.v20191205.models.UploadCertificateRequest`

@@ -318,7 +318,7 @@ class CreateStudioProductRequest(AbstractModel):
         :type EncryptionType: str
         :param NetType: 连接类型 可以填写 wifi cellular else
         :type NetType: str
-        :param DataProtocol: 数据协议 (1 使用物模型)
+        :param DataProtocol: 数据协议 (1 使用物模型 2 为自定义)
         :type DataProtocol: int
         :param ProductDesc: 产品描述
         :type ProductDesc: str

@@ -614,7 +614,7 @@ class IotexplorerClient(AbstractClient):
 
 
     def ModifyStudioProduct(self, request):
-        """提供修改产品的名称和描述等信息的能力
+        """提供修改产品的名称和描述等信息的能力，对于已发布产品不允许进行修改。
 
         :param request: Request instance for ModifyStudioProduct.
         :type request: :class:`tencentcloud.iotexplorer.v20190423.models.ModifyStudioProductRequest`

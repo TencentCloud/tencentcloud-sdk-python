@@ -498,14 +498,19 @@ class DriverLicenseOCRRequest(AbstractModel):
         :param ImageUrl: 图片的 Url 地址。要求图片经Base64编码后不超过 7M，分辨率建议500*800以上，支持PNG、JPG、JPEG、BMP格式。建议卡片部分占据图片2/3以上。图片下载时间不超过 3 秒。
 建议图片存储于腾讯云，可保障更高的下载速度和稳定性。
         :type ImageUrl: str
+        :param CardSide: FRONT 为驾驶证主页正面（有红色印章的一面），
+BACK 为驾驶证副页正面（有档案编号的一面）。
+        :type CardSide: str
         """
         self.ImageBase64 = None
         self.ImageUrl = None
+        self.CardSide = None
 
 
     def _deserialize(self, params):
         self.ImageBase64 = params.get("ImageBase64")
         self.ImageUrl = params.get("ImageUrl")
+        self.CardSide = params.get("CardSide")
 
 
 class DriverLicenseOCRResponse(AbstractModel):
@@ -535,6 +540,10 @@ class DriverLicenseOCRResponse(AbstractModel):
         :type EndDate: str
         :param CardCode: 证号
         :type CardCode: str
+        :param ArchivesCode: 档案编号
+        :type ArchivesCode: str
+        :param Record: 记录
+        :type Record: str
         :param RecognizeWarnCode: Code 告警码列表和释义：
 -9102  复印件告警
 -9103  翻拍件告警
@@ -560,6 +569,8 @@ WARN_DRIVER_LICENSE_PS_CARD ps告警
         self.StartDate = None
         self.EndDate = None
         self.CardCode = None
+        self.ArchivesCode = None
+        self.Record = None
         self.RecognizeWarnCode = None
         self.RecognizeWarnMsg = None
         self.RequestId = None
@@ -576,6 +587,8 @@ WARN_DRIVER_LICENSE_PS_CARD ps告警
         self.StartDate = params.get("StartDate")
         self.EndDate = params.get("EndDate")
         self.CardCode = params.get("CardCode")
+        self.ArchivesCode = params.get("ArchivesCode")
+        self.Record = params.get("Record")
         self.RecognizeWarnCode = params.get("RecognizeWarnCode")
         self.RecognizeWarnMsg = params.get("RecognizeWarnMsg")
         self.RequestId = params.get("RequestId")
@@ -1559,6 +1572,90 @@ class GeneralHandwritingOCRResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class HmtResidentPermitOCRRequest(AbstractModel):
+    """HmtResidentPermitOCR请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ImageBase64: 图片的 Base64 值。
+支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。
+支持的图片大小：所下载图片经Base64编码后不超过 3M。图片下载时间不超过 3 秒。
+图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
+        :type ImageBase64: str
+        :param ImageUrl: 图片的 Url 地址。
+支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。
+支持的图片大小：所下载图片经 Base64 编码后不超过 3M。图片下载时间不超过 3 秒。
+图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。
+非腾讯云存储的 Url 速度和稳定性可能受一定影响。
+        :type ImageUrl: str
+        :param CardSide: FRONT：有照片的一面（人像面），
+BACK：无照片的一面（国徽面），
+该参数如果不填或填错，将为您自动判断正反面。
+        :type CardSide: str
+        """
+        self.ImageBase64 = None
+        self.ImageUrl = None
+        self.CardSide = None
+
+
+    def _deserialize(self, params):
+        self.ImageBase64 = params.get("ImageBase64")
+        self.ImageUrl = params.get("ImageUrl")
+        self.CardSide = params.get("CardSide")
+
+
+class HmtResidentPermitOCRResponse(AbstractModel):
+    """HmtResidentPermitOCR返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Name: 证件姓名
+        :type Name: str
+        :param Sex: 性别
+        :type Sex: str
+        :param Birth: 出生日期
+        :type Birth: str
+        :param Address: 地址
+        :type Address: str
+        :param IdCardNo: 身份证号
+        :type IdCardNo: str
+        :param CardType: 0-正面
+1-反面
+        :type CardType: int
+        :param ValidDate: 证件有效期限
+        :type ValidDate: str
+        :param Authority: 签发机关
+        :type Authority: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Name = None
+        self.Sex = None
+        self.Birth = None
+        self.Address = None
+        self.IdCardNo = None
+        self.CardType = None
+        self.ValidDate = None
+        self.Authority = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Name = params.get("Name")
+        self.Sex = params.get("Sex")
+        self.Birth = params.get("Birth")
+        self.Address = params.get("Address")
+        self.IdCardNo = params.get("IdCardNo")
+        self.CardType = params.get("CardType")
+        self.ValidDate = params.get("ValidDate")
+        self.Authority = params.get("Authority")
+        self.RequestId = params.get("RequestId")
+
+
 class IDCardOCRRequest(AbstractModel):
     """IDCardOCR请求参数结构体
 
@@ -2199,6 +2296,99 @@ class MLIDPassportOCRResponse(AbstractModel):
         self.Warn = params.get("Warn")
         self.Image = params.get("Image")
         self.AdvancedInfo = params.get("AdvancedInfo")
+        self.RequestId = params.get("RequestId")
+
+
+class MainlandPermitOCRRequest(AbstractModel):
+    """MainlandPermitOCR请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ImageBase64: 图片的 Base64 值。
+支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。
+支持的图片大小：所下载图片经Base64编码后不超过 3M。图片下载时间不超过 3 秒。
+图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
+        :type ImageBase64: str
+        :param ImageUrl: 图片的 Url 地址。
+支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。
+支持的图片大小：所下载图片经 Base64 编码后不超过 3M。图片下载时间不超过 3 秒。
+图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。
+非腾讯云存储的 Url 速度和稳定性可能受一定影响。
+        :type ImageUrl: str
+        :param RetProfile: 是非返回头像。默认不返回。
+        :type RetProfile: bool
+        """
+        self.ImageBase64 = None
+        self.ImageUrl = None
+        self.RetProfile = None
+
+
+    def _deserialize(self, params):
+        self.ImageBase64 = params.get("ImageBase64")
+        self.ImageUrl = params.get("ImageUrl")
+        self.RetProfile = params.get("RetProfile")
+
+
+class MainlandPermitOCRResponse(AbstractModel):
+    """MainlandPermitOCR返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Name: 中文姓名
+        :type Name: str
+        :param EnglishName: 英文姓名
+        :type EnglishName: str
+        :param Sex: 性别
+        :type Sex: str
+        :param Birthday: 出生日期
+        :type Birthday: str
+        :param IssueAuthority: 签发机关
+        :type IssueAuthority: str
+        :param ValidDate: 有效期限
+        :type ValidDate: str
+        :param Number: 证件号
+        :type Number: str
+        :param IssueAddress: 签发地点
+        :type IssueAddress: str
+        :param IssueNumber: 签发次数
+        :type IssueNumber: str
+        :param Type: 证件类别， 如：台湾居民来往大陆通行证、港澳居民来往内地通行证。
+        :type Type: str
+        :param Profile: RetProfile为True时返回头像字段， Base64编码
+        :type Profile: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Name = None
+        self.EnglishName = None
+        self.Sex = None
+        self.Birthday = None
+        self.IssueAuthority = None
+        self.ValidDate = None
+        self.Number = None
+        self.IssueAddress = None
+        self.IssueNumber = None
+        self.Type = None
+        self.Profile = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Name = params.get("Name")
+        self.EnglishName = params.get("EnglishName")
+        self.Sex = params.get("Sex")
+        self.Birthday = params.get("Birthday")
+        self.IssueAuthority = params.get("IssueAuthority")
+        self.ValidDate = params.get("ValidDate")
+        self.Number = params.get("Number")
+        self.IssueAddress = params.get("IssueAddress")
+        self.IssueNumber = params.get("IssueNumber")
+        self.Type = params.get("Type")
+        self.Profile = params.get("Profile")
         self.RequestId = params.get("RequestId")
 
 

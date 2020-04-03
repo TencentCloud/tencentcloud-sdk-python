@@ -1231,6 +1231,34 @@ class TsfClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribePodInstances(self, request):
+        """获取部署组实例列表
+
+        :param request: Request instance for DescribePodInstances.
+        :type request: :class:`tencentcloud.tsf.v20180326.models.DescribePodInstancesRequest`
+        :rtype: :class:`tencentcloud.tsf.v20180326.models.DescribePodInstancesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribePodInstances", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribePodInstancesResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribePublicConfig(self, request):
         """查询公共配置（单条）
 

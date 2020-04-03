@@ -858,7 +858,7 @@ class DomainDetailInfo(AbstractModel):
         :param Https: Https配置。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Https: :class:`tencentcloud.ecdn.v20191012.models.Https`
-        :param Disable: 域名封禁状态，normal，overdue，quota，malicious，ddos，idle，unlicensed，capping，readonly分别表示 正常，欠费停服，试用客户流量包耗尽，恶意用户，ddos攻击，没量域名，未备案，带宽封顶，只读。
+        :param Disable: 域名封禁状态，normal，overdue，quota，malicious，ddos，idle，unlicensed，capping，readonly分别表示 正常，欠费停服，试用客户流量包耗尽，恶意用户，ddos攻击，无流量域名，未备案，带宽封顶，只读。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Disable: str
         :param ForceRedirect: 访问协议强制跳转配置。

@@ -3299,6 +3299,54 @@ class DescribePkgsResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribePodInstancesRequest(AbstractModel):
+    """DescribePodInstances请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param GroupId: 实例所属groupId
+        :type GroupId: str
+        :param Offset: 偏移量，取值从0开始
+        :type Offset: int
+        :param Limit: 分页个数，默认为20， 取值应为1~50
+        :type Limit: int
+        """
+        self.GroupId = None
+        self.Offset = None
+        self.Limit = None
+
+
+    def _deserialize(self, params):
+        self.GroupId = params.get("GroupId")
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+
+
+class DescribePodInstancesResponse(AbstractModel):
+    """DescribePodInstances返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Result: 查询的权限数据对象
+        :type Result: :class:`tencentcloud.tsf.v20180326.models.GroupPodResult`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Result = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Result") is not None:
+            self.Result = GroupPodResult()
+            self.Result._deserialize(params.get("Result"))
+        self.RequestId = params.get("RequestId")
+
+
 class DescribePublicConfigReleaseLogsRequest(AbstractModel):
     """DescribePublicConfigReleaseLogs请求参数结构体
 
@@ -4097,6 +4145,112 @@ class ExpandGroupResponse(AbstractModel):
             self.Result = TaskId()
             self.Result._deserialize(params.get("Result"))
         self.RequestId = params.get("RequestId")
+
+
+class GroupPod(AbstractModel):
+    """部署组实例列表
+
+    """
+
+    def __init__(self):
+        """
+        :param PodName: 实例名称(对应到kubernetes的pod名称)
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PodName: str
+        :param PodId: 实例ID(对应到kubernetes的pod id)
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PodId: str
+        :param Status: 实例状态，请参考后面的实例以及容器的状态定义
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Status: str
+        :param Reason: 实例处于当前状态的原因，例如容器下载镜像失败
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Reason: str
+        :param NodeIp: 主机IP
+注意：此字段可能返回 null，表示取不到有效值。
+        :type NodeIp: str
+        :param Ip: 实例IP
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Ip: str
+        :param RestartCount: 实例中容器的重启次数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RestartCount: int
+        :param ReadyCount: 实例中已就绪容器的个数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ReadyCount: int
+        :param Runtime: 运行时长
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Runtime: str
+        :param CreatedAt: 实例启动时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CreatedAt: str
+        :param ServiceInstanceStatus: 服务实例状态
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ServiceInstanceStatus: str
+        :param InstanceAvailableStatus: 机器实例可使用状态
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InstanceAvailableStatus: str
+        :param InstanceStatus: 机器实例状态
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InstanceStatus: str
+        """
+        self.PodName = None
+        self.PodId = None
+        self.Status = None
+        self.Reason = None
+        self.NodeIp = None
+        self.Ip = None
+        self.RestartCount = None
+        self.ReadyCount = None
+        self.Runtime = None
+        self.CreatedAt = None
+        self.ServiceInstanceStatus = None
+        self.InstanceAvailableStatus = None
+        self.InstanceStatus = None
+
+
+    def _deserialize(self, params):
+        self.PodName = params.get("PodName")
+        self.PodId = params.get("PodId")
+        self.Status = params.get("Status")
+        self.Reason = params.get("Reason")
+        self.NodeIp = params.get("NodeIp")
+        self.Ip = params.get("Ip")
+        self.RestartCount = params.get("RestartCount")
+        self.ReadyCount = params.get("ReadyCount")
+        self.Runtime = params.get("Runtime")
+        self.CreatedAt = params.get("CreatedAt")
+        self.ServiceInstanceStatus = params.get("ServiceInstanceStatus")
+        self.InstanceAvailableStatus = params.get("InstanceAvailableStatus")
+        self.InstanceStatus = params.get("InstanceStatus")
+
+
+class GroupPodResult(AbstractModel):
+    """部署组实例列表
+
+    """
+
+    def __init__(self):
+        """
+        :param TotalCount: 总记录数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TotalCount: int
+        :param Content: 列表信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Content: list of GroupPod
+        """
+        self.TotalCount = None
+        self.Content = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("Content") is not None:
+            self.Content = []
+            for item in params.get("Content"):
+                obj = GroupPod()
+                obj._deserialize(item)
+                self.Content.append(obj)
 
 
 class ImageTag(AbstractModel):
@@ -4989,6 +5143,7 @@ class ProtocolPort(AbstractModel):
         :param TargetPort: 容器端口
         :type TargetPort: int
         :param NodePort: 主机端口
+注意：此字段可能返回 null，表示取不到有效值。
         :type NodePort: int
         """
         self.Protocol = None
