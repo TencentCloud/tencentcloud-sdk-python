@@ -2845,8 +2845,6 @@ class RefundRequest(AbstractModel):
         :type MidasAppId: str
         :param TotalRefundAmt: 退款金额，单位：分。备注：当该字段为空或者为0 时，系统会默认使用订单当 实付金额作为退款金额
         :type TotalRefundAmt: int
-        :param SubOrderRefundList: 支持多个子订单批量退款单 个子订单退款支持传 SubOutTradeNo ，也支持传 SubOutTradeNoList ，都传的时候以 SubOutTradeNoList 为准。  如果传了子单退款细节，外 部不需要再传退款金额，平 台应退，商户应退金额，我 们可以直接根据子单退款算出来总和。
-        :type SubOrderRefundList: list of RefundOutSubOrderRefundList
         :param MidasSecretId: 聚鑫分配的安全ID
         :type MidasSecretId: str
         :param MidasSignature: 按照聚鑫安全密钥计算的签名
@@ -2859,18 +2857,20 @@ class RefundRequest(AbstractModel):
         :type TransactionId: str
         :param PlatformRefundAmt: 平台应收金额，单位：分
         :type PlatformRefundAmt: int
+        :param SubOrderRefundList: 支持多个子订单批量退款单 个子订单退款支持传 SubOutTradeNo ，也支持传 SubOutTradeNoList ，都传的时候以 SubOutTradeNoList 为准。  如果传了子单退款细节，外 部不需要再传退款金额，平 台应退，商户应退金额，我 们可以直接根据子单退款算出来总和。
+        :type SubOrderRefundList: list of RefundOutSubOrderRefundList
         """
         self.UserId = None
         self.RefundId = None
         self.MidasAppId = None
         self.TotalRefundAmt = None
-        self.SubOrderRefundList = None
         self.MidasSecretId = None
         self.MidasSignature = None
         self.OutTradeNo = None
         self.MchRefundAmt = None
         self.TransactionId = None
         self.PlatformRefundAmt = None
+        self.SubOrderRefundList = None
 
 
     def _deserialize(self, params):
@@ -2878,18 +2878,18 @@ class RefundRequest(AbstractModel):
         self.RefundId = params.get("RefundId")
         self.MidasAppId = params.get("MidasAppId")
         self.TotalRefundAmt = params.get("TotalRefundAmt")
-        if params.get("SubOrderRefundList") is not None:
-            self.SubOrderRefundList = []
-            for item in params.get("SubOrderRefundList"):
-                obj = RefundOutSubOrderRefundList()
-                obj._deserialize(item)
-                self.SubOrderRefundList.append(obj)
         self.MidasSecretId = params.get("MidasSecretId")
         self.MidasSignature = params.get("MidasSignature")
         self.OutTradeNo = params.get("OutTradeNo")
         self.MchRefundAmt = params.get("MchRefundAmt")
         self.TransactionId = params.get("TransactionId")
         self.PlatformRefundAmt = params.get("PlatformRefundAmt")
+        if params.get("SubOrderRefundList") is not None:
+            self.SubOrderRefundList = []
+            for item in params.get("SubOrderRefundList"):
+                obj = RefundOutSubOrderRefundList()
+                obj._deserialize(item)
+                self.SubOrderRefundList.append(obj)
 
 
 class RefundResponse(AbstractModel):

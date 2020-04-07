@@ -647,6 +647,8 @@ class DescribeTagsRequest(AbstractModel):
         :type CreateUin: int
         :param TagKeys: 标签键数组,与标签值同时存在或同时不存在，不存在时表示查询该用户所有标签,当与TagKey同时传递时只会本值
         :type TagKeys: list of str
+        :param ShowProject: 是否展现项目标签
+        :type ShowProject: int
         """
         self.TagKey = None
         self.TagValue = None
@@ -654,6 +656,7 @@ class DescribeTagsRequest(AbstractModel):
         self.Limit = None
         self.CreateUin = None
         self.TagKeys = None
+        self.ShowProject = None
 
 
     def _deserialize(self, params):
@@ -663,6 +666,7 @@ class DescribeTagsRequest(AbstractModel):
         self.Limit = params.get("Limit")
         self.CreateUin = params.get("CreateUin")
         self.TagKeys = params.get("TagKeys")
+        self.ShowProject = params.get("ShowProject")
 
 
 class DescribeTagsResponse(AbstractModel):

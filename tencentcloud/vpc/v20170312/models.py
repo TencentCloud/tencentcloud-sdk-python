@@ -889,6 +889,44 @@ class AssociateNetworkAclSubnetsResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class AssociateNetworkInterfaceSecurityGroupsRequest(AbstractModel):
+    """AssociateNetworkInterfaceSecurityGroups请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param NetworkInterfaceIds: 弹性网卡实例ID。形如：eni-pxir56ns。每次请求的实例的上限为100。
+        :type NetworkInterfaceIds: list of str
+        :param SecurityGroupIds: 安全组实例ID，例如：sg-33ocnj9n，可通过DescribeSecurityGroups获取。每次请求的实例的上限为100。
+        :type SecurityGroupIds: list of str
+        """
+        self.NetworkInterfaceIds = None
+        self.SecurityGroupIds = None
+
+
+    def _deserialize(self, params):
+        self.NetworkInterfaceIds = params.get("NetworkInterfaceIds")
+        self.SecurityGroupIds = params.get("SecurityGroupIds")
+
+
+class AssociateNetworkInterfaceSecurityGroupsResponse(AbstractModel):
+    """AssociateNetworkInterfaceSecurityGroups返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class AttachCcnInstancesRequest(AbstractModel):
     """AttachCcnInstances请求参数结构体
 
@@ -7128,6 +7166,44 @@ class DisassociateNetworkAclSubnetsRequest(AbstractModel):
 
 class DisassociateNetworkAclSubnetsResponse(AbstractModel):
     """DisassociateNetworkAclSubnets返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class DisassociateNetworkInterfaceSecurityGroupsRequest(AbstractModel):
+    """DisassociateNetworkInterfaceSecurityGroups请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param NetworkInterfaceIds: 弹性网卡实例ID。形如：eni-pxir56ns。每次请求的实例的上限为100。
+        :type NetworkInterfaceIds: list of str
+        :param SecurityGroupIds: 安全组实例ID，例如：sg-33ocnj9n，可通过DescribeSecurityGroups获取。每次请求的实例的上限为100。
+        :type SecurityGroupIds: list of str
+        """
+        self.NetworkInterfaceIds = None
+        self.SecurityGroupIds = None
+
+
+    def _deserialize(self, params):
+        self.NetworkInterfaceIds = params.get("NetworkInterfaceIds")
+        self.SecurityGroupIds = params.get("SecurityGroupIds")
+
+
+class DisassociateNetworkInterfaceSecurityGroupsResponse(AbstractModel):
+    """DisassociateNetworkInterfaceSecurityGroups返回参数结构体
 
     """
 

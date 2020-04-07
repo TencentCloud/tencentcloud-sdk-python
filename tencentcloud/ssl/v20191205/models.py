@@ -889,7 +889,7 @@ class DescribeCertificatesRequest(AbstractModel):
         """
         :param Offset: 分页偏移量，从0开始。
         :type Offset: int
-        :param Limit: 每页数量。
+        :param Limit: 每页数量，默认20。
         :type Limit: int
         :param SearchKey: 搜索关键词。
         :type SearchKey: str
@@ -1309,35 +1309,35 @@ class SubmitCertificateInformationRequest(AbstractModel):
         """
         :param CertificateId: 证书 ID。
         :type CertificateId: str
-        :param CsrType: CSR 生成方式：online = 在线生成, parse = 手动上传 。
+        :param CsrType: CSR 生成方式：online = 在线生成, parse = 手动上传。
         :type CsrType: str
         :param CsrContent: 上传的 CSR 内容。
         :type CsrContent: str
-        :param CertificateDomain: 绑定证书的域名 。
+        :param CertificateDomain: 绑定证书的域名。
         :type CertificateDomain: str
         :param DomainList: 上传的域名数组（多域名证书可以上传）。
         :type DomainList: list of str
-        :param KeyPassword: 私钥密码 。
+        :param KeyPassword: 私钥密码。
         :type KeyPassword: str
-        :param OrganizationName: 公司名称 。
+        :param OrganizationName: 公司名称。
         :type OrganizationName: str
         :param OrganizationDivision: 部门名称。
         :type OrganizationDivision: str
-        :param OrganizationAddress: 公司详细地址 。
+        :param OrganizationAddress: 公司详细地址。
         :type OrganizationAddress: str
-        :param OrganizationCountry: 国家名称 如中国：CN 。
+        :param OrganizationCountry: 国家名称，如中国：CN 。
         :type OrganizationCountry: str
-        :param OrganizationCity: 公司所在城市 。
+        :param OrganizationCity: 公司所在城市。
         :type OrganizationCity: str
         :param OrganizationRegion: 公司所在省份。
         :type OrganizationRegion: str
-        :param PostalCode: 公司邮编 。
+        :param PostalCode: 公司邮编。
         :type PostalCode: str
-        :param PhoneAreaCode: 公司座机区号 。
+        :param PhoneAreaCode: 公司座机区号。
         :type PhoneAreaCode: str
-        :param PhoneNumber: 公司座机号码 。
+        :param PhoneNumber: 公司座机号码。
         :type PhoneNumber: str
-        :param VerifyType: 证书验证方式 。
+        :param VerifyType: 证书验证方式。
         :type VerifyType: str
         :param AdminFirstName: 管理人姓。
         :type AdminFirstName: str
@@ -1353,9 +1353,9 @@ class SubmitCertificateInformationRequest(AbstractModel):
         :type ContactFirstName: str
         :param ContactLastName: 联系人名。
         :type ContactLastName: str
-        :param ContactEmail: 联系人邮箱地址 。
+        :param ContactEmail: 联系人邮箱地址。
         :type ContactEmail: str
-        :param ContactNumber: 联系人手机号码 。
+        :param ContactNumber: 联系人手机号码。
         :type ContactNumber: str
         :param ContactPosition: 联系人职位。
         :type ContactPosition: str

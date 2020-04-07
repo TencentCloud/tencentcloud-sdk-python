@@ -384,6 +384,34 @@ class VpcClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def AssociateNetworkInterfaceSecurityGroups(self, request):
+        """本接口（AssociateNetworkInterfaceSecurityGroups）用于弹性网卡绑定安全组（SecurityGroup）。
+
+        :param request: Request instance for AssociateNetworkInterfaceSecurityGroups.
+        :type request: :class:`tencentcloud.vpc.v20170312.models.AssociateNetworkInterfaceSecurityGroupsRequest`
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.AssociateNetworkInterfaceSecurityGroupsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("AssociateNetworkInterfaceSecurityGroups", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.AssociateNetworkInterfaceSecurityGroupsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def AttachCcnInstances(self, request):
         """本接口（AttachCcnInstances）用于将网络实例加载到云联网实例中，网络实例包括VPC和专线网关。<br />
         每个云联网能够关联的网络实例个数是有限的，详请参考产品文档。如果需要扩充请联系在线客服。
@@ -3618,6 +3646,34 @@ class VpcClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DisassociateNetworkAclSubnetsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DisassociateNetworkInterfaceSecurityGroups(self, request):
+        """本接口（DisassociateNetworkInterfaceSecurityGroups）用于弹性网卡解绑安全组。支持弹性网卡完全解绑安全组。
+
+        :param request: Request instance for DisassociateNetworkInterfaceSecurityGroups.
+        :type request: :class:`tencentcloud.vpc.v20170312.models.DisassociateNetworkInterfaceSecurityGroupsRequest`
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.DisassociateNetworkInterfaceSecurityGroupsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DisassociateNetworkInterfaceSecurityGroups", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DisassociateNetworkInterfaceSecurityGroupsResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
