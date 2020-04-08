@@ -978,6 +978,48 @@ class Image(AbstractModel):
             self.SrcImage._deserialize(params.get("SrcImage"))
 
 
+class ImportImageRequest(AbstractModel):
+    """ImportImage请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ImageId: 镜像的Id。
+        :type ImageId: str
+        :param ImageDescription: 镜像的描述。
+        :type ImageDescription: str
+        :param SourceRegion: 源地域
+        :type SourceRegion: str
+        """
+        self.ImageId = None
+        self.ImageDescription = None
+        self.SourceRegion = None
+
+
+    def _deserialize(self, params):
+        self.ImageId = params.get("ImageId")
+        self.ImageDescription = params.get("ImageDescription")
+        self.SourceRegion = params.get("SourceRegion")
+
+
+class ImportImageResponse(AbstractModel):
+    """ImportImage返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class Instance(AbstractModel):
     """用于描述实例相关的信息。
 

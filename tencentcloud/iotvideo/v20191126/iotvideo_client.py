@@ -339,6 +339,34 @@ class IotvideoClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DeleteAppUsr(self, request):
+        """本接口（DeleteAppUsr）用于删除终端用户。
+
+        :param request: Request instance for DeleteAppUsr.
+        :type request: :class:`tencentcloud.iotvideo.v20191126.models.DeleteAppUsrRequest`
+        :rtype: :class:`tencentcloud.iotvideo.v20191126.models.DeleteAppUsrResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DeleteAppUsr", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DeleteAppUsrResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DeleteBinding(self, request):
         """本接口（DeleteBinding）用于终端用户和设备进行解绑定。
 

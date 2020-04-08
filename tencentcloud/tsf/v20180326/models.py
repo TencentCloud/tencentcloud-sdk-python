@@ -880,6 +880,12 @@ class ContainerGroupDetail(AbstractModel):
         :param SubnetId: 子网id
 注意：此字段可能返回 null，表示取不到有效值。
         :type SubnetId: str
+        :param GroupResourceType: 部署组资源类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type GroupResourceType: str
+        :param InstanceCount: 部署组实例个数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InstanceCount: int
         """
         self.GroupId = None
         self.GroupName = None
@@ -912,6 +918,8 @@ class ContainerGroupDetail(AbstractModel):
         self.CpuRequest = None
         self.MemRequest = None
         self.SubnetId = None
+        self.GroupResourceType = None
+        self.InstanceCount = None
 
 
     def _deserialize(self, params):
@@ -956,6 +964,8 @@ class ContainerGroupDetail(AbstractModel):
         self.CpuRequest = params.get("CpuRequest")
         self.MemRequest = params.get("MemRequest")
         self.SubnetId = params.get("SubnetId")
+        self.GroupResourceType = params.get("GroupResourceType")
+        self.InstanceCount = params.get("InstanceCount")
 
 
 class CosCredentials(AbstractModel):
@@ -4281,6 +4291,7 @@ class ImageTag(AbstractModel):
         :param DockerVersion: Docker客户端版本
         :type DockerVersion: str
         :param Os: 操作系统
+注意：此字段可能返回 null，表示取不到有效值。
         :type Os: str
         :param PushTime: push时间
         :type PushTime: str

@@ -417,6 +417,34 @@ class EcmClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def ImportImage(self, request):
+        """从CVM产品导入镜像到ECM
+
+        :param request: Request instance for ImportImage.
+        :type request: :class:`tencentcloud.ecm.v20190719.models.ImportImageRequest`
+        :rtype: :class:`tencentcloud.ecm.v20190719.models.ImportImageResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ImportImage", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ImportImageResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def ModifyInstancesAttribute(self, request):
         """修改实例的属性。
 

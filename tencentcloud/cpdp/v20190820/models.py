@@ -861,6 +861,11 @@ class CreateAcctRequest(AbstractModel):
         :type SubMchType: str
         :param ShortName: 不填则默认子商户名称
         :type ShortName: str
+        :param SubMerchantMemberType: 子商户会员类型：
+general:普通子账户
+merchant:商户子账户
+缺省： general
+        :type SubMerchantMemberType: str
         """
         self.MidasAppId = None
         self.SubMchId = None
@@ -873,6 +878,7 @@ class CreateAcctRequest(AbstractModel):
         self.MidasSignature = None
         self.SubMchType = None
         self.ShortName = None
+        self.SubMerchantMemberType = None
 
 
     def _deserialize(self, params):
@@ -887,6 +893,7 @@ class CreateAcctRequest(AbstractModel):
         self.MidasSignature = params.get("MidasSignature")
         self.SubMchType = params.get("SubMchType")
         self.ShortName = params.get("ShortName")
+        self.SubMerchantMemberType = params.get("SubMerchantMemberType")
 
 
 class CreateAcctResponse(AbstractModel):
@@ -1022,6 +1029,623 @@ class CreateCustAcctIdResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class CreateInvoiceItem(AbstractModel):
+    """发票开具明细
+
+    """
+
+    def __init__(self):
+        """
+        :param Name: 商品名称
+        :type Name: str
+        :param TaxCode: 税收商品编码
+        :type TaxCode: str
+        :param TotalPrice: 不含税商品总价（商品含税价总额/（1+税率））。单位为分
+        :type TotalPrice: int
+        :param TaxRate: 商品税率
+        :type TaxRate: int
+        :param TaxAmount: 商品税额（不含税商品总价*税率）。单位为分
+        :type TaxAmount: int
+        :param TaxType: 税收商品类别
+        :type TaxType: str
+        :param Models: 商品规格
+        :type Models: str
+        :param Unit: 商品单位
+        :type Unit: str
+        :param Total: 商品数量
+        :type Total: str
+        :param Price: 不含税商品单价
+        :type Price: str
+        :param Discount: 含税折扣总额。单位为分
+        :type Discount: int
+        :param PreferentialPolicyFlag: 优惠政策标志。0：不使用优惠政策；1：使用优惠政策。
+        :type PreferentialPolicyFlag: str
+        :param ZeroTaxFlag: 零税率标识：
+空：非零税率；
+0：出口零税率；
+1：免税；
+2：不征税；
+3：普通零税率。
+        :type ZeroTaxFlag: str
+        :param VatSpecialManagement: 增值税特殊管理。PreferentialPolicyFlag字段为1时，必填。目前仅支持5%(3%，2%，1.5%)简易征税、免税、不征税。
+        :type VatSpecialManagement: str
+        """
+        self.Name = None
+        self.TaxCode = None
+        self.TotalPrice = None
+        self.TaxRate = None
+        self.TaxAmount = None
+        self.TaxType = None
+        self.Models = None
+        self.Unit = None
+        self.Total = None
+        self.Price = None
+        self.Discount = None
+        self.PreferentialPolicyFlag = None
+        self.ZeroTaxFlag = None
+        self.VatSpecialManagement = None
+
+
+    def _deserialize(self, params):
+        self.Name = params.get("Name")
+        self.TaxCode = params.get("TaxCode")
+        self.TotalPrice = params.get("TotalPrice")
+        self.TaxRate = params.get("TaxRate")
+        self.TaxAmount = params.get("TaxAmount")
+        self.TaxType = params.get("TaxType")
+        self.Models = params.get("Models")
+        self.Unit = params.get("Unit")
+        self.Total = params.get("Total")
+        self.Price = params.get("Price")
+        self.Discount = params.get("Discount")
+        self.PreferentialPolicyFlag = params.get("PreferentialPolicyFlag")
+        self.ZeroTaxFlag = params.get("ZeroTaxFlag")
+        self.VatSpecialManagement = params.get("VatSpecialManagement")
+
+
+class CreateInvoiceRequest(AbstractModel):
+    """CreateInvoice请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param InvoicePlatformId: 开票平台ID。0：高灯
+        :type InvoicePlatformId: int
+        :param TitleType: 抬头类型：1：个人/政府事业单位；2：企业
+        :type TitleType: int
+        :param BuyerTitle: 购方名称
+        :type BuyerTitle: str
+        :param OrderId: 业务开票号
+        :type OrderId: str
+        :param AmountHasTax: 含税总金额（单位为分）
+        :type AmountHasTax: int
+        :param TaxAmount: 总税额（单位为分）
+        :type TaxAmount: int
+        :param AmountWithoutTax: 不含税总金额（单位为分）
+        :type AmountWithoutTax: int
+        :param SellerTaxpayerNum: 销方纳税人识别号
+        :type SellerTaxpayerNum: str
+        :param SellerName: 销方名称。（不填默认读取商户注册时输入的信息）
+        :type SellerName: str
+        :param SellerAddress: 销方地址。（不填默认读取商户注册时输入的信息）
+        :type SellerAddress: str
+        :param SellerPhone: 销方电话。（不填默认读取商户注册时输入的信息）
+        :type SellerPhone: str
+        :param SellerBankName: 销方银行名称。（不填默认读取商户注册时输入的信息）
+        :type SellerBankName: str
+        :param SellerBankAccount: 销方银行账号。（不填默认读取商户注册时输入的信息）
+        :type SellerBankAccount: str
+        :param BuyerTaxpayerNum: 购方纳税人识别号（购方票面信息）,若抬头类型为2时，必传
+        :type BuyerTaxpayerNum: str
+        :param BuyerAddress: 购方地址。开具专用发票时必填
+        :type BuyerAddress: str
+        :param BuyerBankName: 购方银行名称。开具专用发票时必填
+        :type BuyerBankName: str
+        :param BuyerBankAccount: 购方银行账号。开具专用发票时必填
+        :type BuyerBankAccount: str
+        :param BuyerPhone: 购方电话。开具专用发票时必填
+        :type BuyerPhone: str
+        :param BuyerEmail: 收票人邮箱。若填入，会收到发票推送邮件
+        :type BuyerEmail: str
+        :param TakerPhone: 收票人手机号。若填入，会收到发票推送短信
+        :type TakerPhone: str
+        :param InvoiceType: 开票类型：
+1：增值税专用发票；
+2：增值税普通发票；
+3：增值税电子发票；
+4：增值税卷式发票；
+5：区块链电子发票。
+若该字段不填，或值不为1-5，则认为开具”增值税电子发票”
+        :type InvoiceType: int
+        :param CallbackUrl: 发票结果回传地址
+        :type CallbackUrl: str
+        :param Drawer: 开票人姓名。（不填默认读取商户注册时输入的信息）
+        :type Drawer: str
+        :param Payee: 收款人姓名。（不填默认读取商户注册时输入的信息）
+        :type Payee: str
+        :param Checker: 复核人姓名。（不填默认读取商户注册时输入的信息）
+        :type Checker: str
+        :param TerminalCode: 税盘号
+        :type TerminalCode: str
+        :param LevyMethod: 征收方式。开具差额征税发票时必填2。开具普通征税发票时为空
+        :type LevyMethod: str
+        :param Deduction: 差额征税扣除额（单位为分）
+        :type Deduction: int
+        :param Remark: 备注（票面信息）
+        :type Remark: str
+        :param Items: 项目商品明细
+        :type Items: list of CreateInvoiceItem
+        :param Profile: 接入环境。沙箱环境填sandbox。
+        :type Profile: str
+        """
+        self.InvoicePlatformId = None
+        self.TitleType = None
+        self.BuyerTitle = None
+        self.OrderId = None
+        self.AmountHasTax = None
+        self.TaxAmount = None
+        self.AmountWithoutTax = None
+        self.SellerTaxpayerNum = None
+        self.SellerName = None
+        self.SellerAddress = None
+        self.SellerPhone = None
+        self.SellerBankName = None
+        self.SellerBankAccount = None
+        self.BuyerTaxpayerNum = None
+        self.BuyerAddress = None
+        self.BuyerBankName = None
+        self.BuyerBankAccount = None
+        self.BuyerPhone = None
+        self.BuyerEmail = None
+        self.TakerPhone = None
+        self.InvoiceType = None
+        self.CallbackUrl = None
+        self.Drawer = None
+        self.Payee = None
+        self.Checker = None
+        self.TerminalCode = None
+        self.LevyMethod = None
+        self.Deduction = None
+        self.Remark = None
+        self.Items = None
+        self.Profile = None
+
+
+    def _deserialize(self, params):
+        self.InvoicePlatformId = params.get("InvoicePlatformId")
+        self.TitleType = params.get("TitleType")
+        self.BuyerTitle = params.get("BuyerTitle")
+        self.OrderId = params.get("OrderId")
+        self.AmountHasTax = params.get("AmountHasTax")
+        self.TaxAmount = params.get("TaxAmount")
+        self.AmountWithoutTax = params.get("AmountWithoutTax")
+        self.SellerTaxpayerNum = params.get("SellerTaxpayerNum")
+        self.SellerName = params.get("SellerName")
+        self.SellerAddress = params.get("SellerAddress")
+        self.SellerPhone = params.get("SellerPhone")
+        self.SellerBankName = params.get("SellerBankName")
+        self.SellerBankAccount = params.get("SellerBankAccount")
+        self.BuyerTaxpayerNum = params.get("BuyerTaxpayerNum")
+        self.BuyerAddress = params.get("BuyerAddress")
+        self.BuyerBankName = params.get("BuyerBankName")
+        self.BuyerBankAccount = params.get("BuyerBankAccount")
+        self.BuyerPhone = params.get("BuyerPhone")
+        self.BuyerEmail = params.get("BuyerEmail")
+        self.TakerPhone = params.get("TakerPhone")
+        self.InvoiceType = params.get("InvoiceType")
+        self.CallbackUrl = params.get("CallbackUrl")
+        self.Drawer = params.get("Drawer")
+        self.Payee = params.get("Payee")
+        self.Checker = params.get("Checker")
+        self.TerminalCode = params.get("TerminalCode")
+        self.LevyMethod = params.get("LevyMethod")
+        self.Deduction = params.get("Deduction")
+        self.Remark = params.get("Remark")
+        if params.get("Items") is not None:
+            self.Items = []
+            for item in params.get("Items"):
+                obj = CreateInvoiceItem()
+                obj._deserialize(item)
+                self.Items.append(obj)
+        self.Profile = params.get("Profile")
+
+
+class CreateInvoiceResponse(AbstractModel):
+    """CreateInvoice返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Result: 发票开具结果
+        :type Result: :class:`tencentcloud.cpdp.v20190820.models.CreateInvoiceResult`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Result = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Result") is not None:
+            self.Result = CreateInvoiceResult()
+            self.Result._deserialize(params.get("Result"))
+        self.RequestId = params.get("RequestId")
+
+
+class CreateInvoiceResult(AbstractModel):
+    """发票结果
+
+    """
+
+    def __init__(self):
+        """
+        :param Message: 错误消息
+        :type Message: str
+        :param Code: 错误码
+        :type Code: int
+        :param Data: 数据
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Data: :class:`tencentcloud.cpdp.v20190820.models.CreateInvoiceResultData`
+        """
+        self.Message = None
+        self.Code = None
+        self.Data = None
+
+
+    def _deserialize(self, params):
+        self.Message = params.get("Message")
+        self.Code = params.get("Code")
+        if params.get("Data") is not None:
+            self.Data = CreateInvoiceResultData()
+            self.Data._deserialize(params.get("Data"))
+
+
+class CreateInvoiceResultData(AbstractModel):
+    """蓝票结果数据
+
+    """
+
+    def __init__(self):
+        """
+        :param State: 开票状态
+        :type State: int
+        :param InvoiceId: 发票ID
+        :type InvoiceId: str
+        :param OrderSn: 业务开票号
+        :type OrderSn: str
+        """
+        self.State = None
+        self.InvoiceId = None
+        self.OrderSn = None
+
+
+    def _deserialize(self, params):
+        self.State = params.get("State")
+        self.InvoiceId = params.get("InvoiceId")
+        self.OrderSn = params.get("OrderSn")
+
+
+class CreateMerchantRequest(AbstractModel):
+    """CreateMerchant请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param InvoicePlatformId: 开票平台ID
+        :type InvoicePlatformId: int
+        :param TaxpayerName: 企业名称
+        :type TaxpayerName: str
+        :param TaxpayerNum: 销方纳税人识别号
+        :type TaxpayerNum: str
+        :param LegalPersonName: 注册企业法人代表名称
+        :type LegalPersonName: str
+        :param ContactsName: 联系人
+        :type ContactsName: str
+        :param Phone: 联系人手机号
+        :type Phone: str
+        :param Address: 不包含省市名称的地址
+        :type Address: str
+        :param RegionCode: 地区编码
+        :type RegionCode: int
+        :param CityName: 市（地区）名称
+        :type CityName: str
+        :param Drawer: 开票人
+        :type Drawer: str
+        :param TaxRegistrationCertificate: 税务登记证图片（Base64）字符串，需小于 3M
+        :type TaxRegistrationCertificate: str
+        :param Email: 联系人邮箱地址
+        :type Email: str
+        :param BusinessMobile: 企业电话
+        :type BusinessMobile: str
+        :param BankName: 银行名称
+        :type BankName: str
+        :param BankAccount: 银行账号
+        :type BankAccount: str
+        :param Reviewer: 复核人
+        :type Reviewer: str
+        :param Payee: 收款人
+        :type Payee: str
+        :param RegisterCode: 注册邀请码
+        :type RegisterCode: str
+        :param State: 不填默认为1，有效状态
+0：表示无效；
+1:表示有效；
+2:表示禁止开蓝票；
+3:表示禁止冲红。
+        :type State: str
+        :param CallbackUrl: 接收推送的消息地址
+        :type CallbackUrl: str
+        :param Profile: 接入环境。沙箱环境填 sandbox。
+        :type Profile: str
+        """
+        self.InvoicePlatformId = None
+        self.TaxpayerName = None
+        self.TaxpayerNum = None
+        self.LegalPersonName = None
+        self.ContactsName = None
+        self.Phone = None
+        self.Address = None
+        self.RegionCode = None
+        self.CityName = None
+        self.Drawer = None
+        self.TaxRegistrationCertificate = None
+        self.Email = None
+        self.BusinessMobile = None
+        self.BankName = None
+        self.BankAccount = None
+        self.Reviewer = None
+        self.Payee = None
+        self.RegisterCode = None
+        self.State = None
+        self.CallbackUrl = None
+        self.Profile = None
+
+
+    def _deserialize(self, params):
+        self.InvoicePlatformId = params.get("InvoicePlatformId")
+        self.TaxpayerName = params.get("TaxpayerName")
+        self.TaxpayerNum = params.get("TaxpayerNum")
+        self.LegalPersonName = params.get("LegalPersonName")
+        self.ContactsName = params.get("ContactsName")
+        self.Phone = params.get("Phone")
+        self.Address = params.get("Address")
+        self.RegionCode = params.get("RegionCode")
+        self.CityName = params.get("CityName")
+        self.Drawer = params.get("Drawer")
+        self.TaxRegistrationCertificate = params.get("TaxRegistrationCertificate")
+        self.Email = params.get("Email")
+        self.BusinessMobile = params.get("BusinessMobile")
+        self.BankName = params.get("BankName")
+        self.BankAccount = params.get("BankAccount")
+        self.Reviewer = params.get("Reviewer")
+        self.Payee = params.get("Payee")
+        self.RegisterCode = params.get("RegisterCode")
+        self.State = params.get("State")
+        self.CallbackUrl = params.get("CallbackUrl")
+        self.Profile = params.get("Profile")
+
+
+class CreateMerchantResponse(AbstractModel):
+    """CreateMerchant返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Result: 商户注册结果
+        :type Result: :class:`tencentcloud.cpdp.v20190820.models.CreateMerchantResult`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Result = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Result") is not None:
+            self.Result = CreateMerchantResult()
+            self.Result._deserialize(params.get("Result"))
+        self.RequestId = params.get("RequestId")
+
+
+class CreateMerchantResult(AbstractModel):
+    """创建商户结果
+
+    """
+
+    def __init__(self):
+        """
+        :param Code: 状态码
+        :type Code: int
+        :param Message: 响应消息
+        :type Message: str
+        :param Data: 创建商户结果数据
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Data: :class:`tencentcloud.cpdp.v20190820.models.CreateMerchantResultData`
+        """
+        self.Code = None
+        self.Message = None
+        self.Data = None
+
+
+    def _deserialize(self, params):
+        self.Code = params.get("Code")
+        self.Message = params.get("Message")
+        if params.get("Data") is not None:
+            self.Data = CreateMerchantResultData()
+            self.Data._deserialize(params.get("Data"))
+
+
+class CreateMerchantResultData(AbstractModel):
+    """创建商户结果数据
+
+    """
+
+    def __init__(self):
+        """
+        :param TaxpayerName: 企业名称
+        :type TaxpayerName: str
+        :param SerialNo: 请求流水号
+        :type SerialNo: str
+        :param TaxpayerNum: 纳税号
+        :type TaxpayerNum: str
+        """
+        self.TaxpayerName = None
+        self.SerialNo = None
+        self.TaxpayerNum = None
+
+
+    def _deserialize(self, params):
+        self.TaxpayerName = params.get("TaxpayerName")
+        self.SerialNo = params.get("SerialNo")
+        self.TaxpayerNum = params.get("TaxpayerNum")
+
+
+class CreateRedInvoiceItem(AbstractModel):
+    """创建红票明细
+
+    """
+
+    def __init__(self):
+        """
+        :param OrderId: 订单号
+        :type OrderId: str
+        :param CallbackUrl: 发票结果回传地址
+        :type CallbackUrl: str
+        :param OrderSn: 业务开票号
+        :type OrderSn: str
+        :param RedSerialNo: 红字信息表编码
+        :type RedSerialNo: str
+        """
+        self.OrderId = None
+        self.CallbackUrl = None
+        self.OrderSn = None
+        self.RedSerialNo = None
+
+
+    def _deserialize(self, params):
+        self.OrderId = params.get("OrderId")
+        self.CallbackUrl = params.get("CallbackUrl")
+        self.OrderSn = params.get("OrderSn")
+        self.RedSerialNo = params.get("RedSerialNo")
+
+
+class CreateRedInvoiceRequest(AbstractModel):
+    """CreateRedInvoice请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param InvoicePlatformId: 开票平台ID
+        :type InvoicePlatformId: int
+        :param Invoices: 红冲明细
+        :type Invoices: list of CreateRedInvoiceItem
+        :param Profile: 接入环境。沙箱环境填 sandbox。
+        :type Profile: str
+        """
+        self.InvoicePlatformId = None
+        self.Invoices = None
+        self.Profile = None
+
+
+    def _deserialize(self, params):
+        self.InvoicePlatformId = params.get("InvoicePlatformId")
+        if params.get("Invoices") is not None:
+            self.Invoices = []
+            for item in params.get("Invoices"):
+                obj = CreateRedInvoiceItem()
+                obj._deserialize(item)
+                self.Invoices.append(obj)
+        self.Profile = params.get("Profile")
+
+
+class CreateRedInvoiceResponse(AbstractModel):
+    """CreateRedInvoice返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Result: 红冲结果
+        :type Result: :class:`tencentcloud.cpdp.v20190820.models.CreateRedInvoiceResult`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Result = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Result") is not None:
+            self.Result = CreateRedInvoiceResult()
+            self.Result._deserialize(params.get("Result"))
+        self.RequestId = params.get("RequestId")
+
+
+class CreateRedInvoiceResult(AbstractModel):
+    """红票结果
+
+    """
+
+    def __init__(self):
+        """
+        :param Message: 错误消息
+        :type Message: str
+        :param Code: 错误码
+        :type Code: int
+        :param Data: 红票数据
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Data: list of CreateRedInvoiceResultData
+        """
+        self.Message = None
+        self.Code = None
+        self.Data = None
+
+
+    def _deserialize(self, params):
+        self.Message = params.get("Message")
+        self.Code = params.get("Code")
+        if params.get("Data") is not None:
+            self.Data = []
+            for item in params.get("Data"):
+                obj = CreateRedInvoiceResultData()
+                obj._deserialize(item)
+                self.Data.append(obj)
+
+
+class CreateRedInvoiceResultData(AbstractModel):
+    """红票结果数据
+
+    """
+
+    def __init__(self):
+        """
+        :param Code: 红冲状态码
+        :type Code: int
+        :param Message: 红冲状态消息
+        :type Message: str
+        :param InvoiceId: 发票ID
+        :type InvoiceId: str
+        :param OrderSn: 业务开票号
+        :type OrderSn: str
+        """
+        self.Code = None
+        self.Message = None
+        self.InvoiceId = None
+        self.OrderSn = None
+
+
+    def _deserialize(self, params):
+        self.Code = params.get("Code")
+        self.Message = params.get("Message")
+        self.InvoiceId = params.get("InvoiceId")
+        self.OrderSn = params.get("OrderSn")
+
+
 class DownloadBillRequest(AbstractModel):
     """DownloadBill请求参数结构体
 
@@ -1111,6 +1735,165 @@ class FileItem(AbstractModel):
         self.RandomPassword = params.get("RandomPassword")
         self.FilePath = params.get("FilePath")
         self.DrawCode = params.get("DrawCode")
+
+
+class InvoiceManagementList(AbstractModel):
+    """发票管理端列表
+
+    """
+
+    def __init__(self):
+        """
+        :param InvoiceId: 发票ID
+        :type InvoiceId: str
+        :param OrderId: 订单号
+        :type OrderId: str
+        :param SellerName: 销方名称
+        :type SellerName: str
+        :param OrderSn: 业务开票号
+        :type OrderSn: str
+        :param InvoicePlatformId: 开票平台ID
+        :type InvoicePlatformId: int
+        :param AppId: 腾讯云AppId
+        :type AppId: str
+        :param InvoiceSn: 开票号码
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InvoiceSn: str
+        :param InvoiceCode: 开票代码
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InvoiceCode: str
+        :param RedStatus: 红冲状态
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RedStatus: int
+        :param NotifyTime: 开票通知时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type NotifyTime: str
+        :param AmountHasTax: 含税总金额
+        :type AmountHasTax: str
+        :param InvoiceType: 发票类型
+        :type InvoiceType: int
+        :param InvoiceStatus: 开票状态
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InvoiceStatus: int
+        :param CreateTime: 创建时间
+        :type CreateTime: str
+        :param UpdateTime: 更新时间
+        :type UpdateTime: str
+        """
+        self.InvoiceId = None
+        self.OrderId = None
+        self.SellerName = None
+        self.OrderSn = None
+        self.InvoicePlatformId = None
+        self.AppId = None
+        self.InvoiceSn = None
+        self.InvoiceCode = None
+        self.RedStatus = None
+        self.NotifyTime = None
+        self.AmountHasTax = None
+        self.InvoiceType = None
+        self.InvoiceStatus = None
+        self.CreateTime = None
+        self.UpdateTime = None
+
+
+    def _deserialize(self, params):
+        self.InvoiceId = params.get("InvoiceId")
+        self.OrderId = params.get("OrderId")
+        self.SellerName = params.get("SellerName")
+        self.OrderSn = params.get("OrderSn")
+        self.InvoicePlatformId = params.get("InvoicePlatformId")
+        self.AppId = params.get("AppId")
+        self.InvoiceSn = params.get("InvoiceSn")
+        self.InvoiceCode = params.get("InvoiceCode")
+        self.RedStatus = params.get("RedStatus")
+        self.NotifyTime = params.get("NotifyTime")
+        self.AmountHasTax = params.get("AmountHasTax")
+        self.InvoiceType = params.get("InvoiceType")
+        self.InvoiceStatus = params.get("InvoiceStatus")
+        self.CreateTime = params.get("CreateTime")
+        self.UpdateTime = params.get("UpdateTime")
+
+
+class InvoiceManangementResult(AbstractModel):
+    """发票管理返回结果
+
+    """
+
+    def __init__(self):
+        """
+        :param Total: 总数。
+        :type Total: int
+        :param List: 发票列表。
+        :type List: list of InvoiceManagementList
+        """
+        self.Total = None
+        self.List = None
+
+
+    def _deserialize(self, params):
+        self.Total = params.get("Total")
+        if params.get("List") is not None:
+            self.List = []
+            for item in params.get("List"):
+                obj = InvoiceManagementList()
+                obj._deserialize(item)
+                self.List.append(obj)
+
+
+class MerchantManagementList(AbstractModel):
+    """商户查询管理端列表
+
+    """
+
+    def __init__(self):
+        """
+        :param TaxpayerName: 企业名称。
+        :type TaxpayerName: str
+        :param TaxpayerNum: 纳税人识别号(税号)	。
+        :type TaxpayerNum: str
+        :param SerialNo: 请求流水号。
+        :type SerialNo: str
+        :param InvoicePlatformId: 开票系统ID
+        :type InvoicePlatformId: int
+        """
+        self.TaxpayerName = None
+        self.TaxpayerNum = None
+        self.SerialNo = None
+        self.InvoicePlatformId = None
+
+
+    def _deserialize(self, params):
+        self.TaxpayerName = params.get("TaxpayerName")
+        self.TaxpayerNum = params.get("TaxpayerNum")
+        self.SerialNo = params.get("SerialNo")
+        self.InvoicePlatformId = params.get("InvoicePlatformId")
+
+
+class MerchantManagementResult(AbstractModel):
+    """商户管理端结果
+
+    """
+
+    def __init__(self):
+        """
+        :param Total: 总数。
+        :type Total: int
+        :param List: 商户列表。
+        :type List: list of MerchantManagementList
+        """
+        self.Total = None
+        self.List = None
+
+
+    def _deserialize(self, params):
+        self.Total = params.get("Total")
+        if params.get("List") is not None:
+            self.List = []
+            for item in params.get("List"):
+                obj = MerchantManagementList()
+                obj._deserialize(item)
+                self.List.append(obj)
 
 
 class ModifyMntMbrBindRelateAcctBankCodeRequest(AbstractModel):
@@ -1844,6 +2627,246 @@ class QueryCustAcctIdBalanceResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class QueryInvoiceForManagementRequest(AbstractModel):
+    """QueryInvoiceForManagement请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param InvoicePlatformId: 开票平台ID
+        :type InvoicePlatformId: int
+        :param InvoiceStatus: 开票状态
+        :type InvoiceStatus: int
+        :param RedInvoiceStatus: 红冲状态
+        :type RedInvoiceStatus: int
+        :param BeginTime: 开始时间
+        :type BeginTime: str
+        :param EndTime: 结束时间
+        :type EndTime: str
+        :param Offset: 页码
+        :type Offset: int
+        :param Limit: 页大小
+        :type Limit: int
+        :param OrderId: 订单号
+        :type OrderId: str
+        :param InvoiceId: 发票ID
+        :type InvoiceId: str
+        :param OrderSn: 业务开票号
+        :type OrderSn: str
+        :param InvoiceSn: 发票号码
+        :type InvoiceSn: str
+        :param InvoiceCode: 发票代码
+        :type InvoiceCode: str
+        :param Profile: 接入环境。沙箱环境填 sandbox。
+        :type Profile: str
+        """
+        self.InvoicePlatformId = None
+        self.InvoiceStatus = None
+        self.RedInvoiceStatus = None
+        self.BeginTime = None
+        self.EndTime = None
+        self.Offset = None
+        self.Limit = None
+        self.OrderId = None
+        self.InvoiceId = None
+        self.OrderSn = None
+        self.InvoiceSn = None
+        self.InvoiceCode = None
+        self.Profile = None
+
+
+    def _deserialize(self, params):
+        self.InvoicePlatformId = params.get("InvoicePlatformId")
+        self.InvoiceStatus = params.get("InvoiceStatus")
+        self.RedInvoiceStatus = params.get("RedInvoiceStatus")
+        self.BeginTime = params.get("BeginTime")
+        self.EndTime = params.get("EndTime")
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+        self.OrderId = params.get("OrderId")
+        self.InvoiceId = params.get("InvoiceId")
+        self.OrderSn = params.get("OrderSn")
+        self.InvoiceSn = params.get("InvoiceSn")
+        self.InvoiceCode = params.get("InvoiceCode")
+        self.Profile = params.get("Profile")
+
+
+class QueryInvoiceForManagementResponse(AbstractModel):
+    """QueryInvoiceForManagement返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Result: 发票结果
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Result: :class:`tencentcloud.cpdp.v20190820.models.InvoiceManangementResult`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Result = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Result") is not None:
+            self.Result = InvoiceManangementResult()
+            self.Result._deserialize(params.get("Result"))
+        self.RequestId = params.get("RequestId")
+
+
+class QueryInvoiceRequest(AbstractModel):
+    """QueryInvoice请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param InvoicePlatformId: 开票平台ID
+        :type InvoicePlatformId: int
+        :param OrderId: 订单号
+        :type OrderId: str
+        :param OrderSn: 业务开票号
+        :type OrderSn: str
+        :param IsRed: 发票种类：
+0：蓝票
+1：红票【该字段默认为0， 如果需要查询红票信息，本字段必须传1，否则可能查询不到需要的发票信息】。
+        :type IsRed: int
+        :param Profile: 接入环境。沙箱环境填sandbox。
+        :type Profile: str
+        """
+        self.InvoicePlatformId = None
+        self.OrderId = None
+        self.OrderSn = None
+        self.IsRed = None
+        self.Profile = None
+
+
+    def _deserialize(self, params):
+        self.InvoicePlatformId = params.get("InvoicePlatformId")
+        self.OrderId = params.get("OrderId")
+        self.OrderSn = params.get("OrderSn")
+        self.IsRed = params.get("IsRed")
+        self.Profile = params.get("Profile")
+
+
+class QueryInvoiceResponse(AbstractModel):
+    """QueryInvoice返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Result: 发票查询结果
+        :type Result: :class:`tencentcloud.cpdp.v20190820.models.QueryInvoiceResult`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Result = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Result") is not None:
+            self.Result = QueryInvoiceResult()
+            self.Result._deserialize(params.get("Result"))
+        self.RequestId = params.get("RequestId")
+
+
+class QueryInvoiceResult(AbstractModel):
+    """查询发票结果
+
+    """
+
+    def __init__(self):
+        """
+        :param Message: 错误消息
+        :type Message: str
+        :param Code: 错误码
+        :type Code: int
+        :param Data: 查询发票数据
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Data: :class:`tencentcloud.cpdp.v20190820.models.QueryInvoiceResultData`
+        """
+        self.Message = None
+        self.Code = None
+        self.Data = None
+
+
+    def _deserialize(self, params):
+        self.Message = params.get("Message")
+        self.Code = params.get("Code")
+        if params.get("Data") is not None:
+            self.Data = QueryInvoiceResultData()
+            self.Data._deserialize(params.get("Data"))
+
+
+class QueryInvoiceResultData(AbstractModel):
+    """查询发票结果数据
+
+    """
+
+    def __init__(self):
+        """
+        :param OrderId: 订单号
+        :type OrderId: str
+        :param OrderSn: 业务开票号
+        :type OrderSn: str
+        :param Status: 发票状态
+        :type Status: int
+        :param Message: 开票描述
+        :type Message: str
+        :param TicketDate: 开票日期
+        :type TicketDate: str
+        :param TicketSn: 发票号码
+        :type TicketSn: str
+        :param TicketCode: 发票代码
+        :type TicketCode: str
+        :param CheckCode: 检验码
+        :type CheckCode: str
+        :param AmountWithTax: 含税金额(元)
+        :type AmountWithTax: str
+        :param AmountWithoutTax: 不含税金额(元)
+        :type AmountWithoutTax: str
+        :param TaxAmount: 税额(元)
+        :type TaxAmount: str
+        :param IsRedWashed: 是否被红冲
+        :type IsRedWashed: int
+        :param PdfUrl: pdf地址
+        :type PdfUrl: str
+        """
+        self.OrderId = None
+        self.OrderSn = None
+        self.Status = None
+        self.Message = None
+        self.TicketDate = None
+        self.TicketSn = None
+        self.TicketCode = None
+        self.CheckCode = None
+        self.AmountWithTax = None
+        self.AmountWithoutTax = None
+        self.TaxAmount = None
+        self.IsRedWashed = None
+        self.PdfUrl = None
+
+
+    def _deserialize(self, params):
+        self.OrderId = params.get("OrderId")
+        self.OrderSn = params.get("OrderSn")
+        self.Status = params.get("Status")
+        self.Message = params.get("Message")
+        self.TicketDate = params.get("TicketDate")
+        self.TicketSn = params.get("TicketSn")
+        self.TicketCode = params.get("TicketCode")
+        self.CheckCode = params.get("CheckCode")
+        self.AmountWithTax = params.get("AmountWithTax")
+        self.AmountWithoutTax = params.get("AmountWithoutTax")
+        self.TaxAmount = params.get("TaxAmount")
+        self.IsRedWashed = params.get("IsRedWashed")
+        self.PdfUrl = params.get("PdfUrl")
+
+
 class QueryItem(AbstractModel):
     """聚鑫商户余额查询输出项
 
@@ -2104,6 +3127,59 @@ class QueryMemberTransactionResponse(AbstractModel):
         self.CnsmrSeqNo = params.get("CnsmrSeqNo")
         self.FrontSeqNo = params.get("FrontSeqNo")
         self.ReservedMsg = params.get("ReservedMsg")
+        self.RequestId = params.get("RequestId")
+
+
+class QueryMerchantInfoForManagementRequest(AbstractModel):
+    """QueryMerchantInfoForManagement请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param InvoicePlatformId: 开票平台ID
+        :type InvoicePlatformId: int
+        :param Offset: 页码
+        :type Offset: int
+        :param Limit: 页大小
+        :type Limit: int
+        :param Profile: 接入环境。沙箱环境填sandbox。
+        :type Profile: str
+        """
+        self.InvoicePlatformId = None
+        self.Offset = None
+        self.Limit = None
+        self.Profile = None
+
+
+    def _deserialize(self, params):
+        self.InvoicePlatformId = params.get("InvoicePlatformId")
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+        self.Profile = params.get("Profile")
+
+
+class QueryMerchantInfoForManagementResponse(AbstractModel):
+    """QueryMerchantInfoForManagement返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Result: 商户结果
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Result: :class:`tencentcloud.cpdp.v20190820.models.MerchantManagementResult`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Result = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Result") is not None:
+            self.Result = MerchantManagementResult()
+            self.Result._deserialize(params.get("Result"))
         self.RequestId = params.get("RequestId")
 
 
@@ -2692,9 +3768,12 @@ class RechargeMemberThirdPayRequest(AbstractModel):
         :type MemberFillAmt: str
         :param Commission: STRING(20)，手续费金额
         :type Commission: str
-        :param Ccy: STRING(3)，币种
+        :param Ccy: STRING(3)，币种。如RMB
         :type Ccy: str
-        :param PayChannelType: STRING(20)，支付渠道类型
+        :param PayChannelType: STRING(20)，支付渠道类型。
+0001-微信
+0002-支付宝
+0003-京东支付
         :type PayChannelType: str
         :param PayChannelAssignMerNo: STRING(50)，支付渠道所分配的商户号
         :type PayChannelAssignMerNo: str
@@ -3049,6 +4128,94 @@ class RevRegisterBillSupportWithdrawRequest(AbstractModel):
 
 class RevRegisterBillSupportWithdrawResponse(AbstractModel):
     """RevRegisterBillSupportWithdraw返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param TxnReturnCode: String(20)，返回码
+        :type TxnReturnCode: str
+        :param TxnReturnMsg: String(100)，返回信息
+        :type TxnReturnMsg: str
+        :param CnsmrSeqNo: String(22)，交易流水号
+        :type CnsmrSeqNo: str
+        :param FrontSeqNo: STRING(52)，见证系统流水号
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FrontSeqNo: str
+        :param ReservedMsg: STRING(1027)，保留域
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ReservedMsg: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TxnReturnCode = None
+        self.TxnReturnMsg = None
+        self.CnsmrSeqNo = None
+        self.FrontSeqNo = None
+        self.ReservedMsg = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TxnReturnCode = params.get("TxnReturnCode")
+        self.TxnReturnMsg = params.get("TxnReturnMsg")
+        self.CnsmrSeqNo = params.get("CnsmrSeqNo")
+        self.FrontSeqNo = params.get("FrontSeqNo")
+        self.ReservedMsg = params.get("ReservedMsg")
+        self.RequestId = params.get("RequestId")
+
+
+class RevResigterBillSupportWithdrawRequest(AbstractModel):
+    """RevResigterBillSupportWithdraw请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param MrchCode: String(22)，商户号（签约客户号）
+        :type MrchCode: str
+        :param TranNetMemberCode: STRING(32)，交易网会员代码
+        :type TranNetMemberCode: str
+        :param OldOrderNo: STRING(30)，原订单号（RegisterBillSupportWithdraw接口中的订单号）
+        :type OldOrderNo: str
+        :param CancelAmt: STRING(20)，撤销金额（支持部分撤销，不能大于原订单可用金额，包含交易费用）
+        :type CancelAmt: str
+        :param TranFee: STRING(20)，交易费用（暂未使用，默认传0.0）
+        :type TranFee: str
+        :param Remark: STRING(300)，备注
+        :type Remark: str
+        :param ReservedMsgOne: STRING(300)，保留域1
+        :type ReservedMsgOne: str
+        :param ReservedMsgTwo: STRING(300)，保留域2
+        :type ReservedMsgTwo: str
+        :param ReservedMsgThree: STRING(300)，保留域3
+        :type ReservedMsgThree: str
+        """
+        self.MrchCode = None
+        self.TranNetMemberCode = None
+        self.OldOrderNo = None
+        self.CancelAmt = None
+        self.TranFee = None
+        self.Remark = None
+        self.ReservedMsgOne = None
+        self.ReservedMsgTwo = None
+        self.ReservedMsgThree = None
+
+
+    def _deserialize(self, params):
+        self.MrchCode = params.get("MrchCode")
+        self.TranNetMemberCode = params.get("TranNetMemberCode")
+        self.OldOrderNo = params.get("OldOrderNo")
+        self.CancelAmt = params.get("CancelAmt")
+        self.TranFee = params.get("TranFee")
+        self.Remark = params.get("Remark")
+        self.ReservedMsgOne = params.get("ReservedMsgOne")
+        self.ReservedMsgTwo = params.get("ReservedMsgTwo")
+        self.ReservedMsgThree = params.get("ReservedMsgThree")
+
+
+class RevResigterBillSupportWithdrawResponse(AbstractModel):
+    """RevResigterBillSupportWithdraw返回参数结构体
 
     """
 

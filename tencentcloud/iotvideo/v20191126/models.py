@@ -582,6 +582,40 @@ class CreateUsrTokenResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DeleteAppUsrRequest(AbstractModel):
+    """DeleteAppUsr请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param AccessId: 客户的终端用户在IoT Video上的唯一标识ID
+        :type AccessId: str
+        """
+        self.AccessId = None
+
+
+    def _deserialize(self, params):
+        self.AccessId = params.get("AccessId")
+
+
+class DeleteAppUsrResponse(AbstractModel):
+    """DeleteAppUsr返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class DeleteBindingRequest(AbstractModel):
     """DeleteBinding请求参数结构体
 

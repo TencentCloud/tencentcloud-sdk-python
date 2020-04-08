@@ -313,6 +313,90 @@ class CpdpClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def CreateInvoice(self, request):
+        """智慧零售-发票开具
+
+        :param request: Request instance for CreateInvoice.
+        :type request: :class:`tencentcloud.cpdp.v20190820.models.CreateInvoiceRequest`
+        :rtype: :class:`tencentcloud.cpdp.v20190820.models.CreateInvoiceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("CreateInvoice", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateInvoiceResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def CreateMerchant(self, request):
+        """智慧零售-商户注册
+
+        :param request: Request instance for CreateMerchant.
+        :type request: :class:`tencentcloud.cpdp.v20190820.models.CreateMerchantRequest`
+        :rtype: :class:`tencentcloud.cpdp.v20190820.models.CreateMerchantResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("CreateMerchant", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateMerchantResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def CreateRedInvoice(self, request):
+        """智慧零售-发票红冲
+
+        :param request: Request instance for CreateRedInvoice.
+        :type request: :class:`tencentcloud.cpdp.v20190820.models.CreateRedInvoiceRequest`
+        :rtype: :class:`tencentcloud.cpdp.v20190820.models.CreateRedInvoiceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("CreateRedInvoice", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateRedInvoiceResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DownloadBill(self, request):
         """账单下载接口，根据本接口返回的URL地址，在D+1日下载对账单。注意，本接口返回的URL地址有时效，请尽快下载。URL超时时效后，请重新调用本接口再次获取。
 
@@ -565,6 +649,62 @@ class CpdpClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def QueryInvoice(self, request):
+        """智慧零售-发票查询
+
+        :param request: Request instance for QueryInvoice.
+        :type request: :class:`tencentcloud.cpdp.v20190820.models.QueryInvoiceRequest`
+        :rtype: :class:`tencentcloud.cpdp.v20190820.models.QueryInvoiceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("QueryInvoice", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.QueryInvoiceResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def QueryInvoiceForManagement(self, request):
+        """智慧零售-查询管理端发票
+
+        :param request: Request instance for QueryInvoiceForManagement.
+        :type request: :class:`tencentcloud.cpdp.v20190820.models.QueryInvoiceForManagementRequest`
+        :rtype: :class:`tencentcloud.cpdp.v20190820.models.QueryInvoiceForManagementResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("QueryInvoiceForManagement", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.QueryInvoiceForManagementResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def QueryMemberBind(self, request):
         """会员绑定信息查询。查询标志为“单个会员”的情况下，返回该会员的有效的绑定账户信息。
         查询标志为“全部会员”的情况下，返回市场下的全部的有效的绑定账户信息。查询标志为“单个会员的证件信息”的情况下，返回市场下的指定的会员的留存在电商见证宝系统的证件信息。
@@ -608,6 +748,34 @@ class CpdpClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.QueryMemberTransactionResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def QueryMerchantInfoForManagement(self, request):
+        """智慧零售-查询管理端商户
+
+        :param request: Request instance for QueryMerchantInfoForManagement.
+        :type request: :class:`tencentcloud.cpdp.v20190820.models.QueryMerchantInfoForManagementRequest`
+        :rtype: :class:`tencentcloud.cpdp.v20190820.models.QueryMerchantInfoForManagementResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("QueryMerchantInfoForManagement", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.QueryMerchantInfoForManagementResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -860,6 +1028,34 @@ class CpdpClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.RevRegisterBillSupportWithdrawResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def RevResigterBillSupportWithdraw(self, request):
+        """登记挂账撤销。此接口可以实现把RegisterBillSupportWithdraw接口完成的登记挂账进行撤销，即调减普通会员子账户的可提现和可用余额，调增挂账子账户的可用余额。
+
+        :param request: Request instance for RevResigterBillSupportWithdraw.
+        :type request: :class:`tencentcloud.cpdp.v20190820.models.RevResigterBillSupportWithdrawRequest`
+        :rtype: :class:`tencentcloud.cpdp.v20190820.models.RevResigterBillSupportWithdrawResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("RevResigterBillSupportWithdraw", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.RevResigterBillSupportWithdrawResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
