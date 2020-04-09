@@ -1345,6 +1345,57 @@ class CcnRoute(AbstractModel):
         self.InstanceUin = params.get("InstanceUin")
 
 
+class CheckAssistantCidrRequest(AbstractModel):
+    """CheckAssistantCidr请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param VpcId: `VPC`实例`ID`。形如：`vpc-6v2ht8q5`
+        :type VpcId: str
+        :param NewCidrBlocks: 待添加的负载CIDR。CIDR数组，格式如["10.0.0.0/16", "172.16.0.0/16"]
+        :type NewCidrBlocks: list of str
+        :param OldCidrBlocks: 待删除的负载CIDR。CIDR数组，格式如["10.0.0.0/16", "172.16.0.0/16"]
+        :type OldCidrBlocks: list of str
+        """
+        self.VpcId = None
+        self.NewCidrBlocks = None
+        self.OldCidrBlocks = None
+
+
+    def _deserialize(self, params):
+        self.VpcId = params.get("VpcId")
+        self.NewCidrBlocks = params.get("NewCidrBlocks")
+        self.OldCidrBlocks = params.get("OldCidrBlocks")
+
+
+class CheckAssistantCidrResponse(AbstractModel):
+    """CheckAssistantCidr返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ConflictSourceSet: 冲突资源信息数组。
+        :type ConflictSourceSet: list of ConflictSource
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.ConflictSourceSet = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("ConflictSourceSet") is not None:
+            self.ConflictSourceSet = []
+            for item in params.get("ConflictSourceSet"):
+                obj = ConflictSource()
+                obj._deserialize(item)
+                self.ConflictSourceSet.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class CheckDefaultSubnetRequest(AbstractModel):
     """CheckDefaultSubnet请求参数结构体
 
@@ -1481,6 +1532,57 @@ class ClassicLinkInstance(AbstractModel):
         self.InstanceId = params.get("InstanceId")
 
 
+class ConflictItem(AbstractModel):
+    """冲突资源条目信息。
+
+    """
+
+    def __init__(self):
+        """
+        :param ConfilctId: 冲突资源的ID
+        :type ConfilctId: str
+        :param DestinationItem: 冲突目的资源
+        :type DestinationItem: str
+        """
+        self.ConfilctId = None
+        self.DestinationItem = None
+
+
+    def _deserialize(self, params):
+        self.ConfilctId = params.get("ConfilctId")
+        self.DestinationItem = params.get("DestinationItem")
+
+
+class ConflictSource(AbstractModel):
+    """冲突资源信息。
+
+    """
+
+    def __init__(self):
+        """
+        :param ConflictSourceId: 冲突资源ID
+        :type ConflictSourceId: str
+        :param SourceItem: 冲突资源
+        :type SourceItem: str
+        :param ConflictItemSet: 冲突资源条目信息
+        :type ConflictItemSet: list of ConflictItem
+        """
+        self.ConflictSourceId = None
+        self.SourceItem = None
+        self.ConflictItemSet = None
+
+
+    def _deserialize(self, params):
+        self.ConflictSourceId = params.get("ConflictSourceId")
+        self.SourceItem = params.get("SourceItem")
+        if params.get("ConflictItemSet") is not None:
+            self.ConflictItemSet = []
+            for item in params.get("ConflictItemSet"):
+                obj = ConflictItem()
+                obj._deserialize(item)
+                self.ConflictItemSet.append(obj)
+
+
 class CreateAddressTemplateGroupRequest(AbstractModel):
     """CreateAddressTemplateGroup请求参数结构体
 
@@ -1566,6 +1668,54 @@ class CreateAddressTemplateResponse(AbstractModel):
         if params.get("AddressTemplate") is not None:
             self.AddressTemplate = AddressTemplate()
             self.AddressTemplate._deserialize(params.get("AddressTemplate"))
+        self.RequestId = params.get("RequestId")
+
+
+class CreateAssistantCidrRequest(AbstractModel):
+    """CreateAssistantCidr请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param VpcId: `VPC`实例`ID`。形如：`vpc-6v2ht8q5`
+        :type VpcId: str
+        :param CidrBlocks: CIDR数组，格式如["10.0.0.0/16", "172.16.0.0/16"]
+        :type CidrBlocks: list of str
+        """
+        self.VpcId = None
+        self.CidrBlocks = None
+
+
+    def _deserialize(self, params):
+        self.VpcId = params.get("VpcId")
+        self.CidrBlocks = params.get("CidrBlocks")
+
+
+class CreateAssistantCidrResponse(AbstractModel):
+    """CreateAssistantCidr返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param AssistantCidrSet: 辅助CIDR数组。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AssistantCidrSet: list of AssistantCidr
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.AssistantCidrSet = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("AssistantCidrSet") is not None:
+            self.AssistantCidrSet = []
+            for item in params.get("AssistantCidrSet"):
+                obj = AssistantCidr()
+                obj._deserialize(item)
+                self.AssistantCidrSet.append(obj)
         self.RequestId = params.get("RequestId")
 
 
@@ -1746,6 +1896,46 @@ class CreateCustomerGatewayResponse(AbstractModel):
         if params.get("CustomerGateway") is not None:
             self.CustomerGateway = CustomerGateway()
             self.CustomerGateway._deserialize(params.get("CustomerGateway"))
+        self.RequestId = params.get("RequestId")
+
+
+class CreateDefaultSecurityGroupRequest(AbstractModel):
+    """CreateDefaultSecurityGroup请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ProjectId: 项目ID，默认0。可在qcloud控制台项目管理页面查询到。
+        :type ProjectId: str
+        """
+        self.ProjectId = None
+
+
+    def _deserialize(self, params):
+        self.ProjectId = params.get("ProjectId")
+
+
+class CreateDefaultSecurityGroupResponse(AbstractModel):
+    """CreateDefaultSecurityGroup返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param SecurityGroup: 安全组对象。
+        :type SecurityGroup: :class:`tencentcloud.vpc.v20170312.models.SecurityGroup`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.SecurityGroup = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("SecurityGroup") is not None:
+            self.SecurityGroup = SecurityGroup()
+            self.SecurityGroup._deserialize(params.get("SecurityGroup"))
         self.RequestId = params.get("RequestId")
 
 
@@ -2583,6 +2773,60 @@ class CreateSecurityGroupResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class CreateSecurityGroupWithPoliciesRequest(AbstractModel):
+    """CreateSecurityGroupWithPolicies请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param GroupName: 安全组名称，可任意命名，但不得超过60个字符。
+        :type GroupName: str
+        :param GroupDescription: 安全组备注，最多100个字符。
+        :type GroupDescription: str
+        :param ProjectId: 项目ID，默认0。可在qcloud控制台项目管理页面查询到。
+        :type ProjectId: str
+        :param SecurityGroupPolicySet: 安全组规则集合。
+        :type SecurityGroupPolicySet: :class:`tencentcloud.vpc.v20170312.models.SecurityGroupPolicySet`
+        """
+        self.GroupName = None
+        self.GroupDescription = None
+        self.ProjectId = None
+        self.SecurityGroupPolicySet = None
+
+
+    def _deserialize(self, params):
+        self.GroupName = params.get("GroupName")
+        self.GroupDescription = params.get("GroupDescription")
+        self.ProjectId = params.get("ProjectId")
+        if params.get("SecurityGroupPolicySet") is not None:
+            self.SecurityGroupPolicySet = SecurityGroupPolicySet()
+            self.SecurityGroupPolicySet._deserialize(params.get("SecurityGroupPolicySet"))
+
+
+class CreateSecurityGroupWithPoliciesResponse(AbstractModel):
+    """CreateSecurityGroupWithPolicies返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param SecurityGroup: 安全组对象。
+        :type SecurityGroup: :class:`tencentcloud.vpc.v20170312.models.SecurityGroup`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.SecurityGroup = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("SecurityGroup") is not None:
+            self.SecurityGroup = SecurityGroup()
+            self.SecurityGroup._deserialize(params.get("SecurityGroup"))
+        self.RequestId = params.get("RequestId")
+
+
 class CreateServiceTemplateGroupRequest(AbstractModel):
     """CreateServiceTemplateGroup请求参数结构体
 
@@ -3051,6 +3295,67 @@ class CustomerGatewayVendor(AbstractModel):
         self.VendorName = params.get("VendorName")
 
 
+class CvmInstance(AbstractModel):
+    """云主机实例信息。
+
+    """
+
+    def __init__(self):
+        """
+        :param VpcId: VPC实例ID。
+        :type VpcId: str
+        :param SubnetId: 子网实例ID。
+        :type SubnetId: str
+        :param InstanceId: 云主机实例ID
+        :type InstanceId: str
+        :param InstanceName: 云主机名称。
+        :type InstanceName: str
+        :param InstanceState: 云主机状态。
+        :type InstanceState: str
+        :param CPU: 实例的CPU核数，单位：核。
+        :type CPU: int
+        :param Memory: 实例内存容量，单位：GB。
+        :type Memory: int
+        :param CreatedTime: 创建时间。
+        :type CreatedTime: str
+        :param InstanceType: 实例机型。
+        :type InstanceType: str
+        :param EniLimit: 实例弹性网卡配额（包含主网卡）。
+        :type EniLimit: int
+        :param EniIpLimit: 实例弹性网卡内网IP配额（包含主网卡）。
+        :type EniIpLimit: int
+        :param InstanceEniCount: 实例已绑定弹性网卡的个数（包含主网卡）。
+        :type InstanceEniCount: int
+        """
+        self.VpcId = None
+        self.SubnetId = None
+        self.InstanceId = None
+        self.InstanceName = None
+        self.InstanceState = None
+        self.CPU = None
+        self.Memory = None
+        self.CreatedTime = None
+        self.InstanceType = None
+        self.EniLimit = None
+        self.EniIpLimit = None
+        self.InstanceEniCount = None
+
+
+    def _deserialize(self, params):
+        self.VpcId = params.get("VpcId")
+        self.SubnetId = params.get("SubnetId")
+        self.InstanceId = params.get("InstanceId")
+        self.InstanceName = params.get("InstanceName")
+        self.InstanceState = params.get("InstanceState")
+        self.CPU = params.get("CPU")
+        self.Memory = params.get("Memory")
+        self.CreatedTime = params.get("CreatedTime")
+        self.InstanceType = params.get("InstanceType")
+        self.EniLimit = params.get("EniLimit")
+        self.EniIpLimit = params.get("EniIpLimit")
+        self.InstanceEniCount = params.get("InstanceEniCount")
+
+
 class DefaultVpcSubnet(AbstractModel):
     """默认VPC和子网
 
@@ -3125,6 +3430,44 @@ class DeleteAddressTemplateRequest(AbstractModel):
 
 class DeleteAddressTemplateResponse(AbstractModel):
     """DeleteAddressTemplate返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class DeleteAssistantCidrRequest(AbstractModel):
+    """DeleteAssistantCidr请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param VpcId: `VPC`实例`ID`。形如：`vpc-6v2ht8q5`
+        :type VpcId: str
+        :param CidrBlocks: CIDR数组，格式如["10.0.0.0/16", "172.16.0.0/16"]
+        :type CidrBlocks: list of str
+        """
+        self.VpcId = None
+        self.CidrBlocks = None
+
+
+    def _deserialize(self, params):
+        self.VpcId = params.get("VpcId")
+        self.CidrBlocks = params.get("CidrBlocks")
+
+
+class DeleteAssistantCidrResponse(AbstractModel):
+    """DeleteAssistantCidr返回参数结构体
 
     """
 
@@ -4218,6 +4561,72 @@ class DescribeAddressesResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeAssistantCidrRequest(AbstractModel):
+    """DescribeAssistantCidr请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param VpcIds: `VPC`实例`ID`数组。形如：[`vpc-6v2ht8q5`]
+        :type VpcIds: list of str
+        :param Filters: 过滤条件，参数不支持同时指定NetworkInterfaceIds和Filters。
+<li>vpc-id - String - （过滤条件）VPC实例ID，形如：vpc-f49l6u0z。</li>
+        :type Filters: list of Filter
+        :param Offset: 偏移量，默认为0。
+        :type Offset: int
+        :param Limit: 返回数量，默认为20，最大值为100。
+        :type Limit: int
+        """
+        self.VpcIds = None
+        self.Filters = None
+        self.Offset = None
+        self.Limit = None
+
+
+    def _deserialize(self, params):
+        self.VpcIds = params.get("VpcIds")
+        if params.get("Filters") is not None:
+            self.Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self.Filters.append(obj)
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+
+
+class DescribeAssistantCidrResponse(AbstractModel):
+    """DescribeAssistantCidr返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param AssistantCidrSet: 符合条件的辅助CIDR数组。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AssistantCidrSet: list of AssistantCidr
+        :param TotalCount: 符合条件的实例数量。
+        :type TotalCount: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.AssistantCidrSet = None
+        self.TotalCount = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("AssistantCidrSet") is not None:
+            self.AssistantCidrSet = []
+            for item in params.get("AssistantCidrSet"):
+                obj = AssistantCidr()
+                obj._deserialize(item)
+                self.AssistantCidrSet.append(obj)
+        self.TotalCount = params.get("TotalCount")
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeBandwidthPackageQuotaRequest(AbstractModel):
     """DescribeBandwidthPackageQuota请求参数结构体
 
@@ -5106,6 +5515,68 @@ class DescribeGatewayFlowMonitorDetailResponse(AbstractModel):
                 obj = GatewayFlowMonitorDetail()
                 obj._deserialize(item)
                 self.GatewayFlowMonitorDetailSet.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeGatewayFlowQosRequest(AbstractModel):
+    """DescribeGatewayFlowQos请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param GatewayId: 网关实例ID，目前我们支持的网关实例类型有，
+专线网关实例ID，形如，`dcg-ltjahce6`；
+Nat网关实例ID，形如，`nat-ltjahce6`；
+VPN网关实例ID，形如，`vpn-ltjahce6`。
+        :type GatewayId: str
+        :param IpAddresses: 限流的云服务器内网IP。
+        :type IpAddresses: list of str
+        :param Offset: 偏移量，默认为0。
+        :type Offset: int
+        :param Limit: 返回数量，默认为20，最大值为100。
+        :type Limit: int
+        """
+        self.GatewayId = None
+        self.IpAddresses = None
+        self.Offset = None
+        self.Limit = None
+
+
+    def _deserialize(self, params):
+        self.GatewayId = params.get("GatewayId")
+        self.IpAddresses = params.get("IpAddresses")
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+
+
+class DescribeGatewayFlowQosResponse(AbstractModel):
+    """DescribeGatewayFlowQos返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param GatewayQosSet: 实例详细信息列表。
+        :type GatewayQosSet: list of GatewayQos
+        :param TotalCount: 符合条件的实例数量。
+        :type TotalCount: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.GatewayQosSet = None
+        self.TotalCount = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("GatewayQosSet") is not None:
+            self.GatewayQosSet = []
+            for item in params.get("GatewayQosSet"):
+                obj = GatewayQos()
+                obj._deserialize(item)
+                self.GatewayQosSet.append(obj)
+        self.TotalCount = params.get("TotalCount")
         self.RequestId = params.get("RequestId")
 
 
@@ -6045,6 +6516,49 @@ class DescribeSecurityGroupPoliciesResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeSecurityGroupReferencesRequest(AbstractModel):
+    """DescribeSecurityGroupReferences请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param SecurityGroupIds: 安全组实例ID数组。格式如：['sg-12345678']
+        :type SecurityGroupIds: list of str
+        """
+        self.SecurityGroupIds = None
+
+
+    def _deserialize(self, params):
+        self.SecurityGroupIds = params.get("SecurityGroupIds")
+
+
+class DescribeSecurityGroupReferencesResponse(AbstractModel):
+    """DescribeSecurityGroupReferences返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ReferredSecurityGroupSet: 安全组被引用信息。
+        :type ReferredSecurityGroupSet: list of ReferredSecurityGroup
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.ReferredSecurityGroupSet = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("ReferredSecurityGroupSet") is not None:
+            self.ReferredSecurityGroupSet = []
+            for item in params.get("ReferredSecurityGroupSet"):
+                obj = ReferredSecurityGroup()
+                obj._deserialize(item)
+                self.ReferredSecurityGroupSet.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeSecurityGroupsRequest(AbstractModel):
     """DescribeSecurityGroups请求参数结构体
 
@@ -6383,6 +6897,69 @@ class DescribeTemplateLimitsResponse(AbstractModel):
         if params.get("TemplateLimit") is not None:
             self.TemplateLimit = TemplateLimit()
             self.TemplateLimit._deserialize(params.get("TemplateLimit"))
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeVpcInstancesRequest(AbstractModel):
+    """DescribeVpcInstances请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Filters: 过滤条件，参数不支持同时指定RouteTableIds和Filters。
+<li>vpc-id - String - （过滤条件）VPC实例ID，形如：vpc-f49l6u0z。</li>
+<li>instance-id - String - （过滤条件）云主机实例ID。</li>
+<li>instance-name - String - （过滤条件）云主机名称。</li>
+        :type Filters: list of Filter
+        :param Offset: 偏移量。
+        :type Offset: int
+        :param Limit: 请求对象个数。
+        :type Limit: int
+        """
+        self.Filters = None
+        self.Offset = None
+        self.Limit = None
+
+
+    def _deserialize(self, params):
+        if params.get("Filters") is not None:
+            self.Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self.Filters.append(obj)
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+
+
+class DescribeVpcInstancesResponse(AbstractModel):
+    """DescribeVpcInstances返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param InstanceSet: 云主机实例列表。
+        :type InstanceSet: list of CvmInstance
+        :param TotalCount: 满足条件的云主机实例个数。
+        :type TotalCount: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.InstanceSet = None
+        self.TotalCount = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("InstanceSet") is not None:
+            self.InstanceSet = []
+            for item in params.get("InstanceSet"):
+                obj = CvmInstance()
+                obj._deserialize(item)
+                self.InstanceSet.append(obj)
+        self.TotalCount = params.get("TotalCount")
         self.RequestId = params.get("RequestId")
 
 
@@ -7034,6 +7611,43 @@ class DisableCcnRoutesResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DisableGatewayFlowMonitorRequest(AbstractModel):
+    """DisableGatewayFlowMonitor请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param GatewayId: 网关实例ID，目前我们支持的网关实例类型有，
+专线网关实例ID，形如，`dcg-ltjahce6`；
+Nat网关实例ID，形如，`nat-ltjahce6`；
+VPN网关实例ID，形如，`vpn-ltjahce6`。
+        :type GatewayId: str
+        """
+        self.GatewayId = None
+
+
+    def _deserialize(self, params):
+        self.GatewayId = params.get("GatewayId")
+
+
+class DisableGatewayFlowMonitorResponse(AbstractModel):
+    """DisableGatewayFlowMonitor返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class DisableRoutesRequest(AbstractModel):
     """DisableRoutes请求参数结构体
 
@@ -7318,6 +7932,43 @@ class EnableCcnRoutesResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class EnableGatewayFlowMonitorRequest(AbstractModel):
+    """EnableGatewayFlowMonitor请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param GatewayId: 网关实例ID，目前我们支持的网关实例有，
+专线网关实例ID，形如，`dcg-ltjahce6`；
+Nat网关实例ID，形如，`nat-ltjahce6`；
+VPN网关实例ID，形如，`vpn-ltjahce6`。
+        :type GatewayId: str
+        """
+        self.GatewayId = None
+
+
+    def _deserialize(self, params):
+        self.GatewayId = params.get("GatewayId")
+
+
+class EnableGatewayFlowMonitorResponse(AbstractModel):
+    """EnableGatewayFlowMonitor返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class EnableRoutesRequest(AbstractModel):
     """EnableRoutes请求参数结构体
 
@@ -7482,6 +8133,35 @@ class GatewayFlowMonitorDetail(AbstractModel):
         self.OutPkg = params.get("OutPkg")
         self.InTraffic = params.get("InTraffic")
         self.OutTraffic = params.get("OutTraffic")
+
+
+class GatewayQos(AbstractModel):
+    """网关流控带宽信息
+
+    """
+
+    def __init__(self):
+        """
+        :param VpcId: VPC实例ID。
+        :type VpcId: str
+        :param IpAddress: 云服务器内网IP。
+        :type IpAddress: str
+        :param Bandwidth: 流控带宽值。
+        :type Bandwidth: int
+        :param CreateTime: 创建时间。
+        :type CreateTime: str
+        """
+        self.VpcId = None
+        self.IpAddress = None
+        self.Bandwidth = None
+        self.CreateTime = None
+
+
+    def _deserialize(self, params):
+        self.VpcId = params.get("VpcId")
+        self.IpAddress = params.get("IpAddress")
+        self.Bandwidth = params.get("Bandwidth")
+        self.CreateTime = params.get("CreateTime")
 
 
 class HaVip(AbstractModel):
@@ -8370,6 +9050,58 @@ class ModifyAddressesBandwidthResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class ModifyAssistantCidrRequest(AbstractModel):
+    """ModifyAssistantCidr请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param VpcId: `VPC`实例`ID`。形如：`vpc-6v2ht8q5`
+        :type VpcId: str
+        :param NewCidrBlocks: 待添加的负载CIDR。CIDR数组，格式如["10.0.0.0/16", "172.16.0.0/16"]
+        :type NewCidrBlocks: list of str
+        :param OldCidrBlocks: 待删除的负载CIDR。CIDR数组，格式如["10.0.0.0/16", "172.16.0.0/16"]
+        :type OldCidrBlocks: list of str
+        """
+        self.VpcId = None
+        self.NewCidrBlocks = None
+        self.OldCidrBlocks = None
+
+
+    def _deserialize(self, params):
+        self.VpcId = params.get("VpcId")
+        self.NewCidrBlocks = params.get("NewCidrBlocks")
+        self.OldCidrBlocks = params.get("OldCidrBlocks")
+
+
+class ModifyAssistantCidrResponse(AbstractModel):
+    """ModifyAssistantCidr返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param AssistantCidrSet: 辅助CIDR数组。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AssistantCidrSet: list of AssistantCidr
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.AssistantCidrSet = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("AssistantCidrSet") is not None:
+            self.AssistantCidrSet = []
+            for item in params.get("AssistantCidrSet"):
+                obj = AssistantCidr()
+                obj._deserialize(item)
+                self.AssistantCidrSet.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class ModifyBandwidthPackageAttributeRequest(AbstractModel):
     """ModifyBandwidthPackageAttribute请求参数结构体
 
@@ -8603,6 +9335,51 @@ class ModifyFlowLogAttributeRequest(AbstractModel):
 
 class ModifyFlowLogAttributeResponse(AbstractModel):
     """ModifyFlowLogAttribute返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class ModifyGatewayFlowQosRequest(AbstractModel):
+    """ModifyGatewayFlowQos请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param GatewayId: 网关实例ID，目前我们支持的网关实例类型有，
+专线网关实例ID，形如，`dcg-ltjahce6`；
+Nat网关实例ID，形如，`nat-ltjahce6`；
+VPN网关实例ID，形如，`vpn-ltjahce6`。
+        :type GatewayId: str
+        :param Bandwidth: 流控带宽值。
+        :type Bandwidth: int
+        :param IpAddresses: 限流的云服务器内网IP。
+        :type IpAddresses: list of str
+        """
+        self.GatewayId = None
+        self.Bandwidth = None
+        self.IpAddresses = None
+
+
+    def _deserialize(self, params):
+        self.GatewayId = params.get("GatewayId")
+        self.Bandwidth = params.get("Bandwidth")
+        self.IpAddresses = params.get("IpAddresses")
+
+
+class ModifyGatewayFlowQosResponse(AbstractModel):
+    """ModifyGatewayFlowQos返回参数结构体
 
     """
 
@@ -10187,6 +10964,27 @@ class Quota(AbstractModel):
         self.QuotaId = params.get("QuotaId")
         self.QuotaCurrent = params.get("QuotaCurrent")
         self.QuotaLimit = params.get("QuotaLimit")
+
+
+class ReferredSecurityGroup(AbstractModel):
+    """安全组被引用信息
+
+    """
+
+    def __init__(self):
+        """
+        :param SecurityGroupId: 安全组实例ID。
+        :type SecurityGroupId: str
+        :param ReferredSecurityGroupIds: 引用安全组实例ID（SecurityGroupId）的所有安全组实例ID。
+        :type ReferredSecurityGroupIds: list of str
+        """
+        self.SecurityGroupId = None
+        self.ReferredSecurityGroupIds = None
+
+
+    def _deserialize(self, params):
+        self.SecurityGroupId = params.get("SecurityGroupId")
+        self.ReferredSecurityGroupIds = params.get("ReferredSecurityGroupIds")
 
 
 class RejectAttachCcnInstancesRequest(AbstractModel):

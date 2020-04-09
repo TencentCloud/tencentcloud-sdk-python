@@ -503,6 +503,37 @@ class VpcClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def CheckAssistantCidr(self, request):
+        """本接口(CheckAssistantCidr)用于检查辅助CIDR是否与存量路由、对等连接（对端VPC的CIDR）等资源存在冲突。如果存在重叠，则返回重叠的资源。（接口灰度中，如需使用请提工单。）
+        * 检测辅助CIDR是否与当前VPC的主CIDR和辅助CIDR存在重叠。
+        * 检测辅助CIDR是否与当前VPC的路由的目的端存在重叠。
+        * 检测辅助CIDR是否与当前VPC的对等连接，对端VPC下的主CIDR或辅助CIDR存在重叠。
+
+        :param request: Request instance for CheckAssistantCidr.
+        :type request: :class:`tencentcloud.vpc.v20170312.models.CheckAssistantCidrRequest`
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.CheckAssistantCidrResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("CheckAssistantCidr", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CheckAssistantCidrResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def CheckDefaultSubnet(self, request):
         """本接口（CheckDefaultSubnet）用于预判是否可建默认子网。
 
@@ -615,6 +646,34 @@ class VpcClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def CreateAssistantCidr(self, request):
+        """本接口(CreateAssistantCidr)用于批量创建辅助CIDR。（接口灰度中，如需使用请提工单。）
+
+        :param request: Request instance for CreateAssistantCidr.
+        :type request: :class:`tencentcloud.vpc.v20170312.models.CreateAssistantCidrRequest`
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.CreateAssistantCidrResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("CreateAssistantCidr", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateAssistantCidrResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def CreateBandwidthPackage(self, request):
         """接口支持创建[设备带宽包](https://cloud.tencent.com/document/product/684/15246#.E8.AE.BE.E5.A4.87.E5.B8.A6.E5.AE.BD.E5.8C.85)和[IP带宽包](https://cloud.tencent.com/document/product/684/15246#ip-.E5.B8.A6.E5.AE.BD.E5.8C.85)
 
@@ -687,6 +746,37 @@ class VpcClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateCustomerGatewayResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def CreateDefaultSecurityGroup(self, request):
+        """本接口（CreateDefaultSecurityGroup）用于创建（如果项目下未存在默认安全组，则创建；已存在则获取。）默认安全组（SecurityGroup）。
+        * 每个账户下每个地域的每个项目的<a href="https://cloud.tencent.com/document/product/213/12453">安全组数量限制</a>。
+        * 新建的安全组的入站和出站规则默认都是全部拒绝，在创建后通常您需要再调用CreateSecurityGroupPolicies将安全组的规则设置为需要的规则。
+        * 创建安全组同时可以绑定标签, 应答里的标签列表代表添加成功的标签。
+
+        :param request: Request instance for CreateDefaultSecurityGroup.
+        :type request: :class:`tencentcloud.vpc.v20170312.models.CreateDefaultSecurityGroupRequest`
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.CreateDefaultSecurityGroupResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("CreateDefaultSecurityGroup", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateDefaultSecurityGroupResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -1152,6 +1242,47 @@ class VpcClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def CreateSecurityGroupWithPolicies(self, request):
+        """本接口（CreateSecurityGroupWithPolicies）用于创建新的安全组（SecurityGroup），并且可以同时添加安全组规则（SecurityGroupPolicy）。
+        * 每个账户下每个地域的每个项目的<a href="https://cloud.tencent.com/document/product/213/12453">安全组数量限制</a>。
+        * 新建的安全组的入站和出站规则默认都是全部拒绝，在创建后通常您需要再调用CreateSecurityGroupPolicies将安全组的规则设置为需要的规则。
+
+        安全组规则说明：
+        * Version安全组规则版本号，用户每次更新安全规则版本会自动加1，防止您更新的路由规则已过期，不填不考虑冲突。
+        * Protocol字段支持输入TCP, UDP, ICMP, ICMPV6, GRE, ALL。
+        * CidrBlock字段允许输入符合cidr格式标准的任意字符串。(展开)在基础网络中，如果CidrBlock包含您的账户内的云服务器之外的设备在腾讯云的内网IP，并不代表此规则允许您访问这些设备，租户之间网络隔离规则优先于安全组中的内网规则。
+        * Ipv6CidrBlock字段允许输入符合IPv6 cidr格式标准的任意字符串。(展开)在基础网络中，如果Ipv6CidrBlock包含您的账户内的云服务器之外的设备在腾讯云的内网IPv6，并不代表此规则允许您访问这些设备，租户之间网络隔离规则优先于安全组中的内网规则。
+        * SecurityGroupId字段允许输入与待修改的安全组位于相同项目中的安全组ID，包括这个安全组ID本身，代表安全组下所有云服务器的内网IP。使用这个字段时，这条规则用来匹配网络报文的过程中会随着被使用的这个ID所关联的云服务器变化而变化，不需要重新修改。
+        * Port字段允许输入一个单独端口号，或者用减号分隔的两个端口号代表端口范围，例如80或8000-8010。只有当Protocol字段是TCP或UDP时，Port字段才被接受，即Protocol字段不是TCP或UDP时，Protocol和Port排他关系，不允许同时输入，否则会接口报错。
+        * Action字段只允许输入ACCEPT或DROP。
+        * CidrBlock, Ipv6CidrBlock, SecurityGroupId, AddressTemplate四者是排他关系，不允许同时输入，Protocol + Port和ServiceTemplate二者是排他关系，不允许同时输入。
+        * 一次请求中只能创建单个方向的规则, 如果需要指定索引（PolicyIndex）参数, 多条规则的索引必须一致。
+
+        :param request: Request instance for CreateSecurityGroupWithPolicies.
+        :type request: :class:`tencentcloud.vpc.v20170312.models.CreateSecurityGroupWithPoliciesRequest`
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.CreateSecurityGroupWithPoliciesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("CreateSecurityGroupWithPolicies", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateSecurityGroupWithPoliciesResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def CreateServiceTemplate(self, request):
         """本接口（CreateServiceTemplate）用于创建协议端口模板
 
@@ -1405,6 +1536,34 @@ class VpcClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteAddressTemplateGroupResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DeleteAssistantCidr(self, request):
+        """本接口(DeleteAssistantCidr)用于删除辅助CIDR。（接口灰度中，如需使用请提工单。）
+
+        :param request: Request instance for DeleteAssistantCidr.
+        :type request: :class:`tencentcloud.vpc.v20170312.models.DeleteAssistantCidrRequest`
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.DeleteAssistantCidrResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DeleteAssistantCidr", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DeleteAssistantCidrResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -2221,6 +2380,34 @@ class VpcClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeAssistantCidr(self, request):
+        """本接口（DescribeAssistantCidr）用于查询辅助CIDR列表。（接口灰度中，如需使用请提工单。）
+
+        :param request: Request instance for DescribeAssistantCidr.
+        :type request: :class:`tencentcloud.vpc.v20170312.models.DescribeAssistantCidrRequest`
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.DescribeAssistantCidrResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeAssistantCidr", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeAssistantCidrResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeBandwidthPackageQuota(self, request):
         """接口用于查询账户在当前地域的带宽包上限数量以及使用数量
 
@@ -2601,6 +2788,34 @@ class VpcClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeGatewayFlowMonitorDetailResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeGatewayFlowQos(self, request):
+        """本接口（DescribeGatewayFlowQos）用于查询网关来访IP流控带宽。
+
+        :param request: Request instance for DescribeGatewayFlowQos.
+        :type request: :class:`tencentcloud.vpc.v20170312.models.DescribeGatewayFlowQosRequest`
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.DescribeGatewayFlowQosResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeGatewayFlowQos", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeGatewayFlowQosResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -3064,6 +3279,34 @@ class VpcClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeSecurityGroupReferences(self, request):
+        """本接口（DescribeSecurityGroupReferences）用于查询安全组被引用信息。
+
+        :param request: Request instance for DescribeSecurityGroupReferences.
+        :type request: :class:`tencentcloud.vpc.v20170312.models.DescribeSecurityGroupReferencesRequest`
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.DescribeSecurityGroupReferencesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeSecurityGroupReferences", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeSecurityGroupReferencesResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeSecurityGroups(self, request):
         """本接口（DescribeSecurityGroups）用于查询安全组。
 
@@ -3218,6 +3461,34 @@ class VpcClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeTemplateLimitsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeVpcInstances(self, request):
+        """本接口（DescribeVpcInstances）用于查询VPC下的云主机实例列表。
+
+        :param request: Request instance for DescribeVpcInstances.
+        :type request: :class:`tencentcloud.vpc.v20170312.models.DescribeVpcInstancesRequest`
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.DescribeVpcInstancesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeVpcInstances", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeVpcInstancesResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -3544,6 +3815,34 @@ class VpcClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DisableGatewayFlowMonitor(self, request):
+        """本接口（DisableGatewayFlowMonitor）用于关闭网关流量监控。
+
+        :param request: Request instance for DisableGatewayFlowMonitor.
+        :type request: :class:`tencentcloud.vpc.v20170312.models.DisableGatewayFlowMonitorRequest`
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.DisableGatewayFlowMonitorResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DisableGatewayFlowMonitor", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DisableGatewayFlowMonitorResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DisableRoutes(self, request):
         """本接口（DisableRoutes）用于禁用已启用的子网路由
 
@@ -3731,6 +4030,34 @@ class VpcClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.EnableCcnRoutesResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def EnableGatewayFlowMonitor(self, request):
+        """本接口（EnableGatewayFlowMonitor）用于开启网关流量监控。
+
+        :param request: Request instance for EnableGatewayFlowMonitor.
+        :type request: :class:`tencentcloud.vpc.v20170312.models.EnableGatewayFlowMonitorRequest`
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.EnableGatewayFlowMonitorResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("EnableGatewayFlowMonitor", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.EnableGatewayFlowMonitorResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -4087,6 +4414,34 @@ class VpcClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def ModifyAssistantCidr(self, request):
+        """本接口(ModifyAssistantCidr)用于批量修改辅助CIDR，支持新增和删除。（接口灰度中，如需使用请提工单。）
+
+        :param request: Request instance for ModifyAssistantCidr.
+        :type request: :class:`tencentcloud.vpc.v20170312.models.ModifyAssistantCidrRequest`
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.ModifyAssistantCidrResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ModifyAssistantCidr", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ModifyAssistantCidrResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def ModifyBandwidthPackageAttribute(self, request):
         """接口用于修改带宽包属性，包括带宽包名字等
 
@@ -4241,6 +4596,34 @@ class VpcClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyFlowLogAttributeResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ModifyGatewayFlowQos(self, request):
+        """本接口（ModifyGatewayFlowQos）用于调整网关流控带宽。
+
+        :param request: Request instance for ModifyGatewayFlowQos.
+        :type request: :class:`tencentcloud.vpc.v20170312.models.ModifyGatewayFlowQosRequest`
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.ModifyGatewayFlowQosResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ModifyGatewayFlowQos", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ModifyGatewayFlowQosResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

@@ -16,6 +16,105 @@
 from tencentcloud.common.abstract_model import AbstractModel
 
 
+class AddMemberInfo(AbstractModel):
+    """添加的团队成员信息
+
+    """
+
+    def __init__(self):
+        """
+        :param MemberId: 团队成员 ID。
+        :type MemberId: str
+        :param Remark: 团队成员备注。
+        :type Remark: str
+        """
+        self.MemberId = None
+        self.Remark = None
+
+
+    def _deserialize(self, params):
+        self.MemberId = params.get("MemberId")
+        self.Remark = params.get("Remark")
+
+
+class AddTeamMemberRequest(AbstractModel):
+    """AddTeamMember请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Platform: 平台名称，指定访问的平台。
+        :type Platform: str
+        :param TeamId: 团队 ID。
+        :type TeamId: str
+        :param TeamMembers: 要添加的成员列表，一次最多添加30个成员。
+        :type TeamMembers: list of AddMemberInfo
+        :param Operator: 操作者。填写用户的 Id，用于标识调用者及校验操作权限。
+        :type Operator: str
+        """
+        self.Platform = None
+        self.TeamId = None
+        self.TeamMembers = None
+        self.Operator = None
+
+
+    def _deserialize(self, params):
+        self.Platform = params.get("Platform")
+        self.TeamId = params.get("TeamId")
+        if params.get("TeamMembers") is not None:
+            self.TeamMembers = []
+            for item in params.get("TeamMembers"):
+                obj = AddMemberInfo()
+                obj._deserialize(item)
+                self.TeamMembers.append(obj)
+        self.Operator = params.get("Operator")
+
+
+class AddTeamMemberResponse(AbstractModel):
+    """AddTeamMember返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class AudioMaterial(AbstractModel):
+    """音频素材信息
+
+    """
+
+    def __init__(self):
+        """
+        :param MetaData: 素材元信息。
+        :type MetaData: :class:`tencentcloud.cme.v20191029.models.MediaMetaData`
+        :param MaterialUrl: 素材媒体文件的 URL 地址。
+        :type MaterialUrl: str
+        :param CoverUrl: 素材媒体文件的封面图片地址。
+        :type CoverUrl: str
+        """
+        self.MetaData = None
+        self.MaterialUrl = None
+        self.CoverUrl = None
+
+
+    def _deserialize(self, params):
+        if params.get("MetaData") is not None:
+            self.MetaData = MediaMetaData()
+            self.MetaData._deserialize(params.get("MetaData"))
+        self.MaterialUrl = params.get("MaterialUrl")
+        self.CoverUrl = params.get("CoverUrl")
+
+
 class AudioStreamInfo(AbstractModel):
     """音频流信息。
 
@@ -39,6 +138,56 @@ class AudioStreamInfo(AbstractModel):
         self.Bitrate = params.get("Bitrate")
         self.SamplingRate = params.get("SamplingRate")
         self.Codec = params.get("Codec")
+
+
+class AuthorizationInfo(AbstractModel):
+    """资源权限信息
+
+    """
+
+    def __init__(self):
+        """
+        :param Authorizee: 被授权者实体。
+        :type Authorizee: :class:`tencentcloud.cme.v20191029.models.Entity`
+        :param PermissionSet: 详细授权值。 取值有：
+<li>R：可读，可以浏览素材，但不能使用该素材（将其添加到 Project），或复制到自己的媒资库中</li>
+<li>X：可用，可以使用该素材（将其添加到 Project），但不能将其复制到自己的媒资库中，意味着被授权者无法将该资源进一步扩散给其他个人或团队。</li>
+<li>C：可复制，既可以使用该素材（将其添加到 Project），也可以将其复制到自己的媒资库中。</li>
+<li>W：可修改、删除媒资。</li>
+        :type PermissionSet: list of str
+        """
+        self.Authorizee = None
+        self.PermissionSet = None
+
+
+    def _deserialize(self, params):
+        if params.get("Authorizee") is not None:
+            self.Authorizee = Entity()
+            self.Authorizee._deserialize(params.get("Authorizee"))
+        self.PermissionSet = params.get("PermissionSet")
+
+
+class Authorizer(AbstractModel):
+    """授权者
+
+    """
+
+    def __init__(self):
+        """
+        :param Type: 授权者类型，取值有：
+<li>PERSON：个人。</li>
+<li>TEAM：团队。</li>
+        :type Type: str
+        :param Id: Id，当 Type=PERSON，取值为用户 Id。当Type=TEAM，取值为团队 ID。
+        :type Id: str
+        """
+        self.Type = None
+        self.Id = None
+
+
+    def _deserialize(self, params):
+        self.Type = params.get("Type")
+        self.Id = params.get("Id")
 
 
 class CMEExportInfo(AbstractModel):
@@ -74,6 +223,77 @@ class CMEExportInfo(AbstractModel):
         self.Description = params.get("Description")
         self.ClassPath = params.get("ClassPath")
         self.TagSet = params.get("TagSet")
+
+
+class ClassInfo(AbstractModel):
+    """分类信息
+
+    """
+
+    def __init__(self):
+        """
+        :param Owner: 归属者。
+        :type Owner: :class:`tencentcloud.cme.v20191029.models.Entity`
+        :param ClassPath: 分类路径。
+        :type ClassPath: str
+        """
+        self.Owner = None
+        self.ClassPath = None
+
+
+    def _deserialize(self, params):
+        if params.get("Owner") is not None:
+            self.Owner = Entity()
+            self.Owner._deserialize(params.get("Owner"))
+        self.ClassPath = params.get("ClassPath")
+
+
+class CreateClassRequest(AbstractModel):
+    """CreateClass请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Platform: 平台名称，指定访问的平台。
+        :type Platform: str
+        :param Owner: 归属者。
+        :type Owner: :class:`tencentcloud.cme.v20191029.models.Entity`
+        :param ClassPath: 分类路径。
+        :type ClassPath: str
+        :param Operator: 操作者。填写用户的 Id，用于标识调用者及校验操作权限。
+        :type Operator: str
+        """
+        self.Platform = None
+        self.Owner = None
+        self.ClassPath = None
+        self.Operator = None
+
+
+    def _deserialize(self, params):
+        self.Platform = params.get("Platform")
+        if params.get("Owner") is not None:
+            self.Owner = Entity()
+            self.Owner._deserialize(params.get("Owner"))
+        self.ClassPath = params.get("ClassPath")
+        self.Operator = params.get("Operator")
+
+
+class CreateClassResponse(AbstractModel):
+    """CreateClass返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
 
 
 class CreateProjectRequest(AbstractModel):
@@ -135,6 +355,108 @@ class CreateProjectResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class CreateTeamRequest(AbstractModel):
+    """CreateTeam请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Platform: 平台名称，指定访问的平台。
+        :type Platform: str
+        :param Name: 团队名称，限30个字符。
+        :type Name: str
+        :param OwnerId: 团队所有者，指定用户 ID。
+        :type OwnerId: str
+        :param OwnerRemark: 团队所有者的备注，限30个字符。
+        :type OwnerRemark: str
+        :param TeamId: 自定义团队 ID。创建后不可修改，限20个英文字符及"-"。同时不能以 cmetid_开头。不填会生成默认团队 ID。
+        :type TeamId: str
+        """
+        self.Platform = None
+        self.Name = None
+        self.OwnerId = None
+        self.OwnerRemark = None
+        self.TeamId = None
+
+
+    def _deserialize(self, params):
+        self.Platform = params.get("Platform")
+        self.Name = params.get("Name")
+        self.OwnerId = params.get("OwnerId")
+        self.OwnerRemark = params.get("OwnerRemark")
+        self.TeamId = params.get("TeamId")
+
+
+class CreateTeamResponse(AbstractModel):
+    """CreateTeam返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param TeamId: 创建的团队 ID。
+        :type TeamId: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TeamId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TeamId = params.get("TeamId")
+        self.RequestId = params.get("RequestId")
+
+
+class DeleteClassRequest(AbstractModel):
+    """DeleteClass请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Platform: 平台名称，指定访问的平台。
+        :type Platform: str
+        :param Owner: 归属者。
+        :type Owner: :class:`tencentcloud.cme.v20191029.models.Entity`
+        :param ClassPath: 分类路径。
+        :type ClassPath: str
+        :param Operator: 操作者。填写用户的 Id，用于标识调用者及校验操作权限。
+        :type Operator: str
+        """
+        self.Platform = None
+        self.Owner = None
+        self.ClassPath = None
+        self.Operator = None
+
+
+    def _deserialize(self, params):
+        self.Platform = params.get("Platform")
+        if params.get("Owner") is not None:
+            self.Owner = Entity()
+            self.Owner._deserialize(params.get("Owner"))
+        self.ClassPath = params.get("ClassPath")
+        self.Operator = params.get("Operator")
+
+
+class DeleteClassResponse(AbstractModel):
+    """DeleteClass返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class DeleteLoginStatusRequest(AbstractModel):
     """DeleteLoginStatus请求参数结构体
 
@@ -158,6 +480,48 @@ class DeleteLoginStatusRequest(AbstractModel):
 
 class DeleteLoginStatusResponse(AbstractModel):
     """DeleteLoginStatus返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class DeleteMaterialRequest(AbstractModel):
+    """DeleteMaterial请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Platform: 平台名称，指定访问的平台。
+        :type Platform: str
+        :param MaterialId: 素材 Id。
+        :type MaterialId: str
+        :param Operator: 操作者。填写用户的 Id，用于标识调用者及校验操作权限。
+        :type Operator: str
+        """
+        self.Platform = None
+        self.MaterialId = None
+        self.Operator = None
+
+
+    def _deserialize(self, params):
+        self.Platform = params.get("Platform")
+        self.MaterialId = params.get("MaterialId")
+        self.Operator = params.get("Operator")
+
+
+class DeleteMaterialResponse(AbstractModel):
+    """DeleteMaterial返回参数结构体
 
     """
 
@@ -211,6 +575,206 @@ class DeleteProjectResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DeleteTeamMembersRequest(AbstractModel):
+    """DeleteTeamMembers请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Platform: 平台名称，指定访问的平台。
+        :type Platform: str
+        :param TeamId: 团队 ID。
+        :type TeamId: str
+        :param MemberIds: 要删除的成员列表。
+        :type MemberIds: list of str
+        :param Operator: 操作者。填写用户的 Id，用于标识调用者及校验操作权限。
+        :type Operator: str
+        """
+        self.Platform = None
+        self.TeamId = None
+        self.MemberIds = None
+        self.Operator = None
+
+
+    def _deserialize(self, params):
+        self.Platform = params.get("Platform")
+        self.TeamId = params.get("TeamId")
+        self.MemberIds = params.get("MemberIds")
+        self.Operator = params.get("Operator")
+
+
+class DeleteTeamMembersResponse(AbstractModel):
+    """DeleteTeamMembers返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class DeleteTeamRequest(AbstractModel):
+    """DeleteTeam请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Platform: 平台名称，指定访问平台。
+        :type Platform: str
+        :param TeamId: 要删除的团队  ID。
+        :type TeamId: str
+        :param Operator: 操作者。填写用户的 Id，用于标识调用者及校验操作权限。
+        :type Operator: str
+        """
+        self.Platform = None
+        self.TeamId = None
+        self.Operator = None
+
+
+    def _deserialize(self, params):
+        self.Platform = params.get("Platform")
+        self.TeamId = params.get("TeamId")
+        self.Operator = params.get("Operator")
+
+
+class DeleteTeamResponse(AbstractModel):
+    """DeleteTeam返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeClassRequest(AbstractModel):
+    """DescribeClass请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Platform: 平台名称，指定访问的平台。
+        :type Platform: str
+        :param Owner: 归属者。
+        :type Owner: :class:`tencentcloud.cme.v20191029.models.Entity`
+        :param Operator: 操作者。填写用户的 Id，用于标识调用者及校验操作权限。
+        :type Operator: str
+        """
+        self.Platform = None
+        self.Owner = None
+        self.Operator = None
+
+
+    def _deserialize(self, params):
+        self.Platform = params.get("Platform")
+        if params.get("Owner") is not None:
+            self.Owner = Entity()
+            self.Owner._deserialize(params.get("Owner"))
+        self.Operator = params.get("Operator")
+
+
+class DescribeClassResponse(AbstractModel):
+    """DescribeClass返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ClassInfoSet: 分类信息列表。
+        :type ClassInfoSet: list of ClassInfo
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.ClassInfoSet = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("ClassInfoSet") is not None:
+            self.ClassInfoSet = []
+            for item in params.get("ClassInfoSet"):
+                obj = ClassInfo()
+                obj._deserialize(item)
+                self.ClassInfoSet.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeJoinTeamsRequest(AbstractModel):
+    """DescribeJoinTeams请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Platform: 平台名称，指定访问的平台。
+        :type Platform: str
+        :param MemberId: 团队成员　ID。
+        :type MemberId: str
+        :param Offset: 分页偏移量，默认值：0
+        :type Offset: int
+        :param Limit: 返回记录条数，默认值：30，最大值：30。
+        :type Limit: int
+        """
+        self.Platform = None
+        self.MemberId = None
+        self.Offset = None
+        self.Limit = None
+
+
+    def _deserialize(self, params):
+        self.Platform = params.get("Platform")
+        self.MemberId = params.get("MemberId")
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+
+
+class DescribeJoinTeamsResponse(AbstractModel):
+    """DescribeJoinTeams返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param TotalCount: 符合条件的记录总数。
+        :type TotalCount: int
+        :param TeamSet: 团队列表
+        :type TeamSet: list of JoinTeamInfo
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.TeamSet = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("TeamSet") is not None:
+            self.TeamSet = []
+            for item in params.get("TeamSet"):
+                obj = JoinTeamInfo()
+                obj._deserialize(item)
+                self.TeamSet.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeLoginStatusRequest(AbstractModel):
     """DescribeLoginStatus请求参数结构体
 
@@ -258,6 +822,65 @@ class DescribeLoginStatusResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeMaterialsRequest(AbstractModel):
+    """DescribeMaterials请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Platform: 平台名称，指定访问的平台。
+        :type Platform: str
+        :param MaterialIds: 素材 ID 列表，N 从 0 开始取值，最大 19。
+        :type MaterialIds: list of str
+        :param Sort: 列表排序，支持下列排序字段：
+<li>CreateTime：创建时间；</li>
+<li>UpdateTime：更新时间。</li>
+        :type Sort: :class:`tencentcloud.cme.v20191029.models.SortBy`
+        :param Operator: 操作者。填写用户的 Id，用于标识调用者及校验操作权限。
+        :type Operator: str
+        """
+        self.Platform = None
+        self.MaterialIds = None
+        self.Sort = None
+        self.Operator = None
+
+
+    def _deserialize(self, params):
+        self.Platform = params.get("Platform")
+        self.MaterialIds = params.get("MaterialIds")
+        if params.get("Sort") is not None:
+            self.Sort = SortBy()
+            self.Sort._deserialize(params.get("Sort"))
+        self.Operator = params.get("Operator")
+
+
+class DescribeMaterialsResponse(AbstractModel):
+    """DescribeMaterials返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param MaterialInfoSet: 素材列表信息。
+        :type MaterialInfoSet: list of MaterialInfo
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.MaterialInfoSet = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("MaterialInfoSet") is not None:
+            self.MaterialInfoSet = []
+            for item in params.get("MaterialInfoSet"):
+                obj = MaterialInfo()
+                obj._deserialize(item)
+                self.MaterialInfoSet.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeProjectsRequest(AbstractModel):
     """DescribeProjects请求参数结构体
 
@@ -273,6 +896,10 @@ class DescribeProjectsRequest(AbstractModel):
         :type AspectRatioSet: list of str
         :param CategorySet: 项目类别集合。
         :type CategorySet: list of str
+        :param Sort: 列表排序，支持下列排序字段：
+<li>CreateTime：创建时间；</li>
+<li>UpdateTime：更新时间。</li>
+        :type Sort: :class:`tencentcloud.cme.v20191029.models.SortBy`
         :param Owner: 项目归属者。
         :type Owner: :class:`tencentcloud.cme.v20191029.models.Entity`
         :param Offset: 分页返回的起始偏移量，默认值：0。
@@ -284,6 +911,7 @@ class DescribeProjectsRequest(AbstractModel):
         self.ProjectIds = None
         self.AspectRatioSet = None
         self.CategorySet = None
+        self.Sort = None
         self.Owner = None
         self.Offset = None
         self.Limit = None
@@ -294,6 +922,9 @@ class DescribeProjectsRequest(AbstractModel):
         self.ProjectIds = params.get("ProjectIds")
         self.AspectRatioSet = params.get("AspectRatioSet")
         self.CategorySet = params.get("CategorySet")
+        if params.get("Sort") is not None:
+            self.Sort = SortBy()
+            self.Sort._deserialize(params.get("Sort"))
         if params.get("Owner") is not None:
             self.Owner = Entity()
             self.Owner._deserialize(params.get("Owner"))
@@ -328,6 +959,128 @@ class DescribeProjectsResponse(AbstractModel):
                 obj = ProjectInfo()
                 obj._deserialize(item)
                 self.ProjectInfoSet.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeResourceAuthorizationRequest(AbstractModel):
+    """DescribeResourceAuthorization请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Platform: 平台名称，指定访问的平台。
+        :type Platform: str
+        :param Owner: 归属者。
+        :type Owner: :class:`tencentcloud.cme.v20191029.models.Entity`
+        :param Resource: 资源。
+        :type Resource: :class:`tencentcloud.cme.v20191029.models.Resource`
+        :param Operator: 操作者。填写用户的 Id，用于标识调用者及校验操作权限。
+        :type Operator: str
+        """
+        self.Platform = None
+        self.Owner = None
+        self.Resource = None
+        self.Operator = None
+
+
+    def _deserialize(self, params):
+        self.Platform = params.get("Platform")
+        if params.get("Owner") is not None:
+            self.Owner = Entity()
+            self.Owner._deserialize(params.get("Owner"))
+        if params.get("Resource") is not None:
+            self.Resource = Resource()
+            self.Resource._deserialize(params.get("Resource"))
+        self.Operator = params.get("Operator")
+
+
+class DescribeResourceAuthorizationResponse(AbstractModel):
+    """DescribeResourceAuthorization返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param TotalCount: 符合条件的资源授权记录总数。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TotalCount: int
+        :param AuthorizationInfoSet: 授权信息列表。
+        :type AuthorizationInfoSet: list of AuthorizationInfo
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.AuthorizationInfoSet = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("AuthorizationInfoSet") is not None:
+            self.AuthorizationInfoSet = []
+            for item in params.get("AuthorizationInfoSet"):
+                obj = AuthorizationInfo()
+                obj._deserialize(item)
+                self.AuthorizationInfoSet.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeSharedSpaceRequest(AbstractModel):
+    """DescribeSharedSpace请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Platform: 平台名称，指定访问的平台。
+        :type Platform: str
+        :param Authorizee: 被授权目标实体。
+        :type Authorizee: :class:`tencentcloud.cme.v20191029.models.Entity`
+        :param Operator: 操作者。填写用户的 Id，用于标识调用者及校验操作权限。
+        :type Operator: str
+        """
+        self.Platform = None
+        self.Authorizee = None
+        self.Operator = None
+
+
+    def _deserialize(self, params):
+        self.Platform = params.get("Platform")
+        if params.get("Authorizee") is not None:
+            self.Authorizee = Entity()
+            self.Authorizee._deserialize(params.get("Authorizee"))
+        self.Operator = params.get("Operator")
+
+
+class DescribeSharedSpaceResponse(AbstractModel):
+    """DescribeSharedSpace返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param TotalCount: 查询到的共享空间总数。
+        :type TotalCount: int
+        :param AuthorizerSet: 各个共享空间对应的授权者信息。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AuthorizerSet: list of Authorizer
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.AuthorizerSet = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("AuthorizerSet") is not None:
+            self.AuthorizerSet = []
+            for item in params.get("AuthorizerSet"):
+                obj = Authorizer()
+                obj._deserialize(item)
+                self.AuthorizerSet.append(obj)
         self.RequestId = params.get("RequestId")
 
 
@@ -477,6 +1230,120 @@ class DescribeTasksResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeTeamMembersRequest(AbstractModel):
+    """DescribeTeamMembers请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Platform: 平台名称，指定访问的平台。
+        :type Platform: str
+        :param TeamId: 团队 ID。
+        :type TeamId: str
+        :param MemberIds: 成员 ID 列表，限指定30个指定成员。
+        :type MemberIds: list of str
+        :param Offset: 分页偏移量，默认值：0
+        :type Offset: int
+        :param Limit: 返回记录条数，默认值：30，最大值：30。
+        :type Limit: int
+        :param Operator: 操作者。填写用户的 Id，用于标识调用者及校验操作权限。
+        :type Operator: str
+        """
+        self.Platform = None
+        self.TeamId = None
+        self.MemberIds = None
+        self.Offset = None
+        self.Limit = None
+        self.Operator = None
+
+
+    def _deserialize(self, params):
+        self.Platform = params.get("Platform")
+        self.TeamId = params.get("TeamId")
+        self.MemberIds = params.get("MemberIds")
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+        self.Operator = params.get("Operator")
+
+
+class DescribeTeamMembersResponse(AbstractModel):
+    """DescribeTeamMembers返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param TotalCount: 符合条件的记录总数。
+        :type TotalCount: int
+        :param MemberSet: 团队成员列表。
+        :type MemberSet: list of TeamMemberInfo
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.MemberSet = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("MemberSet") is not None:
+            self.MemberSet = []
+            for item in params.get("MemberSet"):
+                obj = TeamMemberInfo()
+                obj._deserialize(item)
+                self.MemberSet.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeTeamsRequest(AbstractModel):
+    """DescribeTeams请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Platform: 平台名称，指定访问的平台。
+        :type Platform: str
+        :param TeamIds: 团队 ID 列表，限30个。
+        :type TeamIds: list of str
+        """
+        self.Platform = None
+        self.TeamIds = None
+
+
+    def _deserialize(self, params):
+        self.Platform = params.get("Platform")
+        self.TeamIds = params.get("TeamIds")
+
+
+class DescribeTeamsResponse(AbstractModel):
+    """DescribeTeams返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param TeamSet: 团队列表。
+        :type TeamSet: list of TeamInfo
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TeamSet = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("TeamSet") is not None:
+            self.TeamSet = []
+            for item in params.get("TeamSet"):
+                obj = TeamInfo()
+                obj._deserialize(item)
+                self.TeamSet.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class Entity(AbstractModel):
     """用于描述资源的归属实体。
 
@@ -567,6 +1434,247 @@ class ExportVideoEditProjectResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class FlattenListMediaRequest(AbstractModel):
+    """FlattenListMedia请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Platform: 平台名称，指定访问的平台。
+        :type Platform: str
+        :param ClassPath: 素材分类路径，例如填写"/a/b"，则代表平铺该分类路径下及其子分类路径下的素材信息。
+        :type ClassPath: str
+        :param Owner: 素材路径的归属者。
+        :type Owner: :class:`tencentcloud.cme.v20191029.models.Entity`
+        :param Offset: 分页偏移量，默认值：0。
+        :type Offset: int
+        :param Limit: 返回记录条数，默认值：10，最大值：50。
+        :type Limit: int
+        :param Operator: 操作者。填写用户的 Id，用于标识调用者及校验操作权限。
+        :type Operator: str
+        """
+        self.Platform = None
+        self.ClassPath = None
+        self.Owner = None
+        self.Offset = None
+        self.Limit = None
+        self.Operator = None
+
+
+    def _deserialize(self, params):
+        self.Platform = params.get("Platform")
+        self.ClassPath = params.get("ClassPath")
+        if params.get("Owner") is not None:
+            self.Owner = Entity()
+            self.Owner._deserialize(params.get("Owner"))
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+        self.Operator = params.get("Operator")
+
+
+class FlattenListMediaResponse(AbstractModel):
+    """FlattenListMedia返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param TotalCount: 符合条件的记录总数。
+        :type TotalCount: int
+        :param MaterialInfoSet: 该分类路径下及其子分类下的所有素材。
+        :type MaterialInfoSet: list of MaterialInfo
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.MaterialInfoSet = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("MaterialInfoSet") is not None:
+            self.MaterialInfoSet = []
+            for item in params.get("MaterialInfoSet"):
+                obj = MaterialInfo()
+                obj._deserialize(item)
+                self.MaterialInfoSet.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class GrantResourceAuthorizationRequest(AbstractModel):
+    """GrantResourceAuthorization请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Platform: 平台名称，指定访问的平台。
+        :type Platform: str
+        :param Owner: 资源所属实体。
+        :type Owner: :class:`tencentcloud.cme.v20191029.models.Entity`
+        :param Resources: 被授权资源。
+        :type Resources: list of Resource
+        :param Authorizees: 被授权目标实体。
+        :type Authorizees: list of Entity
+        :param Permissions: 详细授权值。 取值有：
+<li>R：可读，可以浏览素材，但不能使用该素材（将其添加到 Project），或复制到自己的媒资库中</li>
+<li>X：可用，可以使用该素材（将其添加到 Project），但不能将其复制到自己的媒资库中，意味着被授权者无法将该资源进一步扩散给其他个人或团队。</li>
+<li>C：可复制，既可以使用该素材（将其添加到 Project），也可以将其复制到自己的媒资库中。</li>
+<li>W：可修改、删除媒资。</li>
+        :type Permissions: list of str
+        :param Operator: 操作者。填写用户的 Id，用于标识调用者及校验操作权限。
+        :type Operator: str
+        """
+        self.Platform = None
+        self.Owner = None
+        self.Resources = None
+        self.Authorizees = None
+        self.Permissions = None
+        self.Operator = None
+
+
+    def _deserialize(self, params):
+        self.Platform = params.get("Platform")
+        if params.get("Owner") is not None:
+            self.Owner = Entity()
+            self.Owner._deserialize(params.get("Owner"))
+        if params.get("Resources") is not None:
+            self.Resources = []
+            for item in params.get("Resources"):
+                obj = Resource()
+                obj._deserialize(item)
+                self.Resources.append(obj)
+        if params.get("Authorizees") is not None:
+            self.Authorizees = []
+            for item in params.get("Authorizees"):
+                obj = Entity()
+                obj._deserialize(item)
+                self.Authorizees.append(obj)
+        self.Permissions = params.get("Permissions")
+        self.Operator = params.get("Operator")
+
+
+class GrantResourceAuthorizationResponse(AbstractModel):
+    """GrantResourceAuthorization返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class ImageMaterial(AbstractModel):
+    """图片素材信息
+
+    """
+
+    def __init__(self):
+        """
+        :param Height: 图片高度，单位：px。
+        :type Height: int
+        :param Width: 图片宽度，单位：px。
+        :type Width: int
+        :param MaterialUrl: 素材媒体文件的 URL 地址。
+        :type MaterialUrl: str
+        :param Size: 图片大小，单位：字节。
+        :type Size: int
+        """
+        self.Height = None
+        self.Width = None
+        self.MaterialUrl = None
+        self.Size = None
+
+
+    def _deserialize(self, params):
+        self.Height = params.get("Height")
+        self.Width = params.get("Width")
+        self.MaterialUrl = params.get("MaterialUrl")
+        self.Size = params.get("Size")
+
+
+class ImportMaterialRequest(AbstractModel):
+    """ImportMaterial请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Platform: 平台名称，指定访问的平台。
+        :type Platform: str
+        :param VodFileId: 云点播媒资 FileId。
+        :type VodFileId: str
+        :param Owner: 素材归属者。
+        :type Owner: :class:`tencentcloud.cme.v20191029.models.Entity`
+        :param Name: 素材名称，不能超过30个字符。
+        :type Name: str
+        :param ClassPath: 素材分类路径，形如："/a/b"，层级数不能超过10，每个层级长度不能超过15字符。若不填则默认为根路径。
+        :type ClassPath: str
+        :param Tags: 素材标签，单个标签长度不能超过10，数组长度不能超过10。
+        :type Tags: list of str
+        :param PreProcessDefinition: 素材预处理任务模板 ID。取值：
+<li>10：进行编辑预处理。</li>
+        :type PreProcessDefinition: int
+        :param Operator: 操作者。填写用户的 Id，用于标识调用者及校验操作权限。
+        :type Operator: str
+        """
+        self.Platform = None
+        self.VodFileId = None
+        self.Owner = None
+        self.Name = None
+        self.ClassPath = None
+        self.Tags = None
+        self.PreProcessDefinition = None
+        self.Operator = None
+
+
+    def _deserialize(self, params):
+        self.Platform = params.get("Platform")
+        self.VodFileId = params.get("VodFileId")
+        if params.get("Owner") is not None:
+            self.Owner = Entity()
+            self.Owner._deserialize(params.get("Owner"))
+        self.Name = params.get("Name")
+        self.ClassPath = params.get("ClassPath")
+        self.Tags = params.get("Tags")
+        self.PreProcessDefinition = params.get("PreProcessDefinition")
+        self.Operator = params.get("Operator")
+
+
+class ImportMaterialResponse(AbstractModel):
+    """ImportMaterial返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param MaterialId: 素材 Id。
+        :type MaterialId: str
+        :param PreProcessTaskId: 素材预处理任务 ID，如果未指定发起预处理任务则为空。
+        :type PreProcessTaskId: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.MaterialId = None
+        self.PreProcessTaskId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.MaterialId = params.get("MaterialId")
+        self.PreProcessTaskId = params.get("PreProcessTaskId")
+        self.RequestId = params.get("RequestId")
+
+
 class ImportMediaToProjectRequest(AbstractModel):
     """ImportMediaToProject请求参数结构体
 
@@ -624,6 +1732,216 @@ class ImportMediaToProjectResponse(AbstractModel):
     def _deserialize(self, params):
         self.MaterialId = params.get("MaterialId")
         self.TaskId = params.get("TaskId")
+        self.RequestId = params.get("RequestId")
+
+
+class IntegerRange(AbstractModel):
+    """整型范围
+
+    """
+
+    def __init__(self):
+        """
+        :param LowerBound: 按整形代表值的下限检索。
+        :type LowerBound: int
+        :param UpperBound: 按整形代表值的上限检索。
+        :type UpperBound: int
+        """
+        self.LowerBound = None
+        self.UpperBound = None
+
+
+    def _deserialize(self, params):
+        self.LowerBound = params.get("LowerBound")
+        self.UpperBound = params.get("UpperBound")
+
+
+class JoinTeamInfo(AbstractModel):
+    """加入的团队信息
+
+    """
+
+    def __init__(self):
+        """
+        :param TeamId: 团队 ID。
+        :type TeamId: str
+        :param Name: 团队名称。
+        :type Name: str
+        :param MemberCount: 团队成员个数
+        :type MemberCount: int
+        :param Role: 成员在团队中的角色，取值有：
+<li>Owner：团队所有者，添加团队成员及修改团队成员解决时不能填此角色；</li>
+<li>Admin：团队管理员；</li>
+<li>Member：普通成员。</li>
+        :type Role: str
+        """
+        self.TeamId = None
+        self.Name = None
+        self.MemberCount = None
+        self.Role = None
+
+
+    def _deserialize(self, params):
+        self.TeamId = params.get("TeamId")
+        self.Name = params.get("Name")
+        self.MemberCount = params.get("MemberCount")
+        self.Role = params.get("Role")
+
+
+class LinkMaterial(AbstractModel):
+    """链接类型的素材信息
+
+    """
+
+    def __init__(self):
+        """
+        :param LinkType: 链接类型取值:
+<li>CLASS: 分类链接;</li>
+<li> MATERIAL：素材链接。</li>
+        :type LinkType: str
+        :param LinkStatus: 链接状态取值：
+<li> Normal：正常 ；</li>
+<li>NotFound：链接目标不存在；</li> <li>Forbidden：无权限。</li>
+        :type LinkStatus: str
+        :param LinkMaterialInfo: 素材链接详细信息，当LinkType="MATERIAL"时有值。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LinkMaterialInfo: :class:`tencentcloud.cme.v20191029.models.LinkMaterialInfo`
+        :param LinkClassInfo: 分类链接目标信息，当LinkType=“CLASS”时有值。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LinkClassInfo: :class:`tencentcloud.cme.v20191029.models.ClassInfo`
+        """
+        self.LinkType = None
+        self.LinkStatus = None
+        self.LinkMaterialInfo = None
+        self.LinkClassInfo = None
+
+
+    def _deserialize(self, params):
+        self.LinkType = params.get("LinkType")
+        self.LinkStatus = params.get("LinkStatus")
+        if params.get("LinkMaterialInfo") is not None:
+            self.LinkMaterialInfo = LinkMaterialInfo()
+            self.LinkMaterialInfo._deserialize(params.get("LinkMaterialInfo"))
+        if params.get("LinkClassInfo") is not None:
+            self.LinkClassInfo = ClassInfo()
+            self.LinkClassInfo._deserialize(params.get("LinkClassInfo"))
+
+
+class LinkMaterialInfo(AbstractModel):
+    """链接素材信息
+
+    """
+
+    def __init__(self):
+        """
+        :param BasicInfo: 素材基本信息。
+        :type BasicInfo: :class:`tencentcloud.cme.v20191029.models.MaterialBasicInfo`
+        :param VideoMaterial: 视频素材信息。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type VideoMaterial: :class:`tencentcloud.cme.v20191029.models.VideoMaterial`
+        :param AudioMaterial: 音频素材信息。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AudioMaterial: :class:`tencentcloud.cme.v20191029.models.AudioMaterial`
+        :param ImageMaterial: 图片素材信息。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ImageMaterial: :class:`tencentcloud.cme.v20191029.models.ImageMaterial`
+        """
+        self.BasicInfo = None
+        self.VideoMaterial = None
+        self.AudioMaterial = None
+        self.ImageMaterial = None
+
+
+    def _deserialize(self, params):
+        if params.get("BasicInfo") is not None:
+            self.BasicInfo = MaterialBasicInfo()
+            self.BasicInfo._deserialize(params.get("BasicInfo"))
+        if params.get("VideoMaterial") is not None:
+            self.VideoMaterial = VideoMaterial()
+            self.VideoMaterial._deserialize(params.get("VideoMaterial"))
+        if params.get("AudioMaterial") is not None:
+            self.AudioMaterial = AudioMaterial()
+            self.AudioMaterial._deserialize(params.get("AudioMaterial"))
+        if params.get("ImageMaterial") is not None:
+            self.ImageMaterial = ImageMaterial()
+            self.ImageMaterial._deserialize(params.get("ImageMaterial"))
+
+
+class ListMediaRequest(AbstractModel):
+    """ListMedia请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Platform: 平台名称，指定访问的平台。
+        :type Platform: str
+        :param ClassPath: 素材分类路径，例如填写"/a/b"，则代表浏览该分类路径下的素材和子分类信息。
+        :type ClassPath: str
+        :param Owner: 素材和分类的归属者。
+        :type Owner: :class:`tencentcloud.cme.v20191029.models.Entity`
+        :param Offset: 分页偏移量，默认值：0。
+        :type Offset: int
+        :param Limit: 返回记录条数，默认值：10，最大值：50。
+        :type Limit: int
+        :param Operator: 操作者。填写用户的 Id，用于标识调用者及校验操作权限。
+        :type Operator: str
+        """
+        self.Platform = None
+        self.ClassPath = None
+        self.Owner = None
+        self.Offset = None
+        self.Limit = None
+        self.Operator = None
+
+
+    def _deserialize(self, params):
+        self.Platform = params.get("Platform")
+        self.ClassPath = params.get("ClassPath")
+        if params.get("Owner") is not None:
+            self.Owner = Entity()
+            self.Owner._deserialize(params.get("Owner"))
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+        self.Operator = params.get("Operator")
+
+
+class ListMediaResponse(AbstractModel):
+    """ListMedia返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param MaterialTotalCount: 符合条件的素材记录总数。
+        :type MaterialTotalCount: int
+        :param MaterialInfoSet: 浏览分类路径下的素材列表信息。
+        :type MaterialInfoSet: list of MaterialInfo
+        :param ClassInfoSet: 浏览分类路径下的一级子类。
+        :type ClassInfoSet: list of ClassInfo
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.MaterialTotalCount = None
+        self.MaterialInfoSet = None
+        self.ClassInfoSet = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.MaterialTotalCount = params.get("MaterialTotalCount")
+        if params.get("MaterialInfoSet") is not None:
+            self.MaterialInfoSet = []
+            for item in params.get("MaterialInfoSet"):
+                obj = MaterialInfo()
+                obj._deserialize(item)
+                self.MaterialInfoSet.append(obj)
+        if params.get("ClassInfoSet") is not None:
+            self.ClassInfoSet = []
+            for item in params.get("ClassInfoSet"):
+                obj = ClassInfo()
+                obj._deserialize(item)
+                self.ClassInfoSet.append(obj)
         self.RequestId = params.get("RequestId")
 
 
@@ -701,6 +2019,139 @@ class MaterialBaseInfo(AbstractModel):
         self.CreateTime = params.get("CreateTime")
 
 
+class MaterialBasicInfo(AbstractModel):
+    """素材基本信息。
+
+    """
+
+    def __init__(self):
+        """
+        :param MaterialId: 素材 Id。
+        :type MaterialId: str
+        :param MaterialType: 素材类型，取值为：音频（AUDIO）、视频（VIDEO）、图片（IMAGE）、链接（LINK）、字幕 （SUBTITLE）、转场（TRANSITION）、滤镜（FILTER）、文本文字（TEXT）、图文动效（TEXT_IMAGE）。
+        :type MaterialType: str
+        :param Owner: 素材归属实体。
+        :type Owner: :class:`tencentcloud.cme.v20191029.models.Entity`
+        :param Name: 素材名称。
+        :type Name: str
+        :param CreateTime: 素材文件的创建时间，使用 ISO 日期格式。
+        :type CreateTime: str
+        :param UpdateTime: 素材文件的最近更新时间（如修改视频属性、发起视频处理等会触发更新媒体文件信息的操作），使用 ISO 日期格式。
+        :type UpdateTime: str
+        :param ClassPath: 素材的分类目录路径。
+        :type ClassPath: str
+        :param TagSet: 素材标签信息。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TagSet: list of str
+        :param PreviewUrl: 素材媒体文件的预览图。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PreviewUrl: str
+        """
+        self.MaterialId = None
+        self.MaterialType = None
+        self.Owner = None
+        self.Name = None
+        self.CreateTime = None
+        self.UpdateTime = None
+        self.ClassPath = None
+        self.TagSet = None
+        self.PreviewUrl = None
+
+
+    def _deserialize(self, params):
+        self.MaterialId = params.get("MaterialId")
+        self.MaterialType = params.get("MaterialType")
+        if params.get("Owner") is not None:
+            self.Owner = Entity()
+            self.Owner._deserialize(params.get("Owner"))
+        self.Name = params.get("Name")
+        self.CreateTime = params.get("CreateTime")
+        self.UpdateTime = params.get("UpdateTime")
+        self.ClassPath = params.get("ClassPath")
+        self.TagSet = params.get("TagSet")
+        self.PreviewUrl = params.get("PreviewUrl")
+
+
+class MaterialInfo(AbstractModel):
+    """素材详情信息
+
+    """
+
+    def __init__(self):
+        """
+        :param BasicInfo: 素材基本信息。
+        :type BasicInfo: :class:`tencentcloud.cme.v20191029.models.MaterialBasicInfo`
+        :param VideoMaterial: 视频素材信息。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type VideoMaterial: :class:`tencentcloud.cme.v20191029.models.VideoMaterial`
+        :param AudioMaterial: 音频素材信息。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AudioMaterial: :class:`tencentcloud.cme.v20191029.models.AudioMaterial`
+        :param ImageMaterial: 图片素材信息。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ImageMaterial: :class:`tencentcloud.cme.v20191029.models.ImageMaterial`
+        :param LinkMaterial: 链接素材信息。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LinkMaterial: :class:`tencentcloud.cme.v20191029.models.LinkMaterial`
+        """
+        self.BasicInfo = None
+        self.VideoMaterial = None
+        self.AudioMaterial = None
+        self.ImageMaterial = None
+        self.LinkMaterial = None
+
+
+    def _deserialize(self, params):
+        if params.get("BasicInfo") is not None:
+            self.BasicInfo = MaterialBasicInfo()
+            self.BasicInfo._deserialize(params.get("BasicInfo"))
+        if params.get("VideoMaterial") is not None:
+            self.VideoMaterial = VideoMaterial()
+            self.VideoMaterial._deserialize(params.get("VideoMaterial"))
+        if params.get("AudioMaterial") is not None:
+            self.AudioMaterial = AudioMaterial()
+            self.AudioMaterial._deserialize(params.get("AudioMaterial"))
+        if params.get("ImageMaterial") is not None:
+            self.ImageMaterial = ImageMaterial()
+            self.ImageMaterial._deserialize(params.get("ImageMaterial"))
+        if params.get("LinkMaterial") is not None:
+            self.LinkMaterial = LinkMaterial()
+            self.LinkMaterial._deserialize(params.get("LinkMaterial"))
+
+
+class MediaImageSpriteInfo(AbstractModel):
+    """雪碧图
+
+    """
+
+    def __init__(self):
+        """
+        :param Height: 雪碧图小图的高度。
+        :type Height: int
+        :param Width: 雪碧图小图的宽度。
+        :type Width: int
+        :param TotalCount: 雪碧图小图的总数量。
+        :type TotalCount: int
+        :param ImageUrlSet: 截取雪碧图输出的地址。
+        :type ImageUrlSet: list of str
+        :param WebVttUrl: 雪碧图子图位置与时间关系的 WebVtt 文件地址。WebVtt 文件表明了各个雪碧图小图对应的时间点，以及在在雪碧大图里的坐标位置，一般被播放器用于实现预览。
+        :type WebVttUrl: str
+        """
+        self.Height = None
+        self.Width = None
+        self.TotalCount = None
+        self.ImageUrlSet = None
+        self.WebVttUrl = None
+
+
+    def _deserialize(self, params):
+        self.Height = params.get("Height")
+        self.Width = params.get("Width")
+        self.TotalCount = params.get("TotalCount")
+        self.ImageUrlSet = params.get("ImageUrlSet")
+        self.WebVttUrl = params.get("WebVttUrl")
+
+
 class MediaMetaData(AbstractModel):
     """文件元信息。
 
@@ -760,6 +2211,66 @@ class MediaMetaData(AbstractModel):
                 self.AudioStreamInfoSet.append(obj)
 
 
+class ModifyMaterialRequest(AbstractModel):
+    """ModifyMaterial请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Platform: 平台名称，指定访问的平台。
+        :type Platform: str
+        :param MaterialId: 素材 Id。
+        :type MaterialId: str
+        :param Owner: 素材归属。
+        :type Owner: :class:`tencentcloud.cme.v20191029.models.Entity`
+        :param Name: 素材名称，不能超过30个字符。
+        :type Name: str
+        :param Tags: 素材标签，单个标签长度不能超过10个字符，数组长度不能超过10。
+        :type Tags: list of str
+        :param ClassPath: 素材分类路径，例如填写"/a/b"，则代表该素材存储的路径为"/a/b"。
+        :type ClassPath: str
+        :param Operator: 操作者。填写用户的 Id，用于标识调用者及校验操作权限。
+        :type Operator: str
+        """
+        self.Platform = None
+        self.MaterialId = None
+        self.Owner = None
+        self.Name = None
+        self.Tags = None
+        self.ClassPath = None
+        self.Operator = None
+
+
+    def _deserialize(self, params):
+        self.Platform = params.get("Platform")
+        self.MaterialId = params.get("MaterialId")
+        if params.get("Owner") is not None:
+            self.Owner = Entity()
+            self.Owner._deserialize(params.get("Owner"))
+        self.Name = params.get("Name")
+        self.Tags = params.get("Tags")
+        self.ClassPath = params.get("ClassPath")
+        self.Operator = params.get("Operator")
+
+
+class ModifyMaterialResponse(AbstractModel):
+    """ModifyMaterial返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class ModifyProjectRequest(AbstractModel):
     """ModifyProject请求参数结构体
 
@@ -773,12 +2284,17 @@ class ModifyProjectRequest(AbstractModel):
         :type ProjectId: str
         :param Name: 项目名称，不可超过30个字符。
         :type Name: str
+        :param AspectRatio: 画布宽高比，取值有：
+<li>16:9；</li>
+<li>9:16。</li>
+        :type AspectRatio: str
         :param Owner: 归属者。
         :type Owner: :class:`tencentcloud.cme.v20191029.models.Entity`
         """
         self.Platform = None
         self.ProjectId = None
         self.Name = None
+        self.AspectRatio = None
         self.Owner = None
 
 
@@ -786,6 +2302,7 @@ class ModifyProjectRequest(AbstractModel):
         self.Platform = params.get("Platform")
         self.ProjectId = params.get("ProjectId")
         self.Name = params.get("Name")
+        self.AspectRatio = params.get("AspectRatio")
         if params.get("Owner") is not None:
             self.Owner = Entity()
             self.Owner._deserialize(params.get("Owner"))
@@ -793,6 +2310,108 @@ class ModifyProjectRequest(AbstractModel):
 
 class ModifyProjectResponse(AbstractModel):
     """ModifyProject返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class ModifyTeamMemberRequest(AbstractModel):
+    """ModifyTeamMember请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Platform: 平台名称，指定访问的平台。
+        :type Platform: str
+        :param TeamId: 团队 ID。
+        :type TeamId: str
+        :param MemberId: 团队成员 ID。
+        :type MemberId: str
+        :param Remark: 成员备注，允许设置备注为空，不为空时长度不能超过15个字符。
+        :type Remark: str
+        :param Role: 成员角色，取值：
+<li>Admin：团队管理员；</li>
+<li>Member：普通成员。</li>
+        :type Role: str
+        :param Operator: 操作者。填写用户的 Id，用于标识调用者及校验操作权限。
+        :type Operator: str
+        """
+        self.Platform = None
+        self.TeamId = None
+        self.MemberId = None
+        self.Remark = None
+        self.Role = None
+        self.Operator = None
+
+
+    def _deserialize(self, params):
+        self.Platform = params.get("Platform")
+        self.TeamId = params.get("TeamId")
+        self.MemberId = params.get("MemberId")
+        self.Remark = params.get("Remark")
+        self.Role = params.get("Role")
+        self.Operator = params.get("Operator")
+
+
+class ModifyTeamMemberResponse(AbstractModel):
+    """ModifyTeamMember返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class ModifyTeamRequest(AbstractModel):
+    """ModifyTeam请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Platform: 平台名称，指定访问的平台。
+        :type Platform: str
+        :param TeamId: 团队 ID。
+        :type TeamId: str
+        :param Name: 团队名称，不能超过 30 个字符。
+        :type Name: str
+        :param Operator: 操作者。填写用户的 Id，用于标识调用者及校验操作权限。
+        :type Operator: str
+        """
+        self.Platform = None
+        self.TeamId = None
+        self.Name = None
+        self.Operator = None
+
+
+    def _deserialize(self, params):
+        self.Platform = params.get("Platform")
+        self.TeamId = params.get("TeamId")
+        self.Name = params.get("Name")
+        self.Operator = params.get("Operator")
+
+
+class ModifyTeamResponse(AbstractModel):
+    """ModifyTeam返回参数结构体
 
     """
 
@@ -855,6 +2474,248 @@ class ProjectInfo(AbstractModel):
         self.UpdateTime = params.get("UpdateTime")
 
 
+class Resource(AbstractModel):
+    """用于描述资源
+
+    """
+
+    def __init__(self):
+        """
+        :param Type: 类型，取值有：
+<li>MATERIAL：素材。</li>
+<li>CLASS：分类。</li>
+        :type Type: str
+        :param Id: 资源 Id，当 Type 为 MATERIAL 时，取值为素材 Id；当 Type 为 CLASS 时，取值为分类路径 ClassPath。
+        :type Id: str
+        """
+        self.Type = None
+        self.Id = None
+
+
+    def _deserialize(self, params):
+        self.Type = params.get("Type")
+        self.Id = params.get("Id")
+
+
+class RevokeResourceAuthorizationRequest(AbstractModel):
+    """RevokeResourceAuthorization请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Platform: 平台名称，指定访问的平台。
+        :type Platform: str
+        :param Owner: 资源所属实体。
+        :type Owner: :class:`tencentcloud.cme.v20191029.models.Entity`
+        :param Resources: 被授权资源。
+        :type Resources: list of Resource
+        :param Authorizees: 被授权目标实体。
+        :type Authorizees: list of Entity
+        :param Permissions: 详细授权值。 取值有：
+<li>R：可读，可以浏览素材，但不能使用该素材（将其添加到 Project），或复制到自己的媒资库中</li>
+<li>X：可用，可以使用该素材（将其添加到 Project），但不能将其复制到自己的媒资库中，意味着被授权者无法将该资源进一步扩散给其他个人或团队。</li>
+<li>C：可复制，既可以使用该素材（将其添加到 Project），也可以将其复制到自己的媒资库中。</li>
+<li>W：可修改、删除媒资。</li>
+        :type Permissions: list of str
+        :param Operator: 操作者。填写用户的 Id，用于标识调用者及校验操作权限。
+        :type Operator: str
+        """
+        self.Platform = None
+        self.Owner = None
+        self.Resources = None
+        self.Authorizees = None
+        self.Permissions = None
+        self.Operator = None
+
+
+    def _deserialize(self, params):
+        self.Platform = params.get("Platform")
+        if params.get("Owner") is not None:
+            self.Owner = Entity()
+            self.Owner._deserialize(params.get("Owner"))
+        if params.get("Resources") is not None:
+            self.Resources = []
+            for item in params.get("Resources"):
+                obj = Resource()
+                obj._deserialize(item)
+                self.Resources.append(obj)
+        if params.get("Authorizees") is not None:
+            self.Authorizees = []
+            for item in params.get("Authorizees"):
+                obj = Entity()
+                obj._deserialize(item)
+                self.Authorizees.append(obj)
+        self.Permissions = params.get("Permissions")
+        self.Operator = params.get("Operator")
+
+
+class RevokeResourceAuthorizationResponse(AbstractModel):
+    """RevokeResourceAuthorization返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class SearchMaterialRequest(AbstractModel):
+    """SearchMaterial请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Platform: 平台名称，指定访问的平台。
+        :type Platform: str
+        :param SearchScopes: 指定搜索空间，数组长度不得超过5。
+        :type SearchScopes: list of SearchScope
+        :param MaterialTypes: 素材类型，取值：
+<li>AUDIO：音频；</li>
+<li>VIDEO：视频 ；</li>
+<li>IMAGE：图片。</li>
+        :type MaterialTypes: list of str
+        :param Text: 搜索文本，模糊匹配素材名称或描述信息，匹配项越多，匹配度越高，排序越优先。长度限制：64 个字符。
+        :type Text: str
+        :param Resolution: 按画质检索，取值为：LD/SD/HD/FHD/2K/4K。
+        :type Resolution: str
+        :param DurationRange: 按素材时长检索，单位s。
+        :type DurationRange: :class:`tencentcloud.cme.v20191029.models.IntegerRange`
+        :param CreateTimeRange: 按照素材创建时间检索。
+        :type CreateTimeRange: :class:`tencentcloud.cme.v20191029.models.TimeRange`
+        :param Tags: 标签集合，匹配集合中任意元素。单个标签长度限制：10 个字符。数组长度限制：10。
+        :type Tags: list of str
+        :param Sort: 排序方式。Sort.Field 可选值：CreateTime。指定 Text 搜索时，将根据匹配度排序，该字段无效。
+        :type Sort: :class:`tencentcloud.cme.v20191029.models.SortBy`
+        :param Offset: 偏移量。默认值：0。
+        :type Offset: int
+        :param Limit: 返回记录条数，默认值：50。
+        :type Limit: int
+        :param Operator: 操作者。填写用户的 Id，用于标识调用者及校验操作权限。
+        :type Operator: str
+        """
+        self.Platform = None
+        self.SearchScopes = None
+        self.MaterialTypes = None
+        self.Text = None
+        self.Resolution = None
+        self.DurationRange = None
+        self.CreateTimeRange = None
+        self.Tags = None
+        self.Sort = None
+        self.Offset = None
+        self.Limit = None
+        self.Operator = None
+
+
+    def _deserialize(self, params):
+        self.Platform = params.get("Platform")
+        if params.get("SearchScopes") is not None:
+            self.SearchScopes = []
+            for item in params.get("SearchScopes"):
+                obj = SearchScope()
+                obj._deserialize(item)
+                self.SearchScopes.append(obj)
+        self.MaterialTypes = params.get("MaterialTypes")
+        self.Text = params.get("Text")
+        self.Resolution = params.get("Resolution")
+        if params.get("DurationRange") is not None:
+            self.DurationRange = IntegerRange()
+            self.DurationRange._deserialize(params.get("DurationRange"))
+        if params.get("CreateTimeRange") is not None:
+            self.CreateTimeRange = TimeRange()
+            self.CreateTimeRange._deserialize(params.get("CreateTimeRange"))
+        self.Tags = params.get("Tags")
+        if params.get("Sort") is not None:
+            self.Sort = SortBy()
+            self.Sort._deserialize(params.get("Sort"))
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+        self.Operator = params.get("Operator")
+
+
+class SearchMaterialResponse(AbstractModel):
+    """SearchMaterial返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param TotalCount: 符合记录总条数。
+        :type TotalCount: int
+        :param MaterialInfoSet: 素材信息，仅返回基础信息。
+        :type MaterialInfoSet: list of MaterialInfo
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.MaterialInfoSet = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("MaterialInfoSet") is not None:
+            self.MaterialInfoSet = []
+            for item in params.get("MaterialInfoSet"):
+                obj = MaterialInfo()
+                obj._deserialize(item)
+                self.MaterialInfoSet.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class SearchScope(AbstractModel):
+    """搜索空间
+
+    """
+
+    def __init__(self):
+        """
+        :param Owner: 分类路径归属。
+        :type Owner: :class:`tencentcloud.cme.v20191029.models.Entity`
+        :param ClassPath: 按分类路径检索。 不填则默认按根分类路径检索。
+        :type ClassPath: str
+        """
+        self.Owner = None
+        self.ClassPath = None
+
+
+    def _deserialize(self, params):
+        if params.get("Owner") is not None:
+            self.Owner = Entity()
+            self.Owner._deserialize(params.get("Owner"))
+        self.ClassPath = params.get("ClassPath")
+
+
+class SortBy(AbstractModel):
+    """排序
+
+    """
+
+    def __init__(self):
+        """
+        :param Field: 排序字段。
+        :type Field: str
+        :param Order: 排序方式，可选值：Asc（升序）、Desc（降序），默认降序。
+        :type Order: str
+        """
+        self.Field = None
+        self.Order = None
+
+
+    def _deserialize(self, params):
+        self.Field = params.get("Field")
+        self.Order = params.get("Order")
+
+
 class TaskBaseInfo(AbstractModel):
     """任务基础信息。
 
@@ -900,6 +2761,88 @@ class TaskBaseInfo(AbstractModel):
         self.ErrCode = params.get("ErrCode")
         self.ErrMsg = params.get("ErrMsg")
         self.CreateTime = params.get("CreateTime")
+
+
+class TeamInfo(AbstractModel):
+    """团队信息
+
+    """
+
+    def __init__(self):
+        """
+        :param TeamId: 团队 ID。
+        :type TeamId: str
+        :param Name: 团队名称。
+        :type Name: str
+        :param MemberCount: 团队成员个数
+        :type MemberCount: int
+        :param CreateTime: 团队创建时间，格式按照 ISO 8601 标准表示。
+        :type CreateTime: str
+        :param UpdateTime: 团队最后更新时间，格式按照 ISO 8601 标准表示。
+        :type UpdateTime: str
+        """
+        self.TeamId = None
+        self.Name = None
+        self.MemberCount = None
+        self.CreateTime = None
+        self.UpdateTime = None
+
+
+    def _deserialize(self, params):
+        self.TeamId = params.get("TeamId")
+        self.Name = params.get("Name")
+        self.MemberCount = params.get("MemberCount")
+        self.CreateTime = params.get("CreateTime")
+        self.UpdateTime = params.get("UpdateTime")
+
+
+class TeamMemberInfo(AbstractModel):
+    """团队成员信息
+
+    """
+
+    def __init__(self):
+        """
+        :param MemberId: 团队成员 ID。
+        :type MemberId: str
+        :param Remark: 团队成员备注。
+        :type Remark: str
+        :param Role: 团队成员角色，取值：
+<li>Owner：团队所有者，添加团队成员及修改团队成员解决时不能填此角色；</li>
+<li>Admin：团队管理员；</li>
+<li>Member：普通成员。</li>
+        :type Role: str
+        """
+        self.MemberId = None
+        self.Remark = None
+        self.Role = None
+
+
+    def _deserialize(self, params):
+        self.MemberId = params.get("MemberId")
+        self.Remark = params.get("Remark")
+        self.Role = params.get("Role")
+
+
+class TimeRange(AbstractModel):
+    """时间范围
+
+    """
+
+    def __init__(self):
+        """
+        :param StartTime: 开始时间，使用 ISO 日期格式。
+        :type StartTime: str
+        :param EndTime: 结束时间，使用 ISO 日期格式。
+        :type EndTime: str
+        """
+        self.StartTime = None
+        self.EndTime = None
+
+
+    def _deserialize(self, params):
+        self.StartTime = params.get("StartTime")
+        self.EndTime = params.get("EndTime")
 
 
 class VODExportInfo(AbstractModel):
@@ -955,6 +2898,43 @@ class VideoEditProjectOutput(AbstractModel):
         if params.get("MaterialBaseInfo") is not None:
             self.MaterialBaseInfo = MaterialBaseInfo()
             self.MaterialBaseInfo._deserialize(params.get("MaterialBaseInfo"))
+
+
+class VideoMaterial(AbstractModel):
+    """视频素材信息
+
+    """
+
+    def __init__(self):
+        """
+        :param MetaData: 素材元信息。
+        :type MetaData: :class:`tencentcloud.cme.v20191029.models.MediaMetaData`
+        :param ImageSpriteInfo: 雪碧图信息。
+        :type ImageSpriteInfo: :class:`tencentcloud.cme.v20191029.models.MediaImageSpriteInfo`
+        :param MaterialUrl: 素材媒体文件的 URL 地址
+        :type MaterialUrl: str
+        :param CoverUrl: 素材媒体文件的封面图片地址。
+        :type CoverUrl: str
+        :param Resolution: 媒体文件分辨率。
+        :type Resolution: str
+        """
+        self.MetaData = None
+        self.ImageSpriteInfo = None
+        self.MaterialUrl = None
+        self.CoverUrl = None
+        self.Resolution = None
+
+
+    def _deserialize(self, params):
+        if params.get("MetaData") is not None:
+            self.MetaData = MediaMetaData()
+            self.MetaData._deserialize(params.get("MetaData"))
+        if params.get("ImageSpriteInfo") is not None:
+            self.ImageSpriteInfo = MediaImageSpriteInfo()
+            self.ImageSpriteInfo._deserialize(params.get("ImageSpriteInfo"))
+        self.MaterialUrl = params.get("MaterialUrl")
+        self.CoverUrl = params.get("CoverUrl")
+        self.Resolution = params.get("Resolution")
 
 
 class VideoStreamInfo(AbstractModel):

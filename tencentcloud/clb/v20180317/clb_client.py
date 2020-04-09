@@ -1541,6 +1541,34 @@ class ClbClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def SetLoadBalancerClsLog(self, request):
+        """增加、删除、更新负载均衡的日志服务(CLS)主题
+
+        :param request: Request instance for SetLoadBalancerClsLog.
+        :type request: :class:`tencentcloud.clb.v20180317.models.SetLoadBalancerClsLogRequest`
+        :rtype: :class:`tencentcloud.clb.v20180317.models.SetLoadBalancerClsLogResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("SetLoadBalancerClsLog", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.SetLoadBalancerClsLogResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def SetLoadBalancerSecurityGroups(self, request):
         """SetLoadBalancerSecurityGroups 接口支持对一个公网负载均衡实例执行设置（绑定、解绑）安全组操作。查询一个负载均衡实例目前已绑定的安全组，可使用 DescribeLoadBalancers 接口。本接口是set语义，
         绑定操作时，入参需要传入负载均衡实例要绑定的所有安全组（已绑定的+新增绑定的）。

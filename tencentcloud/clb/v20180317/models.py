@@ -4346,6 +4346,48 @@ class RuleTargets(AbstractModel):
                 self.Targets.append(obj)
 
 
+class SetLoadBalancerClsLogRequest(AbstractModel):
+    """SetLoadBalancerClsLog请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param LoadBalancerId: 负载均衡实例 ID
+        :type LoadBalancerId: str
+        :param LogSetId: 日志服务(CLS)的日志集ID
+        :type LogSetId: str
+        :param LogTopicId: 日志服务(CLS)的日志主题ID
+        :type LogTopicId: str
+        """
+        self.LoadBalancerId = None
+        self.LogSetId = None
+        self.LogTopicId = None
+
+
+    def _deserialize(self, params):
+        self.LoadBalancerId = params.get("LoadBalancerId")
+        self.LogSetId = params.get("LogSetId")
+        self.LogTopicId = params.get("LogTopicId")
+
+
+class SetLoadBalancerClsLogResponse(AbstractModel):
+    """SetLoadBalancerClsLog返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class SetLoadBalancerSecurityGroupsRequest(AbstractModel):
     """SetLoadBalancerSecurityGroups请求参数结构体
 

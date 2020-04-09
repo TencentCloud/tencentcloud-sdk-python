@@ -2322,11 +2322,11 @@ class ImageTaskFunction(AbstractModel):
         """
         :param EnableActionClass: 大教室场景学生肢体动作识别选项
         :type EnableActionClass: bool
-        :param EnableFaceDetect: 人脸检测选项
+        :param EnableFaceDetect: 人脸检测选项（默认为true，目前不可编辑）
         :type EnableFaceDetect: bool
         :param EnableFaceExpression: 人脸表情识别选项
         :type EnableFaceExpression: bool
-        :param EnableFaceIdentify: 人脸检索选项
+        :param EnableFaceIdentify: 人脸检索选项（默认为true，目前不可编辑）
         :type EnableFaceIdentify: bool
         :param EnableGesture: 手势选项
         :type EnableGesture: bool
@@ -2338,7 +2338,7 @@ class ImageTaskFunction(AbstractModel):
         :type EnableStudentBodyMovements: bool
         :param EnableTeacherBodyMovements: 教师动作选项（该功能尚未支持）
         :type EnableTeacherBodyMovements: bool
-        :param EnableTeacherOutScreen: 判断老师是否在屏幕中
+        :param EnableTeacherOutScreen: 判断老师是否在屏幕中（该功能尚未支持）
         :type EnableTeacherOutScreen: bool
         """
         self.EnableActionClass = None
@@ -3723,6 +3723,8 @@ class SubmitImageTaskRequest(AbstractModel):
         :type Functions: :class:`tencentcloud.tci.v20190318.models.ImageTaskFunction`
         :param LightStandardSet: 光照标准列表
         :type LightStandardSet: list of LightStandard
+        :param EventsCallBack: 结果更新回调地址。
+        :type EventsCallBack: str
         :param FrameInterval: 抽帧的时间间隔，单位毫秒，默认值1000，保留字段，当前不支持填写。
         :type FrameInterval: int
         :param LibrarySet: 查询人员库列表
@@ -3736,6 +3738,7 @@ class SubmitImageTaskRequest(AbstractModel):
         self.FileType = None
         self.Functions = None
         self.LightStandardSet = None
+        self.EventsCallBack = None
         self.FrameInterval = None
         self.LibrarySet = None
         self.MaxVideoDuration = None
@@ -3754,6 +3757,7 @@ class SubmitImageTaskRequest(AbstractModel):
                 obj = LightStandard()
                 obj._deserialize(item)
                 self.LightStandardSet.append(obj)
+        self.EventsCallBack = params.get("EventsCallBack")
         self.FrameInterval = params.get("FrameInterval")
         self.LibrarySet = params.get("LibrarySet")
         self.MaxVideoDuration = params.get("MaxVideoDuration")

@@ -921,18 +921,18 @@ class DescribeBindUsrRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param AccessId: 设备主人的AccessId
-        :type AccessId: str
         :param Tid: 设备TID
         :type Tid: str
+        :param AccessId: 设备主人的AccessId
+        :type AccessId: str
         """
-        self.AccessId = None
         self.Tid = None
+        self.AccessId = None
 
 
     def _deserialize(self, params):
-        self.AccessId = params.get("AccessId")
         self.Tid = params.get("Tid")
+        self.AccessId = params.get("AccessId")
 
 
 class DescribeBindUsrResponse(AbstractModel):

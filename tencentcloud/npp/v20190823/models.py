@@ -643,7 +643,7 @@ class GetVirtualNumRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param BizAppId: appId 值测试时由腾讯统一分配
+        :param BizAppId: 业务appid
         :type BizAppId: str
         :param Dst: 被叫号码(号码前加 0086，如 008613631686024)
         :type Dst: str

@@ -2290,8 +2290,10 @@ class Tag(AbstractModel):
     def __init__(self):
         """
         :param Key: 标签的键。
+注意：此字段可能返回 null，表示取不到有效值。
         :type Key: str
         :param Value: 标签的值。
+注意：此字段可能返回 null，表示取不到有效值。
         :type Value: str
         """
         self.Key = None

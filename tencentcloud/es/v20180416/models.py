@@ -874,6 +874,31 @@ class KeyValue(AbstractModel):
         self.Value = params.get("Value")
 
 
+class LocalDiskInfo(AbstractModel):
+    """节点本地盘信息
+
+    """
+
+    def __init__(self):
+        """
+        :param LocalDiskType: 本地盘类型<li>LOCAL_SATA：大数据型</li><li>NVME_SSD：高IO型</li>
+        :type LocalDiskType: str
+        :param LocalDiskSize: 本地盘单盘大小
+        :type LocalDiskSize: int
+        :param LocalDiskCount: 本地盘块数
+        :type LocalDiskCount: int
+        """
+        self.LocalDiskType = None
+        self.LocalDiskSize = None
+        self.LocalDiskCount = None
+
+
+    def _deserialize(self, params):
+        self.LocalDiskType = params.get("LocalDiskType")
+        self.LocalDiskSize = params.get("LocalDiskSize")
+        self.LocalDiskCount = params.get("LocalDiskCount")
+
+
 class MasterNodeInfo(AbstractModel):
     """实例专用主节点相关信息
 
@@ -935,12 +960,16 @@ class NodeInfo(AbstractModel):
         :type DiskType: str
         :param DiskSize: 节点磁盘容量（单位GB）
         :type DiskSize: int
+        :param LocalDiskInfo: 节点本地盘信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LocalDiskInfo: :class:`tencentcloud.es.v20180416.models.LocalDiskInfo`
         """
         self.NodeNum = None
         self.NodeType = None
         self.Type = None
         self.DiskType = None
         self.DiskSize = None
+        self.LocalDiskInfo = None
 
 
     def _deserialize(self, params):
@@ -949,6 +978,9 @@ class NodeInfo(AbstractModel):
         self.Type = params.get("Type")
         self.DiskType = params.get("DiskType")
         self.DiskSize = params.get("DiskSize")
+        if params.get("LocalDiskInfo") is not None:
+            self.LocalDiskInfo = LocalDiskInfo()
+            self.LocalDiskInfo._deserialize(params.get("LocalDiskInfo"))
 
 
 class Operation(AbstractModel):
@@ -1217,6 +1249,8 @@ class UpdateInstanceRequest(AbstractModel):
         :type KibanaPublicAccess: str
         :param KibanaPrivateAccess: Kibana内网访问状态
         :type KibanaPrivateAccess: str
+        :param BasicSecurityType: ES 6.8及以上版本基础版开启或关闭用户认证
+        :type BasicSecurityType: int
         """
         self.InstanceId = None
         self.InstanceName = None
@@ -1236,6 +1270,7 @@ class UpdateInstanceRequest(AbstractModel):
         self.EsPublicAcl = None
         self.KibanaPublicAccess = None
         self.KibanaPrivateAccess = None
+        self.BasicSecurityType = None
 
 
     def _deserialize(self, params):
@@ -1268,6 +1303,7 @@ class UpdateInstanceRequest(AbstractModel):
             self.EsPublicAcl._deserialize(params.get("EsPublicAcl"))
         self.KibanaPublicAccess = params.get("KibanaPublicAccess")
         self.KibanaPrivateAccess = params.get("KibanaPrivateAccess")
+        self.BasicSecurityType = params.get("BasicSecurityType")
 
 
 class UpdateInstanceResponse(AbstractModel):
