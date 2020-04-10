@@ -7112,6 +7112,49 @@ class DescribeVpcPrivateIpAddressesResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeVpcResourceDashboardRequest(AbstractModel):
+    """DescribeVpcResourceDashboard请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param VpcIds: Vpc实例ID，例如：vpc-f1xjkw1b。
+        :type VpcIds: list of str
+        """
+        self.VpcIds = None
+
+
+    def _deserialize(self, params):
+        self.VpcIds = params.get("VpcIds")
+
+
+class DescribeVpcResourceDashboardResponse(AbstractModel):
+    """DescribeVpcResourceDashboard返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ResourceDashboardSet: 资源对象列表。
+        :type ResourceDashboardSet: list of ResourceDashboard
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.ResourceDashboardSet = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("ResourceDashboardSet") is not None:
+            self.ResourceDashboardSet = []
+            for item in params.get("ResourceDashboardSet"):
+                obj = ResourceDashboard()
+                obj._deserialize(item)
+                self.ResourceDashboardSet.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeVpcsRequest(AbstractModel):
     """DescribeVpcs请求参数结构体
 
@@ -11625,6 +11668,187 @@ class Resource(AbstractModel):
         self.ResourceType = params.get("ResourceType")
         self.ResourceId = params.get("ResourceId")
         self.AddressIp = params.get("AddressIp")
+
+
+class ResourceDashboard(AbstractModel):
+    """VPC资源看板（各资源个数）
+
+    """
+
+    def __init__(self):
+        """
+        :param VpcId: Vpc实例ID，例如：vpc-f1xjkw1b。
+        :type VpcId: str
+        :param SubnetId: 子网实例ID，例如：subnet-bthucmmy。
+        :type SubnetId: str
+        :param Classiclink: 基础网络互通。
+        :type Classiclink: int
+        :param Dcg: 专线网关。
+        :type Dcg: int
+        :param Pcx: 对等连接。
+        :type Pcx: int
+        :param Ip: 当前已使用的IP总数。
+        :type Ip: int
+        :param Nat: NAT网关。
+        :type Nat: int
+        :param Vpngw: VPN网关。
+        :type Vpngw: int
+        :param FlowLog: 流日志。
+        :type FlowLog: int
+        :param NetworkDetect: 网络探测。
+        :type NetworkDetect: int
+        :param NetworkACL: 网络ACL。
+        :type NetworkACL: int
+        :param CVM: 云主机。
+        :type CVM: int
+        :param LB: 负载均衡。
+        :type LB: int
+        :param CDB: 关系型数据库。
+        :type CDB: int
+        :param Cmem: 云数据库 TencentDB for Memcached。
+        :type Cmem: int
+        :param CTSDB: 时序数据库。
+        :type CTSDB: int
+        :param MariaDB: 数据库 TencentDB for MariaDB（TDSQL）。
+        :type MariaDB: int
+        :param SQLServer: 数据库 TencentDB for SQL Server。
+        :type SQLServer: int
+        :param Postgres: 云数据库 TencentDB for PostgreSQL。
+        :type Postgres: int
+        :param NAS: 网络附加存储。
+        :type NAS: int
+        :param Greenplumn: Snova云数据仓库。
+        :type Greenplumn: int
+        :param Ckafka: 消息队列 CKAFKA。
+        :type Ckafka: int
+        :param Grocery: Grocery。
+        :type Grocery: int
+        :param HSM: 数据加密服务。
+        :type HSM: int
+        :param Tcaplus: 游戏存储 Tcaplus。
+        :type Tcaplus: int
+        :param Cnas: Cnas。
+        :type Cnas: int
+        :param TiDB: HTAP 数据库 TiDB。
+        :type TiDB: int
+        :param Emr: EMR 集群。
+        :type Emr: int
+        :param SEAL: SEAL。
+        :type SEAL: int
+        :param CFS: 文件存储 CFS。
+        :type CFS: int
+        :param Oracle: Oracle。
+        :type Oracle: int
+        :param ElasticSearch: ElasticSearch服务。
+        :type ElasticSearch: int
+        :param TBaaS: 区块链服务。
+        :type TBaaS: int
+        :param Itop: Itop。
+        :type Itop: int
+        :param DBAudit: 云数据库审计。
+        :type DBAudit: int
+        :param CynosDBPostgres: 企业级云数据库 CynosDB for Postgres。
+        :type CynosDBPostgres: int
+        :param Redis: 数据库 TencentDB for Redis。
+        :type Redis: int
+        :param MongoDB: 数据库 TencentDB for MongoDB。
+        :type MongoDB: int
+        :param DCDB: 分布式数据库 TencentDB for TDSQL。
+        :type DCDB: int
+        :param CynosDBMySQL: 企业级云数据库 CynosDB for MySQL。
+        :type CynosDBMySQL: int
+        :param Subnet: 子网。
+        :type Subnet: int
+        :param RouteTable: 路由表。
+        :type RouteTable: int
+        """
+        self.VpcId = None
+        self.SubnetId = None
+        self.Classiclink = None
+        self.Dcg = None
+        self.Pcx = None
+        self.Ip = None
+        self.Nat = None
+        self.Vpngw = None
+        self.FlowLog = None
+        self.NetworkDetect = None
+        self.NetworkACL = None
+        self.CVM = None
+        self.LB = None
+        self.CDB = None
+        self.Cmem = None
+        self.CTSDB = None
+        self.MariaDB = None
+        self.SQLServer = None
+        self.Postgres = None
+        self.NAS = None
+        self.Greenplumn = None
+        self.Ckafka = None
+        self.Grocery = None
+        self.HSM = None
+        self.Tcaplus = None
+        self.Cnas = None
+        self.TiDB = None
+        self.Emr = None
+        self.SEAL = None
+        self.CFS = None
+        self.Oracle = None
+        self.ElasticSearch = None
+        self.TBaaS = None
+        self.Itop = None
+        self.DBAudit = None
+        self.CynosDBPostgres = None
+        self.Redis = None
+        self.MongoDB = None
+        self.DCDB = None
+        self.CynosDBMySQL = None
+        self.Subnet = None
+        self.RouteTable = None
+
+
+    def _deserialize(self, params):
+        self.VpcId = params.get("VpcId")
+        self.SubnetId = params.get("SubnetId")
+        self.Classiclink = params.get("Classiclink")
+        self.Dcg = params.get("Dcg")
+        self.Pcx = params.get("Pcx")
+        self.Ip = params.get("Ip")
+        self.Nat = params.get("Nat")
+        self.Vpngw = params.get("Vpngw")
+        self.FlowLog = params.get("FlowLog")
+        self.NetworkDetect = params.get("NetworkDetect")
+        self.NetworkACL = params.get("NetworkACL")
+        self.CVM = params.get("CVM")
+        self.LB = params.get("LB")
+        self.CDB = params.get("CDB")
+        self.Cmem = params.get("Cmem")
+        self.CTSDB = params.get("CTSDB")
+        self.MariaDB = params.get("MariaDB")
+        self.SQLServer = params.get("SQLServer")
+        self.Postgres = params.get("Postgres")
+        self.NAS = params.get("NAS")
+        self.Greenplumn = params.get("Greenplumn")
+        self.Ckafka = params.get("Ckafka")
+        self.Grocery = params.get("Grocery")
+        self.HSM = params.get("HSM")
+        self.Tcaplus = params.get("Tcaplus")
+        self.Cnas = params.get("Cnas")
+        self.TiDB = params.get("TiDB")
+        self.Emr = params.get("Emr")
+        self.SEAL = params.get("SEAL")
+        self.CFS = params.get("CFS")
+        self.Oracle = params.get("Oracle")
+        self.ElasticSearch = params.get("ElasticSearch")
+        self.TBaaS = params.get("TBaaS")
+        self.Itop = params.get("Itop")
+        self.DBAudit = params.get("DBAudit")
+        self.CynosDBPostgres = params.get("CynosDBPostgres")
+        self.Redis = params.get("Redis")
+        self.MongoDB = params.get("MongoDB")
+        self.DCDB = params.get("DCDB")
+        self.CynosDBMySQL = params.get("CynosDBMySQL")
+        self.Subnet = params.get("Subnet")
+        self.RouteTable = params.get("RouteTable")
 
 
 class Route(AbstractModel):

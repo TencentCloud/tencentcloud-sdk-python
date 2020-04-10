@@ -3675,11 +3675,14 @@ class TextDetection(AbstractModel):
         :param AdvancedInfo: 此字段为扩展字段。
 GeneralBasicOcr接口返回段落信息Parag，包含ParagNo。
         :type AdvancedInfo: str
+        :param ItemPolygon: 文本行在旋转纠正之后的图像中的像素坐标，表示为（左上角x, 左上角y，宽width，高height）
+        :type ItemPolygon: :class:`tencentcloud.ocr.v20181119.models.ItemCoord`
         """
         self.DetectedText = None
         self.Confidence = None
         self.Polygon = None
         self.AdvancedInfo = None
+        self.ItemPolygon = None
 
 
     def _deserialize(self, params):
@@ -3692,6 +3695,9 @@ GeneralBasicOcr接口返回段落信息Parag，包含ParagNo。
                 obj._deserialize(item)
                 self.Polygon.append(obj)
         self.AdvancedInfo = params.get("AdvancedInfo")
+        if params.get("ItemPolygon") is not None:
+            self.ItemPolygon = ItemCoord()
+            self.ItemPolygon._deserialize(params.get("ItemPolygon"))
 
 
 class TextDetectionEn(AbstractModel):

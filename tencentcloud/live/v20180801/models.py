@@ -4736,9 +4736,9 @@ class DomainInfo(AbstractModel):
         :type IsDelayLive: int
         :param CurrentCName: 当前客户使用的cname信息
         :type CurrentCName: str
-        :param RentTag: 是否租用域名
+        :param RentTag: 已无效，可忽略。
         :type RentTag: int
-        :param RentExpireTime: 租用域名过期时间
+        :param RentExpireTime: 已无效，可忽略。
         :type RentExpireTime: str
         :param IsMiniProgramLive: 0：标准直播，
 1：小程序直播。

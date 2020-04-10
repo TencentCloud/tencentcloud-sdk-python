@@ -288,22 +288,26 @@ class AttachRolePolicyRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param PolicyId: 策略ID
+        :param PolicyId: 策略ID，入参PolicyId与PolicyName二选一
         :type PolicyId: int
         :param AttachRoleId: 角色ID，用于指定角色，入参 AttachRoleId 与 AttachRoleName 二选一
         :type AttachRoleId: str
         :param AttachRoleName: 角色名称，用于指定角色，入参 AttachRoleId 与 AttachRoleName 二选一
         :type AttachRoleName: str
+        :param PolicyName: 策略名，入参PolicyId与PolicyName二选一
+        :type PolicyName: str
         """
         self.PolicyId = None
         self.AttachRoleId = None
         self.AttachRoleName = None
+        self.PolicyName = None
 
 
     def _deserialize(self, params):
         self.PolicyId = params.get("PolicyId")
         self.AttachRoleId = params.get("AttachRoleId")
         self.AttachRoleName = params.get("AttachRoleName")
+        self.PolicyName = params.get("PolicyName")
 
 
 class AttachRolePolicyResponse(AbstractModel):
@@ -908,22 +912,26 @@ class DetachRolePolicyRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param PolicyId: 策略ID
+        :param PolicyId: 策略ID，入参PolicyId与PolicyName二选一
         :type PolicyId: int
         :param DetachRoleId: 角色ID，用于指定角色，入参 AttachRoleId 与 AttachRoleName 二选一
         :type DetachRoleId: str
         :param DetachRoleName: 角色名称，用于指定角色，入参 AttachRoleId 与 AttachRoleName 二选一
         :type DetachRoleName: str
+        :param PolicyName: 策略名，入参PolicyId与PolicyName二选一
+        :type PolicyName: str
         """
         self.PolicyId = None
         self.DetachRoleId = None
         self.DetachRoleName = None
+        self.PolicyName = None
 
 
     def _deserialize(self, params):
         self.PolicyId = params.get("PolicyId")
         self.DetachRoleId = params.get("DetachRoleId")
         self.DetachRoleName = params.get("DetachRoleName")
+        self.PolicyName = params.get("PolicyName")
 
 
 class DetachRolePolicyResponse(AbstractModel):
@@ -2166,7 +2174,7 @@ class SetFlagRequest(AbstractModel):
         :type ActionFlag: :class:`tencentcloud.cam.v20190116.models.LoginActionFlag`
         :param OffsiteFlag: 异地登录设置
         :type OffsiteFlag: :class:`tencentcloud.cam.v20190116.models.OffsiteFlag`
-        :param NeedResetMfa: 是否需要充值mfa
+        :param NeedResetMfa: 是否需要重置mfa
         :type NeedResetMfa: int
         """
         self.OpUin = None

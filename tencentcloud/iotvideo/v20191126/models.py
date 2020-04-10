@@ -447,6 +447,48 @@ class CreateProductResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class CreateStorageRequest(AbstractModel):
+    """CreateStorage请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param PkgId: 云存套餐ID
+        :type PkgId: str
+        :param Tid: 设备TID
+        :type Tid: str
+        :param UserTag: 用户唯一标识，由厂商保证内部唯一性
+        :type UserTag: str
+        """
+        self.PkgId = None
+        self.Tid = None
+        self.UserTag = None
+
+
+    def _deserialize(self, params):
+        self.PkgId = params.get("PkgId")
+        self.Tid = params.get("Tid")
+        self.UserTag = params.get("UserTag")
+
+
+class CreateStorageResponse(AbstractModel):
+    """CreateStorage返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class CreateTraceIdsRequest(AbstractModel):
     """CreateTraceIds请求参数结构体
 

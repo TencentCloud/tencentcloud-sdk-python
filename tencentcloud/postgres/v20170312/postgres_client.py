@@ -81,6 +81,34 @@ class PostgresClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def CreateDBInstances(self, request):
+        """本接口 (CreateDBInstances) 用于创建一个或者多个PostgreSQL实例。
+
+        :param request: Request instance for CreateDBInstances.
+        :type request: :class:`tencentcloud.postgres.v20170312.models.CreateDBInstancesRequest`
+        :rtype: :class:`tencentcloud.postgres.v20170312.models.CreateDBInstancesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("CreateDBInstances", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateDBInstancesResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def CreateServerlessDBInstance(self, request):
         """本接口 (CreateServerlessDBInstance) 用于创建一个ServerlessDB实例，创建成功返回实例ID。
 
@@ -249,6 +277,34 @@ class PostgresClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeDBInstances(self, request):
+        """本接口 (DescribeDBInstances) 用于查询一个或多个实例的详细信息。
+
+        :param request: Request instance for DescribeDBInstances.
+        :type request: :class:`tencentcloud.postgres.v20170312.models.DescribeDBInstancesRequest`
+        :rtype: :class:`tencentcloud.postgres.v20170312.models.DescribeDBInstancesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeDBInstances", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeDBInstancesResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeDBSlowlogs(self, request):
         """本接口（DescribeDBSlowlogs）用于获取慢查询日志。
 
@@ -291,6 +347,34 @@ class PostgresClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeDBXlogsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeDatabases(self, request):
+        """接口（DescribeDatabases）用来拉取数据库列表
+
+        :param request: Request instance for DescribeDatabases.
+        :type request: :class:`tencentcloud.postgres.v20170312.models.DescribeDatabasesRequest`
+        :rtype: :class:`tencentcloud.postgres.v20170312.models.DescribeDatabasesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeDatabases", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeDatabasesResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -431,6 +515,34 @@ class PostgresClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeZonesResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DestroyDBInstance(self, request):
+        """本接口 (DestroyDBInstance) 用于销毁指定DBInstanceId对应的实例。
+
+        :param request: Request instance for DestroyDBInstance.
+        :type request: :class:`tencentcloud.postgres.v20170312.models.DestroyDBInstanceRequest`
+        :rtype: :class:`tencentcloud.postgres.v20170312.models.DestroyDBInstanceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DestroyDBInstance", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DestroyDBInstanceResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -795,6 +907,34 @@ class PostgresClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.SetAutoRenewFlagResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def UpgradeDBInstance(self, request):
+        """本接口（UpgradeDBInstance）用于升级实例。
+
+        :param request: Request instance for UpgradeDBInstance.
+        :type request: :class:`tencentcloud.postgres.v20170312.models.UpgradeDBInstanceRequest`
+        :rtype: :class:`tencentcloud.postgres.v20170312.models.UpgradeDBInstanceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("UpgradeDBInstance", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.UpgradeDBInstanceResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

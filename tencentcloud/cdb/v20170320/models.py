@@ -4321,7 +4321,7 @@ class InstanceInfo(AbstractModel):
         :param MasterInfo: 主实例详细信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type MasterInfo: :class:`tencentcloud.cdb.v20170320.models.MasterInfo`
-        :param DeviceType: 实例类型，可能的返回值：“HA”-高可用版；“BASIC”-基础版
+        :param DeviceType: 实例类型，可能的返回值：“HA”-高可用版；“FE”-金融版；“BASIC”-基础版
         :type DeviceType: str
         :param EngineVersion: 内核版本
         :type EngineVersion: str

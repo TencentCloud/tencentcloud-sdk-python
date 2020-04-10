@@ -255,6 +255,34 @@ class IotvideoClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def CreateStorage(self, request):
+        """本接口（CreateStorage）用于购买云存套餐。
+
+        :param request: Request instance for CreateStorage.
+        :type request: :class:`tencentcloud.iotvideo.v20191126.models.CreateStorageRequest`
+        :rtype: :class:`tencentcloud.iotvideo.v20191126.models.CreateStorageResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("CreateStorage", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateStorageResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def CreateTraceIds(self, request):
         """本接口（CreateTraceIds）用于将设备加到日志跟踪白名单。
 

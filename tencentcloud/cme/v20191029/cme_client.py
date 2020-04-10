@@ -902,6 +902,35 @@ class CmeClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def MoveClass(self, request):
+        """移动某一个分类到另外一个分类下，也可用于分类重命名。
+        <li>如果 SourceClassPath = /素材/视频/NBA，DestinationClassPath = /素材/视频/篮球，当 DestinationClassPath 不存在时候，操作结果为重命名 ClassPath，如果 DestinationClassPath 存在时候，操作结果为产生新目录 /素材/视频/篮球/NBA。</li>
+
+        :param request: Request instance for MoveClass.
+        :type request: :class:`tencentcloud.cme.v20191029.models.MoveClassRequest`
+        :rtype: :class:`tencentcloud.cme.v20191029.models.MoveClassResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("MoveClass", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.MoveClassResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def RevokeResourceAuthorization(self, request):
         """资源所属实体对目标实体回收目标资源的相应权限，若原本没有相应权限则不产生变更。
 

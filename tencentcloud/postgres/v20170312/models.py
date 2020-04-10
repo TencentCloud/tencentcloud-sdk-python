@@ -129,6 +129,108 @@ class CloseServerlessDBExtranetAccessResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class CreateDBInstancesRequest(AbstractModel):
+    """CreateDBInstances请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param SpecCode: 售卖规格ID。该参数可以通过调用DescribeProductConfig的返回值中的SpecCode字段来获取。
+        :type SpecCode: str
+        :param DBVersion: PostgreSQL内核版本，目前支持：9.3.5、9.5.4、10.4三种版本。
+        :type DBVersion: str
+        :param Storage: 实例容量大小，单位：GB。
+        :type Storage: int
+        :param InstanceCount: 一次性购买的实例数量。取值1-100
+        :type InstanceCount: int
+        :param Period: 购买时长，单位：月。目前只支持1,2,3,4,5,6,7,8,9,10,11,12,24,36这些值，按量计费模式下该参数传1。
+        :type Period: int
+        :param Zone: 可用区ID。该参数可以通过调用 DescribeZones 接口的返回值中的Zone字段来获取。
+        :type Zone: str
+        :param ProjectId: 项目ID。
+        :type ProjectId: int
+        :param InstanceChargeType: 实例计费类型。目前支持：PREPAID（预付费，即包年包月），POSTPAID_BY_HOUR（后付费，即按量计费）。
+        :type InstanceChargeType: str
+        :param AutoVoucher: 是否自动使用代金券。1（是），0（否），默认不使用。
+        :type AutoVoucher: int
+        :param VoucherIds: 代金券ID列表，目前仅支持指定一张代金券。
+        :type VoucherIds: list of str
+        :param VpcId: 私有网络ID。
+        :type VpcId: str
+        :param SubnetId: 私有网络子网ID。
+        :type SubnetId: str
+        :param AutoRenewFlag: 续费标记：0-正常续费（默认）；1-自动续费；
+        :type AutoRenewFlag: int
+        :param ActivityId: 活动ID
+        :type ActivityId: int
+        :param Name: 实例名
+        :type Name: str
+        """
+        self.SpecCode = None
+        self.DBVersion = None
+        self.Storage = None
+        self.InstanceCount = None
+        self.Period = None
+        self.Zone = None
+        self.ProjectId = None
+        self.InstanceChargeType = None
+        self.AutoVoucher = None
+        self.VoucherIds = None
+        self.VpcId = None
+        self.SubnetId = None
+        self.AutoRenewFlag = None
+        self.ActivityId = None
+        self.Name = None
+
+
+    def _deserialize(self, params):
+        self.SpecCode = params.get("SpecCode")
+        self.DBVersion = params.get("DBVersion")
+        self.Storage = params.get("Storage")
+        self.InstanceCount = params.get("InstanceCount")
+        self.Period = params.get("Period")
+        self.Zone = params.get("Zone")
+        self.ProjectId = params.get("ProjectId")
+        self.InstanceChargeType = params.get("InstanceChargeType")
+        self.AutoVoucher = params.get("AutoVoucher")
+        self.VoucherIds = params.get("VoucherIds")
+        self.VpcId = params.get("VpcId")
+        self.SubnetId = params.get("SubnetId")
+        self.AutoRenewFlag = params.get("AutoRenewFlag")
+        self.ActivityId = params.get("ActivityId")
+        self.Name = params.get("Name")
+
+
+class CreateDBInstancesResponse(AbstractModel):
+    """CreateDBInstances返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param DealNames: 订单号列表。每个实例对应一个订单号。
+        :type DealNames: list of str
+        :param BillId: 冻结流水号
+        :type BillId: str
+        :param DBInstanceIdSet: 创建成功的实例ID集合，只在后付费情景下有返回值
+        :type DBInstanceIdSet: list of str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.DealNames = None
+        self.BillId = None
+        self.DBInstanceIdSet = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.DealNames = params.get("DealNames")
+        self.BillId = params.get("BillId")
+        self.DBInstanceIdSet = params.get("DBInstanceIdSet")
+        self.RequestId = params.get("RequestId")
+
+
 class CreateServerlessDBInstanceRequest(AbstractModel):
     """CreateServerlessDBInstance请求参数结构体
 
@@ -682,6 +784,74 @@ class DescribeDBInstanceAttributeResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeDBInstancesRequest(AbstractModel):
+    """DescribeDBInstances请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Filters: 过滤条件，目前支持：db-instance-id、db-instance-name、db-project-id、db-pay-mode。
+        :type Filters: list of Filter
+        :param Limit: 每页显示数量，默认返回10条。
+        :type Limit: int
+        :param Offset: 分页序号，从0开始。
+        :type Offset: int
+        :param OrderBy: 排序指标，如实例名、创建时间等，支持DBInstanceId,CreateTime,Name,EndTime
+        :type OrderBy: str
+        :param OrderByType: 排序方式，包括升序、降序
+        :type OrderByType: str
+        """
+        self.Filters = None
+        self.Limit = None
+        self.Offset = None
+        self.OrderBy = None
+        self.OrderByType = None
+
+
+    def _deserialize(self, params):
+        if params.get("Filters") is not None:
+            self.Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self.Filters.append(obj)
+        self.Limit = params.get("Limit")
+        self.Offset = params.get("Offset")
+        self.OrderBy = params.get("OrderBy")
+        self.OrderByType = params.get("OrderByType")
+
+
+class DescribeDBInstancesResponse(AbstractModel):
+    """DescribeDBInstances返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param TotalCount: 查询到的实例数量。
+        :type TotalCount: int
+        :param DBInstanceSet: 实例详细信息集合。
+        :type DBInstanceSet: list of DBInstance
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.DBInstanceSet = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("DBInstanceSet") is not None:
+            self.DBInstanceSet = []
+            for item in params.get("DBInstanceSet"):
+                obj = DBInstance()
+                obj._deserialize(item)
+                self.DBInstanceSet.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeDBSlowlogsRequest(AbstractModel):
     """DescribeDBSlowlogs请求参数结构体
 
@@ -814,6 +984,44 @@ class DescribeDBXlogsResponse(AbstractModel):
                 obj = Xlog()
                 obj._deserialize(item)
                 self.XlogList.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeDatabasesRequest(AbstractModel):
+    """DescribeDatabases请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param DBInstanceId: 实例ID
+        :type DBInstanceId: str
+        """
+        self.DBInstanceId = None
+
+
+    def _deserialize(self, params):
+        self.DBInstanceId = params.get("DBInstanceId")
+
+
+class DescribeDatabasesResponse(AbstractModel):
+    """DescribeDatabases返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Items: 数据库信息
+        :type Items: list of str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Items = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Items = params.get("Items")
         self.RequestId = params.get("RequestId")
 
 
@@ -1037,6 +1245,40 @@ class DescribeZonesResponse(AbstractModel):
                 obj = ZoneInfo()
                 obj._deserialize(item)
                 self.ZoneSet.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DestroyDBInstanceRequest(AbstractModel):
+    """DestroyDBInstance请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param DBInstanceId: 待删除实例标识符
+        :type DBInstanceId: str
+        """
+        self.DBInstanceId = None
+
+
+    def _deserialize(self, params):
+        self.DBInstanceId = params.get("DBInstanceId")
+
+
+class DestroyDBInstanceResponse(AbstractModel):
+    """DestroyDBInstance返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
 
 
@@ -2087,6 +2329,68 @@ class SpecItemInfo(AbstractModel):
         self.Qps = params.get("Qps")
         self.Pid = params.get("Pid")
         self.Type = params.get("Type")
+
+
+class UpgradeDBInstanceRequest(AbstractModel):
+    """UpgradeDBInstance请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Memory: 升级后的实例内存大小，单位GB
+        :type Memory: int
+        :param Storage: 升级后的实例磁盘大小，单位GB
+        :type Storage: int
+        :param DBInstanceId: 实例ID，形如postgres-lnp6j617
+        :type DBInstanceId: str
+        :param AutoVoucher: 是否自动使用代金券,1是,0否，默认不使用
+        :type AutoVoucher: int
+        :param VoucherIds: 代金券ID列表，目前仅支持指定一张代金券
+        :type VoucherIds: list of str
+        :param ActivityId: 活动ID
+        :type ActivityId: int
+        """
+        self.Memory = None
+        self.Storage = None
+        self.DBInstanceId = None
+        self.AutoVoucher = None
+        self.VoucherIds = None
+        self.ActivityId = None
+
+
+    def _deserialize(self, params):
+        self.Memory = params.get("Memory")
+        self.Storage = params.get("Storage")
+        self.DBInstanceId = params.get("DBInstanceId")
+        self.AutoVoucher = params.get("AutoVoucher")
+        self.VoucherIds = params.get("VoucherIds")
+        self.ActivityId = params.get("ActivityId")
+
+
+class UpgradeDBInstanceResponse(AbstractModel):
+    """UpgradeDBInstance返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param DealName: 交易名字。
+        :type DealName: str
+        :param BillId: 冻结流水号
+        :type BillId: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.DealName = None
+        self.BillId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.DealName = params.get("DealName")
+        self.BillId = params.get("BillId")
+        self.RequestId = params.get("RequestId")
 
 
 class Xlog(AbstractModel):
