@@ -83,6 +83,34 @@ class CmeClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def CreateLink(self, request):
+        """创建素材链接或分类路径链接，将源资源信息链接到目标。
+
+        :param request: Request instance for CreateLink.
+        :type request: :class:`tencentcloud.cme.v20191029.models.CreateLinkRequest`
+        :rtype: :class:`tencentcloud.cme.v20191029.models.CreateLinkResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("CreateLink", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateLinkResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def CreateProject(self, request):
         """创建云剪的编辑项目，支持创建视频剪辑及直播剪辑两大类项目。
 

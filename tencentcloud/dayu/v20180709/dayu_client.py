@@ -1789,6 +1789,34 @@ class DayuClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeSchedulingDomainList(self, request):
+        """获取调度域名列表
+
+        :param request: Request instance for DescribeSchedulingDomainList.
+        :type request: :class:`tencentcloud.dayu.v20180709.models.DescribeSchedulingDomainListRequest`
+        :rtype: :class:`tencentcloud.dayu.v20180709.models.DescribeSchedulingDomainListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeSchedulingDomainList", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeSchedulingDomainListResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeSecIndex(self, request):
         """获取本月安全统计
 

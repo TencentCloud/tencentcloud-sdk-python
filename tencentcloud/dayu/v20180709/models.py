@@ -4922,6 +4922,61 @@ Key值为"RuleNum"时，Value值表示资源的规则数
         self.RequestId = params.get("RequestId")
 
 
+class DescribeSchedulingDomainListRequest(AbstractModel):
+    """DescribeSchedulingDomainList请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Limit: 一页条数，填0表示不分页
+        :type Limit: int
+        :param Offset: 页起始偏移，取值为(页码-1)*一页条数
+        :type Offset: int
+        :param Domain: 可选，筛选特定的域名
+        :type Domain: str
+        """
+        self.Limit = None
+        self.Offset = None
+        self.Domain = None
+
+
+    def _deserialize(self, params):
+        self.Limit = params.get("Limit")
+        self.Offset = params.get("Offset")
+        self.Domain = params.get("Domain")
+
+
+class DescribeSchedulingDomainListResponse(AbstractModel):
+    """DescribeSchedulingDomainList返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Total: 调度域名总数
+        :type Total: int
+        :param DomainList: 调度域名列表信息
+        :type DomainList: list of SchedulingDomain
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Total = None
+        self.DomainList = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Total = params.get("Total")
+        if params.get("DomainList") is not None:
+            self.DomainList = []
+            for item in params.get("DomainList"):
+                obj = SchedulingDomain()
+                obj._deserialize(item)
+                self.DomainList.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeSecIndexRequest(AbstractModel):
     """DescribeSecIndex请求参数结构体
 
@@ -7668,6 +7723,65 @@ class ResourceIp(AbstractModel):
     def _deserialize(self, params):
         self.Id = params.get("Id")
         self.IpList = params.get("IpList")
+
+
+class SchedulingDomain(AbstractModel):
+    """调度域名信息
+
+    """
+
+    def __init__(self):
+        """
+        :param Domain: 调度域名
+        :type Domain: str
+        :param BGPIpList: BGP线路IP列表
+        :type BGPIpList: list of str
+        :param CTCCIpList: 电信线路IP列表
+        :type CTCCIpList: list of str
+        :param CUCCIpList: 联通线路IP列表
+        :type CUCCIpList: list of str
+        :param CMCCIpList: 移动线路IP列表
+        :type CMCCIpList: list of str
+        :param OverseaIpList: 海外线路IP列表
+        :type OverseaIpList: list of str
+        :param Method: 调度方式，当前仅支持优先级, 取值为priority
+        :type Method: str
+        :param CreateTime: 创建时间
+        :type CreateTime: str
+        :param TTL: ttl
+        :type TTL: int
+        :param Status: 状态
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Status: int
+        :param ModifyTime: 修改时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ModifyTime: str
+        """
+        self.Domain = None
+        self.BGPIpList = None
+        self.CTCCIpList = None
+        self.CUCCIpList = None
+        self.CMCCIpList = None
+        self.OverseaIpList = None
+        self.Method = None
+        self.CreateTime = None
+        self.TTL = None
+        self.Status = None
+        self.ModifyTime = None
+
+
+    def _deserialize(self, params):
+        self.Domain = params.get("Domain")
+        self.BGPIpList = params.get("BGPIpList")
+        self.CTCCIpList = params.get("CTCCIpList")
+        self.CUCCIpList = params.get("CUCCIpList")
+        self.CMCCIpList = params.get("CMCCIpList")
+        self.OverseaIpList = params.get("OverseaIpList")
+        self.Method = params.get("Method")
+        self.CreateTime = params.get("CreateTime")
+        self.TTL = params.get("TTL")
+        self.Status = params.get("Status")
+        self.ModifyTime = params.get("ModifyTime")
 
 
 class SuccessCode(AbstractModel):

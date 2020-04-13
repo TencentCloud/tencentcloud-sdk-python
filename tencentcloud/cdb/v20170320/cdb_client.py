@@ -1449,20 +1449,20 @@ class CdbClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def DescribeSLowLogData(self, request):
+    def DescribeSlowLogData(self, request):
         """条件检索实例的慢日志。只允许查看一个月之内的慢日志
 
-        :param request: Request instance for DescribeSLowLogData.
-        :type request: :class:`tencentcloud.cdb.v20170320.models.DescribeSLowLogDataRequest`
-        :rtype: :class:`tencentcloud.cdb.v20170320.models.DescribeSLowLogDataResponse`
+        :param request: Request instance for DescribeSlowLogData.
+        :type request: :class:`tencentcloud.cdb.v20170320.models.DescribeSlowLogDataRequest`
+        :rtype: :class:`tencentcloud.cdb.v20170320.models.DescribeSlowLogDataResponse`
 
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeSLowLogData", params)
+            body = self.call("DescribeSlowLogData", params)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.DescribeSLowLogDataResponse()
+                model = models.DescribeSlowLogDataResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

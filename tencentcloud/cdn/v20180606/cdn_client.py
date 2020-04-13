@@ -609,6 +609,34 @@ class CdnClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeReportData(self, request):
+        """DescribeReportData 用于查询域名/项目维度的日/周/月报表数据。
+
+        :param request: Request instance for DescribeReportData.
+        :type request: :class:`tencentcloud.cdn.v20180606.models.DescribeReportDataRequest`
+        :rtype: :class:`tencentcloud.cdn.v20180606.models.DescribeReportDataResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeReportData", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeReportDataResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeTrafficPackages(self, request):
         """DescribeTrafficPackages 用于查询境内 CDN 流量包详情。
 

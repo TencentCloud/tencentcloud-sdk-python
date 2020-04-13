@@ -296,6 +296,84 @@ class CreateClassResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class CreateLinkRequest(AbstractModel):
+    """CreateLink请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Platform: 平台名称，指定访问的平台。
+        :type Platform: str
+        :param Type: 链接类型，取值有:
+<li>CLASS: 分类链接；</li>
+<li> MATERIAL：素材链接。</li>
+        :type Type: str
+        :param Name: 链接名称，不能超过30个字符。
+        :type Name: str
+        :param Owner: 链接归属实体。
+        :type Owner: :class:`tencentcloud.cme.v20191029.models.Entity`
+        :param DestinationId: 目标资源Id。取值：
+<li>当 Type 为 MATERIAL 时填素材 ID；</li>
+<li>当 Type 为 CLASS 时填写分类路径。</li>
+        :type DestinationId: str
+        :param DestinationOwner: 目标资源归属者。
+        :type DestinationOwner: :class:`tencentcloud.cme.v20191029.models.Entity`
+        :param ClassPath: 链接的分类路径，如填"/a/b"则代表链接属于该分类路径，不填则默认为根路径。
+        :type ClassPath: str
+        :param Tags: 链接标签，单个标签长度不能超过10，数组长度不能超过10。
+        :type Tags: list of str
+        :param Operator: 操作者。填写用户的 Id，用于标识调用者及校验操作权限。
+        :type Operator: str
+        """
+        self.Platform = None
+        self.Type = None
+        self.Name = None
+        self.Owner = None
+        self.DestinationId = None
+        self.DestinationOwner = None
+        self.ClassPath = None
+        self.Tags = None
+        self.Operator = None
+
+
+    def _deserialize(self, params):
+        self.Platform = params.get("Platform")
+        self.Type = params.get("Type")
+        self.Name = params.get("Name")
+        if params.get("Owner") is not None:
+            self.Owner = Entity()
+            self.Owner._deserialize(params.get("Owner"))
+        self.DestinationId = params.get("DestinationId")
+        if params.get("DestinationOwner") is not None:
+            self.DestinationOwner = Entity()
+            self.DestinationOwner._deserialize(params.get("DestinationOwner"))
+        self.ClassPath = params.get("ClassPath")
+        self.Tags = params.get("Tags")
+        self.Operator = params.get("Operator")
+
+
+class CreateLinkResponse(AbstractModel):
+    """CreateLink返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param MaterialId: 新建链接的素材 Id。
+        :type MaterialId: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.MaterialId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.MaterialId = params.get("MaterialId")
+        self.RequestId = params.get("RequestId")
+
+
 class CreateProjectRequest(AbstractModel):
     """CreateProject请求参数结构体
 

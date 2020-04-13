@@ -1671,6 +1671,88 @@ class CreateAddressTemplateResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class CreateAndAttachNetworkInterfaceRequest(AbstractModel):
+    """CreateAndAttachNetworkInterface请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param VpcId: VPC实例ID。可通过DescribeVpcs接口返回值中的VpcId获取。
+        :type VpcId: str
+        :param NetworkInterfaceName: 弹性网卡名称，最大长度不能超过60个字节。
+        :type NetworkInterfaceName: str
+        :param SubnetId: 弹性网卡所在的子网实例ID，例如：subnet-0ap8nwca。
+        :type SubnetId: str
+        :param InstanceId: 云主机实例ID。
+        :type InstanceId: str
+        :param PrivateIpAddresses: 指定的内网IP信息，单次最多指定10个。
+        :type PrivateIpAddresses: list of PrivateIpAddressSpecification
+        :param SecondaryPrivateIpAddressCount: 新申请的内网IP地址个数，内网IP地址个数总和不能超过配数。
+        :type SecondaryPrivateIpAddressCount: int
+        :param SecurityGroupIds: 指定绑定的安全组，例如：['sg-1dd51d']。
+        :type SecurityGroupIds: list of str
+        :param NetworkInterfaceDescription: 弹性网卡描述，可任意命名，但不得超过60个字符。
+        :type NetworkInterfaceDescription: str
+        :param Tags: 指定绑定的标签列表，例如：[{"Key": "city", "Value": "shanghai"}]
+        :type Tags: list of Tag
+        """
+        self.VpcId = None
+        self.NetworkInterfaceName = None
+        self.SubnetId = None
+        self.InstanceId = None
+        self.PrivateIpAddresses = None
+        self.SecondaryPrivateIpAddressCount = None
+        self.SecurityGroupIds = None
+        self.NetworkInterfaceDescription = None
+        self.Tags = None
+
+
+    def _deserialize(self, params):
+        self.VpcId = params.get("VpcId")
+        self.NetworkInterfaceName = params.get("NetworkInterfaceName")
+        self.SubnetId = params.get("SubnetId")
+        self.InstanceId = params.get("InstanceId")
+        if params.get("PrivateIpAddresses") is not None:
+            self.PrivateIpAddresses = []
+            for item in params.get("PrivateIpAddresses"):
+                obj = PrivateIpAddressSpecification()
+                obj._deserialize(item)
+                self.PrivateIpAddresses.append(obj)
+        self.SecondaryPrivateIpAddressCount = params.get("SecondaryPrivateIpAddressCount")
+        self.SecurityGroupIds = params.get("SecurityGroupIds")
+        self.NetworkInterfaceDescription = params.get("NetworkInterfaceDescription")
+        if params.get("Tags") is not None:
+            self.Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self.Tags.append(obj)
+
+
+class CreateAndAttachNetworkInterfaceResponse(AbstractModel):
+    """CreateAndAttachNetworkInterface返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param NetworkInterface: 弹性网卡实例。
+        :type NetworkInterface: :class:`tencentcloud.vpc.v20170312.models.NetworkInterface`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.NetworkInterface = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("NetworkInterface") is not None:
+            self.NetworkInterface = NetworkInterface()
+            self.NetworkInterface._deserialize(params.get("NetworkInterface"))
+        self.RequestId = params.get("RequestId")
+
+
 class CreateAssistantCidrRequest(AbstractModel):
     """CreateAssistantCidr请求参数结构体
 

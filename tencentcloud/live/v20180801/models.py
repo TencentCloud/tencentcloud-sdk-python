@@ -1856,40 +1856,6 @@ class DeleteLiveWatermarkRuleResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
-class DeletePullStreamConfigRequest(AbstractModel):
-    """DeletePullStreamConfig请求参数结构体
-
-    """
-
-    def __init__(self):
-        """
-        :param ConfigId: 配置id。
-        :type ConfigId: str
-        """
-        self.ConfigId = None
-
-
-    def _deserialize(self, params):
-        self.ConfigId = params.get("ConfigId")
-
-
-class DeletePullStreamConfigResponse(AbstractModel):
-    """DeletePullStreamConfig返回参数结构体
-
-    """
-
-    def __init__(self):
-        """
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
-        self.RequestId = None
-
-
-    def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
-
-
 class DescribeBillBandwidthAndFluxListRequest(AbstractModel):
     """DescribeBillBandwidthAndFluxList请求参数结构体
 
@@ -2850,7 +2816,10 @@ class DescribeLiveRecordTemplatesRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param IsDelayLive: 是否属于慢直播模板
+        :param IsDelayLive: 是否属于慢直播模板。默认：0。
+示例：
+0 - 标准直播。
+1 - 慢直播。
         :type IsDelayLive: int
         """
         self.IsDelayLive = None

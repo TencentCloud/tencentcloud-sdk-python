@@ -2336,6 +2336,87 @@ class DescribePushTasksResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeReportDataRequest(AbstractModel):
+    """DescribeReportData请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param StartTime: 查询起始时间
+        :type StartTime: str
+        :param EndTime: 查询结束时间
+        :type EndTime: str
+        :param ReportType: 报表类型
+daily：日报表
+weekly：周报表
+monthly：月报表
+        :type ReportType: str
+        :param Area: 域名加速区域
+mainland：中国境内
+overseas：中国境外
+        :type Area: str
+        :param Offset: 偏移量，默认0。
+        :type Offset: int
+        :param Limit: 数据个数，默认1000。
+        :type Limit: int
+        :param Project: 按项目ID筛选
+        :type Project: int
+        """
+        self.StartTime = None
+        self.EndTime = None
+        self.ReportType = None
+        self.Area = None
+        self.Offset = None
+        self.Limit = None
+        self.Project = None
+
+
+    def _deserialize(self, params):
+        self.StartTime = params.get("StartTime")
+        self.EndTime = params.get("EndTime")
+        self.ReportType = params.get("ReportType")
+        self.Area = params.get("Area")
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+        self.Project = params.get("Project")
+
+
+class DescribeReportDataResponse(AbstractModel):
+    """DescribeReportData返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param DomainReport: 域名维度数据详情
+        :type DomainReport: list of ReportData
+        :param ProjectReport: 项目维度数据详情
+        :type ProjectReport: list of ReportData
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.DomainReport = None
+        self.ProjectReport = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("DomainReport") is not None:
+            self.DomainReport = []
+            for item in params.get("DomainReport"):
+                obj = ReportData()
+                obj._deserialize(item)
+                self.DomainReport.append(obj)
+        if params.get("ProjectReport") is not None:
+            self.ProjectReport = []
+            for item in params.get("ProjectReport"):
+                obj = ReportData()
+                obj._deserialize(item)
+                self.ProjectReport.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeTrafficPackagesRequest(AbstractModel):
     """DescribeTrafficPackages请求参数结构体
 
@@ -4724,6 +4805,43 @@ class RegionMapRelation(AbstractModel):
     def _deserialize(self, params):
         self.RegionId = params.get("RegionId")
         self.SubRegionIdList = params.get("SubRegionIdList")
+
+
+class ReportData(AbstractModel):
+    """CDN报表数据
+
+    """
+
+    def __init__(self):
+        """
+        :param ResourceId: 项目ID/域名ID。
+        :type ResourceId: str
+        :param Resource: 项目名称/域名。
+        :type Resource: str
+        :param Value: 流量总和/带宽最大值，单位分别为bytes，bps。
+        :type Value: int
+        :param Percentage: 单个资源占总体百分比。
+        :type Percentage: float
+        :param BillingValue: 计费流量总和/计费带宽最大值，单位分别为bytes，bps。
+        :type BillingValue: int
+        :param BillingPercentage: 计费数值占总体百分比。
+        :type BillingPercentage: float
+        """
+        self.ResourceId = None
+        self.Resource = None
+        self.Value = None
+        self.Percentage = None
+        self.BillingValue = None
+        self.BillingPercentage = None
+
+
+    def _deserialize(self, params):
+        self.ResourceId = params.get("ResourceId")
+        self.Resource = params.get("Resource")
+        self.Value = params.get("Value")
+        self.Percentage = params.get("Percentage")
+        self.BillingValue = params.get("BillingValue")
+        self.BillingPercentage = params.get("BillingPercentage")
 
 
 class RequestHeader(AbstractModel):

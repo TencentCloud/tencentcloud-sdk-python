@@ -2143,6 +2143,9 @@ class Instance(AbstractModel):
         :type InstanceAdvancedSettings: :class:`tencentcloud.tke.v20180525.models.InstanceAdvancedSettings`
         :param CreatedTime: 添加时间
         :type CreatedTime: str
+        :param LanIP: 节点内网IP
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LanIP: str
         """
         self.InstanceId = None
         self.InstanceRole = None
@@ -2151,6 +2154,7 @@ class Instance(AbstractModel):
         self.DrainStatus = None
         self.InstanceAdvancedSettings = None
         self.CreatedTime = None
+        self.LanIP = None
 
 
     def _deserialize(self, params):
@@ -2163,6 +2167,7 @@ class Instance(AbstractModel):
             self.InstanceAdvancedSettings = InstanceAdvancedSettings()
             self.InstanceAdvancedSettings._deserialize(params.get("InstanceAdvancedSettings"))
         self.CreatedTime = params.get("CreatedTime")
+        self.LanIP = params.get("LanIP")
 
 
 class InstanceAdvancedSettings(AbstractModel):

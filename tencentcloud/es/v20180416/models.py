@@ -963,6 +963,8 @@ class NodeInfo(AbstractModel):
         :param LocalDiskInfo: 节点本地盘信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type LocalDiskInfo: :class:`tencentcloud.es.v20180416.models.LocalDiskInfo`
+        :param DiskCount: 节点磁盘块数
+        :type DiskCount: int
         """
         self.NodeNum = None
         self.NodeType = None
@@ -970,6 +972,7 @@ class NodeInfo(AbstractModel):
         self.DiskType = None
         self.DiskSize = None
         self.LocalDiskInfo = None
+        self.DiskCount = None
 
 
     def _deserialize(self, params):
@@ -981,6 +984,7 @@ class NodeInfo(AbstractModel):
         if params.get("LocalDiskInfo") is not None:
             self.LocalDiskInfo = LocalDiskInfo()
             self.LocalDiskInfo._deserialize(params.get("LocalDiskInfo"))
+        self.DiskCount = params.get("DiskCount")
 
 
 class Operation(AbstractModel):
@@ -1332,7 +1336,7 @@ class UpgradeInstanceRequest(AbstractModel):
         """
         :param InstanceId: 实例ID
         :type InstanceId: str
-        :param EsVersion: 目标ES版本
+        :param EsVersion: 目标ES版本，支持：”6.4.3“, "6.8.2"，"7.5.1"
         :type EsVersion: str
         :param CheckOnly: 是否只做升级检查，默认值为false
         :type CheckOnly: bool

@@ -1487,16 +1487,20 @@ class DescribeAccountsRequest(AbstractModel):
         :type Offset: int
         :param Limit: 单次请求返回的数量，默认值为20，最小值为1，最大值为100。
         :type Limit: int
+        :param AccountRegexp: 匹配账号名的正则表达式，规则同 MySQL 官网。
+        :type AccountRegexp: str
         """
         self.InstanceId = None
         self.Offset = None
         self.Limit = None
+        self.AccountRegexp = None
 
 
     def _deserialize(self, params):
         self.InstanceId = params.get("InstanceId")
         self.Offset = params.get("Offset")
         self.Limit = params.get("Limit")
+        self.AccountRegexp = params.get("AccountRegexp")
 
 
 class DescribeAccountsResponse(AbstractModel):
@@ -3302,8 +3306,8 @@ class DescribeRollbackRangeTimeResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
-class DescribeSLowLogDataRequest(AbstractModel):
-    """DescribeSLowLogData请求参数结构体
+class DescribeSlowLogDataRequest(AbstractModel):
+    """DescribeSlowLogData请求参数结构体
 
     """
 
@@ -3355,8 +3359,8 @@ class DescribeSLowLogDataRequest(AbstractModel):
         self.Limit = params.get("Limit")
 
 
-class DescribeSLowLogDataResponse(AbstractModel):
-    """DescribeSLowLogData返回参数结构体
+class DescribeSlowLogDataResponse(AbstractModel):
+    """DescribeSlowLogData返回参数结构体
 
     """
 
@@ -5057,12 +5061,15 @@ class ModifyDBInstanceVipVportRequest(AbstractModel):
         :type UniqVpcId: str
         :param UniqSubnetId: 子网统一 ID。
         :type UniqSubnetId: str
+        :param ReleaseDuration: 进行基础网络转 VPC 网络和 VPC 网络下的子网变更时，原网络中旧IP的回收时间，单位为小时，取值范围为0-168，默认值为24小时。
+        :type ReleaseDuration: int
         """
         self.InstanceId = None
         self.DstIp = None
         self.DstPort = None
         self.UniqVpcId = None
         self.UniqSubnetId = None
+        self.ReleaseDuration = None
 
 
     def _deserialize(self, params):
@@ -5071,6 +5078,7 @@ class ModifyDBInstanceVipVportRequest(AbstractModel):
         self.DstPort = params.get("DstPort")
         self.UniqVpcId = params.get("UniqVpcId")
         self.UniqSubnetId = params.get("UniqSubnetId")
+        self.ReleaseDuration = params.get("ReleaseDuration")
 
 
 class ModifyDBInstanceVipVportResponse(AbstractModel):
@@ -5080,7 +5088,8 @@ class ModifyDBInstanceVipVportResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param AsyncRequestId: 异步任务ID。
+        :param AsyncRequestId: 异步任务ID。(该返回字段目前已废弃)
+注意：此字段可能返回 null，表示取不到有效值。
         :type AsyncRequestId: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str

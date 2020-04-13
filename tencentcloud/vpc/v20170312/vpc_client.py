@@ -646,6 +646,39 @@ class VpcClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def CreateAndAttachNetworkInterface(self, request):
+        """本接口（CreateAndAttachNetworkInterface）用于创建弹性网卡并绑定云主机。
+        * 创建弹性网卡时可以指定内网IP，并且可以指定一个主IP，指定的内网IP必须在弹性网卡所在子网内，而且不能被占用。
+        * 创建弹性网卡时可以指定需要申请的内网IP数量，系统会随机生成内网IP地址。
+        * 一个弹性网卡支持绑定的IP地址是有限制的，更多资源限制信息详见<a href="/document/product/576/18527">弹性网卡使用限制</a>。
+        * 创建弹性网卡同时可以绑定已有安全组。
+        * 创建弹性网卡同时可以绑定标签, 应答里的标签列表代表添加成功的标签。
+
+        :param request: Request instance for CreateAndAttachNetworkInterface.
+        :type request: :class:`tencentcloud.vpc.v20170312.models.CreateAndAttachNetworkInterfaceRequest`
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.CreateAndAttachNetworkInterfaceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("CreateAndAttachNetworkInterface", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateAndAttachNetworkInterfaceResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def CreateAssistantCidr(self, request):
         """本接口(CreateAssistantCidr)用于批量创建辅助CIDR。（接口灰度中，如需使用请提工单。）
 
