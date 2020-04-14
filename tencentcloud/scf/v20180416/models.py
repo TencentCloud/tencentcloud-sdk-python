@@ -1646,18 +1646,34 @@ class ListVersionByFunctionRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param FunctionName: 函数ID
+        :param FunctionName: 函数名
         :type FunctionName: str
-        :param Namespace: 命名空间
+        :param Namespace: 函数所在命名空间
         :type Namespace: str
+        :param Offset: 数据偏移量，默认值为 0
+        :type Offset: int
+        :param Limit: 返回数据长度，默认值为 20
+        :type Limit: int
+        :param Order: 以升序还是降序的方式返回结果，可选值 ASC 和 DESC
+        :type Order: str
+        :param OrderBy: 根据哪个字段进行返回结果排序,支持以下字段：AddTime, ModTime
+        :type OrderBy: str
         """
         self.FunctionName = None
         self.Namespace = None
+        self.Offset = None
+        self.Limit = None
+        self.Order = None
+        self.OrderBy = None
 
 
     def _deserialize(self, params):
         self.FunctionName = params.get("FunctionName")
         self.Namespace = params.get("Namespace")
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+        self.Order = params.get("Order")
+        self.OrderBy = params.get("OrderBy")
 
 
 class ListVersionByFunctionResponse(AbstractModel):
@@ -1672,11 +1688,15 @@ class ListVersionByFunctionResponse(AbstractModel):
         :param Versions: 函数版本列表。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Versions: list of FunctionVersion
+        :param TotalCount: 函数版本总数。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TotalCount: int
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.FunctionVersion = None
         self.Versions = None
+        self.TotalCount = None
         self.RequestId = None
 
 
@@ -1688,6 +1708,7 @@ class ListVersionByFunctionResponse(AbstractModel):
                 obj = FunctionVersion()
                 obj._deserialize(item)
                 self.Versions.append(obj)
+        self.TotalCount = params.get("TotalCount")
         self.RequestId = params.get("RequestId")
 
 

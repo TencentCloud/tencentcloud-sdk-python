@@ -518,6 +518,18 @@ class GameServerSession(AbstractModel):
         :param InstanceType: 实例类型
 注意：此字段可能返回 null，表示取不到有效值。
         :type InstanceType: str
+        :param CurrentCustomCount: 当前自定义数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CurrentCustomCount: int
+        :param MaxCustomCount: 最大自定义数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MaxCustomCount: int
+        :param Weight: 权重
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Weight: int
+        :param AvailabilityStatus: 会话可用性状态，是否被屏蔽
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AvailabilityStatus: str
         """
         self.CreationTime = None
         self.CreatorId = None
@@ -537,6 +549,10 @@ class GameServerSession(AbstractModel):
         self.StatusReason = None
         self.TerminationTime = None
         self.InstanceType = None
+        self.CurrentCustomCount = None
+        self.MaxCustomCount = None
+        self.Weight = None
+        self.AvailabilityStatus = None
 
 
     def _deserialize(self, params):
@@ -563,6 +579,10 @@ class GameServerSession(AbstractModel):
         self.StatusReason = params.get("StatusReason")
         self.TerminationTime = params.get("TerminationTime")
         self.InstanceType = params.get("InstanceType")
+        self.CurrentCustomCount = params.get("CurrentCustomCount")
+        self.MaxCustomCount = params.get("MaxCustomCount")
+        self.Weight = params.get("Weight")
+        self.AvailabilityStatus = params.get("AvailabilityStatus")
 
 
 class GameServerSessionDetail(AbstractModel):

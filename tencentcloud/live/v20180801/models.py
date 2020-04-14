@@ -339,6 +339,40 @@ class CallBackTemplateInfo(AbstractModel):
         self.CallbackKey = params.get("CallbackKey")
 
 
+class CancelCommonMixStreamRequest(AbstractModel):
+    """CancelCommonMixStream请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param MixStreamSessionId: 混流会话（申请混流开始到取消混流结束）标识 ID。
+        :type MixStreamSessionId: str
+        """
+        self.MixStreamSessionId = None
+
+
+    def _deserialize(self, params):
+        self.MixStreamSessionId = params.get("MixStreamSessionId")
+
+
+class CancelCommonMixStreamResponse(AbstractModel):
+    """CancelCommonMixStream返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class CdnPlayStatData(AbstractModel):
     """下行播放统计指标
 
@@ -456,6 +490,220 @@ class ClientIpPlaySumInfo(AbstractModel):
         self.CountryArea = params.get("CountryArea")
 
 
+class CommonMixControlParams(AbstractModel):
+    """通用混流控制参数
+
+    """
+
+    def __init__(self):
+        """
+        :param UseMixCropCenter: 取值范围[0,1]。
+填1时，当参数中图层分辨率参数与视频实际分辨率不一致时，自动从视频中按图层设置的分辨率比例进行裁剪。
+        :type UseMixCropCenter: int
+        """
+        self.UseMixCropCenter = None
+
+
+    def _deserialize(self, params):
+        self.UseMixCropCenter = params.get("UseMixCropCenter")
+
+
+class CommonMixCropParams(AbstractModel):
+    """通用混流输入裁剪参数。
+
+    """
+
+    def __init__(self):
+        """
+        :param CropWidth: 裁剪的宽度。取值范围[0，3000]。
+        :type CropWidth: float
+        :param CropHeight: 裁剪的高度。取值范围[0，3000]。
+        :type CropHeight: float
+        :param CropStartLocationX: 裁剪的起始X坐标。取值范围[0，3000]。
+        :type CropStartLocationX: float
+        :param CropStartLocationY: 裁剪的起始Y坐标。取值范围[0，3000]。
+        :type CropStartLocationY: float
+        """
+        self.CropWidth = None
+        self.CropHeight = None
+        self.CropStartLocationX = None
+        self.CropStartLocationY = None
+
+
+    def _deserialize(self, params):
+        self.CropWidth = params.get("CropWidth")
+        self.CropHeight = params.get("CropHeight")
+        self.CropStartLocationX = params.get("CropStartLocationX")
+        self.CropStartLocationY = params.get("CropStartLocationY")
+
+
+class CommonMixInputParam(AbstractModel):
+    """通用混流输入参数。
+
+    """
+
+    def __init__(self):
+        """
+        :param InputStreamName: 输入流名称。80字节以内，仅含字母、数字以及下划线的字符串。
+        :type InputStreamName: str
+        :param LayoutParams: 输入流布局参数。
+        :type LayoutParams: :class:`tencentcloud.live.v20180801.models.CommonMixLayoutParams`
+        :param CropParams: 输入流裁剪参数。
+        :type CropParams: :class:`tencentcloud.live.v20180801.models.CommonMixCropParams`
+        """
+        self.InputStreamName = None
+        self.LayoutParams = None
+        self.CropParams = None
+
+
+    def _deserialize(self, params):
+        self.InputStreamName = params.get("InputStreamName")
+        if params.get("LayoutParams") is not None:
+            self.LayoutParams = CommonMixLayoutParams()
+            self.LayoutParams._deserialize(params.get("LayoutParams"))
+        if params.get("CropParams") is not None:
+            self.CropParams = CommonMixCropParams()
+            self.CropParams._deserialize(params.get("CropParams"))
+
+
+class CommonMixLayoutParams(AbstractModel):
+    """通用混流布局参数。
+
+    """
+
+    def __init__(self):
+        """
+        :param ImageLayer: 输入图层。取值范围[1，16]。
+1)背景流（即大主播画面或画布）的 image_layer 填1。
+2)纯音频混流，该参数也需填。
+        :type ImageLayer: int
+        :param InputType: 输入类型。取值范围[0，5]。
+不填默认为0。
+0表示输入流为音视频。
+2表示输入流为图片。
+3表示输入流为画布。 
+4表示输入流为音频。
+5表示输入流为纯视频。
+        :type InputType: int
+        :param ImageWidth: 输入画面在输出时的宽度。取值范围：
+像素：[0，3000]
+百分比：[0.01，0.99]
+不填默认为输入流的宽度。
+使用百分比时，期望输出为（百分比 * 背景宽）。
+        :type ImageWidth: float
+        :param ImageHeight: 输入画面在输出时的高度。取值范围：
+像素：[0，3000]
+百分比：[0.01，0.99]
+不填默认为输入流的高度。
+使用百分比时，期望输出为（百分比 * 背景高）。
+        :type ImageHeight: float
+        :param LocationX: 输入在输出画面的X偏移。取值范围：
+像素：[0，3000]
+百分比：[0.01，0.99]
+不填默认为0。
+相对于大主播背景画面左上角的横向偏移。 
+使用百分比时，期望输出为（百分比 * 背景宽）。
+        :type LocationX: float
+        :param LocationY: 输入在输出画面的Y偏移。取值范围：
+像素：[0，3000]
+百分比：[0.01，0.99]
+不填默认为0。
+相对于大主播背景画面左上角的纵向偏移。 
+使用百分比时，期望输出为（百分比 * 背景宽）
+        :type LocationY: float
+        :param Color: 当InputType为3(画布)时，该值表示画布的颜色。
+常用的颜色有：
+红色：0xcc0033。
+黄色：0xcc9900。
+绿色：0xcccc33。
+蓝色：0x99CCFF。
+黑色：0x000000。
+白色：0xFFFFFF。
+灰色：0x999999。
+        :type Color: str
+        :param WatermarkId: 当InputType为2(图片)时，该值是水印ID。
+        :type WatermarkId: int
+        """
+        self.ImageLayer = None
+        self.InputType = None
+        self.ImageWidth = None
+        self.ImageHeight = None
+        self.LocationX = None
+        self.LocationY = None
+        self.Color = None
+        self.WatermarkId = None
+
+
+    def _deserialize(self, params):
+        self.ImageLayer = params.get("ImageLayer")
+        self.InputType = params.get("InputType")
+        self.ImageWidth = params.get("ImageWidth")
+        self.ImageHeight = params.get("ImageHeight")
+        self.LocationX = params.get("LocationX")
+        self.LocationY = params.get("LocationY")
+        self.Color = params.get("Color")
+        self.WatermarkId = params.get("WatermarkId")
+
+
+class CommonMixOutputParams(AbstractModel):
+    """通用混流输出参数。
+
+    """
+
+    def __init__(self):
+        """
+        :param OutputStreamName: 输出流名称。
+        :type OutputStreamName: str
+        :param OutputStreamType: 输出流类型，取值范围[0,1]。
+不填默认为0。
+当输出流为输入流 list 中的一条时，填写0。
+当期望生成的混流结果成为一条新流时，该值填为1。
+该值为1时，output_stream_id 不能出现在 input_stram_list 中，且直播后台中，不能存在相同 ID 的流。
+        :type OutputStreamType: int
+        :param OutputStreamBitRate: 输出流比特率。取值范围[1，50000]。
+不填的情况下，系统会自动判断。
+        :type OutputStreamBitRate: int
+        :param OutputStreamGop: 输出流GOP大小。取值范围[1,10]。
+不填的情况下，系统会自动判断。
+        :type OutputStreamGop: int
+        :param OutputStreamFrameRate: 输出流帧率大小。取值范围[1,60]。
+不填的情况下，系统会自动判断。
+        :type OutputStreamFrameRate: int
+        :param OutputAudioBitRate: 输出流音频比特率。取值范围[1,500]
+不填的情况下，系统会自动判断。
+        :type OutputAudioBitRate: int
+        :param OutputAudioSampleRate: 输出流音频采样率。取值范围[96000, 88200, 64000, 48000, 44100, 32000,24000, 22050, 16000, 12000, 11025, 8000]。
+不填的情况下，系统会自动判断。
+        :type OutputAudioSampleRate: int
+        :param OutputAudioChannels: 输出流音频声道数。取值范围[1,2]。
+不填的情况下，系统会自动判断。
+        :type OutputAudioChannels: int
+        :param MixSei: 输出流中的sei信息。如果无特殊需要，不填。
+        :type MixSei: str
+        """
+        self.OutputStreamName = None
+        self.OutputStreamType = None
+        self.OutputStreamBitRate = None
+        self.OutputStreamGop = None
+        self.OutputStreamFrameRate = None
+        self.OutputAudioBitRate = None
+        self.OutputAudioSampleRate = None
+        self.OutputAudioChannels = None
+        self.MixSei = None
+
+
+    def _deserialize(self, params):
+        self.OutputStreamName = params.get("OutputStreamName")
+        self.OutputStreamType = params.get("OutputStreamType")
+        self.OutputStreamBitRate = params.get("OutputStreamBitRate")
+        self.OutputStreamGop = params.get("OutputStreamGop")
+        self.OutputStreamFrameRate = params.get("OutputStreamFrameRate")
+        self.OutputAudioBitRate = params.get("OutputAudioBitRate")
+        self.OutputAudioSampleRate = params.get("OutputAudioSampleRate")
+        self.OutputAudioChannels = params.get("OutputAudioChannels")
+        self.MixSei = params.get("MixSei")
+
+
 class ConcurrentRecordStreamNum(AbstractModel):
     """并发录制路数
 
@@ -475,6 +723,71 @@ class ConcurrentRecordStreamNum(AbstractModel):
     def _deserialize(self, params):
         self.Time = params.get("Time")
         self.Num = params.get("Num")
+
+
+class CreateCommonMixStreamRequest(AbstractModel):
+    """CreateCommonMixStream请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param MixStreamSessionId: 混流会话（申请混流开始到取消混流结束）标识 ID。
+        :type MixStreamSessionId: str
+        :param InputStreamList: 混流输入流列表。
+        :type InputStreamList: list of CommonMixInputParam
+        :param OutputParams: 混流输出流参数。
+        :type OutputParams: :class:`tencentcloud.live.v20180801.models.CommonMixOutputParams`
+        :param MixStreamTemplateId: 输入模板 ID，若设置该参数，将按默认模板布局输出，无需填入自定义位置参数。
+不填默认为0。
+两输入源支持10，20，30，40，50。
+三输入源支持310，390，391。
+四输入源支持410。
+五输入源支持510，590。
+六输入源支持610。
+        :type MixStreamTemplateId: int
+        :param ControlParams: 混流的特殊控制参数。如无特殊需求，无需填写。
+        :type ControlParams: :class:`tencentcloud.live.v20180801.models.CommonMixControlParams`
+        """
+        self.MixStreamSessionId = None
+        self.InputStreamList = None
+        self.OutputParams = None
+        self.MixStreamTemplateId = None
+        self.ControlParams = None
+
+
+    def _deserialize(self, params):
+        self.MixStreamSessionId = params.get("MixStreamSessionId")
+        if params.get("InputStreamList") is not None:
+            self.InputStreamList = []
+            for item in params.get("InputStreamList"):
+                obj = CommonMixInputParam()
+                obj._deserialize(item)
+                self.InputStreamList.append(obj)
+        if params.get("OutputParams") is not None:
+            self.OutputParams = CommonMixOutputParams()
+            self.OutputParams._deserialize(params.get("OutputParams"))
+        self.MixStreamTemplateId = params.get("MixStreamTemplateId")
+        if params.get("ControlParams") is not None:
+            self.ControlParams = CommonMixControlParams()
+            self.ControlParams._deserialize(params.get("ControlParams"))
+
+
+class CreateCommonMixStreamResponse(AbstractModel):
+    """CreateCommonMixStream返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
 
 
 class CreateLiveCallbackRuleRequest(AbstractModel):

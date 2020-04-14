@@ -140,6 +140,62 @@ class LiveClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def CancelCommonMixStream(self, request):
+        """该接口用来取消混流。用法与 mix_streamv2.cancel_mix_stream 基本一致。
+
+        :param request: Request instance for CancelCommonMixStream.
+        :type request: :class:`tencentcloud.live.v20180801.models.CancelCommonMixStreamRequest`
+        :rtype: :class:`tencentcloud.live.v20180801.models.CancelCommonMixStreamResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("CancelCommonMixStream", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CancelCommonMixStreamResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def CreateCommonMixStream(self, request):
+        """该接口用来创建通用混流。用法与旧接口 mix_streamv2.start_mix_stream_advanced 基本一致。
+
+        :param request: Request instance for CreateCommonMixStream.
+        :type request: :class:`tencentcloud.live.v20180801.models.CreateCommonMixStreamRequest`
+        :rtype: :class:`tencentcloud.live.v20180801.models.CreateCommonMixStreamResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("CreateCommonMixStream", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateCommonMixStreamResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def CreateLiveCallbackRule(self, request):
         """创建回调规则，需要先调用[CreateLiveCallbackTemplate](/document/product/267/32637)接口创建回调模板，将返回的模板id绑定到域名/路径进行使用。
         <br>回调协议相关文档：[事件消息通知](/document/product/267/32744)。

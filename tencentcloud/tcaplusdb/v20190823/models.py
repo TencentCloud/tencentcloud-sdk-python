@@ -1974,6 +1974,9 @@ class TableInfoNew(AbstractModel):
         :param SortRule: SORTLIST类型表格排序顺序
 注意：此字段可能返回 null，表示取不到有效值。
         :type SortRule: int
+        :param DbClusterInfoStruct: 表格分布式索引信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DbClusterInfoStruct: str
         """
         self.TableName = None
         self.TableInstanceId = None
@@ -2001,6 +2004,7 @@ class TableInfoNew(AbstractModel):
         self.ApiAccessId = None
         self.SortFieldNum = None
         self.SortRule = None
+        self.DbClusterInfoStruct = None
 
 
     def _deserialize(self, params):
@@ -2037,6 +2041,7 @@ class TableInfoNew(AbstractModel):
         self.ApiAccessId = params.get("ApiAccessId")
         self.SortFieldNum = params.get("SortFieldNum")
         self.SortRule = params.get("SortRule")
+        self.DbClusterInfoStruct = params.get("DbClusterInfoStruct")
 
 
 class TableResultNew(AbstractModel):

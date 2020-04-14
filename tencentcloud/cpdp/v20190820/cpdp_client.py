@@ -25,6 +25,34 @@ class CpdpClient(AbstractClient):
     _endpoint = 'cpdp.tencentcloudapi.com'
 
 
+    def ApplyReWithdrawal(self, request):
+        """正常结算提现失败情况下，发起重新提现的请求接口
+
+        :param request: Request instance for ApplyReWithdrawal.
+        :type request: :class:`tencentcloud.cpdp.v20190820.models.ApplyReWithdrawalRequest`
+        :rtype: :class:`tencentcloud.cpdp.v20190820.models.ApplyReWithdrawalResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ApplyReWithdrawal", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ApplyReWithdrawalResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def ApplyWithdrawal(self, request):
         """商户提现
 
@@ -467,6 +495,62 @@ class CpdpClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.QueryAcctBindingResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def QueryAcctInfo(self, request):
+        """聚鑫-开户信息查询
+
+        :param request: Request instance for QueryAcctInfo.
+        :type request: :class:`tencentcloud.cpdp.v20190820.models.QueryAcctInfoRequest`
+        :rtype: :class:`tencentcloud.cpdp.v20190820.models.QueryAcctInfoResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("QueryAcctInfo", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.QueryAcctInfoResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def QueryAcctInfoList(self, request):
+        """聚鑫-开户信息列表查询, 查询某一段时间的开户信息
+
+        :param request: Request instance for QueryAcctInfoList.
+        :type request: :class:`tencentcloud.cpdp.v20190820.models.QueryAcctInfoListRequest`
+        :rtype: :class:`tencentcloud.cpdp.v20190820.models.QueryAcctInfoListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("QueryAcctInfoList", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.QueryAcctInfoListResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

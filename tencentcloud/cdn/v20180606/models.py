@@ -2672,6 +2672,9 @@ global：全球锁定
         :param AwsPrivateAccess: 回源S3鉴权配置
 注意：此字段可能返回 null，表示取不到有效值。
         :type AwsPrivateAccess: :class:`tencentcloud.cdn.v20180606.models.AwsPrivateAccess`
+        :param SecurityConfig: Scdn配置
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SecurityConfig: list of SecurityConfig
         """
         self.ResourceId = None
         self.AppId = None
@@ -2713,6 +2716,7 @@ global：全球锁定
         self.Readonly = None
         self.OriginPullTimeout = None
         self.AwsPrivateAccess = None
+        self.SecurityConfig = None
 
 
     def _deserialize(self, params):
@@ -2812,6 +2816,12 @@ global：全球锁定
         if params.get("AwsPrivateAccess") is not None:
             self.AwsPrivateAccess = AwsPrivateAccess()
             self.AwsPrivateAccess._deserialize(params.get("AwsPrivateAccess"))
+        if params.get("SecurityConfig") is not None:
+            self.SecurityConfig = []
+            for item in params.get("SecurityConfig"):
+                obj = SecurityConfig()
+                obj._deserialize(item)
+                self.SecurityConfig.append(obj)
 
 
 class DisableCachesRequest(AbstractModel):
@@ -5081,6 +5091,23 @@ class SearchClsLogResponse(AbstractModel):
             self.Logs = ClsSearchLogs()
             self.Logs._deserialize(params.get("Logs"))
         self.RequestId = params.get("RequestId")
+
+
+class SecurityConfig(AbstractModel):
+    """scdn相关的配置
+
+    """
+
+    def __init__(self):
+        """
+        :param Switch: on|off
+        :type Switch: str
+        """
+        self.Switch = None
+
+
+    def _deserialize(self, params):
+        self.Switch = params.get("Switch")
 
 
 class Seo(AbstractModel):

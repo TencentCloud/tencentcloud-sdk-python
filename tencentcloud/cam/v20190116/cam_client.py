@@ -1117,34 +1117,6 @@ class CamClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def UpdatePolicy(self, request):
-        """本接口（UpdatePolicy ）可用于更新策略。
-
-        :param request: Request instance for UpdatePolicy.
-        :type request: :class:`tencentcloud.cam.v20190116.models.UpdatePolicyRequest`
-        :rtype: :class:`tencentcloud.cam.v20190116.models.UpdatePolicyResponse`
-
-        """
-        try:
-            params = request._serialize()
-            body = self.call("UpdatePolicy", params)
-            response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.UpdatePolicyResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(e.message, e.message)
-
-
     def UpdateRoleDescription(self, request):
         """本接口（UpdateRoleDescription）用于修改角色的描述信息。
 

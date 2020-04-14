@@ -64,6 +64,62 @@ class Acct(AbstractModel):
         self.MaintenanceDate = params.get("MaintenanceDate")
 
 
+class ApplyReWithdrawalRequest(AbstractModel):
+    """ApplyReWithdrawal请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param BusinessType: 聚鑫业务类型
+        :type BusinessType: int
+        :param MidasSecretId: 由平台客服提供的计费密钥Id
+        :type MidasSecretId: str
+        :param MidasSignature: 计费签名
+        :type MidasSignature: str
+        :param Body: 提现信息
+        :type Body: :class:`tencentcloud.cpdp.v20190820.models.WithdrawBill`
+        :param MidasAppId: 聚鑫业务ID
+        :type MidasAppId: str
+        """
+        self.BusinessType = None
+        self.MidasSecretId = None
+        self.MidasSignature = None
+        self.Body = None
+        self.MidasAppId = None
+
+
+    def _deserialize(self, params):
+        self.BusinessType = params.get("BusinessType")
+        self.MidasSecretId = params.get("MidasSecretId")
+        self.MidasSignature = params.get("MidasSignature")
+        if params.get("Body") is not None:
+            self.Body = WithdrawBill()
+            self.Body._deserialize(params.get("Body"))
+        self.MidasAppId = params.get("MidasAppId")
+
+
+class ApplyReWithdrawalResponse(AbstractModel):
+    """ApplyReWithdrawal返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param WithdrawOrderId: 重新提现业务订单号
+        :type WithdrawOrderId: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.WithdrawOrderId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.WithdrawOrderId = params.get("WithdrawOrderId")
+        self.RequestId = params.get("RequestId")
+
+
 class ApplyWithdrawalRequest(AbstractModel):
     """ApplyWithdrawal请求参数结构体
 
@@ -2028,6 +2084,244 @@ class QueryAcctBindingResponse(AbstractModel):
                 obj._deserialize(item)
                 self.BankCardItems.append(obj)
         self.RequestId = params.get("RequestId")
+
+
+class QueryAcctInfoListRequest(AbstractModel):
+    """QueryAcctInfoList请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param MidasAppId: 聚鑫分配的支付主MidasAppId
+        :type MidasAppId: str
+        :param QueryAcctBeginTime: 查询开始时间(以开户时间为准)
+        :type QueryAcctBeginTime: str
+        :param QueryAcctEndTime: 查询结束时间(以开户时间为准)
+        :type QueryAcctEndTime: str
+        :param PageOffset: 分页号,  起始值为1，每次最多返回20条记录，第二页返回的记录数为第21至40条记录，第三页为41至60条记录，顺序均按照开户时间的先后
+        :type PageOffset: str
+        :param MidasSecretId: 由平台客服提供的计费密钥Id
+        :type MidasSecretId: str
+        :param MidasSignature: 计费签名
+        :type MidasSignature: str
+        """
+        self.MidasAppId = None
+        self.QueryAcctBeginTime = None
+        self.QueryAcctEndTime = None
+        self.PageOffset = None
+        self.MidasSecretId = None
+        self.MidasSignature = None
+
+
+    def _deserialize(self, params):
+        self.MidasAppId = params.get("MidasAppId")
+        self.QueryAcctBeginTime = params.get("QueryAcctBeginTime")
+        self.QueryAcctEndTime = params.get("QueryAcctEndTime")
+        self.PageOffset = params.get("PageOffset")
+        self.MidasSecretId = params.get("MidasSecretId")
+        self.MidasSignature = params.get("MidasSignature")
+
+
+class QueryAcctInfoListResponse(AbstractModel):
+    """QueryAcctInfoList返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ResultCount: 本次交易返回查询结果记录数
+        :type ResultCount: int
+        :param TotalCount: 符合业务查询条件的记录总数
+        :type TotalCount: int
+        :param QueryAcctItems: 查询结果项 [object,object]
+        :type QueryAcctItems: list of QueryAcctItem
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.ResultCount = None
+        self.TotalCount = None
+        self.QueryAcctItems = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.ResultCount = params.get("ResultCount")
+        self.TotalCount = params.get("TotalCount")
+        if params.get("QueryAcctItems") is not None:
+            self.QueryAcctItems = []
+            for item in params.get("QueryAcctItems"):
+                obj = QueryAcctItem()
+                obj._deserialize(item)
+                self.QueryAcctItems.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class QueryAcctInfoRequest(AbstractModel):
+    """QueryAcctInfo请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param MidasAppId: 聚鑫平台分配的支付MidasAppId
+        :type MidasAppId: str
+        :param SubMchId: 业务平台的子商户Id，唯一
+        :type SubMchId: str
+        :param MidasSecretId: 由平台客服提供的计费密钥Id
+        :type MidasSecretId: str
+        :param MidasSignature: 计费签名
+        :type MidasSignature: str
+        """
+        self.MidasAppId = None
+        self.SubMchId = None
+        self.MidasSecretId = None
+        self.MidasSignature = None
+
+
+    def _deserialize(self, params):
+        self.MidasAppId = params.get("MidasAppId")
+        self.SubMchId = params.get("SubMchId")
+        self.MidasSecretId = params.get("MidasSecretId")
+        self.MidasSignature = params.get("MidasSignature")
+
+
+class QueryAcctInfoResponse(AbstractModel):
+    """QueryAcctInfo返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param SubAppId: 聚鑫计费SubAppId，代表子商户
+        :type SubAppId: str
+        :param SubMchName: 子商户名称
+        :type SubMchName: str
+        :param SubMchType: 子商户类型：
+个人: personal
+企业：enterprise
+缺省： enterprise
+        :type SubMchType: str
+        :param ShortName: 不填则默认子商户名称
+        :type ShortName: str
+        :param Address: 子商户地址
+        :type Address: str
+        :param Contact: 子商户联系人子商户联系人
+<敏感信息>
+        :type Contact: str
+        :param Mobile: 联系人手机号
+<敏感信息>
+        :type Mobile: str
+        :param Email: 邮箱 
+<敏感信息>
+        :type Email: str
+        :param SubMchId: 子商户id
+        :type SubMchId: str
+        :param SubAcctNo: 子账户
+        :type SubAcctNo: str
+        :param SubMerchantMemberType: 子商户会员类型：
+general:普通子账户
+merchant:商户子账户
+缺省： general
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SubMerchantMemberType: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.SubAppId = None
+        self.SubMchName = None
+        self.SubMchType = None
+        self.ShortName = None
+        self.Address = None
+        self.Contact = None
+        self.Mobile = None
+        self.Email = None
+        self.SubMchId = None
+        self.SubAcctNo = None
+        self.SubMerchantMemberType = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.SubAppId = params.get("SubAppId")
+        self.SubMchName = params.get("SubMchName")
+        self.SubMchType = params.get("SubMchType")
+        self.ShortName = params.get("ShortName")
+        self.Address = params.get("Address")
+        self.Contact = params.get("Contact")
+        self.Mobile = params.get("Mobile")
+        self.Email = params.get("Email")
+        self.SubMchId = params.get("SubMchId")
+        self.SubAcctNo = params.get("SubAcctNo")
+        self.SubMerchantMemberType = params.get("SubMerchantMemberType")
+        self.RequestId = params.get("RequestId")
+
+
+class QueryAcctItem(AbstractModel):
+    """查询账户列表接口
+
+    """
+
+    def __init__(self):
+        """
+        :param SubMchType: 子商户类型：
+个人: personal
+企业：enterprise
+缺省： enterprise
+        :type SubMchType: str
+        :param SubMchName: 子商户名称
+        :type SubMchName: str
+        :param SubAcctNo: 子账号号
+        :type SubAcctNo: str
+        :param ShortName: 不填则默认子商户名称
+        :type ShortName: str
+        :param SubMchId: 业务平台的子商户Id，唯一
+        :type SubMchId: str
+        :param SubAppId: 聚鑫计费SubAppId，代表子商户
+        :type SubAppId: str
+        :param Contact: 子商户联系人
+<敏感信息>
+        :type Contact: str
+        :param Address: 子商户地址
+        :type Address: str
+        :param Mobile: 联系人手机号
+<敏感信息>
+        :type Mobile: str
+        :param Email: 邮箱 
+<敏感信息>
+        :type Email: str
+        :param SubMerchantMemberType: 子商户会员类型：
+general:普通子账户
+merchant:商户子账户
+缺省： general
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SubMerchantMemberType: str
+        """
+        self.SubMchType = None
+        self.SubMchName = None
+        self.SubAcctNo = None
+        self.ShortName = None
+        self.SubMchId = None
+        self.SubAppId = None
+        self.Contact = None
+        self.Address = None
+        self.Mobile = None
+        self.Email = None
+        self.SubMerchantMemberType = None
+
+
+    def _deserialize(self, params):
+        self.SubMchType = params.get("SubMchType")
+        self.SubMchName = params.get("SubMchName")
+        self.SubAcctNo = params.get("SubAcctNo")
+        self.ShortName = params.get("ShortName")
+        self.SubMchId = params.get("SubMchId")
+        self.SubAppId = params.get("SubAppId")
+        self.Contact = params.get("Contact")
+        self.Address = params.get("Address")
+        self.Mobile = params.get("Mobile")
+        self.Email = params.get("Email")
+        self.SubMerchantMemberType = params.get("SubMerchantMemberType")
 
 
 class QueryBalanceRequest(AbstractModel):
@@ -4932,6 +5226,51 @@ class UnifiedOrderResponse(AbstractModel):
         self.PayInfo = params.get("PayInfo")
         self.TransactionId = params.get("TransactionId")
         self.RequestId = params.get("RequestId")
+
+
+class WithdrawBill(AbstractModel):
+    """聚鑫提现订单内容
+
+    """
+
+    def __init__(self):
+        """
+        :param WithdrawOrderId: 业务提现订单号
+        :type WithdrawOrderId: str
+        :param Date: 提现日期
+        :type Date: str
+        :param PayAmt: 提现金额，单位： 分
+        :type PayAmt: str
+        :param InSubAppId: 聚鑫分配转入账户appid
+        :type InSubAppId: str
+        :param OutSubAppId: 聚鑫分配转出账户appid
+        :type OutSubAppId: str
+        :param CurrencyType: ISO货币代码
+        :type CurrencyType: str
+        :param MetaData: 透传字段
+        :type MetaData: str
+        :param ExtendFieldData: 扩展字段
+        :type ExtendFieldData: str
+        """
+        self.WithdrawOrderId = None
+        self.Date = None
+        self.PayAmt = None
+        self.InSubAppId = None
+        self.OutSubAppId = None
+        self.CurrencyType = None
+        self.MetaData = None
+        self.ExtendFieldData = None
+
+
+    def _deserialize(self, params):
+        self.WithdrawOrderId = params.get("WithdrawOrderId")
+        self.Date = params.get("Date")
+        self.PayAmt = params.get("PayAmt")
+        self.InSubAppId = params.get("InSubAppId")
+        self.OutSubAppId = params.get("OutSubAppId")
+        self.CurrencyType = params.get("CurrencyType")
+        self.MetaData = params.get("MetaData")
+        self.ExtendFieldData = params.get("ExtendFieldData")
 
 
 class WithdrawCashMembershipRequest(AbstractModel):

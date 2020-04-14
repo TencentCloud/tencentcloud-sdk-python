@@ -817,7 +817,7 @@ class CreateNotificationConfigurationRequest(AbstractModel):
 <li>REPLACE_UNHEALTHY_INSTANCE_SUCCESSFUL：替换不健康子机成功</li>
 <li>REPLACE_UNHEALTHY_INSTANCE_FAILED：替换不健康子机失败</li>
         :type NotificationTypes: list of str
-        :param NotificationUserGroupIds: 通知组ID，即为用户组ID集合，用户组ID可以通过[DescribeUserGroup](https://cloud.tencent.com/document/api/378/4404)查询。
+        :param NotificationUserGroupIds: 通知组ID，即为用户组ID集合，用户组ID可以通过[ListGroups](https://cloud.tencent.com/document/product/598/34589)查询。
         :type NotificationUserGroupIds: list of str
         """
         self.AutoScalingGroupId = None
@@ -955,7 +955,7 @@ class CreateScalingPolicyRequest(AbstractModel):
         :type MetricAlarm: :class:`tencentcloud.autoscaling.v20180419.models.MetricAlarm`
         :param Cooldown: 冷却时间，单位为秒。默认冷却时间300秒。
         :type Cooldown: int
-        :param NotificationUserGroupIds: 通知组ID，即为用户组ID集合，用户组ID可以通过[DescribeUserGroup](https://cloud.tencent.com/document/api/378/4404)查询。
+        :param NotificationUserGroupIds: 通知组ID，即为用户组ID集合，用户组ID可以通过[ListGroups](https://cloud.tencent.com/document/product/598/34589)查询。
         :type NotificationUserGroupIds: list of str
         """
         self.AutoScalingGroupId = None
@@ -3058,7 +3058,7 @@ class ModifyNotificationConfigurationRequest(AbstractModel):
 <li>REPLACE_UNHEALTHY_INSTANCE_SUCCESSFUL：替换不健康子机成功</li>
 <li>REPLACE_UNHEALTHY_INSTANCE_FAILED：替换不健康子机失败</li>
         :type NotificationTypes: list of str
-        :param NotificationUserGroupIds: 通知组ID，即为用户组ID集合，用户组ID可以通过[DescribeUserGroup](https://cloud.tencent.com/document/api/378/4404)查询。
+        :param NotificationUserGroupIds: 通知组ID，即为用户组ID集合，用户组ID可以通过[ListGroups](https://cloud.tencent.com/document/product/598/34589)查询。
         :type NotificationUserGroupIds: list of str
         """
         self.AutoScalingNotificationId = None
@@ -3108,7 +3108,7 @@ class ModifyScalingPolicyRequest(AbstractModel):
         :type Cooldown: int
         :param MetricAlarm: 告警监控指标。
         :type MetricAlarm: :class:`tencentcloud.autoscaling.v20180419.models.MetricAlarm`
-        :param NotificationUserGroupIds: 通知组ID，即为用户组ID集合，用户组ID可以通过[DescribeUserGroup](https://cloud.tencent.com/document/api/378/4404)查询。
+        :param NotificationUserGroupIds: 通知组ID，即为用户组ID集合，用户组ID可以通过[ListGroups](https://cloud.tencent.com/document/product/598/34589)查询。
 如果需要清空通知用户组，需要在列表中传入特定字符串 "NULL"。
         :type NotificationUserGroupIds: list of str
         """
