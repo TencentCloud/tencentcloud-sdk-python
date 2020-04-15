@@ -137,6 +137,34 @@ class KmsClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def CreateWhiteBoxKey(self, request):
+        """创建白盒密钥。 密钥个数的上限为 50。
+
+        :param request: Request instance for CreateWhiteBoxKey.
+        :type request: :class:`tencentcloud.kms.v20190118.models.CreateWhiteBoxKeyRequest`
+        :rtype: :class:`tencentcloud.kms.v20190118.models.CreateWhiteBoxKeyResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("CreateWhiteBoxKey", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateWhiteBoxKeyResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def Decrypt(self, request):
         """本接口用于解密密文，得到明文数据。
 
@@ -193,6 +221,34 @@ class KmsClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DeleteWhiteBoxKey(self, request):
+        """删除白盒密钥, 注意：必须先禁用后，才可以删除。
+
+        :param request: Request instance for DeleteWhiteBoxKey.
+        :type request: :class:`tencentcloud.kms.v20190118.models.DeleteWhiteBoxKeyRequest`
+        :rtype: :class:`tencentcloud.kms.v20190118.models.DeleteWhiteBoxKeyResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DeleteWhiteBoxKey", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DeleteWhiteBoxKeyResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeKey(self, request):
         """用于获取指定KeyId的主密钥属性详情信息。
 
@@ -235,6 +291,118 @@ class KmsClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeKeysResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeWhiteBoxDecryptKey(self, request):
+        """获取白盒解密密钥
+
+        :param request: Request instance for DescribeWhiteBoxDecryptKey.
+        :type request: :class:`tencentcloud.kms.v20190118.models.DescribeWhiteBoxDecryptKeyRequest`
+        :rtype: :class:`tencentcloud.kms.v20190118.models.DescribeWhiteBoxDecryptKeyResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeWhiteBoxDecryptKey", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeWhiteBoxDecryptKeyResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeWhiteBoxKey(self, request):
+        """展示白盒密钥的信息
+
+        :param request: Request instance for DescribeWhiteBoxKey.
+        :type request: :class:`tencentcloud.kms.v20190118.models.DescribeWhiteBoxKeyRequest`
+        :rtype: :class:`tencentcloud.kms.v20190118.models.DescribeWhiteBoxKeyResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeWhiteBoxKey", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeWhiteBoxKeyResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeWhiteBoxKeyDetails(self, request):
+        """获取白盒密钥列表
+
+        :param request: Request instance for DescribeWhiteBoxKeyDetails.
+        :type request: :class:`tencentcloud.kms.v20190118.models.DescribeWhiteBoxKeyDetailsRequest`
+        :rtype: :class:`tencentcloud.kms.v20190118.models.DescribeWhiteBoxKeyDetailsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeWhiteBoxKeyDetails", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeWhiteBoxKeyDetailsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeWhiteBoxServiceStatus(self, request):
+        """获取白盒密钥服务状态
+
+        :param request: Request instance for DescribeWhiteBoxServiceStatus.
+        :type request: :class:`tencentcloud.kms.v20190118.models.DescribeWhiteBoxServiceStatusRequest`
+        :rtype: :class:`tencentcloud.kms.v20190118.models.DescribeWhiteBoxServiceStatusResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeWhiteBoxServiceStatus", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeWhiteBoxServiceStatusResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -333,6 +501,62 @@ class KmsClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DisableWhiteBoxKey(self, request):
+        """禁用白盒密钥
+
+        :param request: Request instance for DisableWhiteBoxKey.
+        :type request: :class:`tencentcloud.kms.v20190118.models.DisableWhiteBoxKeyRequest`
+        :rtype: :class:`tencentcloud.kms.v20190118.models.DisableWhiteBoxKeyResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DisableWhiteBoxKey", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DisableWhiteBoxKeyResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DisableWhiteBoxKeys(self, request):
+        """批量禁用白盒密钥
+
+        :param request: Request instance for DisableWhiteBoxKeys.
+        :type request: :class:`tencentcloud.kms.v20190118.models.DisableWhiteBoxKeysRequest`
+        :rtype: :class:`tencentcloud.kms.v20190118.models.DisableWhiteBoxKeysResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DisableWhiteBoxKeys", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DisableWhiteBoxKeysResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def EnableKey(self, request):
         """用于启用一个指定的CMK。
 
@@ -417,6 +641,62 @@ class KmsClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def EnableWhiteBoxKey(self, request):
+        """批量启用白盒密钥
+
+        :param request: Request instance for EnableWhiteBoxKey.
+        :type request: :class:`tencentcloud.kms.v20190118.models.EnableWhiteBoxKeyRequest`
+        :rtype: :class:`tencentcloud.kms.v20190118.models.EnableWhiteBoxKeyResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("EnableWhiteBoxKey", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.EnableWhiteBoxKeyResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def EnableWhiteBoxKeys(self, request):
+        """批量启用白盒密钥
+
+        :param request: Request instance for EnableWhiteBoxKeys.
+        :type request: :class:`tencentcloud.kms.v20190118.models.EnableWhiteBoxKeysRequest`
+        :rtype: :class:`tencentcloud.kms.v20190118.models.EnableWhiteBoxKeysResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("EnableWhiteBoxKeys", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.EnableWhiteBoxKeysResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def Encrypt(self, request):
         """本接口用于加密最多为4KB任意数据，可用于加密数据库密码，RSA Key，或其它较小的敏感信息。对于应用的数据加密，使用GenerateDataKey生成的DataKey进行本地数据的加解密操作
 
@@ -431,6 +711,34 @@ class KmsClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.EncryptResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def EncryptByWhiteBox(self, request):
+        """使用白盒密钥进行加密
+
+        :param request: Request instance for EncryptByWhiteBox.
+        :type request: :class:`tencentcloud.kms.v20190118.models.EncryptByWhiteBoxRequest`
+        :rtype: :class:`tencentcloud.kms.v20190118.models.EncryptByWhiteBoxResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("EncryptByWhiteBox", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.EncryptByWhiteBoxResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

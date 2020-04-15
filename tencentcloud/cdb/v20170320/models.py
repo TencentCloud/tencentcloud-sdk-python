@@ -747,6 +747,8 @@ class CreateDBInstanceHourRequest(AbstractModel):
         :type DeployGroupId: str
         :param ClientToken: 用于保证请求幂等性的字符串。该字符串由客户生成，需保证不同请求之间在当天内唯一，最大值不超过64个ASCII字符。若不指定该参数，则无法保证请求的幂等性。
         :type ClientToken: str
+        :param DeviceType: 实例类型。支持值包括： "HA" - 高可用版实例， "BASIC" - 基础版实例。 不指定则默认为高可用版。
+        :type DeviceType: str
         """
         self.GoodsNum = None
         self.Memory = None
@@ -773,6 +775,7 @@ class CreateDBInstanceHourRequest(AbstractModel):
         self.ResourceTags = None
         self.DeployGroupId = None
         self.ClientToken = None
+        self.DeviceType = None
 
 
     def _deserialize(self, params):
@@ -813,6 +816,7 @@ class CreateDBInstanceHourRequest(AbstractModel):
                 self.ResourceTags.append(obj)
         self.DeployGroupId = params.get("DeployGroupId")
         self.ClientToken = params.get("ClientToken")
+        self.DeviceType = params.get("DeviceType")
 
 
 class CreateDBInstanceHourResponse(AbstractModel):
@@ -899,6 +903,8 @@ class CreateDBInstanceRequest(AbstractModel):
         :type DeployGroupId: str
         :param ClientToken: 用于保证请求幂等性的字符串。该字符串由客户生成，需保证不同请求之间在当天内唯一，最大值不超过64个ASCII字符。若不指定该参数，则无法保证请求的幂等性。
         :type ClientToken: str
+        :param DeviceType: 实例类型。支持值包括： "HA" - 高可用版实例， "BASIC" - 基础版实例。 不指定则默认为高可用版。
+        :type DeviceType: str
         """
         self.Memory = None
         self.Volume = None
@@ -926,6 +932,7 @@ class CreateDBInstanceRequest(AbstractModel):
         self.ResourceTags = None
         self.DeployGroupId = None
         self.ClientToken = None
+        self.DeviceType = None
 
 
     def _deserialize(self, params):
@@ -967,6 +974,7 @@ class CreateDBInstanceRequest(AbstractModel):
                 self.ResourceTags.append(obj)
         self.DeployGroupId = params.get("DeployGroupId")
         self.ClientToken = params.get("ClientToken")
+        self.DeviceType = params.get("DeviceType")
 
 
 class CreateDBInstanceResponse(AbstractModel):
@@ -2698,7 +2706,7 @@ class DescribeDatabasesRequest(AbstractModel):
         :type Offset: int
         :param Limit: 单次请求数量，默认值为20，最小值为1，最大值为100。
         :type Limit: int
-        :param DatabaseRegexp: 匹配数据库库名的正则表达式，规则同 MySQL 官网
+        :param DatabaseRegexp: 匹配数据库库名的正则表达式。
         :type DatabaseRegexp: str
         """
         self.InstanceId = None

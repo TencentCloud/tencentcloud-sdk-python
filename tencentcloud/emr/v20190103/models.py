@@ -331,7 +331,11 @@ class CreateInstanceRequest(AbstractModel):
         :type ProductId: int
         :param VPCSettings: 私有网络相关信息配置。通过该参数可以指定私有网络的ID，子网ID等信息。
         :type VPCSettings: :class:`tencentcloud.emr.v20190103.models.VPCSettings`
-        :param Software: 部署的组件列表。不同ProductId对应特定版本的组件。例如，当ProductId取值为4时，该参数可以填写Software.0=hadoop-2.8.4&Software.1=zookeeper-3.4.9；当ProductId取值为2时，该参数可以填写Software.0=hadoop-2.7.3&Software.1=zookeeper-3.4.9。
+        :param Software: 部署的组件列表。不同的EMR产品ID（ProductId：具体含义参考入参ProductId字段）需要选择不同的必选组件：
+<li>ProductId为1的时候，必选组件包括：hadoop-2.7.3、knox-1.2.0、zookeeper-3.4.9</li>
+<li>ProductId为2的时候，必选组件包括：hadoop-2.7.3、knox-1.2.0、zookeeper-3.4.9</li>
+<li>ProductId为4的时候，必选组件包括：hadoop-2.8.4、knox-1.2.0、zookeeper-3.4.9</li>
+<li>ProductId为7的时候，必选组件包括：hadoop-3.1.2、knox-1.2.0、zookeeper-3.4.9</li>
         :type Software: list of str
         :param ResourceSpec: 节点资源的规格。
         :type ResourceSpec: :class:`tencentcloud.emr.v20190103.models.NewResourceSpec`
@@ -349,8 +353,9 @@ class CreateInstanceRequest(AbstractModel):
         :type PayMode: int
         :param Placement: 实例所在的位置。通过该参数可以指定实例所属可用区，所属项目等属性。
         :type Placement: :class:`tencentcloud.emr.v20190103.models.Placement`
-        :param TimeSpan: 购买实例的时长。需要结合TimeUnit一起使用。
-<li>PayMode取值为0时，TimeSpan只能取值为3600。</li>
+        :param TimeSpan: 购买实例的时长。结合TimeUnit一起使用。
+<li>TimeUnit为s时，该参数只能填写3600，表示按量计费实例。</li>
+<li>TimeUnit为m时，该参数填写的数字表示包年包月实例的购买时长，如1表示购买一个月</li>
         :type TimeSpan: int
         :param TimeUnit: 购买实例的时间单位。取值范围：
 <li>s：表示秒。PayMode取值为0时，TimeUnit只能取值为s。</li>
@@ -791,9 +796,11 @@ class InquiryPriceCreateInstanceRequest(AbstractModel):
         """
         :param TimeUnit: 购买实例的时间单位。取值范围：
 <li>s：表示秒。PayMode取值为0时，TimeUnit只能取值为s。</li>
-<li>m：表示月份。PayMode取值为1时，TimeUnit只能取值为m。</li>
+<li>m：表示月份。PayMode取值为1时，TimeUnit只能取值为m。</li>
         :type TimeUnit: str
-        :param TimeSpan: 购买实例的时长。需要结合TimeUnit一起使用。
+        :param TimeSpan: 购买实例的时长。结合TimeUnit一起使用。
+<li>TimeUnit为s时，该参数只能填写3600，表示按量计费实例。</li>
+<li>TimeUnit为m时，该参数填写的数字表示包年包月实例的购买时长，如1表示购买一个月</li>
         :type TimeSpan: int
         :param ResourceSpec: 询价的节点规格。
         :type ResourceSpec: :class:`tencentcloud.emr.v20190103.models.NewResourceSpec`
@@ -802,13 +809,17 @@ class InquiryPriceCreateInstanceRequest(AbstractModel):
         :type Currency: str
         :param PayMode: 实例计费模式。取值范围：
 <li>0：表示按量计费。</li>
-<li>1：表示包年包月。</li>
+<li>1：表示包年包月。</li>
         :type PayMode: int
         :param SupportHA: 是否开启节点高可用。取值范围：
 <li>0：表示不开启节点高可用。</li>
 <li>1：表示开启节点高可用。</li>
         :type SupportHA: int
-        :param Software: 部署的组件列表。
+        :param Software: 部署的组件列表。不同的EMR产品ID（ProductId：具体含义参考入参ProductId字段）需要选择不同的必选组件：
+<li>ProductId为1的时候，必选组件包括：hadoop-2.7.3、knox-1.2.0、zookeeper-3.4.9</li>
+<li>ProductId为2的时候，必选组件包括：hadoop-2.7.3、knox-1.2.0、zookeeper-3.4.9</li>
+<li>ProductId为4的时候，必选组件包括：hadoop-2.8.4、knox-1.2.0、zookeeper-3.4.9</li>
+<li>ProductId为7的时候，必选组件包括：hadoop-3.1.2、knox-1.2.0、zookeeper-3.4.9</li>
         :type Software: list of str
         :param Placement: 实例所在的位置。通过该参数可以指定实例所属可用区，所属项目等属性。
         :type Placement: :class:`tencentcloud.emr.v20190103.models.Placement`
@@ -915,7 +926,7 @@ class InquiryPriceRenewInstanceRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param TimeSpan: 实例续费的时长。需要结合TimeUnit一起使用。
+        :param TimeSpan: 实例续费的时长。需要结合TimeUnit一起使用。1表示续费1一个月
         :type TimeSpan: int
         :param ResourceIds: 待续费节点的资源ID列表。资源ID形如：emr-vm-xxxxxxxx。有效的资源ID可通过登录[控制台](https://console.cloud.tencent.com/emr/static/hardware)查询。
         :type ResourceIds: list of str
@@ -924,7 +935,7 @@ class InquiryPriceRenewInstanceRequest(AbstractModel):
         :param PayMode: 实例计费模式。此处只支持取值为1，表示包年包月。
         :type PayMode: int
         :param TimeUnit: 实例续费的时间单位。取值范围：
-<li>m：表示月份。</li>
+<li>m：表示月份。</li>
         :type TimeUnit: str
         :param Currency: 货币种类。取值范围：
 <li>CNY：表示人民币。</li>
@@ -996,15 +1007,17 @@ class InquiryPriceScaleOutInstanceRequest(AbstractModel):
         """
         :param TimeUnit: 扩容的时间单位。取值范围：
 <li>s：表示秒。PayMode取值为0时，TimeUnit只能取值为s。</li>
-<li>m：表示月份。PayMode取值为1时，TimeUnit只能取值为m。</li>
+<li>m：表示月份。PayMode取值为1时，TimeUnit只能取值为m。</li>
         :type TimeUnit: str
-        :param TimeSpan: 扩容的时长。需要结合TimeUnit一起使用。
+        :param TimeSpan: 扩容的时长。结合TimeUnit一起使用。
+<li>TimeUnit为s时，该参数只能填写3600，表示按量计费实例。</li>
+<li>TimeUnit为m时，该参数填写的数字表示包年包月实例的购买时长，如1表示购买一个月</li>
         :type TimeSpan: int
         :param ZoneId: 实例所属的可用区ID，例如100003。该参数可以通过调用 [DescribeZones](https://cloud.tencent.com/document/api/213/15707) 的返回值中的ZoneId字段来获取。
         :type ZoneId: int
         :param PayMode: 实例计费模式。取值范围：
 <li>0：表示按量计费。</li>
-<li>1：表示包年包月。</li>
+<li>1：表示包年包月。</li>
         :type PayMode: int
         :param InstanceId: 实例ID。
         :type InstanceId: str
@@ -1093,8 +1106,9 @@ class InquiryPriceUpdateInstanceRequest(AbstractModel):
 <li>s：表示秒。PayMode取值为0时，TimeUnit只能取值为s。</li>
 <li>m：表示月份。PayMode取值为1时，TimeUnit只能取值为m。</li>
         :type TimeUnit: str
-        :param TimeSpan: 变配的时长。需要结合TimeUnit一起使用。
-<li>PayMode取值为0时，TimeSpan只能取值为3600。</li>
+        :param TimeSpan: 变配的时长。结合TimeUnit一起使用。
+<li>TimeUnit为s时，该参数只能填写3600，表示按量计费实例。</li>
+<li>TimeUnit为m时，该参数填写的数字表示包年包月实例的购买时长，如1表示购买一个月</li>
         :type TimeSpan: int
         :param UpdateSpec: 节点变配的目标配置。
         :type UpdateSpec: :class:`tencentcloud.emr.v20190103.models.UpdateInstanceSettings`
@@ -1822,7 +1836,9 @@ class ScaleOutInstanceRequest(AbstractModel):
 <li>s：表示秒。PayMode取值为0时，TimeUnit只能取值为s。</li>
 <li>m：表示月份。PayMode取值为1时，TimeUnit只能取值为m。</li>
         :type TimeUnit: str
-        :param TimeSpan: 扩容的时长。需要结合TimeUnit一起使用。
+        :param TimeSpan: 扩容的时长。结合TimeUnit一起使用。
+<li>TimeUnit为s时，该参数只能填写3600，表示按量计费实例。</li>
+<li>TimeUnit为m时，该参数填写的数字表示包年包月实例的购买时长，如1表示购买一个月</li>
         :type TimeSpan: int
         :param InstanceId: 实例ID。
         :type InstanceId: str

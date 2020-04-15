@@ -165,6 +165,62 @@ class CamClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def Check(self, request):
+        """mfa校验
+
+        :param request: Request instance for Check.
+        :type request: :class:`tencentcloud.cam.v20190116.models.CheckRequest`
+        :rtype: :class:`tencentcloud.cam.v20190116.models.CheckResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("Check", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CheckResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def CheckNewMfaCode(self, request):
+        """校验新手机新邮箱接口
+
+        :param request: Request instance for CheckNewMfaCode.
+        :type request: :class:`tencentcloud.cam.v20190116.models.CheckNewMfaCodeRequest`
+        :rtype: :class:`tencentcloud.cam.v20190116.models.CheckNewMfaCodeResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("CheckNewMfaCode", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CheckNewMfaCodeResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def ConsumeCustomMFAToken(self, request):
         """验证自定义多因子Token
 
@@ -445,6 +501,34 @@ class CamClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeMfaCodeStatus(self, request):
+        """查询微信code状态
+
+        :param request: Request instance for DescribeMfaCodeStatus.
+        :type request: :class:`tencentcloud.cam.v20190116.models.DescribeMfaCodeStatusRequest`
+        :rtype: :class:`tencentcloud.cam.v20190116.models.DescribeMfaCodeStatusResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeMfaCodeStatus", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeMfaCodeStatusResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeRoleList(self, request):
         """本接口（DescribeRoleList）用于获取账号下的角色列表。
 
@@ -543,6 +627,90 @@ class CamClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DetachUserPolicyResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DetectAuth(self, request):
+        """发起人脸核身
+
+        :param request: Request instance for DetectAuth.
+        :type request: :class:`tencentcloud.cam.v20190116.models.DetectAuthRequest`
+        :rtype: :class:`tencentcloud.cam.v20190116.models.DetectAuthResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DetectAuth", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DetectAuthResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DetectMaskAuth(self, request):
+        """获取并更新人脸核身校验状态实名传递参数比对
+
+        :param request: Request instance for DetectMaskAuth.
+        :type request: :class:`tencentcloud.cam.v20190116.models.DetectMaskAuthRequest`
+        :rtype: :class:`tencentcloud.cam.v20190116.models.DetectMaskAuthResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DetectMaskAuth", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DetectMaskAuthResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DetectState(self, request):
+        """获取并且更新人联合身状态
+
+        :param request: Request instance for DetectState.
+        :type request: :class:`tencentcloud.cam.v20190116.models.DetectStateRequest`
+        :rtype: :class:`tencentcloud.cam.v20190116.models.DetectStateResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DetectState", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DetectStateResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

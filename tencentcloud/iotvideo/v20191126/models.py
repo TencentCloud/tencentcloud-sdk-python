@@ -1650,6 +1650,49 @@ class DescribePubVersionsResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeRegistrationStatusRequest(AbstractModel):
+    """DescribeRegistrationStatus请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param CunionIds: 终端用户的唯一ID列表，0<元素数量<=100
+        :type CunionIds: list of str
+        """
+        self.CunionIds = None
+
+
+    def _deserialize(self, params):
+        self.CunionIds = params.get("CunionIds")
+
+
+class DescribeRegistrationStatusResponse(AbstractModel):
+    """DescribeRegistrationStatus返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Data: 终端用户注册状态列表
+        :type Data: list of RegisteredStatus
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Data = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self.Data = []
+            for item in params.get("Data"):
+                obj = RegisteredStatus()
+                obj._deserialize(item)
+                self.Data.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeRunLogRequest(AbstractModel):
     """DescribeRunLog请求参数结构体
 
@@ -2259,16 +2302,24 @@ class ModifyProductRequest(AbstractModel):
         :type ProductName: str
         :param ProductDescription: 产品描述
         :type ProductDescription: str
+        :param ChipManufactureId: 主芯片产商ID
+        :type ChipManufactureId: str
+        :param ChipId: 主芯片ID
+        :type ChipId: str
         """
         self.ProductId = None
         self.ProductName = None
         self.ProductDescription = None
+        self.ChipManufactureId = None
+        self.ChipId = None
 
 
     def _deserialize(self, params):
         self.ProductId = params.get("ProductId")
         self.ProductName = params.get("ProductName")
         self.ProductDescription = params.get("ProductDescription")
+        self.ChipManufactureId = params.get("ChipManufactureId")
+        self.ChipId = params.get("ChipId")
 
 
 class ModifyProductResponse(AbstractModel):
@@ -2444,6 +2495,27 @@ class ProductData(AbstractModel):
         self.ProductModel = params.get("ProductModel")
         self.ChipManufactureId = params.get("ChipManufactureId")
         self.ChipId = params.get("ChipId")
+
+
+class RegisteredStatus(AbstractModel):
+    """终端用户注册状态
+
+    """
+
+    def __init__(self):
+        """
+        :param CunionId: 终端用户的唯一ID
+        :type CunionId: str
+        :param IsRegisted: 注册状态
+        :type IsRegisted: bool
+        """
+        self.CunionId = None
+        self.IsRegisted = None
+
+
+    def _deserialize(self, params):
+        self.CunionId = params.get("CunionId")
+        self.IsRegisted = params.get("IsRegisted")
 
 
 class RunDeviceRequest(AbstractModel):

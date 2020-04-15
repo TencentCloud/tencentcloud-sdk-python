@@ -195,7 +195,7 @@ class CreatePolicyGroupRequest(AbstractModel):
         :type InsertTime: int
         :param Conditions: 策略组中的阈值告警规则
         :type Conditions: list of CreatePolicyGroupCondition
-        :param EventConditions: 策略组中的时间告警规则
+        :param EventConditions: 策略组中的事件告警规则
         :type EventConditions: list of CreatePolicyGroupEventCondition
         :param BackEndCall: 是否为后端调用。当且仅当值为1时，后台拉取策略模版中的规则填充入Conditions以及EventConditions字段
         :type BackEndCall: int

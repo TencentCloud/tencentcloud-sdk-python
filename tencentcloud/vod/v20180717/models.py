@@ -4639,9 +4639,7 @@ class CreateAdaptiveDynamicStreamingTemplateRequest(AbstractModel):
         :param Name: 模板名称，长度限制：64 个字符。
         :type Name: str
         :param DrmType: DRM方案类型，取值范围：
-<li>FairPlay；</li>
-<li>SimpleAES；</li>
-<li>Widevine。</li>
+<li>SimpleAES。</li>
 如果取值为空字符串，代表不对视频做 DRM 保护。
         :type DrmType: str
         :param DisableHigherVideoBitrate: 是否禁止视频低码率转高码率，取值范围：

@@ -242,6 +242,60 @@ class CreateKeyResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class CreateWhiteBoxKeyRequest(AbstractModel):
+    """CreateWhiteBoxKey请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Alias: 作为密钥更容易辨识，更容易被人看懂的别名， 不可为空，1-60个字母数字 - _ 的组合，首字符必须为字母或者数字。Alias不可重复。
+        :type Alias: str
+        :param Algorithm: 创建密钥所有的算法类型，支持的取值：AES_256,SM4
+        :type Algorithm: str
+        :param Description: 密钥的描述，最大1024字节
+        :type Description: str
+        """
+        self.Alias = None
+        self.Algorithm = None
+        self.Description = None
+
+
+    def _deserialize(self, params):
+        self.Alias = params.get("Alias")
+        self.Algorithm = params.get("Algorithm")
+        self.Description = params.get("Description")
+
+
+class CreateWhiteBoxKeyResponse(AbstractModel):
+    """CreateWhiteBoxKey返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param EncryptKey: 用于加密的密钥，base64编码
+        :type EncryptKey: str
+        :param DecryptKey: 用于解密的密钥，base64编码
+        :type DecryptKey: str
+        :param KeyId: 白盒密钥的全局唯一标识符
+        :type KeyId: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.EncryptKey = None
+        self.DecryptKey = None
+        self.KeyId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.EncryptKey = params.get("EncryptKey")
+        self.DecryptKey = params.get("DecryptKey")
+        self.KeyId = params.get("KeyId")
+        self.RequestId = params.get("RequestId")
+
+
 class DecryptRequest(AbstractModel):
     """Decrypt请求参数结构体
 
@@ -307,6 +361,40 @@ class DeleteImportedKeyMaterialRequest(AbstractModel):
 
 class DeleteImportedKeyMaterialResponse(AbstractModel):
     """DeleteImportedKeyMaterial返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class DeleteWhiteBoxKeyRequest(AbstractModel):
+    """DeleteWhiteBoxKey请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param KeyId: 白盒密钥的全局唯一标识符
+        :type KeyId: str
+        """
+        self.KeyId = None
+
+
+    def _deserialize(self, params):
+        self.KeyId = params.get("KeyId")
+
+
+class DeleteWhiteBoxKeyResponse(AbstractModel):
+    """DeleteWhiteBoxKey返回参数结构体
 
     """
 
@@ -407,6 +495,154 @@ class DescribeKeysResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeWhiteBoxDecryptKeyRequest(AbstractModel):
+    """DescribeWhiteBoxDecryptKey请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param KeyId: 白盒密钥的全局唯一标识符
+        :type KeyId: str
+        """
+        self.KeyId = None
+
+
+    def _deserialize(self, params):
+        self.KeyId = params.get("KeyId")
+
+
+class DescribeWhiteBoxDecryptKeyResponse(AbstractModel):
+    """DescribeWhiteBoxDecryptKey返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param DecryptKey: 白盒解密密钥，base64编码
+        :type DecryptKey: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.DecryptKey = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.DecryptKey = params.get("DecryptKey")
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeWhiteBoxKeyDetailsRequest(AbstractModel):
+    """DescribeWhiteBoxKeyDetails请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param KeyStatus: 过滤条件：密钥的状态，0：disabled，1：enabled
+        :type KeyStatus: int
+        """
+        self.KeyStatus = None
+
+
+    def _deserialize(self, params):
+        self.KeyStatus = params.get("KeyStatus")
+
+
+class DescribeWhiteBoxKeyDetailsResponse(AbstractModel):
+    """DescribeWhiteBoxKeyDetails返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param KeyInfos: 白盒密钥信息列表
+        :type KeyInfos: list of WhiteboxKeyInfo
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.KeyInfos = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("KeyInfos") is not None:
+            self.KeyInfos = []
+            for item in params.get("KeyInfos"):
+                obj = WhiteboxKeyInfo()
+                obj._deserialize(item)
+                self.KeyInfos.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeWhiteBoxKeyRequest(AbstractModel):
+    """DescribeWhiteBoxKey请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param KeyId: 白盒密钥的全局唯一标识符
+        :type KeyId: str
+        """
+        self.KeyId = None
+
+
+    def _deserialize(self, params):
+        self.KeyId = params.get("KeyId")
+
+
+class DescribeWhiteBoxKeyResponse(AbstractModel):
+    """DescribeWhiteBoxKey返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param KeyInfo: 白盒密钥信息
+        :type KeyInfo: :class:`tencentcloud.kms.v20190118.models.WhiteboxKeyInfo`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.KeyInfo = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("KeyInfo") is not None:
+            self.KeyInfo = WhiteboxKeyInfo()
+            self.KeyInfo._deserialize(params.get("KeyInfo"))
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeWhiteBoxServiceStatusRequest(AbstractModel):
+    """DescribeWhiteBoxServiceStatus请求参数结构体
+
+    """
+
+
+class DescribeWhiteBoxServiceStatusResponse(AbstractModel):
+    """DescribeWhiteBoxServiceStatus返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ServiceEnabled: 用户的白盒密钥服务是否可用
+        :type ServiceEnabled: bool
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.ServiceEnabled = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.ServiceEnabled = params.get("ServiceEnabled")
+        self.RequestId = params.get("RequestId")
+
+
 class DisableKeyRequest(AbstractModel):
     """DisableKey请求参数结构体
 
@@ -494,6 +730,74 @@ class DisableKeysRequest(AbstractModel):
 
 class DisableKeysResponse(AbstractModel):
     """DisableKeys返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class DisableWhiteBoxKeyRequest(AbstractModel):
+    """DisableWhiteBoxKey请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param KeyId: 白盒密钥的全局唯一标识符
+        :type KeyId: str
+        """
+        self.KeyId = None
+
+
+    def _deserialize(self, params):
+        self.KeyId = params.get("KeyId")
+
+
+class DisableWhiteBoxKeyResponse(AbstractModel):
+    """DisableWhiteBoxKey返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class DisableWhiteBoxKeysRequest(AbstractModel):
+    """DisableWhiteBoxKeys请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param KeyIds: 白盒密钥的全局唯一标识符列表。注意：要确保所有提供的KeyId是格式有效的，没有重复，个数不超过50个，并且都是有效存在的。
+        :type KeyIds: list of str
+        """
+        self.KeyIds = None
+
+
+    def _deserialize(self, params):
+        self.KeyIds = params.get("KeyIds")
+
+
+class DisableWhiteBoxKeysResponse(AbstractModel):
+    """DisableWhiteBoxKeys返回参数结构体
 
     """
 
@@ -608,6 +912,124 @@ class EnableKeysResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class EnableWhiteBoxKeyRequest(AbstractModel):
+    """EnableWhiteBoxKey请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param KeyId: 白盒密钥的全局唯一标识符
+        :type KeyId: str
+        """
+        self.KeyId = None
+
+
+    def _deserialize(self, params):
+        self.KeyId = params.get("KeyId")
+
+
+class EnableWhiteBoxKeyResponse(AbstractModel):
+    """EnableWhiteBoxKey返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class EnableWhiteBoxKeysRequest(AbstractModel):
+    """EnableWhiteBoxKeys请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param KeyIds: 白盒密钥的全局唯一标识符列表。注意：要确保所有提供的KeyId是格式有效的，没有重复，个数不超过50个，并且都是有效存在的。
+        :type KeyIds: list of str
+        """
+        self.KeyIds = None
+
+
+    def _deserialize(self, params):
+        self.KeyIds = params.get("KeyIds")
+
+
+class EnableWhiteBoxKeysResponse(AbstractModel):
+    """EnableWhiteBoxKeys返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class EncryptByWhiteBoxRequest(AbstractModel):
+    """EncryptByWhiteBox请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param KeyId: 白盒密钥的全局唯一标识符
+        :type KeyId: str
+        :param PlainText: 待加密的文本， base64编码，文本的原始长度最大不超过4KB
+        :type PlainText: str
+        :param InitializationVector: 初始化向量，大小为 16 Bytes，加密算法会使用到, base64编码；如果不传，则由后端服务随机生成。用户需要自行保存该值，作为解密的参数。
+        :type InitializationVector: str
+        """
+        self.KeyId = None
+        self.PlainText = None
+        self.InitializationVector = None
+
+
+    def _deserialize(self, params):
+        self.KeyId = params.get("KeyId")
+        self.PlainText = params.get("PlainText")
+        self.InitializationVector = params.get("InitializationVector")
+
+
+class EncryptByWhiteBoxResponse(AbstractModel):
+    """EncryptByWhiteBox返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param InitializationVector: 初始化向量，加密算法会使用到, base64编码。如果由调用方在入参中传入，则原样返回。如果调用方没有传入，则后端服务随机生成，并返回
+        :type InitializationVector: str
+        :param CipherText: 加密后的密文，base64编码
+        :type CipherText: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.InitializationVector = None
+        self.CipherText = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.InitializationVector = params.get("InitializationVector")
+        self.CipherText = params.get("CipherText")
         self.RequestId = params.get("RequestId")
 
 
@@ -1421,3 +1843,56 @@ class UpdateKeyDescriptionResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
+
+
+class WhiteboxKeyInfo(AbstractModel):
+    """白盒密钥信息
+
+    """
+
+    def __init__(self):
+        """
+        :param KeyId: 白盒密钥的全局唯一标识符
+        :type KeyId: str
+        :param Alias: 作为密钥更容易辨识，更容易被人看懂的别名， 不可为空，1-60个字母数字 - _ 的组合，首字符必须为字母或者数字. 不可重复
+        :type Alias: str
+        :param CreatorUin: 创建者
+        :type CreatorUin: int
+        :param Description: 密钥的描述信息
+        :type Description: str
+        :param CreateTime: 密钥创建时间，Unix时间戳
+        :type CreateTime: int
+        :param Status: 白盒密钥的状态， 取值为：Enabled | Disabled
+        :type Status: str
+        :param OwnerUin: 创建者
+        :type OwnerUin: int
+        :param Algorithm: 密钥所用的算法类型
+        :type Algorithm: str
+        :param EncryptKey: 白盒加密密钥，base64编码
+        :type EncryptKey: str
+        :param DecryptKey: 白盒解密密钥，base64编码
+        :type DecryptKey: str
+        """
+        self.KeyId = None
+        self.Alias = None
+        self.CreatorUin = None
+        self.Description = None
+        self.CreateTime = None
+        self.Status = None
+        self.OwnerUin = None
+        self.Algorithm = None
+        self.EncryptKey = None
+        self.DecryptKey = None
+
+
+    def _deserialize(self, params):
+        self.KeyId = params.get("KeyId")
+        self.Alias = params.get("Alias")
+        self.CreatorUin = params.get("CreatorUin")
+        self.Description = params.get("Description")
+        self.CreateTime = params.get("CreateTime")
+        self.Status = params.get("Status")
+        self.OwnerUin = params.get("OwnerUin")
+        self.Algorithm = params.get("Algorithm")
+        self.EncryptKey = params.get("EncryptKey")
+        self.DecryptKey = params.get("DecryptKey")

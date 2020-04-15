@@ -793,6 +793,9 @@ REJECTED:拒绝
         :param VpcName: VPC名称
 注意：此字段可能返回 null，表示取不到有效值。
         :type VpcName: str
+        :param TencentBackupAddress: TencentBackupAddress，腾讯侧备用互联 IP
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TencentBackupAddress: str
         """
         self.DirectConnectTunnelId = None
         self.DirectConnectId = None
@@ -821,6 +824,7 @@ REJECTED:拒绝
         self.AccessPointType = None
         self.DirectConnectGatewayName = None
         self.VpcName = None
+        self.TencentBackupAddress = None
 
 
     def _deserialize(self, params):
@@ -863,6 +867,7 @@ REJECTED:拒绝
         self.AccessPointType = params.get("AccessPointType")
         self.DirectConnectGatewayName = params.get("DirectConnectGatewayName")
         self.VpcName = params.get("VpcName")
+        self.TencentBackupAddress = params.get("TencentBackupAddress")
 
 
 class Filter(AbstractModel):

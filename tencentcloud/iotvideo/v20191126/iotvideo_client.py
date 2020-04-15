@@ -1012,6 +1012,34 @@ class IotvideoClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeRegistrationStatus(self, request):
+        """本接口（DescribeRegistrationStatus）用于查询终端用户的注册状态。
+
+        :param request: Request instance for DescribeRegistrationStatus.
+        :type request: :class:`tencentcloud.iotvideo.v20191126.models.DescribeRegistrationStatusRequest`
+        :rtype: :class:`tencentcloud.iotvideo.v20191126.models.DescribeRegistrationStatusResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeRegistrationStatus", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeRegistrationStatusResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeRunLog(self, request):
         """本接口（DescribeRunLog）用于获取设备运行日志。
 
