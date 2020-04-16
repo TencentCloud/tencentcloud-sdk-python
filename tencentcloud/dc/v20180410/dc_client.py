@@ -114,7 +114,7 @@ class DcClient(AbstractClient):
 
     def DeleteDirectConnect(self, request):
         """删除物理专线。
-        只能删除处于状态的物理专线。
+        只能删除处于已连接状态的物理专线。
 
         :param request: Request instance for DeleteDirectConnect.
         :type request: :class:`tencentcloud.dc.v20180410.models.DeleteDirectConnectRequest`

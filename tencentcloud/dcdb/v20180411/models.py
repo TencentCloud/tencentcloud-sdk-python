@@ -299,6 +299,7 @@ class CreateDCDBInstanceRequest(AbstractModel):
     def __init__(self):
         """
         :param Zones: 分片节点可用区分布，最多可填两个可用区。当分片规格为一主两从时，其中两个节点在第一个可用区。
+注意当前可售卖的可用区需要通过DescribeDCDBSaleInfo接口拉取。
         :type Zones: list of str
         :param Period: 欲购买的时长，单位：月。
         :type Period: int
@@ -1822,6 +1823,38 @@ class DescribeOrdersResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeProjectsRequest(AbstractModel):
+    """DescribeProjects请求参数结构体
+
+    """
+
+
+class DescribeProjectsResponse(AbstractModel):
+    """DescribeProjects返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Projects: 项目列表
+        :type Projects: list of Project
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Projects = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Projects") is not None:
+            self.Projects = []
+            for item in params.get("Projects"):
+                obj = Project()
+                obj._deserialize(item)
+                self.Projects.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeShardSpecRequest(AbstractModel):
     """DescribeShardSpec请求参数结构体
 
@@ -2407,6 +2440,63 @@ class ParamModifyResult(AbstractModel):
     def _deserialize(self, params):
         self.Param = params.get("Param")
         self.Code = params.get("Code")
+
+
+class Project(AbstractModel):
+    """项目信息描述
+
+    """
+
+    def __init__(self):
+        """
+        :param ProjectId: 项目ID
+        :type ProjectId: int
+        :param OwnerUin: 资源拥有者（主账号）uin
+        :type OwnerUin: int
+        :param AppId: 应用Id
+        :type AppId: int
+        :param Name: 项目名称
+        :type Name: str
+        :param CreatorUin: 创建者uin
+        :type CreatorUin: int
+        :param SrcPlat: 来源平台
+        :type SrcPlat: str
+        :param SrcAppId: 来源AppId
+        :type SrcAppId: int
+        :param Status: 项目状态,0正常，-1关闭。默认项目为3
+        :type Status: int
+        :param CreateTime: 创建时间
+        :type CreateTime: str
+        :param IsDefault: 是否默认项目，1 是，0 不是
+        :type IsDefault: int
+        :param Info: 描述信息
+        :type Info: str
+        """
+        self.ProjectId = None
+        self.OwnerUin = None
+        self.AppId = None
+        self.Name = None
+        self.CreatorUin = None
+        self.SrcPlat = None
+        self.SrcAppId = None
+        self.Status = None
+        self.CreateTime = None
+        self.IsDefault = None
+        self.Info = None
+
+
+    def _deserialize(self, params):
+        self.ProjectId = params.get("ProjectId")
+        self.OwnerUin = params.get("OwnerUin")
+        self.AppId = params.get("AppId")
+        self.Name = params.get("Name")
+        self.CreatorUin = params.get("CreatorUin")
+        self.SrcPlat = params.get("SrcPlat")
+        self.SrcAppId = params.get("SrcAppId")
+        self.Status = params.get("Status")
+        self.CreateTime = params.get("CreateTime")
+        self.IsDefault = params.get("IsDefault")
+        self.Info = params.get("Info")
 
 
 class RegionInfo(AbstractModel):

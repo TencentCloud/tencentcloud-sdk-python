@@ -1281,6 +1281,8 @@ class InvokeRequest(AbstractModel):
         :type LogType: str
         :param Namespace: 命名空间
         :type Namespace: str
+        :param RoutingKey: 函数灰度流量控制调用，以json格式传入，例如{"k":"v"}，注意kv都需要是字符串类型，最大支持的参数长度是1024字节
+        :type RoutingKey: str
         """
         self.FunctionName = None
         self.InvocationType = None
@@ -1288,6 +1290,7 @@ class InvokeRequest(AbstractModel):
         self.ClientContext = None
         self.LogType = None
         self.Namespace = None
+        self.RoutingKey = None
 
 
     def _deserialize(self, params):
@@ -1297,6 +1300,7 @@ class InvokeRequest(AbstractModel):
         self.ClientContext = params.get("ClientContext")
         self.LogType = params.get("LogType")
         self.Namespace = params.get("Namespace")
+        self.RoutingKey = params.get("RoutingKey")
 
 
 class InvokeResponse(AbstractModel):

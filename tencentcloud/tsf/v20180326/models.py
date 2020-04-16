@@ -1203,7 +1203,7 @@ class CreateClusterResponse(AbstractModel):
         :param Result: 创建集群操作是否成功。
 true：操作成功。
 false：操作失败。
-        :type Result: bool
+        :type Result: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -1309,6 +1309,26 @@ class CreateContainGroupRequest(AbstractModel):
         :type CpuRequest: str
         :param MemRequest: 初始分配的内存 MiB 数，对应 K8S request
         :type MemRequest: str
+        :param GroupResourceType: 部署组资源类型
+        :type GroupResourceType: str
+        :param SubnetId: 子网ID
+        :type SubnetId: str
+        :param AgentCpuRequest: agent 容器分配的 CPU 核数，对应 K8S 的 request
+        :type AgentCpuRequest: str
+        :param AgentCpuLimit: agent 容器最大的 CPU 核数，对应 K8S 的 limit
+        :type AgentCpuLimit: str
+        :param AgentMemRequest: agent 容器分配的内存 MiB 数，对应 K8S 的 request
+        :type AgentMemRequest: str
+        :param AgentMemLimit: agent 容器最大的内存 MiB 数，对应 K8S 的 limit
+        :type AgentMemLimit: str
+        :param IstioCpuRequest: istioproxy 容器分配的 CPU 核数，对应 K8S 的 request
+        :type IstioCpuRequest: str
+        :param IstioCpuLimit: istioproxy 容器最大的 CPU 核数，对应 K8S 的 limit
+        :type IstioCpuLimit: str
+        :param IstioMemRequest: istioproxy 容器分配的内存 MiB 数，对应 K8S 的 request
+        :type IstioMemRequest: str
+        :param IstioMemLimit: istioproxy 容器最大的内存 MiB 数，对应 K8S 的 limit
+        :type IstioMemLimit: str
         """
         self.ApplicationId = None
         self.NamespaceId = None
@@ -1324,6 +1344,16 @@ class CreateContainGroupRequest(AbstractModel):
         self.UpdateIvl = None
         self.CpuRequest = None
         self.MemRequest = None
+        self.GroupResourceType = None
+        self.SubnetId = None
+        self.AgentCpuRequest = None
+        self.AgentCpuLimit = None
+        self.AgentMemRequest = None
+        self.AgentMemLimit = None
+        self.IstioCpuRequest = None
+        self.IstioCpuLimit = None
+        self.IstioMemRequest = None
+        self.IstioMemLimit = None
 
 
     def _deserialize(self, params):
@@ -1346,6 +1376,16 @@ class CreateContainGroupRequest(AbstractModel):
         self.UpdateIvl = params.get("UpdateIvl")
         self.CpuRequest = params.get("CpuRequest")
         self.MemRequest = params.get("MemRequest")
+        self.GroupResourceType = params.get("GroupResourceType")
+        self.SubnetId = params.get("SubnetId")
+        self.AgentCpuRequest = params.get("AgentCpuRequest")
+        self.AgentCpuLimit = params.get("AgentCpuLimit")
+        self.AgentMemRequest = params.get("AgentMemRequest")
+        self.AgentMemLimit = params.get("AgentMemLimit")
+        self.IstioCpuRequest = params.get("IstioCpuRequest")
+        self.IstioCpuLimit = params.get("IstioCpuLimit")
+        self.IstioMemRequest = params.get("IstioMemRequest")
+        self.IstioMemLimit = params.get("IstioMemLimit")
 
 
 class CreateContainGroupResponse(AbstractModel):
@@ -1386,12 +1426,15 @@ class CreateGroupRequest(AbstractModel):
         :type ClusterId: str
         :param GroupDesc: 部署组描述
         :type GroupDesc: str
+        :param GroupResourceType: 部署组资源类型
+        :type GroupResourceType: str
         """
         self.ApplicationId = None
         self.NamespaceId = None
         self.GroupName = None
         self.ClusterId = None
         self.GroupDesc = None
+        self.GroupResourceType = None
 
 
     def _deserialize(self, params):
@@ -1400,6 +1443,7 @@ class CreateGroupRequest(AbstractModel):
         self.GroupName = params.get("GroupName")
         self.ClusterId = params.get("ClusterId")
         self.GroupDesc = params.get("GroupDesc")
+        self.GroupResourceType = params.get("GroupResourceType")
 
 
 class CreateGroupResponse(AbstractModel):
@@ -2079,15 +2123,15 @@ class DeployContainerGroupRequest(AbstractModel):
         :type InstanceNum: int
         :param Reponame: 旧版镜像名，如/tsf/nginx
         :type Reponame: str
-        :param CpuLimit: 最大的 CPU 核数，对应 K8S 的 limit；不填时默认为 request 的 2 倍
+        :param CpuLimit: 业务容器最大的 CPU 核数，对应 K8S 的 limit；不填时默认为 request 的 2 倍
         :type CpuLimit: str
-        :param MemLimit: 最大的内存 MiB 数，对应 K8S 的 limit；不填时默认为 request 的 2 倍
+        :param MemLimit: 业务容器最大的内存 MiB 数，对应 K8S 的 limit；不填时默认为 request 的 2 倍
         :type MemLimit: str
         :param JvmOpts: jvm参数
         :type JvmOpts: str
-        :param CpuRequest: 分配的 CPU 核数，对应 K8S 的 request
+        :param CpuRequest: 业务容器分配的 CPU 核数，对应 K8S 的 request
         :type CpuRequest: str
-        :param MemRequest: 分配的内存 MiB 数，对应 K8S 的 request
+        :param MemRequest: 业务容器分配的内存 MiB 数，对应 K8S 的 request
         :type MemRequest: str
         :param DoNotStart: 是否不立即启动
         :type DoNotStart: bool
@@ -2097,6 +2141,22 @@ class DeployContainerGroupRequest(AbstractModel):
         :type UpdateType: int
         :param UpdateIvl: 滚动更新必填，更新间隔
         :type UpdateIvl: int
+        :param AgentCpuRequest: agent 容器分配的 CPU 核数，对应 K8S 的 request
+        :type AgentCpuRequest: str
+        :param AgentCpuLimit: agent 容器最大的 CPU 核数，对应 K8S 的 limit
+        :type AgentCpuLimit: str
+        :param AgentMemRequest: agent 容器分配的内存 MiB 数，对应 K8S 的 request
+        :type AgentMemRequest: str
+        :param AgentMemLimit: agent 容器最大的内存 MiB 数，对应 K8S 的 limit
+        :type AgentMemLimit: str
+        :param IstioCpuRequest: istioproxy 容器分配的 CPU 核数，对应 K8S 的 request
+        :type IstioCpuRequest: str
+        :param IstioCpuLimit: istioproxy 容器最大的 CPU 核数，对应 K8S 的 limit
+        :type IstioCpuLimit: str
+        :param IstioMemRequest: istioproxy 容器分配的内存 MiB 数，对应 K8S 的 request
+        :type IstioMemRequest: str
+        :param IstioMemLimit: istioproxy 容器最大的内存 MiB 数，对应 K8S 的 limit
+        :type IstioMemLimit: str
         """
         self.GroupId = None
         self.Server = None
@@ -2112,6 +2172,14 @@ class DeployContainerGroupRequest(AbstractModel):
         self.RepoName = None
         self.UpdateType = None
         self.UpdateIvl = None
+        self.AgentCpuRequest = None
+        self.AgentCpuLimit = None
+        self.AgentMemRequest = None
+        self.AgentMemLimit = None
+        self.IstioCpuRequest = None
+        self.IstioCpuLimit = None
+        self.IstioMemRequest = None
+        self.IstioMemLimit = None
 
 
     def _deserialize(self, params):
@@ -2129,6 +2197,14 @@ class DeployContainerGroupRequest(AbstractModel):
         self.RepoName = params.get("RepoName")
         self.UpdateType = params.get("UpdateType")
         self.UpdateIvl = params.get("UpdateIvl")
+        self.AgentCpuRequest = params.get("AgentCpuRequest")
+        self.AgentCpuLimit = params.get("AgentCpuLimit")
+        self.AgentMemRequest = params.get("AgentMemRequest")
+        self.AgentMemLimit = params.get("AgentMemLimit")
+        self.IstioCpuRequest = params.get("IstioCpuRequest")
+        self.IstioCpuLimit = params.get("IstioCpuLimit")
+        self.IstioMemRequest = params.get("IstioMemRequest")
+        self.IstioMemLimit = params.get("IstioMemLimit")
 
 
 class DeployContainerGroupResponse(AbstractModel):

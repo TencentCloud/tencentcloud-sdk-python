@@ -616,6 +616,34 @@ class DcdbClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeProjects(self, request):
+        """本接口（DescribeProjects）用于查询项目列表
+
+        :param request: Request instance for DescribeProjects.
+        :type request: :class:`tencentcloud.dcdb.v20180411.models.DescribeProjectsRequest`
+        :rtype: :class:`tencentcloud.dcdb.v20180411.models.DescribeProjectsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeProjects", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeProjectsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeShardSpec(self, request):
         """查询可创建的分布式数据库可售卖的分片规格配置。
 

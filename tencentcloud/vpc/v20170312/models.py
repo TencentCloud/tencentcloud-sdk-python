@@ -7254,9 +7254,9 @@ class DescribeVpcsRequest(AbstractModel):
 <li>tag-key - String -是否必填：否- （过滤条件）按照标签键进行过滤。</li>
 <li>tag:tag-key - String - 是否必填：否 - （过滤条件）按照标签键值对进行过滤。 tag-key使用具体的标签键进行替换。使用请参考示例2。</li>
         :type Filters: list of Filter
-        :param Offset: 偏移量
+        :param Offset: 偏移量，默认为0。
         :type Offset: str
-        :param Limit: 返回数量
+        :param Limit: 返回数量，默认为20，最大值为100。
         :type Limit: str
         """
         self.VpcIds = None

@@ -194,7 +194,7 @@ class TsfClient(AbstractClient):
 
 
     def CreateGroup(self, request):
-        """创建容器部署组
+        """创建虚拟机部署组
 
         :param request: Request instance for CreateGroup.
         :type request: :class:`tencentcloud.tsf.v20180326.models.CreateGroupRequest`

@@ -922,6 +922,34 @@ class LiveClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DeletePullStreamConfig(self, request):
+        """删除直播拉流配置
+
+        :param request: Request instance for DeletePullStreamConfig.
+        :type request: :class:`tencentcloud.live.v20180801.models.DeletePullStreamConfigRequest`
+        :rtype: :class:`tencentcloud.live.v20180801.models.DeletePullStreamConfigResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DeletePullStreamConfig", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DeletePullStreamConfigResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeBillBandwidthAndFluxList(self, request):
         """直播计费带宽和流量数据查询。
 
@@ -2075,6 +2103,34 @@ class LiveClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribePullStreamConfigs(self, request):
+        """查询直播拉流配置。
+
+        :param request: Request instance for DescribePullStreamConfigs.
+        :type request: :class:`tencentcloud.live.v20180801.models.DescribePullStreamConfigsRequest`
+        :rtype: :class:`tencentcloud.live.v20180801.models.DescribePullStreamConfigsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribePullStreamConfigs", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribePullStreamConfigsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeScreenShotSheetNumList(self, request):
         """接口用来查询直播增值业务--截图的张数
 
@@ -2594,6 +2650,62 @@ class LiveClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyLiveTranscodeTemplateResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ModifyPullStreamConfig(self, request):
+        """更新拉流配置。
+
+        :param request: Request instance for ModifyPullStreamConfig.
+        :type request: :class:`tencentcloud.live.v20180801.models.ModifyPullStreamConfigRequest`
+        :rtype: :class:`tencentcloud.live.v20180801.models.ModifyPullStreamConfigResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ModifyPullStreamConfig", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ModifyPullStreamConfigResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ModifyPullStreamStatus(self, request):
+        """修改直播拉流配置的状态。
+
+        :param request: Request instance for ModifyPullStreamStatus.
+        :type request: :class:`tencentcloud.live.v20180801.models.ModifyPullStreamStatusRequest`
+        :rtype: :class:`tencentcloud.live.v20180801.models.ModifyPullStreamStatusResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ModifyPullStreamStatus", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ModifyPullStreamStatusResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

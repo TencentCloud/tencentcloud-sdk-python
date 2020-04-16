@@ -1548,6 +1548,12 @@ class GetPolicyResponse(AbstractModel):
         :param PolicyDocument: 策略文档
 注意：此字段可能返回 null，表示取不到有效值。
         :type PolicyDocument: str
+        :param PresetAlias: 备注
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PresetAlias: str
+        :param IsServiceLinkedRolePolicy: 是否服务相关策略
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IsServiceLinkedRolePolicy: int
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -1557,6 +1563,8 @@ class GetPolicyResponse(AbstractModel):
         self.AddTime = None
         self.UpdateTime = None
         self.PolicyDocument = None
+        self.PresetAlias = None
+        self.IsServiceLinkedRolePolicy = None
         self.RequestId = None
 
 
@@ -1567,6 +1575,8 @@ class GetPolicyResponse(AbstractModel):
         self.AddTime = params.get("AddTime")
         self.UpdateTime = params.get("UpdateTime")
         self.PolicyDocument = params.get("PolicyDocument")
+        self.PresetAlias = params.get("PresetAlias")
+        self.IsServiceLinkedRolePolicy = params.get("IsServiceLinkedRolePolicy")
         self.RequestId = params.get("RequestId")
 
 
@@ -2011,6 +2021,57 @@ class ListAttachedUserPoliciesResponse(AbstractModel):
                 obj = AttachPolicyInfo()
                 obj._deserialize(item)
                 self.List.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class ListCollaboratorsRequest(AbstractModel):
+    """ListCollaborators请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Limit: 分页条数，缺省为20
+        :type Limit: int
+        :param Offset: 分页起始值，缺省为0
+        :type Offset: int
+        """
+        self.Limit = None
+        self.Offset = None
+
+
+    def _deserialize(self, params):
+        self.Limit = params.get("Limit")
+        self.Offset = params.get("Offset")
+
+
+class ListCollaboratorsResponse(AbstractModel):
+    """ListCollaborators返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param TotalNum: 总数
+        :type TotalNum: int
+        :param Data: 协作者信息
+        :type Data: list of SubAccountInfo
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TotalNum = None
+        self.Data = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalNum = params.get("TotalNum")
+        if params.get("Data") is not None:
+            self.Data = []
+            for item in params.get("Data"):
+                obj = SubAccountInfo()
+                obj._deserialize(item)
+                self.Data.append(obj)
         self.RequestId = params.get("RequestId")
 
 
@@ -2813,6 +2874,48 @@ class UpdateGroupRequest(AbstractModel):
 
 class UpdateGroupResponse(AbstractModel):
     """UpdateGroup返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class UpdateRoleConsoleLoginRequest(AbstractModel):
+    """UpdateRoleConsoleLogin请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ConsoleLogin: 是否可登录，可登录：1，不可登录：0
+        :type ConsoleLogin: int
+        :param RoleId: 角色ID
+        :type RoleId: int
+        :param RoleName: 角色名
+        :type RoleName: str
+        """
+        self.ConsoleLogin = None
+        self.RoleId = None
+        self.RoleName = None
+
+
+    def _deserialize(self, params):
+        self.ConsoleLogin = params.get("ConsoleLogin")
+        self.RoleId = params.get("RoleId")
+        self.RoleName = params.get("RoleName")
+
+
+class UpdateRoleConsoleLoginResponse(AbstractModel):
+    """UpdateRoleConsoleLogin返回参数结构体
 
     """
 

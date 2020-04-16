@@ -977,6 +977,34 @@ class CamClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def ListCollaborators(self, request):
+        """获取协作者列表
+
+        :param request: Request instance for ListCollaborators.
+        :type request: :class:`tencentcloud.cam.v20190116.models.ListCollaboratorsRequest`
+        :rtype: :class:`tencentcloud.cam.v20190116.models.ListCollaboratorsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ListCollaborators", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ListCollaboratorsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def ListEntitiesForPolicy(self, request):
         """本接口（ListEntitiesForPolicy）可用于查询策略关联的实体列表。
 
@@ -1271,6 +1299,34 @@ class CamClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.UpdateGroupResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def UpdateRoleConsoleLogin(self, request):
+        """本接口（UpdateRoleConsoleLogin）用于修改角色是否可登录。
+
+        :param request: Request instance for UpdateRoleConsoleLogin.
+        :type request: :class:`tencentcloud.cam.v20190116.models.UpdateRoleConsoleLoginRequest`
+        :rtype: :class:`tencentcloud.cam.v20190116.models.UpdateRoleConsoleLoginResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("UpdateRoleConsoleLogin", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.UpdateRoleConsoleLoginResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

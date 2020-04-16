@@ -483,9 +483,9 @@ class DescribeBaseMetricsRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Namespace: 业务命名空间
+        :param Namespace: 业务命名空间，各个云产品的业务命名空间不同。如需获取业务命名空间，请前往各产品监控接口文档，例如云服务器的命名空间，可参见 [云服务器监控接口](https://cloud.tencent.com/document/api/248/30385)
         :type Namespace: str
-        :param MetricName: 指标名
+        :param MetricName: 指标名，各个云产品的指标名不同。如需获取指标名，请前往各产品监控接口文档，例如云服务器的指标名，可参见 [云服务器监控接口](https://cloud.tencent.com/document/api/248/30385)
         :type MetricName: str
         """
         self.Namespace = None

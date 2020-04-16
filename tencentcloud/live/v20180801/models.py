@@ -2169,6 +2169,40 @@ class DeleteLiveWatermarkRuleResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DeletePullStreamConfigRequest(AbstractModel):
+    """DeletePullStreamConfig请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ConfigId: 配置id。
+        :type ConfigId: str
+        """
+        self.ConfigId = None
+
+
+    def _deserialize(self, params):
+        self.ConfigId = params.get("ConfigId")
+
+
+class DeletePullStreamConfigResponse(AbstractModel):
+    """DeletePullStreamConfig返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeBillBandwidthAndFluxListRequest(AbstractModel):
     """DescribeBillBandwidthAndFluxList请求参数结构体
 
@@ -4419,6 +4453,49 @@ class DescribeProvinceIspPlayInfoListResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribePullStreamConfigsRequest(AbstractModel):
+    """DescribePullStreamConfigs请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ConfigId: 配置id。
+        :type ConfigId: str
+        """
+        self.ConfigId = None
+
+
+    def _deserialize(self, params):
+        self.ConfigId = params.get("ConfigId")
+
+
+class DescribePullStreamConfigsResponse(AbstractModel):
+    """DescribePullStreamConfigs返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param PullStreamConfigs: 拉流配置。
+        :type PullStreamConfigs: list of PullStreamConfig
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.PullStreamConfigs = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("PullStreamConfigs") is not None:
+            self.PullStreamConfigs = []
+            for item in params.get("PullStreamConfigs"):
+                obj = PullStreamConfig()
+                obj._deserialize(item)
+                self.PullStreamConfigs.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeScreenShotSheetNumListRequest(AbstractModel):
     """DescribeScreenShotSheetNumList请求参数结构体
 
@@ -6018,6 +6095,117 @@ class ModifyLiveTranscodeTemplateResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class ModifyPullStreamConfigRequest(AbstractModel):
+    """ModifyPullStreamConfig请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ConfigId: 配置id。
+        :type ConfigId: str
+        :param FromUrl: 源Url。
+        :type FromUrl: str
+        :param ToUrl: 目的Url。
+        :type ToUrl: str
+        :param AreaId: 区域id：
+1-深圳，
+2-上海，
+3-天津，
+4-中国香港。
+如有改动，需同时传入IspId。
+        :type AreaId: int
+        :param IspId: 运营商id,1-电信,2-移动,3-联通,4-其他,AreaId为4的时候,IspId只能为其他。如有改动，需同时传入AreaId。
+        :type IspId: int
+        :param StartTime: 开始时间。
+使用UTC格式时间，
+例如：2019-01-08T10:00:00Z。
+注意：北京时间值为 UTC 时间值 + 8 小时，格式按照 ISO 8601 标准表示，详见 [ISO 日期格式说明](https://cloud.tencent.com/document/product/266/11732#I)。
+        :type StartTime: str
+        :param EndTime: 结束时间，注意：
+1. 结束时间必须大于开始时间；
+2. 结束时间和开始时间必须大于当前时间；
+3. 结束时间 和 开始时间 间隔必须小于七天。
+
+使用UTC格式时间，
+例如：2019-01-08T10:00:00Z。
+注意：北京时间值为 UTC 时间值 + 8 小时，格式按照 ISO 8601 标准表示，详见 [ISO 日期格式说明](https://cloud.tencent.com/document/product/266/11732#I)。
+        :type EndTime: str
+        """
+        self.ConfigId = None
+        self.FromUrl = None
+        self.ToUrl = None
+        self.AreaId = None
+        self.IspId = None
+        self.StartTime = None
+        self.EndTime = None
+
+
+    def _deserialize(self, params):
+        self.ConfigId = params.get("ConfigId")
+        self.FromUrl = params.get("FromUrl")
+        self.ToUrl = params.get("ToUrl")
+        self.AreaId = params.get("AreaId")
+        self.IspId = params.get("IspId")
+        self.StartTime = params.get("StartTime")
+        self.EndTime = params.get("EndTime")
+
+
+class ModifyPullStreamConfigResponse(AbstractModel):
+    """ModifyPullStreamConfig返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class ModifyPullStreamStatusRequest(AbstractModel):
+    """ModifyPullStreamStatus请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ConfigIds: 配置id列表。
+        :type ConfigIds: list of str
+        :param Status: 目标状态。0无效，2正在运行，4暂停。
+        :type Status: str
+        """
+        self.ConfigIds = None
+        self.Status = None
+
+
+    def _deserialize(self, params):
+        self.ConfigIds = params.get("ConfigIds")
+        self.Status = params.get("Status")
+
+
+class ModifyPullStreamStatusResponse(AbstractModel):
+    """ModifyPullStreamStatus返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class PlayAuthKeyInfo(AbstractModel):
     """播放鉴权key信息
 
@@ -6230,6 +6418,58 @@ UTC 格式，例如：2018-06-29T19:00:00Z。
 
     def _deserialize(self, params):
         self.PublishTime = params.get("PublishTime")
+
+
+class PullStreamConfig(AbstractModel):
+    """拉流配置
+
+    """
+
+    def __init__(self):
+        """
+        :param ConfigId: 拉流配置Id。
+        :type ConfigId: str
+        :param FromUrl: 源Url。
+        :type FromUrl: str
+        :param ToUrl: 目的Url。
+        :type ToUrl: str
+        :param AreaName: 区域名。
+        :type AreaName: str
+        :param IspName: 运营商名。
+        :type IspName: str
+        :param StartTime: 开始时间。
+UTC格式时间，
+例如：2019-01-08T10:00:00Z。
+注意：北京时间值为 UTC 时间值 + 8 小时，格式按照 ISO 8601 标准表示，详见 [ISO 日期格式说明](https://cloud.tencent.com/document/product/266/11732#I)。
+        :type StartTime: str
+        :param EndTime: 结束时间。
+
+UTC格式时间，
+例如：2019-01-08T10:00:00Z。
+注意：北京时间值为 UTC 时间值 + 8 小时，格式按照 ISO 8601 标准表示，详见 [ISO 日期格式说明](https://cloud.tencent.com/document/product/266/11732#I)。
+        :type EndTime: str
+        :param Status: 0无效，1初始状态，2正在运行，3拉起失败，4暂停。
+        :type Status: str
+        """
+        self.ConfigId = None
+        self.FromUrl = None
+        self.ToUrl = None
+        self.AreaName = None
+        self.IspName = None
+        self.StartTime = None
+        self.EndTime = None
+        self.Status = None
+
+
+    def _deserialize(self, params):
+        self.ConfigId = params.get("ConfigId")
+        self.FromUrl = params.get("FromUrl")
+        self.ToUrl = params.get("ToUrl")
+        self.AreaName = params.get("AreaName")
+        self.IspName = params.get("IspName")
+        self.StartTime = params.get("StartTime")
+        self.EndTime = params.get("EndTime")
+        self.Status = params.get("Status")
 
 
 class PushAuthKeyInfo(AbstractModel):

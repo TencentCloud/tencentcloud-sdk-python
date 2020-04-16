@@ -7722,10 +7722,8 @@ class DescribeTasksResponse(AbstractModel):
     def __init__(self):
         """
         :param TaskSet: 任务概要列表。
-注意：此字段可能返回 null，表示取不到有效值。
         :type TaskSet: list of TaskSimpleInfo
         :param ScrollToken: 翻页标识，当请求未返回所有数据，该字段表示下一条记录的 ID。当该字段为空，说明已无更多数据。
-注意：此字段可能返回 null，表示取不到有效值。
         :type ScrollToken: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -8010,10 +8008,8 @@ class DescribeWordSamplesResponse(AbstractModel):
     def __init__(self):
         """
         :param TotalCount: 符合条件的记录总数。
-注意：此字段可能返回 null，表示取不到有效值。
         :type TotalCount: int
         :param WordSet: 关键词信息。
-注意：此字段可能返回 null，表示取不到有效值。
         :type WordSet: list of AiSampleWord
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -8575,7 +8571,6 @@ class ExecuteFunctionResponse(AbstractModel):
     def __init__(self):
         """
         :param Result: 处理结果打包后的字符串，具体与后台一同协调。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Result: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -9203,10 +9198,8 @@ class LiveRealTimeClipResponse(AbstractModel):
         :param Url: 剪辑后的视频播放 URL。
         :type Url: str
         :param FileId: 剪辑固化后的视频的媒体文件的唯一标识。
-注意：此字段可能返回 null，表示取不到有效值。
         :type FileId: str
         :param VodTaskId: 剪辑固化后的视频任务流 ID。
-注意：此字段可能返回 null，表示取不到有效值。
         :type VodTaskId: str
         :param MetaData: 剪辑后的视频元信息。
 注意：此字段可能返回 null，表示取不到有效值。
@@ -12326,7 +12319,6 @@ class ModifyWatermarkTemplateResponse(AbstractModel):
     def __init__(self):
         """
         :param ImageUrl: 图片水印地址，仅当 ImageTemplate.ImageContent 非空，该字段有值。
-注意：此字段可能返回 null，表示取不到有效值。
         :type ImageUrl: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
