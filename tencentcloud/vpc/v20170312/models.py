@@ -3280,6 +3280,8 @@ class CreateVpnGatewayRequest(AbstractModel):
         :type InstanceChargePrepaid: :class:`tencentcloud.vpc.v20170312.models.InstanceChargePrepaid`
         :param Zone: 可用区，如：ap-guangzhou-2。
         :type Zone: str
+        :param Type: VPN网关类型。值“CCN”云联网类型VPN网关
+        :type Type: str
         """
         self.VpcId = None
         self.VpnGatewayName = None
@@ -3287,6 +3289,7 @@ class CreateVpnGatewayRequest(AbstractModel):
         self.InstanceChargeType = None
         self.InstanceChargePrepaid = None
         self.Zone = None
+        self.Type = None
 
 
     def _deserialize(self, params):
@@ -3298,6 +3301,7 @@ class CreateVpnGatewayRequest(AbstractModel):
             self.InstanceChargePrepaid = InstanceChargePrepaid()
             self.InstanceChargePrepaid._deserialize(params.get("InstanceChargePrepaid"))
         self.Zone = params.get("Zone")
+        self.Type = params.get("Type")
 
 
 class CreateVpnGatewayResponse(AbstractModel):
@@ -10455,6 +10459,49 @@ class ModifyVpnGatewayAttributeResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class ModifyVpnGatewayCcnRoutesRequest(AbstractModel):
+    """ModifyVpnGatewayCcnRoutes请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param VpnGatewayId: VPN网关实例ID
+        :type VpnGatewayId: str
+        :param Routes: 云联网路由（IDC网段）列表
+        :type Routes: list of VpngwCcnRoutes
+        """
+        self.VpnGatewayId = None
+        self.Routes = None
+
+
+    def _deserialize(self, params):
+        self.VpnGatewayId = params.get("VpnGatewayId")
+        if params.get("Routes") is not None:
+            self.Routes = []
+            for item in params.get("Routes"):
+                obj = VpngwCcnRoutes()
+                obj._deserialize(item)
+                self.Routes.append(obj)
+
+
+class ModifyVpnGatewayCcnRoutesResponse(AbstractModel):
+    """ModifyVpnGatewayCcnRoutes返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class NatGateway(AbstractModel):
     """NAT网关对象。
 
@@ -10804,9 +10851,9 @@ class NetworkAclEntry(AbstractModel):
         """
         :param ModifyTime: 修改时间。
         :type ModifyTime: str
-        :param Protocol: 协议, 取值: TCP,UDP, ICMP。
+        :param Protocol: 协议, 取值: TCP,UDP, ICMP, ALL。
         :type Protocol: str
-        :param Port: 端口(all, 单个port,  range)。
+        :param Port: 端口(all, 单个port,  range)。当Protocol为ALL或ICMP时，不能指定Port。
         :type Port: str
         :param CidrBlock: 网段或IP(互斥)。
         :type CidrBlock: str
@@ -13186,3 +13233,26 @@ class VpnGatewayQuota(AbstractModel):
         self.Bandwidth = params.get("Bandwidth")
         self.Cname = params.get("Cname")
         self.Name = params.get("Name")
+
+
+class VpngwCcnRoutes(AbstractModel):
+    """VPN网关云联网路由信息
+
+    """
+
+    def __init__(self):
+        """
+        :param RouteId: 路由信息ID
+        :type RouteId: str
+        :param Status: 路由信息是否启用
+ENABLE：启用该路由
+DISABLE：不启用该路由
+        :type Status: str
+        """
+        self.RouteId = None
+        self.Status = None
+
+
+    def _deserialize(self, params):
+        self.RouteId = params.get("RouteId")
+        self.Status = params.get("Status")

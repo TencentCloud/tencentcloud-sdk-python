@@ -1304,10 +1304,13 @@ class GeneralAccurateOCRResponse(AbstractModel):
         """
         :param TextDetections: 检测到的文本信息，具体内容请点击左侧链接。
         :type TextDetections: list of TextDetection
+        :param Angel: 图片旋转角度（角度制），文本的水平方向为0°；顺时针为正，逆时针为负
+        :type Angel: float
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.TextDetections = None
+        self.Angel = None
         self.RequestId = None
 
 
@@ -1318,6 +1321,7 @@ class GeneralAccurateOCRResponse(AbstractModel):
                 obj = TextDetection()
                 obj._deserialize(item)
                 self.TextDetections.append(obj)
+        self.Angel = params.get("Angel")
         self.RequestId = params.get("RequestId")
 
 
@@ -1381,11 +1385,14 @@ class GeneralBasicOCRResponse(AbstractModel):
         :type TextDetections: list of TextDetection
         :param Language: 检测到的语言类型，目前支持的语言类型参考入参LanguageType说明。
         :type Language: str
+        :param Angel: 图片旋转角度（角度制），文本的水平方向为0°；顺时针为正，逆时针为负
+        :type Angel: float
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.TextDetections = None
         self.Language = None
+        self.Angel = None
         self.RequestId = None
 
 
@@ -1397,6 +1404,7 @@ class GeneralBasicOCRResponse(AbstractModel):
                 obj._deserialize(item)
                 self.TextDetections.append(obj)
         self.Language = params.get("Language")
+        self.Angel = params.get("Angel")
         self.RequestId = params.get("RequestId")
 
 
@@ -1437,10 +1445,13 @@ class GeneralEfficientOCRResponse(AbstractModel):
         """
         :param TextDetections: 检测到的文本信息，具体内容请点击左侧链接。
         :type TextDetections: list of TextDetection
+        :param Angel: 图片旋转角度（角度制），文本的水平方向为0°；顺时针为正，逆时针为负
+        :type Angel: float
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.TextDetections = None
+        self.Angel = None
         self.RequestId = None
 
 
@@ -1451,6 +1462,7 @@ class GeneralEfficientOCRResponse(AbstractModel):
                 obj = TextDetection()
                 obj._deserialize(item)
                 self.TextDetections.append(obj)
+        self.Angel = params.get("Angel")
         self.RequestId = params.get("RequestId")
 
 
@@ -1494,11 +1506,14 @@ class GeneralFastOCRResponse(AbstractModel):
         :param Language: 检测到的语言，目前支持的语种范围为：简体中文、繁体中文、英文、日文、韩文。未来将陆续新增对更多语种的支持。
 返回结果含义为：zh - 中英混合，jap - 日文，kor - 韩文。
         :type Language: str
+        :param Angel: 图片旋转角度（角度制），文本的水平方向为0°；顺时针为正，逆时针为负
+        :type Angel: float
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.TextDetections = None
         self.Language = None
+        self.Angel = None
         self.RequestId = None
 
 
@@ -1510,6 +1525,7 @@ class GeneralFastOCRResponse(AbstractModel):
                 obj._deserialize(item)
                 self.TextDetections.append(obj)
         self.Language = params.get("Language")
+        self.Angel = params.get("Angel")
         self.RequestId = params.get("RequestId")
 
 

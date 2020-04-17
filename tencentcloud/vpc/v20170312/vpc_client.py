@@ -5297,6 +5297,34 @@ class VpcClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def ModifyVpnGatewayCcnRoutes(self, request):
+        """本接口（ModifyVpnGatewayCcnRoutes）用于修改VPN网关云联网路由
+
+        :param request: Request instance for ModifyVpnGatewayCcnRoutes.
+        :type request: :class:`tencentcloud.vpc.v20170312.models.ModifyVpnGatewayCcnRoutesRequest`
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.ModifyVpnGatewayCcnRoutesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ModifyVpnGatewayCcnRoutes", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ModifyVpnGatewayCcnRoutesResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def RejectAttachCcnInstances(self, request):
         """本接口（RejectAttachCcnInstances）用于跨账号关联实例时，云联网所有者拒绝关联操作。
 

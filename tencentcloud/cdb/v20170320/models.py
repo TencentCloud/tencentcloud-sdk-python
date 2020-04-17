@@ -5815,14 +5815,18 @@ class RenewDBInstanceRequest(AbstractModel):
         :type InstanceId: str
         :param TimeSpan: 续费时长，单位：月，可选值包括 [1,2,3,4,5,6,7,8,9,10,11,12,24,36]。
         :type TimeSpan: int
+        :param ModifyPayType: 如果需要将按量计费实例续费为包年包月的实例，该入参的值需要指定为 "PREPAID" 。
+        :type ModifyPayType: str
         """
         self.InstanceId = None
         self.TimeSpan = None
+        self.ModifyPayType = None
 
 
     def _deserialize(self, params):
         self.InstanceId = params.get("InstanceId")
         self.TimeSpan = params.get("TimeSpan")
+        self.ModifyPayType = params.get("ModifyPayType")
 
 
 class RenewDBInstanceResponse(AbstractModel):

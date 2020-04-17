@@ -251,6 +251,8 @@ STATIC：静态
         :type TencentAddress: str
         :param CustomerAddress: CustomerAddress，用户侧互联 IP
         :type CustomerAddress: str
+        :param TencentBackupAddress: TencentBackupAddress，腾讯侧备用互联 IP
+        :type TencentBackupAddress: str
         """
         self.DirectConnectId = None
         self.DirectConnectTunnelName = None
@@ -266,6 +268,7 @@ STATIC：静态
         self.Vlan = None
         self.TencentAddress = None
         self.CustomerAddress = None
+        self.TencentBackupAddress = None
 
 
     def _deserialize(self, params):
@@ -290,6 +293,7 @@ STATIC：静态
         self.Vlan = params.get("Vlan")
         self.TencentAddress = params.get("TencentAddress")
         self.CustomerAddress = params.get("CustomerAddress")
+        self.TencentBackupAddress = params.get("TencentBackupAddress")
 
 
 class CreateDirectConnectTunnelResponse(AbstractModel):

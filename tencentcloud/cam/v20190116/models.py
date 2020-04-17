@@ -947,6 +947,54 @@ class DeleteUserResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeMFADeviceCollRequest(AbstractModel):
+    """DescribeMFADeviceColl请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param SubUin: 子用户Uin
+        :type SubUin: int
+        """
+        self.SubUin = None
+
+
+    def _deserialize(self, params):
+        self.SubUin = params.get("SubUin")
+
+
+class DescribeMFADeviceCollResponse(AbstractModel):
+    """DescribeMFADeviceColl返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Status: Token状态
+        :type Status: int
+        :param TokenSn: Token值
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TokenSn: str
+        :param TokenType: token类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TokenType: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Status = None
+        self.TokenSn = None
+        self.TokenType = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Status = params.get("Status")
+        self.TokenSn = params.get("TokenSn")
+        self.TokenType = params.get("TokenType")
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeMfaCodeStatusRequest(AbstractModel):
     """DescribeMfaCodeStatus请求参数结构体
 

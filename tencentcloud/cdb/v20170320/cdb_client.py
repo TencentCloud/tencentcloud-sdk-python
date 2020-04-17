@@ -2327,7 +2327,7 @@ class CdbClient(AbstractClient):
 
 
     def RenewDBInstance(self, request):
-        """本接口(RenewDBInstance)用于续费云数据库实例，仅支持付费模式为包年包月的实例。按量计费实例不需要续费。
+        """本接口(RenewDBInstance)用于续费云数据库实例，支持付费模式为包年包月的实例。按量计费实例可通过该接口续费为包年包月的实例。
 
         :param request: Request instance for RenewDBInstance.
         :type request: :class:`tencentcloud.cdb.v20170320.models.RenewDBInstanceRequest`
