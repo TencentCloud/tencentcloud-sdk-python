@@ -990,6 +990,8 @@ class ModifyDirectConnectTunnelAttributeRequest(AbstractModel):
         :type CustomerAddress: str
         :param Bandwidth: 专用通道带宽值，单位为M。
         :type Bandwidth: int
+        :param TencentBackupAddress: 腾讯侧备用互联IP
+        :type TencentBackupAddress: str
         """
         self.DirectConnectTunnelId = None
         self.DirectConnectTunnelName = None
@@ -998,6 +1000,7 @@ class ModifyDirectConnectTunnelAttributeRequest(AbstractModel):
         self.TencentAddress = None
         self.CustomerAddress = None
         self.Bandwidth = None
+        self.TencentBackupAddress = None
 
 
     def _deserialize(self, params):
@@ -1015,6 +1018,7 @@ class ModifyDirectConnectTunnelAttributeRequest(AbstractModel):
         self.TencentAddress = params.get("TencentAddress")
         self.CustomerAddress = params.get("CustomerAddress")
         self.Bandwidth = params.get("Bandwidth")
+        self.TencentBackupAddress = params.get("TencentBackupAddress")
 
 
 class ModifyDirectConnectTunnelAttributeResponse(AbstractModel):

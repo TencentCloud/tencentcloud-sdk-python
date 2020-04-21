@@ -138,7 +138,7 @@ class MongodbClient(AbstractClient):
 
 
     def DescribeClientConnections(self, request):
-        """本接口(DescribeClientConnections)用于查询实例客户端连接信息，包括连接IP和连接数量。目前只支持3.2版本的MongoDB实例。
+        """本接口(DescribeClientConnections)用于查询实例客户端连接信息，包括连接IP和连接数量。
 
         :param request: Request instance for DescribeClientConnections.
         :type request: :class:`tencentcloud.mongodb.v20190725.models.DescribeClientConnectionsRequest`
@@ -207,6 +207,62 @@ class MongodbClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeDBInstancesResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeSlowLogPatterns(self, request):
+        """本接口（DescribeSlowLogPatterns）用于获取数据库实例慢日志的统计信息。
+
+        :param request: Request instance for DescribeSlowLogPatterns.
+        :type request: :class:`tencentcloud.mongodb.v20190725.models.DescribeSlowLogPatternsRequest`
+        :rtype: :class:`tencentcloud.mongodb.v20190725.models.DescribeSlowLogPatternsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeSlowLogPatterns", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeSlowLogPatternsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeSlowLogs(self, request):
+        """本接口（DescribeSlowLogs）用于获取云数据库慢日志信息。接口只支持查询最近7天内慢日志。
+
+        :param request: Request instance for DescribeSlowLogs.
+        :type request: :class:`tencentcloud.mongodb.v20190725.models.DescribeSlowLogsRequest`
+        :rtype: :class:`tencentcloud.mongodb.v20190725.models.DescribeSlowLogsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeSlowLogs", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeSlowLogsResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -347,6 +403,34 @@ class MongodbClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.RenameInstanceResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def RenewDBInstances(self, request):
+        """本接口(RenewDBInstance)用于续费云数据库实例，仅支持付费模式为包年包月的实例。按量计费实例不需要续费。
+
+        :param request: Request instance for RenewDBInstances.
+        :type request: :class:`tencentcloud.mongodb.v20190725.models.RenewDBInstancesRequest`
+        :rtype: :class:`tencentcloud.mongodb.v20190725.models.RenewDBInstancesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("RenewDBInstances", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.RenewDBInstancesResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

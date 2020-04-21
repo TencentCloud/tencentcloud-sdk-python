@@ -2674,7 +2674,7 @@ global：全球锁定
         :type AwsPrivateAccess: :class:`tencentcloud.cdn.v20180606.models.AwsPrivateAccess`
         :param SecurityConfig: Scdn配置
 注意：此字段可能返回 null，表示取不到有效值。
-        :type SecurityConfig: list of SecurityConfig
+        :type SecurityConfig: :class:`tencentcloud.cdn.v20180606.models.SecurityConfig`
         """
         self.ResourceId = None
         self.AppId = None
@@ -2817,11 +2817,8 @@ global：全球锁定
             self.AwsPrivateAccess = AwsPrivateAccess()
             self.AwsPrivateAccess._deserialize(params.get("AwsPrivateAccess"))
         if params.get("SecurityConfig") is not None:
-            self.SecurityConfig = []
-            for item in params.get("SecurityConfig"):
-                obj = SecurityConfig()
-                obj._deserialize(item)
-                self.SecurityConfig.append(obj)
+            self.SecurityConfig = SecurityConfig()
+            self.SecurityConfig._deserialize(params.get("SecurityConfig"))
 
 
 class DisableCachesRequest(AbstractModel):

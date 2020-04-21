@@ -64,6 +64,436 @@ class Acct(AbstractModel):
         self.MaintenanceDate = params.get("MaintenanceDate")
 
 
+class ApplyApplicationMaterialRequest(AbstractModel):
+    """ApplyApplicationMaterial请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param TransactionId: 对接方汇出指令编号
+        :type TransactionId: str
+        :param DeclareId: 申报流水号
+        :type DeclareId: str
+        :param PayerId: 付款人ID
+        :type PayerId: str
+        :param SourceCurrency: 源币种
+        :type SourceCurrency: str
+        :param TargetCurrency: 目的币种
+        :type TargetCurrency: str
+        :param TradeCode: 贸易编码
+        :type TradeCode: str
+        :param OriginalDeclareId: 原申报流水号
+        :type OriginalDeclareId: str
+        :param SourceAmount: 源金额
+        :type SourceAmount: int
+        :param TargetAmount: 目的金额
+        :type TargetAmount: int
+        :param Profile: 接入环境。沙箱环境填sandbox
+        :type Profile: str
+        """
+        self.TransactionId = None
+        self.DeclareId = None
+        self.PayerId = None
+        self.SourceCurrency = None
+        self.TargetCurrency = None
+        self.TradeCode = None
+        self.OriginalDeclareId = None
+        self.SourceAmount = None
+        self.TargetAmount = None
+        self.Profile = None
+
+
+    def _deserialize(self, params):
+        self.TransactionId = params.get("TransactionId")
+        self.DeclareId = params.get("DeclareId")
+        self.PayerId = params.get("PayerId")
+        self.SourceCurrency = params.get("SourceCurrency")
+        self.TargetCurrency = params.get("TargetCurrency")
+        self.TradeCode = params.get("TradeCode")
+        self.OriginalDeclareId = params.get("OriginalDeclareId")
+        self.SourceAmount = params.get("SourceAmount")
+        self.TargetAmount = params.get("TargetAmount")
+        self.Profile = params.get("Profile")
+
+
+class ApplyApplicationMaterialResponse(AbstractModel):
+    """ApplyApplicationMaterial返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Result: 提交申报材料结果
+        :type Result: :class:`tencentcloud.cpdp.v20190820.models.ApplyDeclareResult`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Result = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Result") is not None:
+            self.Result = ApplyDeclareResult()
+            self.Result._deserialize(params.get("Result"))
+        self.RequestId = params.get("RequestId")
+
+
+class ApplyDeclareData(AbstractModel):
+    """提交申报材料结果
+
+    """
+
+    def __init__(self):
+        """
+        :param MerchantId: 商户号
+        :type MerchantId: str
+        :param TransactionId: 第三方指令编号
+        :type TransactionId: str
+        :param Status: 受理状态
+        :type Status: str
+        :param DeclareId: 申报流水号
+        :type DeclareId: str
+        :param OriginalDeclareId: 原申报流水号
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OriginalDeclareId: str
+        :param PayerId: 付款人ID
+        :type PayerId: str
+        """
+        self.MerchantId = None
+        self.TransactionId = None
+        self.Status = None
+        self.DeclareId = None
+        self.OriginalDeclareId = None
+        self.PayerId = None
+
+
+    def _deserialize(self, params):
+        self.MerchantId = params.get("MerchantId")
+        self.TransactionId = params.get("TransactionId")
+        self.Status = params.get("Status")
+        self.DeclareId = params.get("DeclareId")
+        self.OriginalDeclareId = params.get("OriginalDeclareId")
+        self.PayerId = params.get("PayerId")
+
+
+class ApplyDeclareResult(AbstractModel):
+    """提交申报材料结果
+
+    """
+
+    def __init__(self):
+        """
+        :param Code: 错误码
+        :type Code: str
+        :param Data: 提交申报材料数据
+        :type Data: :class:`tencentcloud.cpdp.v20190820.models.ApplyDeclareData`
+        """
+        self.Code = None
+        self.Data = None
+
+
+    def _deserialize(self, params):
+        self.Code = params.get("Code")
+        if params.get("Data") is not None:
+            self.Data = ApplyDeclareData()
+            self.Data._deserialize(params.get("Data"))
+
+
+class ApplyOutwardOrderData(AbstractModel):
+    """汇出指令申请数据
+
+    """
+
+    def __init__(self):
+        """
+        :param MerchantId: 商户号
+        :type MerchantId: str
+        :param TransactionId: 对接方汇出指令编号
+        :type TransactionId: str
+        :param Status: 受理状态
+        :type Status: str
+        """
+        self.MerchantId = None
+        self.TransactionId = None
+        self.Status = None
+
+
+    def _deserialize(self, params):
+        self.MerchantId = params.get("MerchantId")
+        self.TransactionId = params.get("TransactionId")
+        self.Status = params.get("Status")
+
+
+class ApplyOutwardOrderRequest(AbstractModel):
+    """ApplyOutwardOrder请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param TransactionId: 对接方汇出指令编号
+        :type TransactionId: str
+        :param PricingCurrency: 定价币种
+        :type PricingCurrency: str
+        :param SourceCurrency: 源币种
+        :type SourceCurrency: str
+        :param TargetCurrency: 目的币种
+        :type TargetCurrency: str
+        :param PayeeType: 收款人类型
+        :type PayeeType: str
+        :param PayeeAccount: 收款人账号
+        :type PayeeAccount: str
+        :param SourceAmount: 源币种金额
+        :type SourceAmount: float
+        :param TargetAmount: 目的金额
+        :type TargetAmount: float
+        :param PayeeName: 收款人姓名
+        :type PayeeName: str
+        :param PayeeAddress: 收款人地址
+        :type PayeeAddress: str
+        :param PayeeBankAccountType: 收款人银行账号类型
+        :type PayeeBankAccountType: str
+        :param PayeeCountryCode: 收款人国家或地区编码
+        :type PayeeCountryCode: str
+        :param PayeeBankName: 收款人开户银行名称
+        :type PayeeBankName: str
+        :param PayeeBankAddress: 收款人开户银行地址
+        :type PayeeBankAddress: str
+        :param PayeeBankDistrict: 收款人开户银行所在国家或地区编码
+        :type PayeeBankDistrict: str
+        :param PayeeBankSwiftCode: 收款银行SwiftCode
+        :type PayeeBankSwiftCode: str
+        :param PayeeBankType: 收款银行国际编码类型
+        :type PayeeBankType: str
+        :param PayeeBankCode: 收款银行国际编码
+        :type PayeeBankCode: str
+        :param ReferenceForBeneficiary: 收款人附言
+        :type ReferenceForBeneficiary: str
+        :param Profile: 接入环境。沙箱环境填sandbox
+        :type Profile: str
+        """
+        self.TransactionId = None
+        self.PricingCurrency = None
+        self.SourceCurrency = None
+        self.TargetCurrency = None
+        self.PayeeType = None
+        self.PayeeAccount = None
+        self.SourceAmount = None
+        self.TargetAmount = None
+        self.PayeeName = None
+        self.PayeeAddress = None
+        self.PayeeBankAccountType = None
+        self.PayeeCountryCode = None
+        self.PayeeBankName = None
+        self.PayeeBankAddress = None
+        self.PayeeBankDistrict = None
+        self.PayeeBankSwiftCode = None
+        self.PayeeBankType = None
+        self.PayeeBankCode = None
+        self.ReferenceForBeneficiary = None
+        self.Profile = None
+
+
+    def _deserialize(self, params):
+        self.TransactionId = params.get("TransactionId")
+        self.PricingCurrency = params.get("PricingCurrency")
+        self.SourceCurrency = params.get("SourceCurrency")
+        self.TargetCurrency = params.get("TargetCurrency")
+        self.PayeeType = params.get("PayeeType")
+        self.PayeeAccount = params.get("PayeeAccount")
+        self.SourceAmount = params.get("SourceAmount")
+        self.TargetAmount = params.get("TargetAmount")
+        self.PayeeName = params.get("PayeeName")
+        self.PayeeAddress = params.get("PayeeAddress")
+        self.PayeeBankAccountType = params.get("PayeeBankAccountType")
+        self.PayeeCountryCode = params.get("PayeeCountryCode")
+        self.PayeeBankName = params.get("PayeeBankName")
+        self.PayeeBankAddress = params.get("PayeeBankAddress")
+        self.PayeeBankDistrict = params.get("PayeeBankDistrict")
+        self.PayeeBankSwiftCode = params.get("PayeeBankSwiftCode")
+        self.PayeeBankType = params.get("PayeeBankType")
+        self.PayeeBankCode = params.get("PayeeBankCode")
+        self.ReferenceForBeneficiary = params.get("ReferenceForBeneficiary")
+        self.Profile = params.get("Profile")
+
+
+class ApplyOutwardOrderResponse(AbstractModel):
+    """ApplyOutwardOrder返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Result: 汇出指令申请
+        :type Result: :class:`tencentcloud.cpdp.v20190820.models.ApplyOutwardOrderResult`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Result = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Result") is not None:
+            self.Result = ApplyOutwardOrderResult()
+            self.Result._deserialize(params.get("Result"))
+        self.RequestId = params.get("RequestId")
+
+
+class ApplyOutwardOrderResult(AbstractModel):
+    """汇出指令申请结果
+
+    """
+
+    def __init__(self):
+        """
+        :param Data: 汇出指令申请数据
+        :type Data: :class:`tencentcloud.cpdp.v20190820.models.ApplyOutwardOrderData`
+        :param Code: 错误码
+        :type Code: str
+        """
+        self.Data = None
+        self.Code = None
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self.Data = ApplyOutwardOrderData()
+            self.Data._deserialize(params.get("Data"))
+        self.Code = params.get("Code")
+
+
+class ApplyPayerInfoRequest(AbstractModel):
+    """ApplyPayerInfo请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param PayerId: 付款人ID
+        :type PayerId: str
+        :param PayerType: 付款人类型 (个人: INDIVIDUAL, 企业: CORPORATE)
+        :type PayerType: str
+        :param PayerName: 付款人姓名
+        :type PayerName: str
+        :param PayerIdType: 付款人证件类型 (身份证: ID_CARD, 统一社会信用代码: UNIFIED_CREDIT_CODE)
+        :type PayerIdType: str
+        :param PayerIdNo: 付款人证件号
+        :type PayerIdNo: str
+        :param PayerCountryCode: 付款人常驻国家或地区编码 (见常见问题-国家/地区编码)
+        :type PayerCountryCode: str
+        :param PayerContactName: 付款人联系人名称
+        :type PayerContactName: str
+        :param PayerContactNumber: 付款人联系电话 (PayerType=CORPORATE 必填)
+        :type PayerContactNumber: str
+        :param PayerEmailAddress: 付款人联系邮箱
+        :type PayerEmailAddress: str
+        :param Profile: 接入环境。沙箱环境填sandbox
+        :type Profile: str
+        """
+        self.PayerId = None
+        self.PayerType = None
+        self.PayerName = None
+        self.PayerIdType = None
+        self.PayerIdNo = None
+        self.PayerCountryCode = None
+        self.PayerContactName = None
+        self.PayerContactNumber = None
+        self.PayerEmailAddress = None
+        self.Profile = None
+
+
+    def _deserialize(self, params):
+        self.PayerId = params.get("PayerId")
+        self.PayerType = params.get("PayerType")
+        self.PayerName = params.get("PayerName")
+        self.PayerIdType = params.get("PayerIdType")
+        self.PayerIdNo = params.get("PayerIdNo")
+        self.PayerCountryCode = params.get("PayerCountryCode")
+        self.PayerContactName = params.get("PayerContactName")
+        self.PayerContactNumber = params.get("PayerContactNumber")
+        self.PayerEmailAddress = params.get("PayerEmailAddress")
+        self.Profile = params.get("Profile")
+
+
+class ApplyPayerInfoResponse(AbstractModel):
+    """ApplyPayerInfo返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Result: 付款人申请结果
+        :type Result: :class:`tencentcloud.cpdp.v20190820.models.ApplyPayerinfoResult`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Result = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Result") is not None:
+            self.Result = ApplyPayerinfoResult()
+            self.Result._deserialize(params.get("Result"))
+        self.RequestId = params.get("RequestId")
+
+
+class ApplyPayerinfoData(AbstractModel):
+    """付款人申请结果
+
+    """
+
+    def __init__(self):
+        """
+        :param MerchantId: 商户号
+        :type MerchantId: str
+        :param PayerId: 付款人ID
+        :type PayerId: str
+        :param Status: 状态
+        :type Status: str
+        :param FailReason: 失败原因
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FailReason: str
+        """
+        self.MerchantId = None
+        self.PayerId = None
+        self.Status = None
+        self.FailReason = None
+
+
+    def _deserialize(self, params):
+        self.MerchantId = params.get("MerchantId")
+        self.PayerId = params.get("PayerId")
+        self.Status = params.get("Status")
+        self.FailReason = params.get("FailReason")
+
+
+class ApplyPayerinfoResult(AbstractModel):
+    """付款人申请结果
+
+    """
+
+    def __init__(self):
+        """
+        :param Code: 错误码
+        :type Code: str
+        :param Data: 数据
+        :type Data: :class:`tencentcloud.cpdp.v20190820.models.ApplyPayerinfoData`
+        """
+        self.Code = None
+        self.Data = None
+
+
+    def _deserialize(self, params):
+        self.Code = params.get("Code")
+        if params.get("Data") is not None:
+            self.Data = ApplyPayerinfoData()
+            self.Data._deserialize(params.get("Data"))
+
+
 class ApplyReWithdrawalRequest(AbstractModel):
     """ApplyReWithdrawal请求参数结构体
 
@@ -118,6 +548,164 @@ class ApplyReWithdrawalResponse(AbstractModel):
     def _deserialize(self, params):
         self.WithdrawOrderId = params.get("WithdrawOrderId")
         self.RequestId = params.get("RequestId")
+
+
+class ApplyTradeData(AbstractModel):
+    """提交贸易材料结果
+
+    """
+
+    def __init__(self):
+        """
+        :param MerchantId: 商户号
+        :type MerchantId: str
+        :param TradeFileId: 贸易材料流水号
+        :type TradeFileId: str
+        :param TradeCurrency: 交易币种
+        :type TradeCurrency: str
+        :param TradeAmount: 交易金额
+        :type TradeAmount: str
+        :param PayerId: 付款人ID
+        :type PayerId: str
+        :param Status: 状态
+        :type Status: str
+        """
+        self.MerchantId = None
+        self.TradeFileId = None
+        self.TradeCurrency = None
+        self.TradeAmount = None
+        self.PayerId = None
+        self.Status = None
+
+
+    def _deserialize(self, params):
+        self.MerchantId = params.get("MerchantId")
+        self.TradeFileId = params.get("TradeFileId")
+        self.TradeCurrency = params.get("TradeCurrency")
+        self.TradeAmount = params.get("TradeAmount")
+        self.PayerId = params.get("PayerId")
+        self.Status = params.get("Status")
+
+
+class ApplyTradeRequest(AbstractModel):
+    """ApplyTrade请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param TradeFileId: 贸易材料流水号
+        :type TradeFileId: str
+        :param TradeOrderId: 贸易材料订单号
+        :type TradeOrderId: str
+        :param PayerId: 付款人ID
+        :type PayerId: str
+        :param PayeeName: 付款人姓名
+        :type PayeeName: str
+        :param PayeeCountryCode: 收款人常驻国家或地区编码 (见常见问题)
+        :type PayeeCountryCode: str
+        :param TradeType: 贸易类型 (GOODS: 商品, SERVICE: 服务)
+        :type TradeType: str
+        :param TradeTime: 交易时间 (格式: yyyyMMdd)
+        :type TradeTime: str
+        :param TradeCurrency: 交易币种
+        :type TradeCurrency: str
+        :param TradeAmount: 交易金额
+        :type TradeAmount: float
+        :param TradeName: 交易名称 
+(TradeType=GOODS时填写物品名称，可填写多个，格式无要求；
+TradeType=SERVICE时填写贸易类别，见常见问题-贸易类别)
+        :type TradeName: str
+        :param TradeCount: 交易数量 (TradeType=GOODS 填写物品数量, TradeType=SERVICE填写服务次数)
+        :type TradeCount: int
+        :param GoodsCarrier: 货贸承运人 (TradeType=GOODS 必填)
+        :type GoodsCarrier: str
+        :param ServiceDetail: 服贸交易细节 (TradeType=GOODS 必填, 见常见问题-交易细节)
+        :type ServiceDetail: str
+        :param ServiceTime: 服贸服务时间 (TradeType=GOODS 必填, 见常见问题-服务时间)
+        :type ServiceTime: str
+        :param Profile: 接入环境。沙箱环境填sandbox
+        :type Profile: str
+        """
+        self.TradeFileId = None
+        self.TradeOrderId = None
+        self.PayerId = None
+        self.PayeeName = None
+        self.PayeeCountryCode = None
+        self.TradeType = None
+        self.TradeTime = None
+        self.TradeCurrency = None
+        self.TradeAmount = None
+        self.TradeName = None
+        self.TradeCount = None
+        self.GoodsCarrier = None
+        self.ServiceDetail = None
+        self.ServiceTime = None
+        self.Profile = None
+
+
+    def _deserialize(self, params):
+        self.TradeFileId = params.get("TradeFileId")
+        self.TradeOrderId = params.get("TradeOrderId")
+        self.PayerId = params.get("PayerId")
+        self.PayeeName = params.get("PayeeName")
+        self.PayeeCountryCode = params.get("PayeeCountryCode")
+        self.TradeType = params.get("TradeType")
+        self.TradeTime = params.get("TradeTime")
+        self.TradeCurrency = params.get("TradeCurrency")
+        self.TradeAmount = params.get("TradeAmount")
+        self.TradeName = params.get("TradeName")
+        self.TradeCount = params.get("TradeCount")
+        self.GoodsCarrier = params.get("GoodsCarrier")
+        self.ServiceDetail = params.get("ServiceDetail")
+        self.ServiceTime = params.get("ServiceTime")
+        self.Profile = params.get("Profile")
+
+
+class ApplyTradeResponse(AbstractModel):
+    """ApplyTrade返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Result: 提交贸易材料结果
+        :type Result: :class:`tencentcloud.cpdp.v20190820.models.ApplyTradeResult`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Result = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Result") is not None:
+            self.Result = ApplyTradeResult()
+            self.Result._deserialize(params.get("Result"))
+        self.RequestId = params.get("RequestId")
+
+
+class ApplyTradeResult(AbstractModel):
+    """提交贸易材料结果
+
+    """
+
+    def __init__(self):
+        """
+        :param Code: 错误码
+        :type Code: str
+        :param Data: 提交贸易材料数据
+        :type Data: :class:`tencentcloud.cpdp.v20190820.models.ApplyTradeData`
+        """
+        self.Code = None
+        self.Data = None
+
+
+    def _deserialize(self, params):
+        self.Code = params.get("Code")
+        if params.get("Data") is not None:
+            self.Data = ApplyTradeData()
+            self.Data._deserialize(params.get("Data"))
 
 
 class ApplyWithdrawalRequest(AbstractModel):
@@ -2324,6 +2912,50 @@ merchant:商户子账户
         self.SubMerchantMemberType = params.get("SubMerchantMemberType")
 
 
+class QueryApplicationMaterialRequest(AbstractModel):
+    """QueryApplicationMaterial请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param DeclareId: 申报流水号
+        :type DeclareId: str
+        :param Profile: 接入环境。沙箱环境填sandbox
+        :type Profile: str
+        """
+        self.DeclareId = None
+        self.Profile = None
+
+
+    def _deserialize(self, params):
+        self.DeclareId = params.get("DeclareId")
+        self.Profile = params.get("Profile")
+
+
+class QueryApplicationMaterialResponse(AbstractModel):
+    """QueryApplicationMaterial返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Result: 成功申报材料查询结果
+        :type Result: :class:`tencentcloud.cpdp.v20190820.models.QueryDeclareResult`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Result = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Result") is not None:
+            self.Result = QueryDeclareResult()
+            self.Result._deserialize(params.get("Result"))
+        self.RequestId = params.get("RequestId")
+
+
 class QueryBalanceRequest(AbstractModel):
     """QueryBalance请求参数结构体
 
@@ -2921,6 +3553,197 @@ class QueryCustAcctIdBalanceResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class QueryDeclareData(AbstractModel):
+    """成功申报材料查询数据
+
+    """
+
+    def __init__(self):
+        """
+        :param MerchantId: 商户号
+        :type MerchantId: str
+        :param TransactionId: 对接方汇出指令编号
+        :type TransactionId: str
+        :param DeclareId: 申报流水号
+        :type DeclareId: str
+        :param OriginalDeclareId: 原申报流水号
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OriginalDeclareId: str
+        :param PayerId: 付款人ID
+        :type PayerId: str
+        :param SourceCurrency: 源币种
+        :type SourceCurrency: str
+        :param SourceAmount: 源金额
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SourceAmount: str
+        :param TargetCurrency: 目的币种
+        :type TargetCurrency: str
+        :param TargetAmount: 目的金额
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TargetAmount: str
+        :param TradeCode: 交易编码
+        :type TradeCode: str
+        :param Status: 状态
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Status: str
+        """
+        self.MerchantId = None
+        self.TransactionId = None
+        self.DeclareId = None
+        self.OriginalDeclareId = None
+        self.PayerId = None
+        self.SourceCurrency = None
+        self.SourceAmount = None
+        self.TargetCurrency = None
+        self.TargetAmount = None
+        self.TradeCode = None
+        self.Status = None
+
+
+    def _deserialize(self, params):
+        self.MerchantId = params.get("MerchantId")
+        self.TransactionId = params.get("TransactionId")
+        self.DeclareId = params.get("DeclareId")
+        self.OriginalDeclareId = params.get("OriginalDeclareId")
+        self.PayerId = params.get("PayerId")
+        self.SourceCurrency = params.get("SourceCurrency")
+        self.SourceAmount = params.get("SourceAmount")
+        self.TargetCurrency = params.get("TargetCurrency")
+        self.TargetAmount = params.get("TargetAmount")
+        self.TradeCode = params.get("TradeCode")
+        self.Status = params.get("Status")
+
+
+class QueryDeclareResult(AbstractModel):
+    """成功申报材料查询结果
+
+    """
+
+    def __init__(self):
+        """
+        :param Data: 成功申报材料查询数据
+        :type Data: :class:`tencentcloud.cpdp.v20190820.models.QueryDeclareData`
+        :param Code: 错误码
+        :type Code: str
+        """
+        self.Data = None
+        self.Code = None
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self.Data = QueryDeclareData()
+            self.Data._deserialize(params.get("Data"))
+        self.Code = params.get("Code")
+
+
+class QueryExchangeRateRequest(AbstractModel):
+    """QueryExchangeRate请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param SourceCurrency: 源币种 (默认CNY)
+        :type SourceCurrency: str
+        :param TargetCurrency: 目的币种 (见常见问题-汇出币种)
+        :type TargetCurrency: str
+        :param Profile: 接入环境。沙箱环境填sandbox
+        :type Profile: str
+        """
+        self.SourceCurrency = None
+        self.TargetCurrency = None
+        self.Profile = None
+
+
+    def _deserialize(self, params):
+        self.SourceCurrency = params.get("SourceCurrency")
+        self.TargetCurrency = params.get("TargetCurrency")
+        self.Profile = params.get("Profile")
+
+
+class QueryExchangeRateResponse(AbstractModel):
+    """QueryExchangeRate返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Result: 查询汇率结果
+        :type Result: :class:`tencentcloud.cpdp.v20190820.models.QueryExchangerateResult`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Result = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Result") is not None:
+            self.Result = QueryExchangerateResult()
+            self.Result._deserialize(params.get("Result"))
+        self.RequestId = params.get("RequestId")
+
+
+class QueryExchangerateData(AbstractModel):
+    """查询汇率数据
+
+    """
+
+    def __init__(self):
+        """
+        :param Rate: 汇率
+        :type Rate: str
+        :param SourceCurrency: 源币种
+        :type SourceCurrency: str
+        :param TargetCurrency: 目的币种
+        :type TargetCurrency: str
+        :param RateTime: 汇率时间
+        :type RateTime: str
+        :param BaseCurrency: 基准币种
+        :type BaseCurrency: str
+        """
+        self.Rate = None
+        self.SourceCurrency = None
+        self.TargetCurrency = None
+        self.RateTime = None
+        self.BaseCurrency = None
+
+
+    def _deserialize(self, params):
+        self.Rate = params.get("Rate")
+        self.SourceCurrency = params.get("SourceCurrency")
+        self.TargetCurrency = params.get("TargetCurrency")
+        self.RateTime = params.get("RateTime")
+        self.BaseCurrency = params.get("BaseCurrency")
+
+
+class QueryExchangerateResult(AbstractModel):
+    """查询汇率结果
+
+    """
+
+    def __init__(self):
+        """
+        :param Code: 错误码
+        :type Code: str
+        :param Data: 查询汇率数据数组
+        :type Data: list of QueryExchangerateData
+        """
+        self.Code = None
+        self.Data = None
+
+
+    def _deserialize(self, params):
+        self.Code = params.get("Code")
+        if params.get("Data") is not None:
+            self.Data = []
+            for item in params.get("Data"):
+                obj = QueryExchangerateData()
+                obj._deserialize(item)
+                self.Data.append(obj)
+
+
 class QueryInvoiceForManagementRequest(AbstractModel):
     """QueryInvoiceForManagement请求参数结构体
 
@@ -3424,6 +4247,98 @@ class QueryMemberTransactionResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class QueryMerchantBalanceData(AbstractModel):
+    """对接账户余额查询数据
+
+    """
+
+    def __init__(self):
+        """
+        :param Currency: 余额币种
+        :type Currency: str
+        :param Balance: 账户余额
+        :type Balance: str
+        :param MerchantId: 商户ID
+        :type MerchantId: str
+        """
+        self.Currency = None
+        self.Balance = None
+        self.MerchantId = None
+
+
+    def _deserialize(self, params):
+        self.Currency = params.get("Currency")
+        self.Balance = params.get("Balance")
+        self.MerchantId = params.get("MerchantId")
+
+
+class QueryMerchantBalanceRequest(AbstractModel):
+    """QueryMerchantBalance请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Currency: 余额币种
+        :type Currency: str
+        :param Profile: 接入环境。沙箱环境填sandbox
+        :type Profile: str
+        """
+        self.Currency = None
+        self.Profile = None
+
+
+    def _deserialize(self, params):
+        self.Currency = params.get("Currency")
+        self.Profile = params.get("Profile")
+
+
+class QueryMerchantBalanceResponse(AbstractModel):
+    """QueryMerchantBalance返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Result: 对接方账户余额查询结果
+        :type Result: :class:`tencentcloud.cpdp.v20190820.models.QueryMerchantBalanceResult`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Result = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Result") is not None:
+            self.Result = QueryMerchantBalanceResult()
+            self.Result._deserialize(params.get("Result"))
+        self.RequestId = params.get("RequestId")
+
+
+class QueryMerchantBalanceResult(AbstractModel):
+    """对接账户余额查询结果
+
+    """
+
+    def __init__(self):
+        """
+        :param Code: 错误码
+        :type Code: str
+        :param Data: 对接账户余额查询数据
+        :type Data: :class:`tencentcloud.cpdp.v20190820.models.QueryMerchantBalanceData`
+        """
+        self.Code = None
+        self.Data = None
+
+
+    def _deserialize(self, params):
+        self.Code = params.get("Code")
+        if params.get("Data") is not None:
+            self.Data = QueryMerchantBalanceData()
+            self.Data._deserialize(params.get("Data"))
+
+
 class QueryMerchantInfoForManagementRequest(AbstractModel):
     """QueryMerchantInfoForManagement请求参数结构体
 
@@ -3731,6 +4646,280 @@ class QueryOrderResponse(AbstractModel):
                 obj._deserialize(item)
                 self.OrderList.append(obj)
         self.RequestId = params.get("RequestId")
+
+
+class QueryOutwardOrderData(AbstractModel):
+    """查询汇出数据
+
+    """
+
+    def __init__(self):
+        """
+        :param MerchantId: 商户号
+        :type MerchantId: str
+        :param TransactionId: 对接方汇出指令编号
+        :type TransactionId: str
+        :param AcctDate: 财务日期
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AcctDate: str
+        :param PricingCurrency: 定价币种
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PricingCurrency: str
+        :param SourceCurrency: 源币种
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SourceCurrency: str
+        :param SourceAmount: 源金额
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SourceAmount: str
+        :param TargetCurrency: 目的币种
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TargetCurrency: str
+        :param TargetAmount: 目的金额
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TargetAmount: str
+        :param FxRate: 汇率
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FxRate: str
+        :param Status: 指令状态
+        :type Status: str
+        :param FailReason: 失败原因
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FailReason: str
+        :param RefundAmount: 退汇金额
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RefundAmount: str
+        :param RefundCurrency: 退汇币种
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RefundCurrency: str
+        """
+        self.MerchantId = None
+        self.TransactionId = None
+        self.AcctDate = None
+        self.PricingCurrency = None
+        self.SourceCurrency = None
+        self.SourceAmount = None
+        self.TargetCurrency = None
+        self.TargetAmount = None
+        self.FxRate = None
+        self.Status = None
+        self.FailReason = None
+        self.RefundAmount = None
+        self.RefundCurrency = None
+
+
+    def _deserialize(self, params):
+        self.MerchantId = params.get("MerchantId")
+        self.TransactionId = params.get("TransactionId")
+        self.AcctDate = params.get("AcctDate")
+        self.PricingCurrency = params.get("PricingCurrency")
+        self.SourceCurrency = params.get("SourceCurrency")
+        self.SourceAmount = params.get("SourceAmount")
+        self.TargetCurrency = params.get("TargetCurrency")
+        self.TargetAmount = params.get("TargetAmount")
+        self.FxRate = params.get("FxRate")
+        self.Status = params.get("Status")
+        self.FailReason = params.get("FailReason")
+        self.RefundAmount = params.get("RefundAmount")
+        self.RefundCurrency = params.get("RefundCurrency")
+
+
+class QueryOutwardOrderRequest(AbstractModel):
+    """QueryOutwardOrder请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param TransactionId: 对接方汇出指令编号
+        :type TransactionId: str
+        :param Profile: 接入环境。沙箱环境填sandbox
+        :type Profile: str
+        """
+        self.TransactionId = None
+        self.Profile = None
+
+
+    def _deserialize(self, params):
+        self.TransactionId = params.get("TransactionId")
+        self.Profile = params.get("Profile")
+
+
+class QueryOutwardOrderResponse(AbstractModel):
+    """QueryOutwardOrder返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Result: 查询汇出结果
+        :type Result: :class:`tencentcloud.cpdp.v20190820.models.QueryOutwardOrderResult`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Result = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Result") is not None:
+            self.Result = QueryOutwardOrderResult()
+            self.Result._deserialize(params.get("Result"))
+        self.RequestId = params.get("RequestId")
+
+
+class QueryOutwardOrderResult(AbstractModel):
+    """查询汇出结果
+
+    """
+
+    def __init__(self):
+        """
+        :param Code: 错误码
+        :type Code: str
+        :param Data: 查询汇出数据
+        :type Data: :class:`tencentcloud.cpdp.v20190820.models.QueryOutwardOrderData`
+        """
+        self.Code = None
+        self.Data = None
+
+
+    def _deserialize(self, params):
+        self.Code = params.get("Code")
+        if params.get("Data") is not None:
+            self.Data = QueryOutwardOrderData()
+            self.Data._deserialize(params.get("Data"))
+
+
+class QueryPayerInfoRequest(AbstractModel):
+    """QueryPayerInfo请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param PayerId: 付款人ID
+        :type PayerId: str
+        :param Profile: 接入环境。沙箱环境填sandbox
+        :type Profile: str
+        """
+        self.PayerId = None
+        self.Profile = None
+
+
+    def _deserialize(self, params):
+        self.PayerId = params.get("PayerId")
+        self.Profile = params.get("Profile")
+
+
+class QueryPayerInfoResponse(AbstractModel):
+    """QueryPayerInfo返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Result: 付款人查询结果
+        :type Result: :class:`tencentcloud.cpdp.v20190820.models.QueryPayerinfoResult`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Result = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Result") is not None:
+            self.Result = QueryPayerinfoResult()
+            self.Result._deserialize(params.get("Result"))
+        self.RequestId = params.get("RequestId")
+
+
+class QueryPayerinfoData(AbstractModel):
+    """付款人查询数据
+
+    """
+
+    def __init__(self):
+        """
+        :param MerchantId: 商户号
+        :type MerchantId: str
+        :param PayerId: 付款人ID
+        :type PayerId: str
+        :param Status: 审核状态
+        :type Status: str
+        :param FailReason: 失败原因
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FailReason: str
+        :param PayerType: 付款人类型
+        :type PayerType: str
+        :param PayerName: 付款人姓名
+        :type PayerName: str
+        :param PayerIdType: 付款人证件类型
+        :type PayerIdType: str
+        :param PayerIdNo: 付款人证件号
+        :type PayerIdNo: str
+        :param PayerContactNumber: 付款人联系电话
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PayerContactNumber: str
+        :param PayerEmailAddress: 付款人联系邮箱
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PayerEmailAddress: str
+        :param PayerCountryCode: 付款人常驻国家或地区编码
+        :type PayerCountryCode: str
+        :param PayerContactName: 付款人联系名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PayerContactName: str
+        """
+        self.MerchantId = None
+        self.PayerId = None
+        self.Status = None
+        self.FailReason = None
+        self.PayerType = None
+        self.PayerName = None
+        self.PayerIdType = None
+        self.PayerIdNo = None
+        self.PayerContactNumber = None
+        self.PayerEmailAddress = None
+        self.PayerCountryCode = None
+        self.PayerContactName = None
+
+
+    def _deserialize(self, params):
+        self.MerchantId = params.get("MerchantId")
+        self.PayerId = params.get("PayerId")
+        self.Status = params.get("Status")
+        self.FailReason = params.get("FailReason")
+        self.PayerType = params.get("PayerType")
+        self.PayerName = params.get("PayerName")
+        self.PayerIdType = params.get("PayerIdType")
+        self.PayerIdNo = params.get("PayerIdNo")
+        self.PayerContactNumber = params.get("PayerContactNumber")
+        self.PayerEmailAddress = params.get("PayerEmailAddress")
+        self.PayerCountryCode = params.get("PayerCountryCode")
+        self.PayerContactName = params.get("PayerContactName")
+
+
+class QueryPayerinfoResult(AbstractModel):
+    """付款人查询结果
+
+    """
+
+    def __init__(self):
+        """
+        :param Code: 错误码
+        :type Code: str
+        :param Data: 付款人查询数据
+        :type Data: :class:`tencentcloud.cpdp.v20190820.models.QueryPayerinfoData`
+        """
+        self.Code = None
+        self.Data = None
+
+
+    def _deserialize(self, params):
+        self.Code = params.get("Code")
+        if params.get("Data") is not None:
+            self.Data = QueryPayerinfoData()
+            self.Data._deserialize(params.get("Data"))
 
 
 class QueryReconciliationDocumentRequest(AbstractModel):
@@ -4047,6 +5236,158 @@ class QuerySmallAmountTransferResponse(AbstractModel):
         self.ReturnMsg = params.get("ReturnMsg")
         self.ReservedMsg = params.get("ReservedMsg")
         self.RequestId = params.get("RequestId")
+
+
+class QueryTradeData(AbstractModel):
+    """贸易材料明细查询数据
+
+    """
+
+    def __init__(self):
+        """
+        :param MerchantId: 商户号
+        :type MerchantId: str
+        :param TradeFileId: 贸易材料流水号
+        :type TradeFileId: str
+        :param TradeOrderId: 贸易材料订单号
+        :type TradeOrderId: str
+        :param Status: 审核状态
+        :type Status: str
+        :param FailReason: 失败原因
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FailReason: str
+        :param PayerId: 付款人ID
+        :type PayerId: str
+        :param PayeeName: 收款人姓名
+        :type PayeeName: str
+        :param PayeeCountryCode: 收款人常驻国家或地区编码
+        :type PayeeCountryCode: str
+        :param TradeType: 交易类型
+        :type TradeType: str
+        :param TradeTime: 交易日期
+        :type TradeTime: str
+        :param TradeCurrency: 交易币种
+        :type TradeCurrency: str
+        :param TradeAmount: 交易金额
+        :type TradeAmount: str
+        :param TradeName: 交易名称
+        :type TradeName: str
+        :param TradeCount: 交易数量
+        :type TradeCount: int
+        :param GoodsCarrier: 货贸承运人
+注意：此字段可能返回 null，表示取不到有效值。
+        :type GoodsCarrier: str
+        :param ServiceDetail: 服贸交易细节
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ServiceDetail: str
+        :param ServiceTime: 服贸服务时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ServiceTime: str
+        """
+        self.MerchantId = None
+        self.TradeFileId = None
+        self.TradeOrderId = None
+        self.Status = None
+        self.FailReason = None
+        self.PayerId = None
+        self.PayeeName = None
+        self.PayeeCountryCode = None
+        self.TradeType = None
+        self.TradeTime = None
+        self.TradeCurrency = None
+        self.TradeAmount = None
+        self.TradeName = None
+        self.TradeCount = None
+        self.GoodsCarrier = None
+        self.ServiceDetail = None
+        self.ServiceTime = None
+
+
+    def _deserialize(self, params):
+        self.MerchantId = params.get("MerchantId")
+        self.TradeFileId = params.get("TradeFileId")
+        self.TradeOrderId = params.get("TradeOrderId")
+        self.Status = params.get("Status")
+        self.FailReason = params.get("FailReason")
+        self.PayerId = params.get("PayerId")
+        self.PayeeName = params.get("PayeeName")
+        self.PayeeCountryCode = params.get("PayeeCountryCode")
+        self.TradeType = params.get("TradeType")
+        self.TradeTime = params.get("TradeTime")
+        self.TradeCurrency = params.get("TradeCurrency")
+        self.TradeAmount = params.get("TradeAmount")
+        self.TradeName = params.get("TradeName")
+        self.TradeCount = params.get("TradeCount")
+        self.GoodsCarrier = params.get("GoodsCarrier")
+        self.ServiceDetail = params.get("ServiceDetail")
+        self.ServiceTime = params.get("ServiceTime")
+
+
+class QueryTradeRequest(AbstractModel):
+    """QueryTrade请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param TradeFileId: 贸易材料流水号
+        :type TradeFileId: str
+        :param Profile: 接入环境。沙箱环境填sandbox
+        :type Profile: str
+        """
+        self.TradeFileId = None
+        self.Profile = None
+
+
+    def _deserialize(self, params):
+        self.TradeFileId = params.get("TradeFileId")
+        self.Profile = params.get("Profile")
+
+
+class QueryTradeResponse(AbstractModel):
+    """QueryTrade返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Result: 贸易材料明细查询结果
+        :type Result: :class:`tencentcloud.cpdp.v20190820.models.QueryTradeResult`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Result = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Result") is not None:
+            self.Result = QueryTradeResult()
+            self.Result._deserialize(params.get("Result"))
+        self.RequestId = params.get("RequestId")
+
+
+class QueryTradeResult(AbstractModel):
+    """贸易材料明细查询结果
+
+    """
+
+    def __init__(self):
+        """
+        :param Data: 贸易材料明细查询数据
+        :type Data: :class:`tencentcloud.cpdp.v20190820.models.QueryTradeData`
+        :param Code: 错误码
+        :type Code: str
+        """
+        self.Data = None
+        self.Code = None
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self.Data = QueryTradeData()
+            self.Data._deserialize(params.get("Data"))
+        self.Code = params.get("Code")
 
 
 class RechargeMemberThirdPayRequest(AbstractModel):

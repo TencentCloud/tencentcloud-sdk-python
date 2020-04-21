@@ -333,6 +333,34 @@ class TcrClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def CreateWebhookTrigger(self, request):
+        """创建触发器
+
+        :param request: Request instance for CreateWebhookTrigger.
+        :type request: :class:`tencentcloud.tcr.v20190924.models.CreateWebhookTriggerRequest`
+        :rtype: :class:`tencentcloud.tcr.v20190924.models.CreateWebhookTriggerResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("CreateWebhookTrigger", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateWebhookTriggerResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DeleteApplicationTriggerPersonal(self, request):
         """用于删除应用更新触发器
 
@@ -585,6 +613,34 @@ class TcrClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DeleteWebhookTrigger(self, request):
+        """删除触发器
+
+        :param request: Request instance for DeleteWebhookTrigger.
+        :type request: :class:`tencentcloud.tcr.v20190924.models.DeleteWebhookTriggerRequest`
+        :rtype: :class:`tencentcloud.tcr.v20190924.models.DeleteWebhookTriggerResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DeleteWebhookTrigger", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DeleteWebhookTriggerResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeApplicationTriggerLogPersonal(self, request):
         """用于查询应用更新触发器触发日志
 
@@ -739,6 +795,34 @@ class TcrClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeImageLifecyclePersonalResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeImageManifests(self, request):
+        """查询容器镜像Manifest信息
+
+        :param request: Request instance for DescribeImageManifests.
+        :type request: :class:`tencentcloud.tcr.v20190924.models.DescribeImageManifestsRequest`
+        :rtype: :class:`tencentcloud.tcr.v20190924.models.DescribeImageManifestsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeImageManifests", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeImageManifestsResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -1089,6 +1173,62 @@ class TcrClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeWebhookTrigger(self, request):
+        """查询触发器
+
+        :param request: Request instance for DescribeWebhookTrigger.
+        :type request: :class:`tencentcloud.tcr.v20190924.models.DescribeWebhookTriggerRequest`
+        :rtype: :class:`tencentcloud.tcr.v20190924.models.DescribeWebhookTriggerResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeWebhookTrigger", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeWebhookTriggerResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeWebhookTriggerLog(self, request):
+        """获取触发器日志
+
+        :param request: Request instance for DescribeWebhookTriggerLog.
+        :type request: :class:`tencentcloud.tcr.v20190924.models.DescribeWebhookTriggerLogRequest`
+        :rtype: :class:`tencentcloud.tcr.v20190924.models.DescribeWebhookTriggerLogResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeWebhookTriggerLog", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeWebhookTriggerLogResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DuplicateImagePersonal(self, request):
         """用于在个人版镜像仓库中复制镜像版本
 
@@ -1327,6 +1467,34 @@ class TcrClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyUserPasswordPersonalResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ModifyWebhookTrigger(self, request):
+        """更新触发器
+
+        :param request: Request instance for ModifyWebhookTrigger.
+        :type request: :class:`tencentcloud.tcr.v20190924.models.ModifyWebhookTriggerRequest`
+        :rtype: :class:`tencentcloud.tcr.v20190924.models.ModifyWebhookTriggerResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ModifyWebhookTrigger", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ModifyWebhookTriggerResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

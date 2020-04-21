@@ -16,6 +16,145 @@
 from tencentcloud.common.abstract_model import AbstractModel
 
 
+class Address(AbstractModel):
+    """描述 EIP 信息
+
+    """
+
+    def __init__(self):
+        """
+        :param AddressId: EIP的ID，是EIP的唯一标识。
+        :type AddressId: str
+        :param AddressName: EIP名称。
+        :type AddressName: str
+        :param AddressStatus: EIP状态，包含'CREATING'(创建中),'BINDING'(绑定中),'BIND'(已绑定),'UNBINDING'(解绑中),'UNBIND'(已解绑),'OFFLINING'(释放中),'BIND_ENI'(绑定悬空弹性网卡)
+        :type AddressStatus: str
+        :param AddressIp: 外网IP地址
+        :type AddressIp: str
+        :param InstanceId: 绑定的资源实例ID。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InstanceId: str
+        :param CreatedTime: 创建时间。ISO 8601 格式：YYYY-MM-DDTHH:mm:ss.sssZ
+        :type CreatedTime: str
+        :param NetworkInterfaceId: 绑定的弹性网卡ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type NetworkInterfaceId: str
+        :param PrivateAddressIp: 绑定的资源内网ip
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PrivateAddressIp: str
+        :param IsArrears: 资源隔离状态。true表示eip处于隔离状态，false表示资源处于未隔离状态
+        :type IsArrears: bool
+        :param IsBlocked: 资源封堵状态。true表示eip处于封堵状态，false表示eip处于未封堵状态
+        :type IsBlocked: bool
+        :param IsEipDirectConnection: eip是否支持直通模式。true表示eip支持直通模式，false表示资源不支持直通模式
+        :type IsEipDirectConnection: bool
+        :param AddressType: eip资源类型，包括"CalcIP","WanIP","EIP","AnycastEIP"。其中"CalcIP"表示设备ip，“WanIP”表示普通公网ip，“EIP”表示弹性公网ip，“AnycastEip”表示加速EIP
+        :type AddressType: str
+        :param CascadeRelease: eip是否在解绑后自动释放。true表示eip将会在解绑后自动释放，false表示eip在解绑后不会自动释放
+        :type CascadeRelease: bool
+        :param InternetServiceProvider: 运营商，CTCC电信，CUCC联通，CMCC移动
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InternetServiceProvider: str
+        """
+        self.AddressId = None
+        self.AddressName = None
+        self.AddressStatus = None
+        self.AddressIp = None
+        self.InstanceId = None
+        self.CreatedTime = None
+        self.NetworkInterfaceId = None
+        self.PrivateAddressIp = None
+        self.IsArrears = None
+        self.IsBlocked = None
+        self.IsEipDirectConnection = None
+        self.AddressType = None
+        self.CascadeRelease = None
+        self.InternetServiceProvider = None
+
+
+    def _deserialize(self, params):
+        self.AddressId = params.get("AddressId")
+        self.AddressName = params.get("AddressName")
+        self.AddressStatus = params.get("AddressStatus")
+        self.AddressIp = params.get("AddressIp")
+        self.InstanceId = params.get("InstanceId")
+        self.CreatedTime = params.get("CreatedTime")
+        self.NetworkInterfaceId = params.get("NetworkInterfaceId")
+        self.PrivateAddressIp = params.get("PrivateAddressIp")
+        self.IsArrears = params.get("IsArrears")
+        self.IsBlocked = params.get("IsBlocked")
+        self.IsEipDirectConnection = params.get("IsEipDirectConnection")
+        self.AddressType = params.get("AddressType")
+        self.CascadeRelease = params.get("CascadeRelease")
+        self.InternetServiceProvider = params.get("InternetServiceProvider")
+
+
+class AllocateAddressesRequest(AbstractModel):
+    """AllocateAddresses请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param EcmRegion: ECM 地域
+        :type EcmRegion: str
+        :param AddressCount: EIP数量。默认值：1。
+        :type AddressCount: int
+        :param InternetServiceProvider: CMCC：中国移动
+CTCC：中国电信
+CUCC：中国联通
+        :type InternetServiceProvider: str
+        :param InternetMaxBandwidthOut: 1 Mbps 至 5000 Mbps，默认值：1 Mbps。
+        :type InternetMaxBandwidthOut: int
+        :param Tags: 需要关联的标签列表。
+        :type Tags: list of Tag
+        """
+        self.EcmRegion = None
+        self.AddressCount = None
+        self.InternetServiceProvider = None
+        self.InternetMaxBandwidthOut = None
+        self.Tags = None
+
+
+    def _deserialize(self, params):
+        self.EcmRegion = params.get("EcmRegion")
+        self.AddressCount = params.get("AddressCount")
+        self.InternetServiceProvider = params.get("InternetServiceProvider")
+        self.InternetMaxBandwidthOut = params.get("InternetMaxBandwidthOut")
+        if params.get("Tags") is not None:
+            self.Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self.Tags.append(obj)
+
+
+class AllocateAddressesResponse(AbstractModel):
+    """AllocateAddresses返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param AddressSet: 申请到的 EIP 的唯一 ID 列表。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AddressSet: list of str
+        :param TaskId: 异步任务TaskId。可以使用DescribeTaskResult接口查询任务状态。
+        :type TaskId: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.AddressSet = None
+        self.TaskId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.AddressSet = params.get("AddressSet")
+        self.TaskId = params.get("TaskId")
+        self.RequestId = params.get("RequestId")
+
+
 class Area(AbstractModel):
     """区域信息
 
@@ -35,6 +174,199 @@ class Area(AbstractModel):
     def _deserialize(self, params):
         self.AreaId = params.get("AreaId")
         self.AreaName = params.get("AreaName")
+
+
+class AssignPrivateIpAddressesRequest(AbstractModel):
+    """AssignPrivateIpAddresses请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param NetworkInterfaceId: 弹性网卡实例ID，例如：eni-m6dyj72l。
+        :type NetworkInterfaceId: str
+        :param EcmRegion: ECM 地域
+        :type EcmRegion: str
+        :param PrivateIpAddresses: 指定的内网IP信息，单次最多指定10个。与SecondaryPrivateIpAddressCount至少提供一个。
+        :type PrivateIpAddresses: list of PrivateIpAddressSpecification
+        :param SecondaryPrivateIpAddressCount: 新申请的内网IP地址个数，与PrivateIpAddresses至少提供一个。内网IP地址个数总和不能超过配额数
+        :type SecondaryPrivateIpAddressCount: int
+        """
+        self.NetworkInterfaceId = None
+        self.EcmRegion = None
+        self.PrivateIpAddresses = None
+        self.SecondaryPrivateIpAddressCount = None
+
+
+    def _deserialize(self, params):
+        self.NetworkInterfaceId = params.get("NetworkInterfaceId")
+        self.EcmRegion = params.get("EcmRegion")
+        if params.get("PrivateIpAddresses") is not None:
+            self.PrivateIpAddresses = []
+            for item in params.get("PrivateIpAddresses"):
+                obj = PrivateIpAddressSpecification()
+                obj._deserialize(item)
+                self.PrivateIpAddresses.append(obj)
+        self.SecondaryPrivateIpAddressCount = params.get("SecondaryPrivateIpAddressCount")
+
+
+class AssignPrivateIpAddressesResponse(AbstractModel):
+    """AssignPrivateIpAddresses返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param PrivateIpAddressSet: 内网IP详细信息。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PrivateIpAddressSet: list of PrivateIpAddressSpecification
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.PrivateIpAddressSet = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("PrivateIpAddressSet") is not None:
+            self.PrivateIpAddressSet = []
+            for item in params.get("PrivateIpAddressSet"):
+                obj = PrivateIpAddressSpecification()
+                obj._deserialize(item)
+                self.PrivateIpAddressSet.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class AssistantCidr(AbstractModel):
+    """VPC辅助CIDR信息。
+
+    """
+
+    def __init__(self):
+        """
+        :param VpcId: VPC实例ID。形如：vpc-6v2ht8q5
+        :type VpcId: str
+        :param CidrBlock: 辅助CIDR。形如：172.16.0.0/16
+        :type CidrBlock: str
+        :param AssistantType: 辅助CIDR类型（0：普通辅助CIDR，1：容器辅助CIDR），默认都是0。
+        :type AssistantType: int
+        :param SubnetSet: 辅助CIDR拆分的子网。
+注意：此字段可能返回 null，表示取不到有效值。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SubnetSet: list of Subnet
+        """
+        self.VpcId = None
+        self.CidrBlock = None
+        self.AssistantType = None
+        self.SubnetSet = None
+
+
+    def _deserialize(self, params):
+        self.VpcId = params.get("VpcId")
+        self.CidrBlock = params.get("CidrBlock")
+        self.AssistantType = params.get("AssistantType")
+        if params.get("SubnetSet") is not None:
+            self.SubnetSet = []
+            for item in params.get("SubnetSet"):
+                obj = Subnet()
+                obj._deserialize(item)
+                self.SubnetSet.append(obj)
+
+
+class AssociateAddressRequest(AbstractModel):
+    """AssociateAddress请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param EcmRegion: ECM 地域
+        :type EcmRegion: str
+        :param AddressId: 标识 EIP 的唯一 ID。EIP 唯一 ID 形如：eip-11112222。
+        :type AddressId: str
+        :param InstanceId: 要绑定的实例 ID。
+        :type InstanceId: str
+        :param NetworkInterfaceId: 要绑定的弹性网卡 ID。 弹性网卡 ID 形如：eni-11112222。NetworkInterfaceId 与 InstanceId 不可同时指定。弹性网卡 ID 可通过DescribeNetworkInterfaces接口返回值中的networkInterfaceId获取。
+        :type NetworkInterfaceId: str
+        :param PrivateIpAddress: 要绑定的内网 IP。如果指定了 NetworkInterfaceId 则也必须指定 PrivateIpAddress ，表示将 EIP 绑定到指定弹性网卡的指定内网 IP 上。同时要确保指定的 PrivateIpAddress 是指定的 NetworkInterfaceId 上的一个内网 IP。指定弹性网卡的内网 IP 可通过DescribeNetworkInterfaces接口返回值中的privateIpAddress获取。
+        :type PrivateIpAddress: str
+        """
+        self.EcmRegion = None
+        self.AddressId = None
+        self.InstanceId = None
+        self.NetworkInterfaceId = None
+        self.PrivateIpAddress = None
+
+
+    def _deserialize(self, params):
+        self.EcmRegion = params.get("EcmRegion")
+        self.AddressId = params.get("AddressId")
+        self.InstanceId = params.get("InstanceId")
+        self.NetworkInterfaceId = params.get("NetworkInterfaceId")
+        self.PrivateIpAddress = params.get("PrivateIpAddress")
+
+
+class AssociateAddressResponse(AbstractModel):
+    """AssociateAddress返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param TaskId: 异步任务TaskId。可以使用DescribeTaskResult接口查询任务状态。
+        :type TaskId: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TaskId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TaskId = params.get("TaskId")
+        self.RequestId = params.get("RequestId")
+
+
+class AttachNetworkInterfaceRequest(AbstractModel):
+    """AttachNetworkInterface请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param NetworkInterfaceId: 弹性网卡实例ID，例如：eni-m6dyj72l。
+        :type NetworkInterfaceId: str
+        :param InstanceId: 实例ID。形如：ein-r8hr2upy。
+        :type InstanceId: str
+        :param EcmRegion: ECM 地域
+        :type EcmRegion: str
+        """
+        self.NetworkInterfaceId = None
+        self.InstanceId = None
+        self.EcmRegion = None
+
+
+    def _deserialize(self, params):
+        self.NetworkInterfaceId = params.get("NetworkInterfaceId")
+        self.InstanceId = params.get("InstanceId")
+        self.EcmRegion = params.get("EcmRegion")
+
+
+class AttachNetworkInterfaceResponse(AbstractModel):
+    """AttachNetworkInterface返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
 
 
 class City(AbstractModel):
@@ -137,6 +469,222 @@ class CreateModuleResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class CreateNetworkInterfaceRequest(AbstractModel):
+    """CreateNetworkInterface请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param VpcId: VPC实例ID。可通过DescribeVpcs接口返回值中的VpcId获取。
+        :type VpcId: str
+        :param NetworkInterfaceName: 弹性网卡名称，最大长度不能超过60个字节。
+        :type NetworkInterfaceName: str
+        :param SubnetId: 弹性网卡所在的子网实例ID，例如：subnet-0ap8nwca。
+        :type SubnetId: str
+        :param EcmRegion: ECM 地域
+        :type EcmRegion: str
+        :param NetworkInterfaceDescription: 弹性网卡描述，可任意命名，但不得超过60个字符。
+        :type NetworkInterfaceDescription: str
+        :param SecondaryPrivateIpAddressCount: 新申请的内网IP地址个数，内网IP地址个数总和不能超过配数。
+        :type SecondaryPrivateIpAddressCount: int
+        :param SecurityGroupIds: 指定绑定的安全组，例如：['sg-1dd51d']。
+        :type SecurityGroupIds: list of str
+        :param PrivateIpAddresses: 指定的内网IP信息，单次最多指定10个。
+        :type PrivateIpAddresses: list of PrivateIpAddressSpecification
+        :param Tags: 指定绑定的标签列表，例如：[{"Key": "city", "Value": "shanghai"}]
+        :type Tags: list of Tag
+        """
+        self.VpcId = None
+        self.NetworkInterfaceName = None
+        self.SubnetId = None
+        self.EcmRegion = None
+        self.NetworkInterfaceDescription = None
+        self.SecondaryPrivateIpAddressCount = None
+        self.SecurityGroupIds = None
+        self.PrivateIpAddresses = None
+        self.Tags = None
+
+
+    def _deserialize(self, params):
+        self.VpcId = params.get("VpcId")
+        self.NetworkInterfaceName = params.get("NetworkInterfaceName")
+        self.SubnetId = params.get("SubnetId")
+        self.EcmRegion = params.get("EcmRegion")
+        self.NetworkInterfaceDescription = params.get("NetworkInterfaceDescription")
+        self.SecondaryPrivateIpAddressCount = params.get("SecondaryPrivateIpAddressCount")
+        self.SecurityGroupIds = params.get("SecurityGroupIds")
+        if params.get("PrivateIpAddresses") is not None:
+            self.PrivateIpAddresses = []
+            for item in params.get("PrivateIpAddresses"):
+                obj = PrivateIpAddressSpecification()
+                obj._deserialize(item)
+                self.PrivateIpAddresses.append(obj)
+        if params.get("Tags") is not None:
+            self.Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self.Tags.append(obj)
+
+
+class CreateNetworkInterfaceResponse(AbstractModel):
+    """CreateNetworkInterface返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param NetworkInterface: 弹性网卡实例。
+        :type NetworkInterface: :class:`tencentcloud.ecm.v20190719.models.NetworkInterface`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.NetworkInterface = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("NetworkInterface") is not None:
+            self.NetworkInterface = NetworkInterface()
+            self.NetworkInterface._deserialize(params.get("NetworkInterface"))
+        self.RequestId = params.get("RequestId")
+
+
+class CreateSubnetRequest(AbstractModel):
+    """CreateSubnet请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param VpcId: 待操作的VPC实例ID。可通过DescribeVpcs接口返回值中的VpcId获取。
+        :type VpcId: str
+        :param SubnetName: 子网名称，最大长度不能超过60个字节。
+        :type SubnetName: str
+        :param CidrBlock: 子网网段，子网网段必须在VPC网段内，相同VPC内子网网段不能重叠。
+        :type CidrBlock: str
+        :param Zone: 子网所在的可用区ID，不同子网选择不同可用区可以做跨可用区灾备。
+        :type Zone: str
+        :param EcmRegion: ECM 地域
+        :type EcmRegion: str
+        :param Tags: 指定绑定的标签列表，例如：[{"Key": "city", "Value": "shanghai"}]
+        :type Tags: list of Tag
+        """
+        self.VpcId = None
+        self.SubnetName = None
+        self.CidrBlock = None
+        self.Zone = None
+        self.EcmRegion = None
+        self.Tags = None
+
+
+    def _deserialize(self, params):
+        self.VpcId = params.get("VpcId")
+        self.SubnetName = params.get("SubnetName")
+        self.CidrBlock = params.get("CidrBlock")
+        self.Zone = params.get("Zone")
+        self.EcmRegion = params.get("EcmRegion")
+        if params.get("Tags") is not None:
+            self.Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self.Tags.append(obj)
+
+
+class CreateSubnetResponse(AbstractModel):
+    """CreateSubnet返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Subnet: 子网对象。
+        :type Subnet: :class:`tencentcloud.ecm.v20190719.models.Subnet`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Subnet = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Subnet") is not None:
+            self.Subnet = Subnet()
+            self.Subnet._deserialize(params.get("Subnet"))
+        self.RequestId = params.get("RequestId")
+
+
+class CreateVpcRequest(AbstractModel):
+    """CreateVpc请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param VpcName: vpc名称，最大长度不能超过60个字节。
+        :type VpcName: str
+        :param CidrBlock: vpc的cidr，只能为10.0.0.0/16，172.16.0.0/16，192.168.0.0/16这三个内网网段内。
+        :type CidrBlock: str
+        :param EcmRegion: ECM 地域
+        :type EcmRegion: str
+        :param EnableMulticast: 是否开启组播。true: 开启, false: 不开启。
+        :type EnableMulticast: str
+        :param DnsServers: DNS地址，最多支持4个
+        :type DnsServers: list of str
+        :param DomainName: 域名
+        :type DomainName: str
+        :param Tags: 指定绑定的标签列表，例如：[{"Key": "city", "Value": "shanghai"}]
+        :type Tags: list of Tag
+        """
+        self.VpcName = None
+        self.CidrBlock = None
+        self.EcmRegion = None
+        self.EnableMulticast = None
+        self.DnsServers = None
+        self.DomainName = None
+        self.Tags = None
+
+
+    def _deserialize(self, params):
+        self.VpcName = params.get("VpcName")
+        self.CidrBlock = params.get("CidrBlock")
+        self.EcmRegion = params.get("EcmRegion")
+        self.EnableMulticast = params.get("EnableMulticast")
+        self.DnsServers = params.get("DnsServers")
+        self.DomainName = params.get("DomainName")
+        if params.get("Tags") is not None:
+            self.Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self.Tags.append(obj)
+
+
+class CreateVpcResponse(AbstractModel):
+    """CreateVpc返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Vpc: Vpc对象。
+        :type Vpc: :class:`tencentcloud.ecm.v20190719.models.VpcInfo`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Vpc = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Vpc") is not None:
+            self.Vpc = VpcInfo()
+            self.Vpc._deserialize(params.get("Vpc"))
+        self.RequestId = params.get("RequestId")
+
+
 class DeleteImageRequest(AbstractModel):
     """DeleteImage请求参数结构体
 
@@ -202,6 +750,239 @@ class DeleteModuleResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class DeleteNetworkInterfaceRequest(AbstractModel):
+    """DeleteNetworkInterface请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param NetworkInterfaceId: 弹性网卡实例ID，例如：eni-m6dyj72l。
+        :type NetworkInterfaceId: str
+        :param EcmRegion: ECM 地域
+        :type EcmRegion: str
+        """
+        self.NetworkInterfaceId = None
+        self.EcmRegion = None
+
+
+    def _deserialize(self, params):
+        self.NetworkInterfaceId = params.get("NetworkInterfaceId")
+        self.EcmRegion = params.get("EcmRegion")
+
+
+class DeleteNetworkInterfaceResponse(AbstractModel):
+    """DeleteNetworkInterface返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class DeleteSubnetRequest(AbstractModel):
+    """DeleteSubnet请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param SubnetId: 子网实例ID。可通过DescribeSubnets接口返回值中的SubnetId获取。
+        :type SubnetId: str
+        :param EcmRegion: ECM 地域
+        :type EcmRegion: str
+        """
+        self.SubnetId = None
+        self.EcmRegion = None
+
+
+    def _deserialize(self, params):
+        self.SubnetId = params.get("SubnetId")
+        self.EcmRegion = params.get("EcmRegion")
+
+
+class DeleteSubnetResponse(AbstractModel):
+    """DeleteSubnet返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class DeleteVpcRequest(AbstractModel):
+    """DeleteVpc请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param VpcId: VPC实例ID。可通过DescribeVpcs接口返回值中的VpcId获取。
+        :type VpcId: str
+        :param EcmRegion: ECM 地域
+        :type EcmRegion: str
+        """
+        self.VpcId = None
+        self.EcmRegion = None
+
+
+    def _deserialize(self, params):
+        self.VpcId = params.get("VpcId")
+        self.EcmRegion = params.get("EcmRegion")
+
+
+class DeleteVpcResponse(AbstractModel):
+    """DeleteVpc返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeAddressQuotaRequest(AbstractModel):
+    """DescribeAddressQuota请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param EcmRegion: ECM 地域
+        :type EcmRegion: str
+        """
+        self.EcmRegion = None
+
+
+    def _deserialize(self, params):
+        self.EcmRegion = params.get("EcmRegion")
+
+
+class DescribeAddressQuotaResponse(AbstractModel):
+    """DescribeAddressQuota返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param QuotaSet: 账户 EIP 配额信息。
+        :type QuotaSet: list of EipQuota
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.QuotaSet = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("QuotaSet") is not None:
+            self.QuotaSet = []
+            for item in params.get("QuotaSet"):
+                obj = EipQuota()
+                obj._deserialize(item)
+                self.QuotaSet.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeAddressesRequest(AbstractModel):
+    """DescribeAddresses请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param EcmRegion: ECM 地域
+        :type EcmRegion: str
+        :param AddressIds: 标识 EIP 的唯一 ID 列表。EIP 唯一 ID 形如：eip-11112222。参数不支持同时指定AddressIds和Filters。
+        :type AddressIds: list of str
+        :param Filters: 每次请求的Filters的上限为10，Filter.Values的上限为5。参数不支持同时指定AddressIds和Filters。详细的过滤条件如下：
+address-id - String - 是否必填：否 - （过滤条件）按照 EIP 的唯一 ID 过滤。EIP 唯一 ID 形如：eip-11112222。
+address-name - String - 是否必填：否 - （过滤条件）按照 EIP 名称过滤。不支持模糊过滤。
+address-ip - String - 是否必填：否 - （过滤条件）按照 EIP 的 IP 地址过滤。
+address-status - String - 是否必填：否 - （过滤条件）按照 EIP 的状态过滤。取值范围：详见EIP状态列表。
+instance-id - String - 是否必填：否 - （过滤条件）按照 EIP 绑定的实例 ID 过滤。实例 ID 形如：ins-11112222。
+private-ip-address - String - 是否必填：否 - （过滤条件）按照 EIP 绑定的内网 IP 过滤。
+network-interface-id - String - 是否必填：否 - （过滤条件）按照 EIP 绑定的弹性网卡 ID 过滤。弹性网卡 ID 形如：eni-11112222。
+is-arrears - String - 是否必填：否 - （过滤条件）按照 EIP 是否欠费进行过滤。（TRUE：EIP 处于欠费状态|FALSE：EIP 费用状态正常）
+        :type Filters: list of Filter
+        :param Offset: 偏移量，默认为0。
+        :type Offset: int
+        :param Limit: 返回数量，默认为20，最大值为100。
+        :type Limit: int
+        """
+        self.EcmRegion = None
+        self.AddressIds = None
+        self.Filters = None
+        self.Offset = None
+        self.Limit = None
+
+
+    def _deserialize(self, params):
+        self.EcmRegion = params.get("EcmRegion")
+        self.AddressIds = params.get("AddressIds")
+        if params.get("Filters") is not None:
+            self.Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self.Filters.append(obj)
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+
+
+class DescribeAddressesResponse(AbstractModel):
+    """DescribeAddresses返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param TotalCount: 符合条件的 EIP 数量。
+        :type TotalCount: int
+        :param AddressSet: EIP 详细信息列表。
+        :type AddressSet: list of Address
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.AddressSet = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("AddressSet") is not None:
+            self.AddressSet = []
+            for item in params.get("AddressSet"):
+                obj = Address()
+                obj._deserialize(item)
+                self.AddressSet.append(obj)
         self.RequestId = params.get("RequestId")
 
 
@@ -638,6 +1419,86 @@ class DescribeModuleResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeNetworkInterfacesRequest(AbstractModel):
+    """DescribeNetworkInterfaces请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param EcmRegion: ECM 地域
+        :type EcmRegion: str
+        :param NetworkInterfaceIds: 弹性网卡实例ID查询。形如：eni-pxir56ns。每次请求的实例的上限为100。参数不支持同时指定NetworkInterfaceIds和Filters。
+        :type NetworkInterfaceIds: list of str
+        :param Filters: 过滤条件，参数不支持同时指定NetworkInterfaceIds和Filters。
+vpc-id - String - （过滤条件）VPC实例ID，形如：vpc-f49l6u0z。
+subnet-id - String - （过滤条件）所属子网实例ID，形如：subnet-f49l6u0z。
+network-interface-id - String - （过滤条件）弹性网卡实例ID，形如：eni-5k56k7k7。
+attachment.instance-id - String - （过滤条件）绑定的云服务器实例ID，形如：ins-3nqpdn3i。
+groups.security-group-id - String - （过滤条件）绑定的安全组实例ID，例如：sg-f9ekbxeq。
+network-interface-name - String - （过滤条件）网卡实例名称。
+network-interface-description - String - （过滤条件）网卡实例描述。
+address-ip - String - （过滤条件）内网IPv4地址。
+tag-key - String -是否必填：否- （过滤条件）按照标签键进行过滤。使用请参考示例2
+tag:tag-key - String - 是否必填：否 - （过滤条件）按照标签键值对进行过滤。 tag-key使用具体的标签键进行替换。使用请参考示例3。
+is-primary - Boolean - 是否必填：否 - （过滤条件）按照是否主网卡进行过滤。值为true时，仅过滤主网卡；值为false时，仅过滤辅助网卡；次过滤参数为提供时，同时过滤主网卡和辅助网卡。
+        :type Filters: list of Filter
+        :param Offset: 偏移量，默认为0。
+        :type Offset: int
+        :param Limit: 返回数量，默认为20，最大值为100。
+        :type Limit: int
+        """
+        self.EcmRegion = None
+        self.NetworkInterfaceIds = None
+        self.Filters = None
+        self.Offset = None
+        self.Limit = None
+
+
+    def _deserialize(self, params):
+        self.EcmRegion = params.get("EcmRegion")
+        self.NetworkInterfaceIds = params.get("NetworkInterfaceIds")
+        if params.get("Filters") is not None:
+            self.Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self.Filters.append(obj)
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+
+
+class DescribeNetworkInterfacesResponse(AbstractModel):
+    """DescribeNetworkInterfaces返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param TotalCount: 符合条件的实例数量。
+        :type TotalCount: int
+        :param NetworkInterfaceSet: 实例详细信息列表。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type NetworkInterfaceSet: list of NetworkInterface
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.NetworkInterfaceSet = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("NetworkInterfaceSet") is not None:
+            self.NetworkInterfaceSet = []
+            for item in params.get("NetworkInterfaceSet"):
+                obj = NetworkInterface()
+                obj._deserialize(item)
+                self.NetworkInterfaceSet.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeNodeRequest(AbstractModel):
     """DescribeNode请求参数结构体
 
@@ -781,6 +1642,225 @@ class DescribePeakNetworkOverviewResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeSubnetsRequest(AbstractModel):
+    """DescribeSubnets请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param EcmRegion: ECM 地域
+        :type EcmRegion: str
+        :param SubnetIds: 子网实例ID查询。形如：subnet-pxir56ns。每次请求的实例的上限为100。参数不支持同时指定SubnetIds和Filters。
+        :type SubnetIds: list of str
+        :param Filters: 过滤条件，参数不支持同时指定SubnetIds和Filters。
+subnet-id - String - （过滤条件）Subnet实例名称。
+vpc-id - String - （过滤条件）VPC实例ID，形如：vpc-f49l6u0z。
+cidr-block - String - （过滤条件）子网网段，形如: 192.168.1.0 。
+is-default - Boolean - （过滤条件）是否是默认子网。
+is-remote-vpc-snat - Boolean - （过滤条件）是否为VPC SNAT地址池子网。
+subnet-name - String - （过滤条件）子网名称。
+zone - String - （过滤条件）可用区。
+tag-key - String -是否必填：否- （过滤条件）按照标签键进行过滤。
+tag:tag-key - String - 是否必填：否 - （过滤条件）按照标签键值对进行过滤。 tag-key使用具体的标签键进行替换。使用请参考示例
+        :type Filters: list of Filter
+        :param Offset: 偏移量
+        :type Offset: str
+        :param Limit: 返回数量
+        :type Limit: str
+        """
+        self.EcmRegion = None
+        self.SubnetIds = None
+        self.Filters = None
+        self.Offset = None
+        self.Limit = None
+
+
+    def _deserialize(self, params):
+        self.EcmRegion = params.get("EcmRegion")
+        self.SubnetIds = params.get("SubnetIds")
+        if params.get("Filters") is not None:
+            self.Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self.Filters.append(obj)
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+
+
+class DescribeSubnetsResponse(AbstractModel):
+    """DescribeSubnets返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param TotalCount: 符合条件的实例数量。
+        :type TotalCount: int
+        :param SubnetSet: 子网对象。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SubnetSet: list of Subnet
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.SubnetSet = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("SubnetSet") is not None:
+            self.SubnetSet = []
+            for item in params.get("SubnetSet"):
+                obj = Subnet()
+                obj._deserialize(item)
+                self.SubnetSet.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeTaskResultRequest(AbstractModel):
+    """DescribeTaskResult请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param EcmRegion: ECM 地域
+        :type EcmRegion: str
+        :param TaskId: 异步任务ID。
+        :type TaskId: str
+        """
+        self.EcmRegion = None
+        self.TaskId = None
+
+
+    def _deserialize(self, params):
+        self.EcmRegion = params.get("EcmRegion")
+        self.TaskId = params.get("TaskId")
+
+
+class DescribeTaskResultResponse(AbstractModel):
+    """DescribeTaskResult返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param TaskId: 异步任务ID。
+        :type TaskId: str
+        :param Result: 执行结果，包括"SUCCESS", "FAILED", "RUNNING"
+        :type Result: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TaskId = None
+        self.Result = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TaskId = params.get("TaskId")
+        self.Result = params.get("Result")
+        self.RequestId = params.get("RequestId")
+
+
+class DetachNetworkInterfaceRequest(AbstractModel):
+    """DetachNetworkInterface请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param NetworkInterfaceId: 弹性网卡实例ID，例如：eni-m6dyj72l。
+        :type NetworkInterfaceId: str
+        :param InstanceId: 实例ID。形如：ein-hcs7jkg4
+        :type InstanceId: str
+        :param EcmRegion: ECM 地域
+        :type EcmRegion: str
+        """
+        self.NetworkInterfaceId = None
+        self.InstanceId = None
+        self.EcmRegion = None
+
+
+    def _deserialize(self, params):
+        self.NetworkInterfaceId = params.get("NetworkInterfaceId")
+        self.InstanceId = params.get("InstanceId")
+        self.EcmRegion = params.get("EcmRegion")
+
+
+class DetachNetworkInterfaceResponse(AbstractModel):
+    """DetachNetworkInterface返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class DisassociateAddressRequest(AbstractModel):
+    """DisassociateAddress请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param EcmRegion: ECM 地域
+        :type EcmRegion: str
+        :param AddressId: 标识 EIP 的唯一 ID。EIP 唯一 ID 形如：eip-11112222。
+        :type AddressId: str
+        :param ReallocateNormalPublicIp: 表示解绑 EIP 之后是否分配普通公网 IP。取值范围：
+TRUE：表示解绑 EIP 之后分配普通公网 IP。
+FALSE：表示解绑 EIP 之后不分配普通公网 IP。
+默认取值：FALSE。
+
+只有满足以下条件时才能指定该参数：
+只有在解绑主网卡的主内网 IP 上的 EIP 时才能指定该参数。
+解绑 EIP 后重新分配普通公网 IP 操作一个账号每天最多操作 10 次；详情可通过 DescribeAddressQuota 接口获取。
+        :type ReallocateNormalPublicIp: bool
+        """
+        self.EcmRegion = None
+        self.AddressId = None
+        self.ReallocateNormalPublicIp = None
+
+
+    def _deserialize(self, params):
+        self.EcmRegion = params.get("EcmRegion")
+        self.AddressId = params.get("AddressId")
+        self.ReallocateNormalPublicIp = params.get("ReallocateNormalPublicIp")
+
+
+class DisassociateAddressResponse(AbstractModel):
+    """DisassociateAddress返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param TaskId: 异步任务TaskId。可以使用DescribeTaskResult接口查询任务状态。
+        :type TaskId: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TaskId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TaskId = params.get("TaskId")
+        self.RequestId = params.get("RequestId")
+
+
 class DiskInfo(AbstractModel):
     """磁盘信息
 
@@ -804,6 +1884,34 @@ class DiskInfo(AbstractModel):
         self.DiskType = params.get("DiskType")
         self.DiskId = params.get("DiskId")
         self.DiskSize = params.get("DiskSize")
+
+
+class EipQuota(AbstractModel):
+    """描述EIP配额信息
+
+    """
+
+    def __init__(self):
+        """
+        :param QuotaId: 配额名称，取值范围：
+TOTAL_EIP_QUOTA：用户当前地域下EIP的配额数；
+DAILY_EIP_APPLY：用户当前地域下今日申购次数；
+DAILY_PUBLIC_IP_ASSIGN：用户当前地域下，重新分配公网 IP次数。
+        :type QuotaId: str
+        :param QuotaCurrent: 当前数量
+        :type QuotaCurrent: int
+        :param QuotaLimit: 配额数量
+        :type QuotaLimit: int
+        """
+        self.QuotaId = None
+        self.QuotaCurrent = None
+        self.QuotaLimit = None
+
+
+    def _deserialize(self, params):
+        self.QuotaId = params.get("QuotaId")
+        self.QuotaCurrent = params.get("QuotaCurrent")
+        self.QuotaLimit = params.get("QuotaLimit")
 
 
 class EnhancedService(AbstractModel):
@@ -1339,6 +2447,231 @@ class Internet(AbstractModel):
                 self.PublicIPAddressSet.append(obj)
 
 
+class Ipv6Address(AbstractModel):
+    """IPv6地址信息。
+
+    """
+
+    def __init__(self):
+        """
+        :param Address: IPv6地址，形如：3402:4e00:20:100:0:8cd9:2a67:71f3
+        :type Address: str
+        :param Primary: 是否是主IP。
+        :type Primary: bool
+        :param AddressId: EIP实例ID，形如：eip-hxlqja90。
+        :type AddressId: str
+        :param Description: 描述信息。
+        :type Description: str
+        :param IsWanIpBlocked: 公网IP是否被封堵。
+        :type IsWanIpBlocked: bool
+        :param State: IPv6地址状态：
+PENDING：生产中
+MIGRATING：迁移中
+DELETING：删除中
+AVAILABLE：可用的
+        :type State: str
+        """
+        self.Address = None
+        self.Primary = None
+        self.AddressId = None
+        self.Description = None
+        self.IsWanIpBlocked = None
+        self.State = None
+
+
+    def _deserialize(self, params):
+        self.Address = params.get("Address")
+        self.Primary = params.get("Primary")
+        self.AddressId = params.get("AddressId")
+        self.Description = params.get("Description")
+        self.IsWanIpBlocked = params.get("IsWanIpBlocked")
+        self.State = params.get("State")
+
+
+class MigrateNetworkInterfaceRequest(AbstractModel):
+    """MigrateNetworkInterface请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param EcmRegion: ECM 地域
+        :type EcmRegion: str
+        :param NetworkInterfaceId: 弹性网卡实例ID，例如：eni-m6dyj72l。
+        :type NetworkInterfaceId: str
+        :param SourceInstanceId: 弹性网卡当前绑定的ECM实例ID。形如：ein-r8hr2upy。
+        :type SourceInstanceId: str
+        :param DestinationInstanceId: 待迁移的目的ECM实例ID。
+        :type DestinationInstanceId: str
+        """
+        self.EcmRegion = None
+        self.NetworkInterfaceId = None
+        self.SourceInstanceId = None
+        self.DestinationInstanceId = None
+
+
+    def _deserialize(self, params):
+        self.EcmRegion = params.get("EcmRegion")
+        self.NetworkInterfaceId = params.get("NetworkInterfaceId")
+        self.SourceInstanceId = params.get("SourceInstanceId")
+        self.DestinationInstanceId = params.get("DestinationInstanceId")
+
+
+class MigrateNetworkInterfaceResponse(AbstractModel):
+    """MigrateNetworkInterface返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class MigratePrivateIpAddressRequest(AbstractModel):
+    """MigratePrivateIpAddress请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param EcmRegion: ECM 地域
+        :type EcmRegion: str
+        :param SourceNetworkInterfaceId: 当内网IP绑定的弹性网卡实例ID，例如：eni-11112222。
+        :type SourceNetworkInterfaceId: str
+        :param DestinationNetworkInterfaceId: 待迁移的目的弹性网卡实例ID。
+        :type DestinationNetworkInterfaceId: str
+        :param PrivateIpAddress: 迁移的内网IP地址，例如：10.0.0.6。
+        :type PrivateIpAddress: str
+        """
+        self.EcmRegion = None
+        self.SourceNetworkInterfaceId = None
+        self.DestinationNetworkInterfaceId = None
+        self.PrivateIpAddress = None
+
+
+    def _deserialize(self, params):
+        self.EcmRegion = params.get("EcmRegion")
+        self.SourceNetworkInterfaceId = params.get("SourceNetworkInterfaceId")
+        self.DestinationNetworkInterfaceId = params.get("DestinationNetworkInterfaceId")
+        self.PrivateIpAddress = params.get("PrivateIpAddress")
+
+
+class MigratePrivateIpAddressResponse(AbstractModel):
+    """MigratePrivateIpAddress返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class ModifyAddressAttributeRequest(AbstractModel):
+    """ModifyAddressAttribute请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param EcmRegion: ECM 地域
+        :type EcmRegion: str
+        :param AddressId: 标识 EIP 的唯一 ID。EIP 唯一 ID 形如：eip-11112222。
+        :type AddressId: str
+        :param AddressName: 修改后的 EIP 名称。长度上限为20个字符。
+        :type AddressName: str
+        :param EipDirectConnection: 设定EIP是否直通，"TRUE"表示直通，"FALSE"表示非直通。注意该参数仅对EIP直通功能可见的用户可以设定。
+        :type EipDirectConnection: str
+        """
+        self.EcmRegion = None
+        self.AddressId = None
+        self.AddressName = None
+        self.EipDirectConnection = None
+
+
+    def _deserialize(self, params):
+        self.EcmRegion = params.get("EcmRegion")
+        self.AddressId = params.get("AddressId")
+        self.AddressName = params.get("AddressName")
+        self.EipDirectConnection = params.get("EipDirectConnection")
+
+
+class ModifyAddressAttributeResponse(AbstractModel):
+    """ModifyAddressAttribute返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class ModifyAddressesBandwidthRequest(AbstractModel):
+    """ModifyAddressesBandwidth请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param EcmRegion: ECM 地域
+        :type EcmRegion: str
+        :param AddressIds: EIP唯一标识ID，形如'eip-xxxxxxx'
+        :type AddressIds: list of str
+        :param InternetMaxBandwidthOut: 调整带宽目标值
+        :type InternetMaxBandwidthOut: int
+        """
+        self.EcmRegion = None
+        self.AddressIds = None
+        self.InternetMaxBandwidthOut = None
+
+
+    def _deserialize(self, params):
+        self.EcmRegion = params.get("EcmRegion")
+        self.AddressIds = params.get("AddressIds")
+        self.InternetMaxBandwidthOut = params.get("InternetMaxBandwidthOut")
+
+
+class ModifyAddressesBandwidthResponse(AbstractModel):
+    """ModifyAddressesBandwidth返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param TaskId: 异步任务TaskId。
+        :type TaskId: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TaskId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TaskId = params.get("TaskId")
+        self.RequestId = params.get("RequestId")
+
+
 class ModifyInstancesAttributeRequest(AbstractModel):
     """ModifyInstancesAttribute请求参数结构体
 
@@ -1491,6 +2824,94 @@ class ModifyModuleNetworkResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class ModifySubnetAttributeRequest(AbstractModel):
+    """ModifySubnetAttribute请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param SubnetId: 子网实例ID。形如：subnet-pxir56ns。
+        :type SubnetId: str
+        :param EcmRegion: ECM 地域
+        :type EcmRegion: str
+        :param SubnetName: 子网名称，最大长度不能超过60个字节。
+        :type SubnetName: str
+        :param EnableBroadcast: 子网是否开启广播。
+        :type EnableBroadcast: str
+        """
+        self.SubnetId = None
+        self.EcmRegion = None
+        self.SubnetName = None
+        self.EnableBroadcast = None
+
+
+    def _deserialize(self, params):
+        self.SubnetId = params.get("SubnetId")
+        self.EcmRegion = params.get("EcmRegion")
+        self.SubnetName = params.get("SubnetName")
+        self.EnableBroadcast = params.get("EnableBroadcast")
+
+
+class ModifySubnetAttributeResponse(AbstractModel):
+    """ModifySubnetAttribute返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class ModifyVpcAttributeRequest(AbstractModel):
+    """ModifyVpcAttribute请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param VpcId: VPC实例ID。形如：vpc-f49l6u0z。
+        :type VpcId: str
+        :param EcmRegion: ECM 地域
+        :type EcmRegion: str
+        :param VpcName: 私有网络名称，可任意命名，但不得超过60个字符。
+        :type VpcName: str
+        """
+        self.VpcId = None
+        self.EcmRegion = None
+        self.VpcName = None
+
+
+    def _deserialize(self, params):
+        self.VpcId = params.get("VpcId")
+        self.EcmRegion = params.get("EcmRegion")
+        self.VpcName = params.get("VpcName")
+
+
+class ModifyVpcAttributeResponse(AbstractModel):
+    """ModifyVpcAttribute返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class Module(AbstractModel):
     """模块信息
 
@@ -1608,6 +3029,140 @@ class ModuleItem(AbstractModel):
         if params.get("Module") is not None:
             self.Module = Module()
             self.Module._deserialize(params.get("Module"))
+
+
+class NetworkInterface(AbstractModel):
+    """弹性网卡
+
+    """
+
+    def __init__(self):
+        """
+        :param NetworkInterfaceId: 弹性网卡实例ID，例如：eni-f1xjkw1b。
+        :type NetworkInterfaceId: str
+        :param NetworkInterfaceName: 弹性网卡名称。
+        :type NetworkInterfaceName: str
+        :param NetworkInterfaceDescription: 弹性网卡描述。
+        :type NetworkInterfaceDescription: str
+        :param SubnetId: 子网实例ID。
+        :type SubnetId: str
+        :param VpcId: VPC实例ID。
+        :type VpcId: str
+        :param GroupSet: 绑定的安全组。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type GroupSet: list of str
+        :param Primary: 是否是主网卡。
+        :type Primary: bool
+        :param MacAddress: MAC地址。
+        :type MacAddress: str
+        :param State: 弹性网卡状态：
+PENDING：创建中
+AVAILABLE：可用的
+ATTACHING：绑定中
+DETACHING：解绑中
+DELETING：删除中
+        :type State: str
+        :param PrivateIpAddressSet: 内网IP信息。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PrivateIpAddressSet: list of PrivateIpAddressSpecification
+        :param Attachment: 绑定的云服务器对象。
+注意：此字段可能返回 null，表示取不到有效值。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Attachment: :class:`tencentcloud.ecm.v20190719.models.NetworkInterfaceAttachment`
+        :param Zone: 可用区。
+        :type Zone: str
+        :param CreatedTime: 创建时间。
+        :type CreatedTime: str
+        :param Ipv6AddressSet: IPv6地址列表。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Ipv6AddressSet: list of Ipv6Address
+        :param TagSet: 标签键值对。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TagSet: list of Tag
+        :param EniType: 网卡类型。0 - 弹性网卡；1 - evm弹性网卡。
+        :type EniType: int
+        """
+        self.NetworkInterfaceId = None
+        self.NetworkInterfaceName = None
+        self.NetworkInterfaceDescription = None
+        self.SubnetId = None
+        self.VpcId = None
+        self.GroupSet = None
+        self.Primary = None
+        self.MacAddress = None
+        self.State = None
+        self.PrivateIpAddressSet = None
+        self.Attachment = None
+        self.Zone = None
+        self.CreatedTime = None
+        self.Ipv6AddressSet = None
+        self.TagSet = None
+        self.EniType = None
+
+
+    def _deserialize(self, params):
+        self.NetworkInterfaceId = params.get("NetworkInterfaceId")
+        self.NetworkInterfaceName = params.get("NetworkInterfaceName")
+        self.NetworkInterfaceDescription = params.get("NetworkInterfaceDescription")
+        self.SubnetId = params.get("SubnetId")
+        self.VpcId = params.get("VpcId")
+        self.GroupSet = params.get("GroupSet")
+        self.Primary = params.get("Primary")
+        self.MacAddress = params.get("MacAddress")
+        self.State = params.get("State")
+        if params.get("PrivateIpAddressSet") is not None:
+            self.PrivateIpAddressSet = []
+            for item in params.get("PrivateIpAddressSet"):
+                obj = PrivateIpAddressSpecification()
+                obj._deserialize(item)
+                self.PrivateIpAddressSet.append(obj)
+        if params.get("Attachment") is not None:
+            self.Attachment = NetworkInterfaceAttachment()
+            self.Attachment._deserialize(params.get("Attachment"))
+        self.Zone = params.get("Zone")
+        self.CreatedTime = params.get("CreatedTime")
+        if params.get("Ipv6AddressSet") is not None:
+            self.Ipv6AddressSet = []
+            for item in params.get("Ipv6AddressSet"):
+                obj = Ipv6Address()
+                obj._deserialize(item)
+                self.Ipv6AddressSet.append(obj)
+        if params.get("TagSet") is not None:
+            self.TagSet = []
+            for item in params.get("TagSet"):
+                obj = Tag()
+                obj._deserialize(item)
+                self.TagSet.append(obj)
+        self.EniType = params.get("EniType")
+
+
+class NetworkInterfaceAttachment(AbstractModel):
+    """弹性网卡绑定关系
+
+    """
+
+    def __init__(self):
+        """
+        :param InstanceId: 云主机实例ID。
+        :type InstanceId: str
+        :param DeviceIndex: 网卡在云主机实例内的序号。
+        :type DeviceIndex: int
+        :param InstanceAccountId: 云主机所有者账户信息。
+        :type InstanceAccountId: str
+        :param AttachTime: 绑定时间。
+        :type AttachTime: str
+        """
+        self.InstanceId = None
+        self.DeviceIndex = None
+        self.InstanceAccountId = None
+        self.AttachTime = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.DeviceIndex = params.get("DeviceIndex")
+        self.InstanceAccountId = params.get("InstanceAccountId")
+        self.AttachTime = params.get("AttachTime")
 
 
 class NetworkStorageRange(AbstractModel):
@@ -1969,6 +3524,53 @@ class PrivateIPAddressInfo(AbstractModel):
         self.PrivateIPAddress = params.get("PrivateIPAddress")
 
 
+class PrivateIpAddressSpecification(AbstractModel):
+    """内网IP信息
+
+    """
+
+    def __init__(self):
+        """
+        :param PrivateIpAddress: 内网IP地址。
+        :type PrivateIpAddress: str
+        :param Primary: 是否是主IP。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Primary: bool
+        :param PublicIpAddress: 公网IP地址。
+        :type PublicIpAddress: str
+        :param AddressId: EIP实例ID，例如：eip-11112222。
+        :type AddressId: str
+        :param Description: 内网IP描述信息。
+        :type Description: str
+        :param IsWanIpBlocked: 公网IP是否被封堵。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IsWanIpBlocked: bool
+        :param State: IP状态：
+PENDING：生产中
+MIGRATING：迁移中
+DELETING：删除中
+AVAILABLE：可用的
+        :type State: str
+        """
+        self.PrivateIpAddress = None
+        self.Primary = None
+        self.PublicIpAddress = None
+        self.AddressId = None
+        self.Description = None
+        self.IsWanIpBlocked = None
+        self.State = None
+
+
+    def _deserialize(self, params):
+        self.PrivateIpAddress = params.get("PrivateIpAddress")
+        self.Primary = params.get("Primary")
+        self.PublicIpAddress = params.get("PublicIpAddress")
+        self.AddressId = params.get("AddressId")
+        self.Description = params.get("Description")
+        self.IsWanIpBlocked = params.get("IsWanIpBlocked")
+        self.State = params.get("State")
+
+
 class Province(AbstractModel):
     """省份信息
 
@@ -2096,6 +3698,95 @@ class RegionInfo(AbstractModel):
         self.RegionId = params.get("RegionId")
 
 
+class ReleaseAddressesRequest(AbstractModel):
+    """ReleaseAddresses请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param EcmRegion: ECM 地域
+        :type EcmRegion: str
+        :param AddressIds: 标识 EIP 的唯一 ID 列表。
+        :type AddressIds: list of str
+        """
+        self.EcmRegion = None
+        self.AddressIds = None
+
+
+    def _deserialize(self, params):
+        self.EcmRegion = params.get("EcmRegion")
+        self.AddressIds = params.get("AddressIds")
+
+
+class ReleaseAddressesResponse(AbstractModel):
+    """ReleaseAddresses返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param TaskId: 异步任务TaskId。可以使用DescribeTaskResult接口查询任务状态。
+        :type TaskId: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TaskId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TaskId = params.get("TaskId")
+        self.RequestId = params.get("RequestId")
+
+
+class RemovePrivateIpAddressesRequest(AbstractModel):
+    """RemovePrivateIpAddresses请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param EcmRegion: ECM 地域。
+        :type EcmRegion: str
+        :param NetworkInterfaceId: 弹性网卡实例ID，例如：eni-11112222。
+        :type NetworkInterfaceId: str
+        :param PrivateIpAddresses: 指定的内网IP信息，单次最多指定10个。
+        :type PrivateIpAddresses: list of PrivateIpAddressSpecification
+        """
+        self.EcmRegion = None
+        self.NetworkInterfaceId = None
+        self.PrivateIpAddresses = None
+
+
+    def _deserialize(self, params):
+        self.EcmRegion = params.get("EcmRegion")
+        self.NetworkInterfaceId = params.get("NetworkInterfaceId")
+        if params.get("PrivateIpAddresses") is not None:
+            self.PrivateIpAddresses = []
+            for item in params.get("PrivateIpAddresses"):
+                obj = PrivateIpAddressSpecification()
+                obj._deserialize(item)
+                self.PrivateIpAddresses.append(obj)
+
+
+class RemovePrivateIpAddressesResponse(AbstractModel):
+    """RemovePrivateIpAddresses返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class ResetInstancesMaxBandwidthRequest(AbstractModel):
     """ResetInstancesMaxBandwidth请求参数结构体
 
@@ -2182,6 +3873,107 @@ class ResetInstancesResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class RunInstancesRequest(AbstractModel):
+    """RunInstances请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ZoneInstanceCountISPSet: 需要创建实例的可用区及创建数目及运营商的列表。在单次请求的过程中，单个region下的请求创建实例数上限为100
+        :type ZoneInstanceCountISPSet: list of ZoneInstanceCountISP
+        :param ModuleId: 模块ID
+        :type ModuleId: str
+        :param Password: 实例登录密码。不同操作系统类型密码复杂度限制不一样，具体如下：
+Linux实例密码必须8到30位，至少包括两项[a-z]，[A-Z]、[0-9] 和 [( ) ` ~ ! @ # $ % ^ & - + = | { } [ ] : ; ' , . ? / ]中的特殊符。Windows实例密码必须12到30位，至少包括三项[a-z]，[A-Z]，[0-9] 和 [( ) ` ~ ! @ # $ % ^ & - + = | { } [ ] : ; ' , . ? /]中的特殊符号。
+        :type Password: str
+        :param InternetMaxBandwidthOut: 公网出带宽上限，单位：Mbps
+        :type InternetMaxBandwidthOut: int
+        :param ImageId: 镜像ID，不传则使用模块下的默认值
+        :type ImageId: str
+        :param InstanceName: 实例显示名称。
+不指定实例显示名称则默认显示‘未命名’。
+购买多台实例，如果指定模式串{R:x}，表示生成数字[x, x+n-1]，其中n表示购买实例的数量，例如server\_{R:3}，购买1台时，实例显示名称为server\_3；购买2台时，实例显示名称分别为server\_3，server\_4。
+支持指定多个模式串{R:x}。
+购买多台实例，如果不指定模式串，则在实例显示名称添加后缀1、2...n，其中n表示购买实例的数量，例如server_，购买2台时，实例显示名称分别为server\_1，server\_2。
+如果购买的实例属于不同的地域或运营商，则上述规则在每个地域和运营商内独立计数。
+最多支持60个字符（包含模式串）。
+        :type InstanceName: str
+        :param HostName: 主机名称
+点号（.）和短横线（-）不能作为 HostName 的首尾字符，不能连续使用。
+Windows 实例：名字符长度为[2, 15]，允许字母（不限制大小写）、数字和短横线（-）组成，不支持点号（.），不能全是数字。
+其他类型（Linux 等）实例：字符长度为[2, 60]，允许支持多个点号，点之间为一段，每段允许字母（不限制大小写）、数字和短横线（-）组成。
+        :type HostName: str
+        :param ClientToken: 用于保证请求幂等性的字符串。目前为保留参数，请勿使用。
+        :type ClientToken: str
+        :param EnhancedService: 增强服务。通过该参数可以指定是否开启云安全、云监控等服务。若不指定该参数，则默认公共镜像开启云监控、云安全服务
+        :type EnhancedService: :class:`tencentcloud.ecm.v20190719.models.EnhancedService`
+        :param TagSpecification: 标签列表
+        :type TagSpecification: list of TagSpecification
+        :param UserData: 提供给实例使用的用户数据，需要以 base64 方式编码，支持的最大数据大小为 16KB
+        :type UserData: str
+        """
+        self.ZoneInstanceCountISPSet = None
+        self.ModuleId = None
+        self.Password = None
+        self.InternetMaxBandwidthOut = None
+        self.ImageId = None
+        self.InstanceName = None
+        self.HostName = None
+        self.ClientToken = None
+        self.EnhancedService = None
+        self.TagSpecification = None
+        self.UserData = None
+
+
+    def _deserialize(self, params):
+        if params.get("ZoneInstanceCountISPSet") is not None:
+            self.ZoneInstanceCountISPSet = []
+            for item in params.get("ZoneInstanceCountISPSet"):
+                obj = ZoneInstanceCountISP()
+                obj._deserialize(item)
+                self.ZoneInstanceCountISPSet.append(obj)
+        self.ModuleId = params.get("ModuleId")
+        self.Password = params.get("Password")
+        self.InternetMaxBandwidthOut = params.get("InternetMaxBandwidthOut")
+        self.ImageId = params.get("ImageId")
+        self.InstanceName = params.get("InstanceName")
+        self.HostName = params.get("HostName")
+        self.ClientToken = params.get("ClientToken")
+        if params.get("EnhancedService") is not None:
+            self.EnhancedService = EnhancedService()
+            self.EnhancedService._deserialize(params.get("EnhancedService"))
+        if params.get("TagSpecification") is not None:
+            self.TagSpecification = []
+            for item in params.get("TagSpecification"):
+                obj = TagSpecification()
+                obj._deserialize(item)
+                self.TagSpecification.append(obj)
+        self.UserData = params.get("UserData")
+
+
+class RunInstancesResponse(AbstractModel):
+    """RunInstances返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param InstanceIdSet: 创建中的实例ID列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InstanceIdSet: list of str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.InstanceIdSet = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.InstanceIdSet = params.get("InstanceIdSet")
+        self.RequestId = params.get("RequestId")
+
+
 class RunMonitorServiceEnabled(AbstractModel):
     """云监控服务
 
@@ -2208,7 +4000,7 @@ class RunSecurityServiceEnabled(AbstractModel):
         """
         :param Enabled: 是否开启。
         :type Enabled: bool
-        :param Version: 云镜版本：0 基础版，1 专业版
+        :param Version: 云镜版本：0 基础版，1 专业版。目前仅支持基础版
         :type Version: int
         """
         self.Enabled = None
@@ -2282,6 +4074,77 @@ class SrcImage(AbstractModel):
         self.RegionName = params.get("RegionName")
 
 
+class Subnet(AbstractModel):
+    """子网对象
+
+    """
+
+    def __init__(self):
+        """
+        :param VpcId: VPC实例ID。
+        :type VpcId: str
+        :param SubnetId: 子网实例ID，例如：subnet-bthucmmy。
+        :type SubnetId: str
+        :param SubnetName: 子网名称。
+        :type SubnetName: str
+        :param CidrBlock: 子网的 IPv4 CIDR。
+        :type CidrBlock: str
+        :param IsDefault: 是否默认子网。
+        :type IsDefault: bool
+        :param EnableBroadcast: 是否开启广播。
+        :type EnableBroadcast: bool
+        :param RouteTableId: 路由表实例ID，例如：rtb-l2h8d7c2。
+        :type RouteTableId: str
+        :param CreatedTime: 创建时间。
+        :type CreatedTime: str
+        :param AvailableIpAddressCount: 可用IP数。
+        :type AvailableIpAddressCount: int
+        :param Ipv6CidrBlock: 子网的 IPv6 CIDR。
+        :type Ipv6CidrBlock: str
+        :param NetworkAclId: 关联ACLID
+        :type NetworkAclId: str
+        :param IsRemoteVpcSnat: 是否为 SNAT 地址池子网。
+        :type IsRemoteVpcSnat: bool
+        :param TagSet: 标签键值对。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TagSet: list of Tag
+        """
+        self.VpcId = None
+        self.SubnetId = None
+        self.SubnetName = None
+        self.CidrBlock = None
+        self.IsDefault = None
+        self.EnableBroadcast = None
+        self.RouteTableId = None
+        self.CreatedTime = None
+        self.AvailableIpAddressCount = None
+        self.Ipv6CidrBlock = None
+        self.NetworkAclId = None
+        self.IsRemoteVpcSnat = None
+        self.TagSet = None
+
+
+    def _deserialize(self, params):
+        self.VpcId = params.get("VpcId")
+        self.SubnetId = params.get("SubnetId")
+        self.SubnetName = params.get("SubnetName")
+        self.CidrBlock = params.get("CidrBlock")
+        self.IsDefault = params.get("IsDefault")
+        self.EnableBroadcast = params.get("EnableBroadcast")
+        self.RouteTableId = params.get("RouteTableId")
+        self.CreatedTime = params.get("CreatedTime")
+        self.AvailableIpAddressCount = params.get("AvailableIpAddressCount")
+        self.Ipv6CidrBlock = params.get("Ipv6CidrBlock")
+        self.NetworkAclId = params.get("NetworkAclId")
+        self.IsRemoteVpcSnat = params.get("IsRemoteVpcSnat")
+        if params.get("TagSet") is not None:
+            self.TagSet = []
+            for item in params.get("TagSet"):
+                obj = Tag()
+                obj._deserialize(item)
+                self.TagSet.append(obj)
+
+
 class Tag(AbstractModel):
     """标签信息。
 
@@ -2303,6 +4166,32 @@ class Tag(AbstractModel):
     def _deserialize(self, params):
         self.Key = params.get("Key")
         self.Value = params.get("Value")
+
+
+class TagSpecification(AbstractModel):
+    """TagSpecification
+
+    """
+
+    def __init__(self):
+        """
+        :param ResourceType: 资源类型，目前仅支持"instance"
+        :type ResourceType: str
+        :param Tags: 标签列表
+        :type Tags: list of Tag
+        """
+        self.ResourceType = None
+        self.Tags = None
+
+
+    def _deserialize(self, params):
+        self.ResourceType = params.get("ResourceType")
+        if params.get("Tags") is not None:
+            self.Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self.Tags.append(obj)
 
 
 class TerminateInstancesRequest(AbstractModel):
@@ -2347,6 +4236,85 @@ class TerminateInstancesResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class VpcInfo(AbstractModel):
+    """私有网络(VPC)对象。
+
+    """
+
+    def __init__(self):
+        """
+        :param VpcName: VPC名称。
+        :type VpcName: str
+        :param VpcId: VPC实例ID，例如：vpc-azd4dt1c。
+        :type VpcId: str
+        :param CidrBlock: VPC的IPv4 CIDR。
+        :type CidrBlock: str
+        :param IsDefault: 是否默认VPC。
+        :type IsDefault: bool
+        :param EnableMulticast: 是否开启组播。
+        :type EnableMulticast: bool
+        :param CreatedTime: 创建时间。
+        :type CreatedTime: str
+        :param DnsServerSet: DNS列表。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DnsServerSet: list of str
+        :param DomainName: DHCP域名选项值。
+        :type DomainName: str
+        :param DhcpOptionsId: DHCP选项集ID。
+        :type DhcpOptionsId: str
+        :param EnableDhcp: 是否开启DHCP。
+        :type EnableDhcp: bool
+        :param Ipv6CidrBlock: VPC的IPv6 CIDR。
+        :type Ipv6CidrBlock: str
+        :param TagSet: 标签键值对
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TagSet: list of Tag
+        :param AssistantCidrSet: 辅助CIDR
+注意：此字段可能返回 null，表示取不到有效值。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AssistantCidrSet: list of AssistantCidr
+        """
+        self.VpcName = None
+        self.VpcId = None
+        self.CidrBlock = None
+        self.IsDefault = None
+        self.EnableMulticast = None
+        self.CreatedTime = None
+        self.DnsServerSet = None
+        self.DomainName = None
+        self.DhcpOptionsId = None
+        self.EnableDhcp = None
+        self.Ipv6CidrBlock = None
+        self.TagSet = None
+        self.AssistantCidrSet = None
+
+
+    def _deserialize(self, params):
+        self.VpcName = params.get("VpcName")
+        self.VpcId = params.get("VpcId")
+        self.CidrBlock = params.get("CidrBlock")
+        self.IsDefault = params.get("IsDefault")
+        self.EnableMulticast = params.get("EnableMulticast")
+        self.CreatedTime = params.get("CreatedTime")
+        self.DnsServerSet = params.get("DnsServerSet")
+        self.DomainName = params.get("DomainName")
+        self.DhcpOptionsId = params.get("DhcpOptionsId")
+        self.EnableDhcp = params.get("EnableDhcp")
+        self.Ipv6CidrBlock = params.get("Ipv6CidrBlock")
+        if params.get("TagSet") is not None:
+            self.TagSet = []
+            for item in params.get("TagSet"):
+                obj = Tag()
+                obj._deserialize(item)
+                self.TagSet.append(obj)
+        if params.get("AssistantCidrSet") is not None:
+            self.AssistantCidrSet = []
+            for item in params.get("AssistantCidrSet"):
+                obj = AssistantCidr()
+                obj._deserialize(item)
+                self.AssistantCidrSet.append(obj)
+
+
 class ZoneInfo(AbstractModel):
     """Zone信息
 
@@ -2370,6 +4338,31 @@ class ZoneInfo(AbstractModel):
         self.ZoneId = params.get("ZoneId")
         self.ZoneName = params.get("ZoneName")
         self.Zone = params.get("Zone")
+
+
+class ZoneInstanceCountISP(AbstractModel):
+    """实例可用区及对应的实例创建数目及运营商的组合；
+
+    """
+
+    def __init__(self):
+        """
+        :param Zone: 创建实例的可用区。
+        :type Zone: str
+        :param InstanceCount: 在当前可用区欲创建的实例数目。
+        :type InstanceCount: int
+        :param ISP: 运营商。
+        :type ISP: str
+        """
+        self.Zone = None
+        self.InstanceCount = None
+        self.ISP = None
+
+
+    def _deserialize(self, params):
+        self.Zone = params.get("Zone")
+        self.InstanceCount = params.get("InstanceCount")
+        self.ISP = params.get("ISP")
 
 
 class ZoneInstanceInfo(AbstractModel):

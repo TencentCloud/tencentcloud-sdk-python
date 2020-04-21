@@ -6661,9 +6661,9 @@ class DescribeSecurityGroupsRequest(AbstractModel):
 <li>tag-key - String -是否必填：否- （过滤条件）按照标签键进行过滤。使用请参考示例2。</li>
 <li>tag:tag-key - String - 是否必填：否 - （过滤条件）按照标签键值对进行过滤。 tag-key使用具体的标签键进行替换。使用请参考示例3。</li>
         :type Filters: list of Filter
-        :param Offset: 偏移量。
+        :param Offset: 偏移量，默认为0。
         :type Offset: str
-        :param Limit: 返回数量。
+        :param Limit: 返回数量，默认为20，最大值为100。
         :type Limit: str
         """
         self.SecurityGroupIds = None
@@ -7377,6 +7377,61 @@ class DescribeVpnConnectionsResponse(AbstractModel):
                 obj = VpnConnection()
                 obj._deserialize(item)
                 self.VpnConnectionSet.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeVpnGatewayCcnRoutesRequest(AbstractModel):
+    """DescribeVpnGatewayCcnRoutes请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param VpnGatewayId: VPN网关实例ID
+        :type VpnGatewayId: str
+        :param Offset: 偏移量
+        :type Offset: int
+        :param Limit: 返回数量
+        :type Limit: int
+        """
+        self.VpnGatewayId = None
+        self.Offset = None
+        self.Limit = None
+
+
+    def _deserialize(self, params):
+        self.VpnGatewayId = params.get("VpnGatewayId")
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+
+
+class DescribeVpnGatewayCcnRoutesResponse(AbstractModel):
+    """DescribeVpnGatewayCcnRoutes返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RouteSet: 云联网路由（IDC网段）列表。
+        :type RouteSet: list of VpngwCcnRoutes
+        :param TotalCount: 符合条件的对象数。
+        :type TotalCount: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RouteSet = None
+        self.TotalCount = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("RouteSet") is not None:
+            self.RouteSet = []
+            for item in params.get("RouteSet"):
+                obj = VpngwCcnRoutes()
+                obj._deserialize(item)
+                self.RouteSet.append(obj)
+        self.TotalCount = params.get("TotalCount")
         self.RequestId = params.get("RequestId")
 
 

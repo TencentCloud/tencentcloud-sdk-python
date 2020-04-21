@@ -170,6 +170,7 @@ class LiveClient(AbstractClient):
 
     def CreateCommonMixStream(self, request):
         """该接口用来创建通用混流。用法与旧接口 mix_streamv2.start_mix_stream_advanced 基本一致。
+        注意：当前最多支持16路混流。
 
         :param request: Request instance for CreateCommonMixStream.
         :type request: :class:`tencentcloud.live.v20180801.models.CreateCommonMixStreamRequest`

@@ -93,11 +93,17 @@ class AddLiveDomainRequest(AbstractModel):
 1 ：慢直播 。
 默认值： 0。
         :type IsDelayLive: int
+        :param IsMiniProgramLive: 是否是小程序直播：
+0： 标准直播，
+1 ：小程序直播 。
+默认值： 0。
+        :type IsMiniProgramLive: int
         """
         self.DomainName = None
         self.DomainType = None
         self.PlayType = None
         self.IsDelayLive = None
+        self.IsMiniProgramLive = None
 
 
     def _deserialize(self, params):
@@ -105,6 +111,7 @@ class AddLiveDomainRequest(AbstractModel):
         self.DomainType = params.get("DomainType")
         self.PlayType = params.get("PlayType")
         self.IsDelayLive = params.get("IsDelayLive")
+        self.IsMiniProgramLive = params.get("IsMiniProgramLive")
 
 
 class AddLiveDomainResponse(AbstractModel):

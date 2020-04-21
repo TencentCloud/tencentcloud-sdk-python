@@ -563,6 +563,50 @@ class CreateUserPersonalResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class CreateWebhookTriggerRequest(AbstractModel):
+    """CreateWebhookTrigger请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RegistryId: 实例 Id
+        :type RegistryId: str
+        :param Trigger: 触发器参数
+        :type Trigger: :class:`tencentcloud.tcr.v20190924.models.WebhookTrigger`
+        :param Namespace: 命名空间
+        :type Namespace: str
+        """
+        self.RegistryId = None
+        self.Trigger = None
+        self.Namespace = None
+
+
+    def _deserialize(self, params):
+        self.RegistryId = params.get("RegistryId")
+        if params.get("Trigger") is not None:
+            self.Trigger = WebhookTrigger()
+            self.Trigger._deserialize(params.get("Trigger"))
+        self.Namespace = params.get("Namespace")
+
+
+class CreateWebhookTriggerResponse(AbstractModel):
+    """CreateWebhookTrigger返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class DeleteApplicationTriggerPersonalRequest(AbstractModel):
     """DeleteApplicationTriggerPersonal请求参数结构体
 
@@ -863,6 +907,48 @@ class DeleteRepositoryRequest(AbstractModel):
 
 class DeleteRepositoryResponse(AbstractModel):
     """DeleteRepository返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class DeleteWebhookTriggerRequest(AbstractModel):
+    """DeleteWebhookTrigger请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RegistryId: 实例Id
+        :type RegistryId: str
+        :param Namespace: 命名空间
+        :type Namespace: str
+        :param Id: 触发器 Id
+        :type Id: int
+        """
+        self.RegistryId = None
+        self.Namespace = None
+        self.Id = None
+
+
+    def _deserialize(self, params):
+        self.RegistryId = params.get("RegistryId")
+        self.Namespace = params.get("Namespace")
+        self.Id = params.get("Id")
+
+
+class DeleteWebhookTriggerResponse(AbstractModel):
+    """DeleteWebhookTrigger返回参数结构体
 
     """
 
@@ -1197,6 +1283,60 @@ class DescribeImageLifecyclePersonalResponse(AbstractModel):
         if params.get("Data") is not None:
             self.Data = AutoDelStrategyInfoResp()
             self.Data._deserialize(params.get("Data"))
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeImageManifestsRequest(AbstractModel):
+    """DescribeImageManifests请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RegistryId: 实例ID
+        :type RegistryId: str
+        :param NamespaceName: 命名空间名称
+        :type NamespaceName: str
+        :param RepositoryName: 镜像仓库名称
+        :type RepositoryName: str
+        :param ImageVersion: 镜像版本
+        :type ImageVersion: str
+        """
+        self.RegistryId = None
+        self.NamespaceName = None
+        self.RepositoryName = None
+        self.ImageVersion = None
+
+
+    def _deserialize(self, params):
+        self.RegistryId = params.get("RegistryId")
+        self.NamespaceName = params.get("NamespaceName")
+        self.RepositoryName = params.get("RepositoryName")
+        self.ImageVersion = params.get("ImageVersion")
+
+
+class DescribeImageManifestsResponse(AbstractModel):
+    """DescribeImageManifests返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Manifest: 镜像的Manifest信息
+        :type Manifest: str
+        :param Config: 镜像的配置信息
+        :type Config: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Manifest = None
+        self.Config = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Manifest = params.get("Manifest")
+        self.Config = params.get("Config")
         self.RequestId = params.get("RequestId")
 
 
@@ -1835,6 +1975,128 @@ class DescribeUserQuotaPersonalResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeWebhookTriggerLogRequest(AbstractModel):
+    """DescribeWebhookTriggerLog请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RegistryId: 实例 Id
+        :type RegistryId: str
+        :param Namespace: 命名空间
+        :type Namespace: str
+        :param Id: 触发器 Id
+        :type Id: int
+        :param Limit: 分页单页数量
+        :type Limit: int
+        :param Offset: 分页偏移量
+        :type Offset: int
+        """
+        self.RegistryId = None
+        self.Namespace = None
+        self.Id = None
+        self.Limit = None
+        self.Offset = None
+
+
+    def _deserialize(self, params):
+        self.RegistryId = params.get("RegistryId")
+        self.Namespace = params.get("Namespace")
+        self.Id = params.get("Id")
+        self.Limit = params.get("Limit")
+        self.Offset = params.get("Offset")
+
+
+class DescribeWebhookTriggerLogResponse(AbstractModel):
+    """DescribeWebhookTriggerLog返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param TotalCount: 总数
+        :type TotalCount: int
+        :param Logs: 日志列表
+        :type Logs: list of WebhookTriggerLog
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.Logs = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("Logs") is not None:
+            self.Logs = []
+            for item in params.get("Logs"):
+                obj = WebhookTriggerLog()
+                obj._deserialize(item)
+                self.Logs.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeWebhookTriggerRequest(AbstractModel):
+    """DescribeWebhookTrigger请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RegistryId: 实例Id
+        :type RegistryId: str
+        :param Limit: 分页单页数量
+        :type Limit: int
+        :param Offset: 分页偏移量
+        :type Offset: int
+        :param Namespace: 命名空间
+        :type Namespace: str
+        """
+        self.RegistryId = None
+        self.Limit = None
+        self.Offset = None
+        self.Namespace = None
+
+
+    def _deserialize(self, params):
+        self.RegistryId = params.get("RegistryId")
+        self.Limit = params.get("Limit")
+        self.Offset = params.get("Offset")
+        self.Namespace = params.get("Namespace")
+
+
+class DescribeWebhookTriggerResponse(AbstractModel):
+    """DescribeWebhookTrigger返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param TotalCount: 触发器总数
+        :type TotalCount: int
+        :param Triggers: 触发器列表
+        :type Triggers: list of WebhookTrigger
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.Triggers = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("Triggers") is not None:
+            self.Triggers = []
+            for item in params.get("Triggers"):
+                obj = WebhookTrigger()
+                obj._deserialize(item)
+                self.Triggers.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class DupImageTagResp(AbstractModel):
     """复制镜像tag返回值
 
@@ -2000,6 +2262,27 @@ class Filter(AbstractModel):
 
     def _deserialize(self, params):
         self.Name = params.get("Name")
+        self.Values = params.get("Values")
+
+
+class Header(AbstractModel):
+    """Header KV
+
+    """
+
+    def __init__(self):
+        """
+        :param Key: Header Key
+        :type Key: str
+        :param Values: Header Values
+        :type Values: list of str
+        """
+        self.Key = None
+        self.Values = None
+
+
+    def _deserialize(self, params):
+        self.Key = params.get("Key")
         self.Values = params.get("Values")
 
 
@@ -2369,6 +2652,50 @@ class ModifyUserPasswordPersonalRequest(AbstractModel):
 
 class ModifyUserPasswordPersonalResponse(AbstractModel):
     """ModifyUserPasswordPersonal返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class ModifyWebhookTriggerRequest(AbstractModel):
+    """ModifyWebhookTrigger请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RegistryId: 实例Id
+        :type RegistryId: str
+        :param Trigger: 触发器参数
+        :type Trigger: :class:`tencentcloud.tcr.v20190924.models.WebhookTrigger`
+        :param Namespace: 命名空间
+        :type Namespace: str
+        """
+        self.RegistryId = None
+        self.Trigger = None
+        self.Namespace = None
+
+
+    def _deserialize(self, params):
+        self.RegistryId = params.get("RegistryId")
+        if params.get("Trigger") is not None:
+            self.Trigger = WebhookTrigger()
+            self.Trigger._deserialize(params.get("Trigger"))
+        self.Namespace = params.get("Namespace")
+
+
+class ModifyWebhookTriggerResponse(AbstractModel):
+    """ModifyWebhookTrigger返回参数结构体
 
     """
 
@@ -2915,16 +3242,20 @@ class TcrImageInfo(AbstractModel):
         :type Size: int
         :param ImageVersion: Tag名称
         :type ImageVersion: str
+        :param UpdateTime: 更新时间
+        :type UpdateTime: str
         """
         self.Digest = None
         self.Size = None
         self.ImageVersion = None
+        self.UpdateTime = None
 
 
     def _deserialize(self, params):
         self.Digest = params.get("Digest")
         self.Size = params.get("Size")
         self.ImageVersion = params.get("ImageVersion")
+        self.UpdateTime = params.get("UpdateTime")
 
 
 class TcrInstanceToken(AbstractModel):
@@ -3318,3 +3649,120 @@ class ValidateRepositoryExistPersonalResponse(AbstractModel):
             self.Data = RepoIsExistResp()
             self.Data._deserialize(params.get("Data"))
         self.RequestId = params.get("RequestId")
+
+
+class WebhookTarget(AbstractModel):
+    """触发器目标
+
+    """
+
+    def __init__(self):
+        """
+        :param Address: 目标地址
+        :type Address: str
+        :param Headers: 自定义 Headers
+        :type Headers: list of Header
+        """
+        self.Address = None
+        self.Headers = None
+
+
+    def _deserialize(self, params):
+        self.Address = params.get("Address")
+        if params.get("Headers") is not None:
+            self.Headers = []
+            for item in params.get("Headers"):
+                obj = Header()
+                obj._deserialize(item)
+                self.Headers.append(obj)
+
+
+class WebhookTrigger(AbstractModel):
+    """Webhook 触发器
+
+    """
+
+    def __init__(self):
+        """
+        :param Name: 触发器名称
+        :type Name: str
+        :param Targets: 触发器目标
+        :type Targets: list of WebhookTarget
+        :param EventTypes: 触发动作
+        :type EventTypes: list of str
+        :param Condition: 触发规则
+        :type Condition: str
+        :param Enabled: 启用触发器
+        :type Enabled: bool
+        :param Id: 触发器Id
+        :type Id: int
+        :param Description: 触发器描述
+        :type Description: str
+        """
+        self.Name = None
+        self.Targets = None
+        self.EventTypes = None
+        self.Condition = None
+        self.Enabled = None
+        self.Id = None
+        self.Description = None
+
+
+    def _deserialize(self, params):
+        self.Name = params.get("Name")
+        if params.get("Targets") is not None:
+            self.Targets = []
+            for item in params.get("Targets"):
+                obj = WebhookTarget()
+                obj._deserialize(item)
+                self.Targets.append(obj)
+        self.EventTypes = params.get("EventTypes")
+        self.Condition = params.get("Condition")
+        self.Enabled = params.get("Enabled")
+        self.Id = params.get("Id")
+        self.Description = params.get("Description")
+
+
+class WebhookTriggerLog(AbstractModel):
+    """触发器日志
+
+    """
+
+    def __init__(self):
+        """
+        :param Id: 日志 Id
+        :type Id: int
+        :param TriggerId: 触发器 Id
+        :type TriggerId: int
+        :param EventType: 事件类型
+        :type EventType: str
+        :param NotifyType: 通知类型
+        :type NotifyType: str
+        :param Detail: 详情
+        :type Detail: str
+        :param CreationTime: 创建时间
+        :type CreationTime: str
+        :param UpdateTime: 更新时间
+        :type UpdateTime: str
+        :param Status: 状态
+        :type Status: str
+        """
+        self.Id = None
+        self.TriggerId = None
+        self.EventType = None
+        self.NotifyType = None
+        self.Detail = None
+        self.CreationTime = None
+        self.UpdateTime = None
+        self.Status = None
+
+
+    def _deserialize(self, params):
+        self.Id = params.get("Id")
+        self.TriggerId = params.get("TriggerId")
+        self.EventType = params.get("EventType")
+        self.NotifyType = params.get("NotifyType")
+        self.Detail = params.get("Detail")
+        self.CreationTime = params.get("CreationTime")
+        self.UpdateTime = params.get("UpdateTime")
+        self.Status = params.get("Status")

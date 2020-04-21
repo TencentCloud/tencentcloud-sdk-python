@@ -56,6 +56,8 @@ class Activity(AbstractModel):
         :type ActivityRelatedInstanceSet: list of ActivtyRelatedInstance
         :param StatusMessageSimplified: 伸缩活动状态简要描述。
         :type StatusMessageSimplified: str
+        :param LifecycleActionResultSet: 伸缩活动中生命周期挂钩的执行结果。
+        :type LifecycleActionResultSet: list of LifecycleActionResultInfo
         """
         self.AutoScalingGroupId = None
         self.ActivityId = None
@@ -69,6 +71,7 @@ class Activity(AbstractModel):
         self.CreatedTime = None
         self.ActivityRelatedInstanceSet = None
         self.StatusMessageSimplified = None
+        self.LifecycleActionResultSet = None
 
 
     def _deserialize(self, params):
@@ -89,6 +92,12 @@ class Activity(AbstractModel):
                 obj._deserialize(item)
                 self.ActivityRelatedInstanceSet.append(obj)
         self.StatusMessageSimplified = params.get("StatusMessageSimplified")
+        if params.get("LifecycleActionResultSet") is not None:
+            self.LifecycleActionResultSet = []
+            for item in params.get("LifecycleActionResultSet"):
+                obj = LifecycleActionResultInfo()
+                obj._deserialize(item)
+                self.LifecycleActionResultSet.append(obj)
 
 
 class ActivtyRelatedInstance(AbstractModel):
@@ -2630,6 +2639,39 @@ class LaunchConfiguration(AbstractModel):
         if params.get("InstanceChargePrepaid") is not None:
             self.InstanceChargePrepaid = InstanceChargePrepaid()
             self.InstanceChargePrepaid._deserialize(params.get("InstanceChargePrepaid"))
+
+
+class LifecycleActionResultInfo(AbstractModel):
+    """生命周期挂钩动作的执行结果信息。
+
+    """
+
+    def __init__(self):
+        """
+        :param LifecycleHookId: 生命周期挂钩标识。
+        :type LifecycleHookId: str
+        :param InstanceId: 实例标识。
+        :type InstanceId: str
+        :param NotificationResult: 通知的结果，表示通知CMQ是否成功。
+        :type NotificationResult: str
+        :param LifecycleActionResult: 生命周期挂钩动作的执行结果，取值包括 CONTINUE、ABANDON。
+        :type LifecycleActionResult: str
+        :param ResultReason: 结果的原因。
+        :type ResultReason: str
+        """
+        self.LifecycleHookId = None
+        self.InstanceId = None
+        self.NotificationResult = None
+        self.LifecycleActionResult = None
+        self.ResultReason = None
+
+
+    def _deserialize(self, params):
+        self.LifecycleHookId = params.get("LifecycleHookId")
+        self.InstanceId = params.get("InstanceId")
+        self.NotificationResult = params.get("NotificationResult")
+        self.LifecycleActionResult = params.get("LifecycleActionResult")
+        self.ResultReason = params.get("ResultReason")
 
 
 class LifecycleHook(AbstractModel):

@@ -3735,6 +3735,34 @@ class VpcClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeVpnGatewayCcnRoutes(self, request):
+        """本接口（DescribeVpnGatewayCcnRoutes）用于查询VPN网关云联网路由
+
+        :param request: Request instance for DescribeVpnGatewayCcnRoutes.
+        :type request: :class:`tencentcloud.vpc.v20170312.models.DescribeVpnGatewayCcnRoutesRequest`
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.DescribeVpnGatewayCcnRoutesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeVpnGatewayCcnRoutes", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeVpnGatewayCcnRoutesResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeVpnGateways(self, request):
         """本接口（DescribeVpnGateways）用于查询VPN网关列表。
 

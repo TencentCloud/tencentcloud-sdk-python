@@ -444,12 +444,20 @@ class DescribeClientConnectionsRequest(AbstractModel):
         """
         :param InstanceId: 实例ID，格式如：cmgo-p8vnipr5。与云数据库控制台页面中显示的实例ID相同
         :type InstanceId: str
+        :param Limit: 查询返回记录条数，默认为10000。
+        :type Limit: int
+        :param Offset: 偏移量，默认值为0。
+        :type Offset: int
         """
         self.InstanceId = None
+        self.Limit = None
+        self.Offset = None
 
 
     def _deserialize(self, params):
         self.InstanceId = params.get("InstanceId")
+        self.Limit = params.get("Limit")
+        self.Offset = params.get("Offset")
 
 
 class DescribeClientConnectionsResponse(AbstractModel):
@@ -459,12 +467,15 @@ class DescribeClientConnectionsResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param Clients: 客户端连接信息，包括客户端IP和对应IP的连接数量
+        :param Clients: 客户端连接信息，包括客户端IP和对应IP的连接数量。
         :type Clients: list of ClientConnection
+        :param TotalCount: 满足条件的记录总条数，可用于分页查询。
+        :type TotalCount: int
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.Clients = None
+        self.TotalCount = None
         self.RequestId = None
 
 
@@ -475,6 +486,7 @@ class DescribeClientConnectionsResponse(AbstractModel):
                 obj = ClientConnection()
                 obj._deserialize(item)
                 self.Clients.append(obj)
+        self.TotalCount = params.get("TotalCount")
         self.RequestId = params.get("RequestId")
 
 
@@ -620,6 +632,136 @@ class DescribeDBInstancesResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeSlowLogPatternsRequest(AbstractModel):
+    """DescribeSlowLogPatterns请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param InstanceId: 实例ID，格式如：cmgo-p8vnipr5。与云数据库控制台页面中显示的实例ID相同
+        :type InstanceId: str
+        :param StartTime: 慢日志起始时间，格式：yyyy-mm-dd hh:mm:ss，如：2019-06-01 10:00:00。查询起止时间间隔不能超过24小时，只允许查询最近7天内慢日志。
+        :type StartTime: str
+        :param EndTime: 慢日志终止时间，格式：yyyy-mm-dd hh:mm:ss，如：2019-06-02 12:00:00。查询起止时间间隔不能超过24小时，只允许查询最近7天内慢日志。
+        :type EndTime: str
+        :param SlowMS: 慢日志执行时间阈值，返回执行时间超过该阈值的慢日志，单位为毫秒(ms)，最小为100毫秒。
+        :type SlowMS: int
+        :param Offset: 偏移量，最小值为0，最大值为10000，默认值为0。
+        :type Offset: int
+        :param Limit: 分页大小，最小值为1，最大值为100，默认值为20。
+        :type Limit: int
+        """
+        self.InstanceId = None
+        self.StartTime = None
+        self.EndTime = None
+        self.SlowMS = None
+        self.Offset = None
+        self.Limit = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.StartTime = params.get("StartTime")
+        self.EndTime = params.get("EndTime")
+        self.SlowMS = params.get("SlowMS")
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+
+
+class DescribeSlowLogPatternsResponse(AbstractModel):
+    """DescribeSlowLogPatterns返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Count: 慢日志统计信息总数
+        :type Count: int
+        :param SlowLogPatterns: 慢日志统计信息
+        :type SlowLogPatterns: list of SlowLogPattern
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Count = None
+        self.SlowLogPatterns = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Count = params.get("Count")
+        if params.get("SlowLogPatterns") is not None:
+            self.SlowLogPatterns = []
+            for item in params.get("SlowLogPatterns"):
+                obj = SlowLogPattern()
+                obj._deserialize(item)
+                self.SlowLogPatterns.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeSlowLogsRequest(AbstractModel):
+    """DescribeSlowLogs请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param InstanceId: 实例ID，格式如：cmgo-p8vnipr5。与云数据库控制台页面中显示的实例ID相同
+        :type InstanceId: str
+        :param StartTime: 慢日志起始时间，格式：yyyy-mm-dd hh:mm:ss，如：2019-06-01 10:00:00。查询起止时间间隔不能超过24小时，只允许查询最近7天内慢日志。
+        :type StartTime: str
+        :param EndTime: 慢日志终止时间，格式：yyyy-mm-dd hh:mm:ss，如：2019-06-02 12:00:00。查询起止时间间隔不能超过24小时，只允许查询最近7天内慢日志。
+        :type EndTime: str
+        :param SlowMS: 慢日志执行时间阈值，返回执行时间超过该阈值的慢日志，单位为毫秒(ms)，最小为100毫秒。
+        :type SlowMS: int
+        :param Offset: 偏移量，最小值为0，最大值为10000，默认值为0。
+        :type Offset: int
+        :param Limit: 分页大小，最小值为1，最大值为100，默认值为20。
+        :type Limit: int
+        """
+        self.InstanceId = None
+        self.StartTime = None
+        self.EndTime = None
+        self.SlowMS = None
+        self.Offset = None
+        self.Limit = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.StartTime = params.get("StartTime")
+        self.EndTime = params.get("EndTime")
+        self.SlowMS = params.get("SlowMS")
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+
+
+class DescribeSlowLogsResponse(AbstractModel):
+    """DescribeSlowLogs返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Count: 慢日志总数
+        :type Count: int
+        :param SlowLogs: 慢日志详情
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SlowLogs: list of str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Count = None
+        self.SlowLogs = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Count = params.get("Count")
+        self.SlowLogs = params.get("SlowLogs")
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeSpecInfoRequest(AbstractModel):
     """DescribeSpecInfo请求参数结构体
 
@@ -661,6 +803,32 @@ class DescribeSpecInfoResponse(AbstractModel):
                 obj._deserialize(item)
                 self.SpecInfoList.append(obj)
         self.RequestId = params.get("RequestId")
+
+
+class InstanceChargePrepaid(AbstractModel):
+    """描述了实例的计费模式
+
+    """
+
+    def __init__(self):
+        """
+        :param Period: 购买实例的时长，单位：月。取值范围：1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 24, 36。默认为1。
+        :type Period: int
+        :param RenewFlag: 自动续费标识。取值范围：
+NOTIFY_AND_AUTO_RENEW：通知过期且自动续费
+NOTIFY_AND_MANUAL_RENEW：通知过期不自动续费
+DISABLE_NOTIFY_AND_MANUAL_RENEW：不通知过期不自动续费
+
+默认取值：NOTIFY_AND_MANUAL_RENEW。若该参数指定为NOTIFY_AND_AUTO_RENEW，在账户余额充足的情况下，实例到期后将按月自动续费。
+        :type RenewFlag: str
+        """
+        self.Period = None
+        self.RenewFlag = None
+
+
+    def _deserialize(self, params):
+        self.Period = params.get("Period")
+        self.RenewFlag = params.get("RenewFlag")
 
 
 class InstanceDetail(AbstractModel):
@@ -1019,6 +1187,46 @@ class RenameInstanceResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class RenewDBInstancesRequest(AbstractModel):
+    """RenewDBInstances请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param InstanceIds: 一个或多个待操作的实例ID。可通过DescribeInstances接口返回值中的InstanceId获取。每次请求批量实例的上限为100。
+        :type InstanceIds: list of str
+        :param InstanceChargePrepaid: 预付费模式，即包年包月相关参数设置。通过该参数可以指定包年包月实例的续费时长、是否设置自动续费等属性。包年包月实例该参数为必传参数。
+        :type InstanceChargePrepaid: :class:`tencentcloud.mongodb.v20190725.models.InstanceChargePrepaid`
+        """
+        self.InstanceIds = None
+        self.InstanceChargePrepaid = None
+
+
+    def _deserialize(self, params):
+        self.InstanceIds = params.get("InstanceIds")
+        if params.get("InstanceChargePrepaid") is not None:
+            self.InstanceChargePrepaid = InstanceChargePrepaid()
+            self.InstanceChargePrepaid._deserialize(params.get("InstanceChargePrepaid"))
+
+
+class RenewDBInstancesResponse(AbstractModel):
+    """RenewDBInstances返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class ShardInfo(AbstractModel):
     """实例分片详情
 
@@ -1062,6 +1270,35 @@ class ShardInfo(AbstractModel):
         self.OplogSize = params.get("OplogSize")
         self.SecondaryNum = params.get("SecondaryNum")
         self.RealReplicaSetId = params.get("RealReplicaSetId")
+
+
+class SlowLogPattern(AbstractModel):
+    """用于描述MongoDB数据库慢日志统计信息
+
+    """
+
+    def __init__(self):
+        """
+        :param Pattern: 慢日志模式
+        :type Pattern: str
+        :param MaxTime: 最大执行时间
+        :type MaxTime: int
+        :param AverageTime: 平均执行时间
+        :type AverageTime: int
+        :param Total: 该模式慢日志条数
+        :type Total: int
+        """
+        self.Pattern = None
+        self.MaxTime = None
+        self.AverageTime = None
+        self.Total = None
+
+
+    def _deserialize(self, params):
+        self.Pattern = params.get("Pattern")
+        self.MaxTime = params.get("MaxTime")
+        self.AverageTime = params.get("AverageTime")
+        self.Total = params.get("Total")
 
 
 class SpecItem(AbstractModel):

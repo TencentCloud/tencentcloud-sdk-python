@@ -38,11 +38,14 @@ Url、Image必须提供一个，如果都提供，只使用 Url。
 2020年4月2日开始，默认为“3.0”，之前使用过本接口的账号若未填写本参数默认为“2.0”。  
 不同算法模型版本对应的人脸识别算法不同，新版本的整体效果会优于旧版本，建议使用最新版本。
         :type FaceModelVersion: str
+        :param NeedRotateDetection: 是否开启图片旋转识别支持。0为不开启，1为开启。默认为0。本参数的作用为，当图片中的人脸被旋转且图片没有exif信息时，如果不开启图片旋转识别支持则无法正确检测、识别图片中的人脸。若您确认图片包含exif信息或者您确认输入图中人脸不会出现被旋转情况，请不要开启本参数。开启后，整体耗时将可能增加数百毫秒。
+        :type NeedRotateDetection: int
         """
         self.Mode = None
         self.Image = None
         self.Url = None
         self.FaceModelVersion = None
+        self.NeedRotateDetection = None
 
 
     def _deserialize(self, params):
@@ -50,6 +53,7 @@ Url、Image必须提供一个，如果都提供，只使用 Url。
         self.Image = params.get("Image")
         self.Url = params.get("Url")
         self.FaceModelVersion = params.get("FaceModelVersion")
+        self.NeedRotateDetection = params.get("NeedRotateDetection")
 
 
 class AnalyzeFaceResponse(AbstractModel):
@@ -229,6 +233,8 @@ B 图片的 Url、Image必须提供一个，如果都提供，只使用 Url。
 默认 0。 
 若图片质量不满足要求，则返回结果中会提示图片质量检测不符要求。
         :type QualityControl: int
+        :param NeedRotateDetection: 是否开启图片旋转识别支持。0为不开启，1为开启。默认为0。本参数的作用为，当图片中的人脸被旋转且图片没有exif信息时，如果不开启图片旋转识别支持则无法正确检测、识别图片中的人脸。若您确认图片包含exif信息或者您确认输入图中人脸不会出现被旋转情况，请不要开启本参数。开启后，整体耗时将可能增加数百毫秒。
+        :type NeedRotateDetection: int
         """
         self.ImageA = None
         self.ImageB = None
@@ -236,6 +242,7 @@ B 图片的 Url、Image必须提供一个，如果都提供，只使用 Url。
         self.UrlB = None
         self.FaceModelVersion = None
         self.QualityControl = None
+        self.NeedRotateDetection = None
 
 
     def _deserialize(self, params):
@@ -245,6 +252,7 @@ B 图片的 Url、Image必须提供一个，如果都提供，只使用 Url。
         self.UrlB = params.get("UrlB")
         self.FaceModelVersion = params.get("FaceModelVersion")
         self.QualityControl = params.get("QualityControl")
+        self.NeedRotateDetection = params.get("NeedRotateDetection")
 
 
 class CompareFaceResponse(AbstractModel):
@@ -356,12 +364,15 @@ Url、Image必须提供一个，如果都提供，只使用 Url。
 默认 0。 
 若图片质量不满足要求，则返回结果中会提示图片质量检测不符要求。
         :type QualityControl: int
+        :param NeedRotateDetection: 是否开启图片旋转识别支持。0为不开启，1为开启。默认为0。本参数的作用为，当图片中的人脸被旋转且图片没有exif信息时，如果不开启图片旋转识别支持则无法正确检测、识别图片中的人脸。若您确认图片包含exif信息或者您确认输入图中人脸不会出现被旋转情况，请不要开启本参数。开启后，整体耗时将可能增加数百毫秒。
+        :type NeedRotateDetection: int
         """
         self.PersonId = None
         self.Images = None
         self.Urls = None
         self.FaceMatchThreshold = None
         self.QualityControl = None
+        self.NeedRotateDetection = None
 
 
     def _deserialize(self, params):
@@ -370,6 +381,7 @@ Url、Image必须提供一个，如果都提供，只使用 Url。
         self.Urls = params.get("Urls")
         self.FaceMatchThreshold = params.get("FaceMatchThreshold")
         self.QualityControl = params.get("QualityControl")
+        self.NeedRotateDetection = params.get("NeedRotateDetection")
 
 
 class CreateFaceResponse(AbstractModel):
@@ -530,6 +542,8 @@ Url、Image必须提供一个，如果都提供，只使用 Url。
 默认 0。 
 若图片质量不满足要求，则返回结果中会提示图片质量检测不符要求。
         :type QualityControl: int
+        :param NeedRotateDetection: 是否开启图片旋转识别支持。0为不开启，1为开启。默认为0。本参数的作用为，当图片中的人脸被旋转且图片没有exif信息时，如果不开启图片旋转识别支持则无法正确检测、识别图片中的人脸。若您确认图片包含exif信息或者您确认输入图中人脸不会出现被旋转情况，请不要开启本参数。开启后，整体耗时将可能增加数百毫秒。
+        :type NeedRotateDetection: int
         """
         self.GroupId = None
         self.PersonName = None
@@ -540,6 +554,7 @@ Url、Image必须提供一个，如果都提供，只使用 Url。
         self.Url = None
         self.UniquePersonControl = None
         self.QualityControl = None
+        self.NeedRotateDetection = None
 
 
     def _deserialize(self, params):
@@ -557,6 +572,7 @@ Url、Image必须提供一个，如果都提供，只使用 Url。
         self.Url = params.get("Url")
         self.UniquePersonControl = params.get("UniquePersonControl")
         self.QualityControl = params.get("QualityControl")
+        self.NeedRotateDetection = params.get("NeedRotateDetection")
 
 
 class CreatePersonResponse(AbstractModel):
@@ -785,6 +801,8 @@ Url、Image必须提供一个，如果都提供，只使用 Url。
 2020年4月2日开始，默认为“3.0”，之前使用过本接口的账号若未填写本参数默认为“2.0”。 
 不同算法模型版本对应的人脸识别算法不同，新版本的整体效果会优于旧版本，建议使用“3.0”版本。
         :type FaceModelVersion: str
+        :param NeedRotateDetection: 是否开启图片旋转识别支持。0为不开启，1为开启。默认为0。本参数的作用为，当图片中的人脸被旋转且图片没有exif信息时，如果不开启图片旋转识别支持则无法正确检测、识别图片中的人脸。若您确认图片包含exif信息或者您确认输入图中人脸不会出现被旋转情况，请不要开启本参数。开启后，整体耗时将可能增加数百毫秒。
+        :type NeedRotateDetection: int
         """
         self.MaxFaceNum = None
         self.MinFaceSize = None
@@ -793,6 +811,7 @@ Url、Image必须提供一个，如果都提供，只使用 Url。
         self.NeedFaceAttributes = None
         self.NeedQualityDetection = None
         self.FaceModelVersion = None
+        self.NeedRotateDetection = None
 
 
     def _deserialize(self, params):
@@ -803,6 +822,7 @@ Url、Image必须提供一个，如果都提供，只使用 Url。
         self.NeedFaceAttributes = params.get("NeedFaceAttributes")
         self.NeedQualityDetection = params.get("NeedQualityDetection")
         self.FaceModelVersion = params.get("FaceModelVersion")
+        self.NeedRotateDetection = params.get("NeedRotateDetection")
 
 
 class DetectFaceResponse(AbstractModel):
@@ -2196,6 +2216,8 @@ MaxFaceNum用于，当输入的待识别图片包含多张人脸时，设定要�
         :type QualityControl: int
         :param FaceMatchThreshold: 出参Score中，只有超过FaceMatchThreshold值的结果才会返回。默认为0。
         :type FaceMatchThreshold: float
+        :param NeedRotateDetection: 是否开启图片旋转识别支持。0为不开启，1为开启。默认为0。本参数的作用为，当图片中的人脸被旋转且图片没有exif信息时，如果不开启图片旋转识别支持则无法正确检测、识别图片中的人脸。若您确认图片包含exif信息或者您确认输入图中人脸不会出现被旋转情况，请不要开启本参数。开启后，整体耗时将可能增加数百毫秒。
+        :type NeedRotateDetection: int
         """
         self.GroupIds = None
         self.Image = None
@@ -2206,6 +2228,7 @@ MaxFaceNum用于，当输入的待识别图片包含多张人脸时，设定要�
         self.NeedPersonInfo = None
         self.QualityControl = None
         self.FaceMatchThreshold = None
+        self.NeedRotateDetection = None
 
 
     def _deserialize(self, params):
@@ -2218,6 +2241,7 @@ MaxFaceNum用于，当输入的待识别图片包含多张人脸时，设定要�
         self.NeedPersonInfo = params.get("NeedPersonInfo")
         self.QualityControl = params.get("QualityControl")
         self.FaceMatchThreshold = params.get("FaceMatchThreshold")
+        self.NeedRotateDetection = params.get("NeedRotateDetection")
 
 
 class SearchFacesResponse(AbstractModel):
@@ -2296,6 +2320,8 @@ MaxFaceNum用于，当输入的待识别图片包含多张人脸时，设定要�
 默认为0。
 取值范围[0.0,100.0) 。
         :type FaceMatchThreshold: float
+        :param NeedRotateDetection: 是否开启图片旋转识别支持。0为不开启，1为开启。默认为0。本参数的作用为，当图片中的人脸被旋转且图片没有exif信息时，如果不开启图片旋转识别支持则无法正确检测、识别图片中的人脸。若您确认图片包含exif信息或者您确认输入图中人脸不会出现被旋转情况，请不要开启本参数。开启后，整体耗时将可能增加数百毫秒。
+        :type NeedRotateDetection: int
         """
         self.GroupIds = None
         self.Image = None
@@ -2306,6 +2332,7 @@ MaxFaceNum用于，当输入的待识别图片包含多张人脸时，设定要�
         self.NeedPersonInfo = None
         self.QualityControl = None
         self.FaceMatchThreshold = None
+        self.NeedRotateDetection = None
 
 
     def _deserialize(self, params):
@@ -2318,6 +2345,7 @@ MaxFaceNum用于，当输入的待识别图片包含多张人脸时，设定要�
         self.NeedPersonInfo = params.get("NeedPersonInfo")
         self.QualityControl = params.get("QualityControl")
         self.FaceMatchThreshold = params.get("FaceMatchThreshold")
+        self.NeedRotateDetection = params.get("NeedRotateDetection")
 
 
 class SearchFacesReturnsByGroupResponse(AbstractModel):
@@ -2396,6 +2424,8 @@ MaxFaceNum用于，当输入的待识别图片包含多张人脸时，设定要�
         :type FaceMatchThreshold: float
         :param NeedPersonInfo: 是否返回人员具体信息。0 为关闭，1 为开启。默认为 0。其他非0非1值默认为0
         :type NeedPersonInfo: int
+        :param NeedRotateDetection: 是否开启图片旋转识别支持。0为不开启，1为开启。默认为0。本参数的作用为，当图片中的人脸被旋转且图片没有exif信息时，如果不开启图片旋转识别支持则无法正确检测、识别图片中的人脸。若您确认图片包含exif信息或者您确认输入图中人脸不会出现被旋转情况，请不要开启本参数。开启后，整体耗时将可能增加数百毫秒。
+        :type NeedRotateDetection: int
         """
         self.GroupIds = None
         self.Image = None
@@ -2406,6 +2436,7 @@ MaxFaceNum用于，当输入的待识别图片包含多张人脸时，设定要�
         self.QualityControl = None
         self.FaceMatchThreshold = None
         self.NeedPersonInfo = None
+        self.NeedRotateDetection = None
 
 
     def _deserialize(self, params):
@@ -2418,6 +2449,7 @@ MaxFaceNum用于，当输入的待识别图片包含多张人脸时，设定要�
         self.QualityControl = params.get("QualityControl")
         self.FaceMatchThreshold = params.get("FaceMatchThreshold")
         self.NeedPersonInfo = params.get("NeedPersonInfo")
+        self.NeedRotateDetection = params.get("NeedRotateDetection")
 
 
 class SearchPersonsResponse(AbstractModel):
@@ -2495,6 +2527,8 @@ MaxFaceNum用于，当输入的待识别图片包含多张人脸时，设定要�
         :type FaceMatchThreshold: float
         :param NeedPersonInfo: 是否返回人员具体信息。0 为关闭，1 为开启。默认为 0。其他非0非1值默认为0
         :type NeedPersonInfo: int
+        :param NeedRotateDetection: 是否开启图片旋转识别支持。0为不开启，1为开启。默认为0。本参数的作用为，当图片中的人脸被旋转且图片没有exif信息时，如果不开启图片旋转识别支持则无法正确检测、识别图片中的人脸。若您确认图片包含exif信息或者您确认输入图中人脸不会出现被旋转情况，请不要开启本参数。开启后，整体耗时将可能增加数百毫秒。
+        :type NeedRotateDetection: int
         """
         self.GroupIds = None
         self.Image = None
@@ -2505,6 +2539,7 @@ MaxFaceNum用于，当输入的待识别图片包含多张人脸时，设定要�
         self.QualityControl = None
         self.FaceMatchThreshold = None
         self.NeedPersonInfo = None
+        self.NeedRotateDetection = None
 
 
     def _deserialize(self, params):
@@ -2517,6 +2552,7 @@ MaxFaceNum用于，当输入的待识别图片包含多张人脸时，设定要�
         self.QualityControl = params.get("QualityControl")
         self.FaceMatchThreshold = params.get("FaceMatchThreshold")
         self.NeedPersonInfo = params.get("NeedPersonInfo")
+        self.NeedRotateDetection = params.get("NeedRotateDetection")
 
 
 class SearchPersonsReturnsByGroupResponse(AbstractModel):
@@ -2582,11 +2618,14 @@ Url、Image必须提供一个，如果都提供，只使用 Url。
 默认 0。 
 若图片质量不满足要求，则返回结果中会提示图片质量检测不符要求。
         :type QualityControl: int
+        :param NeedRotateDetection: 是否开启图片旋转识别支持。0为不开启，1为开启。默认为0。本参数的作用为，当图片中的人脸被旋转且图片没有exif信息时，如果不开启图片旋转识别支持则无法正确检测、识别图片中的人脸。若您确认图片包含exif信息或者您确认输入图中人脸不会出现被旋转情况，请不要开启本参数。开启后，整体耗时将可能增加数百毫秒。
+        :type NeedRotateDetection: int
         """
         self.PersonId = None
         self.Image = None
         self.Url = None
         self.QualityControl = None
+        self.NeedRotateDetection = None
 
 
     def _deserialize(self, params):
@@ -2594,6 +2633,7 @@ Url、Image必须提供一个，如果都提供，只使用 Url。
         self.Image = params.get("Image")
         self.Url = params.get("Url")
         self.QualityControl = params.get("QualityControl")
+        self.NeedRotateDetection = params.get("NeedRotateDetection")
 
 
 class VerifyFaceResponse(AbstractModel):
@@ -2657,11 +2697,14 @@ class VerifyPersonRequest(AbstractModel):
 默认 0。 
 若图片质量不满足要求，则返回结果中会提示图片质量检测不符要求。
         :type QualityControl: int
+        :param NeedRotateDetection: 是否开启图片旋转识别支持。0为不开启，1为开启。默认为0。本参数的作用为，当图片中的人脸被旋转且图片没有exif信息时，如果不开启图片旋转识别支持则无法正确检测、识别图片中的人脸。若您确认图片包含exif信息或者您确认输入图中人脸不会出现被旋转情况，请不要开启本参数。开启后，整体耗时将可能增加数百毫秒。
+        :type NeedRotateDetection: int
         """
         self.Image = None
         self.Url = None
         self.PersonId = None
         self.QualityControl = None
+        self.NeedRotateDetection = None
 
 
     def _deserialize(self, params):
@@ -2669,6 +2712,7 @@ class VerifyPersonRequest(AbstractModel):
         self.Url = params.get("Url")
         self.PersonId = params.get("PersonId")
         self.QualityControl = params.get("QualityControl")
+        self.NeedRotateDetection = params.get("NeedRotateDetection")
 
 
 class VerifyPersonResponse(AbstractModel):

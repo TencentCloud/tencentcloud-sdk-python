@@ -1041,6 +1041,8 @@ class CreateProxyRequest(AbstractModel):
         :param ClonedProxyId: 被复制的通道ID。只有处于运行中状态的通道可以被复制。
 当设置该参数时，表示复制该通道。
         :type ClonedProxyId: str
+        :param BillingType: 计费方式 (0:按带宽计费，1:按流量计费 默认按带宽计费）
+        :type BillingType: int
         """
         self.ProjectId = None
         self.ProxyName = None
@@ -1052,6 +1054,7 @@ class CreateProxyRequest(AbstractModel):
         self.GroupId = None
         self.TagSet = None
         self.ClonedProxyId = None
+        self.BillingType = None
 
 
     def _deserialize(self, params):
@@ -1070,6 +1073,7 @@ class CreateProxyRequest(AbstractModel):
                 obj._deserialize(item)
                 self.TagSet.append(obj)
         self.ClonedProxyId = params.get("ClonedProxyId")
+        self.BillingType = params.get("BillingType")
 
 
 class CreateProxyResponse(AbstractModel):
@@ -4104,6 +4108,8 @@ class InquiryPriceCreateProxyRequest(AbstractModel):
         :type RealServerRegion: str
         :param Concurrent: （新参数）通道并发量上限，表示同时在线的连接数，单位：万。
         :type Concurrent: int
+        :param BillingType: 计费方式 (0:按带宽计费，1:按流量计费 默认按带宽计费）
+        :type BillingType: int
         """
         self.AccessRegion = None
         self.Bandwidth = None
@@ -4111,6 +4117,7 @@ class InquiryPriceCreateProxyRequest(AbstractModel):
         self.Concurrency = None
         self.RealServerRegion = None
         self.Concurrent = None
+        self.BillingType = None
 
 
     def _deserialize(self, params):
@@ -4120,6 +4127,7 @@ class InquiryPriceCreateProxyRequest(AbstractModel):
         self.Concurrency = params.get("Concurrency")
         self.RealServerRegion = params.get("RealServerRegion")
         self.Concurrent = params.get("Concurrent")
+        self.BillingType = params.get("BillingType")
 
 
 class InquiryPriceCreateProxyResponse(AbstractModel):
@@ -4132,11 +4140,18 @@ class InquiryPriceCreateProxyResponse(AbstractModel):
         :param ProxyDailyPrice: 通道基础费用价格，单位：元/天。
         :type ProxyDailyPrice: float
         :param BandwidthUnitPrice: 通道带宽费用梯度价格。
+注意：此字段可能返回 null，表示取不到有效值。
         :type BandwidthUnitPrice: list of BandwidthPriceGradient
         :param DiscountProxyDailyPrice: 通道基础费用折扣价格，单位：元/天。
         :type DiscountProxyDailyPrice: float
         :param Currency: 价格使用的货币，支持人民币，美元等。
         :type Currency: str
+        :param FlowUnitPrice: 通道的流量费用价格，单位: 元/GB
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FlowUnitPrice: float
+        :param DiscountFlowUnitPrice: 通道的流量费用折扣价格，单位:元/GB
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DiscountFlowUnitPrice: float
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -4144,6 +4159,8 @@ class InquiryPriceCreateProxyResponse(AbstractModel):
         self.BandwidthUnitPrice = None
         self.DiscountProxyDailyPrice = None
         self.Currency = None
+        self.FlowUnitPrice = None
+        self.DiscountFlowUnitPrice = None
         self.RequestId = None
 
 
@@ -4157,6 +4174,8 @@ class InquiryPriceCreateProxyResponse(AbstractModel):
                 self.BandwidthUnitPrice.append(obj)
         self.DiscountProxyDailyPrice = params.get("DiscountProxyDailyPrice")
         self.Currency = params.get("Currency")
+        self.FlowUnitPrice = params.get("FlowUnitPrice")
+        self.DiscountFlowUnitPrice = params.get("DiscountFlowUnitPrice")
         self.RequestId = params.get("RequestId")
 
 
@@ -4631,12 +4650,15 @@ Bandwidth与Concurrent必须至少设置一个。取值范围根据DescribeAcces
         :type ClientToken: str
         :param ProxyId: （新参数）通道的实例ID。
         :type ProxyId: str
+        :param BillingType: 计费方式 (0:按带宽计费，1:按流量计费 默认按带宽计费）
+        :type BillingType: int
         """
         self.InstanceId = None
         self.Bandwidth = None
         self.Concurrent = None
         self.ClientToken = None
         self.ProxyId = None
+        self.BillingType = None
 
 
     def _deserialize(self, params):
@@ -4645,6 +4667,7 @@ Bandwidth与Concurrent必须至少设置一个。取值范围根据DescribeAcces
         self.Concurrent = params.get("Concurrent")
         self.ClientToken = params.get("ClientToken")
         self.ProxyId = params.get("ProxyId")
+        self.BillingType = params.get("BillingType")
 
 
 class ModifyProxyConfigurationResponse(AbstractModel):
