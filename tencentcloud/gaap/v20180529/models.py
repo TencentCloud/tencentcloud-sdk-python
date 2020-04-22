@@ -204,8 +204,8 @@ class BindRealServer(AbstractModel):
         :param RealServerWeight: 该源站所占权重
         :type RealServerWeight: int
         :param RealServerStatus: 源站健康检查状态，其中：
-0，正常；
-1，异常。
+0表示正常；
+1表示异常。
 未开启健康检查状态时，该状态始终为正常。
 注意：此字段可能返回 null，表示取不到有效值。
         :type RealServerStatus: int
@@ -3962,11 +3962,11 @@ class HTTPListener(AbstractModel):
         :param Protocol: 监听器协议
         :type Protocol: str
         :param ListenerStatus: 监听器状态，其中：
-0， 运行中；
-1， 创建中；
-2，销毁中；
-3，源站调整中；
-4，配置变更中。
+0表示运行中；
+1表示创建中；
+2表示销毁中；
+3表示源站调整中；
+4表示配置变更中。
         :type ListenerStatus: int
         """
         self.ListenerId = None
@@ -4002,11 +4002,11 @@ class HTTPSListener(AbstractModel):
         :param Protocol: 监听器协议， 值为：HTTP
         :type Protocol: str
         :param ListenerStatus: 监听器状态，其中：
-0， 运行中；
-1， 创建中；
-2，销毁中；
-3，源站调整中；
-4，配置变更中。
+0表示运行中；
+1表示创建中；
+2表示销毁中；
+3表示源站调整中；
+4表示配置变更中。
         :type ListenerStatus: int
         :param CertificateId: 监听器服务器SSL证书ID
         :type CertificateId: str
@@ -5133,10 +5133,10 @@ class ProxyGroupDetail(AbstractModel):
         :param ProxyNum: 通道组中通道数量
         :type ProxyNum: int
         :param Status: 通道组状态：
-0 正常运行
-1 创建中
-4 销毁中
-11 迁移中
+0表示正常运行；
+1表示创建中；
+4表示销毁中；
+11表示迁移中；
         :type Status: int
         :param OwnerUin: 归属Uin
         :type OwnerUin: str
@@ -5218,10 +5218,10 @@ class ProxyGroupInfo(AbstractModel):
         :type RealServerRegionInfo: :class:`tencentcloud.gaap.v20180529.models.RegionDetail`
         :param Status: 通道组状态。
 其中，
-0，运行中；
-1，创建中；
-4，销毁中；
-11，通道迁移中。
+0表示运行中；
+1表示创建中；
+4表示销毁中；
+11表示通道迁移中。
         :type Status: str
         :param TagSet: 标签列表。
         :type TagSet: list of TagPair
@@ -5294,17 +5294,17 @@ class ProxyInfo(AbstractModel):
         :param Concurrent: 并发，单位：个/秒。
         :type Concurrent: int
         :param Status: 通道状态。其中：
-RUNNING，运行中；
-CREATING，创建中；
-DESTROYING，销毁中；
-OPENING，开启中；
-CLOSING，关闭中；
-CLOSED，已关闭；
-ADJUSTING，配置变更中；
-ISOLATING，隔离中（欠费触发）；
-ISOLATED，已隔离（欠费触发）；
-CLONING，复制中；
-UNKNOWN，未知状态。
+RUNNING表示运行中；
+CREATING表示创建中；
+DESTROYING表示销毁中；
+OPENING表示开启中；
+CLOSING表示关闭中；
+CLOSED表示已关闭；
+ADJUSTING表示配置变更中；
+ISOLATING表示隔离中（欠费触发）；
+ISOLATED表示已隔离（欠费触发）；
+CLONING表示复制中；
+UNKNOWN表示未知状态。
         :type Status: str
         :param Domain: 接入域名。
         :type Domain: str
@@ -5444,16 +5444,16 @@ class ProxyStatus(AbstractModel):
         :type InstanceId: str
         :param Status: 通道状态。
 其中：
-RUNNING，运行中；
-CREATING，创建中；
-DESTROYING，销毁中；
-OPENING，开启中；
-CLOSING，关闭中；
-CLOSED，已关闭；
-ADJUSTING，配置变更中；
-ISOLATING，隔离中；
-ISOLATED，已隔离；
-UNKNOWN，未知状态。
+RUNNING表示运行中；
+CREATING表示创建中；
+DESTROYING表示销毁中；
+OPENING表示开启中；
+CLOSING表示关闭中；
+CLOSED表示已关闭；
+ADJUSTING表示配置变更中；
+ISOLATING表示隔离中；
+ISOLATED表示已隔离；
+UNKNOWN表示未知状态。
         :type Status: str
         """
         self.InstanceId = None
@@ -5532,7 +5532,7 @@ class RealServerStatus(AbstractModel):
         """
         :param RealServerId: 源站ID。
         :type RealServerId: str
-        :param BindStatus: 0: 未被绑定 1：被规则或者监听器绑定。
+        :param BindStatus: 0表示未被绑定 1表示被规则或者监听器绑定。
         :type BindStatus: int
         :param ProxyId: 绑定此源站的通道ID，没有绑定时为空字符串。
         :type ProxyId: str
@@ -5660,15 +5660,15 @@ class RuleInfo(AbstractModel):
         :type RealServerType: str
         :param Scheduler: 转发源站策略
         :type Scheduler: str
-        :param HealthCheck: 是否开启健康检查标志，1开启，0关闭
+        :param HealthCheck: 是否开启健康检查标志，1表示开启，0表示关闭
         :type HealthCheck: int
-        :param RuleStatus: 规则状态，0运行中，1创建中，2销毁中，3绑定解绑源站中，4配置更新中
+        :param RuleStatus: 规则状态，0表示运行中，1表示创建中，2表示销毁中，3表示绑定解绑源站中，4表示配置更新中
         :type RuleStatus: int
         :param CheckParams: 健康检查相关参数
         :type CheckParams: :class:`tencentcloud.gaap.v20180529.models.RuleCheckParams`
         :param RealServerSet: 已绑定的源站相关信息
         :type RealServerSet: list of BindRealServer
-        :param BindStatus: 源站的服务状态，0：异常，1：正常。
+        :param BindStatus: 源站的服务状态，0表示异常，1表示正常。
 未开启健康检查时，该状态始终未正常。
 只要有一个源站健康状态为异常时，该状态为异常，具体源站的状态请查看RealServerSet。
         :type BindStatus: int
@@ -5915,28 +5915,28 @@ class TCPListener(AbstractModel):
         :param Protocol: 监听器协议， TCP
         :type Protocol: str
         :param ListenerStatus: 监听器状态，其中：
-0， 运行中；
-1， 创建中；
-2，销毁中；
-3，源站调整中；
-4，配置变更中。
+0表示运行中；
+1表示创建中；
+2表示销毁中；
+3表示源站调整中；
+4表示配置变更中。
         :type ListenerStatus: int
         :param Scheduler: 监听器源站访问策略，其中：
-rr，轮询；
-wrr，加权轮询；
-lc，最小连接数。
+rr表示轮询；
+wrr表示加权轮询；
+lc表示最小连接数。
         :type Scheduler: str
         :param ConnectTimeout: 源站健康检查响应超时时间，单位：秒
         :type ConnectTimeout: int
         :param DelayLoop: 源站健康检查时间间隔，单位：秒
         :type DelayLoop: int
         :param HealthCheck: 监听器是否开启健康检查，其中：
-0，关闭；
-1，开启
+0表示关闭；
+1表示开启
         :type HealthCheck: int
         :param BindStatus: 监听器绑定的源站状态， 其中：
-0，异常；
-1，正常。
+0表示异常；
+1表示正常。
         :type BindStatus: int
         :param RealServerSet: 监听器绑定的源站信息
 注意：此字段可能返回 null，表示取不到有效值。
@@ -6048,15 +6048,15 @@ class UDPListener(AbstractModel):
         :param Protocol: 监听器协议， UDP
         :type Protocol: str
         :param ListenerStatus: 监听器状态，其中：
-0， 运行中；
-1， 创建中；
-2，销毁中；
-3，源站调整中；
-4，配置变更中。
+0表示运行中；
+1表示创建中；
+2表示销毁中；
+3表示源站调整中；
+4表示配置变更中。
         :type ListenerStatus: int
         :param Scheduler: 监听器源站访问策略
         :type Scheduler: str
-        :param BindStatus: 监听器绑定源站状态， 0正常，1IP异常，2域名解析异常
+        :param BindStatus: 监听器绑定源站状态， 0表示正常，1表示IP异常，2表示域名解析异常
         :type BindStatus: int
         :param RealServerSet: 监听器绑定的源站信息
         :type RealServerSet: list of BindRealServer

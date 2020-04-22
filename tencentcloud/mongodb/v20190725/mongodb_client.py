@@ -193,6 +193,34 @@ class MongodbClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeDBInstanceDeal(self, request):
+        """本接口（DescribeDBInstanceDeal）用于获取MongoDB购买、续费及变配订单详细。
+
+        :param request: Request instance for DescribeDBInstanceDeal.
+        :type request: :class:`tencentcloud.mongodb.v20190725.models.DescribeDBInstanceDealRequest`
+        :rtype: :class:`tencentcloud.mongodb.v20190725.models.DescribeDBInstanceDealResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeDBInstanceDeal", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeDBInstanceDealResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeDBInstances(self, request):
         """本接口(DescribeDBInstances)用于查询云数据库实例列表，支持通过项目ID、实例ID、实例状态等过滤条件来筛选实例。支持查询主实例、灾备实例和只读实例信息列表。
 
@@ -291,6 +319,90 @@ class MongodbClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeSpecInfoResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def InquirePriceCreateDBInstances(self, request):
+        """本接口用于创建数据库实例询价。本接口参数中必须传入region参数，否则无法通过校验。本接口仅允许针对购买限制范围内的实例配置进行询价。
+
+        :param request: Request instance for InquirePriceCreateDBInstances.
+        :type request: :class:`tencentcloud.mongodb.v20190725.models.InquirePriceCreateDBInstancesRequest`
+        :rtype: :class:`tencentcloud.mongodb.v20190725.models.InquirePriceCreateDBInstancesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("InquirePriceCreateDBInstances", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.InquirePriceCreateDBInstancesResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def InquirePriceModifyDBInstanceSpec(self, request):
+        """本接口 (InquirePriceModifyDBInstanceSpec) 用于调整实例的配置询价。
+
+        :param request: Request instance for InquirePriceModifyDBInstanceSpec.
+        :type request: :class:`tencentcloud.mongodb.v20190725.models.InquirePriceModifyDBInstanceSpecRequest`
+        :rtype: :class:`tencentcloud.mongodb.v20190725.models.InquirePriceModifyDBInstanceSpecResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("InquirePriceModifyDBInstanceSpec", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.InquirePriceModifyDBInstanceSpecResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def InquirePriceRenewDBInstances(self, request):
+        """本接口 (InquiryPriceRenewDBInstances) 用于续费包年包月实例询价。
+
+        :param request: Request instance for InquirePriceRenewDBInstances.
+        :type request: :class:`tencentcloud.mongodb.v20190725.models.InquirePriceRenewDBInstancesRequest`
+        :rtype: :class:`tencentcloud.mongodb.v20190725.models.InquirePriceRenewDBInstancesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("InquirePriceRenewDBInstances", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.InquirePriceRenewDBInstancesResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

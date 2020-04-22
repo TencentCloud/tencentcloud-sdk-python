@@ -215,7 +215,6 @@ class AdaptiveDynamicStreamingTaskInput(AbstractModel):
         :param Definition: 转自适应码流模板 ID。
         :type Definition: int
         :param WatermarkSet: 水印列表，支持多张图片或文字水印，最大可支持 10 张。
-注意：此字段可能返回 null，表示取不到有效值。
         :type WatermarkSet: list of WatermarkInput
         """
         self.Definition = None
@@ -2274,7 +2273,6 @@ class AiReviewPornTaskOutput(AbstractModel):
     def __init__(self):
         """
         :param Confidence: 视频鉴黄评分，分值为0到100。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Confidence: float
         :param Suggestion: 鉴黄结果建议，取值范围：
 <li>pass。</li>
@@ -4342,7 +4340,6 @@ class CoverBySnapshotTaskInput(AbstractModel):
 <li>对于依照百分比截图，该值表示使用视频百分之多少的截图作为封面</li>
         :type PositionValue: float
         :param WatermarkSet: 水印列表，支持多张图片或文字水印，最大可支持 10 张。
-注意：此字段可能返回 null，表示取不到有效值。
         :type WatermarkSet: list of WatermarkInput
         """
         self.Definition = None
@@ -4623,6 +4620,8 @@ class CreateAdaptiveDynamicStreamingTemplateRequest(AbstractModel):
         :type DisableHigherVideoResolution: int
         :param Comment: 模板描述信息，长度限制：256 个字符。
         :type Comment: str
+        :param SubAppId: 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
+        :type SubAppId: int
         """
         self.Format = None
         self.StreamInfos = None
@@ -4631,6 +4630,7 @@ class CreateAdaptiveDynamicStreamingTemplateRequest(AbstractModel):
         self.DisableHigherVideoBitrate = None
         self.DisableHigherVideoResolution = None
         self.Comment = None
+        self.SubAppId = None
 
 
     def _deserialize(self, params):
@@ -4646,6 +4646,7 @@ class CreateAdaptiveDynamicStreamingTemplateRequest(AbstractModel):
         self.DisableHigherVideoBitrate = params.get("DisableHigherVideoBitrate")
         self.DisableHigherVideoResolution = params.get("DisableHigherVideoResolution")
         self.Comment = params.get("Comment")
+        self.SubAppId = params.get("SubAppId")
 
 
 class CreateAdaptiveDynamicStreamingTemplateResponse(AbstractModel):
@@ -5747,12 +5748,16 @@ class DeleteAdaptiveDynamicStreamingTemplateRequest(AbstractModel):
         """
         :param Definition: 自适应转码模板唯一标识。
         :type Definition: int
+        :param SubAppId: 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
+        :type SubAppId: int
         """
         self.Definition = None
+        self.SubAppId = None
 
 
     def _deserialize(self, params):
         self.Definition = params.get("Definition")
+        self.SubAppId = params.get("SubAppId")
 
 
 class DeleteAdaptiveDynamicStreamingTemplateResponse(AbstractModel):
@@ -8043,10 +8048,8 @@ class EditMediaFileInfo(AbstractModel):
         :param FileId: 视频的 ID。
         :type FileId: str
         :param StartTimeOffset: 视频剪辑的起始偏移时间偏移，单位：秒。
-注意：此字段可能返回 null，表示取不到有效值。
         :type StartTimeOffset: float
         :param EndTimeOffset: 视频剪辑的起始结束时间偏移，单位：秒。
-注意：此字段可能返回 null，表示取不到有效值。
         :type EndTimeOffset: float
         """
         self.FileId = None
@@ -8188,10 +8191,8 @@ class EditMediaStreamInfo(AbstractModel):
         :param StreamId: 录制的流 ID
         :type StreamId: str
         :param StartTime: 流剪辑的起始时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。
-注意：此字段可能返回 null，表示取不到有效值。
         :type StartTime: str
         :param EndTime: 流剪辑的结束时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。
-注意：此字段可能返回 null，表示取不到有效值。
         :type EndTime: str
         """
         self.StreamId = None
@@ -8275,10 +8276,8 @@ class EditMediaTaskInput(AbstractModel):
         :param InputType: 输入视频的来源类型，可以取的值为 File，Stream 两种。
         :type InputType: str
         :param FileInfoSet: 输入的视频文件信息，当 InputType 为 File 时，该字段有值。
-注意：此字段可能返回 null，表示取不到有效值。
         :type FileInfoSet: list of EditMediaFileInfo
         :param StreamInfoSet: 输入的流信息，当 InputType 为 Stream 时，该字段有值。
-注意：此字段可能返回 null，表示取不到有效值。
         :type StreamInfoSet: list of EditMediaStreamInfo
         """
         self.InputType = None
@@ -8655,7 +8654,6 @@ class FileUploadTask(AbstractModel):
         :param MediaBasicInfo: 上传完成后生成的媒体文件基础信息。
         :type MediaBasicInfo: :class:`tencentcloud.vod.v20180717.models.MediaBasicInfo`
         :param ProcedureTaskId: 若视频上传时指定了视频处理流程，则该字段为流程任务 ID。
-注意：此字段可能返回 null，表示取不到有效值。
         :type ProcedureTaskId: str
         :param MetaData: 元信息。包括大小、时长、视频流信息、音频流信息等。
 注意：此字段可能返回 null，表示取不到有效值。
@@ -10354,25 +10352,18 @@ class MediaProcessTaskInput(AbstractModel):
     def __init__(self):
         """
         :param TranscodeTaskSet: 视频转码任务列表。
-注意：此字段可能返回 null，表示取不到有效值。
         :type TranscodeTaskSet: list of TranscodeTaskInput
         :param AnimatedGraphicTaskSet: 视频转动图任务列表。
-注意：此字段可能返回 null，表示取不到有效值。
         :type AnimatedGraphicTaskSet: list of AnimatedGraphicTaskInput
         :param SnapshotByTimeOffsetTaskSet: 对视频按时间点截图任务列表。
-注意：此字段可能返回 null，表示取不到有效值。
         :type SnapshotByTimeOffsetTaskSet: list of SnapshotByTimeOffsetTaskInput
         :param SampleSnapshotTaskSet: 对视频采样截图任务列表。
-注意：此字段可能返回 null，表示取不到有效值。
         :type SampleSnapshotTaskSet: list of SampleSnapshotTaskInput
         :param ImageSpriteTaskSet: 对视频截雪碧图任务列表。
-注意：此字段可能返回 null，表示取不到有效值。
         :type ImageSpriteTaskSet: list of ImageSpriteTaskInput
         :param CoverBySnapshotTaskSet: 对视频截图做封面任务列表。
-注意：此字段可能返回 null，表示取不到有效值。
         :type CoverBySnapshotTaskSet: list of CoverBySnapshotTaskInput
         :param AdaptiveDynamicStreamingTaskSet: 对视频转自适应码流任务列表。
-注意：此字段可能返回 null，表示取不到有效值。
         :type AdaptiveDynamicStreamingTaskSet: list of AdaptiveDynamicStreamingTaskInput
         """
         self.TranscodeTaskSet = None
@@ -11220,6 +11211,8 @@ class ModifyAdaptiveDynamicStreamingTemplateRequest(AbstractModel):
         :type StreamInfos: list of AdaptiveStreamTemplate
         :param Comment: 模板描述信息，长度限制：256 个字符。
         :type Comment: str
+        :param SubAppId: 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
+        :type SubAppId: int
         """
         self.Definition = None
         self.Name = None
@@ -11228,6 +11221,7 @@ class ModifyAdaptiveDynamicStreamingTemplateRequest(AbstractModel):
         self.DisableHigherVideoResolution = None
         self.StreamInfos = None
         self.Comment = None
+        self.SubAppId = None
 
 
     def _deserialize(self, params):
@@ -11243,6 +11237,7 @@ class ModifyAdaptiveDynamicStreamingTemplateRequest(AbstractModel):
                 obj._deserialize(item)
                 self.StreamInfos.append(obj)
         self.Comment = params.get("Comment")
+        self.SubAppId = params.get("SubAppId")
 
 
 class ModifyAdaptiveDynamicStreamingTemplateResponse(AbstractModel):
@@ -14032,7 +14027,6 @@ class SampleSnapshotTaskInput(AbstractModel):
         :param Definition: 采样截图模板 ID。
         :type Definition: int
         :param WatermarkSet: 水印列表，支持多张图片或文字水印，最大可支持 10 张。
-注意：此字段可能返回 null，表示取不到有效值。
         :type WatermarkSet: list of WatermarkInput
         """
         self.Definition = None
@@ -14409,7 +14403,6 @@ class SnapshotByTimeOffsetTaskInput(AbstractModel):
         :param TimeOffsetSet: 截图时间点列表，单位为<font color=red>毫秒</font>。
         :type TimeOffsetSet: list of float
         :param WatermarkSet: 水印列表，支持多张图片或文字水印，最大可支持 10 张。
-注意：此字段可能返回 null，表示取不到有效值。
         :type WatermarkSet: list of WatermarkInput
         """
         self.Definition = None
@@ -15384,7 +15377,6 @@ class TranscodeTaskInput(AbstractModel):
         :param Definition: 视频转码模板 ID。
         :type Definition: int
         :param WatermarkSet: 水印列表，支持多张图片或文字水印，最大可支持 10 张。
-注意：此字段可能返回 null，表示取不到有效值。
         :type WatermarkSet: list of WatermarkInput
         :param MosaicSet: 马赛克列表，最大可支持 10 张。
         :type MosaicSet: list of MosaicInput

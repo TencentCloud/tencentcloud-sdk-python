@@ -227,7 +227,7 @@ class LiveClient(AbstractClient):
 
 
     def CreateLiveCallbackTemplate(self, request):
-        """创建回调模板，成功返回模板id后，需要调用[CreateLiveCallbackRule](/document/product/267/32638)接口将模板id绑定到域名/路径使用。
+        """创建回调模板，成功返回模板id后，需要调用[CreateLiveCallbackRule](/document/product/267/32638)接口将模板 ID 绑定到域名/路径使用。
         <br>回调协议相关文档：[事件消息通知](/document/product/267/32744)。
 
         :param request: Request instance for CreateLiveCallbackTemplate.
@@ -384,8 +384,9 @@ class LiveClient(AbstractClient):
 
 
     def CreateLiveSnapshotRule(self, request):
-        """创建截图规则，需要先调用[CreateLiveSnapshotTemplate](/document/product/267/32624)接口创建截图模板，然后将返回的模板id绑定到流进行使用。
+        """创建截图规则，需要先调用[CreateLiveSnapshotTemplate](/document/product/267/32624)接口创建截图模板，然后将返回的模板 ID 绑定到流进行使用。
         <br>截图相关文档：[直播截图](/document/product/267/32737)。
+        注意：单个域名仅支持关联一个截图模板。
 
         :param request: Request instance for CreateLiveSnapshotRule.
         :type request: :class:`tencentcloud.live.v20180801.models.CreateLiveSnapshotRuleRequest`
@@ -560,7 +561,7 @@ class LiveClient(AbstractClient):
 
 
     def DeleteLiveCallbackRule(self, request):
-        """删除回调规则
+        """删除回调规则。
 
         :param request: Request instance for DeleteLiveCallbackRule.
         :type request: :class:`tencentcloud.live.v20180801.models.DeleteLiveCallbackRuleRequest`
@@ -588,7 +589,7 @@ class LiveClient(AbstractClient):
 
 
     def DeleteLiveCallbackTemplate(self, request):
-        """删除回调模板
+        """删除回调模板。
 
         :param request: Request instance for DeleteLiveCallbackTemplate.
         :type request: :class:`tencentcloud.live.v20180801.models.DeleteLiveCallbackTemplateRequest`
@@ -700,7 +701,7 @@ class LiveClient(AbstractClient):
 
 
     def DeleteLiveRecordRule(self, request):
-        """删除录制规则
+        """删除录制规则。
 
         :param request: Request instance for DeleteLiveRecordRule.
         :type request: :class:`tencentcloud.live.v20180801.models.DeleteLiveRecordRuleRequest`
@@ -728,7 +729,7 @@ class LiveClient(AbstractClient):
 
 
     def DeleteLiveRecordTemplate(self, request):
-        """删除录制模板
+        """删除录制模板。
 
         :param request: Request instance for DeleteLiveRecordTemplate.
         :type request: :class:`tencentcloud.live.v20180801.models.DeleteLiveRecordTemplateRequest`
@@ -756,7 +757,7 @@ class LiveClient(AbstractClient):
 
 
     def DeleteLiveSnapshotRule(self, request):
-        """删除截图规则
+        """删除截图规则。
 
         :param request: Request instance for DeleteLiveSnapshotRule.
         :type request: :class:`tencentcloud.live.v20180801.models.DeleteLiveSnapshotRuleRequest`
@@ -868,7 +869,7 @@ class LiveClient(AbstractClient):
 
 
     def DeleteLiveWatermark(self, request):
-        """删除水印
+        """删除水印。
 
         :param request: Request instance for DeleteLiveWatermark.
         :type request: :class:`tencentcloud.live.v20180801.models.DeleteLiveWatermarkRequest`
@@ -924,7 +925,7 @@ class LiveClient(AbstractClient):
 
 
     def DeletePullStreamConfig(self, request):
-        """删除直播拉流配置
+        """删除直播拉流配置。
 
         :param request: Request instance for DeletePullStreamConfig.
         :type request: :class:`tencentcloud.live.v20180801.models.DeletePullStreamConfigRequest`
@@ -1093,7 +1094,7 @@ class LiveClient(AbstractClient):
 
 
     def DescribeLiveCallbackTemplate(self, request):
-        """获取单个回调模板
+        """获取单个回调模板。
 
         :param request: Request instance for DescribeLiveCallbackTemplate.
         :type request: :class:`tencentcloud.live.v20180801.models.DescribeLiveCallbackTemplateRequest`
@@ -1345,7 +1346,7 @@ class LiveClient(AbstractClient):
 
 
     def DescribeLiveForbidStreamList(self, request):
-        """获取禁推流列表
+        """获取禁推流列表。
 
         :param request: Request instance for DescribeLiveForbidStreamList.
         :type request: :class:`tencentcloud.live.v20180801.models.DescribeLiveForbidStreamListRequest`
@@ -1485,7 +1486,7 @@ class LiveClient(AbstractClient):
 
 
     def DescribeLiveRecordTemplate(self, request):
-        """获取单个录制模板
+        """获取单个录制模板。
 
         :param request: Request instance for DescribeLiveRecordTemplate.
         :type request: :class:`tencentcloud.live.v20180801.models.DescribeLiveRecordTemplateRequest`
@@ -1513,7 +1514,7 @@ class LiveClient(AbstractClient):
 
 
     def DescribeLiveRecordTemplates(self, request):
-        """获取录制模板列表
+        """获取录制模板列表。
 
         :param request: Request instance for DescribeLiveRecordTemplates.
         :type request: :class:`tencentcloud.live.v20180801.models.DescribeLiveRecordTemplatesRequest`
@@ -1569,7 +1570,7 @@ class LiveClient(AbstractClient):
 
 
     def DescribeLiveSnapshotTemplate(self, request):
-        """获取单个截图模板
+        """获取单个截图模板。
 
         :param request: Request instance for DescribeLiveSnapshotTemplate.
         :type request: :class:`tencentcloud.live.v20180801.models.DescribeLiveSnapshotTemplateRequest`
@@ -1597,7 +1598,7 @@ class LiveClient(AbstractClient):
 
 
     def DescribeLiveSnapshotTemplates(self, request):
-        """获取截图模板列表
+        """获取截图模板列表。
 
         :param request: Request instance for DescribeLiveSnapshotTemplates.
         :type request: :class:`tencentcloud.live.v20180801.models.DescribeLiveSnapshotTemplatesRequest`
@@ -1655,7 +1656,7 @@ class LiveClient(AbstractClient):
 
 
     def DescribeLiveStreamOnlineList(self, request):
-        """返回正在直播中的流列表
+        """返回正在直播中的流列表。
 
         :param request: Request instance for DescribeLiveStreamOnlineList.
         :type request: :class:`tencentcloud.live.v20180801.models.DescribeLiveStreamOnlineListRequest`
@@ -1880,7 +1881,7 @@ class LiveClient(AbstractClient):
 
 
     def DescribeLiveWatermark(self, request):
-        """获取单个水印信息
+        """获取单个水印信息。
 
         :param request: Request instance for DescribeLiveWatermark.
         :type request: :class:`tencentcloud.live.v20180801.models.DescribeLiveWatermarkRequest`
@@ -1908,7 +1909,7 @@ class LiveClient(AbstractClient):
 
 
     def DescribeLiveWatermarkRules(self, request):
-        """获取水印规则列表
+        """获取水印规则列表。
 
         :param request: Request instance for DescribeLiveWatermarkRules.
         :type request: :class:`tencentcloud.live.v20180801.models.DescribeLiveWatermarkRulesRequest`
@@ -1936,7 +1937,7 @@ class LiveClient(AbstractClient):
 
 
     def DescribeLiveWatermarks(self, request):
-        """查询水印列表
+        """查询水印列表。
 
         :param request: Request instance for DescribeLiveWatermarks.
         :type request: :class:`tencentcloud.live.v20180801.models.DescribeLiveWatermarksRequest`
@@ -2582,7 +2583,7 @@ class LiveClient(AbstractClient):
 
 
     def ModifyLiveRecordTemplate(self, request):
-        """修改录制模板配置
+        """修改录制模板配置。
 
         :param request: Request instance for ModifyLiveRecordTemplate.
         :type request: :class:`tencentcloud.live.v20180801.models.ModifyLiveRecordTemplateRequest`
@@ -2610,7 +2611,7 @@ class LiveClient(AbstractClient):
 
 
     def ModifyLiveSnapshotTemplate(self, request):
-        """修改截图模板配置
+        """修改截图模板配置。
 
         :param request: Request instance for ModifyLiveSnapshotTemplate.
         :type request: :class:`tencentcloud.live.v20180801.models.ModifyLiveSnapshotTemplateRequest`
@@ -2638,7 +2639,7 @@ class LiveClient(AbstractClient):
 
 
     def ModifyLiveTranscodeTemplate(self, request):
-        """修改转码模板配置
+        """修改转码模板配置。
 
         :param request: Request instance for ModifyLiveTranscodeTemplate.
         :type request: :class:`tencentcloud.live.v20180801.models.ModifyLiveTranscodeTemplateRequest`
@@ -2834,7 +2835,7 @@ class LiveClient(AbstractClient):
 
 
     def UpdateLiveWatermark(self, request):
-        """更新水印
+        """更新水印。
 
         :param request: Request instance for UpdateLiveWatermark.
         :type request: :class:`tencentcloud.live.v20180801.models.UpdateLiveWatermarkRequest`

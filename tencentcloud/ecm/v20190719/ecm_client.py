@@ -843,6 +843,34 @@ class EcmClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeVpcs(self, request):
+        """查询私有网络列表
+
+        :param request: Request instance for DescribeVpcs.
+        :type request: :class:`tencentcloud.ecm.v20190719.models.DescribeVpcsRequest`
+        :rtype: :class:`tencentcloud.ecm.v20190719.models.DescribeVpcsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeVpcs", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeVpcsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DetachNetworkInterface(self, request):
         """弹性网卡解绑云主机
 

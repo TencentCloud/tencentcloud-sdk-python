@@ -62,7 +62,7 @@ class ActivateSubscribeResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param AsyncRequestId: 配置数据订阅任务任务ID。
+        :param AsyncRequestId: 配置数据订阅任务ID。
         :type AsyncRequestId: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -1134,9 +1134,9 @@ class MigrateDetailInfo(AbstractModel):
         :type StepAll: int
         :param StepNow: 当前步骤
         :type StepNow: int
-        :param Progress: 总进度,如：
+        :param Progress: 总进度,如："10"
         :type Progress: str
-        :param CurrentStepProgress: 当前步骤进度,如:
+        :param CurrentStepProgress: 当前步骤进度,如:"1"
         :type CurrentStepProgress: str
         :param MasterSlaveDistance: 主从差距，MB；在增量同步阶段有效，目前支持产品为：redis和mysql
         :type MasterSlaveDistance: int

@@ -1766,6 +1766,81 @@ class DescribeTaskResultResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeVpcsRequest(AbstractModel):
+    """DescribeVpcs请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param VpcIds: VPC实例ID。形如：vpc-f49l6u0z。每次请求的实例的上限为100。参数不支持同时指定VpcIds和Filters。
+        :type VpcIds: list of str
+        :param Filters: 过滤条件，参数不支持同时指定VpcIds和Filters。
+vpc-name - String - （过滤条件）VPC实例名称。
+is-default - String - （过滤条件）是否默认VPC。
+vpc-id - String - （过滤条件）VPC实例ID形如：vpc-f49l6u0z。
+cidr-block - String - （过滤条件）vpc的cidr。
+tag-key - String -是否必填：否- （过滤条件）按照标签键进行过滤。
+tag:tag-key - String - 是否必填：否 - （过滤条件）按照标签键值对进行过滤。 tag-key使用具体的标签键进行替换。使用请参考示例
+        :type Filters: list of Filter
+        :param Offset: 偏移量
+        :type Offset: int
+        :param Limit: 返回数量
+        :type Limit: int
+        :param EcmRegion: 地域
+        :type EcmRegion: str
+        """
+        self.VpcIds = None
+        self.Filters = None
+        self.Offset = None
+        self.Limit = None
+        self.EcmRegion = None
+
+
+    def _deserialize(self, params):
+        self.VpcIds = params.get("VpcIds")
+        if params.get("Filters") is not None:
+            self.Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self.Filters.append(obj)
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+        self.EcmRegion = params.get("EcmRegion")
+
+
+class DescribeVpcsResponse(AbstractModel):
+    """DescribeVpcs返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param TotalCount: 符合条件的对象数。
+        :type TotalCount: int
+        :param VpcSet: 私有网络对象。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type VpcSet: list of VpcInfo
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.VpcSet = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("VpcSet") is not None:
+            self.VpcSet = []
+            for item in params.get("VpcSet"):
+                obj = VpcInfo()
+                obj._deserialize(item)
+                self.VpcSet.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class DetachNetworkInterfaceRequest(AbstractModel):
     """DetachNetworkInterface请求参数结构体
 

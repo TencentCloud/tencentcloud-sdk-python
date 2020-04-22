@@ -142,13 +142,13 @@ class AddLiveWatermarkRequest(AbstractModel):
         :type PictureUrl: str
         :param WatermarkName: 水印名称。
         :type WatermarkName: str
-        :param XPosition: 显示位置, X轴偏移。
+        :param XPosition: 显示位置，X轴偏移，默认 0。
         :type XPosition: int
-        :param YPosition: 显示位置,Y轴偏移。
+        :param YPosition: 显示位置，Y轴偏移，默认 0。
         :type YPosition: int
-        :param Width: 水印宽度，占直播原始画面宽度百分比，建议高宽只设置一项，另外一项会自适应缩放，避免变形。
+        :param Width: 水印宽度，占直播原始画面宽度百分比，建议高宽只设置一项，另外一项会自适应缩放，避免变形。默认原始宽度。
         :type Width: int
-        :param Height: 水印高度，占直播原始画面宽度百分比，建议高宽只设置一项，另外一项会自适应缩放，避免变形。
+        :param Height: 水印高度，占直播原始画面宽度百分比，建议高宽只设置一项，另外一项会自适应缩放，避免变形。默认原始高度。
         :type Height: int
         """
         self.PictureUrl = None
@@ -190,19 +190,19 @@ class AddLiveWatermarkResponse(AbstractModel):
 
 
 class BillDataInfo(AbstractModel):
-    """带宽和流量信息
+    """带宽和流量信息。
 
     """
 
     def __init__(self):
         """
-        :param Time: 时间点，格式为yyyy-mm-dd HH:MM:SS。
+        :param Time: 时间点，格式: yyyy-mm-dd HH:MM:SS。
         :type Time: str
-        :param Bandwidth: 带宽，单位是Mbps。
+        :param Bandwidth: 带宽，单位是 Mbps。
         :type Bandwidth: float
-        :param Flux: 流量，单位是MB。
+        :param Flux: 流量，单位是 MB。
         :type Flux: float
-        :param PeakTime: 峰值时间点，格式为yyyy-mm-dd HH:MM:SS，原始数据为5分钟粒度，如果查询小时和天粒度数据，则返回对应粒度内的带宽峰值时间点。
+        :param PeakTime: 峰值时间点，格式: yyyy-mm-dd HH:MM:SS，原始数据为5分钟粒度，如果查询小时和天粒度数据，则返回对应粒度内的带宽峰值时间点。
         :type PeakTime: str
         """
         self.Time = None
@@ -271,7 +271,7 @@ class CallBackRuleInfo(AbstractModel):
         :type CreateTime: str
         :param UpdateTime: 规则更新时间。
         :type UpdateTime: str
-        :param TemplateId: 模板Id。
+        :param TemplateId: 模板 ID。
         :type TemplateId: int
         :param DomainName: 推流域名。
         :type DomainName: str
@@ -294,31 +294,31 @@ class CallBackRuleInfo(AbstractModel):
 
 
 class CallBackTemplateInfo(AbstractModel):
-    """回调模板信息
+    """回调模板信息。
 
     """
 
     def __init__(self):
         """
-        :param TemplateId: 模板Id。
+        :param TemplateId: 模板 ID。
         :type TemplateId: int
         :param TemplateName: 模板名称。
         :type TemplateName: str
         :param Description: 描述信息。
         :type Description: str
-        :param StreamBeginNotifyUrl: 开播回调URL。
+        :param StreamBeginNotifyUrl: 开播回调 URL。
         :type StreamBeginNotifyUrl: str
-        :param StreamEndNotifyUrl: 断流回调URL。
+        :param StreamEndNotifyUrl: 断流回调 URL。
         :type StreamEndNotifyUrl: str
-        :param StreamMixNotifyUrl: 混流回调URL。
+        :param StreamMixNotifyUrl: 混流回调 URL。
         :type StreamMixNotifyUrl: str
-        :param RecordNotifyUrl: 录制回调URL。
+        :param RecordNotifyUrl: 录制回调 URL。
         :type RecordNotifyUrl: str
-        :param SnapshotNotifyUrl: 截图回调URL。
+        :param SnapshotNotifyUrl: 截图回调 URL。
         :type SnapshotNotifyUrl: str
-        :param PornCensorshipNotifyUrl: 鉴黄回调URL。
+        :param PornCensorshipNotifyUrl: 鉴黄回调 URL。
         :type PornCensorshipNotifyUrl: str
-        :param CallbackKey: 回调的鉴权key
+        :param CallbackKey: 回调的鉴权 key。
         :type CallbackKey: str
         """
         self.TemplateId = None
@@ -387,11 +387,11 @@ class CdnPlayStatData(AbstractModel):
 
     def __init__(self):
         """
-        :param Time: 时间点，格式为yyyy-mm-dd HH:MM:SS。
+        :param Time: 时间点，格式: yyyy-mm-dd HH:MM:SS。
         :type Time: str
-        :param Bandwidth: 带宽，（单位Mbps）。
+        :param Bandwidth: 带宽，单位: Mbps。
         :type Bandwidth: float
-        :param Flux: 流量，（单位MB）。
+        :param Flux: 流量，单位: MB。
         :type Flux: float
         :param Request: 新增请求数。
         :type Request: int
@@ -414,27 +414,27 @@ class CdnPlayStatData(AbstractModel):
 
 
 class CertInfo(AbstractModel):
-    """证书信息
+    """证书信息。
 
     """
 
     def __init__(self):
         """
-        :param CertId: 证书Id。
+        :param CertId: 证书 ID。
         :type CertId: int
         :param CertName: 证书名称。
         :type CertName: str
         :param Description: 描述信息。
         :type Description: str
-        :param CreateTime: 创建时间，UTC格式。
+        :param CreateTime: 创建时间，UTC 格式。
         :type CreateTime: str
         :param HttpsCrt: 证书内容。
         :type HttpsCrt: str
-        :param CertType: 证书类型。
-0：腾讯云托管证书
+        :param CertType: 证书类型:
+0：腾讯云托管证书。
 1：用户添加证书。
         :type CertType: int
-        :param CertExpireTime: 证书过期时间，UTC格式。
+        :param CertExpireTime: 证书过期时间，UTC 格式。
         :type CertExpireTime: str
         :param DomainList: 使用此证书的域名列表。
         :type DomainList: list of str
@@ -461,13 +461,13 @@ class CertInfo(AbstractModel):
 
 
 class ClientIpPlaySumInfo(AbstractModel):
-    """客户端ip播放汇总信息
+    """客户端ip播放汇总信息。
 
     """
 
     def __init__(self):
         """
-        :param ClientIp: 客户端ip，点分型。
+        :param ClientIp: 客户端 IP，点分型。
         :type ClientIp: str
         :param Province: 客户端所在省份。
         :type Province: str
@@ -846,28 +846,31 @@ class CreateLiveCallbackTemplateRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param TemplateName: 模板名称，非空的字符串。
+        :param TemplateName: 模板名称。
 长度上限：255字节。
+仅支持中文、英文、数字、_、-。
         :type TemplateName: str
         :param Description: 描述信息。
 长度上限：1024字节。
+仅支持中文、英文、数字、_、-。
         :type Description: str
-        :param StreamBeginNotifyUrl: 开播回调URL，
+        :param StreamBeginNotifyUrl: 开播回调 URL，
 相关协议文档：[事件消息通知](/document/product/267/32744)。
         :type StreamBeginNotifyUrl: str
-        :param StreamEndNotifyUrl: 断流回调URL，
+        :param StreamEndNotifyUrl: 断流回调 URL，
 相关协议文档：[事件消息通知](/document/product/267/32744)。
         :type StreamEndNotifyUrl: str
-        :param RecordNotifyUrl: 录制回调URL，
+        :param RecordNotifyUrl: 录制回调 URL，
 相关协议文档：[事件消息通知](/document/product/267/32744)。
         :type RecordNotifyUrl: str
-        :param SnapshotNotifyUrl: 截图回调URL，
+        :param SnapshotNotifyUrl: 截图回调 URL，
 相关协议文档：[事件消息通知](/document/product/267/32744)。
         :type SnapshotNotifyUrl: str
-        :param PornCensorshipNotifyUrl: 鉴黄回调URL，
+        :param PornCensorshipNotifyUrl: 鉴黄回调 URL，
 相关协议文档：[事件消息通知](/document/product/267/32741)。
         :type PornCensorshipNotifyUrl: str
-        :param CallbackKey: 回调key，回调URL公用，鉴权回调说明详见回调格式文档
+        :param CallbackKey: 回调 Key，回调 URL 公用，回调签名详见事件消息通知文档。
+[事件消息通知](/document/product/267/32744)。
         :type CallbackKey: str
         """
         self.TemplateName = None
@@ -1072,7 +1075,7 @@ class CreateLiveRecordRuleRequest(AbstractModel):
         """
         :param DomainName: 推流域名。
         :type DomainName: str
-        :param TemplateId: 模板Id。
+        :param TemplateId: 模板 ID。
         :type TemplateId: int
         :param AppName: 推流路径，与推流和播放地址中的AppName保持一致，默认为 live。
         :type AppName: str
@@ -1117,7 +1120,7 @@ class CreateLiveRecordTemplateRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param TemplateName: 模板名。非空的字符串
+        :param TemplateName: 模板名。仅支持中文、英文、数字、_、-。
         :type TemplateName: str
         :param Description: 描述信息。
         :type Description: str
@@ -1129,7 +1132,8 @@ class CreateLiveRecordTemplateRequest(AbstractModel):
         :type Mp4Param: :class:`tencentcloud.live.v20180801.models.RecordParam`
         :param AacParam: Aac录制参数，开启Aac录制时设置。
         :type AacParam: :class:`tencentcloud.live.v20180801.models.RecordParam`
-        :param IsDelayLive: 0：普通直播，
+        :param IsDelayLive: 直播类型，默认 0。
+0：普通直播，
 1：慢直播。
         :type IsDelayLive: int
         :param HlsSpecialParam: HLS专属录制参数。
@@ -1202,9 +1206,9 @@ class CreateLiveSnapshotRuleRequest(AbstractModel):
         """
         :param DomainName: 推流域名。
         :type DomainName: str
-        :param TemplateId: 模板Id。
+        :param TemplateId: 模板 ID。
         :type TemplateId: int
-        :param AppName: 推流路径，与推流和播放地址中的AppName保持一致，默认为 live。
+        :param AppName: 推流路径，与推流和播放地址中的 AppName 保持一致，默认为 live。
         :type AppName: str
         :param StreamName: 流名称。
 注：如果本参数设置为非空字符串，规则将只对此推流起作用。
@@ -1247,10 +1251,11 @@ class CreateLiveSnapshotTemplateRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param TemplateName: 模板名称，非空的字符串。
+        :param TemplateName: 模板名称。
 长度上限：255字节。
+仅支持中文、英文、数字、_、-。
         :type TemplateName: str
-        :param CosAppId: Cos AppId。
+        :param CosAppId: Cos 应用 ID。
         :type CosAppId: int
         :param CosBucket: Cos Bucket名称。
         :type CosBucket: str
@@ -1258,6 +1263,7 @@ class CreateLiveSnapshotTemplateRequest(AbstractModel):
         :type CosRegion: str
         :param Description: 描述信息。
 长度上限：1024字节。
+仅支持中文、英文、数字、_、-。
         :type Description: str
         :param SnapshotInterval: 截图间隔，单位s，默认10s。
 范围： 5s ~ 600s。
@@ -1633,7 +1639,7 @@ class DayStreamPlayInfo(AbstractModel):
 
 
 class DelayInfo(AbstractModel):
-    """延播信息
+    """延播信息。
 
     """
 
@@ -1641,22 +1647,23 @@ class DelayInfo(AbstractModel):
         """
         :param DomainName: 推流域名。
         :type DomainName: str
-        :param AppName: 推流路径，与推流和播放地址中的AppName保持一致，默认为 live。
+        :param AppName: 推流路径，与推流和播放地址中的 
+ AppName 保持一致，默认为 live。
         :type AppName: str
         :param StreamName: 流名称。
         :type StreamName: str
         :param DelayInterval: 延播时间，单位：秒。
         :type DelayInterval: int
-        :param CreateTime: 创建时间，UTC时间。
+        :param CreateTime: 创建时间，UTC 时间。
 注意：UTC时间和北京时间相差8小时。
 例如：2019-06-18T12:00:00Z（为北京时间 2019 年 6 月 18 日 20 点 0 分 0 秒）。
         :type CreateTime: str
-        :param ExpireTime: 过期时间，UTC时间。
+        :param ExpireTime: 过期时间，UTC 时间。
 注意：UTC时间和北京时间相差8小时。
 例如：2019-06-18T12:00:00Z（为北京时间 2019 年 6 月 18 日 20 点 0 分 0 秒）。
         :type ExpireTime: str
-        :param Status: 当前状态，
--1：已过期，
+        :param Status: 当前状态:
+-1：已过期。
 1： 生效中。
         :type Status: int
         """
@@ -1688,7 +1695,7 @@ class DeleteLiveCallbackRuleRequest(AbstractModel):
         """
         :param DomainName: 推流域名。
         :type DomainName: str
-        :param AppName: 推流路径，与推流和播放地址中的AppName保持一致，默认为live。
+        :param AppName: 推流路径，与推流和播放地址中的 AppName 保持一致，默认为 live。
         :type AppName: str
         """
         self.DomainName = None
@@ -1724,7 +1731,9 @@ class DeleteLiveCallbackTemplateRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param TemplateId: 模板Id。
+        :param TemplateId: 模板 ID。
+1. 在创建回调模板接口 [CreateLiveCallbackTemplate](/document/product/267/32637) 调用的返回值中获取模板 ID。
+2. 可以从接口 [DescribeLiveCallbackTemplates](/document/product/267/32632) 查询已经创建的过的模板列表。
         :type TemplateId: int
         """
         self.TemplateId = None
@@ -1833,6 +1842,7 @@ class DeleteLiveRecordRequest(AbstractModel):
         :param StreamName: 流名称。
         :type StreamName: str
         :param TaskId: 任务ID，全局唯一标识录制任务。
+从接口 [CreateLiveRecord](/document/product/267/30148) 的返回值中获取TaskId。
         :type TaskId: int
         """
         self.StreamName = None
@@ -1913,7 +1923,7 @@ class DeleteLiveRecordTemplateRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param TemplateId: 模板ID。
+        :param TemplateId: 模板 ID。
         :type TemplateId: int
         """
         self.TemplateId = None
@@ -1949,7 +1959,7 @@ class DeleteLiveSnapshotRuleRequest(AbstractModel):
         """
         :param DomainName: 推流域名。
         :type DomainName: str
-        :param AppName: 推流路径，与推流和播放地址中的AppName保持一致，默认为 live。
+        :param AppName: 推流路径，与推流和播放地址中的 AppName 保持一致，默认为 live。
         :type AppName: str
         :param StreamName: 流名称。
         :type StreamName: str
@@ -1989,7 +1999,9 @@ class DeleteLiveSnapshotTemplateRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param TemplateId: 模板Id。
+        :param TemplateId: 模板 ID。
+1. 在创建截图模板接口 [CreateLiveSnapshotTemplate](/document/product/267/32624) 调用的返回值中获取。
+2. 可以从接口 [DescribeLiveSnapshotTemplates](/document/product/267/32619) 中查询已创建的截图模板列表。
         :type TemplateId: int
         """
         self.TemplateId = None
@@ -2107,7 +2119,8 @@ class DeleteLiveWatermarkRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param WatermarkId: 水印ID。
+        :param WatermarkId: 水印 ID。
+在添加水印接口 [AddLiveWatermark](/document/product/267/30154) 调用返回值中获取水印 ID。
         :type WatermarkId: int
         """
         self.WatermarkId = None
@@ -2143,7 +2156,7 @@ class DeleteLiveWatermarkRuleRequest(AbstractModel):
         """
         :param DomainName: 推流域名。
         :type DomainName: str
-        :param AppName: 推流路径。
+        :param AppName: 推流路径。与推流和播放地址中的 AppName 保持一致，默认为live。
         :type AppName: str
         :param StreamName: 流名称。
         :type StreamName: str
@@ -2183,7 +2196,9 @@ class DeletePullStreamConfigRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param ConfigId: 配置id。
+        :param ConfigId: 配置 ID。
+1. 在添加拉流配置接口 [CreatePullStreamConfig](/document/api/267/30159) 调用返回值中获取配置 ID。
+2. 可以从接口 [DescribePullStreamConfigs](/document/api/267/30158) 中查询已创建过的拉流配置列表。
         :type ConfigId: str
         """
         self.ConfigId = None
@@ -2521,7 +2536,9 @@ class DescribeLiveCallbackTemplateRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param TemplateId: 模板Id。
+        :param TemplateId: 模板 ID。
+1. 在创建回调模板接口 [CreateLiveCallbackTemplate](/document/product/267/32637) 调用的返回值中获取模板 ID。
+2. 可以从接口 [DescribeLiveCallbackTemplates](/document/product/267/32632) 查询已经创建的过的模板列表。
         :type TemplateId: int
         """
         self.TemplateId = None
@@ -3130,7 +3147,7 @@ class DescribeLiveRecordTemplateRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param TemplateId: 模板Id。
+        :param TemplateId: 模板 ID。
         :type TemplateId: int
         """
         self.TemplateId = None
@@ -3170,10 +3187,9 @@ class DescribeLiveRecordTemplatesRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param IsDelayLive: 是否属于慢直播模板。默认：0。
-示例：
-0 - 标准直播。
-1 - 慢直播。
+        :param IsDelayLive: 是否属于慢直播模板，默认：0。
+0： 标准直播。
+1：慢直播。
         :type IsDelayLive: int
         """
         self.IsDelayLive = None
@@ -3248,7 +3264,8 @@ class DescribeLiveSnapshotTemplateRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param TemplateId: 模板Id。
+        :param TemplateId: 模板 ID。
+调用 [CreateLiveSnapshotTemplate](/document/product/267/32624) 时返回的模板 ID。
         :type TemplateId: int
         """
         self.TemplateId = None
@@ -3433,9 +3450,9 @@ class DescribeLiveStreamOnlineListRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param DomainName: 推流域名。多域名用户需要填写DomainName。
+        :param DomainName: 推流域名。多域名用户需要填写 DomainName。
         :type DomainName: str
-        :param AppName: 推流路径，与推流和播放地址中的AppName保持一致，默认为 live。多路径用户需要填写AppName。
+        :param AppName: 推流路径，与推流和播放地址中的 AppName 保持一致，默认为 live。多路径用户需要填写 AppName。
         :type AppName: str
         :param PageNum: 取得第几页，默认1。
         :type PageNum: int
@@ -3521,7 +3538,7 @@ UTC 格式，例如：2016-06-30T19:00:00Z。
 UTC 格式，例如：2016-06-29T19:00:00Z。
 最长支持查询60天内数据。
         :type StartTime: str
-        :param AppName: 推流路径，与推流和播放地址中的AppName保持一致，默认为 live。不支持模糊匹配。
+        :param AppName: 推流路径，与推流和播放地址中的 AppName 保持一致，默认为 live。不支持模糊匹配。
         :type AppName: str
         :param PageNum: 取得第几页。
 默认值：1。
@@ -3921,7 +3938,7 @@ class DescribeLiveWatermarkRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param WatermarkId: 水印ID。
+        :param WatermarkId: 水印 ID。
         :type WatermarkId: int
         """
         self.WatermarkId = None
@@ -4467,7 +4484,7 @@ class DescribePullStreamConfigsRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param ConfigId: 配置id。
+        :param ConfigId: 配置 ID。
         :type ConfigId: str
         """
         self.ConfigId = None
@@ -5000,17 +5017,19 @@ class DomainCertInfo(AbstractModel):
 
 
 class DomainDetailInfo(AbstractModel):
-    """每个域名的统计信息
+    """每个域名的统计信息。
 
     """
 
     def __init__(self):
         """
-        :param MainlandOrOversea: 国内还是国外，可选值包括Mainland和Oversea，如果为“Mainland”，表示国内数据；如果为“Oversea”，表示国外数据。
+        :param MainlandOrOversea: 国内还是国外:
+Mainland: 表示国内数据。
+Oversea: 表示国外数据。
         :type MainlandOrOversea: str
-        :param Bandwidth: 带宽，单位是Mbps。
+        :param Bandwidth: 带宽，单位: Mbps。
         :type Bandwidth: float
-        :param Flux: 流量，单位是MB。
+        :param Flux: 流量，单位: MB。
         :type Flux: float
         :param Online: 人数。
         :type Online: int
@@ -5039,32 +5058,41 @@ class DomainInfo(AbstractModel):
 
     def __init__(self):
         """
-        :param Name: 直播域名
+        :param Name: 直播域名。
         :type Name: str
-        :param Type: 域名类型。0-推流，1-播放
+        :param Type: 域名类型:
+0: 推流。
+1: 播放。
         :type Type: int
-        :param Status: 域名状态。0-停用，1-启用
+        :param Status: 域名状态:
+0: 停用。
+1: 启用。
         :type Status: int
-        :param CreateTime: 添加时间
+        :param CreateTime: 添加时间。
         :type CreateTime: str
-        :param BCName: 是否有CName到固定规则域名。0-否，1-是
+        :param BCName: 是否有 CName 到固定规则域名:
+0: 否。
+1: 是。
         :type BCName: int
-        :param TargetDomain: cname对应的域名
+        :param TargetDomain: cname 对应的域名。
         :type TargetDomain: str
-        :param PlayType: 播放区域，只在Type=1时该参数有意义。
-1-国内，2-全球，3-海外。
+        :param PlayType: 播放区域，只在 Type=1 时该参数有意义。
+1: 国内。
+2: 全球。
+3: 海外。
         :type PlayType: int
-        :param IsDelayLive: 0：普通直播，
-1：慢直播。
+        :param IsDelayLive: 是否慢直播:
+0: 普通直播。
+1: 慢直播。
         :type IsDelayLive: int
-        :param CurrentCName: 当前客户使用的cname信息
+        :param CurrentCName: 当前客户使用的 cname 信息。
         :type CurrentCName: str
-        :param RentTag: 已无效，可忽略。
+        :param RentTag: 失效参数，可忽略。
         :type RentTag: int
-        :param RentExpireTime: 已无效，可忽略。
+        :param RentExpireTime: 失效参数，可忽略。
         :type RentExpireTime: str
-        :param IsMiniProgramLive: 0：标准直播，
-1：小程序直播。
+        :param IsMiniProgramLive: 0: 标准直播。
+1: 小程序直播。
 注意：此字段可能返回 null，表示取不到有效值。
         :type IsMiniProgramLive: int
         """
@@ -5461,39 +5489,39 @@ class HttpStatusInfo(AbstractModel):
 
 
 class LivePackageInfo(AbstractModel):
-    """直播包信息
+    """直播包信息。
 
     """
 
     def __init__(self):
         """
-        :param Id: 包ID。
+        :param Id: 包 ID。
         :type Id: str
         :param Total: 总量。
-注意：当为流量包时单位为字节；
+注意：当为流量包时单位为字节。
 当为转码包时单位为分钟。
         :type Total: int
         :param Used: 使用量。
-注意：当为流量包时单位为字节；
+注意：当为流量包时单位为字节。
 当为转码包时单位为分钟。
         :type Used: int
         :param Left: 剩余量。
-注意：当为流量包时单位为字节；
+注意：当为流量包时单位为字节。
 当为转码包时单位为分钟。
         :type Left: int
         :param BuyTime: 购买时间。
         :type BuyTime: str
         :param ExpireTime: 过期时间。
         :type ExpireTime: str
-        :param Type: 包类型，可选值：
-0：流量包；
-1：普通转码包；
-2：极速高清包。
+        :param Type: 包类型，可选值:
+0: 流量包。
+1: 普通转码包。
+2: 极速高清包。
         :type Type: int
-        :param Status: 包状态，可选值：
-0：未使用；
-1：使用中；
-2：已过期。
+        :param Status: 包状态，可选值:
+0: 未使用。
+1: 使用中。
+2: 已过期。
         :type Status: int
         """
         self.Id = None
@@ -5518,7 +5546,7 @@ class LivePackageInfo(AbstractModel):
 
 
 class LogInfo(AbstractModel):
-    """日志url信息
+    """日志url信息。
 
     """
 
@@ -5526,11 +5554,11 @@ class LogInfo(AbstractModel):
         """
         :param LogName: 日志名称。
         :type LogName: str
-        :param LogUrl: 日志Url。
+        :param LogUrl: 日志 URL。
         :type LogUrl: str
-        :param LogTime: 日志生成时间
+        :param LogTime: 日志生成时间。
         :type LogTime: str
-        :param FileSize: 文件大小
+        :param FileSize: 文件大小。
         :type FileSize: int
         """
         self.LogName = None
@@ -5553,23 +5581,24 @@ class ModifyLiveCallbackTemplateRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param TemplateId: 模板Id。
+        :param TemplateId: 模板 ID。
         :type TemplateId: int
         :param TemplateName: 模板名称。
         :type TemplateName: str
         :param Description: 描述信息。
         :type Description: str
-        :param StreamBeginNotifyUrl: 开播回调URL。
+        :param StreamBeginNotifyUrl: 开播回调 URL。
         :type StreamBeginNotifyUrl: str
-        :param StreamEndNotifyUrl: 断流回调URL。
+        :param StreamEndNotifyUrl: 断流回调 URL。
         :type StreamEndNotifyUrl: str
-        :param RecordNotifyUrl: 录制回调URL。
+        :param RecordNotifyUrl: 录制回调 URL。
         :type RecordNotifyUrl: str
-        :param SnapshotNotifyUrl: 截图回调URL。
+        :param SnapshotNotifyUrl: 截图回调 URL。
         :type SnapshotNotifyUrl: str
-        :param PornCensorshipNotifyUrl: 鉴黄回调URL。
+        :param PornCensorshipNotifyUrl: 鉴黄回调 URL。
         :type PornCensorshipNotifyUrl: str
-        :param CallbackKey: 回调key，回调URL公用，鉴权回调说明详见回调格式文档。
+        :param CallbackKey: 回调 Key，回调 URL 公用，回调签名详见事件消息通知文档。
+[事件消息通知](/document/product/267/32744)。
         :type CallbackKey: str
         """
         self.TemplateId = None
@@ -5853,23 +5882,23 @@ class ModifyLiveRecordTemplateRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param TemplateId: 模板Id。
+        :param TemplateId: 模板 ID。
         :type TemplateId: int
         :param TemplateName: 模板名称。
         :type TemplateName: str
         :param Description: 描述信息。
         :type Description: str
-        :param FlvParam: Flv录制参数，开启Flv录制时设置。
+        :param FlvParam: FLV 录制参数，开启 FLV 录制时设置。
         :type FlvParam: :class:`tencentcloud.live.v20180801.models.RecordParam`
-        :param HlsParam: Hls录制参数，开启hls录制时设置。
+        :param HlsParam: HLS 录制参数，开启 HLS 录制时设置。
         :type HlsParam: :class:`tencentcloud.live.v20180801.models.RecordParam`
-        :param Mp4Param: Mp4录制参数，开启Mp4录制时设置。
+        :param Mp4Param: MP4 录制参数，开启 MP4 录制时设置。
         :type Mp4Param: :class:`tencentcloud.live.v20180801.models.RecordParam`
-        :param AacParam: Aac录制参数，开启Aac录制时设置。
+        :param AacParam: AAC 录制参数，开启 AAC 录制时设置。
         :type AacParam: :class:`tencentcloud.live.v20180801.models.RecordParam`
-        :param HlsSpecialParam: HLS录制定制参数
+        :param HlsSpecialParam: HLS 录制定制参数。
         :type HlsSpecialParam: :class:`tencentcloud.live.v20180801.models.HlsSpecialParam`
-        :param Mp3Param: Mp3录制参数，开启Mp3录制时设置。
+        :param Mp3Param: MP3 录制参数，开启 MP3 录制时设置。
         :type Mp3Param: :class:`tencentcloud.live.v20180801.models.RecordParam`
         """
         self.TemplateId = None
@@ -5931,7 +5960,7 @@ class ModifyLiveSnapshotTemplateRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param TemplateId: 模板Id。
+        :param TemplateId: 模板 ID。
         :type TemplateId: int
         :param TemplateName: 模板名称。
 长度上限：255字节。
@@ -5946,9 +5975,11 @@ class ModifyLiveSnapshotTemplateRequest(AbstractModel):
         :type Width: int
         :param Height: 截图高度。默认：0（原始高）。
         :type Height: int
-        :param PornFlag: 是否开启鉴黄，0：不开启，1：开启。
+        :param PornFlag: 是否开启鉴黄，默认 0 。
+0：不开启。
+1：开启。
         :type PornFlag: int
-        :param CosAppId: Cos AppId。
+        :param CosAppId: Cos 应用 ID。
         :type CosAppId: int
         :param CosBucket: Cos Bucket名称。
         :type CosBucket: str
@@ -6004,7 +6035,7 @@ class ModifyLiveTranscodeTemplateRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param TemplateId: 模板Id。
+        :param TemplateId: 模板 Id。
         :type TemplateId: int
         :param Vcodec: 视频编码：
 h264/h265。
@@ -6012,25 +6043,28 @@ h264/h265。
         :param Acodec: 音频编码：
 aac/mp3。
         :type Acodec: str
-        :param AudioBitrate: 音频码率，默认0。0-500
+        :param AudioBitrate: 音频码率，默认0。
+范围：0-500。
         :type AudioBitrate: int
         :param Description: 模板描述。
         :type Description: str
-        :param VideoBitrate: 视频码率。100-8000
+        :param VideoBitrate: 视频码率。
+范围：100-8000。
         :type VideoBitrate: int
-        :param Width: 宽。0-3000
+        :param Width: 宽。0-3000。
         :type Width: int
         :param NeedVideo: 是否保留视频，0：否，1：是。默认1。
         :type NeedVideo: int
         :param NeedAudio: 是否保留音频，0：否，1：是。默认1。
         :type NeedAudio: int
-        :param Height: 高。0-3000
+        :param Height: 高。0-3000。
         :type Height: int
-        :param Fps: 帧率。0-200
+        :param Fps: 帧率。0-200。
         :type Fps: int
-        :param Gop: 关键帧间隔，单位：秒。0-50
+        :param Gop: 关键帧间隔，单位：秒。0-50。
         :type Gop: int
-        :param Rotate: 旋转角度。0 90 180 270
+        :param Rotate: 旋转角度。
+0 90 180 270。
         :type Rotate: int
         :param Profile: 编码质量：
 baseline/main/high。
@@ -6041,7 +6075,7 @@ baseline/main/high。
         :type HeightToOrig: int
         :param FpsToOrig: 是否不超过原始帧率。0：否，1：是。默认0。
         :type FpsToOrig: int
-        :param AdaptBitratePercent: 急速高清相比VideoBitrate少多少码率，0.1到0.5
+        :param AdaptBitratePercent: 极速高清相比 VideoBitrate 少多少码率，0.1到0.5。
         :type AdaptBitratePercent: float
         """
         self.TemplateId = None
@@ -6182,7 +6216,7 @@ class ModifyPullStreamStatusRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param ConfigIds: 配置id列表。
+        :param ConfigIds: 配置 ID 列表。
         :type ConfigIds: list of str
         :param Status: 目标状态。0无效，2正在运行，4暂停。
         :type Status: str
@@ -6214,7 +6248,7 @@ class ModifyPullStreamStatusResponse(AbstractModel):
 
 
 class PlayAuthKeyInfo(AbstractModel):
-    """播放鉴权key信息
+    """播放鉴权key信息。
 
     """
 
@@ -6222,13 +6256,15 @@ class PlayAuthKeyInfo(AbstractModel):
         """
         :param DomainName: 域名。
         :type DomainName: str
-        :param Enable: 是否启用，0：关闭，1：启用。
+        :param Enable: 是否启用:
+0: 关闭。
+1: 启用。
         :type Enable: int
-        :param AuthKey: 鉴权key。
+        :param AuthKey: 鉴权 Key。
         :type AuthKey: str
         :param AuthDelta: 有效时间，单位：秒。
         :type AuthDelta: int
-        :param AuthBackKey: 鉴权BackKey。
+        :param AuthBackKey: 鉴权 BackKey。
         :type AuthBackKey: str
         """
         self.DomainName = None
@@ -6247,15 +6283,16 @@ class PlayAuthKeyInfo(AbstractModel):
 
 
 class PlayCodeTotalInfo(AbstractModel):
-    """各状态码的总次数，支持大多数的http协议返回码
+    """各状态码的总次数，支持大多数的 HTTP 协议返回码。
 
     """
 
     def __init__(self):
         """
-        :param Code: HTTP code，可选值包括400,403,404,500,502,503,504
+        :param Code: HTTP code，可选值包括:
+400，403，404，500，502，503，504。
         :type Code: str
-        :param Num: 总次数
+        :param Num: 总次数。
         :type Num: int
         """
         self.Code = None
@@ -6268,7 +6305,7 @@ class PlayCodeTotalInfo(AbstractModel):
 
 
 class PlayDataInfoByStream(AbstractModel):
-    """流维度的播放信息
+    """流维度的播放信息。
 
     """
 
@@ -6276,7 +6313,7 @@ class PlayDataInfoByStream(AbstractModel):
         """
         :param StreamName: 流名称。
         :type StreamName: str
-        :param TotalFlux: 总流量（单位MB）。
+        :param TotalFlux: 总流量，单位: MB。
         :type TotalFlux: float
         """
         self.StreamName = None
@@ -6289,7 +6326,7 @@ class PlayDataInfoByStream(AbstractModel):
 
 
 class PlayStatInfo(AbstractModel):
-    """按省份运营商查询的播放信息
+    """按省份运营商查询的播放信息。
 
     """
 
@@ -6297,7 +6334,7 @@ class PlayStatInfo(AbstractModel):
         """
         :param Time: 数据时间点。
         :type Time: str
-        :param Value: 带宽/流量/请求数/并发连接数/下载速度的值，若没数据返回时该值为0
+        :param Value: 带宽/流量/请求数/并发连接数/下载速度的值，若没数据返回时该值为0。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Value: float
         """
@@ -6311,17 +6348,19 @@ class PlayStatInfo(AbstractModel):
 
 
 class PlaySumStatInfo(AbstractModel):
-    """播放汇总统计信息
+    """播放汇总统计信息。
 
     """
 
     def __init__(self):
         """
-        :param Name: 域名或流id。
+        :param Name: 域名或流 ID。
         :type Name: str
-        :param AvgFluxPerSecond: 平均下载速度，单位是MB/s，计算公式是每分钟的下载速度求平均值。
+        :param AvgFluxPerSecond: 平均下载速度，
+单位: MB/s。
+计算公式: 每分钟的下载速度求平均值。
         :type AvgFluxPerSecond: float
-        :param TotalFlux: 总流量，单位是MB。
+        :param TotalFlux: 总流量，单位: MB。
         :type TotalFlux: float
         :param TotalRequest: 总请求数。
         :type TotalRequest: int
@@ -6381,7 +6420,7 @@ class ProIspPlayCodeDataInfo(AbstractModel):
 
 
 class ProIspPlaySumInfo(AbstractModel):
-    """获取省份/运营商的播放信息
+    """获取省份/运营商的播放信息。
 
     """
 
@@ -6389,11 +6428,11 @@ class ProIspPlaySumInfo(AbstractModel):
         """
         :param Name: 省份/运营商/国家或地区。
         :type Name: str
-        :param TotalFlux: 总流量，单位：MB。
+        :param TotalFlux: 总流量，单位: MB。
         :type TotalFlux: float
         :param TotalRequest: 总请求数。
         :type TotalRequest: int
-        :param AvgFluxPerSecond: 平均下载流量，单位：MB/s
+        :param AvgFluxPerSecond: 平均下载流量，单位: MB/s。
         :type AvgFluxPerSecond: float
         """
         self.Name = None
@@ -6410,13 +6449,13 @@ class ProIspPlaySumInfo(AbstractModel):
 
 
 class PublishTime(AbstractModel):
-    """推流时间
+    """推流时间。
 
     """
 
     def __init__(self):
         """
-        :param PublishTime: 推流时间
+        :param PublishTime: 推流时间。
 UTC 格式，例如：2018-06-29T19:00:00Z。
         :type PublishTime: str
         """
@@ -6428,34 +6467,37 @@ UTC 格式，例如：2018-06-29T19:00:00Z。
 
 
 class PullStreamConfig(AbstractModel):
-    """拉流配置
+    """拉流配置。
 
     """
 
     def __init__(self):
         """
-        :param ConfigId: 拉流配置Id。
+        :param ConfigId: 拉流配置 ID。
         :type ConfigId: str
-        :param FromUrl: 源Url。
+        :param FromUrl: 源 URL。
         :type FromUrl: str
-        :param ToUrl: 目的Url。
+        :param ToUrl: 目的 URL。
         :type ToUrl: str
         :param AreaName: 区域名。
         :type AreaName: str
         :param IspName: 运营商名。
         :type IspName: str
         :param StartTime: 开始时间。
-UTC格式时间，
-例如：2019-01-08T10:00:00Z。
+UTC格式时间，例如: 2019-01-08T10:00:00Z。
 注意：北京时间值为 UTC 时间值 + 8 小时，格式按照 ISO 8601 标准表示，详见 [ISO 日期格式说明](https://cloud.tencent.com/document/product/266/11732#I)。
         :type StartTime: str
         :param EndTime: 结束时间。
 
-UTC格式时间，
-例如：2019-01-08T10:00:00Z。
+UTC格式时间，例如：2019-01-08T10:00:00Z。
 注意：北京时间值为 UTC 时间值 + 8 小时，格式按照 ISO 8601 标准表示，详见 [ISO 日期格式说明](https://cloud.tencent.com/document/product/266/11732#I)。
         :type EndTime: str
-        :param Status: 0无效，1初始状态，2正在运行，3拉起失败，4暂停。
+        :param Status: 状态:
+0: 无效。
+1: 初始状态。
+2: 正在运行。
+3: 拉起失败。
+4: 暂停。
         :type Status: str
         """
         self.ConfigId = None
@@ -6480,7 +6522,7 @@ UTC格式时间，
 
 
 class PushAuthKeyInfo(AbstractModel):
-    """推流鉴权key信息
+    """推流鉴权key信息。
 
     """
 
@@ -6490,9 +6532,9 @@ class PushAuthKeyInfo(AbstractModel):
         :type DomainName: str
         :param Enable: 是否启用，0：关闭，1：启用。
         :type Enable: int
-        :param MasterAuthKey: 主鉴权key。
+        :param MasterAuthKey: 主鉴权 Key。
         :type MasterAuthKey: str
-        :param BackupAuthKey: 备鉴权key。
+        :param BackupAuthKey: 备鉴权 Key。
         :type BackupAuthKey: str
         :param AuthDelta: 有效时间，单位：秒。
         :type AuthDelta: int
@@ -6523,17 +6565,17 @@ class PushDataInfo(AbstractModel):
         :type StreamName: str
         :param AppName: 推流路径。
         :type AppName: str
-        :param ClientIp: 推流客户端ip。
+        :param ClientIp: 推流客户端 IP。
         :type ClientIp: str
-        :param ServerIp: 接流服务器ip。
+        :param ServerIp: 接流服务器 IP。
         :type ServerIp: str
-        :param VideoFps: 推流视频帧率，单位是Hz。
+        :param VideoFps: 推流视频帧率，单位: Hz。
         :type VideoFps: int
-        :param VideoSpeed: 推流视频码率，单位是bps。
+        :param VideoSpeed: 推流视频码率，单位: bps。
         :type VideoSpeed: int
-        :param AudioFps: 推流音频帧率，单位是Hz。
+        :param AudioFps: 推流音频帧率，单位: Hz。
         :type AudioFps: int
-        :param AudioSpeed: 推流音频码率，单位是bps。
+        :param AudioSpeed: 推流音频码率，单位: bps。
         :type AudioSpeed: int
         :param PushDomain: 推流域名。
         :type PushDomain: str
@@ -6549,11 +6591,11 @@ class PushDataInfo(AbstractModel):
         :type Resolution: str
         :param AsampleRate: 采样率。
         :type AsampleRate: int
-        :param MetaAudioSpeed: metadata中的音频码率，单位是Kbps。
+        :param MetaAudioSpeed: metadata 中的音频码率，单位: Kbps。
         :type MetaAudioSpeed: int
-        :param MetaVideoSpeed: metadata中的视频码率，单位是Kbps。
+        :param MetaVideoSpeed: metadata 中的视频码率，单位: Kbps。
         :type MetaVideoSpeed: int
-        :param MetaFps: metadata中的帧率。
+        :param MetaFps: metadata 中的帧率。
         :type MetaFps: int
         """
         self.StreamName = None
@@ -6602,15 +6644,15 @@ class PushQualityData(AbstractModel):
 
     def __init__(self):
         """
-        :param Time: 数据时间，格式是%Y-%m-%d %H:%M:%S.%ms，精确到毫秒级。
+        :param Time: 数据时间，格式: %Y-%m-%d %H:%M:%S.%ms，精确到毫秒级。
         :type Time: str
         :param PushDomain: 推流域名。
         :type PushDomain: str
         :param AppName: 推流路径。
         :type AppName: str
-        :param ClientIp: 推流客户端ip。
+        :param ClientIp: 推流客户端 IP。
         :type ClientIp: str
-        :param BeginPushTime: 开始推流时间，格式是%Y-%m-%d %H:%M:%S.%ms，精确到毫秒级。
+        :param BeginPushTime: 开始推流时间，格式: %Y-%m-%d %H:%M:%S.%ms，精确到毫秒级。
         :type BeginPushTime: str
         :param Resolution: 分辨率信息。
         :type Resolution: str
@@ -6622,23 +6664,23 @@ class PushQualityData(AbstractModel):
         :type Sequence: str
         :param VideoFps: 视频帧率。
         :type VideoFps: int
-        :param VideoRate: 视频码率，单位是bps。
+        :param VideoRate: 视频码率，单位: bps。
         :type VideoRate: int
         :param AudioFps: 音频帧率。
         :type AudioFps: int
-        :param AudioRate: 音频码率，单位是bps。
+        :param AudioRate: 音频码率，单位: bps。
         :type AudioRate: int
-        :param LocalTs: 本地流逝时间，单位是ms，音视频流逝时间与本地流逝时间的差距越大表示推流质量越差，上行卡顿越严重。
+        :param LocalTs: 本地流逝时间，单位: ms，音视频流逝时间与本地流逝时间的差距越大表示推流质量越差，上行卡顿越严重。
         :type LocalTs: int
-        :param VideoTs: 视频流逝时间，单位是ms。
+        :param VideoTs: 视频流逝时间，单位: ms。
         :type VideoTs: int
-        :param AudioTs: 音频流逝时间，单位是ms。
+        :param AudioTs: 音频流逝时间，单位: ms。
         :type AudioTs: int
-        :param MetaVideoRate: metadata中的视频码率，单位是kbps。
+        :param MetaVideoRate: metadata 中的视频码率，单位: kbps。
         :type MetaVideoRate: int
-        :param MetaAudioRate: metadata中的音频码率，单位是kbps。
+        :param MetaAudioRate: metadata 中的音频码率，单位: kbps。
         :type MetaAudioRate: int
-        :param MateFps: metadata中的帧率。
+        :param MateFps: metadata 中的帧率。
         :type MateFps: int
         """
         self.Time = None
@@ -6685,24 +6727,24 @@ class PushQualityData(AbstractModel):
 
 
 class RecordParam(AbstractModel):
-    """录制模板参数
+    """录制模板参数。
 
     """
 
     def __init__(self):
         """
         :param RecordInterval: 录制间隔。
-单位秒，默认值1800。
-取值范围:300-7200。
+单位秒，默认：1800。
+取值范围：300-7200。
 此参数对 HLS 无效，当录制 HLS 时从推流到断流生成一个文件。
         :type RecordInterval: int
         :param StorageTime: 录制存储时长。
-单位秒，取值范围： 0-93312000。
-0表示永久存储。
+单位秒，取值范围： 0 - 93312000。
+0：表示永久存储。
         :type StorageTime: int
-        :param Enable: 是否开启当前格式录制，0 否 1是。默认值0。
+        :param Enable: 是否开启当前格式录制，默认值为0，0：否， 1：是。
         :type Enable: int
-        :param VodSubAppId: 点播子应用ID。
+        :param VodSubAppId: 点播子应用 ID。
         :type VodSubAppId: int
         """
         self.RecordInterval = None
@@ -6725,26 +6767,26 @@ class RecordTemplateInfo(AbstractModel):
 
     def __init__(self):
         """
-        :param TemplateId: 模板Id。
+        :param TemplateId: 模板 ID。
         :type TemplateId: int
         :param TemplateName: 模板名称。
         :type TemplateName: str
         :param Description: 描述信息。
         :type Description: str
-        :param FlvParam: Flv录制参数。
+        :param FlvParam: FLV 录制参数。
         :type FlvParam: :class:`tencentcloud.live.v20180801.models.RecordParam`
-        :param HlsParam: Hls录制参数。
+        :param HlsParam: HLS 录制参数。
         :type HlsParam: :class:`tencentcloud.live.v20180801.models.RecordParam`
-        :param Mp4Param: Mp4录制参数。
+        :param Mp4Param: MP4 录制参数。
         :type Mp4Param: :class:`tencentcloud.live.v20180801.models.RecordParam`
-        :param AacParam: Aac录制参数。
+        :param AacParam: AAC 录制参数。
         :type AacParam: :class:`tencentcloud.live.v20180801.models.RecordParam`
         :param IsDelayLive: 0：普通直播，
 1：慢直播。
         :type IsDelayLive: int
-        :param HlsSpecialParam: HLS录制定制参数
+        :param HlsSpecialParam: HLS 录制定制参数
         :type HlsSpecialParam: :class:`tencentcloud.live.v20180801.models.HlsSpecialParam`
-        :param Mp3Param: Mp3录制参数。
+        :param Mp3Param: MP3 录制参数。
         :type Mp3Param: :class:`tencentcloud.live.v20180801.models.RecordParam`
         """
         self.TemplateId = None
@@ -6869,7 +6911,7 @@ class ResumeLiveStreamResponse(AbstractModel):
 
 
 class RuleInfo(AbstractModel):
-    """规则信息
+    """规则信息。
 
     """
 
@@ -6879,7 +6921,7 @@ class RuleInfo(AbstractModel):
         :type CreateTime: str
         :param UpdateTime: 规则更新时间。
         :type UpdateTime: str
-        :param TemplateId: 模板Id。
+        :param TemplateId: 模板 ID。
         :type TemplateId: int
         :param DomainName: 推流域名。
         :type DomainName: str
@@ -6906,31 +6948,33 @@ class RuleInfo(AbstractModel):
 
 
 class SnapshotTemplateInfo(AbstractModel):
-    """截图模板信息
+    """截图模板信息。
 
     """
 
     def __init__(self):
         """
-        :param TemplateId: 模板Id。
+        :param TemplateId: 模板 ID。
         :type TemplateId: int
         :param TemplateName: 模板名称。
         :type TemplateName: str
-        :param SnapshotInterval: 截图时间间隔。5-300秒。
+        :param SnapshotInterval: 截图时间间隔，5-300秒。
         :type SnapshotInterval: int
-        :param Width: 截图宽度。0-3000 0原始宽度并适配原始比例
+        :param Width: 截图宽度，范围：0-3000。 
+0：原始宽度并适配原始比例。
         :type Width: int
-        :param Height: 截图高度。0-2000 0原始高度并适配原始比例
+        :param Height: 截图高度，范围：0-2000。
+0：原始高度并适配原始比例。
         :type Height: int
         :param PornFlag: 是否开启鉴黄，0：不开启，1：开启。
         :type PornFlag: int
-        :param CosAppId: Cos AppId。
+        :param CosAppId: Cos 应用 ID。
         :type CosAppId: int
         :param CosBucket: Cos Bucket名称。
         :type CosBucket: str
         :param CosRegion: Cos 地域。
         :type CosRegion: str
-        :param Description: 模板描述
+        :param Description: 模板描述。
         :type Description: str
         """
         self.TemplateId = None
@@ -7010,18 +7054,16 @@ class StreamEventInfo(AbstractModel):
         :param StreamName: 流名称。
         :type StreamName: str
         :param StreamStartTime: 推流开始时间。
-UTC格式时间，
-例如：2019-01-07T12:00:00Z。
+UTC 格式时间，例如：2019-01-07T12:00:00Z。
         :type StreamStartTime: str
         :param StreamEndTime: 推流结束时间。
-UTC格式时间，
-例如：2019-01-07T15:00:00Z。
+UTC 格式时间，例如：2019-01-07T15:00:00Z。
         :type StreamEndTime: str
         :param StopReason: 停止原因。
         :type StopReason: str
         :param Duration: 推流持续时长，单位：秒。
         :type Duration: int
-        :param ClientIp: 主播IP。
+        :param ClientIp: 主播 IP。
         :type ClientIp: str
         :param Resolution: 分辨率。
         :type Resolution: str
@@ -7050,7 +7092,7 @@ UTC格式时间，
 
 
 class StreamName(AbstractModel):
-    """流名称列表
+    """流名称列表。
 
     """
 
@@ -7063,18 +7105,16 @@ class StreamName(AbstractModel):
         :param DomainName: 推流域名。
         :type DomainName: str
         :param StreamStartTime: 推流开始时间。
-UTC格式时间，
-例如：2019-01-07T12:00:00Z。
+UTC格式时间，例如：2019-01-07T12:00:00Z。
         :type StreamStartTime: str
         :param StreamEndTime: 推流结束时间。
-UTC格式时间，
-例如：2019-01-07T15:00:00Z。
+UTC格式时间，例如：2019-01-07T15:00:00Z。
         :type StreamEndTime: str
         :param StopReason: 停止原因。
         :type StopReason: str
         :param Duration: 推流持续时长，单位：秒。
         :type Duration: int
-        :param ClientIp: 主播IP。
+        :param ClientIp: 主播 IP。
         :type ClientIp: str
         :param Resolution: 分辨率。
         :type Resolution: str
@@ -7137,7 +7177,7 @@ class StreamOnlineInfo(AbstractModel):
 
 
 class TemplateInfo(AbstractModel):
-    """转码模板信息
+    """转码模板信息。
 
     """
 
@@ -7146,25 +7186,24 @@ class TemplateInfo(AbstractModel):
         :param Vcodec: 视频编码：
 h264/h265。
         :type Vcodec: str
-        :param VideoBitrate: 视频码率。100-8000kbps
+        :param VideoBitrate: 视频码率，取值范围：100kbps - 8000kbps。
         :type VideoBitrate: int
-        :param Acodec: 音频编码：aac/mp3
-aac/mp3。
+        :param Acodec: 音频编码，可选 aac 或 mp3。
         :type Acodec: str
-        :param AudioBitrate: 音频码率。0-500
+        :param AudioBitrate: 音频码率。取值范围：0kbps - 500kbps。
         :type AudioBitrate: int
-        :param Width: 宽。0-3000
+        :param Width: 宽，取值范围：0-3000。
         :type Width: int
-        :param Height: 高。0-3000
+        :param Height: 高，取值范围：0-3000。
         :type Height: int
-        :param Fps: 帧率。0-200
+        :param Fps: 帧率。取值范围：0fps - 200fps。
         :type Fps: int
-        :param Gop: 关键帧间隔，单位：秒。1-50
+        :param Gop: 关键帧间隔，取值范围：1秒 - 50秒。
         :type Gop: int
-        :param Rotate: 旋转角度。0 90 180 270
+        :param Rotate: 旋转角度。可选择：0 90 180 270。
         :type Rotate: int
-        :param Profile: 编码质量：
-baseline/main/high。
+        :param Profile: 编码质量，可选择：
+baseline，main，high。
         :type Profile: str
         :param BitrateToOrig: 是否不超过原始码率。0：否，1：是。
         :type BitrateToOrig: int
@@ -7176,15 +7215,15 @@ baseline/main/high。
         :type NeedVideo: int
         :param NeedAudio: 是否保留音频。0：否，1：是。
         :type NeedAudio: int
-        :param TemplateId: 模板Id。
+        :param TemplateId: 模板 ID。
         :type TemplateId: int
-        :param TemplateName: 模板名称
+        :param TemplateName: 模板名称。
         :type TemplateName: str
-        :param Description: 模板描述
+        :param Description: 模板描述。
         :type Description: str
-        :param AiTransCode: 是否是急速高清模板，0：否，1：是。默认0。
+        :param AiTransCode: 是否是极速高清模板，0：否，1：是。默认0。
         :type AiTransCode: int
-        :param AdaptBitratePercent: 急速高清相比VideoBitrate少多少码率，0.1到0.5
+        :param AdaptBitratePercent: 极速高清相比 VideoBitrate 少多少码率，0.1到0.5。
         :type AdaptBitratePercent: float
         """
         self.Vcodec = None
@@ -7239,7 +7278,7 @@ class TimeValue(AbstractModel):
 
     def __init__(self):
         """
-        :param Time: utc时间，时间格式为yyyy-mm-ddTHH:MM:SSZ。
+        :param Time: UTC 时间，时间格式：yyyy-mm-ddTHH:MM:SSZ。
         :type Time: str
         :param Num: 数值。
         :type Num: int
@@ -7254,7 +7293,7 @@ class TimeValue(AbstractModel):
 
 
 class TranscodeDetailInfo(AbstractModel):
-    """转码详细信息
+    """转码详细信息。
 
     """
 
@@ -7262,25 +7301,23 @@ class TranscodeDetailInfo(AbstractModel):
         """
         :param StreamName: 流名称。
         :type StreamName: str
-        :param StartTime: 开始时间，北京时间，
-格式：yyyy-mm-dd HH:MM。
+        :param StartTime: 开始时间（北京时间），格式：yyyy-mm-dd HH:MM。
         :type StartTime: str
-        :param EndTime: 结束时间，北京时间，
-格式：yyyy-mm-dd HH:MM。
+        :param EndTime: 结束时间（北京时间），格式：yyyy-mm-dd HH:MM。
         :type EndTime: str
         :param Duration: 转码时长，单位：分钟。
 注意：因推流过程中可能有中断重推情况，此处时长为真实转码时长累加值，并非结束时间和开始时间的间隔。
         :type Duration: int
         :param ModuleCodec: 编码方式，带模块，
 示例：
-liveprocessor_H264 =》直播转码-H264，
-liveprocessor_H265 =》 直播转码-H265，
-topspeed_H264 =》极速高清-H264，
-topspeed_H265 =》极速高清-H265。
+liveprocessor_H264：直播转码-H264，
+liveprocessor_H265： 直播转码-H265，
+topspeed_H264：极速高清-H264，
+topspeed_H265：极速高清-H265。
         :type ModuleCodec: str
         :param Bitrate: 码率。
         :type Bitrate: int
-        :param Type: 类型，包含：转码(Transcode)，混流(MixStream)，水印(WaterMark)。
+        :param Type: 类型，包含：转码（Transcode），混流（MixStream），水印（WaterMark）。
         :type Type: str
         :param PushDomain: 推流域名。
         :type PushDomain: str
@@ -7351,19 +7388,20 @@ class UpdateLiveWatermarkRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param WatermarkId: 水印ID。
+        :param WatermarkId: 水印 ID。
+在添加水印接口 [AddLiveWatermark](/document/product/267/30154) 调用返回值中获取水印 ID。
         :type WatermarkId: int
-        :param PictureUrl: 水印图片url。
+        :param PictureUrl: 水印图片 URL。
         :type PictureUrl: str
-        :param XPosition: 显示位置，X轴偏移。
+        :param XPosition: 显示位置，X轴偏移，默认 0。
         :type XPosition: int
-        :param YPosition: 显示位置，Y轴偏移。
+        :param YPosition: 显示位置，Y轴偏移，默认 0。
         :type YPosition: int
         :param WatermarkName: 水印名称。
         :type WatermarkName: str
-        :param Width: 水印宽度，占直播原始画面宽度百分比，建议高宽只设置一项，另外一项会自适应缩放，避免变形。
+        :param Width: 水印宽度，占直播原始画面宽度百分比，建议高宽只设置一项，另外一项会自适应缩放，避免变形。默认原始宽度。
         :type Width: int
-        :param Height: 水印高度，占直播原始画面宽度百分比，建议高宽只设置一项，另外一项会自适应缩放，避免变形。
+        :param Height: 水印高度，占直播原始画面宽度百分比，建议高宽只设置一项，另外一项会自适应缩放，避免变形。默认原始高度。
         :type Height: int
         """
         self.WatermarkId = None
@@ -7403,19 +7441,19 @@ class UpdateLiveWatermarkResponse(AbstractModel):
 
 
 class WatermarkInfo(AbstractModel):
-    """水印信息
+    """水印信息。
 
     """
 
     def __init__(self):
         """
-        :param WatermarkId: 水印ID。
+        :param WatermarkId: 水印 ID。
         :type WatermarkId: int
-        :param PictureUrl: 水印图片url。
+        :param PictureUrl: 水印图片 URL。
         :type PictureUrl: str
-        :param XPosition: 显示位置，X轴偏移。
+        :param XPosition: 显示位置，X 轴偏移。
         :type XPosition: int
-        :param YPosition: 显示位置，Y轴偏移。
+        :param YPosition: 显示位置，Y 轴偏移。
         :type YPosition: int
         :param WatermarkName: 水印名称。
         :type WatermarkName: str
@@ -7423,9 +7461,9 @@ class WatermarkInfo(AbstractModel):
         :type Status: int
         :param CreateTime: 添加时间。
         :type CreateTime: str
-        :param Width: 水印宽
+        :param Width: 水印宽。
         :type Width: int
-        :param Height: 水印高
+        :param Height: 水印高。
         :type Height: int
         """
         self.WatermarkId = None

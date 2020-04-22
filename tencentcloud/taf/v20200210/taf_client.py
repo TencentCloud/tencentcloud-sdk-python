@@ -25,6 +25,34 @@ class TafClient(AbstractClient):
     _endpoint = 'taf.tencentcloudapi.com'
 
 
+    def DetectAccountActivity(self, request):
+        """DetectAccountActivity
+
+        :param request: Request instance for DetectAccountActivity.
+        :type request: :class:`tencentcloud.taf.v20200210.models.DetectAccountActivityRequest`
+        :rtype: :class:`tencentcloud.taf.v20200210.models.DetectAccountActivityResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DetectAccountActivity", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DetectAccountActivityResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DetectFraudKOL(self, request):
         """DetectFraudKOL
 

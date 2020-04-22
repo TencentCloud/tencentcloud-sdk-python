@@ -380,6 +380,32 @@ class DBInstanceInfo(AbstractModel):
         self.Region = params.get("Region")
 
 
+class DBInstancePrice(AbstractModel):
+    """数据库实例价格
+
+    """
+
+    def __init__(self):
+        """
+        :param UnitPrice: 单价
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UnitPrice: float
+        :param OriginalPrice: 原价
+        :type OriginalPrice: float
+        :param DiscountPrice: 折扣加
+        :type DiscountPrice: float
+        """
+        self.UnitPrice = None
+        self.OriginalPrice = None
+        self.DiscountPrice = None
+
+
+    def _deserialize(self, params):
+        self.UnitPrice = params.get("UnitPrice")
+        self.OriginalPrice = params.get("OriginalPrice")
+        self.DiscountPrice = params.get("DiscountPrice")
+
+
 class DescribeBackupAccessRequest(AbstractModel):
     """DescribeBackupAccess请求参数结构体
 
@@ -534,6 +560,56 @@ class DescribeDBBackupsResponse(AbstractModel):
                 obj._deserialize(item)
                 self.BackupList.append(obj)
         self.TotalCount = params.get("TotalCount")
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeDBInstanceDealRequest(AbstractModel):
+    """DescribeDBInstanceDeal请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param DealId: 订单ID，通过CreateDBInstance等接口返回
+        :type DealId: str
+        """
+        self.DealId = None
+
+
+    def _deserialize(self, params):
+        self.DealId = params.get("DealId")
+
+
+class DescribeDBInstanceDealResponse(AbstractModel):
+    """DescribeDBInstanceDeal返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Status: 订单状态，1：未支付，2：已支付，3：发货中，4：发货成功，5：发货失败，6：退款，7：订单关闭，8：超时未支付关闭。
+        :type Status: int
+        :param OriginalPrice: 订单原价。
+        :type OriginalPrice: float
+        :param DiscountPrice: 订单折扣价格。
+        :type DiscountPrice: float
+        :param Action: 订单行为，purchase：新购，renew：续费，upgrade：升配，downgrade：降配，refund：退货退款。
+        :type Action: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Status = None
+        self.OriginalPrice = None
+        self.DiscountPrice = None
+        self.Action = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Status = params.get("Status")
+        self.OriginalPrice = params.get("OriginalPrice")
+        self.DiscountPrice = params.get("DiscountPrice")
+        self.Action = params.get("Action")
         self.RequestId = params.get("RequestId")
 
 
@@ -802,6 +878,176 @@ class DescribeSpecInfoResponse(AbstractModel):
                 obj = SpecificationInfo()
                 obj._deserialize(item)
                 self.SpecInfoList.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class InquirePriceCreateDBInstancesRequest(AbstractModel):
+    """InquirePriceCreateDBInstances请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Zone: 实例所属区域名称，格式如：ap-guangzhou-2
+        :type Zone: str
+        :param NodeNum: 每个副本集内节点个数，当前副本集节点数固定为3，分片从节点数可选，具体参照查询云数据库的售卖规格返回参数
+        :type NodeNum: int
+        :param Memory: 实例内存大小，单位：GB
+        :type Memory: int
+        :param Volume: 实例硬盘大小，单位：GB
+        :type Volume: int
+        :param MongoVersion: 版本号，具体支持的售卖版本请参照查询云数据库的售卖规格（DescribeSpecInfo）返回结果。参数与版本对应关系是MONGO_3_WT：MongoDB 3.2 WiredTiger存储引擎版本，MONGO_3_ROCKS：MongoDB 3.2 RocksDB存储引擎版本，MONGO_36_WT：MongoDB 3.6 WiredTiger存储引擎版本，MONGO_40_WT：MongoDB 4.0 WiredTiger存储引擎版本
+        :type MongoVersion: str
+        :param MachineCode: 机器类型，HIO：高IO型；HIO10G：高IO万兆型；STDS5：标准型
+        :type MachineCode: str
+        :param GoodsNum: 实例数量, 最小值1，最大值为10
+        :type GoodsNum: int
+        :param Period: 实例时长，单位：月，可选值包括[1,2,3,4,5,6,7,8,9,10,11,12,24,36]
+        :type Period: int
+        :param ClusterType: 实例类型，REPLSET-副本集，SHARD-分片集群，STANDALONE-单节点
+        :type ClusterType: str
+        :param ReplicateSetNum: 副本集个数，创建副本集实例时，该参数必须设置为1；创建分片实例时，具体参照查询云数据库的售卖规格返回参数；若为单节点实例，该参数设置为0
+        :type ReplicateSetNum: int
+        """
+        self.Zone = None
+        self.NodeNum = None
+        self.Memory = None
+        self.Volume = None
+        self.MongoVersion = None
+        self.MachineCode = None
+        self.GoodsNum = None
+        self.Period = None
+        self.ClusterType = None
+        self.ReplicateSetNum = None
+
+
+    def _deserialize(self, params):
+        self.Zone = params.get("Zone")
+        self.NodeNum = params.get("NodeNum")
+        self.Memory = params.get("Memory")
+        self.Volume = params.get("Volume")
+        self.MongoVersion = params.get("MongoVersion")
+        self.MachineCode = params.get("MachineCode")
+        self.GoodsNum = params.get("GoodsNum")
+        self.Period = params.get("Period")
+        self.ClusterType = params.get("ClusterType")
+        self.ReplicateSetNum = params.get("ReplicateSetNum")
+
+
+class InquirePriceCreateDBInstancesResponse(AbstractModel):
+    """InquirePriceCreateDBInstances返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Price: 价格
+        :type Price: :class:`tencentcloud.mongodb.v20190725.models.DBInstancePrice`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Price = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Price") is not None:
+            self.Price = DBInstancePrice()
+            self.Price._deserialize(params.get("Price"))
+        self.RequestId = params.get("RequestId")
+
+
+class InquirePriceModifyDBInstanceSpecRequest(AbstractModel):
+    """InquirePriceModifyDBInstanceSpec请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param InstanceId: 实例ID，格式如：cmgo-p8vnipr5。与云数据库控制台页面中显示的实例ID相同。
+        :type InstanceId: str
+        :param Memory: 变更配置后实例内存大小，单位：GB。
+        :type Memory: int
+        :param Volume: 变更配置后实例磁盘大小，单位：GB。
+        :type Volume: int
+        """
+        self.InstanceId = None
+        self.Memory = None
+        self.Volume = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.Memory = params.get("Memory")
+        self.Volume = params.get("Volume")
+
+
+class InquirePriceModifyDBInstanceSpecResponse(AbstractModel):
+    """InquirePriceModifyDBInstanceSpec返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Price: 价格。
+        :type Price: :class:`tencentcloud.mongodb.v20190725.models.DBInstancePrice`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Price = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Price") is not None:
+            self.Price = DBInstancePrice()
+            self.Price._deserialize(params.get("Price"))
+        self.RequestId = params.get("RequestId")
+
+
+class InquirePriceRenewDBInstancesRequest(AbstractModel):
+    """InquirePriceRenewDBInstances请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param InstanceIds: 实例ID，格式如：cmgo-p8vnipr5。与云数据库控制台页面中显示的实例ID相同，接口单次最多只支持5个实例进行操作。
+        :type InstanceIds: list of str
+        :param InstanceChargePrepaid: 预付费模式（即包年包月）相关参数设置。通过该参数可以指定包年包月实例的续费时长、是否设置自动续费等属性。
+        :type InstanceChargePrepaid: :class:`tencentcloud.mongodb.v20190725.models.InstanceChargePrepaid`
+        """
+        self.InstanceIds = None
+        self.InstanceChargePrepaid = None
+
+
+    def _deserialize(self, params):
+        self.InstanceIds = params.get("InstanceIds")
+        if params.get("InstanceChargePrepaid") is not None:
+            self.InstanceChargePrepaid = InstanceChargePrepaid()
+            self.InstanceChargePrepaid._deserialize(params.get("InstanceChargePrepaid"))
+
+
+class InquirePriceRenewDBInstancesResponse(AbstractModel):
+    """InquirePriceRenewDBInstances返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Price: 价格
+        :type Price: :class:`tencentcloud.mongodb.v20190725.models.DBInstancePrice`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Price = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Price") is not None:
+            self.Price = DBInstancePrice()
+            self.Price._deserialize(params.get("Price"))
         self.RequestId = params.get("RequestId")
 
 
