@@ -1382,6 +1382,34 @@ class EcmClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def ResetInstancesPassword(self, request):
+        """重置处于运行中状态的实例的密码，需要显式指定强制关机参数ForceStop。如果没有显式指定强制关机参数，则只有处于关机状态的实例才允许执行重置密码操作。
+
+        :param request: Request instance for ResetInstancesPassword.
+        :type request: :class:`tencentcloud.ecm.v20190719.models.ResetInstancesPasswordRequest`
+        :rtype: :class:`tencentcloud.ecm.v20190719.models.ResetInstancesPasswordResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ResetInstancesPassword", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ResetInstancesPasswordResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def RunInstances(self, request):
         """创建ECM实例
 
@@ -1396,6 +1424,64 @@ class EcmClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.RunInstancesResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def StartInstances(self, request):
+        """只有状态为STOPPED的实例才可以进行此操作；接口调用成功时，实例会进入STARTING状态；启动实例成功时，实例会进入RUNNING状态。
+
+        :param request: Request instance for StartInstances.
+        :type request: :class:`tencentcloud.ecm.v20190719.models.StartInstancesRequest`
+        :rtype: :class:`tencentcloud.ecm.v20190719.models.StartInstancesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("StartInstances", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.StartInstancesResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def StopInstances(self, request):
+        """只有处于"RUNNING"状态的实例才能够进行关机操作；
+        调用成功时，实例会进入STOPPING状态；关闭实例成功时，实例会进入STOPPED状态；
+        支持强制关闭，强制关机的效果等同于关闭物理计算机的电源开关，强制关机可能会导致数据丢失或文件系统损坏，请仅在服务器不能正常关机时使用。
+
+        :param request: Request instance for StopInstances.
+        :type request: :class:`tencentcloud.ecm.v20190719.models.StopInstancesRequest`
+        :rtype: :class:`tencentcloud.ecm.v20190719.models.StopInstancesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("StopInstances", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.StopInstancesResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

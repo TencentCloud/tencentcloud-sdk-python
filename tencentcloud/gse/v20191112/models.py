@@ -1046,6 +1046,91 @@ class PlayerSession(AbstractModel):
         self.TerminationTime = params.get("TerminationTime")
 
 
+class SearchGameServerSessionsRequest(AbstractModel):
+    """SearchGameServerSessions请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param AliasId: 别名ID
+        :type AliasId: str
+        :param FleetId: 舰队ID
+        :type FleetId: str
+        :param Limit: 单次查询记录数上限
+        :type Limit: int
+        :param NextToken: 页偏移，用于查询下一页
+        :type NextToken: str
+        :param FilterExpression: 搜索条件表达式，支持如下变量
+gameServerSessionName 游戏会话名称 String
+gameServerSessionId 游戏会话ID String
+maximumSessions 最大的玩家会话数 Number
+creationTimeMillis 创建时间，单位：毫秒 Number
+playerSessionCount 当前玩家会话数 Number
+hasAvailablePlayerSessions 是否有可用玩家数 String 取值true或false
+gameServerSessionProperties 游戏会话属性 String
+
+表达式String类型 等于=，不等于<>判断
+表示Number类型支持 =,<>,>,>=,<,<=
+        :type FilterExpression: str
+        :param SortExpression: 排序条件关键字
+支持排序字段
+gameServerSessionName 游戏会话名称 String
+gameServerSessionId 游戏会话ID String
+maximumSessions 最大的玩家会话数 Number
+creationTimeMillis 创建时间，单位：毫秒 Number
+playerSessionCount 当前玩家会话数 Number
+        :type SortExpression: str
+        """
+        self.AliasId = None
+        self.FleetId = None
+        self.Limit = None
+        self.NextToken = None
+        self.FilterExpression = None
+        self.SortExpression = None
+
+
+    def _deserialize(self, params):
+        self.AliasId = params.get("AliasId")
+        self.FleetId = params.get("FleetId")
+        self.Limit = params.get("Limit")
+        self.NextToken = params.get("NextToken")
+        self.FilterExpression = params.get("FilterExpression")
+        self.SortExpression = params.get("SortExpression")
+
+
+class SearchGameServerSessionsResponse(AbstractModel):
+    """SearchGameServerSessions返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param GameServerSessions: 游戏服务器会话列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type GameServerSessions: list of GameServerSession
+        :param NextToken: 页偏移，用于查询下一页
+注意：此字段可能返回 null，表示取不到有效值。
+        :type NextToken: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.GameServerSessions = None
+        self.NextToken = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("GameServerSessions") is not None:
+            self.GameServerSessions = []
+            for item in params.get("GameServerSessions"):
+                obj = GameServerSession()
+                obj._deserialize(item)
+                self.GameServerSessions.append(obj)
+        self.NextToken = params.get("NextToken")
+        self.RequestId = params.get("RequestId")
+
+
 class StartGameServerSessionPlacementRequest(AbstractModel):
     """StartGameServerSessionPlacement请求参数结构体
 

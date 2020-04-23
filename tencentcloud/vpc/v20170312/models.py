@@ -216,6 +216,8 @@ class Address(AbstractModel):
         :type CascadeRelease: bool
         :param EipAlgType: EIP ALG开启的协议类型。
         :type EipAlgType: :class:`tencentcloud.vpc.v20170312.models.AlgType`
+        :param InternetServiceProvider: 弹性公网IP的运营商信息，当前可能返回值包括"CMCC","CTCC","CUCC","BGP"
+        :type InternetServiceProvider: str
         """
         self.AddressId = None
         self.AddressName = None
@@ -231,6 +233,7 @@ class Address(AbstractModel):
         self.AddressType = None
         self.CascadeRelease = None
         self.EipAlgType = None
+        self.InternetServiceProvider = None
 
 
     def _deserialize(self, params):
@@ -250,6 +253,7 @@ class Address(AbstractModel):
         if params.get("EipAlgType") is not None:
             self.EipAlgType = AlgType()
             self.EipAlgType._deserialize(params.get("EipAlgType"))
+        self.InternetServiceProvider = params.get("InternetServiceProvider")
 
 
 class AddressTemplate(AbstractModel):

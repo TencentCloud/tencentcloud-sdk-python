@@ -414,80 +414,6 @@ class AttachedPolicyOfRole(AbstractModel):
         self.Description = params.get("Description")
 
 
-class CheckNewMfaCodeRequest(AbstractModel):
-    """CheckNewMfaCode请求参数结构体
-
-    """
-
-    def __init__(self):
-        """
-        :param Skey: 登录态Skey
-        :type Skey: str
-        :param Interface: 接口名
-        :type Interface: str
-        :param ClientIP: IP
-        :type ClientIP: str
-        :param ClientUA: 浏览器UA
-        :type ClientUA: str
-        :param AuthType: 验证类型
-        :type AuthType: int
-        :param OwnerUin: 主账号uin
-        :type OwnerUin: int
-        :param PhoneCode: 手机验证码
-        :type PhoneCode: int
-        :param PhoneNumber: 手机号码
-        :type PhoneNumber: int
-        :param MailCode: 邮箱验证码
-        :type MailCode: int
-        :param Mail: 邮箱
-        :type Mail: str
-        :param CountryCode: 手机国码
-        :type CountryCode: int
-        """
-        self.Skey = None
-        self.Interface = None
-        self.ClientIP = None
-        self.ClientUA = None
-        self.AuthType = None
-        self.OwnerUin = None
-        self.PhoneCode = None
-        self.PhoneNumber = None
-        self.MailCode = None
-        self.Mail = None
-        self.CountryCode = None
-
-
-    def _deserialize(self, params):
-        self.Skey = params.get("Skey")
-        self.Interface = params.get("Interface")
-        self.ClientIP = params.get("ClientIP")
-        self.ClientUA = params.get("ClientUA")
-        self.AuthType = params.get("AuthType")
-        self.OwnerUin = params.get("OwnerUin")
-        self.PhoneCode = params.get("PhoneCode")
-        self.PhoneNumber = params.get("PhoneNumber")
-        self.MailCode = params.get("MailCode")
-        self.Mail = params.get("Mail")
-        self.CountryCode = params.get("CountryCode")
-
-
-class CheckNewMfaCodeResponse(AbstractModel):
-    """CheckNewMfaCode返回参数结构体
-
-    """
-
-    def __init__(self):
-        """
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
-        self.RequestId = None
-
-
-    def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
-
-
 class ConsumeCustomMFATokenRequest(AbstractModel):
     """ConsumeCustomMFAToken请求参数结构体
 
@@ -711,6 +637,52 @@ class CreateSAMLProviderResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class CreateServiceLinkedRoleRequest(AbstractModel):
+    """CreateServiceLinkedRole请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param QCSServiceName: 授权服务，附加了此角色的腾讯云服务主体。
+        :type QCSServiceName: list of str
+        :param CustomSuffix: 自定义后缀，根据您提供的字符串，与服务提供的前缀组合在一起以形成完整的角色名称。
+        :type CustomSuffix: str
+        :param Description: 角色说明。
+        :type Description: str
+        """
+        self.QCSServiceName = None
+        self.CustomSuffix = None
+        self.Description = None
+
+
+    def _deserialize(self, params):
+        self.QCSServiceName = params.get("QCSServiceName")
+        self.CustomSuffix = params.get("CustomSuffix")
+        self.Description = params.get("Description")
+
+
+class CreateServiceLinkedRoleResponse(AbstractModel):
+    """CreateServiceLinkedRole返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RoleId: 角色ID
+        :type RoleId: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RoleId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RoleId = params.get("RoleId")
+        self.RequestId = params.get("RequestId")
+
+
 class DeleteGroupRequest(AbstractModel):
     """DeleteGroup请求参数结构体
 
@@ -848,6 +820,44 @@ class DeleteSAMLProviderResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class DeleteServiceLinkedRoleRequest(AbstractModel):
+    """DeleteServiceLinkedRole请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RoleName: 要删除的服务相关角色的名称。
+        :type RoleName: str
+        """
+        self.RoleName = None
+
+
+    def _deserialize(self, params):
+        self.RoleName = params.get("RoleName")
+
+
+class DeleteServiceLinkedRoleResponse(AbstractModel):
+    """DeleteServiceLinkedRole返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param DeletionTaskId: 删除任务ID，可用于检查删除服务相关角色状态。
+        :type DeletionTaskId: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.DeletionTaskId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.DeletionTaskId = params.get("DeletionTaskId")
         self.RequestId = params.get("RequestId")
 
 
@@ -1333,6 +1343,58 @@ class GetSAMLProviderResponse(AbstractModel):
         self.CreateTime = params.get("CreateTime")
         self.ModifyTime = params.get("ModifyTime")
         self.SAMLMetadata = params.get("SAMLMetadata")
+        self.RequestId = params.get("RequestId")
+
+
+class GetServiceLinkedRoleDeletionStatusRequest(AbstractModel):
+    """GetServiceLinkedRoleDeletionStatus请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param DeletionTaskId: 删除任务ID
+        :type DeletionTaskId: str
+        """
+        self.DeletionTaskId = None
+
+
+    def _deserialize(self, params):
+        self.DeletionTaskId = params.get("DeletionTaskId")
+
+
+class GetServiceLinkedRoleDeletionStatusResponse(AbstractModel):
+    """GetServiceLinkedRoleDeletionStatus返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Status: 状态：NOT_STARTED，IN_PROGRESS，SUCCEEDED，FAILED
+        :type Status: str
+        :param Reason: 失败原因
+        :type Reason: str
+        :param ServiceType: 服务类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ServiceType: str
+        :param ServiceName: 服务名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ServiceName: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Status = None
+        self.Reason = None
+        self.ServiceType = None
+        self.ServiceName = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Status = params.get("Status")
+        self.Reason = params.get("Reason")
+        self.ServiceType = params.get("ServiceType")
+        self.ServiceName = params.get("ServiceName")
         self.RequestId = params.get("RequestId")
 
 
@@ -2104,72 +2166,6 @@ class ListUsersResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
-class LoginActionFlag(AbstractModel):
-    """登录和敏感操作flag
-
-    """
-
-    def __init__(self):
-        """
-        :param Phone: 手机
-        :type Phone: int
-        :param Token: 硬token
-        :type Token: int
-        :param Stoken: 软token
-        :type Stoken: int
-        :param Wechat: 微信
-        :type Wechat: int
-        :param Custom: 自定义
-        :type Custom: int
-        """
-        self.Phone = None
-        self.Token = None
-        self.Stoken = None
-        self.Wechat = None
-        self.Custom = None
-
-
-    def _deserialize(self, params):
-        self.Phone = params.get("Phone")
-        self.Token = params.get("Token")
-        self.Stoken = params.get("Stoken")
-        self.Wechat = params.get("Wechat")
-        self.Custom = params.get("Custom")
-
-
-class OffsiteFlag(AbstractModel):
-    """异地登录设置
-
-    """
-
-    def __init__(self):
-        """
-        :param VerifyFlag: 验证标识
-        :type VerifyFlag: int
-        :param NotifyPhone: 手机通知
-        :type NotifyPhone: int
-        :param NotifyEmail: 邮箱通知
-        :type NotifyEmail: int
-        :param NotifyWechat: 微信通知
-        :type NotifyWechat: int
-        :param Tips: 提示
-        :type Tips: int
-        """
-        self.VerifyFlag = None
-        self.NotifyPhone = None
-        self.NotifyEmail = None
-        self.NotifyWechat = None
-        self.Tips = None
-
-
-    def _deserialize(self, params):
-        self.VerifyFlag = params.get("VerifyFlag")
-        self.NotifyPhone = params.get("NotifyPhone")
-        self.NotifyEmail = params.get("NotifyEmail")
-        self.NotifyWechat = params.get("NotifyWechat")
-        self.Tips = params.get("Tips")
-
-
 class RemoveUserFromGroupRequest(AbstractModel):
     """RemoveUserFromGroup请求参数结构体
 
@@ -2292,62 +2288,6 @@ class SAMLProviderInfo(AbstractModel):
         self.Description = params.get("Description")
         self.CreateTime = params.get("CreateTime")
         self.ModifyTime = params.get("ModifyTime")
-
-
-class SetFlagRequest(AbstractModel):
-    """SetFlag请求参数结构体
-
-    """
-
-    def __init__(self):
-        """
-        :param OpUin: 设置用户的uin
-        :type OpUin: int
-        :param LoginFlag: 登录设置
-        :type LoginFlag: :class:`tencentcloud.cam.v20190116.models.LoginActionFlag`
-        :param ActionFlag: 敏感操作设置
-        :type ActionFlag: :class:`tencentcloud.cam.v20190116.models.LoginActionFlag`
-        :param OffsiteFlag: 异地登录设置
-        :type OffsiteFlag: :class:`tencentcloud.cam.v20190116.models.OffsiteFlag`
-        :param NeedResetMfa: 是否需要重置mfa
-        :type NeedResetMfa: int
-        """
-        self.OpUin = None
-        self.LoginFlag = None
-        self.ActionFlag = None
-        self.OffsiteFlag = None
-        self.NeedResetMfa = None
-
-
-    def _deserialize(self, params):
-        self.OpUin = params.get("OpUin")
-        if params.get("LoginFlag") is not None:
-            self.LoginFlag = LoginActionFlag()
-            self.LoginFlag._deserialize(params.get("LoginFlag"))
-        if params.get("ActionFlag") is not None:
-            self.ActionFlag = LoginActionFlag()
-            self.ActionFlag._deserialize(params.get("ActionFlag"))
-        if params.get("OffsiteFlag") is not None:
-            self.OffsiteFlag = OffsiteFlag()
-            self.OffsiteFlag._deserialize(params.get("OffsiteFlag"))
-        self.NeedResetMfa = params.get("NeedResetMfa")
-
-
-class SetFlagResponse(AbstractModel):
-    """SetFlag返回参数结构体
-
-    """
-
-    def __init__(self):
-        """
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
-        self.RequestId = None
-
-
-    def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
 
 
 class StrategyInfo(AbstractModel):

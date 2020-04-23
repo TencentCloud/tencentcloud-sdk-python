@@ -285,6 +285,7 @@ class SmsClient(AbstractClient):
 
     def PullSmsReplyStatus(self, request):
         """拉取短信回复状态。
+        目前也支持 [配置回复回调](https://cloud.tencent.com/document/product/382/42907) 的方式来获取上行回复。
 
         :param request: Request instance for PullSmsReplyStatus.
         :type request: :class:`tencentcloud.sms.v20190711.models.PullSmsReplyStatusRequest`
@@ -313,6 +314,7 @@ class SmsClient(AbstractClient):
 
     def PullSmsReplyStatusByPhoneNumber(self, request):
         """拉取单个号码短信回复状态。
+        目前也支持 [配置回复回调](https://cloud.tencent.com/document/product/382/42907) 的方式来获取上行回复。
 
         :param request: Request instance for PullSmsReplyStatusByPhoneNumber.
         :type request: :class:`tencentcloud.sms.v20190711.models.PullSmsReplyStatusByPhoneNumberRequest`
@@ -341,6 +343,7 @@ class SmsClient(AbstractClient):
 
     def PullSmsSendStatus(self, request):
         """拉取短信下发状态。
+        >- 目前也支持 [配置回调](https://cloud.tencent.com/document/product/382/37809#.E8.AE.BE.E7.BD.AE.E4.BA.8B.E4.BB.B6.E5.9B.9E.E8.B0.83.E9.85.8D.E7.BD.AE) 的方式来获取下发状态。
 
         :param request: Request instance for PullSmsSendStatus.
         :type request: :class:`tencentcloud.sms.v20190711.models.PullSmsSendStatusRequest`
@@ -369,6 +372,7 @@ class SmsClient(AbstractClient):
 
     def PullSmsSendStatusByPhoneNumber(self, request):
         """拉取单个号码短信下发状态。
+        >- 目前也支持 [配置回调](https://cloud.tencent.com/document/product/382/37809#.E8.AE.BE.E7.BD.AE.E4.BA.8B.E4.BB.B6.E5.9B.9E.E8.B0.83.E9.85.8D.E7.BD.AE) 的方式来获取下发状态。
 
         :param request: Request instance for PullSmsSendStatusByPhoneNumber.
         :type request: :class:`tencentcloud.sms.v20190711.models.PullSmsSendStatusByPhoneNumberRequest`

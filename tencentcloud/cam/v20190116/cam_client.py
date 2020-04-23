@@ -165,34 +165,6 @@ class CamClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def CheckNewMfaCode(self, request):
-        """校验新手机新邮箱接口
-
-        :param request: Request instance for CheckNewMfaCode.
-        :type request: :class:`tencentcloud.cam.v20190116.models.CheckNewMfaCodeRequest`
-        :rtype: :class:`tencentcloud.cam.v20190116.models.CheckNewMfaCodeResponse`
-
-        """
-        try:
-            params = request._serialize()
-            body = self.call("CheckNewMfaCode", params)
-            response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.CheckNewMfaCodeResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(e.message, e.message)
-
-
     def ConsumeCustomMFAToken(self, request):
         """验证自定义多因子Token
 
@@ -333,6 +305,34 @@ class CamClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def CreateServiceLinkedRole(self, request):
+        """创建服务相关角色
+
+        :param request: Request instance for CreateServiceLinkedRole.
+        :type request: :class:`tencentcloud.cam.v20190116.models.CreateServiceLinkedRoleRequest`
+        :rtype: :class:`tencentcloud.cam.v20190116.models.CreateServiceLinkedRoleResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("CreateServiceLinkedRole", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateServiceLinkedRoleResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DeleteGroup(self, request):
         """删除用户组
 
@@ -431,6 +431,34 @@ class CamClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteSAMLProviderResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DeleteServiceLinkedRole(self, request):
+        """删除服务相关角色
+
+        :param request: Request instance for DeleteServiceLinkedRole.
+        :type request: :class:`tencentcloud.cam.v20190116.models.DeleteServiceLinkedRoleRequest`
+        :rtype: :class:`tencentcloud.cam.v20190116.models.DeleteServiceLinkedRoleResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DeleteServiceLinkedRole", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DeleteServiceLinkedRoleResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -725,6 +753,34 @@ class CamClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def GetServiceLinkedRoleDeletionStatus(self, request):
+        """根据删除TaskId获取服务相关角色删除状态
+
+        :param request: Request instance for GetServiceLinkedRoleDeletionStatus.
+        :type request: :class:`tencentcloud.cam.v20190116.models.GetServiceLinkedRoleDeletionStatusRequest`
+        :rtype: :class:`tencentcloud.cam.v20190116.models.GetServiceLinkedRoleDeletionStatusResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("GetServiceLinkedRoleDeletionStatus", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.GetServiceLinkedRoleDeletionStatusResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def GetUser(self, request):
         """查询子用户
 
@@ -950,7 +1006,7 @@ class CamClient(AbstractClient):
 
 
     def ListPolicies(self, request):
-        """本接口（ListPolicies）可用于查询策略列表
+        """本接口（ListPolicies）可用于查询策略列表。
 
         :param request: Request instance for ListPolicies.
         :type request: :class:`tencentcloud.cam.v20190116.models.ListPoliciesRequest`
@@ -1075,34 +1131,6 @@ class CamClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.RemoveUserFromGroupResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(e.message, e.message)
-
-
-    def SetFlag(self, request):
-        """设置用户的登录保护和敏感操作校验方式
-
-        :param request: Request instance for SetFlag.
-        :type request: :class:`tencentcloud.cam.v20190116.models.SetFlagRequest`
-        :rtype: :class:`tencentcloud.cam.v20190116.models.SetFlagResponse`
-
-        """
-        try:
-            params = request._serialize()
-            body = self.call("SetFlag", params)
-            response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.SetFlagResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

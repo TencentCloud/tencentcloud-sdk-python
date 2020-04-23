@@ -136,7 +136,7 @@ class ClusterInstancesInfo(AbstractModel):
 
     def __init__(self):
         """
-        :param Id: ID
+        :param Id: ID号
 注意：此字段可能返回 null，表示取不到有效值。
         :type Id: int
         :param ClusterId: 集群ID
@@ -247,6 +247,9 @@ class ClusterInstancesInfo(AbstractModel):
         :param AliasInfo: 集群所有节点的别名序列化
 注意：此字段可能返回 null，表示取不到有效值。
         :type AliasInfo: str
+        :param ProductId: 集群版本Id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ProductId: int
         """
         self.Id = None
         self.ClusterId = None
@@ -276,6 +279,7 @@ class ClusterInstancesInfo(AbstractModel):
         self.HiveMetaDb = None
         self.ServiceClass = None
         self.AliasInfo = None
+        self.ProductId = None
 
 
     def _deserialize(self, params):
@@ -314,6 +318,7 @@ class ClusterInstancesInfo(AbstractModel):
         self.HiveMetaDb = params.get("HiveMetaDb")
         self.ServiceClass = params.get("ServiceClass")
         self.AliasInfo = params.get("AliasInfo")
+        self.ProductId = params.get("ProductId")
 
 
 class CreateInstanceRequest(AbstractModel):

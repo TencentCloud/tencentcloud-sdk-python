@@ -5301,8 +5301,8 @@ OPENING表示开启中；
 CLOSING表示关闭中；
 CLOSED表示已关闭；
 ADJUSTING表示配置变更中；
-ISOLATING表示隔离中（欠费触发）；
-ISOLATED表示已隔离（欠费触发）；
+ISOLATING表示隔离中；
+ISOLATED表示已隔离；
 CLONING表示复制中；
 UNKNOWN表示未知状态。
         :type Status: str

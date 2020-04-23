@@ -3900,6 +3900,54 @@ class ResetInstancesMaxBandwidthResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class ResetInstancesPasswordRequest(AbstractModel):
+    """ResetInstancesPassword请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param InstanceIdSet: 待重置密码的实例ID列表。在单次请求的过程中，单个region下的请求实例数上限为100。
+        :type InstanceIdSet: list of str
+        :param Password: 新密码，Linux实例密码必须8到16位，至少包括两项[a-z，A-Z]、[0-9]和[( ) ~ ~ ! @ # $ % ^ & * - + = _ | { } [ ] : ; ' < > , . ? /]中的符号。密码不允许以/符号开头。
+Windows实例密码必须12到16位，至少包括三项[a-z]，[A-Z]，[0-9]和[( ) ~ ~ ! @ # $ % ^ & * - + = _ | { } [ ] : ; ' < > , . ? /]中的符号。密码不允许以/符号开头。
+如果实例即包含Linux实例又包含Windows实例，则密码复杂度限制按照Windows实例的限制。
+        :type Password: str
+        :param ForceStop: 是否强制关机，默认为false。
+        :type ForceStop: bool
+        :param UserName: 待重置密码的实例的用户名，不得超过64个字符。若未指定用户名，则对于Linux而言，默认重置root用户的密码，对于Windows而言，默认重置administrator的密码。
+        :type UserName: str
+        """
+        self.InstanceIdSet = None
+        self.Password = None
+        self.ForceStop = None
+        self.UserName = None
+
+
+    def _deserialize(self, params):
+        self.InstanceIdSet = params.get("InstanceIdSet")
+        self.Password = params.get("Password")
+        self.ForceStop = params.get("ForceStop")
+        self.UserName = params.get("UserName")
+
+
+class ResetInstancesPasswordResponse(AbstractModel):
+    """ResetInstancesPassword返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class ResetInstancesRequest(AbstractModel):
     """ResetInstances请求参数结构体
 
@@ -4147,6 +4195,86 @@ class SrcImage(AbstractModel):
         self.Region = params.get("Region")
         self.RegionID = params.get("RegionID")
         self.RegionName = params.get("RegionName")
+
+
+class StartInstancesRequest(AbstractModel):
+    """StartInstances请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param InstanceIdSet: 待开启的实例ID列表。在单次请求的过程中，单个region下的请求实例数上限为100。
+        :type InstanceIdSet: list of str
+        """
+        self.InstanceIdSet = None
+
+
+    def _deserialize(self, params):
+        self.InstanceIdSet = params.get("InstanceIdSet")
+
+
+class StartInstancesResponse(AbstractModel):
+    """StartInstances返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class StopInstancesRequest(AbstractModel):
+    """StopInstances请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param InstanceIdSet: 需要关机的实例ID列表。在单次请求的过程中，单个region下的请求实例数上限为100。
+        :type InstanceIdSet: list of str
+        :param ForceStop: 是否在正常关闭失败后选择强制关闭实例，默认为false，即否。
+        :type ForceStop: bool
+        :param StopType: 实例的关闭模式。取值范围：
+SOFT_FIRST：表示在正常关闭失败后进行强制关闭;
+HARD：直接强制关闭;
+SOFT：仅软关机；
+默认为SOFT。
+        :type StopType: str
+        """
+        self.InstanceIdSet = None
+        self.ForceStop = None
+        self.StopType = None
+
+
+    def _deserialize(self, params):
+        self.InstanceIdSet = params.get("InstanceIdSet")
+        self.ForceStop = params.get("ForceStop")
+        self.StopType = params.get("StopType")
+
+
+class StopInstancesResponse(AbstractModel):
+    """StopInstances返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
 
 
 class Subnet(AbstractModel):

@@ -2102,7 +2102,7 @@ class DescribePurgeQuotaResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param UrlPurge: Url刷新用量及配额。
+        :param UrlPurge: URL刷新用量及配额。
         :type UrlPurge: list of Quota
         :param PathPurge: 目录刷新用量及配额。
         :type PathPurge: list of Quota
@@ -3676,8 +3676,8 @@ url：访问 URL 排序，带参数统计，支持的 Filter 为 flux、request
 path：访问 URL 排序，不带参数统计，支持的 Filter 为 flux、request（白名单功能）
 district：省份、国家/地区排序，支持的 Filter 为 flux、request
 isp：运营商排序，支持的 Filter 为 flux、request
-host：域名访问数据排序，支持的 Filter 为：flux, request, bandwidth, fluxHitRate, 2XX, 3XX, 4XX, 5XX，具体状态码统计
-originHost：域名回源数据排序，支持的 Filter 为 flux， request，bandwidth，origin_2XX，origin_3XX，oringin_4XX，origin_5XX，具体回源状态码统计
+host：域名访问数据排序，支持的 Filter 为：flux、request、bandwidth、fluxHitRate、2XX、3XX、4XX、5XX、statusCode
+originHost：域名回源数据排序，支持的 Filter 为 flux、request、bandwidth、origin_2XX、origin_3XX、origin_4XX、origin_5XX、OriginStatusCode
         :type Metric: str
         :param Filter: 排序使用的指标名称：
 flux：Metric 为 host 时指代访问流量，originHost 时指代回源流量
@@ -3701,7 +3701,7 @@ OriginStatusCode：指定回源状态码统计，在 Code 参数中填充指定�
 未填充域名情况下，指定项目查询，若填充了具体域名信息，以域名为主
         :type Project: int
         :param Detail: 多域名查询时，默认（false)返回所有域名汇总排序结果
-Metric 为 Url、Path、District、Isp，Filter 为 flux、reqeust 时，可设置为 true，返回每一个 Domain 的排序数据
+Metric 为 url、path、district、isp，Filter 为 flux、request 时，可设置为 true，返回每一个 Domain 的排序数据
         :type Detail: bool
         :param Code: Filter 为 statusCode、OriginStatusCode 时，填充指定状态码查询排序结果
         :type Code: str
@@ -3709,7 +3709,7 @@ Metric 为 Url、Path、District、Isp，Filter 为 flux、reqeust 时，可设�
 mainland：指定查询中国境内 CDN 数据
 overseas：指定查询中国境外 CDN 数据，支持的 Metric 为 url、district、host、originHost，当 Metric 为 originHost 时仅支持 flux、request、bandwidth Filter
         :type Area: str
-        :param AreaType: 查询中国境外CDN数据，且仅当 Metric 为 District 或 Host 时，可指定地区类型查询，不填充表示查询服务地区数据（仅在 Area 为 overseas，且 Metric 是 District 或 Host 时可用）
+        :param AreaType: 查询中国境外CDN数据，且仅当 Metric 为 district 或 host 时，可指定地区类型查询，不填充表示查询服务地区数据（仅在 Area 为 overseas，且 Metric 是 district 或 host 时可用）
 server：指定查询服务地区（腾讯云 CDN 节点服务器所在地区）数据
 client：指定查询客户端地区（用户请求终端所在地区）数据，当 Metric 为 host 时仅支持 flux、request、bandwidth Filter
         :type AreaType: str

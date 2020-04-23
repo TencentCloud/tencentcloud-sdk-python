@@ -289,10 +289,17 @@ class DetectCelebrityResponse(AbstractModel):
         """
         :param Faces: 公众人物识别结果数组。如果检测不到人脸，返回为空；最多可以返回10个人脸识别结果。
         :type Faces: list of Face
+        :param Threshold: 本服务在不同误识率水平下（将图片中的人物识别错误的比例）的推荐阈值，可以用于控制识别结果的精度。 
+FalseRate1Percent, FalseRate5Permil, FalseRate1Permil分别代表误识率在百分之一、千分之五、千分之一情况下的推荐阈值。 
+因为阈值会存在变动，请勿将此处输出的固定值处理，而是每次取值与confidence对比，来判断本次的识别结果是否可信。
+ 例如，如果您业务中可以接受的误识率是1%，则可以将所有confidence>=FalseRate1Percent的结论认为是正确的。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Threshold: :class:`tencentcloud.tiia.v20190529.models.Threshold`
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.Faces = None
+        self.Threshold = None
         self.RequestId = None
 
 
@@ -303,6 +310,9 @@ class DetectCelebrityResponse(AbstractModel):
                 obj = Face()
                 obj._deserialize(item)
                 self.Faces.append(obj)
+        if params.get("Threshold") is not None:
+            self.Threshold = Threshold()
+            self.Threshold._deserialize(params.get("Threshold"))
         self.RequestId = params.get("RequestId")
 
 
@@ -986,3 +996,31 @@ class RegionDetected(AbstractModel):
         if params.get("Location") is not None:
             self.Location = Location()
             self.Location._deserialize(params.get("Location"))
+
+
+class Threshold(AbstractModel):
+    """本服务在不同误识率水平下（将图片中的人物识别错误的比例）的推荐阈值，可以用于控制识别结果的精度。
+    {FalseRate1Percent, FalseRate5Permil, FalseRate1Permil}分别代表误识率在百分之一、千分之五、千分之一情况下的推荐阈值。
+    因为阈值会存在变动，请勿将此处输出的固定值处理，而是每次取值与confidence对比，来判断本次的识别结果是否可信。
+    例如，如果您业务中可以接受的误识率是1%，则可以将所有confidence>=FalseRate1Percent的结论认为是正确的。
+
+    """
+
+    def __init__(self):
+        """
+        :param FalseRate1Percent: 误识率在百分之一时的推荐阈值。
+        :type FalseRate1Percent: int
+        :param FalseRate5Permil: 误识率在千分之五时的推荐阈值。
+        :type FalseRate5Permil: int
+        :param FalseRate1Permil: 误识率在千分之一时的推荐阈值。
+        :type FalseRate1Permil: int
+        """
+        self.FalseRate1Percent = None
+        self.FalseRate5Permil = None
+        self.FalseRate1Permil = None
+
+
+    def _deserialize(self, params):
+        self.FalseRate1Percent = params.get("FalseRate1Percent")
+        self.FalseRate5Permil = params.get("FalseRate5Permil")
+        self.FalseRate1Permil = params.get("FalseRate1Permil")

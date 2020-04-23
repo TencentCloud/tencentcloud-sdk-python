@@ -3652,7 +3652,7 @@ class VpcClient(AbstractClient):
 
 
     def DescribeVpcResourceDashboard(self, request):
-        """查看VPC资源
+        """本接口(DescribeVpcResourceDashboard)用于查看VPC资源信息。
 
         :param request: Request instance for DescribeVpcResourceDashboard.
         :type request: :class:`tencentcloud.vpc.v20170312.models.DescribeVpcResourceDashboardRequest`
