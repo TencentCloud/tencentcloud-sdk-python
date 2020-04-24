@@ -457,6 +457,34 @@ class VodClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def CreateSubAppId(self, request):
+        """该接口用于创建点播子应用。
+
+        :param request: Request instance for CreateSubAppId.
+        :type request: :class:`tencentcloud.vod.v20180717.models.CreateSubAppIdRequest`
+        :rtype: :class:`tencentcloud.vod.v20180717.models.CreateSubAppIdResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("CreateSubAppId", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateSubAppIdResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def CreateSuperPlayerConfig(self, request):
         """创建超级播放器配置，数量上限：100。
 

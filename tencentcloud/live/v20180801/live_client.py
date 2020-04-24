@@ -952,6 +952,34 @@ class LiveClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeAllStreamPlayInfoList(self, request):
+        """输入某个时间点（1分钟维度），查询该时间点所有流的下行信息。
+
+        :param request: Request instance for DescribeAllStreamPlayInfoList.
+        :type request: :class:`tencentcloud.live.v20180801.models.DescribeAllStreamPlayInfoListRequest`
+        :rtype: :class:`tencentcloud.live.v20180801.models.DescribeAllStreamPlayInfoListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeAllStreamPlayInfoList", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeAllStreamPlayInfoListResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeBillBandwidthAndFluxList(self, request):
         """直播计费带宽和流量数据查询。
 

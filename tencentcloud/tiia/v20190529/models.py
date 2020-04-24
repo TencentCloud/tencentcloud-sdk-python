@@ -716,7 +716,6 @@ class Face(AbstractModel):
         :param BasicInfo: 对人物的简介。
         :type BasicInfo: str
         :param Confidence: 算法对于Name的置信度（图像中人脸与公众人物的相似度），0-100之间，值越高，表示对于Name越确定。
-当Confidence低于70分时，Name仅供参考。您可以根据业务实际情况调整阈值。
         :type Confidence: int
         :param X: 人脸区域左上角横坐标。
         :type X: int

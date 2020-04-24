@@ -2225,6 +2225,53 @@ class DeletePullStreamConfigResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeAllStreamPlayInfoListRequest(AbstractModel):
+    """DescribeAllStreamPlayInfoList请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param QueryTime: 查询时间点，精确到分钟粒度，支持最近1个月的数据查询，数据延迟为5分钟左右，如果要查询实时的数据，建议传递5分钟前的时间点，格式为yyyy-mm-dd HH:MM:SS。
+        :type QueryTime: str
+        """
+        self.QueryTime = None
+
+
+    def _deserialize(self, params):
+        self.QueryTime = params.get("QueryTime")
+
+
+class DescribeAllStreamPlayInfoListResponse(AbstractModel):
+    """DescribeAllStreamPlayInfoList返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param QueryTime: 查询时间点，回传的输入参数中的查询时间。
+        :type QueryTime: str
+        :param DataInfoList: 数据信息列表。
+        :type DataInfoList: list of MonitorStreamPlayInfo
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.QueryTime = None
+        self.DataInfoList = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.QueryTime = params.get("QueryTime")
+        if params.get("DataInfoList") is not None:
+            self.DataInfoList = []
+            for item in params.get("DataInfoList"):
+                obj = MonitorStreamPlayInfo()
+                obj._deserialize(item)
+                self.DataInfoList.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeBillBandwidthAndFluxListRequest(AbstractModel):
     """DescribeBillBandwidthAndFluxList请求参数结构体
 
@@ -6245,6 +6292,47 @@ class ModifyPullStreamStatusResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
+
+
+class MonitorStreamPlayInfo(AbstractModel):
+    """监控播放数据
+
+    """
+
+    def __init__(self):
+        """
+        :param PlayDomain: 播放域名。
+        :type PlayDomain: str
+        :param StreamName: 流id。
+        :type StreamName: str
+        :param Rate: 播放码率，0表示原始码率。
+        :type Rate: int
+        :param Protocol: 播放协议，可选值包括 Unknown，Flv，Hls，Rtmp，Huyap2p。
+        :type Protocol: str
+        :param Bandwidth: 带宽，单位是Mbps。
+        :type Bandwidth: float
+        :param Online: 在线人数，1分钟采样一个点，统计采样点的tcp链接数目。
+        :type Online: int
+        :param Request: 请求数。
+        :type Request: int
+        """
+        self.PlayDomain = None
+        self.StreamName = None
+        self.Rate = None
+        self.Protocol = None
+        self.Bandwidth = None
+        self.Online = None
+        self.Request = None
+
+
+    def _deserialize(self, params):
+        self.PlayDomain = params.get("PlayDomain")
+        self.StreamName = params.get("StreamName")
+        self.Rate = params.get("Rate")
+        self.Protocol = params.get("Protocol")
+        self.Bandwidth = params.get("Bandwidth")
+        self.Online = params.get("Online")
+        self.Request = params.get("Request")
 
 
 class PlayAuthKeyInfo(AbstractModel):

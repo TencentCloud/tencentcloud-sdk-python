@@ -5790,6 +5790,8 @@ class ImageSpriteTemplate(AbstractModel):
 <li>black：留黑，保持视频宽高比不变，边缘剩余部分使用黑色填充。</li>
 默认值：black 。
         :type FillType: str
+        :param Comment: 模板描述信息。
+        :type Comment: str
         """
         self.Definition = None
         self.Type = None
@@ -5804,6 +5806,7 @@ class ImageSpriteTemplate(AbstractModel):
         self.CreateTime = None
         self.UpdateTime = None
         self.FillType = None
+        self.Comment = None
 
 
     def _deserialize(self, params):
@@ -5820,6 +5823,7 @@ class ImageSpriteTemplate(AbstractModel):
         self.CreateTime = params.get("CreateTime")
         self.UpdateTime = params.get("UpdateTime")
         self.FillType = params.get("FillType")
+        self.Comment = params.get("Comment")
 
 
 class ImageWatermarkInput(AbstractModel):

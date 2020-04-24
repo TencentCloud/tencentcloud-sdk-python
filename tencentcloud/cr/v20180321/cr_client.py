@@ -250,6 +250,34 @@ class CrClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def QueryInstantData(self, request):
+        """实时数据查询
+
+        :param request: Request instance for QueryInstantData.
+        :type request: :class:`tencentcloud.cr.v20180321.models.QueryInstantDataRequest`
+        :rtype: :class:`tencentcloud.cr.v20180321.models.QueryInstantDataResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("QueryInstantData", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.QueryInstantDataResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def UploadDataFile(self, request):
         """上传文件，接口返回数据任务ID，支持xlsx、xls、csv、zip格式。
 
@@ -265,6 +293,34 @@ class CrClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.UploadDataFileResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def UploadDataJson(self, request):
+        """上传Json格式数据，接口返回数据任务ID
+
+        :param request: Request instance for UploadDataJson.
+        :type request: :class:`tencentcloud.cr.v20180321.models.UploadDataJsonRequest`
+        :rtype: :class:`tencentcloud.cr.v20180321.models.UploadDataJsonResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("UploadDataJson", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.UploadDataJsonResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

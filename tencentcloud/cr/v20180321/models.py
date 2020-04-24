@@ -529,6 +529,70 @@ class DownloadReportResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class QueryInstantDataRequest(AbstractModel):
+    """QueryInstantData请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Module: 模块名，本接口取值：Data
+        :type Module: str
+        :param Operation: 操作名，本接口取值：Query
+        :type Operation: str
+        :param ProductId: 产品ID
+        :type ProductId: str
+        :param InstanceId: 实例ID，不传默认为系统分配的初始实例
+        :type InstanceId: str
+        :param QueryModel: 查询类型：callRecord 通话记录
+        :type QueryModel: str
+        :param Data: 查询参数
+        :type Data: str
+        """
+        self.Module = None
+        self.Operation = None
+        self.ProductId = None
+        self.InstanceId = None
+        self.QueryModel = None
+        self.Data = None
+
+
+    def _deserialize(self, params):
+        self.Module = params.get("Module")
+        self.Operation = params.get("Operation")
+        self.ProductId = params.get("ProductId")
+        self.InstanceId = params.get("InstanceId")
+        self.QueryModel = params.get("QueryModel")
+        self.Data = params.get("Data")
+
+
+class QueryInstantDataResponse(AbstractModel):
+    """QueryInstantData返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param TotalCount: 总数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TotalCount: int
+        :param Data: 返回内容
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Data: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.Data = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        self.Data = params.get("Data")
+        self.RequestId = params.get("RequestId")
+
+
 class SingleBlackApply(AbstractModel):
     """黑名单申请信息
 
@@ -668,6 +732,61 @@ class UploadDataFileResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.DataResId = params.get("DataResId")
+        self.RequestId = params.get("RequestId")
+
+
+class UploadDataJsonRequest(AbstractModel):
+    """UploadDataJson请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Module: 模块名，本接口取值：Data
+        :type Module: str
+        :param Operation: 操作名，本接口取值：UploadJson
+        :type Operation: str
+        :param Data: 报文信息
+        :type Data: str
+        :param UploadModel: <p>上传类型，不填默认到期/逾期提醒数据，取值范围：</p><ul style="margin-bottom:0px;"><li>data：到期/逾期提醒数据</li><li>repay：到期/逾期提醒停拨数据</li></ul>
+        :type UploadModel: str
+        :param InstanceId: 实例ID，不传默认为系统分配的初始实例。
+        :type InstanceId: str
+        """
+        self.Module = None
+        self.Operation = None
+        self.Data = None
+        self.UploadModel = None
+        self.InstanceId = None
+
+
+    def _deserialize(self, params):
+        self.Module = params.get("Module")
+        self.Operation = params.get("Operation")
+        self.Data = params.get("Data")
+        self.UploadModel = params.get("UploadModel")
+        self.InstanceId = params.get("InstanceId")
+
+
+class UploadDataJsonResponse(AbstractModel):
+    """UploadDataJson返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Data: 响应报文信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Data: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Data = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Data = params.get("Data")
         self.RequestId = params.get("RequestId")
 
 

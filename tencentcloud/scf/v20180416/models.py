@@ -188,13 +188,13 @@ class CreateFunctionRequest(AbstractModel):
         :type Handler: str
         :param Description: 函数描述,最大支持 1000 个英文字母、数字、空格、逗号、换行符和英文句号，支持中文
         :type Description: str
-        :param MemorySize: 函数运行时内存大小，默认为 128M，可选范围 128MB-1536MB，并且以 128MB 为阶梯
+        :param MemorySize: 函数运行时内存大小，默认为 128M，可选范围 64、128MB-3072MB，并且以 128MB 为阶梯
         :type MemorySize: int
-        :param Timeout: 函数最长执行时间，单位为秒，可选值范围 1-300 秒，默认为 3 秒
+        :param Timeout: 函数最长执行时间，单位为秒，可选值范围 1-900 秒，默认为 3 秒
         :type Timeout: int
         :param Environment: 函数的环境变量
         :type Environment: :class:`tencentcloud.scf.v20180416.models.Environment`
-        :param Runtime: 函数运行环境，目前仅支持 Python2.7，Python3.6，Nodejs6.10， PHP5， PHP7，Golang1 和 Java8，默认Python2.7
+        :param Runtime: 函数运行环境，目前仅支持 Python2.7，Python3.6，Nodejs6.10，Nodejs8.9，Nodejs10.15， PHP5， PHP7，Golang1 和 Java8，默认Python2.7
         :type Runtime: str
         :param VpcConfig: 函数的私有网络配置
         :type VpcConfig: :class:`tencentcloud.scf.v20180416.models.VpcConfig`
@@ -2041,6 +2041,8 @@ class Trigger(AbstractModel):
         :type Enable: int
         :param CustomArgument: 客户自定义参数
         :type CustomArgument: str
+        :param AvailableStatus: 触发器状态
+        :type AvailableStatus: str
         """
         self.ModTime = None
         self.Type = None
@@ -2049,6 +2051,7 @@ class Trigger(AbstractModel):
         self.AddTime = None
         self.Enable = None
         self.CustomArgument = None
+        self.AvailableStatus = None
 
 
     def _deserialize(self, params):
@@ -2059,6 +2062,7 @@ class Trigger(AbstractModel):
         self.AddTime = params.get("AddTime")
         self.Enable = params.get("Enable")
         self.CustomArgument = params.get("CustomArgument")
+        self.AvailableStatus = params.get("AvailableStatus")
 
 
 class UpdateFunctionCodeRequest(AbstractModel):
@@ -2148,11 +2152,11 @@ class UpdateFunctionConfigurationRequest(AbstractModel):
         :type FunctionName: str
         :param Description: 函数描述。最大支持 1000 个英文字母、数字、空格、逗号和英文句号，支持中文
         :type Description: str
-        :param MemorySize: 函数运行时内存大小，默认为 128 M，可选范 128 M-1536 M
+        :param MemorySize: 函数运行时内存大小，默认为 128 M，可选范64M、128 M-3072 M，以 128MB 为阶梯。
         :type MemorySize: int
-        :param Timeout: 函数最长执行时间，单位为秒，可选值范 1-300 秒，默认为 3 秒
+        :param Timeout: 函数最长执行时间，单位为秒，可选值范 1-900 秒，默认为 3 秒
         :type Timeout: int
-        :param Runtime: 函数运行环境，目前仅支持 Python2.7，Python3.6，Nodejs6.10，PHP5， PHP7，Golang1 和 Java8
+        :param Runtime: 函数运行环境，目前仅支持 Python2.7，Python3.6，Nodejs6.10，Nodejs8.9，Nodejs10.15，PHP5， PHP7，Golang1 和 Java8
         :type Runtime: str
         :param Environment: 函数的环境变量
         :type Environment: :class:`tencentcloud.scf.v20180416.models.Environment`

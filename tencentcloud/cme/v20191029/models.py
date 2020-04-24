@@ -3045,7 +3045,7 @@ class VideoMaterial(AbstractModel):
         :type MaterialUrl: str
         :param CoverUrl: 素材媒体文件的封面图片地址。
         :type CoverUrl: str
-        :param Resolution: 媒体文件分辨率。
+        :param Resolution: 媒体文件分辨率。取值为：LD/SD/HD/FHD/2K/4K。
         :type Resolution: str
         """
         self.MetaData = None

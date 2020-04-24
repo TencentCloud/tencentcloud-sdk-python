@@ -6547,9 +6547,12 @@ class VmGroupSimple(AbstractModel):
         :param MicroserviceType: 应用微服务类型
 注意：此字段可能返回 null，表示取不到有效值。
         :type MicroserviceType: str
-        :param GroupResourceType: GroupResourceType
+        :param GroupResourceType: 部署组资源类型
 注意：此字段可能返回 null，表示取不到有效值。
         :type GroupResourceType: str
+        :param UpdatedTime: 部署组更新时间戳
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UpdatedTime: int
         """
         self.GroupId = None
         self.GroupName = None
@@ -6566,6 +6569,7 @@ class VmGroupSimple(AbstractModel):
         self.NamespaceName = None
         self.MicroserviceType = None
         self.GroupResourceType = None
+        self.UpdatedTime = None
 
 
     def _deserialize(self, params):
@@ -6584,3 +6588,4 @@ class VmGroupSimple(AbstractModel):
         self.NamespaceName = params.get("NamespaceName")
         self.MicroserviceType = params.get("MicroserviceType")
         self.GroupResourceType = params.get("GroupResourceType")
+        self.UpdatedTime = params.get("UpdatedTime")

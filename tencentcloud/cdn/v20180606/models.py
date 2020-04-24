@@ -2675,6 +2675,9 @@ global：全球锁定
         :param SecurityConfig: Scdn配置
 注意：此字段可能返回 null，表示取不到有效值。
         :type SecurityConfig: :class:`tencentcloud.cdn.v20180606.models.SecurityConfig`
+        :param ImageOptimization: ImageOptimization配置
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ImageOptimization: :class:`tencentcloud.cdn.v20180606.models.ImageOptimization`
         """
         self.ResourceId = None
         self.AppId = None
@@ -2717,6 +2720,7 @@ global：全球锁定
         self.OriginPullTimeout = None
         self.AwsPrivateAccess = None
         self.SecurityConfig = None
+        self.ImageOptimization = None
 
 
     def _deserialize(self, params):
@@ -2819,6 +2823,9 @@ global：全球锁定
         if params.get("SecurityConfig") is not None:
             self.SecurityConfig = SecurityConfig()
             self.SecurityConfig._deserialize(params.get("SecurityConfig"))
+        if params.get("ImageOptimization") is not None:
+            self.ImageOptimization = ImageOptimization()
+            self.ImageOptimization._deserialize(params.get("ImageOptimization"))
 
 
 class DisableCachesRequest(AbstractModel):
@@ -3291,6 +3298,24 @@ class GetDisableRecordsResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class GuetzliAdapter(AbstractModel):
+    """图片优化-GuetzliAdapter配置
+
+    """
+
+    def __init__(self):
+        """
+        :param Switch: 开关，"on/off"
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Switch: str
+        """
+        self.Switch = None
+
+
+    def _deserialize(self, params):
+        self.Switch = params.get("Switch")
+
+
 class HttpHeaderPathRule(AbstractModel):
     """Http 头部设置规则，最多可设置 100 条
 
@@ -3415,6 +3440,40 @@ failed：部署失败
             self.ClientCertInfo._deserialize(params.get("ClientCertInfo"))
         self.Spdy = params.get("Spdy")
         self.SslStatus = params.get("SslStatus")
+
+
+class ImageOptimization(AbstractModel):
+    """ImageOptimization配置
+
+    """
+
+    def __init__(self):
+        """
+        :param WebpAdapter: WebpAdapter配置
+注意：此字段可能返回 null，表示取不到有效值。
+        :type WebpAdapter: :class:`tencentcloud.cdn.v20180606.models.WebpAdapter`
+        :param TpgAdapter: TpgAdapter配置
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TpgAdapter: :class:`tencentcloud.cdn.v20180606.models.TpgAdapter`
+        :param GuetzliAdapter: GuetzliAdapter配置
+注意：此字段可能返回 null，表示取不到有效值。
+        :type GuetzliAdapter: :class:`tencentcloud.cdn.v20180606.models.GuetzliAdapter`
+        """
+        self.WebpAdapter = None
+        self.TpgAdapter = None
+        self.GuetzliAdapter = None
+
+
+    def _deserialize(self, params):
+        if params.get("WebpAdapter") is not None:
+            self.WebpAdapter = WebpAdapter()
+            self.WebpAdapter._deserialize(params.get("WebpAdapter"))
+        if params.get("TpgAdapter") is not None:
+            self.TpgAdapter = TpgAdapter()
+            self.TpgAdapter._deserialize(params.get("TpgAdapter"))
+        if params.get("GuetzliAdapter") is not None:
+            self.GuetzliAdapter = GuetzliAdapter()
+            self.GuetzliAdapter._deserialize(params.get("GuetzliAdapter"))
 
 
 class IpFilter(AbstractModel):
@@ -5578,6 +5637,24 @@ class TopicInfo(AbstractModel):
         self.CreateTime = params.get("CreateTime")
 
 
+class TpgAdapter(AbstractModel):
+    """图片优化-TpgAdapter配置
+
+    """
+
+    def __init__(self):
+        """
+        :param Switch: 开关，"on/off"
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Switch: str
+        """
+        self.Switch = None
+
+
+    def _deserialize(self, params):
+        self.Switch = params.get("Switch")
+
+
 class TrafficPackage(AbstractModel):
     """CDN加速流量包。
 
@@ -5977,3 +6054,21 @@ complain：申诉进行中
         self.UrlStatus = params.get("UrlStatus")
         self.CreateTime = params.get("CreateTime")
         self.UpdateTime = params.get("UpdateTime")
+
+
+class WebpAdapter(AbstractModel):
+    """图片优化-WebpAdapter配置
+
+    """
+
+    def __init__(self):
+        """
+        :param Switch: 开关，"on/off"
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Switch: str
+        """
+        self.Switch = None
+
+
+    def _deserialize(self, params):
+        self.Switch = params.get("Switch")

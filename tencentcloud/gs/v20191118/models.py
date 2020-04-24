@@ -346,6 +346,12 @@ RECOVERY-清理恢复
 FORBID-禁用
 UNAVAILABLE-不可用
         :type ServiceState: str
+        :param UserId: 用户ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UserId: str
+        :param GameId: 游戏ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type GameId: str
         """
         self.AppId = None
         self.SetNo = None
@@ -354,6 +360,8 @@ UNAVAILABLE-不可用
         self.InstanceType = None
         self.Ip = None
         self.ServiceState = None
+        self.UserId = None
+        self.GameId = None
 
 
     def _deserialize(self, params):
@@ -364,6 +372,8 @@ UNAVAILABLE-不可用
         self.InstanceType = params.get("InstanceType")
         self.Ip = params.get("Ip")
         self.ServiceState = params.get("ServiceState")
+        self.UserId = params.get("UserId")
+        self.GameId = params.get("GameId")
 
 
 class WorkerRegionInfo(AbstractModel):

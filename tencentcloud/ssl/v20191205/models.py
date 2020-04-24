@@ -891,7 +891,7 @@ class DescribeCertificatesRequest(AbstractModel):
         :type Offset: int
         :param Limit: 每页数量，默认20。
         :type Limit: int
-        :param SearchKey: 搜索关键词。
+        :param SearchKey: 搜索关键词，可搜索证书 ID、备注名称、域名。例如： a8xHcaIs。
         :type SearchKey: str
         :param CertificateType: 证书类型：CA = 客户端证书，SVR = 服务器证书。
         :type CertificateType: str

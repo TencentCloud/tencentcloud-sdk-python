@@ -299,6 +299,12 @@ class CreateDBInstanceRequest(AbstractModel):
         :type ProjectId: int
         :param DbVersionId: 数据库引擎版本，当前可选：10.0.10，10.1.9，5.7.17。如果不传的话，默认为 Mariadb 10.1.9。
         :type DbVersionId: str
+        :param InstanceName: 实例名称， 可以通过该字段自主的设置实例的名字
+        :type InstanceName: str
+        :param SecurityGroupIds: 安全组ID列表
+        :type SecurityGroupIds: list of str
+        :param AutoRenewFlag: 自动续费标志，1:自动续费，2:不自动续费
+        :type AutoRenewFlag: int
         """
         self.Zones = None
         self.NodeCount = None
@@ -312,6 +318,9 @@ class CreateDBInstanceRequest(AbstractModel):
         self.SubnetId = None
         self.ProjectId = None
         self.DbVersionId = None
+        self.InstanceName = None
+        self.SecurityGroupIds = None
+        self.AutoRenewFlag = None
 
 
     def _deserialize(self, params):
@@ -327,6 +336,9 @@ class CreateDBInstanceRequest(AbstractModel):
         self.SubnetId = params.get("SubnetId")
         self.ProjectId = params.get("ProjectId")
         self.DbVersionId = params.get("DbVersionId")
+        self.InstanceName = params.get("InstanceName")
+        self.SecurityGroupIds = params.get("SecurityGroupIds")
+        self.AutoRenewFlag = params.get("AutoRenewFlag")
 
 
 class CreateDBInstanceResponse(AbstractModel):
@@ -1768,6 +1780,8 @@ class DescribePriceRequest(AbstractModel):
         :type Period: int
         :param Count: 欲购买的数量，默认查询购买1个实例的价格。
         :type Count: int
+        :param Paymode: 付费类型。postpaid：按量付费   prepaid：预付费
+        :type Paymode: str
         """
         self.Zone = None
         self.NodeCount = None
@@ -1775,6 +1789,7 @@ class DescribePriceRequest(AbstractModel):
         self.Storage = None
         self.Period = None
         self.Count = None
+        self.Paymode = None
 
 
     def _deserialize(self, params):
@@ -1784,6 +1799,7 @@ class DescribePriceRequest(AbstractModel):
         self.Storage = params.get("Storage")
         self.Period = params.get("Period")
         self.Count = params.get("Count")
+        self.Paymode = params.get("Paymode")
 
 
 class DescribePriceResponse(AbstractModel):
@@ -2304,13 +2320,17 @@ class ModifyDBInstanceNameResponse(AbstractModel):
 
     def __init__(self):
         """
+        :param InstanceId: 实例ID
+        :type InstanceId: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
+        self.InstanceId = None
         self.RequestId = None
 
 
     def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
         self.RequestId = params.get("RequestId")
 
 

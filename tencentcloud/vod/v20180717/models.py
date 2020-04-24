@@ -5353,6 +5353,48 @@ class CreateSnapshotByTimeOffsetTemplateResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class CreateSubAppIdRequest(AbstractModel):
+    """CreateSubAppId请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Name: 子应用名称，长度限制：40个字符。
+        :type Name: str
+        :param Description: 子应用简介，长度限制： 300个字符。
+        :type Description: str
+        """
+        self.Name = None
+        self.Description = None
+
+
+    def _deserialize(self, params):
+        self.Name = params.get("Name")
+        self.Description = params.get("Description")
+
+
+class CreateSubAppIdResponse(AbstractModel):
+    """CreateSubAppId返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param SubAppId: 新创建的子应用 ID。
+        :type SubAppId: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.SubAppId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.SubAppId = params.get("SubAppId")
+        self.RequestId = params.get("RequestId")
+
+
 class CreateSuperPlayerConfigRequest(AbstractModel):
     """CreateSuperPlayerConfig请求参数结构体
 
@@ -8938,6 +8980,8 @@ class ImageSpriteTemplate(AbstractModel):
 <li>black：留黑，保持视频宽高比不变，边缘剩余部分使用黑色填充。</li>
 默认值：black 。
         :type FillType: str
+        :param Comment: 模板描述信息。
+        :type Comment: str
         """
         self.Definition = None
         self.Type = None
@@ -8952,6 +8996,7 @@ class ImageSpriteTemplate(AbstractModel):
         self.CreateTime = None
         self.UpdateTime = None
         self.FillType = None
+        self.Comment = None
 
 
     def _deserialize(self, params):
@@ -8968,6 +9013,7 @@ class ImageSpriteTemplate(AbstractModel):
         self.CreateTime = params.get("CreateTime")
         self.UpdateTime = params.get("UpdateTime")
         self.FillType = params.get("FillType")
+        self.Comment = params.get("Comment")
 
 
 class ImageTransform(AbstractModel):
@@ -12619,6 +12665,8 @@ class PlayerConfig(AbstractModel):
         :type CreateTime: str
         :param UpdateTime: 播放器配置最后修改时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F)。
         :type UpdateTime: str
+        :param Comment: 模板描述信息。
+        :type Comment: str
         """
         self.Name = None
         self.Type = None
@@ -12629,6 +12677,7 @@ class PlayerConfig(AbstractModel):
         self.ResolutionNameSet = None
         self.CreateTime = None
         self.UpdateTime = None
+        self.Comment = None
 
 
     def _deserialize(self, params):
@@ -12648,6 +12697,7 @@ class PlayerConfig(AbstractModel):
                 self.ResolutionNameSet.append(obj)
         self.CreateTime = params.get("CreateTime")
         self.UpdateTime = params.get("UpdateTime")
+        self.Comment = params.get("Comment")
 
 
 class PoliticalAsrReviewTemplateInfo(AbstractModel):
@@ -13260,6 +13310,8 @@ class ProcedureTemplate(AbstractModel):
 <li>Preset：系统预置任务流模板；</li>
 <li>Custom：用户自定义任务流模板。</li>
         :type Type: str
+        :param Comment: 模板描述信息，长度限制：256 个字符。
+        :type Comment: str
         :param MediaProcessTask: 视频处理类型任务参数。
 注意：此字段可能返回 null，表示取不到有效值。
         :type MediaProcessTask: :class:`tencentcloud.vod.v20180717.models.MediaProcessTaskInput`
@@ -13282,6 +13334,7 @@ class ProcedureTemplate(AbstractModel):
         """
         self.Name = None
         self.Type = None
+        self.Comment = None
         self.MediaProcessTask = None
         self.AiContentReviewTask = None
         self.AiAnalysisTask = None
@@ -13294,6 +13347,7 @@ class ProcedureTemplate(AbstractModel):
     def _deserialize(self, params):
         self.Name = params.get("Name")
         self.Type = params.get("Type")
+        self.Comment = params.get("Comment")
         if params.get("MediaProcessTask") is not None:
             self.MediaProcessTask = MediaProcessTaskInput()
             self.MediaProcessTask._deserialize(params.get("MediaProcessTask"))
