@@ -1272,6 +1272,120 @@ class CreateNetReturnResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class CreateNewL4RulesRequest(AbstractModel):
+    """CreateNewL4Rules请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Business: 高防产品代号：bgpip
+        :type Business: str
+        :param IdList: 添加规则资源列表
+        :type IdList: list of str
+        :param VipList: 添加规则IP列表
+        :type VipList: list of str
+        :param Rules: 规则列表
+        :type Rules: list of L4RuleEntry
+        """
+        self.Business = None
+        self.IdList = None
+        self.VipList = None
+        self.Rules = None
+
+
+    def _deserialize(self, params):
+        self.Business = params.get("Business")
+        self.IdList = params.get("IdList")
+        self.VipList = params.get("VipList")
+        if params.get("Rules") is not None:
+            self.Rules = []
+            for item in params.get("Rules"):
+                obj = L4RuleEntry()
+                obj._deserialize(item)
+                self.Rules.append(obj)
+
+
+class CreateNewL4RulesResponse(AbstractModel):
+    """CreateNewL4Rules返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Success: 成功码
+        :type Success: :class:`tencentcloud.dayu.v20180709.models.SuccessCode`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Success = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Success") is not None:
+            self.Success = SuccessCode()
+            self.Success._deserialize(params.get("Success"))
+        self.RequestId = params.get("RequestId")
+
+
+class CreateNewL7RulesRequest(AbstractModel):
+    """CreateNewL7Rules请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Business: 大禹子产品代号（bgpip表示高防IP）
+        :type Business: str
+        :param IdList: 资源ID列表
+        :type IdList: list of str
+        :param VipList: 资源IP列表
+        :type VipList: list of str
+        :param Rules: 规则列表
+        :type Rules: list of L7RuleEntry
+        """
+        self.Business = None
+        self.IdList = None
+        self.VipList = None
+        self.Rules = None
+
+
+    def _deserialize(self, params):
+        self.Business = params.get("Business")
+        self.IdList = params.get("IdList")
+        self.VipList = params.get("VipList")
+        if params.get("Rules") is not None:
+            self.Rules = []
+            for item in params.get("Rules"):
+                obj = L7RuleEntry()
+                obj._deserialize(item)
+                self.Rules.append(obj)
+
+
+class CreateNewL7RulesResponse(AbstractModel):
+    """CreateNewL7Rules返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Success: 成功码
+        :type Success: :class:`tencentcloud.dayu.v20180709.models.SuccessCode`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Success = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Success") is not None:
+            self.Success = SuccessCode()
+            self.Success._deserialize(params.get("Success"))
+        self.RequestId = params.get("RequestId")
+
+
 class CreateUnblockIpRequest(AbstractModel):
     """CreateUnblockIp请求参数结构体
 
@@ -2001,6 +2115,104 @@ class DeleteL7RulesRequest(AbstractModel):
 
 class DeleteL7RulesResponse(AbstractModel):
     """DeleteL7Rules返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Success: 成功码
+        :type Success: :class:`tencentcloud.dayu.v20180709.models.SuccessCode`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Success = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Success") is not None:
+            self.Success = SuccessCode()
+            self.Success._deserialize(params.get("Success"))
+        self.RequestId = params.get("RequestId")
+
+
+class DeleteNewL4RulesRequest(AbstractModel):
+    """DeleteNewL4Rules请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Business: 大禹子产品代号（bgpip表示高防IP）
+        :type Business: str
+        :param Rule: 删除接口结构体
+        :type Rule: list of L4DelRule
+        """
+        self.Business = None
+        self.Rule = None
+
+
+    def _deserialize(self, params):
+        self.Business = params.get("Business")
+        if params.get("Rule") is not None:
+            self.Rule = []
+            for item in params.get("Rule"):
+                obj = L4DelRule()
+                obj._deserialize(item)
+                self.Rule.append(obj)
+
+
+class DeleteNewL4RulesResponse(AbstractModel):
+    """DeleteNewL4Rules返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Success: 成功码
+        :type Success: :class:`tencentcloud.dayu.v20180709.models.SuccessCode`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Success = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Success") is not None:
+            self.Success = SuccessCode()
+            self.Success._deserialize(params.get("Success"))
+        self.RequestId = params.get("RequestId")
+
+
+class DeleteNewL7RulesRequest(AbstractModel):
+    """DeleteNewL7Rules请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Business: 大禹子产品代号（bgpip表示高防IP)
+        :type Business: str
+        :param Rule: 删除规则列表
+        :type Rule: list of L4DelRule
+        """
+        self.Business = None
+        self.Rule = None
+
+
+    def _deserialize(self, params):
+        self.Business = params.get("Business")
+        if params.get("Rule") is not None:
+            self.Rule = []
+            for item in params.get("Rule"):
+                obj = L4DelRule()
+                obj._deserialize(item)
+                self.Rule.append(obj)
+
+
+class DeleteNewL7RulesResponse(AbstractModel):
+    """DeleteNewL7Rules返回参数结构体
 
     """
 
@@ -4530,6 +4742,180 @@ class DescribeL7HealthConfigResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeNewL4RulesErrHealthRequest(AbstractModel):
+    """DescribeNewL4RulesErrHealth请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Business: 大禹子产品代号（bgpip表示高防IP）
+        :type Business: str
+        :param RuleIdList: 规则ID列表
+        :type RuleIdList: list of str
+        """
+        self.Business = None
+        self.RuleIdList = None
+
+
+    def _deserialize(self, params):
+        self.Business = params.get("Business")
+        self.RuleIdList = params.get("RuleIdList")
+
+
+class DescribeNewL4RulesErrHealthResponse(AbstractModel):
+    """DescribeNewL4RulesErrHealth返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Total: 异常规则的总数
+        :type Total: int
+        :param ErrHealths: 异常规则列表，返回值说明: Key值为规则ID，Value值为异常IP，多个IP用","分割
+        :type ErrHealths: list of KeyValue
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Total = None
+        self.ErrHealths = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Total = params.get("Total")
+        if params.get("ErrHealths") is not None:
+            self.ErrHealths = []
+            for item in params.get("ErrHealths"):
+                obj = KeyValue()
+                obj._deserialize(item)
+                self.ErrHealths.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeNewL4RulesRequest(AbstractModel):
+    """DescribeNewL4Rules请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Business: 大禹子产品代号（bgpip表示高防IP）
+        :type Business: str
+        :param Ip: 指定IP查询
+        :type Ip: str
+        :param VirtualPort: 指定高防IP端口查询
+        :type VirtualPort: int
+        :param Limit: 一页条数，填0表示不分页
+        :type Limit: int
+        :param Offset: 页起始偏移，取值为(页码-1)*一页条数
+        :type Offset: int
+        """
+        self.Business = None
+        self.Ip = None
+        self.VirtualPort = None
+        self.Limit = None
+        self.Offset = None
+
+
+    def _deserialize(self, params):
+        self.Business = params.get("Business")
+        self.Ip = params.get("Ip")
+        self.VirtualPort = params.get("VirtualPort")
+        self.Limit = params.get("Limit")
+        self.Offset = params.get("Offset")
+
+
+class DescribeNewL4RulesResponse(AbstractModel):
+    """DescribeNewL4Rules返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Rules: 转发规则列表
+        :type Rules: list of NewL4RuleEntry
+        :param Total: 总规则数
+        :type Total: int
+        :param Healths: 四层健康检查配置列表
+        :type Healths: list of L4RuleHealth
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Rules = None
+        self.Total = None
+        self.Healths = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Rules") is not None:
+            self.Rules = []
+            for item in params.get("Rules"):
+                obj = NewL4RuleEntry()
+                obj._deserialize(item)
+                self.Rules.append(obj)
+        self.Total = params.get("Total")
+        if params.get("Healths") is not None:
+            self.Healths = []
+            for item in params.get("Healths"):
+                obj = L4RuleHealth()
+                obj._deserialize(item)
+                self.Healths.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeNewL7RulesErrHealthRequest(AbstractModel):
+    """DescribeNewL7RulesErrHealth请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Business: 大禹子产品代号（bgpip表示高防IP)
+        :type Business: str
+        :param RuleIdList: 规则Id列表
+        :type RuleIdList: list of str
+        """
+        self.Business = None
+        self.RuleIdList = None
+
+
+    def _deserialize(self, params):
+        self.Business = params.get("Business")
+        self.RuleIdList = params.get("RuleIdList")
+
+
+class DescribeNewL7RulesErrHealthResponse(AbstractModel):
+    """DescribeNewL7RulesErrHealth返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Total: 异常规则的总数
+        :type Total: int
+        :param ErrHealths: 异常规则列表，返回值说明: Key值为规则ID，Value值为异常IP及错误信息，多个IP用","分割
+        :type ErrHealths: list of KeyValue
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Total = None
+        self.ErrHealths = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Total = params.get("Total")
+        if params.get("ErrHealths") is not None:
+            self.ErrHealths = []
+            for item in params.get("ErrHealths"):
+                obj = KeyValue()
+                obj._deserialize(item)
+                self.ErrHealths.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class DescribePackIndexRequest(AbstractModel):
     """DescribePackIndex请求参数结构体
 
@@ -5335,6 +5721,86 @@ class DescribleL7RulesResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribleNewL7RulesRequest(AbstractModel):
+    """DescribleNewL7Rules请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Business: 大禹子产品代号（bgpip表示高防IP）
+        :type Business: str
+        :param Limit: 一页条数，填0表示不分页
+        :type Limit: int
+        :param Offset: 页起始偏移，取值为(页码-1)*一页条数
+        :type Offset: int
+        :param Domain: 域名搜索，选填，当需要搜索域名请填写
+        :type Domain: str
+        :param ProtocolList: 转发协议搜索，选填，取值[http, https, http/https]
+        :type ProtocolList: list of str
+        :param StatusList: 状态搜索，选填，取值[0(规则配置成功)，1(规则配置生效中)，2(规则配置失败)，3(规则删除生效中)，5(规则删除失败)，6(规则等待配置)，7(规则等待删除)，8(规则待配置证书)]
+        :type StatusList: list of int non-negative
+        :param Ip: IP搜索，选填，当需要搜索IP请填写
+        :type Ip: str
+        """
+        self.Business = None
+        self.Limit = None
+        self.Offset = None
+        self.Domain = None
+        self.ProtocolList = None
+        self.StatusList = None
+        self.Ip = None
+
+
+    def _deserialize(self, params):
+        self.Business = params.get("Business")
+        self.Limit = params.get("Limit")
+        self.Offset = params.get("Offset")
+        self.Domain = params.get("Domain")
+        self.ProtocolList = params.get("ProtocolList")
+        self.StatusList = params.get("StatusList")
+        self.Ip = params.get("Ip")
+
+
+class DescribleNewL7RulesResponse(AbstractModel):
+    """DescribleNewL7Rules返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Rules: 转发规则列表
+        :type Rules: list of NewL7RuleEntry
+        :param Total: 总规则数
+        :type Total: int
+        :param Healths: 健康检查配置列表
+        :type Healths: list of L7RuleHealth
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Rules = None
+        self.Total = None
+        self.Healths = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Rules") is not None:
+            self.Rules = []
+            for item in params.get("Rules"):
+                obj = NewL7RuleEntry()
+                obj._deserialize(item)
+                self.Rules.append(obj)
+        self.Total = params.get("Total")
+        if params.get("Healths") is not None:
+            self.Healths = []
+            for item in params.get("Healths"):
+                obj = L7RuleHealth()
+                obj._deserialize(item)
+                self.Healths.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class DescribleRegionCountRequest(AbstractModel):
     """DescribleRegionCount请求参数结构体
 
@@ -5506,6 +5972,31 @@ class KeyValueRecord(AbstractModel):
                 obj = KeyValue()
                 obj._deserialize(item)
                 self.Record.append(obj)
+
+
+class L4DelRule(AbstractModel):
+    """删除l4规则接口
+
+    """
+
+    def __init__(self):
+        """
+        :param Id: 资源Id
+        :type Id: str
+        :param Ip: 资源IP
+        :type Ip: str
+        :param RuleIdList: 规则Id
+        :type RuleIdList: list of str
+        """
+        self.Id = None
+        self.Ip = None
+        self.RuleIdList = None
+
+
+    def _deserialize(self, params):
+        self.Id = params.get("Id")
+        self.Ip = params.get("Ip")
+        self.RuleIdList = params.get("RuleIdList")
 
 
 class L4HealthConfig(AbstractModel):
@@ -7611,6 +8102,194 @@ class ModifyResourceRenewFlagResponse(AbstractModel):
             self.Success = SuccessCode()
             self.Success._deserialize(params.get("Success"))
         self.RequestId = params.get("RequestId")
+
+
+class NewL4RuleEntry(AbstractModel):
+    """四层规则结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Protocol: 转发协议，取值[TCP, UDP]
+        :type Protocol: str
+        :param VirtualPort: 转发端口
+        :type VirtualPort: int
+        :param SourcePort: 源站端口
+        :type SourcePort: int
+        :param KeepTime: 会话保持时间，单位秒
+        :type KeepTime: int
+        :param SourceList: 回源列表
+        :type SourceList: list of L4RuleSource
+        :param LbType: 负载均衡方式，取值[1(加权轮询)，2(源IP hash)]
+        :type LbType: int
+        :param KeepEnable: 会话保持开关，取值[0(会话保持关闭)，1(会话保持开启)]；
+        :type KeepEnable: int
+        :param SourceType: 回源方式，取值[1(域名回源)，2(IP回源)]
+        :type SourceType: int
+        :param RuleId: 规则ID
+        :type RuleId: str
+        :param RuleName: 规则描述
+        :type RuleName: str
+        :param RemoveSwitch: 移除水印状态，取值[0(关闭)，1(开启)]
+        :type RemoveSwitch: int
+        :param ModifyTime: 规则修改时间
+        :type ModifyTime: str
+        :param Region: 对应地区信息
+        :type Region: int
+        :param Ip: 绑定资源IP信息
+        :type Ip: str
+        :param Id: 绑定资源Id信息
+        :type Id: str
+        """
+        self.Protocol = None
+        self.VirtualPort = None
+        self.SourcePort = None
+        self.KeepTime = None
+        self.SourceList = None
+        self.LbType = None
+        self.KeepEnable = None
+        self.SourceType = None
+        self.RuleId = None
+        self.RuleName = None
+        self.RemoveSwitch = None
+        self.ModifyTime = None
+        self.Region = None
+        self.Ip = None
+        self.Id = None
+
+
+    def _deserialize(self, params):
+        self.Protocol = params.get("Protocol")
+        self.VirtualPort = params.get("VirtualPort")
+        self.SourcePort = params.get("SourcePort")
+        self.KeepTime = params.get("KeepTime")
+        if params.get("SourceList") is not None:
+            self.SourceList = []
+            for item in params.get("SourceList"):
+                obj = L4RuleSource()
+                obj._deserialize(item)
+                self.SourceList.append(obj)
+        self.LbType = params.get("LbType")
+        self.KeepEnable = params.get("KeepEnable")
+        self.SourceType = params.get("SourceType")
+        self.RuleId = params.get("RuleId")
+        self.RuleName = params.get("RuleName")
+        self.RemoveSwitch = params.get("RemoveSwitch")
+        self.ModifyTime = params.get("ModifyTime")
+        self.Region = params.get("Region")
+        self.Ip = params.get("Ip")
+        self.Id = params.get("Id")
+
+
+class NewL7RuleEntry(AbstractModel):
+    """L7规则
+
+    """
+
+    def __init__(self):
+        """
+        :param Protocol: 转发协议，取值[http, https]
+        :type Protocol: str
+        :param Domain: 转发域名
+        :type Domain: str
+        :param SourceType: 回源方式，取值[1(域名回源)，2(IP回源)]
+        :type SourceType: int
+        :param KeepTime: 会话保持时间，单位秒
+        :type KeepTime: int
+        :param SourceList: 回源列表
+        :type SourceList: list of L4RuleSource
+        :param LbType: 负载均衡方式，取值[1(加权轮询)]
+        :type LbType: int
+        :param KeepEnable: 会话保持开关，取值[0(会话保持关闭)，1(会话保持开启)]
+        :type KeepEnable: int
+        :param RuleId: 规则ID，当添加新规则时可以不用填写此字段；当修改或者删除规则时需要填写此字段；
+        :type RuleId: str
+        :param CertType: 证书来源，当转发协议为https时必须填，取值[2(腾讯云托管证书)]，当转发协议为http时也可以填0
+        :type CertType: int
+        :param SSLId: 当证书来源为腾讯云托管证书时，此字段必须填写托管证书ID
+        :type SSLId: str
+        :param Cert: 当证书来源为自有证书时，此字段必须填写证书内容；(因已不再支持自有证书，此字段已弃用，请不用填写此字段)
+        :type Cert: str
+        :param PrivateKey: 当证书来源为自有证书时，此字段必须填写证书密钥；(因已不再支持自有证书，此字段已弃用，请不用填写此字段)
+        :type PrivateKey: str
+        :param RuleName: 规则描述
+        :type RuleName: str
+        :param Status: 规则状态，取值[0(规则配置成功)，1(规则配置生效中)，2(规则配置失败)，3(规则删除生效中)，5(规则删除失败)，6(规则等待配置)，7(规则等待删除)，8(规则待配置证书)]
+        :type Status: int
+        :param CCStatus: cc防护状态，取值[0(关闭), 1(开启)]
+        :type CCStatus: int
+        :param CCEnable: HTTPS协议的CC防护状态，取值[0(关闭), 1(开启)]
+        :type CCEnable: int
+        :param CCThreshold: HTTPS协议的CC防护阈值
+        :type CCThreshold: int
+        :param CCLevel: HTTPS协议的CC防护等级
+        :type CCLevel: str
+        :param Region: 区域码
+        :type Region: int
+        :param Id: 资源Id
+        :type Id: str
+        :param Ip: 资源Ip
+        :type Ip: str
+        :param ModifyTime: 修改时间
+        :type ModifyTime: str
+        :param HttpsToHttpEnable: 是否开启Https协议使用Http回源，取值[0(关闭), 1(开启)]，不填写默认是关闭
+        :type HttpsToHttpEnable: int
+        """
+        self.Protocol = None
+        self.Domain = None
+        self.SourceType = None
+        self.KeepTime = None
+        self.SourceList = None
+        self.LbType = None
+        self.KeepEnable = None
+        self.RuleId = None
+        self.CertType = None
+        self.SSLId = None
+        self.Cert = None
+        self.PrivateKey = None
+        self.RuleName = None
+        self.Status = None
+        self.CCStatus = None
+        self.CCEnable = None
+        self.CCThreshold = None
+        self.CCLevel = None
+        self.Region = None
+        self.Id = None
+        self.Ip = None
+        self.ModifyTime = None
+        self.HttpsToHttpEnable = None
+
+
+    def _deserialize(self, params):
+        self.Protocol = params.get("Protocol")
+        self.Domain = params.get("Domain")
+        self.SourceType = params.get("SourceType")
+        self.KeepTime = params.get("KeepTime")
+        if params.get("SourceList") is not None:
+            self.SourceList = []
+            for item in params.get("SourceList"):
+                obj = L4RuleSource()
+                obj._deserialize(item)
+                self.SourceList.append(obj)
+        self.LbType = params.get("LbType")
+        self.KeepEnable = params.get("KeepEnable")
+        self.RuleId = params.get("RuleId")
+        self.CertType = params.get("CertType")
+        self.SSLId = params.get("SSLId")
+        self.Cert = params.get("Cert")
+        self.PrivateKey = params.get("PrivateKey")
+        self.RuleName = params.get("RuleName")
+        self.Status = params.get("Status")
+        self.CCStatus = params.get("CCStatus")
+        self.CCEnable = params.get("CCEnable")
+        self.CCThreshold = params.get("CCThreshold")
+        self.CCLevel = params.get("CCLevel")
+        self.Region = params.get("Region")
+        self.Id = params.get("Id")
+        self.Ip = params.get("Ip")
+        self.ModifyTime = params.get("ModifyTime")
+        self.HttpsToHttpEnable = params.get("HttpsToHttpEnable")
 
 
 class OrderBy(AbstractModel):

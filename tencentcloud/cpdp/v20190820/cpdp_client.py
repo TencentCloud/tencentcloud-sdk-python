@@ -929,34 +929,6 @@ class CpdpClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def QueryInvoiceForManagement(self, request):
-        """智慧零售-查询管理端发票
-
-        :param request: Request instance for QueryInvoiceForManagement.
-        :type request: :class:`tencentcloud.cpdp.v20190820.models.QueryInvoiceForManagementRequest`
-        :rtype: :class:`tencentcloud.cpdp.v20190820.models.QueryInvoiceForManagementResponse`
-
-        """
-        try:
-            params = request._serialize()
-            body = self.call("QueryInvoiceForManagement", params)
-            response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.QueryInvoiceForManagementResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(e.message, e.message)
-
-
     def QueryMemberBind(self, request):
         """会员绑定信息查询。查询标志为“单个会员”的情况下，返回该会员的有效的绑定账户信息。
         查询标志为“全部会员”的情况下，返回市场下的全部的有效的绑定账户信息。查询标志为“单个会员的证件信息”的情况下，返回市场下的指定的会员的留存在电商见证宝系统的证件信息。
@@ -1028,34 +1000,6 @@ class CpdpClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.QueryMerchantBalanceResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(e.message, e.message)
-
-
-    def QueryMerchantInfoForManagement(self, request):
-        """智慧零售-查询管理端商户
-
-        :param request: Request instance for QueryMerchantInfoForManagement.
-        :type request: :class:`tencentcloud.cpdp.v20190820.models.QueryMerchantInfoForManagementRequest`
-        :rtype: :class:`tencentcloud.cpdp.v20190820.models.QueryMerchantInfoForManagementResponse`
-
-        """
-        try:
-            params = request._serialize()
-            body = self.call("QueryMerchantInfoForManagement", params)
-            response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.QueryMerchantInfoForManagementResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

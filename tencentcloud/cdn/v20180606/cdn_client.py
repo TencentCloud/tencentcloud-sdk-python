@@ -342,6 +342,34 @@ class CdnClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeImageConfig(self, request):
+        """获取域名图片优化的当前配置，支持Webp、TPG、Guetzli
+
+        :param request: Request instance for DescribeImageConfig.
+        :type request: :class:`tencentcloud.cdn.v20180606.models.DescribeImageConfigRequest`
+        :rtype: :class:`tencentcloud.cdn.v20180606.models.DescribeImageConfigResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeImageConfig", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeImageConfigResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeIpStatus(self, request):
         """DescribeIpStatus 用于查询域名所在加速平台的边缘节点、回源节点明细
         注意事项：接口尚未全量开放，未在内测名单中的账号不支持调用
@@ -1142,6 +1170,34 @@ class CdnClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.UpdateDomainConfigResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def UpdateImageConfig(self, request):
+        """更新控制台图片优化的相关配置，支持Webp、TPG、Guetzli
+
+        :param request: Request instance for UpdateImageConfig.
+        :type request: :class:`tencentcloud.cdn.v20180606.models.UpdateImageConfigRequest`
+        :rtype: :class:`tencentcloud.cdn.v20180606.models.UpdateImageConfigResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("UpdateImageConfig", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.UpdateImageConfigResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

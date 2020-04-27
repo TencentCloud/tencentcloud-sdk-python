@@ -109,6 +109,34 @@ class GsClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def EnterQueue(self, request):
+        """进入排队锁定机器
+
+        :param request: Request instance for EnterQueue.
+        :type request: :class:`tencentcloud.gs.v20191118.models.EnterQueueRequest`
+        :rtype: :class:`tencentcloud.gs.v20191118.models.EnterQueueResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("EnterQueue", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.EnterQueueResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def ModifyWorkers(self, request):
         """修改机器信息
 
@@ -123,6 +151,34 @@ class GsClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyWorkersResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def QuitQueue(self, request):
+        """退出排队
+
+        :param request: Request instance for QuitQueue.
+        :type request: :class:`tencentcloud.gs.v20191118.models.QuitQueueRequest`
+        :rtype: :class:`tencentcloud.gs.v20191118.models.QuitQueueResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("QuitQueue", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.QuitQueueResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

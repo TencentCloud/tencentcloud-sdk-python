@@ -4963,6 +4963,13 @@ class CreateImageSpriteTemplateRequest(AbstractModel):
         :type ColumnCount: int
         :param Name: 雪碧图模板名称，长度限制：64 个字符。
         :type Name: str
+        :param Comment: 模板描述信息，长度限制：256 个字符。
+        :type Comment: str
+        :param FillType: 填充方式，当视频流配置宽高参数与原始视频的宽高比不一致时，对转码的处理方式，即为“填充”。可选填充方式：
+<li> stretch：拉伸，对每一帧进行拉伸，填满整个画面，可能导致转码后的视频被“压扁“或者“拉长“；</li>
+<li>black：留黑，保持视频宽高比不变，边缘剩余部分使用黑色填充。</li>
+默认值：black 。
+        :type FillType: str
         :param Width: 雪碧图中小图的宽度（或长边）的最大值，取值范围：0 和 [128, 4096]，单位：px。
 <li>当 Width、Height 均为 0，则分辨率同源；</li>
 <li>当 Width 为 0，Height 非 0，则 Width 按比例缩放；</li>
@@ -4984,22 +4991,18 @@ class CreateImageSpriteTemplateRequest(AbstractModel):
         :type ResolutionAdaptive: str
         :param SubAppId: 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
         :type SubAppId: int
-        :param FillType: 填充方式，当视频流配置宽高参数与原始视频的宽高比不一致时，对转码的处理方式，即为“填充”。可选填充方式：
-<li> stretch：拉伸，对每一帧进行拉伸，填满整个画面，可能导致转码后的视频被“压扁“或者“拉长“；</li>
-<li>black：留黑，保持视频宽高比不变，边缘剩余部分使用黑色填充。</li>
-默认值：black 。
-        :type FillType: str
         """
         self.SampleType = None
         self.SampleInterval = None
         self.RowCount = None
         self.ColumnCount = None
         self.Name = None
+        self.Comment = None
+        self.FillType = None
         self.Width = None
         self.Height = None
         self.ResolutionAdaptive = None
         self.SubAppId = None
-        self.FillType = None
 
 
     def _deserialize(self, params):
@@ -5008,11 +5011,12 @@ class CreateImageSpriteTemplateRequest(AbstractModel):
         self.RowCount = params.get("RowCount")
         self.ColumnCount = params.get("ColumnCount")
         self.Name = params.get("Name")
+        self.Comment = params.get("Comment")
+        self.FillType = params.get("FillType")
         self.Width = params.get("Width")
         self.Height = params.get("Height")
         self.ResolutionAdaptive = params.get("ResolutionAdaptive")
         self.SubAppId = params.get("SubAppId")
-        self.FillType = params.get("FillType")
 
 
 class CreateImageSpriteTemplateResponse(AbstractModel):
@@ -5120,6 +5124,8 @@ class CreateProcedureTemplateRequest(AbstractModel):
         """
         :param Name: 任务流名字（支持中文，不超过20个字）。
         :type Name: str
+        :param Comment: 模板描述信息，长度限制：256 个字符。
+        :type Comment: str
         :param MediaProcessTask: 视频处理类型任务参数。
         :type MediaProcessTask: :class:`tencentcloud.vod.v20180717.models.MediaProcessTaskInput`
         :param AiContentReviewTask: AI 智能内容审核类型任务参数。
@@ -5132,6 +5138,7 @@ class CreateProcedureTemplateRequest(AbstractModel):
         :type SubAppId: int
         """
         self.Name = None
+        self.Comment = None
         self.MediaProcessTask = None
         self.AiContentReviewTask = None
         self.AiAnalysisTask = None
@@ -5141,6 +5148,7 @@ class CreateProcedureTemplateRequest(AbstractModel):
 
     def _deserialize(self, params):
         self.Name = params.get("Name")
+        self.Comment = params.get("Comment")
         if params.get("MediaProcessTask") is not None:
             self.MediaProcessTask = MediaProcessTaskInput()
             self.MediaProcessTask._deserialize(params.get("MediaProcessTask"))
@@ -5404,6 +5412,8 @@ class CreateSuperPlayerConfigRequest(AbstractModel):
         """
         :param Name: 播放器配置名称，长度限制：64 个字符。只允许出现 [0-9a-zA-Z] 及 _- 字符（如 test_ABC-123），同一个用户该名称唯一。
         :type Name: str
+        :param Comment: 模板描述信息，长度限制：256 个字符。
+        :type Comment: str
         :param DrmSwitch: 播放 DRM 保护的自适应码流开关：
 <li>ON：开启，表示仅播放 DRM  保护的自适应码流输出；</li>
 <li>OFF：关闭，表示播放未加密的自适应码流输出。</li>
@@ -5428,6 +5438,7 @@ class CreateSuperPlayerConfigRequest(AbstractModel):
         :type SubAppId: int
         """
         self.Name = None
+        self.Comment = None
         self.DrmSwitch = None
         self.AdaptiveDynamicStreamingDefinition = None
         self.DrmStreamingsInfo = None
@@ -5438,6 +5449,7 @@ class CreateSuperPlayerConfigRequest(AbstractModel):
 
     def _deserialize(self, params):
         self.Name = params.get("Name")
+        self.Comment = params.get("Comment")
         self.DrmSwitch = params.get("DrmSwitch")
         self.AdaptiveDynamicStreamingDefinition = params.get("AdaptiveDynamicStreamingDefinition")
         if params.get("DrmStreamingsInfo") is not None:
@@ -9538,6 +9550,11 @@ class MediaBasicInfo(AbstractModel):
         :type TagSet: list of str
         :param Vid: 直播录制文件的唯一标识
         :type Vid: str
+        :param Category: 文件类型：
+<li>Video: 视频文件</li>
+<li>Audio: 音频文件</li>
+<li>Image: 图片文件</li>
+        :type Category: str
         """
         self.Name = None
         self.Description = None
@@ -9554,6 +9571,7 @@ class MediaBasicInfo(AbstractModel):
         self.StorageRegion = None
         self.TagSet = None
         self.Vid = None
+        self.Category = None
 
 
     def _deserialize(self, params):
@@ -9574,6 +9592,7 @@ class MediaBasicInfo(AbstractModel):
         self.StorageRegion = params.get("StorageRegion")
         self.TagSet = params.get("TagSet")
         self.Vid = params.get("Vid")
+        self.Category = params.get("Category")
 
 
 class MediaClassInfo(AbstractModel):
@@ -11550,13 +11569,15 @@ class ModifyImageSpriteTemplateRequest(AbstractModel):
         :type RowCount: int
         :param ColumnCount: 雪碧图中小图的列数。
         :type ColumnCount: int
-        :param SubAppId: 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
-        :type SubAppId: int
         :param FillType: 填充方式，当视频流配置宽高参数与原始视频的宽高比不一致时，对转码的处理方式，即为“填充”。可选填充方式：
 <li> stretch：拉伸，对每一帧进行拉伸，填满整个画面，可能导致转码后的视频被“压扁“或者“拉长“；</li>
 <li>black：留黑，保持视频宽高比不变，边缘剩余部分使用黑色填充。</li>
 默认值：black 。
         :type FillType: str
+        :param Comment: 模板描述信息，长度限制：256 个字符。
+        :type Comment: str
+        :param SubAppId: 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
+        :type SubAppId: int
         """
         self.Definition = None
         self.Name = None
@@ -11567,8 +11588,9 @@ class ModifyImageSpriteTemplateRequest(AbstractModel):
         self.SampleInterval = None
         self.RowCount = None
         self.ColumnCount = None
-        self.SubAppId = None
         self.FillType = None
+        self.Comment = None
+        self.SubAppId = None
 
 
     def _deserialize(self, params):
@@ -11581,8 +11603,9 @@ class ModifyImageSpriteTemplateRequest(AbstractModel):
         self.SampleInterval = params.get("SampleInterval")
         self.RowCount = params.get("RowCount")
         self.ColumnCount = params.get("ColumnCount")
-        self.SubAppId = params.get("SubAppId")
         self.FillType = params.get("FillType")
+        self.Comment = params.get("Comment")
+        self.SubAppId = params.get("SubAppId")
 
 
 class ModifyImageSpriteTemplateResponse(AbstractModel):
@@ -12061,6 +12084,8 @@ class ModifySuperPlayerConfigRequest(AbstractModel):
         :type ImageSpriteDefinition: int
         :param ResolutionNames: 播放器对不于不同分辨率的子流展示名字。
         :type ResolutionNames: list of ResolutionNameInfo
+        :param Comment: 模板描述信息，长度限制：256 个字符。
+        :type Comment: str
         :param SubAppId: 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
         :type SubAppId: int
         """
@@ -12070,6 +12095,7 @@ class ModifySuperPlayerConfigRequest(AbstractModel):
         self.DrmStreamingsInfo = None
         self.ImageSpriteDefinition = None
         self.ResolutionNames = None
+        self.Comment = None
         self.SubAppId = None
 
 
@@ -12087,6 +12113,7 @@ class ModifySuperPlayerConfigRequest(AbstractModel):
                 obj = ResolutionNameInfo()
                 obj._deserialize(item)
                 self.ResolutionNames.append(obj)
+        self.Comment = params.get("Comment")
         self.SubAppId = params.get("SubAppId")
 
 
@@ -13998,6 +14025,8 @@ class ResetProcedureTemplateRequest(AbstractModel):
         """
         :param Name: 任务流名字
         :type Name: str
+        :param Comment: 模板描述信息，长度限制：256 个字符。
+        :type Comment: str
         :param MediaProcessTask: 视频处理类型任务参数。
         :type MediaProcessTask: :class:`tencentcloud.vod.v20180717.models.MediaProcessTaskInput`
         :param AiContentReviewTask: AI 智能内容审核类型任务参数。
@@ -14010,6 +14039,7 @@ class ResetProcedureTemplateRequest(AbstractModel):
         :type SubAppId: int
         """
         self.Name = None
+        self.Comment = None
         self.MediaProcessTask = None
         self.AiContentReviewTask = None
         self.AiAnalysisTask = None
@@ -14019,6 +14049,7 @@ class ResetProcedureTemplateRequest(AbstractModel):
 
     def _deserialize(self, params):
         self.Name = params.get("Name")
+        self.Comment = params.get("Comment")
         if params.get("MediaProcessTask") is not None:
             self.MediaProcessTask = MediaProcessTaskInput()
             self.MediaProcessTask._deserialize(params.get("MediaProcessTask"))

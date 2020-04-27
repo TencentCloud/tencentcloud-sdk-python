@@ -1274,6 +1274,10 @@ class CreateLiveSnapshotTemplateRequest(AbstractModel):
         :type Height: int
         :param PornFlag: 是否开启鉴黄，0：不开启，1：开启。默认：0。
         :type PornFlag: int
+        :param CosPrefix: Cos Bucket文件夹前缀。
+        :type CosPrefix: str
+        :param CosFileName: Cos 文件名称。
+        :type CosFileName: str
         """
         self.TemplateName = None
         self.CosAppId = None
@@ -1284,6 +1288,8 @@ class CreateLiveSnapshotTemplateRequest(AbstractModel):
         self.Width = None
         self.Height = None
         self.PornFlag = None
+        self.CosPrefix = None
+        self.CosFileName = None
 
 
     def _deserialize(self, params):
@@ -1296,6 +1302,8 @@ class CreateLiveSnapshotTemplateRequest(AbstractModel):
         self.Width = params.get("Width")
         self.Height = params.get("Height")
         self.PornFlag = params.get("PornFlag")
+        self.CosPrefix = params.get("CosPrefix")
+        self.CosFileName = params.get("CosFileName")
 
 
 class CreateLiveSnapshotTemplateResponse(AbstractModel):
@@ -6032,6 +6040,10 @@ class ModifyLiveSnapshotTemplateRequest(AbstractModel):
         :type CosBucket: str
         :param CosRegion: Cos 地域。
         :type CosRegion: str
+        :param CosPrefix: Cos Bucket文件夹前缀。
+        :type CosPrefix: str
+        :param CosFileName: Cos 文件名称。
+        :type CosFileName: str
         """
         self.TemplateId = None
         self.TemplateName = None
@@ -6043,6 +6055,8 @@ class ModifyLiveSnapshotTemplateRequest(AbstractModel):
         self.CosAppId = None
         self.CosBucket = None
         self.CosRegion = None
+        self.CosPrefix = None
+        self.CosFileName = None
 
 
     def _deserialize(self, params):
@@ -6056,6 +6070,8 @@ class ModifyLiveSnapshotTemplateRequest(AbstractModel):
         self.CosAppId = params.get("CosAppId")
         self.CosBucket = params.get("CosBucket")
         self.CosRegion = params.get("CosRegion")
+        self.CosPrefix = params.get("CosPrefix")
+        self.CosFileName = params.get("CosFileName")
 
 
 class ModifyLiveSnapshotTemplateResponse(AbstractModel):
@@ -7064,6 +7080,12 @@ class SnapshotTemplateInfo(AbstractModel):
         :type CosRegion: str
         :param Description: 模板描述。
         :type Description: str
+        :param CosPrefix: Cos Bucket文件夹前缀。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CosPrefix: str
+        :param CosFileName: Cos 文件名称。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CosFileName: str
         """
         self.TemplateId = None
         self.TemplateName = None
@@ -7075,6 +7097,8 @@ class SnapshotTemplateInfo(AbstractModel):
         self.CosBucket = None
         self.CosRegion = None
         self.Description = None
+        self.CosPrefix = None
+        self.CosFileName = None
 
 
     def _deserialize(self, params):
@@ -7088,6 +7112,8 @@ class SnapshotTemplateInfo(AbstractModel):
         self.CosBucket = params.get("CosBucket")
         self.CosRegion = params.get("CosRegion")
         self.Description = params.get("Description")
+        self.CosPrefix = params.get("CosPrefix")
+        self.CosFileName = params.get("CosFileName")
 
 
 class StopLiveRecordRequest(AbstractModel):

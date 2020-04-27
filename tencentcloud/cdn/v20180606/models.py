@@ -1733,6 +1733,61 @@ class DescribeDomainsResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeImageConfigRequest(AbstractModel):
+    """DescribeImageConfig请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Domain: 域名
+        :type Domain: str
+        """
+        self.Domain = None
+
+
+    def _deserialize(self, params):
+        self.Domain = params.get("Domain")
+
+
+class DescribeImageConfigResponse(AbstractModel):
+    """DescribeImageConfig返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param WebpAdapter: WebpAdapter配置
+注意：此字段可能返回 null，表示取不到有效值。
+        :type WebpAdapter: :class:`tencentcloud.cdn.v20180606.models.WebpAdapter`
+        :param TpgAdapter: TpgAdapter配置
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TpgAdapter: :class:`tencentcloud.cdn.v20180606.models.TpgAdapter`
+        :param GuetzliAdapter: GuetzliAdapter配置
+注意：此字段可能返回 null，表示取不到有效值。
+        :type GuetzliAdapter: :class:`tencentcloud.cdn.v20180606.models.GuetzliAdapter`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.WebpAdapter = None
+        self.TpgAdapter = None
+        self.GuetzliAdapter = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("WebpAdapter") is not None:
+            self.WebpAdapter = WebpAdapter()
+            self.WebpAdapter._deserialize(params.get("WebpAdapter"))
+        if params.get("TpgAdapter") is not None:
+            self.TpgAdapter = TpgAdapter()
+            self.TpgAdapter._deserialize(params.get("TpgAdapter"))
+        if params.get("GuetzliAdapter") is not None:
+            self.GuetzliAdapter = GuetzliAdapter()
+            self.GuetzliAdapter._deserialize(params.get("GuetzliAdapter"))
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeIpStatusRequest(AbstractModel):
     """DescribeIpStatus请求参数结构体
 
@@ -5909,6 +5964,58 @@ global：全球加速
 
 class UpdateDomainConfigResponse(AbstractModel):
     """UpdateDomainConfig返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class UpdateImageConfigRequest(AbstractModel):
+    """UpdateImageConfig请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Domain: 域名
+        :type Domain: str
+        :param WebpAdapter: WebpAdapter配置项
+        :type WebpAdapter: :class:`tencentcloud.cdn.v20180606.models.WebpAdapter`
+        :param TpgAdapter: TpgAdapter配置项
+        :type TpgAdapter: :class:`tencentcloud.cdn.v20180606.models.TpgAdapter`
+        :param GuetzliAdapter: GuetzliAdapter配置项
+        :type GuetzliAdapter: :class:`tencentcloud.cdn.v20180606.models.GuetzliAdapter`
+        """
+        self.Domain = None
+        self.WebpAdapter = None
+        self.TpgAdapter = None
+        self.GuetzliAdapter = None
+
+
+    def _deserialize(self, params):
+        self.Domain = params.get("Domain")
+        if params.get("WebpAdapter") is not None:
+            self.WebpAdapter = WebpAdapter()
+            self.WebpAdapter._deserialize(params.get("WebpAdapter"))
+        if params.get("TpgAdapter") is not None:
+            self.TpgAdapter = TpgAdapter()
+            self.TpgAdapter._deserialize(params.get("TpgAdapter"))
+        if params.get("GuetzliAdapter") is not None:
+            self.GuetzliAdapter = GuetzliAdapter()
+            self.GuetzliAdapter._deserialize(params.get("GuetzliAdapter"))
+
+
+class UpdateImageConfigResponse(AbstractModel):
+    """UpdateImageConfig返回参数结构体
 
     """
 

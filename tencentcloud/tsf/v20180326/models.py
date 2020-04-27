@@ -886,6 +886,9 @@ class ContainerGroupDetail(AbstractModel):
         :param InstanceCount: 部署组实例个数
 注意：此字段可能返回 null，表示取不到有效值。
         :type InstanceCount: int
+        :param UpdatedTime: 部署组更新时间戳
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UpdatedTime: int
         """
         self.GroupId = None
         self.GroupName = None
@@ -920,6 +923,7 @@ class ContainerGroupDetail(AbstractModel):
         self.SubnetId = None
         self.GroupResourceType = None
         self.InstanceCount = None
+        self.UpdatedTime = None
 
 
     def _deserialize(self, params):
@@ -966,6 +970,7 @@ class ContainerGroupDetail(AbstractModel):
         self.SubnetId = params.get("SubnetId")
         self.GroupResourceType = params.get("GroupResourceType")
         self.InstanceCount = params.get("InstanceCount")
+        self.UpdatedTime = params.get("UpdatedTime")
 
 
 class CosCredentials(AbstractModel):
@@ -5560,6 +5565,9 @@ class ServerlessGroup(AbstractModel):
         :param InstanceCount: 部署组实例数
 注意：此字段可能返回 null，表示取不到有效值。
         :type InstanceCount: int
+        :param ApplicationName: 应用名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ApplicationName: list of str
         """
         self.GroupId = None
         self.GroupName = None
@@ -5579,6 +5587,7 @@ class ServerlessGroup(AbstractModel):
         self.StartupParameters = None
         self.ApplicationId = None
         self.InstanceCount = None
+        self.ApplicationName = None
 
 
     def _deserialize(self, params):
@@ -5600,6 +5609,7 @@ class ServerlessGroup(AbstractModel):
         self.StartupParameters = params.get("StartupParameters")
         self.ApplicationId = params.get("ApplicationId")
         self.InstanceCount = params.get("InstanceCount")
+        self.ApplicationName = params.get("ApplicationName")
 
 
 class ServerlessGroupPage(AbstractModel):
@@ -6442,12 +6452,15 @@ class VmGroup(AbstractModel):
         :param MicroserviceType: 微服务类型
 注意：此字段可能返回 null，表示取不到有效值。
         :type MicroserviceType: str
-        :param ApplicationType: ApplicationType
+        :param ApplicationType: 应用类型
 注意：此字段可能返回 null，表示取不到有效值。
         :type ApplicationType: str
-        :param GroupResourceType: GroupResourceType
+        :param GroupResourceType: 部署组资源类型
 注意：此字段可能返回 null，表示取不到有效值。
         :type GroupResourceType: str
+        :param UpdatedTime: 部署组更新时间戳
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UpdatedTime: int
         """
         self.GroupId = None
         self.GroupName = None
@@ -6471,6 +6484,7 @@ class VmGroup(AbstractModel):
         self.MicroserviceType = None
         self.ApplicationType = None
         self.GroupResourceType = None
+        self.UpdatedTime = None
 
 
     def _deserialize(self, params):
@@ -6496,6 +6510,7 @@ class VmGroup(AbstractModel):
         self.MicroserviceType = params.get("MicroserviceType")
         self.ApplicationType = params.get("ApplicationType")
         self.GroupResourceType = params.get("GroupResourceType")
+        self.UpdatedTime = params.get("UpdatedTime")
 
 
 class VmGroupSimple(AbstractModel):

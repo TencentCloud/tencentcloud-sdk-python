@@ -536,6 +536,53 @@ class CreatePolicyResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class CreatePolicyVersionRequest(AbstractModel):
+    """CreatePolicyVersion请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param PolicyId: 策略ID
+        :type PolicyId: int
+        :param PolicyDocument: 策略文本信息
+        :type PolicyDocument: str
+        :param SetAsDefault: 是否设置为当前策略的版本
+        :type SetAsDefault: bool
+        """
+        self.PolicyId = None
+        self.PolicyDocument = None
+        self.SetAsDefault = None
+
+
+    def _deserialize(self, params):
+        self.PolicyId = params.get("PolicyId")
+        self.PolicyDocument = params.get("PolicyDocument")
+        self.SetAsDefault = params.get("SetAsDefault")
+
+
+class CreatePolicyVersionResponse(AbstractModel):
+    """CreatePolicyVersion返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param VersionId: 策略版本号
+注意：此字段可能返回 null，表示取不到有效值。
+        :type VersionId: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.VersionId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.VersionId = params.get("VersionId")
+        self.RequestId = params.get("RequestId")
+
+
 class CreateRoleRequest(AbstractModel):
     """CreateRole请求参数结构体
 
@@ -736,6 +783,44 @@ class DeletePolicyRequest(AbstractModel):
 
 class DeletePolicyResponse(AbstractModel):
     """DeletePolicy返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class DeletePolicyVersionRequest(AbstractModel):
+    """DeletePolicyVersion请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param PolicyId: 策略ID
+        :type PolicyId: int
+        :param VersionId: 策略版本号
+        :type VersionId: list of int non-negative
+        """
+        self.PolicyId = None
+        self.VersionId = None
+
+
+    def _deserialize(self, params):
+        self.PolicyId = params.get("PolicyId")
+        self.VersionId = params.get("VersionId")
+
+
+class DeletePolicyVersionResponse(AbstractModel):
+    """DeletePolicyVersion返回参数结构体
 
     """
 
@@ -1245,6 +1330,51 @@ class GetPolicyResponse(AbstractModel):
         self.PolicyDocument = params.get("PolicyDocument")
         self.PresetAlias = params.get("PresetAlias")
         self.IsServiceLinkedRolePolicy = params.get("IsServiceLinkedRolePolicy")
+        self.RequestId = params.get("RequestId")
+
+
+class GetPolicyVersionRequest(AbstractModel):
+    """GetPolicyVersion请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param PolicyId: 策略ID
+        :type PolicyId: int
+        :param VersionId: 策略版本号
+        :type VersionId: int
+        """
+        self.PolicyId = None
+        self.VersionId = None
+
+
+    def _deserialize(self, params):
+        self.PolicyId = params.get("PolicyId")
+        self.VersionId = params.get("VersionId")
+
+
+class GetPolicyVersionResponse(AbstractModel):
+    """GetPolicyVersion返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param PolicyVersion: 策略版本详情
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PolicyVersion: :class:`tencentcloud.cam.v20190116.models.PolicyVersionDetail`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.PolicyVersion = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("PolicyVersion") is not None:
+            self.PolicyVersion = PolicyVersionDetail()
+            self.PolicyVersion._deserialize(params.get("PolicyVersion"))
         self.RequestId = params.get("RequestId")
 
 
@@ -2043,6 +2173,50 @@ IsAttached: 当需要查询标记实体是否已经关联策略时不为null。0
         self.RequestId = params.get("RequestId")
 
 
+class ListPolicyVersionsRequest(AbstractModel):
+    """ListPolicyVersions请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param PolicyId: 策略ID
+        :type PolicyId: int
+        """
+        self.PolicyId = None
+
+
+    def _deserialize(self, params):
+        self.PolicyId = params.get("PolicyId")
+
+
+class ListPolicyVersionsResponse(AbstractModel):
+    """ListPolicyVersions返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Versions: 策略版本列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Versions: list of PolicyVersionItem
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Versions = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Versions") is not None:
+            self.Versions = []
+            for item in params.get("Versions"):
+                obj = PolicyVersionItem()
+                obj._deserialize(item)
+                self.Versions.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class ListSAMLProvidersRequest(AbstractModel):
     """ListSAMLProviders请求参数结构体
 
@@ -2164,6 +2338,67 @@ class ListUsersResponse(AbstractModel):
                 obj._deserialize(item)
                 self.Data.append(obj)
         self.RequestId = params.get("RequestId")
+
+
+class PolicyVersionDetail(AbstractModel):
+    """策略版本详情
+
+    """
+
+    def __init__(self):
+        """
+        :param VersionId: 策略版本号
+注意：此字段可能返回 null，表示取不到有效值。
+        :type VersionId: int
+        :param CreateDate: 策略版本创建时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CreateDate: str
+        :param IsDefaultVersion: 是否是正在生效的版本。0表示不是，1表示是
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IsDefaultVersion: int
+        :param Document: 策略语法文本
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Document: str
+        """
+        self.VersionId = None
+        self.CreateDate = None
+        self.IsDefaultVersion = None
+        self.Document = None
+
+
+    def _deserialize(self, params):
+        self.VersionId = params.get("VersionId")
+        self.CreateDate = params.get("CreateDate")
+        self.IsDefaultVersion = params.get("IsDefaultVersion")
+        self.Document = params.get("Document")
+
+
+class PolicyVersionItem(AbstractModel):
+    """策略版本列表元素结构
+
+    """
+
+    def __init__(self):
+        """
+        :param VersionId: 策略版本号
+注意：此字段可能返回 null，表示取不到有效值。
+        :type VersionId: int
+        :param CreateDate: 策略版本创建时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CreateDate: str
+        :param IsDefaultVersion: 是否是正在生效的版本。0表示不是，1表示是
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IsDefaultVersion: int
+        """
+        self.VersionId = None
+        self.CreateDate = None
+        self.IsDefaultVersion = None
+
+
+    def _deserialize(self, params):
+        self.VersionId = params.get("VersionId")
+        self.CreateDate = params.get("CreateDate")
+        self.IsDefaultVersion = params.get("IsDefaultVersion")
 
 
 class RemoveUserFromGroupRequest(AbstractModel):
@@ -2288,6 +2523,44 @@ class SAMLProviderInfo(AbstractModel):
         self.Description = params.get("Description")
         self.CreateTime = params.get("CreateTime")
         self.ModifyTime = params.get("ModifyTime")
+
+
+class SetDefaultPolicyVersionRequest(AbstractModel):
+    """SetDefaultPolicyVersion请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param PolicyId: 策略ID
+        :type PolicyId: int
+        :param VersionId: 策略版本号
+        :type VersionId: int
+        """
+        self.PolicyId = None
+        self.VersionId = None
+
+
+    def _deserialize(self, params):
+        self.PolicyId = params.get("PolicyId")
+        self.VersionId = params.get("VersionId")
+
+
+class SetDefaultPolicyVersionResponse(AbstractModel):
+    """SetDefaultPolicyVersion返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
 
 
 class StrategyInfo(AbstractModel):

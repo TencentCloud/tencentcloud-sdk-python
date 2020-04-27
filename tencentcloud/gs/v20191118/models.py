@@ -193,6 +193,60 @@ class DescribeWorkersResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class EnterQueueRequest(AbstractModel):
+    """EnterQueue请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param First: true：第一次请求排队 false：已在排队中，查询当前排名
+        :type First: bool
+        :param GameId: 游戏ID
+        :type GameId: str
+        :param UserId: 用户ID
+        :type UserId: str
+        :param SetNumber: 资源池编号
+        :type SetNumber: int
+        """
+        self.First = None
+        self.GameId = None
+        self.UserId = None
+        self.SetNumber = None
+
+
+    def _deserialize(self, params):
+        self.First = params.get("First")
+        self.GameId = params.get("GameId")
+        self.UserId = params.get("UserId")
+        self.SetNumber = params.get("SetNumber")
+
+
+class EnterQueueResponse(AbstractModel):
+    """EnterQueue返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Rank: 排名
+        :type Rank: int
+        :param LockSuccess: 机器锁定成功
+        :type LockSuccess: bool
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Rank = None
+        self.LockSuccess = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Rank = params.get("Rank")
+        self.LockSuccess = params.get("LockSuccess")
+        self.RequestId = params.get("RequestId")
+
+
 class ModifyWorkersRequest(AbstractModel):
     """ModifyWorkers请求参数结构体
 
@@ -216,6 +270,44 @@ class ModifyWorkersRequest(AbstractModel):
 
 class ModifyWorkersResponse(AbstractModel):
     """ModifyWorkers返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class QuitQueueRequest(AbstractModel):
+    """QuitQueue请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param UserId: 用户ID
+        :type UserId: str
+        :param SetNumber: 资源池编号
+        :type SetNumber: int
+        """
+        self.UserId = None
+        self.SetNumber = None
+
+
+    def _deserialize(self, params):
+        self.UserId = params.get("UserId")
+        self.SetNumber = params.get("SetNumber")
+
+
+class QuitQueueResponse(AbstractModel):
+    """QuitQueue返回参数结构体
 
     """
 

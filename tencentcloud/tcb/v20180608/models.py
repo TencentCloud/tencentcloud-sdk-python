@@ -453,6 +453,55 @@ class DescribeEndUsersResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeEnvFreeQuotaRequest(AbstractModel):
+    """DescribeEnvFreeQuota请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param EnvId: 环境ID
+        :type EnvId: str
+        :param ResourceTypes: 资源类型：可选值：CDN, COS, FLEXDB, HOSTING, SCF
+不传则返回全部资源指标
+        :type ResourceTypes: list of str
+        """
+        self.EnvId = None
+        self.ResourceTypes = None
+
+
+    def _deserialize(self, params):
+        self.EnvId = params.get("EnvId")
+        self.ResourceTypes = params.get("ResourceTypes")
+
+
+class DescribeEnvFreeQuotaResponse(AbstractModel):
+    """DescribeEnvFreeQuota返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param QuotaItems: 免费抵扣配额详情
+注意：此字段可能返回 null，表示取不到有效值。
+        :type QuotaItems: list of PostpayEnvQuota
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.QuotaItems = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("QuotaItems") is not None:
+            self.QuotaItems = []
+            for item in params.get("QuotaItems"):
+                obj = PostpayEnvQuota()
+                obj._deserialize(item)
+                self.QuotaItems.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeEnvLimitRequest(AbstractModel):
     """DescribeEnvLimit请求参数结构体
 
@@ -1012,6 +1061,41 @@ class ModifyEnvResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
+
+
+class PostpayEnvQuota(AbstractModel):
+    """按量付费免费配额信息
+
+    """
+
+    def __init__(self):
+        """
+        :param ResourceType: 资源类型
+        :type ResourceType: str
+        :param MetricName: 指标名
+        :type MetricName: str
+        :param Value: 配额值
+        :type Value: int
+        :param StartTime: 配额生效时间
+为空表示没有时间限制
+        :type StartTime: str
+        :param EndTime: 配额失效时间
+为空表示没有时间限制
+        :type EndTime: str
+        """
+        self.ResourceType = None
+        self.MetricName = None
+        self.Value = None
+        self.StartTime = None
+        self.EndTime = None
+
+
+    def _deserialize(self, params):
+        self.ResourceType = params.get("ResourceType")
+        self.MetricName = params.get("MetricName")
+        self.Value = params.get("Value")
+        self.StartTime = params.get("StartTime")
+        self.EndTime = params.get("EndTime")
 
 
 class ReinstateEnvRequest(AbstractModel):

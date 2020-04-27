@@ -277,6 +277,34 @@ class TcbClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeEnvFreeQuota(self, request):
+        """查询后付费免费配额信息
+
+        :param request: Request instance for DescribeEnvFreeQuota.
+        :type request: :class:`tencentcloud.tcb.v20180608.models.DescribeEnvFreeQuotaRequest`
+        :rtype: :class:`tencentcloud.tcb.v20180608.models.DescribeEnvFreeQuotaResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeEnvFreeQuota", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeEnvFreeQuotaResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeEnvLimit(self, request):
         """查询环境个数上限
 

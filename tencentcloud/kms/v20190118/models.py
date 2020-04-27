@@ -1454,6 +1454,8 @@ class KeyMetadata(AbstractModel):
         :param ValidTo: 在Origin为  EXTERNAL 时有效，表示密钥材料的有效日期， 0 表示不过期
 注意：此字段可能返回 null，表示取不到有效值。
         :type ValidTo: int
+        :param ResourceId: 资源ID，格式：creatorUin/$creatorUin/$keyId
+        :type ResourceId: str
         """
         self.KeyId = None
         self.Alias = None
@@ -1469,6 +1471,7 @@ class KeyMetadata(AbstractModel):
         self.DeletionDate = None
         self.Origin = None
         self.ValidTo = None
+        self.ResourceId = None
 
 
     def _deserialize(self, params):
@@ -1486,6 +1489,7 @@ class KeyMetadata(AbstractModel):
         self.DeletionDate = params.get("DeletionDate")
         self.Origin = params.get("Origin")
         self.ValidTo = params.get("ValidTo")
+        self.ResourceId = params.get("ResourceId")
 
 
 class ListAlgorithmsRequest(AbstractModel):
@@ -1872,6 +1876,8 @@ class WhiteboxKeyInfo(AbstractModel):
         :type EncryptKey: str
         :param DecryptKey: 白盒解密密钥，base64编码
         :type DecryptKey: str
+        :param ResourceId: 资源ID，格式：creatorUin/$creatorUin/$keyId
+        :type ResourceId: str
         """
         self.KeyId = None
         self.Alias = None
@@ -1883,6 +1889,7 @@ class WhiteboxKeyInfo(AbstractModel):
         self.Algorithm = None
         self.EncryptKey = None
         self.DecryptKey = None
+        self.ResourceId = None
 
 
     def _deserialize(self, params):
@@ -1896,3 +1903,4 @@ class WhiteboxKeyInfo(AbstractModel):
         self.Algorithm = params.get("Algorithm")
         self.EncryptKey = params.get("EncryptKey")
         self.DecryptKey = params.get("DecryptKey")
+        self.ResourceId = params.get("ResourceId")

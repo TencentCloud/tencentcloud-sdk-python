@@ -6170,8 +6170,10 @@ class RollbackDBName(AbstractModel):
     def __init__(self):
         """
         :param DatabaseName: 回档前的原数据库名
+注意：此字段可能返回 null，表示取不到有效值。
         :type DatabaseName: str
         :param NewDatabaseName: 回档后的新数据库名
+注意：此字段可能返回 null，表示取不到有效值。
         :type NewDatabaseName: str
         """
         self.DatabaseName = None
@@ -6191,14 +6193,17 @@ class RollbackInstancesInfo(AbstractModel):
     def __init__(self):
         """
         :param InstanceId: 云数据库实例ID
+注意：此字段可能返回 null，表示取不到有效值。
         :type InstanceId: str
         :param Strategy: 回档策略。可选值为：table、db、full；默认值为full。table - 急速回档模式，仅导入所选中表级别的备份和binlog，如有跨表操作，且关联表未被同时选中，将会导致回档失败，该模式下参数Databases必须为空；db - 快速模式，仅导入所选中库级别的备份和binlog，如有跨库操作，且关联库未被同时选中，将会导致回档失败；full - 普通回档模式，将导入整个实例的备份和binlog，速度较慢。
         :type Strategy: str
         :param RollbackTime: 数据库回档时间，时间格式为：yyyy-mm-dd hh:mm:ss
         :type RollbackTime: str
         :param Databases: 待回档的数据库信息，表示整库回档
+注意：此字段可能返回 null，表示取不到有效值。
         :type Databases: list of RollbackDBName
         :param Tables: 待回档的数据库表信息，表示按表回档
+注意：此字段可能返回 null，表示取不到有效值。
         :type Tables: list of RollbackTables
         """
         self.InstanceId = None
@@ -6234,8 +6239,10 @@ class RollbackTableName(AbstractModel):
     def __init__(self):
         """
         :param TableName: 回档前的原数据库表名
+注意：此字段可能返回 null，表示取不到有效值。
         :type TableName: str
         :param NewTableName: 回档后的新数据库表名
+注意：此字段可能返回 null，表示取不到有效值。
         :type NewTableName: str
         """
         self.TableName = None
@@ -6255,8 +6262,10 @@ class RollbackTables(AbstractModel):
     def __init__(self):
         """
         :param Database: 数据库名
+注意：此字段可能返回 null，表示取不到有效值。
         :type Database: str
         :param Table: 数据库表详情
+注意：此字段可能返回 null，表示取不到有效值。
         :type Table: list of RollbackTableName
         """
         self.Database = None

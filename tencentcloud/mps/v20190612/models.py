@@ -3364,6 +3364,8 @@ class CreateImageSpriteTemplateRequest(AbstractModel):
 <li>black：留黑，保持视频宽高比不变，边缘剩余部分使用黑色填充。</li>
 默认值：black 。
         :type FillType: str
+        :param Comment: 模板描述信息，长度限制：256 个字符。
+        :type Comment: str
         """
         self.SampleType = None
         self.SampleInterval = None
@@ -3374,6 +3376,7 @@ class CreateImageSpriteTemplateRequest(AbstractModel):
         self.Height = None
         self.ResolutionAdaptive = None
         self.FillType = None
+        self.Comment = None
 
 
     def _deserialize(self, params):
@@ -3386,6 +3389,7 @@ class CreateImageSpriteTemplateRequest(AbstractModel):
         self.Height = params.get("Height")
         self.ResolutionAdaptive = params.get("ResolutionAdaptive")
         self.FillType = params.get("FillType")
+        self.Comment = params.get("Comment")
 
 
 class CreateImageSpriteTemplateResponse(AbstractModel):
@@ -7957,6 +7961,8 @@ class ModifyImageSpriteTemplateRequest(AbstractModel):
 <li>black：留黑，保持视频宽高比不变，边缘剩余部分使用黑色填充。</li>
 默认值：black 。
         :type FillType: str
+        :param Comment: 模板描述信息，长度限制：256 个字符。
+        :type Comment: str
         """
         self.Definition = None
         self.Name = None
@@ -7968,6 +7974,7 @@ class ModifyImageSpriteTemplateRequest(AbstractModel):
         self.RowCount = None
         self.ColumnCount = None
         self.FillType = None
+        self.Comment = None
 
 
     def _deserialize(self, params):
@@ -7981,6 +7988,7 @@ class ModifyImageSpriteTemplateRequest(AbstractModel):
         self.RowCount = params.get("RowCount")
         self.ColumnCount = params.get("ColumnCount")
         self.FillType = params.get("FillType")
+        self.Comment = params.get("Comment")
 
 
 class ModifyImageSpriteTemplateResponse(AbstractModel):

@@ -249,6 +249,34 @@ class CamClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def CreatePolicyVersion(self, request):
+        """该接口（CreatePolicyVersion）用于新增策略版本，用户创建了一个策略版本之后可以方便的通过变更策略版本的方式来变更策略。
+
+        :param request: Request instance for CreatePolicyVersion.
+        :type request: :class:`tencentcloud.cam.v20190116.models.CreatePolicyVersionRequest`
+        :rtype: :class:`tencentcloud.cam.v20190116.models.CreatePolicyVersionResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("CreatePolicyVersion", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreatePolicyVersionResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def CreateRole(self, request):
         """本接口（CreateRole）用于创建角色。
 
@@ -375,6 +403,34 @@ class CamClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeletePolicyResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DeletePolicyVersion(self, request):
+        """本接口（DeletePolicyVersion）可用于删除一个策略的策略版本。
+
+        :param request: Request instance for DeletePolicyVersion.
+        :type request: :class:`tencentcloud.cam.v20190116.models.DeletePolicyVersionRequest`
+        :rtype: :class:`tencentcloud.cam.v20190116.models.DeletePolicyVersionResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DeletePolicyVersion", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DeletePolicyVersionResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -683,6 +739,34 @@ class CamClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.GetPolicyResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def GetPolicyVersion(self, request):
+        """该接口（GetPolicyVersion）用于查询策略版本详情
+
+        :param request: Request instance for GetPolicyVersion.
+        :type request: :class:`tencentcloud.cam.v20190116.models.GetPolicyVersionRequest`
+        :rtype: :class:`tencentcloud.cam.v20190116.models.GetPolicyVersionResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("GetPolicyVersion", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.GetPolicyVersionResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -1033,6 +1117,34 @@ class CamClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def ListPolicyVersions(self, request):
+        """该接口（ListPolicyVersions）用于获取策略版本列表
+
+        :param request: Request instance for ListPolicyVersions.
+        :type request: :class:`tencentcloud.cam.v20190116.models.ListPolicyVersionsRequest`
+        :rtype: :class:`tencentcloud.cam.v20190116.models.ListPolicyVersionsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ListPolicyVersions", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ListPolicyVersionsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def ListSAMLProviders(self, request):
         """查询SAML身份提供商列表
 
@@ -1131,6 +1243,34 @@ class CamClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.RemoveUserFromGroupResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def SetDefaultPolicyVersion(self, request):
+        """本接口（SetDefaultPolicyVersion）可用于设置生效的策略版本。
+
+        :param request: Request instance for SetDefaultPolicyVersion.
+        :type request: :class:`tencentcloud.cam.v20190116.models.SetDefaultPolicyVersionRequest`
+        :rtype: :class:`tencentcloud.cam.v20190116.models.SetDefaultPolicyVersionResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("SetDefaultPolicyVersion", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.SetDefaultPolicyVersionResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

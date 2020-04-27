@@ -445,6 +445,62 @@ class DayuClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def CreateNewL4Rules(self, request):
+        """添加L4转发规则
+
+        :param request: Request instance for CreateNewL4Rules.
+        :type request: :class:`tencentcloud.dayu.v20180709.models.CreateNewL4RulesRequest`
+        :rtype: :class:`tencentcloud.dayu.v20180709.models.CreateNewL4RulesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("CreateNewL4Rules", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateNewL4RulesResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def CreateNewL7Rules(self, request):
+        """添加7层转发规则
+
+        :param request: Request instance for CreateNewL7Rules.
+        :type request: :class:`tencentcloud.dayu.v20180709.models.CreateNewL7RulesRequest`
+        :rtype: :class:`tencentcloud.dayu.v20180709.models.CreateNewL7RulesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("CreateNewL7Rules", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateNewL7RulesResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def CreateUnblockIp(self, request):
         """IP解封操作
 
@@ -627,6 +683,62 @@ class DayuClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteL7RulesResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DeleteNewL4Rules(self, request):
+        """删除L4转发规则
+
+        :param request: Request instance for DeleteNewL4Rules.
+        :type request: :class:`tencentcloud.dayu.v20180709.models.DeleteNewL4RulesRequest`
+        :rtype: :class:`tencentcloud.dayu.v20180709.models.DeleteNewL4RulesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DeleteNewL4Rules", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DeleteNewL4RulesResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DeleteNewL7Rules(self, request):
+        """删除L7转发规则
+
+        :param request: Request instance for DeleteNewL7Rules.
+        :type request: :class:`tencentcloud.dayu.v20180709.models.DeleteNewL7RulesRequest`
+        :rtype: :class:`tencentcloud.dayu.v20180709.models.DeleteNewL7RulesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DeleteNewL7Rules", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DeleteNewL7RulesResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -1621,6 +1733,90 @@ class DayuClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeNewL4Rules(self, request):
+        """获取L4转发规则
+
+        :param request: Request instance for DescribeNewL4Rules.
+        :type request: :class:`tencentcloud.dayu.v20180709.models.DescribeNewL4RulesRequest`
+        :rtype: :class:`tencentcloud.dayu.v20180709.models.DescribeNewL4RulesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeNewL4Rules", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeNewL4RulesResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeNewL4RulesErrHealth(self, request):
+        """获取L4转发规则健康检查异常结果
+
+        :param request: Request instance for DescribeNewL4RulesErrHealth.
+        :type request: :class:`tencentcloud.dayu.v20180709.models.DescribeNewL4RulesErrHealthRequest`
+        :rtype: :class:`tencentcloud.dayu.v20180709.models.DescribeNewL4RulesErrHealthResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeNewL4RulesErrHealth", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeNewL4RulesErrHealthResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeNewL7RulesErrHealth(self, request):
+        """获取L7转发规则健康检查异常结果
+
+        :param request: Request instance for DescribeNewL7RulesErrHealth.
+        :type request: :class:`tencentcloud.dayu.v20180709.models.DescribeNewL7RulesErrHealthRequest`
+        :rtype: :class:`tencentcloud.dayu.v20180709.models.DescribeNewL7RulesErrHealthResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeNewL7RulesErrHealth", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeNewL7RulesErrHealthResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribePackIndex(self, request):
         """获取产品总览统计，支持高防包、高防IP、高防IP专业版；
 
@@ -1971,6 +2167,34 @@ class DayuClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribleL7RulesResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribleNewL7Rules(self, request):
+        """获取7层规则
+
+        :param request: Request instance for DescribleNewL7Rules.
+        :type request: :class:`tencentcloud.dayu.v20180709.models.DescribleNewL7RulesRequest`
+        :rtype: :class:`tencentcloud.dayu.v20180709.models.DescribleNewL7RulesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribleNewL7Rules", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribleNewL7RulesResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

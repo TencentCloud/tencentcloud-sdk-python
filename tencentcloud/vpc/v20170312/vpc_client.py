@@ -4419,6 +4419,36 @@ class VpcClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def ModifyAddressInternetChargeType(self, request):
+        """该接口用于调整具有带宽属性弹性公网IP的网络计费模式
+        * 支持BANDWIDTH_PREPAID_BY_MONTH和TRAFFIC_POSTPAID_BY_HOUR两种网络计费模式之间的切换。
+        * 每个弹性公网IP支持调整两次，次数超出则无法调整。
+
+        :param request: Request instance for ModifyAddressInternetChargeType.
+        :type request: :class:`tencentcloud.vpc.v20170312.models.ModifyAddressInternetChargeTypeRequest`
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.ModifyAddressInternetChargeTypeResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ModifyAddressInternetChargeType", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ModifyAddressInternetChargeTypeResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def ModifyAddressTemplateAttribute(self, request):
         """本接口（ModifyAddressTemplateAttribute）用于修改IP地址模板
 

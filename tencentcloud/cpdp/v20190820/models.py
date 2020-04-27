@@ -894,10 +894,10 @@ class BindAcctRequest(AbstractModel):
 BindType==2时必填
 <敏感信息>加密详见《商户端接口敏感信息加密说明》
         :type Mobile: str
-        :param CnapsBranchId: 超级网银行号和大小额行号
+        :param CnapsBranchId: 大小额行号，超级网银行号和大小额行号
 二选一
         :type CnapsBranchId: str
-        :param EiconBankBranchId: 超级网银行号和大小额行号
+        :param EiconBankBranchId: 超级网银行号，超级网银行号和大小额行号
 二选一
         :type EiconBankBranchId: str
         """
@@ -1984,7 +1984,7 @@ class CreateMerchantRequest(AbstractModel):
         :type TaxpayerName: str
         :param TaxpayerNum: 销方纳税人识别号
         :type TaxpayerNum: str
-        :param LegalPersonName: 注册企业法人代表名称
+        :param LegalPersonName: 注册企业法定代表人名称
         :type LegalPersonName: str
         :param ContactsName: 联系人
         :type ContactsName: str
@@ -2379,165 +2379,6 @@ class FileItem(AbstractModel):
         self.RandomPassword = params.get("RandomPassword")
         self.FilePath = params.get("FilePath")
         self.DrawCode = params.get("DrawCode")
-
-
-class InvoiceManagementList(AbstractModel):
-    """发票管理端列表
-
-    """
-
-    def __init__(self):
-        """
-        :param InvoiceId: 发票ID
-        :type InvoiceId: str
-        :param OrderId: 订单号
-        :type OrderId: str
-        :param SellerName: 销方名称
-        :type SellerName: str
-        :param OrderSn: 业务开票号
-        :type OrderSn: str
-        :param InvoicePlatformId: 开票平台ID
-        :type InvoicePlatformId: int
-        :param AppId: 腾讯云AppId
-        :type AppId: str
-        :param InvoiceSn: 开票号码
-注意：此字段可能返回 null，表示取不到有效值。
-        :type InvoiceSn: str
-        :param InvoiceCode: 开票代码
-注意：此字段可能返回 null，表示取不到有效值。
-        :type InvoiceCode: str
-        :param RedStatus: 红冲状态
-注意：此字段可能返回 null，表示取不到有效值。
-        :type RedStatus: int
-        :param NotifyTime: 开票通知时间
-注意：此字段可能返回 null，表示取不到有效值。
-        :type NotifyTime: str
-        :param AmountHasTax: 含税总金额
-        :type AmountHasTax: str
-        :param InvoiceType: 发票类型
-        :type InvoiceType: int
-        :param InvoiceStatus: 开票状态
-注意：此字段可能返回 null，表示取不到有效值。
-        :type InvoiceStatus: int
-        :param CreateTime: 创建时间
-        :type CreateTime: str
-        :param UpdateTime: 更新时间
-        :type UpdateTime: str
-        """
-        self.InvoiceId = None
-        self.OrderId = None
-        self.SellerName = None
-        self.OrderSn = None
-        self.InvoicePlatformId = None
-        self.AppId = None
-        self.InvoiceSn = None
-        self.InvoiceCode = None
-        self.RedStatus = None
-        self.NotifyTime = None
-        self.AmountHasTax = None
-        self.InvoiceType = None
-        self.InvoiceStatus = None
-        self.CreateTime = None
-        self.UpdateTime = None
-
-
-    def _deserialize(self, params):
-        self.InvoiceId = params.get("InvoiceId")
-        self.OrderId = params.get("OrderId")
-        self.SellerName = params.get("SellerName")
-        self.OrderSn = params.get("OrderSn")
-        self.InvoicePlatformId = params.get("InvoicePlatformId")
-        self.AppId = params.get("AppId")
-        self.InvoiceSn = params.get("InvoiceSn")
-        self.InvoiceCode = params.get("InvoiceCode")
-        self.RedStatus = params.get("RedStatus")
-        self.NotifyTime = params.get("NotifyTime")
-        self.AmountHasTax = params.get("AmountHasTax")
-        self.InvoiceType = params.get("InvoiceType")
-        self.InvoiceStatus = params.get("InvoiceStatus")
-        self.CreateTime = params.get("CreateTime")
-        self.UpdateTime = params.get("UpdateTime")
-
-
-class InvoiceManangementResult(AbstractModel):
-    """发票管理返回结果
-
-    """
-
-    def __init__(self):
-        """
-        :param Total: 总数。
-        :type Total: int
-        :param List: 发票列表。
-        :type List: list of InvoiceManagementList
-        """
-        self.Total = None
-        self.List = None
-
-
-    def _deserialize(self, params):
-        self.Total = params.get("Total")
-        if params.get("List") is not None:
-            self.List = []
-            for item in params.get("List"):
-                obj = InvoiceManagementList()
-                obj._deserialize(item)
-                self.List.append(obj)
-
-
-class MerchantManagementList(AbstractModel):
-    """商户查询管理端列表
-
-    """
-
-    def __init__(self):
-        """
-        :param TaxpayerName: 企业名称。
-        :type TaxpayerName: str
-        :param TaxpayerNum: 纳税人识别号(税号)	。
-        :type TaxpayerNum: str
-        :param SerialNo: 请求流水号。
-        :type SerialNo: str
-        :param InvoicePlatformId: 开票系统ID
-        :type InvoicePlatformId: int
-        """
-        self.TaxpayerName = None
-        self.TaxpayerNum = None
-        self.SerialNo = None
-        self.InvoicePlatformId = None
-
-
-    def _deserialize(self, params):
-        self.TaxpayerName = params.get("TaxpayerName")
-        self.TaxpayerNum = params.get("TaxpayerNum")
-        self.SerialNo = params.get("SerialNo")
-        self.InvoicePlatformId = params.get("InvoicePlatformId")
-
-
-class MerchantManagementResult(AbstractModel):
-    """商户管理端结果
-
-    """
-
-    def __init__(self):
-        """
-        :param Total: 总数。
-        :type Total: int
-        :param List: 商户列表。
-        :type List: list of MerchantManagementList
-        """
-        self.Total = None
-        self.List = None
-
-
-    def _deserialize(self, params):
-        self.Total = params.get("Total")
-        if params.get("List") is not None:
-            self.List = []
-            for item in params.get("List"):
-                obj = MerchantManagementList()
-                obj._deserialize(item)
-                self.List.append(obj)
 
 
 class ModifyMntMbrBindRelateAcctBankCodeRequest(AbstractModel):
@@ -3744,95 +3585,6 @@ class QueryExchangerateResult(AbstractModel):
                 self.Data.append(obj)
 
 
-class QueryInvoiceForManagementRequest(AbstractModel):
-    """QueryInvoiceForManagement请求参数结构体
-
-    """
-
-    def __init__(self):
-        """
-        :param InvoicePlatformId: 开票平台ID
-        :type InvoicePlatformId: int
-        :param InvoiceStatus: 开票状态
-        :type InvoiceStatus: int
-        :param RedInvoiceStatus: 红冲状态
-        :type RedInvoiceStatus: int
-        :param BeginTime: 开始时间
-        :type BeginTime: str
-        :param EndTime: 结束时间
-        :type EndTime: str
-        :param Offset: 页码
-        :type Offset: int
-        :param Limit: 页大小
-        :type Limit: int
-        :param OrderId: 订单号
-        :type OrderId: str
-        :param InvoiceId: 发票ID
-        :type InvoiceId: str
-        :param OrderSn: 业务开票号
-        :type OrderSn: str
-        :param InvoiceSn: 发票号码
-        :type InvoiceSn: str
-        :param InvoiceCode: 发票代码
-        :type InvoiceCode: str
-        :param Profile: 接入环境。沙箱环境填 sandbox。
-        :type Profile: str
-        """
-        self.InvoicePlatformId = None
-        self.InvoiceStatus = None
-        self.RedInvoiceStatus = None
-        self.BeginTime = None
-        self.EndTime = None
-        self.Offset = None
-        self.Limit = None
-        self.OrderId = None
-        self.InvoiceId = None
-        self.OrderSn = None
-        self.InvoiceSn = None
-        self.InvoiceCode = None
-        self.Profile = None
-
-
-    def _deserialize(self, params):
-        self.InvoicePlatformId = params.get("InvoicePlatformId")
-        self.InvoiceStatus = params.get("InvoiceStatus")
-        self.RedInvoiceStatus = params.get("RedInvoiceStatus")
-        self.BeginTime = params.get("BeginTime")
-        self.EndTime = params.get("EndTime")
-        self.Offset = params.get("Offset")
-        self.Limit = params.get("Limit")
-        self.OrderId = params.get("OrderId")
-        self.InvoiceId = params.get("InvoiceId")
-        self.OrderSn = params.get("OrderSn")
-        self.InvoiceSn = params.get("InvoiceSn")
-        self.InvoiceCode = params.get("InvoiceCode")
-        self.Profile = params.get("Profile")
-
-
-class QueryInvoiceForManagementResponse(AbstractModel):
-    """QueryInvoiceForManagement返回参数结构体
-
-    """
-
-    def __init__(self):
-        """
-        :param Result: 发票结果
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Result: :class:`tencentcloud.cpdp.v20190820.models.InvoiceManangementResult`
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
-        self.Result = None
-        self.RequestId = None
-
-
-    def _deserialize(self, params):
-        if params.get("Result") is not None:
-            self.Result = InvoiceManangementResult()
-            self.Result._deserialize(params.get("Result"))
-        self.RequestId = params.get("RequestId")
-
-
 class QueryInvoiceRequest(AbstractModel):
     """QueryInvoice请求参数结构体
 
@@ -4337,59 +4089,6 @@ class QueryMerchantBalanceResult(AbstractModel):
         if params.get("Data") is not None:
             self.Data = QueryMerchantBalanceData()
             self.Data._deserialize(params.get("Data"))
-
-
-class QueryMerchantInfoForManagementRequest(AbstractModel):
-    """QueryMerchantInfoForManagement请求参数结构体
-
-    """
-
-    def __init__(self):
-        """
-        :param InvoicePlatformId: 开票平台ID
-        :type InvoicePlatformId: int
-        :param Offset: 页码
-        :type Offset: int
-        :param Limit: 页大小
-        :type Limit: int
-        :param Profile: 接入环境。沙箱环境填sandbox。
-        :type Profile: str
-        """
-        self.InvoicePlatformId = None
-        self.Offset = None
-        self.Limit = None
-        self.Profile = None
-
-
-    def _deserialize(self, params):
-        self.InvoicePlatformId = params.get("InvoicePlatformId")
-        self.Offset = params.get("Offset")
-        self.Limit = params.get("Limit")
-        self.Profile = params.get("Profile")
-
-
-class QueryMerchantInfoForManagementResponse(AbstractModel):
-    """QueryMerchantInfoForManagement返回参数结构体
-
-    """
-
-    def __init__(self):
-        """
-        :param Result: 商户结果
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Result: :class:`tencentcloud.cpdp.v20190820.models.MerchantManagementResult`
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
-        self.Result = None
-        self.RequestId = None
-
-
-    def _deserialize(self, params):
-        if params.get("Result") is not None:
-            self.Result = MerchantManagementResult()
-            self.Result._deserialize(params.get("Result"))
-        self.RequestId = params.get("RequestId")
 
 
 class QueryOrderOutOrderList(AbstractModel):

@@ -256,6 +256,27 @@ class Address(AbstractModel):
         self.InternetServiceProvider = params.get("InternetServiceProvider")
 
 
+class AddressChargePrepaid(AbstractModel):
+    """用于描述弹性公网IP的费用对象
+
+    """
+
+    def __init__(self):
+        """
+        :param Period: 购买实例的时长
+        :type Period: int
+        :param RenewFlag: 自动续费标志
+        :type RenewFlag: str
+        """
+        self.Period = None
+        self.RenewFlag = None
+
+
+    def _deserialize(self, params):
+        self.Period = params.get("Period")
+        self.RenewFlag = params.get("RenewFlag")
+
+
 class AddressTemplate(AbstractModel):
     """IP地址模板
 
@@ -9104,6 +9125,54 @@ class ModifyAddressAttributeResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class ModifyAddressInternetChargeTypeRequest(AbstractModel):
+    """ModifyAddressInternetChargeType请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param AddressId: 弹性公网IP的唯一ID，形如eip-xxx
+        :type AddressId: str
+        :param InternetChargeType: 弹性公网IP调整目标计费模式，只支持"BANDWIDTH_PREPAID_BY_MONTH"和"TRAFFIC_POSTPAID_BY_HOUR"
+        :type InternetChargeType: str
+        :param InternetMaxBandwidthOut: 弹性公网IP调整目标带宽值
+        :type InternetMaxBandwidthOut: int
+        :param AddressChargePrepaid: 包月带宽网络计费模式参数。弹性公网IP的调整目标计费模式是"BANDWIDTH_PREPAID_BY_MONTH"时，必传该参数。
+        :type AddressChargePrepaid: :class:`tencentcloud.vpc.v20170312.models.AddressChargePrepaid`
+        """
+        self.AddressId = None
+        self.InternetChargeType = None
+        self.InternetMaxBandwidthOut = None
+        self.AddressChargePrepaid = None
+
+
+    def _deserialize(self, params):
+        self.AddressId = params.get("AddressId")
+        self.InternetChargeType = params.get("InternetChargeType")
+        self.InternetMaxBandwidthOut = params.get("InternetMaxBandwidthOut")
+        if params.get("AddressChargePrepaid") is not None:
+            self.AddressChargePrepaid = AddressChargePrepaid()
+            self.AddressChargePrepaid._deserialize(params.get("AddressChargePrepaid"))
+
+
+class ModifyAddressInternetChargeTypeResponse(AbstractModel):
+    """ModifyAddressInternetChargeType返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class ModifyAddressTemplateAttributeRequest(AbstractModel):
     """ModifyAddressTemplateAttribute请求参数结构体
 
@@ -12276,6 +12345,8 @@ class SecurityGroupAssociationStatistics(AbstractModel):
         :type CLB: int
         :param InstanceStatistics: 全量实例的绑定统计。
         :type InstanceStatistics: list of InstanceStatistic
+        :param TotalCount: 所有资源的总计数。
+        :type TotalCount: int
         """
         self.SecurityGroupId = None
         self.CVM = None
@@ -12284,6 +12355,7 @@ class SecurityGroupAssociationStatistics(AbstractModel):
         self.SG = None
         self.CLB = None
         self.InstanceStatistics = None
+        self.TotalCount = None
 
 
     def _deserialize(self, params):
@@ -12299,6 +12371,7 @@ class SecurityGroupAssociationStatistics(AbstractModel):
                 obj = InstanceStatistic()
                 obj._deserialize(item)
                 self.InstanceStatistics.append(obj)
+        self.TotalCount = params.get("TotalCount")
 
 
 class SecurityGroupLimitSet(AbstractModel):
