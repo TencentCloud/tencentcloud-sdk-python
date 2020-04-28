@@ -12345,7 +12345,7 @@ class SecurityGroupAssociationStatistics(AbstractModel):
         :type CLB: int
         :param InstanceStatistics: 全量实例的绑定统计。
         :type InstanceStatistics: list of InstanceStatistic
-        :param TotalCount: 所有资源的总计数。
+        :param TotalCount: 所有资源的总计数（不包含被安全组引用数）。
         :type TotalCount: int
         """
         self.SecurityGroupId = None

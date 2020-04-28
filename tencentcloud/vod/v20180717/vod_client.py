@@ -1190,34 +1190,6 @@ class VodClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def DescribeAudioTrackTemplates(self, request):
-        """获取转自适应码流音频轨模板列表，支持根据条件，分页查询。
-
-        :param request: Request instance for DescribeAudioTrackTemplates.
-        :type request: :class:`tencentcloud.vod.v20180717.models.DescribeAudioTrackTemplatesRequest`
-        :rtype: :class:`tencentcloud.vod.v20180717.models.DescribeAudioTrackTemplatesResponse`
-
-        """
-        try:
-            params = request._serialize()
-            body = self.call("DescribeAudioTrackTemplates", params)
-            response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.DescribeAudioTrackTemplatesResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(e.message, e.message)
-
-
     def DescribeCDNUsageData(self, request):
         """该接口用于查询点播 CDN 的流量、带宽等统计数据。
            1. 可以查询最近365天内的 CDN 用量数据。
@@ -1706,34 +1678,6 @@ class VodClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeTranscodeTemplatesResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(e.message, e.message)
-
-
-    def DescribeVideoTrackTemplates(self, request):
-        """获取转自适应码流视频轨模板列表，支持根据条件，分页查询。
-
-        :param request: Request instance for DescribeVideoTrackTemplates.
-        :type request: :class:`tencentcloud.vod.v20180717.models.DescribeVideoTrackTemplatesRequest`
-        :rtype: :class:`tencentcloud.vod.v20180717.models.DescribeVideoTrackTemplatesResponse`
-
-        """
-        try:
-            params = request._serialize()
-            body = self.call("DescribeVideoTrackTemplates", params)
-            response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.DescribeVideoTrackTemplatesResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

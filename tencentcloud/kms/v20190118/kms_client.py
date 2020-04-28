@@ -642,7 +642,7 @@ class KmsClient(AbstractClient):
 
 
     def EnableWhiteBoxKey(self, request):
-        """批量启用白盒密钥
+        """启用白盒密钥
 
         :param request: Request instance for EnableWhiteBoxKey.
         :type request: :class:`tencentcloud.kms.v20190118.models.EnableWhiteBoxKeyRequest`

@@ -3564,85 +3564,6 @@ class AudioTrackItem(AbstractModel):
                 self.AudioOperations.append(obj)
 
 
-class AudioTrackTemplateInfo(AbstractModel):
-    """转自适应码流音频轨模板信息。
-
-    """
-
-    def __init__(self):
-        """
-        :param Definition: 模板唯一标识。
-        :type Definition: int
-        :param Codec: 音频轨编码格式。
-当 Container 为 mp3 时，可选值为：
-<li>libmp3lame。</li>
-当 Container 为 ogg 或 flac 时，可选值为：
-<li>flac。</li>
-当 Container 为 m4a 时，可选值为：
-<li>libfdk_aac；</li>
-<li>libmp3lame；</li>
-<li>ac3。</li>
-当视频轨 Container 为 mp4 或 flv 时，可选值为：
-<li>libfdk_aac：更适合 mp4；</li>
-<li>libmp3lame：更适合 flv；</li>
-<li>mp2。</li>
-当视频轨 Container 为  hls 时，可选值为：
-<li>libfdk_aac；</li>
-<li>libmp3lame。</li>
-        :type Codec: str
-        :param Bitrate: 音频流的码率，取值范围：0 和 [26, 256]，单位：kbps。
-当取值为 0，表示音频码率和原始音频保持一致。
-        :type Bitrate: int
-        :param SampleRate: 音频流的采样率，可选值：
-<li>32000</li>
-<li>44100</li>
-<li>48000</li>
-单位：Hz。
-        :type SampleRate: int
-        :param Type: 模板类型，可选值：
-<li>Preset：系统预置模板；</li>
-<li>Custom：用户自定义模板。</li>
-        :type Type: str
-        :param Name: 模板名称，长度限制：64 个字符。
-        :type Name: str
-        :param Comment: 模板描述信息，长度限制：256 个字符。
-        :type Comment: str
-        :param AudioChannel: 音频通道方式，可选值：
-<li>1：单通道</li>
-<li>2：双通道</li>
-<li>6：立体声</li>
-默认值：2。
-        :type AudioChannel: int
-        :param CreateTime: 模板创建时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。
-        :type CreateTime: str
-        :param UpdateTime: 模板最后修改时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。
-        :type UpdateTime: str
-        """
-        self.Definition = None
-        self.Codec = None
-        self.Bitrate = None
-        self.SampleRate = None
-        self.Type = None
-        self.Name = None
-        self.Comment = None
-        self.AudioChannel = None
-        self.CreateTime = None
-        self.UpdateTime = None
-
-
-    def _deserialize(self, params):
-        self.Definition = params.get("Definition")
-        self.Codec = params.get("Codec")
-        self.Bitrate = params.get("Bitrate")
-        self.SampleRate = params.get("SampleRate")
-        self.Type = params.get("Type")
-        self.Name = params.get("Name")
-        self.Comment = params.get("Comment")
-        self.AudioChannel = params.get("AudioChannel")
-        self.CreateTime = params.get("CreateTime")
-        self.UpdateTime = params.get("UpdateTime")
-
-
 class AudioTransform(AbstractModel):
     """音频操作
 
@@ -3774,19 +3695,14 @@ class ClipFileInfo2017(AbstractModel):
         :param ErrCode: 错误码
 <li>0：成功；</li>
 <li>其他值：失败。</li>
-注意：此字段可能返回 null，表示取不到有效值。
         :type ErrCode: int
         :param Message: 错误描述。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Message: str
         :param FileId: 输出目标文件的文件 ID。
-注意：此字段可能返回 null，表示取不到有效值。
         :type FileId: str
         :param FileUrl: 输出目标文件的文件地址。
-注意：此字段可能返回 null，表示取不到有效值。
         :type FileUrl: str
         :param FileType: 输出目标文件的文件类型。
-注意：此字段可能返回 null，表示取不到有效值。
         :type FileType: str
         """
         self.ErrCode = None
@@ -4142,19 +4058,14 @@ class ConcatFileInfo2017(AbstractModel):
         :param ErrCode: 错误码
 <li>0：成功；</li>
 <li>其他值：失败。</li>
-注意：此字段可能返回 null，表示取不到有效值。
         :type ErrCode: int
         :param Message: 错误信息。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Message: str
         :param FileId: 视频拼接源文件的 ID。
-注意：此字段可能返回 null，表示取不到有效值。
         :type FileId: str
         :param FileUrl: 视频拼接源文件的地址。
-注意：此字段可能返回 null，表示取不到有效值。
         :type FileUrl: str
         :param FileType: 视频拼接源文件的格式。
-注意：此字段可能返回 null，表示取不到有效值。
         :type FileType: str
         """
         self.ErrCode = None
@@ -4900,25 +4811,18 @@ class CreateImageSpriteTask2017(AbstractModel):
         :param ErrCode: 错误码
 <li>0：成功；</li>
 <li>其他值：失败。</li>
-注意：此字段可能返回 null，表示取不到有效值。
         :type ErrCode: int
         :param Message: 错误信息。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Message: str
         :param FileId: 截取雪碧图文件 ID。
-注意：此字段可能返回 null，表示取不到有效值。
         :type FileId: str
         :param Definition: 雪碧图规格，参见[雪碧图截图模板](https://cloud.tencent.com/document/product/266/33480#.E9.9B.AA.E7.A2.A7.E5.9B.BE.E6.A8.A1.E6.9D.BF)。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Definition: int
         :param TotalCount: 雪碧图小图总数量。
-注意：此字段可能返回 null，表示取不到有效值。
         :type TotalCount: int
         :param ImageSpriteUrlSet: 截取雪碧图输出的地址。
-注意：此字段可能返回 null，表示取不到有效值。
         :type ImageSpriteUrlSet: list of str
         :param WebVttUrl: 雪碧图子图位置与时间关系 WebVtt 文件地址。
-注意：此字段可能返回 null，表示取不到有效值。
         :type WebVttUrl: str
         """
         self.TaskId = None
@@ -6626,71 +6530,6 @@ class DescribeAnimatedGraphicsTemplatesResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
-class DescribeAudioTrackTemplatesRequest(AbstractModel):
-    """DescribeAudioTrackTemplates请求参数结构体
-
-    """
-
-    def __init__(self):
-        """
-        :param Definitions: 模板唯一标识过滤条件，数组长度限制：100。
-        :type Definitions: list of int non-negative
-        :param Offset: 分页偏移量，默认值：0。
-        :type Offset: int
-        :param Limit: 返回记录条数，默认值：10，最大值：100。
-        :type Limit: int
-        :param Type: 模板类型过滤条件，可选值：
-<li>Preset：系统预置模板；</li>
-<li>Custom：用户自定义模板。</li>
-        :type Type: str
-        :param SubAppId: 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
-        :type SubAppId: int
-        """
-        self.Definitions = None
-        self.Offset = None
-        self.Limit = None
-        self.Type = None
-        self.SubAppId = None
-
-
-    def _deserialize(self, params):
-        self.Definitions = params.get("Definitions")
-        self.Offset = params.get("Offset")
-        self.Limit = params.get("Limit")
-        self.Type = params.get("Type")
-        self.SubAppId = params.get("SubAppId")
-
-
-class DescribeAudioTrackTemplatesResponse(AbstractModel):
-    """DescribeAudioTrackTemplates返回参数结构体
-
-    """
-
-    def __init__(self):
-        """
-        :param TotalCount: 符合过滤条件的记录总数。
-        :type TotalCount: int
-        :param AudioTrackTemplateSet: 音频轨模板详情列表。
-        :type AudioTrackTemplateSet: list of AudioTrackTemplateInfo
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
-        self.TotalCount = None
-        self.AudioTrackTemplateSet = None
-        self.RequestId = None
-
-
-    def _deserialize(self, params):
-        self.TotalCount = params.get("TotalCount")
-        if params.get("AudioTrackTemplateSet") is not None:
-            self.AudioTrackTemplateSet = []
-            for item in params.get("AudioTrackTemplateSet"):
-                obj = AudioTrackTemplateInfo()
-                obj._deserialize(item)
-                self.AudioTrackTemplateSet.append(obj)
-        self.RequestId = params.get("RequestId")
-
-
 class DescribeCDNUsageDataRequest(AbstractModel):
     """DescribeCDNUsageData请求参数结构体
 
@@ -7847,71 +7686,6 @@ class DescribeTranscodeTemplatesResponse(AbstractModel):
                 obj = TranscodeTemplate()
                 obj._deserialize(item)
                 self.TranscodeTemplateSet.append(obj)
-        self.RequestId = params.get("RequestId")
-
-
-class DescribeVideoTrackTemplatesRequest(AbstractModel):
-    """DescribeVideoTrackTemplates请求参数结构体
-
-    """
-
-    def __init__(self):
-        """
-        :param Definitions: 模板唯一标识过滤条件，数组长度限制：100。
-        :type Definitions: list of int non-negative
-        :param Offset: 分页偏移量，默认值：0。
-        :type Offset: int
-        :param Limit: 返回记录条数，默认值：10，最大值：100。
-        :type Limit: int
-        :param Type: 模板类型过滤条件，可选值：
-<li>Preset：系统预置模板；</li>
-<li>Custom：用户自定义模板。</li>
-        :type Type: str
-        :param SubAppId: 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
-        :type SubAppId: int
-        """
-        self.Definitions = None
-        self.Offset = None
-        self.Limit = None
-        self.Type = None
-        self.SubAppId = None
-
-
-    def _deserialize(self, params):
-        self.Definitions = params.get("Definitions")
-        self.Offset = params.get("Offset")
-        self.Limit = params.get("Limit")
-        self.Type = params.get("Type")
-        self.SubAppId = params.get("SubAppId")
-
-
-class DescribeVideoTrackTemplatesResponse(AbstractModel):
-    """DescribeVideoTrackTemplates返回参数结构体
-
-    """
-
-    def __init__(self):
-        """
-        :param TotalCount: 符合过滤条件的记录总数。
-        :type TotalCount: int
-        :param VideoTrackTemplateSet: 视频轨模板详情列表。
-        :type VideoTrackTemplateSet: list of VideoTrackTemplateInfo
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
-        self.TotalCount = None
-        self.VideoTrackTemplateSet = None
-        self.RequestId = None
-
-
-    def _deserialize(self, params):
-        self.TotalCount = params.get("TotalCount")
-        if params.get("VideoTrackTemplateSet") is not None:
-            self.VideoTrackTemplateSet = []
-            for item in params.get("VideoTrackTemplateSet"):
-                obj = VideoTrackTemplateInfo()
-                obj._deserialize(item)
-                self.VideoTrackTemplateSet.append(obj)
         self.RequestId = params.get("RequestId")
 
 
@@ -14423,13 +14197,10 @@ class SnapshotByTimeOffset2017(AbstractModel):
         :param ErrCode: 错误码
 <li>0：成功；</li>
 <li>其他值：失败。</li>
-注意：此字段可能返回 null，表示取不到有效值。
         :type ErrCode: int
         :param TimeOffset: 截图的具体时间点，单位：毫秒。
-注意：此字段可能返回 null，表示取不到有效值。
         :type TimeOffset: int
         :param Url: 截图输出文件地址。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Url: str
         """
         self.ErrCode = None
@@ -15406,25 +15177,18 @@ class TranscodeTask2017(AbstractModel):
         :param ErrCode: 错误码
 <li>0：成功；</li>
 <li>其他值：失败。</li>
-注意：此字段可能返回 null，表示取不到有效值。
         :type ErrCode: int
         :param Message: 错误信息。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Message: str
         :param FileId: 被转码文件 ID。
-注意：此字段可能返回 null，表示取不到有效值。
         :type FileId: str
         :param FileName: 被转码文件名称。
-注意：此字段可能返回 null，表示取不到有效值。
         :type FileName: str
         :param Duration: 视频时长，单位：秒。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Duration: int
         :param CoverUrl: 封面地址。
-注意：此字段可能返回 null，表示取不到有效值。
         :type CoverUrl: str
         :param PlayInfoSet: 视频转码后生成的播放信息。
-注意：此字段可能返回 null，表示取不到有效值。
         :type PlayInfoSet: list of TranscodePlayInfo2017
         """
         self.TaskId = None
@@ -16088,94 +15852,6 @@ class VideoTrackItem(AbstractModel):
                 obj = AudioTransform()
                 obj._deserialize(item)
                 self.AudioOperations.append(obj)
-
-
-class VideoTrackTemplateInfo(AbstractModel):
-    """转自适应码流视频轨模板信息。
-
-    """
-
-    def __init__(self):
-        """
-        :param Definition: 视频轨模板唯一标识。
-        :type Definition: int
-        :param Codec: 编码格式，可选值：
-<li>libx264：H.264 编码</li>
-<li>libx265：H.265 编码</li>
-目前 H.265 编码必须指定分辨率，并且需要在 640*480 以内。
-        :type Codec: str
-        :param Fps: 视频帧率，取值范围：[0, 60]，单位：Hz。
-当取值为 0，表示帧率和原始视频保持一致。
-        :type Fps: int
-        :param Bitrate: 视频流的码率，取值范围：0 和 [128, 35000]，单位：kbps。
-当取值为 0，表示视频码率和原始视频保持一致。
-        :type Bitrate: int
-        :param Name: 模板名称，长度限制：64 个字符。
-        :type Name: str
-        :param Comment: 模板描述信息，长度限制：256 个字符。
-        :type Comment: str
-        :param Type: 模板类型，可选值：
-<li>Preset：系统预置模板；</li>
-<li>Custom：用户自定义模板。</li>
-        :type Type: str
-        :param ResolutionAdaptive: 分辨率自适应，可选值：
-<li>open：开启，此时，Width 代表视频的长边，Height 表示视频的短边；</li>
-<li>close：关闭，此时，Width 代表视频的宽度，Height 表示视频的高度。</li>
-默认值：open。
-        :type ResolutionAdaptive: str
-        :param Width: 视频流宽度（或长边）的最大值，取值范围：0 和 [128, 4096]，单位：px。
-<li>当 Width、Height 均为 0，则分辨率同源；</li>
-<li>当 Width 为 0，Height 非 0，则 Width 按比例缩放；</li>
-<li>当 Width 非 0，Height 为 0，则 Height 按比例缩放；</li>
-<li>当 Width、Height 均非 0，则分辨率按用户指定。</li>
-默认值：0。
-        :type Width: int
-        :param Height: 视频流高度（或短边）的最大值，取值范围：0 和 [128, 4096]，单位：px。
-<li>当 Width、Height 均为 0，则分辨率同源；</li>
-<li>当 Width 为 0，Height 非 0，则 Width 按比例缩放；</li>
-<li>当 Width 非 0，Height 为 0，则 Height 按比例缩放；</li>
-<li>当 Width、Height 均非 0，则分辨率按用户指定。</li>
-默认值：0。
-        :type Height: int
-        :param FillType: 填充方式，当视频流配置宽高参数与原始视频的宽高比不一致时，对转码的处理方式，即为“填充”。可选填充方式：
-<li> stretch：拉伸，对每一帧进行拉伸，填满整个画面，可能导致转码后的视频被“压扁“或者“拉长“；</li>
-<li>black：留黑，保持视频宽高比不变，边缘剩余部分使用黑色填充。</li>
-默认值：black 。
-        :type FillType: str
-        :param CreateTime: 模板创建时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。
-        :type CreateTime: str
-        :param UpdateTime: 模板最后修改时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。
-        :type UpdateTime: str
-        """
-        self.Definition = None
-        self.Codec = None
-        self.Fps = None
-        self.Bitrate = None
-        self.Name = None
-        self.Comment = None
-        self.Type = None
-        self.ResolutionAdaptive = None
-        self.Width = None
-        self.Height = None
-        self.FillType = None
-        self.CreateTime = None
-        self.UpdateTime = None
-
-
-    def _deserialize(self, params):
-        self.Definition = params.get("Definition")
-        self.Codec = params.get("Codec")
-        self.Fps = params.get("Fps")
-        self.Bitrate = params.get("Bitrate")
-        self.Name = params.get("Name")
-        self.Comment = params.get("Comment")
-        self.Type = params.get("Type")
-        self.ResolutionAdaptive = params.get("ResolutionAdaptive")
-        self.Width = params.get("Width")
-        self.Height = params.get("Height")
-        self.FillType = params.get("FillType")
-        self.CreateTime = params.get("CreateTime")
-        self.UpdateTime = params.get("UpdateTime")
 
 
 class WatermarkCycleConfigForUpdate(AbstractModel):

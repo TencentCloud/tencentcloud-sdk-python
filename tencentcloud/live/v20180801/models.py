@@ -3804,7 +3804,7 @@ class DescribeLiveTranscodeDetailInfoRequest(AbstractModel):
         :type StreamName: str
         :param DayTime: 查询时间，北京时间，
 格式：yyyymmdd。
-注意：支持查询近3个月内某天的详细数据。
+注意：支持查询近1个月内某天的详细数据。
         :type DayTime: str
         :param PageNum: 页数，默认1，
 不超过100页。
@@ -3814,11 +3814,11 @@ class DescribeLiveTranscodeDetailInfoRequest(AbstractModel):
         :type PageSize: int
         :param StartDayTime: 起始天时间，北京时间，
 格式：yyyymmdd。
-注意：支持查询近3个月内的详细数据。
+注意：支持查询近1个月内的详细数据。
         :type StartDayTime: str
         :param EndDayTime: 结束天时间，北京时间，
 格式：yyyymmdd。
-注意：支持查询近3个月内的详细数据，注意DayTime 与（StartDayTime，EndDayTime）必须要传一个，如果都传，会以DayTime为准 。
+注意：支持查询近1个月内的详细数据，注意DayTime 与（StartDayTime，EndDayTime）必须要传一个，如果都传，会以DayTime为准 。
         :type EndDayTime: str
         """
         self.PushDomain = None

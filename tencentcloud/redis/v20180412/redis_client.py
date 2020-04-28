@@ -530,7 +530,7 @@ class RedisClient(AbstractClient):
 
 
     def DescribeInstanceMonitorTookDist(self, request):
-        """查询实例大Key大小分布
+        """查询实例访问的耗时分布
 
         :param request: Request instance for DescribeInstanceMonitorTookDist.
         :type request: :class:`tencentcloud.redis.v20180412.models.DescribeInstanceMonitorTookDistRequest`

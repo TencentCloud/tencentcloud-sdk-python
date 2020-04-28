@@ -1238,6 +1238,8 @@ class CreateConfigRequest(AbstractModel):
         :type ConfigVersionDesc: str
         :param ConfigType: 配置项值类型
         :type ConfigType: str
+        :param EncodeWithBase64: Base64编码的配置项
+        :type EncodeWithBase64: bool
         """
         self.ConfigName = None
         self.ConfigVersion = None
@@ -1245,6 +1247,7 @@ class CreateConfigRequest(AbstractModel):
         self.ApplicationId = None
         self.ConfigVersionDesc = None
         self.ConfigType = None
+        self.EncodeWithBase64 = None
 
 
     def _deserialize(self, params):
@@ -1254,6 +1257,7 @@ class CreateConfigRequest(AbstractModel):
         self.ApplicationId = params.get("ApplicationId")
         self.ConfigVersionDesc = params.get("ConfigVersionDesc")
         self.ConfigType = params.get("ConfigType")
+        self.EncodeWithBase64 = params.get("EncodeWithBase64")
 
 
 class CreateConfigResponse(AbstractModel):
@@ -1264,6 +1268,7 @@ class CreateConfigResponse(AbstractModel):
     def __init__(self):
         """
         :param Result: true：创建成功；false：创建失败
+注意：此字段可能返回 null，表示取不到有效值。
         :type Result: bool
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -1595,12 +1600,15 @@ class CreatePublicConfigRequest(AbstractModel):
         :type ConfigVersionDesc: str
         :param ConfigType: 配置项类型
         :type ConfigType: str
+        :param EncodeWithBase64: Base64编码的配置项
+        :type EncodeWithBase64: bool
         """
         self.ConfigName = None
         self.ConfigVersion = None
         self.ConfigValue = None
         self.ConfigVersionDesc = None
         self.ConfigType = None
+        self.EncodeWithBase64 = None
 
 
     def _deserialize(self, params):
@@ -1609,6 +1617,7 @@ class CreatePublicConfigRequest(AbstractModel):
         self.ConfigValue = params.get("ConfigValue")
         self.ConfigVersionDesc = params.get("ConfigVersionDesc")
         self.ConfigType = params.get("ConfigType")
+        self.EncodeWithBase64 = params.get("EncodeWithBase64")
 
 
 class CreatePublicConfigResponse(AbstractModel):
