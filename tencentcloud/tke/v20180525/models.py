@@ -1113,14 +1113,23 @@ class DeleteClusterRequest(AbstractModel):
         :type ClusterId: str
         :param InstanceDeleteMode: 集群实例删除时的策略：terminate（销毁实例，仅支持按量计费云主机实例） retain （仅移除，保留实例）
         :type InstanceDeleteMode: str
+        :param ResourceDeleteOptions: 集群删除时资源的删除策略，目前支持CBS（默认保留CBS）
+        :type ResourceDeleteOptions: list of ResourceDeleteOption
         """
         self.ClusterId = None
         self.InstanceDeleteMode = None
+        self.ResourceDeleteOptions = None
 
 
     def _deserialize(self, params):
         self.ClusterId = params.get("ClusterId")
         self.InstanceDeleteMode = params.get("InstanceDeleteMode")
+        if params.get("ResourceDeleteOptions") is not None:
+            self.ResourceDeleteOptions = []
+            for item in params.get("ResourceDeleteOptions"):
+                obj = ResourceDeleteOption()
+                obj._deserialize(item)
+                self.ResourceDeleteOptions.append(obj)
 
 
 class DeleteClusterResponse(AbstractModel):
@@ -1583,6 +1592,9 @@ class DescribeClusterSecurityResponse(AbstractModel):
         :type PgwEndpoint: str
         :param SecurityPolicy: 集群访问策略组
         :type SecurityPolicy: list of str
+        :param Kubeconfig: 集群Kubeconfig文件
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Kubeconfig: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -1593,6 +1605,7 @@ class DescribeClusterSecurityResponse(AbstractModel):
         self.Domain = None
         self.PgwEndpoint = None
         self.SecurityPolicy = None
+        self.Kubeconfig = None
         self.RequestId = None
 
 
@@ -1604,6 +1617,7 @@ class DescribeClusterSecurityResponse(AbstractModel):
         self.Domain = params.get("Domain")
         self.PgwEndpoint = params.get("PgwEndpoint")
         self.SecurityPolicy = params.get("SecurityPolicy")
+        self.Kubeconfig = params.get("Kubeconfig")
         self.RequestId = params.get("RequestId")
 
 
@@ -2500,6 +2514,27 @@ class RegionInstance(AbstractModel):
         self.FeatureGates = params.get("FeatureGates")
         self.Alias = params.get("Alias")
         self.Remark = params.get("Remark")
+
+
+class ResourceDeleteOption(AbstractModel):
+    """资源删除选项
+
+    """
+
+    def __init__(self):
+        """
+        :param ResourceType: 资源类型，例如CBS
+        :type ResourceType: str
+        :param DeleteMode: 集群删除时资源的删除模式：terminate（销毁），retain （保留）
+        :type DeleteMode: str
+        """
+        self.ResourceType = None
+        self.DeleteMode = None
+
+
+    def _deserialize(self, params):
+        self.ResourceType = params.get("ResourceType")
+        self.DeleteMode = params.get("DeleteMode")
 
 
 class RouteInfo(AbstractModel):

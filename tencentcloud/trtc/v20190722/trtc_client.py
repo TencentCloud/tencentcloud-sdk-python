@@ -25,6 +25,146 @@ class TrtcClient(AbstractClient):
     _endpoint = 'trtc.tencentcloudapi.com'
 
 
+    def DescribeCallDetail(self, request):
+        """查询指定时间内的用户列表及用户通话质量数据。
+
+        :param request: Request instance for DescribeCallDetail.
+        :type request: :class:`tencentcloud.trtc.v20190722.models.DescribeCallDetailRequest`
+        :rtype: :class:`tencentcloud.trtc.v20190722.models.DescribeCallDetailResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeCallDetail", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeCallDetailResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeRealtimeNetwork(self, request):
+        """查询sdkappid维度下实时网络状态，包括上行丢包与下行丢包。可查询24小时内数据，查询起止时间不超过1个小时。
+
+        :param request: Request instance for DescribeRealtimeNetwork.
+        :type request: :class:`tencentcloud.trtc.v20190722.models.DescribeRealtimeNetworkRequest`
+        :rtype: :class:`tencentcloud.trtc.v20190722.models.DescribeRealtimeNetworkResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeRealtimeNetwork", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeRealtimeNetworkResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeRealtimeQuality(self, request):
+        """查询sdkappid维度下实时质量数据，包括：进房成功率，首帧秒开率，音频卡顿率，视频卡顿率。可查询24小时内数据，查询起止时间不超过1个小时。
+
+        :param request: Request instance for DescribeRealtimeQuality.
+        :type request: :class:`tencentcloud.trtc.v20190722.models.DescribeRealtimeQualityRequest`
+        :rtype: :class:`tencentcloud.trtc.v20190722.models.DescribeRealtimeQualityResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeRealtimeQuality", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeRealtimeQualityResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeRealtimeScale(self, request):
+        """查询sdkappid维度下实时规模，可查询24小时内数据，查询起止时间不超过1个小时。
+
+        :param request: Request instance for DescribeRealtimeScale.
+        :type request: :class:`tencentcloud.trtc.v20190722.models.DescribeRealtimeScaleRequest`
+        :rtype: :class:`tencentcloud.trtc.v20190722.models.DescribeRealtimeScaleResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeRealtimeScale", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeRealtimeScaleResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeRoomInformation(self, request):
+        """查询sdkappid下的房间列表。默认返回10条通话，一次最多返回100条通话。可查询最近5天的数据。
+
+        :param request: Request instance for DescribeRoomInformation.
+        :type request: :class:`tencentcloud.trtc.v20190722.models.DescribeRoomInformationRequest`
+        :rtype: :class:`tencentcloud.trtc.v20190722.models.DescribeRoomInformationResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeRoomInformation", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeRoomInformationResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DismissRoom(self, request):
         """接口说明：把房间所有用户从房间移出，解散房间。支持所有平台，Android、iOS、Windows 和 macOS 需升级到 TRTC SDK 6.6及以上版本。
 

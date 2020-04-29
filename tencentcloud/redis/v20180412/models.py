@@ -443,14 +443,18 @@ class DelayDistribution(AbstractModel):
         :type Ladder: int
         :param Size: 大小
         :type Size: int
+        :param Updatetime: 修改时间
+        :type Updatetime: int
         """
         self.Ladder = None
         self.Size = None
+        self.Updatetime = None
 
 
     def _deserialize(self, params):
         self.Ladder = params.get("Ladder")
         self.Size = params.get("Size")
+        self.Updatetime = params.get("Updatetime")
 
 
 class DeleteInstanceAccountRequest(AbstractModel):

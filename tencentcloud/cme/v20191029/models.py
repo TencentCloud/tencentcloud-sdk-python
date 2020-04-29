@@ -101,10 +101,14 @@ class AudioMaterial(AbstractModel):
         :type MaterialUrl: str
         :param CoverUrl: 素材媒体文件的封面图片地址。
         :type CoverUrl: str
+        :param MaterialStatus: 素材状态。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MaterialStatus: :class:`tencentcloud.cme.v20191029.models.MaterialStatus`
         """
         self.MetaData = None
         self.MaterialUrl = None
         self.CoverUrl = None
+        self.MaterialStatus = None
 
 
     def _deserialize(self, params):
@@ -113,6 +117,9 @@ class AudioMaterial(AbstractModel):
             self.MetaData._deserialize(params.get("MetaData"))
         self.MaterialUrl = params.get("MaterialUrl")
         self.CoverUrl = params.get("CoverUrl")
+        if params.get("MaterialStatus") is not None:
+            self.MaterialStatus = MaterialStatus()
+            self.MaterialStatus._deserialize(params.get("MaterialStatus"))
 
 
 class AudioStreamInfo(AbstractModel):
@@ -2046,57 +2053,6 @@ class LoginStatusInfo(AbstractModel):
         self.Status = params.get("Status")
 
 
-class MaterialBaseInfo(AbstractModel):
-    """素材基础信息。
-
-    """
-
-    def __init__(self):
-        """
-        :param Name: 素材名称。
-        :type Name: str
-        :param Description: 描述信息。
-        :type Description: str
-        :param ClassPath: 分类路径。
-        :type ClassPath: str
-        :param TagSet: 标签集合。
-        :type TagSet: list of str
-        :param Owner: 归属者。
-        :type Owner: :class:`tencentcloud.cme.v20191029.models.Entity`
-        :param MaterialType: 素材类型。
-        :type MaterialType: str
-        :param MaterialUrl: 素材 URL。
-        :type MaterialUrl: str
-        :param VodFileId: 云点播媒资 FileId。
-        :type VodFileId: str
-        :param CreateTime: 创建时间，格式按照 ISO 8601 标准表示。
-        :type CreateTime: str
-        """
-        self.Name = None
-        self.Description = None
-        self.ClassPath = None
-        self.TagSet = None
-        self.Owner = None
-        self.MaterialType = None
-        self.MaterialUrl = None
-        self.VodFileId = None
-        self.CreateTime = None
-
-
-    def _deserialize(self, params):
-        self.Name = params.get("Name")
-        self.Description = params.get("Description")
-        self.ClassPath = params.get("ClassPath")
-        self.TagSet = params.get("TagSet")
-        if params.get("Owner") is not None:
-            self.Owner = Entity()
-            self.Owner._deserialize(params.get("Owner"))
-        self.MaterialType = params.get("MaterialType")
-        self.MaterialUrl = params.get("MaterialUrl")
-        self.VodFileId = params.get("VodFileId")
-        self.CreateTime = params.get("CreateTime")
-
-
 class MaterialBasicInfo(AbstractModel):
     """素材基本信息。
 
@@ -2195,6 +2151,26 @@ class MaterialInfo(AbstractModel):
         if params.get("LinkMaterial") is not None:
             self.LinkMaterial = LinkMaterial()
             self.LinkMaterial._deserialize(params.get("LinkMaterial"))
+
+
+class MaterialStatus(AbstractModel):
+    """素材的状态，目前仅包含素材编辑可用状态。
+
+    """
+
+    def __init__(self):
+        """
+        :param EditorUsableStatus: 素材编辑可用状态，取值有：
+<li>NORMAL：正常，可直接用于编辑；</li>
+<li>ABNORMAL : 异常，不可用于编辑；</li>
+<li>PROCESSING：处理中，暂不可用于编辑。</li>
+        :type EditorUsableStatus: str
+        """
+        self.EditorUsableStatus = None
+
+
+    def _deserialize(self, params):
+        self.EditorUsableStatus = params.get("EditorUsableStatus")
 
 
 class MediaImageSpriteInfo(AbstractModel):
@@ -3009,14 +2985,10 @@ class VideoEditProjectOutput(AbstractModel):
         :type URL: str
         :param MetaData: 元信息。
         :type MetaData: :class:`tencentcloud.cme.v20191029.models.MediaMetaData`
-        :param MaterialBaseInfo: 素材基础信息。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type MaterialBaseInfo: :class:`tencentcloud.cme.v20191029.models.MaterialBaseInfo`
         """
         self.VodFileId = None
         self.URL = None
         self.MetaData = None
-        self.MaterialBaseInfo = None
 
 
     def _deserialize(self, params):
@@ -3025,9 +2997,6 @@ class VideoEditProjectOutput(AbstractModel):
         if params.get("MetaData") is not None:
             self.MetaData = MediaMetaData()
             self.MetaData._deserialize(params.get("MetaData"))
-        if params.get("MaterialBaseInfo") is not None:
-            self.MaterialBaseInfo = MaterialBaseInfo()
-            self.MaterialBaseInfo._deserialize(params.get("MaterialBaseInfo"))
 
 
 class VideoMaterial(AbstractModel):
@@ -3047,12 +3016,16 @@ class VideoMaterial(AbstractModel):
         :type CoverUrl: str
         :param Resolution: 媒体文件分辨率。取值为：LD/SD/HD/FHD/2K/4K。
         :type Resolution: str
+        :param MaterialStatus: 素材状态。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MaterialStatus: :class:`tencentcloud.cme.v20191029.models.MaterialStatus`
         """
         self.MetaData = None
         self.ImageSpriteInfo = None
         self.MaterialUrl = None
         self.CoverUrl = None
         self.Resolution = None
+        self.MaterialStatus = None
 
 
     def _deserialize(self, params):
@@ -3065,6 +3038,9 @@ class VideoMaterial(AbstractModel):
         self.MaterialUrl = params.get("MaterialUrl")
         self.CoverUrl = params.get("CoverUrl")
         self.Resolution = params.get("Resolution")
+        if params.get("MaterialStatus") is not None:
+            self.MaterialStatus = MaterialStatus()
+            self.MaterialStatus._deserialize(params.get("MaterialStatus"))
 
 
 class VideoStreamInfo(AbstractModel):

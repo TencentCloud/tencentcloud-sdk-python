@@ -1341,6 +1341,35 @@ class CamClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def UpdatePolicy(self, request):
+        """本接口（UpdatePolicy ）可用于更新策略。
+        如果已存在策略版本，本接口会直接更新策略的默认版本，不会创建新版本，如果不存在任何策略版本，则直接创建一个默认版本。
+
+        :param request: Request instance for UpdatePolicy.
+        :type request: :class:`tencentcloud.cam.v20190116.models.UpdatePolicyRequest`
+        :rtype: :class:`tencentcloud.cam.v20190116.models.UpdatePolicyResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("UpdatePolicy", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.UpdatePolicyResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def UpdateRoleConsoleLogin(self, request):
         """本接口（UpdateRoleConsoleLogin）用于修改角色是否可登录。
 

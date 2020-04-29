@@ -2760,6 +2760,61 @@ class UpdateGroupResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class UpdatePolicyRequest(AbstractModel):
+    """UpdatePolicy请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param PolicyId: 策略ID
+        :type PolicyId: int
+        :param PolicyName: 策略名
+        :type PolicyName: str
+        :param Description: 策略描述
+        :type Description: str
+        :param PolicyDocument: 策略文档，示例：{"version":"2.0","statement":[{"action":"name/sts:AssumeRole","effect":"allow","principal":{"service":["cloudaudit.cloud.tencent.com","cls.cloud.tencent.com"]}}]}，principal用于指定角色的授权对象。获取该参数可参阅 获取角色详情（https://cloud.tencent.com/document/product/598/36221） 输出参数RoleInfo
+        :type PolicyDocument: str
+        :param Alias: 预设策略备注
+        :type Alias: str
+        """
+        self.PolicyId = None
+        self.PolicyName = None
+        self.Description = None
+        self.PolicyDocument = None
+        self.Alias = None
+
+
+    def _deserialize(self, params):
+        self.PolicyId = params.get("PolicyId")
+        self.PolicyName = params.get("PolicyName")
+        self.Description = params.get("Description")
+        self.PolicyDocument = params.get("PolicyDocument")
+        self.Alias = params.get("Alias")
+
+
+class UpdatePolicyResponse(AbstractModel):
+    """UpdatePolicy返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param PolicyId: 策略id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PolicyId: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.PolicyId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.PolicyId = params.get("PolicyId")
+        self.RequestId = params.get("RequestId")
+
+
 class UpdateRoleConsoleLoginRequest(AbstractModel):
     """UpdateRoleConsoleLogin请求参数结构体
 

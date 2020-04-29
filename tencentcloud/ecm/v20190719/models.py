@@ -2265,7 +2265,7 @@ PROTECTIVELY_ISOLATED：表示被安全隔离的实例。
         :param DataDiskSize: 数据盘大小，单位GB。
 注意：此字段可能返回 null，表示取不到有效值。
         :type DataDiskSize: int
-        :param UUID: UUID
+        :param UUID: 实例UUID
 注意：此字段可能返回 null，表示取不到有效值。
         :type UUID: str
         :param PayMode: 付费方式。
@@ -2296,6 +2296,9 @@ PROTECTIVELY_ISOLATED：表示被安全隔离的实例。
         :param DataDisks: 数据盘信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type DataDisks: list of DiskInfo
+        :param NewFlag: 新实例标志
+注意：此字段可能返回 null，表示取不到有效值。
+        :type NewFlag: int
         """
         self.InstanceId = None
         self.InstanceName = None
@@ -2320,6 +2323,7 @@ PROTECTIVELY_ISOLATED：表示被安全隔离的实例。
         self.ExpireState = None
         self.SystemDisk = None
         self.DataDisks = None
+        self.NewFlag = None
 
 
     def _deserialize(self, params):
@@ -2368,6 +2372,7 @@ PROTECTIVELY_ISOLATED：表示被安全隔离的实例。
                 obj = DiskInfo()
                 obj._deserialize(item)
                 self.DataDisks.append(obj)
+        self.NewFlag = params.get("NewFlag")
 
 
 class InstanceFamilyConfig(AbstractModel):

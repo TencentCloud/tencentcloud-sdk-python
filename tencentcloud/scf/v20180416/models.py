@@ -411,6 +411,48 @@ class DeadLetterConfig(AbstractModel):
         self.FilterType = params.get("FilterType")
 
 
+class DeleteAliasRequest(AbstractModel):
+    """DeleteAlias请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param FunctionName: 函数名称
+        :type FunctionName: str
+        :param Name: 别名的名称
+        :type Name: str
+        :param Namespace: 函数所在的命名空间
+        :type Namespace: str
+        """
+        self.FunctionName = None
+        self.Name = None
+        self.Namespace = None
+
+
+    def _deserialize(self, params):
+        self.FunctionName = params.get("FunctionName")
+        self.Name = params.get("Name")
+        self.Namespace = params.get("Namespace")
+
+
+class DeleteAliasResponse(AbstractModel):
+    """DeleteAlias返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class DeleteFunctionRequest(AbstractModel):
     """DeleteFunction请求参数结构体
 
@@ -2172,14 +2214,10 @@ class UpdateFunctionConfigurationRequest(AbstractModel):
         :type ClsTopicId: str
         :param Publish: 在更新时是否同步发布新版本，默认为：FALSE，不发布
         :type Publish: str
-        :param L5Enable: 是否开启L5访问能力，TRUE 为开启，FALSE为关闭
-        :type L5Enable: str
         :param Layers: 函数要关联的层版本列表，层的版本会按照在列表中顺序依次覆盖。
         :type Layers: list of LayerVersionSimple
         :param DeadLetterConfig: 函数关联的死信队列信息
         :type DeadLetterConfig: :class:`tencentcloud.scf.v20180416.models.DeadLetterConfig`
-        :param OnsEnable: 是否开启Ons访问能力，TRUE 为开启，FALSE为关闭
-        :type OnsEnable: str
         """
         self.FunctionName = None
         self.Description = None
@@ -2193,10 +2231,8 @@ class UpdateFunctionConfigurationRequest(AbstractModel):
         self.ClsLogsetId = None
         self.ClsTopicId = None
         self.Publish = None
-        self.L5Enable = None
         self.Layers = None
         self.DeadLetterConfig = None
-        self.OnsEnable = None
 
 
     def _deserialize(self, params):
@@ -2216,7 +2252,6 @@ class UpdateFunctionConfigurationRequest(AbstractModel):
         self.ClsLogsetId = params.get("ClsLogsetId")
         self.ClsTopicId = params.get("ClsTopicId")
         self.Publish = params.get("Publish")
-        self.L5Enable = params.get("L5Enable")
         if params.get("Layers") is not None:
             self.Layers = []
             for item in params.get("Layers"):
@@ -2226,7 +2261,6 @@ class UpdateFunctionConfigurationRequest(AbstractModel):
         if params.get("DeadLetterConfig") is not None:
             self.DeadLetterConfig = DeadLetterConfig()
             self.DeadLetterConfig._deserialize(params.get("DeadLetterConfig"))
-        self.OnsEnable = params.get("OnsEnable")
 
 
 class UpdateFunctionConfigurationResponse(AbstractModel):

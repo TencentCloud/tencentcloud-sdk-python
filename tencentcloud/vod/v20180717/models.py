@@ -185,7 +185,7 @@ class AdaptiveDynamicStreamingInfoItem(AbstractModel):
         """
         :param Definition: 转自适应码流规格。
         :type Definition: int
-        :param Package: 打包格式，可能为 hls 和 dash 两种。
+        :param Package: 打包格式，只能为 HLS。
         :type Package: str
         :param DrmType: 加密类型。
         :type DrmType: str

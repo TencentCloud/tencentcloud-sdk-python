@@ -143,6 +143,34 @@ class ScfClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DeleteAlias(self, request):
+        """删除一个函数版本的别名
+
+        :param request: Request instance for DeleteAlias.
+        :type request: :class:`tencentcloud.scf.v20180416.models.DeleteAliasRequest`
+        :rtype: :class:`tencentcloud.scf.v20180416.models.DeleteAliasResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DeleteAlias", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DeleteAliasResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DeleteFunction(self, request):
         """该接口根据传入参数删除函数。
 

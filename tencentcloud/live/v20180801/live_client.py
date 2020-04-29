@@ -813,7 +813,8 @@ class LiveClient(AbstractClient):
 
 
     def DeleteLiveTranscodeRule(self, request):
-        """删除转码规则
+        """删除转码规则。
+        DomainName+AppName+StreamName+TemplateId唯一标识单个转码规则，如需删除需要强匹配。其中TemplateId必填，其余参数为空时也需要传空字符串进行强匹配。
 
         :param request: Request instance for DeleteLiveTranscodeRule.
         :type request: :class:`tencentcloud.live.v20180801.models.DeleteLiveTranscodeRuleRequest`
@@ -841,7 +842,7 @@ class LiveClient(AbstractClient):
 
 
     def DeleteLiveTranscodeTemplate(self, request):
-        """删除转码模板
+        """删除转码模板。
 
         :param request: Request instance for DeleteLiveTranscodeTemplate.
         :type request: :class:`tencentcloud.live.v20180801.models.DeleteLiveTranscodeTemplateRequest`
@@ -1853,7 +1854,7 @@ class LiveClient(AbstractClient):
 
 
     def DescribeLiveTranscodeTemplate(self, request):
-        """获取单个转码模板
+        """获取单个转码模板。
 
         :param request: Request instance for DescribeLiveTranscodeTemplate.
         :type request: :class:`tencentcloud.live.v20180801.models.DescribeLiveTranscodeTemplateRequest`
@@ -1881,7 +1882,7 @@ class LiveClient(AbstractClient):
 
 
     def DescribeLiveTranscodeTemplates(self, request):
-        """获取转码模板列表
+        """获取转码模板列表。
 
         :param request: Request instance for DescribeLiveTranscodeTemplates.
         :type request: :class:`tencentcloud.live.v20180801.models.DescribeLiveTranscodeTemplatesRequest`

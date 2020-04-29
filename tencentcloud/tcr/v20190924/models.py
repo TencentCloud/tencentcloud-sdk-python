@@ -2810,6 +2810,8 @@ class Registry(AbstractModel):
         :type EnableAnonymous: bool
         :param TokenValidTime: Token有效时间
         :type TokenValidTime: int
+        :param InternalEndpoint: 实例内部访问地址
+        :type InternalEndpoint: str
         """
         self.RegistryId = None
         self.RegistryName = None
@@ -2821,6 +2823,7 @@ class Registry(AbstractModel):
         self.RegionId = None
         self.EnableAnonymous = None
         self.TokenValidTime = None
+        self.InternalEndpoint = None
 
 
     def _deserialize(self, params):
@@ -2834,6 +2837,7 @@ class Registry(AbstractModel):
         self.RegionId = params.get("RegionId")
         self.EnableAnonymous = params.get("EnableAnonymous")
         self.TokenValidTime = params.get("TokenValidTime")
+        self.InternalEndpoint = params.get("InternalEndpoint")
 
 
 class RegistryCondition(AbstractModel):

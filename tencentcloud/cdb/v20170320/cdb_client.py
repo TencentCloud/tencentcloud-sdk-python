@@ -1449,6 +1449,34 @@ class CdbClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeRollbackTaskDetail(self, request):
+        """本接口(DescribeRollbackTaskDetail)用于查询云数据库实例回档任务详情。
+
+        :param request: Request instance for DescribeRollbackTaskDetail.
+        :type request: :class:`tencentcloud.cdb.v20170320.models.DescribeRollbackTaskDetailRequest`
+        :rtype: :class:`tencentcloud.cdb.v20170320.models.DescribeRollbackTaskDetailResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeRollbackTaskDetail", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeRollbackTaskDetailResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeSlowLogData(self, request):
         """条件检索实例的慢日志。只允许查看一个月之内的慢日志
 

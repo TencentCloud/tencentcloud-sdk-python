@@ -3110,9 +3110,9 @@ class ItemPrice(AbstractModel):
         :param DiscountPrice: 预支合计费用的折扣价，预付费模式使用，单位：元。
 注意：此字段可能返回 null，表示取不到有效值。
         :type DiscountPrice: float
-        :param Discount: 折扣，如20代表2折
+        :param Discount: 折扣，如20.0代表2折
 注意：此字段可能返回 null，表示取不到有效值。
-        :type Discount: int
+        :type Discount: float
         :param UnitPriceDiscount: 后续合计费用的折扣价，后付费模式使用，单位：元<br><li>如返回了其他时间区间项，如UnitPriceDiscountSecondStep，则本项代表时间区间在(0, 96)小时；若未返回其他时间区间项，则本项代表全时段，即(0, ∞)小时
 注意：此字段可能返回 null，表示取不到有效值。
         :type UnitPriceDiscount: float

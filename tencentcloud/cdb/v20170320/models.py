@@ -3314,6 +3314,66 @@ class DescribeRollbackRangeTimeResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeRollbackTaskDetailRequest(AbstractModel):
+    """DescribeRollbackTaskDetail请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param InstanceId: 实例 ID。与云数据库控制台页面中显示的实例 ID 相同，可使用 [查询实例列表] (https://cloud.tencent.com/document/api/236/15872)。
+        :type InstanceId: str
+        :param AsyncRequestId: 异步任务 ID。
+        :type AsyncRequestId: str
+        :param Limit: 分页参数，每次请求返回的记录数。默认值为 20，最大值为 100。
+        :type Limit: int
+        :param Offset: 分页偏移量。默认为 0。
+        :type Offset: int
+        """
+        self.InstanceId = None
+        self.AsyncRequestId = None
+        self.Limit = None
+        self.Offset = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.AsyncRequestId = params.get("AsyncRequestId")
+        self.Limit = params.get("Limit")
+        self.Offset = params.get("Offset")
+
+
+class DescribeRollbackTaskDetailResponse(AbstractModel):
+    """DescribeRollbackTaskDetail返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param TotalCount: 符合条件的记录总数。
+        :type TotalCount: int
+        :param Items: 回档任务详情。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Items: list of RollbackTask
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.Items = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("Items") is not None:
+            self.Items = []
+            for item in params.get("Items"):
+                obj = RollbackTask()
+                obj._deserialize(item)
+                self.Items.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeSlowLogDataRequest(AbstractModel):
     """DescribeSlowLogData请求参数结构体
 
@@ -6280,6 +6340,49 @@ class RollbackTables(AbstractModel):
                 obj = RollbackTableName()
                 obj._deserialize(item)
                 self.Table.append(obj)
+
+
+class RollbackTask(AbstractModel):
+    """回档任务详情
+
+    """
+
+    def __init__(self):
+        """
+        :param Info: 任务执行信息描述。
+        :type Info: str
+        :param Status: 任务执行结果。可能的取值：INITIAL - 初始化，RUNNING - 运行中，SUCCESS - 执行成功，FAILED - 执行失败，KILLED - 已终止，REMOVED - 已删除，PAUSED - 终止中。
+        :type Status: str
+        :param Progress: 任务执行进度。取值范围为[0, 100]。
+        :type Progress: int
+        :param StartTime: 任务开始时间。
+        :type StartTime: str
+        :param EndTime: 任务结束时间。
+        :type EndTime: str
+        :param Detail: 回档任务详情。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Detail: list of RollbackInstancesInfo
+        """
+        self.Info = None
+        self.Status = None
+        self.Progress = None
+        self.StartTime = None
+        self.EndTime = None
+        self.Detail = None
+
+
+    def _deserialize(self, params):
+        self.Info = params.get("Info")
+        self.Status = params.get("Status")
+        self.Progress = params.get("Progress")
+        self.StartTime = params.get("StartTime")
+        self.EndTime = params.get("EndTime")
+        if params.get("Detail") is not None:
+            self.Detail = []
+            for item in params.get("Detail"):
+                obj = RollbackInstancesInfo()
+                obj._deserialize(item)
+                self.Detail.append(obj)
 
 
 class RollbackTimeRange(AbstractModel):

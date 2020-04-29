@@ -1052,12 +1052,18 @@ class DstInfo(AbstractModel):
         :type Port: int
         :param ReadOnly: 目前只对MySQL有效。当为整实例迁移时，1-只读，0-可读写。
         :type ReadOnly: int
+        :param User: 目标数据库账号
+        :type User: str
+        :param Password: 目标数据库密码
+        :type Password: str
         """
         self.InstanceId = None
         self.Region = None
         self.Ip = None
         self.Port = None
         self.ReadOnly = None
+        self.User = None
+        self.Password = None
 
 
     def _deserialize(self, params):
@@ -1066,6 +1072,8 @@ class DstInfo(AbstractModel):
         self.Ip = params.get("Ip")
         self.Port = params.get("Port")
         self.ReadOnly = params.get("ReadOnly")
+        self.User = params.get("User")
+        self.Password = params.get("Password")
 
 
 class ErrorInfo(AbstractModel):
