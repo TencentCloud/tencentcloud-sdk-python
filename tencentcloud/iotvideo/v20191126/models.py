@@ -126,7 +126,7 @@ class CreateBindingRequest(AbstractModel):
         :type Tid: str
         :param Role: 用户角色，owner：主人，guest：访客
         :type Role: str
-        :param ForceBind: 是否踢掉之前的主人，true：踢掉；false：不踢掉。当role为owner时，可以不填
+        :param ForceBind: 是否踢掉之前的主人，true：踢掉；false：不踢掉。当role为guest时，可以不填
         :type ForceBind: bool
         """
         self.AccessId = None

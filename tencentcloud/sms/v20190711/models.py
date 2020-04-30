@@ -262,7 +262,7 @@ class CallbackStatusStatisticsRequest(AbstractModel):
         :param EndDataTime: 结束时间，yyyymmddhh 需要拉取的截止时间，精确到小时。
 注：EndDataTime 必须大于 StartDateTime。
         :type EndDataTime: int
-        :param SmsSdkAppid: 短信SdkAppid在 [短信控制台](https://console.cloud.tencent.com/sms/smslist) 添加应用后生成的实际SdkAppid，示例如1400006666。
+        :param SmsSdkAppid: 短信SdkAppid在 [短信控制台](https://console.cloud.tencent.com/smsv2) 添加应用后生成的实际SdkAppid，示例如1400006666。
         :type SmsSdkAppid: str
         :param Limit: 最大上限。
 注：目前固定设置为0。
@@ -861,7 +861,7 @@ class PullSmsReplyStatusByPhoneNumberRequest(AbstractModel):
         :type Limit: int
         :param PhoneNumber: 下发目的手机号码，依据 e.164 标准为：+[国家（或地区）码][手机号] ，示例如：+8613711112222， 其中前面有一个+号 ，86为国家码，13711112222为手机号。
         :type PhoneNumber: str
-        :param SmsSdkAppid: 短信SdkAppid在 [短信控制台](https://console.cloud.tencent.com/sms/smslist) 添加应用后生成的实际SdkAppid，例如1400006666。
+        :param SmsSdkAppid: 短信SdkAppid在 [短信控制台](https://console.cloud.tencent.com/smsv2) 添加应用后生成的实际SdkAppid，例如1400006666。
         :type SmsSdkAppid: str
         """
         self.SendDateTime = None
@@ -914,7 +914,7 @@ class PullSmsReplyStatusRequest(AbstractModel):
         """
         :param Limit: 拉取最大条数，最多100条。
         :type Limit: int
-        :param SmsSdkAppid: 短信 SdkAppid 在 [短信控制台](https://console.cloud.tencent.com/sms/smslist) 添加应用后生成的实际 SdkAppid，例如1400006666。
+        :param SmsSdkAppid: 短信 SdkAppid 在 [短信控制台](https://console.cloud.tencent.com/smsv2) 添加应用后生成的实际 SdkAppid，例如1400006666。
         :type SmsSdkAppid: str
         """
         self.Limit = None
@@ -1013,7 +1013,7 @@ class PullSmsSendStatusByPhoneNumberRequest(AbstractModel):
         :type Limit: int
         :param PhoneNumber: 下发目的手机号码，依据 e.164 标准为：+[国家（或地区）码][手机号] ，示例如：+8613711112222， 其中前面有一个+号 ，86为国家码，13711112222为手机号。
         :type PhoneNumber: str
-        :param SmsSdkAppid: 短信SdkAppid在 [短信控制台](https://console.cloud.tencent.com/sms/smslist) 添加应用后生成的实际SdkAppid，例如1400006666。
+        :param SmsSdkAppid: 短信SdkAppid在 [短信控制台](https://console.cloud.tencent.com/smsv2) 添加应用后生成的实际SdkAppid，例如1400006666。
         :type SmsSdkAppid: str
         """
         self.SendDateTime = None
@@ -1066,7 +1066,7 @@ class PullSmsSendStatusRequest(AbstractModel):
         """
         :param Limit: 拉取最大条数，最多100条。
         :type Limit: int
-        :param SmsSdkAppid: 短信SdkAppid在 [短信控制台](https://console.cloud.tencent.com/sms/smslist) 添加应用后生成的实际SdkAppid，例如1400006666。
+        :param SmsSdkAppid: 短信SdkAppid在 [短信控制台](https://console.cloud.tencent.com/smsv2) 添加应用后生成的实际SdkAppid，例如1400006666。
         :type SmsSdkAppid: str
         """
         self.Limit = None
@@ -1114,11 +1114,11 @@ class SendSmsRequest(AbstractModel):
         :param PhoneNumberSet: 下发手机号码，采用 e.164 标准，格式为+[国家或地区码][手机号]，单次请求最多支持200个手机号且要求全为境内手机号或全为境外手机号。
 例如：+8613711112222， 其中前面有一个+号 ，86为国家码，13711112222为手机号。
         :type PhoneNumberSet: list of str
-        :param TemplateID: 模板 ID，必须填写已审核通过的模板 ID。模板ID可登录 [短信控制台](https://console.cloud.tencent.com/sms/smslist) 查看。
+        :param TemplateID: 模板 ID，必须填写已审核通过的模板 ID。模板ID可登录 [短信控制台](https://console.cloud.tencent.com/smsv2) 查看。
         :type TemplateID: str
-        :param SmsSdkAppid: 短信SdkAppid在 [短信控制台](https://console.cloud.tencent.com/sms/smslist)  添加应用后生成的实际SdkAppid，示例如1400006666。
+        :param SmsSdkAppid: 短信SdkAppid在 [短信控制台](https://console.cloud.tencent.com/smsv2)  添加应用后生成的实际SdkAppid，示例如1400006666。
         :type SmsSdkAppid: str
-        :param Sign: 短信签名内容，使用 UTF-8 编码，必须填写已审核通过的签名，签名信息可登录 [短信控制台](https://console.cloud.tencent.com/sms/smslist)  查看。注：国内短信为必填参数。
+        :param Sign: 短信签名内容，使用 UTF-8 编码，必须填写已审核通过的签名，签名信息可登录 [短信控制台](https://console.cloud.tencent.com/smsv2)  查看。注：国内短信为必填参数。
         :type Sign: str
         :param TemplateParamSet: 模板参数，若无模板参数，则设置为空。
         :type TemplateParamSet: list of str
@@ -1250,7 +1250,7 @@ class SendStatusStatisticsRequest(AbstractModel):
         :param EndDataTime: 结束时间，yyyymmddhh 需要拉取的截止时间，精确到小时
 注：EndDataTime 必须大于 StartDateTime。
         :type EndDataTime: int
-        :param SmsSdkAppid: 短信SdkAppid在 [短信控制台](https://console.cloud.tencent.com/sms/smslist) 添加应用后生成的实际SdkAppid，示例如1400006666。
+        :param SmsSdkAppid: 短信SdkAppid在 [短信控制台](https://console.cloud.tencent.com/smsv2) 添加应用后生成的实际SdkAppid，示例如1400006666。
         :type SmsSdkAppid: str
         :param Limit: 最大上限。
 注：目前固定设置为0。
@@ -1357,7 +1357,7 @@ class SmsPackagesStatisticsRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param SmsSdkAppid: 短信SdkAppid在 [短信控制台](https://console.cloud.tencent.com/sms/smslist) 添加应用后生成的实际SdkAppid，示例如1400006666。
+        :param SmsSdkAppid: 短信SdkAppid在 [短信控制台](https://console.cloud.tencent.com/smsv2) 添加应用后生成的实际SdkAppid，示例如1400006666。
         :type SmsSdkAppid: str
         :param Limit: 最大上限(需要拉取的套餐包个数)。
         :type Limit: int

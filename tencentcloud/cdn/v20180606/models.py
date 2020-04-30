@@ -714,12 +714,17 @@ class CacheKey(AbstractModel):
 on：开启全路径缓存（即关闭参数过滤）
 off：关闭全路径缓存（即开启参数过滤）
         :type FullUrlCache: str
+        :param CaseSensitive: 缓存是否忽略大小写
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CaseSensitive: str
         """
         self.FullUrlCache = None
+        self.CaseSensitive = None
 
 
     def _deserialize(self, params):
         self.FullUrlCache = params.get("FullUrlCache")
+        self.CaseSensitive = params.get("CaseSensitive")
 
 
 class CacheOptResult(AbstractModel):
@@ -2733,6 +2738,9 @@ global：全球锁定
         :param ImageOptimization: ImageOptimization配置
 注意：此字段可能返回 null，表示取不到有效值。
         :type ImageOptimization: :class:`tencentcloud.cdn.v20180606.models.ImageOptimization`
+        :param UserAgentFilter: UA黑白名单配置
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UserAgentFilter: :class:`tencentcloud.cdn.v20180606.models.UserAgentFilter`
         """
         self.ResourceId = None
         self.AppId = None
@@ -2776,6 +2784,7 @@ global：全球锁定
         self.AwsPrivateAccess = None
         self.SecurityConfig = None
         self.ImageOptimization = None
+        self.UserAgentFilter = None
 
 
     def _deserialize(self, params):
@@ -2881,6 +2890,9 @@ global：全球锁定
         if params.get("ImageOptimization") is not None:
             self.ImageOptimization = ImageOptimization()
             self.ImageOptimization._deserialize(params.get("ImageOptimization"))
+        if params.get("UserAgentFilter") is not None:
+            self.UserAgentFilter = UserAgentFilter()
+            self.UserAgentFilter._deserialize(params.get("UserAgentFilter"))
 
 
 class DisableCachesRequest(AbstractModel):
@@ -3371,6 +3383,33 @@ class GuetzliAdapter(AbstractModel):
         self.Switch = params.get("Switch")
 
 
+class Hsts(AbstractModel):
+    """HSTS 配置。
+
+    """
+
+    def __init__(self):
+        """
+        :param Switch: 是否开启，on或off。
+        :type Switch: str
+        :param MaxAge: MaxAge数值。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MaxAge: int
+        :param IncludeSubDomains: 是否包含子域名，on或off。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IncludeSubDomains: str
+        """
+        self.Switch = None
+        self.MaxAge = None
+        self.IncludeSubDomains = None
+
+
+    def _deserialize(self, params):
+        self.Switch = params.get("Switch")
+        self.MaxAge = params.get("MaxAge")
+        self.IncludeSubDomains = params.get("IncludeSubDomains")
+
+
 class HttpHeaderPathRule(AbstractModel):
     """Http 头部设置规则，最多可设置 100 条
 
@@ -3471,6 +3510,13 @@ deployed：部署成功
 failed：部署失败
 注意：此字段可能返回 null，表示取不到有效值。
         :type SslStatus: str
+        :param TlsVersion: TLS版本列表，支持填写以下值：
+TLSv1.0, TLSv1.1, TLSv1.2
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TlsVersion: list of str
+        :param Hsts: Hsts配置
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Hsts: :class:`tencentcloud.cdn.v20180606.models.Hsts`
         """
         self.Switch = None
         self.Http2 = None
@@ -3480,6 +3526,8 @@ failed：部署失败
         self.ClientCertInfo = None
         self.Spdy = None
         self.SslStatus = None
+        self.TlsVersion = None
+        self.Hsts = None
 
 
     def _deserialize(self, params):
@@ -3495,6 +3543,10 @@ failed：部署失败
             self.ClientCertInfo._deserialize(params.get("ClientCertInfo"))
         self.Spdy = params.get("Spdy")
         self.SslStatus = params.get("SslStatus")
+        self.TlsVersion = params.get("TlsVersion")
+        if params.get("Hsts") is not None:
+            self.Hsts = Hsts()
+            self.Hsts._deserialize(params.get("Hsts"))
 
 
 class ImageOptimization(AbstractModel):
@@ -6100,6 +6152,71 @@ class UrlRecord(AbstractModel):
         self.RealUrl = params.get("RealUrl")
         self.CreateTime = params.get("CreateTime")
         self.UpdateTime = params.get("UpdateTime")
+
+
+class UserAgentFilter(AbstractModel):
+    """UserAgent黑白名单配置
+
+    """
+
+    def __init__(self):
+        """
+        :param Switch: 开关，on或off
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Switch: str
+        :param FilterRules: UA黑白名单生效规则列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FilterRules: list of UserAgentFilterRule
+        """
+        self.Switch = None
+        self.FilterRules = None
+
+
+    def _deserialize(self, params):
+        self.Switch = params.get("Switch")
+        if params.get("FilterRules") is not None:
+            self.FilterRules = []
+            for item in params.get("FilterRules"):
+                obj = UserAgentFilterRule()
+                obj._deserialize(item)
+                self.FilterRules.append(obj)
+
+
+class UserAgentFilterRule(AbstractModel):
+    """UserAgent黑白名单规则配置
+
+    """
+
+    def __init__(self):
+        """
+        :param RuleType: 访问路径生效类型
+all: 所有访问路径生效
+file: 根据文件后缀类型生效
+directory: 根据目录生效
+path: 根据完整访问路径生效
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RuleType: str
+        :param RulePaths: 访问路径生效内容
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RulePaths: list of str
+        :param UserAgents: UserAgent列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UserAgents: list of str
+        :param FilterType: 黑名单或白名单，blacklist或whitelist
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FilterType: str
+        """
+        self.RuleType = None
+        self.RulePaths = None
+        self.UserAgents = None
+        self.FilterType = None
+
+
+    def _deserialize(self, params):
+        self.RuleType = params.get("RuleType")
+        self.RulePaths = params.get("RulePaths")
+        self.UserAgents = params.get("UserAgents")
+        self.FilterType = params.get("FilterType")
 
 
 class VideoSeek(AbstractModel):

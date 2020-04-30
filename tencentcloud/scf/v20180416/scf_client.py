@@ -59,6 +59,35 @@ class ScfClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def CreateAlias(self, request):
+        """为某个函数版本创建一个别名，您可以使用别名来标记特定的函数版本，如DEV/RELEASE版本，也可以随时修改别名指向的版本。
+        一个别名必须指向一个主版本，此外还可以同时指向一个附加版本。调用函数时指定特定的别名，则请求会被发送到别名指向的版本上，您可以配置请求发送到主版本和附加版本的比例。
+
+        :param request: Request instance for CreateAlias.
+        :type request: :class:`tencentcloud.scf.v20180416.models.CreateAliasRequest`
+        :rtype: :class:`tencentcloud.scf.v20180416.models.CreateAliasResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("CreateAlias", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateAliasResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def CreateFunction(self, request):
         """该接口根据传入参数创建新的函数。
 
@@ -283,6 +312,34 @@ class ScfClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def GetAlias(self, request):
+        """获取别名的详细信息，包括名称、描述、版本、路由信息等。
+
+        :param request: Request instance for GetAlias.
+        :type request: :class:`tencentcloud.scf.v20180416.models.GetAliasRequest`
+        :rtype: :class:`tencentcloud.scf.v20180416.models.GetAliasResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("GetAlias", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.GetAliasResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def GetFunction(self, request):
         """该接口获取某个函数的详细信息，包括名称、代码、处理方法、关联触发器和超时时间等字段。
 
@@ -409,6 +466,34 @@ class ScfClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.InvokeResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ListAliases(self, request):
+        """返回一个函数下的全部别名，可以根据特定函数版本过滤。
+
+        :param request: Request instance for ListAliases.
+        :type request: :class:`tencentcloud.scf.v20180416.models.ListAliasesRequest`
+        :rtype: :class:`tencentcloud.scf.v20180416.models.ListAliasesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ListAliases", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ListAliasesResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -605,6 +690,34 @@ class ScfClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.PublishVersionResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def UpdateAlias(self, request):
+        """更新别名的配置
+
+        :param request: Request instance for UpdateAlias.
+        :type request: :class:`tencentcloud.scf.v20180416.models.UpdateAliasRequest`
+        :rtype: :class:`tencentcloud.scf.v20180416.models.UpdateAliasResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("UpdateAlias", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.UpdateAliasResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

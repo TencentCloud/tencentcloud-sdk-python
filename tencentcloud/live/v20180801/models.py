@@ -6849,11 +6849,14 @@ class RecordParam(AbstractModel):
         :type Enable: int
         :param VodSubAppId: 点播子应用 ID。
         :type VodSubAppId: int
+        :param VodFileName: 录制文件名。
+        :type VodFileName: str
         """
         self.RecordInterval = None
         self.StorageTime = None
         self.Enable = None
         self.VodSubAppId = None
+        self.VodFileName = None
 
 
     def _deserialize(self, params):
@@ -6861,6 +6864,7 @@ class RecordParam(AbstractModel):
         self.StorageTime = params.get("StorageTime")
         self.Enable = params.get("Enable")
         self.VodSubAppId = params.get("VodSubAppId")
+        self.VodFileName = params.get("VodFileName")
 
 
 class RecordTemplateInfo(AbstractModel):

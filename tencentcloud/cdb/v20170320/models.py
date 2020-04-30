@@ -2237,6 +2237,62 @@ class DescribeDBInstanceGTIDResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeDBInstanceInfoRequest(AbstractModel):
+    """DescribeDBInstanceInfo请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param InstanceId: 实例 ID 。
+        :type InstanceId: str
+        """
+        self.InstanceId = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+
+
+class DescribeDBInstanceInfoResponse(AbstractModel):
+    """DescribeDBInstanceInfo返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param InstanceId: 实例 ID 。
+        :type InstanceId: str
+        :param InstanceName: 实例名称。
+        :type InstanceName: str
+        :param Encryption: 是否开通加密，YES 已开通，NO 未开通。
+        :type Encryption: str
+        :param KeyId: 加密使用的密钥 ID 。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type KeyId: str
+        :param KeyRegion: 密钥所在地域。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type KeyRegion: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.InstanceId = None
+        self.InstanceName = None
+        self.Encryption = None
+        self.KeyId = None
+        self.KeyRegion = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.InstanceName = params.get("InstanceName")
+        self.Encryption = params.get("Encryption")
+        self.KeyId = params.get("KeyId")
+        self.KeyRegion = params.get("KeyRegion")
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeDBInstanceRebootTimeRequest(AbstractModel):
     """DescribeDBInstanceRebootTime请求参数结构体
 
@@ -3321,7 +3377,7 @@ class DescribeRollbackTaskDetailRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param InstanceId: 实例 ID。与云数据库控制台页面中显示的实例 ID 相同，可使用 [查询实例列表] (https://cloud.tencent.com/document/api/236/15872)。
+        :param InstanceId: 实例 ID。与云数据库控制台页面中显示的实例 ID 相同，可使用 [查询实例列表](https://cloud.tencent.com/document/api/236/15872)。
         :type InstanceId: str
         :param AsyncRequestId: 异步任务 ID。
         :type AsyncRequestId: str

@@ -1822,6 +1822,8 @@ class CreateInvoiceRequest(AbstractModel):
         :type Items: list of CreateInvoiceItem
         :param Profile: 接入环境。沙箱环境填sandbox。
         :type Profile: str
+        :param UndoPart: 撤销部分商品。0-不撤销，1-撤销
+        :type UndoPart: int
         """
         self.InvoicePlatformId = None
         self.TitleType = None
@@ -1854,6 +1856,7 @@ class CreateInvoiceRequest(AbstractModel):
         self.Remark = None
         self.Items = None
         self.Profile = None
+        self.UndoPart = None
 
 
     def _deserialize(self, params):
@@ -1893,6 +1896,7 @@ class CreateInvoiceRequest(AbstractModel):
                 obj._deserialize(item)
                 self.Items.append(obj)
         self.Profile = params.get("Profile")
+        self.UndoPart = params.get("UndoPart")
 
 
 class CreateInvoiceResponse(AbstractModel):

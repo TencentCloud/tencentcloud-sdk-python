@@ -563,6 +563,34 @@ class EcmClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeInstanceVncUrl(self, request):
+        """查询实例管理终端地址
+
+        :param request: Request instance for DescribeInstanceVncUrl.
+        :type request: :class:`tencentcloud.ecm.v20190719.models.DescribeInstanceVncUrlRequest`
+        :rtype: :class:`tencentcloud.ecm.v20190719.models.DescribeInstanceVncUrlResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeInstanceVncUrl", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeInstanceVncUrlResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeInstances(self, request):
         """获取实例的相关信息。
 

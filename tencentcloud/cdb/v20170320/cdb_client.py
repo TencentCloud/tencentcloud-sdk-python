@@ -915,6 +915,34 @@ class CdbClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeDBInstanceInfo(self, request):
+        """查询实例基本信息（实例 ID ，实例名称，是否开通加密 ）
+
+        :param request: Request instance for DescribeDBInstanceInfo.
+        :type request: :class:`tencentcloud.cdb.v20170320.models.DescribeDBInstanceInfoRequest`
+        :rtype: :class:`tencentcloud.cdb.v20170320.models.DescribeDBInstanceInfoResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeDBInstanceInfo", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeDBInstanceInfoResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeDBInstanceRebootTime(self, request):
         """本接口(DescribeDBInstanceRebootTime)用于查询云数据库实例重启预计所需的时间。
 

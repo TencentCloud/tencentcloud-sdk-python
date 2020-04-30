@@ -649,6 +649,34 @@ class CmeClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def ExportVideoByEditorTrackData(self, request):
+        """使用在线编辑轨道数据直接导出视频。
+
+        :param request: Request instance for ExportVideoByEditorTrackData.
+        :type request: :class:`tencentcloud.cme.v20191029.models.ExportVideoByEditorTrackDataRequest`
+        :rtype: :class:`tencentcloud.cme.v20191029.models.ExportVideoByEditorTrackDataResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ExportVideoByEditorTrackData", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ExportVideoByEditorTrackDataResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def ExportVideoEditProject(self, request):
         """导出视频编辑项目，支持指定输出的模板。
 

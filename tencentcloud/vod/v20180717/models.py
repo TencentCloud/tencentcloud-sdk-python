@@ -3257,6 +3257,8 @@ class ApplyUploadRequest(AbstractModel):
         :type SourceContext: str
         :param SessionContext: 会话上下文，用于透传用户请求信息，当指定 Procedure 参数后，[任务流状态变更回调](/document/product/266/9636) 将返回该字段值，最长 1000 个字符。
         :type SessionContext: str
+        :param ExtInfo: 保留字段，特殊用途时使用。
+        :type ExtInfo: str
         :param SubAppId: 点播 [子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
         :type SubAppId: int
         """
@@ -3269,6 +3271,7 @@ class ApplyUploadRequest(AbstractModel):
         self.ClassId = None
         self.SourceContext = None
         self.SessionContext = None
+        self.ExtInfo = None
         self.SubAppId = None
 
 
@@ -3282,6 +3285,7 @@ class ApplyUploadRequest(AbstractModel):
         self.ClassId = params.get("ClassId")
         self.SourceContext = params.get("SourceContext")
         self.SessionContext = params.get("SessionContext")
+        self.ExtInfo = params.get("ExtInfo")
         self.SubAppId = params.get("SubAppId")
 
 
@@ -3299,10 +3303,8 @@ class ApplyUploadResponse(AbstractModel):
         :param VodSessionKey: 点播会话，用于确认上传接口的参数 VodSessionKey。
         :type VodSessionKey: str
         :param MediaStoragePath: 媒体存储路径，用于上传接口存储媒体的对象键（Key）。
-注意：此字段可能返回 null，表示取不到有效值。
         :type MediaStoragePath: str
         :param CoverStoragePath: 封面存储路径，用于上传接口存储封面的对象键（Key）。
-注意：此字段可能返回 null，表示取不到有效值。
         :type CoverStoragePath: str
         :param TempCertificate: 临时凭证，用于上传接口的权限验证。
         :type TempCertificate: :class:`tencentcloud.vod.v20180717.models.TempCertificate`

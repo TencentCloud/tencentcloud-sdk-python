@@ -53,6 +53,34 @@ class TrtcClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeHistoryScale(self, request):
+        """查询历史房间和用户数，每分钟1次，可查询最近5天的数据
+
+        :param request: Request instance for DescribeHistoryScale.
+        :type request: :class:`tencentcloud.trtc.v20190722.models.DescribeHistoryScaleRequest`
+        :rtype: :class:`tencentcloud.trtc.v20190722.models.DescribeHistoryScaleResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeHistoryScale", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeHistoryScaleResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeRealtimeNetwork(self, request):
         """查询sdkappid维度下实时网络状态，包括上行丢包与下行丢包。可查询24小时内数据，查询起止时间不超过1个小时。
 

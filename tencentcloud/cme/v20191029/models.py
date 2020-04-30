@@ -1452,6 +1452,77 @@ class Entity(AbstractModel):
         self.Id = params.get("Id")
 
 
+class ExportVideoByEditorTrackDataRequest(AbstractModel):
+    """ExportVideoByEditorTrackData请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Platform: 平台名称，指定访问的平台。
+        :type Platform: str
+        :param Definition: 导出模板 Id，目前不支持自定义创建，只支持下面的预置模板 Id。
+<li>10：分辨率为 480P，输出视频格式为 MP4；</li>
+<li>11：分辨率为 720P，输出视频格式为 MP4；</li>
+<li>12：分辨率为 1080P，输出视频格式为 MP4。</li>
+        :type Definition: int
+        :param ExportDestination: 导出目标。
+<li>CME：云剪，即导出为云剪素材；</li>
+<li>VOD：云点播，即导出为云点播媒资。</li>
+        :type ExportDestination: str
+        :param TrackData: 在线编辑轨道数据。
+        :type TrackData: str
+        :param CMEExportInfo: 导出的云剪素材信息。指定 ExportDestination = CME 时有效。
+        :type CMEExportInfo: :class:`tencentcloud.cme.v20191029.models.CMEExportInfo`
+        :param VODExportInfo: 导出的云点播媒资信息。指定 ExportDestination = VOD 时有效。
+        :type VODExportInfo: :class:`tencentcloud.cme.v20191029.models.VODExportInfo`
+        :param Operator: 操作者。填写用户的 Id，用于标识调用者及校验操作权限。
+        :type Operator: str
+        """
+        self.Platform = None
+        self.Definition = None
+        self.ExportDestination = None
+        self.TrackData = None
+        self.CMEExportInfo = None
+        self.VODExportInfo = None
+        self.Operator = None
+
+
+    def _deserialize(self, params):
+        self.Platform = params.get("Platform")
+        self.Definition = params.get("Definition")
+        self.ExportDestination = params.get("ExportDestination")
+        self.TrackData = params.get("TrackData")
+        if params.get("CMEExportInfo") is not None:
+            self.CMEExportInfo = CMEExportInfo()
+            self.CMEExportInfo._deserialize(params.get("CMEExportInfo"))
+        if params.get("VODExportInfo") is not None:
+            self.VODExportInfo = VODExportInfo()
+            self.VODExportInfo._deserialize(params.get("VODExportInfo"))
+        self.Operator = params.get("Operator")
+
+
+class ExportVideoByEditorTrackDataResponse(AbstractModel):
+    """ExportVideoByEditorTrackData返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param TaskId: 任务 Id。
+        :type TaskId: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TaskId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TaskId = params.get("TaskId")
+        self.RequestId = params.get("RequestId")
+
+
 class ExportVideoEditProjectRequest(AbstractModel):
     """ExportVideoEditProject请求参数结构体
 
@@ -2984,6 +3055,7 @@ class VideoEditProjectOutput(AbstractModel):
         :param URL: 导出的媒资 URL。
         :type URL: str
         :param MetaData: 元信息。
+注意：此字段可能返回 null，表示取不到有效值。
         :type MetaData: :class:`tencentcloud.cme.v20191029.models.MediaMetaData`
         """
         self.VodFileId = None

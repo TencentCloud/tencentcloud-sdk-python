@@ -37,6 +37,49 @@ class AccessInfo(AbstractModel):
         self.Vip = params.get("Vip")
 
 
+class Alias(AbstractModel):
+    """函数的版本别名
+
+    """
+
+    def __init__(self):
+        """
+        :param FunctionVersion: 别名指向的主版本
+        :type FunctionVersion: str
+        :param Name: 别名的名称
+        :type Name: str
+        :param RoutingConfig: 别名的路由信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RoutingConfig: :class:`tencentcloud.scf.v20180416.models.RoutingConfig`
+        :param Description: 描述信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Description: str
+        :param AddTime: 创建时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AddTime: str
+        :param ModTime: 更新时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ModTime: str
+        """
+        self.FunctionVersion = None
+        self.Name = None
+        self.RoutingConfig = None
+        self.Description = None
+        self.AddTime = None
+        self.ModTime = None
+
+
+    def _deserialize(self, params):
+        self.FunctionVersion = params.get("FunctionVersion")
+        self.Name = params.get("Name")
+        if params.get("RoutingConfig") is not None:
+            self.RoutingConfig = RoutingConfig()
+            self.RoutingConfig._deserialize(params.get("RoutingConfig"))
+        self.Description = params.get("Description")
+        self.AddTime = params.get("AddTime")
+        self.ModTime = params.get("ModTime")
+
+
 class Code(AbstractModel):
     """函数代码
 
@@ -158,6 +201,62 @@ FALSE：不复制函数配置
 
 class CopyFunctionResponse(AbstractModel):
     """CopyFunction返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class CreateAliasRequest(AbstractModel):
+    """CreateAlias请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Name: 别名的名称，在函数级别中唯一，只能包含字母、数字、'_'和‘-’，且必须以字母开头，长度限制为1-64
+        :type Name: str
+        :param FunctionName: 函数名称
+        :type FunctionName: str
+        :param FunctionVersion: 别名指向的主版本
+        :type FunctionVersion: str
+        :param Namespace: 函数所在的命名空间
+        :type Namespace: str
+        :param RoutingConfig: 别名的请求路由配置
+        :type RoutingConfig: :class:`tencentcloud.scf.v20180416.models.RoutingConfig`
+        :param Description: 别名的描述信息
+        :type Description: str
+        """
+        self.Name = None
+        self.FunctionName = None
+        self.FunctionVersion = None
+        self.Namespace = None
+        self.RoutingConfig = None
+        self.Description = None
+
+
+    def _deserialize(self, params):
+        self.Name = params.get("Name")
+        self.FunctionName = params.get("FunctionName")
+        self.FunctionVersion = params.get("FunctionVersion")
+        self.Namespace = params.get("Namespace")
+        if params.get("RoutingConfig") is not None:
+            self.RoutingConfig = RoutingConfig()
+            self.RoutingConfig._deserialize(params.get("RoutingConfig"))
+        self.Description = params.get("Description")
+
+
+class CreateAliasResponse(AbstractModel):
+    """CreateAlias返回参数结构体
 
     """
 
@@ -860,6 +959,77 @@ class FunctionVersion(AbstractModel):
         self.ModTime = params.get("ModTime")
 
 
+class GetAliasRequest(AbstractModel):
+    """GetAlias请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param FunctionName: 函数名称
+        :type FunctionName: str
+        :param Name: 别名的名称
+        :type Name: str
+        :param Namespace: 函数所在的命名空间
+        :type Namespace: str
+        """
+        self.FunctionName = None
+        self.Name = None
+        self.Namespace = None
+
+
+    def _deserialize(self, params):
+        self.FunctionName = params.get("FunctionName")
+        self.Name = params.get("Name")
+        self.Namespace = params.get("Namespace")
+
+
+class GetAliasResponse(AbstractModel):
+    """GetAlias返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param FunctionVersion: 别名指向的主版本
+        :type FunctionVersion: str
+        :param Name: 别名的名称
+        :type Name: str
+        :param RoutingConfig: 别名的路由信息
+        :type RoutingConfig: :class:`tencentcloud.scf.v20180416.models.RoutingConfig`
+        :param Description: 别名的描述
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Description: str
+        :param AddTime: 创建时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AddTime: str
+        :param ModTime: 更新时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ModTime: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.FunctionVersion = None
+        self.Name = None
+        self.RoutingConfig = None
+        self.Description = None
+        self.AddTime = None
+        self.ModTime = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.FunctionVersion = params.get("FunctionVersion")
+        self.Name = params.get("Name")
+        if params.get("RoutingConfig") is not None:
+            self.RoutingConfig = RoutingConfig()
+            self.RoutingConfig._deserialize(params.get("RoutingConfig"))
+        self.Description = params.get("Description")
+        self.AddTime = params.get("AddTime")
+        self.ModTime = params.get("ModTime")
+        self.RequestId = params.get("RequestId")
+
+
 class GetFunctionAddressRequest(AbstractModel):
     """GetFunctionAddress请求参数结构体
 
@@ -1435,6 +1605,70 @@ class LayerVersionSimple(AbstractModel):
     def _deserialize(self, params):
         self.LayerName = params.get("LayerName")
         self.LayerVersion = params.get("LayerVersion")
+
+
+class ListAliasesRequest(AbstractModel):
+    """ListAliases请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param FunctionName: 函数名称
+        :type FunctionName: str
+        :param Namespace: 函数所在的命名空间
+        :type Namespace: str
+        :param FunctionVersion: 如果提供此参数，则只返回与该函数版本有关联的别名
+        :type FunctionVersion: str
+        :param Offset: 数据偏移量，默认值为 0
+        :type Offset: str
+        :param Limit: 返回数据长度，默认值为 20
+        :type Limit: str
+        """
+        self.FunctionName = None
+        self.Namespace = None
+        self.FunctionVersion = None
+        self.Offset = None
+        self.Limit = None
+
+
+    def _deserialize(self, params):
+        self.FunctionName = params.get("FunctionName")
+        self.Namespace = params.get("Namespace")
+        self.FunctionVersion = params.get("FunctionVersion")
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+
+
+class ListAliasesResponse(AbstractModel):
+    """ListAliases返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Aliases: 别名列表
+        :type Aliases: list of Alias
+        :param TotalCount: 别名总数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TotalCount: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Aliases = None
+        self.TotalCount = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Aliases") is not None:
+            self.Aliases = []
+            for item in params.get("Aliases"):
+                obj = Alias()
+                obj._deserialize(item)
+                self.Aliases.append(obj)
+        self.TotalCount = params.get("TotalCount")
+        self.RequestId = params.get("RequestId")
 
 
 class ListFunctionsRequest(AbstractModel):
@@ -2041,6 +2275,37 @@ class Result(AbstractModel):
         self.InvokeResult = params.get("InvokeResult")
 
 
+class RoutingConfig(AbstractModel):
+    """别名的版本路由配置
+
+    """
+
+    def __init__(self):
+        """
+        :param AdditionalVersionWeights: 随机权重路由附加版本
+        :type AdditionalVersionWeights: list of VersionWeight
+        :param AddtionVersionMatchs: 规则路由附加版本
+        :type AddtionVersionMatchs: list of VersionMatch
+        """
+        self.AdditionalVersionWeights = None
+        self.AddtionVersionMatchs = None
+
+
+    def _deserialize(self, params):
+        if params.get("AdditionalVersionWeights") is not None:
+            self.AdditionalVersionWeights = []
+            for item in params.get("AdditionalVersionWeights"):
+                obj = VersionWeight()
+                obj._deserialize(item)
+                self.AdditionalVersionWeights.append(obj)
+        if params.get("AddtionVersionMatchs") is not None:
+            self.AddtionVersionMatchs = []
+            for item in params.get("AddtionVersionMatchs"):
+                obj = VersionMatch()
+                obj._deserialize(item)
+                self.AddtionVersionMatchs.append(obj)
+
+
 class Tag(AbstractModel):
     """函数标签
 
@@ -2105,6 +2370,62 @@ class Trigger(AbstractModel):
         self.Enable = params.get("Enable")
         self.CustomArgument = params.get("CustomArgument")
         self.AvailableStatus = params.get("AvailableStatus")
+
+
+class UpdateAliasRequest(AbstractModel):
+    """UpdateAlias请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param FunctionName: 函数名称
+        :type FunctionName: str
+        :param Name: 别名的名称
+        :type Name: str
+        :param FunctionVersion: 别名指向的主版本
+        :type FunctionVersion: str
+        :param Namespace: 函数所在的命名空间
+        :type Namespace: str
+        :param RoutingConfig: 别名的路由信息，需要为别名指定附加版本时，必须提供此参数
+        :type RoutingConfig: :class:`tencentcloud.scf.v20180416.models.RoutingConfig`
+        :param Description: 别名的描述
+        :type Description: str
+        """
+        self.FunctionName = None
+        self.Name = None
+        self.FunctionVersion = None
+        self.Namespace = None
+        self.RoutingConfig = None
+        self.Description = None
+
+
+    def _deserialize(self, params):
+        self.FunctionName = params.get("FunctionName")
+        self.Name = params.get("Name")
+        self.FunctionVersion = params.get("FunctionVersion")
+        self.Namespace = params.get("Namespace")
+        if params.get("RoutingConfig") is not None:
+            self.RoutingConfig = RoutingConfig()
+            self.RoutingConfig._deserialize(params.get("RoutingConfig"))
+        self.Description = params.get("Description")
+
+
+class UpdateAliasResponse(AbstractModel):
+    """UpdateAlias返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
 
 
 class UpdateFunctionCodeRequest(AbstractModel):
@@ -2214,6 +2535,8 @@ class UpdateFunctionConfigurationRequest(AbstractModel):
         :type ClsTopicId: str
         :param Publish: 在更新时是否同步发布新版本，默认为：FALSE，不发布
         :type Publish: str
+        :param L5Enable: 是否开启L5访问能力，TRUE 为开启，FALSE为关闭
+        :type L5Enable: str
         :param Layers: 函数要关联的层版本列表，层的版本会按照在列表中顺序依次覆盖。
         :type Layers: list of LayerVersionSimple
         :param DeadLetterConfig: 函数关联的死信队列信息
@@ -2231,6 +2554,7 @@ class UpdateFunctionConfigurationRequest(AbstractModel):
         self.ClsLogsetId = None
         self.ClsTopicId = None
         self.Publish = None
+        self.L5Enable = None
         self.Layers = None
         self.DeadLetterConfig = None
 
@@ -2252,6 +2576,7 @@ class UpdateFunctionConfigurationRequest(AbstractModel):
         self.ClsLogsetId = params.get("ClsLogsetId")
         self.ClsTopicId = params.get("ClsTopicId")
         self.Publish = params.get("Publish")
+        self.L5Enable = params.get("L5Enable")
         if params.get("Layers") is not None:
             self.Layers = []
             for item in params.get("Layers"):
@@ -2337,6 +2662,63 @@ class Variable(AbstractModel):
     def _deserialize(self, params):
         self.Key = params.get("Key")
         self.Value = params.get("Value")
+
+
+class VersionMatch(AbstractModel):
+    """带有匹配规则的函数版本
+
+    """
+
+    def __init__(self):
+        """
+        :param Version: 函数版本名称
+        :type Version: str
+        :param Key: 匹配规则的key，调用时通过传key来匹配规则路由到指定版本
+header方式：
+key填写"invoke.headers.User"，并在 invoke 调用函数时传参 RoutingKey：{"User":"value"}规则匹配调用
+        :type Key: str
+        :param Method: 匹配方式。取值范围：
+range：范围匹配
+exact：字符串精确匹配
+        :type Method: str
+        :param Expression: range 匹配规则要求：
+需要为开区间或闭区间描述 (a,b) [a,b]，其中 a、b 均为整数
+exact 匹配规则要求：
+字符串精确匹配
+        :type Expression: str
+        """
+        self.Version = None
+        self.Key = None
+        self.Method = None
+        self.Expression = None
+
+
+    def _deserialize(self, params):
+        self.Version = params.get("Version")
+        self.Key = params.get("Key")
+        self.Method = params.get("Method")
+        self.Expression = params.get("Expression")
+
+
+class VersionWeight(AbstractModel):
+    """带有权重的函数版本
+
+    """
+
+    def __init__(self):
+        """
+        :param Version: 函数版本名称
+        :type Version: str
+        :param Weight: 该版本的权重
+        :type Weight: float
+        """
+        self.Version = None
+        self.Weight = None
+
+
+    def _deserialize(self, params):
+        self.Version = params.get("Version")
+        self.Weight = params.get("Weight")
 
 
 class VpcConfig(AbstractModel):

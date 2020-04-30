@@ -1190,6 +1190,44 @@ class DescribeInstanceTypeConfigResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeInstanceVncUrlRequest(AbstractModel):
+    """DescribeInstanceVncUrl请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param InstanceId: 一个操作的实例ID。可通过DescribeInstances API返回值中的InstanceId获取。
+        :type InstanceId: str
+        """
+        self.InstanceId = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+
+
+class DescribeInstanceVncUrlResponse(AbstractModel):
+    """DescribeInstanceVncUrl返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param InstanceVncUrl: 实例的管理终端地址。
+        :type InstanceVncUrl: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.InstanceVncUrl = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.InstanceVncUrl = params.get("InstanceVncUrl")
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeInstancesDeniedActionsRequest(AbstractModel):
     """DescribeInstancesDeniedActions请求参数结构体
 

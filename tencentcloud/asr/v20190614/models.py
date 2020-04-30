@@ -107,6 +107,8 @@ class CreateRecTaskRequest(AbstractModel):
         :type FilterDirty: int
         :param FilterModal: 是否过语气词（目前支持中文普通话引擎）。0：不过滤语气词；1：部分过滤；2：严格过滤 。
         :type FilterModal: int
+        :param ConvertNumMode: 是否进行阿拉伯数字智能转换。0：不转换，直接输出中文数字，1：根据场景智能转换为阿拉伯数字。默认值为1
+        :type ConvertNumMode: int
         """
         self.EngineModelType = None
         self.ChannelNum = None
@@ -119,6 +121,7 @@ class CreateRecTaskRequest(AbstractModel):
         self.HotwordId = None
         self.FilterDirty = None
         self.FilterModal = None
+        self.ConvertNumMode = None
 
 
     def _deserialize(self, params):
@@ -133,6 +136,7 @@ class CreateRecTaskRequest(AbstractModel):
         self.HotwordId = params.get("HotwordId")
         self.FilterDirty = params.get("FilterDirty")
         self.FilterModal = params.get("FilterModal")
+        self.ConvertNumMode = params.get("ConvertNumMode")
 
 
 class CreateRecTaskResponse(AbstractModel):
@@ -479,6 +483,8 @@ class SentenceRecognitionRequest(AbstractModel):
         :type FilterModal: int
         :param FilterPunc: 是否过滤句末的句号（目前支持中文普通话引擎）。0：不过滤句末的句号；1：过滤句末的句号。
         :type FilterPunc: int
+        :param ConvertNumMode: 是否进行阿拉伯数字智能转换。0：不转换，直接输出中文数字，1：根据场景智能转换为阿拉伯数字。默认值为1
+        :type ConvertNumMode: int
         """
         self.ProjectId = None
         self.SubServiceType = None
@@ -493,6 +499,7 @@ class SentenceRecognitionRequest(AbstractModel):
         self.FilterDirty = None
         self.FilterModal = None
         self.FilterPunc = None
+        self.ConvertNumMode = None
 
 
     def _deserialize(self, params):
@@ -509,6 +516,7 @@ class SentenceRecognitionRequest(AbstractModel):
         self.FilterDirty = params.get("FilterDirty")
         self.FilterModal = params.get("FilterModal")
         self.FilterPunc = params.get("FilterPunc")
+        self.ConvertNumMode = params.get("ConvertNumMode")
 
 
 class SentenceRecognitionResponse(AbstractModel):

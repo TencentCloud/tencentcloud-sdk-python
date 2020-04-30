@@ -5218,10 +5218,10 @@ class ProxyGroupInfo(AbstractModel):
         :type RealServerRegionInfo: :class:`tencentcloud.gaap.v20180529.models.RegionDetail`
         :param Status: 通道组状态。
 其中，
-0表示运行中；
-1表示创建中；
-4表示销毁中；
-11表示通道迁移中。
+RUNNING表示运行中；
+CREATING表示创建中；
+DESTROYING表示销毁中；
+MOVING表示通道迁移中。
         :type Status: str
         :param TagSet: 标签列表。
         :type TagSet: list of TagPair

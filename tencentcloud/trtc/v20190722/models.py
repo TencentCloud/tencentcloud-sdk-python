@@ -107,6 +107,62 @@ class DescribeCallDetailResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeHistoryScaleRequest(AbstractModel):
+    """DescribeHistoryScale请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param SdkAppId: 用户sdkappid
+        :type SdkAppId: str
+        :param StartTime: 查询开始时间
+        :type StartTime: int
+        :param EndTime: 查询结束时间
+        :type EndTime: int
+        """
+        self.SdkAppId = None
+        self.StartTime = None
+        self.EndTime = None
+
+
+    def _deserialize(self, params):
+        self.SdkAppId = params.get("SdkAppId")
+        self.StartTime = params.get("StartTime")
+        self.EndTime = params.get("EndTime")
+
+
+class DescribeHistoryScaleResponse(AbstractModel):
+    """DescribeHistoryScale返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Total: 返回的数据条数
+        :type Total: int
+        :param ScaleList: 返回的数据
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ScaleList: list of ScaleInfomation
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Total = None
+        self.ScaleList = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Total = params.get("Total")
+        if params.get("ScaleList") is not None:
+            self.ScaleList = []
+            for item in params.get("ScaleList"):
+                obj = ScaleInfomation()
+                obj._deserialize(item)
+                self.ScaleList.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeRealtimeNetworkRequest(AbstractModel):
     """DescribeRealtimeNetwork请求参数结构体
 
@@ -526,6 +582,38 @@ class RoomState(AbstractModel):
         self.UserId = params.get("UserId")
 
 
+class ScaleInfomation(AbstractModel):
+    """历史规模信息
+
+    """
+
+    def __init__(self):
+        """
+        :param Time: 每天开始的时间
+        :type Time: int
+        :param UserNumber: 房间人数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UserNumber: int
+        :param UserCount: 房间人次
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UserCount: int
+        :param RoomNumbers: 房间数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RoomNumbers: int
+        """
+        self.Time = None
+        self.UserNumber = None
+        self.UserCount = None
+        self.RoomNumbers = None
+
+
+    def _deserialize(self, params):
+        self.Time = params.get("Time")
+        self.UserNumber = params.get("UserNumber")
+        self.UserCount = params.get("UserCount")
+        self.RoomNumbers = params.get("RoomNumbers")
+
+
 class TimeValue(AbstractModel):
     """返回的质量数据，时间:值
 
@@ -558,7 +646,7 @@ class UserInformation(AbstractModel):
         :type RoomStr: str
         :param UserId: 用户Id
         :type UserId: str
-        :param JoinTs: 用户进房事件
+        :param JoinTs: 用户进房时间
         :type JoinTs: int
         :param LeaveTs: 用户退房时间
         :type LeaveTs: int

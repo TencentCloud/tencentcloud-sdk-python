@@ -251,10 +251,13 @@ ModelId 和 RGBA 两个参数只需提供一个，若都提供只使用 ModelId�
         :param FaceRect: 人脸框位置。若不输入则选择 Image 或 Url 中面积最大的人脸。  
 您可以通过 [人脸检测与分析](https://cloud.tencent.com/document/api/867/32800)  接口获取人脸框位置信息。
         :type FaceRect: :class:`tencentcloud.fmu.v20191213.models.FaceRect`
+        :param ModelAlpha: 涂妆浓淡[0,100]。建议取值50。本参数仅控制ModelId对应的涂妆浓淡。
+        :type ModelAlpha: int
         """
         self.RGBA = None
         self.ModelId = None
         self.FaceRect = None
+        self.ModelAlpha = None
 
 
     def _deserialize(self, params):
@@ -265,6 +268,7 @@ ModelId 和 RGBA 两个参数只需提供一个，若都提供只使用 ModelId�
         if params.get("FaceRect") is not None:
             self.FaceRect = FaceRect()
             self.FaceRect._deserialize(params.get("FaceRect"))
+        self.ModelAlpha = params.get("ModelAlpha")
 
 
 class ModelInfo(AbstractModel):
