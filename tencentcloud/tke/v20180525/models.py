@@ -228,6 +228,8 @@ class ClusterAdvancedSettings(AbstractModel):
         :type NetworkType: str
         :param IsNonStaticIpMode: 集群VPC-CNI模式是否为非固定IP，默认: FALSE 固定IP。
         :type IsNonStaticIpMode: bool
+        :param DeletionProtection: 是否启用集群删除保护
+        :type DeletionProtection: bool
         """
         self.IPVS = None
         self.AsEnabled = None
@@ -236,6 +238,7 @@ class ClusterAdvancedSettings(AbstractModel):
         self.ExtraArgs = None
         self.NetworkType = None
         self.IsNonStaticIpMode = None
+        self.DeletionProtection = None
 
 
     def _deserialize(self, params):
@@ -248,6 +251,7 @@ class ClusterAdvancedSettings(AbstractModel):
             self.ExtraArgs._deserialize(params.get("ExtraArgs"))
         self.NetworkType = params.get("NetworkType")
         self.IsNonStaticIpMode = params.get("IsNonStaticIpMode")
+        self.DeletionProtection = params.get("DeletionProtection")
 
 
 class ClusterAsGroup(AbstractModel):

@@ -679,6 +679,8 @@ class DescribeBasicAlarmListRequest(AbstractModel):
         :type ObjLike: str
         :param InstanceGroupIds: 根据实例组ID过滤
         :type InstanceGroupIds: list of int
+        :param MetricNames: 根据指标名过滤
+        :type MetricNames: list of str
         """
         self.Module = None
         self.StartTime = None
@@ -691,6 +693,7 @@ class DescribeBasicAlarmListRequest(AbstractModel):
         self.AlarmStatus = None
         self.ObjLike = None
         self.InstanceGroupIds = None
+        self.MetricNames = None
 
 
     def _deserialize(self, params):
@@ -705,6 +708,7 @@ class DescribeBasicAlarmListRequest(AbstractModel):
         self.AlarmStatus = params.get("AlarmStatus")
         self.ObjLike = params.get("ObjLike")
         self.InstanceGroupIds = params.get("InstanceGroupIds")
+        self.MetricNames = params.get("MetricNames")
 
 
 class DescribeBasicAlarmListResponse(AbstractModel):
@@ -2704,8 +2708,8 @@ class ReceiverInfo(AbstractModel):
         :param NotifyWay: 告警通知方式。可选 "SMS","SITE","EMAIL","CALL","WECHAT"
         :type NotifyWay: list of str
         :param ReceiverType: 接收人类型。“group” 或 “user”
-        :type ReceiverType: list of str
-        :param Id: Id
+        :type ReceiverType: str
+        :param Id: ReceiverId
         :type Id: int
         :param SendFor: 电话告警通知时机。可选"OCCUR"(告警时通知),"RECOVER"(恢复时通知)
         :type SendFor: list of str

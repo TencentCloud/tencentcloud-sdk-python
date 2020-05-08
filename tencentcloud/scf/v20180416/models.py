@@ -1919,6 +1919,83 @@ class ListNamespacesResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class ListTriggersRequest(AbstractModel):
+    """ListTriggers请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param FunctionName: 函数名称
+        :type FunctionName: str
+        :param Namespace: 命名空间，默认是default
+        :type Namespace: str
+        :param Offset: 数据偏移量，默认值为 0
+        :type Offset: int
+        :param Limit: 返回数据长度，默认值为 20
+        :type Limit: int
+        :param OrderBy: 根据哪个字段进行返回结果排序,支持以下字段：AddTime, ModTime，默认ModTime
+        :type OrderBy: str
+        :param Order: 以升序还是降序的方式返回结果，可选值 ASC 和 DESC，默认DESC
+        :type Order: str
+        :param Filters: * Qualifier:
+函数版本，别名
+        :type Filters: list of Filter
+        """
+        self.FunctionName = None
+        self.Namespace = None
+        self.Offset = None
+        self.Limit = None
+        self.OrderBy = None
+        self.Order = None
+        self.Filters = None
+
+
+    def _deserialize(self, params):
+        self.FunctionName = params.get("FunctionName")
+        self.Namespace = params.get("Namespace")
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+        self.OrderBy = params.get("OrderBy")
+        self.Order = params.get("Order")
+        if params.get("Filters") is not None:
+            self.Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self.Filters.append(obj)
+
+
+class ListTriggersResponse(AbstractModel):
+    """ListTriggers返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param TotalCount: 触发器总数
+        :type TotalCount: int
+        :param Triggers: 触发器列表
+        :type Triggers: list of TriggerInfo
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.Triggers = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("Triggers") is not None:
+            self.Triggers = []
+            for item in params.get("Triggers"):
+                obj = TriggerInfo()
+                obj._deserialize(item)
+                self.Triggers.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class ListVersionByFunctionRequest(AbstractModel):
     """ListVersionByFunction请求参数结构体
 
@@ -2370,6 +2447,56 @@ class Trigger(AbstractModel):
         self.Enable = params.get("Enable")
         self.CustomArgument = params.get("CustomArgument")
         self.AvailableStatus = params.get("AvailableStatus")
+
+
+class TriggerInfo(AbstractModel):
+    """触发器信息
+
+    """
+
+    def __init__(self):
+        """
+        :param Enable: 使能开关
+        :type Enable: int
+        :param Qualifier: 函数版本或别名
+        :type Qualifier: str
+        :param TriggerName: 触发器名称
+        :type TriggerName: str
+        :param Type: 触发器类型
+        :type Type: str
+        :param TriggerDesc: 触发器详细配置
+        :type TriggerDesc: str
+        :param AvailableStatus: 触发器是否可用
+        :type AvailableStatus: str
+        :param CustomArgument: 客户自定义参数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CustomArgument: str
+        :param AddTime: 触发器创建时间
+        :type AddTime: str
+        :param ModTime: 触发器最后修改时间
+        :type ModTime: str
+        """
+        self.Enable = None
+        self.Qualifier = None
+        self.TriggerName = None
+        self.Type = None
+        self.TriggerDesc = None
+        self.AvailableStatus = None
+        self.CustomArgument = None
+        self.AddTime = None
+        self.ModTime = None
+
+
+    def _deserialize(self, params):
+        self.Enable = params.get("Enable")
+        self.Qualifier = params.get("Qualifier")
+        self.TriggerName = params.get("TriggerName")
+        self.Type = params.get("Type")
+        self.TriggerDesc = params.get("TriggerDesc")
+        self.AvailableStatus = params.get("AvailableStatus")
+        self.CustomArgument = params.get("CustomArgument")
+        self.AddTime = params.get("AddTime")
+        self.ModTime = params.get("ModTime")
 
 
 class UpdateAliasRequest(AbstractModel):

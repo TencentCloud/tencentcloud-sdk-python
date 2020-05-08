@@ -620,6 +620,34 @@ class ScfClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def ListTriggers(self, request):
+        """获取函数触发器列表
+
+        :param request: Request instance for ListTriggers.
+        :type request: :class:`tencentcloud.scf.v20180416.models.ListTriggersRequest`
+        :rtype: :class:`tencentcloud.scf.v20180416.models.ListTriggersResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ListTriggers", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ListTriggersResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def ListVersionByFunction(self, request):
         """该接口根据传入的参数查询函数的版本。
 

@@ -14259,18 +14259,24 @@ class SnapshotByTimeOffsetTaskInput(AbstractModel):
         """
         :param Definition: 指定时间点截图模板 ID。
         :type Definition: int
-        :param TimeOffsetSet: 截图时间点列表，单位为<font color=red>毫秒</font>。
+        :param ExtTimeOffsetSet: 截图时间点列表，时间点支持 s、% 两种格式：
+<li>当字符串以 s 结尾，表示时间点单位为秒，如 3.5s 表示时间点为第3.5秒；</li>
+<li>当字符串以 % 结尾，表示时间点为视频时长的百分比大小，如10%表示时间点为视频前第10%的时间。</li>
+        :type ExtTimeOffsetSet: list of str
+        :param TimeOffsetSet: 截图时间点列表，单位为<font color=red>毫秒</font>。此参数已不再建议使用，建议您使用 ExtTimeOffsetSet 参数。
         :type TimeOffsetSet: list of float
         :param WatermarkSet: 水印列表，支持多张图片或文字水印，最大可支持 10 张。
         :type WatermarkSet: list of WatermarkInput
         """
         self.Definition = None
+        self.ExtTimeOffsetSet = None
         self.TimeOffsetSet = None
         self.WatermarkSet = None
 
 
     def _deserialize(self, params):
         self.Definition = params.get("Definition")
+        self.ExtTimeOffsetSet = params.get("ExtTimeOffsetSet")
         self.TimeOffsetSet = params.get("TimeOffsetSet")
         if params.get("WatermarkSet") is not None:
             self.WatermarkSet = []

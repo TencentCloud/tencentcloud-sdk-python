@@ -743,20 +743,26 @@ class SentimentAnalysisRequest(AbstractModel):
         """
         :param Text: 待分析的文本（仅支持UTF-8格式，不超过200字）
         :type Text: str
-        :param Flag: 文本所属类型（默认取4值）：
+        :param Flag: 待分析文本所属的类型，仅当输入参数Mode取值为2class时有效（默认取4值）：
 1、商品评论类
 2、社交类
 3、美食酒店类
 4、通用领域类
         :type Flag: int
+        :param Mode: 情感分类模式选项，可取2class或3class（默认值为2class）
+1、2class：返回正负面二分类情感结果
+2、3class：返回正负面及中性三分类情感结果
+        :type Mode: str
         """
         self.Text = None
         self.Flag = None
+        self.Mode = None
 
 
     def _deserialize(self, params):
         self.Text = params.get("Text")
         self.Flag = params.get("Flag")
+        self.Mode = params.get("Mode")
 
 
 class SentimentAnalysisResponse(AbstractModel):
@@ -768,6 +774,8 @@ class SentimentAnalysisResponse(AbstractModel):
         """
         :param Negative: 负面情感概率
         :type Negative: float
+        :param Neutral: 中性情感概率，当输入参数Mode取值为3class时有效，否则值为空
+        :type Neutral: float
         :param Positive: 正面情感概率
         :type Positive: float
         :param Sentiment: 情感属性
@@ -776,6 +784,7 @@ class SentimentAnalysisResponse(AbstractModel):
         :type RequestId: str
         """
         self.Negative = None
+        self.Neutral = None
         self.Positive = None
         self.Sentiment = None
         self.RequestId = None
@@ -783,6 +792,7 @@ class SentimentAnalysisResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.Negative = params.get("Negative")
+        self.Neutral = params.get("Neutral")
         self.Positive = params.get("Positive")
         self.Sentiment = params.get("Sentiment")
         self.RequestId = params.get("RequestId")

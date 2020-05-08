@@ -8469,6 +8469,67 @@ class ModifyWordSampleResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class MosaicInput(AbstractModel):
+    """视频处理任务中的马赛克参数类型
+
+    """
+
+    def __init__(self):
+        """
+        :param CoordinateOrigin: 原点位置，目前仅支持：
+<li>TopLeft：表示坐标原点位于视频图像左上角，马赛克原点为图片或文字的左上角。</li>
+默认值：TopLeft。
+        :type CoordinateOrigin: str
+        :param XPos: 马赛克原点距离视频图像坐标原点的水平位置。支持 %、px 两种格式：
+<li>当字符串以 % 结尾，表示马赛克 XPos 为视频宽度指定百分比，如 10% 表示 XPos 为视频宽度的 10%；</li>
+<li>当字符串以 px 结尾，表示马赛克 XPos 为指定像素，如 100px 表示 XPos 为 100 像素。</li>
+默认值：0px。
+        :type XPos: str
+        :param YPos: 马赛克原点距离视频图像坐标原点的垂直位置。支持 %、px 两种格式：
+<li>当字符串以 % 结尾，表示马赛克 YPos 为视频高度指定百分比，如 10% 表示 YPos 为视频高度的 10%；</li>
+<li>当字符串以 px 结尾，表示马赛克 YPos 为指定像素，如 100px 表示 YPos 为 100 像素。</li>
+默认值：0px。
+        :type YPos: str
+        :param Width: 马赛克的宽度。支持 %、px 两种格式：
+<li>当字符串以 % 结尾，表示马赛克 Width 为视频宽度的百分比大小，如 10% 表示 Width 为视频宽度的 10%；</li>
+<li>当字符串以 px 结尾，表示马赛克 Width 单位为像素，如 100px 表示 Width 为 100 像素。</li>
+默认值：10%。
+        :type Width: str
+        :param Height: 马赛克的高度。支持 %、px 两种格式：
+<li>当字符串以 % 结尾，表示马赛克 Height 为视频高度的百分比大小，如 10% 表示 Height 为视频高度的 10%；</li>
+<li>当字符串以 px 结尾，表示马赛克 Height 单位为像素，如 100px 表示 Height 为 100 像素。</li>
+默认值：10%。
+        :type Height: str
+        :param StartTimeOffset: 马赛克的起始时间偏移，单位：秒。不填或填0，表示马赛克从画面出现时开始显现。
+<li>不填或填0，表示马赛克从画面开始就出现；</li>
+<li>当数值大于0时（假设为 n），表示马赛克从画面开始的第 n 秒出现；</li>
+<li>当数值小于0时（假设为 -n），表示马赛克从离画面结束 n 秒前开始出现。</li>
+        :type StartTimeOffset: float
+        :param EndTimeOffset: 马赛克的结束时间偏移，单位：秒。
+<li>不填或填0，表示马赛克持续到画面结束；</li>
+<li>当数值大于0时（假设为 n），表示马赛克持续到第 n 秒时消失；</li>
+<li>当数值小于0时（假设为 -n），表示马赛克持续到离画面结束 n 秒前消失。</li>
+        :type EndTimeOffset: float
+        """
+        self.CoordinateOrigin = None
+        self.XPos = None
+        self.YPos = None
+        self.Width = None
+        self.Height = None
+        self.StartTimeOffset = None
+        self.EndTimeOffset = None
+
+
+    def _deserialize(self, params):
+        self.CoordinateOrigin = params.get("CoordinateOrigin")
+        self.XPos = params.get("XPos")
+        self.YPos = params.get("YPos")
+        self.Width = params.get("Width")
+        self.Height = params.get("Height")
+        self.StartTimeOffset = params.get("StartTimeOffset")
+        self.EndTimeOffset = params.get("EndTimeOffset")
+
+
 class NumberFormat(AbstractModel):
     """输出文件名的`{number}`变量的规则。
 
@@ -9878,7 +9939,11 @@ class SnapshotByTimeOffsetTaskInput(AbstractModel):
         """
         :param Definition: 指定时间点截图模板 ID。
         :type Definition: int
-        :param TimeOffsetSet: 截图时间点列表，单位为<font color=red>秒</font>。
+        :param ExtTimeOffsetSet: 截图时间点列表，时间点支持 s、% 两种格式：
+<li>当字符串以 s 结尾，表示时间点单位为秒，如 3.5s 表示时间点为第3.5秒；</li>
+<li>当字符串以 % 结尾，表示时间点为视频时长的百分比大小，如10%表示时间点为视频前第10%的时间。</li>
+        :type ExtTimeOffsetSet: list of str
+        :param TimeOffsetSet: 截图时间点列表，单位为<font color=red>秒</font>。此参数已不再建议使用，建议您使用 ExtTimeOffsetSet 参数。
         :type TimeOffsetSet: list of float
         :param WatermarkSet: 水印列表，支持多张图片或文字水印，最大可支持 10 张。
         :type WatermarkSet: list of WatermarkInput
@@ -9892,6 +9957,7 @@ class SnapshotByTimeOffsetTaskInput(AbstractModel):
         :type ObjectNumberFormat: :class:`tencentcloud.mps.v20190612.models.NumberFormat`
         """
         self.Definition = None
+        self.ExtTimeOffsetSet = None
         self.TimeOffsetSet = None
         self.WatermarkSet = None
         self.OutputStorage = None
@@ -9901,6 +9967,7 @@ class SnapshotByTimeOffsetTaskInput(AbstractModel):
 
     def _deserialize(self, params):
         self.Definition = params.get("Definition")
+        self.ExtTimeOffsetSet = params.get("ExtTimeOffsetSet")
         self.TimeOffsetSet = params.get("TimeOffsetSet")
         if params.get("WatermarkSet") is not None:
             self.WatermarkSet = []
@@ -10511,6 +10578,8 @@ class TranscodeTaskInput(AbstractModel):
         :param WatermarkSet: 水印列表，支持多张图片或文字水印，最大可支持 10 张。
 注意：此字段可能返回 null，表示取不到有效值。
         :type WatermarkSet: list of WatermarkInput
+        :param MosaicSet: 马赛克列表，最大可支持 10 张。
+        :type MosaicSet: list of MosaicInput
         :param OutputStorage: 转码后文件的目标存储，不填则继承上层的 OutputStorage 值。
 注意：此字段可能返回 null，表示取不到有效值。
         :type OutputStorage: :class:`tencentcloud.mps.v20190612.models.TaskOutputStorage`
@@ -10525,6 +10594,7 @@ class TranscodeTaskInput(AbstractModel):
         self.Definition = None
         self.RawParameter = None
         self.WatermarkSet = None
+        self.MosaicSet = None
         self.OutputStorage = None
         self.OutputObjectPath = None
         self.SegmentObjectName = None
@@ -10542,6 +10612,12 @@ class TranscodeTaskInput(AbstractModel):
                 obj = WatermarkInput()
                 obj._deserialize(item)
                 self.WatermarkSet.append(obj)
+        if params.get("MosaicSet") is not None:
+            self.MosaicSet = []
+            for item in params.get("MosaicSet"):
+                obj = MosaicInput()
+                obj._deserialize(item)
+                self.MosaicSet.append(obj)
         if params.get("OutputStorage") is not None:
             self.OutputStorage = TaskOutputStorage()
             self.OutputStorage._deserialize(params.get("OutputStorage"))

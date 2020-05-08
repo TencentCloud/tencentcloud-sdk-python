@@ -23,7 +23,7 @@ class DescribeCallDetailRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param CommId: 通话ID
+        :param CommId: 通话ID（唯一标识一次通话）= sdkappid+roomgString（房间号）+房间创建时间（unix时间戳，s）。通过 DescribeRoomInformation（查询房间列表）接口获取。
         :type CommId: str
         :param StartTime: 查询开始时间
         :type StartTime: int
@@ -31,7 +31,7 @@ class DescribeCallDetailRequest(AbstractModel):
         :type EndTime: int
         :param SdkAppId: 用户sdkappid
         :type SdkAppId: str
-        :param UserIds: 需查询的用户数组，不填默认返回6个用户
+        :param UserIds: 需查询的用户数组，不填默认返回6个用户,最多可填6个用户
         :type UserIds: list of str
         :param DataType: 需查询的指标，不填则只返回用户列表，填all则返回所有指标。
 appCpu：APP CPU使用率；
@@ -441,6 +441,109 @@ class DismissRoomResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class EncodeParams(AbstractModel):
+    """MCU混流输出流编码参数
+
+    """
+
+    def __init__(self):
+        """
+        :param AudioSampleRate: 混流-输出流音频采样率
+        :type AudioSampleRate: int
+        :param AudioBitrate: 混流-输出流音频码率，单位Kbps
+        :type AudioBitrate: int
+        :param AudioChannels: 混流-输出流音频声道数
+        :type AudioChannels: int
+        :param VideoWidth: 混流-输出流宽，音视频输出时必填
+        :type VideoWidth: int
+        :param VideoHeight: 混流-输出流高，音视频输出时必填
+        :type VideoHeight: int
+        :param VideoBitrate: 混流-输出流码率，单位Kbps，音视频输出时必填
+        :type VideoBitrate: int
+        :param VideoFramerate: 混流-输出流帧率，音视频输出时必填
+        :type VideoFramerate: int
+        :param VideoGop: 混流-输出流gop，音视频输出时必填
+        :type VideoGop: int
+        :param BackgroundColor: 混流-输出流背景色
+        :type BackgroundColor: int
+        """
+        self.AudioSampleRate = None
+        self.AudioBitrate = None
+        self.AudioChannels = None
+        self.VideoWidth = None
+        self.VideoHeight = None
+        self.VideoBitrate = None
+        self.VideoFramerate = None
+        self.VideoGop = None
+        self.BackgroundColor = None
+
+
+    def _deserialize(self, params):
+        self.AudioSampleRate = params.get("AudioSampleRate")
+        self.AudioBitrate = params.get("AudioBitrate")
+        self.AudioChannels = params.get("AudioChannels")
+        self.VideoWidth = params.get("VideoWidth")
+        self.VideoHeight = params.get("VideoHeight")
+        self.VideoBitrate = params.get("VideoBitrate")
+        self.VideoFramerate = params.get("VideoFramerate")
+        self.VideoGop = params.get("VideoGop")
+        self.BackgroundColor = params.get("BackgroundColor")
+
+
+class LayoutParams(AbstractModel):
+    """MCU混流布局参数
+
+    """
+
+    def __init__(self):
+        """
+        :param Template: 混流布局模板ID，0为悬浮模板(默认);1为九宫格模板;2为屏幕分享模板
+        :type Template: int
+        :param MainVideoUserId: 屏幕分享模板中有效，代表左侧大画面对应的用户ID
+        :type MainVideoUserId: str
+        :param MainVideoStreamType: 屏幕分享模板中有效，代表左侧大画面对应的流类型，0为摄像头，1为屏幕分享
+        :type MainVideoStreamType: int
+        """
+        self.Template = None
+        self.MainVideoUserId = None
+        self.MainVideoStreamType = None
+
+
+    def _deserialize(self, params):
+        self.Template = params.get("Template")
+        self.MainVideoUserId = params.get("MainVideoUserId")
+        self.MainVideoStreamType = params.get("MainVideoStreamType")
+
+
+class OutputParams(AbstractModel):
+    """MCU混流的输出参数
+
+    """
+
+    def __init__(self):
+        """
+        :param StreamId: 直播流ID
+        :type StreamId: str
+        :param PureAudioStream: 填0：直播流为音视频(默认); 填1：直播流为纯音频
+        :type PureAudioStream: int
+        :param RecordId: 自定义录制文件名
+        :type RecordId: str
+        :param RecordAudioOnly: 填1：纯音频录制为mp3
+        :type RecordAudioOnly: int
+        """
+        self.StreamId = None
+        self.PureAudioStream = None
+        self.RecordId = None
+        self.RecordAudioOnly = None
+
+
+    def _deserialize(self, params):
+        self.StreamId = params.get("StreamId")
+        self.PureAudioStream = params.get("PureAudioStream")
+        self.RecordId = params.get("RecordId")
+        self.RecordAudioOnly = params.get("RecordAudioOnly")
+
+
 class QualityData(AbstractModel):
     """Es返回的质量数据
 
@@ -612,6 +715,100 @@ class ScaleInfomation(AbstractModel):
         self.UserNumber = params.get("UserNumber")
         self.UserCount = params.get("UserCount")
         self.RoomNumbers = params.get("RoomNumbers")
+
+
+class StartMCUMixTranscodeRequest(AbstractModel):
+    """StartMCUMixTranscode请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param SdkAppId: TRTC的SDKAppId。
+        :type SdkAppId: int
+        :param RoomId: 房间号。
+        :type RoomId: int
+        :param OutputParams: 混流输出控制参数。
+        :type OutputParams: :class:`tencentcloud.trtc.v20190722.models.OutputParams`
+        :param EncodeParams: 混流输出编码参数。
+        :type EncodeParams: :class:`tencentcloud.trtc.v20190722.models.EncodeParams`
+        :param LayoutParams: 混流输出布局参数。
+        :type LayoutParams: :class:`tencentcloud.trtc.v20190722.models.LayoutParams`
+        """
+        self.SdkAppId = None
+        self.RoomId = None
+        self.OutputParams = None
+        self.EncodeParams = None
+        self.LayoutParams = None
+
+
+    def _deserialize(self, params):
+        self.SdkAppId = params.get("SdkAppId")
+        self.RoomId = params.get("RoomId")
+        if params.get("OutputParams") is not None:
+            self.OutputParams = OutputParams()
+            self.OutputParams._deserialize(params.get("OutputParams"))
+        if params.get("EncodeParams") is not None:
+            self.EncodeParams = EncodeParams()
+            self.EncodeParams._deserialize(params.get("EncodeParams"))
+        if params.get("LayoutParams") is not None:
+            self.LayoutParams = LayoutParams()
+            self.LayoutParams._deserialize(params.get("LayoutParams"))
+
+
+class StartMCUMixTranscodeResponse(AbstractModel):
+    """StartMCUMixTranscode返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class StopMCUMixTranscodeRequest(AbstractModel):
+    """StopMCUMixTranscode请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param SdkAppId: TRTC的SDKAppId。
+        :type SdkAppId: int
+        :param RoomId: 房间号。
+        :type RoomId: int
+        """
+        self.SdkAppId = None
+        self.RoomId = None
+
+
+    def _deserialize(self, params):
+        self.SdkAppId = params.get("SdkAppId")
+        self.RoomId = params.get("RoomId")
+
+
+class StopMCUMixTranscodeResponse(AbstractModel):
+    """StopMCUMixTranscode返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
 
 
 class TimeValue(AbstractModel):

@@ -162,7 +162,7 @@ class BizLicenseOCRResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RegNum: 注册号
+        :param RegNum: 统一社会信用代码（三合一之前为注册号）
         :type RegNum: str
         :param Name: 公司名称
         :type Name: str

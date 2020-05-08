@@ -1255,6 +1255,8 @@ class UpdateInstanceRequest(AbstractModel):
         :type KibanaPrivateAccess: str
         :param BasicSecurityType: ES 6.8及以上版本基础版开启或关闭用户认证
         :type BasicSecurityType: int
+        :param KibanaPrivatePort: Kibana内网端口
+        :type KibanaPrivatePort: int
         """
         self.InstanceId = None
         self.InstanceName = None
@@ -1275,6 +1277,7 @@ class UpdateInstanceRequest(AbstractModel):
         self.KibanaPublicAccess = None
         self.KibanaPrivateAccess = None
         self.BasicSecurityType = None
+        self.KibanaPrivatePort = None
 
 
     def _deserialize(self, params):
@@ -1308,6 +1311,7 @@ class UpdateInstanceRequest(AbstractModel):
         self.KibanaPublicAccess = params.get("KibanaPublicAccess")
         self.KibanaPrivateAccess = params.get("KibanaPrivateAccess")
         self.BasicSecurityType = params.get("BasicSecurityType")
+        self.KibanaPrivatePort = params.get("KibanaPrivatePort")
 
 
 class UpdateInstanceResponse(AbstractModel):

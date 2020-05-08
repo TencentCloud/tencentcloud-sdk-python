@@ -424,6 +424,34 @@ class CpdpClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def CreateAgentTaxPaymentInfos(self, request):
+        """直播平台-代理商完税信息录入
+
+        :param request: Request instance for CreateAgentTaxPaymentInfos.
+        :type request: :class:`tencentcloud.cpdp.v20190820.models.CreateAgentTaxPaymentInfosRequest`
+        :rtype: :class:`tencentcloud.cpdp.v20190820.models.CreateAgentTaxPaymentInfosResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("CreateAgentTaxPaymentInfos", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateAgentTaxPaymentInfosResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def CreateCustAcctId(self, request):
         """会员子账户开立。会员在银行注册，并开立会员子账户，交易网会员代码即会员在平台端系统的会员编号。
         平台需保存银行返回的子账户账号，后续交易接口都会用到。会员属性字段为预留扩展字段，当前必须送默认值。
@@ -537,6 +565,62 @@ class CpdpClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DeleteAgentTaxPaymentInfo(self, request):
+        """直播平台-删除代理商完税信息
+
+        :param request: Request instance for DeleteAgentTaxPaymentInfo.
+        :type request: :class:`tencentcloud.cpdp.v20190820.models.DeleteAgentTaxPaymentInfoRequest`
+        :rtype: :class:`tencentcloud.cpdp.v20190820.models.DeleteAgentTaxPaymentInfoResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DeleteAgentTaxPaymentInfo", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DeleteAgentTaxPaymentInfoResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DeleteAgentTaxPaymentInfos(self, request):
+        """直播平台-删除代理商完税信息
+
+        :param request: Request instance for DeleteAgentTaxPaymentInfos.
+        :type request: :class:`tencentcloud.cpdp.v20190820.models.DeleteAgentTaxPaymentInfosRequest`
+        :rtype: :class:`tencentcloud.cpdp.v20190820.models.DeleteAgentTaxPaymentInfosResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DeleteAgentTaxPaymentInfos", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DeleteAgentTaxPaymentInfosResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DownloadBill(self, request):
         """账单下载接口，根据本接口返回的URL地址，在D+1日下载对账单。注意，本接口返回的URL地址有时效，请尽快下载。URL超时时效后，请重新调用本接口再次获取。
 
@@ -551,6 +635,34 @@ class CpdpClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DownloadBillResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ModifyAgentTaxPaymentInfo(self, request):
+        """直播平台-修改代理商完税信息
+
+        :param request: Request instance for ModifyAgentTaxPaymentInfo.
+        :type request: :class:`tencentcloud.cpdp.v20190820.models.ModifyAgentTaxPaymentInfoRequest`
+        :rtype: :class:`tencentcloud.cpdp.v20190820.models.ModifyAgentTaxPaymentInfoResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ModifyAgentTaxPaymentInfo", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ModifyAgentTaxPaymentInfoResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -663,6 +775,34 @@ class CpdpClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.QueryAcctInfoListResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def QueryAgentTaxPaymentBatch(self, request):
+        """直播平台-查询批次信息
+
+        :param request: Request instance for QueryAgentTaxPaymentBatch.
+        :type request: :class:`tencentcloud.cpdp.v20190820.models.QueryAgentTaxPaymentBatchRequest`
+        :rtype: :class:`tencentcloud.cpdp.v20190820.models.QueryAgentTaxPaymentBatchResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("QueryAgentTaxPaymentBatch", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.QueryAgentTaxPaymentBatchResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

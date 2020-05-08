@@ -542,13 +542,18 @@ class DescribeFileSystemResponse(AbstractModel):
         """
         :param FileSystem: 文件系统
         :type FileSystem: :class:`tencentcloud.chdfs.v20190718.models.FileSystem`
-        :param FileSystemCapacityUsed: 文件系统已使用大小（byte）
+        :param FileSystemCapacityUsed: 文件系统已使用容量（byte）
+注意：此字段可能返回 null，表示取不到有效值。
         :type FileSystemCapacityUsed: int
+        :param CapacityUsed: 已使用容量（byte）
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CapacityUsed: int
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.FileSystem = None
         self.FileSystemCapacityUsed = None
+        self.CapacityUsed = None
         self.RequestId = None
 
 
@@ -557,6 +562,7 @@ class DescribeFileSystemResponse(AbstractModel):
             self.FileSystem = FileSystem()
             self.FileSystem._deserialize(params.get("FileSystem"))
         self.FileSystemCapacityUsed = params.get("FileSystemCapacityUsed")
+        self.CapacityUsed = params.get("CapacityUsed")
         self.RequestId = params.get("RequestId")
 
 

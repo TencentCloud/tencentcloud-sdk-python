@@ -64,6 +64,96 @@ class Acct(AbstractModel):
         self.MaintenanceDate = params.get("MaintenanceDate")
 
 
+class AgentTaxPayment(AbstractModel):
+    """代理商完税证明
+
+    """
+
+    def __init__(self):
+        """
+        :param AnchorId: 主播银行账号
+        :type AnchorId: str
+        :param AnchorName: 主播姓名
+        :type AnchorName: str
+        :param AnchorIDCard: 主播身份证
+        :type AnchorIDCard: str
+        :param StartTime: 纳税的开始时间，格式yyyy-MM-dd
+        :type StartTime: str
+        :param EndTime: 纳税的结束时间，格式yyyy-MM-dd
+        :type EndTime: str
+        :param Amount: 流水金额。以“分”为单位
+        :type Amount: int
+        :param Tax: 应缴税款。以“分”为单位
+        :type Tax: int
+        """
+        self.AnchorId = None
+        self.AnchorName = None
+        self.AnchorIDCard = None
+        self.StartTime = None
+        self.EndTime = None
+        self.Amount = None
+        self.Tax = None
+
+
+    def _deserialize(self, params):
+        self.AnchorId = params.get("AnchorId")
+        self.AnchorName = params.get("AnchorName")
+        self.AnchorIDCard = params.get("AnchorIDCard")
+        self.StartTime = params.get("StartTime")
+        self.EndTime = params.get("EndTime")
+        self.Amount = params.get("Amount")
+        self.Tax = params.get("Tax")
+
+
+class AgentTaxPaymentBatch(AbstractModel):
+    """代理商完税证明批次信息
+
+    """
+
+    def __init__(self):
+        """
+        :param StatusMsg: 状态消息
+        :type StatusMsg: str
+        :param BatchNum: 批次号
+        :type BatchNum: int
+        :param InfoNum: 录入记录的条数
+        :type InfoNum: int
+        :param RawElectronicCertUrl: 源电子凭证下载地址
+        :type RawElectronicCertUrl: str
+        :param AgentId: 代理商账号
+        :type AgentId: str
+        :param FileName: 文件名
+        :type FileName: str
+        :param StatusCode: 状态码。0表示下载成功
+        :type StatusCode: int
+        :param Channel: 渠道号
+        :type Channel: int
+        :param Type: 0-视同，1-个体工商户
+        :type Type: int
+        """
+        self.StatusMsg = None
+        self.BatchNum = None
+        self.InfoNum = None
+        self.RawElectronicCertUrl = None
+        self.AgentId = None
+        self.FileName = None
+        self.StatusCode = None
+        self.Channel = None
+        self.Type = None
+
+
+    def _deserialize(self, params):
+        self.StatusMsg = params.get("StatusMsg")
+        self.BatchNum = params.get("BatchNum")
+        self.InfoNum = params.get("InfoNum")
+        self.RawElectronicCertUrl = params.get("RawElectronicCertUrl")
+        self.AgentId = params.get("AgentId")
+        self.FileName = params.get("FileName")
+        self.StatusCode = params.get("StatusCode")
+        self.Channel = params.get("Channel")
+        self.Type = params.get("Type")
+
+
 class ApplyApplicationMaterialRequest(AbstractModel):
     """ApplyApplicationMaterial请求参数结构体
 
@@ -1565,6 +1655,71 @@ class CreateAcctResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class CreateAgentTaxPaymentInfosRequest(AbstractModel):
+    """CreateAgentTaxPaymentInfos请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param AgentId: 代理商ID
+        :type AgentId: str
+        :param Channel: 平台渠道
+        :type Channel: int
+        :param Type: 类型。0-视同，1-个体工商户
+        :type Type: int
+        :param RawElectronicCertUrl: 源电子凭证下载地址
+        :type RawElectronicCertUrl: str
+        :param FileName: 文件名
+        :type FileName: str
+        :param AgentTaxPaymentInfos: 完税信息
+        :type AgentTaxPaymentInfos: list of AgentTaxPayment
+        """
+        self.AgentId = None
+        self.Channel = None
+        self.Type = None
+        self.RawElectronicCertUrl = None
+        self.FileName = None
+        self.AgentTaxPaymentInfos = None
+
+
+    def _deserialize(self, params):
+        self.AgentId = params.get("AgentId")
+        self.Channel = params.get("Channel")
+        self.Type = params.get("Type")
+        self.RawElectronicCertUrl = params.get("RawElectronicCertUrl")
+        self.FileName = params.get("FileName")
+        if params.get("AgentTaxPaymentInfos") is not None:
+            self.AgentTaxPaymentInfos = []
+            for item in params.get("AgentTaxPaymentInfos"):
+                obj = AgentTaxPayment()
+                obj._deserialize(item)
+                self.AgentTaxPaymentInfos.append(obj)
+
+
+class CreateAgentTaxPaymentInfosResponse(AbstractModel):
+    """CreateAgentTaxPaymentInfos返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param AgentTaxPaymentBatch: 代理商完税证明批次信息
+        :type AgentTaxPaymentBatch: :class:`tencentcloud.cpdp.v20190820.models.AgentTaxPaymentBatch`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.AgentTaxPaymentBatch = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("AgentTaxPaymentBatch") is not None:
+            self.AgentTaxPaymentBatch = AgentTaxPaymentBatch()
+            self.AgentTaxPaymentBatch._deserialize(params.get("AgentTaxPaymentBatch"))
+        self.RequestId = params.get("RequestId")
+
+
 class CreateCustAcctIdRequest(AbstractModel):
     """CreateCustAcctId请求参数结构体
 
@@ -2294,6 +2449,74 @@ class CreateRedInvoiceResultData(AbstractModel):
         self.OrderSn = params.get("OrderSn")
 
 
+class DeleteAgentTaxPaymentInfoRequest(AbstractModel):
+    """DeleteAgentTaxPaymentInfo请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param BatchNum: 批次号
+        :type BatchNum: int
+        """
+        self.BatchNum = None
+
+
+    def _deserialize(self, params):
+        self.BatchNum = params.get("BatchNum")
+
+
+class DeleteAgentTaxPaymentInfoResponse(AbstractModel):
+    """DeleteAgentTaxPaymentInfo返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class DeleteAgentTaxPaymentInfosRequest(AbstractModel):
+    """DeleteAgentTaxPaymentInfos请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param BatchNum: 批次号
+        :type BatchNum: int
+        """
+        self.BatchNum = None
+
+
+    def _deserialize(self, params):
+        self.BatchNum = params.get("BatchNum")
+
+
+class DeleteAgentTaxPaymentInfosResponse(AbstractModel):
+    """DeleteAgentTaxPaymentInfos返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class DownloadBillRequest(AbstractModel):
     """DownloadBill请求参数结构体
 
@@ -2383,6 +2606,54 @@ class FileItem(AbstractModel):
         self.RandomPassword = params.get("RandomPassword")
         self.FilePath = params.get("FilePath")
         self.DrawCode = params.get("DrawCode")
+
+
+class ModifyAgentTaxPaymentInfoRequest(AbstractModel):
+    """ModifyAgentTaxPaymentInfo请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param BatchNum: 批次号
+        :type BatchNum: int
+        :param RawElectronicCertUrl: 新源电子凭证地址
+        :type RawElectronicCertUrl: str
+        :param FileName: 新的文件名
+        :type FileName: str
+        """
+        self.BatchNum = None
+        self.RawElectronicCertUrl = None
+        self.FileName = None
+
+
+    def _deserialize(self, params):
+        self.BatchNum = params.get("BatchNum")
+        self.RawElectronicCertUrl = params.get("RawElectronicCertUrl")
+        self.FileName = params.get("FileName")
+
+
+class ModifyAgentTaxPaymentInfoResponse(AbstractModel):
+    """ModifyAgentTaxPaymentInfo返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param AgentTaxPaymentBatch: 代理商完税证明批次信息
+        :type AgentTaxPaymentBatch: :class:`tencentcloud.cpdp.v20190820.models.AgentTaxPaymentBatch`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.AgentTaxPaymentBatch = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("AgentTaxPaymentBatch") is not None:
+            self.AgentTaxPaymentBatch = AgentTaxPaymentBatch()
+            self.AgentTaxPaymentBatch._deserialize(params.get("AgentTaxPaymentBatch"))
+        self.RequestId = params.get("RequestId")
 
 
 class ModifyMntMbrBindRelateAcctBankCodeRequest(AbstractModel):
@@ -2755,6 +3026,46 @@ merchant:商户子账户
         self.Mobile = params.get("Mobile")
         self.Email = params.get("Email")
         self.SubMerchantMemberType = params.get("SubMerchantMemberType")
+
+
+class QueryAgentTaxPaymentBatchRequest(AbstractModel):
+    """QueryAgentTaxPaymentBatch请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param BatchNum: 批次号
+        :type BatchNum: int
+        """
+        self.BatchNum = None
+
+
+    def _deserialize(self, params):
+        self.BatchNum = params.get("BatchNum")
+
+
+class QueryAgentTaxPaymentBatchResponse(AbstractModel):
+    """QueryAgentTaxPaymentBatch返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param AgentTaxPaymentBatch: 代理商完税证明批次信息
+        :type AgentTaxPaymentBatch: :class:`tencentcloud.cpdp.v20190820.models.AgentTaxPaymentBatch`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.AgentTaxPaymentBatch = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("AgentTaxPaymentBatch") is not None:
+            self.AgentTaxPaymentBatch = AgentTaxPaymentBatch()
+            self.AgentTaxPaymentBatch._deserialize(params.get("AgentTaxPaymentBatch"))
+        self.RequestId = params.get("RequestId")
 
 
 class QueryApplicationMaterialRequest(AbstractModel):

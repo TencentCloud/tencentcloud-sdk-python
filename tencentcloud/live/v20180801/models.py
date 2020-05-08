@@ -522,13 +522,13 @@ class CommonMixCropParams(AbstractModel):
 
     def __init__(self):
         """
-        :param CropWidth: 裁剪的宽度。取值范围[0，3000]。
+        :param CropWidth: 裁剪的宽度。取值范围[0，2000]。
         :type CropWidth: float
-        :param CropHeight: 裁剪的高度。取值范围[0，3000]。
+        :param CropHeight: 裁剪的高度。取值范围[0，2000]。
         :type CropHeight: float
-        :param CropStartLocationX: 裁剪的起始X坐标。取值范围[0，3000]。
+        :param CropStartLocationX: 裁剪的起始X坐标。取值范围[0，2000]。
         :type CropStartLocationX: float
-        :param CropStartLocationY: 裁剪的起始Y坐标。取值范围[0，3000]。
+        :param CropStartLocationY: 裁剪的起始Y坐标。取值范围[0，2000]。
         :type CropStartLocationY: float
         """
         self.CropWidth = None
@@ -593,26 +593,26 @@ class CommonMixLayoutParams(AbstractModel):
 5表示输入流为纯视频。
         :type InputType: int
         :param ImageWidth: 输入画面在输出时的宽度。取值范围：
-像素：[0，3000]
+像素：[0，2000]
 百分比：[0.01，0.99]
 不填默认为输入流的宽度。
 使用百分比时，期望输出为（百分比 * 背景宽）。
         :type ImageWidth: float
         :param ImageHeight: 输入画面在输出时的高度。取值范围：
-像素：[0，3000]
+像素：[0，2000]
 百分比：[0.01，0.99]
 不填默认为输入流的高度。
 使用百分比时，期望输出为（百分比 * 背景高）。
         :type ImageHeight: float
         :param LocationX: 输入在输出画面的X偏移。取值范围：
-像素：[0，3000]
+像素：[0，2000]
 百分比：[0.01，0.99]
 不填默认为0。
 相对于大主播背景画面左上角的横向偏移。 
 使用百分比时，期望输出为（百分比 * 背景宽）。
         :type LocationX: float
         :param LocationY: 输入在输出画面的Y偏移。取值范围：
-像素：[0，3000]
+像素：[0，2000]
 百分比：[0.01，0.99]
 不填默认为0。
 相对于大主播背景画面左上角的纵向偏移。 
