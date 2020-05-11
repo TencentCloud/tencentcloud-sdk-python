@@ -589,6 +589,8 @@ class ImageData(AbstractModel):
         :type LogoDetect: :class:`tencentcloud.cms.v20190321.models.LogoDetail`
         :param OCRDetect: 图片OCR详情
         :type OCRDetect: :class:`tencentcloud.cms.v20190321.models.OCRDetect`
+        :param PhoneDetect: 手机检测详情
+        :type PhoneDetect: :class:`tencentcloud.cms.v20190321.models.PhoneDetect`
         :param PolityDetect: 图片涉政详情
         :type PolityDetect: :class:`tencentcloud.cms.v20190321.models.ImagePolityDetect`
         :param PornDetect: 图片涉黄详情
@@ -605,6 +607,7 @@ class ImageData(AbstractModel):
         self.IllegalDetect = None
         self.LogoDetect = None
         self.OCRDetect = None
+        self.PhoneDetect = None
         self.PolityDetect = None
         self.PornDetect = None
         self.Similar = None
@@ -629,6 +632,9 @@ class ImageData(AbstractModel):
         if params.get("OCRDetect") is not None:
             self.OCRDetect = OCRDetect()
             self.OCRDetect._deserialize(params.get("OCRDetect"))
+        if params.get("PhoneDetect") is not None:
+            self.PhoneDetect = PhoneDetect()
+            self.PhoneDetect._deserialize(params.get("PhoneDetect"))
         if params.get("PolityDetect") is not None:
             self.PolityDetect = ImagePolityDetect()
             self.PolityDetect._deserialize(params.get("PolityDetect"))
@@ -947,6 +953,37 @@ class OCRDetect(AbstractModel):
 
     def _deserialize(self, params):
         self.TextInfo = params.get("TextInfo")
+
+
+class PhoneDetect(AbstractModel):
+    """手机模型识别检测
+
+    """
+
+    def __init__(self):
+        """
+        :param EvilType: 恶意类型
+100：正常
+21000：综合
+        :type EvilType: int
+        :param HitFlag: 处置判定 0：正常 1：可疑
+        :type HitFlag: int
+        :param Labels: 特征中文描述
+        :type Labels: list of str
+        :param Score: 分值范围 0-100，分数越高倾向越明显
+        :type Score: int
+        """
+        self.EvilType = None
+        self.HitFlag = None
+        self.Labels = None
+        self.Score = None
+
+
+    def _deserialize(self, params):
+        self.EvilType = params.get("EvilType")
+        self.HitFlag = params.get("HitFlag")
+        self.Labels = params.get("Labels")
+        self.Score = params.get("Score")
 
 
 class RrectF(AbstractModel):

@@ -9619,7 +9619,7 @@ class ModifyGatewayFlowQosRequest(AbstractModel):
 Nat网关实例ID，形如，`nat-ltjahce6`；
 VPN网关实例ID，形如，`vpn-ltjahce6`。
         :type GatewayId: str
-        :param Bandwidth: 流控带宽值。
+        :param Bandwidth: 流控带宽值。取值大于0，表示限流到指定的Mbps；取值等于0，表示完全限流；取值为-1，不限流。
         :type Bandwidth: int
         :param IpAddresses: 限流的云服务器内网IP。
         :type IpAddresses: list of str

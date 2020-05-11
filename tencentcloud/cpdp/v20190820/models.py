@@ -1674,6 +1674,8 @@ class CreateAgentTaxPaymentInfosRequest(AbstractModel):
         :type FileName: str
         :param AgentTaxPaymentInfos: 完税信息
         :type AgentTaxPaymentInfos: list of AgentTaxPayment
+        :param Profile: 接入环境。沙箱环境填sandbox
+        :type Profile: str
         """
         self.AgentId = None
         self.Channel = None
@@ -1681,6 +1683,7 @@ class CreateAgentTaxPaymentInfosRequest(AbstractModel):
         self.RawElectronicCertUrl = None
         self.FileName = None
         self.AgentTaxPaymentInfos = None
+        self.Profile = None
 
 
     def _deserialize(self, params):
@@ -1695,6 +1698,7 @@ class CreateAgentTaxPaymentInfosRequest(AbstractModel):
                 obj = AgentTaxPayment()
                 obj._deserialize(item)
                 self.AgentTaxPaymentInfos.append(obj)
+        self.Profile = params.get("Profile")
 
 
 class CreateAgentTaxPaymentInfosResponse(AbstractModel):
@@ -2458,12 +2462,16 @@ class DeleteAgentTaxPaymentInfoRequest(AbstractModel):
         """
         :param BatchNum: 批次号
         :type BatchNum: int
+        :param Profile: 接入环境。沙箱环境填sandbox
+        :type Profile: str
         """
         self.BatchNum = None
+        self.Profile = None
 
 
     def _deserialize(self, params):
         self.BatchNum = params.get("BatchNum")
+        self.Profile = params.get("Profile")
 
 
 class DeleteAgentTaxPaymentInfoResponse(AbstractModel):
@@ -2621,16 +2629,20 @@ class ModifyAgentTaxPaymentInfoRequest(AbstractModel):
         :type RawElectronicCertUrl: str
         :param FileName: 新的文件名
         :type FileName: str
+        :param Profile: 接入环境。沙箱环境填sandbox
+        :type Profile: str
         """
         self.BatchNum = None
         self.RawElectronicCertUrl = None
         self.FileName = None
+        self.Profile = None
 
 
     def _deserialize(self, params):
         self.BatchNum = params.get("BatchNum")
         self.RawElectronicCertUrl = params.get("RawElectronicCertUrl")
         self.FileName = params.get("FileName")
+        self.Profile = params.get("Profile")
 
 
 class ModifyAgentTaxPaymentInfoResponse(AbstractModel):
@@ -3037,12 +3049,16 @@ class QueryAgentTaxPaymentBatchRequest(AbstractModel):
         """
         :param BatchNum: 批次号
         :type BatchNum: int
+        :param Profile: 接入环境。沙箱环境填sandbox
+        :type Profile: str
         """
         self.BatchNum = None
+        self.Profile = None
 
 
     def _deserialize(self, params):
         self.BatchNum = params.get("BatchNum")
+        self.Profile = params.get("Profile")
 
 
 class QueryAgentTaxPaymentBatchResponse(AbstractModel):

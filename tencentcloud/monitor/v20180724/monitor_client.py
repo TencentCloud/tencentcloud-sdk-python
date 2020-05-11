@@ -333,6 +333,34 @@ class MonitorClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeProductList(self, request):
+        """查询云监控产品列表
+
+        :param request: Request instance for DescribeProductList.
+        :type request: :class:`tencentcloud.monitor.v20180724.models.DescribeProductListRequest`
+        :rtype: :class:`tencentcloud.monitor.v20180724.models.DescribeProductListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeProductList", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeProductListResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def GetMonitorData(self, request):
         """获取云产品的监控数据。传入产品的命名空间、对象维度描述和监控指标即可获得相应的监控数据。
         接口调用频率限制为：20次/秒，1200次/分钟。

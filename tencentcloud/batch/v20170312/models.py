@@ -2221,7 +2221,7 @@ class Externals(AbstractModel):
         :param ReleaseAddress: 释放地址
 注意：此字段可能返回 null，表示取不到有效值。
         :type ReleaseAddress: bool
-        :param UnsupportNetworks: 不支持的网络类型
+        :param UnsupportNetworks: 不支持的网络类型，取值范围：<br><li>BASIC：基础网络<br><li>VPC1.0：私有网络VPC1.0
 注意：此字段可能返回 null，表示取不到有效值。
         :type UnsupportNetworks: list of str
         :param StorageBlockAttr: HDD本地存储属性

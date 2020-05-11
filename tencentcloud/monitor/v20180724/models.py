@@ -2309,6 +2309,67 @@ class DescribeProductEventListResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeProductListRequest(AbstractModel):
+    """DescribeProductList请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Module: 固定传值monitor
+        :type Module: str
+        :param Order: 排序方式：DESC/ASC（区分大小写），默认值DESC
+        :type Order: str
+        :param Offset: 分页查询的偏移量，默认值0
+        :type Offset: int
+        :param Limit: 分页查询的每页数据量，默认值20
+        :type Limit: int
+        """
+        self.Module = None
+        self.Order = None
+        self.Offset = None
+        self.Limit = None
+
+
+    def _deserialize(self, params):
+        self.Module = params.get("Module")
+        self.Order = params.get("Order")
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+
+
+class DescribeProductListResponse(AbstractModel):
+    """DescribeProductList返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ProductList: 产品信息列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ProductList: list of ProductSimple
+        :param TotalCount: 产品总数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TotalCount: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.ProductList = None
+        self.TotalCount = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("ProductList") is not None:
+            self.ProductList = []
+            for item in params.get("ProductList"):
+                obj = ProductSimple()
+                obj._deserialize(item)
+                self.ProductList.append(obj)
+        self.TotalCount = params.get("TotalCount")
+        self.RequestId = params.get("RequestId")
+
+
 class Dimension(AbstractModel):
     """实例对象的维度组合
 
@@ -2641,6 +2702,27 @@ class PeriodsSt(AbstractModel):
     def _deserialize(self, params):
         self.Period = params.get("Period")
         self.StatType = params.get("StatType")
+
+
+class ProductSimple(AbstractModel):
+    """云监控支持的产品简要信息
+
+    """
+
+    def __init__(self):
+        """
+        :param Namespace: 命名空间
+        :type Namespace: str
+        :param ProductName: 产品名称
+        :type ProductName: str
+        """
+        self.Namespace = None
+        self.ProductName = None
+
+
+    def _deserialize(self, params):
+        self.Namespace = params.get("Namespace")
+        self.ProductName = params.get("ProductName")
 
 
 class PutMonitorDataRequest(AbstractModel):

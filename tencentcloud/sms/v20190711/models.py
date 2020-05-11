@@ -551,7 +551,7 @@ class DescribeSmsTemplateListResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param DescribeTemplateStatusSet: 获取短信签名信息响应
+        :param DescribeTemplateStatusSet: 获取短信模板信息响应
         :type DescribeTemplateStatusSet: list of DescribeTemplateListStatus
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str

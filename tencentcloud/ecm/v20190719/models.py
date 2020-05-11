@@ -726,7 +726,7 @@ class DeleteModuleRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param ModuleId: 模块ID。如：es-qn46snq8
+        :param ModuleId: 模块ID。如：em-qn46snq8
         :type ModuleId: str
         """
         self.ModuleId = None

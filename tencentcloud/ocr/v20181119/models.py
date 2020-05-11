@@ -4270,6 +4270,55 @@ class TrainTicketOCRResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class VatInvoiceItem(AbstractModel):
+    """增值税发票项目明细
+
+    """
+
+    def __init__(self):
+        """
+        :param LineNo: 行号
+        :type LineNo: str
+        :param Name: 名称
+        :type Name: str
+        :param Spec: 规格
+        :type Spec: str
+        :param Unit: 单位
+        :type Unit: str
+        :param Quantity: 数量
+        :type Quantity: str
+        :param UnitPrice: 单价
+        :type UnitPrice: str
+        :param AmountWithoutTax: 不含税金额
+        :type AmountWithoutTax: str
+        :param TaxRate: 税率
+        :type TaxRate: str
+        :param TaxAmount: 税额
+        :type TaxAmount: str
+        """
+        self.LineNo = None
+        self.Name = None
+        self.Spec = None
+        self.Unit = None
+        self.Quantity = None
+        self.UnitPrice = None
+        self.AmountWithoutTax = None
+        self.TaxRate = None
+        self.TaxAmount = None
+
+
+    def _deserialize(self, params):
+        self.LineNo = params.get("LineNo")
+        self.Name = params.get("Name")
+        self.Spec = params.get("Spec")
+        self.Unit = params.get("Unit")
+        self.Quantity = params.get("Quantity")
+        self.UnitPrice = params.get("UnitPrice")
+        self.AmountWithoutTax = params.get("AmountWithoutTax")
+        self.TaxRate = params.get("TaxRate")
+        self.TaxAmount = params.get("TaxAmount")
+
+
 class VatInvoiceOCRRequest(AbstractModel):
     """VatInvoiceOCR请求参数结构体
 
@@ -4307,10 +4356,13 @@ class VatInvoiceOCRResponse(AbstractModel):
         """
         :param VatInvoiceInfos: 检测到的文本信息，具体内容请点击左侧链接。
         :type VatInvoiceInfos: list of TextVatInvoice
+        :param Items: 明细条目。VatInvoiceInfos中关于明细项的具体条目。
+        :type Items: list of VatInvoiceItem
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.VatInvoiceInfos = None
+        self.Items = None
         self.RequestId = None
 
 
@@ -4321,6 +4373,12 @@ class VatInvoiceOCRResponse(AbstractModel):
                 obj = TextVatInvoice()
                 obj._deserialize(item)
                 self.VatInvoiceInfos.append(obj)
+        if params.get("Items") is not None:
+            self.Items = []
+            for item in params.get("Items"):
+                obj = VatInvoiceItem()
+                obj._deserialize(item)
+                self.Items.append(obj)
         self.RequestId = params.get("RequestId")
 
 

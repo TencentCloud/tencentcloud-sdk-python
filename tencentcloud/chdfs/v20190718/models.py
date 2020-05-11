@@ -174,7 +174,7 @@ class CreateFileSystemRequest(AbstractModel):
         """
         :param FileSystemName: 文件系统名称
         :type FileSystemName: str
-        :param CapacityQuota: 文件系统容量（byte），下限为1M，上限为1P，且必须是1M的整数倍
+        :param CapacityQuota: 文件系统容量（byte），下限为1G，上限为1P，且必须是1G的整数倍
         :type CapacityQuota: int
         :param Description: 文件系统描述
         :type Description: str
@@ -874,7 +874,7 @@ class ModifyFileSystemRequest(AbstractModel):
         :type FileSystemName: str
         :param Description: 文件系统描述
         :type Description: str
-        :param CapacityQuota: 文件系统容量（byte），下限为1M，上限为1P，且必须是1M的整数倍
+        :param CapacityQuota: 文件系统容量（byte），下限为1G，上限为1P，且必须是1G的整数倍
 注意：修改的文件系统容量不能小于当前使用量
         :type CapacityQuota: int
         """

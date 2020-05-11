@@ -313,6 +313,8 @@ class CreateFunctionRequest(AbstractModel):
         :type Layers: list of LayerVersionSimple
         :param DeadLetterConfig: 死信队列参数
         :type DeadLetterConfig: :class:`tencentcloud.scf.v20180416.models.DeadLetterConfig`
+        :param PublicNetConfig: 公网访问配置
+        :type PublicNetConfig: :class:`tencentcloud.scf.v20180416.models.PublicNetConfigIn`
         """
         self.FunctionName = None
         self.Code = None
@@ -331,6 +333,7 @@ class CreateFunctionRequest(AbstractModel):
         self.CodeSource = None
         self.Layers = None
         self.DeadLetterConfig = None
+        self.PublicNetConfig = None
 
 
     def _deserialize(self, params):
@@ -364,6 +367,9 @@ class CreateFunctionRequest(AbstractModel):
         if params.get("DeadLetterConfig") is not None:
             self.DeadLetterConfig = DeadLetterConfig()
             self.DeadLetterConfig._deserialize(params.get("DeadLetterConfig"))
+        if params.get("PublicNetConfig") is not None:
+            self.PublicNetConfig = PublicNetConfigIn()
+            self.PublicNetConfig._deserialize(params.get("PublicNetConfig"))
 
 
 class CreateFunctionResponse(AbstractModel):
@@ -714,6 +720,23 @@ class DeleteTriggerResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
+
+
+class EipConfigIn(AbstractModel):
+    """公网访问固定ip配置
+
+    """
+
+    def __init__(self):
+        """
+        :param EipStatus: Eip开启状态，取值['ENABLE','DISABLE']
+        :type EipStatus: str
+        """
+        self.EipStatus = None
+
+
+    def _deserialize(self, params):
+        self.EipStatus = params.get("EipStatus")
 
 
 class EipConfigOut(AbstractModel):
@@ -2154,6 +2177,29 @@ class Namespace(AbstractModel):
         self.Type = params.get("Type")
 
 
+class PublicNetConfigIn(AbstractModel):
+    """公网访问配置
+
+    """
+
+    def __init__(self):
+        """
+        :param PublicNetStatus: 是否开启公网访问能力取值['DISABLE','ENABLE']
+        :type PublicNetStatus: str
+        :param EipConfig: Eip配置
+        :type EipConfig: :class:`tencentcloud.scf.v20180416.models.EipConfigIn`
+        """
+        self.PublicNetStatus = None
+        self.EipConfig = None
+
+
+    def _deserialize(self, params):
+        self.PublicNetStatus = params.get("PublicNetStatus")
+        if params.get("EipConfig") is not None:
+            self.EipConfig = EipConfigIn()
+            self.EipConfig._deserialize(params.get("EipConfig"))
+
+
 class PublicNetConfigOut(AbstractModel):
     """公网访问配置
 
@@ -2668,6 +2714,8 @@ class UpdateFunctionConfigurationRequest(AbstractModel):
         :type Layers: list of LayerVersionSimple
         :param DeadLetterConfig: 函数关联的死信队列信息
         :type DeadLetterConfig: :class:`tencentcloud.scf.v20180416.models.DeadLetterConfig`
+        :param PublicNetConfig: 公网访问配置
+        :type PublicNetConfig: :class:`tencentcloud.scf.v20180416.models.PublicNetConfigIn`
         """
         self.FunctionName = None
         self.Description = None
@@ -2684,6 +2732,7 @@ class UpdateFunctionConfigurationRequest(AbstractModel):
         self.L5Enable = None
         self.Layers = None
         self.DeadLetterConfig = None
+        self.PublicNetConfig = None
 
 
     def _deserialize(self, params):
@@ -2713,6 +2762,9 @@ class UpdateFunctionConfigurationRequest(AbstractModel):
         if params.get("DeadLetterConfig") is not None:
             self.DeadLetterConfig = DeadLetterConfig()
             self.DeadLetterConfig._deserialize(params.get("DeadLetterConfig"))
+        if params.get("PublicNetConfig") is not None:
+            self.PublicNetConfig = PublicNetConfigIn()
+            self.PublicNetConfig._deserialize(params.get("PublicNetConfig"))
 
 
 class UpdateFunctionConfigurationResponse(AbstractModel):
