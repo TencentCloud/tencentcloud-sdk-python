@@ -2683,6 +2683,156 @@ class ModifyAlarmReceiversResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class ModifyPolicyGroupCondition(AbstractModel):
+    """修改告警策略组传入的指标阈值条件
+
+    """
+
+    def __init__(self):
+        """
+        :param MetricId: 指标id
+        :type MetricId: int
+        :param CalcType: 比较类型，1表示大于，2表示大于等于，3表示小于，4表示小于等于，5表示相等，6表示不相等
+        :type CalcType: int
+        :param CalcValue: 检测阈值
+        :type CalcValue: str
+        :param CalcPeriod: 检测指标的数据周期
+        :type CalcPeriod: int
+        :param ContinuePeriod: 持续周期个数
+        :type ContinuePeriod: int
+        :param AlarmNotifyType: 告警发送收敛类型。0连续告警，1指数告警
+        :type AlarmNotifyType: int
+        :param AlarmNotifyPeriod: 告警发送周期单位秒。<0 不触发, 0 只触发一次, >0 每隔triggerTime秒触发一次
+        :type AlarmNotifyPeriod: int
+        :param RuleId: 规则id，不填表示新增，填写了ruleId表示在已存在的规则基础上进行修改
+        :type RuleId: int
+        """
+        self.MetricId = None
+        self.CalcType = None
+        self.CalcValue = None
+        self.CalcPeriod = None
+        self.ContinuePeriod = None
+        self.AlarmNotifyType = None
+        self.AlarmNotifyPeriod = None
+        self.RuleId = None
+
+
+    def _deserialize(self, params):
+        self.MetricId = params.get("MetricId")
+        self.CalcType = params.get("CalcType")
+        self.CalcValue = params.get("CalcValue")
+        self.CalcPeriod = params.get("CalcPeriod")
+        self.ContinuePeriod = params.get("ContinuePeriod")
+        self.AlarmNotifyType = params.get("AlarmNotifyType")
+        self.AlarmNotifyPeriod = params.get("AlarmNotifyPeriod")
+        self.RuleId = params.get("RuleId")
+
+
+class ModifyPolicyGroupEventCondition(AbstractModel):
+    """修改告警策略组传入的事件告警条件
+
+    """
+
+    def __init__(self):
+        """
+        :param EventId: 事件id
+        :type EventId: int
+        :param AlarmNotifyType: 告警发送收敛类型。0连续告警，1指数告警
+        :type AlarmNotifyType: int
+        :param AlarmNotifyPeriod: 告警发送周期单位秒。<0 不触发, 0 只触发一次, >0 每隔triggerTime秒触发一次
+        :type AlarmNotifyPeriod: int
+        :param RuleId: 规则id，不填表示新增，填写了ruleId表示在已存在的规则基础上进行修改
+        :type RuleId: int
+        """
+        self.EventId = None
+        self.AlarmNotifyType = None
+        self.AlarmNotifyPeriod = None
+        self.RuleId = None
+
+
+    def _deserialize(self, params):
+        self.EventId = params.get("EventId")
+        self.AlarmNotifyType = params.get("AlarmNotifyType")
+        self.AlarmNotifyPeriod = params.get("AlarmNotifyPeriod")
+        self.RuleId = params.get("RuleId")
+
+
+class ModifyPolicyGroupRequest(AbstractModel):
+    """ModifyPolicyGroup请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Module: 固定值，为"monitor"
+        :type Module: str
+        :param GroupId: 策略组id
+        :type GroupId: int
+        :param ViewName: 告警类型
+        :type ViewName: str
+        :param GroupName: 策略组名称
+        :type GroupName: str
+        :param IsUnionRule: 指标告警条件的且或关系，1表示且告警，所有指标告警条件都达到才告警，0表示或告警，任意指标告警条件达到都告警
+        :type IsUnionRule: int
+        :param Conditions: 指标告警条件规则，不填表示删除已有的所有指标告警条件规则
+        :type Conditions: list of ModifyPolicyGroupCondition
+        :param EventConditions: 事件告警条件，不填表示删除已有的事件告警条件
+        :type EventConditions: list of ModifyPolicyGroupEventCondition
+        :param ConditionTempGroupId: 模板策略组id
+        :type ConditionTempGroupId: int
+        """
+        self.Module = None
+        self.GroupId = None
+        self.ViewName = None
+        self.GroupName = None
+        self.IsUnionRule = None
+        self.Conditions = None
+        self.EventConditions = None
+        self.ConditionTempGroupId = None
+
+
+    def _deserialize(self, params):
+        self.Module = params.get("Module")
+        self.GroupId = params.get("GroupId")
+        self.ViewName = params.get("ViewName")
+        self.GroupName = params.get("GroupName")
+        self.IsUnionRule = params.get("IsUnionRule")
+        if params.get("Conditions") is not None:
+            self.Conditions = []
+            for item in params.get("Conditions"):
+                obj = ModifyPolicyGroupCondition()
+                obj._deserialize(item)
+                self.Conditions.append(obj)
+        if params.get("EventConditions") is not None:
+            self.EventConditions = []
+            for item in params.get("EventConditions"):
+                obj = ModifyPolicyGroupEventCondition()
+                obj._deserialize(item)
+                self.EventConditions.append(obj)
+        self.ConditionTempGroupId = params.get("ConditionTempGroupId")
+
+
+class ModifyPolicyGroupResponse(AbstractModel):
+    """ModifyPolicyGroup返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param GroupId: 策略组id
+        :type GroupId: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.GroupId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.GroupId = params.get("GroupId")
+        self.RequestId = params.get("RequestId")
+
+
 class PeriodsSt(AbstractModel):
     """周期内的统计方式
 
@@ -2713,16 +2863,21 @@ class ProductSimple(AbstractModel):
         """
         :param Namespace: 命名空间
         :type Namespace: str
-        :param ProductName: 产品名称
+        :param ProductName: 产品中文名称
         :type ProductName: str
+        :param ProductEnName: 产品英文名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ProductEnName: str
         """
         self.Namespace = None
         self.ProductName = None
+        self.ProductEnName = None
 
 
     def _deserialize(self, params):
         self.Namespace = params.get("Namespace")
         self.ProductName = params.get("ProductName")
+        self.ProductEnName = params.get("ProductEnName")
 
 
 class PutMonitorDataRequest(AbstractModel):

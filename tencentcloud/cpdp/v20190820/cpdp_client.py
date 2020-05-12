@@ -1434,6 +1434,34 @@ class CpdpClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def RegisterBill(self, request):
+        """登记挂账(支持撤销)
+
+        :param request: Request instance for RegisterBill.
+        :type request: :class:`tencentcloud.cpdp.v20190820.models.RegisterBillRequest`
+        :rtype: :class:`tencentcloud.cpdp.v20190820.models.RegisterBillResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("RegisterBill", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.RegisterBillResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def RegisterBillSupportWithdraw(self, request):
         """登记挂账(支持撤销)。此接口可实现把不明来账或自有资金等已登记在挂账子账户下的资金调整到普通会员子账户。即通过申请调用此接口，将会减少挂账子账户的资金，调增指定的普通会员子账户的可提现余额及可用余额。此接口不支持把挂账子账户资金清分到功能子账户。
 

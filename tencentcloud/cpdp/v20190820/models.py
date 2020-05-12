@@ -5653,6 +5653,120 @@ class RefundResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class RegisterBillRequest(AbstractModel):
+    """RegisterBill请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestType: 请求类型此接口固定填：RegBillSupportWithdrawReq
+        :type RequestType: str
+        :param MerchantCode: 商户号
+        :type MerchantCode: str
+        :param PayChannel: 支付渠道
+        :type PayChannel: str
+        :param PayChannelSubId: 子渠道
+        :type PayChannelSubId: int
+        :param OrderId: 交易订单号
+        :type OrderId: str
+        :param BankAccountNo: 父账户账号，资金汇总账号
+        :type BankAccountNo: str
+        :param PlatformShortNo: 平台短号(银行分配)
+        :type PlatformShortNo: str
+        :param MidasSecretId: 聚鑫分配的安全ID
+        :type MidasSecretId: str
+        :param MidasAppId: 聚鑫分配的支付主MidasAppId
+        :type MidasAppId: str
+        :param MidasSignature: 计费签名
+        :type MidasSignature: str
+        :param TransSeqNo: 交易流水号
+        :type TransSeqNo: str
+        :param TranFee: 暂未使用，默认传0.0
+        :type TranFee: str
+        :param OrderAmt: 挂账金额
+        :type OrderAmt: str
+        :param BankSubAccountNo: 子账户账号
+        :type BankSubAccountNo: str
+        :param TranNetMemberCode: 交易网会员代码
+        :type TranNetMemberCode: str
+        :param TranType: 0,登记挂账，1，撤销挂账
+        :type TranType: str
+        :param ReservedMessage: 保留域
+        :type ReservedMessage: str
+        :param Remark: 备注
+        :type Remark: str
+        """
+        self.RequestType = None
+        self.MerchantCode = None
+        self.PayChannel = None
+        self.PayChannelSubId = None
+        self.OrderId = None
+        self.BankAccountNo = None
+        self.PlatformShortNo = None
+        self.MidasSecretId = None
+        self.MidasAppId = None
+        self.MidasSignature = None
+        self.TransSeqNo = None
+        self.TranFee = None
+        self.OrderAmt = None
+        self.BankSubAccountNo = None
+        self.TranNetMemberCode = None
+        self.TranType = None
+        self.ReservedMessage = None
+        self.Remark = None
+
+
+    def _deserialize(self, params):
+        self.RequestType = params.get("RequestType")
+        self.MerchantCode = params.get("MerchantCode")
+        self.PayChannel = params.get("PayChannel")
+        self.PayChannelSubId = params.get("PayChannelSubId")
+        self.OrderId = params.get("OrderId")
+        self.BankAccountNo = params.get("BankAccountNo")
+        self.PlatformShortNo = params.get("PlatformShortNo")
+        self.MidasSecretId = params.get("MidasSecretId")
+        self.MidasAppId = params.get("MidasAppId")
+        self.MidasSignature = params.get("MidasSignature")
+        self.TransSeqNo = params.get("TransSeqNo")
+        self.TranFee = params.get("TranFee")
+        self.OrderAmt = params.get("OrderAmt")
+        self.BankSubAccountNo = params.get("BankSubAccountNo")
+        self.TranNetMemberCode = params.get("TranNetMemberCode")
+        self.TranType = params.get("TranType")
+        self.ReservedMessage = params.get("ReservedMessage")
+        self.Remark = params.get("Remark")
+
+
+class RegisterBillResponse(AbstractModel):
+    """RegisterBill返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param FrontSeqNo: 银行流水号
+        :type FrontSeqNo: str
+        :param ReservedMessage: 保留字段
+        :type ReservedMessage: str
+        :param RequestType: 请求类型
+        :type RequestType: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.FrontSeqNo = None
+        self.ReservedMessage = None
+        self.RequestType = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.FrontSeqNo = params.get("FrontSeqNo")
+        self.ReservedMessage = params.get("ReservedMessage")
+        self.RequestType = params.get("RequestType")
+        self.RequestId = params.get("RequestId")
+
+
 class RegisterBillSupportWithdrawRequest(AbstractModel):
     """RegisterBillSupportWithdraw请求参数结构体
 

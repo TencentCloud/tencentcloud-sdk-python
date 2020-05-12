@@ -3702,6 +3702,8 @@ class WebhookTrigger(AbstractModel):
         :type Id: int
         :param Description: 触发器描述
         :type Description: str
+        :param NamespaceId: 触发器所属命名空间 Id
+        :type NamespaceId: int
         """
         self.Name = None
         self.Targets = None
@@ -3710,6 +3712,7 @@ class WebhookTrigger(AbstractModel):
         self.Enabled = None
         self.Id = None
         self.Description = None
+        self.NamespaceId = None
 
 
     def _deserialize(self, params):
@@ -3725,6 +3728,7 @@ class WebhookTrigger(AbstractModel):
         self.Enabled = params.get("Enabled")
         self.Id = params.get("Id")
         self.Description = params.get("Description")
+        self.NamespaceId = params.get("NamespaceId")
 
 
 class WebhookTriggerLog(AbstractModel):

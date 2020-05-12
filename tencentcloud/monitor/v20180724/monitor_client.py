@@ -419,6 +419,34 @@ class MonitorClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def ModifyPolicyGroup(self, request):
+        """更新策略组
+
+        :param request: Request instance for ModifyPolicyGroup.
+        :type request: :class:`tencentcloud.monitor.v20180724.models.ModifyPolicyGroupRequest`
+        :rtype: :class:`tencentcloud.monitor.v20180724.models.ModifyPolicyGroupResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ModifyPolicyGroup", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ModifyPolicyGroupResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def PutMonitorData(self, request):
         """默认接口请求频率限制：50次/秒。
         默认单租户指标上限：100个。

@@ -181,15 +181,19 @@ class DescribeOnlineRecordCallbackResponse(AbstractModel):
         """
         :param Callback: 实时录制事件回调地址，如果未设置回调地址，该字段为空字符串
         :type Callback: str
+        :param CallbackKey: 实时录制回调鉴权密钥
+        :type CallbackKey: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.Callback = None
+        self.CallbackKey = None
         self.RequestId = None
 
 
     def _deserialize(self, params):
         self.Callback = params.get("Callback")
+        self.CallbackKey = params.get("CallbackKey")
         self.RequestId = params.get("RequestId")
 
 
@@ -323,15 +327,19 @@ class DescribeTranscodeCallbackResponse(AbstractModel):
         """
         :param Callback: 文档转码回调地址
         :type Callback: str
+        :param CallbackKey: 文档转码回调鉴权密钥
+        :type CallbackKey: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.Callback = None
+        self.CallbackKey = None
         self.RequestId = None
 
 
     def _deserialize(self, params):
         self.Callback = params.get("Callback")
+        self.CallbackKey = params.get("CallbackKey")
         self.RequestId = params.get("RequestId")
 
 
