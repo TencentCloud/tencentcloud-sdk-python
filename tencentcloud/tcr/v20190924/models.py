@@ -597,13 +597,19 @@ class CreateWebhookTriggerResponse(AbstractModel):
 
     def __init__(self):
         """
+        :param Trigger: 新建的触发器
+        :type Trigger: :class:`tencentcloud.tcr.v20190924.models.WebhookTrigger`
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
+        self.Trigger = None
         self.RequestId = None
 
 
     def _deserialize(self, params):
+        if params.get("Trigger") is not None:
+            self.Trigger = WebhookTrigger()
+            self.Trigger._deserialize(params.get("Trigger"))
         self.RequestId = params.get("RequestId")
 
 

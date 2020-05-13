@@ -1291,7 +1291,7 @@ class LiveClient(AbstractClient):
 
 
     def DescribeLiveDomainCert(self, request):
-        """获取域名证书信息
+        """获取域名证书信息。
 
         :param request: Request instance for DescribeLiveDomainCert.
         :type request: :class:`tencentcloud.live.v20180801.models.DescribeLiveDomainCertRequest`

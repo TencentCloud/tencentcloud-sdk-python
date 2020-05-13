@@ -271,11 +271,14 @@ class ClusterAsGroup(AbstractModel):
         :param Labels: 伸缩组的label列表
 注意：此字段可能返回 null，表示取不到有效值。
         :type Labels: list of Label
+        :param CreatedTime: 创建时间
+        :type CreatedTime: str
         """
         self.AutoScalingGroupId = None
         self.Status = None
         self.IsUnschedulable = None
         self.Labels = None
+        self.CreatedTime = None
 
 
     def _deserialize(self, params):
@@ -288,6 +291,7 @@ class ClusterAsGroup(AbstractModel):
                 obj = Label()
                 obj._deserialize(item)
                 self.Labels.append(obj)
+        self.CreatedTime = params.get("CreatedTime")
 
 
 class ClusterAsGroupAttribute(AbstractModel):
@@ -351,6 +355,18 @@ class ClusterAsGroupOption(AbstractModel):
         :param IgnoreDaemonSetsUtilization: 计算资源使用量时是否默认忽略DaemonSet的实例(默认值: False，不忽略)
 注意：此字段可能返回 null，表示取不到有效值。
         :type IgnoreDaemonSetsUtilization: bool
+        :param OkTotalUnreadyCount: CA做健康性判断的个数，默认3，即超过OkTotalUnreadyCount个数后，CA会进行健康性判断。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OkTotalUnreadyCount: int
+        :param MaxTotalUnreadyPercentage: 未就绪节点的最大百分比，此后CA会停止操作
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MaxTotalUnreadyPercentage: int
+        :param ScaleDownUnreadyTime: 表示未准备就绪的节点在有资格进行缩减之前应该停留多长时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ScaleDownUnreadyTime: int
+        :param UnregisteredNodeRemovalTime: CA删除未在Kubernetes中注册的节点之前等待的时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UnregisteredNodeRemovalTime: int
         """
         self.IsScaleDownEnabled = None
         self.Expander = None
@@ -361,6 +377,10 @@ class ClusterAsGroupOption(AbstractModel):
         self.SkipNodesWithLocalStorage = None
         self.SkipNodesWithSystemPods = None
         self.IgnoreDaemonSetsUtilization = None
+        self.OkTotalUnreadyCount = None
+        self.MaxTotalUnreadyPercentage = None
+        self.ScaleDownUnreadyTime = None
+        self.UnregisteredNodeRemovalTime = None
 
 
     def _deserialize(self, params):
@@ -373,6 +393,10 @@ class ClusterAsGroupOption(AbstractModel):
         self.SkipNodesWithLocalStorage = params.get("SkipNodesWithLocalStorage")
         self.SkipNodesWithSystemPods = params.get("SkipNodesWithSystemPods")
         self.IgnoreDaemonSetsUtilization = params.get("IgnoreDaemonSetsUtilization")
+        self.OkTotalUnreadyCount = params.get("OkTotalUnreadyCount")
+        self.MaxTotalUnreadyPercentage = params.get("MaxTotalUnreadyPercentage")
+        self.ScaleDownUnreadyTime = params.get("ScaleDownUnreadyTime")
+        self.UnregisteredNodeRemovalTime = params.get("UnregisteredNodeRemovalTime")
 
 
 class ClusterBasicSettings(AbstractModel):
@@ -921,14 +945,19 @@ class DataDisk(AbstractModel):
     def __init__(self):
         """
         :param DiskType: 云盘类型
+注意：此字段可能返回 null，表示取不到有效值。
         :type DiskType: str
         :param FileSystem: 文件系统(ext3/ext4/xfs)
+注意：此字段可能返回 null，表示取不到有效值。
         :type FileSystem: str
         :param DiskSize: 云盘大小(G）
+注意：此字段可能返回 null，表示取不到有效值。
         :type DiskSize: int
         :param AutoFormatAndMount: 是否自动化格式盘并挂载
+注意：此字段可能返回 null，表示取不到有效值。
         :type AutoFormatAndMount: bool
         :param MountTarget: 挂载目录
+注意：此字段可能返回 null，表示取不到有效值。
         :type MountTarget: str
         """
         self.DiskType = None
@@ -1096,13 +1125,28 @@ class DeleteClusterInstancesResponse(AbstractModel):
 
     def __init__(self):
         """
+        :param SuccInstanceIds: 删除成功的实例ID列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SuccInstanceIds: list of str
+        :param FailedInstanceIds: 删除失败的实例ID列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FailedInstanceIds: list of str
+        :param NotFoundInstanceIds: 未匹配到的实例ID列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type NotFoundInstanceIds: list of str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
+        self.SuccInstanceIds = None
+        self.FailedInstanceIds = None
+        self.NotFoundInstanceIds = None
         self.RequestId = None
 
 
     def _deserialize(self, params):
+        self.SuccInstanceIds = params.get("SuccInstanceIds")
+        self.FailedInstanceIds = params.get("FailedInstanceIds")
+        self.NotFoundInstanceIds = params.get("NotFoundInstanceIds")
         self.RequestId = params.get("RequestId")
 
 
@@ -1309,7 +1353,7 @@ class DescribeClusterAsGroupsResponse(AbstractModel):
         :param TotalCount: 集群关联的伸缩组总数
         :type TotalCount: int
         :param ClusterAsGroupSet: 集群关联的伸缩组列表
-        :type ClusterAsGroupSet: :class:`tencentcloud.tke.v20180525.models.ClusterAsGroup`
+        :type ClusterAsGroupSet: list of ClusterAsGroup
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -1321,8 +1365,11 @@ class DescribeClusterAsGroupsResponse(AbstractModel):
     def _deserialize(self, params):
         self.TotalCount = params.get("TotalCount")
         if params.get("ClusterAsGroupSet") is not None:
-            self.ClusterAsGroupSet = ClusterAsGroup()
-            self.ClusterAsGroupSet._deserialize(params.get("ClusterAsGroupSet"))
+            self.ClusterAsGroupSet = []
+            for item in params.get("ClusterAsGroupSet"):
+                obj = ClusterAsGroup()
+                obj._deserialize(item)
+                self.ClusterAsGroupSet.append(obj)
         self.RequestId = params.get("RequestId")
 
 
@@ -1595,10 +1642,14 @@ class DescribeClusterSecurityResponse(AbstractModel):
         :param PgwEndpoint: 集群Endpoint地址
         :type PgwEndpoint: str
         :param SecurityPolicy: 集群访问策略组
+注意：此字段可能返回 null，表示取不到有效值。
         :type SecurityPolicy: list of str
         :param Kubeconfig: 集群Kubeconfig文件
 注意：此字段可能返回 null，表示取不到有效值。
         :type Kubeconfig: str
+        :param JnsGwEndpoint: 集群JnsGw的访问地址
+注意：此字段可能返回 null，表示取不到有效值。
+        :type JnsGwEndpoint: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -1610,6 +1661,7 @@ class DescribeClusterSecurityResponse(AbstractModel):
         self.PgwEndpoint = None
         self.SecurityPolicy = None
         self.Kubeconfig = None
+        self.JnsGwEndpoint = None
         self.RequestId = None
 
 
@@ -1622,6 +1674,7 @@ class DescribeClusterSecurityResponse(AbstractModel):
         self.PgwEndpoint = params.get("PgwEndpoint")
         self.SecurityPolicy = params.get("SecurityPolicy")
         self.Kubeconfig = params.get("Kubeconfig")
+        self.JnsGwEndpoint = params.get("JnsGwEndpoint")
         self.RequestId = params.get("RequestId")
 
 
@@ -1951,12 +2004,6 @@ class ExistedInstance(AbstractModel):
         :param CreatedTime: 创建时间。按照ISO8601标准表示，并且使用UTC时间。格式为：YYYY-MM-DDThh:mm:ssZ。
 注意：此字段可能返回 null，表示取不到有效值。
         :type CreatedTime: str
-        :param InstanceChargeType: 实例计费模式。取值范围：
-PREPAID：表示预付费，即包年包月
-POSTPAID_BY_HOUR：表示后付费，即按量计费
-CDHPAID：CDH付费，即只对CDH计费，不对CDH上的实例计费。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type InstanceChargeType: str
         :param CPU: 实例的CPU核数，单位：核。
 注意：此字段可能返回 null，表示取不到有效值。
         :type CPU: int
@@ -1969,6 +2016,12 @@ CDHPAID：CDH付费，即只对CDH计费，不对CDH上的实例计费。
         :param InstanceType: 实例机型。
 注意：此字段可能返回 null，表示取不到有效值。
         :type InstanceType: str
+        :param AutoscalingGroupId: 伸缩组ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AutoscalingGroupId: str
+        :param InstanceChargeType: 实例计费模式。取值范围： PREPAID：表示预付费，即包年包月 POSTPAID_BY_HOUR：表示后付费，即按量计费 CDHPAID：CDH付费，即只对CDH计费，不对CDH上的实例计费。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InstanceChargeType: str
         """
         self.Usable = None
         self.UnusableReason = None
@@ -1978,11 +2031,12 @@ CDHPAID：CDH付费，即只对CDH计费，不对CDH上的实例计费。
         self.PrivateIpAddresses = None
         self.PublicIpAddresses = None
         self.CreatedTime = None
-        self.InstanceChargeType = None
         self.CPU = None
         self.Memory = None
         self.OsName = None
         self.InstanceType = None
+        self.AutoscalingGroupId = None
+        self.InstanceChargeType = None
 
 
     def _deserialize(self, params):
@@ -1994,11 +2048,12 @@ CDHPAID：CDH付费，即只对CDH计费，不对CDH上的实例计费。
         self.PrivateIpAddresses = params.get("PrivateIpAddresses")
         self.PublicIpAddresses = params.get("PublicIpAddresses")
         self.CreatedTime = params.get("CreatedTime")
-        self.InstanceChargeType = params.get("InstanceChargeType")
         self.CPU = params.get("CPU")
         self.Memory = params.get("Memory")
         self.OsName = params.get("OsName")
         self.InstanceType = params.get("InstanceType")
+        self.AutoscalingGroupId = params.get("AutoscalingGroupId")
+        self.InstanceChargeType = params.get("InstanceChargeType")
 
 
 class ExistedInstancesForNode(AbstractModel):
@@ -2164,6 +2219,12 @@ class Instance(AbstractModel):
         :param LanIP: 节点内网IP
 注意：此字段可能返回 null，表示取不到有效值。
         :type LanIP: str
+        :param NodePoolId: 资源池ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type NodePoolId: str
+        :param AutoscalingGroupId: 自动伸缩组ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AutoscalingGroupId: str
         """
         self.InstanceId = None
         self.InstanceRole = None
@@ -2173,6 +2234,8 @@ class Instance(AbstractModel):
         self.InstanceAdvancedSettings = None
         self.CreatedTime = None
         self.LanIP = None
+        self.NodePoolId = None
+        self.AutoscalingGroupId = None
 
 
     def _deserialize(self, params):
@@ -2186,6 +2249,8 @@ class Instance(AbstractModel):
             self.InstanceAdvancedSettings._deserialize(params.get("InstanceAdvancedSettings"))
         self.CreatedTime = params.get("CreatedTime")
         self.LanIP = params.get("LanIP")
+        self.NodePoolId = params.get("NodePoolId")
+        self.AutoscalingGroupId = params.get("AutoscalingGroupId")
 
 
 class InstanceAdvancedSettings(AbstractModel):
@@ -2196,18 +2261,24 @@ class InstanceAdvancedSettings(AbstractModel):
     def __init__(self):
         """
         :param MountTarget: 数据盘挂载点, 默认不挂载数据盘. 已格式化的 ext3，ext4，xfs 文件系统的数据盘将直接挂载，其他文件系统或未格式化的数据盘将自动格式化为ext4 并挂载，请注意备份数据! 无数据盘或有多块数据盘的云主机此设置不生效。
+注意：此字段可能返回 null，表示取不到有效值。
         :type MountTarget: str
         :param DockerGraphPath: dockerd --graph 指定值, 默认为 /var/lib/docker
+注意：此字段可能返回 null，表示取不到有效值。
         :type DockerGraphPath: str
         :param UserScript: base64 编码的用户脚本, 此脚本会在 k8s 组件运行后执行, 需要用户保证脚本的可重入及重试逻辑, 脚本及其生成的日志文件可在节点的 /data/ccs_userscript/ 路径查看, 如果要求节点需要在进行初始化完成后才可加入调度, 可配合 unschedulable 参数使用, 在 userScript 最后初始化完成后, 添加 kubectl uncordon nodename --kubeconfig=/root/.kube/config 命令使节点加入调度
+注意：此字段可能返回 null，表示取不到有效值。
         :type UserScript: str
         :param Unschedulable: 设置加入的节点是否参与调度，默认值为0，表示参与调度；非0表示不参与调度, 待节点初始化完成之后, 可执行kubectl uncordon nodename使node加入调度.
         :type Unschedulable: int
         :param Labels: 节点Label数组
+注意：此字段可能返回 null，表示取不到有效值。
         :type Labels: list of Label
         :param DataDisks: 数据盘相关信息
+注意：此字段可能返回 null，表示取不到有效值。
         :type DataDisks: list of DataDisk
         :param ExtraArgs: 节点相关的自定义参数信息
+注意：此字段可能返回 null，表示取不到有效值。
         :type ExtraArgs: :class:`tencentcloud.tke.v20180525.models.InstanceExtraArgs`
         """
         self.MountTarget = None

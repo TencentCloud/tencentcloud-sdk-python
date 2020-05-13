@@ -5044,7 +5044,7 @@ class DomainCertInfo(AbstractModel):
         :type CertExpireTime: str
         :param DomainName: 使用此证书的域名名称。
         :type DomainName: str
-        :param Status: 证书状态
+        :param Status: 证书状态。
         :type Status: int
         """
         self.CertId = None
