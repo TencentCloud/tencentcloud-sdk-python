@@ -1476,6 +1476,118 @@ class CreateGroupResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class CreateLaneRequest(AbstractModel):
+    """CreateLane请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param LaneName: 泳道名称
+        :type LaneName: str
+        :param Remark: 泳道备注
+        :type Remark: str
+        :param LaneGroupList: 泳道部署组信息
+        :type LaneGroupList: list of LaneGroup
+        """
+        self.LaneName = None
+        self.Remark = None
+        self.LaneGroupList = None
+
+
+    def _deserialize(self, params):
+        self.LaneName = params.get("LaneName")
+        self.Remark = params.get("Remark")
+        if params.get("LaneGroupList") is not None:
+            self.LaneGroupList = []
+            for item in params.get("LaneGroupList"):
+                obj = LaneGroup()
+                obj._deserialize(item)
+                self.LaneGroupList.append(obj)
+
+
+class CreateLaneResponse(AbstractModel):
+    """CreateLane返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Result: 泳道ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Result: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Result = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Result = params.get("Result")
+        self.RequestId = params.get("RequestId")
+
+
+class CreateLaneRuleRequest(AbstractModel):
+    """CreateLaneRule请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RuleName: 泳道规则名称
+        :type RuleName: str
+        :param Remark: 泳道规则备注
+        :type Remark: str
+        :param RuleTagList: 泳道规则标签列表
+        :type RuleTagList: list of LaneRuleTag
+        :param RuleTagRelationship: 泳道规则标签关系
+        :type RuleTagRelationship: str
+        :param LaneId: 泳道Id
+        :type LaneId: str
+        """
+        self.RuleName = None
+        self.Remark = None
+        self.RuleTagList = None
+        self.RuleTagRelationship = None
+        self.LaneId = None
+
+
+    def _deserialize(self, params):
+        self.RuleName = params.get("RuleName")
+        self.Remark = params.get("Remark")
+        if params.get("RuleTagList") is not None:
+            self.RuleTagList = []
+            for item in params.get("RuleTagList"):
+                obj = LaneRuleTag()
+                obj._deserialize(item)
+                self.RuleTagList.append(obj)
+        self.RuleTagRelationship = params.get("RuleTagRelationship")
+        self.LaneId = params.get("LaneId")
+
+
+class CreateLaneRuleResponse(AbstractModel):
+    """CreateLaneRule返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Result: 泳道规则Id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Result: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Result = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Result = params.get("Result")
+        self.RequestId = params.get("RequestId")
+
+
 class CreateMicroserviceRequest(AbstractModel):
     """CreateMicroservice请求参数结构体
 
@@ -1906,6 +2018,44 @@ class DeleteImageTagsResponse(AbstractModel):
         :param Result: 批量删除操作是否成功。
 true：成功。
 false：失败。
+        :type Result: bool
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Result = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Result = params.get("Result")
+        self.RequestId = params.get("RequestId")
+
+
+class DeleteLaneRequest(AbstractModel):
+    """DeleteLane请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param LaneId: 泳道Idl
+        :type LaneId: str
+        """
+        self.LaneId = None
+
+
+    def _deserialize(self, params):
+        self.LaneId = params.get("LaneId")
+
+
+class DeleteLaneResponse(AbstractModel):
+    """DeleteLane返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Result: true / false
         :type Result: bool
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -3223,6 +3373,108 @@ class DescribeImageTagsResponse(AbstractModel):
     def _deserialize(self, params):
         if params.get("Result") is not None:
             self.Result = ImageTagsResult()
+            self.Result._deserialize(params.get("Result"))
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeLaneRulesRequest(AbstractModel):
+    """DescribeLaneRules请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Limit: 每页展示的条数
+        :type Limit: int
+        :param Offset: 翻页偏移量
+        :type Offset: int
+        :param SearchWord: 搜索关键词
+        :type SearchWord: str
+        :param RuleId: 泳道规则ID（用于精确搜索）
+        :type RuleId: str
+        """
+        self.Limit = None
+        self.Offset = None
+        self.SearchWord = None
+        self.RuleId = None
+
+
+    def _deserialize(self, params):
+        self.Limit = params.get("Limit")
+        self.Offset = params.get("Offset")
+        self.SearchWord = params.get("SearchWord")
+        self.RuleId = params.get("RuleId")
+
+
+class DescribeLaneRulesResponse(AbstractModel):
+    """DescribeLaneRules返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Result: 泳道规则列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Result: :class:`tencentcloud.tsf.v20180326.models.LaneRules`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Result = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Result") is not None:
+            self.Result = LaneRules()
+            self.Result._deserialize(params.get("Result"))
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeLanesRequest(AbstractModel):
+    """DescribeLanes请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Limit: 每页展示的条数
+        :type Limit: int
+        :param Offset: 翻页偏移量
+        :type Offset: int
+        :param SearchWord: 搜索关键字
+        :type SearchWord: str
+        """
+        self.Limit = None
+        self.Offset = None
+        self.SearchWord = None
+
+
+    def _deserialize(self, params):
+        self.Limit = params.get("Limit")
+        self.Offset = params.get("Offset")
+        self.SearchWord = params.get("SearchWord")
+
+
+class DescribeLanesResponse(AbstractModel):
+    """DescribeLanes返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Result: 泳道列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Result: :class:`tencentcloud.tsf.v20180326.models.LaneInfos`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Result = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Result") is not None:
+            self.Result = LaneInfos()
             self.Result._deserialize(params.get("Result"))
         self.RequestId = params.get("RequestId")
 
@@ -4644,6 +4896,307 @@ class Instance(AbstractModel):
         self.NamespaceName = params.get("NamespaceName")
 
 
+class LaneGroup(AbstractModel):
+    """泳道部署组
+
+    """
+
+    def __init__(self):
+        """
+        :param LaneId: 泳道ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LaneId: str
+        :param GroupId: 部署组ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type GroupId: str
+        :param Entrance: 是否入口应用
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Entrance: bool
+        :param LaneGroupId: 泳道部署组ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LaneGroupId: str
+        :param GroupName: 部署组名
+注意：此字段可能返回 null，表示取不到有效值。
+        :type GroupName: str
+        :param ApplicationId: 应用ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ApplicationId: str
+        :param ApplicationName: 应用名
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ApplicationName: str
+        :param NamespaceId: 命名空间ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type NamespaceId: str
+        :param NamespaceName: 命名空间名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type NamespaceName: str
+        :param CreateTime: 创建时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CreateTime: int
+        :param UpdateTime: 更新时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UpdateTime: int
+        :param ClusterType: 集群类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ClusterType: str
+        """
+        self.LaneId = None
+        self.GroupId = None
+        self.Entrance = None
+        self.LaneGroupId = None
+        self.GroupName = None
+        self.ApplicationId = None
+        self.ApplicationName = None
+        self.NamespaceId = None
+        self.NamespaceName = None
+        self.CreateTime = None
+        self.UpdateTime = None
+        self.ClusterType = None
+
+
+    def _deserialize(self, params):
+        self.LaneId = params.get("LaneId")
+        self.GroupId = params.get("GroupId")
+        self.Entrance = params.get("Entrance")
+        self.LaneGroupId = params.get("LaneGroupId")
+        self.GroupName = params.get("GroupName")
+        self.ApplicationId = params.get("ApplicationId")
+        self.ApplicationName = params.get("ApplicationName")
+        self.NamespaceId = params.get("NamespaceId")
+        self.NamespaceName = params.get("NamespaceName")
+        self.CreateTime = params.get("CreateTime")
+        self.UpdateTime = params.get("UpdateTime")
+        self.ClusterType = params.get("ClusterType")
+
+
+class LaneInfo(AbstractModel):
+    """泳道
+
+    """
+
+    def __init__(self):
+        """
+        :param LaneId: 泳道ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LaneId: str
+        :param LaneName: 泳道名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LaneName: str
+        :param Remark: 泳道备注
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Remark: str
+        :param CreateTime: 创建时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CreateTime: int
+        :param UpdateTime: 更新时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UpdateTime: int
+        :param LaneGroupList: 泳道部署组
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LaneGroupList: list of LaneGroup
+        :param Entrance: 是否入口应用
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Entrance: bool
+        :param NamespaceIdList: 泳道已经关联部署组的命名空间列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type NamespaceIdList: list of str
+        """
+        self.LaneId = None
+        self.LaneName = None
+        self.Remark = None
+        self.CreateTime = None
+        self.UpdateTime = None
+        self.LaneGroupList = None
+        self.Entrance = None
+        self.NamespaceIdList = None
+
+
+    def _deserialize(self, params):
+        self.LaneId = params.get("LaneId")
+        self.LaneName = params.get("LaneName")
+        self.Remark = params.get("Remark")
+        self.CreateTime = params.get("CreateTime")
+        self.UpdateTime = params.get("UpdateTime")
+        if params.get("LaneGroupList") is not None:
+            self.LaneGroupList = []
+            for item in params.get("LaneGroupList"):
+                obj = LaneGroup()
+                obj._deserialize(item)
+                self.LaneGroupList.append(obj)
+        self.Entrance = params.get("Entrance")
+        self.NamespaceIdList = params.get("NamespaceIdList")
+
+
+class LaneInfos(AbstractModel):
+    """泳道分页查询
+
+    """
+
+    def __init__(self):
+        """
+        :param TotalCount: 总数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TotalCount: int
+        :param Content: 泳道信息列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Content: list of LaneInfo
+        """
+        self.TotalCount = None
+        self.Content = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("Content") is not None:
+            self.Content = []
+            for item in params.get("Content"):
+                obj = LaneInfo()
+                obj._deserialize(item)
+                self.Content.append(obj)
+
+
+class LaneRule(AbstractModel):
+    """泳道规则
+
+    """
+
+    def __init__(self):
+        """
+        :param RuleId: 泳道规则ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RuleId: str
+        :param RuleName: 泳道规则名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RuleName: str
+        :param Priority: 优先级
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Priority: int
+        :param Remark: 备注
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Remark: str
+        :param RuleTagList: 泳道规则标签列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RuleTagList: list of LaneRuleTag
+        :param RuleTagRelationship: 泳道规则标签关系
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RuleTagRelationship: str
+        :param LaneId: 泳道ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LaneId: str
+        :param Enable: 开启状态
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Enable: bool
+        :param CreateTime: 创建时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CreateTime: int
+        :param UpdateTime: 更新时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UpdateTime: int
+        """
+        self.RuleId = None
+        self.RuleName = None
+        self.Priority = None
+        self.Remark = None
+        self.RuleTagList = None
+        self.RuleTagRelationship = None
+        self.LaneId = None
+        self.Enable = None
+        self.CreateTime = None
+        self.UpdateTime = None
+
+
+    def _deserialize(self, params):
+        self.RuleId = params.get("RuleId")
+        self.RuleName = params.get("RuleName")
+        self.Priority = params.get("Priority")
+        self.Remark = params.get("Remark")
+        if params.get("RuleTagList") is not None:
+            self.RuleTagList = []
+            for item in params.get("RuleTagList"):
+                obj = LaneRuleTag()
+                obj._deserialize(item)
+                self.RuleTagList.append(obj)
+        self.RuleTagRelationship = params.get("RuleTagRelationship")
+        self.LaneId = params.get("LaneId")
+        self.Enable = params.get("Enable")
+        self.CreateTime = params.get("CreateTime")
+        self.UpdateTime = params.get("UpdateTime")
+
+
+class LaneRuleTag(AbstractModel):
+    """泳道规则标签
+
+    """
+
+    def __init__(self):
+        """
+        :param TagId: 标签ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TagId: str
+        :param TagName: 标签名
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TagName: str
+        :param TagOperator: 标签操作符
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TagOperator: str
+        :param TagValue: 标签值
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TagValue: str
+        :param LaneRuleId: 泳道规则ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LaneRuleId: str
+        :param CreateTime: 创建时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CreateTime: int
+        :param UpdateTime: 更新时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UpdateTime: int
+        """
+        self.TagId = None
+        self.TagName = None
+        self.TagOperator = None
+        self.TagValue = None
+        self.LaneRuleId = None
+        self.CreateTime = None
+        self.UpdateTime = None
+
+
+    def _deserialize(self, params):
+        self.TagId = params.get("TagId")
+        self.TagName = params.get("TagName")
+        self.TagOperator = params.get("TagOperator")
+        self.TagValue = params.get("TagValue")
+        self.LaneRuleId = params.get("LaneRuleId")
+        self.CreateTime = params.get("CreateTime")
+        self.UpdateTime = params.get("UpdateTime")
+
+
+class LaneRules(AbstractModel):
+    """泳道规则分页查询
+
+    """
+
+    def __init__(self):
+        """
+        :param TotalCount: 总数
+        :type TotalCount: int
+        :param Content: 泳道规则列表
+        :type Content: list of LaneRule
+        """
+        self.TotalCount = None
+        self.Content = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("Content") is not None:
+            self.Content = []
+            for item in params.get("Content"):
+                obj = LaneRule()
+                obj._deserialize(item)
+                self.Content.append(obj)
+
+
 class Microservice(AbstractModel):
     """微服务
 
@@ -4783,6 +5336,120 @@ class ModifyContainerReplicasResponse(AbstractModel):
     def __init__(self):
         """
         :param Result: 结果true：成功；false：失败；
+        :type Result: bool
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Result = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Result = params.get("Result")
+        self.RequestId = params.get("RequestId")
+
+
+class ModifyLaneRequest(AbstractModel):
+    """ModifyLane请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param LaneId: 泳道ID
+        :type LaneId: str
+        :param LaneName: 泳道名称
+        :type LaneName: str
+        :param Remark: 备注
+        :type Remark: str
+        """
+        self.LaneId = None
+        self.LaneName = None
+        self.Remark = None
+
+
+    def _deserialize(self, params):
+        self.LaneId = params.get("LaneId")
+        self.LaneName = params.get("LaneName")
+        self.Remark = params.get("Remark")
+
+
+class ModifyLaneResponse(AbstractModel):
+    """ModifyLane返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Result: 操作状态
+        :type Result: bool
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Result = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Result = params.get("Result")
+        self.RequestId = params.get("RequestId")
+
+
+class ModifyLaneRuleRequest(AbstractModel):
+    """ModifyLaneRule请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RuleId: 泳道规则ID
+        :type RuleId: str
+        :param RuleName: 泳道规则名称
+        :type RuleName: str
+        :param Remark: 泳道规则备注
+        :type Remark: str
+        :param RuleTagList: 泳道规则标签列表
+        :type RuleTagList: list of LaneRuleTag
+        :param RuleTagRelationship: 泳道规则标签关系
+        :type RuleTagRelationship: str
+        :param LaneId: 泳道ID
+        :type LaneId: str
+        :param Enable: 开启状态
+        :type Enable: bool
+        """
+        self.RuleId = None
+        self.RuleName = None
+        self.Remark = None
+        self.RuleTagList = None
+        self.RuleTagRelationship = None
+        self.LaneId = None
+        self.Enable = None
+
+
+    def _deserialize(self, params):
+        self.RuleId = params.get("RuleId")
+        self.RuleName = params.get("RuleName")
+        self.Remark = params.get("Remark")
+        if params.get("RuleTagList") is not None:
+            self.RuleTagList = []
+            for item in params.get("RuleTagList"):
+                obj = LaneRuleTag()
+                obj._deserialize(item)
+                self.RuleTagList.append(obj)
+        self.RuleTagRelationship = params.get("RuleTagRelationship")
+        self.LaneId = params.get("LaneId")
+        self.Enable = params.get("Enable")
+
+
+class ModifyLaneRuleResponse(AbstractModel):
+    """ModifyLaneRule返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Result: 操作状态
+注意：此字段可能返回 null，表示取不到有效值。
         :type Result: bool
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str

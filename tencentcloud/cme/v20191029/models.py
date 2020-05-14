@@ -1775,8 +1775,6 @@ class ImportMaterialRequest(AbstractModel):
         :type Name: str
         :param ClassPath: 素材分类路径，形如："/a/b"，层级数不能超过10，每个层级长度不能超过15字符。若不填则默认为根路径。
         :type ClassPath: str
-        :param Tags: 素材标签，单个标签长度不能超过10，数组长度不能超过10。
-        :type Tags: list of str
         :param PreProcessDefinition: 素材预处理任务模板 ID。取值：
 <li>10：进行编辑预处理。</li>
         :type PreProcessDefinition: int
@@ -1788,7 +1786,6 @@ class ImportMaterialRequest(AbstractModel):
         self.Owner = None
         self.Name = None
         self.ClassPath = None
-        self.Tags = None
         self.PreProcessDefinition = None
         self.Operator = None
 
@@ -1801,7 +1798,6 @@ class ImportMaterialRequest(AbstractModel):
             self.Owner._deserialize(params.get("Owner"))
         self.Name = params.get("Name")
         self.ClassPath = params.get("ClassPath")
-        self.Tags = params.get("Tags")
         self.PreProcessDefinition = params.get("PreProcessDefinition")
         self.Operator = params.get("Operator")
 
@@ -2145,9 +2141,6 @@ class MaterialBasicInfo(AbstractModel):
         :type UpdateTime: str
         :param ClassPath: 素材的分类目录路径。
         :type ClassPath: str
-        :param TagSet: 素材标签信息。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type TagSet: list of str
         :param PreviewUrl: 素材媒体文件的预览图。
 注意：此字段可能返回 null，表示取不到有效值。
         :type PreviewUrl: str
@@ -2159,7 +2152,6 @@ class MaterialBasicInfo(AbstractModel):
         self.CreateTime = None
         self.UpdateTime = None
         self.ClassPath = None
-        self.TagSet = None
         self.PreviewUrl = None
 
 
@@ -2173,7 +2165,6 @@ class MaterialBasicInfo(AbstractModel):
         self.CreateTime = params.get("CreateTime")
         self.UpdateTime = params.get("UpdateTime")
         self.ClassPath = params.get("ClassPath")
-        self.TagSet = params.get("TagSet")
         self.PreviewUrl = params.get("PreviewUrl")
 
 
@@ -2351,8 +2342,6 @@ class ModifyMaterialRequest(AbstractModel):
         :type Owner: :class:`tencentcloud.cme.v20191029.models.Entity`
         :param Name: 素材名称，不能超过30个字符。
         :type Name: str
-        :param Tags: 素材标签，单个标签长度不能超过10个字符，数组长度不能超过10。
-        :type Tags: list of str
         :param ClassPath: 素材分类路径，例如填写"/a/b"，则代表该素材存储的路径为"/a/b"。
         :type ClassPath: str
         :param Operator: 操作者。填写用户的 Id，用于标识调用者及校验操作权限。
@@ -2362,7 +2351,6 @@ class ModifyMaterialRequest(AbstractModel):
         self.MaterialId = None
         self.Owner = None
         self.Name = None
-        self.Tags = None
         self.ClassPath = None
         self.Operator = None
 
@@ -2374,7 +2362,6 @@ class ModifyMaterialRequest(AbstractModel):
             self.Owner = Entity()
             self.Owner._deserialize(params.get("Owner"))
         self.Name = params.get("Name")
-        self.Tags = params.get("Tags")
         self.ClassPath = params.get("ClassPath")
         self.Operator = params.get("Operator")
 

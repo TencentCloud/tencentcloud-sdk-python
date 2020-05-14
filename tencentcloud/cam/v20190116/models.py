@@ -2340,6 +2340,31 @@ class ListUsersResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class LoginActionMfaFlag(AbstractModel):
+    """登录和敏感操作flag
+
+    """
+
+    def __init__(self):
+        """
+        :param Phone: 手机
+        :type Phone: int
+        :param Stoken: 软token
+        :type Stoken: int
+        :param Wechat: 微信
+        :type Wechat: int
+        """
+        self.Phone = None
+        self.Stoken = None
+        self.Wechat = None
+
+
+    def _deserialize(self, params):
+        self.Phone = params.get("Phone")
+        self.Stoken = params.get("Stoken")
+        self.Wechat = params.get("Wechat")
+
+
 class PolicyVersionDetail(AbstractModel):
     """策略版本详情
 
@@ -2548,6 +2573,52 @@ class SetDefaultPolicyVersionRequest(AbstractModel):
 
 class SetDefaultPolicyVersionResponse(AbstractModel):
     """SetDefaultPolicyVersion返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class SetMfaFlagRequest(AbstractModel):
+    """SetMfaFlag请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param OpUin: 设置用户的uin
+        :type OpUin: int
+        :param LoginFlag: 登录保护设置
+        :type LoginFlag: :class:`tencentcloud.cam.v20190116.models.LoginActionMfaFlag`
+        :param ActionFlag: 操作保护设置
+        :type ActionFlag: :class:`tencentcloud.cam.v20190116.models.LoginActionMfaFlag`
+        """
+        self.OpUin = None
+        self.LoginFlag = None
+        self.ActionFlag = None
+
+
+    def _deserialize(self, params):
+        self.OpUin = params.get("OpUin")
+        if params.get("LoginFlag") is not None:
+            self.LoginFlag = LoginActionMfaFlag()
+            self.LoginFlag._deserialize(params.get("LoginFlag"))
+        if params.get("ActionFlag") is not None:
+            self.ActionFlag = LoginActionMfaFlag()
+            self.ActionFlag._deserialize(params.get("ActionFlag"))
+
+
+class SetMfaFlagResponse(AbstractModel):
+    """SetMfaFlag返回参数结构体
 
     """
 

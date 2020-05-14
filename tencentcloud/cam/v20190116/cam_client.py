@@ -1285,6 +1285,34 @@ class CamClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def SetMfaFlag(self, request):
+        """设置用户的登录保护和敏感操作校验方式
+
+        :param request: Request instance for SetMfaFlag.
+        :type request: :class:`tencentcloud.cam.v20190116.models.SetMfaFlagRequest`
+        :rtype: :class:`tencentcloud.cam.v20190116.models.SetMfaFlagResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("SetMfaFlag", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.SetMfaFlagResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def UpdateAssumeRolePolicy(self, request):
         """本接口（UpdateAssumeRolePolicy）用于修改角色信任策略的策略文档。
 

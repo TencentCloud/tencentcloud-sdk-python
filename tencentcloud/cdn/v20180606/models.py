@@ -1465,7 +1465,7 @@ class DescribeCdnDomainLogsRequest(AbstractModel):
         :type StartTime: str
         :param EndTime: 结束时间，如 2019-09-04 12:00:00
         :type EndTime: str
-        :param Offset: 分页查询偏移量，默认为 0 （第一页）
+        :param Offset: 分页查询偏移量，默认为 0
         :type Offset: int
         :param Limit: 分页查询限制数目，默认为 100，最大为 1000
         :type Limit: int
@@ -1475,6 +1475,9 @@ overseas：获取境外加速日志包下载链接
 global：同时获取境内、境外加速日志包下载链接（分开打包）
 不指定时默认为 mainland
         :type Area: str
+        :param LogType: 指定下载日志的类型。
+access：获取访问日志
+        :type LogType: str
         """
         self.Domain = None
         self.StartTime = None
@@ -1482,6 +1485,7 @@ global：同时获取境内、境外加速日志包下载链接（分开打包�
         self.Offset = None
         self.Limit = None
         self.Area = None
+        self.LogType = None
 
 
     def _deserialize(self, params):
@@ -1491,6 +1495,7 @@ global：同时获取境内、境外加速日志包下载链接（分开打包�
         self.Offset = params.get("Offset")
         self.Limit = params.get("Limit")
         self.Area = params.get("Area")
+        self.LogType = params.get("LogType")
 
 
 class DescribeCdnDomainLogsResponse(AbstractModel):
@@ -1684,7 +1689,7 @@ class DescribeDomainsRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Offset: 分页查询偏移量，默认为 0 （第一页）
+        :param Offset: 分页查询偏移量，默认为 0
         :type Offset: int
         :param Limit: 分页查询限制数目，默认为 100，最大可设置为 1000
         :type Limit: int
@@ -2208,7 +2213,7 @@ path：目录刷新记录
         :param TaskId: 根据任务 ID 查询时，填充任务 ID
 查询时任务 ID 与起始时间必须填充一项
         :type TaskId: str
-        :param Offset: 分页查询偏移量，默认为 0 （第一页）
+        :param Offset: 分页查询偏移量，默认为 0
         :type Offset: int
         :param Limit: 分页查询限制数目，默认为 20
         :type Limit: int
@@ -2328,7 +2333,7 @@ TaskId 和起始时间必须指定一项
         :type TaskId: str
         :param Keyword: 查询关键字，请输入域名或 http(s):// 开头完整 URL
         :type Keyword: str
-        :param Offset: 分页查询偏移量，默认为 0 （第一页）
+        :param Offset: 分页查询偏移量，默认为 0
         :type Offset: int
         :param Limit: 分页查询限制数目，默认为 20
         :type Limit: int
@@ -2484,7 +2489,7 @@ class DescribeTrafficPackagesRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Offset: 分页查询起始地址，默认 0（第一页）
+        :param Offset: 分页查询起始地址，默认 0
         :type Offset: int
         :param Limit: 分页查询记录个数，默认100，最大1000
         :type Limit: int
@@ -2543,7 +2548,7 @@ class DescribeUrlViolationsRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Offset: 分页查询偏移量，默认为 0 （第一页）
+        :param Offset: 分页查询偏移量，默认为 0
         :type Offset: int
         :param Limit: 分页查询限制数目，默认为 100
         :type Limit: int
@@ -3311,7 +3316,7 @@ class GetDisableRecordsRequest(AbstractModel):
 disable：当前仍为禁用状态，访问返回 403
 enable：当前为可用状态，已解禁，可正常访问
         :type Status: str
-        :param Offset: 分页查询偏移量，默认为 0 （第一页）。
+        :param Offset: 分页查询偏移量，默认为 0
         :type Offset: int
         :param Limit: 分页查询限制数目，默认为20。
         :type Limit: int

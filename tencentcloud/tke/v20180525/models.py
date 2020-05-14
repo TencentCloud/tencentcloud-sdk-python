@@ -71,10 +71,13 @@ class AddExistedInstancesResponse(AbstractModel):
     def __init__(self):
         """
         :param FailedInstanceIds: 失败的节点ID
+注意：此字段可能返回 null，表示取不到有效值。
         :type FailedInstanceIds: list of str
         :param SuccInstanceIds: 成功的节点ID
+注意：此字段可能返回 null，表示取不到有效值。
         :type SuccInstanceIds: list of str
         :param TimeoutInstanceIds: 超时未返回出来节点的ID(可能失败，也可能成功)
+注意：此字段可能返回 null，表示取不到有效值。
         :type TimeoutInstanceIds: list of str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str

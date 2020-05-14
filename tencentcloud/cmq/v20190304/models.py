@@ -259,7 +259,7 @@ class CreateTopicRequest(AbstractModel):
         :type TopicName: str
         :param MaxMsgSize: 消息最大长度。取值范围 1024-65536 Byte（即1-64K），默认值 65536。
         :type MaxMsgSize: int
-        :param FilterType: 用于指定主题的消息匹配策略。
+        :param FilterType: 用于指定主题的消息匹配策略。1：表示标签匹配策略；2：表示路由匹配策略，默认值为标签匹配策略。
         :type FilterType: int
         :param MsgRetentionSeconds: 消息保存时间。取值范围60 - 86400 s（即1分钟 - 1天），默认值86400。
         :type MsgRetentionSeconds: int

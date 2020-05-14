@@ -221,6 +221,62 @@ class TsfClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def CreateLane(self, request):
+        """创建泳道
+
+        :param request: Request instance for CreateLane.
+        :type request: :class:`tencentcloud.tsf.v20180326.models.CreateLaneRequest`
+        :rtype: :class:`tencentcloud.tsf.v20180326.models.CreateLaneResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("CreateLane", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateLaneResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def CreateLaneRule(self, request):
+        """创建泳道规则
+
+        :param request: Request instance for CreateLaneRule.
+        :type request: :class:`tencentcloud.tsf.v20180326.models.CreateLaneRuleRequest`
+        :rtype: :class:`tencentcloud.tsf.v20180326.models.CreateLaneRuleResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("CreateLaneRule", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateLaneRuleResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def CreateMicroservice(self, request):
         """新增微服务
 
@@ -459,6 +515,34 @@ class TsfClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteImageTagsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DeleteLane(self, request):
+        """删除泳道
+
+        :param request: Request instance for DeleteLane.
+        :type request: :class:`tencentcloud.tsf.v20180326.models.DeleteLaneRequest`
+        :rtype: :class:`tencentcloud.tsf.v20180326.models.DeleteLaneResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DeleteLane", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DeleteLaneResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -1147,6 +1231,62 @@ class TsfClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeLaneRules(self, request):
+        """查询泳道规则列表
+
+        :param request: Request instance for DescribeLaneRules.
+        :type request: :class:`tencentcloud.tsf.v20180326.models.DescribeLaneRulesRequest`
+        :rtype: :class:`tencentcloud.tsf.v20180326.models.DescribeLaneRulesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeLaneRules", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeLaneRulesResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeLanes(self, request):
+        """查询泳道列表
+
+        :param request: Request instance for DescribeLanes.
+        :type request: :class:`tencentcloud.tsf.v20180326.models.DescribeLanesRequest`
+        :rtype: :class:`tencentcloud.tsf.v20180326.models.DescribeLanesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeLanes", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeLanesResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeMicroservice(self, request):
         """查询微服务详情
 
@@ -1694,6 +1834,62 @@ class TsfClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyContainerReplicasResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ModifyLane(self, request):
+        """更新泳道信息
+
+        :param request: Request instance for ModifyLane.
+        :type request: :class:`tencentcloud.tsf.v20180326.models.ModifyLaneRequest`
+        :rtype: :class:`tencentcloud.tsf.v20180326.models.ModifyLaneResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ModifyLane", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ModifyLaneResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ModifyLaneRule(self, request):
+        """更新泳道规则
+
+        :param request: Request instance for ModifyLaneRule.
+        :type request: :class:`tencentcloud.tsf.v20180326.models.ModifyLaneRuleRequest`
+        :rtype: :class:`tencentcloud.tsf.v20180326.models.ModifyLaneRuleResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ModifyLaneRule", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ModifyLaneRuleResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
