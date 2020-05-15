@@ -328,8 +328,6 @@ class CreateLinkRequest(AbstractModel):
         :type DestinationOwner: :class:`tencentcloud.cme.v20191029.models.Entity`
         :param ClassPath: 链接的分类路径，如填"/a/b"则代表链接属于该分类路径，不填则默认为根路径。
         :type ClassPath: str
-        :param Tags: 链接标签，单个标签长度不能超过10，数组长度不能超过10。
-        :type Tags: list of str
         :param Operator: 操作者。填写用户的 Id，用于标识调用者及校验操作权限。
         :type Operator: str
         """
@@ -340,7 +338,6 @@ class CreateLinkRequest(AbstractModel):
         self.DestinationId = None
         self.DestinationOwner = None
         self.ClassPath = None
-        self.Tags = None
         self.Operator = None
 
 
@@ -356,7 +353,6 @@ class CreateLinkRequest(AbstractModel):
             self.DestinationOwner = Entity()
             self.DestinationOwner._deserialize(params.get("DestinationOwner"))
         self.ClassPath = params.get("ClassPath")
-        self.Tags = params.get("Tags")
         self.Operator = params.get("Operator")
 
 
@@ -2747,7 +2743,7 @@ class SearchMaterialRequest(AbstractModel):
 <li>VIDEO：视频 ；</li>
 <li>IMAGE：图片。</li>
         :type MaterialTypes: list of str
-        :param Text: 搜索文本，模糊匹配素材名称或描述信息，匹配项越多，匹配度越高，排序越优先。长度限制：64 个字符。
+        :param Text: 搜索文本，模糊匹配素材名称或描述信息，匹配项越多，匹配度越高，排序越优先。长度限制：15个字符。
         :type Text: str
         :param Resolution: 按画质检索，取值为：LD/SD/HD/FHD/2K/4K。
         :type Resolution: str
@@ -2755,8 +2751,6 @@ class SearchMaterialRequest(AbstractModel):
         :type DurationRange: :class:`tencentcloud.cme.v20191029.models.IntegerRange`
         :param CreateTimeRange: 按照素材创建时间检索。
         :type CreateTimeRange: :class:`tencentcloud.cme.v20191029.models.TimeRange`
-        :param Tags: 标签集合，匹配集合中任意元素。单个标签长度限制：10 个字符。数组长度限制：10。
-        :type Tags: list of str
         :param Sort: 排序方式。Sort.Field 可选值：CreateTime。指定 Text 搜索时，将根据匹配度排序，该字段无效。
         :type Sort: :class:`tencentcloud.cme.v20191029.models.SortBy`
         :param Offset: 偏移量。默认值：0。
@@ -2773,7 +2767,6 @@ class SearchMaterialRequest(AbstractModel):
         self.Resolution = None
         self.DurationRange = None
         self.CreateTimeRange = None
-        self.Tags = None
         self.Sort = None
         self.Offset = None
         self.Limit = None
@@ -2797,7 +2790,6 @@ class SearchMaterialRequest(AbstractModel):
         if params.get("CreateTimeRange") is not None:
             self.CreateTimeRange = TimeRange()
             self.CreateTimeRange._deserialize(params.get("CreateTimeRange"))
-        self.Tags = params.get("Tags")
         if params.get("Sort") is not None:
             self.Sort = SortBy()
             self.Sort._deserialize(params.get("Sort"))

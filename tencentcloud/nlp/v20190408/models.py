@@ -778,7 +778,10 @@ class SentimentAnalysisResponse(AbstractModel):
         :type Neutral: float
         :param Positive: 正面情感概率
         :type Positive: float
-        :param Sentiment: 情感属性
+        :param Sentiment: 情感分类结果：
+1、positive，表示正面情感
+2、negative，表示负面情感
+3、neutral，表示中性、无情感
         :type Sentiment: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str

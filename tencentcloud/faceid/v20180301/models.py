@@ -748,7 +748,15 @@ class GetDetectInfoResponse(AbstractModel):
     "Location": null, // 地理位置信息
     "Extra": "",          // DetectAuth结果传进来的Extra信息
     "Detail": {           // 活体一比一信息详情
-      "LivenessData": []
+      "LivenessData": [
+            {
+              ErrCode: null, // 活体比对验证错误码
+              ErrMsg: null, // 活体比对验证错误描述
+              ReqTime: null, // 活体验证时间戳
+              IdCard: null, // 验证身份证号
+              Name: null // 验证姓名
+            }
+      ]
     }
   },
   // 身份证正反面照片Base64
@@ -1026,7 +1034,7 @@ class LivenessCompareRequest(AbstractModel):
 BASE64编码后的图片数据大小不超过3M，仅支持jpg、png格式。
         :type ImageBase64: str
         :param VideoBase64: 用于活体检测的视频，视频的BASE64值；
-BASE64编码后的大小不超过5M，支持mp4、avi、flv格式。
+BASE64编码后的大小不超过8M，支持mp4、avi、flv格式。
         :type VideoBase64: str
         :param LivenessType: 活体检测类型，取值：LIP/ACTION/SILENT。
 LIP为数字模式，ACTION为动作模式，SILENT为静默模式，三种模式选择一种传入。
@@ -1035,7 +1043,7 @@ LIP为数字模式，ACTION为动作模式，SILENT为静默模式，三种模�
 动作模式传参：传动作顺序(2,1 or 1,2)，需先调用接口获取动作顺序；
 静默模式传参：空。
         :type ValidateData: str
-        :param Optional: 本接口不需要传递此参数。
+        :param Optional: 额外配置，传入JSON字符串。
         :type Optional: str
         """
         self.ImageBase64 = None
@@ -1098,7 +1106,7 @@ class LivenessRecognitionRequest(AbstractModel):
         :param Name: 姓名。中文请使用UTF-8编码。
         :type Name: str
         :param VideoBase64: 用于活体检测的视频，视频的BASE64值；
-BASE64编码后的大小不超过5M，支持mp4、avi、flv格式。
+BASE64编码后的大小不超过8M，支持mp4、avi、flv格式。
         :type VideoBase64: str
         :param LivenessType: 活体检测类型，取值：LIP/ACTION/SILENT。
 LIP为数字模式，ACTION为动作模式，SILENT为静默模式，三种模式选择一种传入。
@@ -1107,7 +1115,7 @@ LIP为数字模式，ACTION为动作模式，SILENT为静默模式，三种模�
 动作模式传参：传动作顺序(2,1 or 1,2)，需先调用接口获取动作顺序；
 静默模式传参：空。
         :type ValidateData: str
-        :param Optional: 本接口不需要传递此参数。
+        :param Optional: 额外配置，传入JSON字符串。
         :type Optional: str
         """
         self.IdCard = None
@@ -1266,15 +1274,15 @@ class MinorsVerificationResponse(AbstractModel):
 收费结果码：
 0: 成年
 -1: 未成年
--2: 手机号未实名
+-2: 未查询到手机号信息
 -3: 姓名和身份证号不一致
 
 不收费结果码：
 -4: 非法身份证号（长度、校验位等不正确）
 -5: 非法姓名（长度、格式等不正确）
--6: 数据源服务异常
--7: 数据源中无此身份证记录
--8: 公安比对系统升级中，请稍后再试
+-6: 权威数据源服务异常
+-7: 未查询到身份信息
+-8: 权威数据源升级中，请稍后再试
         :type Result: str
         :param Description: 业务结果描述。
         :type Description: str

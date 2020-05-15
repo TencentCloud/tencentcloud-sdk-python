@@ -2187,6 +2187,7 @@ class MLIDCardOCRResponse(AbstractModel):
         :param Warn: 告警码
 -9103	证照翻拍告警
 -9102	证照复印件告警
+-9106       证件遮挡告警
         :type Warn: list of int
         :param Image: 证件图片
         :type Image: str
@@ -2200,6 +2201,14 @@ class MLIDCardOCRResponse(AbstractModel):
     }
 }
         :type AdvancedInfo: str
+        :param Type: 证件类型
+MyKad  身份证
+MyPR    永居证
+MyTentera   军官证
+MyKAS    临时身份证
+POLIS  警察
+IKAD   劳工证
+        :type Type: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -2210,6 +2219,7 @@ class MLIDCardOCRResponse(AbstractModel):
         self.Warn = None
         self.Image = None
         self.AdvancedInfo = None
+        self.Type = None
         self.RequestId = None
 
 
@@ -2221,6 +2231,7 @@ class MLIDCardOCRResponse(AbstractModel):
         self.Warn = params.get("Warn")
         self.Image = params.get("Image")
         self.AdvancedInfo = params.get("AdvancedInfo")
+        self.Type = params.get("Type")
         self.RequestId = params.get("RequestId")
 
 

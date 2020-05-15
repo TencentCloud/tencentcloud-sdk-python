@@ -97,6 +97,35 @@ class CodePosition(AbstractModel):
         self.FloatY = params.get("FloatY")
 
 
+class Coordinate(AbstractModel):
+    """坐标
+
+    """
+
+    def __init__(self):
+        """
+        :param Cx: 左上角横坐标
+        :type Cx: int
+        :param Cy: 左上角纵坐标
+        :type Cy: int
+        :param Height: 高度
+        :type Height: int
+        :param Width: 宽度
+        :type Width: int
+        """
+        self.Cx = None
+        self.Cy = None
+        self.Height = None
+        self.Width = None
+
+
+    def _deserialize(self, params):
+        self.Cx = params.get("Cx")
+        self.Cy = params.get("Cy")
+        self.Height = params.get("Height")
+        self.Width = params.get("Width")
+
+
 class CreateFileSampleRequest(AbstractModel):
     """CreateFileSample请求参数结构体
 
@@ -226,6 +255,31 @@ class CreateTextSampleResponse(AbstractModel):
         self.ErrMsg = params.get("ErrMsg")
         self.Progress = params.get("Progress")
         self.RequestId = params.get("RequestId")
+
+
+class CustomResult(AbstractModel):
+    """文本返回的自定义词库结果
+
+    """
+
+    def __init__(self):
+        """
+        :param Keywords: 命中的自定义关键词
+        :type Keywords: list of str
+        :param LibId: 自定义库id
+        :type LibId: str
+        :param LibName: 自定义词库名称
+        :type LibName: str
+        """
+        self.Keywords = None
+        self.LibId = None
+        self.LibName = None
+
+
+    def _deserialize(self, params):
+        self.Keywords = params.get("Keywords")
+        self.LibId = params.get("LibId")
+        self.LibName = params.get("LibName")
 
 
 class DeleteFileSampleRequest(AbstractModel):
@@ -442,6 +496,42 @@ class DescribeTextSampleResponse(AbstractModel):
                 self.TextSampleSet.append(obj)
         self.TotalCount = params.get("TotalCount")
         self.RequestId = params.get("RequestId")
+
+
+class DetailResult(AbstractModel):
+    """文本返回的详细结果
+
+    """
+
+    def __init__(self):
+        """
+        :param EvilLabel: 恶意标签，Normal：正常，Polity：涉政，Porn：色情，Illegal：违法，Abuse：谩骂，Terror：暴恐，Ad：广告，Custom：自定义关键词
+        :type EvilLabel: str
+        :param EvilType: 恶意类型
+100：正常
+20001：政治
+20002：色情 
+20006：涉毒违法
+20007：谩骂
+20105：广告引流 
+24001：暴恐
+        :type EvilType: int
+        :param Keywords: 该标签下命中的关键词
+        :type Keywords: list of str
+        :param Score: 该标签模型命中的分值
+        :type Score: int
+        """
+        self.EvilLabel = None
+        self.EvilType = None
+        self.Keywords = None
+        self.Score = None
+
+
+    def _deserialize(self, params):
+        self.EvilLabel = params.get("EvilLabel")
+        self.EvilType = params.get("EvilType")
+        self.Keywords = params.get("Keywords")
+        self.Score = params.get("Score")
 
 
 class FileSample(AbstractModel):
@@ -945,14 +1035,62 @@ class OCRDetect(AbstractModel):
 
     def __init__(self):
         """
+        :param Item: 识别到的详细信息
+        :type Item: list of OCRItem
         :param TextInfo: 识别到的文本信息
         :type TextInfo: str
         """
+        self.Item = None
         self.TextInfo = None
 
 
     def _deserialize(self, params):
+        if params.get("Item") is not None:
+            self.Item = []
+            for item in params.get("Item"):
+                obj = OCRItem()
+                obj._deserialize(item)
+                self.Item.append(obj)
         self.TextInfo = params.get("TextInfo")
+
+
+class OCRItem(AbstractModel):
+    """OCR详情
+
+    """
+
+    def __init__(self):
+        """
+        :param TextPosition: 检测到的文本坐标信息
+        :type TextPosition: :class:`tencentcloud.cms.v20190321.models.Coordinate`
+        :param EvilLabel: 文本命中具体标签
+        :type EvilLabel: str
+        :param EvilType: 文本命中恶意违规类型
+        :type EvilType: int
+        :param Keywords: 文本命中违规的关键词
+        :type Keywords: list of str
+        :param Rate: 文本涉嫌违规分值
+        :type Rate: int
+        :param TextContent: 检测到的文本信息
+        :type TextContent: str
+        """
+        self.TextPosition = None
+        self.EvilLabel = None
+        self.EvilType = None
+        self.Keywords = None
+        self.Rate = None
+        self.TextContent = None
+
+
+    def _deserialize(self, params):
+        if params.get("TextPosition") is not None:
+            self.TextPosition = Coordinate()
+            self.TextPosition._deserialize(params.get("TextPosition"))
+        self.EvilLabel = params.get("EvilLabel")
+        self.EvilType = params.get("EvilType")
+        self.Keywords = params.get("Keywords")
+        self.Rate = params.get("Rate")
+        self.TextContent = params.get("TextContent")
 
 
 class PhoneDetect(AbstractModel):
@@ -1070,19 +1208,37 @@ class TextData(AbstractModel):
         :type EvilType: int
         :param Common: 消息类公共相关参数
         :type Common: :class:`tencentcloud.cms.v20190321.models.TextOutputComm`
+        :param CustomResult: 返回的自定义词库结果
+        :type CustomResult: list of CustomResult
+        :param DetailResult: 返回的详细结果
+        :type DetailResult: list of DetailResult
         :param ID: 消息类ID信息
         :type ID: :class:`tencentcloud.cms.v20190321.models.TextOutputID`
         :param Res: 消息类输出结果
         :type Res: :class:`tencentcloud.cms.v20190321.models.TextOutputRes`
+        :param BizType: 最终使用的BizType
+        :type BizType: int
+        :param EvilLabel: 恶意标签，Normal：正常，Polity：涉政，Porn：色情，Illegal：违法，Abuse：谩骂，Terror：暴恐，Ad：广告，Custom：自定义关键词
+        :type EvilLabel: str
         :param Keywords: 命中的关键词
         :type Keywords: list of str
+        :param Score: 命中的模型分值
+        :type Score: int
+        :param Suggestion: 建议值,Block：打击,Review：待复审,Normal：正常
+        :type Suggestion: str
         """
         self.EvilFlag = None
         self.EvilType = None
         self.Common = None
+        self.CustomResult = None
+        self.DetailResult = None
         self.ID = None
         self.Res = None
+        self.BizType = None
+        self.EvilLabel = None
         self.Keywords = None
+        self.Score = None
+        self.Suggestion = None
 
 
     def _deserialize(self, params):
@@ -1091,13 +1247,29 @@ class TextData(AbstractModel):
         if params.get("Common") is not None:
             self.Common = TextOutputComm()
             self.Common._deserialize(params.get("Common"))
+        if params.get("CustomResult") is not None:
+            self.CustomResult = []
+            for item in params.get("CustomResult"):
+                obj = CustomResult()
+                obj._deserialize(item)
+                self.CustomResult.append(obj)
+        if params.get("DetailResult") is not None:
+            self.DetailResult = []
+            for item in params.get("DetailResult"):
+                obj = DetailResult()
+                obj._deserialize(item)
+                self.DetailResult.append(obj)
         if params.get("ID") is not None:
             self.ID = TextOutputID()
             self.ID._deserialize(params.get("ID"))
         if params.get("Res") is not None:
             self.Res = TextOutputRes()
             self.Res._deserialize(params.get("Res"))
+        self.BizType = params.get("BizType")
+        self.EvilLabel = params.get("EvilLabel")
         self.Keywords = params.get("Keywords")
+        self.Score = params.get("Score")
+        self.Suggestion = params.get("Suggestion")
 
 
 class TextModerationRequest(AbstractModel):
@@ -1109,12 +1281,24 @@ class TextModerationRequest(AbstractModel):
         """
         :param Content: 文本内容Base64编码。原文长度需小于15000字节，即5000个汉字以内。
         :type Content: str
+        :param BizType: 该字段用于标识业务场景。您可以在内容安全控制台创建对应的ID，配置不同的内容审核策略，通过接口调用，默认不填为0，后端使用默认策略
+        :type BizType: int
+        :param DataId: 数据ID，英文字母、下划线、-组成，不超过64个字符
+        :type DataId: str
+        :param SdkAppId: 业务应用ID
+        :type SdkAppId: int
         """
         self.Content = None
+        self.BizType = None
+        self.DataId = None
+        self.SdkAppId = None
 
 
     def _deserialize(self, params):
         self.Content = params.get("Content")
+        self.BizType = params.get("BizType")
+        self.DataId = params.get("DataId")
+        self.SdkAppId = params.get("SdkAppId")
 
 
 class TextModerationResponse(AbstractModel):

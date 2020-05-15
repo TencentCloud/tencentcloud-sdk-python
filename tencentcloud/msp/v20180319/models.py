@@ -338,16 +338,16 @@ class RegisterMigrationTaskRequest(AbstractModel):
         :type TaskName: str
         :param ServiceSupplier: 服务提供商名称
         :type ServiceSupplier: str
-        :param SrcInfo: 迁移任务源信息
-        :type SrcInfo: :class:`tencentcloud.msp.v20180319.models.SrcInfo`
-        :param DstInfo: 迁移任务目的信息
-        :type DstInfo: :class:`tencentcloud.msp.v20180319.models.DstInfo`
         :param CreateTime: 迁移任务创建时间
         :type CreateTime: str
         :param UpdateTime: 迁移任务更新时间
         :type UpdateTime: str
         :param MigrateClass: 迁移类别，如数据库迁移中mysql:mysql代表从mysql迁移到mysql，文件迁移中oss:cos代表从阿里云oss迁移到腾讯云cos
         :type MigrateClass: str
+        :param SrcInfo: 迁移任务源信息
+        :type SrcInfo: :class:`tencentcloud.msp.v20180319.models.SrcInfo`
+        :param DstInfo: 迁移任务目的信息
+        :type DstInfo: :class:`tencentcloud.msp.v20180319.models.DstInfo`
         :param SrcAccessType: 源实例接入类型，数据库迁移时填写值为：extranet(外网),cvm(cvm自建实例),dcg(专线接入的实例),vpncloud(云vpn接入的实例),vpnselfbuild(自建vpn接入的实例)，cdb(云上cdb实例)
         :type SrcAccessType: str
         :param SrcDatabaseType: 源实例数据库类型，数据库迁移时填写，取值为mysql,redis,percona,mongodb,postgresql,sqlserver,mariadb 之一
@@ -360,11 +360,11 @@ class RegisterMigrationTaskRequest(AbstractModel):
         self.TaskType = None
         self.TaskName = None
         self.ServiceSupplier = None
-        self.SrcInfo = None
-        self.DstInfo = None
         self.CreateTime = None
         self.UpdateTime = None
         self.MigrateClass = None
+        self.SrcInfo = None
+        self.DstInfo = None
         self.SrcAccessType = None
         self.SrcDatabaseType = None
         self.DstAccessType = None
@@ -375,15 +375,15 @@ class RegisterMigrationTaskRequest(AbstractModel):
         self.TaskType = params.get("TaskType")
         self.TaskName = params.get("TaskName")
         self.ServiceSupplier = params.get("ServiceSupplier")
+        self.CreateTime = params.get("CreateTime")
+        self.UpdateTime = params.get("UpdateTime")
+        self.MigrateClass = params.get("MigrateClass")
         if params.get("SrcInfo") is not None:
             self.SrcInfo = SrcInfo()
             self.SrcInfo._deserialize(params.get("SrcInfo"))
         if params.get("DstInfo") is not None:
             self.DstInfo = DstInfo()
             self.DstInfo._deserialize(params.get("DstInfo"))
-        self.CreateTime = params.get("CreateTime")
-        self.UpdateTime = params.get("UpdateTime")
-        self.MigrateClass = params.get("MigrateClass")
         self.SrcAccessType = params.get("SrcAccessType")
         self.SrcDatabaseType = params.get("SrcDatabaseType")
         self.DstAccessType = params.get("DstAccessType")

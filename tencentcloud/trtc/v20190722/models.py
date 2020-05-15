@@ -25,9 +25,9 @@ class DescribeCallDetailRequest(AbstractModel):
         """
         :param CommId: 通话ID（唯一标识一次通话）= sdkappid+roomgString（房间号）+房间创建时间（unix时间戳，s）。通过 DescribeRoomInformation（查询房间列表）接口获取。
         :type CommId: str
-        :param StartTime: 查询开始时间
+        :param StartTime: 查询开始时间，5天内。本地unix时间戳（1588031999s）
         :type StartTime: int
-        :param EndTime: 查询结束时间
+        :param EndTime: 查询结束时间，本地unix时间戳（1588031999s）
         :type EndTime: int
         :param SdkAppId: 用户sdkappid
         :type SdkAppId: str
@@ -116,9 +116,9 @@ class DescribeHistoryScaleRequest(AbstractModel):
         """
         :param SdkAppId: 用户sdkappid
         :type SdkAppId: str
-        :param StartTime: 查询开始时间
+        :param StartTime: 查询开始时间，5天内。本地unix时间戳（1588031999s）
         :type StartTime: int
-        :param EndTime: 查询结束时间
+        :param EndTime: 查询结束时间，本地unix时间戳（1588031999s）
         :type EndTime: int
         """
         self.SdkAppId = None
@@ -170,9 +170,9 @@ class DescribeRealtimeNetworkRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param StartTime: 查询开始时间
+        :param StartTime: 查询开始时间，24小时内，，本地unix时间戳（1588031999s）
         :type StartTime: int
-        :param EndTime: 查询结束时间
+        :param EndTime: 查询结束时间，本地unix时间戳（1588031999s）
         :type EndTime: int
         :param SdkAppId: 用户sdkappid
         :type SdkAppId: str
@@ -227,9 +227,9 @@ class DescribeRealtimeQualityRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param StartTime: 查询开始时间
+        :param StartTime: 查询开始时间，24小时内。本地unix时间戳（1588031999s）
         :type StartTime: int
-        :param EndTime: 查询结束时间
+        :param EndTime: 查询结束时间，本地unix时间戳（1588031999s）
         :type EndTime: int
         :param SdkAppId: 用户sdkappid
         :type SdkAppId: str
@@ -286,9 +286,9 @@ class DescribeRealtimeScaleRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param StartTime: 查询开始时间
+        :param StartTime: 查询开始时间，24小时内。本地unix时间戳（1588031999s）
         :type StartTime: int
-        :param EndTime: 查询结束时间
+        :param EndTime: 查询结束时间，本地unix时间戳（1588031999s）
         :type EndTime: int
         :param SdkAppId: 用户sdkappid
         :type SdkAppId: str
@@ -345,9 +345,9 @@ class DescribeRoomInformationRequest(AbstractModel):
         """
         :param SdkAppId: 用户sdkappid
         :type SdkAppId: str
-        :param StartTime: 查询开始时间
+        :param StartTime: 查询开始时间，5天内。本地unix时间戳（1588031999s）
         :type StartTime: int
-        :param EndTime: 查询结束时间
+        :param EndTime: 查询结束时间，本地unix时间戳（1588031999s）
         :type EndTime: int
         :param RoomId: 数字房间号
         :type RoomId: str

@@ -1286,7 +1286,7 @@ class CamClient(AbstractClient):
 
 
     def SetMfaFlag(self, request):
-        """设置用户的登录保护和敏感操作校验方式
+        """设置子用户的登录保护和敏感操作校验方式
 
         :param request: Request instance for SetMfaFlag.
         :type request: :class:`tencentcloud.cam.v20190116.models.SetMfaFlagRequest`

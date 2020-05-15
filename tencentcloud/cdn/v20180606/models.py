@@ -1127,13 +1127,18 @@ class CreateClsLogTopicResponse(AbstractModel):
 
     def __init__(self):
         """
+        :param TopicId: 主题ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TopicId: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
+        self.TopicId = None
         self.RequestId = None
 
 
     def _deserialize(self, params):
+        self.TopicId = params.get("TopicId")
         self.RequestId = params.get("RequestId")
 
 

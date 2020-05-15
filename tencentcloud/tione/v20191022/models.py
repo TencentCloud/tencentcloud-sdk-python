@@ -189,6 +189,8 @@ class CreateNotebookInstanceRequest(AbstractModel):
         :param AdditionalCodeRepositories: 其他存储库列表
 每个元素可以是已创建的存储库名称或者已https://开头的公共git库
         :type AdditionalCodeRepositories: list of str
+        :param ClsAccess: 是否开启CLS日志服务，可取值Enabled/Disabled，默认为Disabled
+        :type ClsAccess: str
         """
         self.NotebookInstanceName = None
         self.InstanceType = None
@@ -199,6 +201,7 @@ class CreateNotebookInstanceRequest(AbstractModel):
         self.LifecycleScriptsName = None
         self.DefaultCodeRepository = None
         self.AdditionalCodeRepositories = None
+        self.ClsAccess = None
 
 
     def _deserialize(self, params):
@@ -211,6 +214,7 @@ class CreateNotebookInstanceRequest(AbstractModel):
         self.LifecycleScriptsName = params.get("LifecycleScriptsName")
         self.DefaultCodeRepository = params.get("DefaultCodeRepository")
         self.AdditionalCodeRepositories = params.get("AdditionalCodeRepositories")
+        self.ClsAccess = params.get("ClsAccess")
 
 
 class CreateNotebookInstanceResponse(AbstractModel):
@@ -751,6 +755,9 @@ class DescribeNotebookInstanceResponse(AbstractModel):
 每个元素可以是已创建的存储库名称或者已https://开头的公共git库
 注意：此字段可能返回 null，表示取不到有效值。
         :type AdditionalCodeRepositories: list of str
+        :param ClsAccess: 是否开启CLS日志服务
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ClsAccess: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -770,6 +777,7 @@ class DescribeNotebookInstanceResponse(AbstractModel):
         self.LifecycleScriptsName = None
         self.DefaultCodeRepository = None
         self.AdditionalCodeRepositories = None
+        self.ClsAccess = None
         self.RequestId = None
 
 
@@ -790,6 +798,7 @@ class DescribeNotebookInstanceResponse(AbstractModel):
         self.LifecycleScriptsName = params.get("LifecycleScriptsName")
         self.DefaultCodeRepository = params.get("DefaultCodeRepository")
         self.AdditionalCodeRepositories = params.get("AdditionalCodeRepositories")
+        self.ClsAccess = params.get("ClsAccess")
         self.RequestId = params.get("RequestId")
 
 
@@ -1650,6 +1659,8 @@ class UpdateNotebookInstanceRequest(AbstractModel):
         :param DisassociateAdditionalCodeRepositories: 是否取消关联其他存储库，默认false
 该值为true时，AdditionalCodeRepositories将被忽略
         :type DisassociateAdditionalCodeRepositories: bool
+        :param ClsAccess: 是否开启CLS日志服务，可取值Enabled/Disabled
+        :type ClsAccess: str
         """
         self.NotebookInstanceName = None
         self.RoleArn = None
@@ -1662,6 +1673,7 @@ class UpdateNotebookInstanceRequest(AbstractModel):
         self.AdditionalCodeRepositories = None
         self.DisassociateDefaultCodeRepository = None
         self.DisassociateAdditionalCodeRepositories = None
+        self.ClsAccess = None
 
 
     def _deserialize(self, params):
@@ -1676,6 +1688,7 @@ class UpdateNotebookInstanceRequest(AbstractModel):
         self.AdditionalCodeRepositories = params.get("AdditionalCodeRepositories")
         self.DisassociateDefaultCodeRepository = params.get("DisassociateDefaultCodeRepository")
         self.DisassociateAdditionalCodeRepositories = params.get("DisassociateAdditionalCodeRepositories")
+        self.ClsAccess = params.get("ClsAccess")
 
 
 class UpdateNotebookInstanceResponse(AbstractModel):
