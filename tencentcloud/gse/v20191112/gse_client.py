@@ -53,6 +53,34 @@ class GseClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DeleteScalingPolicy(self, request):
+        """用于删除扩缩容配置
+
+        :param request: Request instance for DeleteScalingPolicy.
+        :type request: :class:`tencentcloud.gse.v20191112.models.DeleteScalingPolicyRequest`
+        :rtype: :class:`tencentcloud.gse.v20191112.models.DeleteScalingPolicyResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DeleteScalingPolicy", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DeleteScalingPolicyResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeGameServerSessionDetails(self, request):
         """本接口（DescribeGameServerSessionDetails）用于查询游戏服务器会话详情列表
 
@@ -95,6 +123,34 @@ class GseClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeGameServerSessionPlacementResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeGameServerSessionQueues(self, request):
+        """本接口（DescribeGameServerSessionQueues）用于查询游戏服务器会话队列
+
+        :param request: Request instance for DescribeGameServerSessionQueues.
+        :type request: :class:`tencentcloud.gse.v20191112.models.DescribeGameServerSessionQueuesRequest`
+        :rtype: :class:`tencentcloud.gse.v20191112.models.DescribeGameServerSessionQueuesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeGameServerSessionQueues", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeGameServerSessionQueuesResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -193,6 +249,34 @@ class GseClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeScalingPolicies(self, request):
+        """用于查询服务部署的动态扩缩容配置
+
+        :param request: Request instance for DescribeScalingPolicies.
+        :type request: :class:`tencentcloud.gse.v20191112.models.DescribeScalingPoliciesRequest`
+        :rtype: :class:`tencentcloud.gse.v20191112.models.DescribeScalingPoliciesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeScalingPolicies", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeScalingPoliciesResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def GetGameServerSessionLogUrl(self, request):
         """本接口（GetGameServerSessionLogUrl）用于获取游戏服务器会话的日志URL
 
@@ -277,6 +361,34 @@ class GseClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def PutScalingPolicy(self, request):
+        """用于设置动态扩缩容配置
+
+        :param request: Request instance for PutScalingPolicy.
+        :type request: :class:`tencentcloud.gse.v20191112.models.PutScalingPolicyRequest`
+        :rtype: :class:`tencentcloud.gse.v20191112.models.PutScalingPolicyResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("PutScalingPolicy", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.PutScalingPolicyResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def SearchGameServerSessions(self, request):
         """本接口（SearchGameServerSessions）用于搜索游戏服务器会话列表
 
@@ -291,6 +403,34 @@ class GseClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.SearchGameServerSessionsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def SetServerWeight(self, request):
+        """设置服务器权重
+
+        :param request: Request instance for SetServerWeight.
+        :type request: :class:`tencentcloud.gse.v20191112.models.SetServerWeightRequest`
+        :rtype: :class:`tencentcloud.gse.v20191112.models.SetServerWeightResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("SetServerWeight", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.SetServerWeightResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

@@ -115,6 +115,44 @@ class Credentials(AbstractModel):
         self.UserName = params.get("UserName")
 
 
+class DeleteScalingPolicyRequest(AbstractModel):
+    """DeleteScalingPolicy请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param FleetId: 服务部署ID
+        :type FleetId: str
+        :param Name: 名称
+        :type Name: str
+        """
+        self.FleetId = None
+        self.Name = None
+
+
+    def _deserialize(self, params):
+        self.FleetId = params.get("FleetId")
+        self.Name = params.get("Name")
+
+
+class DeleteScalingPolicyResponse(AbstractModel):
+    """DeleteScalingPolicy返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeGameServerSessionDetailsRequest(AbstractModel):
     """DescribeGameServerSessionDetails请求参数结构体
 
@@ -224,6 +262,62 @@ class DescribeGameServerSessionPlacementResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeGameServerSessionQueuesRequest(AbstractModel):
+    """DescribeGameServerSessionQueues请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Names: 游戏服务器会话队列数组
+        :type Names: list of str
+        :param Limit: 要返回的最大结果数
+        :type Limit: int
+        :param Offset: 偏移
+        :type Offset: int
+        """
+        self.Names = None
+        self.Limit = None
+        self.Offset = None
+
+
+    def _deserialize(self, params):
+        self.Names = params.get("Names")
+        self.Limit = params.get("Limit")
+        self.Offset = params.get("Offset")
+
+
+class DescribeGameServerSessionQueuesResponse(AbstractModel):
+    """DescribeGameServerSessionQueues返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param GameServerSessionQueues: 游戏服务器会话队列数组
+注意：此字段可能返回 null，表示取不到有效值。
+        :type GameServerSessionQueues: list of GameServerSessionQueue
+        :param TotalCount: 总数
+        :type TotalCount: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.GameServerSessionQueues = None
+        self.TotalCount = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("GameServerSessionQueues") is not None:
+            self.GameServerSessionQueues = []
+            for item in params.get("GameServerSessionQueues"):
+                obj = GameServerSessionQueue()
+                obj._deserialize(item)
+                self.GameServerSessionQueues.append(obj)
+        self.TotalCount = params.get("TotalCount")
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeGameServerSessionsRequest(AbstractModel):
     """DescribeGameServerSessions请求参数结构体
 
@@ -241,7 +335,7 @@ class DescribeGameServerSessionsRequest(AbstractModel):
         :type Limit: int
         :param NextToken: 页偏移，用于查询下一页
         :type NextToken: str
-        :param StatusFilter: 游戏服务器会话状态
+        :param StatusFilter: 游戏服务器会话状态(ACTIVE,ACTIVATING,TERMINATED,TERMINATING,ERROR)
         :type StatusFilter: str
         """
         self.AliasId = None
@@ -420,6 +514,67 @@ class DescribePlayerSessionsResponse(AbstractModel):
                 obj._deserialize(item)
                 self.PlayerSessions.append(obj)
         self.NextToken = params.get("NextToken")
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeScalingPoliciesRequest(AbstractModel):
+    """DescribeScalingPolicies请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param FleetId: 服务部署ID
+        :type FleetId: str
+        :param StatusFilter: 状态过滤条件
+        :type StatusFilter: str
+        :param Offset: 结果返回最大数量
+        :type Offset: int
+        :param Limit: 返回结果偏移
+        :type Limit: int
+        """
+        self.FleetId = None
+        self.StatusFilter = None
+        self.Offset = None
+        self.Limit = None
+
+
+    def _deserialize(self, params):
+        self.FleetId = params.get("FleetId")
+        self.StatusFilter = params.get("StatusFilter")
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+
+
+class DescribeScalingPoliciesResponse(AbstractModel):
+    """DescribeScalingPolicies返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ScalingPolicies: 动态扩缩容配置
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ScalingPolicies: list of ScalingPolicy
+        :param TotalCount: 返回总数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TotalCount: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.ScalingPolicies = None
+        self.TotalCount = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("ScalingPolicies") is not None:
+            self.ScalingPolicies = []
+            for item in params.get("ScalingPolicies"):
+                obj = ScalingPolicy()
+                obj._deserialize(item)
+                self.ScalingPolicies.append(obj)
+        self.TotalCount = params.get("TotalCount")
         self.RequestId = params.get("RequestId")
 
 
@@ -717,6 +872,69 @@ class GameServerSessionPlacement(AbstractModel):
         self.EndTime = params.get("EndTime")
 
 
+class GameServerSessionQueue(AbstractModel):
+    """服务部署组对象
+
+    """
+
+    def __init__(self):
+        """
+        :param Name: 服务部署组名字
+        :type Name: str
+        :param GameServerSessionQueueArn: 服务部署组资源
+        :type GameServerSessionQueueArn: str
+        :param Destinations: 目的fleet（可为别名）列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Destinations: list of GameServerSessionQueueDestination
+        :param PlayerLatencyPolicies: 延迟策略集合
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PlayerLatencyPolicies: list of PlayerLatencyPolicy
+        :param TimeoutInSeconds: 超时时间
+        :type TimeoutInSeconds: int
+        """
+        self.Name = None
+        self.GameServerSessionQueueArn = None
+        self.Destinations = None
+        self.PlayerLatencyPolicies = None
+        self.TimeoutInSeconds = None
+
+
+    def _deserialize(self, params):
+        self.Name = params.get("Name")
+        self.GameServerSessionQueueArn = params.get("GameServerSessionQueueArn")
+        if params.get("Destinations") is not None:
+            self.Destinations = []
+            for item in params.get("Destinations"):
+                obj = GameServerSessionQueueDestination()
+                obj._deserialize(item)
+                self.Destinations.append(obj)
+        if params.get("PlayerLatencyPolicies") is not None:
+            self.PlayerLatencyPolicies = []
+            for item in params.get("PlayerLatencyPolicies"):
+                obj = PlayerLatencyPolicy()
+                obj._deserialize(item)
+                self.PlayerLatencyPolicies.append(obj)
+        self.TimeoutInSeconds = params.get("TimeoutInSeconds")
+
+
+class GameServerSessionQueueDestination(AbstractModel):
+    """服务部署组目的集合
+
+    """
+
+    def __init__(self):
+        """
+        :param DestinationArn: 服务部署组目的的资源描述
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DestinationArn: str
+        """
+        self.DestinationArn = None
+
+
+    def _deserialize(self, params):
+        self.DestinationArn = params.get("DestinationArn")
+
+
 class GetGameServerSessionLogUrlRequest(AbstractModel):
     """GetGameServerSessionLogUrl请求参数结构体
 
@@ -985,6 +1203,29 @@ class PlayerLatency(AbstractModel):
         self.LatencyInMilliseconds = params.get("LatencyInMilliseconds")
 
 
+class PlayerLatencyPolicy(AbstractModel):
+    """延迟策略
+
+    """
+
+    def __init__(self):
+        """
+        :param MaximumIndividualPlayerLatencyMilliseconds: 任意player允许的最大延迟，单位：毫秒
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MaximumIndividualPlayerLatencyMilliseconds: int
+        :param PolicyDurationSeconds: 放置新GameServerSession时强制实施策略的时间长度，单位：秒
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PolicyDurationSeconds: int
+        """
+        self.MaximumIndividualPlayerLatencyMilliseconds = None
+        self.PolicyDurationSeconds = None
+
+
+    def _deserialize(self, params):
+        self.MaximumIndividualPlayerLatencyMilliseconds = params.get("MaximumIndividualPlayerLatencyMilliseconds")
+        self.PolicyDurationSeconds = params.get("PolicyDurationSeconds")
+
+
 class PlayerSession(AbstractModel):
     """玩家会话详情
 
@@ -1044,6 +1285,153 @@ class PlayerSession(AbstractModel):
         self.Port = params.get("Port")
         self.Status = params.get("Status")
         self.TerminationTime = params.get("TerminationTime")
+
+
+class PutScalingPolicyRequest(AbstractModel):
+    """PutScalingPolicy请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param FleetId: 基于规则的扩缩容配置
+        :type FleetId: str
+        :param Name: 名称
+        :type Name: str
+        :param ScalingAdjustment: 调整值
+        :type ScalingAdjustment: int
+        :param ScalingAdjustmentType: 调整类型
+        :type ScalingAdjustmentType: str
+        :param Threshold: 指标阈值
+        :type Threshold: float
+        :param ComparisonOperator: 比较符
+        :type ComparisonOperator: str
+        :param EvaluationPeriods: 时间长度（分钟）
+        :type EvaluationPeriods: int
+        :param MetricName: 指标名称
+        :type MetricName: str
+        :param PolicyType: 策略类型
+        :type PolicyType: str
+        :param TargetConfiguration: 扩缩容配置类型
+        :type TargetConfiguration: :class:`tencentcloud.gse.v20191112.models.TargetConfiguration`
+        """
+        self.FleetId = None
+        self.Name = None
+        self.ScalingAdjustment = None
+        self.ScalingAdjustmentType = None
+        self.Threshold = None
+        self.ComparisonOperator = None
+        self.EvaluationPeriods = None
+        self.MetricName = None
+        self.PolicyType = None
+        self.TargetConfiguration = None
+
+
+    def _deserialize(self, params):
+        self.FleetId = params.get("FleetId")
+        self.Name = params.get("Name")
+        self.ScalingAdjustment = params.get("ScalingAdjustment")
+        self.ScalingAdjustmentType = params.get("ScalingAdjustmentType")
+        self.Threshold = params.get("Threshold")
+        self.ComparisonOperator = params.get("ComparisonOperator")
+        self.EvaluationPeriods = params.get("EvaluationPeriods")
+        self.MetricName = params.get("MetricName")
+        self.PolicyType = params.get("PolicyType")
+        if params.get("TargetConfiguration") is not None:
+            self.TargetConfiguration = TargetConfiguration()
+            self.TargetConfiguration._deserialize(params.get("TargetConfiguration"))
+
+
+class PutScalingPolicyResponse(AbstractModel):
+    """PutScalingPolicy返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Name: 规则名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Name: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Name = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Name = params.get("Name")
+        self.RequestId = params.get("RequestId")
+
+
+class ScalingPolicy(AbstractModel):
+    """动态扩缩容配置
+
+    """
+
+    def __init__(self):
+        """
+        :param FleetId: 服务部署ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FleetId: str
+        :param Name: 名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Name: str
+        :param Status: 状态
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Status: str
+        :param ScalingAdjustment: 保留参数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ScalingAdjustment: str
+        :param ScalingAdjustmentType: 保留参数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ScalingAdjustmentType: str
+        :param ComparisonOperator: 保留参数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ComparisonOperator: str
+        :param Threshold: 保留参数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Threshold: str
+        :param EvaluationPeriods: 保留参数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EvaluationPeriods: str
+        :param MetricName: 保留参数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MetricName: str
+        :param PolicyType: 策略类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PolicyType: str
+        :param TargetConfiguration: 基于规则的配置
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TargetConfiguration: :class:`tencentcloud.gse.v20191112.models.TargetConfiguration`
+        """
+        self.FleetId = None
+        self.Name = None
+        self.Status = None
+        self.ScalingAdjustment = None
+        self.ScalingAdjustmentType = None
+        self.ComparisonOperator = None
+        self.Threshold = None
+        self.EvaluationPeriods = None
+        self.MetricName = None
+        self.PolicyType = None
+        self.TargetConfiguration = None
+
+
+    def _deserialize(self, params):
+        self.FleetId = params.get("FleetId")
+        self.Name = params.get("Name")
+        self.Status = params.get("Status")
+        self.ScalingAdjustment = params.get("ScalingAdjustment")
+        self.ScalingAdjustmentType = params.get("ScalingAdjustmentType")
+        self.ComparisonOperator = params.get("ComparisonOperator")
+        self.Threshold = params.get("Threshold")
+        self.EvaluationPeriods = params.get("EvaluationPeriods")
+        self.MetricName = params.get("MetricName")
+        self.PolicyType = params.get("PolicyType")
+        if params.get("TargetConfiguration") is not None:
+            self.TargetConfiguration = TargetConfiguration()
+            self.TargetConfiguration._deserialize(params.get("TargetConfiguration"))
 
 
 class SearchGameServerSessionsRequest(AbstractModel):
@@ -1128,6 +1516,48 @@ class SearchGameServerSessionsResponse(AbstractModel):
                 obj._deserialize(item)
                 self.GameServerSessions.append(obj)
         self.NextToken = params.get("NextToken")
+        self.RequestId = params.get("RequestId")
+
+
+class SetServerWeightRequest(AbstractModel):
+    """SetServerWeight请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param FleetId: 服务舰队ID
+        :type FleetId: str
+        :param InstanceId: 实例ID
+        :type InstanceId: str
+        :param Weight: 权重
+        :type Weight: int
+        """
+        self.FleetId = None
+        self.InstanceId = None
+        self.Weight = None
+
+
+    def _deserialize(self, params):
+        self.FleetId = params.get("FleetId")
+        self.InstanceId = params.get("InstanceId")
+        self.Weight = params.get("Weight")
+
+
+class SetServerWeightResponse(AbstractModel):
+    """SetServerWeight返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
 
 
@@ -1252,6 +1682,24 @@ class StopGameServerSessionPlacementResponse(AbstractModel):
             self.GameServerSessionPlacement = GameServerSessionPlacement()
             self.GameServerSessionPlacement._deserialize(params.get("GameServerSessionPlacement"))
         self.RequestId = params.get("RequestId")
+
+
+class TargetConfiguration(AbstractModel):
+    """基于规则的动态扩缩容配置项
+
+    """
+
+    def __init__(self):
+        """
+        :param TargetValue: 预留存率
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TargetValue: int
+        """
+        self.TargetValue = None
+
+
+    def _deserialize(self, params):
+        self.TargetValue = params.get("TargetValue")
 
 
 class UpdateGameServerSessionRequest(AbstractModel):

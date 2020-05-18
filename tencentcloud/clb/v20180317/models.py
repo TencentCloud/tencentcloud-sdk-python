@@ -114,11 +114,11 @@ class AutoRewriteRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param LoadBalancerId: 负载均衡实例ID
+        :param LoadBalancerId: 负载均衡实例ID。
         :type LoadBalancerId: str
-        :param ListenerId: HTTPS:443监听器的ID
+        :param ListenerId: HTTPS:443监听器的ID。
         :type ListenerId: str
-        :param Domains: HTTPS:443监听器下需要重定向的域名
+        :param Domains: HTTPS:443监听器下需要重定向的域名，若不填，对HTTPS:443监听器下的所有域名都设置重定向。
         :type Domains: list of str
         """
         self.LoadBalancerId = None
@@ -1292,12 +1292,15 @@ class DeleteRuleRequest(AbstractModel):
         :type Domain: str
         :param Url: 要删除的转发规则的转发路径，已提供LocationIds参数时本参数不生效
         :type Url: str
+        :param NewDefaultServerDomain: 监听器下必须配置一个默认域名，当需要删除默认域名时，可以指定另一个域名作为新的默认域名。
+        :type NewDefaultServerDomain: str
         """
         self.LoadBalancerId = None
         self.ListenerId = None
         self.LocationIds = None
         self.Domain = None
         self.Url = None
+        self.NewDefaultServerDomain = None
 
 
     def _deserialize(self, params):
@@ -1306,6 +1309,7 @@ class DeleteRuleRequest(AbstractModel):
         self.LocationIds = params.get("LocationIds")
         self.Domain = params.get("Domain")
         self.Url = params.get("Url")
+        self.NewDefaultServerDomain = params.get("NewDefaultServerDomain")
 
 
 class DeleteRuleResponse(AbstractModel):
@@ -3279,6 +3283,8 @@ class ModifyDomainAttributesRequest(AbstractModel):
         :type Http2: bool
         :param DefaultServer: 是否设为默认域名，注意，一个监听器下只能设置一个默认域名。
         :type DefaultServer: bool
+        :param NewDefaultServerDomain: 监听器下必须配置一个默认域名，若要关闭原默认域名，必须同时指定另一个域名作为新的默认域名。
+        :type NewDefaultServerDomain: str
         """
         self.LoadBalancerId = None
         self.ListenerId = None
@@ -3287,6 +3293,7 @@ class ModifyDomainAttributesRequest(AbstractModel):
         self.Certificate = None
         self.Http2 = None
         self.DefaultServer = None
+        self.NewDefaultServerDomain = None
 
 
     def _deserialize(self, params):
@@ -3299,6 +3306,7 @@ class ModifyDomainAttributesRequest(AbstractModel):
             self.Certificate._deserialize(params.get("Certificate"))
         self.Http2 = params.get("Http2")
         self.DefaultServer = params.get("DefaultServer")
+        self.NewDefaultServerDomain = params.get("NewDefaultServerDomain")
 
 
 class ModifyDomainAttributesResponse(AbstractModel):
