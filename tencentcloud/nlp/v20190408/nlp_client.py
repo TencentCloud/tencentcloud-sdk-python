@@ -261,7 +261,7 @@ class NlpClient(AbstractClient):
     def SentenceEmbedding(self, request):
         """句向量接口能够将输入的句子映射成一个固定维度的向量，用来表示这个句子的语义特征，可用于文本聚类、文本相似度、文本分类等任务，能够显著提高它们的效果。
 
-        该句向量服务由腾讯知文自然语言处理团队联合腾讯AI Lab共同打造，基于千亿级大规模互联网语料并采用AI Lab自研的DSG算法训练而成，在腾讯内部诸多业务的NLP任务上实测效果显著。
+        该句向量服务由腾讯云自然语言处理团队联合微信智言团队共同打造，基于千亿级大规模互联网语料并采用Bert等领先的深度神经网络模型训练而成，在腾讯内部诸多业务的NLP任务上实测效果显著。
 
         :param request: Request instance for SentenceEmbedding.
         :type request: :class:`tencentcloud.nlp.v20190408.models.SentenceEmbeddingRequest`
@@ -430,6 +430,36 @@ class NlpClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.TextCorrectionResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def TextSimilarity(self, request):
+        """句子相似度接口能够基于深度学习技术来计算一个源句子和多个目标句子的相似度，相似度分值越大的两个句子在语义上越相似。目前仅支持短文本的相似度计算，长文本的相似度计算也即将推出。
+
+        鉴于句子相似度是一个应用非常广泛的功能，腾讯云自然语言处理团队在Bert等领先的深度神经网络模型的基础上，专门针对文本相似任务进行了优化，并持续迭代更新。基于句子相似度，可以轻松实现诸如文本去重、相似推荐等功能。
+
+        :param request: Request instance for TextSimilarity.
+        :type request: :class:`tencentcloud.nlp.v20190408.models.TextSimilarityRequest`
+        :rtype: :class:`tencentcloud.nlp.v20190408.models.TextSimilarityResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("TextSimilarity", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.TextSimilarityResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

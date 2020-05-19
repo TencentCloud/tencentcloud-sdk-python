@@ -958,6 +958,8 @@ class BindAcctRequest(AbstractModel):
         :type SubAppId: str
         :param BindType: 1 – 小额转账验证
 2 – 短信验证
+3 - 一分钱转账验证，无需再调CheckAcct验证绑卡
+4 - 银行四要素验证，无需再调CheckAcct验证绑卡
 每个结算账户每天只能使用一次小额转账验证
         :type BindType: int
         :param SettleAcctNo: 用于提现
@@ -990,6 +992,11 @@ BindType==2时必填
         :param EiconBankBranchId: 超级网银行号，超级网银行号和大小额行号
 二选一
         :type EiconBankBranchId: str
+        :param EncryptType: 敏感信息加密类型:
+RSA, rsa非对称加密，使用RSA-PKCS1-v1_5
+AES,  aes对称加密，使用AES256-CBC-PCKS7padding
+默认RSA
+        :type EncryptType: str
         """
         self.MidasAppId = None
         self.SubAppId = None
@@ -1005,6 +1012,7 @@ BindType==2时必填
         self.Mobile = None
         self.CnapsBranchId = None
         self.EiconBankBranchId = None
+        self.EncryptType = None
 
 
     def _deserialize(self, params):
@@ -1022,6 +1030,7 @@ BindType==2时必填
         self.Mobile = params.get("Mobile")
         self.CnapsBranchId = params.get("CnapsBranchId")
         self.EiconBankBranchId = params.get("EiconBankBranchId")
+        self.EncryptType = params.get("EncryptType")
 
 
 class BindAcctResponse(AbstractModel):
@@ -1596,10 +1605,23 @@ class CreateAcctRequest(AbstractModel):
         :param ShortName: 不填则默认子商户名称
         :type ShortName: str
         :param SubMerchantMemberType: 子商户会员类型：
-general:普通子账户
-merchant:商户子账户
-缺省： general
+general: 普通子账户
+merchant: 商户子账户
+缺省: general
         :type SubMerchantMemberType: str
+        :param SubMerchantKey: 子商户密钥
+<敏感信息>加密详见《商户端接口敏感信息加密说明》
+        :type SubMerchantKey: str
+        :param SubMerchantPrivateKey: 子商户私钥
+<敏感信息>加密详见《商户端接口敏感信息加密说明》
+        :type SubMerchantPrivateKey: str
+        :param EncryptType: 敏感信息加密类型:
+RSA, rsa非对称加密，使用RSA-PKCS1-v1_5
+AES,  aes对称加密，使用AES256-CBC-PCKS7padding
+默认RSA
+        :type EncryptType: str
+        :param SubAcctNo: 银行生成的子商户账户，已开户的场景需要录入
+        :type SubAcctNo: str
         """
         self.MidasAppId = None
         self.SubMchId = None
@@ -1613,6 +1635,10 @@ merchant:商户子账户
         self.SubMchType = None
         self.ShortName = None
         self.SubMerchantMemberType = None
+        self.SubMerchantKey = None
+        self.SubMerchantPrivateKey = None
+        self.EncryptType = None
+        self.SubAcctNo = None
 
 
     def _deserialize(self, params):
@@ -1628,6 +1654,10 @@ merchant:商户子账户
         self.SubMchType = params.get("SubMchType")
         self.ShortName = params.get("ShortName")
         self.SubMerchantMemberType = params.get("SubMerchantMemberType")
+        self.SubMerchantKey = params.get("SubMerchantKey")
+        self.SubMerchantPrivateKey = params.get("SubMerchantPrivateKey")
+        self.EncryptType = params.get("EncryptType")
+        self.SubAcctNo = params.get("SubAcctNo")
 
 
 class CreateAcctResponse(AbstractModel):
@@ -1639,7 +1669,7 @@ class CreateAcctResponse(AbstractModel):
         """
         :param SubAppId: 聚鑫计费SubAppId，代表子商户
         :type SubAppId: str
-        :param SubAcctNo: 平安银行生成的子商户账户
+        :param SubAcctNo: 银行生成的子商户账户
         :type SubAcctNo: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str

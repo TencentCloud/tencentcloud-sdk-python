@@ -843,6 +843,27 @@ class SimilarWordsResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class Similarity(AbstractModel):
+    """文本相似度
+
+    """
+
+    def __init__(self):
+        """
+        :param Score: 相似度分数
+        :type Score: float
+        :param Text: 目标文本句子
+        :type Text: str
+        """
+        self.Score = None
+        self.Text = None
+
+
+    def _deserialize(self, params):
+        self.Score = params.get("Score")
+        self.Text = params.get("Text")
+
+
 class TextClassificationRequest(AbstractModel):
     """TextClassification请求参数结构体
 
@@ -936,6 +957,54 @@ class TextCorrectionResponse(AbstractModel):
                 obj._deserialize(item)
                 self.CCITokens.append(obj)
         self.ResultText = params.get("ResultText")
+        self.RequestId = params.get("RequestId")
+
+
+class TextSimilarityRequest(AbstractModel):
+    """TextSimilarity请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param SrcText: 需要与目标句子计算相似度的源句子（仅支持UTF-8格式，不超过500字）
+        :type SrcText: str
+        :param TargetText: 需要与源句子计算相似度的一个或多个目标句子（仅支持UTF-8格式，目标句子的数量不超过100个，每个句子不超过500字）
+注意：每成功计算1个目标句子与源句子的相似度算1次调用
+        :type TargetText: list of str
+        """
+        self.SrcText = None
+        self.TargetText = None
+
+
+    def _deserialize(self, params):
+        self.SrcText = params.get("SrcText")
+        self.TargetText = params.get("TargetText")
+
+
+class TextSimilarityResponse(AbstractModel):
+    """TextSimilarity返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Similarity: 每个目标句子与源句子的相似度分值，按照分值降序排列
+        :type Similarity: list of Similarity
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Similarity = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Similarity") is not None:
+            self.Similarity = []
+            for item in params.get("Similarity"):
+                obj = Similarity()
+                obj._deserialize(item)
+                self.Similarity.append(obj)
         self.RequestId = params.get("RequestId")
 
 

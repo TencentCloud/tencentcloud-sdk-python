@@ -514,11 +514,11 @@ class DescribeCaptchaResultRequest(AbstractModel):
         """
         :param CaptchaType: 固定填值：9。可在控制台配置不同验证码类型。
         :type CaptchaType: int
-        :param Ticket: 验证码返回给用户的票据
+        :param Ticket: 前端回调函数返回的用户验证票据
         :type Ticket: str
         :param UserIp: 用户操作来源的外网 IP
         :type UserIp: str
-        :param Randstr: 验证票据需要的随机字符串
+        :param Randstr: 前端回调函数返回的随机字符串
         :type Randstr: str
         :param CaptchaAppId: 验证码应用ID
         :type CaptchaAppId: int

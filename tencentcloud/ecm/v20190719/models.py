@@ -4006,11 +4006,14 @@ class ResetInstancesRequest(AbstractModel):
         :type Password: str
         :param EnhancedService: 是否开启云监控和云镜服务，未指定时默认开启。
         :type EnhancedService: :class:`tencentcloud.ecm.v20190719.models.EnhancedService`
+        :param KeepData: 是否保留数据盘数据，取值"true"/"false"。默认为"true"
+        :type KeepData: str
         """
         self.InstanceIdSet = None
         self.ImageId = None
         self.Password = None
         self.EnhancedService = None
+        self.KeepData = None
 
 
     def _deserialize(self, params):
@@ -4020,6 +4023,7 @@ class ResetInstancesRequest(AbstractModel):
         if params.get("EnhancedService") is not None:
             self.EnhancedService = EnhancedService()
             self.EnhancedService._deserialize(params.get("EnhancedService"))
+        self.KeepData = params.get("KeepData")
 
 
 class ResetInstancesResponse(AbstractModel):

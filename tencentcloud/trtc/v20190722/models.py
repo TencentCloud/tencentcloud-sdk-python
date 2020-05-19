@@ -16,6 +16,68 @@
 from tencentcloud.common.abstract_model import AbstractModel
 
 
+class CreateTroubleInfoRequest(AbstractModel):
+    """CreateTroubleInfo请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param SdkAppId: 应用的ID
+        :type SdkAppId: str
+        :param RoomId: 房间ID
+        :type RoomId: str
+        :param TeacherUserId: 老师用户ID
+        :type TeacherUserId: str
+        :param StudentUserId: 学生用户ID
+        :type StudentUserId: str
+        :param TroubleUserId: 体验异常端（老师或学生）的用户 ID。
+        :type TroubleUserId: str
+        :param TroubleType: 异常类型
+        :type TroubleType: int
+        :param TroubleTime: 异常发生的UNIX 时间戳，单位为秒。
+        :type TroubleTime: int
+        :param TroubleMsg: 异常详情
+        :type TroubleMsg: str
+        """
+        self.SdkAppId = None
+        self.RoomId = None
+        self.TeacherUserId = None
+        self.StudentUserId = None
+        self.TroubleUserId = None
+        self.TroubleType = None
+        self.TroubleTime = None
+        self.TroubleMsg = None
+
+
+    def _deserialize(self, params):
+        self.SdkAppId = params.get("SdkAppId")
+        self.RoomId = params.get("RoomId")
+        self.TeacherUserId = params.get("TeacherUserId")
+        self.StudentUserId = params.get("StudentUserId")
+        self.TroubleUserId = params.get("TroubleUserId")
+        self.TroubleType = params.get("TroubleType")
+        self.TroubleTime = params.get("TroubleTime")
+        self.TroubleMsg = params.get("TroubleMsg")
+
+
+class CreateTroubleInfoResponse(AbstractModel):
+    """CreateTroubleInfo返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeCallDetailRequest(AbstractModel):
     """DescribeCallDetail请求参数结构体
 
