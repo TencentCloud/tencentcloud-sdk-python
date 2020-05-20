@@ -5214,7 +5214,7 @@ class DropLiveStreamRequest(AbstractModel):
         """
         :param StreamName: 流名称。
         :type StreamName: str
-        :param DomainName: 您的加速域名。
+        :param DomainName: 您的推流域名。
         :type DomainName: str
         :param AppName: 推流路径，与推流和播放地址中的AppName保持一致，默认为 live。
         :type AppName: str

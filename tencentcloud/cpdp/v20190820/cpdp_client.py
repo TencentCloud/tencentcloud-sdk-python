@@ -1154,6 +1154,34 @@ class CpdpClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def QueryMerchantInfoForManagement(self, request):
+        """智慧零售-查询管理端商户
+
+        :param request: Request instance for QueryMerchantInfoForManagement.
+        :type request: :class:`tencentcloud.cpdp.v20190820.models.QueryMerchantInfoForManagementRequest`
+        :rtype: :class:`tencentcloud.cpdp.v20190820.models.QueryMerchantInfoForManagementResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("QueryMerchantInfoForManagement", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.QueryMerchantInfoForManagementResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def QueryOrder(self, request):
         """根据订单号，或者用户Id，查询支付订单状态
 

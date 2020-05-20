@@ -25,6 +25,34 @@ class FacefusionClient(AbstractClient):
     _endpoint = 'facefusion.tencentcloudapi.com'
 
 
+    def DescribeMaterialList(self, request):
+        """通常通过腾讯云人脸融合的控制台可以查看到素材相关的参数数据，可以满足使用。本接口返回活动的素材数据，包括素材状态等。用于用户通过Api查看素材相关数据，方便使用。
+
+        :param request: Request instance for DescribeMaterialList.
+        :type request: :class:`tencentcloud.facefusion.v20181201.models.DescribeMaterialListRequest`
+        :rtype: :class:`tencentcloud.facefusion.v20181201.models.DescribeMaterialListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeMaterialList", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeMaterialListResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def FaceFusion(self, request):
         """本接口用于人脸融合，用户上传人脸图片，获取与模板融合后的人脸图片。未发布的活动请求频率限制为1次/秒，已发布的活动请求频率限制50次/秒。如有需要提高活动的请求频率限制，请在控制台中申请。
         >

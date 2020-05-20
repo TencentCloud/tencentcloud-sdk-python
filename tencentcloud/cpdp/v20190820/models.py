@@ -2646,6 +2646,61 @@ class FileItem(AbstractModel):
         self.DrawCode = params.get("DrawCode")
 
 
+class MerchantManagementList(AbstractModel):
+    """商户查询管理端列表
+
+    """
+
+    def __init__(self):
+        """
+        :param TaxpayerName: 企业名称。
+        :type TaxpayerName: str
+        :param TaxpayerNum: 纳税人识别号(税号)	。
+        :type TaxpayerNum: str
+        :param SerialNo: 请求流水号。
+        :type SerialNo: str
+        :param InvoicePlatformId: 开票系统ID
+        :type InvoicePlatformId: int
+        """
+        self.TaxpayerName = None
+        self.TaxpayerNum = None
+        self.SerialNo = None
+        self.InvoicePlatformId = None
+
+
+    def _deserialize(self, params):
+        self.TaxpayerName = params.get("TaxpayerName")
+        self.TaxpayerNum = params.get("TaxpayerNum")
+        self.SerialNo = params.get("SerialNo")
+        self.InvoicePlatformId = params.get("InvoicePlatformId")
+
+
+class MerchantManagementResult(AbstractModel):
+    """商户管理端结果
+
+    """
+
+    def __init__(self):
+        """
+        :param Total: 总数。
+        :type Total: int
+        :param List: 商户列表。
+        :type List: list of MerchantManagementList
+        """
+        self.Total = None
+        self.List = None
+
+
+    def _deserialize(self, params):
+        self.Total = params.get("Total")
+        if params.get("List") is not None:
+            self.List = []
+            for item in params.get("List"):
+                obj = MerchantManagementList()
+                obj._deserialize(item)
+                self.List.append(obj)
+
+
 class ModifyAgentTaxPaymentInfoRequest(AbstractModel):
     """ModifyAgentTaxPaymentInfo请求参数结构体
 
@@ -4450,6 +4505,59 @@ class QueryMerchantBalanceResult(AbstractModel):
         if params.get("Data") is not None:
             self.Data = QueryMerchantBalanceData()
             self.Data._deserialize(params.get("Data"))
+
+
+class QueryMerchantInfoForManagementRequest(AbstractModel):
+    """QueryMerchantInfoForManagement请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param InvoicePlatformId: 开票平台ID
+        :type InvoicePlatformId: int
+        :param Offset: 页码
+        :type Offset: int
+        :param Limit: 页大小
+        :type Limit: int
+        :param Profile: 接入环境。沙箱环境填sandbox。
+        :type Profile: str
+        """
+        self.InvoicePlatformId = None
+        self.Offset = None
+        self.Limit = None
+        self.Profile = None
+
+
+    def _deserialize(self, params):
+        self.InvoicePlatformId = params.get("InvoicePlatformId")
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+        self.Profile = params.get("Profile")
+
+
+class QueryMerchantInfoForManagementResponse(AbstractModel):
+    """QueryMerchantInfoForManagement返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Result: 商户结果
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Result: :class:`tencentcloud.cpdp.v20190820.models.MerchantManagementResult`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Result = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Result") is not None:
+            self.Result = MerchantManagementResult()
+            self.Result._deserialize(params.get("Result"))
+        self.RequestId = params.get("RequestId")
 
 
 class QueryOrderOutOrderList(AbstractModel):

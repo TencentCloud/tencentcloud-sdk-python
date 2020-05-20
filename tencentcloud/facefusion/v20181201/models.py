@@ -16,6 +16,65 @@
 from tencentcloud.common.abstract_model import AbstractModel
 
 
+class DescribeMaterialListRequest(AbstractModel):
+    """DescribeMaterialList请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ActivityId: 活动Id
+        :type ActivityId: int
+        :param MaterialId: 素材Id
+        :type MaterialId: str
+        :param Limit: 每次拉取条数
+        :type Limit: int
+        :param Offset: 偏移量
+        :type Offset: int
+        """
+        self.ActivityId = None
+        self.MaterialId = None
+        self.Limit = None
+        self.Offset = None
+
+
+    def _deserialize(self, params):
+        self.ActivityId = params.get("ActivityId")
+        self.MaterialId = params.get("MaterialId")
+        self.Limit = params.get("Limit")
+        self.Offset = params.get("Offset")
+
+
+class DescribeMaterialListResponse(AbstractModel):
+    """DescribeMaterialList返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param MaterialInfos: 素材列表数据
+        :type MaterialInfos: list of PublicMaterialInfos
+        :param Count: 素材条数
+        :type Count: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.MaterialInfos = None
+        self.Count = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("MaterialInfos") is not None:
+            self.MaterialInfos = []
+            for item in params.get("MaterialInfos"):
+                obj = PublicMaterialInfos()
+                obj._deserialize(item)
+                self.MaterialInfos.append(obj)
+        self.Count = params.get("Count")
+        self.RequestId = params.get("RequestId")
+
+
 class FaceFusionRequest(AbstractModel):
     """FaceFusion请求参数结构体
 
@@ -82,6 +141,35 @@ class FaceFusionResponse(AbstractModel):
                 obj._deserialize(item)
                 self.ReviewResultSet.append(obj)
         self.RequestId = params.get("RequestId")
+
+
+class FaceInfo(AbstractModel):
+    """人脸信息
+
+    """
+
+    def __init__(self):
+        """
+        :param X: 人脸框的横坐标
+        :type X: int
+        :param Y: 人脸框的纵坐标
+        :type Y: int
+        :param Width: 人脸框的宽度
+        :type Width: int
+        :param Height: 人脸框的高度
+        :type Height: int
+        """
+        self.X = None
+        self.Y = None
+        self.Width = None
+        self.Height = None
+
+
+    def _deserialize(self, params):
+        self.X = params.get("X")
+        self.Y = params.get("Y")
+        self.Width = params.get("Width")
+        self.Height = params.get("Height")
 
 
 class FaceRect(AbstractModel):
@@ -270,6 +358,29 @@ class FuseFaceReviewResult(AbstractModel):
                 self.DetailSet.append(obj)
 
 
+class MaterialFaceList(AbstractModel):
+    """人脸信息
+
+    """
+
+    def __init__(self):
+        """
+        :param FaceId: 人脸序号
+        :type FaceId: str
+        :param FaceInfo: 人脸框信息
+        :type FaceInfo: :class:`tencentcloud.facefusion.v20181201.models.FaceInfo`
+        """
+        self.FaceId = None
+        self.FaceInfo = None
+
+
+    def _deserialize(self, params):
+        self.FaceId = params.get("FaceId")
+        if params.get("FaceInfo") is not None:
+            self.FaceInfo = FaceInfo()
+            self.FaceInfo._deserialize(params.get("FaceInfo"))
+
+
 class MergeInfo(AbstractModel):
     """人脸图片和待被融合的素材模板图的人脸位置信息。
 
@@ -299,3 +410,61 @@ class MergeInfo(AbstractModel):
             self.InputImageFaceRect = FaceRect()
             self.InputImageFaceRect._deserialize(params.get("InputImageFaceRect"))
         self.TemplateFaceID = params.get("TemplateFaceID")
+
+
+class PublicMaterialInfos(AbstractModel):
+    """素材信息
+
+    """
+
+    def __init__(self):
+        """
+        :param MaterialId: 素材Id
+        :type MaterialId: str
+        :param MaterialStatus: 素材状态
+        :type MaterialStatus: int
+        :param BlendParamPtu: 脸型参数P图
+        :type BlendParamPtu: int
+        :param PositionParamPtu: 五官参数P图
+        :type PositionParamPtu: int
+        :param BlendParamYoutu: 脸型参数优图
+        :type BlendParamYoutu: int
+        :param PositionParamYoutu: 五官参数优图
+        :type PositionParamYoutu: int
+        :param Url: 素材COS地址
+        :type Url: str
+        :param CreateTime: 创建时间
+        :type CreateTime: str
+        :param UpdateTime: 修改时间
+        :type UpdateTime: str
+        :param MaterialFaceList: 人脸信息
+        :type MaterialFaceList: list of MaterialFaceList
+        """
+        self.MaterialId = None
+        self.MaterialStatus = None
+        self.BlendParamPtu = None
+        self.PositionParamPtu = None
+        self.BlendParamYoutu = None
+        self.PositionParamYoutu = None
+        self.Url = None
+        self.CreateTime = None
+        self.UpdateTime = None
+        self.MaterialFaceList = None
+
+
+    def _deserialize(self, params):
+        self.MaterialId = params.get("MaterialId")
+        self.MaterialStatus = params.get("MaterialStatus")
+        self.BlendParamPtu = params.get("BlendParamPtu")
+        self.PositionParamPtu = params.get("PositionParamPtu")
+        self.BlendParamYoutu = params.get("BlendParamYoutu")
+        self.PositionParamYoutu = params.get("PositionParamYoutu")
+        self.Url = params.get("Url")
+        self.CreateTime = params.get("CreateTime")
+        self.UpdateTime = params.get("UpdateTime")
+        if params.get("MaterialFaceList") is not None:
+            self.MaterialFaceList = []
+            for item in params.get("MaterialFaceList"):
+                obj = MaterialFaceList()
+                obj._deserialize(item)
+                self.MaterialFaceList.append(obj)

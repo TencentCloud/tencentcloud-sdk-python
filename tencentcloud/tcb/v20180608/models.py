@@ -402,6 +402,104 @@ class DescribeDatabaseACLResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeEndUserLoginStatisticRequest(AbstractModel):
+    """DescribeEndUserLoginStatistic请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param EnvId: 环境id
+        :type EnvId: str
+        :param Source: 终端用户来源
+<li> qcloud </li>
+<li>miniapp</li>
+        :type Source: str
+        """
+        self.EnvId = None
+        self.Source = None
+
+
+    def _deserialize(self, params):
+        self.EnvId = params.get("EnvId")
+        self.Source = params.get("Source")
+
+
+class DescribeEndUserLoginStatisticResponse(AbstractModel):
+    """DescribeEndUserLoginStatistic返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param LoginStatistics: 环境终端用户新增与登录统计
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LoginStatistics: list of LoginStatistic
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.LoginStatistics = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("LoginStatistics") is not None:
+            self.LoginStatistics = []
+            for item in params.get("LoginStatistics"):
+                obj = LoginStatistic()
+                obj._deserialize(item)
+                self.LoginStatistics.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeEndUserStatisticRequest(AbstractModel):
+    """DescribeEndUserStatistic请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param EnvId: 环境id
+        :type EnvId: str
+        """
+        self.EnvId = None
+
+
+    def _deserialize(self, params):
+        self.EnvId = params.get("EnvId")
+
+
+class DescribeEndUserStatisticResponse(AbstractModel):
+    """DescribeEndUserStatistic返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param PlatformStatistics: 终端用户各平台统计
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PlatformStatistics: list of PlatformStatistic
+        :param TotalCount: 终端用户总数
+        :type TotalCount: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.PlatformStatistics = None
+        self.TotalCount = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("PlatformStatistics") is not None:
+            self.PlatformStatistics = []
+            for item in params.get("PlatformStatistics"):
+                obj = PlatformStatistic()
+                obj._deserialize(item)
+                self.PlatformStatistics.append(obj)
+        self.TotalCount = params.get("TotalCount")
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeEndUsersRequest(AbstractModel):
     """DescribeEndUsers请求参数结构体
 
@@ -606,6 +704,53 @@ class DescribeEnvsResponse(AbstractModel):
                 obj = EnvInfo()
                 obj._deserialize(item)
                 self.EnvList.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeExtraPkgBillingInfoRequest(AbstractModel):
+    """DescribeExtraPkgBillingInfo请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param EnvId: 已购买增值包的环境ID
+        :type EnvId: str
+        """
+        self.EnvId = None
+
+
+    def _deserialize(self, params):
+        self.EnvId = params.get("EnvId")
+
+
+class DescribeExtraPkgBillingInfoResponse(AbstractModel):
+    """DescribeExtraPkgBillingInfo返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param EnvInfoList: 增值包计费信息列表
+        :type EnvInfoList: list of EnvBillingInfoItem
+        :param Total: 增值包数目
+        :type Total: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.EnvInfoList = None
+        self.Total = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("EnvInfoList") is not None:
+            self.EnvInfoList = []
+            for item in params.get("EnvInfoList"):
+                obj = EnvBillingInfoItem()
+                obj._deserialize(item)
+                self.EnvInfoList.append(obj)
+        self.Total = params.get("Total")
         self.RequestId = params.get("RequestId")
 
 
@@ -823,6 +968,82 @@ class EndUserInfo(AbstractModel):
         self.IsDisabled = params.get("IsDisabled")
 
 
+class EnvBillingInfoItem(AbstractModel):
+    """环境计费信息
+
+    """
+
+    def __init__(self):
+        """
+        :param EnvId: 环境ID
+        :type EnvId: str
+        :param PackageId: tcb产品套餐ID，参考DescribePackages接口的返回值。
+        :type PackageId: str
+        :param IsAutoRenew: 自动续费标记
+        :type IsAutoRenew: bool
+        :param Status: 状态。包含以下取值：
+<li> NORMAL：正常</li>
+<li> ISOLATE：隔离</li>
+        :type Status: str
+        :param PayMode: 支付方式。包含以下取值：
+<li> PREPAYMENT：预付费</li>
+<li> POSTPAID：后付费</li>
+        :type PayMode: str
+        :param IsolatedTime: 隔离时间，最近一次隔离的时间
+        :type IsolatedTime: str
+        :param ExpireTime: 过期时间，套餐即将到期的时间
+        :type ExpireTime: str
+        :param CreateTime: 创建时间，第一次接入计费方案的时间。
+        :type CreateTime: str
+        :param UpdateTime: 更新时间，计费信息最近一次更新的时间。
+        :type UpdateTime: str
+        :param IsAlwaysFree: true表示从未升级过付费版。
+        :type IsAlwaysFree: bool
+        :param PaymentChannel: 付费渠道。
+<li> miniapp：小程序</li>
+<li> qcloud：腾讯云</li>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PaymentChannel: str
+        :param OrderInfo: 最新的订单信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OrderInfo: :class:`tencentcloud.tcb.v20180608.models.OrderInfo`
+        :param FreeQuota: 免费配额信息。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FreeQuota: str
+        """
+        self.EnvId = None
+        self.PackageId = None
+        self.IsAutoRenew = None
+        self.Status = None
+        self.PayMode = None
+        self.IsolatedTime = None
+        self.ExpireTime = None
+        self.CreateTime = None
+        self.UpdateTime = None
+        self.IsAlwaysFree = None
+        self.PaymentChannel = None
+        self.OrderInfo = None
+        self.FreeQuota = None
+
+
+    def _deserialize(self, params):
+        self.EnvId = params.get("EnvId")
+        self.PackageId = params.get("PackageId")
+        self.IsAutoRenew = params.get("IsAutoRenew")
+        self.Status = params.get("Status")
+        self.PayMode = params.get("PayMode")
+        self.IsolatedTime = params.get("IsolatedTime")
+        self.ExpireTime = params.get("ExpireTime")
+        self.CreateTime = params.get("CreateTime")
+        self.UpdateTime = params.get("UpdateTime")
+        self.IsAlwaysFree = params.get("IsAlwaysFree")
+        self.PaymentChannel = params.get("PaymentChannel")
+        if params.get("OrderInfo") is not None:
+            self.OrderInfo = OrderInfo()
+            self.OrderInfo._deserialize(params.get("OrderInfo"))
+        self.FreeQuota = params.get("FreeQuota")
+
+
 class EnvInfo(AbstractModel):
     """环境信息
 
@@ -981,6 +1202,39 @@ class LogServiceInfo(AbstractModel):
         self.Region = params.get("Region")
 
 
+class LoginStatistic(AbstractModel):
+    """终端用户登录新增统计
+
+    """
+
+    def __init__(self):
+        """
+        :param StatisticalType: 统计类型 新增NEWUSER 和登录 LOGIN
+注意：此字段可能返回 null，表示取不到有效值。
+        :type StatisticalType: str
+        :param StatisticalCycle: 统计周期：日DAY，周WEEK，月MONTH
+注意：此字段可能返回 null，表示取不到有效值。
+        :type StatisticalCycle: str
+        :param Count: 统计总量
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Count: int
+        :param UpdateTime: 更新时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UpdateTime: str
+        """
+        self.StatisticalType = None
+        self.StatisticalCycle = None
+        self.Count = None
+        self.UpdateTime = None
+
+
+    def _deserialize(self, params):
+        self.StatisticalType = params.get("StatisticalType")
+        self.StatisticalCycle = params.get("StatisticalCycle")
+        self.Count = params.get("Count")
+        self.UpdateTime = params.get("UpdateTime")
+
+
 class ModifyDatabaseACLRequest(AbstractModel):
     """ModifyDatabaseACL请求参数结构体
 
@@ -1063,6 +1317,88 @@ class ModifyEnvResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
+
+
+class OrderInfo(AbstractModel):
+    """订单信息
+
+    """
+
+    def __init__(self):
+        """
+        :param TranId: 订单号
+        :type TranId: str
+        :param PackageId: 订单要切换的套餐ID
+        :type PackageId: str
+        :param TranType: 订单类型
+<li>1 购买</li>
+<li>2 续费</li>
+<li>3 变配</li>
+        :type TranType: str
+        :param TranStatus: 订单状态。
+<li>1未支付</li>
+<li>2 支付中</li>
+<li>3 发货中</li>
+<li>4 发货成功</li>
+<li>5 发货失败</li>
+<li>6 已退款</li>
+<li>7 已取消</li>
+<li>100 已删除</li>
+        :type TranStatus: str
+        :param UpdateTime: 订单更新时间
+        :type UpdateTime: str
+        :param CreateTime: 订单创建时间
+        :type CreateTime: str
+        :param PayMode: 付费模式.
+<li>prepayment 预付费</li>
+<li>postpaid 后付费</li>
+        :type PayMode: str
+        """
+        self.TranId = None
+        self.PackageId = None
+        self.TranType = None
+        self.TranStatus = None
+        self.UpdateTime = None
+        self.CreateTime = None
+        self.PayMode = None
+
+
+    def _deserialize(self, params):
+        self.TranId = params.get("TranId")
+        self.PackageId = params.get("PackageId")
+        self.TranType = params.get("TranType")
+        self.TranStatus = params.get("TranStatus")
+        self.UpdateTime = params.get("UpdateTime")
+        self.CreateTime = params.get("CreateTime")
+        self.PayMode = params.get("PayMode")
+
+
+class PlatformStatistic(AbstractModel):
+    """终端用户平台统计信息
+
+    """
+
+    def __init__(self):
+        """
+        :param Platform: 终端用户从属平台
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Platform: str
+        :param Count: 平台终端用户数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Count: int
+        :param UpdateTime: 更新时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UpdateTime: str
+        """
+        self.Platform = None
+        self.Count = None
+        self.UpdateTime = None
+
+
+    def _deserialize(self, params):
+        self.Platform = params.get("Platform")
+        self.Count = params.get("Count")
+        self.UpdateTime = params.get("UpdateTime")
 
 
 class PostpayEnvQuota(AbstractModel):

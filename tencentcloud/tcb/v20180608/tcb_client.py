@@ -249,6 +249,62 @@ class TcbClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeEndUserLoginStatistic(self, request):
+        """获取环境终端用户新增与登录信息
+
+        :param request: Request instance for DescribeEndUserLoginStatistic.
+        :type request: :class:`tencentcloud.tcb.v20180608.models.DescribeEndUserLoginStatisticRequest`
+        :rtype: :class:`tencentcloud.tcb.v20180608.models.DescribeEndUserLoginStatisticResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeEndUserLoginStatistic", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeEndUserLoginStatisticResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeEndUserStatistic(self, request):
+        """获取终端用户总量与平台分布情况
+
+        :param request: Request instance for DescribeEndUserStatistic.
+        :type request: :class:`tencentcloud.tcb.v20180608.models.DescribeEndUserStatisticRequest`
+        :rtype: :class:`tencentcloud.tcb.v20180608.models.DescribeEndUserStatisticResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeEndUserStatistic", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeEndUserStatisticResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeEndUsers(self, request):
         """获取终端用户列表
 
@@ -347,6 +403,34 @@ class TcbClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeEnvsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeExtraPkgBillingInfo(self, request):
+        """获取增值包计费相关信息
+
+        :param request: Request instance for DescribeExtraPkgBillingInfo.
+        :type request: :class:`tencentcloud.tcb.v20180608.models.DescribeExtraPkgBillingInfoRequest`
+        :rtype: :class:`tencentcloud.tcb.v20180608.models.DescribeExtraPkgBillingInfoResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeExtraPkgBillingInfo", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeExtraPkgBillingInfoResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
