@@ -5465,6 +5465,7 @@ class Sort(AbstractModel):
         :param Key: 排序字段，当前支持：
 createTime，域名创建时间
 certExpireTime，证书过期时间
+默认createTime。
         :type Key: str
         :param Sequence: asc/desc，默认desc。
         :type Sequence: str

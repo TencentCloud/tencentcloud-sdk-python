@@ -6860,6 +6860,8 @@ class ModifyCCThresholdRequest(AbstractModel):
         :type BasicIpInstance: str
         :param BasicIspCode: 仅基础防护提供。可选，运营商线路（如果查询的设备类型是NAT服务器，需要传此参数为5）
         :type BasicIspCode: int
+        :param Domain: 可选字段，当协议取值HTTPS时，必填
+        :type Domain: str
         """
         self.Business = None
         self.Threshold = None
@@ -6872,6 +6874,7 @@ class ModifyCCThresholdRequest(AbstractModel):
         self.BasicDeviceType = None
         self.BasicIpInstance = None
         self.BasicIspCode = None
+        self.Domain = None
 
 
     def _deserialize(self, params):
@@ -6886,6 +6889,7 @@ class ModifyCCThresholdRequest(AbstractModel):
         self.BasicDeviceType = params.get("BasicDeviceType")
         self.BasicIpInstance = params.get("BasicIpInstance")
         self.BasicIspCode = params.get("BasicIspCode")
+        self.Domain = params.get("Domain")
 
 
 class ModifyCCThresholdResponse(AbstractModel):

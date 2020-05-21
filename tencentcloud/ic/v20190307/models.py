@@ -138,6 +138,9 @@ class CardInfo(AbstractModel):
         :type NeedSms: int
         :param Provider: 服务
         :type Provider: int
+        :param CertificationState: 实名验证(浙江联通)
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CertificationState: int
         """
         self.Iccid = None
         self.Msisdn = None
@@ -165,6 +168,7 @@ class CardInfo(AbstractModel):
         self.AllowArrears = None
         self.NeedSms = None
         self.Provider = None
+        self.CertificationState = None
 
 
     def _deserialize(self, params):
@@ -194,6 +198,7 @@ class CardInfo(AbstractModel):
         self.AllowArrears = params.get("AllowArrears")
         self.NeedSms = params.get("NeedSms")
         self.Provider = params.get("Provider")
+        self.CertificationState = params.get("CertificationState")
 
 
 class CardList(AbstractModel):

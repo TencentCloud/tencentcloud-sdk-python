@@ -882,7 +882,7 @@ class TimeValue(AbstractModel):
         """
         :param Time: 时间
         :type Time: int
-        :param Value: 当前时间取值
+        :param Value: 当前时间取值，unix时间戳
         :type Value: float
         """
         self.Time = None
