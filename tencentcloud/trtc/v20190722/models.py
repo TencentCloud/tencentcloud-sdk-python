@@ -33,7 +33,15 @@ class CreateTroubleInfoRequest(AbstractModel):
         :type StudentUserId: str
         :param TroubleUserId: 体验异常端（老师或学生）的用户 ID。
         :type TroubleUserId: str
-        :param TroubleType: 异常类型
+        :param TroubleType: 异常类型。
+1. 仅视频异常
+2. 仅声音异常
+3. 音视频都异常
+5. 进房异常
+4. 切课
+6. 求助
+7. 问题反馈
+8. 投诉
         :type TroubleType: int
         :param TroubleTime: 异常发生的UNIX 时间戳，单位为秒。
         :type TroubleTime: int
@@ -85,7 +93,7 @@ class DescribeCallDetailRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param CommId: 通话ID（唯一标识一次通话）= sdkappid+roomgString（房间号）+房间创建时间（unix时间戳，s）。通过 DescribeRoomInformation（查询房间列表）接口获取。
+        :param CommId: 通话 ID（唯一标识一次通话）： sdkappid_roomgString（房间号_createTime（房间创建时间，unix时间戳，单位为s）。通过 DescribeRoomInformation（查询房间列表）接口获取。
         :type CommId: str
         :param StartTime: 查询开始时间，5天内。本地unix时间戳（1588031999s）
         :type StartTime: int
@@ -164,6 +172,65 @@ class DescribeCallDetailResponse(AbstractModel):
             self.Data = []
             for item in params.get("Data"):
                 obj = QualityData()
+                obj._deserialize(item)
+                self.Data.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeDetailEventRequest(AbstractModel):
+    """DescribeDetailEvent请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param CommId: 通话 ID（唯一标识一次通话）： sdkappid_roomgString（房间号_createTime（房间创建时间，unix时间戳，单位s）。通过 DescribeRoomInformation（查询房间列表）接口获取。
+        :type CommId: str
+        :param StartTime: 查询开始时间，5天内。本地unix时间戳（1588031999s）
+        :type StartTime: int
+        :param EndTime: 查询结束时间，本地unix时间戳（1588031999s）
+        :type EndTime: int
+        :param UserId: 用户id
+        :type UserId: str
+        :param RoomId: 房间号
+        :type RoomId: str
+        """
+        self.CommId = None
+        self.StartTime = None
+        self.EndTime = None
+        self.UserId = None
+        self.RoomId = None
+
+
+    def _deserialize(self, params):
+        self.CommId = params.get("CommId")
+        self.StartTime = params.get("StartTime")
+        self.EndTime = params.get("EndTime")
+        self.UserId = params.get("UserId")
+        self.RoomId = params.get("RoomId")
+
+
+class DescribeDetailEventResponse(AbstractModel):
+    """DescribeDetailEvent返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Data: 返回的事件列表
+        :type Data: list of EventList
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Data = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self.Data = []
+            for item in params.get("Data"):
+                obj = EventList()
                 obj._deserialize(item)
                 self.Data.append(obj)
         self.RequestId = params.get("RequestId")
@@ -552,6 +619,69 @@ class EncodeParams(AbstractModel):
         self.BackgroundColor = params.get("BackgroundColor")
 
 
+class EventList(AbstractModel):
+    """sdk或webrtc的事件列表。
+
+    """
+
+    def __init__(self):
+        """
+        :param Content: 数据内容
+        :type Content: list of EventMessage
+        :param PeerId: 发送端的userId
+        :type PeerId: str
+        """
+        self.Content = None
+        self.PeerId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Content") is not None:
+            self.Content = []
+            for item in params.get("Content"):
+                obj = EventMessage()
+                obj._deserialize(item)
+                self.Content.append(obj)
+        self.PeerId = params.get("PeerId")
+
+
+class EventMessage(AbstractModel):
+    """事件信息，包括，事件时间戳，事件ID,
+
+    """
+
+    def __init__(self):
+        """
+        :param Type: 视频流类型：
+0：与视频无关的事件；
+2：视频为大画面；
+3：视频为小画面；
+7：视频为旁路画面；
+        :type Type: int
+        :param Time: 事件上报的时间戳，unix时间（1589891188801ms)
+        :type Time: int
+        :param EventId: 事件Id：分为sdk的事件和webrtc的事件，具体映射，查看：事件ID映射表
+        :type EventId: int
+        :param ParamOne: 事件的第一个参数，如视频分辨率宽
+        :type ParamOne: int
+        :param ParamTwo: 事件的第二个参数，如视频分辨率高
+        :type ParamTwo: int
+        """
+        self.Type = None
+        self.Time = None
+        self.EventId = None
+        self.ParamOne = None
+        self.ParamTwo = None
+
+
+    def _deserialize(self, params):
+        self.Type = params.get("Type")
+        self.Time = params.get("Time")
+        self.EventId = params.get("EventId")
+        self.ParamOne = params.get("ParamOne")
+        self.ParamTwo = params.get("ParamTwo")
+
+
 class LayoutParams(AbstractModel):
     """MCU混流布局参数
 
@@ -915,6 +1045,8 @@ class UserInformation(AbstractModel):
         :type SdkVersion: str
         :param ClientIp: 客户端IP地址
         :type ClientIp: str
+        :param Finished: 判断用户是否已经离开房间
+        :type Finished: bool
         """
         self.RoomStr = None
         self.UserId = None
@@ -923,6 +1055,7 @@ class UserInformation(AbstractModel):
         self.DeviceType = None
         self.SdkVersion = None
         self.ClientIp = None
+        self.Finished = None
 
 
     def _deserialize(self, params):
@@ -933,3 +1066,4 @@ class UserInformation(AbstractModel):
         self.DeviceType = params.get("DeviceType")
         self.SdkVersion = params.get("SdkVersion")
         self.ClientIp = params.get("ClientIp")
+        self.Finished = params.get("Finished")

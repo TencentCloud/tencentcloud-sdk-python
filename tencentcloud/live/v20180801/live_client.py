@@ -1685,7 +1685,7 @@ class LiveClient(AbstractClient):
 
 
     def DescribeLiveStreamOnlineList(self, request):
-        """返回正在直播中的流列表。
+        """返回正在直播中的流列表。适用于推流成功后查询在线流信息。
 
         :param request: Request instance for DescribeLiveStreamOnlineList.
         :type request: :class:`tencentcloud.live.v20180801.models.DescribeLiveStreamOnlineListRequest`

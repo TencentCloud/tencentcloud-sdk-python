@@ -483,7 +483,7 @@ class NlpClient(AbstractClient):
 
         https://ai.tencent.com/ailab/zh/news/detial?id=22
 
-        https://ai.tencent.com/ailab/nlp/embedding.html
+        https://ai.tencent.com/ailab/nlp/zh/embedding.html
 
         :param request: Request instance for WordEmbedding.
         :type request: :class:`tencentcloud.nlp.v20190408.models.WordEmbeddingRequest`

@@ -2137,6 +2137,8 @@ class MaterialBasicInfo(AbstractModel):
         :type UpdateTime: str
         :param ClassPath: 素材的分类目录路径。
         :type ClassPath: str
+        :param TagInfoSet: 素材绑定的标签信息列表。
+        :type TagInfoSet: list of MaterialTagInfo
         :param PreviewUrl: 素材媒体文件的预览图。
 注意：此字段可能返回 null，表示取不到有效值。
         :type PreviewUrl: str
@@ -2148,6 +2150,7 @@ class MaterialBasicInfo(AbstractModel):
         self.CreateTime = None
         self.UpdateTime = None
         self.ClassPath = None
+        self.TagInfoSet = None
         self.PreviewUrl = None
 
 
@@ -2161,6 +2164,12 @@ class MaterialBasicInfo(AbstractModel):
         self.CreateTime = params.get("CreateTime")
         self.UpdateTime = params.get("UpdateTime")
         self.ClassPath = params.get("ClassPath")
+        if params.get("TagInfoSet") is not None:
+            self.TagInfoSet = []
+            for item in params.get("TagInfoSet"):
+                obj = MaterialTagInfo()
+                obj._deserialize(item)
+                self.TagInfoSet.append(obj)
         self.PreviewUrl = params.get("PreviewUrl")
 
 
@@ -2229,6 +2238,32 @@ class MaterialStatus(AbstractModel):
 
     def _deserialize(self, params):
         self.EditorUsableStatus = params.get("EditorUsableStatus")
+
+
+class MaterialTagInfo(AbstractModel):
+    """素材标签信息
+
+    """
+
+    def __init__(self):
+        """
+        :param Type: 标签类型，取值为：
+<li>PRESET：预置标签；</li>
+        :type Type: str
+        :param Id: 标签 Id 。当标签类型为 PRESET 时，标签 Id 为预置标签 Id 。
+        :type Id: str
+        :param Name: 标签名称。
+        :type Name: str
+        """
+        self.Type = None
+        self.Id = None
+        self.Name = None
+
+
+    def _deserialize(self, params):
+        self.Type = params.get("Type")
+        self.Id = params.get("Id")
+        self.Name = params.get("Name")
 
 
 class MediaImageSpriteInfo(AbstractModel):
@@ -2751,6 +2786,8 @@ class SearchMaterialRequest(AbstractModel):
         :type DurationRange: :class:`tencentcloud.cme.v20191029.models.IntegerRange`
         :param CreateTimeRange: 按照素材创建时间检索。
         :type CreateTimeRange: :class:`tencentcloud.cme.v20191029.models.TimeRange`
+        :param Tags: 按标签检索，填入检索的标签名。
+        :type Tags: list of str
         :param Sort: 排序方式。Sort.Field 可选值：CreateTime。指定 Text 搜索时，将根据匹配度排序，该字段无效。
         :type Sort: :class:`tencentcloud.cme.v20191029.models.SortBy`
         :param Offset: 偏移量。默认值：0。
@@ -2767,6 +2804,7 @@ class SearchMaterialRequest(AbstractModel):
         self.Resolution = None
         self.DurationRange = None
         self.CreateTimeRange = None
+        self.Tags = None
         self.Sort = None
         self.Offset = None
         self.Limit = None
@@ -2790,6 +2828,7 @@ class SearchMaterialRequest(AbstractModel):
         if params.get("CreateTimeRange") is not None:
             self.CreateTimeRange = TimeRange()
             self.CreateTimeRange._deserialize(params.get("CreateTimeRange"))
+        self.Tags = params.get("Tags")
         if params.get("Sort") is not None:
             self.Sort = SortBy()
             self.Sort._deserialize(params.get("Sort"))

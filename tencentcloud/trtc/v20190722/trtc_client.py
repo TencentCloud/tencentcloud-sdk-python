@@ -81,6 +81,34 @@ class TrtcClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeDetailEvent(self, request):
+        """查询用户某次通话内的进退房，视频开关等详细事件。可查询5天内数据。
+
+        :param request: Request instance for DescribeDetailEvent.
+        :type request: :class:`tencentcloud.trtc.v20190722.models.DescribeDetailEventRequest`
+        :rtype: :class:`tencentcloud.trtc.v20190722.models.DescribeDetailEventResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeDetailEvent", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeDetailEventResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeHistoryScale(self, request):
         """查询历史房间和用户数，每分钟1次，可查询最近5天的数据
 
