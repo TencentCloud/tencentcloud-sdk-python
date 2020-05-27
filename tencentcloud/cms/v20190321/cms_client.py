@@ -25,34 +25,6 @@ class CmsClient(AbstractClient):
     _endpoint = 'cms.tencentcloudapi.com'
 
 
-    def CommonMediaRecognition(self, request):
-        """广交会商品企业信息发布内容审核
-
-        :param request: Request instance for CommonMediaRecognition.
-        :type request: :class:`tencentcloud.cms.v20190321.models.CommonMediaRecognitionRequest`
-        :rtype: :class:`tencentcloud.cms.v20190321.models.CommonMediaRecognitionResponse`
-
-        """
-        try:
-            params = request._serialize()
-            body = self.call("CommonMediaRecognition", params)
-            response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.CommonMediaRecognitionResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(e.message, e.message)
-
-
     def CreateFileSample(self, request):
         """本文档适用于图片内容安全、视频内容安全自定义识别库的管理。
         <br>
