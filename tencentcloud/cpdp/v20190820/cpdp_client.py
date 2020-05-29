@@ -789,6 +789,34 @@ class CpdpClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def QueryAgentStatements(self, request):
+        """直播平台-查询代理商结算单链接
+
+        :param request: Request instance for QueryAgentStatements.
+        :type request: :class:`tencentcloud.cpdp.v20190820.models.QueryAgentStatementsRequest`
+        :rtype: :class:`tencentcloud.cpdp.v20190820.models.QueryAgentStatementsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("QueryAgentStatements", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.QueryAgentStatementsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def QueryAgentTaxPaymentBatch(self, request):
         """直播平台-查询批次信息
 

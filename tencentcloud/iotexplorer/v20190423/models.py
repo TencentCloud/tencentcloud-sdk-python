@@ -27,7 +27,7 @@ class CallDeviceActionAsyncRequest(AbstractModel):
         :type ProductId: str
         :param DeviceName: 设备名称
         :type DeviceName: str
-        :param ActionId: 动作Id
+        :param ActionId: 产品数据模板中行为功能的标识符，由开发者自行根据设备的应用场景定义
         :type ActionId: str
         :param InputParams: 输入参数
         :type InputParams: str
@@ -81,7 +81,7 @@ class CallDeviceActionSyncRequest(AbstractModel):
         :type ProductId: str
         :param DeviceName: 设备名称
         :type DeviceName: str
-        :param ActionId: 动作Id
+        :param ActionId: 产品数据模板中行为功能的标识符，由开发者自行根据设备的应用场景定义
         :type ActionId: str
         :param InputParams: 输入参数
         :type InputParams: str

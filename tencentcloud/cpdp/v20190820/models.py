@@ -832,6 +832,17 @@ class ApplyWithdrawalRequest(AbstractModel):
         :type MidasSecretId: str
         :param MidasSignature: 按照聚鑫安全密钥计算的签名
         :type MidasSignature: str
+        :param EncryptType: 敏感信息加密类型:
+RSA: rsa非对称加密，使用RSA-PKCS1-v1_5
+AES: aes对称加密，使用AES256-CBC-PCKS7padding
+缺省: RSA
+        :type EncryptType: str
+        :param MidasEnvironment: 环境名:
+release: 现网环境
+sandbox: 沙箱环境
+development: 开发环境
+缺省: release
+        :type MidasEnvironment: str
         """
         self.MidasAppId = None
         self.SubAppId = None
@@ -845,6 +856,8 @@ class ApplyWithdrawalRequest(AbstractModel):
         self.IdCode = None
         self.MidasSecretId = None
         self.MidasSignature = None
+        self.EncryptType = None
+        self.MidasEnvironment = None
 
 
     def _deserialize(self, params):
@@ -860,6 +873,8 @@ class ApplyWithdrawalRequest(AbstractModel):
         self.IdCode = params.get("IdCode")
         self.MidasSecretId = params.get("MidasSecretId")
         self.MidasSignature = params.get("MidasSignature")
+        self.EncryptType = params.get("EncryptType")
+        self.MidasEnvironment = params.get("MidasEnvironment")
 
 
 class ApplyWithdrawalResponse(AbstractModel):
@@ -993,10 +1008,16 @@ BindType==2时必填
 二选一
         :type EiconBankBranchId: str
         :param EncryptType: 敏感信息加密类型:
-RSA, rsa非对称加密，使用RSA-PKCS1-v1_5
-AES,  aes对称加密，使用AES256-CBC-PCKS7padding
-默认RSA
+RSA: rsa非对称加密，使用RSA-PKCS1-v1_5
+AES: aes对称加密，使用AES256-CBC-PCKS7padding
+缺省: RSA
         :type EncryptType: str
+        :param MidasEnvironment: 环境名:
+release: 现网环境
+sandbox: 沙箱环境
+development: 开发环境
+缺省: release
+        :type MidasEnvironment: str
         """
         self.MidasAppId = None
         self.SubAppId = None
@@ -1013,6 +1034,7 @@ AES,  aes对称加密，使用AES256-CBC-PCKS7padding
         self.CnapsBranchId = None
         self.EiconBankBranchId = None
         self.EncryptType = None
+        self.MidasEnvironment = None
 
 
     def _deserialize(self, params):
@@ -1031,6 +1053,7 @@ AES,  aes对称加密，使用AES256-CBC-PCKS7padding
         self.CnapsBranchId = params.get("CnapsBranchId")
         self.EiconBankBranchId = params.get("EiconBankBranchId")
         self.EncryptType = params.get("EncryptType")
+        self.MidasEnvironment = params.get("MidasEnvironment")
 
 
 class BindAcctResponse(AbstractModel):
@@ -1323,8 +1346,9 @@ class CheckAcctRequest(AbstractModel):
         :type MidasAppId: str
         :param SubAppId: 聚鑫计费SubAppId，代表子商户
         :type SubAppId: str
-        :param BindType: 1：小额鉴权
-2：短信校验鉴权
+        :param BindType: 1 – 小额转账验证
+2 – 短信验证
+每个结算账户每天只能使用一次小额转账验证
         :type BindType: int
         :param SettleAcctNo: 结算账户账号
 <敏感信息>加密详见《商户端接口敏感信息加密说明》
@@ -1346,6 +1370,17 @@ BindType==1必填
         :param CurrencyAmt: 金额
 BindType==1必填
         :type CurrencyAmt: str
+        :param EncryptType: 敏感信息加密类型:
+RSA: rsa非对称加密，使用RSA-PKCS1-v1_5
+AES: aes对称加密，使用AES256-CBC-PCKS7padding
+缺省: RSA
+        :type EncryptType: str
+        :param MidasEnvironment: 环境名:
+release: 现网环境
+sandbox: 沙箱环境
+development: 开发环境
+缺省: release
+        :type MidasEnvironment: str
         """
         self.MidasAppId = None
         self.SubAppId = None
@@ -1357,6 +1392,8 @@ BindType==1必填
         self.CurrencyType = None
         self.CurrencyUnit = None
         self.CurrencyAmt = None
+        self.EncryptType = None
+        self.MidasEnvironment = None
 
 
     def _deserialize(self, params):
@@ -1370,6 +1407,8 @@ BindType==1必填
         self.CurrencyType = params.get("CurrencyType")
         self.CurrencyUnit = params.get("CurrencyUnit")
         self.CurrencyAmt = params.get("CurrencyAmt")
+        self.EncryptType = params.get("EncryptType")
+        self.MidasEnvironment = params.get("MidasEnvironment")
 
 
 class CheckAcctResponse(AbstractModel):
@@ -1599,8 +1638,8 @@ class CreateAcctRequest(AbstractModel):
         :type MidasSignature: str
         :param SubMchType: 子商户类型：
 个人: personal
-企业：enterprise
-缺省： enterprise
+企业: enterprise
+缺省: enterprise
         :type SubMchType: str
         :param ShortName: 不填则默认子商户名称
         :type ShortName: str
@@ -1616,12 +1655,18 @@ merchant: 商户子账户
 <敏感信息>加密详见《商户端接口敏感信息加密说明》
         :type SubMerchantPrivateKey: str
         :param EncryptType: 敏感信息加密类型:
-RSA, rsa非对称加密，使用RSA-PKCS1-v1_5
-AES,  aes对称加密，使用AES256-CBC-PCKS7padding
-默认RSA
+RSA: rsa非对称加密，使用RSA-PKCS1-v1_5
+AES: aes对称加密，使用AES256-CBC-PCKS7padding
+缺省: RSA
         :type EncryptType: str
         :param SubAcctNo: 银行生成的子商户账户，已开户的场景需要录入
         :type SubAcctNo: str
+        :param MidasEnvironment: 环境名:
+release: 现网环境
+sandbox: 沙箱环境
+development: 开发环境
+缺省: release
+        :type MidasEnvironment: str
         """
         self.MidasAppId = None
         self.SubMchId = None
@@ -1639,6 +1684,7 @@ AES,  aes对称加密，使用AES256-CBC-PCKS7padding
         self.SubMerchantPrivateKey = None
         self.EncryptType = None
         self.SubAcctNo = None
+        self.MidasEnvironment = None
 
 
     def _deserialize(self, params):
@@ -1658,6 +1704,7 @@ AES,  aes对称加密，使用AES256-CBC-PCKS7padding
         self.SubMerchantPrivateKey = params.get("SubMerchantPrivateKey")
         self.EncryptType = params.get("EncryptType")
         self.SubAcctNo = params.get("SubAcctNo")
+        self.MidasEnvironment = params.get("MidasEnvironment")
 
 
 class CreateAcctResponse(AbstractModel):
@@ -2843,11 +2890,24 @@ class QueryAcctBindingRequest(AbstractModel):
         :type MidasSecretId: str
         :param MidasSignature: 计费签名
         :type MidasSignature: str
+        :param EncryptType: 敏感信息加密类型:
+RSA: rsa非对称加密，使用RSA-PKCS1-v1_5
+AES: aes对称加密，使用AES256-CBC-PCKS7padding
+缺省: RSA
+        :type EncryptType: str
+        :param MidasEnvironment: 环境名:
+release: 现网环境
+sandbox: 沙箱环境
+development: 开发环境
+缺省: release
+        :type MidasEnvironment: str
         """
         self.MidasAppId = None
         self.SubAppId = None
         self.MidasSecretId = None
         self.MidasSignature = None
+        self.EncryptType = None
+        self.MidasEnvironment = None
 
 
     def _deserialize(self, params):
@@ -2855,6 +2915,8 @@ class QueryAcctBindingRequest(AbstractModel):
         self.SubAppId = params.get("SubAppId")
         self.MidasSecretId = params.get("MidasSecretId")
         self.MidasSignature = params.get("MidasSignature")
+        self.EncryptType = params.get("EncryptType")
+        self.MidasEnvironment = params.get("MidasEnvironment")
 
 
 class QueryAcctBindingResponse(AbstractModel):
@@ -2906,6 +2968,17 @@ class QueryAcctInfoListRequest(AbstractModel):
         :type MidasSecretId: str
         :param MidasSignature: 计费签名
         :type MidasSignature: str
+        :param EncryptType: 敏感信息加密类型:
+RSA: rsa非对称加密，使用RSA-PKCS1-v1_5
+AES: aes对称加密，使用AES256-CBC-PCKS7padding
+缺省: RSA
+        :type EncryptType: str
+        :param MidasEnvironment: 环境名:
+release: 现网环境
+sandbox: 沙箱环境
+development: 开发环境
+缺省: release
+        :type MidasEnvironment: str
         """
         self.MidasAppId = None
         self.QueryAcctBeginTime = None
@@ -2913,6 +2986,8 @@ class QueryAcctInfoListRequest(AbstractModel):
         self.PageOffset = None
         self.MidasSecretId = None
         self.MidasSignature = None
+        self.EncryptType = None
+        self.MidasEnvironment = None
 
 
     def _deserialize(self, params):
@@ -2922,6 +2997,8 @@ class QueryAcctInfoListRequest(AbstractModel):
         self.PageOffset = params.get("PageOffset")
         self.MidasSecretId = params.get("MidasSecretId")
         self.MidasSignature = params.get("MidasSignature")
+        self.EncryptType = params.get("EncryptType")
+        self.MidasEnvironment = params.get("MidasEnvironment")
 
 
 class QueryAcctInfoListResponse(AbstractModel):
@@ -2973,11 +3050,24 @@ class QueryAcctInfoRequest(AbstractModel):
         :type MidasSecretId: str
         :param MidasSignature: 计费签名
         :type MidasSignature: str
+        :param EncryptType: 敏感信息加密类型:
+RSA: rsa非对称加密，使用RSA-PKCS1-v1_5
+AES: aes对称加密，使用AES256-CBC-PCKS7padding
+缺省: RSA
+        :type EncryptType: str
+        :param MidasEnvironment: 环境名:
+release: 现网环境
+sandbox: 沙箱环境
+development: 开发环境
+缺省: release
+        :type MidasEnvironment: str
         """
         self.MidasAppId = None
         self.SubMchId = None
         self.MidasSecretId = None
         self.MidasSignature = None
+        self.EncryptType = None
+        self.MidasEnvironment = None
 
 
     def _deserialize(self, params):
@@ -2985,6 +3075,8 @@ class QueryAcctInfoRequest(AbstractModel):
         self.SubMchId = params.get("SubMchId")
         self.MidasSecretId = params.get("MidasSecretId")
         self.MidasSignature = params.get("MidasSignature")
+        self.EncryptType = params.get("EncryptType")
+        self.MidasEnvironment = params.get("MidasEnvironment")
 
 
 class QueryAcctInfoResponse(AbstractModel):
@@ -3125,6 +3217,50 @@ merchant:商户子账户
         self.SubMerchantMemberType = params.get("SubMerchantMemberType")
 
 
+class QueryAgentStatementsRequest(AbstractModel):
+    """QueryAgentStatements请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Date: 结算单日期，月结算单填每月1日
+        :type Date: str
+        :param Type: 日结算单:daily
+月结算单:monthly
+        :type Type: str
+        """
+        self.Date = None
+        self.Type = None
+
+
+    def _deserialize(self, params):
+        self.Date = params.get("Date")
+        self.Type = params.get("Type")
+
+
+class QueryAgentStatementsResponse(AbstractModel):
+    """QueryAgentStatements返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param FileUrl: 文件下载链接
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FileUrl: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.FileUrl = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.FileUrl = params.get("FileUrl")
+        self.RequestId = params.get("RequestId")
+
+
 class QueryAgentTaxPaymentBatchRequest(AbstractModel):
     """QueryAgentTaxPaymentBatch请求参数结构体
 
@@ -3233,6 +3369,12 @@ class QueryBalanceRequest(AbstractModel):
         :type MidasSecretId: str
         :param MidasSignature: 按照聚鑫安全密钥计算的签名
         :type MidasSignature: str
+        :param MidasEnvironment: 环境名:
+release: 现网环境
+sandbox: 沙箱环境
+development: 开发环境
+缺省: release
+        :type MidasEnvironment: str
         """
         self.MidasAppId = None
         self.SubAppId = None
@@ -3240,6 +3382,7 @@ class QueryBalanceRequest(AbstractModel):
         self.PageOffset = None
         self.MidasSecretId = None
         self.MidasSignature = None
+        self.MidasEnvironment = None
 
 
     def _deserialize(self, params):
@@ -3249,6 +3392,7 @@ class QueryBalanceRequest(AbstractModel):
         self.PageOffset = params.get("PageOffset")
         self.MidasSecretId = params.get("MidasSecretId")
         self.MidasSignature = params.get("MidasSignature")
+        self.MidasEnvironment = params.get("MidasEnvironment")
 
 
 class QueryBalanceResponse(AbstractModel):
@@ -6556,12 +6700,25 @@ class UnBindAcctRequest(AbstractModel):
         :type MidasSecretId: str
         :param MidasSignature: 按照聚鑫安全密钥计算的签名
         :type MidasSignature: str
+        :param EncryptType: 敏感信息加密类型:
+RSA: rsa非对称加密，使用RSA-PKCS1-v1_5
+AES: aes对称加密，使用AES256-CBC-PCKS7padding
+缺省: RSA
+        :type EncryptType: str
+        :param MidasEnvironment: 环境名:
+release: 现网环境
+sandbox: 沙箱环境
+development: 开发环境
+缺省: release
+        :type MidasEnvironment: str
         """
         self.MidasAppId = None
         self.SubAppId = None
         self.SettleAcctNo = None
         self.MidasSecretId = None
         self.MidasSignature = None
+        self.EncryptType = None
+        self.MidasEnvironment = None
 
 
     def _deserialize(self, params):
@@ -6570,6 +6727,8 @@ class UnBindAcctRequest(AbstractModel):
         self.SettleAcctNo = params.get("SettleAcctNo")
         self.MidasSecretId = params.get("MidasSecretId")
         self.MidasSignature = params.get("MidasSignature")
+        self.EncryptType = params.get("EncryptType")
+        self.MidasEnvironment = params.get("MidasEnvironment")
 
 
 class UnBindAcctResponse(AbstractModel):

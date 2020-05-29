@@ -26,7 +26,7 @@ class IotexplorerClient(AbstractClient):
 
 
     def CallDeviceActionAsync(self, request):
-        """提供给用户异步调用设备动作的能力
+        """提供给用户异步调用设备行为的能力
 
         :param request: Request instance for CallDeviceActionAsync.
         :type request: :class:`tencentcloud.iotexplorer.v20190423.models.CallDeviceActionAsyncRequest`
@@ -54,7 +54,7 @@ class IotexplorerClient(AbstractClient):
 
 
     def CallDeviceActionSync(self, request):
-        """为用户提供同步调用设备动作的能力。
+        """为用户提供同步调用设备行为的能力。
 
         :param request: Request instance for CallDeviceActionSync.
         :type request: :class:`tencentcloud.iotexplorer.v20190423.models.CallDeviceActionSyncRequest`
