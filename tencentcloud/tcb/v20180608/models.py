@@ -754,6 +754,54 @@ class DescribeExtraPkgBillingInfoResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribePostpayPackageFreeQuotasRequest(AbstractModel):
+    """DescribePostpayPackageFreeQuotas请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param EnvId: 环境ID
+        :type EnvId: str
+        :param FreeQuotaType: 免费额度类型标识
+        :type FreeQuotaType: str
+        """
+        self.EnvId = None
+        self.FreeQuotaType = None
+
+
+    def _deserialize(self, params):
+        self.EnvId = params.get("EnvId")
+        self.FreeQuotaType = params.get("FreeQuotaType")
+
+
+class DescribePostpayPackageFreeQuotasResponse(AbstractModel):
+    """DescribePostpayPackageFreeQuotas返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param PackageFreeQuotaInfos: 免费量资源信息列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PackageFreeQuotaInfos: list of PackageFreeQuotaInfo
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.PackageFreeQuotaInfos = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("PackageFreeQuotaInfos") is not None:
+            self.PackageFreeQuotaInfos = []
+            for item in params.get("PackageFreeQuotaInfos"):
+                obj = PackageFreeQuotaInfo()
+                obj._deserialize(item)
+                self.PackageFreeQuotaInfos.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeQuotaDataRequest(AbstractModel):
     """DescribeQuotaData请求参数结构体
 
@@ -1088,6 +1136,9 @@ class EnvInfo(AbstractModel):
         :param IsAutoDegrade: 是否到期自动降为免费版
 注意：此字段可能返回 null，表示取不到有效值。
         :type IsAutoDegrade: bool
+        :param EnvChannel: 环境渠道
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EnvChannel: str
         """
         self.EnvId = None
         self.Source = None
@@ -1103,6 +1154,7 @@ class EnvInfo(AbstractModel):
         self.LogServices = None
         self.StaticStorages = None
         self.IsAutoDegrade = None
+        self.EnvChannel = None
 
 
     def _deserialize(self, params):
@@ -1145,6 +1197,7 @@ class EnvInfo(AbstractModel):
                 obj._deserialize(item)
                 self.StaticStorages.append(obj)
         self.IsAutoDegrade = params.get("IsAutoDegrade")
+        self.EnvChannel = params.get("EnvChannel")
 
 
 class FunctionInfo(AbstractModel):
@@ -1371,6 +1424,57 @@ class OrderInfo(AbstractModel):
         self.UpdateTime = params.get("UpdateTime")
         self.CreateTime = params.get("CreateTime")
         self.PayMode = params.get("PayMode")
+
+
+class PackageFreeQuotaInfo(AbstractModel):
+    """后付费免费额度
+
+    """
+
+    def __init__(self):
+        """
+        :param ResourceType: 资源类型
+<li>COS</li>
+<li>CDN</li>
+<li>FLEXDB</li>
+<li>SCF</li>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ResourceType: str
+        :param ResourceMetric: 资源指标名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ResourceMetric: str
+        :param FreeQuota: 资源指标免费量
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FreeQuota: int
+        :param MetricUnit: 指标单位
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MetricUnit: str
+        :param DeductType: 免费量抵扣周期
+<li>sum-month:以月为单位抵扣</li>
+<li>sum-day:以天为单位抵扣</li>
+<li>totalize:总容量抵扣</li>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DeductType: str
+        :param FreeQuotaType: 免费量类型
+<li>basic:通用量抵扣</li>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FreeQuotaType: str
+        """
+        self.ResourceType = None
+        self.ResourceMetric = None
+        self.FreeQuota = None
+        self.MetricUnit = None
+        self.DeductType = None
+        self.FreeQuotaType = None
+
+
+    def _deserialize(self, params):
+        self.ResourceType = params.get("ResourceType")
+        self.ResourceMetric = params.get("ResourceMetric")
+        self.FreeQuota = params.get("FreeQuota")
+        self.MetricUnit = params.get("MetricUnit")
+        self.DeductType = params.get("DeductType")
+        self.FreeQuotaType = params.get("FreeQuotaType")
 
 
 class PlatformStatistic(AbstractModel):

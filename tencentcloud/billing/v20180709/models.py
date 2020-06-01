@@ -1194,6 +1194,8 @@ class Deal(AbstractModel):
         :type ProductCode: str
         :param SubProductCode: 子产品编码
         :type SubProductCode: str
+        :param BigDealId: 大订单号
+        :type BigDealId: str
         """
         self.OrderId = None
         self.Status = None
@@ -1213,6 +1215,7 @@ class Deal(AbstractModel):
         self.TotalCost = None
         self.ProductCode = None
         self.SubProductCode = None
+        self.BigDealId = None
 
 
     def _deserialize(self, params):
@@ -1239,6 +1242,7 @@ class Deal(AbstractModel):
         self.TotalCost = params.get("TotalCost")
         self.ProductCode = params.get("ProductCode")
         self.SubProductCode = params.get("SubProductCode")
+        self.BigDealId = params.get("BigDealId")
 
 
 class DescribeAccountBalanceRequest(AbstractModel):
@@ -2252,6 +2256,8 @@ class DescribeDealsByCondRequest(AbstractModel):
         :type Status: int
         :param OrderId: 订单号
         :type OrderId: str
+        :param BigDealId: 大订单号
+        :type BigDealId: str
         """
         self.StartTime = None
         self.EndTime = None
@@ -2259,6 +2265,7 @@ class DescribeDealsByCondRequest(AbstractModel):
         self.Offset = None
         self.Status = None
         self.OrderId = None
+        self.BigDealId = None
 
 
     def _deserialize(self, params):
@@ -2268,6 +2275,7 @@ class DescribeDealsByCondRequest(AbstractModel):
         self.Offset = params.get("Offset")
         self.Status = params.get("Status")
         self.OrderId = params.get("OrderId")
+        self.BigDealId = params.get("BigDealId")
 
 
 class DescribeDealsByCondResponse(AbstractModel):
@@ -2455,22 +2463,26 @@ class PayDealsRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param OrderIds: 需要支付的一个或者多个订单号
+        :param OrderIds: 需要支付的一个或者多个子订单号，与BigDealIds字段两者必须且仅传一个参数
         :type OrderIds: list of str
         :param AutoVoucher: 是否自动使用代金券,1:是,0否,默认0
         :type AutoVoucher: int
         :param VoucherIds: 代金券ID列表,目前仅支持指定一张代金券
         :type VoucherIds: list of str
+        :param BigDealIds: 需要支付的一个或者多个大订单号，与OrderIds字段两者必须且仅传一个参数
+        :type BigDealIds: list of str
         """
         self.OrderIds = None
         self.AutoVoucher = None
         self.VoucherIds = None
+        self.BigDealIds = None
 
 
     def _deserialize(self, params):
         self.OrderIds = params.get("OrderIds")
         self.AutoVoucher = params.get("AutoVoucher")
         self.VoucherIds = params.get("VoucherIds")
+        self.BigDealIds = params.get("BigDealIds")
 
 
 class PayDealsResponse(AbstractModel):
@@ -2480,21 +2492,25 @@ class PayDealsResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param OrderIds: 此次操作支付成功的订单号数组
+        :param OrderIds: 此次操作支付成功的子订单号数组
         :type OrderIds: list of str
         :param ResourceIds: 此次操作支付成功的资源Id数组
         :type ResourceIds: list of str
+        :param BigDealIds: 此次操作支付成功的大订单号数组
+        :type BigDealIds: list of str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.OrderIds = None
         self.ResourceIds = None
+        self.BigDealIds = None
         self.RequestId = None
 
 
     def _deserialize(self, params):
         self.OrderIds = params.get("OrderIds")
         self.ResourceIds = params.get("ResourceIds")
+        self.BigDealIds = params.get("BigDealIds")
         self.RequestId = params.get("RequestId")
 
 

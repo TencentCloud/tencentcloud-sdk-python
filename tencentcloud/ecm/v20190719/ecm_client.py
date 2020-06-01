@@ -200,7 +200,7 @@ class EcmClient(AbstractClient):
 
 
     def CreateSubnet(self, request):
-        """创建子网
+        """创建子网，若创建成功，则此子网会成为此可用区的默认子网。
 
         :param request: Request instance for CreateSubnet.
         :type request: :class:`tencentcloud.ecm.v20190719.models.CreateSubnetRequest`
@@ -340,7 +340,7 @@ class EcmClient(AbstractClient):
 
 
     def DeleteSubnet(self, request):
-        """删除子网
+        """删除子网，若子网为可用区下的默认子网，则默认子网会回退到系统自动创建的默认子网，非用户最新创建的子网。若默认子网不满足需求，可调用设置默认子网接口设置。
 
         :param request: Request instance for DeleteSubnet.
         :type request: :class:`tencentcloud.ecm.v20190719.models.DeleteSubnetRequest`
@@ -493,6 +493,34 @@ class EcmClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeConfigResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeDefaultSubnet(self, request):
+        """查询可用区的默认子网
+
+        :param request: Request instance for DescribeDefaultSubnet.
+        :type request: :class:`tencentcloud.ecm.v20190719.models.DescribeDefaultSubnetRequest`
+        :rtype: :class:`tencentcloud.ecm.v20190719.models.DescribeDefaultSubnetResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeDefaultSubnet", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeDefaultSubnetResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -1085,6 +1113,34 @@ class EcmClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyAddressesBandwidthResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ModifyDefaultSubnet(self, request):
+        """修改在一个可用区下创建实例时使用的默认子网（创建实例时，未填写VPC参数时使用的sunbetId）
+
+        :param request: Request instance for ModifyDefaultSubnet.
+        :type request: :class:`tencentcloud.ecm.v20190719.models.ModifyDefaultSubnetRequest`
+        :rtype: :class:`tencentcloud.ecm.v20190719.models.ModifyDefaultSubnetResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ModifyDefaultSubnet", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ModifyDefaultSubnetResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

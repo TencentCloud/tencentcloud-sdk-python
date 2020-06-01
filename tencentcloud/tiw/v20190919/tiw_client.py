@@ -249,6 +249,34 @@ class TiwClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def SetOnlineRecordCallbackKey(self, request):
+        """设置实时录制回调鉴权密钥
+
+        :param request: Request instance for SetOnlineRecordCallbackKey.
+        :type request: :class:`tencentcloud.tiw.v20190919.models.SetOnlineRecordCallbackKeyRequest`
+        :rtype: :class:`tencentcloud.tiw.v20190919.models.SetOnlineRecordCallbackKeyResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("SetOnlineRecordCallbackKey", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.SetOnlineRecordCallbackKeyResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def SetTranscodeCallback(self, request):
         """设置文档转码回调地址
 
@@ -263,6 +291,34 @@ class TiwClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.SetTranscodeCallbackResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def SetTranscodeCallbackKey(self, request):
+        """设置文档转码回调鉴权密钥
+
+        :param request: Request instance for SetTranscodeCallbackKey.
+        :type request: :class:`tencentcloud.tiw.v20190919.models.SetTranscodeCallbackKeyRequest`
+        :rtype: :class:`tencentcloud.tiw.v20190919.models.SetTranscodeCallbackKeyResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("SetTranscodeCallbackKey", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.SetTranscodeCallbackKeyResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

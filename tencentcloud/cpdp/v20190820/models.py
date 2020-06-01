@@ -331,7 +331,7 @@ class ApplyOutwardOrderRequest(AbstractModel):
         :type SourceCurrency: str
         :param TargetCurrency: 目的币种
         :type TargetCurrency: str
-        :param PayeeType: 收款人类型
+        :param PayeeType: 收款人类型（银行卡填"BANK_ACCOUNT"）
         :type PayeeType: str
         :param PayeeAccount: 收款人账号
         :type PayeeAccount: str
@@ -339,21 +339,23 @@ class ApplyOutwardOrderRequest(AbstractModel):
         :type SourceAmount: float
         :param TargetAmount: 目的金额
         :type TargetAmount: float
-        :param PayeeName: 收款人姓名
+        :param PayeeName: 收款人姓名（PayeeType为"BANK_COUNT"时必填）
         :type PayeeName: str
-        :param PayeeAddress: 收款人地址
+        :param PayeeAddress: 收款人地址（PayeeType为"BANK_COUNT"时必填）
         :type PayeeAddress: str
-        :param PayeeBankAccountType: 收款人银行账号类型
+        :param PayeeBankAccountType: 收款人银行账号类型（PayeeType为"BANK_COUNT"时必填）
+个人填"INDIVIDUAL"
+企业填"CORPORATE"
         :type PayeeBankAccountType: str
-        :param PayeeCountryCode: 收款人国家或地区编码
+        :param PayeeCountryCode: 收款人国家或地区编码（PayeeType为"BANK_COUNT"时必填）
         :type PayeeCountryCode: str
-        :param PayeeBankName: 收款人开户银行名称
+        :param PayeeBankName: 收款人开户银行名称（PayeeType为"BANK_COUNT"时必填）
         :type PayeeBankName: str
-        :param PayeeBankAddress: 收款人开户银行地址
+        :param PayeeBankAddress: 收款人开户银行地址（PayeeType为"BANK_COUNT"时必填）
         :type PayeeBankAddress: str
-        :param PayeeBankDistrict: 收款人开户银行所在国家或地区编码
+        :param PayeeBankDistrict: 收款人开户银行所在国家或地区编码（PayeeType为"BANK_COUNT"时必填）
         :type PayeeBankDistrict: str
-        :param PayeeBankSwiftCode: 收款银行SwiftCode
+        :param PayeeBankSwiftCode: 收款银行SwiftCode（PayeeType为"BANK_COUNT"时必填）
         :type PayeeBankSwiftCode: str
         :param PayeeBankType: 收款银行国际编码类型
         :type PayeeBankType: str
@@ -476,7 +478,7 @@ class ApplyPayerInfoRequest(AbstractModel):
         :type PayerCountryCode: str
         :param PayerContactName: 付款人联系人名称
         :type PayerContactName: str
-        :param PayerContactNumber: 付款人联系电话 (PayerType=CORPORATE 必填)
+        :param PayerContactNumber: 付款人联系电话
         :type PayerContactNumber: str
         :param PayerEmailAddress: 付款人联系邮箱
         :type PayerEmailAddress: str
@@ -690,7 +692,7 @@ class ApplyTradeRequest(AbstractModel):
         :type TradeOrderId: str
         :param PayerId: 付款人ID
         :type PayerId: str
-        :param PayeeName: 付款人姓名
+        :param PayeeName: 收款人姓名
         :type PayeeName: str
         :param PayeeCountryCode: 收款人常驻国家或地区编码 (见常见问题)
         :type PayeeCountryCode: str

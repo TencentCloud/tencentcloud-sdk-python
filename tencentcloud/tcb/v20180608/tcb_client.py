@@ -445,6 +445,34 @@ class TcbClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribePostpayPackageFreeQuotas(self, request):
+        """获取后付费免费额度
+
+        :param request: Request instance for DescribePostpayPackageFreeQuotas.
+        :type request: :class:`tencentcloud.tcb.v20180608.models.DescribePostpayPackageFreeQuotasRequest`
+        :rtype: :class:`tencentcloud.tcb.v20180608.models.DescribePostpayPackageFreeQuotasResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribePostpayPackageFreeQuotas", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribePostpayPackageFreeQuotasResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeQuotaData(self, request):
         """查询指定指标的配额使用量
 

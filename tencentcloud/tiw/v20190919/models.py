@@ -604,6 +604,44 @@ class ResumeOnlineRecordResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class SetOnlineRecordCallbackKeyRequest(AbstractModel):
+    """SetOnlineRecordCallbackKey请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param SdkAppId: 应用的SdkAppId
+        :type SdkAppId: int
+        :param CallbackKey: 设置实时录制回调鉴权密钥，最长64字符，如果传入空字符串，那么删除现有的鉴权回调密钥
+        :type CallbackKey: str
+        """
+        self.SdkAppId = None
+        self.CallbackKey = None
+
+
+    def _deserialize(self, params):
+        self.SdkAppId = params.get("SdkAppId")
+        self.CallbackKey = params.get("CallbackKey")
+
+
+class SetOnlineRecordCallbackKeyResponse(AbstractModel):
+    """SetOnlineRecordCallbackKey返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class SetOnlineRecordCallbackRequest(AbstractModel):
     """SetOnlineRecordCallback请求参数结构体
 
@@ -627,6 +665,44 @@ class SetOnlineRecordCallbackRequest(AbstractModel):
 
 class SetOnlineRecordCallbackResponse(AbstractModel):
     """SetOnlineRecordCallback返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class SetTranscodeCallbackKeyRequest(AbstractModel):
+    """SetTranscodeCallbackKey请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param SdkAppId: 应用的SdkAppId
+        :type SdkAppId: int
+        :param CallbackKey: 设置文档转码回调鉴权密钥，最长64字符，如果传入空字符串，那么删除现有的鉴权回调密钥
+        :type CallbackKey: str
+        """
+        self.SdkAppId = None
+        self.CallbackKey = None
+
+
+    def _deserialize(self, params):
+        self.SdkAppId = params.get("SdkAppId")
+        self.CallbackKey = params.get("CallbackKey")
+
+
+class SetTranscodeCallbackKeyResponse(AbstractModel):
+    """SetTranscodeCallbackKey返回参数结构体
 
     """
 

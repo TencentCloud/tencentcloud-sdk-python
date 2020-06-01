@@ -1087,6 +1087,50 @@ class DescribeConfigResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeDefaultSubnetRequest(AbstractModel):
+    """DescribeDefaultSubnet请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param EcmRegion: ECM地域
+        :type EcmRegion: str
+        :param Zone: ECM可用区
+        :type Zone: str
+        """
+        self.EcmRegion = None
+        self.Zone = None
+
+
+    def _deserialize(self, params):
+        self.EcmRegion = params.get("EcmRegion")
+        self.Zone = params.get("Zone")
+
+
+class DescribeDefaultSubnetResponse(AbstractModel):
+    """DescribeDefaultSubnet返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Subnet: 默认子网信息，若无子网，则为空数据。
+        :type Subnet: :class:`tencentcloud.ecm.v20190719.models.Subnet`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Subnet = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Subnet") is not None:
+            self.Subnet = Subnet()
+            self.Subnet._deserialize(params.get("Subnet"))
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeImageRequest(AbstractModel):
     """DescribeImage请求参数结构体
 
@@ -2818,6 +2862,52 @@ class ModifyAddressesBandwidthResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.TaskId = params.get("TaskId")
+        self.RequestId = params.get("RequestId")
+
+
+class ModifyDefaultSubnetRequest(AbstractModel):
+    """ModifyDefaultSubnet请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param EcmRegion: ECM地域
+        :type EcmRegion: str
+        :param Zone: ECM可用区
+        :type Zone: str
+        :param VpcId: 私有网络ID
+        :type VpcId: str
+        :param SubnetId: 子网ID
+        :type SubnetId: str
+        """
+        self.EcmRegion = None
+        self.Zone = None
+        self.VpcId = None
+        self.SubnetId = None
+
+
+    def _deserialize(self, params):
+        self.EcmRegion = params.get("EcmRegion")
+        self.Zone = params.get("Zone")
+        self.VpcId = params.get("VpcId")
+        self.SubnetId = params.get("SubnetId")
+
+
+class ModifyDefaultSubnetResponse(AbstractModel):
+    """ModifyDefaultSubnet返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
 
 
