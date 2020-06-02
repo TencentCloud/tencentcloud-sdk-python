@@ -333,6 +333,34 @@ class MongodbClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def FlushInstanceRouterConfig(self, request):
+        """在所有mongos上执行FlushRouterConfig命令
+
+        :param request: Request instance for FlushInstanceRouterConfig.
+        :type request: :class:`tencentcloud.mongodb.v20190725.models.FlushInstanceRouterConfigRequest`
+        :rtype: :class:`tencentcloud.mongodb.v20190725.models.FlushInstanceRouterConfigResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("FlushInstanceRouterConfig", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.FlushInstanceRouterConfigResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def InquirePriceCreateDBInstances(self, request):
         """本接口用于创建数据库实例询价。本接口参数中必须传入region参数，否则无法通过校验。本接口仅允许针对购买限制范围内的实例配置进行询价。
 

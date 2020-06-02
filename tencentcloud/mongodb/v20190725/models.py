@@ -881,6 +881,40 @@ class DescribeSpecInfoResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class FlushInstanceRouterConfigRequest(AbstractModel):
+    """FlushInstanceRouterConfig请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param InstanceId: 实例ID
+        :type InstanceId: str
+        """
+        self.InstanceId = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+
+
+class FlushInstanceRouterConfigResponse(AbstractModel):
+    """FlushInstanceRouterConfig返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class InquirePriceCreateDBInstancesRequest(AbstractModel):
     """InquirePriceCreateDBInstances请求参数结构体
 

@@ -293,12 +293,15 @@ class CreateClusterRequest(AbstractModel):
         :type SubnetId: str
         :param Password: 集群访问密码，必须是a-zA-Z0-9的字符,且必须包含数字和大小写字母
         :type Password: str
+        :param ResourceTags: 集群标签列表
+        :type ResourceTags: list of TagInfoUnit
         """
         self.IdlType = None
         self.ClusterName = None
         self.VpcId = None
         self.SubnetId = None
         self.Password = None
+        self.ResourceTags = None
 
 
     def _deserialize(self, params):
@@ -307,6 +310,12 @@ class CreateClusterRequest(AbstractModel):
         self.VpcId = params.get("VpcId")
         self.SubnetId = params.get("SubnetId")
         self.Password = params.get("Password")
+        if params.get("ResourceTags") is not None:
+            self.ResourceTags = []
+            for item in params.get("ResourceTags"):
+                obj = TagInfoUnit()
+                obj._deserialize(item)
+                self.ResourceTags.append(obj)
 
 
 class CreateClusterResponse(AbstractModel):
@@ -343,16 +352,25 @@ class CreateTableGroupRequest(AbstractModel):
         :type TableGroupName: str
         :param TableGroupId: 表格组ID，可以由用户指定，但在同一个集群内不能重复，如果不指定则采用自增的模式
         :type TableGroupId: str
+        :param ResourceTags: 表格组标签列表
+        :type ResourceTags: list of TagInfoUnit
         """
         self.ClusterId = None
         self.TableGroupName = None
         self.TableGroupId = None
+        self.ResourceTags = None
 
 
     def _deserialize(self, params):
         self.ClusterId = params.get("ClusterId")
         self.TableGroupName = params.get("TableGroupName")
         self.TableGroupId = params.get("TableGroupId")
+        if params.get("ResourceTags") is not None:
+            self.ResourceTags = []
+            for item in params.get("ResourceTags"):
+                obj = TagInfoUnit()
+                obj._deserialize(item)
+                self.ResourceTags.append(obj)
 
 
 class CreateTableGroupResponse(AbstractModel):
@@ -389,10 +407,13 @@ class CreateTablesRequest(AbstractModel):
         :type IdlFiles: list of IdlFileInfo
         :param SelectedTables: 待创建表格信息列表
         :type SelectedTables: list of SelectedTableInfoNew
+        :param ResourceTags: 表格标签列表
+        :type ResourceTags: list of TagInfoUnit
         """
         self.ClusterId = None
         self.IdlFiles = None
         self.SelectedTables = None
+        self.ResourceTags = None
 
 
     def _deserialize(self, params):
@@ -409,6 +430,12 @@ class CreateTablesRequest(AbstractModel):
                 obj = SelectedTableInfoNew()
                 obj._deserialize(item)
                 self.SelectedTables.append(obj)
+        if params.get("ResourceTags") is not None:
+            self.ResourceTags = []
+            for item in params.get("ResourceTags"):
+                obj = TagInfoUnit()
+                obj._deserialize(item)
+                self.ResourceTags.append(obj)
 
 
 class CreateTablesResponse(AbstractModel):
@@ -633,6 +660,55 @@ class DeleteTablesResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeClusterTagsRequest(AbstractModel):
+    """DescribeClusterTags请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ClusterIds: 集群ID列表
+        :type ClusterIds: list of str
+        """
+        self.ClusterIds = None
+
+
+    def _deserialize(self, params):
+        self.ClusterIds = params.get("ClusterIds")
+
+
+class DescribeClusterTagsResponse(AbstractModel):
+    """DescribeClusterTags返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Rows: 集群标签信息列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Rows: list of TagsInfoOfCluster
+        :param TotalCount: 返回结果个数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TotalCount: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Rows = None
+        self.TotalCount = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Rows") is not None:
+            self.Rows = []
+            for item in params.get("Rows"):
+                obj = TagsInfoOfCluster()
+                obj._deserialize(item)
+                self.Rows.append(obj)
+        self.TotalCount = params.get("TotalCount")
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeClustersRequest(AbstractModel):
     """DescribeClusters请求参数结构体
 
@@ -796,6 +872,59 @@ class DescribeRegionsResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeTableGroupTagsRequest(AbstractModel):
+    """DescribeTableGroupTags请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ClusterId: 待查询标签表格组所属集群ID
+        :type ClusterId: str
+        :param TableGroupIds: 待查询标签表格组ID列表
+        :type TableGroupIds: list of str
+        """
+        self.ClusterId = None
+        self.TableGroupIds = None
+
+
+    def _deserialize(self, params):
+        self.ClusterId = params.get("ClusterId")
+        self.TableGroupIds = params.get("TableGroupIds")
+
+
+class DescribeTableGroupTagsResponse(AbstractModel):
+    """DescribeTableGroupTags返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Rows: 表格组标签信息列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Rows: list of TagsInfoOfTableGroup
+        :param TotalCount: 返回结果个数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TotalCount: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Rows = None
+        self.TotalCount = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Rows") is not None:
+            self.Rows = []
+            for item in params.get("Rows"):
+                obj = TagsInfoOfTableGroup()
+                obj._deserialize(item)
+                self.Rows.append(obj)
+        self.TotalCount = params.get("TotalCount")
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeTableGroupsRequest(AbstractModel):
     """DescribeTableGroups请求参数结构体
 
@@ -861,6 +990,62 @@ class DescribeTableGroupsResponse(AbstractModel):
                 obj = TableGroupInfo()
                 obj._deserialize(item)
                 self.TableGroups.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeTableTagsRequest(AbstractModel):
+    """DescribeTableTags请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ClusterId: 表格所属集群ID
+        :type ClusterId: str
+        :param SelectedTables: 表格列表
+        :type SelectedTables: list of SelectedTableInfoNew
+        """
+        self.ClusterId = None
+        self.SelectedTables = None
+
+
+    def _deserialize(self, params):
+        self.ClusterId = params.get("ClusterId")
+        if params.get("SelectedTables") is not None:
+            self.SelectedTables = []
+            for item in params.get("SelectedTables"):
+                obj = SelectedTableInfoNew()
+                obj._deserialize(item)
+                self.SelectedTables.append(obj)
+
+
+class DescribeTableTagsResponse(AbstractModel):
+    """DescribeTableTags返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param TotalCount: 返回结果总数
+        :type TotalCount: int
+        :param Rows: 表格标签信息列表
+        :type Rows: list of TagsInfoOfTable
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.Rows = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("Rows") is not None:
+            self.Rows = []
+            for item in params.get("Rows"):
+                obj = TagsInfoOfTable()
+                obj._deserialize(item)
+                self.Rows.append(obj)
         self.RequestId = params.get("RequestId")
 
 
@@ -1318,6 +1503,63 @@ class ModifyClusterPasswordResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class ModifyClusterTagsRequest(AbstractModel):
+    """ModifyClusterTags请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ClusterId: 待修改标签的集群ID
+        :type ClusterId: str
+        :param ReplaceTags: 待增加或修改的标签列表
+        :type ReplaceTags: list of TagInfoUnit
+        :param DeleteTags: 待删除的标签
+        :type DeleteTags: list of TagInfoUnit
+        """
+        self.ClusterId = None
+        self.ReplaceTags = None
+        self.DeleteTags = None
+
+
+    def _deserialize(self, params):
+        self.ClusterId = params.get("ClusterId")
+        if params.get("ReplaceTags") is not None:
+            self.ReplaceTags = []
+            for item in params.get("ReplaceTags"):
+                obj = TagInfoUnit()
+                obj._deserialize(item)
+                self.ReplaceTags.append(obj)
+        if params.get("DeleteTags") is not None:
+            self.DeleteTags = []
+            for item in params.get("DeleteTags"):
+                obj = TagInfoUnit()
+                obj._deserialize(item)
+                self.DeleteTags.append(obj)
+
+
+class ModifyClusterTagsResponse(AbstractModel):
+    """ModifyClusterTags返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param TaskId: 任务ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TaskId: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TaskId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TaskId = params.get("TaskId")
+        self.RequestId = params.get("RequestId")
+
+
 class ModifyTableGroupNameRequest(AbstractModel):
     """ModifyTableGroupName请求参数结构体
 
@@ -1357,6 +1599,67 @@ class ModifyTableGroupNameResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class ModifyTableGroupTagsRequest(AbstractModel):
+    """ModifyTableGroupTags请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ClusterId: 待修改标签表格组所属集群ID
+        :type ClusterId: str
+        :param TableGroupId: 待修改标签表格组ID
+        :type TableGroupId: str
+        :param ReplaceTags: 待增加或修改的标签列表
+        :type ReplaceTags: list of TagInfoUnit
+        :param DeleteTags: 待删除的标签
+        :type DeleteTags: list of TagInfoUnit
+        """
+        self.ClusterId = None
+        self.TableGroupId = None
+        self.ReplaceTags = None
+        self.DeleteTags = None
+
+
+    def _deserialize(self, params):
+        self.ClusterId = params.get("ClusterId")
+        self.TableGroupId = params.get("TableGroupId")
+        if params.get("ReplaceTags") is not None:
+            self.ReplaceTags = []
+            for item in params.get("ReplaceTags"):
+                obj = TagInfoUnit()
+                obj._deserialize(item)
+                self.ReplaceTags.append(obj)
+        if params.get("DeleteTags") is not None:
+            self.DeleteTags = []
+            for item in params.get("DeleteTags"):
+                obj = TagInfoUnit()
+                obj._deserialize(item)
+                self.DeleteTags.append(obj)
+
+
+class ModifyTableGroupTagsResponse(AbstractModel):
+    """ModifyTableGroupTags返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param TaskId: 任务ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TaskId: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TaskId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TaskId = params.get("TaskId")
         self.RequestId = params.get("RequestId")
 
 
@@ -1452,6 +1755,80 @@ class ModifyTableQuotasResponse(AbstractModel):
         :param TotalCount: 扩缩容结果数量
         :type TotalCount: int
         :param TableResults: 扩缩容结果列表
+        :type TableResults: list of TableResultNew
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.TableResults = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("TableResults") is not None:
+            self.TableResults = []
+            for item in params.get("TableResults"):
+                obj = TableResultNew()
+                obj._deserialize(item)
+                self.TableResults.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class ModifyTableTagsRequest(AbstractModel):
+    """ModifyTableTags请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ClusterId: 待修改标签表格所属集群ID
+        :type ClusterId: str
+        :param SelectedTables: 待修改标签表格列表
+        :type SelectedTables: list of SelectedTableInfoNew
+        :param ReplaceTags: 待增加或修改的标签列表
+        :type ReplaceTags: list of TagInfoUnit
+        :param DeleteTags: 待删除的标签列表
+        :type DeleteTags: list of TagInfoUnit
+        """
+        self.ClusterId = None
+        self.SelectedTables = None
+        self.ReplaceTags = None
+        self.DeleteTags = None
+
+
+    def _deserialize(self, params):
+        self.ClusterId = params.get("ClusterId")
+        if params.get("SelectedTables") is not None:
+            self.SelectedTables = []
+            for item in params.get("SelectedTables"):
+                obj = SelectedTableInfoNew()
+                obj._deserialize(item)
+                self.SelectedTables.append(obj)
+        if params.get("ReplaceTags") is not None:
+            self.ReplaceTags = []
+            for item in params.get("ReplaceTags"):
+                obj = TagInfoUnit()
+                obj._deserialize(item)
+                self.ReplaceTags.append(obj)
+        if params.get("DeleteTags") is not None:
+            self.DeleteTags = []
+            for item in params.get("DeleteTags"):
+                obj = TagInfoUnit()
+                obj._deserialize(item)
+                self.DeleteTags.append(obj)
+
+
+class ModifyTableTagsResponse(AbstractModel):
+    """ModifyTableTags返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param TotalCount: 返回结果总数
+        :type TotalCount: int
+        :param TableResults: 返回结果
         :type TableResults: list of TableResultNew
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -2167,6 +2544,148 @@ class TableRollbackResultNew(AbstractModel):
         self.FileId = params.get("FileId")
         self.SuccKeyNum = params.get("SuccKeyNum")
         self.TotalKeyNum = params.get("TotalKeyNum")
+
+
+class TagInfoUnit(AbstractModel):
+    """标签信息单元
+
+    """
+
+    def __init__(self):
+        """
+        :param TagKey: 标签键
+        :type TagKey: str
+        :param TagValue: 标签值
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TagValue: str
+        """
+        self.TagKey = None
+        self.TagValue = None
+
+
+    def _deserialize(self, params):
+        self.TagKey = params.get("TagKey")
+        self.TagValue = params.get("TagValue")
+
+
+class TagsInfoOfCluster(AbstractModel):
+    """集群的标签信息
+
+    """
+
+    def __init__(self):
+        """
+        :param ClusterId: 集群ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ClusterId: str
+        :param Tags: 标签信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Tags: list of TagInfoUnit
+        :param Error: 错误信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Error: :class:`tencentcloud.tcaplusdb.v20190823.models.ErrorInfo`
+        """
+        self.ClusterId = None
+        self.Tags = None
+        self.Error = None
+
+
+    def _deserialize(self, params):
+        self.ClusterId = params.get("ClusterId")
+        if params.get("Tags") is not None:
+            self.Tags = []
+            for item in params.get("Tags"):
+                obj = TagInfoUnit()
+                obj._deserialize(item)
+                self.Tags.append(obj)
+        if params.get("Error") is not None:
+            self.Error = ErrorInfo()
+            self.Error._deserialize(params.get("Error"))
+
+
+class TagsInfoOfTable(AbstractModel):
+    """表格标签信息
+
+    """
+
+    def __init__(self):
+        """
+        :param TableInstanceId: 表格实例ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TableInstanceId: str
+        :param TableName: 表格名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TableName: str
+        :param TableGroupId: 表格组ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TableGroupId: str
+        :param Tags: 标签信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Tags: list of TagInfoUnit
+        :param Error: 错误信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Error: :class:`tencentcloud.tcaplusdb.v20190823.models.ErrorInfo`
+        """
+        self.TableInstanceId = None
+        self.TableName = None
+        self.TableGroupId = None
+        self.Tags = None
+        self.Error = None
+
+
+    def _deserialize(self, params):
+        self.TableInstanceId = params.get("TableInstanceId")
+        self.TableName = params.get("TableName")
+        self.TableGroupId = params.get("TableGroupId")
+        if params.get("Tags") is not None:
+            self.Tags = []
+            for item in params.get("Tags"):
+                obj = TagInfoUnit()
+                obj._deserialize(item)
+                self.Tags.append(obj)
+        if params.get("Error") is not None:
+            self.Error = ErrorInfo()
+            self.Error._deserialize(params.get("Error"))
+
+
+class TagsInfoOfTableGroup(AbstractModel):
+    """表格组标签信息
+
+    """
+
+    def __init__(self):
+        """
+        :param ClusterId: 集群ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ClusterId: str
+        :param TableGroupId: 表格组ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TableGroupId: str
+        :param Tags: 标签信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Tags: list of TagInfoUnit
+        :param Error: 错误信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Error: :class:`tencentcloud.tcaplusdb.v20190823.models.ErrorInfo`
+        """
+        self.ClusterId = None
+        self.TableGroupId = None
+        self.Tags = None
+        self.Error = None
+
+
+    def _deserialize(self, params):
+        self.ClusterId = params.get("ClusterId")
+        self.TableGroupId = params.get("TableGroupId")
+        if params.get("Tags") is not None:
+            self.Tags = []
+            for item in params.get("Tags"):
+                obj = TagInfoUnit()
+                obj._deserialize(item)
+                self.Tags.append(obj)
+        if params.get("Error") is not None:
+            self.Error = ErrorInfo()
+            self.Error._deserialize(params.get("Error"))
 
 
 class TaskInfoNew(AbstractModel):

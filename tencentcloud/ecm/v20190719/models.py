@@ -4173,14 +4173,14 @@ class RunInstancesRequest(AbstractModel):
         """
         :param ZoneInstanceCountISPSet: 需要创建实例的可用区及创建数目及运营商的列表。在单次请求的过程中，单个region下的请求创建实例数上限为100
         :type ZoneInstanceCountISPSet: list of ZoneInstanceCountISP
-        :param ModuleId: 模块ID
-        :type ModuleId: str
         :param Password: 实例登录密码。不同操作系统类型密码复杂度限制不一样，具体如下：
 Linux实例密码必须8到30位，至少包括两项[a-z]，[A-Z]、[0-9] 和 [( ) ` ~ ! @ # $ % ^ & - + = | { } [ ] : ; ' , . ? / ]中的特殊符。Windows实例密码必须12到30位，至少包括三项[a-z]，[A-Z]，[0-9] 和 [( ) ` ~ ! @ # $ % ^ & - + = | { } [ ] : ; ' , . ? /]中的特殊符号。
         :type Password: str
-        :param InternetMaxBandwidthOut: 公网出带宽上限，单位：Mbps
+        :param InternetMaxBandwidthOut: 公网出带宽上限，单位：Mbps。如果未传该参数或者传的值为0，则使用模块下的默认值
         :type InternetMaxBandwidthOut: int
-        :param ImageId: 镜像ID，不传则使用模块下的默认值
+        :param ModuleId: 模块ID。如果未传该参数，则必须传ImageId，InstanceType，DataDiskSize，InternetMaxBandwidthOut参数
+        :type ModuleId: str
+        :param ImageId: 镜像ID。如果未传该参数或者传的值为空，则使用模块下的默认值
         :type ImageId: str
         :param InstanceName: 实例显示名称。
 不指定实例显示名称则默认显示‘未命名’。
@@ -4203,11 +4203,15 @@ Windows 实例：名字符长度为[2, 15]，允许字母（不限制大小写�
         :type TagSpecification: list of TagSpecification
         :param UserData: 提供给实例使用的用户数据，需要以 base64 方式编码，支持的最大数据大小为 16KB
         :type UserData: str
+        :param InstanceType: 机型。如果未传该参数或者传的值为空，则使用模块下的默认值
+        :type InstanceType: str
+        :param DataDiskSize: 数据盘大小，单位是G。如果未传该参数或者传的值为0，则使用模块下的默认值
+        :type DataDiskSize: int
         """
         self.ZoneInstanceCountISPSet = None
-        self.ModuleId = None
         self.Password = None
         self.InternetMaxBandwidthOut = None
+        self.ModuleId = None
         self.ImageId = None
         self.InstanceName = None
         self.HostName = None
@@ -4215,6 +4219,8 @@ Windows 实例：名字符长度为[2, 15]，允许字母（不限制大小写�
         self.EnhancedService = None
         self.TagSpecification = None
         self.UserData = None
+        self.InstanceType = None
+        self.DataDiskSize = None
 
 
     def _deserialize(self, params):
@@ -4224,9 +4230,9 @@ Windows 实例：名字符长度为[2, 15]，允许字母（不限制大小写�
                 obj = ZoneInstanceCountISP()
                 obj._deserialize(item)
                 self.ZoneInstanceCountISPSet.append(obj)
-        self.ModuleId = params.get("ModuleId")
         self.Password = params.get("Password")
         self.InternetMaxBandwidthOut = params.get("InternetMaxBandwidthOut")
+        self.ModuleId = params.get("ModuleId")
         self.ImageId = params.get("ImageId")
         self.InstanceName = params.get("InstanceName")
         self.HostName = params.get("HostName")
@@ -4241,6 +4247,8 @@ Windows 实例：名字符长度为[2, 15]，允许字母（不限制大小写�
                 obj._deserialize(item)
                 self.TagSpecification.append(obj)
         self.UserData = params.get("UserData")
+        self.InstanceType = params.get("InstanceType")
+        self.DataDiskSize = params.get("DataDiskSize")
 
 
 class RunInstancesResponse(AbstractModel):

@@ -839,6 +839,44 @@ class AssociateAddressResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class AssociateDhcpIpWithAddressIpRequest(AbstractModel):
+    """AssociateDhcpIpWithAddressIp请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param DhcpIpId: `DhcpIp`唯一`ID`，形如：`dhcpip-9o233uri`。必须是没有绑定`EIP`的`DhcpIp`
+        :type DhcpIpId: str
+        :param AddressIp: 弹性公网`IP`。必须是没有绑定`DhcpIp`的`EIP`
+        :type AddressIp: str
+        """
+        self.DhcpIpId = None
+        self.AddressIp = None
+
+
+    def _deserialize(self, params):
+        self.DhcpIpId = params.get("DhcpIpId")
+        self.AddressIp = params.get("AddressIp")
+
+
+class AssociateDhcpIpWithAddressIpResponse(AbstractModel):
+    """AssociateDhcpIpWithAddressIp返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class AssociateNatGatewayAddressRequest(AbstractModel):
     """AssociateNatGatewayAddress请求参数结构体
 
@@ -2088,6 +2126,61 @@ class CreateDefaultVpcResponse(AbstractModel):
         if params.get("Vpc") is not None:
             self.Vpc = DefaultVpcSubnet()
             self.Vpc._deserialize(params.get("Vpc"))
+        self.RequestId = params.get("RequestId")
+
+
+class CreateDhcpIpRequest(AbstractModel):
+    """CreateDhcpIp请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param VpcId: 私有网络`ID`。
+        :type VpcId: str
+        :param SubnetId: 子网`ID`。
+        :type SubnetId: str
+        :param DhcpIpName: `DhcpIp`名称。
+        :type DhcpIpName: str
+        :param SecondaryPrivateIpAddressCount: 新申请的内网IP地址个数。总数不能超过64个。
+        :type SecondaryPrivateIpAddressCount: int
+        """
+        self.VpcId = None
+        self.SubnetId = None
+        self.DhcpIpName = None
+        self.SecondaryPrivateIpAddressCount = None
+
+
+    def _deserialize(self, params):
+        self.VpcId = params.get("VpcId")
+        self.SubnetId = params.get("SubnetId")
+        self.DhcpIpName = params.get("DhcpIpName")
+        self.SecondaryPrivateIpAddressCount = params.get("SecondaryPrivateIpAddressCount")
+
+
+class CreateDhcpIpResponse(AbstractModel):
+    """CreateDhcpIp返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param DhcpIpSet: 新创建的`DhcpIp`信息
+        :type DhcpIpSet: list of DhcpIp
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.DhcpIpSet = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("DhcpIpSet") is not None:
+            self.DhcpIpSet = []
+            for item in params.get("DhcpIpSet"):
+                obj = DhcpIp()
+                obj._deserialize(item)
+                self.DhcpIpSet.append(obj)
         self.RequestId = params.get("RequestId")
 
 
@@ -3697,6 +3790,40 @@ class DeleteCustomerGatewayResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DeleteDhcpIpRequest(AbstractModel):
+    """DeleteDhcpIp请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param DhcpIpId: `DhcpIp`的`ID`，是`DhcpIp`的唯一标识。
+        :type DhcpIpId: str
+        """
+        self.DhcpIpId = None
+
+
+    def _deserialize(self, params):
+        self.DhcpIpId = params.get("DhcpIpId")
+
+
+class DeleteDhcpIpResponse(AbstractModel):
+    """DeleteDhcpIp返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class DeleteDirectConnectGatewayCcnRoutesRequest(AbstractModel):
     """DeleteDirectConnectGatewayCcnRoutes请求参数结构体
 
@@ -5269,6 +5396,75 @@ class DescribeCustomerGatewaysResponse(AbstractModel):
                 obj = CustomerGateway()
                 obj._deserialize(item)
                 self.CustomerGatewaySet.append(obj)
+        self.TotalCount = params.get("TotalCount")
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeDhcpIpsRequest(AbstractModel):
+    """DescribeDhcpIps请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param DhcpIpIds: DhcpIp实例ID。形如：dhcpip-pxir56ns。每次请求的实例的上限为100。参数不支持同时指定DhcpIpIds和Filters。
+        :type DhcpIpIds: list of str
+        :param Filters: 过滤条件，参数不支持同时指定DhcpIpIds和Filters。
+<li>vpc-id - String - （过滤条件）VPC实例ID，形如：vpc-f49l6u0z。</li>
+<li>subnet-id - String - （过滤条件）所属子网实例ID，形如：subnet-f49l6u0z。</li>
+<li>dhcpip-id - String - （过滤条件）DhcpIp实例ID，形如：dhcpip-pxir56ns。</li>
+<li>dhcpip-name - String - （过滤条件）DhcpIp实例名称。</li>
+<li>address-ip - String - （过滤条件）DhcpIp实例的IP，根据IP精确查找。</li>
+        :type Filters: list of Filter
+        :param Offset: 偏移量，默认为0。
+        :type Offset: int
+        :param Limit: 返回数量，默认为20，最大值为100。
+        :type Limit: int
+        """
+        self.DhcpIpIds = None
+        self.Filters = None
+        self.Offset = None
+        self.Limit = None
+
+
+    def _deserialize(self, params):
+        self.DhcpIpIds = params.get("DhcpIpIds")
+        if params.get("Filters") is not None:
+            self.Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self.Filters.append(obj)
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+
+
+class DescribeDhcpIpsResponse(AbstractModel):
+    """DescribeDhcpIps返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param DhcpIpSet: 实例详细信息列表。
+        :type DhcpIpSet: list of DhcpIp
+        :param TotalCount: 符合条件的实例数量。
+        :type TotalCount: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.DhcpIpSet = None
+        self.TotalCount = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("DhcpIpSet") is not None:
+            self.DhcpIpSet = []
+            for item in params.get("DhcpIpSet"):
+                obj = DhcpIp()
+                obj._deserialize(item)
+                self.DhcpIpSet.append(obj)
         self.TotalCount = params.get("TotalCount")
         self.RequestId = params.get("RequestId")
 
@@ -7688,6 +7884,61 @@ class DetachNetworkInterfaceResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DhcpIp(AbstractModel):
+    """描述 DhcpIp 信息
+
+    """
+
+    def __init__(self):
+        """
+        :param DhcpIpId: `DhcpIp`的`ID`，是`DhcpIp`的唯一标识。
+        :type DhcpIpId: str
+        :param VpcId: `DhcpIp`所在私有网络`ID`。
+        :type VpcId: str
+        :param SubnetId: `DhcpIp`所在子网`ID`。
+        :type SubnetId: str
+        :param DhcpIpName: `DhcpIp`的名称。
+        :type DhcpIpName: str
+        :param PrivateIpAddress: IP地址。
+        :type PrivateIpAddress: str
+        :param AddressIp: 绑定`EIP`。
+        :type AddressIp: str
+        :param NetworkInterfaceId: `DhcpIp`关联弹性网卡`ID`。
+        :type NetworkInterfaceId: str
+        :param InstanceId: 被绑定的实例`ID`。
+        :type InstanceId: str
+        :param State: 状态：
+<li>`AVAILABLE`：运行中</li>
+<li>`UNBIND`：未绑定</li>
+        :type State: str
+        :param CreatedTime: 创建时间。
+        :type CreatedTime: str
+        """
+        self.DhcpIpId = None
+        self.VpcId = None
+        self.SubnetId = None
+        self.DhcpIpName = None
+        self.PrivateIpAddress = None
+        self.AddressIp = None
+        self.NetworkInterfaceId = None
+        self.InstanceId = None
+        self.State = None
+        self.CreatedTime = None
+
+
+    def _deserialize(self, params):
+        self.DhcpIpId = params.get("DhcpIpId")
+        self.VpcId = params.get("VpcId")
+        self.SubnetId = params.get("SubnetId")
+        self.DhcpIpName = params.get("DhcpIpName")
+        self.PrivateIpAddress = params.get("PrivateIpAddress")
+        self.AddressIp = params.get("AddressIp")
+        self.NetworkInterfaceId = params.get("NetworkInterfaceId")
+        self.InstanceId = params.get("InstanceId")
+        self.State = params.get("State")
+        self.CreatedTime = params.get("CreatedTime")
+
+
 class DirectConnectGateway(AbstractModel):
     """专线网关对象。
 
@@ -7935,6 +8186,40 @@ class DisassociateAddressResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.TaskId = params.get("TaskId")
+        self.RequestId = params.get("RequestId")
+
+
+class DisassociateDhcpIpWithAddressIpRequest(AbstractModel):
+    """DisassociateDhcpIpWithAddressIp请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param DhcpIpId: `DhcpIp`唯一`ID`，形如：`dhcpip-9o233uri`。必须是已绑定`EIP`的`DhcpIp`。
+        :type DhcpIpId: str
+        """
+        self.DhcpIpId = None
+
+
+    def _deserialize(self, params):
+        self.DhcpIpId = params.get("DhcpIpId")
+
+
+class DisassociateDhcpIpWithAddressIpResponse(AbstractModel):
+    """DisassociateDhcpIpWithAddressIp返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
 
 
@@ -9505,6 +9790,44 @@ class ModifyCustomerGatewayAttributeRequest(AbstractModel):
 
 class ModifyCustomerGatewayAttributeResponse(AbstractModel):
     """ModifyCustomerGatewayAttribute返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class ModifyDhcpIpAttributeRequest(AbstractModel):
+    """ModifyDhcpIpAttribute请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param DhcpIpId: `DhcpIp`唯一`ID`，形如：`dhcpip-9o233uri`。
+        :type DhcpIpId: str
+        :param DhcpIpName: `DhcpIp`名称，可任意命名，但不得超过60个字符。
+        :type DhcpIpName: str
+        """
+        self.DhcpIpId = None
+        self.DhcpIpName = None
+
+
+    def _deserialize(self, params):
+        self.DhcpIpId = params.get("DhcpIpId")
+        self.DhcpIpName = params.get("DhcpIpName")
+
+
+class ModifyDhcpIpAttributeResponse(AbstractModel):
+    """ModifyDhcpIpAttribute返回参数结构体
 
     """
 

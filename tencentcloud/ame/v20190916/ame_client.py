@@ -25,6 +25,34 @@ class AmeClient(AbstractClient):
     _endpoint = 'ame.tencentcloudapi.com'
 
 
+    def DescribeItemById(self, request):
+        """根据歌曲ID查询歌曲信息
+
+        :param request: Request instance for DescribeItemById.
+        :type request: :class:`tencentcloud.ame.v20190916.models.DescribeItemByIdRequest`
+        :rtype: :class:`tencentcloud.ame.v20190916.models.DescribeItemByIdResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeItemById", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeItemByIdResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeItems(self, request):
         """分类内容下歌曲列表获取，根据CategoryID或CategoryCode
 

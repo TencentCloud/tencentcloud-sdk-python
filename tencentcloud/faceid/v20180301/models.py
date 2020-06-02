@@ -585,6 +585,17 @@ class GetActionSequenceRequest(AbstractModel):
 
     """
 
+    def __init__(self):
+        """
+        :param ActionType: 取值FourAction时 返回四种动作的动作序列
+        :type ActionType: str
+        """
+        self.ActionType = None
+
+
+    def _deserialize(self, params):
+        self.ActionType = params.get("ActionType")
+
 
 class GetActionSequenceResponse(AbstractModel):
     """GetActionSequence返回参数结构体
@@ -1044,6 +1055,9 @@ LIP为数字模式，ACTION为动作模式，SILENT为静默模式，三种模�
 静默模式传参：空。
         :type ValidateData: str
         :param Optional: 额外配置，传入JSON字符串。
+{
+"BestFrameNum": 2  //需要返回多张最佳截图，取值范围1-10
+}
         :type Optional: str
         """
         self.ImageBase64 = None
@@ -1069,6 +1083,7 @@ class LivenessCompareResponse(AbstractModel):
     def __init__(self):
         """
         :param BestFrameBase64: 验证通过后的视频最佳截图照片，照片为BASE64编码后的值，jpg格式。
+注意：此字段可能返回 null，表示取不到有效值。
         :type BestFrameBase64: str
         :param Sim: 相似度，取值范围 [0.00, 100.00]。推荐相似度大于等于70时可判断为同一人，可根据具体场景自行调整阈值（阈值70的误通过率为千分之一，阈值80的误通过率是万分之一）。
         :type Sim: float
@@ -1076,6 +1091,9 @@ class LivenessCompareResponse(AbstractModel):
         :type Result: str
         :param Description: 业务结果描述。
         :type Description: str
+        :param BestFrameList: 最佳截图列表，仅在配置了返回多张最佳截图时返回。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BestFrameList: list of str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -1083,6 +1101,7 @@ class LivenessCompareResponse(AbstractModel):
         self.Sim = None
         self.Result = None
         self.Description = None
+        self.BestFrameList = None
         self.RequestId = None
 
 
@@ -1091,6 +1110,7 @@ class LivenessCompareResponse(AbstractModel):
         self.Sim = params.get("Sim")
         self.Result = params.get("Result")
         self.Description = params.get("Description")
+        self.BestFrameList = params.get("BestFrameList")
         self.RequestId = params.get("RequestId")
 
 
@@ -1116,6 +1136,9 @@ LIP为数字模式，ACTION为动作模式，SILENT为静默模式，三种模�
 静默模式传参：空。
         :type ValidateData: str
         :param Optional: 额外配置，传入JSON字符串。
+{
+"BestFrameNum": 2  //需要返回多张最佳截图，取值范围1-10
+}
         :type Optional: str
         """
         self.IdCard = None
@@ -1143,6 +1166,7 @@ class LivenessRecognitionResponse(AbstractModel):
     def __init__(self):
         """
         :param BestFrameBase64: 验证通过后的视频最佳截图照片，照片为BASE64编码后的值，jpg格式。
+注意：此字段可能返回 null，表示取不到有效值。
         :type BestFrameBase64: str
         :param Sim: 相似度，取值范围 [0.00, 100.00]。推荐相似度大于等于70时可判断为同一人，可根据具体场景自行调整阈值（阈值70的误通过率为千分之一，阈值80的误通过率是万分之一）
         :type Sim: float
@@ -1150,6 +1174,9 @@ class LivenessRecognitionResponse(AbstractModel):
         :type Result: str
         :param Description: 业务结果描述。
         :type Description: str
+        :param BestFrameList: 最佳截图列表，仅在配置了返回多张最佳截图时返回。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BestFrameList: list of str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -1157,6 +1184,7 @@ class LivenessRecognitionResponse(AbstractModel):
         self.Sim = None
         self.Result = None
         self.Description = None
+        self.BestFrameList = None
         self.RequestId = None
 
 
@@ -1165,6 +1193,7 @@ class LivenessRecognitionResponse(AbstractModel):
         self.Sim = params.get("Sim")
         self.Result = params.get("Result")
         self.Description = params.get("Description")
+        self.BestFrameList = params.get("BestFrameList")
         self.RequestId = params.get("RequestId")
 
 
@@ -1176,7 +1205,7 @@ class LivenessRequest(AbstractModel):
     def __init__(self):
         """
         :param VideoBase64: 用于活体检测的视频，视频的BASE64值；
-BASE64编码后的大小不超过5M，支持mp4、avi、flv格式。
+BASE64编码后的大小不超过8M，支持mp4、avi、flv格式。
         :type VideoBase64: str
         :param LivenessType: 活体检测类型，取值：LIP/ACTION/SILENT。
 LIP为数字模式，ACTION为动作模式，SILENT为静默模式，三种模式选择一种传入。
@@ -1185,7 +1214,10 @@ LIP为数字模式，ACTION为动作模式，SILENT为静默模式，三种模�
 动作模式传参：传动作顺序(2,1 or 1,2)，需先调用接口获取动作顺序；
 静默模式传参：不需要传递此参数。
         :type ValidateData: str
-        :param Optional: 本接口不需要传递此参数。
+        :param Optional: 额外配置，传入JSON字符串。
+{
+"BestFrameNum": 2  //需要返回多张最佳截图，取值范围1-10
+}
         :type Optional: str
         """
         self.VideoBase64 = None
@@ -1209,17 +1241,22 @@ class LivenessResponse(AbstractModel):
     def __init__(self):
         """
         :param BestFrameBase64: 验证通过后的视频最佳截图照片，照片为BASE64编码后的值，jpg格式。
+注意：此字段可能返回 null，表示取不到有效值。
         :type BestFrameBase64: str
         :param Result: 业务错误码，成功情况返回Success, 错误情况请参考下方错误码 列表中FailedOperation部分
         :type Result: str
         :param Description: 业务结果描述。
         :type Description: str
+        :param BestFrameList: 最佳最佳截图列表，仅在配置了返回多张最佳截图时有效。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BestFrameList: list of str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.BestFrameBase64 = None
         self.Result = None
         self.Description = None
+        self.BestFrameList = None
         self.RequestId = None
 
 
@@ -1227,6 +1264,7 @@ class LivenessResponse(AbstractModel):
         self.BestFrameBase64 = params.get("BestFrameBase64")
         self.Result = params.get("Result")
         self.Description = params.get("Description")
+        self.BestFrameList = params.get("BestFrameList")
         self.RequestId = params.get("RequestId")
 
 

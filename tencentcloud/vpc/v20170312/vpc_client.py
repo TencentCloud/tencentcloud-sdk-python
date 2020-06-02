@@ -328,6 +328,35 @@ class VpcClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def AssociateDhcpIpWithAddressIp(self, request):
+        """本接口（AssociateDhcpIpWithAddressIp）用于DhcpIp绑定弹性公网IP（EIP）<br />
+        本接口是异步完成，如需查询异步任务执行结果，请使用本接口返回的`RequestId`轮询`DescribeVpcTaskResult`接口
+
+        :param request: Request instance for AssociateDhcpIpWithAddressIp.
+        :type request: :class:`tencentcloud.vpc.v20170312.models.AssociateDhcpIpWithAddressIpRequest`
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.AssociateDhcpIpWithAddressIpResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("AssociateDhcpIpWithAddressIp", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.AssociateDhcpIpWithAddressIpResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def AssociateNatGatewayAddress(self, request):
         """本接口(AssociateNatGatewayAddress)用于NAT网关绑定弹性IP（EIP）。
 
@@ -846,6 +875,34 @@ class VpcClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateDefaultVpcResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def CreateDhcpIp(self, request):
+        """本接口（CreateDhcpIp）用于创建DhcpIp
+
+        :param request: Request instance for CreateDhcpIp.
+        :type request: :class:`tencentcloud.vpc.v20170312.models.CreateDhcpIpRequest`
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.CreateDhcpIpResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("CreateDhcpIp", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateDhcpIpResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -1687,6 +1744,34 @@ class VpcClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteCustomerGatewayResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DeleteDhcpIp(self, request):
+        """本接口（DeleteDhcpIp）用于删除DhcpIp
+
+        :param request: Request instance for DeleteDhcpIp.
+        :type request: :class:`tencentcloud.vpc.v20170312.models.DeleteDhcpIpRequest`
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.DeleteDhcpIpResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DeleteDhcpIp", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DeleteDhcpIpResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -2683,6 +2768,34 @@ class VpcClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeCustomerGatewaysResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeDhcpIps(self, request):
+        """本接口（DescribeDhcpIps）用于查询DhcpIp列表
+
+        :param request: Request instance for DescribeDhcpIps.
+        :type request: :class:`tencentcloud.vpc.v20170312.models.DescribeDhcpIpsRequest`
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.DescribeDhcpIpsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeDhcpIps", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeDhcpIpsResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -3996,6 +4109,35 @@ class VpcClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DisassociateDhcpIpWithAddressIp(self, request):
+        """本接口（DisassociateDhcpIpWithAddressIp）用于将DhcpIp已绑定的弹性公网IP（EIP）解除绑定<br />
+        本接口是异步完成，如需查询异步任务执行结果，请使用本接口返回的`RequestId`轮询`DescribeVpcTaskResult`接口
+
+        :param request: Request instance for DisassociateDhcpIpWithAddressIp.
+        :type request: :class:`tencentcloud.vpc.v20170312.models.DisassociateDhcpIpWithAddressIpRequest`
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.DisassociateDhcpIpWithAddressIpResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DisassociateDhcpIpWithAddressIp", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DisassociateDhcpIpWithAddressIpResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DisassociateNatGatewayAddress(self, request):
         """本接口（DisassociateNatGatewayAddress）用于NAT网关解绑弹性IP。
 
@@ -4663,6 +4805,34 @@ class VpcClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyCustomerGatewayAttributeResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ModifyDhcpIpAttribute(self, request):
+        """本接口（ModifyDhcpIpAttribute）用于修改DhcpIp属性
+
+        :param request: Request instance for ModifyDhcpIpAttribute.
+        :type request: :class:`tencentcloud.vpc.v20170312.models.ModifyDhcpIpAttributeRequest`
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.ModifyDhcpIpAttributeResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ModifyDhcpIpAttribute", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ModifyDhcpIpAttributeResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

@@ -93,6 +93,50 @@ class DataInfo(AbstractModel):
         self.AuditionEnd = params.get("AuditionEnd")
 
 
+class DescribeItemByIdRequest(AbstractModel):
+    """DescribeItemById请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ItemIDs: 歌曲ID，目前暂不支持批量查询
+        :type ItemIDs: str
+        """
+        self.ItemIDs = None
+
+
+    def _deserialize(self, params):
+        self.ItemIDs = params.get("ItemIDs")
+
+
+class DescribeItemByIdResponse(AbstractModel):
+    """DescribeItemById返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Items: 歌曲信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Items: list of Item
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Items = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Items") is not None:
+            self.Items = []
+            for item in params.get("Items"):
+                obj = Item()
+                obj._deserialize(item)
+                self.Items.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeItemsRequest(AbstractModel):
     """DescribeItems请求参数结构体
 

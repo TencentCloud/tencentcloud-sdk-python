@@ -1392,6 +1392,9 @@ class DescribePolicyGroupInfoCondition(AbstractModel):
         :param ContinueTime: 持续多长时间触发规则会告警(单位秒)
 注意：此字段可能返回 null，表示取不到有效值。
         :type ContinueTime: int
+        :param MetricName: 告警指标名
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MetricName: str
         """
         self.MetricShowName = None
         self.Period = None
@@ -1403,6 +1406,7 @@ class DescribePolicyGroupInfoCondition(AbstractModel):
         self.CalcType = None
         self.CalcValue = None
         self.ContinueTime = None
+        self.MetricName = None
 
 
     def _deserialize(self, params):
@@ -1416,6 +1420,7 @@ class DescribePolicyGroupInfoCondition(AbstractModel):
         self.CalcType = params.get("CalcType")
         self.CalcValue = params.get("CalcValue")
         self.ContinueTime = params.get("ContinueTime")
+        self.MetricName = params.get("MetricName")
 
 
 class DescribePolicyGroupInfoConditionTpl(AbstractModel):

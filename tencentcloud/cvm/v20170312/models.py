@@ -2973,6 +2973,14 @@ class InstanceTypeQuotaItem(AbstractModel):
         :param SoldOutReason: 售罄原因。
 注意：此字段可能返回 null，表示取不到有效值。
         :type SoldOutReason: str
+        :param InstanceBandwidth: 内网带宽，单位Gbps。
+        :type InstanceBandwidth: float
+        :param InstancePps: 网络收发包能力，单位万PPS。
+        :type InstancePps: int
+        :param StorageBlockAmount: 本地存储块数量。
+        :type StorageBlockAmount: int
+        :param CpuType: 处理器型号。
+        :type CpuType: str
         """
         self.Zone = None
         self.InstanceType = None
@@ -2987,6 +2995,10 @@ class InstanceTypeQuotaItem(AbstractModel):
         self.Status = None
         self.Price = None
         self.SoldOutReason = None
+        self.InstanceBandwidth = None
+        self.InstancePps = None
+        self.StorageBlockAmount = None
+        self.CpuType = None
 
 
     def _deserialize(self, params):
@@ -3012,6 +3024,10 @@ class InstanceTypeQuotaItem(AbstractModel):
             self.Price = ItemPrice()
             self.Price._deserialize(params.get("Price"))
         self.SoldOutReason = params.get("SoldOutReason")
+        self.InstanceBandwidth = params.get("InstanceBandwidth")
+        self.InstancePps = params.get("InstancePps")
+        self.StorageBlockAmount = params.get("StorageBlockAmount")
+        self.CpuType = params.get("CpuType")
 
 
 class InternetAccessible(AbstractModel):
