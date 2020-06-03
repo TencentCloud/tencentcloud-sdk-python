@@ -587,7 +587,7 @@ class GetActionSequenceRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param ActionType: 取值FourAction时 返回四种动作的动作序列
+        :param ActionType: 默认不需要使用
         :type ActionType: str
         """
         self.ActionType = None

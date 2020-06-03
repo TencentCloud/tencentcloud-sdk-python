@@ -329,8 +329,7 @@ class VpcClient(AbstractClient):
 
 
     def AssociateDhcpIpWithAddressIp(self, request):
-        """本接口（AssociateDhcpIpWithAddressIp）用于DhcpIp绑定弹性公网IP（EIP）<br />
-        本接口是异步完成，如需查询异步任务执行结果，请使用本接口返回的`RequestId`轮询`DescribeVpcTaskResult`接口
+        """本接口（AssociateDhcpIpWithAddressIp）用于DhcpIp绑定弹性公网IP（EIP）。<br />
 
         :param request: Request instance for AssociateDhcpIpWithAddressIp.
         :type request: :class:`tencentcloud.vpc.v20170312.models.AssociateDhcpIpWithAddressIpRequest`
@@ -4110,8 +4109,7 @@ class VpcClient(AbstractClient):
 
 
     def DisassociateDhcpIpWithAddressIp(self, request):
-        """本接口（DisassociateDhcpIpWithAddressIp）用于将DhcpIp已绑定的弹性公网IP（EIP）解除绑定<br />
-        本接口是异步完成，如需查询异步任务执行结果，请使用本接口返回的`RequestId`轮询`DescribeVpcTaskResult`接口
+        """本接口（DisassociateDhcpIpWithAddressIp）用于将DhcpIp已绑定的弹性公网IP（EIP）解除绑定。<br />
 
         :param request: Request instance for DisassociateDhcpIpWithAddressIp.
         :type request: :class:`tencentcloud.vpc.v20170312.models.DisassociateDhcpIpWithAddressIpRequest`

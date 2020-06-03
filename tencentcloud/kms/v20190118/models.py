@@ -186,11 +186,14 @@ class CreateKeyRequest(AbstractModel):
         :type KeyUsage: str
         :param Type: 指定key类型，默认为1，1表示默认类型，由KMS创建CMK密钥，2 表示EXTERNAL 类型，该类型需要用户导入密钥材料，参考 GetParametersForImport 和 ImportKeyMaterial 接口
         :type Type: int
+        :param Tags: 标签列表
+        :type Tags: list of Tag
         """
         self.Alias = None
         self.Description = None
         self.KeyUsage = None
         self.Type = None
+        self.Tags = None
 
 
     def _deserialize(self, params):
@@ -198,6 +201,12 @@ class CreateKeyRequest(AbstractModel):
         self.Description = params.get("Description")
         self.KeyUsage = params.get("KeyUsage")
         self.Type = params.get("Type")
+        if params.get("Tags") is not None:
+            self.Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self.Tags.append(obj)
 
 
 class CreateKeyResponse(AbstractModel):
@@ -220,6 +229,12 @@ class CreateKeyResponse(AbstractModel):
         :type KeyState: str
         :param KeyUsage: CMK的用途
         :type KeyUsage: str
+        :param TagCode: 标签操作的返回码. 0: 成功；1: 内部错误；2: 业务处理错误
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TagCode: int
+        :param TagMsg: 标签操作的返回信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TagMsg: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -229,6 +244,8 @@ class CreateKeyResponse(AbstractModel):
         self.Description = None
         self.KeyState = None
         self.KeyUsage = None
+        self.TagCode = None
+        self.TagMsg = None
         self.RequestId = None
 
 
@@ -239,6 +256,8 @@ class CreateKeyResponse(AbstractModel):
         self.Description = params.get("Description")
         self.KeyState = params.get("KeyState")
         self.KeyUsage = params.get("KeyUsage")
+        self.TagCode = params.get("TagCode")
+        self.TagMsg = params.get("TagMsg")
         self.RequestId = params.get("RequestId")
 
 
@@ -255,16 +274,25 @@ class CreateWhiteBoxKeyRequest(AbstractModel):
         :type Algorithm: str
         :param Description: 密钥的描述，最大1024字节
         :type Description: str
+        :param Tags: 标签列表
+        :type Tags: list of Tag
         """
         self.Alias = None
         self.Algorithm = None
         self.Description = None
+        self.Tags = None
 
 
     def _deserialize(self, params):
         self.Alias = params.get("Alias")
         self.Algorithm = params.get("Algorithm")
         self.Description = params.get("Description")
+        if params.get("Tags") is not None:
+            self.Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self.Tags.append(obj)
 
 
 class CreateWhiteBoxKeyResponse(AbstractModel):
@@ -280,12 +308,20 @@ class CreateWhiteBoxKeyResponse(AbstractModel):
         :type DecryptKey: str
         :param KeyId: 白盒密钥的全局唯一标识符
         :type KeyId: str
+        :param TagCode: 标签操作的返回码. 0: 成功；1: 内部错误；2: 业务处理错误
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TagCode: int
+        :param TagMsg: 标签操作的返回信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TagMsg: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.EncryptKey = None
         self.DecryptKey = None
         self.KeyId = None
+        self.TagCode = None
+        self.TagMsg = None
         self.RequestId = None
 
 
@@ -293,6 +329,8 @@ class CreateWhiteBoxKeyResponse(AbstractModel):
         self.EncryptKey = params.get("EncryptKey")
         self.DecryptKey = params.get("DecryptKey")
         self.KeyId = params.get("KeyId")
+        self.TagCode = params.get("TagCode")
+        self.TagMsg = params.get("TagMsg")
         self.RequestId = params.get("RequestId")
 
 
@@ -1771,6 +1809,27 @@ class ScheduleKeyDeletionResponse(AbstractModel):
         self.DeletionDate = params.get("DeletionDate")
         self.KeyId = params.get("KeyId")
         self.RequestId = params.get("RequestId")
+
+
+class Tag(AbstractModel):
+    """标签键和标签值
+
+    """
+
+    def __init__(self):
+        """
+        :param TagKey: 标签键
+        :type TagKey: str
+        :param TagValue: 标签值
+        :type TagValue: str
+        """
+        self.TagKey = None
+        self.TagValue = None
+
+
+    def _deserialize(self, params):
+        self.TagKey = params.get("TagKey")
+        self.TagValue = params.get("TagValue")
 
 
 class UpdateAliasRequest(AbstractModel):

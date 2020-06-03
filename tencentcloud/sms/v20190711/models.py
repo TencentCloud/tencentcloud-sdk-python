@@ -446,6 +446,7 @@ class DescribeSignListStatus(AbstractModel):
         :type International: int
         :param StatusCode: 申请签名状态。其中：
 0：表示审核通过。
+1：表示审核中。
 -1：表示审核未通过或审核失败。
         :type StatusCode: int
         :param ReviewReply: 审核回复，审核人员审核后给出的回复，通常是审核未通过的原因。
@@ -585,6 +586,7 @@ class DescribeTemplateListStatus(AbstractModel):
         :type International: int
         :param StatusCode: 申请签名状态。其中：
 0：表示审核通过。
+1：表示审核中。
 -1：表示审核未通过或审核失败。
         :type StatusCode: int
         :param ReviewReply: 审核回复，审核人员审核后给出的回复，通常是审核未通过的原因。
@@ -853,6 +855,7 @@ class PullSmsReplyStatusByPhoneNumberRequest(AbstractModel):
     def __init__(self):
         """
         :param SendDateTime: 拉取起始时间，UNIX 时间戳（时间：秒）。
+注：最大可拉取当前时期7天前的数据。
         :type SendDateTime: int
         :param Offset: 偏移量。
 注：目前固定设置为0。
@@ -863,12 +866,15 @@ class PullSmsReplyStatusByPhoneNumberRequest(AbstractModel):
         :type PhoneNumber: str
         :param SmsSdkAppid: 短信SdkAppid在 [短信控制台](https://console.cloud.tencent.com/smsv2) 添加应用后生成的实际SdkAppid，例如1400006666。
         :type SmsSdkAppid: str
+        :param EndDateTime: 拉取截止时间，UNIX 时间戳（时间：秒）。
+        :type EndDateTime: int
         """
         self.SendDateTime = None
         self.Offset = None
         self.Limit = None
         self.PhoneNumber = None
         self.SmsSdkAppid = None
+        self.EndDateTime = None
 
 
     def _deserialize(self, params):
@@ -877,6 +883,7 @@ class PullSmsReplyStatusByPhoneNumberRequest(AbstractModel):
         self.Limit = params.get("Limit")
         self.PhoneNumber = params.get("PhoneNumber")
         self.SmsSdkAppid = params.get("SmsSdkAppid")
+        self.EndDateTime = params.get("EndDateTime")
 
 
 class PullSmsReplyStatusByPhoneNumberResponse(AbstractModel):
@@ -1005,6 +1012,7 @@ class PullSmsSendStatusByPhoneNumberRequest(AbstractModel):
     def __init__(self):
         """
         :param SendDateTime: 拉取起始时间，UNIX 时间戳（时间：秒）。
+注：最大可拉取当前时期7天前的数据。
         :type SendDateTime: int
         :param Offset: 偏移量。
 注：目前固定设置为0。
@@ -1015,12 +1023,15 @@ class PullSmsSendStatusByPhoneNumberRequest(AbstractModel):
         :type PhoneNumber: str
         :param SmsSdkAppid: 短信SdkAppid在 [短信控制台](https://console.cloud.tencent.com/smsv2) 添加应用后生成的实际SdkAppid，例如1400006666。
         :type SmsSdkAppid: str
+        :param EndDateTime: 拉取截止时间，UNIX 时间戳（时间：秒）。
+        :type EndDateTime: int
         """
         self.SendDateTime = None
         self.Offset = None
         self.Limit = None
         self.PhoneNumber = None
         self.SmsSdkAppid = None
+        self.EndDateTime = None
 
 
     def _deserialize(self, params):
@@ -1029,6 +1040,7 @@ class PullSmsSendStatusByPhoneNumberRequest(AbstractModel):
         self.Limit = params.get("Limit")
         self.PhoneNumber = params.get("PhoneNumber")
         self.SmsSdkAppid = params.get("SmsSdkAppid")
+        self.EndDateTime = params.get("EndDateTime")
 
 
 class PullSmsSendStatusByPhoneNumberResponse(AbstractModel):

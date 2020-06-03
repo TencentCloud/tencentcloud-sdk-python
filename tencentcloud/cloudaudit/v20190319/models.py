@@ -100,7 +100,7 @@ class CmqRegionInfo(AbstractModel):
 
 
 class CosRegionInfo(AbstractModel):
-    """cmq地域信息
+    """cos地域信息
 
     """
 

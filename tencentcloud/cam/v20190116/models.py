@@ -16,6 +16,31 @@
 from tencentcloud.common.abstract_model import AbstractModel
 
 
+class AccessKey(AbstractModel):
+    """访问密钥列表
+
+    """
+
+    def __init__(self):
+        """
+        :param AccessKeyId: 访问密钥标识
+        :type AccessKeyId: str
+        :param Status: 密钥状态，激活（Active）或未激活（Inactive）
+        :type Status: str
+        :param CreateTime: 创建时间
+        :type CreateTime: str
+        """
+        self.AccessKeyId = None
+        self.Status = None
+        self.CreateTime = None
+
+
+    def _deserialize(self, params):
+        self.AccessKeyId = params.get("AccessKeyId")
+        self.Status = params.get("Status")
+        self.CreateTime = params.get("CreateTime")
+
+
 class AddUserRequest(AbstractModel):
     """AddUser请求参数结构体
 
@@ -1699,6 +1724,50 @@ class GroupMemberInfo(AbstractModel):
         self.UserType = params.get("UserType")
         self.CreateTime = params.get("CreateTime")
         self.IsReceiverOwner = params.get("IsReceiverOwner")
+
+
+class ListAccessKeysRequest(AbstractModel):
+    """ListAccessKeys请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param TargetUin: 指定用户Uin，不填默认列出当前用户访问密钥
+        :type TargetUin: int
+        """
+        self.TargetUin = None
+
+
+    def _deserialize(self, params):
+        self.TargetUin = params.get("TargetUin")
+
+
+class ListAccessKeysResponse(AbstractModel):
+    """ListAccessKeys返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param AccessKeys: 访问密钥列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AccessKeys: list of AccessKey
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.AccessKeys = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("AccessKeys") is not None:
+            self.AccessKeys = []
+            for item in params.get("AccessKeys"):
+                obj = AccessKey()
+                obj._deserialize(item)
+                self.AccessKeys.append(obj)
+        self.RequestId = params.get("RequestId")
 
 
 class ListAttachedGroupPoliciesRequest(AbstractModel):

@@ -201,7 +201,7 @@ class SpeechTranslateRequest(AbstractModel):
         :type SessionUuid: str
         :param Source: 音频中的语言类型，支持语言列表<li> zh : 中文 </li> <li> en : 英文 </li>
         :type Source: str
-        :param Target: 翻译目标语⾔言类型 ，支持的语言列表<li> zh : 中文 </li> <li> en : 英文 </li>
+        :param Target: 翻译目标语言类型，支持的语言列表<li> zh : 中文 </li> <li> en : 英文 </li>
         :type Target: str
         :param AudioFormat: pcm : 146   speex : 16779154   mp3 : 83886080
         :type AudioFormat: int

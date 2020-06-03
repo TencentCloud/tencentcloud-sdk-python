@@ -259,7 +259,7 @@ class CdnClient(AbstractClient):
 
 
     def DescribeCertDomains(self, request):
-        """校验证书并提取SSL证书中包含的域名，返回CDN已接入的域名列表，及已配置证书的域名列表
+        """DescribeCertDomains 用于校验SSL证书并提取证书中包含的域名。
 
         :param request: Request instance for DescribeCertDomains.
         :type request: :class:`tencentcloud.cdn.v20180606.models.DescribeCertDomainsRequest`
@@ -343,7 +343,7 @@ class CdnClient(AbstractClient):
 
 
     def DescribeImageConfig(self, request):
-        """获取域名图片优化的当前配置，支持Webp、TPG、Guetzli
+        """DescribeImageConfig 用于获取域名图片优化的当前配置，支持Webp、TPG 和 Guetzli。
 
         :param request: Request instance for DescribeImageConfig.
         :type request: :class:`tencentcloud.cdn.v20180606.models.DescribeImageConfigRequest`
@@ -1184,7 +1184,7 @@ class CdnClient(AbstractClient):
 
 
     def UpdateImageConfig(self, request):
-        """更新控制台图片优化的相关配置，支持Webp、TPG、Guetzli
+        """UpdateImageConfig 用于更新控制台图片优化的相关配置，支持Webp、TPG 和 Guetzli。
 
         :param request: Request instance for UpdateImageConfig.
         :type request: :class:`tencentcloud.cdn.v20180606.models.UpdateImageConfigRequest`

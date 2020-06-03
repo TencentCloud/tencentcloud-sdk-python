@@ -893,6 +893,34 @@ class CamClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def ListAccessKeys(self, request):
+        """列出指定CAM用户的访问密钥
+
+        :param request: Request instance for ListAccessKeys.
+        :type request: :class:`tencentcloud.cam.v20190116.models.ListAccessKeysRequest`
+        :rtype: :class:`tencentcloud.cam.v20190116.models.ListAccessKeysResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ListAccessKeys", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ListAccessKeysResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def ListAttachedGroupPolicies(self, request):
         """本接口（ListAttachedGroupPolicies）可用于查询用户组关联的策略列表。
 
