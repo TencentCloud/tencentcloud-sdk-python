@@ -734,6 +734,52 @@ class DescribeAgentBillsResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeAgentClientGradeRequest(AbstractModel):
+    """DescribeAgentClientGrade请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ClientUin: 代客uin
+        :type ClientUin: str
+        """
+        self.ClientUin = None
+
+
+    def _deserialize(self, params):
+        self.ClientUin = params.get("ClientUin")
+
+
+class DescribeAgentClientGradeResponse(AbstractModel):
+    """DescribeAgentClientGrade返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param AuditStatus: 审核状态：0待审核，1，已审核
+        :type AuditStatus: int
+        :param AuthState: 实名认证状态：0，未实名认证，1实名认证
+        :type AuthState: int
+        :param ClientGrade: 客户级别
+        :type ClientGrade: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.AuditStatus = None
+        self.AuthState = None
+        self.ClientGrade = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.AuditStatus = params.get("AuditStatus")
+        self.AuthState = params.get("AuthState")
+        self.ClientGrade = params.get("ClientGrade")
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeAgentClientsRequest(AbstractModel):
     """DescribeAgentClients请求参数结构体
 

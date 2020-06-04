@@ -193,6 +193,34 @@ class PartnersClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeAgentClientGrade(self, request):
+        """传入代客uin，查客户级别，客户审核状态，客户实名认证状态
+
+        :param request: Request instance for DescribeAgentClientGrade.
+        :type request: :class:`tencentcloud.partners.v20180321.models.DescribeAgentClientGradeRequest`
+        :rtype: :class:`tencentcloud.partners.v20180321.models.DescribeAgentClientGradeResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeAgentClientGrade", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeAgentClientGradeResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeAgentClients(self, request):
         """代理商可查询自己名下待审核客户列表
 

@@ -137,6 +137,34 @@ class TcbClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def CreatePostpayPackage(self, request):
+        """开通后付费资源
+
+        :param request: Request instance for CreatePostpayPackage.
+        :type request: :class:`tencentcloud.tcb.v20180608.models.CreatePostpayPackageRequest`
+        :rtype: :class:`tencentcloud.tcb.v20180608.models.CreatePostpayPackageResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("CreatePostpayPackage", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreatePostpayPackageResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def CreateStaticStore(self, request):
         """创建静态托管资源，包括COS和CDN，异步任务创建，查看创建结果需要根据DescribeStaticStore接口来查看
 

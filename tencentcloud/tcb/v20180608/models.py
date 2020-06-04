@@ -206,6 +206,79 @@ class CreateHostingDomainResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class CreatePostpayPackageRequest(AbstractModel):
+    """CreatePostpayPackage请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param EnvId: 环境ID
+        :type EnvId: str
+        :param WxAppId: 微信 AppId，微信必传
+        :type WxAppId: str
+        :param Source: 付费来源
+<li>miniapp</li>
+<li>qcloud</li>
+        :type Source: str
+        :param FreeQuota: 用户享有的免费额度级别，目前只能为“basic”，不传该字段或该字段为空，标识不享受免费额度。
+        :type FreeQuota: str
+        :param Alias: 环境别名，要以a-z开头，不能包含 a-zA-z0-9- 以外的字符
+        :type Alias: str
+        :param EnvSource: 环境创建来源，取值：
+<li>miniapp</li>
+<li>qcloud</li>
+用法同CreateEnv接口的Source参数
+        :type EnvSource: str
+        :param Channel: 如果envsource为miniapp, channel可以为ide或api;
+如果envsource为qcloud, channel可以为qc_console,cocos, qq, cloudgame,dcloud
+        :type Channel: str
+        """
+        self.EnvId = None
+        self.WxAppId = None
+        self.Source = None
+        self.FreeQuota = None
+        self.Alias = None
+        self.EnvSource = None
+        self.Channel = None
+
+
+    def _deserialize(self, params):
+        self.EnvId = params.get("EnvId")
+        self.WxAppId = params.get("WxAppId")
+        self.Source = params.get("Source")
+        self.FreeQuota = params.get("FreeQuota")
+        self.Alias = params.get("Alias")
+        self.EnvSource = params.get("EnvSource")
+        self.Channel = params.get("Channel")
+
+
+class CreatePostpayPackageResponse(AbstractModel):
+    """CreatePostpayPackage返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param TranId: 后付费订单号
+        :type TranId: str
+        :param EnvId: 环境ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EnvId: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TranId = None
+        self.EnvId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TranId = params.get("TranId")
+        self.EnvId = params.get("EnvId")
+        self.RequestId = params.get("RequestId")
+
+
 class CreateStaticStoreRequest(AbstractModel):
     """CreateStaticStore请求参数结构体
 

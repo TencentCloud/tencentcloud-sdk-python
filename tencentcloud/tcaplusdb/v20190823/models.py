@@ -85,7 +85,7 @@ class ClusterInfo(AbstractModel):
         :type ClusterId: str
         :param Region: 集群所在地域
         :type Region: str
-        :param IdlType: 集群数据描述语言类型，如：`PROTO`,`TDR`或`MIX`
+        :param IdlType: 集群数据描述语言类型，如：`PROTO`,`TDR`
         :type IdlType: str
         :param NetworkType: 网络类型
         :type NetworkType: str
@@ -2185,9 +2185,9 @@ class SelectedTableInfoNew(AbstractModel):
         :type ListElementNum: int
         :param ReservedVolume: 表格预留容量（GB）
         :type ReservedVolume: int
-        :param ReservedReadQps: 表格预留读QPS
+        :param ReservedReadQps: 表格预留读CU
         :type ReservedReadQps: int
-        :param ReservedWriteQps: 表格预留写QPS
+        :param ReservedWriteQps: 表格预留写CU
         :type ReservedWriteQps: int
         :param Memo: 表格备注信息
         :type Memo: str
@@ -2318,10 +2318,10 @@ class TableInfoNew(AbstractModel):
         :param ReservedVolume: 表格预留容量（GB）
 注意：此字段可能返回 null，表示取不到有效值。
         :type ReservedVolume: int
-        :param ReservedReadQps: 表格预留读QPS
+        :param ReservedReadQps: 表格预留读CU
 注意：此字段可能返回 null，表示取不到有效值。
         :type ReservedReadQps: int
-        :param ReservedWriteQps: 表格预留写QPS
+        :param ReservedWriteQps: 表格预留写CU
 注意：此字段可能返回 null，表示取不到有效值。
         :type ReservedWriteQps: int
         :param TableSize: 表格实际数据量大小（MB）

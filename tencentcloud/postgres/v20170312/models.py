@@ -164,7 +164,7 @@ class CreateDBInstancesRequest(AbstractModel):
         :type AutoRenewFlag: int
         :param ActivityId: 活动ID
         :type ActivityId: int
-        :param Name: 实例名
+        :param Name: 实例名(后续支持)
         :type Name: str
         """
         self.SpecCode = None
@@ -238,13 +238,13 @@ class CreateServerlessDBInstanceRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Zone: 可用区ID。该参数可以通过调用 DescribeZones 接口的返回值中的Zone字段来获取。
+        :param Zone: 可用区ID。公测阶段仅支持ap-shanghai-2、ap-beijing-1,ap-guangzhou-2.
         :type Zone: str
         :param DBInstanceName: DB实例名称，同一个账号下该值必须唯一。
         :type DBInstanceName: str
-        :param DBVersion: PostgreSQL内核版本，目前只支持：9.3.5、9.5.4、10.4三种版本。
+        :param DBVersion: PostgreSQL内核版本，目前只支持：10.4。
         :type DBVersion: str
-        :param DBCharset: PostgreSQL数据库字符集，目前支持UTF8、LATIN1两种。
+        :param DBCharset: PostgreSQL数据库字符集，目前支持UTF8。
         :type DBCharset: str
         :param ProjectId: 项目ID。
         :type ProjectId: int
@@ -621,7 +621,7 @@ class DescribeDBBackupsRequest(AbstractModel):
         :type StartTime: str
         :param EndTime: 查询结束时间，形如2018-06-10 17:06:38
         :type EndTime: str
-        :param Limit: 备份列表分页返回，每页返回数量，默认为 20，最小为1，最大值为 100。
+        :param Limit: 备份列表分页返回，每页返回数量，默认为 20，最小为1，最大值为 100。（当该参数不传或者传0时按默认值处理）
         :type Limit: int
         :param Offset: 返回结果中的第几页，从第0页开始。默认为0。
         :type Offset: int
