@@ -165,6 +165,34 @@ class IotcloudClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def CreateMultiDevicesTask(self, request):
+        """本接口（CreateMultiDevicesTask）用于创建产品级别的批量创建设备任务
+
+        :param request: Request instance for CreateMultiDevicesTask.
+        :type request: :class:`tencentcloud.iotcloud.v20180614.models.CreateMultiDevicesTaskRequest`
+        :rtype: :class:`tencentcloud.iotcloud.v20180614.models.CreateMultiDevicesTaskResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("CreateMultiDevicesTask", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateMultiDevicesTaskResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def CreateProduct(self, request):
         """本接口（CreateProduct）用于创建一个新的物联网通信产品
 
@@ -207,6 +235,34 @@ class IotcloudClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateTaskResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def CreateTaskFileUrl(self, request):
+        """本接口（CreateTaskFileUrl）用于获取产品级任务文件上传链接
+
+        :param request: Request instance for CreateTaskFileUrl.
+        :type request: :class:`tencentcloud.iotcloud.v20180614.models.CreateTaskFileUrlRequest`
+        :rtype: :class:`tencentcloud.iotcloud.v20180614.models.CreateTaskFileUrlResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("CreateTaskFileUrl", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateTaskFileUrlResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -571,6 +627,62 @@ class IotcloudClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeMultiDevicesResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeProductTask(self, request):
+        """本接口（DescribeProductTask）用于查看产品级别的任务信息
+
+        :param request: Request instance for DescribeProductTask.
+        :type request: :class:`tencentcloud.iotcloud.v20180614.models.DescribeProductTaskRequest`
+        :rtype: :class:`tencentcloud.iotcloud.v20180614.models.DescribeProductTaskResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeProductTask", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeProductTaskResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeProductTasks(self, request):
+        """本接口（DescribeProductTasks）用于查看产品级别的任务列表
+
+        :param request: Request instance for DescribeProductTasks.
+        :type request: :class:`tencentcloud.iotcloud.v20180614.models.DescribeProductTasksRequest`
+        :rtype: :class:`tencentcloud.iotcloud.v20180614.models.DescribeProductTasksResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeProductTasks", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeProductTasksResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

@@ -14029,6 +14029,11 @@ class SearchMediaRequest(AbstractModel):
         :param Limit: <div id="p_limit">分页返回的记录条数，默认值：10。将返回第 Offset 到第 Offset+Limit-1 条。
 <li>取值范围：Offset + Limit 不超过5000。（参见：<a href="#maxResultsDesc">接口返回结果数限制</a>）</li></div>
         :type Limit: int
+        :param Categories: 文件类型：
+<li>Video: 视频文件</li>
+<li>Audio: 音频文件</li>
+<li>Image: 图片文件</li>
+        :type Categories: list of str
         :param SubAppId: 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
         :type SubAppId: int
         """
@@ -14043,6 +14048,7 @@ class SearchMediaRequest(AbstractModel):
         self.Sort = None
         self.Offset = None
         self.Limit = None
+        self.Categories = None
         self.SubAppId = None
 
 
@@ -14060,6 +14066,7 @@ class SearchMediaRequest(AbstractModel):
             self.Sort._deserialize(params.get("Sort"))
         self.Offset = params.get("Offset")
         self.Limit = params.get("Limit")
+        self.Categories = params.get("Categories")
         self.SubAppId = params.get("SubAppId")
 
 

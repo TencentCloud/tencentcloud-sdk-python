@@ -229,9 +229,11 @@ class CreatePostpayPackageRequest(AbstractModel):
 <li>miniapp</li>
 <li>qcloud</li>
 用法同CreateEnv接口的Source参数
+和 Channel 参数同时传，或者同时不传；EnvId 为空时必传。
         :type EnvSource: str
         :param Channel: 如果envsource为miniapp, channel可以为ide或api;
 如果envsource为qcloud, channel可以为qc_console,cocos, qq, cloudgame,dcloud
+和 EnvSource 参数同时传，或者同时不传；EnvId 为空时必传。
         :type Channel: str
         """
         self.EnvId = None

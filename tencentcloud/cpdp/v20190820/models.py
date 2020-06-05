@@ -603,12 +603,19 @@ class ApplyReWithdrawalRequest(AbstractModel):
         :type Body: :class:`tencentcloud.cpdp.v20190820.models.WithdrawBill`
         :param MidasAppId: 聚鑫业务ID
         :type MidasAppId: str
+        :param MidasEnvironment: 环境名:
+release: 现网环境
+sandbox: 沙箱环境
+development: 开发环境
+缺省: release
+        :type MidasEnvironment: str
         """
         self.BusinessType = None
         self.MidasSecretId = None
         self.MidasSignature = None
         self.Body = None
         self.MidasAppId = None
+        self.MidasEnvironment = None
 
 
     def _deserialize(self, params):
@@ -619,6 +626,7 @@ class ApplyReWithdrawalRequest(AbstractModel):
             self.Body = WithdrawBill()
             self.Body._deserialize(params.get("Body"))
         self.MidasAppId = params.get("MidasAppId")
+        self.MidasEnvironment = params.get("MidasEnvironment")
 
 
 class ApplyReWithdrawalResponse(AbstractModel):

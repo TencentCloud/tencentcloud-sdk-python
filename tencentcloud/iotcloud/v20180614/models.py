@@ -405,6 +405,64 @@ class CreateMultiDeviceResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class CreateMultiDevicesTaskRequest(AbstractModel):
+    """CreateMultiDevicesTask请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ProductId: 产品ID
+        :type ProductId: str
+        :param ParametersType: 参数类型 cosfile-文件上传 random-随机创建
+        :type ParametersType: str
+        :param FileName: 文件上传类型时文件名
+        :type FileName: str
+        :param FileSize: 文件上传类型时文件大小
+        :type FileSize: int
+        :param BatchCount: 随机创建时设备创建个数
+        :type BatchCount: int
+        :param Hash: 文件上传类型时文件md5值
+        :type Hash: str
+        """
+        self.ProductId = None
+        self.ParametersType = None
+        self.FileName = None
+        self.FileSize = None
+        self.BatchCount = None
+        self.Hash = None
+
+
+    def _deserialize(self, params):
+        self.ProductId = params.get("ProductId")
+        self.ParametersType = params.get("ParametersType")
+        self.FileName = params.get("FileName")
+        self.FileSize = params.get("FileSize")
+        self.BatchCount = params.get("BatchCount")
+        self.Hash = params.get("Hash")
+
+
+class CreateMultiDevicesTaskResponse(AbstractModel):
+    """CreateMultiDevicesTask返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Id: 任务ID
+        :type Id: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Id = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Id = params.get("Id")
+        self.RequestId = params.get("RequestId")
+
+
 class CreateProductRequest(AbstractModel):
     """CreateProduct请求参数结构体
 
@@ -460,6 +518,48 @@ class CreateProductResponse(AbstractModel):
         if params.get("ProductProperties") is not None:
             self.ProductProperties = ProductProperties()
             self.ProductProperties._deserialize(params.get("ProductProperties"))
+        self.RequestId = params.get("RequestId")
+
+
+class CreateTaskFileUrlRequest(AbstractModel):
+    """CreateTaskFileUrl请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ProductId: 产品ID
+        :type ProductId: str
+        """
+        self.ProductId = None
+
+
+    def _deserialize(self, params):
+        self.ProductId = params.get("ProductId")
+
+
+class CreateTaskFileUrlResponse(AbstractModel):
+    """CreateTaskFileUrl返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Url: 任务文件上传链接
+        :type Url: str
+        :param FileName: 任务文件名
+        :type FileName: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Url = None
+        self.FileName = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Url = params.get("Url")
+        self.FileName = params.get("FileName")
         self.RequestId = params.get("RequestId")
 
 
@@ -851,7 +951,7 @@ class DescribeDeviceResponse(AbstractModel):
         :type Tags: list of DeviceTag
         :param DeviceType: 设备类型
         :type DeviceType: int
-        :param Imei: IMEI
+        :param Imei: 国际移动设备识别码 IMEI
         :type Imei: str
         :param Isp: 运营商类型
         :type Isp: int
@@ -884,6 +984,9 @@ class DescribeDeviceResponse(AbstractModel):
         :param Labels: 设备标签
 注意：此字段可能返回 null，表示取不到有效值。
         :type Labels: list of DeviceLabel
+        :param ClientIP: MQTT客户端IP地址
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ClientIP: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -909,6 +1012,7 @@ class DescribeDeviceResponse(AbstractModel):
         self.CertState = None
         self.EnableState = None
         self.Labels = None
+        self.ClientIP = None
         self.RequestId = None
 
 
@@ -945,6 +1049,7 @@ class DescribeDeviceResponse(AbstractModel):
                 obj = DeviceLabel()
                 obj._deserialize(item)
                 self.Labels.append(obj)
+        self.ClientIP = params.get("ClientIP")
         self.RequestId = params.get("RequestId")
 
 
@@ -1217,6 +1322,105 @@ class DescribeMultiDevicesResponse(AbstractModel):
                 obj._deserialize(item)
                 self.DevicesInfo.append(obj)
         self.TotalDevNum = params.get("TotalDevNum")
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeProductTaskRequest(AbstractModel):
+    """DescribeProductTask请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ProductId: 产品ID
+        :type ProductId: str
+        :param TaskId: 任务ID
+        :type TaskId: int
+        """
+        self.ProductId = None
+        self.TaskId = None
+
+
+    def _deserialize(self, params):
+        self.ProductId = params.get("ProductId")
+        self.TaskId = params.get("TaskId")
+
+
+class DescribeProductTaskResponse(AbstractModel):
+    """DescribeProductTask返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param TaskInfo: 产品任务详细信息
+        :type TaskInfo: :class:`tencentcloud.iotcloud.v20180614.models.ProductTaskInfo`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TaskInfo = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("TaskInfo") is not None:
+            self.TaskInfo = ProductTaskInfo()
+            self.TaskInfo._deserialize(params.get("TaskInfo"))
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeProductTasksRequest(AbstractModel):
+    """DescribeProductTasks请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ProductId: 产品ID
+        :type ProductId: str
+        :param Offset: 产品级别任务列表偏移量
+        :type Offset: int
+        :param Limit: 产品级别任务列表拉取个数
+        :type Limit: int
+        """
+        self.ProductId = None
+        self.Offset = None
+        self.Limit = None
+
+
+    def _deserialize(self, params):
+        self.ProductId = params.get("ProductId")
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+
+
+class DescribeProductTasksResponse(AbstractModel):
+    """DescribeProductTasks返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param TotalCount: 符合条件的任务总个数
+        :type TotalCount: int
+        :param TaskInfos: 任务详细信息列表
+        :type TaskInfos: list of ProductTaskInfo
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.TaskInfos = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("TaskInfos") is not None:
+            self.TaskInfos = []
+            for item in params.get("TaskInfos"):
+                obj = ProductTaskInfo()
+                obj._deserialize(item)
+                self.TaskInfos.append(obj)
         self.RequestId = params.get("RequestId")
 
 
@@ -1560,16 +1764,21 @@ class DeviceTag(AbstractModel):
         :type Type: int
         :param Value: 属性的值
         :type Value: str
+        :param Name: 属性描述名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Name: str
         """
         self.Tag = None
         self.Type = None
         self.Value = None
+        self.Name = None
 
 
     def _deserialize(self, params):
         self.Tag = params.get("Tag")
         self.Type = params.get("Type")
         self.Value = params.get("Value")
+        self.Name = params.get("Name")
 
 
 class DisableTopicRuleRequest(AbstractModel):
@@ -1793,6 +2002,72 @@ class ProductProperties(AbstractModel):
         self.RegisterLimit = params.get("RegisterLimit")
 
 
+class ProductTaskInfo(AbstractModel):
+    """产品级任务详细信息
+
+    """
+
+    def __init__(self):
+        """
+        :param Id: 任务ID
+        :type Id: int
+        :param Type: 任务类型 0-批量创建设备类型
+        :type Type: int
+        :param State: 任务状态 0-创建中 1-待执行 2-执行中 3-执行失败 4-子任务部分失败 5-执行成功
+        :type State: int
+        :param ParametersType: 任务参数类型 cosfile-文件输入 random-随机生成
+        :type ParametersType: str
+        :param Parameters: 任务参数
+        :type Parameters: str
+        :param ResultType: 任务执行结果类型 cosfile-文件输出 errmsg-错误信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ResultType: str
+        :param Result: 任务执行结果
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Result: str
+        :param BatchCount: 子任务总个数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BatchCount: int
+        :param BatchOffset: 子任务已执行个数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BatchOffset: int
+        :param CreateTime: 任务创建时间
+        :type CreateTime: int
+        :param UpdateTime: 任务更新时间
+        :type UpdateTime: int
+        :param CompleteTime: 任务完成时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CompleteTime: int
+        """
+        self.Id = None
+        self.Type = None
+        self.State = None
+        self.ParametersType = None
+        self.Parameters = None
+        self.ResultType = None
+        self.Result = None
+        self.BatchCount = None
+        self.BatchOffset = None
+        self.CreateTime = None
+        self.UpdateTime = None
+        self.CompleteTime = None
+
+
+    def _deserialize(self, params):
+        self.Id = params.get("Id")
+        self.Type = params.get("Type")
+        self.State = params.get("State")
+        self.ParametersType = params.get("ParametersType")
+        self.Parameters = params.get("Parameters")
+        self.ResultType = params.get("ResultType")
+        self.Result = params.get("Result")
+        self.BatchCount = params.get("BatchCount")
+        self.BatchOffset = params.get("BatchOffset")
+        self.CreateTime = params.get("CreateTime")
+        self.UpdateTime = params.get("UpdateTime")
+        self.CompleteTime = params.get("CompleteTime")
+
+
 class PublishAsDeviceRequest(AbstractModel):
     """PublishAsDevice请求参数结构体
 
@@ -1983,6 +2258,32 @@ class ReplaceTopicRuleResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class ResetDeviceResult(AbstractModel):
+    """重置设备状态结果
+
+    """
+
+    def __init__(self):
+        """
+        :param DeviceName: 设备名
+        :type DeviceName: str
+        :param Success: 是否成功
+        :type Success: bool
+        :param Reason: 失败原因
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Reason: str
+        """
+        self.DeviceName = None
+        self.Success = None
+        self.Reason = None
+
+
+    def _deserialize(self, params):
+        self.DeviceName = params.get("DeviceName")
+        self.Success = params.get("Success")
+        self.Reason = params.get("Reason")
+
+
 class ResetDeviceStateRequest(AbstractModel):
     """ResetDeviceState请求参数结构体
 
@@ -2011,13 +2312,26 @@ class ResetDeviceStateResponse(AbstractModel):
 
     def __init__(self):
         """
+        :param SuccessCount: 批量重置设备成功数
+        :type SuccessCount: int
+        :param ResetDeviceResults: 批量重置设备结果
+        :type ResetDeviceResults: list of ResetDeviceResult
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
+        self.SuccessCount = None
+        self.ResetDeviceResults = None
         self.RequestId = None
 
 
     def _deserialize(self, params):
+        self.SuccessCount = params.get("SuccessCount")
+        if params.get("ResetDeviceResults") is not None:
+            self.ResetDeviceResults = []
+            for item in params.get("ResetDeviceResults"):
+                obj = ResetDeviceResult()
+                obj._deserialize(item)
+                self.ResetDeviceResults.append(obj)
         self.RequestId = params.get("RequestId")
 
 
