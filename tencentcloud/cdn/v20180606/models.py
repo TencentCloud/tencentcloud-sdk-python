@@ -714,16 +714,51 @@ class CacheKey(AbstractModel):
 on：开启全路径缓存（即关闭参数过滤）
 off：关闭全路径缓存（即开启参数过滤）
         :type FullUrlCache: str
+        :param QueryString: 是否使用请求参数作为CacheKey的一部分
+注意：此字段可能返回 null，表示取不到有效值。
+        :type QueryString: :class:`tencentcloud.cdn.v20180606.models.QueryStringKey`
+        :param Header: 是否使用请求头部作为CacheKey的一部分
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Header: :class:`tencentcloud.cdn.v20180606.models.HeaderKey`
+        :param Cookie: 是否使用Cookie作为CacheKey的一部分
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Cookie: :class:`tencentcloud.cdn.v20180606.models.CookieKey`
+        :param Scheme: 是否使用请求协议作为CacheKey的一部分
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Scheme: :class:`tencentcloud.cdn.v20180606.models.SchemeKey`
+        :param CacheTag: 是否使用自定义字符串作为CacheKey的一部分
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CacheTag: :class:`tencentcloud.cdn.v20180606.models.CacheTagKey`
         :param CaseSensitive: 缓存是否忽略大小写
 注意：此字段可能返回 null，表示取不到有效值。
         :type CaseSensitive: str
         """
         self.FullUrlCache = None
+        self.QueryString = None
+        self.Header = None
+        self.Cookie = None
+        self.Scheme = None
+        self.CacheTag = None
         self.CaseSensitive = None
 
 
     def _deserialize(self, params):
         self.FullUrlCache = params.get("FullUrlCache")
+        if params.get("QueryString") is not None:
+            self.QueryString = QueryStringKey()
+            self.QueryString._deserialize(params.get("QueryString"))
+        if params.get("Header") is not None:
+            self.Header = HeaderKey()
+            self.Header._deserialize(params.get("Header"))
+        if params.get("Cookie") is not None:
+            self.Cookie = CookieKey()
+            self.Cookie._deserialize(params.get("Cookie"))
+        if params.get("Scheme") is not None:
+            self.Scheme = SchemeKey()
+            self.Scheme._deserialize(params.get("Scheme"))
+        if params.get("CacheTag") is not None:
+            self.CacheTag = CacheTagKey()
+            self.CacheTag._deserialize(params.get("CacheTag"))
         self.CaseSensitive = params.get("CaseSensitive")
 
 
@@ -748,6 +783,28 @@ class CacheOptResult(AbstractModel):
     def _deserialize(self, params):
         self.SuccessUrls = params.get("SuccessUrls")
         self.FailUrls = params.get("FailUrls")
+
+
+class CacheTagKey(AbstractModel):
+    """组成CacheKey的一部分
+
+    """
+
+    def __init__(self):
+        """
+        :param Switch: 是否使用CacheTag作为CacheKey的一部分
+        :type Switch: str
+        :param Value: 自定义CacheTag的值
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Value: str
+        """
+        self.Switch = None
+        self.Value = None
+
+
+    def _deserialize(self, params):
+        self.Switch = params.get("Switch")
+        self.Value = params.get("Value")
 
 
 class CappingRule(AbstractModel):
@@ -1084,6 +1141,28 @@ brotli：需要同时指定 GZIP 压缩才可启用
         self.MinLength = params.get("MinLength")
         self.MaxLength = params.get("MaxLength")
         self.Algorithms = params.get("Algorithms")
+
+
+class CookieKey(AbstractModel):
+    """组成CacheKey的一部分
+
+    """
+
+    def __init__(self):
+        """
+        :param Switch: on | off 是否使用Cookie作为Cache的一部分
+        :type Switch: str
+        :param Value: 使用的cookie 逗号分割
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Value: str
+        """
+        self.Switch = None
+        self.Value = None
+
+
+    def _deserialize(self, params):
+        self.Switch = params.get("Switch")
+        self.Value = params.get("Value")
 
 
 class CreateClsLogTopicRequest(AbstractModel):
@@ -3393,6 +3472,29 @@ class GuetzliAdapter(AbstractModel):
         self.Switch = params.get("Switch")
 
 
+class HeaderKey(AbstractModel):
+    """组成CacheKey
+
+    """
+
+    def __init__(self):
+        """
+        :param Switch: 是否组成Cachekey
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Switch: str
+        :param Value: 组成CacheKey的header 逗号分隔
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Value: str
+        """
+        self.Switch = None
+        self.Value = None
+
+
+    def _deserialize(self, params):
+        self.Switch = params.get("Switch")
+        self.Value = params.get("Value")
+
+
 class Hsts(AbstractModel):
     """HSTS 配置。
 
@@ -4847,6 +4949,39 @@ class PushUrlsCacheResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class QueryStringKey(AbstractModel):
+    """组成CacheKey的一部分
+
+    """
+
+    def __init__(self):
+        """
+        :param Switch: on | off CacheKey是否由QueryString组成
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Switch: str
+        :param Reorder: 是否重新排序
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Reorder: str
+        :param Action: includeAll | excludeAll | includeCustom | excludeAll 使用/排除部分url参数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Action: str
+        :param Value: 使用/排除的url参数名
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Value: str
+        """
+        self.Switch = None
+        self.Reorder = None
+        self.Action = None
+        self.Value = None
+
+
+    def _deserialize(self, params):
+        self.Switch = params.get("Switch")
+        self.Reorder = params.get("Reorder")
+        self.Action = params.get("Action")
+        self.Value = params.get("Value")
+
+
 class Quota(AbstractModel):
     """刷新/预热 可用量及配额
 
@@ -5185,6 +5320,23 @@ class ResponseHeaderCache(AbstractModel):
         :param Switch: 源站头部缓存开关
 on：开启
 off：关闭
+        :type Switch: str
+        """
+        self.Switch = None
+
+
+    def _deserialize(self, params):
+        self.Switch = params.get("Switch")
+
+
+class SchemeKey(AbstractModel):
+    """作为CacheKey的一部分
+
+    """
+
+    def __init__(self):
+        """
+        :param Switch: on | off 是否使用scheme作为cache key的一部分
         :type Switch: str
         """
         self.Switch = None

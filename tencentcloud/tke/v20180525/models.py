@@ -154,7 +154,7 @@ class Cluster(AbstractModel):
         :param ImageId: 集群使用镜像id
 注意：此字段可能返回 null，表示取不到有效值。
         :type ImageId: str
-        :param OsCustomizeType: OsCustomizeType
+        :param OsCustomizeType: OsCustomizeType 系统定制类型
 注意：此字段可能返回 null，表示取不到有效值。
         :type OsCustomizeType: str
         :param ContainerRuntime: 集群运行环境docker或container
@@ -163,6 +163,9 @@ class Cluster(AbstractModel):
         :param CreatedTime: 创建时间
 注意：此字段可能返回 null，表示取不到有效值。
         :type CreatedTime: str
+        :param DeletionProtection: 删除保护开关
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DeletionProtection: bool
         """
         self.ClusterId = None
         self.ClusterName = None
@@ -181,6 +184,7 @@ class Cluster(AbstractModel):
         self.OsCustomizeType = None
         self.ContainerRuntime = None
         self.CreatedTime = None
+        self.DeletionProtection = None
 
 
     def _deserialize(self, params):
@@ -208,6 +212,7 @@ class Cluster(AbstractModel):
         self.OsCustomizeType = params.get("OsCustomizeType")
         self.ContainerRuntime = params.get("ContainerRuntime")
         self.CreatedTime = params.get("CreatedTime")
+        self.DeletionProtection = params.get("DeletionProtection")
 
 
 class ClusterAdvancedSettings(AbstractModel):
