@@ -1050,7 +1050,7 @@ class DvAuthDetail(AbstractModel):
 
 
 class DvAuths(AbstractModel):
-    """获取证书列表（Certificate）返回参数键为 DvAuths 的内容。
+    """返回参数键为 DvAuths 的内容。
 
     """
 
@@ -1339,9 +1339,9 @@ class SubmitCertificateInformationRequest(AbstractModel):
         :type PhoneNumber: str
         :param VerifyType: 证书验证方式。
         :type VerifyType: str
-        :param AdminFirstName: 管理人姓。
+        :param AdminFirstName: 管理人名。
         :type AdminFirstName: str
-        :param AdminLastName: 管理人名。
+        :param AdminLastName: 管理人姓。
         :type AdminLastName: str
         :param AdminPhoneNum: 管理人手机号码。
         :type AdminPhoneNum: str
@@ -1349,9 +1349,9 @@ class SubmitCertificateInformationRequest(AbstractModel):
         :type AdminEmail: str
         :param AdminPosition: 管理人职位。
         :type AdminPosition: str
-        :param ContactFirstName: 联系人姓。
+        :param ContactFirstName: 联系人名。
         :type ContactFirstName: str
-        :param ContactLastName: 联系人名。
+        :param ContactLastName: 联系人姓。
         :type ContactLastName: str
         :param ContactEmail: 联系人邮箱地址。
         :type ContactEmail: str

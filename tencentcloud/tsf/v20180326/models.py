@@ -4903,9 +4903,6 @@ class LaneGroup(AbstractModel):
 
     def __init__(self):
         """
-        :param LaneId: 泳道ID
-注意：此字段可能返回 null，表示取不到有效值。
-        :type LaneId: str
         :param GroupId: 部署组ID
 注意：此字段可能返回 null，表示取不到有效值。
         :type GroupId: str
@@ -4915,6 +4912,9 @@ class LaneGroup(AbstractModel):
         :param LaneGroupId: 泳道部署组ID
 注意：此字段可能返回 null，表示取不到有效值。
         :type LaneGroupId: str
+        :param LaneId: 泳道ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LaneId: str
         :param GroupName: 部署组名
 注意：此字段可能返回 null，表示取不到有效值。
         :type GroupName: str
@@ -4940,10 +4940,10 @@ class LaneGroup(AbstractModel):
 注意：此字段可能返回 null，表示取不到有效值。
         :type ClusterType: str
         """
-        self.LaneId = None
         self.GroupId = None
         self.Entrance = None
         self.LaneGroupId = None
+        self.LaneId = None
         self.GroupName = None
         self.ApplicationId = None
         self.ApplicationName = None
@@ -4955,10 +4955,10 @@ class LaneGroup(AbstractModel):
 
 
     def _deserialize(self, params):
-        self.LaneId = params.get("LaneId")
         self.GroupId = params.get("GroupId")
         self.Entrance = params.get("Entrance")
         self.LaneGroupId = params.get("LaneGroupId")
+        self.LaneId = params.get("LaneId")
         self.GroupName = params.get("GroupName")
         self.ApplicationId = params.get("ApplicationId")
         self.ApplicationName = params.get("ApplicationName")

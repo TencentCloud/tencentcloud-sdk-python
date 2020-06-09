@@ -3276,7 +3276,7 @@ class DomainSetList(AbstractModel):
         """
         :param DomainName: 域名名称。
         :type DomainName: str
-        :param Status: 域名解析状态。True 表示正常解析，Flase 表示解析失败。
+        :param Status: 域名解析状态。True 表示正常解析，False 表示解析失败。
         :type Status: int
         :param CertificateId: 证书ID。
         :type CertificateId: str
@@ -4516,7 +4516,7 @@ class ReqParameter(AbstractModel):
         """
         :param Name: API 的前端参数名称。
         :type Name: str
-        :param Position: API 的前端参数位置，如 head。目前支持 head、qurey、path。
+        :param Position: API 的前端参数位置，如 head。目前支持 head、query、path。
         :type Position: str
         :param Type: API 的前端参数类型，如 String、int。
         :type Type: str
@@ -5703,7 +5703,7 @@ class UsagePlanEnvironmentStatus(AbstractModel):
 
 
 class UsagePlanInfo(AbstractModel):
-    """使用计划详情（由于yunapi对复杂类型的修改会直接同步到现网，且不能查询到复杂类型被拿哪个接口所引用，因为新建一个区别于之前UsagePlan的复杂类型）
+    """使用计划详情。
 
     """
 
