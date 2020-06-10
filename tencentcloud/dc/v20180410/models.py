@@ -655,6 +655,9 @@ class DirectConnect(AbstractModel):
         :param ChargeState: 计费状态
 注意：此字段可能返回 null，表示取不到有效值。
         :type ChargeState: str
+        :param StartTime: 物理专线开通时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type StartTime: str
         """
         self.DirectConnectId = None
         self.DirectConnectName = None
@@ -682,6 +685,7 @@ class DirectConnect(AbstractModel):
         self.AccessPointType = None
         self.IdcCity = None
         self.ChargeState = None
+        self.StartTime = None
 
 
     def _deserialize(self, params):
@@ -716,6 +720,7 @@ class DirectConnect(AbstractModel):
         self.AccessPointType = params.get("AccessPointType")
         self.IdcCity = params.get("IdcCity")
         self.ChargeState = params.get("ChargeState")
+        self.StartTime = params.get("StartTime")
 
 
 class DirectConnectTunnel(AbstractModel):

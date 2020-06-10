@@ -247,9 +247,11 @@ class CreateNotebookLifecycleScriptRequest(AbstractModel):
         """
         :param NotebookLifecycleScriptsName: Notebook生命周期脚本名称
         :type NotebookLifecycleScriptsName: str
-        :param CreateScript: 创建脚本，base64编码格式
+        :param CreateScript: 创建脚本，base64编码
+base64后的脚本长度不能超过16384个字符
         :type CreateScript: str
-        :param StartScript: 启动脚本，base64编码格式
+        :param StartScript: 启动脚本，base64编码
+base64后的脚本长度不能超过16384个字符
         :type StartScript: str
         """
         self.NotebookLifecycleScriptsName = None
@@ -292,8 +294,9 @@ class CreatePresignedNotebookInstanceUrlRequest(AbstractModel):
     def __init__(self):
         """
         :param NotebookInstanceName: Notebook实例名称
+规则：^[a-zA-Z0-9](-*[a-zA-Z0-9])*$
         :type NotebookInstanceName: str
-        :param SessionExpirationDurationInSeconds: session有效时间，秒
+        :param SessionExpirationDurationInSeconds: session有效时间，秒，取值范围[1800, 43200]
         :type SessionExpirationDurationInSeconds: int
         """
         self.NotebookInstanceName = None
@@ -1731,9 +1734,11 @@ class UpdateNotebookLifecycleScriptRequest(AbstractModel):
         """
         :param NotebookLifecycleScriptsName: notebook生命周期脚本名称
         :type NotebookLifecycleScriptsName: str
-        :param CreateScript: 创建脚本
+        :param CreateScript: 创建脚本，base64编码
+base64后的脚本长度不能超过16384个字符
         :type CreateScript: str
-        :param StartScript: 启动脚本
+        :param StartScript: 启动脚本，base64编码
+base64后的脚本长度不能超过16384个字符
         :type StartScript: str
         """
         self.NotebookLifecycleScriptsName = None

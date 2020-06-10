@@ -729,9 +729,6 @@ off：关闭全路径缓存（即开启参数过滤）
         :param CacheTag: 是否使用自定义字符串作为CacheKey的一部分
 注意：此字段可能返回 null，表示取不到有效值。
         :type CacheTag: :class:`tencentcloud.cdn.v20180606.models.CacheTagKey`
-        :param CaseSensitive: 缓存是否忽略大小写
-注意：此字段可能返回 null，表示取不到有效值。
-        :type CaseSensitive: str
         """
         self.FullUrlCache = None
         self.QueryString = None
@@ -739,7 +736,6 @@ off：关闭全路径缓存（即开启参数过滤）
         self.Cookie = None
         self.Scheme = None
         self.CacheTag = None
-        self.CaseSensitive = None
 
 
     def _deserialize(self, params):
@@ -759,7 +755,6 @@ off：关闭全路径缓存（即开启参数过滤）
         if params.get("CacheTag") is not None:
             self.CacheTag = CacheTagKey()
             self.CacheTag._deserialize(params.get("CacheTag"))
-        self.CaseSensitive = params.get("CaseSensitive")
 
 
 class CacheOptResult(AbstractModel):
@@ -3495,33 +3490,6 @@ class HeaderKey(AbstractModel):
         self.Value = params.get("Value")
 
 
-class Hsts(AbstractModel):
-    """HSTS 配置。
-
-    """
-
-    def __init__(self):
-        """
-        :param Switch: 是否开启，on或off。
-        :type Switch: str
-        :param MaxAge: MaxAge数值。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type MaxAge: int
-        :param IncludeSubDomains: 是否包含子域名，on或off。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type IncludeSubDomains: str
-        """
-        self.Switch = None
-        self.MaxAge = None
-        self.IncludeSubDomains = None
-
-
-    def _deserialize(self, params):
-        self.Switch = params.get("Switch")
-        self.MaxAge = params.get("MaxAge")
-        self.IncludeSubDomains = params.get("IncludeSubDomains")
-
-
 class HttpHeaderPathRule(AbstractModel):
     """Http 头部设置规则，最多可设置 100 条
 
@@ -3622,13 +3590,6 @@ deployed：部署成功
 failed：部署失败
 注意：此字段可能返回 null，表示取不到有效值。
         :type SslStatus: str
-        :param TlsVersion: TLS版本列表，支持填写以下值：
-TLSv1.0, TLSv1.1, TLSv1.2
-注意：此字段可能返回 null，表示取不到有效值。
-        :type TlsVersion: list of str
-        :param Hsts: Hsts配置
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Hsts: :class:`tencentcloud.cdn.v20180606.models.Hsts`
         """
         self.Switch = None
         self.Http2 = None
@@ -3638,8 +3599,6 @@ TLSv1.0, TLSv1.1, TLSv1.2
         self.ClientCertInfo = None
         self.Spdy = None
         self.SslStatus = None
-        self.TlsVersion = None
-        self.Hsts = None
 
 
     def _deserialize(self, params):
@@ -3655,10 +3614,6 @@ TLSv1.0, TLSv1.1, TLSv1.2
             self.ClientCertInfo._deserialize(params.get("ClientCertInfo"))
         self.Spdy = params.get("Spdy")
         self.SslStatus = params.get("SslStatus")
-        self.TlsVersion = params.get("TlsVersion")
-        if params.get("Hsts") is not None:
-            self.Hsts = Hsts()
-            self.Hsts._deserialize(params.get("Hsts"))
 
 
 class ImageOptimization(AbstractModel):

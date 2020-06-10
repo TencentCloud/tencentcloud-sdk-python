@@ -165,6 +165,90 @@ class CdbClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def CreateAuditLogFile(self, request):
+        """本接口(CreateAuditLogFile)用于创建云数据库实例的审计日志文件。
+
+        :param request: Request instance for CreateAuditLogFile.
+        :type request: :class:`tencentcloud.cdb.v20170320.models.CreateAuditLogFileRequest`
+        :rtype: :class:`tencentcloud.cdb.v20170320.models.CreateAuditLogFileResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("CreateAuditLogFile", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateAuditLogFileResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def CreateAuditPolicy(self, request):
+        """本接口(CreateAuditPolicy)用于创建云数据库实例的审计策略，即将审计规则绑定到具体的云数据库实例上。
+
+        :param request: Request instance for CreateAuditPolicy.
+        :type request: :class:`tencentcloud.cdb.v20170320.models.CreateAuditPolicyRequest`
+        :rtype: :class:`tencentcloud.cdb.v20170320.models.CreateAuditPolicyResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("CreateAuditPolicy", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateAuditPolicyResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def CreateAuditRule(self, request):
+        """本接口(CreateAuditRule)用于创建用户在当前地域的审计规则。
+
+        :param request: Request instance for CreateAuditRule.
+        :type request: :class:`tencentcloud.cdb.v20170320.models.CreateAuditRuleRequest`
+        :rtype: :class:`tencentcloud.cdb.v20170320.models.CreateAuditRuleResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("CreateAuditRule", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateAuditRuleResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def CreateBackup(self, request):
         """本接口(CreateBackup)用于创建数据库备份。
 
@@ -379,6 +463,90 @@ class CdbClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DeleteAuditLogFile(self, request):
+        """本接口(DeleteAuditLogFile)用于删除云数据库实例的审计日志文件。
+
+        :param request: Request instance for DeleteAuditLogFile.
+        :type request: :class:`tencentcloud.cdb.v20170320.models.DeleteAuditLogFileRequest`
+        :rtype: :class:`tencentcloud.cdb.v20170320.models.DeleteAuditLogFileResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DeleteAuditLogFile", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DeleteAuditLogFileResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DeleteAuditPolicy(self, request):
+        """本接口(DeleteAuditPolicy)用于删除用户的审计策略。
+
+        :param request: Request instance for DeleteAuditPolicy.
+        :type request: :class:`tencentcloud.cdb.v20170320.models.DeleteAuditPolicyRequest`
+        :rtype: :class:`tencentcloud.cdb.v20170320.models.DeleteAuditPolicyResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DeleteAuditPolicy", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DeleteAuditPolicyResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DeleteAuditRule(self, request):
+        """本接口(DeleteAuditRule)用于删除用户的审计规则。
+
+        :param request: Request instance for DeleteAuditRule.
+        :type request: :class:`tencentcloud.cdb.v20170320.models.DeleteAuditRuleRequest`
+        :rtype: :class:`tencentcloud.cdb.v20170320.models.DeleteAuditRuleResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DeleteAuditRule", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DeleteAuditRuleResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DeleteBackup(self, request):
         """本接口(DeleteBackup)用于删除数据库备份。本接口只支持删除手动发起的备份。
 
@@ -561,6 +729,118 @@ class CdbClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeAsyncRequestInfoResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeAuditConfig(self, request):
+        """本接口(DescribeAuditConfig)用于查询云数据库审计策略的服务配置，包括审计日志保存时长等。
+
+        :param request: Request instance for DescribeAuditConfig.
+        :type request: :class:`tencentcloud.cdb.v20170320.models.DescribeAuditConfigRequest`
+        :rtype: :class:`tencentcloud.cdb.v20170320.models.DescribeAuditConfigResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeAuditConfig", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeAuditConfigResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeAuditLogFiles(self, request):
+        """本接口(DescribeAuditLogFiles)用于查询云数据库实例的审计日志文件。
+
+        :param request: Request instance for DescribeAuditLogFiles.
+        :type request: :class:`tencentcloud.cdb.v20170320.models.DescribeAuditLogFilesRequest`
+        :rtype: :class:`tencentcloud.cdb.v20170320.models.DescribeAuditLogFilesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeAuditLogFiles", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeAuditLogFilesResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeAuditPolicies(self, request):
+        """本接口(DescribeAuditPolicies)用于查询云数据库实例的审计策略。
+
+        :param request: Request instance for DescribeAuditPolicies.
+        :type request: :class:`tencentcloud.cdb.v20170320.models.DescribeAuditPoliciesRequest`
+        :rtype: :class:`tencentcloud.cdb.v20170320.models.DescribeAuditPoliciesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeAuditPolicies", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeAuditPoliciesResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeAuditRules(self, request):
+        """本接口(DescribeAuditRules)用于查询用户在当前地域的审计规则。
+
+        :param request: Request instance for DescribeAuditRules.
+        :type request: :class:`tencentcloud.cdb.v20170320.models.DescribeAuditRulesRequest`
+        :rtype: :class:`tencentcloud.cdb.v20170320.models.DescribeAuditRulesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeAuditRules", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeAuditRulesResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -1914,6 +2194,62 @@ class CdbClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyAccountPrivilegesResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ModifyAuditConfig(self, request):
+        """本接口(ModifyAuditConfig)用于修改云数据库审计策略的服务配置，包括审计日志保存时长等。
+
+        :param request: Request instance for ModifyAuditConfig.
+        :type request: :class:`tencentcloud.cdb.v20170320.models.ModifyAuditConfigRequest`
+        :rtype: :class:`tencentcloud.cdb.v20170320.models.ModifyAuditConfigResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ModifyAuditConfig", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ModifyAuditConfigResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ModifyAuditRule(self, request):
+        """本接口(ModifyAuditRule)用于修改用户的审计规则。
+
+        :param request: Request instance for ModifyAuditRule.
+        :type request: :class:`tencentcloud.cdb.v20170320.models.ModifyAuditRuleRequest`
+        :rtype: :class:`tencentcloud.cdb.v20170320.models.ModifyAuditRuleResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ModifyAuditRule", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ModifyAuditRuleResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

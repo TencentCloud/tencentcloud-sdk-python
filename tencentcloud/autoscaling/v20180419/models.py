@@ -2158,14 +2158,18 @@ class ExecuteScalingPolicyRequest(AbstractModel):
         :type AutoScalingPolicyId: str
         :param HonorCooldown: 是否检查伸缩组活动处于冷却时间内，默认值为false
         :type HonorCooldown: bool
+        :param TriggerSource: 执行伸缩策略的触发来源，取值包括 API 和 CLOUD_MONITOR，默认值为 API。CLOUD_MONITOR 专门供云监控触发调用。
+        :type TriggerSource: str
         """
         self.AutoScalingPolicyId = None
         self.HonorCooldown = None
+        self.TriggerSource = None
 
 
     def _deserialize(self, params):
         self.AutoScalingPolicyId = params.get("AutoScalingPolicyId")
         self.HonorCooldown = params.get("HonorCooldown")
+        self.TriggerSource = params.get("TriggerSource")
 
 
 class ExecuteScalingPolicyResponse(AbstractModel):

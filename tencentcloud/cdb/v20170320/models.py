@@ -174,6 +174,229 @@ class AssociateSecurityGroupsResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class AuditFilter(AbstractModel):
+    """审计规则过滤条件
+
+    """
+
+    def __init__(self):
+        """
+        :param Type: 过滤条件参数名称。目前支持：
+SrcIp – 客户端 IP；
+User – 数据库账户；
+DB – 数据库名称；
+        :type Type: str
+        :param Compare: 过滤条件匹配类型。目前支持：
+INC – 包含；
+EXC – 不包含；
+EQ – 等于；
+NEQ – 不等于；
+        :type Compare: str
+        :param Value: 过滤条件匹配值。
+        :type Value: str
+        """
+        self.Type = None
+        self.Compare = None
+        self.Value = None
+
+
+    def _deserialize(self, params):
+        self.Type = params.get("Type")
+        self.Compare = params.get("Compare")
+        self.Value = params.get("Value")
+
+
+class AuditLogFile(AbstractModel):
+    """审计日志文件
+
+    """
+
+    def __init__(self):
+        """
+        :param FileName: 审计日志文件名称
+        :type FileName: str
+        :param CreateTime: 审计日志文件创建时间。格式为 : "2019-03-20 17:09:13"。
+        :type CreateTime: str
+        :param Status: 文件状态值。可能返回的值为：
+"creating" - 生成中;
+"failed" - 创建失败;
+"success" - 已生成;
+        :type Status: str
+        :param FileSize: 文件大小，单位为 KB。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FileSize: int
+        :param DownloadUrl: 审计日志下载地址。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DownloadUrl: str
+        :param ErrMsg: 错误信息。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ErrMsg: str
+        """
+        self.FileName = None
+        self.CreateTime = None
+        self.Status = None
+        self.FileSize = None
+        self.DownloadUrl = None
+        self.ErrMsg = None
+
+
+    def _deserialize(self, params):
+        self.FileName = params.get("FileName")
+        self.CreateTime = params.get("CreateTime")
+        self.Status = params.get("Status")
+        self.FileSize = params.get("FileSize")
+        self.DownloadUrl = params.get("DownloadUrl")
+        self.ErrMsg = params.get("ErrMsg")
+
+
+class AuditLogFilter(AbstractModel):
+    """审计日志过滤条件。查询审计日志时，用户过滤返回的审计日志。
+
+    """
+
+    def __init__(self):
+        """
+        :param Host: 客户端地址。
+        :type Host: list of str
+        :param User: 用户名。
+        :type User: list of str
+        :param DBName: 数据库名称。
+        :type DBName: list of str
+        :param TableName: 表名称。
+        :type TableName: list of str
+        :param PolicyName: 审计策略名称。
+        :type PolicyName: list of str
+        :param Sql: SQL 语句。支持模糊匹配。
+        :type Sql: str
+        :param SqlType: SQL 类型。目前支持："SELECT", "INSERT", "UPDATE", "DELETE", "CREATE", "DROP", "ALTER", "SET", "REPLACE", "EXECUTE"。
+        :type SqlType: str
+        :param ExecTime: 执行时间。单位为：ms。表示筛选执行时间大于该值的审计日志。
+        :type ExecTime: int
+        :param AffectRows: 影响行数。表示筛选影响行数大于该值的审计日志。
+        :type AffectRows: int
+        """
+        self.Host = None
+        self.User = None
+        self.DBName = None
+        self.TableName = None
+        self.PolicyName = None
+        self.Sql = None
+        self.SqlType = None
+        self.ExecTime = None
+        self.AffectRows = None
+
+
+    def _deserialize(self, params):
+        self.Host = params.get("Host")
+        self.User = params.get("User")
+        self.DBName = params.get("DBName")
+        self.TableName = params.get("TableName")
+        self.PolicyName = params.get("PolicyName")
+        self.Sql = params.get("Sql")
+        self.SqlType = params.get("SqlType")
+        self.ExecTime = params.get("ExecTime")
+        self.AffectRows = params.get("AffectRows")
+
+
+class AuditPolicy(AbstractModel):
+    """审计策略
+
+    """
+
+    def __init__(self):
+        """
+        :param PolicyId: 审计策略 ID。
+        :type PolicyId: str
+        :param Status: 审计策略的状态。可能返回的值为：
+"creating" - 创建中;
+"running" - 运行中;
+"paused" - 暂停中;
+"failed" - 创建失败。
+        :type Status: str
+        :param InstanceId: 数据库实例 ID。
+        :type InstanceId: str
+        :param CreateTime: 审计策略创建时间。格式为 : "2019-03-20 17:09:13"。
+        :type CreateTime: str
+        :param ModifyTime: 审计策略最后修改时间。格式为 : "2019-03-20 17:09:13"。
+        :type ModifyTime: str
+        :param PolicyName: 审计策略名称。
+        :type PolicyName: str
+        :param RuleId: 审计规则 ID。
+        :type RuleId: str
+        :param RuleName: 审计规则名称。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RuleName: str
+        """
+        self.PolicyId = None
+        self.Status = None
+        self.InstanceId = None
+        self.CreateTime = None
+        self.ModifyTime = None
+        self.PolicyName = None
+        self.RuleId = None
+        self.RuleName = None
+
+
+    def _deserialize(self, params):
+        self.PolicyId = params.get("PolicyId")
+        self.Status = params.get("Status")
+        self.InstanceId = params.get("InstanceId")
+        self.CreateTime = params.get("CreateTime")
+        self.ModifyTime = params.get("ModifyTime")
+        self.PolicyName = params.get("PolicyName")
+        self.RuleId = params.get("RuleId")
+        self.RuleName = params.get("RuleName")
+
+
+class AuditRule(AbstractModel):
+    """审计规则
+
+    """
+
+    def __init__(self):
+        """
+        :param RuleId: 审计规则 Id。
+        :type RuleId: str
+        :param CreateTime: 审计规则创建时间。格式为 : "2019-03-20 17:09:13"。
+        :type CreateTime: str
+        :param ModifyTime: 审计规则最后修改时间。格式为 : "2019-03-20 17:09:13"。
+        :type ModifyTime: str
+        :param RuleName: 审计规则名称。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RuleName: str
+        :param Description: 审计规则描述。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Description: str
+        :param RuleFilters: 审计规则过滤条件。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RuleFilters: list of AuditFilter
+        :param AuditAll: 是否开启全审计。
+        :type AuditAll: bool
+        """
+        self.RuleId = None
+        self.CreateTime = None
+        self.ModifyTime = None
+        self.RuleName = None
+        self.Description = None
+        self.RuleFilters = None
+        self.AuditAll = None
+
+
+    def _deserialize(self, params):
+        self.RuleId = params.get("RuleId")
+        self.CreateTime = params.get("CreateTime")
+        self.ModifyTime = params.get("ModifyTime")
+        self.RuleName = params.get("RuleName")
+        self.Description = params.get("Description")
+        if params.get("RuleFilters") is not None:
+            self.RuleFilters = []
+            for item in params.get("RuleFilters"):
+                obj = AuditFilter()
+                obj._deserialize(item)
+                self.RuleFilters.append(obj)
+        self.AuditAll = params.get("AuditAll")
+
+
 class BackupConfig(AbstractModel):
     """ECDB第二个从库的配置信息，只有ECDB实例才有这个字段
 
@@ -581,6 +804,180 @@ class CreateAccountsResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.AsyncRequestId = params.get("AsyncRequestId")
+        self.RequestId = params.get("RequestId")
+
+
+class CreateAuditLogFileRequest(AbstractModel):
+    """CreateAuditLogFile请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param InstanceId: 实例 ID，格式如：cdb-c1nl9rpv 或者 cdbro-c1nl9rpv，与云数据库控制台页面中显示的实例 ID 相同。
+        :type InstanceId: str
+        :param StartTime: 开始时间，格式为："2017-07-12 10:29:20"。
+        :type StartTime: str
+        :param EndTime: 结束时间，格式为："2017-07-12 10:29:20"。
+        :type EndTime: str
+        :param Order: 排序方式。支持值包括："ASC" - 升序，"DESC" - 降序。
+        :type Order: str
+        :param OrderBy: 排序字段。支持值包括：
+"timestamp" - 时间戳；
+"affectRows" - 影响行数；
+"execTime" - 执行时间。
+        :type OrderBy: str
+        :param Filter: 过滤条件。可按设置的过滤条件过滤日志。
+        :type Filter: :class:`tencentcloud.cdb.v20170320.models.AuditLogFilter`
+        """
+        self.InstanceId = None
+        self.StartTime = None
+        self.EndTime = None
+        self.Order = None
+        self.OrderBy = None
+        self.Filter = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.StartTime = params.get("StartTime")
+        self.EndTime = params.get("EndTime")
+        self.Order = params.get("Order")
+        self.OrderBy = params.get("OrderBy")
+        if params.get("Filter") is not None:
+            self.Filter = AuditLogFilter()
+            self.Filter._deserialize(params.get("Filter"))
+
+
+class CreateAuditLogFileResponse(AbstractModel):
+    """CreateAuditLogFile返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param FileName: 审计日志文件名称。
+        :type FileName: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.FileName = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.FileName = params.get("FileName")
+        self.RequestId = params.get("RequestId")
+
+
+class CreateAuditPolicyRequest(AbstractModel):
+    """CreateAuditPolicy请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Name: 审计策略名称。
+        :type Name: str
+        :param RuleId: 审计规则 ID。
+        :type RuleId: str
+        :param InstanceId: 实例 ID，格式如：cdb-c1nl9rpv 或者 cdbro-c1nl9rpv，与云数据库控制台页面中显示的实例 ID 相同。
+        :type InstanceId: str
+        :param LogExpireDay: 审计日志保存时长。支持值包括：
+30 - 一个月；
+180 - 六个月；
+365 - 一年；
+1095 - 三年；
+1825 - 五年；
+实例首次开通审计策略时，可传该值，用于设置存储日志保存天数，默认为 30 天。若实例已存在审计策略，则此参数无效，可使用 更改审计服务配置 接口修改日志存储时长。
+        :type LogExpireDay: int
+        """
+        self.Name = None
+        self.RuleId = None
+        self.InstanceId = None
+        self.LogExpireDay = None
+
+
+    def _deserialize(self, params):
+        self.Name = params.get("Name")
+        self.RuleId = params.get("RuleId")
+        self.InstanceId = params.get("InstanceId")
+        self.LogExpireDay = params.get("LogExpireDay")
+
+
+class CreateAuditPolicyResponse(AbstractModel):
+    """CreateAuditPolicy返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param PolicyId: 审计策略 ID。
+        :type PolicyId: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.PolicyId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.PolicyId = params.get("PolicyId")
+        self.RequestId = params.get("RequestId")
+
+
+class CreateAuditRuleRequest(AbstractModel):
+    """CreateAuditRule请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RuleName: 审计规则名称。
+        :type RuleName: str
+        :param Description: 审计规则描述。
+        :type Description: str
+        :param RuleFilters: 审计规则过滤条件。若设置了过滤条件，则不会开启全审计。
+        :type RuleFilters: list of AuditFilter
+        :param AuditAll: 是否开启全审计。支持值包括：false – 不开启全审计，true – 开启全审计。用户未设置审计规则过滤条件时，默认开启全审计。
+        :type AuditAll: bool
+        """
+        self.RuleName = None
+        self.Description = None
+        self.RuleFilters = None
+        self.AuditAll = None
+
+
+    def _deserialize(self, params):
+        self.RuleName = params.get("RuleName")
+        self.Description = params.get("Description")
+        if params.get("RuleFilters") is not None:
+            self.RuleFilters = []
+            for item in params.get("RuleFilters"):
+                obj = AuditFilter()
+                obj._deserialize(item)
+                self.RuleFilters.append(obj)
+        self.AuditAll = params.get("AuditAll")
+
+
+class CreateAuditRuleResponse(AbstractModel):
+    """CreateAuditRule返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RuleId: 审计规则 ID。
+        :type RuleId: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RuleId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RuleId = params.get("RuleId")
         self.RequestId = params.get("RequestId")
 
 
@@ -1221,6 +1618,112 @@ class DeleteAccountsResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DeleteAuditLogFileRequest(AbstractModel):
+    """DeleteAuditLogFile请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param FileName: 审计日志文件名称。
+        :type FileName: str
+        :param InstanceId: 实例 ID。
+        :type InstanceId: str
+        """
+        self.FileName = None
+        self.InstanceId = None
+
+
+    def _deserialize(self, params):
+        self.FileName = params.get("FileName")
+        self.InstanceId = params.get("InstanceId")
+
+
+class DeleteAuditLogFileResponse(AbstractModel):
+    """DeleteAuditLogFile返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class DeleteAuditPolicyRequest(AbstractModel):
+    """DeleteAuditPolicy请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param PolicyId: 审计策略 ID。
+        :type PolicyId: str
+        """
+        self.PolicyId = None
+
+
+    def _deserialize(self, params):
+        self.PolicyId = params.get("PolicyId")
+
+
+class DeleteAuditPolicyResponse(AbstractModel):
+    """DeleteAuditPolicy返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class DeleteAuditRuleRequest(AbstractModel):
+    """DeleteAuditRule请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RuleId: 审计规则 ID。
+        :type RuleId: str
+        """
+        self.RuleId = None
+
+
+    def _deserialize(self, params):
+        self.RuleId = params.get("RuleId")
+
+
+class DeleteAuditRuleResponse(AbstractModel):
+    """DeleteAuditRule返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class DeleteBackupRequest(AbstractModel):
     """DeleteBackup请求参数结构体
 
@@ -1582,6 +2085,237 @@ class DescribeAsyncRequestInfoResponse(AbstractModel):
     def _deserialize(self, params):
         self.Status = params.get("Status")
         self.Info = params.get("Info")
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeAuditConfigRequest(AbstractModel):
+    """DescribeAuditConfig请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param InstanceId: 实例 ID，格式如：cdb-c1nl9rpv 或者 cdbro-c1nl9rpv，与云数据库控制台页面中显示的实例 ID 相同。
+        :type InstanceId: str
+        """
+        self.InstanceId = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+
+
+class DescribeAuditConfigResponse(AbstractModel):
+    """DescribeAuditConfig返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param LogExpireDay: 审计日志保存时长。目前支持的值包括：[0，30，180，365，1095，1825]。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LogExpireDay: int
+        :param LogType: 审计日志存储类型。目前支持的值包括："storage" - 存储型。
+        :type LogType: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.LogExpireDay = None
+        self.LogType = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.LogExpireDay = params.get("LogExpireDay")
+        self.LogType = params.get("LogType")
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeAuditLogFilesRequest(AbstractModel):
+    """DescribeAuditLogFiles请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param InstanceId: 实例 ID，格式如：cdb-c1nl9rpv 或者 cdbro-c1nl9rpv，与云数据库控制台页面中显示的实例 ID 相同。
+        :type InstanceId: str
+        :param Limit: 分页大小参数。默认值为 20，最小值为 1，最大值为 100。
+        :type Limit: int
+        :param Offset: 分页偏移量。
+        :type Offset: int
+        :param FileName: 审计日志文件名。
+        :type FileName: str
+        """
+        self.InstanceId = None
+        self.Limit = None
+        self.Offset = None
+        self.FileName = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.Limit = params.get("Limit")
+        self.Offset = params.get("Offset")
+        self.FileName = params.get("FileName")
+
+
+class DescribeAuditLogFilesResponse(AbstractModel):
+    """DescribeAuditLogFiles返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param TotalCount: 符合条件的审计日志文件个数。
+        :type TotalCount: int
+        :param Items: 审计日志文件详情。
+        :type Items: list of AuditLogFile
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.Items = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("Items") is not None:
+            self.Items = []
+            for item in params.get("Items"):
+                obj = AuditLogFile()
+                obj._deserialize(item)
+                self.Items.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeAuditPoliciesRequest(AbstractModel):
+    """DescribeAuditPolicies请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param InstanceId: 实例 ID，格式如：cdb-c1nl9rpv 或者 cdbro-c1nl9rpv，与云数据库控制台页面中显示的实例 ID 相同。
+        :type InstanceId: str
+        :param PolicyId: 审计策略 ID。
+        :type PolicyId: str
+        :param PolicyName: 审计策略名称。支持按审计策略名称进行模糊匹配查询。
+        :type PolicyName: str
+        :param Limit: 分页大小参数。默认值为 20，最小值为 1，最大值为 100。
+        :type Limit: int
+        :param Offset: 分页偏移量。
+        :type Offset: int
+        :param RuleId: 审计规则 ID。可使用该审计规则 ID 查询到其关联的审计策略。
+注意，参数 RuleId，InstanceId，PolicyId，PolicyName 必须至少传一个。
+        :type RuleId: str
+        """
+        self.InstanceId = None
+        self.PolicyId = None
+        self.PolicyName = None
+        self.Limit = None
+        self.Offset = None
+        self.RuleId = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.PolicyId = params.get("PolicyId")
+        self.PolicyName = params.get("PolicyName")
+        self.Limit = params.get("Limit")
+        self.Offset = params.get("Offset")
+        self.RuleId = params.get("RuleId")
+
+
+class DescribeAuditPoliciesResponse(AbstractModel):
+    """DescribeAuditPolicies返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param TotalCount: 符合条件的审计策略个数。
+        :type TotalCount: int
+        :param Items: 审计策略详情。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Items: list of AuditPolicy
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.Items = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("Items") is not None:
+            self.Items = []
+            for item in params.get("Items"):
+                obj = AuditPolicy()
+                obj._deserialize(item)
+                self.Items.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeAuditRulesRequest(AbstractModel):
+    """DescribeAuditRules请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RuleId: 审计规则 ID。
+        :type RuleId: str
+        :param RuleName: 审计规则名称。支持按审计规则名称进行模糊匹配查询。
+        :type RuleName: str
+        :param Limit: 分页大小参数。默认值为 20，最小值为 1，最大值为 100。
+        :type Limit: int
+        :param Offset: 分页偏移量。
+        :type Offset: int
+        """
+        self.RuleId = None
+        self.RuleName = None
+        self.Limit = None
+        self.Offset = None
+
+
+    def _deserialize(self, params):
+        self.RuleId = params.get("RuleId")
+        self.RuleName = params.get("RuleName")
+        self.Limit = params.get("Limit")
+        self.Offset = params.get("Offset")
+
+
+class DescribeAuditRulesResponse(AbstractModel):
+    """DescribeAuditRules返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param TotalCount: 符合条件的审计规则个数。
+        :type TotalCount: int
+        :param Items: 审计规则详情。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Items: list of AuditRule
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.Items = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("Items") is not None:
+            self.Items = []
+            for item in params.get("Items"):
+                obj = AuditRule()
+                obj._deserialize(item)
+                self.Items.append(obj)
         self.RequestId = params.get("RequestId")
 
 
@@ -4957,6 +5691,109 @@ class ModifyAccountPrivilegesResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.AsyncRequestId = params.get("AsyncRequestId")
+        self.RequestId = params.get("RequestId")
+
+
+class ModifyAuditConfigRequest(AbstractModel):
+    """ModifyAuditConfig请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param InstanceId: 实例 ID。
+        :type InstanceId: str
+        :param LogExpireDay: 审计日志保存时长。支持值包括：
+30 - 一个月；
+180 - 六个月；
+365 - 一年；
+1095 - 三年；
+1825 - 五年；
+        :type LogExpireDay: int
+        :param CloseAudit: 是否关闭审计服务。可选值：true - 关闭审计服务；false - 不关闭审计服务。默认值为 false。
+当关闭审计服务时，会删除用户的审计日志和文件，并删除该实例的所有审计策略。
+        :type CloseAudit: bool
+        """
+        self.InstanceId = None
+        self.LogExpireDay = None
+        self.CloseAudit = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.LogExpireDay = params.get("LogExpireDay")
+        self.CloseAudit = params.get("CloseAudit")
+
+
+class ModifyAuditConfigResponse(AbstractModel):
+    """ModifyAuditConfig返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class ModifyAuditRuleRequest(AbstractModel):
+    """ModifyAuditRule请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RuleId: 审计规则 ID。
+        :type RuleId: str
+        :param RuleName: 审计规则名称。
+        :type RuleName: str
+        :param Description: 审计规则描述。
+        :type Description: str
+        :param RuleFilters: 审计规则过滤条件。若设置了过滤条件，则不会开启全审计。
+        :type RuleFilters: list of AuditFilter
+        :param AuditAll: 是否开启全审计。支持值包括：false – 不开启全审计，true – 开启全审计。用户未设置审计规则过滤条件时，默认开启全审计。
+        :type AuditAll: bool
+        """
+        self.RuleId = None
+        self.RuleName = None
+        self.Description = None
+        self.RuleFilters = None
+        self.AuditAll = None
+
+
+    def _deserialize(self, params):
+        self.RuleId = params.get("RuleId")
+        self.RuleName = params.get("RuleName")
+        self.Description = params.get("Description")
+        if params.get("RuleFilters") is not None:
+            self.RuleFilters = []
+            for item in params.get("RuleFilters"):
+                obj = AuditFilter()
+                obj._deserialize(item)
+                self.RuleFilters.append(obj)
+        self.AuditAll = params.get("AuditAll")
+
+
+class ModifyAuditRuleResponse(AbstractModel):
+    """ModifyAuditRule返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
 
 

@@ -1100,12 +1100,15 @@ class BindRelateAccReUnionPayRequest(AbstractModel):
         :type MessageCheckCode: str
         :param ReservedMsg: STRING(1027)，保留域
         :type ReservedMsg: str
+        :param Profile: STRING(12)，接入环境，默认接入沙箱环境。接入正式环境填"prod"
+        :type Profile: str
         """
         self.MrchCode = None
         self.TranNetMemberCode = None
         self.MemberAcctNo = None
         self.MessageCheckCode = None
         self.ReservedMsg = None
+        self.Profile = None
 
 
     def _deserialize(self, params):
@@ -1114,6 +1117,7 @@ class BindRelateAccReUnionPayRequest(AbstractModel):
         self.MemberAcctNo = params.get("MemberAcctNo")
         self.MessageCheckCode = params.get("MessageCheckCode")
         self.ReservedMsg = params.get("ReservedMsg")
+        self.Profile = params.get("Profile")
 
 
 class BindRelateAccReUnionPayResponse(AbstractModel):
@@ -1186,6 +1190,8 @@ class BindRelateAcctSmallAmountRequest(AbstractModel):
         :type EiconBankBranchId: str
         :param ReservedMsg: STRING(1027)，转账方式（1: 往账鉴权(默认值); 2: 来账鉴权）
         :type ReservedMsg: str
+        :param Profile: STRING(12)，接入环境，默认接入沙箱环境。接入正式环境填"prod"
+        :type Profile: str
         """
         self.MrchCode = None
         self.TranNetMemberCode = None
@@ -1199,6 +1205,7 @@ class BindRelateAcctSmallAmountRequest(AbstractModel):
         self.CnapsBranchId = None
         self.EiconBankBranchId = None
         self.ReservedMsg = None
+        self.Profile = None
 
 
     def _deserialize(self, params):
@@ -1214,6 +1221,7 @@ class BindRelateAcctSmallAmountRequest(AbstractModel):
         self.CnapsBranchId = params.get("CnapsBranchId")
         self.EiconBankBranchId = params.get("EiconBankBranchId")
         self.ReservedMsg = params.get("ReservedMsg")
+        self.Profile = params.get("Profile")
 
 
 class BindRelateAcctSmallAmountResponse(AbstractModel):
@@ -1281,6 +1289,8 @@ class BindRelateAcctUnionPayRequest(AbstractModel):
         :type EiconBankBranchId: str
         :param ReservedMsg: STRING(1027)，保留域
         :type ReservedMsg: str
+        :param Profile: STRING(12)，接入环境，默认接入沙箱环境。接入正式环境填"prod"
+        :type Profile: str
         """
         self.TranNetMemberCode = None
         self.MemberName = None
@@ -1294,6 +1304,7 @@ class BindRelateAcctUnionPayRequest(AbstractModel):
         self.CnapsBranchId = None
         self.EiconBankBranchId = None
         self.ReservedMsg = None
+        self.Profile = None
 
 
     def _deserialize(self, params):
@@ -1309,6 +1320,7 @@ class BindRelateAcctUnionPayRequest(AbstractModel):
         self.CnapsBranchId = params.get("CnapsBranchId")
         self.EiconBankBranchId = params.get("EiconBankBranchId")
         self.ReservedMsg = params.get("ReservedMsg")
+        self.Profile = params.get("Profile")
 
 
 class BindRelateAcctUnionPayResponse(AbstractModel):
@@ -1461,6 +1473,8 @@ class CheckAmountRequest(AbstractModel):
         :type Ccy: str
         :param ReservedMsg: STRING(1027)，原小额转账方式（1: 往账鉴权，此为默认值; 2: 来账鉴权）
         :type ReservedMsg: str
+        :param Profile: STRING(12)，接入环境，默认接入沙箱环境。接入正式环境填"prod"
+        :type Profile: str
         """
         self.MrchCode = None
         self.TranNetMemberCode = None
@@ -1468,6 +1482,7 @@ class CheckAmountRequest(AbstractModel):
         self.AuthAmt = None
         self.Ccy = None
         self.ReservedMsg = None
+        self.Profile = None
 
 
     def _deserialize(self, params):
@@ -1477,6 +1492,7 @@ class CheckAmountRequest(AbstractModel):
         self.AuthAmt = params.get("AuthAmt")
         self.Ccy = params.get("Ccy")
         self.ReservedMsg = params.get("ReservedMsg")
+        self.Profile = params.get("Profile")
 
 
 class CheckAmountResponse(AbstractModel):
@@ -1846,6 +1862,8 @@ class CreateCustAcctIdRequest(AbstractModel):
         :type Email: str
         :param ReservedMsg: STRING(1027)，保留域
         :type ReservedMsg: str
+        :param Profile: STRING(12)，接入环境，默认接入沙箱环境。接入正式环境填"prod"
+        :type Profile: str
         """
         self.FunctionFlag = None
         self.FundSummaryAcctNo = None
@@ -1861,6 +1879,7 @@ class CreateCustAcctIdRequest(AbstractModel):
         self.UserNickname = None
         self.Email = None
         self.ReservedMsg = None
+        self.Profile = None
 
 
     def _deserialize(self, params):
@@ -1878,6 +1897,7 @@ class CreateCustAcctIdRequest(AbstractModel):
         self.UserNickname = params.get("UserNickname")
         self.Email = params.get("Email")
         self.ReservedMsg = params.get("ReservedMsg")
+        self.Profile = params.get("Profile")
 
 
 class CreateCustAcctIdResponse(AbstractModel):
@@ -2831,6 +2851,8 @@ class ModifyMntMbrBindRelateAcctBankCodeRequest(AbstractModel):
         :type EiconBankBranchId: str
         :param ReservedMsg: STRING(1027)，保留域
         :type ReservedMsg: str
+        :param Profile: STRING(12)，接入环境，默认接入沙箱环境。接入正式环境填"prod"
+        :type Profile: str
         """
         self.MrchCode = None
         self.SubAcctNo = None
@@ -2839,6 +2861,7 @@ class ModifyMntMbrBindRelateAcctBankCodeRequest(AbstractModel):
         self.CnapsBranchId = None
         self.EiconBankBranchId = None
         self.ReservedMsg = None
+        self.Profile = None
 
 
     def _deserialize(self, params):
@@ -2849,6 +2872,7 @@ class ModifyMntMbrBindRelateAcctBankCodeRequest(AbstractModel):
         self.CnapsBranchId = params.get("CnapsBranchId")
         self.EiconBankBranchId = params.get("EiconBankBranchId")
         self.ReservedMsg = params.get("ReservedMsg")
+        self.Profile = params.get("Profile")
 
 
 class ModifyMntMbrBindRelateAcctBankCodeResponse(AbstractModel):
@@ -3466,6 +3490,8 @@ class QueryBankClearRequest(AbstractModel):
         :type EndDate: str
         :param ReservedMsg: STRING(1027)，保留域
         :type ReservedMsg: str
+        :param Profile: STRING(12)，接入环境，默认接入沙箱环境。接入正式环境填"prod"
+        :type Profile: str
         """
         self.MrchCode = None
         self.FunctionFlag = None
@@ -3473,6 +3499,7 @@ class QueryBankClearRequest(AbstractModel):
         self.StartDate = None
         self.EndDate = None
         self.ReservedMsg = None
+        self.Profile = None
 
 
     def _deserialize(self, params):
@@ -3482,6 +3509,7 @@ class QueryBankClearRequest(AbstractModel):
         self.StartDate = params.get("StartDate")
         self.EndDate = params.get("EndDate")
         self.ReservedMsg = params.get("ReservedMsg")
+        self.Profile = params.get("Profile")
 
 
 class QueryBankClearResponse(AbstractModel):
@@ -3571,6 +3599,8 @@ class QueryBankTransactionDetailsRequest(AbstractModel):
         :type EndDate: str
         :param ReservedMsg: STRING(1027)，保留域
         :type ReservedMsg: str
+        :param Profile: STRING(12)，接入环境，默认接入沙箱环境。接入正式环境填"prod"
+        :type Profile: str
         """
         self.MrchCode = None
         self.FunctionFlag = None
@@ -3580,6 +3610,7 @@ class QueryBankTransactionDetailsRequest(AbstractModel):
         self.StartDate = None
         self.EndDate = None
         self.ReservedMsg = None
+        self.Profile = None
 
 
     def _deserialize(self, params):
@@ -3591,6 +3622,7 @@ class QueryBankTransactionDetailsRequest(AbstractModel):
         self.StartDate = params.get("StartDate")
         self.EndDate = params.get("EndDate")
         self.ReservedMsg = params.get("ReservedMsg")
+        self.Profile = params.get("Profile")
 
 
 class QueryBankTransactionDetailsResponse(AbstractModel):
@@ -3680,6 +3712,8 @@ class QueryBankWithdrawCashDetailsRequest(AbstractModel):
         :type EndDate: str
         :param ReservedMsg: STRING(1027)，保留域
         :type ReservedMsg: str
+        :param Profile: STRING(12)，接入环境，默认接入沙箱环境。接入正式环境填"prod"
+        :type Profile: str
         """
         self.MrchCode = None
         self.FunctionFlag = None
@@ -3689,6 +3723,7 @@ class QueryBankWithdrawCashDetailsRequest(AbstractModel):
         self.BeginDate = None
         self.EndDate = None
         self.ReservedMsg = None
+        self.Profile = None
 
 
     def _deserialize(self, params):
@@ -3700,6 +3735,7 @@ class QueryBankWithdrawCashDetailsRequest(AbstractModel):
         self.BeginDate = params.get("BeginDate")
         self.EndDate = params.get("EndDate")
         self.ReservedMsg = params.get("ReservedMsg")
+        self.Profile = params.get("Profile")
 
 
 class QueryBankWithdrawCashDetailsResponse(AbstractModel):
@@ -3785,6 +3821,8 @@ class QueryCommonTransferRechargeRequest(AbstractModel):
         :type PageNum: str
         :param ReservedMsg: STRING(1027)，保留域
         :type ReservedMsg: str
+        :param Profile: STRING(12)，接入环境，默认接入沙箱环境。接入正式环境填"prod"
+        :type Profile: str
         """
         self.MrchCode = None
         self.FunctionFlag = None
@@ -3792,6 +3830,7 @@ class QueryCommonTransferRechargeRequest(AbstractModel):
         self.EndDate = None
         self.PageNum = None
         self.ReservedMsg = None
+        self.Profile = None
 
 
     def _deserialize(self, params):
@@ -3801,6 +3840,7 @@ class QueryCommonTransferRechargeRequest(AbstractModel):
         self.EndDate = params.get("EndDate")
         self.PageNum = params.get("PageNum")
         self.ReservedMsg = params.get("ReservedMsg")
+        self.Profile = params.get("Profile")
 
 
 class QueryCommonTransferRechargeResponse(AbstractModel):
@@ -3884,12 +3924,15 @@ class QueryCustAcctIdBalanceRequest(AbstractModel):
         :type SubAcctNo: str
         :param ReservedMsg: STRING(1027)，保留域
         :type ReservedMsg: str
+        :param Profile: STRING(12)，接入环境，默认接入沙箱环境。接入正式环境填"prod"
+        :type Profile: str
         """
         self.MrchCode = None
         self.QueryFlag = None
         self.PageNum = None
         self.SubAcctNo = None
         self.ReservedMsg = None
+        self.Profile = None
 
 
     def _deserialize(self, params):
@@ -3898,6 +3941,7 @@ class QueryCustAcctIdBalanceRequest(AbstractModel):
         self.PageNum = params.get("PageNum")
         self.SubAcctNo = params.get("SubAcctNo")
         self.ReservedMsg = params.get("ReservedMsg")
+        self.Profile = params.get("Profile")
 
 
 class QueryCustAcctIdBalanceResponse(AbstractModel):
@@ -4369,12 +4413,15 @@ class QueryMemberBindRequest(AbstractModel):
         :type SubAcctNo: str
         :param ReservedMsg: STRING(1027)，保留域
         :type ReservedMsg: str
+        :param Profile: STRING(12)，接入环境，默认接入沙箱环境。接入正式环境填"prod"
+        :type Profile: str
         """
         self.MrchCode = None
         self.QueryFlag = None
         self.PageNum = None
         self.SubAcctNo = None
         self.ReservedMsg = None
+        self.Profile = None
 
 
     def _deserialize(self, params):
@@ -4383,6 +4430,7 @@ class QueryMemberBindRequest(AbstractModel):
         self.PageNum = params.get("PageNum")
         self.SubAcctNo = params.get("SubAcctNo")
         self.ReservedMsg = params.get("ReservedMsg")
+        self.Profile = params.get("Profile")
 
 
 class QueryMemberBindResponse(AbstractModel):
@@ -4490,6 +4538,8 @@ class QueryMemberTransactionRequest(AbstractModel):
         :type ReservedMsg: str
         :param WebSign: STRING(300)，网银签名（若需短信验证码则此项必输）
         :type WebSign: str
+        :param Profile: STRING(12)，接入环境，默认接入沙箱环境。接入正式环境填"prod"
+        :type Profile: str
         """
         self.MrchCode = None
         self.FunctionFlag = None
@@ -4508,6 +4558,7 @@ class QueryMemberTransactionRequest(AbstractModel):
         self.Remark = None
         self.ReservedMsg = None
         self.WebSign = None
+        self.Profile = None
 
 
     def _deserialize(self, params):
@@ -4528,6 +4579,7 @@ class QueryMemberTransactionRequest(AbstractModel):
         self.Remark = params.get("Remark")
         self.ReservedMsg = params.get("ReservedMsg")
         self.WebSign = params.get("WebSign")
+        self.Profile = params.get("Profile")
 
 
 class QueryMemberTransactionResponse(AbstractModel):
@@ -5259,11 +5311,14 @@ class QueryReconciliationDocumentRequest(AbstractModel):
         :type FileDate: str
         :param ReservedMsg: STRING(1027)，保留域
         :type ReservedMsg: str
+        :param Profile: STRING(12)，接入环境，默认接入沙箱环境。接入正式环境填"prod"
+        :type Profile: str
         """
         self.MrchCode = None
         self.FileType = None
         self.FileDate = None
         self.ReservedMsg = None
+        self.Profile = None
 
 
     def _deserialize(self, params):
@@ -5271,6 +5326,7 @@ class QueryReconciliationDocumentRequest(AbstractModel):
         self.FileType = params.get("FileType")
         self.FileDate = params.get("FileDate")
         self.ReservedMsg = params.get("ReservedMsg")
+        self.Profile = params.get("Profile")
 
 
 class QueryReconciliationDocumentResponse(AbstractModel):
@@ -5395,6 +5451,8 @@ class QuerySingleTransactionStatusRequest(AbstractModel):
         :type TranDate: str
         :param ReservedMsg: STRING(1027)，保留域
         :type ReservedMsg: str
+        :param Profile: STRING(12)，接入环境，默认接入沙箱环境。接入正式环境填"prod"
+        :type Profile: str
         """
         self.MrchCode = None
         self.FunctionFlag = None
@@ -5402,6 +5460,7 @@ class QuerySingleTransactionStatusRequest(AbstractModel):
         self.SubAcctNo = None
         self.TranDate = None
         self.ReservedMsg = None
+        self.Profile = None
 
 
     def _deserialize(self, params):
@@ -5411,6 +5470,7 @@ class QuerySingleTransactionStatusRequest(AbstractModel):
         self.SubAcctNo = params.get("SubAcctNo")
         self.TranDate = params.get("TranDate")
         self.ReservedMsg = params.get("ReservedMsg")
+        self.Profile = params.get("Profile")
 
 
 class QuerySingleTransactionStatusResponse(AbstractModel):
@@ -5502,11 +5562,14 @@ class QuerySmallAmountTransferRequest(AbstractModel):
         :type TranDate: str
         :param ReservedMsg: STRING(1027)，保留域
         :type ReservedMsg: str
+        :param Profile: STRING(12)，接入环境，默认接入沙箱环境。接入正式环境填"prod"
+        :type Profile: str
         """
         self.MrchCode = None
         self.OldTranSeqNo = None
         self.TranDate = None
         self.ReservedMsg = None
+        self.Profile = None
 
 
     def _deserialize(self, params):
@@ -5514,6 +5577,7 @@ class QuerySmallAmountTransferRequest(AbstractModel):
         self.OldTranSeqNo = params.get("OldTranSeqNo")
         self.TranDate = params.get("TranDate")
         self.ReservedMsg = params.get("ReservedMsg")
+        self.Profile = params.get("Profile")
 
 
 class QuerySmallAmountTransferResponse(AbstractModel):
@@ -5750,6 +5814,8 @@ class RechargeMemberThirdPayRequest(AbstractModel):
         :type ReservedMsgTwo: str
         :param ReservedMsgThree: STRING(300)，保留域3
         :type ReservedMsgThree: str
+        :param Profile: STRING(12)，接入环境，默认接入沙箱环境。接入正式环境填"prod"
+        :type Profile: str
         """
         self.TranNetMemberCode = None
         self.MemberFillAmt = None
@@ -5765,6 +5831,7 @@ class RechargeMemberThirdPayRequest(AbstractModel):
         self.ReservedMsgOne = None
         self.ReservedMsgTwo = None
         self.ReservedMsgThree = None
+        self.Profile = None
 
 
     def _deserialize(self, params):
@@ -5782,6 +5849,7 @@ class RechargeMemberThirdPayRequest(AbstractModel):
         self.ReservedMsgOne = params.get("ReservedMsgOne")
         self.ReservedMsgTwo = params.get("ReservedMsgTwo")
         self.ReservedMsgThree = params.get("ReservedMsgThree")
+        self.Profile = params.get("Profile")
 
 
 class RechargeMemberThirdPayResponse(AbstractModel):
@@ -6084,6 +6152,8 @@ class RegisterBillSupportWithdrawRequest(AbstractModel):
         :type ReservedMsgTwo: str
         :param ReservedMsgThree: STRING(300)，保留域3
         :type ReservedMsgThree: str
+        :param Profile: STRING(12)，接入环境，默认接入沙箱环境。接入正式环境填"prod"
+        :type Profile: str
         """
         self.TranNetMemberCode = None
         self.OrderNo = None
@@ -6094,6 +6164,7 @@ class RegisterBillSupportWithdrawRequest(AbstractModel):
         self.ReservedMsgOne = None
         self.ReservedMsgTwo = None
         self.ReservedMsgThree = None
+        self.Profile = None
 
 
     def _deserialize(self, params):
@@ -6106,6 +6177,7 @@ class RegisterBillSupportWithdrawRequest(AbstractModel):
         self.ReservedMsgOne = params.get("ReservedMsgOne")
         self.ReservedMsgTwo = params.get("ReservedMsgTwo")
         self.ReservedMsgThree = params.get("ReservedMsgThree")
+        self.Profile = params.get("Profile")
 
 
 class RegisterBillSupportWithdrawResponse(AbstractModel):
@@ -6261,6 +6333,8 @@ class RevResigterBillSupportWithdrawRequest(AbstractModel):
         :type ReservedMsgTwo: str
         :param ReservedMsgThree: STRING(300)，保留域3
         :type ReservedMsgThree: str
+        :param Profile: STRING(12)，接入环境，默认接入沙箱环境。接入正式环境填"prod"
+        :type Profile: str
         """
         self.MrchCode = None
         self.TranNetMemberCode = None
@@ -6271,6 +6345,7 @@ class RevResigterBillSupportWithdrawRequest(AbstractModel):
         self.ReservedMsgOne = None
         self.ReservedMsgTwo = None
         self.ReservedMsgThree = None
+        self.Profile = None
 
 
     def _deserialize(self, params):
@@ -6283,6 +6358,7 @@ class RevResigterBillSupportWithdrawRequest(AbstractModel):
         self.ReservedMsgOne = params.get("ReservedMsgOne")
         self.ReservedMsgTwo = params.get("ReservedMsgTwo")
         self.ReservedMsgThree = params.get("ReservedMsgThree")
+        self.Profile = params.get("Profile")
 
 
 class RevResigterBillSupportWithdrawResponse(AbstractModel):
@@ -6339,11 +6415,14 @@ class ReviseMbrPropertyRequest(AbstractModel):
         :type MemberProperty: str
         :param ReservedMsg: STRING(1027)，保留域
         :type ReservedMsg: str
+        :param Profile: STRING(12)，接入环境，默认接入沙箱环境。接入正式环境填"prod"
+        :type Profile: str
         """
         self.MrchCode = None
         self.SubAcctNo = None
         self.MemberProperty = None
         self.ReservedMsg = None
+        self.Profile = None
 
 
     def _deserialize(self, params):
@@ -6351,6 +6430,7 @@ class ReviseMbrPropertyRequest(AbstractModel):
         self.SubAcctNo = params.get("SubAcctNo")
         self.MemberProperty = params.get("MemberProperty")
         self.ReservedMsg = params.get("ReservedMsg")
+        self.Profile = params.get("Profile")
 
 
 class ReviseMbrPropertyResponse(AbstractModel):
@@ -6416,6 +6496,8 @@ class RevokeMemberRechargeThirdPayRequest(AbstractModel):
         :type ReservedMsgTwo: str
         :param ReservedMsgThree: STRING(300)，保留域3
         :type ReservedMsgThree: str
+        :param Profile: STRING(12)，接入环境，默认接入沙箱环境。接入正式环境填"prod"
+        :type Profile: str
         """
         self.OldFillFrontSeqNo = None
         self.OldFillPayChannelType = None
@@ -6428,6 +6510,7 @@ class RevokeMemberRechargeThirdPayRequest(AbstractModel):
         self.ReservedMsgOne = None
         self.ReservedMsgTwo = None
         self.ReservedMsgThree = None
+        self.Profile = None
 
 
     def _deserialize(self, params):
@@ -6442,6 +6525,7 @@ class RevokeMemberRechargeThirdPayRequest(AbstractModel):
         self.ReservedMsgOne = params.get("ReservedMsgOne")
         self.ReservedMsgTwo = params.get("ReservedMsgTwo")
         self.ReservedMsgThree = params.get("ReservedMsgThree")
+        self.Profile = params.get("Profile")
 
 
 class RevokeMemberRechargeThirdPayResponse(AbstractModel):
@@ -6775,12 +6859,15 @@ class UnbindRelateAcctRequest(AbstractModel):
         :type MemberAcctNo: str
         :param ReservedMsg: STRING(1027)，保留域
         :type ReservedMsg: str
+        :param Profile: STRING(12)，接入环境，默认接入沙箱环境。接入正式环境填"prod"
+        :type Profile: str
         """
         self.MrchCode = None
         self.FunctionFlag = None
         self.TranNetMemberCode = None
         self.MemberAcctNo = None
         self.ReservedMsg = None
+        self.Profile = None
 
 
     def _deserialize(self, params):
@@ -6789,6 +6876,7 @@ class UnbindRelateAcctRequest(AbstractModel):
         self.TranNetMemberCode = params.get("TranNetMemberCode")
         self.MemberAcctNo = params.get("MemberAcctNo")
         self.ReservedMsg = params.get("ReservedMsg")
+        self.Profile = params.get("Profile")
 
 
 class UnbindRelateAcctResponse(AbstractModel):
@@ -7098,6 +7186,8 @@ class WithdrawCashMembershipRequest(AbstractModel):
         :type ReservedMsg: str
         :param WebSign: STRING(300)，网银签名
         :type WebSign: str
+        :param Profile: STRING(12)，接入环境，默认接入沙箱环境。接入正式环境填"prod"
+        :type Profile: str
         """
         self.MrchCode = None
         self.TranWebName = None
@@ -7112,6 +7202,7 @@ class WithdrawCashMembershipRequest(AbstractModel):
         self.Remark = None
         self.ReservedMsg = None
         self.WebSign = None
+        self.Profile = None
 
 
     def _deserialize(self, params):
@@ -7128,6 +7219,7 @@ class WithdrawCashMembershipRequest(AbstractModel):
         self.Remark = params.get("Remark")
         self.ReservedMsg = params.get("ReservedMsg")
         self.WebSign = params.get("WebSign")
+        self.Profile = params.get("Profile")
 
 
 class WithdrawCashMembershipResponse(AbstractModel):

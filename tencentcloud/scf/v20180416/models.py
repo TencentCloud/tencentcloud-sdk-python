@@ -920,6 +920,8 @@ class FunctionLog(AbstractModel):
         :type Level: str
         :param Source: 日志来源
         :type Source: str
+        :param RetryNum: 重试次数
+        :type RetryNum: int
         """
         self.FunctionName = None
         self.RetMsg = None
@@ -933,6 +935,7 @@ class FunctionLog(AbstractModel):
         self.Log = None
         self.Level = None
         self.Source = None
+        self.RetryNum = None
 
 
     def _deserialize(self, params):
@@ -948,6 +951,7 @@ class FunctionLog(AbstractModel):
         self.Log = params.get("Log")
         self.Level = params.get("Level")
         self.Source = params.get("Source")
+        self.RetryNum = params.get("RetryNum")
 
 
 class FunctionVersion(AbstractModel):

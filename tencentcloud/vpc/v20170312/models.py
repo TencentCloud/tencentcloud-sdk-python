@@ -13004,7 +13004,7 @@ class Subnet(AbstractModel):
         :type RouteTableId: str
         :param CreatedTime: 创建时间。
         :type CreatedTime: str
-        :param AvailableIpAddressCount: 可用`IP`数。
+        :param AvailableIpAddressCount: 可用`IPv4`数。
         :type AvailableIpAddressCount: int
         :param Ipv6CidrBlock: 子网的 `IPv6` `CIDR`。
         :type Ipv6CidrBlock: str
@@ -13012,7 +13012,7 @@ class Subnet(AbstractModel):
         :type NetworkAclId: str
         :param IsRemoteVpcSnat: 是否为 `SNAT` 地址池子网。
         :type IsRemoteVpcSnat: bool
-        :param TotalIpAddressCount: 子网`IP`总数。
+        :param TotalIpAddressCount: 子网`IPv4`总数。
         :type TotalIpAddressCount: int
         :param TagSet: 标签键值对。
         :type TagSet: list of Tag
