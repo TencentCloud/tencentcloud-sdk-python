@@ -1379,7 +1379,7 @@ class GeneralBasicOCRResponse(AbstractModel):
         :type TextDetections: list of TextDetection
         :param Language: 检测到的语言类型，目前支持的语言类型参考入参LanguageType说明。
         :type Language: str
-        :param Angel: 图片旋转角度（角度制），文本的水平方向为0°；顺时针为正，逆时针为负。
+        :param Angel: 图片旋转角度（角度制），文本的水平方向为0°；顺时针为正，逆时针为负。点击查看<a href="https://cloud.tencent.com/document/product/866/45139">如何纠正倾斜文本</a>
         :type Angel: float
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -1436,7 +1436,7 @@ class GeneralEfficientOCRResponse(AbstractModel):
         """
         :param TextDetections: 检测到的文本信息，包括文本行内容、置信度、文本行坐标以及文本行旋转纠正后的坐标，具体内容请点击左侧链接。
         :type TextDetections: list of TextDetection
-        :param Angel: 图片旋转角度（角度制），文本的水平方向为0°；顺时针为正，逆时针为负。
+        :param Angel: 图片旋转角度（角度制），文本的水平方向为0°；顺时针为正，逆时针为负。点击查看<a href="https://cloud.tencent.com/document/product/866/45139">如何纠正倾斜文本</a>
         :type Angel: float
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str

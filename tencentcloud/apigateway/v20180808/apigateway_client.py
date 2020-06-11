@@ -738,7 +738,7 @@ class ApigatewayClient(AbstractClient):
 
 
     def DescribeLogSearch(self, request):
-        """用于搜索日志
+        """本接口DescribeLogSearch用于搜索日志
 
         :param request: Request instance for DescribeLogSearch.
         :type request: :class:`tencentcloud.apigateway.v20180808.models.DescribeLogSearchRequest`

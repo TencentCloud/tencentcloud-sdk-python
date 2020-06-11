@@ -1297,6 +1297,51 @@ class CcnAttachedInstance(AbstractModel):
         self.CcnUin = params.get("CcnUin")
 
 
+class CcnBandwidthInfo(AbstractModel):
+    """用于描述云联网地域间限速带宽实例的信息
+
+    """
+
+    def __init__(self):
+        """
+        :param CcnId: 带宽所属的云联网ID。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CcnId: str
+        :param CreatedTime: 实例的创建时间。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CreatedTime: str
+        :param ExpiredTime: 实例的过期时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ExpiredTime: str
+        :param RegionFlowControlId: 带宽实例的唯一ID。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RegionFlowControlId: str
+        :param RenewFlag: 带宽是否自动续费的标记。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RenewFlag: str
+        :param CcnRegionBandwidthLimit: 描述带宽的地域和限速上限信息。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CcnRegionBandwidthLimit: :class:`tencentcloud.vpc.v20170312.models.CcnRegionBandwidthLimit`
+        """
+        self.CcnId = None
+        self.CreatedTime = None
+        self.ExpiredTime = None
+        self.RegionFlowControlId = None
+        self.RenewFlag = None
+        self.CcnRegionBandwidthLimit = None
+
+
+    def _deserialize(self, params):
+        self.CcnId = params.get("CcnId")
+        self.CreatedTime = params.get("CreatedTime")
+        self.ExpiredTime = params.get("ExpiredTime")
+        self.RegionFlowControlId = params.get("RegionFlowControlId")
+        self.RenewFlag = params.get("RenewFlag")
+        if params.get("CcnRegionBandwidthLimit") is not None:
+            self.CcnRegionBandwidthLimit = CcnRegionBandwidthLimit()
+            self.CcnRegionBandwidthLimit._deserialize(params.get("CcnRegionBandwidthLimit"))
+
+
 class CcnInstance(AbstractModel):
     """云联网（CCN）关联实例（Instance）对象。
 
@@ -8657,6 +8702,82 @@ class GatewayQos(AbstractModel):
         self.IpAddress = params.get("IpAddress")
         self.Bandwidth = params.get("Bandwidth")
         self.CreateTime = params.get("CreateTime")
+
+
+class GetCcnRegionBandwidthLimitsRequest(AbstractModel):
+    """GetCcnRegionBandwidthLimits请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param CcnId: CCN实例ID。形如：ccn-f49l6u0z。
+        :type CcnId: str
+        :param Filters: 过滤条件。
+<li>sregion - String - （过滤条件）源地域，形如：ap-guangzhou。</li>
+<li>dregion - String - （过滤条件）目的地域，形如：ap-shanghai-bm</li>
+        :type Filters: list of Filter
+        :param SortedBy: 排序条件，目前支持带宽（BandwidthLimit）和过期时间（ExpireTime）
+        :type SortedBy: str
+        :param Offset: 偏移量
+        :type Offset: int
+        :param Limit: 返回数量
+        :type Limit: int
+        :param OrderBy: 排序方式，'ASC':升序,'DESC':降序。
+        :type OrderBy: str
+        """
+        self.CcnId = None
+        self.Filters = None
+        self.SortedBy = None
+        self.Offset = None
+        self.Limit = None
+        self.OrderBy = None
+
+
+    def _deserialize(self, params):
+        self.CcnId = params.get("CcnId")
+        if params.get("Filters") is not None:
+            self.Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self.Filters.append(obj)
+        self.SortedBy = params.get("SortedBy")
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+        self.OrderBy = params.get("OrderBy")
+
+
+class GetCcnRegionBandwidthLimitsResponse(AbstractModel):
+    """GetCcnRegionBandwidthLimits返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param CcnBandwidthSet: 云联网（CCN）各地域出带宽带宽详情。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CcnBandwidthSet: list of CcnBandwidthInfo
+        :param TotalCount: 符合条件的对象数。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TotalCount: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.CcnBandwidthSet = None
+        self.TotalCount = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("CcnBandwidthSet") is not None:
+            self.CcnBandwidthSet = []
+            for item in params.get("CcnBandwidthSet"):
+                obj = CcnBandwidthInfo()
+                obj._deserialize(item)
+                self.CcnBandwidthSet.append(obj)
+        self.TotalCount = params.get("TotalCount")
+        self.RequestId = params.get("RequestId")
 
 
 class HaVip(AbstractModel):

@@ -16,6 +16,31 @@
 from tencentcloud.common.abstract_model import AbstractModel
 
 
+class AccessConfiguration(AbstractModel):
+    """通道组加速地域列表，包括加速地域，以及该加速地域对应的带宽和并发配置。
+
+    """
+
+    def __init__(self):
+        """
+        :param AccessRegion: 加速地域。
+        :type AccessRegion: str
+        :param Bandwidth: 通道带宽上限，单位：Mbps。
+        :type Bandwidth: int
+        :param Concurrent: 通道并发量上限，表示同时在线的连接数，单位：万。
+        :type Concurrent: int
+        """
+        self.AccessRegion = None
+        self.Bandwidth = None
+        self.Concurrent = None
+
+
+    def _deserialize(self, params):
+        self.AccessRegion = params.get("AccessRegion")
+        self.Bandwidth = params.get("Bandwidth")
+        self.Concurrent = params.get("Concurrent")
+
+
 class AccessRegionDetial(AbstractModel):
     """根据源站查询的可用加速区域信息及对应的可选带宽和并发量
 
@@ -467,11 +492,14 @@ class CheckProxyCreateRequest(AbstractModel):
         :type Bandwidth: int
         :param Concurrent: 通道并发量上限，表示同时在线的连接数，单位：万。
         :type Concurrent: int
+        :param GroupId: 如果在通道组下创建通道，需要填写通道组的ID
+        :type GroupId: str
         """
         self.AccessRegion = None
         self.RealServerRegion = None
         self.Bandwidth = None
         self.Concurrent = None
+        self.GroupId = None
 
 
     def _deserialize(self, params):
@@ -479,6 +507,7 @@ class CheckProxyCreateRequest(AbstractModel):
         self.RealServerRegion = params.get("RealServerRegion")
         self.Bandwidth = params.get("Bandwidth")
         self.Concurrent = params.get("Concurrent")
+        self.GroupId = params.get("GroupId")
 
 
 class CheckProxyCreateResponse(AbstractModel):
@@ -553,6 +582,48 @@ class CloseProxiesResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class CloseProxyGroupRequest(AbstractModel):
+    """CloseProxyGroup请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param GroupId: 通道组的实例 ID。
+        :type GroupId: str
+        """
+        self.GroupId = None
+
+
+    def _deserialize(self, params):
+        self.GroupId = params.get("GroupId")
+
+
+class CloseProxyGroupResponse(AbstractModel):
+    """CloseProxyGroup返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param InvalidStatusInstanceSet: 非运行状态下的通道实例ID列表，不可开启。
+        :type InvalidStatusInstanceSet: list of str
+        :param OperationFailedInstanceSet: 开启操作失败的通道实例ID列表。
+        :type OperationFailedInstanceSet: list of str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.InvalidStatusInstanceSet = None
+        self.OperationFailedInstanceSet = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.InvalidStatusInstanceSet = params.get("InvalidStatusInstanceSet")
+        self.OperationFailedInstanceSet = params.get("OperationFailedInstanceSet")
+        self.RequestId = params.get("RequestId")
+
+
 class CloseSecurityPolicyRequest(AbstractModel):
     """CloseSecurityPolicy请求参数结构体
 
@@ -562,12 +633,16 @@ class CloseSecurityPolicyRequest(AbstractModel):
         """
         :param ProxyId: 通道ID
         :type ProxyId: str
+        :param PolicyId: 安全组策略ID
+        :type PolicyId: str
         """
         self.ProxyId = None
+        self.PolicyId = None
 
 
     def _deserialize(self, params):
         self.ProxyId = params.get("ProxyId")
+        self.PolicyId = params.get("PolicyId")
 
 
 class CloseSecurityPolicyResponse(AbstractModel):
@@ -815,18 +890,22 @@ class CreateHTTPListenerRequest(AbstractModel):
         :type ListenerName: str
         :param Port: 监听器端口，基于同种传输层协议（TCP 或 UDP）的监听器，端口不可重复
         :type Port: int
-        :param ProxyId: 通道ID
+        :param ProxyId: 通道ID，与GroupId不能同时设置，对应为通道创建监听器
         :type ProxyId: str
+        :param GroupId: 通道组ID，与ProxyId不能同时设置，对应为通道组创建监听器
+        :type GroupId: str
         """
         self.ListenerName = None
         self.Port = None
         self.ProxyId = None
+        self.GroupId = None
 
 
     def _deserialize(self, params):
         self.ListenerName = params.get("ListenerName")
         self.Port = params.get("Port")
         self.ProxyId = params.get("ProxyId")
+        self.GroupId = params.get("GroupId")
 
 
 class CreateHTTPListenerResponse(AbstractModel):
@@ -865,7 +944,7 @@ class CreateHTTPSListenerRequest(AbstractModel):
         :type CertificateId: str
         :param ForwardProtocol: 加速通道转发到源站的协议类型：HTTP | HTTPS
         :type ForwardProtocol: str
-        :param ProxyId: 通道ID
+        :param ProxyId: 通道ID，与GroupId之间只能设置一个。表示创建通道的监听器。
         :type ProxyId: str
         :param AuthType: 认证类型，其中：
 0，单向认证；
@@ -876,6 +955,8 @@ class CreateHTTPSListenerRequest(AbstractModel):
         :type ClientCertificateId: str
         :param PolyClientCertificateIds: 新的客户端多CA证书ID，仅当双向认证时设置该参数或设置ClientCertificateId参数
         :type PolyClientCertificateIds: list of str
+        :param GroupId: 通道组ID，与ProxyId之间只能设置一个。表示创建通道组的监听器。
+        :type GroupId: str
         """
         self.ListenerName = None
         self.Port = None
@@ -885,6 +966,7 @@ class CreateHTTPSListenerRequest(AbstractModel):
         self.AuthType = None
         self.ClientCertificateId = None
         self.PolyClientCertificateIds = None
+        self.GroupId = None
 
 
     def _deserialize(self, params):
@@ -896,6 +978,7 @@ class CreateHTTPSListenerRequest(AbstractModel):
         self.AuthType = params.get("AuthType")
         self.ClientCertificateId = params.get("ClientCertificateId")
         self.PolyClientCertificateIds = params.get("PolyClientCertificateIds")
+        self.GroupId = params.get("GroupId")
 
 
 class CreateHTTPSListenerResponse(AbstractModel):
@@ -972,11 +1055,14 @@ class CreateProxyGroupRequest(AbstractModel):
         :type RealServerRegion: str
         :param TagSet: 标签列表
         :type TagSet: list of TagPair
+        :param AccessRegionSet: 加速地域列表，包括加速地域名，及该地域对应的带宽和并发配置。
+        :type AccessRegionSet: list of AccessConfiguration
         """
         self.ProjectId = None
         self.GroupName = None
         self.RealServerRegion = None
         self.TagSet = None
+        self.AccessRegionSet = None
 
 
     def _deserialize(self, params):
@@ -989,6 +1075,12 @@ class CreateProxyGroupRequest(AbstractModel):
                 obj = TagPair()
                 obj._deserialize(item)
                 self.TagSet.append(obj)
+        if params.get("AccessRegionSet") is not None:
+            self.AccessRegionSet = []
+            for item in params.get("AccessRegionSet"):
+                obj = AccessConfiguration()
+                obj._deserialize(item)
+                self.AccessRegionSet.append(obj)
 
 
 class CreateProxyGroupResponse(AbstractModel):
@@ -1177,18 +1269,22 @@ class CreateSecurityPolicyRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param ProxyId: 加速通道ID
-        :type ProxyId: str
         :param DefaultAction: 默认策略：ACCEPT或DROP
         :type DefaultAction: str
+        :param ProxyId: 加速通道ID
+        :type ProxyId: str
+        :param GroupId: 通道组ID
+        :type GroupId: str
         """
-        self.ProxyId = None
         self.DefaultAction = None
+        self.ProxyId = None
+        self.GroupId = None
 
 
     def _deserialize(self, params):
-        self.ProxyId = params.get("ProxyId")
         self.DefaultAction = params.get("DefaultAction")
+        self.ProxyId = params.get("ProxyId")
+        self.GroupId = params.get("GroupId")
 
 
 class CreateSecurityPolicyResponse(AbstractModel):
@@ -1573,12 +1669,19 @@ class DeleteProxyGroupRequest(AbstractModel):
         """
         :param GroupId: 需要删除的通道组ID。
         :type GroupId: str
+        :param Force: 强制删除标识。其中：
+0，不强制删除，
+1，强制删除。
+默认为0，当通道组中存在通道或通道组中存在监听器/规则绑定了源站时，且Force为0时，该操作会返回失败。
+        :type Force: int
         """
         self.GroupId = None
+        self.Force = None
 
 
     def _deserialize(self, params):
         self.GroupId = params.get("GroupId")
+        self.Force = params.get("Force")
 
 
 class DeleteProxyGroupResponse(AbstractModel):
@@ -2180,6 +2283,8 @@ class DescribeHTTPListenersRequest(AbstractModel):
         :type Limit: int
         :param SearchValue: 过滤条件，支持按照端口或监听器名称进行模糊查询，该参数不能与ListenerName和Port同时使用
         :type SearchValue: str
+        :param GroupId: 通道组ID
+        :type GroupId: str
         """
         self.ProxyId = None
         self.ListenerId = None
@@ -2188,6 +2293,7 @@ class DescribeHTTPListenersRequest(AbstractModel):
         self.Offset = None
         self.Limit = None
         self.SearchValue = None
+        self.GroupId = None
 
 
     def _deserialize(self, params):
@@ -2198,6 +2304,7 @@ class DescribeHTTPListenersRequest(AbstractModel):
         self.Offset = params.get("Offset")
         self.Limit = params.get("Limit")
         self.SearchValue = params.get("SearchValue")
+        self.GroupId = params.get("GroupId")
 
 
 class DescribeHTTPListenersResponse(AbstractModel):
@@ -2251,6 +2358,8 @@ class DescribeHTTPSListenersRequest(AbstractModel):
         :type Limit: int
         :param SearchValue: 过滤条件，支持按照端口或监听器名称进行模糊查询
         :type SearchValue: str
+        :param GroupId: 过滤条件，通道组ID
+        :type GroupId: str
         """
         self.ProxyId = None
         self.ListenerId = None
@@ -2259,6 +2368,7 @@ class DescribeHTTPSListenersRequest(AbstractModel):
         self.Offset = None
         self.Limit = None
         self.SearchValue = None
+        self.GroupId = None
 
 
     def _deserialize(self, params):
@@ -2269,6 +2379,7 @@ class DescribeHTTPSListenersRequest(AbstractModel):
         self.Offset = params.get("Offset")
         self.Limit = params.get("Limit")
         self.SearchValue = params.get("SearchValue")
+        self.GroupId = params.get("GroupId")
 
 
 class DescribeHTTPSListenersResponse(AbstractModel):
@@ -3368,6 +3479,7 @@ class DescribeSecurityPolicyDetailResponse(AbstractModel):
     def __init__(self):
         """
         :param ProxyId: 通道ID
+注意：此字段可能返回 null，表示取不到有效值。
         :type ProxyId: str
         :param Status: 安全策略状态：
 BOUND，已开启安全策略
@@ -3959,7 +4071,7 @@ class HTTPListener(AbstractModel):
         :type Port: int
         :param CreateTime: 监听器创建时间，Unix时间戳
         :type CreateTime: int
-        :param Protocol: 监听器协议
+        :param Protocol: 监听器协议， HTTP表示HTTP，HTTPS表示HTTPS，此结构取值HTTP
         :type Protocol: str
         :param ListenerStatus: 监听器状态，其中：
 0表示运行中；
@@ -3999,7 +4111,7 @@ class HTTPSListener(AbstractModel):
         :type ListenerName: str
         :param Port: 监听器端口
         :type Port: int
-        :param Protocol: 监听器协议， 值为：HTTP
+        :param Protocol: 监听器协议， HTTP表示HTTP，HTTPS表示HTTPS，此结构取值HTTPS
         :type Protocol: str
         :param ListenerStatus: 监听器状态，其中：
 0表示运行中；
@@ -4021,8 +4133,8 @@ class HTTPSListener(AbstractModel):
 注意：此字段可能返回 null，表示取不到有效值。
         :type ClientCertificateId: str
         :param AuthType: 监听器认证方式。其中，
-0，单向认证；
-1，双向认证。
+0表示单向认证；
+1表示双向认证。
 注意：此字段可能返回 null，表示取不到有效值。
         :type AuthType: int
         :param ClientCertificateAlias: 客户端CA证书别名
@@ -4108,7 +4220,7 @@ class InquiryPriceCreateProxyRequest(AbstractModel):
         :type RealServerRegion: str
         :param Concurrent: （新参数）通道并发量上限，表示同时在线的连接数，单位：万。
         :type Concurrent: int
-        :param BillingType: 计费方式 (0:按带宽计费，1:按流量计费 默认按带宽计费）
+        :param BillingType: 计费方式，0表示按带宽计费，1表示按流量计费。默认按带宽计费
         :type BillingType: int
         """
         self.AccessRegion = None
@@ -4698,14 +4810,18 @@ class ModifyProxyGroupAttributeRequest(AbstractModel):
         :type GroupId: str
         :param GroupName: 修改后的通道组名称：不超过30个字符，超过部分会被截断。
         :type GroupName: str
+        :param ProjectId: 项目ID
+        :type ProjectId: int
         """
         self.GroupId = None
         self.GroupName = None
+        self.ProjectId = None
 
 
     def _deserialize(self, params):
         self.GroupId = params.get("GroupId")
         self.GroupName = params.get("GroupName")
+        self.ProjectId = params.get("ProjectId")
 
 
 class ModifyProxyGroupAttributeResponse(AbstractModel):
@@ -5081,6 +5197,48 @@ class OpenProxiesResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class OpenProxyGroupRequest(AbstractModel):
+    """OpenProxyGroup请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param GroupId: 通道组实例 ID
+        :type GroupId: str
+        """
+        self.GroupId = None
+
+
+    def _deserialize(self, params):
+        self.GroupId = params.get("GroupId")
+
+
+class OpenProxyGroupResponse(AbstractModel):
+    """OpenProxyGroup返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param InvalidStatusInstanceSet: 非关闭状态下的通道实例ID列表，不可开启。
+        :type InvalidStatusInstanceSet: list of str
+        :param OperationFailedInstanceSet: 开启操作失败的通道实例ID列表。
+        :type OperationFailedInstanceSet: list of str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.InvalidStatusInstanceSet = None
+        self.OperationFailedInstanceSet = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.InvalidStatusInstanceSet = params.get("InvalidStatusInstanceSet")
+        self.OperationFailedInstanceSet = params.get("OperationFailedInstanceSet")
+        self.RequestId = params.get("RequestId")
+
+
 class OpenSecurityPolicyRequest(AbstractModel):
     """OpenSecurityPolicy请求参数结构体
 
@@ -5090,12 +5248,16 @@ class OpenSecurityPolicyRequest(AbstractModel):
         """
         :param ProxyId: 需开启安全策略的通道ID
         :type ProxyId: str
+        :param PolicyId: 安全策略ID
+        :type PolicyId: str
         """
         self.ProxyId = None
+        self.PolicyId = None
 
 
     def _deserialize(self, params):
         self.ProxyId = params.get("ProxyId")
+        self.PolicyId = params.get("PolicyId")
 
 
 class OpenSecurityPolicyResponse(AbstractModel):
@@ -5225,6 +5387,12 @@ MOVING表示通道迁移中。
         :type Status: str
         :param TagSet: 标签列表。
         :type TagSet: list of TagPair
+        :param Version: 通道组版本
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Version: str
+        :param CreateTime: 创建时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CreateTime: int
         """
         self.GroupId = None
         self.Domain = None
@@ -5233,6 +5401,8 @@ MOVING表示通道迁移中。
         self.RealServerRegionInfo = None
         self.Status = None
         self.TagSet = None
+        self.Version = None
+        self.CreateTime = None
 
 
     def _deserialize(self, params):
@@ -5250,6 +5420,8 @@ MOVING表示通道迁移中。
                 obj = TagPair()
                 obj._deserialize(item)
                 self.TagSet.append(obj)
+        self.Version = params.get("Version")
+        self.CreateTime = params.get("CreateTime")
 
 
 class ProxyIdDict(AbstractModel):
@@ -5339,9 +5511,15 @@ UNKNOWN表示未知状态。
         :param SupportSecurity: 是否支持安全组配置
 注意：此字段可能返回 null，表示取不到有效值。
         :type SupportSecurity: int
-        :param BillingType: 计费类型:(0:按带宽计费  1:按流量计费）
+        :param BillingType: 计费类型: 0表示按带宽计费  1表示按流量计费。
 注意：此字段可能返回 null，表示取不到有效值。
         :type BillingType: int
+        :param RelatedGlobalDomains: 关联了解析的域名列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RelatedGlobalDomains: list of str
+        :param ModifyConfigTime: 配置变更时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ModifyConfigTime: int
         """
         self.InstanceId = None
         self.CreateTime = None
@@ -5366,6 +5544,8 @@ UNKNOWN表示未知状态。
         self.TagSet = None
         self.SupportSecurity = None
         self.BillingType = None
+        self.RelatedGlobalDomains = None
+        self.ModifyConfigTime = None
 
 
     def _deserialize(self, params):
@@ -5401,6 +5581,8 @@ UNKNOWN表示未知状态。
                 self.TagSet.append(obj)
         self.SupportSecurity = params.get("SupportSecurity")
         self.BillingType = params.get("BillingType")
+        self.RelatedGlobalDomains = params.get("RelatedGlobalDomains")
+        self.ModifyConfigTime = params.get("ModifyConfigTime")
 
 
 class ProxySimpleInfo(AbstractModel):

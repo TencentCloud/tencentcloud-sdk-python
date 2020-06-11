@@ -1323,6 +1323,46 @@ class DescribeInstancesResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeRouteRequest(AbstractModel):
+    """DescribeRoute请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param InstanceId: 实例唯一id
+        :type InstanceId: str
+        """
+        self.InstanceId = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+
+
+class DescribeRouteResponse(AbstractModel):
+    """DescribeRoute返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Result: 返回的路由信息结果集
+        :type Result: :class:`tencentcloud.ckafka.v20190819.models.RouteResponse`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Result = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Result") is not None:
+            self.Result = RouteResponse()
+            self.Result._deserialize(params.get("Result"))
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeTopicAttributesRequest(AbstractModel):
     """DescribeTopicAttributes请求参数结构体
 
@@ -2499,6 +2539,77 @@ class PartitionOffset(AbstractModel):
     def _deserialize(self, params):
         self.Partition = params.get("Partition")
         self.Offset = params.get("Offset")
+
+
+class Route(AbstractModel):
+    """路由实体对象
+
+    """
+
+    def __init__(self):
+        """
+        :param AccessType: 实例接入方式
+0：PLAINTEXT (明文方式，没有带用户信息老版本及社区版本都支持)
+1：SASL_PLAINTEXT（明文方式，不过在数据开始时，会通过SASL方式登录鉴权，仅社区版本支持）
+2：SSL（SSL加密通信，没有带用户信息，老版本及社区版本都支持）
+3：SASL_SSL（SSL加密通信，在数据开始时，会通过SASL方式登录鉴权，仅社区版本支持）
+        :type AccessType: int
+        :param RouteId: 路由ID
+        :type RouteId: int
+        :param VipType: vip网络类型（1:外网TGW  2:基础网络 3:VPC网络 4:腾讯云支持环境(一般用于内部实例) 5:SSL外网访问方式访问 6:黑石环境vpc）
+        :type VipType: int
+        :param VipList: 虚拟IP列表
+        :type VipList: list of VipEntity
+        :param Domain: 域名
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Domain: str
+        :param DomainPort: 域名port
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DomainPort: int
+        """
+        self.AccessType = None
+        self.RouteId = None
+        self.VipType = None
+        self.VipList = None
+        self.Domain = None
+        self.DomainPort = None
+
+
+    def _deserialize(self, params):
+        self.AccessType = params.get("AccessType")
+        self.RouteId = params.get("RouteId")
+        self.VipType = params.get("VipType")
+        if params.get("VipList") is not None:
+            self.VipList = []
+            for item in params.get("VipList"):
+                obj = VipEntity()
+                obj._deserialize(item)
+                self.VipList.append(obj)
+        self.Domain = params.get("Domain")
+        self.DomainPort = params.get("DomainPort")
+
+
+class RouteResponse(AbstractModel):
+    """路由信息返回对象
+
+    """
+
+    def __init__(self):
+        """
+        :param Routers: 路由信息列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Routers: list of Route
+        """
+        self.Routers = None
+
+
+    def _deserialize(self, params):
+        if params.get("Routers") is not None:
+            self.Routers = []
+            for item in params.get("Routers"):
+                obj = Route()
+                obj._deserialize(item)
+                self.Routers.append(obj)
 
 
 class SubscribedInfo(AbstractModel):

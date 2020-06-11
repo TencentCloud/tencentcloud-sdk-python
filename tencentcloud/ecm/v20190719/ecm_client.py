@@ -199,6 +199,34 @@ class EcmClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def CreateSecurityGroup(self, request):
+        """创建安全组
+
+        :param request: Request instance for CreateSecurityGroup.
+        :type request: :class:`tencentcloud.ecm.v20190719.models.CreateSecurityGroupRequest`
+        :rtype: :class:`tencentcloud.ecm.v20190719.models.CreateSecurityGroupResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("CreateSecurityGroup", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateSecurityGroupResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def CreateSubnet(self, request):
         """创建子网，若创建成功，则此子网会成为此可用区的默认子网。
 

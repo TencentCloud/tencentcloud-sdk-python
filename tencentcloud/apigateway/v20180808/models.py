@@ -2392,7 +2392,7 @@ class DescribeLogSearchRequest(AbstractModel):
         :type EndTime: str
         :param ServiceId: 服务id
         :type ServiceId: str
-        :param Filters: 精确查询，支持apiid/reqid搜索
+        :param Filters: 保留字段
         :type Filters: list of Filter
         :param Limit: 单次要返回的日志条数，单次返回的最大条数为100
         :type Limit: int
@@ -2400,8 +2400,20 @@ class DescribeLogSearchRequest(AbstractModel):
         :type ConText: str
         :param Sort: 按时间排序 asc（升序）或者 desc（降序），默认为 desc
         :type Sort: str
-        :param Query: 模糊查询，根据关键字检索日志
+        :param Query: 保留字段
         :type Query: str
+        :param LogQuerys: 检索条件,支持的检索条件如下：
+req_id：“=”
+api_id：“=”
+cip：“=”
+uip：“:”
+err_msg：“:”
+rsp_st：“=” 、“!=” 、 “:” 、 “>” 、 “<”
+req_t：”>=“ 、 ”<=“
+
+说明：
+“:”表示包含，“!=”表示不等于，字段含义见输出参数的LogSet说明
+        :type LogQuerys: list of LogQuery
         """
         self.StartTime = None
         self.EndTime = None
@@ -2411,6 +2423,7 @@ class DescribeLogSearchRequest(AbstractModel):
         self.ConText = None
         self.Sort = None
         self.Query = None
+        self.LogQuerys = None
 
 
     def _deserialize(self, params):
@@ -2427,6 +2440,12 @@ class DescribeLogSearchRequest(AbstractModel):
         self.ConText = params.get("ConText")
         self.Sort = params.get("Sort")
         self.Query = params.get("Query")
+        if params.get("LogQuerys") is not None:
+            self.LogQuerys = []
+            for item in params.get("LogQuerys"):
+                obj = LogQuery()
+                obj._deserialize(item)
+                self.LogQuerys.append(obj)
 
 
 class DescribeLogSearchResponse(AbstractModel):
@@ -3716,6 +3735,31 @@ class IPStrategysStatus(AbstractModel):
                 obj = IPStrategy()
                 obj._deserialize(item)
                 self.StrategySet.append(obj)
+
+
+class LogQuery(AbstractModel):
+    """检索条件入参
+
+    """
+
+    def __init__(self):
+        """
+        :param Name: 检索字段
+        :type Name: str
+        :param Operator: 操作符
+        :type Operator: str
+        :param Value: 检索值
+        :type Value: str
+        """
+        self.Name = None
+        self.Operator = None
+        self.Value = None
+
+
+    def _deserialize(self, params):
+        self.Name = params.get("Name")
+        self.Operator = params.get("Operator")
+        self.Value = params.get("Value")
 
 
 class MicroService(AbstractModel):

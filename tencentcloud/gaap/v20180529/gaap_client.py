@@ -166,6 +166,34 @@ class GaapClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def CloseProxyGroup(self, request):
+        """本接口（CloseProxyGroup）用于关闭通道组。通道组关闭后，不再产生流量，但每天仍然收取通道基础配置费用。
+
+        :param request: Request instance for CloseProxyGroup.
+        :type request: :class:`tencentcloud.gaap.v20180529.models.CloseProxyGroupRequest`
+        :rtype: :class:`tencentcloud.gaap.v20180529.models.CloseProxyGroupResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("CloseProxyGroup", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CloseProxyGroupResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def CloseSecurityPolicy(self, request):
         """关闭安全策略
 
@@ -2226,6 +2254,34 @@ class GaapClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.OpenProxiesResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def OpenProxyGroup(self, request):
+        """该接口（OpenProxyGroup）用于开启一条通道组中的所有通道
+
+        :param request: Request instance for OpenProxyGroup.
+        :type request: :class:`tencentcloud.gaap.v20180529.models.OpenProxyGroupRequest`
+        :rtype: :class:`tencentcloud.gaap.v20180529.models.OpenProxyGroupResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("OpenProxyGroup", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.OpenProxyGroupResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

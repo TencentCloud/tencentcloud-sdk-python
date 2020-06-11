@@ -693,7 +693,7 @@ class LayoutParams(AbstractModel):
         :type Template: int
         :param MainVideoUserId: 屏幕分享模板中有效，代表左侧大画面对应的用户ID
         :type MainVideoUserId: str
-        :param MainVideoStreamType: 屏幕分享模板中有效，代表左侧大画面对应的流类型，0为摄像头，1为屏幕分享
+        :param MainVideoStreamType: 屏幕分享模板中有效，代表左侧大画面对应的流类型，0为摄像头，1为屏幕分享。左侧大画面为web用户时此值填0
         :type MainVideoStreamType: int
         """
         self.Template = None
@@ -714,7 +714,7 @@ class OutputParams(AbstractModel):
 
     def __init__(self):
         """
-        :param StreamId: 直播流ID
+        :param StreamId: 直播流ID，该流ID不能与用户旁路的流ID相同。
         :type StreamId: str
         :param PureAudioStream: 填0：直播流为音视频(默认); 填1：直播流为纯音频
         :type PureAudioStream: int

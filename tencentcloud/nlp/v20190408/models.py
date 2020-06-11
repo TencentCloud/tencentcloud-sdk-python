@@ -540,17 +540,21 @@ class LexicalAnalysisRequest(AbstractModel):
         """
         :param Text: 待分析的文本（仅支持UTF-8格式，不超过500字）
         :type Text: str
+        :param DictId: 指定要加载的自定义词库ID。
+        :type DictId: str
         :param Flag: 词法分析模式（默认取2值）：
 1、高精度（混合粒度分词能力）；
 2、高性能（单粒度分词能力）；
         :type Flag: int
         """
         self.Text = None
+        self.DictId = None
         self.Flag = None
 
 
     def _deserialize(self, params):
         self.Text = params.get("Text")
+        self.DictId = params.get("DictId")
         self.Flag = params.get("Flag")
 
 

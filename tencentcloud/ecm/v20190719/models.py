@@ -551,6 +551,59 @@ class CreateNetworkInterfaceResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class CreateSecurityGroupRequest(AbstractModel):
+    """CreateSecurityGroup请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param GroupName: 安全组名称，可任意命名，但不得超过60个字符。
+        :type GroupName: str
+        :param GroupDescription: 安全组备注，最多100个字符。
+        :type GroupDescription: str
+        :param Tags: 指定绑定的标签列表，例如：[{"Key": "city", "Value": "shanghai"}]
+        :type Tags: list of Tag
+        """
+        self.GroupName = None
+        self.GroupDescription = None
+        self.Tags = None
+
+
+    def _deserialize(self, params):
+        self.GroupName = params.get("GroupName")
+        self.GroupDescription = params.get("GroupDescription")
+        if params.get("Tags") is not None:
+            self.Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self.Tags.append(obj)
+
+
+class CreateSecurityGroupResponse(AbstractModel):
+    """CreateSecurityGroup返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param SecurityGroup: 安全组对象。
+        :type SecurityGroup: :class:`tencentcloud.ecm.v20190719.models.SecurityGroup`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.SecurityGroup = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("SecurityGroup") is not None:
+            self.SecurityGroup = SecurityGroup()
+            self.SecurityGroup._deserialize(params.get("SecurityGroup"))
+        self.RequestId = params.get("RequestId")
+
+
 class CreateSubnetRequest(AbstractModel):
     """CreateSubnet请求参数结构体
 
@@ -2412,6 +2465,9 @@ PROTECTIVELY_ISOLATED：表示被安全隔离的实例。
         :param NewFlag: 新实例标志
 注意：此字段可能返回 null，表示取不到有效值。
         :type NewFlag: int
+        :param SecurityGroupIds: 实例所属安全组。该参数可以通过调用 DescribeSecurityGroups 的返回值中的sgId字段来获取。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SecurityGroupIds: list of str
         """
         self.InstanceId = None
         self.InstanceName = None
@@ -2437,6 +2493,7 @@ PROTECTIVELY_ISOLATED：表示被安全隔离的实例。
         self.SystemDisk = None
         self.DataDisks = None
         self.NewFlag = None
+        self.SecurityGroupIds = None
 
 
     def _deserialize(self, params):
@@ -2486,6 +2543,7 @@ PROTECTIVELY_ISOLATED：表示被安全隔离的实例。
                 obj._deserialize(item)
                 self.DataDisks.append(obj)
         self.NewFlag = params.get("NewFlag")
+        self.SecurityGroupIds = params.get("SecurityGroupIds")
 
 
 class InstanceFamilyConfig(AbstractModel):
@@ -4309,6 +4367,48 @@ class RunSecurityServiceEnabled(AbstractModel):
     def _deserialize(self, params):
         self.Enabled = params.get("Enabled")
         self.Version = params.get("Version")
+
+
+class SecurityGroup(AbstractModel):
+    """安全组对象
+
+    """
+
+    def __init__(self):
+        """
+        :param SecurityGroupId: 安全组实例ID，例如：esg-ohuuioma。
+        :type SecurityGroupId: str
+        :param SecurityGroupName: 安全组名称，可任意命名，但不得超过60个字符。
+        :type SecurityGroupName: str
+        :param SecurityGroupDesc: 安全组备注，最多100个字符。
+        :type SecurityGroupDesc: str
+        :param IsDefault: 是否是默认安全组，默认安全组不支持删除。
+        :type IsDefault: bool
+        :param CreatedTime: 安全组创建时间。
+        :type CreatedTime: str
+        :param TagSet: 标签键值对。
+        :type TagSet: list of Tag
+        """
+        self.SecurityGroupId = None
+        self.SecurityGroupName = None
+        self.SecurityGroupDesc = None
+        self.IsDefault = None
+        self.CreatedTime = None
+        self.TagSet = None
+
+
+    def _deserialize(self, params):
+        self.SecurityGroupId = params.get("SecurityGroupId")
+        self.SecurityGroupName = params.get("SecurityGroupName")
+        self.SecurityGroupDesc = params.get("SecurityGroupDesc")
+        self.IsDefault = params.get("IsDefault")
+        self.CreatedTime = params.get("CreatedTime")
+        if params.get("TagSet") is not None:
+            self.TagSet = []
+            for item in params.get("TagSet"):
+                obj = Tag()
+                obj._deserialize(item)
+                self.TagSet.append(obj)
 
 
 class SimpleModule(AbstractModel):
