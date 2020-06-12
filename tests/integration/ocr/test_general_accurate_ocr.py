@@ -1,5 +1,6 @@
 import base64
 import os
+import sys
 
 from tencentcloud.common import credential
 from tencentcloud.common.exception.tencent_cloud_sdk_exception import TencentCloudSDKException
@@ -14,8 +15,12 @@ def test_iai_create_person():
     req = models.GeneralAccurateOCRRequest()
     dirname = os.path.dirname(os.path.abspath(__file__))
     with open(os.path.join(dirname, "ocr.png"), "rb") as f:
-        # base64 returns byte but sdk requires string, so decode it
-        content = base64.b64encode(f.read())
+        if sys.version_info[0] == 2:
+            # py2 base64 returns str
+            content = base64.b64encode(f.read())
+        else:
+            # py3 base64 returns byte but sdk requires string, so decode it
+            content = base64.b64encode(f.read()).decode('utf-8')
     req.ImageBase64 = content
     try:
         resp = client.GeneralAccurateOCR(req)
