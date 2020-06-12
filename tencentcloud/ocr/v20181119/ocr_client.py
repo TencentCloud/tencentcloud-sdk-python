@@ -1310,6 +1310,38 @@ class OcrClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def QueryBarCode(self, request):
+        """本接口支持条形码备案信息查询，返回条形码查询结果的相关信息，包括产品名称、产品英文名称、品牌名称、规格型号、宽度、高度、深度、关键字、产品描述、厂家名称、厂家地址、企业社会信用代码13个字段信息。
+
+        产品优势：直联中国物品编码中心，查询结果更加准确、可靠。
+
+        本接口目前为内测阶段，如需使用服务，请<a href="https://cloud.tencent.com/act/event/connect-service" target="_blank">联系商务</a>开通。
+
+        :param request: Request instance for QueryBarCode.
+        :type request: :class:`tencentcloud.ocr.v20181119.models.QueryBarCodeRequest`
+        :rtype: :class:`tencentcloud.ocr.v20181119.models.QueryBarCodeResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("QueryBarCode", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.QueryBarCodeResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def QuotaInvoiceOCR(self, request):
         """本接口支持定额发票的发票号码、发票代码、金额(大小写)、发票消费类型、地区及是否有公司印章等关键字段的识别。
 

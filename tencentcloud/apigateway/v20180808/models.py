@@ -954,7 +954,7 @@ class CreateApiKeyRequest(AbstractModel):
         """
         :param SecretName: 用户自定义密钥名称。
         :type SecretName: str
-        :param AccessKeyType: 密钥类型，支持 auto 和 manunal（自定义密钥），默认为 auto。
+        :param AccessKeyType: 密钥类型，支持 auto 和 manual（自定义密钥），默认为 auto。
         :type AccessKeyType: str
         :param AccessKeyId: 用户自定义密钥 ID，AccessKeyType 为 manual 时必传。长度为5 - 50字符，由字母、数字、英文下划线组成。
         :type AccessKeyId: str
@@ -5646,7 +5646,7 @@ class UsagePlanBindSecretStatus(AbstractModel):
 
 
 class UsagePlanEnvironment(AbstractModel):
-    """使用计划绑定详情
+    """使用计划绑定环境详情。
 
     """
 
@@ -5719,7 +5719,7 @@ class UsagePlanEnvironment(AbstractModel):
 
 
 class UsagePlanEnvironmentStatus(AbstractModel):
-    """使用计划绑定详情
+    """使用计划绑定环境的列表。
 
     """
 

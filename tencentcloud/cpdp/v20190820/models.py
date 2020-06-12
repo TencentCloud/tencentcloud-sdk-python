@@ -1599,6 +1599,12 @@ class CloseOrderRequest(AbstractModel):
         :type OutTradeNo: str
         :param TransactionId: 聚鑫订单号，OutTradeNo ， TransactionId二选一，不能都为空,优先使用 OutTradeNo
         :type TransactionId: str
+        :param MidasEnvironment: 环境名:
+release: 现网环境
+sandbox: 沙箱环境
+development: 开发环境
+缺省: release
+        :type MidasEnvironment: str
         """
         self.MidasAppId = None
         self.UserId = None
@@ -1606,6 +1612,7 @@ class CloseOrderRequest(AbstractModel):
         self.MidasSignature = None
         self.OutTradeNo = None
         self.TransactionId = None
+        self.MidasEnvironment = None
 
 
     def _deserialize(self, params):
@@ -1615,6 +1622,7 @@ class CloseOrderRequest(AbstractModel):
         self.MidasSignature = params.get("MidasSignature")
         self.OutTradeNo = params.get("OutTradeNo")
         self.TransactionId = params.get("TransactionId")
+        self.MidasEnvironment = params.get("MidasEnvironment")
 
 
 class CloseOrderResponse(AbstractModel):
@@ -2090,6 +2098,12 @@ class CreateInvoiceRequest(AbstractModel):
         :type Profile: str
         :param UndoPart: 撤销部分商品。0-不撤销，1-撤销
         :type UndoPart: int
+        :param OrderDate: 订单下单时间（格式 YYYMMDD）
+        :type OrderDate: str
+        :param Discount: 订单级别（单位为分）
+        :type Discount: int
+        :param StoreNo: 门店编码
+        :type StoreNo: str
         """
         self.InvoicePlatformId = None
         self.TitleType = None
@@ -2123,6 +2137,9 @@ class CreateInvoiceRequest(AbstractModel):
         self.Items = None
         self.Profile = None
         self.UndoPart = None
+        self.OrderDate = None
+        self.Discount = None
+        self.StoreNo = None
 
 
     def _deserialize(self, params):
@@ -2163,6 +2180,9 @@ class CreateInvoiceRequest(AbstractModel):
                 self.Items.append(obj)
         self.Profile = params.get("Profile")
         self.UndoPart = params.get("UndoPart")
+        self.OrderDate = params.get("OrderDate")
+        self.Discount = params.get("Discount")
+        self.StoreNo = params.get("StoreNo")
 
 
 class CreateInvoiceResponse(AbstractModel):
@@ -2433,11 +2453,14 @@ class CreateRedInvoiceItem(AbstractModel):
         :type OrderSn: str
         :param RedSerialNo: 红字信息表编码
         :type RedSerialNo: str
+        :param StoreNo: 门店编号
+        :type StoreNo: str
         """
         self.OrderId = None
         self.CallbackUrl = None
         self.OrderSn = None
         self.RedSerialNo = None
+        self.StoreNo = None
 
 
     def _deserialize(self, params):
@@ -2445,6 +2468,7 @@ class CreateRedInvoiceItem(AbstractModel):
         self.CallbackUrl = params.get("CallbackUrl")
         self.OrderSn = params.get("OrderSn")
         self.RedSerialNo = params.get("RedSerialNo")
+        self.StoreNo = params.get("StoreNo")
 
 
 class CreateRedInvoiceRequest(AbstractModel):
@@ -4964,6 +4988,12 @@ type=by_user根据用户id 查订单 。
         :type OutTradeNo: str
         :param TransactionId: 聚鑫订单号，OutTradeNo与 TransactionId不能同时为 空，都传优先使用 OutTradeNo
         :type TransactionId: str
+        :param MidasEnvironment: 环境名:
+release: 现网环境
+sandbox: 沙箱环境
+development: 开发环境
+缺省: release
+        :type MidasEnvironment: str
         """
         self.MidasAppId = None
         self.UserId = None
@@ -4976,6 +5006,7 @@ type=by_user根据用户id 查订单 。
         self.EndTime = None
         self.OutTradeNo = None
         self.TransactionId = None
+        self.MidasEnvironment = None
 
 
     def _deserialize(self, params):
@@ -4990,6 +5021,7 @@ type=by_user根据用户id 查订单 。
         self.EndTime = params.get("EndTime")
         self.OutTradeNo = params.get("OutTradeNo")
         self.TransactionId = params.get("TransactionId")
+        self.MidasEnvironment = params.get("MidasEnvironment")
 
 
 class QueryOrderResponse(AbstractModel):
@@ -5395,12 +5427,19 @@ class QueryRefundRequest(AbstractModel):
         :type MidasSecretId: str
         :param MidasSignature: 按照聚鑫安全密钥计算的签名
         :type MidasSignature: str
+        :param MidasEnvironment: 环境名:
+release: 现网环境
+sandbox: 沙箱环境
+development: 开发环境
+缺省: release
+        :type MidasEnvironment: str
         """
         self.UserId = None
         self.RefundId = None
         self.MidasAppId = None
         self.MidasSecretId = None
         self.MidasSignature = None
+        self.MidasEnvironment = None
 
 
     def _deserialize(self, params):
@@ -5409,6 +5448,7 @@ class QueryRefundRequest(AbstractModel):
         self.MidasAppId = params.get("MidasAppId")
         self.MidasSecretId = params.get("MidasSecretId")
         self.MidasSignature = params.get("MidasSignature")
+        self.MidasEnvironment = params.get("MidasEnvironment")
 
 
 class QueryRefundResponse(AbstractModel):
@@ -5963,6 +6003,12 @@ class RefundRequest(AbstractModel):
         :type PlatformRefundAmt: int
         :param SubOrderRefundList: 支持多个子订单批量退款单 个子订单退款支持传 SubOutTradeNo ，也支持传 SubOutTradeNoList ，都传的时候以 SubOutTradeNoList 为准。  如果传了子单退款细节，外 部不需要再传退款金额，平 台应退，商户应退金额，我 们可以直接根据子单退款算出来总和。
         :type SubOrderRefundList: list of RefundOutSubOrderRefundList
+        :param MidasEnvironment: 环境名:
+release: 现网环境
+sandbox: 沙箱环境
+development: 开发环境
+缺省: release
+        :type MidasEnvironment: str
         """
         self.UserId = None
         self.RefundId = None
@@ -5975,6 +6021,7 @@ class RefundRequest(AbstractModel):
         self.TransactionId = None
         self.PlatformRefundAmt = None
         self.SubOrderRefundList = None
+        self.MidasEnvironment = None
 
 
     def _deserialize(self, params):
@@ -5994,6 +6041,7 @@ class RefundRequest(AbstractModel):
                 obj = RefundOutSubOrderRefundList()
                 obj._deserialize(item)
                 self.SubOrderRefundList.append(obj)
+        self.MidasEnvironment = params.get("MidasEnvironment")
 
 
 class RefundResponse(AbstractModel):
@@ -7020,6 +7068,12 @@ class UnifiedOrderRequest(AbstractModel):
         :type WxOpenId: str
         :param WxSubOpenId: 在服务商模式下，微信公众号/小程序支付时wx_sub_openid和wx_openid二选一
         :type WxSubOpenId: str
+        :param MidasEnvironment: 环境名:
+release: 现网环境
+sandbox: 沙箱环境
+development: 开发环境
+缺省: release
+        :type MidasEnvironment: str
         """
         self.CurrencyType = None
         self.MidasAppId = None
@@ -7043,6 +7097,7 @@ class UnifiedOrderRequest(AbstractModel):
         self.TotalPlatformIncome = None
         self.WxOpenId = None
         self.WxSubOpenId = None
+        self.MidasEnvironment = None
 
 
     def _deserialize(self, params):
@@ -7073,6 +7128,7 @@ class UnifiedOrderRequest(AbstractModel):
         self.TotalPlatformIncome = params.get("TotalPlatformIncome")
         self.WxOpenId = params.get("WxOpenId")
         self.WxSubOpenId = params.get("WxSubOpenId")
+        self.MidasEnvironment = params.get("MidasEnvironment")
 
 
 class UnifiedOrderResponse(AbstractModel):

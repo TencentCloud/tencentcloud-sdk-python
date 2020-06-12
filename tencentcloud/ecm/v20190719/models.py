@@ -4265,6 +4265,8 @@ Windows 实例：名字符长度为[2, 15]，允许字母（不限制大小写�
         :type InstanceType: str
         :param DataDiskSize: 数据盘大小，单位是G。如果未传该参数或者传的值为0，则使用模块下的默认值
         :type DataDiskSize: int
+        :param SecurityGroupIds: 实例所属安全组。该参数可以通过调用 DescribeSecurityGroups 的返回值中的sgId字段来获取。若不指定该参数，则绑定默认安全组。
+        :type SecurityGroupIds: list of str
         """
         self.ZoneInstanceCountISPSet = None
         self.Password = None
@@ -4279,6 +4281,7 @@ Windows 实例：名字符长度为[2, 15]，允许字母（不限制大小写�
         self.UserData = None
         self.InstanceType = None
         self.DataDiskSize = None
+        self.SecurityGroupIds = None
 
 
     def _deserialize(self, params):
@@ -4307,6 +4310,7 @@ Windows 实例：名字符长度为[2, 15]，允许字母（不限制大小写�
         self.UserData = params.get("UserData")
         self.InstanceType = params.get("InstanceType")
         self.DataDiskSize = params.get("DataDiskSize")
+        self.SecurityGroupIds = params.get("SecurityGroupIds")
 
 
 class RunInstancesResponse(AbstractModel):
@@ -4587,6 +4591,8 @@ class Subnet(AbstractModel):
         :param TagSet: 标签键值对。
 注意：此字段可能返回 null，表示取不到有效值。
         :type TagSet: list of Tag
+        :param Zone: 所在区域
+        :type Zone: str
         """
         self.VpcId = None
         self.SubnetId = None
@@ -4601,6 +4607,7 @@ class Subnet(AbstractModel):
         self.NetworkAclId = None
         self.IsRemoteVpcSnat = None
         self.TagSet = None
+        self.Zone = None
 
 
     def _deserialize(self, params):
@@ -4622,6 +4629,7 @@ class Subnet(AbstractModel):
                 obj = Tag()
                 obj._deserialize(item)
                 self.TagSet.append(obj)
+        self.Zone = params.get("Zone")
 
 
 class Tag(AbstractModel):
@@ -4830,18 +4838,30 @@ class ZoneInstanceCountISP(AbstractModel):
         :type Zone: str
         :param InstanceCount: 在当前可用区欲创建的实例数目。
         :type InstanceCount: int
-        :param ISP: 运营商。
+        :param ISP: 运营商，CTCC电信，CUCC联通，CMCC移动，多个运营商用英文分号连接";"。
         :type ISP: str
+        :param VpcId: 指定私有网络编号，SubnetId与VpcId必须同时指定或不指定
+        :type VpcId: str
+        :param SubnetId: 指定子网编号，SubnetId与VpcId必须同时指定或不指定
+        :type SubnetId: str
+        :param PrivateIpAddresses: 指定主网卡内网IP。条件：SubnetId与VpcId必须同时指定，并且IP数量与InstanceCount相同，多IP主机副网卡内网IP在相同子网内通过DHCP获取。
+        :type PrivateIpAddresses: list of str
         """
         self.Zone = None
         self.InstanceCount = None
         self.ISP = None
+        self.VpcId = None
+        self.SubnetId = None
+        self.PrivateIpAddresses = None
 
 
     def _deserialize(self, params):
         self.Zone = params.get("Zone")
         self.InstanceCount = params.get("InstanceCount")
         self.ISP = params.get("ISP")
+        self.VpcId = params.get("VpcId")
+        self.SubnetId = params.get("SubnetId")
+        self.PrivateIpAddresses = params.get("PrivateIpAddresses")
 
 
 class ZoneInstanceInfo(AbstractModel):

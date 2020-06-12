@@ -682,7 +682,7 @@ class ApigatewayClient(AbstractClient):
 
 
     def DescribeIPStrategyApisStatus(self, request):
-        """本接口（DescribeIPStrategyApisStatus）用于查询IP策略绑定的API列表
+        """本接口（DescribeIPStrategyApisStatus）用于查询IP策略可以绑定的API列表。即服务下所有API和该策略已绑定API的差集。
 
         :param request: Request instance for DescribeIPStrategyApisStatus.
         :type request: :class:`tencentcloud.apigateway.v20180808.models.DescribeIPStrategyApisStatusRequest`

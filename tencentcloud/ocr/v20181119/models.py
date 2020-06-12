@@ -1690,6 +1690,7 @@ DetectPsWarn，PS检测告警
 TempIdWarn，临时身份证告警
 InvalidDateWarn，身份证有效日期不合法告警
 Quality，图片质量分数（评价图片的模糊程度）
+MultiCardDetect，是否开启多卡证检测
 
 SDK 设置方式参考：
 Config = Json.stringify({"CropIdCard":true,"CropPortrait":true})
@@ -2834,6 +2835,98 @@ class PermitOCRResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class ProductDataRecord(AbstractModel):
+    """商品码信息
+
+    """
+
+    def __init__(self):
+        """
+        :param ProductName: 产品名称
+        :type ProductName: str
+        :param EnName: 产品名称(英文)
+        :type EnName: str
+        :param BrandName: 品牌名称
+        :type BrandName: str
+        :param Type: 规格型号
+        :type Type: str
+        :param Width: 宽度，单位毫米
+        :type Width: str
+        :param Height: 高度，单位毫米
+        :type Height: str
+        :param Depth: 深度，单位毫米
+        :type Depth: str
+        :param KeyWord: 关键字
+        :type KeyWord: str
+        :param Description: 简短描述
+        :type Description: str
+        :param ImageLink: 图片链接
+        :type ImageLink: list of str
+        :param ManufacturerName: 厂家名称
+        :type ManufacturerName: str
+        :param ManufacturerAddress: 厂家地址
+        :type ManufacturerAddress: str
+        :param FirmCode: 企业社会信用代码
+        :type FirmCode: str
+        :param CheckResult: 表示数据查询状态
+checkResult	状态说明
+1	 经查，该商品条码已在中国物品编码中心注册
+2	经查，该厂商识别代码已在中国物品编码中心注册，但编码信息未按规定通报。
+3	经查，该厂商识别代码已于xxxxx注销，请关注产品生产日期。
+4	经查，该企业以及条码未经条码中心注册，属于违法使用
+-1	经查，该商品条码被冒用
+-2	经查，该厂商识别代码已在中国物品编码中心注册，但该产品已经下市
+S001                未找到该厂商识别代码的注册信息。
+S002		该厂商识别代码已经在GS1注册，但编码信息未通报
+S003		该商品条码已在GS1通报
+S004		该商品条码已注销
+S005		数字不正确。GS1前缀（3位国家/地区代码）用于特殊用途。
+E001		完整性失败：此GTIN的长度无效。
+E002		完整性失败：校验位不正确。
+E003		完整性失败：字符串包含字母数字字符。
+E004		数字不正确。GS1前缀（3位国家/地区代码）不存在。
+E005		数字不正确。GS1前缀（3位国家/地区代码）用于特殊用途。
+E006		数字不正确。尚未分配该GS1公司前缀。
+E008	        经查，该企业厂商识别代码以及条码尚未通报
+        :type CheckResult: str
+        :param CategoryCode: UNSPSC分类码
+        :type CategoryCode: str
+        """
+        self.ProductName = None
+        self.EnName = None
+        self.BrandName = None
+        self.Type = None
+        self.Width = None
+        self.Height = None
+        self.Depth = None
+        self.KeyWord = None
+        self.Description = None
+        self.ImageLink = None
+        self.ManufacturerName = None
+        self.ManufacturerAddress = None
+        self.FirmCode = None
+        self.CheckResult = None
+        self.CategoryCode = None
+
+
+    def _deserialize(self, params):
+        self.ProductName = params.get("ProductName")
+        self.EnName = params.get("EnName")
+        self.BrandName = params.get("BrandName")
+        self.Type = params.get("Type")
+        self.Width = params.get("Width")
+        self.Height = params.get("Height")
+        self.Depth = params.get("Depth")
+        self.KeyWord = params.get("KeyWord")
+        self.Description = params.get("Description")
+        self.ImageLink = params.get("ImageLink")
+        self.ManufacturerName = params.get("ManufacturerName")
+        self.ManufacturerAddress = params.get("ManufacturerAddress")
+        self.FirmCode = params.get("FirmCode")
+        self.CheckResult = params.get("CheckResult")
+        self.CategoryCode = params.get("CategoryCode")
+
+
 class PropOwnerCertOCRRequest(AbstractModel):
     """PropOwnerCertOCR请求参数结构体
 
@@ -3041,6 +3134,53 @@ class QrcodeResultsInfo(AbstractModel):
         if params.get("Position") is not None:
             self.Position = QrcodePositionObj()
             self.Position._deserialize(params.get("Position"))
+
+
+class QueryBarCodeRequest(AbstractModel):
+    """QueryBarCode请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param BarCode: 条形码
+        :type BarCode: str
+        """
+        self.BarCode = None
+
+
+    def _deserialize(self, params):
+        self.BarCode = params.get("BarCode")
+
+
+class QueryBarCodeResponse(AbstractModel):
+    """QueryBarCode返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param BarCode: 条码
+        :type BarCode: str
+        :param ProductDataRecords: 条码信息数组
+        :type ProductDataRecords: list of ProductDataRecord
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.BarCode = None
+        self.ProductDataRecords = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.BarCode = params.get("BarCode")
+        if params.get("ProductDataRecords") is not None:
+            self.ProductDataRecords = []
+            for item in params.get("ProductDataRecords"):
+                obj = ProductDataRecord()
+                obj._deserialize(item)
+                self.ProductDataRecords.append(obj)
+        self.RequestId = params.get("RequestId")
 
 
 class QuestionBlockObj(AbstractModel):
