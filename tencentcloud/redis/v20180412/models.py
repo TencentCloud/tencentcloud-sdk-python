@@ -331,7 +331,7 @@ class CreateInstancesRequest(AbstractModel):
         """
         :param ZoneId: 实例所属的可用区ID
         :type ZoneId: int
-        :param TypeId: 实例类型：2 – Redis2.8主从版，3 – Redis3.2主从版(CKV主从版)，4 – Redis3.2集群版(CKV集群版)，5-Redis2.8单机版，6 – Redis4.0主从版，7 – Redis4.0集群版，8 – Redis5.0主从版，9 – Redis5.0集群版，
+        :param TypeId: 实例类型：2 – Redis2.8内存版（标准架构），3 – Redis3.2内存版（标准架构），4 – CKV 3.2内存版(标准架构)，6 – Redis4.0内存版（标准架构），7 – Redis4.0内存版（集群架构），8 – Redis5.0内存版（标准架构），9 – Redis5.0内存版（集群架构），
         :type TypeId: int
         :param MemSize: 实例容量，单位MB， 取值大小以 查询售卖规格接口返回的规格为准
         :type MemSize: int
@@ -341,7 +341,7 @@ class CreateInstancesRequest(AbstractModel):
         :type Period: int
         :param BillingMode: 付费方式:0-按量计费，1-包年包月。
         :type BillingMode: int
-        :param Password: 实例密码，密码规则：1.长度为8-16个字符；2:至少包含字母、数字和字符!@^*()中的两种（创建免密实例时，可不传入该字段，该字段内容会忽略）
+        :param Password: 实例密码，8-30个字符，至少包含小写字母、大写字母、数字和字符 ()`~!@#$%^&*-+=_|{}[]:;<>,.?/ 中的2种，不能以"/"开头。
         :type Password: str
         :param VpcId: 私有网络ID，如果不传则默认选择基础网络，请使用私有网络列表查询，如：vpc-sad23jfdfk
         :type VpcId: str
@@ -355,15 +355,15 @@ class CreateInstancesRequest(AbstractModel):
         :type SecurityGroupIdList: list of str
         :param VPort: 用户自定义的端口 不填则默认为6379，范围[1024,65535]
         :type VPort: int
-        :param RedisShardNum: 实例分片数量，Redis2.8主从版、CKV主从版和Redis2.8单机版、Redis4.0主从版不需要填写
+        :param RedisShardNum: 实例分片数量，购买标准版实例不需要填写，集群版分片数量范围[3,5,8,12,16,24,32,64,96,128]
         :type RedisShardNum: int
-        :param RedisReplicasNum: 实例副本数量，Redis2.8主从版、CKV主从版和Redis2.8单机版不需要填写
+        :param RedisReplicasNum: 实例副本数量，Redis 2.8标准版、CKV标准版只支持1副本，4.0、5.0标准版和集群版支持1-5个副本。
         :type RedisReplicasNum: int
-        :param ReplicasReadonly: 是否支持副本只读，Redis2.8主从版、CKV主从版和Redis2.8单机版不需要填写
+        :param ReplicasReadonly: 是否支持副本只读，Redis 2.8标准版、CKV标准版不支持副本只读，开启副本只读，实例将自动读写分离，写请求路由到主节点，读请求路由到副本节点，如需开启副本只读建议副本数>=2.
         :type ReplicasReadonly: bool
-        :param InstanceName: 实例名称
+        :param InstanceName: 实例名称，长度小于60的中文/英文/数字/"-"/"_"
         :type InstanceName: str
-        :param NoAuth: 是否支持免密，true-免密实例，false-非免密实例，默认为非免密实例
+        :param NoAuth: 是否支持免密，true-免密实例，false-非免密实例，默认为非免密实例，仅VPC网络的实例支持免密码访问。
         :type NoAuth: bool
         """
         self.ZoneId = None

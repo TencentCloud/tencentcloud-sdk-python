@@ -782,6 +782,62 @@ class TsfClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeApiDetail(self, request):
+        """查询API详情
+
+        :param request: Request instance for DescribeApiDetail.
+        :type request: :class:`tencentcloud.tsf.v20180326.models.DescribeApiDetailRequest`
+        :rtype: :class:`tencentcloud.tsf.v20180326.models.DescribeApiDetailResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeApiDetail", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeApiDetailResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeApiVersions(self, request):
+        """查询API 版本
+
+        :param request: Request instance for DescribeApiVersions.
+        :type request: :class:`tencentcloud.tsf.v20180326.models.DescribeApiVersionsRequest`
+        :rtype: :class:`tencentcloud.tsf.v20180326.models.DescribeApiVersionsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeApiVersions", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeApiVersionsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeApplication(self, request):
         """获取应用详情
 
@@ -1329,6 +1385,34 @@ class TsfClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeMicroservicesResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeMsApiList(self, request):
+        """查询服务API列表
+
+        :param request: Request instance for DescribeMsApiList.
+        :type request: :class:`tencentcloud.tsf.v20180326.models.DescribeMsApiListRequest`
+        :rtype: :class:`tencentcloud.tsf.v20180326.models.DescribeMsApiListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeMsApiList", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeMsApiListResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

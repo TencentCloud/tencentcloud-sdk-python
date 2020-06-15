@@ -44,6 +44,35 @@ class AlgorithmSpecification(AbstractModel):
         self.AlgorithmName = params.get("AlgorithmName")
 
 
+class BillingLabel(AbstractModel):
+    """计费标签
+
+    """
+
+    def __init__(self):
+        """
+        :param Label: 计费项标识
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Label: str
+        :param VolumeSize: 存储大小
+        :type VolumeSize: int
+        :param Status: 计费状态
+None: 不计费
+StorageOnly: 仅存储计费
+Computing: 计算和存储都计费
+        :type Status: str
+        """
+        self.Label = None
+        self.VolumeSize = None
+        self.Status = None
+
+
+    def _deserialize(self, params):
+        self.Label = params.get("Label")
+        self.VolumeSize = params.get("VolumeSize")
+        self.Status = params.get("Status")
+
+
 class CodeRepoSummary(AbstractModel):
     """存储库列表
 
@@ -169,28 +198,45 @@ class CreateNotebookInstanceRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param NotebookInstanceName: Notebook实例名称
+        :param NotebookInstanceName: Notebook实例名称，不能超过63个字符
+规则：^[a-zA-Z0-9](-*[a-zA-Z0-9])*$
         :type NotebookInstanceName: str
         :param InstanceType: Notebook算力类型
+参考https://cloud.tencent.com/document/product/851/41239
         :type InstanceType: str
         :param VolumeSizeInGB: 数据卷大小(GB)
+用户持久化Notebook实例的数据
         :type VolumeSizeInGB: int
         :param DirectInternetAccess: 外网访问权限，可取值Enabled/Disabled
+开启后，Notebook实例可以具有访问外网80，443端口的权限
         :type DirectInternetAccess: str
         :param RootAccess: Root用户权限，可取值Enabled/Disabled
+开启后，Notebook实例可以切换至root用户执行命令
         :type RootAccess: str
         :param SubnetId: 子网ID
+如果需要Notebook实例访问VPC内的资源，则需要选择对应的子网
         :type SubnetId: str
         :param LifecycleScriptsName: 生命周期脚本名称
+必须是已存在的生命周期脚本，具体参考https://cloud.tencent.com/document/product/851/43140
         :type LifecycleScriptsName: str
         :param DefaultCodeRepository: 默认存储库名称
 可以是已创建的存储库名称或者已https://开头的公共git库
+参考https://cloud.tencent.com/document/product/851/43139
         :type DefaultCodeRepository: str
         :param AdditionalCodeRepositories: 其他存储库列表
 每个元素可以是已创建的存储库名称或者已https://开头的公共git库
+参考https://cloud.tencent.com/document/product/851/43139
         :type AdditionalCodeRepositories: list of str
         :param ClsAccess: 是否开启CLS日志服务，可取值Enabled/Disabled，默认为Disabled
+开启后，Notebook运行的日志会收集到CLS中，CLS会产生费用，请根据需要选择
         :type ClsAccess: str
+        :param StoppingCondition: 自动停止配置
+选择定时停止Notebook实例
+        :type StoppingCondition: :class:`tencentcloud.tione.v20191022.models.StoppingCondition`
+        :param AutoStopping: 自动停止，可取值Enabled/Disabled
+取值为Disabled的时候StoppingCondition将被忽略
+取值为Enabled的时候读取StoppingCondition作为自动停止的配置
+        :type AutoStopping: str
         """
         self.NotebookInstanceName = None
         self.InstanceType = None
@@ -202,6 +248,8 @@ class CreateNotebookInstanceRequest(AbstractModel):
         self.DefaultCodeRepository = None
         self.AdditionalCodeRepositories = None
         self.ClsAccess = None
+        self.StoppingCondition = None
+        self.AutoStopping = None
 
 
     def _deserialize(self, params):
@@ -215,6 +263,10 @@ class CreateNotebookInstanceRequest(AbstractModel):
         self.DefaultCodeRepository = params.get("DefaultCodeRepository")
         self.AdditionalCodeRepositories = params.get("AdditionalCodeRepositories")
         self.ClsAccess = params.get("ClsAccess")
+        if params.get("StoppingCondition") is not None:
+            self.StoppingCondition = StoppingCondition()
+            self.StoppingCondition._deserialize(params.get("StoppingCondition"))
+        self.AutoStopping = params.get("AutoStopping")
 
 
 class CreateNotebookInstanceResponse(AbstractModel):
@@ -693,6 +745,7 @@ class DescribeNotebookInstanceRequest(AbstractModel):
     def __init__(self):
         """
         :param NotebookInstanceName: Notebook实例名称
+规则：^[a-zA-Z0-9](-*[a-zA-Z0-9])*$
         :type NotebookInstanceName: str
         """
         self.NotebookInstanceName = None
@@ -742,6 +795,12 @@ class DescribeNotebookInstanceResponse(AbstractModel):
 注意：此字段可能返回 null，表示取不到有效值。
         :type LogUrl: str
         :param NotebookInstanceStatus: Notebook实例状态
+
+Pending: 创建中
+Inservice: 运行中
+Stopping: 停止中
+Stopped: 已停止
+Failed: 失败
 注意：此字段可能返回 null，表示取不到有效值。
         :type NotebookInstanceStatus: str
         :param InstanceId: Notebook实例ID
@@ -761,6 +820,15 @@ class DescribeNotebookInstanceResponse(AbstractModel):
         :param ClsAccess: 是否开启CLS日志服务
 注意：此字段可能返回 null，表示取不到有效值。
         :type ClsAccess: str
+        :param Prepay: 是否预付费实例
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Prepay: bool
+        :param Deadline: 实例运行截止时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Deadline: str
+        :param StoppingCondition: 自动停止配置
+注意：此字段可能返回 null，表示取不到有效值。
+        :type StoppingCondition: :class:`tencentcloud.tione.v20191022.models.StoppingCondition`
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -781,6 +849,9 @@ class DescribeNotebookInstanceResponse(AbstractModel):
         self.DefaultCodeRepository = None
         self.AdditionalCodeRepositories = None
         self.ClsAccess = None
+        self.Prepay = None
+        self.Deadline = None
+        self.StoppingCondition = None
         self.RequestId = None
 
 
@@ -802,6 +873,11 @@ class DescribeNotebookInstanceResponse(AbstractModel):
         self.DefaultCodeRepository = params.get("DefaultCodeRepository")
         self.AdditionalCodeRepositories = params.get("AdditionalCodeRepositories")
         self.ClsAccess = params.get("ClsAccess")
+        self.Prepay = params.get("Prepay")
+        self.Deadline = params.get("Deadline")
+        if params.get("StoppingCondition") is not None:
+            self.StoppingCondition = StoppingCondition()
+            self.StoppingCondition._deserialize(params.get("StoppingCondition"))
         self.RequestId = params.get("RequestId")
 
 
@@ -826,6 +902,9 @@ search-by-name - String - 是否必填：否 -（过滤条件）按照名称检�
 lifecycle-name - String - 是否必填：否 -（过滤条件）按照生命周期脚本名称过滤。
 default-code-repo-name - String - 是否必填：否 -（过滤条件）按照默认存储库名称过滤。
 additional-code-repo-name - String - 是否必填：否 -（过滤条件）按照其他存储库名称过滤。
+billing-status - String - 是否必填：否 - （过滤条件）按照计费状态过滤，可取以下值
+   StorageOnly：仅存储计费的实例
+   Computing：计算和存储都计费的实例
         :type Filters: list of Filter
         :param SortBy: 【废弃字段】排序字段
         :type SortBy: str
@@ -1001,6 +1080,45 @@ class DescribeNotebookLifecycleScriptsResponse(AbstractModel):
                 obj._deserialize(item)
                 self.NotebookLifecycleScriptsSet.append(obj)
         self.TotalCount = params.get("TotalCount")
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeNotebookSummaryRequest(AbstractModel):
+    """DescribeNotebookSummary请求参数结构体
+
+    """
+
+
+class DescribeNotebookSummaryResponse(AbstractModel):
+    """DescribeNotebookSummary返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param AllInstanceCnt: 实例总数
+        :type AllInstanceCnt: int
+        :param BillingInstanceCnt: 计费实例总数
+        :type BillingInstanceCnt: int
+        :param StorageOnlyBillingInstanceCnt: 仅存储计费的实例总数
+        :type StorageOnlyBillingInstanceCnt: int
+        :param ComputingBillingInstanceCnt: 计算和存储都计费的实例总数
+        :type ComputingBillingInstanceCnt: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.AllInstanceCnt = None
+        self.BillingInstanceCnt = None
+        self.StorageOnlyBillingInstanceCnt = None
+        self.ComputingBillingInstanceCnt = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.AllInstanceCnt = params.get("AllInstanceCnt")
+        self.BillingInstanceCnt = params.get("BillingInstanceCnt")
+        self.StorageOnlyBillingInstanceCnt = params.get("StorageOnlyBillingInstanceCnt")
+        self.ComputingBillingInstanceCnt = params.get("ComputingBillingInstanceCnt")
         self.RequestId = params.get("RequestId")
 
 
@@ -1340,15 +1458,35 @@ class NotebookInstanceSummary(AbstractModel):
         :param NotebookInstanceName: notebook实例名字
 注意：此字段可能返回 null，表示取不到有效值。
         :type NotebookInstanceName: str
-        :param NotebookInstanceStatus: notebook实例状态
+        :param NotebookInstanceStatus: notebook实例状态，取值范围：
+Pending: 创建中
+Inservice: 运行中
+Stopping: 停止中
+Stopped: 已停止
+Failed: 失败
 注意：此字段可能返回 null，表示取不到有效值。
         :type NotebookInstanceStatus: str
         :param InstanceType: 算力类型
 注意：此字段可能返回 null，表示取不到有效值。
         :type InstanceType: str
-        :param InstanceId: 算力Id
+        :param InstanceId: 实例ID
 注意：此字段可能返回 null，表示取不到有效值。
         :type InstanceId: str
+        :param StartupTime: 启动时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type StartupTime: str
+        :param Deadline: 运行截止时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Deadline: str
+        :param StoppingCondition: 自动停止配置
+注意：此字段可能返回 null，表示取不到有效值。
+        :type StoppingCondition: :class:`tencentcloud.tione.v20191022.models.StoppingCondition`
+        :param Prepay: 是否是预付费实例
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Prepay: bool
+        :param BillingLabel: 计费标识
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BillingLabel: :class:`tencentcloud.tione.v20191022.models.BillingLabel`
         """
         self.CreationTime = None
         self.LastModifiedTime = None
@@ -1356,6 +1494,11 @@ class NotebookInstanceSummary(AbstractModel):
         self.NotebookInstanceStatus = None
         self.InstanceType = None
         self.InstanceId = None
+        self.StartupTime = None
+        self.Deadline = None
+        self.StoppingCondition = None
+        self.Prepay = None
+        self.BillingLabel = None
 
 
     def _deserialize(self, params):
@@ -1365,6 +1508,15 @@ class NotebookInstanceSummary(AbstractModel):
         self.NotebookInstanceStatus = params.get("NotebookInstanceStatus")
         self.InstanceType = params.get("InstanceType")
         self.InstanceId = params.get("InstanceId")
+        self.StartupTime = params.get("StartupTime")
+        self.Deadline = params.get("Deadline")
+        if params.get("StoppingCondition") is not None:
+            self.StoppingCondition = StoppingCondition()
+            self.StoppingCondition._deserialize(params.get("StoppingCondition"))
+        self.Prepay = params.get("Prepay")
+        if params.get("BillingLabel") is not None:
+            self.BillingLabel = BillingLabel()
+            self.BillingLabel._deserialize(params.get("BillingLabel"))
 
 
 class NotebookLifecycleScriptsSummary(AbstractModel):
@@ -1484,13 +1636,26 @@ class StartNotebookInstanceRequest(AbstractModel):
     def __init__(self):
         """
         :param NotebookInstanceName: Notebook实例名称
+规则：^[a-zA-Z0-9](-*[a-zA-Z0-9])*$
         :type NotebookInstanceName: str
+        :param AutoStopping: 自动停止，可取值Enabled/Disabled
+取值为Disabled的时候StoppingCondition将被忽略
+取值为Enabled的时候读取StoppingCondition作为自动停止的配置
+        :type AutoStopping: str
+        :param StoppingCondition: 自动停止配置，只在AutoStopping为Enabled的时候生效
+        :type StoppingCondition: :class:`tencentcloud.tione.v20191022.models.StoppingCondition`
         """
         self.NotebookInstanceName = None
+        self.AutoStopping = None
+        self.StoppingCondition = None
 
 
     def _deserialize(self, params):
         self.NotebookInstanceName = params.get("NotebookInstanceName")
+        self.AutoStopping = params.get("AutoStopping")
+        if params.get("StoppingCondition") is not None:
+            self.StoppingCondition = StoppingCondition()
+            self.StoppingCondition._deserialize(params.get("StoppingCondition"))
 
 
 class StartNotebookInstanceResponse(AbstractModel):
@@ -1648,6 +1813,7 @@ class UpdateNotebookInstanceRequest(AbstractModel):
     def __init__(self):
         """
         :param NotebookInstanceName: Notebook实例名称
+规则：^[a-zA-Z0-9](-*[a-zA-Z0-9])*$
         :type NotebookInstanceName: str
         :param RoleArn: 角色的资源描述
         :type RoleArn: str
@@ -1660,9 +1826,7 @@ class UpdateNotebookInstanceRequest(AbstractModel):
         :param LifecycleScriptsName: notebook生命周期脚本名称
         :type LifecycleScriptsName: str
         :param DisassociateLifecycleScript: 是否解绑生命周期脚本，默认 false。
-如果本来就没有绑定脚本，则忽略此参数；
-如果本来有绑定脚本，此参数为 true 则解绑；
-如果本来有绑定脚本，此参数为 false，则需要额外填入 LifecycleScriptsName
+该值为true时，LifecycleScriptsName将被忽略
         :type DisassociateLifecycleScript: bool
         :param DefaultCodeRepository: 默认存储库名称
 可以是已创建的存储库名称或者已https://开头的公共git库
@@ -1678,6 +1842,12 @@ class UpdateNotebookInstanceRequest(AbstractModel):
         :type DisassociateAdditionalCodeRepositories: bool
         :param ClsAccess: 是否开启CLS日志服务，可取值Enabled/Disabled
         :type ClsAccess: str
+        :param AutoStopping: 自动停止，可取值Enabled/Disabled
+取值为Disabled的时候StoppingCondition将被忽略
+取值为Enabled的时候读取StoppingCondition作为自动停止的配置
+        :type AutoStopping: str
+        :param StoppingCondition: 自动停止配置，只在AutoStopping为Enabled的时候生效
+        :type StoppingCondition: :class:`tencentcloud.tione.v20191022.models.StoppingCondition`
         """
         self.NotebookInstanceName = None
         self.RoleArn = None
@@ -1691,6 +1861,8 @@ class UpdateNotebookInstanceRequest(AbstractModel):
         self.DisassociateDefaultCodeRepository = None
         self.DisassociateAdditionalCodeRepositories = None
         self.ClsAccess = None
+        self.AutoStopping = None
+        self.StoppingCondition = None
 
 
     def _deserialize(self, params):
@@ -1706,6 +1878,10 @@ class UpdateNotebookInstanceRequest(AbstractModel):
         self.DisassociateDefaultCodeRepository = params.get("DisassociateDefaultCodeRepository")
         self.DisassociateAdditionalCodeRepositories = params.get("DisassociateAdditionalCodeRepositories")
         self.ClsAccess = params.get("ClsAccess")
+        self.AutoStopping = params.get("AutoStopping")
+        if params.get("StoppingCondition") is not None:
+            self.StoppingCondition = StoppingCondition()
+            self.StoppingCondition._deserialize(params.get("StoppingCondition"))
 
 
 class UpdateNotebookInstanceResponse(AbstractModel):

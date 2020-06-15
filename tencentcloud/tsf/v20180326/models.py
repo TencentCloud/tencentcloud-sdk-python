@@ -180,6 +180,179 @@ class AddInstancesResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class ApiDefinitionDescr(AbstractModel):
+    """API 对象类型描述
+
+    """
+
+    def __init__(self):
+        """
+        :param Name: 对象名称
+        :type Name: str
+        :param Properties: 对象属性列表
+        :type Properties: list of PropertyField
+        """
+        self.Name = None
+        self.Properties = None
+
+
+    def _deserialize(self, params):
+        self.Name = params.get("Name")
+        if params.get("Properties") is not None:
+            self.Properties = []
+            for item in params.get("Properties"):
+                obj = PropertyField()
+                obj._deserialize(item)
+                self.Properties.append(obj)
+
+
+class ApiDetailResponse(AbstractModel):
+    """ApiDetailResponse
+
+    """
+
+    def __init__(self):
+        """
+        :param Request: API 请求参数
+        :type Request: list of ApiRequestDescr
+        :param Response: API 响应参数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Response: list of ApiResponseDescr
+        :param Definitions: API 复杂结构定义
+        :type Definitions: list of ApiDefinitionDescr
+        :param RequestContentType: API 的 content type
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RequestContentType: str
+        :param CanRun: API  能否调试
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CanRun: bool
+        :param Status: API 状态 0:离线 1:在线，默认0
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Status: int
+        """
+        self.Request = None
+        self.Response = None
+        self.Definitions = None
+        self.RequestContentType = None
+        self.CanRun = None
+        self.Status = None
+
+
+    def _deserialize(self, params):
+        if params.get("Request") is not None:
+            self.Request = []
+            for item in params.get("Request"):
+                obj = ApiRequestDescr()
+                obj._deserialize(item)
+                self.Request.append(obj)
+        if params.get("Response") is not None:
+            self.Response = []
+            for item in params.get("Response"):
+                obj = ApiResponseDescr()
+                obj._deserialize(item)
+                self.Response.append(obj)
+        if params.get("Definitions") is not None:
+            self.Definitions = []
+            for item in params.get("Definitions"):
+                obj = ApiDefinitionDescr()
+                obj._deserialize(item)
+                self.Definitions.append(obj)
+        self.RequestContentType = params.get("RequestContentType")
+        self.CanRun = params.get("CanRun")
+        self.Status = params.get("Status")
+
+
+class ApiRequestDescr(AbstractModel):
+    """ApiRequestDescr
+
+    """
+
+    def __init__(self):
+        """
+        :param Name: 参数名称
+        :type Name: str
+        :param Type: 参数类型
+        :type Type: str
+        :param In: 参数位置
+        :type In: str
+        :param Description: 参数描述
+        :type Description: str
+        :param Required: 参数是否必须
+        :type Required: bool
+        :param DefaultValue: 参数的默认值
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DefaultValue: str
+        """
+        self.Name = None
+        self.Type = None
+        self.In = None
+        self.Description = None
+        self.Required = None
+        self.DefaultValue = None
+
+
+    def _deserialize(self, params):
+        self.Name = params.get("Name")
+        self.Type = params.get("Type")
+        self.In = params.get("In")
+        self.Description = params.get("Description")
+        self.Required = params.get("Required")
+        self.DefaultValue = params.get("DefaultValue")
+
+
+class ApiResponseDescr(AbstractModel):
+    """API 响应的参数结构描述
+
+    """
+
+    def __init__(self):
+        """
+        :param Name: 参数描述
+        :type Name: str
+        :param Type: 参数类型
+        :type Type: str
+        :param Description: 参数描述
+        :type Description: str
+        """
+        self.Name = None
+        self.Type = None
+        self.Description = None
+
+
+    def _deserialize(self, params):
+        self.Name = params.get("Name")
+        self.Type = params.get("Type")
+        self.Description = params.get("Description")
+
+
+class ApiVersionArray(AbstractModel):
+    """API版本数组
+
+    """
+
+    def __init__(self):
+        """
+        :param ApplicationId: App ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ApplicationId: str
+        :param ApplicationName: App 名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ApplicationName: str
+        :param PkgVersion: App 包版本
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PkgVersion: str
+        """
+        self.ApplicationId = None
+        self.ApplicationName = None
+        self.PkgVersion = None
+
+
+    def _deserialize(self, params):
+        self.ApplicationId = params.get("ApplicationId")
+        self.ApplicationName = params.get("ApplicationName")
+        self.PkgVersion = params.get("PkgVersion")
+
+
 class ApplicationAttribute(AbstractModel):
     """应用列表其它字段
 
@@ -2495,6 +2668,113 @@ class DeployServerlessGroupResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeApiDetailRequest(AbstractModel):
+    """DescribeApiDetail请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param MicroserviceId: 微服务id
+        :type MicroserviceId: str
+        :param Path: 请求路径
+        :type Path: str
+        :param Method: 请求方法
+        :type Method: str
+        :param PkgVersion: 包版本
+        :type PkgVersion: str
+        :param ApplicationId: 应用ID
+        :type ApplicationId: str
+        """
+        self.MicroserviceId = None
+        self.Path = None
+        self.Method = None
+        self.PkgVersion = None
+        self.ApplicationId = None
+
+
+    def _deserialize(self, params):
+        self.MicroserviceId = params.get("MicroserviceId")
+        self.Path = params.get("Path")
+        self.Method = params.get("Method")
+        self.PkgVersion = params.get("PkgVersion")
+        self.ApplicationId = params.get("ApplicationId")
+
+
+class DescribeApiDetailResponse(AbstractModel):
+    """DescribeApiDetail返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Result: API 详情
+        :type Result: :class:`tencentcloud.tsf.v20180326.models.ApiDetailResponse`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Result = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Result") is not None:
+            self.Result = ApiDetailResponse()
+            self.Result._deserialize(params.get("Result"))
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeApiVersionsRequest(AbstractModel):
+    """DescribeApiVersions请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param MicroserviceId: 微服务ID
+        :type MicroserviceId: str
+        :param Path: API 请求路径
+        :type Path: str
+        :param Method: 请求方法
+        :type Method: str
+        """
+        self.MicroserviceId = None
+        self.Path = None
+        self.Method = None
+
+
+    def _deserialize(self, params):
+        self.MicroserviceId = params.get("MicroserviceId")
+        self.Path = params.get("Path")
+        self.Method = params.get("Method")
+
+
+class DescribeApiVersionsResponse(AbstractModel):
+    """DescribeApiVersions返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Result: API版本列表
+        :type Result: list of ApiVersionArray
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Result = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Result") is not None:
+            self.Result = []
+            for item in params.get("Result"):
+                obj = ApiVersionArray()
+                obj._deserialize(item)
+                self.Result.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeApplicationAttributeRequest(AbstractModel):
     """DescribeApplicationAttribute请求参数结构体
 
@@ -3585,6 +3865,58 @@ class DescribeMicroservicesResponse(AbstractModel):
     def _deserialize(self, params):
         if params.get("Result") is not None:
             self.Result = TsfPageMicroservice()
+            self.Result._deserialize(params.get("Result"))
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeMsApiListRequest(AbstractModel):
+    """DescribeMsApiList请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param MicroserviceId: 微服务ID
+        :type MicroserviceId: str
+        :param SearchWord: 搜索关键字
+        :type SearchWord: str
+        :param Limit: 每页的数量
+        :type Limit: int
+        :param Offset: 翻页偏移量
+        :type Offset: int
+        """
+        self.MicroserviceId = None
+        self.SearchWord = None
+        self.Limit = None
+        self.Offset = None
+
+
+    def _deserialize(self, params):
+        self.MicroserviceId = params.get("MicroserviceId")
+        self.SearchWord = params.get("SearchWord")
+        self.Limit = params.get("Limit")
+        self.Offset = params.get("Offset")
+
+
+class DescribeMsApiListResponse(AbstractModel):
+    """DescribeMsApiList返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Result: 相应结果
+        :type Result: :class:`tencentcloud.tsf.v20180326.models.TsfApiListResponse`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Result = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Result") is not None:
+            self.Result = TsfApiListResponse()
             self.Result._deserialize(params.get("Result"))
         self.RequestId = params.get("RequestId")
 
@@ -5557,6 +5889,37 @@ class ModifyUploadInfoResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class MsApiArray(AbstractModel):
+    """微服务API数组
+
+    """
+
+    def __init__(self):
+        """
+        :param Path: API 请求路径
+        :type Path: str
+        :param Method: 请求方法
+        :type Method: str
+        :param Description: 方法描述
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Description: str
+        :param Status: API状态 0:离线 1:在线
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Status: int
+        """
+        self.Path = None
+        self.Method = None
+        self.Description = None
+        self.Status = None
+
+
+    def _deserialize(self, params):
+        self.Path = params.get("Path")
+        self.Method = params.get("Method")
+        self.Description = params.get("Description")
+        self.Status = params.get("Status")
+
+
 class MsInstance(AbstractModel):
     """微服务实例信息
 
@@ -5893,6 +6256,32 @@ class PkgList(AbstractModel):
                 obj = PkgInfo()
                 obj._deserialize(item)
                 self.Content.append(obj)
+
+
+class PropertyField(AbstractModel):
+    """属性字段
+
+    """
+
+    def __init__(self):
+        """
+        :param Name: 属性名称
+        :type Name: str
+        :param Type: 属性类型
+        :type Type: str
+        :param Description: 属性描述
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Description: str
+        """
+        self.Name = None
+        self.Type = None
+        self.Description = None
+
+
+    def _deserialize(self, params):
+        self.Name = params.get("Name")
+        self.Type = params.get("Type")
+        self.Description = params.get("Description")
 
 
 class ProtocolPort(AbstractModel):
@@ -6725,6 +7114,34 @@ class TaskId(AbstractModel):
 
     def _deserialize(self, params):
         self.TaskId = params.get("TaskId")
+
+
+class TsfApiListResponse(AbstractModel):
+    """TsfApiListResponse
+
+    """
+
+    def __init__(self):
+        """
+        :param TotalCount: 数量
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TotalCount: int
+        :param Content: API 列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Content: list of MsApiArray
+        """
+        self.TotalCount = None
+        self.Content = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("Content") is not None:
+            self.Content = []
+            for item in params.get("Content"):
+                obj = MsApiArray()
+                obj._deserialize(item)
+                self.Content.append(obj)
 
 
 class TsfPageApplication(AbstractModel):

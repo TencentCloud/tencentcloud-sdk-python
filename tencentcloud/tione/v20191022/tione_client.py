@@ -417,6 +417,34 @@ class TioneClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeNotebookSummary(self, request):
+        """查询Notebook概览数据
+
+        :param request: Request instance for DescribeNotebookSummary.
+        :type request: :class:`tencentcloud.tione.v20191022.models.DescribeNotebookSummaryRequest`
+        :rtype: :class:`tencentcloud.tione.v20191022.models.DescribeNotebookSummaryResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeNotebookSummary", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeNotebookSummaryResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeTrainingJob(self, request):
         """查询训练任务
 

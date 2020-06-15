@@ -2219,7 +2219,7 @@ class LiveClient(AbstractClient):
 
 
     def DescribeStreamPlayInfoList(self, request):
-        """查询播放数据，支持按流名称查询详细播放数据，也可按播放域名查询详细总数据。
+        """查询播放数据，支持按流名称查询详细播放数据，也可按播放域名查询详细总数据，数据延迟4分钟左右。
         注意：按AppName查询，需要联系客服同学提单支持。
 
         :param request: Request instance for DescribeStreamPlayInfoList.

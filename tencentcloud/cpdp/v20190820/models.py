@@ -2098,9 +2098,9 @@ class CreateInvoiceRequest(AbstractModel):
         :type Profile: str
         :param UndoPart: 撤销部分商品。0-不撤销，1-撤销
         :type UndoPart: int
-        :param OrderDate: 订单下单时间（格式 YYYMMDD）
+        :param OrderDate: 订单下单时间（格式 YYYYMMDD）
         :type OrderDate: str
-        :param Discount: 订单级别（单位为分）
+        :param Discount: 订单级别折扣（单位为分）
         :type Discount: int
         :param StoreNo: 门店编码
         :type StoreNo: str

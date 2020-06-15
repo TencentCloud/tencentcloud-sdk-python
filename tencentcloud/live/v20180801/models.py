@@ -4412,7 +4412,7 @@ class DescribeProIspPlaySumInfoListResponse(AbstractModel):
         :type TotalPage: int
         :param DataInfoList: 省份，运营商，国家或地区汇总数据列表。
         :type DataInfoList: list of ProIspPlaySumInfo
-        :param AvgFluxPerSecond: 平均带宽。
+        :param AvgFluxPerSecond: 下载速度，单位：MB/s，计算方式：总流量/总时长。
         :type AvgFluxPerSecond: float
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
