@@ -1487,6 +1487,12 @@ Failed: 失败
         :param BillingLabel: 计费标识
 注意：此字段可能返回 null，表示取不到有效值。
         :type BillingLabel: :class:`tencentcloud.tione.v20191022.models.BillingLabel`
+        :param RuntimeInSeconds: 运行时长，秒
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RuntimeInSeconds: int
+        :param RemainTimeInSeconds: 剩余时长，秒
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RemainTimeInSeconds: int
         """
         self.CreationTime = None
         self.LastModifiedTime = None
@@ -1499,6 +1505,8 @@ Failed: 失败
         self.StoppingCondition = None
         self.Prepay = None
         self.BillingLabel = None
+        self.RuntimeInSeconds = None
+        self.RemainTimeInSeconds = None
 
 
     def _deserialize(self, params):
@@ -1517,6 +1525,8 @@ Failed: 失败
         if params.get("BillingLabel") is not None:
             self.BillingLabel = BillingLabel()
             self.BillingLabel._deserialize(params.get("BillingLabel"))
+        self.RuntimeInSeconds = params.get("RuntimeInSeconds")
+        self.RemainTimeInSeconds = params.get("RemainTimeInSeconds")
 
 
 class NotebookLifecycleScriptsSummary(AbstractModel):

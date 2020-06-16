@@ -765,10 +765,10 @@ class StartOnlineRecordRequest(AbstractModel):
         """
         :param SdkAppId: 客户的SdkAppId
         :type SdkAppId: int
-        :param RoomId: 需要录制的房间号
+        :param RoomId: 需要录制的房间号，取值范围: (1, 4294967295)
         :type RoomId: int
-        :param RecordUserId: 用于实时录制服务进房的用户Id，格式为`tic_record_user_${RoomId}_${Random}`，其中 `${RoomId}` 与录制房间号对应，`${Random}`为一个随机字符串。
-实时录制服务会使用这个用户Id进房进行录制房间内的音视频与白板，为了防止进房冲突，请保证此 用户Id不重复
+        :param RecordUserId: 用于实时录制服务进房的用户ID，格式为`tic_record_user_${RoomId}_${Random}`，其中 `${RoomId} `与录制房间号对应，`${Random}`为一个随机字符串。
+该ID必须是一个单独的未在SDK中使用的ID，实时录制服务使用这个用户ID进入房间进行音视频与白板录制，若该ID和SDK中使用的ID重复，会导致SDK和录制服务互踢，影响正常录制。
         :type RecordUserId: str
         :param RecordUserSig: 与RecordUserId对应的签名
         :type RecordUserSig: str
