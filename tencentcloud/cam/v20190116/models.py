@@ -2907,9 +2907,9 @@ class UpdatePolicyRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param PolicyId: 策略ID
+        :param PolicyId: 策略ID，与PolicyName二选一必填
         :type PolicyId: int
-        :param PolicyName: 策略名
+        :param PolicyName: 策略名，与PolicyId二选一必填
         :type PolicyName: str
         :param Description: 策略描述
         :type Description: str
@@ -2940,7 +2940,7 @@ class UpdatePolicyResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param PolicyId: 策略id
+        :param PolicyId: 策略id，入参是PolicyName时，才会返回
 注意：此字段可能返回 null，表示取不到有效值。
         :type PolicyId: int
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。

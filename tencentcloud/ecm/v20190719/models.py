@@ -1140,6 +1140,62 @@ class DescribeConfigResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeCustomImageTaskRequest(AbstractModel):
+    """DescribeCustomImageTask请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Filters: 支持key,value查询
+task-id: 异步任务ID
+image-id: 镜像ID
+image-name: 镜像名称
+        :type Filters: list of Filter
+        """
+        self.Filters = None
+
+
+    def _deserialize(self, params):
+        if params.get("Filters") is not None:
+            self.Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self.Filters.append(obj)
+
+
+class DescribeCustomImageTaskResponse(AbstractModel):
+    """DescribeCustomImageTask返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ImageTaskSet: 导入任务详情
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ImageTaskSet: list of ImageTask
+        :param TotalCount: 总数
+        :type TotalCount: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.ImageTaskSet = None
+        self.TotalCount = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("ImageTaskSet") is not None:
+            self.ImageTaskSet = []
+            for item in params.get("ImageTaskSet"):
+                obj = ImageTask()
+                obj._deserialize(item)
+                self.ImageTaskSet.append(obj)
+        self.TotalCount = params.get("TotalCount")
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeDefaultSubnetRequest(AbstractModel):
     """DescribeDefaultSubnet请求参数结构体
 
@@ -1226,7 +1282,6 @@ class DescribeImageResponse(AbstractModel):
     def __init__(self):
         """
         :param TotalCount: 镜像总数
-注意：此字段可能返回 null，表示取不到有效值。
         :type TotalCount: int
         :param ImageSet: 镜像数组
 注意：此字段可能返回 null，表示取不到有效值。
@@ -1247,6 +1302,44 @@ class DescribeImageResponse(AbstractModel):
                 obj = Image()
                 obj._deserialize(item)
                 self.ImageSet.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeImportImageOsRequest(AbstractModel):
+    """DescribeImportImageOs请求参数结构体
+
+    """
+
+
+class DescribeImportImageOsResponse(AbstractModel):
+    """DescribeImportImageOs返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ImportImageOsListSupported: 支持的导入镜像的操作系统类型
+        :type ImportImageOsListSupported: :class:`tencentcloud.ecm.v20190719.models.ImageOsList`
+        :param ImportImageOsVersionSet: 支持的导入镜像的操作系统版本
+        :type ImportImageOsVersionSet: list of OsVersion
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.ImportImageOsListSupported = None
+        self.ImportImageOsVersionSet = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("ImportImageOsListSupported") is not None:
+            self.ImportImageOsListSupported = ImageOsList()
+            self.ImportImageOsListSupported._deserialize(params.get("ImportImageOsListSupported"))
+        if params.get("ImportImageOsVersionSet") is not None:
+            self.ImportImageOsVersionSet = []
+            for item in params.get("ImportImageOsVersionSet"):
+                obj = OsVersion()
+                obj._deserialize(item)
+                self.ImportImageOsVersionSet.append(obj)
         self.RequestId = params.get("RequestId")
 
 
@@ -1939,6 +2032,8 @@ class DescribeVpcsRequest(AbstractModel):
 
     def __init__(self):
         """
+        :param EcmRegion: 地域
+        :type EcmRegion: str
         :param VpcIds: VPC实例ID。形如：vpc-f49l6u0z。每次请求的实例的上限为100。参数不支持同时指定VpcIds和Filters。
         :type VpcIds: list of str
         :param Filters: 过滤条件，参数不支持同时指定VpcIds和Filters。
@@ -1953,17 +2048,16 @@ tag:tag-key - String - 是否必填：否 - （过滤条件）按照标签键值
         :type Offset: int
         :param Limit: 返回数量
         :type Limit: int
-        :param EcmRegion: 地域
-        :type EcmRegion: str
         """
+        self.EcmRegion = None
         self.VpcIds = None
         self.Filters = None
         self.Offset = None
         self.Limit = None
-        self.EcmRegion = None
 
 
     def _deserialize(self, params):
+        self.EcmRegion = params.get("EcmRegion")
         self.VpcIds = params.get("VpcIds")
         if params.get("Filters") is not None:
             self.Filters = []
@@ -1973,7 +2067,6 @@ tag:tag-key - String - 是否必填：否 - （过滤条件）按照标签键值
                 self.Filters.append(obj)
         self.Offset = params.get("Offset")
         self.Limit = params.get("Limit")
-        self.EcmRegion = params.get("EcmRegion")
 
 
 class DescribeVpcsResponse(AbstractModel):
@@ -2325,6 +2418,147 @@ class Image(AbstractModel):
         if params.get("SrcImage") is not None:
             self.SrcImage = SrcImage()
             self.SrcImage._deserialize(params.get("SrcImage"))
+
+
+class ImageOsList(AbstractModel):
+    """支持的操作系统类型，根据windows和Linux分类。
+
+    """
+
+    def __init__(self):
+        """
+        :param Windows: 支持的windows操作系统
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Windows: list of str
+        :param Linux: 支持的linux操作系统
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Linux: list of str
+        """
+        self.Windows = None
+        self.Linux = None
+
+
+    def _deserialize(self, params):
+        self.Windows = params.get("Windows")
+        self.Linux = params.get("Linux")
+
+
+class ImageTask(AbstractModel):
+    """镜像任务
+
+    """
+
+    def __init__(self):
+        """
+        :param State: 镜像导入状态， PENDING, PROCESSING, SUCCESS, FAILED
+        :type State: str
+        :param Message: 导入失败(FAILED)时， 说明失败原因
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Message: str
+        :param ImageName: 镜像名称
+        :type ImageName: str
+        :param CreateTime: 创建时间
+        :type CreateTime: str
+        """
+        self.State = None
+        self.Message = None
+        self.ImageName = None
+        self.CreateTime = None
+
+
+    def _deserialize(self, params):
+        self.State = params.get("State")
+        self.Message = params.get("Message")
+        self.ImageName = params.get("ImageName")
+        self.CreateTime = params.get("CreateTime")
+
+
+class ImageUrl(AbstractModel):
+    """镜像文件信息
+
+    """
+
+    def __init__(self):
+        """
+        :param ImageFile: 镜像文件COS链接，如设置私有读写，需授权腾讯云ECM运营账号访问权限。
+        :type ImageFile: str
+        """
+        self.ImageFile = None
+
+
+    def _deserialize(self, params):
+        self.ImageFile = params.get("ImageFile")
+
+
+class ImportCustomImageRequest(AbstractModel):
+    """ImportCustomImage请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ImageName: 镜像名称
+        :type ImageName: str
+        :param Architecture: 导入镜像的操作系统架构，x86_64 或 i386
+        :type Architecture: str
+        :param OsType: 导入镜像的操作系统类型，通过DescribeImportImageOs获取
+        :type OsType: str
+        :param OsVersion: 导入镜像的操作系统版本，通过DescribeImportImageOs获取
+        :type OsVersion: str
+        :param ImageDescription: 镜像描述
+        :type ImageDescription: str
+        :param InitFlag: 镜像启动方式，cloudinit或nbd， 默认cloudinit
+        :type InitFlag: str
+        :param ImageUrls: 镜像描述，多层镜像按顺序传入
+        :type ImageUrls: list of ImageUrl
+        """
+        self.ImageName = None
+        self.Architecture = None
+        self.OsType = None
+        self.OsVersion = None
+        self.ImageDescription = None
+        self.InitFlag = None
+        self.ImageUrls = None
+
+
+    def _deserialize(self, params):
+        self.ImageName = params.get("ImageName")
+        self.Architecture = params.get("Architecture")
+        self.OsType = params.get("OsType")
+        self.OsVersion = params.get("OsVersion")
+        self.ImageDescription = params.get("ImageDescription")
+        self.InitFlag = params.get("InitFlag")
+        if params.get("ImageUrls") is not None:
+            self.ImageUrls = []
+            for item in params.get("ImageUrls"):
+                obj = ImageUrl()
+                obj._deserialize(item)
+                self.ImageUrls.append(obj)
+
+
+class ImportCustomImageResponse(AbstractModel):
+    """ImportCustomImage返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ImageId: 镜像ID
+        :type ImageId: str
+        :param TaskId: 异步任务ID，可根据DescribeCustomImageTask查询任务信息
+        :type TaskId: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.ImageId = None
+        self.TaskId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.ImageId = params.get("ImageId")
+        self.TaskId = params.get("TaskId")
+        self.RequestId = params.get("RequestId")
 
 
 class ImportImageRequest(AbstractModel):
@@ -3643,6 +3877,33 @@ class OperatorAction(AbstractModel):
         self.Action = params.get("Action")
         self.Code = params.get("Code")
         self.Message = params.get("Message")
+
+
+class OsVersion(AbstractModel):
+    """操作系统支持的类型。
+
+    """
+
+    def __init__(self):
+        """
+        :param OsName: 操作系统类型
+        :type OsName: str
+        :param OsVersions: 支持的操作系统版本
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OsVersions: list of str
+        :param Architecture: 支持的操作系统架构
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Architecture: list of str
+        """
+        self.OsName = None
+        self.OsVersions = None
+        self.Architecture = None
+
+
+    def _deserialize(self, params):
+        self.OsName = params.get("OsName")
+        self.OsVersions = params.get("OsVersions")
+        self.Architecture = params.get("Architecture")
 
 
 class PeakBase(AbstractModel):

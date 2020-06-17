@@ -2095,7 +2095,8 @@ statusCode：回源状态码，返回 2xx、3xx、4xx、5xx 汇总数据，单�
         :param Domains: 指定查询域名列表，最多可一次性查询 30 个加速域名明细
         :type Domains: list of str
         :param Project: 指定要查询的项目 ID，[前往查看项目 ID](https://console.cloud.tencent.com/project)
-未填充域名情况下，指定项目查询，若填充了具体域名信息，以域名为主
+未填充域名情况下，指定项目查询，最多可一次性查询 30 个加速域名明细
+若填充了具体域名信息，以域名为主
         :type Project: int
         :param Interval: 时间粒度，支持以下几种模式：
 min：1 分钟粒度，指定查询区间 24 小时内（含 24 小时），可返回 1 分钟粒度明细数据（指定查询服务地域为中国境外时不支持 1 分钟粒度）

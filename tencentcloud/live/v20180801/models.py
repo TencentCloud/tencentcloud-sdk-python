@@ -141,10 +141,11 @@ class AddLiveWatermarkRequest(AbstractModel):
         :param PictureUrl: 水印图片 URL。
         :type PictureUrl: str
         :param WatermarkName: 水印名称。
+最长16字节。
         :type WatermarkName: str
-        :param XPosition: 显示位置，X轴偏移，默认 0。
+        :param XPosition: 显示位置，X轴偏移，单位是百分比，默认 0。
         :type XPosition: int
-        :param YPosition: 显示位置，Y轴偏移，默认 0。
+        :param YPosition: 显示位置，Y轴偏移，单位是百分比，默认 0。
         :type YPosition: int
         :param Width: 水印宽度，占直播原始画面宽度百分比，建议高宽只设置一项，另外一项会自适应缩放，避免变形。默认原始宽度。
         :type Width: int
@@ -229,7 +230,7 @@ class BindLiveDomainCertRequest(AbstractModel):
         :type CertId: int
         :param DomainName: 播放域名。
         :type DomainName: str
-        :param Status: 状态，0： 关闭  1：打开。
+        :param Status: HTTPS开启状态，0： 关闭  1：打开。
         :type Status: int
         """
         self.CertId = None
@@ -354,6 +355,7 @@ class CancelCommonMixStreamRequest(AbstractModel):
     def __init__(self):
         """
         :param MixStreamSessionId: 混流会话（申请混流开始到取消混流结束）标识 ID。
+该值与CreateCommonMixStream中的MixStreamSessionId保持一致。
         :type MixStreamSessionId: str
         """
         self.MixStreamSessionId = None
@@ -1775,7 +1777,7 @@ class DeleteLiveCertRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param CertId: 证书Id。
+        :param CertId: DescribeLiveCerts接口获取到的证书Id。
         :type CertId: int
         """
         self.CertId = None
@@ -1931,7 +1933,7 @@ class DeleteLiveRecordTemplateRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param TemplateId: 模板 ID。
+        :param TemplateId: DescribeRecordTemplates接口获取到的模板 ID。
         :type TemplateId: int
         """
         self.TemplateId = None
@@ -2127,6 +2129,7 @@ class DeleteLiveWatermarkRequest(AbstractModel):
         """
         :param WatermarkId: 水印 ID。
 在添加水印接口 [AddLiveWatermark](/document/product/267/30154) 调用返回值中获取水印 ID。
+或DescribeLiveWatermarks接口返回的水印ID。
         :type WatermarkId: int
         """
         self.WatermarkId = None
@@ -2663,7 +2666,7 @@ class DescribeLiveCertRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param CertId: 证书Id。
+        :param CertId: DescribeLiveCerts接口获取到的证书Id。
         :type CertId: int
         """
         self.CertId = None
@@ -3200,7 +3203,7 @@ class DescribeLiveRecordTemplateRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param TemplateId: 模板 ID。
+        :param TemplateId: DescribeRecordTemplates接口获取到的模板 ID。
         :type TemplateId: int
         """
         self.TemplateId = None
@@ -3992,7 +3995,7 @@ class DescribeLiveWatermarkRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param WatermarkId: 水印 ID。
+        :param WatermarkId: DescribeLiveWatermarks接口返回的水印 ID。
         :type WatermarkId: int
         """
         self.WatermarkId = None
@@ -5798,15 +5801,19 @@ class ModifyLivePlayAuthKeyRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param DomainName: 域名。
+        :param DomainName: 播放域名。
         :type DomainName: str
         :param Enable: 是否启用，0：关闭，1：启用。
+不传表示不修改当前值。
         :type Enable: int
         :param AuthKey: 鉴权key。
+不传表示不修改当前值。
         :type AuthKey: str
         :param AuthDelta: 有效时间，单位：秒。
+不传表示不修改当前值。
         :type AuthDelta: int
-        :param AuthBackKey: 鉴权backkey。
+        :param AuthBackKey: 鉴权备用key。
+不传表示不修改当前值。
         :type AuthBackKey: str
         """
         self.DomainName = None
@@ -5889,10 +5896,13 @@ class ModifyLivePushAuthKeyRequest(AbstractModel):
         :param DomainName: 推流域名。
         :type DomainName: str
         :param Enable: 是否启用，0：关闭，1：启用。
+不传表示不修改当前值。
         :type Enable: int
         :param MasterAuthKey: 主鉴权key。
+不传表示不修改当前值。
         :type MasterAuthKey: str
         :param BackupAuthKey: 备鉴权key。
+不传表示不修改当前值。
         :type BackupAuthKey: str
         :param AuthDelta: 有效时间，单位：秒。
         :type AuthDelta: int
@@ -5936,7 +5946,7 @@ class ModifyLiveRecordTemplateRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param TemplateId: 模板 ID。
+        :param TemplateId: DescribeRecordTemplates接口获取到的模板 ID。
         :type TemplateId: int
         :param TemplateName: 模板名称。
         :type TemplateName: str
@@ -7510,11 +7520,12 @@ class UpdateLiveWatermarkRequest(AbstractModel):
         :type WatermarkId: int
         :param PictureUrl: 水印图片 URL。
         :type PictureUrl: str
-        :param XPosition: 显示位置，X轴偏移，默认 0。
+        :param XPosition: 显示位置，X轴偏移，单位是百分比，默认 0。
         :type XPosition: int
-        :param YPosition: 显示位置，Y轴偏移，默认 0。
+        :param YPosition: 显示位置，Y轴偏移，单位是百分比，默认 0。
         :type YPosition: int
         :param WatermarkName: 水印名称。
+最长16字节。
         :type WatermarkName: str
         :param Width: 水印宽度，占直播原始画面宽度百分比，建议高宽只设置一项，另外一项会自适应缩放，避免变形。默认原始宽度。
         :type Width: int

@@ -293,7 +293,7 @@ class CreateFunctionRequest(AbstractModel):
         :type Timeout: int
         :param Environment: 函数的环境变量
         :type Environment: :class:`tencentcloud.scf.v20180416.models.Environment`
-        :param Runtime: 函数运行环境，目前仅支持 Python2.7，Python3.6，Nodejs6.10，Nodejs8.9，Nodejs10.15，Nodejs12.15， PHP5， PHP7，Golang1 和 Java8，默认Python2.7
+        :param Runtime: 函数运行环境，目前仅支持 Python2.7，Python3.6，Nodejs6.10，Nodejs8.9，Nodejs10.15，Nodejs12.16， PHP5， PHP7，Golang1 和 Java8，默认Python2.7
         :type Runtime: str
         :param VpcConfig: 函数的私有网络配置
         :type VpcConfig: :class:`tencentcloud.scf.v20180416.models.VpcConfig`
@@ -2696,7 +2696,7 @@ class UpdateFunctionConfigurationRequest(AbstractModel):
         :type MemorySize: int
         :param Timeout: 函数最长执行时间，单位为秒，可选值范 1-900 秒，默认为 3 秒
         :type Timeout: int
-        :param Runtime: 函数运行环境，目前仅支持 Python2.7，Python3.6，Nodejs6.10，Nodejs8.9，Nodejs10.15，Nodejs12.15，PHP5， PHP7，Golang1 和 Java8
+        :param Runtime: 函数运行环境，目前仅支持 Python2.7，Python3.6，Nodejs6.10，Nodejs8.9，Nodejs10.15，Nodejs12.16，PHP5， PHP7，Golang1 和 Java8
         :type Runtime: str
         :param Environment: 函数的环境变量
         :type Environment: :class:`tencentcloud.scf.v20180416.models.Environment`

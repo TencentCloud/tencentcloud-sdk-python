@@ -238,6 +238,8 @@ class ClusterAdvancedSettings(AbstractModel):
         :type IsNonStaticIpMode: bool
         :param DeletionProtection: 是否启用集群删除保护
         :type DeletionProtection: bool
+        :param KubeProxyMode: 集群的网络代理模型
+        :type KubeProxyMode: str
         """
         self.IPVS = None
         self.AsEnabled = None
@@ -247,6 +249,7 @@ class ClusterAdvancedSettings(AbstractModel):
         self.NetworkType = None
         self.IsNonStaticIpMode = None
         self.DeletionProtection = None
+        self.KubeProxyMode = None
 
 
     def _deserialize(self, params):
@@ -260,6 +263,7 @@ class ClusterAdvancedSettings(AbstractModel):
         self.NetworkType = params.get("NetworkType")
         self.IsNonStaticIpMode = params.get("IsNonStaticIpMode")
         self.DeletionProtection = params.get("DeletionProtection")
+        self.KubeProxyMode = params.get("KubeProxyMode")
 
 
 class ClusterAsGroup(AbstractModel):

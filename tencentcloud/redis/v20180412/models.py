@@ -279,7 +279,7 @@ class CreateInstanceAccountRequest(AbstractModel):
         :type AccountPassword: str
         :param ReadonlyPolicy: 路由策略：填写master或者replication，表示主节点或者从节点
         :type ReadonlyPolicy: list of str
-        :param Privilege: 读写策略：填写r、w、rw，表示只读、只写、读写
+        :param Privilege: 读写策略：填写r、rw，表示只读、读写
         :type Privilege: str
         :param Remark: 子账号描述信息
         :type Remark: str

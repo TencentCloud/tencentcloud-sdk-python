@@ -535,6 +535,34 @@ class EcmClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeCustomImageTask(self, request):
+        """查询导入镜像任务
+
+        :param request: Request instance for DescribeCustomImageTask.
+        :type request: :class:`tencentcloud.ecm.v20190719.models.DescribeCustomImageTaskRequest`
+        :rtype: :class:`tencentcloud.ecm.v20190719.models.DescribeCustomImageTaskResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeCustomImageTask", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeCustomImageTaskResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeDefaultSubnet(self, request):
         """查询可用区的默认子网
 
@@ -577,6 +605,34 @@ class EcmClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeImageResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeImportImageOs(self, request):
+        """查询外部导入镜像支持的OS列表
+
+        :param request: Request instance for DescribeImportImageOs.
+        :type request: :class:`tencentcloud.ecm.v20190719.models.DescribeImportImageOsRequest`
+        :rtype: :class:`tencentcloud.ecm.v20190719.models.DescribeImportImageOsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeImportImageOs", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeImportImageOsResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -999,6 +1055,34 @@ class EcmClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DisassociateAddressResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ImportCustomImage(self, request):
+        """从腾讯云COS导入自定义镜像
+
+        :param request: Request instance for ImportCustomImage.
+        :type request: :class:`tencentcloud.ecm.v20190719.models.ImportCustomImageRequest`
+        :rtype: :class:`tencentcloud.ecm.v20190719.models.ImportCustomImageResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ImportCustomImage", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ImportCustomImageResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
