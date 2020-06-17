@@ -389,6 +389,28 @@ class BusinessCardOCRResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class CandWord(AbstractModel):
+    """候选字符集(包含候选字Character以及置信度Confidence)
+
+    """
+
+    def __init__(self):
+        """
+        :param CandWords: 候选字符集的单词信息（包括单词Character和单词置信度confidence）
+        :type CandWords: list of Words
+        """
+        self.CandWords = None
+
+
+    def _deserialize(self, params):
+        if params.get("CandWords") is not None:
+            self.CandWords = []
+            for item in params.get("CandWords"):
+                obj = Words()
+                obj._deserialize(item)
+                self.CandWords.append(obj)
+
+
 class CarInvoiceInfo(AbstractModel):
     """购车发票识别结果
 
@@ -776,14 +798,24 @@ class EnglishOCRRequest(AbstractModel):
 图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。
 非腾讯云存储的 Url 速度和稳定性可能受一定影响。
         :type ImageUrl: str
+        :param EnableCoordPoint: 单词四点坐标开关，开启可返回图片中单词的四点坐标。
+该参数默认值为false。
+        :type EnableCoordPoint: bool
+        :param EnableCandWord: 候选字开关，开启可返回识别时多个可能的候选字（每个候选字对应其置信度）。
+该参数默认值为false。
+        :type EnableCandWord: bool
         """
         self.ImageBase64 = None
         self.ImageUrl = None
+        self.EnableCoordPoint = None
+        self.EnableCandWord = None
 
 
     def _deserialize(self, params):
         self.ImageBase64 = params.get("ImageBase64")
         self.ImageUrl = params.get("ImageUrl")
+        self.EnableCoordPoint = params.get("EnableCoordPoint")
+        self.EnableCandWord = params.get("EnableCandWord")
 
 
 class EnglishOCRResponse(AbstractModel):
@@ -3860,20 +3892,29 @@ class TextDetectionEn(AbstractModel):
 
     def __init__(self):
         """
-        :param DetectedText: 识别出的文本行内容
+        :param DetectedText: 识别出的文本行内容。
         :type DetectedText: str
-        :param Confidence: 置信度 0 ~100
+        :param Confidence: 置信度 0 ~100。
         :type Confidence: int
-        :param Polygon: 文本行坐标，以四个顶点坐标表示
+        :param Polygon: 文本行坐标，以四个顶点坐标表示。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Polygon: list of Coord
         :param AdvancedInfo: 此字段为扩展字段。目前EnglishOCR接口返回内容为空。
         :type AdvancedInfo: str
+        :param WordCoordPoint: 单词在原图中的四点坐标。
+        :type WordCoordPoint: list of WordCoordPoint
+        :param CandWord: 候选字符集(包含候选字Character以及置信度Confidence)。
+        :type CandWord: list of CandWord
+        :param Words: 识别出来的单词信息（包括单词Character和单词置信度confidence）
+        :type Words: list of Words
         """
         self.DetectedText = None
         self.Confidence = None
         self.Polygon = None
         self.AdvancedInfo = None
+        self.WordCoordPoint = None
+        self.CandWord = None
+        self.Words = None
 
 
     def _deserialize(self, params):
@@ -3886,6 +3927,24 @@ class TextDetectionEn(AbstractModel):
                 obj._deserialize(item)
                 self.Polygon.append(obj)
         self.AdvancedInfo = params.get("AdvancedInfo")
+        if params.get("WordCoordPoint") is not None:
+            self.WordCoordPoint = []
+            for item in params.get("WordCoordPoint"):
+                obj = WordCoordPoint()
+                obj._deserialize(item)
+                self.WordCoordPoint.append(obj)
+        if params.get("CandWord") is not None:
+            self.CandWord = []
+            for item in params.get("CandWord"):
+                obj = CandWord()
+                obj._deserialize(item)
+                self.CandWord.append(obj)
+        if params.get("Words") is not None:
+            self.Words = []
+            for item in params.get("Words"):
+                obj = Words()
+                obj._deserialize(item)
+                self.Words.append(obj)
 
 
 class TextEduPaper(AbstractModel):
@@ -4869,3 +4928,46 @@ class WaybillObj(AbstractModel):
 
     def _deserialize(self, params):
         self.Text = params.get("Text")
+
+
+class WordCoordPoint(AbstractModel):
+    """英文OCR识别出的单词在原图中的四点坐标数组
+
+    """
+
+    def __init__(self):
+        """
+        :param WordCoordinate: 英文OCR识别出的每个单词在原图中的四点坐标。
+        :type WordCoordinate: list of Coord
+        """
+        self.WordCoordinate = None
+
+
+    def _deserialize(self, params):
+        if params.get("WordCoordinate") is not None:
+            self.WordCoordinate = []
+            for item in params.get("WordCoordinate"):
+                obj = Coord()
+                obj._deserialize(item)
+                self.WordCoordinate.append(obj)
+
+
+class Words(AbstractModel):
+    """识别出来的单词信息包括单词（包括单词Character和单词置信度confidence）
+
+    """
+
+    def __init__(self):
+        """
+        :param Confidence: 置信度 0 ~100
+        :type Confidence: int
+        :param Character: 候选字Character
+        :type Character: str
+        """
+        self.Confidence = None
+        self.Character = None
+
+
+    def _deserialize(self, params):
+        self.Confidence = params.get("Confidence")
+        self.Character = params.get("Character")
