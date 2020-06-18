@@ -1409,6 +1409,48 @@ class ModifyDatabaseACLResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class ModifyEndUserRequest(AbstractModel):
+    """ModifyEndUser请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param EnvId: 环境ID
+        :type EnvId: str
+        :param UUId: C端用户端的唯一ID
+        :type UUId: str
+        :param Status: 帐号的状态
+        :type Status: str
+        """
+        self.EnvId = None
+        self.UUId = None
+        self.Status = None
+
+
+    def _deserialize(self, params):
+        self.EnvId = params.get("EnvId")
+        self.UUId = params.get("UUId")
+        self.Status = params.get("Status")
+
+
+class ModifyEndUserResponse(AbstractModel):
+    """ModifyEndUser返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class ModifyEnvRequest(AbstractModel):
     """ModifyEnv请求参数结构体
 

@@ -1851,8 +1851,7 @@ class DeleteLiveRecordRequest(AbstractModel):
         """
         :param StreamName: 流名称。
         :type StreamName: str
-        :param TaskId: 任务ID，全局唯一标识录制任务。
-从接口 [CreateLiveRecord](/document/product/267/30148) 的返回值中获取TaskId。
+        :param TaskId: 任务ID，由CreateLiveRecord接口返回。
         :type TaskId: int
         """
         self.StreamName = None
@@ -7138,7 +7137,7 @@ class StopLiveRecordRequest(AbstractModel):
         """
         :param StreamName: 流名称。
         :type StreamName: str
-        :param TaskId: 任务ID，全局唯一标识录制任务。
+        :param TaskId: 任务ID，由CreateLiveRecord接口返回。
         :type TaskId: int
         """
         self.StreamName = None
