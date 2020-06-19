@@ -782,6 +782,8 @@ class CreateListenerRequest(AbstractModel):
         :type Scheduler: str
         :param SniSwitch: 是否开启SNI特性，此参数仅适用于HTTPS监听器。
         :type SniSwitch: int
+        :param TargetType: 后端目标类型，NODE表示绑定普通节点，TARGETGROUP表示绑定目标组。
+        :type TargetType: str
         """
         self.LoadBalancerId = None
         self.Ports = None
@@ -792,6 +794,7 @@ class CreateListenerRequest(AbstractModel):
         self.SessionExpireTime = None
         self.Scheduler = None
         self.SniSwitch = None
+        self.TargetType = None
 
 
     def _deserialize(self, params):
@@ -808,6 +811,7 @@ class CreateListenerRequest(AbstractModel):
         self.SessionExpireTime = params.get("SessionExpireTime")
         self.Scheduler = params.get("Scheduler")
         self.SniSwitch = params.get("SniSwitch")
+        self.TargetType = params.get("TargetType")
 
 
 class CreateListenerResponse(AbstractModel):

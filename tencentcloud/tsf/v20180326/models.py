@@ -5594,12 +5594,15 @@ class ModifyContainerGroupRequest(AbstractModel):
         :type UpdateType: int
         :param UpdateIvl: 更新间隔,单位秒
         :type UpdateIvl: int
+        :param SubnetId: 子网ID
+        :type SubnetId: str
         """
         self.GroupId = None
         self.AccessType = None
         self.ProtocolPorts = None
         self.UpdateType = None
         self.UpdateIvl = None
+        self.SubnetId = None
 
 
     def _deserialize(self, params):
@@ -5613,6 +5616,7 @@ class ModifyContainerGroupRequest(AbstractModel):
                 self.ProtocolPorts.append(obj)
         self.UpdateType = params.get("UpdateType")
         self.UpdateIvl = params.get("UpdateIvl")
+        self.SubnetId = params.get("SubnetId")
 
 
 class ModifyContainerGroupResponse(AbstractModel):

@@ -832,6 +832,8 @@ class AutoscalingClient(AbstractClient):
 
     def DetachInstances(self, request):
         """本接口（DetachInstances）用于从伸缩组移出 CVM 实例，本接口不会销毁实例。
+        * 如果移出指定实例后，伸缩组内处于`IN_SERVICE`状态的实例数量小于伸缩组最小值，接口将报错
+        * 如果伸缩组处于`DISABLED`状态，移出操作不校验`IN_SERVICE`实例数量和最小值的关系
 
         :param request: Request instance for DetachInstances.
         :type request: :class:`tencentcloud.autoscaling.v20180419.models.DetachInstancesRequest`
@@ -1178,6 +1180,8 @@ class AutoscalingClient(AbstractClient):
 
     def RemoveInstances(self, request):
         """本接口（RemoveInstances）用于从伸缩组删除 CVM 实例。根据当前的产品逻辑，如果实例由弹性伸缩自动创建，则实例会被销毁；如果实例系创建后加入伸缩组的，则会从伸缩组中移除，保留实例。
+        * 如果删除指定实例后，伸缩组内处于`IN_SERVICE`状态的实例数量小于伸缩组最小值，接口将报错
+        * 如果伸缩组处于`DISABLED`状态，删除操作不校验`IN_SERVICE`实例数量和最小值的关系
 
         :param request: Request instance for RemoveInstances.
         :type request: :class:`tencentcloud.autoscaling.v20180419.models.RemoveInstancesRequest`

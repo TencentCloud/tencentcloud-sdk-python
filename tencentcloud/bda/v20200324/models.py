@@ -16,6 +16,150 @@
 from tencentcloud.common.abstract_model import AbstractModel
 
 
+class Age(AbstractModel):
+    """人体年龄信息。
+    AttributesType 不含 Age 或检测超过 5 个人体时，此参数仍返回，但不具备参考意义。
+
+    """
+
+    def __init__(self):
+        """
+        :param Type: 人体年龄信息，返回值为以下集合中的一个{小孩,青年,中年,老年}。
+        :type Type: str
+        :param Probability: Type识别概率值，[0.0,1.0],代表判断正确的概率。如0.8则代表有Type值有80%概率正确。
+        :type Probability: float
+        """
+        self.Type = None
+        self.Probability = None
+
+
+    def _deserialize(self, params):
+        self.Type = params.get("Type")
+        self.Probability = params.get("Probability")
+
+
+class AttributesOptions(AbstractModel):
+    """返回人体属性选项，此值不填则为不需要返回，可以选择的值为以下六个。
+    Age、Bag、Gender、Orientation、UpperBodyCloth、LowerBodyCloth，详细的解释请看对象描述
+    需注意本接口最多返回面积最大的 5 个人体属性信息，超过 5 个人体（第 6 个及以后的人体）的人体属性不具备参考意义。
+
+    """
+
+    def __init__(self):
+        """
+        :param Age: 返回年龄信息
+        :type Age: bool
+        :param Bag: 返回随身挎包信息
+        :type Bag: bool
+        :param Gender: 返回性别信息
+        :type Gender: bool
+        :param Orientation: 返回朝向信息
+        :type Orientation: bool
+        :param UpperBodyCloth: 返回上装信息
+        :type UpperBodyCloth: bool
+        :param LowerBodyCloth: 返回下装信息
+        :type LowerBodyCloth: bool
+        """
+        self.Age = None
+        self.Bag = None
+        self.Gender = None
+        self.Orientation = None
+        self.UpperBodyCloth = None
+        self.LowerBodyCloth = None
+
+
+    def _deserialize(self, params):
+        self.Age = params.get("Age")
+        self.Bag = params.get("Bag")
+        self.Gender = params.get("Gender")
+        self.Orientation = params.get("Orientation")
+        self.UpperBodyCloth = params.get("UpperBodyCloth")
+        self.LowerBodyCloth = params.get("LowerBodyCloth")
+
+
+class Bag(AbstractModel):
+    """人体是否挎包。
+    AttributesType 不含 Bag 或检测超过 5 个人体时，此参数仍返回，但不具备参考意义。
+
+    """
+
+    def __init__(self):
+        """
+        :param Type: 挎包信息，返回值为以下集合中的一个{双肩包, 斜挎包, 手拎包, 无包}。
+        :type Type: str
+        :param Probability: Type识别概率值，[0.0,1.0],代表判断正确的概率。如0.8则代表有Type值有80%概率正确。
+        :type Probability: float
+        """
+        self.Type = None
+        self.Probability = None
+
+
+    def _deserialize(self, params):
+        self.Type = params.get("Type")
+        self.Probability = params.get("Probability")
+
+
+class BodyAttributeInfo(AbstractModel):
+    """图中检测出的人体属性信息。
+
+    """
+
+    def __init__(self):
+        """
+        :param Age: 人体年龄信息。 
+AttributesType 不含 Age 或检测超过 5 个人体时，此参数仍返回，但不具备参考意义。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Age: :class:`tencentcloud.bda.v20200324.models.Age`
+        :param Bag: 人体是否挎包。 
+AttributesType 不含 Bag 或检测超过 5 个人体时，此参数仍返回，但不具备参考意义。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Bag: :class:`tencentcloud.bda.v20200324.models.Bag`
+        :param Gender: 人体性别信息。 
+AttributesType 不含 Gender 或检测超过 5 个人体时，此参数仍返回，但不具备参考意义。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Gender: :class:`tencentcloud.bda.v20200324.models.Gender`
+        :param Orientation: 人体朝向信息。   
+AttributesType 不含 UpperBodyCloth 或检测超过 5 个人体时，此参数仍返回，但不具备参考意义。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Orientation: :class:`tencentcloud.bda.v20200324.models.Orientation`
+        :param UpperBodyCloth: 人体上衣属性信息。
+AttributesType 不含 Orientation 或检测超过 5 个人体时，此参数仍返回，但不具备参考意义。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UpperBodyCloth: :class:`tencentcloud.bda.v20200324.models.UpperBodyCloth`
+        :param LowerBodyCloth: 人体下衣属性信息。  
+AttributesType 不含 LowerBodyCloth 或检测超过 5 个人体时，此参数仍返回，但不具备参考意义。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LowerBodyCloth: :class:`tencentcloud.bda.v20200324.models.LowerBodyCloth`
+        """
+        self.Age = None
+        self.Bag = None
+        self.Gender = None
+        self.Orientation = None
+        self.UpperBodyCloth = None
+        self.LowerBodyCloth = None
+
+
+    def _deserialize(self, params):
+        if params.get("Age") is not None:
+            self.Age = Age()
+            self.Age._deserialize(params.get("Age"))
+        if params.get("Bag") is not None:
+            self.Bag = Bag()
+            self.Bag._deserialize(params.get("Bag"))
+        if params.get("Gender") is not None:
+            self.Gender = Gender()
+            self.Gender._deserialize(params.get("Gender"))
+        if params.get("Orientation") is not None:
+            self.Orientation = Orientation()
+            self.Orientation._deserialize(params.get("Orientation"))
+        if params.get("UpperBodyCloth") is not None:
+            self.UpperBodyCloth = UpperBodyCloth()
+            self.UpperBodyCloth._deserialize(params.get("UpperBodyCloth"))
+        if params.get("LowerBodyCloth") is not None:
+            self.LowerBodyCloth = LowerBodyCloth()
+            self.LowerBodyCloth._deserialize(params.get("LowerBodyCloth"))
+
+
 class BodyDetectResult(AbstractModel):
     """图中检测出来的人体框。
 
@@ -29,9 +173,12 @@ class BodyDetectResult(AbstractModel):
         :type Confidence: float
         :param BodyRect: 图中检测出来的人体框
         :type BodyRect: :class:`tencentcloud.bda.v20200324.models.BodyRect`
+        :param BodyAttributeInfo: 图中检测出的人体属性信息。
+        :type BodyAttributeInfo: :class:`tencentcloud.bda.v20200324.models.BodyAttributeInfo`
         """
         self.Confidence = None
         self.BodyRect = None
+        self.BodyAttributeInfo = None
 
 
     def _deserialize(self, params):
@@ -39,6 +186,9 @@ class BodyDetectResult(AbstractModel):
         if params.get("BodyRect") is not None:
             self.BodyRect = BodyRect()
             self.BodyRect._deserialize(params.get("BodyRect"))
+        if params.get("BodyAttributeInfo") is not None:
+            self.BodyAttributeInfo = BodyAttributeInfo()
+            self.BodyAttributeInfo._deserialize(params.get("BodyAttributeInfo"))
 
 
 class BodyRect(AbstractModel):
@@ -366,16 +516,27 @@ Url、Image必须提供一个，如果都提供，只使用 Url。
         :type Url: str
         :param MaxBodyNum: 最多检测的人体数目，默认值为1（仅检测图片中面积最大的那个人体）； 最大值10 ，检测图片中面积最大的10个人体。
         :type MaxBodyNum: int
+        :param AttributesOptions: 是否返回年龄、性别、朝向等属性。 
+可选项有 Age、Bag、Gender、UpperBodyCloth、LowerBodyCloth、Orientation。  
+如果此参数为空则为不需要返回。 
+需要将属性组成一个用逗号分隔的字符串，属性之间的顺序没有要求。 
+关于各属性的详细描述，参见下文出参。 
+最多返回面积最大的 5 个人体属性信息，超过 5 个人体（第 6 个及以后的人体）的 BodyAttributesInfo 不具备参考意义。
+        :type AttributesOptions: :class:`tencentcloud.bda.v20200324.models.AttributesOptions`
         """
         self.Image = None
         self.Url = None
         self.MaxBodyNum = None
+        self.AttributesOptions = None
 
 
     def _deserialize(self, params):
         self.Image = params.get("Image")
         self.Url = params.get("Url")
         self.MaxBodyNum = params.get("MaxBodyNum")
+        if params.get("AttributesOptions") is not None:
+            self.AttributesOptions = AttributesOptions()
+            self.AttributesOptions._deserialize(params.get("AttributesOptions"))
 
 
 class DetectBodyResponse(AbstractModel):
@@ -406,6 +567,28 @@ class DetectBodyResponse(AbstractModel):
                 self.BodyDetectResults.append(obj)
         self.BodyModelVersion = params.get("BodyModelVersion")
         self.RequestId = params.get("RequestId")
+
+
+class Gender(AbstractModel):
+    """人体性别信息。
+    AttributesType 不含 Gender 或检测超过 5 个人体时，此参数仍返回，但不具备参考意义。
+
+    """
+
+    def __init__(self):
+        """
+        :param Type: 性别信息，返回值为以下集合中的一个 {男性, 女性}
+        :type Type: str
+        :param Probability: Type识别概率值，[0.0,1.0],代表判断正确的概率。如0.8则代表有Type值有80%概率正确。
+        :type Probability: float
+        """
+        self.Type = None
+        self.Probability = None
+
+
+    def _deserialize(self, params):
+        self.Type = params.get("Type")
+        self.Probability = params.get("Probability")
 
 
 class GetGroupListRequest(AbstractModel):
@@ -552,6 +735,100 @@ Unix 纪元时间是 1970 年 1 月 1 日星期四，协调世界时 (UTC) 。
         self.CreationTimestamp = params.get("CreationTimestamp")
 
 
+class LowerBodyCloth(AbstractModel):
+    """下衣属性信息
+
+    """
+
+    def __init__(self):
+        """
+        :param Color: 下衣颜色信息。
+        :type Color: :class:`tencentcloud.bda.v20200324.models.LowerBodyClothColor`
+        :param Length: 下衣长度信息 。
+        :type Length: :class:`tencentcloud.bda.v20200324.models.LowerBodyClothLength`
+        :param Type: 下衣类型信息。
+        :type Type: :class:`tencentcloud.bda.v20200324.models.LowerBodyClothType`
+        """
+        self.Color = None
+        self.Length = None
+        self.Type = None
+
+
+    def _deserialize(self, params):
+        if params.get("Color") is not None:
+            self.Color = LowerBodyClothColor()
+            self.Color._deserialize(params.get("Color"))
+        if params.get("Length") is not None:
+            self.Length = LowerBodyClothLength()
+            self.Length._deserialize(params.get("Length"))
+        if params.get("Type") is not None:
+            self.Type = LowerBodyClothType()
+            self.Type._deserialize(params.get("Type"))
+
+
+class LowerBodyClothColor(AbstractModel):
+    """下衣颜色信息
+
+    """
+
+    def __init__(self):
+        """
+        :param Type: 下衣颜色信息，返回值为以下集合中的一个{ 黑色系, 灰白色系, 彩色} 。
+        :type Type: str
+        :param Probability: Type识别概率值，[0.0,1.0],代表判断正确的概率。如0.8则代表有Type值有80%概率正确。
+        :type Probability: float
+        """
+        self.Type = None
+        self.Probability = None
+
+
+    def _deserialize(self, params):
+        self.Type = params.get("Type")
+        self.Probability = params.get("Probability")
+
+
+class LowerBodyClothLength(AbstractModel):
+    """下衣长度信息
+
+    """
+
+    def __init__(self):
+        """
+        :param Type: 下衣长度信息，返回值为以下集合中的一个，{长, 短} 。
+        :type Type: str
+        :param Probability: Type识别概率值，[0.0,1.0],代表判断正确的概率。如0.8则代表有Type值有80%概率正确。
+        :type Probability: float
+        """
+        self.Type = None
+        self.Probability = None
+
+
+    def _deserialize(self, params):
+        self.Type = params.get("Type")
+        self.Probability = params.get("Probability")
+
+
+class LowerBodyClothType(AbstractModel):
+    """下衣类型信息
+
+    """
+
+    def __init__(self):
+        """
+        :param Type: 下衣类型，返回值为以下集合中的一个 {裤子,裙子} 。
+        :type Type: str
+        :param Probability: Type识别概率值，[0.0,1.0],代表判断正确的概率。如0.8则代表有Type值有80%概率正确。
+        :type Probability: float
+        """
+        self.Type = None
+        self.Probability = None
+
+
+    def _deserialize(self, params):
+        self.Type = params.get("Type")
+        self.Probability = params.get("Probability")
+
+
 class ModifyGroupRequest(AbstractModel):
     """ModifyGroup请求参数结构体
 
@@ -630,6 +907,28 @@ class ModifyPersonInfoResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
+
+
+class Orientation(AbstractModel):
+    """人体朝向信息。
+    AttributesType 不含 Orientation 或检测超过 5 个人体时，此参数仍返回，但不具备参考意义。
+
+    """
+
+    def __init__(self):
+        """
+        :param Type: 人体朝向信息，返回值为以下集合中的一个 {正向, 背向, 左, 右}。
+        :type Type: str
+        :param Probability: Type识别概率值，[0.0,1.0],代表判断正确的概率。如0.8则代表有Type值有80%概率正确。
+        :type Probability: float
+        """
+        self.Type = None
+        self.Probability = None
+
+
+    def _deserialize(self, params):
+        self.Type = params.get("Type")
+        self.Probability = params.get("Probability")
 
 
 class PersonInfo(AbstractModel):
@@ -851,3 +1150,97 @@ class TraceInfo(AbstractModel):
     def _deserialize(self, params):
         self.TraceId = params.get("TraceId")
         self.BodyIds = params.get("BodyIds")
+
+
+class UpperBodyCloth(AbstractModel):
+    """上衣属性信息
+
+    """
+
+    def __init__(self):
+        """
+        :param Texture: 上衣纹理信息。
+        :type Texture: :class:`tencentcloud.bda.v20200324.models.UpperBodyClothTexture`
+        :param Color: 上衣颜色信息。
+        :type Color: :class:`tencentcloud.bda.v20200324.models.UpperBodyClothColor`
+        :param Sleeve: 上衣衣袖信息。
+        :type Sleeve: :class:`tencentcloud.bda.v20200324.models.UpperBodyClothSleeve`
+        """
+        self.Texture = None
+        self.Color = None
+        self.Sleeve = None
+
+
+    def _deserialize(self, params):
+        if params.get("Texture") is not None:
+            self.Texture = UpperBodyClothTexture()
+            self.Texture._deserialize(params.get("Texture"))
+        if params.get("Color") is not None:
+            self.Color = UpperBodyClothColor()
+            self.Color._deserialize(params.get("Color"))
+        if params.get("Sleeve") is not None:
+            self.Sleeve = UpperBodyClothSleeve()
+            self.Sleeve._deserialize(params.get("Sleeve"))
+
+
+class UpperBodyClothColor(AbstractModel):
+    """上衣颜色信息。
+
+    """
+
+    def __init__(self):
+        """
+        :param Type: 上衣颜色信息，返回值为以下集合中的一个 {红色系, 黄色系, 绿色系, 蓝色系, 黑色系, 灰白色系。
+        :type Type: str
+        :param Probability: Type识别概率值，[0.0,1.0],代表判断正确的概率。如0.8则代表有Type值有80%概率正确。
+        :type Probability: float
+        """
+        self.Type = None
+        self.Probability = None
+
+
+    def _deserialize(self, params):
+        self.Type = params.get("Type")
+        self.Probability = params.get("Probability")
+
+
+class UpperBodyClothSleeve(AbstractModel):
+    """上衣衣袖信息。
+
+    """
+
+    def __init__(self):
+        """
+        :param Type: 上衣衣袖信息, 返回值为以下集合中的一个 {长袖, 短袖}。
+        :type Type: str
+        :param Probability: Type识别概率值，[0.0,1.0],代表判断正确的概率。如0.8则代表有Type值有80%概率正确。
+        :type Probability: float
+        """
+        self.Type = None
+        self.Probability = None
+
+
+    def _deserialize(self, params):
+        self.Type = params.get("Type")
+        self.Probability = params.get("Probability")
+
+
+class UpperBodyClothTexture(AbstractModel):
+    """上衣纹理信息。
+
+    """
+
+    def __init__(self):
+        """
+        :param Type: 上衣纹理信息，返回值为以下集合中的一个, {纯色, 格子, 大色块}。
+        :type Type: str
+        :param Probability: Type识别概率值，[0.0,1.0], 代表判断正确的概率。如0.8则代表有Type值有80%概率正确。
+        :type Probability: float
+        """
+        self.Type = None
+        self.Probability = None
+
+
+    def _deserialize(self, params):
+        self.Type = params.get("Type")
+        self.Probability = params.get("Probability")
