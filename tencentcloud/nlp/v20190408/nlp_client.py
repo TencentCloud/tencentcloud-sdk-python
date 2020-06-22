@@ -82,6 +82,118 @@ class NlpClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def CreateDict(self, request):
+        """根据指定的名称、描述创建自定义词库。
+
+        :param request: Request instance for CreateDict.
+        :type request: :class:`tencentcloud.nlp.v20190408.models.CreateDictRequest`
+        :rtype: :class:`tencentcloud.nlp.v20190408.models.CreateDictResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("CreateDict", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateDictResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def CreateWordItems(self, request):
+        """向指定的词库中添加词条。
+
+        :param request: Request instance for CreateWordItems.
+        :type request: :class:`tencentcloud.nlp.v20190408.models.CreateWordItemsRequest`
+        :rtype: :class:`tencentcloud.nlp.v20190408.models.CreateWordItemsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("CreateWordItems", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateWordItemsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DeleteDict(self, request):
+        """删除自定义词库，会附带相应删除词库包含的所有词条。
+
+        :param request: Request instance for DeleteDict.
+        :type request: :class:`tencentcloud.nlp.v20190408.models.DeleteDictRequest`
+        :rtype: :class:`tencentcloud.nlp.v20190408.models.DeleteDictResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DeleteDict", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DeleteDictResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DeleteWordItems(self, request):
+        """用于删除自定义词库中的词条。
+
+        :param request: Request instance for DeleteWordItems.
+        :type request: :class:`tencentcloud.nlp.v20190408.models.DeleteWordItemsRequest`
+        :rtype: :class:`tencentcloud.nlp.v20190408.models.DeleteWordItemsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DeleteWordItems", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DeleteWordItemsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DependencyParsing(self, request):
         """句法依存分析接口能够分析出句子中词与词之间的相互依存关系，并揭示其句法结构，包括主谓关系、动宾关系、核心关系等等，可用于提取句子主干、提取句子核心词等，在机器翻译、自动问答、知识抽取等领域都有很好的应用。
 
@@ -96,6 +208,62 @@ class NlpClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DependencyParsingResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeDict(self, request):
+        """根据id或名称查询自定义词库信息。
+
+        :param request: Request instance for DescribeDict.
+        :type request: :class:`tencentcloud.nlp.v20190408.models.DescribeDictRequest`
+        :rtype: :class:`tencentcloud.nlp.v20190408.models.DescribeDictResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeDict", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeDictResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeDicts(self, request):
+        """返回属于当前用户的所有自定义词库列表。
+
+        :param request: Request instance for DescribeDicts.
+        :type request: :class:`tencentcloud.nlp.v20190408.models.DescribeDictsRequest`
+        :rtype: :class:`tencentcloud.nlp.v20190408.models.DescribeDictsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeDicts", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeDictsResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -194,6 +362,34 @@ class NlpClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeWordItems(self, request):
+        """依据自定义词库的ID，查询对应的词条信息。
+
+        :param request: Request instance for DescribeWordItems.
+        :type request: :class:`tencentcloud.nlp.v20190408.models.DescribeWordItemsRequest`
+        :rtype: :class:`tencentcloud.nlp.v20190408.models.DescribeWordItemsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeWordItems", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeWordItemsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def KeywordsExtraction(self, request):
         """基于关键词提取平台，通过对文本内容进行深度分析，提取出文本内容中的关键信息，为用户实现诸如新闻内容关键词自动提取、评论关键词提取等提供基础服务。
 
@@ -244,6 +440,34 @@ class NlpClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.LexicalAnalysisResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def SearchWordItems(self, request):
+        """查询指定自定义词库中的词条是否存在。
+
+        :param request: Request instance for SearchWordItems.
+        :type request: :class:`tencentcloud.nlp.v20190408.models.SearchWordItemsRequest`
+        :rtype: :class:`tencentcloud.nlp.v20190408.models.SearchWordItemsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("SearchWordItems", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.SearchWordItemsResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -460,6 +684,34 @@ class NlpClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.TextSimilarityResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def UpdateDict(self, request):
+        """修改自定义词库元数据信息，包括名称、描述。
+
+        :param request: Request instance for UpdateDict.
+        :type request: :class:`tencentcloud.nlp.v20190408.models.UpdateDictRequest`
+        :rtype: :class:`tencentcloud.nlp.v20190408.models.UpdateDictResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("UpdateDict", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.UpdateDictResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

@@ -199,7 +199,7 @@ class CreateNotebookInstanceRequest(AbstractModel):
     def __init__(self):
         """
         :param NotebookInstanceName: Notebook实例名称，不能超过63个字符
-规则：^[a-zA-Z0-9](-*[a-zA-Z0-9])*$
+规则：“^\[a-zA-Z0-9\](-\*\[a-zA-Z0-9\])\*$”
         :type NotebookInstanceName: str
         :param InstanceType: Notebook算力类型
 参考https://cloud.tencent.com/document/product/851/41239
@@ -346,7 +346,7 @@ class CreatePresignedNotebookInstanceUrlRequest(AbstractModel):
     def __init__(self):
         """
         :param NotebookInstanceName: Notebook实例名称
-规则：^[a-zA-Z0-9](-*[a-zA-Z0-9])*$
+规则：“^\[a-zA-Z0-9\](-\*\[a-zA-Z0-9\])\*$”
         :type NotebookInstanceName: str
         :param SessionExpirationDurationInSeconds: session有效时间，秒，取值范围[1800, 43200]
         :type SessionExpirationDurationInSeconds: int
@@ -745,7 +745,7 @@ class DescribeNotebookInstanceRequest(AbstractModel):
     def __init__(self):
         """
         :param NotebookInstanceName: Notebook实例名称
-规则：^[a-zA-Z0-9](-*[a-zA-Z0-9])*$
+规则：“^\[a-zA-Z0-9\](-\*\[a-zA-Z0-9\])\*$”
         :type NotebookInstanceName: str
         """
         self.NotebookInstanceName = None
@@ -1823,7 +1823,7 @@ class UpdateNotebookInstanceRequest(AbstractModel):
     def __init__(self):
         """
         :param NotebookInstanceName: Notebook实例名称
-规则：^[a-zA-Z0-9](-*[a-zA-Z0-9])*$
+规则：“^\[a-zA-Z0-9\](-\*\[a-zA-Z0-9\])\*$”
         :type NotebookInstanceName: str
         :param RoleArn: 角色的资源描述
         :type RoleArn: str

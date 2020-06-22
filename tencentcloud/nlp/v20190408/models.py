@@ -163,6 +163,168 @@ class ClassificationResult(AbstractModel):
         self.SecondClassProbability = params.get("SecondClassProbability")
 
 
+class CreateDictRequest(AbstractModel):
+    """CreateDict请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Name: 自定义词库名称，不超过20字。
+        :type Name: str
+        :param Description: 自定义词库描述，不超过100字。
+        :type Description: str
+        """
+        self.Name = None
+        self.Description = None
+
+
+    def _deserialize(self, params):
+        self.Name = params.get("Name")
+        self.Description = params.get("Description")
+
+
+class CreateDictResponse(AbstractModel):
+    """CreateDict返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param DictId: 创建的自定义词库ID。
+        :type DictId: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.DictId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.DictId = params.get("DictId")
+        self.RequestId = params.get("RequestId")
+
+
+class CreateWordItemsRequest(AbstractModel):
+    """CreateWordItems请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param WordItems: 待添加的词条集合。
+        :type WordItems: list of WordItem
+        :param DictId: 自定义词库ID。
+        :type DictId: str
+        """
+        self.WordItems = None
+        self.DictId = None
+
+
+    def _deserialize(self, params):
+        if params.get("WordItems") is not None:
+            self.WordItems = []
+            for item in params.get("WordItems"):
+                obj = WordItem()
+                obj._deserialize(item)
+                self.WordItems.append(obj)
+        self.DictId = params.get("DictId")
+
+
+class CreateWordItemsResponse(AbstractModel):
+    """CreateWordItems返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class DeleteDictRequest(AbstractModel):
+    """DeleteDict请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param DictId: 要删除的自定义词库ID。
+        :type DictId: str
+        """
+        self.DictId = None
+
+
+    def _deserialize(self, params):
+        self.DictId = params.get("DictId")
+
+
+class DeleteDictResponse(AbstractModel):
+    """DeleteDict返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class DeleteWordItemsRequest(AbstractModel):
+    """DeleteWordItems请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param WordItems: 待删除的词条集合。
+        :type WordItems: list of WordItem
+        :param DictId: 自定义词库ID。
+        :type DictId: str
+        """
+        self.WordItems = None
+        self.DictId = None
+
+
+    def _deserialize(self, params):
+        if params.get("WordItems") is not None:
+            self.WordItems = []
+            for item in params.get("WordItems"):
+                obj = WordItem()
+                obj._deserialize(item)
+                self.WordItems.append(obj)
+        self.DictId = params.get("DictId")
+
+
+class DeleteWordItemsResponse(AbstractModel):
+    """DeleteWordItems返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class DependencyParsingRequest(AbstractModel):
     """DependencyParsing请求参数结构体
 
@@ -218,6 +380,104 @@ class DependencyParsingResponse(AbstractModel):
                 obj = DpToken()
                 obj._deserialize(item)
                 self.DpTokens.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeDictRequest(AbstractModel):
+    """DescribeDict请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param DictId: 自定义词库ID。
+        :type DictId: str
+        :param Name: 自定义词库名称，模糊搜索。
+        :type Name: str
+        """
+        self.DictId = None
+        self.Name = None
+
+
+    def _deserialize(self, params):
+        self.DictId = params.get("DictId")
+        self.Name = params.get("Name")
+
+
+class DescribeDictResponse(AbstractModel):
+    """DescribeDict返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Dicts: 查询到的词库信息列表。
+        :type Dicts: list of DictInfo
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Dicts = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Dicts") is not None:
+            self.Dicts = []
+            for item in params.get("Dicts"):
+                obj = DictInfo()
+                obj._deserialize(item)
+                self.Dicts.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeDictsRequest(AbstractModel):
+    """DescribeDicts请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Limit: 每页数据量，范围为1~100，默认为10。
+        :type Limit: int
+        :param Offset: 分页偏移量，从0开始，默认为0。
+        :type Offset: int
+        """
+        self.Limit = None
+        self.Offset = None
+
+
+    def _deserialize(self, params):
+        self.Limit = params.get("Limit")
+        self.Offset = params.get("Offset")
+
+
+class DescribeDictsResponse(AbstractModel):
+    """DescribeDicts返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Dicts: 自定义词库信息列表。
+        :type Dicts: list of DictInfo
+        :param TotalCount: 记录总条数。
+        :type TotalCount: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Dicts = None
+        self.TotalCount = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Dicts") is not None:
+            self.Dicts = []
+            for item in params.get("Dicts"):
+                obj = DictInfo()
+                obj._deserialize(item)
+                self.Dicts.append(obj)
+        self.TotalCount = params.get("TotalCount")
         self.RequestId = params.get("RequestId")
 
 
@@ -347,6 +607,98 @@ class DescribeTripleResponse(AbstractModel):
                 obj._deserialize(item)
                 self.Content.append(obj)
         self.RequestId = params.get("RequestId")
+
+
+class DescribeWordItemsRequest(AbstractModel):
+    """DescribeWordItems请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param DictId: 自定义词库ID。
+        :type DictId: str
+        :param Limit: 每页数据量，范围为1~100，默认为10。
+        :type Limit: int
+        :param Offset: 分页偏移量，从0开始，默认为0。
+        :type Offset: int
+        :param Text: 待检索的词条文本，支持模糊匹配。
+        :type Text: str
+        """
+        self.DictId = None
+        self.Limit = None
+        self.Offset = None
+        self.Text = None
+
+
+    def _deserialize(self, params):
+        self.DictId = params.get("DictId")
+        self.Limit = params.get("Limit")
+        self.Offset = params.get("Offset")
+        self.Text = params.get("Text")
+
+
+class DescribeWordItemsResponse(AbstractModel):
+    """DescribeWordItems返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param WordItems: 词条信息列表。
+        :type WordItems: list of WordItem
+        :param TotalCount: 词条记录总条数。
+        :type TotalCount: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.WordItems = None
+        self.TotalCount = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("WordItems") is not None:
+            self.WordItems = []
+            for item in params.get("WordItems"):
+                obj = WordItem()
+                obj._deserialize(item)
+                self.WordItems.append(obj)
+        self.TotalCount = params.get("TotalCount")
+        self.RequestId = params.get("RequestId")
+
+
+class DictInfo(AbstractModel):
+    """自定义词库信息
+
+    """
+
+    def __init__(self):
+        """
+        :param Id: 自定义词库ID。
+        :type Id: str
+        :param Name: 自定义词库名称。
+        :type Name: str
+        :param CreateTime: 自定义词库创建时间，形式为:yyyy-mm-dd hh:mm:ss。
+        :type CreateTime: str
+        :param Description: 自定义词库描述信息。
+        :type Description: str
+        :param UpdateTime: 自定义词库修改时间，形式为:yyyy-mm-dd hh:mm:ss。
+        :type UpdateTime: str
+        """
+        self.Id = None
+        self.Name = None
+        self.CreateTime = None
+        self.Description = None
+        self.UpdateTime = None
+
+
+    def _deserialize(self, params):
+        self.Id = params.get("Id")
+        self.Name = params.get("Name")
+        self.CreateTime = params.get("CreateTime")
+        self.Description = params.get("Description")
+        self.UpdateTime = params.get("UpdateTime")
 
 
 class DpToken(AbstractModel):
@@ -566,9 +918,10 @@ class LexicalAnalysisResponse(AbstractModel):
     def __init__(self):
         """
         :param NerTokens: 命名实体识别结果。取值范围：
-<li>PER：表示人名</li>
-<li>LOC：表示地名</li>
-<li>ORG：表示机构团体名</li>
+<li>PER：表示人名，如刘德华、贝克汉姆</li>
+<li>LOC：表示地名，如北京、华山</li>
+<li>ORG：表示机构团体名，如腾讯、最高人民法院、人大附中</li>
+<li>PRODUCTION：表示产品名，如QQ、微信、iPhone</li>
         :type NerTokens: list of NerToken
         :param PosTokens: 分词&词性标注结果（词性表请参见附录）
         :type PosTokens: list of PosToken
@@ -652,6 +1005,87 @@ class PosToken(AbstractModel):
         self.Length = params.get("Length")
         self.Pos = params.get("Pos")
         self.Word = params.get("Word")
+
+
+class SearchResult(AbstractModel):
+    """词条搜索的结果，主要描述该词条是否存在以及相关的词性。
+
+    """
+
+    def __init__(self):
+        """
+        :param IsExist: 0表示词条不存在，1表示存在。
+        :type IsExist: int
+        :param MatchText: 匹配到的词条文本。
+        :type MatchText: str
+        :param Text: 被搜索的词条文本。
+        :type Text: str
+        :param Pos: 词条的词性。
+        :type Pos: str
+        """
+        self.IsExist = None
+        self.MatchText = None
+        self.Text = None
+        self.Pos = None
+
+
+    def _deserialize(self, params):
+        self.IsExist = params.get("IsExist")
+        self.MatchText = params.get("MatchText")
+        self.Text = params.get("Text")
+        self.Pos = params.get("Pos")
+
+
+class SearchWordItemsRequest(AbstractModel):
+    """SearchWordItems请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param WordItems: 待检索的词条集合。
+        :type WordItems: list of WordItem
+        :param DictId: 自定义词库ID。
+        :type DictId: str
+        """
+        self.WordItems = None
+        self.DictId = None
+
+
+    def _deserialize(self, params):
+        if params.get("WordItems") is not None:
+            self.WordItems = []
+            for item in params.get("WordItems"):
+                obj = WordItem()
+                obj._deserialize(item)
+                self.WordItems.append(obj)
+        self.DictId = params.get("DictId")
+
+
+class SearchWordItemsResponse(AbstractModel):
+    """SearchWordItems返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Results: 词条检索结果集合。
+        :type Results: list of SearchResult
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Results = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Results") is not None:
+            self.Results = []
+            for item in params.get("Results"):
+                obj = SearchResult()
+                obj._deserialize(item)
+                self.Results.append(obj)
+        self.RequestId = params.get("RequestId")
 
 
 class SentenceEmbeddingRequest(AbstractModel):
@@ -1041,6 +1475,48 @@ class TripleContent(AbstractModel):
         self.Popular = params.get("Popular")
 
 
+class UpdateDictRequest(AbstractModel):
+    """UpdateDict请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param DictId: 自定义词库ID。
+        :type DictId: str
+        :param Description: 词库描述，不超过100字。
+        :type Description: str
+        :param Name: 词库名称，不超过20字。
+        :type Name: str
+        """
+        self.DictId = None
+        self.Description = None
+        self.Name = None
+
+
+    def _deserialize(self, params):
+        self.DictId = params.get("DictId")
+        self.Description = params.get("Description")
+        self.Name = params.get("Name")
+
+
+class UpdateDictResponse(AbstractModel):
+    """UpdateDict返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class WordEmbeddingRequest(AbstractModel):
     """WordEmbedding请求参数结构体
 
@@ -1081,6 +1557,31 @@ class WordEmbeddingResponse(AbstractModel):
         self.Dimension = params.get("Dimension")
         self.Vector = params.get("Vector")
         self.RequestId = params.get("RequestId")
+
+
+class WordItem(AbstractModel):
+    """词条信息。
+
+    """
+
+    def __init__(self):
+        """
+        :param CreateTime: 词条创建时间。
+        :type CreateTime: str
+        :param Text: 词条文本内容。
+        :type Text: str
+        :param Pos: 词条的词性。
+        :type Pos: str
+        """
+        self.CreateTime = None
+        self.Text = None
+        self.Pos = None
+
+
+    def _deserialize(self, params):
+        self.CreateTime = params.get("CreateTime")
+        self.Text = params.get("Text")
+        self.Pos = params.get("Pos")
 
 
 class WordSimilarityRequest(AbstractModel):

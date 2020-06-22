@@ -54,7 +54,7 @@ class TafClient(AbstractClient):
 
 
     def EnhanceTaDegree(self, request):
-        """EnhanceTaDegree
+        """流量反欺诈-虚假TA识别
 
         :param request: Request instance for EnhanceTaDegree.
         :type request: :class:`tencentcloud.taf.v20200210.models.EnhanceTaDegreeRequest`
@@ -110,7 +110,7 @@ class TafClient(AbstractClient):
 
 
     def RecognizePreciseTargetAudience(self, request):
-        """RecognizePreciseTargetAudience
+        """流量反欺诈-流量验准高级版
 
         :param request: Request instance for RecognizePreciseTargetAudience.
         :type request: :class:`tencentcloud.taf.v20200210.models.RecognizePreciseTargetAudienceRequest`

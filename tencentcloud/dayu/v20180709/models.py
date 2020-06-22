@@ -1073,7 +1073,7 @@ class CreateL7RuleCertRequest(AbstractModel):
         """
         :param Business: 大禹子产品代号（bgpip表示高防IP；net表示高防IP专业版）
         :type Business: str
-        :param Id: 资源实例ID，比如高防IP实例的ID，高防IP专业版实例的ID
+        :param Id: 资源实例ID，例如高防IP实例的ID，高防IP专业版实例的ID
         :type Id: str
         :param RuleId: 规则ID
         :type RuleId: str

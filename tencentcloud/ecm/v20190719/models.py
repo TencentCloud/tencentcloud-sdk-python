@@ -1763,6 +1763,22 @@ class DescribeNodeRequest(AbstractModel):
 
     """
 
+    def __init__(self):
+        """
+        :param Filters: 过滤条件，name取值为： InstanceFamily-实例系列
+        :type Filters: list of Filter
+        """
+        self.Filters = None
+
+
+    def _deserialize(self, params):
+        if params.get("Filters") is not None:
+            self.Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self.Filters.append(obj)
+
 
 class DescribeNodeResponse(AbstractModel):
     """DescribeNode返回参数结构体

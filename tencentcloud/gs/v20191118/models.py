@@ -208,11 +208,14 @@ class EnterQueueRequest(AbstractModel):
         :type UserId: str
         :param SetNumber: 资源池编号
         :type SetNumber: int
+        :param UserIp: 游戏用户IP，用于就近调度，例如125.127.178.228
+        :type UserIp: str
         """
         self.First = None
         self.GameId = None
         self.UserId = None
         self.SetNumber = None
+        self.UserIp = None
 
 
     def _deserialize(self, params):
@@ -220,6 +223,7 @@ class EnterQueueRequest(AbstractModel):
         self.GameId = params.get("GameId")
         self.UserId = params.get("UserId")
         self.SetNumber = params.get("SetNumber")
+        self.UserIp = params.get("UserIp")
 
 
 class EnterQueueResponse(AbstractModel):
