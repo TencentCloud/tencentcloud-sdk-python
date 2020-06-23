@@ -16,6 +16,66 @@
 from tencentcloud.common.abstract_model import AbstractModel
 
 
+class AbnormalEvent(AbstractModel):
+    """造成异常体验可能的异常事件类型
+
+    """
+
+    def __init__(self):
+        """
+        :param AbnormalEventId: 异常事件ID，具体值查看附录：异常体验ID映射表：https://cloud.tencent.com/document/product/647/44916
+        :type AbnormalEventId: int
+        :param PeerId: 远端用户ID,""：表示异常事件不是由远端用户产生
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PeerId: str
+        """
+        self.AbnormalEventId = None
+        self.PeerId = None
+
+
+    def _deserialize(self, params):
+        self.AbnormalEventId = params.get("AbnormalEventId")
+        self.PeerId = params.get("PeerId")
+
+
+class AbnormalExperience(AbstractModel):
+    """用户的异常体验及可能的原因
+
+    """
+
+    def __init__(self):
+        """
+        :param UserId: 用户ID
+        :type UserId: str
+        :param ExperienceId: 异常体验ID
+        :type ExperienceId: int
+        :param RoomId: 字符串房间号
+        :type RoomId: str
+        :param AbnormalEventList: 异常事件数组
+        :type AbnormalEventList: list of AbnormalEvent
+        :param EventTime: 异常事件的上报时间
+        :type EventTime: int
+        """
+        self.UserId = None
+        self.ExperienceId = None
+        self.RoomId = None
+        self.AbnormalEventList = None
+        self.EventTime = None
+
+
+    def _deserialize(self, params):
+        self.UserId = params.get("UserId")
+        self.ExperienceId = params.get("ExperienceId")
+        self.RoomId = params.get("RoomId")
+        if params.get("AbnormalEventList") is not None:
+            self.AbnormalEventList = []
+            for item in params.get("AbnormalEventList"):
+                obj = AbnormalEvent()
+                obj._deserialize(item)
+                self.AbnormalEventList.append(obj)
+        self.EventTime = params.get("EventTime")
+
+
 class CreateTroubleInfoRequest(AbstractModel):
     """CreateTroubleInfo请求参数结构体
 
@@ -83,6 +143,65 @@ class CreateTroubleInfoResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeAbnormalEventRequest(AbstractModel):
+    """DescribeAbnormalEvent请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param SdkAppId: 用户SDKAppID，查询SDKAppID下任意20条异常体验事件（可能不同房间）
+        :type SdkAppId: str
+        :param StartTime: 查询开始时间
+        :type StartTime: int
+        :param EndTime: 查询结束时间
+        :type EndTime: int
+        :param RoomId: 房间号，查询房间内任意20条以内异常体验事件
+        :type RoomId: str
+        """
+        self.SdkAppId = None
+        self.StartTime = None
+        self.EndTime = None
+        self.RoomId = None
+
+
+    def _deserialize(self, params):
+        self.SdkAppId = params.get("SdkAppId")
+        self.StartTime = params.get("StartTime")
+        self.EndTime = params.get("EndTime")
+        self.RoomId = params.get("RoomId")
+
+
+class DescribeAbnormalEventResponse(AbstractModel):
+    """DescribeAbnormalEvent返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Total: 返回的数据总条数
+        :type Total: int
+        :param AbnormalExperienceList: 异常体验列表
+        :type AbnormalExperienceList: list of AbnormalExperience
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Total = None
+        self.AbnormalExperienceList = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Total = params.get("Total")
+        if params.get("AbnormalExperienceList") is not None:
+            self.AbnormalExperienceList = []
+            for item in params.get("AbnormalExperienceList"):
+                obj = AbnormalExperience()
+                obj._deserialize(item)
+                self.AbnormalExperienceList.append(obj)
         self.RequestId = params.get("RequestId")
 
 

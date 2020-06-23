@@ -1061,6 +1061,8 @@ class EndUserInfo(AbstractModel):
         :type IsAnonymous: bool
         :param IsDisabled: 是否禁用账户
         :type IsDisabled: bool
+        :param HasPassword: 是否设置过密码
+        :type HasPassword: bool
         """
         self.UUId = None
         self.WXOpenId = None
@@ -1074,6 +1076,7 @@ class EndUserInfo(AbstractModel):
         self.CreateTime = None
         self.IsAnonymous = None
         self.IsDisabled = None
+        self.HasPassword = None
 
 
     def _deserialize(self, params):
@@ -1089,6 +1092,7 @@ class EndUserInfo(AbstractModel):
         self.CreateTime = params.get("CreateTime")
         self.IsAnonymous = params.get("IsAnonymous")
         self.IsDisabled = params.get("IsDisabled")
+        self.HasPassword = params.get("HasPassword")
 
 
 class EnvBillingInfoItem(AbstractModel):

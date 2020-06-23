@@ -53,6 +53,34 @@ class TrtcClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeAbnormalEvent(self, request):
+        """查询SDKAppID下用户的异常体验事件，返回异常体验ID与可能产生异常体验的原因。可查询24小时内数据，查询起止时间不超过1个小时。支持跨天查询。异常体验ID映射见：https://cloud.tencent.com/document/product/647/44916
+
+        :param request: Request instance for DescribeAbnormalEvent.
+        :type request: :class:`tencentcloud.trtc.v20190722.models.DescribeAbnormalEventRequest`
+        :rtype: :class:`tencentcloud.trtc.v20190722.models.DescribeAbnormalEventResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeAbnormalEvent", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeAbnormalEventResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeCallDetail(self, request):
         """查询指定时间内的用户列表及用户通话质量数据。可查询5天内数据，查询起止时间不超过1个小时，查询用户不超过6个，不支持跨天查询。
 
