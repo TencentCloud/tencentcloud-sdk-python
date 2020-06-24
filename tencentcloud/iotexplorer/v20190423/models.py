@@ -257,6 +257,72 @@ class CreateDeviceResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class CreateLoRaGatewayRequest(AbstractModel):
+    """CreateLoRaGateway请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param GatewayId: LoRa 网关Id
+        :type GatewayId: str
+        :param Name: 网关名称
+        :type Name: str
+        :param Description: 详情描述
+        :type Description: str
+        :param Location: 位置坐标
+        :type Location: :class:`tencentcloud.iotexplorer.v20190423.models.LoRaGatewayLocation`
+        :param Position: 位置信息
+        :type Position: str
+        :param PositionDetails: 位置详情
+        :type PositionDetails: str
+        :param IsPublic: 是否公开
+        :type IsPublic: bool
+        """
+        self.GatewayId = None
+        self.Name = None
+        self.Description = None
+        self.Location = None
+        self.Position = None
+        self.PositionDetails = None
+        self.IsPublic = None
+
+
+    def _deserialize(self, params):
+        self.GatewayId = params.get("GatewayId")
+        self.Name = params.get("Name")
+        self.Description = params.get("Description")
+        if params.get("Location") is not None:
+            self.Location = LoRaGatewayLocation()
+            self.Location._deserialize(params.get("Location"))
+        self.Position = params.get("Position")
+        self.PositionDetails = params.get("PositionDetails")
+        self.IsPublic = params.get("IsPublic")
+
+
+class CreateLoRaGatewayResponse(AbstractModel):
+    """CreateLoRaGateway返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Gateway: LoRa 网关信息
+        :type Gateway: :class:`tencentcloud.iotexplorer.v20190423.models.LoRaGatewayItem`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Gateway = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Gateway") is not None:
+            self.Gateway = LoRaGatewayItem()
+            self.Gateway._deserialize(params.get("Gateway"))
+        self.RequestId = params.get("RequestId")
+
+
 class CreateProjectRequest(AbstractModel):
     """CreateProject请求参数结构体
 
@@ -1007,6 +1073,62 @@ class GetDeviceListResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class GetLoRaGatewayListRequest(AbstractModel):
+    """GetLoRaGatewayList请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param IsCommunity: 是否是社区网关
+        :type IsCommunity: bool
+        :param Offset: 偏移量
+        :type Offset: int
+        :param Limit: 限制个数
+        :type Limit: int
+        """
+        self.IsCommunity = None
+        self.Offset = None
+        self.Limit = None
+
+
+    def _deserialize(self, params):
+        self.IsCommunity = params.get("IsCommunity")
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+
+
+class GetLoRaGatewayListResponse(AbstractModel):
+    """GetLoRaGatewayList返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Total: 返回总数
+        :type Total: int
+        :param Gateways: 返回详情项
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Gateways: list of LoRaGatewayItem
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Total = None
+        self.Gateways = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Total = params.get("Total")
+        if params.get("Gateways") is not None:
+            self.Gateways = []
+            for item in params.get("Gateways"):
+                obj = LoRaGatewayItem()
+                obj._deserialize(item)
+                self.Gateways.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class GetProjectListRequest(AbstractModel):
     """GetProjectList请求参数结构体
 
@@ -1200,6 +1322,90 @@ class ListEventHistoryResponse(AbstractModel):
                 obj._deserialize(item)
                 self.EventHistory.append(obj)
         self.RequestId = params.get("RequestId")
+
+
+class LoRaGatewayItem(AbstractModel):
+    """LoRa 网关信息
+
+    """
+
+    def __init__(self):
+        """
+        :param GatewayId: LoRa 网关Id
+        :type GatewayId: str
+        :param IsPublic: 是否是公开网关
+        :type IsPublic: bool
+        :param Description: 网关描述
+        :type Description: str
+        :param Name: 网关名称
+        :type Name: str
+        :param Position: 网关位置信息
+        :type Position: str
+        :param PositionDetails: 网关位置详情
+        :type PositionDetails: str
+        :param Location: LoRa 网关位置坐标
+        :type Location: :class:`tencentcloud.iotexplorer.v20190423.models.LoRaGatewayLocation`
+        :param UpdatedAt: 最后更新时间
+        :type UpdatedAt: str
+        :param CreatedAt: 创建时间
+        :type CreatedAt: str
+        :param LastSeenAt: 最后上报时间
+        :type LastSeenAt: str
+        """
+        self.GatewayId = None
+        self.IsPublic = None
+        self.Description = None
+        self.Name = None
+        self.Position = None
+        self.PositionDetails = None
+        self.Location = None
+        self.UpdatedAt = None
+        self.CreatedAt = None
+        self.LastSeenAt = None
+
+
+    def _deserialize(self, params):
+        self.GatewayId = params.get("GatewayId")
+        self.IsPublic = params.get("IsPublic")
+        self.Description = params.get("Description")
+        self.Name = params.get("Name")
+        self.Position = params.get("Position")
+        self.PositionDetails = params.get("PositionDetails")
+        if params.get("Location") is not None:
+            self.Location = LoRaGatewayLocation()
+            self.Location._deserialize(params.get("Location"))
+        self.UpdatedAt = params.get("UpdatedAt")
+        self.CreatedAt = params.get("CreatedAt")
+        self.LastSeenAt = params.get("LastSeenAt")
+
+
+class LoRaGatewayLocation(AbstractModel):
+    """网关坐标
+
+    """
+
+    def __init__(self):
+        """
+        :param Accuracy: 准确度
+        :type Accuracy: float
+        :param Altitude: 海拔
+        :type Altitude: float
+        :param Latitude: 纬度
+        :type Latitude: float
+        :param Longitude: 精度
+        :type Longitude: float
+        """
+        self.Accuracy = None
+        self.Altitude = None
+        self.Latitude = None
+        self.Longitude = None
+
+
+    def _deserialize(self, params):
+        self.Accuracy = params.get("Accuracy")
+        self.Altitude = params.get("Altitude")
+        self.Latitude = params.get("Latitude")
+        self.Longitude = params.get("Longitude")
 
 
 class ModifyModelDefinitionRequest(AbstractModel):

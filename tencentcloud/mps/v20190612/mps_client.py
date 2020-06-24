@@ -81,6 +81,34 @@ class MpsClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def CreateAdaptiveDynamicStreamingTemplate(self, request):
+        """创建转自适应码流模板，数量上限：100。
+
+        :param request: Request instance for CreateAdaptiveDynamicStreamingTemplate.
+        :type request: :class:`tencentcloud.mps.v20190612.models.CreateAdaptiveDynamicStreamingTemplateRequest`
+        :rtype: :class:`tencentcloud.mps.v20190612.models.CreateAdaptiveDynamicStreamingTemplateResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("CreateAdaptiveDynamicStreamingTemplate", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateAdaptiveDynamicStreamingTemplateResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def CreateAnimatedGraphicsTemplate(self, request):
         """创建用户自定义转动图模板，数量上限：16。
 
@@ -430,6 +458,34 @@ class MpsClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DeleteAdaptiveDynamicStreamingTemplate(self, request):
+        """删除转自适应码流模板
+
+        :param request: Request instance for DeleteAdaptiveDynamicStreamingTemplate.
+        :type request: :class:`tencentcloud.mps.v20190612.models.DeleteAdaptiveDynamicStreamingTemplateRequest`
+        :rtype: :class:`tencentcloud.mps.v20190612.models.DeleteAdaptiveDynamicStreamingTemplateResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DeleteAdaptiveDynamicStreamingTemplate", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DeleteAdaptiveDynamicStreamingTemplateResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DeleteAnimatedGraphicsTemplate(self, request):
         """删除用户自定义转动图模板。
 
@@ -752,6 +808,34 @@ class MpsClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeAIRecognitionTemplatesResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeAdaptiveDynamicStreamingTemplates(self, request):
+        """查询转自适应码流模板，支持根据条件，分页查询。
+
+        :param request: Request instance for DescribeAdaptiveDynamicStreamingTemplates.
+        :type request: :class:`tencentcloud.mps.v20190612.models.DescribeAdaptiveDynamicStreamingTemplatesRequest`
+        :rtype: :class:`tencentcloud.mps.v20190612.models.DescribeAdaptiveDynamicStreamingTemplatesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeAdaptiveDynamicStreamingTemplates", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeAdaptiveDynamicStreamingTemplatesResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -1293,6 +1377,34 @@ class MpsClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyAIRecognitionTemplateResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ModifyAdaptiveDynamicStreamingTemplate(self, request):
+        """修改转自适应码流模板
+
+        :param request: Request instance for ModifyAdaptiveDynamicStreamingTemplate.
+        :type request: :class:`tencentcloud.mps.v20190612.models.ModifyAdaptiveDynamicStreamingTemplateRequest`
+        :rtype: :class:`tencentcloud.mps.v20190612.models.ModifyAdaptiveDynamicStreamingTemplateResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ModifyAdaptiveDynamicStreamingTemplate", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ModifyAdaptiveDynamicStreamingTemplateResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

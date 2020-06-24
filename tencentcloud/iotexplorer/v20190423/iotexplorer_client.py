@@ -137,6 +137,34 @@ class IotexplorerClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def CreateLoRaGateway(self, request):
+        """创建新 LoRa 网关设备接口
+
+        :param request: Request instance for CreateLoRaGateway.
+        :type request: :class:`tencentcloud.iotexplorer.v20190423.models.CreateLoRaGatewayRequest`
+        :rtype: :class:`tencentcloud.iotexplorer.v20190423.models.CreateLoRaGatewayResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("CreateLoRaGateway", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateLoRaGatewayResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def CreateProject(self, request):
         """为用户提供新建项目的能力，用于集中管理产品和应用。
 
@@ -459,6 +487,34 @@ class IotexplorerClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.GetDeviceListResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def GetLoRaGatewayList(self, request):
+        """获取 LoRa 网关列表接口
+
+        :param request: Request instance for GetLoRaGatewayList.
+        :type request: :class:`tencentcloud.iotexplorer.v20190423.models.GetLoRaGatewayListRequest`
+        :rtype: :class:`tencentcloud.iotexplorer.v20190423.models.GetLoRaGatewayListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("GetLoRaGatewayList", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.GetLoRaGatewayListResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

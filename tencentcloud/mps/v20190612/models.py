@@ -140,6 +140,185 @@ class AIRecognitionTemplateItem(AbstractModel):
         self.UpdateTime = params.get("UpdateTime")
 
 
+class AdaptiveDynamicStreamingInfoItem(AbstractModel):
+    """转自适应码流信息
+
+    """
+
+    def __init__(self):
+        """
+        :param Definition: 转自适应码流规格。
+        :type Definition: int
+        :param Package: 打包格式，可能为 HLS和 MPEG-DASH 两种。
+        :type Package: str
+        :param Path: 播放路径。
+        :type Path: str
+        :param Storage: 自适应码流文件的存储位置。
+        :type Storage: :class:`tencentcloud.mps.v20190612.models.TaskOutputStorage`
+        """
+        self.Definition = None
+        self.Package = None
+        self.Path = None
+        self.Storage = None
+
+
+    def _deserialize(self, params):
+        self.Definition = params.get("Definition")
+        self.Package = params.get("Package")
+        self.Path = params.get("Path")
+        if params.get("Storage") is not None:
+            self.Storage = TaskOutputStorage()
+            self.Storage._deserialize(params.get("Storage"))
+
+
+class AdaptiveDynamicStreamingTaskInput(AbstractModel):
+    """对视频转自适应码流的输入参数类型
+
+    """
+
+    def __init__(self):
+        """
+        :param Definition: 转自适应码流模板 ID。
+        :type Definition: int
+        :param WatermarkSet: 水印列表，支持多张图片或文字水印，最大可支持 10 张。
+        :type WatermarkSet: list of WatermarkInput
+        :param OutputStorage: 转自适应码流后文件的目标存储，不填则继承上层的 OutputStorage 值。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OutputStorage: :class:`tencentcloud.mps.v20190612.models.TaskOutputStorage`
+        :param OutputObjectPath: 转自适应码流后，manifest 文件的输出路径，可以为相对路径或者绝对路径。如果不填，则默认为相对路径：`{inputName}_adaptiveDynamicStreaming_{definition}.{format}`。
+        :type OutputObjectPath: str
+        :param SubStreamObjectName: 转自适应码流后，子流文件的输出路径，只能为相对路径。如果不填，则默认为相对路径：`{inputName}_adaptiveDynamicStreaming_{definition}_{subStreamNumber}.{format}`。
+        :type SubStreamObjectName: str
+        :param SegmentObjectName: 转自适应码流（仅 HLS）后，分片文件的输出路径，只能为相对路径。如果不填，则默认为相对路径：`{inputName}_adaptiveDynamicStreaming_{definition}_{subStreamNumber}_{segmentNumber}.{format}`。
+        :type SegmentObjectName: str
+        """
+        self.Definition = None
+        self.WatermarkSet = None
+        self.OutputStorage = None
+        self.OutputObjectPath = None
+        self.SubStreamObjectName = None
+        self.SegmentObjectName = None
+
+
+    def _deserialize(self, params):
+        self.Definition = params.get("Definition")
+        if params.get("WatermarkSet") is not None:
+            self.WatermarkSet = []
+            for item in params.get("WatermarkSet"):
+                obj = WatermarkInput()
+                obj._deserialize(item)
+                self.WatermarkSet.append(obj)
+        if params.get("OutputStorage") is not None:
+            self.OutputStorage = TaskOutputStorage()
+            self.OutputStorage._deserialize(params.get("OutputStorage"))
+        self.OutputObjectPath = params.get("OutputObjectPath")
+        self.SubStreamObjectName = params.get("SubStreamObjectName")
+        self.SegmentObjectName = params.get("SegmentObjectName")
+
+
+class AdaptiveDynamicStreamingTemplate(AbstractModel):
+    """转自适应码流模板详情
+
+    """
+
+    def __init__(self):
+        """
+        :param Definition: 转自适应码流模板唯一标识。
+        :type Definition: int
+        :param Type: 模板类型，取值范围：
+<li>Preset：系统预置模板；</li>
+<li>Custom：用户自定义模板。</li>
+        :type Type: str
+        :param Name: 转自适应码流模板名称。
+        :type Name: str
+        :param Comment: 转自适应码流模板描述信息。
+        :type Comment: str
+        :param Format: 转自适应码流格式，取值范围：
+<li>HLS，</li>
+<li>MPEG-DASH。</li>
+        :type Format: str
+        :param StreamInfos: 转自适应码流输入流参数信息，最多输入10路流。
+        :type StreamInfos: list of AdaptiveStreamTemplate
+        :param DisableHigherVideoBitrate: 是否禁止视频低码率转高码率，取值范围：
+<li>0：否，</li>
+<li>1：是。</li>
+        :type DisableHigherVideoBitrate: int
+        :param DisableHigherVideoResolution: 是否禁止视频分辨率转高分辨率，取值范围：
+<li>0：否，</li>
+<li>1：是。</li>
+        :type DisableHigherVideoResolution: int
+        :param CreateTime: 模板创建时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。
+        :type CreateTime: str
+        :param UpdateTime: 模板最后修改时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。
+        :type UpdateTime: str
+        """
+        self.Definition = None
+        self.Type = None
+        self.Name = None
+        self.Comment = None
+        self.Format = None
+        self.StreamInfos = None
+        self.DisableHigherVideoBitrate = None
+        self.DisableHigherVideoResolution = None
+        self.CreateTime = None
+        self.UpdateTime = None
+
+
+    def _deserialize(self, params):
+        self.Definition = params.get("Definition")
+        self.Type = params.get("Type")
+        self.Name = params.get("Name")
+        self.Comment = params.get("Comment")
+        self.Format = params.get("Format")
+        if params.get("StreamInfos") is not None:
+            self.StreamInfos = []
+            for item in params.get("StreamInfos"):
+                obj = AdaptiveStreamTemplate()
+                obj._deserialize(item)
+                self.StreamInfos.append(obj)
+        self.DisableHigherVideoBitrate = params.get("DisableHigherVideoBitrate")
+        self.DisableHigherVideoResolution = params.get("DisableHigherVideoResolution")
+        self.CreateTime = params.get("CreateTime")
+        self.UpdateTime = params.get("UpdateTime")
+
+
+class AdaptiveStreamTemplate(AbstractModel):
+    """自适应转码流参数模板
+
+    """
+
+    def __init__(self):
+        """
+        :param Video: 视频参数信息。
+        :type Video: :class:`tencentcloud.mps.v20190612.models.VideoTemplateInfo`
+        :param Audio: 音频参数信息。
+        :type Audio: :class:`tencentcloud.mps.v20190612.models.AudioTemplateInfo`
+        :param RemoveAudio: 是否移除音频流，取值范围：
+<li>0：否，</li>
+<li>1：是。</li>
+        :type RemoveAudio: int
+        :param RemoveVideo: 是否移除视频流，取值范围：
+<li>0：否，</li>
+<li>1：是。</li>
+        :type RemoveVideo: int
+        """
+        self.Video = None
+        self.Audio = None
+        self.RemoveAudio = None
+        self.RemoveVideo = None
+
+
+    def _deserialize(self, params):
+        if params.get("Video") is not None:
+            self.Video = VideoTemplateInfo()
+            self.Video._deserialize(params.get("Video"))
+        if params.get("Audio") is not None:
+            self.Audio = AudioTemplateInfo()
+            self.Audio._deserialize(params.get("Audio"))
+        self.RemoveAudio = params.get("RemoveAudio")
+        self.RemoveVideo = params.get("RemoveVideo")
+
+
 class AiAnalysisResult(AbstractModel):
     """智能分析结果
 
@@ -2716,8 +2895,7 @@ class AudioTemplateInfo(AbstractModel):
 <li>ac3。</li>
 当外层参数 Container 为 mp4 或 flv 时，可选值为：
 <li>libfdk_aac：更适合 mp4；</li>
-<li>libmp3lame：更适合 flv；</li>
-<li>mp2。</li>
+<li>libmp3lame：更适合 flv。</li>
 当外层参数 Container 为 hls 时，可选值为：
 <li>libfdk_aac；</li>
 <li>libmp3lame。</li>
@@ -3149,6 +3327,78 @@ class CreateAIRecognitionTemplateResponse(AbstractModel):
     def __init__(self):
         """
         :param Definition: 视频内容识别模板唯一标识。
+        :type Definition: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Definition = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Definition = params.get("Definition")
+        self.RequestId = params.get("RequestId")
+
+
+class CreateAdaptiveDynamicStreamingTemplateRequest(AbstractModel):
+    """CreateAdaptiveDynamicStreamingTemplate请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Format: 自适应转码格式，取值范围：
+<li>HLS，</li>
+<li>MPEG-DASH。</li>
+        :type Format: str
+        :param StreamInfos: 转自适应码流输出子流参数信息，最多输出10路子流。
+注意：各个子流的帧率必须保持一致；如果不一致，采用第一个子流的帧率作为输出帧率。
+        :type StreamInfos: list of AdaptiveStreamTemplate
+        :param Name: 模板名称，长度限制：64 个字符。
+        :type Name: str
+        :param DisableHigherVideoBitrate: 是否禁止视频低码率转高码率，取值范围：
+<li>0：否，</li>
+<li>1：是。</li>
+默认为否。
+        :type DisableHigherVideoBitrate: int
+        :param DisableHigherVideoResolution: 是否禁止视频分辨率转高分辨率，取值范围：
+<li>0：否，</li>
+<li>1：是。</li>
+默认为否。
+        :type DisableHigherVideoResolution: int
+        :param Comment: 模板描述信息，长度限制：256 个字符。
+        :type Comment: str
+        """
+        self.Format = None
+        self.StreamInfos = None
+        self.Name = None
+        self.DisableHigherVideoBitrate = None
+        self.DisableHigherVideoResolution = None
+        self.Comment = None
+
+
+    def _deserialize(self, params):
+        self.Format = params.get("Format")
+        if params.get("StreamInfos") is not None:
+            self.StreamInfos = []
+            for item in params.get("StreamInfos"):
+                obj = AdaptiveStreamTemplate()
+                obj._deserialize(item)
+                self.StreamInfos.append(obj)
+        self.Name = params.get("Name")
+        self.DisableHigherVideoBitrate = params.get("DisableHigherVideoBitrate")
+        self.DisableHigherVideoResolution = params.get("DisableHigherVideoResolution")
+        self.Comment = params.get("Comment")
+
+
+class CreateAdaptiveDynamicStreamingTemplateResponse(AbstractModel):
+    """CreateAdaptiveDynamicStreamingTemplate返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Definition: 自适应转码模板唯一标识。
         :type Definition: int
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -4032,6 +4282,40 @@ class DeleteAIRecognitionTemplateResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DeleteAdaptiveDynamicStreamingTemplateRequest(AbstractModel):
+    """DeleteAdaptiveDynamicStreamingTemplate请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Definition: 自适应转码模板唯一标识。
+        :type Definition: int
+        """
+        self.Definition = None
+
+
+    def _deserialize(self, params):
+        self.Definition = params.get("Definition")
+
+
+class DeleteAdaptiveDynamicStreamingTemplateResponse(AbstractModel):
+    """DeleteAdaptiveDynamicStreamingTemplate返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class DeleteAnimatedGraphicsTemplateRequest(AbstractModel):
     """DeleteAnimatedGraphicsTemplate请求参数结构体
 
@@ -4479,6 +4763,67 @@ class DescribeAIRecognitionTemplatesResponse(AbstractModel):
                 obj = AIRecognitionTemplateItem()
                 obj._deserialize(item)
                 self.AIRecognitionTemplateSet.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeAdaptiveDynamicStreamingTemplatesRequest(AbstractModel):
+    """DescribeAdaptiveDynamicStreamingTemplates请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Definitions: 转自适应码流模板唯一标识过滤条件，数组长度限制：100。
+        :type Definitions: list of int non-negative
+        :param Offset: 分页偏移量，默认值：0。
+        :type Offset: int
+        :param Limit: 返回记录条数，默认值：10，最大值：100。
+        :type Limit: int
+        :param Type: 模板类型过滤条件，可选值：
+<li>Preset：系统预置模板；</li>
+<li>Custom：用户自定义模板。</li>
+        :type Type: str
+        """
+        self.Definitions = None
+        self.Offset = None
+        self.Limit = None
+        self.Type = None
+
+
+    def _deserialize(self, params):
+        self.Definitions = params.get("Definitions")
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+        self.Type = params.get("Type")
+
+
+class DescribeAdaptiveDynamicStreamingTemplatesResponse(AbstractModel):
+    """DescribeAdaptiveDynamicStreamingTemplates返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param TotalCount: 符合过滤条件的记录总数。
+        :type TotalCount: int
+        :param AdaptiveDynamicStreamingTemplateSet: 转自适应码流模板详情列表。
+        :type AdaptiveDynamicStreamingTemplateSet: list of AdaptiveDynamicStreamingTemplate
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.AdaptiveDynamicStreamingTemplateSet = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("AdaptiveDynamicStreamingTemplateSet") is not None:
+            self.AdaptiveDynamicStreamingTemplateSet = []
+            for item in params.get("AdaptiveDynamicStreamingTemplateSet"):
+                obj = AdaptiveDynamicStreamingTemplate()
+                obj._deserialize(item)
+                self.AdaptiveDynamicStreamingTemplateSet.append(obj)
         self.RequestId = params.get("RequestId")
 
 
@@ -7091,6 +7436,44 @@ class MediaMetaData(AbstractModel):
         self.AudioDuration = params.get("AudioDuration")
 
 
+class MediaProcessTaskAdaptiveDynamicStreamingResult(AbstractModel):
+    """对视频转自适应码流任务结果类型
+
+    """
+
+    def __init__(self):
+        """
+        :param Status: 任务状态，有 PROCESSING，SUCCESS 和 FAIL 三种。
+        :type Status: str
+        :param ErrCode: 错误码，0：成功，其他值：失败。
+        :type ErrCode: int
+        :param Message: 错误信息。
+        :type Message: str
+        :param Input: 对视频转自适应码流任务的输入。
+        :type Input: :class:`tencentcloud.mps.v20190612.models.AdaptiveDynamicStreamingTaskInput`
+        :param Output: 对视频转自适应码流任务的输出。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Output: :class:`tencentcloud.mps.v20190612.models.AdaptiveDynamicStreamingInfoItem`
+        """
+        self.Status = None
+        self.ErrCode = None
+        self.Message = None
+        self.Input = None
+        self.Output = None
+
+
+    def _deserialize(self, params):
+        self.Status = params.get("Status")
+        self.ErrCode = params.get("ErrCode")
+        self.Message = params.get("Message")
+        if params.get("Input") is not None:
+            self.Input = AdaptiveDynamicStreamingTaskInput()
+            self.Input._deserialize(params.get("Input"))
+        if params.get("Output") is not None:
+            self.Output = AdaptiveDynamicStreamingInfoItem()
+            self.Output._deserialize(params.get("Output"))
+
+
 class MediaProcessTaskAnimatedGraphicResult(AbstractModel):
     """转动图任务结果类型
 
@@ -7190,12 +7573,15 @@ class MediaProcessTaskInput(AbstractModel):
         :type SampleSnapshotTaskSet: list of SampleSnapshotTaskInput
         :param ImageSpriteTaskSet: 对视频截雪碧图任务列表。
         :type ImageSpriteTaskSet: list of ImageSpriteTaskInput
+        :param AdaptiveDynamicStreamingTaskSet: 转自适应码流任务列表。
+        :type AdaptiveDynamicStreamingTaskSet: list of AdaptiveDynamicStreamingTaskInput
         """
         self.TranscodeTaskSet = None
         self.AnimatedGraphicTaskSet = None
         self.SnapshotByTimeOffsetTaskSet = None
         self.SampleSnapshotTaskSet = None
         self.ImageSpriteTaskSet = None
+        self.AdaptiveDynamicStreamingTaskSet = None
 
 
     def _deserialize(self, params):
@@ -7229,6 +7615,12 @@ class MediaProcessTaskInput(AbstractModel):
                 obj = ImageSpriteTaskInput()
                 obj._deserialize(item)
                 self.ImageSpriteTaskSet.append(obj)
+        if params.get("AdaptiveDynamicStreamingTaskSet") is not None:
+            self.AdaptiveDynamicStreamingTaskSet = []
+            for item in params.get("AdaptiveDynamicStreamingTaskSet"):
+                obj = AdaptiveDynamicStreamingTaskInput()
+                obj._deserialize(item)
+                self.AdaptiveDynamicStreamingTaskSet.append(obj)
 
 
 class MediaProcessTaskResult(AbstractModel):
@@ -7262,6 +7654,9 @@ class MediaProcessTaskResult(AbstractModel):
         :param ImageSpriteTask: 对视频截雪碧图任务的查询结果，当任务类型为 ImageSprite 时有效。
 注意：此字段可能返回 null，表示取不到有效值。
         :type ImageSpriteTask: :class:`tencentcloud.mps.v20190612.models.MediaProcessTaskImageSpriteResult`
+        :param AdaptiveDynamicStreamingTask: 转自适应码流任务查询结果，当任务类型为 AdaptiveDynamicStreaming 时有效。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AdaptiveDynamicStreamingTask: :class:`tencentcloud.mps.v20190612.models.MediaProcessTaskAdaptiveDynamicStreamingResult`
         """
         self.Type = None
         self.TranscodeTask = None
@@ -7269,6 +7664,7 @@ class MediaProcessTaskResult(AbstractModel):
         self.SnapshotByTimeOffsetTask = None
         self.SampleSnapshotTask = None
         self.ImageSpriteTask = None
+        self.AdaptiveDynamicStreamingTask = None
 
 
     def _deserialize(self, params):
@@ -7288,6 +7684,9 @@ class MediaProcessTaskResult(AbstractModel):
         if params.get("ImageSpriteTask") is not None:
             self.ImageSpriteTask = MediaProcessTaskImageSpriteResult()
             self.ImageSpriteTask._deserialize(params.get("ImageSpriteTask"))
+        if params.get("AdaptiveDynamicStreamingTask") is not None:
+            self.AdaptiveDynamicStreamingTask = MediaProcessTaskAdaptiveDynamicStreamingResult()
+            self.AdaptiveDynamicStreamingTask._deserialize(params.get("AdaptiveDynamicStreamingTask"))
 
 
 class MediaProcessTaskSampleSnapshotResult(AbstractModel):
@@ -7742,6 +8141,76 @@ class ModifyAIRecognitionTemplateRequest(AbstractModel):
 
 class ModifyAIRecognitionTemplateResponse(AbstractModel):
     """ModifyAIRecognitionTemplate返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class ModifyAdaptiveDynamicStreamingTemplateRequest(AbstractModel):
+    """ModifyAdaptiveDynamicStreamingTemplate请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Definition: 转自适应码流模板唯一标识。
+        :type Definition: int
+        :param Name: 模板名称，长度限制：64 个字符。
+        :type Name: str
+        :param Format: 转自适应码流格式，取值范围：
+<li>HLS，</li>
+<li>MPEG-DASH。</li>
+        :type Format: str
+        :param DisableHigherVideoBitrate: 是否禁止视频低码率转高码率，取值范围：
+<li>0：否，</li>
+<li>1：是。</li>
+        :type DisableHigherVideoBitrate: int
+        :param DisableHigherVideoResolution: 是否禁止视频分辨率转高分辨率，取值范围：
+<li>0：否，</li>
+<li>1：是。</li>
+        :type DisableHigherVideoResolution: int
+        :param StreamInfos: 转自适应码流输入流参数信息，最多输入10路流。
+注意：各个流的帧率必须保持一致；如果不一致，采用第一个流的帧率作为输出帧率。
+        :type StreamInfos: list of AdaptiveStreamTemplate
+        :param Comment: 模板描述信息，长度限制：256 个字符。
+        :type Comment: str
+        """
+        self.Definition = None
+        self.Name = None
+        self.Format = None
+        self.DisableHigherVideoBitrate = None
+        self.DisableHigherVideoResolution = None
+        self.StreamInfos = None
+        self.Comment = None
+
+
+    def _deserialize(self, params):
+        self.Definition = params.get("Definition")
+        self.Name = params.get("Name")
+        self.Format = params.get("Format")
+        self.DisableHigherVideoBitrate = params.get("DisableHigherVideoBitrate")
+        self.DisableHigherVideoResolution = params.get("DisableHigherVideoResolution")
+        if params.get("StreamInfos") is not None:
+            self.StreamInfos = []
+            for item in params.get("StreamInfos"):
+                obj = AdaptiveStreamTemplate()
+                obj._deserialize(item)
+                self.StreamInfos.append(obj)
+        self.Comment = params.get("Comment")
+
+
+class ModifyAdaptiveDynamicStreamingTemplateResponse(AbstractModel):
+    """ModifyAdaptiveDynamicStreamingTemplate返回参数结构体
 
     """
 
