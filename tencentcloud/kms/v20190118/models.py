@@ -571,6 +571,49 @@ class DescribeWhiteBoxDecryptKeyResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeWhiteBoxDeviceFingerprintsRequest(AbstractModel):
+    """DescribeWhiteBoxDeviceFingerprints请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param KeyId: 白盒密钥ID
+        :type KeyId: str
+        """
+        self.KeyId = None
+
+
+    def _deserialize(self, params):
+        self.KeyId = params.get("KeyId")
+
+
+class DescribeWhiteBoxDeviceFingerprintsResponse(AbstractModel):
+    """DescribeWhiteBoxDeviceFingerprints返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param DeviceFingerprints: 设备指纹列表
+        :type DeviceFingerprints: list of DeviceFingerprint
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.DeviceFingerprints = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("DeviceFingerprints") is not None:
+            self.DeviceFingerprints = []
+            for item in params.get("DeviceFingerprints"):
+                obj = DeviceFingerprint()
+                obj._deserialize(item)
+                self.DeviceFingerprints.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeWhiteBoxKeyDetailsRequest(AbstractModel):
     """DescribeWhiteBoxKeyDetails请求参数结构体
 
@@ -679,6 +722,28 @@ class DescribeWhiteBoxServiceStatusResponse(AbstractModel):
     def _deserialize(self, params):
         self.ServiceEnabled = params.get("ServiceEnabled")
         self.RequestId = params.get("RequestId")
+
+
+class DeviceFingerprint(AbstractModel):
+    """设备指纹
+
+    """
+
+    def __init__(self):
+        """
+        :param Identity: 指纹信息，由设备指纹采集工具采集获得，格式满足正则表达式：^[0-9a-f]{8}[\-][0-9a-f]{14}[\-][0-9a-f]{14}[\-][0-9a-f]{14}[\-][0-9a-f]{16}$
+        :type Identity: str
+        :param Description: 描述信息，如：IP，设备名称等，最大1024字节
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Description: str
+        """
+        self.Identity = None
+        self.Description = None
+
+
+    def _deserialize(self, params):
+        self.Identity = params.get("Identity")
+        self.Description = params.get("Description")
 
 
 class DisableKeyRequest(AbstractModel):
@@ -1700,6 +1765,49 @@ class ListKeysResponse(AbstractModel):
                 obj._deserialize(item)
                 self.Keys.append(obj)
         self.TotalCount = params.get("TotalCount")
+        self.RequestId = params.get("RequestId")
+
+
+class OverwriteWhiteBoxDeviceFingerprintsRequest(AbstractModel):
+    """OverwriteWhiteBoxDeviceFingerprints请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param KeyId: 白盒密钥ID
+        :type KeyId: str
+        :param DeviceFingerprints: 设备指纹列表，如果列表为空，则表示删除该密钥对应的所有指纹信息。列表最大长度不超过200。
+        :type DeviceFingerprints: list of DeviceFingerprint
+        """
+        self.KeyId = None
+        self.DeviceFingerprints = None
+
+
+    def _deserialize(self, params):
+        self.KeyId = params.get("KeyId")
+        if params.get("DeviceFingerprints") is not None:
+            self.DeviceFingerprints = []
+            for item in params.get("DeviceFingerprints"):
+                obj = DeviceFingerprint()
+                obj._deserialize(item)
+                self.DeviceFingerprints.append(obj)
+
+
+class OverwriteWhiteBoxDeviceFingerprintsResponse(AbstractModel):
+    """OverwriteWhiteBoxDeviceFingerprints返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
 
 

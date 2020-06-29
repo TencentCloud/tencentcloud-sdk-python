@@ -277,6 +277,34 @@ class TcaplusdbClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DeleteTableIndex(self, request):
+        """删除表格的分布式索引
+
+        :param request: Request instance for DeleteTableIndex.
+        :type request: :class:`tencentcloud.tcaplusdb.v20190823.models.DeleteTableIndexRequest`
+        :rtype: :class:`tencentcloud.tcaplusdb.v20190823.models.DeleteTableIndexResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DeleteTableIndex", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DeleteTableIndexResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DeleteTables(self, request):
         """删除指定的表,第一次调用此接口代表将表移动至回收站，再次调用代表将此表格从回收站中彻底删除。
 
@@ -907,6 +935,34 @@ class TcaplusdbClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.RollbackTablesResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def SetTableIndex(self, request):
+        """设置表格分布式索引
+
+        :param request: Request instance for SetTableIndex.
+        :type request: :class:`tencentcloud.tcaplusdb.v20190823.models.SetTableIndexRequest`
+        :rtype: :class:`tencentcloud.tcaplusdb.v20190823.models.SetTableIndexResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("SetTableIndex", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.SetTableIndexResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

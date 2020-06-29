@@ -333,6 +333,34 @@ class KmsClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeWhiteBoxDeviceFingerprints(self, request):
+        """获取指定密钥的设备指纹列表
+
+        :param request: Request instance for DescribeWhiteBoxDeviceFingerprints.
+        :type request: :class:`tencentcloud.kms.v20190118.models.DescribeWhiteBoxDeviceFingerprintsRequest`
+        :rtype: :class:`tencentcloud.kms.v20190118.models.DescribeWhiteBoxDeviceFingerprintsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeWhiteBoxDeviceFingerprints", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeWhiteBoxDeviceFingerprintsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeWhiteBoxKey(self, request):
         """展示白盒密钥的信息
 
@@ -1020,6 +1048,34 @@ class KmsClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ListKeysResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def OverwriteWhiteBoxDeviceFingerprints(self, request):
+        """覆盖指定密钥的设备指纹信息
+
+        :param request: Request instance for OverwriteWhiteBoxDeviceFingerprints.
+        :type request: :class:`tencentcloud.kms.v20190118.models.OverwriteWhiteBoxDeviceFingerprintsRequest`
+        :rtype: :class:`tencentcloud.kms.v20190118.models.OverwriteWhiteBoxDeviceFingerprintsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("OverwriteWhiteBoxDeviceFingerprints", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.OverwriteWhiteBoxDeviceFingerprintsResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

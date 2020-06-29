@@ -2485,6 +2485,8 @@ class VodClient(AbstractClient):
         2. 智能内容分析（标签、分类、封面、按帧标签）；
         3. 智能内容识别（视频片头片尾、人脸、文本全文、文本关键词、语音全文、语音关键词、物体）。
 
+        如使用事件通知，事件通知的类型为 [任务流状态变更](https://cloud.tencent.com/document/product/266/9636)。
+
         :param request: Request instance for ProcessMediaByUrl.
         :type request: :class:`tencentcloud.vod.v20180717.models.ProcessMediaByUrlRequest`
         :rtype: :class:`tencentcloud.vod.v20180717.models.ProcessMediaByUrlResponse`

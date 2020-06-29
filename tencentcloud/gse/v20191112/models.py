@@ -1644,6 +1644,93 @@ class StartGameServerSessionPlacementResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class StartMatchPlacementRequest(AbstractModel):
+    """StartMatchPlacement请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param PlacementId: 开始部署游戏服务器会话的唯一标识符
+        :type PlacementId: str
+        :param GameServerSessionQueueName: 游戏服务器会话队列名称
+        :type GameServerSessionQueueName: str
+        :param MaximumPlayerSessionCount: 游戏服务器允许同时连接到游戏会话的最大玩家数量
+        :type MaximumPlayerSessionCount: int
+        :param DesiredPlayerSessions: 玩家游戏会话信息
+        :type DesiredPlayerSessions: list of DesiredPlayerSession
+        :param GameProperties: 玩家游戏会话属性
+        :type GameProperties: list of GameProperty
+        :param GameServerSessionData: 游戏服务器会话数据
+        :type GameServerSessionData: str
+        :param GameServerSessionName: 游戏服务器会话名称
+        :type GameServerSessionName: str
+        :param PlayerLatencies: 玩家延迟
+        :type PlayerLatencies: list of PlayerLatency
+        :param MatchmakerData: 游戏匹配数据
+        :type MatchmakerData: str
+        """
+        self.PlacementId = None
+        self.GameServerSessionQueueName = None
+        self.MaximumPlayerSessionCount = None
+        self.DesiredPlayerSessions = None
+        self.GameProperties = None
+        self.GameServerSessionData = None
+        self.GameServerSessionName = None
+        self.PlayerLatencies = None
+        self.MatchmakerData = None
+
+
+    def _deserialize(self, params):
+        self.PlacementId = params.get("PlacementId")
+        self.GameServerSessionQueueName = params.get("GameServerSessionQueueName")
+        self.MaximumPlayerSessionCount = params.get("MaximumPlayerSessionCount")
+        if params.get("DesiredPlayerSessions") is not None:
+            self.DesiredPlayerSessions = []
+            for item in params.get("DesiredPlayerSessions"):
+                obj = DesiredPlayerSession()
+                obj._deserialize(item)
+                self.DesiredPlayerSessions.append(obj)
+        if params.get("GameProperties") is not None:
+            self.GameProperties = []
+            for item in params.get("GameProperties"):
+                obj = GameProperty()
+                obj._deserialize(item)
+                self.GameProperties.append(obj)
+        self.GameServerSessionData = params.get("GameServerSessionData")
+        self.GameServerSessionName = params.get("GameServerSessionName")
+        if params.get("PlayerLatencies") is not None:
+            self.PlayerLatencies = []
+            for item in params.get("PlayerLatencies"):
+                obj = PlayerLatency()
+                obj._deserialize(item)
+                self.PlayerLatencies.append(obj)
+        self.MatchmakerData = params.get("MatchmakerData")
+
+
+class StartMatchPlacementResponse(AbstractModel):
+    """StartMatchPlacement返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param GameServerSessionPlacement: 游戏服务器会话放置
+        :type GameServerSessionPlacement: :class:`tencentcloud.gse.v20191112.models.GameServerSessionPlacement`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.GameServerSessionPlacement = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("GameServerSessionPlacement") is not None:
+            self.GameServerSessionPlacement = GameServerSessionPlacement()
+            self.GameServerSessionPlacement._deserialize(params.get("GameServerSessionPlacement"))
+        self.RequestId = params.get("RequestId")
+
+
 class StopGameServerSessionPlacementRequest(AbstractModel):
     """StopGameServerSessionPlacement请求参数结构体
 

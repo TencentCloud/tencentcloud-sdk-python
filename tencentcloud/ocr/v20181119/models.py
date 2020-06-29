@@ -3475,6 +3475,60 @@ class ResidenceBookletOCRResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class SealOCRRequest(AbstractModel):
+    """SealOCR请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ImageBase64: 图片的 Base64 值。要求图片经Base64编码后不超过 7M，分辨率建议500*800以上，支持PNG、JPG、JPEG、BMP格式。建议卡片部分占据图片2/3以上。
+图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
+        :type ImageBase64: str
+        :param ImageUrl: 图片的 Url 地址。要求图片经Base64编码后不超过 7M，分辨率建议500*800以上，支持PNG、JPG、JPEG、BMP格式。建议卡片部分占据图片2/3以上。图片下载时间不超过 3 秒。
+建议图片存储于腾讯云，可保障更高的下载速度和稳定性。
+        :type ImageUrl: str
+        """
+        self.ImageBase64 = None
+        self.ImageUrl = None
+
+
+    def _deserialize(self, params):
+        self.ImageBase64 = params.get("ImageBase64")
+        self.ImageUrl = params.get("ImageUrl")
+
+
+class SealOCRResponse(AbstractModel):
+    """SealOCR返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param SealBody: 印章内容
+        :type SealBody: str
+        :param Location: 印章坐标
+        :type Location: :class:`tencentcloud.ocr.v20181119.models.Rect`
+        :param OtherTexts: 其它文本内容
+        :type OtherTexts: list of str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.SealBody = None
+        self.Location = None
+        self.OtherTexts = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.SealBody = params.get("SealBody")
+        if params.get("Location") is not None:
+            self.Location = Rect()
+            self.Location._deserialize(params.get("Location"))
+        self.OtherTexts = params.get("OtherTexts")
+        self.RequestId = params.get("RequestId")
+
+
 class ShipInvoiceInfo(AbstractModel):
     """轮船票字段信息
 

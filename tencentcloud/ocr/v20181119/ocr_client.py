@@ -1398,6 +1398,34 @@ class OcrClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def SealOCR(self, request):
+        """印章识别已支持各类印章，包括发票章，财务章等，适用于公文，票据等场景。
+
+        :param request: Request instance for SealOCR.
+        :type request: :class:`tencentcloud.ocr.v20181119.models.SealOCRRequest`
+        :rtype: :class:`tencentcloud.ocr.v20181119.models.SealOCRResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("SealOCR", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.SealOCRResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def ShipInvoiceOCR(self, request):
         """本接口支持识别轮船票的发票代码、发票号码、日期、姓名、票价等字段。
 

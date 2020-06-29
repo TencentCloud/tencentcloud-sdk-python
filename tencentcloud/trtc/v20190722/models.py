@@ -696,23 +696,23 @@ class EncodeParams(AbstractModel):
 
     def __init__(self):
         """
-        :param AudioSampleRate: 混流-输出流音频采样率
+        :param AudioSampleRate: 混流-输出流音频采样率。取值为[96000, 88200, 64000, 48000, 44100, 32000,24000, 22050, 16000, 12000, 11025, 8000]。
         :type AudioSampleRate: int
-        :param AudioBitrate: 混流-输出流音频码率，单位Kbps
+        :param AudioBitrate: 混流-输出流音频码率。取值范围[8,500]，单位为Kbps。
         :type AudioBitrate: int
-        :param AudioChannels: 混流-输出流音频声道数
+        :param AudioChannels: 混流-输出流音频声道数，取值范围[1,2]。
         :type AudioChannels: int
-        :param VideoWidth: 混流-输出流宽，音视频输出时必填
+        :param VideoWidth: 混流-输出流宽，音视频输出时必填。取值范围[0,1920]，单位为像素值。
         :type VideoWidth: int
-        :param VideoHeight: 混流-输出流高，音视频输出时必填
+        :param VideoHeight: 混流-输出流高，音视频输出时必填。取值范围[0,1080]，单位为像素值。
         :type VideoHeight: int
-        :param VideoBitrate: 混流-输出流码率，单位Kbps，音视频输出时必填
+        :param VideoBitrate: 混流-输出流码率，音视频输出时必填。取值范围[1,10000]，单位为Kbps。
         :type VideoBitrate: int
-        :param VideoFramerate: 混流-输出流帧率，音视频输出时必填
+        :param VideoFramerate: 混流-输出流帧率，音视频输出时必填。取值为[6,12,15,24,30,48,60]，不在上述帧率值内系统会自动调整。
         :type VideoFramerate: int
-        :param VideoGop: 混流-输出流gop，音视频输出时必填
+        :param VideoGop: 混流-输出流gop，音视频输出时必填。取值范围[1,5]，单位为秒。
         :type VideoGop: int
-        :param BackgroundColor: 混流-输出流背景色
+        :param BackgroundColor: 混流-输出流背景色。
         :type BackgroundColor: int
         """
         self.AudioSampleRate = None
@@ -835,11 +835,11 @@ class OutputParams(AbstractModel):
         """
         :param StreamId: 直播流ID，该流ID不能与用户旁路的流ID相同。
         :type StreamId: str
-        :param PureAudioStream: 填0：直播流为音视频(默认); 填1：直播流为纯音频
+        :param PureAudioStream: 取值范围[0,1]， 填0：直播流为音视频(默认); 填1：直播流为纯音频
         :type PureAudioStream: int
         :param RecordId: 自定义录制文件名
         :type RecordId: str
-        :param RecordAudioOnly: 填1：纯音频录制为mp3
+        :param RecordAudioOnly: 取值范围[0,1]，填1：指定录制文件格式为mp3
         :type RecordAudioOnly: int
         """
         self.StreamId = None

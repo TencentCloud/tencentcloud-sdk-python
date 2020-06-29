@@ -604,6 +604,62 @@ class DeleteTableGroupResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DeleteTableIndexRequest(AbstractModel):
+    """DeleteTableIndex请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ClusterId: 表格所属集群实例ID
+        :type ClusterId: str
+        :param SelectedTables: 待删除分布式索引的表格列表
+        :type SelectedTables: list of SelectedTableInfoNew
+        """
+        self.ClusterId = None
+        self.SelectedTables = None
+
+
+    def _deserialize(self, params):
+        self.ClusterId = params.get("ClusterId")
+        if params.get("SelectedTables") is not None:
+            self.SelectedTables = []
+            for item in params.get("SelectedTables"):
+                obj = SelectedTableInfoNew()
+                obj._deserialize(item)
+                self.SelectedTables.append(obj)
+
+
+class DeleteTableIndexResponse(AbstractModel):
+    """DeleteTableIndex返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param TotalCount: 删除表格分布式索引结果数量
+        :type TotalCount: int
+        :param TableResults: 删除表格分布式索引结果列表
+        :type TableResults: list of TableResultNew
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.TableResults = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("TableResults") is not None:
+            self.TableResults = []
+            for item in params.get("TableResults"):
+                obj = TableResultNew()
+                obj._deserialize(item)
+                self.TableResults.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class DeleteTablesRequest(AbstractModel):
     """DeleteTables请求参数结构体
 
@@ -1308,6 +1364,35 @@ class ErrorInfo(AbstractModel):
     def _deserialize(self, params):
         self.Code = params.get("Code")
         self.Message = params.get("Message")
+
+
+class FieldInfo(AbstractModel):
+    """表格字段信息列表
+
+    """
+
+    def __init__(self):
+        """
+        :param FieldName: 表格字段名称
+        :type FieldName: str
+        :param IsPrimaryKey: 字段是否是主键字段
+        :type IsPrimaryKey: str
+        :param FieldType: 字段类型
+        :type FieldType: str
+        :param FieldSize: 字段长度
+        :type FieldSize: int
+        """
+        self.FieldName = None
+        self.IsPrimaryKey = None
+        self.FieldType = None
+        self.FieldSize = None
+
+
+    def _deserialize(self, params):
+        self.FieldName = params.get("FieldName")
+        self.IsPrimaryKey = params.get("IsPrimaryKey")
+        self.FieldType = params.get("FieldType")
+        self.FieldSize = params.get("FieldSize")
 
 
 class Filter(AbstractModel):
@@ -2231,6 +2316,108 @@ class SelectedTableInfoNew(AbstractModel):
         self.FileExtType = params.get("FileExtType")
         self.FileSize = params.get("FileSize")
         self.FileContent = params.get("FileContent")
+
+
+class SelectedTableWithField(AbstractModel):
+    """附带被选中字段信息的表格列表
+
+    """
+
+    def __init__(self):
+        """
+        :param TableGroupId: 表所属表格组ID
+        :type TableGroupId: str
+        :param TableName: 表格名称
+        :type TableName: str
+        :param TableInstanceId: 表实例ID
+        :type TableInstanceId: str
+        :param TableIdlType: 表格描述语言类型：`PROTO`或`TDR`
+        :type TableIdlType: str
+        :param TableType: 表格数据结构类型：`GENERIC`或`LIST`
+        :type TableType: str
+        :param SelectedFields: 待创建索引的字段列表
+        :type SelectedFields: list of FieldInfo
+        :param ShardNum: 索引分片数
+        :type ShardNum: int
+        """
+        self.TableGroupId = None
+        self.TableName = None
+        self.TableInstanceId = None
+        self.TableIdlType = None
+        self.TableType = None
+        self.SelectedFields = None
+        self.ShardNum = None
+
+
+    def _deserialize(self, params):
+        self.TableGroupId = params.get("TableGroupId")
+        self.TableName = params.get("TableName")
+        self.TableInstanceId = params.get("TableInstanceId")
+        self.TableIdlType = params.get("TableIdlType")
+        self.TableType = params.get("TableType")
+        if params.get("SelectedFields") is not None:
+            self.SelectedFields = []
+            for item in params.get("SelectedFields"):
+                obj = FieldInfo()
+                obj._deserialize(item)
+                self.SelectedFields.append(obj)
+        self.ShardNum = params.get("ShardNum")
+
+
+class SetTableIndexRequest(AbstractModel):
+    """SetTableIndex请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ClusterId: 表所属集群实例ID
+        :type ClusterId: str
+        :param SelectedTables: 待创建分布式索引表格列表
+        :type SelectedTables: list of SelectedTableWithField
+        """
+        self.ClusterId = None
+        self.SelectedTables = None
+
+
+    def _deserialize(self, params):
+        self.ClusterId = params.get("ClusterId")
+        if params.get("SelectedTables") is not None:
+            self.SelectedTables = []
+            for item in params.get("SelectedTables"):
+                obj = SelectedTableWithField()
+                obj._deserialize(item)
+                self.SelectedTables.append(obj)
+
+
+class SetTableIndexResponse(AbstractModel):
+    """SetTableIndex返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param TotalCount: 表格分布式索引创建结果数量
+        :type TotalCount: int
+        :param TableResults: 表格分布式索引创建结果列表
+        :type TableResults: list of TableResultNew
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.TableResults = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("TableResults") is not None:
+            self.TableResults = []
+            for item in params.get("TableResults"):
+                obj = TableResultNew()
+                obj._deserialize(item)
+                self.TableResults.append(obj)
+        self.RequestId = params.get("RequestId")
 
 
 class TableGroupInfo(AbstractModel):

@@ -1646,7 +1646,6 @@ class StartNotebookInstanceRequest(AbstractModel):
     def __init__(self):
         """
         :param NotebookInstanceName: Notebook实例名称
-规则：^[a-zA-Z0-9](-*[a-zA-Z0-9])*$
         :type NotebookInstanceName: str
         :param AutoStopping: 自动停止，可取值Enabled/Disabled
 取值为Disabled的时候StoppingCondition将被忽略
