@@ -987,6 +987,9 @@ class DescribeDeviceResponse(AbstractModel):
         :param ClientIP: MQTT客户端IP地址
 注意：此字段可能返回 null，表示取不到有效值。
         :type ClientIP: str
+        :param FirmwareUpdateTime: 设备固件更新时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FirmwareUpdateTime: int
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -1013,6 +1016,7 @@ class DescribeDeviceResponse(AbstractModel):
         self.EnableState = None
         self.Labels = None
         self.ClientIP = None
+        self.FirmwareUpdateTime = None
         self.RequestId = None
 
 
@@ -1050,6 +1054,7 @@ class DescribeDeviceResponse(AbstractModel):
                 obj._deserialize(item)
                 self.Labels.append(obj)
         self.ClientIP = params.get("ClientIP")
+        self.FirmwareUpdateTime = params.get("FirmwareUpdateTime")
         self.RequestId = params.get("RequestId")
 
 
@@ -1108,13 +1113,16 @@ class DescribeDevicesRequest(AbstractModel):
         :type Offset: int
         :param Limit: 分页的大小，数值范围 10-250
         :type Limit: int
-        :param FirmwareVersion: 设备固件版本号，若不带此参数会返回所有固件版本的设备
+        :param FirmwareVersion: 设备固件版本号，若不带此参数会返回所有固件版本的设备。传"None-FirmwareVersion"查询无版本号的设备
         :type FirmwareVersion: str
+        :param DeviceName: 需要过滤的设备名称
+        :type DeviceName: str
         """
         self.ProductId = None
         self.Offset = None
         self.Limit = None
         self.FirmwareVersion = None
+        self.DeviceName = None
 
 
     def _deserialize(self, params):
@@ -1122,6 +1130,7 @@ class DescribeDevicesRequest(AbstractModel):
         self.Offset = params.get("Offset")
         self.Limit = params.get("Limit")
         self.FirmwareVersion = params.get("FirmwareVersion")
+        self.DeviceName = params.get("DeviceName")
 
 
 class DescribeDevicesResponse(AbstractModel):
@@ -1635,7 +1644,7 @@ class DeviceInfo(AbstractModel):
         :type Tags: list of DeviceTag
         :param DeviceType: 设备类型
         :type DeviceType: int
-        :param Imei: IMEI
+        :param Imei: 国际移动设备识别码 IMEI
         :type Imei: str
         :param Isp: 运营商类型
         :type Isp: int
@@ -1670,6 +1679,12 @@ class DeviceInfo(AbstractModel):
         :param Labels: 设备标签
 注意：此字段可能返回 null，表示取不到有效值。
         :type Labels: list of DeviceLabel
+        :param ClientIP: MQTT客户端IP地址
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ClientIP: str
+        :param FirmwareUpdateTime: ota最后更新时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FirmwareUpdateTime: int
         """
         self.DeviceName = None
         self.Online = None
@@ -1693,6 +1708,8 @@ class DeviceInfo(AbstractModel):
         self.CertState = None
         self.EnableState = None
         self.Labels = None
+        self.ClientIP = None
+        self.FirmwareUpdateTime = None
 
 
     def _deserialize(self, params):
@@ -1728,6 +1745,8 @@ class DeviceInfo(AbstractModel):
                 obj = DeviceLabel()
                 obj._deserialize(item)
                 self.Labels.append(obj)
+        self.ClientIP = params.get("ClientIP")
+        self.FirmwareUpdateTime = params.get("FirmwareUpdateTime")
 
 
 class DeviceLabel(AbstractModel):

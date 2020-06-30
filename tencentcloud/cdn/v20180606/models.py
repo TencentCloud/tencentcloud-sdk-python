@@ -714,47 +714,17 @@ class CacheKey(AbstractModel):
 on：开启全路径缓存（即关闭参数过滤）
 off：关闭全路径缓存（即开启参数过滤）
         :type FullUrlCache: str
-        :param QueryString: 是否使用请求参数作为CacheKey的一部分
+        :param IgnoreCase: 是否忽略大小写缓存
 注意：此字段可能返回 null，表示取不到有效值。
-        :type QueryString: :class:`tencentcloud.cdn.v20180606.models.QueryStringKey`
-        :param Header: 是否使用请求头部作为CacheKey的一部分
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Header: :class:`tencentcloud.cdn.v20180606.models.HeaderKey`
-        :param Cookie: 是否使用Cookie作为CacheKey的一部分
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Cookie: :class:`tencentcloud.cdn.v20180606.models.CookieKey`
-        :param Scheme: 是否使用请求协议作为CacheKey的一部分
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Scheme: :class:`tencentcloud.cdn.v20180606.models.SchemeKey`
-        :param CacheTag: 是否使用自定义字符串作为CacheKey的一部分
-注意：此字段可能返回 null，表示取不到有效值。
-        :type CacheTag: :class:`tencentcloud.cdn.v20180606.models.CacheTagKey`
+        :type IgnoreCase: str
         """
         self.FullUrlCache = None
-        self.QueryString = None
-        self.Header = None
-        self.Cookie = None
-        self.Scheme = None
-        self.CacheTag = None
+        self.IgnoreCase = None
 
 
     def _deserialize(self, params):
         self.FullUrlCache = params.get("FullUrlCache")
-        if params.get("QueryString") is not None:
-            self.QueryString = QueryStringKey()
-            self.QueryString._deserialize(params.get("QueryString"))
-        if params.get("Header") is not None:
-            self.Header = HeaderKey()
-            self.Header._deserialize(params.get("Header"))
-        if params.get("Cookie") is not None:
-            self.Cookie = CookieKey()
-            self.Cookie._deserialize(params.get("Cookie"))
-        if params.get("Scheme") is not None:
-            self.Scheme = SchemeKey()
-            self.Scheme._deserialize(params.get("Scheme"))
-        if params.get("CacheTag") is not None:
-            self.CacheTag = CacheTagKey()
-            self.CacheTag._deserialize(params.get("CacheTag"))
+        self.IgnoreCase = params.get("IgnoreCase")
 
 
 class CacheOptResult(AbstractModel):
@@ -778,28 +748,6 @@ class CacheOptResult(AbstractModel):
     def _deserialize(self, params):
         self.SuccessUrls = params.get("SuccessUrls")
         self.FailUrls = params.get("FailUrls")
-
-
-class CacheTagKey(AbstractModel):
-    """组成CacheKey的一部分
-
-    """
-
-    def __init__(self):
-        """
-        :param Switch: 是否使用CacheTag作为CacheKey的一部分
-        :type Switch: str
-        :param Value: 自定义CacheTag的值
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Value: str
-        """
-        self.Switch = None
-        self.Value = None
-
-
-    def _deserialize(self, params):
-        self.Switch = params.get("Switch")
-        self.Value = params.get("Value")
 
 
 class CappingRule(AbstractModel):
@@ -1136,28 +1084,6 @@ brotli：需要同时指定 GZIP 压缩才可启用
         self.MinLength = params.get("MinLength")
         self.MaxLength = params.get("MaxLength")
         self.Algorithms = params.get("Algorithms")
-
-
-class CookieKey(AbstractModel):
-    """组成CacheKey的一部分
-
-    """
-
-    def __init__(self):
-        """
-        :param Switch: on | off 是否使用Cookie作为Cache的一部分
-        :type Switch: str
-        :param Value: 使用的cookie 逗号分割
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Value: str
-        """
-        self.Switch = None
-        self.Value = None
-
-
-    def _deserialize(self, params):
-        self.Switch = params.get("Switch")
-        self.Value = params.get("Value")
 
 
 class CreateClsLogTopicRequest(AbstractModel):
@@ -3469,27 +3395,31 @@ class GuetzliAdapter(AbstractModel):
         self.Switch = params.get("Switch")
 
 
-class HeaderKey(AbstractModel):
-    """组成CacheKey
+class Hsts(AbstractModel):
+    """HSTS 配置。
 
     """
 
     def __init__(self):
         """
-        :param Switch: 是否组成Cachekey
-注意：此字段可能返回 null，表示取不到有效值。
+        :param Switch: 是否开启，on或off。
         :type Switch: str
-        :param Value: 组成CacheKey的header 逗号分隔
+        :param MaxAge: MaxAge数值。
 注意：此字段可能返回 null，表示取不到有效值。
-        :type Value: str
+        :type MaxAge: int
+        :param IncludeSubDomains: 是否包含子域名，on或off。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IncludeSubDomains: str
         """
         self.Switch = None
-        self.Value = None
+        self.MaxAge = None
+        self.IncludeSubDomains = None
 
 
     def _deserialize(self, params):
         self.Switch = params.get("Switch")
-        self.Value = params.get("Value")
+        self.MaxAge = params.get("MaxAge")
+        self.IncludeSubDomains = params.get("IncludeSubDomains")
 
 
 class HttpHeaderPathRule(AbstractModel):
@@ -3592,6 +3522,9 @@ deployed：部署成功
 failed：部署失败
 注意：此字段可能返回 null，表示取不到有效值。
         :type SslStatus: str
+        :param Hsts: Hsts配置
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Hsts: :class:`tencentcloud.cdn.v20180606.models.Hsts`
         """
         self.Switch = None
         self.Http2 = None
@@ -3601,6 +3534,7 @@ failed：部署失败
         self.ClientCertInfo = None
         self.Spdy = None
         self.SslStatus = None
+        self.Hsts = None
 
 
     def _deserialize(self, params):
@@ -3616,6 +3550,9 @@ failed：部署失败
             self.ClientCertInfo._deserialize(params.get("ClientCertInfo"))
         self.Spdy = params.get("Spdy")
         self.SslStatus = params.get("SslStatus")
+        if params.get("Hsts") is not None:
+            self.Hsts = Hsts()
+            self.Hsts._deserialize(params.get("Hsts"))
 
 
 class ImageOptimization(AbstractModel):
@@ -4906,39 +4843,6 @@ class PushUrlsCacheResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
-class QueryStringKey(AbstractModel):
-    """组成CacheKey的一部分
-
-    """
-
-    def __init__(self):
-        """
-        :param Switch: on | off CacheKey是否由QueryString组成
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Switch: str
-        :param Reorder: 是否重新排序
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Reorder: str
-        :param Action: includeAll | excludeAll | includeCustom | excludeAll 使用/排除部分url参数
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Action: str
-        :param Value: 使用/排除的url参数名
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Value: str
-        """
-        self.Switch = None
-        self.Reorder = None
-        self.Action = None
-        self.Value = None
-
-
-    def _deserialize(self, params):
-        self.Switch = params.get("Switch")
-        self.Reorder = params.get("Reorder")
-        self.Action = params.get("Action")
-        self.Value = params.get("Value")
-
-
 class Quota(AbstractModel):
     """刷新/预热 可用量及配额
 
@@ -5286,23 +5190,6 @@ off：关闭
         self.Switch = params.get("Switch")
 
 
-class SchemeKey(AbstractModel):
-    """作为CacheKey的一部分
-
-    """
-
-    def __init__(self):
-        """
-        :param Switch: on | off 是否使用scheme作为cache key的一部分
-        :type Switch: str
-        """
-        self.Switch = None
-
-
-    def _deserialize(self, params):
-        self.Switch = params.get("Switch")
-
-
 class SearchClsLogRequest(AbstractModel):
     """SearchClsLog请求参数结构体
 
@@ -5545,7 +5432,7 @@ index：首页
         :param CacheContents: CacheType 对应类型下的匹配内容：
 all 时填充 *
 file 时填充后缀名，如 jpg、txt
-directory 时填充路径，如 /xxx/test/
+directory 时填充路径，如 /xxx/test
 path 时填充绝对路径，如 /xxx/test.html
 index 时填充 /
         :type CacheContents: list of str
@@ -5951,7 +5838,7 @@ class UpdateDomainConfigRequest(AbstractModel):
         """
         :param Domain: 域名
         :type Domain: str
-        :param ProjectId: 项目 ID
+        :param ProjectId: 项目 ID
         :type ProjectId: int
         :param Origin: 源站配置
         :type Origin: :class:`tencentcloud.cdn.v20180606.models.Origin`
@@ -6016,6 +5903,8 @@ global：全球加速
         :type OriginPullTimeout: :class:`tencentcloud.cdn.v20180606.models.OriginPullTimeout`
         :param AwsPrivateAccess: 回源S3私有鉴权
         :type AwsPrivateAccess: :class:`tencentcloud.cdn.v20180606.models.AwsPrivateAccess`
+        :param UserAgentFilter: UA黑白名单配置
+        :type UserAgentFilter: :class:`tencentcloud.cdn.v20180606.models.UserAgentFilter`
         """
         self.Domain = None
         self.ProjectId = None
@@ -6047,6 +5936,7 @@ global：全球加速
         self.Area = None
         self.OriginPullTimeout = None
         self.AwsPrivateAccess = None
+        self.UserAgentFilter = None
 
 
     def _deserialize(self, params):
@@ -6132,6 +6022,9 @@ global：全球加速
         if params.get("AwsPrivateAccess") is not None:
             self.AwsPrivateAccess = AwsPrivateAccess()
             self.AwsPrivateAccess._deserialize(params.get("AwsPrivateAccess"))
+        if params.get("UserAgentFilter") is not None:
+            self.UserAgentFilter = UserAgentFilter()
+            self.UserAgentFilter._deserialize(params.get("UserAgentFilter"))
 
 
 class UpdateDomainConfigResponse(AbstractModel):

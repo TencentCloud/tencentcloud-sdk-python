@@ -1137,9 +1137,9 @@ class SentenceSimilarityRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param SrcText: 计算相似度的源句子（仅支持UTF-8格式，不超过500字）
+        :param SrcText: 计算相似度的源句子（仅支持UTF-8格式，不超过500字符）
         :type SrcText: str
-        :param TargetText: 计算相似度的目标句子（仅支持UTF-8格式，不超过500字）
+        :param TargetText: 计算相似度的目标句子（仅支持UTF-8格式，不超过500字符）
         :type TargetText: str
         """
         self.SrcText = None
@@ -1405,9 +1405,9 @@ class TextSimilarityRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param SrcText: 需要与目标句子计算相似度的源句子（仅支持UTF-8格式，不超过500字）
+        :param SrcText: 需要与目标句子计算相似度的源句子（仅支持UTF-8格式，不超过500字符）
         :type SrcText: str
-        :param TargetText: 需要与源句子计算相似度的一个或多个目标句子（仅支持UTF-8格式，目标句子的数量不超过100个，每个句子不超过500字）
+        :param TargetText: 需要与源句子计算相似度的一个或多个目标句子（仅支持UTF-8格式，目标句子的数量不超过100个，每个句子不超过500字符）
 注意：每成功计算1个目标句子与源句子的相似度算1次调用
         :type TargetText: list of str
         """

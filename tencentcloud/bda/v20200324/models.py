@@ -191,7 +191,68 @@ class BodyDetectResult(AbstractModel):
             self.BodyAttributeInfo._deserialize(params.get("BodyAttributeInfo"))
 
 
+class BodyJointsResult(AbstractModel):
+    """人体框和人体关键点信息。
+
+    """
+
+    def __init__(self):
+        """
+        :param BoundBox: 图中检测出来的人体框。
+        :type BoundBox: :class:`tencentcloud.bda.v20200324.models.BoundRect`
+        :param BodyJoints: 14个人体关键点的坐标，人体关键点详见KeyPointInfo。
+        :type BodyJoints: list of KeyPointInfo
+        :param Confidence: 检测出的人体置信度，0-1之间，数值越高越准确。
+        :type Confidence: float
+        """
+        self.BoundBox = None
+        self.BodyJoints = None
+        self.Confidence = None
+
+
+    def _deserialize(self, params):
+        if params.get("BoundBox") is not None:
+            self.BoundBox = BoundRect()
+            self.BoundBox._deserialize(params.get("BoundBox"))
+        if params.get("BodyJoints") is not None:
+            self.BodyJoints = []
+            for item in params.get("BodyJoints"):
+                obj = KeyPointInfo()
+                obj._deserialize(item)
+                self.BodyJoints.append(obj)
+        self.Confidence = params.get("Confidence")
+
+
 class BodyRect(AbstractModel):
+    """人体框
+
+    """
+
+    def __init__(self):
+        """
+        :param X: 人体框左上角横坐标。
+        :type X: int
+        :param Y: 人体框左上角纵坐标。
+        :type Y: int
+        :param Width: 人体宽度。
+        :type Width: int
+        :param Height: 人体高度。
+        :type Height: int
+        """
+        self.X = None
+        self.Y = None
+        self.Width = None
+        self.Height = None
+
+
+    def _deserialize(self, params):
+        self.X = params.get("X")
+        self.Y = params.get("Y")
+        self.Width = params.get("Width")
+        self.Height = params.get("Height")
+
+
+class BoundRect(AbstractModel):
     """人体框
 
     """
@@ -494,6 +555,58 @@ class DeletePersonResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DetectBodyJointsRequest(AbstractModel):
+    """DetectBodyJoints请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Image: 图片 base64 数据，base64 编码后大小不可超过5M。  
+支持PNG、JPG、JPEG、BMP，不支持 GIF 图片。
+        :type Image: str
+        :param Url: 图片的 Url 。对应图片 base64 编码后大小不可超过5M。 
+Url、Image必须提供一个，如果都提供，只使用 Url。  
+图片存储于腾讯云的Url可保障更高下载速度和稳定性，建议图片存储于腾讯云。 
+非腾讯云存储的Url速度和稳定性可能受一定影响。  
+支持PNG、JPG、JPEG、BMP，不支持 GIF 图片。
+        :type Url: str
+        """
+        self.Image = None
+        self.Url = None
+
+
+    def _deserialize(self, params):
+        self.Image = params.get("Image")
+        self.Url = params.get("Url")
+
+
+class DetectBodyJointsResponse(AbstractModel):
+    """DetectBodyJoints返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param BodyJointsResults: 图中检测出的人体框和人体关键点， 包含14个人体关键点的坐标，建议根据人体框置信度筛选出合格的人体；
+        :type BodyJointsResults: list of BodyJointsResult
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.BodyJointsResults = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("BodyJointsResults") is not None:
+            self.BodyJointsResults = []
+            for item in params.get("BodyJointsResults"):
+                obj = BodyJointsResult()
+                obj._deserialize(item)
+                self.BodyJointsResults.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class DetectBodyRequest(AbstractModel):
     """DetectBody请求参数结构体
 
@@ -733,6 +846,31 @@ Unix 纪元时间是 1970 年 1 月 1 日星期四，协调世界时 (UTC) 。
         self.Tag = params.get("Tag")
         self.BodyModelVersion = params.get("BodyModelVersion")
         self.CreationTimestamp = params.get("CreationTimestamp")
+
+
+class KeyPointInfo(AbstractModel):
+    """人体关键点信息
+
+    """
+
+    def __init__(self):
+        """
+        :param KeyPointType: 代表不同位置的人体关键点信息，返回值为以下集合中的一个 [头部,颈部,右肩,右肘,右腕,左肩,左肘,左腕,右髋,右膝,右踝,左髋,左膝,左踝]
+        :type KeyPointType: str
+        :param X: 人体关键点横坐标
+        :type X: float
+        :param Y: 人体关键点纵坐标
+        :type Y: float
+        """
+        self.KeyPointType = None
+        self.X = None
+        self.Y = None
+
+
+    def _deserialize(self, params):
+        self.KeyPointType = params.get("KeyPointType")
+        self.X = params.get("X")
+        self.Y = params.get("Y")
 
 
 class LowerBodyCloth(AbstractModel):

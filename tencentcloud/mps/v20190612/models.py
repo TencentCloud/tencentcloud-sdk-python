@@ -1682,9 +1682,11 @@ class AiReviewPoliticalTaskOutput(AbstractModel):
 <li>review。</li>
 <li>block。</li>
         :type Suggestion: str
-        :param Label: 视频鉴政结果标签，取值范围：
-<li>politician：政治人物。</li>
+        :param Label: 视频鉴政结果标签。内容审核模板[画面鉴政任务控制参数](https://cloud.tencent.com/document/api/862/37615#AiReviewPoliticalTaskOutput)里 LabelSet 参数与此参数取值范围的对应关系：
+violation_photo：
 <li>violation_photo：违规图标。</li>
+其他（即 politician/entertainment/sport/entrepreneur/scholar/celebrity/military）：
+<li>politician：政治人物。</li>
         :type Label: str
         :param SegmentSet: 有涉政嫌疑的视频片段列表。
         :type SegmentSet: list of MediaContentReviewPoliticalSegmentItem
@@ -3043,7 +3045,6 @@ class ContentReviewTemplateItem(AbstractModel):
         :param ProhibitedConfigure: 违禁控制参数。违禁内容包括：
 <li>谩骂；</li>
 <li>涉毒违法。</li>
-注意：此参数尚未支持。
 注意：此字段可能返回 null，表示取不到有效值。
         :type ProhibitedConfigure: :class:`tencentcloud.mps.v20190612.models.ProhibitedConfigureInfo`
         :param UserDefineConfigure: 用户自定义内容审核控制参数。
@@ -7225,7 +7226,28 @@ class MediaContentReviewPoliticalSegmentItem(AbstractModel):
         :type Suggestion: str
         :param Name: 涉政人物、违规图标名字。
         :type Name: str
-        :param Label: 嫌疑片段鉴政结果标签。
+        :param Label: 嫌疑片段鉴政结果标签。内容审核模板[画面鉴政任务控制参数](https://cloud.tencent.com/document/api/862/37615#PoliticalImgReviewTemplateInfo)里 LabelSet 参数与此参数取值范围的对应关系：
+violation_photo：
+<li>violation_photo：违规图标。</li>
+politician：
+<li>nation_politician：国家领导人；</li>
+<li>province_politician: 省部级领导人；</li>
+<li>bureau_politician：厅局级领导人；</li>
+<li>county_politician：县处级领导人；</li>
+<li>rural_politician：乡科级领导人；</li>
+<li>sensitive_politician：敏感政治人物。</li>
+entertainment：
+<li>sensitive_entertainment：敏感娱乐人物。</li>
+sport：
+<li>sensitive_sport：敏感体育人物。</li>
+entrepreneur：
+<li>sensitive_entrepreneur：敏感商业人物。</li>
+scholar：
+<li>sensitive_scholar：敏感教育学者。</li>
+celebrity：
+<li>sensitive_celebrity：敏感知名人物。</li>
+military：
+<li>sensitive_military：敏感军事人物。</li>
         :type Label: str
         :param Url: 嫌疑图片 URL （图片不会永久存储，到达
  PicUrlExpireTime 时间点后图片将被删除）。
@@ -9377,8 +9399,12 @@ class PoliticalImgReviewTemplateInfo(AbstractModel):
         :param LabelSet: 画面鉴政过滤标签，审核结果包含选择的标签则返回结果，如果过滤标签为空，则审核结果全部返回，可选值为：
 <li>violation_photo：违规图标；</li>
 <li>politician：政治人物；</li>
-<li>entertainment：娱乐明星；</li>
-<li>sport：体育明星。</li>
+<li>entertainment：娱乐人物；</li>
+<li>sport：体育人物；</li>
+<li>entrepreneur：商业人物；</li>
+<li>scholar：教育学者；</li>
+<li>celebrity：知名人物；</li>
+<li>military：军事人物。</li>
         :type LabelSet: list of str
         :param BlockConfidence: 判定涉嫌违规的分数阈值，当智能审核达到该分数以上，认为涉嫌违规，不填默认为 97 分。取值范围：0~100。
         :type BlockConfidence: int
@@ -9412,8 +9438,12 @@ class PoliticalImgReviewTemplateInfoForUpdate(AbstractModel):
         :param LabelSet: 画面鉴政过滤标签，审核结果包含选择的标签则返回结果，如果过滤标签为空，则审核结果全部返回，可选值为：
 <li>violation_photo：违规图标；</li>
 <li>politician：政治人物；</li>
-<li>entertainment：娱乐明星；</li>
-<li>sport：体育明星。</li>
+<li>entertainment：娱乐人物；</li>
+<li>sport：体育人物；</li>
+<li>entrepreneur：商业人物；</li>
+<li>scholar：教育学者；</li>
+<li>celebrity：知名人物；</li>
+<li>military：军事人物。</li>
         :type LabelSet: list of str
         :param BlockConfidence: 判定涉嫌违规的分数阈值，当智能审核达到该分数以上，认为涉嫌违规。取值范围：0~100。
         :type BlockConfidence: int

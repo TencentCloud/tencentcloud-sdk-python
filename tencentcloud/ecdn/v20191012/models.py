@@ -1052,6 +1052,33 @@ class ForceRedirect(AbstractModel):
         self.RedirectStatusCode = params.get("RedirectStatusCode")
 
 
+class Hsts(AbstractModel):
+    """HSTS 配置。
+
+    """
+
+    def __init__(self):
+        """
+        :param Switch: 是否开启，on或off。
+        :type Switch: str
+        :param MaxAge: MaxAge数值。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MaxAge: int
+        :param IncludeSubDomains: 是否包含子域名，on或off。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IncludeSubDomains: str
+        """
+        self.Switch = None
+        self.MaxAge = None
+        self.IncludeSubDomains = None
+
+
+    def _deserialize(self, params):
+        self.Switch = params.get("Switch")
+        self.MaxAge = params.get("MaxAge")
+        self.IncludeSubDomains = params.get("IncludeSubDomains")
+
+
 class HttpHeaderPathRule(AbstractModel):
     """分路径的http头部设置规则。
 
@@ -1122,6 +1149,9 @@ class Https(AbstractModel):
         :param SslStatus: https证书部署状态，closed，deploying，deployed，failed分别表示已关闭，部署中，部署成功，部署失败。不可作为入参使用。
 注意：此字段可能返回 null，表示取不到有效值。
         :type SslStatus: str
+        :param Hsts: Hsts配置
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Hsts: :class:`tencentcloud.ecdn.v20191012.models.Hsts`
         """
         self.Switch = None
         self.Http2 = None
@@ -1131,6 +1161,7 @@ class Https(AbstractModel):
         self.ClientCertInfo = None
         self.Spdy = None
         self.SslStatus = None
+        self.Hsts = None
 
 
     def _deserialize(self, params):
@@ -1146,6 +1177,9 @@ class Https(AbstractModel):
             self.ClientCertInfo._deserialize(params.get("ClientCertInfo"))
         self.Spdy = params.get("Spdy")
         self.SslStatus = params.get("SslStatus")
+        if params.get("Hsts") is not None:
+            self.Hsts = Hsts()
+            self.Hsts._deserialize(params.get("Hsts"))
 
 
 class IpFilter(AbstractModel):

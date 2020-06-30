@@ -368,6 +368,106 @@ class CreateAclResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class CreateInstancePreData(AbstractModel):
+    """创建预付费接口返回的Data
+
+    """
+
+    def __init__(self):
+        """
+        :param FlowId: CreateInstancePre返回固定为0，不能作为CheckTaskStatus的查询条件。只是为了保证和后台数据结构对齐。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FlowId: int
+        :param DealNames: 订单号列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DealNames: list of str
+        """
+        self.FlowId = None
+        self.DealNames = None
+
+
+    def _deserialize(self, params):
+        self.FlowId = params.get("FlowId")
+        self.DealNames = params.get("DealNames")
+
+
+class CreateInstancePreRequest(AbstractModel):
+    """CreateInstancePre请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param InstanceName: 实例名称，是一个不超过 64 个字符的字符串，必须以字母为首字符，剩余部分可以包含字母、数字和横划线(-)
+        :type InstanceName: str
+        :param ZoneId: 可用区
+        :type ZoneId: int
+        :param Period: 预付费购买时长，例如 "1m",就是一个月
+        :type Period: str
+        :param InstanceType: 实例规格，1：入门型 ，2： 标准型，3 ：进阶型，4 ：容量型，5： 高阶型1，6：高阶性2, 7： 高阶型3,8： 高阶型4， 9 ：独占型。
+        :type InstanceType: int
+        :param VpcId: vpcId，不填默认基础网络
+        :type VpcId: str
+        :param SubnetId: 子网id，vpc网络需要传该参数，基础网络可以不传
+        :type SubnetId: str
+        :param MsgRetentionTime: 可选。实例日志的最长保留时间，单位分钟，默认为10080（7天），最大30天，不填默认0，代表不开启日志保留时间回收策略
+        :type MsgRetentionTime: int
+        :param ClusterId: 创建实例时可以选择集群Id, 该入参表示集群Id
+        :type ClusterId: int
+        :param RenewFlag: 预付费自动续费标记，0表示默认状态(用户未设置，即初始状态)， 1表示自动续费，2表示明确不自动续费(用户设置)
+        :type RenewFlag: int
+        """
+        self.InstanceName = None
+        self.ZoneId = None
+        self.Period = None
+        self.InstanceType = None
+        self.VpcId = None
+        self.SubnetId = None
+        self.MsgRetentionTime = None
+        self.ClusterId = None
+        self.RenewFlag = None
+
+
+    def _deserialize(self, params):
+        self.InstanceName = params.get("InstanceName")
+        self.ZoneId = params.get("ZoneId")
+        self.Period = params.get("Period")
+        self.InstanceType = params.get("InstanceType")
+        self.VpcId = params.get("VpcId")
+        self.SubnetId = params.get("SubnetId")
+        self.MsgRetentionTime = params.get("MsgRetentionTime")
+        self.ClusterId = params.get("ClusterId")
+        self.RenewFlag = params.get("RenewFlag")
+
+
+class CreateInstancePreResponse(AbstractModel):
+    """创建预付费实例返回结构
+
+    """
+
+    def __init__(self):
+        """
+        :param ReturnCode: 返回的code，0为正常，非0为错误
+        :type ReturnCode: str
+        :param ReturnMessage: 成功消息
+        :type ReturnMessage: str
+        :param Data: 操作型返回的Data数据
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Data: :class:`tencentcloud.ckafka.v20190819.models.CreateInstancePreData`
+        """
+        self.ReturnCode = None
+        self.ReturnMessage = None
+        self.Data = None
+
+
+    def _deserialize(self, params):
+        self.ReturnCode = params.get("ReturnCode")
+        self.ReturnMessage = params.get("ReturnMessage")
+        if params.get("Data") is not None:
+            self.Data = CreateInstancePreData()
+            self.Data._deserialize(params.get("Data"))
+
+
 class CreatePartitionRequest(AbstractModel):
     """CreatePartition请求参数结构体
 

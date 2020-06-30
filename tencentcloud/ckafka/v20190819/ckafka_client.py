@@ -53,6 +53,34 @@ class CkafkaClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def CreateInstancePre(self, request):
+        """创建实例(预付费包年包月)
+
+        :param request: Request instance for CreateInstancePre.
+        :type request: :class:`tencentcloud.ckafka.v20190819.models.CreateInstancePreRequest`
+        :rtype: :class:`tencentcloud.ckafka.v20190819.models.CreateInstancePreResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("CreateInstancePre", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateInstancePreResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def CreatePartition(self, request):
         """本接口用于增加主题中的分区
 

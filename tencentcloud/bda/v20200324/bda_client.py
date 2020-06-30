@@ -213,6 +213,34 @@ class BdaClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DetectBodyJoints(self, request):
+        """检测图片中人体的14个关键点。建议用于人体图像清晰、无遮挡的场景。支持一张图片中存在多个人体的识别。
+
+        :param request: Request instance for DetectBodyJoints.
+        :type request: :class:`tencentcloud.bda.v20200324.models.DetectBodyJointsRequest`
+        :rtype: :class:`tencentcloud.bda.v20200324.models.DetectBodyJointsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DetectBodyJoints", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DetectBodyJointsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def GetGroupList(self, request):
         """获取人体库列表。
 
