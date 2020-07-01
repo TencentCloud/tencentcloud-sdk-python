@@ -62,12 +62,16 @@ class CloseDBExtranetAccessRequest(AbstractModel):
         """
         :param DBInstanceId: 实例ID，形如postgres-6r233v55
         :type DBInstanceId: str
+        :param IsIpv6: 是否关闭Ipv6外网，1：是，0：否
+        :type IsIpv6: int
         """
         self.DBInstanceId = None
+        self.IsIpv6 = None
 
 
     def _deserialize(self, params):
         self.DBInstanceId = params.get("DBInstanceId")
+        self.IsIpv6 = params.get("IsIpv6")
 
 
 class CloseDBExtranetAccessResponse(AbstractModel):
@@ -166,6 +170,8 @@ class CreateDBInstancesRequest(AbstractModel):
         :type ActivityId: int
         :param Name: 实例名(后续支持)
         :type Name: str
+        :param NeedSupportIpv6: 是否需要支持Ipv6，1：是，0：否
+        :type NeedSupportIpv6: int
         """
         self.SpecCode = None
         self.DBVersion = None
@@ -182,6 +188,7 @@ class CreateDBInstancesRequest(AbstractModel):
         self.AutoRenewFlag = None
         self.ActivityId = None
         self.Name = None
+        self.NeedSupportIpv6 = None
 
 
     def _deserialize(self, params):
@@ -200,6 +207,7 @@ class CreateDBInstancesRequest(AbstractModel):
         self.AutoRenewFlag = params.get("AutoRenewFlag")
         self.ActivityId = params.get("ActivityId")
         self.Name = params.get("Name")
+        self.NeedSupportIpv6 = params.get("NeedSupportIpv6")
 
 
 class CreateDBInstancesResponse(AbstractModel):
@@ -365,13 +373,13 @@ class DBInstance(AbstractModel):
         :type ProjectId: int
         :param VpcId: 私有网络ID
         :type VpcId: str
-        :param SubnetId: SubnetId
+        :param SubnetId: 子网ID
         :type SubnetId: str
         :param DBInstanceId: 实例ID
         :type DBInstanceId: str
         :param DBInstanceName: 实例名称
         :type DBInstanceName: str
-        :param DBInstanceStatus: 实例状态
+        :param DBInstanceStatus: 实例状态，分别为：applying（申请中）、init(待初始化)、initing(初始化中)、running(运行中)、limited run（受限运行）、isolated（已隔离）、recycling（回收中）、recycled（已回收）、job running（任务执行中）、offline（下线）、migrating（迁移中）、expanding（扩容中）、readonly（只读）、restarting（重启中）
         :type DBInstanceStatus: str
         :param DBInstanceMemory: 实例分配的内存大小，单位：GB
         :type DBInstanceMemory: int
@@ -409,6 +417,8 @@ class DBInstance(AbstractModel):
         :type AppId: int
         :param Uid: 实例的Uid
         :type Uid: int
+        :param SupportIpv6: 实例是否支持Ipv6，1：支持，0：不支持
+        :type SupportIpv6: int
         """
         self.Region = None
         self.Zone = None
@@ -436,6 +446,7 @@ class DBInstance(AbstractModel):
         self.Type = None
         self.AppId = None
         self.Uid = None
+        self.SupportIpv6 = None
 
 
     def _deserialize(self, params):
@@ -470,10 +481,11 @@ class DBInstance(AbstractModel):
         self.Type = params.get("Type")
         self.AppId = params.get("AppId")
         self.Uid = params.get("Uid")
+        self.SupportIpv6 = params.get("SupportIpv6")
 
 
 class DBInstanceNetInfo(AbstractModel):
-    """描述实例的网络连接信息
+    """描述实例的网络连接信息。
 
     """
 
@@ -481,11 +493,11 @@ class DBInstanceNetInfo(AbstractModel):
         """
         :param Address: DNS域名
         :type Address: str
-        :param Ip: Ip
+        :param Ip: IP地址
         :type Ip: str
         :param Port: 连接Port地址
         :type Port: int
-        :param NetType: 网络类型，1、inner（内网地址）；2、public（外网地址）
+        :param NetType: 网络类型，1、inner（基础网络内网地址）；2、private（私有网络内网地址）；3、public（基础网络或私有网络的外网地址）；
         :type NetType: str
         :param Status: 网络连接状态
         :type Status: str
@@ -1754,12 +1766,16 @@ class OpenDBExtranetAccessRequest(AbstractModel):
         """
         :param DBInstanceId: 实例ID，形如postgres-hez4fh0v
         :type DBInstanceId: str
+        :param IsIpv6: 是否开通Ipv6外网，1：是，0：否
+        :type IsIpv6: int
         """
         self.DBInstanceId = None
+        self.IsIpv6 = None
 
 
     def _deserialize(self, params):
         self.DBInstanceId = params.get("DBInstanceId")
+        self.IsIpv6 = params.get("IsIpv6")
 
 
 class OpenDBExtranetAccessResponse(AbstractModel):

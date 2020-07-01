@@ -287,7 +287,7 @@ class EcdnClient(AbstractClient):
 
 
     def PurgePathCache(self, request):
-        """PurgeUrlsCache 用于批量刷新目录缓存，一次提交将返回一个刷新任务id。
+        """PurgePathCache 用于批量刷新目录缓存，一次提交将返回一个刷新任务id。
 
         :param request: Request instance for PurgePathCache.
         :type request: :class:`tencentcloud.ecdn.v20191012.models.PurgePathCacheRequest`

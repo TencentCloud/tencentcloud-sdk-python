@@ -6259,6 +6259,9 @@ class L7RuleEntry(AbstractModel):
         :param HttpsToHttpEnable: 是否开启Https协议使用Http回源，取值[0(关闭), 1(开启)]，不填写默认是关闭
 注意：此字段可能返回 null，表示取不到有效值。
         :type HttpsToHttpEnable: int
+        :param VirtualPort: 接入端口值
+注意：此字段可能返回 null，表示取不到有效值。
+        :type VirtualPort: int
         """
         self.Protocol = None
         self.Domain = None
@@ -6279,6 +6282,7 @@ class L7RuleEntry(AbstractModel):
         self.CCThreshold = None
         self.CCLevel = None
         self.HttpsToHttpEnable = None
+        self.VirtualPort = None
 
 
     def _deserialize(self, params):
@@ -6306,6 +6310,7 @@ class L7RuleEntry(AbstractModel):
         self.CCThreshold = params.get("CCThreshold")
         self.CCLevel = params.get("CCLevel")
         self.HttpsToHttpEnable = params.get("HttpsToHttpEnable")
+        self.VirtualPort = params.get("VirtualPort")
 
 
 class L7RuleHealth(AbstractModel):
@@ -8008,6 +8013,106 @@ class ModifyNetReturnSwitchResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class ModifyNewDomainRulesRequest(AbstractModel):
+    """ModifyNewDomainRules请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Business: 大禹子产品代号（bgpip表示高防IP）
+        :type Business: str
+        :param Id: 资源ID
+        :type Id: str
+        :param Rule: 域名转发规则
+        :type Rule: :class:`tencentcloud.dayu.v20180709.models.NewL7RuleEntry`
+        """
+        self.Business = None
+        self.Id = None
+        self.Rule = None
+
+
+    def _deserialize(self, params):
+        self.Business = params.get("Business")
+        self.Id = params.get("Id")
+        if params.get("Rule") is not None:
+            self.Rule = NewL7RuleEntry()
+            self.Rule._deserialize(params.get("Rule"))
+
+
+class ModifyNewDomainRulesResponse(AbstractModel):
+    """ModifyNewDomainRules返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Success: 成功码
+        :type Success: :class:`tencentcloud.dayu.v20180709.models.SuccessCode`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Success = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Success") is not None:
+            self.Success = SuccessCode()
+            self.Success._deserialize(params.get("Success"))
+        self.RequestId = params.get("RequestId")
+
+
+class ModifyNewL4RuleRequest(AbstractModel):
+    """ModifyNewL4Rule请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Business: 大禹子产品代号（bgpip表示高防IP）
+        :type Business: str
+        :param Id: 资源ID
+        :type Id: str
+        :param Rule: 转发规则
+        :type Rule: :class:`tencentcloud.dayu.v20180709.models.L4RuleEntry`
+        """
+        self.Business = None
+        self.Id = None
+        self.Rule = None
+
+
+    def _deserialize(self, params):
+        self.Business = params.get("Business")
+        self.Id = params.get("Id")
+        if params.get("Rule") is not None:
+            self.Rule = L4RuleEntry()
+            self.Rule._deserialize(params.get("Rule"))
+
+
+class ModifyNewL4RuleResponse(AbstractModel):
+    """ModifyNewL4Rule返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Success: 成功码
+        :type Success: :class:`tencentcloud.dayu.v20180709.models.SuccessCode`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Success = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Success") is not None:
+            self.Success = SuccessCode()
+            self.Success._deserialize(params.get("Success"))
+        self.RequestId = params.get("RequestId")
+
+
 class ModifyResBindDDoSPolicyRequest(AbstractModel):
     """ModifyResBindDDoSPolicy请求参数结构体
 
@@ -8239,6 +8344,9 @@ class NewL7RuleEntry(AbstractModel):
         :type ModifyTime: str
         :param HttpsToHttpEnable: 是否开启Https协议使用Http回源，取值[0(关闭), 1(开启)]，不填写默认是关闭
         :type HttpsToHttpEnable: int
+        :param VirtualPort: 接入端口值
+注意：此字段可能返回 null，表示取不到有效值。
+        :type VirtualPort: int
         """
         self.Protocol = None
         self.Domain = None
@@ -8263,6 +8371,7 @@ class NewL7RuleEntry(AbstractModel):
         self.Ip = None
         self.ModifyTime = None
         self.HttpsToHttpEnable = None
+        self.VirtualPort = None
 
 
     def _deserialize(self, params):
@@ -8294,6 +8403,7 @@ class NewL7RuleEntry(AbstractModel):
         self.Ip = params.get("Ip")
         self.ModifyTime = params.get("ModifyTime")
         self.HttpsToHttpEnable = params.get("HttpsToHttpEnable")
+        self.VirtualPort = params.get("VirtualPort")
 
 
 class OrderBy(AbstractModel):

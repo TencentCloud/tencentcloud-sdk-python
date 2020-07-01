@@ -4737,7 +4737,6 @@ class CreateContentReviewTemplateRequest(AbstractModel):
         :param ProhibitedConfigure: 违禁控制参数。违禁内容包括：
 <li>谩骂；</li>
 <li>涉毒违法。</li>
-注意：此参数尚未支持。
         :type ProhibitedConfigure: :class:`tencentcloud.vod.v20180717.models.ProhibitedConfigureInfo`
         :param UserDefineConfigure: 用户自定义内容审核控制参数。
         :type UserDefineConfigure: :class:`tencentcloud.vod.v20180717.models.UserDefineConfigureInfo`
@@ -9331,6 +9330,8 @@ class MediaBasicInfo(AbstractModel):
 <li>Image: 图片文件</li>
         :type Category: str
         :param Status: 文件状态：Normal：正常，Forbidden：封禁。
+
+*注意：此字段暂不支持。
         :type Status: str
         """
         self.Name = None
@@ -11270,7 +11271,6 @@ class ModifyContentReviewTemplateRequest(AbstractModel):
         :param ProhibitedConfigure: 违禁控制参数。违禁内容包括：
 <li>谩骂；</li>
 <li>涉毒违法。</li>
-注意：此参数尚未支持。
         :type ProhibitedConfigure: :class:`tencentcloud.vod.v20180717.models.ProhibitedConfigureInfoForUpdate`
         :param UserDefineConfigure: 用户自定义内容审核控制参数。
         :type UserDefineConfigure: :class:`tencentcloud.vod.v20180717.models.UserDefineConfigureInfoForUpdate`

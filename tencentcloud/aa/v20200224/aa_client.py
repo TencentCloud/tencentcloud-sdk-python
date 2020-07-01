@@ -51,3 +51,31 @@ class AaClient(AbstractClient):
                 raise
             else:
                 raise TencentCloudSDKException(e.message, e.message)
+
+
+    def QueryActivityAntiRushAdvanced(self, request):
+        """活动防刷高级版，支持对网赚众包、网赚防刷、引流反诈骗场景的检测识别
+
+        :param request: Request instance for QueryActivityAntiRushAdvanced.
+        :type request: :class:`tencentcloud.aa.v20200224.models.QueryActivityAntiRushAdvancedRequest`
+        :rtype: :class:`tencentcloud.aa.v20200224.models.QueryActivityAntiRushAdvancedResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("QueryActivityAntiRushAdvanced", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.QueryActivityAntiRushAdvancedResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
