@@ -15,7 +15,7 @@
 
 class HttpProfile(object):
     def __init__(self, protocol=None, endpoint=None, reqMethod="POST", reqTimeout=60,
-                 keepAlive=False):
+                 keepAlive=False, proxy=None):
         """HTTP profile.
         :param protocol: temporarily useless,set None
         :type protocol: str
@@ -31,4 +31,5 @@ class HttpProfile(object):
         self.reqMethod = "POST" if reqMethod is None else reqMethod
         self.protocol = protocol
         self.keepAlive = keepAlive
+        self.proxy = proxy
 

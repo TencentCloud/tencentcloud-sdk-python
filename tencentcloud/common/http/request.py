@@ -14,20 +14,26 @@ from tencentcloud.common.exception.tencent_cloud_sdk_exception import TencentClo
 
 
 class ProxyHTTPSConnection(HTTPSConnection):
-    def __init__(self, host, port=None, timeout=60):
+    def __init__(self, host, port=None, timeout=60, proxy=None):
         self.has_proxy = False
         self.request_host = host
         https_proxy = (os.environ.get('https_proxy')
                        or os.environ.get('HTTPS_PROXY'))
-        if https_proxy:
-            url = urlparse(https_proxy)
+
+        self.set_proxy(proxy or https_proxy)
+
+        HTTPSConnection.__init__(self, host, port, timeout=timeout)
+        self.request_length = 0
+
+    def set_proxy(self, proxy):
+        if proxy:
+            url = urlparse(proxy)
             if not url.hostname:
-                url = urlparse('https://' + https_proxy)
+                url = urlparse('https://' + proxy)
             host = url.hostname
             port = url.port
             self.has_proxy = True
-        HTTPSConnection.__init__(self, host, port, timeout=timeout)
-        self.request_length = 0
+
 
     def send(self, astr):
         HTTPSConnection.send(self, astr)
@@ -42,8 +48,8 @@ class ProxyHTTPSConnection(HTTPSConnection):
 
 
 class ApiRequest(object):
-    def __init__(self, host, req_timeout=60, debug=False):
-        self.conn = ProxyHTTPSConnection(host, timeout=req_timeout)
+    def __init__(self, host, req_timeout=60, debug=False, proxy=None):
+        self.conn = ProxyHTTPSConnection(host, timeout=req_timeout, proxy=proxy)
         self.req_timeout = req_timeout
         self.keep_alive = False
         self.debug = debug
