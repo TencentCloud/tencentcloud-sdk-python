@@ -714,6 +714,8 @@ class EncodeParams(AbstractModel):
         :type VideoGop: int
         :param BackgroundColor: 混流-输出流背景色。
         :type BackgroundColor: int
+        :param BackgroundImageId: 混流-输出流背景图片，取值为实时音视频控制台上传的图片ID。
+        :type BackgroundImageId: int
         """
         self.AudioSampleRate = None
         self.AudioBitrate = None
@@ -724,6 +726,7 @@ class EncodeParams(AbstractModel):
         self.VideoFramerate = None
         self.VideoGop = None
         self.BackgroundColor = None
+        self.BackgroundImageId = None
 
 
     def _deserialize(self, params):
@@ -736,6 +739,7 @@ class EncodeParams(AbstractModel):
         self.VideoFramerate = params.get("VideoFramerate")
         self.VideoGop = params.get("VideoGop")
         self.BackgroundColor = params.get("BackgroundColor")
+        self.BackgroundImageId = params.get("BackgroundImageId")
 
 
 class EventList(AbstractModel):
@@ -833,7 +837,7 @@ class OutputParams(AbstractModel):
 
     def __init__(self):
         """
-        :param StreamId: 直播流ID，该流ID不能与用户旁路的流ID相同。
+        :param StreamId: 直播流 ID，由用户自定义设置，该流 ID 不能与用户旁路的流 ID 相同。
         :type StreamId: str
         :param PureAudioStream: 取值范围[0,1]， 填0：直播流为音视频(默认); 填1：直播流为纯音频
         :type PureAudioStream: int

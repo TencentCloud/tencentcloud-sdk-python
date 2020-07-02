@@ -1207,6 +1207,8 @@ class SendStatus(AbstractModel):
         :type Code: str
         :param Message: 短信请求错误码描述。
         :type Message: str
+        :param IsoCode: 国家码或地区码，例如CN,US等，对于未识别出国家码或者地区码，默认返回DEF,具体支持列表请参考国际/港澳台计费总览。
+        :type IsoCode: str
         """
         self.SerialNo = None
         self.PhoneNumber = None
@@ -1214,6 +1216,7 @@ class SendStatus(AbstractModel):
         self.SessionContext = None
         self.Code = None
         self.Message = None
+        self.IsoCode = None
 
 
     def _deserialize(self, params):
@@ -1223,6 +1226,7 @@ class SendStatus(AbstractModel):
         self.SessionContext = params.get("SessionContext")
         self.Code = params.get("Code")
         self.Message = params.get("Message")
+        self.IsoCode = params.get("IsoCode")
 
 
 class SendStatusStatistics(AbstractModel):

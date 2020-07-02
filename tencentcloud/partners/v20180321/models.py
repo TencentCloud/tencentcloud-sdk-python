@@ -764,12 +764,15 @@ class DescribeAgentClientGradeResponse(AbstractModel):
         :type AuthState: int
         :param ClientGrade: 客户级别
         :type ClientGrade: str
+        :param ClientType: 客户类型：1，个人；2，企业；3，其他
+        :type ClientType: int
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.AuditStatus = None
         self.AuthState = None
         self.ClientGrade = None
+        self.ClientType = None
         self.RequestId = None
 
 
@@ -777,6 +780,7 @@ class DescribeAgentClientGradeResponse(AbstractModel):
         self.AuditStatus = params.get("AuditStatus")
         self.AuthState = params.get("AuthState")
         self.ClientGrade = params.get("ClientGrade")
+        self.ClientType = params.get("ClientType")
         self.RequestId = params.get("RequestId")
 
 

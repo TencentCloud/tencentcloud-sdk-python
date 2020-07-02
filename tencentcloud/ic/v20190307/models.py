@@ -362,6 +362,73 @@ class DescribeCardsResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class RenewCardsRequest(AbstractModel):
+    """RenewCards请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Sdkappid: 应用ID
+        :type Sdkappid: int
+        :param Iccids: 续费的iccid
+        :type Iccids: list of str
+        :param RenewNum: 续费的周期
+        :type RenewNum: int
+        """
+        self.Sdkappid = None
+        self.Iccids = None
+        self.RenewNum = None
+
+
+    def _deserialize(self, params):
+        self.Sdkappid = params.get("Sdkappid")
+        self.Iccids = params.get("Iccids")
+        self.RenewNum = params.get("RenewNum")
+
+
+class RenewCardsResponse(AbstractModel):
+    """RenewCards返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Data: 续费成功的订单id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Data: :class:`tencentcloud.ic.v20190307.models.ResRenew`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Data = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self.Data = ResRenew()
+            self.Data._deserialize(params.get("Data"))
+        self.RequestId = params.get("RequestId")
+
+
+class ResRenew(AbstractModel):
+    """云api 卡片续费
+
+    """
+
+    def __init__(self):
+        """
+        :param OrderIds: 每一张续费卡片的订单ID数组
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OrderIds: list of str
+        """
+        self.OrderIds = None
+
+
+    def _deserialize(self, params):
+        self.OrderIds = params.get("OrderIds")
+
+
 class SendMultiSmsRequest(AbstractModel):
     """SendMultiSms请求参数结构体
 

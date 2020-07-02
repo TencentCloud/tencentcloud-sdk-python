@@ -4362,6 +4362,9 @@ ip：IP 列表作为源站
         :param BackupServerName: 回备源站时 Host 头部，不填充则默认为主源站的 ServerName
 注意：此字段可能返回 null，表示取不到有效值。
         :type BackupServerName: str
+        :param BasePath: 回源路径
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BasePath: str
         """
         self.Origins = None
         self.OriginType = None
@@ -4371,6 +4374,7 @@ ip：IP 列表作为源站
         self.BackupOrigins = None
         self.BackupOriginType = None
         self.BackupServerName = None
+        self.BasePath = None
 
 
     def _deserialize(self, params):
@@ -4382,6 +4386,7 @@ ip：IP 列表作为源站
         self.BackupOrigins = params.get("BackupOrigins")
         self.BackupOriginType = params.get("BackupOriginType")
         self.BackupServerName = params.get("BackupServerName")
+        self.BasePath = params.get("BasePath")
 
 
 class OriginPullOptimization(AbstractModel):

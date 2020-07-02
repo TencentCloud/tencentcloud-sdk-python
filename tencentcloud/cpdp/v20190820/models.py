@@ -154,6 +154,39 @@ class AgentTaxPaymentBatch(AbstractModel):
         self.Type = params.get("Type")
 
 
+class AnchorContractInfo(AbstractModel):
+    """主播签约信息
+
+    """
+
+    def __init__(self):
+        """
+        :param AnchorId: 主播ID
+        :type AnchorId: str
+        :param AnchorName: 主播名称
+        :type AnchorName: str
+        :param AgentId: 代理商ID
+        :type AgentId: str
+        :param AgentName: 代理商名称
+        :type AgentName: str
+        :param IdNo: 主播身份证号
+        :type IdNo: str
+        """
+        self.AnchorId = None
+        self.AnchorName = None
+        self.AgentId = None
+        self.AgentName = None
+        self.IdNo = None
+
+
+    def _deserialize(self, params):
+        self.AnchorId = params.get("AnchorId")
+        self.AnchorName = params.get("AnchorName")
+        self.AgentId = params.get("AgentId")
+        self.AgentName = params.get("AgentName")
+        self.IdNo = params.get("IdNo")
+
+
 class ApplyApplicationMaterialRequest(AbstractModel):
     """ApplyApplicationMaterial请求参数结构体
 
@@ -853,6 +886,8 @@ sandbox: 沙箱环境
 development: 开发环境
 缺省: release
         :type MidasEnvironment: str
+        :param CommissionAmount: 手续费金额
+        :type CommissionAmount: str
         """
         self.MidasAppId = None
         self.SubAppId = None
@@ -868,6 +903,7 @@ development: 开发环境
         self.MidasSignature = None
         self.EncryptType = None
         self.MidasEnvironment = None
+        self.CommissionAmount = None
 
 
     def _deserialize(self, params):
@@ -885,6 +921,7 @@ development: 开发环境
         self.MidasSignature = params.get("MidasSignature")
         self.EncryptType = params.get("EncryptType")
         self.MidasEnvironment = params.get("MidasEnvironment")
+        self.CommissionAmount = params.get("CommissionAmount")
 
 
 class ApplyWithdrawalResponse(AbstractModel):
@@ -2104,6 +2141,8 @@ class CreateInvoiceRequest(AbstractModel):
         :type Discount: int
         :param StoreNo: 门店编码
         :type StoreNo: str
+        :param InvoiceChannel: 开票渠道。0：线上渠道，1：线下渠道。不填默认为线上渠道
+        :type InvoiceChannel: int
         """
         self.InvoicePlatformId = None
         self.TitleType = None
@@ -2140,6 +2179,7 @@ class CreateInvoiceRequest(AbstractModel):
         self.OrderDate = None
         self.Discount = None
         self.StoreNo = None
+        self.InvoiceChannel = None
 
 
     def _deserialize(self, params):
@@ -2183,6 +2223,7 @@ class CreateInvoiceRequest(AbstractModel):
         self.OrderDate = params.get("OrderDate")
         self.Discount = params.get("Discount")
         self.StoreNo = params.get("StoreNo")
+        self.InvoiceChannel = params.get("InvoiceChannel")
 
 
 class CreateInvoiceResponse(AbstractModel):
@@ -2484,10 +2525,13 @@ class CreateRedInvoiceRequest(AbstractModel):
         :type Invoices: list of CreateRedInvoiceItem
         :param Profile: 接入环境。沙箱环境填 sandbox。
         :type Profile: str
+        :param InvoiceChannel: 开票渠道。0：线上渠道，1：线下渠道。不填默认为线上渠道
+        :type InvoiceChannel: int
         """
         self.InvoicePlatformId = None
         self.Invoices = None
         self.Profile = None
+        self.InvoiceChannel = None
 
 
     def _deserialize(self, params):
@@ -2499,6 +2543,7 @@ class CreateRedInvoiceRequest(AbstractModel):
                 obj._deserialize(item)
                 self.Invoices.append(obj)
         self.Profile = params.get("Profile")
+        self.InvoiceChannel = params.get("InvoiceChannel")
 
 
 class CreateRedInvoiceResponse(AbstractModel):
@@ -2656,6 +2701,144 @@ class DeleteAgentTaxPaymentInfosResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeChargeDetailRequest(AbstractModel):
+    """DescribeChargeDetail请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestType: 请求类型
+        :type RequestType: str
+        :param MerchantCode: 商户号
+        :type MerchantCode: str
+        :param PayChannel: 支付渠道
+        :type PayChannel: str
+        :param PayChannelSubId: 子渠道
+        :type PayChannelSubId: int
+        :param OrderId: 原始交易订单号或者流水号
+        :type OrderId: str
+        :param BankAccountNumber: 父账户账号，资金汇总账号
+        :type BankAccountNumber: str
+        :param AcquiringChannelType: 收单渠道类型
+        :type AcquiringChannelType: str
+        :param PlatformShortNumber: 平台短号(银行分配)
+        :type PlatformShortNumber: str
+        :param MidasSecretId: 聚鑫分配的安全ID
+        :type MidasSecretId: str
+        :param MidasAppId: 聚鑫分配的支付主MidasAppId
+        :type MidasAppId: str
+        :param MidasSignature: 计费签名
+        :type MidasSignature: str
+        :param TransSequenceNumber: 交易流水号
+        :type TransSequenceNumber: str
+        :param MidasEnvironment: Midas环境参数
+        :type MidasEnvironment: str
+        :param ReservedMessage: 保留域
+        :type ReservedMessage: str
+        """
+        self.RequestType = None
+        self.MerchantCode = None
+        self.PayChannel = None
+        self.PayChannelSubId = None
+        self.OrderId = None
+        self.BankAccountNumber = None
+        self.AcquiringChannelType = None
+        self.PlatformShortNumber = None
+        self.MidasSecretId = None
+        self.MidasAppId = None
+        self.MidasSignature = None
+        self.TransSequenceNumber = None
+        self.MidasEnvironment = None
+        self.ReservedMessage = None
+
+
+    def _deserialize(self, params):
+        self.RequestType = params.get("RequestType")
+        self.MerchantCode = params.get("MerchantCode")
+        self.PayChannel = params.get("PayChannel")
+        self.PayChannelSubId = params.get("PayChannelSubId")
+        self.OrderId = params.get("OrderId")
+        self.BankAccountNumber = params.get("BankAccountNumber")
+        self.AcquiringChannelType = params.get("AcquiringChannelType")
+        self.PlatformShortNumber = params.get("PlatformShortNumber")
+        self.MidasSecretId = params.get("MidasSecretId")
+        self.MidasAppId = params.get("MidasAppId")
+        self.MidasSignature = params.get("MidasSignature")
+        self.TransSequenceNumber = params.get("TransSequenceNumber")
+        self.MidasEnvironment = params.get("MidasEnvironment")
+        self.ReservedMessage = params.get("ReservedMessage")
+
+
+class DescribeChargeDetailResponse(AbstractModel):
+    """DescribeChargeDetail返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param OrderStatus: 交易状态 （0：成功，1：失败，2：异常,3:冲正，5：待处理）
+        :type OrderStatus: str
+        :param OrderAmount: 交易金额
+        :type OrderAmount: str
+        :param CommissionAmount: 佣金费
+        :type CommissionAmount: str
+        :param PayMode: 支付方式  0-冻结支付 1-普通支付
+        :type PayMode: str
+        :param OrderDate: 交易日期
+        :type OrderDate: str
+        :param OrderTime: 交易时间
+        :type OrderTime: str
+        :param OrderActualInSubAccountName: 订单实际转入见证子账户的名称
+        :type OrderActualInSubAccountName: str
+        :param OrderActualInSubAccountNumber: 订单实际转入见证子账户的帐号
+        :type OrderActualInSubAccountNumber: str
+        :param OrderInSubAccountName: 订单实际转入见证子账户的帐号
+        :type OrderInSubAccountName: str
+        :param OrderInSubAccountNumber: 订单转入见证子账户的帐号
+        :type OrderInSubAccountNumber: str
+        :param FrontSequenceNumber: 银行流水号
+        :type FrontSequenceNumber: str
+        :param FailMessage: 当充值失败时，返回交易失败原因
+        :type FailMessage: str
+        :param RequestType: 请求类型
+        :type RequestType: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.OrderStatus = None
+        self.OrderAmount = None
+        self.CommissionAmount = None
+        self.PayMode = None
+        self.OrderDate = None
+        self.OrderTime = None
+        self.OrderActualInSubAccountName = None
+        self.OrderActualInSubAccountNumber = None
+        self.OrderInSubAccountName = None
+        self.OrderInSubAccountNumber = None
+        self.FrontSequenceNumber = None
+        self.FailMessage = None
+        self.RequestType = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.OrderStatus = params.get("OrderStatus")
+        self.OrderAmount = params.get("OrderAmount")
+        self.CommissionAmount = params.get("CommissionAmount")
+        self.PayMode = params.get("PayMode")
+        self.OrderDate = params.get("OrderDate")
+        self.OrderTime = params.get("OrderTime")
+        self.OrderActualInSubAccountName = params.get("OrderActualInSubAccountName")
+        self.OrderActualInSubAccountNumber = params.get("OrderActualInSubAccountNumber")
+        self.OrderInSubAccountName = params.get("OrderInSubAccountName")
+        self.OrderInSubAccountNumber = params.get("OrderInSubAccountNumber")
+        self.FrontSequenceNumber = params.get("FrontSequenceNumber")
+        self.FailMessage = params.get("FailMessage")
+        self.RequestType = params.get("RequestType")
+        self.RequestId = params.get("RequestId")
+
+
 class DownloadBillRequest(AbstractModel):
     """DownloadBill请求参数结构体
 
@@ -2711,6 +2894,146 @@ class DownloadBillResponse(AbstractModel):
         self.FileName = params.get("FileName")
         self.FileMD5 = params.get("FileMD5")
         self.DownloadUrl = params.get("DownloadUrl")
+        self.RequestId = params.get("RequestId")
+
+
+class ExecuteMemberTransactionRequest(AbstractModel):
+    """ExecuteMemberTransaction请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestType: 请求类型此接口固定填：MemberTransactionReq
+        :type RequestType: str
+        :param MerchantCode: 银行注册商户号
+        :type MerchantCode: str
+        :param PayChannel: 支付渠道
+        :type PayChannel: str
+        :param PayChannelSubId: 子渠道
+        :type PayChannelSubId: int
+        :param OutTransNetMemberCode: 转出交易网会员代码
+        :type OutTransNetMemberCode: str
+        :param OutSubAccountName: 转出见证子账户的户名
+        :type OutSubAccountName: str
+        :param InSubAccountName: 转入见证子账户的户名
+        :type InSubAccountName: str
+        :param OutSubAccountNumber: 转出子账户账号
+        :type OutSubAccountNumber: str
+        :param InSubAccountNumber: 转入子账户账号
+        :type InSubAccountNumber: str
+        :param BankAccountNumber: 父账户账号，资金汇总账号
+        :type BankAccountNumber: str
+        :param CurrencyUnit: 货币单位 单位，1：元，2：角，3：分
+        :type CurrencyUnit: str
+        :param CurrencyType: 币种
+        :type CurrencyType: str
+        :param CurrencyAmount: 交易金额
+        :type CurrencyAmount: str
+        :param OrderId: 订单号
+        :type OrderId: str
+        :param MidasAppId: 聚鑫分配的支付主MidasAppId
+        :type MidasAppId: str
+        :param MidasSecretId: 聚鑫分配的安全ID
+        :type MidasSecretId: str
+        :param MidasSignature: 计费签名
+        :type MidasSignature: str
+        :param TransSequenceNumber: 交易流水号
+        :type TransSequenceNumber: str
+        :param InTransNetMemberCode: 转入交易网会员代码
+        :type InTransNetMemberCode: str
+        :param MidasEnvironment: Midas环境标识 release 现网环境 sandbox 沙箱环境
+development 开发环境
+        :type MidasEnvironment: str
+        :param PlatformShortNumber: 平台短号(银行分配)
+        :type PlatformShortNumber: str
+        :param TransType: 0,登记挂账，1，撤销挂账
+        :type TransType: str
+        :param TransFee: 交易手续费
+        :type TransFee: str
+        :param ReservedMessage: 保留域
+        :type ReservedMessage: str
+        """
+        self.RequestType = None
+        self.MerchantCode = None
+        self.PayChannel = None
+        self.PayChannelSubId = None
+        self.OutTransNetMemberCode = None
+        self.OutSubAccountName = None
+        self.InSubAccountName = None
+        self.OutSubAccountNumber = None
+        self.InSubAccountNumber = None
+        self.BankAccountNumber = None
+        self.CurrencyUnit = None
+        self.CurrencyType = None
+        self.CurrencyAmount = None
+        self.OrderId = None
+        self.MidasAppId = None
+        self.MidasSecretId = None
+        self.MidasSignature = None
+        self.TransSequenceNumber = None
+        self.InTransNetMemberCode = None
+        self.MidasEnvironment = None
+        self.PlatformShortNumber = None
+        self.TransType = None
+        self.TransFee = None
+        self.ReservedMessage = None
+
+
+    def _deserialize(self, params):
+        self.RequestType = params.get("RequestType")
+        self.MerchantCode = params.get("MerchantCode")
+        self.PayChannel = params.get("PayChannel")
+        self.PayChannelSubId = params.get("PayChannelSubId")
+        self.OutTransNetMemberCode = params.get("OutTransNetMemberCode")
+        self.OutSubAccountName = params.get("OutSubAccountName")
+        self.InSubAccountName = params.get("InSubAccountName")
+        self.OutSubAccountNumber = params.get("OutSubAccountNumber")
+        self.InSubAccountNumber = params.get("InSubAccountNumber")
+        self.BankAccountNumber = params.get("BankAccountNumber")
+        self.CurrencyUnit = params.get("CurrencyUnit")
+        self.CurrencyType = params.get("CurrencyType")
+        self.CurrencyAmount = params.get("CurrencyAmount")
+        self.OrderId = params.get("OrderId")
+        self.MidasAppId = params.get("MidasAppId")
+        self.MidasSecretId = params.get("MidasSecretId")
+        self.MidasSignature = params.get("MidasSignature")
+        self.TransSequenceNumber = params.get("TransSequenceNumber")
+        self.InTransNetMemberCode = params.get("InTransNetMemberCode")
+        self.MidasEnvironment = params.get("MidasEnvironment")
+        self.PlatformShortNumber = params.get("PlatformShortNumber")
+        self.TransType = params.get("TransType")
+        self.TransFee = params.get("TransFee")
+        self.ReservedMessage = params.get("ReservedMessage")
+
+
+class ExecuteMemberTransactionResponse(AbstractModel):
+    """ExecuteMemberTransaction返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestType: 请求类型
+        :type RequestType: str
+        :param FrontSequenceNumber: 银行流水号
+        :type FrontSequenceNumber: str
+        :param ReservedMessage: 保留域
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ReservedMessage: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestType = None
+        self.FrontSequenceNumber = None
+        self.ReservedMessage = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestType = params.get("RequestType")
+        self.FrontSequenceNumber = params.get("FrontSequenceNumber")
+        self.ReservedMessage = params.get("ReservedMessage")
         self.RequestId = params.get("RequestId")
 
 
@@ -3360,6 +3683,53 @@ class QueryAgentTaxPaymentBatchResponse(AbstractModel):
         if params.get("AgentTaxPaymentBatch") is not None:
             self.AgentTaxPaymentBatch = AgentTaxPaymentBatch()
             self.AgentTaxPaymentBatch._deserialize(params.get("AgentTaxPaymentBatch"))
+        self.RequestId = params.get("RequestId")
+
+
+class QueryAnchorContractInfoRequest(AbstractModel):
+    """QueryAnchorContractInfo请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param BeginTime: 起始时间，格式为yyyy-MM-dd
+        :type BeginTime: str
+        :param EndTime: 起始时间，格式为yyyy-MM-dd
+        :type EndTime: str
+        """
+        self.BeginTime = None
+        self.EndTime = None
+
+
+    def _deserialize(self, params):
+        self.BeginTime = params.get("BeginTime")
+        self.EndTime = params.get("EndTime")
+
+
+class QueryAnchorContractInfoResponse(AbstractModel):
+    """QueryAnchorContractInfo返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param AnchorContractInfoList: 签约主播数据
+        :type AnchorContractInfoList: list of AnchorContractInfo
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.AnchorContractInfoList = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("AnchorContractInfoList") is not None:
+            self.AnchorContractInfoList = []
+            for item in params.get("AnchorContractInfoList"):
+                obj = AnchorContractInfo()
+                obj._deserialize(item)
+                self.AnchorContractInfoList.append(obj)
         self.RequestId = params.get("RequestId")
 
 
@@ -4242,12 +4612,18 @@ class QueryInvoiceRequest(AbstractModel):
         :type IsRed: int
         :param Profile: 接入环境。沙箱环境填sandbox。
         :type Profile: str
+        :param InvoiceChannel: 开票渠道。0：线上渠道，1：线下渠道。不填默认为线上渠道
+        :type InvoiceChannel: int
+        :param SellerTaxpayerNum: 当渠道为线下渠道时，必填
+        :type SellerTaxpayerNum: str
         """
         self.InvoicePlatformId = None
         self.OrderId = None
         self.OrderSn = None
         self.IsRed = None
         self.Profile = None
+        self.InvoiceChannel = None
+        self.SellerTaxpayerNum = None
 
 
     def _deserialize(self, params):
@@ -4256,6 +4632,8 @@ class QueryInvoiceRequest(AbstractModel):
         self.OrderSn = params.get("OrderSn")
         self.IsRed = params.get("IsRed")
         self.Profile = params.get("Profile")
+        self.InvoiceChannel = params.get("InvoiceChannel")
+        self.SellerTaxpayerNum = params.get("SellerTaxpayerNum")
 
 
 class QueryInvoiceResponse(AbstractModel):
@@ -5816,6 +6194,142 @@ class QueryTradeResult(AbstractModel):
         self.Code = params.get("Code")
 
 
+class RechargeByThirdPayRequest(AbstractModel):
+    """RechargeByThirdPay请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestType: 请求类型
+        :type RequestType: str
+        :param MerchantCode: 商户号
+        :type MerchantCode: str
+        :param PayChannel: 支付渠道
+        :type PayChannel: str
+        :param PayChannelSubId: 子渠道
+        :type PayChannelSubId: int
+        :param OrderId: 交易订单号
+        :type OrderId: str
+        :param BankAccountNumber: 父账户账号，资金汇总账号
+        :type BankAccountNumber: str
+        :param PlatformShortNumber: 平台短号(银行分配)
+        :type PlatformShortNumber: str
+        :param MidasSecretId: 聚鑫分配的安全ID
+        :type MidasSecretId: str
+        :param MidasAppId: 聚鑫分配的支付主MidasAppId
+        :type MidasAppId: str
+        :param MidasSignature: 计费签名
+        :type MidasSignature: str
+        :param TransSequenceNumber: 交易流水号
+        :type TransSequenceNumber: str
+        :param BankSubAccountNumber: 子账户账号
+        :type BankSubAccountNumber: str
+        :param TransFee: 交易手续费
+        :type TransFee: str
+        :param ThirdPayChannel: 第三方支付渠道类型 0001-微信 0002-支付宝 0003-京东支付
+        :type ThirdPayChannel: str
+        :param ThirdPayChannelMerchantCode: 第三方渠道商户号
+        :type ThirdPayChannelMerchantCode: str
+        :param ThirdPayChannelOrderId: 第三方渠道订单号或流水号
+        :type ThirdPayChannelOrderId: str
+        :param CurrencyAmount: 交易金额
+        :type CurrencyAmount: str
+        :param CurrencyUnit: 单位，1：元，2：角，3：分
+        :type CurrencyUnit: str
+        :param CurrencyType: 币种
+        :type CurrencyType: str
+        :param TransNetMemberCode: 交易网会员代码
+        :type TransNetMemberCode: str
+        :param MidasEnvironment: midas环境参数
+        :type MidasEnvironment: str
+        :param ReservedMessage: 保留域
+        :type ReservedMessage: str
+        :param Remark: 备注
+        :type Remark: str
+        """
+        self.RequestType = None
+        self.MerchantCode = None
+        self.PayChannel = None
+        self.PayChannelSubId = None
+        self.OrderId = None
+        self.BankAccountNumber = None
+        self.PlatformShortNumber = None
+        self.MidasSecretId = None
+        self.MidasAppId = None
+        self.MidasSignature = None
+        self.TransSequenceNumber = None
+        self.BankSubAccountNumber = None
+        self.TransFee = None
+        self.ThirdPayChannel = None
+        self.ThirdPayChannelMerchantCode = None
+        self.ThirdPayChannelOrderId = None
+        self.CurrencyAmount = None
+        self.CurrencyUnit = None
+        self.CurrencyType = None
+        self.TransNetMemberCode = None
+        self.MidasEnvironment = None
+        self.ReservedMessage = None
+        self.Remark = None
+
+
+    def _deserialize(self, params):
+        self.RequestType = params.get("RequestType")
+        self.MerchantCode = params.get("MerchantCode")
+        self.PayChannel = params.get("PayChannel")
+        self.PayChannelSubId = params.get("PayChannelSubId")
+        self.OrderId = params.get("OrderId")
+        self.BankAccountNumber = params.get("BankAccountNumber")
+        self.PlatformShortNumber = params.get("PlatformShortNumber")
+        self.MidasSecretId = params.get("MidasSecretId")
+        self.MidasAppId = params.get("MidasAppId")
+        self.MidasSignature = params.get("MidasSignature")
+        self.TransSequenceNumber = params.get("TransSequenceNumber")
+        self.BankSubAccountNumber = params.get("BankSubAccountNumber")
+        self.TransFee = params.get("TransFee")
+        self.ThirdPayChannel = params.get("ThirdPayChannel")
+        self.ThirdPayChannelMerchantCode = params.get("ThirdPayChannelMerchantCode")
+        self.ThirdPayChannelOrderId = params.get("ThirdPayChannelOrderId")
+        self.CurrencyAmount = params.get("CurrencyAmount")
+        self.CurrencyUnit = params.get("CurrencyUnit")
+        self.CurrencyType = params.get("CurrencyType")
+        self.TransNetMemberCode = params.get("TransNetMemberCode")
+        self.MidasEnvironment = params.get("MidasEnvironment")
+        self.ReservedMessage = params.get("ReservedMessage")
+        self.Remark = params.get("Remark")
+
+
+class RechargeByThirdPayResponse(AbstractModel):
+    """RechargeByThirdPay返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ReservedMessage: 保留字段
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ReservedMessage: str
+        :param FrontSequenceNumber: 银行流水号
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FrontSequenceNumber: str
+        :param RequestType: 请求类型
+        :type RequestType: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.ReservedMessage = None
+        self.FrontSequenceNumber = None
+        self.RequestType = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.ReservedMessage = params.get("ReservedMessage")
+        self.FrontSequenceNumber = params.get("FrontSequenceNumber")
+        self.RequestType = params.get("RequestType")
+        self.RequestId = params.get("RequestId")
+
+
 class RechargeMemberThirdPayRequest(AbstractModel):
     """RechargeMemberThirdPay请求参数结构体
 
@@ -5938,6 +6452,145 @@ class RechargeMemberThirdPayResponse(AbstractModel):
         self.MemberSubAcctPreAvailBal = params.get("MemberSubAcctPreAvailBal")
         self.ReservedMsgOne = params.get("ReservedMsgOne")
         self.ReservedMsgTwo = params.get("ReservedMsgTwo")
+        self.RequestId = params.get("RequestId")
+
+
+class RefundMemberTransactionRequest(AbstractModel):
+    """RefundMemberTransaction请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param OutSubAccountName: 转出见证子账户的户名
+        :type OutSubAccountName: str
+        :param InSubAccountName: 转入见证子账户的户名
+        :type InSubAccountName: str
+        :param PayChannelSubId: 子渠道
+        :type PayChannelSubId: int
+        :param OutSubAccountNumber: 转出见证子账户账号
+        :type OutSubAccountNumber: str
+        :param MidasSignature: 计费签名
+        :type MidasSignature: str
+        :param InSubAccountNumber: 转入见证子账户账号
+        :type InSubAccountNumber: str
+        :param MidasSecretId: 计费秘钥
+        :type MidasSecretId: str
+        :param BankAccountNumber: 父账户账号，资金汇总账号
+        :type BankAccountNumber: str
+        :param OldTransSequenceNumber: 原老订单流水号
+        :type OldTransSequenceNumber: str
+        :param MerchantCode: 银行注册商户号
+        :type MerchantCode: str
+        :param RequestType: 请求类型，固定为MemberTransactionRefundReq
+        :type RequestType: str
+        :param CurrencyAmount: 交易金额
+        :type CurrencyAmount: str
+        :param TransSequenceNumber: 交易流水号
+        :type TransSequenceNumber: str
+        :param PayChannel: 渠道
+        :type PayChannel: str
+        :param OldOrderId: 原订单号
+        :type OldOrderId: str
+        :param MidasAppId: 聚鑫分配的支付主MidasAppId
+        :type MidasAppId: str
+        :param OrderId: 订单号
+        :type OrderId: str
+        :param MidasEnvironment: Midas环境标识 release 现网环境 sandbox 沙箱环境
+development 开发环境
+        :type MidasEnvironment: str
+        :param OutTransNetMemberCode: 转出子账户交易网会员代码
+        :type OutTransNetMemberCode: str
+        :param InTransNetMemberCode: 转入子账户交易网会员代码
+        :type InTransNetMemberCode: str
+        :param ReservedMessage: 保留域
+        :type ReservedMessage: str
+        :param PlatformShortNumber: 平台短号(银行分配)
+        :type PlatformShortNumber: str
+        :param TransType: 0-登记挂账，1-撤销挂账
+        :type TransType: str
+        :param TransFee: 交易手续费
+        :type TransFee: str
+        """
+        self.OutSubAccountName = None
+        self.InSubAccountName = None
+        self.PayChannelSubId = None
+        self.OutSubAccountNumber = None
+        self.MidasSignature = None
+        self.InSubAccountNumber = None
+        self.MidasSecretId = None
+        self.BankAccountNumber = None
+        self.OldTransSequenceNumber = None
+        self.MerchantCode = None
+        self.RequestType = None
+        self.CurrencyAmount = None
+        self.TransSequenceNumber = None
+        self.PayChannel = None
+        self.OldOrderId = None
+        self.MidasAppId = None
+        self.OrderId = None
+        self.MidasEnvironment = None
+        self.OutTransNetMemberCode = None
+        self.InTransNetMemberCode = None
+        self.ReservedMessage = None
+        self.PlatformShortNumber = None
+        self.TransType = None
+        self.TransFee = None
+
+
+    def _deserialize(self, params):
+        self.OutSubAccountName = params.get("OutSubAccountName")
+        self.InSubAccountName = params.get("InSubAccountName")
+        self.PayChannelSubId = params.get("PayChannelSubId")
+        self.OutSubAccountNumber = params.get("OutSubAccountNumber")
+        self.MidasSignature = params.get("MidasSignature")
+        self.InSubAccountNumber = params.get("InSubAccountNumber")
+        self.MidasSecretId = params.get("MidasSecretId")
+        self.BankAccountNumber = params.get("BankAccountNumber")
+        self.OldTransSequenceNumber = params.get("OldTransSequenceNumber")
+        self.MerchantCode = params.get("MerchantCode")
+        self.RequestType = params.get("RequestType")
+        self.CurrencyAmount = params.get("CurrencyAmount")
+        self.TransSequenceNumber = params.get("TransSequenceNumber")
+        self.PayChannel = params.get("PayChannel")
+        self.OldOrderId = params.get("OldOrderId")
+        self.MidasAppId = params.get("MidasAppId")
+        self.OrderId = params.get("OrderId")
+        self.MidasEnvironment = params.get("MidasEnvironment")
+        self.OutTransNetMemberCode = params.get("OutTransNetMemberCode")
+        self.InTransNetMemberCode = params.get("InTransNetMemberCode")
+        self.ReservedMessage = params.get("ReservedMessage")
+        self.PlatformShortNumber = params.get("PlatformShortNumber")
+        self.TransType = params.get("TransType")
+        self.TransFee = params.get("TransFee")
+
+
+class RefundMemberTransactionResponse(AbstractModel):
+    """RefundMemberTransaction返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestType: 请求类型
+        :type RequestType: str
+        :param FrontSequenceNumber: 银行流水号
+        :type FrontSequenceNumber: str
+        :param ReservedMessage: 保留域
+        :type ReservedMessage: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestType = None
+        self.FrontSequenceNumber = None
+        self.ReservedMessage = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestType = params.get("RequestType")
+        self.FrontSequenceNumber = params.get("FrontSequenceNumber")
+        self.ReservedMessage = params.get("ReservedMessage")
         self.RequestId = params.get("RequestId")
 
 
@@ -6104,6 +6757,8 @@ class RegisterBillRequest(AbstractModel):
         :type ReservedMessage: str
         :param Remark: 备注
         :type Remark: str
+        :param MidasEnvironment: Midas环境参数
+        :type MidasEnvironment: str
         """
         self.RequestType = None
         self.MerchantCode = None
@@ -6123,6 +6778,7 @@ class RegisterBillRequest(AbstractModel):
         self.TranType = None
         self.ReservedMessage = None
         self.Remark = None
+        self.MidasEnvironment = None
 
 
     def _deserialize(self, params):
@@ -6144,6 +6800,7 @@ class RegisterBillRequest(AbstractModel):
         self.TranType = params.get("TranType")
         self.ReservedMessage = params.get("ReservedMessage")
         self.Remark = params.get("Remark")
+        self.MidasEnvironment = params.get("MidasEnvironment")
 
 
 class RegisterBillResponse(AbstractModel):
@@ -6264,94 +6921,6 @@ class RegisterBillSupportWithdrawResponse(AbstractModel):
         self.TxnReturnMsg = params.get("TxnReturnMsg")
         self.FrontSeqNo = params.get("FrontSeqNo")
         self.CnsmrSeqNo = params.get("CnsmrSeqNo")
-        self.ReservedMsg = params.get("ReservedMsg")
-        self.RequestId = params.get("RequestId")
-
-
-class RevRegisterBillSupportWithdrawRequest(AbstractModel):
-    """RevRegisterBillSupportWithdraw请求参数结构体
-
-    """
-
-    def __init__(self):
-        """
-        :param MrchCode: String(22)，商户号（签约客户号）
-        :type MrchCode: str
-        :param TranNetMemberCode: STRING(32)，交易网会员代码
-        :type TranNetMemberCode: str
-        :param OldOrderNo: STRING(30)，原订单号（RegisterBillSupportWithdraw接口中的订单号）
-        :type OldOrderNo: str
-        :param CancelAmt: STRING(20)，撤销金额（支持部分撤销，不能大于原订单可用金额，包含交易费用）
-        :type CancelAmt: str
-        :param TranFee: STRING(20)，交易费用（暂未使用，默认传0.0）
-        :type TranFee: str
-        :param Remark: STRING(300)，备注
-        :type Remark: str
-        :param ReservedMsgOne: STRING(300)，保留域1
-        :type ReservedMsgOne: str
-        :param ReservedMsgTwo: STRING(300)，保留域2
-        :type ReservedMsgTwo: str
-        :param ReservedMsgThree: STRING(300)，保留域3
-        :type ReservedMsgThree: str
-        """
-        self.MrchCode = None
-        self.TranNetMemberCode = None
-        self.OldOrderNo = None
-        self.CancelAmt = None
-        self.TranFee = None
-        self.Remark = None
-        self.ReservedMsgOne = None
-        self.ReservedMsgTwo = None
-        self.ReservedMsgThree = None
-
-
-    def _deserialize(self, params):
-        self.MrchCode = params.get("MrchCode")
-        self.TranNetMemberCode = params.get("TranNetMemberCode")
-        self.OldOrderNo = params.get("OldOrderNo")
-        self.CancelAmt = params.get("CancelAmt")
-        self.TranFee = params.get("TranFee")
-        self.Remark = params.get("Remark")
-        self.ReservedMsgOne = params.get("ReservedMsgOne")
-        self.ReservedMsgTwo = params.get("ReservedMsgTwo")
-        self.ReservedMsgThree = params.get("ReservedMsgThree")
-
-
-class RevRegisterBillSupportWithdrawResponse(AbstractModel):
-    """RevRegisterBillSupportWithdraw返回参数结构体
-
-    """
-
-    def __init__(self):
-        """
-        :param TxnReturnCode: String(20)，返回码
-        :type TxnReturnCode: str
-        :param TxnReturnMsg: String(100)，返回信息
-        :type TxnReturnMsg: str
-        :param CnsmrSeqNo: String(22)，交易流水号
-        :type CnsmrSeqNo: str
-        :param FrontSeqNo: STRING(52)，见证系统流水号
-注意：此字段可能返回 null，表示取不到有效值。
-        :type FrontSeqNo: str
-        :param ReservedMsg: STRING(1027)，保留域
-注意：此字段可能返回 null，表示取不到有效值。
-        :type ReservedMsg: str
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
-        self.TxnReturnCode = None
-        self.TxnReturnMsg = None
-        self.CnsmrSeqNo = None
-        self.FrontSeqNo = None
-        self.ReservedMsg = None
-        self.RequestId = None
-
-
-    def _deserialize(self, params):
-        self.TxnReturnCode = params.get("TxnReturnCode")
-        self.TxnReturnMsg = params.get("TxnReturnMsg")
-        self.CnsmrSeqNo = params.get("CnsmrSeqNo")
-        self.FrontSeqNo = params.get("FrontSeqNo")
         self.ReservedMsg = params.get("ReservedMsg")
         self.RequestId = params.get("RequestId")
 
@@ -6617,6 +7186,133 @@ class RevokeMemberRechargeThirdPayResponse(AbstractModel):
         self.FrontSeqNo = params.get("FrontSeqNo")
         self.ReservedMsgOne = params.get("ReservedMsgOne")
         self.ReservedMsgTwo = params.get("ReservedMsgTwo")
+        self.RequestId = params.get("RequestId")
+
+
+class RevokeRechargeByThirdPayRequest(AbstractModel):
+    """RevokeRechargeByThirdPay请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestType: 请求类型此接口固定填：RevokeMemberRechargeThirdPayReq
+        :type RequestType: str
+        :param MerchantCode: 商户号
+        :type MerchantCode: str
+        :param PayChannel: 支付渠道
+        :type PayChannel: str
+        :param PayChannelSubId: 子渠道
+        :type PayChannelSubId: int
+        :param OrderId: 原始充值交易订单号
+        :type OrderId: str
+        :param BankAccountNumber: 父账户账号，资金汇总账号
+        :type BankAccountNumber: str
+        :param PlatformShortNumber: 平台短号(银行分配)
+        :type PlatformShortNumber: str
+        :param MidasSecretId: 聚鑫分配的安全ID
+        :type MidasSecretId: str
+        :param MidasAppId: 聚鑫分配的支付主MidasAppId
+        :type MidasAppId: str
+        :param MidasSignature: 计费签名
+        :type MidasSignature: str
+        :param TransSequenceNumber: 交易流水号
+        :type TransSequenceNumber: str
+        :param TransFee: 申请撤销的手续费金额
+        :type TransFee: str
+        :param ThirdPayChannel: 第三方支付渠道类型 0001-微信 0002-支付宝 0003-京东支付
+        :type ThirdPayChannel: str
+        :param ThirdPayChannelOrderId: 第三方渠道订单号或流水号
+        :type ThirdPayChannelOrderId: str
+        :param OldFrontSequenceNumber: 充值接口银行返回的流水号(FrontSeqNo)
+        :type OldFrontSequenceNumber: str
+        :param CurrencyAmount: 申请撤销的金额
+        :type CurrencyAmount: str
+        :param CurrencyUnit: 单位，1：元，2：角，3：分 目前固定填1
+        :type CurrencyUnit: str
+        :param CurrencyType: 币种 目前固定填RMB
+        :type CurrencyType: str
+        :param MidasEnvironment: Midas环境标识
+        :type MidasEnvironment: str
+        :param ReservedMessage: 保留域
+        :type ReservedMessage: str
+        :param Remark: 备注
+        :type Remark: str
+        """
+        self.RequestType = None
+        self.MerchantCode = None
+        self.PayChannel = None
+        self.PayChannelSubId = None
+        self.OrderId = None
+        self.BankAccountNumber = None
+        self.PlatformShortNumber = None
+        self.MidasSecretId = None
+        self.MidasAppId = None
+        self.MidasSignature = None
+        self.TransSequenceNumber = None
+        self.TransFee = None
+        self.ThirdPayChannel = None
+        self.ThirdPayChannelOrderId = None
+        self.OldFrontSequenceNumber = None
+        self.CurrencyAmount = None
+        self.CurrencyUnit = None
+        self.CurrencyType = None
+        self.MidasEnvironment = None
+        self.ReservedMessage = None
+        self.Remark = None
+
+
+    def _deserialize(self, params):
+        self.RequestType = params.get("RequestType")
+        self.MerchantCode = params.get("MerchantCode")
+        self.PayChannel = params.get("PayChannel")
+        self.PayChannelSubId = params.get("PayChannelSubId")
+        self.OrderId = params.get("OrderId")
+        self.BankAccountNumber = params.get("BankAccountNumber")
+        self.PlatformShortNumber = params.get("PlatformShortNumber")
+        self.MidasSecretId = params.get("MidasSecretId")
+        self.MidasAppId = params.get("MidasAppId")
+        self.MidasSignature = params.get("MidasSignature")
+        self.TransSequenceNumber = params.get("TransSequenceNumber")
+        self.TransFee = params.get("TransFee")
+        self.ThirdPayChannel = params.get("ThirdPayChannel")
+        self.ThirdPayChannelOrderId = params.get("ThirdPayChannelOrderId")
+        self.OldFrontSequenceNumber = params.get("OldFrontSequenceNumber")
+        self.CurrencyAmount = params.get("CurrencyAmount")
+        self.CurrencyUnit = params.get("CurrencyUnit")
+        self.CurrencyType = params.get("CurrencyType")
+        self.MidasEnvironment = params.get("MidasEnvironment")
+        self.ReservedMessage = params.get("ReservedMessage")
+        self.Remark = params.get("Remark")
+
+
+class RevokeRechargeByThirdPayResponse(AbstractModel):
+    """RevokeRechargeByThirdPay返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestType: 请求类型
+        :type RequestType: str
+        :param ReservedMessage: 保留域
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ReservedMessage: str
+        :param FrontSequenceNumber: 银行流水号
+        :type FrontSequenceNumber: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestType = None
+        self.ReservedMessage = None
+        self.FrontSequenceNumber = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestType = params.get("RequestType")
+        self.ReservedMessage = params.get("ReservedMessage")
+        self.FrontSequenceNumber = params.get("FrontSequenceNumber")
         self.RequestId = params.get("RequestId")
 
 

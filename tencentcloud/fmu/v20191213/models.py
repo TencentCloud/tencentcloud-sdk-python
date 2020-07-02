@@ -40,6 +40,8 @@ Url、Image必须提供一个，如果都提供，只使用 Url。
         :type FaceLifting: int
         :param EyeEnlarging: 大眼程度，取值范围[0,100]。0不大眼，100代表最高程度。默认值70。
         :type EyeEnlarging: int
+        :param RspImgType: 返回图像方式（base64 或 url ) ，二选一。url有效期为1天。
+        :type RspImgType: str
         """
         self.Image = None
         self.Url = None
@@ -47,6 +49,7 @@ Url、Image必须提供一个，如果都提供，只使用 Url。
         self.Smoothing = None
         self.FaceLifting = None
         self.EyeEnlarging = None
+        self.RspImgType = None
 
 
     def _deserialize(self, params):
@@ -56,6 +59,7 @@ Url、Image必须提供一个，如果都提供，只使用 Url。
         self.Smoothing = params.get("Smoothing")
         self.FaceLifting = params.get("FaceLifting")
         self.EyeEnlarging = params.get("EyeEnlarging")
+        self.RspImgType = params.get("RspImgType")
 
 
 class BeautifyPicResponse(AbstractModel):
@@ -65,17 +69,21 @@ class BeautifyPicResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param ResultImage: 处理后的图片 base64 数据。
+        :param ResultImage: RspImgType 为 base64 时，返回处理后的图片 base64 数据。默认返回base64
         :type ResultImage: str
+        :param ResultUrl: RspImgType 为 url 时，返回处理后的图片 url 数据。
+        :type ResultUrl: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.ResultImage = None
+        self.ResultUrl = None
         self.RequestId = None
 
 
     def _deserialize(self, params):
         self.ResultImage = params.get("ResultImage")
+        self.ResultUrl = params.get("ResultUrl")
         self.RequestId = params.get("RequestId")
 
 
@@ -344,10 +352,13 @@ class TryLipstickPicRequest(AbstractModel):
 非腾讯云存储的Url速度和稳定性可能受一定影响。 
 支持PNG、JPG、JPEG、BMP，不支持 GIF 图片。
         :type Url: str
+        :param RspImgType: 返回图像方式（base64 或 url ) ，二选一。url有效期为1天。
+        :type RspImgType: str
         """
         self.LipColorInfos = None
         self.Image = None
         self.Url = None
+        self.RspImgType = None
 
 
     def _deserialize(self, params):
@@ -359,6 +370,7 @@ class TryLipstickPicRequest(AbstractModel):
                 self.LipColorInfos.append(obj)
         self.Image = params.get("Image")
         self.Url = params.get("Url")
+        self.RspImgType = params.get("RspImgType")
 
 
 class TryLipstickPicResponse(AbstractModel):
@@ -368,15 +380,19 @@ class TryLipstickPicResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param ResultImage: 结果图片Base64信息。
+        :param ResultImage: RspImgType 为 base64 时，返回处理后的图片 base64 数据。默认返回base64
         :type ResultImage: str
+        :param ResultUrl: RspImgType 为 url 时，返回处理后的图片 url 数据。
+        :type ResultUrl: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.ResultImage = None
+        self.ResultUrl = None
         self.RequestId = None
 
 
     def _deserialize(self, params):
         self.ResultImage = params.get("ResultImage")
+        self.ResultUrl = params.get("ResultUrl")
         self.RequestId = params.get("RequestId")

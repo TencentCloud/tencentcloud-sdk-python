@@ -83,12 +83,16 @@ class CloseDBExtranetAccessRequest(AbstractModel):
         """
         :param InstanceId: 待关闭外网访问的实例ID。形如：tdsql-ow728lmc，可以通过 DescribeDBInstances 查询实例详情获得。
         :type InstanceId: str
+        :param Ipv6Flag: 是否IPv6，默认0
+        :type Ipv6Flag: int
         """
         self.InstanceId = None
+        self.Ipv6Flag = None
 
 
     def _deserialize(self, params):
         self.InstanceId = params.get("InstanceId")
+        self.Ipv6Flag = params.get("Ipv6Flag")
 
 
 class CloseDBExtranetAccessResponse(AbstractModel):
@@ -305,6 +309,8 @@ class CreateDBInstanceRequest(AbstractModel):
         :type SecurityGroupIds: list of str
         :param AutoRenewFlag: 自动续费标志，1:自动续费，2:不自动续费
         :type AutoRenewFlag: int
+        :param Ipv6Flag: 是否支持IPv6
+        :type Ipv6Flag: int
         """
         self.Zones = None
         self.NodeCount = None
@@ -321,6 +327,7 @@ class CreateDBInstanceRequest(AbstractModel):
         self.InstanceName = None
         self.SecurityGroupIds = None
         self.AutoRenewFlag = None
+        self.Ipv6Flag = None
 
 
     def _deserialize(self, params):
@@ -339,6 +346,7 @@ class CreateDBInstanceRequest(AbstractModel):
         self.InstanceName = params.get("InstanceName")
         self.SecurityGroupIds = params.get("SecurityGroupIds")
         self.AutoRenewFlag = params.get("AutoRenewFlag")
+        self.Ipv6Flag = params.get("Ipv6Flag")
 
 
 class CreateDBInstanceResponse(AbstractModel):
@@ -2504,12 +2512,16 @@ class OpenDBExtranetAccessRequest(AbstractModel):
         """
         :param InstanceId: 待开放外网访问的实例ID。形如：tdsql-ow728lmc，可以通过 DescribeDBInstances 查询实例详情获得。
         :type InstanceId: str
+        :param Ipv6Flag: 是否IPv6，默认0
+        :type Ipv6Flag: int
         """
         self.InstanceId = None
+        self.Ipv6Flag = None
 
 
     def _deserialize(self, params):
         self.InstanceId = params.get("InstanceId")
+        self.Ipv6Flag = params.get("Ipv6Flag")
 
 
 class OpenDBExtranetAccessResponse(AbstractModel):

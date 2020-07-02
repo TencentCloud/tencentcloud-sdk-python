@@ -1203,6 +1203,11 @@ Failed: 失败
 Stopping: 停止中
 Stopped：已停止
         :type TrainingJobStatus: str
+        :param LogUrl: 训练任务日志链接
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LogUrl: str
+        :param InstanceId: 训练任务实例ID
+        :type InstanceId: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -1223,6 +1228,8 @@ Stopped：已停止
         self.SecondaryStatusTransitions = None
         self.RoleName = None
         self.TrainingJobStatus = None
+        self.LogUrl = None
+        self.InstanceId = None
         self.RequestId = None
 
 
@@ -1266,6 +1273,86 @@ Stopped：已停止
                 self.SecondaryStatusTransitions.append(obj)
         self.RoleName = params.get("RoleName")
         self.TrainingJobStatus = params.get("TrainingJobStatus")
+        self.LogUrl = params.get("LogUrl")
+        self.InstanceId = params.get("InstanceId")
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeTrainingJobsRequest(AbstractModel):
+    """DescribeTrainingJobs请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Offset: 偏移量
+        :type Offset: int
+        :param Limit: 限制数目
+        :type Limit: int
+        :param CreationTimeAfter: 创建时间晚于
+        :type CreationTimeAfter: str
+        :param CreationTimeBefore: 创建时间早于
+        :type CreationTimeBefore: str
+        :param NameContains: 根据名称过滤
+        :type NameContains: str
+        :param StatusEquals: 根据状态过滤
+        :type StatusEquals: str
+        :param Filters: 过滤条件。
+instance-name - String - 是否必填：否 -（过滤条件）按照名称过滤。
+search-by-name - String - 是否必填：否 -（过滤条件）按照名称检索，模糊匹配。
+        :type Filters: list of Filter
+        """
+        self.Offset = None
+        self.Limit = None
+        self.CreationTimeAfter = None
+        self.CreationTimeBefore = None
+        self.NameContains = None
+        self.StatusEquals = None
+        self.Filters = None
+
+
+    def _deserialize(self, params):
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+        self.CreationTimeAfter = params.get("CreationTimeAfter")
+        self.CreationTimeBefore = params.get("CreationTimeBefore")
+        self.NameContains = params.get("NameContains")
+        self.StatusEquals = params.get("StatusEquals")
+        if params.get("Filters") is not None:
+            self.Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self.Filters.append(obj)
+
+
+class DescribeTrainingJobsResponse(AbstractModel):
+    """DescribeTrainingJobs返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param TrainingJobSet: 训练任务列表
+        :type TrainingJobSet: list of TrainingJobSummary
+        :param TotalCount: 训练任务总数目
+        :type TotalCount: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TrainingJobSet = None
+        self.TotalCount = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("TrainingJobSet") is not None:
+            self.TrainingJobSet = []
+            for item in params.get("TrainingJobSet"):
+                obj = TrainingJobSummary()
+                obj._deserialize(item)
+                self.TrainingJobSet.append(obj)
+        self.TotalCount = params.get("TotalCount")
         self.RequestId = params.get("RequestId")
 
 
@@ -1768,6 +1855,61 @@ class StoppingCondition(AbstractModel):
 
     def _deserialize(self, params):
         self.MaxRuntimeInSeconds = params.get("MaxRuntimeInSeconds")
+
+
+class TrainingJobSummary(AbstractModel):
+    """训练任务概要
+
+    """
+
+    def __init__(self):
+        """
+        :param CreationTime: 任务创建时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CreationTime: str
+        :param LastModifiedTime: 最近修改时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LastModifiedTime: str
+        :param TrainingJobName: 训练任务名
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TrainingJobName: str
+        :param TrainingJobStatus: 训练任务状态，取值范围
+InProgress：运行中
+Completed: 已完成
+Failed: 失败
+Stopping: 停止中
+Stopped：已停止
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TrainingJobStatus: str
+        :param TrainingEndTime: 完成时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TrainingEndTime: str
+        :param InstanceId: 算了实例Id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InstanceId: str
+        :param ResourceConfig: 资源配置
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ResourceConfig: :class:`tencentcloud.tione.v20191022.models.ResourceConfig`
+        """
+        self.CreationTime = None
+        self.LastModifiedTime = None
+        self.TrainingJobName = None
+        self.TrainingJobStatus = None
+        self.TrainingEndTime = None
+        self.InstanceId = None
+        self.ResourceConfig = None
+
+
+    def _deserialize(self, params):
+        self.CreationTime = params.get("CreationTime")
+        self.LastModifiedTime = params.get("LastModifiedTime")
+        self.TrainingJobName = params.get("TrainingJobName")
+        self.TrainingJobStatus = params.get("TrainingJobStatus")
+        self.TrainingEndTime = params.get("TrainingEndTime")
+        self.InstanceId = params.get("InstanceId")
+        if params.get("ResourceConfig") is not None:
+            self.ResourceConfig = ResourceConfig()
+            self.ResourceConfig._deserialize(params.get("ResourceConfig"))
 
 
 class UpdateCodeRepositoryRequest(AbstractModel):

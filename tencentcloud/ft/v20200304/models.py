@@ -59,10 +59,13 @@ class ChangeAgePicRequest(AbstractModel):
 非腾讯云存储的Url速度和稳定性可能受一定影响。 
 支持PNG、JPG、JPEG、BMP，不支持 GIF 图片。
         :type Url: str
+        :param RspImgType: 返回图像方式（base64 或 url ) ，二选一。url有效期为1天。
+        :type RspImgType: str
         """
         self.AgeInfos = None
         self.Image = None
         self.Url = None
+        self.RspImgType = None
 
 
     def _deserialize(self, params):
@@ -74,6 +77,7 @@ class ChangeAgePicRequest(AbstractModel):
                 self.AgeInfos.append(obj)
         self.Image = params.get("Image")
         self.Url = params.get("Url")
+        self.RspImgType = params.get("RspImgType")
 
 
 class ChangeAgePicResponse(AbstractModel):
@@ -83,17 +87,21 @@ class ChangeAgePicResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param ResultImage: base64编码图片
+        :param ResultImage: RspImgType 为 base64 时，返回处理后的图片 base64 数据。默认返回base64
         :type ResultImage: str
+        :param ResultUrl: RspImgType 为 url 时，返回处理后的图片 url 数据。
+        :type ResultUrl: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.ResultImage = None
+        self.ResultUrl = None
         self.RequestId = None
 
 
     def _deserialize(self, params):
         self.ResultImage = params.get("ResultImage")
+        self.ResultUrl = params.get("ResultUrl")
         self.RequestId = params.get("RequestId")
 
 
@@ -169,10 +177,13 @@ class SwapGenderPicRequest(AbstractModel):
 非腾讯云存储的Url速度和稳定性可能受一定影响。 
 支持PNG、JPG、JPEG、BMP，不支持 GIF 图片。
         :type Url: str
+        :param RspImgType: 返回图像方式（base64 或 url ) ，二选一。url有效期为1天。
+        :type RspImgType: str
         """
         self.GenderInfos = None
         self.Image = None
         self.Url = None
+        self.RspImgType = None
 
 
     def _deserialize(self, params):
@@ -184,6 +195,7 @@ class SwapGenderPicRequest(AbstractModel):
                 self.GenderInfos.append(obj)
         self.Image = params.get("Image")
         self.Url = params.get("Url")
+        self.RspImgType = params.get("RspImgType")
 
 
 class SwapGenderPicResponse(AbstractModel):
@@ -193,15 +205,19 @@ class SwapGenderPicResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param ResultImage: 结果图片Base64信息。
+        :param ResultImage: RspImgType 为 base64 时，返回处理后的图片 base64 数据。默认返回base64
         :type ResultImage: str
+        :param ResultUrl: RspImgType 为 url 时，返回处理后的图片 url 数据。
+        :type ResultUrl: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.ResultImage = None
+        self.ResultUrl = None
         self.RequestId = None
 
 
     def _deserialize(self, params):
         self.ResultImage = params.get("ResultImage")
+        self.ResultUrl = params.get("ResultUrl")
         self.RequestId = params.get("RequestId")

@@ -2461,11 +2461,14 @@ class ZoneInfo(AbstractModel):
         :type ZoneId: int
         :param ZoneState: 可用状态，UNAVAILABLE表示不可用，AVAILABLE表示可用
         :type ZoneState: str
+        :param ZoneSupportIpv6: 该可用区是否支持Ipv6
+        :type ZoneSupportIpv6: int
         """
         self.Zone = None
         self.ZoneName = None
         self.ZoneId = None
         self.ZoneState = None
+        self.ZoneSupportIpv6 = None
 
 
     def _deserialize(self, params):
@@ -2473,3 +2476,4 @@ class ZoneInfo(AbstractModel):
         self.ZoneName = params.get("ZoneName")
         self.ZoneId = params.get("ZoneId")
         self.ZoneState = params.get("ZoneState")
+        self.ZoneSupportIpv6 = params.get("ZoneSupportIpv6")

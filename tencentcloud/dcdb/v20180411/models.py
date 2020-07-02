@@ -108,12 +108,16 @@ class CloseDBExtranetAccessRequest(AbstractModel):
         """
         :param InstanceId: 待关闭外网访问的实例ID。形如：dcdbt-ow728lmc，可以通过 DescribeDCDBInstances 查询实例详情获得。
         :type InstanceId: str
+        :param Ipv6Flag: 是否IPv6，默认0
+        :type Ipv6Flag: int
         """
         self.InstanceId = None
+        self.Ipv6Flag = None
 
 
     def _deserialize(self, params):
         self.InstanceId = params.get("InstanceId")
+        self.Ipv6Flag = params.get("Ipv6Flag")
 
 
 class CloseDBExtranetAccessResponse(AbstractModel):
@@ -336,6 +340,8 @@ class CreateDCDBInstanceRequest(AbstractModel):
         :type SecurityGroupId: str
         :param InstanceName: 实例名称， 可以通过该字段自主的设置实例的名字
         :type InstanceName: str
+        :param Ipv6Flag: 是否支持IPv6
+        :type Ipv6Flag: int
         """
         self.Zones = None
         self.Period = None
@@ -352,6 +358,7 @@ class CreateDCDBInstanceRequest(AbstractModel):
         self.VoucherIds = None
         self.SecurityGroupId = None
         self.InstanceName = None
+        self.Ipv6Flag = None
 
 
     def _deserialize(self, params):
@@ -370,6 +377,7 @@ class CreateDCDBInstanceRequest(AbstractModel):
         self.VoucherIds = params.get("VoucherIds")
         self.SecurityGroupId = params.get("SecurityGroupId")
         self.InstanceName = params.get("InstanceName")
+        self.Ipv6Flag = params.get("Ipv6Flag")
 
 
 class CreateDCDBInstanceResponse(AbstractModel):
@@ -2320,12 +2328,16 @@ class OpenDBExtranetAccessRequest(AbstractModel):
         """
         :param InstanceId: 待开放外网访问的实例ID。形如：dcdbt-ow728lmc。
         :type InstanceId: str
+        :param Ipv6Flag: 是否IPv6，默认0
+        :type Ipv6Flag: int
         """
         self.InstanceId = None
+        self.Ipv6Flag = None
 
 
     def _deserialize(self, params):
         self.InstanceId = params.get("InstanceId")
+        self.Ipv6Flag = params.get("Ipv6Flag")
 
 
 class OpenDBExtranetAccessResponse(AbstractModel):

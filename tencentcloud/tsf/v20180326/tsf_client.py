@@ -361,6 +361,34 @@ class TsfClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def CreateRepository(self, request):
+        """创建仓库
+
+        :param request: Request instance for CreateRepository.
+        :type request: :class:`tencentcloud.tsf.v20180326.models.CreateRepositoryRequest`
+        :rtype: :class:`tencentcloud.tsf.v20180326.models.CreateRepositoryResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("CreateRepository", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateRepositoryResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def CreateServerlessGroup(self, request):
         """创建Serverless部署组
 
@@ -656,6 +684,34 @@ class TsfClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeletePublicConfigResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DeleteRepository(self, request):
+        """删除仓库
+
+        :param request: Request instance for DeleteRepository.
+        :type request: :class:`tencentcloud.tsf.v20180326.models.DeleteRepositoryRequest`
+        :rtype: :class:`tencentcloud.tsf.v20180326.models.DeleteRepositoryResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DeleteRepository", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DeleteRepositoryResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -1651,6 +1707,62 @@ class TsfClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeRepositories(self, request):
+        """查询仓库列表
+
+        :param request: Request instance for DescribeRepositories.
+        :type request: :class:`tencentcloud.tsf.v20180326.models.DescribeRepositoriesRequest`
+        :rtype: :class:`tencentcloud.tsf.v20180326.models.DescribeRepositoriesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeRepositories", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeRepositoriesResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeRepository(self, request):
+        """查询仓库信息
+
+        :param request: Request instance for DescribeRepository.
+        :type request: :class:`tencentcloud.tsf.v20180326.models.DescribeRepositoryRequest`
+        :rtype: :class:`tencentcloud.tsf.v20180326.models.DescribeRepositoryResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeRepository", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeRepositoryResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeServerlessGroup(self, request):
         """查询Serverless部署组明细
 
@@ -2367,6 +2479,34 @@ class TsfClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.StopGroupResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def UpdateRepository(self, request):
+        """更新仓库信息
+
+        :param request: Request instance for UpdateRepository.
+        :type request: :class:`tencentcloud.tsf.v20180326.models.UpdateRepositoryRequest`
+        :rtype: :class:`tencentcloud.tsf.v20180326.models.UpdateRepositoryResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("UpdateRepository", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.UpdateRepositoryResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

@@ -1062,6 +1062,12 @@ class ContainerGroupDetail(AbstractModel):
         :param UpdatedTime: 部署组更新时间戳
 注意：此字段可能返回 null，表示取不到有效值。
         :type UpdatedTime: int
+        :param MaxSurge: kubernetes滚动更新策略的MaxSurge参数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MaxSurge: str
+        :param MaxUnavailable: kubernetes滚动更新策略的MaxUnavailable参数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MaxUnavailable: str
         """
         self.GroupId = None
         self.GroupName = None
@@ -1097,6 +1103,8 @@ class ContainerGroupDetail(AbstractModel):
         self.GroupResourceType = None
         self.InstanceCount = None
         self.UpdatedTime = None
+        self.MaxSurge = None
+        self.MaxUnavailable = None
 
 
     def _deserialize(self, params):
@@ -1144,6 +1152,8 @@ class ContainerGroupDetail(AbstractModel):
         self.GroupResourceType = params.get("GroupResourceType")
         self.InstanceCount = params.get("InstanceCount")
         self.UpdatedTime = params.get("UpdatedTime")
+        self.MaxSurge = params.get("MaxSurge")
+        self.MaxUnavailable = params.get("MaxUnavailable")
 
 
 class CosCredentials(AbstractModel):
@@ -1349,6 +1359,8 @@ class CreateClusterRequest(AbstractModel):
         :type TsfZoneId: str
         :param SubnetId: 私有网络子网ID
         :type SubnetId: str
+        :param ClusterVersion: 集群版本
+        :type ClusterVersion: str
         """
         self.ClusterName = None
         self.ClusterType = None
@@ -1358,6 +1370,7 @@ class CreateClusterRequest(AbstractModel):
         self.TsfRegionId = None
         self.TsfZoneId = None
         self.SubnetId = None
+        self.ClusterVersion = None
 
 
     def _deserialize(self, params):
@@ -1369,6 +1382,7 @@ class CreateClusterRequest(AbstractModel):
         self.TsfRegionId = params.get("TsfRegionId")
         self.TsfZoneId = params.get("TsfZoneId")
         self.SubnetId = params.get("SubnetId")
+        self.ClusterVersion = params.get("ClusterVersion")
 
 
 class CreateClusterResponse(AbstractModel):
@@ -1927,6 +1941,65 @@ class CreatePublicConfigResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class CreateRepositoryRequest(AbstractModel):
+    """CreateRepository请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RepositoryName: 仓库名称
+        :type RepositoryName: str
+        :param RepositoryType: 仓库类型
+        :type RepositoryType: str
+        :param BucketName: 仓库所在桶名称
+        :type BucketName: str
+        :param BucketRegion: 仓库所在桶地域
+        :type BucketRegion: str
+        :param Directory: 目录
+        :type Directory: str
+        :param RepositoryDesc: 仓库描述
+        :type RepositoryDesc: str
+        """
+        self.RepositoryName = None
+        self.RepositoryType = None
+        self.BucketName = None
+        self.BucketRegion = None
+        self.Directory = None
+        self.RepositoryDesc = None
+
+
+    def _deserialize(self, params):
+        self.RepositoryName = params.get("RepositoryName")
+        self.RepositoryType = params.get("RepositoryType")
+        self.BucketName = params.get("BucketName")
+        self.BucketRegion = params.get("BucketRegion")
+        self.Directory = params.get("Directory")
+        self.RepositoryDesc = params.get("RepositoryDesc")
+
+
+class CreateRepositoryResponse(AbstractModel):
+    """CreateRepository返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Result: 创建仓库是否成功
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Result: bool
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Result = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Result = params.get("Result")
+        self.RequestId = params.get("RequestId")
+
+
 class CreateServerlessGroupRequest(AbstractModel):
     """CreateServerlessGroup请求参数结构体
 
@@ -2337,14 +2410,22 @@ class DeletePkgsRequest(AbstractModel):
         :type ApplicationId: str
         :param PkgIds: 需要删除的程序包ID列表
         :type PkgIds: list of str
+        :param RepositoryType: 程序包仓库类型
+        :type RepositoryType: str
+        :param RepositoryId: 程序包仓库id
+        :type RepositoryId: str
         """
         self.ApplicationId = None
         self.PkgIds = None
+        self.RepositoryType = None
+        self.RepositoryId = None
 
 
     def _deserialize(self, params):
         self.ApplicationId = params.get("ApplicationId")
         self.PkgIds = params.get("PkgIds")
+        self.RepositoryType = params.get("RepositoryType")
+        self.RepositoryId = params.get("RepositoryId")
 
 
 class DeletePkgsResponse(AbstractModel):
@@ -2389,6 +2470,45 @@ class DeletePublicConfigResponse(AbstractModel):
     def __init__(self):
         """
         :param Result: true：删除成功；false：删除失败
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Result: bool
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Result = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Result = params.get("Result")
+        self.RequestId = params.get("RequestId")
+
+
+class DeleteRepositoryRequest(AbstractModel):
+    """DeleteRepository请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RepositoryId: 仓库ID
+        :type RepositoryId: str
+        """
+        self.RepositoryId = None
+
+
+    def _deserialize(self, params):
+        self.RepositoryId = params.get("RepositoryId")
+
+
+class DeleteRepositoryResponse(AbstractModel):
+    """DeleteRepository返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Result: 删除仓库是否成功
 注意：此字段可能返回 null，表示取不到有效值。
         :type Result: bool
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -2492,6 +2612,10 @@ class DeployContainerGroupRequest(AbstractModel):
         :type IstioMemRequest: str
         :param IstioMemLimit: istioproxy 容器最大的内存 MiB 数，对应 K8S 的 limit
         :type IstioMemLimit: str
+        :param MaxSurge: kubernetes滚动更新策略的MaxSurge参数
+        :type MaxSurge: str
+        :param MaxUnavailable: kubernetes滚动更新策略的MaxUnavailable参数
+        :type MaxUnavailable: str
         """
         self.GroupId = None
         self.Server = None
@@ -2515,6 +2639,8 @@ class DeployContainerGroupRequest(AbstractModel):
         self.IstioCpuLimit = None
         self.IstioMemRequest = None
         self.IstioMemLimit = None
+        self.MaxSurge = None
+        self.MaxUnavailable = None
 
 
     def _deserialize(self, params):
@@ -2540,6 +2666,8 @@ class DeployContainerGroupRequest(AbstractModel):
         self.IstioCpuLimit = params.get("IstioCpuLimit")
         self.IstioMemRequest = params.get("IstioMemRequest")
         self.IstioMemLimit = params.get("IstioMemLimit")
+        self.MaxSurge = params.get("MaxSurge")
+        self.MaxUnavailable = params.get("MaxUnavailable")
 
 
 class DeployContainerGroupResponse(AbstractModel):
@@ -3393,14 +3521,22 @@ class DescribeDownloadInfoRequest(AbstractModel):
         :type ApplicationId: str
         :param PkgId: 程序包ID
         :type PkgId: str
+        :param RepositoryId: 程序包仓库ID
+        :type RepositoryId: str
+        :param RepositoryType: 程序包仓库类型
+        :type RepositoryType: str
         """
         self.ApplicationId = None
         self.PkgId = None
+        self.RepositoryId = None
+        self.RepositoryType = None
 
 
     def _deserialize(self, params):
         self.ApplicationId = params.get("ApplicationId")
         self.PkgId = params.get("PkgId")
+        self.RepositoryId = params.get("RepositoryId")
+        self.RepositoryType = params.get("RepositoryType")
 
 
 class DescribeDownloadInfoResponse(AbstractModel):
@@ -3940,6 +4076,10 @@ class DescribePkgsRequest(AbstractModel):
         :type Offset: int
         :param Limit: 返回数量限制
         :type Limit: int
+        :param RepositoryType: 程序包仓库类型
+        :type RepositoryType: str
+        :param RepositoryId: 程序包仓库id
+        :type RepositoryId: str
         """
         self.ApplicationId = None
         self.SearchWord = None
@@ -3947,6 +4087,8 @@ class DescribePkgsRequest(AbstractModel):
         self.OrderType = None
         self.Offset = None
         self.Limit = None
+        self.RepositoryType = None
+        self.RepositoryId = None
 
 
     def _deserialize(self, params):
@@ -3956,6 +4098,8 @@ class DescribePkgsRequest(AbstractModel):
         self.OrderType = params.get("OrderType")
         self.Offset = params.get("Offset")
         self.Limit = params.get("Limit")
+        self.RepositoryType = params.get("RepositoryType")
+        self.RepositoryId = params.get("RepositoryId")
 
 
 class DescribePkgsResponse(AbstractModel):
@@ -4322,6 +4466,99 @@ class DescribeReleasedConfigResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.Result = params.get("Result")
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeRepositoriesRequest(AbstractModel):
+    """DescribeRepositories请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param SearchWord: 查询关键字（按照仓库名称搜索）
+        :type SearchWord: str
+        :param Offset: 查询起始偏移
+        :type Offset: int
+        :param Limit: 返回数量限制
+        :type Limit: int
+        :param RepositoryType: 仓库类型（默认仓库：default，私有仓库：private）
+        :type RepositoryType: str
+        """
+        self.SearchWord = None
+        self.Offset = None
+        self.Limit = None
+        self.RepositoryType = None
+
+
+    def _deserialize(self, params):
+        self.SearchWord = params.get("SearchWord")
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+        self.RepositoryType = params.get("RepositoryType")
+
+
+class DescribeRepositoriesResponse(AbstractModel):
+    """DescribeRepositories返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Result: 符合查询仓库信息列表
+        :type Result: :class:`tencentcloud.tsf.v20180326.models.RepositoryList`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Result = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Result") is not None:
+            self.Result = RepositoryList()
+            self.Result._deserialize(params.get("Result"))
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeRepositoryRequest(AbstractModel):
+    """DescribeRepository请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RepositoryId: 仓库ID
+        :type RepositoryId: str
+        """
+        self.RepositoryId = None
+
+
+    def _deserialize(self, params):
+        self.RepositoryId = params.get("RepositoryId")
+
+
+class DescribeRepositoryResponse(AbstractModel):
+    """DescribeRepository返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Result: 查询的仓库信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Result: :class:`tencentcloud.tsf.v20180326.models.RepositoryInfo`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Result = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Result") is not None:
+            self.Result = RepositoryInfo()
+            self.Result._deserialize(params.get("Result"))
         self.RequestId = params.get("RequestId")
 
 
@@ -4724,12 +4961,18 @@ class DescribeUploadInfoRequest(AbstractModel):
         :type PkgType: str
         :param PkgDesc: 程序包介绍
         :type PkgDesc: str
+        :param RepositoryType: 程序包仓库类型
+        :type RepositoryType: str
+        :param RepositoryId: 程序包仓库id
+        :type RepositoryId: str
         """
         self.ApplicationId = None
         self.PkgName = None
         self.PkgVersion = None
         self.PkgType = None
         self.PkgDesc = None
+        self.RepositoryType = None
+        self.RepositoryId = None
 
 
     def _deserialize(self, params):
@@ -4738,6 +4981,8 @@ class DescribeUploadInfoRequest(AbstractModel):
         self.PkgVersion = params.get("PkgVersion")
         self.PkgType = params.get("PkgType")
         self.PkgDesc = params.get("PkgDesc")
+        self.RepositoryType = params.get("RepositoryType")
+        self.RepositoryId = params.get("RepositoryId")
 
 
 class DescribeUploadInfoResponse(AbstractModel):
@@ -4875,6 +5120,9 @@ class GroupPod(AbstractModel):
         :param InstanceStatus: 机器实例状态
 注意：此字段可能返回 null，表示取不到有效值。
         :type InstanceStatus: str
+        :param NodeInstanceId: 节点实例id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type NodeInstanceId: str
         """
         self.PodName = None
         self.PodId = None
@@ -4889,6 +5137,7 @@ class GroupPod(AbstractModel):
         self.ServiceInstanceStatus = None
         self.InstanceAvailableStatus = None
         self.InstanceStatus = None
+        self.NodeInstanceId = None
 
 
     def _deserialize(self, params):
@@ -4905,6 +5154,7 @@ class GroupPod(AbstractModel):
         self.ServiceInstanceStatus = params.get("ServiceInstanceStatus")
         self.InstanceAvailableStatus = params.get("InstanceAvailableStatus")
         self.InstanceStatus = params.get("InstanceStatus")
+        self.NodeInstanceId = params.get("NodeInstanceId")
 
 
 class GroupPodResult(AbstractModel):
@@ -5860,12 +6110,18 @@ class ModifyUploadInfoRequest(AbstractModel):
         :type Md5: str
         :param Size: 程序包大小（单位字节）
         :type Size: int
+        :param RepositoryType: 程序包仓库类型
+        :type RepositoryType: str
+        :param RepositoryId: 程序包仓库id
+        :type RepositoryId: str
         """
         self.ApplicationId = None
         self.PkgId = None
         self.Result = None
         self.Md5 = None
         self.Size = None
+        self.RepositoryType = None
+        self.RepositoryId = None
 
 
     def _deserialize(self, params):
@@ -5874,6 +6130,8 @@ class ModifyUploadInfoRequest(AbstractModel):
         self.Result = params.get("Result")
         self.Md5 = params.get("Md5")
         self.Size = params.get("Size")
+        self.RepositoryType = params.get("RepositoryType")
+        self.RepositoryId = params.get("RepositoryId")
 
 
 class ModifyUploadInfoResponse(AbstractModel):
@@ -6182,6 +6440,29 @@ class OperationInfoDetail(AbstractModel):
         self.Supported = params.get("Supported")
 
 
+class PkgBind(AbstractModel):
+    """描述程序包关联信息
+
+    """
+
+    def __init__(self):
+        """
+        :param ApplicationId: 应用id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ApplicationId: str
+        :param GroupId: 部署组id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type GroupId: str
+        """
+        self.ApplicationId = None
+        self.GroupId = None
+
+
+    def _deserialize(self, params):
+        self.ApplicationId = params.get("ApplicationId")
+        self.GroupId = params.get("GroupId")
+
+
 class PkgInfo(AbstractModel):
     """包信息
 
@@ -6213,6 +6494,9 @@ class PkgInfo(AbstractModel):
         :param PkgPubStatus: 程序包状态
 注意：此字段可能返回 null，表示取不到有效值。
         :type PkgPubStatus: int
+        :param PkgBindInfo: 程序包关联关系
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PkgBindInfo: list of PkgBind
         """
         self.PkgId = None
         self.PkgName = None
@@ -6222,6 +6506,7 @@ class PkgInfo(AbstractModel):
         self.UploadTime = None
         self.Md5 = None
         self.PkgPubStatus = None
+        self.PkgBindInfo = None
 
 
     def _deserialize(self, params):
@@ -6233,6 +6518,12 @@ class PkgInfo(AbstractModel):
         self.UploadTime = params.get("UploadTime")
         self.Md5 = params.get("Md5")
         self.PkgPubStatus = params.get("PkgPubStatus")
+        if params.get("PkgBindInfo") is not None:
+            self.PkgBindInfo = []
+            for item in params.get("PkgBindInfo"):
+                obj = PkgBind()
+                obj._deserialize(item)
+                self.PkgBindInfo.append(obj)
 
 
 class PkgList(AbstractModel):
@@ -6247,9 +6538,21 @@ class PkgList(AbstractModel):
         :param Content: 程序包信息列表
 注意：此字段可能返回 null，表示取不到有效值。
         :type Content: list of PkgInfo
+        :param RepositoryId: 程序包仓库id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RepositoryId: str
+        :param RepositoryType: 程序包仓库类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RepositoryType: str
+        :param RepositoryName: 程序包仓库名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RepositoryName: str
         """
         self.TotalCount = None
         self.Content = None
+        self.RepositoryId = None
+        self.RepositoryType = None
+        self.RepositoryName = None
 
 
     def _deserialize(self, params):
@@ -6260,6 +6563,9 @@ class PkgList(AbstractModel):
                 obj = PkgInfo()
                 obj._deserialize(item)
                 self.Content.append(obj)
+        self.RepositoryId = params.get("RepositoryId")
+        self.RepositoryType = params.get("RepositoryType")
+        self.RepositoryName = params.get("RepositoryName")
 
 
 class PropertyField(AbstractModel):
@@ -6452,6 +6758,90 @@ class RemoveInstancesResponse(AbstractModel):
     def _deserialize(self, params):
         self.Result = params.get("Result")
         self.RequestId = params.get("RequestId")
+
+
+class RepositoryInfo(AbstractModel):
+    """仓库信息
+
+    """
+
+    def __init__(self):
+        """
+        :param RepositoryId: 仓库ID
+        :type RepositoryId: str
+        :param RepositoryName: 仓库名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RepositoryName: str
+        :param RepositoryType: 仓库类型（默认仓库：default，私有仓库：private）
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RepositoryType: str
+        :param RepositoryDesc: 仓库描述
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RepositoryDesc: str
+        :param IsUsed: 仓库是否正在被使用
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IsUsed: bool
+        :param CreateTime: 仓库创建时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CreateTime: str
+        :param BucketName: 仓库桶名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BucketName: str
+        :param BucketRegion: 仓库桶所在地域
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BucketRegion: str
+        :param Directory: 仓库目录
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Directory: str
+        """
+        self.RepositoryId = None
+        self.RepositoryName = None
+        self.RepositoryType = None
+        self.RepositoryDesc = None
+        self.IsUsed = None
+        self.CreateTime = None
+        self.BucketName = None
+        self.BucketRegion = None
+        self.Directory = None
+
+
+    def _deserialize(self, params):
+        self.RepositoryId = params.get("RepositoryId")
+        self.RepositoryName = params.get("RepositoryName")
+        self.RepositoryType = params.get("RepositoryType")
+        self.RepositoryDesc = params.get("RepositoryDesc")
+        self.IsUsed = params.get("IsUsed")
+        self.CreateTime = params.get("CreateTime")
+        self.BucketName = params.get("BucketName")
+        self.BucketRegion = params.get("BucketRegion")
+        self.Directory = params.get("Directory")
+
+
+class RepositoryList(AbstractModel):
+    """仓库列表
+
+    """
+
+    def __init__(self):
+        """
+        :param TotalCount: 仓库总量
+        :type TotalCount: int
+        :param Content: 仓库信息列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Content: list of RepositoryInfo
+        """
+        self.TotalCount = None
+        self.Content = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("Content") is not None:
+            self.Content = []
+            for item in params.get("Content"):
+                obj = RepositoryInfo()
+                obj._deserialize(item)
+                self.Content.append(obj)
 
 
 class RevocationConfigRequest(AbstractModel):
@@ -7480,6 +7870,49 @@ class TsfPageVmGroup(AbstractModel):
                 obj = VmGroupSimple()
                 obj._deserialize(item)
                 self.Content.append(obj)
+
+
+class UpdateRepositoryRequest(AbstractModel):
+    """UpdateRepository请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RepositoryId: 仓库ID
+        :type RepositoryId: str
+        :param RepositoryDesc: 仓库描述
+        :type RepositoryDesc: str
+        """
+        self.RepositoryId = None
+        self.RepositoryDesc = None
+
+
+    def _deserialize(self, params):
+        self.RepositoryId = params.get("RepositoryId")
+        self.RepositoryDesc = params.get("RepositoryDesc")
+
+
+class UpdateRepositoryResponse(AbstractModel):
+    """UpdateRepository返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Result: 更新仓库是否成功
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Result: bool
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Result = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Result = params.get("Result")
+        self.RequestId = params.get("RequestId")
 
 
 class VmGroup(AbstractModel):

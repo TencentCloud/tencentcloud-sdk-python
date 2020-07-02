@@ -584,15 +584,23 @@ class DescribeEndUsersRequest(AbstractModel):
         """
         :param EnvId: 开发者的环境ID
         :type EnvId: str
+        :param Offset: 可选参数，偏移量，默认 0
+        :type Offset: int
+        :param Limit: 可选参数，拉取数量，默认 20
+        :type Limit: int
         :param UUIds: 按照 uuid 列表过滤，最大个数为100
         :type UUIds: list of str
         """
         self.EnvId = None
+        self.Offset = None
+        self.Limit = None
         self.UUIds = None
 
 
     def _deserialize(self, params):
         self.EnvId = params.get("EnvId")
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
         self.UUIds = params.get("UUIds")
 
 
@@ -1063,6 +1071,8 @@ class EndUserInfo(AbstractModel):
         :type IsDisabled: bool
         :param HasPassword: 是否设置过密码
         :type HasPassword: bool
+        :param UserName: 用户名
+        :type UserName: str
         """
         self.UUId = None
         self.WXOpenId = None
@@ -1077,6 +1087,7 @@ class EndUserInfo(AbstractModel):
         self.IsAnonymous = None
         self.IsDisabled = None
         self.HasPassword = None
+        self.UserName = None
 
 
     def _deserialize(self, params):
@@ -1093,6 +1104,7 @@ class EndUserInfo(AbstractModel):
         self.IsAnonymous = params.get("IsAnonymous")
         self.IsDisabled = params.get("IsDisabled")
         self.HasPassword = params.get("HasPassword")
+        self.UserName = params.get("UserName")
 
 
 class EnvBillingInfoItem(AbstractModel):
