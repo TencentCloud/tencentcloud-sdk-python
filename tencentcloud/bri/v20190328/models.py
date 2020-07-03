@@ -23,7 +23,7 @@ class BRIRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Service: 业务名, 必须是以下五个业务名之一(bri_num,bri_dev,bri_ip_bri_apk,bri_url)
+        :param Service: 业务名, 必须是以下六个业务名之一(bri_num,bri_dev,bri_ip_bri_apk,bri_url,bri_social)
         :type Service: str
         :param CertMd5: Apk证书Md5  (业务名为bri_apk时必填，除非已填FileMd5)
         :type CertMd5: str
@@ -39,8 +39,18 @@ class BRIRequest(AbstractModel):
         :type PackageName: str
         :param PhoneNumber: 电话号码 (业务名为bri_num时必填)
         :type PhoneNumber: str
+        :param QQ: QQ号 (业务名为bri_social时必填, 除非已填Wechat)
+        :type QQ: str
+        :param QQTag: QQ号的可疑标签
+        :type QQTag: str
+        :param Scene: 业务场景 (1-注册, 2-登录, 3-发消息)
+        :type Scene: str
         :param Url: 网址 (业务名为bri_url时必填)
         :type Url: str
+        :param Wechat: 微信号 (业务名为bri_social时必填, 除非已填QQ)
+        :type Wechat: str
+        :param WechatTag: 微信号的可疑标签
+        :type WechatTag: str
         """
         self.Service = None
         self.CertMd5 = None
@@ -50,7 +60,12 @@ class BRIRequest(AbstractModel):
         self.Ip = None
         self.PackageName = None
         self.PhoneNumber = None
+        self.QQ = None
+        self.QQTag = None
+        self.Scene = None
         self.Url = None
+        self.Wechat = None
+        self.WechatTag = None
 
 
     def _deserialize(self, params):
@@ -62,7 +77,12 @@ class BRIRequest(AbstractModel):
         self.Ip = params.get("Ip")
         self.PackageName = params.get("PackageName")
         self.PhoneNumber = params.get("PhoneNumber")
+        self.QQ = params.get("QQ")
+        self.QQTag = params.get("QQTag")
+        self.Scene = params.get("Scene")
         self.Url = params.get("Url")
+        self.Wechat = params.get("Wechat")
+        self.WechatTag = params.get("WechatTag")
 
 
 class BRIResponse(AbstractModel):
@@ -98,7 +118,7 @@ class BRIResponse(AbstractModel):
 1) 安全   说明: APK为正规应用
 2) 一般   说明: APK为未发现问题的正常应用
 3) 风险   说明: APK为外挂或色情等风险应用
-4) 病毒   说明: APK为包含恶意代码的恶意软件吗,可能破坏系统或者其他app正常使用
+4) 病毒   说明: APK为包含恶意代码的恶意软件,可能破坏系统或者其他app正常使用
         :type Tags: list of str
         """
         self.Score = None

@@ -1294,7 +1294,7 @@ class DescribeBillDetailRequest(AbstractModel):
         :param NeedRecordNum: 是否需要访问列表的总记录数，用于前端分页
 1-表示需要， 0-表示不需要
         :type NeedRecordNum: int
-        :param ProductCode: 查询指定产品信息
+        :param ProductCode: 查询指定产品信息（暂时未开放获取）
         :type ProductCode: str
         :param PayMode: 付费模式 prePay/postPay
         :type PayMode: str

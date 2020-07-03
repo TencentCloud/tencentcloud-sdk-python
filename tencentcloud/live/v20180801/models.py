@@ -1615,6 +1615,74 @@ class CreatePullStreamConfigResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class CreateRecordTaskRequest(AbstractModel):
+    """CreateRecordTask请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param StreamName: 流名称。
+        :type StreamName: str
+        :param DomainName: 推流域名。
+        :type DomainName: str
+        :param AppName: 推流路径。
+        :type AppName: str
+        :param EndTime: 录制任务结束时间，Unix时间戳。设置时间必须大于StartTime，且不能超过从当前时刻开始24小时之内的时间。
+        :type EndTime: int
+        :param StartTime: 录制任务开始时间，Unix时间戳。如果不填表示立即启动录制。不超过从当前时间开始24小时之内的时间。
+        :type StartTime: int
+        :param StreamType: 推流类型，默认0。取值：
+0-直播推流。
+1-合成流，即 A+B=C 类型混流。
+        :type StreamType: int
+        :param TemplateId: 录制模板ID，CreateLiveRecordTemplate 返回值。如果不填或者传入错误ID，则默认录制HLS格式、永久存储。
+        :type TemplateId: int
+        :param Extension: 扩展字段，默认空。
+        :type Extension: str
+        """
+        self.StreamName = None
+        self.DomainName = None
+        self.AppName = None
+        self.EndTime = None
+        self.StartTime = None
+        self.StreamType = None
+        self.TemplateId = None
+        self.Extension = None
+
+
+    def _deserialize(self, params):
+        self.StreamName = params.get("StreamName")
+        self.DomainName = params.get("DomainName")
+        self.AppName = params.get("AppName")
+        self.EndTime = params.get("EndTime")
+        self.StartTime = params.get("StartTime")
+        self.StreamType = params.get("StreamType")
+        self.TemplateId = params.get("TemplateId")
+        self.Extension = params.get("Extension")
+
+
+class CreateRecordTaskResponse(AbstractModel):
+    """CreateRecordTask返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param TaskId: 任务ID，全局唯一标识录制任务。
+        :type TaskId: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TaskId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TaskId = params.get("TaskId")
+        self.RequestId = params.get("RequestId")
+
+
 class DayStreamPlayInfo(AbstractModel):
     """流播放信息
 
@@ -2218,6 +2286,40 @@ class DeletePullStreamConfigRequest(AbstractModel):
 
 class DeletePullStreamConfigResponse(AbstractModel):
     """DeletePullStreamConfig返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class DeleteRecordTaskRequest(AbstractModel):
+    """DeleteRecordTask请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param TaskId: 任务ID，CreateRecordTask返回。删除TaskId指定的录制任务。
+        :type TaskId: str
+        """
+        self.TaskId = None
+
+
+    def _deserialize(self, params):
+        self.TaskId = params.get("TaskId")
+
+
+class DeleteRecordTaskResponse(AbstractModel):
+    """DeleteRecordTask返回参数结构体
 
     """
 
@@ -7169,6 +7271,40 @@ class StopLiveRecordRequest(AbstractModel):
 
 class StopLiveRecordResponse(AbstractModel):
     """StopLiveRecord返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class StopRecordTaskRequest(AbstractModel):
+    """StopRecordTask请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param TaskId: 录制任务ID。
+        :type TaskId: str
+        """
+        self.TaskId = None
+
+
+    def _deserialize(self, params):
+        self.TaskId = params.get("TaskId")
+
+
+class StopRecordTaskResponse(AbstractModel):
+    """StopRecordTask返回参数结构体
 
     """
 

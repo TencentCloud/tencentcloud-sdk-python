@@ -57,6 +57,39 @@ class AccountInfo(AbstractModel):
             self.OtherAccount._deserialize(params.get("OtherAccount"))
 
 
+class CrowdAntiRushInfo(AbstractModel):
+    """网赚防刷相关参数
+
+    """
+
+    def __init__(self):
+        """
+        :param SponsorOpenId: 助力场景建议填写：活动发起人微信OpenID。
+        :type SponsorOpenId: str
+        :param SponsorDeviceNumber: 助力场景建议填写：发起人设备号。
+        :type SponsorDeviceNumber: str
+        :param SponsorPhone: 助力场景建议填写：发起人手机号。
+        :type SponsorPhone: str
+        :param SponsorIp: 助力场景建议填写：发起人IP。
+        :type SponsorIp: str
+        :param CampaignUrl: 助力场景建议填写：活动链接。
+        :type CampaignUrl: str
+        """
+        self.SponsorOpenId = None
+        self.SponsorDeviceNumber = None
+        self.SponsorPhone = None
+        self.SponsorIp = None
+        self.CampaignUrl = None
+
+
+    def _deserialize(self, params):
+        self.SponsorOpenId = params.get("SponsorOpenId")
+        self.SponsorDeviceNumber = params.get("SponsorDeviceNumber")
+        self.SponsorPhone = params.get("SponsorPhone")
+        self.SponsorIp = params.get("SponsorIp")
+        self.CampaignUrl = params.get("CampaignUrl")
+
+
 class InputActivityAntiRushAdvanced(AbstractModel):
     """活动防刷高级版业务入参。
 
@@ -136,6 +169,144 @@ class InputActivityAntiRushAdvanced(AbstractModel):
         self.XForwardedFor = params.get("XForwardedFor")
         self.MacAddress = params.get("MacAddress")
         self.VendorId = params.get("VendorId")
+
+
+class InputManageMarketingRisk(AbstractModel):
+    """营销风控入参
+
+    """
+
+    def __init__(self):
+        """
+        :param Account: 账号信息。
+        :type Account: :class:`tencentcloud.aa.v20200224.models.AccountInfo`
+        :param SceneType: 场景类型。
+1：活动防刷
+2：登录保护
+3：注册保护
+4：活动防刷高级版（网赚）
+        :type SceneType: int
+        :param UserIp: 登录来源的外网IP
+        :type UserIp: str
+        :param PostTime: 用户操作时间戳，单位秒（格林威治时间精确到秒，如1501590972）。
+        :type PostTime: int
+        :param UserId: 用户唯一标识。
+        :type UserId: str
+        :param DeviceToken: 设备指纹token。
+        :type DeviceToken: str
+        :param DeviceBusinessId: 设备指纹BusinessId
+        :type DeviceBusinessId: int
+        :param BusinessId: 业务ID。网站或应用在多个业务中使用此服务，通过此ID区分统计数据。
+        :type BusinessId: int
+        :param Nickname: 昵称，UTF-8 编码。
+        :type Nickname: str
+        :param EmailAddress: 用户邮箱地址（非系统自动生成）。
+        :type EmailAddress: str
+        :param CheckDevice: 是否识别设备异常：
+0：不识别。
+1：识别。
+        :type CheckDevice: int
+        :param CookieHash: 用户HTTP请求中的Cookie进行2次hash的值，只要保证相同Cookie的hash值一致即可。
+        :type CookieHash: str
+        :param Referer: 用户HTTP请求的Referer值。
+        :type Referer: str
+        :param UserAgent: 用户HTTP请求的User-Agent值。
+        :type UserAgent: str
+        :param XForwardedFor: 用户HTTP请求的X-Forwarded-For值。
+        :type XForwardedFor: str
+        :param MacAddress: MAC地址或设备唯一标识。
+        :type MacAddress: str
+        :param VendorId: 手机制造商ID，如果手机注册，请带上此信息。
+        :type VendorId: str
+        :param CrowdAntiRush: 网赚防刷相关信息。SceneType为4时填写。
+        :type CrowdAntiRush: :class:`tencentcloud.aa.v20200224.models.CrowdAntiRushInfo`
+        """
+        self.Account = None
+        self.SceneType = None
+        self.UserIp = None
+        self.PostTime = None
+        self.UserId = None
+        self.DeviceToken = None
+        self.DeviceBusinessId = None
+        self.BusinessId = None
+        self.Nickname = None
+        self.EmailAddress = None
+        self.CheckDevice = None
+        self.CookieHash = None
+        self.Referer = None
+        self.UserAgent = None
+        self.XForwardedFor = None
+        self.MacAddress = None
+        self.VendorId = None
+        self.CrowdAntiRush = None
+
+
+    def _deserialize(self, params):
+        if params.get("Account") is not None:
+            self.Account = AccountInfo()
+            self.Account._deserialize(params.get("Account"))
+        self.SceneType = params.get("SceneType")
+        self.UserIp = params.get("UserIp")
+        self.PostTime = params.get("PostTime")
+        self.UserId = params.get("UserId")
+        self.DeviceToken = params.get("DeviceToken")
+        self.DeviceBusinessId = params.get("DeviceBusinessId")
+        self.BusinessId = params.get("BusinessId")
+        self.Nickname = params.get("Nickname")
+        self.EmailAddress = params.get("EmailAddress")
+        self.CheckDevice = params.get("CheckDevice")
+        self.CookieHash = params.get("CookieHash")
+        self.Referer = params.get("Referer")
+        self.UserAgent = params.get("UserAgent")
+        self.XForwardedFor = params.get("XForwardedFor")
+        self.MacAddress = params.get("MacAddress")
+        self.VendorId = params.get("VendorId")
+        if params.get("CrowdAntiRush") is not None:
+            self.CrowdAntiRush = CrowdAntiRushInfo()
+            self.CrowdAntiRush._deserialize(params.get("CrowdAntiRush"))
+
+
+class ManageMarketingRiskRequest(AbstractModel):
+    """ManageMarketingRisk请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param BusinessSecurityData: 业务入参
+        :type BusinessSecurityData: :class:`tencentcloud.aa.v20200224.models.InputManageMarketingRisk`
+        """
+        self.BusinessSecurityData = None
+
+
+    def _deserialize(self, params):
+        if params.get("BusinessSecurityData") is not None:
+            self.BusinessSecurityData = InputManageMarketingRisk()
+            self.BusinessSecurityData._deserialize(params.get("BusinessSecurityData"))
+
+
+class ManageMarketingRiskResponse(AbstractModel):
+    """ManageMarketingRisk返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Data: 业务出参
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Data: :class:`tencentcloud.aa.v20200224.models.OutputManageMarketingRisk`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Data = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self.Data = OutputManageMarketingRisk()
+            self.Data._deserialize(params.get("Data"))
+        self.RequestId = params.get("RequestId")
 
 
 class OnlineScamInfo(AbstractModel):
@@ -278,6 +449,88 @@ AccountType是10004时，对应手机号的MD5。
         self.AssociateAccount = params.get("AssociateAccount")
         self.UserIp = params.get("UserIp")
         self.Level = params.get("Level")
+        self.RiskType = params.get("RiskType")
+
+
+class OutputManageMarketingRisk(AbstractModel):
+    """影响风控出参
+
+    """
+
+    def __init__(self):
+        """
+        :param Code: 返回码。0表示成功，非0标识失败错误码。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Code: int
+        :param Message: UTF-8编码，出错消息。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Message: str
+        :param Value: 业务详情。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Value: :class:`tencentcloud.aa.v20200224.models.OutputManageMarketingRiskValue`
+        """
+        self.Code = None
+        self.Message = None
+        self.Value = None
+
+
+    def _deserialize(self, params):
+        self.Code = params.get("Code")
+        self.Message = params.get("Message")
+        if params.get("Value") is not None:
+            self.Value = OutputManageMarketingRiskValue()
+            self.Value._deserialize(params.get("Value"))
+
+
+class OutputManageMarketingRiskValue(AbstractModel):
+    """营销风控出参值
+
+    """
+
+    def __init__(self):
+        """
+        :param UserId: 账号ID。对应输入参数：
+AccountType是1时，对应QQ的OpenID。
+AccountType是2时，对应微信的OpenID/UnionID。
+AccountType是4时，对应手机号。
+AccountType是8时，对应imei、idfa、imeiMD5或者idfaMD5。
+AccountType是0时，对应账号信息。
+AccountType是10004时，对应手机号的MD5。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UserId: str
+        :param PostTime: 操作时间戳，单位秒（对应输入参数）。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PostTime: int
+        :param AssociateAccount: 对应输入参数，AccountType 是 QQ 或微信开放账号时，用于标识 QQ 或微信用户登录后关联业务自身的账号ID。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AssociateAccount: str
+        :param UserIp: 操作来源的外网IP（对应输入参数）。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UserIp: str
+        :param RiskLevel: 风险值
+pass : 无恶意
+review：需要人工审核
+reject：拒绝，高风险恶意
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RiskLevel: str
+        :param RiskType: 风险类型，请参考官网风险类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RiskType: list of int
+        """
+        self.UserId = None
+        self.PostTime = None
+        self.AssociateAccount = None
+        self.UserIp = None
+        self.RiskLevel = None
+        self.RiskType = None
+
+
+    def _deserialize(self, params):
+        self.UserId = params.get("UserId")
+        self.PostTime = params.get("PostTime")
+        self.AssociateAccount = params.get("AssociateAccount")
+        self.UserIp = params.get("UserIp")
+        self.RiskLevel = params.get("RiskLevel")
         self.RiskType = params.get("RiskType")
 
 

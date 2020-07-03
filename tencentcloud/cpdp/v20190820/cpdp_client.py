@@ -649,6 +649,34 @@ class CpdpClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeOrderStatus(self, request):
+        """查询单笔订单交易状态
+
+        :param request: Request instance for DescribeOrderStatus.
+        :type request: :class:`tencentcloud.cpdp.v20190820.models.DescribeOrderStatusRequest`
+        :rtype: :class:`tencentcloud.cpdp.v20190820.models.DescribeOrderStatusResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeOrderStatus", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeOrderStatusResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DownloadBill(self, request):
         """账单下载接口，根据本接口返回的URL地址，在D+1日下载对账单。注意，本接口返回的URL地址有时效，请尽快下载。URL超时时效后，请重新调用本接口再次获取。
 

@@ -2839,6 +2839,136 @@ class DescribeChargeDetailResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeOrderStatusRequest(AbstractModel):
+    """DescribeOrderStatus请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestType: 请求类型，此接口固定填：QueryOrderStatusReq
+        :type RequestType: str
+        :param MerchantCode: 商户号
+        :type MerchantCode: str
+        :param PayChannel: 支付渠道
+        :type PayChannel: str
+        :param PayChannelSubId: 子渠道
+        :type PayChannelSubId: int
+        :param OrderId: 交易订单号或流水号，提现，充值或会员交易请求时的CnsmrSeqNo值
+        :type OrderId: str
+        :param BankAccountNumber: 父账户账号，资金汇总账号
+        :type BankAccountNumber: str
+        :param PlatformShortNumber: 平台短号(银行分配)
+        :type PlatformShortNumber: str
+        :param QueryType: 功能标志 0：会员间交易 1：提现 2：充值
+        :type QueryType: str
+        :param TransSequenceNumber: 银行流水号
+        :type TransSequenceNumber: str
+        :param MidasSignature: 计费签名
+        :type MidasSignature: str
+        :param MidasAppId: 聚鑫分配的支付主MidasAppId
+        :type MidasAppId: str
+        :param MidasSecretId: 聚鑫分配的安全ID
+        :type MidasSecretId: str
+        :param MidasEnvironment: Midas环境参数
+        :type MidasEnvironment: str
+        :param ReservedMessage: 保留字段
+        :type ReservedMessage: str
+        :param BankSubAccountNumber: 子账户账号 暂未使用
+        :type BankSubAccountNumber: str
+        :param TransDate: 交易日期 暂未使用
+        :type TransDate: str
+        """
+        self.RequestType = None
+        self.MerchantCode = None
+        self.PayChannel = None
+        self.PayChannelSubId = None
+        self.OrderId = None
+        self.BankAccountNumber = None
+        self.PlatformShortNumber = None
+        self.QueryType = None
+        self.TransSequenceNumber = None
+        self.MidasSignature = None
+        self.MidasAppId = None
+        self.MidasSecretId = None
+        self.MidasEnvironment = None
+        self.ReservedMessage = None
+        self.BankSubAccountNumber = None
+        self.TransDate = None
+
+
+    def _deserialize(self, params):
+        self.RequestType = params.get("RequestType")
+        self.MerchantCode = params.get("MerchantCode")
+        self.PayChannel = params.get("PayChannel")
+        self.PayChannelSubId = params.get("PayChannelSubId")
+        self.OrderId = params.get("OrderId")
+        self.BankAccountNumber = params.get("BankAccountNumber")
+        self.PlatformShortNumber = params.get("PlatformShortNumber")
+        self.QueryType = params.get("QueryType")
+        self.TransSequenceNumber = params.get("TransSequenceNumber")
+        self.MidasSignature = params.get("MidasSignature")
+        self.MidasAppId = params.get("MidasAppId")
+        self.MidasSecretId = params.get("MidasSecretId")
+        self.MidasEnvironment = params.get("MidasEnvironment")
+        self.ReservedMessage = params.get("ReservedMessage")
+        self.BankSubAccountNumber = params.get("BankSubAccountNumber")
+        self.TransDate = params.get("TransDate")
+
+
+class DescribeOrderStatusResponse(AbstractModel):
+    """DescribeOrderStatus返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param OrderStatus: 交易状态 （（0：成功，1：失败，2：待确认, 5：待处理，6：处理中）
+        :type OrderStatus: str
+        :param OrderAmount: 交易金额
+        :type OrderAmount: str
+        :param OrderDate: 交易日期
+        :type OrderDate: str
+        :param OrderTime: 交易时间
+        :type OrderTime: str
+        :param OutSubAccountNumber: 转出子账户账号
+        :type OutSubAccountNumber: str
+        :param InSubAccountNumber: 转入子账户账号
+        :type InSubAccountNumber: str
+        :param BookingFlag: 记账标志（1：登记挂账 2：支付 3：提现 4：清分5:下单预支付 6：确认并付款 7：退款 8：支付到平台 N:其他）
+        :type BookingFlag: str
+        :param FailMessage: 当交易失败时，返回交易失败原因
+        :type FailMessage: str
+        :param RequestType: 请求类型
+        :type RequestType: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.OrderStatus = None
+        self.OrderAmount = None
+        self.OrderDate = None
+        self.OrderTime = None
+        self.OutSubAccountNumber = None
+        self.InSubAccountNumber = None
+        self.BookingFlag = None
+        self.FailMessage = None
+        self.RequestType = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.OrderStatus = params.get("OrderStatus")
+        self.OrderAmount = params.get("OrderAmount")
+        self.OrderDate = params.get("OrderDate")
+        self.OrderTime = params.get("OrderTime")
+        self.OutSubAccountNumber = params.get("OutSubAccountNumber")
+        self.InSubAccountNumber = params.get("InSubAccountNumber")
+        self.BookingFlag = params.get("BookingFlag")
+        self.FailMessage = params.get("FailMessage")
+        self.RequestType = params.get("RequestType")
+        self.RequestId = params.get("RequestId")
+
+
 class DownloadBillRequest(AbstractModel):
     """DownloadBill请求参数结构体
 
@@ -6201,7 +6331,7 @@ class RechargeByThirdPayRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestType: 请求类型
+        :param RequestType: 请求类型 此接口固定填：MemberRechargeThirdPayReq
         :type RequestType: str
         :param MerchantCode: 商户号
         :type MerchantCode: str

@@ -1648,20 +1648,27 @@ class OutputDataConfig(AbstractModel):
 
     def __init__(self):
         """
-        :param CosOutputBucket: cos桶
+        :param CosOutputBucket: cos输出桶
 注意：此字段可能返回 null，表示取不到有效值。
         :type CosOutputBucket: str
-        :param CosOutputKeyPrefix: cos文件key
+        :param CosOutputKeyPrefix: cos输出key前缀
 注意：此字段可能返回 null，表示取不到有效值。
         :type CosOutputKeyPrefix: str
+        :param FileSystemDataSource: 文件系统输出，如果指定了文件系统，那么Cos输出会被忽略
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FileSystemDataSource: :class:`tencentcloud.tione.v20191022.models.FileSystemDataSource`
         """
         self.CosOutputBucket = None
         self.CosOutputKeyPrefix = None
+        self.FileSystemDataSource = None
 
 
     def _deserialize(self, params):
         self.CosOutputBucket = params.get("CosOutputBucket")
         self.CosOutputKeyPrefix = params.get("CosOutputKeyPrefix")
+        if params.get("FileSystemDataSource") is not None:
+            self.FileSystemDataSource = FileSystemDataSource()
+            self.FileSystemDataSource._deserialize(params.get("FileSystemDataSource"))
 
 
 class ResourceConfig(AbstractModel):

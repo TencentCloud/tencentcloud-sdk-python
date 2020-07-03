@@ -212,13 +212,13 @@ class DescribeCallDetailRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param CommId: 通话 ID（唯一标识一次通话）： sdkappid_roomgString（房间号_createTime（房间创建时间，unix时间戳，单位为s）。通过 DescribeRoomInformation（查询房间列表）接口获取。
+        :param CommId: 通话 ID（唯一标识一次通话）： sdkappid_roomgString（房间号_createTime（房间创建时间，unix时间戳，单位为s）例：1400353843_218695_1590065777。通过 DescribeRoomInformation（查询房间列表）接口获取（链接：https://cloud.tencent.com/document/product/647/44050）
         :type CommId: str
         :param StartTime: 查询开始时间，5天内。本地unix时间戳（1588031999s）
         :type StartTime: int
         :param EndTime: 查询结束时间，本地unix时间戳（1588031999s）
         :type EndTime: int
-        :param SdkAppId: 用户sdkappid
+        :param SdkAppId: 用户sdkappid（1400188366）
         :type SdkAppId: str
         :param UserIds: 需查询的用户数组，不填默认返回6个用户,最多可填6个用户
         :type UserIds: list of str
@@ -303,7 +303,7 @@ class DescribeDetailEventRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param CommId: 通话 ID（唯一标识一次通话）： sdkappid_roomgString（房间号_createTime（房间创建时间，unix时间戳，单位s）。通过 DescribeRoomInformation（查询房间列表）接口获取。
+        :param CommId: 通话 ID（唯一标识一次通话）： sdkappid_roomgString（房间号_createTime（房间创建时间，unix时间戳，单位s）。通过 DescribeRoomInformation（查询房间列表）接口获取。（链接：https://cloud.tencent.com/document/product/647/44050）
         :type CommId: str
         :param StartTime: 查询开始时间，5天内。本地unix时间戳（1588031999s）
         :type StartTime: int
@@ -418,14 +418,14 @@ class DescribeRealtimeNetworkRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param StartTime: 查询开始时间，24小时内，，本地unix时间戳（1588031999s）
+        :param StartTime: 查询开始时间，24小时内，本地unix时间戳（1588031999s）
         :type StartTime: int
         :param EndTime: 查询结束时间，本地unix时间戳（1588031999s）
         :type EndTime: int
         :param SdkAppId: 用户sdkappid
         :type SdkAppId: str
         :param DataType: 需查询的数据类型
-sendLossRateRaw：上行丢包率；
+sendLossRateRaw：上行丢包率
 recvLossRateRaw：下行丢包率
         :type DataType: list of str
         """

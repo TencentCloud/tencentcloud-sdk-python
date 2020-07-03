@@ -8163,16 +8163,20 @@ class DisableRoutesRequest(AbstractModel):
         """
         :param RouteTableId: 路由表唯一ID。
         :type RouteTableId: str
-        :param RouteIds: 路由策略唯一ID。
+        :param RouteIds: 路由策略ID。不能和RouteItemIds同时使用。
         :type RouteIds: list of int non-negative
+        :param RouteItemIds: 路由策略唯一ID。不能和RouteIds同时使用。
+        :type RouteItemIds: list of str
         """
         self.RouteTableId = None
         self.RouteIds = None
+        self.RouteItemIds = None
 
 
     def _deserialize(self, params):
         self.RouteTableId = params.get("RouteTableId")
         self.RouteIds = params.get("RouteIds")
+        self.RouteItemIds = params.get("RouteItemIds")
 
 
 class DisableRoutesResponse(AbstractModel):
@@ -8518,16 +8522,20 @@ class EnableRoutesRequest(AbstractModel):
         """
         :param RouteTableId: 路由表唯一ID。
         :type RouteTableId: str
-        :param RouteIds: 路由策略唯一ID。
+        :param RouteIds: 路由策略ID。不能和RouteItemIds同时使用。
         :type RouteIds: list of int non-negative
+        :param RouteItemIds: 路由策略唯一ID。不能和RouteIds同时使用。
+        :type RouteItemIds: list of str
         """
         self.RouteTableId = None
         self.RouteIds = None
+        self.RouteItemIds = None
 
 
     def _deserialize(self, params):
         self.RouteTableId = params.get("RouteTableId")
         self.RouteIds = params.get("RouteIds")
+        self.RouteItemIds = params.get("RouteItemIds")
 
 
 class EnableRoutesResponse(AbstractModel):
@@ -12590,6 +12598,10 @@ CCN：云联网路由，系统默认下发，不可编辑与删除。
         :type RouteType: str
         :param RouteTableId: 路由表实例ID，例如：rtb-azd4dt1c。
         :type RouteTableId: str
+        :param DestinationIpv6CidrBlock: 目的IPv6网段，取值不能在私有网络网段内，例如：2402:4e00:1000:810b::/64。
+        :type DestinationIpv6CidrBlock: str
+        :param RouteItemId: 路由唯一策略ID。
+        :type RouteItemId: str
         """
         self.DestinationCidrBlock = None
         self.GatewayType = None
@@ -12599,6 +12611,8 @@ CCN：云联网路由，系统默认下发，不可编辑与删除。
         self.Enabled = None
         self.RouteType = None
         self.RouteTableId = None
+        self.DestinationIpv6CidrBlock = None
+        self.RouteItemId = None
 
 
     def _deserialize(self, params):
@@ -12610,6 +12624,8 @@ CCN：云联网路由，系统默认下发，不可编辑与删除。
         self.Enabled = params.get("Enabled")
         self.RouteType = params.get("RouteType")
         self.RouteTableId = params.get("RouteTableId")
+        self.DestinationIpv6CidrBlock = params.get("DestinationIpv6CidrBlock")
+        self.RouteItemId = params.get("RouteItemId")
 
 
 class RouteConflict(AbstractModel):

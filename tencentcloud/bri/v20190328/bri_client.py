@@ -38,6 +38,8 @@ class BriClient(AbstractClient):
 
         当业务名为bri_url时，必须填Url字段.
 
+        当业务名为bri_social时，必须填QQ和Wechat字段两者其中一个或者两个.
+
         :param request: Request instance for DescribeBRI.
         :type request: :class:`tencentcloud.bri.v20190328.models.DescribeBRIRequest`
         :rtype: :class:`tencentcloud.bri.v20190328.models.DescribeBRIResponse`
