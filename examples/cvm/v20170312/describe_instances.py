@@ -17,6 +17,8 @@ try:
 
     # 实例化一个http选项，可选的，没有特殊需求可以跳过。
     httpProfile = HttpProfile()
+    # 如果需要指定proxy访问接口，可以按照如下方式初始化hp
+    # httpProfile = HttpProfile(proxy="http://用户名:密码@代理IP:代理端口")
     httpProfile.reqMethod = "GET"  # post请求(默认为post请求)
     httpProfile.reqTimeout = 30    # 请求超时时间，单位为秒(默认60秒)
     httpProfile.endpoint = "cvm.ap-shanghai.tencentcloudapi.com"  # 指定接入地域域名(默认就近接入)

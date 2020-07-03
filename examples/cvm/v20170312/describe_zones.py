@@ -15,6 +15,8 @@ try:
 
     # 实例化一个client选项，可选的，没有特殊需求可以跳过。
     hp = http_profile.HttpProfile()
+    # 如果需要指定proxy访问接口，可以按照如下方式初始化hp
+    # hp = http_profile.HttpProfile(proxy="http://用户名:密码@代理IP:代理端口")
     hp.reqMethod = "POST"
     cp = client_profile.ClientProfile()
     cp.signMethod = "TC3-HMAC-SHA256"

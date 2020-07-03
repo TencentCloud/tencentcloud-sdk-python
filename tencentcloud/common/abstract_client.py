@@ -57,7 +57,8 @@ class AbstractClient(object):
         self.credential = credential
         self.region = region
         self.profile = ClientProfile() if profile is None else profile
-        self.request = ApiRequest(self._get_endpoint(), self.profile.httpProfile.reqTimeout)
+        self.request = ApiRequest(self._get_endpoint(), self.profile.httpProfile.reqTimeout,
+                                  proxy=self.profile.httpProfile.proxy)
         if self.profile.httpProfile.keepAlive:
             self.request.set_keep_alive()
 
