@@ -17,9 +17,7 @@ class ProxyHTTPSConnection(HTTPSConnection):
     def __init__(self, host, port=None, timeout=60, proxy=None):
         self.has_proxy = False
         self.request_host = host
-        https_proxy = (os.environ.get('https_proxy')
-                       or os.environ.get('HTTPS_PROXY'))
-        proxy = proxy if proxy else https_proxy
+        proxy = proxy or os.environ.get('https_proxy') or os.environ.get('HTTPS_PROXY')
         if proxy:
             url = urlparse(proxy)
             if not url.hostname:
@@ -42,9 +40,34 @@ class ProxyHTTPSConnection(HTTPSConnection):
         HTTPSConnection.request(self, method, url, body, headers)
 
 
+class ProxyHTTPConnection(HTTPConnection):
+    def __init__(self, host, port=None, timeout=60, proxy=None):
+        self.request_length = 0
+        self.has_proxy = False
+        self.request_host = host
+        proxy = proxy or os.environ.get('http_proxy') or os.environ.get('HTTP_PROXY')
+        if proxy:
+            url = urlparse(proxy)
+            if not url.hostname:
+                url = urlparse('http://' + proxy)
+            host = url.hostname
+            port = url.port
+            self.has_proxy = True
+        HTTPConnection.__init__(self, host, port, timeout=timeout)
+
+    def request(self, method, url, body=None, headers={}):
+        if self.has_proxy:
+            self.set_tunnel(self.request_host, 80)
+        headers.setdefault("Host", self.request_host)
+        HTTPConnection.request(self, method, url, body, headers)
+
+
 class ApiRequest(object):
-    def __init__(self, host, req_timeout=60, debug=False, proxy=None):
-        self.conn = ProxyHTTPSConnection(host, timeout=req_timeout, proxy=proxy)
+    def __init__(self, host, req_timeout=60, debug=False, proxy=None, is_http=False):
+        if is_http:
+            self.conn = ProxyHTTPConnection(host, timeout=req_timeout, proxy=proxy)
+        else:
+            self.conn = ProxyHTTPSConnection(host, timeout=req_timeout, proxy=proxy)
         self.req_timeout = req_timeout
         self.keep_alive = False
         self.debug = debug

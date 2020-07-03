@@ -57,19 +57,13 @@ class AbstractClient(object):
         self.credential = credential
         self.region = region
         self.profile = ClientProfile() if profile is None else profile
-        self.request = ApiRequest(self._get_endpoint(), self.profile.httpProfile.reqTimeout,
-                                  proxy=self.profile.httpProfile.proxy)
+        is_http = True if self.profile.httpProfile.scheme == "http" else False
+        self.request = ApiRequest(self._get_endpoint(),
+                                  req_timeout=self.profile.httpProfile.reqTimeout,
+                                  proxy=self.profile.httpProfile.proxy,
+                                  is_http=is_http)
         if self.profile.httpProfile.keepAlive:
             self.request.set_keep_alive()
-
-        # self.secretId = self.credential.secretId
-        # self.secretKey = self.credential.secretKey
-        # self.defaultRegion = self.region or ''
-        # self.reqMethod = self.profile.httpProfile.reqMethod
-        # self.signMethod = self.profile.signMethod
-        # self.requestHost = '.'.join((self._service_name, self.profile.httpProfile.endpoint))
-        # self.apiRequest = ApiRequest(self.requestHost, req_timeout=self.profile.httpProfile.reqTimeout)
-        # self.token = self.credential.token or ''
 
     def _fix_params(self, params):
         if not isinstance(params, (dict,)):

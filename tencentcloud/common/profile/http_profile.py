@@ -14,6 +14,8 @@
 
 
 class HttpProfile(object):
+    scheme = "https"
+
     def __init__(self, protocol=None, endpoint=None, reqMethod="POST", reqTimeout=60,
                  keepAlive=False, proxy=None):
         """HTTP profile.
@@ -32,4 +34,3 @@ class HttpProfile(object):
         self.protocol = protocol
         self.keepAlive = keepAlive
         self.proxy = proxy
-
