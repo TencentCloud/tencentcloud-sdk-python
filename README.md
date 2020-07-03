@@ -68,7 +68,12 @@ except TencentCloudSDKException as err:
 
 ## 代理
 
-如果是有代理的环境下，需要设置系统环境变量 `https_proxy` ，否则可能无法正常调用，抛出连接超时的异常。
+如果是有代理的环境下，可通过两种方式设置代理
+
+1. 在初始化HttpProfile时指定proxy，参考[example](https://github.com/TencentCloud/tencentcloud-sdk-python/blob/master/examples/cvm/v20170312/describe_zones.py)
+2. 需要设置系统环境变量 `https_proxy`
+
+否则可能无法正常调用，抛出连接超时的异常。
 
 ## 证书问题
 

@@ -19,21 +19,15 @@ class ProxyHTTPSConnection(HTTPSConnection):
         self.request_host = host
         https_proxy = (os.environ.get('https_proxy')
                        or os.environ.get('HTTPS_PROXY'))
-
-        self.set_proxy(proxy or https_proxy)
-
-        HTTPSConnection.__init__(self, host, port, timeout=timeout)
-        self.request_length = 0
-
-    def set_proxy(self, proxy):
-        if proxy:
-            url = urlparse(proxy)
+        if proxy or https_proxy:
+            url = urlparse(proxy or https_proxy)
             if not url.hostname:
-                url = urlparse('https://' + proxy)
+                url = urlparse('https://' + proxy or https_proxy)
             host = url.hostname
             port = url.port
             self.has_proxy = True
-
+        HTTPSConnection.__init__(self, host, port, timeout=timeout)
+        self.request_length = 0
 
     def send(self, astr):
         HTTPSConnection.send(self, astr)
