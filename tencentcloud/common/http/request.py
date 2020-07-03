@@ -19,10 +19,11 @@ class ProxyHTTPSConnection(HTTPSConnection):
         self.request_host = host
         https_proxy = (os.environ.get('https_proxy')
                        or os.environ.get('HTTPS_PROXY'))
-        if proxy or https_proxy:
-            url = urlparse(proxy or https_proxy)
+        proxy = proxy if proxy else https_proxy
+        if proxy:
+            url = urlparse(proxy)
             if not url.hostname:
-                url = urlparse('https://' + proxy or https_proxy)
+                url = urlparse('https://' + proxy)
             host = url.hostname
             port = url.port
             self.has_proxy = True
