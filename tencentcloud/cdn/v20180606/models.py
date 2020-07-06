@@ -16,6 +16,73 @@
 from tencentcloud.common.abstract_model import AbstractModel
 
 
+class AccessControl(AbstractModel):
+    """请求头部及请求url访问控制
+
+    """
+
+    def __init__(self):
+        """
+        :param Switch: on | off 是否启用请求头部及请求url访问控制
+        :type Switch: str
+        :param AccessControlRules: 请求头部及请求url访问规则
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AccessControlRules: list of AccessControlRule
+        :param ReturnCode: 返回状态码
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ReturnCode: int
+        """
+        self.Switch = None
+        self.AccessControlRules = None
+        self.ReturnCode = None
+
+
+    def _deserialize(self, params):
+        self.Switch = params.get("Switch")
+        if params.get("AccessControlRules") is not None:
+            self.AccessControlRules = []
+            for item in params.get("AccessControlRules"):
+                obj = AccessControlRule()
+                obj._deserialize(item)
+                self.AccessControlRules.append(obj)
+        self.ReturnCode = params.get("ReturnCode")
+
+
+class AccessControlRule(AbstractModel):
+    """访问控制规则
+
+    """
+
+    def __init__(self):
+        """
+        :param RuleType: requestHeader ：对请求头部进行访问控制
+url ： 对访问url进行访问控制
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RuleType: str
+        :param RuleContent: 封禁内容
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RuleContent: str
+        :param Regex: on ：正则匹配
+off ：字面匹配
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Regex: str
+        :param RuleHeader: RuleType为requestHeader时必填，否则不需要填
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RuleHeader: str
+        """
+        self.RuleType = None
+        self.RuleContent = None
+        self.Regex = None
+        self.RuleHeader = None
+
+
+    def _deserialize(self, params):
+        self.RuleType = params.get("RuleType")
+        self.RuleContent = params.get("RuleContent")
+        self.Regex = params.get("Regex")
+        self.RuleHeader = params.get("RuleHeader")
+
+
 class AddCdnDomainRequest(AbstractModel):
     """AddCdnDomain请求参数结构体
 
@@ -717,14 +784,49 @@ off：关闭全路径缓存（即开启参数过滤）
         :param IgnoreCase: 是否忽略大小写缓存
 注意：此字段可能返回 null，表示取不到有效值。
         :type IgnoreCase: str
+        :param QueryString: CacheKey中包含请求参数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type QueryString: :class:`tencentcloud.cdn.v20180606.models.QueryStringKey`
+        :param Cookie: CacheKey中包含Cookie
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Cookie: :class:`tencentcloud.cdn.v20180606.models.CookieKey`
+        :param Header: CacheKey中包含请求头部
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Header: :class:`tencentcloud.cdn.v20180606.models.HeaderKey`
+        :param CacheTag: CacheKey中包含自定义字符串
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CacheTag: :class:`tencentcloud.cdn.v20180606.models.CacheTagKey`
+        :param Scheme: CacheKey中包含请求协议
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Scheme: :class:`tencentcloud.cdn.v20180606.models.SchemeKey`
         """
         self.FullUrlCache = None
         self.IgnoreCase = None
+        self.QueryString = None
+        self.Cookie = None
+        self.Header = None
+        self.CacheTag = None
+        self.Scheme = None
 
 
     def _deserialize(self, params):
         self.FullUrlCache = params.get("FullUrlCache")
         self.IgnoreCase = params.get("IgnoreCase")
+        if params.get("QueryString") is not None:
+            self.QueryString = QueryStringKey()
+            self.QueryString._deserialize(params.get("QueryString"))
+        if params.get("Cookie") is not None:
+            self.Cookie = CookieKey()
+            self.Cookie._deserialize(params.get("Cookie"))
+        if params.get("Header") is not None:
+            self.Header = HeaderKey()
+            self.Header._deserialize(params.get("Header"))
+        if params.get("CacheTag") is not None:
+            self.CacheTag = CacheTagKey()
+            self.CacheTag._deserialize(params.get("CacheTag"))
+        if params.get("Scheme") is not None:
+            self.Scheme = SchemeKey()
+            self.Scheme._deserialize(params.get("Scheme"))
 
 
 class CacheOptResult(AbstractModel):
@@ -748,6 +850,29 @@ class CacheOptResult(AbstractModel):
     def _deserialize(self, params):
         self.SuccessUrls = params.get("SuccessUrls")
         self.FailUrls = params.get("FailUrls")
+
+
+class CacheTagKey(AbstractModel):
+    """组成CacheKey的一部分
+
+    """
+
+    def __init__(self):
+        """
+        :param Switch: 是否使用CacheTag作为CacheKey的一部分
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Switch: str
+        :param Value: 自定义CacheTag的值
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Value: str
+        """
+        self.Switch = None
+        self.Value = None
+
+
+    def _deserialize(self, params):
+        self.Switch = params.get("Switch")
+        self.Value = params.get("Value")
 
 
 class CappingRule(AbstractModel):
@@ -1084,6 +1209,29 @@ brotli：需要同时指定 GZIP 压缩才可启用
         self.MinLength = params.get("MinLength")
         self.MaxLength = params.get("MaxLength")
         self.Algorithms = params.get("Algorithms")
+
+
+class CookieKey(AbstractModel):
+    """组成CacheKey的一部分
+
+    """
+
+    def __init__(self):
+        """
+        :param Switch: on | off 是否使用Cookie作为Cache的一部分
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Switch: str
+        :param Value: 使用的cookie，';' 分割
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Value: str
+        """
+        self.Switch = None
+        self.Value = None
+
+
+    def _deserialize(self, params):
+        self.Switch = params.get("Switch")
+        self.Value = params.get("Value")
 
 
 class CreateClsLogTopicRequest(AbstractModel):
@@ -2753,6 +2901,9 @@ global：全球锁定
         :param UserAgentFilter: UA黑白名单配置
 注意：此字段可能返回 null，表示取不到有效值。
         :type UserAgentFilter: :class:`tencentcloud.cdn.v20180606.models.UserAgentFilter`
+        :param AccessControl: 访问控制
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AccessControl: :class:`tencentcloud.cdn.v20180606.models.AccessControl`
         """
         self.ResourceId = None
         self.AppId = None
@@ -2797,6 +2948,7 @@ global：全球锁定
         self.SecurityConfig = None
         self.ImageOptimization = None
         self.UserAgentFilter = None
+        self.AccessControl = None
 
 
     def _deserialize(self, params):
@@ -2905,6 +3057,9 @@ global：全球锁定
         if params.get("UserAgentFilter") is not None:
             self.UserAgentFilter = UserAgentFilter()
             self.UserAgentFilter._deserialize(params.get("UserAgentFilter"))
+        if params.get("AccessControl") is not None:
+            self.AccessControl = AccessControl()
+            self.AccessControl._deserialize(params.get("AccessControl"))
 
 
 class DisableCachesRequest(AbstractModel):
@@ -3393,6 +3548,29 @@ class GuetzliAdapter(AbstractModel):
 
     def _deserialize(self, params):
         self.Switch = params.get("Switch")
+
+
+class HeaderKey(AbstractModel):
+    """组成CacheKey
+
+    """
+
+    def __init__(self):
+        """
+        :param Switch: 是否组成Cachekey
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Switch: str
+        :param Value: 组成CacheKey的header数组，';' 分割
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Value: str
+        """
+        self.Switch = None
+        self.Value = None
+
+
+    def _deserialize(self, params):
+        self.Switch = params.get("Switch")
+        self.Value = params.get("Value")
 
 
 class Hsts(AbstractModel):
@@ -4848,6 +5026,39 @@ class PushUrlsCacheResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class QueryStringKey(AbstractModel):
+    """组成CacheKey的一部分
+
+    """
+
+    def __init__(self):
+        """
+        :param Switch: on | off CacheKey是否由QueryString组成
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Switch: str
+        :param Reorder: 是否重新排序
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Reorder: str
+        :param Action: includeAll | excludeAll | includeCustom | excludeAll 使用/排除部分url参数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Action: str
+        :param Value: 使用/排除的url参数数组，';' 分割
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Value: str
+        """
+        self.Switch = None
+        self.Reorder = None
+        self.Action = None
+        self.Value = None
+
+
+    def _deserialize(self, params):
+        self.Switch = params.get("Switch")
+        self.Reorder = params.get("Reorder")
+        self.Action = params.get("Action")
+        self.Value = params.get("Value")
+
+
 class Quota(AbstractModel):
     """刷新/预热 可用量及配额
 
@@ -5195,6 +5406,47 @@ off：关闭
         self.Switch = params.get("Switch")
 
 
+class Revalidate(AbstractModel):
+    """是否回源站校验
+
+    """
+
+    def __init__(self):
+        """
+        :param Switch: on | off 是否总是回源校验
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Switch: str
+        :param Path: 只在特定请求路径回源站校验
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Path: str
+        """
+        self.Switch = None
+        self.Path = None
+
+
+    def _deserialize(self, params):
+        self.Switch = params.get("Switch")
+        self.Path = params.get("Path")
+
+
+class SchemeKey(AbstractModel):
+    """作为CacheKey的一部分
+
+    """
+
+    def __init__(self):
+        """
+        :param Switch: on | off 是否使用scheme作为cache key的一部分
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Switch: str
+        """
+        self.Switch = None
+
+
+    def _deserialize(self, params):
+        self.Switch = params.get("Switch")
+
+
 class SearchClsLogRequest(AbstractModel):
     """SearchClsLog请求参数结构体
 
@@ -5399,12 +5651,16 @@ off：关闭
 默认为关闭状态
 注意：此字段可能返回 null，表示取不到有效值。
         :type CompareMaxAge: str
+        :param Revalidate: 总是回源站校验
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Revalidate: :class:`tencentcloud.cdn.v20180606.models.Revalidate`
         """
         self.CacheRules = None
         self.FollowOrigin = None
         self.IgnoreCacheControl = None
         self.IgnoreSetCookie = None
         self.CompareMaxAge = None
+        self.Revalidate = None
 
 
     def _deserialize(self, params):
@@ -5418,6 +5674,9 @@ off：关闭
         self.IgnoreCacheControl = params.get("IgnoreCacheControl")
         self.IgnoreSetCookie = params.get("IgnoreSetCookie")
         self.CompareMaxAge = params.get("CompareMaxAge")
+        if params.get("Revalidate") is not None:
+            self.Revalidate = Revalidate()
+            self.Revalidate._deserialize(params.get("Revalidate"))
 
 
 class SimpleCacheRule(AbstractModel):

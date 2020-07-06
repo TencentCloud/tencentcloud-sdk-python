@@ -222,7 +222,7 @@ class TiwClient(AbstractClient):
 
 
     def SetOnlineRecordCallback(self, request):
-        """设置实时录制回调地址
+        """设置实时录制回调地址，回调数据格式请参考文档：https://cloud.tencent.com/document/product/1137/40258
 
         :param request: Request instance for SetOnlineRecordCallback.
         :type request: :class:`tencentcloud.tiw.v20190919.models.SetOnlineRecordCallbackRequest`
@@ -250,7 +250,7 @@ class TiwClient(AbstractClient):
 
 
     def SetOnlineRecordCallbackKey(self, request):
-        """设置实时录制回调鉴权密钥
+        """设置实时录制回调鉴权密钥，回调鉴权方式请参考文档：https://cloud.tencent.com/document/product/1137/40257
 
         :param request: Request instance for SetOnlineRecordCallbackKey.
         :type request: :class:`tencentcloud.tiw.v20190919.models.SetOnlineRecordCallbackKeyRequest`
@@ -278,7 +278,7 @@ class TiwClient(AbstractClient):
 
 
     def SetTranscodeCallback(self, request):
-        """设置文档转码回调地址
+        """设置文档转码回调地址，回调数据格式请参考文档：https://cloud.tencent.com/document/product/1137/40260
 
         :param request: Request instance for SetTranscodeCallback.
         :type request: :class:`tencentcloud.tiw.v20190919.models.SetTranscodeCallbackRequest`
@@ -306,7 +306,7 @@ class TiwClient(AbstractClient):
 
 
     def SetTranscodeCallbackKey(self, request):
-        """设置文档转码回调鉴权密钥
+        """设置文档转码回调鉴权密钥，回调鉴权方式请参考文档：https://cloud.tencent.com/document/product/1137/40257
 
         :param request: Request instance for SetTranscodeCallbackKey.
         :type request: :class:`tencentcloud.tiw.v20190919.models.SetTranscodeCallbackKeyRequest`

@@ -37,6 +37,14 @@ class EvaluationRequest(AbstractModel):
         :type RejectNonArithmeticImage: bool
         :param IsAsync: 异步模式标识，0：同步模式，1：异步模式。默认为同步模式
         :type IsAsync: int
+        :param EnableDispRelatedVertical: 是否展开耦合算式中的竖式计算
+        :type EnableDispRelatedVertical: bool
+        :param EnableDispMidresult: 是否展示竖式算式的中间结果和格式控制字符
+        :type EnableDispMidresult: bool
+        :param EnablePdfRecognize: 是否开启pdf识别，默认开启
+        :type EnablePdfRecognize: bool
+        :param PdfPageIndex: pdf页码，从0开始，默认为0
+        :type PdfPageIndex: int
         """
         self.SessionId = None
         self.Image = None
@@ -45,6 +53,10 @@ class EvaluationRequest(AbstractModel):
         self.SupportHorizontalImage = None
         self.RejectNonArithmeticImage = None
         self.IsAsync = None
+        self.EnableDispRelatedVertical = None
+        self.EnableDispMidresult = None
+        self.EnablePdfRecognize = None
+        self.PdfPageIndex = None
 
 
     def _deserialize(self, params):
@@ -55,6 +67,10 @@ class EvaluationRequest(AbstractModel):
         self.SupportHorizontalImage = params.get("SupportHorizontalImage")
         self.RejectNonArithmeticImage = params.get("RejectNonArithmeticImage")
         self.IsAsync = params.get("IsAsync")
+        self.EnableDispRelatedVertical = params.get("EnableDispRelatedVertical")
+        self.EnableDispMidresult = params.get("EnableDispMidresult")
+        self.EnablePdfRecognize = params.get("EnablePdfRecognize")
+        self.PdfPageIndex = params.get("PdfPageIndex")
 
 
 class EvaluationResponse(AbstractModel):

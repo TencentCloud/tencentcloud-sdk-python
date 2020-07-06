@@ -888,6 +888,8 @@ development: 开发环境
         :type MidasEnvironment: str
         :param CommissionAmount: 手续费金额
         :type CommissionAmount: str
+        :param WithdrawOrderId: 提现单号，长度32字节
+        :type WithdrawOrderId: str
         """
         self.MidasAppId = None
         self.SubAppId = None
@@ -904,6 +906,7 @@ development: 开发环境
         self.EncryptType = None
         self.MidasEnvironment = None
         self.CommissionAmount = None
+        self.WithdrawOrderId = None
 
 
     def _deserialize(self, params):
@@ -922,6 +925,7 @@ development: 开发环境
         self.EncryptType = params.get("EncryptType")
         self.MidasEnvironment = params.get("MidasEnvironment")
         self.CommissionAmount = params.get("CommissionAmount")
+        self.WithdrawOrderId = params.get("WithdrawOrderId")
 
 
 class ApplyWithdrawalResponse(AbstractModel):

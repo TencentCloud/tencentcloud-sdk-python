@@ -186,7 +186,7 @@ class BdaClient(AbstractClient):
 
 
     def DetectBody(self, request):
-        """检测给定图片中的人体（Body）的位置信息（属性信息将在后续开放）。
+        """检测给定图片中的人体（Body）的位置信息及属性信息。
 
         :param request: Request instance for DetectBody.
         :type request: :class:`tencentcloud.bda.v20200324.models.DetectBodyRequest`
