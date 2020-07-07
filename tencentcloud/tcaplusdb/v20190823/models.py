@@ -108,6 +108,9 @@ class ClusterInfo(AbstractModel):
         :param OldPasswordExpireTime: 如果PasswordStatus是unmodifiable说明有旧密码还未过期，此字段将显示旧密码过期的时间，否则为空
 注意：此字段可能返回 null，表示取不到有效值。
         :type OldPasswordExpireTime: str
+        :param ApiAccessIpv6: TcaplusDB SDK连接参数，接入ipv6地址
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ApiAccessIpv6: str
         """
         self.ClusterName = None
         self.ClusterId = None
@@ -123,6 +126,7 @@ class ClusterInfo(AbstractModel):
         self.ApiAccessIp = None
         self.ApiAccessPort = None
         self.OldPasswordExpireTime = None
+        self.ApiAccessIpv6 = None
 
 
     def _deserialize(self, params):
@@ -140,6 +144,7 @@ class ClusterInfo(AbstractModel):
         self.ApiAccessIp = params.get("ApiAccessIp")
         self.ApiAccessPort = params.get("ApiAccessPort")
         self.OldPasswordExpireTime = params.get("OldPasswordExpireTime")
+        self.ApiAccessIpv6 = params.get("ApiAccessIpv6")
 
 
 class CompareIdlFilesRequest(AbstractModel):
@@ -295,6 +300,8 @@ class CreateClusterRequest(AbstractModel):
         :type Password: str
         :param ResourceTags: 集群标签列表
         :type ResourceTags: list of TagInfoUnit
+        :param Ipv6Enable: 集群是否开启IPv6功能
+        :type Ipv6Enable: int
         """
         self.IdlType = None
         self.ClusterName = None
@@ -302,6 +309,7 @@ class CreateClusterRequest(AbstractModel):
         self.SubnetId = None
         self.Password = None
         self.ResourceTags = None
+        self.Ipv6Enable = None
 
 
     def _deserialize(self, params):
@@ -316,6 +324,7 @@ class CreateClusterRequest(AbstractModel):
                 obj = TagInfoUnit()
                 obj._deserialize(item)
                 self.ResourceTags.append(obj)
+        self.Ipv6Enable = params.get("Ipv6Enable")
 
 
 class CreateClusterResponse(AbstractModel):
@@ -780,11 +789,14 @@ class DescribeClustersRequest(AbstractModel):
         :type Offset: int
         :param Limit: 查询列表返回记录数，默认值20
         :type Limit: int
+        :param Ipv6Enable: 是否启用Ipv6
+        :type Ipv6Enable: int
         """
         self.ClusterIds = None
         self.Filters = None
         self.Offset = None
         self.Limit = None
+        self.Ipv6Enable = None
 
 
     def _deserialize(self, params):
@@ -797,6 +809,7 @@ class DescribeClustersRequest(AbstractModel):
                 self.Filters.append(obj)
         self.Offset = params.get("Offset")
         self.Limit = params.get("Limit")
+        self.Ipv6Enable = params.get("Ipv6Enable")
 
 
 class DescribeClustersResponse(AbstractModel):
@@ -2173,16 +2186,20 @@ class RegionInfo(AbstractModel):
         :type RegionAbbr: str
         :param RegionId: 地域ID
         :type RegionId: int
+        :param Ipv6Enable: 是否支持ipv6，0:不支持，1:支持
+        :type Ipv6Enable: int
         """
         self.RegionName = None
         self.RegionAbbr = None
         self.RegionId = None
+        self.Ipv6Enable = None
 
 
     def _deserialize(self, params):
         self.RegionName = params.get("RegionName")
         self.RegionAbbr = params.get("RegionAbbr")
         self.RegionId = params.get("RegionId")
+        self.Ipv6Enable = params.get("Ipv6Enable")
 
 
 class RollbackTablesRequest(AbstractModel):

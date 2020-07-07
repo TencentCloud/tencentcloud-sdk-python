@@ -2988,6 +2988,12 @@ class InstanceTypeQuotaItem(AbstractModel):
         :type StorageBlockAmount: int
         :param CpuType: 处理器型号。
         :type CpuType: str
+        :param Gpu: 实例的GPU数量。
+        :type Gpu: int
+        :param Fpga: 实例的FPGA数量。
+        :type Fpga: int
+        :param Remark: 实例备注信息。
+        :type Remark: str
         """
         self.Zone = None
         self.InstanceType = None
@@ -3006,6 +3012,9 @@ class InstanceTypeQuotaItem(AbstractModel):
         self.InstancePps = None
         self.StorageBlockAmount = None
         self.CpuType = None
+        self.Gpu = None
+        self.Fpga = None
+        self.Remark = None
 
 
     def _deserialize(self, params):
@@ -3035,6 +3044,9 @@ class InstanceTypeQuotaItem(AbstractModel):
         self.InstancePps = params.get("InstancePps")
         self.StorageBlockAmount = params.get("StorageBlockAmount")
         self.CpuType = params.get("CpuType")
+        self.Gpu = params.get("Gpu")
+        self.Fpga = params.get("Fpga")
+        self.Remark = params.get("Remark")
 
 
 class InternetAccessible(AbstractModel):

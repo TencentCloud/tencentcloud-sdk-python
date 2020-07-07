@@ -4057,6 +4057,52 @@ class DescribeRoGroupsResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeRoMinScaleRequest(AbstractModel):
+    """DescribeRoMinScale请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RoInstanceId: 只读实例ID，格式如：cdbro-c1nl9rpv，与云数据库控制台页面中显示的实例ID相同，该参数与MasterInstanceId参数不能同时为空。
+        :type RoInstanceId: str
+        :param MasterInstanceId: 主实例ID，格式如：cdb-c1nl9rpv，与云数据库控制台页面中显示的实例ID相同，该参数与RoInstanceId参数不能同时为空。注意，当传入参数包含RoInstanceId时，返回值为只读实例升级时的最小规格；当传入参数只包含MasterInstanceId时，返回值为只读实例购买时的最小规格。
+        :type MasterInstanceId: str
+        """
+        self.RoInstanceId = None
+        self.MasterInstanceId = None
+
+
+    def _deserialize(self, params):
+        self.RoInstanceId = params.get("RoInstanceId")
+        self.MasterInstanceId = params.get("MasterInstanceId")
+
+
+class DescribeRoMinScaleResponse(AbstractModel):
+    """DescribeRoMinScale返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Memory: 内存规格大小, 单位为：MB。
+        :type Memory: int
+        :param Volume: 磁盘规格大小, 单位为：GB。
+        :type Volume: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Memory = None
+        self.Volume = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Memory = params.get("Memory")
+        self.Volume = params.get("Volume")
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeRollbackRangeTimeRequest(AbstractModel):
     """DescribeRollbackRangeTime请求参数结构体
 

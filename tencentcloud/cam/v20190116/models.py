@@ -263,7 +263,7 @@ class AttachPolicyInfo(AbstractModel):
         :param Remark: 策略备注
 注意：此字段可能返回 null，表示取不到有效值。
         :type Remark: str
-        :param OperateOwnerUin: 策略关联操作者主张号
+        :param OperateOwnerUin: 策略关联操作者主帐号
 注意：此字段可能返回 null，表示取不到有效值。
         :type OperateOwnerUin: str
         :param OperateUin: 策略关联操作者ID，如果UinType为0表示子帐号Uin，如果UinType为1表示角色ID

@@ -696,7 +696,7 @@ class EncodeParams(AbstractModel):
 
     def __init__(self):
         """
-        :param AudioSampleRate: 混流-输出流音频采样率。取值为[96000, 88200, 64000, 48000, 44100, 32000,24000, 22050, 16000, 12000, 11025, 8000]。
+        :param AudioSampleRate: 混流-输出流音频采样率。取值为[48000, 44100, 32000,24000, 22050, 16000, 12000, 11025, 8000]。
         :type AudioSampleRate: int
         :param AudioBitrate: 混流-输出流音频码率。取值范围[8,500]，单位为Kbps。
         :type AudioBitrate: int

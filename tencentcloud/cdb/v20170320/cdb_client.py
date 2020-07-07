@@ -1729,6 +1729,34 @@ class CdbClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeRoMinScale(self, request):
+        """本接口(DescribeRoMinScale)用于获取只读实例购买、升级时的最小规格。
+
+        :param request: Request instance for DescribeRoMinScale.
+        :type request: :class:`tencentcloud.cdb.v20170320.models.DescribeRoMinScaleRequest`
+        :rtype: :class:`tencentcloud.cdb.v20170320.models.DescribeRoMinScaleResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeRoMinScale", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeRoMinScaleResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeRollbackRangeTime(self, request):
         """本接口(DescribeRollbackRangeTime)用于查询云数据库实例可回档的时间范围。
 

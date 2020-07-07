@@ -473,6 +473,40 @@ class DeleteDeviceResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DeleteLoRaGatewayRequest(AbstractModel):
+    """DeleteLoRaGateway请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param GatewayId: LoRa 网关 Id
+        :type GatewayId: str
+        """
+        self.GatewayId = None
+
+
+    def _deserialize(self, params):
+        self.GatewayId = params.get("GatewayId")
+
+
+class DeleteLoRaGatewayResponse(AbstractModel):
+    """DeleteLoRaGateway返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class DeleteProjectRequest(AbstractModel):
     """DeleteProject请求参数结构体
 
@@ -1406,6 +1440,72 @@ class LoRaGatewayLocation(AbstractModel):
         self.Altitude = params.get("Altitude")
         self.Latitude = params.get("Latitude")
         self.Longitude = params.get("Longitude")
+
+
+class ModifyLoRaGatewayRequest(AbstractModel):
+    """ModifyLoRaGateway请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Description: 描述信息
+        :type Description: str
+        :param GatewayId: LoRa网关Id
+        :type GatewayId: str
+        :param Location: LoRa网关位置坐标
+        :type Location: :class:`tencentcloud.iotexplorer.v20190423.models.LoRaGatewayLocation`
+        :param Name: LoRa网关名称
+        :type Name: str
+        :param IsPublic: 是否公开可见
+        :type IsPublic: bool
+        :param Position: 位置信息
+        :type Position: str
+        :param PositionDetails: 位置详情
+        :type PositionDetails: str
+        """
+        self.Description = None
+        self.GatewayId = None
+        self.Location = None
+        self.Name = None
+        self.IsPublic = None
+        self.Position = None
+        self.PositionDetails = None
+
+
+    def _deserialize(self, params):
+        self.Description = params.get("Description")
+        self.GatewayId = params.get("GatewayId")
+        if params.get("Location") is not None:
+            self.Location = LoRaGatewayLocation()
+            self.Location._deserialize(params.get("Location"))
+        self.Name = params.get("Name")
+        self.IsPublic = params.get("IsPublic")
+        self.Position = params.get("Position")
+        self.PositionDetails = params.get("PositionDetails")
+
+
+class ModifyLoRaGatewayResponse(AbstractModel):
+    """ModifyLoRaGateway返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Gateway: 返回网关数据
+        :type Gateway: :class:`tencentcloud.iotexplorer.v20190423.models.LoRaGatewayItem`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Gateway = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Gateway") is not None:
+            self.Gateway = LoRaGatewayItem()
+            self.Gateway._deserialize(params.get("Gateway"))
+        self.RequestId = params.get("RequestId")
 
 
 class ModifyModelDefinitionRequest(AbstractModel):
