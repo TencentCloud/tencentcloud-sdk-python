@@ -1378,7 +1378,7 @@ class DescribeInstancesRequest(AbstractModel):
         :type Status: list of int
         :param Offset: 偏移量，不填默认为0
         :type Offset: int
-        :param Limit: 返回数量，不填则默认10，最大值20
+        :param Limit: 返回数量，不填则默认10，最大值100
         :type Limit: int
         :param TagKey: 匹配标签key值。
         :type TagKey: str

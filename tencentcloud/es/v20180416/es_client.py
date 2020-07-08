@@ -228,6 +228,34 @@ class EsClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def UpdatePlugins(self, request):
+        """变更插件列表
+
+        :param request: Request instance for UpdatePlugins.
+        :type request: :class:`tencentcloud.es.v20180416.models.UpdatePluginsRequest`
+        :rtype: :class:`tencentcloud.es.v20180416.models.UpdatePluginsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("UpdatePlugins", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.UpdatePluginsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def UpgradeInstance(self, request):
         """升级ES集群版本
 

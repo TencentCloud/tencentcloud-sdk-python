@@ -511,7 +511,7 @@ class EsAcl(AbstractModel):
 
 
 class EsDictionaryInfo(AbstractModel):
-    """ES IK词库信息
+    """ES 词库信息
 
     """
 
@@ -521,9 +521,18 @@ class EsDictionaryInfo(AbstractModel):
         :type MainDict: list of DictInfo
         :param Stopwords: 停用词词典列表
         :type Stopwords: list of DictInfo
+        :param QQDict: QQ分词词典列表
+        :type QQDict: list of DictInfo
+        :param Synonym: 同义词词典列表
+        :type Synonym: list of DictInfo
+        :param UpdateType: 更新词典类型
+        :type UpdateType: str
         """
         self.MainDict = None
         self.Stopwords = None
+        self.QQDict = None
+        self.Synonym = None
+        self.UpdateType = None
 
 
     def _deserialize(self, params):
@@ -539,6 +548,19 @@ class EsDictionaryInfo(AbstractModel):
                 obj = DictInfo()
                 obj._deserialize(item)
                 self.Stopwords.append(obj)
+        if params.get("QQDict") is not None:
+            self.QQDict = []
+            for item in params.get("QQDict"):
+                obj = DictInfo()
+                obj._deserialize(item)
+                self.QQDict.append(obj)
+        if params.get("Synonym") is not None:
+            self.Synonym = []
+            for item in params.get("Synonym"):
+                obj = DictInfo()
+                obj._deserialize(item)
+                self.Synonym.append(obj)
+        self.UpdateType = params.get("UpdateType")
 
 
 class EsPublicAcl(AbstractModel):
@@ -965,6 +987,8 @@ class NodeInfo(AbstractModel):
         :type LocalDiskInfo: :class:`tencentcloud.es.v20180416.models.LocalDiskInfo`
         :param DiskCount: 节点磁盘块数
         :type DiskCount: int
+        :param DiskEncrypt: 节点磁盘是否加密 0: 不加密，1: 加密；默认不加密
+        :type DiskEncrypt: int
         """
         self.NodeNum = None
         self.NodeType = None
@@ -973,6 +997,7 @@ class NodeInfo(AbstractModel):
         self.DiskSize = None
         self.LocalDiskInfo = None
         self.DiskCount = None
+        self.DiskEncrypt = None
 
 
     def _deserialize(self, params):
@@ -985,6 +1010,7 @@ class NodeInfo(AbstractModel):
             self.LocalDiskInfo = LocalDiskInfo()
             self.LocalDiskInfo._deserialize(params.get("LocalDiskInfo"))
         self.DiskCount = params.get("DiskCount")
+        self.DiskEncrypt = params.get("DiskEncrypt")
 
 
 class Operation(AbstractModel):
@@ -1257,6 +1283,8 @@ class UpdateInstanceRequest(AbstractModel):
         :type BasicSecurityType: int
         :param KibanaPrivatePort: Kibana内网端口
         :type KibanaPrivatePort: int
+        :param ScaleType: 0: 蓝绿变更方式扩容，集群不重启 （默认） 1: 磁盘解挂载扩容，集群滚动重启
+        :type ScaleType: int
         """
         self.InstanceId = None
         self.InstanceName = None
@@ -1278,6 +1306,7 @@ class UpdateInstanceRequest(AbstractModel):
         self.KibanaPrivateAccess = None
         self.BasicSecurityType = None
         self.KibanaPrivatePort = None
+        self.ScaleType = None
 
 
     def _deserialize(self, params):
@@ -1312,10 +1341,57 @@ class UpdateInstanceRequest(AbstractModel):
         self.KibanaPrivateAccess = params.get("KibanaPrivateAccess")
         self.BasicSecurityType = params.get("BasicSecurityType")
         self.KibanaPrivatePort = params.get("KibanaPrivatePort")
+        self.ScaleType = params.get("ScaleType")
 
 
 class UpdateInstanceResponse(AbstractModel):
     """UpdateInstance返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class UpdatePluginsRequest(AbstractModel):
+    """UpdatePlugins请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param InstanceId: 实例ID
+        :type InstanceId: str
+        :param InstallPluginList: 需要安装的插件名列表
+        :type InstallPluginList: list of str
+        :param RemovePluginList: 需要卸载的插件名列表
+        :type RemovePluginList: list of str
+        :param ForceRestart: 是否强制重启
+        :type ForceRestart: bool
+        """
+        self.InstanceId = None
+        self.InstallPluginList = None
+        self.RemovePluginList = None
+        self.ForceRestart = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.InstallPluginList = params.get("InstallPluginList")
+        self.RemovePluginList = params.get("RemovePluginList")
+        self.ForceRestart = params.get("ForceRestart")
+
+
+class UpdatePluginsResponse(AbstractModel):
+    """UpdatePlugins返回参数结构体
 
     """
 

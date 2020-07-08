@@ -150,6 +150,60 @@ class DescribeDBDiagHistoryResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeDBSpaceStatusRequest(AbstractModel):
+    """DescribeDBSpaceStatus请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param InstanceId: 实例 ID 。
+        :type InstanceId: str
+        :param RangeDays: 时间段天数，截止日期为当日，默认为7天。
+        :type RangeDays: int
+        """
+        self.InstanceId = None
+        self.RangeDays = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.RangeDays = params.get("RangeDays")
+
+
+class DescribeDBSpaceStatusResponse(AbstractModel):
+    """DescribeDBSpaceStatus返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Growth: 磁盘增长量(MB)。
+        :type Growth: int
+        :param Remain: 磁盘剩余(MB)。
+        :type Remain: int
+        :param Total: 磁盘总量(MB)。
+        :type Total: int
+        :param AvailableDays: 预计可用天数。
+        :type AvailableDays: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Growth = None
+        self.Remain = None
+        self.Total = None
+        self.AvailableDays = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Growth = params.get("Growth")
+        self.Remain = params.get("Remain")
+        self.Total = params.get("Total")
+        self.AvailableDays = params.get("AvailableDays")
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeSlowLogTimeSeriesStatsRequest(AbstractModel):
     """DescribeSlowLogTimeSeriesStats请求参数结构体
 
@@ -279,6 +333,57 @@ class DescribeSlowLogTopSqlsResponse(AbstractModel):
                 obj = SlowLogTopSqlItem()
                 obj._deserialize(item)
                 self.Rows.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeTopSpaceTablesRequest(AbstractModel):
+    """DescribeTopSpaceTables请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param InstanceId: 实例 ID 。
+        :type InstanceId: str
+        :param Limit: 返回的Top表数量，最大值为20，默认为最大值。
+        :type Limit: int
+        :param SortBy: 筛选Top表所用的排序字段，可选字段包含DataLength、IndexLength、TotalLength、DataFree、FragRatio、TableRows、PhysicalFileSize，默认为 PhysicalFileSize。
+        :type SortBy: str
+        """
+        self.InstanceId = None
+        self.Limit = None
+        self.SortBy = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.Limit = params.get("Limit")
+        self.SortBy = params.get("SortBy")
+
+
+class DescribeTopSpaceTablesResponse(AbstractModel):
+    """DescribeTopSpaceTables返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param TopSpaceTables: 返回的Top表空间统计信息列表。
+        :type TopSpaceTables: list of TableSpaceData
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TopSpaceTables = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("TopSpaceTables") is not None:
+            self.TopSpaceTables = []
+            for item in params.get("TopSpaceTables"):
+                obj = TableSpaceData()
+                obj._deserialize(item)
+                self.TopSpaceTables.append(obj)
         self.RequestId = params.get("RequestId")
 
 
@@ -481,6 +586,59 @@ class SlowLogTopSqlItem(AbstractModel):
         self.LockTimeRatio = params.get("LockTimeRatio")
         self.RowsExaminedRatio = params.get("RowsExaminedRatio")
         self.RowsSentRatio = params.get("RowsSentRatio")
+
+
+class TableSpaceData(AbstractModel):
+    """库表空间统计数据。
+
+    """
+
+    def __init__(self):
+        """
+        :param TableName: 表名。
+        :type TableName: str
+        :param TableSchema: 库名。
+        :type TableSchema: str
+        :param Engine: 库表的存储引擎。
+        :type Engine: str
+        :param DataLength: 数据空间（MB）。
+        :type DataLength: float
+        :param IndexLength: 索引空间（MB）。
+        :type IndexLength: float
+        :param DataFree: 碎片空间（MB）。
+        :type DataFree: float
+        :param TotalLength: 总使用空间（MB）。
+        :type TotalLength: float
+        :param FragRatio: 碎片率（%）。
+        :type FragRatio: float
+        :param TableRows: 行数。
+        :type TableRows: int
+        :param PhysicalFileSize: 表对应的独立物理文件大小（MB）。
+        :type PhysicalFileSize: float
+        """
+        self.TableName = None
+        self.TableSchema = None
+        self.Engine = None
+        self.DataLength = None
+        self.IndexLength = None
+        self.DataFree = None
+        self.TotalLength = None
+        self.FragRatio = None
+        self.TableRows = None
+        self.PhysicalFileSize = None
+
+
+    def _deserialize(self, params):
+        self.TableName = params.get("TableName")
+        self.TableSchema = params.get("TableSchema")
+        self.Engine = params.get("Engine")
+        self.DataLength = params.get("DataLength")
+        self.IndexLength = params.get("IndexLength")
+        self.DataFree = params.get("DataFree")
+        self.TotalLength = params.get("TotalLength")
+        self.FragRatio = params.get("FragRatio")
+        self.TableRows = params.get("TableRows")
+        self.PhysicalFileSize = params.get("PhysicalFileSize")
 
 
 class TimeSlice(AbstractModel):
