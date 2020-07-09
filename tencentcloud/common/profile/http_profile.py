@@ -19,7 +19,7 @@ class HttpProfile(object):
     def __init__(self, protocol=None, endpoint=None, reqMethod="POST", reqTimeout=60,
                  keepAlive=False, proxy=None):
         """HTTP profile.
-        :param protocol: temporarily useless,set None
+        :param protocol: http or https, default is https.
         :type protocol: str
         :param endpoint: The domain to access, like: cvm.tencentcloudapi.com
         :type endpoint: str
@@ -31,6 +31,8 @@ class HttpProfile(object):
         self.endpoint = endpoint
         self.reqTimeout = 60 if reqTimeout is None else reqTimeout
         self.reqMethod = "POST" if reqMethod is None else reqMethod
-        self.protocol = protocol
+        self.protocol = protocol or "https"
+        # protocol is not precise word according to rfc
+        self.scheme = self.protocol
         self.keepAlive = keepAlive
         self.proxy = proxy
