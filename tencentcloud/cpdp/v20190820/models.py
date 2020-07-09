@@ -2927,7 +2927,7 @@ class DescribeOrderStatusResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param OrderStatus: 交易状态 （（0：成功，1：失败，2：待确认, 5：待处理，6：处理中）
+        :param OrderStatus: 交易状态 （0：成功，1：失败，2：待确认, 5：待处理，6：处理中）
         :type OrderStatus: str
         :param OrderAmount: 交易金额
         :type OrderAmount: str
@@ -3072,7 +3072,9 @@ class ExecuteMemberTransactionRequest(AbstractModel):
         :type MidasSecretId: str
         :param MidasSignature: 计费签名
         :type MidasSignature: str
-        :param TransSequenceNumber: 交易流水号
+        :param TransSequenceNumber: 交易流水号 
+生成方式：用户短号+日期（6位）+ 随机编号（10位）例如：F088722005120904930798
+短号：F08872  日期： 200512   随机编号：0904930798
         :type TransSequenceNumber: str
         :param InTransNetMemberCode: 转入交易网会员代码
         :type InTransNetMemberCode: str
@@ -3081,7 +3083,11 @@ development 开发环境
         :type MidasEnvironment: str
         :param PlatformShortNumber: 平台短号(银行分配)
         :type PlatformShortNumber: str
-        :param TransType: 0,登记挂账，1，撤销挂账
+        :param TransType: 1：下单预支付 
+2：确认并付款
+3：退款
+6：直接支付T+1
+9：直接支付T+0
         :type TransType: str
         :param TransFee: 交易手续费
         :type TransFee: str
@@ -6359,7 +6365,7 @@ class RechargeByThirdPayRequest(AbstractModel):
         :type TransSequenceNumber: str
         :param BankSubAccountNumber: 子账户账号
         :type BankSubAccountNumber: str
-        :param TransFee: 交易手续费
+        :param TransFee: 交易手续费，以元为单位
         :type TransFee: str
         :param ThirdPayChannel: 第三方支付渠道类型 0001-微信 0002-支付宝 0003-京东支付
         :type ThirdPayChannel: str
@@ -6608,7 +6614,7 @@ class RefundMemberTransactionRequest(AbstractModel):
         :type MidasSignature: str
         :param InSubAccountNumber: 转入见证子账户账号
         :type InSubAccountNumber: str
-        :param MidasSecretId: 计费秘钥
+        :param MidasSecretId: 聚鑫分配的安全ID
         :type MidasSecretId: str
         :param BankAccountNumber: 父账户账号，资金汇总账号
         :type BankAccountNumber: str
@@ -6879,7 +6885,7 @@ class RegisterBillRequest(AbstractModel):
         :type TransSeqNo: str
         :param TranFee: 暂未使用，默认传0.0
         :type TranFee: str
-        :param OrderAmt: 挂账金额
+        :param OrderAmt: 挂账金额，以元为单位
         :type OrderAmt: str
         :param BankSubAccountNo: 子账户账号
         :type BankSubAccountNo: str
@@ -7352,7 +7358,7 @@ class RevokeRechargeByThirdPayRequest(AbstractModel):
         :type MidasSignature: str
         :param TransSequenceNumber: 交易流水号
         :type TransSequenceNumber: str
-        :param TransFee: 申请撤销的手续费金额
+        :param TransFee: 申请撤销的手续费金额,以元为单位
         :type TransFee: str
         :param ThirdPayChannel: 第三方支付渠道类型 0001-微信 0002-支付宝 0003-京东支付
         :type ThirdPayChannel: str

@@ -1130,48 +1130,6 @@ class SentenceEmbeddingResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
-class SentenceSimilarityRequest(AbstractModel):
-    """SentenceSimilarity请求参数结构体
-
-    """
-
-    def __init__(self):
-        """
-        :param SrcText: 计算相似度的源句子（仅支持UTF-8格式，不超过500字符）
-        :type SrcText: str
-        :param TargetText: 计算相似度的目标句子（仅支持UTF-8格式，不超过500字符）
-        :type TargetText: str
-        """
-        self.SrcText = None
-        self.TargetText = None
-
-
-    def _deserialize(self, params):
-        self.SrcText = params.get("SrcText")
-        self.TargetText = params.get("TargetText")
-
-
-class SentenceSimilarityResponse(AbstractModel):
-    """SentenceSimilarity返回参数结构体
-
-    """
-
-    def __init__(self):
-        """
-        :param Similarity: 两个文本的相似度
-        :type Similarity: float
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
-        self.Similarity = None
-        self.RequestId = None
-
-
-    def _deserialize(self, params):
-        self.Similarity = params.get("Similarity")
-        self.RequestId = params.get("RequestId")
-
-
 class SentimentAnalysisRequest(AbstractModel):
     """SentimentAnalysis请求参数结构体
 

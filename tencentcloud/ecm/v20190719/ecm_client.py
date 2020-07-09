@@ -1070,7 +1070,7 @@ class EcmClient(AbstractClient):
 
 
     def ImportCustomImage(self, request):
-        """从腾讯云COS导入自定义镜像
+        """导入自定义镜像，支持 RAW、VHD、QCOW2、VMDK 镜像格式
 
         :param request: Request instance for ImportCustomImage.
         :type request: :class:`tencentcloud.ecm.v20190719.models.ImportCustomImageRequest`

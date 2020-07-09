@@ -2179,7 +2179,7 @@ class MLIDCardOCRRequest(AbstractModel):
 图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。
 非腾讯云存储的 Url 速度和稳定性可能受一定影响。
         :type ImageUrl: str
-        :param RetImage: 是否返回图片
+        :param RetImage: 是否返回图片，默认false
         :type RetImage: bool
         """
         self.ImageBase64 = None

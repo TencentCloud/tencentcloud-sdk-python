@@ -270,16 +270,20 @@ class CustomResult(AbstractModel):
         :type LibId: str
         :param LibName: 自定义词库名称
         :type LibName: str
+        :param Type: 命中的自定义关键词的类型
+        :type Type: str
         """
         self.Keywords = None
         self.LibId = None
         self.LibName = None
+        self.Type = None
 
 
     def _deserialize(self, params):
         self.Keywords = params.get("Keywords")
         self.LibId = params.get("LibId")
         self.LibName = params.get("LibName")
+        self.Type = params.get("Type")
 
 
 class DeleteFileSampleRequest(AbstractModel):
@@ -532,6 +536,47 @@ class DetailResult(AbstractModel):
         self.EvilType = params.get("EvilType")
         self.Keywords = params.get("Keywords")
         self.Score = params.get("Score")
+
+
+class Device(AbstractModel):
+    """设备信息
+
+    """
+
+    def __init__(self):
+        """
+        :param DeviceId: 设备指纹ID
+        :type DeviceId: str
+        :param IDFA: IOS设备，Identifier For Advertising（广告标识符）
+        :type IDFA: str
+        :param IDFV: IOS设备，IDFV - Identifier For Vendor（应用开发商标识符）
+        :type IDFV: str
+        :param IMEI: 设备序列号
+        :type IMEI: str
+        :param IP: 用户IP
+        :type IP: str
+        :param Mac: Mac地址
+        :type Mac: str
+        :param TokenId: 设备指纹Token
+        :type TokenId: str
+        """
+        self.DeviceId = None
+        self.IDFA = None
+        self.IDFV = None
+        self.IMEI = None
+        self.IP = None
+        self.Mac = None
+        self.TokenId = None
+
+
+    def _deserialize(self, params):
+        self.DeviceId = params.get("DeviceId")
+        self.IDFA = params.get("IDFA")
+        self.IDFV = params.get("IDFV")
+        self.IMEI = params.get("IMEI")
+        self.IP = params.get("IP")
+        self.Mac = params.get("Mac")
+        self.TokenId = params.get("TokenId")
 
 
 class FileSample(AbstractModel):
@@ -1281,6 +1326,10 @@ class TextModerationRequest(AbstractModel):
         """
         :param Content: 文本内容Base64编码。原文长度需小于15000字节，即5000个汉字以内。
         :type Content: str
+        :param Device: 设备相关信息
+        :type Device: :class:`tencentcloud.cms.v20190321.models.Device`
+        :param User: 用户相关信息
+        :type User: :class:`tencentcloud.cms.v20190321.models.User`
         :param BizType: 该字段用于标识业务场景。您可以在内容安全控制台创建对应的ID，配置不同的内容审核策略，通过接口调用，默认不填为0，后端使用默认策略
         :type BizType: int
         :param DataId: 数据ID，英文字母、下划线、-组成，不超过64个字符
@@ -1289,6 +1338,8 @@ class TextModerationRequest(AbstractModel):
         :type SdkAppId: int
         """
         self.Content = None
+        self.Device = None
+        self.User = None
         self.BizType = None
         self.DataId = None
         self.SdkAppId = None
@@ -1296,6 +1347,12 @@ class TextModerationRequest(AbstractModel):
 
     def _deserialize(self, params):
         self.Content = params.get("Content")
+        if params.get("Device") is not None:
+            self.Device = Device()
+            self.Device._deserialize(params.get("Device"))
+        if params.get("User") is not None:
+            self.User = User()
+            self.User._deserialize(params.get("User"))
         self.BizType = params.get("BizType")
         self.DataId = params.get("DataId")
         self.SdkAppId = params.get("SdkAppId")
@@ -1458,3 +1515,44 @@ class TextSample(AbstractModel):
         self.Id = params.get("Id")
         self.Label = params.get("Label")
         self.Status = params.get("Status")
+
+
+class User(AbstractModel):
+    """用户相关信息
+
+    """
+
+    def __init__(self):
+        """
+        :param AccountType: 账号类别，"1-微信uin 2-QQ号 3-微信群uin 4-qq群号 5-微信openid 6-QQopenid 7-其它string"
+        :type AccountType: int
+        :param Age: 年龄 默认0 未知
+        :type Age: int
+        :param Gender: 性别 默认0 未知 1 男性 2 女性
+        :type Gender: int
+        :param Level: 用户等级，默认0 未知 1 低 2 中 3 高
+        :type Level: int
+        :param Nickname: 用户昵称
+        :type Nickname: str
+        :param Phone: 手机号
+        :type Phone: str
+        :param UserId: 用户账号ID，如填写，会根据账号历史恶意情况，判定消息有害结果，特别是有利于可疑恶意情况下的辅助判断。账号可以填写微信uin、QQ号、微信openid、QQopenid、字符串等。该字段和账号类别确定唯一账号。
+        :type UserId: str
+        """
+        self.AccountType = None
+        self.Age = None
+        self.Gender = None
+        self.Level = None
+        self.Nickname = None
+        self.Phone = None
+        self.UserId = None
+
+
+    def _deserialize(self, params):
+        self.AccountType = params.get("AccountType")
+        self.Age = params.get("Age")
+        self.Gender = params.get("Gender")
+        self.Level = params.get("Level")
+        self.Nickname = params.get("Nickname")
+        self.Phone = params.get("Phone")
+        self.UserId = params.get("UserId")
