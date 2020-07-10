@@ -5636,7 +5636,7 @@ off：关闭
         :param IgnoreCacheControl: 强制缓存
 on：开启
 off：关闭
-默认为关闭状态，开启后，源站发挥的 no-store、no-cache 资源，也将按照 CacheRules 规则进行缓存
+默认为关闭状态，开启后，源站返回的 no-store、no-cache 资源，也将按照 CacheRules 规则进行缓存
 注意：此字段可能返回 null，表示取不到有效值。
         :type IgnoreCacheControl: str
         :param IgnoreSetCookie: 忽略源站的Set-Cookie头部

@@ -12673,7 +12673,7 @@ class RouteTable(AbstractModel):
         :type RouteTableName: str
         :param AssociationSet: 路由表关联关系。
         :type AssociationSet: list of RouteTableAssociation
-        :param RouteSet: 路由表策略集合。
+        :param RouteSet: IPv4路由策略集合。
         :type RouteSet: list of Route
         :param Main: 是否默认路由表。
         :type Main: bool

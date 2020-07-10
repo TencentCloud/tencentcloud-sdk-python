@@ -1196,6 +1196,12 @@ class Deal(AbstractModel):
         :type SubProductCode: str
         :param BigDealId: 大订单号
         :type BigDealId: str
+        :param Formula: 退费公式
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Formula: str
+        :param RefReturnDeals: 退费涉及订单信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RefReturnDeals: str
         """
         self.OrderId = None
         self.Status = None
@@ -1216,6 +1222,8 @@ class Deal(AbstractModel):
         self.ProductCode = None
         self.SubProductCode = None
         self.BigDealId = None
+        self.Formula = None
+        self.RefReturnDeals = None
 
 
     def _deserialize(self, params):
@@ -1243,6 +1251,8 @@ class Deal(AbstractModel):
         self.ProductCode = params.get("ProductCode")
         self.SubProductCode = params.get("SubProductCode")
         self.BigDealId = params.get("BigDealId")
+        self.Formula = params.get("Formula")
+        self.RefReturnDeals = params.get("RefReturnDeals")
 
 
 class DescribeAccountBalanceRequest(AbstractModel):

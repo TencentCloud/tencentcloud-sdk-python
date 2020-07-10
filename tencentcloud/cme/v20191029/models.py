@@ -97,18 +97,24 @@ class AudioMaterial(AbstractModel):
         """
         :param MetaData: 素材元信息。
         :type MetaData: :class:`tencentcloud.cme.v20191029.models.MediaMetaData`
-        :param MaterialUrl: 素材媒体文件的 URL 地址。
+        :param MaterialUrl: 素材媒体文件的播放 URL 地址。
         :type MaterialUrl: str
         :param CoverUrl: 素材媒体文件的封面图片地址。
         :type CoverUrl: str
         :param MaterialStatus: 素材状态。
 注意：此字段可能返回 null，表示取不到有效值。
         :type MaterialStatus: :class:`tencentcloud.cme.v20191029.models.MaterialStatus`
+        :param OriginalUrl: 素材媒体文件的原始 URL 地址。
+        :type OriginalUrl: str
+        :param VodFileId: 云点播媒资 FileId。
+        :type VodFileId: str
         """
         self.MetaData = None
         self.MaterialUrl = None
         self.CoverUrl = None
         self.MaterialStatus = None
+        self.OriginalUrl = None
+        self.VodFileId = None
 
 
     def _deserialize(self, params):
@@ -120,6 +126,8 @@ class AudioMaterial(AbstractModel):
         if params.get("MaterialStatus") is not None:
             self.MaterialStatus = MaterialStatus()
             self.MaterialStatus._deserialize(params.get("MaterialStatus"))
+        self.OriginalUrl = params.get("OriginalUrl")
+        self.VodFileId = params.get("VodFileId")
 
 
 class AudioStreamInfo(AbstractModel):
@@ -1736,15 +1744,21 @@ class ImageMaterial(AbstractModel):
         :type Height: int
         :param Width: 图片宽度，单位：px。
         :type Width: int
-        :param MaterialUrl: 素材媒体文件的 URL 地址。
+        :param MaterialUrl: 素材媒体文件的展示 URL 地址。
         :type MaterialUrl: str
         :param Size: 图片大小，单位：字节。
         :type Size: int
+        :param OriginalUrl: 素材媒体文件的原始 URL 地址。
+        :type OriginalUrl: str
+        :param VodFileId: 云点播媒资 FileId。
+        :type VodFileId: str
         """
         self.Height = None
         self.Width = None
         self.MaterialUrl = None
         self.Size = None
+        self.OriginalUrl = None
+        self.VodFileId = None
 
 
     def _deserialize(self, params):
@@ -1752,6 +1766,8 @@ class ImageMaterial(AbstractModel):
         self.Width = params.get("Width")
         self.MaterialUrl = params.get("MaterialUrl")
         self.Size = params.get("Size")
+        self.OriginalUrl = params.get("OriginalUrl")
+        self.VodFileId = params.get("VodFileId")
 
 
 class ImportMaterialRequest(AbstractModel):
@@ -3100,7 +3116,7 @@ class VideoMaterial(AbstractModel):
         :type MetaData: :class:`tencentcloud.cme.v20191029.models.MediaMetaData`
         :param ImageSpriteInfo: 雪碧图信息。
         :type ImageSpriteInfo: :class:`tencentcloud.cme.v20191029.models.MediaImageSpriteInfo`
-        :param MaterialUrl: 素材媒体文件的 URL 地址
+        :param MaterialUrl: 素材媒体文件的播放 URL 地址。
         :type MaterialUrl: str
         :param CoverUrl: 素材媒体文件的封面图片地址。
         :type CoverUrl: str
@@ -3109,6 +3125,10 @@ class VideoMaterial(AbstractModel):
         :param MaterialStatus: 素材状态。
 注意：此字段可能返回 null，表示取不到有效值。
         :type MaterialStatus: :class:`tencentcloud.cme.v20191029.models.MaterialStatus`
+        :param OriginalUrl: 素材媒体文件的原始 URL 地址。
+        :type OriginalUrl: str
+        :param VodFileId: 云点播媒资 FileId。
+        :type VodFileId: str
         """
         self.MetaData = None
         self.ImageSpriteInfo = None
@@ -3116,6 +3136,8 @@ class VideoMaterial(AbstractModel):
         self.CoverUrl = None
         self.Resolution = None
         self.MaterialStatus = None
+        self.OriginalUrl = None
+        self.VodFileId = None
 
 
     def _deserialize(self, params):
@@ -3131,6 +3153,8 @@ class VideoMaterial(AbstractModel):
         if params.get("MaterialStatus") is not None:
             self.MaterialStatus = MaterialStatus()
             self.MaterialStatus._deserialize(params.get("MaterialStatus"))
+        self.OriginalUrl = params.get("OriginalUrl")
+        self.VodFileId = params.get("VodFileId")
 
 
 class VideoStreamInfo(AbstractModel):
