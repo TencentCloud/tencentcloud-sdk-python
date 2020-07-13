@@ -378,12 +378,15 @@ class TrylockWorkerRequest(AbstractModel):
         :type SetNo: int
         :param UserIp: 游戏用户IP，用于就近调度，例如125.127.178.228
         :type UserIp: str
+        :param GroupId: 分组ID
+        :type GroupId: str
         """
         self.UserId = None
         self.GameId = None
         self.GameRegion = None
         self.SetNo = None
         self.UserIp = None
+        self.GroupId = None
 
 
     def _deserialize(self, params):
@@ -392,6 +395,7 @@ class TrylockWorkerRequest(AbstractModel):
         self.GameRegion = params.get("GameRegion")
         self.SetNo = params.get("SetNo")
         self.UserIp = params.get("UserIp")
+        self.GroupId = params.get("GroupId")
 
 
 class TrylockWorkerResponse(AbstractModel):

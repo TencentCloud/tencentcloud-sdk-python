@@ -26,7 +26,7 @@ class DomainClient(AbstractClient):
 
 
     def CheckDomain(self, request):
-        """检查域名是否可以注册
+        """检查域名是否可以注册。
 
         :param request: Request instance for CheckDomain.
         :type request: :class:`tencentcloud.domain.v20180808.models.CheckDomainRequest`

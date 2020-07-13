@@ -72,6 +72,8 @@ class CheckDomainResponse(AbstractModel):
         :type FeeRestore: int
         :param Period: 检测年限
         :type Period: int
+        :param RecordSupport: 是否支持北京备案  true 支持  false 不支持
+        :type RecordSupport: bool
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -87,6 +89,7 @@ class CheckDomainResponse(AbstractModel):
         self.FeeTransfer = None
         self.FeeRestore = None
         self.Period = None
+        self.RecordSupport = None
         self.RequestId = None
 
 
@@ -103,6 +106,7 @@ class CheckDomainResponse(AbstractModel):
         self.FeeTransfer = params.get("FeeTransfer")
         self.FeeRestore = params.get("FeeRestore")
         self.Period = params.get("Period")
+        self.RecordSupport = params.get("RecordSupport")
         self.RequestId = params.get("RequestId")
 
 
