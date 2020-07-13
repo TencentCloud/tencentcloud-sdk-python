@@ -18,10 +18,10 @@ from tencentcloud.common.profile.http_profile import HttpProfile
 class ClientProfile(object):
     unsignedPayload = False
 
-    def __init__(self, signMethod="HmacSHA256", httpProfile=None, language="zh-CN"):
+    def __init__(self, signMethod=None, httpProfile=None, language="zh-CN"):
         """SDK profile.
 
-        :param signMethod: The signature method, valid choice: HmacSHA1, HmacSHA256
+        :param signMethod: The signature method, valid choice: HmacSHA1, HmacSHA256, TC3-HMAC-SHA256
         :type signMethod: str
         :param httpProfile: The http profile
         :type httpProfile: :class:`HttpProfile`
