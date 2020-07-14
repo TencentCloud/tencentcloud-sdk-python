@@ -2988,11 +2988,18 @@ class DownloadBillRequest(AbstractModel):
         :type MidasSecretId: str
         :param MidasSignature: 使用聚鑫安全密钥计算的签名
         :type MidasSignature: str
+        :param MidasEnvironment: 环境名:
+release: 现网环境
+sandbox: 沙箱环境
+development: 开发环境
+缺省: release
+        :type MidasEnvironment: str
         """
         self.StateDate = None
         self.MidasAppId = None
         self.MidasSecretId = None
         self.MidasSignature = None
+        self.MidasEnvironment = None
 
 
     def _deserialize(self, params):
@@ -3000,6 +3007,7 @@ class DownloadBillRequest(AbstractModel):
         self.MidasAppId = params.get("MidasAppId")
         self.MidasSecretId = params.get("MidasSecretId")
         self.MidasSignature = params.get("MidasSignature")
+        self.MidasEnvironment = params.get("MidasEnvironment")
 
 
 class DownloadBillResponse(AbstractModel):

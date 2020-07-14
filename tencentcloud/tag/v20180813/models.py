@@ -58,6 +58,60 @@ class AddResourceTagResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class AttachResourcesTagRequest(AbstractModel):
+    """AttachResourcesTag请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ServiceType: 资源所属业务名称
+        :type ServiceType: str
+        :param ResourceIds: 资源ID数组，资源个数最多为50
+        :type ResourceIds: list of str
+        :param TagKey: 标签键
+        :type TagKey: str
+        :param TagValue: 标签值
+        :type TagValue: str
+        :param ResourceRegion: 资源所在地域，不区分地域的资源不需要传入该字段
+        :type ResourceRegion: str
+        :param ResourcePrefix: 资源前缀，cos存储桶不需要传入该字段
+        :type ResourcePrefix: str
+        """
+        self.ServiceType = None
+        self.ResourceIds = None
+        self.TagKey = None
+        self.TagValue = None
+        self.ResourceRegion = None
+        self.ResourcePrefix = None
+
+
+    def _deserialize(self, params):
+        self.ServiceType = params.get("ServiceType")
+        self.ResourceIds = params.get("ResourceIds")
+        self.TagKey = params.get("TagKey")
+        self.TagValue = params.get("TagValue")
+        self.ResourceRegion = params.get("ResourceRegion")
+        self.ResourcePrefix = params.get("ResourcePrefix")
+
+
+class AttachResourcesTagResponse(AbstractModel):
+    """AttachResourcesTag返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class CreateTagRequest(AbstractModel):
     """CreateTag请求参数结构体
 
@@ -211,6 +265,81 @@ class DescribeResourceTagsByResourceIdsRequest(AbstractModel):
 
 class DescribeResourceTagsByResourceIdsResponse(AbstractModel):
     """DescribeResourceTagsByResourceIds返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param TotalCount: 结果总数
+        :type TotalCount: int
+        :param Offset: 数据位移偏量
+        :type Offset: int
+        :param Limit: 每页大小
+        :type Limit: int
+        :param Tags: 标签列表
+        :type Tags: list of TagResource
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.Offset = None
+        self.Limit = None
+        self.Tags = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+        if params.get("Tags") is not None:
+            self.Tags = []
+            for item in params.get("Tags"):
+                obj = TagResource()
+                obj._deserialize(item)
+                self.Tags.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeResourceTagsByResourceIdsSeqRequest(AbstractModel):
+    """DescribeResourceTagsByResourceIdsSeq请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ServiceType: 业务类型
+        :type ServiceType: str
+        :param ResourcePrefix: 资源前缀
+        :type ResourcePrefix: str
+        :param ResourceIds: 资源唯一标记
+        :type ResourceIds: list of str
+        :param ResourceRegion: 资源所在地域
+        :type ResourceRegion: str
+        :param Offset: 数据偏移量，默认为 0, 必须为Limit参数的整数倍
+        :type Offset: int
+        :param Limit: 每页大小，默认为 15
+        :type Limit: int
+        """
+        self.ServiceType = None
+        self.ResourcePrefix = None
+        self.ResourceIds = None
+        self.ResourceRegion = None
+        self.Offset = None
+        self.Limit = None
+
+
+    def _deserialize(self, params):
+        self.ServiceType = params.get("ServiceType")
+        self.ResourcePrefix = params.get("ResourcePrefix")
+        self.ResourceIds = params.get("ResourceIds")
+        self.ResourceRegion = params.get("ResourceRegion")
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+
+
+class DescribeResourceTagsByResourceIdsSeqResponse(AbstractModel):
+    """DescribeResourceTagsByResourceIdsSeq返回参数结构体
 
     """
 
@@ -628,6 +757,73 @@ class DescribeTagValuesResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeTagValuesSeqRequest(AbstractModel):
+    """DescribeTagValuesSeq请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param TagKeys: 标签键列表
+        :type TagKeys: list of str
+        :param CreateUin: 创建者用户 Uin，不传或为空只将 Uin 作为条件查询
+        :type CreateUin: int
+        :param Offset: 数据偏移量，默认为 0, 必须为Limit参数的整数倍
+        :type Offset: int
+        :param Limit: 每页大小，默认为 15
+        :type Limit: int
+        """
+        self.TagKeys = None
+        self.CreateUin = None
+        self.Offset = None
+        self.Limit = None
+
+
+    def _deserialize(self, params):
+        self.TagKeys = params.get("TagKeys")
+        self.CreateUin = params.get("CreateUin")
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+
+
+class DescribeTagValuesSeqResponse(AbstractModel):
+    """DescribeTagValuesSeq返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param TotalCount: 结果总数
+        :type TotalCount: int
+        :param Offset: 数据位移偏量
+        :type Offset: int
+        :param Limit: 每页大小
+        :type Limit: int
+        :param Tags: 标签列表
+        :type Tags: list of Tag
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.Offset = None
+        self.Limit = None
+        self.Tags = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+        if params.get("Tags") is not None:
+            self.Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self.Tags.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeTagsRequest(AbstractModel):
     """DescribeTags请求参数结构体
 
@@ -707,6 +903,135 @@ class DescribeTagsResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeTagsSeqRequest(AbstractModel):
+    """DescribeTagsSeq请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param TagKey: 标签键,与标签值同时存在或同时不存在，不存在时表示查询该用户所有标签
+        :type TagKey: str
+        :param TagValue: 标签值,与标签键同时存在或同时不存在，不存在时表示查询该用户所有标签
+        :type TagValue: str
+        :param Offset: 数据偏移量，默认为 0, 必须为Limit参数的整数倍
+        :type Offset: int
+        :param Limit: 每页大小，默认为 15
+        :type Limit: int
+        :param CreateUin: 创建者用户 Uin，不传或为空只将 Uin 作为条件查询
+        :type CreateUin: int
+        :param TagKeys: 标签键数组,与标签值同时存在或同时不存在，不存在时表示查询该用户所有标签,当与TagKey同时传递时只会本值
+        :type TagKeys: list of str
+        :param ShowProject: 是否展现项目标签
+        :type ShowProject: int
+        """
+        self.TagKey = None
+        self.TagValue = None
+        self.Offset = None
+        self.Limit = None
+        self.CreateUin = None
+        self.TagKeys = None
+        self.ShowProject = None
+
+
+    def _deserialize(self, params):
+        self.TagKey = params.get("TagKey")
+        self.TagValue = params.get("TagValue")
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+        self.CreateUin = params.get("CreateUin")
+        self.TagKeys = params.get("TagKeys")
+        self.ShowProject = params.get("ShowProject")
+
+
+class DescribeTagsSeqResponse(AbstractModel):
+    """DescribeTagsSeq返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param TotalCount: 结果总数
+        :type TotalCount: int
+        :param Offset: 数据位移偏量
+        :type Offset: int
+        :param Limit: 每页大小
+        :type Limit: int
+        :param Tags: 标签列表
+        :type Tags: list of TagWithDelete
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.Offset = None
+        self.Limit = None
+        self.Tags = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+        if params.get("Tags") is not None:
+            self.Tags = []
+            for item in params.get("Tags"):
+                obj = TagWithDelete()
+                obj._deserialize(item)
+                self.Tags.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DetachResourcesTagRequest(AbstractModel):
+    """DetachResourcesTag请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ServiceType: 资源所属业务名称
+        :type ServiceType: str
+        :param ResourceIds: 资源ID数组，资源个数最多为50
+        :type ResourceIds: list of str
+        :param TagKey: 需要解绑的标签键
+        :type TagKey: str
+        :param ResourceRegion: 资源所在地域不区分地域的资源不需要传入该字段
+        :type ResourceRegion: str
+        :param ResourcePrefix: 资源前缀，cos存储桶不需要传入该字段
+        :type ResourcePrefix: str
+        """
+        self.ServiceType = None
+        self.ResourceIds = None
+        self.TagKey = None
+        self.ResourceRegion = None
+        self.ResourcePrefix = None
+
+
+    def _deserialize(self, params):
+        self.ServiceType = params.get("ServiceType")
+        self.ResourceIds = params.get("ResourceIds")
+        self.TagKey = params.get("TagKey")
+        self.ResourceRegion = params.get("ResourceRegion")
+        self.ResourcePrefix = params.get("ResourcePrefix")
+
+
+class DetachResourcesTagResponse(AbstractModel):
+    """DetachResourcesTag返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class ModifyResourceTagsRequest(AbstractModel):
     """ModifyResourceTags请求参数结构体
 
@@ -744,6 +1069,60 @@ class ModifyResourceTagsRequest(AbstractModel):
 
 class ModifyResourceTagsResponse(AbstractModel):
     """ModifyResourceTags返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class ModifyResourcesTagValueRequest(AbstractModel):
+    """ModifyResourcesTagValue请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ServiceType: 资源所属业务名称
+        :type ServiceType: str
+        :param ResourceIds: 资源ID数组，资源个数最多为50
+        :type ResourceIds: list of str
+        :param TagKey: 标签键
+        :type TagKey: str
+        :param TagValue: 标签值
+        :type TagValue: str
+        :param ResourceRegion: 资源所在地域，不区分地域的资源不需要传入该字段
+        :type ResourceRegion: str
+        :param ResourcePrefix: 资源前缀，cos存储桶不需要传入该字段
+        :type ResourcePrefix: str
+        """
+        self.ServiceType = None
+        self.ResourceIds = None
+        self.TagKey = None
+        self.TagValue = None
+        self.ResourceRegion = None
+        self.ResourcePrefix = None
+
+
+    def _deserialize(self, params):
+        self.ServiceType = params.get("ServiceType")
+        self.ResourceIds = params.get("ResourceIds")
+        self.TagKey = params.get("TagKey")
+        self.TagValue = params.get("TagValue")
+        self.ResourceRegion = params.get("ResourceRegion")
+        self.ResourcePrefix = params.get("ResourcePrefix")
+
+
+class ModifyResourcesTagValueResponse(AbstractModel):
+    """ModifyResourcesTagValue返回参数结构体
 
     """
 
