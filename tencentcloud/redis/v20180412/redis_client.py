@@ -753,6 +753,34 @@ class RedisClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeMaintenanceWindow(self, request):
+        """查询实例维护时间窗，在实例需要进行版本升级或者架构升级的时候，会在维护时间窗时间内进行切换
+
+        :param request: Request instance for DescribeMaintenanceWindow.
+        :type request: :class:`tencentcloud.redis.v20180412.models.DescribeMaintenanceWindowRequest`
+        :rtype: :class:`tencentcloud.redis.v20180412.models.DescribeMaintenanceWindowResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeMaintenanceWindow", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeMaintenanceWindowResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeProductInfo(self, request):
         """本接口查询指定可用区和实例类型下 Redis 的售卖规格， 如果用户不在购买白名单中，将不能查询该可用区或该类型的售卖规格详情。申请购买某地域白名单可以提交工单
 
@@ -1341,6 +1369,34 @@ class RedisClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def ModifyMaintenanceWindow(self, request):
+        """修改实例维护时间窗时间，需要进行版本升级或者架构升级的实例，会在维护时间窗内进行时间切换。注意：已经发起版本升级或者架构升级的实例，无法修改维护时间窗。
+
+        :param request: Request instance for ModifyMaintenanceWindow.
+        :type request: :class:`tencentcloud.redis.v20180412.models.ModifyMaintenanceWindowRequest`
+        :rtype: :class:`tencentcloud.redis.v20180412.models.ModifyMaintenanceWindowResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ModifyMaintenanceWindow", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ModifyMaintenanceWindowResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def ModifyNetworkConfig(self, request):
         """修改实例网络配置
 
@@ -1523,6 +1579,34 @@ class RedisClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.UpgradeInstanceResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def UpgradeInstanceVersion(self, request):
+        """将原本实例升级到高版本实例，或者将主从版实例升级到集群版实例
+
+        :param request: Request instance for UpgradeInstanceVersion.
+        :type request: :class:`tencentcloud.redis.v20180412.models.UpgradeInstanceVersionRequest`
+        :rtype: :class:`tencentcloud.redis.v20180412.models.UpgradeInstanceVersionResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("UpgradeInstanceVersion", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.UpgradeInstanceVersionResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

@@ -1666,6 +1666,48 @@ class DescribeInstancesResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeMaintenanceWindowRequest(AbstractModel):
+    """DescribeMaintenanceWindow请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param InstanceId: 实例ID
+        :type InstanceId: str
+        """
+        self.InstanceId = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+
+
+class DescribeMaintenanceWindowResponse(AbstractModel):
+    """DescribeMaintenanceWindow返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param StartTime: 维护时间窗起始时间，如：17:00
+        :type StartTime: str
+        :param EndTime: 维护时间窗结束时间，如：19:00
+        :type EndTime: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.StartTime = None
+        self.EndTime = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.StartTime = params.get("StartTime")
+        self.EndTime = params.get("EndTime")
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeProductInfoRequest(AbstractModel):
     """DescribeProductInfo请求参数结构体
 
@@ -3467,6 +3509,52 @@ class ModifyInstanceResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class ModifyMaintenanceWindowRequest(AbstractModel):
+    """ModifyMaintenanceWindow请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param InstanceId: 实例ID
+        :type InstanceId: str
+        :param StartTime: 维护时间窗起始时间，如：17:00
+        :type StartTime: str
+        :param EndTime: 维护时间窗结束时间，如：19:00
+        :type EndTime: str
+        """
+        self.InstanceId = None
+        self.StartTime = None
+        self.EndTime = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.StartTime = params.get("StartTime")
+        self.EndTime = params.get("EndTime")
+
+
+class ModifyMaintenanceWindowResponse(AbstractModel):
+    """ModifyMaintenanceWindow返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Status: 修改状态：success 或者 failed
+        :type Status: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Status = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Status = params.get("Status")
+        self.RequestId = params.get("RequestId")
+
+
 class ModifyNetworkConfigRequest(AbstractModel):
     """ModifyNetworkConfig请求参数结构体
 
@@ -4271,6 +4359,52 @@ class UpgradeInstanceRequest(AbstractModel):
 
 class UpgradeInstanceResponse(AbstractModel):
     """UpgradeInstance返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param DealId: 订单ID
+        :type DealId: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.DealId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.DealId = params.get("DealId")
+        self.RequestId = params.get("RequestId")
+
+
+class UpgradeInstanceVersionRequest(AbstractModel):
+    """UpgradeInstanceVersion请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param TargetInstanceType: 目标实例类型，同CreateInstances接口的Type，即实例要变更的目标类型
+        :type TargetInstanceType: str
+        :param SwitchOption: 切换模式：1-维护时间窗切换，2-立即切换
+        :type SwitchOption: int
+        :param InstanceId: 实例ID
+        :type InstanceId: str
+        """
+        self.TargetInstanceType = None
+        self.SwitchOption = None
+        self.InstanceId = None
+
+
+    def _deserialize(self, params):
+        self.TargetInstanceType = params.get("TargetInstanceType")
+        self.SwitchOption = params.get("SwitchOption")
+        self.InstanceId = params.get("InstanceId")
+
+
+class UpgradeInstanceVersionResponse(AbstractModel):
+    """UpgradeInstanceVersion返回参数结构体
 
     """
 
