@@ -27,7 +27,7 @@ class AddResourceTagRequest(AbstractModel):
         :type TagKey: str
         :param TagValue: 标签值
         :type TagValue: str
-        :param Resource: 资源六段式描述
+        :param Resource: [ 资源六段式描述 ](https://cloud.tencent.com/document/product/598/10606)
         :type Resource: str
         """
         self.TagKey = None
@@ -159,7 +159,7 @@ class DeleteResourceTagRequest(AbstractModel):
         """
         :param TagKey: 标签键
         :type TagKey: str
-        :param Resource: 资源六段式描述
+        :param Resource: [ 资源六段式描述 ](https://cloud.tencent.com/document/product/598/10606)
         :type Resource: str
         """
         self.TagKey = None
@@ -1039,7 +1039,7 @@ class ModifyResourceTagsRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Resource: 资源的六段式描述
+        :param Resource: [ 资源六段式描述 ](https://cloud.tencent.com/document/product/598/10606)
         :type Resource: str
         :param ReplaceTags: 需要增加或修改的标签集合。如果Resource描述的资源未关联输入的标签键，则增加关联；若已关联，则将该资源关联的键对应的标签值修改为输入值。本接口中ReplaceTags和DeleteTags二者必须存在其一，且二者不能包含相同的标签键
         :type ReplaceTags: list of Tag
@@ -1342,7 +1342,7 @@ class UpdateResourceTagValueRequest(AbstractModel):
         :type TagKey: str
         :param TagValue: 修改后的标签值
         :type TagValue: str
-        :param Resource: 资源的六段式描述
+        :param Resource: [ 资源六段式描述 ](https://cloud.tencent.com/document/product/598/10606)
         :type Resource: str
         """
         self.TagKey = None

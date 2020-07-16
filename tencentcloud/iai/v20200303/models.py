@@ -290,9 +290,9 @@ class CopyPersonRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param PersonId: 人员ID
+        :param PersonId: 人员ID，取值为创建人员接口中的PersonId
         :type PersonId: str
-        :param GroupIds: 待加入的人员库列表
+        :param GroupIds: 待加入的人员库列表，数组元素取值为创建人员库接口中的GroupId
         :type GroupIds: list of str
         """
         self.PersonId = None
@@ -336,7 +336,7 @@ class CreateFaceRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param PersonId: 人员ID。
+        :param PersonId: 人员ID，取值为创建人员接口中的PersonId
         :type PersonId: str
         :param Images: 图片 base64 数据，base64 编码后大小不可超过5M。
 人员人脸总数量不可超过5张。
@@ -502,7 +502,7 @@ class CreatePersonRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param GroupId: 待加入的人员库ID。
+        :param GroupId: 待加入的人员库ID，取值为创建人员库接口中的GroupId
         :type GroupId: str
         :param PersonName: 人员名称。[1，60]个字符，可修改，可重复。
         :type PersonName: str
@@ -618,9 +618,9 @@ class DeleteFaceRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param PersonId: 人员ID
+        :param PersonId: 人员ID，取值为创建人员接口中的PersonId
         :type PersonId: str
-        :param FaceIds: 待删除的人脸ID列表
+        :param FaceIds: 待删除的人脸ID列表，数组元素取值为增加人脸接口返回的FaceId
         :type FaceIds: list of str
         """
         self.PersonId = None
@@ -664,7 +664,7 @@ class DeleteGroupRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param GroupId: 人员库ID。
+        :param GroupId: 人员库ID，取值为创建人员库接口中的GroupId
         :type GroupId: str
         """
         self.GroupId = None
@@ -698,9 +698,9 @@ class DeletePersonFromGroupRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param PersonId: 人员ID
+        :param PersonId: 人员ID，取值为创建人员接口中的PersonId
         :type PersonId: str
-        :param GroupId: 人员库ID
+        :param GroupId: 人员库ID，取值为创建人员库接口中的GroupId
         :type GroupId: str
         """
         self.PersonId = None
@@ -736,7 +736,7 @@ class DeletePersonRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param PersonId: 人员ID
+        :param PersonId: 人员ID，取值为创建人员接口中的PersonId
         :type PersonId: str
         """
         self.PersonId = None
@@ -1387,7 +1387,7 @@ class GetGroupInfoRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param GroupId: 人员库 ID。
+        :param GroupId: 人员库 ID，取值为创建人员库接口中的GroupId
         :type GroupId: str
         """
         self.GroupId = None
@@ -1497,7 +1497,7 @@ class GetPersonBaseInfoRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param PersonId: 人员ID
+        :param PersonId: 人员ID，创建人员接口中的PersonId
         :type PersonId: str
         """
         self.PersonId = None
@@ -1516,7 +1516,7 @@ class GetPersonBaseInfoResponse(AbstractModel):
         """
         :param PersonName: 人员名称
         :type PersonName: str
-        :param Gender: 人员性别
+        :param Gender: 人员性别，0代表未填写，1代表男性，2代表女性
         :type Gender: int
         :param FaceIds: 包含的人脸 ID 列表
         :type FaceIds: list of str
@@ -1543,7 +1543,7 @@ class GetPersonGroupInfoRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param PersonId: 人员ID
+        :param PersonId: 人员ID，取值为创建人员接口中的PersonId
         :type PersonId: str
         :param Offset: 起始序号，默认值为0
         :type Offset: int
@@ -1604,7 +1604,7 @@ class GetPersonListNumRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param GroupId: 人员库ID
+        :param GroupId: 人员库ID，取值为创建人员库接口中的GroupId
         :type GroupId: str
         """
         self.GroupId = None
@@ -1873,7 +1873,7 @@ class ModifyGroupRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param GroupId: 人员库ID
+        :param GroupId: 人员库ID，取值为创建人员库接口中的GroupId
         :type GroupId: str
         :param GroupName: 人员库名称
         :type GroupName: str
@@ -1924,11 +1924,11 @@ class ModifyPersonBaseInfoRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param PersonId: 人员ID
+        :param PersonId: 人员ID，取值为创建人员接口中的PersonId
         :type PersonId: str
         :param PersonName: 需要修改的人员名称
         :type PersonName: str
-        :param Gender: 需要修改的人员性别
+        :param Gender: 需要修改的人员性别，1代表男性，2代表女性
         :type Gender: int
         """
         self.PersonId = None
@@ -1966,9 +1966,9 @@ class ModifyPersonGroupInfoRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param GroupId: 人员库ID
+        :param GroupId: 人员库ID，取值为创建人员库接口中的GroupId
         :type GroupId: str
-        :param PersonId: 人员ID
+        :param PersonId: 人员ID，取值为创建人员接口中的PersonId
         :type PersonId: str
         :param PersonExDescriptionInfos: 需要修改的人员描述字段内容，key-value
         :type PersonExDescriptionInfos: list of PersonExDescriptionInfo
@@ -2181,7 +2181,7 @@ class SearchFacesRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param GroupIds: 希望搜索的人员库列表，上限100个。
+        :param GroupIds: 希望搜索的人员库列表，上限100个。数组元素取值为创建人员库接口中的GroupId
         :type GroupIds: list of str
         :param Image: 图片 base64 数据，base64 编码后大小不可超过5M。
 支持PNG、JPG、JPEG、BMP，不支持 GIF 图片。
@@ -2284,7 +2284,7 @@ class SearchFacesReturnsByGroupRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param GroupIds: 希望搜索的人员库列表，上限60个。
+        :param GroupIds: 希望搜索的人员库列表，上限60个。数组元素取值为创建人员库接口中的GroupId
         :type GroupIds: list of str
         :param Image: 图片 base64 数据，base64 编码后大小不可超过5M。
 支持PNG、JPG、JPEG、BMP，不支持 GIF 图片。
@@ -2388,7 +2388,7 @@ class SearchPersonsRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param GroupIds: 希望搜索的人员库列表，上限100个。
+        :param GroupIds: 希望搜索的人员库列表，上限100个。数组元素取值为创建人员库接口中的GroupId
         :type GroupIds: list of str
         :param Image: 图片 base64 数据，base64 编码后大小不可超过5M。
 若图片中包含多张人脸，只选取其中人脸面积最大的人脸。

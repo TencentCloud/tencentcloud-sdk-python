@@ -5739,7 +5739,7 @@ class ModifyLiveCallbackTemplateRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param TemplateId: 模板 ID。
+        :param TemplateId: DescribeLiveCallbackTemplates接口返回的模板 ID。
         :type TemplateId: int
         :param TemplateName: 模板名称。
         :type TemplateName: str

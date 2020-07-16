@@ -80,6 +80,80 @@ class Alias(AbstractModel):
         self.ModTime = params.get("ModTime")
 
 
+class CfsConfig(AbstractModel):
+    """文件系统(cfs)配置描述
+
+    """
+
+    def __init__(self):
+        """
+        :param CfsInsList: 文件系统信息列表
+        :type CfsInsList: list of CfsInsInfo
+        """
+        self.CfsInsList = None
+
+
+    def _deserialize(self, params):
+        if params.get("CfsInsList") is not None:
+            self.CfsInsList = []
+            for item in params.get("CfsInsList"):
+                obj = CfsInsInfo()
+                obj._deserialize(item)
+                self.CfsInsList.append(obj)
+
+
+class CfsInsInfo(AbstractModel):
+    """云函数关联的cfs配置信息
+
+    """
+
+    def __init__(self):
+        """
+        :param UserId: 用户id
+        :type UserId: str
+        :param UserGroupId: 用户组id
+        :type UserGroupId: str
+        :param CfsId: 文件系统实例id
+        :type CfsId: str
+        :param MountInsId: 文件系统挂载点id
+        :type MountInsId: str
+        :param LocalMountDir: 本地挂载点
+        :type LocalMountDir: str
+        :param RemoteMountDir: 远程挂载点
+        :type RemoteMountDir: str
+        :param IpAddress: 文件系统ip
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IpAddress: str
+        :param MountVpcId: 文件系统所在的私有网络id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MountVpcId: str
+        :param MountSubnetId: 文件系统所在私有网络的子网id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MountSubnetId: str
+        """
+        self.UserId = None
+        self.UserGroupId = None
+        self.CfsId = None
+        self.MountInsId = None
+        self.LocalMountDir = None
+        self.RemoteMountDir = None
+        self.IpAddress = None
+        self.MountVpcId = None
+        self.MountSubnetId = None
+
+
+    def _deserialize(self, params):
+        self.UserId = params.get("UserId")
+        self.UserGroupId = params.get("UserGroupId")
+        self.CfsId = params.get("CfsId")
+        self.MountInsId = params.get("MountInsId")
+        self.LocalMountDir = params.get("LocalMountDir")
+        self.RemoteMountDir = params.get("RemoteMountDir")
+        self.IpAddress = params.get("IpAddress")
+        self.MountVpcId = params.get("MountVpcId")
+        self.MountSubnetId = params.get("MountSubnetId")
+
+
 class Code(AbstractModel):
     """函数代码
 
@@ -315,6 +389,8 @@ class CreateFunctionRequest(AbstractModel):
         :type DeadLetterConfig: :class:`tencentcloud.scf.v20180416.models.DeadLetterConfig`
         :param PublicNetConfig: 公网访问配置
         :type PublicNetConfig: :class:`tencentcloud.scf.v20180416.models.PublicNetConfigIn`
+        :param CfsConfig: 文件系统配置参数，用于云函数挂载文件系统
+        :type CfsConfig: :class:`tencentcloud.scf.v20180416.models.CfsConfig`
         """
         self.FunctionName = None
         self.Code = None
@@ -334,6 +410,7 @@ class CreateFunctionRequest(AbstractModel):
         self.Layers = None
         self.DeadLetterConfig = None
         self.PublicNetConfig = None
+        self.CfsConfig = None
 
 
     def _deserialize(self, params):
@@ -370,6 +447,9 @@ class CreateFunctionRequest(AbstractModel):
         if params.get("PublicNetConfig") is not None:
             self.PublicNetConfig = PublicNetConfigIn()
             self.PublicNetConfig._deserialize(params.get("PublicNetConfig"))
+        if params.get("CfsConfig") is not None:
+            self.CfsConfig = CfsConfig()
+            self.CfsConfig._deserialize(params.get("CfsConfig"))
 
 
 class CreateFunctionResponse(AbstractModel):
@@ -1316,6 +1396,15 @@ class GetFunctionResponse(AbstractModel):
         :param OnsEnable: 是否启用Ons
 注意：此字段可能返回 null，表示取不到有效值。
         :type OnsEnable: str
+        :param CfsConfig: 文件系统配置参数，用于云函数挂载文件系统
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CfsConfig: :class:`tencentcloud.scf.v20180416.models.CfsConfig`
+        :param AvailableStatus: 函数的计费状态
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AvailableStatus: str
+        :param Qualifier: 函数版本
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Qualifier: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -1354,6 +1443,9 @@ class GetFunctionResponse(AbstractModel):
         self.AddTime = None
         self.PublicNetConfig = None
         self.OnsEnable = None
+        self.CfsConfig = None
+        self.AvailableStatus = None
+        self.Qualifier = None
         self.RequestId = None
 
 
@@ -1420,6 +1512,11 @@ class GetFunctionResponse(AbstractModel):
             self.PublicNetConfig = PublicNetConfigOut()
             self.PublicNetConfig._deserialize(params.get("PublicNetConfig"))
         self.OnsEnable = params.get("OnsEnable")
+        if params.get("CfsConfig") is not None:
+            self.CfsConfig = CfsConfig()
+            self.CfsConfig._deserialize(params.get("CfsConfig"))
+        self.AvailableStatus = params.get("AvailableStatus")
+        self.Qualifier = params.get("Qualifier")
         self.RequestId = params.get("RequestId")
 
 
@@ -2720,6 +2817,8 @@ class UpdateFunctionConfigurationRequest(AbstractModel):
         :type DeadLetterConfig: :class:`tencentcloud.scf.v20180416.models.DeadLetterConfig`
         :param PublicNetConfig: 公网访问配置
         :type PublicNetConfig: :class:`tencentcloud.scf.v20180416.models.PublicNetConfigIn`
+        :param CfsConfig: 文件系统配置入参，用于云函数绑定文件系统
+        :type CfsConfig: :class:`tencentcloud.scf.v20180416.models.CfsConfig`
         """
         self.FunctionName = None
         self.Description = None
@@ -2737,6 +2836,7 @@ class UpdateFunctionConfigurationRequest(AbstractModel):
         self.Layers = None
         self.DeadLetterConfig = None
         self.PublicNetConfig = None
+        self.CfsConfig = None
 
 
     def _deserialize(self, params):
@@ -2769,6 +2869,9 @@ class UpdateFunctionConfigurationRequest(AbstractModel):
         if params.get("PublicNetConfig") is not None:
             self.PublicNetConfig = PublicNetConfigIn()
             self.PublicNetConfig._deserialize(params.get("PublicNetConfig"))
+        if params.get("CfsConfig") is not None:
+            self.CfsConfig = CfsConfig()
+            self.CfsConfig._deserialize(params.get("CfsConfig"))
 
 
 class UpdateFunctionConfigurationResponse(AbstractModel):

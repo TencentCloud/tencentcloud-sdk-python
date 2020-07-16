@@ -566,6 +566,68 @@ class ComponentStatistics(AbstractModel):
         self.Description = params.get("Description")
 
 
+class CreateBaselineStrategyRequest(AbstractModel):
+    """CreateBaselineStrategy请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param StrategyName: 策略名称
+        :type StrategyName: str
+        :param ScanCycle: 检测周期
+        :type ScanCycle: int
+        :param ScanAt: 定期检测时间，该时间下发扫描
+        :type ScanAt: str
+        :param CategoryIds: 该策略下选择的基线id数组
+        :type CategoryIds: list of int non-negative
+        :param IsGlobal: 扫描范围是否全部服务器, 1:是  0:否, 为1则为全部专业版主机
+        :type IsGlobal: int
+        :param MachineType: 云主机类型：cvm：虚拟主机，bms：裸金属，ecm：边缘计算主机
+        :type MachineType: str
+        :param RegionCode: 主机地域
+        :type RegionCode: str
+        :param Quuids: 主机id数组
+        :type Quuids: list of str
+        """
+        self.StrategyName = None
+        self.ScanCycle = None
+        self.ScanAt = None
+        self.CategoryIds = None
+        self.IsGlobal = None
+        self.MachineType = None
+        self.RegionCode = None
+        self.Quuids = None
+
+
+    def _deserialize(self, params):
+        self.StrategyName = params.get("StrategyName")
+        self.ScanCycle = params.get("ScanCycle")
+        self.ScanAt = params.get("ScanAt")
+        self.CategoryIds = params.get("CategoryIds")
+        self.IsGlobal = params.get("IsGlobal")
+        self.MachineType = params.get("MachineType")
+        self.RegionCode = params.get("RegionCode")
+        self.Quuids = params.get("Quuids")
+
+
+class CreateBaselineStrategyResponse(AbstractModel):
+    """CreateBaselineStrategy返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class CreateOpenPortTaskRequest(AbstractModel):
     """CreateOpenPortTask请求参数结构体
 
