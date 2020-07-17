@@ -1397,12 +1397,14 @@ class CreateLiveTranscodeTemplateRequest(AbstractModel):
         :param Description: 模板描述。
         :type Description: str
         :param Width: 宽，默认0。
+范围[0-3000]
         :type Width: int
         :param NeedVideo: 是否保留视频，0：否，1：是。默认1。
         :type NeedVideo: int
         :param NeedAudio: 是否保留音频，0：否，1：是。默认1。
         :type NeedAudio: int
         :param Height: 高，默认0。
+范围[0-3000]
         :type Height: int
         :param Fps: 帧率，默认0。
         :type Fps: int

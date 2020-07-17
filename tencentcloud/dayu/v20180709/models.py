@@ -1386,6 +1386,63 @@ class CreateNewL7RulesResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class CreateNewL7RulesUploadRequest(AbstractModel):
+    """CreateNewL7RulesUpload请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Business: 大禹子产品代号（bgpip表示高防IP）
+        :type Business: str
+        :param IdList: 资源ID列表
+        :type IdList: list of str
+        :param VipList: 资源IP列表
+        :type VipList: list of str
+        :param Rules: 规则列表
+        :type Rules: list of L7RuleEntry
+        """
+        self.Business = None
+        self.IdList = None
+        self.VipList = None
+        self.Rules = None
+
+
+    def _deserialize(self, params):
+        self.Business = params.get("Business")
+        self.IdList = params.get("IdList")
+        self.VipList = params.get("VipList")
+        if params.get("Rules") is not None:
+            self.Rules = []
+            for item in params.get("Rules"):
+                obj = L7RuleEntry()
+                obj._deserialize(item)
+                self.Rules.append(obj)
+
+
+class CreateNewL7RulesUploadResponse(AbstractModel):
+    """CreateNewL7RulesUpload返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Success: 成功码
+        :type Success: :class:`tencentcloud.dayu.v20180709.models.SuccessCode`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Success = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Success") is not None:
+            self.Success = SuccessCode()
+            self.Success._deserialize(params.get("Success"))
+        self.RequestId = params.get("RequestId")
+
+
 class CreateUnblockIpRequest(AbstractModel):
     """CreateUnblockIp请求参数结构体
 

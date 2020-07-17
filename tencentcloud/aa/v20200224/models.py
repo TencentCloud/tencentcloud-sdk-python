@@ -550,7 +550,7 @@ class QQAccountInfo(AbstractModel):
         :param MobilePhone: 账号绑定的手机号。
         :type MobilePhone: str
         :param DeviceId: 用户设备号。
-        :type DeviceId: bool
+        :type DeviceId: str
         """
         self.QQOpenId = None
         self.AppIdUser = None

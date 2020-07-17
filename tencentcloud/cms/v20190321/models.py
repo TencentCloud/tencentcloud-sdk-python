@@ -1169,6 +1169,31 @@ class PhoneDetect(AbstractModel):
         self.Score = params.get("Score")
 
 
+class RiskDetails(AbstractModel):
+    """账号风险检测结果
+
+    """
+
+    def __init__(self):
+        """
+        :param Keywords: 风险关键词
+        :type Keywords: list of str
+        :param Lable: 风险类别，RiskAccount，RiskIP, RiskIMEI
+        :type Lable: str
+        :param Level: 风险等级，1:疑似，2：恶意
+        :type Level: int
+        """
+        self.Keywords = None
+        self.Lable = None
+        self.Level = None
+
+
+    def _deserialize(self, params):
+        self.Keywords = params.get("Keywords")
+        self.Lable = params.get("Lable")
+        self.Level = params.get("Level")
+
+
 class RrectF(AbstractModel):
     """logo位置信息
 
@@ -1261,6 +1286,8 @@ class TextData(AbstractModel):
         :type ID: :class:`tencentcloud.cms.v20190321.models.TextOutputID`
         :param Res: 消息类输出结果
         :type Res: :class:`tencentcloud.cms.v20190321.models.TextOutputRes`
+        :param RiskDetails: 账号风险检测结果
+        :type RiskDetails: list of RiskDetails
         :param BizType: 最终使用的BizType
         :type BizType: int
         :param EvilLabel: 恶意标签，Normal：正常，Polity：涉政，Porn：色情，Illegal：违法，Abuse：谩骂，Terror：暴恐，Ad：广告，Custom：自定义关键词
@@ -1279,6 +1306,7 @@ class TextData(AbstractModel):
         self.DetailResult = None
         self.ID = None
         self.Res = None
+        self.RiskDetails = None
         self.BizType = None
         self.EvilLabel = None
         self.Keywords = None
@@ -1310,6 +1338,12 @@ class TextData(AbstractModel):
         if params.get("Res") is not None:
             self.Res = TextOutputRes()
             self.Res._deserialize(params.get("Res"))
+        if params.get("RiskDetails") is not None:
+            self.RiskDetails = []
+            for item in params.get("RiskDetails"):
+                obj = RiskDetails()
+                obj._deserialize(item)
+                self.RiskDetails.append(obj)
         self.BizType = params.get("BizType")
         self.EvilLabel = params.get("EvilLabel")
         self.Keywords = params.get("Keywords")

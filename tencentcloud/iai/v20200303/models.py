@@ -154,6 +154,7 @@ class CheckSimilarPersonRequest(AbstractModel):
         """
         :param GroupIds: 待整理的人员库列表。 
 人员库总人数不可超过200万，人员库个数不可超过10个。
+数组元素取值为创建人员库接口中的GroupId
         :type GroupIds: list of str
         :param UniquePersonControl: 人员查重整理力度的控制。
 1：力度较高的档案整理，能够消除更多的重复身份，对应稍高的非重复身份误清除率；
@@ -935,6 +936,7 @@ class EstimateCheckSimilarPersonCostTimeRequest(AbstractModel):
         """
         :param GroupIds: 待整理的人员库列表。 
 人员库总人数不可超过200万，人员库个数不可超过10个。
+数组元素取值为创建人员库接口中的GroupId
         :type GroupIds: list of str
         """
         self.GroupIds = None
@@ -1646,7 +1648,7 @@ class GetPersonListRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param GroupId: 人员库ID
+        :param GroupId: 人员库ID，取值为创建人员库接口中的GroupId
         :type GroupId: str
         :param Offset: 起始序号，默认值为0
         :type Offset: int
@@ -1712,7 +1714,7 @@ class GetSimilarPersonResultRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param JobId: 查重任务ID，用于查询、获取查重的进度和结果。
+        :param JobId: 查重任务ID，用于查询、获取查重的进度和结果。取值为人员查重接口返回的JobId
         :type JobId: str
         """
         self.JobId = None
@@ -2493,7 +2495,7 @@ class SearchPersonsReturnsByGroupRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param GroupIds: 希望搜索的人员库列表，上限60个。
+        :param GroupIds: 希望搜索的人员库列表，上限60个。数组元素取值为创建人员库接口中的GroupId
         :type GroupIds: list of str
         :param Image: 图片 base64 数据，base64 编码后大小不可超过5M。
 支持PNG、JPG、JPEG、BMP，不支持 GIF 图片。

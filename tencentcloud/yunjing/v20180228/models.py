@@ -4852,6 +4852,10 @@ class LoginWhiteLists(AbstractModel):
         :type MachineName: str
         :param HostIp: 机器IP
         :type HostIp: str
+        :param StartTime: 起始时间
+        :type StartTime: str
+        :param EndTime: 结束时间
+        :type EndTime: str
         """
         self.Id = None
         self.Uuid = None
@@ -4863,6 +4867,8 @@ class LoginWhiteLists(AbstractModel):
         self.ModifyTime = None
         self.MachineName = None
         self.HostIp = None
+        self.StartTime = None
+        self.EndTime = None
 
 
     def _deserialize(self, params):
@@ -4881,6 +4887,8 @@ class LoginWhiteLists(AbstractModel):
         self.ModifyTime = params.get("ModifyTime")
         self.MachineName = params.get("MachineName")
         self.HostIp = params.get("HostIp")
+        self.StartTime = params.get("StartTime")
+        self.EndTime = params.get("EndTime")
 
 
 class LoginWhiteListsRule(AbstractModel):
@@ -4902,6 +4910,10 @@ class LoginWhiteListsRule(AbstractModel):
         :type HostIp: str
         :param Id: 规则ID，用于更新规则
         :type Id: int
+        :param StartTime: 起始时间
+        :type StartTime: str
+        :param EndTime: 结束时间
+        :type EndTime: str
         """
         self.Places = None
         self.SrcIp = None
@@ -4909,6 +4921,8 @@ class LoginWhiteListsRule(AbstractModel):
         self.IsGlobal = None
         self.HostIp = None
         self.Id = None
+        self.StartTime = None
+        self.EndTime = None
 
 
     def _deserialize(self, params):
@@ -4923,6 +4937,8 @@ class LoginWhiteListsRule(AbstractModel):
         self.IsGlobal = params.get("IsGlobal")
         self.HostIp = params.get("HostIp")
         self.Id = params.get("Id")
+        self.StartTime = params.get("StartTime")
+        self.EndTime = params.get("EndTime")
 
 
 class Machine(AbstractModel):
