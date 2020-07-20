@@ -294,6 +294,9 @@ class AgentDealElem(AbstractModel):
         :param ActivityId: 活动ID
 注意：此字段可能返回 null，表示取不到有效值。
         :type ActivityId: str
+        :param OverdueTime: 订单过期时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OverdueTime: str
         """
         self.DealId = None
         self.DealName = None
@@ -319,6 +322,7 @@ class AgentDealElem(AbstractModel):
         self.SalesUin = None
         self.PayerMode = None
         self.ActivityId = None
+        self.OverdueTime = None
 
 
     def _deserialize(self, params):
@@ -348,6 +352,7 @@ class AgentDealElem(AbstractModel):
         self.SalesUin = params.get("SalesUin")
         self.PayerMode = params.get("PayerMode")
         self.ActivityId = params.get("ActivityId")
+        self.OverdueTime = params.get("OverdueTime")
 
 
 class AgentPayDealsRequest(AbstractModel):

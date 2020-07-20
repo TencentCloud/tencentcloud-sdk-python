@@ -1176,7 +1176,7 @@ class RiskDetails(AbstractModel):
 
     def __init__(self):
         """
-        :param Keywords: 风险关键词
+        :param Keywords: 预留字段，暂时不使用
         :type Keywords: list of str
         :param Lable: 风险类别，RiskAccount，RiskIP, RiskIMEI
         :type Lable: str

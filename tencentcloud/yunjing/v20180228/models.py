@@ -1721,10 +1721,16 @@ class DescribeAttackLogsRequest(AbstractModel):
 <li>MachineIp - String - 是否必填：否 - 主机内网IP</li>
 <li>DateRange - String - 是否必填：否 - 时间范围(存储最近3个月的数据)，如最近一个月["2019-11-17", "2019-12-17"]</li>
         :type Filters: list of Filter
+        :param Uuid: 主机安全客户端ID
+        :type Uuid: str
+        :param Quuid: 云主机机器ID
+        :type Quuid: str
         """
         self.Limit = None
         self.Offset = None
         self.Filters = None
+        self.Uuid = None
+        self.Quuid = None
 
 
     def _deserialize(self, params):
@@ -1736,6 +1742,8 @@ class DescribeAttackLogsRequest(AbstractModel):
                 obj = Filter()
                 obj._deserialize(item)
                 self.Filters.append(obj)
+        self.Uuid = params.get("Uuid")
+        self.Quuid = params.get("Quuid")
 
 
 class DescribeAttackLogsResponse(AbstractModel):
@@ -2464,7 +2472,7 @@ class DescribeMachinesRequest(AbstractModel):
         :type Offset: int
         :param Filters: 过滤条件。
 <li>Keywords - String - 是否必填：否 - 查询关键字 </li>
-<li>Status - String - 是否必填：否 - 客户端在线状态（OFFLINE: 离线 | ONLINE: 在线）</li>
+<li>Status - String - 是否必填：否 - 客户端在线状态（OFFLINE: 离线 | ONLINE: 在线 | UNINSTALLED：未安装）</li>
 <li>Version - String  是否必填：否 - 当前防护版本（ PRO_VERSION：专业版 | BASIC_VERSION：基础版）</li>
 每个过滤条件只支持一个值，暂不支持多个值“或”关系查询
         :type Filters: list of Filter
@@ -3485,6 +3493,16 @@ class DescribeSecurityTrendsResponse(AbstractModel):
         :type Vuls: list of SecurityTrend
         :param BaseLines: 基线统计数据数组。
         :type BaseLines: list of SecurityTrend
+        :param MaliciousRequests: 恶意请求统计数据数组。
+        :type MaliciousRequests: list of SecurityTrend
+        :param HighRiskBashs: 高危命令统计数据数组。
+        :type HighRiskBashs: list of SecurityTrend
+        :param ReverseShells: 反弹shell统计数据数组。
+        :type ReverseShells: list of SecurityTrend
+        :param PrivilegeEscalations: 本地提权统计数据数组。
+        :type PrivilegeEscalations: list of SecurityTrend
+        :param CyberAttacks: 网络攻击统计数据数组。
+        :type CyberAttacks: list of SecurityTrend
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -3493,6 +3511,11 @@ class DescribeSecurityTrendsResponse(AbstractModel):
         self.BruteAttacks = None
         self.Vuls = None
         self.BaseLines = None
+        self.MaliciousRequests = None
+        self.HighRiskBashs = None
+        self.ReverseShells = None
+        self.PrivilegeEscalations = None
+        self.CyberAttacks = None
         self.RequestId = None
 
 
@@ -3527,6 +3550,36 @@ class DescribeSecurityTrendsResponse(AbstractModel):
                 obj = SecurityTrend()
                 obj._deserialize(item)
                 self.BaseLines.append(obj)
+        if params.get("MaliciousRequests") is not None:
+            self.MaliciousRequests = []
+            for item in params.get("MaliciousRequests"):
+                obj = SecurityTrend()
+                obj._deserialize(item)
+                self.MaliciousRequests.append(obj)
+        if params.get("HighRiskBashs") is not None:
+            self.HighRiskBashs = []
+            for item in params.get("HighRiskBashs"):
+                obj = SecurityTrend()
+                obj._deserialize(item)
+                self.HighRiskBashs.append(obj)
+        if params.get("ReverseShells") is not None:
+            self.ReverseShells = []
+            for item in params.get("ReverseShells"):
+                obj = SecurityTrend()
+                obj._deserialize(item)
+                self.ReverseShells.append(obj)
+        if params.get("PrivilegeEscalations") is not None:
+            self.PrivilegeEscalations = []
+            for item in params.get("PrivilegeEscalations"):
+                obj = SecurityTrend()
+                obj._deserialize(item)
+                self.PrivilegeEscalations.append(obj)
+        if params.get("CyberAttacks") is not None:
+            self.CyberAttacks = []
+            for item in params.get("CyberAttacks"):
+                obj = SecurityTrend()
+                obj._deserialize(item)
+                self.CyberAttacks.append(obj)
         self.RequestId = params.get("RequestId")
 
 
@@ -3577,6 +3630,23 @@ class DescribeTagsRequest(AbstractModel):
     """DescribeTags请求参数结构体
 
     """
+
+    def __init__(self):
+        """
+        :param MachineType: 云主机类型。
+<li>CVM：表示虚拟主机</li>
+<li>BM:  表示黑石物理机</li>
+        :type MachineType: str
+        :param MachineRegion: 机器所属地域。如：ap-guangzhou，ap-shanghai
+        :type MachineRegion: str
+        """
+        self.MachineType = None
+        self.MachineRegion = None
+
+
+    def _deserialize(self, params):
+        self.MachineType = params.get("MachineType")
+        self.MachineRegion = params.get("MachineRegion")
 
 
 class DescribeTagsResponse(AbstractModel):
@@ -4979,6 +5049,17 @@ class Machine(AbstractModel):
         :type MalwareNum: int
         :param Tag: 标签信息
         :type Tag: list of MachineTag
+        :param BaselineNum: 基线风险数。
+        :type BaselineNum: int
+        :param CyberAttackNum: 网络风险数。
+        :type CyberAttackNum: int
+        :param SecurityStatus: 风险状态。
+<li>SAFE：安全</li>
+<li>RISK：风险</li>
+<li>UNKNOWN：未知</li>
+        :type SecurityStatus: str
+        :param InvasionNum: 入侵事件数
+        :type InvasionNum: int
         """
         self.MachineName = None
         self.MachineOs = None
@@ -4992,6 +5073,10 @@ class Machine(AbstractModel):
         self.PayMode = None
         self.MalwareNum = None
         self.Tag = None
+        self.BaselineNum = None
+        self.CyberAttackNum = None
+        self.SecurityStatus = None
+        self.InvasionNum = None
 
 
     def _deserialize(self, params):
@@ -5012,6 +5097,10 @@ class Machine(AbstractModel):
                 obj = MachineTag()
                 obj._deserialize(item)
                 self.Tag.append(obj)
+        self.BaselineNum = params.get("BaselineNum")
+        self.CyberAttackNum = params.get("CyberAttackNum")
+        self.SecurityStatus = params.get("SecurityStatus")
+        self.InvasionNum = params.get("InvasionNum")
 
 
 class MachineTag(AbstractModel):
@@ -5025,14 +5114,18 @@ class MachineTag(AbstractModel):
         :type Rid: int
         :param Name: 标签名
         :type Name: str
+        :param TagId: 标签ID
+        :type TagId: int
         """
         self.Rid = None
         self.Name = None
+        self.TagId = None
 
 
     def _deserialize(self, params):
         self.Rid = params.get("Rid")
         self.Name = params.get("Name")
+        self.TagId = params.get("TagId")
 
 
 class MaliciousRequest(AbstractModel):
@@ -6138,11 +6231,18 @@ class SecurityDynamic(AbstractModel):
         :type EventType: str
         :param Message: 安全事件消息。
         :type Message: str
+        :param SecurityLevel: 安全事件等级。
+<li>RISK: 严重</li>
+<li>HIGH: 高危</li>
+<li>NORMAL: 中危</li>
+<li>LOW: 低危</li>
+        :type SecurityLevel: str
         """
         self.Uuid = None
         self.EventTime = None
         self.EventType = None
         self.Message = None
+        self.SecurityLevel = None
 
 
     def _deserialize(self, params):
@@ -6150,6 +6250,7 @@ class SecurityDynamic(AbstractModel):
         self.EventTime = params.get("EventTime")
         self.EventType = params.get("EventType")
         self.Message = params.get("Message")
+        self.SecurityLevel = params.get("SecurityLevel")
 
 
 class SecurityTrend(AbstractModel):
