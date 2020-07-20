@@ -10,7 +10,11 @@
 
 # 获取安装
 
-安装 Python SDK 前，先获取安全凭证。在第一次使用云 API 之前，用户首先需要在腾讯云控制台上申请安全凭证，安全凭证包括 SecretID 和 SecretKey, SecretID 是用于标识 API 调用者的身份，SecretKey 是用于加密签名字符串和服务器端验证签名字符串的密钥。SecretKey 必须严格保管，避免泄露。
+1.安装 Python SDK 前，先获取安全凭证。在第一次使用云 API 之前，用户首先需要在腾讯云控制台上申请安全凭证，安全凭证包括 SecretID 和 SecretKey, SecretID 是用于标识 API 调用者的身份，SecretKey 是用于加密签名字符串和服务器端验证签名字符串的密钥。SecretKey 必须严格保管，避免泄露。
+
+2.当前SDK已做分包处理，即如果只用到了cvm接口，可只安装tencentcloud-sdk-python-cvm组件，但是tencentcloud-sdk-python-common是公共包，使用任一组件均需先安装common。
+
+注意：分包后为兼容分包前的代码，每个组件的顶级包名均为tencentcloud，因此当卸载某一组件时，会导致其他组件引用错误（例如安装了tencentcloud-sdk-python-cvm和tencentcloud-sdk-python-common，卸载tencentcloud-sdk-python-cvm会导致tencentcloud-sdk-python-common无法引用），原因为卸载组件后tencentcloud包下的\_\_init\_\_.py被删除，因为Python3.3后不依赖\_\_init\_\_.py标示包，因此Python3.3后无此问题。
 
 ## 通过 Pip 安装(推荐)
 
@@ -19,10 +23,12 @@
 通过pip方式安装或更新请在命令行中执行以下命令:
 
 ```bash
-pip install --upgrade tencentcloud-sdk-python
+pip install --upgrade tencentcloud-sdk-python-common
+pip install --upgrade tencentcloud-sdk-python-cvm
+pip install --upgrade tencentcloud-sdk-python-cbs
 ```
 
-中国大陆地区的用户可以使用国内镜像源提高下载速度，例如`pip install -i https://mirrors.tencent.com/pypi/simple/ --upgrade tencentcloud-sdk-python`。
+中国大陆地区的用户可以使用国内镜像源提高下载速度，例如`pip install -i https://mirrors.tencent.com/pypi/simple/ --upgrade tencentcloud-sdk-python-common`。
 
 请注意，如果同时有 python2 和 python3 环境， python3 环境需要使用 pip3 命令安装。
 
@@ -30,8 +36,10 @@ pip install --upgrade tencentcloud-sdk-python
 
 前往 [Github 代码托管地址](https://github.com/tencentcloud/tencentcloud-sdk-python) 下载最新代码，解压后
 
-    $ cd tencentcloud-sdk-python
-    $ python setup.py install
+    $ cd tencentcloud-sdk-python/tencentcloud-sdk-python-common
+    $ python setup.py sdist
+    $ cd dist
+    $ pip install tencentcloud-sdk-python-common-*.tar.gz
 
 # 示例
 

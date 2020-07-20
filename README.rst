@@ -13,13 +13,15 @@ Quick Start
 First, install the library:
 
 .. code-block:: sh
-
-    $ pip install tencentcloud-sdk-python
+    $ pip install tencentcloud-sdk-python-common
+    $ pip install tencentcloud-sdk-python-cvm
 
 or download source code from github and install:
 
 .. code-block:: sh
 
     $ git clone https://github.com/tencentcloud/tencentcloud-sdk-python.git
-    $ cd tencentcloud-sdk-python
-    $ python setup.py install
+    $ cd tencentcloud-sdk-python/tencentcloud-sdk-python-cvm
+    $ python setup.py sdist
+    $ cd dist
+    $ pip install tencentcloud-sdk-python-cvm-*.tar.gz
