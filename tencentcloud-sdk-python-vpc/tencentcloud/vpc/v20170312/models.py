@@ -1298,7 +1298,7 @@ class CcnAttachedInstance(AbstractModel):
 
 
 class CcnBandwidthInfo(AbstractModel):
-    """用于描述云联网地域间限速带宽实例的信息
+    """用于描述云联网地域间限速带宽实例的信息。
 
     """
 
@@ -1319,7 +1319,7 @@ class CcnBandwidthInfo(AbstractModel):
         :param RenewFlag: 带宽是否自动续费的标记。
 注意：此字段可能返回 null，表示取不到有效值。
         :type RenewFlag: str
-        :param CcnRegionBandwidthLimit: 描述带宽的地域和限速上限信息。
+        :param CcnRegionBandwidthLimit: 描述带宽的地域和限速上限信息。在地域间限速的情况下才会返回参数，出口限速模式不返回。
 注意：此字段可能返回 null，表示取不到有效值。
         :type CcnRegionBandwidthLimit: :class:`tencentcloud.vpc.v20170312.models.CcnRegionBandwidthLimit`
         """
@@ -5947,6 +5947,7 @@ class DescribeHaVipsRequest(AbstractModel):
 <li>havip-name - String - `HAVIP`名称。</li>
 <li>vpc-id - String - `HAVIP`所在私有网络`ID`。</li>
 <li>subnet-id - String - `HAVIP`所在子网`ID`。</li>
+<li>vip - String - `HAVIP`的地址`VIP`。</li>
 <li>address-ip - String - `HAVIP`绑定的弹性公网`IP`。</li>
         :type Filters: list of Filter
         :param Offset: 偏移量
@@ -6582,7 +6583,8 @@ class DescribeNetworkInterfacesRequest(AbstractModel):
 <li>groups.security-group-id - String - （过滤条件）绑定的安全组实例ID，例如：sg-f9ekbxeq。</li>
 <li>network-interface-name - String - （过滤条件）网卡实例名称。</li>
 <li>network-interface-description - String - （过滤条件）网卡实例描述。</li>
-<li>address-ip - String - （过滤条件）内网IPv4地址。</li>
+<li>address-ip - String - （过滤条件）内网IPv4地址，单IP后缀模糊匹配，多IP精确匹配。可以与`ip-exact-match`配合做单IP的精确匹配查询。</li>
+<li>ip-exact-match - Boolean - （过滤条件）内网IPv4精确匹配查询，存在多值情况，只取第一个。</li>
 <li>tag-key - String -是否必填：否- （过滤条件）按照标签键进行过滤。使用请参考示例2</li>
 <li>tag:tag-key - String - 是否必填：否 - （过滤条件）按照标签键值对进行过滤。 tag-key使用具体的标签键进行替换。使用请参考示例3。</li>
 <li>is-primary - Boolean - 是否必填：否 - （过滤条件）按照是否主网卡进行过滤。值为true时，仅过滤主网卡；值为false时，仅过滤辅助网卡；次过滤参数为提供时，同时过滤主网卡和辅助网卡。</li>
@@ -12584,7 +12586,7 @@ CCN：云联网。
         :param GatewayId: 下一跳地址，这里只需要指定不同下一跳类型的网关ID，系统会自动匹配到下一跳地址。
 特别注意：当 GatewayType 为 EIP 时，GatewayId 固定值 '0'
         :type GatewayId: str
-        :param RouteId: 路由策略ID。
+        :param RouteId: 路由策略ID。IPv4路由策略ID是有意义的值，IPv6路由策略是无意义的值0。后续建议完全使用字符串唯一ID `RouteItemId`操作路由策略。
         :type RouteId: int
         :param RouteDescription: 路由策略描述。
         :type RouteDescription: str

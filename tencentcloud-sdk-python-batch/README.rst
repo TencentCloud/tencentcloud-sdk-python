@@ -13,6 +13,7 @@ Quick Start
 First, install the library:
 
 .. code-block:: sh
+
     $ pip install tencentcloud-sdk-python-common
     $ pip install tencentcloud-sdk-python-batch
 

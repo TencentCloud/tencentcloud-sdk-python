@@ -5318,8 +5318,6 @@ class CreateSuperPlayerConfigRequest(AbstractModel):
         """
         :param Name: 播放器配置名称，长度限制：64 个字符。只允许出现 [0-9a-zA-Z] 及 _- 字符（如 test_ABC-123），同一个用户该名称唯一。
         :type Name: str
-        :param Comment: 模板描述信息，长度限制：256 个字符。
-        :type Comment: str
         :param DrmSwitch: 播放 DRM 保护的自适应码流开关：
 <li>ON：开启，表示仅播放 DRM  保护的自适应码流输出；</li>
 <li>OFF：关闭，表示播放未加密的自适应码流输出。</li>
@@ -5340,22 +5338,31 @@ class CreateSuperPlayerConfigRequest(AbstractModel):
 <li>MinEdgeLength：2160，Name：4K；</li>
 <li>MinEdgeLength：4320，Name：8K。</li>
         :type ResolutionNames: list of ResolutionNameInfo
+        :param Domain: 播放时使用的域名。不填或者填 Default，表示使用[默认分发配置](https://cloud.tencent.com/document/product/266/33373)中的域名。
+        :type Domain: str
+        :param Scheme: 播放时使用的 Scheme。不填或者填 Default，表示使用[默认分发配置](https://cloud.tencent.com/document/product/266/33373)中的 Scheme。其他可选值：
+<li>HTTP；</li>
+<li>HTTPS。</li>
+        :type Scheme: str
+        :param Comment: 模板描述信息，长度限制：256 个字符。
+        :type Comment: str
         :param SubAppId: 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
         :type SubAppId: int
         """
         self.Name = None
-        self.Comment = None
         self.DrmSwitch = None
         self.AdaptiveDynamicStreamingDefinition = None
         self.DrmStreamingsInfo = None
         self.ImageSpriteDefinition = None
         self.ResolutionNames = None
+        self.Domain = None
+        self.Scheme = None
+        self.Comment = None
         self.SubAppId = None
 
 
     def _deserialize(self, params):
         self.Name = params.get("Name")
-        self.Comment = params.get("Comment")
         self.DrmSwitch = params.get("DrmSwitch")
         self.AdaptiveDynamicStreamingDefinition = params.get("AdaptiveDynamicStreamingDefinition")
         if params.get("DrmStreamingsInfo") is not None:
@@ -5368,6 +5375,9 @@ class CreateSuperPlayerConfigRequest(AbstractModel):
                 obj = ResolutionNameInfo()
                 obj._deserialize(item)
                 self.ResolutionNames.append(obj)
+        self.Domain = params.get("Domain")
+        self.Scheme = params.get("Scheme")
+        self.Comment = params.get("Comment")
         self.SubAppId = params.get("SubAppId")
 
 
@@ -8843,12 +8853,12 @@ class ImageWatermarkInput(AbstractModel):
         :type ImageContent: str
         :param Width: 水印的宽度。支持 %、px 两种格式：
 <li>当字符串以 % 结尾，表示水印 Width 为视频宽度的百分比大小，如 10% 表示 Width 为视频宽度的 10%；</li>
-<li>当字符串以 px 结尾，表示水印 Width 单位为像素，如 100px 表示 Width 为 100 像素。</li>
+<li>当字符串以 px 结尾，表示水印 Width 单位为像素，如 100px 表示 Width 为 100 像素。取值范围为[8, 4096]。</li>
 默认值：10%。
         :type Width: str
         :param Height: 水印的高度。支持 %、px 两种格式：
 <li>当字符串以 % 结尾，表示水印 Height 为视频高度的百分比大小，如 10% 表示 Height 为视频高度的 10%；</li>
-<li>当字符串以 px 结尾，表示水印 Width 单位为像素，如 100px 表示 Width 为 100 像素。</li>
+<li>当字符串以 px 结尾，表示水印 Width 单位为像素，如 100px 表示 Width 为 100 像素。取值范围为0或[8, 4096]。</li>
 默认值：0px，表示 Height 按照原始水印图片的宽高比缩放。
         :type Height: str
         """
@@ -8874,12 +8884,12 @@ class ImageWatermarkInputForUpdate(AbstractModel):
         :type ImageContent: str
         :param Width: 水印的宽度。支持 %、px 两种格式：
 <li>当字符串以 % 结尾，表示水印 Width 为视频宽度的百分比大小，如 10% 表示 Width 为视频宽度的 10%；</li>
-<li>当字符串以 px 结尾，表示水印 Width 单位为像素，如 100px 表示 Width 为 100 像素。</li>
+<li>当字符串以 px 结尾，表示水印 Width 单位为像素，如 100px 表示 Width 为 100 像素。取值范围为[8, 4096]。</li>
         :type Width: str
         :param Height: 水印的高度。支持 %、px 两种格式：
 <li>当字符串以 % 结尾，表示水印 Height 为视频高度的百分比大小，如 10% 表示 Height 为视频高度的 10%；</li>
-<li>当字符串以 px 结尾，表示水印 Width 单位为像素，如 100px 表示 Width 为 100 像素。</li>
-0px 表示 Height 按照 Width 对视频宽度的比例缩放。
+<li>当字符串以 px 结尾，表示水印 Width 单位为像素，如 100px 表示 Width 为 100 像素。取值范围为0或[8, 4096]。</li>
+默认值：0px，表示 Height 按照原始水印图片的宽高比缩放。
         :type Height: str
         """
         self.ImageContent = None
@@ -9522,7 +9532,8 @@ politician：
 <li>bureau_politician：厅局级领导人；</li>
 <li>county_politician：县处级领导人；</li>
 <li>rural_politician：乡科级领导人；</li>
-<li>sensitive_politician：敏感政治人物。</li>
+<li>sensitive_politician：敏感政治人物；</li>
+<li>foreign_politician：国外领导人。</li>
 entertainment：
 <li>sensitive_entertainment：敏感娱乐人物。</li>
 sport：
@@ -9532,7 +9543,8 @@ entrepreneur：
 scholar：
 <li>sensitive_scholar：敏感教育学者。</li>
 celebrity：
-<li>sensitive_celebrity：敏感知名人物。</li>
+<li>sensitive_celebrity：敏感知名人物；</li>
+<li>historical_celebrity：历史知名人物。</li>
 military：
 <li>sensitive_military：敏感军事人物。</li>
         :type Label: str
@@ -11883,6 +11895,13 @@ class ModifySuperPlayerConfigRequest(AbstractModel):
         :type ImageSpriteDefinition: int
         :param ResolutionNames: 播放器对不于不同分辨率的子流展示名字。
         :type ResolutionNames: list of ResolutionNameInfo
+        :param Domain: 播放时使用的域名。填 Default 表示使用[默认分发配置](https://cloud.tencent.com/document/product/266/33373)中的域名。
+        :type Domain: str
+        :param Scheme: 播放时使用的 Scheme。取值范围：
+<li>Default：使用[默认分发配置](https://cloud.tencent.com/document/product/266/33373)中的 Scheme；</li>
+<li>HTTP；</li>
+<li>HTTPS。</li>
+        :type Scheme: str
         :param Comment: 模板描述信息，长度限制：256 个字符。
         :type Comment: str
         :param SubAppId: 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
@@ -11894,6 +11913,8 @@ class ModifySuperPlayerConfigRequest(AbstractModel):
         self.DrmStreamingsInfo = None
         self.ImageSpriteDefinition = None
         self.ResolutionNames = None
+        self.Domain = None
+        self.Scheme = None
         self.Comment = None
         self.SubAppId = None
 
@@ -11912,6 +11933,8 @@ class ModifySuperPlayerConfigRequest(AbstractModel):
                 obj = ResolutionNameInfo()
                 obj._deserialize(item)
                 self.ResolutionNames.append(obj)
+        self.Domain = params.get("Domain")
+        self.Scheme = params.get("Scheme")
         self.Comment = params.get("Comment")
         self.SubAppId = params.get("SubAppId")
 
@@ -12491,6 +12514,13 @@ class PlayerConfig(AbstractModel):
         :type CreateTime: str
         :param UpdateTime: 播放器配置最后修改时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F)。
         :type UpdateTime: str
+        :param Domain: 播放时使用的域名。值为 Default，表示使用[默认分发配置](https://cloud.tencent.com/document/product/266/33373)中的域名。
+        :type Domain: str
+        :param Scheme: 播放时使用的 Scheme。取值范围：
+<li>Default：使用[默认分发配置](https://cloud.tencent.com/document/product/266/33373)中的 Scheme；</li>
+<li>HTTP；</li>
+<li>HTTPS。</li>
+        :type Scheme: str
         :param Comment: 模板描述信息。
         :type Comment: str
         """
@@ -12503,6 +12533,8 @@ class PlayerConfig(AbstractModel):
         self.ResolutionNameSet = None
         self.CreateTime = None
         self.UpdateTime = None
+        self.Domain = None
+        self.Scheme = None
         self.Comment = None
 
 
@@ -12523,6 +12555,8 @@ class PlayerConfig(AbstractModel):
                 self.ResolutionNameSet.append(obj)
         self.CreateTime = params.get("CreateTime")
         self.UpdateTime = params.get("UpdateTime")
+        self.Domain = params.get("Domain")
+        self.Scheme = params.get("Scheme")
         self.Comment = params.get("Comment")
 
 
@@ -13663,7 +13697,9 @@ class PullUploadRequest(AbstractModel):
         :type Procedure: str
         :param ExpireTime: 媒体文件过期时间，格式按照 ISO 8601 标准表示，详见 [ISO 日期格式说明](https://cloud.tencent.com/document/product/266/11732#I)。
         :type ExpireTime: str
-        :param StorageRegion: 指定上传园区，仅适用于对上传地域有特殊需求的用户（目前仅支持北京、上海和重庆园区）。
+        :param StorageRegion: 指定上传园区，仅适用于对上传地域有特殊需求的用户：
+<li>不填默认上传至您的[默认地域](https://cloud.tencent.com/document/product/266/14059?from=11329#.E5.AD.98.E5.82.A8.E5.9C.B0.E5.9F.9F.E6.AD.A5.E9.AA.A4)。</li>
+<li>若指定上传园区，请先确认[上传存储设置](https://cloud.tencent.com/document/product/266/14059?from=11329#.E5.AD.98.E5.82.A8.E5.9C.B0.E5.9F.9F.E6.AD.A5.E9.AA.A4)已经开启相应的存储地域。</li>
         :type StorageRegion: str
         :param ClassId: 分类ID，用于对媒体进行分类管理，可通过[创建分类](https://cloud.tencent.com/document/product/266/7812)接口，创建分类，获得分类 ID。
         :type ClassId: int

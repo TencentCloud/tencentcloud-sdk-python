@@ -336,6 +336,65 @@ class DescribeSlowLogTopSqlsResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeTopSpaceTableTimeSeriesRequest(AbstractModel):
+    """DescribeTopSpaceTableTimeSeries请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param InstanceId: 实例 ID 。
+        :type InstanceId: str
+        :param Limit: 返回的Top表数量，最大值为20，默认为最大值。
+        :type Limit: int
+        :param SortBy: 筛选Top表所用的排序字段，可选字段包含DataLength、IndexLength、TotalLength、DataFree、FragRatio、TableRows、PhysicalFileSize，默认为 PhysicalFileSize。
+        :type SortBy: str
+        :param StartDate: 开始日期，最早为当日的前第6天，默认为截止日期的前第6天。
+        :type StartDate: str
+        :param EndDate: 截止日期，最早为当日的前第6天，默认为当日。
+        :type EndDate: str
+        """
+        self.InstanceId = None
+        self.Limit = None
+        self.SortBy = None
+        self.StartDate = None
+        self.EndDate = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.Limit = params.get("Limit")
+        self.SortBy = params.get("SortBy")
+        self.StartDate = params.get("StartDate")
+        self.EndDate = params.get("EndDate")
+
+
+class DescribeTopSpaceTableTimeSeriesResponse(AbstractModel):
+    """DescribeTopSpaceTableTimeSeries返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param TopSpaceTableTimeSeries: 返回的Top表空间统计信息的时序数据列表。
+        :type TopSpaceTableTimeSeries: list of TableSpaceTimeSeries
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TopSpaceTableTimeSeries = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("TopSpaceTableTimeSeries") is not None:
+            self.TopSpaceTableTimeSeries = []
+            for item in params.get("TopSpaceTableTimeSeries"):
+                obj = TableSpaceTimeSeries()
+                obj._deserialize(item)
+                self.TopSpaceTableTimeSeries.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeTopSpaceTablesRequest(AbstractModel):
     """DescribeTopSpaceTables请求参数结构体
 
@@ -441,6 +500,58 @@ class DiagHistoryEventItem(AbstractModel):
         self.InstanceId = params.get("InstanceId")
         self.Metric = params.get("Metric")
         self.Region = params.get("Region")
+
+
+class MonitorFloatMetric(AbstractModel):
+    """监控数据（浮点型）
+
+    """
+
+    def __init__(self):
+        """
+        :param Metric: 指标名称。
+        :type Metric: str
+        :param Unit: 指标单位。
+        :type Unit: str
+        :param Values: 指标值。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Values: list of float
+        """
+        self.Metric = None
+        self.Unit = None
+        self.Values = None
+
+
+    def _deserialize(self, params):
+        self.Metric = params.get("Metric")
+        self.Unit = params.get("Unit")
+        self.Values = params.get("Values")
+
+
+class MonitorFloatMetricSeriesData(AbstractModel):
+    """单位时间间隔内的监控指标数据（浮点型）
+
+    """
+
+    def __init__(self):
+        """
+        :param Series: 监控指标。
+        :type Series: list of MonitorFloatMetric
+        :param Timestamp: 监控指标对应的时间戳。
+        :type Timestamp: list of int
+        """
+        self.Series = None
+        self.Timestamp = None
+
+
+    def _deserialize(self, params):
+        if params.get("Series") is not None:
+            self.Series = []
+            for item in params.get("Series"):
+                obj = MonitorFloatMetric()
+                obj._deserialize(item)
+                self.Series.append(obj)
+        self.Timestamp = params.get("Timestamp")
 
 
 class MonitorMetric(AbstractModel):
@@ -639,6 +750,37 @@ class TableSpaceData(AbstractModel):
         self.FragRatio = params.get("FragRatio")
         self.TableRows = params.get("TableRows")
         self.PhysicalFileSize = params.get("PhysicalFileSize")
+
+
+class TableSpaceTimeSeries(AbstractModel):
+    """库表空间时序数据
+
+    """
+
+    def __init__(self):
+        """
+        :param TableName: 表名。
+        :type TableName: str
+        :param TableSchema: 库名。
+        :type TableSchema: str
+        :param Engine: 库表的存储引擎。
+        :type Engine: str
+        :param SeriesData: 单位时间间隔内的空间指标数据。
+        :type SeriesData: :class:`tencentcloud.dbbrain.v20191016.models.MonitorFloatMetricSeriesData`
+        """
+        self.TableName = None
+        self.TableSchema = None
+        self.Engine = None
+        self.SeriesData = None
+
+
+    def _deserialize(self, params):
+        self.TableName = params.get("TableName")
+        self.TableSchema = params.get("TableSchema")
+        self.Engine = params.get("Engine")
+        if params.get("SeriesData") is not None:
+            self.SeriesData = MonitorFloatMetricSeriesData()
+            self.SeriesData._deserialize(params.get("SeriesData"))
 
 
 class TimeSlice(AbstractModel):

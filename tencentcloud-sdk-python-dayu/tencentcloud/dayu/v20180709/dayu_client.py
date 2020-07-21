@@ -501,6 +501,34 @@ class DayuClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def CreateNewL7RulesUpload(self, request):
+        """批量上传7层转发规则
+
+        :param request: Request instance for CreateNewL7RulesUpload.
+        :type request: :class:`tencentcloud.dayu.v20180709.models.CreateNewL7RulesUploadRequest`
+        :rtype: :class:`tencentcloud.dayu.v20180709.models.CreateNewL7RulesUploadResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("CreateNewL7RulesUpload", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateNewL7RulesUploadResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def CreateUnblockIp(self, request):
         """IP解封操作
 

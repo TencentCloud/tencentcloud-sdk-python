@@ -554,11 +554,17 @@ class DescribeClusterNodesRequest(AbstractModel):
         :type Offset: int
         :param Limit: 每页返回数量，默认值为100，最大值为100。
         :type Limit: int
+        :param HardwareResourceType: 资源类型:支持all/host/pod，默认为all
+        :type HardwareResourceType: str
+        :param SearchFields: 支持搜索的字段
+        :type SearchFields: list of SearchItem
         """
         self.InstanceId = None
         self.NodeFlag = None
         self.Offset = None
         self.Limit = None
+        self.HardwareResourceType = None
+        self.SearchFields = None
 
 
     def _deserialize(self, params):
@@ -566,6 +572,13 @@ class DescribeClusterNodesRequest(AbstractModel):
         self.NodeFlag = params.get("NodeFlag")
         self.Offset = params.get("Offset")
         self.Limit = params.get("Limit")
+        self.HardwareResourceType = params.get("HardwareResourceType")
+        if params.get("SearchFields") is not None:
+            self.SearchFields = []
+            for item in params.get("SearchFields"):
+                obj = SearchItem()
+                obj._deserialize(item)
+                self.SearchFields.append(obj)
 
 
 class DescribeClusterNodesResponse(AbstractModel):
@@ -583,12 +596,16 @@ class DescribeClusterNodesResponse(AbstractModel):
         :param TagKeys: 用户所有的标签键列表
 注意：此字段可能返回 null，表示取不到有效值。
         :type TagKeys: list of str
+        :param HardwareResourceTypeList: 资源类型列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type HardwareResourceTypeList: list of str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.TotalCnt = None
         self.NodeList = None
         self.TagKeys = None
+        self.HardwareResourceTypeList = None
         self.RequestId = None
 
 
@@ -601,6 +618,7 @@ class DescribeClusterNodesResponse(AbstractModel):
                 obj._deserialize(item)
                 self.NodeList.append(obj)
         self.TagKeys = params.get("TagKeys")
+        self.HardwareResourceTypeList = params.get("HardwareResourceTypeList")
         self.RequestId = params.get("RequestId")
 
 
@@ -1429,6 +1447,9 @@ class NodeHardwareInfo(AbstractModel):
         :param AutoFlag: 是否是自动扩缩容节点，0为普通节点，1为自动扩缩容节点。
 注意：此字段可能返回 null，表示取不到有效值。
         :type AutoFlag: int
+        :param HardwareResourceType: 资源类型, host/pod
+注意：此字段可能返回 null，表示取不到有效值。
+        :type HardwareResourceType: str
         """
         self.AppId = None
         self.SerialNo = None
@@ -1466,6 +1487,7 @@ class NodeHardwareInfo(AbstractModel):
         self.Destroyable = None
         self.Tags = None
         self.AutoFlag = None
+        self.HardwareResourceType = None
 
 
     def _deserialize(self, params):
@@ -1517,6 +1539,7 @@ class NodeHardwareInfo(AbstractModel):
                 obj._deserialize(item)
                 self.Tags.append(obj)
         self.AutoFlag = params.get("AutoFlag")
+        self.HardwareResourceType = params.get("HardwareResourceType")
 
 
 class OutterResource(AbstractModel):
@@ -1596,6 +1619,43 @@ class Placement(AbstractModel):
     def _deserialize(self, params):
         self.ProjectId = params.get("ProjectId")
         self.Zone = params.get("Zone")
+
+
+class PodSpec(AbstractModel):
+    """扩容容器资源时的资源描述
+
+    """
+
+    def __init__(self):
+        """
+        :param ResourceProviderIdentifier: 外部资源提供者的标识符，例如"cls-a1cd23fa"。
+        :type ResourceProviderIdentifier: str
+        :param ResourceProviderType: 外部资源提供者类型，例如"tke",当前仅支持"tke"。
+        :type ResourceProviderType: str
+        :param NodeType: 资源的用途，即节点类型，当前仅支持"TASK"。
+        :type NodeType: str
+        :param Cpu: CPU核数。
+        :type Cpu: int
+        :param Memory: 内存大小，单位为GB。
+        :type Memory: int
+        :param DataVolumes: 资源对宿主机的挂载点，指定的挂载点对应了宿主机的路径，该挂载点在Pod中作为数据存储目录使用。
+        :type DataVolumes: list of str
+        """
+        self.ResourceProviderIdentifier = None
+        self.ResourceProviderType = None
+        self.NodeType = None
+        self.Cpu = None
+        self.Memory = None
+        self.DataVolumes = None
+
+
+    def _deserialize(self, params):
+        self.ResourceProviderIdentifier = params.get("ResourceProviderIdentifier")
+        self.ResourceProviderType = params.get("ResourceProviderType")
+        self.NodeType = params.get("NodeType")
+        self.Cpu = params.get("Cpu")
+        self.Memory = params.get("Memory")
+        self.DataVolumes = params.get("DataVolumes")
 
 
 class PreExecuteFileSettings(AbstractModel):
@@ -1873,6 +1933,10 @@ class ScaleOutInstanceRequest(AbstractModel):
         :type DisasterRecoverGroupIds: list of str
         :param Tags: 扩容节点绑定标签列表。
         :type Tags: list of Tag
+        :param HardwareResourceType: 扩容所选资源类型，可选范围为"host","pod"，host为普通的CVM资源，Pod为TKE集群提供的资源
+        :type HardwareResourceType: str
+        :param PodSpec: 使用Pod资源扩容时，指定的Pod规格以及来源等信息
+        :type PodSpec: :class:`tencentcloud.emr.v20190103.models.PodSpec`
         """
         self.TimeUnit = None
         self.TimeSpan = None
@@ -1888,6 +1952,8 @@ class ScaleOutInstanceRequest(AbstractModel):
         self.ServiceNodeInfo = None
         self.DisasterRecoverGroupIds = None
         self.Tags = None
+        self.HardwareResourceType = None
+        self.PodSpec = None
 
 
     def _deserialize(self, params):
@@ -1915,6 +1981,10 @@ class ScaleOutInstanceRequest(AbstractModel):
                 obj = Tag()
                 obj._deserialize(item)
                 self.Tags.append(obj)
+        self.HardwareResourceType = params.get("HardwareResourceType")
+        if params.get("PodSpec") is not None:
+            self.PodSpec = PodSpec()
+            self.PodSpec._deserialize(params.get("PodSpec"))
 
 
 class ScaleOutInstanceResponse(AbstractModel):
@@ -1956,6 +2026,27 @@ class ScaleOutInstanceResponse(AbstractModel):
         self.FlowId = params.get("FlowId")
         self.BillId = params.get("BillId")
         self.RequestId = params.get("RequestId")
+
+
+class SearchItem(AbstractModel):
+    """搜索字段
+
+    """
+
+    def __init__(self):
+        """
+        :param SearchType: 支持搜索的类型
+        :type SearchType: str
+        :param SearchValue: 支持搜索的值
+        :type SearchValue: str
+        """
+        self.SearchType = None
+        self.SearchValue = None
+
+
+    def _deserialize(self, params):
+        self.SearchType = params.get("SearchType")
+        self.SearchValue = params.get("SearchValue")
 
 
 class Tag(AbstractModel):

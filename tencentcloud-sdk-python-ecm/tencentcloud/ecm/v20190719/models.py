@@ -55,6 +55,12 @@ class Address(AbstractModel):
         :param InternetServiceProvider: 运营商，CTCC电信，CUCC联通，CMCC移动
 注意：此字段可能返回 null，表示取不到有效值。
         :type InternetServiceProvider: str
+        :param Bandwidth: 带宽上限
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Bandwidth: int
+        :param PayMode: 计费模式
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PayMode: str
         """
         self.AddressId = None
         self.AddressName = None
@@ -70,6 +76,8 @@ class Address(AbstractModel):
         self.AddressType = None
         self.CascadeRelease = None
         self.InternetServiceProvider = None
+        self.Bandwidth = None
+        self.PayMode = None
 
 
     def _deserialize(self, params):
@@ -87,6 +95,8 @@ class Address(AbstractModel):
         self.AddressType = params.get("AddressType")
         self.CascadeRelease = params.get("CascadeRelease")
         self.InternetServiceProvider = params.get("InternetServiceProvider")
+        self.Bandwidth = params.get("Bandwidth")
+        self.PayMode = params.get("PayMode")
 
 
 class AllocateAddressesRequest(AbstractModel):
@@ -409,6 +419,59 @@ class Country(AbstractModel):
     def _deserialize(self, params):
         self.CountryId = params.get("CountryId")
         self.CountryName = params.get("CountryName")
+
+
+class CreateImageRequest(AbstractModel):
+    """CreateImage请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ImageName: 镜像名称
+        :type ImageName: str
+        :param InstanceId: 需要制作镜像的实例ID。
+        :type InstanceId: str
+        :param ImageDescription: 镜像描述
+        :type ImageDescription: str
+        :param ForcePoweroff: 是否执行强制关机以制作镜像。取值范围：
+TRUE：表示自动关机后制作镜像
+FALSE：表示开机状态制作，目前不支持，需要先手动关机
+默认取值：FALSE。
+        :type ForcePoweroff: str
+        """
+        self.ImageName = None
+        self.InstanceId = None
+        self.ImageDescription = None
+        self.ForcePoweroff = None
+
+
+    def _deserialize(self, params):
+        self.ImageName = params.get("ImageName")
+        self.InstanceId = params.get("InstanceId")
+        self.ImageDescription = params.get("ImageDescription")
+        self.ForcePoweroff = params.get("ForcePoweroff")
+
+
+class CreateImageResponse(AbstractModel):
+    """CreateImage返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param TaskId: 任务id
+        :type TaskId: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TaskId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TaskId = params.get("TaskId")
+        self.RequestId = params.get("RequestId")
 
 
 class CreateModuleRequest(AbstractModel):
@@ -2041,6 +2104,54 @@ class DescribeTaskResultResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeTaskStatusRequest(AbstractModel):
+    """DescribeTaskStatus请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param TaskSet: 任务描述
+        :type TaskSet: list of TaskInput
+        """
+        self.TaskSet = None
+
+
+    def _deserialize(self, params):
+        if params.get("TaskSet") is not None:
+            self.TaskSet = []
+            for item in params.get("TaskSet"):
+                obj = TaskInput()
+                obj._deserialize(item)
+                self.TaskSet.append(obj)
+
+
+class DescribeTaskStatusResponse(AbstractModel):
+    """DescribeTaskStatus返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param TaskSet: 任务描述
+        :type TaskSet: list of TaskOutput
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TaskSet = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("TaskSet") is not None:
+            self.TaskSet = []
+            for item in params.get("TaskSet"):
+                obj = TaskOutput()
+                obj._deserialize(item)
+                self.TaskSet.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeVpcsRequest(AbstractModel):
     """DescribeVpcs请求参数结构体
 
@@ -2400,6 +2511,8 @@ class Image(AbstractModel):
         :type ImageSize: int
         :param SrcImage: 镜像来源信息
         :type SrcImage: :class:`tencentcloud.ecm.v20190719.models.SrcImage`
+        :param ImageSource: 镜像来源类型
+        :type ImageSource: str
         """
         self.ImageId = None
         self.ImageName = None
@@ -2415,6 +2528,7 @@ class Image(AbstractModel):
         self.ImageOwner = None
         self.ImageSize = None
         self.SrcImage = None
+        self.ImageSource = None
 
 
     def _deserialize(self, params):
@@ -2434,6 +2548,7 @@ class Image(AbstractModel):
         if params.get("SrcImage") is not None:
             self.SrcImage = SrcImage()
             self.SrcImage._deserialize(params.get("SrcImage"))
+        self.ImageSource = params.get("ImageSource")
 
 
 class ImageOsList(AbstractModel):
@@ -3204,6 +3319,51 @@ class ModifyDefaultSubnetRequest(AbstractModel):
 
 class ModifyDefaultSubnetResponse(AbstractModel):
     """ModifyDefaultSubnet返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class ModifyImageAttributeRequest(AbstractModel):
+    """ModifyImageAttribute请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ImageId: 镜像ID，形如img-gvbnzy6f
+        :type ImageId: str
+        :param ImageName: 设置新的镜像名称；必须满足下列限制：
+不得超过20个字符。
+- 镜像名称不能与已有镜像重复。
+        :type ImageName: str
+        :param ImageDescription: 设置新的镜像描述；必须满足下列限制：
+- 不得超过60个字符。
+        :type ImageDescription: str
+        """
+        self.ImageId = None
+        self.ImageName = None
+        self.ImageDescription = None
+
+
+    def _deserialize(self, params):
+        self.ImageId = params.get("ImageId")
+        self.ImageName = params.get("ImageName")
+        self.ImageDescription = params.get("ImageDescription")
+
+
+class ModifyImageAttributeResponse(AbstractModel):
+    """ModifyImageAttribute返回参数结构体
 
     """
 
@@ -4544,6 +4704,8 @@ Windows 实例：名字符长度为[2, 15]，允许字母（不限制大小写�
         :type DataDiskSize: int
         :param SecurityGroupIds: 实例所属安全组。该参数可以通过调用 DescribeSecurityGroups 的返回值中的sgId字段来获取。若不指定该参数，则绑定默认安全组。
         :type SecurityGroupIds: list of str
+        :param SystemDiskSize: 系统盘大小，单位是G。如果未传该参数或者传的值为0，则使用模块下的默认值
+        :type SystemDiskSize: int
         """
         self.ZoneInstanceCountISPSet = None
         self.Password = None
@@ -4559,6 +4721,7 @@ Windows 实例：名字符长度为[2, 15]，允许字母（不限制大小写�
         self.InstanceType = None
         self.DataDiskSize = None
         self.SecurityGroupIds = None
+        self.SystemDiskSize = None
 
 
     def _deserialize(self, params):
@@ -4588,6 +4751,7 @@ Windows 实例：名字符长度为[2, 15]，允许字母（不限制大小写�
         self.InstanceType = params.get("InstanceType")
         self.DataDiskSize = params.get("DataDiskSize")
         self.SecurityGroupIds = params.get("SecurityGroupIds")
+        self.SystemDiskSize = params.get("SystemDiskSize")
 
 
 class RunInstancesResponse(AbstractModel):
@@ -4734,6 +4898,12 @@ class SrcImage(AbstractModel):
         :type RegionID: int
         :param RegionName: 区域名称
         :type RegionName: str
+        :param InstanceName: 来源实例名称
+        :type InstanceName: str
+        :param InstanceId: 来源实例ID
+        :type InstanceId: str
+        :param ImageType: 来源镜像类型
+        :type ImageType: str
         """
         self.ImageId = None
         self.ImageName = None
@@ -4742,6 +4912,9 @@ class SrcImage(AbstractModel):
         self.Region = None
         self.RegionID = None
         self.RegionName = None
+        self.InstanceName = None
+        self.InstanceId = None
+        self.ImageType = None
 
 
     def _deserialize(self, params):
@@ -4752,6 +4925,9 @@ class SrcImage(AbstractModel):
         self.Region = params.get("Region")
         self.RegionID = params.get("RegionID")
         self.RegionName = params.get("RegionName")
+        self.InstanceName = params.get("InstanceName")
+        self.InstanceId = params.get("InstanceId")
+        self.ImageType = params.get("ImageType")
 
 
 class StartInstancesRequest(AbstractModel):
@@ -4933,7 +5109,7 @@ class Tag(AbstractModel):
 
 
 class TagSpecification(AbstractModel):
-    """TagSpecification
+    """资源类型的Tag
 
     """
 
@@ -4956,6 +5132,64 @@ class TagSpecification(AbstractModel):
                 obj = Tag()
                 obj._deserialize(item)
                 self.Tags.append(obj)
+
+
+class TaskInput(AbstractModel):
+    """任务查询
+
+    """
+
+    def __init__(self):
+        """
+        :param Operation: 操作名，即API名称，比如：CreateImage
+        :type Operation: str
+        :param TaskId: 任务id
+        :type TaskId: str
+        """
+        self.Operation = None
+        self.TaskId = None
+
+
+    def _deserialize(self, params):
+        self.Operation = params.get("Operation")
+        self.TaskId = params.get("TaskId")
+
+
+class TaskOutput(AbstractModel):
+    """任务查询出参
+
+    """
+
+    def __init__(self):
+        """
+        :param TaskId: 任务id
+        :type TaskId: str
+        :param Message: 状态描述
+        :type Message: str
+        :param Status: 状态值，SUCCESS/FAILED/OPERATING
+        :type Status: str
+        :param AddTime: 任务提交时间
+        :type AddTime: str
+        :param EndTime: 任务结束时间
+        :type EndTime: str
+        :param Operation: 操作名
+        :type Operation: str
+        """
+        self.TaskId = None
+        self.Message = None
+        self.Status = None
+        self.AddTime = None
+        self.EndTime = None
+        self.Operation = None
+
+
+    def _deserialize(self, params):
+        self.TaskId = params.get("TaskId")
+        self.Message = params.get("Message")
+        self.Status = params.get("Status")
+        self.AddTime = params.get("AddTime")
+        self.EndTime = params.get("EndTime")
+        self.Operation = params.get("Operation")
 
 
 class TerminateInstancesRequest(AbstractModel):

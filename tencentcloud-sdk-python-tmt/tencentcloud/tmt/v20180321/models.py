@@ -215,6 +215,8 @@ class SpeechTranslateRequest(AbstractModel):
         :type ProjectId: int
         :param Mode: 识别模式，该参数已废弃
         :type Mode: str
+        :param TransType: 该参数已废弃
+        :type TransType: int
         """
         self.SessionUuid = None
         self.Source = None
@@ -225,6 +227,7 @@ class SpeechTranslateRequest(AbstractModel):
         self.Data = None
         self.ProjectId = None
         self.Mode = None
+        self.TransType = None
 
 
     def _deserialize(self, params):
@@ -237,6 +240,7 @@ class SpeechTranslateRequest(AbstractModel):
         self.Data = params.get("Data")
         self.ProjectId = params.get("ProjectId")
         self.Mode = params.get("Mode")
+        self.TransType = params.get("TransType")
 
 
 class SpeechTranslateResponse(AbstractModel):

@@ -188,6 +188,12 @@ class CreateDBInstanceHourRequest(AbstractModel):
         :type ProjectId: int
         :param Tags: 实例标签信息
         :type Tags: list of TagInfo
+        :param Clone: 1:正式实例,2:临时实例,3:只读实例，4：灾备实例
+        :type Clone: int
+        :param Father: 父实例Id，当Clone为3或者4时，这个必须填
+        :type Father: str
+        :param SecurityGroup: 安全组
+        :type SecurityGroup: list of str
         """
         self.Memory = None
         self.Volume = None
@@ -203,6 +209,9 @@ class CreateDBInstanceHourRequest(AbstractModel):
         self.Password = None
         self.ProjectId = None
         self.Tags = None
+        self.Clone = None
+        self.Father = None
+        self.SecurityGroup = None
 
 
     def _deserialize(self, params):
@@ -225,6 +234,9 @@ class CreateDBInstanceHourRequest(AbstractModel):
                 obj = TagInfo()
                 obj._deserialize(item)
                 self.Tags.append(obj)
+        self.Clone = params.get("Clone")
+        self.Father = params.get("Father")
+        self.SecurityGroup = params.get("SecurityGroup")
 
 
 class CreateDBInstanceHourResponse(AbstractModel):
@@ -265,7 +277,7 @@ class CreateDBInstanceRequest(AbstractModel):
         :type Memory: int
         :param Volume: 实例硬盘大小，单位：GB
         :type Volume: int
-        :param MongoVersion: 版本号，具体支持的售卖版本请参照查询云数据库的售卖规格（DescribeSpecInfo）返回结果。参数与版本对应关系是MONGO_3_WT：MongoDB 3.2 WiredTiger存储引擎版本，MONGO_3_ROCKS：MongoDB 3.2 RocksDB存储引擎版本，MONGO_36_WT：MongoDB 3.6 WiredTiger存储引擎版本
+        :param MongoVersion: 版本号，具体支持的售卖版本请参照查询云数据库的售卖规格（DescribeSpecInfo）返回结果。参数与版本对应关系是MONGO_3_WT：MongoDB 3.2 WiredTiger存储引擎版本，MONGO_3_ROCKS：MongoDB 3.2 RocksDB存储引擎版本，MONGO_36_WT：MongoDB 3.6 WiredTiger存储引擎版本，MONGO_40_WT：MongoDB 4.0 WiredTiger存储引擎版本
         :type MongoVersion: str
         :param GoodsNum: 实例数量, 最小值1，最大值为10
         :type GoodsNum: int
@@ -273,11 +285,11 @@ class CreateDBInstanceRequest(AbstractModel):
         :type Zone: str
         :param Period: 实例时长，单位：月，可选值包括 [1,2,3,4,5,6,7,8,9,10,11,12,24,36]
         :type Period: int
-        :param MachineCode: 机器类型，HIO：高IO型；HIO10G：高IO万兆型
+        :param MachineCode: 机器类型，HIO：高IO型；HIO10G：高IO万兆型；STDS5：标准型
         :type MachineCode: str
-        :param ClusterType: 实例类型，REPLSET-副本集，SHARD-分片集群
+        :param ClusterType: 实例类型，REPLSET-副本集，SHARD-分片集群，STANDALONE-单节点
         :type ClusterType: str
-        :param ReplicateSetNum: 副本集个数，创建副本集实例时，该参数必须设置为1；创建分片实例时，具体参照查询云数据库的售卖规格返回参数
+        :param ReplicateSetNum: 副本集个数，创建副本集实例时，该参数必须设置为1；创建分片实例时，具体参照查询云数据库的售卖规格返回参数；若为单节点实例，该参数设置为0
         :type ReplicateSetNum: int
         :param ProjectId: 项目ID，不设置为默认项目
         :type ProjectId: int
@@ -291,6 +303,14 @@ class CreateDBInstanceRequest(AbstractModel):
         :type Tags: list of TagInfo
         :param AutoRenewFlag: 自动续费标记，可选值为：0 - 不自动续费；1 - 自动续费。默认为不自动续费
         :type AutoRenewFlag: int
+        :param AutoVoucher: 是否自动选择代金券，可选值为：1 - 是；0 - 否； 默认为0
+        :type AutoVoucher: int
+        :param Clone: 1:正式实例,2:临时实例,3:只读实例，4：灾备实例
+        :type Clone: int
+        :param Father: 若是只读，灾备实例，Father必须填写，即主实例ID
+        :type Father: str
+        :param SecurityGroup: 安全组
+        :type SecurityGroup: list of str
         """
         self.NodeNum = None
         self.Memory = None
@@ -308,6 +328,10 @@ class CreateDBInstanceRequest(AbstractModel):
         self.Password = None
         self.Tags = None
         self.AutoRenewFlag = None
+        self.AutoVoucher = None
+        self.Clone = None
+        self.Father = None
+        self.SecurityGroup = None
 
 
     def _deserialize(self, params):
@@ -332,6 +356,10 @@ class CreateDBInstanceRequest(AbstractModel):
                 obj._deserialize(item)
                 self.Tags.append(obj)
         self.AutoRenewFlag = params.get("AutoRenewFlag")
+        self.AutoVoucher = params.get("AutoVoucher")
+        self.Clone = params.get("Clone")
+        self.Father = params.get("Father")
+        self.SecurityGroup = params.get("SecurityGroup")
 
 
 class CreateDBInstanceResponse(AbstractModel):

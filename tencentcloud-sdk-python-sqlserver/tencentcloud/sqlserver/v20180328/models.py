@@ -250,6 +250,44 @@ class Backup(AbstractModel):
         self.BackupWay = params.get("BackupWay")
 
 
+class CompleteExpansionRequest(AbstractModel):
+    """CompleteExpansion请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param InstanceId: 实例ID，形如mssql-j8kv137v
+        :type InstanceId: str
+        """
+        self.InstanceId = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+
+
+class CompleteExpansionResponse(AbstractModel):
+    """CompleteExpansion返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param FlowId: 流程ID，可通过接口DescribeFlowStatus查询立即切换升级任务的状态。
+        :type FlowId: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.FlowId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.FlowId = params.get("FlowId")
+        self.RequestId = params.get("RequestId")
+
+
 class CreateAccountRequest(AbstractModel):
     """CreateAccount请求参数结构体
 
@@ -376,6 +414,18 @@ class CreateDBInstancesRequest(AbstractModel):
         :type DBVersion: str
         :param AutoRenewFlag: 自动续费标志：0-正常续费  1-自动续费，默认为1自动续费。只在购买预付费实例时有效。
         :type AutoRenewFlag: int
+        :param SecurityGroupList: 安全组列表，填写形如sg-xxx的安全组ID
+        :type SecurityGroupList: list of str
+        :param Weekly: 可维护时间窗配置，以周为单位，表示周几允许维护，1-7分别代表周一到周末
+        :type Weekly: list of int
+        :param StartTime: 可维护时间窗配置，每天可维护的开始时间
+        :type StartTime: str
+        :param Span: 可维护时间窗配置，持续时间，单位：小时
+        :type Span: int
+        :param HAType: 购买高可用实例的类型：DUAL-双机高可用  CLUSTER-集群，默认值为DUAL
+        :type HAType: str
+        :param MultiZones: 是否跨可用区部署，默认值为false
+        :type MultiZones: bool
         """
         self.Zone = None
         self.Memory = None
@@ -390,6 +440,12 @@ class CreateDBInstancesRequest(AbstractModel):
         self.VoucherIds = None
         self.DBVersion = None
         self.AutoRenewFlag = None
+        self.SecurityGroupList = None
+        self.Weekly = None
+        self.StartTime = None
+        self.Span = None
+        self.HAType = None
+        self.MultiZones = None
 
 
     def _deserialize(self, params):
@@ -406,6 +462,12 @@ class CreateDBInstancesRequest(AbstractModel):
         self.VoucherIds = params.get("VoucherIds")
         self.DBVersion = params.get("DBVersion")
         self.AutoRenewFlag = params.get("AutoRenewFlag")
+        self.SecurityGroupList = params.get("SecurityGroupList")
+        self.Weekly = params.get("Weekly")
+        self.StartTime = params.get("StartTime")
+        self.Span = params.get("Span")
+        self.HAType = params.get("HAType")
+        self.MultiZones = params.get("MultiZones")
 
 
 class CreateDBInstancesResponse(AbstractModel):
@@ -544,6 +606,61 @@ class CreateMigrationResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.MigrateId = params.get("MigrateId")
+        self.RequestId = params.get("RequestId")
+
+
+class CreatePublishSubscribeRequest(AbstractModel):
+    """CreatePublishSubscribe请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param PublishInstanceId: 发布实例ID，形如mssql-j8kv137v
+        :type PublishInstanceId: str
+        :param SubscribeInstanceId: 订阅实例ID，形如mssql-j8kv137v
+        :type SubscribeInstanceId: str
+        :param DatabaseTupleSet: 数据库的订阅发布关系集合
+        :type DatabaseTupleSet: list of DatabaseTuple
+        :param PublishSubscribeName: 发布订阅的名称，默认值为：default_name
+        :type PublishSubscribeName: str
+        """
+        self.PublishInstanceId = None
+        self.SubscribeInstanceId = None
+        self.DatabaseTupleSet = None
+        self.PublishSubscribeName = None
+
+
+    def _deserialize(self, params):
+        self.PublishInstanceId = params.get("PublishInstanceId")
+        self.SubscribeInstanceId = params.get("SubscribeInstanceId")
+        if params.get("DatabaseTupleSet") is not None:
+            self.DatabaseTupleSet = []
+            for item in params.get("DatabaseTupleSet"):
+                obj = DatabaseTuple()
+                obj._deserialize(item)
+                self.DatabaseTupleSet.append(obj)
+        self.PublishSubscribeName = params.get("PublishSubscribeName")
+
+
+class CreatePublishSubscribeResponse(AbstractModel):
+    """CreatePublishSubscribe返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param FlowId: 流程ID，可通过接口DescribeFlowStatus查询立即切换升级任务的状态。
+        :type FlowId: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.FlowId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.FlowId = params.get("FlowId")
         self.RequestId = params.get("RequestId")
 
 
@@ -698,6 +815,18 @@ class DBInstance(AbstractModel):
         :type UniqVpcId: str
         :param UniqSubnetId: 实例所属子网的唯一字符串ID，格式如： subnet-xxx，基础网络时为空字符串
         :type UniqSubnetId: str
+        :param IsolateOperator: 实例隔离操作
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IsolateOperator: str
+        :param SubFlag: 发布订阅标识，SUB-订阅实例，PUB-发布实例，空值-没有发布订阅的普通实例
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SubFlag: str
+        :param ROFlag: 只读标识，RO-只读实例，MASTER-有RO实例的主实例，空值-没有只读组的非RO实例
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ROFlag: str
+        :param HAFlag: 容灾类型，MIRROR-镜像，ALWAYSON-AlwaysOn, SINGLE-单例
+注意：此字段可能返回 null，表示取不到有效值。
+        :type HAFlag: str
         """
         self.InstanceId = None
         self.Name = None
@@ -731,6 +860,10 @@ class DBInstance(AbstractModel):
         self.Pid = None
         self.UniqVpcId = None
         self.UniqSubnetId = None
+        self.IsolateOperator = None
+        self.SubFlag = None
+        self.ROFlag = None
+        self.HAFlag = None
 
 
     def _deserialize(self, params):
@@ -766,6 +899,10 @@ class DBInstance(AbstractModel):
         self.Pid = params.get("Pid")
         self.UniqVpcId = params.get("UniqVpcId")
         self.UniqSubnetId = params.get("UniqSubnetId")
+        self.IsolateOperator = params.get("IsolateOperator")
+        self.SubFlag = params.get("SubFlag")
+        self.ROFlag = params.get("ROFlag")
+        self.HAFlag = params.get("HAFlag")
 
 
 class DBPrivilege(AbstractModel):
@@ -829,6 +966,56 @@ class DBRemark(AbstractModel):
     def _deserialize(self, params):
         self.Name = params.get("Name")
         self.Remark = params.get("Remark")
+
+
+class DatabaseTuple(AbstractModel):
+    """该数据结构表示具有发布订阅关系的两个数据库。
+
+    """
+
+    def __init__(self):
+        """
+        :param PublishDatabase: 发布数据库名称
+        :type PublishDatabase: str
+        :param SubscribeDatabase: 订阅数据库名称
+        :type SubscribeDatabase: str
+        """
+        self.PublishDatabase = None
+        self.SubscribeDatabase = None
+
+
+    def _deserialize(self, params):
+        self.PublishDatabase = params.get("PublishDatabase")
+        self.SubscribeDatabase = params.get("SubscribeDatabase")
+
+
+class DatabaseTupleStatus(AbstractModel):
+    """该数据结构表示具有发布订阅关系的两个数据库，以及其之间发布订阅的状态信息。
+
+    """
+
+    def __init__(self):
+        """
+        :param PublishDatabase: 发布数据库名称
+        :type PublishDatabase: str
+        :param SubscribeDatabase: 订阅数据库名称
+        :type SubscribeDatabase: str
+        :param LastSyncTime: 最近一次同步时间
+        :type LastSyncTime: str
+        :param Status: 数据库之间的发布订阅状态 running，success，fail，unknow
+        :type Status: str
+        """
+        self.PublishDatabase = None
+        self.SubscribeDatabase = None
+        self.LastSyncTime = None
+        self.Status = None
+
+
+    def _deserialize(self, params):
+        self.PublishDatabase = params.get("PublishDatabase")
+        self.SubscribeDatabase = params.get("SubscribeDatabase")
+        self.LastSyncTime = params.get("LastSyncTime")
+        self.Status = params.get("Status")
 
 
 class DbRollbackTimeInfo(AbstractModel):
@@ -996,6 +1183,49 @@ class DeleteMigrationRequest(AbstractModel):
 
 class DeleteMigrationResponse(AbstractModel):
     """DeleteMigration返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class DeletePublishSubscribeRequest(AbstractModel):
+    """DeletePublishSubscribe请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param PublishSubscribeId: 发布订阅ID，可通过DescribePublishSubscribe接口获得
+        :type PublishSubscribeId: int
+        :param DatabaseTupleSet: 待删除的数据库的订阅发布关系集合
+        :type DatabaseTupleSet: list of DatabaseTuple
+        """
+        self.PublishSubscribeId = None
+        self.DatabaseTupleSet = None
+
+
+    def _deserialize(self, params):
+        self.PublishSubscribeId = params.get("PublishSubscribeId")
+        if params.get("DatabaseTupleSet") is not None:
+            self.DatabaseTupleSet = []
+            for item in params.get("DatabaseTupleSet"):
+                obj = DatabaseTuple()
+                obj._deserialize(item)
+                self.DatabaseTupleSet.append(obj)
+
+
+class DeletePublishSubscribeResponse(AbstractModel):
+    """DeletePublishSubscribe返回参数结构体
 
     """
 
@@ -1313,6 +1543,52 @@ class DescribeFlowStatusResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeMaintenanceSpanRequest(AbstractModel):
+    """DescribeMaintenanceSpan请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param InstanceId: 实例ID，形如mssql-k8voqdlz
+        :type InstanceId: str
+        """
+        self.InstanceId = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+
+
+class DescribeMaintenanceSpanResponse(AbstractModel):
+    """DescribeMaintenanceSpan返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Weekly: 以周为单位，表示周几允许维护，例如：[1,2,3,4,5,6,7]表示周一到周日均为可维护日。
+        :type Weekly: list of int
+        :param StartTime: 每天可维护的开始时间，例如：10:24标识可维护时间窗10点24分开始。
+        :type StartTime: str
+        :param Span: 每天可维护的持续时间，单位是h，例如：1 表示从可维护的开始时间起持续1小时。
+        :type Span: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Weekly = None
+        self.StartTime = None
+        self.Span = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Weekly = params.get("Weekly")
+        self.StartTime = params.get("StartTime")
+        self.Span = params.get("Span")
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeMigrationDetailRequest(AbstractModel):
     """DescribeMigrationDetail请求参数结构体
 
@@ -1573,6 +1849,85 @@ class DescribeProductConfigResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribePublishSubscribeRequest(AbstractModel):
+    """DescribePublishSubscribe请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param InstanceId: 实例ID，形如mssql-j8kv137v
+        :type InstanceId: str
+        :param PubOrSubInstanceId: 订阅/发布实例ID，与InstanceId是发布实例还是订阅实例有关；当InstanceId为发布实例时，本字段按照订阅实例ID做筛选；当InstanceId为订阅实例时，本字段按照发布实例ID做筛选；
+        :type PubOrSubInstanceId: str
+        :param PubOrSubInstanceIp: 订阅/发布实例内网IP，与InstanceId是发布实例还是订阅实例有关；当InstanceId为发布实例时，本字段按照订阅实例内网IP做筛选；当InstanceId为订阅实例时，本字段按照发布实例内网IP做筛选；
+        :type PubOrSubInstanceIp: str
+        :param PublishSubscribeId: 订阅发布ID，用于筛选
+        :type PublishSubscribeId: int
+        :param PublishSubscribeName: 订阅发布名字，用于筛选
+        :type PublishSubscribeName: str
+        :param PublishDBName: 发布库名字，用于筛选
+        :type PublishDBName: str
+        :param SubscribeDBName: 订阅库名字，用于筛选
+        :type SubscribeDBName: str
+        :param Offset: 分页，页数
+        :type Offset: int
+        :param Limit: 分页，页大小
+        :type Limit: int
+        """
+        self.InstanceId = None
+        self.PubOrSubInstanceId = None
+        self.PubOrSubInstanceIp = None
+        self.PublishSubscribeId = None
+        self.PublishSubscribeName = None
+        self.PublishDBName = None
+        self.SubscribeDBName = None
+        self.Offset = None
+        self.Limit = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.PubOrSubInstanceId = params.get("PubOrSubInstanceId")
+        self.PubOrSubInstanceIp = params.get("PubOrSubInstanceIp")
+        self.PublishSubscribeId = params.get("PublishSubscribeId")
+        self.PublishSubscribeName = params.get("PublishSubscribeName")
+        self.PublishDBName = params.get("PublishDBName")
+        self.SubscribeDBName = params.get("SubscribeDBName")
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+
+
+class DescribePublishSubscribeResponse(AbstractModel):
+    """DescribePublishSubscribe返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param TotalCount: 总数
+        :type TotalCount: int
+        :param PublishSubscribeSet: 发布订阅列表
+        :type PublishSubscribeSet: list of PublishSubscribe
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.PublishSubscribeSet = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("PublishSubscribeSet") is not None:
+            self.PublishSubscribeSet = []
+            for item in params.get("PublishSubscribeSet"):
+                obj = PublishSubscribe()
+                obj._deserialize(item)
+                self.PublishSubscribeSet.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeRegionsRequest(AbstractModel):
     """DescribeRegions请求参数结构体
 
@@ -1776,6 +2131,12 @@ class InquiryPriceCreateDBInstancesRequest(AbstractModel):
         :type GoodsNum: int
         :param DBVersion: sqlserver版本，目前只支持：2008R2（SQL Server 2008 Enterprise），2012SP3（SQL Server 2012 Enterprise），2016SP1（SQL Server 2016 Enterprise），201602（SQL Server 2016 Standard）2017（SQL Server 2017 Enterprise）版本。默认为2008R2版本
         :type DBVersion: str
+        :param Cpu: 预购买实例的CPU核心数
+        :type Cpu: int
+        :param InstanceType: 购买实例的类型 HA-高可用型(包括双机高可用，alwaysOn集群)，RO-只读副本，SI-基础版，默认取值HA
+        :type InstanceType: str
+        :param MachineType: 购买实例的宿主机类型，PM-物理机, CLOUD_PREMIUM-虚拟机高性能云盘，CLOUD_SSD-虚拟机SSD云盘，默认取值PM
+        :type MachineType: str
         """
         self.Zone = None
         self.Memory = None
@@ -1784,6 +2145,9 @@ class InquiryPriceCreateDBInstancesRequest(AbstractModel):
         self.Period = None
         self.GoodsNum = None
         self.DBVersion = None
+        self.Cpu = None
+        self.InstanceType = None
+        self.MachineType = None
 
 
     def _deserialize(self, params):
@@ -1794,6 +2158,9 @@ class InquiryPriceCreateDBInstancesRequest(AbstractModel):
         self.Period = params.get("Period")
         self.GoodsNum = params.get("GoodsNum")
         self.DBVersion = params.get("DBVersion")
+        self.Cpu = params.get("Cpu")
+        self.InstanceType = params.get("InstanceType")
+        self.MachineType = params.get("MachineType")
 
 
 class InquiryPriceCreateDBInstancesResponse(AbstractModel):
@@ -1884,16 +2251,20 @@ class InquiryPriceUpgradeDBInstanceRequest(AbstractModel):
         :type Memory: int
         :param Storage: 实例升级后的磁盘大小，单位GB，其值不能比当前实例磁盘小
         :type Storage: int
+        :param Cpu: 实例升级后的CPU核心数，其值不能比当前实例CPU小
+        :type Cpu: int
         """
         self.InstanceId = None
         self.Memory = None
         self.Storage = None
+        self.Cpu = None
 
 
     def _deserialize(self, params):
         self.InstanceId = params.get("InstanceId")
         self.Memory = params.get("Memory")
         self.Storage = params.get("Storage")
+        self.Cpu = params.get("Cpu")
 
 
 class InquiryPriceUpgradeDBInstanceResponse(AbstractModel):
@@ -2241,6 +2612,60 @@ class ModifyAccountRemarkResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class ModifyBackupStrategyRequest(AbstractModel):
+    """ModifyBackupStrategy请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param InstanceId: 实例ID
+        :type InstanceId: str
+        :param BackupType: 备份类型，当前只支持按天备份，取值为daily
+        :type BackupType: str
+        :param BackupTime: 备份时间点，取值为0-23的整数
+        :type BackupTime: int
+        :param BackupDay: BackupType取值为daily时，表示备份间隔天数。当前取值只能为1
+        :type BackupDay: int
+        """
+        self.InstanceId = None
+        self.BackupType = None
+        self.BackupTime = None
+        self.BackupDay = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.BackupType = params.get("BackupType")
+        self.BackupTime = params.get("BackupTime")
+        self.BackupDay = params.get("BackupDay")
+
+
+class ModifyBackupStrategyResponse(AbstractModel):
+    """ModifyBackupStrategy返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Errno: 返回错误码
+        :type Errno: int
+        :param Msg: 返回错误信息
+        :type Msg: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Errno = None
+        self.Msg = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Errno = params.get("Errno")
+        self.Msg = params.get("Msg")
+        self.RequestId = params.get("RequestId")
+
+
 class ModifyDBInstanceNameRequest(AbstractModel):
     """ModifyDBInstanceName请求参数结构体
 
@@ -2453,6 +2878,52 @@ class ModifyDBRemarkResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class ModifyMaintenanceSpanRequest(AbstractModel):
+    """ModifyMaintenanceSpan请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param InstanceId: 实例ID，形如mssql-k8voqdlz
+        :type InstanceId: str
+        :param Weekly: 以周为单位，表示允许周几维护，例如：[1,2,3,4,5,6,7]表示周一到周日均为可维护日，本参数不填，则不修改此值。
+        :type Weekly: list of int
+        :param StartTime: 每天可维护的开始时间，例如：10:24标识可维护时间窗10点24分开始，本参数不填，则不修改此值。
+        :type StartTime: str
+        :param Span: 每天可维护的持续时间，单位是h，例如：1 表示从可维护的开始时间起持续1小时，本参数不填，则不修改此值。
+        :type Span: int
+        """
+        self.InstanceId = None
+        self.Weekly = None
+        self.StartTime = None
+        self.Span = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.Weekly = params.get("Weekly")
+        self.StartTime = params.get("StartTime")
+        self.Span = params.get("Span")
+
+
+class ModifyMaintenanceSpanResponse(AbstractModel):
+    """ModifyMaintenanceSpan返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class ModifyMigrationRequest(AbstractModel):
     """ModifyMigration请求参数结构体
 
@@ -2524,6 +2995,98 @@ class ModifyMigrationResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class ModifyPublishSubscribeNameRequest(AbstractModel):
+    """ModifyPublishSubscribeName请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param PublishSubscribeId: 发布订阅ID
+        :type PublishSubscribeId: int
+        :param PublishSubscribeName: 待修改的发布订阅名称
+        :type PublishSubscribeName: str
+        """
+        self.PublishSubscribeId = None
+        self.PublishSubscribeName = None
+
+
+    def _deserialize(self, params):
+        self.PublishSubscribeId = params.get("PublishSubscribeId")
+        self.PublishSubscribeName = params.get("PublishSubscribeName")
+
+
+class ModifyPublishSubscribeNameResponse(AbstractModel):
+    """ModifyPublishSubscribeName返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class PublishSubscribe(AbstractModel):
+    """发布订阅对象
+
+    """
+
+    def __init__(self):
+        """
+        :param Id: 发布订阅ID
+        :type Id: int
+        :param Name: 发布订阅名称
+        :type Name: str
+        :param PublishInstanceId: 发布实例ID
+        :type PublishInstanceId: str
+        :param PublishInstanceName: 发布实例名称
+        :type PublishInstanceName: str
+        :param PublishInstanceIp: 发布实例IP
+        :type PublishInstanceIp: str
+        :param SubscribeInstanceId: 订阅实例ID
+        :type SubscribeInstanceId: str
+        :param SubscribeInstanceName: 订阅实例名称
+        :type SubscribeInstanceName: str
+        :param SubscribeInstanceIp: 订阅实例IP
+        :type SubscribeInstanceIp: str
+        :param DatabaseTupleSet: 数据库的订阅发布关系集合
+        :type DatabaseTupleSet: list of DatabaseTupleStatus
+        """
+        self.Id = None
+        self.Name = None
+        self.PublishInstanceId = None
+        self.PublishInstanceName = None
+        self.PublishInstanceIp = None
+        self.SubscribeInstanceId = None
+        self.SubscribeInstanceName = None
+        self.SubscribeInstanceIp = None
+        self.DatabaseTupleSet = None
+
+
+    def _deserialize(self, params):
+        self.Id = params.get("Id")
+        self.Name = params.get("Name")
+        self.PublishInstanceId = params.get("PublishInstanceId")
+        self.PublishInstanceName = params.get("PublishInstanceName")
+        self.PublishInstanceIp = params.get("PublishInstanceIp")
+        self.SubscribeInstanceId = params.get("SubscribeInstanceId")
+        self.SubscribeInstanceName = params.get("SubscribeInstanceName")
+        self.SubscribeInstanceIp = params.get("SubscribeInstanceIp")
+        if params.get("DatabaseTupleSet") is not None:
+            self.DatabaseTupleSet = []
+            for item in params.get("DatabaseTupleSet"):
+                obj = DatabaseTupleStatus()
+                obj._deserialize(item)
+                self.DatabaseTupleSet.append(obj)
+
+
 class RegionInfo(AbstractModel):
     """地域信息
 
@@ -2551,6 +3114,44 @@ class RegionInfo(AbstractModel):
         self.RegionName = params.get("RegionName")
         self.RegionId = params.get("RegionId")
         self.RegionState = params.get("RegionState")
+
+
+class RemoveBackupsRequest(AbstractModel):
+    """RemoveBackups请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param InstanceId: 实例ID，形如mssql-j8kv137v
+        :type InstanceId: str
+        :param BackupNames: 待删除的备份名称，备份名称可通过DescribeBackups接口的FileName字段获得。单次请求批量删除备份数不能超过10个。
+        :type BackupNames: list of str
+        """
+        self.InstanceId = None
+        self.BackupNames = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.BackupNames = params.get("BackupNames")
+
+
+class RemoveBackupsResponse(AbstractModel):
+    """RemoveBackups返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
 
 
 class RenewDBInstanceRequest(AbstractModel):
@@ -2985,12 +3586,15 @@ class UpgradeDBInstanceRequest(AbstractModel):
         :type AutoVoucher: int
         :param VoucherIds: 代金券ID，目前单个订单只能使用一张代金券
         :type VoucherIds: list of str
+        :param Cpu: 实例升级后的CPU核心数
+        :type Cpu: int
         """
         self.InstanceId = None
         self.Memory = None
         self.Storage = None
         self.AutoVoucher = None
         self.VoucherIds = None
+        self.Cpu = None
 
 
     def _deserialize(self, params):
@@ -2999,6 +3603,7 @@ class UpgradeDBInstanceRequest(AbstractModel):
         self.Storage = params.get("Storage")
         self.AutoVoucher = params.get("AutoVoucher")
         self.VoucherIds = params.get("VoucherIds")
+        self.Cpu = params.get("Cpu")
 
 
 class UpgradeDBInstanceResponse(AbstractModel):

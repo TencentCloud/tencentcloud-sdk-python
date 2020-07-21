@@ -165,6 +165,34 @@ class DbbrainClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeTopSpaceTableTimeSeries(self, request):
+        """获取实例占用空间最大的前几张表在指定时间段内的每日由DBbrain定时采集的空间数据，默认返回按大小排序。
+
+        :param request: Request instance for DescribeTopSpaceTableTimeSeries.
+        :type request: :class:`tencentcloud.dbbrain.v20191016.models.DescribeTopSpaceTableTimeSeriesRequest`
+        :rtype: :class:`tencentcloud.dbbrain.v20191016.models.DescribeTopSpaceTableTimeSeriesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeTopSpaceTableTimeSeries", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeTopSpaceTableTimeSeriesResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeTopSpaceTables(self, request):
         """获取实例Top表的实时空间统计信息，默认返回按大小排序。
 

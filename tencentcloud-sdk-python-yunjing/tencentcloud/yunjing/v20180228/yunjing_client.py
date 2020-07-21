@@ -109,6 +109,34 @@ class YunjingClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def CreateBaselineStrategy(self, request):
+        """根据策略信息创建基线策略
+
+        :param request: Request instance for CreateBaselineStrategy.
+        :type request: :class:`tencentcloud.yunjing.v20180228.models.CreateBaselineStrategyRequest`
+        :rtype: :class:`tencentcloud.yunjing.v20180228.models.CreateBaselineStrategyResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("CreateBaselineStrategy", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateBaselineStrategyResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def CreateOpenPortTask(self, request):
         """本接口 (CreateOpenPortTask) 用于创建实时获取端口任务。
 
