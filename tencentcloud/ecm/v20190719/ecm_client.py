@@ -143,6 +143,34 @@ class EcmClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def CreateImage(self, request):
+        """本接口(CreateImage)用于将实例的系统盘制作为新镜像，创建后的镜像可以用于创建实例。
+
+        :param request: Request instance for CreateImage.
+        :type request: :class:`tencentcloud.ecm.v20190719.models.CreateImageRequest`
+        :rtype: :class:`tencentcloud.ecm.v20190719.models.CreateImageResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("CreateImage", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateImageResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def CreateModule(self, request):
         """创建模块
 
@@ -983,6 +1011,34 @@ class EcmClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeTaskStatus(self, request):
+        """本接口(DescribeTaskStatus)用于获取异步任务状态
+
+        :param request: Request instance for DescribeTaskStatus.
+        :type request: :class:`tencentcloud.ecm.v20190719.models.DescribeTaskStatusRequest`
+        :rtype: :class:`tencentcloud.ecm.v20190719.models.DescribeTaskStatusResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeTaskStatus", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeTaskStatusResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeVpcs(self, request):
         """查询私有网络列表
 
@@ -1253,6 +1309,34 @@ class EcmClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyDefaultSubnetResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ModifyImageAttribute(self, request):
+        """本接口（ModifyImageAttribute）用于修改镜像属性。
+
+        :param request: Request instance for ModifyImageAttribute.
+        :type request: :class:`tencentcloud.ecm.v20190719.models.ModifyImageAttributeRequest`
+        :rtype: :class:`tencentcloud.ecm.v20190719.models.ModifyImageAttributeResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ModifyImageAttribute", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ModifyImageAttributeResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
