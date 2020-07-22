@@ -473,6 +473,34 @@ class CamClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DeleteRolePermissionsBoundary(self, request):
+        """删除角色权限边界
+
+        :param request: Request instance for DeleteRolePermissionsBoundary.
+        :type request: :class:`tencentcloud.cam.v20190116.models.DeleteRolePermissionsBoundaryRequest`
+        :rtype: :class:`tencentcloud.cam.v20190116.models.DeleteRolePermissionsBoundaryResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DeleteRolePermissionsBoundary", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DeleteRolePermissionsBoundaryResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DeleteSAMLProvider(self, request):
         """删除SAML身份提供商
 
@@ -543,6 +571,34 @@ class CamClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteUserResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DeleteUserPermissionsBoundary(self, request):
+        """删除用户权限边界
+
+        :param request: Request instance for DeleteUserPermissionsBoundary.
+        :type request: :class:`tencentcloud.cam.v20190116.models.DeleteUserPermissionsBoundaryRequest`
+        :rtype: :class:`tencentcloud.cam.v20190116.models.DeleteUserPermissionsBoundaryResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DeleteUserPermissionsBoundary", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DeleteUserPermissionsBoundaryResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -1243,6 +1299,62 @@ class CamClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ListUsersForGroupResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def PutRolePermissionsBoundary(self, request):
+        """设置角色权限边界
+
+        :param request: Request instance for PutRolePermissionsBoundary.
+        :type request: :class:`tencentcloud.cam.v20190116.models.PutRolePermissionsBoundaryRequest`
+        :rtype: :class:`tencentcloud.cam.v20190116.models.PutRolePermissionsBoundaryResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("PutRolePermissionsBoundary", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.PutRolePermissionsBoundaryResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def PutUserPermissionsBoundary(self, request):
+        """设置用户权限边界
+
+        :param request: Request instance for PutUserPermissionsBoundary.
+        :type request: :class:`tencentcloud.cam.v20190116.models.PutUserPermissionsBoundaryRequest`
+        :rtype: :class:`tencentcloud.cam.v20190116.models.PutUserPermissionsBoundaryResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("PutUserPermissionsBoundary", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.PutUserPermissionsBoundaryResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

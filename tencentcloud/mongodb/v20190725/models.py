@@ -153,6 +153,52 @@ class ClientConnection(AbstractModel):
         self.Count = params.get("Count")
 
 
+class CreateBackupDBInstanceRequest(AbstractModel):
+    """CreateBackupDBInstance请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param InstanceId: 实例id
+        :type InstanceId: str
+        :param BackupMethod: 0-逻辑备份，1-物理备份
+        :type BackupMethod: int
+        :param BackupRemark: 备份备注
+        :type BackupRemark: str
+        """
+        self.InstanceId = None
+        self.BackupMethod = None
+        self.BackupRemark = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.BackupMethod = params.get("BackupMethod")
+        self.BackupRemark = params.get("BackupRemark")
+
+
+class CreateBackupDBInstanceResponse(AbstractModel):
+    """CreateBackupDBInstance返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param AsyncRequestId: 查询备份流程的状态
+        :type AsyncRequestId: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.AsyncRequestId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.AsyncRequestId = params.get("AsyncRequestId")
+        self.RequestId = params.get("RequestId")
+
+
 class CreateDBInstanceHourRequest(AbstractModel):
     """CreateDBInstanceHour请求参数结构体
 
@@ -432,6 +478,44 @@ class DBInstancePrice(AbstractModel):
         self.UnitPrice = params.get("UnitPrice")
         self.OriginalPrice = params.get("OriginalPrice")
         self.DiscountPrice = params.get("DiscountPrice")
+
+
+class DescribeAsyncRequestInfoRequest(AbstractModel):
+    """DescribeAsyncRequestInfo请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param AsyncRequestId: 异步请求Id
+        :type AsyncRequestId: str
+        """
+        self.AsyncRequestId = None
+
+
+    def _deserialize(self, params):
+        self.AsyncRequestId = params.get("AsyncRequestId")
+
+
+class DescribeAsyncRequestInfoResponse(AbstractModel):
+    """DescribeAsyncRequestInfo返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Status: 状态
+        :type Status: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Status = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Status = params.get("Status")
+        self.RequestId = params.get("RequestId")
 
 
 class DescribeBackupAccessRequest(AbstractModel):
@@ -1532,6 +1616,52 @@ class RenewDBInstancesResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class ResetDBInstancePasswordRequest(AbstractModel):
+    """ResetDBInstancePassword请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param InstanceId: 实例Id
+        :type InstanceId: str
+        :param UserName: 实例账号名
+        :type UserName: str
+        :param Password: 新密码
+        :type Password: str
+        """
+        self.InstanceId = None
+        self.UserName = None
+        self.Password = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.UserName = params.get("UserName")
+        self.Password = params.get("Password")
+
+
+class ResetDBInstancePasswordResponse(AbstractModel):
+    """ResetDBInstancePassword返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param AsyncRequestId: 异步请求Id，用户查询该流程的运行状态
+        :type AsyncRequestId: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.AsyncRequestId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.AsyncRequestId = params.get("AsyncRequestId")
         self.RequestId = params.get("RequestId")
 
 

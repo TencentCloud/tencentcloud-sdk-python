@@ -812,22 +812,28 @@ class LayoutParams(AbstractModel):
 
     def __init__(self):
         """
-        :param Template: 混流布局模板ID，0为悬浮模板(默认);1为九宫格模板;2为屏幕分享模板
+        :param Template: 混流布局模板ID，0为悬浮模板(默认);1为九宫格模板;2为屏幕分享模板;3为画中画模板。
         :type Template: int
-        :param MainVideoUserId: 屏幕分享模板中有效，代表左侧大画面对应的用户ID
+        :param MainVideoUserId: 屏幕分享模板、悬浮模板、画中画模板中有效，代表大画面对应的用户ID。
         :type MainVideoUserId: str
-        :param MainVideoStreamType: 屏幕分享模板中有效，代表左侧大画面对应的流类型，0为摄像头，1为屏幕分享。左侧大画面为web用户时此值填0
+        :param MainVideoStreamType: 屏幕分享模板、悬浮模板、画中画模板中有效，代表大画面对应的流类型，0为摄像头，1为屏幕分享。左侧大画面为web用户时此值填0。
         :type MainVideoStreamType: int
+        :param SmallVideoLayoutParams: 画中画模板中有效，代表小画面的布局参数。
+        :type SmallVideoLayoutParams: :class:`tencentcloud.trtc.v20190722.models.SmallVideoLayoutParams`
         """
         self.Template = None
         self.MainVideoUserId = None
         self.MainVideoStreamType = None
+        self.SmallVideoLayoutParams = None
 
 
     def _deserialize(self, params):
         self.Template = params.get("Template")
         self.MainVideoUserId = params.get("MainVideoUserId")
         self.MainVideoStreamType = params.get("MainVideoStreamType")
+        if params.get("SmallVideoLayoutParams") is not None:
+            self.SmallVideoLayoutParams = SmallVideoLayoutParams()
+            self.SmallVideoLayoutParams._deserialize(params.get("SmallVideoLayoutParams"))
 
 
 class OutputParams(AbstractModel):
@@ -1030,6 +1036,43 @@ class ScaleInfomation(AbstractModel):
         self.UserNumber = params.get("UserNumber")
         self.UserCount = params.get("UserCount")
         self.RoomNumbers = params.get("RoomNumbers")
+
+
+class SmallVideoLayoutParams(AbstractModel):
+    """画中画模板中有效，代表小画面的布局参数
+
+    """
+
+    def __init__(self):
+        """
+        :param UserId: 代表小画面对应的用户ID。
+        :type UserId: str
+        :param StreamType: 代表小画面对应的流类型，0为摄像头，1为屏幕分享。小画面为web用户时此值填0。
+        :type StreamType: int
+        :param ImageWidth: 小画面在输出时的宽度，单位为像素值，不填默认为0。
+        :type ImageWidth: int
+        :param ImageHeight: 小画面在输出时的高度，单位为像素值，不填默认为0。
+        :type ImageHeight: int
+        :param LocationX: 小画面在输出时的X偏移，单位为像素值，LocationX与ImageWidth之和不能超过混流输出的总宽度，不填默认为0。
+        :type LocationX: int
+        :param LocationY: 小画面在输出时的Y偏移，单位为像素值，LocationY与ImageHeight之和不能超过混流输出的总高度，不填默认为0。
+        :type LocationY: int
+        """
+        self.UserId = None
+        self.StreamType = None
+        self.ImageWidth = None
+        self.ImageHeight = None
+        self.LocationX = None
+        self.LocationY = None
+
+
+    def _deserialize(self, params):
+        self.UserId = params.get("UserId")
+        self.StreamType = params.get("StreamType")
+        self.ImageWidth = params.get("ImageWidth")
+        self.ImageHeight = params.get("ImageHeight")
+        self.LocationX = params.get("LocationX")
+        self.LocationY = params.get("LocationY")
 
 
 class StartMCUMixTranscodeRequest(AbstractModel):

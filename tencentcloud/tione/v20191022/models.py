@@ -390,14 +390,14 @@ class CreateTrainingJobRequest(AbstractModel):
         """
         :param AlgorithmSpecification: 算法镜像配置
         :type AlgorithmSpecification: :class:`tencentcloud.tione.v20191022.models.AlgorithmSpecification`
-        :param InputDataConfig: 输入数据配置
-        :type InputDataConfig: list of InputDataConfig
         :param OutputDataConfig: 输出数据配置
         :type OutputDataConfig: :class:`tencentcloud.tione.v20191022.models.OutputDataConfig`
         :param ResourceConfig: 资源实例配置
         :type ResourceConfig: :class:`tencentcloud.tione.v20191022.models.ResourceConfig`
         :param TrainingJobName: 训练任务名称
         :type TrainingJobName: str
+        :param InputDataConfig: 输入数据配置
+        :type InputDataConfig: list of InputDataConfig
         :param StoppingCondition: 中止条件
         :type StoppingCondition: :class:`tencentcloud.tione.v20191022.models.StoppingCondition`
         :param VpcConfig: 私有网络配置
@@ -410,10 +410,10 @@ class CreateTrainingJobRequest(AbstractModel):
         :type RoleName: str
         """
         self.AlgorithmSpecification = None
-        self.InputDataConfig = None
         self.OutputDataConfig = None
         self.ResourceConfig = None
         self.TrainingJobName = None
+        self.InputDataConfig = None
         self.StoppingCondition = None
         self.VpcConfig = None
         self.HyperParameters = None
@@ -425,12 +425,6 @@ class CreateTrainingJobRequest(AbstractModel):
         if params.get("AlgorithmSpecification") is not None:
             self.AlgorithmSpecification = AlgorithmSpecification()
             self.AlgorithmSpecification._deserialize(params.get("AlgorithmSpecification"))
-        if params.get("InputDataConfig") is not None:
-            self.InputDataConfig = []
-            for item in params.get("InputDataConfig"):
-                obj = InputDataConfig()
-                obj._deserialize(item)
-                self.InputDataConfig.append(obj)
         if params.get("OutputDataConfig") is not None:
             self.OutputDataConfig = OutputDataConfig()
             self.OutputDataConfig._deserialize(params.get("OutputDataConfig"))
@@ -438,6 +432,12 @@ class CreateTrainingJobRequest(AbstractModel):
             self.ResourceConfig = ResourceConfig()
             self.ResourceConfig._deserialize(params.get("ResourceConfig"))
         self.TrainingJobName = params.get("TrainingJobName")
+        if params.get("InputDataConfig") is not None:
+            self.InputDataConfig = []
+            for item in params.get("InputDataConfig"):
+                obj = InputDataConfig()
+                obj._deserialize(item)
+                self.InputDataConfig.append(obj)
         if params.get("StoppingCondition") is not None:
             self.StoppingCondition = StoppingCondition()
             self.StoppingCondition._deserialize(params.get("StoppingCondition"))

@@ -1512,6 +1512,64 @@ class CreateParamTemplateResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class CreateRoInstanceIpRequest(AbstractModel):
+    """CreateRoInstanceIp请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param InstanceId: 只读实例ID，格式如：cdbro-3i70uj0k，与云数据库控制台页面中显示的只读实例ID相同。
+        :type InstanceId: str
+        :param UniqSubnetId: 子网描述符，例如：subnet-1typ0s7d。
+        :type UniqSubnetId: str
+        :param UniqVpcId: vpc描述符，例如：vpc-xxx,如果传了该字段则UniqSubnetId必传
+        :type UniqVpcId: str
+        """
+        self.InstanceId = None
+        self.UniqSubnetId = None
+        self.UniqVpcId = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.UniqSubnetId = params.get("UniqSubnetId")
+        self.UniqVpcId = params.get("UniqVpcId")
+
+
+class CreateRoInstanceIpResponse(AbstractModel):
+    """CreateRoInstanceIp返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RoVpcId: 只读实例的私有网络的ID。
+        :type RoVpcId: int
+        :param RoSubnetId: 只读实例的子网ID。
+        :type RoSubnetId: int
+        :param RoVip: 只读实例的内网IP地址。
+        :type RoVip: str
+        :param RoVport: 只读实例的内网端口号。
+        :type RoVport: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RoVpcId = None
+        self.RoSubnetId = None
+        self.RoVip = None
+        self.RoVport = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RoVpcId = params.get("RoVpcId")
+        self.RoSubnetId = params.get("RoSubnetId")
+        self.RoVip = params.get("RoVip")
+        self.RoVport = params.get("RoVport")
+        self.RequestId = params.get("RequestId")
+
+
 class DBSwitchInfo(AbstractModel):
     """云数据库切换记录
 
@@ -1665,12 +1723,16 @@ class DeleteAuditPolicyRequest(AbstractModel):
         """
         :param PolicyId: 审计策略 ID。
         :type PolicyId: str
+        :param InstanceId: 实例 ID。
+        :type InstanceId: str
         """
         self.PolicyId = None
+        self.InstanceId = None
 
 
     def _deserialize(self, params):
         self.PolicyId = params.get("PolicyId")
+        self.InstanceId = params.get("InstanceId")
 
 
 class DeleteAuditPolicyResponse(AbstractModel):

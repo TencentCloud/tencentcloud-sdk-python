@@ -861,6 +861,44 @@ class DeletePolicyVersionResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DeleteRolePermissionsBoundaryRequest(AbstractModel):
+    """DeleteRolePermissionsBoundary请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RoleId: 角色ID（与角色名至少填一个）
+        :type RoleId: str
+        :param RoleName: 角色名（与角色ID至少填一个）
+        :type RoleName: str
+        """
+        self.RoleId = None
+        self.RoleName = None
+
+
+    def _deserialize(self, params):
+        self.RoleId = params.get("RoleId")
+        self.RoleName = params.get("RoleName")
+
+
+class DeleteRolePermissionsBoundaryResponse(AbstractModel):
+    """DeleteRolePermissionsBoundary返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class DeleteRoleRequest(AbstractModel):
     """DeleteRole请求参数结构体
 
@@ -968,6 +1006,40 @@ class DeleteServiceLinkedRoleResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.DeletionTaskId = params.get("DeletionTaskId")
+        self.RequestId = params.get("RequestId")
+
+
+class DeleteUserPermissionsBoundaryRequest(AbstractModel):
+    """DeleteUserPermissionsBoundary请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param TargetUin: 子账号Uin
+        :type TargetUin: int
+        """
+        self.TargetUin = None
+
+
+    def _deserialize(self, params):
+        self.TargetUin = params.get("TargetUin")
+
+
+class DeleteUserPermissionsBoundaryResponse(AbstractModel):
+    """DeleteUserPermissionsBoundary返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
 
 
@@ -2493,6 +2565,86 @@ class PolicyVersionItem(AbstractModel):
         self.VersionId = params.get("VersionId")
         self.CreateDate = params.get("CreateDate")
         self.IsDefaultVersion = params.get("IsDefaultVersion")
+
+
+class PutRolePermissionsBoundaryRequest(AbstractModel):
+    """PutRolePermissionsBoundary请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param PolicyId: 策略ID
+        :type PolicyId: int
+        :param RoleId: 角色ID（与角色名至少填一个）
+        :type RoleId: str
+        :param RoleName: 角色名（与角色ID至少填一个）
+        :type RoleName: str
+        """
+        self.PolicyId = None
+        self.RoleId = None
+        self.RoleName = None
+
+
+    def _deserialize(self, params):
+        self.PolicyId = params.get("PolicyId")
+        self.RoleId = params.get("RoleId")
+        self.RoleName = params.get("RoleName")
+
+
+class PutRolePermissionsBoundaryResponse(AbstractModel):
+    """PutRolePermissionsBoundary返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class PutUserPermissionsBoundaryRequest(AbstractModel):
+    """PutUserPermissionsBoundary请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param TargetUin: 子账号Uin
+        :type TargetUin: int
+        :param PolicyId: 策略ID
+        :type PolicyId: int
+        """
+        self.TargetUin = None
+        self.PolicyId = None
+
+
+    def _deserialize(self, params):
+        self.TargetUin = params.get("TargetUin")
+        self.PolicyId = params.get("PolicyId")
+
+
+class PutUserPermissionsBoundaryResponse(AbstractModel):
+    """PutUserPermissionsBoundary返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
 
 
 class RemoveUserFromGroupRequest(AbstractModel):
